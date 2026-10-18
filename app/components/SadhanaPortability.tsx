@@ -67,7 +67,7 @@ export function SadhanaPortability() {
         <button type="button" onClick={() => fileInput.current?.click()} className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-saffron-300 px-4 py-2 text-sm font-medium text-saffron-800 hover:bg-saffron-50 dark:text-saffron-200">
           <Upload className="h-4 w-4" aria-hidden /> Restore Backup
         </button>
-        <input ref={fileInput} type="file" accept="application/json,.json" className="sr-only" onChange={(e) => upload(e.target.files?.[0])} />
+        <input ref={fileInput} type="file" accept="application/json,.json" className="hidden" aria-label="Restore Backup" onChange={(e) => upload(e.target.files?.[0])} />
       </div>
       <p role="status" className="mt-3 text-sm text-dharma-muted">{message}</p>
     </section>
