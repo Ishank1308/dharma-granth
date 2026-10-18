@@ -10,6 +10,8 @@ import { AmbientOrbs } from '@/app/components/motion/AmbientOrbs';
 import { ChapterHero } from '@/app/components/motion/ChapterHero';
 import { FullChapterVerses } from '@/app/components/FullChapterVerses';
 import { ChapterOrientation } from '@/app/components/ChapterOrientation';
+import { ChapterSummaryBox } from '@/app/components/ChapterSummaryBox';
+import { getGitaChapterSummary } from '@/data/gita-chapter-summaries';
 import { ChapterKeyboardNav } from '@/app/components/ChapterKeyboardNav';
 import { ChapterCompletion } from '@/app/components/ChapterCompletion';
 import { ChapterVisitRecorder } from '@/app/components/ChapterVisitRecorder';
@@ -130,7 +132,9 @@ export function chapterMetadata(params: ChapterParams, partNumber = 1): Metadata
   const firstVerse = readSeededChapter(meta.id, chapterId)?.chapter.verses[part?.start ?? 0] as
     | { hindi?: string; translation?: string }
     | undefined;
-  const opening = (firstVerse?.hindi || firstVerse?.translation || chapter.summary || '').replace(/\s+/g, ' ').trim();
+  // Gita chapters describe themselves with their editorial summary (गीता सार); others with the first verse.
+  const gitaSummary = meta.id === 'bhagavadgita' && !part ? getGitaChapterSummary(chapter.id)?.summaryHi : undefined;
+  const opening = (gitaSummary || firstVerse?.hindi || firstVerse?.translation || chapter.summary || '').replace(/\s+/g, ' ').trim();
   const lead = part
     ? `${meta.titleSanskrit} (${meta.title}) अध्याय ${chapter.id}, भाग ${part.part}: श्लोक ${partRange(part)} — संस्कृत मूल, हिंदी अर्थ और English translation।`
     : `${meta.titleSanskrit} (${meta.title}) अध्याय ${chapter.id}` +
@@ -348,6 +352,9 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       <div className="relative max-w-4xl mx-auto px-4 py-8 sm:px-6 md:py-12">
         <AmbientOrbs />
         <div className="relative">
+        {(!part || part.part === 1) && meta.id === 'bhagavadgita' && getGitaChapterSummary(chapter.id) && (
+          <ChapterSummaryBox summary={getGitaChapterSummary(chapter.id)!} allHref={`/scripture/${meta.id}/summary`} />
+        )}
         {(!part || part.part === 1) && (
           <ChapterOrientation
             scriptureId={meta.id}

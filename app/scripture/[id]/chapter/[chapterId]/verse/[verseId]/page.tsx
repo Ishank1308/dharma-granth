@@ -99,6 +99,24 @@ function plain(text: string | undefined, max: number): string {
   return flat.length > max ? `${flat.slice(0, max - 1).trimEnd()}…` : flat;
 }
 
+/** Opening words of the transliteration without diacritics, as people type them ("karmany evadhikaras te ma phaleshu"). */
+function openingLatin(transliteration: string | undefined): string {
+  const first = (transliteration ?? '').split(/[|।\n]/)[0] ?? '';
+  // Spell it the way it is typed in India: ś/ṣ → sh, c → ch, ṛ → ri ("phaleshu kadachana").
+  const typed = first
+    .toLowerCase()
+    .replace(/[śṣ]h?/g, 'sh')
+    .replace(/c(?!h)/g, 'ch')
+    .replace(/ṛ/g, 'ri');
+  const words = typed.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Za-z' ]/g, ' ').toLowerCase().split(/\s+/).filter(Boolean);
+  let out = '';
+  for (const w of words) {
+    if (out && `${out} ${w}`.length > 40) break;
+    out = out ? `${out} ${w}` : w;
+  }
+  return out;
+}
+
 /** The verse's opening words, as people type them into search. */
 function opening(sanskrit: string | undefined): string {
   const first = verseLines(cleanVerseField(sanskrit))[0] ?? '';
@@ -119,10 +137,13 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const words = opening(found.verse.sanskrit);
   // Search engines show about 60 characters: lead with the reference and "Meaning in Hindi & English".
   const title = `${ref} Meaning in Hindi & English${words ? ` | ${words}` : ''}`;
+  // Lead with the Hindi reference ("श्रीमद्भगवद्गीता 2.47 का हिंदी अर्थ") for searches typed in Hindi.
+  const refHi = `${meta.titleSanskrit ?? meta.title} ${chapterId}.${params.verseId}`;
+  const meaning = [plain(found.verse.hindi, 80), plain(found.verse.translation, 70)].filter(Boolean).join(' · ');
   const description = clipDescription(
-    [plain(found.verse.hindi, 85), plain(found.verse.translation, 85)].filter(Boolean).join(' · ') ||
-      `${ref}: Sanskrit text with Hindi and English meaning.`,
+    meaning ? `${refHi} का हिंदी अर्थ: ${meaning}` : `${ref}: Sanskrit text with Hindi and English meaning.`,
   );
+  const latin = openingLatin(found.verse.transliteration);
   const canonical = versePageHref(meta.id, chapterId, params.verseId);
   const image = verseOgPath(meta.id, chapterId, params.verseId) ?? `/og/${meta.id}.png`;
 
@@ -136,6 +157,9 @@ export function generateMetadata({ params }: PageProps): Metadata {
       `${ref} in hindi`,
       `${ref} translation`,
       words,
+      latin && `${latin} meaning`,
+      `${refHi} अर्थ`,
+      `${refHi} हिंदी अर्थ`,
       meta.titleSanskrit,
       'श्लोक अर्थ',
     ].filter(

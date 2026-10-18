@@ -130,6 +130,9 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
   for (const meta of getAllScriptures()) {
     const date = scriptureLastChanged(meta.id);
     scriptures.push(entry(`/scripture/${meta.id}`, date));
+    if (meta.id === 'bhagavadgita') {
+      scriptures.push(entry('/scripture/bhagavadgita/summary', lastChanged('app/scripture/[id]/summary/page.tsx', 'data/gita-chapter-summaries.ts')));
+    }
 
     const chapterSet = new Set<number>(readSeededChapterNumbers(meta.id));
     for (const ch of getScriptureChapters(meta.id)) chapterSet.add(ch.id);
