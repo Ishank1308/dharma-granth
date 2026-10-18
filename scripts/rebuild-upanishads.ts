@@ -233,6 +233,36 @@ function passages(segment: string): string[] {
     });
 }
 
+/**
+ * Kaushitaki: four adhyāyas, each closed by an "iti <n>o.adhyAyaH" colophon (the last colophon of one
+ * adhyāya can share a block with the first verse of the next). Verse numbers are kept as printed;
+ * the source has no "|| 2||" in adhyāya 2 (its second passage is numbered 3), so that number is absent.
+ */
+const kaushitaki: Builder = (body) => {
+  const raw = extractVerses(body);
+  const chapters: FullChapter[] = [];
+  let cur: FullChapter | null = null;
+  raw.forEach((v, i) => {
+    let itx = v.itx.trim();
+    const lead = /^iti\s+\S*dhyAyaH\s*\|*\s*/i.exec(itx);
+    if (lead) {
+      cur = null;
+      itx = itx.slice(lead[0].length).trim();
+    }
+    if (/^(?:iti\s+)?\S*dhyAyaH$/i.test(itx) || !itx) {
+      cur = null; // bare colophon block, closes the adhyāya
+      return;
+    }
+    if (!cur) {
+      cur = { number: chapters.length + 1, title: "", verses: [] };
+      chapters.push(cur);
+    }
+    const fv = mkVerse(v.number, i === 0 ? stripHeader(dropPreamble(itx)) : itx);
+    if (fv) cur.verses.push(fv);
+  });
+  return chapters;
+};
+
 interface Target {
   files: string[];
   build: Builder;
@@ -255,6 +285,7 @@ const TARGETS: Record<string, Target> = {
   muktika: { files: ["muktikA.itx", "muktika.itx"], build: dotNumbered(/iti\s+\S*dhyAyaH\s*\.\.\s*\d+\s*\.\.|iti\s+muktikopaniShatsamAptA\s*\.\./, { dropInvocation: true }), chapterUnit: "Adhyāya" },
   shvetashvatara: { files: ["shveta.itx"], build: byNumberReset, chapterUnit: "Adhyāya" },
   tejobindu: { files: ["tejobindu.itx"], build: byNumberReset, chapterUnit: "Part" },
+  kaushitaki: { files: ["kaushhiitaki.itx"], build: kaushitaki, chapterUnit: "Adhyāya" },
 };
 
 // ---------------------------------------------------------------------------
