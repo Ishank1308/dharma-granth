@@ -17,6 +17,13 @@
 /fonts/*
   ! Cache-Control
   Cache-Control: public, max-age=31536000, immutable
+# This Next export has no files here. The rules keep a later framework from inheriting the HTML cache.
+/assets/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
+/_astro/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
 
 # Search index and shards are rebuilt with each deploy: short browser cache, long edge cache.
 /search/*

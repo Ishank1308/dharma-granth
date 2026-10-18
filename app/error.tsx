@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import Link from 'next/link';
 import { AlertTriangle, Home, RotateCcw } from 'lucide-react';
 import { isChunkLoadError, markNoindex, reloadOnceWithCacheBust } from '@/lib/error-recovery';
@@ -16,7 +16,7 @@ export default function Error({
   // re-rendering; only a full reload fetches the fresh assets.
   const isChunkError = isChunkLoadError(error);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     console.error('[dharma-granth] route error:', error);
     const unmark = markNoindex();
     if (isChunkError) reloadOnceWithCacheBust();

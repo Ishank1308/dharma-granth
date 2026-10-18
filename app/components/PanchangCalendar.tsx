@@ -54,7 +54,9 @@ function toIsoDate(d: Date): string {
 }
 
 export function PanchangCalendar() {
-  const [selectedDate, setSelectedDate] = useState<Date>(() => todayForLocation(PRESET_LOCATIONS[0]));
+  // Null until the browser applies today's civil date at the chosen place.
+  // A build-time Date would freeze the UTC runner's day into the static HTML.
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [dateWasPicked, setDateWasPicked] = useState(false);
   const [activeView, setActiveView] = useState<'day' | 'week'>('day');
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
@@ -71,6 +73,7 @@ export function PanchangCalendar() {
   const panchang = useMemo<PanchangDayData | null>(() => {
     // retryKey forces a fresh attempt; a failed calculation never falls back to stale values
     void retryKey;
+    if (!selectedDate) return null;
     try {
       return calculateEducationalPanchang(selectedDate, location);
     } catch (err) {
@@ -81,7 +84,7 @@ export function PanchangCalendar() {
 
   // Week view calculation: 7 days centered or starting around selected date
   const weekDays = useMemo(() => {
-    if (!panchang) return [];
+    if (!panchang || !selectedDate) return [];
     try {
       return Array.from({ length: 7 }, (_, i) => {
         const day = addDays(selectedDate, i - 3);
@@ -120,7 +123,7 @@ export function PanchangCalendar() {
 
   // Keep the address bar in step with a picked date so the page can be shared or bookmarked.
   useEffect(() => {
-    if (!urlDateChecked) return;
+    if (!urlDateChecked || !selectedDate) return;
     try {
       const url = new URL(window.location.href);
       if (dateWasPicked) url.searchParams.set('date', toIsoDate(selectedDate));
@@ -133,11 +136,11 @@ export function PanchangCalendar() {
 
   const handlePrevDay = () => {
     setDateWasPicked(true);
-    setSelectedDate((d) => addDays(d, -1));
+    setSelectedDate((d) => (d ? addDays(d, -1) : d));
   };
   const handleNextDay = () => {
     setDateWasPicked(true);
-    setSelectedDate((d) => addDays(d, 1));
+    setSelectedDate((d) => (d ? addDays(d, 1) : d));
   };
   const handleToday = () => {
     setDateWasPicked(false);
@@ -153,7 +156,16 @@ export function PanchangCalendar() {
     }
   };
 
-  const isToday = toIsoDate(selectedDate) === toIsoDate(todayForLocation(location));
+  const isToday = selectedDate != null && toIsoDate(selectedDate) === toIsoDate(todayForLocation(location));
+
+  if (!selectedDate) {
+    return (
+      <p role="status" className="rounded-3xl border border-dharma-border bg-dharma-card p-6 text-center text-sm text-dharma-muted">
+        <span lang="hi" className="font-devanagari">आज की तिथि खुल रही है।</span>
+        <span className="mt-1 block">Opening today’s date.</span>
+      </p>
+    );
+  }
 
   if (!panchang) {
     return (
