@@ -8,7 +8,7 @@
     "license": "Sanskrit mūla — public domain. Digitized by sanskritdocuments.org.",
     "fetchedAt": "2026-09-30T09:38:38.514Z"
   },
-  "totalVerses": 463,
+  "totalVerses": 464,
   "totalChapters": 7,
   "chapters": [
     {
@@ -1594,9 +1594,18 @@
           "hindiSource": "ai"
         },
         {
+          "number": 6,
+          "sanskrit": "शुद्धचैतन्यरूपात्मा सर्वसङ्गविवर्जितः । नित्यानन्दः प्रसन्नात्मा ह्यन्यचिन्ताविवर्जितः ॥",
+          "transliteration": "śuddhacaitanyarūpātmā sarvasaṅgavivarjitaḥ | nityānandaḥ prasannātmā hyanyacintāvivarjitaḥ ||",
+          "translation": "",
+          "translationSource": "",
+          "hindi": "",
+          "hindiSource": ""
+        },
+        {
           "number": 7,
-          "sanskrit": "शुद्धचैतन्यरूपात्मा सर्वसङ्गविवर्जितः । नित्यानन्दः प्रसन्नात्मा ह्यन्यचिन्ताविवर्जितः ॥ ६ किञ्चिदस्तित्वहीनो यः स जीवन्मुक्त उच्यते । न मे चित्तं न मे बुद्धिर्नाहङ्कारो न चेन्द्रियम्",
-          "transliteration": "śuddhacaitanyarūpātmā sarvasaṅgavivarjitaḥ | nityānandaḥ prasannātmā hyanyacintāvivarjitaḥ || 6 kiñcidastitvahīno yaḥ sa jīvanmukta ucyate | na me cittaṃ na me buddhirnāhaṅkāro na cendriyam",
+          "sanskrit": "किञ्चिदस्तित्वहीनो यः स जीवन्मुक्त उच्यते । न मे चित्तं न मे बुद्धिर्नाहङ्कारो न चेन्द्रियम्",
+          "transliteration": "kiñcidastitvahīno yaḥ sa jīvanmukta ucyate | na me cittaṃ na me buddhirnāhaṅkāro na cendriyam",
           "translation": "of the form of pure consciousness, free of all attachment, of eternal bliss, serene, free of other thoughts, devoid of any trace of existence — he is called liberated while living. \"Mine is not the mind, not the intellect, not the ego, not the senses.",
           "translationSource": "ai",
           "hindi": "जिसकी आत्मा शुद्ध चैतन्य-रूप है, जो सब संग से रहित, नित्य आनन्द वाला, प्रसन्न-चित्त और अन्य चिन्ताओं से मुक्त है, जो किसी भी प्रकार की सत्ता-भावना से रहित है — वह जीवन्मुक्त कहलाता है। ‘न मेरा चित्त है, न बुद्धि, न अहंकार, न इन्द्रिय;",
