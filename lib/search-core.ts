@@ -13,6 +13,8 @@ export type CoreChapter = [string, number, string, string];
 export type CorePathway = [string, string, string];
 /** [slug, title, hindi] */
 export type CoreTopic = [string, string, string];
+/** [id, title, hindi] — tithi and nakshatra names already published in the panchang. */
+export type CoreTerm = [string, string, string];
 /** [id, library chapter, verse, label, href] */
 export type CoreVerse = [string, number, string, string, string];
 
@@ -23,6 +25,7 @@ export interface CoreIndexFile {
   pathways: CorePathway[];
   topics: CoreTopic[];
   verses: CoreVerse[];
+  terms?: CoreTerm[];
 }
 
 /** [chapter, verse, sanskrit, translation, href] */
@@ -141,6 +144,22 @@ function ensurePrepared(): Prepared[] {
       languageLabel: 'English & Hindi',
       actionLabel: 'Explore topic →',
     }, phoneticIndex(`${title} ${hindi} ${slug}`)));
+  }
+  for (const [id, title, hindi] of core.terms ?? []) {
+    next.push(row({
+      id: `core-term-${id}`,
+      title,
+      subtitle: hindi,
+      group: 'practice',
+      groupLabel: 'पंचांग · Panchang',
+      category: 'practice',
+      categoryLabel: 'पंचांग · Panchang',
+      href: '/panchang/',
+      matchingText: `${title} ${hindi}`,
+      matchReason: 'Matches a panchang term',
+      languageLabel: 'Sanskrit & Hindi',
+      actionLabel: 'Open panchang →',
+    }, phoneticIndex(`${title} ${hindi} ${id}`)));
   }
   for (const [id, chapter, verse, label, href] of core.verses) {
     next.push(row({

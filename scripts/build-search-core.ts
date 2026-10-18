@@ -12,7 +12,8 @@ import { wisdomTopics } from '../data/wisdom-for-life';
 import { CHAPTERS } from '../data/ashtavakra/chapters-meta';
 import { wisdomVerseHref, libraryLocation } from '../lib/wisdom-links';
 import { versePageHref } from '../lib/verse-paths';
-import type { CoreChapter, CoreIndexFile, CoreVerse, SearchShardFile, ShardVerse } from '../lib/search-core';
+import { NAKSHATRA_DATA, TITHI_DATA } from '../lib/panchang';
+import type { CoreChapter, CoreIndexFile, CoreTerm, CoreVerse, SearchShardFile, ShardVerse } from '../lib/search-core';
 
 const root = process.cwd();
 const outDir = path.join(root, 'public', 'search');
@@ -64,6 +65,16 @@ for (const ch of CHAPTERS) {
 
 const pathways: CoreIndexFile['pathways'] = learningPaths.map((p) => [p.id, p.title, p.titleSanskrit]);
 const topics: CoreIndexFile['topics'] = wisdomTopics.map((t) => [t.slug, t.titleEn, t.titleHi]);
+const terms: CoreTerm[] = [];
+const seenTerm = new Set<string>();
+function addTerm(id: string, title: string, hindi: string) {
+  const key = title.trim().toLowerCase();
+  if (!key || seenTerm.has(key)) return;
+  seenTerm.add(key);
+  terms.push([id, title, hindi]);
+}
+for (const tithi of Object.values(TITHI_DATA)) addTerm(`tithi-${tithi.paksha}-${tithi.number}`, tithi.name, tithi.nameHi);
+for (const star of NAKSHATRA_DATA) addTerm(`nakshatra-${star.index}`, star.name, star.nameHi);
 
 const verses: CoreVerse[] = [];
 const seenVerse = new Set<string>();
@@ -111,7 +122,7 @@ for (const [id, chapter, verse, label] of pinned) {
 }
 
 function pack(chapterRows: CoreChapter[]): CoreIndexFile {
-  return { v: 1, scriptures, chapters: chapterRows, pathways, topics, verses };
+  return { v: 1, scriptures, chapters: chapterRows, pathways, topics, verses, terms };
 }
 
 let file = pack(chapters);
@@ -144,7 +155,7 @@ for (const id of shardIds) {
 
 fs.writeFileSync(path.join(outDir, 'core-index.json'), json);
 const catalogCount = scriptureCatalog.length;
-console.log(`search core: ${catalogCount} catalog scriptures, ${chapters.length} chapters, ${pathways.length} pathways, ${topics.length} topics, ${verses.length} key verses`);
+console.log(`search core: ${catalogCount} catalog scriptures, ${chapters.length} chapters, ${pathways.length} pathways, ${topics.length} topics, ${terms.length} panchang terms, ${verses.length} key verses`);
 console.log(`core-index.json ${json.length} bytes, gzip ${gzip} bytes; ${shardCount} shards`);
 if (catalogCount < 65) {
   console.error(`expected 65 catalog scriptures, found ${catalogCount}`);
