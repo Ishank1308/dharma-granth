@@ -55,19 +55,19 @@ export function SadhanaPortability() {
   return (
     <section aria-labelledby="sadhana-portability-heading" className="mt-10 rounded-2xl border border-saffron-200 bg-white/70 p-5 dark:border-saffron-900/40 dark:bg-white/5">
       <h2 id="sadhana-portability-heading" className="font-serif text-lg font-bold text-dharma-text">
-        साधना साथ ले जाएँ
+        Export / Restore Sadhana Backup (.json) · साधना डेटा बैकअप
       </h2>
       <p className="mt-1 text-sm text-dharma-muted">
-        जप, ध्यान, दैनिक चिंतन, कृतज्ञता, संकल्प और अध्ययन की प्रगति केवल इस ब्राउज़र में है। फ़ाइल आपके पास रहती है।
+        जप, ध्यान, दैनिक चिंतन, कृतज्ञता, संकल्प और अध्ययन की प्रगति केवल इस ब्राउज़र (localStorage) में सुरक्षित है। फ़ाइल आपके पास रहती है।
       </p>
       <div className="mt-4 flex flex-wrap gap-3">
-        <button type="button" onClick={download} className="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-saffron-700 px-4 py-2 text-sm font-medium text-white hover:bg-saffron-800">
-          <Download className="h-4 w-4" aria-hidden /> Export My Sadhana Data (.json)
+        <button type="button" onClick={download} className="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-saffron-700 px-4 py-2 text-sm font-semibold text-white hover:bg-saffron-800 transition active:scale-95 shadow-xs">
+          <Download className="h-4 w-4" aria-hidden /> Export Sadhana Backup (.json)
         </button>
-        <button type="button" onClick={() => fileInput.current?.click()} className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-saffron-300 px-4 py-2 text-sm font-medium text-saffron-800 hover:bg-saffron-50 dark:text-saffron-200">
-          <Upload className="h-4 w-4" aria-hidden /> Restore Backup
+        <button type="button" onClick={() => fileInput.current?.click()} className="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-saffron-300 dark:border-saffron-700 px-4 py-2 text-sm font-semibold text-saffron-800 dark:text-saffron-200 hover:bg-saffron-50 dark:hover:bg-saffron-950/40 transition active:scale-95">
+          <Upload className="h-4 w-4" aria-hidden /> Restore Sadhana Backup (.json)
         </button>
-        <input ref={fileInput} type="file" accept="application/json,.json" className="hidden" aria-label="Restore Backup" onChange={(e) => upload(e.target.files?.[0])} />
+        <input ref={fileInput} type="file" accept="application/json,.json" className="hidden" aria-label="Restore Sadhana Backup (.json)" onChange={(e) => upload(e.target.files?.[0])} />
       </div>
       <p role="status" className="mt-3 text-sm text-dharma-muted">{message}</p>
     </section>

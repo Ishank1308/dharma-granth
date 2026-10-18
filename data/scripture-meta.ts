@@ -942,6 +942,16 @@ export const categories = [
   },
   { id: "smriti", label: "Smritis", description: "Codes of law and conduct" },
   {
+    id: "tantra",
+    label: "Tantras",
+    description: "Esoteric and practical manuals for spiritual realization and meditation",
+  },
+  {
+    id: "stotra",
+    label: "Stotras",
+    description: "Hymns of praise, devotion, and daily prayers",
+  },
+  {
     id: "other",
     label: "Other Texts",
     description: "Philosophical, devotional, and spiritual works",

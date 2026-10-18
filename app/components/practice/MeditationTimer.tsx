@@ -67,43 +67,66 @@ export function MeditationTimer() {
   const isReducedMotion = systemReduced || reducedMotionManual;
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const endTimeRef = useRef<number | null>(null);
 
-  // Tick while running; complete at zero.
+  // Tick while running; calculate delta timestamp so background tabs never drift.
   useEffect(() => {
-    if (!running) return;
-    intervalRef.current = setInterval(() => {
-      setSecondsLeft((s) => {
-        if (s <= 1) {
-          setRunning(false);
-          setDone(true);
-          const today = localISODate();
-          if (soundEnabled) playSoundEffect('templeChime');
-          triggerHaptic('success');
-          // Pick a random reflection quote
-          setSummaryQuote(CONTEMPLATION_QUOTES[Math.floor(Math.random() * CONTEMPLATION_QUOTES.length)]);
+    if (!running) {
+      endTimeRef.current = null;
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      return;
+    }
 
-          setStats((prev) => {
-            const hist = { ...(prev.history ?? {}) };
-            hist[today] = (hist[today] ?? 0) + minutes;
-            return {
-              sessions: prev.sessions + 1,
-              minutes: prev.minutes + minutes,
-              history: hist,
-            };
-          });
-          return 0;
-        }
-        return s - 1;
-      });
-    }, 1000);
+    if (!endTimeRef.current) {
+      endTimeRef.current = Date.now() + secondsLeft * 1000;
+    }
+
+    const checkTime = () => {
+      if (!endTimeRef.current) return;
+      const now = Date.now();
+      const remaining = Math.max(0, Math.round((endTimeRef.current - now) / 1000));
+      setSecondsLeft(remaining);
+
+      if (remaining <= 0) {
+        setRunning(false);
+        setDone(true);
+        endTimeRef.current = null;
+        const today = localISODate();
+        if (soundEnabled) playSoundEffect('templeChime');
+        triggerHaptic('success');
+        setSummaryQuote(CONTEMPLATION_QUOTES[Math.floor(Math.random() * CONTEMPLATION_QUOTES.length)]);
+
+        setStats((prev) => {
+          const hist = { ...(prev.history ?? {}) };
+          hist[today] = (hist[today] ?? 0) + minutes;
+          return {
+            sessions: prev.sessions + 1,
+            minutes: prev.minutes + minutes,
+            history: hist,
+          };
+        });
+      }
+    };
+
+    intervalRef.current = setInterval(checkTime, 500);
+
+    const handleVisibility = () => {
+      if (!document.hidden && running) {
+        checkTime();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
+      document.removeEventListener('visibilitychange', handleVisibility);
     };
   }, [running, minutes, soundEnabled, setStats]);
 
   function pick(m: number) {
     setMinutes(m);
     setSecondsLeft(m * 60);
+    endTimeRef.current = null;
     setRunning(false);
     setDone(false);
     setShowCustomInput(false);
@@ -119,16 +142,23 @@ export function MeditationTimer() {
   function handleStart() {
     if (soundEnabled) playSoundEffect('omBowl');
     triggerHaptic('medium');
+    endTimeRef.current = Date.now() + secondsLeft * 1000;
     setRunning(true);
   }
 
   function handlePause() {
     triggerHaptic('light');
+    if (endTimeRef.current) {
+      const rem = Math.max(0, Math.round((endTimeRef.current - Date.now()) / 1000));
+      setSecondsLeft(rem);
+    }
+    endTimeRef.current = null;
     setRunning(false);
   }
 
   function reset() {
     setSecondsLeft(minutes * 60);
+    endTimeRef.current = null;
     setRunning(false);
     setDone(false);
   }

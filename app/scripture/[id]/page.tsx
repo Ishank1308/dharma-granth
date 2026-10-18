@@ -13,6 +13,22 @@ import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretat
 
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
+import { formatCount } from '@/lib/holdings-label';
+
+const CATEGORY_NAMES: Record<string, string> = {
+  itihasa: 'Itihāsa · इतिहास',
+  upanishad: 'Upaniṣad · उपनिषद्',
+  veda: 'Veda · वेद',
+  purana: 'Purāṇa · पुराण',
+  smriti: 'Smṛti · स्मृति',
+  tantra: 'Tantra · तन्त्र',
+  stotra: 'Stotra · स्तोत्र',
+  other: 'Other · अन्य',
+};
+
+function formatCategory(cat: string): string {
+  return CATEGORY_NAMES[cat] || cat;
+}
 
 interface PageProps {
   params: { id: string };
@@ -189,11 +205,13 @@ export default function ScripturePage({ params }: PageProps) {
           </FadeUp>
           <FadeUp delay={0.05} className="flex flex-wrap items-center gap-3 mb-3">
             <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 uppercase tracking-wide">
-              {meta.category}
+              {formatCategory(meta.category)}
             </span>
             {meta.isCurated || partial ? (
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/25 text-amber-100 border border-amber-400/30">
-                {meta.isCurated ? 'सार संकलन · Curated selection' : 'आंशिक पाठ · Part of the text is in the library'}
+                {meta.isCurated
+                  ? 'सार संकलन · Curated selection'
+                  : `${publishedChapters.length} Chapters Indexed · ~${formatCount(catalogueVerses)} Canonical Verses`}
               </span>
             ) : publishedVerses > 0 ? (
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/15 text-white border border-white/25">

@@ -299,7 +299,8 @@ export function ReaderLayers({
   const perspCfg = PERSPECTIVE_CONFIG[perspective];
 
   const isQuick = settings.readerMode === 'quick';
-  const isDeep = settings.readerMode === 'deep' || perspective === 'researcher' || perspective === 'student';
+  const isTraditional = settings.readerMode === 'traditional';
+  const isDeep = settings.readerMode === 'deep' || isTraditional || perspective === 'researcher' || perspective === 'student';
 
   // Language preferences
   const showHindiTrans =
@@ -439,7 +440,7 @@ export function ReaderLayers({
           kind="aid"
           title="Word by word (पदच्छेद व अन्वय)"
           titleHi="पदच्छेद"
-          collapsible={perspective === 'beginner' || perspective === 'practitioner'}
+          collapsible={!isTraditional && (perspective === 'beginner' || perspective === 'practitioner')}
         >
           <div className="mb-2.5 flex items-center justify-between text-xs text-dharma-muted">
             <span>Tap on highlighted terms to inspect classical root (धातु), grammatical case, and philosophical clarity:</span>
@@ -533,7 +534,7 @@ export function ReaderLayers({
           kind="tradition"
           title="Traditional Commentary (परम्परागत भाष्य)"
           titleHi="परम्परागत भाष्य"
-          collapsible={perspective !== 'researcher'}
+          collapsible={!isTraditional && perspective !== 'researcher'}
         >
           <div className="rounded-xl border border-stone-300 bg-stone-50/70 dark:border-stone-700 dark:bg-stone-900/40 p-3.5 mb-3 text-xs text-stone-700 dark:text-stone-300">
             <p className="font-semibold text-stone-900 dark:text-stone-200">Pluralistic Tradition Neutrality (सम्प्रदाय-तटस्थता):</p>

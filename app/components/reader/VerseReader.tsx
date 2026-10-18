@@ -564,18 +564,19 @@ export function VerseReader(props: VerseReaderProps) {
             </button>
           </div>
 
-          {/* 3 · Reader Mode Bar: [Quick] [Simple] [Deep] */}
+          {/* 3 · Reader Mode Bar: [Quick] [Simple] [Deep] [Traditional] */}
           <div
             role="tablist"
-            aria-label="Reading depth: Quick, Simple or Deep"
+            aria-label="Reading depth: Quick, Simple, Deep or Traditional"
             className="mb-6 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-dharma-border bg-dharma-card/70 p-2 shadow-sm"
           >
-            <div className="flex items-center gap-1.5 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
               {(
                 [
-                  { id: 'quick', en: 'Quick', hi: 'संक्षेप', hint: '1-min core takeaway' },
+                  { id: 'quick', en: 'Quick', hi: 'जिज्ञासु', hint: '1-min core takeaway' },
                   { id: 'simple', en: 'Simple', hi: 'सरल', hint: 'Clear meaning & life example' },
                   { id: 'deep', en: 'Deep', hi: 'गहन', hint: 'Full padas, commentary & sources' },
+                  { id: 'traditional', en: 'Traditional', hi: 'शास्त्रीय', hint: 'Mūla, padachheda, anvaya & traditional bhashya' },
                 ] as const
               ).map((m) => {
                 const active = settings.readerMode === m.id;
@@ -589,9 +590,9 @@ export function VerseReader(props: VerseReaderProps) {
                     aria-controls="mode-panel"
                     tabIndex={active ? 0 : -1}
                     onKeyDown={(e) => {
-                      const ids = ['quick', 'simple', 'deep'] as const;
+                      const ids = ['quick', 'simple', 'deep', 'traditional'] as const;
                       const i = ids.indexOf(settings.readerMode as (typeof ids)[number]);
-                      const n = e.key === 'ArrowRight' ? (i + 1) % 3 : e.key === 'ArrowLeft' ? (i + 2) % 3 : -1;
+                      const n = e.key === 'ArrowRight' ? (i + 1) % 4 : e.key === 'ArrowLeft' ? (i + 3) % 4 : -1;
                       if (n < 0) return;
                       e.preventDefault();
                       e.stopPropagation();
@@ -622,6 +623,7 @@ export function VerseReader(props: VerseReaderProps) {
               {settings.readerMode === 'quick' && 'त्वरित बोध · सार व व्यावहारिक प्रयोग'}
               {settings.readerMode === 'simple' && 'सुबोध व्याख्या · जीवन में प्रासंगिकता'}
               {settings.readerMode === 'deep' && 'गहन अध्ययन · पदच्छेद, भाष्य व संदर्भ'}
+              {settings.readerMode === 'traditional' && 'शास्त्रीय अध्ययन · मूल श्लोक, पदच्छेद, अन्वय व प्रामाणिक भाष्य'}
             </span>
           </div>
 

@@ -139,11 +139,13 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const title = `${ref} Meaning in Hindi & English${words ? ` | ${words}` : ''}`;
   // Hindi reference stays in the keywords ("श्रीमद्भगवद्गीता 2.47 का हिंदी अर्थ").
   const refHi = `${meta.titleSanskrit ?? meta.title} ${chapterId}.${params.verseId}`;
-  const shloka = plain(verseLines(cleanVerseField(found.verse.sanskrit))[0], 90);
-  const meaning = plain(found.verse.hindi, 80) || plain(found.verse.translation, 80);
+  const cleanSanskrit = cleanVerseField(found.verse.sanskrit).replace(/\s+/g, ' ').trim();
+  const cleanTranslation = (found.verse.translation || found.verse.hindi || '').replace(/\s+/g, ' ').trim();
   const description = clipDescription(
-    [shloka, meaning].filter(Boolean).join(' — ') ||
-      `${refHi} का हिंदी अर्थ`,
+    cleanSanskrit && cleanTranslation
+      ? `${ref}: ${cleanSanskrit} — ${cleanTranslation}`
+      : cleanSanskrit || cleanTranslation || `${refHi} का मूल श्लोक, हिंदी अर्थ एवं व्याख्या`,
+    160,
   );
   const latin = openingLatin(found.verse.transliteration);
   const canonical = versePageHref(meta.id, chapterId, params.verseId);

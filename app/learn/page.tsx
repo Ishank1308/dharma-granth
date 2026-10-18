@@ -300,11 +300,11 @@ export default function LearnPage() {
               Filter by Format:
             </span>
             {[
-              { id: 'all', label: 'All Formats' },
-              { id: 'flashcards', label: '📇 Flashcards' },
-              { id: 'mindmap', label: '🕸️ Mind Map' },
-              { id: 'timeline', label: '⏳ Timeline' },
-              { id: 'quizzes', label: '🎯 Quizzes' },
+              { id: 'all', icon: null, text: 'All Formats' },
+              { id: 'flashcards', icon: '📇', text: 'Flashcards' },
+              { id: 'mindmap', icon: '🕸️', text: 'Mind Map' },
+              { id: 'timeline', icon: '⏳', text: 'Timeline' },
+              { id: 'quizzes', icon: '🎯', text: 'Quizzes' },
             ].map((fmt) => (
               <button
                 key={fmt.id}
@@ -316,7 +316,8 @@ export default function LearnPage() {
                     : 'text-dharma-muted hover:text-dharma-text hover:bg-dharma-bg'
                 }`}
               >
-                {fmt.label}
+                {fmt.icon && <span aria-hidden="true" className="mr-1">{fmt.icon}</span>}
+                {fmt.text}
               </button>
             ))}
           </div>
@@ -391,7 +392,7 @@ export default function LearnPage() {
                   {/* Course Metadata Stats */}
                   <div className="grid grid-cols-3 gap-2 py-2 border-y border-dharma-border/50 text-xs font-serif mb-4">
                     <div>
-                      <span className="text-[10px] text-dharma-muted block">Difficulty</span>
+                      <span className="text-[10px] text-dharma-muted block">Difficulty: </span>
                       <span
                         className={`font-semibold ${
                           course.difficulty === 'beginner'
@@ -406,14 +407,14 @@ export default function LearnPage() {
                     </div>
 
                     <div>
-                      <span className="text-[10px] text-dharma-muted block">Lessons</span>
+                      <span className="text-[10px] text-dharma-muted block">Lessons: </span>
                       <span className="text-dharma-text font-semibold">
                         {course.lessons.length} lessons
                       </span>
                     </div>
 
                     <div>
-                      <span className="text-[10px] text-dharma-muted block">Study Time</span>
+                      <span className="text-[10px] text-dharma-muted block">Study Time: </span>
                       <span className="text-dharma-text font-semibold flex items-center gap-1">
                         <Clock className="w-3 h-3 text-saffron-600" />
                         {course.estimatedTime}

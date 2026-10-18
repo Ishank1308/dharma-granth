@@ -367,15 +367,16 @@ export function ShareVerseButton(props: Props) {
       </AnimatePresence>
 
       {/* Off-screen Card Container for html-to-image capture */}
-      <div
-        aria-hidden
-        style={{
-          position: 'fixed',
-          left: -9999,
-          top: 0,
-          pointerEvents: 'none',
-        }}
-      >
+      {(isOpen || busy) && (
+        <div
+          aria-hidden
+          style={{
+            position: 'fixed',
+            left: -9999,
+            top: 0,
+            pointerEvents: 'none',
+          }}
+        >
         <div
           ref={cardRef}
           style={{
@@ -565,6 +566,7 @@ export function ShareVerseButton(props: Props) {
           </div>
         </div>
       </div>
+      )}
     </>
   );
 }

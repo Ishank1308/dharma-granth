@@ -82,9 +82,10 @@ function Toggle({
 }
 
 const MODES: Array<Choice<ReaderModeTier>> = [
-  { id: 'quick', label: 'Quick', hint: 'संक्षिप्त' },
-  { id: 'simple', label: 'Simple', hint: 'सुबोध' },
-  { id: 'deep', label: 'Deep', hint: 'गंभीर' },
+  { id: 'quick', label: 'Quick', hint: 'जिज्ञासु' },
+  { id: 'simple', label: 'Simple', hint: 'सरल' },
+  { id: 'deep', label: 'Deep', hint: 'गहन' },
+  { id: 'traditional', label: 'Traditional', hint: 'शास्त्रीय' },
 ];
 
 const NUMBERS: Array<Choice<NumberFormatPref>> = [
