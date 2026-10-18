@@ -135,7 +135,7 @@ export function LibraryCard({
         {detailed && item.titleIast && <span className="mt-0.5 block font-serif text-sm italic text-dharma-muted">{item.titleIast}</span>}
       </h3>
 
-      <p className={`mt-3 text-sm leading-relaxed text-dharma-muted ${detailed ? '' : 'line-clamp-2'}`}>
+      <p className={`mt-3 text-sm leading-relaxed text-dharma-muted ${detailed ? '' : 'line-clamp-3'}`}>
         {detailed ? item.description : summaryOf(item.description)}
       </p>
       {detailed && item.explanation && (

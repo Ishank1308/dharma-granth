@@ -1411,10 +1411,14 @@ export function calculateEducationalPanchang(
   const pakshaName = tithiNumber <= 15 ? 'Shukla Paksha' : 'Krishna Paksha';
   const pakshaHi = tithiNumber <= 15 ? 'शुक्ल पक्ष' : 'कृष्ण पक्ष';
 
-  // 2. PAKSHA & ILLUMINATION
-  const lunarAge = positiveModulo(daysFromNewMoon, SYNODIC_MONTH);
-  const phase = lunarAge / SYNODIC_MONTH;
-  const illuminationPercent = Math.round(((1 - Math.cos(2 * Math.PI * phase)) / 2) * 100);
+  // 2. PAKSHA & ILLUMINATION (Computed directly from astronomical Sun-Moon elongation)
+  const elongationRad = (elongation * Math.PI) / 180;
+  let rawIllum = ((1 - Math.cos(elongationRad)) / 2) * 100;
+  // If in Shukla Pratipada and tithi progression has begun (> 0%), the waxing crescent is active
+  if (tithiNumber === 1 && tithiProgressPercent > 0 && rawIllum < 1) {
+    rawIllum = Math.max(1, Math.round((tithiProgressPercent / 100) * 2.5));
+  }
+  const illuminationPercent = Math.min(100, Math.max(0, Math.round(rawIllum)));
   const isWaxing = tithiNumber <= 15;
 
   const pakshaExplanation = isWaxing

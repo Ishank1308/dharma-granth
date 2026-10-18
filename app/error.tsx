@@ -3,7 +3,12 @@
 import { useLayoutEffect } from 'react';
 import Link from 'next/link';
 import { AlertTriangle, Home, RotateCcw } from 'lucide-react';
-import { isChunkLoadError, markNoindex, reloadOnceWithCacheBust } from '@/lib/error-recovery';
+import {
+  canAttemptChunkReload,
+  isChunkLoadError,
+  markNoindex,
+  reloadOnceWithCacheBust,
+} from '@/lib/error-recovery';
 
 export default function Error({
   error,
@@ -12,21 +17,43 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  // A failed JS chunk (new deploy, flaky or lost connection) is not fixed by
-  // re-rendering; only a full reload fetches the fresh assets.
   const isChunkError = isChunkLoadError(error);
 
   useLayoutEffect(() => {
     console.error('[dharma-granth] route error:', error);
     const unmark = markNoindex();
-    if (isChunkError) reloadOnceWithCacheBust();
+    if (isChunkError && canAttemptChunkReload()) {
+      reloadOnceWithCacheBust();
+    }
     return unmark;
   }, [error, isChunkError]);
+
   const retry = () => {
     if (isChunkError) {
       if (!reloadOnceWithCacheBust()) window.location.reload();
     } else reset();
   };
+
+  // If this is a chunk error and we haven't exhausted our reload guard, trigger reload immediately
+  // and show a calm transition state so the user never sees a flashed error UI.
+  if (isChunkError && canAttemptChunkReload()) {
+    return (
+      <main className="min-h-screen bg-dharma-bg flex items-center justify-center px-6 py-24">
+        <meta name="robots" content="noindex, nofollow" />
+        <div className="max-w-md w-full text-center">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-saffron-100 dark:bg-saffron-950/60 text-saffron-700 dark:text-saffron-400 mb-4 animate-spin">
+            <RotateCcw className="w-5 h-5" />
+          </div>
+          <p className="text-sm font-semibold text-dharma-text mb-1">
+            नवीनतम संस्करण लोड हो रहा है...
+          </p>
+          <p className="text-xs text-dharma-muted">
+            Updating Dharma Granth assets, please wait...
+          </p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-dharma-bg flex items-center justify-center px-6 py-24">

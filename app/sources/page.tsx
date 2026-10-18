@@ -48,19 +48,23 @@ export default function SourcesPage() {
               <ScrollText className="h-4.5 w-4.5" />
             </span>
             <span className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
-              Source Transparency · स्रोत एवं पाठ-शुद्धि
+              Reference Editions & Digital Archive Provenance · स्रोत एवं पाठ-शुद्धि
             </span>
           </div>
 
           <h1 className="mt-2 font-serif text-3xl sm:text-4xl font-bold text-dharma-text">
-            Source Library & Text Transparency
+            Reference Editions & Digital Archive Provenance
           </h1>
           <p className="mt-1 font-devanagari text-xl text-dharma-muted">
-            प्रमाणिक स्रोत, संस्करण, टीकाकार एवं पाठभेद विवरण
+            प्रमाणिक संदर्भ, डिजिटल संग्रह, टीकाकार एवं पाठभेद विवरण
           </p>
 
           <p className="mt-4 max-w-3xl text-sm sm:text-base leading-relaxed text-dharma-muted">
-            Dharma Granth adheres to strict textual transparency. Every Sanskrit verse, transliteration, commentary, and translation is cited with its canonical edition, traditional lineage, and editorial provenance. No synthetic audio or unattributed translations are used.
+            Dharma Granth adheres to strict textual transparency. Canonical Sanskrit verses are imported from open digital archives (principally <code className="text-xs font-mono bg-dharma-bg px-1.5 py-0.5 rounded border border-dharma-border">sanskritdocuments.org</code> and the <code className="text-xs font-mono bg-dharma-bg px-1.5 py-0.5 rounded border border-dharma-border">DharmicData</code> collection on GitHub) based on traditional reference editions (Gita Press, Chaukhamba, BORI, Anandashram). Classical commentary sections present traditional sampradayic paraphrases, while AI-assisted draft study aids and translations are transparently flagged and undergoing human scholar verification. For complete disclosures on our ingestion pipeline and review status, see our full{' '}
+            <Link href="/methodology/" className="font-semibold text-saffron-700 dark:text-saffron-400 underline underline-offset-4 hover:text-saffron-800">
+              Methodology
+            </Link>
+            .
           </p>
 
           {/* Epistemic Tiers Grid */}
@@ -71,27 +75,27 @@ export default function SourcesPage() {
                 <span>Tier 1 · Canonical Sanskrit</span>
               </div>
               <p className="mt-2 text-dharma-text/90 leading-relaxed">
-                Critical editions from Gita Press, Anandashram, Adyar Library, and BORI. Unaltered original verses with IAST transliteration.
+                Unaltered canonical verses with IAST transliteration imported from verified digital archives referencing critical and traditional editions.
               </p>
             </div>
 
             <div className="rounded-2xl border border-stone-400/50 bg-stone-100/60 dark:border-stone-700 dark:bg-stone-900/30 p-4">
               <div className="flex items-center gap-1.5 font-bold uppercase tracking-wide text-stone-900 dark:text-stone-200">
                 <Layers className="h-4 w-4 text-stone-600 dark:text-stone-400" />
-                <span>Tier 2 · Classical Bhashyas</span>
+                <span>Tier 2 · Classical Paraphrases</span>
               </div>
               <p className="mt-2 text-dharma-text/90 leading-relaxed">
-                Multi-tradition commentaries (Advaita, Vishishtadvaita, Dvaita) presented side-by-side without declaring any single school as exclusive.
+                Traditional commentary summaries (Advaita, Vishishtadvaita, Dvaita) presented side-by-side as concise, non-sectarian study aids.
               </p>
             </div>
 
             <div className="rounded-2xl border border-sky-400/40 bg-sky-50/50 dark:border-sky-700 dark:bg-sky-950/20 p-4">
               <div className="flex items-center gap-1.5 font-bold uppercase tracking-wide text-sky-900 dark:text-sky-200">
                 <Scale className="h-4 w-4 text-sky-700 dark:text-sky-400" />
-                <span>Tier 3 · Modern Exegesis</span>
+                <span>Tier 3 · AI-Assisted Study Aids</span>
               </div>
               <p className="mt-2 text-dharma-text/90 leading-relaxed">
-                Study guides such as the Wisdom for Life pages. Their bilingual explanations, reflections and practices are AI-assisted drafts that have not been reviewed by a scholar, and each is paired with direct citations to the Tier 1 texts. Tier 1 and Tier 2 texts are shown as published in their critical editions, unaltered. Clearly demarcated so readers never mistake editorial commentary for scripture.
+                Modern pedagogical study guides and translations lacking open editions carry an explicit AI flag awaiting scholar peer review. Clearly demarcated from scripture.
               </p>
             </div>
           </div>

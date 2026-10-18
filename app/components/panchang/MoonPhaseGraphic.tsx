@@ -36,7 +36,7 @@ export function MoonPhaseGraphic({
 
   // Determine SVG path for the illuminated portion
   let illuminatedPath = '';
-  if (clampedIllum <= 2) {
+  if (clampedIllum === 0) {
     // New Moon: virtually dark disk
     illuminatedPath = '';
   } else if (clampedIllum >= 98) {

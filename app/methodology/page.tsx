@@ -24,7 +24,7 @@ export const metadata: Metadata = {
  */
 const SNAPSHOT = {
   date: '8 October 2026',
-  verses: '187,405',
+  verses: '1,87,392',
   ai: '72,471',
 };
 

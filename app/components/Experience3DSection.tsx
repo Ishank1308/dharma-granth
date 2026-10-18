@@ -57,11 +57,15 @@ export function Experience3DSection({ gitaCountLabel }: { gitaCountLabel: string
         void Promise.all([
           import('./motion/Realistic3DGranth'),
           import('./motion/SacredChakra3D'),
-        ]).then(([granth, chakra]) => {
-          if (cancelled) return;
-          setGranth(() => granth.Realistic3DGranth);
-          setChakra(() => chakra.SacredChakra3D);
-        });
+        ])
+          .then(([granth, chakra]) => {
+            if (cancelled) return;
+            setGranth(() => granth.Realistic3DGranth);
+            setChakra(() => chakra.SacredChakra3D);
+          })
+          .catch((err) => {
+            console.warn('[Experience3DSection] Optional 3D chunks failed to load:', err);
+          });
       },
       { rootMargin: '200px' },
     );

@@ -37,7 +37,7 @@ import { whatsappShareUrl } from '@/lib/whatsapp';
 import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import dynamic from 'next/dynamic';
 
-export type ContemplationTier = 'quick' | 'simple' | 'deep';
+export type ContemplationTier = 'quick' | 'simple' | 'deep' | 'traditional';
 
 // Loaded on demand (first click on Embed) so the dialog and its framer-motion layer stay out of the page's first-load JS.
 const EmbedVerseDialog = dynamic(
@@ -103,10 +103,22 @@ export function PedagogicalVerseCard({
   function handleTierSelect(newTier: ContemplationTier) {
     triggerTactileFeedback('light', 'softTap');
     setTier(newTier);
+    try {
+      localStorage.setItem('dharma.pedagogicalTier', newTier);
+    } catch {}
     onTierChange?.(newTier);
   }
 
-  // Check saved state from localStorage
+  // Check saved tier and saved state from localStorage
+  useEffect(() => {
+    try {
+      const savedTier = localStorage.getItem('dharma.pedagogicalTier') as ContemplationTier | null;
+      if (savedTier && ['quick', 'simple', 'deep', 'traditional'].includes(savedTier)) {
+        setTier(savedTier);
+      }
+    } catch {}
+  }, []);
+
   useEffect(() => {
     try {
       const raw = localStorage.getItem('dharma.bookmarkedVerses');
@@ -296,6 +308,22 @@ export function PedagogicalVerseCard({
             >
               <BookOpen className="h-3.5 w-3.5" />
               <span>📖 Deep</span>
+            </button>
+
+            <button
+              type="button"
+              role="tab"
+              aria-selected={tier === 'traditional'}
+              aria-controls={`${cardId}-deep-panel`}
+              onClick={() => handleTierSelect('traditional')}
+              className={`flex min-h-[44px] items-center gap-1.5 rounded-full px-3.5 py-1 text-xs font-bold transition ${
+                tier === 'traditional'
+                  ? 'bg-amber-900 text-amber-100 shadow dark:bg-amber-800'
+                  : 'text-dharma-muted hover:text-dharma-text'
+              }`}
+            >
+              <Quote className="h-3.5 w-3.5" />
+              <span>🏛️ Traditional</span>
             </button>
           </div>
         </div>
@@ -704,9 +732,9 @@ export function PedagogicalVerseCard({
           )}
 
           {/* ================================================================= */}
-          {/* TIER 3: DEEP MODE (Traditional Commentaries + Source Transparency) */}
+          {/* TIER 3: DEEP & TRADITIONAL MODE (Traditional Commentaries + Source Transparency) */}
           {/* ================================================================= */}
-          {tier === 'deep' && (
+          {(tier === 'deep' || tier === 'traditional') && (
             <div id={`${cardId}-deep-panel`} className="space-y-6">
               {/* Header */}
               <div className="flex items-center justify-between border-b border-dharma-border pb-3">

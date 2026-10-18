@@ -26,7 +26,26 @@ export function VerseCompletion({
 }) {
   const [saved, setSaved] = useState(false);
   const [note, setNote] = useState('');
-  useEffect(() => setSaved(isBookmarked(readerRef, verse)), [readerRef, verse]);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  useEffect(() => {
+    setSaved(isBookmarked(readerRef, verse));
+    // Reveal completion banner only after client-side reading interaction
+    const onInteract = () => setHasInteracted(true);
+    window.addEventListener('scroll', onInteract, { once: true, passive: true });
+    window.addEventListener('keydown', onInteract, { once: true });
+    window.addEventListener('click', onInteract, { once: true });
+    const timer = setTimeout(() => setHasInteracted(true), 4000);
+
+    return () => {
+      window.removeEventListener('scroll', onInteract);
+      window.removeEventListener('keydown', onInteract);
+      window.removeEventListener('click', onInteract);
+      clearTimeout(timer);
+    };
+  }, [readerRef, verse]);
+
+  if (!hasInteracted) return null;
 
   const save = () => {
     const state = toggleBookmark(readerRef, verse);

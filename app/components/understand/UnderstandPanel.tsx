@@ -23,7 +23,7 @@ import { ShareCardButton } from './ShareCard';
  * itself stays on screen above. The choice is remembered on this device (Reader settings → Reading mode).
  */
 
-type Mode = 'quick' | 'simple' | 'deep';
+type Mode = 'quick' | 'simple' | 'deep' | 'traditional';
 
 
 function Bilingual({ en, hi }: { en?: string; hi?: string }) {
@@ -168,7 +168,7 @@ export function UnderstandPanel({
           </>
         )}
 
-        {mode === 'deep' && (
+        {(mode === 'deep' || mode === 'traditional') && (
           <>
             {extras?.contextTimeline && (
               <ContextTimeline

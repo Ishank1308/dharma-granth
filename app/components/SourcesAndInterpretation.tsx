@@ -68,9 +68,6 @@ export function SourcesAndInterpretation({
     setTimeout(() => document.getElementById(`src-tab-${ids[n]}`)?.focus(), 0);
   };
 
-  // Accordion open states on mobile
-  const [openAccordion, setOpenAccordion] = useState<string | null>('editions');
-
   // Report correction modal state
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [reportCategory, setReportCategory] = useState<'typo' | 'numbering' | 'sandhi' | 'attribution'>('typo');
@@ -83,11 +80,6 @@ export function SourcesAndInterpretation({
       : scriptureTitle;
 
   const issueHref = `${ISSUES_REPO}/issues/new?title=${encodeURIComponent(`Text issue: ${identifier} — ${reportCategory}`)}&body=${encodeURIComponent(`**Reference:** ${identifier}\n**Type:** ${reportCategory}\n\n**What is wrong, and what should it be?**\n${reportDetails.trim() || '(please describe)'}`)}`;
-
-  function toggleAccordion(key: string) {
-    triggerHaptic('light');
-    setOpenAccordion(openAccordion === key ? null : key);
-  }
 
   const labelKeys: ContentLabelKey[] = [
     'mula',
@@ -173,10 +165,10 @@ export function SourcesAndInterpretation({
         </div>
       </div>
 
-      {/* ── 2. Desktop Tabbed Panel ── */}
-      <div className="hidden md:block pt-2">
+      {/* ── 2. Unified Responsive Tabbed Panel ── */}
+      <div className="pt-2">
         {/* Navigation Tabs */}
-        <div className="flex border-b border-dharma-border gap-2" role="tablist" aria-label="Sources and interpretation">
+        <div className="flex border-b border-dharma-border gap-1 sm:gap-2 overflow-x-auto pb-1 scrollbar-none" role="tablist" aria-label="Sources and interpretation">
           <button
             type="button"
             role="tab"
@@ -238,7 +230,7 @@ export function SourcesAndInterpretation({
         <div role="tabpanel" id="src-panel" aria-labelledby={`src-tab-${activeTab}`}>
         {/* Tab Content 1: Editions */}
         {activeTab === 'editions' && (
-          <div className="pt-4 grid grid-cols-2 gap-4 text-xs">
+          <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs">
             <div className="p-3.5 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 space-y-1">
               <span className="font-semibold text-dharma-muted">पहचानकर्ता · Identifier:</span>
               <p className="text-sm font-bold text-dharma-text">{identifier}</p>
@@ -280,7 +272,7 @@ export function SourcesAndInterpretation({
 
         {/* Tab Content 2: Translators & Acharyas */}
         {activeTab === 'commentary' && (
-          <div className="pt-4 grid grid-cols-2 gap-4 text-xs">
+          <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs">
             <div className="p-3.5 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 space-y-1">
               <span className="font-semibold text-dharma-muted">अनुवादक · Translators:</span>
               <p className="text-sm font-bold text-dharma-text">{meta.primaryTranslator}</p>
@@ -356,123 +348,7 @@ export function SourcesAndInterpretation({
         </div>
       </div>
 
-      {/* ── 3. Mobile Accessible Accordions (One-handed usability) ── */}
-      <div className="block md:hidden space-y-2 text-xs">
-        {/* Accordion 1: Editions */}
-        <div className="rounded-xl border border-dharma-border overflow-hidden">
-          <button
-            type="button"
-            onClick={() => toggleAccordion('editions')}
-            aria-expanded={openAccordion === 'editions'}
-            className="w-full flex items-center justify-between p-3.5 min-h-[44px] bg-dharma-panel-muted/70 text-left font-bold text-dharma-text"
-          >
-            <span className="flex items-center gap-2">
-              <ScrollText className="w-4 h-4 text-saffron-600" />
-              <span>मूल पाठ एवं संस्करण · Edition Details</span>
-            </span>
-            {openAccordion === 'editions' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-          </button>
-          {openAccordion === 'editions' && (
-            <div className="p-3.5 space-y-3 border-t border-dharma-border bg-dharma-card">
-              <div>
-                <span className="text-dharma-muted block text-[11px]">पहचानकर्ता:</span>
-                <span className="font-bold text-dharma-text">{identifier}</span>
-              </div>
-              <div>
-                <span className="text-dharma-muted block text-[11px]">संस्कृत संस्करण:</span>
-                <span className="font-bold text-dharma-text">{editionOverride || meta.sanskritEdition}</span>
-                <p className="text-dharma-muted text-[11px] mt-0.5">{meta.sanskritEditionDetails}</p>
-              </div>
-              <div>
-                <span className="text-dharma-muted block text-[11px]">पुरालेखागार / स्रोत:</span>
-                <span className="font-bold text-dharma-text">{meta.publisherArchive}</span>
-              </div>
-              <div>
-                <span className="text-dharma-muted block text-[11px]">गणना पद्धति:</span>
-                <p className="text-dharma-text text-[11px]">{meta.numberingSystemNote}</p>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Accordion 2: Translators & Acharyas */}
-        <div className="rounded-xl border border-dharma-border overflow-hidden">
-          <button
-            type="button"
-            onClick={() => toggleAccordion('commentary')}
-            aria-expanded={openAccordion === 'commentary'}
-            className="w-full flex items-center justify-between p-3.5 min-h-[44px] bg-dharma-panel-muted/70 text-left font-bold text-dharma-text"
-          >
-            <span className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-saffron-600" />
-              <span>अनुवादक एवं भाष्यकार · Acharyas</span>
-            </span>
-            {openAccordion === 'commentary' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-          </button>
-          {openAccordion === 'commentary' && (
-            <div className="p-3.5 space-y-3 border-t border-dharma-border bg-dharma-card">
-              <div>
-                <span className="text-dharma-muted block text-[11px]">अनुवादक:</span>
-                <span className="font-bold text-dharma-text">{meta.primaryTranslator}</span>
-              </div>
-              <div>
-                <span className="text-dharma-muted block text-[11px]">पारंपरिक भाष्यकार:</span>
-                <span className="font-bold text-dharma-text">{meta.traditionalCommentaryAuthor}</span>
-              </div>
-              <div>
-                <span className="text-dharma-muted block text-[11px]">संपादकीय समीक्षक:</span>
-                <span className="text-dharma-text">{meta.editorialReviewer}</span>
-              </div>
-              <div>
-                <span className="text-dharma-muted block text-[11px]">समीक्षा तिथि:</span>
-                <span className="text-dharma-text">{meta.dateReviewed}</span>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Accordion 3: Variants & History */}
-        <div className="rounded-xl border border-dharma-border overflow-hidden">
-          <button
-            type="button"
-            onClick={() => toggleAccordion('corrections')}
-            aria-expanded={openAccordion === 'corrections'}
-            className="w-full flex items-center justify-between p-3.5 min-h-[44px] bg-dharma-panel-muted/70 text-left font-bold text-dharma-text"
-          >
-            <span className="flex items-center gap-2">
-              <History className="w-4 h-4 text-saffron-600" />
-              <span>पाठ-भेद एवं संशोधन · Variants & History</span>
-            </span>
-            {openAccordion === 'corrections' ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-          </button>
-          {openAccordion === 'corrections' && (
-            <div className="p-3.5 space-y-3 border-t border-dharma-border bg-dharma-card">
-              <div className="p-2.5 rounded-lg bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/50">
-                <span className="font-bold text-amber-900 dark:text-amber-200 block text-[11px]">पाठ-भेद टिप्पणी:</span>
-                <p className="text-dharma-text text-[11px] mt-0.5">{meta.alternativeReadingNote}</p>
-              </div>
-
-              <div className="space-y-2">
-                <span className="font-bold text-dharma-muted text-[11px] block">संशोधन इतिहास:</span>
-                {meta.correctionHistory.length === 0 && (
-                  <p className="text-dharma-muted text-[11px]">No corrections are logged here yet. Reported errors are tracked on GitHub.</p>
-                )}
-                {meta.correctionHistory.map((entry, idx) => (
-                  <div key={idx} className="p-2 rounded border border-dharma-border/60 text-[11px]">
-                    <div className="flex items-center justify-between text-dharma-muted">
-                      <span className="font-bold">{entry.version}</span>
-                      <span>{entry.date}</span>
-                    </div>
-                    <p className="text-dharma-text font-devanagari mt-0.5">{entry.noteHi}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* ── 4. Report Correction Accessible Modal ── */}
+      {/* ── 3. Report Correction Accessible Modal ── */}
       {reportModalOpen && (
         <div
           role="dialog"

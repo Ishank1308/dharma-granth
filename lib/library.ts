@@ -316,7 +316,8 @@ const numberFormat = new Intl.NumberFormat('en-IN');
 
 /** `plural(1, 'chapter')` → "1 chapter"; `plural(20, 'verse')` → "20 verses". */
 export function plural(count: number, noun: string, pluralNoun = `${noun}s`): string {
-  return `${numberFormat.format(count)} ${pluralRules.select(count) === 'one' ? noun : pluralNoun}`;
+  const isSingular = count === 1 || pluralRules.select(count) === 'one';
+  return `${numberFormat.format(count)} ${isSingular ? noun : pluralNoun}`;
 }
 
 export const formatNumber = (n: number): string => numberFormat.format(n);
@@ -328,8 +329,8 @@ export function countLabel(item: ScriptureMeta): { chapters: string; verses: str
   };
 }
 
-/** First sentence(s) of a description, capped, for the two-line card summary. */
-export function summaryOf(description: string, max = 150): string {
+/** First sentence(s) of a description, capped, for the three-line card summary. */
+export function summaryOf(description: string, max = 220): string {
   const clean = description.replace(/\s+/g, ' ').trim();
   if (clean.length <= max) return clean;
   const firstSentence = clean.match(/^.{40,}?[.!?](?=\s|$)/);

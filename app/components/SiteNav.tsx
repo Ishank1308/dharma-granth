@@ -1049,7 +1049,7 @@ export function SiteNav({
       {/* Strictly limited to the 5 requested items: Home, Search, Library, Sadhana, Saved */}
       <nav
         aria-label="Mobile quick navigation"
-        className="fixed bottom-0 inset-x-0 z-30 md:hidden border-t border-dharma-border/80 bg-dharma-card/95 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.06)]"
+        className="fixed bottom-0 inset-x-0 z-30 lg:hidden border-t border-dharma-border/80 bg-dharma-card/95 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.06)]"
         style={{
           paddingBottom: 'env(safe-area-inset-bottom, 0px)',
         }}
@@ -1174,3 +1174,5 @@ export function SiteNav({
     </>
   );
 }
+
+export { SiteNav as GlobalHeader };

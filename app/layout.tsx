@@ -229,7 +229,7 @@ export default function RootLayout({
             ashtavakraChapters={publishedTotals().chapters}
             ashtavakraVerses={publishedTotals().verses}
           />
-          <div id="main-content" tabIndex={-1} className="outline-none pb-16 md:pb-0">
+          <div id="main-content" tabIndex={-1} className="outline-none pb-16 lg:pb-0">
             <ErrorBoundary name="Main Content">
               <PageTransition>{children}</PageTransition>
             </ErrorBoundary>

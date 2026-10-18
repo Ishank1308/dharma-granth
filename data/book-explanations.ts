@@ -329,6 +329,126 @@ export const bookExplanations: Record<string, BookExplanation> = {
       hi: "इसे मन, मुक्ति और चिंतनपूर्ण कथाओं की गहराई को समझने के लिए पढ़ें।",
     },
   },
+  mandukya: {
+    overview: {
+      en: "The Mandukya Upanishad examines the sacred syllable Om (AUM) and the four states of consciousness: waking (Vaishvanara), dreaming (Taijasa), deep sleep (Prajna), and the transcendent Self (Turiya).",
+      hi: "माण्डूक्य उपनिषद् ओंकार (ॐ) की चार मात्राओं और चेतना की चार अवस्थाओं—जाग्रत, स्वप्न, सुषुप्ति और तुरीय (परम शुद्ध चेतना)—का अत्यंत संक्षिप्त किंतु गहन निरूपण करता है।",
+    },
+    focus: {
+      en: "Read it for meditation on Om and the direct inquiry into consciousness beyond waking perception.",
+      hi: "इसे ओंकार की साधना और जाग्रत अवस्था से परे आत्मचेतना के अनुभव के लिए पढ़ें।",
+    },
+  },
+  kaushitaki: {
+    overview: {
+      en: "The Kaushitaki Upanishad explores the journey of the soul after death, the identity of Prana and Prajna (life and consciousness) with Brahman, and the deeper meaning of sacrifice.",
+      hi: "कौषीतकी उपनिषद् मृत्यु के उपरांत जीवात्मा की गति, प्राण और प्रज्ञा की एकता तथा ब्रह्म के स्वरूप का विवेचन प्रस्तुत करता है।",
+    },
+    focus: {
+      en: "Read it for early Vedantic reflections on life-force, the path of the gods (Devayana), and inner awareness.",
+      hi: "इसे प्राणशक्ति, मरणोपरांत यात्रा और चैतन्य की एकता को समझने के लिए पढ़ें।",
+    },
+  },
+  maitri: {
+    overview: {
+      en: "The Maitri Upanishad addresses existential suffering, the transitory nature of worldly life, and the six-limbed yoga as the method for realizing the supreme radiant Self.",
+      hi: "मैत्री उपनिषद् संसार के नश्वर स्वरूप और जीवन के दुःखों का विश्लेषण करते हुए षडंग योग और आत्मज्ञान को परम शरण बताता है।",
+    },
+    focus: {
+      en: "Read it for the synthesis of Upanishadic metaphysics, samkhya cosmology, and yogic meditation.",
+      hi: "इसे उपनिषदिक चिंतन और योग साधना के सामंजस्य को समझने के लिए पढ़ें।",
+    },
+  },
+  mahanarayana: {
+    overview: {
+      en: "The Mahanarayana Upanishad offers sublime Vedic prayers and hymns, celebrating Narayana as the cosmic reality, the light shining in the lotus of the heart, and renunciation (nyasa) as the highest virtue.",
+      hi: "महानारायण उपनिषद् परम सत्य नारायण की स्तुति, हृदय-गुहा में स्थित परमात्मा के ध्यान और संन्यास के महत्त्व का प्रतिपादन करता है।",
+    },
+    focus: {
+      en: "Read it for devotional contemplation, universal peace chants, and the spiritual crown of the Taittiriya tradition.",
+      hi: "इसे भक्तिपरक ध्यान, सार्वभौमिक प्रार्थनाओं और संन्यास-धर्म के लिए पढ़ें।",
+    },
+  },
+  mahaupanishad: {
+    overview: {
+      en: "The Maha Upanishad is famed for the universal proclamation 'Vasudhaiva Kutumbakam' (the world is one family) and its profound discourse between Shukadeva and Janaka on living liberated in this world (Jivanmukti).",
+      hi: "महा उपनिषद् 'वसुधैव कुटुम्बकम्' (संपूर्ण पृथ्वी एक परिवार है) के अमर संदेश और शुकदेव-जनक संवाद द्वारा जीवनमुक्ति की शांत, अनासक्त स्थिति का प्रतिपादन करता है।",
+    },
+    focus: {
+      en: "Read it for the vision of universal brotherhood, mental freedom, and peaceful detachment from anxieties.",
+      hi: "इसे विश्वबंधुत्व, मन की समता और जीवनमुक्ति की दृष्टि समझने के लिए पढ़ें।",
+    },
+  },
+  kaivalya: {
+    overview: {
+      en: "The Kaivalya Upanishad outlines the path to absolute spiritual freedom (Kaivalya) through faith, devotion, and meditation on the non-dual Shiva-Brahman seated within the cave of the heart.",
+      hi: "कैवल्य उपनिषद् श्रद्धा, भक्ति, ध्यान और आत्म-साक्षात्कार द्वारा परम कैवल्य (मोक्ष) की प्राप्ति का सरल और स्पष्ट मार्ग दिखाता है।",
+    },
+    focus: {
+      en: "Read it for direct contemplation on the inner witness (Sakshi) and liberation from the cycle of bondage.",
+      hi: "इसे ध्यान, वैराग्य और साक्षी चेतना के साक्षात्कार के साधन के रूप में पढ़ें।",
+    },
+  },
+  amritabindu: {
+    overview: {
+      en: "The Amritabindu Upanishad reveals that the mind is the sole cause of both bondage and liberation. By purifying and dissolving the wandering mind in the heart, one attains immortal Brahman.",
+      hi: "अमृतबिन्दु उपनिषद् सिखाता है कि मन ही मनुष्य के बंधन और मोक्ष का कारण है। मन के निग्रह और शुद्धि से अमर ब्रह्म की अनुभूति होती है।",
+    },
+    focus: {
+      en: "Read it for psychological clarity, mastery over thoughts, and the essence of non-dual realization.",
+      hi: "इसे मानसिक शुद्धि, मन के अनुशासन और अद्वैत ज्ञान के सार को समझने के लिए पढ़ें।",
+    },
+  },
+  tejobindu: {
+    overview: {
+      en: "The Tejobindu Upanishad is an advanced text of radical non-duality and fifteen-limbed yoga, guiding the seeker into the radiant point of pure consciousness (Tejobindu).",
+      hi: "तेजोबिन्दु उपनिषद् पंद्रह अंगों वाले गहन योग और अखंड अद्वैत ज्ञान द्वारा परम तेजोमय आत्मस्वरूप के साक्षात्कार का मार्ग प्रशस्त करता है।",
+    },
+    focus: {
+      en: "Read it for fearless non-dual inquiry and meditation upon the luminous nature of pure awareness.",
+      hi: "इसे परम तेजोमय चैतन्य के ध्यान और अद्वैत वेदांत के गंभीर चिंतन के लिए पढ़ें।",
+    },
+  },
+  jabala: {
+    overview: {
+      en: "The Jabala Upanishad is a classical text on renunciation (Sannyasa) and sacred geography, explaining that the true Varanasi (Avimukta) is the meeting point of the eyebrows in one's own awareness.",
+      hi: "जाबाल उपनिषद् काशी (अविमुक्त क्षेत्र) की आंतरिक महिमा, संन्यास आश्रम और भीतर स्थित शाश्वत तीर्थ के दर्शन का उपदेश देता है।",
+    },
+    focus: {
+      en: "Read it to understand ascetic detachment, inner pilgrimage, and the timeless call of renunciation.",
+      hi: "इसे संन्यास के आदर्श और अंतर-तीर्थ की पवित्रता को समझने के लिए पढ़ें।",
+    },
+  },
+  niralamba: {
+    overview: {
+      en: "The Niralamba Upanishad poses essential spiritual questions—defining Brahman, Ishvara, Jiva, Prakriti, Samsara, and Moksha with concise, rigorous clarity.",
+      hi: "निरालम्ब उपनिषद् ब्रह्म, ईश्वर, जीव, प्रकृति, संसार और मोक्ष जैसी मूलभूत आध्यात्मिक संकल्पनाओं की सीधी और स्पष्ट परिभाषाएं देता है।",
+    },
+    focus: {
+      en: "Read it as a foundational philosophical dictionary of Hindu spiritual terminology.",
+      hi: "इसे भारतीय दर्शन के मूलभूत सिद्धांतों को सरलता से समझने के लिए पढ़ें।",
+    },
+  },
+  muktika: {
+    overview: {
+      en: "The Muktika Upanishad contains Lord Rama's teaching to Hanuman regarding the canon of the 108 Upanishads, the four stages of Mukti, and the power of self-knowledge.",
+      hi: "मुक्तिका उपनिषद् श्रीराम द्वारा हनुमान जी को दिए गए उपदेश में १०८ उपनिषदों की प्रामाणिक सूची और मोक्ष के स्वरूप का वर्णन करता है।",
+    },
+    focus: {
+      en: "Read it for the traditional canon of Upanishadic literature and the direct path to liberation.",
+      hi: "इसे १०८ उपनिषदों की पारंपरिक सूची और आत्मज्ञान से मुक्ति का मार्ग समझने के लिए पढ़ें।",
+    },
+  },
+  naradapuran: {
+    overview: {
+      en: "The Narada Purana is one of the eighteen Mahapuranas, narrated by sage Narada. It celebrates the nine forms of devotion (Navavidha Bhakti), sacred singing (nama-sankirtana), and the Gandharva Veda.",
+      hi: "नारदपुराण १८ महापुराणों में से एक है, जिसमें देवर्षि नारद द्वारा नवविधा भक्ति, नाम-संकीर्तन, गंधर्व वेद (पवित्र संगीत) और धर्ममय जीवन का विस्तार से प्रतिपादन किया गया है।",
+    },
+    focus: {
+      en: "Read it for the devotional path of divine love, sacred music, and the spiritual sanctification of daily life.",
+      hi: "इसे भक्ति-योग, संकीर्तन और भगवन्नाम के प्रभाव को समझने के लिए पढ़ें।",
+    },
+  },
 };
 
 export function getBookExplanation(id: string): BookExplanation | undefined {

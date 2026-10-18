@@ -639,8 +639,9 @@ export function TopicDetailClient({
                   <tr key={i} className="text-dharma-text">
                     <td className="py-3 pr-4 font-semibold">{src.textName}</td>
                     <td className="py-3 px-4">
-                      <span className="block">{src.citation}</span>{' '}
-                      <span className="block text-xs text-dharma-muted">§ {src.section}</span>
+                      <span className="font-medium text-dharma-text">
+                        {src.section ? `${src.section} (${src.citation})` : src.citation}
+                      </span>
                     </td>
                   </tr>
                 ))}
@@ -654,16 +655,21 @@ export function TopicDetailClient({
               const loc = libraryLocation(v);
               const facts = libraryFacts[v.scriptureId];
               return (
-                <li key={v.id}>
-                  <Link href={wisdomVerseHref(v)} className="inline-flex min-h-[44px] items-center text-sm font-semibold text-saffron-800 underline underline-offset-4 dark:text-saffron-300">
-                    {v.referenceDisplay} · library ch. {loc.chapter}, v. {loc.verse}
-                  </Link>{' '}
-                  {facts?.host && (
-                    <span className="block text-xs text-dharma-muted">
-                      Sanskrit from {facts.host}
-                      {facts.fetched ? `, fetched ${facts.fetched.slice(0, 10)}` : ''}
-                    </span>
-                  )}
+                <li key={v.id} className="py-1">
+                  <div className="flex flex-wrap items-baseline gap-x-2">
+                    <Link
+                      href={wisdomVerseHref(v)}
+                      className="inline-flex min-h-[36px] items-center text-sm font-semibold text-saffron-800 underline underline-offset-4 hover:text-saffron-900 dark:text-saffron-300 dark:hover:text-saffron-200"
+                    >
+                      {v.referenceDisplay} · library ch. {loc.chapter}, v. {loc.verse}
+                    </Link>
+                    {facts?.host && (
+                      <span className="text-xs text-dharma-muted">
+                        · Sanskrit from {facts.host}
+                        {facts.fetched ? ` (fetched ${facts.fetched.slice(0, 10)})` : ''}
+                      </span>
+                    )}
+                  </div>
                 </li>
               );
             })}

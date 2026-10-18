@@ -2,6 +2,7 @@
 
 import React, { Component, type ErrorInfo, type ReactNode } from 'react';
 import { AlertCircle, RotateCcw } from 'lucide-react';
+import { canAttemptChunkReload, isChunkLoadError, reloadOnceWithCacheBust } from '@/lib/error-recovery';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -31,9 +32,18 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       error,
       errorInfo.componentStack,
     );
+    if (isChunkLoadError(error) && canAttemptChunkReload()) {
+      reloadOnceWithCacheBust();
+    }
   }
 
   handleReset = () => {
+    if (isChunkLoadError(this.state.error)) {
+      if (!reloadOnceWithCacheBust()) {
+        window.location.reload();
+      }
+      return;
+    }
     this.setState({ hasError: false, error: null });
     this.props.onReset?.();
   };
@@ -50,6 +60,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
           aria-live="assertive"
           className="my-4 rounded-2xl border border-amber-300/60 bg-amber-50/50 p-6 text-center text-dharma-text shadow-sm dark:border-amber-800/60 dark:bg-amber-950/20"
         >
+          <meta name="robots" content="noindex, nofollow" />
           <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/60 dark:text-amber-300">
             <AlertCircle className="h-5 w-5" aria-hidden="true" />
           </div>
