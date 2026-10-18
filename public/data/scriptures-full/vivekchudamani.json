@@ -8,7 +8,7 @@
     "license": "Sanskrit mūla — public domain. Attributed to Adi Shankaracharya.",
     "fetchedAt": "2026-09-30T10:49:24.227Z"
   },
-  "totalVerses": 577,
+  "totalVerses": 580,
   "totalChapters": 1,
   "chapters": [
     {
@@ -2116,12 +2116,27 @@
           "hindiSource": "ai"
         },
         {
-          "number": 242,
-          "sanskrit": "पूर्णं महन्महः तत्त्वम्पदाभ्यामभिधीयमानयोः ब्रह्मात्मनोः शोधितयोर्यदीत्थम् । शोधितयोर्यदित्थम् श्रुत्या तयोस्तत्त्वमसीति सम्यग् एकत्वमेव प्रतिपाद्यते मुहुः ॥ २४१- एक्यं तयोर्लक्षितयोर्न वाच्ययोः निगद्यतेऽन्योन्यविरुद्धधर्मिणोः । खद्योतभान्वोरिव राजभृत्ययोः कूपाम्बुराश्योः परमाणुमेर्वोः",
-          "transliteration": "pūrṇaṃ mahanmahaḥ tattvampadābhyāmabhidhīyamānayoḥ brahmātmanoḥ śodhitayoryadīttham | śodhitayoryadittham śrutyā tayostattvamasīti samyag ekatvameva pratipādyate muhuḥ || 241- ekyaṃ tayorlakṣitayorna vācyayoḥ nigadyate'nyonyaviruddhadharmiṇoḥ | khadyotabhānvoriva rājabhṛtyayoḥ kūpāmburāśyoḥ paramāṇumervoḥ",
-          "translation": "When the meanings of the words \"that\" and \"thou\" are thus purified, Brahman and the Self, the scripture, by \"That thou art,\" repeatedly teaches their oneness rightly. Their oneness is expressed through the implied, not the literal, meanings of the two whose apparent attributes are contradictory — like a firefly and the sun, a king and his servant, a well and the ocean, an atom and Mount Meru.",
+          "number": 241,
+          "sanskrit": "तत्त्वम्पदाभ्यामभिधीयमानयोः ब्रह्मात्मनोः शोधितयोर्यदीत्थम् । श्रुत्या तयोस्तत्त्वमसीति सम्यग् एकत्वमेव प्रतिपाद्यते मुहुः",
+          "transliteration": "tattvampadābhyāmabhidhīyamānayoḥ brahmātmanoḥ śodhitayoryadīttham | śrutyā tayostattvamasīti samyag ekatvameva pratipādyate muhuḥ",
+          "translation": "When the meanings of the words \"that\" and \"thou\" are thus purified, Brahman and the Self, the scripture, by \"That thou art,\" repeatedly teaches their oneness rightly.",
           "translationSource": "ai",
-          "hindi": "‘तत्’ और ‘त्वम्’ पदों से कहे गए ब्रह्म और आत्मा के अर्थ जब इस प्रकार शोधित हो जाते हैं, तब ‘तत्त्वमसि’ श्रुति उनकी एकता को ही भली-भाँति बार-बार प्रतिपादित करती है। परस्पर-विरोधी धर्मों वाले उन दोनों की एकता वाच्यार्थ से नहीं, लक्ष्यार्थ से कही जाती है — जैसे जुगनू और सूर्य, राजा और सेवक, कुएँ और समुद्र, परमाणु और मेरु की।",
+          "hindi": "‘तत्’ और ‘त्वम्’ पदों से कहे गए ब्रह्म और आत्मा के अर्थ जब इस प्रकार शोधित हो जाते हैं, तब ‘तत्त्वमसि’ श्रुति उनकी एकता को ही भली-भाँति बार-बार प्रतिपादित करती है।",
+          "hindiSource": "ai",
+          "commentary": "",
+          "wordMeaning": "",
+          "science": "",
+          "explanation": "",
+          "meaning": "",
+          "lifeLesson": ""
+        },
+        {
+          "number": 242,
+          "sanskrit": "एक्यं तयोर्लक्षितयोर्न वाच्ययोः निगद्यतेऽन्योन्यविरुद्धधर्मिणोः । खद्योतभान्वोरिव राजभृत्ययोः कूपाम्बुराश्योः परमाणुमेर्वोः",
+          "transliteration": "ekyaṃ tayorlakṣitayorna vācyayoḥ nigadyate'nyonyaviruddhadharmiṇoḥ | khadyotabhānvoriva rājabhṛtyayoḥ kūpāmburāśyoḥ paramāṇumervoḥ",
+          "translation": "Their oneness is expressed through the implied, not the literal, meanings of the two whose apparent attributes are contradictory — like a firefly and the sun, a king and his servant, a well and the ocean, an atom and Mount Meru.",
+          "translationSource": "ai",
+          "hindi": "परस्पर-विरोधी धर्मों वाले उन दोनों की एकता वाच्यार्थ से नहीं, लक्ष्यार्थ से कही जाती है — जैसे जुगनू और सूर्य, राजा और सेवक, कुएँ और समुद्र, परमाणु और मेरु की।",
           "hindiSource": "ai"
         },
         {
@@ -2376,12 +2391,27 @@
           "hindiSource": "ai"
         },
         {
-          "number": 272,
-          "sanskrit": "लोकवासनया जन्तोः शास्त्रवासनयापि च । देहवासनया ज्ञानं यथावन्नैव जायते ॥ २७१ संसारकारागृहमोक्षमिच्छोरयोमयं पादनिबन्धशृङ्खलम् । निबद्ध वदन्ति तज्ज्ञाः पटु वासनात्रयं योऽस्माद्विमुक्तः समुपैति मुक्तिम्",
-          "transliteration": "lokavāsanayā jantoḥ śāstravāsanayāpi ca | dehavāsanayā jñānaṃ yathāvannaiva jāyate || 271 saṃsārakārāgṛhamokṣamicchorayomayaṃ pādanibandhaśṛṅkhalam | nibaddha vadanti tajjñāḥ paṭu vāsanātrayaṃ yo'smādvimuktaḥ samupaiti muktim",
-          "translation": "Through the habit-impressions of the world, of the scriptures and of the body, knowledge does not arise in a creature as it should. The knowers say that a strong triple habit-impression is the iron chain fettering the feet of one who wishes release from the prison of worldly existence; he who is freed from it attains liberation.",
+          "number": 271,
+          "sanskrit": "लोकवासनया जन्तोः शास्त्रवासनयापि च । देहवासनया ज्ञानं यथावन्नैव जायते",
+          "transliteration": "lokavāsanayā jantoḥ śāstravāsanayāpi ca | dehavāsanayā jñānaṃ yathāvannaiva jāyate",
+          "translation": "Through the habit-impressions of the world, of the scriptures and of the body, knowledge does not arise in a creature as it should.",
           "translationSource": "ai",
-          "hindi": "लोक-वासना, शास्त्र-वासना और देह-वासना से प्राणी में यथार्थ ज्ञान उत्पन्न नहीं होता। संसार-कारागार से मुक्ति चाहने वाले के पैरों में बँधी लोहे की साँकल को ज्ञानी लोग इस सुदृढ़ त्रिविध वासना को कहते हैं; जो इससे मुक्त हो जाता है, वह मुक्ति को प्राप्त होता है।",
+          "hindi": "लोक-वासना, शास्त्र-वासना और देह-वासना से प्राणी में यथार्थ ज्ञान उत्पन्न नहीं होता।",
+          "hindiSource": "ai",
+          "commentary": "",
+          "wordMeaning": "",
+          "science": "",
+          "explanation": "",
+          "meaning": "",
+          "lifeLesson": ""
+        },
+        {
+          "number": 272,
+          "sanskrit": "संसारकारागृहमोक्षमिच्छोरयोमयं पादनिबन्धशृङ्खलम् । निबद्ध वदन्ति तज्ज्ञाः पटु वासनात्रयं योऽस्माद्विमुक्तः समुपैति मुक्तिम्",
+          "transliteration": "saṃsārakārāgṛhamokṣamicchorayomayaṃ pādanibandhaśṛṅkhalam | nibaddha vadanti tajjñāḥ paṭu vāsanātrayaṃ yo'smādvimuktaḥ samupaiti muktim",
+          "translation": "The knowers say that a strong triple habit-impression is the iron chain fettering the feet of one who wishes release from the prison of worldly existence; he who is freed from it attains liberation.",
+          "translationSource": "ai",
+          "hindi": "संसार-कारागार से मुक्ति चाहने वाले के पैरों में बँधी लोहे की साँकल को ज्ञानी लोग इस सुदृढ़ त्रिविध वासना को कहते हैं; जो इससे मुक्त हो जाता है, वह मुक्ति को प्राप्त होता है।",
           "hindiSource": "ai"
         },
         {
@@ -3625,12 +3655,27 @@
           "hindiSource": "ai"
         },
         {
-          "number": 412,
-          "sanskrit": "समाहितान्तःकरणः स्वरूपे विलोकयात्मानमखण्डवैभवम् । विच्छिन्द्धि बन्धं भवगन्धगन्धितं यत्नेन पुंस्त्वं सफलीकुरुष्व ॥ ४११- सर्वोपाधिविनिर्मुक्तं सच्चिदानन्दमद्वयम् । भावयात्मानमात्मस्थं न भूयः कल्पसेऽध्वने",
-          "transliteration": "samāhitāntaḥkaraṇaḥ svarūpe vilokayātmānamakhaṇḍavaibhavam | vicchinddhi bandhaṃ bhavagandhagandhitaṃ yatnena puṃstvaṃ saphalīkuruṣva || 411- sarvopādhivinirmuktaṃ saccidānandamadvayam | bhāvayātmānamātmasthaṃ na bhūyaḥ kalpase'dhvane",
-          "translation": "With a collected mind, behold the Self of undivided glory in its own nature; with effort cut the bond that smells of worldly existence, and make your manhood fruitful. (Contemplate the Self, free of all adjuncts, being-consciousness-bliss, non-dual, abiding in the Self; you will not have to go on the road again.)",
+          "number": 411,
+          "sanskrit": "समाहितान्तःकरणः स्वरूपे विलोकयात्मानमखण्डवैभवम् । विच्छिन्द्धि बन्धं भवगन्धगन्धितं यत्नेन पुंस्त्वं सफलीकुरुष्व",
+          "transliteration": "samāhitāntaḥkaraṇaḥ svarūpe vilokayātmānamakhaṇḍavaibhavam | vicchinddhi bandhaṃ bhavagandhagandhitaṃ yatnena puṃstvaṃ saphalīkuruṣva",
+          "translation": "With a collected mind, behold the Self of undivided glory in its own nature; with effort cut the bond that smells of worldly existence, and make your manhood fruitful.",
           "translationSource": "ai",
-          "hindi": "समाहित अन्तःकरण से अपने स्वरूप में अखण्ड वैभव वाले आत्मा को देखो; भव की गन्ध से गन्धित बन्धन को प्रयत्न से काट दो और अपने पुरुषत्व को सफल करो। (सब उपाधियों से मुक्त, सच्चिदानन्द, अद्वय आत्मा में स्थित आत्मा की भावना करो; तुम्हें फिर मार्ग पर नहीं चलना पड़ेगा।)",
+          "hindi": "समाहित अन्तःकरण से अपने स्वरूप में अखण्ड वैभव वाले आत्मा को देखो; भव की गन्ध से गन्धित बन्धन को प्रयत्न से काट दो और अपने पुरुषत्व को सफल करो।",
+          "hindiSource": "ai",
+          "commentary": "",
+          "wordMeaning": "",
+          "science": "",
+          "explanation": "",
+          "meaning": "",
+          "lifeLesson": ""
+        },
+        {
+          "number": 412,
+          "sanskrit": "सर्वोपाधिविनिर्मुक्तं सच्चिदानन्दमद्वयम् । भावयात्मानमात्मस्थं न भूयः कल्पसेऽध्वने",
+          "transliteration": "sarvopādhivinirmuktaṃ saccidānandamadvayam | bhāvayātmānamātmasthaṃ na bhūyaḥ kalpase'dhvane",
+          "translation": "Contemplate the Self, free of all adjuncts, being-consciousness-bliss, non-dual, abiding in the Self; you will not have to go on the road again.",
+          "translationSource": "ai",
+          "hindi": "सब उपाधियों से मुक्त, सच्चिदानन्द, अद्वय आत्मा में स्थित आत्मा की भावना करो; तुम्हें फिर मार्ग पर नहीं चलना पड़ेगा।",
           "hindiSource": "ai"
         },
         {

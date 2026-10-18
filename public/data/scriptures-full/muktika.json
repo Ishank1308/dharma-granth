@@ -8,7 +8,7 @@
     "license": "Sanskrit mūla — public domain. Digitized by sanskritdocuments.org.",
     "fetchedAt": "2026-09-30T09:42:57.770Z"
   },
-  "totalVerses": 136,
+  "totalVerses": 137,
   "totalChapters": 2,
   "chapters": [
     {
@@ -816,12 +816,21 @@
           "hindiSource": "ai"
         },
         {
-          "number": 34,
-          "sanskrit": "अस्य नाशमिदानीं त्वं पावने श्रुणु सादरम् ॥ ३३। चित्तानाशाभिधानं हि यदा ते विद्यते पुनः । मैत्र्यादिभिर्गुणैर्युक्तं शान्तिमेति न संशयः । भूयोजन्मविनिर्मुक्तं जीवन्मुक्तस्य तन्मनः",
-          "transliteration": "asya nāśamidānīṃ tvaṃ pāvane śruṇu sādaram || 33| cittānāśābhidhānaṃ hi yadā te vidyate punaḥ | maitryādibhirguṇairyuktaṃ śāntimeti na saṃśayaḥ | bhūyojanmavinirmuktaṃ jīvanmuktasya tanmanaḥ",
-          "translation": "Listen now respectfully, pure one, to the destruction of this. When the state called the destruction of mind is present in you again, the mind endowed with qualities such as friendliness attains peace, without doubt; the mind of one liberated while living is freed from further birth.",
+          "number": 33,
+          "sanskrit": "अस्य नाशमिदानीं त्वं पावने श्रुणु सादरम् ॥",
+          "transliteration": "asya nāśamidānīṃ tvaṃ pāvane śruṇu sādaram ||",
+          "translation": "Listen now respectfully, pure one, to the destruction of this.",
           "translationSource": "ai",
-          "hindi": "(३३) हे पावन (पवित्र)! अब तुम आदरपूर्वक इस (चित्त) के नाश की विधि सुनो। (३४) जब तुम्हारे भीतर चित्त-नाश नाम की अवस्था पुनः (स्थिर रूप से) विद्यमान हो जाती है — मैत्री आदि गुणों से युक्त मन निःसन्देह शान्ति को प्राप्त होता है; जीवन्मुक्त का वह मन पुनर्जन्म से मुक्त हो जाता है।",
+          "hindi": "(३३) हे पावन (पवित्र)! अब तुम आदरपूर्वक इस (चित्त) के नाश की विधि सुनो।",
+          "hindiSource": "ai"
+        },
+        {
+          "number": 34,
+          "sanskrit": "चित्तानाशाभिधानं हि यदा ते विद्यते पुनः । मैत्र्यादिभिर्गुणैर्युक्तं शान्तिमेति न संशयः । भूयोजन्मविनिर्मुक्तं जीवन्मुक्तस्य तन्मनः",
+          "transliteration": "cittānāśābhidhānaṃ hi yadā te vidyate punaḥ | maitryādibhirguṇairyuktaṃ śāntimeti na saṃśayaḥ | bhūyojanmavinirmuktaṃ jīvanmuktasya tanmanaḥ",
+          "translation": "When the state called the destruction of mind is present in you again, the mind endowed with qualities such as friendliness attains peace, without doubt; the mind of one liberated while living is freed from further birth.",
+          "translationSource": "ai",
+          "hindi": "(३४) जब तुम्हारे भीतर चित्त-नाश नाम की अवस्था पुनः (स्थिर रूप से) विद्यमान हो जाती है — मैत्री आदि गुणों से युक्त मन निःसन्देह शान्ति को प्राप्त होता है; जीवन्मुक्त का वह मन पुनर्जन्म से मुक्त हो जाता है।",
           "hindiSource": "ai"
         },
         {
