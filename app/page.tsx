@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { HeroSection } from '@/app/components/HeroSection';
 import { SplashScreen } from '@/app/components/SplashScreen';
 import { ContinueReading } from '@/app/components/ContinueReading';
@@ -33,6 +34,13 @@ export const metadata: Metadata = {
     'सनातन धर्म',
   ],
   alternates: { canonical: '/' },
+  openGraph: {
+    title: 'Dharma Granth — Calm, Bilingual Digital Scripture Library',
+    description:
+      'A tranquil, ad-free library of Hindu scriptures. Sanskrit, Hindi, and English appear where the published text includes them.',
+    url: '/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 export default function HomePage() {

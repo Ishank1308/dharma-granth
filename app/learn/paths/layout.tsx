@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { JsonLd } from '@/app/components/JsonLd';
 import { GUIDED_READING_PATHS } from '@/data/guided-reading-paths';
 import { STUDY_PLANS, planMinutes } from '@/data/study-plans';
@@ -12,6 +13,12 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: '/learn/paths/' },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: '/learn/paths/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 const PATHS_JSON_LD = pageLd(

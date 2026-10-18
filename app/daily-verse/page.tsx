@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { DailyVerseFeed } from './DailyVerseFeed';
 
 export const metadata: Metadata = {
@@ -6,6 +7,13 @@ export const metadata: Metadata = {
   description:
     "Today's verse as a ready-to-send WhatsApp message: Sanskrit, Hindi and English meaning, and a link to the verse. Copy it into a WhatsApp Channel or send it to a friend.",
   alternates: { canonical: '/daily-verse/' },
+  openGraph: {
+    title: 'Daily Verse for WhatsApp · दैनिक श्लोक',
+    description:
+      "Today's verse as a ready-to-send WhatsApp message: Sanskrit, Hindi and English meaning, and a link to the verse. Copy it into a WhatsApp Channel or send it to a friend.",
+    url: '/daily-verse/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 export default function DailyVersePage() {

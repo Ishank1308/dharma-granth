@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { JsonLd } from '@/app/components/JsonLd';
 import { pathways } from '@/data/pathways';
 import { courseListLd, pageLd } from '@/lib/jsonld';
@@ -11,6 +12,12 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: '/learn/pathways/' },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: '/learn/pathways/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 export default function PathwaysLayout({ children }: { children: React.ReactNode }) {
