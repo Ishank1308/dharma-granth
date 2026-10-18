@@ -265,6 +265,8 @@ const kaushitaki: Builder = (body) => {
 
 interface Target {
   files: string[];
+  /** Proofread local source (data/sources-local/<id>.json): { note, chapters: [{ number, title, verses: [{ number, sanskrit }] }] }. */
+  local?: boolean;
   build: Builder;
   chapterUnit: string;
 }
@@ -285,6 +287,8 @@ const TARGETS: Record<string, Target> = {
   muktika: { files: ["muktikA.itx", "muktika.itx"], build: dotNumbered(/iti\s+\S*dhyAyaH\s*\.\.\s*\d+\s*\.\.|iti\s+muktikopaniShatsamAptA\s*\.\./, { dropInvocation: true }), chapterUnit: "Adhyāya" },
   shvetashvatara: { files: ["shveta.itx"], build: byNumberReset, chapterUnit: "Adhyāya" },
   tejobindu: { files: ["tejobindu.itx"], build: byNumberReset, chapterUnit: "Part" },
+  naradabhaktisutra: { files: [], local: true, build: () => [], chapterUnit: "" },
+  shandilyabhaktisutra: { files: [], local: true, build: () => [], chapterUnit: "" },
   kaushitaki: { files: ["kaushhiitaki.itx"], build: kaushitaki, chapterUnit: "Adhyāya" },
 };
 
@@ -423,7 +427,17 @@ async function main() {
 
   let raw = "";
   let used = "";
-  for (const f of target.files) {
+  let localChapters: FullChapter[] | null = null;
+  if (target.local) {
+    const src = JSON.parse(fs.readFileSync(`data/sources-local/${id}.json`, "utf8"));
+    used = `local proofread transcription: ${src.note}`;
+    localChapters = src.chapters.map((c: { number: number; title: string; verses: { number: number; sanskrit: string }[] }) => ({
+      number: c.number,
+      title: c.title,
+      verses: c.verses.map((v) => ({ number: v.number, sanskrit: v.sanskrit, transliteration: toIast(v.sanskrit) })),
+    }));
+  }
+  for (const f of target.local ? [] : target.files) {
     const r = await fetch(f.startsWith("http") ? f : SD + f);
     if (r.ok) {
       raw = await r.text();
@@ -431,12 +445,14 @@ async function main() {
       break;
     }
   }
-  if (!raw) throw new Error("no source found");
-  const chapters = target.build(cleanItx(raw));
-  chapters.forEach((c, i) => {
-    c.number = i + 1;
-    c.title = target.chapterUnit ? `${target.chapterUnit} ${c.number}` : "";
-  });
+  if (!raw && !localChapters) throw new Error("no source found");
+  const chapters = localChapters ?? target.build(cleanItx(raw));
+  if (!localChapters) {
+    chapters.forEach((c, i) => {
+      c.number = i + 1;
+      c.title = target.chapterUnit ? `${target.chapterUnit} ${c.number}` : "";
+    });
+  }
 
   const jp = `public/data/scriptures-full/${id}.json`;
   const old = JSON.parse(fs.readFileSync(jp, "utf8"));
