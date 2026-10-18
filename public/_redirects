@@ -1,0 +1,8 @@
+# Cloudflare Pages redirects (GitHub Pages ignores this file). Trailing slashes everywhere.
+# /topics/* pages are distinct from /wisdom-for-life/* and stay as they are.
+/wisdom /wisdom-for-life/ 301
+/wisdom/ /wisdom-for-life/ 301
+/guidance/:slug /wisdom-for-life/:slug/ 301
+/guidance/:slug/ /wisdom-for-life/:slug/ 301
+/bhagavad-gita /scripture/bhagavadgita/ 301
+/bhagavad-gita/ /scripture/bhagavadgita/ 301

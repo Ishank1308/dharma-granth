@@ -2,6 +2,7 @@
 # GitHub Pages ignores this file.
 
 /*
+  Cache-Control: public, max-age=0, must-revalidate
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
@@ -11,19 +12,33 @@
 
 # Fingerprinted build assets never change.
 /_next/static/*
+  ! Cache-Control
   Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
+
+# Search index and shards are rebuilt with each deploy: short browser cache, long edge cache.
+/search/*
+  ! Cache-Control
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
 
 # The service worker must always be revalidated so updates reach users.
 /sw.js
+  ! Cache-Control
   Cache-Control: no-cache
 
 # Share images and fonts change rarely; a week, then revalidate.
 /og/*
+  ! Cache-Control
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 /icons/*
+  ! Cache-Control
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
 # Notes on the policy:
+# - `! Cache-Control` removes the HTML rule's value so asset rules do not merge with it.
+# - /assets/* and /_astro/* from other frameworks do not exist in this Next export.
 # - 'unsafe-inline' for scripts is required: the static Next export injects
 #   inline bootstrap scripts and cannot use per-request nonces.
 # - cloudflareinsights.com is allowed so Cloudflare Web Analytics can be
