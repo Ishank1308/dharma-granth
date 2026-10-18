@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import Link from 'next/link';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 
@@ -6,6 +7,13 @@ export const metadata: Metadata = {
   title: 'शब्द-अन्वेषण: अष्टावक्र गीता के प्रमुख शब्दार्थ',
   description: 'अष्टावक्र गीता के प्रकाशित और सत्यापित श्लोकों के प्रमुख शब्दार्थ — पहले अक्षर के अनुसार चुनें। ये संपादकीय शब्दार्थ हैं, शब्दकोश नहीं।',
   alternates: { canonical: '/ashtavakra/words/' },
+  openGraph: {
+    title: 'शब्द-अन्वेषण: अष्टावक्र गीता के प्रमुख शब्दार्थ',
+    description:
+      'अष्टावक्र गीता के प्रकाशित और सत्यापित श्लोकों के प्रमुख शब्दार्थ — पहले अक्षर के अनुसार चुनें। ये संपादकीय शब्दार्थ हैं, शब्दकोश नहीं।',
+    url: '/ashtavakra/words/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 /**

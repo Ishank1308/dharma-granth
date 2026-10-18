@@ -137,11 +137,13 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const words = opening(found.verse.sanskrit);
   // Search engines show about 60 characters: lead with the reference and "Meaning in Hindi & English".
   const title = `${ref} Meaning in Hindi & English${words ? ` | ${words}` : ''}`;
-  // Lead with the Hindi reference ("श्रीमद्भगवद्गीता 2.47 का हिंदी अर्थ") for searches typed in Hindi.
+  // Hindi reference stays in the keywords ("श्रीमद्भगवद्गीता 2.47 का हिंदी अर्थ").
   const refHi = `${meta.titleSanskrit ?? meta.title} ${chapterId}.${params.verseId}`;
-  const meaning = [plain(found.verse.hindi, 80), plain(found.verse.translation, 70)].filter(Boolean).join(' · ');
+  const shloka = plain(verseLines(cleanVerseField(found.verse.sanskrit))[0], 90);
+  const meaning = plain(found.verse.hindi, 80) || plain(found.verse.translation, 80);
   const description = clipDescription(
-    meaning ? `${refHi} का हिंदी अर्थ: ${meaning}` : `${ref}: Sanskrit text with Hindi and English meaning.`,
+    [shloka, meaning].filter(Boolean).join(' — ') ||
+      `${refHi} का हिंदी अर्थ`,
   );
   const latin = openingLatin(found.verse.transliteration);
   const canonical = versePageHref(meta.id, chapterId, params.verseId);

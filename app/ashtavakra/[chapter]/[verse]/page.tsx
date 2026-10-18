@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { clipDescription } from '@/lib/meta-text';
 import { getChapterData, getChapterMeta, getVerse, publishedChapterNumbers, verseHref, verseNeighbours } from '@/lib/ashtavakra';
 import { VerseFull, VerificationBadge } from '../../VerseView';
 import { ReadMark } from '../../VerseBits';
@@ -15,10 +16,18 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { chapter: string; verse: string } }): Metadata {
   const v = getVerse(Number(params.chapter), Number(params.verse));
   if (!v) return {};
+  const title = `अष्टावक्र गीता ${v.verseNumber}: ${v.oneLineSummaryHindi}`.slice(0, 110);
+  const canonical = `/ashtavakra/${params.chapter}/${params.verse}/`;
+  const description = clipDescription(`${v.sanskrit} — ${v.literalHindiMeaning || v.oneLineSummaryHindi}`);
   return {
-    title: `अष्टावक्र गीता ${v.verseNumber}: ${v.oneLineSummaryHindi}`.slice(0, 110),
-    description: `अष्टावक्र गीता श्लोक ${v.verseNumber}: मूल संस्कृत, शब्दार्थ, पुस्तकानुसार हिन्दी भावार्थ, सरल व्याख्या और English। ${v.oneLineSummaryHindi}`.slice(0, 200),
-    alternates: { canonical: `/ashtavakra/${params.chapter}/${params.verse}/` },
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+    },
   };
 }
 

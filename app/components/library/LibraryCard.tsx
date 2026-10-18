@@ -16,7 +16,6 @@ import {
   type LibraryItem,
   type ViewMode,
 } from '@/lib/library';
-import { catalogueNote } from '@/lib/holdings-label';
 
 const NOT_RECORDED = 'Not yet recorded';
 
@@ -89,10 +88,17 @@ export function LibraryCard({
   const counts = countLabel(item);
   const detailed = view === 'detailed';
   const headingId = `lib-${item.id}-title`;
+  // Indexed chapters and canonical verse totals are different measures; never show them as one count.
+  const hasCanonical = item.canonicalTotalVerses != null && item.canonicalTotalVerses !== item.totalVerses;
+  const chapterLabel = hasCanonical ? `${plural(item.totalChapters, 'chapter')} indexed` : counts.chapters;
   const verses = item.isCurated && item.canonicalTotalVerses
-    ? `${plural(item.totalVerses, 'verse')} selected · ${formatNumber(item.canonicalTotalVerses)} in the full text`
-    : counts.verses;
-  const verseCatalogue = item.isCurated ? undefined : catalogueNote(item.totalVerses, item.canonicalTotalVerses, 'verse');
+    ? `${plural(item.totalVerses, 'verse')} selected · ${formatNumber(item.canonicalTotalVerses)} canonical verses`
+    : hasCanonical
+      ? `${formatNumber(item.canonicalTotalVerses as number)} canonical verses`
+      : counts.verses;
+  const verseCatalogue = item.isCurated || !hasCanonical
+    ? undefined
+    : `${plural(item.totalVerses, 'verse')} readable in this library`;
   const level = readingLevelOf(item);
   const themes = themesOf(item).slice(0, 6);
   const updated = formatDate(item.facts.lastUpdated, true);
@@ -139,7 +145,7 @@ export function LibraryCard({
       )}
 
       <p className="mt-4 text-sm font-medium text-dharma-text">
-        {counts.chapters} <span aria-hidden="true">·</span> {verses}
+        {chapterLabel} <span aria-hidden="true">·</span> {verses}
         {verseCatalogue && (
           <span className="mt-1 block text-xs font-normal text-dharma-muted">{verseCatalogue}</span>
         )}

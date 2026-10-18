@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import Link from 'next/link';
 import { ISSUES_REPO } from '@/lib/reader-actions';
 
@@ -6,7 +7,14 @@ export const metadata: Metadata = {
   title: 'Methodology: how this site is made',
   description:
     'Where the Sanskrit texts come from, how translations and explanations are produced, where AI assistance is used, and how corrections are handled.',
-  alternates: { canonical: '/methodology' },
+  alternates: { canonical: '/methodology/' },
+  openGraph: {
+    title: 'Methodology: how this site is made',
+    description:
+      'Where the Sanskrit texts come from, how translations and explanations are produced, where AI assistance is used, and how corrections are handled.',
+    url: '/methodology/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 /**

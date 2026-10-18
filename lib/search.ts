@@ -16,6 +16,9 @@ import {
   normalizeForSearch,
   normalizeTransliteration,
 } from '@/lib/normalize-search';
+import { phoneticIndex } from '@/lib/searchNormalizer';
+import { parseDirectCitation } from '@/lib/search-citation';
+import { searchCoreIndex } from '@/lib/search-core';
 import { versePageHref } from '@/lib/verse-paths';
 import {
   FLAG_ENGLISH_AI,
@@ -43,6 +46,7 @@ import {
 
 export * from '@/lib/search-types';
 export { loadVerseIndex, isVerseIndexLoaded } from '@/lib/search-verse-index';
+export { loadCoreIndex, loadSearchShard, isCoreIndexLoaded, coreScriptureHint } from '@/lib/search-core';
 export { normalizeForSearch, normalizeTransliteration, normalizeDevanagari, isDevanagari };
 
 /** [scriptureId, chapterNumber, title, titleSanskrit?] */
@@ -718,6 +722,7 @@ export function searchIndex(rawQuery: string, options: SearchOptions = {}): Sear
   const normQuery = normalizeForSearch(trimmed);
   const devNormQuery = normalizeDevanagari(trimmed);
   const compQuery = compactTransliteration(trimmed);
+  const phoneQuery = phoneticIndex(trimmed);
   // "verses about anger" asks about "anger": drop the words that only describe the request.
   const queryTokens = contentTokens(trimmed);
   const coreQuery = queryTokens.join(' ');
@@ -733,8 +738,37 @@ export function searchIndex(rawQuery: string, options: SearchOptions = {}): Sear
   let isTypoCorrected = false;
   let matchedThemeName: string | null = null;
 
+  // 0. A typed citation (bg 2.47, gita 6.16, katha 1.3.3, rv 1.1.1) resolves
+  //    before any index is fetched. The href exists only for a published verse.
+  const direct = parseDirectCitation(trimmed);
+  if (direct) {
+    put(
+      {
+        id: `direct-${direct.scriptureId}-${direct.href}`,
+        title: direct.title,
+        subtitle: direct.subtitle,
+        group: direct.href.includes('/verse/') ? 'verse' : 'chapter',
+        groupLabel: direct.href.includes('/verse/') ? 'श्लोक · Exact Verse' : 'अध्याय · Chapter',
+        category: direct.href.includes('/verse/') ? 'verse' : 'chapter',
+        categoryLabel: direct.href.includes('/verse/') ? 'श्लोक · Exact Verse' : 'अध्याय · Chapter',
+        href: direct.href,
+        reference: direct.title,
+        matchingText: direct.title,
+        matchReason: direct.matchReason,
+        languageLabel: 'Reference',
+        actionLabel: direct.href.includes('/verse/') ? 'Open verse →' : 'Read chapter →',
+      },
+      10000,
+    );
+  }
+
+  for (const hit of searchCoreIndex(trimmed)) {
+    if (direct && hit.item.href === direct.href) continue;
+    put(hit.item, hit.score);
+  }
+
   // 1. An exact reference ("Gita 2.47", "Bhagavad Gita chapter 2 verse 47", "गीता २.४७").
-  const parsedRef = parseScriptureReference(trimmed);
+  const parsedRef = direct ? null : parseScriptureReference(trimmed);
   if (parsedRef) {
     const { scriptureId, chapter, verse } = parsedRef;
     const scripture = scriptureById.get(scriptureId);
@@ -881,6 +915,13 @@ export function searchIndex(rawQuery: string, options: SearchOptions = {}): Sear
       } else if (score === 0) {
         score = 0;
       }
+    }
+
+    // D0. Devanagari or Hinglish folded onto the same key as the roman name.
+    if (score === 0 && phoneQuery.length >= 4 && entry.compactName.includes(phoneQuery)) {
+      score += entry.compactName === phoneQuery ? 1200 : 700;
+      reason = 'Matches the phonetic spelling';
+      language = isDev ? 'Sanskrit · Devanagari' : 'Roman transliteration';
     }
 
     // D. A single word that is close to a title (typo tolerance)

@@ -1,11 +1,19 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import Link from 'next/link';
 import { ACADEMY_COURSES, ACADEMY_LEVELS, ACADEMY_ORDERS } from '@/data/academy-index';
 
 export const metadata: Metadata = {
   title: 'धर्म अकादमी · Dharma Academy',
   description: 'Existing courses grouped by level. Karma Yoga and Meditation are reading orders, not separate courses.',
-  alternates: { canonical: '/learn/academy' },
+  alternates: { canonical: '/learn/academy/' },
+  openGraph: {
+    title: 'धर्म अकादमी · Dharma Academy',
+    description:
+      'Existing courses grouped by level. Karma Yoga and Meditation are reading orders, not separate courses.',
+    url: '/learn/academy/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 export default function AcademyPage() {

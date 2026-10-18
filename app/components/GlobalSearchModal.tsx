@@ -25,14 +25,19 @@ import {
 } from 'lucide-react';
 import {
   SEARCH_GROUPS,
+  coreScriptureHint,
   isChapterIndexLoaded,
+  isCoreIndexLoaded,
   isVerseIndexLoaded,
   loadChapterIndex,
+  loadCoreIndex,
+  loadSearchShard,
   loadVerseIndex,
   type ChapterIndex,
   type SearchResultGroup,
   type SearchResultItem,
 } from '@/lib/search';
+import type { CoreIndexFile, SearchShardFile } from '@/lib/search-core';
 import { searchWithIntent } from '@/lib/search-intent';
 import type { VerseIndexFile } from '@/lib/search-verse-index';
 import { getSearchThemes } from '@/lib/search-themes';
@@ -81,6 +86,25 @@ function ensureChapterIndex(): Promise<void> {
       });
   }
   return chapterIndexRequest;
+}
+
+let coreIndexRequest: Promise<void> | null = null;
+
+function ensureCoreIndex(): Promise<void> {
+  if (isCoreIndexLoaded()) return Promise.resolve();
+  if (!coreIndexRequest) {
+    coreIndexRequest = fetch(`${BASE_PATH}/search/core-index.json`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`core index: HTTP ${res.status}`);
+        return res.json() as Promise<CoreIndexFile>;
+      })
+      .then(loadCoreIndex)
+      .catch((err) => {
+        coreIndexRequest = null;
+        console.warn('[search] core index unavailable:', err);
+      });
+  }
+  return coreIndexRequest;
 }
 
 function ensureVerseIndex(): Promise<void> {
@@ -202,6 +226,8 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isOnline, setIsOnline] = useState(true);
   const [chaptersReady, setChaptersReady] = useState(isChapterIndexLoaded);
+  const [coreReady, setCoreReady] = useState(isCoreIndexLoaded);
+  const [shardToken, setShardToken] = useState('');
   const [verseState, setVerseState] = useState<LoadState>(isVerseIndexLoaded() ? 'ready' : 'idle');
   const [recentRaw, setRecent] = useLocalStorage<string[]>(RECENT_KEY, NO_RECENT);
   const recent = Array.isArray(recentRaw) ? recentRaw.filter((r) => typeof r === 'string') : NO_RECENT;
@@ -236,6 +262,34 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
       cancelled = true;
     };
   }, [isOpen, chaptersReady]);
+
+  useEffect(() => {
+    if (!isOpen || coreReady) return;
+    let cancelled = false;
+    ensureCoreIndex().then(() => {
+      if (!cancelled && isCoreIndexLoaded()) setCoreReady(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [isOpen, coreReady]);
+
+  const scriptureHint = coreScriptureHint(trimmed);
+  useEffect(() => {
+    if (!coreReady || !scriptureHint || scriptureHint === shardToken) return;
+    let cancelled = false;
+    fetch(`${BASE_PATH}/search/shards/${scriptureHint}.json`)
+      .then((res) => (res.ok ? (res.json() as Promise<SearchShardFile>) : null))
+      .then((data) => {
+        if (cancelled || !data) return;
+        loadSearchShard(data);
+        setShardToken(scriptureHint);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [coreReady, scriptureHint, shardToken]);
 
   // Verse text: loaded when the dialog opens, retried when "Try again" resets the state to idle.
   useEffect(() => {
@@ -292,7 +346,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
     () => (trimmed ? searchWithIntent(trimmed, { group: selectedGroup, limit: RESULT_LIMIT }) : null),
     // The indexes arrive after the dialog opens; searching again when they do fills in verses and chapters.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [trimmed, selectedGroup, chaptersReady, verseReady],
+    [trimmed, selectedGroup, chaptersReady, verseReady, coreReady, shardToken],
   );
 
   // Results in the order they are shown (by group), so the arrow keys follow what the eye sees.

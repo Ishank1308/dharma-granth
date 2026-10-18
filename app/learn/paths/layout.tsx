@@ -11,7 +11,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: '/learn/paths' },
+  alternates: { canonical: '/learn/paths/' },
 };
 
 const PATHS_JSON_LD = pageLd(

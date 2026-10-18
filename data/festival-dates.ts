@@ -1,3 +1,5 @@
+import { istDate } from '@/lib/ist';
+
 // Major festival and observance dates for the practice dashboard's
 // festival reminder. Hindu festivals follow the lunar calendar, so exact
 // dates vary by region and pañcāṅga — these are widely published dates for
@@ -48,13 +50,13 @@ export interface UpcomingFestival extends FestivalDate {
   daysAway: number;
 }
 
-/** The next `count` festivals on or after `from`, with day distances. */
+/** The next `count` festivals on or after `from` (by the Indian calendar day), with day distances. */
 export function upcomingFestivals(count = 4, from: Date = new Date()): UpcomingFestival[] {
-  const startOfDay = new Date(from.getFullYear(), from.getMonth(), from.getDate());
+  const today = istDate(from);
+  const todayUtc = Date.UTC(today.year, today.month - 1, today.day);
   return FESTIVAL_DATES.flatMap((f) => {
     const [y, m, d] = f.date.split('-').map(Number);
-    const when = new Date(y, m - 1, d);
-    const daysAway = Math.round((when.getTime() - startOfDay.getTime()) / 86_400_000);
+    const daysAway = Math.round((Date.UTC(y, m - 1, d) - todayUtc) / 86_400_000);
     return daysAway >= 0 ? [{ ...f, daysAway }] : [];
   })
     .sort((a, b) => a.daysAway - b.daysAway)

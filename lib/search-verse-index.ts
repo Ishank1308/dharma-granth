@@ -14,6 +14,7 @@ import {
   normalizeDevanagari,
   normalizeForSearch,
 } from '@/lib/normalize-search';
+import { phoneticIndex } from '@/lib/searchNormalizer';
 
 /** [scriptureIndex, chapter, verseSlug, sanskrit, transliteration, hindi, english, explanation, flags] */
 export type VerseRow = [number, number, string, string, string, string, string, string, number];
@@ -188,6 +189,14 @@ export function searchVerses(query: string, options: { fuzzy?: boolean; limit?: 
           const inTranslation = normalizeDevanagari(e.hindi).includes(hiTokens[0]);
           keep(e, 500 + hiTokens.length * 30 + (inTranslation ? 60 : 0), inTranslation ? 'hindi' : 'explanation');
         }
+      }
+    }
+    // The same verse typed in IAST or Hinglish shares this key with the Devanagari.
+    const phone = phoneticIndex(q);
+    if (phone.length >= 4) {
+      for (const e of entries) {
+        if (hits.has(e.id)) continue;
+        if (e.romanKey.includes(phone)) keep(e, e.romanKey === phone ? 1500 : 1100, 'roman');
       }
     }
   } else {

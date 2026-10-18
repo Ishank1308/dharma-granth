@@ -34,8 +34,11 @@ export function generateMetadata({
   const title = heading
     ? `${heading.en} — ${topic.titleHi}`
     : `${topic.titleEn} (${topic.titleHi}) — Wisdom for Life`;
+  const lead = topic.verses[0];
   const description = clipDescription(
-    `${topic.shortDescEn} Original Sanskrit verses, translations and context from the Gita and Upanishads.`,
+    [lead?.sanskritDevanagari, lead?.literalTranslationHi || lead?.literalTranslationEn, topic.shortDescHi || topic.shortDescEn]
+      .filter(Boolean)
+      .join(' — '),
   );
 
   return {

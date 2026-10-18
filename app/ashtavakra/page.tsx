@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import Link from 'next/link';
 import { keepDanda, CHAPTERS, getChapterData, getVerse, publishedChapterNumbers, publishedTotals, verseHref } from '@/lib/ashtavakra';
 import { HeroEnvironment, ConceptVisual } from './visuals';
@@ -9,6 +10,13 @@ export const metadata: Metadata = {
   title: 'अष्टावक्र गीता: मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या',
   description: 'अष्टावक्र गीता के श्लोक: मूल संस्कृत, पुस्तकानुसार हिन्दी भावार्थ, सरल हिन्दी व्याख्या, आधुनिक उदाहरण और English। हर श्लोक पर स्रोत-सत्यापन की स्थिति।',
   alternates: { canonical: '/ashtavakra/' },
+  openGraph: {
+    title: 'अष्टावक्र गीता: मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या',
+    description:
+      'अष्टावक्र गीता के श्लोक: मूल संस्कृत, पुस्तकानुसार हिन्दी भावार्थ, सरल हिन्दी व्याख्या, आधुनिक उदाहरण और English। हर श्लोक पर स्रोत-सत्यापन की स्थिति।',
+    url: '/ashtavakra/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 const STAGES = [

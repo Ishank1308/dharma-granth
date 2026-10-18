@@ -16,6 +16,7 @@ import { RoutineBuilder } from '@/app/components/practice/RoutineBuilder';
 import { PracticeHistory } from '@/app/components/practice/PracticeHistory';
 import { PrivacyLockBanner } from '@/app/components/practice/PrivacyLockBanner';
 import { BackupRestore } from '@/app/components/BackupRestore';
+import { SadhanaPortability } from '@/app/components/SadhanaPortability';
 
 /**
  * The redesigned daily practice (sādhanā) dashboard.
@@ -193,6 +194,7 @@ export function PracticeDashboard() {
         {/* Private Backup, Restore & Clear Controls */}
         <div className="border-t border-dharma-border/80 pt-8 space-y-4">
           <BackupRestore />
+          <SadhanaPortability />
           <div className="flex justify-end pt-2">
             <button
               type="button"

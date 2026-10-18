@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Terminology Dictionary (शब्दकोश)',
   description:
     'Dictionary of core Hindu terms: Dharma, Ṛta, Ātman, Brahman, Karma, Mokṣa and more, with Sanskrit, etymology, interpretations and related verses.',
-  alternates: { canonical: '/dictionary' },
+  alternates: { canonical: '/dictionary/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
     title: 'Terminology Dictionary (शब्दकोश) — Dharma Granth',

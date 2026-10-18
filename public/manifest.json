@@ -1,0 +1,24 @@
+{
+  "name": "Dharma Granth — Hindu Scriptures, Verse by Verse",
+  "short_name": "Dharma Granth",
+  "description": "Hindu scriptures explained verse by verse in Sanskrit, Hindi, and English. Free and ad-free.",
+  "lang": "hi",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fdfbf7",
+  "theme_color": "#c2410c",
+  "categories": ["books", "education", "lifestyle"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "भगवद्गीता पढ़ें", "short_name": "Gita", "url": "/scripture/bhagavadgita/" },
+    { "name": "ग्रंथालय", "short_name": "Library", "url": "/scriptures/" },
+    { "name": "साधना", "short_name": "Practice", "url": "/practice/" },
+    { "name": "अध्ययन", "short_name": "Learn", "url": "/learn/" }
+  ]
+}

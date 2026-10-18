@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'पात्र एवं संबंध मानचित्र (Character Knowledge Graph)',
   description:
     'महाभारत, रामायण, पुराण, गुरु-शिष्य परंपरा और देवताओं के पात्रों के अंतरसंबंधों का अन्वेषण करें — परिवार, गुरु-शिष्य और मित्रता के संबंध-मानचित्र के साथ।',
-  alternates: { canonical: '/characters' },
+  alternates: { canonical: '/characters/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
     title: 'पात्र एवं संबंध मानचित्र (Character Knowledge Graph) — Dharma Granth',

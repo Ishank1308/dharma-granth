@@ -108,7 +108,7 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180" }],
   },
-  manifest: "/manifest.webmanifest",
+  manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     title: SITE_NAME,
@@ -151,7 +151,7 @@ const siteJsonLd = {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
       name: SITE_NAME,
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       // Square, per Google's logo guidelines (min 112×112). Built by
       // scripts/build-logo.mjs from assets/logo-source.webp.
       logo: `${SITE_URL}/logo.png`,
@@ -161,7 +161,7 @@ const siteJsonLd = {
     {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       name: SITE_NAME,
       description: DEFAULT_DESCRIPTION,
       publisher: { "@id": `${SITE_URL}/#organization` },
@@ -170,7 +170,7 @@ const siteJsonLd = {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate: `${SITE_URL}/scriptures?q={search_term_string}`,
+          urlTemplate: `${SITE_URL}/scriptures/?q={search_term_string}`,
         },
         "query-input": "required name=search_term_string",
       },

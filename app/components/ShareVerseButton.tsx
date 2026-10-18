@@ -327,7 +327,7 @@ export function ShareVerseButton(props: Props) {
                   ) : (
                     <Download className="w-5 h-5" />
                   )}
-                  <span>इमेज डाउनलोड करें</span>
+                  <span>Download Image</span>
                 </button>
               </div>
 

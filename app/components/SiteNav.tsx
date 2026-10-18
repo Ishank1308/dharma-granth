@@ -546,8 +546,8 @@ export function SiteNav({
                     />
                   )}
                   <span className="relative z-10 inline-flex items-center gap-1.5">
-                    <span>{item.label}</span>
-                    <span className="hidden text-[11px] font-devanagari opacity-75 font-normal 2xl:inline">
+                    <span>{item.label}</span>{' '}
+                    <span lang="hi" className="hidden text-[11px] font-devanagari opacity-75 font-normal 2xl:inline">
                       {item.labelHi}
                     </span>
                   </span>

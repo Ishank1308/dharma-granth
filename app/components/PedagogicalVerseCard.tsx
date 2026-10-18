@@ -15,6 +15,7 @@ import {
   Compass,
   Code2,
   Copy,
+  Download,
   ExternalLink,
   Flame,
   HelpCircle,
@@ -33,6 +34,7 @@ import { GITA_2_47_PEDAGOGICAL, type PedagogicalVerseData } from '@/data/pedagog
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { readHref, shareVerseUrl } from '@/lib/verse-paths';
 import { whatsappShareUrl } from '@/lib/whatsapp';
+import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import dynamic from 'next/dynamic';
 
 export type ContemplationTier = 'quick' | 'simple' | 'deep';
@@ -71,6 +73,20 @@ export function PedagogicalVerseCard({
   function verseUrl(): string {
     const origin = typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.in';
     return shareVerseUrl(origin, data.scriptureId, data.chapterId, data.verseId);
+  }
+
+  async function handleDownloadImage() {
+    triggerTactileFeedback('light', 'click');
+    try {
+      await downloadVerseCardPng({
+        reference: `${data.scriptureTitle} ${data.chapterId}.${data.verseId}`,
+        sanskrit: data.sanskrit,
+        translation: data.simpleMeaningHi || data.simpleMeaningEn,
+        fileName: `dharmagranth-${data.scriptureId}-${data.chapterId}-${data.verseId}.png`,
+      });
+    } catch {
+      showToast('Could not draw the image');
+    }
   }
 
   function handleWhatsApp() {
@@ -370,7 +386,17 @@ export function PedagogicalVerseCard({
                 className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold text-white transition hover:bg-white/20 hover:border-amber-300 shadow-sm"
               >
                 <MessageCircle className="h-4 w-4 text-emerald-300" />
-                <span>WhatsApp</span>
+                <span>WhatsApp Share</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleDownloadImage}
+                aria-label="Download Image"
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold text-white transition hover:bg-white/20 hover:border-amber-300 shadow-sm"
+              >
+                <Download className="h-4 w-4 text-white/80" />
+                <span>Download Image</span>
               </button>
 
               {/* 3. Copy */}
@@ -381,7 +407,7 @@ export function PedagogicalVerseCard({
                 className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold text-white transition hover:bg-white/20 hover:border-amber-300 shadow-sm"
               >
                 {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4 text-white/80" />}
-                <span>{copied ? 'Copied' : 'Copy'}</span>
+                <span>{copied ? 'Copied' : 'Copy Verse'}</span>
               </button>
 
               {/* 3b. Embed */}

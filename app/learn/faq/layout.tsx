@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { JsonLd } from '@/app/components/JsonLd';
 import { SCRIPTURE_FAQS } from '@/data/scripture-faqs';
 import { faqLd, pageLd } from '@/lib/jsonld';
@@ -7,7 +8,14 @@ export const metadata: Metadata = {
   title: 'Scripture & Tradition FAQs · जिज्ञासा एवं समाधान',
   description:
     'Authoritative, sourced, non-dogmatic answers to essential questions about Hindu scriptures, philosophical traditions, ethics, and common misconceptions.',
-  alternates: { canonical: '/learn/faq' },
+  alternates: { canonical: '/learn/faq/' },
+  openGraph: {
+    title: 'Scripture & Tradition FAQs · जिज्ञासा एवं समाधान',
+    description:
+      'Authoritative, sourced, non-dogmatic answers to essential questions about Hindu scriptures, philosophical traditions, ethics, and common misconceptions.',
+    url: '/learn/faq/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 // Every question appears in English and in Hindi, each with its own-language answer.

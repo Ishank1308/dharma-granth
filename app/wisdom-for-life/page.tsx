@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Wisdom for Life — जीवन के लिए शास्त्रीय मार्गदर्शन',
   description:
     'Scriptural teachings from the Gita and Upanishads for everyday challenges: stress, fear, anger, decisions, grief, discipline and purpose.',
-  alternates: { canonical: '/wisdom-for-life' },
+  alternates: { canonical: '/wisdom-for-life/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
     title: 'Wisdom for Life — जीवन के लिए शास्त्रीय मार्गदर्शन — Dharma Granth',

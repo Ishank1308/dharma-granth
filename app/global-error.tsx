@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { isChunkLoadError, markNoindex, reloadOnceWithCacheBust } from '@/lib/error-recovery';
 
 export default function GlobalError({
   error,
@@ -11,10 +12,16 @@ export default function GlobalError({
 }) {
   useEffect(() => {
     console.error('[dharma-granth] global error:', error);
+    const unmark = markNoindex();
+    if (isChunkLoadError(error)) reloadOnceWithCacheBust();
+    return unmark;
   }, [error]);
 
   return (
     <html lang="en">
+      <head>
+        <meta name="robots" content="noindex, nofollow" />
+      </head>
       <body
         style={{
           fontFamily:

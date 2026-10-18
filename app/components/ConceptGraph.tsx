@@ -125,8 +125,9 @@ const VW = 900;
 const VH = 640;
 
 // ── Component ───────────────────────────────────────────────────
-export function ConceptGraph() {
+export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
   const reduce = useReducedMotion();
+  const articles = useMemo(() => new Set(articleIds), [articleIds]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [search, setSearch] = useState('');
@@ -576,18 +577,23 @@ export function ConceptGraph() {
                 {selectedConcept.description}
               </p>
 
-              {/* Dedicated Concept Page CTA */}
               <div className="mb-6">
-                <Link
-                  href={`/concepts/${selectedConcept.id}`}
-                  className="inline-flex items-center justify-between w-full p-3 rounded-xl bg-saffron-500/10 hover:bg-saffron-500/20 text-saffron-800 dark:text-saffron-200 border border-saffron-500/30 font-semibold text-sm transition-all group min-h-[44px]"
-                >
-                  <span className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-saffron-600 dark:text-saffron-400" />
-                    <span>गहन शास्त्रीय व्याख्या व व्युत्पत्ति (Deep Analysis)</span>
-                  </span>
-                  <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
+                {articles.has(selectedConcept.id) ? (
+                  <Link
+                    href={`/concepts/${selectedConcept.id}`}
+                    className="inline-flex items-center justify-between w-full p-3 rounded-xl bg-saffron-500/10 hover:bg-saffron-500/20 text-saffron-800 dark:text-saffron-200 border border-saffron-500/30 font-semibold text-sm transition-all group min-h-[44px]"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-saffron-600 dark:text-saffron-400" />
+                      <span>गहन शास्त्रीय व्याख्या व व्युत्पत्ति</span>
+                    </span>
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                ) : (
+                  <p className="rounded-xl border border-dharma-border bg-dharma-bg/40 p-3 text-sm text-dharma-muted">
+                    इसका अलग लेख नहीं है। ऊपर दिया विवरण इसी पृष्ठ का संक्षिप्त रूप है।
+                  </p>
+                )}
               </div>
 
               {/* Scripture references */}

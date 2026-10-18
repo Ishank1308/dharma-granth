@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Modern-Life Application',
   description:
     'How the Bhagavad Gita, Upanishads and other Hindu scriptures speak to modern challenges: career, stress, relationships, parenting, money and leadership.',
-  alternates: { canonical: '/topics' },
+  alternates: { canonical: '/topics/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
     title: 'Modern-Life Application — Dharma Granth',

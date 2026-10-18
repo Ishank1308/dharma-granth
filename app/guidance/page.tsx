@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: 'Dharmic Life Guidance — जीवन की हर चुनौती के लिए शास्त्रीय समाधान',
   description:
     'Exact Sanskrit verses from the Bhagavad Gita and Upanishads for everyday dilemmas: stress, anger, anxiety, grief, duty, relationships and focus.',
-  alternates: { canonical: '/guidance' },
+  alternates: { canonical: '/guidance/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
     title: 'Dharmic Life Guidance — जीवन की हर चुनौती के लिए शास्त्रीय समाधान — Dharma Granth',

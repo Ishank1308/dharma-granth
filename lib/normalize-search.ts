@@ -1,5 +1,6 @@
 // Kept separate from lib/search.ts (which bundles the whole search index) so
 // light consumers like the chapter verse filter can import it cheaply.
+import { unifyAnusvara } from '@/lib/searchNormalizer';
 
 // Built via the constructor because the tsconfig target (ES5) rejects the
 // `u` flag in regex literals; every supported browser handles it at runtime.
@@ -40,7 +41,7 @@ export function normalizeForSearch(value: string): string {
  */
 export function normalizeDevanagari(value: string): string {
   if (!value) return '';
-  return value
+  return unifyAnusvara(value)
     .normalize('NFC')
     .replace(/[०-९]/g, (d) => String(DEVANAGARI_DIGITS.indexOf(d)))
     .replace(/[।॥ऽ.,:;!?'"()\[\]{}\-_\/\\]/g, ' ')

@@ -5,12 +5,13 @@ import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { ConceptGraph } from '@/app/components/ConceptGraph';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { concepts } from '@/data/concepts';
+import { getAllConceptDetails, getConceptDetail } from '@/data/concept-details';
 
 export const metadata: Metadata = {
   title: 'अवधारणा ज्ञान ग्राफ (Concepts Knowledge Graph)',
   description:
     'वैदिक और हिंदू दर्शन की अवधारणाओं — आत्मन्, ब्रह्मन्, कर्म, धर्म, मोक्ष और अधिक — के अंतरसंबंधों का अन्वेषण करें।',
-  alternates: { canonical: '/concepts' },
+  alternates: { canonical: '/concepts/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
     title: 'अवधारणा ज्ञान ग्राफ (Concepts Knowledge Graph) — Dharma Granth',
@@ -21,6 +22,32 @@ export const metadata: Metadata = {
 };
 
 export default function ConceptsPage() {
+  const listedIds = new Set(concepts.map((concept) => concept.id));
+  const articleIds = getAllConceptDetails().map((detail) => detail.id);
+  const cards = [
+    ...concepts.map((concept) => ({
+      id: concept.id,
+      label: concept.label,
+      sanskrit: concept.sanskrit,
+      category: concept.category,
+      description: concept.description,
+      refs: concept.scriptureRefs?.slice(0, 2).join(', ') ?? '',
+      hasPage: Boolean(getConceptDetail(concept.id)),
+    })),
+    ...getAllConceptDetails()
+      .filter((detail) => !listedIds.has(detail.id))
+      .map((detail) => ({
+        id: detail.id,
+        label: detail.label,
+        sanskrit: detail.sanskrit,
+        category: detail.category,
+        description: detail.simpleDefinition.hi,
+        refs: detail.verses.slice(0, 2).map((verse) => verse.referenceHi || verse.reference).join(', '),
+        hasPage: true,
+      })),
+  ];
+  const articleCount = cards.filter((card) => card.hasPage).length;
+
   return (
     <main className="min-h-screen bg-dharma-bg">
       {/* ── Hero ─────────────────────────────────────────────────── */}
@@ -36,7 +63,7 @@ export default function ConceptsPage() {
               अवधारणा ज्ञान ग्राफ (Concept Knowledge Graph)
             </h1>
             <p className="text-xl opacity-90 max-w-2xl">
-              वैदिक और हिंदू दर्शन की {concepts.length} मूल अवधारणाओं के गहरे अंतरसंबंधों का अन्वेषण करें। किसी भी अवधारणा पर क्लिक कर उसके संबंधों, ग्रंथ स्रोतों और गहरे अर्थ को जानें।
+              ग्राफ में {concepts.length} नाम हैं। चुनने पर संक्षिप्त विवरण और दर्ज संदर्भ खुलते हैं। अलग लेख केवल वहीं खुलता है जहाँ वह लिखा गया है।
             </p>
           </FadeUp>
         </div>
@@ -45,7 +72,7 @@ export default function ConceptsPage() {
       {/* ── Graph ────────────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 -mt-8 relative z-10 pb-12">
         <div className="bg-dharma-card/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-dharma-border p-4 sm:p-6 md:p-8">
-          <ConceptGraph />
+          <ConceptGraph articleIds={articleIds} />
         </div>
       </section>
 
@@ -82,15 +109,15 @@ export default function ConceptsPage() {
             शास्त्रीय तत्त्वकोश · Philosophical Encyclopedia
           </p>
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-dharma-text mb-4">
-            12 मूल अवधारणाएँ (12 Core Concepts)
+            अवधारणा सूची
           </h2>
           <p className="text-dharma-muted text-base leading-relaxed">
-            प्रत्येक अवधारणा का प्रामाणिक संस्कृत व्युत्पत्ति, वैदिक-वेदान्तिक संदर्भ, मूल श्लोक, विभिन्न दर्शनों की दृष्टि और आधुनिक भ्रांतियों का शास्त्रीय समाधान।
+            {cards.length} नाम। {articleCount} का लिखा लेख है। शेष पर केवल संक्षिप्त विवरण है, अलग पृष्ठ नहीं।
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {concepts.map((c) => (
+          {cards.map((c) => (
             <div
               key={c.id}
               className="group rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-sm hover:shadow-md hover:border-saffron-500/40 transition-all flex flex-col justify-between"
@@ -114,17 +141,23 @@ export default function ConceptsPage() {
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-dharma-border/60 flex items-center justify-between">
+              <div className="pt-4 border-t border-dharma-border/60 flex items-center justify-between gap-3">
                 <span className="text-xs text-dharma-muted font-medium">
-                  {c.scriptureRefs?.slice(0, 2).join(', ')}
+                  {c.refs}
                 </span>
-                <a
-                  href={`/concepts/${c.id}`}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-saffron-700 dark:text-saffron-400 group-hover:underline min-h-[44px]"
-                >
-                  <span>गहन विश्लेषण</span>
-                  <span>→</span>
-                </a>
+                {c.hasPage ? (
+                  <Link
+                    href={`/concepts/${c.id}`}
+                    className="inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-saffron-800 underline-offset-2 hover:underline"
+                  >
+                    <span>गहन विश्लेषण</span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                ) : (
+                  <p className="inline-flex min-h-[44px] items-center text-xs font-medium text-dharma-muted">
+                    इसका अलग लेख नहीं है
+                  </p>
+                )}
               </div>
             </div>
           ))}
@@ -135,13 +168,14 @@ export default function ConceptsPage() {
             <span lang="hi" className="font-devanagari">वेदान्त</span>
           </h2>
           <p lang="hi" className="mt-2 text-sm leading-relaxed text-dharma-text">
-            वेदान्त का अलग लेख नहीं है। धर्म, कर्म, मोक्ष, आत्मा, ब्रह्म, योग, भक्ति, माया और संसार के पृष्ठ ऊपर हैं। वेदान्त के लिए ये चार पृष्ठ खोलें।
+            वेदान्त का लेख इस सूची में है। ये चार पृष्ठ भी उसी पढ़ने से जुड़े हैं।
           </p>
           <ul className="mt-3 flex flex-wrap gap-3 text-sm">
-            <li><a href="/concepts/brahman" className="font-semibold text-saffron-600 underline underline-offset-2">ब्रह्म</a></li>
-            <li><a href="/concepts/atman" className="font-semibold text-saffron-600 underline underline-offset-2">आत्मा</a></li>
-            <li><a href="/concepts/maya" className="font-semibold text-saffron-600 underline underline-offset-2">माया</a></li>
-            <li><a href="/concepts/moksha" className="font-semibold text-saffron-600 underline underline-offset-2">मोक्ष</a></li>
+            <li><Link href="/concepts/vedanta" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">वेदान्त</Link></li>
+            <li><Link href="/concepts/brahman" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">ब्रह्म</Link></li>
+            <li><Link href="/concepts/atman" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">आत्मा</Link></li>
+            <li><Link href="/concepts/maya" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">माया</Link></li>
+            <li><Link href="/concepts/moksha" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">मोक्ष</Link></li>
           </ul>
         </div>
       </section>

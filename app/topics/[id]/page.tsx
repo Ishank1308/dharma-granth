@@ -26,7 +26,10 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
   const topic = getTopic(params.id);
   if (!topic) return { title: 'Topic Not Found — Dharma Granth' };
 
-  const description = clipDescription(`${topic.shortDesc} Key verses, teachings, practices and reflections.`);
+  const lead = topic.verses[0];
+  const description = clipDescription(
+    [lead?.sanskrit, lead?.translation, topic.shortDesc].filter(Boolean).join(' — '),
+  );
 
   return {
     title: topic.title,

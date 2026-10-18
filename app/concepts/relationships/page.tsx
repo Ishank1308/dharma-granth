@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { CONCEPT_DETAILS } from '@/data/concept-details';
 import { CONCEPT_RELATIONS, RELATION_LABEL } from '@/data/concept-relations';
 import { REVIEW_LABEL } from '@/data/study-content';
@@ -7,7 +8,14 @@ import { RelationshipExplorer, type ExplorerConcept, type ExplorerRelation } fro
 export const metadata: Metadata = {
   title: 'Concept relationships · अवधारणाओं के संबंध',
   description: 'How twelve central concepts relate to one another, each link with its type and the verse that supports it.',
-  alternates: { canonical: '/concepts/relationships' },
+  alternates: { canonical: '/concepts/relationships/' },
+  openGraph: {
+    title: 'Concept relationships · अवधारणाओं के संबंध',
+    description:
+      'How twelve central concepts relate to one another, each link with its type and the verse that supports it.',
+    url: '/concepts/relationships/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 const IDS = ['dharma', 'karma', 'atman', 'brahman', 'moksha', 'bhakti', 'jnana', 'yoga', 'maya', 'ahimsa', 'samsara', 'vairagya'];

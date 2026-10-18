@@ -10,7 +10,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: '/learn/pathways' },
+  alternates: { canonical: '/learn/pathways/' },
 };
 
 export default function PathwaysLayout({ children }: { children: React.ReactNode }) {

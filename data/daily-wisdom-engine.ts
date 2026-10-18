@@ -1,4 +1,5 @@
 import { readHref } from '@/lib/verse-paths';
+import { istDate } from '@/lib/ist';
 
 export interface DailyWisdomItem {
   id: string;
@@ -325,11 +326,8 @@ export const DAILY_WISDOM_REGISTRY: DailyWisdomItem[] = [
  * Guarantees that every user globally sees the exact same verse on a given day.
  */
 export function getTodayWisdom(date: Date = new Date()): DailyWisdomItem {
-  const start = new Date(date.getFullYear(), 0, 0);
-  const diff = date.getTime() - start.getTime();
-  const oneDay = 1000 * 60 * 60 * 24;
-  const dayOfYear = Math.floor(diff / oneDay);
-  const index = Math.abs(dayOfYear) % DAILY_WISDOM_REGISTRY.length;
+  // Day of year in IST, so everyone sees the same verse on the same Indian calendar day.
+  const index = istDate(date).dayOfYear % DAILY_WISDOM_REGISTRY.length;
   return DAILY_WISDOM_REGISTRY[index] || DAILY_WISDOM_REGISTRY[0];
 }
 

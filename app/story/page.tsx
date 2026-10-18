@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import Link from 'next/link';
 import { timelines } from '@/data/timelines';
 import { StoryClient } from './StoryClient';
@@ -11,7 +12,14 @@ const STORY_HOMES: Record<string, { href: string; hi: string }> = {
 export const metadata: Metadata = {
   title: 'Visual Story Mode · कथा-दर्शन',
   description: 'Follow the Ramayana and Mahabharata through characters, relationships, events, dialogue and decision points, each labelled by what it is.',
-  alternates: { canonical: '/story' },
+  alternates: { canonical: '/story/' },
+  openGraph: {
+    title: 'Visual Story Mode · कथा-दर्शन',
+    description:
+      'Follow the Ramayana and Mahabharata through characters, relationships, events, dialogue and decision points, each labelled by what it is.',
+    url: '/story/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 export default function StoryPage() {

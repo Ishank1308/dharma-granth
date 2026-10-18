@@ -91,7 +91,7 @@ export default function SourcesPage() {
                 <span>Tier 3 · Modern Exegesis</span>
               </div>
               <p className="mt-2 text-dharma-text/90 leading-relaxed">
-                Explicitly labeled pedagogical aids and real-world reflections. Clearly demarcated so readers never mistake editorial commentary for scripture.
+                Study guides such as the Wisdom for Life pages. Their bilingual explanations, reflections and practices are AI-assisted drafts that have not been reviewed by a scholar, and each is paired with direct citations to the Tier 1 texts. Tier 1 and Tier 2 texts are shown as published in their critical editions, unaltered. Clearly demarcated so readers never mistake editorial commentary for scripture.
               </p>
             </div>
           </div>

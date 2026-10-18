@@ -1,12 +1,16 @@
 // Offline support: pages you have opened keep working without a network.
-//   • HTML pages       network-first, cached copy when offline (capped)
-//   • /_next/static/*  cache-first (fingerprinted, never changes)
+//   • HTML pages       network-first, cached copy when offline (capped). Never cache-first,
+//                      so a new deploy's HTML is not stuck pointing at old JS chunks.
+//   • /_next/static/*  cache-first (fingerprinted). A 404 is not cached.
 //   • icons, fonts     stale-while-revalidate
-// Everything else (large JSON data, analytics) goes straight to the network.
-const VERSION = 'dg-v4';
+//   • scripture JSON   network-first for files you have opened (capped)
+// Everything else (analytics) goes straight to the network.
+const VERSION = 'dg-v5';
 const PAGES = `${VERSION}-pages`;
 const ASSETS = `${VERSION}-assets`;
+const SCRIPTURE = `${VERSION}-scripture`;
 const MAX_PAGES = 120;
+const MAX_SCRIPTURE = 40;
 // A chapter page with comprehensive word-by-word padas and multiple commentaries
 // can be up to 1MB. Capping at 1MB ensures all canonical texts are cached reliably.
 const MAX_PAGE_BYTES = 1024 * 1024;
@@ -110,6 +114,33 @@ self.addEventListener('fetch', (event) => {
         const res = await fetch(req);
         if (res.ok) (await caches.open(ASSETS)).put(req, res.clone());
         return res;
+      })(),
+    );
+    return;
+  }
+
+  // Visited scripture payloads. Network-first so a new text replaces the saved copy.
+  if (/\/data\/scriptures-full\/|\/data\/hi-commentary\/|\/search\/(?:core-index\.json|shards\/)/.test(url.pathname)) {
+    event.respondWith(
+      (async () => {
+        try {
+          const res = await fetch(req);
+          if (res.ok) {
+            const copy = res.clone();
+            const declared = Number(copy.headers.get('content-length'));
+            const size = declared > 0 ? declared : (await copy.clone().blob()).size;
+            if (size > 0 && size <= 2 * 1024 * 1024) {
+              const cache = await caches.open(SCRIPTURE);
+              await cache.put(req, copy);
+              trim(SCRIPTURE, MAX_SCRIPTURE);
+            }
+          }
+          return res;
+        } catch {
+          const cached = await caches.match(req, { cacheName: SCRIPTURE });
+          if (cached) return cached;
+          return new Response('', { status: 503 });
+        }
       })(),
     );
     return;

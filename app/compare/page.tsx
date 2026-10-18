@@ -1,11 +1,19 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import Link from 'next/link';
 import { SCRIPTURE_COMPARISONS } from '@/data/scripture-comparisons';
 
 export const metadata: Metadata = {
   title: 'शास्त्र साथ-साथ · Scripture pages side by side',
   description: 'Existing library pages listed beside each other. These notes do not decide a school.',
-  alternates: { canonical: '/compare' },
+  alternates: { canonical: '/compare/' },
+  openGraph: {
+    title: 'शास्त्र साथ-साथ · Scripture pages side by side',
+    description:
+      'Existing library pages listed beside each other. These notes do not decide a school.',
+    url: '/compare/',
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 export default function ComparePage() {

@@ -8,6 +8,8 @@ import {
   BookOpen,
   Copy,
   Check,
+  Download,
+  MessageCircle,
   Compass,
   ExternalLink,
   Heart,
@@ -31,6 +33,8 @@ import { TopicIllustration } from '../TopicIllustrations';
 import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
 import { ShareVerseButton } from '@/app/components/ShareVerseButton';
 import { ShareChips } from '@/app/components/ShareChips';
+import { downloadVerseCardPng } from '@/lib/verse-card-png';
+import { whatsappShareUrl } from '@/lib/whatsapp';
 
 export function TopicDetailClient({
   topic,
@@ -48,12 +52,37 @@ export function TopicDetailClient({
 }) {
   const [copiedVerseId, setCopiedVerseId] = useState<string | null>(null);
 
+  const [imageNote, setImageNote] = useState('');
+
   const handleCopyVerse = (verse: ScriptureReference) => {
     const textToCopy = `${verse.referenceDisplay}\n\n${verse.sanskritDevanagari}\n\n${verse.sanskritTransliteration}\n\n[Hindi]: ${verse.literalTranslationHi}\n\n[English]: ${verse.literalTranslationEn}\n\n— Via Dharma Granth (https://dharmagranth.in/wisdom-for-life/${topic.slug})`;
     navigator.clipboard.writeText(textToCopy).then(() => {
       setCopiedVerseId(verse.id);
       setTimeout(() => setCopiedVerseId(null), 2500);
     });
+  };
+
+  const handleWhatsAppVerse = (verse: ScriptureReference) => {
+    const href = whatsappShareUrl({
+      heading: verse.referenceDisplay,
+      body: [verse.sanskritDevanagari, verse.literalTranslationHi || verse.literalTranslationEn],
+      url: `https://dharmagranth.in/wisdom-for-life/${topic.slug}#verse-${verse.id}`,
+    });
+    window.open(href, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleDownloadVerse = async (verse: ScriptureReference) => {
+    try {
+      await downloadVerseCardPng({
+        reference: verse.referenceDisplay,
+        sanskrit: verse.sanskritDevanagari,
+        translation: verse.literalTranslationHi || verse.literalTranslationEn,
+        fileName: `dharmagranth-${verse.id}.png`,
+      });
+      setImageNote('');
+    } catch {
+      setImageNote('छवि नहीं बन सकी।');
+    }
   };
 
   return (
@@ -209,7 +238,7 @@ export function TopicDetailClient({
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                2, 3, 4 & 5. Scriptural Foundation • मूल श्लोक एवं शास्त्रीय संदर्भ
+                2. Scriptural Foundation • मूल श्लोक एवं शास्त्रीय संदर्भ
               </p>
               <h2 id="heading-curated-verses" className="text-2xl sm:text-3xl font-serif font-bold text-dharma-text">
                 Curated Scripture References ({topic.verses.length})
@@ -263,6 +292,26 @@ export function TopicDetailClient({
                       )}
                     </button>
 
+                    <button
+                      type="button"
+                      onClick={() => handleWhatsAppVerse(verse)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-dharma-border bg-dharma-card text-xs font-semibold text-dharma-text hover:border-emerald-500 hover:text-emerald-800 transition"
+                      aria-label={`WhatsApp Share ${verse.referenceDisplay}`}
+                    >
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      <span>WhatsApp Share</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleDownloadVerse(verse)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-dharma-border bg-dharma-card text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:text-saffron-800 transition"
+                      aria-label={`Download Image ${verse.referenceDisplay}`}
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Download Image</span>
+                    </button>
+
                     <ShareVerseButton
                       scriptureTitle={verse.scriptureName}
                       chapterTitle={`अध्याय ${verse.chapterNumber}`}
@@ -283,6 +332,7 @@ export function TopicDetailClient({
                       <ExternalLink className="w-3 h-3" />
                     </Link>
                   </div>
+                  {imageNote ? <p role="status" className="mt-2 text-xs text-rose-800">{imageNote}</p> : null}
                 </div>
 
                 <div className="p-6 sm:p-8 space-y-6">
@@ -338,7 +388,7 @@ export function TopicDetailClient({
                     <div className="flex items-center gap-2">
                       <Scroll className="w-4 h-4 text-saffron-600" />
                       <h4 className="text-xs font-bold uppercase tracking-wider text-dharma-text">
-                        5. Traditional context (पारंपरिक संदर्भ)
+                        Traditional context (पारंपरिक संदर्भ)
                       </h4>
                     </div>
 
@@ -420,7 +470,7 @@ export function TopicDetailClient({
             </div>
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
-                6. Practical Reflection • व्यावहारिक मनन एवं साधना
+                3. Practical Reflection • व्यावहारिक मनन एवं साधना
               </p>
               <h2 id="heading-practical-reflection" className="text-2xl font-serif font-bold text-dharma-text">
                 Bringing Scriptural Truth into Daily Living
@@ -492,7 +542,7 @@ export function TopicDetailClient({
             <div className="flex items-center gap-2 mb-4">
               <Tag className="w-4 h-4 text-saffron-600" />
               <h3 className="text-lg font-serif font-bold text-dharma-text">
-                7. Related Concepts (संबंधित अवधारणाएं)
+                4. Related Concepts (संबंधित अवधारणाएं)
               </h3>
             </div>
             <p className="text-xs text-dharma-muted mb-4">
@@ -527,7 +577,7 @@ export function TopicDetailClient({
             <div className="flex items-center gap-2 mb-4">
               <BookOpen className="w-4 h-4 text-saffron-600" />
               <h3 className="text-lg font-serif font-bold text-dharma-text">
-                8. Related Scriptures (संबंधित ग्रंथ)
+                5. Related Scriptures (संबंधित ग्रंथ)
               </h3>
             </div>
             <p className="text-xs text-dharma-muted mb-4">
@@ -567,7 +617,7 @@ export function TopicDetailClient({
           <div className="flex items-center gap-2 mb-4">
             <Scroll className="w-4 h-4 text-saffron-600" />
             <h3 id="heading-sources" className="text-lg font-serif font-bold text-dharma-text">
-              9. Sources (स्रोत)
+              6. Sources (स्रोत)
             </h3>
           </div>
 
@@ -589,8 +639,8 @@ export function TopicDetailClient({
                   <tr key={i} className="text-dharma-text">
                     <td className="py-3 pr-4 font-semibold">{src.textName}</td>
                     <td className="py-3 px-4">
-                      <span className="block">{src.citation}</span>
-                      <span className="block text-xs text-dharma-muted">{src.section}</span>
+                      <span className="block">{src.citation}</span>{' '}
+                      <span className="block text-xs text-dharma-muted">§ {src.section}</span>
                     </td>
                   </tr>
                 ))}
@@ -607,7 +657,7 @@ export function TopicDetailClient({
                 <li key={v.id}>
                   <Link href={wisdomVerseHref(v)} className="inline-flex min-h-[44px] items-center text-sm font-semibold text-saffron-800 underline underline-offset-4 dark:text-saffron-300">
                     {v.referenceDisplay} · library ch. {loc.chapter}, v. {loc.verse}
-                  </Link>
+                  </Link>{' '}
                   {facts?.host && (
                     <span className="block text-xs text-dharma-muted">
                       Sanskrit from {facts.host}
@@ -634,7 +684,7 @@ export function TopicDetailClient({
             <div className="space-y-3">
               <div className="flex items-center gap-2 flex-wrap">
                 <h3 id="heading-contextual-note" className="text-base sm:text-lg font-serif font-bold text-dharma-text">
-                  10. {topic.contextualNote.headlineEn}
+                  7. {topic.contextualNote.headlineEn}
                 </h3>
                 <span lang="hi" className="text-xs font-devanagari text-amber-700 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20 font-semibold">
                   {topic.contextualNote.headlineHi}

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Daily Verse for WhatsApp · दैनिक श्लोक',
   description:
     "Today's verse as a ready-to-send WhatsApp message: Sanskrit, Hindi and English meaning, and a link to the verse. Copy it into a WhatsApp Channel or send it to a friend.",
-  alternates: { canonical: '/daily-verse' },
+  alternates: { canonical: '/daily-verse/' },
 };
 
 export default function DailyVersePage() {

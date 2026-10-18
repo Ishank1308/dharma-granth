@@ -96,9 +96,40 @@ export function PanchangCalendar() {
     }
   }, [selectedDate, location, panchang]);
 
+  // A ?date=YYYY-MM-DD in the URL wins on first load; otherwise resolve to today at the location.
+  const [urlDateChecked, setUrlDateChecked] = useState(false);
   useEffect(() => {
+    if (urlDateChecked) return;
+    setUrlDateChecked(true);
+    try {
+      const raw = new URLSearchParams(window.location.search).get('date');
+      const m = raw && /^(\d{4})-(\d{2})-(\d{2})$/.exec(raw);
+      if (m) {
+        setDateWasPicked(true);
+        setSelectedDate(new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]), 12, 0, 0));
+      }
+    } catch {
+      // Ignore a malformed URL.
+    }
+  }, [urlDateChecked]);
+
+  useEffect(() => {
+    if (!urlDateChecked) return;
     if (!dateWasPicked) setSelectedDate(todayForLocation(location));
-  }, [location, dateWasPicked]);
+  }, [location, dateWasPicked, urlDateChecked]);
+
+  // Keep the address bar in step with a picked date so the page can be shared or bookmarked.
+  useEffect(() => {
+    if (!urlDateChecked) return;
+    try {
+      const url = new URL(window.location.href);
+      if (dateWasPicked) url.searchParams.set('date', toIsoDate(selectedDate));
+      else url.searchParams.delete('date');
+      window.history.replaceState(null, '', url.toString());
+    } catch {
+      // History can be unavailable in embedded views.
+    }
+  }, [selectedDate, dateWasPicked, urlDateChecked]);
 
   const handlePrevDay = () => {
     setDateWasPicked(true);

@@ -25,6 +25,7 @@ import {
 import { useTheme } from '@/app/components/ThemeProvider';
 import { toDevanagari } from '@/lib/verse-format';
 import { whatsappShareUrl } from '@/lib/whatsapp';
+import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import { EmbedVerseDialog } from '@/app/components/EmbedVerseDialog';
 import { useStudyProgress } from '@/lib/useStudyProgress';
 import { useReaderSettings } from '@/lib/useReaderSettings';
@@ -203,6 +204,19 @@ export function VerseReader(props: VerseReaderProps) {
     body: [(verse.sanskrit ?? '').trim(), (verse.hindi ?? verse.translation ?? '').trim()],
     url: pageUrl,
   });
+  const onDownloadImage = async () => {
+    try {
+      await downloadVerseCardPng({
+        reference: `${label}`,
+        sanskrit: verse.sanskrit,
+        translation: verse.hindi || verse.translation,
+        fileName: `dharmagranth-${scriptureId}-${chapterId}-${verse.number}.png`,
+      });
+      say('Image downloaded');
+    } catch {
+      say('Could not draw the image');
+    }
+  };
   const onDownload = () => {
     const blob = new Blob([buildDownloadMarkdown(ref, verse, provenance)], { type: 'text/markdown;charset=utf-8' });
     const url = URL.createObjectURL(blob);
@@ -536,6 +550,9 @@ export function VerseReader(props: VerseReaderProps) {
             >
               <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
             </a>
+            <button type="button" onClick={onDownloadImage} className={actionBtn} aria-label="Download Image">
+              <Download className="h-4 w-4" aria-hidden="true" /> Download Image
+            </button>
             <button type="button" onClick={() => setDialog('embed')} aria-haspopup="dialog" className={actionBtn}>
               <Code2 className="h-4 w-4" aria-hidden="true" /> Embed
             </button>
