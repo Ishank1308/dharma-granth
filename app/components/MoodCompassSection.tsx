@@ -314,7 +314,8 @@ export function MoodCompassSection() {
             </h3>
           </div>
           <span className="text-xs text-stone-500 dark:text-stone-400">
-            {currentMood.subheadHi}
+            <span className="block">{currentMood.subheadHi}</span>
+            <span className="mt-0.5 block text-[11px] opacity-80">{currentMood.subheadEn}</span>
           </span>
         </div>
 
@@ -375,7 +376,7 @@ export function MoodCompassSection() {
                       </button>
                     </div>
 
-                    <p lang="sa" className="font-devanagari text-xs font-bold text-stone-900 dark:text-stone-100 leading-relaxed line-clamp-2">
+                    <p lang="sa" className="font-devanagari text-xs font-bold text-stone-900 dark:text-stone-100 leading-relaxed">
                       {v.sanskrit}
                     </p>
 
