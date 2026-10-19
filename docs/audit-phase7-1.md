@@ -72,3 +72,14 @@ Not tested at all: Story Deck swipe, Quote Studio PNG output, reduced-motion beh
 5. Fix the Mood Compass accessibility gaps.
 6. Replace the one-line re-export shims with the actual component files in `app/`.
 7. Watch the 20,000-file deploy limit.
+
+## 6. Repairs done (2026-10-19, in the main checkout's working tree; not yet committed there)
+
+Re-reading the data field by field corrected part of section 2.
+
+- **Real data loss, repaired:** `ramcharitmanas.json`: all 35 English `translation` values had been overwritten with Hindi (the Hindi was already in `hindi`). Restored the 35 English translations from HEAD. `viduraniti.json`: verses 4.31 and 7.21 had `translation` replaced by the two characters "चन"; restored the English from HEAD.
+- **Not defects after all:** the Purana files (vamanpuran, kurmapuran, markandeypuran, naradapuran, brahmapuran, brahmandpuran, harivanshpuran, yajurveda, tejobindu) only *added* text to previously empty verses, each in the right language (translation English, hindi Hindi, science English). Vidur Niti's 276 removed `science` values were duplicates of text kept in `hindi`; Ramcharitmanas' removed `science` was likewise a duplicate of `hindi`. These are an architecture issue (editorial text stored inside scripture JSON), not language errors. Section 2's wording on those files was too strong.
+- **Verified after repair:** per-field language comparison against HEAD shows no remaining `translation` language changes; canonical Sanskrit and IAST unchanged (earlier check).
+- **Accessibility (Mood Compass):** the six mood buttons now carry `aria-pressed` (1 of 6 true); the three listen buttons now have an `aria-label` ("श्लोक उच्चारण सुनें · Gita 6.26", etc.). Checked in the running app: 0 buttons without an accessible name.
+
+Still open from the plan: commit Phase 7 in slices, the typed `VerseEditorialLayer` overlay, replacing the re-export shims, browser tests of Story Deck / Quote Studio / swipe / reduced motion / 375 px, and the 20,000-file deploy limit.
