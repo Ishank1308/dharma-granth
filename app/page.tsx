@@ -3,15 +3,12 @@ import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { HeroSection } from '@/app/components/HeroSection';
 import { SplashScreen } from '@/app/components/SplashScreen';
 import { ContinueReading } from '@/app/components/ContinueReading';
-import { VerseOfTheDaySection } from '@/app/components/VerseOfTheDaySection';
+import { VerseOfTheDayCompact } from '@/app/components/VerseOfTheDayCompact';
 import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
 import { SadhanaPreviewSection } from '@/app/components/SadhanaPreviewSection';
-import { PanchangPreviewSection } from '@/app/components/PanchangPreviewSection';
-import { Experience3DSection } from '@/app/components/Experience3DSection';
-import { getLibraryCounts } from '@/data/scriptures';
-import { formatCountDevanagari } from '@/lib/holdings-label';
+import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
 import { SiteFooter } from '@/app/components/SiteFooter';
 
 export const metadata: Metadata = {
@@ -44,43 +41,37 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const gita = getLibraryCounts('bhagavadgita');
-  const gitaCountLabel = `${formatCountDevanagari(gita.chapters)} अध्याय · ${formatCountDevanagari(gita.verses)} श्लोक`;
   return (
     <>
       <main className="min-h-screen bg-dharma-bg text-dharma-text selection:bg-amber-200 selection:text-amber-900">
-      {/* Visual Splash / Orientation for first-time direct visitors */}
-      <SplashScreen />
+        {/* Brand splash: CSS-only, once per session, hidden from assistive tech */}
+        <SplashScreen />
 
-      {/* 1. HERO SECTION */}
-      <HeroSection />
+        {/* 1. What this is, and search */}
+        <HeroSection />
 
-      {/* 2. CONTINUE READING / START HERE */}
-      <ContinueReading />
+        {/* 2. Continue reading, or a beginner path when there is no history */}
+        <ContinueReading />
 
-      {/* 3. VERSE OF THE DAY */}
-      <VerseOfTheDaySection />
+        {/* 3. Verse of the day, compact */}
+        <VerseOfTheDayCompact />
 
-      {/* 4. BROWSE BY LIFE SITUATION */}
-      <LifeSituationsSection />
+        {/* 4. Browse by scripture category */}
+        <CategoryExploreSection />
 
-      {/* 5. FEATURED SCRIPTURES */}
-      <FeaturedScripturesSection />
+        {/* 5. Browse by life situation */}
+        <LifeSituationsSection />
 
-      {/* 6. EXPLORE BY CATEGORY */}
-      <CategoryExploreSection />
+        {/* 6. Recommended scriptures */}
+        <FeaturedScripturesSection />
 
-      {/* 7. SADHANA PREVIEW */}
-      <SadhanaPreviewSection />
+        {/* 7. Practice tools preview */}
+        <SadhanaPreviewSection />
 
-      {/* 8. PANCHANG PREVIEW */}
-      <PanchangPreviewSection />
-
-      {/* 9. 3D EXPERIENCE */}
-      <Experience3DSection gitaCountLabel={gitaCountLabel} />
-    </main>
-    {/* Site Footer with sources, methodology, and quiet contemplation */}
-    <SiteFooter />
-  </>
+        {/* 8. Trust, sourcing and methodology */}
+        <HomeTrustStrip />
+      </main>
+      <SiteFooter />
+    </>
   );
 }
