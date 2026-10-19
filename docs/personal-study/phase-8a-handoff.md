@@ -5,6 +5,12 @@ Freeze date: 2026-10-19 (Asia/Calcutta)
 Phase 8A implementation is feature-frozen. UI integration and product-scope
 expansion are deferred until Phase 7 is complete.
 
+The authoritative coordination documents are
+[Phase 7 protected-file manifest](./phase-7-protected-files.md) and
+[post-Phase-7 integration contract](./post-phase-7-integration.md). They are
+the source of truth for protected Phase 7 paths, privacy and insertion
+boundaries, expected conflict surfaces, and the Phase 8B integration order.
+
 ## Repository state
 
 - Worktree: `C:/Users/ishan/.codex/worktrees/phase-8a-private-study-foundation/dharma-granth`
