@@ -19,17 +19,22 @@ import { normalizeForSearch, normalizeTransliteration } from '@/lib/normalize-se
 import { toAsciiDigits, toDevanagari } from '@/lib/verse-format';
 import { useStudyProgress, type VerseRef } from '@/lib/useStudyProgress';
 import { updateLastVerse } from '@/lib/reading-history';
-import { AddToCollectionModal } from './AddToCollectionModal';
-import { ContributeMeaningModal } from './ContributeMeaningModal';
+import dynamic from 'next/dynamic';
+import { useEverTrue } from '@/lib/use-ever-true';
+
+// Dialogs and alternate reading modes load the first time they are used, so they stay out of the chapter's first-load JS.
+const AddToCollectionModal = dynamic(() => import('./AddToCollectionModal').then((m) => m.AddToCollectionModal), { ssr: false });
+const ContributeMeaningModal = dynamic(() => import('./ContributeMeaningModal').then((m) => m.ContributeMeaningModal), { ssr: false });
 import { VerseCard } from './VerseCard';
 import { ReadingDepthSwitch } from '@/app/components/reader/ReadingDepthSwitch';
 import { useReadingDepth } from '@/lib/reading-depth';
 import { VerseText } from './VerseText';
-import { MobileFocusMode } from './MobileFocusMode';
-import { ConversationModeView } from './conversation/ConversationModeView';
+const MobileFocusMode = dynamic(() => import('./MobileFocusMode').then((m) => m.MobileFocusMode), { ssr: false });
+const ConversationModeView = dynamic(() => import('./conversation/ConversationModeView').then((m) => m.ConversationModeView), { ssr: false });
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { saveChapterVersesToDB, getCachedChapterVersesFromDB } from '@/lib/db/granth-indexeddb';
-import { SvadhyayaSplitDrawer, type SvadhyayaTab } from '@/components/reader/SvadhyayaSplitDrawer';
+import type { SvadhyayaTab } from '@/components/reader/SvadhyayaSplitDrawer';
+const SvadhyayaSplitDrawer = dynamic(() => import('@/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
 import { MobileOneThumbControlBar } from './reader/MobileOneThumbControlBar';
 import {
   saveReadingPosition,
@@ -154,6 +159,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   // collections are passed down to each VerseCard.
   const { recordReading, getNote, setNote, getHighlight, toggleHighlight, collections } = useStudyProgress();
   const [collectionVerse, setCollectionVerse] = useState<VerseRef | null>(null);
+  const contributeLoaded = useEverTrue(Boolean(contributeVerse));
+  const collectionLoaded = useEverTrue(Boolean(collectionVerse));
+  const focusLoaded = useEverTrue(focusModeOpen);
 
   const getCollectionCount = (verseNum: number | string) => {
     return collections.filter((c) =>
@@ -175,6 +183,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
 
   // ── Svadhyaya Split Workbench & Mobile Drawer State ──
   const [svadhyayaOpen, setSvadhyayaOpen] = useState(false);
+  const svadhyayaLoaded = useEverTrue(svadhyayaOpen);
   const [svadhyayaTab, setSvadhyayaTab] = useState<SvadhyayaTab>('concept');
   const [svadhyayaConcept, setSvadhyayaConcept] = useState<string | null>(null);
   const [svadhyayaParallel, setSvadhyayaParallel] = useState<{
@@ -1098,6 +1107,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       )}
 
       {/* Svadhyaya Split Workbench (Desktop sticky workbench / Mobile bottom sheet) */}
+      {svadhyayaLoaded && (
       <SvadhyayaSplitDrawer
         isOpen={svadhyayaOpen}
         onClose={() => setSvadhyayaOpen(false)}
@@ -1114,6 +1124,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           }
         }}
       />
+      )}
 
       {/* Mobile One-Thumb Reader Control Bar (<768px) */}
       {state.kind === 'ready' && state.verses.length > 0 && (
@@ -1157,6 +1168,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     </section>
 
       {/* Single contribute modal for bulk verses */}
+      {contributeLoaded && (
       <ContributeMeaningModal
         open={!!contributeVerse}
         onClose={() => setContributeVerse(null)}
@@ -1174,15 +1186,19 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           lifeLesson: contributeVerse?.lifeLesson,
         }}
       />
+      )}
 
       {/* Add verse to collection modal */}
+      {collectionLoaded && (
       <AddToCollectionModal
         open={Boolean(collectionVerse)}
         onClose={() => setCollectionVerse(null)}
         verse={collectionVerse}
       />
+      )}
 
       {/* Fullscreen Mobile & Screen Focus Mode */}
+      {focusLoaded && (
       <MobileFocusMode
         isOpen={focusModeOpen}
         onClose={() => setFocusModeOpen(false)}
@@ -1198,6 +1214,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         onToggleBookmark={(v) => toggleBookmark(v as FullVerse)}
         onVerseChange={(verseNum) => scrollToVerse(verseNum)}
       />
+      )}
     </>
   );
 }

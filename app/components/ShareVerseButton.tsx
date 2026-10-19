@@ -2,7 +2,14 @@
 
 import { useState } from 'react';
 import { Share2 } from 'lucide-react';
-import { PatrikaShareStudioModal } from '@/app/components/share/PatrikaShareStudioModal';
+import dynamic from 'next/dynamic';
+import { useEverTrue } from '@/lib/use-ever-true';
+
+// Loaded the first time it opens, so the dialog stays out of the page's first-load JS.
+const PatrikaShareStudioModal = dynamic(
+  () => import('@/app/components/share/PatrikaShareStudioModal').then((m) => m.PatrikaShareStudioModal),
+  { ssr: false },
+);
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 interface Props {
@@ -38,6 +45,7 @@ export function ShareVerseButton(props: Props) {
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
+  const studioLoaded = useEverTrue(isOpen);
 
   const currentUrl =
     verseUrl ||
@@ -75,6 +83,7 @@ export function ShareVerseButton(props: Props) {
         </button>
       )}
 
+      {studioLoaded && (
       <PatrikaShareStudioModal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -90,6 +99,7 @@ export function ShareVerseButton(props: Props) {
           url: currentUrl,
         }}
       />
+      )}
     </>
   );
 }

@@ -24,8 +24,7 @@ import { triggerTactileFeedback } from '@/lib/haptics';
 import { PedagogicalVerseCard, type ContemplationTier } from '@/app/components/PedagogicalVerseCard';
 import { getPedagogicalVerse } from '@/data/pedagogical-registry';
 import { DAILY_WISDOM_REGISTRY } from '@/data/daily-wisdom-engine';
-import { SacredShareModal } from '@/app/components/share/SacredShareModal';
-import { StoryDeckModal } from '@/components/reader/StoryDeckModal';
+import { useEverTrue } from '@/lib/use-ever-true';
 import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
 
 export interface VerseOfTheDayItem {
@@ -42,6 +41,10 @@ export interface VerseOfTheDayItem {
   reflection: string;
   source: string;
 }
+
+// The share and story dialogs also load on first open.
+const SacredShareModal = dynamic(() => import('@/app/components/share/SacredShareModal').then((m) => m.SacredShareModal), { ssr: false });
+const StoryDeckModal = dynamic(() => import('@/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
 
 // Loaded on demand (first click on Embed) so the dialog stays out of the page's first-load JS.
 const EmbedVerseDialog = dynamic(
@@ -82,6 +85,8 @@ export function VerseOfTheDaySection() {
   const [genericTier, setGenericTier] = useState<ContemplationTier>('simple');
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isStoryDeckOpen, setIsStoryDeckOpen] = useState(false);
+  const shareLoaded = useEverTrue(isShareModalOpen);
+  const storyDeckLoaded = useEverTrue(isStoryDeckOpen);
 
   useEffect(() => {
     const dayIdx = getDayOfYear() % FEATURED_VERSES.length;
@@ -568,6 +573,7 @@ export function VerseOfTheDaySection() {
           onNotice={showToast}
         />
       )}
+      {shareLoaded && (
       <SacredShareModal
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
@@ -582,7 +588,8 @@ export function VerseOfTheDaySection() {
           url: typeof window !== 'undefined' ? `${window.location.origin}${readHref(current.scriptureId, current.chapterId, current.verseId)}` : `https://dharmagranth.in${readHref(current.scriptureId, current.chapterId, current.verseId)}`,
         }}
       />
-      {current && (
+      )}
+      {current && storyDeckLoaded && (
         <StoryDeckModal
           isOpen={isStoryDeckOpen}
           onClose={() => setIsStoryDeckOpen(false)}

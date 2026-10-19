@@ -39,8 +39,12 @@ import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
 import type { ReadingDepth } from '@/lib/reading-depth';
 import { ActionMenu } from '@/app/components/primitives/ActionMenu';
 import { Collapsible } from '@/app/components/primitives/Collapsible';
-import { StoryDeckModal } from '@/components/reader/StoryDeckModal';
-import { CitationModal } from '@/components/study/CitationModal';
+import dynamic from 'next/dynamic';
+import { useEverTrue } from '@/lib/use-ever-true';
+
+// Loaded the first time it opens, so the dialog stays out of the page's first-load JS.
+const StoryDeckModal = dynamic(() => import('@/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
+const CitationModal = dynamic(() => import('@/components/study/CitationModal').then((m) => m.CitationModal), { ssr: false });
 import { saveAnnotation, deleteAnnotation } from '@/lib/study/storage';
 
 export interface VerseCardData {
@@ -274,6 +278,8 @@ export function VerseCard({
 
   // ── 60-Second Story Deck Modal & Literary Essayist Metadata ──
   const [storyDeckOpen, setStoryDeckOpen] = useState(false);
+  const storyDeckLoaded = useEverTrue(storyDeckOpen);
+  const citationLoaded = useEverTrue(citationModalOpen);
   const literaryMeta = useMemo(() => {
     return getLiteraryVerseMeta(scriptureId, chapterId, v.number, {
       sanskrit: v.sanskrit,
@@ -1153,6 +1159,7 @@ export function VerseCard({
         )}
       </div>
 
+      {storyDeckLoaded && (
       <StoryDeckModal
         isOpen={storyDeckOpen}
         onClose={() => setStoryDeckOpen(false)}
@@ -1169,7 +1176,9 @@ export function VerseCard({
           verseHref: shareVerseUrl(SITE_URL, scriptureId, chapterId, v.number),
         }}
       />
+      )}
 
+      {citationLoaded && (
       <CitationModal
         isOpen={citationModalOpen}
         onClose={() => setCitationModalOpen(false)}
@@ -1185,6 +1194,7 @@ export function VerseCard({
           verseUrl: shareVerseUrl(SITE_URL, scriptureId, chapterId, v.number),
         }}
       />
+      )}
     </article>
   );
 }

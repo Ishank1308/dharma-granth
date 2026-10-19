@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useId, useRef, useState } from 'react';
 import {
   X,
   Copy,
@@ -24,6 +24,28 @@ interface Props {
 export function CitationModal({ isOpen, onClose, params }: Props) {
   const [activeFormat, setActiveFormat] = useState<CitationFormat>('apa');
   const [copied, setCopied] = useState(false);
+  const titleId = useId();
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
+
+  // Move focus into the dialog, close on Escape, and hand focus back when it closes.
+  useEffect(() => {
+    if (!isOpen) return;
+    const opener = document.activeElement as HTMLElement | null;
+    closeRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.stopPropagation();
+        onCloseRef.current();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      if (opener?.isConnected) opener.focus();
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -62,6 +84,9 @@ export function CitationModal({ isOpen, onClose, params }: Props) {
 
         {/* Modal Window */}
         <motion.div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={titleId}
           initial={{ opacity: 0, scale: 0.95, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -73,11 +98,12 @@ export function CitationModal({ isOpen, onClose, params }: Props) {
               <p className="font-mono text-[11px] uppercase tracking-widest text-saffron-700 dark:text-saffron-400 font-bold">
                 शास्त्रीय संदर्भ उद्धरण · Scholarly Citation
               </p>
-              <h3 className="font-serif text-lg sm:text-xl font-bold text-stone-900 dark:text-stone-100 mt-0.5">
+              <h3 id={titleId} className="font-serif text-lg sm:text-xl font-bold text-stone-900 dark:text-stone-100 mt-0.5">
                 {params.scriptureTitle} {params.chapterId}.{params.verseNum}
               </h3>
             </div>
             <button
+              ref={closeRef}
               type="button"
               onClick={onClose}
               className="p-2 rounded-full text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800 transition"

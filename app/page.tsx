@@ -8,9 +8,7 @@ import { VerseOfTheDaySection } from '@/app/components/VerseOfTheDaySection';
 import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
-import { SadhanaPreviewSection } from '@/app/components/SadhanaPreviewSection';
-import { PanchangPreviewSection } from '@/app/components/PanchangPreviewSection';
-import { Experience3DSection } from '@/app/components/Experience3DSection';
+import { LazyExperience3D, LazyPanchangPreview, LazySadhanaPreview } from '@/app/components/LazyHomeSections';
 import { getLibraryCounts } from '@/data/scriptures';
 import { formatCountDevanagari } from '@/lib/holdings-label';
 import { SiteFooter } from '@/app/components/SiteFooter';
@@ -75,13 +73,13 @@ export default function HomePage() {
       <CategoryExploreSection />
 
       {/* 7. SADHANA PREVIEW */}
-      <SadhanaPreviewSection />
+      <LazySadhanaPreview />
 
       {/* 8. PANCHANG PREVIEW */}
-      <PanchangPreviewSection />
+      <LazyPanchangPreview />
 
       {/* 9. 3D EXPERIENCE */}
-      <Experience3DSection gitaCountLabel={gitaCountLabel} />
+      <LazyExperience3D gitaCountLabel={gitaCountLabel} />
     </main>
     {/* Site Footer with sources, methodology, and quiet contemplation */}
     <SiteFooter />
