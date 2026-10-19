@@ -166,7 +166,7 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   brahmandpuran: 5,
   brahmapuran: 4,
   brihadaranyaka: 15,
-  chandogya: 10,
+  chandogya: 26,
   devibhagavat: 89,
   garudpurana: 9,
   harivanshpuran: 2,
