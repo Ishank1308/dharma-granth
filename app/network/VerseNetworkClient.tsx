@@ -314,7 +314,7 @@ export function VerseNetworkClient() {
             {selectedSeed.sanskrit}
           </p>
           <p className="text-sm leading-relaxed text-dharma-muted italic">
-            "{selectedSeed.translation}"
+            &ldquo;{selectedSeed.translation}&rdquo;
           </p>
         </blockquote>
       </section>
