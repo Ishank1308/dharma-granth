@@ -12,6 +12,7 @@ import {
   RotateCcw,
   SlidersHorizontal,
   Sparkles,
+  Volume2,
   X,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -20,6 +21,13 @@ import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
 import { canonicalVerseId } from '@/lib/canonical-verse-id';
 import { resolveKeywordTarget } from '@/lib/keyword-links';
 import { isTanpuraPlaying, toggleTanpura, subscribeTanpura } from '@/lib/tanpura-audio';
+import {
+  startSoundscape,
+  stopSoundscape,
+  setCurrentVerseContext,
+  subscribeSoundscape,
+  type SoundscapeState,
+} from '@/lib/sacred-soundscape';
 import { splitVerseLines } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
@@ -115,6 +123,7 @@ export function MobileFocusMode({
   const [showMenu, setShowMenu] = useState(false);
 
   const [tanpuraActive, setTanpuraActive] = useState(false);
+  const [recitationActive, setRecitationActive] = useState(false);
 
   useEffect(() => {
     setTanpuraActive(isTanpuraPlaying());
@@ -123,8 +132,13 @@ export function MobileFocusMode({
       setTanpuraActive(active);
     });
 
+    const unsubSoundscape = subscribeSoundscape((st: SoundscapeState) => {
+      setRecitationActive(st.isPlaying && st.activeTrack === 'recitation');
+    });
+
     return () => {
       unsubTanpura();
+      unsubSoundscape();
     };
   }, []);
 
@@ -148,6 +162,16 @@ export function MobileFocusMode({
 
   const currentVerse: FocusVerse | undefined = verses[currentIndex];
   const verseKey = currentVerse ? currentVerse.sanskrit || currentVerse.hindi || currentVerse.translation || '' : '';
+
+  // Update soundscape context on verse change if recitation is playing
+  useEffect(() => {
+    if (recitationActive && currentVerse?.sanskrit) {
+      setCurrentVerseContext(
+        currentVerse.sanskrit,
+        `${scriptureTitle} ${chapterTitle}, श्लोक ${currentVerse.number}`
+      );
+    }
+  }, [currentIndex, recitationActive, currentVerse, scriptureTitle, chapterTitle]);
 
   // Navigate to previous/next verse
   const goTo = useCallback(
@@ -271,6 +295,36 @@ export function MobileFocusMode({
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2">
+            {/* Sanskrit Recitation Audio */}
+            {currentVerse.sanskrit && (
+              <button
+                type="button"
+                onClick={() => {
+                  triggerTactileFeedback('selection', 'click');
+                  if (recitationActive) {
+                    stopSoundscape();
+                  } else {
+                    setCurrentVerseContext(
+                      currentVerse.sanskrit,
+                      `${scriptureTitle} ${chapterTitle}, श्लोक ${currentVerse.number}`
+                    );
+                    startSoundscape('recitation');
+                  }
+                }}
+                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold border transition ${
+                  recitationActive
+                    ? 'border-amber-400/80 bg-amber-500/20 text-amber-300 shadow-sm ring-1 ring-amber-400/40'
+                    : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
+                }`}
+                title={recitationActive ? 'श्लोक उच्चारण रोकें' : 'श्लोक उच्चारण सुनें (Listen to Recitation)'}
+                aria-pressed={recitationActive}
+                aria-label="श्लोक उच्चारण"
+              >
+                <Volume2 className={`h-3 w-3 ${recitationActive ? 'text-amber-400 animate-pulse' : ''}`} />
+                <span className="hidden sm:inline">उच्चारण</span>
+              </button>
+            )}
+
             {/* Tanpura Sacred Drone Ambience */}
             <button
               type="button"

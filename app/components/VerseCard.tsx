@@ -19,6 +19,7 @@ import {
   ScrollText,
   Sparkles,
   StickyNote,
+  Volume2,
   X,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -93,6 +94,10 @@ interface Props {
   onOpenFocus?: () => void;
   /** Dedicated verse page, linked from the card so the URL survives hydration. */
   versePageHref?: string;
+  /** Whether this verse is currently being recited */
+  isReciting?: boolean;
+  /** Callback to trigger recitation of this verse */
+  onPlayRecitation?: () => void;
 }
 
 type TabId = 'meaning' | 'explain' | 'science';
@@ -184,6 +189,8 @@ export function VerseCard({
   onHighlight,
   onOpenFocus,
   versePageHref,
+  isReciting,
+  onPlayRecitation,
 }: Props) {
   const reduce = useReducedMotion();
   const cardRef = useRef<HTMLElement>(null);
@@ -292,11 +299,17 @@ export function VerseCard({
       ref={cardRef}
       id={`verse-${v.number}`}
       onPointerMove={onPointerMove}
-      className={`verse-card group relative scroll-mt-24 rounded-[28px] border border-dharma-border bg-dharma-card card-3d-depth ${
-        highlight ? HIGHLIGHTS[highlight].ring : chantingMode ? 'ring-2 ring-saffron-500/25' : ''
+      className={`verse-card group relative scroll-mt-24 rounded-[28px] border bg-dharma-card card-3d-depth transition-all duration-300 ${
+        isReciting
+          ? 'border-amber-400/80 ring-2 ring-amber-400/60 shadow-xl shadow-amber-500/15'
+          : highlight
+          ? `${HIGHLIGHTS[highlight].ring} border-dharma-border`
+          : chantingMode
+          ? 'ring-2 ring-saffron-500/25 border-dharma-border'
+          : 'border-dharma-border'
       } ${getVerseGraphicClass(category)}`}
       style={getVerseGraphicStyle({ category, verseId: v.number })}
-      aria-label={`श्लोक ${verseLabel}${highlight ? ` · ${HIGHLIGHTS[highlight].label} हाइलाइट` : ''}`}
+      aria-label={`श्लोक ${verseLabel}${isReciting ? ' · श्लोक उच्चारण चालू' : ''}${highlight ? ` · ${HIGHLIGHTS[highlight].label} हाइलाइट` : ''}`}
     >
       {/* Clips the decorative layers to the rounded card; kept separate so
           the highlight picker can overflow the card edge. */}
@@ -305,7 +318,11 @@ export function VerseCard({
         {/* Gilded spine, like the binding edge of a manuscript leaf; takes the highlight colour */}
         <div
           className={`absolute inset-y-8 left-0 rounded-r-full bg-gradient-to-b opacity-80 ${
-            highlight ? `w-1.5 ${HIGHLIGHTS[highlight].spine}` : 'w-1 from-amber-300 via-saffron-500 to-rose-500'
+            isReciting
+              ? 'w-2 from-amber-300 via-amber-500 to-amber-600 shadow-sm'
+              : highlight
+              ? `w-1.5 ${HIGHLIGHTS[highlight].spine}`
+              : 'w-1 from-amber-300 via-saffron-500 to-rose-500'
           }`}
         />
       </div>
@@ -349,6 +366,24 @@ export function VerseCard({
             role="toolbar"
             aria-label="श्लोक विकल्प (Verse actions)"
           >
+            {/* Audio Recitation button */}
+            {onPlayRecitation && v.sanskrit && (
+              <button
+                type="button"
+                onClick={onPlayRecitation}
+                className={`${iconButton} ${isReciting ? '!border-amber-400 !bg-amber-500/20 !text-amber-700 dark:!text-amber-300 ring-2 ring-amber-400/50' : ''}`}
+                aria-pressed={isReciting}
+                aria-label={isReciting ? 'श्लोक उच्चारण रोकें (Pause recitation)' : 'श्लोक उच्चारण सुनें (Listen to verse recitation)'}
+                title={isReciting ? 'श्लोक उच्चारण रोकें' : 'श्लोक उच्चारण सुनें'}
+              >
+                {isReciting ? (
+                  <Volume2 className="h-4 w-4 text-amber-600 dark:text-amber-400 animate-pulse" />
+                ) : (
+                  <Volume2 className="h-4 w-4" />
+                )}
+              </button>
+            )}
+
             <button
               type="button"
               onClick={onToggleBookmark}
@@ -510,7 +545,9 @@ export function VerseCard({
 
         {/* ── Sanskrit on a manuscript leaf ───────────────────── */}
         {lines.length > 0 && (
-          <div className="verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8">
+          <div className={`verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8 transition-colors ${
+            isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
+          }`}>
             <span aria-hidden="true" className="verse-leaf-ornament left-3 top-2">❁</span>
             <span aria-hidden="true" className="verse-leaf-ornament right-3 top-2">❁</span>
             <div className="mb-3.5 flex justify-center">

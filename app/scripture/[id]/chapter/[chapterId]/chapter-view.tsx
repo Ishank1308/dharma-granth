@@ -30,6 +30,7 @@ import { ArrowLeft, ArrowRight, BookOpen, Layers, MessageCircle } from 'lucide-r
 import { ShareButton } from '@/app/components/ShareButton';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
+import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPart } from '@/lib/chapter-parts';
 
@@ -331,6 +332,11 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
                     भाग {part.part}/{parts.length} · श्लोक {partRange(part)}
                   </span>
                 )}
+                <ChapterAudioHeroAction
+                  className={shareChip}
+                  chapterTitle={chapter.title}
+                  firstVerseId={part ? part.first : 1}
+                />
               </>
             ) : (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur text-xs font-medium">

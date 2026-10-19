@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   BookOpen,
   Flame,
@@ -10,6 +10,8 @@ import {
   SlidersHorizontal,
   X,
   MessageSquare,
+  Volume2,
+  Pause,
 } from 'lucide-react';
 import type { ScriptureCategory } from '@/data/types';
 import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
@@ -26,6 +28,15 @@ import { VerseText } from './VerseText';
 import { MobileFocusMode } from './MobileFocusMode';
 import { ConversationModeView } from './conversation/ConversationModeView';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import {
+  startSoundscape,
+  stopSoundscape,
+  setCurrentVerseContext,
+  subscribeSoundscape,
+  setContinuousParayana,
+  strikeTempleBell,
+  getSoundscapeState,
+} from '@/lib/sacred-soundscape';
 
 interface FullVerse {
   number: number | string;
@@ -130,6 +141,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const [bookmarkedMap, setBookmarkedMap] = useState<Record<string, boolean>>({});
   const [focusModeOpen, setFocusModeOpen] = useState(false);
   const [focusVerseIndex, setFocusVerseIndex] = useState(0);
+  const [activeRecitingVerse, setActiveRecitingVerse] = useState<number | string | null>(null);
+  const [parayanaActive, setParayanaActive] = useState(false);
+  const pendingParayanaRef = useRef(false);
   const layersMenuRef = useRef<HTMLDivElement>(null);
   const layersTriggerRef = useRef<HTMLButtonElement>(null);
   // One store for the whole chapter (not one per card): notes, highlights and
@@ -276,6 +290,41 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     }
   };
 
+  const playVerse = useCallback(
+    (targetVerse: FullVerse) => {
+      setActiveRecitingVerse(targetVerse.number);
+      scrollToVerse(targetVerse.number);
+      setCurrentVerseContext(
+        targetVerse.sanskrit,
+        `${scriptureTitle ?? scriptureId} ${chapterTitle ?? `अध्याय ${chapterId}`}, श्लोक ${targetVerse.number}`
+      );
+      startSoundscape('recitation');
+      triggerTactileFeedback('selection', 'softTap');
+    },
+    [scriptureTitle, scriptureId, chapterTitle, chapterId]
+  );
+
+  const togglePlayVerse = (targetVerse: FullVerse) => {
+    if (String(activeRecitingVerse) === String(targetVerse.number)) {
+      stopSoundscape();
+      setActiveRecitingVerse(null);
+      setParayanaActive(false);
+    } else {
+      playVerse(targetVerse);
+    }
+  };
+
+  // Sync with global soundscape playback status
+  useEffect(() => {
+    const unsub = subscribeSoundscape((st) => {
+      if (!st.isPlaying || st.activeTrack !== 'recitation') {
+        setActiveRecitingVerse(null);
+        setParayanaActive(false);
+      }
+    });
+    return unsub;
+  }, []);
+
   // Deep-link auto-scroll on mount if ?verse= or #verse- is present
   useEffect(() => {
     if (state.kind !== 'ready') return;
@@ -413,6 +462,87 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       );
     });
   }, [state, filterQuery, verseSearchKeys]);
+
+  // Handle continuous recitation (अध्याय पारायण), media keys, and external triggers
+  useEffect(() => {
+    if (state.kind !== 'ready') return;
+
+    if (pendingParayanaRef.current && state.verses.length > 0) {
+      pendingParayanaRef.current = false;
+      setContinuousParayana(true);
+      setParayanaActive(true);
+      playVerse(state.verses[0]);
+    }
+
+    const handleRecitationEnded = () => {
+      const soundState = getSoundscapeState();
+      if (parayanaActive || soundState.continuousParayana) {
+        if (activeRecitingVerse !== null) {
+          const list = filteredVerses.length > 0 ? filteredVerses : state.verses;
+          const currentIndex = list.findIndex(
+            (v) => String(v.number) === String(activeRecitingVerse)
+          );
+          if (currentIndex !== -1 && currentIndex + 1 < list.length) {
+            const nextVerse = list[currentIndex + 1];
+            // 2.5s serene breath pause between verses
+            const timer = setTimeout(() => {
+              playVerse(nextVerse);
+            }, 2500);
+            return () => clearTimeout(timer);
+          } else if (currentIndex + 1 >= list.length) {
+            // Reached the end of the chapter
+            strikeTempleBell(3);
+            stopSoundscape();
+            setContinuousParayana(false);
+            setParayanaActive(false);
+            setActiveRecitingVerse(null);
+          }
+        }
+      } else {
+        setActiveRecitingVerse(null);
+      }
+    };
+
+    const handlePrev = () => {
+      if (activeRecitingVerse !== null) {
+        const list = filteredVerses.length > 0 ? filteredVerses : state.verses;
+        const idx = list.findIndex((v) => String(v.number) === String(activeRecitingVerse));
+        if (idx > 0) {
+          playVerse(list[idx - 1]);
+        }
+      }
+    };
+
+    const handleNext = () => {
+      if (activeRecitingVerse !== null) {
+        const list = filteredVerses.length > 0 ? filteredVerses : state.verses;
+        const idx = list.findIndex((v) => String(v.number) === String(activeRecitingVerse));
+        if (idx !== -1 && idx + 1 < list.length) {
+          playVerse(list[idx + 1]);
+        }
+      }
+    };
+
+    const handleStartParayana = () => {
+      const list = filteredVerses.length > 0 ? filteredVerses : state.verses;
+      if (list.length > 0) {
+        setContinuousParayana(true);
+        setParayanaActive(true);
+        playVerse(list[0]);
+      }
+    };
+
+    window.addEventListener('dharma:recitation-ended', handleRecitationEnded);
+    window.addEventListener('dharma:verse-prev', handlePrev);
+    window.addEventListener('dharma:verse-next', handleNext);
+    window.addEventListener('dharma:start-chapter-parayana', handleStartParayana);
+    return () => {
+      window.removeEventListener('dharma:recitation-ended', handleRecitationEnded);
+      window.removeEventListener('dharma:verse-prev', handlePrev);
+      window.removeEventListener('dharma:verse-next', handleNext);
+      window.removeEventListener('dharma:start-chapter-parayana', handleStartParayana);
+    };
+  }, [state, parayanaActive, activeRecitingVerse, filteredVerses, playVerse]);
 
 
   const sanskritFontSizeClass =
@@ -620,6 +750,50 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
+              {/* Continuous Chapter Parayana Button */}
+              <button
+                type="button"
+                onClick={() => {
+                  triggerTactileFeedback('selection', 'click');
+                  if (parayanaActive) {
+                    stopSoundscape();
+                    setParayanaActive(false);
+                    setActiveRecitingVerse(null);
+                    setContinuousParayana(false);
+                  } else {
+                    setContinuousParayana(true);
+                    setParayanaActive(true);
+                    const list = filteredVerses.length > 0 ? filteredVerses : state.verses;
+                    const startV =
+                      (activeRecitingVerse !== null
+                        ? list.find((v) => String(v.number) === String(activeRecitingVerse))
+                        : null) || list[0];
+                    if (startV) {
+                      playVerse(startV);
+                    }
+                  }
+                }}
+                className={`inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-xl sm:min-h-0 px-3 py-1.5 text-xs font-semibold transition ${
+                  parayanaActive
+                    ? 'bg-amber-600 text-white shadow-sm ring-2 ring-amber-400/30'
+                    : 'border border-dharma-border bg-dharma-bg text-dharma-text hover:border-amber-300 hover:text-amber-700'
+                }`}
+                title="सम्पूर्ण अध्याय के श्लोकों का क्रमिक उच्चारण सुनें (Continuous Chapter Recitation)"
+                aria-label="अध्याय पारायण"
+                aria-pressed={parayanaActive}
+              >
+                {parayanaActive ? (
+                  <Pause className="h-3.5 w-3.5 text-white" />
+                ) : (
+                  <Volume2 className="h-3.5 w-3.5 text-amber-600" />
+                )}
+                <span className="hidden sm:inline">
+                  {parayanaActive && activeRecitingVerse !== null
+                    ? `पारायण (${toDevanagari(activeRecitingVerse)})`
+                    : 'अध्याय पारायण'}
+                </span>
+              </button>
+
               {/* Chanting Mode Toggle */}
               <button
                 type="button"
@@ -930,6 +1104,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     setFocusModeOpen(true);
                   }}
                   versePageHref={versePageHref(scriptureId, chapterId, v.number)}
+                  isReciting={String(activeRecitingVerse) === String(v.number)}
+                  onPlayRecitation={() => togglePlayVerse(v)}
                 />
               );
             })
