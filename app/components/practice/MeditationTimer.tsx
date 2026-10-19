@@ -18,6 +18,7 @@ import { useLocalStorage } from '@/lib/useLocalStorage';
 import { ToolCard, localISODate } from './shared';
 import { triggerHaptic } from '@/lib/haptics';
 import { strikeTempleBell, startMeditationDrone, stopMeditationDrone } from '@/lib/sacred-soundscape';
+import { updateSadhanaSession } from '@/lib/prana-capsule-store';
 
 interface MeditationStats {
   /** Completed sessions, all time. */
@@ -121,11 +122,25 @@ export function MeditationTimer() {
       const now = Date.now();
       const remaining = Math.max(0, Math.round((endTimeRef.current - now) / 1000));
       setSecondsLeft(remaining);
+      updateSadhanaSession({
+        type: 'meditation',
+        title: 'ध्यान साधना',
+        value: remaining,
+        total: minutes * 60,
+        running: remaining > 0,
+      });
 
       if (remaining <= 0) {
         setRunning(false);
         setDone(true);
         endTimeRef.current = null;
+        updateSadhanaSession({
+          type: 'meditation',
+          title: 'ध्यान पूर्ण',
+          value: 0,
+          total: minutes * 60,
+          running: false,
+        });
         const today = localISODate();
         stopMeditationDrone();
         releaseWakeLock();

@@ -334,8 +334,11 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
                 )}
                 <ChapterAudioHeroAction
                   className={shareChip}
+                  scriptureId={meta.id}
+                  chapterId={chapter.id}
                   chapterTitle={chapter.title}
                   firstVerseId={part ? part.first : 1}
+                  totalVerses={chapter.verseCount}
                 />
               </>
             ) : (

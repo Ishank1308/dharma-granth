@@ -305,142 +305,7 @@ export const prashna: Scripture = {
             'Examine the three: where in your life is there crookedness, falsehood, or deceit — even small ones? Each one is a leak in the vessel that holds your prāṇa. Patch the leaks.',
           keywords: ['Integrity', 'BrahmaLoka', 'Truth'],
         },
-      
-        {
-          id: 101012,
-          sanskrit: 'तान् ह स ऋषिरुवाच भूय एव तपसा ब्रह्मचर्येण श्रद्धया संवत्सरं संवत्स्यथ यथाकामं प्रश्नान् पृच्छत यदि विज्ञास्यामः सर्वं ह वो वक्ष्याम इति ॥',
-          transliteration: 'tān ha sa ṛṣiruvāca bhūya eva tapasā brahmacaryeṇa śraddhayā saṃvatsaraṃ saṃvatsyatha yathākāmaṃ praśnān pṛcchata yadi vijñāsyāmaḥ sarvaṃ ha vo vakṣyāma iti ||',
-          translation: 'The sage said to them: "Live with me for a year more, in austerity, celibacy, and faith. Then ask whatever you wish. If we know, we will tell you all."',
-          hindi: 'ऋषि ने उनसे कहा — "एक वर्ष और मेरे साथ रहो — तपस्या, ब्रह्मचर्य, और श्रद्धा के साथ। फिर जो भी पूछना हो, पूछो। यदि हम जानेंगे, तो तुम्हें सब बता देंगे।"',
-          explanation: 'The teacher imposes a year of waiting before answering. Knowledge has a maturation time. The disciplines of tapas (austerity), brahmacarya (continence), and śraddhā (faith) prepare the vessel; the answer would shatter an unprepared one.',
-          keywords: [],
-        },
-        {
-          id: 101013,
-          sanskrit: 'अथ कबन्धी कात्यायन उपेत्य पप्रच्छ । भगवन् कुतो ह वा इमाः प्रजाः प्रजायन्त इति ॥',
-          transliteration: 'atha kabandhī kātyāyana upetya papraccha | bhagavan kuto ha vā imāḥ prajāḥ prajāyanta iti ||',
-          translation: 'Then Kabandhī Kātyāyana approached and asked: "Sir, from what are these creatures born?"',
-          hindi: 'फिर कबन्धी कात्यायन निकट आकर पूछा — "हे भगवन्! ये सब प्राणी किससे उत्पन्न होते हैं?"',
-          explanation: 'The first question is the deepest cosmological one — the question that every civilization eventually asks. Note the form: not "what" or "by whom" but "from what" — the question of origin, of source.',
-          keywords: [],
-        },
-        {
-          id: 101014,
-          sanskrit: 'तस्मै स होवाच प्रजाकामो वै प्रजापतिः स तपोऽतप्यत स तपस्तप्त्वा स मिथुनमुत्पादयते रयिं च प्राणं चेत्येतौ मे बहुधा प्रजाः करिष्यत इति ॥',
-          transliteration: 'tasmai sa hovāca prajākāmo vai prajāpatiḥ sa tapo\'tapyata sa tapastaptvā sa mithunamutpādayate rayiṃ ca prāṇaṃ cetyetau me bahudhā prajāḥ kariṣyata iti ||',
-          translation: 'To him he said: "Prajāpati, desiring offspring, performed tapas. Having performed tapas, he produced the primal pair — Rayi (matter) and Prāṇa (life) — thinking: \'These two will make many beings for me.\'"',
-          hindi: 'उसने उसे कहा — "प्रजापति ने सन्तान की कामना से तप किया। तप करके उसने एक जोड़ी उत्पन्न की — रयि (पदार्थ) और प्राण (चेतना) — यह सोचकर कि \'ये दोनों मेरे लिए अनेक प्राणी बनाएँगे\'।"',
-          explanation: 'Creation begins with desire (kāma), takes shape through tapas (concentrated heat/discipline), and produces a polarity (mithuna) — matter and life. All subsequent multiplicity arises from this primal pair.',
-          keywords: [],
-        },
-        {
-          id: 101015,
-          sanskrit: 'आदित्यो ह वै प्राणो रयिरेव चन्द्रमाः । रयिर्वा एतत् सर्वं यन्मूर्तं चामूर्तं च तस्मान्मूर्तिरेव रयिः ॥',
-          transliteration: 'ādityo ha vai prāṇo rayireva candramāḥ | rayirvā etat sarvaṃ yanmūrtaṃ cāmūrtaṃ ca tasmānmūrtireva rayiḥ ||',
-          translation: 'The sun is Prāṇa; the moon is Rayi (matter). Rayi is everything — whether with form or without form. Hence form is Rayi.',
-          hindi: 'सूर्य ही प्राण है और चन्द्रमा ही रयि है। जो कुछ भी मूर्त (रूपयुक्त) और अमूर्त (रूपरहित) है — सब रयि है। इसलिए मूर्ति ही रयि है।',
-          explanation: 'Pippalāda maps the cosmic polarity onto visible symbols: Sun = active, radiant prāṇa; Moon = receptive, reflective rayi. The world is a play of these two — energy and substance, consciousness and matter.',
-          keywords: [],
-        },
-        {
-          id: 101016,
-          sanskrit: 'अथादित्य उदयन् यत् प्राचीं दिशं प्रविशति तेन प्राच्यान् प्राणान् रश्मिषु सन्निधत्ते । यद्दक्षिणां यत् प्रतीचीं यदुदीचीं यदधो यदूर्ध्वं यदन्तरा दिशो यत् सर्वं प्रकाशयति तेन सर्वान् प्राणान् रश्मिषु सन्निधत्ते ॥',
-          transliteration: 'athāditya udayan yat prācīṃ diśaṃ praviśati tena prācyān prāṇān raśmiṣu sannidhatte | yaddakṣiṇāṃ yat pratīcīṃ yadudīcīṃ yadadho yadūrdhvaṃ yadantarā diśo yat sarvaṃ prakāśayati tena sarvān prāṇān raśmiṣu sannidhatte ||',
-          translation: 'When the sun rises and enters the eastern direction, by that it gathers into its rays the prāṇas of the east. When it illumines south, west, north, below, above, and the intermediate directions — when it illumines all — by that it gathers all prāṇas into its rays.',
-          hindi: 'जब सूर्य उदय होकर पूर्व दिशा में प्रवेश करता है, तब वह पूर्व के प्राणों को अपनी किरणों में समेट लेता है। जब वह दक्षिण, पश्चिम, उत्तर, नीचे, ऊपर, और मध्यवर्ती दिशाओं को प्रकाशित करता है, और सब को प्रकाशित करता है — तब सभी दिशाओं के प्राणों को अपनी किरणों में समेट लेता है।',
-          explanation: 'The sun is described as the cosmic gatherer — its rays draw the prāṇa of every direction into itself. The sun is not just a heat source but the active principle that animates all life by perpetually circulating prāṇa across space.',
-          keywords: [],
-        },
-        {
-          id: 101017,
-          sanskrit: 'स एष वैश्वानरो विश्वरूपः प्राणोऽग्निरुदयते । तदेतदृचाभ्युक्तम् ॥',
-          transliteration: 'sa eṣa vaiśvānaro viśvarūpaḥ prāṇo\'gnirudayate | tadetadṛcābhyuktam ||',
-          translation: 'This indeed is Vaiśvānara, of universal form — Prāṇa, Agni — that rises. This is declared by the Ṛc:',
-          hindi: 'यही वैश्वानर है, विश्व-रूप वाला — प्राण, अग्नि — जो उदय होता है। ऋग्वेद में यह कहा गया है:',
-          explanation: 'The sun is identified with Vaiśvānara — the universal fire that is also the digestive fire in every belly. One being, three names: Sun outside, Prāṇa within, Agni in the offering. The transition prepares a confirming Vedic verse.',
-          keywords: [],
-        },
-        {
-          id: 101018,
-          sanskrit: 'विश्वरूपं हरिणं जातवेदसं परायणं ज्योतिरेकं तपन्तम् । सहस्ररश्मिः शतधा वर्तमानः प्राणः प्रजानामुदयत्येष सूर्यः ॥',
-          transliteration: 'viśvarūpaṃ hariṇaṃ jātavedasaṃ parāyaṇaṃ jyotirekaṃ tapantam | sahasraraśmiḥ śatadhā vartamānaḥ prāṇaḥ prajānāmudayatyeṣa sūryaḥ ||',
-          translation: 'Of universal form, golden, knower-of-all-born, the supreme goal, the one light shining — thousand-rayed, existing in a hundred modes, the prāṇa of all creatures — this sun arises.',
-          hindi: 'विश्व-रूप, स्वर्णिम, जातवेद (सब जन्मे प्राणियों का ज्ञाता), परम लक्ष्य, एकमात्र ज्योति जो तप रही है — सहस्र-किरणों वाला, सौ रूपों में विद्यमान, प्रजाओं का प्राण — यह सूर्य उदय होता है।',
-          explanation: 'A poetic cascade of titles. The sun is described as universal (all forms), golden (radiant), all-knowing (Jātaveda), the goal, the singular light, with countless rays and modes — and yet always the prāṇa of every creature.',
-          keywords: [],
-        },
-        {
-          id: 101019,
-          sanskrit: 'संवत्सरो वै प्रजापतिस्तस्यायने दक्षिणं चोत्तरं च । तद्ये ह वै तदिष्टापूर्ते कृतमित्युपासते ते चान्द्रमसमेव लोकमभिजयन्ते । त एव पुनरावर्तन्ते । तस्मादेत ऋषयः प्रजाकामा दक्षिणं प्रतिपद्यन्ते । एष ह वै रयिर्यः पितृयाणः ॥',
-          transliteration: 'saṃvatsaro vai prajāpatistasyāyane dakṣiṇaṃ cottaraṃ ca | tadye ha vai tadiṣṭāpūrte kṛtamityupāsate te cāndramasameva lokamabhijayante | ta eva punarāvartante | tasmādeta ṛṣayaḥ prajākāmā dakṣiṇaṃ pratipadyante | eṣa ha vai rayiryaḥ pitṛyāṇaḥ ||',
-          translation: 'The year is Prajāpati; its two paths are the southern (dakṣiṇāyana) and northern (uttarāyaṇa). Those who worship through rites and works conquer only the world of the moon; they return again. Therefore those seers who desire offspring follow the southern path. This is Rayi, the path of the ancestors (pitṛyāṇa).',
-          hindi: 'संवत्सर ही प्रजापति है — उसके दो अयन हैं: दक्षिणायन और उत्तरायण। जो लोग केवल इष्टापूर्त (यज्ञ-कर्म) से उपासना करते हैं, वे चान्द्रमस लोक को ही प्राप्त करते हैं; वे फिर लौट आते हैं। इसीलिए सन्तान की कामना वाले ऋषि दक्षिण मार्ग का अनुसरण करते हैं। यही रयि है — पितृयाण।',
-          explanation: 'The first of two paths: pitṛyāṇa, the way of works. Ritual action without inner knowledge bears its fruit, but the fruit is finite — one reaches the world of the moon (the ancestors) and returns again to the cycle of birth.',
-          keywords: [],
-        },
-        {
-          id: 101020,
-          sanskrit: 'अथोत्तरेण तपसा ब्रह्मचर्येण श्रद्धया विद्ययाऽऽत्मानमन्विष्यादित्यमभिजयन्ते । एतद्वै प्राणानामायतनमेतदमृतमभयमेतत् परायणमेतस्मान्न पुनरावर्तन्त इत्येष निरोधस्तदेष श्लोकः ॥',
-          transliteration: 'athottareṇa tapasā brahmacaryeṇa śraddhayā vidyayā\'\'tmānamanviṣyādityamabhijayante | etadvai prāṇānāmāyatanametadamṛtamabhayametat parāyaṇametasmānna punarāvartanta ityeṣa nirodhastadeṣa ślokaḥ ||',
-          translation: 'Now, by the northern path, through tapas, celibacy, faith, and knowledge of the Self, they conquer the sun. This is the abode of the prāṇas — immortal, fearless, the supreme goal. From there they do not return. This is the cessation. Thus this verse:',
-          hindi: 'और उत्तरायण मार्ग से — तप, ब्रह्मचर्य, श्रद्धा और विद्या के द्वारा आत्मा को खोजकर — वे सूर्य को प्राप्त करते हैं। यह प्राणों का धाम है — अमर, अभय, परम लक्ष्य — वहाँ से वे फिर नहीं लौटते। यही निरोध (मोक्ष) है। इसलिए यह श्लोक:',
-          explanation: 'The other path: devayāna, the way of knowledge. By disciplines and Self-inquiry, the seeker reaches the realm of the Sun — the abode of prāṇas, immortal, beyond fear. From there: no return.',
-          keywords: [],
-        },
-        {
-          id: 101021,
-          sanskrit: 'पञ्चपादं पितरं द्वादशाकृतिं दिव आहुः परे अर्धे पुरीषिणम् । अथेमेऽन्य उ परे विचक्षणं सप्तचक्रे षडर आहुरर्पितमिति ॥',
-          transliteration: 'pañcapādaṃ pitaraṃ dvādaśākṛtiṃ diva āhuḥ pare ardhe purīṣiṇam | athemeʼnya u pare vicakṣaṇaṃ saptacakre ṣaḍara āhurarpitamiti ||',
-          translation: 'They call him the five-footed Father, of twelve forms, dwelling in the upper half of the sky and full of moisture. Others, more discerning, call him the wise one set on a chariot of seven wheels and six spokes.',
-          hindi: 'वे उसे पाँच-पाद, द्वादश-आकृति, द्युलोक के ऊपरी अर्ध-भाग में निवास करने वाला, जल से पूर्ण — पिता — कहते हैं। और कुछ विचक्षण लोग उसे सात-चक्र और छह-अरों वाले रथ पर आरूढ़ कहते हैं।',
-          explanation: 'A riddle-verse. The "five-footed Father" is the year (five seasons in old reckoning), with twelve forms (months); the "seven-wheeled, six-spoked" is the year by another reckoning (seven seasons or rays, six seasons). Sacred poetry layered with calendrical symbolism.',
-          keywords: [],
-        },
-        {
-          id: 101022,
-          sanskrit: 'मासो वै प्रजापतिस्तस्य कृष्णपक्ष एव रयिः शुक्लः प्राणस्तस्मादेते ऋषयः शुक्ल इष्टं कुर्वन्तीतर इतरस्मिन् ॥',
-          transliteration: 'māso vai prajāpatistasya kṛṣṇapakṣa eva rayiḥ śuklaḥ prāṇastasmādete ṛṣayaḥ śukla iṣṭaṃ kurvantītara itarasmin ||',
-          translation: 'The month is Prajāpati; its dark fortnight is Rayi, its bright fortnight is Prāṇa. Therefore these seers perform rites in the bright fortnight; others perform in the other.',
-          hindi: 'मास ही प्रजापति है — कृष्ण पक्ष रयि है, शुक्ल पक्ष प्राण है। इसलिए ये ऋषि शुक्ल पक्ष में यज्ञ करते हैं; अन्य लोग दूसरे पक्ष में।',
-          explanation: 'The polarity descends another level. Even the month is divided into the dark (matter) and bright (life) halves. Different communities perform rites in different fortnights, attuned to different aspects of the rhythm.',
-          keywords: [],
-        },
-        {
-          id: 101023,
-          sanskrit: 'अहोरात्रो वै प्रजापतिस्तस्याहरेव प्राणो रात्रिरेव रयिः । प्राणं वा एते प्रस्कन्दन्ति ये दिवा रत्या संयुज्यन्ते ब्रह्मचर्यमेव तद्यद्रात्रौ रत्या संयुज्यन्ते ॥',
-          transliteration: 'ahorātro vai prajāpatistasyāhareva prāṇo rātrireva rayiḥ | prāṇaṃ vā ete praskandanti ye divā ratyā saṃyujyante brahmacaryameva tadyadrātrau ratyā saṃyujyante ||',
-          translation: 'Day-and-night is Prajāpati; day is Prāṇa, night is Rayi. Those who unite by day waste their prāṇa; those who unite by night observe brahmacarya (in this sense).',
-          hindi: 'दिन-रात ही प्रजापति है — दिन प्राण है, रात रयि है। जो दिन में रति में संलग्न होते हैं वे प्राण क्षीण करते हैं; रात्रि में संलग्न होना ही ब्रह्मचर्य है।',
-          explanation: 'Even the day descends into the polarity. Day is the active prāṇa-phase; night the receptive rayi-phase. The verse gives practical householder guidance — sexual union, undertaken in its proper rhythm (night), does not violate brahmacarya in the relational sense.',
-          keywords: [],
-        },
-        {
-          id: 101024,
-          sanskrit: 'अन्नं वै प्रजापतिस्ततो ह वै तद्रेतस्तस्मादिमाः प्रजाः प्रजायन्ते ॥',
-          transliteration: 'annaṃ vai prajāpatistato ha vai tadretastasmādimāḥ prajāḥ prajāyante ||',
-          translation: 'Food is Prajāpati. From food, seed; from seed, these creatures are born.',
-          hindi: 'अन्न ही प्रजापति है। अन्न से रेत (बीज), और बीज से ये प्रजाएँ उत्पन्न होती हैं।',
-          explanation: 'The chain of creation descends further: food → reproductive essence → offspring. Without food there is no creation. The mantra echoes the famous Taittirīya teaching "annaṃ brahma" — food is Brahman.',
-          keywords: [],
-        },
-        {
-          id: 101025,
-          sanskrit: 'तद्ये ह वै तत्प्रजापतिव्रतं चरन्ति ते मिथुनमुत्पादयन्ते । तेषामेवैष ब्रह्मलोको येषां तपो ब्रह्मचर्यं येषु सत्यं प्रतिष्ठितम् ॥',
-          transliteration: 'tadye ha vai tatprajāpativrataṃ caranti te mithunamutpādayante | teṣāmevaiṣa brahmaloko yeṣāṃ tapo brahmacaryaṃ yeṣu satyaṃ pratiṣṭhitam ||',
-          translation: 'Those who follow the vow of Prajāpati produce offspring. But the Brahma-loka belongs only to those in whom austerity, celibacy, and truth are established.',
-          hindi: 'जो प्रजापति का व्रत पालन करते हैं, वे सन्तान उत्पन्न करते हैं। परन्तु ब्रह्मलोक उन्हीं को मिलता है जिनमें तप, ब्रह्मचर्य और सत्य प्रतिष्ठित हैं।',
-          explanation: 'Two outcomes are distinguished. Householders following the proper way produce offspring — itself a sacred duty. But the higher realm (Brahma-loka) is reserved for those who additionally practice tapas, brahmacarya (in its full sense), and satya. Family is one fruit; liberation requires more.',
-          keywords: [],
-        },
-        {
-          id: 101026,
-          sanskrit: 'तेषामसौ विरजो ब्रह्मलोको न येषु जिह्ममनृतं न माया चेति ॥',
-          transliteration: 'teṣāmasau virajo brahmaloko na yeṣu jihmamanṛtaṃ na māyā ceti ||',
-          translation: 'For them is that taintless Brahma-loka — those in whom there is no crookedness, no falsehood, no deceit.',
-          hindi: 'उन्हीं को वह निर्दोष ब्रह्मलोक मिलता है — जिनमें कुटिलता, असत्य, और छल नहीं है।',
-          explanation: 'The chapter closes with a final test: not just discipline, but absence of three subtle sins — jihma (crookedness), anṛta (falsehood), māyā (deceit). All three are species of the same disease: divergence between inner truth and outer expression.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 2,
@@ -683,106 +548,7 @@ export const prashna: Scripture = {
             "End each day with a quiet 'thank you' to your breath. It is the most maternal force in your body — protecting you across every night while you sleep.",
           keywords: ['Protection', 'Prayer', 'Closing'],
         },
-      
-        {
-          id: 102023,
-          sanskrit: 'तान् वरिष्ठः प्राण उवाच । मा मोहमापद्यथाहमेवैतत् पञ्चधाऽऽत्मानं प्रविभज्यैतद्बाणमवष्टभ्य विधारयामीति । तेऽश्रद्दधाना बभूवुः ॥',
-          transliteration: 'tān variṣṭhaḥ prāṇa uvāca | mā mohamāpadyathāhamevaitat pañcadhā\'\'tmānaṃ pravibhajyaitadbāṇamavaṣṭabhya vidhārayāmīti | te\'śraddadhānā babhūvuḥ ||',
-          translation: 'Prāṇa, the chief, said to them: "Do not delude yourselves. I, having divided myself into five, sustain this body-arrow." They did not believe him.',
-          hindi: 'श्रेष्ठ प्राण ने उनसे कहा — "भ्रमित मत होओ। मैंने ही स्वयं को पाँच रूपों में बाँटकर इस शरीर-बाण को धारण कर रखा है।" परन्तु उन्होंने विश्वास नहीं किया।',
-          explanation: 'Prāṇa, the chief, makes the true claim. The five-fold division (prāṇa, apāna, vyāna, udāna, samāna) sustains the body. The other devas refuse to believe — the test is about to begin.',
-          keywords: [],
-        },
-        {
-          id: 102024,
-          sanskrit: 'सोऽभिमानादूर्ध्वमुत्क्रामत इव । तस्मिन्नुत्क्रामत्यथेतरे सर्व एवोत्क्रामन्ते तस्मिंश्च प्रतिष्ठमाने सर्व एव प्रातिष्ठन्ते । तद्यथा मक्षिका मधुकरराजानमुत्क्रामन्तं सर्वा एवोत्क्रामन्ते तस्मिंश्च प्रतिष्ठमाने सर्वा एव प्रातिष्ठन्त एवं वाङ्मनश्चक्षुः श्रोत्रं च ते प्रीताः प्राणं स्तुन्वन्ति ॥',
-          transliteration: 'so\'bhimānādūrdhvamutkrāmata iva | tasminnutkrāmatyathetare sarva evotkrāmante tasmiṃśca pratiṣṭhamāne sarva eva prātiṣṭhante | tadyathā makṣikā madhukararājānamutkrāmantaṃ sarvā evotkrāmante tasmiṃśca pratiṣṭhamāne sarvā eva prātiṣṭhanta evaṃ vāṅmanaścakṣuḥ śrotraṃ ca te prītāḥ prāṇaṃ stunvanti ||',
-          translation: 'Out of indignation, Prāṇa seemed to leave the body. When he departed, all the others also departed. When he returned and settled, all the others returned. As bees follow the queen-bee when she leaves, and follow when she returns, so speech, mind, eye, ear, and the rest praised Prāṇa.',
-          hindi: 'अभिमान के कारण प्राण मानो ऊपर उठने लगा। जब वह निकलने लगा, तब सभी देव निकलने लगे; जब वह स्थिर हुआ, तब सब स्थिर हुए। जैसे रानी-मक्खी के निकलने पर सभी मक्खियाँ निकलती हैं, और उसके बैठने पर बैठती हैं — वैसे ही वाणी, मन, नेत्र, कान — सब प्रसन्न होकर प्राण की स्तुति करने लगे।',
-          explanation: 'The decisive demonstration. Prāṇa simulates departure — and every other faculty must follow. The bee-queen image is biologically vivid: remove one essential node and the entire system collapses. The other devas, defeated, now praise Prāṇa.',
-          keywords: [],
-        },
-        {
-          id: 102025,
-          sanskrit: 'एषोऽग्निस्तपत्येष सूर्य एष पर्जन्यो मघवानेष वायुः । एष पृथिवी रयिर्देवः सदसच्चामृतं च यत् ॥',
-          transliteration: 'eṣo\'gnistapatyeṣa sūrya eṣa parjanyo maghavāneṣa vāyuḥ | eṣa pṛthivī rayirdevaḥ sadasaccāmṛtaṃ ca yat ||',
-          translation: 'This (Prāṇa) is the burning Agni. This is the Sun. This is the rain, this is Indra. This is Vāyu. This is Earth, this is Rayi, this is the deva — being and non-being and the immortal.',
-          hindi: 'यह (प्राण) ही अग्नि है, यह ही सूर्य, यह ही पर्जन्य (वर्षा), यह ही इन्द्र (मघवान्), यह ही वायु, यह ही पृथ्वी, यह ही रयि — और यही देव, सत्, असत्, और अमृत है।',
-          explanation: 'The cosmic identification of Prāṇa. The same prāṇa that runs your body runs every natural phenomenon. Sun, rain, wind, earth — all are forms of one prāṇa. The verse extends Prāṇa to the absolute: sat, asat, immortal.',
-          keywords: [],
-        },
-        {
-          id: 102026,
-          sanskrit: 'अरा इव रथनाभौ प्राणे सर्वं प्रतिष्ठितम् । ऋचो यजूंषि सामानि यज्ञः क्षत्रं ब्रह्म च ॥',
-          transliteration: 'arā iva rathanābhau prāṇe sarvaṃ pratiṣṭhitam | ṛco yajūṃṣi sāmāni yajñaḥ kṣatraṃ brahma ca ||',
-          translation: 'As spokes in the hub of a chariot-wheel, so all this is established in Prāṇa — the Ṛc, Yajus, Sāman, sacrifice, kṣatra, and brāhmaṇa.',
-          hindi: 'जैसे रथ की धुरी में सब अर लगे होते हैं, वैसे ही प्राण में सब प्रतिष्ठित हैं — ऋच्, यजुस्, सामन्, यज्ञ, क्षत्र, और ब्राह्मण।',
-          explanation: 'The famous chariot-wheel image. Every cultural function — knowledge (Vedas), action (yajña), governance (kṣatra), priesthood (brāhmaṇa) — radiates from the single hub of Prāṇa. Civilization itself sits on the body’s breath.',
-          keywords: [],
-        },
-        {
-          id: 102027,
-          sanskrit: 'प्रजापतिश्चरसि गर्भे त्वमेव प्रतिजायसे । तुभ्यं प्राण प्रजास्त्विमा बलिं हरन्ति यः प्राणैः प्रतितिष्ठसि ॥',
-          transliteration: 'prajāpatiścarasi garbhe tvameva pratijāyase | tubhyaṃ prāṇa prajāstvimā baliṃ haranti yaḥ prāṇaiḥ pratitiṣṭhasi ||',
-          translation: 'You are Prajāpati — you move in the womb, you alone are reborn. To you, O Prāṇa, these creatures bring offerings — you who abide as their prāṇas.',
-          hindi: 'तू ही प्रजापति है — तू गर्भ में चलता है, तू ही जन्म लेता है। हे प्राण! ये प्रजाएँ तेरे ही लिए बलि लाती हैं — तू ही उनके प्राणों में स्थित है।',
-          explanation: 'A hymn to Prāṇa. Even in the womb, Prāṇa is already at work; it is what is reborn in every birth. All offerings, all worship, are to Prāṇa, the inner inhabitant.',
-          keywords: [],
-        },
-        {
-          id: 102028,
-          sanskrit: 'देवानामसि वह्नितमः पितृणां प्रथमा स्वधा । ऋषीणां चरितं सत्यमथर्वाङ्गिरसामसि ॥',
-          transliteration: 'devānāmasi vahnitamaḥ pitṛṇāṃ prathamā svadhā | ṛṣīṇāṃ caritaṃ satyamatharvāṅgirasāmasi ||',
-          translation: 'You are the best carrier among the devas, the first oblation of the ancestors, the true conduct of the seers, of the Atharvāṅgiras.',
-          hindi: 'देवों में तू सर्वश्रेष्ठ वाहक है, पितरों के लिये प्रथम स्वधा है, ऋषियों का सत्य आचरण है, अथर्वाङ्गिरसों का स्वरूप है।',
-          explanation: 'Prāṇa is exalted as the messenger of the devas, the prime offering to the ancestors, the very conduct of the rishis. Sacred function across realms collapses into one principle.',
-          keywords: [],
-        },
-        {
-          id: 102029,
-          sanskrit: 'इन्द्रस्त्वं प्राण तेजसा रुद्रोऽसि परिरक्षिता । त्वमन्तरिक्षे चरसि सूर्यस्त्वं ज्योतिषां पतिः ॥',
-          transliteration: 'indrastvaṃ prāṇa tejasā rudro\'si parirakṣitā | tvamantarikṣe carasi sūryastvaṃ jyotiṣāṃ patiḥ ||',
-          translation: 'You are Indra, O Prāṇa, by your splendor; you are Rudra, the all-protector. You move in the middle space; you are the Sun, lord of lights.',
-          hindi: 'हे प्राण! तू अपनी तेजस्विता से इन्द्र है; तू रुद्र है, परिरक्षक है; तू अन्तरिक्ष में विचरता है; तू सूर्य है — ज्योतियों का स्वामी।',
-          explanation: 'The cosmic identification continues. Prāṇa is named with the major deities — Indra of power, Rudra of protection, Sun of light. One principle wearing many faces.',
-          keywords: [],
-        },
-        {
-          id: 102030,
-          sanskrit: 'यदा त्वमभिवर्षस्यथेमाः प्राण ते प्रजाः । आनन्दरूपास्तिष्ठन्ति कामायान्नं भविष्यतीति ॥',
-          transliteration: 'yadā tvamabhivarṣasyathemāḥ prāṇa te prajāḥ | ānandarūpāstiṣṭhanti kāmāyānnaṃ bhaviṣyatīti ||',
-          translation: 'When you pour down rain, these creatures stand in the form of joy, thinking: "Food will come as we desire."',
-          hindi: 'हे प्राण! जब तू वर्षा करता है, तब ये प्रजाएँ आनन्द-रूप में खड़ी हो जाती हैं — "अब हमारी इच्छा का अन्न होगा।"',
-          explanation: 'Prāṇa as the rain-bringer. The descent of water is the descent of life. All creatures rejoice — for food (annaṃ) follows rain, and life follows food.',
-          keywords: [],
-        },
-        {
-          id: 102031,
-          sanskrit: 'व्रात्यस्त्वं प्राणैकर्षिरत्ता विश्वस्य सत्पतिः । वयमाद्यस्य दातारः पिता त्वं मातरिश्व नः ॥',
-          transliteration: 'vrātyastvaṃ prāṇaikarṣirattā viśvasya satpatiḥ | vayamādyasya dātāraḥ pitā tvaṃ mātariśva naḥ ||',
-          translation: 'You are the unconsecrated, O Prāṇa, the solitary seer, the eater, the rightful lord of the universe. We are the givers of food; you are our Father, O Mātariśvan.',
-          hindi: 'हे प्राण! तू व्रात्य (अदीक्षित) है, एकर्षि है, अन्न का भोक्ता है, विश्व का सत्पति है। हम तेरे लिए अन्न देने वाले हैं; हे मातरिश्वन्, तू ही हमारा पिता है।',
-          explanation: 'A paradox: Prāṇa is "vrātya" — outside the bounds of formal initiation — and yet the rightful lord of all. The unbounded substrate of life precedes every ritual category.',
-          keywords: [],
-        },
-        {
-          id: 102032,
-          sanskrit: 'या ते तनूर्वाचि प्रतिष्ठिता या श्रोत्रे या च चक्षुषि । या च मनसि सन्तता शिवां तां कुरु मोत्क्रमीः ॥',
-          transliteration: 'yā te tanūrvāci pratiṣṭhitā yā śrotre yā ca cakṣuṣi | yā ca manasi santatā śivāṃ tāṃ kuru motkramīḥ ||',
-          translation: 'That form of yours which is established in speech, in the ear, in the eye, and which is extended in the mind — make that gracious. Do not depart.',
-          hindi: 'हे प्राण! तेरा जो रूप वाणी, श्रोत्र, नेत्र, और मन में फैला है — उसे शिव (कल्याणकारी) बना। मत निकल जा।',
-          explanation: 'A prayer for Prāṇa to be gracious — to remain in the faculties of speech, hearing, sight, and mind. The prayer makes explicit that Prāṇa runs the senses; without its grace, the senses wither.',
-          keywords: [],
-        },
-        {
-          id: 102033,
-          sanskrit: 'प्राणस्येदं वशे सर्वं त्रिदिवे यत् प्रतिष्ठितम् । मातेव पुत्रान् रक्षस्व श्रीश्च प्रज्ञां च विधेहि न इति ॥',
-          transliteration: 'prāṇasyedaṃ vaśe sarvaṃ tridive yat pratiṣṭhitam | māteva putrān rakṣasva śrīśca prajñāṃ ca vidhehi na iti ||',
-          translation: 'All that is established in the three worlds is under the control of Prāṇa. As a mother her children, protect us; grant us prosperity and wisdom.',
-          hindi: 'जो कुछ त्रिदिव (तीन लोकों) में प्रतिष्ठित है — सब प्राण के अधीन है। माता जैसे अपने पुत्रों की रक्षा करती है, वैसे ही हमारी रक्षा कर; हमें श्री (समृद्धि) और प्रज्ञा (बुद्धि) प्रदान कर।',
-          explanation: 'The chapter closes with a tender plea: Prāṇa, master of three worlds, protect us as a mother protects her children. Grant both śrī (prosperity) and prajñā (wisdom) — the two gifts that allow a full life.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 3,
@@ -1007,88 +773,7 @@ export const prashna: Scripture = {
             'Learn the anatomy of your own breath. Five minutes of conscious observation each day — origin, distribution, departure — is itself a complete practice.',
           keywords: ['Completion', 'Knowing', 'Immortality'],
         },
-      
-        {
-          id: 103034,
-          sanskrit: 'यथा सम्राडेवाधिकृतान् विनियुङ्क्ते एतान् ग्रामानेतान् ग्रामानधितिष्ठस्वेत्येवमेवैष प्राण इतरान् प्राणान् पृथक् पृथगेव सन्निधत्ते ॥',
-          transliteration: 'yathā samrāḍevādhikṛtān viniyuṅkte etān grāmānetān grāmānadhitiṣṭhasvetyevamevaiṣa prāṇa itarān prāṇān pṛthak pṛthageva sannidhatte ||',
-          translation: 'As an emperor commissions officers — "Govern these villages, those villages" — so Prāṇa assigns the other prāṇas to their distinct posts.',
-          hindi: 'जैसे सम्राट् अधिकारियों को नियुक्त करता है — "इन गाँवों का, उन गाँवों का प्रबन्ध करो" — वैसे ही प्राण अन्य प्राणों को उनके पृथक्-पृथक् स्थानों पर नियुक्त करता है।',
-          explanation: 'Prāṇa is the emperor; the five vital airs are governors of distinct regions. The body is a federation under one central authority.',
-          keywords: [],
-        },
-        {
-          id: 103035,
-          sanskrit: 'पायूपस्थेऽपानं चक्षुःश्रोत्रे मुखनासिकाभ्यां प्राणः स्वयं प्रातिष्ठते मध्ये तु समानः । एष ह्येतद्धुतमन्नं समं नयति तस्मादेताः सप्तार्चिषो भवन्ति ॥',
-          transliteration: 'pāyūpasthe\'pānaṃ cakṣuḥśrotre mukhanāsikābhyāṃ prāṇaḥ svayaṃ prātiṣṭhate madhye tu samānaḥ | eṣa hyetaddhutamannaṃ samaṃ nayati tasmādetāḥ saptārciṣo bhavanti ||',
-          translation: 'Apāna is established in the organs of excretion and generation. Prāṇa itself dwells in the eyes, ears, mouth, and nostrils. In the middle is Samāna; it distributes the food evenly, from which arise the seven flames.',
-          hindi: 'अपान गुदा और जननेन्द्रिय में स्थित है। प्राण स्वयं नेत्र, श्रोत्र, मुख और नासिका में बसता है। मध्य में समान है — जो खाये हुए अन्न को समान रूप से बाँटता है, जिससे सात अग्नियाँ प्रकट होती हैं।',
-          explanation: 'The anatomical assignment. Apāna handles elimination, Prāṇa runs the upper senses, Samāna distributes nutrition. The \'seven flames\' are the seven sense-organs (two eyes, two ears, two nostrils, mouth) — each fed by metabolized food.',
-          keywords: [],
-        },
-        {
-          id: 103036,
-          sanskrit: 'हृदि ह्येष आत्मा । अत्रैतदेकशतं नाडीनां तासां शतं शतमेकैकस्या द्वासप्ततिर्द्वासप्ततिः प्रतिशाखानाडीसहस्राणि भवन्त्यासु व्यानश्चरति ॥',
-          transliteration: 'hṛdi hyeṣa ātmā | atraitadekaśataṃ nāḍīnāṃ tāsāṃ śataṃ śatamekaikasyā dvāsaptatirdvāsaptatiḥ pratiśākhānāḍīsahasrāṇi bhavantyāsu vyānaścarati ||',
-          translation: 'The Self resides in the heart. From here a hundred and one nāḍīs proceed; from each of them, a hundred more; from each of those, seventy-two thousand branches. In all these moves Vyāna.',
-          hindi: 'आत्मा हृदय में निवास करता है। यहाँ से एक सौ एक मुख्य नाडियाँ निकलती हैं; प्रत्येक से सौ-सौ, फिर हर एक से बहत्तर हजार शाखाएँ। इन सबमें व्यान संचार करता है।',
-          explanation: 'The yogic anatomy: the heart is the seat of Ātman; from it radiates a vast network of nāḍīs (subtle channels) totaling, in this enumeration, 727 million branches. Vyāna — the diffusive prāṇa — moves through all of them.',
-          keywords: [],
-        },
-        {
-          id: 103037,
-          sanskrit: 'अथैकयोर्ध्व उदानः पुण्येन पुण्यं लोकं नयति पापेन पापमुभाभ्यामेव मनुष्यलोकम् ॥',
-          transliteration: 'athaikayordhva udānaḥ puṇyena puṇyaṃ lokaṃ nayati pāpena pāpamubhābhyāmeva manuṣyalokam ||',
-          translation: 'By one nāḍī, going upward, Udāna leads — by merit to a meritorious world, by sin to a sinful world, by both to the human world.',
-          hindi: 'एक मुख्य नाडी से ऊपर की ओर उदान चलता है — पुण्य के द्वारा पुण्य-लोक में, पाप के द्वारा पाप-लोक में, और दोनों के द्वारा मनुष्य-लोक में ले जाता है।',
-          explanation: 'Udāna is the upward-rising prāṇa, responsible for departure at death. It carries the being according to the residues of karma — merit to higher worlds, demerit to lower, mixed to human birth.',
-          keywords: [],
-        },
-        {
-          id: 103038,
-          sanskrit: 'आदित्यो ह वै बाह्यः प्राण उदयत्येष ह्येनं चाक्षुषं प्राणमनुगृह्णानः । पृथिव्यां या देवता सैषा पुरुषस्यापानमवष्टभ्यान्तरा यदाकाशः स समानो वायुर्व्यानः ॥',
-          transliteration: 'ādityo ha vai bāhyaḥ prāṇa udayatyeṣa hyenaṃ cākṣuṣaṃ prāṇamanugṛhṇānaḥ | pṛthivyāṃ yā devatā saiṣā puruṣasyāpānamavaṣṭabhyāntarā yadākāśaḥ sa samāno vāyurvyānaḥ ||',
-          translation: 'The Sun is the outer Prāṇa rising — it favors this Prāṇa that resides in the eye. The deity in the earth pulls Apāna downward. The space between is Samāna; the air (wind) is Vyāna.',
-          hindi: 'सूर्य ही बाह्य प्राण है जो उदय होता है — वह नेत्र में स्थित प्राण को अनुगृहीत करता है। पृथ्वी में जो देवता है, वह मनुष्य के अपान को नीचे की ओर खींचता है। मध्य का आकाश समान है; वायु व्यान है।',
-          explanation: 'The cosmic-bodily correspondence. Outer sun ↔ inner eye-prāṇa; outer earth ↔ inner downward-pull (apāna); outer space ↔ inner samāna; outer wind ↔ inner vyāna. Microcosm mirrors macrocosm.',
-          keywords: [],
-        },
-        {
-          id: 103039,
-          sanskrit: 'तेजो ह वा उदानस्तस्मादुपशान्ततेजाः । पुनर्भवमिन्द्रियैर्मनसि सम्पद्यमानैः ॥',
-          transliteration: 'tejo ha vā udānastasmādupaśāntatejāḥ | punarbhavamindriyairmanasi sampadyamānaiḥ ||',
-          translation: 'Udāna is the radiant heat (tejas). Hence when this heat is extinguished, one obtains rebirth, with senses absorbed into the mind.',
-          hindi: 'तेज ही उदान है। जब वह तेज शान्त होता है, तब इन्द्रियाँ मन में लीन होकर पुनः जन्म प्राप्त होता है।',
-          explanation: 'At death, udāna (heat/fire) departs and the body grows cold. The senses dissolve into the mind, the mind into prāṇa, prāṇa into the Self — the reverse of birth.',
-          keywords: [],
-        },
-        {
-          id: 103040,
-          sanskrit: 'यच्चित्तस्तेनैष प्राणमायाति । प्राणस्तेजसा युक्तः सहात्मना यथासङ्कल्पितं लोकं नयति ॥',
-          transliteration: 'yaccittastenaiṣa prāṇamāyāti | prāṇastejasā yuktaḥ sahātmanā yathāsaṅkalpitaṃ lokaṃ nayati ||',
-          translation: 'With whatever consciousness one has at the end, one enters Prāṇa. Prāṇa, joined with tejas and with the Self, leads one to the world that has been intended (saṅkalpita).',
-          hindi: 'अन्तिम चित्त-वृत्ति के साथ जीव प्राण में प्रवेश करता है। प्राण — तेज और आत्मा के साथ — संकल्प के अनुसार लोक की ओर ले जाता है।',
-          explanation: 'The famous teaching on the last thought. Whatever state of consciousness one carries at death determines the next destination. Saṅkalpa (deep intention) is the steering wheel.',
-          keywords: [],
-        },
-        {
-          id: 103041,
-          sanskrit: 'य एवं विद्वान् प्राणं वेद न हास्य प्रजा हीयतेऽमृतो भवति । तदेष श्लोकः ॥',
-          transliteration: 'ya evaṃ vidvān prāṇaṃ veda na hāsya prajā hīyate\'mṛto bhavati | tadeṣa ślokaḥ ||',
-          translation: 'The wise one who knows Prāṇa thus — his lineage does not perish; he becomes immortal. Hence this verse:',
-          hindi: 'जो विद्वान् इस प्रकार प्राण को जानता है, उसकी प्रजा क्षीण नहीं होती; वह अमर हो जाता है। इसलिए यह श्लोक:',
-          explanation: 'Twofold fruit: continuity of lineage and personal immortality. The knower of Prāṇa benefits both line and Self.',
-          keywords: [],
-        },
-        {
-          id: 103042,
-          sanskrit: 'उत्पत्तिमायतिं स्थानं विभुत्वं चैव पञ्चधा । अध्यात्मं चैव प्राणस्य विज्ञायामृतमश्नुते विज्ञायामृतमश्नुते ॥',
-          transliteration: 'utpattimāyatiṃ sthānaṃ vibhutvaṃ caiva pañcadhā | adhyātmaṃ caiva prāṇasya vijñāyāmṛtamaśnute vijñāyāmṛtamaśnute ||',
-          translation: 'Knowing the origin, the entrance, the abode, the five-fold lordship, and the inward function of Prāṇa — one attains immortality, attains immortality.',
-          hindi: 'प्राण की उत्पत्ति, आगमन, स्थान, पञ्चधा प्रभुता, और आध्यात्मिक स्वरूप को जानकर — मनुष्य अमृतत्व प्राप्त करता है, अमृतत्व प्राप्त करता है।',
-          explanation: 'Closing of the third question with the answers Kausalya asked for: origin, entrance, abode, fivefold lordship, inner function. Knowing these is itself the path to immortality.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 4,
@@ -1295,70 +980,7 @@ export const prashna: Scripture = {
             'Pursue the unifying principle. In any domain you care about, ask: what is the one thing that, if I understood it, would render all the rest intelligible? Then dwell there.',
           keywords: ['UnifyingPrinciple', 'Akshara', 'AllEntering'],
         },
-      
-        {
-          id: 104045,
-          sanskrit: 'अत्रैष देवः स्वप्ने महिमानमनुभवति । यद्दृष्टं दृष्टमनुपश्यति श्रुतं श्रुतमेवार्थमनुशृणोति देशदिगन्तरैश्च प्रत्यनुभूतं पुनः पुनः प्रत्यनुभवति दृष्टं चादृष्टं च श्रुतं चाश्रुतं चानुभूतं चाननुभूतं च सच्चासच्च सर्वं पश्यति सर्वः पश्यति ॥',
-          transliteration: 'atraiṣa devaḥ svapne mahimānamanubhavati | yaddṛṣṭaṃ dṛṣṭamanupaśyati śrutaṃ śrutamevārthamanuśṛṇoti deśadigantaraiśca pratyanubhūtaṃ punaḥ punaḥ pratyanubhavati dṛṣṭaṃ cādṛṣṭaṃ ca śrutaṃ cāśrutaṃ cānubhūtaṃ cānanubhūtaṃ ca saccāsacca sarvaṃ paśyati sarvaḥ paśyati ||',
-          translation: 'There, in dream, this divine Self experiences its own greatness. What it has seen, it sees again; what it has heard, it hears again; what was experienced in distant lands and directions, it experiences over and over. Seen and unseen, heard and unheard, experienced and not-experienced, real and unreal — all it sees, being itself the All.',
-          hindi: 'स्वप्न में यह आत्म-देव अपनी ही महिमा का अनुभव करता है। जो देखा है उसे फिर देखता है, जो सुना है उसे फिर सुनता है, दूर के देश-दिशाओं में जो अनुभव किया है — उसे फिर अनुभव करता है। देखा-अनदेखा, सुना-अनसुना, अनुभूत-अननुभूत, सत्-असत् — सब कुछ देखता है। वह स्वयं सब है।',
-          explanation: 'Dream is the Self enjoying its own splendor. Memory becomes scenery; the mind generates entire worlds from internal material. The dreamer sees both real and unreal — because in dream the distinction collapses. Dream reveals the world-creating power of consciousness.',
-          keywords: [],
-        },
-        {
-          id: 104046,
-          sanskrit: 'स यदा तेजसाऽभिभूतो भवति । अत्रैष देवः स्वप्नान्न पश्यत्यथ तदैतस्मिञ्शरीरे एतत् सुखं भवति ॥',
-          transliteration: 'sa yadā tejasā\'bhibhūto bhavati | atraiṣa devaḥ svapnānna paśyatyatha tadaitasmiñśarīre etat sukhaṃ bhavati ||',
-          translation: 'When the mind is overpowered by tejas (a deeper light), this divine Self does not see dreams. Then, in this body, there is happiness.',
-          hindi: 'जब मन गहन तेज से अभिभूत हो जाता है, तब यह आत्म-देव स्वप्न नहीं देखता; तब इस शरीर में सुख होता है।',
-          explanation: 'Deep, dreamless sleep. The mind itself is absorbed into a deeper light (tejas). No dream-images arise. The body rests in pure happiness — the bliss of suṣupti. This is the source of the refreshment we receive from sleep.',
-          keywords: [],
-        },
-        {
-          id: 104047,
-          sanskrit: 'स यथा सोम्य वयांसि वासोवृक्षं सम्प्रतिष्ठन्ते एवं ह वै तत् सर्वं पर आत्मनि सम्प्रतिष्ठते ॥',
-          transliteration: 'sa yathā somya vayāṃsi vāsovṛkṣaṃ sampratiṣṭhante evaṃ ha vai tat sarvaṃ para ātmani sampratiṣṭhate ||',
-          translation: 'As birds, dear one, return to their nesting tree, so all this becomes established in the supreme Self.',
-          hindi: 'हे सौम्य! जैसे पक्षी रात्रि में अपने आश्रय-वृक्ष पर लौट आते हैं, वैसे ही ये सब परम आत्मा में प्रतिष्ठित हो जाते हैं।',
-          explanation: 'A tender image. In deep sleep, all faculties return to the Self as birds return to their roosting tree at night. The Ātman is the home-place of consciousness; sleep is the daily homecoming.',
-          keywords: [],
-        },
-        {
-          id: 104048,
-          sanskrit: 'पृथिवी च पृथिवीमात्रा चापश्चापोमात्रा च तेजश्च तेजोमात्रा च वायुश्च वायुमात्रा चाकाशश्चाकाशमात्रा च चक्षुश्च द्रष्टव्यं च श्रोत्रं च श्रोतव्यं च घ्राणं च घ्रातव्यं च रसश्च रसयितव्यं च त्वक् च स्पर्शयितव्यं च वाक् च वक्तव्यं च हस्तौ चादातव्यं चोपस्थश्चानन्दयितव्यं च पायुश्च विसर्जयितव्यं च पादौ च गन्तव्यं च मनश्च मन्तव्यं च बुद्धिश्च बोद्धव्यं चाहङ्कारश्चाहङ्कर्तव्यं च चित्तं च चेतयितव्यं च तेजश्च विद्योतयितव्यं च प्राणश्च विधारयितव्यं च ॥',
-          transliteration: 'pṛthivī ca pṛthivīmātrā cāpaścāpomātrā ca tejaśca tejomātrā ca vāyuśca vāyumātrā cākāśaścākāśamātrā ca cakṣuśca draṣṭavyaṃ ca śrotraṃ ca śrotavyaṃ ca ghrāṇaṃ ca ghrātavyaṃ ca rasaśca rasayitavyaṃ ca tvak ca sparśayitavyaṃ ca vāk ca vaktavyaṃ ca hastau cādātavyaṃ copasthaścānandayitavyaṃ ca pāyuśca visarjayitavyaṃ ca pādau ca gantavyaṃ ca manaśca mantavyaṃ ca buddhiśca boddhavyaṃ cāhaṅkāraścāhaṅkartavyaṃ ca cittaṃ ca cetayitavyaṃ ca tejaśca vidyotayitavyaṃ ca prāṇaśca vidhārayitavyaṃ ca ||',
-          translation: 'Earth and its essence, water and its essence, fire and its essence, air and its essence, space and its essence; eye and the seen, ear and the heard, nose and the smelled, taste and the tasted, skin and the touched; speech and the spoken, hands and the grasped, generative organ and the enjoyed, anus and the eliminated, feet and the trodden; mind and the thought, intellect and the known, ego and what it claims, citta and what it perceives, tejas and what it illumines, prāṇa and what it supports —',
-          hindi: 'पृथिवी और उसकी सूक्ष्म-मात्रा, जल और उसकी मात्रा, अग्नि और मात्रा, वायु और मात्रा, आकाश और मात्रा; नेत्र और दर्शनीय, श्रोत्र और श्रोतव्य, घ्राण और घ्रातव्य, रस और रसयितव्य, त्वचा और स्पर्शनीय; वाणी और वक्तव्य, हाथ और ग्राह्य, उपस्थ और आनन्दनीय, पायु और त्याज्य, पैर और गन्तव्य; मन और मन्तव्य, बुद्धि और बोद्धव्य, अहङ्कार और अहङ्कर्तव्य, चित्त और चेतयितव्य, तेज और विद्योत्य, प्राण और धारयितव्य —',
-          explanation: 'An exhaustive enumeration of every faculty and its corresponding object — the entire "psychic machinery." The next mantra will complete the thought.',
-          keywords: [],
-        },
-        {
-          id: 104049,
-          sanskrit: 'एष हि द्रष्टा स्प्रष्टा श्रोता घ्राता रसयिता मन्ता बोद्धा कर्ता विज्ञानात्मा पुरुषः । स परेऽक्षर आत्मनि सम्प्रतिष्ठते ॥',
-          transliteration: 'eṣa hi draṣṭā spraṣṭā śrotā ghrātā rasayitā mantā boddhā kartā vijñānātmā puruṣaḥ | sa pare\'kṣara ātmani sampratiṣṭhate ||',
-          translation: 'For this is the seer, the toucher, the hearer, the smeller, the taster, the thinker, the knower, the doer — the Person, the cognition-self. It is established in the supreme, imperishable Self.',
-          hindi: 'यही द्रष्टा है, स्पर्शकर्ता, श्रोता, घ्राता, रसयिता, मन्ता, बोद्धा, कर्ता — विज्ञानात्मा पुरुष। वह परम अक्षर आत्मा में प्रतिष्ठित है।',
-          explanation: 'The completion of the previous list. Behind every faculty stands a single experiencer — the Puruṣa. And that experiencer is itself rooted in the supreme, imperishable Self.',
-          keywords: [],
-        },
-        {
-          id: 104050,
-          sanskrit: 'परमेवाक्षरं प्रतिपद्यते स यो ह वै तदच्छायमशरीरमलोहितं शुभ्रमक्षरं वेदयते यस्तु सोम्य । स सर्वज्ञः सर्वो भवति । तदेष श्लोकः ॥',
-          transliteration: 'paramevākṣaraṃ pratipadyate sa yo ha vai tadacchāyamaśarīramalohitaṃ śubhramakṣaraṃ vedayate yastu somya | sa sarvajñaḥ sarvo bhavati | tadeṣa ślokaḥ ||',
-          translation: 'He who knows that shadowless, bodiless, bloodless, pure, imperishable One — he, dear one, reaches the supreme imperishable. He becomes all-knowing, becomes all. This is the verse:',
-          hindi: 'जो उस छाया-रहित, शरीर-रहित, रक्त-रहित, शुभ्र, अक्षर को जानता है — वही, हे सौम्य, परम अक्षर को प्राप्त होता है। वह सर्वज्ञ हो जाता है, सब कुछ हो जाता है। इसी विषय में यह श्लोक:',
-          explanation: 'The fruit: he who knows the imperishable becomes all-knowing, becomes all. Not by aggregation but by recognition of the substrate.',
-          keywords: [],
-        },
-        {
-          id: 104051,
-          sanskrit: 'विज्ञानात्मा सह देवैश्च सर्वैः प्राणा भूतानि सम्प्रतिष्ठन्ति यत्र । तदक्षरं वेदयते यस्तु सोम्य स सर्वज्ञः सर्वमेवाविवेशेति ॥',
-          transliteration: 'vijñānātmā saha devaiśca sarvaiḥ prāṇā bhūtāni sampratiṣṭhanti yatra | tadakṣaraṃ vedayate yastu somya sa sarvajñaḥ sarvamevāviveśeti ||',
-          translation: 'Where the knowing-Self, with all the devas, the prāṇas, and the elements, comes to rest — that imperishable, he who knows it, dear one, becomes all-knowing and enters into All.',
-          hindi: 'जहाँ विज्ञानात्मा सहित सब देव, प्राण और भूत प्रतिष्ठित हो जाते हैं — उसी अक्षर को, हे सौम्य, जो जानता है — वह सर्वज्ञ होकर सर्व में प्रवेश कर जाता है।',
-          explanation: 'Final summary of the fourth prashna. Everything — the experiencer, the faculties, the energies, the elements — rests in the imperishable Self. To know that is to enter All.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 5,
@@ -1493,25 +1115,7 @@ export const prashna: Scripture = {
             'Find the practice that integrates everything else — the one that, when done, makes all your other practices come alive. For many, that is the breath. For some, mantra. For others, presence with a beloved. Whatever it is, that is your OM.',
           keywords: ['Integration', 'Peace', 'Final'],
         },
-      
-        {
-          id: 105056,
-          sanskrit: 'तिस्रो मात्रा मृत्युमत्यः प्रयुक्ता अन्योन्यसक्ता अनविप्रयुक्ताः । क्रियासु बाह्याभ्यन्तरमध्यमासु सम्यक् प्रयुक्तासु न कम्पते ज्ञः ॥',
-          transliteration: 'tisro mātrā mṛtyumatyaḥ prayuktā anyonyasaktā anaviprayuktāḥ | kriyāsu bāhyābhyantaramadhyamāsu samyak prayuktāsu na kampate jñaḥ ||',
-          translation: 'The three mātrās are mortal when used separately. But when joined together — interconnected and inseparable — applied rightly to outer, inner, and middle activities, the knower does not tremble.',
-          hindi: 'तीनों मात्राएँ अलग-अलग प्रयुक्त की जायें तो मृत्युयुक्त हैं। परन्तु जब वे परस्पर सम्बद्ध और अविच्छिन्न रूप से जुड़ी रहती हैं — बाह्य, आन्तरिक और मध्य की क्रियाओं में सम्यक् प्रयुक्त — तब ज्ञानी डगमगाता नहीं।',
-          explanation: 'A subtle warning: the three mātrās, treated as separate, are still subject to mortality. Only when fully integrated — when A, U, M, and the silence flow as one — does the practice deliver the deathless. Integration, not addition, is the path.',
-          keywords: [],
-        },
-        {
-          id: 105057,
-          sanskrit: 'ऋग्भिरेतं यजुर्भिरन्तरिक्षं सामभिर्यत्तत्कवयो वेदयन्ते । तमोङ्कारेणैवायतनेनान्वेति विद्वान् यत्तच्छान्तमजरममृतमभयं परं चेति ॥',
-          transliteration: 'ṛgbhiretaṃ yajurbhirantarikṣaṃ sāmabhiryattatkavayo vedayante | tamoṅkāreṇaivāyatanenānveti vidvān yattacchāntamajaramamṛtamabhayaṃ paraṃ ceti ||',
-          translation: 'By the Ṛc one reaches this (earth-world); by the Yajus the middle; by the Sāman, what the seers know. The wise reach, by OM alone, that which is peace, ageless, deathless, fearless, supreme.',
-          hindi: 'ऋच् से इस (पृथ्वी) लोक को, यजुस् से अन्तरिक्ष को, साम से उस लोक को कवि-जन प्राप्त करते हैं। पर विद्वान् केवल ओंकार के आश्रय से उसी को प्राप्त करता है — जो शान्त, अजर, अमर, अभय और परम है।',
-          explanation: 'Final summary. Each Veda has its proper realm, but the integrated OM is the support that delivers the supreme — peaceful, ageless, deathless, fearless. OM, fully realized, is the consummation of all Vedic practice.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 6,
@@ -1664,25 +1268,7 @@ export const prashna: Scripture = {
             'When someone has helped you across — a teacher, an author, a friend — say so. Gratitude unexpressed slowly evaporates and the lineage of transmission falters. Speak it.',
           keywords: ['Gratitude', 'Father', 'Closing'],
         },
-      
-        {
-          id: 106067,
-          sanskrit: 'तानहोवाचैतावदेवाहमेतत् परं ब्रह्म वेद नातः परमस्तीति ॥',
-          transliteration: 'tānahovācaitāvadevāhametat paraṃ brahma veda nātaḥ paramastīti ||',
-          translation: 'He said to them: "This is all I know of the supreme Brahman. There is nothing higher than this."',
-          hindi: 'उसने उन्हें कहा — "इतना ही मैं उस परम ब्रह्म के विषय में जानता हूँ। इससे आगे कुछ नहीं है।"',
-          explanation: 'Pippalāda\'s closing humility. Even at the end of teaching, the teacher does not claim to have exhausted the topic. \'This is all I know\' — and nothing higher exists than what has been taught.',
-          keywords: [],
-        },
-        {
-          id: 106068,
-          sanskrit: 'ते तमर्चयन्तस्त्वं हि नः पिता योऽस्माकमविद्यायाः परं पारं तारयसीति । नमः परमऋषिभ्यो नमः परमऋषिभ्यः ॥',
-          transliteration: 'te tamarcayantastvaṃ hi naḥ pitā yo\'smākamavidyāyāḥ paraṃ pāraṃ tārayasīti | namaḥ paramaṛṣibhyo namaḥ paramaṛṣibhyaḥ ||',
-          translation: 'They worshipped him: "You are our Father — for you ferry us across the further shore of ignorance." Salutations to the supreme seers, salutations to the supreme seers.',
-          hindi: 'उन्होंने उसकी पूजा करते हुए कहा — "आप ही हमारे पिता हैं, जो हमें अविद्या के पार ले जाते हैं।" परम ऋषियों को नमस्कार, परम ऋषियों को नमस्कार।',
-          explanation: 'The Upanishad closes with the disciples honoring Pippalāda as the father who ferried them across. The doubled "namaḥ" at the end is the traditional marker of completion.',
-          keywords: [],
-        },],
+      ],
     },
   ],
 };

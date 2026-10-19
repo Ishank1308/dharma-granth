@@ -21,6 +21,16 @@ const SacredAudioPlayer = dynamic(
   () => import("@/app/components/reader/SacredAudioPlayer").then((m) => m.SacredAudioPlayer),
   { ssr: false }
 );
+
+const PranaCapsule = dynamic(
+  () => import("@/components/ui/PranaCapsule").then((m) => m.PranaCapsule),
+  { ssr: false }
+);
+
+const MananaSelectionBar = dynamic(
+  () => import("@/app/components/reader/MananaSelectionBar").then((m) => m.MananaSelectionBar),
+  { ssr: false }
+);
 // Font subsetting: Bundling only required weights (400, 600, 700) and critical
 // styles; unused weights (300, 500, 300-italic, 700-italic) are omitted to reduce bundle size.
 import "@fontsource/inter/latin-400.css";
@@ -48,6 +58,11 @@ const THEME_INIT_SCRIPT = `
     var t = localStorage.getItem('dharma-theme');
     if (t === 'sunset' || t === 'night' || t === 'day' || t === 'paper') {
       document.documentElement.setAttribute('data-theme', t);
+    } else if (t === 'auto') {
+      var d = new Date();
+      var m = d.getHours() * 60 + d.getMinutes();
+      var eff = (m >= 300 && m < 390) || (m >= 1005 && m < 1140) ? 'sunset' : (m >= 390 && m < 1005 ? 'day' : 'night');
+      document.documentElement.setAttribute('data-theme', eff);
     }
   } catch (e) {}
   // The home-page splash plays once per browser session; later page loads
@@ -244,6 +259,12 @@ export default function RootLayout({
               <PageTransition>{children}</PageTransition>
             </ErrorBoundary>
           </div>
+          <ErrorBoundary name="Prāṇa Capsule">
+            <PranaCapsule />
+          </ErrorBoundary>
+          <ErrorBoundary name="Manana Selection">
+            <MananaSelectionBar />
+          </ErrorBoundary>
           <ErrorBoundary name="Floating Companion">
             <FloatingCompanion />
           </ErrorBoundary>

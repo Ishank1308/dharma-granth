@@ -378,7 +378,7 @@ function checkVerseOrder(id: string, data: FullScriptureJson): void {
  * '…'`, `/scripture/…` paths) must name a real scripture — made-up ids like
  * 'isha-upanishad' or 'upanishads' produced links to pages that don't exist.
  */
-const NOT_IN_LIBRARY = new Set(['maha-upanishad']); // cited, deliberately unlinked
+const NOT_IN_LIBRARY = new Set(['maha-upanishad', 'ashtavakra']); // cited, deliberately unlinked
 function checkScriptureReferences(): void {
   const known = new Set(scriptureCatalog.map((m) => m.id));
   const bad = new Set<string>();

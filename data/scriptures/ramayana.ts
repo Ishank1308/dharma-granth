@@ -3,7 +3,7 @@ export const ramayana: Scripture = {
   id: 'ramayana', title: 'Ramayana', titleSanskrit: 'रामायण',
   category: 'itihasa', author: 'Valmiki',
   description: 'The Valmiki Ramayana — 7 Kandas, ~24,000 slokas, the Adi Kavya (first poem). Narrated by Valmiki who received the story from Narada. Not merely an epic of war and rescue but a complete map of dharmic life: ideal character (Bala), equanimity under loss (Ayodhya), integrity under trial (Aranya), the power of purpose (Sundara), the cost of adharma (Yuddha), and the tragedy of public versus private dharma (Uttara). Complete Gita Press edition (~6191 pages).',
-  totalVerses: 24000, tags: ['Epic','Rama','Sita','Dharma','Hanuman','Valmiki','AdikavYa','Itihasa'],
+  totalVerses: 25, tags: ['Epic','Rama','Sita','Dharma','Hanuman','Valmiki','AdikavYa','Itihasa'],
   chapters: [
     {
       id: 1, title: 'Bala Kanda — The Purpose of the Epic', titleSanskrit: 'बालकाण्ड',
@@ -53,79 +53,7 @@ export const ramayana: Scripture = {
           lifeLesson: '"Vaśī" — master of the senses. Not their killer, not their denier — their master. The Bala Kanda does not describe a Rama who feels no desire; it describes one who is not commanded by desire. That is the crucial difference. Where in your life are you commanded by a sense or impulse rather than choosing to engage with it? That is the precise point where "vaśī" practice begins: not suppression, but sovereignty.',
           keywords: ['IkshvakuLineage', 'Niyatatma', 'Vashi', 'SelfRegulation', 'EarnedVirtue'],
         },
-      
-        {
-          id: 101012,
-          sanskrit: 'रामो विग्रहवान् धर्मः साधुश्च सत्यसन्धश्च । राजा सर्वस्य लोकस्य देवानां मघवानिव ॥',
-          transliteration: 'rāmo vigrahavān dharmaḥ sādhuśca satyasandhaśca | rājā sarvasya lokasya devānāṃ maghavāniva ||',
-          translation: 'Rama is dharma itself in embodied form — a virtuous man, true to his word, the king of all the worlds as Indra is king of the gods.',
-          hindi: 'राम साक्षात् धर्म के मानव-रूप हैं — साधु, सत्य-प्रतिज्ञ; जैसे देवों में इन्द्र, वैसे सम्पूर्ण लोकों के राजा।',
-          explanation: 'Narada identifies Rama not merely as a good man but as dharma made flesh — "vigrahavan dharmah." The Ramayana\'s entire narrative logic follows from this: every action Rama takes, even the most painful, is an expression of dharma living in a human body under constraint. His perfection is not the ease of the divine but the costly fidelity of the human who chooses rightly, even when it is the harder road.',
-          keywords: [],
-        },
-        {
-          id: 101018,
-          sanskrit: 'रामो विग्रहवान् धर्मः सर्वस्य जगतो गतिः । रामो राजा सर्वदेवानां रामो वेदो निगूढः ॥',
-          transliteration: 'rāmo vigrahavān dharmaḥ sarvasya jagato gatiḥ | rāmo rājā sarvadevānāṃ rāmo vedo nigūḍhaḥ ||',
-          translation: 'Rama is dharma in embodied form; Rama is the goal of all the world. Rama is the king of all gods; Rama is the hidden Veda.',
-          hindi: 'राम धर्म का साक्षात रूप है; राम सारे जगत की गति है। राम सभी देवों का राजा है; राम वेद का गूढ़ रूप है।',
-          explanation: 'This verse from the Adhyatma Ramayana declares Rama as the embodiment of dharma itself. Rama is not merely a king who follows dharma — he IS dharma. The world moves toward him as its goal. He is the king of all gods and the hidden essence of the Vedas. This transforms the Ramayana from a story into a metaphysical statement: the ideal human being is the embodied truth.',
-          keywords: [],
-        },
-        {
-          id: 101019,
-          sanskrit: 'जनकीनन्दनो देवो जनकीजनकः स्वयम् । जनकीकुलकमल्पो वा जनकीकुलदीप्तिमान् ॥',
-          transliteration: 'janakīnandano devo janakījanakaḥ svayam | janakīkulakalpo vā janakīkuladīptimān ||',
-          translation: 'Janaki\'s son is the divine one; Janaki\'s husband is himself the creator. He is either the ornament of Janaki\'s lineage or the illumination of Janaki\'s lineage.',
-          hindi: 'जानकी का पुत्र दिव्य है; जानकी का पति स्वयं ब्रह्मा है। वह जानकी कुल का आभूषण है या जानकी कुल का प्रकाश।',
-          explanation: 'A verse celebrating Rama\'s relationship with Sita (Janaki). Rama is Janaki\'s son (through adoption) and Janaki\'s husband. He is the creator (Brahma) himself. The verse plays on the ambiguity: is Rama the ornament of Sita\'s lineage, or is he the illumination that makes the lineage shine? The Ramayana teaches that the divine appears through sacred relationship — not in isolation but in connection.',
-          keywords: [],
-        },
-        {
-          id: 101024,
-          sanskrit: 'अहं तु गृध्रराजस्य जटायोः परमं प्रियम् । करिष्ये सलिलं तस्य दहिष्यामि च तं द्विजम् ॥',
-          transliteration: 'ahaṃ tu gṛdhrarājasya jaṭāyoḥ paramaṃ priyam | kariṣye salilaṃ tasya dahiṣyāmi ca taṃ dvijam ||',
-          translation: 'I myself will perform the water-rites for Jatayu, king of eagles, the most dear one — and I will perform his cremation.',
-          hindi: 'मैं स्वयं गृध्रराज जटायु के लिए जलांजलि दूँगा — अत्यंत प्रिय उनके लिए — और मैं उनका दाह-संस्कार करूँगा।',
-          explanation: 'Rama performs the funeral rites for Jatayu — an eagle, a non-human, a being from a different species — with the same ceremony he would perform for a father. "Paramaṃ priyam" — most dear. Jatayu died attempting to save Sita, fighting Ravana alone with broken wings at the end of a long life. Rama\'s response is not efficiency (bury him quickly, get on with the search) but complete, dignified reverence: water-rites, cremation, the full ceremony. The Aranya Kanda teaches here that dharma extends across species; that loyalty and sacrifice are honoured wherever they occur; and that grief for what is lost in the service of good is not weakness but recognition of value.',
-          keywords: [],
-        },
-        {
-          id: 101030,
-          sanskrit: 'प्रणवो धन्वो विराटो रामो राजीवलोचनः । पार्थिवो विश्वकर्मा च श्रीरामः पुरुषोत्तमः ॥',
-          transliteration: 'praṇavo dhanvo virāṭo rāmo rājīvalocanaḥ | pārthivo viśvakarmā ca śrīrāmaḥ puruṣottamaḥ ||',
-          translation: 'Om is the bow, the universe is the arrow, Rama is the lotus-eyed one. Rama is the earthly one, the creator of all, the supreme person.',
-          hindi: 'ॐ धनुष है, विराट बाण है, राम कमलनयन है। राम पार्थिव है, विश्वकर्मा है, पुरुषोत्तम है।',
-          explanation: 'This verse identifies Rama with the cosmic archer: Om as the bow, the universe as the arrow. Rama is the lotus-eyed one who releases the arrow. He is both earthly (parthivo) and the creator (vishvakarma). The image of the cosmic archer appears in the Upanishads and here in the Ramayana: the Self as the archer who releases the arrow of consciousness into the universe.',
-          keywords: [],
-        },
-        {
-          id: 101031,
-          sanskrit: 'न त्वं शोचितुमर्हसि । आत्मा हि लोके सर्वत्र वर्तते न विनश्यति ॥',
-          transliteration: 'na tvaṃ śocitumarhasi | ātmā hi loke sarvatra vartate na vinaśyati ||',
-          translation: 'You should not grieve. The Self pervades everywhere in the world and does not perish.',
-          hindi: 'तुम्हें शोक नहीं करना चाहिए। आत्मा इस लोक में सर्वत्र व्याप्त है और नष्ट नहीं होती।',
-          explanation: 'Spoken during the Ayodhya Kanda\'s darkest moment — exile accepted, Kaikeyi\'s boon enforced — this verse strikes the Upanishadic note beneath the epic\'s narrative. Grief is real, but the Self that witnesses grief is imperishable. Valmiki does not deny sorrow; he situates it within a larger reality that sorrow cannot touch. This is not consolation; it is metaphysics as medicine.',
-          keywords: [],
-        },
-        {
-          id: 101032,
-          sanskrit: 'न त्वं शोचितुमर्हसि प्रियाया वियोगतः । कामक्रोधौ वशे कृत्वा कुलं रक्ष महाद्युते ॥',
-          transliteration: 'na tvaṃ śocitumarhasi priyāyā viyogataḥ | kāmakrodhau vaśe kṛtvā kulaṃ rakṣa mahādyute ||',
-          translation: 'You should not grieve for the separation from one you love. Having brought desire and anger under control — protect the lineage, O radiant one.',
-          hindi: 'प्रिय के वियोग से तुम्हें शोक नहीं करना चाहिए। काम और क्रोध को वश में करके — हे महाद्युते, वंश की रक्षा करो।',
-          explanation: 'Spoken to Bharata after Dasharatha\'s death — the counsel not to succumb to either grief (over loss) or rage (over Kaikeyi\'s act). The pairing of kāma (desire/attachment) and krodha (anger) is precise: they are the two reactive poles around every loss. When we lose what we desire, we grieve; when something or someone caused the loss, we rage. The Ayodhya Kanda names both and places them under the category of what must be mastered — not suppressed, but not commanding either. The purpose: to protect what remains, the lineage, the larger dharma that extends beyond any single relationship.',
-          keywords: [],
-        },
-        {
-          id: 101034,
-          sanskrit: 'न स कामी न च क्रोधी न मत्सरी न च मानवान् । न मिथ्यावादी बभूव वाली वानरपुङ्गवः ॥',
-          transliteration: 'na sa kāmī na ca krodhī na matsarī na ca mānavān | na mithyāvādī babhūva vālī vānarapuṅgavaḥ ||',
-          translation: 'He was not driven by lust, nor anger, nor envy, nor arrogance, nor falsehood — that Vali, bull among vanaras.',
-          hindi: 'वह कामी नहीं था, न क्रोधी, न मत्सरी, न अहंकारी, न मिथ्यावादी — वह वानरश्रेष्ठ वाली।',
-          explanation: 'Tara\'s eulogy for Vali — spoken by his wife over his fallen body after Rama kills him. The Kishkindha Kanda\'s most complex moment: Vali had genuine virtues (not lustful, not angry, not envious, not arrogant, not false). And yet he was wrong — he took his brother\'s wife and kingdom. Tara\'s lament forces the Ramayana to acknowledge complexity: that people of genuine virtue can commit serious wrongs; that a person\'s best qualities do not excuse their worst actions; that grief for a flawed person can be completely real. The Ramayana does not resolve this tension; it holds it.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 2, title: 'Ayodhya Kanda — The Exile', titleSanskrit: 'अयोध्याकाण्ड',
@@ -175,97 +103,7 @@ export const ramayana: Scripture = {
           lifeLesson: 'Bharata\'s sandals on the throne: what would it mean, in your own domain of influence — your work, your family, your community — to lead as though you were a regent for a higher purpose rather than the owner of outcomes? Not as abdication but as a different quality of decision-making: what does this situation need, rather than what do I want? Bharata did not ask what he wanted for 14 years. He asked what Rama would decide. Try that for one decision today.',
           keywords: ['BhartaSandals', 'ServantLeadership', 'Regency', 'Renunciation', 'SelflessBhakti'],
         },
-      
-        {
-          id: 102011,
-          sanskrit: 'न दैवमभिशंसामि पुरुषार्थमुपाश्रये । यद्भवन्ति महाभागाः स्वयमेव क्रियापराः ॥',
-          transliteration: 'na daivamabhiśaṃsāmi puruṣārthamupāśraye | yadbhavanti mahābhāgāḥ svayameva kriyāparāḥ ||',
-          translation: 'I do not blame fate; I take refuge in human effort. Those who are truly fortunate are themselves engaged in action.',
-          hindi: 'मैं भाग्य को दोष नहीं देता; मैं पुरुषार्थ की शरण लेता हूँ। जो वास्तव में भाग्यशाली हैं, वे स्वयं ही कर्म में लगे रहते हैं।',
-          explanation: 'A powerful verse from the Ramayana — not from Rama but from the Ayodhya context — on the relationship between fate and effort. The refusal to blame fate and the insistence on human effort as the primary vehicle of progress is a distinctly Ramayana value. Rama never complains; he acts.',
-          keywords: [],
-        },
-        {
-          id: 102012,
-          sanskrit: 'न त्वं शोचितुमर्हसि । आत्मा हि लोके सर्वत्र वर्तते न विनश्यति ॥',
-          transliteration: 'na tvaṃ śocitumarhasi | ātmā hi loke sarvatra vartate na vinaśyati ||',
-          translation: 'You should not grieve. The Self pervades everywhere in the world and does not perish.',
-          hindi: 'तुम्हें शोक नहीं करना चाहिए। आत्मा इस लोक में सर्वत्र व्याप्त है और नष्ट नहीं होती।',
-          explanation: 'Spoken during the Ayodhya Kanda\'s darkest moment — exile accepted, Kaikeyi\'s boon enforced — this verse strikes the Upanishadic note beneath the epic\'s narrative. Grief is real, but the Self that witnesses grief is imperishable. Valmiki does not deny sorrow; he situates it within a larger reality that sorrow cannot touch. This is not consolation; it is metaphysics as medicine.',
-          keywords: [],
-        },
-        {
-          id: 102013,
-          sanskrit: 'न त्वं शोचितुमर्हसि प्रियाया वियोगतः । कामक्रोधौ वशे कृत्वा कुलं रक्ष महाद्युते ॥',
-          transliteration: 'na tvaṃ śocitumarhasi priyāyā viyogataḥ | kāmakrodhau vaśe kṛtvā kulaṃ rakṣa mahādyute ||',
-          translation: 'You should not grieve for the separation from one you love. Having brought desire and anger under control — protect the lineage, O radiant one.',
-          hindi: 'प्रिय के वियोग से तुम्हें शोक नहीं करना चाहिए। काम और क्रोध को वश में करके — हे महाद्युते, वंश की रक्षा करो।',
-          explanation: 'Spoken to Bharata after Dasharatha\'s death — the counsel not to succumb to either grief (over loss) or rage (over Kaikeyi\'s act). The pairing of kāma (desire/attachment) and krodha (anger) is precise: they are the two reactive poles around every loss. When we lose what we desire, we grieve; when something or someone caused the loss, we rage. The Ayodhya Kanda names both and places them under the category of what must be mastered — not suppressed, but not commanding either. The purpose: to protect what remains, the lineage, the larger dharma that extends beyond any single relationship.',
-          keywords: [],
-        },
-        {
-          id: 102014,
-          sanskrit: 'पादुके च समासाद्य भरतः स्वयमेव हि । शिरसा धारयामास प्रणम्य सविनीतवत् ॥',
-          transliteration: 'pāduke ca samāsādya bharataḥ svayameva hi | śirasā dhārayāmāsa praṇamya savinītavat ||',
-          translation: 'Having received the sandals, Bharata himself — bowing with complete humility — bore them on his head.',
-          hindi: 'पादुकाएं प्राप्त करके, भरत ने स्वयं ही — विनयपूर्वक प्रणाम करके — उन्हें अपने सिर पर धारण किया।',
-          explanation: 'Bharata\'s act with Rama\'s sandals — placing them on the throne and ruling as regent rather than king — is one of the most celebrated acts of selfless love and political renunciation in world literature. Bharata had everything: his mother had secured the throne for him. He refused it, not from incapacity but from principle. The sandals on the throne are not a symbol — they are Bharata\'s daily lived reality for 14 years: every decision made as if Rama were deciding, every morning beginning with prostration to the sandals. This is the Ayodhya Kanda\'s portrait of what bhakti looks like in the political sphere.',
-          keywords: [],
-        },
-        {
-          id: 102018,
-          sanskrit: 'रामो विग्रहवान् धर्मः सर्वस्य जगतो गतिः । रामो राजा सर्वदेवानां रामो वेदो निगूढः ॥',
-          transliteration: 'rāmo vigrahavān dharmaḥ sarvasya jagato gatiḥ | rāmo rājā sarvadevānāṃ rāmo vedo nigūḍhaḥ ||',
-          translation: 'Rama is dharma in embodied form; Rama is the goal of all the world. Rama is the king of all gods; Rama is the hidden Veda.',
-          hindi: 'राम धर्म का साक्षात रूप है; राम सारे जगत की गति है। राम सभी देवों का राजा है; राम वेद का गूढ़ रूप है।',
-          explanation: 'This verse from the Adhyatma Ramayana declares Rama as the embodiment of dharma itself. Rama is not merely a king who follows dharma — he IS dharma. The world moves toward him as its goal. He is the king of all gods and the hidden essence of the Vedas. This transforms the Ramayana from a story into a metaphysical statement: the ideal human being is the embodied truth.',
-          keywords: [],
-        },
-        {
-          id: 102019,
-          sanskrit: 'जनकीनन्दनो देवो जनकीजनकः स्वयम् । जनकीकुलकमल्पो वा जनकीकुलदीप्तिमान् ॥',
-          transliteration: 'janakīnandano devo janakījanakaḥ svayam | janakīkulakalpo vā janakīkuladīptimān ||',
-          translation: 'Janaki\'s son is the divine one; Janaki\'s husband is himself the creator. He is either the ornament of Janaki\'s lineage or the illumination of Janaki\'s lineage.',
-          hindi: 'जानकी का पुत्र दिव्य है; जानकी का पति स्वयं ब्रह्मा है। वह जानकी कुल का आभूषण है या जानकी कुल का प्रकाश।',
-          explanation: 'A verse celebrating Rama\'s relationship with Sita (Janaki). Rama is Janaki\'s son (through adoption) and Janaki\'s husband. He is the creator (Brahma) himself. The verse plays on the ambiguity: is Rama the ornament of Sita\'s lineage, or is he the illumination that makes the lineage shine? The Ramayana teaches that the divine appears through sacred relationship — not in isolation but in connection.',
-          keywords: [],
-        },
-        {
-          id: 102024,
-          sanskrit: 'अहं तु गृध्रराजस्य जटायोः परमं प्रियम् । करिष्ये सलिलं तस्य दहिष्यामि च तं द्विजम् ॥',
-          transliteration: 'ahaṃ tu gṛdhrarājasya jaṭāyoḥ paramaṃ priyam | kariṣye salilaṃ tasya dahiṣyāmi ca taṃ dvijam ||',
-          translation: 'I myself will perform the water-rites for Jatayu, king of eagles, the most dear one — and I will perform his cremation.',
-          hindi: 'मैं स्वयं गृध्रराज जटायु के लिए जलांजलि दूँगा — अत्यंत प्रिय उनके लिए — और मैं उनका दाह-संस्कार करूँगा।',
-          explanation: 'Rama performs the funeral rites for Jatayu — an eagle, a non-human, a being from a different species — with the same ceremony he would perform for a father. "Paramaṃ priyam" — most dear. Jatayu died attempting to save Sita, fighting Ravana alone with broken wings at the end of a long life. Rama\'s response is not efficiency (bury him quickly, get on with the search) but complete, dignified reverence: water-rites, cremation, the full ceremony. The Aranya Kanda teaches here that dharma extends across species; that loyalty and sacrifice are honoured wherever they occur; and that grief for what is lost in the service of good is not weakness but recognition of value.',
-          keywords: [],
-        },
-        {
-          id: 102030,
-          sanskrit: 'प्रणवो धन्वो विराटो रामो राजीवलोचनः । पार्थिवो विश्वकर्मा च श्रीरामः पुरुषोत्तमः ॥',
-          transliteration: 'praṇavo dhanvo virāṭo rāmo rājīvalocanaḥ | pārthivo viśvakarmā ca śrīrāmaḥ puruṣottamaḥ ||',
-          translation: 'Om is the bow, the universe is the arrow, Rama is the lotus-eyed one. Rama is the earthly one, the creator of all, the supreme person.',
-          hindi: 'ॐ धनुष है, विराट बाण है, राम कमलनयन है। राम पार्थिव है, विश्वकर्मा है, पुरुषोत्तम है।',
-          explanation: 'This verse identifies Rama with the cosmic archer: Om as the bow, the universe as the arrow. Rama is the lotus-eyed one who releases the arrow. He is both earthly (parthivo) and the creator (vishvakarma). The image of the cosmic archer appears in the Upanishads and here in the Ramayana: the Self as the archer who releases the arrow of consciousness into the universe.',
-          keywords: [],
-        },
-        {
-          id: 102034,
-          sanskrit: 'न स कामी न च क्रोधी न मत्सरी न च मानवान् । न मिथ्यावादी बभूव वाली वानरपुङ्गवः ॥',
-          transliteration: 'na sa kāmī na ca krodhī na matsarī na ca mānavān | na mithyāvādī babhūva vālī vānarapuṅgavaḥ ||',
-          translation: 'He was not driven by lust, nor anger, nor envy, nor arrogance, nor falsehood — that Vali, bull among vanaras.',
-          hindi: 'वह कामी नहीं था, न क्रोधी, न मत्सरी, न अहंकारी, न मिथ्यावादी — वह वानरश्रेष्ठ वाली।',
-          explanation: 'Tara\'s eulogy for Vali — spoken by his wife over his fallen body after Rama kills him. The Kishkindha Kanda\'s most complex moment: Vali had genuine virtues (not lustful, not angry, not envious, not arrogant, not false). And yet he was wrong — he took his brother\'s wife and kingdom. Tara\'s lament forces the Ramayana to acknowledge complexity: that people of genuine virtue can commit serious wrongs; that a person\'s best qualities do not excuse their worst actions; that grief for a flawed person can be completely real. The Ramayana does not resolve this tension; it holds it.',
-          keywords: [],
-        },
-        {
-          id: 102231,
-          sanskrit: 'नीतिं शास्त्रविधिं चैव शत्रोरपि गृहाण हि । उपदेशं हि कर्तव्यो यस्यासौ शास्त्रवित्तमः ॥',
-          transliteration: 'nītiṃ śāstravidhiṃ caiva śatrorapiGṛhāṇa hi | upadeśaṃ hi kartavyo yasyāsau śāstravittamaḥ ||',
-          translation: 'Receive the teaching of statecraft and scripture even from an enemy. Teaching should be received from whoever is the greatest knower of scripture.',
-          hindi: 'नीति और शास्त्र-विधि शत्रु से भी ग्रहण करो। जो शास्त्र का सर्वश्रेष्ठ ज्ञाता हो — उससे उपदेश लेना उचित है।',
-          explanation: 'Rama sends Lakshmana to the dying Ravana to receive his final teachings — and Ravana, scholar of scholars, teaches Lakshmana the essence of statecraft and wisdom. This is the Yuddha Kanda\'s most unexpected reversal: the greatest teacher in the war is the antagonist. Rama\'s instruction — "go learn from him before he dies" — is the Ramayana\'s non-sectarian recognition that wisdom has no side. Knowledge is valid wherever it is found, even in the one who has been your enemy. The verse frames this as an obligation: "kartavyo" — it ought to be done. Refusing to learn from someone because of what they did is not principle; it is pride.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 3, title: 'Aranya Kanda — Forest of Trials', titleSanskrit: 'अरण्यकाण्ड',
@@ -304,88 +142,7 @@ export const ramayana: Scripture = {
           lifeLesson: 'Who in your life has fought for you — given their best effort in your service — and gone unacknowledged? Not only people: relationships, places, periods of life that carried you and are now gone? The Ramayana says: perform the rites. Take time to genuinely honour what has served you, even after it is gone. "Paramaṃ priyam" — most dear. Let yourself feel how dear it was.',
           keywords: ['Jatayu', 'FuneralRites', 'GratitudeAcrossSpecies', 'GriefRitual', 'LoyaltyHonoured'],
         },
-      
-        {
-          id: 103012,
-          sanskrit: 'सत्यमेव जयते नानृतं सत्येन पन्था विततो देवयानः ॥',
-          transliteration: 'satyameva jayate nānṛtaṃ satyena panthā vitato devayānaḥ ||',
-          translation: 'Truth alone triumphs, not falsehood. By truth the path of the gods is laid out.',
-          hindi: 'सत्य की ही जीत होती है, असत्य की नहीं। सत्य से ही देवयान मार्ग प्रशस्त होता है।',
-          explanation: 'The Aranya Kanda\'s testing ground — where Ravana\'s adharma attempts to flourish — carries this repeated refrain: truth is not merely a moral preference but the structural principle of reality. Falsehood can win a battle, even many battles; it cannot win the war against the structure of existence.',
-          keywords: [],
-        },
-        {
-          id: 103013,
-          sanskrit: 'अहं तु गृध्रराजस्य जटायोः परमं प्रियम् । करिष्ये सलिलं तस्य दहिष्यामि च तं द्विजम् ॥',
-          transliteration: 'ahaṃ tu gṛdhrarājasya jaṭāyoḥ paramaṃ priyam | kariṣye salilaṃ tasya dahiṣyāmi ca taṃ dvijam ||',
-          translation: 'I myself will perform the water-rites for Jatayu, king of eagles, the most dear one — and I will perform his cremation.',
-          hindi: 'मैं स्वयं गृध्रराज जटायु के लिए जलांजलि दूँगा — अत्यंत प्रिय उनके लिए — और मैं उनका दाह-संस्कार करूँगा।',
-          explanation: 'Rama performs the funeral rites for Jatayu — an eagle, a non-human, a being from a different species — with the same ceremony he would perform for a father. "Paramaṃ priyam" — most dear. Jatayu died attempting to save Sita, fighting Ravana alone with broken wings at the end of a long life. Rama\'s response is not efficiency (bury him quickly, get on with the search) but complete, dignified reverence: water-rites, cremation, the full ceremony. The Aranya Kanda teaches here that dharma extends across species; that loyalty and sacrifice are honoured wherever they occur; and that grief for what is lost in the service of good is not weakness but recognition of value.',
-          keywords: [],
-        },
-        {
-          id: 103014,
-          sanskrit: 'इक्ष्वाकुवंशप्रभवो रामो नाम जनैः श्रुतः । नियतात्मा महावीर्यो द्युतिमान् धृतिमान् वशी ॥',
-          transliteration: 'ikṣvākuvaṃśaprabhavo rāmo nāma janaiḥ śrutaḥ | niyatātmā mahāvīryo dyutimān dhṛtimān vaśī ||',
-          translation: 'Born of the Ikshvaku lineage, known to the people as Rama — self-controlled, of great valour, radiant, steadfast, master of his senses.',
-          hindi: 'इक्ष्वाकु वंश में उत्पन्न, लोगों में राम के नाम से विख्यात — नियतात्मा, महावीर्य, द्युतिमान, धृतिमान, इन्द्रियों के स्वामी।',
-          explanation: 'Narada\'s description of Rama begins not with his divine origin but with his human lineage and earned qualities. "Niyatātmā" — self-controlled soul, not by suppression but by genuine mastery. "Dyutimān" — radiant, literally luminous — the ancient Indian understanding that genuine virtue produces a visible quality of presence. "Vaśī" — master of the senses, in the precise Yoga sense: not the person who never experiences desire but the person in whom desire does not command. The Bala Kanda establishes that Rama\'s greatness is both born (lineage) and earned (character) — the interplay that the Ramayana explores throughout.',
-          keywords: [],
-        },
-        {
-          id: 103018,
-          sanskrit: 'रामो विग्रहवान् धर्मः सर्वस्य जगतो गतिः । रामो राजा सर्वदेवानां रामो वेदो निगूढः ॥',
-          transliteration: 'rāmo vigrahavān dharmaḥ sarvasya jagato gatiḥ | rāmo rājā sarvadevānāṃ rāmo vedo nigūḍhaḥ ||',
-          translation: 'Rama is dharma in embodied form; Rama is the goal of all the world. Rama is the king of all gods; Rama is the hidden Veda.',
-          hindi: 'राम धर्म का साक्षात रूप है; राम सारे जगत की गति है। राम सभी देवों का राजा है; राम वेद का गूढ़ रूप है।',
-          explanation: 'This verse from the Adhyatma Ramayana declares Rama as the embodiment of dharma itself. Rama is not merely a king who follows dharma — he IS dharma. The world moves toward him as its goal. He is the king of all gods and the hidden essence of the Vedas. This transforms the Ramayana from a story into a metaphysical statement: the ideal human being is the embodied truth.',
-          keywords: [],
-        },
-        {
-          id: 103019,
-          sanskrit: 'जनकीनन्दनो देवो जनकीजनकः स्वयम् । जनकीकुलकमल्पो वा जनकीकुलदीप्तिमान् ॥',
-          transliteration: 'janakīnandano devo janakījanakaḥ svayam | janakīkulakalpo vā janakīkuladīptimān ||',
-          translation: 'Janaki\'s son is the divine one; Janaki\'s husband is himself the creator. He is either the ornament of Janaki\'s lineage or the illumination of Janaki\'s lineage.',
-          hindi: 'जानकी का पुत्र दिव्य है; जानकी का पति स्वयं ब्रह्मा है। वह जानकी कुल का आभूषण है या जानकी कुल का प्रकाश।',
-          explanation: 'A verse celebrating Rama\'s relationship with Sita (Janaki). Rama is Janaki\'s son (through adoption) and Janaki\'s husband. He is the creator (Brahma) himself. The verse plays on the ambiguity: is Rama the ornament of Sita\'s lineage, or is he the illumination that makes the lineage shine? The Ramayana teaches that the divine appears through sacred relationship — not in isolation but in connection.',
-          keywords: [],
-        },
-        {
-          id: 103030,
-          sanskrit: 'प्रणवो धन्वो विराटो रामो राजीवलोचनः । पार्थिवो विश्वकर्मा च श्रीरामः पुरुषोत्तमः ॥',
-          transliteration: 'praṇavo dhanvo virāṭo rāmo rājīvalocanaḥ | pārthivo viśvakarmā ca śrīrāmaḥ puruṣottamaḥ ||',
-          translation: 'Om is the bow, the universe is the arrow, Rama is the lotus-eyed one. Rama is the earthly one, the creator of all, the supreme person.',
-          hindi: 'ॐ धनुष है, विराट बाण है, राम कमलनयन है। राम पार्थिव है, विश्वकर्मा है, पुरुषोत्तम है।',
-          explanation: 'This verse identifies Rama with the cosmic archer: Om as the bow, the universe as the arrow. Rama is the lotus-eyed one who releases the arrow. He is both earthly (parthivo) and the creator (vishvakarma). The image of the cosmic archer appears in the Upanishads and here in the Ramayana: the Self as the archer who releases the arrow of consciousness into the universe.',
-          keywords: [],
-        },
-        {
-          id: 103031,
-          sanskrit: 'न त्वं शोचितुमर्हसि । आत्मा हि लोके सर्वत्र वर्तते न विनश्यति ॥',
-          transliteration: 'na tvaṃ śocitumarhasi | ātmā hi loke sarvatra vartate na vinaśyati ||',
-          translation: 'You should not grieve. The Self pervades everywhere in the world and does not perish.',
-          hindi: 'तुम्हें शोक नहीं करना चाहिए। आत्मा इस लोक में सर्वत्र व्याप्त है और नष्ट नहीं होती।',
-          explanation: 'Spoken during the Ayodhya Kanda\'s darkest moment — exile accepted, Kaikeyi\'s boon enforced — this verse strikes the Upanishadic note beneath the epic\'s narrative. Grief is real, but the Self that witnesses grief is imperishable. Valmiki does not deny sorrow; he situates it within a larger reality that sorrow cannot touch. This is not consolation; it is metaphysics as medicine.',
-          keywords: [],
-        },
-        {
-          id: 103032,
-          sanskrit: 'न त्वं शोचितुमर्हसि प्रियाया वियोगतः । कामक्रोधौ वशे कृत्वा कुलं रक्ष महाद्युते ॥',
-          transliteration: 'na tvaṃ śocitumarhasi priyāyā viyogataḥ | kāmakrodhau vaśe kṛtvā kulaṃ rakṣa mahādyute ||',
-          translation: 'You should not grieve for the separation from one you love. Having brought desire and anger under control — protect the lineage, O radiant one.',
-          hindi: 'प्रिय के वियोग से तुम्हें शोक नहीं करना चाहिए। काम और क्रोध को वश में करके — हे महाद्युते, वंश की रक्षा करो।',
-          explanation: 'Spoken to Bharata after Dasharatha\'s death — the counsel not to succumb to either grief (over loss) or rage (over Kaikeyi\'s act). The pairing of kāma (desire/attachment) and krodha (anger) is precise: they are the two reactive poles around every loss. When we lose what we desire, we grieve; when something or someone caused the loss, we rage. The Ayodhya Kanda names both and places them under the category of what must be mastered — not suppressed, but not commanding either. The purpose: to protect what remains, the lineage, the larger dharma that extends beyond any single relationship.',
-          keywords: [],
-        },
-        {
-          id: 103044,
-          sanskrit: 'न स कामी न च क्रोधी न मत्सरी न च मानवान् । न मिथ्यावादी बभूव वाली वानरपुङ्गवः ॥',
-          transliteration: 'na sa kāmī na ca krodhī na matsarī na ca mānavān | na mithyāvādī babhūva vālī vānarapuṅgavaḥ ||',
-          translation: 'He was not driven by lust, nor anger, nor envy, nor arrogance, nor falsehood — that Vali, bull among vanaras.',
-          hindi: 'वह कामी नहीं था, न क्रोधी, न मत्सरी, न अहंकारी, न मिथ्यावादी — वह वानरश्रेष्ठ वाली।',
-          explanation: 'Tara\'s eulogy for Vali — spoken by his wife over his fallen body after Rama kills him. The Kishkindha Kanda\'s most complex moment: Vali had genuine virtues (not lustful, not angry, not envious, not arrogant, not false). And yet he was wrong — he took his brother\'s wife and kingdom. Tara\'s lament forces the Ramayana to acknowledge complexity: that people of genuine virtue can commit serious wrongs; that a person\'s best qualities do not excuse their worst actions; that grief for a flawed person can be completely real. The Ramayana does not resolve this tension; it holds it.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 4, title: 'Kishkindha Kanda — Alliance and Inner Conflict', titleSanskrit: 'किष्किन्धाकाण्ड',
@@ -424,106 +181,7 @@ export const ramayana: Scripture = {
           lifeLesson: 'Is there someone in your life — someone who hurt you, or who was harmed by you — for whom you hold only the single dimension of their worst action? The Kishkindha Kanda invites you into Tara\'s complexity: can you hold both the wrong done AND the real virtues that existed alongside it? That is not excusing the wrong. It is seeing the whole person — and it is the beginning of genuine resolution.',
           keywords: ['Vali', 'TarasLament', 'MoralComplexity', 'FlawedVirtue', 'Kishkindha'],
         },
-      
-        {
-          id: 104012,
-          sanskrit: 'उत्साहो बलवानार्य नास्त्युत्साहात्परं बलम् । सोत्साहस्य च लोकेऽस्मिन् न किञ्चिदपि दुर्लभम् ॥',
-          transliteration: 'utsāho balavānārya nāstyutsāhātparaṃ balam | sotsāhasya ca loke\'smin na kiñcidapi durlabham ||',
-          translation: 'O noble one, enthusiasm is the greatest strength — there is no power greater than enthusiasm. For one who has enthusiasm, nothing in this world is unattainable.',
-          hindi: 'हे आर्य! उत्साह ही सबसे बड़ा बल है — उत्साह से बड़ा कोई बल नहीं है। उत्साही के लिए इस संसार में कुछ भी दुर्लभ नहीं है।',
-          explanation: 'The Kishkindha Kanda is not only about alliance but about the recovery of momentum after despair. Sugriva, Hanuman, and the Vanara army had been paralysed. This verse breaks the paralysis: utsaha — enthusiastic, energised engagement — is the master key. Not talent, not resources, not even dharma alone — but the energised willingness to act.',
-          keywords: [],
-        },
-        {
-          id: 104013,
-          sanskrit: 'न स कामी न च क्रोधी न मत्सरी न च मानवान् । न मिथ्यावादी बभूव वाली वानरपुङ्गवः ॥',
-          transliteration: 'na sa kāmī na ca krodhī na matsarī na ca mānavān | na mithyāvādī babhūva vālī vānarapuṅgavaḥ ||',
-          translation: 'He was not driven by lust, nor anger, nor envy, nor arrogance, nor falsehood — that Vali, bull among vanaras.',
-          hindi: 'वह कामी नहीं था, न क्रोधी, न मत्सरी, न अहंकारी, न मिथ्यावादी — वह वानरश्रेष्ठ वाली।',
-          explanation: 'Tara\'s eulogy for Vali — spoken by his wife over his fallen body after Rama kills him. The Kishkindha Kanda\'s most complex moment: Vali had genuine virtues (not lustful, not angry, not envious, not arrogant, not false). And yet he was wrong — he took his brother\'s wife and kingdom. Tara\'s lament forces the Ramayana to acknowledge complexity: that people of genuine virtue can commit serious wrongs; that a person\'s best qualities do not excuse their worst actions; that grief for a flawed person can be completely real. The Ramayana does not resolve this tension; it holds it.',
-          keywords: [],
-        },
-        {
-          id: 104014,
-          sanskrit: 'इक्ष्वाकुवंशप्रभवो रामो नाम जनैः श्रुतः । नियतात्मा महावीर्यो द्युतिमान् धृतिमान् वशी ॥',
-          transliteration: 'ikṣvākuvaṃśaprabhavo rāmo nāma janaiḥ śrutaḥ | niyatātmā mahāvīryo dyutimān dhṛtimān vaśī ||',
-          translation: 'Born of the Ikshvaku lineage, known to the people as Rama — self-controlled, of great valour, radiant, steadfast, master of his senses.',
-          hindi: 'इक्ष्वाकु वंश में उत्पन्न, लोगों में राम के नाम से विख्यात — नियतात्मा, महावीर्य, द्युतिमान, धृतिमान, इन्द्रियों के स्वामी।',
-          explanation: 'Narada\'s description of Rama begins not with his divine origin but with his human lineage and earned qualities. "Niyatātmā" — self-controlled soul, not by suppression but by genuine mastery. "Dyutimān" — radiant, literally luminous — the ancient Indian understanding that genuine virtue produces a visible quality of presence. "Vaśī" — master of the senses, in the precise Yoga sense: not the person who never experiences desire but the person in whom desire does not command. The Bala Kanda establishes that Rama\'s greatness is both born (lineage) and earned (character) — the interplay that the Ramayana explores throughout.',
-          keywords: [],
-        },
-        {
-          id: 104018,
-          sanskrit: 'रामो विग्रहवान् धर्मः सर्वस्य जगतो गतिः । रामो राजा सर्वदेवानां रामो वेदो निगूढः ॥',
-          transliteration: 'rāmo vigrahavān dharmaḥ sarvasya jagato gatiḥ | rāmo rājā sarvadevānāṃ rāmo vedo nigūḍhaḥ ||',
-          translation: 'Rama is dharma in embodied form; Rama is the goal of all the world. Rama is the king of all gods; Rama is the hidden Veda.',
-          hindi: 'राम धर्म का साक्षात रूप है; राम सारे जगत की गति है। राम सभी देवों का राजा है; राम वेद का गूढ़ रूप है।',
-          explanation: 'This verse from the Adhyatma Ramayana declares Rama as the embodiment of dharma itself. Rama is not merely a king who follows dharma — he IS dharma. The world moves toward him as its goal. He is the king of all gods and the hidden essence of the Vedas. This transforms the Ramayana from a story into a metaphysical statement: the ideal human being is the embodied truth.',
-          keywords: [],
-        },
-        {
-          id: 104019,
-          sanskrit: 'जनकीनन्दनो देवो जनकीजनकः स्वयम् । जनकीकुलकमल्पो वा जनकीकुलदीप्तिमान् ॥',
-          transliteration: 'janakīnandano devo janakījanakaḥ svayam | janakīkulakalpo vā janakīkuladīptimān ||',
-          translation: 'Janaki\'s son is the divine one; Janaki\'s husband is himself the creator. He is either the ornament of Janaki\'s lineage or the illumination of Janaki\'s lineage.',
-          hindi: 'जानकी का पुत्र दिव्य है; जानकी का पति स्वयं ब्रह्मा है। वह जानकी कुल का आभूषण है या जानकी कुल का प्रकाश।',
-          explanation: 'A verse celebrating Rama\'s relationship with Sita (Janaki). Rama is Janaki\'s son (through adoption) and Janaki\'s husband. He is the creator (Brahma) himself. The verse plays on the ambiguity: is Rama the ornament of Sita\'s lineage, or is he the illumination that makes the lineage shine? The Ramayana teaches that the divine appears through sacred relationship — not in isolation but in connection.',
-          keywords: [],
-        },
-        {
-          id: 104024,
-          sanskrit: 'अहं तु गृध्रराजस्य जटायोः परमं प्रियम् । करिष्ये सलिलं तस्य दहिष्यामि च तं द्विजम् ॥',
-          transliteration: 'ahaṃ tu gṛdhrarājasya jaṭāyoḥ paramaṃ priyam | kariṣye salilaṃ tasya dahiṣyāmi ca taṃ dvijam ||',
-          translation: 'I myself will perform the water-rites for Jatayu, king of eagles, the most dear one — and I will perform his cremation.',
-          hindi: 'मैं स्वयं गृध्रराज जटायु के लिए जलांजलि दूँगा — अत्यंत प्रिय उनके लिए — और मैं उनका दाह-संस्कार करूँगा।',
-          explanation: 'Rama performs the funeral rites for Jatayu — an eagle, a non-human, a being from a different species — with the same ceremony he would perform for a father. "Paramaṃ priyam" — most dear. Jatayu died attempting to save Sita, fighting Ravana alone with broken wings at the end of a long life. Rama\'s response is not efficiency (bury him quickly, get on with the search) but complete, dignified reverence: water-rites, cremation, the full ceremony. The Aranya Kanda teaches here that dharma extends across species; that loyalty and sacrifice are honoured wherever they occur; and that grief for what is lost in the service of good is not weakness but recognition of value.',
-          keywords: [],
-        },
-        {
-          id: 104030,
-          sanskrit: 'प्रणवो धन्वो विराटो रामो राजीवलोचनः । पार्थिवो विश्वकर्मा च श्रीरामः पुरुषोत्तमः ॥',
-          transliteration: 'praṇavo dhanvo virāṭo rāmo rājīvalocanaḥ | pārthivo viśvakarmā ca śrīrāmaḥ puruṣottamaḥ ||',
-          translation: 'Om is the bow, the universe is the arrow, Rama is the lotus-eyed one. Rama is the earthly one, the creator of all, the supreme person.',
-          hindi: 'ॐ धनुष है, विराट बाण है, राम कमलनयन है। राम पार्थिव है, विश्वकर्मा है, पुरुषोत्तम है।',
-          explanation: 'This verse identifies Rama with the cosmic archer: Om as the bow, the universe as the arrow. Rama is the lotus-eyed one who releases the arrow. He is both earthly (parthivo) and the creator (vishvakarma). The image of the cosmic archer appears in the Upanishads and here in the Ramayana: the Self as the archer who releases the arrow of consciousness into the universe.',
-          keywords: [],
-        },
-        {
-          id: 104031,
-          sanskrit: 'न त्वं शोचितुमर्हसि । आत्मा हि लोके सर्वत्र वर्तते न विनश्यति ॥',
-          transliteration: 'na tvaṃ śocitumarhasi | ātmā hi loke sarvatra vartate na vinaśyati ||',
-          translation: 'You should not grieve. The Self pervades everywhere in the world and does not perish.',
-          hindi: 'तुम्हें शोक नहीं करना चाहिए। आत्मा इस लोक में सर्वत्र व्याप्त है और नष्ट नहीं होती।',
-          explanation: 'Spoken during the Ayodhya Kanda\'s darkest moment — exile accepted, Kaikeyi\'s boon enforced — this verse strikes the Upanishadic note beneath the epic\'s narrative. Grief is real, but the Self that witnesses grief is imperishable. Valmiki does not deny sorrow; he situates it within a larger reality that sorrow cannot touch. This is not consolation; it is metaphysics as medicine.',
-          keywords: [],
-        },
-        {
-          id: 104032,
-          sanskrit: 'न त्वं शोचितुमर्हसि प्रियाया वियोगतः । कामक्रोधौ वशे कृत्वा कुलं रक्ष महाद्युते ॥',
-          transliteration: 'na tvaṃ śocitumarhasi priyāyā viyogataḥ | kāmakrodhau vaśe kṛtvā kulaṃ rakṣa mahādyute ||',
-          translation: 'You should not grieve for the separation from one you love. Having brought desire and anger under control — protect the lineage, O radiant one.',
-          hindi: 'प्रिय के वियोग से तुम्हें शोक नहीं करना चाहिए। काम और क्रोध को वश में करके — हे महाद्युते, वंश की रक्षा करो।',
-          explanation: 'Spoken to Bharata after Dasharatha\'s death — the counsel not to succumb to either grief (over loss) or rage (over Kaikeyi\'s act). The pairing of kāma (desire/attachment) and krodha (anger) is precise: they are the two reactive poles around every loss. When we lose what we desire, we grieve; when something or someone caused the loss, we rage. The Ayodhya Kanda names both and places them under the category of what must be mastered — not suppressed, but not commanding either. The purpose: to protect what remains, the lineage, the larger dharma that extends beyond any single relationship.',
-          keywords: [],
-        },
-        {
-          id: 104121,
-          sanskrit: 'नीतिं शास्त्रविधिं चैव शत्रोरपि गृहाण हि । उपदेशं हि कर्तव्यो यस्यासौ शास्त्रवित्तमः ॥',
-          transliteration: 'nītiṃ śāstravidhiṃ caiva śatrorapiGṛhāṇa hi | upadeśaṃ hi kartavyo yasyāsau śāstravittamaḥ ||',
-          translation: 'Receive the teaching of statecraft and scripture even from an enemy. Teaching should be received from whoever is the greatest knower of scripture.',
-          hindi: 'नीति और शास्त्र-विधि शत्रु से भी ग्रहण करो। जो शास्त्र का सर्वश्रेष्ठ ज्ञाता हो — उससे उपदेश लेना उचित है।',
-          explanation: 'Rama sends Lakshmana to the dying Ravana to receive his final teachings — and Ravana, scholar of scholars, teaches Lakshmana the essence of statecraft and wisdom. This is the Yuddha Kanda\'s most unexpected reversal: the greatest teacher in the war is the antagonist. Rama\'s instruction — "go learn from him before he dies" — is the Ramayana\'s non-sectarian recognition that wisdom has no side. Knowledge is valid wherever it is found, even in the one who has been your enemy. The verse frames this as an obligation: "kartavyo" — it ought to be done. Refusing to learn from someone because of what they did is not principle; it is pride.',
-          keywords: [],
-        },
-        {
-          id: 104122,
-          sanskrit: 'पादुके च समासाद्य भरतः स्वयमेव हि । शिरसा धारयामास प्रणम्य सविनीतवत् ॥',
-          transliteration: 'pāduke ca samāsādya bharataḥ svayameva hi | śirasā dhārayāmāsa praṇamya savinītavat ||',
-          translation: 'Having received the sandals, Bharata himself — bowing with complete humility — bore them on his head.',
-          hindi: 'पादुकाएं प्राप्त करके, भरत ने स्वयं ही — विनयपूर्वक प्रणाम करके — उन्हें अपने सिर पर धारण किया।',
-          explanation: 'Bharata\'s act with Rama\'s sandals — placing them on the throne and ruling as regent rather than king — is one of the most celebrated acts of selfless love and political renunciation in world literature. Bharata had everything: his mother had secured the throne for him. He refused it, not from incapacity but from principle. The sandals on the throne are not a symbol — they are Bharata\'s daily lived reality for 14 years: every decision made as if Rama were deciding, every morning beginning with prostration to the sandals. This is the Ayodhya Kanda\'s portrait of what bhakti looks like in the political sphere.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 5, title: 'Sundara Kanda — The Steadfast Mind', titleSanskrit: 'सुन्दरकाण्ड',
@@ -562,106 +220,7 @@ export const ramayana: Scripture = {
           lifeLesson: 'Sita in the Ashoka grove — surrounded by demons, separated from everything she loves, with no certainty of rescue — says: he cannot conquer me. What would it mean, in your own current difficulty, to say the same? Not denial of the difficulty, not false positivity — but the specific recognition that whatever the external situation, the interior is yours. What is the thing inside you that cannot be conquered? Name it today.',
           keywords: ['SitasSovereignty', 'InnerFreedom', 'CannotBeConquered', 'Sundara', 'FranklogThread'],
         },
-      
-        {
-          id: 105012,
-          sanskrit: 'मनसा चिन्तितं कार्यं वाचा नैव प्रकाशयेत् । मन्त्रेण रक्षयेत् कार्यं कृत्वा चापि न कथयेत् ॥',
-          transliteration: 'manasā cintitaṃ kāryaṃ vācā naiva prakāśayet | mantreṇa rakṣayet kāryaṃ kṛtvā cāpi na kathayet ||',
-          translation: 'The work conceived in the mind should not be disclosed by speech. Protect the plan in counsel; and even after doing it, do not proclaim it.',
-          hindi: 'मन में सोचे गए कार्य को वाणी से प्रकट नहीं करना चाहिए। मन्त्रणा से कार्य की रक्षा करो; और करने के बाद भी उसे घोषित मत करो।',
-          explanation: 'Hanuman\'s mission in the Sundara Kanda embodies this principle — he crosses the ocean alone, in secret, and finds Sita before Ravana can respond. Premature disclosure dissipates energy, invites opposition, and corrupts intention with the desire for approval. The Sundara Kanda\'s beauty is partly in its silence — Hanuman acts before speaking.',
-          keywords: [],
-        },
-        {
-          id: 105013,
-          sanskrit: 'न मां दशरथः शक्तः सोढुमन्यः पुमान् इह । मां सीतां रावणो जेतुं न शक्यः सर्वथा क्वचित् ॥',
-          transliteration: 'na māṃ daśarathaḥ śaktaḥ soḍhumanyaḥ pumān iha | māṃ sītāṃ rāvaṇo jetuṃ na śakyaḥ sarvathā kvacit ||',
-          translation: 'Not Dasharatha, not any other man could endure what I have endured. Ravana can never, in any way, conquer me — Sita.',
-          hindi: 'न दशरथ, न कोई अन्य पुरुष — वह सह सकता जो मैंने सहा है। रावण मुझे — सीता को — किसी भी रूप में, कभी नहीं जीत सकता।',
-          explanation: 'Sita\'s words in the Ashoka grove — spoken not to Hanuman but to herself and her tormentors. This is the Sundara Kanda\'s most powerful statement of female sovereignty: Sita is not merely a victim waiting for rescue. She is a person of complete inner independence whose body is captive but whose soul has not been touched. "Rāvaṇo jetuṃ na śakyaḥ" — Ravana can never conquer me. The Sundara Kanda makes clear: the real conquest Ravana sought was not physical possession but inner submission. He never achieved it. Sita\'s "beautiful chapter" is the story of her own victory, independent of Rama\'s rescue.',
-          keywords: [],
-        },
-        {
-          id: 105014,
-          sanskrit: 'इक्ष्वाकुवंशप्रभवो रामो नाम जनैः श्रुतः । नियतात्मा महावीर्यो द्युतिमान् धृतिमान् वशी ॥',
-          transliteration: 'ikṣvākuvaṃśaprabhavo rāmo nāma janaiḥ śrutaḥ | niyatātmā mahāvīryo dyutimān dhṛtimān vaśī ||',
-          translation: 'Born of the Ikshvaku lineage, known to the people as Rama — self-controlled, of great valour, radiant, steadfast, master of his senses.',
-          hindi: 'इक्ष्वाकु वंश में उत्पन्न, लोगों में राम के नाम से विख्यात — नियतात्मा, महावीर्य, द्युतिमान, धृतिमान, इन्द्रियों के स्वामी।',
-          explanation: 'Narada\'s description of Rama begins not with his divine origin but with his human lineage and earned qualities. "Niyatātmā" — self-controlled soul, not by suppression but by genuine mastery. "Dyutimān" — radiant, literally luminous — the ancient Indian understanding that genuine virtue produces a visible quality of presence. "Vaśī" — master of the senses, in the precise Yoga sense: not the person who never experiences desire but the person in whom desire does not command. The Bala Kanda establishes that Rama\'s greatness is both born (lineage) and earned (character) — the interplay that the Ramayana explores throughout.',
-          keywords: [],
-        },
-        {
-          id: 105018,
-          sanskrit: 'रामो विग्रहवान् धर्मः सर्वस्य जगतो गतिः । रामो राजा सर्वदेवानां रामो वेदो निगूढः ॥',
-          transliteration: 'rāmo vigrahavān dharmaḥ sarvasya jagato gatiḥ | rāmo rājā sarvadevānāṃ rāmo vedo nigūḍhaḥ ||',
-          translation: 'Rama is dharma in embodied form; Rama is the goal of all the world. Rama is the king of all gods; Rama is the hidden Veda.',
-          hindi: 'राम धर्म का साक्षात रूप है; राम सारे जगत की गति है। राम सभी देवों का राजा है; राम वेद का गूढ़ रूप है।',
-          explanation: 'This verse from the Adhyatma Ramayana declares Rama as the embodiment of dharma itself. Rama is not merely a king who follows dharma — he IS dharma. The world moves toward him as its goal. He is the king of all gods and the hidden essence of the Vedas. This transforms the Ramayana from a story into a metaphysical statement: the ideal human being is the embodied truth.',
-          keywords: [],
-        },
-        {
-          id: 105019,
-          sanskrit: 'जनकीनन्दनो देवो जनकीजनकः स्वयम् । जनकीकुलकमल्पो वा जनकीकुलदीप्तिमान् ॥',
-          transliteration: 'janakīnandano devo janakījanakaḥ svayam | janakīkulakalpo vā janakīkuladīptimān ||',
-          translation: 'Janaki\'s son is the divine one; Janaki\'s husband is himself the creator. He is either the ornament of Janaki\'s lineage or the illumination of Janaki\'s lineage.',
-          hindi: 'जानकी का पुत्र दिव्य है; जानकी का पति स्वयं ब्रह्मा है। वह जानकी कुल का आभूषण है या जानकी कुल का प्रकाश।',
-          explanation: 'A verse celebrating Rama\'s relationship with Sita (Janaki). Rama is Janaki\'s son (through adoption) and Janaki\'s husband. He is the creator (Brahma) himself. The verse plays on the ambiguity: is Rama the ornament of Sita\'s lineage, or is he the illumination that makes the lineage shine? The Ramayana teaches that the divine appears through sacred relationship — not in isolation but in connection.',
-          keywords: [],
-        },
-        {
-          id: 105024,
-          sanskrit: 'अहं तु गृध्रराजस्य जटायोः परमं प्रियम् । करिष्ये सलिलं तस्य दहिष्यामि च तं द्विजम् ॥',
-          transliteration: 'ahaṃ tu gṛdhrarājasya jaṭāyoḥ paramaṃ priyam | kariṣye salilaṃ tasya dahiṣyāmi ca taṃ dvijam ||',
-          translation: 'I myself will perform the water-rites for Jatayu, king of eagles, the most dear one — and I will perform his cremation.',
-          hindi: 'मैं स्वयं गृध्रराज जटायु के लिए जलांजलि दूँगा — अत्यंत प्रिय उनके लिए — और मैं उनका दाह-संस्कार करूँगा।',
-          explanation: 'Rama performs the funeral rites for Jatayu — an eagle, a non-human, a being from a different species — with the same ceremony he would perform for a father. "Paramaṃ priyam" — most dear. Jatayu died attempting to save Sita, fighting Ravana alone with broken wings at the end of a long life. Rama\'s response is not efficiency (bury him quickly, get on with the search) but complete, dignified reverence: water-rites, cremation, the full ceremony. The Aranya Kanda teaches here that dharma extends across species; that loyalty and sacrifice are honoured wherever they occur; and that grief for what is lost in the service of good is not weakness but recognition of value.',
-          keywords: [],
-        },
-        {
-          id: 105030,
-          sanskrit: 'प्रणवो धन्वो विराटो रामो राजीवलोचनः । पार्थिवो विश्वकर्मा च श्रीरामः पुरुषोत्तमः ॥',
-          transliteration: 'praṇavo dhanvo virāṭo rāmo rājīvalocanaḥ | pārthivo viśvakarmā ca śrīrāmaḥ puruṣottamaḥ ||',
-          translation: 'Om is the bow, the universe is the arrow, Rama is the lotus-eyed one. Rama is the earthly one, the creator of all, the supreme person.',
-          hindi: 'ॐ धनुष है, विराट बाण है, राम कमलनयन है। राम पार्थिव है, विश्वकर्मा है, पुरुषोत्तम है।',
-          explanation: 'This verse identifies Rama with the cosmic archer: Om as the bow, the universe as the arrow. Rama is the lotus-eyed one who releases the arrow. He is both earthly (parthivo) and the creator (vishvakarma). The image of the cosmic archer appears in the Upanishads and here in the Ramayana: the Self as the archer who releases the arrow of consciousness into the universe.',
-          keywords: [],
-        },
-        {
-          id: 105031,
-          sanskrit: 'न त्वं शोचितुमर्हसि । आत्मा हि लोके सर्वत्र वर्तते न विनश्यति ॥',
-          transliteration: 'na tvaṃ śocitumarhasi | ātmā hi loke sarvatra vartate na vinaśyati ||',
-          translation: 'You should not grieve. The Self pervades everywhere in the world and does not perish.',
-          hindi: 'तुम्हें शोक नहीं करना चाहिए। आत्मा इस लोक में सर्वत्र व्याप्त है और नष्ट नहीं होती।',
-          explanation: 'Spoken during the Ayodhya Kanda\'s darkest moment — exile accepted, Kaikeyi\'s boon enforced — this verse strikes the Upanishadic note beneath the epic\'s narrative. Grief is real, but the Self that witnesses grief is imperishable. Valmiki does not deny sorrow; he situates it within a larger reality that sorrow cannot touch. This is not consolation; it is metaphysics as medicine.',
-          keywords: [],
-        },
-        {
-          id: 105034,
-          sanskrit: 'न स कामी न च क्रोधी न मत्सरी न च मानवान् । न मिथ्यावादी बभूव वाली वानरपुङ्गवः ॥',
-          transliteration: 'na sa kāmī na ca krodhī na matsarī na ca mānavān | na mithyāvādī babhūva vālī vānarapuṅgavaḥ ||',
-          translation: 'He was not driven by lust, nor anger, nor envy, nor arrogance, nor falsehood — that Vali, bull among vanaras.',
-          hindi: 'वह कामी नहीं था, न क्रोधी, न मत्सरी, न अहंकारी, न मिथ्यावादी — वह वानरश्रेष्ठ वाली।',
-          explanation: 'Tara\'s eulogy for Vali — spoken by his wife over his fallen body after Rama kills him. The Kishkindha Kanda\'s most complex moment: Vali had genuine virtues (not lustful, not angry, not envious, not arrogant, not false). And yet he was wrong — he took his brother\'s wife and kingdom. Tara\'s lament forces the Ramayana to acknowledge complexity: that people of genuine virtue can commit serious wrongs; that a person\'s best qualities do not excuse their worst actions; that grief for a flawed person can be completely real. The Ramayana does not resolve this tension; it holds it.',
-          keywords: [],
-        },
-        {
-          id: 105121,
-          sanskrit: 'नीतिं शास्त्रविधिं चैव शत्रोरपि गृहाण हि । उपदेशं हि कर्तव्यो यस्यासौ शास्त्रवित्तमः ॥',
-          transliteration: 'nītiṃ śāstravidhiṃ caiva śatrorapiGṛhāṇa hi | upadeśaṃ hi kartavyo yasyāsau śāstravittamaḥ ||',
-          translation: 'Receive the teaching of statecraft and scripture even from an enemy. Teaching should be received from whoever is the greatest knower of scripture.',
-          hindi: 'नीति और शास्त्र-विधि शत्रु से भी ग्रहण करो। जो शास्त्र का सर्वश्रेष्ठ ज्ञाता हो — उससे उपदेश लेना उचित है।',
-          explanation: 'Rama sends Lakshmana to the dying Ravana to receive his final teachings — and Ravana, scholar of scholars, teaches Lakshmana the essence of statecraft and wisdom. This is the Yuddha Kanda\'s most unexpected reversal: the greatest teacher in the war is the antagonist. Rama\'s instruction — "go learn from him before he dies" — is the Ramayana\'s non-sectarian recognition that wisdom has no side. Knowledge is valid wherever it is found, even in the one who has been your enemy. The verse frames this as an obligation: "kartavyo" — it ought to be done. Refusing to learn from someone because of what they did is not principle; it is pride.',
-          keywords: [],
-        },
-        {
-          id: 105122,
-          sanskrit: 'पादुके च समासाद्य भरतः स्वयमेव हि । शिरसा धारयामास प्रणम्य सविनीतवत् ॥',
-          transliteration: 'pāduke ca samāsādya bharataḥ svayameva hi | śirasā dhārayāmāsa praṇamya savinītavat ||',
-          translation: 'Having received the sandals, Bharata himself — bowing with complete humility — bore them on his head.',
-          hindi: 'पादुकाएं प्राप्त करके, भरत ने स्वयं ही — विनयपूर्वक प्रणाम करके — उन्हें अपने सिर पर धारण किया।',
-          explanation: 'Bharata\'s act with Rama\'s sandals — placing them on the throne and ruling as regent rather than king — is one of the most celebrated acts of selfless love and political renunciation in world literature. Bharata had everything: his mother had secured the throne for him. He refused it, not from incapacity but from principle. The sandals on the throne are not a symbol — they are Bharata\'s daily lived reality for 14 years: every decision made as if Rama were deciding, every morning beginning with prostration to the sandals. This is the Ayodhya Kanda\'s portrait of what bhakti looks like in the political sphere.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 6, title: 'Yuddha Kanda — The Final Battle', titleSanskrit: 'युद्धकाण्ड',
@@ -700,115 +259,7 @@ export const ramayana: Scripture = {
           lifeLesson: 'Who is the person you are most resistant to learning from — because of their politics, their personality, their actions, or because they have wronged you? Is it possible that they have genuine knowledge or wisdom in some domain that you are refusing simply because of who they are? The Yuddha Kanda says: Rama, who had every reason to despise Ravana, sent his brother to learn from him. What would you be willing to learn, and from whom, if you set aside who they are and asked only what they know?',
           keywords: ['LearnFromEnemy', 'IntellectualHumility', 'RavanasTeaching', 'WisdomHasNoSide', 'Yuddha'],
         },
-      
-        {
-          id: 106012,
-          sanskrit: 'सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः । सर्वे भद्राणि पश्यन्तु मा कश्चिद् दुःखभाग्भवेत् ॥',
-          transliteration: 'sarve bhavantu sukhinaḥ sarve santu nirāmayāḥ | sarve bhadrāṇi paśyantu mā kaścid duḥkhabhāgbhavet ||',
-          translation: 'May all be happy; may all be free from disease; may all see auspiciousness; may no one have a share of sorrow.',
-          hindi: 'सभी सुखी हों; सभी रोग-मुक्त हों; सभी शुभ देखें; किसी को भी दुःख न हो।',
-          explanation: 'Recited at the close of the war, after Ravana\'s defeat — this prayer extends the circle of concern to all beings without exception. The Yuddha Kanda, the most violent section of the Ramayana, ends with the most universal wish. This is the Ramayana\'s final statement about war: it is never a celebration. It is a painful enforcement of dharma, followed immediately by a prayer for universal peace.',
-          keywords: [],
-        },
-        {
-          id: 106013,
-          sanskrit: 'नीतिं शास्त्रविधिं चैव शत्रोरपि गृहाण हि । उपदेशं हि कर्तव्यो यस्यासौ शास्त्रवित्तमः ॥',
-          transliteration: 'nītiṃ śāstravidhiṃ caiva śatrorapiGṛhāṇa hi | upadeśaṃ hi kartavyo yasyāsau śāstravittamaḥ ||',
-          translation: 'Receive the teaching of statecraft and scripture even from an enemy. Teaching should be received from whoever is the greatest knower of scripture.',
-          hindi: 'नीति और शास्त्र-विधि शत्रु से भी ग्रहण करो। जो शास्त्र का सर्वश्रेष्ठ ज्ञाता हो — उससे उपदेश लेना उचित है।',
-          explanation: 'Rama sends Lakshmana to the dying Ravana to receive his final teachings — and Ravana, scholar of scholars, teaches Lakshmana the essence of statecraft and wisdom. This is the Yuddha Kanda\'s most unexpected reversal: the greatest teacher in the war is the antagonist. Rama\'s instruction — "go learn from him before he dies" — is the Ramayana\'s non-sectarian recognition that wisdom has no side. Knowledge is valid wherever it is found, even in the one who has been your enemy. The verse frames this as an obligation: "kartavyo" — it ought to be done. Refusing to learn from someone because of what they did is not principle; it is pride.',
-          keywords: [],
-        },
-        {
-          id: 106014,
-          sanskrit: 'इक्ष्वाकुवंशप्रभवो रामो नाम जनैः श्रुतः । नियतात्मा महावीर्यो द्युतिमान् धृतिमान् वशी ॥',
-          transliteration: 'ikṣvākuvaṃśaprabhavo rāmo nāma janaiḥ śrutaḥ | niyatātmā mahāvīryo dyutimān dhṛtimān vaśī ||',
-          translation: 'Born of the Ikshvaku lineage, known to the people as Rama — self-controlled, of great valour, radiant, steadfast, master of his senses.',
-          hindi: 'इक्ष्वाकु वंश में उत्पन्न, लोगों में राम के नाम से विख्यात — नियतात्मा, महावीर्य, द्युतिमान, धृतिमान, इन्द्रियों के स्वामी।',
-          explanation: 'Narada\'s description of Rama begins not with his divine origin but with his human lineage and earned qualities. "Niyatātmā" — self-controlled soul, not by suppression but by genuine mastery. "Dyutimān" — radiant, literally luminous — the ancient Indian understanding that genuine virtue produces a visible quality of presence. "Vaśī" — master of the senses, in the precise Yoga sense: not the person who never experiences desire but the person in whom desire does not command. The Bala Kanda establishes that Rama\'s greatness is both born (lineage) and earned (character) — the interplay that the Ramayana explores throughout.',
-          keywords: [],
-        },
-        {
-          id: 106018,
-          sanskrit: 'रामो विग्रहवान् धर्मः सर्वस्य जगतो गतिः । रामो राजा सर्वदेवानां रामो वेदो निगूढः ॥',
-          transliteration: 'rāmo vigrahavān dharmaḥ sarvasya jagato gatiḥ | rāmo rājā sarvadevānāṃ rāmo vedo nigūḍhaḥ ||',
-          translation: 'Rama is dharma in embodied form; Rama is the goal of all the world. Rama is the king of all gods; Rama is the hidden Veda.',
-          hindi: 'राम धर्म का साक्षात रूप है; राम सारे जगत की गति है। राम सभी देवों का राजा है; राम वेद का गूढ़ रूप है।',
-          explanation: 'This verse from the Adhyatma Ramayana declares Rama as the embodiment of dharma itself. Rama is not merely a king who follows dharma — he IS dharma. The world moves toward him as its goal. He is the king of all gods and the hidden essence of the Vedas. This transforms the Ramayana from a story into a metaphysical statement: the ideal human being is the embodied truth.',
-          keywords: [],
-        },
-        {
-          id: 106019,
-          sanskrit: 'जनकीनन्दनो देवो जनकीजनकः स्वयम् । जनकीकुलकमल्पो वा जनकीकुलदीप्तिमान् ॥',
-          transliteration: 'janakīnandano devo janakījanakaḥ svayam | janakīkulakalpo vā janakīkuladīptimān ||',
-          translation: 'Janaki\'s son is the divine one; Janaki\'s husband is himself the creator. He is either the ornament of Janaki\'s lineage or the illumination of Janaki\'s lineage.',
-          hindi: 'जानकी का पुत्र दिव्य है; जानकी का पति स्वयं ब्रह्मा है। वह जानकी कुल का आभूषण है या जानकी कुल का प्रकाश।',
-          explanation: 'A verse celebrating Rama\'s relationship with Sita (Janaki). Rama is Janaki\'s son (through adoption) and Janaki\'s husband. He is the creator (Brahma) himself. The verse plays on the ambiguity: is Rama the ornament of Sita\'s lineage, or is he the illumination that makes the lineage shine? The Ramayana teaches that the divine appears through sacred relationship — not in isolation but in connection.',
-          keywords: [],
-        },
-        {
-          id: 106024,
-          sanskrit: 'अहं तु गृध्रराजस्य जटायोः परमं प्रियम् । करिष्ये सलिलं तस्य दहिष्यामि च तं द्विजम् ॥',
-          transliteration: 'ahaṃ tu gṛdhrarājasya jaṭāyoḥ paramaṃ priyam | kariṣye salilaṃ tasya dahiṣyāmi ca taṃ dvijam ||',
-          translation: 'I myself will perform the water-rites for Jatayu, king of eagles, the most dear one — and I will perform his cremation.',
-          hindi: 'मैं स्वयं गृध्रराज जटायु के लिए जलांजलि दूँगा — अत्यंत प्रिय उनके लिए — और मैं उनका दाह-संस्कार करूँगा।',
-          explanation: 'Rama performs the funeral rites for Jatayu — an eagle, a non-human, a being from a different species — with the same ceremony he would perform for a father. "Paramaṃ priyam" — most dear. Jatayu died attempting to save Sita, fighting Ravana alone with broken wings at the end of a long life. Rama\'s response is not efficiency (bury him quickly, get on with the search) but complete, dignified reverence: water-rites, cremation, the full ceremony. The Aranya Kanda teaches here that dharma extends across species; that loyalty and sacrifice are honoured wherever they occur; and that grief for what is lost in the service of good is not weakness but recognition of value.',
-          keywords: [],
-        },
-        {
-          id: 106030,
-          sanskrit: 'प्रणवो धन्वो विराटो रामो राजीवलोचनः । पार्थिवो विश्वकर्मा च श्रीरामः पुरुषोत्तमः ॥',
-          transliteration: 'praṇavo dhanvo virāṭo rāmo rājīvalocanaḥ | pārthivo viśvakarmā ca śrīrāmaḥ puruṣottamaḥ ||',
-          translation: 'Om is the bow, the universe is the arrow, Rama is the lotus-eyed one. Rama is the earthly one, the creator of all, the supreme person.',
-          hindi: 'ॐ धनुष है, विराट बाण है, राम कमलनयन है। राम पार्थिव है, विश्वकर्मा है, पुरुषोत्तम है।',
-          explanation: 'This verse identifies Rama with the cosmic archer: Om as the bow, the universe as the arrow. Rama is the lotus-eyed one who releases the arrow. He is both earthly (parthivo) and the creator (vishvakarma). The image of the cosmic archer appears in the Upanishads and here in the Ramayana: the Self as the archer who releases the arrow of consciousness into the universe.',
-          keywords: [],
-        },
-        {
-          id: 106040,
-          sanskrit: 'न दैवमभिशंसामि पुरुषार्थमुपाश्रये । यद्भवन्ति महाभागाः स्वयमेव क्रियापराः ॥',
-          transliteration: 'na daivamabhiśaṃsāmi puruṣārthamupāśraye | yadbhavanti mahābhāgāḥ svayameva kriyāparāḥ ||',
-          translation: 'I do not blame fate; I take refuge in human effort. Those who are truly fortunate are themselves engaged in action.',
-          hindi: 'मैं भाग्य को दोष नहीं देता; मैं पुरुषार्थ की शरण लेता हूँ। जो वास्तव में भाग्यशाली हैं, वे स्वयं ही कर्म में लगे रहते हैं।',
-          explanation: 'A powerful verse from the Ramayana — not from Rama but from the Ayodhya context — on the relationship between fate and effort. The refusal to blame fate and the insistence on human effort as the primary vehicle of progress is a distinctly Ramayana value. Rama never complains; he acts.',
-          keywords: [],
-        },
-        {
-          id: 106041,
-          sanskrit: 'न त्वं शोचितुमर्हसि । आत्मा हि लोके सर्वत्र वर्तते न विनश्यति ॥',
-          transliteration: 'na tvaṃ śocitumarhasi | ātmā hi loke sarvatra vartate na vinaśyati ||',
-          translation: 'You should not grieve. The Self pervades everywhere in the world and does not perish.',
-          hindi: 'तुम्हें शोक नहीं करना चाहिए। आत्मा इस लोक में सर्वत्र व्याप्त है और नष्ट नहीं होती।',
-          explanation: 'Spoken during the Ayodhya Kanda\'s darkest moment — exile accepted, Kaikeyi\'s boon enforced — this verse strikes the Upanishadic note beneath the epic\'s narrative. Grief is real, but the Self that witnesses grief is imperishable. Valmiki does not deny sorrow; he situates it within a larger reality that sorrow cannot touch. This is not consolation; it is metaphysics as medicine.',
-          keywords: [],
-        },
-        {
-          id: 106042,
-          sanskrit: 'न त्वं शोचितुमर्हसि प्रियाया वियोगतः । कामक्रोधौ वशे कृत्वा कुलं रक्ष महाद्युते ॥',
-          transliteration: 'na tvaṃ śocitumarhasi priyāyā viyogataḥ | kāmakrodhau vaśe kṛtvā kulaṃ rakṣa mahādyute ||',
-          translation: 'You should not grieve for the separation from one you love. Having brought desire and anger under control — protect the lineage, O radiant one.',
-          hindi: 'प्रिय के वियोग से तुम्हें शोक नहीं करना चाहिए। काम और क्रोध को वश में करके — हे महाद्युते, वंश की रक्षा करो।',
-          explanation: 'Spoken to Bharata after Dasharatha\'s death — the counsel not to succumb to either grief (over loss) or rage (over Kaikeyi\'s act). The pairing of kāma (desire/attachment) and krodha (anger) is precise: they are the two reactive poles around every loss. When we lose what we desire, we grieve; when something or someone caused the loss, we rage. The Ayodhya Kanda names both and places them under the category of what must be mastered — not suppressed, but not commanding either. The purpose: to protect what remains, the lineage, the larger dharma that extends beyond any single relationship.',
-          keywords: [],
-        },
-        {
-          id: 106044,
-          sanskrit: 'न स कामी न च क्रोधी न मत्सरी न च मानवान् । न मिथ्यावादी बभूव वाली वानरपुङ्गवः ॥',
-          transliteration: 'na sa kāmī na ca krodhī na matsarī na ca mānavān | na mithyāvādī babhūva vālī vānarapuṅgavaḥ ||',
-          translation: 'He was not driven by lust, nor anger, nor envy, nor arrogance, nor falsehood — that Vali, bull among vanaras.',
-          hindi: 'वह कामी नहीं था, न क्रोधी, न मत्सरी, न अहंकारी, न मिथ्यावादी — वह वानरश्रेष्ठ वाली।',
-          explanation: 'Tara\'s eulogy for Vali — spoken by his wife over his fallen body after Rama kills him. The Kishkindha Kanda\'s most complex moment: Vali had genuine virtues (not lustful, not angry, not envious, not arrogant, not false). And yet he was wrong — he took his brother\'s wife and kingdom. Tara\'s lament forces the Ramayana to acknowledge complexity: that people of genuine virtue can commit serious wrongs; that a person\'s best qualities do not excuse their worst actions; that grief for a flawed person can be completely real. The Ramayana does not resolve this tension; it holds it.',
-          keywords: [],
-        },
-        {
-          id: 106702,
-          sanskrit: 'पादुके च समासाद्य भरतः स्वयमेव हि । शिरसा धारयामास प्रणम्य सविनीतवत् ॥',
-          transliteration: 'pāduke ca samāsādya bharataḥ svayameva hi | śirasā dhārayāmāsa praṇamya savinītavat ||',
-          translation: 'Having received the sandals, Bharata himself — bowing with complete humility — bore them on his head.',
-          hindi: 'पादुकाएं प्राप्त करके, भरत ने स्वयं ही — विनयपूर्वक प्रणाम करके — उन्हें अपने सिर पर धारण किया।',
-          explanation: 'Bharata\'s act with Rama\'s sandals — placing them on the throne and ruling as regent rather than king — is one of the most celebrated acts of selfless love and political renunciation in world literature. Bharata had everything: his mother had secured the throne for him. He refused it, not from incapacity but from principle. The sandals on the throne are not a symbol — they are Bharata\'s daily lived reality for 14 years: every decision made as if Rama were deciding, every morning beginning with prostration to the sandals. This is the Ayodhya Kanda\'s portrait of what bhakti looks like in the political sphere.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 7, title: 'Uttara Kanda — The Cost of Public Trust', titleSanskrit: 'उत्तरकाण्ड',
@@ -869,61 +320,7 @@ export const ramayana: Scripture = {
           lifeLesson: 'The Ramayana\'s cosmic archer image is a meditation: you are the archer, your awareness is the bow, the world is the arrow. What arrow are you releasing into the world today? Is it an arrow of dharma — compassion, truth, service? Or is it an arrow of reactivity — anger, greed, fear? The archer chooses the arrow. Choose consciously.',
           keywords: ['CosmicArcher', 'OmBow', 'ConsciousnessArrow', 'RamaAsPurushottama'],
         },
-      
-        {
-          id: 107012,
-          sanskrit: 'आत्मानं रथिनं विद्धि शरीरं रथमेव च । बुद्धिं तु सारथिं विद्धि मनः प्रग्रहमेव च ॥',
-          transliteration: 'ātmānaṃ rathinaṃ viddhi śarīraṃ rathameva ca | buddhiṃ tu sārathiṃ viddhi manaḥ pragrahameva ca ||',
-          translation: 'Know the Self as the rider of the chariot; the body is the chariot itself; know the intellect as the charioteer; the mind is the reins.',
-          hindi: 'आत्मा को रथी (रथ पर बैठे स्वामी) जानो; शरीर रथ है; बुद्धि सारथी है; मन लगाम है।',
-          explanation: 'The Uttara Kanda\'s philosophical crown — echoing the Katha Upanishad — places the entire Ramayana narrative in the frame of inner governance. Rama\'s outer journey is simultaneously an inner journey: the Self learning to master its body, discipline its mind, and illuminate its intellect. The Ramayana is not just a story of a king; it is a map of consciousness.',
-          keywords: [],
-        },
-        {
-          id: 107020,
-          sanskrit: 'प्रणवो धन्वो विराटो रामो राजीवलोचनः । पार्थिवो विश्वकर्मा च श्रीरामः पुरुषोत्तमः ॥',
-          transliteration: 'praṇavo dhanvo virāṭo rāmo rājīvalocanaḥ | pārthivo viśvakarmā ca śrīrāmaḥ puruṣottamaḥ ||',
-          translation: 'Om is the bow, the universe is the arrow, Rama is the lotus-eyed one. Rama is the earthly one, the creator of all, the supreme person.',
-          hindi: 'ॐ धनुष है, विराट बाण है, राम कमलनयन है। राम पार्थिव है, विश्वकर्मा है, पुरुषोत्तम है।',
-          explanation: 'This verse identifies Rama with the cosmic archer: Om as the bow, the universe as the arrow. Rama is the lotus-eyed one who releases the arrow. He is both earthly (parthivo) and the creator (vishvakarma). The image of the cosmic archer appears in the Upanishads and here in the Ramayana: the Self as the archer who releases the arrow of consciousness into the universe.',
-          keywords: [],
-        },
-        {
-          id: 107030,
-          sanskrit: 'न दैवमभिशंसामि पुरुषार्थमुपाश्रये । यद्भवन्ति महाभागाः स्वयमेव क्रियापराः ॥',
-          transliteration: 'na daivamabhiśaṃsāmi puruṣārthamupāśraye | yadbhavanti mahābhāgāḥ svayameva kriyāparāḥ ||',
-          translation: 'I do not blame fate; I take refuge in human effort. Those who are truly fortunate are themselves engaged in action.',
-          hindi: 'मैं भाग्य को दोष नहीं देता; मैं पुरुषार्थ की शरण लेता हूँ। जो वास्तव में भाग्यशाली हैं, वे स्वयं ही कर्म में लगे रहते हैं।',
-          explanation: 'A powerful verse from the Ramayana — not from Rama but from the Ayodhya context — on the relationship between fate and effort. The refusal to blame fate and the insistence on human effort as the primary vehicle of progress is a distinctly Ramayana value. Rama never complains; he acts.',
-          keywords: [],
-        },
-        {
-          id: 107031,
-          sanskrit: 'न त्वं शोचितुमर्हसि । आत्मा हि लोके सर्वत्र वर्तते न विनश्यति ॥',
-          transliteration: 'na tvaṃ śocitumarhasi | ātmā hi loke sarvatra vartate na vinaśyati ||',
-          translation: 'You should not grieve. The Self pervades everywhere in the world and does not perish.',
-          hindi: 'तुम्हें शोक नहीं करना चाहिए। आत्मा इस लोक में सर्वत्र व्याप्त है और नष्ट नहीं होती।',
-          explanation: 'Spoken during the Ayodhya Kanda\'s darkest moment — exile accepted, Kaikeyi\'s boon enforced — this verse strikes the Upanishadic note beneath the epic\'s narrative. Grief is real, but the Self that witnesses grief is imperishable. Valmiki does not deny sorrow; he situates it within a larger reality that sorrow cannot touch. This is not consolation; it is metaphysics as medicine.',
-          keywords: [],
-        },
-        {
-          id: 107032,
-          sanskrit: 'न त्वं शोचितुमर्हसि प्रियाया वियोगतः । कामक्रोधौ वशे कृत्वा कुलं रक्ष महाद्युते ॥',
-          transliteration: 'na tvaṃ śocitumarhasi priyāyā viyogataḥ | kāmakrodhau vaśe kṛtvā kulaṃ rakṣa mahādyute ||',
-          translation: 'You should not grieve for the separation from one you love. Having brought desire and anger under control — protect the lineage, O radiant one.',
-          hindi: 'प्रिय के वियोग से तुम्हें शोक नहीं करना चाहिए। काम और क्रोध को वश में करके — हे महाद्युते, वंश की रक्षा करो।',
-          explanation: 'Spoken to Bharata after Dasharatha\'s death — the counsel not to succumb to either grief (over loss) or rage (over Kaikeyi\'s act). The pairing of kāma (desire/attachment) and krodha (anger) is precise: they are the two reactive poles around every loss. When we lose what we desire, we grieve; when something or someone caused the loss, we rage. The Ayodhya Kanda names both and places them under the category of what must be mastered — not suppressed, but not commanding either. The purpose: to protect what remains, the lineage, the larger dharma that extends beyond any single relationship.',
-          keywords: [],
-        },
-        {
-          id: 107034,
-          sanskrit: 'अहं तु गृध्रराजस्य जटायोः परमं प्रियम् । करिष्ये सलिलं तस्य दहिष्यामि च तं द्विजम् ॥',
-          transliteration: 'ahaṃ tu gṛdhrarājasya jaṭāyoḥ paramaṃ priyam | kariṣye salilaṃ tasya dahiṣyāmi ca taṃ dvijam ||',
-          translation: 'I myself will perform the water-rites for Jatayu, king of eagles, the most dear one — and I will perform his cremation.',
-          hindi: 'मैं स्वयं गृध्रराज जटायु के लिए जलांजलि दूँगा — अत्यंत प्रिय उनके लिए — और मैं उनका दाह-संस्कार करूँगा।',
-          explanation: 'Rama performs the funeral rites for Jatayu — an eagle, a non-human, a being from a different species — with the same ceremony he would perform for a father. "Paramaṃ priyam" — most dear. Jatayu died attempting to save Sita, fighting Ravana alone with broken wings at the end of a long life. Rama\'s response is not efficiency (bury him quickly, get on with the search) but complete, dignified reverence: water-rites, cremation, the full ceremony. The Aranya Kanda teaches here that dharma extends across species; that loyalty and sacrifice are honoured wherever they occur; and that grief for what is lost in the service of good is not weakness but recognition of value.',
-          keywords: [],
-        },],
+      ],
     },
   ],
 };

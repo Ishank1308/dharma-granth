@@ -66,6 +66,7 @@ function isTypingTarget(target: EventTarget | null): boolean {
 }
 
 const THEME_ICONS: Record<Theme, typeof Sun> = {
+  auto: Sparkles,
   day: Sun,
   sunset: Sunset,
   paper: BookOpen,
@@ -73,6 +74,7 @@ const THEME_ICONS: Record<Theme, typeof Sun> = {
 };
 
 const THEME_LABELS: Record<Theme, string> = {
+  auto: 'Auto · सौर चक्र',
   day: 'Day · दिन',
   sunset: 'Sunset · संध्या',
   paper: 'Paper · पाण्डुलिपि',
@@ -80,6 +82,7 @@ const THEME_LABELS: Record<Theme, string> = {
 };
 
 const THEME_DESCRIPTIONS: Record<Theme, string> = {
+  auto: 'सौर चक्र · Circadian Sandhyā Auto-Theme',
   day: 'Warm paper reading mode',
   sunset: 'Soft amber evening mode',
   paper: 'Antique manuscript parchment',

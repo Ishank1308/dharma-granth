@@ -9,13 +9,23 @@ import type { ReactNode } from 'react';
  * nothing ever leaves the device, there are no accounts and no rankings.
  */
 
-/** Local-timezone ISO day (YYYY-MM-DD). `toISOString()` would use UTC and
- * roll the "day" over at the wrong moment for most users. */
+/** Local-timezone ISO day (YYYY-MM-DD). Aligns with Indian Standard Time
+ * (Asia/Kolkata) so sadhana and sankalpa roll over at IST midnight. */
 export function localISODate(d: Date = new Date()): string {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const dd = String(d.getDate()).padStart(2, '0');
-  return `${y}-${m}-${dd}`;
+  try {
+    const formatter = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Kolkata',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
+    return formatter.format(d);
+  } catch {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${dd}`;
+  }
 }
 
 /** Day-of-year (1..366), used to rotate daily prompts deterministically. */

@@ -44,6 +44,15 @@
     --font-inter: 'Inter', system-ui, sans-serif;
     --font-merriweather: 'Merriweather', Georgia, serif;
     --font-noto-devanagari: 'Noto Sans Devanagari', sans-serif;
+
+    /* Shared Motion Tokens (Phase 6) */
+    --motion-instant: 120ms;
+    --motion-fast: 220ms;
+    --motion-standard: 380ms;
+    --motion-deliberate: 600ms;
+    --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-gentle: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Theme variables. The default (no data-theme attribute) is "day". */

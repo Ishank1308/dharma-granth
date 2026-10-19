@@ -5,26 +5,2491 @@ export const muktika: Scripture = {
   title: 'Muktika Upanishad',
   titleSanskrit: 'मुक्तिकोपनिषद्',
   category: 'upanishad',
-  description: 'The "Upanishad of liberation." A dialogue between Rama and Hanuman — uniquely, Rama is the guru and Hanuman the disciple. The Muktika is the canonical meta-Upanishad: it lists all 108 Upanishads, establishes their authority, and makes two audacious claims: (1) the Mandukya Upanishad alone is sufficient for liberation, and (2) the study of all 108 Upanishads is equivalent to reading the entire Vedas. A key text of the Atharvaveda tradition and the definitive source for the classical canon of 108 Upanishads.',
-  totalVerses: 108,
-  tags: ['Upanishad', 'Muktika', 'Rama', 'Hanuman', 'Mandukya', '108Upanishads', 'Liberation'],
+  description: 'The "Upanishad of liberation." A dialogue between Rama and Hanuman — uniquely, Rama is the guru and Hanuman the disciple. The Muktika is the canonical meta-Upanishad: it lists all 108 Upanishads, establishes their authority, and makes two audacious claims: (1) the Mandukya Upanishad alone is sufficient for liberation, and (2) the study of all 108 Upanishads is equivalent to reading the entire Vedas. Complete recension across both Adhyayas with authentic Sanskrit, transliteration, English, and Hindi translations.',
+  totalVerses: 137,
+  tags: ['Upanishad', 'Muktika', 'Rama', 'Hanuman', 'Mandukya', '108Upanishads', 'Liberation', 'Jivanmukti'],
   chapters: [
-    {
-      id: 1,
-      title: 'Hanuman Asks — What is Liberation?',
-      titleSanskrit: 'हनुमान का प्रश्न — मुक्ति क्या है?',
-      summary: 'After the battle of Lanka, Hanuman approaches Rama on the eve of his departure to Ayodhya. He asks not for a boon or a blessing but for the knowledge of liberation itself. Rama\'s answer reframes the entire Upanishadic canon: he tells Hanuman that the Mandukya alone, properly understood, is sufficient — but for those who need more, the 108 Upanishads are the complete path.',
-      verses: [
-      
-      ],
-    },
-    {
-      id: 3,
-      title: 'Jivanmukti — Liberation While Living',
-      titleSanskrit: 'जीवन्मुक्ति',
-      summary: 'The Muktika\'s final chapter addresses the nature of jivanmukti — liberation while still alive in the body. Rama describes the state of the jivanmukta: one who is free from desire, who acts without doership, who is equanimous in pleasure and pain. This is not transcendence of the world but the radical transformation of one\'s relationship to it.',
-      verses: [
-      ],
-    },
-  ],
+  {
+    "id": 1,
+    "title": "Hanuman Asks — The Canon of 108 Upanishads",
+    "titleSanskrit": "हनुमान का प्रश्न एवं १०८ उपनिषदों की नामावली",
+    "summary": "Hanuman asks Sri Rama about the ultimate means to liberation. Rama reveals that the Mandukya Upanishad alone suffices; for deeper inquiry, the 10 Principal, 32, and all 108 Upanishads are expounded with their Vedic affiliations.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "ॐ अयोध्यानगरे रम्ये रत्नमण्डपमध्यमे । सीताभरतसौमित्रिशत्रुघ्नाद्यैः समन्वितम्",
+        "transliteration": "oṃ ayodhyānagare ramye ratnamaṇḍapamadhyame | sītābharatasaumitriśatrughnādyaiḥ samanvitam",
+        "translation": "Om. In the delightful city of Ayodhya, in the midst of a jewelled pavilion, (sat Rama) surrounded by Sita, Bharata, Lakshmana, Shatrughna and others —",
+        "hindi": "ॐ। मनोहर अयोध्या नगरी में, रत्नों से सुशोभित मंडप के मध्य सीता, भरत, लक्ष्मण, शत्रुघ्न आदि से घिरे हुए भगवान् श्री रामचंद्र विराजमान थे।",
+        "explanation": "ॐ। मनोहर अयोध्या नगरी में, रत्नों से सुशोभित मंडप के मध्य सीता, भरत, लक्ष्मण, शत्रुघ्न आदि से घिरे हुए भगवान् श्री रामचंद्र विराजमान थे।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "सनकाद्यैर्मुनिगणैर्वसिष्ठाद्यैः शुकादिभिः । अन्यैर्भागवतैश्चापि स्तूयमानमहर्निशम्",
+        "transliteration": "sanakādyairmunigaṇairvasiṣṭhādyaiḥ śukādibhiḥ | anyairbhāgavataiścāpi stūyamānamaharniśam",
+        "translation": "praised day and night by hosts of sages such as Sanaka, by Vasishtha and others, by Shuka and others, and by other devotees —",
+        "hindi": "सनकादि मुनिगण, वसिष्ठ, शुकदेव आदि महर्षि तथा अन्य अनन्य भक्त दिन-रात जिनकी स्तुति कर रहे थे।",
+        "explanation": "सनकादि मुनिगण, वसिष्ठ, शुकदेव आदि महर्षि तथा अन्य अनन्य भक्त दिन-रात जिनकी स्तुति कर रहे थे।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "धीविक्रियासहस्राणां साक्षिणं निर्विकारिणम् । स्वरूपध्याननिरतं समाधिविरमे हरिम्",
+        "transliteration": "dhīvikriyāsahasrāṇāṃ sākṣiṇaṃ nirvikāriṇam | svarūpadhyānanirataṃ samādhivirame harim",
+        "translation": "the witness of thousands of modifications of the mind, himself unchanging, Hari, intent on meditation on his own nature at the end of absorption.",
+        "hindi": "जो बुद्धि की हजारों वृत्तियों के निर्विकार साक्षी हैं, और समाधि के उपरांत निज स्वरूप के ध्यान में लीन रहने वाले साक्षात् श्रीहरि हैं।",
+        "explanation": "जो बुद्धि की हजारों वृत्तियों के निर्विकार साक्षी हैं, और समाधि के उपरांत निज स्वरूप के ध्यान में लीन रहने वाले साक्षात् श्रीहरि हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "भक्त्या शुश्रूषया रामं स्तुवन्पप्रच्छ मारुतिः । राम त्वं परमात्मसि सच्चिदानन्दविग्रहः",
+        "transliteration": "bhaktyā śuśrūṣayā rāmaṃ stuvanpapraccha mārutiḥ | rāma tvaṃ paramātmasi saccidānandavigrahaḥ",
+        "translation": "Hanuman (Maruti), praising Rama with devotion and service, asked: \"Rama, you are the Supreme Self, whose form is being, consciousness and bliss.\"",
+        "hindi": "भक्ति और सेवा-भाव से मारुति नंदन हनुमान जी ने राम जी की स्तुति करते हुए पूछा: ‘हे राम! आप सच्चिदानन्द-विग्रह परमेश्वर हैं।’",
+        "explanation": "भक्ति और सेवा-भाव से मारुति नंदन हनुमान जी ने राम जी की स्तुति करते हुए पूछा: ‘हे राम! आप सच्चिदानन्द-विग्रह परमेश्वर हैं।’",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "इदानीं त्वां रघुश्रेष्ठ प्रणमामि मुहुर्मुहुः । त्वद्रूपं ज्ञातुमिच्छामि तत्त्वतो राम मुक्तये",
+        "transliteration": "idānīṃ tvāṃ raghuśreṣṭha praṇamāmi muhurmuhuḥ | tvadrūpaṃ jñātumicchāmi tattvato rāma muktaye",
+        "translation": "\"Now, best of the Raghus, I bow to you again and again. I wish to know your true nature, Rama, for the sake of liberation,\"",
+        "hindi": "‘हे रघुकुल-श्रेष्ठ! मैं आपको बार-बार प्रणाम करता हूँ। हे राम! मोक्ष की प्राप्ति के लिए मैं आपके वास्तविक तत्त्व-स्वरूप को जानना चाहता हूँ।’",
+        "explanation": "‘हे रघुकुल-श्रेष्ठ! मैं आपको बार-बार प्रणाम करता हूँ। हे राम! मोक्ष की प्राप्ति के लिए मैं आपके वास्तविक तत्त्व-स्वरूप को जानना चाहता हूँ।’",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "अनायासेन येनाहं मुच्येयं भवबन्धनात् । कृपया वद मे राम येन मुक्तो भवाम्यहम्",
+        "transliteration": "anāyāsena yenāhaṃ mucyeyaṃ bhavabandhanāt | kṛpayā vada me rāma yena mukto bhavāmyaham",
+        "translation": "\"by which I may be freed from the bonds of worldly existence without effort. Out of compassion, tell me, Rama, that by which I shall be liberated.\"",
+        "hindi": "जिससे मैं बिना कष्ट के संसार-बन्धन से मुक्त हो जाऊँ। हे राम! कृपा करके मुझे वह साधन बताइए, जिससे मैं मुक्त हो जाऊँ।",
+        "explanation": "जिससे मैं बिना कष्ट के संसार-बन्धन से मुक्त हो जाऊँ। हे राम! कृपा करके मुझे वह साधन बताइए, जिससे मैं मुक्त हो जाऊँ।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "साधु पृष्टं महाबाहो वदामि शृणु तत्त्वतः । वेदान्ते सुप्रतिष्ठोऽहं वेदान्तं समुपाश्रय",
+        "transliteration": "sādhu pṛṣṭaṃ mahābāho vadāmi śṛṇu tattvataḥ | vedānte supratiṣṭho'haṃ vedāntaṃ samupāśraya",
+        "translation": "(Rama said:) \"Well asked, mighty-armed one. I shall tell you truly; listen. I am firmly established in the Vedanta; take refuge in the Vedanta.\"",
+        "hindi": "(श्रीराम ने कहा:) हे महाबाहो! तुमने भलीभाँति पूछा; मैं यथार्थ कहता हूँ, सुनो। मैं वेदान्त में ही सुप्रतिष्ठित हूँ; तुम वेदान्त का आश्रय लो।",
+        "explanation": "(श्रीराम ने कहा:) हे महाबाहो! तुमने भलीभाँति पूछा; मैं यथार्थ कहता हूँ, सुनो। मैं वेदान्त में ही सुप्रतिष्ठित हूँ; तुम वेदान्त का आश्रय लो।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "वेदान्ताः के रघुश्रेष्ठ वर्तन्ते कुत्र ते वद । हनूमञ्छृणु वक्ष्यामि वेदान्तस्थितिमञ्जसा",
+        "transliteration": "vedāntāḥ ke raghuśreṣṭha vartante kutra te vada | hanūmañchṛṇu vakṣyāmi vedāntasthitimañjasā",
+        "translation": "(Hanuman:) \"Best of the Raghus, what are the Vedantas, and where do they abide? Tell me.\" (Rama:) \"Hanuman, listen; I shall tell you plainly the position of the Vedanta.\"",
+        "hindi": "(हनुमान् ने पूछा:) हे रघुश्रेष्ठ! वेदान्त कौन-कौन से हैं और वे कहाँ स्थित हैं? यह बताइए। (श्रीराम ने कहा:) हे हनुमन्! सुनो, मैं वेदान्त की स्थिति स्पष्ट रूप से कहता हूँ।",
+        "explanation": "(हनुमान् ने पूछा:) हे रघुश्रेष्ठ! वेदान्त कौन-कौन से हैं और वे कहाँ स्थित हैं? यह बताइए। (श्रीराम ने कहा:) हे हनुमन्! सुनो, मैं वेदान्त की स्थिति स्पष्ट रूप से कहता हूँ।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "निश्वासभूता मे विष्णोर्वेदा जाताः सुविस्तराः । तिलेषु तैलवद्वेदे वेदान्तः सुप्रतिष्ठितः",
+        "transliteration": "niśvāsabhūtā me viṣṇorvedā jātāḥ suvistarāḥ | tileṣu tailavadvede vedāntaḥ supratiṣṭhitaḥ",
+        "translation": "\"The Vedas, of great extent, were born as the breath of Vishnu, of me. In the Veda, like oil in sesame seeds, the Vedanta is firmly established.\"",
+        "hindi": "मेरे, विष्णु के निःश्वास से ही विस्तारयुक्त वेद उत्पन्न हुए हैं। तिल में तेल की भाँति वेद में वेदान्त सुप्रतिष्ठित है।",
+        "explanation": "मेरे, विष्णु के निःश्वास से ही विस्तारयुक्त वेद उत्पन्न हुए हैं। तिल में तेल की भाँति वेद में वेदान्त सुप्रतिष्ठित है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 10,
+        "number": 10,
+        "sanskrit": "राम वेदाः कतिविधास्तेषां शाखाश्च राघव । तासूपनिषदाः काः स्युः कृपया वद तत्त्वतः",
+        "transliteration": "rāma vedāḥ katividhāsteṣāṃ śākhāśca rāghava | tāsūpaniṣadāḥ kāḥ syuḥ kṛpayā vada tattvataḥ",
+        "translation": "(Hanuman:) \"Rama, how many kinds of Vedas are there, and their branches, descendant of Raghu? And which are the Upanishads among them? Kindly tell me truly.\"",
+        "hindi": "(हनुमान् ने पूछा:) हे राम! हे राघव! वेद कितने प्रकार के हैं और उनकी शाखाएँ कौन-कौन सी हैं? उनमें उपनिषद् कौन-कौन से हैं? कृपा करके यथार्थ बताइए।",
+        "explanation": "(हनुमान् ने पूछा:) हे राम! हे राघव! वेद कितने प्रकार के हैं और उनकी शाखाएँ कौन-कौन सी हैं? उनमें उपनिषद् कौन-कौन से हैं? कृपा करके यथार्थ बताइए।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 11,
+        "number": 11,
+        "sanskrit": "श्रीराम उवाच । ऋग्वेदादिविभागेन वेदाश्चत्वार ईरिताः । तेषां शाखा ह्यनेकाः स्युस्तासूपनिषदस्तथा",
+        "transliteration": "śrīrāma uvāca | ṛgvedādivibhāgena vedāścatvāra īritāḥ | teṣāṃ śākhā hyanekāḥ syustāsūpaniṣadastathā",
+        "translation": "Sri Rama said: \"By the division beginning with the Rig Veda, four Vedas are declared. Their branches are many, and so are the Upanishads among them.\"",
+        "hindi": "श्रीराम ने कहा — ऋग्वेद आदि विभाजन से वेद चार कहे गए हैं। उनकी शाखाएँ अनेक होती हैं और उनमें उपनिषद् भी तदनुसार (अनेक) हैं।",
+        "explanation": "श्रीराम ने कहा — ऋग्वेद आदि विभाजन से वेद चार कहे गए हैं। उनकी शाखाएँ अनेक होती हैं और उनमें उपनिषद् भी तदनुसार (अनेक) हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 12,
+        "number": 12,
+        "sanskrit": "ऋग्वेदस्य तु शाखाः स्युरेकविंशतिसङ्ख्यकाः । नवाधिकशतं शाखा यजुषो मारुतात्मज",
+        "transliteration": "ṛgvedasya tu śākhāḥ syurekaviṃśatisaṅkhyakāḥ | navādhikaśataṃ śākhā yajuṣo mārutātmaja",
+        "translation": "\"Of the Rig Veda there are twenty-one branches; of the Yajus, son of the Wind, a hundred and nine branches.\"",
+        "hindi": "ऋग्वेद की शाखाएँ इक्कीस की संख्या वाली हैं। हे मारुतात्मज (पवनपुत्र)! यजुर्वेद की शाखाएँ एक सौ नौ हैं।",
+        "explanation": "ऋग्वेद की शाखाएँ इक्कीस की संख्या वाली हैं। हे मारुतात्मज (पवनपुत्र)! यजुर्वेद की शाखाएँ एक सौ नौ हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 13,
+        "number": 13,
+        "sanskrit": "सहस्रसङ्ख्यया जाताः शाखाः साम्नः परन्तप । अथर्वणस्य शाखाः स्युः पञ्चाशद्भेदतो हरे",
+        "transliteration": "sahasrasaṅkhyayā jātāḥ śākhāḥ sāmnaḥ parantapa | atharvaṇasya śākhāḥ syuḥ pañcāśadbhedato hare",
+        "translation": "\"Of the Sama Veda, scorcher of foes, there are a thousand branches; and of the Atharvan, Hari, there are fifty divisions.\"",
+        "hindi": "हे परन्तप! सामवेद की शाखाएँ सहस्र की संख्या से उत्पन्न (एक हजार) हैं। हे हरे! अथर्ववेद की शाखाएँ पचास भेद वाली हैं।",
+        "explanation": "हे परन्तप! सामवेद की शाखाएँ सहस्र की संख्या से उत्पन्न (एक हजार) हैं। हे हरे! अथर्ववेद की शाखाएँ पचास भेद वाली हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 14,
+        "number": 14,
+        "sanskrit": "एकैकस्यास्तु शाखाया एकैकोपनिषन्मता । तासामेकामृचं यश्च पठते भक्तितो मयि",
+        "transliteration": "ekaikasyāstu śākhāyā ekaikopaniṣanmatā | tāsāmekāmṛcaṃ yaśca paṭhate bhaktito mayi",
+        "translation": "\"For each branch one Upanishad is held. Whoever reads even one verse of them with devotion to me\"",
+        "hindi": "प्रत्येक शाखा की एक-एक उपनिषद् मानी गई है। और जो पुरुष उनमें से एक ऋचा (मन्त्र) भी मुझमें भक्ति के साथ पढ़ता है...",
+        "explanation": "प्रत्येक शाखा की एक-एक उपनिषद् मानी गई है। और जो पुरुष उनमें से एक ऋचा (मन्त्र) भी मुझमें भक्ति के साथ पढ़ता है...",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 15,
+        "number": 15,
+        "sanskrit": "स मत्सायुज्यपदवीं प्राप्नोति मुनिदुर्लभाम् । राम केचिन्मुनिश्रेष्ठा मुक्तिरेकेति चक्षिरे",
+        "transliteration": "sa matsāyujyapadavīṃ prāpnoti munidurlabhām | rāma kecinmuniśreṣṭhā muktireketi cakṣire",
+        "translation": "\"attains the state of union with me, which is hard for sages to reach.\" (Hanuman:) \"Rama, some of the best sages say that liberation is one;\"",
+        "hindi": "वह मुनियों के लिए भी दुर्लभ मेरे सायुज्य-पद (एकत्व-स्थिति) को प्राप्त होता है। (हनुमान् ने कहा:) हे राम! कुछ मुनिश्रेष्ठों ने कहा है कि मुक्ति एक ही है।",
+        "explanation": "वह मुनियों के लिए भी दुर्लभ मेरे सायुज्य-पद (एकत्व-स्थिति) को प्राप्त होता है। (हनुमान् ने कहा:) हे राम! कुछ मुनिश्रेष्ठों ने कहा है कि मुक्ति एक ही है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 16,
+        "number": 16,
+        "sanskrit": "केचित्त्वन्नामभजनात्काश्यां तारोपदेशतः । अन्येतु साङ्ख्ययोगेन भक्तियोगेन चापरे",
+        "transliteration": "kecittvannāmabhajanātkāśyāṃ tāropadeśataḥ | anyetu sāṅkhyayogena bhaktiyogena cāpare",
+        "translation": "\"some say it comes through worship of your name, in Kashi, through the teaching of the saving mantra; others through Sankhya and Yoga, and others through the yoga of devotion;\"",
+        "hindi": "कुछ (कहते हैं कि मुक्ति) आपके नाम के भजन से, काशी में (मरने से), तारक-मन्त्र के उपदेश से (मिलती है); अन्य सांख्य और योग से, और अन्य भक्तियोग से।",
+        "explanation": "कुछ (कहते हैं कि मुक्ति) आपके नाम के भजन से, काशी में (मरने से), तारक-मन्त्र के उपदेश से (मिलती है); अन्य सांख्य और योग से, और अन्य भक्तियोग से।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 17,
+        "number": 17,
+        "sanskrit": "अन्ये वेदान्तवाक्यार्थविचारात्परमर्षयः । सालोक्यादिविभागेन चतुर्धा मुक्तिरीरिता",
+        "transliteration": "anye vedāntavākyārthavicārātparamarṣayaḥ | sālokyādivibhāgena caturdhā muktirīritā",
+        "translation": "\"other great sages through reflection on the meaning of the Vedanta texts. By the division into sharing the same world and the rest, liberation is declared fourfold.\"",
+        "hindi": "अन्य परमर्षि वेदान्त-वाक्यों के अर्थ के विचार से (मुक्ति कहते हैं)। सालोक्य आदि विभाजन से मुक्ति चार प्रकार की कही गई है।",
+        "explanation": "अन्य परमर्षि वेदान्त-वाक्यों के अर्थ के विचार से (मुक्ति कहते हैं)। सालोक्य आदि विभाजन से मुक्ति चार प्रकार की कही गई है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 18,
+        "number": 18,
+        "sanskrit": "सहोवाच श्रीरामः । कैवल्यमुक्तिरेकैव परमार्थिकरूपिणी । दुराचाररतो वापि मन्नामभजनात्कपे",
+        "transliteration": "sahovāca śrīrāmaḥ | kaivalyamuktirekaiva paramārthikarūpiṇī | durācārarato vāpi mannāmabhajanātkape",
+        "translation": "Sri Rama said: \"The liberation of isolation (kaivalya) is one alone, of ultimate nature. Even one who is given to wrong conduct, monkey, by worship of my name\"",
+        "hindi": "श्रीराम ने कहा — कैवल्य-मुक्ति ही एकमात्र परमार्थिक स्वरूप वाली (मुक्ति) है। हे कपि! दुराचार में रत पुरुष भी मेरे नाम के भजन से...",
+        "explanation": "श्रीराम ने कहा — कैवल्य-मुक्ति ही एकमात्र परमार्थिक स्वरूप वाली (मुक्ति) है। हे कपि! दुराचार में रत पुरुष भी मेरे नाम के भजन से...",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 19,
+        "number": 19,
+        "sanskrit": "सालोक्यमुक्तिमाप्नोति न तु लोकान्तरादिकम् । काश्यां तु ब्रह्मनालेऽस्मिन्मृतो मत्तारमाप्नुयात्",
+        "transliteration": "sālokyamuktimāpnoti na tu lokāntarādikam | kāśyāṃ tu brahmanāle'sminmṛto mattāramāpnuyāt",
+        "translation": "\"obtains the liberation of sharing my world, but not another world and the like. But one who dies in Kashi, in this lotus-stalk of Brahman, obtains me as his saviour.\"",
+        "hindi": "वह सालोक्य-मुक्ति को प्राप्त करता है, अन्य लोक आदि को नहीं। और जो इस ब्रह्मनाल (ब्रह्म-कमल-नाल) में, काशी में मृत्यु को प्राप्त होता है, वह मुझ तारणहार को प्राप्त होता है।",
+        "explanation": "वह सालोक्य-मुक्ति को प्राप्त करता है, अन्य लोक आदि को नहीं। और जो इस ब्रह्मनाल (ब्रह्म-कमल-नाल) में, काशी में मृत्यु को प्राप्त होता है, वह मुझ तारणहार को प्राप्त होता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 20,
+        "number": 20,
+        "sanskrit": "पुनरावृत्तिरहितां मुक्तिं प्राप्नोति मानवः । यत्र कुत्रापि वा काश्यां मरणे स महेश्वरः",
+        "transliteration": "punarāvṛttirahitāṃ muktiṃ prāpnoti mānavaḥ | yatra kutrāpi vā kāśyāṃ maraṇe sa maheśvaraḥ",
+        "translation": "\"That person attains a liberation free from return. Wherever in Kashi one dies, Mahesvara (Shiva)\"",
+        "hindi": "वह मनुष्य पुनरावृत्ति-रहित मुक्ति को प्राप्त करता है। काशी में जहाँ कहीं भी मरण हो, वहाँ महेश्वर...",
+        "explanation": "वह मनुष्य पुनरावृत्ति-रहित मुक्ति को प्राप्त करता है। काशी में जहाँ कहीं भी मरण हो, वहाँ महेश्वर...",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 21,
+        "number": 21,
+        "sanskrit": "जन्तोर्दक्षिणकर्णे तु मत्तारं समुपादिशेत् । निर्धूताशेषपापौघो मत्सारूप्यं भजत्ययम्",
+        "transliteration": "jantordakṣiṇakarṇe tu mattāraṃ samupādiśet | nirdhūtāśeṣapāpaugho matsārūpyaṃ bhajatyayam",
+        "translation": "\"should instruct the creature in the right ear with the saving mantra of me. Freed from the entire flood of sins, he attains likeness to me.\"",
+        "hindi": "...जन्तु के दाहिने कान में मेरे तारक-मन्त्र का उपदेश कर देते हैं। समस्त पाप-समूहों से धुला-छुट्टा हुआ यह मनुष्य मेरे सारूप्य (समान रूप) को प्राप्त होता है।",
+        "explanation": "...जन्तु के दाहिने कान में मेरे तारक-मन्त्र का उपदेश कर देते हैं। समस्त पाप-समूहों से धुला-छुट्टा हुआ यह मनुष्य मेरे सारूप्य (समान रूप) को प्राप्त होता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 22,
+        "number": 22,
+        "sanskrit": "सैव सालोक्यसारूप्यमुक्तिरत्यभिधीयते । सदाचाररतो भूत्वा द्विजो नित्यमनन्यधीः",
+        "transliteration": "saiva sālokyasārūpyamuktiratyabhidhīyate | sadācārarato bhūtvā dvijo nityamananyadhīḥ",
+        "translation": "\"That is called the liberation of the same world and the same form. Being always devoted to right conduct, a twice-born of undivided mind\"",
+        "hindi": "वही सालोक्य-सारूप्य मुक्ति कही जाती है। (अब दूसरी स्थिति:) सदाचार में रत हुआ, नित्य अनन्य चित्त वाला द्विज...",
+        "explanation": "वही सालोक्य-सारूप्य मुक्ति कही जाती है। (अब दूसरी स्थिति:) सदाचार में रत हुआ, नित्य अनन्य चित्त वाला द्विज...",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 23,
+        "number": 23,
+        "sanskrit": "मयि सर्वात्मको भावो मत्सामीप्यं भजत्ययम् । सैव सालोक्यसारूप्यसामीप्या मुक्तिरिष्यते",
+        "transliteration": "mayi sarvātmako bhāvo matsāmīpyaṃ bhajatyayam | saiva sālokyasārūpyasāmīpyā muktiriṣyate",
+        "translation": "\"whose feeling for me is that of the Self of all, attains nearness to me. That is held to be the liberation of the same world, same form and nearness.\"",
+        "hindi": "...जो मुझमें सर्वात्मक भाव (मुझे ही सबका आत्मा मानने की भावना) रखता है, वह मेरे सामीप्य (सन्निकटता) को प्राप्त होता है। वही सालोक्य, सारूप्य और सामीप्य (रूप तीनों) मुक्ति मानी जाती है।",
+        "explanation": "...जो मुझमें सर्वात्मक भाव (मुझे ही सबका आत्मा मानने की भावना) रखता है, वह मेरे सामीप्य (सन्निकटता) को प्राप्त होता है। वही सालोक्य, सारूप्य और सामीप्य (रूप तीनों) मुक्ति मानी जाती है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 24,
+        "number": 24,
+        "sanskrit": "गुरूपदिष्टमार्गेण ध्यायन्मद्गुणमव्ययम् । मत्सायुज्यं द्विजः सम्यग्भजेद्भ्रमरकीटवत्",
+        "transliteration": "gurūpadiṣṭamārgeṇa dhyāyanmadguṇamavyayam | matsāyujyaṃ dvijaḥ samyagbhajedbhramarakīṭavat",
+        "translation": "\"By the path taught by the teacher, meditating on my imperishable qualities, the twice-born rightly attains union with me, like the caterpillar that becomes a bee.\"",
+        "hindi": "गुरु द्वारा उपदिष्ट मार्ग से मेरे अव्यय (अविनाशी) गुणों का ध्यान करता हुआ द्विज भ्रमर-कीट की भाँति मेरे सायुज्य को यथावत् प्राप्त करता है।",
+        "explanation": "गुरु द्वारा उपदिष्ट मार्ग से मेरे अव्यय (अविनाशी) गुणों का ध्यान करता हुआ द्विज भ्रमर-कीट की भाँति मेरे सायुज्य को यथावत् प्राप्त करता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 25,
+        "number": 25,
+        "sanskrit": "सैव सायुज्यमुक्तिः स्याद्ब्रह्मानन्दकरी शिवा । चतुर्विधा तु या मुक्तिर्मदुपासनया भवेत्",
+        "transliteration": "saiva sāyujyamuktiḥ syādbrahmānandakarī śivā | caturvidhā tu yā muktirmadupāsanayā bhavet",
+        "translation": "\"That is the liberation of union, auspicious, producing the bliss of Brahman. This fourfold liberation arises through worship of me.\"",
+        "hindi": "वही सायुज्य-मुक्ति है, जो ब्रह्मानन्द देने वाली और कल्याणकारी है। मेरी उपासना से यह चार प्रकार की मुक्ति प्राप्त होती है।",
+        "explanation": "वही सायुज्य-मुक्ति है, जो ब्रह्मानन्द देने वाली और कल्याणकारी है। मेरी उपासना से यह चार प्रकार की मुक्ति प्राप्त होती है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 26,
+        "number": 26,
+        "sanskrit": "इयं कैवल्यमुक्तिस्तु केनोपायेन सिद्ध्यति । माण्डूक्यमेकमेवालं मुमुक्षूणां विमुक्तये",
+        "transliteration": "iyaṃ kaivalyamuktistu kenopāyena siddhyati | māṇḍūkyamekamevālaṃ mumukṣūṇāṃ vimuktaye",
+        "translation": "(Hanuman:) \"By what means is this liberation of isolation attained?\" (Rama:) \"The Mandukya alone is sufficient for the liberation of seekers of freedom.\"",
+        "hindi": "भगवान् राम ने कहा: ‘हे मारुति! मांडूक्य उपनिषद् एक ही मुमुक्षुओं के कैवल्य मोक्ष के लिए पर्याप्त है। यदि उससे ज्ञान न हो तो दसों प्रमुख उपनिषदें पढ़ें।’",
+        "explanation": "भगवान् राम ने कहा: ‘हे मारुति! मांडूक्य उपनिषद् एक ही मुमुक्षुओं के कैवल्य मोक्ष के लिए पर्याप्त है। यदि उससे ज्ञान न हो तो दसों प्रमुख उपनिषदें पढ़ें।’",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 27,
+        "number": 27,
+        "sanskrit": "तथाप्यसिद्धं चेज्ज्ञानं दशोपनिषदं पठ । ज्ञानं लब्ध्वा चिरादेव मामकं धाम यास्यसि",
+        "transliteration": "tathāpyasiddhaṃ cejjñānaṃ daśopaniṣadaṃ paṭha | jñānaṃ labdhvā cirādeva māmakaṃ dhāma yāsyasi",
+        "translation": "\"If knowledge is still not attained, read the ten Upanishads; having gained knowledge, in a short time you will go to my abode.\"",
+        "hindi": "‘हे वायुपुत्र! दसों उपनिषदों से भी ज्ञान स्थिर न हो तो बत्तीस उपनिषदें पढ़ें; और यदि संपूर्ण मुक्ति की इच्छा हो तो सम्पूर्ण १०८ उपनिषदों का अध्ययन करें।’",
+        "explanation": "‘हे वायुपुत्र! दसों उपनिषदों से भी ज्ञान स्थिर न हो तो बत्तीस उपनिषदें पढ़ें; और यदि संपूर्ण मुक्ति की इच्छा हो तो सम्पूर्ण १०८ उपनिषदों का अध्ययन करें।’",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 28,
+        "number": 28,
+        "sanskrit": "तथापि दृढता न चेद्विद्ज्ञानस्याञ्जनासुत । द्वात्रिंशाख्योपनिषदं समभ्यस्य निवर्तय",
+        "transliteration": "tathāpi dṛḍhatā na cedvidjñānasyāñjanāsuta | dvātriṃśākhyopaniṣadaṃ samabhyasya nivartaya",
+        "translation": "\"If still, son of Anjana, the firmness of your knowledge is not there, practise the Upanishads of the thirty-two and remove it.\"",
+        "hindi": "हे अञ्जना-नन्दन! तथापि यदि ज्ञान की दृढ़ता न हो, तो बत्तीस (कृष्णयजुर्वेदीय) उपनिषदों का सम्यक् अभ्यास करके (अस्थिरता को) दूर कर।",
+        "explanation": "हे अञ्जना-नन्दन! तथापि यदि ज्ञान की दृढ़ता न हो, तो बत्तीस (कृष्णयजुर्वेदीय) उपनिषदों का सम्यक् अभ्यास करके (अस्थिरता को) दूर कर।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 29,
+        "number": 29,
+        "sanskrit": "विदेहमुक्ताविच्छा चेदष्टोत्तरशतं पठ । तासां क्रम सशान्तिं च श्रुणु वक्ष्यामि तत्त्वतः",
+        "transliteration": "videhamuktāvicchā cedaṣṭottaraśataṃ paṭha | tāsāṃ krama saśāntiṃ ca śruṇu vakṣyāmi tattvataḥ",
+        "translation": "\"If you desire bodiless liberation, read the one hundred and eight. Listen; I shall tell you truly their order and their peace-mantras.\"",
+        "hindi": "यदि विदेहमुक्ति (देह के पड़ते ही अन्तिम मुक्ति) की इच्छा हो, तो एक सौ आठ उपनिषदों का पाठ करो। उनका क्रम और शान्ति-मन्त्र सहित सुनो, मैं यथार्थ कहता हूँ।",
+        "explanation": "यदि विदेहमुक्ति (देह के पड़ते ही अन्तिम मुक्ति) की इच्छा हो, तो एक सौ आठ उपनिषदों का पाठ करो। उनका क्रम और शान्ति-मन्त्र सहित सुनो, मैं यथार्थ कहता हूँ।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 30,
+        "number": 30,
+        "sanskrit": "ईशकेनकठप्रश्नमुण्डमाण्डूक्यतित्तिरिः । ऐतरेयं च छान्दोग्यं बृहदारण्यकं तथा",
+        "transliteration": "īśakenakaṭhapraśnamuṇḍamāṇḍūkyatittiriḥ | aitareyaṃ ca chāndogyaṃ bṛhadāraṇyakaṃ tathā",
+        "translation": "Isha, Kena, Katha, Prashna, Mundaka, Mandukya, Taittiriya, Aitareya, Chandogya and Brihadaranyaka;",
+        "hindi": "(१०८ उपनिषदों का क्रम यह है:) ईशावास्य, केन, कठ, प्रश्न, मुण्डक, माण्डूक्य, तैत्तिरीय, ऐतरेय, छान्दोग्य तथा बृहदारण्यक।",
+        "explanation": "(१०८ उपनिषदों का क्रम यह है:) ईशावास्य, केन, कठ, प्रश्न, मुण्डक, माण्डूक्य, तैत्तिरीय, ऐतरेय, छान्दोग्य तथा बृहदारण्यक।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 31,
+        "number": 31,
+        "sanskrit": "ब्रह्मकैवल्यजाबालश्वेताश्वो हंस आरुणिः । गर्भो नारायणो हंसो बिन्दुर्नादशिरः शिखा",
+        "transliteration": "brahmakaivalyajābālaśvetāśvo haṃsa āruṇiḥ | garbho nārāyaṇo haṃso bindurnādaśiraḥ śikhā",
+        "translation": "Brahma, Kaivalya, Jabala, Shvetashvatara, Hamsa, Aruni, Garbha, Narayana, Hamsa (Paramahamsa), Bindu, Nada(bindu), Shira(s), Shikha;",
+        "hindi": "ब्रह्म, कैवल्य, जाबाल, श्वेताश्वतर, हंस, आरणेयक (अरुणि), गर्भ, नारायण, परमहंस, (अमृत)बिन्दु, (अमृत)नाद, (अथर्व)शिरस् और (अथर्व)शिखा।",
+        "explanation": "ब्रह्म, कैवल्य, जाबाल, श्वेताश्वतर, हंस, आरणेयक (अरुणि), गर्भ, नारायण, परमहंस, (अमृत)बिन्दु, (अमृत)नाद, (अथर्व)शिरस् और (अथर्व)शिखा।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 32,
+        "number": 32,
+        "sanskrit": "मैत्रायणी कौषीतकी बृहज्जाबालतापनी । कालाग्निरुद्रमैत्रेयी सुबालक्षुरिमन्त्रिका",
+        "transliteration": "maitrāyaṇī kauṣītakī bṛhajjābālatāpanī | kālāgnirudramaitreyī subālakṣurimantrikā",
+        "translation": "Maitrayani, Kaushitaki, Brihajjabala, Tapani, Kalagnirudra, Maitreyi, Subala, Kshurika, Mantrika;",
+        "hindi": "मैत्रायणी, कौषीतकी, बृहज्जाबाल, (नृसिंह)तापनी, कालाग्निरुद्र, मैत्रेयी, सुबाल, क्षुरिका और मन्त्रिका (ब्रह्मबिन्दु)।",
+        "explanation": "मैत्रायणी, कौषीतकी, बृहज्जाबाल, (नृसिंह)तापनी, कालाग्निरुद्र, मैत्रेयी, सुबाल, क्षुरिका और मन्त्रिका (ब्रह्मबिन्दु)।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 33,
+        "number": 33,
+        "sanskrit": "सर्वसारं निरालम्बं रहस्यं वज्रसूचिकम् । तेजोनादध्यानविद्यायोगतत्त्वात्मबोधकम्",
+        "transliteration": "sarvasāraṃ nirālambaṃ rahasyaṃ vajrasūcikam | tejonādadhyānavidyāyogatattvātmabodhakam",
+        "translation": "Sarvasara, Niralamba, Rahasya (Shukarahasya), Vajrasuchika, Tejobindu, Nadabindu, Dhyanabindu, Brahmavidya, Yogatattva, Atmabodha;",
+        "hindi": "सर्वसार, निरालम्ब, (शुक)रहस्य, वज्रसूचिका, तेजोबिन्दु, नादबिन्दु, ध्यानबिन्दु, ब्रह्मविद्या, योगतत्त्व और आत्मबोध।",
+        "explanation": "सर्वसार, निरालम्ब, (शुक)रहस्य, वज्रसूचिका, तेजोबिन्दु, नादबिन्दु, ध्यानबिन्दु, ब्रह्मविद्या, योगतत्त्व और आत्मबोध।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 34,
+        "number": 34,
+        "sanskrit": "परिव्राट् त्रिशिखी सीता चूडा निर्वाणमण्डलम् । दक्षिणा शरभं स्कन्दं महानारायणाह्वयम्",
+        "transliteration": "parivrāṭ triśikhī sītā cūḍā nirvāṇamaṇḍalam | dakṣiṇā śarabhaṃ skandaṃ mahānārāyaṇāhvayam",
+        "translation": "Parivrat (Narada-parivrajaka), Trishikhi(brahmana), Sita, Chuda(mani), Nirvana, Mandala(brahmana), Dakshina(murti), Sharabha, Skanda, and the one called Mahanarayana;",
+        "hindi": "(नारद)परिव्राजक, त्रिशिखीब्राह्मण, सीता, चूडामणि, निर्वाण, मण्डलब्राह्मण, दक्षिणामूर्ति, शरभ, स्कन्द और महानारायण नामक (उपनिषद्)।",
+        "explanation": "(नारद)परिव्राजक, त्रिशिखीब्राह्मण, सीता, चूडामणि, निर्वाण, मण्डलब्राह्मण, दक्षिणामूर्ति, शरभ, स्कन्द और महानारायण नामक (उपनिषद्)।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 35,
+        "number": 35,
+        "sanskrit": "रहस्यं रामतपनं वासुदेवं च मुद्गलम् । शाण्डिल्यं पैङ्गलं भिक्षुमहच्छारीरकं शिखा",
+        "transliteration": "rahasyaṃ rāmatapanaṃ vāsudevaṃ ca mudgalam | śāṇḍilyaṃ paiṅgalaṃ bhikṣumahacchārīrakaṃ śikhā",
+        "translation": "Advayataraka (Rahasya), Ramatapana, Vasudeva, Mudgala, Shandilya, Paingala, Bhikshu, Mahat (Maha), Sharirika, Shikha (Yogashikha);",
+        "hindi": "(अद्वयतारक) रहस्य, रामतापनी, वासुदेव, मुद्गल, शाण्डिल्य, पैङ्गल, भिक्षु, महत्, शारीरक और (योग)शिखा।",
+        "explanation": "(अद्वयतारक) रहस्य, रामतापनी, वासुदेव, मुद्गल, शाण्डिल्य, पैङ्गल, भिक्षु, महत्, शारीरक और (योग)शिखा।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 36,
+        "number": 36,
+        "sanskrit": "तुरीयातीतसंन्यासपरिव्राजाक्षमालिका । अव्यक्तैकाक्षरं पूर्णा सूर्याक्ष्यध्यात्मकुण्डिका",
+        "transliteration": "turīyātītasaṃnyāsaparivrājākṣamālikā | avyaktaikākṣaraṃ pūrṇā sūryākṣyadhyātmakuṇḍikā",
+        "translation": "Turiyatita, Sannyasa, Parivraja(ka), Akshamalika, Avyakta, Ekakshara, Purna (Annapurna), Surya, Akshi, Adhyatma, Kundika;",
+        "hindi": "तुरीयातीत, संन्यास, (परमहंस)परिव्राजक, अक्षमालिका, अव्यक्त, एकाक्षर, (अन्न)पूर्णा, सूर्य, अक्षि, अध्यात्म और कुण्डिका।",
+        "explanation": "तुरीयातीत, संन्यास, (परमहंस)परिव्राजक, अक्षमालिका, अव्यक्त, एकाक्षर, (अन्न)पूर्णा, सूर्य, अक्षि, अध्यात्म और कुण्डिका।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 37,
+        "number": 37,
+        "sanskrit": "सावित्र्यात्मा पाशुपतं परं ब्रह्मावधूतकम् । त्रिपुरातपनं देवीत्रिपुरा कठभावना । हृदयं कुण्डली भस्म रुद्राक्षगणदर्शनम्",
+        "transliteration": "sāvitryātmā pāśupataṃ paraṃ brahmāvadhūtakam | tripurātapanaṃ devītripurā kaṭhabhāvanā | hṛdayaṃ kuṇḍalī bhasma rudrākṣagaṇadarśanam",
+        "translation": "Savitri, Atma, Pashupata, Parabrahma, Avadhuta, Tripuratapana, Devi, Tripura, Katha(rudra), Bhavana, Hridaya, Kundalini, Bhasma, Rudraksha, Ganapati (and) Darshana;",
+        "hindi": "सावित्री, आत्म, पाशुपत, परब्रह्म, अवधूत, त्रिपुरातापनी, देवी, त्रिपुरा, कठरुद्र, (भुवनेश्वरी)भावना, (ब्रह्म)हृदय, (योग)कुण्डलिनी, (जाबाल)भस्म, रुद्राक्ष(जाबाल), गणपति और दर्शन।",
+        "explanation": "सावित्री, आत्म, पाशुपत, परब्रह्म, अवधूत, त्रिपुरातापनी, देवी, त्रिपुरा, कठरुद्र, (भुवनेश्वरी)भावना, (ब्रह्म)हृदय, (योग)कुण्डलिनी, (जाबाल)भस्म, रुद्राक्ष(जाबाल), गणपति और दर्शन।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 38,
+        "number": 38,
+        "sanskrit": "तारसारमहावाक्य पञ्चब्रह्माग्निहोत्रकम् । गोपालतपनं कृष्णं याज्ञवल्क्यं वराहकम्",
+        "transliteration": "tārasāramahāvākya pañcabrahmāgnihotrakam | gopālatapanaṃ kṛṣṇaṃ yājñavalkyaṃ varāhakam",
+        "translation": "Tarasara, Mahavakya, Pancha(brahma), Agnihotra, Gopalatapana, Krishna, Yajnavalkya, Varaha;",
+        "hindi": "तारसार, महावाक्य, पञ्चब्रह्म, (प्राण)अग्निहोत्र, गोपालतापनी, कृष्ण, याज्ञवल्क्य और वराह।",
+        "explanation": "तारसार, महावाक्य, पञ्चब्रह्म, (प्राण)अग्निहोत्र, गोपालतापनी, कृष्ण, याज्ञवल्क्य और वराह।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 39,
+        "number": 39,
+        "sanskrit": "शाट्यायनी हयग्रीवं दत्तात्रेयं च गारुडम् । कलिजाबालिसौभाग्यरहस्यऋचमुक्तिका",
+        "transliteration": "śāṭyāyanī hayagrīvaṃ dattātreyaṃ ca gāruḍam | kalijābālisaubhāgyarahasyaṛcamuktikā",
+        "translation": "Shatyayani, Hayagriva, Dattatreya, Garuda, Kali(santarana), Jabali, Saubhagya(lakshmi), Rahasya (Sarasvatirahasya), Rig(veda), and Muktika.",
+        "hindi": "शाट्यायनी, हयग्रीव, दत्तात्रेय, गारुड, कलिसन्तरण, जाबालि, सौभाग्य(लक्ष्मी), (सरस्वती)रहस्य, बह्वृच और (यह) मुक्तिका।",
+        "explanation": "शाट्यायनी, हयग्रीव, दत्तात्रेय, गारुड, कलिसन्तरण, जाबालि, सौभाग्य(लक्ष्मी), (सरस्वती)रहस्य, बह्वृच और (यह) मुक्तिका।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 40,
+        "number": 40,
+        "sanskrit": "एवमष्टोत्तरशतं भावनात्रयनाशनम् । ज्ञानवैराग्यदं पुंसां वासनात्रयनाशनम्",
+        "transliteration": "evamaṣṭottaraśataṃ bhāvanātrayanāśanam | jñānavairāgyadaṃ puṃsāṃ vāsanātrayanāśanam",
+        "translation": "\"Thus the one hundred and eight destroy the three kinds of mental conditioning; they bestow knowledge and dispassion on people and destroy the three kinds of habit-impressions.\"",
+        "hindi": "इस प्रकार ये एक सौ आठ (उपनिषद्) तीन प्रकार की भावना (वासना) का नाश करने वाले हैं; ये पुरुषों को ज्ञान और वैराग्य देते हैं और तीन प्रकार की वासनाओं का नाश करते हैं।",
+        "explanation": "इस प्रकार ये एक सौ आठ (उपनिषद्) तीन प्रकार की भावना (वासना) का नाश करने वाले हैं; ये पुरुषों को ज्ञान और वैराग्य देते हैं और तीन प्रकार की वासनाओं का नाश करते हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 41,
+        "number": 41,
+        "sanskrit": "पूर्वोत्तरेषु विहिततत्तच्छान्तिपुरःसरम् । वेदविद्याव्रतस्नातदेशिकस्य मुखात्स्वयम्",
+        "transliteration": "pūrvottareṣu vihitatattacchāntipuraḥsaram | vedavidyāvratasnātadeśikasya mukhātsvayam",
+        "translation": "\"Taking them from the mouth of a teacher who has bathed in Vedic study and vows, preceded by the respective peace-mantras prescribed in the earlier and later parts,\"",
+        "hindi": "पूर्व और उत्तर (भागों) में विहित संबंधित-संबंधित शान्ति-मन्त्रों सहित, वेद-विद्या और व्रतों में स्नात (परिपक्व) गुरु के मुख से स्वयं...",
+        "explanation": "पूर्व और उत्तर (भागों) में विहित संबंधित-संबंधित शान्ति-मन्त्रों सहित, वेद-विद्या और व्रतों में स्नात (परिपक्व) गुरु के मुख से स्वयं...",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 42,
+        "number": 42,
+        "sanskrit": "गृहीत्वाष्टोत्तरशतं ये पठन्ति द्विजोत्तमाः । प्रारब्धक्षयपर्यन्तं जीवन्मुक्ता भवन्ति ते",
+        "transliteration": "gṛhītvāṣṭottaraśataṃ ye paṭhanti dvijottamāḥ | prārabdhakṣayaparyantaṃ jīvanmuktā bhavanti te",
+        "translation": "\"the best of the twice-born who read the one hundred and eight become liberated while living, until their prarabdha karma is exhausted.\"",
+        "hindi": "...एक सौ आठ (उपनिषदों) को ग्रहण करके जो द्विजोत्तम पाठ करते हैं, वे प्रारब्ध-कर्म के क्षय पर्यन्त जीवन्मुक्त हो जाते हैं।",
+        "explanation": "...एक सौ आठ (उपनिषदों) को ग्रहण करके जो द्विजोत्तम पाठ करते हैं, वे प्रारब्ध-कर्म के क्षय पर्यन्त जीवन्मुक्त हो जाते हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 43,
+        "number": 43,
+        "sanskrit": "ततः कालवशादेव प्रारब्धे तु क्षयं गते । वैदेहीं मामकीं मुक्तिं यान्ति नास्त्यत्रसंशयः",
+        "transliteration": "tataḥ kālavaśādeva prārabdhe tu kṣayaṃ gate | vaidehīṃ māmakīṃ muktiṃ yānti nāstyatrasaṃśayaḥ",
+        "translation": "\"Then, in due time, when their prarabdha has come to an end, they attain my bodiless liberation; there is no doubt in this.\"",
+        "hindi": "तत्पश्चात् समय के प्रभाव से ही जब प्रारब्ध (कर्म) का क्षय हो जाता है, तब वे मेरी वैदेही (विदेह, देह-रहित) मुक्ति को प्राप्त होते हैं; इसमें संशय नहीं है।",
+        "explanation": "तत्पश्चात् समय के प्रभाव से ही जब प्रारब्ध (कर्म) का क्षय हो जाता है, तब वे मेरी वैदेही (विदेह, देह-रहित) मुक्ति को प्राप्त होते हैं; इसमें संशय नहीं है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 44,
+        "number": 44,
+        "sanskrit": "सर्वोपनिषदां मध्ये सारमष्टोत्तरशतम् । सकृच्छ्रवणमात्रेण सर्वाघौघनिकृन्तनम्",
+        "transliteration": "sarvopaniṣadāṃ madhye sāramaṣṭottaraśatam | sakṛcchravaṇamātreṇa sarvāghaughanikṛntanam",
+        "translation": "\"Among all the Upanishads, the one hundred and eight are the essence; by hearing them but once, the whole flood of sins is cut away.\"",
+        "hindi": "समस्त उपनिषदों में ये एक सौ आठ सार हैं। एक बार के श्रवण मात्र से ही ये सम्पूर्ण पाप-समूहों का निकृत्तन (काटकर नाश) कर देते हैं।",
+        "explanation": "समस्त उपनिषदों में ये एक सौ आठ सार हैं। एक बार के श्रवण मात्र से ही ये सम्पूर्ण पाप-समूहों का निकृत्तन (काटकर नाश) कर देते हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 45,
+        "number": 45,
+        "sanskrit": "मयोपदिष्टं शिष्याय तुभ्यं पवननन्दन । इदं शास्त्रं मयादिष्टं गुह्यमष्टोत्तरं शतम्",
+        "transliteration": "mayopadiṣṭaṃ śiṣyāya tubhyaṃ pavananandana | idaṃ śāstraṃ mayādiṣṭaṃ guhyamaṣṭottaraṃ śatam",
+        "translation": "\"This has been taught by me to you, my disciple, son of the Wind. This scripture, taught by me, is the secret one hundred and eight.\"",
+        "hindi": "हे पवननन्दन! यह (विद्या) मैंने तुम्हें, अपने शिष्य को, उपदिष्ट की है। मेरे द्वारा उपदिष्ट यह शास्त्र गुह्य (गोपनीय) एक सौ आठ है।",
+        "explanation": "हे पवननन्दन! यह (विद्या) मैंने तुम्हें, अपने शिष्य को, उपदिष्ट की है। मेरे द्वारा उपदिष्ट यह शास्त्र गुह्य (गोपनीय) एक सौ आठ है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 46,
+        "number": 46,
+        "sanskrit": "ज्ञानतोऽज्ञानतो वापि पठतां बन्धमोचकम् । राज्यं देयं धनं देयं याचतः कामपूरणम्",
+        "transliteration": "jñānato'jñānato vāpi paṭhatāṃ bandhamocakam | rājyaṃ deyaṃ dhanaṃ deyaṃ yācataḥ kāmapūraṇam",
+        "translation": "\"For those who read it, knowingly or unknowingly, it releases from bondage. A kingdom may be given, wealth may be given, and the desire of one who asks may be fulfilled;\"",
+        "hindi": "जानकर या अनजाने में भी इसका पाठ करने वालों के लिए यह बन्धन-मोचक है। राज्य दिया जा सकता है, धन दिया जा सकता है, याचने वाले की कामना पूर्ण की जा सकती है...",
+        "explanation": "जानकर या अनजाने में भी इसका पाठ करने वालों के लिए यह बन्धन-मोचक है। राज्य दिया जा सकता है, धन दिया जा सकता है, याचने वाले की कामना पूर्ण की जा सकती है...",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 47,
+        "number": 47,
+        "sanskrit": "इदमष्टोत्तरशतं न देयं यस्य कस्यचित् । नास्तिकाय कृतघ्नाय दुराचाररताय वै",
+        "transliteration": "idamaṣṭottaraśataṃ na deyaṃ yasya kasyacit | nāstikāya kṛtaghnāya durācāraratāya vai",
+        "translation": "\"but this one hundred and eight should not be given to just anyone — not to an unbeliever, an ungrateful person, or one who delights in wrong conduct,\"",
+        "hindi": "पर यह एक सौ आठ किसी को भी नहीं देना चाहिए — नास्तिक को, कृतघ्न को और दुराचार में रत पुरुष को (कदापि नहीं देना चाहिए)।",
+        "explanation": "पर यह एक सौ आठ किसी को भी नहीं देना चाहिए — नास्तिक को, कृतघ्न को और दुराचार में रत पुरुष को (कदापि नहीं देना चाहिए)।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 48,
+        "number": 48,
+        "sanskrit": "मद्भक्तिविमुखायापि शास्त्रगर्तेषु मुह्यते । गुरुभक्तिविहीनाय दातव्यं न कदाचन",
+        "transliteration": "madbhaktivimukhāyāpi śāstragarteṣu muhyate | gurubhaktivihīnāya dātavyaṃ na kadācana",
+        "translation": "\"nor to one turned away from devotion to me, who is bewildered in the pits of the scriptures, nor ever to one without devotion to a teacher.\"",
+        "hindi": "और मुझमें भक्ति से विमुख पुरुष को भी (नहीं देना), जो शास्त्र-गर्तों (शास्त्रों के कुपथ-जाल) में मोहित होता है; गुरु-भक्ति से हीन को तो कभी भी नहीं देना चाहिए।",
+        "explanation": "और मुझमें भक्ति से विमुख पुरुष को भी (नहीं देना), जो शास्त्र-गर्तों (शास्त्रों के कुपथ-जाल) में मोहित होता है; गुरु-भक्ति से हीन को तो कभी भी नहीं देना चाहिए।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 49,
+        "number": 49,
+        "sanskrit": "सेवापराय शिष्याय हितपुत्राय मारुते । मद्भक्ताय सुशीलाय कुलीनाय सुमेधसे",
+        "transliteration": "sevāparāya śiṣyāya hitaputrāya mārute | madbhaktāya suśīlāya kulīnāya sumedhase",
+        "translation": "\"To a disciple devoted to service, Maruti, to a good son, to my devotee, of good character, of good family, of good understanding,\"",
+        "hindi": "हे मारुते! सेवा में तत्पर शिष्य को, हितकारी पुत्र को, मेरे भक्त को, सुशील को, कुलीन को और सुमेधा (उत्तम बुद्धि वाले) को...",
+        "explanation": "हे मारुते! सेवा में तत्पर शिष्य को, हितकारी पुत्र को, मेरे भक्त को, सुशील को, कुलीन को और सुमेधा (उत्तम बुद्धि वाले) को...",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 50,
+        "number": 50,
+        "sanskrit": "सम्यक् परीक्ष्य दातव्यमेवमष्टोत्तरं शतम् । यः पठेच्छृणुयाद्वापि स मामेति न संशयः । तदेतदृचाभ्युक्तम् । विद्या ह वै ब्राह्मणमाजगाम गोपाय मा शेवधिष्टीऽहमस्मि । असूयकायानृजवे शठाय मा मा ब्रूया वीर्यवती तथा स्याम् । यमेव विद्याश्रुतमप्रमत्तं मेधाविनं ब्रह्मचर्योपपन्नम् । तस्मा इमामुपसन्नाय सम्यक् परीक्ष्य दद्याद्वैष्णवीमात्मनिष्ठाम्",
+        "transliteration": "samyak parīkṣya dātavyamevamaṣṭottaraṃ śatam | yaḥ paṭhecchṛṇuyādvāpi sa māmeti na saṃśayaḥ | tadetadṛcābhyuktam | vidyā ha vai brāhmaṇamājagāma gopāya mā śevadhiṣṭī'hamasmi | asūyakāyānṛjave śaṭhāya mā mā brūyā vīryavatī tathā syām | yameva vidyāśrutamapramattaṃ medhāvinaṃ brahmacaryopapannam | tasmā imāmupasannāya samyak parīkṣya dadyādvaiṣṇavīmātmaniṣṭhām",
+        "translation": "\"— after careful examination — should this one hundred and eight be given. Whoever reads or even hears it comes to me; there is no doubt.\" Thus it is said in the verse: \"Knowledge came to the Brahmin and said: Guard me; I am your treasure. Do not give me to the envious, the crooked, the deceitful; so I shall be powerful. To the one you know as attentive to learning and hearing, wise, and devoted to chastity — to him who has approached, after careful examination, one should give this knowledge of Vishnu, the steadfastness in the Self.\"",
+        "hindi": "...भलीभाँति परीक्षा करके ही इस एक सौ आठ को देना चाहिए। जो इसका पाठ करे या श्रवण करे, वह निःसंदेह मुझे प्राप्त होता है। इसी विषय में ऋचा (मन्त्र) भी कही गई है — विद्या ब्राह्मण के पास आकर बोली: 'मेरी रक्षा कर; मैं तेरा निधि (कोश) हूँ। ईर्ष्यालु, सीधे मार्ग से हटे (कुटिल) और छली पुरुष को मुझे मत कहना, तभी मैं वीर्यवती (सामर्थ्ययुक्त) रहूँगी। जिसे तू श्रुत (विद्यावान्), अप्रमत्त (सावधान), मेधावी और ब्रह्मचर्य से युक्त जाने — उस समीप आए (शिष्य) को भलीभाँति परीक्षा करके यह वैष्णवी, आत्म-निष्ठा देने वाली विद्या दे।'",
+        "explanation": "...भलीभाँति परीक्षा करके ही इस एक सौ आठ को देना चाहिए। जो इसका पाठ करे या श्रवण करे, वह निःसंदेह मुझे प्राप्त होता है। इसी विषय में ऋचा (मन्त्र) भी कही गई है — विद्या ब्राह्मण के पास आकर बोली: 'मेरी रक्षा कर; मैं तेरा निधि (कोश) हूँ। ईर्ष्यालु, सीधे मार्ग से हटे (कुटिल) और छली पुरुष को मुझे मत कहना, तभी मैं वीर्यवती (सामर्थ्ययुक्त) रहूँगी। जिसे तू श्रुत (विद्यावान्), अप्रमत्त (सावधान), मेधावी और ब्रह्मचर्य से युक्त जाने — उस समीप आए (शिष्य) को भलीभाँति परीक्षा करके यह वैष्णवी, आत्म-निष्ठा देने वाली विद्या दे।'",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 51,
+        "number": 51,
+        "sanskrit": "इति ॥ अथ हैनं श्रीरामचन्द्रं मारुतिः पप्रच्छ ऋग्वेदादिविभागेन पृथक् शान्तिमनुब्रूहीति । स होवाच श्रीरामः । ऐतरेयकौषीतकीनादबिन्द्वात्मप्रबोधनिर्वाणमुद्गलाक्षमालिकात्रिपुरासौभाग्यबह्वृचा नामृग्वेदगतानां दशसंख्याकानामुपनिषदां वाङ्मे मनसीति शान्तिः",
+        "transliteration": "iti || atha hainaṃ śrīrāmacandraṃ mārutiḥ papraccha ṛgvedādivibhāgena pṛthak śāntimanubrūhīti | sa hovāca śrīrāmaḥ | aitareyakauṣītakīnādabindvātmaprabodhanirvāṇamudgalākṣamālikātripurāsaubhāgyabahvṛcā nāmṛgvedagatānāṃ daśasaṃkhyākānāmupaniṣadāṃ vāṅme manasīti śāntiḥ",
+        "translation": "Thus. Then Maruti asked Sri Ramachandra: \"Tell me the separate peace-mantras according to the divisions beginning with the Rig Veda.\" Sri Rama said: for the ten Upanishads belonging to the Rig Veda — Aitareya, Kaushitaki, Nadabindu, Atmabodha, Nirvana, Mudgala, Akshamalika, Tripura, Saubhagya and Bahvricha — the peace-mantra is \"May my speech be founded in my mind.\"",
+        "hindi": "इति (यहाँ प्रथम खण्ड का उपदेश सम्पूर्ण हुआ)। इसके बाद मारुति ने श्रीरामचन्द्र से पूछा — ऋग्वेद आदि विभाजन के अनुसार पृथक्-पृथक् शान्ति-मन्त्र बताइए। श्रीराम ने कहा — ऋग्वेद से सम्बद्ध दस उपनिषदों — ऐतरेय, कौषीतकी, नादबिन्दु, आत्मप्रबोध, निर्वाण, मुद्गल, अक्षमालिका, त्रिपुरा, सौभाग्य और बह्वृच — की शान्ति है: 'वाङ्मे मनसि (प्रतिष्ठिता)' — मेरी वाणी मन में (और मन प्राण में) प्रतिष्ठित रहे।",
+        "explanation": "इति (यहाँ प्रथम खण्ड का उपदेश सम्पूर्ण हुआ)। इसके बाद मारुति ने श्रीरामचन्द्र से पूछा — ऋग्वेद आदि विभाजन के अनुसार पृथक्-पृथक् शान्ति-मन्त्र बताइए। श्रीराम ने कहा — ऋग्वेद से सम्बद्ध दस उपनिषदों — ऐतरेय, कौषीतकी, नादबिन्दु, आत्मप्रबोध, निर्वाण, मुद्गल, अक्षमालिका, त्रिपुरा, सौभाग्य और बह्वृच — की शान्ति है: 'वाङ्मे मनसि (प्रतिष्ठिता)' — मेरी वाणी मन में (और मन प्राण में) प्रतिष्ठित रहे।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 52,
+        "number": 52,
+        "sanskrit": "ईशावास्यबृहदारण्यजाबालहंसपरमहंससुबालमन्त्रिकानिरालम्बत्रिशिखीब्राह्मणमण्डलब्राह्मणाद्वयतारकपैङ्गलभिक्षुतुरीयातीताध्यात्मतारसारयाज्ञवल्क्यशाट्यायनीमुक्तिकानां शुक्लयजुर्वेदगतानामेकोनविंशतिसंख्याकानामुपनिषदां पूर्णमद इति शान्तिः",
+        "transliteration": "īśāvāsyabṛhadāraṇyajābālahaṃsaparamahaṃsasubālamantrikānirālambatriśikhībrāhmaṇamaṇḍalabrāhmaṇādvayatārakapaiṅgalabhikṣuturīyātītādhyātmatārasārayājñavalkyaśāṭyāyanīmuktikānāṃ śuklayajurvedagatānāmekonaviṃśatisaṃkhyākānāmupaniṣadāṃ pūrṇamada iti śāntiḥ",
+        "translation": "For the nineteen Upanishads belonging to the White Yajur Veda — Isha, Brihadaranyaka, Jabala, Hamsa, Paramahamsa, Subala, Mantrika, Niralamba, Trishikhi, Mandalabrahmana, Advayataraka, Paingala, Bhikshu, Turiyatita, Adhyatma, Tarasara, Yajnavalkya, Shatyayani and Muktika — the peace-mantra is \"That is full.\"",
+        "hindi": "शुक्लयजुर्वेद से सम्बद्ध उन्नीस उपनिषदों — ईशावास्य, बृहदारण्यक, जाबाल, हंस, परमहंस, सुबाल, मन्त्रिका, निरालम्ब, त्रिशिखीब्राह्मण, मण्डलब्राह्मण, अद्वयतारक, पैङ्गल, भिक्षु, तुरीयातीत, अध्यात्म, तारसार, याज्ञवल्क्य, शाट्यायनी और मुक्तिका — की शान्ति है: 'पूर्णमदः (पूर्णमिदम्...)' — वह (परब्रह्म) पूर्ण है।",
+        "explanation": "शुक्लयजुर्वेद से सम्बद्ध उन्नीस उपनिषदों — ईशावास्य, बृहदारण्यक, जाबाल, हंस, परमहंस, सुबाल, मन्त्रिका, निरालम्ब, त्रिशिखीब्राह्मण, मण्डलब्राह्मण, अद्वयतारक, पैङ्गल, भिक्षु, तुरीयातीत, अध्यात्म, तारसार, याज्ञवल्क्य, शाट्यायनी और मुक्तिका — की शान्ति है: 'पूर्णमदः (पूर्णमिदम्...)' — वह (परब्रह्म) पूर्ण है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 53,
+        "number": 53,
+        "sanskrit": "कठवल्लीतैत्तिरीयकब्रह्मकैवल्यश्वेताश्वतरगर्भनारायणामृतबिन्द्वमृतनादकालाग्निरुद्रक्षुरिकासर्वसारशुकरहस्यतेजोबिन्दुध्यानबिन्दुब्रह्मविद्यायोगतत्त्वदक्षिणामूर्तिस्कन्दशारीरकयोगशिखैकाक्षराक्ष्यवधूतकठरुद्रहृदययोगकुण्डलिनीपञ्चब्रह्मप्राणाग्निहोत्रवराहकलिसन्तरणसरस्वतीरहस्यानां कृष्णयजुर्वेदगतानां द्वात्रिंशत्संख्याकानमुपनिषदां सह नाववत्विति शान्तिः",
+        "transliteration": "kaṭhavallītaittirīyakabrahmakaivalyaśvetāśvataragarbhanārāyaṇāmṛtabindvamṛtanādakālāgnirudrakṣurikāsarvasāraśukarahasyatejobindudhyānabindubrahmavidyāyogatattvadakṣiṇāmūrtiskandaśārīrakayogaśikhaikākṣarākṣyavadhūtakaṭharudrahṛdayayogakuṇḍalinīpañcabrahmaprāṇāgnihotravarāhakalisantaraṇasarasvatīrahasyānāṃ kṛṣṇayajurvedagatānāṃ dvātriṃśatsaṃkhyākānamupaniṣadāṃ saha nāvavatviti śāntiḥ",
+        "translation": "For the thirty-two Upanishads belonging to the Black Yajur Veda — Katha(valli), Taittiriya, Brahma, Kaivalya, Shvetashvatara, Garbha, Narayana, Amritabindu, Amritanada, Kalagnirudra, Kshurika, Sarvasara, Shukarahasya, Tejobindu, Dhyanabindu, Brahmavidya, Yogatattva, Dakshinamurti, Skanda, Sharirika, Yogashikha, Ekakshara, Akshi, Avadhuta, Katharudra, Hridaya, Yogakundalini, Panchabrahma, Pranagnihotra, Varaha, Kalisantarana and Sarasvatirahasya — the peace-mantra is \"May he protect us both.\"",
+        "hindi": "कृष्णयजुर्वेद से सम्बद्ध बत्तीस उपनिषदों — कठवल्ली, तैत्तिरीय, ब्रह्म, कैवल्य, श्वेताश्वतर, गर्भ, नारायण, अमृतबिन्दु, अमृतनाद, कालाग्निरुद्र, क्षुरिका, सर्वसार, शुकरहस्य, तेजोबिन्दु, ध्यानबिन्दु, ब्रह्मविद्या, योगतत्त्व, दक्षिणामूर्ति, स्कन्द, शारीरक, योगशिखा, एकाक्षर, अक्षि, अवधूत, कठरुद्र, हृदय, योगकुण्डलिनी, पञ्चब्रह्म, प्राणाग्निहोत्र, वराह, कलिसन्तरण और सरस्वतीरहस्य — की शान्ति है: 'सह नाववतु' — वह हम दोनों (गुरु-शिष्य) की रक्षा करे।",
+        "explanation": "कृष्णयजुर्वेद से सम्बद्ध बत्तीस उपनिषदों — कठवल्ली, तैत्तिरीय, ब्रह्म, कैवल्य, श्वेताश्वतर, गर्भ, नारायण, अमृतबिन्दु, अमृतनाद, कालाग्निरुद्र, क्षुरिका, सर्वसार, शुकरहस्य, तेजोबिन्दु, ध्यानबिन्दु, ब्रह्मविद्या, योगतत्त्व, दक्षिणामूर्ति, स्कन्द, शारीरक, योगशिखा, एकाक्षर, अक्षि, अवधूत, कठरुद्र, हृदय, योगकुण्डलिनी, पञ्चब्रह्म, प्राणाग्निहोत्र, वराह, कलिसन्तरण और सरस्वतीरहस्य — की शान्ति है: 'सह नाववतु' — वह हम दोनों (गुरु-शिष्य) की रक्षा करे।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 54,
+        "number": 54,
+        "sanskrit": "केनछान्दोग्यारुणिमैत्रायणिमैत्रेयीवज्रसूचिकायोगचूडामणिवासुदेवमहत्संन्यासाव्यक्तकुण्डिकासावित्रीरुद्राक्षजाबालदर्शनजाबालीनां सामवेदगतानां षोडशसंख्याकानामुपनिषदानामाप्यायन्त्विति शान्तिः",
+        "transliteration": "kenachāndogyāruṇimaitrāyaṇimaitreyīvajrasūcikāyogacūḍāmaṇivāsudevamahatsaṃnyāsāvyaktakuṇḍikāsāvitrīrudrākṣajābāladarśanajābālīnāṃ sāmavedagatānāṃ ṣoḍaśasaṃkhyākānāmupaniṣadānāmāpyāyantviti śāntiḥ",
+        "translation": "For the sixteen Upanishads belonging to the Sama Veda — Kena, Chandogya, Aruni, Maitrayani, Maitreyi, Vajrasuchika, Yogachudamani, Vasudeva, Mahat, Sannyasa, Avyakta, Kundika, Savitri, Rudraksha, Jabaladarshana and Jabali — the peace-mantra is \"May my limbs grow strong.\"",
+        "hindi": "सामवेद से सम्बद्ध सोलह उपनिषदों — केन, छान्दोग्य, आरुणि, मैत्रायणी, मैत्रेयी, वज्रसूचिका, योगचूडामणि, वासुदेव, महत्, संन्यास, अव्यक्त, कुण्डिका, सावित्री, रुद्राक्ष(जाबाल), जाबालदर्शन और जाबालि — की शान्ति है: 'आप्यायन्तु (ममाङ्गानि...)' — मेरे अंग (वाणी, प्राण, नेत्र, कर्ण आदि) पुष्ट हों।",
+        "explanation": "सामवेद से सम्बद्ध सोलह उपनिषदों — केन, छान्दोग्य, आरुणि, मैत्रायणी, मैत्रेयी, वज्रसूचिका, योगचूडामणि, वासुदेव, महत्, संन्यास, अव्यक्त, कुण्डिका, सावित्री, रुद्राक्ष(जाबाल), जाबालदर्शन और जाबालि — की शान्ति है: 'आप्यायन्तु (ममाङ्गानि...)' — मेरे अंग (वाणी, प्राण, नेत्र, कर्ण आदि) पुष्ट हों।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 55,
+        "number": 55,
+        "sanskrit": "प्रश्नमुण्डकमाण्डुक्याथर्वशिरोऽथर्वशिखाबृहज्जाबालनृसिंहतापनीनारदपरिव्राजकसीताशरभमहानारायणरामरहस्यरामतापनीशाण्डिल्यपरमहंसपरिव्राजकान्नपूर्णासूर्यात्मपाशुपतपरब्रह्मत्रिपुरातपनदेवीभावनाब्रह्मजाबालगणपतिमहावाक्यगोपालतपनकृष्णहयग्रीवदत्तात्रेयगारुडानामथर्ववेदगतानामेकत्रिंशत्संख्याकानामुपनिषदां भद्रं कर्णेभिरिति शान्तिः",
+        "transliteration": "praśnamuṇḍakamāṇḍukyātharvaśiro'tharvaśikhābṛhajjābālanṛsiṃhatāpanīnāradaparivrājakasītāśarabhamahānārāyaṇarāmarahasyarāmatāpanīśāṇḍilyaparamahaṃsaparivrājakānnapūrṇāsūryātmapāśupataparabrahmatripurātapanadevībhāvanābrahmajābālagaṇapatimahāvākyagopālatapanakṛṣṇahayagrīvadattātreyagāruḍānāmatharvavedagatānāmekatriṃśatsaṃkhyākānāmupaniṣadāṃ bhadraṃ karṇebhiriti śāntiḥ",
+        "translation": "For the thirty-one Upanishads belonging to the Atharva Veda — Prashna, Mundaka, Mandukya, Atharvashiras, Atharvashikha, Brihajjabala, Nrisimhatapani, Naradaparivrajaka, Sita, Sharabha, Mahanarayana, Ramarahasya, Ramatapani, Shandilya, Paramahamsaparivrajaka, Annapurna, Suryatma, Pashupata, Parabrahma, Tripuratapana, Devibhavana, Brahmajabala, Ganapati, Mahavakya, Gopalatapani, Krishna, Hayagriva, Dattatreya and Garuda — the peace-mantra is \"May we hear what is auspicious with our ears.\"",
+        "hindi": "अथर्ववेद से सम्बद्ध इकतीस उपनिषदों — प्रश्न, मुण्डक, माण्डूक्य, अथर्वशिरस्, अथर्वशिखा, बृहज्जाबाल, नृसिंहतापनी, नारदपरिव्राजक, सीता, शरभ, महानारायण, रामरहस्य, रामतापनी, शाण्डिल्य, परमहंसपरिव्राजक, अन्नपूर्णा, सूर्य(ात्मा), आत्मा, पाशुपत, परब्रह्म, त्रिपुरातापनी, देवी, भावना, ब्रह्म(जाबाल), गणपति, महावाक्य, गोपालतापनी, कृष्ण, हयग्रीव, दत्तात्रेय और गारुड — की शान्ति है: 'भद्रं कर्णेभिः (शृणुयाम देवाः)' — हे देवताओं! हम कानों से कल्याणमय ही सुनें।",
+        "explanation": "अथर्ववेद से सम्बद्ध इकतीस उपनिषदों — प्रश्न, मुण्डक, माण्डूक्य, अथर्वशिरस्, अथर्वशिखा, बृहज्जाबाल, नृसिंहतापनी, नारदपरिव्राजक, सीता, शरभ, महानारायण, रामरहस्य, रामतापनी, शाण्डिल्य, परमहंसपरिव्राजक, अन्नपूर्णा, सूर्य(ात्मा), आत्मा, पाशुपत, परब्रह्म, त्रिपुरातापनी, देवी, भावना, ब्रह्म(जाबाल), गणपति, महावाक्य, गोपालतापनी, कृष्ण, हयग्रीव, दत्तात्रेय और गारुड — की शान्ति है: 'भद्रं कर्णेभिः (शृणुयाम देवाः)' — हे देवताओं! हम कानों से कल्याणमय ही सुनें।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 56,
+        "number": 56,
+        "sanskrit": "मुमुक्षवः पुरुषाः साधनचतुष्टयसम्पन्नाः श्रद्धावन्तः सुकुलभवं श्रोत्रियं शास्त्रवात्सल्यगुणवन्तमकुटिलं सर्वभूतहितेरतं दयासमुद्रं सद्गुरुं विधिवदुपसंगम्योपहारपाणयोऽष्टोत्तरशतोपनिषदं विधिवदधीत्य श्रवणमनननिदिध्यासनानि नैरन्तर्येण कृत्वा प्रारब्धक्षयाद्देहत्रयभंगं प्राप्योपाधिविनिर्मुक्तघटाकाशवत्परिपूर्णता विदेहमुक्तिः",
+        "transliteration": "mumukṣavaḥ puruṣāḥ sādhanacatuṣṭayasampannāḥ śraddhāvantaḥ sukulabhavaṃ śrotriyaṃ śāstravātsalyaguṇavantamakuṭilaṃ sarvabhūtahiterataṃ dayāsamudraṃ sadguruṃ vidhivadupasaṃgamyopahārapāṇayo'ṣṭottaraśatopaniṣadaṃ vidhivadadhītya śravaṇamanananididhyāsanāni nairantaryeṇa kṛtvā prārabdhakṣayāddehatrayabhaṃgaṃ prāpyopādhivinirmuktaghaṭākāśavatparipūrṇatā videhamuktiḥ",
+        "translation": "Seekers of liberation, endowed with the fourfold means, full of faith, having duly approached — with gifts in hand — a true teacher who is of good family, learned in the Vedas, affectionate toward the scriptures, straightforward, devoted to the good of all beings and an ocean of compassion, having studied the one hundred and eight Upanishads in due form, and having practised hearing, reflection and contemplation without interruption, on the exhaustion of prarabdha karma break through the three bodies, and, like the space in a pot freed from its limiting adjunct, attain fullness: this is bodiless liberation.",
+        "hindi": "साधन-चतुष्टय से सम्पन्न, श्रद्धावान् मुमुक्षु पुरुष, हाथ में उपहार लिए, विधि के अनुसार उस सद्गुरु के पास जाकर — जो सुकुल में उत्पन्न, श्रोत्रिय (वेद-ज्ञाता), शास्त्रों में वात्सल्य रखने वाला, गुणवान्, अकुटिल (सरल), समस्त भूतों के हित में रत और दया का समुद्र है — विधिवत् एक सौ आठ उपनिषदों का अध्ययन करके, श्रवण, मनन और निदिध्यासन निरन्तर करके, प्रारब्ध के क्षय से तीनों शरीरों (स्थूल, सूक्ष्म, कारण) के भंग को प्राप्त, उपाधि से विमुक्त घटाकाश (घट के भीतर का आकाश) की भाँति परिपूर्णता को प्राप्त होता है — यही विदेहमुक्ति है।",
+        "explanation": "साधन-चतुष्टय से सम्पन्न, श्रद्धावान् मुमुक्षु पुरुष, हाथ में उपहार लिए, विधि के अनुसार उस सद्गुरु के पास जाकर — जो सुकुल में उत्पन्न, श्रोत्रिय (वेद-ज्ञाता), शास्त्रों में वात्सल्य रखने वाला, गुणवान्, अकुटिल (सरल), समस्त भूतों के हित में रत और दया का समुद्र है — विधिवत् एक सौ आठ उपनिषदों का अध्ययन करके, श्रवण, मनन और निदिध्यासन निरन्तर करके, प्रारब्ध के क्षय से तीनों शरीरों (स्थूल, सूक्ष्म, कारण) के भंग को प्राप्त, उपाधि से विमुक्त घटाकाश (घट के भीतर का आकाश) की भाँति परिपूर्णता को प्राप्त होता है — यही विदेहमुक्ति है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 57,
+        "number": 57,
+        "sanskrit": "सैव कैवल्यमुक्तिरिति । अत एव ब्रह्मलोकस्था अपि ब्रह्ममुखाद्वेदान्तश्रवणादि कृत्वा तेन सह कैवल्यं लभन्ते । अतः सर्वेषां कैवल्यमुक्तिर्ज्ञानमात्रेणोक्ता । न कर्मसांख्ययोगोपासनादिभिरित्युपनिषत्",
+        "transliteration": "saiva kaivalyamuktiriti | ata eva brahmalokasthā api brahmamukhādvedāntaśravaṇādi kṛtvā tena saha kaivalyaṃ labhante | ataḥ sarveṣāṃ kaivalyamuktirjñānamātreṇoktā | na karmasāṃkhyayogopāsanādibhirityupaniṣat",
+        "translation": "That alone is the liberation of isolation. Therefore even those dwelling in the world of Brahma, having heard the Vedanta from the mouth of Brahma and so forth, attain isolation together with him. Thus liberation of isolation is said to come by knowledge alone — not by works, Sankhya, Yoga, worship and the like. Thus the Upanishad.",
+        "hindi": "वही कैवल्य-मुक्ति है। इसीलिए ब्रह्मलोक में स्थित पुरुष भी ब्रह्मा के मुख से वेदान्त-श्रवण आदि करके उनके साथ कैवल्य को प्राप्त करते हैं। अतः सबके लिए कैवल्य-मुक्ति केवल ज्ञान से ही कही गई है — कर्म, सांख्य, योग, उपासना आदि से नहीं। इति उपनिषत् (यही उपनिषद् का वचन है)।",
+        "explanation": "वही कैवल्य-मुक्ति है। इसीलिए ब्रह्मलोक में स्थित पुरुष भी ब्रह्मा के मुख से वेदान्त-श्रवण आदि करके उनके साथ कैवल्य को प्राप्त करते हैं। अतः सबके लिए कैवल्य-मुक्ति केवल ज्ञान से ही कही गई है — कर्म, सांख्य, योग, उपासना आदि से नहीं। इति उपनिषत् (यही उपनिषद् का वचन है)।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Jivanmukti and Videhamukti — Nature of Liberation",
+    "titleSanskrit": "जीवन्मुक्ति एवं विदेहमुक्ति का स्वरूप",
+    "summary": "Sri Rama expounds the science of Jivanmukti (liberation while living) and Videhamukti. Explains the dissolution of latent impressions (vasana-kshaya), the destruction of mental clinging (mano-nasha), and supreme peace.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "तथा हैनं श्रीरामचन्द्रं मारुतिः पप्रच्छ । केयं वा तत्सिद्धिः सिद्ध्या वा किं प्रयोजनमिति । सहोवाच श्रीरामः । पुरुषस्य कर्तृत्वभोक्तृत्वसुखदुःखादिलक्षणश्चित्तधर्मः क्लेशरूपत्वाद्बन्धो भवति । तन्निरोधनं जीवन्मुक्तिः । उपाधिविनिर्मुक्तघटाकाशवत्प्रारब्धक्षयाद्विदेहमुक्तिः । जीवन्मुक्तिविदेहमुक्त्योरष्टोत्तरशतोपनिषदः प्रमाणम् । कर्तृत्वादिदुःखनिवृत्तिद्वारा नित्यानन्दावाप्तिः प्रयोजनं भवति । तत्पुरुषप्रयत्नसाध्यं भवति । यथा पुत्रकामेष्टिना पुत्रं वाणिज्यादिना वित्तं ज्योतिष्टोमेन स्वर्गं तथा पुरुषप्रयत्नसाध्यवेदान्तश्रवणादिजनितसमाधिना जीवन्मुक्त्यादिलाभो भवति । सर्ववासनाक्षयात्तल्लाभः । अत्र श्लोका भवन्ति ॥ उच्छास्त्रं शास्त्रितं चेति पौरुषं द्विविधं मतम् । अत्रोच्छस्त्रमनर्थाय परमार्थाय शास्त्रितम्",
+        "transliteration": "tathā hainaṃ śrīrāmacandraṃ mārutiḥ papraccha | keyaṃ vā tatsiddhiḥ siddhyā vā kiṃ prayojanamiti | sahovāca śrīrāmaḥ | puruṣasya kartṛtvabhoktṛtvasukhaduḥkhādilakṣaṇaścittadharmaḥ kleśarūpatvādbandho bhavati | tannirodhanaṃ jīvanmuktiḥ | upādhivinirmuktaghaṭākāśavatprārabdhakṣayādvidehamuktiḥ | jīvanmuktividehamuktyoraṣṭottaraśatopaniṣadaḥ pramāṇam | kartṛtvādiduḥkhanivṛttidvārā nityānandāvāptiḥ prayojanaṃ bhavati | tatpuruṣaprayatnasādhyaṃ bhavati | yathā putrakāmeṣṭinā putraṃ vāṇijyādinā vittaṃ jyotiṣṭomena svargaṃ tathā puruṣaprayatnasādhyavedāntaśravaṇādijanitasamādhinā jīvanmuktyādilābho bhavati | sarvavāsanākṣayāttallābhaḥ | atra ślokā bhavanti || ucchāstraṃ śāstritaṃ ceti pauruṣaṃ dvividhaṃ matam | atrocchastramanarthāya paramārthāya śāstritam",
+        "translation": "Then Maruti again asked Sri Ramachandra: \"What is this attainment (of liberation), or what is the purpose of attainment?\" Sri Rama said: \"For a person, bondage is a quality of the mind, marked by being a doer and an enjoyer, by pleasure, pain and so on, and it has the nature of affliction. Its cessation is liberation while living. Like the space in a pot freed from its limiting adjunct, bodiless liberation comes from the exhaustion of prarabdha karma. The one hundred and eight Upanishads are the authority for liberation while living and bodiless liberation. The purpose is the attainment of eternal bliss by the removal of the sufferings of being a doer and the like. That is to be accomplished by human effort: as a son by the son-desiring sacrifice, wealth by trade and the like, heaven by the Jyotishtoma, so liberation while living and the rest are gained by the absorption produced by hearing the Vedanta and the like, which is accomplished by human effort. That is gained through the destruction of all latent tendencies. On this there are verses: 'Human effort is held to be of two kinds: contrary to scripture and in accord with scripture. The one contrary to scripture is for harm; the one in accord with scripture is for the highest good.'\"",
+        "hindi": "तब मारुति ने श्रीरामचन्द्र से पुनः पूछा — यह (मुक्ति-)सिद्धि क्या है? और सिद्धि का प्रयोजन क्या है? श्रीराम ने कहा — पुरुष का कर्तृत्व, भोक्तृत्व, सुख-दुःख आदि लक्षण वाला चित्त-धर्म क्लेश-रूप होने से बन्धन है। उसका निरोधन (नाश) ही जीवन्मुक्ति है। उपाधि से विमुक्त घटाकाश की भाँति प्रारब्ध-क्षय से विदेहमुक्ति होती है। जीवन्मुक्ति और विदेहमुक्ति — इन दोनों में एक सौ आठ उपनिषद् ही प्रमाण हैं। कर्तृत्व आदि दुःखों की निवृत्ति के द्वारा नित्यानन्द की प्राप्ति ही प्रयोजन है। और वह पुरुष-प्रयत्न से साध्य है। जैसे पुत्रकामेष्टि से पुत्र, वाणिज्य आदि से धन, ज्योतिष्टोम से स्वर्ग प्राप्त होता है, वैसे ही पुरुष-प्रयत्न से साध्य वेदान्त-श्रवण आदि से उत्पन्न समाधि द्वारा जीवन्मुक्ति आदि की प्राप्ति होती है। समस्त वासनाओं के क्षय से ही उसकी प्राप्ति होती है। इस विषय में श्लोक हैं — पौरुष (पुरुष-प्रयत्न) दो प्रकार का माना गया है: उच्छस्त्र (शास्त्र-विहीन, स्वच्छन्द) और शास्त्रित (शास्त्रानुसार)। इसमें उच्छस्त्र अनर्थ के लिए और शास्त्रित परमार्थ के लिए होता है।",
+        "explanation": "तब मारुति ने श्रीरामचन्द्र से पुनः पूछा — यह (मुक्ति-)सिद्धि क्या है? और सिद्धि का प्रयोजन क्या है? श्रीराम ने कहा — पुरुष का कर्तृत्व, भोक्तृत्व, सुख-दुःख आदि लक्षण वाला चित्त-धर्म क्लेश-रूप होने से बन्धन है। उसका निरोधन (नाश) ही जीवन्मुक्ति है। उपाधि से विमुक्त घटाकाश की भाँति प्रारब्ध-क्षय से विदेहमुक्ति होती है। जीवन्मुक्ति और विदेहमुक्ति — इन दोनों में एक सौ आठ उपनिषद् ही प्रमाण हैं। कर्तृत्व आदि दुःखों की निवृत्ति के द्वारा नित्यानन्द की प्राप्ति ही प्रयोजन है। और वह पुरुष-प्रयत्न से साध्य है। जैसे पुत्रकामेष्टि से पुत्र, वाणिज्य आदि से धन, ज्योतिष्टोम से स्वर्ग प्राप्त होता है, वैसे ही पुरुष-प्रयत्न से साध्य वेदान्त-श्रवण आदि से उत्पन्न समाधि द्वारा जीवन्मुक्ति आदि की प्राप्ति होती है। समस्त वासनाओं के क्षय से ही उसकी प्राप्ति होती है। इस विषय में श्लोक हैं — पौरुष (पुरुष-प्रयत्न) दो प्रकार का माना गया है: उच्छस्त्र (शास्त्र-विहीन, स्वच्छन्द) और शास्त्रित (शास्त्रानुसार)। इसमें उच्छस्त्र अनर्थ के लिए और शास्त्रित परमार्थ के लिए होता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "लोकवासनया जन्तोः शास्त्रवासनयापि च । देहवासनया ज्ञानं यथावन्नैव जायते",
+        "transliteration": "lokavāsanayā jantoḥ śāstravāsanayāpi ca | dehavāsanayā jñānaṃ yathāvannaiva jāyate",
+        "translation": "Through the habit-impressions of the world, of the scriptures, and of the body, knowledge does not arise in a creature as it should.",
+        "hindi": "जन्तु की लोक-वासना (सांसारिक लालसा), शास्त्र-वासना (ग्रन्थ-आसक्ति) और देह-वासना (देह-अभिमान) के कारण ज्ञान यथावत् रूप से उत्पन्न नहीं होता।",
+        "explanation": "जन्तु की लोक-वासना (सांसारिक लालसा), शास्त्र-वासना (ग्रन्थ-आसक्ति) और देह-वासना (देह-अभिमान) के कारण ज्ञान यथावत् रूप से उत्पन्न नहीं होता।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "द्विविधा वासनाव्यूहः शुभश्चैवाशुभश्च तौ । वासनौघेन शुद्धेन तत्र चेदनुनीयसे",
+        "transliteration": "dvividhā vāsanāvyūhaḥ śubhaścaivāśubhaśca tau | vāsanaughena śuddhena tatra cedanunīyase",
+        "translation": "The array of habit-impressions is of two kinds, good and bad. If you are led there by the pure flood of impressions —",
+        "hindi": "वासनाओं का समूह दो प्रकार का है — शुभ और अशुभ। यदि वहाँ (जीवन-मार्ग में) तुम शुद्ध वासनाओं के ओघ (प्रवाह) से प्रेरित किए जाते हो...",
+        "explanation": "वासनाओं का समूह दो प्रकार का है — शुभ और अशुभ। यदि वहाँ (जीवन-मार्ग में) तुम शुद्ध वासनाओं के ओघ (प्रवाह) से प्रेरित किए जाते हो...",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "तत्क्रमेणाशु तेनैव मामकं पदमाप्नुहि । अथ चेदशुभो भावस्त्वां योजयति संकटे",
+        "transliteration": "tatkrameṇāśu tenaiva māmakaṃ padamāpnuhi | atha cedaśubho bhāvastvāṃ yojayati saṃkaṭe",
+        "translation": "then by that very course quickly attain my state. But if an evil tendency involves you in distress —",
+        "hindi": "...तो उसी (शुद्ध-वासना-प्रवाह) के क्रम से शीघ्र ही मेरे पद (परम-पद) को प्राप्त करो। परंतु यदि कोई अशुभ भाव (प्रवृत्ति) तुम्हें संकट में डालती है...",
+        "explanation": "...तो उसी (शुद्ध-वासना-प्रवाह) के क्रम से शीघ्र ही मेरे पद (परम-पद) को प्राप्त करो। परंतु यदि कोई अशुभ भाव (प्रवृत्ति) तुम्हें संकट में डालती है...",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "प्राक्तनस्तदसौ यत्नाज्जेतव्यो भवता कपे । शुभाशुभाभ्यां मार्गाभ्यां वहन्ती वासनासरित्",
+        "transliteration": "prāktanastadasau yatnājjetavyo bhavatā kape | śubhāśubhābhyāṃ mārgābhyāṃ vahantī vāsanāsarit",
+        "translation": "one from earlier times — then that must be conquered by you with effort, monkey. The river of habit-impressions flows along the two courses, good and bad;",
+        "hindi": "हे कपि! वह पूर्ववर्ती (अशुभ वासना) तुम्हें अवश्य ही प्रयत्नपूर्वक जीतनी होगी। वासना-नदी शुभ और अशुभ — इन दोनों मार्गों से बहती है...",
+        "explanation": "हे कपि! वह पूर्ववर्ती (अशुभ वासना) तुम्हें अवश्य ही प्रयत्नपूर्वक जीतनी होगी। वासना-नदी शुभ और अशुभ — इन दोनों मार्गों से बहती है...",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "पौरुषेण प्रयत्नेन योजनीया शुभे पथि । अशुभेषु समाविष्टं शुभेष्वेवावतारयेत्",
+        "transliteration": "pauruṣeṇa prayatnena yojanīyā śubhe pathi | aśubheṣu samāviṣṭaṃ śubheṣvevāvatārayet",
+        "translation": "it should be directed to the good path by human effort. What has entered the bad one should bring down only to the good.",
+        "hindi": "...उसे पुरुषार्थ-रूपी प्रयत्न से शुभ-मार्ग में लगाना चाहिए। जो (चित्त) अशुभ (मार्गों) में प्रविष्ट हो गया है, उसे शुभ में ही उतार देना चाहिए।",
+        "explanation": "...उसे पुरुषार्थ-रूपी प्रयत्न से शुभ-मार्ग में लगाना चाहिए। जो (चित्त) अशुभ (मार्गों) में प्रविष्ट हो गया है, उसे शुभ में ही उतार देना चाहिए।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "अशुभाच्चालितं याति शुभं तस्मादपीतरत् । पौरुषेण प्रयत्नेन लालयेच्चित्तबालकम्",
+        "transliteration": "aśubhāccālitaṃ yāti śubhaṃ tasmādapītarat | pauruṣeṇa prayatnena lālayeccittabālakam",
+        "translation": "Moved away from the bad it goes to the good, and from that too to the other (state). By human effort one should tend the child that is the mind.",
+        "hindi": "अशुभ से हटाकर (चित्त) शुभ में जाता है और उससे भी आगे दूसरी (वासनातीत) स्थिति में जाता है। (अतः) पुरुषार्थ-रूपी प्रयत्न से चित्त-बालक का लालन (पालन-पोषण) करना चाहिए।",
+        "explanation": "अशुभ से हटाकर (चित्त) शुभ में जाता है और उससे भी आगे दूसरी (वासनातीत) स्थिति में जाता है। (अतः) पुरुषार्थ-रूपी प्रयत्न से चित्त-बालक का लालन (पालन-पोषण) करना चाहिए।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "द्रागभ्यासवशाद्याति यदा ते वासनोदयम् । तदाभ्यासस्य साफल्यं विद्धि त्वममरिमर्दन",
+        "transliteration": "drāgabhyāsavaśādyāti yadā te vāsanodayam | tadābhyāsasya sāphalyaṃ viddhi tvamamarimardana",
+        "translation": "When, through the power of practice, the rise of a good habit-impression quickly comes to you, then know, destroyer of foes, that your practice has borne fruit.",
+        "hindi": "हे अमरिमर्दन (शत्रुओं का मर्दन करने वाले)! जब तुम्हारे भीतर अभ्यास के वश से (शुभ) वासना का उदय शीघ्र (स्वाभाविक रूप से) होने लगे, तब जान लेना कि तुम्हारा अभ्यास सफल हो गया है।",
+        "explanation": "हे अमरिमर्दन (शत्रुओं का मर्दन करने वाले)! जब तुम्हारे भीतर अभ्यास के वश से (शुभ) वासना का उदय शीघ्र (स्वाभाविक रूप से) होने लगे, तब जान लेना कि तुम्हारा अभ्यास सफल हो गया है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "सन्दिग्धायामपि भृशं शुभामेव समाचर । शुभायां वासनावृद्धौ न दोषाय मरुत्सुत",
+        "transliteration": "sandigdhāyāmapi bhṛśaṃ śubhāmeva samācara | śubhāyāṃ vāsanāvṛddhau na doṣāya marutsuta",
+        "translation": "Even when in great doubt, practise only the good. There is no harm, son of the Wind, in the growth of good habit-impressions.",
+        "hindi": "संदिग्ध (अवस्था) में भी दृढ़तापूर्वक शुभ का ही आचरण करो। हे मरुत्सुत! शुभ वासना की वृद्धि में कोई दोष नहीं है।",
+        "explanation": "संदिग्ध (अवस्था) में भी दृढ़तापूर्वक शुभ का ही आचरण करो। हे मरुत्सुत! शुभ वासना की वृद्धि में कोई दोष नहीं है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 10,
+        "number": 10,
+        "sanskrit": "वासनाक्षयविज्ञानमनोनाशा महामते । समकालं चिराभ्यस्ता भवन्ति फलदा मताः",
+        "transliteration": "vāsanākṣayavijñānamanonāśā mahāmate | samakālaṃ cirābhyastā bhavanti phaladā matāḥ",
+        "translation": "The destruction of habit-impressions, knowledge, and the destruction of the mind, O wise one, are held to be fruitful when practised together for a long time.",
+        "hindi": "हे महामते! वासना-क्षय, विज्ञान (आत्म-ज्ञान) और मनोनाश (मन का लय) — ये तीनों यदि लंबे समय तक एक साथ अभ्यस्त किए जाएँ, तभी फलदायी माने गए हैं।",
+        "explanation": "हे महामते! वासना-क्षय, विज्ञान (आत्म-ज्ञान) और मनोनाश (मन का लय) — ये तीनों यदि लंबे समय तक एक साथ अभ्यस्त किए जाएँ, तभी फलदायी माने गए हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 11,
+        "number": 11,
+        "sanskrit": "त्रय एवं समं यावन्नाभ्यस्ताश्च पुनः पुनः । तावन्न पदसम्प्राप्तिर्भवत्यपि समाशतैः",
+        "transliteration": "traya evaṃ samaṃ yāvannābhyastāśca punaḥ punaḥ | tāvanna padasamprāptirbhavatyapi samāśataiḥ",
+        "translation": "As long as these three are not practised together, again and again, the state is not reached even in hundreds of years.",
+        "hindi": "जब तक ये तीनों (वासना-क्षय, विज्ञान और मनोनाश) एक समान रूप से बार-बार अभ्यस्त न किए जाएँ, तब तक वर्षों के सैकड़ों से भी (परम) पद की प्राप्ति नहीं होती।",
+        "explanation": "जब तक ये तीनों (वासना-क्षय, विज्ञान और मनोनाश) एक समान रूप से बार-बार अभ्यस्त न किए जाएँ, तब तक वर्षों के सैकड़ों से भी (परम) पद की प्राप्ति नहीं होती।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 12,
+        "number": 12,
+        "sanskrit": "एकैकशो निषेव्यन्ते यद्येते चिरमप्यलम् । तन्न सिद्धिं प्रयच्छन्ति मन्त्राः संकीर्तिता इव",
+        "transliteration": "ekaikaśo niṣevyante yadyete ciramapyalam | tanna siddhiṃ prayacchanti mantrāḥ saṃkīrtitā iva",
+        "translation": "If they are practised one by one, even for a very long time, they do not give success, like mantras that are merely recited.",
+        "hindi": "यदि इन तीनों साधनों का एक-एक करके अलग-अलग सेवन किया जाए, तो वे बहुत दीर्घकाल तक सेवे जाने पर भी पर्याप्त नहीं होते; वे सिद्धि प्रदान नहीं करते — जैसे केवल कीर्तन किए हुए मन्त्र फल नहीं देते।",
+        "explanation": "यदि इन तीनों साधनों का एक-एक करके अलग-अलग सेवन किया जाए, तो वे बहुत दीर्घकाल तक सेवे जाने पर भी पर्याप्त नहीं होते; वे सिद्धि प्रदान नहीं करते — जैसे केवल कीर्तन किए हुए मन्त्र फल नहीं देते।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 13,
+        "number": 13,
+        "sanskrit": "त्रिभिरेतैश्चिराभ्यस्तैर्हृदयग्रन्थयो दृढाः । निःशङ्कमेव त्रुठ्यन्ति बिसच्छेदाद्गुणा इव",
+        "transliteration": "tribhiretaiścirābhyastairhṛdayagranthayo dṛḍhāḥ | niḥśaṅkameva truṭhyanti bisacchedādguṇā iva",
+        "translation": "By these three practised for long, the firm knots of the heart snap without fail, like the fibres of a lotus stalk when it is cut.",
+        "hindi": "इन तीनों साधनों का दीर्घकाल तक अभ्यास करने से हृदय की दृढ़ ग्रन्थियाँ निःसन्देह टूट जाती हैं, जैसे बिस (कमल-मुँहाल) काट देने पर उसके रेशे टूट जाते हैं।",
+        "explanation": "इन तीनों साधनों का दीर्घकाल तक अभ्यास करने से हृदय की दृढ़ ग्रन्थियाँ निःसन्देह टूट जाती हैं, जैसे बिस (कमल-मुँहाल) काट देने पर उसके रेशे टूट जाते हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 14,
+        "number": 14,
+        "sanskrit": "जन्मान्तशताभ्यस्ता मिथ्या संसारवासना । सा चिराभ्यासयोगेन विना न क्षीयते क्वचित्",
+        "transliteration": "janmāntaśatābhyastā mithyā saṃsāravāsanā | sā cirābhyāsayogena vinā na kṣīyate kvacit",
+        "translation": "The false habit-impression of worldly life, practised through hundreds of births, is nowhere destroyed without long practice.",
+        "hindi": "सैकड़ों जन्मों तक अभ्यस्त की हुई संसार की मिथ्या वासना बिना दीर्घकालीन अभ्यास के कहीं भी नष्ट नहीं होती।",
+        "explanation": "सैकड़ों जन्मों तक अभ्यस्त की हुई संसार की मिथ्या वासना बिना दीर्घकालीन अभ्यास के कहीं भी नष्ट नहीं होती।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 15,
+        "number": 15,
+        "sanskrit": "तस्मात्सौम्य प्रयत्नेन पौरुषेण विवेकिना । भोगेच्छां दूरतस्त्यक्त्वा त्रयमेव समाश्रय",
+        "transliteration": "tasmātsaumya prayatnena pauruṣeṇa vivekinā | bhogecchāṃ dūratastyaktvā trayameva samāśraya",
+        "translation": "Therefore, gentle one, by effort and human energy, discerningly, having abandoned the desire for enjoyment from afar, take refuge in these three alone.",
+        "hindi": "अतः हे सौम्य! विवेकपूर्वक, पुरुषार्थ से, भोग की इच्छा को दूर से ही त्यागकर इन तीनों साधनों का ही आश्रय लो।",
+        "explanation": "अतः हे सौम्य! विवेकपूर्वक, पुरुषार्थ से, भोग की इच्छा को दूर से ही त्यागकर इन तीनों साधनों का ही आश्रय लो।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 16,
+        "number": 16,
+        "sanskrit": "तस्माद्वासनया युक्तं मनो बद्धं विदुर्बुधाः । सम्यग्वासनया त्यक्तं मुक्तमित्यभिधीयते । मनोनिर्वासनीभावमाचराशु महाकपे",
+        "transliteration": "tasmādvāsanayā yuktaṃ mano baddhaṃ vidurbudhāḥ | samyagvāsanayā tyaktaṃ muktamityabhidhīyate | manonirvāsanībhāvamācarāśu mahākape",
+        "translation": "Therefore the wise know the mind joined with habit-impressions as bound; the mind that has fully abandoned them is called free. Quickly practise the freedom of the mind from habit-impressions, great monkey.",
+        "hindi": "अतः वासना से युक्त मन को बँधा हुआ बुद्धिमान् लोग जानते हैं; जिस मन ने वासना का पूर्ण त्याग कर दिया है, वह मुक्त कहलाता है। हे महाकपे! शीघ्र ही मन की निर्वासना-अवस्था का आचरण करो।",
+        "explanation": "अतः वासना से युक्त मन को बँधा हुआ बुद्धिमान् लोग जानते हैं; जिस मन ने वासना का पूर्ण त्याग कर दिया है, वह मुक्त कहलाता है। हे महाकपे! शीघ्र ही मन की निर्वासना-अवस्था का आचरण करो।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 17,
+        "number": 17,
+        "sanskrit": "सम्यगालोचनात्सत्याद्वासना प्रविलीयते । वासनाविलये चेतः शममायाति दीपवत्",
+        "transliteration": "samyagālocanātsatyādvāsanā pravilīyate | vāsanāvilaye cetaḥ śamamāyāti dīpavat",
+        "translation": "By right reflection on the truth, habit-impression dissolves; when habit-impression dissolves, the mind becomes calm like a lamp.",
+        "hindi": "सत्य का सम्यक् आलोचन (विचार) करने से वासना विलीन हो जाती है; वासना के विलीन होने पर चित्त दीपक की भाँति शान्त हो जाता है।",
+        "explanation": "सत्य का सम्यक् आलोचन (विचार) करने से वासना विलीन हो जाती है; वासना के विलीन होने पर चित्त दीपक की भाँति शान्त हो जाता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 18,
+        "number": 18,
+        "sanskrit": "वासनां सम्परित्यज्य मयि चिन्मात्र विग्रहे । यस्तिष्ठति गतो व्यग्रः सोऽहं सच्चित्सुखात्मकः",
+        "transliteration": "vāsanāṃ samparityajya mayi cinmātra vigrahe | yastiṣṭhati gato vyagraḥ so'haṃ saccitsukhātmakaḥ",
+        "translation": "He who, having abandoned habit-impression, stands undistracted in me, whose form is pure consciousness — he is I, of the nature of being, consciousness and bliss.",
+        "hindi": "वासना का पूर्ण त्याग करके जो पुरुष मुझ चिन्मात्र-विग्रह में व्यग्रह रहित होकर स्थित रहता है, वह स्वयं मैं ही हूँ — सच्चिदानन्दस्वरूप।",
+        "explanation": "वासना का पूर्ण त्याग करके जो पुरुष मुझ चिन्मात्र-विग्रह में व्यग्रह रहित होकर स्थित रहता है, वह स्वयं मैं ही हूँ — सच्चिदानन्दस्वरूप।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 19,
+        "number": 19,
+        "sanskrit": "समाधिमथ कार्याणि मा करोतु करोतु वा । हृदयेनात्तसर्वेहो मुक्त एवोत्तमाशयः",
+        "transliteration": "samādhimatha kāryāṇi mā karotu karotu vā | hṛdayenāttasarveho mukta evottamāśayaḥ",
+        "translation": "Whether he practises absorption or does his duties, or not — one whose heart has given up all striving is indeed free, of the highest disposition.",
+        "hindi": "वह समाधि का अभ्यास करे या कर्म करे, अथवा कुछ भी न करे — जिसने हृदय से सम्पूर्ण आकांक्षाओं (इच्छाओं) का त्याग कर दिया है, वह उत्तम भाव वाला मुक्त ही है।",
+        "explanation": "वह समाधि का अभ्यास करे या कर्म करे, अथवा कुछ भी न करे — जिसने हृदय से सम्पूर्ण आकांक्षाओं (इच्छाओं) का त्याग कर दिया है, वह उत्तम भाव वाला मुक्त ही है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 20,
+        "number": 20,
+        "sanskrit": "नैष्कर्म्येण न तस्यार्थस्तस्यार्थोऽस्ति न कर्मभिः । न ससाधनजाप्याभ्यां यस्य निर्वासनं मनः",
+        "transliteration": "naiṣkarmyeṇa na tasyārthastasyārtho'sti na karmabhiḥ | na sasādhanajāpyābhyāṃ yasya nirvāsanaṃ manaḥ",
+        "translation": "For one whose mind is free of habit-impressions, there is no purpose in inaction, none in actions, none in means or recitation.",
+        "hindi": "जिसका मन निर्वासन (वासना-रहित) है, उसका न कर्म न करने से कोई प्रयोजन है, न कर्मों से कोई प्रयोजन है, और न साधन या जप से ही कोई प्रयोजन है।",
+        "explanation": "जिसका मन निर्वासन (वासना-रहित) है, उसका न कर्म न करने से कोई प्रयोजन है, न कर्मों से कोई प्रयोजन है, और न साधन या जप से ही कोई प्रयोजन है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 21,
+        "number": 21,
+        "sanskrit": "संत्यक्तवासनान्मौनादृते नास्त्युत्तमं पदम्",
+        "transliteration": "saṃtyaktavāsanānmaunādṛte nāstyuttamaṃ padam",
+        "translation": "For one who has abandoned habit-impressions, there is no higher state than silence.",
+        "hindi": "वासना का त्याग करने वाले के लिए मौन से उत्तम कोई अवस्था नहीं है।",
+        "explanation": "वासना का त्याग करने वाले के लिए मौन से उत्तम कोई अवस्था नहीं है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 22,
+        "number": 22,
+        "sanskrit": "वासनाहीनमप्येतच्चक्षुरादीन्द्रियं स्वतः । प्रवर्तते बहिः स्वाऽर्थे वासनामात्रकारणम्",
+        "transliteration": "vāsanāhīnamapyetaccakṣurādīndriyaṃ svataḥ | pravartate bahiḥ svā'rthe vāsanāmātrakāraṇam",
+        "translation": "Even without habit-impression, the eye and the other senses of themselves go outward toward their own objects; habit-impression is only the cause (in the ordinary case).",
+        "hindi": "वासना-रहित होते हुए भी यह चक्षु आदि इन्द्रिय-समूह स्वयं ही अपने-अपने विषय की ओर बाहर प्रवृत्त होता है; (साधारण जीव में) वासना ही तो (इस प्रवृत्ति के बन्धन का) मात्र कारण है।",
+        "explanation": "वासना-रहित होते हुए भी यह चक्षु आदि इन्द्रिय-समूह स्वयं ही अपने-अपने विषय की ओर बाहर प्रवृत्त होता है; (साधारण जीव में) वासना ही तो (इस प्रवृत्ति के बन्धन का) मात्र कारण है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 23,
+        "number": 23,
+        "sanskrit": "अयत्नोपनतेष्वक्षि दृग्द्रव्येषु यथा पुनः । नीरागमेव पतति तद्वत्कार्येषु धीरधीः",
+        "transliteration": "ayatnopanateṣvakṣi dṛgdravyeṣu yathā punaḥ | nīrāgameva patati tadvatkāryeṣu dhīradhīḥ",
+        "translation": "As the eye falls without attachment on visible things that come to it without effort, so does the steady-minded one act in his duties.",
+        "hindi": "जैसे बिना यत्न के सामने आए हुए दृश्य-पदार्थों पर दृष्टि (नेत्र) पुनः नीराग होकर (राग रहित) पड़ती है, वैसे ही धीर पुरुष की बुद्धि अपने कर्तव्य-कार्यों में (राग-रहित) प्रवृत्त होती है।",
+        "explanation": "जैसे बिना यत्न के सामने आए हुए दृश्य-पदार्थों पर दृष्टि (नेत्र) पुनः नीराग होकर (राग रहित) पड़ती है, वैसे ही धीर पुरुष की बुद्धि अपने कर्तव्य-कार्यों में (राग-रहित) प्रवृत्त होती है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 24,
+        "number": 24,
+        "sanskrit": "भावसंवित्प्रकटितामनुरूपा च मारुते । चित्तस्योत्पत्युपरमा वासनां मुनयो विदुः",
+        "transliteration": "bhāvasaṃvitprakaṭitāmanurūpā ca mārute | cittasyotpatyuparamā vāsanāṃ munayo viduḥ",
+        "translation": "Sages know habit-impression, Maruti, as the awareness of existence made manifest and shaped accordingly, which ceases when the mind arises.",
+        "hindi": "हे मारुते! मुनिजन वासना को ऐसी भावना-संवित् (अनुभव-बोध) जानते हैं जो प्रकट हुई और (विषय के) अनुरूप आकार धारण करती है; यह चित्त के साथ उत्पन्न होती है और (उसके उपरम पर) उपराम हो जाती है।",
+        "explanation": "हे मारुते! मुनिजन वासना को ऐसी भावना-संवित् (अनुभव-बोध) जानते हैं जो प्रकट हुई और (विषय के) अनुरूप आकार धारण करती है; यह चित्त के साथ उत्पन्न होती है और (उसके उपरम पर) उपराम हो जाती है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 25,
+        "number": 25,
+        "sanskrit": "दृढाभ्यस्तपदार्थैकभावनादतिचञ्चलम् । चित्तं संजायते जन्मजरामरणकारणम्",
+        "transliteration": "dṛḍhābhyastapadārthaikabhāvanādaticañcalam | cittaṃ saṃjāyate janmajarāmaraṇakāraṇam",
+        "translation": "From the contemplation of a single object firmly practised, the exceedingly restless mind arises — the cause of birth, old age and death.",
+        "hindi": "दृढ़ता से अभ्यस्त किए हुए किसी एक पदार्थ की निरन्तर भावना से अत्यन्त चञ्चल चित्त उत्पन्न होता है, जो जन्म, जरा और मरण का कारण है।",
+        "explanation": "दृढ़ता से अभ्यस्त किए हुए किसी एक पदार्थ की निरन्तर भावना से अत्यन्त चञ्चल चित्त उत्पन्न होता है, जो जन्म, जरा और मरण का कारण है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 26,
+        "number": 26,
+        "sanskrit": "वासनावशतः प्राणस्पन्दस्तेन च वासना । क्रियते चित्तबीजस्य तेन बीजाङ्कुरक्रमः",
+        "transliteration": "vāsanāvaśataḥ prāṇaspandastena ca vāsanā | kriyate cittabījasya tena bījāṅkurakramaḥ",
+        "translation": "By force of habit-impression comes the stirring of the breath, and by that, again, habit-impression; thus the seed of the mind is made to sprout in the order of seed and shoot.",
+        "hindi": "वासना के वश से प्राण का स्पन्दन होता है और उस (प्राणस्पन्द) से पुनः वासना उत्पन्न होती है; इस प्रकार चित्त-बीज का बीज और अंकुर का क्रम (चलता रहता है)।",
+        "explanation": "वासना के वश से प्राण का स्पन्दन होता है और उस (प्राणस्पन्द) से पुनः वासना उत्पन्न होती है; इस प्रकार चित्त-बीज का बीज और अंकुर का क्रम (चलता रहता है)।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 27,
+        "number": 27,
+        "sanskrit": "द्वे बीजे चित्तवृक्षस्य प्राणस्पन्दनवासने । एकस्मिंश्च तयोः क्षीणे क्षिप्रं द्वे अपि नश्यतः",
+        "transliteration": "dve bīje cittavṛkṣasya prāṇaspandanavāsane | ekasmiṃśca tayoḥ kṣīṇe kṣipraṃ dve api naśyataḥ",
+        "translation": "The mind-tree has two seeds: the stirring of the breath and habit-impression. When one of them is exhausted, both quickly perish.",
+        "hindi": "चित्त-वृक्ष के दो बीज हैं — प्राण का स्पन्दन और वासना। इन दोनों में से एक भी क्षीण हो जाने पर दोनों शीघ्र ही नष्ट हो जाते हैं।",
+        "explanation": "चित्त-वृक्ष के दो बीज हैं — प्राण का स्पन्दन और वासना। इन दोनों में से एक भी क्षीण हो जाने पर दोनों शीघ्र ही नष्ट हो जाते हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 28,
+        "number": 28,
+        "sanskrit": "असङ्गव्यवहारत्वाद्भवभावनवर्जनात् । शरीरनाशदर्शित्वाद्वासना न प्रवर्तते । वासनासम्परित्यागाच्चितं गच्छत्यचित्तताम्",
+        "transliteration": "asaṅgavyavahāratvādbhavabhāvanavarjanāt | śarīranāśadarśitvādvāsanā na pravartate | vāsanāsamparityāgāccitaṃ gacchatyacittatām",
+        "translation": "Through conduct free from attachment, by giving up the imagining of worldly existence, and by seeing the destruction of the body, habit-impression does not arise. By abandoning habit-impressions the mind goes to the state of no-mind.",
+        "hindi": "असङ्ग-पूर्वक व्यवहार करने से, भव (संसार) की भावना के वर्जन से और शरीर के नाश को देखने से वासना प्रवृत्त नहीं होती। वासना के सम्पूर्ण परित्याग से चित्त अचित्तता (मनःशून्य-अवस्था) को प्राप्त हो जाता है।",
+        "explanation": "असङ्ग-पूर्वक व्यवहार करने से, भव (संसार) की भावना के वर्जन से और शरीर के नाश को देखने से वासना प्रवृत्त नहीं होती। वासना के सम्पूर्ण परित्याग से चित्त अचित्तता (मनःशून्य-अवस्था) को प्राप्त हो जाता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 29,
+        "number": 29,
+        "sanskrit": "अवासनत्वात्सततं यदा न मनुते मनः । अमनस्ता तदोदेति परमोपशमप्रदा",
+        "transliteration": "avāsanatvātsatataṃ yadā na manute manaḥ | amanastā tadodeti paramopaśamapradā",
+        "translation": "When, because of the absence of habit-impressions, the mind constantly does not think, then arises the state of no-mind, which bestows supreme peace.",
+        "hindi": "जब वासना के अभाव से मन निरन्तर कुछ भी नहीं मनता (चिन्तन नहीं करता), तब अमनस्ता (मनःशून्यता) उदित होती है, जो परम शान्ति प्रदान करने वाली है।",
+        "explanation": "जब वासना के अभाव से मन निरन्तर कुछ भी नहीं मनता (चिन्तन नहीं करता), तब अमनस्ता (मनःशून्यता) उदित होती है, जो परम शान्ति प्रदान करने वाली है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 30,
+        "number": 30,
+        "sanskrit": "अव्युत्पन्नमना यावद्भवानज्ञाततत्पदः । गुरुशास्त्रप्रमाणैस्तु निर्णीतं तावदाचर",
+        "transliteration": "avyutpannamanā yāvadbhavānajñātatatpadaḥ | guruśāstrapramāṇaistu nirṇītaṃ tāvadācara",
+        "translation": "As long as your mind is unripe and you do not know that state, act as determined by the authority of the teacher and the scriptures.",
+        "hindi": "जब तक तुम्हारा मन अपक्व (कच्चा) है और तुमने उस परम पद को नहीं जाना, तब तक गुरु और शास्त्र के प्रमाण से निर्णीत (बताए) मार्ग का ही आचरण करो।",
+        "explanation": "जब तक तुम्हारा मन अपक्व (कच्चा) है और तुमने उस परम पद को नहीं जाना, तब तक गुरु और शास्त्र के प्रमाण से निर्णीत (बताए) मार्ग का ही आचरण करो।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 31,
+        "number": 31,
+        "sanskrit": "ततः पक्वकषायेण नूनं विज्ञात वस्तुना । शुभोऽप्यसौ त्वया त्याज्यो वासनौघो निराधिना",
+        "transliteration": "tataḥ pakvakaṣāyeṇa nūnaṃ vijñāta vastunā | śubho'pyasau tvayā tyājyo vāsanaugho nirādhinā",
+        "translation": "Then, with impurities ripened and the reality surely known, even that good flood of habit-impressions should be given up by you, free from anxiety.",
+        "hindi": "तत्पश्चात् कषाय-पक्व (मलिनता-शुद्ध) होने पर, वस्तु का निश्चित रूप से ज्ञान हो जाने पर, हे निर्व्याध (व्याकुलता-रहित)! तुम्हें उस शुभ वासना-समूह का भी त्याग कर देना चाहिए।",
+        "explanation": "तत्पश्चात् कषाय-पक्व (मलिनता-शुद्ध) होने पर, वस्तु का निश्चित रूप से ज्ञान हो जाने पर, हे निर्व्याध (व्याकुलता-रहित)! तुम्हें उस शुभ वासना-समूह का भी त्याग कर देना चाहिए।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 32,
+        "number": 32,
+        "sanskrit": "द्विविधचित्तनाशोऽस्ति सरूपोऽरूप एव च । जीवन्मुक्तः सरूपः स्यादरूपो देहमुक्तिगः",
+        "transliteration": "dvividhacittanāśo'sti sarūpo'rūpa eva ca | jīvanmuktaḥ sarūpaḥ syādarūpo dehamuktigaḥ",
+        "translation": "The destruction of the mind is of two kinds: with form and without form. With form belongs to one liberated while living; without form, to one who has gone to bodiless liberation.",
+        "hindi": "चित्त का नाश दो प्रकार का होता है — सरूप और अरूप। जीवन्मुक्त का (चित्तनाश) सरूप होता है और (देह-पात के बाद) देह-मुक्ति को प्राप्त हुए का अरूप होता है।",
+        "explanation": "चित्त का नाश दो प्रकार का होता है — सरूप और अरूप। जीवन्मुक्त का (चित्तनाश) सरूप होता है और (देह-पात के बाद) देह-मुक्ति को प्राप्त हुए का अरूप होता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 33,
+        "number": 33,
+        "sanskrit": "अस्य नाशमिदानीं त्वं पावने श्रुणु सादरम् ॥",
+        "transliteration": "asya nāśamidānīṃ tvaṃ pāvane śruṇu sādaram ||",
+        "translation": "Listen now respectfully, pure one, to the destruction of this.",
+        "hindi": "(३३) हे पावन (पवित्र)! अब तुम आदरपूर्वक इस (चित्त) के नाश की विधि सुनो।",
+        "explanation": "(३३) हे पावन (पवित्र)! अब तुम आदरपूर्वक इस (चित्त) के नाश की विधि सुनो।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 34,
+        "number": 34,
+        "sanskrit": "चित्तानाशाभिधानं हि यदा ते विद्यते पुनः । मैत्र्यादिभिर्गुणैर्युक्तं शान्तिमेति न संशयः । भूयोजन्मविनिर्मुक्तं जीवन्मुक्तस्य तन्मनः",
+        "transliteration": "cittānāśābhidhānaṃ hi yadā te vidyate punaḥ | maitryādibhirguṇairyuktaṃ śāntimeti na saṃśayaḥ | bhūyojanmavinirmuktaṃ jīvanmuktasya tanmanaḥ",
+        "translation": "When the state called the destruction of mind is present in you again, the mind endowed with qualities such as friendliness attains peace, without doubt; the mind of one liberated while living is freed from further birth.",
+        "hindi": "(३४) जब तुम्हारे भीतर चित्त-नाश नाम की अवस्था पुनः (स्थिर रूप से) विद्यमान हो जाती है — मैत्री आदि गुणों से युक्त मन निःसन्देह शान्ति को प्राप्त होता है; जीवन्मुक्त का वह मन पुनर्जन्म से मुक्त हो जाता है।",
+        "explanation": "(३४) जब तुम्हारे भीतर चित्त-नाश नाम की अवस्था पुनः (स्थिर रूप से) विद्यमान हो जाती है — मैत्री आदि गुणों से युक्त मन निःसन्देह शान्ति को प्राप्त होता है; जीवन्मुक्त का वह मन पुनर्जन्म से मुक्त हो जाता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 35,
+        "number": 35,
+        "sanskrit": "सरूपोऽसौ मनोनाशो जीवन्मुक्तस्य विद्यते । अरूपस्तु मनोनाशो वैदेही मुक्तिगो भवेत्",
+        "transliteration": "sarūpo'sau manonāśo jīvanmuktasya vidyate | arūpastu manonāśo vaidehī muktigo bhavet",
+        "translation": "This destruction of mind, with form, belongs to one liberated while living; the destruction of mind without form belongs to one who has gone to bodiless liberation.",
+        "hindi": "वह सरूप मनोनाश जीवन्मुक्त का होता है; और अरूप मनोनाश विदेही (देह-रहित) मुक्ति को प्राप्त हुए का होता है।",
+        "explanation": "वह सरूप मनोनाश जीवन्मुक्त का होता है; और अरूप मनोनाश विदेही (देह-रहित) मुक्ति को प्राप्त हुए का होता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 36,
+        "number": 36,
+        "sanskrit": "सहस्राङ्कुरशाखात्मफलपल्लवशालिनः",
+        "transliteration": "sahasrāṅkuraśākhātmaphalapallavaśālinaḥ",
+        "translation": "(This world-tree,) splendid with a thousand shoots, branches, fruits and leaves —",
+        "hindi": "(यह संसार-वृक्ष) सहस्त्रों अंकुरों, शाखाओं, फलों और पल्लवों (नव-पत्तियों) से शोभित है —",
+        "explanation": "(यह संसार-वृक्ष) सहस्त्रों अंकुरों, शाखाओं, फलों और पल्लवों (नव-पत्तियों) से शोभित है —",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 37,
+        "number": 37,
+        "sanskrit": "अस्य संसारवृक्षस्य मनोमूलमिदं स्थितम् । संकल्प एव तन्मन्ये संकल्पोपशमेन तत्",
+        "transliteration": "asya saṃsāravṛkṣasya manomūlamidaṃ sthitam | saṃkalpa eva tanmanye saṃkalpopaśamena tat",
+        "translation": "of this tree of worldly existence the mind is the root; that, I think, is intention itself; by the quieting of intention, that (root) —",
+        "hindi": "इस संसार-वृक्ष की मन ही मूल के रूप में स्थित है; उस (मूल) को मैं संकल्प ही मानता हूँ; संकल्प के उपशम से उस (मूल) को —",
+        "explanation": "इस संसार-वृक्ष की मन ही मूल के रूप में स्थित है; उस (मूल) को मैं संकल्प ही मानता हूँ; संकल्प के उपशम से उस (मूल) को —",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 38,
+        "number": 38,
+        "sanskrit": "शोषयाशु यथा शोषमेति संसारपादपः । उपाय एक एवास्ति मनसः स्वस्य निग्रहे",
+        "transliteration": "śoṣayāśu yathā śoṣameti saṃsārapādapaḥ | upāya eka evāsti manasaḥ svasya nigrahe",
+        "translation": "dry it up quickly, so that the tree of worldly existence withers. There is only one means: the restraint of one's own mind.",
+        "hindi": "(उस मूल को) शीघ्र ऐसे सुखाओ कि संसार-पादप (वृक्ष) शोष को प्राप्त हो। अपने मन के निग्रह के लिए एक ही उपाय है (और वही सबसे बड़ा उपाय है)।",
+        "explanation": "(उस मूल को) शीघ्र ऐसे सुखाओ कि संसार-पादप (वृक्ष) शोष को प्राप्त हो। अपने मन के निग्रह के लिए एक ही उपाय है (और वही सबसे बड़ा उपाय है)।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 39,
+        "number": 39,
+        "sanskrit": "मनसोऽभ्युदयो नाशो मनोनाशो महोदयः । ज्ञमनो नाशमभ्येति मनो ज्ञस्य हि शृङ्खला",
+        "transliteration": "manaso'bhyudayo nāśo manonāśo mahodayaḥ | jñamano nāśamabhyeti mano jñasya hi śṛṅkhalā",
+        "translation": "The rise of the mind is destruction; the destruction of the mind is the great rise. The mind of the knower goes to destruction; for the ignorant, the mind is a chain.",
+        "hindi": "मन का अभ्युदय (उठान/उत्थान) ही (आध्यात्मिक) नाश है; और मन का नाश ही महान् उदय है। ज्ञानी का मन नाश को प्राप्त होता है, क्योंकि अज्ञानी के लिए तो मन ही शृङ्खला (बन्धन-शृंखला) है।",
+        "explanation": "मन का अभ्युदय (उठान/उत्थान) ही (आध्यात्मिक) नाश है; और मन का नाश ही महान् उदय है। ज्ञानी का मन नाश को प्राप्त होता है, क्योंकि अज्ञानी के लिए तो मन ही शृङ्खला (बन्धन-शृंखला) है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 40,
+        "number": 40,
+        "sanskrit": "तावन्निशीव वेताला वल्गन्ति हृदि वासनाः । एकतत्त्वदृढाभ्यासाद्यावन्न विजितं मनः",
+        "transliteration": "tāvanniśīva vetālā valganti hṛdi vāsanāḥ | ekatattvadṛḍhābhyāsādyāvanna vijitaṃ manaḥ",
+        "translation": "Until the mind is conquered by firm practice of the one truth, habit-impressions prance in the heart like ghouls in the night.",
+        "hindi": "जब तक एक तत्त्व के दृढ़ अभ्यास से मन जीता नहीं जाता, तब तक वासनाएँ रात्रि के वेतालों (पिशाचों) की भाँति हृदय में नाचती हैं।",
+        "explanation": "जब तक एक तत्त्व के दृढ़ अभ्यास से मन जीता नहीं जाता, तब तक वासनाएँ रात्रि के वेतालों (पिशाचों) की भाँति हृदय में नाचती हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 41,
+        "number": 41,
+        "sanskrit": "प्रक्षीणचित्तदर्पस्य निगृहीतेन्द्रियद्विषः । पद्मिन्य इव हेमन्ते क्षीयन्ते भोगवासनाः",
+        "transliteration": "prakṣīṇacittadarpasya nigṛhītendriyadviṣaḥ | padminya iva hemante kṣīyante bhogavāsanāḥ",
+        "translation": "For one whose mental pride has withered and who has subdued the enemies that are the senses, the habit-impressions of enjoyment wither like lotuses in winter.",
+        "hindi": "जिसका चित्त-दर्प (मानसिक अहंकार-उन्माद) क्षीण हो गया है और जिसने इन्द्रियरूपी शत्रुओं को जीत लिया है, उसकी भोग-वासनाएँ हेमन्त (शीत-ऋतु) में पद्मिनी (कमलों) की भाँति क्षीण हो जाती हैं।",
+        "explanation": "जिसका चित्त-दर्प (मानसिक अहंकार-उन्माद) क्षीण हो गया है और जिसने इन्द्रियरूपी शत्रुओं को जीत लिया है, उसकी भोग-वासनाएँ हेमन्त (शीत-ऋतु) में पद्मिनी (कमलों) की भाँति क्षीण हो जाती हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 42,
+        "number": 42,
+        "sanskrit": "हस्तं हस्तेन सम्पीड्य दन्तैर्दन्तान्विचूर्ण्य च । अङ्गान्यङ्गैः समाक्रम्य जयेदादौ स्वकं मनः",
+        "transliteration": "hastaṃ hastena sampīḍya dantairdantānvicūrṇya ca | aṅgānyaṅgaiḥ samākramya jayedādau svakaṃ manaḥ",
+        "translation": "Pressing hand with hand, crushing teeth with teeth, overpowering limbs with limbs, one should first conquer one's own mind.",
+        "hindi": "हाथ को हाथ से दबाकर, दाँतों से दाँत पीसकर और अंगों को अंगों से दबाकर मनुष्य को चाहिए कि सर्वप्रथम अपने मन को जीते।",
+        "explanation": "हाथ को हाथ से दबाकर, दाँतों से दाँत पीसकर और अंगों को अंगों से दबाकर मनुष्य को चाहिए कि सर्वप्रथम अपने मन को जीते।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 43,
+        "number": 43,
+        "sanskrit": "उपविश्योपविश्यैकां चिन्तकेन मुहुर्मुहुः । न शक्यते मनो जेतुं विना युक्तिमनिन्दिताम्",
+        "transliteration": "upaviśyopaviśyaikāṃ cintakena muhurmuhuḥ | na śakyate mano jetuṃ vinā yuktimaninditām",
+        "translation": "By a thinker sitting again and again in one place, the mind cannot be conquered without a blameless method.",
+        "hindi": "चिन्तनशील पुरुष बार-बार एक ही स्थान पर बैठ-बैठकर (अर्थात् केवल बैठने की विधि से) अनुपायुक्त (निन्दा-रहित) युक्ति के बिना मन को नहीं जीत सकता।",
+        "explanation": "चिन्तनशील पुरुष बार-बार एक ही स्थान पर बैठ-बैठकर (अर्थात् केवल बैठने की विधि से) अनुपायुक्त (निन्दा-रहित) युक्ति के बिना मन को नहीं जीत सकता।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 44,
+        "number": 44,
+        "sanskrit": "अङ्कुशेन विना मत्तो यथा दुष्टमतङ्गजः । अध्यात्मविद्याधिगमः साधुसंगतिरेव च",
+        "transliteration": "aṅkuśena vinā matto yathā duṣṭamataṅgajaḥ | adhyātmavidyādhigamaḥ sādhusaṃgatireva ca",
+        "translation": "As a vicious, rutting elephant is uncontrolled without a goad, so is the mind without these: study of the science of the Self, company of the good,",
+        "hindi": "जैसे अंकुश (हाथी-नियंत्रक हथियार) के बिना मदमत्त दुष्ट हाथी (नियंत्रित नहीं होता), वैसे ही मन भी इन (साधनों) के बिना (नियंत्रित नहीं होता): अध्यात्म-विद्या का अधिगम और साधु-सङ्गति —",
+        "explanation": "जैसे अंकुश (हाथी-नियंत्रक हथियार) के बिना मदमत्त दुष्ट हाथी (नियंत्रित नहीं होता), वैसे ही मन भी इन (साधनों) के बिना (नियंत्रित नहीं होता): अध्यात्म-विद्या का अधिगम और साधु-सङ्गति —",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 45,
+        "number": 45,
+        "sanskrit": "वासनासम्परित्यागः प्राणस्पन्दनिरोधनम् । एतास्ता युक्तयः पुष्टाः सन्ति चित्तजये किल",
+        "transliteration": "vāsanāsamparityāgaḥ prāṇaspandanirodhanam | etāstā yuktayaḥ puṣṭāḥ santi cittajaye kila",
+        "translation": "abandonment of habit-impressions, and restraint of the stirring of the breath — these are the well-established means for conquering the mind.",
+        "hindi": "वासना का सम्पूर्ण परित्याग और प्राण-स्पन्दन का निरोधन — ये (पूर्वोक्त दोनों सहित चार) युक्तियाँ चित्त-जय के लिए निश्चय ही पुष्ट (प्रामाणिक, प्रतिष्ठित) कही गई हैं।",
+        "explanation": "वासना का सम्पूर्ण परित्याग और प्राण-स्पन्दन का निरोधन — ये (पूर्वोक्त दोनों सहित चार) युक्तियाँ चित्त-जय के लिए निश्चय ही पुष्ट (प्रामाणिक, प्रतिष्ठित) कही गई हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 46,
+        "number": 46,
+        "sanskrit": "सतीषु युक्तिष्वेतासु हठान्नियमन्ति ये । चेतसो दीपमुत्सृज्य विचिन्वन्ति तमोऽञ्जनैः",
+        "transliteration": "satīṣu yuktiṣvetāsu haṭhānniyamanti ye | cetaso dīpamutsṛjya vicinvanti tamo'ñjanaiḥ",
+        "translation": "When these means exist, those who restrain the mind by force cast away the lamp and search for darkness with collyrium.",
+        "hindi": "इन युक्तियों के उपलब्ध होते हुए भी जो लोग हठ से चित्त को नियमित करते हैं, वे दीपक को उतार फेंककर अंजन (काजल) से अंधकार को खोजते हैं।",
+        "explanation": "इन युक्तियों के उपलब्ध होते हुए भी जो लोग हठ से चित्त को नियमित करते हैं, वे दीपक को उतार फेंककर अंजन (काजल) से अंधकार को खोजते हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 47,
+        "number": 47,
+        "sanskrit": "विमूढाः कर्तुमुद्युक्ता ये हठाच्चेतसो जयम् । ते निबध्नन्ति नागेन्द्रमुन्मत्तं बिसतन्तुभिः",
+        "transliteration": "vimūḍhāḥ kartumudyuktā ye haṭhāccetaso jayam | te nibadhnanti nāgendramunmattaṃ bisatantubhiḥ",
+        "translation": "The deluded who set out to conquer the mind by force bind a mad king of elephants with lotus fibres.",
+        "hindi": "जो विमूढ़ (मोहित) लोग हठ से चित्त को जीतने के लिए उद्यत होते हैं, वे (ऐसे हैं जैसे कोई) उन्मत्त हाथियों के राजा को बिस के तन्तुओं (कमल-मुँहाल के रेशों) से बाँधता हो।",
+        "explanation": "जो विमूढ़ (मोहित) लोग हठ से चित्त को जीतने के लिए उद्यत होते हैं, वे (ऐसे हैं जैसे कोई) उन्मत्त हाथियों के राजा को बिस के तन्तुओं (कमल-मुँहाल के रेशों) से बाँधता हो।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 48,
+        "number": 48,
+        "sanskrit": "द्वे बीजे चित्तवृक्षस्य वृत्तिव्रततिधारणः । एकं प्राणपरिस्पन्दो द्वितीयं दृढभावना",
+        "transliteration": "dve bīje cittavṛkṣasya vṛttivratatidhāraṇaḥ | ekaṃ prāṇaparispando dvitīyaṃ dṛḍhabhāvanā",
+        "translation": "There are two seeds of the mind-tree, the support of the creeper of mental activity: one is the stirring of the breath; the second is firm imagination.",
+        "hindi": "चित्त-वृक्ष के दो बीज हैं, जो वृत्ति-रूपी लता (बेल) के धारण करने वाले (आधार) हैं: एक, प्राण का परिस्पन्दन (गति); दूसरा, दृढ़ भावना (विषयों की पक्की कल्पना)।",
+        "explanation": "चित्त-वृक्ष के दो बीज हैं, जो वृत्ति-रूपी लता (बेल) के धारण करने वाले (आधार) हैं: एक, प्राण का परिस्पन्दन (गति); दूसरा, दृढ़ भावना (विषयों की पक्की कल्पना)।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 49,
+        "number": 49,
+        "sanskrit": "सा हि सर्वगता संवित्प्राणास्पन्देन चाल्यते । चित्तैकाग्र्याद्यतो ज्ञानमुक्तं समुपजायते",
+        "transliteration": "sā hi sarvagatā saṃvitprāṇāspandena cālyate | cittaikāgryādyato jñānamuktaṃ samupajāyate",
+        "translation": "That all-pervading awareness is moved by the stirring of the breath; therefore, from concentration of the mind, the knowledge that has been spoken of arises.",
+        "hindi": "वह सर्वगत संवित् (चैतन्य-बोध) प्राण के स्पन्दन से ही चालित (हिलाई) होती है; अतः चित्त की एकाग्रता से वह ज्ञान उत्पन्न होता है जो (पूर्व में) कहा गया है।",
+        "explanation": "वह सर्वगत संवित् (चैतन्य-बोध) प्राण के स्पन्दन से ही चालित (हिलाई) होती है; अतः चित्त की एकाग्रता से वह ज्ञान उत्पन्न होता है जो (पूर्व में) कहा गया है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 50,
+        "number": 50,
+        "sanskrit": "तत्साधनमथो ध्यानं यथावदुपदिश्यते । विनाप्यविकृतिं कृत्स्नां संभवव्यत्ययक्रमात् । यशोऽरिष्टं च चिन्मात्रं चिदानन्दं विचिन्तय",
+        "transliteration": "tatsādhanamatho dhyānaṃ yathāvadupadiśyate | vināpyavikṛtiṃ kṛtsnāṃ saṃbhavavyatyayakramāt | yaśo'riṣṭaṃ ca cinmātraṃ cidānandaṃ vicintaya",
+        "translation": "Now meditation, the means to that, is taught in due order. Even without any modification, by the reverse order of arising, contemplate pure consciousness, bliss of consciousness.",
+        "hindi": "अब उस (ज्ञान) का साधन — ध्यान — यथावत रूप से उपदिष्ट किया जाता है। उत्पत्ति-क्रम के विपरीत क्रम से (व्युत्क्रम से), समस्त विकृति (परिवर्तन) के बिना भी, यश और अरिष्ट (अनिष्ट-रहित) — चिन्मात्र को, चिदानन्द को भावना करो (चिन्तन करो)।",
+        "explanation": "अब उस (ज्ञान) का साधन — ध्यान — यथावत रूप से उपदिष्ट किया जाता है। उत्पत्ति-क्रम के विपरीत क्रम से (व्युत्क्रम से), समस्त विकृति (परिवर्तन) के बिना भी, यश और अरिष्ट (अनिष्ट-रहित) — चिन्मात्र को, चिदानन्द को भावना करो (चिन्तन करो)।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 51,
+        "number": 51,
+        "sanskrit": "अपानेऽस्तंगते प्राणो यावन्नाभ्युदितो हृदि । तावत्सा कुंभकावस्था योगिभिर्यानुभूयते",
+        "transliteration": "apāne'staṃgate prāṇo yāvannābhyudito hṛdi | tāvatsā kuṃbhakāvasthā yogibhiryānubhūyate",
+        "translation": "When the in-breath has set within and the out-breath has not yet risen in the heart, that state is experienced by yogis as retention (kumbhaka).",
+        "hindi": "जब (श्वास) अपान में लीन हो गया हो और प्राण हृदय में अभी उदित नहीं हुआ हो — वह अवस्था योगियों द्वारा कुम्भक (श्वास-रोध) के रूप में अनुभव की जाती है।",
+        "explanation": "जब (श्वास) अपान में लीन हो गया हो और प्राण हृदय में अभी उदित नहीं हुआ हो — वह अवस्था योगियों द्वारा कुम्भक (श्वास-रोध) के रूप में अनुभव की जाती है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 52,
+        "number": 52,
+        "sanskrit": "बहिरस्तंगते प्राणे यावन्नापान उद्गतः । तावत्पूर्णां समावस्थां बहिष्ठं कुम्भकं विदुः",
+        "transliteration": "bahirastaṃgate prāṇe yāvannāpāna udgataḥ | tāvatpūrṇāṃ samāvasthāṃ bahiṣṭhaṃ kumbhakaṃ viduḥ",
+        "translation": "When the breath has set outside and the in-breath has not yet risen, that state of fullness is known as external retention.",
+        "hindi": "जब प्राण बाहर (श्वास छूटकर) लीन हो गया हो और अपान (भीतर की श्वास) अभी उत्पन्न नहीं हुआ हो — उस पूर्ण अवस्था को बाह्य कुम्भक कहते हैं।",
+        "explanation": "जब प्राण बाहर (श्वास छूटकर) लीन हो गया हो और अपान (भीतर की श्वास) अभी उत्पन्न नहीं हुआ हो — उस पूर्ण अवस्था को बाह्य कुम्भक कहते हैं।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 53,
+        "number": 53,
+        "sanskrit": "ब्रह्माकारमनोवृत्तिप्रवाहोऽहंकृतं विना । सम्प्रज्ञातसमाधिः स्याद्ध्यानाभ्यासप्रकर्षतः",
+        "transliteration": "brahmākāramanovṛttipravāho'haṃkṛtaṃ vinā | samprajñātasamādhiḥ syāddhyānābhyāsaprakarṣataḥ",
+        "translation": "The flow of the mind's activity in the form of Brahman, without the sense of \"I,\" is cognitive absorption (samprajnata samadhi), through the excellence of the practice of meditation.",
+        "hindi": "अहंकार (मैं-बुद्धि) के बिना ब्रह्म-आकार में बहती हुई मन-वृत्ति का प्रवाह — ध्यान के अभ्यास की निपुणता से — संप्रज्ञात समाधि होता है।",
+        "explanation": "अहंकार (मैं-बुद्धि) के बिना ब्रह्म-आकार में बहती हुई मन-वृत्ति का प्रवाह — ध्यान के अभ्यास की निपुणता से — संप्रज्ञात समाधि होता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 54,
+        "number": 54,
+        "sanskrit": "प्रशान्तवृत्तिकं चित्तं परमानन्ददायकम् । असम्प्रज्ञातनामायं समाधिर्योगिनां प्रियः",
+        "transliteration": "praśāntavṛttikaṃ cittaṃ paramānandadāyakam | asamprajñātanāmāyaṃ samādhiryogināṃ priyaḥ",
+        "translation": "The mind whose activities have become quiet, giving supreme bliss — this absorption, called non-cognitive (asamprajnata), is dear to yogis.",
+        "hindi": "जिसकी वृत्तियाँ पूर्णतः शान्त हो गई हों, परम आनन्द देने वाला ऐसा चित्त — यह ‘असंप्रज्ञात’ नामक समाधि है, जो योगियों को प्रिय है।",
+        "explanation": "जिसकी वृत्तियाँ पूर्णतः शान्त हो गई हों, परम आनन्द देने वाला ऐसा चित्त — यह ‘असंप्रज्ञात’ नामक समाधि है, जो योगियों को प्रिय है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 55,
+        "number": 55,
+        "sanskrit": "प्रभाशून्यं मनःशून्यं बुद्धिशून्यं चिदात्मकम् । अतद्व्यावृत्तिरूपोऽसौ समाधिर्मुनिभावितः",
+        "transliteration": "prabhāśūnyaṃ manaḥśūnyaṃ buddhiśūnyaṃ cidātmakam | atadvyāvṛttirūpo'sau samādhirmunibhāvitaḥ",
+        "translation": "Empty of light, empty of mind, empty of intellect, of the nature of consciousness — this absorption, whose nature is the exclusion of all that is not That, is contemplated by sages.",
+        "hindi": "प्रभा (आभा/प्रकाश-बोध) से शून्य, मन से शून्य, बुद्धि से शून्य, चिदात्मक (चैतन्य-स्वरूप); ‘वह नहीं’ (तद्-इतर) के पूर्ण निवृत्ति-रूप — वह समाधि मुनिओं द्वारा भावित (चिंतित) है।",
+        "explanation": "प्रभा (आभा/प्रकाश-बोध) से शून्य, मन से शून्य, बुद्धि से शून्य, चिदात्मक (चैतन्य-स्वरूप); ‘वह नहीं’ (तद्-इतर) के पूर्ण निवृत्ति-रूप — वह समाधि मुनिओं द्वारा भावित (चिंतित) है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 56,
+        "number": 56,
+        "sanskrit": "ऊर्ध्वपूर्णमधःपूर्णं मध्यपूर्णं शिवात्मकम् । साक्षाद्विधिमुखो ह्येष समाधिः पारमार्थिकः",
+        "transliteration": "ūrdhvapūrṇamadhaḥpūrṇaṃ madhyapūrṇaṃ śivātmakam | sākṣādvidhimukho hyeṣa samādhiḥ pāramārthikaḥ",
+        "translation": "Full above, full below, full in the middle, of the nature of Shiva — this absorption is the absorption of ultimate truth, directly the face of the injunction.",
+        "hindi": "ऊपर से पूर्ण, नीचे से पूर्ण, मध्य में पूर्ण, शिव-स्वरूप (कल्याणमय) — यह समाधि पारमार्थिक (परम-सत्य-सम्बन्धी) समाधि है, जो साक्षात् विधि (उपदेश) का मुख (प्रत्यक्ष स्वरूप) है।",
+        "explanation": "ऊपर से पूर्ण, नीचे से पूर्ण, मध्य में पूर्ण, शिव-स्वरूप (कल्याणमय) — यह समाधि पारमार्थिक (परम-सत्य-सम्बन्धी) समाधि है, जो साक्षात् विधि (उपदेश) का मुख (प्रत्यक्ष स्वरूप) है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 57,
+        "number": 57,
+        "sanskrit": "दृढभावनया त्यक्तपूर्वापरविचारणम् । यदादानं पदार्थस्य वासना सा प्रकीर्तिता",
+        "transliteration": "dṛḍhabhāvanayā tyaktapūrvāparavicāraṇam | yadādānaṃ padārthasya vāsanā sā prakīrtitā",
+        "translation": "The acceptance of an object through firm imagination, having abandoned reflection on before and after, is called habit-impression.",
+        "hindi": "दृढ़ भावना द्वारा, पहले-बाद (पूर्वापर) के विचार (तर्क-वितर्क, विचार-प्रक्रिया) को छोड़कर, पदार्थ का जो आदान (ग्रहण, अंगीकार) किया जाता है — वही वासना कही गई है।",
+        "explanation": "दृढ़ भावना द्वारा, पहले-बाद (पूर्वापर) के विचार (तर्क-वितर्क, विचार-प्रक्रिया) को छोड़कर, पदार्थ का जो आदान (ग्रहण, अंगीकार) किया जाता है — वही वासना कही गई है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 58,
+        "number": 58,
+        "sanskrit": "भावितं तीव्रसंवेगादात्मना यत्तदेव सः । भवत्याशु कपिश्रेष्ठ विगतेतरवासनः",
+        "transliteration": "bhāvitaṃ tīvrasaṃvegādātmanā yattadeva saḥ | bhavatyāśu kapiśreṣṭha vigatetaravāsanaḥ",
+        "translation": "By what one has contemplated with intense fervour, one quickly becomes that very thing, best of monkeys, when free of every other habit-impression.",
+        "hindi": "हे कपिश्रेष्ठ! जो व्यक्ति तीव्र संवेग (उत्कट वेग) के साथ जिस वस्तु का भावन करता है, वह अन्य वासनाओं के नष्ट हो जाने पर शीघ्र ही वही (वस्तु) बन जाता है।",
+        "explanation": "हे कपिश्रेष्ठ! जो व्यक्ति तीव्र संवेग (उत्कट वेग) के साथ जिस वस्तु का भावन करता है, वह अन्य वासनाओं के नष्ट हो जाने पर शीघ्र ही वही (वस्तु) बन जाता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 59,
+        "number": 59,
+        "sanskrit": "तादृग्रूपो हि पुरुषो वासनाविवशीकृतः । सम्पश्यति यदैवैतत्सद्वस्त्विति विमुह्यति",
+        "transliteration": "tādṛgrūpo hi puruṣo vāsanāvivaśīkṛtaḥ | sampaśyati yadaivaitatsadvastviti vimuhyati",
+        "translation": "A person of that kind, overpowered by habit-impression, is deluded when he sees this as \"true reality.\"",
+        "hindi": "ऐसे ही स्वरूप वाला (वासना-ग्रस्त) पुरुष, वासना से ही वशीकृत होकर, जब किसी वस्तु को देखता है तब उसे ‘यही सत्य वस्तु है’ समझकर मोहित हो जाता है।",
+        "explanation": "ऐसे ही स्वरूप वाला (वासना-ग्रस्त) पुरुष, वासना से ही वशीकृत होकर, जब किसी वस्तु को देखता है तब उसे ‘यही सत्य वस्तु है’ समझकर मोहित हो जाता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 60,
+        "number": 60,
+        "sanskrit": "वासनावेगवैचित्र्यात्स्वरूपं न जहाति तत् । भ्रान्तं पश्यति दुर्दृष्टिः सर्वं मदवशादिव",
+        "transliteration": "vāsanāvegavaicitryātsvarūpaṃ na jahāti tat | bhrāntaṃ paśyati durdṛṣṭiḥ sarvaṃ madavaśādiva",
+        "translation": "Because of the variety of the force of habit-impressions, one does not abandon one's own nature; the one of bad vision sees everything as confused, as if under the influence of intoxication.",
+        "hindi": "वासना-वेग की विविधता के कारण मनुष्य अपने स्वरूप (प्रकृति-गत स्वभाव) को नहीं छोड़ता; दुर्दृष्टि (विकृत दृष्टि वाला) मनुष्य मद्य के वश हुए की भाँति सब कुछ भ्रमित (उलटा-सीधा) देखता है।",
+        "explanation": "वासना-वेग की विविधता के कारण मनुष्य अपने स्वरूप (प्रकृति-गत स्वभाव) को नहीं छोड़ता; दुर्दृष्टि (विकृत दृष्टि वाला) मनुष्य मद्य के वश हुए की भाँति सब कुछ भ्रमित (उलटा-सीधा) देखता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 61,
+        "number": 61,
+        "sanskrit": "वासना द्विविधा प्रोक्ता शुद्धा च मलिना तथा । मलिना जन्महेतुः स्याच्छुद्धा जन्मविनाशिनी",
+        "transliteration": "vāsanā dvividhā proktā śuddhā ca malinā tathā | malinā janmahetuḥ syācchuddhā janmavināśinī",
+        "translation": "Habit-impression is said to be of two kinds: pure and impure. The impure is the cause of birth; the pure destroys birth.",
+        "hindi": "वासना दो प्रकार की कही गई है — शुद्ध और मलिन (अशुद्ध)। मलिन वासना जन्म का कारण होती है; शुद्ध वासना जन्म का नाश करने वाली होती है।",
+        "explanation": "वासना दो प्रकार की कही गई है — शुद्ध और मलिन (अशुद्ध)। मलिन वासना जन्म का कारण होती है; शुद्ध वासना जन्म का नाश करने वाली होती है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 62,
+        "number": 62,
+        "sanskrit": "अज्ञानसुघनाकारा घनाहंकारशालिनी । पुनर्जन्मकरी प्रोक्ता मलिना वासना बुधैः । पुनर्जन्माङ्कुरं त्यक्त्वा स्थितिः संभृष्टबीजवत्",
+        "transliteration": "ajñānasughanākārā ghanāhaṃkāraśālinī | punarjanmakarī proktā malinā vāsanā budhaiḥ | punarjanmāṅkuraṃ tyaktvā sthitiḥ saṃbhṛṣṭabījavat",
+        "translation": "The impure habit-impression, dense with ignorance and full of dense egoism, is said by the wise to cause rebirth. Having abandoned the sprout of rebirth, one stays like a roasted seed.",
+        "hindi": "अज्ञान की घनीभूत आकृति वाली, घने अहंकार से युक्त वासना — जो पुनर्जन्म करने वाली है — उसे बुद्धिमानों ने मलिन वासना कहा है। पुनर्जन्म के अंकुर को त्यागकर (ज्ञानी) भुने हुए बीज के समान स्थित रहता है।",
+        "explanation": "अज्ञान की घनीभूत आकृति वाली, घने अहंकार से युक्त वासना — जो पुनर्जन्म करने वाली है — उसे बुद्धिमानों ने मलिन वासना कहा है। पुनर्जन्म के अंकुर को त्यागकर (ज्ञानी) भुने हुए बीज के समान स्थित रहता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 63,
+        "number": 63,
+        "sanskrit": "बहुशास्त्रकथाकन्थारोमन्थेन वृथैव किम् । अन्वेष्टव्यं प्रयत्नेन मारुते ज्योतिरान्तरम्",
+        "transliteration": "bahuśāstrakathākanthāromanthena vṛthaiva kim | anveṣṭavyaṃ prayatnena mārute jyotirāntaram",
+        "translation": "What is the use of chewing over the patchwork of many scripture-stories in vain? The inner light should be sought with effort, Maruti.",
+        "hindi": "हे मारुते! अनेक शास्त्र-कथाओं की खिचड़ी को व्यर्थ ही बार-बार चबाने (रोमन्थन करने) से क्या लाभ? आत्मा के आन्तरिक ज्योति को ही प्रयत्नपूर्वक खोजना चाहिए।",
+        "explanation": "हे मारुते! अनेक शास्त्र-कथाओं की खिचड़ी को व्यर्थ ही बार-बार चबाने (रोमन्थन करने) से क्या लाभ? आत्मा के आन्तरिक ज्योति को ही प्रयत्नपूर्वक खोजना चाहिए।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 64,
+        "number": 64,
+        "sanskrit": "दर्शनादर्शने हित्वा स्वयं केवलरूपतः । य आस्ते कपिशार्दूल ब्रह्म स ब्रह्मवित्स्वयम्",
+        "transliteration": "darśanādarśane hitvā svayaṃ kevalarūpataḥ | ya āste kapiśārdūla brahma sa brahmavitsvayam",
+        "translation": "Having abandoned seeing and not-seeing, he who abides by himself in his pure nature, tiger among monkeys, is Brahman; he himself is a knower of Brahman.",
+        "hindi": "दर्शन और अदर्शन (देखने और न देखने की भावना) दोनों को छोड़कर, स्वयं केवल-रूप (शुद्ध, अद्वितीय स्वरूप) में जो पुरुष स्थित रहता है, हे कपिशार्दूल! वही ब्रह्म है, वही स्वयं ब्रह्म का ज्ञाता है।",
+        "explanation": "दर्शन और अदर्शन (देखने और न देखने की भावना) दोनों को छोड़कर, स्वयं केवल-रूप (शुद्ध, अद्वितीय स्वरूप) में जो पुरुष स्थित रहता है, हे कपिशार्दूल! वही ब्रह्म है, वही स्वयं ब्रह्म का ज्ञाता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 65,
+        "number": 65,
+        "sanskrit": "अधीत्य चतुरो वेदान्सर्वशास्त्राण्यनेकशः । ब्रह्मतत्त्वं न जानाति दर्वी पाकरसं यथा",
+        "transliteration": "adhītya caturo vedānsarvaśāstrāṇyanekaśaḥ | brahmatattvaṃ na jānāti darvī pākarasaṃ yathā",
+        "translation": "Having studied the four Vedas and all the scriptures many times, one does not know the truth of Brahman, as the ladle does not know the taste of the food.",
+        "hindi": "चारों वेदों का और समस्त शास्त्रों का अनेक बार अध्ययन करने पर भी मनुष्य ब्रह्म-तत्त्व को नहीं जानता — जैसे दर्वी (करछुल) पक्वान्न के रस को नहीं जानती।",
+        "explanation": "चारों वेदों का और समस्त शास्त्रों का अनेक बार अध्ययन करने पर भी मनुष्य ब्रह्म-तत्त्व को नहीं जानता — जैसे दर्वी (करछुल) पक्वान्न के रस को नहीं जानती।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 66,
+        "number": 66,
+        "sanskrit": "स्वदेहाशुचिगन्धेन न विरज्येत यः पुमान् । विरागकारणं तस्य किमन्यदुपदिश्यते",
+        "transliteration": "svadehāśucigandhena na virajyeta yaḥ pumān | virāgakāraṇaṃ tasya kimanyadupadiśyate",
+        "translation": "If a man is not made dispassionate by the foul smell of his own body, what other cause of dispassion could be taught to him?",
+        "hindi": "जो पुरुष अपने ही शरीर की अशुचि-गंध से भी विरक्त नहीं होता, उसके लिए वैराग्य का और कौन-सा कारण उपदेश किया जाए? (अर्थात् उसे कौन सिखा सकता है?)",
+        "explanation": "जो पुरुष अपने ही शरीर की अशुचि-गंध से भी विरक्त नहीं होता, उसके लिए वैराग्य का और कौन-सा कारण उपदेश किया जाए? (अर्थात् उसे कौन सिखा सकता है?)",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 67,
+        "number": 67,
+        "sanskrit": "अत्यन्तमलिनो देहो देही चात्यन्तनिर्मलः । उभयोरन्तरं ज्ञात्वा कस्य शौचं विधीयते",
+        "transliteration": "atyantamalino deho dehī cātyantanirmalaḥ | ubhayorantaraṃ jñātvā kasya śaucaṃ vidhīyate",
+        "translation": "The body is utterly impure, the embodied one utterly pure; knowing the difference between the two, whose purification is prescribed?",
+        "hindi": "शरीर अत्यन्त मलिन (अशुद्ध) है और देही (शरीर में वास करने वाला आत्मा) अत्यन्त निर्मल (पवित्र) है। इन दोनों के अन्तर (भेद) को जानकर (बताइए) किसका शौच (शुद्धि-कर्म) विधान किया जाता है?",
+        "explanation": "शरीर अत्यन्त मलिन (अशुद्ध) है और देही (शरीर में वास करने वाला आत्मा) अत्यन्त निर्मल (पवित्र) है। इन दोनों के अन्तर (भेद) को जानकर (बताइए) किसका शौच (शुद्धि-कर्म) विधान किया जाता है?",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 68,
+        "number": 68,
+        "sanskrit": "बद्धो हि वासनाबद्धो मोक्षः स्याद्वासनाक्षयः । वासनां सम्परित्यज्य मोक्षार्थित्वमपि त्यज",
+        "transliteration": "baddho hi vāsanābaddho mokṣaḥ syādvāsanākṣayaḥ | vāsanāṃ samparityajya mokṣārthitvamapi tyaja",
+        "translation": "The bound one is bound by habit-impression; liberation is the destruction of habit-impression. Having abandoned habit-impression, abandon also the desire for liberation.",
+        "hindi": "बद्ध जीव वासना से ही बँधा है; वासना का क्षय ही मोक्ष है। (अतः) वासना का सम्पूर्ण परित्याग करके मोक्ष की इच्छा (मोक्षार्थित्व) को भी त्याग दो।",
+        "explanation": "बद्ध जीव वासना से ही बँधा है; वासना का क्षय ही मोक्ष है। (अतः) वासना का सम्पूर्ण परित्याग करके मोक्ष की इच्छा (मोक्षार्थित्व) को भी त्याग दो।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 69,
+        "number": 69,
+        "sanskrit": "मानसीर्वासनाः पूर्वं त्यक्त्वा विषयवासनाः । मैत्र्यादिवासनानाम्नीर्गृहाणामलवासनाः",
+        "transliteration": "mānasīrvāsanāḥ pūrvaṃ tyaktvā viṣayavāsanāḥ | maitryādivāsanānāmnīrgṛhāṇāmalavāsanāḥ",
+        "translation": "Having first given up the habit-impressions of the mind that concern the objects of sense, take up the pure ones called friendliness and the like.",
+        "hindi": "पहले विषय-वासनाओं रूप मानसी वासनाओं को त्यागकर, फिर मैत्री आदि (करुणा, मुदिता, उपेक्षा) नाम वाली अमल (शुद्ध) वासनाओं को ग्रहण करो।",
+        "explanation": "पहले विषय-वासनाओं रूप मानसी वासनाओं को त्यागकर, फिर मैत्री आदि (करुणा, मुदिता, उपेक्षा) नाम वाली अमल (शुद्ध) वासनाओं को ग्रहण करो।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 70,
+        "number": 70,
+        "sanskrit": "ता अप्यतः परित्यज्य ताभिर्व्यवहरन्नपि । अन्तःशान्तः समस्नेहो भव चिन्मात्रवासनः",
+        "transliteration": "tā apyataḥ parityajya tābhirvyavaharannapi | antaḥśāntaḥ samasneho bhava cinmātravāsanaḥ",
+        "translation": "Having abandoned even these, though dealing with them, be inwardly at peace, equal in affection, with the impression of pure consciousness alone.",
+        "hindi": "उन (शुद्ध वासनाओं) का भी तत्पश्चात् परित्याग करो, यद्यपि उनके (अनुसार) व्यवहार करते हुए भी; भीतर से शान्त, सब में समान स्नेह वाले होकर केवल चिन्मात्र (शुद्ध चैतन्य) की वासना वाले बनो।",
+        "explanation": "उन (शुद्ध वासनाओं) का भी तत्पश्चात् परित्याग करो, यद्यपि उनके (अनुसार) व्यवहार करते हुए भी; भीतर से शान्त, सब में समान स्नेह वाले होकर केवल चिन्मात्र (शुद्ध चैतन्य) की वासना वाले बनो।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 71,
+        "number": 71,
+        "sanskrit": "तामप्यथ परित्यज्य मनोबुद्धिसमन्विताम् । शेषस्थिरसमाधानो मयि त्वं भव मारुते",
+        "transliteration": "tāmapyatha parityajya manobuddhisamanvitām | śeṣasthirasamādhāno mayi tvaṃ bhava mārute",
+        "translation": "Then, having abandoned even that, which belongs to the mind and intellect, with the remainder steady and composed, be yourself in me, Maruti.",
+        "hindi": "फिर हे मारुते! उस (चिन्मात्र-वासना) को भी, जो मन और बुद्धि के साथ युक्त है, परित्याग करो; और जो शेष बचे, उसमें स्थिर, समाहित होकर मुझमें (मेरे स्वरूप में) स्थित हो जाओ।",
+        "explanation": "फिर हे मारुते! उस (चिन्मात्र-वासना) को भी, जो मन और बुद्धि के साथ युक्त है, परित्याग करो; और जो शेष बचे, उसमें स्थिर, समाहित होकर मुझमें (मेरे स्वरूप में) स्थित हो जाओ।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 72,
+        "number": 72,
+        "sanskrit": "अशब्दमस्पर्शमरूपमव्ययं तथाऽरसं नित्यमगन्धवच्च यत् । अनामगोत्रं मम रूपमीदृशं भजस्व नित्यं पवनात्मजार्तिहन्",
+        "transliteration": "aśabdamasparśamarūpamavyayaṃ tathā'rasaṃ nityamagandhavacca yat | anāmagotraṃ mama rūpamīdṛśaṃ bhajasva nityaṃ pavanātmajārtihan",
+        "translation": "Without sound, without touch, without form, imperishable, also without taste, eternal, and without smell, without name and lineage — such is my form; worship it always, son of the Wind, destroyer of sorrow.",
+        "hindi": "जो शब्द-रहित, स्पर्श-रहित, रूप-रहित, अव्यय (क्षय-रहित), रस-रहित, नित्य, गंध-रहित, नाम और गोत्र से रहित है — ऐसा मेरा स्वरूप है; हे पवनपुत्र! हे आर्तिहन् (दुःख-नाशक)! उसकी निरन्तर भक्ति (भजन) करो।",
+        "explanation": "जो शब्द-रहित, स्पर्श-रहित, रूप-रहित, अव्यय (क्षय-रहित), रस-रहित, नित्य, गंध-रहित, नाम और गोत्र से रहित है — ऐसा मेरा स्वरूप है; हे पवनपुत्र! हे आर्तिहन् (दुःख-नाशक)! उसकी निरन्तर भक्ति (भजन) करो।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 73,
+        "number": 73,
+        "sanskrit": "दृशिस्वरूपं गगनोपमं परं सकृद्विभातं त्वजमेकमक्षरम् । अलेपकं सर्वगतं यदद्वयं तदेव चाहं सकलं विमुक्तॐ",
+        "transliteration": "dṛśisvarūpaṃ gaganopamaṃ paraṃ sakṛdvibhātaṃ tvajamekamakṣaram | alepakaṃ sarvagataṃ yadadvayaṃ tadeva cāhaṃ sakalaṃ vimuktaoṃ",
+        "translation": "Of the nature of the seer, like space, supreme, shining once, unborn, one, imperishable, unsullied, all-pervading, without a second — that I am, entirely free.",
+        "hindi": "जो द्रष्टा-स्वरूप (दृशिस्वरूप), गगन के समान, पर (परम), एकसाथ पूर्णतः प्रकाशित (सकृद्विभात), अज (अजन्मा), एक, अक्षर (अविनाशी), अलेपक (लिप्त न होने वाला), सर्वगत (सर्वव्यापी) और अद्वय (दूसरा न होने वाला) है — वही मैं हूँ, सम्पूर्ण रूप से मुक्त।",
+        "explanation": "जो द्रष्टा-स्वरूप (दृशिस्वरूप), गगन के समान, पर (परम), एकसाथ पूर्णतः प्रकाशित (सकृद्विभात), अज (अजन्मा), एक, अक्षर (अविनाशी), अलेपक (लिप्त न होने वाला), सर्वगत (सर्वव्यापी) और अद्वय (दूसरा न होने वाला) है — वही मैं हूँ, सम्पूर्ण रूप से मुक्त।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 74,
+        "number": 74,
+        "sanskrit": "दृशिस्तु शुद्धोऽहमविक्रियात्मको न मेऽस्ति कश्चिद्विषयः स्वभावतः । पुरस्तिरश्चोर्ध्वमधश्च सर्वतः सुपूर्णभूमाहमितीह भावय",
+        "transliteration": "dṛśistu śuddho'hamavikriyātmako na me'sti kaścidviṣayaḥ svabhāvataḥ | purastiraścordhvamadhaśca sarvataḥ supūrṇabhūmāhamitīha bhāvaya",
+        "translation": "I am the pure seer, of unchanging nature; by nature I have no object whatever. In front, across, above, below, everywhere — contemplate here: \"I am the fully complete fullness.\"",
+        "hindi": "मैं शुद्ध द्रष्टा हूँ, अविक्रिया-स्वरूप (परिवर्तन-रहित) हूँ; स्वभावतः मेरा कोई विषय नहीं है। आगे, तीर (पार्श्व), ऊपर, नीचे — सर्वत्र — यहाँ इस प्रकार भावना करो: ‘मैं सुपूर्ण (पूर्णतः परिपूर्ण) भूमा (विस्तार/पूर्णता) हूँ।’",
+        "explanation": "मैं शुद्ध द्रष्टा हूँ, अविक्रिया-स्वरूप (परिवर्तन-रहित) हूँ; स्वभावतः मेरा कोई विषय नहीं है। आगे, तीर (पार्श्व), ऊपर, नीचे — सर्वत्र — यहाँ इस प्रकार भावना करो: ‘मैं सुपूर्ण (पूर्णतः परिपूर्ण) भूमा (विस्तार/पूर्णता) हूँ।’",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 75,
+        "number": 75,
+        "sanskrit": "अजोऽमरश्चैव तथाजरोऽमृतः स्वयंप्रभः सर्वगतोऽहमव्ययः । न कारणं कार्यमतीत्य निर्मलः सदैव तृप्तोऽहमितीह भावय",
+        "transliteration": "ajo'maraścaiva tathājaro'mṛtaḥ svayaṃprabhaḥ sarvagato'hamavyayaḥ | na kāraṇaṃ kāryamatītya nirmalaḥ sadaiva tṛpto'hamitīha bhāvaya",
+        "translation": "Unborn, deathless, ageless, immortal, self-luminous, all-pervading, imperishable — I am; beyond cause and effect, stainless, ever satisfied — contemplate here: \"I am that.\"",
+        "hindi": "अजन्मा, अमर, अजर (बुढ़ापा-रहित), अमृत (मृत्यु-रहित), स्वयंप्रभ (अपने तेज से प्रकाशित), सर्वगत, अव्यय (अक्षय) — ऐसा मैं हूँ; कारण और कार्य के परे, निर्मल, सदा तृप्त — ऐसा मैं हूँ; यहाँ इस प्रकार भावना करो: ‘मैं वही हूँ।’",
+        "explanation": "अजन्मा, अमर, अजर (बुढ़ापा-रहित), अमृत (मृत्यु-रहित), स्वयंप्रभ (अपने तेज से प्रकाशित), सर्वगत, अव्यय (अक्षय) — ऐसा मैं हूँ; कारण और कार्य के परे, निर्मल, सदा तृप्त — ऐसा मैं हूँ; यहाँ इस प्रकार भावना करो: ‘मैं वही हूँ।’",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 76,
+        "number": 76,
+        "sanskrit": "जीवन्मुक्तपदं त्यक्त्वा स्वदेहे कालसात्कृते । विशत्यदेहमुक्तत्वं पवनोऽस्पन्दतामिव",
+        "transliteration": "jīvanmuktapadaṃ tyaktvā svadehe kālasātkṛte | viśatyadehamuktatvaṃ pavano'spandatāmiva",
+        "translation": "Having abandoned the state of liberation while living, when the body has been given to time, one enters bodiless liberation, as the wind enters stillness.",
+        "hindi": "जीवन्मुक्ति की अवस्था को (अर्थात् जीवन्मुक्त अवस्था में रहते हुए देह को) त्यागकर, जब स्वयं का शरीर काल के अधीन (समाप्त) हो जाता है, तब (वह ज्ञानी) विदेह-मुक्ति (देह-रहित मुक्ति) में प्रवेश करता है — जैसे पवन अचलता (गति-रहित अवस्था) को प्राप्त हो जाता है।",
+        "explanation": "जीवन्मुक्ति की अवस्था को (अर्थात् जीवन्मुक्त अवस्था में रहते हुए देह को) त्यागकर, जब स्वयं का शरीर काल के अधीन (समाप्त) हो जाता है, तब (वह ज्ञानी) विदेह-मुक्ति (देह-रहित मुक्ति) में प्रवेश करता है — जैसे पवन अचलता (गति-रहित अवस्था) को प्राप्त हो जाता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 77,
+        "number": 77,
+        "sanskrit": "तदेतदृचाभ्युक्तम्",
+        "transliteration": "tadetadṛcābhyuktam",
+        "translation": "Of this a verse says:",
+        "hindi": "इसी (विषय) के सम्बन्ध में ऋक् (ऋग्वेद का मन्त्र) कही गई है —",
+        "explanation": "इसी (विषय) के सम्बन्ध में ऋक् (ऋग्वेद का मन्त्र) कही गई है —",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 78,
+        "number": 78,
+        "sanskrit": "तद्विष्णोः परमं पदं सदा पश्यन्ति सूरयः । दिवीव चक्षुराततम्",
+        "transliteration": "tadviṣṇoḥ paramaṃ padaṃ sadā paśyanti sūrayaḥ | divīva cakṣurātatam",
+        "translation": "The wise always see that supreme abode of Vishnu, like an eye spread out in the sky.",
+        "hindi": "उस विष्णु के परम पद को सूरि (ज्ञानी/ऋषिजन) सदा देखते हैं — जैसे दिव (आकाश) में फैली हुई आँख (सदा जागृत दृष्टि के समान)।",
+        "explanation": "उस विष्णु के परम पद को सूरि (ज्ञानी/ऋषिजन) सदा देखते हैं — जैसे दिव (आकाश) में फैली हुई आँख (सदा जागृत दृष्टि के समान)।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 79,
+        "number": 79,
+        "sanskrit": "तद्विप्रासो विपन्यवो जागृवांसः समिन्धते । विष्णोर्यत्परमं पदम्",
+        "transliteration": "tadviprāso vipanyavo jāgṛvāṃsaḥ samindhate | viṣṇoryatparamaṃ padam",
+        "translation": "The wise, the vigilant, the inspired, kindle that supreme abode of Vishnu.",
+        "hindi": "विष्णु का जो परम पद है, उसे विप्र (ज्ञानी ब्राह्मण/ऋषि), विपन्यवः (स्तुति करने वाले/प्रशंसक) और जागृवांसः (सदा जागरूक, अप्रमत्त) — वे लोग प्रज्वलित करते हैं (अर्थात् अपने भीतर प्रकाशित करते हैं)।",
+        "explanation": "विष्णु का जो परम पद है, उसे विप्र (ज्ञानी ब्राह्मण/ऋषि), विपन्यवः (स्तुति करने वाले/प्रशंसक) और जागृवांसः (सदा जागरूक, अप्रमत्त) — वे लोग प्रज्वलित करते हैं (अर्थात् अपने भीतर प्रकाशित करते हैं)।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      },
+      {
+        "id": 80,
+        "number": 80,
+        "sanskrit": "ॐ सत्यमित्युपनिषत् । ॐ पूर्णमदः पूर्णमिदं पूर्णात्पूर्णमुदच्यते । पूर्णस्य पूर्णमादाय पूर्णमेवावशिष्यते",
+        "transliteration": "oṃ satyamityupaniṣat | oṃ pūrṇamadaḥ pūrṇamidaṃ pūrṇātpūrṇamudacyate | pūrṇasya pūrṇamādāya pūrṇamevāvaśiṣyate",
+        "translation": "Om. Truth — thus the Upanishad. Om. That is full; this is full; from the full the full arises. Taking the full from the full, the full alone remains.",
+        "hindi": "ॐ। ‘सत्य’ — ऐसा यह उपनिषद् है। ॐ। वह (परब्रह्म) पूर्ण है, यह (जगत) पूर्ण है; पूर्ण से ही पूर्ण उत्पन्न होता है। पूर्ण में से पूर्ण को निकाल लेने पर भी पूर्ण ही शेष रहता है।",
+        "explanation": "ॐ। ‘सत्य’ — ऐसा यह उपनिषद् है। ॐ। वह (परब्रह्म) पूर्ण है, यह (जगत) पूर्ण है; पूर्ण से ही पूर्ण उत्पन्न होता है। पूर्ण में से पूर्ण को निकाल लेने पर भी पूर्ण ही शेष रहता है।",
+        "keywords": [
+          "Muktika",
+          "Upanishad",
+          "Liberation",
+          "Mandukya",
+          "Hanuman",
+          "Rama"
+        ],
+        "lifeLesson": "True liberation (jivanmukti) begins with the stilling of mental chatter (vritti) and finding freedom while engaged in daily duty."
+      }
+    ]
+  }
+]
 };

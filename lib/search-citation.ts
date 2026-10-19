@@ -88,8 +88,21 @@ function rigveda(mandala: number, sukta: number, rik: number): DirectCitation | 
   };
 }
 
+function ashtavakra(chapter: number, verse: number): DirectCitation | null {
+  if (chapter < 1 || chapter > 20 || verse < 1) return null;
+  const href = versePageHref('ashtavakra', chapter, verse);
+  if (!href) return null;
+  return {
+    scriptureId: 'ashtavakra',
+    title: `Ashtavakra Gita ${chapter}.${verse}`,
+    subtitle: 'अष्टावक्रगीता · exact verse',
+    href,
+    matchReason: 'Exact reference',
+  };
+}
+
 /**
- * `bg 2.47`, `gita 6.16`, `katha 1.3.3`, `rv 1.1.1`.
+ * `bg 2.47`, `gita 6.16`, `katha 1.3.3`, `rv 1.1.1`, `av 1.1`.
  * Returns null when the reference is not a published verse (or, for the Rigveda, not a real mandala).
  */
 export function parseDirectCitation(raw: string): DirectCitation | null {
@@ -98,6 +111,9 @@ export function parseDirectCitation(raw: string): DirectCitation | null {
 
   const gitaMatch = /^(?:bg|gita|geeta|bhagavad gita|bhagavadgita|गीता|भगवद्गीता|श्रीमद्भगवद्गीता)\s*(?:chapter|ch|adhyaya|अध्याय)?\s*(\d+)\s*(?:verse|shloka|śloka|v|श्लोक)?\s*[.: ]\s*(\d+)$/.exec(q);
   if (gitaMatch) return gita(Number(gitaMatch[1]), Number(gitaMatch[2]));
+
+  const avMatch = /^(?:av|ashtavakra|ashtavakragita|अष्टावक्र|अष्टावक्रगीता)\s*(?:chapter|ch|adhyaya|अध्याय)?\s*(\d+)\s*(?:verse|shloka|śloka|v|श्लोक)?\s*[.: ]\s*(\d+)$/.exec(q);
+  if (avMatch) return ashtavakra(Number(avMatch[1]), Number(avMatch[2]));
 
   const kathaThree = /^(?:katha|kathopanishad|katha upanishad|कठ|कठोपनिषद्)\s*(\d+)\s*[.:]\s*(\d+)\s*[.:]\s*(\d+)$/.exec(q);
   if (kathaThree) return kathaTraditional(Number(kathaThree[1]), Number(kathaThree[2]), Number(kathaThree[3]));
@@ -116,6 +132,8 @@ const HINTS: Record<string, string> = {
   gita: 'bhagavadgita',
   geeta: 'bhagavadgita',
   bhagavadgita: 'bhagavadgita',
+  av: 'ashtavakra',
+  ashtavakra: 'ashtavakra',
   katha: 'katha',
   kathopanishad: 'katha',
   rv: 'rigveda',

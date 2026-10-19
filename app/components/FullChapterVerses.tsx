@@ -12,7 +12,10 @@ import {
   MessageSquare,
   Volume2,
   Pause,
+  Play,
+  Target,
 } from 'lucide-react';
+import { updateReaderScrollProgress, triggerPranaToast } from '@/lib/prana-capsule-store';
 import type { ScriptureCategory } from '@/data/types';
 import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
 import { canonicalVerseId } from '@/lib/canonical-verse-id';
@@ -34,9 +37,17 @@ import {
   setCurrentVerseContext,
   subscribeSoundscape,
   setContinuousParayana,
+  setParayanaCadenceMode,
   strikeTempleBell,
   getSoundscapeState,
+  type ParayanaCadenceMode,
 } from '@/lib/sacred-soundscape';
+import {
+  saveParayanaChapterProgress,
+  clearParayanaChapterProgress,
+  getParayanaChapterProgress,
+  markChapterCompleteInReadingPlan,
+} from '@/lib/reading-plan-sync';
 
 interface FullVerse {
   number: number | string;
@@ -143,6 +154,18 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const [focusVerseIndex, setFocusVerseIndex] = useState(0);
   const [activeRecitingVerse, setActiveRecitingVerse] = useState<number | string | null>(null);
   const [parayanaActive, setParayanaActive] = useState(false);
+  const [resumeVerse, setResumeVerse] = useState<number | null>(null);
+  const [cadenceMode, setCadenceMode] = useState<ParayanaCadenceMode>(() => getSoundscapeState().parayanaCadenceMode);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [currentViewportVerse, setCurrentViewportVerse] = useState<string | null>(null);
+  const [ekagrataMode, setEkagrataMode] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    try {
+      return JSON.parse(localStorage.getItem('dharma_ekagrata_mode') || 'false');
+    } catch {
+      return false;
+    }
+  });
   const pendingParayanaRef = useRef(false);
   const layersMenuRef = useRef<HTMLDivElement>(null);
   const layersTriggerRef = useRef<HTMLButtonElement>(null);
@@ -179,21 +202,45 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       const cards = document.querySelectorAll<HTMLElement>('.verse-card[id^="verse-"]');
       for (const card of Array.from(cards)) {
         if (card.getBoundingClientRect().bottom > line) {
-          updateLastVerse(scriptureId, chapterId, card.id.slice('verse-'.length));
+          const vNumStr = card.id.slice('verse-'.length);
+          updateLastVerse(scriptureId, chapterId, vNumStr);
+          setCurrentViewportVerse(vNumStr);
+          const vNum = Number(vNumStr);
+          if (!Number.isNaN(vNum) && state.verses.length > 0) {
+            const percent = Math.round((vNum / state.verses.length) * 100);
+            updateReaderScrollProgress({
+              scriptureId,
+              scriptureTitle: scriptureTitle ?? scriptureId,
+              chapterNumber: chapterId,
+              verseNumber: vNum,
+              totalVerses: state.verses.length,
+              percent,
+            });
+          }
           return;
         }
       }
     };
     const onScroll = () => {
       window.clearTimeout(timer);
-      timer = window.setTimeout(record, 600);
+      timer = window.setTimeout(record, 400);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       window.clearTimeout(timer);
       window.removeEventListener('scroll', onScroll);
     };
-  }, [state.kind, scriptureId, chapterId]);
+  }, [state, scriptureId, chapterId, scriptureTitle]);
+
+  // Sync Ekāgratā mode from external events
+  useEffect(() => {
+    const handleEkagrata = (e: Event) => {
+      const custom = e as CustomEvent<{ active: boolean }>;
+      if (custom.detail) setEkagrataMode(custom.detail.active);
+    };
+    window.addEventListener('dharma:ekagrata-toggle', handleEkagrata as EventListener);
+    return () => window.removeEventListener('dharma:ekagrata-toggle', handleEkagrata as EventListener);
+  }, []);
 
   // Load verse bookmark statuses from localStorage and sync across components
   useEffect(() => {
@@ -286,7 +333,10 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const scrollToVerse = (verseNum: string | number, behavior: ScrollBehavior = 'smooth') => {
     const el = document.getElementById(`verse-${verseNum}`);
     if (el) {
-      el.scrollIntoView({ behavior, block: 'center' });
+      const prefersReduced =
+        typeof window !== 'undefined' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      el.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
     }
   };
 
@@ -294,9 +344,12 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     (targetVerse: FullVerse) => {
       setActiveRecitingVerse(targetVerse.number);
       scrollToVerse(targetVerse.number);
+      saveParayanaChapterProgress(scriptureId, chapterId, targetVerse.number);
       setCurrentVerseContext(
         targetVerse.sanskrit,
-        `${scriptureTitle ?? scriptureId} ${chapterTitle ?? `अध्याय ${chapterId}`}, श्लोक ${targetVerse.number}`
+        `${scriptureTitle ?? scriptureId} ${chapterTitle ?? `अध्याय ${chapterId}`}, श्लोक ${targetVerse.number}`,
+        targetVerse.hindi,
+        targetVerse.translation
       );
       startSoundscape('recitation');
       triggerTactileFeedback('selection', 'softTap');
@@ -314,16 +367,28 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     }
   };
 
-  // Sync with global soundscape playback status
+  // Sync with global soundscape playback status & resume bookmark
   useEffect(() => {
+    const checkResume = () => {
+      const v = getParayanaChapterProgress(scriptureId, chapterId);
+      setResumeVerse(v);
+    };
+    checkResume();
+
     const unsub = subscribeSoundscape((st) => {
+      setCadenceMode(st.parayanaCadenceMode);
       if (!st.isPlaying || st.activeTrack !== 'recitation') {
         setActiveRecitingVerse(null);
         setParayanaActive(false);
       }
     });
-    return unsub;
-  }, []);
+
+    window.addEventListener('dharma:parayana-progress-updated', checkResume);
+    return () => {
+      unsub();
+      window.removeEventListener('dharma:parayana-progress-updated', checkResume);
+    };
+  }, [scriptureId, chapterId]);
 
   // Deep-link auto-scroll on mount if ?verse= or #verse- is present
   useEffect(() => {
@@ -496,6 +561,18 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
             setContinuousParayana(false);
             setParayanaActive(false);
             setActiveRecitingVerse(null);
+            clearParayanaChapterProgress(scriptureId, chapterId);
+            setResumeVerse(null);
+
+            const planUpdated = markChapterCompleteInReadingPlan(scriptureId, chapterId);
+            if (planUpdated) {
+              setToastMessage('अध्याय पारायण पूर्ण · Chapter marked complete in your Sadhana Reading Plan');
+              setTimeout(() => setToastMessage(null), 4500);
+              triggerPranaToast({
+                message: 'अध्याय पारायण पूर्ण · Chapter marked complete in your Sadhana Reading Plan',
+                icon: '🔔',
+              });
+            }
           }
         }
       } else {
@@ -523,12 +600,20 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       }
     };
 
-    const handleStartParayana = () => {
+    const handleStartParayana = (e?: Event) => {
+      const customEvent = e as CustomEvent<{ startVerse?: number | string }>;
+      const startVerseId = customEvent?.detail?.startVerse;
       const list = filteredVerses.length > 0 ? filteredVerses : state.verses;
       if (list.length > 0) {
         setContinuousParayana(true);
         setParayanaActive(true);
-        playVerse(list[0]);
+        const targetV =
+          (startVerseId
+            ? list.find((v) => String(v.number) === String(startVerseId))
+            : null) || list[0];
+        if (targetV) {
+          playVerse(targetV);
+        }
       }
     };
 
@@ -794,6 +879,77 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 </span>
               </button>
 
+              {/* Resume In-Progress Bookmark Pill */}
+              {resumeVerse && !parayanaActive && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    triggerTactileFeedback('selection', 'click');
+                    setContinuousParayana(true);
+                    setParayanaActive(true);
+                    const list = filteredVerses.length > 0 ? filteredVerses : state.verses;
+                    const targetV = list.find((v) => String(v.number) === String(resumeVerse)) || list[0];
+                    if (targetV) playVerse(targetV);
+                  }}
+                  className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-xl sm:min-h-0 border border-amber-400/80 bg-amber-500/15 px-3 py-1.5 text-xs font-semibold text-amber-800 dark:text-amber-200 transition hover:bg-amber-500/25 active:scale-95"
+                  title={`श्लोक ${resumeVerse} से आगे पारायण जारी रखें`}
+                  aria-label={`श्लोक ${resumeVerse} से आगे`}
+                >
+                  <Play className="h-3 w-3 text-amber-600 dark:text-amber-400 fill-current" />
+                  <span>{toDevanagari(resumeVerse)} से आगे</span>
+                </button>
+              )}
+
+              {/* Bilingual Cadence Mode Selector */}
+              <div
+                className="inline-flex items-center rounded-xl border border-dharma-border bg-dharma-bg p-0.5 text-xs font-semibold text-dharma-text"
+                role="radiogroup"
+                aria-label="पारायण वाचन शैली (Recitation cadence mode)"
+              >
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={cadenceMode === 'sanskrit_only'}
+                  onClick={() => setParayanaCadenceMode('sanskrit_only')}
+                  className={`rounded-lg px-2.5 py-1 transition ${
+                    cadenceMode === 'sanskrit_only'
+                      ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 font-bold shadow-sm'
+                      : 'text-dharma-muted hover:text-dharma-text'
+                  }`}
+                  title="केवल मूल संस्कृत श्लोक पाठ (Sanskrit Only)"
+                >
+                  संस्कृत
+                </button>
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={cadenceMode === 'sanskrit_hindi'}
+                  onClick={() => setParayanaCadenceMode('sanskrit_hindi')}
+                  className={`rounded-lg px-2.5 py-1 transition ${
+                    cadenceMode === 'sanskrit_hindi'
+                      ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 font-bold shadow-sm'
+                      : 'text-dharma-muted hover:text-dharma-text'
+                  }`}
+                  title="संस्कृत श्लोक + संक्षिप्त हिन्दी भावार्थ (Sanskrit + Hindi)"
+                >
+                  + हिन्दी
+                </button>
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={cadenceMode === 'sanskrit_english'}
+                  onClick={() => setParayanaCadenceMode('sanskrit_english')}
+                  className={`rounded-lg px-2.5 py-1 transition ${
+                    cadenceMode === 'sanskrit_english'
+                      ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 font-bold shadow-sm'
+                      : 'text-dharma-muted hover:text-dharma-text'
+                  }`}
+                  title="संस्कृत श्लोक + English Translation (Sanskrit + English)"
+                >
+                  + Eng
+                </button>
+              </div>
+
               {/* Chanting Mode Toggle */}
               <button
                 type="button"
@@ -825,6 +981,31 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               >
                 <Maximize2 className="h-3.5 w-3.5 text-amber-600" />
                 <span className="hidden sm:inline">एकाग्रता मोड</span>
+              </button>
+
+              {/* Ekāgratā Spotlight Toggle */}
+              <button
+                type="button"
+                onClick={() => {
+                  const next = !ekagrataMode;
+                  setEkagrataMode(next);
+                  triggerTactileFeedback('medium', 'softTap');
+                  window.dispatchEvent(new CustomEvent('dharma:ekagrata-toggle', { detail: { active: next } }));
+                  try {
+                    localStorage.setItem('dharma_ekagrata_mode', JSON.stringify(next));
+                  } catch {}
+                }}
+                className={`inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-xl sm:min-h-0 px-3 py-1.5 text-xs font-semibold transition ${
+                  ekagrataMode
+                    ? 'bg-amber-500 text-stone-950 font-bold shadow-md shadow-amber-500/20'
+                    : 'border border-dharma-border bg-dharma-bg text-dharma-text hover:border-amber-400 hover:text-amber-700'
+                }`}
+                title="सक्रिय श्लोक पर एकाग्र ध्यान (Spotlight Focus)"
+                aria-label="एकाग्रता स्पॉटलाइट"
+                aria-pressed={ekagrataMode}
+              >
+                <Target className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">स्पॉटलाइट</span>
               </button>
 
               {/* Font Size Selector */}
@@ -1052,66 +1233,112 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               const scienceIsHi = Boolean(scienceHi);
               const lesson = lifeLessonHi ?? v.lifeLesson;
               const lessonIsHi = Boolean(lifeLessonHi);
+              const isSpotlighted = !ekagrataMode || (activeRecitingVerse ? String(activeRecitingVerse) === String(v.number) : (currentViewportVerse ? currentViewportVerse === String(v.number) : index === 0));
               return (
-                <VerseCard
+                <div
                   key={`${String(v.number)}-${index}`}
-                  verse={v}
-                  meaning={{
-                    isAi: Boolean(comment?.ai),
-                    explanation,
-                    explanationIsHi,
-                    science,
-                    scienceIsHi,
-                    lesson,
-                    lessonIsHi,
-                  }}
-                  layers={{
-                    translit: showTranslit,
-                    hindi: showHindi,
-                    english: showEnglish,
-                    commentary: showCommentary,
-                  }}
-                  scriptureId={scriptureId}
-                  chapterId={chapterId}
-                  category={category}
-                  scriptureTitle={scriptureTitle ?? scriptureId}
-                  chapterTitle={chapterTitle ?? `अध्याय ${chapterId}`}
-                  chantingMode={chantingMode}
-                  sanskritFontSizeClass={sanskritFontSizeClass}
-                  bookmarked={Boolean(bookmarkedMap[String(v.number)])}
-                  copied={copiedId === String(v.number)}
-                  onToggleBookmark={() => toggleBookmark(v)}
-                  onCopy={() => handleCopyVerse(v)}
-                  onContribute={() => setContributeVerse(v)}
-                  onAddToCollection={() =>
-                    setCollectionVerse({
-                      scriptureId,
-                      scriptureTitle: scriptureTitle ?? scriptureId,
-                      chapterId,
-                      chapterTitle: chapterTitle ?? `अध्याय ${chapterId}`,
-                      verseId: v.number,
-                      sanskrit: v.sanskrit || '',
-                      translation: v.hindi || v.translation || '',
-                    })
-                  }
-                  inCollectionCount={getCollectionCount(v.number)}
-                  note={getNote(scriptureId, chapterId, v.number)?.text}
-                  onSaveNote={(text) => setNote(scriptureId, chapterId, v.number, text)}
-                  highlight={getHighlight(scriptureId, chapterId, v.number)?.color}
-                  onHighlight={(color) => toggleHighlight(scriptureId, chapterId, v.number, color)}
-                  onOpenFocus={() => {
-                    setFocusVerseIndex(index);
-                    setFocusModeOpen(true);
-                  }}
-                  versePageHref={versePageHref(scriptureId, chapterId, v.number)}
-                  isReciting={String(activeRecitingVerse) === String(v.number)}
-                  onPlayRecitation={() => togglePlayVerse(v)}
-                />
+                  className={`transition-opacity duration-300 ${!isSpotlighted ? 'opacity-35 hover:opacity-90 focus-within:opacity-100' : 'opacity-100'}`}
+                >
+                  <VerseCard
+                    verse={v}
+                    meaning={{
+                      isAi: Boolean(comment?.ai),
+                      explanation,
+                      explanationIsHi,
+                      science,
+                      scienceIsHi,
+                      lesson,
+                      lessonIsHi,
+                    }}
+                    layers={{
+                      translit: showTranslit,
+                      hindi: showHindi,
+                      english: showEnglish,
+                      commentary: showCommentary,
+                    }}
+                    scriptureId={scriptureId}
+                    chapterId={chapterId}
+                    category={category}
+                    scriptureTitle={scriptureTitle ?? scriptureId}
+                    chapterTitle={chapterTitle ?? `अध्याय ${chapterId}`}
+                    chantingMode={chantingMode}
+                    sanskritFontSizeClass={sanskritFontSizeClass}
+                    bookmarked={Boolean(bookmarkedMap[String(v.number)])}
+                    copied={copiedId === String(v.number)}
+                    onToggleBookmark={() => toggleBookmark(v)}
+                    onCopy={() => handleCopyVerse(v)}
+                    onContribute={() => setContributeVerse(v)}
+                    onAddToCollection={() =>
+                      setCollectionVerse({
+                        scriptureId,
+                        scriptureTitle: scriptureTitle ?? scriptureId,
+                        chapterId,
+                        chapterTitle: chapterTitle ?? `अध्याय ${chapterId}`,
+                        verseId: v.number,
+                        sanskrit: v.sanskrit || '',
+                        translation: v.hindi || v.translation || '',
+                      })
+                    }
+                    inCollectionCount={getCollectionCount(v.number)}
+                    note={getNote(scriptureId, chapterId, v.number)?.text}
+                    onSaveNote={(text) => setNote(scriptureId, chapterId, v.number, text)}
+                    highlight={getHighlight(scriptureId, chapterId, v.number)?.color}
+                    onHighlight={(color) => toggleHighlight(scriptureId, chapterId, v.number, color)}
+                    onOpenFocus={() => {
+                      setFocusVerseIndex(index);
+                      setFocusModeOpen(true);
+                    }}
+                    versePageHref={versePageHref(scriptureId, chapterId, v.number)}
+                    isReciting={String(activeRecitingVerse) === String(v.number)}
+                    onPlayRecitation={() => togglePlayVerse(v)}
+                  />
+                </div>
               );
             })
           )}
         </div>
       )}
+
+      {/* Adhyāya Sūtra: Desktop Vertical Verse Rail */}
+      {hydrated && state.verses.length > 8 && (
+        <aside
+          aria-label="अध्याय सूत्र - श्लोक पथ"
+          className="hidden xl:flex fixed right-3 top-1/2 -translate-y-1/2 z-20 flex-col items-center gap-1 p-1.5 rounded-full bg-stone-900/75 dark:bg-stone-950/85 backdrop-blur-md border border-amber-500/20 shadow-xl max-h-[70vh] overflow-y-auto no-scrollbar scroll-smooth"
+        >
+          <span className="text-[9px] font-mono text-amber-500/70 select-none pb-0.5">सूत्र</span>
+          {state.verses.map((v) => {
+            const isCurrent = currentViewportVerse === String(v.number) || String(activeRecitingVerse) === String(v.number);
+            return (
+              <button
+                key={`rail-${String(v.number)}`}
+                type="button"
+                onClick={() => scrollToVerse(v.number)}
+                title={`श्लोक ${toDevanagari(v.number)} (${v.number})`}
+                aria-label={`श्लोक ${v.number}`}
+                className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono font-medium transition-all ${
+                  isCurrent
+                    ? 'bg-amber-500 text-stone-950 shadow-md shadow-amber-500/40 scale-110 font-bold'
+                    : 'text-stone-400 hover:text-stone-100 hover:bg-stone-800/80 hover:scale-105'
+                }`}
+              >
+                {toDevanagari(v.number)}
+              </button>
+            );
+          })}
+        </aside>
+      )}
+
+      {/* Floating toast notification */}
+      {toastMessage && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="fixed bottom-20 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-full bg-stone-950/90 text-amber-400 border border-amber-500/30 backdrop-blur-md text-xs font-medium shadow-2xl animate-fade-in"
+        >
+          {toastMessage}
+        </div>
+      )}
+
     </section>
 
       {/* Single contribute modal for bulk verses */}

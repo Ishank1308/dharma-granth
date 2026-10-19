@@ -1,9 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import {
   ArrowRight,
   BookOpen,
+  ChevronDown,
+  ChevronUp,
   Compass,
   Flame,
   Heart,
@@ -15,10 +18,12 @@ import {
   Wind,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
+import { triggerTactileFeedback } from '@/lib/haptics';
 
 interface LifeSituation {
   id: string;
   topicHref: string;
+  category: 'peace' | 'duty' | 'harmony';
   titleHi: string;
   titleEn: string;
   sanskrit: string;
@@ -31,6 +36,7 @@ const situations: LifeSituation[] = [
   {
     id: 'stress',
     topicHref: '/topics/stress-anxiety',
+    category: 'peace',
     titleHi: 'तनाव व चिंता',
     titleEn: 'Stress and worry',
     sanskrit: 'शमः व समत्वम्',
@@ -41,6 +47,7 @@ const situations: LifeSituation[] = [
   {
     id: 'fear',
     topicHref: '/topics/stress-anxiety',
+    category: 'peace',
     titleHi: 'भय व असुरक्षा',
     titleEn: 'Fear',
     sanskrit: 'अभयम्',
@@ -51,6 +58,7 @@ const situations: LifeSituation[] = [
   {
     id: 'anger',
     topicHref: '/topics/anger-jealousy',
+    category: 'peace',
     titleHi: 'क्रोध व आवेश',
     titleEn: 'Anger',
     sanskrit: 'क्रोध-संयमः',
@@ -61,6 +69,7 @@ const situations: LifeSituation[] = [
   {
     id: 'grief',
     topicHref: '/topics/grief-death',
+    category: 'harmony',
     titleHi: 'शोक व विछोह',
     titleEn: 'Grief',
     sanskrit: 'अनित्यता व शोक-मुक्ति',
@@ -71,6 +80,7 @@ const situations: LifeSituation[] = [
   {
     id: 'duty',
     topicHref: '/topics/career-workplace-ethics',
+    category: 'duty',
     titleHi: 'कर्तव्य व धर्मसंकट',
     titleEn: 'Duty',
     sanskrit: 'स्वधर्मः',
@@ -81,6 +91,7 @@ const situations: LifeSituation[] = [
   {
     id: 'self-control',
     topicHref: '/topics/discipline-habit-formation',
+    category: 'duty',
     titleHi: 'आत्म-संयम व नियम',
     titleEn: 'Self-control',
     sanskrit: 'दमः व तपः',
@@ -91,6 +102,7 @@ const situations: LifeSituation[] = [
   {
     id: 'focus',
     topicHref: '/topics/student-life',
+    category: 'duty',
     titleHi: 'एकाग्रता व ध्यान',
     titleEn: 'Focus',
     sanskrit: 'अभ्यासः व धारणा',
@@ -101,6 +113,7 @@ const situations: LifeSituation[] = [
   {
     id: 'devotion',
     topicHref: '/topics/relationships-marriage',
+    category: 'harmony',
     titleHi: 'भक्ति व समर्पण',
     titleEn: 'Devotion',
     sanskrit: 'भक्ति-योगः',
@@ -111,6 +124,7 @@ const situations: LifeSituation[] = [
   {
     id: 'knowledge',
     topicHref: '/topics/student-life',
+    category: 'harmony',
     titleHi: 'ज्ञान व विवेक',
     titleEn: 'Knowledge',
     sanskrit: 'ज्ञानम् व विवेकः',
@@ -121,6 +135,7 @@ const situations: LifeSituation[] = [
   {
     id: 'relationships',
     topicHref: '/topics/relationships-marriage',
+    category: 'harmony',
     titleHi: 'संबंध व सद्भाव',
     titleEn: 'Relationships',
     sanskrit: 'सर्वभूतहिते रताः',
@@ -130,7 +145,24 @@ const situations: LifeSituation[] = [
   },
 ];
 
+type CategoryFilter = 'all' | 'peace' | 'duty' | 'harmony';
+
+const FILTER_TABS: Array<{ id: CategoryFilter; label: string; sub: string }> = [
+  { id: 'all', label: 'All Dimensions', sub: 'सभी १० विषय' },
+  { id: 'peace', label: 'Inner Peace', sub: 'शांति व धैर्य' },
+  { id: 'duty', label: 'Duty & Purpose', sub: 'कर्म व एकाग्रता' },
+  { id: 'harmony', label: 'Solace & Connection', sub: 'सद्भाव व प्रेम' },
+];
+
 export function LifeSituationsSection() {
+  const [activeFilter, setActiveFilter] = useState<CategoryFilter>('all');
+  const [showAllMobile, setShowAllMobile] = useState(false);
+
+  const filteredSituations = situations.filter((sit) => {
+    if (activeFilter === 'all') return true;
+    return sit.category === activeFilter;
+  });
+
   return (
     <section
       id="life-situations"
@@ -139,12 +171,12 @@ export function LifeSituationsSection() {
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         {/* Section Header */}
-        <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="mb-2 flex items-center gap-2">
               <span className="size-2 rounded-full bg-saffron-600 animate-pulse" />
               <p lang="hi" className="text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400 font-devanagari">
-                जीवन के लिए शास्त्रीय मार्गदर्शन
+                जीवन के लिए शास्त्रीय मार्गदर्शन · Canonical Guidance
               </p>
             </div>
             <h2
@@ -160,56 +192,112 @@ export function LifeSituationsSection() {
 
           <Link
             href="/wisdom-for-life"
-            className="inline-flex w-fit items-center gap-2 rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-xs font-bold text-dharma-text transition hover:border-saffron-300 hover:text-saffron-700 shadow-sm"
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-xs font-bold text-dharma-text transition hover:border-saffron-300 hover:text-saffron-700 shadow-xs"
           >
             <span>Explore All 13 Dimensions</span>
             <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
         </div>
 
-        {/* 10 Topic Cards Grid */}
+        {/* Filter Tabs */}
+        <div className="mb-8 flex flex-wrap gap-2" role="tablist" aria-label="Life situation filters">
+          {FILTER_TABS.map((tab) => {
+            const isSelected = activeFilter === tab.id;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={isSelected}
+                onClick={() => {
+                  triggerTactileFeedback('light', 'softTap');
+                  setActiveFilter(tab.id);
+                }}
+                className={`flex min-h-[40px] items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold transition active:scale-95 ${
+                  isSelected
+                    ? 'bg-saffron-600 text-white shadow-sm'
+                    : 'border border-dharma-border bg-dharma-card text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
+                }`}
+              >
+                <span>{tab.label}</span>
+                <span className={`text-[10px] ${isSelected ? 'text-amber-200' : 'text-dharma-muted'}`}>
+                  {tab.sub}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Topic Cards Grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {situations.map((sit, index) => (
-            <Link
-              key={sit.id}
-              href={sit.topicHref}
-              aria-label={`Scriptural perspective on ${sit.titleEn} (${sit.titleHi})`}
-              className={`${index >= 4 ? 'hidden sm:flex ' : ''}group flex flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-5 transition-all hover:-translate-y-1 hover:border-amber-400/60 hover:shadow-lg dark:hover:border-amber-700/50`}
-            >
-              <div>
-                {/* Header with simple line icon & Sanskrit tag */}
-                <div className="mb-4 flex items-center justify-between">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 text-saffron-700 dark:text-saffron-400 transition group-hover:bg-saffron-600 group-hover:text-white">
-                    {sit.icon}
-                  </span>
-                  <span lang="sa" className="font-devanagari text-[11px] font-medium text-dharma-muted">
-                    {sit.sanskrit}
-                  </span>
+          {filteredSituations.map((sit, index) => {
+            const isHiddenOnMobile = activeFilter === 'all' && !showAllMobile && index >= 4;
+            return (
+              <Link
+                key={sit.id}
+                href={sit.topicHref}
+                onClick={() => triggerTactileFeedback('light', 'softTap')}
+                aria-label={`Scriptural perspective on ${sit.titleEn} (${sit.titleHi})`}
+                className={`${
+                  isHiddenOnMobile ? 'hidden sm:flex ' : 'flex '
+                }group flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/60 hover:shadow-lg dark:hover:border-amber-700/50`}
+              >
+                <div>
+                  {/* Header with simple line icon & Sanskrit tag */}
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 text-saffron-700 dark:text-saffron-400 transition group-hover:bg-saffron-600 group-hover:text-white">
+                      {sit.icon}
+                    </span>
+                    <span lang="sa" className="font-devanagari text-[11px] font-medium text-dharma-muted">
+                      {sit.sanskrit}
+                    </span>
+                  </div>
+
+                  {/* Titles */}
+                  <h3 className="font-serif text-base font-bold text-dharma-text group-hover:text-saffron-700 transition">
+                    {sit.titleEn}
+                  </h3>
+                  <p lang="hi" className="font-devanagari text-xs font-semibold text-saffron-800 dark:text-saffron-200 mt-0.5">
+                    {sit.titleHi}
+                  </p>
+
+                  {/* Prompt */}
+                  <p className="mt-2.5 text-xs leading-relaxed text-dharma-muted line-clamp-3">
+                    {sit.prompt}
+                  </p>
                 </div>
 
-                {/* Titles */}
-                <h3 className="font-serif text-base font-bold text-dharma-text group-hover:text-saffron-700 transition">
-                  {sit.titleEn}
-                </h3>
-                <p lang="hi" className="font-devanagari text-xs font-semibold text-saffron-800 dark:text-saffron-200 mt-0.5">
-                  {sit.titleHi}
-                </p>
-
-                {/* Prompt */}
-                <p className="mt-2.5 text-xs leading-relaxed text-dharma-muted">
-                  {sit.prompt}
-                </p>
-              </div>
-
-              {/* Scripture Reference Tag */}
-              <div className="mt-5 border-t border-dharma-border/60 pt-3">
-                <span className="block truncate text-[11px] font-semibold text-dharma-muted group-hover:text-dharma-text transition">
-                  {sit.scriptureRef}
-                </span>
-              </div>
-            </Link>
-          ))}
+                {/* Scripture Reference Tag */}
+                <div className="mt-5 border-t border-dharma-border/60 pt-3 flex items-center justify-between">
+                  <span className="block truncate text-[11px] font-semibold text-dharma-muted group-hover:text-dharma-text transition">
+                    {sit.scriptureRef}
+                  </span>
+                  <span className="text-xs font-bold text-saffron-700 opacity-0 group-hover:opacity-100 transition-opacity">
+                    →
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
+
+        {/* Mobile Expand / Collapse Button (shown when viewing all on small screens) */}
+        {activeFilter === 'all' && (
+          <div className="mt-6 text-center sm:hidden">
+            <button
+              type="button"
+              onClick={() => {
+                triggerTactileFeedback('light', 'softTap');
+                setShowAllMobile(!showAllMobile);
+              }}
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-xs font-bold text-dharma-text shadow-xs active:scale-95"
+              aria-expanded={showAllMobile}
+            >
+              <span>{showAllMobile ? 'कम विषय दिखाएं (Show Less)' : 'सभी १० विषय देखें (Show All 10)'}</span>
+              {showAllMobile ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </button>
+          </div>
+        )}
 
         {/* Responsible Educational Notice (Avoiding Medical Claims) */}
         <div className="mt-8 rounded-2xl border border-dashed border-amber-300/60 bg-amber-500/5 p-4 text-xs text-dharma-muted dark:border-amber-900/50">

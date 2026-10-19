@@ -6,6 +6,7 @@ import { ContinueReading } from '@/app/components/ContinueReading';
 import { VerseOfTheDayCompact } from '@/app/components/VerseOfTheDayCompact';
 import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
+import { Experience3DSection } from '@/app/components/Experience3DSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
 import { SadhanaPreviewSection } from '@/app/components/SadhanaPreviewSection';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
@@ -65,10 +66,13 @@ export default function HomePage() {
         {/* 6. Recommended scriptures */}
         <FeaturedScripturesSection />
 
-        {/* 7. Practice tools preview */}
+        {/* 7. Touch & Contemplate: 3D Sacred Experience System */}
+        <Experience3DSection gitaCountLabel="१८ अध्याय · ७०० श्लोक" />
+
+        {/* 8. Practice tools preview */}
         <SadhanaPreviewSection />
 
-        {/* 8. Trust, sourcing and methodology */}
+        {/* 9. Trust, sourcing and methodology */}
         <HomeTrustStrip />
       </main>
       <SiteFooter />

@@ -33,6 +33,10 @@ import { ShareVerseButton } from './ShareVerseButton';
 import { GlossaryText } from './GlossaryTooltip';
 import { getVerseGraphicClass, getVerseGraphicStyle } from './verse-background';
 import { ContentLabelBadge } from './ContentLabels';
+import { detectChandas } from '@/lib/chandas-detector';
+import { speakSanskritTerm } from '@/lib/sacred-soundscape';
+import { triggerTactileFeedback } from '@/lib/haptics';
+import { showSabdaPeek } from '@/lib/prana-capsule-store';
 
 export interface VerseCardData {
   number: number | string;
@@ -126,6 +130,33 @@ function isMostlyDevanagari(text: string | undefined): boolean {
     else if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) latin++;
   }
   return deva > latin;
+}
+
+function parseWordMeanings(raw?: string): Array<{ word: string; meaning: string }> {
+  if (!raw) return [];
+  const entries = raw
+    .split(/[;\n]+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const result: Array<{ word: string; meaning: string }> = [];
+
+  for (const entry of entries) {
+    const parts = entry.split(/\s*(?:—|–|=|:\s+|\s+-\s+)\s*/);
+    if (parts.length >= 2) {
+      const word = parts[0].trim();
+      const meaning = parts.slice(1).join(' ').trim();
+      if (word) {
+        result.push({ word, meaning });
+        continue;
+      }
+    }
+    if (entry.length > 0 && entry.length < 80) {
+      result.push({ word: entry, meaning: '' });
+    }
+  }
+
+  return result;
 }
 
 /** Lotus-petal medallion carrying the verse number in Devanagari numerals. */
@@ -234,6 +265,38 @@ export function VerseCard({
   };
 
   const lines = useMemo(() => (v.sanskrit ? verseLines(v.sanskrit) : []), [v.sanskrit]);
+  const chandas = useMemo(() => detectChandas(v.sanskrit), [v.sanskrit]);
+  const parsedWordMeanings = useMemo(() => parseWordMeanings(v.wordMeaning), [v.wordMeaning]);
+
+  // Recitation line-by-line / translation live highlighting
+  const [activeLineIndex, setActiveLineIndex] = useState<number | null>(null);
+  const [activeTranslationLang, setActiveTranslationLang] = useState<'hi' | 'en' | null>(null);
+  const [activeWordIndex, setActiveWordIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!isReciting) {
+      setActiveLineIndex(null);
+      setActiveTranslationLang(null);
+      return;
+    }
+
+    const handleChunk = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail?.isTranslation) {
+        setActiveLineIndex(null);
+        setActiveTranslationLang(detail.language);
+      } else if (typeof detail?.chunkIndex === 'number') {
+        setActiveLineIndex(detail.chunkIndex);
+        setActiveTranslationLang(null);
+      } else {
+        setActiveLineIndex(null);
+        setActiveTranslationLang(null);
+      }
+    };
+
+    window.addEventListener('dharma:recitation-chunk', handleChunk);
+    return () => window.removeEventListener('dharma:recitation-chunk', handleChunk);
+  }, [isReciting]);
 
   const { explanation, science, lesson } = meaning;
   // The source flag only says which file the text came from; Hindi व्याख्या
@@ -550,15 +613,29 @@ export function VerseCard({
           }`}>
             <span aria-hidden="true" className="verse-leaf-ornament left-3 top-2">❁</span>
             <span aria-hidden="true" className="verse-leaf-ornament right-3 top-2">❁</span>
-            <div className="mb-3.5 flex justify-center">
+            <div className="mb-3.5 flex flex-wrap items-center justify-center gap-2">
               <ContentLabelBadge kind="mula" />
+              {chandas && (
+                <span
+                  className="inline-flex items-center gap-1 rounded-full border border-amber-300/60 bg-amber-50/80 px-2.5 py-0.5 text-[11px] font-semibold text-amber-900 shadow-2xs dark:border-amber-700/40 dark:bg-amber-950/40 dark:text-amber-200"
+                  title={`${chandas.descriptionHi} · ${chandas.description} (${chandas.syllables} वर्ण)`}
+                >
+                  <span className="font-serif text-amber-700 dark:text-amber-400 font-bold">छन्दः</span>
+                  <span>{chandas.name} · {chandas.nameEn}</span>
+                </span>
+              )}
             </div>
             <p lang="sa" className={`font-devanagari ${sanskritFontSizeClass} text-dharma-text`}>
               {lines.map((line, i) => {
+                const isLineActive = isReciting && activeLineIndex === i;
                 return (
                   <motion.span
                     key={i}
-                    className="block rounded-xl px-2.5 py-1 -mx-2.5"
+                    className={`block rounded-xl px-2.5 py-1 -mx-2.5 transition-colors duration-200 ${
+                      isLineActive
+                        ? 'bg-amber-500/20 text-amber-950 dark:text-amber-100 ring-1 ring-amber-400/50 shadow-xs font-medium'
+                        : ''
+                    }`}
                     {...fadeIn(i)}
                   >
                     <GlossaryText text={line} />
@@ -588,13 +665,61 @@ export function VerseCard({
         {/* ── Word-by-word meaning (पदच्छेद एवं शब्दार्थ) ─────── */}
         {v.wordMeaning && !chantingMode && (
           <div className="mt-4 rounded-2xl border border-amber-200/70 bg-amber-50/50 p-4 dark:border-amber-900/40 dark:bg-amber-950/20">
-            <p className="mb-1.5 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
-              <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
-              पदच्छेद एवं शब्दार्थ · Word-by-Word Meaning
+            <p className="mb-2 flex items-center justify-between gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
+              <span className="flex items-center gap-1.5">
+                <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
+                पदच्छेद एवं शब्दार्थ · Word-by-Word Meaning
+              </span>
+              <span className="text-[10px] font-normal normal-case opacity-75 hidden sm:inline">
+                शब्द पर टैप कर उच्चारण सुनें
+              </span>
             </p>
-            <p lang="sa" className="font-devanagari text-sm leading-loose text-dharma-text">
-              {v.wordMeaning}
-            </p>
+            {parsedWordMeanings.length > 0 ? (
+              <div className="flex flex-wrap gap-2">
+                {parsedWordMeanings.map((item, idx) => {
+                  const isSpoken = activeWordIndex === idx;
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => {
+                        triggerTactileFeedback('selection', 'softTap');
+                        setActiveWordIndex(idx);
+                        speakSanskritTerm(item.word, 0.85);
+                        showSabdaPeek({
+                          word: item.word,
+                          wordDevanagari: item.word,
+                          meaningHi: item.meaning,
+                          verseRef: `${scriptureTitle} ${chapterId}.${v.number}`,
+                        });
+                        setTimeout(() => setActiveWordIndex((cur) => (cur === idx ? null : cur)), 1800);
+                      }}
+                      className={`inline-flex min-h-[36px] items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs transition active:scale-95 text-left ${
+                        isSpoken
+                          ? 'border-amber-400 bg-amber-100/90 text-amber-950 dark:border-amber-400 dark:bg-amber-900/40 dark:text-amber-100 ring-2 ring-amber-400/50 shadow-sm'
+                          : 'border-amber-200/70 bg-amber-50/60 text-dharma-text hover:border-amber-300 hover:bg-amber-100/40 dark:border-amber-900/50 dark:bg-amber-950/30'
+                      }`}
+                      aria-label={`उच्चारण सुनें: ${item.word}`}
+                      title={`${item.word}: क्लिक करके उच्चारण सुनें`}
+                    >
+                      <span className="font-devanagari font-bold text-amber-900 dark:text-amber-200">
+                        {item.word}
+                      </span>
+                      {item.meaning && (
+                        <>
+                          <span className="text-amber-400 dark:text-amber-600 font-serif">·</span>
+                          <span className="text-dharma-muted text-[11px] font-sans">{item.meaning}</span>
+                        </>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            ) : (
+              <p lang="sa" className="font-devanagari text-sm leading-loose text-dharma-text">
+                {v.wordMeaning}
+              </p>
+            )}
           </div>
         )}
 
@@ -730,7 +855,11 @@ export function VerseCard({
                     {activeTab === 'meaning' && (
                       <div className="space-y-4">
                         {showHindi && (
-                          <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card-soft/70 p-4 shadow-2xs">
+                          <div className={`rounded-2xl border p-4 shadow-2xs transition-all duration-300 ${
+                            isReciting && activeTranslationLang === 'hi'
+                              ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
+                              : 'border-dharma-border/70 bg-dharma-card-soft/70'
+                          }`}>
                             <div className="mb-2 flex items-center justify-between gap-2">
                               <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                                 हिंदी अनुवाद · Hindi Translation
@@ -751,7 +880,11 @@ export function VerseCard({
                           </div>
                         )}
                         {showEnglish && (
-                          <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4 shadow-2xs">
+                          <div className={`rounded-2xl border p-4 shadow-2xs transition-all duration-300 ${
+                            isReciting && activeTranslationLang === 'en'
+                              ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
+                              : 'border-dharma-border/70 bg-dharma-card/70'
+                          }`}>
                             <div className="mb-2 flex items-center justify-between gap-2">
                               <p lang="en" className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
                                 English Translation

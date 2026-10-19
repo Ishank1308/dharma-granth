@@ -2,13 +2,30 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 
-export type Theme = 'day' | 'sunset' | 'paper' | 'night';
-export const THEMES: Theme[] = ['day', 'sunset', 'paper', 'night'];
+export type Theme = 'day' | 'sunset' | 'paper' | 'night' | 'auto';
+export const THEMES: Theme[] = ['day', 'sunset', 'paper', 'night', 'auto'];
 
 const STORAGE_KEY = 'dharma-theme';
 
+/**
+ * Computes sacred circadian theme based on Sandhyā kāla:
+ * - 5:00 AM – 6:30 AM: Prātaḥ Sandhyā (Dawn twilight -> sunset palette)
+ * - 6:30 AM – 4:45 PM: Dina (Daytime illumination -> day palette)
+ * - 4:45 PM – 7:00 PM: Sāyaṁ Sandhyā (Golden twilight -> sunset palette)
+ * - 7:00 PM – 5:00 AM: Niśā (Night contemplation -> night palette)
+ */
+export function getCircadianTheme(): 'day' | 'sunset' | 'night' {
+  const now = new Date();
+  const currentMinute = now.getHours() * 60 + now.getMinutes();
+  if (currentMinute >= 300 && currentMinute < 390) return 'sunset';
+  if (currentMinute >= 390 && currentMinute < 1005) return 'day';
+  if (currentMinute >= 1005 && currentMinute < 1140) return 'sunset';
+  return 'night';
+}
+
 interface ThemeContextValue {
   theme: Theme;
+  effectiveTheme: 'day' | 'sunset' | 'paper' | 'night';
   setTheme: (t: Theme) => void;
   cycleTheme: () => void;
 }
@@ -23,31 +40,48 @@ const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
  */
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('day');
+  const [effectiveTheme, setEffectiveTheme] = useState<'day' | 'sunset' | 'paper' | 'night'>('day');
 
   useEffect(() => {
-    // Reading can throw when storage is blocked (Safari private mode, cookies
-    // disabled); an unhandled throw here would take the whole app to the
-    // error page, so fall back to the default theme instead.
     let stored: Theme | null = null;
     try {
       stored = window.localStorage.getItem(STORAGE_KEY) as Theme | null;
     } catch {
       stored = null;
     }
-    if (stored && THEMES.includes(stored)) {
-      setThemeState(stored);
-      document.documentElement.setAttribute('data-theme', stored);
-    }
+    const initialTheme: Theme = stored && THEMES.includes(stored) ? stored : 'day';
+    setThemeState(initialTheme);
+
+    const applyTheme = (t: Theme) => {
+      const eff = t === 'auto' ? getCircadianTheme() : t;
+      setEffectiveTheme(eff);
+      document.documentElement.setAttribute('data-theme', eff);
+    };
+
+    applyTheme(initialTheme);
+
+    // If auto, periodically recompute circadian theme
+    const interval = setInterval(() => {
+      setThemeState((current) => {
+        if (current === 'auto') {
+          applyTheme('auto');
+        }
+        return current;
+      });
+    }, 60000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const setTheme = (t: Theme) => {
     setThemeState(t);
-    document.documentElement.setAttribute('data-theme', t);
+    const eff = t === 'auto' ? getCircadianTheme() : t;
+    setEffectiveTheme(eff);
+    document.documentElement.setAttribute('data-theme', eff);
     try {
       window.localStorage.setItem(STORAGE_KEY, t);
     } catch {
-      // localStorage may be unavailable (private browsing, quota). The
-      // in-memory state still works; just no persistence.
+      // quota or private mode
     }
   };
 
@@ -57,7 +91,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, cycleTheme }}>
+    <ThemeContext.Provider value={{ theme, effectiveTheme, setTheme, cycleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
@@ -70,6 +104,7 @@ export function useTheme(): ThemeContextValue {
     // renders. This shouldn't happen in production.
     return {
       theme: 'day',
+      effectiveTheme: 'day',
       setTheme: () => {},
       cycleTheme: () => {},
     };

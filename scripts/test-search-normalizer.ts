@@ -32,7 +32,7 @@ assert.notEqual(normalizePhonetic('कृष्ण'), normalizePhonetic('कर�
 assert.equal(normalizePhonetic('fear'), 'fear');
 
 // Direct Citation Jump Parser (Devanagari & Roman numerals)
-const gitaCitationExpected = '/scripture/bhagavadgita/chapter/2/verse/47';
+const gitaCitationExpected = '/scripture/bhagavadgita/chapter/2/verse/47/';
 const gita1 = parseDirectCitation('Gita 2.47');
 assert.ok(gita1, 'Gita 2.47 should parse');
 assert.equal(gita1.href, gitaCitationExpected);

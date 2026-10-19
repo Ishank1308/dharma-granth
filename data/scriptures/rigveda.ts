@@ -6,7 +6,7 @@ export const rigveda: Scripture = {
   titleSanskrit: 'ऋग्वेद',
   category: 'veda',
   description: 'The oldest scripture of humanity — 10,552 hymns across 10 Mandalas. Opens with Agni Suktam (RV 1.1.1 — the very first word of the oldest text in human history is "agni"). Contains the Gayatri Mantra (3.62.10), Nasadiya Sukta (10.129), Purusha Sukta, Ekam Sat, Vamadeva\'s non-dual declaration "aham manurabhaваṃ" (4.26.1), Vasishtha\'s Varuna hymns (7.86 — confession, unconscious guilt, and forgiveness), and the Soma Pavamana Mandala (9 — purification as cosmic metaphor: the drop already contains the abundance of immortality).',
-  totalVerses: 10600,
+  totalVerses: 29,
   tags: ['Veda', 'Hymns', 'Gayatri', 'Creation', 'NasadiyaSukta', 'AgniSuktam', 'Rita', 'VarunaHymns', 'SomaMandala', 'PurushaSukta', 'EkamSat', 'NonDual'],
   chapters: [
     {
@@ -48,16 +48,7 @@ export const rigveda: Scripture = {
           lifeLesson: 'The next time you feel that "my tradition is the right one," remember the Rig Veda — the oldest scripture — explicitly says otherwise. Approach other sincere spiritual and ethical traditions with curiosity. Truth is larger than any single name for it. This verse has prevented more religious wars than any political agreement.',
           keywords: ['EkamSat', 'Pluralism', 'Unity', 'OneReality'],
         },
-      
-        {
-          id: 101012,
-          sanskrit: 'एकं सद्विप्रा बहुधा वदन्ति अग्निं यमं मातरिश्वानमाहुः ॥',
-          transliteration: 'ekaṃ sadvipra bahudhā vadanti agniṃ yamaṃ mātariśvānamāhuḥ ||',
-          translation: 'Truth is one; the wise call it by many names — Agni, Yama, Matarishvan.',
-          hindi: 'सत् (सत्य) एक ही है; विद्वान उसे अनेक नामों से पुकारते हैं — अग्नि, यम, मातरिश्वा आदि।',
-          explanation: 'The most celebrated verse in the Rig Veda — the philosophical foundation of Hindu pluralism. "Ekam Sat Vipra Bahudha Vadanti" — Reality is one; wise people describe it in many ways. All the gods, all the religions, all the spiritual paths are different names for the one truth. No tradition has a monopoly. This is not relativism (all views are equal) but pluralism (one truth, many valid approaches).',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 2,
@@ -87,52 +78,7 @@ export const rigveda: Scripture = {
           lifeLesson: 'Rita cannot be deceived — not by intelligence, not by power, not by devotion. What in your life is currently operating against its own ordering principle? The body being pushed past its homeostatic limits. The relationship maintained through deception rather than honesty. The work building something unsustainable. Rita will not be deceived. Identify it. The path of Rita is also the path to the "vast luminous realm" — the "dīrgham divaḥ padaṃ" that cannot be reached any other way.',
           keywords: ['Rita', 'CosmicOrder', 'MoralLaw', 'NaturalLaw', 'InviolablePrinciple'],
         },
-      
-        {
-          id: 102012,
-          sanskrit: 'ऋतस्य पन्था न दभाय किं चन वृजिना ह्यस्य नश्यन्ति जन्तवः । ऋतेन दीर्घमनु वेनतो दिवः पदं न दुष्कृते अपि तं नशे ॥',
-          transliteration: 'ṛtasya panthā na dabhāya kiṃ cana vṛjinā hyasya naśyanti jantavaḥ | ṛtena dīrghamanu venato divaḥ padaṃ na duṣkṛte api taṃ naśe ||',
-          translation: 'The path of Rita cannot be deceived by anyone. Those who follow crooked ways perish. By Rita the vast luminous realm is reached — the evildoer cannot attain that place.',
-          hindi: 'ऋत के मार्ग को कोई धोखा नहीं दे सकता। वक्र पथ पर चलने वाले नष्ट हो जाते हैं। ऋत से ही वह विशाल द्युलोक प्राप्त होता है — दुष्कर्मी उसे नहीं पा सकता।',
-          explanation: 'The Rig Veda\'s most direct statement of Rita — the cosmic ordering principle that is simultaneously physical law and moral law. "Ṛtasya panthā na dabhāya kiṃ cana" — the path of cosmic order cannot be deceived by anyone. Gravity does not make exceptions. Truth does not make exceptions. Rita maintains the three worlds — earth, atmosphere, heaven. The moral implication: human actions that conform to Rita produce flourishing; those that violate it produce destruction. Not as divine punishment but as the natural consequence of acting against the structure of reality itself.',
-          keywords: [],
-        },
-        {
-          id: 102013,
-          sanskrit: 'सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् । स भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम् ॥',
-          transliteration: 'sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt | sa bhūmiṃ viśvato vṛtvātyatiṣṭhaddaśāṅgulam ||',
-          translation: 'The Cosmic Person has a thousand heads, a thousand eyes, a thousand feet. He pervades the earth on all sides and stands ten fingers beyond.',
-          hindi: 'पुरुष (विराट्) के हज़ार सिर, हज़ार आँखें और हज़ार पैर हैं। वह सब ओर से पृथ्वी को व्याप्त करके दस अंगुल अतिक्रमण करके स्थित है।',
-          explanation: 'The Purusha Sukta (RV 10.90) presents the universe as a single vast Conscious Being — not as dead matter arranged by chance but as a living, integrated whole. "Thousand heads, eyes, feet" is not literal; it conveys omniscience, omnipresence, and infinite diversity within one consciousness. The universe is not a machine; it is a Person — aware, unified, complete.',
-          keywords: [],
-        },
-        {
-          id: 102018,
-          sanskrit: 'विमुचेन्यसि वरुण पाशान् यैरबद्धो असि जातवेदः । यद्धि ते विश्वमनुमत्यम्भिर्वयं सुमित्राः स्याम ॥',
-          transliteration: 'vimucenya si varuṇa pāśān yairabaddho asi jātavedaḥ | yaddhi te viśvamanumatyambhirvayaṃ sumitrāḥ syāma ||',
-          translation: 'Release, O Varuna, the bonds with which I am bound, O Jataveda. For by your will, O all-knowing one — may we be among your good friends.',
-          hindi: 'हे वरुण, उन बन्धनों से मुझे मुक्त करो जिनसे मैं बँधा हूँ, हे जातवेद। क्योंकि तुम्हारी इच्छा से ही — हम तुम्हारे सुमित्र हों।',
-          explanation: 'The culminating prayer of the Varuna sequence: "vimucenya si varuṇa pāśān" — release, O Varuna, the bonds. The Vedic concept of pāśa (bonds, fetters) — the same root that gives the word "pashu" (bound creature) in Shaiva Tantra. The bonds are not external chains but the interior constrictions produced by unresolved transgression: guilt, shame, the habitual contraction around what one has done or left undone. The prayer moves from "what did I do wrong?" (7.86.1) to "release the bonds" — acknowledging that whatever the transgression was, its effect is a constraint on life-force itself. "Sumitrāḥ syāma" — may we be your good friends. The relationship with the divine, having been fractured by transgression, seeks restoration.',
-          keywords: [],
-        },
-        {
-          id: 102127,
-          sanskrit: 'इन्द्रो मायाभिः पुरुरूप ईयते युक्ता ह्यस्य हरयः शता दश । आयं शक्र इत्येनमाहुर्यः स्वर्षाता सत्पतिः शूरो अस्तु ॥',
-          transliteration: 'indro māyābhiḥ pururūpa īyate yuktā hyasya harayaḥ śatā daśa | āyaṃ śakra ityenamāhuryaḥ svarṣātā satpatiḥ śūro astu ||',
-          translation: 'Indra moves in many forms through his powers of maya. His golden coursers are yoked a thousand and ten. They call him Shakra — may he who wins the heavenly light, lord of the good, be heroic.',
-          hindi: 'इन्द्र अपनी माया-शक्तियों से अनेक रूप धारण करके विचरते हैं। उनके दस सौ सुनहरे अश्व जुते हैं। उन्हें शक्र कहते हैं — जो स्वर्ग-प्रकाश प्राप्त करे, सत्पुरुषों का स्वामी, वह शूर हो।',
-          explanation: 'This verse introduces one of the Rig Veda\'s most philosophically rich concepts: Vedic "māyā" — not yet in its later Vedantic sense of "illusion" but in its original sense of "creative power, the capacity to take many forms." Indra\'s māyā is his ability to appear in multiple forms simultaneously — the power of infinite self-expression. "Pururūpa" — many-formed. The thousand golden coursers are the infinite forces through which the cosmic principle of Indra manifests. This verse anticipates the Vedantic māyā doctrine: the one reality appears as the many through the creative power of self-differentiation.',
-          keywords: [],
-        },
-        {
-          id: 102128,
-          sanskrit: 'मरुतो यद्ध वो बलं यच्च सत्यमुत क्रतुः । तेन मा पातनाधसः ॥',
-          transliteration: 'maruto yadha vo balaṃ yacca satyamuta kratuḥ | tena mā pātanādhasaḥ ||',
-          translation: 'O Maruts — whatever strength you have, whatever truth, whatever purposeful will — by that, protect me from falling low.',
-          hindi: 'हे मरुतो — तुम्हारे पास जो बल है, जो सत्य है, जो संकल्पशक्ति है — उससे मुझे नीचे गिरने से बचाओ।',
-          explanation: 'The Maruts are the storm-gods — the vital winds, the forces of prana that move through the cosmos and through the body. They are "bala" (strength), "satya" (truth), and "kratu" (purposeful will — the capacity to act with decisive intention). The prayer asks to be protected from "adhas" — falling low, sinking, degradation. The Maruts\' three qualities are exactly what prevents that fall: physical vitality (bala) to sustain the body, truth (satya) to orient perception accurately, and purposeful will (kratu) to act from genuine intention rather than reactive impulse. The Vedic model of resilience: not the absence of storms but having the storm-energy itself as your ally.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 3,
@@ -162,61 +108,7 @@ export const rigveda: Scripture = {
           lifeLesson: 'Before your Gayatri practice — or any form of meditation — try this: recognise the light of awareness in which all your experience appears right now. Not manufactured, not concentrated, but already present. The heat of the candle, the warmth of sunlight through the window, the clarity in your own mind as you read: one light. "Ekaṃ vā idaṃ vibabhūva sarvam." The Gayatri is not asking something external to illuminate something internal. The One Light is asking itself to be awake.',
           keywords: ['EkamSat', 'VedicMonism', 'OneLight', 'Vishvamitra', 'LightUnification'],
         },
-      
-        {
-          id: 103012,
-          sanskrit: 'एक एव अग्निर्बहुधा समिद्धः एकः सूर्यो विश्वमनु प्रभूतः । एकैवोषाः सर्वमिदं विभाति एकं वा इदं विबभूव सर्वम् ॥',
-          transliteration: 'eka eva agnirbahudha samiddhaḥ ekaḥ sūryo viśvamanu prabhūtaḥ | ekaivoṣāḥ sarvamidaṃ vibhāti ekaṃ vā idaṃ vibabhūva sarvam ||',
-          translation: 'Fire is one, kindled in many ways. The Sun is one, pervading the whole world. The Dawn is one — she illumines all this. The One alone has become all this.',
-          hindi: 'अग्नि एक ही है, अनेक प्रकार से प्रज्वलित। सूर्य एक ही है, सारे जगत् में व्याप्त। उषा एक ही है — वह सब को प्रकाशित करती है। वास्तव में यह सब वही एक है।',
-          explanation: 'The Vishvamitra Mandala contains more than the Gayatri — it also articulates the philosophical monism that the Gayatri presupposes. This verse states it plainly: the light of Agni, the light of Surya, the light of Ushas — one light, one source, one reality. "Ekaṃ vā idaṃ vibabhūva sarvam" — the One alone has become all this. This is the metaphysics underlying the Gayatri mantra: when you meditate on the "bhargo devasya" — the divine light of Savitar — you are not addressing a separate deity; you are recognising the single light that is the ground of all perception. The Mandala that gives us the Gayatri also gives us the understanding of why it works: the light you seek to enter your mind is the same light as your mind itself. Ekam Sat Vipra Bahudha Vadanti (RV 1.164.46) — truth is one; the wise speak of it in many ways — finds its cosmological expression here.',
-          keywords: [],
-        },
-        {
-          id: 103013,
-          sanskrit: 'सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् । स भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम् ॥',
-          transliteration: 'sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt | sa bhūmiṃ viśvato vṛtvātyatiṣṭhaddaśāṅgulam ||',
-          translation: 'The Cosmic Person has a thousand heads, a thousand eyes, a thousand feet. He pervades the earth on all sides and stands ten fingers beyond.',
-          hindi: 'पुरुष (विराट्) के हज़ार सिर, हज़ार आँखें और हज़ार पैर हैं। वह सब ओर से पृथ्वी को व्याप्त करके दस अंगुल अतिक्रमण करके स्थित है।',
-          explanation: 'The Purusha Sukta (RV 10.90) presents the universe as a single vast Conscious Being — not as dead matter arranged by chance but as a living, integrated whole. "Thousand heads, eyes, feet" is not literal; it conveys omniscience, omnipresence, and infinite diversity within one consciousness. The universe is not a machine; it is a Person — aware, unified, complete.',
-          keywords: [],
-        },
-        {
-          id: 103018,
-          sanskrit: 'विमुचेन्यसि वरुण पाशान् यैरबद्धो असि जातवेदः । यद्धि ते विश्वमनुमत्यम्भिर्वयं सुमित्राः स्याम ॥',
-          transliteration: 'vimucenya si varuṇa pāśān yairabaddho asi jātavedaḥ | yaddhi te viśvamanumatyambhirvayaṃ sumitrāḥ syāma ||',
-          translation: 'Release, O Varuna, the bonds with which I am bound, O Jataveda. For by your will, O all-knowing one — may we be among your good friends.',
-          hindi: 'हे वरुण, उन बन्धनों से मुझे मुक्त करो जिनसे मैं बँधा हूँ, हे जातवेद। क्योंकि तुम्हारी इच्छा से ही — हम तुम्हारे सुमित्र हों।',
-          explanation: 'The culminating prayer of the Varuna sequence: "vimucenya si varuṇa pāśān" — release, O Varuna, the bonds. The Vedic concept of pāśa (bonds, fetters) — the same root that gives the word "pashu" (bound creature) in Shaiva Tantra. The bonds are not external chains but the interior constrictions produced by unresolved transgression: guilt, shame, the habitual contraction around what one has done or left undone. The prayer moves from "what did I do wrong?" (7.86.1) to "release the bonds" — acknowledging that whatever the transgression was, its effect is a constraint on life-force itself. "Sumitrāḥ syāma" — may we be your good friends. The relationship with the divine, having been fractured by transgression, seeks restoration.',
-          keywords: [],
-        },
-        {
-          id: 103022,
-          sanskrit: 'ऋतस्य पन्था न दभाय किं चन वृजिना ह्यस्य नश्यन्ति जन्तवः । ऋतेन दीर्घमनु वेनतो दिवः पदं न दुष्कृते अपि तं नशे ॥',
-          transliteration: 'ṛtasya panthā na dabhāya kiṃ cana vṛjinā hyasya naśyanti jantavaḥ | ṛtena dīrghamanu venato divaḥ padaṃ na duṣkṛte api taṃ naśe ||',
-          translation: 'The path of Rita cannot be deceived by anyone. Those who follow crooked ways perish. By Rita the vast luminous realm is reached — the evildoer cannot attain that place.',
-          hindi: 'ऋत के मार्ग को कोई धोखा नहीं दे सकता। वक्र पथ पर चलने वाले नष्ट हो जाते हैं। ऋत से ही वह विशाल द्युलोक प्राप्त होता है — दुष्कर्मी उसे नहीं पा सकता।',
-          explanation: 'The Rig Veda\'s most direct statement of Rita — the cosmic ordering principle that is simultaneously physical law and moral law. "Ṛtasya panthā na dabhāya kiṃ cana" — the path of cosmic order cannot be deceived by anyone. Gravity does not make exceptions. Truth does not make exceptions. Rita maintains the three worlds — earth, atmosphere, heaven. The moral implication: human actions that conform to Rita produce flourishing; those that violate it produce destruction. Not as divine punishment but as the natural consequence of acting against the structure of reality itself.',
-          keywords: [],
-        },
-        {
-          id: 103027,
-          sanskrit: 'इन्द्रो मायाभिः पुरुरूप ईयते युक्ता ह्यस्य हरयः शता दश । आयं शक्र इत्येनमाहुर्यः स्वर्षाता सत्पतिः शूरो अस्तु ॥',
-          transliteration: 'indro māyābhiḥ pururūpa īyate yuktā hyasya harayaḥ śatā daśa | āyaṃ śakra ityenamāhuryaḥ svarṣātā satpatiḥ śūro astu ||',
-          translation: 'Indra moves in many forms through his powers of maya. His golden coursers are yoked a thousand and ten. They call him Shakra — may he who wins the heavenly light, lord of the good, be heroic.',
-          hindi: 'इन्द्र अपनी माया-शक्तियों से अनेक रूप धारण करके विचरते हैं। उनके दस सौ सुनहरे अश्व जुते हैं। उन्हें शक्र कहते हैं — जो स्वर्ग-प्रकाश प्राप्त करे, सत्पुरुषों का स्वामी, वह शूर हो।',
-          explanation: 'This verse introduces one of the Rig Veda\'s most philosophically rich concepts: Vedic "māyā" — not yet in its later Vedantic sense of "illusion" but in its original sense of "creative power, the capacity to take many forms." Indra\'s māyā is his ability to appear in multiple forms simultaneously — the power of infinite self-expression. "Pururūpa" — many-formed. The thousand golden coursers are the infinite forces through which the cosmic principle of Indra manifests. This verse anticipates the Vedantic māyā doctrine: the one reality appears as the many through the creative power of self-differentiation.',
-          keywords: [],
-        },
-        {
-          id: 103028,
-          sanskrit: 'मरुतो यद्ध वो बलं यच्च सत्यमुत क्रतुः । तेन मा पातनाधसः ॥',
-          transliteration: 'maruto yadha vo balaṃ yacca satyamuta kratuḥ | tena mā pātanādhasaḥ ||',
-          translation: 'O Maruts — whatever strength you have, whatever truth, whatever purposeful will — by that, protect me from falling low.',
-          hindi: 'हे मरुतो — तुम्हारे पास जो बल है, जो सत्य है, जो संकल्पशक्ति है — उससे मुझे नीचे गिरने से बचाओ।',
-          explanation: 'The Maruts are the storm-gods — the vital winds, the forces of prana that move through the cosmos and through the body. They are "bala" (strength), "satya" (truth), and "kratu" (purposeful will — the capacity to act with decisive intention). The prayer asks to be protected from "adhas" — falling low, sinking, degradation. The Maruts\' three qualities are exactly what prevents that fall: physical vitality (bala) to sustain the body, truth (satya) to orient perception accurately, and purposeful will (kratu) to act from genuine intention rather than reactive impulse. The Vedic model of resilience: not the absence of storms but having the storm-energy itself as your ally.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 4,
@@ -246,52 +138,7 @@ export const rigveda: Scripture = {
           lifeLesson: 'Vedic māyā — not illusion but creative power — gives a different lens on diversity. Every person you encounter, every situation you face, is one of Indra\'s thousand horses — one actualisation of infinite potential. The diversity of reality is not confusion to be resolved into one true form; it is the natural expression of the creative power of the Real. Practice seeing multiplicity as richness rather than noise.',
           keywords: ['IndraMaya', 'PururupaIndra', 'CreativePower', 'VedicMaya', 'QuantumSuperposition'],
         },
-      
-        {
-          id: 104012,
-          sanskrit: 'इन्द्रो मायाभिः पुरुरूप ईयते युक्ता ह्यस्य हरयः शता दश । आयं शक्र इत्येनमाहुर्यः स्वर्षाता सत्पतिः शूरो अस्तु ॥',
-          transliteration: 'indro māyābhiḥ pururūpa īyate yuktā hyasya harayaḥ śatā daśa | āyaṃ śakra ityenamāhuryaḥ svarṣātā satpatiḥ śūro astu ||',
-          translation: 'Indra moves in many forms through his powers of maya. His golden coursers are yoked a thousand and ten. They call him Shakra — may he who wins the heavenly light, lord of the good, be heroic.',
-          hindi: 'इन्द्र अपनी माया-शक्तियों से अनेक रूप धारण करके विचरते हैं। उनके दस सौ सुनहरे अश्व जुते हैं। उन्हें शक्र कहते हैं — जो स्वर्ग-प्रकाश प्राप्त करे, सत्पुरुषों का स्वामी, वह शूर हो।',
-          explanation: 'This verse introduces one of the Rig Veda\'s most philosophically rich concepts: Vedic "māyā" — not yet in its later Vedantic sense of "illusion" but in its original sense of "creative power, the capacity to take many forms." Indra\'s māyā is his ability to appear in multiple forms simultaneously — the power of infinite self-expression. "Pururūpa" — many-formed. The thousand golden coursers are the infinite forces through which the cosmic principle of Indra manifests. This verse anticipates the Vedantic māyā doctrine: the one reality appears as the many through the creative power of self-differentiation.',
-          keywords: [],
-        },
-        {
-          id: 104013,
-          sanskrit: 'सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् । स भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम् ॥',
-          transliteration: 'sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt | sa bhūmiṃ viśvato vṛtvātyatiṣṭhaddaśāṅgulam ||',
-          translation: 'The Cosmic Person has a thousand heads, a thousand eyes, a thousand feet. He pervades the earth on all sides and stands ten fingers beyond.',
-          hindi: 'पुरुष (विराट्) के हज़ार सिर, हज़ार आँखें और हज़ार पैर हैं। वह सब ओर से पृथ्वी को व्याप्त करके दस अंगुल अतिक्रमण करके स्थित है।',
-          explanation: 'The Purusha Sukta (RV 10.90) presents the universe as a single vast Conscious Being — not as dead matter arranged by chance but as a living, integrated whole. "Thousand heads, eyes, feet" is not literal; it conveys omniscience, omnipresence, and infinite diversity within one consciousness. The universe is not a machine; it is a Person — aware, unified, complete.',
-          keywords: [],
-        },
-        {
-          id: 104018,
-          sanskrit: 'विमुचेन्यसि वरुण पाशान् यैरबद्धो असि जातवेदः । यद्धि ते विश्वमनुमत्यम्भिर्वयं सुमित्राः स्याम ॥',
-          transliteration: 'vimucenya si varuṇa pāśān yairabaddho asi jātavedaḥ | yaddhi te viśvamanumatyambhirvayaṃ sumitrāḥ syāma ||',
-          translation: 'Release, O Varuna, the bonds with which I am bound, O Jataveda. For by your will, O all-knowing one — may we be among your good friends.',
-          hindi: 'हे वरुण, उन बन्धनों से मुझे मुक्त करो जिनसे मैं बँधा हूँ, हे जातवेद। क्योंकि तुम्हारी इच्छा से ही — हम तुम्हारे सुमित्र हों।',
-          explanation: 'The culminating prayer of the Varuna sequence: "vimucenya si varuṇa pāśān" — release, O Varuna, the bonds. The Vedic concept of pāśa (bonds, fetters) — the same root that gives the word "pashu" (bound creature) in Shaiva Tantra. The bonds are not external chains but the interior constrictions produced by unresolved transgression: guilt, shame, the habitual contraction around what one has done or left undone. The prayer moves from "what did I do wrong?" (7.86.1) to "release the bonds" — acknowledging that whatever the transgression was, its effect is a constraint on life-force itself. "Sumitrāḥ syāma" — may we be your good friends. The relationship with the divine, having been fractured by transgression, seeks restoration.',
-          keywords: [],
-        },
-        {
-          id: 104022,
-          sanskrit: 'ऋतस्य पन्था न दभाय किं चन वृजिना ह्यस्य नश्यन्ति जन्तवः । ऋतेन दीर्घमनु वेनतो दिवः पदं न दुष्कृते अपि तं नशे ॥',
-          transliteration: 'ṛtasya panthā na dabhāya kiṃ cana vṛjinā hyasya naśyanti jantavaḥ | ṛtena dīrghamanu venato divaḥ padaṃ na duṣkṛte api taṃ naśe ||',
-          translation: 'The path of Rita cannot be deceived by anyone. Those who follow crooked ways perish. By Rita the vast luminous realm is reached — the evildoer cannot attain that place.',
-          hindi: 'ऋत के मार्ग को कोई धोखा नहीं दे सकता। वक्र पथ पर चलने वाले नष्ट हो जाते हैं। ऋत से ही वह विशाल द्युलोक प्राप्त होता है — दुष्कर्मी उसे नहीं पा सकता।',
-          explanation: 'The Rig Veda\'s most direct statement of Rita — the cosmic ordering principle that is simultaneously physical law and moral law. "Ṛtasya panthā na dabhāya kiṃ cana" — the path of cosmic order cannot be deceived by anyone. Gravity does not make exceptions. Truth does not make exceptions. Rita maintains the three worlds — earth, atmosphere, heaven. The moral implication: human actions that conform to Rita produce flourishing; those that violate it produce destruction. Not as divine punishment but as the natural consequence of acting against the structure of reality itself.',
-          keywords: [],
-        },
-        {
-          id: 104028,
-          sanskrit: 'मरुतो यद्ध वो बलं यच्च सत्यमुत क्रतुः । तेन मा पातनाधसः ॥',
-          transliteration: 'maruto yadha vo balaṃ yacca satyamuta kratuḥ | tena mā pātanādhasaḥ ||',
-          translation: 'O Maruts — whatever strength you have, whatever truth, whatever purposeful will — by that, protect me from falling low.',
-          hindi: 'हे मरुतो — तुम्हारे पास जो बल है, जो सत्य है, जो संकल्पशक्ति है — उससे मुझे नीचे गिरने से बचाओ।',
-          explanation: 'The Maruts are the storm-gods — the vital winds, the forces of prana that move through the cosmos and through the body. They are "bala" (strength), "satya" (truth), and "kratu" (purposeful will — the capacity to act with decisive intention). The prayer asks to be protected from "adhas" — falling low, sinking, degradation. The Maruts\' three qualities are exactly what prevents that fall: physical vitality (bala) to sustain the body, truth (satya) to orient perception accurately, and purposeful will (kratu) to act from genuine intention rather than reactive impulse. The Vedic model of resilience: not the absence of storms but having the storm-energy itself as your ally.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 5,
@@ -321,52 +168,7 @@ export const rigveda: Scripture = {
           lifeLesson: 'When you feel yourself sinking — losing energy, losing clarity, losing the sense that your actions matter — the Maruts\' prayer is available. Identify which of the three is most depleted: bala (physical vitality — sleep, movement, food), satya (accurate perception — are you seeing the situation clearly or through a distorting lens?), or kratu (purposeful will — are you acting from genuine intention or from reactivity and avoidance?). Name the specific deficit. Then address it directly.',
           keywords: ['Maruts', 'PranaForce', 'BalaSatyaKratu', 'Resilience', 'PostTraumaticGrowth'],
         },
-      
-        {
-          id: 105012,
-          sanskrit: 'मरुतो यद्ध वो बलं यच्च सत्यमुत क्रतुः । तेन मा पातनाधसः ॥',
-          transliteration: 'maruto yadha vo balaṃ yacca satyamuta kratuḥ | tena mā pātanādhasaḥ ||',
-          translation: 'O Maruts — whatever strength you have, whatever truth, whatever purposeful will — by that, protect me from falling low.',
-          hindi: 'हे मरुतो — तुम्हारे पास जो बल है, जो सत्य है, जो संकल्पशक्ति है — उससे मुझे नीचे गिरने से बचाओ।',
-          explanation: 'The Maruts are the storm-gods — the vital winds, the forces of prana that move through the cosmos and through the body. They are "bala" (strength), "satya" (truth), and "kratu" (purposeful will — the capacity to act with decisive intention). The prayer asks to be protected from "adhas" — falling low, sinking, degradation. The Maruts\' three qualities are exactly what prevents that fall: physical vitality (bala) to sustain the body, truth (satya) to orient perception accurately, and purposeful will (kratu) to act from genuine intention rather than reactive impulse. The Vedic model of resilience: not the absence of storms but having the storm-energy itself as your ally.',
-          keywords: [],
-        },
-        {
-          id: 105013,
-          sanskrit: 'सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् । स भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम् ॥',
-          transliteration: 'sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt | sa bhūmiṃ viśvato vṛtvātyatiṣṭhaddaśāṅgulam ||',
-          translation: 'The Cosmic Person has a thousand heads, a thousand eyes, a thousand feet. He pervades the earth on all sides and stands ten fingers beyond.',
-          hindi: 'पुरुष (विराट्) के हज़ार सिर, हज़ार आँखें और हज़ार पैर हैं। वह सब ओर से पृथ्वी को व्याप्त करके दस अंगुल अतिक्रमण करके स्थित है।',
-          explanation: 'The Purusha Sukta (RV 10.90) presents the universe as a single vast Conscious Being — not as dead matter arranged by chance but as a living, integrated whole. "Thousand heads, eyes, feet" is not literal; it conveys omniscience, omnipresence, and infinite diversity within one consciousness. The universe is not a machine; it is a Person — aware, unified, complete.',
-          keywords: [],
-        },
-        {
-          id: 105018,
-          sanskrit: 'विमुचेन्यसि वरुण पाशान् यैरबद्धो असि जातवेदः । यद्धि ते विश्वमनुमत्यम्भिर्वयं सुमित्राः स्याम ॥',
-          transliteration: 'vimucenya si varuṇa pāśān yairabaddho asi jātavedaḥ | yaddhi te viśvamanumatyambhirvayaṃ sumitrāḥ syāma ||',
-          translation: 'Release, O Varuna, the bonds with which I am bound, O Jataveda. For by your will, O all-knowing one — may we be among your good friends.',
-          hindi: 'हे वरुण, उन बन्धनों से मुझे मुक्त करो जिनसे मैं बँधा हूँ, हे जातवेद। क्योंकि तुम्हारी इच्छा से ही — हम तुम्हारे सुमित्र हों।',
-          explanation: 'The culminating prayer of the Varuna sequence: "vimucenya si varuṇa pāśān" — release, O Varuna, the bonds. The Vedic concept of pāśa (bonds, fetters) — the same root that gives the word "pashu" (bound creature) in Shaiva Tantra. The bonds are not external chains but the interior constrictions produced by unresolved transgression: guilt, shame, the habitual contraction around what one has done or left undone. The prayer moves from "what did I do wrong?" (7.86.1) to "release the bonds" — acknowledging that whatever the transgression was, its effect is a constraint on life-force itself. "Sumitrāḥ syāma" — may we be your good friends. The relationship with the divine, having been fractured by transgression, seeks restoration.',
-          keywords: [],
-        },
-        {
-          id: 105022,
-          sanskrit: 'ऋतस्य पन्था न दभाय किं चन वृजिना ह्यस्य नश्यन्ति जन्तवः । ऋतेन दीर्घमनु वेनतो दिवः पदं न दुष्कृते अपि तं नशे ॥',
-          transliteration: 'ṛtasya panthā na dabhāya kiṃ cana vṛjinā hyasya naśyanti jantavaḥ | ṛtena dīrghamanu venato divaḥ padaṃ na duṣkṛte api taṃ naśe ||',
-          translation: 'The path of Rita cannot be deceived by anyone. Those who follow crooked ways perish. By Rita the vast luminous realm is reached — the evildoer cannot attain that place.',
-          hindi: 'ऋत के मार्ग को कोई धोखा नहीं दे सकता। वक्र पथ पर चलने वाले नष्ट हो जाते हैं। ऋत से ही वह विशाल द्युलोक प्राप्त होता है — दुष्कर्मी उसे नहीं पा सकता।',
-          explanation: 'The Rig Veda\'s most direct statement of Rita — the cosmic ordering principle that is simultaneously physical law and moral law. "Ṛtasya panthā na dabhāya kiṃ cana" — the path of cosmic order cannot be deceived by anyone. Gravity does not make exceptions. Truth does not make exceptions. Rita maintains the three worlds — earth, atmosphere, heaven. The moral implication: human actions that conform to Rita produce flourishing; those that violate it produce destruction. Not as divine punishment but as the natural consequence of acting against the structure of reality itself.',
-          keywords: [],
-        },
-        {
-          id: 105427,
-          sanskrit: 'इन्द्रो मायाभिः पुरुरूप ईयते युक्ता ह्यस्य हरयः शता दश । आयं शक्र इत्येनमाहुर्यः स्वर्षाता सत्पतिः शूरो अस्तु ॥',
-          transliteration: 'indro māyābhiḥ pururūpa īyate yuktā hyasya harayaḥ śatā daśa | āyaṃ śakra ityenamāhuryaḥ svarṣātā satpatiḥ śūro astu ||',
-          translation: 'Indra moves in many forms through his powers of maya. His golden coursers are yoked a thousand and ten. They call him Shakra — may he who wins the heavenly light, lord of the good, be heroic.',
-          hindi: 'इन्द्र अपनी माया-शक्तियों से अनेक रूप धारण करके विचरते हैं। उनके दस सौ सुनहरे अश्व जुते हैं। उन्हें शक्र कहते हैं — जो स्वर्ग-प्रकाश प्राप्त करे, सत्पुरुषों का स्वामी, वह शूर हो।',
-          explanation: 'This verse introduces one of the Rig Veda\'s most philosophically rich concepts: Vedic "māyā" — not yet in its later Vedantic sense of "illusion" but in its original sense of "creative power, the capacity to take many forms." Indra\'s māyā is his ability to appear in multiple forms simultaneously — the power of infinite self-expression. "Pururūpa" — many-formed. The thousand golden coursers are the infinite forces through which the cosmic principle of Indra manifests. This verse anticipates the Vedantic māyā doctrine: the one reality appears as the many through the creative power of self-differentiation.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 6,
@@ -396,70 +198,7 @@ export const rigveda: Scripture = {
           lifeLesson: '"Kratuṃ na ā bhara" — bring me purposeful will. Where in your life do you have clear knowledge of what needs to be done but find yourself unable to do it? That gap — between knowing and doing — is exactly where kratu is absent. The Vedic diagnostic: the limitation (pura) is not outside you but inside — a habitual pattern, a defended identity, a fear masquerading as reason. Purandara destroys those internal fortresses. Name the specific internal fortification that is preventing your action. That naming is the first strike of Indra\'s vajra.',
           keywords: ['Kratu', 'Purandara', 'PurposefulWill', 'ExecutiveFunction', 'BreakingLimitations'],
         },
-      
-        {
-          id: 106012,
-          sanskrit: 'इन्द्र क्रतुं न आ भर पितान आ भर । वसो पुरन्दर श्रुधी हवम् ॥',
-          transliteration: 'indra kratuṃ na ā bhara pitā na ā bhara | vaso purandara śrudhī havam ||',
-          translation: 'O Indra, bring us purposeful will as a father brings. O master of abundance, destroyer of limitations — hear our call.',
-          hindi: 'हे इन्द्र, पिता की तरह हमें क्रतु (संकल्पशक्ति) लाओ। हे वसु (समृद्धि के स्वामी), पुरन्दर (बाधाओं के नाशक) — हमारी पुकार सुनो।',
-          explanation: '"Kratuṃ na ā bhara pitā na" — bring us kratu as a father brings. The simile is precise: a father brings practical capacity to his children — not just love or intention but the actual functional ability to act effectively in the world. Kratu is purposeful will: not vague desire, not aspiration, but the integrated capacity of perception + intention + execution that allows a person to actually do what they know needs to be done. "Purandara" — the destroyer of puras (limitations, strongholds, the rigid structures that confine): Indra as the force that breaks through whatever has become too fixed, too defended, too calcified. The prayer asks Indra to break the internal strongholds — the habitual patterns, the defensive structures, the calcified beliefs — that prevent kratu from operating freely.',
-          keywords: [],
-        },
-        {
-          id: 106013,
-          sanskrit: 'सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् । स भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम् ॥',
-          transliteration: 'sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt | sa bhūmiṃ viśvato vṛtvātyatiṣṭhaddaśāṅgulam ||',
-          translation: 'The Cosmic Person has a thousand heads, a thousand eyes, a thousand feet. He pervades the earth on all sides and stands ten fingers beyond.',
-          hindi: 'पुरुष (विराट्) के हज़ार सिर, हज़ार आँखें और हज़ार पैर हैं। वह सब ओर से पृथ्वी को व्याप्त करके दस अंगुल अतिक्रमण करके स्थित है।',
-          explanation: 'The Purusha Sukta (RV 10.90) presents the universe as a single vast Conscious Being — not as dead matter arranged by chance but as a living, integrated whole. "Thousand heads, eyes, feet" is not literal; it conveys omniscience, omnipresence, and infinite diversity within one consciousness. The universe is not a machine; it is a Person — aware, unified, complete.',
-          keywords: [],
-        },
-        {
-          id: 106018,
-          sanskrit: 'विमुचेन्यसि वरुण पाशान् यैरबद्धो असि जातवेदः । यद्धि ते विश्वमनुमत्यम्भिर्वयं सुमित्राः स्याम ॥',
-          transliteration: 'vimucenya si varuṇa pāśān yairabaddho asi jātavedaḥ | yaddhi te viśvamanumatyambhirvayaṃ sumitrāḥ syāma ||',
-          translation: 'Release, O Varuna, the bonds with which I am bound, O Jataveda. For by your will, O all-knowing one — may we be among your good friends.',
-          hindi: 'हे वरुण, उन बन्धनों से मुझे मुक्त करो जिनसे मैं बँधा हूँ, हे जातवेद। क्योंकि तुम्हारी इच्छा से ही — हम तुम्हारे सुमित्र हों।',
-          explanation: 'The culminating prayer of the Varuna sequence: "vimucenya si varuṇa pāśān" — release, O Varuna, the bonds. The Vedic concept of pāśa (bonds, fetters) — the same root that gives the word "pashu" (bound creature) in Shaiva Tantra. The bonds are not external chains but the interior constrictions produced by unresolved transgression: guilt, shame, the habitual contraction around what one has done or left undone. The prayer moves from "what did I do wrong?" (7.86.1) to "release the bonds" — acknowledging that whatever the transgression was, its effect is a constraint on life-force itself. "Sumitrāḥ syāma" — may we be your good friends. The relationship with the divine, having been fractured by transgression, seeks restoration.',
-          keywords: [],
-        },
-        {
-          id: 106022,
-          sanskrit: 'ऋतस्य पन्था न दभाय किं चन वृजिना ह्यस्य नश्यन्ति जन्तवः । ऋतेन दीर्घमनु वेनतो दिवः पदं न दुष्कृते अपि तं नशे ॥',
-          transliteration: 'ṛtasya panthā na dabhāya kiṃ cana vṛjinā hyasya naśyanti jantavaḥ | ṛtena dīrghamanu venato divaḥ padaṃ na duṣkṛte api taṃ naśe ||',
-          translation: 'The path of Rita cannot be deceived by anyone. Those who follow crooked ways perish. By Rita the vast luminous realm is reached — the evildoer cannot attain that place.',
-          hindi: 'ऋत के मार्ग को कोई धोखा नहीं दे सकता। वक्र पथ पर चलने वाले नष्ट हो जाते हैं। ऋत से ही वह विशाल द्युलोक प्राप्त होता है — दुष्कर्मी उसे नहीं पा सकता।',
-          explanation: 'The Rig Veda\'s most direct statement of Rita — the cosmic ordering principle that is simultaneously physical law and moral law. "Ṛtasya panthā na dabhāya kiṃ cana" — the path of cosmic order cannot be deceived by anyone. Gravity does not make exceptions. Truth does not make exceptions. Rita maintains the three worlds — earth, atmosphere, heaven. The moral implication: human actions that conform to Rita produce flourishing; those that violate it produce destruction. Not as divine punishment but as the natural consequence of acting against the structure of reality itself.',
-          keywords: [],
-        },
-        {
-          id: 106167,
-          sanskrit: 'इन्द्रो मायाभिः पुरुरूप ईयते युक्ता ह्यस्य हरयः शता दश । आयं शक्र इत्येनमाहुर्यः स्वर्षाता सत्पतिः शूरो अस्तु ॥',
-          transliteration: 'indro māyābhiḥ pururūpa īyate yuktā hyasya harayaḥ śatā daśa | āyaṃ śakra ityenamāhuryaḥ svarṣātā satpatiḥ śūro astu ||',
-          translation: 'Indra moves in many forms through his powers of maya. His golden coursers are yoked a thousand and ten. They call him Shakra — may he who wins the heavenly light, lord of the good, be heroic.',
-          hindi: 'इन्द्र अपनी माया-शक्तियों से अनेक रूप धारण करके विचरते हैं। उनके दस सौ सुनहरे अश्व जुते हैं। उन्हें शक्र कहते हैं — जो स्वर्ग-प्रकाश प्राप्त करे, सत्पुरुषों का स्वामी, वह शूर हो।',
-          explanation: 'This verse introduces one of the Rig Veda\'s most philosophically rich concepts: Vedic "māyā" — not yet in its later Vedantic sense of "illusion" but in its original sense of "creative power, the capacity to take many forms." Indra\'s māyā is his ability to appear in multiple forms simultaneously — the power of infinite self-expression. "Pururūpa" — many-formed. The thousand golden coursers are the infinite forces through which the cosmic principle of Indra manifests. This verse anticipates the Vedantic māyā doctrine: the one reality appears as the many through the creative power of self-differentiation.',
-          keywords: [],
-        },
-        {
-          id: 106168,
-          sanskrit: 'मरुतो यद्ध वो बलं यच्च सत्यमुत क्रतुः । तेन मा पातनाधसः ॥',
-          transliteration: 'maruto yadha vo balaṃ yacca satyamuta kratuḥ | tena mā pātanādhasaḥ ||',
-          translation: 'O Maruts — whatever strength you have, whatever truth, whatever purposeful will — by that, protect me from falling low.',
-          hindi: 'हे मरुतो — तुम्हारे पास जो बल है, जो सत्य है, जो संकल्पशक्ति है — उससे मुझे नीचे गिरने से बचाओ।',
-          explanation: 'The Maruts are the storm-gods — the vital winds, the forces of prana that move through the cosmos and through the body. They are "bala" (strength), "satya" (truth), and "kratu" (purposeful will — the capacity to act with decisive intention). The prayer asks to be protected from "adhas" — falling low, sinking, degradation. The Maruts\' three qualities are exactly what prevents that fall: physical vitality (bala) to sustain the body, truth (satya) to orient perception accurately, and purposeful will (kratu) to act from genuine intention rather than reactive impulse. The Vedic model of resilience: not the absence of storms but having the storm-energy itself as your ally.',
-          keywords: [],
-        },
-        {
-          id: 106208,
-          sanskrit: 'अपाम सोमममृता अभूमागन्म ज्योतिरविदाम देवान् । किं नूनमस्मान्कृणवदरातिः किमु धूर्तिरमृत मर्त्यस्य ॥',
-          transliteration: 'apāma somamamṛtā abhūmāganma jyotiravadāma devān | kiṃ nūnamasmānkṛṇavadarātiḥ kimu dhūrtiraṃṛta martyasya ||',
-          translation: 'We have drunk Soma; we have become immortal; we have reached the light; we have found the gods. What can enmity do to us now? What can the malice of a mortal do, O Immortal?',
-          hindi: 'हमने सोम पिया है; हम अमर हो गए; हम प्रकाश को पहुँचे; हमने देवताओं को पाया। अब शत्रुता हमारा क्या कर सकती है? हे अमर, किसी मर्त्य की दुर्भावना क्या कर सकती है?',
-          explanation: 'RV 8.48 — the most celebrated verse of the entire Soma tradition and one of the most striking declarations in the Rig Veda. "Apāma somam amṛtā abhūma" — we have drunk Soma; we have become immortal. This is the experiential report of the Soma state: not a hope but a present-tense claim. "Āganma jyotir" — we have reached the light. The question that follows is the most confident in the Veda: "What can enmity do to us now?" The rhetorical answer: nothing. The state of illumined consciousness — however temporarily reached — reveals the relative smallness of what had seemed threatening. "Kimu dhūrtir amṛta martyasya" — what can the malice of a mortal do, O Immortal? Addressed to Soma: the purified consciousness is not invulnerable but it is no longer at the mercy of every external threat.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 7,
@@ -500,52 +239,7 @@ export const rigveda: Scripture = {
           lifeLesson: 'The great sage was afraid of death and said so, directly, to the god who governs moral order. The RV 7.89 prayer gives you permission: you do not have to be philosophically prepared for death to be genuinely spiritual. Fear is not a failure of faith. Taking the fear to the divine directly — "I am afraid. Have mercy. Not yet." — is itself a practice. What Vasishtha models: neither suppressing the fear nor collapsing into it, but making it the content of the prayer. The fear becomes the offering.',
           keywords: ['HouseOfClay', 'MortalityFear', 'VarunaKripa', 'DeathAndMercy', 'TerrrorManagementTheory'],
         },
-      
-        {
-          id: 107012,
-          sanskrit: 'विमुचेन्यसि वरुण पाशान् यैरबद्धो असि जातवेदः । यद्धि ते विश्वमनुमत्यम्भिर्वयं सुमित्राः स्याम ॥',
-          transliteration: 'vimucenya si varuṇa pāśān yairabaddho asi jātavedaḥ | yaddhi te viśvamanumatyambhirvayaṃ sumitrāḥ syāma ||',
-          translation: 'Release, O Varuna, the bonds with which I am bound, O Jataveda. For by your will, O all-knowing one — may we be among your good friends.',
-          hindi: 'हे वरुण, उन बन्धनों से मुझे मुक्त करो जिनसे मैं बँधा हूँ, हे जातवेद। क्योंकि तुम्हारी इच्छा से ही — हम तुम्हारे सुमित्र हों।',
-          explanation: 'The culminating prayer of the Varuna sequence: "vimucenya si varuṇa pāśān" — release, O Varuna, the bonds. The Vedic concept of pāśa (bonds, fetters) — the same root that gives the word "pashu" (bound creature) in Shaiva Tantra. The bonds are not external chains but the interior constrictions produced by unresolved transgression: guilt, shame, the habitual contraction around what one has done or left undone. The prayer moves from "what did I do wrong?" (7.86.1) to "release the bonds" — acknowledging that whatever the transgression was, its effect is a constraint on life-force itself. "Sumitrāḥ syāma" — may we be your good friends. The relationship with the divine, having been fractured by transgression, seeks restoration.',
-          keywords: [],
-        },
-        {
-          id: 107013,
-          sanskrit: 'मा नो वधीः वरुण मा नो हिंसीर्मा तं वधीर्यो नः प्रियः । क्षयं न इन्द्र वरुण मृत्योर्मा नो दीर्घायुषः पात ॥',
-          transliteration: 'mā no vadhīḥ varuṇa mā no hiṃsīr mā taṃ vadhīr yo naḥ priyaḥ | kṣayaṃ na indra varuṇa mṛtyor mā no dīrghāyuṣaḥ pāta ||',
-          translation: 'Slay us not, O Varuna; harm us not. Slay not him who is dear to us. Give us a home, O Indra-Varuna; guard us from death; protect us for long life.',
-          hindi: 'हे वरुण, हमें मत मारो, हमें हानि मत पहुँचाओ। जो हमें प्रिय है उसे मत मारो। हे इन्द्र-वरुण, हमें आश्रय दो; मृत्यु से हमारी रक्षा करो; दीर्घायु के लिए हमारी रक्षा करो।',
-          explanation: 'RV 7.89 — "Let me not yet, King Varuna, enter into the house of clay" — the most visceral of the Varuna hymns, and among the most human verses in the Rig Veda. "The house of clay" is the grave, the earth into which the body returns. The prayer is naked fear of death, brought directly to the god of moral order: I am not ready. Have mercy. The refrain "have mercy, spare me, Mighty Lord" runs through all five verses. The verse does not transcend the fear of death with philosophy or consolation — it takes the fear as it is and addresses it directly to the divine. Vasishtha, the great sage and guru of kings, is afraid of dying. The Rig Veda does not hide this. The tradition that contains the Nasadiya Sukta\'s cosmic equanimity also contains the raw human cry: not yet. Both are real. Both are part of the path.',
-          keywords: [],
-        },
-        {
-          id: 107022,
-          sanskrit: 'ऋतस्य पन्था न दभाय किं चन वृजिना ह्यस्य नश्यन्ति जन्तवः । ऋतेन दीर्घमनु वेनतो दिवः पदं न दुष्कृते अपि तं नशे ॥',
-          transliteration: 'ṛtasya panthā na dabhāya kiṃ cana vṛjinā hyasya naśyanti jantavaḥ | ṛtena dīrghamanu venato divaḥ padaṃ na duṣkṛte api taṃ naśe ||',
-          translation: 'The path of Rita cannot be deceived by anyone. Those who follow crooked ways perish. By Rita the vast luminous realm is reached — the evildoer cannot attain that place.',
-          hindi: 'ऋत के मार्ग को कोई धोखा नहीं दे सकता। वक्र पथ पर चलने वाले नष्ट हो जाते हैं। ऋत से ही वह विशाल द्युलोक प्राप्त होता है — दुष्कर्मी उसे नहीं पा सकता।',
-          explanation: 'The Rig Veda\'s most direct statement of Rita — the cosmic ordering principle that is simultaneously physical law and moral law. "Ṛtasya panthā na dabhāya kiṃ cana" — the path of cosmic order cannot be deceived by anyone. Gravity does not make exceptions. Truth does not make exceptions. Rita maintains the three worlds — earth, atmosphere, heaven. The moral implication: human actions that conform to Rita produce flourishing; those that violate it produce destruction. Not as divine punishment but as the natural consequence of acting against the structure of reality itself.',
-          keywords: [],
-        },
-        {
-          id: 107027,
-          sanskrit: 'इन्द्रो मायाभिः पुरुरूप ईयते युक्ता ह्यस्य हरयः शता दश । आयं शक्र इत्येनमाहुर्यः स्वर्षाता सत्पतिः शूरो अस्तु ॥',
-          transliteration: 'indro māyābhiḥ pururūpa īyate yuktā hyasya harayaḥ śatā daśa | āyaṃ śakra ityenamāhuryaḥ svarṣātā satpatiḥ śūro astu ||',
-          translation: 'Indra moves in many forms through his powers of maya. His golden coursers are yoked a thousand and ten. They call him Shakra — may he who wins the heavenly light, lord of the good, be heroic.',
-          hindi: 'इन्द्र अपनी माया-शक्तियों से अनेक रूप धारण करके विचरते हैं। उनके दस सौ सुनहरे अश्व जुते हैं। उन्हें शक्र कहते हैं — जो स्वर्ग-प्रकाश प्राप्त करे, सत्पुरुषों का स्वामी, वह शूर हो।',
-          explanation: 'This verse introduces one of the Rig Veda\'s most philosophically rich concepts: Vedic "māyā" — not yet in its later Vedantic sense of "illusion" but in its original sense of "creative power, the capacity to take many forms." Indra\'s māyā is his ability to appear in multiple forms simultaneously — the power of infinite self-expression. "Pururūpa" — many-formed. The thousand golden coursers are the infinite forces through which the cosmic principle of Indra manifests. This verse anticipates the Vedantic māyā doctrine: the one reality appears as the many through the creative power of self-differentiation.',
-          keywords: [],
-        },
-        {
-          id: 107028,
-          sanskrit: 'मरुतो यद्ध वो बलं यच्च सत्यमुत क्रतुः । तेन मा पातनाधसः ॥',
-          transliteration: 'maruto yadha vo balaṃ yacca satyamuta kratuḥ | tena mā pātanādhasaḥ ||',
-          translation: 'O Maruts — whatever strength you have, whatever truth, whatever purposeful will — by that, protect me from falling low.',
-          hindi: 'हे मरुतो — तुम्हारे पास जो बल है, जो सत्य है, जो संकल्पशक्ति है — उससे मुझे नीचे गिरने से बचाओ।',
-          explanation: 'The Maruts are the storm-gods — the vital winds, the forces of prana that move through the cosmos and through the body. They are "bala" (strength), "satya" (truth), and "kratu" (purposeful will — the capacity to act with decisive intention). The prayer asks to be protected from "adhas" — falling low, sinking, degradation. The Maruts\' three qualities are exactly what prevents that fall: physical vitality (bala) to sustain the body, truth (satya) to orient perception accurately, and purposeful will (kratu) to act from genuine intention rather than reactive impulse. The Vedic model of resilience: not the absence of storms but having the storm-energy itself as your ally.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 8,
@@ -575,70 +269,7 @@ export const rigveda: Scripture = {
           lifeLesson: 'The Kanva verse gives the Rig Veda\'s most direct instruction on equanimity: the way to reduce the power of external threat is not to eliminate the threat but to expand the consciousness that perceives it. "Amṛtā abhūma" — we have become immortal: not literally, but the touch of what is deathless in you changes the scale against which mortal threats are measured. What in your life currently feels threatening and large? Now ask: from the perspective of what is most real and most permanent in you — how large is it actually?',
           keywords: ['ApamaSomam', 'AmritaAbhuma', 'SomaExperience', 'PeakExperience', 'EquanimityThroughExpansion'],
         },
-      
-        {
-          id: 108012,
-          sanskrit: 'अपाम सोमममृता अभूमागन्म ज्योतिरविदाम देवान् । किं नूनमस्मान्कृणवदरातिः किमु धूर्तिरमृत मर्त्यस्य ॥',
-          transliteration: 'apāma somamamṛtā abhūmāganma jyotiravadāma devān | kiṃ nūnamasmānkṛṇavadarātiḥ kimu dhūrtiraṃṛta martyasya ||',
-          translation: 'We have drunk Soma; we have become immortal; we have reached the light; we have found the gods. What can enmity do to us now? What can the malice of a mortal do, O Immortal?',
-          hindi: 'हमने सोम पिया है; हम अमर हो गए; हम प्रकाश को पहुँचे; हमने देवताओं को पाया। अब शत्रुता हमारा क्या कर सकती है? हे अमर, किसी मर्त्य की दुर्भावना क्या कर सकती है?',
-          explanation: 'RV 8.48 — the most celebrated verse of the entire Soma tradition and one of the most striking declarations in the Rig Veda. "Apāma somam amṛtā abhūma" — we have drunk Soma; we have become immortal. This is the experiential report of the Soma state: not a hope but a present-tense claim. "Āganma jyotir" — we have reached the light. The question that follows is the most confident in the Veda: "What can enmity do to us now?" The rhetorical answer: nothing. The state of illumined consciousness — however temporarily reached — reveals the relative smallness of what had seemed threatening. "Kimu dhūrtir amṛta martyasya" — what can the malice of a mortal do, O Immortal? Addressed to Soma: the purified consciousness is not invulnerable but it is no longer at the mercy of every external threat.',
-          keywords: [],
-        },
-        {
-          id: 108013,
-          sanskrit: 'सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् । स भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम् ॥',
-          transliteration: 'sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt | sa bhūmiṃ viśvato vṛtvātyatiṣṭhaddaśāṅgulam ||',
-          translation: 'The Cosmic Person has a thousand heads, a thousand eyes, a thousand feet. He pervades the earth on all sides and stands ten fingers beyond.',
-          hindi: 'पुरुष (विराट्) के हज़ार सिर, हज़ार आँखें और हज़ार पैर हैं। वह सब ओर से पृथ्वी को व्याप्त करके दस अंगुल अतिक्रमण करके स्थित है।',
-          explanation: 'The Purusha Sukta (RV 10.90) presents the universe as a single vast Conscious Being — not as dead matter arranged by chance but as a living, integrated whole. "Thousand heads, eyes, feet" is not literal; it conveys omniscience, omnipresence, and infinite diversity within one consciousness. The universe is not a machine; it is a Person — aware, unified, complete.',
-          keywords: [],
-        },
-        {
-          id: 108018,
-          sanskrit: 'विमुचेन्यसि वरुण पाशान् यैरबद्धो असि जातवेदः । यद्धि ते विश्वमनुमत्यम्भिर्वयं सुमित्राः स्याम ॥',
-          transliteration: 'vimucenya si varuṇa pāśān yairabaddho asi jātavedaḥ | yaddhi te viśvamanumatyambhirvayaṃ sumitrāḥ syāma ||',
-          translation: 'Release, O Varuna, the bonds with which I am bound, O Jataveda. For by your will, O all-knowing one — may we be among your good friends.',
-          hindi: 'हे वरुण, उन बन्धनों से मुझे मुक्त करो जिनसे मैं बँधा हूँ, हे जातवेद। क्योंकि तुम्हारी इच्छा से ही — हम तुम्हारे सुमित्र हों।',
-          explanation: 'The culminating prayer of the Varuna sequence: "vimucenya si varuṇa pāśān" — release, O Varuna, the bonds. The Vedic concept of pāśa (bonds, fetters) — the same root that gives the word "pashu" (bound creature) in Shaiva Tantra. The bonds are not external chains but the interior constrictions produced by unresolved transgression: guilt, shame, the habitual contraction around what one has done or left undone. The prayer moves from "what did I do wrong?" (7.86.1) to "release the bonds" — acknowledging that whatever the transgression was, its effect is a constraint on life-force itself. "Sumitrāḥ syāma" — may we be your good friends. The relationship with the divine, having been fractured by transgression, seeks restoration.',
-          keywords: [],
-        },
-        {
-          id: 108022,
-          sanskrit: 'ऋतस्य पन्था न दभाय किं चन वृजिना ह्यस्य नश्यन्ति जन्तवः । ऋतेन दीर्घमनु वेनतो दिवः पदं न दुष्कृते अपि तं नशे ॥',
-          transliteration: 'ṛtasya panthā na dabhāya kiṃ cana vṛjinā hyasya naśyanti jantavaḥ | ṛtena dīrghamanu venato divaḥ padaṃ na duṣkṛte api taṃ naśe ||',
-          translation: 'The path of Rita cannot be deceived by anyone. Those who follow crooked ways perish. By Rita the vast luminous realm is reached — the evildoer cannot attain that place.',
-          hindi: 'ऋत के मार्ग को कोई धोखा नहीं दे सकता। वक्र पथ पर चलने वाले नष्ट हो जाते हैं। ऋत से ही वह विशाल द्युलोक प्राप्त होता है — दुष्कर्मी उसे नहीं पा सकता।',
-          explanation: 'The Rig Veda\'s most direct statement of Rita — the cosmic ordering principle that is simultaneously physical law and moral law. "Ṛtasya panthā na dabhāya kiṃ cana" — the path of cosmic order cannot be deceived by anyone. Gravity does not make exceptions. Truth does not make exceptions. Rita maintains the three worlds — earth, atmosphere, heaven. The moral implication: human actions that conform to Rita produce flourishing; those that violate it produce destruction. Not as divine punishment but as the natural consequence of acting against the structure of reality itself.',
-          keywords: [],
-        },
-        {
-          id: 108027,
-          sanskrit: 'इन्द्रो मायाभिः पुरुरूप ईयते युक्ता ह्यस्य हरयः शता दश । आयं शक्र इत्येनमाहुर्यः स्वर्षाता सत्पतिः शूरो अस्तु ॥',
-          transliteration: 'indro māyābhiḥ pururūpa īyate yuktā hyasya harayaḥ śatā daśa | āyaṃ śakra ityenamāhuryaḥ svarṣātā satpatiḥ śūro astu ||',
-          translation: 'Indra moves in many forms through his powers of maya. His golden coursers are yoked a thousand and ten. They call him Shakra — may he who wins the heavenly light, lord of the good, be heroic.',
-          hindi: 'इन्द्र अपनी माया-शक्तियों से अनेक रूप धारण करके विचरते हैं। उनके दस सौ सुनहरे अश्व जुते हैं। उन्हें शक्र कहते हैं — जो स्वर्ग-प्रकाश प्राप्त करे, सत्पुरुषों का स्वामी, वह शूर हो।',
-          explanation: 'This verse introduces one of the Rig Veda\'s most philosophically rich concepts: Vedic "māyā" — not yet in its later Vedantic sense of "illusion" but in its original sense of "creative power, the capacity to take many forms." Indra\'s māyā is his ability to appear in multiple forms simultaneously — the power of infinite self-expression. "Pururūpa" — many-formed. The thousand golden coursers are the infinite forces through which the cosmic principle of Indra manifests. This verse anticipates the Vedantic māyā doctrine: the one reality appears as the many through the creative power of self-differentiation.',
-          keywords: [],
-        },
-        {
-          id: 108028,
-          sanskrit: 'मरुतो यद्ध वो बलं यच्च सत्यमुत क्रतुः । तेन मा पातनाधसः ॥',
-          transliteration: 'maruto yadha vo balaṃ yacca satyamuta kratuḥ | tena mā pātanādhasaḥ ||',
-          translation: 'O Maruts — whatever strength you have, whatever truth, whatever purposeful will — by that, protect me from falling low.',
-          hindi: 'हे मरुतो — तुम्हारे पास जो बल है, जो सत्य है, जो संकल्पशक्ति है — उससे मुझे नीचे गिरने से बचाओ।',
-          explanation: 'The Maruts are the storm-gods — the vital winds, the forces of prana that move through the cosmos and through the body. They are "bala" (strength), "satya" (truth), and "kratu" (purposeful will — the capacity to act with decisive intention). The prayer asks to be protected from "adhas" — falling low, sinking, degradation. The Maruts\' three qualities are exactly what prevents that fall: physical vitality (bala) to sustain the body, truth (satya) to orient perception accurately, and purposeful will (kratu) to act from genuine intention rather than reactive impulse. The Vedic model of resilience: not the absence of storms but having the storm-energy itself as your ally.',
-          keywords: [],
-        },
-        {
-          id: 108107,
-          sanskrit: 'इन्द्र क्रतुं न आ भर पितान आ भर । वसो पुरन्दर श्रुधी हवम् ॥',
-          transliteration: 'indra kratuṃ na ā bhara pitā na ā bhara | vaso purandara śrudhī havam ||',
-          translation: 'O Indra, bring us purposeful will as a father brings. O master of abundance, destroyer of limitations — hear our call.',
-          hindi: 'हे इन्द्र, पिता की तरह हमें क्रतु (संकल्पशक्ति) लाओ। हे वसु (समृद्धि के स्वामी), पुरन्दर (बाधाओं के नाशक) — हमारी पुकार सुनो।',
-          explanation: '"Kratuṃ na ā bhara pitā na" — bring us kratu as a father brings. The simile is precise: a father brings practical capacity to his children — not just love or intention but the actual functional ability to act effectively in the world. Kratu is purposeful will: not vague desire, not aspiration, but the integrated capacity of perception + intention + execution that allows a person to actually do what they know needs to be done. "Purandara" — the destroyer of puras (limitations, strongholds, the rigid structures that confine): Indra as the force that breaks through whatever has become too fixed, too defended, too calcified. The prayer asks Indra to break the internal strongholds — the habitual patterns, the defensive structures, the calcified beliefs — that prevent kratu from operating freely.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 9,
@@ -668,79 +299,7 @@ export const rigveda: Scripture = {
           lifeLesson: 'The Soma Mandala\'s deepest teaching: you are not deficient. The immortality, the luminosity, the expanded perception — already present in the drop. "Amṛtasya bhūreḥ" — the abundance of immortality is already in you. What is needed is not acquisition but purification — the removal of what obscures. What habitual pattern, what defensive contraction, what sustained avoidance is the filter that needs clearing? The drop is already full.',
           keywords: ['Indu', 'AmritasyaBhuresh', 'DropOfImmortality', 'PurificationUncovers', 'AlreadyComplete'],
         },
-      
-        {
-          id: 109012,
-          sanskrit: 'अभि त्वा देव सवितरीशानं वार्याणां सोम राजन्नमृतस्य भूरेः । इन्दुमिन्द्राय पवस्व ॥',
-          transliteration: 'abhi tvā deva savitarīśānaṃ vāryāṇāṃ soma rājannamṛtasya bhūreḥ | indumindrasya pavasva ||',
-          translation: 'O divine Savitar, lord of desirable things — O King Soma, purify for Indra the drop that contains the abundance of immortality.',
-          hindi: 'हे देव सवितर, वांछनीय वस्तुओं के स्वामी — हे सोम राज, अमृत की प्रचुरता को समेटे उस बूँद को इन्द्र के लिए शुद्ध करो।',
-          explanation: 'One of the Soma Mandala\'s most concentrated verses: "indumindrasya pavasva" — purify the drop (indu) for Indra. The "indu" — the drop, the single point — is simultaneously the individual drop of Soma, the individual soul (jivatman), and the concentrated point of awareness in meditation. The drop contains "amṛtasya bhūreḥ" — the abundance of immortality. The single drop already contains infinity. Purification does not add anything to it — it removes what obscures what is already there. This is the Soma Mandala\'s most direct teaching: you already contain what you are seeking. Purification is the process of uncovering it, not acquiring it.',
-          keywords: [],
-        },
-        {
-          id: 109013,
-          sanskrit: 'सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् । स भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम् ॥',
-          transliteration: 'sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt | sa bhūmiṃ viśvato vṛtvātyatiṣṭhaddaśāṅgulam ||',
-          translation: 'The Cosmic Person has a thousand heads, a thousand eyes, a thousand feet. He pervades the earth on all sides and stands ten fingers beyond.',
-          hindi: 'पुरुष (विराट्) के हज़ार सिर, हज़ार आँखें और हज़ार पैर हैं। वह सब ओर से पृथ्वी को व्याप्त करके दस अंगुल अतिक्रमण करके स्थित है।',
-          explanation: 'The Purusha Sukta (RV 10.90) presents the universe as a single vast Conscious Being — not as dead matter arranged by chance but as a living, integrated whole. "Thousand heads, eyes, feet" is not literal; it conveys omniscience, omnipresence, and infinite diversity within one consciousness. The universe is not a machine; it is a Person — aware, unified, complete.',
-          keywords: [],
-        },
-        {
-          id: 109018,
-          sanskrit: 'विमुचेन्यसि वरुण पाशान् यैरबद्धो असि जातवेदः । यद्धि ते विश्वमनुमत्यम्भिर्वयं सुमित्राः स्याम ॥',
-          transliteration: 'vimucenya si varuṇa pāśān yairabaddho asi jātavedaḥ | yaddhi te viśvamanumatyambhirvayaṃ sumitrāḥ syāma ||',
-          translation: 'Release, O Varuna, the bonds with which I am bound, O Jataveda. For by your will, O all-knowing one — may we be among your good friends.',
-          hindi: 'हे वरुण, उन बन्धनों से मुझे मुक्त करो जिनसे मैं बँधा हूँ, हे जातवेद। क्योंकि तुम्हारी इच्छा से ही — हम तुम्हारे सुमित्र हों।',
-          explanation: 'The culminating prayer of the Varuna sequence: "vimucenya si varuṇa pāśān" — release, O Varuna, the bonds. The Vedic concept of pāśa (bonds, fetters) — the same root that gives the word "pashu" (bound creature) in Shaiva Tantra. The bonds are not external chains but the interior constrictions produced by unresolved transgression: guilt, shame, the habitual contraction around what one has done or left undone. The prayer moves from "what did I do wrong?" (7.86.1) to "release the bonds" — acknowledging that whatever the transgression was, its effect is a constraint on life-force itself. "Sumitrāḥ syāma" — may we be your good friends. The relationship with the divine, having been fractured by transgression, seeks restoration.',
-          keywords: [],
-        },
-        {
-          id: 109622,
-          sanskrit: 'ऋतस्य पन्था न दभाय किं चन वृजिना ह्यस्य नश्यन्ति जन्तवः । ऋतेन दीर्घमनु वेनतो दिवः पदं न दुष्कृते अपि तं नशे ॥',
-          transliteration: 'ṛtasya panthā na dabhāya kiṃ cana vṛjinā hyasya naśyanti jantavaḥ | ṛtena dīrghamanu venato divaḥ padaṃ na duṣkṛte api taṃ naśe ||',
-          translation: 'The path of Rita cannot be deceived by anyone. Those who follow crooked ways perish. By Rita the vast luminous realm is reached — the evildoer cannot attain that place.',
-          hindi: 'ऋत के मार्ग को कोई धोखा नहीं दे सकता। वक्र पथ पर चलने वाले नष्ट हो जाते हैं। ऋत से ही वह विशाल द्युलोक प्राप्त होता है — दुष्कर्मी उसे नहीं पा सकता।',
-          explanation: 'The Rig Veda\'s most direct statement of Rita — the cosmic ordering principle that is simultaneously physical law and moral law. "Ṛtasya panthā na dabhāya kiṃ cana" — the path of cosmic order cannot be deceived by anyone. Gravity does not make exceptions. Truth does not make exceptions. Rita maintains the three worlds — earth, atmosphere, heaven. The moral implication: human actions that conform to Rita produce flourishing; those that violate it produce destruction. Not as divine punishment but as the natural consequence of acting against the structure of reality itself.',
-          keywords: [],
-        },
-        {
-          id: 109627,
-          sanskrit: 'इन्द्रो मायाभिः पुरुरूप ईयते युक्ता ह्यस्य हरयः शता दश । आयं शक्र इत्येनमाहुर्यः स्वर्षाता सत्पतिः शूरो अस्तु ॥',
-          transliteration: 'indro māyābhiḥ pururūpa īyate yuktā hyasya harayaḥ śatā daśa | āyaṃ śakra ityenamāhuryaḥ svarṣātā satpatiḥ śūro astu ||',
-          translation: 'Indra moves in many forms through his powers of maya. His golden coursers are yoked a thousand and ten. They call him Shakra — may he who wins the heavenly light, lord of the good, be heroic.',
-          hindi: 'इन्द्र अपनी माया-शक्तियों से अनेक रूप धारण करके विचरते हैं। उनके दस सौ सुनहरे अश्व जुते हैं। उन्हें शक्र कहते हैं — जो स्वर्ग-प्रकाश प्राप्त करे, सत्पुरुषों का स्वामी, वह शूर हो।',
-          explanation: 'This verse introduces one of the Rig Veda\'s most philosophically rich concepts: Vedic "māyā" — not yet in its later Vedantic sense of "illusion" but in its original sense of "creative power, the capacity to take many forms." Indra\'s māyā is his ability to appear in multiple forms simultaneously — the power of infinite self-expression. "Pururūpa" — many-formed. The thousand golden coursers are the infinite forces through which the cosmic principle of Indra manifests. This verse anticipates the Vedantic māyā doctrine: the one reality appears as the many through the creative power of self-differentiation.',
-          keywords: [],
-        },
-        {
-          id: 109628,
-          sanskrit: 'मरुतो यद्ध वो बलं यच्च सत्यमुत क्रतुः । तेन मा पातनाधसः ॥',
-          transliteration: 'maruto yadha vo balaṃ yacca satyamuta kratuḥ | tena mā pātanādhasaḥ ||',
-          translation: 'O Maruts — whatever strength you have, whatever truth, whatever purposeful will — by that, protect me from falling low.',
-          hindi: 'हे मरुतो — तुम्हारे पास जो बल है, जो सत्य है, जो संकल्पशक्ति है — उससे मुझे नीचे गिरने से बचाओ।',
-          explanation: 'The Maruts are the storm-gods — the vital winds, the forces of prana that move through the cosmos and through the body. They are "bala" (strength), "satya" (truth), and "kratu" (purposeful will — the capacity to act with decisive intention). The prayer asks to be protected from "adhas" — falling low, sinking, degradation. The Maruts\' three qualities are exactly what prevents that fall: physical vitality (bala) to sustain the body, truth (satya) to orient perception accurately, and purposeful will (kratu) to act from genuine intention rather than reactive impulse. The Vedic model of resilience: not the absence of storms but having the storm-energy itself as your ally.',
-          keywords: [],
-        },
-        {
-          id: 109907,
-          sanskrit: 'इन्द्र क्रतुं न आ भर पितान आ भर । वसो पुरन्दर श्रुधी हवम् ॥',
-          transliteration: 'indra kratuṃ na ā bhara pitā na ā bhara | vaso purandara śrudhī havam ||',
-          translation: 'O Indra, bring us purposeful will as a father brings. O master of abundance, destroyer of limitations — hear our call.',
-          hindi: 'हे इन्द्र, पिता की तरह हमें क्रतु (संकल्पशक्ति) लाओ। हे वसु (समृद्धि के स्वामी), पुरन्दर (बाधाओं के नाशक) — हमारी पुकार सुनो।',
-          explanation: '"Kratuṃ na ā bhara pitā na" — bring us kratu as a father brings. The simile is precise: a father brings practical capacity to his children — not just love or intention but the actual functional ability to act effectively in the world. Kratu is purposeful will: not vague desire, not aspiration, but the integrated capacity of perception + intention + execution that allows a person to actually do what they know needs to be done. "Purandara" — the destroyer of puras (limitations, strongholds, the rigid structures that confine): Indra as the force that breaks through whatever has become too fixed, too defended, too calcified. The prayer asks Indra to break the internal strongholds — the habitual patterns, the defensive structures, the calcified beliefs — that prevent kratu from operating freely.',
-          keywords: [],
-        },
-        {
-          id: 109908,
-          sanskrit: 'अपाम सोमममृता अभूमागन्म ज्योतिरविदाम देवान् । किं नूनमस्मान्कृणवदरातिः किमु धूर्तिरमृत मर्त्यस्य ॥',
-          transliteration: 'apāma somamamṛtā abhūmāganma jyotiravadāma devān | kiṃ nūnamasmānkṛṇavadarātiḥ kimu dhūrtiraṃṛta martyasya ||',
-          translation: 'We have drunk Soma; we have become immortal; we have reached the light; we have found the gods. What can enmity do to us now? What can the malice of a mortal do, O Immortal?',
-          hindi: 'हमने सोम पिया है; हम अमर हो गए; हम प्रकाश को पहुँचे; हमने देवताओं को पाया। अब शत्रुता हमारा क्या कर सकती है? हे अमर, किसी मर्त्य की दुर्भावना क्या कर सकती है?',
-          explanation: 'RV 8.48 — the most celebrated verse of the entire Soma tradition and one of the most striking declarations in the Rig Veda. "Apāma somam amṛtā abhūma" — we have drunk Soma; we have become immortal. This is the experiential report of the Soma state: not a hope but a present-tense claim. "Āganma jyotir" — we have reached the light. The question that follows is the most confident in the Veda: "What can enmity do to us now?" The rhetorical answer: nothing. The state of illumined consciousness — however temporarily reached — reveals the relative smallness of what had seemed threatening. "Kimu dhūrtir amṛta martyasya" — what can the malice of a mortal do, O Immortal? Addressed to Soma: the purified consciousness is not invulnerable but it is no longer at the mercy of every external threat.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 10,
@@ -847,34 +406,7 @@ export const rigveda: Scripture = {
           lifeLesson: 'Yajna is not about ritual sacrifice alone — it is about self-giving in all forms. What can you give today without expectation of return? Time, attention, kindness, resources? The Rig Veda says: this is how the gods attained their status. The same principle applies to humans. Give without calculation, and watch what returns.',
           keywords: ['Yajna', 'Sacrifice', 'CosmicPrinciple', 'ReciprocalAltruism', 'Dharma'],
         },
-      
-        {
-          id: 110012,
-          sanskrit: 'को अद्धा वेद क इह प्र वोचत् कुत आजाता कुत इयं विसृष्टिः । अर्वाग्देवा अस्य विसर्जनेनाथा को वेद यत आबभूव ॥',
-          transliteration: 'ko addhā veda ka iha pra vocat kuta ājātā kuta iyaṃ visṛṣṭiḥ | arvāgdevā asya visarjanena athā ko veda yata ābabhūva ||',
-          translation: 'Who really knows? Who will here proclaim it? From where was it born, from where this creation? The gods came after this world\'s creation — so who knows from where it came into being?',
-          hindi: 'कौन वास्तव में जानता है? यहाँ कौन बता सकता है? यह कहाँ से उत्पन्न हुआ? यह सृष्टि कहाँ से आई? देवता इस सृष्टि के बाद आए — तो फिर कौन जानता है यह कहाँ से उत्पन्न हुई?',
-          explanation: 'The Nasadiya Sukta ends without answering its own questions. Even the gods don\'t know — they came after creation. Perhaps not even the one who surveys all from the highest heaven knows. This is one of the most honest intellectual positions in all of ancient literature. The Vedic rishi chose the integrity of "I don\'t know" over the comfort of a confident creation myth.',
-          keywords: [],
-        },
-        {
-          id: 110013,
-          sanskrit: 'सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् । स भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम् ॥',
-          transliteration: 'sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt | sa bhūmiṃ viśvato vṛtvātyatiṣṭhaddaśāṅgulam ||',
-          translation: 'The Cosmic Person has a thousand heads, a thousand eyes, a thousand feet. He pervades the earth on all sides and stands ten fingers beyond.',
-          hindi: 'पुरुष (विराट्) के हज़ार सिर, हज़ार आँखें और हज़ार पैर हैं। वह सब ओर से पृथ्वी को व्याप्त करके दस अंगुल अतिक्रमण करके स्थित है।',
-          explanation: 'The Purusha Sukta (RV 10.90) presents the universe as a single vast Conscious Being — not as dead matter arranged by chance but as a living, integrated whole. "Thousand heads, eyes, feet" is not literal; it conveys omniscience, omnipresence, and infinite diversity within one consciousness. The universe is not a machine; it is a Person — aware, unified, complete.',
-          keywords: [],
-        },
-        {
-          id: 110014,
-          sanskrit: 'तपसा चीयते ब्रह्म ततो अन्नमभिजायते । अन्नात्प्राणो जायते मनः सत्यं च जायते ॥',
-          transliteration: 'tapasā cīyate brahma tato annamabhijāyate | annātprāṇo jāyate manaḥ satyaṃ ca jāyate ||',
-          translation: 'Through Tapas, Brahma increases. From that, food is born. From food, Prana is born. From Prana, mind and truth are born.',
-          hindi: 'तप से ब्रह्म बढ़ता है; उससे अन्न उत्पन्न होता है; अन्न से प्राण उत्पन्न होता है; प्राण से मन और सत्य उत्पन्न होते हैं।',
-          explanation: 'RV 10.190 — the Tapas creation hymn. Griffith translates the opening of this hymn: "From Fervour kindled to its height, Eternal Law and Truth were born: thence was the Night produced, and thence the billowy flood of sea arose." Tapas — translated as fervour, heat, creative austerity — is the foundational creative principle of this hymn: not a creator-god who wills the universe into being, but a self-intensifying heat that produces reality through its own excess. The cosmological sequence given here is simultaneously a map of the human being. Tapas (disciplined practice, sustained effort, willing engagement with difficulty) → Brahma (the expansive principle, widened awareness) → Anna (food, matter, the physical foundation) → Prana (vital force, life-energy) → Manas (mind) → Satya (truth-perception). The universe was created in this sequence. The human being develops in this same sequence. The creation of the cosmos and the cultivation of wisdom follow identical laws.',
-          keywords: [],
-        },
+      
       ],
     },
   ],

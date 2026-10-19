@@ -1,48 +1,240 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
-import { ArrowRight, BookOpen, Search, Sparkles } from 'lucide-react';
+import { useState, useRef, type PointerEvent } from 'react';
+import { useRouter } from 'next/navigation';
+import {
+  ArrowRight,
+  BookOpen,
+  Clock,
+  Compass,
+  Dices,
+  Flame,
+  Heart,
+  Loader2,
+  Search,
+  Shield,
+  Sparkles,
+  Target,
+  Wind,
+} from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { openGlobalSearch } from '@/lib/search-events';
 import { DharmaCopilotModal } from '@/app/components/copilot/DharmaCopilotModal';
+import { triggerTactileFeedback } from '@/lib/haptics';
 
-/** Quick starts: a reference, a Sanskrit phrase and a life situation, so both kinds of reader have an obvious way in. */
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+/** Quick search pills for rapid access */
 const QUICK_SEARCHES = ['Gita 2.47', 'कर्म', 'fear', 'Tat Tvam Asi'];
 
 /**
- * Home-page hero. It answers four things in the first screen: what this is, what to do here, where a beginner
- * starts, and how an experienced reader finds a text fast. One search field, one primary action and one
- * secondary action; no animated background, so it stays calm and cheap on low-power phones.
+ * 9 Curated Gen Z Entry Points: Dignified, contemporary, and grounded in canonical topics.
  */
+interface GenZPathway {
+  id: string;
+  labelEn: string;
+  labelHi: string;
+  sanskrit: string;
+  href?: string;
+  icon: typeof Wind;
+  isSurprise?: boolean;
+}
+
+const GEN_Z_PATHWAYS: GenZPathway[] = [
+  {
+    id: 'stressed',
+    labelEn: 'I feel stressed',
+    labelHi: 'तनाव व अशांति',
+    sanskrit: 'शमः',
+    href: '/topics/stress-anxiety',
+    icon: Wind,
+  },
+  {
+    id: 'focus',
+    labelEn: 'I need focus',
+    labelHi: 'एकाग्रता व ध्यान',
+    sanskrit: 'अभ्यासः',
+    href: '/topics/student-life',
+    icon: Target,
+  },
+  {
+    id: 'fear',
+    labelEn: 'I fear failure',
+    labelHi: 'पराजय का भय',
+    sanskrit: 'अभयम्',
+    href: '/topics/stress-anxiety',
+    icon: Shield,
+  },
+  {
+    id: 'anger',
+    labelEn: 'I feel angry',
+    labelHi: 'क्रोध व आवेश',
+    sanskrit: 'संयमः',
+    href: '/topics/anger-jealousy',
+    icon: Flame,
+  },
+  {
+    id: 'grieving',
+    labelEn: 'I am grieving',
+    labelHi: 'शोक व विछोह',
+    sanskrit: 'अनित्यता',
+    href: '/topics/grief-death',
+    icon: Heart,
+  },
+  {
+    id: 'direction',
+    labelEn: 'I need direction',
+    labelHi: 'स्वधर्म व कर्तव्य',
+    sanskrit: 'स्वधर्मः',
+    href: '/topics/career-workplace-ethics',
+    icon: Compass,
+  },
+  {
+    id: 'gita',
+    labelEn: 'Start with the Gita',
+    labelHi: 'श्रीमद्भगवद्गीता',
+    sanskrit: 'गीता प्रवेश',
+    href: '/scripture/bhagavadgita',
+    icon: BookOpen,
+  },
+  {
+    id: 'two-min',
+    labelEn: '2-Minute reading',
+    labelHi: '२ मिनट स्वाध्याय',
+    sanskrit: 'नित्य श्लोक',
+    href: '/daily-verse',
+    icon: Clock,
+  },
+  {
+    id: 'surprise',
+    labelEn: 'Surprise me with a verse',
+    labelHi: 'कोई भी श्लोक',
+    sanskrit: 'अकस्मात् दर्शन',
+    isSurprise: true,
+    icon: Dices,
+  },
+];
+
+interface ChapterIndexEntry {
+  id: number;
+  verseCount: number;
+}
+type ChaptersIndex = Record<string, ChapterIndexEntry[]>;
+let chaptersIndexRequest: Promise<ChaptersIndex> | null = null;
+
+function ensureChaptersIndex(): Promise<ChaptersIndex> {
+  if (!chaptersIndexRequest) {
+    chaptersIndexRequest = fetch(`${BASE_PATH}/data/chapters.json`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json() as Promise<ChaptersIndex>;
+      })
+      .catch((err) => {
+        chaptersIndexRequest = null;
+        throw err;
+      });
+  }
+  return chaptersIndexRequest;
+}
+
 export function HeroSection() {
+  const router = useRouter();
+  const reduce = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
   const [copilotOpen, setCopilotOpen] = useState(false);
+  const [surpriseLoading, setSurpriseLoading] = useState(false);
+
+  // Subtle interactive light tracking across hero
+  const handlePointerMove = (e: PointerEvent<HTMLElement>) => {
+    if (reduce || e.pointerType === 'touch') return;
+    const el = heroRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    el.style.setProperty('--hero-light-x', `${x}%`);
+    el.style.setProperty('--hero-light-y', `${y}%`);
+  };
+
+  const handleSurpriseVerse = async () => {
+    if (surpriseLoading) return;
+    setSurpriseLoading(true);
+    triggerTactileFeedback('medium', 'templeChime');
+    try {
+      const index = await ensureChaptersIndex();
+      const ids = Object.keys(index).filter((k) => (index[k]?.length ?? 0) > 0);
+      if (ids.length === 0) return;
+      const scriptureId = ids[Math.floor(Math.random() * ids.length)];
+      const withVerses = index[scriptureId].filter((c) => c.verseCount > 0);
+      const pool = withVerses.length > 0 ? withVerses : index[scriptureId];
+      const chapter = pool[Math.floor(Math.random() * pool.length)];
+      router.push(`/scripture/${scriptureId}/chapter/${chapter.id}/`);
+    } catch {
+      setSurpriseLoading(false);
+    }
+  };
 
   return (
     <section
+      ref={heroRef}
+      onPointerMove={handlePointerMove}
       aria-labelledby="home-hero-heading"
-      className="relative overflow-hidden bg-[linear-gradient(135deg,var(--dharma-hero-start),var(--dharma-hero-mid),var(--dharma-hero-end))] text-white"
+      className="relative overflow-hidden bg-[linear-gradient(145deg,var(--dharma-hero-start,#451a03),var(--dharma-hero-mid,#7c2d12),var(--dharma-hero-end,#c2410c))] text-white transition-colors duration-300"
+      style={
+        {
+          '--hero-light-x': '50%',
+          '--hero-light-y': '25%',
+        } as React.CSSProperties
+      }
     >
-      <div className="pointer-events-none absolute inset-0 opacity-10 mandala-bg" aria-hidden="true" />
+      {/* 1. Restrained Luminous Horizon Aura (Device & pointer responsive) */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(251,191,36,0.18),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 opacity-40 mix-blend-screen transition-opacity duration-700"
+        style={{
+          background:
+            'radial-gradient(circle 600px at var(--hero-light-x) var(--hero-light-y), rgba(251, 191, 36, 0.45) 0%, rgba(249, 115, 22, 0.15) 50%, transparent 80%)',
+        }}
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto max-w-3xl px-5 pb-14 pt-12 text-center sm:px-6 sm:pb-16 sm:pt-16">
-        <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-saffron-100/90 sm:text-sm">
-          <span lang="hi" className="font-devanagari">सनातन ज्ञान</span> <span>Timeless wisdom</span>
-        </p>
+      {/* 2. Sacred Traditional Manuscript Margin Lines */}
+      <div className="pointer-events-none absolute inset-x-6 top-3 bottom-3 sm:inset-x-10 sm:top-5 sm:bottom-5 rounded-3xl border border-amber-300/15" aria-hidden="true">
+        <div className="absolute top-2 left-2 size-2 border-t-2 border-l-2 border-amber-300/40" />
+        <div className="absolute top-2 right-2 size-2 border-t-2 border-r-2 border-amber-300/40" />
+        <div className="absolute bottom-2 left-2 size-2 border-b-2 border-l-2 border-amber-300/40" />
+        <div className="absolute bottom-2 right-2 size-2 border-b-2 border-r-2 border-amber-300/40" />
+      </div>
+
+      {/* Subtle sacred mandala watermark */}
+      <div className="pointer-events-none absolute inset-0 opacity-10 mandala-bg" aria-hidden="true" />
+
+      <div className="relative z-10 mx-auto max-w-4xl px-5 pb-16 pt-12 sm:px-8 sm:pb-20 sm:pt-16 text-center">
+        {/* Purpose Badge */}
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-300/30 bg-black/25 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-200 backdrop-blur-md shadow-sm">
+          <Sparkles className="h-3.5 w-3.5 text-amber-300" aria-hidden="true" />
+          <span>सनातन ज्ञान कोश</span>
+          <span className="text-amber-300/50">·</span>
+          <span>Timeless Digital Sanctuary</span>
+        </div>
+
+        {/* Hero Title */}
         <h1
           id="home-hero-heading"
-          className="font-serif text-4xl font-bold tracking-normal text-white drop-shadow sm:text-6xl"
+          className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-md"
         >
-          Dharma Granth <span lang="hi" className="mt-1 block font-devanagari text-3xl text-saffron-100 sm:text-4xl">धर्म ग्रंथ</span>
+          Dharma Granth
+          <span lang="sa" className="mt-2 block font-devanagari text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-amber-100 bg-clip-text text-transparent">
+            धर्म ग्रंथ
+          </span>
         </h1>
-        <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-white/95 sm:text-xl">
-          A calm, ad-free library of Hindu scriptures: the original Sanskrit with Hindi and English meaning, and sources
-          you can check.
+
+        {/* Clear Value Statement */}
+        <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-amber-50/95">
+          A calm, ad-free scripture library with original canonical Sanskrit, authentic Hindi explanation, English translation, and verified scholarly citations.
         </p>
 
+        {/* Prominent Semantic Scripture Search */}
         <form
           role="search"
           onSubmit={(event) => {
@@ -51,70 +243,163 @@ export function HeroSection() {
             const query = input instanceof HTMLInputElement ? input.value.trim() : '';
             openGlobalSearch(query);
           }}
-          className="mx-auto mt-7 flex max-w-2xl items-center rounded-2xl border border-white/25 bg-white/95 p-1.5 text-left shadow-xl focus-within:ring-4 focus-within:ring-white/25"
+          className="mx-auto mt-8 flex max-w-2xl items-center rounded-2xl border border-amber-200/40 bg-white/95 p-1.5 text-left shadow-[0_12px_36px_rgba(0,0,0,0.35)] backdrop-blur-xl focus-within:ring-4 focus-within:ring-amber-400/40 transition-all"
         >
           <Search className="ml-3 h-5 w-5 shrink-0 text-saffron-700" aria-hidden="true" />
           <label htmlFor="hero-scripture-search" className="sr-only">
-            Search scriptures, chapters, verses and ideas
+            Search scriptures, chapters, verses and philosophical concepts
           </label>
           <input
             id="hero-scripture-search"
             name="q"
             type="search"
             autoComplete="off"
-            placeholder="Search a verse, a word or a question, e.g. Gita 2.47, fear, कर्म"
+            placeholder="Search a verse, keyword or question (e.g. Gita 2.47, कर्म, fear, Tat Tvam Asi)"
             className="min-w-0 flex-1 bg-transparent px-3 py-3 text-sm text-stone-900 outline-none placeholder:text-stone-500 sm:text-base"
           />
           <button
             type="submit"
             aria-label="Search"
-            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-saffron-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-saffron-800 sm:px-5"
+            onClick={() => triggerTactileFeedback('light', 'softTap')}
+            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-gradient-to-r from-saffron-700 to-amber-700 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:from-saffron-800 hover:to-amber-800 active:scale-95 sm:px-6"
           >
             <span className="hidden sm:inline">Search</span>
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </button>
         </form>
 
-        <ul className="mx-auto mt-3 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-xs" aria-label="Quick searches">
+        {/* Quick Search Chips */}
+        <div className="mx-auto mt-3.5 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-xs">
+          <span className="text-amber-200/75 text-[11px] font-medium mr-1">Quick searches:</span>
           {QUICK_SEARCHES.map((q) => (
-            <li key={q}>
-              <button
-                type="button"
-                onClick={() => openGlobalSearch(q)}
-                className="inline-flex min-h-[44px] items-center rounded-full border border-white/25 bg-white/10 px-4 font-medium text-white/95 transition hover:border-amber-300 hover:bg-white/20"
-              >
-                {q}
-              </button>
-            </li>
+            <button
+              key={q}
+              type="button"
+              onClick={() => {
+                triggerTactileFeedback('light', 'softTap');
+                openGlobalSearch(q);
+              }}
+              className="inline-flex min-h-[38px] items-center rounded-full border border-white/20 bg-black/20 px-3.5 py-1 text-xs font-medium text-amber-100 transition hover:border-amber-300 hover:bg-white/15"
+            >
+              {q}
+            </button>
           ))}
-        </ul>
+        </div>
 
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+        {/* Primary & Secondary CTAs */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
           <Link
             href="/scripture/bhagavadgita"
-            className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-white px-6 py-3 font-bold text-saffron-800 shadow-lg transition hover:bg-saffron-50"
+            onClick={() => triggerTactileFeedback('medium', 'softTap')}
+            className="inline-flex min-h-[48px] items-center gap-2.5 rounded-full bg-white px-7 py-3 text-sm font-bold text-stone-950 shadow-xl transition hover:bg-amber-50 active:scale-98"
           >
-            <BookOpen className="h-5 w-5 text-saffron-600" aria-hidden="true" />
-            Start with the Bhagavad Gita
+            <BookOpen className="h-4 w-4 text-saffron-700" aria-hidden="true" />
+            <span>Start with the Bhagavad Gita</span>
           </Link>
           <Link
             href="/scriptures"
-            className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-white/40 px-6 py-3 font-semibold text-white transition hover:bg-white/15"
+            onClick={() => triggerTactileFeedback('light', 'softTap')}
+            className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-white/30 bg-black/25 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 active:scale-98"
           >
-            Browse all scriptures
+            <span>Browse All Scriptures</span>
           </Link>
         </div>
 
-        <p className="mt-5 text-sm text-white/80">
+        {/* Guide Prompt Link */}
+        <div className="mt-4 text-sm text-amber-100/80">
           <button
             type="button"
-            onClick={() => setCopilotOpen(true)}
-            className="inline-flex min-h-[44px] items-center gap-1.5 underline decoration-white/40 underline-offset-4 hover:decoration-white"
+            onClick={() => {
+              triggerTactileFeedback('light', 'softTap');
+              setCopilotOpen(true);
+            }}
+            className="inline-flex min-h-[40px] items-center gap-1.5 underline decoration-amber-300/40 underline-offset-4 hover:decoration-amber-200 hover:text-white transition"
           >
-            <Sparkles className="h-4 w-4" aria-hidden="true" />
-            Not sure where to begin? Ask the guide
+            <Sparkles className="h-4 w-4 text-amber-300" aria-hidden="true" />
+            <span>Not sure where to begin? Ask the Dharma Guide</span>
           </button>
-        </p>
+        </div>
+
+        {/* ── Gen Z Direct Discovery Pathways ────────────────────────── */}
+        <div className="mt-12 pt-10 border-t border-amber-300/20 text-left">
+          <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-300">
+                वर्तमान स्थिति · Where are you right now?
+              </p>
+              <h2 className="font-serif text-lg sm:text-xl font-bold text-white">
+                Find scripture guidance for your state of mind
+              </h2>
+            </div>
+            <span className="text-xs text-amber-200/70 hidden sm:inline">
+              9 Thoughtful Pathways
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-2.5 sm:gap-3">
+            {GEN_Z_PATHWAYS.map((p) => {
+              const Icon = p.icon;
+              if (p.isSurprise) {
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={handleSurpriseVerse}
+                    disabled={surpriseLoading}
+                    className="group relative flex flex-col justify-between rounded-2xl border border-amber-300/40 bg-gradient-to-br from-amber-500/20 to-saffron-600/30 p-3.5 text-left backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-amber-300 hover:bg-amber-500/30 active:scale-98 shadow-sm cursor-pointer col-span-2 sm:col-span-1"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-400/20 text-amber-200 group-hover:scale-110 transition-transform">
+                        {surpriseLoading ? (
+                          <Loader2 className="h-4 w-4 animate-spin text-amber-300" />
+                        ) : (
+                          <Icon className="h-4 w-4 text-amber-300" />
+                        )}
+                      </span>
+                      <span lang="sa" className="font-devanagari text-[10px] font-semibold text-amber-200/80">
+                        {p.sanskrit}
+                      </span>
+                    </div>
+                    <div>
+                      <p className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-200 transition-colors">
+                        {p.labelEn}
+                      </p>
+                      <p lang="hi" className="font-devanagari text-[11px] text-amber-200/75 mt-0.5">
+                        {p.labelHi}
+                      </p>
+                    </div>
+                  </button>
+                );
+              }
+
+              return (
+                <Link
+                  key={p.id}
+                  href={p.href!}
+                  onClick={() => triggerTactileFeedback('light', 'softTap')}
+                  className="group relative flex flex-col justify-between rounded-2xl border border-white/15 bg-black/20 p-3.5 text-left backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-amber-300/70 hover:bg-white/10 active:scale-98 shadow-sm"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-amber-200 group-hover:bg-amber-400/20 transition">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <span lang="sa" className="font-devanagari text-[10px] font-semibold text-amber-200/70">
+                      {p.sanskrit}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-200 transition-colors">
+                      {p.labelEn}
+                    </p>
+                    <p lang="hi" className="font-devanagari text-[11px] text-amber-100/70 mt-0.5">
+                      {p.labelHi}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       <DharmaCopilotModal isOpen={copilotOpen} onClose={() => setCopilotOpen(false)} initialQuery="" />

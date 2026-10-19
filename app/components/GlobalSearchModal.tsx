@@ -45,6 +45,14 @@ import { findHighlights } from '@/lib/search-highlight';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { reviewStatusForHref } from '@/lib/review-badges';
 import { REVIEW_RECORDS } from '@/data/review-records';
+import { useTheme } from '@/app/components/ThemeProvider';
+import {
+  setSoundscapeTrack,
+  toggleSoundscape,
+  strikeTempleBell,
+  getSoundscapeState,
+} from '@/lib/sacred-soundscape';
+import { triggerPranaToast } from '@/lib/prana-capsule-store';
 
 export type { SearchResultItem } from '@/lib/search';
 
@@ -137,6 +145,111 @@ const SUGGESTED_SEARCHES = [
   { label: 'meaning of life', query: 'meaning of life' },
 ];
 
+export interface SacredActionItem {
+  id: string;
+  command: string;
+  title: string;
+  titleHi: string;
+  subtitle: string;
+  icon: string;
+  run: (onClose: () => void, router: ReturnType<typeof useRouter>, cycleTheme?: () => void) => void;
+}
+
+export const SACRED_ACTIONS: SacredActionItem[] = [
+  {
+    id: 'tanpura',
+    command: '> tanpura',
+    title: 'Play Vedic Tanpura Drone (432Hz)',
+    titleHi: 'वैदिक तन्पूरा नाद प्रारंभ करें (432Hz)',
+    subtitle: 'Procedural 432Hz Tanpura Drone · Web Audio',
+    icon: '🎶',
+    run: (onClose) => {
+      setSoundscapeTrack('tanpura');
+      if (!getSoundscapeState().isPlaying) toggleSoundscape();
+      triggerPranaToast({ message: 'वैदिक तन्पूरा सक्रिय (432Hz) · Tanpura Drone Playing', icon: '🎶' });
+      onClose();
+    },
+  },
+  {
+    id: 'om',
+    command: '> om',
+    title: 'Play Om Resonance (108Hz)',
+    titleHi: 'प्रणव ॐ नाद प्रारंभ करें (108Hz)',
+    subtitle: 'Deep Contemplative 108Hz Soundscape',
+    icon: '🕉️',
+    run: (onClose) => {
+      setSoundscapeTrack('om');
+      if (!getSoundscapeState().isPlaying) toggleSoundscape();
+      triggerPranaToast({ message: 'प्रणव ॐ नाद सक्रिय (108Hz) · Om Resonance Playing', icon: '🕉️' });
+      onClose();
+    },
+  },
+  {
+    id: 'bell',
+    command: '> bell',
+    title: 'Ring Mindfulness Singing Bowl Now (बजाएँ)',
+    titleHi: 'शांति घंटा नाद · Pause & Breathe',
+    subtitle: 'Mindfulness Singing Bowl Soundscape',
+    icon: '🔔',
+    run: (onClose) => {
+      strikeTempleBell(1);
+      triggerPranaToast({ message: 'शांति एवं सजगता · Pause & Breathe 🔔', icon: '🔔' });
+      onClose();
+    },
+  },
+  {
+    id: 'meditation',
+    command: '> meditation',
+    title: 'Start 10-Minute Meditation Timer',
+    titleHi: '१० मिनट ध्यान साधना प्रारंभ करें',
+    subtitle: 'Timed Silent Meditation with Bells & Wake-Lock',
+    icon: '🧘',
+    run: (onClose, router) => {
+      router.push('/practice#meditation');
+      triggerPranaToast({ message: 'ध्यान साधना प्रारंभ · 10-Minute Meditation Timer', icon: '🧘' });
+      onClose();
+    },
+  },
+  {
+    id: 'theme',
+    command: '> theme',
+    title: 'Switch Theme: Day / Sunset / Paper / Dark / Follow Sun (सौर चक्र)',
+    titleHi: 'पठन शैली / सौर चक्र बदलें',
+    subtitle: 'Cycle through sacred reading themes',
+    icon: '🌓',
+    run: (onClose, _r, cycleTheme) => {
+      if (cycleTheme) cycleTheme();
+      triggerPranaToast({ message: 'थीम परिवर्तित · Theme updated', icon: '🌓' });
+      onClose();
+    },
+  },
+  {
+    id: 'resume',
+    command: '> resume',
+    title: 'Resume Last Read Verse',
+    titleHi: 'अंतिम पठित श्लोक से पुनः प्रारंभ करें',
+    subtitle: 'Jump directly to your last bookmark',
+    icon: '📖',
+    run: (onClose, router) => {
+      try {
+        const raw = localStorage.getItem('dharma_parayana_progress');
+        if (raw) {
+          const p = JSON.parse(raw);
+          if (p.scriptureSlug && p.chapterNumber) {
+            router.push(`/scripture/${p.scriptureSlug}/chapter/${p.chapterNumber}/#verse-${p.verseNumber || 1}`);
+            triggerPranaToast({ message: `श्लोक ${p.verseNumber || 1} से आगे · Resuming reading`, icon: '📖' });
+            onClose();
+            return;
+          }
+        }
+      } catch {}
+      router.push('/scripture/bhagavadgita/chapter/2/#verse-47');
+      triggerPranaToast({ message: 'गीता २.४७ से प्रारंभ · Resumed reading', icon: '📖' });
+      onClose();
+    },
+  },
+];
+
 /* ── Presentation helpers ────────────────────────────────────────────── */
 
 function groupIcon(group: SearchResultGroup) {
@@ -217,6 +330,7 @@ const TOPIC_TINTS = [
 
 export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props) {
   const router = useRouter();
+  const { cycleTheme } = useTheme();
   const reduce = useReducedMotion();
   const listboxId = useId();
   const statusId = useId();
@@ -239,6 +353,19 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
   const deferredQuery = useDeferredValue(query);
   const trimmed = deferredQuery.trim();
   const isStale = query !== deferredQuery;
+
+  const isActionQuery = trimmed.startsWith('>');
+  const actionFilter = isActionQuery ? trimmed.slice(1).trim().toLowerCase() : '';
+  const matchingActions = useMemo(() => {
+    if (!isActionQuery) return [];
+    if (!actionFilter) return SACRED_ACTIONS;
+    return SACRED_ACTIONS.filter(
+      (a) =>
+        a.command.toLowerCase().includes(actionFilter) ||
+        a.title.toLowerCase().includes(actionFilter) ||
+        a.titleHi.toLowerCase().includes(actionFilter)
+    );
+  }, [isActionQuery, actionFilter]);
 
   useEffect(() => {
     setIsOnline(navigator.onLine);
@@ -419,12 +546,26 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
   const onInputKeyDown = (e: React.KeyboardEvent) => {
     // Enter and arrows while a Hindi/Devanagari IME is composing pick a candidate; they must not navigate.
     if (e.nativeEvent.isComposing || e.keyCode === 229) return;
-    if (e.key === 'ArrowDown' && display.length > 0) {
-      e.preventDefault();
-      setSelectedIndex((i) => (i + 1) % display.length);
-    } else if (e.key === 'ArrowUp' && display.length > 0) {
-      e.preventDefault();
-      setSelectedIndex((i) => (i - 1 + display.length) % display.length);
+    if (e.key === 'ArrowDown') {
+      if (isActionQuery && matchingActions.length > 0) {
+        e.preventDefault();
+        setSelectedIndex((i) => (i + 1) % matchingActions.length);
+        return;
+      }
+      if (display.length > 0) {
+        e.preventDefault();
+        setSelectedIndex((i) => (i + 1) % display.length);
+      }
+    } else if (e.key === 'ArrowUp') {
+      if (isActionQuery && matchingActions.length > 0) {
+        e.preventDefault();
+        setSelectedIndex((i) => (i - 1 + matchingActions.length) % matchingActions.length);
+        return;
+      }
+      if (display.length > 0) {
+        e.preventDefault();
+        setSelectedIndex((i) => (i - 1 + display.length) % display.length);
+      }
     } else if (e.key === 'Home' && display.length > 0 && e.ctrlKey) {
       e.preventDefault();
       setSelectedIndex(0);
@@ -432,6 +573,12 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
       e.preventDefault();
       setSelectedIndex(display.length - 1);
     } else if (e.key === 'Enter') {
+      if (isActionQuery && matchingActions.length > 0) {
+        e.preventDefault();
+        const action = matchingActions[selectedIndex % matchingActions.length] || matchingActions[0];
+        action.run(onClose, router, cycleTheme);
+        return;
+      }
       if (display[selectedIndex]) {
         e.preventDefault();
         openFromKeyboard(display[selectedIndex]);
@@ -502,7 +649,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={onInputKeyDown}
-                placeholder="Search Sanskrit, Hindi, English, transliteration, or a reference like Gita 2.47…"
+                placeholder="Search Gita 2.47, कर्म, fear, or type > for actions…"
                 aria-label="Search scriptures, verses, topics and practices"
                 aria-describedby={statusId}
                 className="min-h-[44px] min-w-0 flex-1 bg-transparent text-base text-dharma-text outline-none placeholder:text-dharma-muted/70 sm:text-lg"
@@ -640,8 +787,72 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
 
             {/* Body */}
             <div className="min-h-0 flex-1 overflow-y-auto p-3 sm:p-5">
-              {!trimmed && (
+              {isActionQuery ? (
+                <div className="space-y-3 py-1">
+                  <div className="flex items-center justify-between px-1">
+                    <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                      <Sparkles className="h-3.5 w-3.5" />
+                      <span>पवित्र क्रियाएँ · Sacred Actions</span>
+                    </h3>
+                    <span className="text-2xs font-mono text-dharma-muted">Use ↑↓ and Enter</span>
+                  </div>
+                  {matchingActions.length === 0 ? (
+                    <p className="p-4 text-center text-sm text-dharma-muted">
+                      No matching actions found for &ldquo;{actionFilter}&rdquo;. Try <code className="text-amber-500">&gt; tanpura</code>, <code className="text-amber-500">&gt; bell</code>, or <code className="text-amber-500">&gt; meditation</code>.
+                    </p>
+                  ) : (
+                    <ul className="grid gap-2">
+                      {matchingActions.map((action, idx) => (
+                        <li key={action.id}>
+                          <button
+                            type="button"
+                            onClick={() => action.run(onClose, router, cycleTheme)}
+                            className={`focus-ring w-full text-left p-3.5 rounded-2xl border transition flex items-center justify-between gap-3 ${
+                              idx === selectedIndex % matchingActions.length
+                                ? 'border-amber-500 bg-amber-500/15 shadow-md shadow-amber-500/10'
+                                : 'border-dharma-border bg-dharma-card hover:border-amber-400'
+                            }`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className="text-2xl">{action.icon}</span>
+                              <div>
+                                <p className="text-sm font-bold text-dharma-text">{action.title}</p>
+                                <p className="text-xs text-dharma-muted">{action.titleHi} · {action.subtitle}</p>
+                              </div>
+                            </div>
+                            <span className="text-2xs font-mono px-2 py-1 rounded bg-stone-900/40 border border-stone-700/50 text-amber-400 font-bold">
+                              {action.command}
+                            </span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ) : !trimmed ? (
                 <div className="space-y-6 py-1">
+                  {/* Sacred Quick Actions row */}
+                  <section aria-label="Sacred Quick Actions">
+                    <div className="mb-2 flex items-center justify-between px-1">
+                      <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                        <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                        <span lang="hi" className="font-devanagari normal-case tracking-normal">पवित्र क्रियाएँ</span> · Sacred Actions ({'>'})
+                      </h3>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                      {SACRED_ACTIONS.map((a) => (
+                        <button
+                          key={a.id}
+                          type="button"
+                          onClick={() => a.run(onClose, router, cycleTheme)}
+                          className="focus-ring flex items-center gap-2 p-2.5 rounded-xl border border-amber-500/30 bg-amber-500/5 hover:bg-amber-500/15 text-left text-xs font-semibold text-dharma-text transition"
+                        >
+                          <span className="text-lg">{a.icon}</span>
+                          <span className="truncate">{a.title}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </section>
                   {recent.length > 0 && (
                     <section aria-labelledby={`${listboxId}-recent`}>
                       <div className="mb-2 flex items-center justify-between px-1">
@@ -718,7 +929,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                     </ul>
                   </section>
                 </div>
-              )}
+              ) : null}
 
               {trimmed && result && verseLoading && isOnline && (
                 <div role="status" className="mb-3 flex items-center gap-2 rounded-lg border border-dharma-border bg-dharma-bg/60 px-3 py-2 text-xs text-dharma-muted">

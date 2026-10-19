@@ -1,12 +1,13 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Sunset, Moon, BookOpen } from 'lucide-react';
+import { Sun, Sunset, Moon, BookOpen, Sparkles } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { THEMES, useTheme, type Theme } from './ThemeProvider';
 
 const ICONS: Record<Theme, ReactNode> = {
+  auto: <Sparkles className="w-4 h-4 text-amber-400" />,
   day: <Sun className="w-4 h-4" />,
   sunset: <Sunset className="w-4 h-4" />,
   paper: <BookOpen className="w-4 h-4" />,
@@ -14,6 +15,7 @@ const ICONS: Record<Theme, ReactNode> = {
 };
 
 const LABELS: Record<Theme, string> = {
+  auto: 'सौर',
   day: 'Day',
   sunset: 'Sunset',
   paper: 'Paper',
@@ -21,6 +23,7 @@ const LABELS: Record<Theme, string> = {
 };
 
 const DESCRIPTIONS: Record<Theme, string> = {
+  auto: 'सौर चक्र · Circadian Sandhyā Auto-Theme',
   day: 'Warm paper reading mode',
   sunset: 'Soft amber evening mode',
   paper: 'Antique manuscript parchment',

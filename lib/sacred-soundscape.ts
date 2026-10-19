@@ -65,6 +65,8 @@ export const SOUNDSCAPE_TRACKS: SoundscapeTrackMeta[] = [
   },
 ];
 
+export type ParayanaCadenceMode = 'sanskrit_only' | 'sanskrit_hindi' | 'sanskrit_english';
+
 export interface SoundscapeState {
   isPlaying: boolean;
   activeTrack: SoundscapeTrackId;
@@ -72,10 +74,13 @@ export interface SoundscapeState {
   isMuted: boolean;
   bowlIntervalSeconds: number; // 0 (off), 60 (1m), 180 (3m), 300 (5m)
   continuousParayana: boolean; // Auto-advance to next verse upon recitation completion
+  parayanaCadenceMode: ParayanaCadenceMode; // Sanskrit only, Sanskrit + Hindi, or Sanskrit + English
   sleepTimerMinutes: number; // 0 (off), 15, 30, 45, 60
   sleepTimerEndsAt: number | null; // Timestamp when sleep timer expires
   currentVerseSanskrit?: string;
   currentVerseReference?: string;
+  currentVerseHindi?: string;
+  currentVerseEnglish?: string;
 }
 
 type SoundscapeListener = (state: SoundscapeState) => void;
@@ -85,6 +90,7 @@ const STORAGE_TRACK = 'dharma_soundscape_track';
 const STORAGE_VOLUME = 'dharma_soundscape_volume';
 const STORAGE_BOWL_INTERVAL = 'dharma_soundscape_bowl_interval';
 const STORAGE_PARAYANA = 'dharma_soundscape_parayana';
+const STORAGE_PARAYANA_MODE = 'dharma_parayana_mode';
 
 let audioCtx: AudioContext | null = null;
 let masterGain: GainNode | null = null;
@@ -103,10 +109,13 @@ let state: SoundscapeState = {
   isMuted: false,
   bowlIntervalSeconds: 0,
   continuousParayana: false,
+  parayanaCadenceMode: 'sanskrit_only',
   sleepTimerMinutes: 0,
   sleepTimerEndsAt: null,
   currentVerseSanskrit: undefined,
   currentVerseReference: undefined,
+  currentVerseHindi: undefined,
+  currentVerseEnglish: undefined,
 };
 
 // Initialize persistent state from localStorage
@@ -133,6 +142,10 @@ if (typeof window !== 'undefined') {
     const savedParayana = localStorage.getItem(STORAGE_PARAYANA);
     if (savedParayana !== null) {
       state.continuousParayana = savedParayana === 'true';
+    }
+    const savedMode = localStorage.getItem(STORAGE_PARAYANA_MODE) as ParayanaCadenceMode | null;
+    if (savedMode && ['sanskrit_only', 'sanskrit_hindi', 'sanskrit_english'].includes(savedMode)) {
+      state.parayanaCadenceMode = savedMode;
     }
   } catch {}
 }
@@ -416,7 +429,8 @@ export function speakSanskritTerm(word: string, rate: number = 0.85) {
 }
 
 /**
- * Speak Sanskrit Verse chunked by dandas (। / ॥) to avoid Chrome 15s pause bug
+ * Speak Sanskrit Verse chunked by dandas (। / ॥) to avoid Chrome 15s pause bug,
+ * with cadence mode support for bilingual audiobook playback (Sanskrit + Hindi / English)
  */
 function speakCurrentVerse(text?: string) {
   if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
@@ -445,6 +459,93 @@ function speakCurrentVerse(text?: string) {
     voices.find((v) => v.lang.includes('hi') || v.lang.includes('sa')) ||
     voices.find((v) => v.lang.includes('IN'));
 
+  const finishRecitation = () => {
+    isSpeakingVerse = false;
+    if (!state.continuousParayana) {
+      state.isPlaying = false;
+    }
+    notify();
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(
+        new CustomEvent('dharma:recitation-chunk', {
+          detail: { chunkIndex: null, isTranslation: false },
+        })
+      );
+      window.dispatchEvent(
+        new CustomEvent('dharma:recitation-ended', {
+          detail: { reference: state.currentVerseReference },
+        })
+      );
+    }
+  };
+
+  const handleSanskritDone = () => {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(
+        new CustomEvent('dharma:recitation-chunk', {
+          detail: { chunkIndex: null, isTranslation: false },
+        })
+      );
+    }
+
+    // Check cadence mode for bilingual audiobook translation playback
+    if (state.parayanaCadenceMode === 'sanskrit_hindi' && state.currentVerseHindi) {
+      setTimeout(() => {
+        if (!state.isPlaying || !isSpeakingVerse) return;
+        const cleanHindi = state.currentVerseHindi!.replace(/[\n\r]+/g, ' ').trim();
+        const hindiUtt = new SpeechSynthesisUtterance(cleanHindi);
+        hindiUtt.lang = 'hi-IN';
+        hindiUtt.rate = 0.9;
+        hindiUtt.pitch = 0.98;
+        if (sanskritVoice) hindiUtt.voice = sanskritVoice;
+        hindiUtt.onstart = () => {
+          if (typeof window !== 'undefined') {
+            window.dispatchEvent(
+              new CustomEvent('dharma:recitation-chunk', {
+                detail: { isTranslation: true, language: 'hi', reference: state.currentVerseReference },
+              })
+            );
+          }
+        };
+        hindiUtt.onend = finishRecitation;
+        hindiUtt.onerror = finishRecitation;
+        window.speechSynthesis.speak(hindiUtt);
+      }, 1000);
+      return;
+    }
+
+    if (state.parayanaCadenceMode === 'sanskrit_english' && state.currentVerseEnglish) {
+      setTimeout(() => {
+        if (!state.isPlaying || !isSpeakingVerse) return;
+        const cleanEng = state.currentVerseEnglish!.replace(/[\n\r]+/g, ' ').trim();
+        const engUtt = new SpeechSynthesisUtterance(cleanEng);
+        engUtt.lang = 'en-IN';
+        engUtt.rate = 0.92;
+        engUtt.pitch = 1.0;
+        const engVoice =
+          voices.find((v) => v.lang.includes('en-IN')) ||
+          voices.find((v) => v.lang.includes('en-GB') || v.lang.includes('en-US') || v.lang.startsWith('en'));
+        if (engVoice) engUtt.voice = engVoice;
+        engUtt.onstart = () => {
+          if (typeof window !== 'undefined') {
+            window.dispatchEvent(
+              new CustomEvent('dharma:recitation-chunk', {
+                detail: { isTranslation: true, language: 'en', reference: state.currentVerseReference },
+              })
+            );
+          }
+        };
+        engUtt.onend = finishRecitation;
+        engUtt.onerror = finishRecitation;
+        window.speechSynthesis.speak(engUtt);
+      }, 1000);
+      return;
+    }
+
+    // Default: Sanskrit only
+    finishRecitation();
+  };
+
   chunks.forEach((chunk, index) => {
     const utt = new SpeechSynthesisUtterance(chunk);
     utt.lang = 'hi-IN';
@@ -452,27 +553,24 @@ function speakCurrentVerse(text?: string) {
     utt.pitch = 0.95;
     if (sanskritVoice) utt.voice = sanskritVoice;
 
+    utt.onstart = () => {
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(
+          new CustomEvent('dharma:recitation-chunk', {
+            detail: {
+              chunkIndex: index,
+              totalChunks: chunks.length,
+              isTranslation: false,
+              reference: state.currentVerseReference,
+            },
+          })
+        );
+      }
+    };
+
     if (index === chunks.length - 1) {
-      utt.onend = () => {
-        isSpeakingVerse = false;
-        if (!state.continuousParayana) {
-          state.isPlaying = false;
-        }
-        notify();
-        // Dispatch recitation-ended for continuous chapter parayana
-        if (typeof window !== 'undefined') {
-          window.dispatchEvent(
-            new CustomEvent('dharma:recitation-ended', {
-              detail: { reference: state.currentVerseReference },
-            })
-          );
-        }
-      };
-      utt.onerror = () => {
-        isSpeakingVerse = false;
-        state.isPlaying = false;
-        notify();
-      };
+      utt.onend = handleSanskritDone;
+      utt.onerror = finishRecitation;
     }
 
     speechUtteranceQueue.push(utt);
@@ -538,6 +636,11 @@ export function stopSoundscape() {
   stopSynthesizer();
   if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
     window.speechSynthesis.cancel();
+    window.dispatchEvent(
+      new CustomEvent('dharma:recitation-chunk', {
+        detail: { chunkIndex: null, isTranslation: false },
+      })
+    );
   }
 
   if (bowlTimer) {
@@ -636,6 +739,16 @@ export function setContinuousParayana(enabled: boolean) {
   notify();
 }
 
+export function setParayanaCadenceMode(mode: ParayanaCadenceMode) {
+  state.parayanaCadenceMode = mode;
+  if (typeof window !== 'undefined') {
+    try {
+      localStorage.setItem(STORAGE_PARAYANA_MODE, mode);
+    } catch {}
+  }
+  notify();
+}
+
 /**
  * Set a sleep timer that smoothly fades out audio over 5 seconds before pausing
  * @param minutes Duration in minutes (0 to cancel)
@@ -680,9 +793,16 @@ export function setSoundscapeSleepTimer(minutes: number) {
   notify();
 }
 
-export function setCurrentVerseContext(sanskrit?: string, reference?: string) {
+export function setCurrentVerseContext(
+  sanskrit?: string,
+  reference?: string,
+  hindi?: string,
+  english?: string
+) {
   state.currentVerseSanskrit = sanskrit;
   state.currentVerseReference = reference;
+  state.currentVerseHindi = hindi;
+  state.currentVerseEnglish = english;
   if (state.isPlaying && state.activeTrack === 'recitation' && sanskrit) {
     speakCurrentVerse(sanskrit);
   }
