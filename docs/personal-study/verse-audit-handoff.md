@@ -43,4 +43,8 @@ The current content-integrity run reported zero structural errors and the commen
 - Post-Phase-7 UI integration under the existing protection and integration documents.
 - Re-run canonical snapshots after Phase 7 settles and compare them before merging.
 
+## Parallel integration blockers
+
+The active Phase 7 checkout currently contains additional uncommitted audit scripts that were not authored in this isolated worktree. A read-only targeted typecheck reported a missing `@/lib/read-seeded-chapters` module in the existing data index and a `Verse.wordMeaning` type error in the parallel audit script. Those files remain untouched pending the Phase 7 agent's ownership and fixes.
+
 The authoritative Phase 7 boundary documents remain `docs/personal-study/phase-7-protected-files.md` and `docs/personal-study/post-phase-7-integration.md` in the Phase 8A foundation worktree. They govern protected paths and integration order.
