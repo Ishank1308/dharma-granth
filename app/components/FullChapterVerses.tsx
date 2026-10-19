@@ -199,7 +199,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
 
   // ── Mobile Reader & Level State ──
   const [activeVerseIndex, setActiveVerseIndex] = useState(0);
-  const [spiritualLevel, setSpiritualLevel] = useState('seeker');
 
   const handleOpenSvadhyaya = (tab: SvadhyayaTab, data?: unknown) => {
     setSvadhyayaTab(tab);
@@ -1132,8 +1131,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
             setActiveVerseIndex(nextIdx);
             scrollToVerse(state.verses[nextIdx].number);
           }}
-          selectedLevel={spiritualLevel}
-          onSelectLevel={setSpiritualLevel}
           activeLayers={{
             translit: showTranslit,
             hindi: showHindi,

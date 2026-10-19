@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { speakSanskritShloka, stopSanskritSpeech, isSpeakingSanskrit } from '@/lib/sacred-audio';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { READING_DEPTHS, useReadingDepth } from '@/lib/reading-depth';
 
 export interface MobileOneThumbControlBarProps {
   currentVerseNumber: number | string;
@@ -20,8 +21,6 @@ export interface MobileOneThumbControlBarProps {
   currentVerseSanskrit?: string;
   onPrevVerse: () => void;
   onNextVerse: () => void;
-  selectedLevel: string;
-  onSelectLevel: (level: string) => void;
   activeLayers: {
     translit: boolean;
     hindi: boolean;
@@ -31,23 +30,16 @@ export interface MobileOneThumbControlBarProps {
   onToggleLayer: (layer: 'translit' | 'hindi' | 'english' | 'commentary') => void;
 }
 
-const SPIRITUAL_LEVELS = [
-  { id: 'seeker', label: 'जिज्ञासु', desc: 'सरल अर्थ व जीवन संदेश' },
-  { id: 'sadhaka', label: 'साधक', desc: 'ध्यान, कर्म व अभ्यास' },
-  { id: 'scholar', label: 'दार्शनिक', desc: 'गहन तत्व चिंतन व व्याकरण' },
-];
-
 export function MobileOneThumbControlBar({
   currentVerseNumber,
   totalVerses,
   currentVerseSanskrit,
   onPrevVerse,
   onNextVerse,
-  selectedLevel,
-  onSelectLevel,
   activeLayers,
   onToggleLayer,
 }: MobileOneThumbControlBarProps) {
+  const [depth, setDepth] = useReadingDepth();
   const [isVisible, setIsVisible] = useState(true);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [showLevelMenu, setShowLevelMenu] = useState(false);
@@ -107,8 +99,7 @@ export function MobileOneThumbControlBar({
     }
   };
 
-  const currentLevelLabel =
-    SPIRITUAL_LEVELS.find((l) => l.id === selectedLevel)?.label || 'जिज्ञासु';
+  const currentLevelLabel = READING_DEPTHS.find((d) => d.id === depth)?.hi ?? 'समझें';
 
   return (
     <div
@@ -122,29 +113,29 @@ export function MobileOneThumbControlBar({
       {showLevelMenu && (
         <div className="absolute bottom-full mb-2 left-0 right-0 rounded-2xl border border-dharma-border bg-dharma-card p-3 shadow-2xl backdrop-blur-md">
           <p className="text-[11px] font-bold uppercase tracking-wider text-dharma-muted mb-2 px-1">
-            अध्ययन स्तर (Commentary Depth)
+            पठन गहराई (Reading depth)
           </p>
           <div className="space-y-1">
-            {SPIRITUAL_LEVELS.map((lvl) => (
+            {READING_DEPTHS.map((lvl) => (
               <button
                 key={lvl.id}
                 type="button"
                 onClick={() => {
-                  onSelectLevel(lvl.id);
+                  setDepth(lvl.id);
                   setShowLevelMenu(false);
                   triggerTactileFeedback('selection', 'softTap');
                 }}
                 className={`w-full flex items-center justify-between p-2.5 rounded-xl text-left text-xs transition ${
-                  selectedLevel === lvl.id
+                  depth === lvl.id
                     ? 'bg-saffron-50 text-saffron-800 font-bold border border-saffron-200 dark:bg-saffron-950/40 dark:text-saffron-300'
                     : 'text-dharma-text hover:bg-dharma-bg'
                 }`}
               >
                 <div>
-                  <span className="font-semibold block">{lvl.label}</span>
-                  <span className="text-[10px] text-dharma-muted">{lvl.desc}</span>
+                  <span className="font-semibold block">{lvl.hi} · {lvl.en}</span>
+                  <span className="text-[10px] text-dharma-muted">{lvl.hint}</span>
                 </div>
-                {selectedLevel === lvl.id && (
+                {depth === lvl.id && (
                   <span className="h-2 w-2 rounded-full bg-saffron-600" />
                 )}
               </button>
@@ -282,7 +273,7 @@ export function MobileOneThumbControlBar({
             setShowLangMenu(false);
             triggerTactileFeedback('selection', 'softTap');
           }}
-          aria-label="अध्ययन स्तर चुनें"
+          aria-label="पठन गहराई चुनें (Reading depth)"
           aria-expanded={showLevelMenu}
           className={`min-h-[44px] px-2.5 flex items-center gap-1 rounded-xl text-xs font-semibold transition active:scale-95 ${
             showLevelMenu
