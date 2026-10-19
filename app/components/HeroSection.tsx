@@ -403,20 +403,6 @@ export function HeroSection() {
             </MagneticButton>
           </div>
           <div>
-            <MagneticButton
-              href="/ask"
-              className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-gradient-to-r from-amber-500/20 to-saffron-500/20 px-5 py-3.5 font-bold text-amber-200 shadow-xl backdrop-blur-md transition-all hover:border-amber-300 hover:bg-amber-500/30 sm:gap-2.5 sm:px-6 shine-sweep"
-              strength={24}
-              tilt={10}
-            >
-              <Sparkles className="w-5 h-5 text-amber-300" />
-              <span lang="hi">धर्म सहायक</span>
-              <span lang="hi" className="font-devanagari text-xs text-amber-100 hidden md:inline">
-                (मार्गदर्शन)
-              </span>
-            </MagneticButton>
-          </div>
-          <div>
             <SurpriseVerseButton className="hidden items-center gap-2.5 rounded-full border border-white/20 px-4 py-3.5 font-semibold text-white/90 transition hover:border-white/40 hover:bg-white/10 sm:inline-flex" />
           </div>
         </FadeUp>

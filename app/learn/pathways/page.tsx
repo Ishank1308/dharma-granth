@@ -3,11 +3,13 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { CheckCircle2, Circle, Clock, ArrowRight, Award, ChevronDown, ChevronUp, Target, BookOpen } from 'lucide-react';
+import { CheckCircle2, Circle, Clock, ArrowRight, Award, ChevronDown, ChevronUp, Target, BookOpen, Zap } from 'lucide-react';
 import { pathways, getPathway, type Pathway } from '@/data/pathways';
 import { useStudyProgress } from '@/lib/useStudyProgress';
 import { Certificate } from '@/app/components/Certificate';
 import { FadeUp, FadeUpOnView, Stagger, StaggerItem } from '@/app/components/motion/primitives';
+import { StoryDeckModal, type StoryDeckData } from '@/components/reader/StoryDeckModal';
+import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
 
 export default function PathwaysPage() {
   const reduce = useReducedMotion();
@@ -15,6 +17,7 @@ export default function PathwaysPage() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [showCertificateFor, setShowCertificateFor] = useState<string | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<'all' | 'beginner' | 'intermediate' | 'advanced'>('all');
+  const [activeStoryDeck, setActiveStoryDeck] = useState<StoryDeckData | null>(null);
 
   // No loading gate: the pathways themselves are static content (and must be
   // in the exported HTML for search engines). Only the reader's progress comes
@@ -276,14 +279,40 @@ export default function PathwaysPage() {
                                           ))}
                                         </div>
                                       )}
-                                      <Link
-                                        href={step.href}
-                                        className="inline-flex items-center gap-1 text-xs font-semibold text-saffron-700 hover:text-saffron-800 transition"
-                                      >
-                                        <BookOpen className="w-3 h-3" />
-                                        Start reading
-                                        <ArrowRight className="w-3 h-3" />
-                                      </Link>
+                                      <div className="flex flex-wrap items-center gap-3">
+                                        <Link
+                                          href={step.href}
+                                          className="inline-flex items-center gap-1 text-xs font-semibold text-saffron-700 hover:text-saffron-800 transition"
+                                        >
+                                          <BookOpen className="w-3 h-3" />
+                                          Start reading
+                                          <ArrowRight className="w-3 h-3" />
+                                        </Link>
+                                        <button
+                                          type="button"
+                                          onClick={() => {
+                                            const meta = getLiteraryVerseMeta('bhagavadgita', 1, 1, {
+                                              translation: step.description,
+                                              hindi: step.description,
+                                            });
+                                            setActiveStoryDeck({
+                                              scriptureTitle: pathway.title,
+                                              chapterTitle: step.title,
+                                              verseRef: step.titleSanskrit || step.title,
+                                              sanskrit: step.titleSanskrit || step.title,
+                                              hindi: step.description,
+                                              english: step.description,
+                                              meta,
+                                              chapterHref: step.href,
+                                              verseHref: step.href,
+                                            });
+                                          }}
+                                          className="inline-flex items-center gap-1 rounded-full border border-amber-300/80 bg-amber-50/80 px-2.5 py-0.5 text-[11px] font-bold text-amber-900 transition hover:bg-amber-100 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200 cursor-pointer shadow-2xs"
+                                        >
+                                          <Zap className="h-3 w-3 text-amber-600 dark:text-amber-400" />
+                                          <span>६०-सेकंड सार</span>
+                                        </button>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -354,6 +383,14 @@ export default function PathwaysPage() {
               </div>
             </motion.div>
           </motion.div>
+        )}
+
+        {activeStoryDeck && (
+          <StoryDeckModal
+            isOpen={Boolean(activeStoryDeck)}
+            onClose={() => setActiveStoryDeck(null)}
+            data={activeStoryDeck}
+          />
         )}
       </AnimatePresence>
     </main>

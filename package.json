@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "search:core": "tsx scripts/build-search-core.ts",
-    "prebuild": "npm run search:core && npm run publish:data && npm run check && npm run og:verses",
+    "build:concordance": "tsx scripts/build-concordance-db.ts",
+    "prebuild": "npm run search:core && npm run build:concordance && npm run publish:data && npm run check && npm run og:verses",
     "build": "next build",
     "postbuild": "npm run check:export && npm run check:sitemap && npm run prune:export",
     "prune:export": "node scripts/prune-export.mjs",

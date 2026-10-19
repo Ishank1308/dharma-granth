@@ -108,7 +108,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     description:
       "Detailed exposition on the five koshas (sheaths) covering the Self and the famous prayer \"Satyam Vada, Dharmam Chara\".",
     totalChapters: 3,
-    totalVerses: 92,
+    totalVerses: 39,
     isCurated: true,
     canonicalTotalVerses: 92,
     tags: ["Upanishad","Taittiriyopanishad","Koshas","Ethics","Self"],
@@ -122,8 +122,8 @@ export const scriptureCatalog: ScriptureMeta[] = [
     category: "upanishad",
     description:
       "One of the longest Upanishads. Famous for the Mahavakya \"Tat Tvam Asi\" (That Thou Art) and the story of Uddalaka and Shvetaketu.",
-    totalChapters: 8,
-    totalVerses: 629,
+    totalChapters:  154,
+    totalVerses:  628,
     tags: ["Upanishad","Chandogyopanishad","Mahavakya","Tat Tvam Asi","Education"],
     hasData: true,
   },
@@ -135,8 +135,8 @@ export const scriptureCatalog: ScriptureMeta[] = [
     category: "upanishad",
     description:
       "The largest Upanishad. Contains profound dialogues between Yajnavalkya and Maitreyi, and explores the nature of reality in depth.",
-    totalChapters: 6,
-    totalVerses: 435,
+    totalChapters:  45,
+    totalVerses:  386,
     tags: ["Upanishad","Brihadaranyakopanishad","Yajnavalkya","Self","Advaita"],
     hasData: true,
   },
@@ -161,8 +161,8 @@ export const scriptureCatalog: ScriptureMeta[] = [
     category: "upanishad",
     description:
       "Describes the creation of the universe, the birth of the individual soul, and the identity of the individual self with the cosmic Self.",
-    totalChapters: 3,
-    totalVerses: 33,
+    totalChapters:  5,
+    totalVerses:  33,
     tags: ["Upanishad","Creation","Soul","Consciousness"],
     hasData: true,
   },
@@ -255,7 +255,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     description:
       "The 'drop of light.' A Shiva-Kartikeya dialogue in the Advaita tradition. Employs the neti-neti method of self-inquiry and describes the Jivanmukta — one liberated while still living — as a lamp in a windless place.",
     totalChapters: 7,
-    totalVerses: 463,
+    totalVerses: 464,
     tags: ["Upanishad","Advaita","NetiNeti","Shiva","Jivanmukta"],
     hasData: true,
   },
@@ -294,7 +294,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     description:
       "The canonical meta-Upanishad — a dialogue between Rama (guru) and Hanuman (disciple). Lists and canonises all 108 Upanishads. Declares the Mandukya alone sufficient for liberation. Teaches manonasha through vicara (dissolution of mind through inquiry), the exhaustion of vasanas, and the marks of the jivanmukta: equal vision, love for all beings, sameness toward friend and enemy.",
     totalChapters: 2,
-    totalVerses: 136,
+    totalVerses: 137,
     tags: ["Upanishad","Muktika","Rama","Hanuman","Mandukya","108Upanishads","Jivanmukti"],
     hasData: true,
   },
@@ -793,7 +793,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     description:
       "The Yoga Rasayanam — Sanskrit text on the alchemical and rejuvenative dimensions of yogic practice with Hindi translation. At the intersection of Hatha Yoga and Ayurvedic Rasayana Shastra. Ch1 Deha-Rasayana: 'śarīraṃ sādhanaṃ' — body as instrument, not obstacle; ṣaṭkarma → āsana → prāṇāyāma → mudrā as sequential purification. Ch2 Ojas-Tejas-Prāṇa: brahmacharya as 'śukra-rakṣaṇa' — conservation of vital essence; four-fold samyak-rasāyana — right food, right posture, right breath, right knowledge. Ch3 Kundalini-Amṛta: 'kuṇḍalinī...mūlādhāre niveśitā...amṛtaṃ srāvayet śiraḥ' — inner elixir produced by awakened kuṇḍalinī reaching sahasrāra; 'paramānandam amṛta-rasa-samplavāt' — supreme bliss from the flood of nectar; jīvan-mukta — liberation in this very body through inner alchemy.",
     totalChapters: 3,
-    totalVerses: 120,
+    totalVerses:  301,
     isCurated: true,
     canonicalTotalVerses: 120,
     tags: ["Tantra","Yoga","Rasayana","HathaYoga","Kundalini","Ojas","Ayurveda","Alchemy","Rejuvenation","Shatkarma","Pranayama"],
@@ -882,8 +882,10 @@ export const scriptureCatalog: ScriptureMeta[] = [
     description:
       "Vidura Niti — counsel of Vidura to Dhritarashtra from Mahabharata Udyoga Parva (~560 verses). The wisest man in the epic speaks truth to power knowing he will not be heard. Ch1 Pandit Lakshana: 'krodhaṃ na gacchati āpannaḥ...priyaṃ na vadate mṛṣā...anṛtena arthaṃ nādadāte' — three marks of the wise (no anger under affliction, no flattery, no dishonest gain); mudha defined by bhayāt na ārabhate (fear-paralysis), alpaphalāni na karoti (impatience with small results), aśraddhyā ālasaḥ (faithless inertia); 'anāgataṃ yaḥ kurute sa paṇḍitaḥ' — prepare for what has not yet come. Ch2 Niti Vakya: 'na brūyāt satyam apriyam...priyaṃ ca nānṛtam' — eternal speech dharma; six gates of ruin — ālasya, tandrā, bhaya, krodha, āśā, dīrghasūtratā; strategic silence — 'kṛtamevāsya jānanti' — pandit known only by completed action. Ch3 Dharmarajya: 'apriya-pathya' — rare are speakers and listeners of unpleasant-but-beneficial truth; 'dharmo rakṣati rakṣitaḥ...dharmo hato hanti' — dharma protected protects; dharma violated destroys.",
     author: "Vyasa",
-    totalChapters: 3,
-    totalVerses: 560,
+    totalChapters:  8,
+    totalVerses:  284,
+    canonicalTotalVerses: 594,
+    isCurated: true,
     tags: ["Itihasa","Mahabharata","Vidura","Niti","Wisdom","Ethics","Governance","Pandit","Character","Dharma","PracticalWisdom","SpeechEthics"],
     hasData: true,
   },

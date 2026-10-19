@@ -1,0 +1,464 @@
+{
+  "timestamp": "2026-10-19T16:39:03.633Z",
+  "totalScriptures": 65,
+  "totalChapters": 3107,
+  "totalVerses": 187490,
+  "masterRootSha256": "28bacdade2753bfe1c569fb5acfc1e6e0562a446ca6d2151efcacdda0198fdb3",
+  "scriptures": {
+    "bhagavadgita": {
+      "id": "bhagavadgita",
+      "title": "Bhagavad Gita",
+      "chapterCount": 18,
+      "verseCount": 701,
+      "canonicalSha256": "94eeeb6c2fa8ba519ac92bd34a2ba9bf7fc0a47f7bed0ed5477144b3a6ff52df"
+    },
+    "ishavasya": {
+      "id": "ishavasya",
+      "title": "Isha Upanishad",
+      "chapterCount": 1,
+      "verseCount": 18,
+      "canonicalSha256": "9d8ff77facc3bff19bfd11a78f19319b7a175d70bdc5d59c501cf00c8abb5770"
+    },
+    "kena": {
+      "id": "kena",
+      "title": "Kena Upanishad",
+      "chapterCount": 4,
+      "verseCount": 35,
+      "canonicalSha256": "60a67865fc5a47dcd03b69782fddbaae72b22adbb05e61599aaf70db7e51c86d"
+    },
+    "katha": {
+      "id": "katha",
+      "title": "Katha Upanishad",
+      "chapterCount": 6,
+      "verseCount": 119,
+      "canonicalSha256": "c9b791504a10ed8029e38bf7df0953089855d81c0854416dbc5eda0847323f6c"
+    },
+    "mundaka": {
+      "id": "mundaka",
+      "title": "Mundaka Upanishad",
+      "chapterCount": 6,
+      "verseCount": 64,
+      "canonicalSha256": "ce83d735f1f862935aca2e9e5056edf8834d6cec686dead4b58dd0068f7ad5cc"
+    },
+    "mandukya": {
+      "id": "mandukya",
+      "title": "Mandukya Upanishad",
+      "chapterCount": 1,
+      "verseCount": 12,
+      "canonicalSha256": "cb951ceffd73c58a36a042147a158aa320f3767f7f5015e1e6faae98a1112e4a"
+    },
+    "prashna": {
+      "id": "prashna",
+      "title": "Prashna Upanishad",
+      "chapterCount": 6,
+      "verseCount": 67,
+      "canonicalSha256": "83e153b45946ce41403e210a7963164824b7d7bef8b4ec887589e4b5a7632fb4"
+    },
+    "taittiriya": {
+      "id": "taittiriya",
+      "title": "Taittiriya Upanishad",
+      "chapterCount": 3,
+      "verseCount": 39,
+      "canonicalSha256": "b83dcfe94a709bc7801b24408b032213bfc4e9f7320db9efde4eb1a80d7a7799"
+    },
+    "chandogya": {
+      "id": "chandogya",
+      "title": "Chandogya Upanishad",
+      "chapterCount": 154,
+      "verseCount": 628,
+      "canonicalSha256": "14694d8f6fe2375e1a4cf448ed3ef278741647803a74f5af77e3a385cf3b1e91"
+    },
+    "brihadaranyaka": {
+      "id": "brihadaranyaka",
+      "title": "Brihadaranyaka Upanishad",
+      "chapterCount": 45,
+      "verseCount": 386,
+      "canonicalSha256": "ebddfcebc41c14b5c0efceef8e973438a26bf573ca5b4ed48d0ad6d89078a102"
+    },
+    "shvetashvatara": {
+      "id": "shvetashvatara",
+      "title": "Shvetashvatara Upanishad",
+      "chapterCount": 6,
+      "verseCount": 113,
+      "canonicalSha256": "2e11ea189d4fee240fb3cff8fe496605405c407434243618a4e5957f06d103ae"
+    },
+    "aitareya": {
+      "id": "aitareya",
+      "title": "Aitareya Upanishad",
+      "chapterCount": 5,
+      "verseCount": 33,
+      "canonicalSha256": "066ce9a2248abafcd7dd0e325e816add3ae14d235d2f29c5210da43400f3374d"
+    },
+    "kaushitaki": {
+      "id": "kaushitaki",
+      "title": "Kaushitaki Upanishad",
+      "chapterCount": 4,
+      "verseCount": 14,
+      "canonicalSha256": "5cdfd6d792ccbd51d55fe00568883a1a443f3b3321afa7a062b9485d4a765114"
+    },
+    "maitri": {
+      "id": "maitri",
+      "title": "Maitri Upanishad",
+      "chapterCount": 7,
+      "verseCount": 99,
+      "canonicalSha256": "b0b388fdb08cc57d03cc8770a257aa0157c42f8b424cdd1c6926a4d9c9884958"
+    },
+    "mahanarayana": {
+      "id": "mahanarayana",
+      "title": "Mahanarayana Upanishad",
+      "chapterCount": 79,
+      "verseCount": 263,
+      "canonicalSha256": "570090958f44838810423864a341df8c42de4c5e1bd81669f85903115e2425b9"
+    },
+    "mahaupanishad": {
+      "id": "mahaupanishad",
+      "title": "Maha Upanishad",
+      "chapterCount": 6,
+      "verseCount": 553,
+      "canonicalSha256": "ced77933725cb37cfa7386af8d8cea7dced80bd1a18637c1b6cbd0d308eb834d"
+    },
+    "kaivalya": {
+      "id": "kaivalya",
+      "title": "Kaivalya Upanishad",
+      "chapterCount": 2,
+      "verseCount": 24,
+      "canonicalSha256": "32407bad056cf987a9d42585c56dfecd46c35b9ff05e9f7fc21a309dab197cad"
+    },
+    "amritabindu": {
+      "id": "amritabindu",
+      "title": "Amritabindu Upanishad",
+      "chapterCount": 1,
+      "verseCount": 22,
+      "canonicalSha256": "89493aa90508cea1651463491bd0c664f7ff1e96fc05c971318e1528cf2e4a74"
+    },
+    "tejobindu": {
+      "id": "tejobindu",
+      "title": "Tejobindu Upanishad",
+      "chapterCount": 7,
+      "verseCount": 464,
+      "canonicalSha256": "c526dbdaac6c0da8ac55c8397d583ff4dfc47033a1921b1b00b401669f1f0428"
+    },
+    "jabala": {
+      "id": "jabala",
+      "title": "Jabala Upanishad",
+      "chapterCount": 1,
+      "verseCount": 6,
+      "canonicalSha256": "db22639acaaa9187ad6ca1986678cd0ae0ef3215ce69793779698b33359fae91"
+    },
+    "niralamba": {
+      "id": "niralamba",
+      "title": "Niralamba Upanishad",
+      "chapterCount": 1,
+      "verseCount": 21,
+      "canonicalSha256": "d798a3f1c3e216400e32c84f239b1ccbcc5c026b2a13f0b52ed805f2e57a2725"
+    },
+    "muktika": {
+      "id": "muktika",
+      "title": "Muktika Upanishad",
+      "chapterCount": 2,
+      "verseCount": 137,
+      "canonicalSha256": "497b73a33e53e8d49afd8f5cb8657207910ad034c85ba0fcf7025544b1e19c1d"
+    },
+    "rigveda": {
+      "id": "rigveda",
+      "title": "Rig Veda",
+      "chapterCount": 10,
+      "verseCount": 67,
+      "canonicalSha256": "05f737b45b86649b6a2ca54afae42fa60ab6a4526043a0780960613ad6f0e6d6"
+    },
+    "yajurveda": {
+      "id": "yajurveda",
+      "title": "Yajur Veda",
+      "chapterCount": 40,
+      "verseCount": 1810,
+      "canonicalSha256": "12b47357f909023438ffb6e4dc0035ff594ff969a499bfb2d799da2388bdedcc"
+    },
+    "samaveda": {
+      "id": "samaveda",
+      "title": "Sama Veda",
+      "chapterCount": 4,
+      "verseCount": 1873,
+      "canonicalSha256": "d0b61c49994ab880bf885a17660d92dd215a05497d1641d1987927956bf273ea"
+    },
+    "atharvaveda": {
+      "id": "atharvaveda",
+      "title": "Atharva Veda",
+      "chapterCount": 20,
+      "verseCount": 5614,
+      "canonicalSha256": "6cb2e73f713fd25cd4b8a23dae37119654210906bea6348c8213853337cce329"
+    },
+    "ramayana": {
+      "id": "ramayana",
+      "title": "Ramayana",
+      "chapterCount": 7,
+      "verseCount": 82,
+      "canonicalSha256": "a2de1213beab33842a606b82539b790492c79fdd1b47cc411e0ce280ad6c92a5"
+    },
+    "mahabharata": {
+      "id": "mahabharata",
+      "title": "Mahabharata",
+      "chapterCount": 18,
+      "verseCount": 32511,
+      "canonicalSha256": "803bd6ea95986970d835321aefd5e3d7e9b9d0056be6195e88fc276deafc35f4"
+    },
+    "ramcharitmanas": {
+      "id": "ramcharitmanas",
+      "title": "Shri Ramcharitmanas",
+      "chapterCount": 7,
+      "verseCount": 35,
+      "canonicalSha256": "0483b654249294e7642d72ff4b2f71aab3a2927b17b6a87ebf0a4b73763a3919"
+    },
+    "vishnupurana": {
+      "id": "vishnupurana",
+      "title": "Vishnu Purana",
+      "chapterCount": 126,
+      "verseCount": 5488,
+      "canonicalSha256": "ef99991ad5d8d6b46565b6d67675541860f9f27ed61564279cabef3c0ad1aae4"
+    },
+    "shivpurana": {
+      "id": "shivpurana",
+      "title": "Shiva Purana",
+      "chapterCount": 11,
+      "verseCount": 12977,
+      "canonicalSha256": "7dade94a745dbd89be4f6f0e0f7620c716d78b4e0be15a3a8fe7ec12b4b4f177"
+    },
+    "bhagavatapurana": {
+      "id": "bhagavatapurana",
+      "title": "Bhagavata Purana",
+      "chapterCount": 13,
+      "verseCount": 106,
+      "canonicalSha256": "346f76626889433f79b2d4dccc5ca309bc594413d0b48f208a6c881dbac57232"
+    },
+    "devibhagavat": {
+      "id": "devibhagavat",
+      "title": "Devi Bhagavata Purana",
+      "chapterCount": 12,
+      "verseCount": 106,
+      "canonicalSha256": "3e8fb08e154e18a62a36394b4a4d6decae1c49dfc8ee52fc718a33f495eae235"
+    },
+    "garudpurana": {
+      "id": "garudpurana",
+      "title": "Garuda Purana",
+      "chapterCount": 317,
+      "verseCount": 11877,
+      "canonicalSha256": "153f67eb8cfd1dd5c2c43656453375a8a557e6d40640f9368da30045883b1c18"
+    },
+    "agnipuran": {
+      "id": "agnipuran",
+      "title": "Agni Purana",
+      "chapterCount": 381,
+      "verseCount": 11043,
+      "canonicalSha256": "9ced8b353d6454348ea690df8370e63f648993cd986d62a9b8fcf53475f4f45e"
+    },
+    "brahmapuran": {
+      "id": "brahmapuran",
+      "title": "Brahma Purana",
+      "chapterCount": 246,
+      "verseCount": 13444,
+      "canonicalSha256": "1a735a26d77477e35af365e8f7597e31924fa3c72d1088e9308134c893269291"
+    },
+    "padmapuran": {
+      "id": "padmapuran",
+      "title": "Padma Purana",
+      "chapterCount": 8,
+      "verseCount": 18,
+      "canonicalSha256": "1047b272744de445670c533565d5501b71ec39b27451a5d463b68faecdc376bf"
+    },
+    "brahmandpuran": {
+      "id": "brahmandpuran",
+      "title": "Brahmanda Purana",
+      "chapterCount": 156,
+      "verseCount": 13498,
+      "canonicalSha256": "0e088a64b649ed15272f0514dc9fe2188c66e8ee0a0231458afd917dbd8da223"
+    },
+    "markandeypuran": {
+      "id": "markandeypuran",
+      "title": "Markandeya Purana",
+      "chapterCount": 90,
+      "verseCount": 4339,
+      "canonicalSha256": "70e6a313240bbdf0ba73756776bdf98b856815c7e2231ec361850abb4a38265d"
+    },
+    "harivanshpuran": {
+      "id": "harivanshpuran",
+      "title": "Harivamsha Purana",
+      "chapterCount": 119,
+      "verseCount": 5871,
+      "canonicalSha256": "78870522edeb7e80ab6c1a236440a9b577464187068a883c90c3e00f772205e7"
+    },
+    "kalkipuran": {
+      "id": "kalkipuran",
+      "title": "Kalki Purana",
+      "chapterCount": 3,
+      "verseCount": 10,
+      "canonicalSha256": "ff9fd42cb8333147624bd13fe623987e50f26ef9c3fe7e26c1da024de5337776"
+    },
+    "naradabhaktisutra": {
+      "id": "naradabhaktisutra",
+      "title": "Narada Bhakti Sutras",
+      "chapterCount": 3,
+      "verseCount": 26,
+      "canonicalSha256": "020fdb0707b6bd06e4374c5c5ace391ce803f0d47d8d06e306ddb73dcd83b831"
+    },
+    "shandilyabhaktisutra": {
+      "id": "shandilyabhaktisutra",
+      "title": "Shandilya Bhakti Sutras",
+      "chapterCount": 4,
+      "verseCount": 15,
+      "canonicalSha256": "fb5fc9a688ba2f1553596ecdb032401cdfed5fcfe7a14150cff6dcc85d14f4b2"
+    },
+    "narasimhapuran": {
+      "id": "narasimhapuran",
+      "title": "Narasimha Purana",
+      "chapterCount": 68,
+      "verseCount": 3361,
+      "canonicalSha256": "c2a85bcdefcd3fbd35cfa2f3c202e840a1c3548f0e1b28e0da3f3ff37d6ffbb6"
+    },
+    "naradapuran": {
+      "id": "naradapuran",
+      "title": "Narada Purana",
+      "chapterCount": 167,
+      "verseCount": 15203,
+      "canonicalSha256": "b8bf6540c9ff3ddb562c7dbca873af64253c275fbe0009774746e35682fd7455"
+    },
+    "matsyapuran": {
+      "id": "matsyapuran",
+      "title": "Matsya Purana",
+      "chapterCount": 176,
+      "verseCount": 8330,
+      "canonicalSha256": "b82f5595b45c9e20d71e136e9687a3be6cb74f8b0f483b1893cc7236af4bcdd2"
+    },
+    "lingapuran": {
+      "id": "lingapuran",
+      "title": "Linga Purana",
+      "chapterCount": 108,
+      "verseCount": 6726,
+      "canonicalSha256": "10712b8939180270d8f0f5b9fbf2987fd83ff1771782bf1704cf9a7076b907e1"
+    },
+    "kurmapuran": {
+      "id": "kurmapuran",
+      "title": "Kurma Purana",
+      "chapterCount": 95,
+      "verseCount": 5573,
+      "canonicalSha256": "622bcfef559a15b7fce4cc1442c8dd42e0185937dca1ebf53491aa26cfa11539"
+    },
+    "manusmriti": {
+      "id": "manusmriti",
+      "title": "Manusmriti",
+      "chapterCount": 12,
+      "verseCount": 1783,
+      "canonicalSha256": "7186f7c27a98047e0669c04d502df4d8ce64156feda987c9f7065d439e747a63"
+    },
+    "vivekchudamani": {
+      "id": "vivekchudamani",
+      "title": "Vivekachudamani",
+      "chapterCount": 1,
+      "verseCount": 580,
+      "canonicalSha256": "28664d094e90872820c4474dedefb79bb658975dbe438b2382d64f207eff3ac1"
+    },
+    "brahmasutra": {
+      "id": "brahmasutra",
+      "title": "Brahma Sutra",
+      "chapterCount": 4,
+      "verseCount": 564,
+      "canonicalSha256": "219140f2bb184834ea12daf73238de3239fb1a3cea3662a08d4caa1c02f3ec08"
+    },
+    "durgasaptashati": {
+      "id": "durgasaptashati",
+      "title": "Durga Saptashati",
+      "chapterCount": 13,
+      "verseCount": 634,
+      "canonicalSha256": "be546c02e40407d99f1bb605ddf576abbe836bdcce375433c353af60070a0c72"
+    },
+    "yogavasishtha": {
+      "id": "yogavasishtha",
+      "title": "Yoga Vasishtha",
+      "chapterCount": 6,
+      "verseCount": 13,
+      "canonicalSha256": "06266df9bc411091345e07620f77229ec92a3d902bf72ab91be432429457107a"
+    },
+    "ravanasamhita": {
+      "id": "ravanasamhita",
+      "title": "Ravana Samhita",
+      "chapterCount": 19,
+      "verseCount": 43,
+      "canonicalSha256": "51cf3e070ffd293c63352d5f9c91569cad0ec85ae49c5d1986743809fd09b7c1"
+    },
+    "shivasamhita": {
+      "id": "shivasamhita",
+      "title": "Shiva Samhita",
+      "chapterCount": 4,
+      "verseCount": 8,
+      "canonicalSha256": "d45d27b1de50655e3d03c5eec8e8856db98e5b24694e60ec71461c31a9b39498"
+    },
+    "shivaswarodaya": {
+      "id": "shivaswarodaya",
+      "title": "Shiva Swarodaya",
+      "chapterCount": 4,
+      "verseCount": 11,
+      "canonicalSha256": "3716e137f9c47c70ee4dafab54c6434260cbf8707ce4d115caebe05df35b46c2"
+    },
+    "yogarasayanam": {
+      "id": "yogarasayanam",
+      "title": "Yoga Rasayanam",
+      "chapterCount": 3,
+      "verseCount": 6,
+      "canonicalSha256": "751ec55f0567b6b2610f4273259fb0fd7ebb5452a476bdf68aac00e1a869c519"
+    },
+    "vinayapatrika": {
+      "id": "vinayapatrika",
+      "title": "Vinaya Patrika",
+      "chapterCount": 4,
+      "verseCount": 8,
+      "canonicalSha256": "f34f328134f668b0b93e2c46f2416a4250002248d5baca77305b95a89a129ad0"
+    },
+    "brahmavaivartapuran": {
+      "id": "brahmavaivartapuran",
+      "title": "Brahmavaivarta Purana",
+      "chapterCount": 4,
+      "verseCount": 10,
+      "canonicalSha256": "a584ae6c36e7a0c41a1a8dec19b16a3892496540ec0dafc5ed83975296ac6558"
+    },
+    "vamanpuran": {
+      "id": "vamanpuran",
+      "title": "Vamana Purana",
+      "chapterCount": 95,
+      "verseCount": 5594,
+      "canonicalSha256": "f2f31a68d50c898efcf20d2e523cb4f2efd775a9af7dfd081e4d94e80e204222"
+    },
+    "varahapuran": {
+      "id": "varahapuran",
+      "title": "Varaha Purana",
+      "chapterCount": 3,
+      "verseCount": 10,
+      "canonicalSha256": "66d22aaccd2aaec088c65ceebf0ee5f1d95aff6aee88f1185ac722733990f2d6"
+    },
+    "vayupuran": {
+      "id": "vayupuran",
+      "title": "Vayu Purana",
+      "chapterCount": 232,
+      "verseCount": 7641,
+      "canonicalSha256": "ca55f2fa96f74d3cfab549ef1fb2e57828c1420d6f9172171e15f54e5e3e4da3"
+    },
+    "viduraniti": {
+      "id": "viduraniti",
+      "title": "Vidura Niti",
+      "chapterCount": 8,
+      "verseCount": 284,
+      "canonicalSha256": "889dbae0ebbc33e2de5f4d06f1bfeb701b521f15ae32c2448cb40659fce5dfd0"
+    },
+    "skandapuran": {
+      "id": "skandapuran",
+      "title": "Skanda Purana",
+      "chapterCount": 116,
+      "verseCount": 6464,
+      "canonicalSha256": "6122dbaa8d9244349c871bf5623072ca3a20c01daf6384fb579b1f5bc3e63d7e"
+    },
+    "nityakarmakriya": {
+      "id": "nityakarmakriya",
+      "title": "Nitya Karma Kriya",
+      "chapterCount": 5,
+      "verseCount": 16,
+      "canonicalSha256": "cda03da72b3ac469b9460edd7eefef3e0f97d7650dde5bdac9ab6dab1f7df771"
+    }
+  }
+}

@@ -14,6 +14,7 @@ import {
   ChevronRight,
   Clock,
   Compass,
+  FileText,
   Flame,
   Globe,
   GraduationCap,
@@ -22,6 +23,7 @@ import {
   Moon,
   Search,
   Settings2,
+  ShieldCheck,
   Sparkles,
   Star,
   Sun,
@@ -95,7 +97,6 @@ const desktopPrimaryItems = [
 
 const desktopDiscoveryItems = [
   { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra' },
-  { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask' },
   { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — १२ क्रमिक साधना पथ', href: '/journeys' },
   { label: 'स्वाध्याय मार्ग', description: 'Guided Reading Paths — विषयवार अध्ययन', href: '/learn/paths' },
   { label: 'पठन योजनाएँ', description: 'Reading Plans — १८ दिवसीय गीता आदि', href: '/learn/plans' },
@@ -114,14 +115,16 @@ const desktopDiscoveryItems = [
 ];
 
 const desktopPersonalItems = [
+  { label: 'स्वाध्याय केंद्र (Study Sanctuary)', href: '/study' },
+  { label: 'व्यक्तिगत डायरी (Journal)', href: '/journal' },
   { label: 'मेरा डैशबोर्ड', href: '/dashboard' },
+  { label: 'बुकमार्क व नोट्स', href: '/bookmarks' },
+  { label: 'संग्रह', href: '/collections' },
   { label: 'यात्रा शुरू करें', href: '/start' },
   { label: 'पठन यात्राएँ', href: '/journeys' },
   { label: 'स्वाध्याय योजनाएँ', href: '/learn/plans' },
   { label: 'कथा-दर्शन', href: '/story' },
   { label: 'अध्ययन-पटल', href: '/desk' },
-  { label: 'बुकमार्क व नोट्स', href: '/bookmarks' },
-  { label: 'संग्रह', href: '/collections' },
   { label: 'अध्ययन पथ', href: '/learn/pathways' },
 ];
 
@@ -437,16 +440,6 @@ export function SiteNav({
       badgeType: 'accent',
     },
     {
-      id: 'ask-dharma',
-      label: 'धर्म सहायक',
-      labelEn: 'Scripture guide',
-      description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न',
-      href: '/ask',
-      icon: BookOpen,
-      badge: 'श्लोक से',
-      badgeType: 'accent',
-    },
-    {
       id: 'panchang',
       label: 'वैदिक पंचांग',
       labelEn: 'Panchang',
@@ -461,6 +454,24 @@ export function SiteNav({
       description: 'प्रमुख पर्व, व्रत व शास्त्रीय परंपरा',
       href: '/festivals',
       icon: Star,
+    },
+    {
+      id: 'study-hub',
+      label: 'स्वाध्याय केंद्र',
+      labelEn: 'Study Sanctuary',
+      description: 'निजी डायरी, ऑफ़लाइन ग्रंथ व बैकअप',
+      href: '/study',
+      icon: ShieldCheck,
+      badge: 'निजी',
+      badgeType: 'accent',
+    },
+    {
+      id: 'journal',
+      label: 'स्वाध्याय डायरी',
+      labelEn: 'Personal Journal',
+      description: 'मनन, चिंतन व श्लोक नोट्स',
+      href: '/journal',
+      icon: FileText,
     },
     {
       id: 'saved',
@@ -626,15 +637,6 @@ export function SiteNav({
 
             {/* Header Right Cluster */}
             <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-              {/* Desktop Live Status Indicator */}
-              <div
-                className="hidden items-center gap-2 pr-1 text-xs text-dharma-muted min-[2200px]:flex"
-                aria-hidden="true"
-              >
-                <span className="size-1.5 rounded-full bg-saffron-600 animate-status-pulse" />
-                <span className="tracking-tight">{formatCountDevanagari(libraryVerses)} श्लोक पुस्तकालय में</span>
-              </div>
-
               {/* Desktop Search Button */}
               <button
                 type="button"

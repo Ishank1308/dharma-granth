@@ -45,6 +45,7 @@ import { findHighlights } from '@/lib/search-highlight';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { reviewStatusForHref } from '@/lib/review-badges';
 import { REVIEW_RECORDS } from '@/data/review-records';
+import { executeSearchWithWorker } from '@/lib/workers/search-worker-client';
 
 export type { SearchResultItem } from '@/lib/search';
 

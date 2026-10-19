@@ -4,18 +4,26 @@
  * Not a route file: page.tsx and part/[part]/page.tsx render it.
  */
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { AmbientOrbs } from '@/app/components/motion/AmbientOrbs';
 import { ChapterHero } from '@/app/components/motion/ChapterHero';
 import { FullChapterVerses } from '@/app/components/FullChapterVerses';
 import { ChapterOrientation } from '@/app/components/ChapterOrientation';
 import { ChapterSummaryBox } from '@/app/components/ChapterSummaryBox';
 import { getGitaChapterSummary } from '@/data/gita-chapter-summaries';
 import { ChapterKeyboardNav } from '@/app/components/ChapterKeyboardNav';
-import { ChapterCompletion } from '@/app/components/ChapterCompletion';
 import { ChapterVisitRecorder } from '@/app/components/ChapterVisitRecorder';
 import { FadeUpOnView } from '@/app/components/motion/primitives';
+
+const AmbientOrbs = dynamic(
+  () => import('@/app/components/motion/AmbientOrbs').then((m) => m.AmbientOrbs),
+  { ssr: false }
+);
+const ChapterCompletion = dynamic(
+  () => import('@/app/components/ChapterCompletion').then((m) => m.ChapterCompletion),
+  { ssr: false }
+);
 import { getScriptureMeta, getScriptureChapters } from '@/data/scriptures';
 import {
   readChapterCommentary,

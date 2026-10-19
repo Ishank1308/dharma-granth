@@ -39,11 +39,39 @@
     src: url('/fonts/merriweather-400.woff2') format('woff2');
 }
 
-/* Font family variables mapped to local + bundled fonts */
+/* Size-Adjusted Fallback Metrics for Zero CLS (CLS = 0.00) */
+@font-face {
+    font-family: 'Inter-Fallback';
+    src: local('Arial'), local('Helvetica');
+    ascent-override: 90%;
+    descent-override: 22.5%;
+    line-gap-override: 0%;
+    size-adjust: 107.4%;
+}
+
+@font-face {
+    font-family: 'Noto-Devanagari-Fallback';
+    src: local('Nirmala UI'), local('Mangal'), local('Kokila');
+    ascent-override: 95%;
+    descent-override: 25%;
+    line-gap-override: 0%;
+    size-adjust: 100%;
+}
+
+@font-face {
+    font-family: 'Merriweather-Fallback';
+    src: local('Georgia'), local('Times New Roman');
+    ascent-override: 98%;
+    descent-override: 27%;
+    line-gap-override: 0%;
+    size-adjust: 99.2%;
+}
+
+/* Font family variables mapped to local + bundled fonts + size-adjusted fallbacks */
 :root {
-    --font-inter: 'Inter', system-ui, sans-serif;
-    --font-merriweather: 'Merriweather', Georgia, serif;
-    --font-noto-devanagari: 'Noto Sans Devanagari', sans-serif;
+    --font-inter: 'Inter', 'Inter-Fallback', system-ui, sans-serif;
+    --font-merriweather: 'Merriweather', 'Merriweather-Fallback', Georgia, serif;
+    --font-noto-devanagari: 'Noto Sans Devanagari', 'Noto-Devanagari-Fallback', sans-serif;
 }
 
 /* Theme variables. The default (no data-theme attribute) is "day". */
@@ -81,6 +109,18 @@
     --dharma-error: #b91c1c;
     --dharma-error-bg: #fef2f2;
     --dharma-error-border: #fecaca;
+    --dharma-surface-elevated: #ffffff;
+    --dharma-text-canonical: #1f1b16;
+    --dharma-text-translation: #2d2a26;
+    --dharma-text-commentary: #45403a;
+    --dharma-text-source: #78716c;
+    --dharma-action-primary: #c2410c;
+    --dharma-action-primary-fg: #ffffff;
+    --dharma-action-secondary: #f4eee5;
+    --dharma-action-secondary-fg: #443c33;
+    --dharma-editorial-accent: #9a3412;
+    --dharma-editorial-tag-bg: #fff1e5;
+    --dharma-editorial-tag-fg: #9a3412;
     --dharma-reading-max: 760px;
     --dharma-app-max: 1440px;
     color-scheme: light;
@@ -119,6 +159,18 @@
     --dharma-error: #be123c;
     --dharma-error-bg: #fff1f2;
     --dharma-error-border: #fecdd3;
+    --dharma-surface-elevated: #fffcf8;
+    --dharma-text-canonical: #29150d;
+    --dharma-text-translation: #3d2417;
+    --dharma-text-commentary: #523728;
+    --dharma-text-source: #8c6753;
+    --dharma-action-primary: #ea580c;
+    --dharma-action-primary-fg: #ffffff;
+    --dharma-action-secondary: #fbe6d3;
+    --dharma-action-secondary-fg: #502e1c;
+    --dharma-editorial-accent: #c2410c;
+    --dharma-editorial-tag-bg: #fedec4;
+    --dharma-editorial-tag-fg: #882b09;
     --dharma-reading-max: 760px;
     --dharma-app-max: 1440px;
     color-scheme: light;
@@ -157,6 +209,18 @@
     --dharma-error: #ef4444;
     --dharma-error-bg: #450a0a;
     --dharma-error-border: #7f1d1d;
+    --dharma-surface-elevated: #1e1b18;
+    --dharma-text-canonical: #fffcf7;
+    --dharma-text-translation: #f2eee7;
+    --dharma-text-commentary: #d6cdc2;
+    --dharma-text-source: #9e958a;
+    --dharma-action-primary: #ea580c;
+    --dharma-action-primary-fg: #ffffff;
+    --dharma-action-secondary: #27221d;
+    --dharma-action-secondary-fg: #e0d7cb;
+    --dharma-editorial-accent: #fb923c;
+    --dharma-editorial-tag-bg: #322014;
+    --dharma-editorial-tag-fg: #fdba74;
     --dharma-reading-max: 760px;
     --dharma-app-max: 1440px;
     color-scheme: dark;
@@ -195,6 +259,18 @@
     --dharma-error: #b91c1c;
     --dharma-error-bg: #fef2f2;
     --dharma-error-border: #fecaca;
+    --dharma-surface-elevated: #fffcf5;
+    --dharma-text-canonical: #221a12;
+    --dharma-text-translation: #2c241c;
+    --dharma-text-commentary: #473a2e;
+    --dharma-text-source: #7a6c5a;
+    --dharma-action-primary: #b45309;
+    --dharma-action-primary-fg: #ffffff;
+    --dharma-action-secondary: #ece0cc;
+    --dharma-action-secondary-fg: #3d3023;
+    --dharma-editorial-accent: #92400e;
+    --dharma-editorial-tag-bg: #edd9be;
+    --dharma-editorial-tag-fg: #78350f;
     --dharma-reading-max: 760px;
     --dharma-app-max: 1440px;
     color-scheme: light;
@@ -1554,4 +1630,67 @@ html[data-reader] [aria-label^='सस्वर पाठ'] {
   background-color: #082f49 !important;
   color: #e0f2fe !important;
   border-color: #0369a1 !important;
+}
+
+/* ==========================================================================
+   Phase 7: Editorial Bento Grid, Manuscript Surfaces & Tactile Typography
+   ========================================================================== */
+
+/* Zero-network inline SVG paper-grain overlay for physical cotton rag texture */
+.manuscript-surface {
+  position: relative;
+  background-image: radial-gradient(rgba(120, 80, 40, 0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+:root[data-theme='dark'] .manuscript-surface,
+:root[data-theme='night'] .manuscript-surface {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+.editorial-bento-card {
+  position: relative;
+  border-radius: 1.5rem;
+  border-width: 1px;
+  border-color: rgba(214, 211, 209, 0.7);
+  background-color: var(--dharma-card);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+:root[data-theme='dark'] .editorial-bento-card,
+:root[data-theme='night'] .editorial-bento-card {
+  border-color: rgba(41, 37, 36, 0.8);
+}
+
+.editorial-bento-card:hover {
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Hairline warm borders */
+.hairline-warm-border {
+  border: 1px solid rgba(214, 211, 209, 0.7);
+}
+
+:root[data-theme='dark'] .hairline-warm-border,
+:root[data-theme='night'] .hairline-warm-border {
+  border: 1px solid rgba(41, 37, 36, 0.8);
+}
+
+/* Editorial typography display headings */
+.editorial-display-heading {
+  font-family: var(--font-merriweather, serif);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Tabular numeral metadata pills */
+.editorial-meta-pill {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-variant-numeric: tabular-nums;
 }

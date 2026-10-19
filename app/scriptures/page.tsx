@@ -57,7 +57,6 @@ export default function ScripturesPage() {
         <div className="max-w-6xl mx-auto px-6">
           <FadeUp>
             <div className="flex items-center gap-2 mb-3">
-              <span className="size-2 rounded-full bg-saffron-600 animate-status-pulse" />
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
                 The Sacred Archive
               </span>

@@ -6,7 +6,7 @@ import { Sparkles, Compass, Shield, BookOpen, Sun, ArrowLeft } from 'lucide-reac
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'धर्म सहायक — पुस्तकालय से जीवन के प्रश्न | Dharma Granth',
+    absolute: 'शास्त्रीय मार्गदर्शन — पुस्तकालय से जीवन के प्रश्न | Dharma Granth',
   },
   description:
     'Questions about anxiety, anger, duty, and Karma Yoga, answered with verses and notes already published in the Dharma Granth library. No generated commentary.',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'hi_IN',
     alternateLocale: ['en_US'],
-    title: 'धर्म सहायक — पुस्तकालय से जीवन के प्रश्न | Dharma Granth',
+    title: 'शास्त्रीय मार्गदर्शन — पुस्तकालय से जीवन के प्रश्न | Dharma Granth',
     description:
       'Questions about anxiety, anger, duty, and Karma Yoga, answered from verses already in the library.',
     url: 'https://dharmagranth.in/ask/',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'धर्म सहायक — पुस्तकालय से जीवन के प्रश्न | Dharma Granth',
+    title: 'शास्त्रीय मार्गदर्शन — पुस्तकालय से जीवन के प्रश्न | Dharma Granth',
     description:
       'Sanskrit verses, Hindi meaning, and the library note already published for that topic.',
     images: [DEFAULT_OG_IMAGE.url],
@@ -45,7 +45,7 @@ const faqJsonLd = {
     {
       '@type': 'WebPage',
       '@id': `${siteUrl}/ask/#webpage`,
-      name: 'धर्म सहायक — Scripture guide',
+      name: 'शास्त्रीय मार्गदर्शन — Scripture guide',
       url: `${siteUrl}/ask/`,
       description:
         'Ask questions about anxiety, anger, karma, life purpose, and mental focus grounded in Hindu scriptures.',
@@ -93,7 +93,7 @@ const faqJsonLd = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-        { '@type': 'ListItem', position: 2, name: 'धर्म सहायक', item: `${siteUrl}/ask/` },
+        { '@type': 'ListItem', position: 2, name: 'शास्त्रीय मार्गदर्शन', item: `${siteUrl}/ask/` },
       ],
     },
   ],
@@ -124,7 +124,7 @@ export default function AskDharmaPage() {
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-amber-200 backdrop-blur-sm">
               <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-              <span>धर्म सहायक · पुस्तकालय से</span>
+              <span>शास्त्रीय मार्गदर्शन · पुस्तकालय से</span>
             </div>
 
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">

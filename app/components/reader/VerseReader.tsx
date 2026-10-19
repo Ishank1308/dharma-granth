@@ -7,6 +7,7 @@ import { MotionConfig } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
+  BookOpen,
   Bookmark,
   BookmarkCheck,
   ChevronDown,
@@ -15,15 +16,23 @@ import {
   Download,
   Flag,
   Focus,
+  GraduationCap,
   MessageCircle,
   Maximize2,
   Minimize2,
+  MoreHorizontal,
   Share2,
   SlidersHorizontal,
+  Sparkles,
   StickyNote,
+  Zap,
 } from 'lucide-react';
+import { useReadingDepth, READING_DEPTH_CONFIG } from '@/lib/useReadingDepth';
 import { useTheme } from '@/app/components/ThemeProvider';
 import { toDevanagari } from '@/lib/verse-format';
+import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
+import { StoryDeckModal } from '@/components/reader/StoryDeckModal';
+import { PatrikaShareStudioModal } from '@/app/components/share/PatrikaShareStudioModal';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import { EmbedVerseDialog } from '@/app/components/EmbedVerseDialog';
@@ -126,6 +135,32 @@ export function VerseReader(props: VerseReaderProps) {
   /* ── Dialog state ── */
   const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'note' | 'report' | 'embed'>(null);
   const close = useCallback(() => setDialog(null), []);
+
+  const { depth, setReadingDepth, isReadMode, isUnderstandMode, isStudyMode } = useReadingDepth();
+  const [overflowOpen, setOverflowOpen] = useState(false);
+  const overflowRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!overflowOpen) return;
+    const onDown = (e: MouseEvent) => {
+      if (!overflowRef.current?.contains(e.target as Node)) setOverflowOpen(false);
+    };
+    document.addEventListener('mousedown', onDown);
+    return () => document.removeEventListener('mousedown', onDown);
+  }, [overflowOpen]);
+
+  /* ── 60-Second Story Deck & Patrikā Quote Studio ── */
+  const [storyDeckOpen, setStoryDeckOpen] = useState(false);
+  const [patrikaOpen, setPatrikaOpen] = useState(false);
+
+  const literaryMeta = useMemo(() => {
+    return getLiteraryVerseMeta(scriptureId, chapterId, verse.number, {
+      sanskrit: verse.sanskrit,
+      translation: verse.translation,
+      hindi: verse.hindi,
+      explanation: verse.explanation,
+      lifeLesson: verse.reflection,
+    });
+  }, [scriptureId, chapterId, verse.number, verse.sanskrit, verse.translation, verse.hindi, verse.explanation, verse.reflection]);
 
   /* ── Toast ── */
   const [toast, setToast] = useState<string | null>(null);
@@ -514,120 +549,252 @@ export function VerseReader(props: VerseReaderProps) {
           )}
 
 
-          {/* Actions */}
-          {/* One swipeable row on phones keeps the verse near the top; it wraps from sm up. */}
-          <div role="toolbar" aria-label="Verse actions" data-focus-hide className="-mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
+          {/* Actions: Streamlined, accessible toolbar */}
+          <div role="toolbar" aria-label="Verse actions" data-focus-hide className="-mx-4 mb-6 flex items-center gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
             <button type="button" onClick={onBookmark} aria-pressed={saved} className={actionBtn}>
-              {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
+              {saved ? <BookmarkCheck className="h-4 w-4 fill-saffron-500/25 text-saffron-700 dark:text-saffron-400" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
               {saved ? 'Saved' : 'Save'}
+            </button>
+            <button type="button" onClick={onCopy} className={actionBtn}>
+              <Copy className="h-4 w-4" aria-hidden="true" /> Copy
             </button>
             <button type="button" onClick={openNote} className={actionBtn}>
               <StickyNote className="h-4 w-4" aria-hidden="true" />
               {noteText ? 'Edit note' : 'Note'}
               {noteText && <span className="h-1.5 w-1.5 rounded-full bg-saffron-600" aria-label="has a note" />}
             </button>
-            <button type="button" onClick={onCopy} className={actionBtn}>
-              <Copy className="h-4 w-4" aria-hidden="true" /> Copy
-            </button>
             <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" /> Open context
+              <ArrowRight className="h-4 w-4" aria-hidden="true" /> Open in Chapter
             </Link>
-            <button
-              type="button"
-              onClick={onShare}
-              className={`${actionBtn} border-saffron-500/50 bg-saffron-500/10 font-bold text-saffron-900 dark:text-saffron-200`}
-              aria-label="Generate sacred verse card for WhatsApp / Instagram"
-            >
-              <Share2 className="h-4 w-4 text-saffron-600 dark:text-saffron-400" aria-hidden="true" />
-              <span>Share Card</span>
-            </button>
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={actionBtn}
-              aria-label="Share this verse on WhatsApp"
-            >
-              <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
-            </a>
-            <button type="button" onClick={onDownloadImage} className={actionBtn} aria-label="Download Image">
-              <Download className="h-4 w-4" aria-hidden="true" /> Download Image
-            </button>
-            <button type="button" onClick={() => setDialog('embed')} aria-haspopup="dialog" className={actionBtn}>
-              <Code2 className="h-4 w-4" aria-hidden="true" /> Embed
-            </button>
-            <button type="button" onClick={onDownload} className={actionBtn}>
-              <Download className="h-4 w-4" aria-hidden="true" /> Download
-            </button>
-            <button type="button" onClick={() => setDialog('report')} className={actionBtn}>
-              <Flag className="h-4 w-4" aria-hidden="true" /> Report error
-            </button>
+
+            {/* In Study mode, show studio tools directly */}
+            {isStudyMode && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setStoryDeckOpen(true)}
+                  className="inline-flex h-11 items-center gap-1.5 rounded-xl border border-amber-300/80 bg-amber-50/80 px-3 text-xs font-bold text-amber-900 transition hover:bg-amber-100 hover:border-amber-400 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200 cursor-pointer shadow-2xs"
+                  aria-label="६०-सेकंड सार (5-Card Visual Story Deck)"
+                >
+                  <Zap className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                  <span>६०-सेकंड सार</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPatrikaOpen(true)}
+                  className={`${actionBtn} border-saffron-500/50 bg-saffron-500/10 font-bold text-saffron-900 dark:text-saffron-200`}
+                >
+                  <Share2 className="h-4 w-4 text-saffron-600 dark:text-saffron-400" aria-hidden="true" />
+                  <span>Patrikā Studio</span>
+                </button>
+              </>
+            )}
+
+            {/* More Options dropdown */}
+            <div className="relative" ref={overflowRef}>
+              <button
+                type="button"
+                onClick={() => setOverflowOpen((o) => !o)}
+                className={`${actionBtn} ${overflowOpen ? '!border-saffron-400 text-saffron-700' : ''}`}
+                aria-expanded={overflowOpen}
+                aria-haspopup="true"
+                aria-label="More actions"
+              >
+                <MoreHorizontal className="h-4 w-4" />
+                <span>More</span>
+              </button>
+
+              {overflowOpen && (
+                <div className="absolute left-0 sm:left-auto sm:right-0 top-full z-40 mt-1.5 w-56 rounded-2xl border border-dharma-border bg-dharma-card p-1.5 shadow-xl backdrop-blur-md">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOverflowOpen(false);
+                      setPatrikaOpen(true);
+                    }}
+                    className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-medium text-dharma-text hover:bg-dharma-bg transition"
+                  >
+                    <Share2 className="h-4 w-4 text-saffron-600" />
+                    <span>Patrikā Quote Studio</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOverflowOpen(false);
+                      setStoryDeckOpen(true);
+                    }}
+                    className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-medium text-dharma-text hover:bg-dharma-bg transition"
+                  >
+                    <Zap className="h-4 w-4 text-amber-600" />
+                    <span>६०-सेकंड सार (Story Deck)</span>
+                  </button>
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOverflowOpen(false)}
+                    className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-medium text-dharma-text hover:bg-dharma-bg transition"
+                  >
+                    <MessageCircle className="h-4 w-4 text-emerald-600" />
+                    <span>Share on WhatsApp</span>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOverflowOpen(false);
+                      onDownloadImage();
+                    }}
+                    className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-medium text-dharma-text hover:bg-dharma-bg transition"
+                  >
+                    <Download className="h-4 w-4 text-dharma-muted" />
+                    <span>Download Verse Card</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOverflowOpen(false);
+                      setDialog('embed');
+                    }}
+                    className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-medium text-dharma-text hover:bg-dharma-bg transition"
+                  >
+                    <Code2 className="h-4 w-4 text-dharma-muted" />
+                    <span>Embed Verse</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOverflowOpen(false);
+                      onDownload();
+                    }}
+                    className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-medium text-dharma-text hover:bg-dharma-bg transition"
+                  >
+                    <Download className="h-4 w-4 text-dharma-muted" />
+                    <span>Download Markdown</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOverflowOpen(false);
+                      setDialog('report');
+                    }}
+                    className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-medium text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition"
+                  >
+                    <Flag className="h-4 w-4 text-rose-500" />
+                    <span>Report Textual Error</span>
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* 3 · Reader Mode Bar: [Quick] [Simple] [Deep] [Traditional] */}
+          {/* 3 · Canonical 3 Reading Modes Segmented Control */}
           <div
             role="tablist"
-            aria-label="Reading depth: Quick, Simple, Deep or Traditional"
-            className="mb-6 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-dharma-border bg-dharma-card/70 p-2 shadow-sm"
+            aria-label="पठन गहराई (Reading Modes)"
+            className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-dharma-border bg-dharma-card p-2 shadow-xs"
           >
             <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
-              {(
-                [
-                  { id: 'quick', en: 'Quick', hi: 'जिज्ञासु', hint: '1-min core takeaway' },
-                  { id: 'simple', en: 'Simple', hi: 'सरल', hint: 'Clear meaning & life example' },
-                  { id: 'deep', en: 'Deep', hi: 'गहन', hint: 'Full padas, commentary & sources' },
-                  { id: 'traditional', en: 'Traditional', hi: 'शास्त्रीय', hint: 'Mūla, padachheda, anvaya & traditional bhashya' },
-                ] as const
-              ).map((m) => {
-                const active = settings.readerMode === m.id;
-                return (
-                  <button
-                    key={m.id}
-                    type="button"
-                    role="tab"
-                    id={`mode-${m.id}`}
-                    aria-selected={active}
-                    aria-controls="mode-panel"
-                    tabIndex={active ? 0 : -1}
-                    onKeyDown={(e) => {
-                      const ids = ['quick', 'simple', 'deep', 'traditional'] as const;
-                      const i = ids.indexOf(settings.readerMode as (typeof ids)[number]);
-                      const n = e.key === 'ArrowRight' ? (i + 1) % 4 : e.key === 'ArrowLeft' ? (i + 3) % 4 : -1;
-                      if (n < 0) return;
-                      e.preventDefault();
-                      e.stopPropagation();
-                      update('readerMode', ids[n]);
-                      setTimeout(() => document.getElementById(`mode-${ids[n]}`)?.focus(), 0);
-                    }}
-                    onClick={() => {
-                      triggerTactileFeedback('light', 'softTap');
-                      update('readerMode', m.id);
-                      track('mode_selected', { mode: m.id });
-                    }}
-                    className={`focus-ring flex-1 sm:flex-none min-h-[44px] px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
-                      active
-                        ? 'bg-saffron-600 text-white shadow-sm'
-                        : 'text-dharma-muted hover:text-dharma-text hover:bg-dharma-bg/80'
-                    }`}
-                  >
-                    <span className="flex items-center justify-center gap-1.5">
-                      <span lang="hi" className="font-devanagari">{m.hi}</span>
-                      <span className="opacity-60">·</span>
-                      <span>{m.en}</span>
-                    </span>
-                  </button>
-                );
-              })}
+              <button
+                type="button"
+                role="tab"
+                id="mode-read"
+                aria-selected={isReadMode}
+                onClick={() => {
+                  triggerTactileFeedback('selection', 'softTap');
+                  setReadingDepth('read');
+                }}
+                className={`flex-1 sm:flex-none min-h-[42px] px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all inline-flex items-center justify-center gap-2 cursor-pointer ${
+                  isReadMode
+                    ? 'bg-saffron-600 text-white shadow-sm font-bold'
+                    : 'text-dharma-muted hover:text-dharma-text hover:bg-dharma-bg/80'
+                }`}
+                title={READING_DEPTH_CONFIG.read.descriptionHi}
+              >
+                <BookOpen className="h-4 w-4" />
+                <span>पाठ · Read</span>
+              </button>
+
+              <button
+                type="button"
+                role="tab"
+                id="mode-understand"
+                aria-selected={isUnderstandMode}
+                onClick={() => {
+                  triggerTactileFeedback('selection', 'softTap');
+                  setReadingDepth('understand');
+                }}
+                className={`flex-1 sm:flex-none min-h-[42px] px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all inline-flex items-center justify-center gap-2 cursor-pointer ${
+                  isUnderstandMode
+                    ? 'bg-saffron-600 text-white shadow-sm font-bold'
+                    : 'text-dharma-muted hover:text-dharma-text hover:bg-dharma-bg/80'
+                }`}
+                title={READING_DEPTH_CONFIG.understand.descriptionHi}
+              >
+                <Sparkles className="h-4 w-4" />
+                <span>बोध · Understand</span>
+              </button>
+
+              <button
+                type="button"
+                role="tab"
+                id="mode-study"
+                aria-selected={isStudyMode}
+                onClick={() => {
+                  triggerTactileFeedback('selection', 'softTap');
+                  setReadingDepth('study');
+                }}
+                className={`flex-1 sm:flex-none min-h-[42px] px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all inline-flex items-center justify-center gap-2 cursor-pointer ${
+                  isStudyMode
+                    ? 'bg-indigo-700 text-white shadow-sm font-bold'
+                    : 'text-dharma-muted hover:text-dharma-text hover:bg-dharma-bg/80'
+                }`}
+                title={READING_DEPTH_CONFIG.study.descriptionHi}
+              >
+                <GraduationCap className="h-4 w-4" />
+                <span>स्वाध्याय · Study</span>
+              </button>
             </div>
+
             <span className="hidden sm:inline-block text-xs text-dharma-muted pr-3">
-              {settings.readerMode === 'quick' && 'त्वरित बोध · सार व व्यावहारिक प्रयोग'}
-              {settings.readerMode === 'simple' && 'सुबोध व्याख्या · जीवन में प्रासंगिकता'}
-              {settings.readerMode === 'deep' && 'गहन अध्ययन · पदच्छेद, भाष्य व संदर्भ'}
-              {settings.readerMode === 'traditional' && 'शास्त्रीय अध्ययन · मूल श्लोक, पदच्छेद, अन्वय व प्रामाणिक भाष्य'}
+              {isReadMode && 'शांत व एकाग्र पठन — केवल मूल श्लोक और अनुवाद'}
+              {isUnderstandMode && 'सुबोध व्याख्या — मर्म, जीवनोपयोगी सीख व भ्रम निवारण'}
+              {isStudyMode && 'गहन स्वाध्याय — पदच्छेद, व्याकरण, भाष्य व तुलनात्मक शोध'}
             </span>
           </div>
 
-          {/* 4 · The layers */}
+          {/* ── The Core Shift (मर्म · In One Breath) - Only in Understand/Study modes ── */}
+          {!isReadMode && (
+            <div className="mb-6 overflow-hidden rounded-2xl border border-saffron-300/80 bg-gradient-to-br from-amber-50/90 via-saffron-50/60 to-orange-50/40 p-5 shadow-2xs dark:border-saffron-900/50 dark:from-amber-950/40 dark:via-saffron-950/30 dark:to-stone-900/40">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-saffron-300/80 bg-saffron-100/90 px-2.5 py-0.5 text-[11px] font-bold text-saffron-950 dark:border-saffron-800 dark:bg-saffron-950/70 dark:text-saffron-200">
+                  <Sparkles className="h-3 w-3 text-saffron-600 dark:text-saffron-400" />
+                  मर्म · In One Breath
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {literaryMeta.situationalMoments.map((m) => (
+                    <span
+                      key={m.id}
+                      title={m.descriptionHi}
+                      className="inline-flex items-center gap-1 rounded-full border border-stone-200 bg-white/80 px-2 py-0.5 text-[10px] font-medium text-stone-700 shadow-2xs dark:border-stone-800 dark:bg-stone-900/70 dark:text-stone-300"
+                    >
+                      <span>{m.emoji}</span>
+                      <span>{m.labelHi}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <p className="font-serif text-base sm:text-lg font-bold text-stone-900 dark:text-amber-100 leading-snug">
+                &ldquo;{literaryMeta.coreShiftHi}&rdquo;
+              </p>
+              {literaryMeta.coreShiftEn && (
+                <p className="mt-1 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed italic">
+                  {literaryMeta.coreShiftEn}
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* 4 · The layers with progressive reading depth */}
           <ReaderLayers
             scriptureId={scriptureId}
             verse={verse}
@@ -636,7 +803,71 @@ export function VerseReader(props: VerseReaderProps) {
             settings={settings}
             onReport={() => setDialog('report')}
             onUpdateSetting={update}
+            readingDepth={depth}
           />
+
+          {/* Calm Trigger in Read Mode */}
+          {isReadMode && (
+            <div className="my-6 rounded-2xl border border-saffron-300/80 bg-gradient-to-r from-saffron-50/90 via-amber-50/70 to-saffron-50/90 p-5 dark:border-saffron-800/60 dark:from-saffron-950/40 dark:via-amber-950/20 dark:to-saffron-950/40 shadow-xs flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-sm font-bold text-saffron-950 dark:text-saffron-200 flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-saffron-600 dark:text-saffron-400" />
+                  <span>सरल अर्थ समझें · Understand this passage</span>
+                </p>
+                <p className="text-xs text-dharma-muted mt-1">
+                  इस श्लोक का मर्म (Core Shift), आधुनिक जीवन में प्रासंगिकता और सामान्य भ्रम निवारण देखें।
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setReadingDepth('understand');
+                  triggerTactileFeedback('selection', 'softTap');
+                }}
+                className="inline-flex items-center gap-1.5 rounded-full bg-saffron-600 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-saffron-700 transition active:scale-95 cursor-pointer"
+              >
+                <span>बोध मोड खोलें</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          )}
+
+          {/* ── What This Verse Does NOT Mean (भ्रम निवारण · Common Misreading) - Only in Understand/Study modes ── */}
+          {!isReadMode && (
+            <div className="my-6 rounded-2xl border border-stone-200 bg-stone-50/80 p-5 shadow-2xs dark:border-stone-800 dark:bg-stone-900/40">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-dharma-muted mb-3 flex items-center gap-2">
+                <span>भ्रम निवारण · Common Misreading vs. Deeper Truth</span>
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="rounded-xl border border-rose-200/80 bg-rose-50/60 p-3.5 dark:border-rose-900/40 dark:bg-rose-950/20">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-1 flex items-center gap-1">
+                    <span>❌ सामान्य भ्रम (Misreading)</span>
+                  </p>
+                  <p className="text-xs sm:text-sm text-stone-800 dark:text-stone-200 leading-relaxed">
+                    {literaryMeta.misreadingHi}
+                  </p>
+                  {literaryMeta.misreadingEn && (
+                    <p className="mt-1 text-xs text-stone-600 dark:text-stone-400 italic">
+                      &ldquo;{literaryMeta.misreadingEn}&rdquo;
+                    </p>
+                  )}
+                </div>
+                <div className="rounded-xl border border-emerald-200/80 bg-emerald-50/60 p-3.5 dark:border-emerald-900/40 dark:bg-emerald-950/20">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-1 flex items-center gap-1">
+                    <span>✓ वास्तविक दृष्टि (Deeper Truth)</span>
+                  </p>
+                  <p className="text-xs sm:text-sm text-stone-800 dark:text-stone-200 leading-relaxed font-medium">
+                    {literaryMeta.deeperTruthHi}
+                  </p>
+                  {literaryMeta.deeperTruthEn && (
+                    <p className="mt-1 text-xs text-stone-600 dark:text-stone-400 italic">
+                      {literaryMeta.deeperTruthEn}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
 
           {noteText && (
             <section aria-label="Your private note" className="mt-5 rounded-2xl border border-dashed border-dharma-border bg-dharma-card/60 p-4">
@@ -645,7 +876,7 @@ export function VerseReader(props: VerseReaderProps) {
             </section>
           )}
 
-          <div data-focus-hide>{children}</div>
+          {isStudyMode && <div data-focus-hide>{children}</div>}
         </main>
 
         {/* Right rail (extra-wide screens): quick actions and page anchors */}
@@ -830,6 +1061,41 @@ export function VerseReader(props: VerseReaderProps) {
           isOpen={showShareModal}
           onClose={() => setShowShareModal(false)}
           data={shareData}
+        />
+
+        {/* Aesthetic Patrikā Quote Studio Modal */}
+        <PatrikaShareStudioModal
+          isOpen={patrikaOpen}
+          onClose={() => setPatrikaOpen(false)}
+          data={{
+            scriptureTitle: scriptureTitleSanskrit ?? scriptureTitle,
+            chapterTitle,
+            reference: `${scriptureTitle} ${chapterId}.${verse.number}`,
+            sanskrit: verse.sanskrit || '',
+            transliteration: verse.transliteration,
+            hindi: verse.hindi,
+            translation: verse.translation,
+            coreShift: literaryMeta.coreShiftHi || literaryMeta.coreShiftEn,
+            url: pageUrl,
+          }}
+        />
+
+        {/* 60-Second Story Deck Modal */}
+        <StoryDeckModal
+          isOpen={storyDeckOpen}
+          onClose={() => setStoryDeckOpen(false)}
+          data={{
+            scriptureTitle: scriptureTitleSanskrit ?? scriptureTitle,
+            chapterTitle,
+            verseRef: `${scriptureTitle} ${chapterId}.${verse.number}`,
+            sanskrit: verse.sanskrit || '',
+            transliteration: verse.transliteration,
+            hindi: verse.hindi,
+            english: verse.translation,
+            meta: literaryMeta,
+            chapterHref,
+            verseHref: pageUrl,
+          }}
         />
 
         {/* Mobile Tactile Verse Carousel Drawer */}

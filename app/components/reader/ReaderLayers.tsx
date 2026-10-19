@@ -25,6 +25,7 @@ import { SanskritWordExplorerDrawer } from '@/app/components/understand/Sanskrit
 import { findLexiconEntry, type SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
 import type { ReaderProvenance, ReaderVerseText } from '@/lib/reader-actions';
 import type { PerspectiveMode, ReaderSettings } from '@/lib/useReaderSettings';
+import type { ReadingDepth } from '@/lib/useReadingDepth';
 
 /* ── Type scale: full class strings so Tailwind keeps them ──────────── */
 
@@ -194,6 +195,7 @@ function Layer({
   titleHi,
   badge,
   collapsible = false,
+  defaultOpen = true,
   children,
 }: {
   id: string;
@@ -202,14 +204,19 @@ function Layer({
   titleHi?: string;
   badge?: ReactNode;
   collapsible?: boolean;
+  defaultOpen?: boolean;
   children: ReactNode;
 }) {
   const k = KINDS[kind];
   const ref = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
-    if (collapsible && ref.current && window.matchMedia('(max-width: 639px)').matches) ref.current.open = false;
-  }, [collapsible]);
+    if (collapsible && ref.current) {
+      if (!defaultOpen || window.matchMedia('(max-width: 639px)').matches) {
+        ref.current.open = false;
+      }
+    }
+  }, [collapsible, defaultOpen]);
 
   const head = (
     <>
@@ -243,7 +250,7 @@ function Layer({
     <section id={id} aria-labelledby={`${id}-title`} className={`relative rounded-2xl shadow-sm ${k.frame}`}>
       {kind === 'source' && <CornerMarks />}
       {collapsible ? (
-        <details ref={ref} open className="group">
+        <details ref={ref} open={defaultOpen} className="group">
           <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center gap-3 rounded-2xl px-4 py-3 sm:px-6 [&::-webkit-details-marker]:hidden">
             {head}
             <ChevronDown className="h-5 w-5 shrink-0 text-dharma-muted transition group-open:rotate-180" aria-hidden="true" />
@@ -276,6 +283,7 @@ export function ReaderLayers({
   settings,
   onReport,
   onUpdateSetting,
+  readingDepth = 'read',
 }: {
   scriptureId: string;
   verse: ReaderVerseText;
@@ -284,6 +292,7 @@ export function ReaderLayers({
   settings: ReaderSettings;
   onReport: () => void;
   onUpdateSetting?: <K extends keyof ReaderSettings>(key: K, value: ReaderSettings[K]) => void;
+  readingDepth?: ReadingDepth;
 }) {
   const [activeLexiconEntry, setActiveLexiconEntry] = useState<SanskritLexiconEntry | null>(null);
 
@@ -298,17 +307,26 @@ export function ReaderLayers({
   const perspective = settings.perspective || 'beginner';
   const perspCfg = PERSPECTIVE_CONFIG[perspective];
 
+  const isRead = readingDepth === 'read';
+  const isUnderstand = readingDepth === 'understand';
+  const isStudy = readingDepth === 'study';
+
   const isQuick = settings.readerMode === 'quick';
   const isTraditional = settings.readerMode === 'traditional';
-  const isDeep = settings.readerMode === 'deep' || isTraditional || perspective === 'researcher' || perspective === 'student';
+  const isDeep = isStudy || settings.readerMode === 'deep' || isTraditional || perspective === 'researcher' || perspective === 'student';
 
-  // Language preferences
+  // Language preferences: In Read mode, show exactly one clear translation in the preferred language
   const showHindiTrans =
     settings.showHindi &&
-    (settings.preferredLanguage === 'all' || settings.preferredLanguage === 'hindi' || isDeep);
+    (isRead
+      ? (settings.preferredLanguage === 'english' && verse.translation ? false : Boolean(verse.hindi))
+      : (settings.preferredLanguage === 'all' || settings.preferredLanguage === 'hindi' || isDeep));
+
   const showEnglishTrans =
     settings.showEnglish &&
-    (settings.preferredLanguage === 'all' || settings.preferredLanguage === 'english' || isDeep);
+    (isRead
+      ? (showHindiTrans ? false : Boolean(verse.translation))
+      : (settings.preferredLanguage === 'all' || settings.preferredLanguage === 'english' || isDeep));
 
   const handleInspectPada = (pada: string) => {
     const entry = findLexiconEntry(pada);
@@ -319,8 +337,8 @@ export function ReaderLayers({
 
   return (
     <article id={`verse-${verse.number}`} className="space-y-5" aria-label={`Verse ${verse.number}`}>
-      {/* ── Perspective Switcher Bar ─────────────────────────────── */}
-      {!settings.liteMode ? (
+      {/* ── Perspective Switcher Bar (Study Mode Only) ─────────────── */}
+      {isStudy && !settings.liteMode ? (
         <section
           aria-label="Perspective Switcher"
           className="rounded-2xl border border-dharma-border bg-dharma-card p-3.5 sm:p-4 shadow-xs"
@@ -433,14 +451,15 @@ export function ReaderLayers({
         </Layer>
       )}
 
-      {/* 3 · Pada / word-by-word (Deep mode or expanded aid in Simple mode) */}
-      {!isQuick && !settings.liteMode && verse.wordMeaning && (
+      {/* 3 · Pada / word-by-word (Study mode only) */}
+      {isStudy && !settings.liteMode && verse.wordMeaning && (
         <Layer
           id="layer-padas"
           kind="aid"
           title="Word by word (पदच्छेद व अन्वय)"
           titleHi="पदच्छेद"
-          collapsible={!isTraditional && (perspective === 'beginner' || perspective === 'practitioner')}
+          collapsible={true}
+          defaultOpen={false}
         >
           <div className="mb-2.5 flex items-center justify-between text-xs text-dharma-muted">
             <span>Tap on highlighted terms to inspect classical root (धातु), grammatical case, and philosophical clarity:</span>
@@ -527,8 +546,8 @@ export function ReaderLayers({
         </Layer>
       )}
 
-      {/* 6 · Traditional commentary (Shown in Deep mode or collapsible in Simple) */}
-      {!isQuick && !settings.liteMode && (
+      {/* 6 · Traditional commentary (Study mode only) */}
+      {isStudy && !settings.liteMode && (
         <Layer
           id="layer-tradition"
           kind="tradition"
@@ -546,8 +565,8 @@ export function ReaderLayers({
         </Layer>
       )}
 
-      {/* 7 · Simple explanation */}
-      {verse.explanation && (
+      {/* 7 · Simple explanation (Understand & Study modes) */}
+      {!isRead && verse.explanation && (
         <Layer
           id="layer-explanation"
           kind="editorial"
@@ -569,8 +588,8 @@ export function ReaderLayers({
         </Layer>
       )}
 
-      {/* 8 · Modern reflection / Practical action */}
-      {!settings.liteMode && verse.reflection && (
+      {/* 8 · Modern reflection / Practical action (Understand & Study modes) */}
+      {!isRead && !settings.liteMode && verse.reflection && (
         <Layer
           id="layer-reflection"
           kind="reflection"
@@ -588,8 +607,8 @@ export function ReaderLayers({
         </Layer>
       )}
 
-      {/* 9 · Research note (Deep or Simple modes) */}
-      {!isQuick && !settings.liteMode && verse.research && (
+      {/* 9 · Research note (Study mode only) */}
+      {isStudy && !settings.liteMode && verse.research && (
         <Layer id="layer-research" kind="research" title="Comparative Research Note" titleHi="शोध टिप्पणी" badge={aiCommentary} collapsible={perspective !== 'researcher'}>
           <p
             lang={/[ऀ-ॿ]/.test(verse.research) ? 'hi' : 'en'}
@@ -604,7 +623,7 @@ export function ReaderLayers({
         </Layer>
       )}
 
-      {isDeep && !settings.liteMode && (
+      {isStudy && !settings.liteMode && (
         <CompareViews scriptureId={scriptureId} chapterId={chapterId} verse={verse} provenance={p} />
       )}
 

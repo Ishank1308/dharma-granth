@@ -1,18 +1,36 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { HeroSection } from '@/app/components/HeroSection';
-import { SplashScreen } from '@/app/components/SplashScreen';
 import { ContinueReading } from '@/app/components/ContinueReading';
 import { VerseOfTheDaySection } from '@/app/components/VerseOfTheDaySection';
 import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
-import { SadhanaPreviewSection } from '@/app/components/SadhanaPreviewSection';
-import { PanchangPreviewSection } from '@/app/components/PanchangPreviewSection';
-import { Experience3DSection } from '@/app/components/Experience3DSection';
 import { getLibraryCounts } from '@/data/scriptures';
 import { formatCountDevanagari } from '@/lib/holdings-label';
 import { SiteFooter } from '@/app/components/SiteFooter';
+
+const MoodCompassSection = dynamic(
+  () => import('@/app/components/MoodCompassSection').then((m) => m.MoodCompassSection),
+  { ssr: false }
+);
+const SplashScreen = dynamic(
+  () => import('@/app/components/SplashScreen').then((m) => m.SplashScreen),
+  { ssr: false }
+);
+const SadhanaPreviewSection = dynamic(
+  () => import('@/app/components/SadhanaPreviewSection').then((m) => m.SadhanaPreviewSection),
+  { ssr: false }
+);
+const PanchangPreviewSection = dynamic(
+  () => import('@/app/components/PanchangPreviewSection').then((m) => m.PanchangPreviewSection),
+  { ssr: false }
+);
+const Experience3DSection = dynamic(
+  () => import('@/app/components/Experience3DSection').then((m) => m.Experience3DSection),
+  { ssr: false }
+);
 
 export const metadata: Metadata = {
   title: { absolute: 'Dharma Granth — Calm, Bilingual Digital Scripture Library' },
@@ -54,6 +72,9 @@ export default function HomePage() {
 
       {/* 1. HERO SECTION */}
       <HeroSection />
+
+      {/* 1.5. MOOD COMPASS: "HOW IS YOUR MIND TODAY?" */}
+      <MoodCompassSection />
 
       {/* 2. CONTINUE READING / START HERE */}
       <ContinueReading />

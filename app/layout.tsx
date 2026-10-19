@@ -1,16 +1,30 @@
 import type { Metadata, Viewport } from "next";
+import dynamic from "next/dynamic";
 import { SiteNav } from "@/app/components/SiteNav";
 import { getLibraryCounts, getRealVerseCount } from "@/data/scriptures";
 import { publishedTotals } from "@/lib/ashtavakra";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
-import { FloatingCompanion } from "@/app/components/FloatingCompanion";
-import { DharmaCopilot } from "@/app/components/DharmaCopilot";
-import { TactileLayer } from "@/app/components/TactileLayer";
-import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
-import { OfflineIndicator } from "@/app/components/OfflineIndicator";
+
+const SpatialLightCursor = dynamic(
+  () => import("@/app/components/motion/SpatialLightCursor").then((m) => m.SpatialLightCursor),
+  { ssr: false }
+);
+const TactileLayer = dynamic(
+  () => import("@/app/components/TactileLayer").then((m) => m.TactileLayer),
+  { ssr: false }
+);
+const OfflineIndicator = dynamic(
+  () => import("@/app/components/OfflineIndicator").then((m) => m.OfflineIndicator),
+  { ssr: false }
+);
+const PwaInstallBanner = dynamic(
+  () => import("./components/PwaInstallBanner").then((m) => m.PwaInstallBanner),
+  { ssr: false }
+);
+
 // Font subsetting: Bundling only required weights (400, 600, 700) and critical
 // styles; unused weights (300, 500, 300-italic, 700-italic) are omitted to reduce bundle size.
 import "@fontsource/inter/latin-400.css";
@@ -24,7 +38,6 @@ import "@fontsource/noto-sans-devanagari/devanagari-600.css";
 import "@fontsource/noto-sans-devanagari/devanagari-700.css";
 import "./globals.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
-import { PwaInstallBanner } from "./components/PwaInstallBanner";
 
 /**
  * Inline script that runs synchronously before React hydrates so the
@@ -234,12 +247,6 @@ export default function RootLayout({
               <PageTransition>{children}</PageTransition>
             </ErrorBoundary>
           </div>
-          <ErrorBoundary name="Floating Companion">
-            <FloatingCompanion />
-          </ErrorBoundary>
-          <ErrorBoundary name="Dharma Copilot">
-            <DharmaCopilot />
-          </ErrorBoundary>
           <TactileLayer />
           <OfflineIndicator />
           <ServiceWorkerRegister />

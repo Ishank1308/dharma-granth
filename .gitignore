@@ -68,9 +68,19 @@ scripts/cache/*
 # local logs
 *.log
 
+# Python cache
+__pycache__/
+*.pyc
+
 # OCR/extracted source material: kept locally, not redistributed (see scripts/README.md)
 /sources/
 .ocr-cache/
 /data/quality-report.json
 tools/granth-ocr/work/
 tools/granth-ocr/**/__pycache__/
+data/sources-local/
+ocr_workspace/
+ocr_output/
+scratch/
+
+
