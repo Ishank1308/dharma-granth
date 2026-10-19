@@ -1564,3 +1564,30 @@ html[data-reader] [aria-label^='सस्वर पाठ'] {
   color: #e0f2fe !important;
   border-color: #0369a1 !important;
 }
+
+/* Printing a chapter: plain black on white, no site chrome, each verse kept whole on a page. */
+@media print {
+  @page { margin: 16mm 14mm; }
+  html, body { background: #fff !important; color: #000 !important; }
+  header, footer, nav, aside, button, audio, video, form, .splash,
+  [role='dialog'], [aria-label='Breadcrumb'], .no-print, .fixed, .sticky {
+    display: none !important;
+  }
+  main { min-height: 0 !important; background: #fff !important; }
+  main * { box-shadow: none !important; text-shadow: none !important; animation: none !important; transition: none !important; }
+  main [class*='bg-gradient'], main [class*='backdrop-blur'] { background: #fff !important; color: #000 !important; }
+  .verse-card, .verse-card * { color: #000 !important; }
+  .verse-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 0 !important;
+    border-bottom: 0.5pt solid #999 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    margin: 0 0 6mm !important;
+    padding: 0 0 4mm !important;
+  }
+  .verse-card-spotlight { display: none !important; }
+  h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+  a { color: #000 !important; text-decoration: none !important; }
+}

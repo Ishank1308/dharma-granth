@@ -37,6 +37,7 @@ import { detectChandas } from '@/lib/chandas-detector';
 import { speakSanskritTerm } from '@/lib/sacred-soundscape';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { showSabdaPeek } from '@/lib/prana-capsule-store';
+import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';
 
 export interface VerseCardData {
   number: number | string;
@@ -905,6 +906,10 @@ export function VerseCard({
                           </div>
                         )}
                       </div>
+                    )}
+
+                    {activeTab === 'meaning' && (
+                      <SamvadaStrip scriptureId={scriptureId} chapterId={chapterId} verseNumber={v.number} />
                     )}
 
                     {activeTab === 'explain' && (

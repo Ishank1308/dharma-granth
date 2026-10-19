@@ -9,6 +9,8 @@ const VERSION = 'dg-v5';
 const PAGES = `${VERSION}-pages`;
 const ASSETS = `${VERSION}-assets`;
 const SCRIPTURE = `${VERSION}-scripture`;
+// Scriptures the reader chose to save (lib/offline-scriptures.ts). Kept across versions; only the reader removes them.
+const OFFLINE = 'dharma-offline-scriptures-v1';
 const MAX_PAGES = 120;
 const MAX_SCRIPTURE = 40;
 // A chapter page with comprehensive word-by-word padas and multiple commentaries
@@ -21,7 +23,7 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
       const keys = await caches.keys();
-      await Promise.all(keys.filter((k) => !k.startsWith(VERSION)).map((k) => caches.delete(k)));
+      await Promise.all(keys.filter((k) => !k.startsWith(VERSION) && k !== OFFLINE).map((k) => caches.delete(k)));
       await self.clients.claim();
     })(),
   );
@@ -95,7 +97,7 @@ self.addEventListener('fetch', (event) => {
           }
           return res;
         } catch {
-          const cached = await caches.match(req, { cacheName: PAGES });
+          const cached = (await caches.match(req, { cacheName: PAGES })) || (await caches.match(req, { cacheName: OFFLINE }));
           return (
             cached ||
             new Response(OFFLINE_HTML, { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } })
@@ -137,7 +139,7 @@ self.addEventListener('fetch', (event) => {
           }
           return res;
         } catch {
-          const cached = await caches.match(req, { cacheName: SCRIPTURE });
+          const cached = (await caches.match(req, { cacheName: SCRIPTURE })) || (await caches.match(req, { cacheName: OFFLINE }));
           if (cached) return cached;
           return new Response('', { status: 503 });
         }

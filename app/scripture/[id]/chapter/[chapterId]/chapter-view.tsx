@@ -31,6 +31,7 @@ import { ShareButton } from '@/app/components/ShareButton';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
 import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction';
+import { PrintChapterButton } from '@/app/components/PrintChapterButton';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPart } from '@/lib/chapter-parts';
 
@@ -340,6 +341,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
                   firstVerseId={part ? part.first : 1}
                   totalVerses={chapter.verseCount}
                 />
+                <PrintChapterButton className={shareChip} />
               </>
             ) : (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur text-xs font-medium">

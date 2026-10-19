@@ -11,6 +11,7 @@ import { getScripture, getScriptureMeta, getAllScriptures } from '@/data/scriptu
 import { ArrowLeft } from 'lucide-react';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { OfflineScriptureToggle } from '@/app/components/scripture/OfflineScriptureToggle';
 
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
@@ -241,6 +242,7 @@ export default function ScripturePage({ params }: PageProps) {
           <FadeUp delay={0.2}>
             <p className="text-lg opacity-80 max-w-3xl">{meta.description}</p>
             {meta.author && <p className="mt-3 text-sm opacity-60">Attributed to {meta.author}</p>}
+            <OfflineScriptureToggle scriptureId={meta.id} title={meta.title} />
           </FadeUp>
         </div>
       </ChapterHero>
