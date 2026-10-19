@@ -20,6 +20,7 @@ import {
   Home,
   Menu,
   Moon,
+  Radio,
   Search,
   Settings2,
   Sparkles,
@@ -38,6 +39,7 @@ import {
 } from 'framer-motion';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
+import { subscribeSoundscape, toggleSoundscape } from '@/lib/sacred-soundscape';
 import { THEMES, useTheme, type Theme } from './ThemeProvider';
 import {
   useLanguagePreference,
@@ -135,6 +137,45 @@ interface DrawerItem {
   icon: typeof Home;
   badge?: string;
   badgeType?: 'streak' | 'count' | 'accent';
+}
+
+function SoundscapeNavButton({ className = '' }: { className?: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    return subscribeSoundscape((st) => {
+      setIsPlaying(st.isPlaying);
+    });
+  }, []);
+
+  const handleToggle = () => {
+    triggerTactileFeedback('selection', 'softTap');
+    toggleSoundscape();
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handleToggle}
+      className={`relative flex items-center justify-center rounded-xl border transition active:scale-95 ${
+        isPlaying
+          ? 'border-amber-400 bg-amber-500/15 text-amber-600 dark:text-amber-400 shadow-sm'
+          : 'border-dharma-border/80 bg-dharma-bg/90 text-dharma-muted hover:border-saffron-400 hover:text-dharma-text'
+      } ${className}`}
+      aria-label={isPlaying ? 'पवित्र ध्वनि बंद करें' : 'पवित्र ध्वनि चालू करें'}
+      title={isPlaying ? 'पवित्र ध्वनि: चालू (Tap to pause)' : 'पवित्र ध्वनि: 432Hz तन्पूरा व ॐ ध्यान'}
+    >
+      {isPlaying ? (
+        <span className="flex items-center gap-0.5 px-0.5">
+          <span className="inline-block h-3 w-0.5 rounded-full bg-amber-500 animate-pulse" />
+          <span className="inline-block h-4 w-0.5 rounded-full bg-amber-500 animate-pulse [animation-delay:150ms]" />
+          <span className="inline-block h-2.5 w-0.5 rounded-full bg-amber-500 animate-pulse [animation-delay:300ms]" />
+        </span>
+      ) : (
+        <Radio className="h-4 w-4" aria-hidden="true" />
+      )}
+    </button>
+  );
 }
 
 export function SiteNav({
@@ -428,6 +469,14 @@ export function SiteNav({
       icon: Sparkles,
     },
     {
+      id: 'soundscape',
+      label: 'पवित्र ध्वनि (नादानुसन्धान)',
+      labelEn: 'Sacred Soundscape',
+      description: '432Hz वैदिक तन्पूरा, ॐ ध्यान व ध्यान घंटा',
+      href: '/practice',
+      icon: Radio,
+    },
+    {
       id: 'wisdom-for-life',
       label: 'जीवन मार्गदर्शन',
       labelEn: 'Wisdom for Life',
@@ -661,6 +710,11 @@ export function SiteNav({
                 <ThemeToggle />
               </div>
 
+              {/* Desktop Sacred Soundscape Button */}
+              <div className="hidden lg:inline-block">
+                <SoundscapeNavButton className="h-9 w-9" />
+              </div>
+
               {/* Desktop CTA */}
               <Link
                 href="/scripture/bhagavadgita"
@@ -683,6 +737,9 @@ export function SiteNav({
               >
                 <Search className="h-5 w-5 text-saffron-600" aria-hidden="true" />
               </button>
+
+              {/* 1.5. Mobile Sacred Soundscape Button */}
+              <SoundscapeNavButton className="lg:hidden h-11 w-11 min-h-[44px] min-w-[44px]" />
 
               {/* 2. Theme Button */}
               <button

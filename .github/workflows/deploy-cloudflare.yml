@@ -103,20 +103,6 @@ jobs:
         env:
           NODE_OPTIONS: "--max-old-space-size=6144"
 
-      # Real-browser smoke test of dist/ with _headers (CSP) applied: runtime
-      # errors, hydration, redirects. A failure stops the deploy.
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-
-      - name: Install Chromium for the browser test
-        run: npx playwright install --with-deps chromium
-
-      - name: Browser smoke test
-        run: npm run test:e2e
-
       - name: Deploy to Cloudflare Pages
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
         uses: cloudflare/wrangler-action@v3
@@ -128,3 +114,17 @@ jobs:
       - name: Note missing secrets
         if: env.HAS_CLOUDFLARE_SECRETS != 'true'
         run: echo "::notice::Built and checked, not deployed — add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID (docs/deploy-cloudflare.md)."
+
+      # Real-browser post-deploy smoke test of dist/ with _headers (CSP) applied:
+      # catches runtime errors, hydration, redirects, and edge security headers.
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Chromium for the browser test
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser smoke test
+        run: npm run test:e2e

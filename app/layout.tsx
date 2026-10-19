@@ -11,6 +11,7 @@ import { TactileLayer } from "@/app/components/TactileLayer";
 import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
+import { SacredAudioPlayer } from "@/app/components/reader/SacredAudioPlayer";
 // Font subsetting: Bundling only required weights (400, 600, 700) and critical
 // styles; unused weights (300, 500, 300-italic, 700-italic) are omitted to reduce bundle size.
 import "@fontsource/inter/latin-400.css";
@@ -239,6 +240,9 @@ export default function RootLayout({
           </ErrorBoundary>
           <ErrorBoundary name="Dharma Copilot">
             <DharmaCopilot />
+          </ErrorBoundary>
+          <ErrorBoundary name="Sacred Soundscape">
+            <SacredAudioPlayer />
           </ErrorBoundary>
           <TactileLayer />
           <OfflineIndicator />

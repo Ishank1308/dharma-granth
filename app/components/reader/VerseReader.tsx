@@ -55,7 +55,7 @@ import { MobileSwipeIndicator } from './MobileSwipeIndicator';
 import { MobileReadingProgress } from './MobileReadingProgress';
 import { MobileVerseCarousel } from './MobileVerseCarousel';
 import { MobileAudioPill } from './MobileAudioPill';
-import { SacredAudioPlayer } from './SacredAudioPlayer';
+import { setCurrentVerseContext } from '@/lib/sacred-soundscape';
 import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
 import { logActivity } from '@/lib/activity-log';
@@ -146,6 +146,11 @@ export function VerseReader(props: VerseReaderProps) {
   /* ── Bookmark ── */
   const [saved, setSaved] = useState(false);
   useEffect(() => setSaved(isBookmarked(ref, verse)), [ref, verse]);
+
+  /* ── Sync Active Verse Context to Sacred Soundscape Engine ── */
+  useEffect(() => {
+    setCurrentVerseContext(verse.sanskrit, `${scriptureTitle} ${chapterId}.${verse.number}`);
+  }, [verse.sanskrit, scriptureTitle, chapterId, verse.number]);
   const onBookmark = () => {
     const state = toggleBookmark(ref, verse);
     if (state === null) return say('Could not save: browser storage is unavailable.');
@@ -889,12 +894,6 @@ export function VerseReader(props: VerseReaderProps) {
         />
 
         <MobileAudioPill />
-
-        {/* Sacred Audio Player (432Hz Vedic Tanpura, Pranava Om, Chanted Recitation) */}
-        <SacredAudioPlayer
-          currentVerseSanskrit={verse.sanskrit}
-          reference={`${scriptureTitle} ${chapterId}.${verse.number}`}
-        />
       </div>
     </MotionConfig>
   );
