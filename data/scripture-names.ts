@@ -47,6 +47,7 @@ export const SCRIPTURE_NAMES: Record<string, { title: string; titleSanskrit: str
   "kalkipuran": { title: "Kalki Purana", titleSanskrit: "कल्किपुराण" },
   "naradabhaktisutra": { title: "Narada Bhakti Sutras", titleSanskrit: "नारद भक्ति सूत्र" },
   "shandilyabhaktisutra": { title: "Shandilya Bhakti Sutras", titleSanskrit: "शाण्डिल्य भक्ति सूत्र" },
+  "yogasutra": { title: "Patanjali Yoga Sutras", titleSanskrit: "पातञ्जल योगसूत्र" },
   "narasimhapuran": { title: "Narasimha Purana", titleSanskrit: "नृसिंहपुराण" },
   "naradapuran": { title: "Narada Purana", titleSanskrit: "नारदपुराण" },
   "matsyapuran": { title: "Matsya Purana", titleSanskrit: "मत्स्यपुराण" },

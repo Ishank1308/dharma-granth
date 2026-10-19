@@ -600,6 +600,21 @@ export const scriptureCatalog: ScriptureMeta[] = [
     hasData: true,
   },
   {
+    id: "yogasutra",
+    title: "Patanjali Yoga Sutras",
+    titleSanskrit: "पातञ्जल योगसूत्र",
+    titleIast: "Pātañjala Yogasūtra",
+    category: "other",
+    description:
+      "195 sutras in four padas: Samadhi, Sadhana, Vibhuti and Kaivalya. Patanjali's concise manual of classical Yoga, from yogas citta-vritti-nirodhah (yoga is the stilling of the movements of the mind) to the eight limbs and kaivalya.",
+    totalChapters: 4,
+    totalVerses: 195,
+    isCurated: false,
+    canonicalTotalVerses: 195,
+    tags: ["Sutra","Yoga","Patanjali","Samadhi","Ashtanga","Meditation"],
+    hasData: true,
+  },
+  {
     id: "narasimhapuran",
     title: "Narasimha Purana",
     titleSanskrit: "नृसिंहपुराण",
