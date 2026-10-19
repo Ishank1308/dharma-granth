@@ -162,7 +162,7 @@ const MIN_DUPLICATE_TEXT_LENGTH = 24;
 const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   agnipuran: 2,
   atharvaveda: 34,
-  bhagavatapurana: 91,
+  bhagavatapurana: 21,
   brahmandpuran: 5,
   brahmapuran: 4,
   brihadaranyaka: 15,
@@ -184,7 +184,7 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   ramcharitmanas: 21,
   rigveda: 39,
   samaveda: 194, // the Uttarārcika repeats many Pūrvārcika mantras in the source (full 1,873-mantra text)
-  shandilyabhaktisutra: 5,
+  shandilyabhaktisutra: 0,
   shivpurana: 36,
   skandapuran: 16,
   taittiriya: 3,

@@ -330,6 +330,7 @@ const TARGETS: Record<string, Target> = {
   shvetashvatara: { files: ["shveta.itx"], build: byNumberReset, chapterUnit: "Adhyāya" },
   tejobindu: { files: ["tejobindu.itx"], build: byNumberReset, chapterUnit: "Part" },
   naradabhaktisutra: { files: [], local: true, build: () => [], chapterUnit: "" },
+  bhagavatapurana: { files: [], local: true, build: () => [], chapterUnit: "" },
   devibhagavat: { files: [], local: true, build: () => [], chapterUnit: "" },
   yogarasayanam: { files: [], local: true, build: () => [], chapterUnit: "" },
   shivasamhita: { files: ["https://sanskritdocuments.org/doc_shiva/shivasaMhitA.itx"], build: shivaSamhita, chapterUnit: "Paṭala" },
