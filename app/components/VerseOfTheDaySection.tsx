@@ -22,7 +22,7 @@ import { whatsappShareUrl } from '@/lib/whatsapp';
 import dynamic from 'next/dynamic';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { PedagogicalVerseCard, type ContemplationTier } from '@/app/components/PedagogicalVerseCard';
-import { getPedagogicalVerse } from '@/data/pedagogical-registry';
+import type { PedagogicalVerseData } from '@/data/pedagogical-gita-2-47';
 import { DAILY_WISDOM_REGISTRY } from '@/data/daily-wisdom-engine';
 import { SacredShareModal } from '@/app/components/share/SacredShareModal';
 
@@ -94,7 +94,22 @@ export function VerseOfTheDaySection() {
   }, []);
 
   const current = FEATURED_VERSES[index];
-  const pedagogical = getPedagogicalVerse(current.scriptureId, current.chapterId, current.verseId);
+  // The pedagogical registry is ~450 KB of verse data. It loads after mount so it stays out of the
+  // homepage's first-load JS budget (scripts/check-export.mjs); the generic card renders meanwhile.
+  const [pedagogical, setPedagogical] = useState<PedagogicalVerseData | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    import('@/data/pedagogical-registry')
+      .then(({ getPedagogicalVerse }) => {
+        if (!cancelled) setPedagogical(getPedagogicalVerse(current.scriptureId, current.chapterId, current.verseId));
+      })
+      .catch(() => {
+        if (!cancelled) setPedagogical(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [current.scriptureId, current.chapterId, current.verseId]);
 
   // Check bookmark status
   useEffect(() => {
