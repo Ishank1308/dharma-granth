@@ -263,6 +263,48 @@ const kaushitaki: Builder = (body) => {
   return chapters;
 };
 
+/**
+ * Shiva Samhita (sanskritdocuments.org): five paṭalas, every verse closed by "|| <paṭala>\.<verse>||", with
+ * variant readings in "(...)" after a line. Numbers are the book's own (chapter.verse).
+ */
+const shivaSamhita: Builder = (body) => {
+  const re = /\|\|\s*(\d+)[\\]?\.(\d+)\s*\|\|/g;
+  const chapters: FullChapter[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(body))) {
+    const pat = Number(m[1]);
+    const num = Number(m[2]);
+    // A paṭala's first verse is preceded by the previous paṭala's colophon and its own heading; drop
+    // everything up to the last such line (the verse lines themselves never contain these words).
+    const lines = body.slice(last, m.index).split("\n");
+    let from = 0;
+    lines.forEach((ln, i) => {
+      if (/paTalaH|prakaraNa|iti shrI/i.test(ln)) from = i + 1;
+    });
+    let verseLines = lines.slice(from).filter((ln) => ln.trim());
+    // A short "atha <heading> |" or "<speaker> uvAcha |" line in front of a multi-line verse is not part of it.
+    while (verseLines.length >= 3 && verseLines[0].trim().split(/\s+/).length <= 3 && /^(?:atha\s|.*uvAcha)/i.test(verseLines[0].trim())) {
+      verseLines = verseLines.slice(1);
+    }
+    const chunk = verseLines
+      .join(" ")
+      .replace(/\([^)]*\)/g, " ") // variant readings
+      .replace(/\s+/g, " ")
+      .trim();
+    last = re.lastIndex;
+    const fv = mkVerse(num, chunk);
+    if (!fv) continue;
+    let ch = chapters.find((c) => c.number === pat);
+    if (!ch) {
+      ch = { number: pat, title: "", verses: [] };
+      chapters.push(ch);
+    }
+    ch.verses.push(fv);
+  }
+  return chapters.sort((x, y) => x.number - y.number);
+};
+
 interface Target {
   files: string[];
   /** Proofread local source (data/sources-local/<id>.json): { note, chapters: [{ number, title, verses: [{ number, sanskrit }] }] }. */
@@ -289,6 +331,7 @@ const TARGETS: Record<string, Target> = {
   tejobindu: { files: ["tejobindu.itx"], build: byNumberReset, chapterUnit: "Part" },
   naradabhaktisutra: { files: [], local: true, build: () => [], chapterUnit: "" },
   yogarasayanam: { files: [], local: true, build: () => [], chapterUnit: "" },
+  shivasamhita: { files: ["https://sanskritdocuments.org/doc_shiva/shivasaMhitA.itx"], build: shivaSamhita, chapterUnit: "Paṭala" },
   shivaswarodaya: { files: [], local: true, build: () => [], chapterUnit: "" },
   shandilyabhaktisutra: { files: [], local: true, build: () => [], chapterUnit: "" },
   kaushitaki: { files: ["kaushhiitaki.itx"], build: kaushitaki, chapterUnit: "Adhyāya" },
