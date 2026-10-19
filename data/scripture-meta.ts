@@ -108,9 +108,9 @@ export const scriptureCatalog: ScriptureMeta[] = [
     description:
       "Detailed exposition on the five koshas (sheaths) covering the Self and the famous prayer \"Satyam Vada, Dharmam Chara\".",
     totalChapters: 3,
-    totalVerses: 92,
+    totalVerses: 31,
     isCurated: true,
-    canonicalTotalVerses: 92,
+    canonicalTotalVerses: 31,
     tags: ["Upanishad","Taittiriyopanishad","Koshas","Ethics","Self"],
     hasData: true,
   },

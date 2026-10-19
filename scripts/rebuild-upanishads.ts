@@ -335,6 +335,7 @@ const TARGETS: Record<string, Target> = {
   devibhagavat: { files: [], local: true, build: () => [], chapterUnit: "" },
   yogarasayanam: { files: [], local: true, build: () => [], chapterUnit: "" },
   vinayapatrika: { files: [], local: true, build: () => [], chapterUnit: "" },
+  taittiriya: { files: [], local: true, build: () => [], chapterUnit: "" },
   shivasamhita: { files: ["https://sanskritdocuments.org/doc_shiva/shivasaMhitA.itx"], build: shivaSamhita, chapterUnit: "Paṭala" },
   shivaswarodaya: { files: [], local: true, build: () => [], chapterUnit: "" },
   shandilyabhaktisutra: { files: [], local: true, build: () => [], chapterUnit: "" },
@@ -372,7 +373,8 @@ function carryOver(oldCh: FullChapter[], newCh: FullChapter[]) {
           best = i;
         }
       });
-      if (best >= 0 && bestScore >= 0.75) {
+      // An annotation written for a short fragment must not be attached to a much longer verse that merely contains it.
+      if (best >= 0 && bestScore >= 0.75 && olds[best].fp.length >= nf.length * 0.5) {
         used.add(best);
         const o = olds[best];
         for (const [k, val] of Object.entries(o.v)) {

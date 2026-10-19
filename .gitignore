@@ -88,3 +88,7 @@ ocr_output/
 
 # Scratch workspace
 scratch/
+
+# Local copies of Gita Press books (large, copyrighted; sources only)
+data/sources-local/gitapress_*
+data/sources-local/gitapress_official_epubs/
