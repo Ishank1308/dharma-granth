@@ -5,7 +5,8 @@
  *
  * Changes nothing. For each scripture it counts verses that have each layer (English meaning, Hindi meaning,
  * explanation, research note) and flags quality problems that can be detected without judging the text:
- *   - template text: the same field value repeated on several verses of one scripture;
+ *   - template text: the same explanation value repeated on several unrelated verses of one scripture (the same rule
+ *     the publish step uses to leave such text out; a note for a short run of neighbouring verses is not counted);
  *   - filler phrases from the editorial ban list;
  *   - wrong language in a field (Hindi field in Latin script, English field in Devanagari);
  *   - very short or very long values.
@@ -13,6 +14,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { findTemplateFields } from './lib/template-text';
 
 const ROOT = path.resolve(__dirname, '..');
 const DIR = path.join(ROOT, 'public/data/scriptures-full');
@@ -33,6 +35,7 @@ const FILLER = [
 ];
 
 interface Verse {
+  __key?: string;
   number?: number | string;
   sanskrit?: string;
   translation?: string;
@@ -72,30 +75,28 @@ for (const f of fs.readdirSync(DIR).sort()) {
   if (!f.endsWith('.json')) continue;
   const id = f.replace(/\.json$/, '');
   const j = JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8')) as { chapters?: { verses?: Verse[] }[] };
-  const verses = (j.chapters ?? []).flatMap((c) => c.verses ?? []);
+  const verses = (j.chapters ?? []).flatMap((c) => (c.verses ?? []).map((v, i) => ({ ...v, __key: `${c.number}:${i}` })));
+  const hidden = findTemplateFields(
+    verses.map((v) => ({ key: v.__key, sanskrit: v.sanskrit ?? '', fields: { explanation: v.explanation, commentary: v.commentary, science: v.science, lifeLesson: v.lifeLesson } })),
+  );
   const r: Row = { id, verses: verses.length, en: 0, hi: 0, expl: 0, sci: 0, template: 0, filler: 0, wrongLang: 0, tooShort: 0 };
-  const seen = new Map<string, number>();
   for (const v of verses) {
     const expl = v.explanation ?? v.commentary;
     if (has(v.translation)) r.en++;
     if (has(v.hindi)) r.hi++;
     if (has(expl)) r.expl++;
     if (has(v.science)) r.sci++;
-    for (const t of [v.hindi, expl, v.science, v.lifeLesson]) {
-      if (has(t) && (t as string).length > 40) seen.set(t as string, (seen.get(t as string) ?? 0) + 1);
-    }
   }
   for (const v of verses) {
     const expl = v.explanation ?? v.commentary;
     const fields: [string, string | undefined][] = [['en', v.translation], ['hi', v.hindi], ['expl', expl], ['sci', v.science], ['lesson', v.lifeLesson]];
-    let tmpl = false;
+    let tmpl = ['explanation', 'commentary', 'science', 'lifeLesson'].some((k) => hidden.has(`${v.__key}|${k}`));
     let fill = false;
     let wrong = false;
     let short = false;
     for (const [k, t] of fields) {
       if (!has(t)) continue;
       const s = t as string;
-      if (s.length > 40 && (seen.get(s) ?? 0) >= 3) tmpl = true;
       if (FILLER.some((re) => re.test(s))) fill = true;
       const { d, l } = script(s);
       if ((k === 'hi' && l > d * 2 && l > 20) || (k === 'en' && d > l && d > 20)) wrong = true;
@@ -121,7 +122,7 @@ const lines = [
   `Generated ${new Date().toISOString().slice(0, 10)} by scripts/audit-editorial-coverage.ts. Read-only: no verse was changed.`,
   '',
   'Layers counted: English meaning (`translation`), Hindi meaning (`hindi`), explanation (`explanation`/`commentary`), research note (`science`).',
-  'Flags are prompts for a human reader: **template** = the same long value repeated on 3+ verses of one text; **filler** = a phrase from the editorial ban list; **wrong lang** = Hindi field in Latin script or English field in Devanagari; **short** = a value under 12 characters.',
+  'Flags are prompts for a human reader: **template** = the same long explanation repeated on 3+ unrelated verses of one text (left out of the published data, shown to readers as "not yet written"); **filler** = a phrase from the editorial ban list; **wrong lang** = Hindi field in Latin script or English field in Devanagari; **short** = a value under 12 characters.',
   '',
   `**Library total: ${total.verses.toLocaleString('en-IN')} verses in ${rows.length} scriptures.** English ${pct(total.en, total.verses)}, Hindi ${pct(total.hi, total.verses)}, explanation ${pct(total.expl, total.verses)}, research note ${pct(total.sci, total.verses)}. Flags: ${total.template.toLocaleString('en-IN')} template, ${total.filler} filler, ${total.wrongLang} wrong language, ${total.tooShort} short.`,
   '',

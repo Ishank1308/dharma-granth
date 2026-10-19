@@ -13,6 +13,7 @@ import { filterCuratedFragment } from "../data/hi-commentary/publish";
 import { isBoilerplateField } from "../data/hi-commentary/quality";
 import { aiQueueScriptureIds, approvedAiEntries } from "../data/hi-commentary/_ai-queue";
 import type { HiCommentaryFragment } from "../data/hi-commentary/_types";
+import { findTemplateFields } from "./lib/template-text";
 
 const SRC = path.resolve("data/hi-commentary");
 const OUT = path.resolve("public/data/hi-commentary");
@@ -90,6 +91,26 @@ async function main(): Promise<void> {
         if (explanation && !prev.explanation) next.explanation = explanation;
         if (science && !prev.science) next.science = science;
         if (next.explanation || next.science || next.lifeLesson) curated[key] = next;
+      }
+    }
+
+    // Leave out explanation text that is the same template on several different verses (source files are untouched).
+    {
+      const FIELDS = ["explanation", "science", "lifeLesson"] as const;
+      const hidden = findTemplateFields(
+        Object.entries(curated).map(([key, e]) => ({
+          key,
+          sanskrit: key,
+          fields: Object.fromEntries(FIELDS.map((k) => [k, (e as Record<string, string | undefined>)[k]])),
+        })),
+      );
+      if (hidden.size > 0) {
+        for (const w of hidden) {
+          const [key, field] = w.split("|");
+          delete (curated[key] as Record<string, unknown>)[field];
+          if (!Object.keys(curated[key]).length) delete curated[key];
+        }
+        console.log(`  ${name}: hid ${hidden.size} template field(s)`);
       }
     }
 

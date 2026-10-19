@@ -8,6 +8,10 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { findTemplateFields } from "./lib/template-text";
+
+/** Verse fields that carry explanation, not scripture or translation. */
+const EDITORIAL_FIELDS = ["explanation", "commentary", "science", "lifeLesson"] as const;
 
 const SRC = path.resolve("public/data/scriptures-full");
 const DRY = process.argv.includes("--dry-run");
@@ -43,6 +47,26 @@ function main(): void {
         verses?: unknown[];
       }>;
     };
+
+    // Hide text that is the same template on many different verses; the source file is not touched.
+    {
+      const items = (book.chapters ?? []).flatMap((ch) =>
+        ((ch.verses ?? []) as Record<string, unknown>[]).map((v, i) => ({
+          key: `${ch.number}:${i}`,
+          sanskrit: String(v.sanskrit ?? ""),
+          fields: Object.fromEntries(EDITORIAL_FIELDS.map((f) => [f, typeof v[f] === "string" ? (v[f] as string) : undefined])),
+        })),
+      );
+      const hidden = findTemplateFields(items);
+      if (hidden.size > 0) {
+        for (const ch of book.chapters ?? []) {
+          ((ch.verses ?? []) as Record<string, unknown>[]).forEach((v, i) => {
+            for (const f of EDITORIAL_FIELDS) if (hidden.has(`${ch.number}:${i}|${f}`)) delete v[f];
+          });
+        }
+        console.log(`  ${id}: hid ${hidden.size} template explanation field(s)`);
+      }
+    }
 
     const outDir = path.join(SRC, id);
     if (!DRY) fs.mkdirSync(outDir, { recursive: true });
