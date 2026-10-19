@@ -19,6 +19,7 @@ import {
   Timer,
   Repeat,
   AlertCircle,
+  Moon,
 } from 'lucide-react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import {
@@ -32,6 +33,7 @@ import {
   toggleSoundscapeMute,
   setSoundscapeBowlInterval,
   setContinuousParayana,
+  setSoundscapeSleepTimer,
   hasDevanagariVoice,
   chimeSingingBowl,
   setCurrentVerseContext,
@@ -51,6 +53,14 @@ const INTERVAL_OPTIONS = [
   { label: '1 मि.', seconds: 60 },
   { label: '3 मि.', seconds: 180 },
   { label: '5 मि.', seconds: 300 },
+];
+
+const SLEEP_TIMER_OPTIONS = [
+  { label: 'बंद', minutes: 0 },
+  { label: '15 मि.', minutes: 15 },
+  { label: '30 मि.', minutes: 30 },
+  { label: '45 मि.', minutes: 45 },
+  { label: '60 मि.', minutes: 60 },
 ];
 
 interface SacredAudioPlayerProps {
@@ -105,6 +115,46 @@ export function SacredAudioPlayer({ currentVerseSanskrit, reference }: SacredAud
     }
   }, [currentVerseSanskrit, reference]);
 
+  // Sleep timer countdown ticker
+  const [sleepRemainingText, setSleepRemainingText] = useState<string | null>(null);
+  useEffect(() => {
+    if (!soundState.sleepTimerEndsAt) {
+      setSleepRemainingText(null);
+      return;
+    }
+    const updateCountdown = () => {
+      if (!soundState.sleepTimerEndsAt) return;
+      const left = Math.max(0, Math.floor((soundState.sleepTimerEndsAt - Date.now()) / 1000));
+      if (left <= 0) {
+        setSleepRemainingText(null);
+      } else {
+        const m = Math.floor(left / 60);
+        const s = left % 60;
+        setSleepRemainingText(`${m}:${s.toString().padStart(2, '0')}`);
+      }
+    };
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+    return () => clearInterval(timer);
+  }, [soundState.sleepTimerEndsAt]);
+
+  // Global keyboard shortcuts (Alt+P or Alt+S: toggle play/pause, Alt+M: mute)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.altKey && (e.key === 'p' || e.key === 'P' || e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+        triggerTactileFeedback('selection', 'click');
+        toggleSoundscape();
+      } else if (e.altKey && (e.key === 'm' || e.key === 'M')) {
+        e.preventDefault();
+        triggerTactileFeedback('selection', 'softTap');
+        toggleSoundscapeMute();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const handleTogglePlay = () => {
     triggerTactileFeedback('selection', 'click');
     toggleSoundscape();
@@ -127,6 +177,11 @@ export function SacredAudioPlayer({ currentVerseSanskrit, reference }: SacredAud
   const handleIntervalSelect = (seconds: number) => {
     triggerTactileFeedback('selection', 'softTap');
     setSoundscapeBowlInterval(seconds);
+  };
+
+  const handleSleepTimerSelect = (minutes: number) => {
+    triggerTactileFeedback('selection', 'softTap');
+    setSoundscapeSleepTimer(minutes);
   };
 
   const handleManualChime = () => {
@@ -310,6 +365,42 @@ export function SacredAudioPlayer({ currentVerseSanskrit, reference }: SacredAud
                 </div>
               </div>
 
+              {/* Sleep Timer (शयन निद्रा टाइमर) */}
+              <div className="my-3 rounded-2xl bg-stone-950/50 p-3 border border-stone-800/70">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-1.5">
+                    <Moon className="h-3.5 w-3.5 text-indigo-400" />
+                    <span className="text-xs font-semibold text-stone-300">
+                      शयन टाइमर (Sleep Timer)
+                    </span>
+                  </div>
+                  {sleepRemainingText && (
+                    <span className="text-2xs font-mono font-bold text-indigo-300 bg-indigo-500/20 px-2 py-0.5 rounded-full border border-indigo-500/30">
+                      {sleepRemainingText} शेष
+                    </span>
+                  )}
+                </div>
+                <div className="grid grid-cols-5 gap-1">
+                  {SLEEP_TIMER_OPTIONS.map((opt) => {
+                    const isSel = soundState.sleepTimerMinutes === opt.minutes;
+                    return (
+                      <button
+                        key={opt.minutes}
+                        type="button"
+                        onClick={() => handleSleepTimerSelect(opt.minutes)}
+                        className={`py-1 rounded-xl text-2xs font-semibold transition ${
+                          isSel
+                            ? 'bg-indigo-500 text-stone-950 font-bold shadow-sm'
+                            : 'bg-stone-800/70 text-stone-400 hover:text-stone-200 hover:bg-stone-800'
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
               {/* Volume Slider & Controls */}
               <div className="flex items-center justify-between gap-3 rounded-2xl bg-stone-950/60 p-3 border border-stone-800/80">
                 <button
@@ -379,7 +470,11 @@ export function SacredAudioPlayer({ currentVerseSanskrit, reference }: SacredAud
                 {currentTrackMeta.hindiTitle}
               </p>
               <p className="text-2xs text-stone-400">
-                {soundState.isPlaying ? '432Hz Drone Active' : 'Tap to open sound'}
+                {sleepRemainingText
+                  ? `🌙 ${sleepRemainingText} शेष`
+                  : soundState.isPlaying
+                  ? '432Hz Drone Active'
+                  : 'Tap to open (Alt+P)'}
               </p>
             </div>
             <div className="flex h-7 w-7 items-center justify-center rounded-full text-stone-400 hover:text-stone-200">

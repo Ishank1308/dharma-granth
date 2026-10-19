@@ -72,6 +72,8 @@ export interface SoundscapeState {
   isMuted: boolean;
   bowlIntervalSeconds: number; // 0 (off), 60 (1m), 180 (3m), 300 (5m)
   continuousParayana: boolean; // Auto-advance to next verse upon recitation completion
+  sleepTimerMinutes: number; // 0 (off), 15, 30, 45, 60
+  sleepTimerEndsAt: number | null; // Timestamp when sleep timer expires
   currentVerseSanskrit?: string;
   currentVerseReference?: string;
 }
@@ -88,6 +90,8 @@ let audioCtx: AudioContext | null = null;
 let masterGain: GainNode | null = null;
 let activeOscillators: OscillatorNode[] = [];
 let bowlTimer: ReturnType<typeof setInterval> | null = null;
+let sleepTimerHandle: ReturnType<typeof setTimeout> | null = null;
+let sleepFadeHandle: ReturnType<typeof setTimeout> | null = null;
 let speechUtteranceQueue: SpeechSynthesisUtterance[] = [];
 let isSpeakingVerse = false;
 const listeners = new Set<SoundscapeListener>();
@@ -99,6 +103,8 @@ let state: SoundscapeState = {
   isMuted: false,
   bowlIntervalSeconds: 0,
   continuousParayana: false,
+  sleepTimerMinutes: 0,
+  sleepTimerEndsAt: null,
   currentVerseSanskrit: undefined,
   currentVerseReference: undefined,
 };
@@ -626,6 +632,50 @@ export function setContinuousParayana(enabled: boolean) {
     try {
       localStorage.setItem(STORAGE_PARAYANA, String(enabled));
     } catch {}
+  }
+  notify();
+}
+
+/**
+ * Set a sleep timer that smoothly fades out audio over 5 seconds before pausing
+ * @param minutes Duration in minutes (0 to cancel)
+ */
+export function setSoundscapeSleepTimer(minutes: number) {
+  state.sleepTimerMinutes = minutes;
+  if (sleepTimerHandle) {
+    clearTimeout(sleepTimerHandle);
+    sleepTimerHandle = null;
+  }
+  if (sleepFadeHandle) {
+    clearTimeout(sleepFadeHandle);
+    sleepFadeHandle = null;
+  }
+
+  if (minutes > 0) {
+    const durationMs = minutes * 60 * 1000;
+    state.sleepTimerEndsAt = Date.now() + durationMs;
+
+    // Start 5-second fade out right before end
+    if (durationMs > 5000) {
+      sleepFadeHandle = setTimeout(() => {
+        const ctx = getAudioContext();
+        if (masterGain && ctx) {
+          try {
+            const now = ctx.currentTime;
+            masterGain.gain.cancelScheduledValues(now);
+            masterGain.gain.linearRampToValueAtTime(0.0001, now + 4.9);
+          } catch {}
+        }
+      }, durationMs - 5000);
+    }
+
+    sleepTimerHandle = setTimeout(() => {
+      state.sleepTimerMinutes = 0;
+      state.sleepTimerEndsAt = null;
+      stopSoundscape();
+    }, durationMs);
+  } else {
+    state.sleepTimerEndsAt = null;
   }
   notify();
 }
