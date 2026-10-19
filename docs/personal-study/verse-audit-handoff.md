@@ -31,6 +31,10 @@ The snapshot utility hashes only `scriptureId`, `chapterId`, `verseId`, Sanskrit
 - The isolated audit worktree is clean.
 - No Phase 7 working-tree file was modified.
 
+The fresh snapshot comparison against the recorded baseline passed with no added, removed, or changed canonical chapter-file hashes. Both snapshots contain 4,222 files and 230,196 verses, with aggregate SHA-256 `0355c9b4efd5be89a287f1f7b9e7ef02f0f2a824eda99fb15dfa0dbd57446006`.
+
+The current content-integrity run reported zero structural errors and the commentary quality check passed for 66 fragments. Existing catalogue/statistics drift and quality warnings remain documented findings; they were not changed during this audit.
+
 ## Remaining work
 
 - Human review of queue candidates.
