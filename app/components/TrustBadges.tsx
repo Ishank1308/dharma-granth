@@ -34,7 +34,7 @@ export function TrustBadges({
       <ul className="flex flex-wrap gap-2">
         <li className={`${chip} border-dharma-border bg-dharma-card text-dharma-text`}>
           <Archive className="h-3.5 w-3.5" aria-hidden="true" />
-          Source text · imported{sourceHost ? ` from ${sourceHost}` : ''}
+          Original text
         </li>
         <li
           className={`${chip} ${translationIsAi ? 'border-violet-500/40 bg-violet-50 text-violet-950 dark:bg-violet-950/40 dark:text-violet-100' : 'border-dharma-border bg-dharma-card text-dharma-text'}`}

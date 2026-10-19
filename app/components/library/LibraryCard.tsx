@@ -167,16 +167,6 @@ export function LibraryCard({
           <Detail label="Major themes">
             {themes.length > 0 ? themes.join(' · ') : missing}
           </Detail>
-          <Detail label="Source edition">
-            {item.facts.sourceHost ? (
-              <>
-                {item.facts.sourceHost}
-                {fetched && <span className="text-dharma-muted"> · fetched {fetched}</span>}
-              </>
-            ) : (
-              missing
-            )}
-          </Detail>
           <Detail label="Available commentary">{commentary.length > 0 ? commentary.join('; ') : missing}</Detail>
           <Detail label="Last updated">{updated ?? missing}</Detail>
         </dl>

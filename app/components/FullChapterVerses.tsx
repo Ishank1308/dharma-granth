@@ -1112,15 +1112,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           )}
         </div>
       )}
-      {state.source?.repo && (
-        <p className="mt-6 text-xs text-dharma-muted text-center">
-          स्रोत:{' '}
-          <a href={state.source.repo} target="_blank" rel="noopener noreferrer" className="underline">
-            {state.source.repo.replace('https://github.com/', '')}
-          </a>
-          {state.source.fetchedAt && ` · प्राप्त ${new Date(state.source.fetchedAt).toLocaleDateString('hi-IN')}`}
-        </p>
-      )}
     </section>
 
       {/* Single contribute modal for bulk verses */}

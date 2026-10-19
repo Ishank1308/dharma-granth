@@ -220,7 +220,6 @@ export function PedagogicalVerseCard({
       `Simple Meaning: ${data.simpleMeaningEn}`,
       `सरल अर्थ: ${data.simpleMeaningHi}`,
       `Why it matters today: ${data.whyItMattersToday.map((s) => `• ${s.title}: ${s.text}`).join('\n')}`,
-      `Source: ${data.sourceTransparency.sanskritEdition}`,
     ].join('\n\n');
 
     try {
@@ -846,10 +845,6 @@ export function PedagogicalVerseCard({
                     <div>
                       <span className="font-semibold text-dharma-muted">Chhandas (Meter): </span>
                       <span>{data.sourceTransparency.meter}</span>
-                    </div>
-                    <div className="sm:col-span-2">
-                      <span className="font-semibold text-dharma-muted">Sanskrit Edition: </span>
-                      <span>{data.sourceTransparency.sanskritEdition}</span>
                     </div>
                     <div className="sm:col-span-2">
                       <span className="font-semibold text-dharma-muted">Authority Tier: </span>

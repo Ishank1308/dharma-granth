@@ -215,7 +215,6 @@ export function UnderstandPanel({
                   ['Reference', s.reference],
                   ['Context', s.epicContext],
                   ['Meter', s.meter],
-                  ['Sanskrit edition', s.sanskritEdition],
                   ['Authority', s.epistemicTier],
                 ] as const).map(([k, v]) => (
                   <div key={k} className="contents">

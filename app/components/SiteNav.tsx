@@ -211,6 +211,7 @@ export function SiteNav({
   const { preference, setPreference } = useLanguagePreference();
 
   const discoverRef = useRef<HTMLDivElement>(null);
+  const discoverButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
   const drawerCloseBtnRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -316,6 +317,19 @@ export function SiteNav({
     setDrawerOpen(false);
     setDiscoverOpen(false);
   }, [pathname]);
+
+  // Escape closes the desktop discovery menu and returns focus to its button
+  useEffect(() => {
+    if (!discoverOpen) return;
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setDiscoverOpen(false);
+      discoverButtonRef.current?.focus();
+    }
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [discoverOpen]);
 
   // Outside click to close desktop discovery
   useEffect(() => {
@@ -612,6 +626,7 @@ export function SiteNav({
               {/* Desktop Discovery Dropdown */}
               <div className="relative" ref={discoverRef}>
                 <button
+                  ref={discoverButtonRef}
                   type="button"
                   onClick={() => setDiscoverOpen((open) => !open)}
                   className={`flex items-center gap-1 rounded-xl px-1.5 xl:px-3 py-2 text-[13px] xl:text-sm font-semibold transition-colors ${
@@ -621,8 +636,12 @@ export function SiteNav({
                   }`}
                   aria-expanded={discoverOpen}
                   aria-controls="desktop-discovery-menu"
+                  aria-haspopup="true"
                 >
-                  अन्वेषण
+                  <span>Explore</span>{' '}
+                  <span lang="hi" className="hidden font-devanagari text-[11px] font-normal opacity-75 2xl:inline">
+                    अन्वेषण
+                  </span>
                   <ChevronDown
                     className={`h-4 w-4 transition-transform ${discoverOpen ? 'rotate-180' : ''}`}
                     aria-hidden="true"

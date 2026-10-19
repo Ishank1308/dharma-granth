@@ -56,11 +56,11 @@ export function SourcesAndInterpretation({
   );
 
   // Active tab on desktop
-  const [activeTab, setActiveTab] = useState<'editions' | 'commentary' | 'corrections'>('editions');
+  const [activeTab, setActiveTab] = useState<'corrections'>('corrections');
   const onTabKey = (e: React.KeyboardEvent) => {
-    const ids = ['editions', 'commentary', 'corrections'] as const;
+    const ids = ['corrections'] as const;
     const i = ids.indexOf(activeTab);
-    const n = e.key === 'ArrowRight' ? (i + 1) % 3 : e.key === 'ArrowLeft' ? (i + 2) % 3 : -1;
+    const n = e.key === 'ArrowRight' ? (i + 1) % 1 : e.key === 'ArrowLeft' ? (i + 0) % 1 : -1;
     if (n < 0) return;
     e.preventDefault();
     e.stopPropagation();
@@ -172,44 +172,6 @@ export function SourcesAndInterpretation({
           <button
             type="button"
             role="tab"
-            id="src-tab-editions"
-            aria-selected={activeTab === 'editions'}
-            aria-controls="src-panel"
-            tabIndex={activeTab === 'editions' ? 0 : -1}
-            onKeyDown={onTabKey}
-            onClick={() => setActiveTab('editions')}
-            className={`pb-2.5 px-3 text-xs font-bold border-b-2 transition flex items-center gap-1.5 ${
-              activeTab === 'editions'
-                ? 'border-saffron-600 text-saffron-700 dark:text-saffron-300'
-                : 'border-transparent text-dharma-muted hover:text-dharma-text'
-            }`}
-          >
-            <ScrollText className="w-3.5 h-3.5" />
-            <span>मूल पाठ एवं संस्करण (Sanskrit Edition)</span>
-          </button>
-
-          <button
-            type="button"
-            role="tab"
-            id="src-tab-commentary"
-            aria-selected={activeTab === 'commentary'}
-            aria-controls="src-panel"
-            tabIndex={activeTab === 'commentary' ? 0 : -1}
-            onKeyDown={onTabKey}
-            onClick={() => setActiveTab('commentary')}
-            className={`pb-2.5 px-3 text-xs font-bold border-b-2 transition flex items-center gap-1.5 ${
-              activeTab === 'commentary'
-                ? 'border-saffron-600 text-saffron-700 dark:text-saffron-300'
-                : 'border-transparent text-dharma-muted hover:text-dharma-text'
-            }`}
-          >
-            <BookOpen className="w-3.5 h-3.5" />
-            <span>अनुवाद एवं भाष्यकार (Translators & Acharyas)</span>
-          </button>
-
-          <button
-            type="button"
-            role="tab"
             id="src-tab-corrections"
             aria-selected={activeTab === 'corrections'}
             aria-controls="src-panel"
@@ -228,80 +190,6 @@ export function SourcesAndInterpretation({
         </div>
 
         <div role="tabpanel" id="src-panel" aria-labelledby={`src-tab-${activeTab}`}>
-        {/* Tab Content 1: Editions */}
-        {activeTab === 'editions' && (
-          <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs">
-            <div className="p-3.5 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 space-y-1">
-              <span className="font-semibold text-dharma-muted">पहचानकर्ता · Identifier:</span>
-              <p className="text-sm font-bold text-dharma-text">{identifier}</p>
-              <p className="text-xs text-dharma-muted font-devanagari">
-                {meta.sourceScriptureTitleSanskrit}
-              </p>
-            </div>
-
-            <div className="p-3.5 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 space-y-1">
-              <span className="font-semibold text-dharma-muted">संस्कृत संस्करण · Sanskrit Edition:</span>
-              <p className="text-sm font-bold text-dharma-text">
-                {editionOverride || meta.sanskritEdition}
-              </p>
-              <p className="text-xs text-dharma-muted">{meta.sanskritEditionDetails}</p>
-            </div>
-
-            <div className="p-3.5 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 space-y-1">
-              <span className="font-semibold text-dharma-muted">प्रकाशक अथवा पुरालेखागार · Archive:</span>
-              <p className="text-sm font-bold text-dharma-text">{meta.publisherArchive}</p>
-              {(sourceUrlOverride || meta.archiveUrl) && (
-                <a
-                  href={sourceUrlOverride || meta.archiveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-saffron-700 dark:text-saffron-300 hover:underline pt-0.5"
-                >
-                  <span>डिजिटल पुरालेख देखें</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              )}
-            </div>
-
-            <div className="p-3.5 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 space-y-1">
-              <span className="font-semibold text-dharma-muted">गणना पद्धति टिप्पणी · Numbering System:</span>
-              <p className="text-xs text-dharma-text leading-relaxed">{meta.numberingSystemNote}</p>
-            </div>
-          </div>
-        )}
-
-        {/* Tab Content 2: Translators & Acharyas */}
-        {activeTab === 'commentary' && (
-          <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs">
-            <div className="p-3.5 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 space-y-1">
-              <span className="font-semibold text-dharma-muted">अनुवादक · Translators:</span>
-              <p className="text-sm font-bold text-dharma-text">{meta.primaryTranslator}</p>
-              <p className="text-xs text-dharma-muted">
-                प्रत्यक्ष शब्दार्थ एवं व्याकरणसम्मत अन्वय पर आधारित।
-              </p>
-            </div>
-
-            <div className="p-3.5 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 space-y-1">
-              <span className="font-semibold text-dharma-muted">पारंपरिक भाष्यकार · Classical Commentators:</span>
-              <p className="text-sm font-bold text-dharma-text">{meta.traditionalCommentaryAuthor}</p>
-              <p className="text-xs text-dharma-muted">
-                प्राचीन आचार्य परंपरा के प्रामाणिक दार्शनिक भाष्य।
-              </p>
-            </div>
-
-            <div className="p-3.5 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 space-y-1">
-              <span className="font-semibold text-dharma-muted">संपादकीय समीक्षक · Editorial Reviewer:</span>
-              <p className="text-sm font-bold text-dharma-text">{meta.editorialReviewer}</p>
-            </div>
-
-            <div className="p-3.5 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 space-y-1">
-              <span className="font-semibold text-dharma-muted">अंतिम समीक्षा तिथि · Date Reviewed:</span>
-              <p className="text-sm font-bold text-dharma-text">{meta.dateReviewed}</p>
-              <p className="text-xs text-dharma-muted">No review date is recorded. See the methodology page for how review works.</p>
-            </div>
-          </div>
-        )}
-
         {/* Tab Content 3: Variants & Corrections */}
         {activeTab === 'corrections' && (
           <div className="pt-4 space-y-4 text-xs">

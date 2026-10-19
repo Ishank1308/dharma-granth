@@ -667,23 +667,6 @@ export function ReaderLayers({
       <Layer id="layer-sources" kind="sources" title="Sources and edition" titleHi="स्रोत एवं संस्करण" collapsible>
         <dl className="grid grid-cols-1 gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
           <div>
-            <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-dharma-muted">Sanskrit text</dt>
-            <dd className="mt-0.5 text-dharma-text">
-              {p.sourceHost ? (
-                p.sourceUrl ? (
-                  <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer" className="focus-ring inline-flex min-h-[44px] items-center rounded font-medium underline underline-offset-4">
-                    {p.sourceHost}
-                  </a>
-                ) : (
-                  p.sourceHost
-                )
-              ) : (
-                <span className="text-dharma-muted">Not recorded</span>
-              )}
-              {p.sourceFetched && <span className="text-dharma-muted"> · fetched {p.sourceFetched.slice(0, 10)}</span>}
-            </dd>
-          </div>
-          <div>
             <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-dharma-muted">Translations</dt>
             <dd className="mt-0.5 text-dharma-text">
               {[p.hindiIsAi ? 'Hindi: AI translation' : 'Hindi: not flagged as AI', p.englishIsAi ? 'English: AI translation' : 'English: not flagged as AI']
