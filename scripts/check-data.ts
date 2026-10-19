@@ -190,6 +190,8 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   taittiriya: 0,
   vamanpuran: 4,
   vayupuran: 20,
+  // Gita Press text repeats these two verses (the eight qualities of the learned; "a favour with no fruit") in different adhyayas.
+  viduraniti: 2,
   vishnupurana: 3,
   yajurveda: 40,
 };
