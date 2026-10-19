@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { HeroSection } from '@/app/components/HeroSection';
+import { MoodCompassSection } from '@/app/components/MoodCompassSection';
 import { SplashScreen } from '@/app/components/SplashScreen';
 import { ContinueReading } from '@/app/components/ContinueReading';
 import { VerseOfTheDaySection } from '@/app/components/VerseOfTheDaySection';
@@ -54,6 +55,9 @@ export default function HomePage() {
 
       {/* 1. HERO SECTION */}
       <HeroSection />
+
+      {/* 1.5. MOOD COMPASS: "HOW IS YOUR MIND TODAY?" */}
+      <MoodCompassSection />
 
       {/* 2. CONTINUE READING / START HERE */}
       <ContinueReading />

@@ -22,6 +22,7 @@ import {
   Scroll,
   MessageSquareQuote,
   CheckCircle2,
+  Zap,
 } from 'lucide-react';
 import {
   type WisdomTopic,
@@ -35,6 +36,8 @@ import { ShareVerseButton } from '@/app/components/ShareVerseButton';
 import { ShareChips } from '@/app/components/ShareChips';
 import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import { whatsappShareUrl } from '@/lib/whatsapp';
+import { StoryDeckModal } from '@/components/reader/StoryDeckModal';
+import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
 
 export function TopicDetailClient({
   topic,
@@ -51,7 +54,7 @@ export function TopicDetailClient({
   searchLine?: { hi: string; en: string } | null;
 }) {
   const [copiedVerseId, setCopiedVerseId] = useState<string | null>(null);
-
+  const [activeStoryVerse, setActiveStoryVerse] = useState<ScriptureReference | null>(null);
   const [imageNote, setImageNote] = useState('');
 
   const handleCopyVerse = (verse: ScriptureReference) => {
@@ -250,7 +253,19 @@ export function TopicDetailClient({
           </div>
 
           <div className="space-y-8">
-            {topic.verses.map((verse, index) => (
+            {topic.verses.map((verse, index) => {
+              const literaryMeta = getLiteraryVerseMeta(
+                verse.scriptureId,
+                verse.chapterNumber,
+                verse.verseNumber,
+                {
+                  sanskrit: verse.sanskritDevanagari,
+                  translation: verse.literalTranslationEn,
+                  hindi: verse.literalTranslationHi,
+                  lifeLesson: verse.traditionalContext.commentaryNote,
+                }
+              );
+              return (
               <article
                 key={verse.id}
                 id={`verse-${verse.id}`}
@@ -273,6 +288,17 @@ export function TopicDetailClient({
                   </div>
 
                   <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setActiveStoryVerse(verse)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-amber-300/80 bg-amber-50/80 text-xs font-bold text-amber-900 hover:bg-amber-100 transition shadow-2xs dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200"
+                      aria-label={`६०-सेकंड सार ${verse.referenceDisplay}`}
+                      title="६०-सेकंड सार (5-Card Visual Story Deck)"
+                    >
+                      <Zap className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                      <span>६०-सेकंड सार</span>
+                    </button>
+
                     <button
                       type="button"
                       onClick={() => handleCopyVerse(verse)}
@@ -320,6 +346,7 @@ export function TopicDetailClient({
                       transliteration={verse.sanskritTransliteration}
                       hindi={verse.literalTranslationHi}
                       translation={verse.literalTranslationEn}
+                      coreShift={literaryMeta.isCurated ? literaryMeta.coreShiftHi || literaryMeta.coreShiftEn : undefined}
                       compact
                       verseUrl={`https://dharmagranth.in/wisdom-for-life/${topic.slug}#verse-${verse.id}`}
                     />
@@ -422,9 +449,79 @@ export function TopicDetailClient({
                       </div>
                     )}
                   </div>
+
+                  {/* ── The Core Shift (मर्म · In One Breath) ── */}
+                  {literaryMeta.isCurated && (
+                    <>
+                  <div className="rounded-2xl border border-amber-200/90 bg-gradient-to-r from-amber-50/95 via-orange-50/70 to-amber-50/95 p-5 dark:border-amber-900/50 dark:from-amber-950/40 dark:via-orange-950/20 dark:to-amber-950/40 shadow-2xs">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                      <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-amber-800 dark:text-amber-300">
+                        <Sparkles className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" aria-hidden="true" />
+                        मर्म · In One Breath
+                      </p>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        {literaryMeta.situationalMoments.map((m) => (
+                          <span
+                            key={m.id}
+                            title={m.descriptionEn}
+                            className="inline-flex items-center gap-1 rounded-full border border-amber-300/70 bg-white/80 px-2.5 py-0.5 text-[11px] font-medium text-amber-950 dark:border-amber-800/60 dark:bg-amber-900/40 dark:text-amber-200"
+                          >
+                            <span>{m.emoji}</span>
+                            <span>{m.labelHi}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <p className="font-serif italic text-base sm:text-lg font-bold leading-relaxed text-amber-950 dark:text-amber-100">
+                      &ldquo;{literaryMeta.coreShiftHi}&rdquo;
+                    </p>
+                    {literaryMeta.coreShiftEn && (
+                      <p className="font-serif text-xs sm:text-sm text-amber-900/85 dark:text-amber-300/80 mt-1.5 font-normal">
+                        {literaryMeta.coreShiftEn}
+                      </p>
+                    )}
+                  </div>
+                    <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">{literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}</p>
+                    </>
+                  )}
+
+                  {/* ── What This Verse Does NOT Mean (भ्रम निवारण) ── */}
+                  {literaryMeta.isCurated && (
+                    <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-1">
+                    {/* Misreading Box */}
+                    <div className="rounded-2xl border border-rose-200/80 bg-rose-50/60 p-4 dark:border-rose-900/40 dark:bg-rose-950/20 shadow-2xs">
+                      <p className="text-[11px] font-bold text-rose-800 dark:text-rose-300 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
+                        <span>❌</span> सामान्य भ्रम (What It Does NOT Mean)
+                      </p>
+                      <p lang="hi" className="font-devanagari text-xs sm:text-sm text-rose-950 dark:text-rose-100 leading-relaxed">
+                        {literaryMeta.misreadingHi}
+                      </p>
+                      <p className="text-[11px] text-rose-800/80 dark:text-rose-300/70 italic mt-1 font-serif">
+                        &ldquo;{literaryMeta.misreadingEn}&rdquo;
+                      </p>
+                    </div>
+
+                    {/* Deeper Truth Box */}
+                    <div className="rounded-2xl border border-emerald-200/80 bg-emerald-50/60 p-4 dark:border-emerald-900/40 dark:bg-emerald-950/20 shadow-2xs">
+                      <p className="text-[11px] font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
+                        <span>✓</span> वास्तविक दृष्टि (The Deeper Truth)
+                      </p>
+                      <p lang="hi" className="font-devanagari text-xs sm:text-sm text-emerald-950 dark:text-emerald-100 leading-relaxed font-medium">
+                        {literaryMeta.deeperTruthHi}
+                      </p>
+                      <p className="text-[11px] text-emerald-800/80 dark:text-emerald-300/70 mt-1 font-serif">
+                        {literaryMeta.deeperTruthEn}
+                      </p>
+                    </div>
+                  </div>
+                    <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">{literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}</p>
+                    </>
+                  )}
                 </div>
               </article>
-            ))}
+            );
+          })}
           </div>
 
           {/* Traditional Context Overview Box */}
@@ -767,6 +864,35 @@ export function TopicDetailClient({
           )}
         </nav>
       </main>
+
+      {activeStoryVerse && (
+        <StoryDeckModal
+          isOpen={Boolean(activeStoryVerse)}
+          onClose={() => setActiveStoryVerse(null)}
+          data={{
+            scriptureTitle: activeStoryVerse.scriptureName,
+            chapterTitle: `अध्याय ${activeStoryVerse.chapterNumber}`,
+            verseRef: activeStoryVerse.referenceDisplay,
+            sanskrit: activeStoryVerse.sanskritDevanagari,
+            transliteration: activeStoryVerse.sanskritTransliteration,
+            hindi: activeStoryVerse.literalTranslationHi,
+            english: activeStoryVerse.literalTranslationEn,
+            meta: getLiteraryVerseMeta(
+              activeStoryVerse.scriptureId,
+              activeStoryVerse.chapterNumber,
+              activeStoryVerse.verseNumber,
+              {
+                sanskrit: activeStoryVerse.sanskritDevanagari,
+                translation: activeStoryVerse.literalTranslationEn,
+                hindi: activeStoryVerse.literalTranslationHi,
+                lifeLesson: activeStoryVerse.traditionalContext.commentaryNote,
+              }
+            ),
+            chapterHref: activeStoryVerse.readerHref,
+            verseHref: `https://dharmagranth.in/wisdom-for-life/${topic.slug}#verse-${activeStoryVerse.id}`,
+          }}
+        />
+      )}
     </div>
   );
 }

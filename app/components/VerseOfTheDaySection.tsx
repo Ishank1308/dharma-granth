@@ -25,6 +25,8 @@ import { PedagogicalVerseCard, type ContemplationTier } from '@/app/components/P
 import { getPedagogicalVerse } from '@/data/pedagogical-registry';
 import { DAILY_WISDOM_REGISTRY } from '@/data/daily-wisdom-engine';
 import { SacredShareModal } from '@/app/components/share/SacredShareModal';
+import { StoryDeckModal } from '@/components/reader/StoryDeckModal';
+import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
 
 export interface VerseOfTheDayItem {
   scriptureId: string;
@@ -79,6 +81,7 @@ export function VerseOfTheDaySection() {
   const [embedMounted, setEmbedMounted] = useState(false);
   const [genericTier, setGenericTier] = useState<ContemplationTier>('simple');
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [isStoryDeckOpen, setIsStoryDeckOpen] = useState(false);
 
   useEffect(() => {
     const dayIdx = getDayOfYear() % FEATURED_VERSES.length;
@@ -508,6 +511,17 @@ export function VerseOfTheDaySection() {
                         <Code2 className="h-3.5 w-3.5 text-dharma-muted" />
                         <span>Embed</span>
                       </button>
+
+                      {/* 60-Second Visual Story Deck Trigger */}
+                      <button
+                        type="button"
+                        onClick={() => setIsStoryDeckOpen(true)}
+                        aria-label="६०-सेकंड सार (5-Card Visual Story Deck)"
+                        className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-3.5 py-2 text-xs font-bold text-amber-900 transition hover:bg-amber-100 hover:border-amber-400 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-200 shadow-sm"
+                      >
+                        <Zap className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
+                        <span>६०-सेकंड सार</span>
+                      </button>
                     </div>
 
                     {/* Read Context */}
@@ -568,6 +582,28 @@ export function VerseOfTheDaySection() {
           url: typeof window !== 'undefined' ? `${window.location.origin}${readHref(current.scriptureId, current.chapterId, current.verseId)}` : `https://dharmagranth.in${readHref(current.scriptureId, current.chapterId, current.verseId)}`,
         }}
       />
+      {current && (
+        <StoryDeckModal
+          isOpen={isStoryDeckOpen}
+          onClose={() => setIsStoryDeckOpen(false)}
+          data={{
+            scriptureTitle: current.scriptureTitle,
+            chapterTitle: current.chapterTitle,
+            verseRef: `${current.scriptureTitle} ${current.chapterId}.${current.verseId}`,
+            sanskrit: current.sanskrit,
+            transliteration: current.transliteration,
+            hindi: current.hindi,
+            english: current.translation,
+            meta: getLiteraryVerseMeta(current.scriptureId, current.chapterId, current.verseId, {
+              sanskrit: current.sanskrit,
+              translation: current.translation,
+              hindi: current.hindi,
+              lifeLesson: current.reflection,
+            }),
+            chapterHref: readHref(current.scriptureId, current.chapterId, current.verseId),
+          }}
+        />
+      )}
     </section>
   );
 }
