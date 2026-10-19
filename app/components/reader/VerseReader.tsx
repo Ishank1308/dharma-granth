@@ -55,7 +55,7 @@ import { MobileSwipeIndicator } from './MobileSwipeIndicator';
 import { MobileReadingProgress } from './MobileReadingProgress';
 import { MobileVerseCarousel } from './MobileVerseCarousel';
 import { MobileAudioPill } from './MobileAudioPill';
-import { setCurrentVerseContext } from '@/lib/sacred-soundscape';
+import { setCurrentVerseContext, getSoundscapeState, stopSoundscape } from '@/lib/sacred-soundscape';
 import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
 import { logActivity } from '@/lib/activity-log';
@@ -151,6 +151,40 @@ export function VerseReader(props: VerseReaderProps) {
   useEffect(() => {
     setCurrentVerseContext(verse.sanskrit, `${scriptureTitle} ${chapterId}.${verse.number}`);
   }, [verse.sanskrit, scriptureTitle, chapterId, verse.number]);
+
+  /* ── MediaSession Lock-Screen Controls & Continuous Pārāyaṇa ── */
+  useEffect(() => {
+    const handlePrev = () => {
+      if (prev?.href) router.push(prev.href);
+    };
+    const handleNext = () => {
+      if (next?.href) router.push(next.href);
+    };
+    const handleRecitationEnded = () => {
+      const state = getSoundscapeState();
+      if (state.continuousParayana) {
+        if (next?.href) {
+          say('निरंतर पाठ: अगला श्लोक (2.5s)...');
+          const timer = setTimeout(() => {
+            router.push(next.href);
+          }, 2500);
+          return () => clearTimeout(timer);
+        } else {
+          stopSoundscape();
+          say('अध्याय सम्पूर्ण · Chapter Recitation Complete');
+        }
+      }
+    };
+
+    window.addEventListener('dharma:verse-prev', handlePrev);
+    window.addEventListener('dharma:verse-next', handleNext);
+    window.addEventListener('dharma:recitation-ended', handleRecitationEnded);
+    return () => {
+      window.removeEventListener('dharma:verse-prev', handlePrev);
+      window.removeEventListener('dharma:verse-next', handleNext);
+      window.removeEventListener('dharma:recitation-ended', handleRecitationEnded);
+    };
+  }, [prev, next, router, say]);
   const onBookmark = () => {
     const state = toggleBookmark(ref, verse);
     if (state === null) return say('Could not save: browser storage is unavailable.');

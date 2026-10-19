@@ -45,7 +45,7 @@ export function versePageHref(
   if (!hasVersePages(scriptureId)) return undefined;
   const slug = verseSlug(verseNumber);
   if (!slug) return undefined;
-  return `/scripture/${scriptureId}/chapter/${chapterId}/verse/${slug}`;
+  return `/scripture/${scriptureId}/chapter/${chapterId}/verse/${slug}/`;
 }
 
 /** Share image for one verse, written by `npm run og:verses`. */

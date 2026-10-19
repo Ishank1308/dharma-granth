@@ -9,7 +9,9 @@
  * - Brindavan Flute Harmony (Contemplative Bansuri Overtone Chords)
  * - Sacred Temple Bell / Tibetan Singing Bowl (Inharmonic Metallic Resonance)
  * - Periodic Contemplation Chime (Mindfulness bells every 1m / 3m / 5m)
- * - Sanskrit Verse Recitation (Phonetic Devanagari Cadence)
+ * - Sanskrit Verse Recitation (Phonetic Devanagari Cadence Chunked by Dandas)
+ * - Procedural Wooden Japa Bead Tick & Temple Bell Strike
+ * - Lock-screen MediaSession Integration (play/pause/prev/next)
  *
  * State persists seamlessly in localStorage and stays active across
  * all page transitions in Dharma Granth.
@@ -69,6 +71,7 @@ export interface SoundscapeState {
   volume: number; // 0.0 - 1.0
   isMuted: boolean;
   bowlIntervalSeconds: number; // 0 (off), 60 (1m), 180 (3m), 300 (5m)
+  continuousParayana: boolean; // Auto-advance to next verse upon recitation completion
   currentVerseSanskrit?: string;
   currentVerseReference?: string;
 }
@@ -79,11 +82,14 @@ const STORAGE_ACTIVE = 'dharma_soundscape_active';
 const STORAGE_TRACK = 'dharma_soundscape_track';
 const STORAGE_VOLUME = 'dharma_soundscape_volume';
 const STORAGE_BOWL_INTERVAL = 'dharma_soundscape_bowl_interval';
+const STORAGE_PARAYANA = 'dharma_soundscape_parayana';
 
 let audioCtx: AudioContext | null = null;
 let masterGain: GainNode | null = null;
 let activeOscillators: OscillatorNode[] = [];
 let bowlTimer: ReturnType<typeof setInterval> | null = null;
+let speechUtteranceQueue: SpeechSynthesisUtterance[] = [];
+let isSpeakingVerse = false;
 const listeners = new Set<SoundscapeListener>();
 
 let state: SoundscapeState = {
@@ -92,6 +98,7 @@ let state: SoundscapeState = {
   volume: 0.65,
   isMuted: false,
   bowlIntervalSeconds: 0,
+  continuousParayana: false,
   currentVerseSanskrit: undefined,
   currentVerseReference: undefined,
 };
@@ -117,6 +124,44 @@ if (typeof window !== 'undefined') {
         state.bowlIntervalSeconds = parsedInterval;
       }
     }
+    const savedParayana = localStorage.getItem(STORAGE_PARAYANA);
+    if (savedParayana !== null) {
+      state.continuousParayana = savedParayana === 'true';
+    }
+  } catch {}
+}
+
+function updateMediaSession() {
+  if (typeof navigator === 'undefined' || !('mediaSession' in navigator)) return;
+  try {
+    const trackDef = SOUNDSCAPE_TRACKS.find((t) => t.id === state.activeTrack);
+    const title = state.currentVerseReference
+      ? `${state.currentVerseReference} · ${trackDef?.hindiTitle || 'पवित्र ध्वनि'}`
+      : `${trackDef?.hindiTitle || 'वैदिक नाद'} · ${trackDef?.title || 'Sacred Sound'}`;
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title,
+      artist: 'Dharma Granth · धर्म ग्रंथ',
+      album: 'सनातन ज्ञान एवं नादानुसन्धान · Sacred Sound',
+      artwork: [
+        { src: '/icons/icon-32.png', sizes: '32x32', type: 'image/png' },
+      ],
+    });
+
+    navigator.mediaSession.playbackState = state.isPlaying ? 'playing' : 'paused';
+
+    navigator.mediaSession.setActionHandler('play', () => {
+      startSoundscape();
+    });
+    navigator.mediaSession.setActionHandler('pause', () => {
+      stopSoundscape();
+    });
+    navigator.mediaSession.setActionHandler('previoustrack', () => {
+      window.dispatchEvent(new CustomEvent('dharma:verse-prev'));
+    });
+    navigator.mediaSession.setActionHandler('nexttrack', () => {
+      window.dispatchEvent(new CustomEvent('dharma:verse-next'));
+    });
   } catch {}
 }
 
@@ -127,6 +172,7 @@ function notify() {
       fn(currentSnapshot);
     } catch {}
   });
+  updateMediaSession();
 }
 
 function getAudioContext(): AudioContext | null {
@@ -157,6 +203,39 @@ function stopSynthesizer() {
     } catch {}
   });
   activeOscillators = [];
+}
+
+/**
+ * Procedural Wooden Bead Click impulse for Japa Mala Counter
+ */
+export function playBeadTick() {
+  const ctx = getAudioContext();
+  if (!ctx) return;
+
+  try {
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const filter = ctx.createBiquadFilter();
+
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(340, now);
+    osc.frequency.exponentialRampToValueAtTime(140, now + 0.035);
+
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(1200, now);
+
+    const effVol = state.isMuted ? 0 : state.volume;
+    gain.gain.setValueAtTime(effVol * 0.45, now);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.035);
+
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.04);
+  } catch {}
 }
 
 /**
@@ -205,6 +284,17 @@ export function chimeSingingBowl(pitch: number = 432) {
     }, 5000);
   } catch (err) {
     console.warn('[SacredSoundscape] Chime error:', err);
+  }
+}
+
+/**
+ * Strike temple bell multiple times (e.g. 1 for start, 3 for completion)
+ */
+export function strikeTempleBell(count: number = 1) {
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      chimeSingingBowl(432);
+    }, i * 1600);
   }
 }
 
@@ -285,28 +375,105 @@ function startSynthesizer(trackId: SoundscapeTrackId, vol: number) {
   }
 }
 
+/**
+ * Check if browser has an installed Devanagari / Hindi / Indian voice
+ */
+export function hasDevanagariVoice(): boolean {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) return false;
+  const voices = window.speechSynthesis.getVoices();
+  return voices.some((v) => v.lang.includes('hi') || v.lang.includes('sa') || v.lang.includes('IN'));
+}
+
+/**
+ * Speak individual Sanskrit word clearly at custom rate
+ */
+export function speakSanskritTerm(word: string, rate: number = 0.85) {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+  try {
+    window.speechSynthesis.cancel();
+    const cleanWord = word.replace(/[।॥,;.!?]/g, '').trim();
+    if (!cleanWord) return;
+
+    const utt = new SpeechSynthesisUtterance(cleanWord);
+    utt.lang = 'hi-IN';
+    utt.rate = rate;
+    utt.pitch = 0.95;
+
+    const voices = window.speechSynthesis.getVoices();
+    const sanskritVoice =
+      voices.find((v) => v.lang.includes('hi') || v.lang.includes('sa')) ||
+      voices.find((v) => v.lang.includes('IN'));
+    if (sanskritVoice) utt.voice = sanskritVoice;
+
+    window.speechSynthesis.speak(utt);
+  } catch {}
+}
+
+/**
+ * Speak Sanskrit Verse chunked by dandas (। / ॥) to avoid Chrome 15s pause bug
+ */
 function speakCurrentVerse(text?: string) {
   if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
-  if (!text) return;
+  speechUtteranceQueue = [];
+  if (!text) {
+    isSpeakingVerse = false;
+    return;
+  }
 
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'hi-IN';
-  utterance.rate = 0.85;
-  utterance.pitch = 0.95;
+  isSpeakingVerse = true;
+
+  // Split into manageable phrases by danda or newline
+  const chunks = text
+    .split(/(?<=[।॥\n])/)
+    .map((c) => c.trim())
+    .filter((c) => c.length > 0);
+
+  if (chunks.length === 0) {
+    isSpeakingVerse = false;
+    return;
+  }
 
   const voices = window.speechSynthesis.getVoices();
   const sanskritVoice =
     voices.find((v) => v.lang.includes('hi') || v.lang.includes('sa')) ||
     voices.find((v) => v.lang.includes('IN'));
-  if (sanskritVoice) utterance.voice = sanskritVoice;
 
-  utterance.onend = () => {
-    state.isPlaying = false;
-    notify();
-  };
+  chunks.forEach((chunk, index) => {
+    const utt = new SpeechSynthesisUtterance(chunk);
+    utt.lang = 'hi-IN';
+    utt.rate = 0.82; // Serene recitation cadence
+    utt.pitch = 0.95;
+    if (sanskritVoice) utt.voice = sanskritVoice;
 
-  window.speechSynthesis.speak(utterance);
+    if (index === chunks.length - 1) {
+      utt.onend = () => {
+        isSpeakingVerse = false;
+        if (!state.continuousParayana) {
+          state.isPlaying = false;
+        }
+        notify();
+        // Dispatch recitation-ended for continuous chapter parayana
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(
+            new CustomEvent('dharma:recitation-ended', {
+              detail: { reference: state.currentVerseReference },
+            })
+          );
+        }
+      };
+      utt.onerror = () => {
+        isSpeakingVerse = false;
+        state.isPlaying = false;
+        notify();
+      };
+    }
+
+    speechUtteranceQueue.push(utt);
+  });
+
+  // Speak first chunk; chaining happens naturally in SpeechSynthesis queue
+  speechUtteranceQueue.forEach((u) => window.speechSynthesis.speak(u));
 }
 
 // Public API
@@ -355,6 +522,7 @@ export function startSoundscape(track?: SoundscapeTrackId) {
 
 export function stopSoundscape() {
   state.isPlaying = false;
+  isSpeakingVerse = false;
   if (typeof window !== 'undefined') {
     try {
       localStorage.setItem(STORAGE_ACTIVE, 'false');
@@ -452,8 +620,48 @@ export function setSoundscapeBowlInterval(seconds: number) {
   notify();
 }
 
+export function setContinuousParayana(enabled: boolean) {
+  state.continuousParayana = enabled;
+  if (typeof window !== 'undefined') {
+    try {
+      localStorage.setItem(STORAGE_PARAYANA, String(enabled));
+    } catch {}
+  }
+  notify();
+}
+
 export function setCurrentVerseContext(sanskrit?: string, reference?: string) {
   state.currentVerseSanskrit = sanskrit;
   state.currentVerseReference = reference;
+  if (state.isPlaying && state.activeTrack === 'recitation' && sanskrit) {
+    speakCurrentVerse(sanskrit);
+  }
   notify();
+}
+
+/**
+ * Start or stop ambient drone for meditation sessions with smooth gain ramp
+ */
+export function startMeditationDrone(mode: 'tanpura' | 'om' | 'flute' | 'silent') {
+  if (mode === 'silent') {
+    stopSynthesizer();
+    return;
+  }
+  startSynthesizer(mode, state.isMuted ? 0 : state.volume);
+}
+
+export function stopMeditationDrone() {
+  const ctx = getAudioContext();
+  if (masterGain && ctx) {
+    try {
+      const now = ctx.currentTime;
+      masterGain.gain.cancelScheduledValues(now);
+      masterGain.gain.linearRampToValueAtTime(0.0001, now + 1.2);
+      setTimeout(() => {
+        stopSynthesizer();
+      }, 1300);
+      return;
+    } catch {}
+  }
+  stopSynthesizer();
 }

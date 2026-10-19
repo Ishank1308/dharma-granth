@@ -88,7 +88,11 @@ function findVerse(scriptureId: string, chapterId: number, verseId: string) {
   const seeded = loadChapter(scriptureId, chapterId);
   if (!seeded) return null;
   const verses = seeded.chapter.verses as SeedVerse[];
-  const index = verses.findIndex((verse) => verseSlug(verse.number) === verseId);
+  const decoded = decodeURIComponent(verseId).trim();
+  const index = verses.findIndex((verse) => {
+    const slug = verseSlug(verse.number);
+    return slug === verseId || slug === decoded || String(verse.number).trim() === decoded;
+  });
   if (index < 0) return null;
   return { seeded, verses, index, verse: verses[index] };
 }
@@ -241,7 +245,8 @@ export default function VersePage({ params }: PageProps) {
   const lesson = comment?.lifeLesson ?? verse.lifeLesson;
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in';
-  const pageUrl = `${siteUrl}${versePageHref(meta.id, chapterId, params.verseId)}/`;
+  const verseHref = versePageHref(meta.id, chapterId, params.verseId) ?? '';
+  const pageUrl = `${siteUrl}${verseHref.endsWith('/') ? verseHref : `${verseHref}/`}`;
   const ref = `${meta.title} ${chapterId}.${params.verseId}`;
   const hindi = plain(verse.hindi, 600);
   const english = plain(verse.translation, 600);

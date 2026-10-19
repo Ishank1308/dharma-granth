@@ -141,6 +141,7 @@ interface DrawerItem {
 
 function SoundscapeNavButton({ className = '' }: { className?: string }) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     return subscribeSoundscape((st) => {
@@ -166,11 +167,15 @@ function SoundscapeNavButton({ className = '' }: { className?: string }) {
       title={isPlaying ? 'पवित्र ध्वनि: चालू (Tap to pause)' : 'पवित्र ध्वनि: 432Hz तन्पूरा व ॐ ध्यान'}
     >
       {isPlaying ? (
-        <span className="flex items-center gap-0.5 px-0.5">
-          <span className="inline-block h-3 w-0.5 rounded-full bg-amber-500 animate-pulse" />
-          <span className="inline-block h-4 w-0.5 rounded-full bg-amber-500 animate-pulse [animation-delay:150ms]" />
-          <span className="inline-block h-2.5 w-0.5 rounded-full bg-amber-500 animate-pulse [animation-delay:300ms]" />
-        </span>
+        shouldReduceMotion ? (
+          <span className="h-2.5 w-2.5 rounded-full bg-amber-500 ring-2 ring-amber-400/40" />
+        ) : (
+          <span className="flex items-center gap-0.5 px-0.5">
+            <span className="inline-block h-3 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none" />
+            <span className="inline-block h-4 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none [animation-delay:150ms]" />
+            <span className="inline-block h-2.5 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none [animation-delay:300ms]" />
+          </span>
+        )
       ) : (
         <Radio className="h-4 w-4" aria-hidden="true" />
       )}

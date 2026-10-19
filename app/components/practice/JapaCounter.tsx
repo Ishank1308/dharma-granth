@@ -17,6 +17,7 @@ import {
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { ToolCard, localISODate } from './shared';
 import { triggerTactileFeedback, playSoundEffect, triggerHaptic } from '@/lib/haptics';
+import { playBeadTick, strikeTempleBell } from '@/lib/sacred-soundscape';
 
 interface JapaState {
   /** Local ISO day the count belongs to. */
@@ -109,7 +110,7 @@ export function JapaCounter() {
 
       if (isComplete) {
         // Mala Completed! Celestial Chime + Celebratory vibration pattern
-        if (soundEnabled) playSoundEffect('templeChime');
+        if (soundEnabled) strikeTempleBell(1);
         if (vibrationEnabled) triggerHaptic('celestial');
         setCelebration(true);
         setTimeout(() => setCelebration(false), 2400);
@@ -123,7 +124,7 @@ export function JapaCounter() {
       }
 
       // Standard bead tap: physical bead click + haptic bump
-      if (soundEnabled) playSoundEffect('malaBead');
+      if (soundEnabled) playBeadTick();
       if (vibrationEnabled) triggerHaptic('malaBead');
       return { ...prev, date: today, count: c + 1, rounds: r };
     });

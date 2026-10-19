@@ -1,14 +1,17 @@
 'use client';
 
 import { useEffect, useRef, useState, type ComponentType } from 'react';
+import { Sparkles } from 'lucide-react';
+import { triggerTactileFeedback } from '@/lib/haptics';
 
 /**
- * Persistent library guide. The verse index loads only after the button is
- * opened, so the first page does not carry that data.
+ * Persistent Dharma Copilot AI Guide.
+ * The modal code & knowledge base are dynamically imported on first tap,
+ * keeping initial page bundle minimal and fast.
  */
 export function DharmaCopilot() {
   const [open, setOpen] = useState(false);
-  const [Panel, setPanel] = useState<ComponentType<{ onClose: () => void }> | null>(null);
+  const [Modal, setModal] = useState<ComponentType<{ isOpen: boolean; onClose: () => void }> | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const wasOpen = useRef(false);
 
@@ -18,13 +21,14 @@ export function DharmaCopilot() {
   }, [open]);
 
   const toggle = async () => {
+    triggerTactileFeedback('selection', 'softTap');
     if (open) {
       setOpen(false);
       return;
     }
-    if (!Panel) {
-      const loaded = await import('./copilot/CopilotPanel');
-      setPanel(() => loaded.CopilotPanel);
+    if (!Modal) {
+      const loaded = await import('./copilot/DharmaCopilotModal');
+      setModal(() => loaded.DharmaCopilotModal);
     }
     setOpen(true);
   };
@@ -37,11 +41,14 @@ export function DharmaCopilot() {
         aria-expanded={open}
         aria-haspopup="dialog"
         onClick={() => { void toggle(); }}
-        className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] right-3 z-40 inline-flex min-h-11 items-center rounded-full border border-dharma-border bg-dharma-card px-4 font-semibold text-dharma-text shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dharma-maroon md:bottom-5 md:right-5"
+        className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] right-3 z-40 inline-flex min-h-11 items-center gap-2 rounded-full border border-amber-400/40 bg-stone-900/90 px-4 py-2 text-xs sm:text-sm font-bold text-amber-200 shadow-xl backdrop-blur-xl transition-all hover:border-amber-300 hover:scale-105 active:scale-95 md:bottom-20 md:right-6"
+        title="Dharma Copilot AI · धर्म सहायक"
+        aria-label="Open Dharma Copilot AI"
       >
-        <span lang="hi">धर्म सहायक</span>
+        <Sparkles className="h-4 w-4 text-amber-300 animate-pulse" />
+        <span lang="hi" className="font-devanagari">धर्म सहायक</span>
       </button>
-      {open && Panel && <Panel onClose={() => setOpen(false)} />}
+      {open && Modal && <Modal isOpen={open} onClose={() => setOpen(false)} />}
     </div>
   );
 }

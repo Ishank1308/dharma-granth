@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
   Play,
   Pause,
@@ -17,6 +17,8 @@ import {
   ChevronDown,
   Radio,
   Timer,
+  Repeat,
+  AlertCircle,
 } from 'lucide-react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import {
@@ -29,6 +31,8 @@ import {
   setSoundscapeVolume,
   toggleSoundscapeMute,
   setSoundscapeBowlInterval,
+  setContinuousParayana,
+  hasDevanagariVoice,
   chimeSingingBowl,
   setCurrentVerseContext,
   getSoundscapeState,
@@ -57,6 +61,9 @@ interface SacredAudioPlayerProps {
 export function SacredAudioPlayer({ currentVerseSanskrit, reference }: SacredAudioPlayerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [soundState, setSoundState] = useState<SoundscapeState>(getSoundscapeState);
+  const [ttsAvailable, setTtsAvailable] = useState(true);
+  const [statusMessage, setStatusMessage] = useState('');
+  const shouldReduceMotion = useReducedMotion();
 
   // Sync with persistent soundscape engine singleton
   useEffect(() => {
@@ -65,6 +72,31 @@ export function SacredAudioPlayer({ currentVerseSanskrit, reference }: SacredAud
     });
     return () => unsubscribe();
   }, []);
+
+  // Check TTS voice availability
+  useEffect(() => {
+    setTtsAvailable(hasDevanagariVoice());
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      const handleVoicesChanged = () => {
+        setTtsAvailable(hasDevanagariVoice());
+      };
+      window.speechSynthesis.addEventListener('voiceschanged', handleVoicesChanged);
+      return () => {
+        window.speechSynthesis.removeEventListener('voiceschanged', handleVoicesChanged);
+      };
+    }
+  }, []);
+
+  // Accessible aria-live status announcement
+  useEffect(() => {
+    const meta = SOUNDSCAPE_TRACKS.find((t) => t.id === soundState.activeTrack);
+    const trackName = meta?.hindiTitle || meta?.title || '';
+    if (soundState.isPlaying) {
+      setStatusMessage(`पवित्र ध्वनि सक्रिय: ${trackName}`);
+    } else {
+      setStatusMessage('पवित्र ध्वनि बंद की गई');
+    }
+  }, [soundState.isPlaying, soundState.activeTrack]);
 
   // Update current verse context if passed
   useEffect(() => {
@@ -100,6 +132,11 @@ export function SacredAudioPlayer({ currentVerseSanskrit, reference }: SacredAud
   const handleManualChime = () => {
     triggerTactileFeedback('celestial', 'templeChime');
     chimeSingingBowl(432);
+  };
+
+  const handleToggleContinuous = () => {
+    triggerTactileFeedback('selection', 'softTap');
+    setContinuousParayana(!soundState.continuousParayana);
   };
 
   const currentTrackMeta =
@@ -173,21 +210,65 @@ export function SacredAudioPlayer({ currentVerseSanskrit, reference }: SacredAud
                         </div>
                       </div>
                       {isCur && soundState.isPlaying && (
-                        <span className="flex items-center gap-0.5">
-                          {[0, 1, 2].map((i) => (
-                            <motion.span
-                              key={i}
-                              animate={{ scaleY: [0.3, 1.2, 0.3] }}
-                              transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.15 }}
-                              className="h-3.5 w-1 rounded-full bg-amber-400"
-                            />
-                          ))}
-                        </span>
+                        shouldReduceMotion ? (
+                          <span className="h-2.5 w-2.5 rounded-full bg-amber-400 ring-2 ring-amber-400/40" />
+                        ) : (
+                          <span className="flex items-center gap-0.5">
+                            {[0, 1, 2].map((i) => (
+                              <motion.span
+                                key={i}
+                                animate={{ scaleY: [0.3, 1.2, 0.3] }}
+                                transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.15 }}
+                                className="h-3.5 w-1 rounded-full bg-amber-400"
+                              />
+                            ))}
+                          </span>
+                        )
                       )}
                     </button>
                   );
                 })}
               </div>
+
+              {/* Continuous Recitation Option when Recitation Track is Active */}
+              {soundState.activeTrack === 'recitation' && (
+                <div className="my-2.5 rounded-2xl bg-amber-500/10 p-3 border border-amber-500/30">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Repeat className="h-4 w-4 text-amber-400 shrink-0" />
+                      <div>
+                        <p className="text-xs font-semibold text-amber-100">निरंतर पाठ · Continuous Recitation</p>
+                        <p className="text-2xs text-stone-400">श्लोक समाप्ति पर 2.5s विराम के बाद स्वतः अगला श्लोक</p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={soundState.continuousParayana}
+                      onClick={handleToggleContinuous}
+                      className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                        soundState.continuousParayana ? 'bg-amber-400' : 'bg-stone-700'
+                      }`}
+                      aria-label="Toggle continuous recitation"
+                    >
+                      <span
+                        className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-stone-900 shadow ring-0 transition duration-200 ease-in-out ${
+                          soundState.continuousParayana ? 'translate-x-5' : 'translate-x-0'
+                        }`}
+                      />
+                    </button>
+                  </div>
+
+                  {!ttsAvailable && (
+                    <div className="mt-2.5 flex items-start gap-1.5 rounded-xl bg-amber-950/40 border border-amber-600/40 p-2 text-2xs text-amber-200">
+                      <AlertCircle className="h-3.5 w-3.5 text-amber-400 shrink-0 mt-0.5" />
+                      <p>
+                        ब्राउज़र में देवनागरी स्वर (Devanagari TTS voice) नहीं मिला। स्पष्ट उच्चारण हेतु सिस्टम में Hindi/Sanskrit voice सक्षम करें।
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Periodic Singing Bowl / Mindfulness Bell Selector */}
               <div className="my-3 rounded-2xl bg-stone-950/50 p-3 border border-stone-800/70">
@@ -306,6 +387,11 @@ export function SacredAudioPlayer({ currentVerseSanskrit, reference }: SacredAud
             </div>
           </button>
         </motion.div>
+
+        {/* Screen Reader Live Status Region */}
+        <div className="sr-only" aria-live="polite" role="status">
+          {statusMessage}
+        </div>
       </aside>
     </>
   );

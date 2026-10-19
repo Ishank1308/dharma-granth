@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
   Timer,
@@ -13,11 +13,11 @@ import {
   Wind,
   CheckCircle2,
   Sparkles,
-  StopCircle,
 } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { ToolCard, localISODate } from './shared';
-import { playSoundEffect, triggerHaptic } from '@/lib/haptics';
+import { triggerHaptic } from '@/lib/haptics';
+import { strikeTempleBell, startMeditationDrone, stopMeditationDrone } from '@/lib/sacred-soundscape';
 
 interface MeditationStats {
   /** Completed sessions, all time. */
@@ -30,6 +30,13 @@ interface MeditationStats {
 
 const PRESETS = [5, 10, 15, 20, 30];
 
+const AMBIENT_OPTIONS: Array<{ id: 'tanpura' | 'om' | 'flute' | 'silent'; label: string; icon: string }> = [
+  { id: 'tanpura', label: 'तन्पूरा · 432Hz', icon: '🎶' },
+  { id: 'om', label: 'प्रणव ॐ · 108Hz', icon: '🕉️' },
+  { id: 'flute', label: 'वेणु · Flute', icon: '🌊' },
+  { id: 'silent', label: 'मौन · Silent', icon: '🔕' },
+];
+
 const CONTEMPLATION_QUOTES = [
   { sa: 'शान्तं शिवमद्वैतम्', en: 'Peaceful, auspicious, and non-dual is the Self.', src: 'Mandukya Upanishad' },
   { sa: 'प्रशान्तमनसं ह्येनं योगिनं सुखमुत्तमम्', en: 'Supreme joy comes to the yogi whose mind is peaceful.', src: 'Bhagavad Gita 6.27' },
@@ -39,7 +46,7 @@ const CONTEMPLATION_QUOTES = [
 
 /**
  * Peaceful countdown meditation timer with gentle beginning & ending sounds,
- * custom duration, breath guiding visualization, and session summary.
+ * custom duration, ambient soundscapes, wake-lock, and session summary.
  */
 export function MeditationTimer() {
   const [stats, setStats] = useLocalStorage<MeditationStats>('dharma.practice.meditation', {
@@ -49,6 +56,10 @@ export function MeditationTimer() {
   const [soundEnabled, setSoundEnabled] = useLocalStorage<boolean>(
     'dharma.practice.meditation.sound',
     true,
+  );
+  const [ambientMode, setAmbientMode] = useLocalStorage<'tanpura' | 'om' | 'flute' | 'silent'>(
+    'dharma.practice.meditation.drone',
+    'tanpura',
   );
   const [reducedMotionManual, setReducedMotionManual] = useLocalStorage<boolean>(
     'dharma.practice.meditation.reduced_motion',
@@ -68,6 +79,30 @@ export function MeditationTimer() {
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const endTimeRef = useRef<number | null>(null);
+  const wakeLockRef = useRef<WakeLockSentinel | null>(null);
+  const secondsLeftRef = useRef(secondsLeft);
+  secondsLeftRef.current = secondsLeft;
+
+  const releaseWakeLock = useCallback(async () => {
+    if (wakeLockRef.current) {
+      try {
+        await wakeLockRef.current.release();
+      } catch {}
+      wakeLockRef.current = null;
+    }
+  }, []);
+
+  const requestWakeLock = useCallback(async () => {
+    if (typeof navigator !== 'undefined' && 'wakeLock' in navigator) {
+      try {
+        const sentinel = await navigator.wakeLock.request('screen');
+        wakeLockRef.current = sentinel;
+        sentinel.addEventListener('release', () => {
+          wakeLockRef.current = null;
+        });
+      } catch {}
+    }
+  }, []);
 
   // Tick while running; calculate delta timestamp so background tabs never drift.
   useEffect(() => {
@@ -78,7 +113,7 @@ export function MeditationTimer() {
     }
 
     if (!endTimeRef.current) {
-      endTimeRef.current = Date.now() + secondsLeft * 1000;
+      endTimeRef.current = Date.now() + secondsLeftRef.current * 1000;
     }
 
     const checkTime = () => {
@@ -92,7 +127,9 @@ export function MeditationTimer() {
         setDone(true);
         endTimeRef.current = null;
         const today = localISODate();
-        if (soundEnabled) playSoundEffect('templeChime');
+        stopMeditationDrone();
+        releaseWakeLock();
+        if (soundEnabled) strikeTempleBell(3); // 3 resonant completion chimes
         triggerHaptic('success');
         setSummaryQuote(CONTEMPLATION_QUOTES[Math.floor(Math.random() * CONTEMPLATION_QUOTES.length)]);
 
@@ -121,7 +158,15 @@ export function MeditationTimer() {
       if (intervalRef.current) clearInterval(intervalRef.current);
       document.removeEventListener('visibilitychange', handleVisibility);
     };
-  }, [running, minutes, soundEnabled, setStats]);
+  }, [running, minutes, soundEnabled, setStats, releaseWakeLock]);
+
+  // Clean up wake lock and audio synthesizer on unmount
+  useEffect(() => {
+    return () => {
+      stopMeditationDrone();
+      releaseWakeLock();
+    };
+  }, [releaseWakeLock]);
 
   function pick(m: number) {
     setMinutes(m);
@@ -130,6 +175,8 @@ export function MeditationTimer() {
     setRunning(false);
     setDone(false);
     setShowCustomInput(false);
+    stopMeditationDrone();
+    releaseWakeLock();
   }
 
   function applyCustom() {
@@ -140,14 +187,18 @@ export function MeditationTimer() {
   }
 
   function handleStart() {
-    if (soundEnabled) playSoundEffect('omBowl');
     triggerHaptic('medium');
+    if (soundEnabled) strikeTempleBell(1); // Single sacred initial strike
+    if (ambientMode !== 'silent') startMeditationDrone(ambientMode);
+    requestWakeLock();
     endTimeRef.current = Date.now() + secondsLeft * 1000;
     setRunning(true);
   }
 
   function handlePause() {
     triggerHaptic('light');
+    stopMeditationDrone();
+    releaseWakeLock();
     if (endTimeRef.current) {
       const rem = Math.max(0, Math.round((endTimeRef.current - Date.now()) / 1000));
       setSecondsLeft(rem);
@@ -157,6 +208,8 @@ export function MeditationTimer() {
   }
 
   function reset() {
+    stopMeditationDrone();
+    releaseWakeLock();
     setSecondsLeft(minutes * 60);
     endTimeRef.current = null;
     setRunning(false);
@@ -253,6 +306,35 @@ export function MeditationTimer() {
           )}
         </AnimatePresence>
 
+        {/* Ambient Drone Mode Selector */}
+        {!running && !done && (
+          <div className="w-full rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/60 p-2.5 text-xs">
+            <span className="block text-[11px] font-semibold text-dharma-muted mb-1.5 text-center">
+              पृष्ठभूमि ध्वनि · Ambient Drone
+            </span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+              {AMBIENT_OPTIONS.map((opt) => {
+                const isCur = ambientMode === opt.id;
+                return (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    onClick={() => setAmbientMode(opt.id)}
+                    className={`flex items-center justify-center gap-1 py-1 px-2 rounded-lg text-2xs font-semibold transition ${
+                      isCur
+                        ? 'bg-indigo-600 text-white shadow-xs'
+                        : 'border border-dharma-border/80 text-dharma-muted hover:border-indigo-400 hover:text-dharma-text'
+                    }`}
+                  >
+                    <span>{opt.icon}</span>
+                    <span className="truncate">{opt.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* Presets */}
         {!running && !done && (
           <div className="flex flex-wrap justify-center gap-2">
@@ -279,24 +361,32 @@ export function MeditationTimer() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="w-full py-5 px-4 rounded-2xl bg-indigo-50/80 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/40 text-center space-y-3"
+            className="flex flex-col items-center justify-center gap-3 p-4 bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/50 rounded-2xl w-full text-center"
           >
-            <div className="flex items-center justify-center gap-1.5 text-indigo-700 dark:text-indigo-300 font-bold text-sm">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-              <span>सत्र पूर्ण · Session Complete</span>
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400">
+              <CheckCircle2 className="w-5 h-5" />
             </div>
 
-            <div className="py-1">
-              <span lang="sa" className="font-devanagari text-2xl font-bold text-dharma-text block">
-                {summaryQuote.sa}
-              </span>
-              <p className="text-xs text-dharma-muted mt-1 italic">
-                “{summaryQuote.en}” — {summaryQuote.src}
+            <div>
+              <h4 className="font-serif text-base font-bold text-dharma-text">
+                सत्र पूर्ण · Session Complete
+              </h4>
+              <p className="text-xs text-dharma-muted mt-0.5">
+                आपने {minutes} मिनट का ध्यान पूर्ण किया।
               </p>
             </div>
 
-            <div className="text-xs text-dharma-muted bg-white/70 dark:bg-stone-900/50 py-1.5 px-3 rounded-xl border border-indigo-100 dark:border-indigo-900/20 inline-block">
-              आज ध्यान: <strong className="text-dharma-text font-bold">{minutes} मिनट</strong> · कुल सत्र: {stats.sessions}
+            {/* Contemplation quote */}
+            <div className="border-t border-indigo-200/60 dark:border-indigo-900/40 pt-2.5 mt-1 w-full">
+              <p className="font-devanagari text-sm font-semibold text-indigo-900 dark:text-indigo-200">
+                « {summaryQuote.sa} »
+              </p>
+              <p className="text-xs text-dharma-muted mt-0.5 italic">
+                {summaryQuote.en}
+              </p>
+              <span className="text-[10px] text-indigo-600/70 dark:text-indigo-400/70 mt-1 block">
+                — {summaryQuote.src}
+              </span>
             </div>
 
             <div className="pt-2">

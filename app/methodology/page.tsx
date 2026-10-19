@@ -54,6 +54,7 @@ export default function MethodologyPage() {
               ['ai', 'AI assistance'],
               ['review', 'Human review'],
               ['corrections', 'Corrections'],
+              ['audio', 'Audio & soundscape architecture'],
             ].map(([id, label]) => (
               <li key={id}>
                 <a href={`#${id}`} className="focus-ring inline-flex min-h-[44px] items-center text-saffron-800 hover:underline dark:text-saffron-300">
@@ -136,6 +137,15 @@ export default function MethodologyPage() {
           The site has no separate version log. Every change to texts, translations and explanations is recorded, with its date, in the public
           project repository history, which is the authoritative record. Pages that carry an editorial explanation show its last-updated date where
           one is recorded.
+        </p>
+
+        <h2 id="audio" className={h2}>10. Audio and soundscape architecture</h2>
+        <p className={p}>
+          Dharma Granth includes no network audio streaming, zero audio tracking, and no external audio hosting dependencies.
+          Contemplative ambient soundscapes (Vedic Tanpura, Pranava Om, Bansuri Flute, Temple Singing Bowl) are generated procedurally in the user’s
+          browser using the Web Audio API based on mathematical harmonic ratios (432Hz and 108Hz overtone series). Sanskrit verse recitation
+          and word-by-word pronunciation use the client-side Web Speech API (with Devanagari voice detection) strictly as an accessibility and
+          phonetic pronunciation aid, chunked metric-by-metric by dandas (। / ॥) to maintain sacred cadence.
         </p>
 
         <p className="mt-10 text-sm text-dharma-muted">

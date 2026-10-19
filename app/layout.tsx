@@ -5,13 +5,22 @@ import { publishedTotals } from "@/lib/ashtavakra";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
+import dynamic from "next/dynamic";
 import { FloatingCompanion } from "@/app/components/FloatingCompanion";
-import { DharmaCopilot } from "@/app/components/DharmaCopilot";
 import { TactileLayer } from "@/app/components/TactileLayer";
 import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
-import { SacredAudioPlayer } from "@/app/components/reader/SacredAudioPlayer";
+
+const DharmaCopilot = dynamic(
+  () => import("@/app/components/DharmaCopilot").then((m) => m.DharmaCopilot),
+  { ssr: false }
+);
+
+const SacredAudioPlayer = dynamic(
+  () => import("@/app/components/reader/SacredAudioPlayer").then((m) => m.SacredAudioPlayer),
+  { ssr: false }
+);
 // Font subsetting: Bundling only required weights (400, 600, 700) and critical
 // styles; unused weights (300, 500, 300-italic, 700-italic) are omitted to reduce bundle size.
 import "@fontsource/inter/latin-400.css";

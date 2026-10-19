@@ -99,6 +99,17 @@ export default function SourcesPage() {
               </p>
             </div>
           </div>
+
+          {/* Soundscape & Audio Epistemic Transparency */}
+          <div className="mt-4 rounded-2xl border border-amber-600/30 bg-amber-500/10 p-4 text-xs">
+            <div className="flex items-center gap-1.5 font-bold uppercase tracking-wide text-amber-900 dark:text-amber-200">
+              <Sparkles className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+              <span>Acoustic & Audio Engine Transparency · ध्वनि एवं उच्चारण वास्तुकला</span>
+            </div>
+            <p className="mt-2 text-dharma-text/90 leading-relaxed">
+              Dharma Granth provides 100% offline, client-side procedural soundscapes and recitation aids. Contemplative ambient soundscapes (<code className="font-mono text-2xs bg-dharma-bg px-1 py-0.5 rounded">tanpura</code>, <code className="font-mono text-2xs bg-dharma-bg px-1 py-0.5 rounded">om</code>, <code className="font-mono text-2xs bg-dharma-bg px-1 py-0.5 rounded">flute</code>, <code className="font-mono text-2xs bg-dharma-bg px-1 py-0.5 rounded">temple_bell</code>) are generated via pure mathematical Web Audio API acoustic synthesis using 432Hz/108Hz harmonic overtone ratios—zero network streaming and zero tracking. Sanskrit verse and single-word recitation (<code className="font-mono text-2xs bg-dharma-bg px-1 py-0.5 rounded">recitation</code>) utilizes client-side Devanagari speech synthesis as an accessibility and pronunciation aid, chunked metric-by-metric by dandas (। / ॥).
+            </p>
+          </div>
         </div>
       </section>
 
