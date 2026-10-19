@@ -95,6 +95,41 @@ datasets, Sanskrit or IAST fields, source citations, Phase 7 editorial data,
 homepage presentation, verse presentation, Story Deck, Mood Compass, Patrika
 Studio, shared visual tokens, theme CSS, or motion utilities.
 
+## Integration-sensitive paths confirmed in the repository
+
+These paths exist in the present Phase 7 working directory and are protected
+integration surfaces even when they are not listed as modified by Git:
+
+```text
+app/bookmarks/layout.tsx
+app/bookmarks/page.tsx
+app/journal/JournalClient.tsx
+app/journal/page.tsx
+lib/ashtavakra-progress.ts
+lib/backup.ts
+lib/sadhana-backup.ts
+lib/useLanguagePreference.ts
+lib/useStudyProgress.ts
+public/sw.js
+```
+
+The search boundary includes `app/search-index/`,
+`app/components/AdvancedSearch.tsx`, `app/components/GlobalSearchModal.tsx`,
+`lib/search-*`, `lib/search.ts`, `lib/searchNormalizer.ts`,
+`lib/verse-search-data.ts`, and `lib/workers/search*`. Phase 8A must not add
+private notes, highlights, journal text, reading history, or preferences to
+public search indexes, generated search artifacts, or search-worker messages.
+
+The exact Story Deck and Patrika paths currently remain:
+
+```text
+app/components/reader/StoryDeckModal.tsx
+app/components/share/PatrikaShareStudioModal.tsx
+```
+
+Their untracked status in the Phase 7 checkout does not weaken the protection.
+Phase 8A must treat them as Phase 7-owned until post-Phase-7 integration begins.
+
 Before post-Phase-7 integration, regenerate this manifest from a fresh status
 check and review every intended shared-file edit against the completed Phase 7
 diff.
