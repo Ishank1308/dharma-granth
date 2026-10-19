@@ -824,10 +824,10 @@ export const scriptureCatalog: ScriptureMeta[] = [
     description:
       "The Vinaya Patrika ('Letter of Humility') — 279 lyrical petitions by Goswami Tulsidas in Brajbhasha, addressed to Ganesha, Shiva, the Sun, Yamuna, Ganga, Hanuman, and Rama. Written in Tulsidas's old age — the most personal and confessional of his works. Theological signature: patita-pavana — grace not on the basis of merit but on the basis of the Lord's own nature as refuge of the fallen. Ch1 Mangalacharana: invocations ('pahi pahi pahi' — protect me, remove man ko trasa). Ch2 Hanuman Stuti: 'apane bala bharoso nahi' — no trust in my own strength; shelter behind the Name alone. Ch3 Rama Petitions: 'mohi meti' — erase me; 'mere avaguna chitavahu nahi' — do not look at my faults, O kripasindhu. Ch4 Atmanivedana: 'moko kahan dhundhe re bande' — the divine you have been seeking has never moved; the arc of bhakti from petition to recognition. The supreme text of bhakti as complete vulnerability.",
     author: "Tulsidas",
-    totalChapters: 4,
-    totalVerses: 279,
+    totalChapters: 279,
+    totalVerses: 1483,
     isCurated: true,
-    canonicalTotalVerses: 279,
+    canonicalTotalVerses: 1483,
     tags: ["Bhakti","Tulsidas","Stotra","Petition","Rama","Hanuman","Surrender","Humility","Brajbhasha","PatitaPavana","Devotion","Confession"],
     hasData: true,
   },

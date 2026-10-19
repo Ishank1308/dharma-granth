@@ -334,6 +334,7 @@ const TARGETS: Record<string, Target> = {
   bhagavatapurana: { files: [], local: true, build: () => [], chapterUnit: "" },
   devibhagavat: { files: [], local: true, build: () => [], chapterUnit: "" },
   yogarasayanam: { files: [], local: true, build: () => [], chapterUnit: "" },
+  vinayapatrika: { files: [], local: true, build: () => [], chapterUnit: "" },
   shivasamhita: { files: ["https://sanskritdocuments.org/doc_shiva/shivasaMhitA.itx"], build: shivaSamhita, chapterUnit: "Paṭala" },
   shivaswarodaya: { files: [], local: true, build: () => [], chapterUnit: "" },
   shandilyabhaktisutra: { files: [], local: true, build: () => [], chapterUnit: "" },
