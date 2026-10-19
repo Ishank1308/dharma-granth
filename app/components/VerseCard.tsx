@@ -37,6 +37,8 @@ import { getVerseGraphicClass, getVerseGraphicStyle } from './verse-background';
 import { ContentLabelBadge } from './ContentLabels';
 import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
 import type { ReadingDepth } from '@/lib/reading-depth';
+import { ActionMenu } from '@/app/components/primitives/ActionMenu';
+import { Collapsible } from '@/app/components/primitives/Collapsible';
 import { StoryDeckModal } from '@/components/reader/StoryDeckModal';
 import { CitationModal } from '@/components/study/CitationModal';
 import { saveAnnotation, deleteAnnotation } from '@/lib/study/storage';
@@ -580,24 +582,6 @@ export function VerseCard({
             >
               <StickyNote className="h-4 w-4" />
             </button>
-            <button
-              type="button"
-              onClick={onCopy}
-              className={`${iconButton} ${copied ? '!border-emerald-300 !text-emerald-600' : ''}`}
-              aria-label={copied ? 'कॉपी हो गया (Copied)' : 'उद्धरण सहित कॉपी करें (Copy with citation)'}
-              title="कॉपी करें"
-            >
-              {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-            </button>
-            <button
-              type="button"
-              onClick={() => setCitationModalOpen(true)}
-              className={iconButton}
-              aria-label="शास्त्रीय उद्धरण (Scholarly Citation)"
-              title="शास्त्रीय उद्धरण (Scholarly Citation)"
-            >
-              <Quote className="h-4 w-4" />
-            </button>
             <span className="shrink-0 [&>button]:h-9 [&>button]:w-9">
               <ShareVerseButton
                 scriptureTitle={scriptureTitle}
@@ -611,40 +595,45 @@ export function VerseCard({
                 verseUrl={shareVerseUrl(SITE_URL, scriptureId, chapterId, v.number)}
               />
             </span>
-            {!chantingMode && (
-              <button
-                type="button"
-                onClick={() => setStoryDeckOpen(true)}
-                className="inline-flex h-9 items-center gap-1.5 rounded-full border border-amber-300/80 bg-amber-50/80 px-2.5 text-xs font-bold text-amber-900 transition hover:bg-amber-100 hover:border-amber-400 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200 cursor-pointer shadow-2xs"
-                aria-label="६०-सेकंड सार (5-Card Visual Story Deck)"
-                title="६०-सेकंड सार (5-Card Visual Story Deck)"
-              >
-                <Zap className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-                <span className="hidden sm:inline">६०-सेकंड सार</span>
-              </button>
-            )}
-            {onOpenFocus && (
-              <button
-                type="button"
-                onClick={onOpenFocus}
-                className={iconButton}
-                aria-label="एकाग्रता मोड में पढ़ें (Focus Mode)"
-                title="एकाग्रता मोड (Focus Mode)"
-              >
-                <Maximize2 className="h-4 w-4" />
-              </button>
-            )}
-            {!chantingMode && (
-              <button
-                type="button"
-                onClick={onContribute}
-                className={`${iconButton} hidden sm:inline-flex`}
-                aria-label="अर्थ जोड़ें या सुधारें (Contribute a meaning)"
-                title="योगदान करें"
-              >
-                <Edit3 className="h-4 w-4" />
-              </button>
-            )}
+            <ActionMenu
+              label="और विकल्प · More actions"
+              triggerClassName={iconButton}
+              items={[
+                {
+                  key: 'copy',
+                  label: copied ? 'कॉपी हो गया · Copied' : 'उद्धरण सहित कॉपी · Copy with citation',
+                  icon: copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />,
+                  onSelect: onCopy,
+                },
+                {
+                  key: 'citation',
+                  label: 'शास्त्रीय उद्धरण · Scholarly citation',
+                  icon: <Quote className="h-4 w-4" />,
+                  onSelect: () => setCitationModalOpen(true),
+                },
+                {
+                  key: 'story',
+                  label: '६०-सेकंड सार · 60-second summary',
+                  icon: <Zap className="h-4 w-4" />,
+                  onSelect: () => setStoryDeckOpen(true),
+                  hidden: chantingMode,
+                },
+                {
+                  key: 'focus',
+                  label: 'एकाग्रता मोड · Focus mode',
+                  icon: <Maximize2 className="h-4 w-4" />,
+                  onSelect: () => onOpenFocus?.(),
+                  hidden: !onOpenFocus,
+                },
+                {
+                  key: 'contribute',
+                  label: 'अर्थ जोड़ें या सुधारें · Suggest a correction',
+                  icon: <Edit3 className="h-4 w-4" />,
+                  onSelect: onContribute,
+                  hidden: chantingMode,
+                },
+              ]}
+            />
           </div>
         </header>
 
@@ -1091,7 +1080,7 @@ export function VerseCard({
 
             {/* ── What This Verse Does NOT Mean (भ्रम निवारण) ── */}
             {literaryMeta.isCurated && depth !== 'read' && (
-              <>
+              <Collapsible className="mt-4.5" title={<><span lang="hi" className="font-devanagari">सामान्य भ्रम और वास्तविक दृष्टि</span> · Common misreading</>}>
             <div className="mt-4.5 grid grid-cols-1 md:grid-cols-2 gap-3">
               {/* Misreading Box */}
               <div className="rounded-2xl border border-rose-200/80 bg-rose-50/60 p-4 dark:border-rose-900/40 dark:bg-rose-950/20 shadow-2xs">
@@ -1120,7 +1109,7 @@ export function VerseCard({
               </div>
             </div>
               <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">{literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}</p>
-              </>
+              </Collapsible>
             )}
 
             {depth === 'study' && v.keywords && v.keywords.length > 0 && (

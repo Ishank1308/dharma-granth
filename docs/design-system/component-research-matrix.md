@@ -52,3 +52,13 @@ Before any of these: measure first-load JS on `/` and on a chapter page with and
 
 - What is Antigravity changing? Two tools editing the same components will conflict; one should own `app/components/reader/*` and `VerseCard.tsx`.
 - Is a tablist (A) wanted for any reason other than looks? Replacing a correct control is churn.
+
+## Implemented from these recommendations (2026-10-19, branch feat/phase7-editorial)
+
+Built with native buttons and ARIA, **no new dependency**: installing Radix would have meant running `npm install` against a `node_modules` shared with other working sessions, and the behaviour needed here is small. Revisit Radix if these grow.
+
+- `app/components/primitives/ActionMenu.tsx`: "More actions" menu. `aria-haspopup`, `aria-expanded`, focus moves to the first item, ArrowUp/ArrowDown/Home/End, Escape returns focus to the trigger, Tab and outside click close, 44 px items, bottom sheet under `sm`, dropdown above. In the verse card it replaces five toolbar buttons (copy, citation, 60-second summary, focus mode, suggest a correction): the toolbar went from 10 buttons to 6.
+- `app/components/primitives/Collapsible.tsx`: single-level disclosure (`aria-expanded`, `aria-controls`, panel not rendered while closed, no height animation). Used for "Common misreading" on verses that have hand-written notes. The canonical passage is never inside one.
+- `app/components/primitives/StateMessage.tsx`: calm empty / problem message (`role="status"` or `role="alert"`). Created but not yet used on this branch.
+
+Verified in the browser (Gita chapter 2, desktop and 360 px): menu opens, arrow keys and Escape work, selecting "60-second summary" opens the Story Deck, Collapsible opens and shows its content, no horizontal overflow. Not verified: screen-reader announcements, 200% zoom, reduced motion, Save and Sources items (not in the menu yet).
