@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dharmagranth.in/schemas/granth-ocr-book.json",
+  "title": "Granth OCR book",
+  "type": "object",
+  "required": ["slug", "is_ai_assisted", "chapters", "verses"],
+  "additionalProperties": true,
+  "properties": {
+    "slug": { "type": "string" },
+    "source_pdf": { "type": "string" },
+    "is_ai_assisted": { "const": false },
+    "dpi": { "type": "integer" },
+    "chapters": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/chapter" }
+    },
+    "verses": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/verse" }
+    }
+  },
+  "$defs": {
+    "chapter": {
+      "type": "object",
+      "required": ["number", "title", "page_start", "page_end", "verse_count"],
+      "properties": {
+        "number": { "type": ["integer", "null"] },
+        "title": { "type": "string" },
+        "page_start": { "type": ["integer", "null"] },
+        "page_end": { "type": ["integer", "null"] },
+        "verse_count": { "type": "integer" },
+        "verses": { "type": "array" }
+      }
+    },
+    "verse": {
+      "type": "object",
+      "required": ["sanskrit_raw", "sanskrit_devanagari", "pdf_page", "is_ai_assisted"],
+      "properties": {
+        "chapter": { "type": ["integer", "null"] },
+        "verse": { "type": ["integer", "null"] },
+        "verse_number_raw": { "type": "string" },
+        "sanskrit_raw": { "type": "string" },
+        "sanskrit_devanagari": { "type": "string" },
+        "sanskrit_iast": { "type": "string" },
+        "bhashya_hi": { "type": "string" },
+        "english": { "type": "string" },
+        "padaccheda": { "type": "string" },
+        "pdf_page": { "type": ["integer", "null"] },
+        "engine": { "type": ["string", "null"] },
+        "confidence": { "type": ["number", "null"] },
+        "flags": { "type": "array", "items": { "type": "string" } },
+        "corrections": { "type": "array" },
+        "is_ai_assisted": { "const": false }
+      }
+    }
+  }
+}

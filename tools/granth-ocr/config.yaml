@@ -1,0 +1,33 @@
+# Offline scripture OCR. Paths come from TESSERACT_CMD and TESSDATA_DIR.
+dpi: 600
+low_memory_dpi: 300
+languages: san+hin
+oem: 1
+# adaptive: PSM 6 first; try 3, 4, and 11 only when confidence or page quality is low.
+# sweep: always run every mode in psm_modes (about four times slower).
+psm_strategy: adaptive
+psm_modes: [3, 4, 6, 11]
+primary_psm: 6
+confidence_threshold: 70
+quality_threshold: 0.35
+surya_enabled: true
+# Refuse network lookups. Download Surya weights once, then leave this true.
+surya_offline: true
+workers: 1
+batch_size: 1
+# auto switches to one worker and low_memory_dpi when RAM is under 8 GB.
+low_memory: auto
+keep_raw_images: true
+# Binarizing eats thin matras and Vedic svaras. Leave false for Tesseract.
+binarize: false
+orientation_correction: true
+osd_min_confidence: 15
+searchable_pdf: true
+# IndicNLP's normalizer can rewrite anusvara. Off unless you opt in.
+indic_normalize: false
+corrections:
+  # suggest keeps the OCR line and records proposals.
+  # apply writes proposals into text_normalized only. text_raw is never changed.
+  # off records nothing except the prebase i-matra reorder when that flag is set.
+  mode: suggest
+  reorder_prebase_i: true

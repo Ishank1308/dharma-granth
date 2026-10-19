@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dharmagranth.in/schemas/granth-ocr-page.json",
+  "title": "Granth OCR page",
+  "type": "object",
+  "required": ["source_pdf", "pdf_page", "engine", "confidence", "text_raw", "text_normalized"],
+  "additionalProperties": true,
+  "properties": {
+    "source_pdf": { "type": "string" },
+    "pdf_page": { "type": "integer", "minimum": 1 },
+    "dpi": { "type": "integer" },
+    "engine": { "enum": ["tesseract", "surya"] },
+    "psm": { "type": ["integer", "null"] },
+    "oem": { "type": ["integer", "null"] },
+    "confidence": { "type": "number" },
+    "seconds": { "type": "number" },
+    "surya_attempted": { "type": "boolean" },
+    "text_raw": { "type": "string" },
+    "text_normalized": { "type": "string" },
+    "flags": { "type": "array", "items": { "type": "string" } },
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["reason", "applied"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "reason": { "type": "string" },
+          "applied": { "type": "boolean" }
+        }
+      }
+    },
+    "words": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text", "conf", "bbox"],
+        "properties": {
+          "text": { "type": "string" },
+          "conf": { "type": "number" },
+          "bbox": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": { "type": "number" }
+          }
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "properties": {
+        "blur": { "type": "number" },
+        "contrast": { "type": "number" },
+        "ink": { "type": "number" },
+        "score": { "type": "number" },
+        "deskew_deg": { "type": "number" }
+      }
+    }
+  }
+}

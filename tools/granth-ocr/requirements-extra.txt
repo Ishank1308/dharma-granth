@@ -1,0 +1,4 @@
+# Optional helpers. The pipeline runs without them.
+symspellpy>=6.7.0
+indic-nlp-library>=0.92
+ocrmypdf>=16.0.0
