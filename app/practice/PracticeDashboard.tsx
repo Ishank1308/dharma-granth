@@ -9,6 +9,7 @@ import { DailyReflection } from '@/app/components/practice/DailyReflection';
 import { ReadingPlan } from '@/app/components/practice/ReadingPlan';
 import { JapaCounter } from '@/app/components/practice/JapaCounter';
 import { MeditationTimer } from '@/app/components/practice/MeditationTimer';
+import { PranayamaPacer } from '@/app/components/practice/PranayamaPacer';
 import { FestivalReminder } from '@/app/components/practice/FestivalReminder';
 import { SankalpaJournal } from '@/app/components/practice/SankalpaJournal';
 import { GratitudeJournal } from '@/app/components/practice/GratitudeJournal';
@@ -34,6 +35,7 @@ const TOOLS = [
   { id: 'reading', label: 'पठन योजना', sub: 'Reading plan' },
   { id: 'japa', label: 'जप माला', sub: 'Japa counter' },
   { id: 'meditation', label: 'ध्यान साधना', sub: 'Meditation timer' },
+  { id: 'pranayama', label: 'प्राणायाम', sub: 'Breath pacer' },
   { id: 'festivals', label: 'उत्सव स्मरण', sub: 'Festival reminders' },
   { id: 'gratitude', label: 'कृतज्ञता', sub: 'Gratitude journal' },
   { id: 'sankalpa', label: 'संकल्प', sub: 'Saṅkalpa journal' },
@@ -49,6 +51,7 @@ const ALL_ON: Record<ToolId, boolean> = {
   reading: true,
   japa: true,
   meditation: true,
+  pranayama: true,
   festivals: true,
   gratitude: true,
   sankalpa: true,
@@ -83,6 +86,8 @@ export function PracticeDashboard() {
         'dharma.practice.japa.vibration',
         'dharma.practice.meditation',
         'dharma.practice.meditation.sound',
+        'dharma.practice.pranayama',
+        'dharma.practice.pranayama.vibration',
         'dharma.practice.reflections',
         'dharma.practice.gratitude',
         'dharma.practice.sankalpa',
@@ -181,6 +186,7 @@ export function PracticeDashboard() {
               {on('reflection') && <DailyReflection />}
               {on('japa') && <JapaCounter />}
               {on('meditation') && <MeditationTimer />}
+              {on('pranayama') && <PranayamaPacer />}
               {on('reading') && <ReadingPlan />}
               {on('festivals') && <FestivalReminder />}
               {on('gratitude') && <GratitudeJournal />}

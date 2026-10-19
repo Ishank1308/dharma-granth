@@ -34,11 +34,91 @@ interface JapaState {
 
 const INITIAL: JapaState = { date: '', count: 0, rounds: 0, lifetimeRounds: 0, mantra: '' };
 const MALA = 108;
-const VISIBLE_BEADS = 27; // 1/4 quarter of mala visually rendered around perimeter for crisp 3D ring
+
+const RING_R = 112;
+const BEAD_STEP = 360 / MALA;
 
 /**
- * 3D Physical Japa Mala Counter with realistic Rudraksha bead physics,
- * tactile haptic vibrations, acoustic clicks, screen wake-lock, and celebratory temple bell chime.
+ * SVG ring of all 108 beads. Bead 0 is the Sumeru (guru) bead, then 107 Rudraksha beads. `count` beads are done;
+ * the ring rotates so the bead being counted sits under the pointer at the top (after the 107th, the next tap reaches the Sumeru and completes the mala).
+ */
+function MalaRing({ count, reduce, celebrating }: { count: number; reduce: boolean; celebrating: boolean }) {
+  const rotation = -(count + 1) * BEAD_STEP;
+  return (
+    <svg viewBox="0 0 260 260" className="pointer-events-none absolute inset-0 h-full w-full" role="img" aria-label={`Mala: ${count} of ${MALA} beads counted`}>
+      <defs>
+        <radialGradient id="rud-bead" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stopColor="#b9854a" />
+          <stop offset="55%" stopColor="#7a4a1c" />
+          <stop offset="100%" stopColor="#3b1f08" />
+        </radialGradient>
+        <radialGradient id="rud-done" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stopColor="#fde68a" />
+          <stop offset="55%" stopColor="#f59e0b" />
+          <stop offset="100%" stopColor="#92400e" />
+        </radialGradient>
+        <radialGradient id="rud-now" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="40%" stopColor="#fcd34d" />
+          <stop offset="100%" stopColor="#d97706" />
+        </radialGradient>
+        <radialGradient id="rud-sumeru" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stopColor="#fff7ed" />
+          <stop offset="50%" stopColor="#ea580c" />
+          <stop offset="100%" stopColor="#7c2d12" />
+        </radialGradient>
+      </defs>
+      <circle cx="130" cy="130" r={RING_R} fill="none" stroke="rgba(120,53,15,0.35)" strokeWidth="1" />
+      <g
+        style={{
+          transform: `rotate(${rotation}deg)`,
+          transformOrigin: '130px 130px',
+          transition: reduce ? 'none' : 'transform 260ms cubic-bezier(0.34, 1.4, 0.64, 1)',
+        }}
+      >
+        {Array.from({ length: MALA }).map((_, i) => {
+          const ang = ((i * BEAD_STEP - 90) * Math.PI) / 180;
+          // Rounded: server and browser Math.cos/sin can differ in the last digit, which breaks hydration.
+          const cx = Math.round((130 + Math.cos(ang) * RING_R) * 100) / 100;
+          const cy = Math.round((130 + Math.sin(ang) * RING_R) * 100) / 100;
+          if (i === 0) {
+            return (
+              <g key={i}>
+                <circle cx={cx} cy={cy} r={7.5} fill="url(#rud-sumeru)" stroke="#fed7aa" strokeWidth="0.8" />
+                <path d={`M ${cx - 3} ${cy + 6} L ${cx} ${cy + 15} L ${cx + 3} ${cy + 6} Z`} fill="#ea580c" opacity="0.85" transform={`rotate(${i * BEAD_STEP} ${cx} ${cy})`} />
+              </g>
+            );
+          }
+          // Beads 1..count are done; the bead after them is the one being counted.
+          const done = i <= count;
+          const current = i === count + 1;
+          const quarter = i % 27 === 0;
+          const r = current ? 4.9 : quarter ? 4.5 : 3.7;
+          return (
+            <g key={i}>
+              <circle
+                cx={cx}
+                cy={cy}
+                r={r}
+                fill={current ? 'url(#rud-now)' : done ? 'url(#rud-done)' : 'url(#rud-bead)'}
+                stroke={done ? 'rgba(146,64,14,0.55)' : 'rgba(40,20,6,0.6)'}
+                strokeWidth="0.5"
+              />
+              {current && <circle cx={cx} cy={cy} r={r + 3.2} fill="none" stroke="rgba(251,191,36,0.55)" strokeWidth="1.2" />}
+            </g>
+          );
+        })}
+      </g>
+      {/* Pointer at 12 o'clock */}
+      <path d="M 130 11 L 124 0 L 136 0 Z" fill="#c2410c" />
+      {celebrating && <circle cx="130" cy="130" r={RING_R + 8} fill="none" stroke="rgba(251,191,36,0.7)" strokeWidth="3" />}
+    </svg>
+  );
+}
+
+/**
+ * Japa counter with a full 108-bead Rudraksha ring (gold for counted beads, a glowing current bead, a Sumeru guru bead),
+ * tactile haptics, bead clicks, screen wake-lock, and a temple bell on completing a mala.
  */
 export function JapaCounter() {
   const [state, setState] = useLocalStorage<JapaState>('dharma.practice.japa', INITIAL);
@@ -168,12 +248,11 @@ export function JapaCounter() {
   }
 
   const pct = Math.round((count / MALA) * 100);
-  const beadAngle = (count % VISIBLE_BEADS) * (360 / VISIBLE_BEADS);
 
   return (
     <ToolCard
       icon={<CircleDot className="w-5 h-5 text-saffron-600" />}
-      title="3D Japa Mala"
+      title="108-Bead Rudraksha Mala"
       titleHindi="जप साधना"
       accent="saffron"
     >
@@ -240,59 +319,9 @@ export function JapaCounter() {
           aria-label="Mantra label"
         />
 
-        {/* 3D Realistic Mala Rosary Wheel */}
-        <div className="relative w-52 h-52 flex items-center justify-center select-none perspective-[800px]">
-          {/* Rotating 3D Rosary Beads Ring */}
-          <motion.div
-            className="absolute inset-0 pointer-events-none"
-            animate={reduce ? undefined : { rotate: beadAngle }}
-            transition={{ type: 'spring', stiffness: 220, damping: 20 }}
-          >
-            {Array.from({ length: VISIBLE_BEADS }).map((_, i) => {
-              const angle = (i * 360) / VISIBLE_BEADS;
-              const rad = (angle * Math.PI) / 180;
-              const r = 90; // distance from center
-              const x = Math.cos(rad) * r;
-              const y = Math.sin(rad) * r;
-              const isCurrent = i === 0;
-
-              return (
-                <div
-                  key={i}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform"
-                  style={{
-                    transform: `translate(${x}px, ${y}px)`,
-                  }}
-                >
-                  <div
-                    className={`rounded-full transition-all duration-200 ${
-                      isCurrent
-                        ? 'w-5 h-5 bg-gradient-to-br from-amber-300 via-amber-500 to-amber-700 shadow-[0_0_12px_rgba(251,191,36,0.9)] ring-2 ring-white scale-125'
-                        : 'w-3.5 h-3.5 bg-gradient-to-br from-[#854d0e] via-[#713f12] to-[#422006] shadow-md border border-amber-900/40'
-                    }`}
-                    style={{
-                      boxShadow: isCurrent
-                        ? '0 0 16px rgba(245, 158, 11, 0.9), inset 1px 1px 2px rgba(255,255,255,0.8)'
-                        : 'inset -1px -1px 3px rgba(0,0,0,0.6), inset 1px 1px 2px rgba(255,255,255,0.4), 0 2px 4px rgba(0,0,0,0.3)',
-                    }}
-                  />
-                </div>
-              );
-            })}
-
-            {/* Guru Bead / Sumeru Marker */}
-            <div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              style={{
-                transform: 'translate(0px, -92px)',
-              }}
-            >
-              <div
-                className="w-5 h-6 rounded-t-full bg-gradient-to-b from-amber-400 to-amber-700 shadow-lg border border-amber-200/50"
-                title="Sumeru Bead (सुमेरु)"
-              />
-            </div>
-          </motion.div>
+        {/* 108-bead Rudraksha mala. The ring slides so the bead being counted stays at the top. */}
+        <div className="relative flex h-64 w-64 select-none items-center justify-center">
+          <MalaRing count={count} reduce={Boolean(reduce)} celebrating={celebration} />
 
           {/* Central 3D Tactile Tap Button */}
           <motion.button

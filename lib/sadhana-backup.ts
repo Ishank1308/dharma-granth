@@ -21,6 +21,8 @@ const SHAPE: Record<string, Shape> = {
   'dharma.practice.meditation': 'object',
   'dharma.practice.meditation.sound': 'boolean',
   'dharma.practice.meditation.reduced_motion': 'boolean',
+  'dharma.practice.pranayama': 'object',
+  'dharma.practice.pranayama.vibration': 'boolean',
   'dharma.practice.reflections': 'object',
   'dharma.practice.gratitude': 'object',
   'dharma.practice.sankalpa': 'array',
