@@ -37,6 +37,17 @@ interface BookLearningClientProps {
   catalogueChapters?: number;
 }
 
+const CATEGORY_NAMES: Record<string, string> = {
+  itihasa: 'Itihāsa · इतिहास',
+  upanishad: 'Upaniṣad · उपनिषद्',
+  veda: 'Veda · वेद',
+  purana: 'Purāṇa · पुराण',
+  smriti: 'Smṛti · स्मृति',
+  tantra: 'Tantra · तन्त्र',
+  stotra: 'Stotra · स्तोत्र',
+  other: 'Other · अन्य',
+};
+
 const copy = {
   hi: {
     guided: 'मार्गदर्शित अध्ययन',
@@ -134,7 +145,7 @@ export function BookLearningClient({
             </div>
             <div className="rounded-lg border border-dharma-border bg-dharma-bg p-4">
               <p className="text-base font-bold text-saffron-700">{inLibraryVerses > 0 ? labels.available : labels.preparing}</p>
-              <p className="text-xs font-semibold uppercase tracking-wider text-dharma-muted">{meta.category}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-dharma-muted">{CATEGORY_NAMES[meta.category] || meta.category}</p>
             </div>
           </div>
         </div>

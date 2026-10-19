@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /_next/
+Allow: /fonts/
+Disallow: /dashboard/
+Disallow: /bookmarks/
+
+Sitemap: https://dharmagranth.in/sitemap.xml

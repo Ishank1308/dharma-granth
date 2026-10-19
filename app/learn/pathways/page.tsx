@@ -296,7 +296,7 @@ export default function PathwaysPage() {
                             <div className="mt-5 rounded-xl bg-gradient-to-br from-saffron-50 to-amber-50 border border-saffron-200 p-5 text-center">
                               <Award className="w-8 h-8 text-saffron-600 mx-auto mb-2" />
                               <h4 className="text-base font-serif font-bold text-dharma-text mb-1">
-                                Pathway Complete! 🎉
+                                Pathway Complete! <span aria-hidden="true">🎉</span>
                               </h4>
                               <p className="text-sm text-dharma-muted mb-4">
                                 You&apos;ve completed all {pathway.steps.length} steps. Claim your certificate of completion.

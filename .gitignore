@@ -74,3 +74,17 @@ scripts/cache/*
 /data/quality-report.json
 tools/granth-ocr/work/
 tools/granth-ocr/**/__pycache__/
+
+# Python virtual environment & bytecode
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+**/*.pyc
+
+# OCR local workspace and batch outputs
+ocr_workspace/
+ocr_output/
+
+# Scratch workspace
+scratch/

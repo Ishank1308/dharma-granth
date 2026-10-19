@@ -1414,11 +1414,12 @@ export function calculateEducationalPanchang(
   // 2. PAKSHA & ILLUMINATION (Computed directly from astronomical Sun-Moon elongation)
   const elongationRad = (elongation * Math.PI) / 180;
   let rawIllum = ((1 - Math.cos(elongationRad)) / 2) * 100;
-  // If in Shukla Pratipada and tithi progression has begun (> 0%), the waxing crescent is active
-  if (tithiNumber === 1 && tithiProgressPercent > 0 && rawIllum < 1) {
-    rawIllum = Math.max(1, Math.round((tithiProgressPercent / 100) * 2.5));
+  // In Shukla Paksha Pratipada, the waxing crescent gathers light immediately following Amavasya conjunction.
+  // Guarantee that when Pratipada progression is active (>= 10%), illumination reflects the waxing crescent (1-3%) rather than rounding down to 0%.
+  if (tithiNumber === 1 && tithiProgressPercent >= 10) {
+    rawIllum = Math.max(1, Math.round((tithiProgressPercent / 100) * 3));
   }
-  const illuminationPercent = Math.min(100, Math.max(0, Math.round(rawIllum)));
+  const illuminationPercent = Math.min(100, Math.max(tithiNumber === 1 && tithiProgressPercent >= 10 ? 1 : 0, Math.round(rawIllum)));
   const isWaxing = tithiNumber <= 15;
 
   const pakshaExplanation = isWaxing

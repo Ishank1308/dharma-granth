@@ -34,7 +34,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: PageProps): Metadata {
   const festival = festivals.find((f) => f.id === params.id);
-  if (!festival) return { title: 'उत्सव नहीं मिला (Festival Not Found) — Dharma Granth' };
+  if (!festival) return { title: 'उत्सव नहीं मिला (Festival Not Found)' };
 
   const title = `${festival.name} (${festival.sanskrit}) — अर्थ, कथा, शास्त्रीय स्रोत व पूजा विधि`;
   const description = `${festival.shortDesc} ${festival.meaning}`.slice(0, 160);

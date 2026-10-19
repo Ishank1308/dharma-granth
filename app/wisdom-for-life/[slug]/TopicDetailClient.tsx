@@ -640,7 +640,7 @@ export function TopicDetailClient({
                     <td className="py-3 pr-4 font-semibold">{src.textName}</td>
                     <td className="py-3 px-4">
                       <span className="font-medium text-dharma-text">
-                        {src.section ? `${src.section} (${src.citation})` : src.citation}
+                        {src.section ? `${src.citation} (${src.section})` : src.citation}
                       </span>
                     </td>
                   </tr>
@@ -665,7 +665,7 @@ export function TopicDetailClient({
                     </Link>
                     {facts?.host && (
                       <span className="text-xs text-dharma-muted">
-                        · Sanskrit from {facts.host}
+                        {' '}· Sanskrit from {facts.host}
                         {facts.fetched ? ` (fetched ${facts.fetched.slice(0, 10)})` : ''}
                       </span>
                     )}

@@ -1,8 +1,37 @@
 # Cloudflare Pages redirects (GitHub Pages ignores this file). Trailing slashes everywhere.
-# /topics/* pages are distinct from /wisdom-for-life/* and stay as they are.
 /wisdom /wisdom-for-life/ 301
 /wisdom/ /wisdom-for-life/ 301
 /guidance/:slug /wisdom-for-life/:slug/ 301
 /guidance/:slug/ /wisdom-for-life/:slug/ 301
 /bhagavad-gita /scripture/bhagavadgita/ 301
 /bhagavad-gita/ /scripture/bhagavadgita/ 301
+
+# Topics consolidated into canonical Wisdom for Life directory
+/topics/career-workplace-ethics /wisdom-for-life/skill-in-work/ 301
+/topics/career-workplace-ethics/ /wisdom-for-life/skill-in-work/ 301
+/topics/stress-anxiety /wisdom-for-life/stress-and-worry/ 301
+/topics/stress-anxiety/ /wisdom-for-life/stress-and-worry/ 301
+/topics/relationships-marriage /wisdom-for-life/relationships/ 301
+/topics/relationships-marriage/ /wisdom-for-life/relationships/ 301
+/topics/parenting /wisdom-for-life/family-responsibilities/ 301
+/topics/parenting/ /wisdom-for-life/family-responsibilities/ 301
+/topics/student-life /wisdom-for-life/discipline/ 301
+/topics/student-life/ /wisdom-for-life/discipline/ 301
+/topics/social-media-addiction /wisdom-for-life/self-control/ 301
+/topics/social-media-addiction/ /wisdom-for-life/self-control/ 301
+/topics/money-responsible-wealth /wisdom-for-life/contentment/ 301
+/topics/money-responsible-wealth/ /wisdom-for-life/contentment/ 301
+/topics/leadership /wisdom-for-life/leadership/ 301
+/topics/leadership/ /wisdom-for-life/leadership/ 301
+/topics/environmental-responsibility /wisdom-for-life/duty-and-decision-making/ 301
+/topics/environmental-responsibility/ /wisdom-for-life/duty-and-decision-making/ 301
+/topics/anger-jealousy /wisdom-for-life/anger/ 301
+/topics/anger-jealousy/ /wisdom-for-life/anger/ 301
+/topics/grief-death /wisdom-for-life/grief-and-loss/ 301
+/topics/grief-death/ /wisdom-for-life/grief-and-loss/ 301
+/topics/discipline-habit-formation /wisdom-for-life/discipline/ 301
+/topics/discipline-habit-formation/ /wisdom-for-life/discipline/ 301
+/topics/:slug /wisdom-for-life/:slug/ 301
+/topics/:slug/ /wisdom-for-life/:slug/ 301
+/topics /wisdom-for-life/ 301
+/topics/ /wisdom-for-life/ 301

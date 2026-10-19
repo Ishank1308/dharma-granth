@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const resolved = await params;
   const concept = getConceptDetail(resolved.id);
   if (!concept) {
-    return { title: 'अवधारणा नहीं मिली (Concept Not Found) — Dharma Granth' };
+    return { title: 'अवधारणा नहीं मिली (Concept Not Found)' };
   }
 
   const title = `${concept.label} (${concept.sanskrit}) — शास्त्रीय अर्थ व दर्शन`;

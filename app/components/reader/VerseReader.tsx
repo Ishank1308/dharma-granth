@@ -52,6 +52,7 @@ import { MobileSwipeIndicator } from './MobileSwipeIndicator';
 import { MobileReadingProgress } from './MobileReadingProgress';
 import { MobileVerseCarousel } from './MobileVerseCarousel';
 import { MobileAudioPill } from './MobileAudioPill';
+import { SacredAudioPlayer } from './SacredAudioPlayer';
 import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
 import { logActivity } from '@/lib/activity-log';
@@ -843,6 +844,12 @@ export function VerseReader(props: VerseReaderProps) {
         />
 
         <MobileAudioPill />
+
+        {/* Sacred Audio Player (432Hz Vedic Tanpura, Pranava Om, Chanted Recitation) */}
+        <SacredAudioPlayer
+          currentVerseSanskrit={verse.sanskrit}
+          reference={`${scriptureTitle} ${chapterId}.${verse.number}`}
+        />
       </div>
     </MotionConfig>
   );

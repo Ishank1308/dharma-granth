@@ -9,12 +9,13 @@ import {
   useReducedMotion,
 } from 'framer-motion';
 import { useEffect, useRef, useState, type PointerEvent } from 'react';
-import { ArrowRight, BookOpen, Flame, Search, Sparkles } from 'lucide-react';
+import { ArrowRight, BookOpen, Flame, Search, Sparkles, Bot } from 'lucide-react';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { MagneticButton } from '@/app/components/motion/MagneticButton';
 import { SurpriseVerseButton } from '@/app/components/SurpriseVerseButton';
 import { openGlobalSearch } from '@/lib/search-events';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { DharmaCopilotModal } from '@/app/components/copilot/DharmaCopilotModal';
 
 function CelestialParticles({ active }: { active: boolean }) {
   // Positions use Math.random(), which differs between the server and client
@@ -135,6 +136,8 @@ function ScripturePlane({
 export function HeroSection() {
   const reduce = useReducedMotion();
   const [ambientMotion, setAmbientMotion] = useState(false);
+  const [copilotOpen, setCopilotOpen] = useState(false);
+  const [copilotQuery, setCopilotQuery] = useState('');
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -353,18 +356,26 @@ export function HeroSection() {
 
           {/* Search Examples Pills */}
           <div className="mx-auto mb-7 flex max-w-2xl flex-wrap items-center justify-center gap-2 px-2 text-xs">
-            <span className="text-white/70 font-medium">Try searching:</span>
+            <span className="text-white/70 font-medium">Try searching or asking:</span>
             {[
+              { label: 'Show verses about anxiety', query: 'Show verses about anxiety', isCopilot: true },
+              { label: 'Show verses about leadership', query: 'Show verses about leadership', isCopilot: true },
+              { label: 'Show verses about discipline', query: 'Show verses about discipline', isCopilot: true },
+              { label: 'Krishna discusses Dharma', query: 'Show verses where Krishna discusses Dharma', isCopilot: true },
               { label: 'Gita 2.47', query: 'Gita 2.47' },
-              { label: 'कर्म (Karma)', query: 'कर्म' },
-              { label: 'fear (अभय)', query: 'fear' },
               { label: 'Tat Tvam Asi (तत्त्वमसि)', query: 'Tat Tvam Asi' },
-              { label: 'verses about anger (क्रोध)', query: 'verses about anger' },
             ].map((ex) => (
               <button
                 key={ex.query}
                 type="button"
-                onClick={() => openGlobalSearch(ex.query)}
+                onClick={() => {
+                  if (ex.isCopilot) {
+                    setCopilotQuery(ex.query);
+                    setCopilotOpen(true);
+                  } else {
+                    openGlobalSearch(ex.query);
+                  }
+                }}
                 className="inline-flex min-h-[44px] items-center rounded-full border border-white/20 bg-white/10 px-4 py-1 font-medium text-white/95 backdrop-blur-sm transition hover:border-amber-300 hover:bg-white/20 hover:text-white"
               >
                 {ex.label}
@@ -403,24 +414,33 @@ export function HeroSection() {
             </MagneticButton>
           </div>
           <div>
-            <MagneticButton
-              href="/ask"
-              className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-gradient-to-r from-amber-500/20 to-saffron-500/20 px-5 py-3.5 font-bold text-amber-200 shadow-xl backdrop-blur-md transition-all hover:border-amber-300 hover:bg-amber-500/30 sm:gap-2.5 sm:px-6 shine-sweep"
-              strength={24}
-              tilt={10}
+            <button
+              type="button"
+              onClick={() => {
+                setCopilotQuery('');
+                setCopilotOpen(true);
+              }}
+              className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-gradient-to-r from-amber-500/20 to-saffron-500/20 px-5 py-3.5 font-bold text-amber-200 shadow-xl backdrop-blur-md transition-all hover:border-amber-300 hover:bg-amber-500/30 sm:gap-2.5 sm:px-6 shine-sweep cursor-pointer"
             >
               <Sparkles className="w-5 h-5 text-amber-300" />
-              <span lang="hi">धर्म सहायक</span>
+              <span>Dharma Copilot AI</span>
               <span lang="hi" className="font-devanagari text-xs text-amber-100 hidden md:inline">
-                (मार्गदर्शन)
+                (धर्म सहायक)
               </span>
-            </MagneticButton>
+            </button>
           </div>
           <div>
             <SurpriseVerseButton className="hidden items-center gap-2.5 rounded-full border border-white/20 px-4 py-3.5 font-semibold text-white/90 transition hover:border-white/40 hover:bg-white/10 sm:inline-flex" />
           </div>
         </FadeUp>
       </motion.div>
+
+      {/* Dharma Copilot AI Modal */}
+      <DharmaCopilotModal
+        isOpen={copilotOpen}
+        onClose={() => setCopilotOpen(false)}
+        initialQuery={copilotQuery}
+      />
 
       {/* Bottom gradient transition */}
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-20 bg-gradient-to-b from-transparent to-dharma-bg" />

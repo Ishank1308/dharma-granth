@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
-import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import Link from 'next/link';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { ISSUES_REPO } from '@/lib/reader-actions';
+import { getRealVerseCount } from '@/data/scriptures';
+import { formatCount } from '@/lib/holdings-label';
 
 export const metadata: Metadata = {
   title: 'Methodology: how this site is made',
@@ -24,7 +26,7 @@ export const metadata: Metadata = {
  */
 const SNAPSHOT = {
   date: '8 October 2026',
-  verses: '1,87,392',
+  verses: formatCount(getRealVerseCount()),
   ai: '72,471',
 };
 

@@ -24,7 +24,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { id: string } }): Metadata {
   const topic = getTopic(params.id);
-  if (!topic) return { title: 'Topic Not Found — Dharma Granth' };
+  if (!topic) return { title: 'Topic Not Found' };
 
   const lead = topic.verses[0];
   const description = clipDescription(
@@ -116,6 +116,14 @@ export default function TopicPage({ params }: { params: { id: string } }) {
                   <VerseBlock key={i} verse={verse} index={i} />
                 ))}
               </div>
+
+              <p className="mt-6 text-xs text-dharma-muted leading-relaxed border-t border-dharma-border/60 pt-4">
+                <span className="font-semibold text-dharma-text">Editorial Note · Not Scripture:</span> Canonical Sanskrit verses are drawn from verified digital archives. Translations and practical reflections are study aids drafted with AI assistance awaiting scholar peer review. For complete source provenance, see our{' '}
+                <Link href="/methodology/" className="font-semibold text-saffron-700 dark:text-saffron-400 underline underline-offset-4 hover:text-saffron-800">
+                  Methodology
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </FadeUpOnView>
@@ -133,10 +141,14 @@ export default function TopicPage({ params }: { params: { id: string } }) {
               <div className="space-y-4">
                 {topic.teachings.map((teaching, i) => (
                   <div key={i} className="flex gap-4">
-                    <div className={`flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br ${topic.gradient} text-white text-sm font-bold flex items-center justify-center shadow-sm`}>
+                    <div
+                      aria-hidden="true"
+                      className={`flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br ${topic.gradient} text-white text-sm font-bold flex items-center justify-center shadow-sm`}
+                    >
                       {i + 1}
                     </div>
                     <p className="text-dharma-text leading-relaxed pt-1">
+                      <span className="sr-only">{i + 1}. </span>
                       {teaching}
                     </p>
                   </div>
@@ -163,10 +175,14 @@ export default function TopicPage({ params }: { params: { id: string } }) {
                     className="rounded-xl border border-dharma-border bg-dharma-bg/50 p-5 hover:border-saffron-200 transition"
                   >
                     <h3 className="font-serif font-bold text-dharma-text mb-2 flex items-center gap-2">
-                      <span className={`w-6 h-6 rounded-md bg-gradient-to-br ${topic.gradient} text-white text-xs font-bold flex items-center justify-center`}>
+                      <span
+                        aria-hidden="true"
+                        className={`w-6 h-6 rounded-md bg-gradient-to-br ${topic.gradient} text-white text-xs font-bold flex items-center justify-center`}
+                      >
                         {i + 1}
                       </span>
-                      {practice.title}
+                      <span className="sr-only">{i + 1}. </span>
+                      <span>{practice.title}</span>
                     </h3>
                     <p className="text-sm text-dharma-muted leading-relaxed">
                       {practice.description}

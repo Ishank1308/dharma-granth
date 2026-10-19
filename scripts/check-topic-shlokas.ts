@@ -3,12 +3,7 @@ import { topics } from '../data/topics';
 
 // Known, unresolved: these stored lines are paraphrases or sit under the wrong reference, and the library has no
 // matching text to restore from. They need a scholar's check, not an automatic fix. Do not add to this list casually.
-const KNOWN = new Set([
-  'relationships-marriage · Brihadaranyaka Upanishad 2.4.7',
-  'student-life · Taittiriya Upanishad 1.1',
-  'money-responsible-wealth · Bhagavad Gita 3.12',
-  'environmental-responsibility · Atharva Veda 12.1.12',
-]);
+const KNOWN = new Set<string>();
 const problems: string[] = [];
 const known: string[] = [];
 for (const t of topics) {

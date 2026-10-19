@@ -622,8 +622,9 @@ export const scriptureCatalog: ScriptureMeta[] = [
     category: "purana",
     description:
       "One of the 18 Mahapuranas (~25,000 verses). Narrated by the divine sage Narada — eternal wanderer, musician, and bhakta. The pre-eminent Purana of Bhakti: covers the nine forms of devotion (Navavidha Bhakti), nama-sankirtana as the Kali Yuga path, the Gandharva Veda (sacred music as a path to liberation), and the omnipresence of the divine. The Gita Press edition (Series No. 1183) is the standard Hindi reference.",
-    totalChapters: 2,
-    totalVerses: 25000,
+    totalChapters: 167,
+    totalVerses: 15203,
+    canonicalTotalVerses: 25000,
     tags: ["Purana","Narada","Bhakti","Music","NavavidhaBhakti","NamaSankirtana","Mahapurana"],
     hasData: true,
   },
