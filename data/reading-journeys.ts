@@ -14,7 +14,7 @@ export interface JourneyLesson {
   id: string;
   scriptureId: string;
   chapter: number;
-  verse: number;
+  verse: number | string;
   expect: string;
   context: string;
   explanation: string;
@@ -651,7 +651,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
         reflection: 'What is your inner intuition telling you right now that you have been ignoring?',
       },
       {
-        id: 'pm5', scriptureId: 'brihadaranyaka', chapter: 3, verse: 28, expect: 'असतो मा सद्गमय',
+        id: 'pm5', scriptureId: 'brihadaranyaka', chapter: 3, verse: '3.8', expect: 'असतो मा सद्गमय',
         context: 'The immortal Upanishadic prayer: From untruth lead me to truth; from darkness to light; from death to immortality.',
         explanation: 'Life’s highest purpose is the progressive journey from illusion into radiant spiritual reality.',
         reflection: 'What is one step you can take today toward living with greater truth and light?',
@@ -955,7 +955,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
         reflection: 'Where is telling the truth hardest for you, and why?',
       },
       {
-        id: 'u5', scriptureId: 'brihadaranyaka', chapter: 3, verse: 28, expect: 'असतो मा सद्गमय',
+        id: 'u5', scriptureId: 'brihadaranyaka', chapter: 3, verse: '3.8', expect: 'असतो मा सद्गमय',
         context: 'From untruth to truth, darkness to light, death to immortality.',
         explanation: 'A universal prayer seeking transformation of consciousness.',
         reflection: 'Which of the three requests feels closest to what you need now?',
