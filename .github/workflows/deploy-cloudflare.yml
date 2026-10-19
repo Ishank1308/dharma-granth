@@ -7,7 +7,7 @@ name: Deploy Cloudflare Pages
 
 on:
   push:
-    branches: ["master"]
+    branches: ["master", "fix/audit-cloudflare-search"]
   workflow_dispatch:
 
 permissions:
