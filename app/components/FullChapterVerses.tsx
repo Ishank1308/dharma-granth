@@ -22,6 +22,8 @@ import { updateLastVerse } from '@/lib/reading-history';
 import { AddToCollectionModal } from './AddToCollectionModal';
 import { ContributeMeaningModal } from './ContributeMeaningModal';
 import { VerseCard } from './VerseCard';
+import { ReadingDepthSwitch } from '@/app/components/reader/ReadingDepthSwitch';
+import { useReadingDepth } from '@/lib/reading-depth';
 import { VerseText } from './VerseText';
 import { MobileFocusMode } from './MobileFocusMode';
 import { ConversationModeView } from './conversation/ConversationModeView';
@@ -134,6 +136,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
 
   const [fontSize, setFontSize] = useState<'normal' | 'large' | 'xl'>('normal');
   const [chantingMode, setChantingMode] = useState(false);
+  const [readingDepth] = useReadingDepth();
   const [isConversationMode, setIsConversationMode] = useState(false);
   const [showTranslit, setShowTranslit] = useState(true);
   const [showHindi, setShowHindi] = useState(true);
@@ -845,6 +848,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 </button>
               </div>
 
+              {/* Reading depth: Read / Understand / Study */}
+              {!chantingMode && <ReadingDepthSwitch />}
+
               {/* Layer Toggles (Hidden in chanting mode) */}
               {!chantingMode && (
                 <div className="relative" ref={layersMenuRef}>
@@ -1032,6 +1038,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               const lessonIsHi = Boolean(lifeLessonHi);
               return (
                 <VerseCard
+                  depth={readingDepth}
                   key={`${String(v.number)}-${index}`}
                   verse={v}
                   meaning={{

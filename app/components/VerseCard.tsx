@@ -36,6 +36,7 @@ import { GlossaryText } from './GlossaryTooltip';
 import { getVerseGraphicClass, getVerseGraphicStyle } from './verse-background';
 import { ContentLabelBadge } from './ContentLabels';
 import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
+import type { ReadingDepth } from '@/lib/reading-depth';
 import { StoryDeckModal } from '@/components/reader/StoryDeckModal';
 import { CitationModal } from '@/components/study/CitationModal';
 import { saveAnnotation, deleteAnnotation } from '@/lib/study/storage';
@@ -75,6 +76,8 @@ export interface VerseLayers {
 }
 
 interface Props {
+  /** How much explanation to show; defaults to everything (study) for callers that do not choose. */
+  depth?: ReadingDepth;
   verse: VerseCardData;
   meaning: VerseMeaning;
   layers: VerseLayers;
@@ -175,6 +178,7 @@ const iconButton =
   'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card/80 text-dharma-muted backdrop-blur transition hover:border-saffron-300 hover:text-saffron-700';
 
 export function VerseCard({
+  depth = 'study',
   verse: v,
   meaning,
   layers,
@@ -320,17 +324,17 @@ export function VerseCard({
   const tabs = useMemo(() => {
     const list: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [];
     if (showHindi || showEnglish) list.push({ id: 'meaning', label: 'अर्थ', icon: ScrollText });
-    if (layers.commentary && explanation) {
+    if (layers.commentary && depth !== 'read' && explanation) {
       list.push({ id: 'explain', label: 'व्याख्या', icon: Sparkles });
     }
-    if (layers.commentary && science) list.push({ id: 'science', label: 'विज्ञान', icon: Atom });
+    if (layers.commentary && depth === 'study' && science) list.push({ id: 'science', label: 'विज्ञान', icon: Atom });
     return list;
-  }, [showHindi, showEnglish, layers.commentary, explanation, science]);
+  }, [showHindi, showEnglish, layers.commentary, depth, explanation, science]);
 
   const [chosenTab, setChosenTab] = useState<TabId>('meaning');
   // Fall back to the first available tab if the chosen one was switched off.
   const activeTab = tabs.some((t) => t.id === chosenTab) ? chosenTab : tabs[0]?.id;
-  const showLesson = Boolean(layers.commentary && lesson);
+  const showLesson = Boolean(layers.commentary && depth !== 'read' && lesson);
   const hasMeaning = tabs.length > 0 || showLesson;
 
   // Cursor spotlight: CSS variables only, no React re-render per move.
@@ -735,7 +739,7 @@ export function VerseCard({
         )}
 
         {/* ── Word-by-word meaning (पदच्छेद एवं शब्दार्थ) ─────── */}
-        {v.wordMeaning && !chantingMode && (
+        {v.wordMeaning && !chantingMode && depth === 'study' && (
           <div
             className={`mt-4 rounded-2xl border p-4 transition-all ${
               isSandhiSplit
@@ -861,7 +865,7 @@ export function VerseCard({
         {!chantingMode && (
           <>
             {/* ── The Core Shift (मर्म · In One Breath) ── */}
-            {literaryMeta.isCurated && (
+            {literaryMeta.isCurated && depth !== 'read' && (
               <>
             <div className="mt-5 rounded-2xl border border-amber-200/90 bg-gradient-to-r from-amber-50/95 via-orange-50/70 to-amber-50/95 p-4.5 sm:p-5 dark:border-amber-900/50 dark:from-amber-950/40 dark:via-orange-950/20 dark:to-amber-950/40 shadow-2xs">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
@@ -1086,7 +1090,7 @@ export function VerseCard({
             )}
 
             {/* ── What This Verse Does NOT Mean (भ्रम निवारण) ── */}
-            {literaryMeta.isCurated && (
+            {literaryMeta.isCurated && depth !== 'read' && (
               <>
             <div className="mt-4.5 grid grid-cols-1 md:grid-cols-2 gap-3">
               {/* Misreading Box */}
@@ -1119,7 +1123,7 @@ export function VerseCard({
               </>
             )}
 
-            {v.keywords && v.keywords.length > 0 && (
+            {depth === 'study' && v.keywords && v.keywords.length > 0 && (
               <div className="mt-4 flex flex-wrap items-center gap-1.5">
                 <span className="text-[11px] font-medium text-dharma-muted/80 mr-1">संबंधित:</span>
                 {v.keywords.map((k) => {
