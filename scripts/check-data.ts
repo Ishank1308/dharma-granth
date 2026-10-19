@@ -169,7 +169,7 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   chandogya: 26,
   devibhagavat: 3,
   garudpurana: 9,
-  harivanshpuran: 2,
+  harivanshpuran: 24, // genealogical lists in the Harivamsa repeat whole shlokas in two adhyayas (e.g. 26.11 = 27.2)
   kurmapuran: 7,
   lingapuran: 11,
   mahabharata: 37,
