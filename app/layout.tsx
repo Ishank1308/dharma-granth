@@ -5,7 +5,6 @@ import { publishedTotals } from "@/lib/ashtavakra";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
-import { FloatingCompanion } from "@/app/components/FloatingCompanion";
 import { DharmaCopilot } from "@/app/components/DharmaCopilot";
 import { TactileLayer } from "@/app/components/TactileLayer";
 import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
@@ -234,9 +233,6 @@ export default function RootLayout({
               <PageTransition>{children}</PageTransition>
             </ErrorBoundary>
           </div>
-          <ErrorBoundary name="Floating Companion">
-            <FloatingCompanion />
-          </ErrorBoundary>
           <ErrorBoundary name="Dharma Copilot">
             <DharmaCopilot />
           </ErrorBoundary>

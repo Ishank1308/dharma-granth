@@ -1,0 +1,905 @@
+[
+  {
+    "slug": "dharma",
+    "titleSanskrit": "धर्म",
+    "titleIast": "dharma",
+    "titleEn": "Dharma (Cosmic Order, Righteous Duty & Purpose)",
+    "etymology": "धृ (dhṛ) — \"धारणाद्धर्म इत्याहुर्धर्मो धारयते प्रजाः\" (That which sustains and upholds existence)",
+    "briefDefinitionHi": "जो सम्पूर्ण सृष्टि, समाज और अंतरात्मा को धारण करे, संतुलित रखे और आत्म-कल्याण की ओर ले जाए, वह धर्म है।",
+    "briefDefinitionEn": "Cosmic law, innate righteous order, sacred duty, and purpose that upholds and sustains individual and universal life.",
+    "categoryCounts": {
+      "veda": 272,
+      "upanishad": 53,
+      "itihasa": 5865,
+      "purana": 1075,
+      "smriti": 290,
+      "other": 56,
+      "total": 7622,
+      "tantra": 11
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 2,
+        "verseNum": 40,
+        "sanskrit": "नेहाभिक्रमनाशोऽस्ति प्रत्यवायो न विद्यते।\n\nस्वल्पमप्यस्य धर्मस्य त्रायते महतो भयात्।।2.40।।\n ",
+        "transliteration": "nehābhikrama-nāśho ’sti pratyavāyo na vidyate\nsvalpam apyasya dharmasya trāyate mahato bhayāt\n",
+        "hindi": "मनुष्यलोकमें इस समबुद्धिरूप धर्मके आरम्भका नाश नहीं होता, इसके अनुष्ठानका उलटा फल भी नहीं होता और इसका थोड़ासा भी अनुष्ठान (जन्म-मरणरूप) महान् भयसे रक्षा कर लेता है।\n ",
+        "translation": "Here, there is no loss of effort, nor any accrual of evil. Even a little of this Dharma (called Karma Yoga) protects one from the great fear.",
+        "contextHi": "धर्म के सूक्ष्म अभ्यास की महिमा",
+        "contextEn": "Even a little practice of this dharma saves from great fear"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 4,
+        "verseNum": 7,
+        "sanskrit": "यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।\n\nअभ्युत्थानमधर्मस्य तदाऽऽत्मानं सृजाम्यहम्।।4.7।।\n ",
+        "transliteration": "yadā yadā hi dharmasya glānir bhavati bhārata\nabhyutthānam adharmasya tadātmānaṁ sṛijāmyaham\n\n",
+        "hindi": "हे भरतवंशी अर्जुन! जब-जब धर्मकी हानि और अधर्मकी वृद्धि होती है, तब-तब ही मैं अपने-आपको साकाररूपसे प्रकट करता हूँ। ",
+        "translation": "Whenever there is a decline of Dharma, O Arjuna, and an uprising of Adharma, then I incarnate myself.",
+        "contextHi": "धर्म की पुनर्स्थापना का ईश्वरीय संकल्प",
+        "contextEn": "Manifestation of the divine for the re-establishment of dharma"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 18,
+        "verseNum": 66,
+        "sanskrit": "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः।।18.66।।",
+        "transliteration": "sarva-dharmān parityajya mām ekaṁ śharaṇaṁ vraja\nahaṁ tvāṁ sarva-pāpebhyo mokṣhayiṣhyāmi mā śhuchaḥ\n",
+        "hindi": "सम्पूर्ण धर्मोंका आश्रय छोड़कर तू केवल मेरी शरणमें आ जा। मैं तुझे सम्पूर्ण पापोंसे मुक्त कर दूँगा, चिन्ता मत कर।",
+        "translation": "Relinquishing all Dharmas completely, seek Me alone for refuge. I will release you from all sins; grieve not.",
+        "contextHi": "सर्वधर्म परित्याग और परम प्रपत्ति",
+        "contextEn": "Surrendering all relative duties into the supreme sanctuary of truth"
+      },
+      {
+        "scriptureSlug": "ishavasya",
+        "scriptureTitle": "Isha Upanishad",
+        "chapter": 1,
+        "verseNum": 15,
+        "sanskrit": "हिरण्मयेन पात्रेण सत्यस्यापिहितं मुखम् । तत्त्वं पूषन्नपावृणु सत्यधर्माय दृष्टये ॥",
+        "transliteration": "hiraṇmayena pātreṇa satyasyāpihitaṃ mukham | tattvaṃ pūṣannapāvṛṇu satyadharmāya dṛṣṭaye ||",
+        "hindi": "सत्य का मुख एक स्वर्णिम पात्र (आवरण) से ढका है। हे पूषन! उसे उघाड़ दो, ताकि सत्य-धर्मी (मैं) उसका दर्शन कर सके।",
+        "translation": "The face of Truth is hidden by a golden disc. O Pūṣan, uncover it, so that one whose dharma is truth may see.",
+        "contextHi": "सत्य-धर्म के दर्शन हेतु प्रार्थना",
+        "contextEn": "Unveiling the face of truth for the follower of dharma"
+      }
+    ]
+  },
+  {
+    "slug": "atman",
+    "titleSanskrit": "आत्मन्",
+    "titleIast": "ātman",
+    "titleEn": "Ātman (The Eternal Self & Pure Consciousness)",
+    "etymology": "अत् (at) / आप् (āp) — \"यच्चाप्नोति यदादत्ते यच्चात्ति विषयानिह\" (The all-pervading, timeless witnessing consciousness)",
+    "briefDefinitionHi": "शरीर, मन और बुद्धि से परे जो शाश्वत, अजर, अमर और सर्वव्यापी साक्षी चेतना है, वही आत्मा है।",
+    "briefDefinitionEn": "The immortal, unconditioned, pure consciousness and witnessing Self within every living being.",
+    "categoryCounts": {
+      "veda": 114,
+      "upanishad": 365,
+      "itihasa": 2279,
+      "purana": 304,
+      "smriti": 40,
+      "other": 275,
+      "total": 3379,
+      "tantra": 2
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 2,
+        "verseNum": 20,
+        "sanskrit": "न जायते म्रियते वा कदाचि\n\nन्नायं भूत्वा भविता वा न भूयः।\n\nअजो नित्यः शाश्वतोऽयं पुराणो\n\nन हन्यते हन्यमाने शरीरे।।2.20।।\n ",
+        "transliteration": "na jāyate mriyate vā kadāchin\nnāyaṁ bhūtvā bhavitā vā na bhūyaḥ\najo nityaḥ śhāśhvato ’yaṁ purāṇo\nna hanyate hanyamāne śharīre\n",
+        "hindi": "यह शरीरी न कभी जन्मता है और न मरता है तथा यह उत्पन्न होकर फिर होनेवाला नहीं है। यह जन्मरहित, नित्य-निरन्तर रहनेवाला, शाश्वत और पुराण (अनादि) है। शरीरके मारे जानेपर भी यह नहीं मारा जाता।\n ",
+        "translation": "It is never born; it never dies; having come into existence once, it never ceases to exist. Unborn, eternal, perpetual, and primordial, it is not destroyed when the body is destroyed.",
+        "contextHi": "आत्मा का अजन्मा, शाश्वत और नित्य स्वरूप",
+        "contextEn": "The Self is never born, nor does it die; eternal and indestructible"
+      },
+      {
+        "scriptureSlug": "katha",
+        "scriptureTitle": "Katha Upanishad",
+        "chapter": 1,
+        "verseNum": "1.2.18",
+        "sanskrit": "त्रिणाचिकेतस्त्रयमेतद्विदित्वा य एवं विद्वांश्चिनुते नाचिकेतम् । स मृत्युपाशान् पुरतः प्रणोद्य शोकातिगो मोदते स्वर्गलोके ॥",
+        "transliteration": "triṇāciketastrayametadviditvā ya evaṃ vidvāṃścinute nāciketam | sa mṛtyupāśān purataḥ praṇodya śokātigo modate svargaloke ||",
+        "hindi": "जो इन तीनों को जानकर — विद्वान् होकर — नाचिकेत अग्नि का चयन करता है, वह मृत्यु के पाशों को आगे से हटाकर, शोक-पार होकर, स्वर्ग में आनन्द भोगता है।",
+        "translation": "He who, knowing the three (mother, father, teacher), thus learned, builds up the Nāciketa fire — pushing the noose of Death far away, beyond sorrow, rejoices in heaven.",
+        "contextHi": "न जायते म्रियते वा विपश्चित्",
+        "contextEn": "The wise soul is not born nor dies"
+      },
+      {
+        "scriptureSlug": "mandukya",
+        "scriptureTitle": "Mandukya Upanishad",
+        "chapter": 1,
+        "verseNum": 2,
+        "sanskrit": "सर्वं ह्येतद् ब्रह्मायमात्मा ब्रह्म सोऽयमात्मा चतुष्पात् ॥",
+        "transliteration": "sarvaṃ hyetad brahmāyamātmā brahma so'yamātmā catuṣpāt ||",
+        "hindi": "यह सब वास्तव में ब्रह्म ही है। यह आत्मा ब्रह्म है। यह आत्मा चार पाद (अवस्थाओं) वाला है।",
+        "translation": "All this is verily Brahman. This Self is Brahman. This Self has four quarters (states).",
+        "contextHi": "अयमात्मा ब्रह्म",
+        "contextEn": "This innermost Self is Brahman"
+      },
+      {
+        "scriptureSlug": "brihadaranyaka",
+        "scriptureTitle": "Brihadaranyaka Upanishad",
+        "chapter": 4,
+        "verseNum": "4.5.15",
+        "sanskrit": "मूल श्लोक पाठ",
+        "contextHi": "आत्मा वा अरे द्रष्टव्यः",
+        "contextEn": "The Self indeed is to be seen, heard, reflected upon"
+      }
+    ]
+  },
+  {
+    "slug": "brahman",
+    "titleSanskrit": "ब्रह्मन्",
+    "titleIast": "brahman",
+    "titleEn": "Brahman (Infinite, Non-Dual Ultimate Reality)",
+    "etymology": "बृह् (bṛh) — वृधौ (To expand, swell, surpass all limits without boundary)",
+    "briefDefinitionHi": "नाम और रूप से परे, सम्पूर्ण ब्रह्मांड का अधिष्ठान, सच्चिदानन्द (सत्-चित्-आनन्द) स्वरूप परमतत्व ब्रह्म है।",
+    "briefDefinitionEn": "The boundless, non-dual, infinite substrate of all existence, pure consciousness and bliss (Sat-Chit-Ananda).",
+    "categoryCounts": {
+      "veda": 760,
+      "upanishad": 548,
+      "itihasa": 3333,
+      "purana": 1345,
+      "smriti": 287,
+      "other": 328,
+      "total": 6631,
+      "tantra": 30
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "taittiriya",
+        "scriptureTitle": "Taittiriya Upanishad",
+        "chapter": 2,
+        "verseNum": "2.1.1",
+        "sanskrit": "ॐ ब्रह्मविदाप्नोति परम् । तदेषाऽभ्युक्ता । सत्यं ज्ञानमनन्तं ब्रह्म । यो वेद निहितं गुहायां परमे व्योमन् । सोऽश्नुते सर्वान् कामान् सह । ब्रह्मणा विपश्चितेति ॥",
+        "transliteration": "oṃ brahmavidāpnoti param | tadeṣā'bhyuktā | satyaṃ jñānamanantaṃ brahma | yo veda nihitaṃ guhāyāṃ parame vyoman | so'śnute sarvān kāmān saha | brahmaṇā vipaściteti ||",
+        "hindi": "ॐ। ब्रह्मवेत्ता परम को प्राप्त होता है। इस पर कहा गया — \"ब्रह्म सत्य है, ज्ञान है, अनन्त है। जो उसे हृदय-गुहा में, परम आकाश में, निहित जानता है — वह सर्वज्ञ ब्रह्म के साथ सब कामनाओं को भोगता है।\"",
+        "translation": "OM. The knower of Brahman attains the Supreme. On this it is declared: Brahman is truth, knowledge, infinite. He who knows It hidden in the cave, in the highest space — he enjoys all desires, together with the omniscient Brahman.",
+        "contextHi": "सत्यं ज्ञानमनन्तं ब्रह्म",
+        "contextEn": "Brahman is Truth, Knowledge, and Infinity"
+      },
+      {
+        "scriptureSlug": "chandogya",
+        "scriptureTitle": "Chandogya Upanishad",
+        "chapter": 3,
+        "verseNum": "3.14.1",
+        "sanskrit": "मूल श्लोक पाठ",
+        "contextHi": "सर्वं खल्विदं ब्रह्म",
+        "contextEn": "All this universe is verily Brahman"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 13,
+        "verseNum": 12,
+        "sanskrit": "अध्यात्मज्ञाननित्यत्वं तत्त्वज्ञानार्थदर्शनम्।एतज्ज्ञानमिति प्रोक्तमज्ञानं यदतोन्यथा।।13.12।।",
+        "transliteration": "adhyātma-jñāna-nityatvaṁ tattva-jñānārtha-darśhanam\netaj jñānam iti proktam ajñānaṁ yad ato ’nyathā\n",
+        "hindi": "अध्यात्मज्ञानमें नित्य-निरन्तर रहना, तत्त्वज्ञानके अर्थरूप परमात्माको सब जगह देखना -- यह (पूर्वोक्त साधन-समुदाय) तो ज्ञान है; और जो इसके विपरीत है वह अज्ञान है -- ऐसा कहा गया है।",
+        "translation": "Constant contemplation on the knowledge pertaining to the self, reflection for the attainment of knowledge of the truth—this is declared to be knowledge, and what is contrary to it is ignorance.",
+        "contextHi": "ज्ञेयं यत्तत्प्रवक्ष्यामि",
+        "contextEn": "I shall explain that supreme Brahman which has no beginning"
+      },
+      {
+        "scriptureSlug": "kena",
+        "scriptureTitle": "Kena Upanishad",
+        "chapter": 1,
+        "verseNum": 4,
+        "sanskrit": "अन्यदेव तद्विदितादथो अविदितादधि । इति शुश्रुम पूर्वेषां ये नस्तद्व्याचचक्षिरे ॥",
+        "transliteration": "anyadeva tadviditādatho aviditādadhi | iti śuśruma pūrveṣāṃ ye nastadvyācacakṣire ||",
+        "hindi": "वह ज्ञात से भी अन्य है और अज्ञात से भी ऊपर है। ऐसा हमने उन पूर्वजों से सुना है जिन्होंने हमें यह समझाया।",
+        "translation": "It is other than the known and also above the unknown. So we have heard from the ancients who explained it to us.",
+        "contextHi": "यद्वाचाऽनभ्युदितं येन वागभ्युद्यते",
+        "contextEn": "That which speech cannot express, but by which speech is spoken"
+      }
+    ]
+  },
+  {
+    "slug": "karma",
+    "titleSanskrit": "कर्म",
+    "titleIast": "karma",
+    "titleEn": "Karma (Law of Cause, Action & Evolutionary Consequence)",
+    "etymology": "कृ (kṛ) — करणे (Action, doing, intentional deed that bears fruit)",
+    "briefDefinitionHi": "विचार, वाणी और शरीर द्वारा की गई क्रिया और उससे उत्पन्न होने वाला फल व संस्कार का सार्वभौमिक नियम।",
+    "briefDefinitionEn": "The universal principle of cause and effect, deliberate action, and the impressions (samskaras) they leave.",
+    "categoryCounts": {
+      "veda": 667,
+      "upanishad": 172,
+      "itihasa": 2921,
+      "purana": 632,
+      "smriti": 226,
+      "other": 124,
+      "total": 4764,
+      "tantra": 21,
+      "stotra": 1
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 2,
+        "verseNum": 47,
+        "sanskrit": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\n\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि।।2.47।।\n ",
+        "transliteration": "karmaṇy-evādhikāras te mā phaleṣhu kadāchana\nmā karma-phala-hetur bhūr mā te saṅgo ’stvakarmaṇi\n",
+        "hindi": "कर्तव्य-कर्म करनेमें ही तेरा अधिकार है, फलोंमें कभी नहीं। अतः तू कर्मफलका हेतु भी मत बन और तेरी अकर्मण्यतामें भी आसक्ति न हो।\n ",
+        "translation": "You have the right to work alone, but not to the fruits of it. Do not be driven by the results of your work, nor have attachment to inaction.",
+        "contextHi": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन",
+        "contextEn": "Your right is to work only, but never to its fruits"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 3,
+        "verseNum": 19,
+        "sanskrit": "तस्मादसक्तः सततं कार्यं कर्म समाचर।\n\nअसक्तो ह्याचरन्कर्म परमाप्नोति पूरुषः।।3.19।।\n ",
+        "transliteration": "tasmād asaktaḥ satataṁ kāryaṁ karma samāchara\nasakto hyācharan karma param āpnoti pūruṣhaḥ\n",
+        "hindi": "इसलिये तू निरन्तर आसक्तिरहित होकर कर्तव्य-कर्मका भलीभाँति आचरण कर; क्योंकि आसक्तिरहित होकर कर्म करता हुआ मनुष्य परमात्माको प्राप्त हो जाता है। ",
+        "translation": "Therefore, do your work without attachment, which ought to be done. For, a person who works without attachment attains the Supreme.",
+        "contextHi": "तस्मादसक्तः सततं कार्यं कर्म समाचर",
+        "contextEn": "Perform action unattached, for by unattached action one attains the Supreme"
+      },
+      {
+        "scriptureSlug": "ishavasya",
+        "scriptureTitle": "Isha Upanishad",
+        "chapter": 1,
+        "verseNum": 2,
+        "sanskrit": "कुर्वन्नेवेह कर्माणि जिजीविषेच्छतं समाः । एवं त्वयि नान्यथेतोऽस्ति न कर्म लिप्यते नरे ॥",
+        "transliteration": "kurvanneveha karmāṇi jijīviṣecchataṃ samāḥ | evaṃ tvayi nānyatheto'sti na karma lipyate nare ||",
+        "hindi": "यहाँ कर्म करते हुए ही व्यक्ति सौ वर्ष जीने की इच्छा करे। तेरे लिये इसके अतिरिक्त कोई और मार्ग नहीं है; ऐसे जीने वाले मनुष्य को कर्म लिप्त नहीं करते।",
+        "translation": "Performing actions here, one should desire to live a hundred years. There is no other way — action does not bind a man who lives thus.",
+        "contextHi": "कुर्वन्नेवेह कर्माणि जिजीविषेच्छतं समाः",
+        "contextEn": "Performing actions here, let a man wish to live a hundred years"
+      }
+    ]
+  },
+  {
+    "slug": "jnana",
+    "titleSanskrit": "ज्ञान",
+    "titleIast": "jñāna",
+    "titleEn": "Jñāna (Experiential Wisdom & Direct Intuitive Realization)",
+    "etymology": "ज्ञा (jñā) — अवबोधने (To directly perceive, realize, and awaken)",
+    "briefDefinitionHi": "संसार और आत्मा के सत्य का प्रत्यक्ष अपरोक्षानुभूति मूलक बोध, जिससे अज्ञान का संपूर्ण नाश होता है।",
+    "briefDefinitionEn": "Direct spiritual realization and insight that dissolves the illusion of duality and ignorance.",
+    "categoryCounts": {
+      "veda": 953,
+      "upanishad": 295,
+      "itihasa": 2066,
+      "purana": 521,
+      "smriti": 130,
+      "other": 198,
+      "total": 4197,
+      "tantra": 34
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 4,
+        "verseNum": 38,
+        "sanskrit": "न हि ज्ञानेन सदृशं पवित्रमिह विद्यते।\n\nतत्स्वयं योगसंसिद्धः कालेनात्मनि विन्दति।।4.38।।\n ",
+        "transliteration": "na hi jñānena sadṛiśhaṁ pavitramiha vidyate\ntatsvayaṁ yogasansiddhaḥ kālenātmani vindati\n\n",
+        "hindi": "इस मनुष्यलोकमें ज्ञानके समान पवित्र करनेवाला निःसन्देह दूसरा कोई साधन नहीं है। जिसका योग भली-भाँति सिद्ध हो गया है, वह (कर्मयोगी) उस तत्त्वज्ञानको अवश्य ही स्वयं अपने-आपमें पा लेता है। ",
+        "translation": "For there is no purifier equal to knowledge; he who is perfected in Karma Yoga finds this knowledge of his own accord in himself in due time.",
+        "contextHi": "न हि ज्ञानेन सदृशं पवित्रमिह विद्यते",
+        "contextEn": "Verily, there is no purifier in this world like wisdom"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 7,
+        "verseNum": 17,
+        "sanskrit": "तेषां ज्ञानी नित्ययुक्त एकभक्ितर्विशिष्यते।\n\nप्रियो हि ज्ञानिनोऽत्यर्थमहं स च मम प्रियः।।7.17।।\n ",
+        "transliteration": "teṣhāṁ jñānī nitya-yukta eka-bhaktir viśhiṣhyate\npriyo hi jñānino ’tyartham ahaṁ sa cha mama priyaḥ\n",
+        "hindi": "उन चार भक्तोंमें मेरेमें निरन्तर लगा हुआ, अनन्यभक्तिवाला ज्ञानी अर्थात् प्रेमी भक्त श्रेष्ठ है; क्योंकि ज्ञानी भक्तको मैं अत्यन्त प्रिय हूँ और वह भी मेरेको अत्यन्त प्रिय है। ",
+        "translation": "Of these, the man of knowledge, who is ever with Me in Yoga and devoted to the One only, is the foremost; for I am very dear to the man of knowledge, and he is also dear to Me.",
+        "contextHi": "तेषां ज्ञानी नित्ययुक्त एकभक्तिर्विशिष्यते",
+        "contextEn": "Of these, the wise one who is constantly established in union is supreme"
+      },
+      {
+        "scriptureSlug": "mundaka",
+        "scriptureTitle": "Mundaka Upanishad",
+        "chapter": 3,
+        "verseNum": "3.2.9",
+        "sanskrit": "अतः समुद्रा गिरयश्च सर्वेऽस्मात्स्यन्दन्ते सिन्धवः सर्वरूपाः । अतश्च सर्वा ओषधयो रसश्च येनैष भूतस्तिष्ठते ह्यन्तरात्मा ॥",
+        "transliteration": "ataḥ samudrā girayaśca sarve'smātsyandante sindhavaḥ sarvarūpāḥ | ataśca sarvā oṣadhayo rasaśca yenaiṣa bhūtastiṣṭhate hyantarātmā ||",
+        "hindi": "उसी से सब समुद्र और पर्वत; उसी से सब रूपों की नदियाँ बहती हैं; उसी से सब औषधियाँ और रस; जिसके द्वारा यह अन्तरात्मा भूत-रूप में स्थित रहता है।",
+        "translation": "From him: all oceans and mountains; from him flow rivers of every kind; from him: all plants and their juices — by which this inner Self stands as embodied being.",
+        "contextHi": "ब्रह्म वेद ब्रह्मैव भवति",
+        "contextEn": "He who knows the supreme Brahman becomes Brahman itself"
+      }
+    ]
+  },
+  {
+    "slug": "bhakti",
+    "titleSanskrit": "भक्ति",
+    "titleIast": "bhakti",
+    "titleEn": "Bhakti (Selfless Loving Devotion & Divine Resonance)",
+    "etymology": "भज् (bhaj) — सेवायाम् / सम्भक्तौ (To share, revere, belong to, love unconditionally)",
+    "briefDefinitionHi": "परमात्मा के प्रति निष्काम, अनन्य और उत्कट प्रेम तथा समर्पण की वह धारा जो साधक को अहं-शून्य कर दे।",
+    "briefDefinitionEn": "Selfless, all-encompassing love and loving surrender to the Supreme Divine.",
+    "categoryCounts": {
+      "veda": 244,
+      "upanishad": 21,
+      "itihasa": 394,
+      "purana": 463,
+      "smriti": 5,
+      "other": 66,
+      "total": 1203,
+      "tantra": 6,
+      "stotra": 4
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 9,
+        "verseNum": 26,
+        "sanskrit": "पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति।\n\nतदहं भक्त्युपहृतमश्नामि प्रयतात्मनः।।9.26।।\n ",
+        "transliteration": "patraṁ puṣhpaṁ phalaṁ toyaṁ yo me bhaktyā prayachchhati\ntadahaṁ bhaktyupahṛitam aśhnāmi prayatātmanaḥ\n",
+        "hindi": "जो भक्त पत्र, पुष्प, फल, जल आदि (यथासाध्य प्राप्त वस्तु) को भक्तिपूर्वक मेरे अर्पण करता है, उस मेरेमें तल्लीन हुए अन्तःकरणवाले भक्तके द्वारा भक्तिपूर्वक दिये हुए उपहार-(भेंट-) को मैं खा लेता हूँ।",
+        "translation": "Whoever offers Me with true devotion a leaf, a flower, a fruit, or some water, I accept this offering made with devotion by them who are pure of heart.",
+        "contextHi": "पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति",
+        "contextEn": "Whosoever offers Me with devotion a leaf, flower, fruit, or water"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 12,
+        "verseNum": 2,
+        "sanskrit": "श्री भगवानुवाचमय्यावेश्य मनो ये मां नित्ययुक्ता उपासते।श्रद्धया परयोपेतास्ते मे युक्ततमा मताः।।12.2।।",
+        "transliteration": "śhrī-bhagavān uvācha\nmayy āveśhya mano ye māṁ nitya-yuktā upāsate\nśhraddhayā parayopetās te me yuktatamā matāḥ\n",
+        "hindi": "मेरेमें मनको लगाकर नित्य-निरन्तर मेरेमें लगे हुए जो भक्त परम श्रद्धासे युक्त होकर मेरी उपासना करते हैं, वे मेरे मतमें सर्वश्रेष्ठ योगी हैं।",
+        "translation": "The Lord said, \"Those who, ever integrated with Me and possessing supreme faith, worship Me, focusing their minds on Me—these are considered by Me to be the highest among the yogis.\"",
+        "contextHi": "मय्यावेश्य मनो ये मां नित्ययुक्ता उपासते",
+        "contextEn": "Those who fix their mind on Me and worship Me with supreme faith"
+      },
+      {
+        "scriptureSlug": "shvetashvatara",
+        "scriptureTitle": "Shvetashvatara Upanishad",
+        "chapter": 6,
+        "verseNum": 23,
+        "sanskrit": "यस्य देवे परा भक्तिः यथा देवे तथा गुरौ । तस्यैते कथिता ह्यर्थाः प्रकाशन्ते महात्मनः",
+        "transliteration": "yasya deve parā bhaktiḥ yathā deve tathā gurau | tasyaite kathitā hyarthāḥ prakāśante mahātmanaḥ",
+        "hindi": "जिसे देव में सर्वोच्च भक्ति हो, और देव के समान ही गुरु में — उस महान आत्मा को कही हुई ये बातें चमक उठती हैं।",
+        "translation": "To one who has the highest devotion to God, and as to God so to the teacher — to that great soul these matters, when told, shine forth.",
+        "contextHi": "यस्य देवे परा भक्तिर्यथा देवे तथा गुरौ",
+        "contextEn": "He who has supreme devotion to the Divine and to the Guru"
+      }
+    ]
+  },
+  {
+    "slug": "yoga",
+    "titleSanskrit": "योग",
+    "titleIast": "yoga",
+    "titleEn": "Yoga (Equanimity, Union & Mastery of Mind)",
+    "etymology": "युज् (yuj) — समाधौ / संयमने (To integrate, harness, unite individual consciousness with the Infinite)",
+    "briefDefinitionHi": "चित्त की वृत्तियों का निरोध तथा सुख-दुःख में समत्व का भाव योग कहलाता है।",
+    "briefDefinitionEn": "The state of complete inner harmony, mental stillness, and conscious union with the Divine.",
+    "categoryCounts": {
+      "veda": 754,
+      "upanishad": 150,
+      "itihasa": 1222,
+      "purana": 685,
+      "smriti": 90,
+      "other": 91,
+      "total": 3081,
+      "tantra": 89
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 2,
+        "verseNum": 48,
+        "sanskrit": "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय।\n\nसिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते।।2.48।।\n ",
+        "transliteration": "yoga-sthaḥ kuru karmāṇi saṅgaṁ tyaktvā dhanañjaya\nsiddhy-asiddhyoḥ samo bhūtvā samatvaṁ yoga uchyate\n",
+        "hindi": "हे धनञ्जय ! तू आसक्तिका त्याग करके सिद्धि-असिद्धिमें सम होकर योगमें स्थित हुआ कर्मोंको कर; क्योंकि समत्व ही योग कहा जाता है।\n ",
+        "translation": "Abandoning attachment and established in Yoga, perform works, viewing success and failure with an even mind. Evenness of mind is said to be Yoga.",
+        "contextHi": "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय",
+        "contextEn": "Established in Yoga perform action, equanimity is called Yoga"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 2,
+        "verseNum": 50,
+        "sanskrit": "बुद्धियुक्तो जहातीह उभे सुकृतदुष्कृते।\n\nतस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम्।।2.50।।\n ",
+        "transliteration": "buddhi-yukto jahātīha ubhe sukṛita-duṣhkṛite\ntasmād yogāya yujyasva yogaḥ karmasu kauśhalam\n",
+        "hindi": "बुद्धि-(समता) से युक्त मनुष्य यहाँ जीवित अवस्थामें ही पुण्य और पाप दोनोंका त्याग कर देता है। अतः तू योग-(समता-) में लग जा, क्योंकि योग ही कर्मोंमें कुशलता है।\n ",
+        "translation": "A person with an evenness of mind discards both good and evil here and now. Therefore, strive for Yoga; for Yoga is skill in action.",
+        "contextHi": "योगः कर्मसु कौशलम्",
+        "contextEn": "Yoga is skill and wisdom in action"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 6,
+        "verseNum": 23,
+        "sanskrit": "तं विद्याद् दुःखसंयोगवियोगं योगसंज्ञितम्।\n\nस निश्चयेन योक्तव्यो योगोऽनिर्विण्णचेतसा।।6.23।।\n ",
+        "transliteration": "taṁ vidyād duḥkha-sanyoga-viyogaṁ yogasaṅjñitam\nsa niśhchayena yoktavyo yogo ’nirviṇṇa-chetasā\n",
+        "hindi": "जिसमें दुःखोंके संयोगका ही वियोग है, उसीको 'योग' नामसे जानना चाहिये। (वह योग जिस ध्यानयोगका लक्ष्य है,) उस ध्यानयोगका अभ्यास न उकताये हुए चित्तसे निश्चयपूर्वक करना चाहिये।",
+        "translation": "Know this deliverance from association with misery to be Yoga. This Yoga must be practiced with determination and with a mind free from despondency.",
+        "contextHi": "तं विद्याद् दुःखसंयोगवियोगं योगसञ्ज्ञितम्",
+        "contextEn": "Let that state be known as Yoga which is severance from all contact with suffering"
+      }
+    ]
+  },
+  {
+    "slug": "maya",
+    "titleSanskrit": "माया",
+    "titleIast": "māyā",
+    "titleEn": "Māyā (The Power of Illusion, Measurement & Cosmic Play)",
+    "etymology": "मा (mā) — माने (That which measures out, projects appearances, and veils the true reality)",
+    "briefDefinitionHi": "ईश्वर की वह अचिन्त्य शक्ति जो सत्य को छिपाकर विविध रूपात्मक संसार की प्रतीति कराती है।",
+    "briefDefinitionEn": "The enigmatic cosmic creative power that veils non-dual reality and projects the empirical world of forms.",
+    "categoryCounts": {
+      "veda": 38,
+      "upanishad": 44,
+      "itihasa": 351,
+      "purana": 219,
+      "smriti": 10,
+      "other": 59,
+      "total": 728,
+      "tantra": 7
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 7,
+        "verseNum": 14,
+        "sanskrit": "दैवी ह्येषा गुणमयी मम माया दुरत्यया।\n\nमामेव ये प्रपद्यन्ते मायामेतां तरन्ति ते।।7.14।।\n ",
+        "transliteration": "daivī hyeṣhā guṇa-mayī mama māyā duratyayā\nmām eva ye prapadyante māyām etāṁ taranti te\n",
+        "hindi": "क्योंकि मेरी यह गुणमयी दैवी माया बड़ी दुरत्यय है अर्थात् इससे पार पाना बड़ा कठिन है। जो केवल मेरे ही शरण होते हैं, वे इस मायाको तर जाते हैं। ",
+        "translation": "(a) For this divine Maya or Mine, consisting of the three Gunas (assumed for purposes of sport), is hard to overcome.\n৷৷\n(b) ৷৷ But those who take refuge in Me alone shall pass beyond the Maya.",
+        "contextHi": "दैवी ह्येषा गुणमयी मम माया दुरत्यया",
+        "contextEn": "Verily this divine illusion of Mine consisting of the gunas is difficult to cross"
+      },
+      {
+        "scriptureSlug": "shvetashvatara",
+        "scriptureTitle": "Shvetashvatara Upanishad",
+        "chapter": 4,
+        "verseNum": 10,
+        "sanskrit": "मायां तु प्रकृतिं विद्यान्मायिनं च महेश्वरम् । तस्यवयवभूतैस्तु व्याप्तं सर्वमिदं जगत्",
+        "transliteration": "māyāṃ tu prakṛtiṃ vidyānmāyinaṃ ca maheśvaram | tasyavayavabhūtaistu vyāptaṃ sarvamidaṃ jagat",
+        "hindi": "प्रकृति को माया जानो, और महेश्वर को माया का रचयिता। यह सारा जगत उसके अंशभूत प्राणियों से भरा है।",
+        "translation": "Know that Nature is illusion (maya), and the great Lord is the Maker of illusion. This whole world is pervaded by beings that are parts of him.",
+        "contextHi": "मायां तु प्रकृतिं विद्यान्मायिनं च महेश्वरम्",
+        "contextEn": "Know nature to be Maya, and the Supreme Lord as the master of Maya"
+      }
+    ]
+  },
+  {
+    "slug": "tapas",
+    "titleSanskrit": "तपस्",
+    "titleIast": "tapas",
+    "titleEn": "Tapas (Sacred Austerity, Discipline & Spiritual Fire)",
+    "etymology": "तप् (tap) — संतापे (To heat, burn impurities, generate inner spiritual energy)",
+    "briefDefinitionHi": "इंद्रिय-संयम, सत्य-निष्ठा और आत्म-शोधन के लिए किया जाने वाला पावन संकल्प और तितिक्षा।",
+    "briefDefinitionEn": "Purifying spiritual discipline, patient endurance, and intense focused determination that burns impurities.",
+    "categoryCounts": {
+      "veda": 468,
+      "upanishad": 128,
+      "itihasa": 3015,
+      "purana": 856,
+      "smriti": 84,
+      "other": 34,
+      "total": 4595,
+      "tantra": 10
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 17,
+        "verseNum": 14,
+        "sanskrit": "देवद्विजगुरुप्राज्ञपूजनं शौचमार्जवम्।ब्रह्मचर्यमहिंसा च शारीरं तप उच्यते।।17.14।।",
+        "transliteration": "deva-dwija-guru-prājña- pūjanaṁ śhaucham ārjavam\nbrahmacharyam ahinsā cha śhārīraṁ tapa uchyate\n",
+        "hindi": "देवता, ब्राह्मण, गुरुजन और जीवन्मुक्त महापुरुषका पूजन करना, शुद्धि रखना, सरलता, ब्रह्मचर्यका पालन करना और हिंसा न करना -- यह शरीरसम्बन्धी तप कहा जाता है।",
+        "translation": "Worshiping the gods, the twice-born, the preceptors, the enlightened ones, practicing purity, uprightness, continence, and non-injury—these are called austerity of the body.",
+        "contextHi": "शारीरिक तप का स्वरूप",
+        "contextEn": "Austerity of the body: purity, straightness, celibacy, and non-violence"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 17,
+        "verseNum": 15,
+        "sanskrit": "अनुद्वेगकरं वाक्यं सत्यं प्रियहितं च यत्।स्वाध्यायाभ्यसनं चैव वाङ्मयं तप उच्यते।।17.15।।",
+        "transliteration": "anudvega-karaṁ vākyaṁ satyaṁ priya-hitaṁ cha yat\nsvādhyāyābhyasanaṁ chaiva vāṅ-mayaṁ tapa uchyate\n",
+        "hindi": "उद्वेग न करनेवाला, सत्य, प्रिय, हितकारक भाषण तथा स्वाध्याय और अभ्यास करना -- यह वाणी-सम्बन्धी तप कहा जाता है।",
+        "translation": "Speech that causes no shock, is true, pleasant, and beneficial, and also the practice of reciting scriptures, is called the austerity of speech.",
+        "contextHi": "अनुद्वेगकरं वाक्यं सत्यं प्रियहितं च यत्",
+        "contextEn": "Austerity of speech: words that cause no agitation, truthful, pleasant, and beneficial"
+      },
+      {
+        "scriptureSlug": "taittiriya",
+        "scriptureTitle": "Taittiriya Upanishad",
+        "chapter": 3,
+        "verseNum": "3.1.1",
+        "sanskrit": "भृगुर्वै वारुणिः । वरुणं पितरमुपससार । अधीहि भगवो ब्रह्मेति । तस्मा एतत्प्रोवाच । अन्नं प्राणं चक्षुः श्रोत्रं मनो वाचमिति । तँ्होवाच । यतो वा इमानि भूतानि जायन्ते । येन जातानि जीवन्ति । यत्प्रयन्त्यभिसंविशन्ति । तद्विजिज्ञासस्व । तद्ब्रह्मेति । स तपोऽतप्यत । स तपस्तप्त्वा ॥",
+        "transliteration": "bhṛgurvai vāruṇiḥ | varuṇaṃ pitaramupasasāra | adhīhi bhagavo brahmeti | tasmā etatprovāca | annaṃ prāṇaṃ cakṣuḥ śrotraṃ mano vācamiti | tagaṃhovāca | yato vā imāni bhūtāni jāyante | yena jātāni jīvanti | yatprayantyabhisaṃviśanti | tadvijijñāsasva | tadbrahmeti | sa tapo'tapyata | sa tapastaptvā ||",
+        "hindi": "वरुण-पुत्र भृगु पिता वरुण के पास गए — \"हे भगवन्, मुझे ब्रह्म का उपदेश दीजिये।\" वरुण ने कहा — \"अन्न, प्राण, चक्षु, श्रोत्र, मन, वाक्।\" फिर कहा — \"जिससे ये भूत उत्पन्न होते हैं, जिससे जीते हैं, जिसमें अन्त में लीन होते हैं — उसे जानने की इच्छा करो; वही ब्रह्म है।\" उसने तप किया। तप करके...",
+        "translation": "Bhṛgu, son of Varuṇa, approached his father: 'Sir, teach me Brahman.' Varuṇa said: food, prāṇa, sight, hearing, mind, speech. He added: 'That from which beings are born, by which when born they live, into which they enter at departure — desire to know That. That is Brahman.' He performed tapas. Having performed tapas...",
+        "contextHi": "तपसा ब्रह्म विजिज्ञासस्व",
+        "contextEn": "Seek to know Brahman through tapas"
+      }
+    ]
+  },
+  {
+    "slug": "prana",
+    "titleSanskrit": "प्राण",
+    "titleIast": "prāṇa",
+    "titleEn": "Prāṇa (The Primordial Vital Force & Breath of Life)",
+    "etymology": "प्र + अन् (pra + an) — जीवनकर्मणि (To breathe forth, animate, energize all existence)",
+    "briefDefinitionHi": "शरीर और ब्रह्मांड में संचरण करने वाली वह सूक्ष्म जीवन-ऊर्जा जो श्वास-प्रश्वास और चेतना का संवहन करती है।",
+    "briefDefinitionEn": "The primary life-force, vital breath, and bio-energy that sustains physical and subtle existence.",
+    "categoryCounts": {
+      "veda": 709,
+      "upanishad": 319,
+      "itihasa": 923,
+      "purana": 377,
+      "smriti": 110,
+      "other": 66,
+      "total": 2532,
+      "tantra": 28
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "prashna",
+        "scriptureTitle": "Prashna Upanishad",
+        "chapter": 2,
+        "verseNum": 1,
+        "sanskrit": "अथ हैनं भार्गवो वैदर्भिः पप्रच्छ । भगवन् कत्येव देवाः प्रजां विधारयन्ते कतर एतत् प्रकाशयन्ते कः पुनरेषां वरिष्ठ इति ॥",
+        "transliteration": "atha hainaṃ bhārgavo vaidarbhiḥ papraccha | bhagavan katyeva devāḥ prajāṃ vidhārayante katara etat prakāśayante kaḥ punareṣāṃ variṣṭha iti ||",
+        "hindi": "फिर भार्गव वैदर्भि ने पूछा — \"हे भगवन्! कितने देव शरीर को धारण करते हैं? उनमें से कौन इसे प्रकाशित करता है? और उनमें श्रेष्ठ कौन है?\"",
+        "translation": "Then Bhārgava Vaidarbhi asked: \"Sir, how many devas support the body? Which of them illumines it? And which is the greatest among them?\"",
+        "contextHi": "प्राण की सार्वभौमिक श्रेष्ठता",
+        "contextEn": "Prana indeed is the fire, the sun, the rain, and the indwelling ruler"
+      },
+      {
+        "scriptureSlug": "katha",
+        "scriptureTitle": "Katha Upanishad",
+        "chapter": 2,
+        "verseNum": "2.2.5",
+        "sanskrit": "अविद्यायामन्तरे वर्तमानाः स्वयं धीराः पण्डितंमन्यमानाः । दन्द्रम्यमाणाः परियन्ति मूढा अन्धेनैव नीयमाना यथान्धाः ॥",
+        "transliteration": "avidyāyāmantare vartamānāḥ svayaṃ dhīrāḥ paṇḍitaṃmanyamānāḥ | dandramyamāṇāḥ pariyanti mūḍhā andhenaiva nīyamānā yathāndhāḥ ||",
+        "hindi": "अविद्या में रहते हुए स्वयं को धीर और पण्डित मानने वाले — ये मूढ़ बारम्बार ठोकर खाते भटकते हैं — जैसे अन्धों के द्वारा ले जाये जाने वाले अन्धे।",
+        "translation": "Living in the midst of ignorance, considering themselves wise and learned, the deluded wander, struck again and again — like blind men led by the blind.",
+        "contextHi": "न प्राणेन नापानेन मर्त्यो जीवति कश्चन",
+        "contextEn": "Not by prana, not by apana does any mortal live, but by another upon which both depend"
+      }
+    ]
+  },
+  {
+    "slug": "moksha",
+    "titleSanskrit": "मोक्ष",
+    "titleIast": "mokṣa",
+    "titleEn": "Mokṣa (Liberation, Spiritual Freedom & Transcendence)",
+    "etymology": "मुच् (muc) — मोचने (To release, untie knots, attain final emancipation from limitation)",
+    "briefDefinitionHi": "अविद्या, काम और कर्म के बंधनों से मुक्त होकर अपने शुद्ध सच्चिदानन्द स्वरूप में नित्य स्थित होना।",
+    "briefDefinitionEn": "Supreme liberation from the cycle of rebirth and worldly bondage, realization of oneness with the Absolute.",
+    "categoryCounts": {
+      "veda": 121,
+      "upanishad": 135,
+      "itihasa": 584,
+      "purana": 411,
+      "smriti": 21,
+      "other": 109,
+      "total": 1411,
+      "tantra": 30
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 18,
+        "verseNum": 66,
+        "sanskrit": "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः।।18.66।।",
+        "transliteration": "sarva-dharmān parityajya mām ekaṁ śharaṇaṁ vraja\nahaṁ tvāṁ sarva-pāpebhyo mokṣhayiṣhyāmi mā śhuchaḥ\n",
+        "hindi": "सम्पूर्ण धर्मोंका आश्रय छोड़कर तू केवल मेरी शरणमें आ जा। मैं तुझे सम्पूर्ण पापोंसे मुक्त कर दूँगा, चिन्ता मत कर।",
+        "translation": "Relinquishing all Dharmas completely, seek Me alone for refuge. I will release you from all sins; grieve not.",
+        "contextHi": "अहं त्वां सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः",
+        "contextEn": "I shall liberate you from all sins; do not grieve"
+      },
+      {
+        "scriptureSlug": "mundaka",
+        "scriptureTitle": "Mundaka Upanishad",
+        "chapter": 3,
+        "verseNum": "3.2.6",
+        "sanskrit": "तस्मादृचः साम यजूंषि दीक्षा यज्ञाश्च सर्वे क्रतवो दक्षिणाश्च । संवत्सरश्च यजमानश्च लोकाः सोमो यत्र पवते यत्र सूर्यः ॥",
+        "transliteration": "tasmādṛcaḥ sāma yajūṃṣi dīkṣā yajñāśca sarve kratavo dakṣiṇāśca | saṃvatsaraśca yajamānaśca lokāḥ somo yatra pavate yatra sūryaḥ ||",
+        "hindi": "उसी से ऋच्, साम, यजुस्; दीक्षा, सब यज्ञ, सब क्रतु, सब दक्षिणाएँ; संवत्सर, यजमान, और वे लोक — जहाँ चन्द्रमा और सूर्य चमकते हैं।",
+        "translation": "From him: the Ṛc, Sāman, and Yajus hymns; initiation, all sacrifices, all rites, all priestly fees; the year, the sacrificer, and the worlds where the moon and the sun shine.",
+        "contextHi": "वेदान्तविज्ञानसुनिश्चितार्थाः",
+        "contextEn": "Those who have ascertained the meaning of Vedanta attain liberation in the supreme state"
+      }
+    ]
+  },
+  {
+    "slug": "sthitaprajna",
+    "titleSanskrit": "स्थितप्रज्ञ",
+    "titleIast": "sthitaprajña",
+    "titleEn": "Sthitaprajña (The Sage of Unshakable, Steady Wisdom)",
+    "etymology": "स्थित + प्रज्ञा (sthita + prajñā) — One whose intuitive understanding is unshakeably rooted in the Self",
+    "briefDefinitionHi": "जो सम्पूर्ण कामनाओं का त्याग कर अपनी आत्मा में ही संतुष्ट रहता है और सुख-दुःख में निर्विकार रहता है।",
+    "briefDefinitionEn": "The awakened sage whose intellect is steadfast, untouched by desire, fear, or worldly perturbation.",
+    "categoryCounts": {
+      "veda": 4,
+      "upanishad": 0,
+      "itihasa": 4,
+      "purana": 0,
+      "smriti": 0,
+      "other": 2,
+      "total": 10
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 2,
+        "verseNum": 55,
+        "sanskrit": "श्री भगवानुवाच\n\nप्रजहाति यदा कामान् सर्वान् पार्थ मनोगतान्।\n\nआत्मन्येवात्मना तुष्टः स्थितप्रज्ञस्तदोच्यते।।2.55।।\n ",
+        "transliteration": "śhrī bhagavān uvācha\nprajahāti yadā kāmān sarvān pārtha mano-gatān\nātmany-evātmanā tuṣhṭaḥ sthita-prajñas tadochyate\n",
+        "hindi": "श्रीभगवान् बोले - हे पृथानन्दन ! जिस कालमें साधक मनोगत सम्पूर्ण कामनाओंका अच्छी तरह त्याग कर देता है और अपने-आपसे अपने-आपमें ही सन्तुष्ट रहता है, उस कालमें वह स्थितप्रज्ञ कहा जाता है।\n ",
+        "translation": "The Lord said, \"When a man renounces all the desires of the mind and is content with himself, then he is said to possess firm wisdom.\"",
+        "contextHi": "प्रजहाति यदा कामान्सर्वान्पार्थ मनोगतान्",
+        "contextEn": "When a man completely casts off all desires of the mind and is satisfied in the Self alone"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 2,
+        "verseNum": 56,
+        "sanskrit": "दुःखेष्वनुद्विग्नमनाः सुखेषु विगतस्पृहः।\n\nवीतरागभयक्रोधः स्थितधीर्मुनिरुच्यते।।2.56।।\n ",
+        "transliteration": "duḥkheṣhv-anudvigna-manāḥ sukheṣhu vigata-spṛihaḥ\nvīta-rāga-bhaya-krodhaḥ sthita-dhīr munir uchyate\n",
+        "hindi": "दुःखोंकी प्राप्ति होनेपर जिसके मनमें उद्वेग नहीं होता और सुखोंकी प्राप्ति होनेपर जिसके मनमें स्पृहा नहीं होती तथा जो राग, भय और क्रोधसे सर्वथा रहित हो गया है, वह मननशील मनुष्य स्थिरबुद्धि कहा जाता है।\n ",
+        "translation": "He whose mind is not perturbed by pain, who has no longing for pleasures, who is free from desire, fear, and anger—he is called a sage of firm wisdom.",
+        "contextHi": "दुःखेष्वनुद्विग्नमनाः सुखेषु विगतस्पृहः",
+        "contextEn": "He whose mind is not shaken by adversity, who does not hanker after happiness"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 2,
+        "verseNum": 71,
+        "sanskrit": "विहाय कामान्यः सर्वान्पुमांश्चरति निःस्पृहः।\n\nनिर्ममो निरहंकारः स शांतिमधिगच्छति।।2.71।।\n ",
+        "transliteration": "vihāya kāmān yaḥ sarvān pumānśh charati niḥspṛihaḥ\nnirmamo nirahankāraḥ sa śhāntim adhigachchhati\n",
+        "hindi": "जो मनुष्य सम्पूर्ण कामनाओंका त्याग करके स्पृहारहित, ममतारहित और अहंकाररहित होकर आचरण करता है, वह शान्तिको प्राप्त होता है।\n ",
+        "translation": "The one who, abandoning all desires, abides without longing, possession, and the sense of 'I' and 'mine', wins peace.",
+        "contextHi": "विहाय कामान्यः सर्वान्पुमांश्चरति निःस्पृहः",
+        "contextEn": "He who abandons all desires and moves about free from longing and egoism attains peace"
+      }
+    ]
+  },
+  {
+    "slug": "nishkama",
+    "titleSanskrit": "निष्काम",
+    "titleIast": "niṣkāma",
+    "titleEn": "Niṣkāma Karma (Desireless, Selfless Action)",
+    "etymology": "निस् + काम (nis + kāma) — Free from personal transactional desires and selfish calculations",
+    "briefDefinitionHi": "व्यक्तिगत फल की लालसा और स्वार्थ से रहित होकर केवल कर्तव्य और लोक-कल्याण की भावना से कर्म करना।",
+    "briefDefinitionEn": "Selfless action performed without clinging to outcomes or personal egoic rewards.",
+    "categoryCounts": {
+      "veda": 12,
+      "upanishad": 13,
+      "itihasa": 36,
+      "purana": 21,
+      "smriti": 3,
+      "other": 2,
+      "total": 87
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 2,
+        "verseNum": 47,
+        "sanskrit": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\n\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि।।2.47।।\n ",
+        "transliteration": "karmaṇy-evādhikāras te mā phaleṣhu kadāchana\nmā karma-phala-hetur bhūr mā te saṅgo ’stvakarmaṇi\n",
+        "hindi": "कर्तव्य-कर्म करनेमें ही तेरा अधिकार है, फलोंमें कभी नहीं। अतः तू कर्मफलका हेतु भी मत बन और तेरी अकर्मण्यतामें भी आसक्ति न हो।\n ",
+        "translation": "You have the right to work alone, but not to the fruits of it. Do not be driven by the results of your work, nor have attachment to inaction.",
+        "contextHi": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन",
+        "contextEn": "Action alone is your domain, never its fruits"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 3,
+        "verseNum": 25,
+        "sanskrit": "सक्ताः कर्मण्यविद्वांसो यथा कुर्वन्ति भारत।\n\nकुर्याद्विद्वांस्तथासक्तश्िचकीर्षुर्लोकसंग्रहम्।।3.25।।\n ",
+        "transliteration": "saktāḥ karmaṇyavidvānso yathā kurvanti bhārata\nkuryād vidvāns tathāsaktaśh chikīrṣhur loka-saṅgraham\n",
+        "hindi": "(श्लोक 25–26) हे भरतवंशोद्भव अर्जुन! कर्ममें आसक्त हुए अज्ञानीजन जिस प्रकार कर्म करते हैं, आसक्तिरहित विद्वान भी लोकसंग्रह करना चाहता हुआ उसी प्रकार कर्म करे।  तत्त्वज्ञ महापुरुष कर्मोंमें आसक्तिवाले अज्ञानी मनुष्योंकी बुद्धिमें भ्रम उत्पन्न न करे, प्रत्युत स्वयं समस्त कर्मोंको अच्छी तरहसे करता हुआ उनसे भी वैसे ही करवाये।",
+        "translation": "Just as the ignorant, attached to their work, act, O Arjuna, so too the learned should act without any attachment, and only for the welfare of the world.",
+        "contextHi": "कुर्याद्विद्वांस्तथासक्तश्चिकीर्षुर्लोकसंग्रहम्",
+        "contextEn": "The wise should act without attachment, desiring the welfare of the world"
+      }
+    ]
+  },
+  {
+    "slug": "sattva",
+    "titleSanskrit": "सत्त्व",
+    "titleIast": "sattva",
+    "titleEn": "Sattva (Quality of Purity, Clarity, Light & Harmony)",
+    "etymology": "सत् (sat) + त्व (tva) — Truth, being, that which is luminous and wholesome",
+    "briefDefinitionHi": "प्रकृति का वह गुण जो निर्मल, प्रकाशक, शान्तिदायक और ज्ञान को उत्पन्न करने वाला है।",
+    "briefDefinitionEn": "The mode of illumination, equilibrium, purity, and clarity among the three gunas.",
+    "categoryCounts": {
+      "veda": 17,
+      "upanishad": 28,
+      "itihasa": 636,
+      "purana": 258,
+      "smriti": 37,
+      "other": 24,
+      "total": 1003,
+      "tantra": 2,
+      "stotra": 1
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 14,
+        "verseNum": 6,
+        "sanskrit": "तत्र सत्त्वं निर्मलत्वात्प्रकाशकमनामयम्।सुखसङ्गेन बध्नाति ज्ञानसङ्गेन चानघ।।14.6।।",
+        "transliteration": "tatra sattvaṁ nirmalatvāt prakāśhakam anāmayam\nsukha-saṅgena badhnāti jñāna-saṅgena chānagha\n",
+        "hindi": "हे पापरहित अर्जुन ! उन गुणोंमें सत्त्वगुण निर्मल (स्वच्छ) होनेके कारण प्रकाशक और निर्विकार है। वह सुख और ज्ञानकी आसक्तिसे (देहीको) बाँधता है।",
+        "translation": "Of these, sattva, being without impurity, is luminous and free from morbidity. It binds, O Arjuna, through attachment to pleasure and knowledge.",
+        "contextHi": "तत्र सत्त्वं निर्मलत्वात्प्रकाशकमनामयम्",
+        "contextEn": "Of these, Sattva, being stainless, is luminous and free from sorrow"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 14,
+        "verseNum": 11,
+        "sanskrit": "सर्वद्वारेषु देहेऽस्मिन्प्रकाश उपजायते।ज्ञानं यदा तदा विद्याद्विवृद्धं सत्त्वमित्युत।।14.11।।",
+        "transliteration": "sarva-dvāreṣhu dehe ’smin prakāśha upajāyate\njñānaṁ yadā tadā vidyād vivṛiddhaṁ sattvam ity uta\n",
+        "hindi": "जब इस मनुष्यशरीरमें सब द्वारों-(इन्द्रियों और अन्तःकरण-) में प्रकाश (स्वच्छता) और ज्ञान (विवेक) प्रकट हो जाता है, तब जानना चाहिये कि सत्त्वगुण बढ़ा हुआ है।",
+        "translation": "When knowledge, like light, illuminates from all gateways (i.e., the senses), then one should know that Sattva prevails.",
+        "contextHi": "सर्वद्वारेषु देहेऽस्मिन्प्रकाश उपजायते",
+        "contextEn": "When the light of wisdom shines through every gate of the body, Sattva is predominant"
+      }
+    ]
+  },
+  {
+    "slug": "rajas",
+    "titleSanskrit": "रजस्",
+    "titleIast": "rajas",
+    "titleEn": "Rajas (Quality of Passion, Restless Drive & Ambition)",
+    "etymology": "रञ्ज् (rañj) — रागे (To color, desire, generate intense craving and restless motion)",
+    "briefDefinitionHi": "प्रकृति का वह गुण जो तृष्णा, आसक्ति और तीव्र कर्म-प्रवृत्ति को जन्म देता है।",
+    "briefDefinitionEn": "The mode of passion, agitation, ambition, and burning attachment that fuels ceaseless activity.",
+    "categoryCounts": {
+      "veda": 79,
+      "upanishad": 45,
+      "itihasa": 815,
+      "purana": 186,
+      "smriti": 28,
+      "other": 43,
+      "total": 1200,
+      "tantra": 2,
+      "stotra": 2
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 14,
+        "verseNum": 7,
+        "sanskrit": "रजो रागात्मकं विद्धि तृष्णासङ्गसमुद्भवम्।तन्निबध्नाति कौन्तेय कर्मसङ्गेन देहिनम्।।14.7।।",
+        "transliteration": "rajo rāgātmakaṁ viddhi tṛiṣhṇā-saṅga-samudbhavam\ntan nibadhnāti kaunteya karma-saṅgena dehinam\n",
+        "hindi": "हे कुन्तीनन्दन ! तृष्णा और आसक्तिको पैदा करनेवाले रजोगुणको तुम रागस्वरूप समझो। वह कर्मोंकी आसक्तिसे शरीरधारीको बाँधता है।",
+        "translation": "Know, O Arjuna, that Rajas is of the nature of passion springing from thirst and attachment. It binds the embodied self with attachment to action.",
+        "contextHi": "रजो रागात्मकं विद्धि तृष्णासङ्गसमुद्भवम्",
+        "contextEn": "Know Rajas to be of the nature of passion, arising from thirst and attachment"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 14,
+        "verseNum": 12,
+        "sanskrit": "लोभः प्रवृत्तिरारम्भः कर्मणामशमः स्पृहा।रजस्येतानि जायन्ते विवृद्धे भरतर्षभ।।14.12।।",
+        "transliteration": "lobhaḥ pravṛittir ārambhaḥ karmaṇām aśhamaḥ spṛihā\nrajasy etāni jāyante vivṛiddhe bharatarṣhabha\n\n",
+        "hindi": "हे भरतवंशमें श्रेष्ठ अर्जुन ! रजोगुणके बढ़नेपर लोभ, प्रवृत्ति, कर्मोंका आरम्भ, अशान्ति और स्पृहा -- ये वृत्तियाँ पैदा होती हैं।",
+        "translation": "Greed, activity, undertaking of work, restlessness, and longing—these arise, O Arjuna, when Rajas predominates.",
+        "contextHi": "लोभः प्रवृत्तिरारम्भः कर्मणामशमः स्पृहा",
+        "contextEn": "Greed, activity, the undertaking of actions, restlessness, longing arise when Rajas increases"
+      }
+    ]
+  },
+  {
+    "slug": "tamas",
+    "titleSanskrit": "तमस्",
+    "titleIast": "tamas",
+    "titleEn": "Tamas (Quality of Inertia, Delusion & Obscurity)",
+    "etymology": "तम् (tam) — ग्लानौ / अन्धकारे (To choke, obscure, darken, induce lethargy)",
+    "briefDefinitionHi": "प्रकृति का वह गुण जो अज्ञान, प्रमाद, आलस्य और निद्रा को उत्पन्न कर चेतना को आच्छादित करता है।",
+    "briefDefinitionEn": "The mode of darkness, inertia, delusion, and dullness that obscures perception and understanding.",
+    "categoryCounts": {
+      "veda": 210,
+      "upanishad": 70,
+      "itihasa": 914,
+      "purana": 135,
+      "smriti": 21,
+      "other": 43,
+      "total": 1395,
+      "tantra": 2
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 14,
+        "verseNum": 8,
+        "sanskrit": "तमस्त्वज्ञानजं विद्धि मोहनं सर्वदेहिनाम्।प्रमादालस्यनिद्राभिस्तन्निबध्नाति भारत।।14.8।।",
+        "transliteration": "tamas tv ajñāna-jaṁ viddhi mohanaṁ sarva-dehinām\npramādālasya-nidrābhis tan nibadhnāti bhārata\n",
+        "hindi": "हे भरतवंशी अर्जुन ! सम्पूर्ण देहधारियोंको मोहित करनेवाले तमोगुणको तुम अज्ञानसे उत्पन्न होनेवाला समझो। वह प्रमाद, आलस्य और निद्राके द्वारा देहधारियोंको बाँधता है।",
+        "translation": "Know that Tamas is born of false knowledge and deludes all embodied beings. It binds, O Arjuna, with negligence, indolence, and sleep.",
+        "contextHi": "तमस्त्वज्ञानजं विद्धि मोहनं सर्वदेहिनाम्",
+        "contextEn": "Know Tamas, which deludes all embodied beings, to be born of ignorance"
+      },
+      {
+        "scriptureSlug": "bhagavadgita",
+        "scriptureTitle": "Bhagavad Gita",
+        "chapter": 14,
+        "verseNum": 13,
+        "sanskrit": "अप्रकाशोऽप्रवृत्तिश्च प्रमादो मोह एव च।तमस्येतानि जायन्ते विवृद्धे कुरुनन्दन।।14.13।।",
+        "transliteration": "aprakāśho ’pravṛittiśh cha pramādo moha eva cha\ntamasy etāni jāyante vivṛiddhe kuru-nandana\n\n",
+        "hindi": "हे कुरुनन्दन ! तमोगुणके बढ़नेपर अप्रकाश, अप्रवृत्ति, प्रमाद और मोह -- ये वृत्तियाँ भी पैदा होती हैं।",
+        "translation": "Non-illumination, inactivity, negligence, and even delusion—these arise, O Arjuna, when Tamas prevails.",
+        "contextHi": "अप्रकाशोऽप्रवृत्तिश्च प्रमादो मोह एव च",
+        "contextEn": "Darkness, stagnation, negligence, and delusion arise when Tamas increases"
+      }
+    ]
+  },
+  {
+    "slug": "rta",
+    "titleSanskrit": "ऋत",
+    "titleIast": "ṛta",
+    "titleEn": "Ṛta (Primordial Cosmic Harmony, Truth & Rhythm)",
+    "etymology": "ऋ (ṛ) — गतौ (The foundational cosmic rhythm, inviolable harmony that orders sun, seasons, and beings)",
+    "briefDefinitionHi": "वैदिक दृष्टि में सम्पूर्ण सृष्टि को संचालित करने वाला शाश्वत प्राकृतिक और नैतिक नियम।",
+    "briefDefinitionEn": "The supreme Vedic principle of eternal cosmic harmony, natural law, and inviolable rhythm governing the universe.",
+    "categoryCounts": {
+      "veda": 629,
+      "upanishad": 232,
+      "itihasa": 1694,
+      "purana": 372,
+      "smriti": 99,
+      "other": 38,
+      "total": 3074,
+      "tantra": 9,
+      "stotra": 1
+    },
+    "canonicalVerses": [
+      {
+        "scriptureSlug": "taittiriya",
+        "scriptureTitle": "Taittiriya Upanishad",
+        "chapter": 1,
+        "verseNum": "1.1.1",
+        "sanskrit": "ॐ शं नो मित्रः शं वरुणः । शं नो भवत्वर्यमा । शं न इन्द्रो बृहस्पतिः । शं नो विष्णुरुरुक्रमः । नमो ब्रह्मणे । नमस्ते वायो । त्वमेव प्रत्यक्षं ब्रह्मासि । त्वामेव प्रत्यक्षं ब्रह्म वदिष्यामि । ऋतं वदिष्यामि । सत्यं वदिष्यामि । तन्मामवतु । तद्वक्तारमवतु । अवतु माम् । अवतु वक्तारम् । ॐ शान्तिः शान्तिः शान्तिः ॥",
+        "transliteration": "oṃ śaṃ no mitraḥ śaṃ varuṇaḥ | śaṃ no bhavatvaryamā | śaṃ na indro bṛhaspatiḥ | śaṃ no viṣṇururukramaḥ | namo brahmaṇe | namaste vāyo | tvameva pratyakṣaṃ brahmāsi | tvāmeva pratyakṣaṃ brahma vadiṣyāmi | ṛtaṃ vadiṣyāmi | satyaṃ vadiṣyāmi | tanmāmavatu | tadvaktāramavatu | avatu mām | avatu vaktāram | oṃ śāntiḥ śāntiḥ śāntiḥ ||",
+        "hindi": "ॐ। मित्र हमारे प्रति शान्त हों, वरुण शान्त हों, अर्यमा शान्त हों, इन्द्र और बृहस्पति शान्त हों, उरुक्रम विष्णु शान्त हों। ब्रह्म को नमस्कार। हे वायु, तुम्हें नमस्कार — तुम ही प्रत्यक्ष ब्रह्म हो। तुम्हीं को प्रत्यक्ष ब्रह्म कहूँगा। मैं ऋत बोलूँगा; सत्य बोलूँगा। वह मेरी रक्षा करे; वह वक्ता की रक्षा करे। ॐ शान्तिः शान्तिः शान्तिः।",
+        "translation": "OM. May Mitra be propitious to us; may Varuṇa be propitious; may Aryaman be propitious; may Indra and Bṛhaspati be propitious; may the far-striding Viṣṇu be propitious. Salutation to Brahman. Salutation to thee, O Vāyu — thou alone art the visible Brahman. I declare thee alone to be the visible Brahman. I will speak ṛta. I will speak satya. May That protect me; may That protect the speaker. OM. Peace, peace, peace.",
+        "contextHi": "ऋतं वदिष्यामि सत्यं वदिष्यामि",
+        "contextEn": "I shall speak the eternal cosmic rhythm, I shall speak the truth"
+      },
+      {
+        "scriptureSlug": "rigveda",
+        "scriptureTitle": "Rig Veda",
+        "chapter": 1,
+        "verseNum": "1.1.8",
+        "sanskrit": "मूल श्लोक पाठ",
+        "contextHi": "राजन्तमध्वराणां गोपाामृतस्य दीदिविम्",
+        "contextEn": "Lord of sacrifices, shining guardian of cosmic order (Rta)"
+      }
+    ]
+  }
+]

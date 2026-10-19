@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "search:core": "tsx scripts/build-search-core.ts",
-    "prebuild": "npm run search:core && npm run publish:data && npm run check && npm run og:verses",
+    "prebuild": "npm run search:core && npm run build:concordance && npm run publish:data && npm run check && npm run og:verses",
     "build": "next build",
     "postbuild": "npm run check:export && npm run check:sitemap && npm run prune:export",
     "prune:export": "node scripts/prune-export.mjs",
@@ -65,6 +65,7 @@
     "generate:analysis-index": "tsx scripts/generate-analysis-index.ts",
     "publish:commentary": "tsx scripts/convert-commentary-to-json.ts",
     "generate:commentary": "tsx scripts/generate-verse-commentary.ts",
+    "build:concordance": "tsx scripts/build-concordance-db.ts",
     "shard:scriptures": "tsx scripts/shard-scriptures-full.ts",
     "publish:data": "npm run publish:commentary && npm run shard:scriptures",
     "merge:all": "tsx scripts/merge-all.ts",
