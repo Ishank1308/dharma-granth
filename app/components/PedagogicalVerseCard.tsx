@@ -36,9 +36,15 @@ import { triggerTactileFeedback } from '@/lib/haptics';
 import { readHref, shareVerseUrl } from '@/lib/verse-paths';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { downloadVerseCardPng } from '@/lib/verse-card-png';
-import { EmbedVerseDialog } from '@/app/components/EmbedVerseDialog';
+import dynamic from 'next/dynamic';
 
 export type ContemplationTier = 'quick' | 'simple' | 'deep' | 'traditional';
+
+// Loaded on demand (first click on Embed) so the dialog and its framer-motion layer stay out of the page's first-load JS.
+const EmbedVerseDialog = dynamic(
+  () => import('@/app/components/EmbedVerseDialog').then((m) => m.EmbedVerseDialog),
+  { ssr: false },
+);
 
 export interface PedagogicalVerseCardProps {
   data?: PedagogicalVerseData;
