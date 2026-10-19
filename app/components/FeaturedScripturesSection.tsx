@@ -118,7 +118,7 @@ export function FeaturedScripturesSection() {
               </span>
             </div>
           </Link>
-          {displayTexts.map((scripture) => {
+          {displayTexts.map((scripture, index) => {
             if (!scripture) return null;
             const held = getLibraryCounts(scripture.id);
             const catalogueVerses = scripture.canonicalTotalVerses ?? scripture.totalVerses;
@@ -133,7 +133,7 @@ export function FeaturedScripturesSection() {
               <Link
                 key={scripture.id}
                 href={`/scripture/${scripture.id}`}
-                className="group relative flex flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-6 transition-all hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-lg dark:hover:border-amber-700/60"
+                className={`${index >= 3 ? 'hidden sm:flex ' : ''}group relative flex flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-6 transition-all hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-lg dark:hover:border-amber-700/60`}
               >
                 <div>
                   <div className="mb-4 flex items-center justify-between">

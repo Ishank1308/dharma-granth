@@ -169,12 +169,12 @@ export function LifeSituationsSection() {
 
         {/* 10 Topic Cards Grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {situations.map((sit) => (
+          {situations.map((sit, index) => (
             <Link
               key={sit.id}
               href={sit.topicHref}
               aria-label={`Scriptural perspective on ${sit.titleEn} (${sit.titleHi})`}
-              className="group flex flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-5 transition-all hover:-translate-y-1 hover:border-amber-400/60 hover:shadow-lg dark:hover:border-amber-700/50"
+              className={`${index >= 4 ? 'hidden sm:flex ' : ''}group flex flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-5 transition-all hover:-translate-y-1 hover:border-amber-400/60 hover:shadow-lg dark:hover:border-amber-700/50`}
             >
               <div>
                 {/* Header with simple line icon & Sanskrit tag */}

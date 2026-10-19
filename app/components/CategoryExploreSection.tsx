@@ -160,11 +160,11 @@ export function CategoryExploreSection() {
 
         {/* 8 Category Tiles Grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {CATEGORIES.map((cat) => (
+          {CATEGORIES.map((cat, index) => (
             <Link
               key={cat.id}
               href={cat.href}
-              className="group relative flex flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-5 transition-all hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-lg dark:hover:border-amber-700/60"
+              className={`${index >= 4 ? 'hidden sm:flex ' : ''}group relative flex flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-5 transition-all hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-lg dark:hover:border-amber-700/60`}
             >
               <div>
                 <div className="mb-4 flex items-center justify-between">

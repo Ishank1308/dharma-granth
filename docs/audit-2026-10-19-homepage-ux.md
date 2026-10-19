@@ -54,3 +54,11 @@ Not run in this pass: full `next build`, Playwright, Lighthouse, axe. Other sess
 ## 7. Testing strategy for the rest
 
 Typecheck + lint per phase; `npm run check` for data; one full `npm run build` (runs `check:export`, the 300 KB first-load budget) after the other sessions finish; Playwright on `/`, `/scriptures/`, a chapter page and `/search/`; axe on the same routes.
+
+## 8. Follow-up pass (observed)
+
+- Breadcrumbs: visible `Library > Scripture > Chapter > Verse` trail added to scripture, chapter and verse pages (`app/components/Breadcrumbs.tsx`); structured-data breadcrumbs on the scripture and verse pages now use the same hierarchy and trailing-slash URLs. Checked on `/scripture/bhagavadgita/chapter/2/verse/47/`, `/scripture/bhagavatapurana/chapter/2/` and `/scripture/bhagavatapurana/`.
+- Desktop "Explore" menu: Escape closes it and returns focus to the button; English and Hindi labels are separate elements.
+- Phone-width trimming: the category tiles (first 4 of 8), life-situation cards (first 4) and featured scriptures (first 3 of 6) show on phones; the rest appear from the `sm` breakpoint up. Each section keeps its link to the full list.
+- Measured after these changes: 375 px emulation, page height 10,234 px, no horizontal overflow; 1,024 px width, page height 7,132 px. The earlier 11,253 → 10,866 px figures were taken in a narrower desktop pane and are not comparable with these two. There is no same-width baseline for the old homepage.
+- Still long on phones: Life Situations (1,645 px), Featured (1,830 px) and the Sadhana preview (1,407 px). **Proposed:** a horizontal scroller for each, or a single-row preview.
