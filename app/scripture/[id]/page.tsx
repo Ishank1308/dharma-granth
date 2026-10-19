@@ -11,6 +11,7 @@ import { getScripture, getScriptureMeta, getAllScriptures } from '@/data/scriptu
 import { ArrowLeft } from 'lucide-react';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { OfflineScriptureToggle } from '@/app/components/scripture/OfflineScriptureToggle';
 
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
@@ -191,12 +192,7 @@ export default function ScripturePage({ params }: PageProps) {
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(bookJsonLd, breadcrumbJsonLd)) }}
       />
       <ChapterHero className="bg-gradient-to-b from-saffron-800 to-saffron-600 text-white py-14">
         <div className="relative max-w-5xl mx-auto px-6">

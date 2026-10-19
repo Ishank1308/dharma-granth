@@ -32,6 +32,7 @@ import { whatsappShareUrl } from '@/lib/whatsapp';
 import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
 import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction';
 import { PrintChapterButton } from '@/app/components/PrintChapterButton';
+import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPart } from '@/lib/chapter-parts';
 
@@ -276,14 +277,14 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
-      { '@type': 'ListItem', position: 2, name: 'Scriptures', item: `${siteUrl}/scriptures` },
-      { '@type': 'ListItem', position: 3, name: meta.title, item: `${siteUrl}/scripture/${meta.id}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Library', item: `${siteUrl}/scriptures/` },
+      { '@type': 'ListItem', position: 3, name: meta.title, item: `${siteUrl}/scripture/${meta.id}/` },
       {
         '@type': 'ListItem',
         position: 4,
         name: chapter.title,
-        item: `${siteUrl}/scripture/${meta.id}/chapter/${chapter.id}`,
+        item: `${siteUrl}/scripture/${meta.id}/chapter/${chapter.id}/`,
       },
     ],
   };
@@ -293,12 +294,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(chapterJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(chapterJsonLd, breadcrumbJsonLd)) }}
       />
       <ChapterHero className="bg-gradient-to-br from-saffron-900 via-saffron-700 to-orange-600 text-white py-16">
         <div className="relative max-w-4xl mx-auto px-6">
