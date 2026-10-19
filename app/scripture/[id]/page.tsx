@@ -10,6 +10,7 @@ import { getBookExplanation } from '@/data/book-explanations';
 import { getScripture, getScriptureMeta, getAllScriptures } from '@/data/scriptures';
 import { ArrowLeft } from 'lucide-react';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
+import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
@@ -177,14 +178,15 @@ export default function ScripturePage({ params }: PageProps) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
-      { '@type': 'ListItem', position: 2, name: 'Scriptures', item: `${siteUrl}/scriptures` },
-      { '@type': 'ListItem', position: 3, name: meta.title, item: `${siteUrl}/scripture/${meta.id}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Library', item: `${siteUrl}/scriptures/` },
+      { '@type': 'ListItem', position: 3, name: meta.title, item: `${siteUrl}/scripture/${meta.id}/` },
     ],
   };
 
   return (
     <main className="min-h-screen bg-dharma-bg">
+      <Breadcrumbs items={[{ label: 'Library', href: '/scriptures/' }, { label: meta.title }]} />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger

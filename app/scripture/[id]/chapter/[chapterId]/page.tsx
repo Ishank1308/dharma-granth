@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { getAllScriptures, getScriptureChapters } from '@/data/scriptures';
 import { readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
 import { ChapterView, chapterMetadata, type ChapterParams } from './chapter-view';
+import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { getScriptureMeta } from '@/data/scriptures';
 
 interface PageProps {
   params: ChapterParams;
@@ -45,5 +47,22 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
 /** The chapter (or, for chapters split into parts, its first part). */
 export default function ChapterPage({ params }: PageProps) {
-  return <ChapterView params={params} part={1} />;
+  const meta = getScriptureMeta(params.id);
+  const chapterNumber = parseInt(params.chapterId, 10);
+  const indexed = getScriptureChapters(params.id).find((c) => c.id === chapterNumber);
+  const chapterTitle = indexed?.title || `Chapter ${params.chapterId}`;
+  return (
+    <>
+      {meta ? (
+        <Breadcrumbs
+          items={[
+            { label: 'Library', href: '/scriptures/' },
+            { label: meta.title, href: `/scripture/${meta.id}/` },
+            { label: chapterTitle },
+          ]}
+        />
+      ) : null}
+      <ChapterView params={params} part={1} />
+    </>
+  );
 }

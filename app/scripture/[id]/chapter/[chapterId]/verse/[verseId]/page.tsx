@@ -12,6 +12,7 @@ import { CONNECTIONS, verseKey } from '@/data/study-content';
 import { VerseRelatedSection } from '@/app/components/VerseRelatedSection';
 import { VerseReader } from '@/app/components/reader/VerseReader';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
+import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { getScriptureMeta } from '@/data/scriptures';
 import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
 import { readChapterCommentary, readSeededChapter, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
@@ -281,9 +282,10 @@ export default function VersePage({ params }: PageProps) {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-          { '@type': 'ListItem', position: 2, name: meta.title, item: `${siteUrl}/scripture/${meta.id}/` },
-          { '@type': 'ListItem', position: 3, name: `अध्याय ${chapterId}`, item: `${siteUrl}${chapterHref}/` },
-          { '@type': 'ListItem', position: 4, name: `श्लोक ${params.verseId}`, item: pageUrl },
+          { '@type': 'ListItem', position: 2, name: 'Library', item: `${siteUrl}/scriptures/` },
+          { '@type': 'ListItem', position: 3, name: meta.title, item: `${siteUrl}/scripture/${meta.id}/` },
+          { '@type': 'ListItem', position: 4, name: `Chapter ${chapterId}`, item: `${siteUrl}${chapterHref}/` },
+          { '@type': 'ListItem', position: 5, name: `Verse ${params.verseId}`, item: pageUrl },
         ],
       },
     ],
@@ -367,6 +369,14 @@ export default function VersePage({ params }: PageProps) {
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Breadcrumbs
+        items={[
+          { label: 'Library', href: '/scriptures/' },
+          { label: meta.title, href: `/scripture/${meta.id}/` },
+          { label: chapterName, href: `${chapterHref}/` },
+          { label: `Verse ${params.verseId}` },
+        ]}
       />
       <ActivityRecorder scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} concepts={integrations.concepts.map((c) => c.id)} />
       <ChapterVisitRecorder
