@@ -20,10 +20,11 @@ import {
   Flame,
   HelpCircle,
   Lightbulb,
+  MessageCircle,
+  Network,
   Quote,
   RotateCcw,
   ScrollText,
-  MessageCircle,
   Share2,
   Sparkles,
   Sprout,
@@ -888,14 +889,24 @@ export function PedagogicalVerseCard({
           {showExploreLink && tier !== 'deep' && (
             <div className="mt-8 border-t border-dharma-border pt-5">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <Link
-                  href={readHref(data.scriptureId, data.chapterId, data.verseId)}
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700"
-                >
-                  <BookOpen className="h-3.5 w-3.5" />
-                  <span>Read Context</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Link
+                    href={`/network?verse=${encodeURIComponent(`${data.scriptureId}:${data.chapterId}:${data.verseId}`)}`}
+                    className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-xs font-bold text-purple-800 transition hover:bg-purple-500/20 dark:text-purple-300"
+                  >
+                    <Network className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
+                    <span>Verse Network · श्लोक संबंध</span>
+                  </Link>
+
+                  <Link
+                    href={readHref(data.scriptureId, data.chapterId, data.verseId)}
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700"
+                  >
+                    <BookOpen className="h-3.5 w-3.5" />
+                    <span>Read Context</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
 
                 <div className="flex items-center gap-2 text-xs text-dharma-muted">
                   <span className="size-2 rounded-full bg-emerald-500" />
