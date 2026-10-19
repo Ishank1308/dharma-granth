@@ -114,7 +114,7 @@ export function MobileOneThumbControlBar({
     <div
       role="toolbar"
       aria-label="एक-अंगूठा पाठक नियंत्रण (One-Thumb Reader Controls)"
-      className={`fixed bottom-4 left-3 right-3 sm:hidden z-30 transition-all duration-300 transform ${
+      className={`fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] left-3 right-3 sm:hidden z-30 transition-all duration-300 transform ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0 pointer-events-none'
       }`}
     >
