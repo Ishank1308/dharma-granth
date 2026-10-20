@@ -125,6 +125,7 @@ for (const [ab, texts] of preface) {
 const MOVES: Array<{ ref: string; at: string }> = [
   { ref: '1.3.17', at: "The Devas said: 'Verily, thus far" }, // devā abruvan… opens 1.3.18
   { ref: '1.3.21', at: 'He (breath) is also Sâman' }, // eṣa u eva sāma opens 1.3.22
+  { ref: '3.9.18', at: "Sâkalya said: 'Yâgñavalkya, because thou hast decried" }, // yājñavalkyeti hovāca śākalyo opens 3.9.19
 ];
 for (const { ref, at } of MOVES) {
   const [a, b, n] = ref.split('.');
@@ -145,6 +146,9 @@ for (const mantras of sbe.values()) {
         // Printed-page markers and the transcriber's note where a paragraph crosses a page.
         .replace(/\s*\[paragraph continues\]\s*/g, ' ')
         .replace(/(^|\s)p\. \d+[a-z]?(?=\s|$)/g, ' ')
+        // A lone SBE footnote digit between a word (or closing bracket) and punctuation: "waking 1 .", "No, no 1 !".
+        // Lineage lists are left alone: their digits follow ":" or "," ("stem : 1 . Pautimâshya", ", 21 . Kausikâyani").
+        .replace(/(?<=[A-Za-zâîûêôñ)\]])\s+\d\s+(?=[.,;:!?'])/g, '')
         .replace(/\s+/g, ' ')
         .trim(),
     );
