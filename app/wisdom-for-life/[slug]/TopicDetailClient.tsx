@@ -261,12 +261,6 @@ export function TopicDetailClient({
                 verse.scriptureId,
                 verse.chapterNumber,
                 verse.verseNumber,
-                {
-                  sanskrit: verse.sanskritDevanagari,
-                  translation: verse.literalTranslationEn,
-                  hindi: verse.literalTranslationHi,
-                  lifeLesson: verse.traditionalContext.commentaryNote,
-                }
               );
               return (
               <article
@@ -884,12 +878,6 @@ export function TopicDetailClient({
               activeStoryVerse.scriptureId,
               activeStoryVerse.chapterNumber,
               activeStoryVerse.verseNumber,
-              {
-                sanskrit: activeStoryVerse.sanskritDevanagari,
-                translation: activeStoryVerse.literalTranslationEn,
-                hindi: activeStoryVerse.literalTranslationHi,
-                lifeLesson: activeStoryVerse.traditionalContext.commentaryNote,
-              }
             ),
             chapterHref: activeStoryVerse.readerHref,
             verseHref: `https://dharmagranth.in/wisdom-for-life/${topic.slug}#verse-${activeStoryVerse.id}`,

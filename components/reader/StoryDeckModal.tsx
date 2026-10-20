@@ -19,7 +19,7 @@ import {
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { speakSanskritShloka, stopSanskritSpeech } from '@/lib/sacred-audio';
-import type { LiteraryVerseMeta } from '@/lib/literary-commentary';
+import type { VerseEditorialLayer } from '@/lib/literary-commentary';
 import { saveJournalEntry } from '@/lib/study/storage';
 import type { JournalEntry } from '@/lib/study/types';
 
@@ -31,7 +31,7 @@ export interface StoryDeckData {
   transliteration?: string;
   hindi?: string;
   english?: string;
-  meta: LiteraryVerseMeta;
+  meta: VerseEditorialLayer;
   chapterHref?: string;
   verseHref?: string;
 }

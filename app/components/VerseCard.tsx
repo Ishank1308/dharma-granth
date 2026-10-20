@@ -357,15 +357,8 @@ export function VerseCard({
   const storyDeckLoaded = useEverTrue(storyDeckOpen);
   const citationLoaded = useEverTrue(citationModalOpen);
   const literaryMeta = useMemo(() => {
-    return getLiteraryVerseMeta(scriptureId, chapterId, v.number, {
-      sanskrit: v.sanskrit,
-      translation: v.translation,
-      hindi: v.hindi,
-      keywords: v.keywords,
-      explanation: meaning.explanation,
-      lifeLesson: meaning.lesson,
-    });
-  }, [scriptureId, chapterId, v.number, v.sanskrit, v.translation, v.hindi, v.keywords, meaning.explanation, meaning.lesson]);
+    return getLiteraryVerseMeta(scriptureId, chapterId, v.number);
+  }, [scriptureId, chapterId, v.number]);
 
   // ── Sandhi-Viccheda (Compound Split Words) ──
   const [isSandhiSplit, setIsSandhiSplit] = useState(false);

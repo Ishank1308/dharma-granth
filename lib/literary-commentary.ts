@@ -73,8 +73,8 @@ export const SITUATIONAL_MOMENTS: Record<string, SituationalMoment> = {
 
 export type EditorialReviewStatus = 'draft' | 'review-required' | 'reviewed' | 'approved';
 
-export interface LiteraryVerseMeta {
-  /** True only for verses with hand-written notes below; false means every field here is a generic placeholder and must not be shown as insight about the verse. */
+export interface VerseEditorialLayer {
+  /** True only when an explicit editorial overlay exists for this verse. */
   isCurated: boolean;
   editorialStatus: EditorialReviewStatus;
   editorialLabel: 'Editorial · Not Scripture';
@@ -100,7 +100,7 @@ export interface LiteraryVerseMeta {
 /**
  * Curated flagship verses across Gita, Upanishads, Ashtavakra, and Yoga Sutras.
  */
-export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<LiteraryVerseMeta, 'isCurated' | 'editorialStatus' | 'editorialLabel'>> = {
+export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<VerseEditorialLayer, 'isCurated' | 'editorialStatus' | 'editorialLabel'>> = {
   // Bhagavad Gita 2.47 (Karmanye Vadhikaraste)
   'bhagavadgita:2:47': {
     coreShiftEn: 'Pour your entire vitality into the craft before you; abandon the paralyzing addiction to the prize.',
@@ -272,82 +272,44 @@ export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<LiteraryVerseMeta, 'isCu
   },
 };
 
+/** Backwards-compatible name for consumers that still call this literary metadata. */
+export type LiteraryVerseMeta = VerseEditorialLayer;
+
 /**
- * Returns either curated literary metadata for flagship verses, or generates a
- * grounded contextual synthesis based on keywords, commentary, and verse translation.
+ * Returns an explicitly marked editorial layer only when reviewed source material exists.
+ * Raw verse keywords and lifeLesson fields are not used to infer interpretive content.
  */
 export function getLiteraryVerseMeta(
   scriptureSlug: string,
   chapter: number,
   verseNum: number | string,
-  verseData?: {
-    sanskrit?: string;
-    translation?: string;
-    hindi?: string;
-    keywords?: string[];
-    explanation?: string;
-    lifeLesson?: string;
-  }
-): LiteraryVerseMeta {
+): VerseEditorialLayer {
   const key = `${scriptureSlug.toLowerCase()}:${chapter}:${verseNum}`;
-  if (FLAGSHIP_LITERARY_MAP[key]) {
-    // Hand-written, not yet reviewed by a second reader.
-    return { ...FLAGSHIP_LITERARY_MAP[key], isCurated: true, editorialStatus: 'review-required', editorialLabel: 'Editorial · Not Scripture' };
-  }
+  const curated = FLAGSHIP_LITERARY_MAP[key];
 
-  // Derive situational moments from keywords or text
-  const kw = (verseData?.keywords ?? []).map((k) => k.toLowerCase()).join(' ');
-  const text = `${verseData?.translation ?? ''} ${verseData?.hindi ?? ''} ${kw}`.toLowerCase();
-
-  const moments: SituationalMoment[] = [];
-  if (text.includes('कर्म') || text.includes('karma') || text.includes('action') || text.includes('work') || text.includes('duty')) {
-    moments.push(SITUATIONAL_MOMENTS.failure);
-  }
-  if (text.includes('मन') || text.includes('mind') || text.includes('doubt') || text.includes('fear') || text.includes('भय')) {
-    moments.push(SITUATIONAL_MOMENTS.overthinking);
-  }
-  if (text.includes('मोह') || text.includes('attachment') || text.includes('grief') || text.includes('शोक') || text.includes('loss')) {
-    moments.push(SITUATIONAL_MOMENTS.heartbreak);
-  }
-  if (text.includes('ध्यान') || text.includes('meditation') || text.includes('peace') || text.includes('शांति') || text.includes('focus')) {
-    moments.push(SITUATIONAL_MOMENTS.distraction);
-  }
-  if (text.includes('ज्ञान') || text.includes('wisdom') || text.includes('self') || text.includes('आत्मा') || text.includes('brahman')) {
-    moments.push(SITUATIONAL_MOMENTS.imposter);
-  }
-  if (moments.length === 0) {
-    moments.push(SITUATIONAL_MOMENTS.overthinking, SITUATIONAL_MOMENTS.burnout);
-  }
-
-  // Extract a clean aphorism from lifeLesson or translation
-  let coreShiftEn = 'Anchor your awareness in the timeless witness, and let the fleeting currents of circumstance flow without resistance.';
-  let coreShiftHi = 'अपने अंतःकरण को साक्षी भाव में स्थिर करें, और परिस्थितियों के उतार-चढ़ाव को शांत भाव से स्वीकार करें।';
-
-  if (verseData?.lifeLesson) {
-    const sentences = verseData.lifeLesson.split(/[.।!]/).map((s) => s.trim()).filter(Boolean);
-    if (sentences[0]) {
-      if (sentences[0].match(/[\u0900-\u097F]/)) {
-        coreShiftHi = sentences[0] + '।';
-      } else {
-        coreShiftEn = sentences[0] + '.';
-      }
-    }
+  if (!curated) {
+    return {
+      isCurated: false,
+      editorialStatus: 'draft',
+      editorialLabel: 'Editorial · Not Scripture',
+      coreShiftEn: '',
+      coreShiftHi: '',
+      situationalMoments: [],
+      misreadingEn: '',
+      misreadingHi: '',
+      deeperTruthEn: '',
+      deeperTruthHi: '',
+      humanQuestionEn: '',
+      humanQuestionHi: '',
+      microPracticeEn: '',
+      microPracticeHi: '',
+    };
   }
 
   return {
-    isCurated: false,
-    editorialStatus: 'draft',
+    ...curated,
+    isCurated: true,
+    editorialStatus: 'review-required',
     editorialLabel: 'Editorial · Not Scripture',
-    coreShiftEn,
-    coreShiftHi,
-    situationalMoments: moments.slice(0, 3),
-    misreadingEn: 'Viewing spiritual teachings as escapism from practical responsibilities.',
-    misreadingHi: 'आध्यात्मिक ज्ञान को अपने दैनिक दायित्वों से भागने का बहाना बना लेना।',
-    deeperTruthEn: 'Engaging fully in the world with mastery, love, and internal freedom.',
-    deeperTruthHi: 'संसार में कुशलता, प्रेम और आंतरिक स्वतंत्रता के साथ पूरी तरह संलग्न रहना।',
-    humanQuestionEn: 'How can this ancient insight steady our heartbeat in the middle of a noisy, demanding modern day?',
-    humanQuestionHi: 'यह कालातीत दृष्टि आज की भागदौड़ भरी जिंदगी में हमारे चित्त को कैसे स्थिर रख सकती है?',
-    microPracticeEn: 'Take three slow breaths. Notice one expectation you are carrying and gently set it down for the next ten minutes.',
-    microPracticeHi: 'तीन गहरी सांसें लें। अपने मन से किसी एक अपेक्षा का बोझ अगले दस मिनट के लिए उतार कर रख दें।',
   };
 }

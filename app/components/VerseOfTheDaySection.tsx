@@ -616,12 +616,7 @@ export function VerseOfTheDaySection() {
             transliteration: current.transliteration,
             hindi: current.hindi,
             english: current.translation,
-            meta: getLiteraryVerseMeta(current.scriptureId, current.chapterId, current.verseId, {
-              sanskrit: current.sanskrit,
-              translation: current.translation,
-              hindi: current.hindi,
-              lifeLesson: current.reflection,
-            }),
+            meta: getLiteraryVerseMeta(current.scriptureId, current.chapterId, current.verseId),
             chapterHref: readHref(current.scriptureId, current.chapterId, current.verseId),
           }}
         />
