@@ -6,7 +6,6 @@ import {
   ChevronRight,
   BookOpen,
   Calendar,
-  Flame,
   FileText,
   Compass,
   Check,
@@ -127,7 +126,7 @@ export function SpiritualProgressCard({ stats }: Props) {
             {remainingForNext && (
               <div className="pt-1">
                 <p className="text-2xs font-bold uppercase tracking-wider text-dharma-muted mb-2">
-                  अगले सोपान हेतु साधना संकल्प (Milestones toward {nextLevel.titleHi}):
+                  स्वाध्याय के वैकल्पिक संकेत · Optional study markers
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                   {remainingForNext.verses > 0 ? (
@@ -140,7 +139,7 @@ export function SpiritualProgressCard({ stats }: Props) {
                   ) : (
                     <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
                       <Check className="w-3.5 h-3.5 shrink-0" />
-                      <span>श्लोक लक्ष्य पूर्ण</span>
+                      <span>पठन दर्ज</span>
                     </div>
                   )}
 
@@ -154,21 +153,7 @@ export function SpiritualProgressCard({ stats }: Props) {
                   ) : (
                     <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
                       <Check className="w-3.5 h-3.5 shrink-0" />
-                      <span>दिवस लक्ष्य पूर्ण</span>
-                    </div>
-                  )}
-
-                  {remainingForNext.streak > 0 ? (
-                    <div className="flex items-center gap-2 p-2 rounded-xl bg-dharma-card/60 border border-dharma-border/60">
-                      <Flame className="w-3.5 h-3.5 text-orange-600 shrink-0" />
-                      <span className="text-dharma-muted">
-                        <strong className="text-dharma-text">{remainingForNext.streak}</strong> दिन निरंतरता
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
-                      <Check className="w-3.5 h-3.5 shrink-0" />
-                      <span>नियम लक्ष्य पूर्ण</span>
+                      <span>दिवस दर्ज</span>
                     </div>
                   )}
 
@@ -182,7 +167,21 @@ export function SpiritualProgressCard({ stats }: Props) {
                   ) : (
                     <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
                       <Check className="w-3.5 h-3.5 shrink-0" />
-                      <span>चिंतन लक्ष्य पूर्ण</span>
+                      <span>चिंतन दर्ज</span>
+                    </div>
+                  )}
+
+                  {remainingForNext.pathways > 0 ? (
+                    <div className="flex items-center gap-2 p-2 rounded-xl bg-dharma-card/60 border border-dharma-border/60">
+                      <Compass className="w-3.5 h-3.5 text-violet-600 shrink-0" />
+                      <span className="text-dharma-muted">
+                        <strong className="text-dharma-text">{remainingForNext.pathways}</strong> अध्ययन पथ
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
+                      <Check className="w-3.5 h-3.5 shrink-0" />
+                      <span>अध्ययन पथ पूर्ण</span>
                     </div>
                   )}
                 </div>

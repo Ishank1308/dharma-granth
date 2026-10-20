@@ -42,7 +42,7 @@ const RecentActivityFeed = dynamic(
   { ssr: false },
 );
 
-import { readActiveStreak, readRecentChapters, type ChapterVisit } from '@/lib/reading-history';
+import { readRecentChapters, type ChapterVisit } from '@/lib/reading-history';
 import { readActivity } from '@/lib/activity-log';
 import type { UserSadhanaStats } from '@/lib/spiritual-levels';
 
@@ -60,7 +60,6 @@ export function DashboardClient({ titles }: { titles: Record<string, string> }) 
   const [bookmarkCount, setBookmarkCount] = useState<number>(0);
   const [recentChapters, setRecentChapters] = useState<ChapterVisit[]>([]);
   const [recordedVerseCount, setRecordedVerseCount] = useState<number>(0);
-  const [activeStreak, setActiveStreak] = useState<number>(0);
 
   useEffect(() => {
     try {
@@ -76,7 +75,6 @@ export function DashboardClient({ titles }: { titles: Record<string, string> }) 
       const acts = readActivity();
       const verseRefs = new Set(acts.filter((a) => a.kind === 'verse').map((a) => a.ref));
       setRecordedVerseCount(verseRefs.size);
-      setActiveStreak(readActiveStreak());
     } catch {}
   }, []);
 
@@ -153,8 +151,6 @@ export function DashboardClient({ titles }: { titles: Record<string, string> }) 
   const sadhanaStats: UserSadhanaStats = {
     versesReadCount: recordedVerseCount,
     totalDaysRead: streak.totalDaysRead,
-    currentStreak: activeStreak,
-    longestStreak: streak.longestStreak,
     notesCount: notes.length,
     highlightsCount: highlights.length,
     bookmarksCount: bookmarkCount,

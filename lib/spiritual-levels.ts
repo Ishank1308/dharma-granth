@@ -18,7 +18,6 @@ export type SpiritualLevelId = 'seed' | 'seeker' | 'student' | 'sadhaka' | 'prac
 export interface LevelMilestoneCriteria {
   versesRead: number;
   daysActive: number;
-  streakDays: number;
   notesAndReflections: number;
   pathwaysCompleted: number;
 }
@@ -55,8 +54,6 @@ export interface SpiritualLevelDef {
 export interface UserSadhanaStats {
   versesReadCount: number;
   totalDaysRead: number;
-  currentStreak: number;
-  longestStreak: number;
   notesCount: number;
   highlightsCount: number;
   bookmarksCount: number;
@@ -70,7 +67,6 @@ export interface LevelProgressResult {
   remainingForNext: {
     verses: number;
     days: number;
-    streak: number;
     notes: number;
     pathways: number;
   } | null;
@@ -106,7 +102,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 0,
       daysActive: 0,
-      streakDays: 0,
       notesAndReflections: 0,
       pathwaysCompleted: 0,
     },
@@ -140,7 +135,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 5,
       daysActive: 2,
-      streakDays: 1,
       notesAndReflections: 0,
       pathwaysCompleted: 0,
     },
@@ -174,7 +168,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 25,
       daysActive: 5,
-      streakDays: 2,
       notesAndReflections: 1,
       pathwaysCompleted: 0,
     },
@@ -208,7 +201,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 75,
       daysActive: 10,
-      streakDays: 4,
       notesAndReflections: 3,
       pathwaysCompleted: 1,
     },
@@ -242,7 +234,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 200,
       daysActive: 21,
-      streakDays: 7,
       notesAndReflections: 8,
       pathwaysCompleted: 2,
     },
@@ -276,7 +267,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 500,
       daysActive: 40,
-      streakDays: 14,
       notesAndReflections: 15,
       pathwaysCompleted: 4,
     },
@@ -298,12 +288,11 @@ export function calculateSpiritualLevel(stats: UserSadhanaStats): LevelProgressR
 
     const meetsVerses = stats.versesReadCount >= m.versesRead;
     const meetsDays = stats.totalDaysRead >= m.daysActive;
-    const meetsStreak = stats.currentStreak >= m.streakDays || stats.longestStreak >= m.streakDays;
     const meetsNotes = notesTotal >= m.notesAndReflections;
     const meetsPathways = stats.pathwaysCompleted >= m.pathwaysCompleted;
 
-    // A user reaches level i if they meet at least 3 of 5 criteria, or verses+days
-    const criteriaCount = [meetsVerses, meetsDays, meetsStreak, meetsNotes, meetsPathways].filter(Boolean).length;
+    // A user reaches level i if they meet at least 3 of 4 criteria, or verses+days.
+    const criteriaCount = [meetsVerses, meetsDays, meetsNotes, meetsPathways].filter(Boolean).length;
     if (criteriaCount >= 3 || (meetsVerses && meetsDays)) {
       currentLevel = lvl;
       break;
@@ -345,7 +334,6 @@ export function calculateSpiritualLevel(stats: UserSadhanaStats): LevelProgressR
   const remainingForNext = {
     verses: Math.max(0, nextM.versesRead - stats.versesReadCount),
     days: Math.max(0, nextM.daysActive - stats.totalDaysRead),
-    streak: Math.max(0, nextM.streakDays - Math.max(stats.currentStreak, stats.longestStreak)),
     notes: Math.max(0, nextM.notesAndReflections - notesTotal),
     pathways: Math.max(0, nextM.pathwaysCompleted - stats.pathwaysCompleted),
   };
