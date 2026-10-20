@@ -3,13 +3,11 @@ import { resolve } from 'node:path';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { BookLearningClient } from '@/app/components/BookLearningClient';
+import { ScriptureContents } from '@/app/components/ScriptureContents';
 import { ChapterHero } from '@/app/components/motion/ChapterHero';
-import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
-import { getBookExplanation } from '@/data/book-explanations';
+import { FadeUp } from '@/app/components/motion/primitives';
 import { getScripture, getScriptureMeta, getAllScriptures } from '@/data/scriptures';
 import { ArrowLeft } from 'lucide-react';
-import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
@@ -104,7 +102,6 @@ export default function ScripturePage({ params }: PageProps) {
 
   const scripture = getScripture(params.id);
   const chapters = scripture?.chapters ?? [];
-  const explanation = getBookExplanation(params.id);
   const chapterPreviewsById = new Map<number, ChapterPreview>();
   for (const chapter of chapters) {
     chapterPreviewsById.set(chapter.id, {
@@ -237,26 +234,19 @@ export default function ScripturePage({ params }: PageProps) {
             </div>
           </FadeUp>
           <FadeUp delay={0.2}>
-            <p className="text-lg opacity-80 max-w-3xl">{meta.description}</p>
+            <p className="text-lg opacity-80 max-w-3xl line-clamp-3">{meta.description}</p>
             {meta.author && <p className="mt-3 text-sm opacity-60">Attributed to {meta.author}</p>}
           </FadeUp>
         </div>
       </ChapterHero>
 
-      <FadeUpOnView className="max-w-5xl mx-auto px-6 py-12 space-y-12">
-        <BookLearningClient
-          meta={meta}
-          explanation={explanation}
-          chapters={chapterPreviews}
-          catalogueVerses={catalogueVerses}
-          catalogueChapters={catalogueChapters}
-        />
-        <SourcesAndInterpretation
+      <div className="mx-auto max-w-5xl px-6 py-12">
+        <ScriptureContents
           scriptureId={meta.id}
-          scriptureTitle={meta.title}
-          scriptureTitleSanskrit={meta.titleSanskrit}
+          chapters={chapterPreviews}
+          totalChapters={catalogueChapters}
         />
-      </FadeUpOnView>
+      </div>
     </main>
   );
 }
