@@ -7,7 +7,6 @@ import { rituals, type Ritual } from '@/data/rituals';
 import { X, BookOpen, Sparkles, MapPin, Lightbulb, HandHeart, AlertTriangle, ListChecks } from 'lucide-react';
 
 export default function RitualsPage() {
-  const reduce = useReducedMotion();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selected = rituals.find((r) => r.id === selectedId);
 
@@ -36,13 +35,13 @@ export default function RitualsPage() {
       <section className="max-w-6xl mx-auto px-6 -mt-8 relative z-10 pb-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {rituals.map((ritual, i) => (
-            <motion.button
+            // CSS fade-up (globals.css): plays from the server HTML, so the cards are never shipped hidden.
+            <button
+              type="button"
               key={ritual.id}
               onClick={() => setSelectedId(ritual.id)}
-              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.04 }}
-              className="group relative overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-6 text-left hover:shadow-xl transition-all"
+              style={{ animationDelay: `${Math.min(i, 12) * 40}ms` }}
+              className="fade-up-in group relative overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-6 text-left hover:shadow-xl transition-all"
             >
               <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${ritual.gradient}`} />
               <div className="flex items-start gap-4 mb-3">
@@ -65,7 +64,7 @@ export default function RitualsPage() {
                 <span className="text-dharma-muted">{ritual.transliteration}</span>
                 <span className="font-semibold text-saffron-700 group-hover:translate-x-1 transition-transform">विवरण देखें →</span>
               </div>
-            </motion.button>
+            </button>
           ))}
         </div>
       </section>
