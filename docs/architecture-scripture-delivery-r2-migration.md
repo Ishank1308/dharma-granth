@@ -118,6 +118,7 @@ graph TD
 3. Keep the static HTML and all client bundles unchanged. The Function may return the R2 object only for the exact `.txt` route and must call `context.next()` when the binding, flag, object, or read fails.
 4. Validate before expanding the canary:
    - Compare the R2 response body and ETag with the committed static `.txt` file.
+   - Run `npm run verify:rsc-canary -- --local dist/scripture/bhagavadgita/chapter/2/index.txt --url https://<preview-host>/scripture/bhagavadgita/chapter/2/index.txt` to compare status, content type, byte length, SHA-256, and the exact response body.
    - Verify HTTP 200, `Content-Type: text/plain; charset=utf-8`, cache headers, client-side navigation, browser back/forward, and reduced-motion behavior.
    - Confirm canonical scripture strings and the visible chapter UI are unchanged.
    - Run the full build, typecheck, lint, sitemap, and post-deploy smoke checks.
