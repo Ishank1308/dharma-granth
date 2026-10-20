@@ -65,6 +65,7 @@ import {
   deleteSavedVerse,
 } from '@/lib/study/storage';
 import { runStudyDataMigration } from '@/lib/study/migration';
+import type { Connection } from '@/data/study-content';
 
 interface FullVerse {
   number: number | string;
@@ -119,6 +120,8 @@ interface Props {
    * Passed so the island can upgrade the server-rendered list into cards.
    */
   initialChapter?: InitialChapter;
+  /** Approved, pre-existing cross-scripture links for verses in this page. */
+  relatedTeachingsByVerse?: Record<string, Connection[]>;
 }
 
 export interface InitialChapter {
@@ -134,7 +137,7 @@ type State =
   | { kind: 'empty' }
   | { kind: 'error'; message: string };
 
-export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter }: Props) {
+export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {} }: Props) {
   const curatedVerseSet = useMemo(
     () => new Set(curatedVerseIds.map((id) => String(id))),
     [curatedVerseIds],
@@ -1426,6 +1429,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                   <VerseCard
                     depth={readingDepth}
                     verse={v}
+                    relatedTeachings={relatedTeachingsByVerse[String(v.number)]}
                     meaning={{
                       isAi: Boolean(comment?.ai),
                       editorial: comment?.editorial,

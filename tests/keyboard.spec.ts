@@ -176,3 +176,21 @@ test('reader: Modern Context is a selectable, touch-sized tab on mobile', async 
   const targetHeight = await lessonTab.evaluate((el) => el.getBoundingClientRect().height);
   expect(targetHeight).toBeGreaterThanOrEqual(44);
 });
+
+test('reader: approved related teachings stay collapsed and show their editorial reasons on request', async ({ page }) => {
+  await page.goto('/scripture/bhagavadgita/chapter/2/');
+
+  const card = page.locator('#verse-47');
+  const disclosure = card.locator('details').filter({ hasText: /Related teachings/ });
+  const summary = disclosure.locator('summary');
+  await expect(summary).toBeVisible();
+  await expect(disclosure).not.toHaveAttribute('open', '');
+
+  await summary.click();
+  await expect(disclosure).toHaveAttribute('open', '');
+  await expect(disclosure).toContainText('The next verse names the balance that 2.47 asks for.');
+  await expect(disclosure).toContainText('Approved editorial connection · Not scripture');
+  expect(await disclosure.locator('li').count()).toBeLessThanOrEqual(3);
+
+  await expect(page.locator('#verse-1 details').filter({ hasText: /Related teachings/ })).toHaveCount(0);
+});

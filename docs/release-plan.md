@@ -19,7 +19,7 @@ Status of the three-release brief against the repository as of 2026-10-08. "Buil
 | Quick / Simple / Deep | Built. Deep has no sandhi, grammar or review-history data, so it says so. |
 | Verse in 30 seconds, simple explanation format, context panel, misunderstanding card | Built for Gita 2.47 only; 2.48 and Isha 1 have base data. Other verses show the verse layers only. This is a content limit. |
 | Continue reading | Partial: component and desk exist. Missing: pause history, import and export of history alone, and surfacing on every page named. |
-| Contextual next teaching (max three, with reasons) | Partial: cards exist on the desk only. Not shown after each verse. |
+| Contextual next teaching (max three, with reasons) | Partial: approved, curated links now appear in a collapsed disclosure on matching chapter verse cards and on standalone verse pages. Each link shows its existing editorial reason; no link is inferred. Coverage remains limited to the verses with curated connections. |
 | Saved verses and collections | Partial: bookmarks, notes and `dharma.collections` exist. Missing: default collections (Read Later, Favourites, Study Carefully, Daily Reflection, Share Later), rename, move, filters. |
 | Library redesign | In another contributor's uncommitted work; not reviewed here. |
 | Sources and interpretation panel | Built; correction history comes from GitHub issues, not a log. |

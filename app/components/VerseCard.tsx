@@ -53,6 +53,7 @@ import { useEverTrue } from '@/lib/use-ever-true';
 const StoryDeckModal = dynamic(() => import('@/app/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
 const CitationModal = dynamic(() => import('@/components/study/CitationModal').then((m) => m.CitationModal), { ssr: false });
 import { saveAnnotation, deleteAnnotation } from '@/lib/study/storage';
+import type { Connection } from '@/data/study-content';
 
 export interface VerseCardData {
   number: number | string;
@@ -125,6 +126,8 @@ interface Props {
   /** How much explanation to show; defaults to everything (study) for callers that do not choose. */
   depth?: ReadingDepth;
   verse: VerseCardData;
+  /** Existing, approved editorial connections; the server passes at most three. */
+  relatedTeachings?: Connection[];
   meaning: VerseMeaning;
   layers: VerseLayers;
   scriptureId: string;
@@ -166,6 +169,14 @@ type TabId = 'meaning' | 'explain' | 'science' | 'lesson';
 type HighlightColor = VerseHighlight['color'];
 
 const NOTE_MAX = 2000;
+
+const CONNECTION_KIND_LABEL: Record<Connection['kind'], string> = {
+  similar: 'संबद्ध दृष्टि · Related perspective',
+  complementary: 'पूरक शिक्षा · Complementary teaching',
+  'different-emphasis': 'भिन्न बलाघात · Different emphasis',
+  narrative: 'कथात्मक संदर्भ · Narrative example',
+  commentary: 'भाष्य-संबंध · Commentary connection',
+};
 
 // Full class strings (not built dynamically) so Tailwind keeps them.
 const HIGHLIGHTS: Record<HighlightColor, { label: string; swatch: string; ring: string; spine: string }> = {
@@ -228,6 +239,7 @@ const iconButton =
 export function VerseCard({
   depth = 'study',
   verse: v,
+  relatedTeachings,
   meaning,
   layers,
   scriptureId,
@@ -1231,6 +1243,43 @@ export function VerseCard({
                 </AnimatePresence>
                 </div>
               </div>
+            )}
+
+            {relatedTeachings && relatedTeachings.length > 0 && (
+              <details className="mt-4 rounded-2xl border border-dharma-border/70 bg-dharma-card/50">
+                <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-4 py-2 text-sm font-semibold text-dharma-text outline-none transition-colors hover:bg-dharma-card focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 focus-visible:ring-offset-dharma-bg [&::-webkit-details-marker]:hidden">
+                  <span><span lang="hi" className="font-devanagari">संबंधित उपदेश</span> · Related teachings</span>
+                  <span className="shrink-0 text-xs font-medium text-dharma-muted">{Math.min(relatedTeachings.length, 3)} links</span>
+                </summary>
+                <div className="space-y-3 border-t border-dharma-border/60 p-4">
+                  <p className="text-xs leading-relaxed text-dharma-muted">
+                    Editorial links for study. A link does not claim that two passages teach exactly the same thing.
+                  </p>
+                  <ul className="space-y-3">
+                    {relatedTeachings.slice(0, 3).map((connection) => (
+                      <li key={`${connection.scriptureTitle}-${connection.reference}`} className="rounded-xl border border-dharma-border/60 bg-dharma-card/70 p-3">
+                        <p className="text-[11px] font-bold uppercase tracking-wide text-dharma-muted">
+                          {CONNECTION_KIND_LABEL[connection.kind]}
+                        </p>
+                        <p className="mt-1 font-semibold text-dharma-text">
+                          {connection.href ? (
+                            <Link href={connection.href} className="inline-flex min-h-[44px] items-center text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                              {connection.scriptureTitle} {connection.reference} <span className="ml-1" aria-hidden="true">→</span>
+                            </Link>
+                          ) : (
+                            <>{connection.scriptureTitle} {connection.reference}</>
+                          )}
+                        </p>
+                        <p className="text-sm leading-relaxed text-dharma-text">{connection.summary}</p>
+                        <p className="mt-1 text-xs leading-relaxed text-dharma-muted">
+                          <span className="font-semibold">Why linked:</span> {connection.reason}
+                        </p>
+                        <p className="mt-1 text-[10px] font-medium text-dharma-muted">Approved editorial connection · Not scripture</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
             )}
 
             {/* ── What This Verse Does NOT Mean (भ्रम निवारण) ── */}
