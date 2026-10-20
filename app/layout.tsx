@@ -187,6 +187,8 @@ const siteJsonLd = {
       "@id": `${SITE_URL}/#website`,
       url: `${SITE_URL}/`,
       name: SITE_NAME,
+      // Spellings readers search with (Search Console, 2026-10): "dharm granth", "dharmgranth", "धर्म ग्रंथ".
+      alternateName: ["Dharm Granth", "Dharmagranth", "DharmaGranth", "धर्म ग्रंथ", "धर्मग्रंथ"],
       description: DEFAULT_DESCRIPTION,
       publisher: { "@id": `${SITE_URL}/#organization` },
       inLanguage: ["hi", "sa", "en"],

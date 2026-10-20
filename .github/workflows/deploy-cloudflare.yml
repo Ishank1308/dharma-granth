@@ -111,6 +111,12 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=master --commit-dirty=true
 
+      # Tell IndexNow (Bing and others) which pages changed; never fails the deploy.
+      - name: Notify IndexNow
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        continue-on-error: true
+        run: node scripts/seo/indexnow.mjs --send
+
       - name: Note missing secrets
         if: env.HAS_CLOUDFLARE_SECRETS != 'true'
         run: echo "::notice::Built and checked, not deployed — add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID (docs/deploy-cloudflare.md)."
