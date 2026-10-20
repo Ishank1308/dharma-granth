@@ -22,7 +22,7 @@ const STORAGE_KEY = 'dharma_tanpura_enabled';
 const VOLUME_STORAGE_KEY = 'dharma_tanpura_volume';
 const PITCH_STORAGE_KEY = 'dharma_tanpura_pitch';
 
-export type TanpuraPitch = 'C#' | 'D' | 'A#';
+export type TanpuraPitch = 'C#' | 'D' | 'A#' | '432';
 
 export interface TanpuraSettings {
   volume: number;
@@ -33,6 +33,9 @@ const PITCH_ROOTS: Record<TanpuraPitch, number> = {
   'C#': 138.59,
   'D': 146.83,
   'A#': 116.54,
+  // 432 Hz tuning: Kharaj Sa 108 Hz so the tar Sa rings exactly at 432 Hz,
+  // with Pancham (Pa) at 162 Hz — the Sa-Pa-Sa'-Sa' drone requested for svaadhyaya.
+  '432': 108,
 };
 
 type Listener = (isPlaying: boolean) => void;

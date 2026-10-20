@@ -41,6 +41,7 @@ const PAGES = [
   '/collections/',
   '/practice/',
   '/dashboard/',
+  '/contribute/',
 ];
 
 for (const path of PAGES) {

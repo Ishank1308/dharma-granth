@@ -129,6 +129,9 @@ export function SiteFooter() {
               <Link href="/learn" className="transition hover:text-saffron-700">
                 अध्ययन केंद्र (Learning Hub)
               </Link>
+              <Link href="/contribute" className="transition hover:text-saffron-700 font-medium text-saffron-700 dark:text-saffron-400">
+                ऐच्छिक सहयोग (Contribute & Support)
+              </Link>
             </nav>
 
             <div className="pt-2">
@@ -159,12 +162,19 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} Dharma Granth. Dedicated to knowledge and spiritual self-discovery.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6">
             <Link href="/practice" className="transition hover:text-dharma-text">
               Private Sadhana
             </Link>
             <Link href="/dashboard" className="transition hover:text-dharma-text">
               Personal Study
+            </Link>
+            <Link
+              href="/contribute"
+              className="inline-flex items-center gap-1 font-semibold text-saffron-700 dark:text-saffron-400 hover:underline"
+            >
+              <Heart className="h-3.5 w-3.5 text-saffron-600 fill-saffron-500/20" aria-hidden="true" />
+              <span>सहयोग (Contribute)</span>
             </Link>
             <a
               href="https://github.com/Ishank567/dharma-granth"
