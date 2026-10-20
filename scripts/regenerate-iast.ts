@@ -4,6 +4,8 @@
  *
  *   npx tsx scripts/regenerate-iast.ts <id>            # dry run: counts and samples, writes nothing
  *   npx tsx scripts/regenerate-iast.ts <id> --write    # updates public/data/scriptures-full/<id>.json
+ *   add --skip-refused to write the rest when a few verses convert to non-IAST characters; those keep their
+ *   stored transliteration and are listed for review.
  *
  * The Devanagari is never changed. The conversion is mechanical (the same Sanscript call rebuild-upanishads.ts
  * uses). It refuses to write if any converted line contains characters outside the IAST set, so nothing odd is
@@ -14,12 +16,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Sanscript from '@indic-transliteration/sanscript';
 
-const [id, flag] = process.argv.slice(2);
+const [id, ...flags] = process.argv.slice(2);
 if (!id) {
-  console.error('usage: npx tsx scripts/regenerate-iast.ts <id> [--write]');
+  console.error('usage: npx tsx scripts/regenerate-iast.ts <id> [--write] [--skip-refused]');
   process.exit(1);
 }
-const write = flag === '--write';
+const write = flags.includes('--write');
+const skipRefused = flags.includes('--skip-refused');
 const file = path.resolve(__dirname, '..', 'public/data/scriptures-full', `${id}.json`);
 const raw = fs.readFileSync(file, 'utf8');
 const doc = JSON.parse(raw) as { chapters: { number: number; verses: { number: number | string; sanskrit?: string; transliteration?: string }[] }[] };
@@ -60,14 +63,19 @@ for (const ch of doc.chapters) {
 console.log(`${id}: ${changed} transliteration(s) regenerated, ${skippedOk} left as they were, ${rejects.length} refused.`);
 for (const s of samples) console.log(s);
 if (rejects.length) {
-  console.error('Refused (characters outside IAST after conversion):');
+  console.error('Refused (characters outside IAST after conversion; usually stray marks in the Devanagari itself):');
   for (const r of rejects.slice(0, 20)) console.error('  ' + r);
-  console.error('Nothing written. Fix the conversion for these verses first.');
-  process.exit(1);
+  if (!skipRefused) {
+    console.error('Nothing written. Fix these verses, or pass --skip-refused to leave them unchanged and write the rest.');
+    process.exit(1);
+  }
+  console.error(`--skip-refused: these ${rejects.length} verse(s) keep their stored transliteration and need a person to look at the Devanagari.`);
 }
 if (write) {
   const crlf = raw.includes('\r\n');
-  const out = JSON.stringify(doc, null, raw.startsWith('{\n') || raw.startsWith('{\r\n') ? 2 : undefined);
+  // Keep the file's existing shape: indentation (pretty or minified) and trailing newline.
+  const body = JSON.stringify(doc, null, raw.startsWith('{\n') || raw.startsWith('{\r\n') ? 2 : undefined);
+  const out = /\r?\n$/.test(raw) ? `${body}\n` : body;
   fs.writeFileSync(file, crlf ? out.replace(/\n/g, '\r\n') : out);
   console.log(`wrote ${path.relative(process.cwd(), file)}. Now review, then: npx tsx scripts/check-canonical-integrity.ts --update`);
 } else {
