@@ -74,8 +74,8 @@
         "verseNum": 47,
         "sanskrit": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\n\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि।।2.47।।\n ",
         "transliteration": "karmaṇy-evādhikāras te mā phaleṣhu kadāchana\nmā karma-phala-hetur bhūr mā te saṅgo ’stvakarmaṇi\n",
-        "hindi": "कर्तव्य-कर्म करनेमें ही तेरा अधिकार है, फलोंमें कभी नहीं। अतः तू कर्मफलका हेतु भी मत बन और तेरी अकर्मण्यतामें भी आसक्ति न हो।\n ",
-        "translation": "You have the right to work alone, but not to the fruits of it. Do not be driven by the results of your work, nor have attachment to inaction.",
+        "hindi": "तुम्हारा अधिकार केवल कर्म करने में है, उसके फलों में कभी नहीं। तुम कर्मफल के हेतु मत बनो, और कर्म न करने में भी तुम्हारी आसक्ति न हो।",
+        "translation": "Your entitlement is to action alone, never to its fruits. Do not become the cause of the fruit of action, and do not be attached to inaction.",
         "contextHi": "कर्मण्येवाधिकारस्ते — निष्काम कर्म का मूल मंत्र",
         "contextEn": "Dedication to duty without clinging to results"
       },
@@ -84,8 +84,8 @@
         "verseNum": 20,
         "sanskrit": "न जायते म्रियते वा कदाचि\n\nन्नायं भूत्वा भविता वा न भूयः।\n\nअजो नित्यः शाश्वतोऽयं पुराणो\n\nन हन्यते हन्यमाने शरीरे।।2.20।।\n ",
         "transliteration": "na jāyate mriyate vā kadāchin\nnāyaṁ bhūtvā bhavitā vā na bhūyaḥ\najo nityaḥ śhāśhvato ’yaṁ purāṇo\nna hanyate hanyamāne śharīre\n",
-        "hindi": "यह शरीरी न कभी जन्मता है और न मरता है तथा यह उत्पन्न होकर फिर होनेवाला नहीं है। यह जन्मरहित, नित्य-निरन्तर रहनेवाला, शाश्वत और पुराण (अनादि) है। शरीरके मारे जानेपर भी यह नहीं मारा जाता।\n ",
-        "translation": "It is never born; it never dies; having come into existence once, it never ceases to exist. Unborn, eternal, perpetual, and primordial, it is not destroyed when the body is destroyed.",
+        "hindi": "यह आत्मा न कभी जन्म लेती है, न कभी मरती है; और ऐसा भी नहीं कि एक बार अस्तित्व में आकर फिर वह न रहे। यह अजन्मा, नित्य, शाश्वत और पुरातन है। शरीर के मारे जाने पर भी यह नहीं मारी जाती।",
+        "translation": "It is never born and never dies; nor, having once come to be, does it cease to be. Unborn, eternal, everlasting and ancient, it is not killed when the body is killed.",
         "contextHi": "न जायते म्रियते वा — आत्मा की अमरता",
         "contextEn": "The eternal, indestructible nature of the Self"
       },
@@ -94,8 +94,8 @@
         "verseNum": 66,
         "sanskrit": "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः।।18.66।।",
         "transliteration": "sarva-dharmān parityajya mām ekaṁ śharaṇaṁ vraja\nahaṁ tvāṁ sarva-pāpebhyo mokṣhayiṣhyāmi mā śhuchaḥ\n",
-        "hindi": "सम्पूर्ण धर्मोंका आश्रय छोड़कर तू केवल मेरी शरणमें आ जा। मैं तुझे सम्पूर्ण पापोंसे मुक्त कर दूँगा, चिन्ता मत कर।",
-        "translation": "Relinquishing all Dharmas completely, seek Me alone for refuge. I will release you from all sins; grieve not.",
+        "hindi": "सब धर्मों को छोड़कर केवल मेरी शरण में आ जाओ। मैं तुम्हें सब पापों से मुक्त कर दूँगा; शोक मत करो।",
+        "translation": "Abandoning all dharmas, take refuge in Me alone. I will free you from all sins; do not grieve.",
         "contextHi": "सर्वधर्मान्परित्यज्य — परम शरणागति",
         "contextEn": "Final surrender into the supreme sanctuary"
       }
@@ -437,8 +437,8 @@
       {
         "chapter": 3,
         "verseNum": "3.1.1",
-        "sanskrit": "भृगुर्वै वारुणिः । वरुणं पितरमुपससार । अधीहि भगवो ब्रह्मेति । तस्मा एतत्प्रोवाच । अन्नं प्राणं चक्षुः श्रोत्रं मनो वाचमिति । तँ्होवाच । यतो वा इमानि भूतानि जायन्ते । येन जातानि जीवन्ति । यत्प्रयन्त्यभिसंविशन्ति । तद्विजिज्ञासस्व । तद्ब्रह्मेति । स तपोऽतप्यत । स तपस्तप्त्वा ॥",
-        "transliteration": "bhṛgurvai vāruṇiḥ | varuṇaṃ pitaramupasasāra | adhīhi bhagavo brahmeti | tasmā etatprovāca | annaṃ prāṇaṃ cakṣuḥ śrotraṃ mano vācamiti | tagaṃhovāca | yato vā imāni bhūtāni jāyante | yena jātāni jīvanti | yatprayantyabhisaṃviśanti | tadvijijñāsasva | tadbrahmeti | sa tapo'tapyata | sa tapastaptvā ||",
+        "sanskrit": "ॐ सह नाववतु । सह नौ भुनक्तु । सह वीर्यं करवावहै । तेजस्विनावधीतमस्तु मा विद्विषावहै । ॐ शान्तिः शान्तिः शान्तिः ॥ भृगुर्वै वारुणिः । वरुणं पितरमुपससार । अधीहि भगवो ब्रह्मेति । तस्मा एतत्प्रोवाच । अन्नं प्राणं चक्षुः श्रोत्रं मनो वाचमिति । तंहोवाच । यतो वा इमानि भूतानि जायन्ते । येन जातानि जीवन्ति । यत्प्रयन्त्यभिसंविशन्ति । तद्विजिज्ञासस्व । तद्ब्रह्मेति । स तपोऽतप्यत । स तपस्तप्त्वा ॥ १ ॥ ॥ इति अनुवाकः ॥",
+        "transliteration": "oṃ saha nāvavatu | saha nau bhunaktu | saha vīryaṃ karavāvahai | tejasvināvadhītamastu mā vidviṣāvahai | oṃ śāntiḥ śāntiḥ śāntiḥ || bhṛgurvai vāruṇiḥ | varuṇaṃ pitaramupasasāra | adhīhi bhagavo brahmeti | tasmā etatprovāca | annaṃ prāṇaṃ cakṣuḥ śrotraṃ mano vācamiti | taṃhovāca | yato vā imāni bhūtāni jāyante | yena jātāni jīvanti | yatprayantyabhisaṃviśanti | tadvijijñāsasva | tadbrahmeti | sa tapo'tapyata | sa tapastaptvā || 1 || || iti anuvākaḥ ||",
         "hindi": "वरुण-पुत्र भृगु पिता वरुण के पास गए — \"हे भगवन्, मुझे ब्रह्म का उपदेश दीजिये।\" वरुण ने कहा — \"अन्न, प्राण, चक्षु, श्रोत्र, मन, वाक्।\" फिर कहा — \"जिससे ये भूत उत्पन्न होते हैं, जिससे जीते हैं, जिसमें अन्त में लीन होते हैं — उसे जानने की इच्छा करो; वही ब्रह्म है।\" उसने तप किया। तप करके...",
         "translation": "Bhṛgu, son of Varuṇa, approached his father: 'Sir, teach me Brahman.' Varuṇa said: food, prāṇa, sight, hearing, mind, speech. He added: 'That from which beings are born, by which when born they live, into which they enter at departure — desire to know That. That is Brahman.' He performed tapas. Having performed tapas...",
         "contextHi": "यतो वा इमानि भूतानि जायन्ते — ब्रह्म का लक्षण",
@@ -447,8 +447,8 @@
       {
         "chapter": 3,
         "verseNum": "3.6.1",
-        "sanskrit": "भृगुर्वै वारुणिः । वरुणं पितरमुपससार । अधीहि भगवो ब्रह्मेति । तस्मा एतत्प्रोवाच । अन्नं प्राणं चक्षुः श्रोत्रं मनो वाचमिति । तँ्होवाच । यतो वा इमानि भूतानि जायन्ते । येन जातानि जीवन्ति । यत्प्रयन्त्यभिसंविशन्ति । तद्विजिज्ञासस्व । तद्ब्रह्मेति । स तपोऽतप्यत । स तपस्तप्त्वा ॥",
-        "transliteration": "bhṛgurvai vāruṇiḥ | varuṇaṃ pitaramupasasāra | adhīhi bhagavo brahmeti | tasmā etatprovāca | annaṃ prāṇaṃ cakṣuḥ śrotraṃ mano vācamiti | tagaṃhovāca | yato vā imāni bhūtāni jāyante | yena jātāni jīvanti | yatprayantyabhisaṃviśanti | tadvijijñāsasva | tadbrahmeti | sa tapo'tapyata | sa tapastaptvā ||",
+        "sanskrit": "ॐ सह नाववतु । सह नौ भुनक्तु । सह वीर्यं करवावहै । तेजस्विनावधीतमस्तु मा विद्विषावहै । ॐ शान्तिः शान्तिः शान्तिः ॥ भृगुर्वै वारुणिः । वरुणं पितरमुपससार । अधीहि भगवो ब्रह्मेति । तस्मा एतत्प्रोवाच । अन्नं प्राणं चक्षुः श्रोत्रं मनो वाचमिति । तंहोवाच । यतो वा इमानि भूतानि जायन्ते । येन जातानि जीवन्ति । यत्प्रयन्त्यभिसंविशन्ति । तद्विजिज्ञासस्व । तद्ब्रह्मेति । स तपोऽतप्यत । स तपस्तप्त्वा ॥ १ ॥ ॥ इति अनुवाकः ॥",
+        "transliteration": "oṃ saha nāvavatu | saha nau bhunaktu | saha vīryaṃ karavāvahai | tejasvināvadhītamastu mā vidviṣāvahai | oṃ śāntiḥ śāntiḥ śāntiḥ || bhṛgurvai vāruṇiḥ | varuṇaṃ pitaramupasasāra | adhīhi bhagavo brahmeti | tasmā etatprovāca | annaṃ prāṇaṃ cakṣuḥ śrotraṃ mano vācamiti | taṃhovāca | yato vā imāni bhūtāni jāyante | yena jātāni jīvanti | yatprayantyabhisaṃviśanti | tadvijijñāsasva | tadbrahmeti | sa tapo'tapyata | sa tapastaptvā || 1 || || iti anuvākaḥ ||",
         "hindi": "वरुण-पुत्र भृगु पिता वरुण के पास गए — \"हे भगवन्, मुझे ब्रह्म का उपदेश दीजिये।\" वरुण ने कहा — \"अन्न, प्राण, चक्षु, श्रोत्र, मन, वाक्।\" फिर कहा — \"जिससे ये भूत उत्पन्न होते हैं, जिससे जीते हैं, जिसमें अन्त में लीन होते हैं — उसे जानने की इच्छा करो; वही ब्रह्म है।\" उसने तप किया। तप करके...",
         "translation": "Bhṛgu, son of Varuṇa, approached his father: 'Sir, teach me Brahman.' Varuṇa said: food, prāṇa, sight, hearing, mind, speech. He added: 'That from which beings are born, by which when born they live, into which they enter at departure — desire to know That. That is Brahman.' He performed tapas. Having performed tapas...",
         "contextHi": "आनन्दो ब्रह्मेति व्यजानात् — आनंद ही ब्रह्म है",
@@ -548,7 +548,8 @@
       {
         "chapter": 1,
         "verseNum": 1,
-        "sanskrit": "मूल श्लोक",
+        "sanskrit": "जन्माद्यस्य यतोऽन्वयादितरतश्चार्थेष्वभिज्ञः स्वराट् तेने ब्रह्महृदा य आदिकवये मुह्यन्ति यत्सूरयः । तेजोवारिमृदां यथा विनिमयो यत्र त्रिसर्गोऽमृषा धाम्ना स्वेन सदा निरस्तकुहकं सत्यं परं धीमहि ॥ १ ॥",
+        "transliteration": "janmādyasya yato'nvayāditarataścārtheṣvabhijñaḥ svarāṭ tene brahmahṛdā ya ādikavaye muhyanti yatsūrayaḥ | tejovārimṛdāṃ yathā vinimayo yatra trisargo'mṛṣā dhāmnā svena sadā nirastakuhakaṃ satyaṃ paraṃ dhīmahi || 1 ||",
         "contextHi": "जन्माद्यस्य यतोऽन्वयादितरतश्च — आदि श्लोक",
         "contextEn": "Meditating upon the Absolute Truth from whom the creation arises"
       }

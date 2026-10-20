@@ -710,8 +710,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "oṃ dṛptabālākirhānūcāno gārgya āsa | sa hovācājātaśatruṃ kāśyaṃ brahma te bravāṇīti | sa hovācājātaśatruḥ sahasrametasyāṃ vāci dadmo janako janaka iti vai janā dhāvantīti ||",
           "translation": "There was formerly the proud Gârgya Bâlâki , a man of great reading. He said to Agâtasatru of Kâsi, 'Shall I tell you Brahman?' Agâtasatru said: 'We give a thousand (cows) for that speech (of yours), for verily all people run away, saying, Ganaka (the king of Mithilâ) is our father (patron) .'",
           "explanation": "Sense: There was formerly the proud Gârgya Bâlâki , a man of great reading. He said to Agâtasatru of Kâsi, 'Shall I tell you Brahman?' Agâtasatru said: 'We give a thousand (cows) for that speech (of yours), for verily all people run away, saying,…",
-          "hindi": "पहले यह ब्रह्म ही था; उसने अपनेको ही जाना कि “भें ब्रह्य ह ।  अतः वह सवं हौ गया 1 उसे देवोमसे जिस-जिसने जाना वही तद्रूप हो  गया । इसी प्रकार ऋषियों जौर मतुष्योमेसे भी  जिसने उसे जाना वह्‌ . ब्रह्मपरम्‌, सवंमावस्य साध्य- मभिप्रेतमिति प्रस्य ब्रह्मणः सव- यहाँ ब्रह्म राब्दसे अपरत्रह्य । श्रृततिमे 'देवताओंको यह प्रिय नहीं है\"  ताया टै कि मोक्षकामीको ज्ञानप्रास्िके साधनम 4 नाण ४  शाङ्करमाध्याथं - २८४",
-          "science": "पहले यह ब्रह्म ही था; उसने अपनेको ही जाना कि “भें ब्रह्य ह। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -727,8 +725,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāsāvāditye puruṣa etamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhā | atiṣṭhāḥ sarveṣāṃ bhūtānāṃ mūrdhā rājeti vā ahametamupāsa iti | sa ya etamevamupāste 'tiṣṭhāḥ sarveṣāṃ bhūtānāṃ mūrdhā rājā bhavati ||",
           "translation": "Gârgya said: 'The person that is in the sun , that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the supreme, the head of all beings, the king. Whoso adores him thus, becomes Supreme, the head of all beings, a king.'",
           "explanation": "Sense: Gârgya said: 'The person that is in the sun , that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the supreme, the head of all beings, the king. Whoso adores him thus, becomes Supreme, the head of all beings, a king.'",
-          "hindi": "आरम्भमे यह्‌ एक ब्रह्म ही था। अकेले होनेके कारण वह विभूति  युक्त कसं करनेमे समथं नहीं हा । उसने अतिशयतासे क्षत्र इस प्रस्त रूपकी रचना की । अर्थात्‌ देवताओमे क्षत्रिय जो ये इन्द्र, वरुण, सौम,  त्तत्र सष्टऽप- क्त्रियोकी रचना हो जानैपर भी- जातानि गणक आख्यायन्ते वसवा श्ना आदित्या वह्‌ (ब्रह्म ) विभूतिगुक्त कमं करनेमे समथं नहीं हा । उसने वैदय- जातिकी रचना की । जो ये वसु, स्र, आदित्य, विश्वेदेव भौर मस्तु",
-          "science": "आरम्भमे यह्‌ एक ब्रह्म ही था। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -744,8 +740,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāsau candre puruṣa etamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhā | bṛhan pāṇḍaravāsāḥ somo rājeti vā ahametamupāsa iti | sa ya etamevamupāste'haraharha sutaḥ prasuto bhavati nāsyānnaṃ kṣīyate ||",
           "translation": "Gârgya said: 'The person that is in the moon (and in the mind), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the great, clad in white raiment, as Soma, the king.' Whoso adores him thus, Soma is poured out and poured forth for him day by day, and his food does not fail .",
           "explanation": "Sense: Gârgya said: 'The person that is in the moon (and in the mind), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the great, clad in white raiment, as Soma, the king.' Whoso adores him thus,…",
-          "hindi": "सनैव व्यभवत्‌ करमणे ब्रह्म वह (ब्रह्म) धनोपाजंन करने तथान व्यभवत्‌, वित्तोपाजंयितुर- वाका अभाव होनेके कारण कप ्ि ९  करनेमे समथं नहीं हुजा । उसन रूद्रवर्णकी उत्पत्ति ते वेयं  ते = ७ यहि   ्  फिर भी  वह विभूतिधुक्तं कमं करनेमे समथं नहीं हुंमा । उसने शूद्रवर्णकी रचना की । पूषा जुद्रवणं है । यह पृथिवी ही पुषा हे; क्योंकि यह्‌ जो कु है, यही इसका पोषण करती है",
-          "science": "सनैव व्यभवत्‌ करमणे ब्रह्म वह (ब्रह्म) धनोपाजंन करने तथान व्यभवत्‌, वित्तोपाजंयितुर- वाका अभाव होनेके कारण कप ्ि ९ करनेमे समथं नहीं हुजा। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -761,8 +755,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāsau vidyuti puruṣa etamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhāstejasvīti vā ahametamupāsa iti | sa ya etamevamupāste tejasvī ha bhavati tejasvinī hāsya prajā bhavati ||",
           "translation": "Gârgya said: 'The person that is in the lightning (and in the heart), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the luminous.' Whoso adores him thus, becomes luminous, and his offspring becomes luminous.",
           "explanation": "Sense: Gârgya said: 'The person that is in the lightning (and in the heart), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the luminous.' Whoso adores him thus, becomes luminous, and his offspring becomes luminous.",
-          "hindi": "स॒ परिचारकाभावास्युनरपि  सेवका अभाव होनेके कारण „, 6  फिर मी वह विभतियुक्त कर्म करने- ¬,  वणकी सष्टिकी। शूद्रही शौद्रं धर्भकी उत्पत्ति श्रौर उसके प्रभाव एवं स्वरूपका वर्णत्त तब भी वह्‌ विभूतियुक्तं कमं करनेमे समर्थं तहीं हुआ । उसने श्रेयोरूप (कल्याणस्वरूप) धर्मकी अतिस्रष्टिकी। यहजो धर्मद, क्षत्रियका भी स चतुरः सुष्रापि वर्णान्तैव , वह (रह्म) चारों वर्णोको रक आ-श्त्रियजाति उग्र होती हैः द्सलिये व्यभवत्‌ , उग्रस्याल्कतरस्यानियता- वहं नियन्वणे नीं र्‌ सकती",
-          "science": "स॒ परिचारकाभावास्युनरपि सेवका अभाव होनेके कारण „, 6 फिर मी वह विभतियुक्त कर्म करने- ¬, वणकी सष्टिकी। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -778,8 +770,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāyamākāśe puruṣa etamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhāḥ | pūrṇamapravartīti vā ahametamupāsa iti | sa ya etamevamupāste pūryate prajayā paśubhirnāsyāsmāllokātprajodvartate ||",
           "translation": "Gârgya said: 'The person that is in the ether (and in the ether of the heart), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him as what is full, and quiescent.' Whoso adores him thus, becomes filled with offspring and cattle, and his offspring does not cease from this world.",
           "explanation": "Sense: Gârgya said: 'The person that is in the ether (and in the ether of the heart), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him as what is full, and quiescent.' Whoso adores him thus, becomes filled with offspring and cattle,…",
-          "hindi": "ओर सत्यका रहस्य जाननेवाले लोग श्रह॒ धमंमय वचन बोलता है प्रसिद्ध लौक्िकन्याय बोलता है ग्रात्मोपासनकी ग्रावश्यकता ब्रह्मण ४ शाङ्रभाष्याथं २९्‌ अस्माल्लोकात्श्वं रोकमहघ्रा परेहि विदितो करनेवाला  ब्रह्म अग्निरूपसे देवताओमं ब्राह्मण हमा । तथा मनुष्योमे गुदर हुजा । इसीसे अग्निमे ही  क्म करके  देवताओंके बीच क॑फलकी इच्छा करते हँ तथा उसे मनुष्योके बीच ब्राह्मणजातिमे ही कममंफलकीौ",
-          "science": "ओर सत्यका रहस्य जाननेवाले लोग श्रह॒ धमंमय वचन बोलता है प्रसिद्ध लौक्िकन्याय बोलता है ग्रात्मोपासनकी ग्रावश्यकता ब्रह्मण ४ शाङ्रभाष्याथं २९्‌ अस्माल्लोकात्श्व…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -795,8 +785,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāyaṃ vāyau puruṣa etamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhā | indro vaikuṇṭho'parājitā seneti vā ahametamupāsa iti | sa ya etamevamupāste jiṣṇurhāparājiṣṇurbhavatyanyatastyajāyī ||",
           "translation": "Gârgya said: 'The person that is in the wind (and in the breath), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him as Indra Vaikuntha, as the unconquerable army (of the Maruts).' Whoso adores him thus, becomes victorious, unconquerable, conquering his enemies.",
           "explanation": "Sense: Gârgya said: 'The person that is in the wind (and in the breath), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him as Indra Vaikuntha, as the unconquerable army (of the Maruts).' Whoso adores him thus, becomes victorious,…",
-          "hindi": "इन चारों वर्णोको उत्पन्न किया-- र ठेसा जो उपसंहार टै, वह्‌ आगेके २९६ . बृहदारण्यकोपनिषद्‌ कर्माधिकारी जीव किन-किन क्मोकि कारण समस्त प्राशियोका लोक टै? अभो श्रयं बा श्रासा  अथो अयं वा आत्मा। यहाँ २३०६ वृहदारण्यकोपनिषद्‌  अध्याय १  यह्‌ आत्मा ( गृही कर्माधिकारी ) समस्त जी्वोका लोक ( भोग्य ) है । वह्‌ जो हवन ओर यज्ञ करता है, उससे देवताओंका लोक होता है;",
-          "science": "इन चारों वर्णोको उत्पन्न किया-- र ठेसा जो उपसंहार टै, वह्‌ आगेके २९६ . बृहदारण्यकोपनिषद्‌ कर्माधिकारी जीव किन-किन क्मोकि कारण समस्त प्राशियोका लोक टै? अभो श्…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -812,8 +800,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāyamagnau puruṣa etamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhā | viṣāsahiriti vā ahametamupāsa iti | sa ya etamevamupāste viṣāsahirha bhavati viṣāsahirhāsya prajā bhavati ||",
           "translation": "Gârgya said: 'The person that is in the fire (and in the heart), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him as powerful.' Whoso adores him thus, becomes powerful, and his offspring becomes powerful.",
           "explanation": "Sense: Gârgya said: 'The person that is in the fire (and in the heart), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him as powerful.' Whoso adores him thus, becomes powerful, and his offspring becomes powerful.",
-          "hindi": "प्रकरणम विदित है तथा अवदान- प्रकरणम कतंव्यरूपसे इसकी मीमांसा हई है-विचार किया गया है कारेऽवक्ञ इष प्रयतते, न पुनस्त- द्विमोक्ञणोपयि धिक्ाधिकार इति। यदि ब्रह्मको जाननेवाला पुरुष पहले एक -आत्मा ही था । उसने कामना की कि भेरेस्त्रीहो, फिर ै प्रजारूपसे उतपन्न होड । तथा मेरे धन हौ, फिर मँ कं करं ।' बस इतनी ही कामना है 1 इच्छा करनेपर इससे अधिक कोई नहीं पाता ।",
-          "science": "प्रकरणम विदित है तथा अवदान- प्रकरणम कतंव्यरूपसे इसकी मीमांसा हई है-विचार किया गया है कारेऽवक्ञ इष प्रयतते, न पुनस्त- द्विमोक्ञणोपयि धिक्ाधिकार इति। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -829,8 +815,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāyamapsu puruṣa etamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhāḥ | pratirūpa iti vā ahametamupāsa iti | sa ya etamevamupāste pratirūpam̐ haivainamupagacchati nāpratirūpamatho pratirūpo'smājjāyate ||",
           "translation": "Gârgya said: 'The person that is in the water (in seed, and in the heart), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him as likeness.' Whoso adores him thus, to him comes what is likely (or proper), not what is improper; what is born from him, is like unto him .",
           "explanation": "Sense: Gârgya said: 'The person that is in the water (in seed, and in the heart), that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him as likeness.' Whoso adores him thus, to him comes what is likely (or proper), not what is improper;…",
-          "hindi": "्रासेवेदमग्र आसीत्‌ । आल्मेव  = आत्मेवेदमग्र आसीत्‌ । आत्मा  ही अर्थात्‌ स्वाभाविक अविद्वान्‌ देह  स्वामाविकोऽविद्रान्कायंकूरण-  . ह  सप्तान्नसुष्टि, उसका विभाग ग्रौर व्याख्या उपक्रमः है । यहां अविद्याका प्रकरण हं । देवताथरुपास्ते “अन्यो- । तहां अविद्रानु “यह्‌ ( देवता ) अन्य पिता ( प्रजापति ) ने विज्ञान ओर कमंके द्वारा जिन सात अन्तोकी रचना की, उनमेंसे इसका एक अन्न साधारण है  अर्थात्‌ वह॒ सभौ प्राणियोक्रा भोग्य है ; दो अन्न उसने देवताओंको बांट दिये; तीन अपने",
-          "science": "्रासेवेदमग्र आसीत्‌। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -846,8 +830,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāyamādarśe puruṣa etamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhā | rociṣṇuriti vā ahametamupāsa iti | sa ya etamevamupāste rociṣṇurha bhavati rociṣṇurhāsya prajā bhavatyatho yaiḥ sannigacchati sarvām̐stānatirocate ||",
           "translation": "Gârgya said: 'The person that is in the mirror, that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the brilliant.' Whoso adores him thus, he becomes brilliant, his offspring becomes brilliant, and with whomsoever he comes together, he outshines them.",
           "explanation": "Sense: Gârgya said: 'The person that is in the mirror, that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the brilliant.' Whoso adores him thus, he becomes brilliant, his offspring becomes brilliant,…",
-          "hindi": "यत्स॒प्रान्नानि, यद्‌ अजनय- । 'त्सप्तान्नानि' इसमे “यत्‌ शब्द “यद्‌ अजनयत्‌\" इस प्रकार  अजन- यत्‌\" क्रियासे सम्बन्ध रखनेके कारण  मन्तरोका अथं गूढ होनेके कारण प्रायः दुर्बोध होता है, अतः उसके अर्थकी व्याख्या करनेके लिये ब्राह्मण यत्सक्तात्नानि मेधया तपसाजनयत्पिता\" इसका यह्‌ अथ प्रसिद्ध हे कि पिताने ज्ञान ओर कम॑के द्वारा ही अन्नोकी उत्पत्ति की । उसका एक ३२४ बृहदारण्यकोपनिषद्‌  अध्याय १",
-          "science": "यत्स॒प्रान्नानि, यद्‌ अजनय-। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -863,8 +845,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāyaṃ yantaṃ paścāchabdo'nūdetyetamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhā | asuriti vā ahametamupāsa iti | sa ya etamevamupāste sarvam̐ haivāsmim̐lloka āyureti nainaṃ purā kālātprāṇo jahāti ||",
           "translation": "Gârgya said: 'The sound that follows a man while he moves, that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as life.' Whoso adores him thus, he reaches his full age in this world, breath does not leave him before the time.",
           "explanation": "Sense: Gârgya said: 'The sound that follows a man while he moves, that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as life.' Whoso adores him thus, he reaches his full age in this world, breath does not leave him before the time.",
-          "hindi": "उच्यते १इति हि शब्देनैव व्याचष्टे  ६? इस प्रदलके उत्तरम यह दवितीय साज्नयस्पिताः इत्यस्य कोऽथं प्रसिद्धा्थावि्योतकेन । प्रसिद्धो  किया जाता है-जो भी इस अक्षिति अधत्‌ ऊपर बतलाये हुए अक्षयके  हैतुको कि पुरुष ही अक्षिति है, ग्रात्माके लिये तीन भ्रन्न श्रौर उनका प्राध्यात्मिक विवैचनं कायंसवाद्विस्तीणंविषयत्वाच पूर पाङ्न्तकम्के फलभूत जिन तीन",
-          "science": "उच्यते १इति हि शब्देनैव व्याचष्टे ६? इस प्रदलके उत्तरम यह दवितीय साज्नयस्पिताः इत्यस्य कोऽथं प्रसिद्धा्थावि्योतकेन। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -880,8 +860,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāyaṃ dikṣu puruṣa etamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhā | dvitīyo'napaga iti vā ahametamupāsa iti | sa ya etamevamupāste dvitīyavānha bhavati nāsmād gaṇaśchidyate ||",
           "translation": "Gârgya said: 'The person that is in space, that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the second who never leaves us.' Whoso adores him thus, becomes possessed of a second, his party is not cut off from him,",
           "explanation": "Sense: Gârgya said: 'The person that is in space, that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the second who never leaves us.' Whoso adores him thus, becomes possessed of a second, his party is not cut off from him,",
-          "hindi": "उसने तीन अन्न अपने लिये क्रिये अर्थात्‌ मन, वाणी ओर प्राण इत उसने अपने लिये किथा । भेरा मन अन्यत्र था, इसलिये मैने तहीं देखा,  १ ५४ भेरा मन्‌ अन्यत्र था, इसलिये मेने नहीं सुना\"  एेसा जो मनुष्य कहता है त्रीण्यालमनेऽङ्ककतेति को- ऽ्याथं इस्युच्यते-मनोषाक्प्राणा श्रीण्यात्मनेऽकुरुतः इक्त मन्वका ग्रात्माथं भ्रन्नोका श्राधिभौतिक विस्तार  तेषामेव प्राजापत्थानामन्नाना-  उन्दी प्राजापत्य अन्नोका आधि. माधिभौतिको विस्तारोऽभिधीयते-। भोतिक विस्तार कहा जाता",
-          "science": "उसने तीन अन्न अपने लिये क्रिये अर्थात्‌ मन, वाणी ओर प्राण इत उसने अपने लिये किथा। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -897,8 +875,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāyaṃ chāyāmayaḥ puruṣa etamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhā | mṛtyuriti vā ahametamupāsa iti | sa ya etamevamupāste sarvam̐ haivāsmim̐lloka āyureti nainaṃ purā kālānmṛtyurāgacchati ||",
           "translation": "Gârgya said: 'The person that consists of the shadow, that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as death.' Whoso adores him thus, he reaches his whole age in this world, death does not approach him before the time.",
           "explanation": "Sense: Gârgya said: 'The person that consists of the shadow, that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as death.' Whoso adores him thus, he reaches his whole age in this world, death does not approach him before the time.",
-          "hindi": "त्रया खका षत एव वागेकायं रोको मनो ऽन्तरिश्च- तीनोंलोकयेहीदहँ। वाक्‌ ही यह लोक है, मन अन्तरिक्चलोक लि ओर प्राण वह (स्वगं ) लोक है । तरथो लोका भूवः स्वरित्या-  शुः, वः ओर स्वः' नामक  ही हं । उनका विदोषरूप इस प्रकार तत्र॒ विशेषो वागेवायं लोकतः है वाक्‌ ही यह लोकद, मन",
-          "science": "त्रया खका षत एव वागेकायं रोको मनो ऽन्तरिश्च- तीनोंलोकयेहीदहँ। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -914,8 +890,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca gārgyo ya evāyamātmani puruṣa etamevāhaṃ brahmopāsa iti | sa hovācājātaśatrurmā maitasminsaṃvadiṣṭhā ātmanvīti vā ahametamupāsa iti | sa ya etamevamupāsta ātmanvī ha bhavatyātmanvinī hāsya prajā bhavati | sa ha tūṣṇīmāsa gārgyaḥ ||",
           "translation": "Gârgya said: 'The person that is in the body , that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as embodied.' Whoso adores him thus, becomes embodied, and his offspring becomes embodied . Then Gârgya became silent.",
           "explanation": "Sense: Gârgya said: 'The person that is in the body , that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as embodied.' Whoso adores him thus, becomes embodied, and his offspring becomes embodied . Then Gârgya became silent.",
-          "hindi": "ब्राहमण  शङ्करमाष्याथ ३४९ तीनों वेदयेहीरँ। वाक्‌ ही ऋग्वेद है, मन यजुवद है ओर प्राण है, मन पितृगण हँ जौर प्राण मनुष्य हँ हं । मनही पित्ताहे, वाक्‌ माता है ओर प्राण प्रजा है",
-          "science": "ब्राहमण शङ्करमाष्याथ ३४९ तीनों वेदयेहीरँ। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -931,8 +905,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovācājātaśatruretāvannū 3 ityetāvaddhīti | naitāvatā viditaṃ bhavatīti | sa hovāca gārgya upa tvā yānīti ||",
           "translation": "Agâtasatru said: 'Thus far only?' 'Thus far only,' he replied. Agâtasatru said: 'This does not suffice to know it (the true Brahman).' Gârgya replied: 'Then let me come to you, as a pupil.'",
           "explanation": "Sense: Agâtasatru said: 'Thus far only?' 'Thus far only,' he replied. Agâtasatru said: 'This does not suffice to know it (the true Brahman).' Gârgya replied: 'Then let me come to you, as a pupil.'",
-          "hindi": "त्रयो वेदा इत्यादीनि वाक्या- त्रयो वेदाः' इत्यादि वाक्थोका नि ऋञ्व्थानि  ४५-७॥  भथं सरल है ॥ ५-७॥ वह्‌ वाक्कासरूप है, वाक्‌ ही विज्ञाता है, वाक्‌ इस ( अपने ज्ञाता ) की विज्ञात होकर रक्षा करती है मेत एव । तत्र विशेषः यत्कि  चात ये ही ₹। उत्का विदोष रूपः अ 9 । इस प्रकार है-जो कुछ विज्ञात-- विज्ञातं विस्पष्टं ज्ञातं वाचस्त-  विटपे ज्ञात ह, वह्‌ वाक्का",
-          "science": "त्रयो वेदा इत्यादीनि वाक्या- त्रयो वेदाः' इत्यादि वाक्थोका नि ऋञ्व्थानि ४५-७॥ भथं सरल है ॥ ५-७॥ वह्‌ वाक्कासरूप है, वाक्‌ ही विज्ञाता है, वाक्‌ इस ( अपने ज्ञ…। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -948,8 +920,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovācājātaśatruḥ pratilomaṃ caitadyadbrāhmaṇaḥ kṣatriyamupeyād brahma me vakṣyatīti | vyeva tvā jñapayiṣyāmīti | taṃ pāṇāvādāyottasthau | tau ha puruṣam̐ suptamājagmatustametairnāmabhirāmantrayāṃcakre bṛhanpāṇḍaravāsaḥ soma rājanniti | sa nottasthau | taṃ pāṇinā''peṣaṃ bodhayāṃcakāra | sa hottasthau ||",
           "translation": "Agâtasatru said: 'Verily, it is unnatural that a Brâhmana should come to a Kshatriya, hoping that he should tell him the Brahman. However, I shall make you know him clearly,' thus saying he took him by the hand and rose. And the two together came to a person who was asleep. He called him by these names, 'Thou, great one, clad in white raiment, Soma, King .' He did not rise. Then rubbing him with his hand, he woke him, and he arose.",
           "explanation": "Sense: Agâtasatru said: 'Verily, it is unnatural that a Brâhmana should come to a Kshatriya, hoping that he should tell him the Brahman. However, I shall make you know him clearly,' thus saying he took him by the hand and rose. And the two together came to a person who was asleep.…",
-          "hindi": "जो कु विजिज्ञास्य हे, वह मनका रूप हं । मन विजिज्ञास्य है । मन विजिज्ञास्य होकर इसकी रक्षा करता हे 9 ९  विस्पष्ट जाननेके लिये इष्ट ह, वहं ्ात्मिष्टं विजिज्ञास्यम्‌, तत्सव  सव मनका रूप है; वयोकि मन ही  मनसो रूपम्‌; मनो हि यस्मा-  सन्देहयोग्य॒स्वरूपवाला होनेके जो कुछ अविज्ञात हे, वह प्राणका रूप है । प्राण ही अविज्ञात है। भ्राण अविज्ञात होकर इसकी रक्षा करता है",
-          "science": "जो कु विजिज्ञास्य हे, वह मनका रूप हं। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -965,8 +935,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovācājātaśatruryatraiṣa etat supto'bhūd ya eṣa vijñānamayaḥ puruṣaḥ kvaiṣa tadā'bhūt kuta etadāgāditi | tadu ha na mene gārgyaḥ ||",
           "translation": "Agâtasatru said: 'When this man was thus asleep, where was then the person (purusha), the intelligent? and from whence did he thus come back?' Gârgya did not know this?",
           "explanation": "Sense: Agâtasatru said: 'When this man was thus asleep, where was then the person (purusha), the intelligent? and from whence did he thus come back?' Gârgya did not know this?",
-          "hindi": "का अविषय है-- ्देह्‌ सं  ही नहीं हे- वह प्राणक्रा रूप है; तद्रूपम्‌ प्राणो ह्विज्ञातोऽगिज्ञा-  प्राण ही अविज्ञात है, वोकि,  १. यदि कहो कि अविज्ञात रहते इए प्राण किस प्रकार उपकारकं हौ सकता है ? तो इसके ल्य आगे लिखी बातपर ध्यान देना चाहिये । ३५२ बृहदारण्यकोपनिषद्‌  जष्याय १ + उस वाक्का पृथिवी शरीर है ओर यह्‌ अग्नि ज्योतीरूप है । तहा जितनी वाक्‌ है, उतनी ही पृथिवी है ओर उतना ही यह्‌ अभिनि हे",
-          "science": "का अविषय है-- ्देह्‌ सं ही नहीं हे- वह प्राणक्रा रूप है; तद्रूपम्‌ प्राणो ह्विज्ञातोऽगिज्ञा- प्राण ही अविज्ञात है, वोकि, १. यदि कहो कि अविज्ञात रहते इए प्राण…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -982,8 +950,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovācājātaśatruryatraiṣa etat|supto'bhūd ya eṣa vijñānamayaḥ puruṣastadeṣāṃ prāṇānāṃ vijñānena vijñānamādāya ya eṣo'ntarhṛdaya ākāśastasmiñchete | tāni yadā gṛhṇāti atha haitatpuruṣaḥ svapiti nāma | tadgṛhīta eva prāṇo bhavati gṛhītā vāg gṛhītaṃ cakṣurgṛhītam̐ śrotraṃ gṛhītaṃ manaḥ ||",
           "translation": "Agâtasatru said: 'When this man was thus asleep, then the intelligent person (purusha), having through the intelligence of the senses (prânas) absorbed within himself all intelligence, lies in the ether, which is in the heart . When he takes in these different kinds of intelligence, then it is said that the man sleeps (svapiti) . Then the breath is kept in, speech is kept in, the ear is kept in, the eye is kept in, the mind is kept in.",
           "explanation": "Sense: Agâtasatru said: 'When this man was thus asleep, then the intelligent person (purusha), having through the intelligence of the senses (prânas) absorbed within himself all intelligence, lies in the ether, which is in the heart .…",
-          "hindi": "तस्ये तस्याः वाचः प्रजापते-  प्रजापतिके अन्नरूपसे प्रस्तुत हुए उस वाक्का पृथिवी शरीर यानी बाह्य आधार है तथा पृथिवी- इन्द्ररूप प्राणकी उत्पत्ति ्रौर उसकी उपासनाका फल तथा इस सनका चयुलोक शरीर हे, ज्योतीरूपं वह आदित्य है; तहा जितना मन है, उतना ही द्युलोक ओर उतना ही वह आदित्य है । वे -मनसो चोलकः शरीरं कायं यो ऽसावादिस्यः । तत्तत्र यावस्प-  आवय है । उनमे जितना परिमाण मनस्तावती ताव द्विस्तारा तावतप- है उतना-उतने विस्तारवाला अ",
-          "science": "तस्ये तस्याः वाचः प्रजापते- प्रजापतिके अन्नरूपसे प्रस्तुत हुए उस वाक्का पृथिवी शरीर यानी बाह्य आधार है तथा पृथिवी- इन्द्ररूप प्राणकी उत्पत्ति ्रौर उसकी उपासन…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -999,8 +965,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yatraitatsvapnyayā carati te hāsya lokāstaduteva mahārājo bhavatyuteva mahābrāhmaṇa utevoccāvacaṃ nigacchati | sa yathā mahārājo jānapadāngṛhītvā sve janapade yathākāmaṃ parivartetaivamevaiṣa etatprāṇāngṛhītvā sve śarīre yathākāmaṃ parivartate || gṛhītvā sve śarīre yathākāmam parivartate",
           "translation": "But when he moves about in sleep (and dream), then these are his worlds. He is, as it were, a great king; he is, as it were, a great Brâhmana; he rises, as it were, and he falls. And as a great king might keep in his own subjects, and move about, according to his pleasure, within his own domain, thus does that person (who is endowed with intelligence) keep in the various senses (prânas) and move about, according to his pleasure, within his own body (while dreaming).",
           "explanation": "Sense: But when he moves about in sleep (and dream), then these are his worlds. He is, as it were, a great king; he is, as it were, a great Brâhmana; he rises, as it were, and he falls. And as a great king might keep in his own subjects, and move about, according to his pleasure,…",
-          "hindi": "ग्राटपाथं ग्रन्नोकी ग्रन्तवान्‌ ग्रौर श्रनन्तरूपसे उपासना करनेका फल तथा इस प्राणका जल शरीर है, वह चन्द्रमा ज्योतीरूप है । तहां जितना प्राण है, उतना ही जल है ओर उतना ही वह चद्धमा है।वेये सभी समान हँ ओर सभौ अनन्त हँ । जो कोई इह अन्तवान्‌ सममकर   अन्नरूप प्राणका, अभी प्रनारूपते नस्य प्राणस्य, न प्रजोक्तस्यान  अन्तरूप प्राणका, र स्त्रनिदि्टस्य, आपः शरीरं काय । बतलाये हृए  नही, जल",
-          "science": "ग्राटपाथं ग्रन्नोकी ग्रन्तवान्‌ ग्रौर श्रनन्तरूपसे उपासना करनेका फल तथा इस प्राणका जल शरीर है, वह चन्द्रमा ज्योतीरूप है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -1016,8 +980,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha yadā suṣupto bhavati yadā na kasyacana veda hitā nāma nāḍyo dvāsaptatiḥ sahasrāṇi hṛdayātpurītatamabhipratiṣṭhante | tābhiḥ pratyavasṛpya purītati śete | sa yathā kumāro vā mahārājo vā mahābrāhmaṇo vā'tighnīmānandasya gatvā śayītaivamevaiṣa etacchete ||",
           "translation": "Next, when he is in profound sleep, and knows nothing, there are the seventy-two thousand arteries called Hita, which from the heart spread through the body . Through them he moves forth and rests in the surrounding body. And as a young man, or a great king, or a great Brâhmana, having reached the summit of happiness, might rest, so does he then rest.",
           "explanation": "Sense: Next, when he is in profound sleep, and knows nothing, there are the seventy-two thousand arteries called Hita, which from the heart spread through the body . Through them he moves forth and rests in the surrounding body. And as a young man, or a great king,…",
-          "hindi": "गीत ्रन्नरूप प्रजापतिका षोडशकल संवत्सररूपसे निर्देश सुषा वरीण्यन्नान्यासमाथेसकरो- तावगम्पते, वित्तकरम॑णोरपि तत्र (स एष संबत्सरः'- योऽयं  स एष संवत्सरः\" यहाँ जिस अन्तत्रयरूप प्रजापतिका प्रसङ्ग हैः वेष उसीका संवत्सररूपसे विशेषतः १ यहाँ यह शङ्का होती है--श्रतिमे सभी प्राणियोकी हिसाका निषेष ----------- ल तिव कसते ल्यि अधि 5 » यह सामास्य वचन है । इसके रहते हए जो यहां अम्‌ यह विशेष वचन श्रुतम कहा",
-          "science": "गीत ्रन्नरूप प्रजापतिका षोडशकल संवत्सररूपसे निर्देश सुषा वरीण्यन्नान्यासमाथेसकरो- तावगम्पते, वित्तकरम॑णोरपि तत्र (स एष संबत्सरः'- योऽयं स एष संवत्सरः\" यहाँ ज…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -1033,8 +995,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathorṇabhistantunoccared yathā'gneḥ kṣudrā viṣphuliṅgā vyuccarantyevamevāsmādātmanaḥ sarve prāṇāḥ sarve lokāḥ sarve devāḥ sarvāṇi bhūtāni vyuccaranti | sarve ||| vyuccaranti tasyopaniṣatsatyasya satyamiti prāṇā vai satyaṃ teṣāmeṣa satyam ||",
           "translation": "As the spider comes out with its thread, or as small sparks come forth from fire, thus do all senses, all worlds, all Devas, all beings come forth from that Self The Upanishad (the true name and doctrine) of that Self is 'the True of the True.' Verily the senses are the true, and he is the true of the true.",
           "explanation": "Sense: As the spider comes out with its thread, or as small sparks come forth from fire, thus do all senses, all worlds, all Devas, all beings come forth from that Self The Upanishad (the true name and doctrine) of that Self is 'the True of the True.' Verily the senses are the true,…",
-          "hindi": "जो भी यह सोलह कलाओंवाला संवत्सर प्रजापति है, वह यही है जो कि इस प्रकार जानेवाला पुरुष है । वित्त ही उसकी पंद्रह कला ह तथा आत्मा (शरीर) ही उसकी सोलहवीं कला है । वहं वित्तसे दी बढ़ता संवत्सर प्रजापति परोक्षरूपसे कहा प्रजापतिः षोडशकलः स वैवाटय-  गया है, उसे अत्यन्त परोक्ष ही नही प्राणियोकी अथवा केवल गिरगिटकी हिसा की जा सकती है । एेसी दशाम पूर्वोक्त रथकी नेमिरूप घनसे फिर भी वृद्धि-  को प्राप्तहो जाताहे",
-          "science": "जो भी यह सोलह कलाओंवाला संवत्सर प्रजापति है, वह यही है जो कि इस प्रकार जानेवाला पुरुष है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargya",
@@ -1058,8 +1018,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo ha vai śiśum̐ sādhānam̐ sapratyādhānam̐ sasthūṇam̐ sadāmaṃ veda sapta ha dviṣato bhrātṛvyānavaruṇaddhyayaṃ vāva śiśuryo'yaṃ madhyamaḥ prāṇastasyedamevā''dhānamidaṃ pratyādhānaṃ prāṇaḥ sthūṇā'nnaṃ dāma ||",
           "translation": "Verily he who knows the babe with his place , his chamber , his post , and his rope , he keeps off the seven relatives who hate him. Verily by the young is meant the inner life, by his place this (body) , by his chamber this (head), by his post the vital breath, by his rope the food.",
           "explanation": "Sense: There was formerly the proud Gârgya Bâlâki , a man of great reading. He said to Agâtasatru of Kâsi, 'Shall I tell you Brahman?' Agâtasatru said: 'We give a thousand (cows) for that speech (of yours), for verily all people run away, saying,…",
-          "hindi": "लोकत्रयकी प्राप्निके साधन तथा देवलोककी उक्कृष्टताका वणन इस प्रकार हैववित्त ओर विद्या- अथ मनुष्यलोक, पिद्लोक ओर देवलोक-ये हौ तीन लोक हँ । वह यह्‌ मनुष्यलोक पुत्रके हारा ही जीता जा सकता है, किसी अन्य करम॑से नटीं । तथा पिदृलोक कम॑ंसे ओर देवलोक विद्यासे जीते जा सकते है । अथेति वाक्योपन्यासाथं; ! अथः यह शब्द वाक्या र्भके निश्वपाथक है । शाल्चोक्त साधनसे 4  प्राप्न होते योग्य तीन दही लोक है",
-          "science": "लोकत्रयकी प्राप्निके साधन तथा देवलोककी उक्कृष्टताका वणन इस प्रकार हैववित्त ओर विद्या- अथ मनुष्यलोक, पिद्लोक ओर देवलोक-ये हौ तीन लोक हँ। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "VitalForce",
@@ -1075,8 +1033,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tametāḥ saptākṣitaya upatiṣṭhante tadyā imā akṣam̐llohinyo rājayastābhirenam̐ rudro'nvāyatto'tha yā akṣannāpastābhiḥ parjanyo yā kanīnakā tayā''dityo yatkṛṣṇaṃ, tenāgniryacchuklaṃ tenendro 'dharayainaṃ vartanyā pṛthivyanvāyattā dyauruttarayā | nāsyānnaṃ kṣīyate ya evaṃ veda ||",
           "translation": "Then the seven imperishable ones approach him. There are the red lines in the eye, and by them Rudra clings to him. There is the water in the eye, and by it Parganya clings to him. There is the pupil, and by it Âditya (sun) clings to him, There is the dark iris, and by it Agni clings to him. There is the white eye-ball, and by it Indra, clings to him. With the lower eye-lash the earth, with the upper eye-lash the heaven clings to him. He who knows this, his food does never perish.",
           "explanation": "Sense: Then the seven imperishable ones approach him. There are the red lines in the eye, and by them Rudra clings to him. There is the water in the eye, and by it Parganya clings to him. There is the pupil, and by it Âditya (sun) clings to him, There is the dark iris,…",
-          "hindi": "सम्प्रत्तिकमं ग्रौर उसका परिणाम कर्माथंत्यान्न प्रथकपाधनमिति विद्यकमंणोलोंकजयहेतुसं अव सम्प्रत्ति  कही जात्ती है-  जब पिता यह समता है किमे परनेवाला हँ तो वह पुवसे कहता है -ततु ब्रह्य है, तु यज्ञ है, तु लोक है ।\" वह पूत्र बदलेमे कहता है-मै बह्म ह, मे यज्ञ हु, मे लोक हं जो कुं त्तिरिति वक्ष्यमाणस्य कर्मणो  पारसम्प्रद्‌नं कोत्यनेन प्रकारेण कमं  त्तस्मिन्काले कतेव्यम्‌ १",
-          "science": "सम्प्रत्तिकमं ग्रौर उसका परिणाम कर्माथंत्यान्न प्रथकपाधनमिति विद्यकमंणोलोंकजयहेतुसं अव सम्प्रत्ति कही जात्ती है- जब पिता यह समता है किमे परनेवाला हँ तो वह पु…। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "VitalForce",
@@ -1092,8 +1048,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadeṣa śloko bhavati | arvāgbilaścamasa ūrdhvabudhnastasminyaśo nihitaṃ viśvarūpam | tasyā''sata ṛṣayaḥ sapta tīre vāgaṣṭamī brahmaṇā saṃvidāneti | arvāgbilaścamasa ūrdhvabudhna itīdaṃ tacchiraḥ eṣa hyarvāgbilaścamasa ūrdhvabudhnaḥ | tasminyaśo nihitaṃ viśvarūpamiti prāṇā vai yaśo nihitaṃ viśvarūpaṃ prāṇānetadāha | tasyā''sata ṛṣayaḥ sapta tīra iti prāṇā vā ṛṣayaḥ prāṇāṇetadāha | vāgaṣṭamī brahmaṇā saṃvidāneti vāgghyaṣṭamī brahmaṇā saṃvitte ||",
           "translation": "On this there is this Sloka:",
           "explanation": "Sense: On this there is this Sloka:",
-          "hindi": "सिवा पुत्रके समान किसी व्यापा  रान्तरकी अपेक्षासे लोकजयके हेतु कमं कियादहै पसे उस पितामेये सम्प्रत्तिक्मकतमिं वागादि प्राणोके ग्रावेलका प्रकार पाड्तकर्मणो मोक्षा- चैनमित्यादि । स्वयमेव । अत्र केचिह्ावद्‌काः पृथिवी ओर अग्नसे इसमे हैवी वाक्का आवेश होता है । हैवी वाक्‌  वही हे, जिससे पुरुष जो-जो मी बोलता है, वही-वही हो जाता हे",
-          "science": "सिवा पुत्रके समान किसी व्यापा रान्तरकी अपेक्षासे लोकजयके हेतु कमं कियादहै पसे उस पितामेये सम्प्रत्तिक्मकतमिं वागादि प्राणोके ग्रावेलका प्रकार पाड्तकर्मणो मोक…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "VitalForce",
@@ -1109,8 +1063,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "imāveva gotamabharadvājāvayameva gotamo'yaṃ bharadvāja imāveva viśvāmitrajamadagnī ayameva viśvāmitro'yaṃ jamadagnirimāveva vasiṣṭhakaśyapāvayameva vasiṣṭho'yaṃ kaśyapo vāgevātrirvācā hyannamadyate'ttirha vai nāmaitadyadatririti | sarvasyāttā bhavati sarvamasyānnaṃ bhavati ya evaṃ veda ||",
           "translation": "These two (the two ears) are the Rishis Gautama and Bharadvâga; the right Gautama, the left Bharadvâga. These two (the eyes) are the Rishis Visvâmitra and Gamadagni; the right Visvâmitra, the left Gamadagni. These two (the nostrils) are the Rishis Vasishtha and Kasyapa; the right Vasishtha, the left Kasyapa. The tongue is Atri, for with the tongue food is eaten, and Atri is meant for Atti, eating. He who knows this, becomes an eater of everything, and everything becomes his food.",
           "explanation": "Sense: These two (the two ears) are the Rishis Gautama and Bharadvâga; the right Gautama, the left Bharadvâga. These two (the eyes) are the Rishis Visvâmitra and Gamadagni; the right Visvâmitra, the left Gamadagni. These two (the nostrils) are the Rishis Vasishtha and Kasyapa;…",
-          "hindi": "पृथिव्ये पृथिव्याःच एन्‌ च पृथिवी ओर अग्निसे इस सम्प्रति. हैवी अधिहैवात्मिका वानं त  कम करनेवालेने देवीति देविक वाकूका आवेश होता है। दिक्दचैनमादित्याच् हैवं भन आविदति तद्र देवं द्युलोक ओर आदित्यसे इसमे देव मनका आवेशा हौ जाता है । हैव मन वहौ है, जिससे यहं आनन्दी ही होता है, कभी शोक नहीं देबश्चनमादिव्यच्च द्वं मन्‌  क च इसमें",
-          "science": "पृथिव्ये पृथिव्याःच एन्‌ च पृथिवी ओर अग्निसे इस सम्प्रति. हैवी अधिहैवात्मिका वानं त कम करनेवालेने देवीति देविक वाकूका आवेश होता है। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "VitalForce",
@@ -1134,8 +1086,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "dve vāva brahmaṇo rūpe mūrtaṃ caivāmūrtaṃ ca martyaṃ cāmṛtaṃ ca sthitaṃ ca yacca sacca tyacca ||",
           "translation": "There are two forms of Brahman, the material and the immaterial, the mortal and the immortal, the solid and the fluid, sat (being) and tya (that), (i.e. sat-tya, true) .",
           "explanation": "Sense: There are two forms of Brahman, the material and the immaterial, the mortal and the immortal, the solid and the fluid, sat (being) and tya (that), (i.e. sat-tya, true) .",
-          "hindi": "२३७८ बृहदारण्यकोषनिषद्‌ अध्याय १ जल ओर चन््रमासे इसमें हैव प्राणका अवेराहो जाताहै। हैव प्राण वही है जो सञ्चार करते ओर सश्चारन करते हुए भी व्यथित अद्धयथरेनं चन्द्रमसश्च देवः जल ओर चन्द्रमासे इसमे देव प्राण आविष्टहो जाताहै। वह्‌ हैव र  प्राण किन लक्ष्णोवालाहै? सो (त एते स॒वं एव समाः सर्व  वे ये समी समान है मौर सभी । अनन्त है\" इस मन्वे वाक्‌, मन भौर प्राणको उपासना सामान्यरूपसे",
-          "science": "२३७८ बृहदारण्यकोषनिषद्‌ अध्याय १ जल ओर चन््रमासे इसमें हैव प्राणका अवेराहो जाताहै। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MurtaAmurta",
@@ -1151,8 +1101,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadetanmūrtaṃ yadanyadvāyoścāntarikṣāccaitanmartyametatsthitaṃ etatsat | tasyaitasya mūrtasyaitasya martyasyaitasya sthitasyaitasya sata eṣa raso ya eṣa tapati sato hyeṣa rasaḥ ||",
           "translation": "Everything except air and sky is material, is mortal, is solid, is definite. The essence of that which is material, which is mortal, which is solid, which is definite is the sun that shines, for he is the essence of sat (the definite).",
           "explanation": "Sense: Everything except air and sky is material, is mortal, is solid, is definite. The essence of that which is material, which is mortal, which is solid, which is definite is the sun that shines, for he is the essence of sat (the definite).",
-          "hindi": "।   अातोऽनन्तरं वतमीमांसा अब यहासि आगे त्रतमीर्माषा प उपासनकमेविचारणेस्थर्थः । एषां (अर्थात्‌ उपासना-कमका विचार किर्या वः तो श्राणानां कस्य कमं व्रतत्वेन जाता है । यानी इन प्राणोमिंसे किस   तप्स्याम्यहमिव्यादित्यो भास्याम्यहमिति चन्द्रमा न वायुः सेषानस्तमिता देवता यद्रायुः अब अधिहैवदशंन कहा जाता है-अग्निते व्रत किया कि ४ चनद्रमाने निश्चय किया, “म प्रकारित ही होता रहूगा।'इसी प्रकार  देवताओंने भी यथाहैवत (जिस देवताका जो व्यापार था, उसीके अनुसार",
-          "science": "। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MurtaAmurta",
@@ -1168,8 +1116,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athāmūrtaṃ vāyuścāntarikṣaṃ caitadamṛtametadyadetattyat tasyaitasyāmūrtasyai tasyāmṛtasyaitasya yata etasya tyasyaiṣa raso ya eṣa etasminmaṇḍale puruṣastasya hyeṣa rasa | ityadhidaivatam ||",
           "translation": "But air and sky are immaterial, are immortal, are fluid, are indefinite. The essence of that which is immaterial, which is immortal, which is fluid, which is indefinite is the person in the disk of the sun, for he is the essence of tyad (the indefinite). So far with regard to the Devas.",
           "explanation": "Sense: But air and sky are immaterial, are immortal, are fluid, are indefinite. The essence of that which is immaterial, which is immortal, which is fluid, which is indefinite is the person in the disk of the sun, for he is the essence of tyad (the indefinite).…",
-          "hindi": "्रथानन्तरं अधिहैवतं देवता- विषयं दशनश्च्यते। कस्य देवता- । अर्थात्‌ इस वातका विचार किया तप्ट्यास्यह मितयादित्यः; मास्या- प्राणव्रतकी स्तुतिमे मन्त्र अथैष इरोको भवति यतश्चोदेति सूर्योऽस्तं इसी अथ॑ , प्रतिपादक यह्‌ मन्त्र है-- “जिस ( वायुदेवता ) से घूं उदय होता है जर जिसमे वह्‌ अस्त होता हे\" इत्यादि । यह प्राण्सेही  ४. उदित होता है ओर प्राणमे ही अस्त हो जाता है । उस धको देवताओने",
-          "science": "्रथानन्तरं अधिहैवतं देवता- विषयं दशनश्च्यते। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MurtaAmurta",
@@ -1185,8 +1131,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athādhyātmamidameva mūrtaṃ yadanyatprāṇācca yaścāyamantarātmannākāśa etanmartyametatsthitametatsat tasyaitasya mūrtasyai tasya martyasyaitasya sthitasyaitasya sata eṣa raso yaccakṣuḥ sato hyeṣa rasaḥ ||",
           "translation": "Now with regard to the body. Everything except the breath and the ether within the body is material, is mortal, is solid, is definite. The essence of that which is material, which is mortal, which is solid, which is definite is the Eye, for it is the essence of sat (the definite).",
           "explanation": "Sense: Now with regard to the body. Everything except the breath and the ether within the body is material, is mortal, is solid, is definite. The essence of that which is material, which is mortal, which is solid, which is definite is the Eye,…",
-          "hindi": "यैतस्यैवाथं । इसी अर्थका प्रकाशक यह रलोक ्रथेतस्यैवाथस्य प्रकाशक एष  इसा जगक्रा 7  निस लोको सन्भो भवति । यतश्च  यानी मन्व दे -जहासि भरु पूर्वोक्त ्रविद्याका्य॑का उपसंहार-नामसामान्यभूता वाक्‌ यदेतदरिद्याविषयत्वेन प्रस्तुतं  यह जो साध्य-साधनरूप व्याकृत जगत्‌ ओर प्राणात्मप्राप्तिप्न्त कड यह्‌ नाम, रूप ओर कमं तीनका समुदाय ह्‌ । उन नामोकी. वाक्‌ , यह उक्थ (कारण) है, क्योंकि सारे नाम इससे उत्पत होति है । यहं इतका साम है । यही सव नामो सभान है । यह इनका ब्रह्म हे, ९१ ।",
-          "science": "यैतस्यैवाथं। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MurtaAmurta",
@@ -1202,8 +1146,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athāmūrtaṃ prāṇaśca yaścāyamantarātmannākāśa etadamṛtametadyad etattyaṃ tasyaitasyāmūrtasyaitasyāmṛtasyaitasya yata etasya tyasyaiṣa raso yo'yaṃ dakṣiṇe'kṣanpuruṣastyasya hyeṣa rasaḥ ||",
           "translation": "But breath and the ether within the body are immaterial, are immortal, are fluid, are indefinite. The essence of that which is immaterial, which is immortal, which is fluid, which is indefinite is the person in the right eye, for he is the essence of tyad (the indefinite).",
           "explanation": "Sense: But breath and the ether within the body are immaterial, are immortal, are fluid, are indefinite. The essence of that which is immaterial, which is immortal, which is fluid, which is indefinite is the person in the right eye, for he is the essence of tyad (the indefinite).",
-          "hindi": "। जिसको अपने स्वरूपकी प्राप्ति । होती है उससे वहु अभिन्न ही देवा गया है, जसे मृत्तिकासे घटादिका १९ बृहदारण्यकोषनिषद्‌  अध्याय १ ॑ अब रूपोका चक्षु सामान्य हैः यह्‌ इसका उक्थ है । इषीसे सारै रूप उत्पन्न होते है । यह्‌ इनका साम है, क्योंकि यह समस्त रूपोसे स॒म्‌ ञ्रथेदानीं रूपाणां सितासित-  = अथ--अव शुकरूल-कृष्ण ( गौर. दयाम) आदि रूपोका चक्षु सामा 9 ठे; अर्थात्‌ चक्षुके विषयभूत रूपौका",
-          "science": "। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MurtaAmurta",
@@ -1219,8 +1161,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tasya haitasya puruṣasya rūpam | yathā māhārajanaṃ vāso yathā pāṇḍvāvikaṃ yathendragopo yathā'gnyarciryathā puṇḍarīkaṃ yathā sakṛdvidyuttam̐ | sakṛdvidyutteva ha vā asya śrīrbhavati ya evaṃ vedā thāta ādeśo neti neti na hyetasmāditi netyanyat paramastyatha nāmadheyam̐ satyasya satyamiti prāṇā vai satyaṃ teṣāmeṣa satyam ||",
           "translation": "And what is the appearance of that person? Like a saffron-coloured raiment, like white wool, like cochineal, like the flame of fire, like the white lotus, like sudden lightning. He who knows this, his glory is like unto sudden lightning. Next follows the teaching (of Brahman) by No, no ! for there is nothing else higher than this (if one says): 'It is not so.' Then comes the name 'the True of the True,' the senses being the True, and he (the Brahman) the True of them.",
           "explanation": "Sense: And what is the appearance of that person? Like a saffron-coloured raiment, like white wool, like cochineal, like the flame of fire, like the white lotus, like sudden lightning. He who knows this, his glory is like unto sudden lightning.…",
-          "hindi": "कर्मसामान्य श्रात्मामे सबका अ्रन्तर्भाव दिखाना कर्माणय॒त्िषटन्तयेतदेषा सामैतद्धि सवैः कमेभिः सस मेतदेषां ब्रह्म तद्धि सर्वाणि कर्मणि बिभति तदे. मोका सामान्य आत्मा ( शरीर ) है । यह इनका उ व है। यह इनका साम है, क्योंकि य स करता ह । वह्‌ यह्‌ तीन होते हुए भी एक आत्मा है ओर आत्मा भी द्मथेदानीं सवंकमेविशेषाणां  अव इस समय मनन-दशंनात्मक मननदशेनारमकानां चलनात्म-  एवं चलनखूप +  कना च क्रयास्रसिव्यनात्रऽन्त-  लाया जाता हे। किस प्रकार ?",
-          "science": "कर्मसामान्य श्रात्मामे सबका अ्रन्तर्भाव दिखाना कर्माणय॒त्िषटन्तयेतदेषा सामैतद्धि सवैः कमेभिः सस मेतदेषां ब्रह्म तद्धि सर्वाणि कर्मणि बिभति तदे. मोका सामान्य…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MurtaAmurta",
@@ -1244,8 +1184,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "maitreyīti hovāca yājñavalkya udyāsyanvā are'hamasmātsthānādasmi | hanta te'nayā kātyāyanyā'ntaṃ karavāṇīti ||",
           "translation": "Now when Yâgñavalkya was going to enter upon another state, he said: 'Maitreyî , verily I am going away from this my house (into the forest ). Forsooth, let me make a settlement between thee and that Kâtyâyanî (my other wife).'",
           "explanation": "Sense: Now when Yâgñavalkya was going to enter upon another state, he said: 'Maitreyî , verily I am going away from this my house (into the forest ). Forsooth, let me make a settlement between thee and that Kâtyâyanî (my other wife).'",
-          "hindi": "श्रीमच्छ्करभगवतः कृतौ ब्रहदारण्यकोपनिषद्‌भाष्ये ८ चतुर अच्यायसे उपतिषद्का दवितीय -- व जय सव चि । चहो जब्राह्मणका चतुर्थं अध्याय है । आत्मेत्येवोपासीत, तदन्वेषणे  “आत्मा है\" इस प्रकार उपासना । ॐ  किसी समय कोई  गाग्यंगोत्रोत्पन्न च्छ ( गर्वीला ) वालाकि बड़ा बोलनेवाला था । उसने काशिराज अजातशतुके पास जाकर कहा-- भ तुम्हे ब्रह्मका उपदेश कर 1 उस अजातशतरुने कहा, इस वचनके लिये",
-          "science": "श्रीमच्छ्करभगवतः कृतौ ब्रहदारण्यकोपनिषद्‌भाष्ये ८ चतुर अच्यायसे उपतिषद्का दवितीय -- व जय सव चि। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1261,8 +1199,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā hovāca maitreyī yannu ma iyaṃ bhagoḥ sarvā pṛthivī vittena pūrṇā syāt kathaṃ tenāmṛtā syāmiti | neti hovāca yājñavalkyo yathaivopakaraṇavatāṃ jīvitaṃ tathaiva te jīvitam̐ syādamṛtatvasya tu nā''śā'sti vitteneti ||",
           "translation": "Maitreyî said: 'My Lord, if this whole earth, full of wealth, belonged to me, tell me, should I be immortal by it ?'",
           "explanation": "Sense: Maitreyî said: 'My Lord, if this whole earth, full of wealth, belonged to me, tell me, should I be immortal by it ?'",
-          "hindi": "ततर पू्॑पक्तवादी अविदयाविषय- तहां कचित्‌- किसी काल- विह्ञेषमे अविद्याके विषयको ही ब्रह्मविद्‌ दप्बालाकिः दधो ग्वि- । ब्रह्म जाननेवाला गोत्रतः “गाग्यैः गाग्यंदरारा भ्रादित्यका ब्रह्मरूपसे प्रतिपादन तथा ्रनात- रानुद्रारा उसका प्रत्याख्यान इस प्रकार श्रवणके इच्छुक ओर उस गाग्य॑ने कहा, ह जो आदित्यमे पुरुष है, इतीकी ैँ रह्मरूपसे उपासना करता हू ।' उस अजातशनेने कहा- नही, नही, इसके विषयमे बात मत करो । यह्‌ सवका अतिक्रमण करके स्थित हे, समस्त भरतोका",
-          "science": "ततर पू्॑पक्तवादी अविदयाविषय- तहां कचित्‌- किसी काल- विह्ञेषमे अविद्याके विषयको ही ब्रह्मविद्‌ दप्बालाकिः दधो ग्वि-। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1278,8 +1214,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā hovāca maitreyī yenāhaṃ nāmṛtā syāṃ kimahaṃ tena kuryām | yadeva bhagavānveda tadeva me brūhīti ||",
           "translation": "And Maitreyî said: 'What should I do with that by which I do not become immortal? What my Lord knoweth (of immortality), tell that to me .'",
           "explanation": "Sense: And Maitreyî said: 'What should I do with that by which I do not become immortal? What my Lord knoweth (of immortality), tell that to me .'",
-          "hindi": "स होवाच गाभ्येः-य एव अस्तौ  उस गाग्यंने कहा-- यह्‌ जो आदित्यम ओर नेत्रम उनका एक ही धि  अभिमानी चक्षक द्वारा यहाँ हृदयम लिये अतिष्ठा\" कहा गया है । समस्त भरुतोका मस्तक है ओर दीप्ति-गुण- युक्त होनेके कारण राजा है-इन गाग्यंद्रारा चन्दरान्तगंत ब्रह्मका प्रतिपादन तथा अ्रजात- शनुद्रारा उसका प्रत्याख्यान संवादके द्वारा जब अजातशत्ुने",
-          "science": "स होवाच गाभ्येः-य एव अस्तौ उस गाग्यंने कहा-- यह्‌ जो आदित्यम ओर नेत्रम उनका एक ही धि अभिमानी चक्षक द्वारा यहाँ हृदयम लिये अतिष्ठा\" कहा गया है। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1295,8 +1229,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca yājñavalkyaḥ priyā batāre naḥ satī priyaṃ bhāṣasa ehyāssva vyākhyāsyāmi te | vyācakṣāṇasya tu me nididhyāsasveti ||",
           "translation": "Yâgñavalkya replied: 'Thou who art truly dear to me, thou speakest dear words . Come, sit down, I will explain it to thee, and mark well what I say.'",
           "explanation": "Sense: Yâg&ntilde;avalkya replied: 'Thou who art truly dear to me, thou speakest dear words . Come, sit down, I will explain it to thee, and mark well what I say.'",
-          "hindi": "वह्‌ गाग्यं बोला, “यह्‌ जो चन्दरमामें पुरूष है, इसीकी मँ ब्रह्यूपसे उपासना करता हृँ उस अजातशतरुने कहा, नही, नहीं, इसके विषयमे बात मत करो । यह्‌ महान्‌, शुङ्कवख्लवारी, सोम राजा है--इष प्रकार मे य एवासौ चन्द्र मनसि चैकः  यह जो चन्रमा ओर मलम एक ही पुरुष कर्ता ओर भोक्ता है- इस प्रकार इसके पुवंवत्‌ विशेषण सम- गाग्य्रारा विद्युदभिमानी पुरषका ब्रह्मरूपसे उपदेश तथा प्रनात- शनुद्रारा उसका प्रत्याख्यान मेवाहं ब्रह्मोपास इति स होवाचाजातरातरमा मेतस्मि-",
-          "science": "वह्‌ गाग्यं बोला, “यह्‌ जो चन्दरमामें पुरूष है, इसीकी मँ ब्रह्यूपसे उपासना करता हृँ उस अजातशतरुने कहा, नही, नहीं, इसके विषयमे बात मत करो। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1312,8 +1244,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca na vā are patyuḥ kāmāya patiḥ priyo bhavatyātmanastu kāmāya patiḥ priyo bhavati | na vā are jāyāyai kāmāya jāyā priyā bhavatyātmanastu kāmāya jāyā priyā bhavati | na vā are putrāṇāṃ kāmāya putrāḥ priyā bhavantyātmanastu kāmāya putrāḥ priyā bhavanti | na vā are vittasya kāmāya vittaṃ priyaṃ bhavatyātmanastu kāmāya vittaṃ priyaṃ bhavati | na vā are brahmaṇaḥ kāmāya brahma priyaṃ bhavatyātmanastu kāmāya brahma priyaṃ bhavati | na vā are kṣatrasya kāmāya kṣatraṃ priyaṃ bhavatyātmanastu kāmāya kṣatraṃ priyaṃ bhavati | na vā are lokānāṃ kāmāya lokāḥ priyā bhavantyātmanastu kāmāya lokāḥ priyā bhavanti | na vā are devānāṃ kāmāya devāḥ priyā bhavantyātmanastu kāmāya devāḥ priyā bhavanti | na vā are bhūtānāṃ kāmāya bhūtāni priyāṇi bhavantyātmanastu kāmāya bhūtāni priyāṇi bhavanti | na vā are sarvasya kāmāya sarvaṃ priyaṃ bhavatyātmanastu kāmāya sarvaṃ priyaṃ bhavatyātmā vā are draṣṭavyaḥ śrotavyo mantavyo nididhyāsitavyo | maitreyyātmano vā are darśanena śravaṇena matyā vijñānenedam̐ sarvaṃ viditam ||",
           "translation": "And he said: 'Verily, a husband is not dear, that you may love the husband; but that you may love the Self, therefore a husband is dear.",
           "explanation": "Sense: And he said: 'Verily, a husband is not dear, that you may love the husband; but that you may love the Self, therefore a husband is dear.",
-          "hindi": "वह्‌ गाग्यं बोला, “ह्‌ जो विद्युतुमे पुरुष है, इसीकी भे ब्रह्मरूपसे उपासना करता हूं ।' उस अजातशनुने कहा, \"नहीं, नहीं, इसकी चर्चा ।मत करो; इसकी तो सँ तेजस्वीरूपसे उपासना करता हुं । जो कोई इसकी तथा विद्युति खचि हृदये  इसी प्रकार विचत्‌, त्वचा - 9   ओर हृदयम भीएक ही देवता है। का देवता । तेजस्वीति षिशे-   न  गा्य॑द्रारा श्राकाश-ब्रह्मका उपदेश ग्रौर श्रजातशनृद्रास स होवाच गार्ग्यो य एवायमाकाशे पुरुष एतमे- मेवमुपास्ते प्रयते प्रजया पशुभिर्नास्यास्मार्खोकासप-",
-          "science": "वह्‌ गाग्यं बोला, “ह्‌ जो विद्युतुमे पुरुष है, इसीकी भे ब्रह्मरूपसे उपासना करता हूं। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1329,8 +1259,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "brahma taṃ parādādyo'nyatrā''tmano brahma veda kṣatraṃ taṃ parādādyo'nyatrā''tmanaḥ kṣatraṃ veda lokāstaṃ parāduryo'nyatrātmano lokānveda devāstaṃ parāduryo'nyatrātmano devānveda bhūtāni taṃ parāduryo'nyatrātmano bhūtāni veda sarvaṃ taṃ parādād yo'nyatrātmanaḥ sarvaṃ vededaṃ brahmedaṃ kṣatramime lokā ime devā imāni bhūtānīdam̐ sarvaṃ yadayamātmā ||",
           "translation": "'Whosoever looks for the Brahman-class elsewhere than in the Self, was abandoned by the Brahman-class. Whosoever looks for the Kshatra-class elsewhere than in the Self, was abandoned by the Kshatra-class. Whosoever looks for the worlds elsewhere than in the Self, was abandoned by the worlds. Whosoever looks for the Devas elsewhere than in the Self, was abandoned by the Devas . Whosoever looks for creatures elsewhere than in the Self, was abandoned by the creatures. Whosoever looks for anything elsewhere than in the Self, was abandoned by everything. This Brahman-class, this Kshatra-class, these worlds, these Devas , these creatures, this everything, all is that Self.",
           "explanation": "Sense: 'Whosoever looks for the Brahman-class elsewhere than in the Self, was abandoned by the Brahman-class. Whosoever looks for the Kshatra-class elsewhere than in the Self, was abandoned by the Kshatra-class. Whosoever looks for the worlds elsewhere than in the Self,…",
-          "hindi": "यह्‌ जो आकाशम पुरुष है, इसीकी मेँ ब्रह्मरूपे वह्‌ गाग्यं बोला, १ र उपासना करता हं ” उस अजातशवुने कहा, नट, तर, ५०५८ तथा आकाश ह्याकाशे हृदये  इसी भकार आकाश, हंदयाकार ओर हृदथमे भी एक ही देवता है ॥ चेका देवता । पुणमप्रबतिं चेति । उसके पूर्णः भौर प्रवति\" ये दो गाग्यंदारा.गवायु-त्रह्मका प्रतिपादन तथा प्रजातशवुद्रारा ब्रह्मोपास इति स होवाचाजातराच्रु्मा मेतस्मिन्संवदिष्ठा इन्दो वैकुण्ठोऽपराजिता सेनेति वा अहमेतमुपास इति",
-          "science": "यह्‌ जो आकाशम पुरुष है, इसीकी मेँ ब्रह्मरूपे वह्‌ गाग्यं बोला, १ र उपासना करता हं ” उस अजातशवुने कहा, नट, तर, ५०५८ तथा आकाश ह्याकाशे हृदये इसी भकार आकाश, हंद…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1346,8 +1274,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā dundubherhanyamānasya na bāhyāñchabdāñchaknuyād grahaṇāya dundubhestu grahaṇena dundubhyāghātasya vā śabdo gṛhītaḥ ||",
           "translation": "'Now as the sounds of a drum, when beaten, cannot be seized externally (by themselves), but the sound is seized, when the drum is seized or the beater of the drum;",
           "explanation": "Sense: 'Now as the sounds of a drum, when beaten, cannot be seized externally (by themselves), but the sound is seized, when the drum is seized or the beater of the drum;",
-          "hindi": "वह गाग्यं बोला, यह्‌ जो वायुमे पुरुष है इसकी मँ ब्रह्मरूपसे उपासना करता हूं ।' उस अजातशनुने कहा, नहीं, नही, इसके विषयमे बात मत करो । इसकी तो मँ इन्द्र, वेकुण्ठ ओर अपराजिता सेना--ईइस रूपसे तथा वायौ § प्राणे हृदि  इसी प्रकार वायु, प्राण भौर ४  हृदयमे भी एक ही देवता है । उसके चैका देवता । तस्या विशेष-  विरोषण है-इन्- परमे्र, वैकुण्ठ गाग्यंद्रारा ग्रम्नब्रह्मका प्रतिपादन तथा ग्रनातदातरुद्रारा , ब्रह्मोपास इति स होवाचाजातशघरमा मेतस्मिन्संवदिष्ठा",
-          "science": "वह गाग्यं बोला, यह्‌ जो वायुमे पुरुष है इसकी मँ ब्रह्मरूपसे उपासना करता हूं। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1363,8 +1289,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā śaṅkhasya dhmāyamānasya na bāhyāñchabdāñchaknuyād grahaṇāya śaṅkhasya tu grahaṇena śaṅkhadhmasya vā śabdo gṛhītaḥ ||",
           "translation": "And as the sounds of a conch-shell, when blown, cannot be seized externally (by themselves), but the sound is seized, when the shell is seized or the blower of the shell;",
           "explanation": "Sense: And as the sounds of a conch-shell, when blown, cannot be seized externally (by themselves), but the sound is seized, when the shell is seized or the blower of the shell;",
-          "hindi": "वह॒ गाग्यं बोला, \"यह जो अग्निम परुष है, इसीकी मेँ ब्रह्मरूपसे उपासना करता हूं ' उस अजातदातुने कहा, नही, नही, इसके विषयमे बात मत करो । इसकी तो म विषासदिरूपसे उपासना करता हूं । जो अरमौ वाचि हदि चैका देवता ।  अनन, वाक्‌ ओर दथ एक ही  देवता है । उसका विशेषण हे तस्या विशेषणम्‌--वषसिहमप्‌  (विषासहिः अर्थात्‌ दससोको सहन जनि जो हविष्य डला जाता है उसे वह्‌ भस्म करके सहन कर त-क जह म सखे सल करल है, इसलिये अग्नि विषासहि--सहन करनेवाला है । ४१४ बृहदारण्यकोपनिषद्‌ अध्याय र्‌",
-          "science": "वह॒ गाग्यं बोला, \"यह जो अग्निम परुष है, इसीकी मेँ ब्रह्मरूपसे उपासना करता हूं ' उस अजातदातुने कहा, नही, नही, इसके विषयमे बात मत करो। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1380,8 +1304,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā vīṇāyai vādyamānāyai na bāhyāñchabdāñchaknuyād grahaṇāya vīṇāyai tu grahaṇena vīṇāvādasya vā śabdo gṛhītaḥ ||",
           "translation": "'And as the sounds of a lute, when played, cannot be seized externally (by themselves), but the sound is seized, when the lute is seized or the player of the lute;",
           "explanation": "Sense: 'And as the sounds of a lute, when played, cannot be seized externally (by themselves), but the sound is seized, when the lute is seized or the player of the lute;",
-          "hindi": "पुत्र  उत्पन्न होता है ॥ = ॥ गाग्यंदरारा श्रादशान्तिगंत ब्रह्मका प्रतिपादन श्रौर ग्रजातशत्रु द्वारा जह्मोपास इति स होवाचाजाताघ्र्मा मेतस्मिन्संव दिष्ठा एसे ही खड्गादि अन्य पदाथोमिं भाग्ये चेका देवता; तस्या विशे-  मे एक ही देवता है । उसका विशे- पणम्‌-रोचिष्णुदीिस्वभावः;फलं षण रोचिष्णु अर्थात्‌ १ हे  फलकी भी बहुलता है ॥ € ॥ गाग्यद्रारा प्राणाब्रह्मका प्रतिपादन ग्रौर ग्रजातशात्रुद्ारा",
-          "science": "पुत्र उत्पन्न होता है ॥ = ॥ गाग्यंदरारा श्रादशान्तिगंत ब्रह्मका प्रतिपादन श्रौर ग्रजातशत्रु द्वारा जह्मोपास इति स होवाचाजाताघ्र्मा मेतस्मिन्संव दिष्ठा एसे ही…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1397,8 +1319,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā''rdraidhāgnerabhyāhitātpṛthagdhūmā viniścarantyevaṃ vā are'sya mahato bhūtasya niḥśvasitametad yadṛgvedo yajurvedaḥ sāmavedo'tharvāṅgirasa itihāsaḥ purāṇaṃ vidyā upaniṣadaḥ ślokāḥ sūtrāṇyanuvyākhyānāni vyākhyānānysāmavedasatharvāṅgirasasitihāsaspurāṇaṃ vidyāsupaniṣadasślokāssūtrāṇi anuvyākhyānāni vyākhyānani asyaivaitāni niḥśvasitāni ||",
           "translation": "'As clouds of smoke proceed by themselves out of a lighted fire kindled with damp fuel, thus, verily, O Maitreyî, has been breathed forth from this great Being what we have as Rig-veda, Yagur-veda, Sama-veda, Atharvâ&#7749;girasas, Itihâsa (legends), Purâna (cosmogonies), Vidyâ (knowledge), the Upanishads, Slokas (verses), Sûtras (prose rules), Anuvyâkhyânas (glosses), Vyâkhyânas (commentaries) . From him alone all these were breathed forth.",
           "explanation": "Sense: 'As clouds of smoke proceed by themselves out of a lighted fire kindled with damp fuel, thus, verily, O Maitreyî, has been breathed forth from this great Being what we have as Rig-veda, Yagur-veda, Sama-veda, Atharvâ&#7749;girasas, Itihâsa (legends), Purâna (cosmogonies),…",
-          "hindi": "वह्‌ गाग्यं बोला, जानेवालेके पीछे जो यह शब्द उत्पञ्च होता हे, इसीकी भैँ ब्रह्मरूपे उपासना करता हं\" उस अजातशतरुने कहा, ही, ४१६ बृहद्‌ारण्यकोपनिषद्‌  अध्याय र  „  के पीछे जो यह शब्द उदित होता शब्दः पशात्रतोऽनूदेतय धातं है ओर जो अध्यात्मपक्षमे जीवन- च्‌ जीवनहेतुः प्राणः, तमेकी- का हेतुभरूत प्राणद, उनको यहाँ गाग्यंद्वारा दि््रह्मका प्रतिपादन श्रौर ग्रजातशात्रुद्रारा ब्रह्मोपास इति स होवाचाजातराघ्र्‌ म मेतस्मिन्संवदिष्ठा नह गाग्यं बोला, यह जो दिशामे पुरुष है, इसीकी तै ्रह्यरूपसे",
-          "science": "वह्‌ गाग्यं बोला, जानेवालेके पीछे जो यह शब्द उत्पञ्च होता हे, इसीकी भैँ ब्रह्मरूपे उपासना करता हं\" उस अजातशतरुने कहा, ही, ४१६ बृहद्‌ारण्यकोपनिषद्‌ अध्याय र „…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1414,8 +1334,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā sarvāsāmapām̐ samudra ekāyanamevam̐ sarveṣām̐ sparśānāṃ tvagekāyanamevam̐ sarveṣāṃ gandhānāṃ nāsikaikāyanaṃ evam̐ sarveṣām̐ rasānāṃ jihvaikāyanamevam̐ sarveṣām̐ rūpāṇāṃ cakṣurekāyanamevam̐ sarveṣām̐ śabdānām̐ śrotramekāyanamevam̐ sarveṣām̐ saṅkalpānāṃ mana ekāyanaṃ evam̐ sarvāsāṃ vidyānām̐ hṛdayamekāyanamevam̐ sarveṣāṃ karmaṇām̐ hastāvekāyanamevam̐ sarveṣāmānandānāmupastha ekāyanaṃ evam̐ sarveṣāṃ visargāṇāṃ pāyurekāyanamevam̐ sarveṣāmadhvanāṃ pādāvekāyanamevam̐ sarveṣāṃ vadānāṃ vāgekāyanam ||",
           "translation": "'As all waters find their centre in the sea, all touches in the skin, all tastes in the tongue, all smells in the nose, all colours in the eye, all sounds in the ear, all percepts in the mind, all knowledge in the heart, all actions in the hands, all movements in the feet, and all the Vedas in speech,--",
           "explanation": "Sense: 'As all waters find their centre in the sea, all touches in the skin, all tastes in the tongue, all smells in the nose, all colours in the eye, all sounds in the ear, all percepts in the mind, all knowledge in the heart, all actions in the hands, all movements in the feet,…",
-          "hindi": "दक्ष कणयोहृदि चेका देवता  दिगा, कणं ओर हदे एक ही उस देवताका गुण द्वितीयवत्त्वं ओर अनपगत्व--अवियुक्तता है; क्योंकि गाग्यंदारा छायाब्रह्मका प्रतिपादन श्रौर श्रजातसान्रुदरारा पुरा कारा्प्रुत्य॒रागच्छति वह गाग्य बाला, यह जो छायामय पुरुष है, इसीकी मेँ ब्रह्मरूपसे उपासना करता ह ।' उस अजातशतरुने कहा, (नही, नही, इसके विषयमे वात मत करो। इका तो मं मृत्युरूपसे उपासना करता हं ॥ जो कोई",
-          "science": "दक्ष कणयोहृदि चेका देवता दिगा, कणं ओर हदे एक ही उस देवताका गुण द्वितीयवत्त्वं ओर अनपगत्व--अवियुक्तता है; क्योंकि गाग्यंदारा छायाब्रह्मका प्रतिपादन श्रौर श्रज…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1431,8 +1349,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā saindhavakhilya udake prāsta udakamevānuvilīyeta na hāsyodgrahaṇāyeva na hāsyodgrahaṇāyaiva syād yato yatastvādadīta lavaṇamevaivaṃ vā ara idaṃ mahad bhūtamanantamapāraṃ vijñānaghana evaitebhyo bhūtebhyaḥ samutthāya etebhyasbhūtebhyassamutthāya tānyevānuvinaśyati na pretya sañjñā'stītyare bravīmīti hovāca yājñavalkyaḥ ||",
           "translation": "'As a lump of salt , when thrown into water, becomes dissolved into water, and could not be taken out again, but wherever we taste (the water) it is salt,--thus verily, O Maitreyî, does this great Being, endless, unlimited, consisting of nothing but knowledge , rise from out these elements, and vanish again in them. When he has departed, there is no more knowledge (name), I say, O Maitreyî.' Thus spoke Yâgñavalkya.",
           "explanation": "Sense: 'As a lump of salt , when thrown into water, becomes dissolved into water, and could not be taken out again, but wherever we taste (the water) it is salt,--thus verily, O Maitreyî, does this great Being, endless, unlimited, consisting of nothing but knowledge ,…",
-          "hindi": "वायायां बाह्ये तमस्यध्यास्मं  चायाम बाह्य अन्धकार ५९ शरी रान्तगंत आवरणरूप अज्ञानमें च आवरणात्मक्रेऽज्ञमे हदि चेका  तथा हृदथमे भी एक ही देवता है। वहु गाग्यं बोला \"यह्‌ जो आत्मामे पुरुष है, इसीकी मेँ ब्रह्मरूपसे उपासना करता हूं ।' उस्र अजातशतरुने कहा, नहीं, नहीं, इसके विषयसें बात मत करो; इसकी तो मेँ आत्मन्वीरूपसे उपासना करता हँ । जो कोई ४  आत्मनि प्रजापतो बुद्धौ च आत्मामे अर्थात्‌ प्रजापति; 4 ० हृदि चैका देवता । तस्या ्रात्म- बुद्धि ओर हृदयमे भी एक ही देवता   है । उसका “आत्मन्वी' अर्थात्‌",
-          "science": "वायायां बाह्ये तमस्यध्यास्मं चायाम बाह्य अन्धकार ५९ शरी रान्तगंत आवरणरूप अज्ञानमें च आवरणात्मक्रेऽज्ञमे हदि चेका तथा हृदथमे भी एक ही देवता है। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1448,8 +1364,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā hovāca maitreyyatraiva mā bhagavānamūmuhad na pretya sañjñā'stīti | sa hovāca na vā are'haṃ mohaṃ bravīmyalaṃ vā ara idaṃ vijñānāya ||",
           "translation": "Then Maitreyî said: 'Here thou hast bewildered me, Sir, when thou sayest that having departed, there is no more knowledge .' But Yâgñavalkya replied: 'O Maitreyî, I say nothing that is bewildering. This is enough, O beloved, for wisdom .",
           "explanation": "Sense: Then Maitreyî said: 'Here thou hast bewildered me, Sir, when thou sayest that having departed, there is no more knowledge .' But Yâg&ntilde;avalkya replied: 'O Maitreyî, I say nothing that is bewildering. This is enough, O beloved, for wisdom .",
-          "hindi": "गाग्यंका पराभव ग्रौर॒ग्रजातशत्रुके प्रति उसकी उपस्ति तं तथाभूतमालक्ष्य गाज्य॑मू-- . उस गा्ग्यको एसी स्थिति वह्‌ अजातात्र॒ बोला, बस, क्या इतना ही है ?'  गाग्यं- षहा, इतना ही है ।'  अजातशत्रु- “इतनेसे तो ब्रह्म विदित नहीं होता ।' वह गाग्यं बोला, भं तुम्हारे प्रति उपसच्च होॐ' स होवाचाजातशब्रुः--एता-  वह अजातशतु बोला, कया इतना नैतावता विदितेन ब्रह्म विदितं कहा, \"बस इतना ही जानता हूं ।'",
-          "science": "गाग्यंका पराभव ग्रौर॒ग्रजातशत्रुके प्रति उसकी उपस्ति तं तथाभूतमालक्ष्य गाज्य॑मू-- . उस गा्ग्यको एसी स्थिति वह्‌ अजातात्र॒ बोला, बस, क्या इतना ही है ?' गाग्यं…। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1465,8 +1379,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yatra hi dvaitamiva bhavati taditara itaraṃ jighrati taditara itaraṃ paśyati taditara itaram̐ śṛṇoti taditara itaramabhivadati taditara itaraṃ manute taditara itaraṃ vijānāti | yatra vā asya sarvamātmaivābhūt tatkena kaṃ jighret tatkena kaṃ paśyet tatkena kam̐ śṛṇuyāt tatkena kamabhivadet tatkena kaṃ manvīta tatkena kaṃ vijānīyāt | yenedam̐ sarvaṃ vijānāti taṃ kena vijānīyād vijñātāramare kena vijānīyāditi ||",
           "translation": "'For when there is as it were duality, then one sees the other, one smells the other, one hears the other , one salutes the other , one perceives the other , one knows the other; but when the Self only is all this, how should he smell another , how should he see another , how should he hear another, how should he salute another, how should he perceive another , how should he know another? How should he know Him by whom he knows all this? How, O beloved, should he know (himself), the Knower 1 ?'",
           "explanation": "Sense: 'For when there is as it were duality, then one sees the other, one smells the other, one hears the other , one salutes the other , one perceives the other , one knows the other; but when the Self only is all this, how should he smell another , how should he see another ,…",
-          "hindi": "से ब्रह्मका ज्ञान नहीं होता एसा नहीं कठा जाता, अपितु यही कहा जाताकि तुम कुं भी नहीं गाग्यंका हाथ पकडकर ्रजातशत्रुका एकं सोये हुए पुरुषके पासं जाना श्रौर प्राणोके नामसे न उठनेपर उसे हाथ दबाकर जगाना १. उपनिषद्के प्रथम अध्यायमें । ७२२ बहदारण्यको पनिषद्‌ अध्याय २  स होवाचाजातशत्रुः प्रतिलोमं  = उस अजातशतूने कहा-- ह ं नतं वैतत  तो प्रतिलोम--विपरीतहै। क्या?",
-          "science": "से ब्रह्मका ज्ञान नहीं होता एसा नहीं कठा जाता, अपितु यही कहा जाताकि तुम कुं भी नहीं गाग्यंका हाथ पकडकर ्रजातशत्रुका एकं सोये हुए पुरुषके पासं जाना श्रौर प्रा…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Maitreyi",
@@ -1490,8 +1402,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "iyaṃ pṛthivī sarveṣāṃ bhūtānāṃ madhvasyai pṛthivyai sarvāṇi bhūtāni madhu yaścāyamasyāṃ pṛthivyāṃ tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmam̐ śārīrastejomayo'mṛtamayaḥ puruṣaḥ amṛtamayaspuruṣasayameva sa yo'yamātmedamamṛtamidaṃ brahmedam̐ sarvam ||",
           "translation": "This earth is the honey (madhu, the effect) of all beings, and all beings are the honey (madhu, the effect) of this earth. Likewise this bright, immortal person in this earth, and that bright immortal person incorporated in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This earth is the honey (madhu, the effect) of all beings, and all beings are the honey (madhu, the effect) of this earth. Likewise this bright, immortal person in this earth, and that bright immortal person incorporated in the body (both are madhu).…",
-          "hindi": "सूषुसिमें विन्नानमयकी स्थितिके विषयमे भ्रजातरतरुका भरन उस अजातशत्रने कहा, \"यह जो विज्ञानमय पुरुष हे, जब सोया आ था, तब कहां था ? ओर यह क्सि आया ?\" कितु गाग्यं यहन १ एवः जातशत्रव्यं तिरिक्ता- उस अजातशत्नुने इस प्रकार देहु- से व्यतिरिक्त आत्माका अस्तित्व   प्रतिपादन करके गा्य॑से कहा-“जिस",
-          "science": "सूषुसिमें विन्नानमयकी स्थितिके विषयमे भ्रजातरतरुका भरन उस अजातशत्रने कहा, \"यह जो विज्ञानमय पुरुष हे, जब सोया आ था, तब कहां था ? ओर यह क्सि आया ?\" कितु गाग्यं…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1507,8 +1417,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "imā āpaḥ sarveṣāṃ bhūtānāṃ madhvasāmapām̐ sarvāṇi bhūtāni madhu yaścāyamāsvapsu tejomayo'mṛtamayaḥ puruṣaḥ yaścāyamadhyātmam̐ raitasastejomayo'mṛtamayaḥ puruṣo'yameva sa yo'yamātmedamamṛtaṃ idaṃ brahmedam̐ sarvam ||",
           "translation": "This water is the honey of all beings, and all beings are the honey of this water. Likewise this bright, immortal person in this water, and that bright, immortal person, existing as seed in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This water is the honey of all beings, and all beings are the honey of this water. Likewise this bright, immortal person in this water, and that bright, immortal person, existing as seed in the body (both are madhu). He indeed is the same as that Self, that Immortal,…",
-          "hindi": "विज्ञानात्माके रायनस्थानका प्रतिपादन तथा स्वपितिशब्दका निव॑चन मादाय य एषोऽन्तह दय आकारास्तस्मिञ्खेते तानि ९७० वृहदारण्यकोपनिषद्‌ अध्याय २  उस अजाततुने कहा, यह जौ विज्ञानमय परुष है, जब यह्‌ सोया । , हआ था, उस समय यह्‌ विज्ञानके द्वारा इन प्राणोके विज्ञानको ग्रहण कर ग को समर्पण करनेके लिये कहा--यह्‌ एष विज्ञानमयः पुरूषः क्वैष तद्‌-  ह्‌ सोया हुआ था उस समय यह्‌ भूत्‌ ! इत एतदागात्‌ १ इहि कहां था श 4६ यह्‌ आया ह",
-          "science": "विज्ञानात्माके रायनस्थानका प्रतिपादन तथा स्वपितिशब्दका निव॑चन मादाय य एषोऽन्तह दय आकारास्तस्मिञ्खेते तानि ९७० वृहदारण्यकोपनिषद्‌ अध्याय २ उस अजाततुने कहा, यह…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1524,8 +1432,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ayamagniḥ sarveṣāṃ bhūtānāṃ madhvasyāgneḥ sarvāṇi bhūtāni madhu yaścāyamasminnagnau tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmaṃ vāṅmayastejomayo'mṛtamayaḥ puruṣo'yameva sa yo'yamātmedamamṛtaṃ idaṃ brahmedam̐ sarvam ||",
           "translation": "This fire is the honey of all beings, and all beings are the honey of this fire. Likewise this bright, immortal person in this fire, and that bright, immortal person, existing as speech in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This fire is the honey of all beings, and all beings are the honey of this fire. Likewise this bright, immortal person in this fire, and that bright, immortal person, existing as speech in the body (both are madhu). He indeed is the same as that Self, that Immortal,…",
-          "hindi": "घ्राणेन्द्रियम्‌, वागादिप्रकरणात्‌; स्वप्नवृत्तिका स्वरूप विोभेऽरि वस्थामे तो शरीर ओर इन्द्रियोका जिस समय यह॒ आत्मा स्वप्नवृत्तिसे बत॑ता है उस समय इसके वे लोक ( कमंफल ) उदित होते हँ । वहाँ भी यह महाराज होता हेया महाब्राह्मण होता है अथवा ऊची-नीची  गतियों  को प्राप्त होता है ॥ स प्रकृत आसम यत्र यस्मि-  वह प्रकृत आत्मा जिस समय न्काले द्शेनलक्तणया स्वप्यया दशंनरूपा स्वप्नवृत्तिसे बतंता सस = समय उसके वे लोक- कमफल",
-          "science": "घ्राणेन्द्रियम्‌, वागादिप्रकरणात्‌; स्वप्नवृत्तिका स्वरूप विोभेऽरि वस्थामे तो शरीर ओर इन्द्रियोका जिस समय यह॒ आत्मा स्वप्नवृत्तिसे बत॑ता है उस समय इसके वे लो…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1541,8 +1447,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ayaṃ vāyuḥ sarveṣāṃ bhūtānāṃ madhvasya vāyoḥ sarvāṇi bhūtāni madhu yaścāyamasminvāyau tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmaṃ prāṇastejomayo'mṛtamayaḥ puruṣo'yameva sa yo'yamātmedamamṛtam| idaṃ brahmedam̐ sarvam ||",
           "translation": "This air is the honey of all beings, and all beings are the honey of this air. Likewise this bright, immortal person in this air, and that bright, immortal person existing as breath in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This air is the honey of all beings, and all beings are the honey of this air. Likewise this bright, immortal person in this air, and that bright, immortal person existing as breath in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman,…",
-          "hindi": "ह ए दर्यरूप होनेके कारण अनात्मधर्महै, दश्यलादतदभम॑तेति विशदधतव- इससे आत्माकी विशुद्धता ज्ञात होती गता आत्मनः  तत्र यथाकामं  है । उस अवस्थामे वहं यथेच्छं  इसके पश्चात्‌ जब वह सुषुप्त होता है, जिस समय करि वह किसके  विषयर्मे- कुछ भी नहीं जानता, उस समय हिता नामकी जो बहत्तर हजार  यां हृदयसे सम्पूणं शरीरम व्याप्त होकर स्थित हें, उनके दारा बुद्धे साथ  क्वैष तदाभूदिर्थस्य प्रश्नस्य उस समय यह कहां था ?' ॐत एतदागा- प्रतिवचनम्‌ ।  इस प्रसनका उत्तर कह दिया गया । दिति प्रश्नो अनेन च प्ररननिर्ण-  इस प्ररनके निर्णयसे ही विज्ञानमय",
-          "science": "ह ए दर्यरूप होनेके कारण अनात्मधर्महै, दश्यलादतदभम॑तेति विशदधतव- इससे आत्माकी विशुद्धता ज्ञात होती गता आत्मनः तत्र यथाकामं है। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1558,8 +1462,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ayamādityaḥ sarveṣāṃ bhūtānāṃ madhvasyā''dityasya sarvāṇi bhūtāni madhu yaścāyamasminnāditye tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmaṃ cākṣuṣastejomayo'mṛtamayaḥ puruṣo'yameva sa yo'yamātmedamamṛtamidaṃ brahmedam̐ sarvam ||",
           "translation": "This sun is the honey of all beings, and all beings are the honey of this sun. Likewise this bright, immortal person in this sun, and that bright, immortal person existing as the eye in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This sun is the honey of all beings, and all beings are the honey of this sun. Likewise this bright, immortal person in this sun, and that bright, immortal person existing as the eye in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman,…",
-          "hindi": "जिस प्रकार वह्‌ ऊणेनामि ( मकड़ा ) तन्तुओंपर ऊपरकी ओर जाता है तथा जसे अग्निसे अनेकों क्षुद्र चिनगारियां उडती है, उसी प्रकार इस आत्मासे समस्त प्राण, समस्त लोक, समस्त देवगण ओर समस्त धरत स यथा लोक उणेनाभिः  लोकम जिस प्रकार वह्‌ ऊण उर्मनामिर्लताकीर एक एव नाविको लूताकोट (जाल बनाने-       वाला कीड़ा) प्रसिद्ध है वह अकेला जहम ज्ञपयिष्यामि इति कै तुम्हें ब्रह्मका बोध कराऊगा' उपक्रमः प्रस्तुतम्‌ ; तत्र यतो  इस प्रकार यहां प्रसंग आरम्भ हृभा ॥ जगज्जातं यन्मयं है। सो, जिससे जगतु उत्पन्न हुआ",
-          "science": "जिस प्रकार वह्‌ ऊणेनामि ( मकड़ा ) तन्तुओंपर ऊपरकी ओर जाता है तथा जसे अग्निसे अनेकों क्षुद्र चिनगारियां उडती है, उसी प्रकार इस आत्मासे समस्त प्राण, समस्त लोक,…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1575,8 +1477,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "imā diśaḥ sarveṣāṃ bhūtānāṃ madhvāsāṃ diśām̐ sarvāṇi bhūtāni madhu yaścāyamāsu dikṣu tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmam̐ śrautraḥ prātiśrutkastejomayo'mṛtamayaḥ puruṣo'yameva sa yo'yamātmedamamṛtamidaṃ brahmedam̐ sarvam ||",
           "translation": "This space (disah, the quarters) is the honey of all beings, and all beings are the honey of this space. Likewise this bright, immortal person in this space, and that bright, immortal person existing as the ear in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This space (disah, the quarters) is the honey of all beings, and all beings are the honey of this space. Likewise this bright, immortal person in this space, and that bright, immortal person existing as the ear in the body (both are madhu). He indeed is the same as that Self,…",
-          "hindi": "जो कोई आधान, प्रत्याधान, स्थूणा ओर दाम ( बन्धनरज्जु) के सहित शिद्युको जानता हे, वह॒ अपनेसे देष करनेवाले सात च्ात्व्योका मवरोध करता हि। यह जो मध्यम प्राणहै, वही शिष्टे, उसका यह्‌ सप्रत्याधानं सस्थूणं सदामं वेद्‌,  सरणा ओर दामक सहित शिशुको = ८ 8 जानता हे, उसे यह फल प्राप्न ः  + 6  होताहै। वह फल क्याहै? वह उसका ये सात अक्षितियां उपस्थान ( स्तवन ) करती है उनमेसे जो ये आंखमे लाल रेखाएं है, उनके द्वारा श्र इस मध्यप्राणके अनुगत है ओर नेत्रम जो जल ह उसके द्वारा मेध, जो कनीनका ( दशंनशक्ति ) हे",
-          "science": "जो कोई आधान, प्रत्याधान, स्थूणा ओर दाम ( बन्धनरज्जु) के सहित शिद्युको जानता हे, वह॒ अपनेसे देष करनेवाले सात च्ात्व्योका मवरोध करता हि। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1592,8 +1492,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ayaṃ candraḥ sarveṣāṃ bhūtānāṃ madhvasya candrasya sarvāṇi bhūtāni madhu yaścāyamasmiṃścandre tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmaṃ mānasastejomayo'mṛtamayaḥ puruṣo'yameva sa yo'yamātmedamamṛtamidaṃ brahmedam̐ sarvam ||",
           "translation": "This moon is the honey of all beings, and all beings are the honey of this moon. Likewise this bright, immortal person in this moon, and that bright, immortal person existing as mind in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This moon is the honey of all beings, and all beings are the honey of this moon. Likewise this bright, immortal person in this moon, and that bright, immortal person existing as mind in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman,…",
-          "hindi": "् क करती हैँ-शरीरमे अन्तके कारण त करणात्मकं प्राणं शरीरेऽन- । रहनेवाले ेत्रस्थानमे आरूढ उस सश्च सप्तसङ्ख्याकरा भअक्नितयो- हे, उस कनीनकाके द्वारा आदित्य मध्यम प्राणमें प्रवेश करता है; नेच मे जो कृष्णवणं है उसके द्वारा सहित शिरमें चमसदृष्टिका विधान तदेष इरोको भवति । अर्वाग्िरश्चमस उस्वैबु- ब्रह्मणा संविदानेति वाग्घ्यष्टमी ब्रह्मणा संवित्ते",
-          "science": "् क करती हैँ-शरीरमे अन्तके कारण त करणात्मकं प्राणं शरीरेऽन-। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1609,8 +1507,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "iyaṃ vidyutsarveṣāṃ bhūtānaṃ madhvasyai vidyutaḥ sarvāṇi bhūtāni madhu yaścāyamasyāṃ vidyuti tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmaṃ taijasastejomayo'mṛtamayaḥ puruṣo'yameva sa yo'yamātmedamamṛtaṃ idaṃ brahmedam̐ sarvam ||",
           "translation": "This lightning is the honey of all beings, and all beings are the honey of this lightning. Likewise this bright, immortal person in this lightning, and that bright, immortal person existing as light in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This lightning is the honey of all beings, and all beings are the honey of this lightning. Likewise this bright, immortal person in this lightning, and that bright, immortal person existing as light in the body (both are madhu). He indeed is the same as that Self,…",
-          "hindi": "बराह्मण २ शाङ्करभाष्याथं ५०९ इस विपयमें यह शलोक है । चमस नाचेकौ ओर चछ्रिवाला शौर उपरकी ओर उठा हुआ होता है, उसमें विद्ल्प यदा निदहित द तत्त्रेतस्मिन्न्थे एष इलोको  तहां इस अमे यट सोक नन्व दि ९    श्रुति इस मन्त्रा अथं बतलाती है- भ्रतिः--अर्वाग्विलस्वमस उष्व-  कितु यह्‌ नीचेकी ओर छिद्रवाला श्रोत्रादिमें विभागपूवंक सप्तषि-हषटि के पुनस्तस्य चमसस्य तीर कितु उस चमसके तीरपर कौन",
-          "science": "बराह्मण २ शाङ्करभाष्याथं ५०९ इस विपयमें यह शलोक है। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1626,8 +1522,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ayam̐ stanayitnuḥ sarveṣāṃ bhūtānāṃ madhvasya stanayitnoḥ sarvāṇi bhūtāni madhu yaścāyamasminstanayitnau tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmam̐ śābdaḥ sauvarastejomayo'mṛtamayaḥ puruṣo 'yameva sa yo'yamātmedamamṛtamidaṃ brahmedam̐ sarvam ||",
           "translation": "This thunder is the honey of all beings, and all beings are the honey of this thunder. Likewise this bright, immortal person in this thunder, and that bright, immortal person existing as sound and voice in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This thunder is the honey of all beings, and all beings are the honey of this thunder. Likewise this bright, immortal person in this thunder, and that bright, immortal person existing as sound and voice in the body (both are madhu). He indeed is the same as that Self,…",
-          "hindi": "करमसे गोतम ओर भरद्वाज ह ।  इसी प्रकार नेत्रोके विषयमे उपदेश चश्ुषी उपदिशमुमाच--इमावेव  करे हए मन्वे कहा है किये ही अत्ता होनेके कारण यह्‌ अत्ति\" है; रूपसे अत्रिः कहा जाता है । इस \"अत्रि\" शन्दकी निरक्तिका या; प्राणानायुपनिषद्‌ः, ता ब्रह्मो- ते प्राणा इति च। ते किमाटमकाः? उपर यह कहा गया है कि प्राण",
-          "science": "करमसे गोतम ओर भरद्वाज ह। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1643,8 +1537,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ayamākāśaḥ sarveṣāṃ bhūtānāṃ madhvasyā''kāśasya sarvāṇi bhūtāni madhu yaścāyamasminnākāśe tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmam̐ hṛdyākāśastejomayo'mṛtamayaḥ puruṣaḥ 'yameva sa yo'yamātmedamamṛtamidaṃ brahmedam̐ sarvam ||",
           "translation": "This ether is the honey of all beings, and all beings are the honey of this ether. Likewise this bright, immortal person in this ether, and that bright, immortal person existing as heart-ether in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This ether is the honey of all beings, and all beings are the honey of this ether. Likewise this bright, immortal person in this ether, and that bright, immortal person existing as heart-ether in the body (both are madhu). He indeed is the same as that Self, that Immortal,…",
-          "hindi": "ब्रह्मकं दो रूप हु- मूर्तं ओर अभूतं, मत्यं ओर अमृत, स्थित ओर तत्र द्विरूपं ब्रह्म पश्चमृतज- नितकायंकरणमम्बद्धं मूर्तामूर्ता- सोपाख्यं मवति । क्रियाकारक- मूर्तामूतंके विभायपूर्वक मूतंखूप श्रौर उसके रसक। वणन तत्र चतुष्टयविशेषणविकचष्टं  = इ प्रकार मूतं ओर अमूतं चार सूतं तथा अभूतं च । तत्र कानि  ति",
-          "science": "ब्रह्मकं दो रूप हु- मूर्तं ओर अभूतं, मत्यं ओर अमृत, स्थित ओर तत्र द्विरूपं ब्रह्म पश्चमृतज- नितकायंकरणमम्बद्धं मूर्तामूर्ता- सोपाख्यं मवति। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1660,8 +1552,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ayaṃ dharmaḥ sarveṣāṃ bhūtānāṃ madhvasya dharmasya sarvāṇi bhūtāni madhu yaścāyamasmindharme tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmaṃ dhārmastejomayo'mṛtamayaḥ puruṣo'yameva sa yo'yamātmedamamṛtaṃ idaṃ brahmedam̐ sarvam ||",
           "translation": "This law (dharmah) is the honey of all beings, and all beings are the honey of this law. Likewise this bright, immortal person in this law, and that bright, immortal person existing as law in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This law (dharmah) is the honey of all beings, and all beings are the honey of this law. Likewise this bright, immortal person in this law, and that bright, immortal person existing as law in the body (both are madhu). He indeed is the same as that Self, that Immortal,…",
-          "hindi": "तदेतन्मूतं मूच्ितावयवम्‌ इत- वह यह मतं अर्थात्‌ मिले हृए रेतराुप्रविष्टावयवं घनं संहत-  अवयवो वाला हे, इसके अवयव एकं दसरेमे अनुप्रविष्टं ॒रहते ह, यह्‌ विहेषरोंसदहित ग्रमतं रूप श्रौर उसके रसका वणन तथा वायु मौर अन्तरिक्ष अमूतं है, ये अमृतहै, येयत्‌ हं ओरये ही वयत्‌ द । उस इस अमूतंका, इस अभृतका, इस यत्‌का, इस ॒त्यतका यह सार दहै, ओ कि इस मण्डलम पुरुष है, यही इस त्यत्का सारदठे।",
-          "science": "तदेतन्मूतं मूच्ितावयवम्‌ इत- वह यह मतं अर्थात्‌ मिले हृए रेतराुप्रविष्टावयवं घनं संहत- अवयवो वाला हे, इसके अवयव एकं दसरेमे अनुप्रविष्टं ॒रहते ह, यह्‌ विहेषरो…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1677,8 +1567,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "idam̐ satyam̐ sarveṣāṃ bhūtānāṃ madhvasya satyasya sarvāṇi bhūtāni madhu yaścāyamasminsatye tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmam̐ sātyastejomayo'mṛtamayaḥ puruṣo'yameva sa yo'yamātmedamamṛtamidaṃ brahmedam̐ sarvam ||",
           "translation": "This true (satyam) is the honey of all beings, and all beings are the honey of this true. Likewise this bright, immortal person in what is true, and that bright, immortal person existing as the true in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This true (satyam) is the honey of all beings, and all beings are the honey of this true. Likewise this bright, immortal person in what is true, and that bright, immortal person existing as the true in the body (both are madhu). He indeed is the same as that Self,…",
-          "hindi": "अथोऽपरिरुष्यमानं सेनचित्‌, शेषणस्यामृतंस्येष रसःकोऽपौ १ करणात्मको हिरण्यः प्राण पुरुष्ब्दश्रयोगात्‌। इत्यधिहैवत- म्रध्या्म मूर्तामूतंके विभागपूवेक मूतंका वणन यमग्तरात्मन्नाकादा षएतन्मत्यंमेतस्स्थितमेतत्सत्तस्ये- अब अध्यात्म रूर्तामूतंका वणन किया जाता है । जो प्राणसे तथा यह्‌ जो देहान्तगंत आकाश है उससे भिन्न है, यही मूतं है । यह मत्य है, १. सात पुरूष ये है -श्रोतर, त्वक्‌, चक्षु, जिह्वा, घ्राण, वाक्‌ ओर मन ।",
-          "science": "अथोऽपरिरुष्यमानं सेनचित्‌, शेषणस्यामृतंस्येष रसःकोऽपौ १ करणात्मको हिरण्यः प्राण पुरुष्ब्दश्रयोगात्‌। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1694,8 +1582,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "idaṃ mānuṣam̐ sarveṣāṃ bhūtānāṃ madhvasya mānuṣasya sarvāṇi bhūtāni madhu yaścāyamasminmānuṣe tejomayo'mṛtamayaḥ puruṣo yaścāyamadhyātmaṃ mānuṣastejomayo'mṛtamayaḥ puruṣo'yameva sa yo'yamātmedamamṛtamidaṃ brahmedam̐ sarvam ||",
           "translation": "This mankind is the honey of all beings, and all beings are the honey of this mankind. Likewise this bright, immortal person in mankind, and that bright, immortal person existing as man in the body (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This mankind is the honey of all beings, and all beings are the honey of this mankind. Likewise this bright, immortal person in mankind, and that bright, immortal person existing as man in the body (both are madhu). He indeed is the same as that Self, that Immortal,…",
-          "hindi": "अथ-अवब मूर्तामृतेका अध्यात्म- विभाग बतलाया जाता है-वह्‌ मतं क्याहे?यहदहीदे, यह्‌ क्या प्रघ्यात्म श्रमृतंका उसके विशेषणोंसहित वर्णन अथामूतं प्राणश्च यश्चायभन्तरात्मन्नाकाश्च एतदश्त- अब अम्ूतका वणेन करते हँ प्राण ओर इस शरीरके अन्तग॑त जो आकाश है, वे अमूतं ह, यह्‌ अमृत है, यह यत्‌ है ओर यही त्यत्‌ है । उस इस अगुतका, इस अम्रतका, इस यतुका, इस त्यतुका यह रस है जो कि",
-          "science": "अथ-अवब मूर्तामृतेका अध्यात्म- विभाग बतलाया जाता है-वह्‌ मतं क्याहे?यहदहीदे, यह्‌ क्या प्रघ्यात्म श्रमृतंका उसके विशेषणोंसहित वर्णन अथामूतं प्राणश्च यश्चायभन्…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1711,8 +1597,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ayamātmā sarveṣāṃ bhūtānāṃ madhvasyā''tmanaḥ sarvāṇi bhūtāni madhu yaścāyamasminnātmani tejomayo'mṛtamayaḥ puruṣo yaścāyamātmā tejomayo'mṛtamayaḥ puruṣo'yameva sa yo'yamātmedamamṛtamidaṃ brahmedam̐ sarvam ||",
           "translation": "This Self is the honey of all beings, and all beings are the honey of this Self Likewise this bright, immortal person in this Self, and that bright, immortal person, the Self (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
           "explanation": "Sense: This Self is the honey of all beings, and all beings are the honey of this Self Likewise this bright, immortal person in this Self, and that bright, immortal person, the Self (both are madhu). He indeed is the same as that Self, that Immortal, that Brahman, that All.",
-          "hindi": "मन्तरत्मन्नाकाशचः, एतदम्‌तंम्‌ । अथ-अब असूतंका वणन किया जाताहै। जो बचे हए दो भूत प्रतिपादन करनेके लिये है ।५॥ हृच्दरियात्मा पृरूषके स्वरूपका वर्णन ब्रह्मण उपाधिभूतयोमूर्ाम्‌-  सत्य\" शब्दके वाच्य एवं ब्रह्य उस इस पुरुषका रूप रेखा है जैसा हल्दीमे रंगा हा वख, जेसा सकेद ऊनी वख, जैसा इन्द्रगोपः, जैकी अग्निकी ज्वाला, जैसा इवेत कमल ञओौर जेसी बिजलीकी चमक होती है । जो एेसा जानता है, उसकी श्री",
-          "science": "मन्तरत्मन्नाकाशचः, एतदम्‌तंम्‌। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1728,8 +1612,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa vā ayamātmā sarveṣāṃ bhūtānāmadhipatiḥ sarveṣāṃ bhūtānām̐ rājā | tadyathā rathanābhau ca rathanemau cārāḥ sarve samarpitā evamevāsminnātmani sarvāṇi bhūtāni sarve devāḥ sarve lokāḥ sarve prāṇāḥ sarva eta ātmānaḥ samarpitāḥ ||",
           "translation": "And verily this Self is the lord of all beings, the king of all beings. And as all spokes are contained in the axle and in the felly of a wheel, all beings, and all those selfs (of the earth, water, &c.) are contained in that Self.",
           "explanation": "Sense: And verily this Self is the lord of all beings, the king of all beings. And as all spokes are contained in the axle and in the felly of a wheel, all beings, and all those selfs (of the earth, water, &c.) are contained in that Self.",
-          "hindi": "१. वर्षा ऋतुमे उत्पन्न होनेवाला एक काक रंगका कीड़ा । तस्य हैतस्य पुर्षरस्य करुणा- तष्णिकोपमं सर्वव्यामोहास्पदप्‌-- सत्यम्‌! इति एवंप्रकारेण सत्यस्य आल्मेत्येवोपासीत; तदेव आत्मा है\" इस प्रकार ही उपा- तस्मिन्सरव॑स्मिन्पदनी-  सना करे; वह॒ आत्मतत्त्व ही इन 4. कक = सबमें प्राप्तव्य है; क्योंकि वह्‌ पुत्रादिः",
-          "science": "१. वर्षा ऋतुमे उत्पन्न होनेवाला एक काक रंगका कीड़ा। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1745,8 +1627,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "idaṃ vai tanmadhu dadhyaṅṅātharvaṇo'śvibhyāmuvāca | uvāca tadetadṛṣiḥ paśyannavocat | tadvāṃ narā sanaye dam̐sa ugraṃ āviṣkṛṇomi tanyaturna vṛṣṭim | dadhyaṅ ha yanmadhvātharvaṇo vāṃ aśvasya śīrṣṇā pra yadīmuvāceti ||",
           "translation": "Verily Dadhyak Âtharvana proclaimed this honey (the madhu-vidyâ) to the two Asvins, and a Rishi, seeing this, said (Rv. I, 116, 12):",
           "explanation": "Sense: Verily Dadhyak Âtharvana proclaimed this honey (the madhu-vidyâ) to the two Asvins, and a Rishi, seeing this, said (Rv. I, 116, 12):",
-          "hindi": "यया भायंया कात्यायन्यान्तं विच्चेदं करवाणि; पतिद्वारेण ने कहा-अर्थात्‌ याज्ञवल्क्यतामक होवाच थाज्ञवल््यौ यथेवोपकरणवतां जीवितं तथेव ते जीवित श्यादश्रतत्वस्य तु नाशास्ति वित्तेनेति उस मैत्रेयीने कहा, \"भगवन्‌ ! यदि यहु धनसे सम्पन्न सारी पृथिवी मेरी हो जायतो क्या मैँ उससे किसी प्रकार अमर हो सकती ह ¢ या्ञवत्वयने कहा, तह, मोग-सामम्नियोसे सम्पन्न मनुष्योका जसा जीवन",
-          "science": "यया भायंया कात्यायन्यान्तं विच्चेदं करवाणि; पतिद्वारेण ने कहा-अर्थात्‌ याज्ञवल्क्यतामक होवाच थाज्ञवल््यौ यथेवोपकरणवतां जीवितं तथेव ते जीवित श्यादश्रतत्वस्य त…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1762,8 +1642,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "idaṃ vai tanmadhu dadhyaṅṅātharvaṇo'śvibhyāmuvāca | tadetadṛṣiḥ paśyannavocat | ātharvaṇāyāśvinau dadhīce'śvyam̐ śiraḥ pratyairayatam | sa vāṃ madhu pravocadṛtāyan tvāṣṭraṃ yad dasrāvapi kakṣyaṃ vāmiti ||",
           "translation": "Verily Dadhyak Âtharvana proclaimed this honey to the two Asvins, and a Rishi, seeing this, said (Rv. I, 117, 22):",
           "explanation": "Sense: Verily Dadhyak Âtharvana proclaimed this honey to the two Asvins, and a Rishi, seeing this, said (Rv. I, 117, 22):",
-          "hindi": "खा पएव्द्ुक्ता दोवाच--   इस रकार कटी जानेपर 2२८4 मैत्रेयीने कहा-यहां नु\" यह निपात यदि श्लुः इति वितकं मे वितक॑के लिये है। क्या कहा ?सो मैत्रेथीका भ्रमृतत्वसाधनविषयक प्रश्न . उस मैत्रेधीने कहा, “जिससे मँ अमर नहीं हो सकती, उसे लेकर मेँ ' भ्याकरूगी? श्रीमान्‌ जो कुल अमृतत्वका साधन जाने हो, वही दुभ",
-          "science": "खा पएव्द्ुक्ता दोवाच-- इस रकार कटी जानेपर 2२८4 मैत्रेयीने कहा-यहां नु\" यह निपात यदि श्लुः इति वितकं मे वितक॑के लिये है। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1779,8 +1657,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "idaṃ vai tanmadhu dadhyaṅṅātharvaṇo'śvibhyāmuvāca | tadetadṛṣiḥ paśyannavocat puraścakre dvipadaḥ puraścakre catuṣpadaḥ | puraḥ sa pakṣī bhūtvā puraḥ puruṣa āviśaditi | sa vā ayaṃ puruṣaḥ sarvāsu pūrṣu puriśayo nainena kiṃcanānāvṛtaṃ nainena kiṃcanāsaṃvṛtam ||",
           "translation": "Verily Dadhyak Âtharvana proclaimed this honey to the two Asvins, and a Rishi, seeing this, said:",
           "explanation": "Sense: Verily Dadhyak Âtharvana proclaimed this honey to the two Asvins, and a Rishi, seeing this, said:",
-          "hindi": "॥  सा होवाच मेत्रेयी; एवशुक्ता उस भैत्रेथीने कहा; इस प्रकार प्रत्युवाच मेत्रेयी- ययेवं येनाहं  यदि सी बातहै तो जिससे मेँ नामृता स्याम्‌, किमहं तेन वित्तेन  अमृत नहीं हो सकती, उस धनसे उन याज्ञवल्वयजीने कहा, “वन्य ! अरी सेत्रेयी, तु पहले भी हमारी प्रिया रही है ओर इस समय भी प्रिय लगनेवाली ही बात कट्‌ रही है । अच्छा आः, बैठ जा, मेँ तेरे प्रति उसकी व्याख्या करूगा, तु व्याख्यान स॒ होष(च याज्ञवस्कषः  एवं उन याज्ञवल्क्यजीने कटा । इस ेत्तपाध्येऽमरतस्यसाधने   प्रकार धनसे निष्पच्च होनेवाले वितापयऽरतससाधने पतया\"  जयते साधका साय कर य",
-          "science": "॥ सा होवाच मेत्रेयी; एवशुक्ता उस भैत्रेथीने कहा; इस प्रकार प्रत्युवाच मेत्रेयी- ययेवं येनाहं यदि सी बातहै तो जिससे मेँ नामृता स्याम्‌, किमहं तेन वित्तेन अमृत…। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1796,8 +1672,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "idaṃ vai tanmadhu dadhyaṅṅātharvaṇo'śvibhyāmuvāca | tadetadṛṣiḥ paśyannavocat | rūpam̐rūpaṃ pratirūpo babhūva tadasya rūpaṃ praticakṣaṇāya | indro māyābhiḥ pururūpa īyate yuktā hyasya harayaḥ śatā daśetiyayaṃ vai harayo'yaṃ vai daśa ca sahasraṇi bahūni cānantāni ca | tadetadbrahmāpūrvamanaparamanantaramabāhyamayamātmā brahma sarvānubhūrityanuśāsanam ||",
           "translation": "Verily Dadhyak Âtharvana proclaimed this honey to the two Asvins, and a Rishi, seeing this, said (Rv. VI, 47, 18):",
           "explanation": "Sense: Verily Dadhyak Âtharvana proclaimed this honey to the two Asvins, and a Rishi, seeing this, said (Rv. VI, 47, 18):",
-          "hindi": "प्रियतम श्रात्माके लिये ही भ्रन्य वस्तुं प्रिय होती है स होवाचन वा अरे पस्युः कामाय पतिः परियो भवत्थात्मनस्तु कामाय पतिः भिथो भवति । उन्होने कहा--अरी मैत्रेयि ! यह्‌ निश्चय है कि पतिके प्रयोजनके त्यि पति प्रिय नहीं होता, अपने ही प्रयोजनके लिये पति श्रिय होता है; दके प्रमोजनके लिये खी प्रिया नहीं होती, अपने ही प्रयोजनके लिये खी स होवाच अमृतत्वसाधनं  अमृतत्वके साधन वैराग्यका  147 ऋ क । उपदेश करनेकी इच्छसे याज्ञवस्वेय- वैरा्यसुपदिदिकषु्जायापतिपूत्रा-  जौ खी, पति एवं पुत्रादिसे, उनका",
-          "science": "प्रियतम श्रात्माके लिये ही भ्रन्य वस्तुं प्रिय होती है स होवाचन वा अरे पस्युः कामाय पतिः परियो भवत्थात्मनस्तु कामाय पतिः भिथो भवति। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "MadhuVidya",
@@ -1821,8 +1695,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha vam̐śaḥ pautimāṣyo gaupavanād gaupavanaḥ pautimāṣyāt pautimāṣyo gaupavanād gaupavanaḥ kauśikāt kauśikaḥ kauṇḍinyāt kauṇḍinyaḥ śāṇḍilyācchāṇḍilyaḥ kauśikācca gautamācca gautamaḥ ||",
           "translation": "Now follows the stem :",
           "explanation": "Sense: Now follows the stem :",
-          "hindi": "५५२ बृहदारण्यकोपनिषद्‌ अध्याय २ प्रात्मा सबसे श्रसिन्त है, इसका प्रतिपादन नलु कथमन्पसिपन्विदितेऽन्य-  शङ्का-क्रितु अन्यका ज्ञान होने जानता हे। क्षत्रियजाति उसे परास्त कर देती है जो क्षत्रियजातिको आत्सासे भिन्च देखता है । लोक उसे परास्त कर देते है जो लोकोंको आमास भिन्न  देखता है । देवगण उसे परास्त कर देते है जो देवताओंको आत्मासे धिन्न ब्रह्म बाह्मणजातिस्तं पुरूपं  ब्रह्म-त्ाह्मणजाति उ पुरपको कम्‌ १ यो उन्यत्रारमन च्रारमस्व-   8. है; क्सि ¦ र पः तिरेक --आतमैबन भव छोर अथात्‌ यह ब्रह्णनाति",
-          "science": "५५२ बृहदारण्यकोपनिषद्‌ अध्याय २ प्रात्मा सबसे श्रसिन्त है, इसका प्रतिपादन नलु कथमन्पसिपन्विदितेऽन्य- शङ्का-क्रितु अन्यका ज्ञान होने जानता हे। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Vamsha",
@@ -1838,8 +1710,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "āgniveśyādagniveśyaḥ śāṇḍilyāccānabhimlātāccānabhimlāta ānabhimlātādanabhimlāta anabhimlātādanabhimlāto gautamād gautamaḥ saitavaprācīnayogyābhyām̐, saitavaprācīnayogyau pārāśaryāt pārāśaryo bhāradvājād bhāradvājo bhāradvājācca gautamācca gautamo bhāradvājād bhāradvājaḥ pārāśaryāt pārāśaryo vaijavāpāyanād vaijavāpāyanaḥ kauśikāyaneḥ kauśikāyaniḥ ||",
           "translation": "from Âgnivesya,",
           "explanation": "Sense: from Âgnivesya,",
-          "hindi": "आत्मामे ही हँ । जो यह आत्मा बकी श्रातमस्वरूपताे ग्रहणम दनदुभि, ङ्ख श्रौ र वौ एाका दन्त ४४५४ बृहदारण्यकोपनिषद्‌  अध्याय २ तदातमस्वमेव लोके दृष्टम्‌ ।  वह्‌ दृष्टान्त एसा है किं जिस प्रकार ताडन किये जाते हृए दुन्दुमि ( नक्गारे ) के बाह्य शब्दोको कोई ग्रहण नहीं कर सकता, कितु दुन्दुभि स यथा-स इति दष्टान्तः, स यथा अर्थात्‌ वह्‌ दृष्टान्त लोके यथा दुन्दुभेर्भयदिः,हन्य-  एेसा है- लोकम जिस प्रकार मानस्य ताख्वमानस्य दण्डा- दण्डादिसे हनन-ताडन किये जाते",
-          "science": "आत्मामे ही हँ। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Vamsha",
@@ -1855,8 +1725,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ghṛtakauśikād ghṛtakauśikaḥ pārāśaryāyaṇāt pāraśaryāyaṇaḥ pārāśaryāt pārāśaryo jātūkarṇyāj jātūkarṇya āsurāyaṇācca yāskācc- ''surāyaṇastraivaṇestraivaṇiraupajandhaneraupajandhanirāsurāsurirbhāradvājād bhāradvāja ātreyādatreyo māṇṭermāṇṭirgautamād gautamo gautamād gautamo vātsyād vātsyaḥ śāṇḍilyācchāṇḍilyaḥ kaiśoryātkāpyāt kaiśoryaḥ kāpyaḥ kumārahāritāt kumārahārito gālavād gālavo vidarbhīkauṇḍinyād vidarbhīkauṇḍinyo vatsanapāto bābhravād vatsanapādbābhravaḥ pathaḥ saubharāt panthāḥ saubharo'yāsyādāṅgirasādayāsya āṅgirasa ābhūtestvāṣṭrādābhūtistvāṣṭro viśvarūpāttvāṣṭrād viśvarūpastvāṣṭro'śvibhyāmaśvinau dadhīca ātharvaṇād dadhyaṅṅātharvaṇo'tharvaṇo daivādatharvā daivo mṛtyoḥ prādhvam̐sanān mṛtyuḥ prādhvam̐sanaḥ pradhvam̐sanāt pradhvam̐sana ekarṣeḥ ekarṣirvipracittervipracittirvyaṣṭervyaṣṭiḥ sanāroḥ sanāruḥ sanātanāt sanātanaḥ sanagāt sanagaḥ parameṣṭhinaḥ parameṣṭhī brahmaṇo brahma svayambhu brahmaṇe namaḥ || || iti bṛhadāraṇyakopaniṣadi dvitīyo'dhyāyaḥ ||",
           "translation": "from Ghritakausika,",
           "explanation": "Sense: from Ghritakausika,",
-          "hindi": "उदाक्नुयाद्यहणाय शङ्खस्य तु ग्रहणेन राङ्खध्मस्य वा वह्‌  दूसरा दृष्टान्त  एसा है-जेसे कोई बजाये जाते हुए शद्कके बाह्य शब्दको ग्रहण करनेमे समं नहीं होता, कितु शङ्खके अथवा शङ्खं क बजानेको ग्रहण करनेसे उस शब्दका भी ग्रहण हो जाता हे  एसा है--जिस प्रकार बजाये जाते तथा वह  दूसरा दृष्टान्त  अर्थात्‌ पूकं जाते हुए श्भुके",
-          "science": "उदाक्नुयाद्यहणाय शङ्खस्य तु ग्रहणेन राङ्खध्मस्य वा वह्‌ दूसरा दृष्टान्त एसा है-जेसे कोई बजाये जाते हुए शद्कके बाह्य शब्दको ग्रहण करनेमे समं नहीं होता, कितु श…। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Vamsha",
@@ -1880,8 +1748,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "oṃ janako ha vaideho bahudakṣiṇena yajñeneje | tatra ha kurupañcālānāṃ brāhmaṇā abhisametā babhūvustasya ha janakasya vaidehasya vijijñāsā babhūva kaḥ svideṣāṃ brāhmaṇānāmanūcānatama iti | sa ha gavām̐ sahasramavarurodha daśadaśa pādā ekaikasyāḥ śṛṅgayorābaddhā babhūvuḥ ||",
           "translation": "Adoration to the Highest Self (Paramâtman)!",
           "explanation": "Sense: Adoration to the Highest Self (Paramâtman)!",
-          "hindi": "वह  तीसरा दृष्टान्त  एसा है-जेसे कोई बजायी जाती हुई वीणा- के बाह्य शब्दोको ग्रहण करने समथं नहीं होता; कितु वीणा या वीगाके स्वरका ग्रहण होनेपर उस शब्दका भी ग्रहण हो जाता है स्र्यापनाथम्‌--अनेके हि विल: इसी प्रकार वीणाये वाद्यमानाये' अर्थात्‌ बजायी जाती हुई वीणाका वह्‌  चौथा द्टान्त-- जिस प्रकार जिसका ईधन गीला हे, एेसे आधान किये हए अग्निसे पृथक्‌ श्रुजं निकलता हे, है मेत्रेयि ! इसी प्रकार पुराण, विद्या, उपनिषद्‌, शलोक, सूत्र, मन््रविवरण ओर अथंवाद है, वे इस",
-          "science": "वह तीसरा दृष्टान्त एसा है-जेसे कोई बजायी जाती हुई वीणा- के बाह्य शब्दोको ग्रहण करने समथं नहीं होता; कितु वीणा या वीगाके स्वरका ग्रहण होनेपर उस शब्दका भी ग्रह…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -1897,8 +1763,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tānhovāca brāhmaṇā bhagavanto yo vo brahmiṣṭhaḥ sa etā gā udajatāmiti | te ha brāhmaṇā na dadhṛṣuratha ha yājñavalkyaḥ svameva brahmacāriṇamuvācaitāḥ saumyodaja sāmaśravā3 iti | tā hodācakāra | te ha brāhmaṇāścukrudhuḥ kathaṃ nu no brahmiṣṭho bruvītetyatha ha janakasya vaidehasya hotā'śvalo babhūva | sa hainaṃ papraccha tvaṃ nu khalu no yājñavalkya brahmiṣṭho'sī3 iti | sa hovāca namo vayaṃ brahmiṣṭhāya kurmo gokāmā eva vayam̐ sma iti | tam̐ ha tata eva praṣṭuṃ dadhre hotā'śvalaḥ ||",
           "translation": "And Ganaka spoke to them: 'Ye venerable Brâhmanas, he who among you is the wisest, let him drive away these cows.' Then those Brâhmanas durst not, but Yâgñavalkya said to his pupil: 'Drive them away, my dear.' He replied: 'O glory of the Sâman ' and drove them away. The Brâhmanas became angry and said: 'How could he call himself the wisest among us?' Now there was Asvala, the Hotri priest of Ganaka Vaideha. He asked him: 'Are you indeed the wisest among us, O Yâgñavalkya?' He replied: 'I bow before the wisest (the best knower of Brahman), but I wish indeed to have these cows.' Then Asvala, the Hotri priest, undertook to question him.",
           "explanation": "Sense: Adoration to the Highest Self (Paramâtman)!",
-          "hindi": "नानाप्रकारम्‌, पूमश्रदणं बिर्फु- करि तन्निश्वसितमिव ततो वह  चौथा दष्टान्त- जिस को उसे वेसाही समभना चाहिये। रूपके विकारकौ व्यवस्था नाम- प्रकाशकै ही अधीन है) जल ओर प्रत्मा हा सबका श्राश्रय है- इसमे दृष्टान्त कश्वान्यत्‌, न केवलं स्थित्यु स्प्तिकालयोरेव प्रज्ञानव्यति-",
-          "science": "नानाप्रकारम्‌, पूमश्रदणं बिर्फु- करि तन्निश्वसितमिव ततो वह चौथा दष्टान्त- जिस को उसे वेसाही समभना चाहिये। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -1914,8 +1778,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca yadidam̐ sarvaṃ mṛtyunā''ptam̐, sarvaṃ mṛtyunā'bhipannaṃ kena yajamāno mṛtyorāptimatimucyata iti | hotrartvijā'inā vācā vāgvai yajñasya hotā | tadyeyaṃ vāk so'yamagniḥ sa hotā sā muktiḥ sā'timuktiḥ ||",
           "translation": "'Speech (vâk) is one Graha, and that is seized by name (nâman) as the Atigrâha, for with speech one pronounces names.",
           "explanation": "Sense: 'Speech (vâk) is one Graha, and that is seized by name (nâman) as the Atigrâha, for with speech one pronounces names.",
-          "hindi": "वह्‌ दृष्टान्त-जिस प्रकार सम्पूणं नदी, बावडी भौर तडागादिके जलोंका समुद्र एकायन- एक गम- विवेक्टारा देहादिकरे विज्ञानघनस्वरूप होनेमे जलम डाले हुए  लवणखण्डका दृष्टान्त कालेषु प्रज्ञानव्यतिरिकेणामावात्‌ इसमे यह दृष्टान्त हे--जिस प्रकार जलम डाला हुभा नमकका उला जलमें ही लीन हो जातादहै। उसे जलपरे निकालनेके लिये कोई समर्थं नहीं होता । जर्हा-जहाँसे भो जल लिया जाय वहं नमंकीन ही जान पडता",
-          "science": "वह्‌ दृष्टान्त-जिस प्रकार सम्पूणं नदी, बावडी भौर तडागादिके जलोंका समुद्र एकायन- एक गम- विवेक्टारा देहादिकरे विज्ञानघनस्वरूप होनेमे जलम डाले हुए लवणखण्डका दृष…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -1931,8 +1793,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca yadidam̐ sarvamahorātrābhyāmāptam̐, sarvamahorātrābhyāmabhipannaṃ kena yajamāno'horātrayorāptimatimucyata ityadhvaryuṇartvijā cakṣuṣā''dityena cakṣurvai yajñasyādhvaryustadyadidaṃ cakṣuḥ so'sāvādityaḥ so'dhvaryuḥ sā muktiḥ sā'timuktiḥ ||",
           "translation": "'Yâgñavalkya,' he said, 'everything here is reached by day and night, everything is overcome by day and night. By what means then is the sacrificer freed beyond the reach of day and night?' Yâgñavalkya said: 'By the Adhvaryu priest, who is the eye, who is Âditya (the sun) . For the eye is the Adhvaryu of the sacrifice, and the eye is the sun, and he is the Adhvaryu. This constitutes freedom, and perfect freedom.'",
           "explanation": "Sense: 'Yâg&ntilde;avalkya,' he said, 'everything here is reached by day and night, everything is overcome by day and night. By what means then is the sacrificer freed beyond the reach of day and night?' Yâg&ntilde;avalkya said: 'By the Adhvaryu priest, who is the eye,…",
-          "hindi": "तत्र दृष्टान्त उपादीयते- सख यहाँ यह दृष्टान्त दिया जातां यथेति।सेन्धधखिल्य १-सिन्धोषि-  है--स यथा\" इत्यादि । सैन्धव-  खिल्य--सिन्धुके विकारका नाम जिस प्रकार जल ओर अलक्तक आदि हेतुओके हट जानेपर सयं, । चन्द्र ओर स्फटिक आदिका प्रति- मैत्रेयीकी शङ्का ्रौर याज्ञवल्क्यका समाधान इस प्रकार बोध कराये जाने-",
-          "science": "तत्र दृष्टान्त उपादीयते- सख यहाँ यह दृष्टान्त दिया जातां यथेति। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -1948,8 +1808,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca yadidam̐ sarvaṃ pūrvapakṣāparapakṣābhyāmāptam̐, sarvaṃ pūrvapakṣāparapakṣābhyāmabhipannaṃ kena yajamānaḥ pūrvapakṣāparapakṣayorāptimatimucyata ityudgātrartvijā vāyunā prāṇena prāṇo vai yajñasyodgātā | tadyo'yaṃ prāṇaḥ sa vāyuḥ sa udgātā sā muktiḥ sā'timuktiḥ ||",
           "translation": "'Yâgñavalkya,' he said, 'everything here is reached by the waxing and waning of the moon, everything is overcome by the waxing and waning of the moon. By what means then is the sacrificer freed beyond the reach of the waxing and waning of the moon?' Yâgñavalkya said: 'By the Udgâtri priest, who is Vâyu (the wind), who is the breath. For the breath is the Udgâtri of the sacrifice, and the breath is the wind, and he is the Udgâtri. This constitutes freedom, and perfect freedom.'",
           "explanation": "Sense: 'Yâg&ntilde;avalkya,' he said, 'everything here is reached by the waxing and waning of the moon, everything is overcome by the waxing and waning of the moon.…",
-          "hindi": "उस मेतेयीने कहा, शरीरपातके अनन्तर कोई संञा नहीं रहती- एसा कहकर ही श्रीमानुने मुभे मोहम डाल दिया है 1' याज्ञवल्क्यने कहा, हि मेतरेयि ! मेँ मोहका उपदेश नहीं कर राह, अरी! यह्‌तो उस उस मेत्रेयीने कहा, यही-- इस एक वस्तु ब्रह्मम ही विरुद धर्म॑वत्ता- का वणेन करनेवाले श्रीमानूने तो से होनेवाले प्रकाादिका नाश हो जाता है। कितु जिस प्रकार वास्तविक चन्द्रमा ओर सूर्यादिके",
-          "science": "उस मेतेयीने कहा, शरीरपातके अनन्तर कोई संञा नहीं रहती- एसा कहकर ही श्रीमानुने मुभे मोहम डाल दिया है 1' याज्ञवल्क्यने कहा, हि मेतरेयि ! मेँ मोहका उपदेश नहीं कर…। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -1965,8 +1823,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca yadidamantarikṣamanārambaṇamiva kenā''kramena yajamānaḥ svargaṃ lokamākramata iti brahmaṇartvijā manasā candreṇa mano vai yajñasya brahmā | tadyadidaṃ manaḥ so'sau candraḥ sa brahmā sā muktiḥ sātimuktirityatimokṣā atha sampadaḥ ||",
           "translation": "'Yâgñavalkya,' he said, 'this sky is, as it were, without an ascent (staircase.) By what approach does the sacrificer approach the Svarga world?' Yâgñavalkya said: 'By the Brahman priest, who is the mind (manas), who is the moon. For the mind is the Brahman of the sacrifice, and the mind is the moon, and he is the Brahman. This constitutes freedom, and perfect freedom. These are the complete deliverances (from death).' Next follow the achievements.",
           "explanation": "Sense: 'Yâg&ntilde;avalkya,' he said, 'this sky is, as it were, without an ascent (staircase.) By what approach does the sacrificer approach the Svarga world?' Yâg&ntilde;avalkya said: 'By the Brahman priest, who is the mind (manas), who is the moon.…",
-          "hindi": "व्यवहार द्वैतमे है, परमाथं व्यवहारातीत है रारीरपातके अनन्तर उसकी संज्ञा किस प्रकार नहीं रहती ? सो जहाँ ( अविद्यावस्थामें ) देत-सा होता है, वहीं अन्थ अन्यको सुघता दे, अन्य अन्यको देखता है, अन्य अन्यको सुनता हे, अन्य अन्यका अभि- वादन करता है, अन्य अन्यका मनन करता है तथा अन्ध अन्यकरो जानता यत्र॒ यस्मिन्नविद्याकृन्पिते  हि- क्योंकि जहां जिस अविद्या- कार्यकरणसङ्कातोपाधिजनिते षि- कल्पित देहेन्द्रियसंघातरूप उपाधि- से उत्पन्न हुए विशेषात्मरूप खिल्य",
-          "science": "व्यवहार द्वैतमे है, परमाथं व्यवहारातीत है रारीरपातके अनन्तर उसकी संज्ञा किस प्रकार नहीं रहती ? सो जहाँ ( अविद्यावस्थामें ) देत-सा होता है, वहीं अन्थ अन्यको स…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -1982,8 +1838,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca katibhirayamadyargbhirhotāsminyajñe kariṣyatīti | tisṛbhiriti | katamāstāstisra iti | puronuvākyā ca yājyā ca śasyaiva tṛtīyā | kiṃ tābhirjayatīti | yat kiñcedaṃ prāṇabhṛditi ||",
           "translation": "'Yâgñavalkya,' he said, 'how many Rik verses will the Hotri priest employ to-day at this sacrifice?'",
           "explanation": "Sense: 'Yâg&ntilde;avalkya,' he said, 'how many Rik verses will the Hotri priest employ to-day at this sacrifice?'",
-          "hindi": "होती  तथा अग्नि जैसे अपनेहीको नहीं जलाता, उसी प्रकार आत्मा ओरजो विषय नहीं है, उसका यत्केवलं कम॑ निशपेक्तममृतल-  जो कमंकी अपेक्षासे रहित अकेला ही असृतत्वका साधन है, उसका यह्‌ पृथिवी समस्त मूतोका मधु है ओर सव भूत इस पृथिवीके मधु टं ! इस पृथिवीम जो यह्‌ तेजोमय अमृतमय पर्प है ओर जो यह्‌ अध्यात्म- दारीर तेजोमय अमृतमय पुरुष है, यही वहु है जो कि यह्‌ आत्मा है\"",
-          "science": "होती तथा अग्नि जैसे अपनेहीको नहीं जलाता, उसी प्रकार आत्मा ओरजो विषय नहीं है, उसका यत्केवलं कम॑ निशपेक्तममृतल- जो कमंकी अपेक्षासे रहित अकेला ही असृतत्वका साधन…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -1999,8 +1853,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca katyayamadyādhvaryurasminyajña āhutīrhoṣyatīti | tisra iti | katamāstāstisra iti | yā hutā ujjvalanti yā hutā atinedante yā hutā adhiśerate | kiṃ tābhirjayatīti | yā hutā ujjvalanti devalokameva tābhirjayati dīpyata iva hi devaloko | yā hutā atinedante pitṛlokameva tābhirjayatyatīva hi pitṛloko | yā hutā adhiśerate manuṣyalokameva tābhirjayatyadha iva hi manuṣyalokaḥ ||",
           "translation": "'Yâgñavalkya,' he said, 'how many oblations (âhuti) will the Adhvaryu priest employ to-day at this sacrifice?'",
           "explanation": "Sense: 'Yâg&ntilde;avalkya,' he said, 'how many oblations (âhuti) will the Adhvaryu priest employ to-day at this sacrifice?'",
-          "hindi": "मधु कायम्‌; साच्वव मधु  यथैको मध्वपू पोऽनेकैमेधुकर- पृथिव्यां तेजोभयधिन्मा्नप्रकाश- क्योंकि ब्रह्मका ज्ञान होनेसे स्वरूप ये जल समस्त भृतोके मधु हँ गौर समस्त भूत इन जलोके मधु ह । इन जलोमे जो यह्‌ तेजोमय अमृतमय पुरूष है ओर जो यह्‌ अध्यात्म रेतस तेजोमय अमृतमय पुरुष है, यही वह है जो कि यह्‌ आत्मा हैः  इस",
-          "science": "मधु कायम्‌; साच्वव मधु यथैको मध्वपू पोऽनेकैमेधुकर- पृथिव्यां तेजोभयधिन्मा्नप्रकाश- क्योंकि ब्रह्मका ज्ञान होनेसे स्वरूप ये जल समस्त भृतोके मधु हँ गौर समस्त भ…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -2016,8 +1868,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca katibhirayamadya brahmā yajñaṃ dakṣiṇato devatābhirgopāyatītyekayeti | katamā saiketi | mana evetyanantaṃ vai mano ṃantā viśve devā anantameva sa tena lokaṃ jayati ||",
           "translation": "'Yâgñavalkya,' he said, 'with how many deities does the Brahman priest on the right protect to-day this sacrifice?'",
           "explanation": "Sense: 'Yâg&ntilde;avalkya,' he said, 'with how many deities does the Brahman priest on the right protect to-day this sacrifice?'",
-          "hindi": "तथा आपः । अध्यात्मं  इनी प्रकार जल मधु है। । अध्यात्म (ल रीरके अन्तगंत) रेतसू्मे रेतस्यपां व्रिशेषतोऽवस्थानम्‌।(२।।। जलकी विोषरूपसे स्थिति है यह्‌ अग्नि समस्त भूतोका मधु है ओर समस्त भूत इस अग्निके मधु ह । इस अग्निम जो यह्‌ तेजोमय अमृतमय पुरुष है ओर जो यह्‌ अध्यात्म वाङ्मय तेजोमय अमृतमय पृरूष है, यही वह है जो कि यह आत्मा ल तथा श्रधनिः । बाचि ्रगनेवि-  इसी प्रकार अग्नि मधु हे । वाणीम अग्तिकी विशेषरूपसे स्थिति",
-          "science": "तथा आपः। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -2033,8 +1883,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca katyayamadyodgātā'sminyajñe stotriyāḥ stoṣyatīti | tisra iti | katamāstāstisra iti | puronuvākyā ca yājyā ca śasyaiva tṛtīyā katamāstā yā adhyātmamiti | prāṇa eva puronuvākyā'pāno yājyā vyānaḥ śasyā | kiṃ tābhirjayatīti | pṛthivīlokameva puronuvākyayā jayatyantarikṣalokaṃ yājyayā dyulokam̐ śasyayā tato ha hotā'śvala upararāma ||",
           "translation": "'Yâgñavalkya,' he said, 'how many Stotriyâ hymns will the Udgâtri priest employ to-day at this sacrifice?'",
           "explanation": "Sense: 'Yâg&ntilde;avalkya,' he said, 'how many Stotriyâ hymns will the Udgâtri priest employ to-day at this sacrifice?'",
-          "hindi": "यह वायु समस्त भृतोका मधु है ओर समस्त भूत इस वायुके मधु हं । इस वायुम जो यह्‌ तेजोमय अग्रतमय पृरष है ओर जो यह अध्यात्म- अश्तमय पुरुष टे, यहो वहै जो कि \"वह आत्मा है इस तथा वरुः  अध्यात्मं  इसी प्रकार वाध सधु हे।  अध्यात्ममधु प्राण है। प्राणियोकि  शरीरोके आरम्भकरूपसे उनका ब्रह्मेद्‌  सर्वम्‌ ।॥ ५ ।। यह आदित्य समस्त भरतो का मधु है तथा समस्त श्रुत इस आदित्यके मधु है। यह्‌ जो इस आदित्यम ते",
-          "science": "यह वायु समस्त भृतोका मधु है ओर समस्त भूत इस वायुके मधु हं। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -2058,8 +1906,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha hainaṃ jāratkārava ārtabhāgaḥ papraccha | yājñavalkyeti hovāca kati grahāḥ katyatigrahā ityaṣṭau grahā aṣṭāvatigrahā iti ye te'ṣṭau grahā aṣṭāvatigrahāḥ katame ta iti ||",
           "translation": "Ganaka Vaideha (the king of the Videhas) sacrificed with a sacrifice at which many presents were offered to the priests of (the Asvamedha). Brâhmanas of the Kurus and the Pâñkâlas had come thither, and Ganaka Vaideha wished to know, which of those Brâhmanas was the best read. So he enclosed a thousand cows, and ten pâdas (of gold) were fastened to each pair of horns.",
           "explanation": "Sense: Ganaka Vaideha (the king of the Videhas) sacrificed with a sacrifice at which many presents were offered to the priests of (the Asvamedha). Brâhmanas of the Kurus and the Pâ&ntilde;kâlas had come thither, and Ganaka Vaideha wished to know,…",
-          "hindi": ". तथा आदित्यो मधु । चष्ु- इसी प्रकार आदिल्य मघुहै॥ इसा दिशनः सर्वषां भूतानां मध्वासां दिशा ये दिशां समस्त भूतोका मधु हँ तथा समस्त भूत इन दिशाओके मधु है । यह जौ इन दिशाओमें तेजोमय अमृतमय पुरुष है ओर जो यह्‌ तथा दिक्षो मधु। दिशां इष प्रकार दिशं मधु हं। । यद्यपि श्रोत्र दिजशाओंका अध्यात्म  परिणाम है तो भी शब्दश्रवणके",
-          "science": ". तथा आदित्यो मधु। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2075,8 +1921,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "prāṇo vai grahaḥ | so'pānenātigrāheṇa gṛhīto'pānena hi gandhāñjighrati ||",
           "translation": "'Prâna (breath) is one Graha, and that is seized by Apâna (down-breathing) as the Atigrâha , for one smells with the Apâna.'",
           "explanation": "Sense: And Ganaka spoke to them: 'Ye venerable Brâhmanas, he who among you is the wisest, let him drive away these cows.' Then those Brâhmanas durst not, but Yâg&ntilde;avalkya said to his pupil: 'Drive them away, my dear.' He replied: 'O glory of the Sâman ' and drove them away.…",
-          "hindi": "यय वृहदारण्यकोपनिंषद्‌ अध्याय २ यहं चन्द्रमा समस्त भूर्तोका मघु है ओर समस्त मूत इस चन्द्रमाके मधु हं । यह जो इस चन्द्रमामे तेजोमय अमरतमय पुरुष है ओर जो यह्‌ अध्यात्म मनःसम्बन्धी तेजोमय अमृतमय पुरुष है यही वह है जो कि यह्‌ तथा चन्द्रः । अध्यात्मं  इसी प्रकार चन्द्रमा मधु है। मान्तः । ७   यहां अध्यात्म मानस पुरुष है ।",
-          "science": "यय वृहदारण्यकोपनिंषद्‌ अध्याय २ यहं चन्द्रमा समस्त भूर्तोका मघु है ओर समस्त मूत इस चन्द्रमाके मधु हं। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2092,8 +1936,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "vāgvai grahaḥ | sa nāmnātigrāheṇa gṛhīto vācā hi nāmānyabhivadati ||",
           "translation": "'Speech (vâk) is one Graha, and that is seized by name (nâman) as the Atigrâha, for with speech one pronounces names.",
           "explanation": "Sense: 'Speech (vâk) is one Graha, and that is seized by name (nâman) as the Atigrâha, for with speech one pronounces names.",
-          "hindi": "यह विद्युत्‌ समस्त भूतोका मधरु है ओर समस्त भृत इस विद्युुके मधु हं । यह जो इस विदयुतूमे तेजोमय अमृतमय पुरुषै ओर जो यह्‌ अध्यात्म तेजस तेजोमय अमृतमय पुरुष हे, यही वह दहै जौ कि । तथा षद्युत्‌ । त्वक्तंजसि मव-  इसी पकार विद्युत्‌ सधु है । व्वचाके तेजमे रहतेवाला तैजस बराह्मण ५ शाङ्करभाष्याथं ४५८९ यह मेव समस्त मूतोंका मधु है तथा समस्त मूत इस मषक मधु हं । यह जो इस मेधमे तेजोमय अमृतमय पुरुष हं ओर जो यह्‌ अध्यात्म",
-          "science": "यह विद्युत्‌ समस्त भूतोका मधरु है ओर समस्त भृत इस विद्युुके मधु हं। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2109,8 +1951,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "jihvā vai grahaḥ | sa rasenātigrāheṇa gṛhīto jihvayā hi rasānvijānāti ||",
           "translation": "'The tongue is one Graha, and that is seized by taste as the Atigrâha, for with the tongue one perceives tastes.'",
           "explanation": "Sense: 'The tongue is one Graha, and that is seized by taste as the Atigrâha, for with the tongue one perceives tastes.'",
-          "hindi": "अयमाकाशः सर्वेषां भूतानां मध्वस्याकारास्य सर्वाणि भूतानि मधु यक््चायमस्मिन्नाकाशे तेजोमयो- यह आकाश समस्त भूतोका मधु है तथा समस्त भूत इस आकालके मधु है । यह जो इस आकाशम तेजोमय अमृतमय पुरुष दे ओर जो यह्‌ अध्यात्म हृदयाकाशरूप तेजोमय अमृतमय पुरुष दे, यही वह हैजो कि ४५९० बृहदारण्यकोपनिषद्‌ अध्याय्‌ २ तथा आकाशः । च्रष्यात्सं  इसी प्रकार आकाल मधु है।",
-          "science": "अयमाकाशः सर्वेषां भूतानां मध्वस्याकारास्य सर्वाणि भूतानि मधु यक््चायमस्मिन्नाकाशे तेजोमयो- यह आकाश समस्त भूतोका मधु है तथा समस्त भूत इस आकालके मधु है। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2126,8 +1966,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "cakṣurvai grahaḥ | sa rūpeṇātigrāheṇa gṛhītaścakṣuṣā hi rūpāṇi paśyati ||",
           "translation": "'The eye is one Graha, and that is seized by form as the Atigrâha, for with the eye one sees forms.'",
           "explanation": "Sense: 'The eye is one Graha, and that is seized by form as the Atigrâha, for with the eye one sees forms.'",
-          "hindi": "श्माकाशान्ताः प्रथिव्यादयो पृथिवीसे लेकर आकाशपयंन्त (9 देवगण उपकार करनेके कारण स्वातात्मान उद्डनन्ता मधरु  प्रत्येक देहधारीके लिये मधु होते अयं धमः-अयम्‌' इत्यप्रत्य-  यह धमं मधु है । अयम्‌\" (यह्‌) । इस पदका प्रयोग प्रत्यक्ष वस्तुक  = .  लिये होता है, यद्यपि धमं प्रत्यक्ष  ४९२ . बृहदारण्यकोपनिषद्‌  अध्याय २",
-          "science": "श्माकाशान्ताः प्रथिव्यादयो पृथिवीसे लेकर आकाशपयंन्त (9 देवगण उपकार करनेके कारण स्वातात्मान उद्डनन्ता मधरु प्रत्येक देहधारीके लिये मधु होते अयं धमः-अयम्‌' इत्…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2143,8 +1981,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "śrotraṃ vai grahaḥ | sa śabdenātigrāheṇa gṛhītaḥ śrotreṇa hi śabdāñśṛṇoti |",
           "translation": "'The ear is one Graha, and that is seized by sound as the Atigrâha, for with the ear one hears sounds.'",
           "explanation": "Sense: 'The ear is one Graha, and that is seized by sound as the Atigrâha, for with the ear one hears sounds.'",
-          "hindi": "यह्‌ सत्य समस्त भूतोका मधु है ओर समस्त भूत इस सत्यके मधु- हँ । यह जो इस सत्यमे तेजोमय अम्रृतमय पुरूष है ओर जो यह्‌ अध्यात्म सत्यसम्बन्धी तेजोमय अमृतमय पुरुष है, यही वह है जो कि यह्‌ आत्मा एव धेः । सोऽपि द्विप्रकार एव विशेषरूपः कायकरणसङ्कातसम- ध्यात्मं कायकरणसङ्कतसमवेते इसी प्रकार वही धमं दष्ट- अनुष्टीयमान यानी आचाररूपसे सत्य संज्ञावाला होता हे। वहभी",
-          "science": "यह्‌ सत्य समस्त भूतोका मधु है ओर समस्त भूत इस सत्यके मधु- हँ। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2168,8 +2004,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "hastau vai grahaḥ | sa karmaṇā'tigrāheṇa gṛhīto hastābhyām̐ hi karma karoti ||",
           "translation": "'The arms are one Graha, and these are seized by work as the Atigrâha, for with the arms one works work.'",
           "explanation": "Sense: 'The arms are one Graha, and these are seized by work as the Atigrâha, for with the arms one works work.'",
-          "hindi": "९ षमंसत्यामभ्यां प्रयुक्तोऽयं का- यहु देदेन्दियसंघातविशेष धमं यकरणसह्घातविशेषः, स॒ येन  ओर सतयदवारा प्रेरित है, यह जिस यह मनुष्यजाति समस्त मूतोका मधु है ओौर समस्त मूत इस मनुष्य- जातिके मधु हँ । यह जो इस मनुष्यजातिमें तेजोमय अमृतमय पुरुष है ओर जो यह्‌ अध्यात्म मानुष तेजोमय अमृतमय पुरुष हे, यहो वह है जो भूतानां मधु । तत्र॒ मादुषादि-  मृतोका मधु हे। वह मनुष्यजाति जातिरपि बाह्या आध्यासिक  भी बाह्य ओर आध्यात्मिक भेदसे चेतयुभयथा निदंशभ।ग्मवति।१३॥ दो तरहक निर्देशवाली है",
-          "science": "९ षमंसत्यामभ्यां प्रयुक्तोऽयं का- यहु देदेन्दियसंघातविशेष धमं यकरणसह्घातविशेषः, स॒ येन ओर सतयदवारा प्रेरित है, यह जिस यह मनुष्यजाति समस्त मूतोका मधु है ओौर स…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2185,8 +2019,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tvagvai grahaḥ | sa sparśenātigrāheṇa gṛhītastvacā hi sparśānvedayata | ityete'ṣṭau grahā aṣṭāvatigrahāḥ ||",
           "translation": "Gârgya said: 'The person that is in the mirror, that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the brilliant.' Whoso adores him thus, he becomes brilliant, his offspring becomes brilliant, and with whomsoever he comes together, he outshines them.",
           "explanation": "Sense: Gârgya said: 'The person that is in the mirror, that I adore as Brahman.' Agâtasatru said to him: 'No, no! Do not speak to me on this. I adore him verily as the brilliant.' Whoso adores him thus, he becomes brilliant, his offspring becomes brilliant,…",
-          "hindi": "यस्तु कायंकरणसङ्घातो माचु- जो भी मनृष्यादि जातिविशिष्ट षादिजातिविशिष्टः मः- देहेन्द्रियसंघात है वह्‌-- र ५९४ बृहदारण्यकोपनिषद्‌  श्रध्याय २ यह्‌ आत्मा(देह) समस्त भतोंका मधु है तथा समस्त भूत इस आत्मा- क मधु है । यह जो इस आत्मार्मे तेजोमय अमृतमय पुरूष है ओर जो यह्‌ आत्मा तेजोमय अमृतमय पुरुष हे, यही वह है जो कि यह आत्मा है' इस श्रयमातमा सर्वषां मृतानां मधु।  यहं आत्मा ( देह ) समस्त नन्वयं शारीरशब्देन निर्दिष्टः शङ्का- कितु यह तो शारीरः शब्दसे बतलाया हआ पृथिवीका",
-          "science": "यस्तु कायंकरणसङ्घातो माचु- जो भी मनृष्यादि जातिविशिष्ट षादिजातिविशिष्टः मः- देहेन्द्रियसंघात है वह्‌-- र ५९४ बृहदारण्यकोपनिषद्‌ श्रध्याय २ यह्‌ आत्मा(देह) सम…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2202,8 +2034,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca yadidam̐ sarvaṃ mṛtyorannaṃ kā svitsā devatā yasyā mṛtyurannamityagnirvai mṛtyuḥ so'pāmannamapa punarmṛtyuṃ jayati ||",
           "translation": "'Yâgñavalkya,' he said, 'everything is the food of death. What then is the deity to whom death is food?'",
           "explanation": "Sense: 'Yâg&ntilde;avalkya,' he said, 'everything is the food of death. What then is the deity to whom death is food?'",
-          "hindi": "ग्रा्माका सर्वाधिपतित्व श्रौर सर्वाश्रयत्वनिरूपण सर्वँ खोकाः सर्व प्राणाः सवं एत आत्मानः समपिंताः। १५ वह्‌ यहं आत्मा समस्त मृतोका अधिपति एवं समस्त भूतोका राजा यस्मिन्नार्मनि परिशिशे विज्ञा जिसका पहलेके पर्यायोमें उप- नमयोऽन्त्ये पर्याये प्रवेशितः,  मयका अन्तिम पर्यायमे जिस आत्मामं प्रवेश कराया गया है, .स॒रण करनेवाले ह, वे हौ अविद्या- कापार पतेहंओौर वे ही इस, अतः उनमें जो. श्रुति",
-          "science": "ग्रा्माका सर्वाधिपतित्व श्रौर सर्वाश्रयत्वनिरूपण सर्वँ खोकाः सर्व प्राणाः सवं एत आत्मानः समपिंताः। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2219,8 +2049,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca yatrāyaṃ puruṣo mriyata udasmātprāṇāḥ krāmantyaho3 neti neti hovāca yājñavalkyo'traiva samavanīyante sa ucchvayatyādhmāyati ādhmāto mṛtaḥ śete ||",
           "translation": "'Three,' replied Yâgñavalkya. 'And what are these three?' 'Those which are called Puronuvâkyâ, Yâgyâ, and, thirdly, Sasyâ.' 'And what are these with regard to the body (adhyâtmam)?' 'The Puronuvâkyâ is Prâna (up-breathing), the Yâgyâ the Apâna (down-breathing), the Sasyâ the Vyâna (back-breathing).' 'What does he gain by them?' 'He gains the earth by the Puronuvâkyâ, the sky by the Yâgyâ, heaven by the Sasyâ.' After that Asvala held his peace.",
           "explanation": "Sense: 'Three,' replied Yâg&ntilde;avalkya. 'And what are these three?' 'Those which are called Puronuvâkyâ, Yâgyâ, and, thirdly, Sasyâ.' 'And what are these with regard to the body (adhyâtmam)?' 'The Puronuvâkyâ is Prâna (up-breathing), the Yâgyâ the Apâna (down-breathing),…",
-          "hindi": "दध्यङ्डाथवंणद्रारा प्रहिवनीकूमारोको मधुविद्याके उपदेशकी भ्राख्यायिका परिसमाप्ता ब्रह्मविद्याग्रतल- उस इस्त मधुको दध्यङ्डाथरववंण ऋषिते अधिनीकुमारोसे कहा था । इस मधुको देखते हुए ऋषि ( मन्त्र ) ने कहा - ेष जिस प्रकार वृष्टि करता है, उसी प्रकार हेनराकार अश्चिनीकुमारो ! मै लाभके लिये कयि हुए “इदम्‌' यह पद पीछे बतलाये हए 5 । विषयका समीपस्थ वस्तुकी भांति दिशति, इद्धौ सनिहितलात्‌ । । निर्दल करता है; क्योंकि वह बुद्धिमें",
-          "science": "दध्यङ्डाथवंणद्रारा प्रहिवनीकूमारोको मधुविद्याके उपदेशकी भ्राख्यायिका परिसमाप्ता ब्रह्मविद्याग्रतल- उस इस्त मधुको दध्यङ्डाथरववंण ऋषिते अधिनीकुमारोसे कहा था। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2236,8 +2064,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca yatrāyaṃ puruṣo mriyate kimenaṃ na jahātīti | nāmetyanantaṃ vai nāmānantā viśve devā anantameva sa tena lokaṃ jayati ||",
           "translation": "'Yâgñavalkya,' he said, 'when such a man dies, what does not leave him?'",
           "explanation": "Sense: 'Yâg&ntilde;avalkya,' he said, 'when such a man dies, what does not leave him?'",
-          "hindi": "शङ्का-कितु ये दोनों मन्त्र अच्िनीकरुमारोको स्तुतिके लिये केसेटो सक्ते दहै ये तो उनकी ६०८ बृहदारण्यकोपनिषद्‌  अध्याय २ उस इस मधुका दध्यङ्काथवंणने अश्चिनीकुमारोको उपदेश किया ।  इसे देखते हए ऋषि ( मन्तदर्टा ) ने कहा है-ह अधिनीकुमारो ! तुम किया हुजा सत्य था, उसका पालन करनेके लिये । यह इस वातका सुचक टे कि सत्यधसंका पालन",
-          "science": "शङ्का-कितु ये दोनों मन्त्र अच्िनीकरुमारोको स्तुतिके लिये केसेटो सक्ते दहै ये तो उनकी ६०८ बृहदारण्यकोपनिषद्‌ अध्याय २ उस इस मधुका दध्यङ्काथवंणने अश्चिनीकुमारो…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2253,8 +2079,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca yatrāsya puruṣasya mṛtasyāgniṃ vāgapyeti vātaṃ prāṇaścakṣurādityaṃ manaścandraṃ diśaḥ śrotraṃ pṛthivīm̐ śarīramākāśamātmauṣadhīrlomāni vanaspatīnkeśā apsu lohitaṃ ca retaśca nidhīyate kvāyaṃ tadā puruṣo bhavatītyahara saumya hastaṃ ārtabhāgeti hovā''cāvāmevaitasya vediṣyāvo na nāvetatsajana iti | tau hotkramya mantrayāṃ cakrāte tau ha yadūcatuḥ karma haiva tadūcaturatha ha yatpraśam̐satuḥ karma haiva tat praśam̐satuḥ puṇyo vai puṇyena karmaṇā bhavati pāpaḥ pāpeneti | tato ha jāratkārava ārtabhāga upararāma ||",
           "translation": "'Yâgñavalkya,' he said,' when the speech of this dead person enters into the fire , breath into the air, the eye into the sun, the mind into the moon, the hearing into space, into the earth the body, into the ether the self, into the shrubs the hairs of the body, into the trees the hairs of the head, when the blood and the seed are deposited in the water, where is then that person?' Yâgñavalkya said: 'Take my hand, my friend. We two alone shall know of this; let this question of ours not be (discussed) in public.' Then these two went out and argued, and what they said was karman (work), what they praised was karman , viz. that a man becomes good by good work, and bad by bad work. After that Gâratkârava Ârtabhâga held his peace.",
           "explanation": "Sense: 'Yâg&ntilde;avalkya,' he said,' when the speech of this dead person enters into the fire , breath into the air, the eye into the sun, the mind into the moon, the hearing into space, into the earth the body, into the ether the self, into the shrubs the hairs of the body,…",
-          "hindi": "उस इस मधुका दध्यङ्डायवंणने अश्धिनीकरुमारोको उपदेशा किया । इसे देखते हए ऋषिने कहा--परमात्माने दो पैयोंबाले शरीर बनाये ओर चार पैरोबाले शरीर बनाये । पहले वह्‌ पुरुष पक्षी हौकर शरीरो प्रविष्ट का अथं पूववत्‌ है। उपयुक्त दो सन्त्र प्रव्यंसम्बन्धी आख्यायिकाका न्ष्याख्यायिकोपसंहर्ताये। द्योः  उपसंहार करनेवाले है । परवग्यकमं ६१२ बृहदारण्यकोपनिषद्‌  अध्याय २ उस इस मधुका दध्यङ्डाथवंणने अधिनीकूमारोको उपदेश किया । यह देखते हुए ऋषिने कहा- वह रूप-रूपके प्रतिरूप हो गया । इसका",
-          "science": "उस इस मधुका दध्यङ्डायवंणने अश्धिनीकरुमारोको उपदेशा किया। आहार, निद्रा और इंद्रिय-भार शरीर की स्थिति को सीधे बदलते हैं। यह पंक्ति उस शारीरिक आधार को छोड़कर नहीं चलती।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Artabhaga",
@@ -2278,8 +2102,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha hainaṃ bhujyurlāhyāyaniḥ papraccha | yājñavalkyeti hovāca madreṣu carakāḥ paryavrajāma te patañcalasya kāpyasya gṛhānaima | tasyā''sīd duhitā gandharvagṛhītā tamapṛcchāma ko'sīti | so'bravīt sudhanvā''ṅgirasa iti | taṃ yadā lokānāmantānapṛcchāmāthaitadathainamabrūma kva pārikṣitā abhavanniti kva pārikṣitā abhavan sa tvā pṛcchāmi yājñavalkya kva pārikṣitā abhavanniti ||",
           "translation": "Then Gâratkârava Ârtabhâga asked. 'Yâgñavalkya,' he said, 'how many Grahas are there, and how many Atigrahas ?'",
           "explanation": "Sense: Then Gâratkârava Ârtabhâga asked. 'Yâgñavalkya,' he said, 'how many Grahas are there, and how many Atigrahas ?'",
-          "hindi": "रूपं रूपं प्रतिरूपो यभव ! रूपं  का अथं पूववत्‌ द । रूप-रूपके 1  .  प्रतिरूप हो गया अर्थात्‌ रूप-रूपके २ ६ ८. रूपान्तर  प्रति उसीके समान अन्य रूपवाला सषुविद्याकी सम्प्रदायपरम्परा पोतिमाप्यात्योतिमाष्यो गोपनादरोपननः कोञ्चिका- त्कोशिकः कोण्डिन्यात्कोण्डिन्यः दणण्डिल्याच्छाण्डि- वेरयादाभ्िवेरयः शाण्डिस्याच्चानभिम्काताच्चान- तादानभिम्खातो गोतमाद्रौतमः सेतवषाचीनयोग्या- भ्या  सेतवघ्राचीनयोग्यो पाराशर्यात्पाराशयो भार",
-          "science": "रूपं रूपं प्रतिरूपो यभव ! रूपं का अथं पूववत्‌ द। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Bhujyu",
@@ -2295,8 +2117,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovācovāca vai so'gacchanvai te tad yatrāśvamedhayājino gacchantīti | kva nvaśvamedhayājino gacchantīti | dvātrim̐śataṃ vai devarathāhnyānyayaṃ lokastam̐ samantaṃ pṛthivī dvistāvatparyeti tām̐ samantaṃ pṛthivī dvistāvatsamudraḥ paryeti | tadyāvatī kṣurasya dhārā yāvadvā makṣikāyāḥ patraṃ tāvānantareṇā''kāśastān indraḥ suparṇo bhūtvā vāyave prāyacchat tān vāyurātmani dhitvā tatrāgamayadyatra aśvamedhayājino'bhavannityevamiva vai sa vāyumeva praśaśam̐sa tasmādvāyureva vyaṣṭirvāyuḥ samaṣṭirapa punarmṛtyuṃ jayati ya evaṃ veda | tato ha bhujyurlāhyāyanirupararāma ||",
           "translation": "Yâgñavalkya said: 'He said to thee, I suppose, that they went where those go who have performed a horse-sacrifice.' He said: 'And where do they go who have performed a horse-sacrifice?' Yâgñavalkya replied: 'Thirty-two journeys of the car of the sun is this world. The earth surrounds it on every side, twice as large, and the ocean surrounds this earth on every side, twice as large. Now there is between them a space as large as the edge of a razor or the wing of a mosquito. Indra, having become a bird, handed them (through the space) to Vâyu (the air), and Vâyu (the air), holding them within himself, conveyed them to where they dwell who have performed a horse-sacrifice. Somewhat in this way did he praise Vâyu indeed. Therefore Vâyu (air) is everything by itself, and Vâyu is all things together. He who knows this, conquers death.' After that Bhugyu Lâhyâyani held his peace.",
           "explanation": "Sense: 'Prâna (breath) is one Graha, and that is seized by Apâna (down-breathing) as the Atigrâha , for one smells with the Apâna.'",
-          "hindi": "अन मधुकराण्डका वंडा बतलाया जाता हे-पौतिमाष्यने गौपवनसे, गौोपवनने पोतिमाष्यसे, पौतिमाष्यने गौपवनसे, गौपवनने कौशिकसे, कोरिकने कोष्डिन्यसे, कौण्डिन्यते शाण्डिल्यसे, शाण्डिल्यने कौरिकसे ओर गौतमसे, से, घृतकोशिकने पराशर्यायणसे, पाराशर्यायणने पाराशयंसे, पाराशय॑ने जातुकण्यंसे, जातुकरण्य॑ने जासु रायणसे ओर यास्कसे, आसुरायणने ्रैवणिसे, त्रैवणिने ओौपजन्यनिसे, ओपजन्धनिते आसुरि, आसुरिने भारद्वाजसे, अथेदानीं ्रह्मविद्याथेस्य सधु-  अव बरह्विद्याकी स्तुतिके लिये काण्डस्य वंशः स्तुत्यो ब्ह्- रह्मविा ५. प्रयोजन ह, उस = ; सव्या.  मधुकाण्डका वंश बतलाया जाता",
-          "science": "अन मधुकराण्डका वंडा बतलाया जाता हे-पौतिमाष्यने गौपवनसे, गौोपवनने पोतिमाष्यसे, पौतिमाष्यने गौपवनसे, गौपवनने कौशिकसे, कोरिकने कोष्डिन्यसे, कौण्डिन्यते शाण्डिल्…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Bhujyu",
@@ -2320,8 +2140,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha hainamūṣastaścākrāyaṇaḥ papraccha | yājñavalkyeti hovāca yatsākṣādaparokṣādbrahma ya ātmā sarvāntarastaṃ me vyācakṣvetyeṣa ta ātmā sarvāntaraḥ | katamo yājñavalkya sarvāntaro | yaḥ prāṇena prāṇiti sa ta ātmā sarvāntaro yo'pānenāpāniti sa ta ātmā sarvāntaro yo vyānena vyāniti sa ta ātmā sarvāntaro ya udānenodāniti sa ta ātmā sarvāntara eṣa ta ātmā sarvāntaraḥ ||",
           "translation": "Then Ushasta Kâkrâyana asked. 'Yâgñavalkya,' he said, 'tell me the Brahman which is visible, not invisible , the Self (âtman), who is within all.' Yâgñavalkya replied: 'This, thy Self, who is within all.'",
           "explanation": "Sense: Then Ushasta Kâkrâyana asked. 'Yâgñavalkya,' he said, 'tell me the Brahman which is visible, not invisible , the Self (âtman), who is within all.' Yâgñavalkya replied: 'This, thy Self, who is within all.'",
-          "hindi": "श्रीमच्ङ्करभगवतः कृतौ च्रहदारण्यकोपनिषद्‌माष्ये “जनकौ ह वैदेहः” इत्यादि  अव जनको ह वैदेहः\" इत्यादि याज्ञवल्कीय काण्ड आरम्भ कियां जनका नाम ह क्रिल सम्रा- वा॒द्क्तिणाबाहुल्याद्वहुदक्निण दशंनकामा वा ह्गरूणां देशानां याज्ञवल्क्यका गौए ले जानेके लिये श्रपने शिष्यको श्राज्ञा देना याज्ञवल्कयःस्वमेव ब्रह्मचारिणसुवाचेताः सोभ्योदज सास रवार इतिता होदाचकार ते ह बाह्यणाषचुक्धुः कथं नो",
-          "science": "श्रीमच्ङ्करभगवतः कृतौ च्रहदारण्यकोपनिषद्‌माष्ये “जनकौ ह वैदेहः” इत्यादि अव जनको ह वैदेहः\" इत्यादि याज्ञवल्कीय काण्ड आरम्भ कियां जनका नाम ह क्रिल सम्रा- वा॒द्…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Ushasta",
@@ -2337,8 +2155,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovācoṣastaścākrāyaṇaḥ yathā vibrūyādasau gaurasāvaśva ityevamevaitadvyapadiṣṭaṃ bhavati | yadeva sākṣādaparokṣād brahma ya ātmā sarvāntaraḥ taṃ me vyācakṣveti | eṣa ta ātmā sarvāntaraḥ | katamo yājñavalkya sarvāntaro | na dṛṣṭerdraṣṭāraṃ paśyerna śruteḥ śrotāram̐ śṛṇuyā na matermantāraṃ manvīthā na vijñātervijñātāraṃ vijānīyā eṣa ta ātmā sarvāntaro'to'nyadārtaṃ tato hoṣastascākrāyaṇa upararāma ||",
           "translation": "Ushasta Kâkrâyana said: 'As one might say, this is a cow, this is a horse, thus has this been explained by thee. Tell me the Brahman which is visible, not invisible, the Self, who is within all.' Yâgñavalkya replied: 'This, thy Self, who is within all.'",
           "explanation": "Sense: Ushasta Kâkrâyana said: 'As one might say, this is a cow, this is a horse, thus has this been explained by thee. Tell me the Brahman which is visible, not invisible, the Self, who is within all.' Yâg&ntilde;avalkya replied: 'This, thy Self, who is within all.'",
-          "hindi": "उसने उनसे कहा--शृज्य ब्राह्मणगण ! आपमे जो ब्रहि्ठ हो वह सल गौ्ोको ले जाय । कितु उन ब्राह्मणोका साहस न हृजा । त ाजिवल्क्यन अपन ही ब्रह्मचारीसे कहा, है सोम्य सामश्नवा  तु इन्हले गा एवमवकर्ष्य ब्राह्मणां- स्तान्‌ होवाच है बराह्मणा भगवन्त बदिष्ठः, सर्वे युयं ब्रह्माणोऽति- मृतद्रस्त कमंसाधनोकी भ्रासक्तिसे पार पानेका उपाय सव स्॒स्युनाभिपन्नं केन यजमानो सरत्याराक्षिमतिमुच्यत वध्रसोऽयमभिः स होता सुक्तिः सातिमुक्तिः",
-          "science": "उसने उनसे कहा--शृज्य ब्राह्मणगण ! आपमे जो ब्रहि्ठ हो वह सल गौ्ोको ले जाय। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Ushasta",
@@ -2362,8 +2178,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha hainaṃ kaholaḥ kauṣītakeyaḥ papraccha papraccha yājñavalkyeti hovāca yadeva sākṣādaparokṣādbrahma ya ātmā sarvāntarastaṃ me vyācakṣvetyeṣa ta ātmā sarvāntaraḥ | katamo yājñavalkya sarvāntaro | yo'śanāyāpipāse śokaṃ mohaṃ jarāṃ mṛtyumatyetyetaṃ vai tamātmānaṃ viditvā brāhmaṇāḥ putraiṣaṇāyāśca vittaiṣaṇāyāśca lokaiṣaṇāyāśca vyutthāyātha bhikṣācaryaṃ caranti | yā hyeva putraiṣaṇā sā vittaiṣaṇā yā vittaiṣaṇā sā lokaiṣaṇobhe hyete eṣaṇe eva bhavatastasmādbrāhmaṇaḥ pāṇḍityaṃ nirvidya bālyena tiṣṭhāset | bālyaṃ ca pāṇḍityaṃ ca nirvidyātha muniramaunaṃ ca maunaṃ ca nirvidyātha brāhmaṇaḥ | sa brāhmaṇaḥ kena syād yena syāt tenedṛśa evāto'nyadārtam | ya evaṃ veda evāto'nyadārtam | tato ha kaholaḥ kauṣītakeya upararāma ||",
           "translation": "Then Kahola Kaushîtakeya asked. 'Yâgñavalkya, 'he said, 'tell me the Brahman which is visible, not invisible, the Self (Âtman), who is within all.' Yâgñavalkya replied: 'This, thy Self, who is within all.'",
           "explanation": "Sense: Then Kahola Kaushîtakeya asked. 'Yâgñavalkya, 'he said, 'tell me the Brahman which is visible, not invisible, the Self (Âtman), who is within all.' Yâgñavalkya replied: 'This, thy Self, who is within all.'",
-          "hindi": "दे याज्ञवल्क्य !' एेसा अश्वलने कहा, यह्‌ सव जो मृत्युस व्याप्त ह मृत्यद्ारा स्वाधीन क्रिया हुजा है, उस मृत्यु व्याप्तिका यजमान किस सावनसे अतिक्रमण करता है ?  इसपर यान्चवत्वयने कहा-- \"वह्‌ याज्ञवल्क्येति होवाच । तत्र  है याज्ञवत्कय !' एेसा अश्वलने  = 8 कटा) तहां गत मधुकाण्डे जो १ 1 अ १ उदुगीथप्रकरण है, उसमे दशन प्रहोरात्रादिरूप कालसे ग्रतिमुक्तिका साधन माप्त  सवंमहोरात्राभ्यामभिपन्नं केन यजसमानाऽहा-",
-          "science": "दे याज्ञवल्क्य !' एेसा अश्वलने कहा, यह्‌ सव जो मृत्युस व्याप्त ह मृत्यद्ारा स्वाधीन क्रिया हुजा है, उस मृत्यु व्याप्तिका यजमान किस सावनसे अतिक्रमण करता है ?…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Kahola",
@@ -2387,8 +2201,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha hainaṃ gārgī vācaknavī papraccha yājñavalkyeti hovāca yadidam̐ sarvamapsvotaṃ ca protaṃ ca kasminnu khalvāpa otāśca protāśceti | vāyau gārgīti | kasminnu khalu vāyurotaśca protaścetyantarikṣalokeṣu gārgīti | kasminnu khalvantarikṣalokā otāśca protāśceti | gandharvalokeṣu gārgīti | kasminnu gandharvalokā otāśca protāścetyādityalokeṣu gārgīti | kasmin nu khalvādityalokā otāśca protāśceti | candralokeṣu gārgīti | kasminnu khalu candralokā otāśca protāśceti | nakṣatralokeṣu gārgīti | kasminnu khalu nakṣatralokā otāśca protāśceti | devalokeṣu gārgīti | kasminnu khalu devalokā otāśca protāśceti indralokeṣu gārgīti | kasminnu khalvindralokā otāśca protāśceti | prajāpatilokeṣu gārgīti | kasminnu khalu prajāpatilokā otāśca protāśceti | brahmalokeṣu gārgīti | kasminnu khalu brahmalokā otāśca protāśceti | sa hovāca gārgi mātiprākṣīrmā te mūrdhā vyapaptadanatipraśnyāṃ vai devatāmatipṛcchasi | gārgi mā'tiprākṣīriti | tato ha gārgī vācaknavyupararāma ||",
           "translation": "Then Gârgî Vâkaknavî asked. 'Yâgñavalkya,' she said, 'everything here is woven, like warp and woof, in water. What then is that in which water is woven, like warp and woof?'",
           "explanation": "Sense: Then Gârgî Vâkaknavî asked. 'Yâgñavalkya,' she said, 'everything here is woven, like warp and woof, in water. What then is that in which water is woven, like warp and woof?'",
-          "hindi": "हे याज्ञवल्य ' प्रा अश्वलने कहा, यह्‌ जौ कुह, सब दिन ओर रात्रिसे व्याप्त हि, सब दिन ओर रात्रिके अधीन है। तब किस साधन- के द्वारा यजमान दित ओर रात्रिकीव्याप्तिकरा अतिक्रमण कर सकता हे? माषिकादज्ञानासङ्गपरयक्तत्‌ कमं- कहा । स्वाभाविक भज्ञानजनित लां आसक्तिसे होनेवाले क्म॑रूप सृत्युसे र अतिमुक्तिकी व्याख्या कर दी गयी तिथ्यादिरूप कालसे ग्रतिमुक्तिका साधन इदानीं तिथे पादिलक्षण(दति-  . अब तिथ्यादिषूप कालसे अति- युक्तिरुच्यते- । मुक्ति बतलायी जाती है--",
-          "science": "हे याज्ञवल्य ' प्रा अश्वलने कहा, यह्‌ जौ कुह, सब दिन ओर रात्रिसे व्याप्त हि, सब दिन ओर रात्रिके अधीन है। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Gargi",
@@ -2412,8 +2224,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha hainamūddālaka āruṇiḥ papraccha yājñavalkyeti hovāca madreṣvavasāma patañcalasya kāpyasya gṛheṣu yajñamadhīyānāstasyā''sīdbhāryā gandharvagṛhītā | tamapṛcchāma ko'sīti | so'bravīt kabandha ātharvaṇa iti | so'bravītpatañcalaṃ kāpyaṃ yājñikām̐śca vettha nu tvaṃ kāpya tatsūtraṃ yenāyaṃ ca lokaḥ paraśca lokaḥ sarvāṇi ca bhūtāni sandṛbdhāni bhavantīti | so'bravītpatañcalaḥ kāpyo nāhaṃ tad bhagavan vedeti | so'bravīt patañcalaṃ kāpyaṃ yājñikām̐ścaḥ vettha nu tvaṃ kāpya tamantaryāmiṇaṃ ya imaṃ ca lokaṃ paraṃ ca lokam̐ sarvāṇi ca bhūtāni yo'ntaro yamayatīti | so'bravīt patañcalaḥ kāpyo nāhaṃ taṃ bhagavan vedeti | so'bravīt patañcalaṃ kāpyaṃ yājñikām̐śca yo vai tat kāpya sūtraṃ vidyāttaṃ cāntaryāmiṇamiti sa brahmavit sa lokavit sa devavit sa vedavit sa bhūtavit sa ātmavit sa sarvaviditi tebhyo'bravīt tadahaṃ veda | taccettvaṃ yājñavalkya sūtramavidvām̐staṃ cāntaryāmiṇaṃ brahmagavīrudajase mūrdhā te vipatiṣyatīti | veda vā ahaṃ gautama tatsūtraṃ taṃ cāntaryāmiṇamiti | yo vā idaṃ kaścidbrūyāt veda vedeti | yathā vettha tathā brūhīti ||",
           "translation": "Then Uddâlaka Âruni asked. 'Yâgñavalkya,' he said, 'we dwelt among the Madras in the houses of Patañkala Kâpya, studying the sacrifice. His wife was possessed of a Gandharva, and we asked him: \"Who art thou?\" He answered: \"I am Kabandha Âtharvana.\" And he said to Patañkala Kâpya and to (us) students: \"Dost thou know, Kâpya, that thread by which this world and the other world, and all beings are strung together?\" And Patañkala Kâpya replied: \"I do not know it, Sir.\" He said again to Patañkala Kâpya and to (us) students: \"Dost thou know, Kâpya, that puller (ruler) within (antaryâmin), who within pulls (rules) this world and the other world and all beings?\" And Patañkala Kâpya replied: \"I do not know it, Sir.\" He said again to Patañkala Kâpya and to (us) students: \"He, O Kâpya, who knows that thread and him who pulls (it) within, he knows Brahman, he knows the worlds, he knows the Devas, he knows the Vedas, he knows the Bhûtas (creatures), he knows the Self, he knows everything.\" Thus did he (the Gandharva) say to them, and I know it. If thou, O Yâgñavalkya, without knowing that string and the puller within, drivest away those Brahma-cows (the cows offered as a prize to him who best knows Brahman), thy head will fall off.' Yâgñavalkya said: 'O Gautama, I believe I know that thread and the puller within.' The other said: 'Anybody may say, I know, I know. Tell what thou knowest.'",
           "explanation": "Sense: Then Gârgî Vâkaknavî asked. 'Yâg&ntilde;avalkya,' she said, 'everything here is woven, like warp and woof, in water. What then is that in which water is woven, like warp and woof?'",
-          "hindi": "(हे याज्ञवल्कय !' एेसा अश्चलने कहा, “यह्‌ जो कुछ है, सब पूर्वपक्ष ओर अपरपक्षसे व्याप्त है; सव पूर्वपक्ष ओर अपरपक्षद्वारा वशमें करिया हा है । किस उपायसे यजमान पूर्वपक्ष ओर अपरपक्षकी व्याप्िसे पार विशिष्टयोरादित्यः कर्ता, न प्रति- लत (५ ई कितु वह प्रतिपदादि तिथियोका पदादीनां तिथीनामू; तासां तु  कर्ता नहीं है; उन प्रतिपदादिकिं परिच्छेदके विषयभूत मृत्मुको पार करनेके भ्राश्चयक्रा वणन साधनद्रयस्य तत्कारणरूपेण मृत्योः फालादतियुक्तिर््या- यजमानकौ मृत्ुरूप कालसे",
-          "science": "(हे याज्ञवल्कय !' एेसा अश्चलने कहा, “यह्‌ जो कुछ है, सब पूर्वपक्ष ओर अपरपक्षसे व्याप्त है; सव पूर्वपक्ष ओर अपरपक्षद्वारा वशमें करिया हा है। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2429,8 +2239,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca vāyurvai gautama tatsūtraṃ vāyunā vai gautama sūtreṇāyaṃ ca lokaḥ paraśca lokaḥ sarvāṇi ca bhūtāni sandṛbdhāni bhavanti | tasmādvai gautama puruṣaṃ pretamāhurvyasram̐siṣatāsyāṅgānīti vāyunā hi gautama sūtreṇa saṃdṛbdhāni bhavantītyevamevaitad yājñavalkyāntaryāmiṇaṃ brūhīti ||",
           "translation": "'In air, O Gârgî,' he replied. 'In what then is air woven, like warp and woof?' 'In the worlds of the sky, O Gârgî, 'he replied. 'In what then are the worlds of the sky woven, like warp and woof?' 'In the worlds of the Gandharvas, O Gârgî,' he replied. 'In what then are the worlds of the Gandharvas woven, like warp and woof?' 'In the worlds of Âditya (sun), O Gârgî,' he replied. 'In what then are the worlds of Âditya (sun) woven, like warp and woof?' 'In the worlds of Kandra (moon), O Gârgî,' he replied. 'In what then are the worlds of Kandra (moon) woven, like warp and woof?' , In the worlds of the Nakshatras (stars), O Gârgî,' he replied. 'In what then are the worlds of the Nakshatras (stars) woven, like warp and woof?' 'In the worlds of the Devas (gods), O Gârgî,' he replied. 'In what then are the worlds of the Devas (gods) woven, like warp and woof?' 'In the worlds of Indra, O Gârgî,' he replied. 'In what then are the worlds of Indra woven, like warp and woof?' 'In the worlds of Pragâpati, O Gârgî,' he replied. 'In what then are the worlds of Pragâpati woven, like warp and woof?' 'In the worlds of Brahman, O Gârgî,' he replied. 'In what then are the worlds of Brahman woven, like warp and woof?' Yâgñavalkya said: 'O Gârgî, Do not ask too much, lest thy head should fall off. Thou askest too much about a deity about which we are not to ask too much . Do not ask too much, O Gârgî.' After that Gargî Vâkaknavî held her peace.",
           "explanation": "Sense: 'In air, O Gârgî,' he replied. 'In what then is air woven, like warp and woof?' 'In the worlds of the sky, O Gârgî, 'he replied. 'In what then are the worlds of the sky woven, like warp and woof?' 'In the worlds of the Gandharvas, O Gârgî,' he replied.…",
-          "hindi": "हि याज्ञवल्क्य ! एसा अश्वलने कहा, यह्‌ जो अन्तरिक्च है, वह निरालम्ब-सा हे। अतः यजमान किस आलम्बनसे स्वलोक चटता है।' इसपर याज्ञवल्क्य कहा--  रह्मा ऋत्विजके दवारा ओर सनरूप चन्द्रमासे यदिदं प्रसिद्धमन्तरिक्तमाकाशः  तत्‌ सवेनाम्ना केनेति पच्यते; कर्मफलं प्रतिपद्यमानः अति- १. भावनादयारा किसी अन्य वस्तुका अन्यमे आरोप करना सम्पद्‌\" कहलाता है। राजसूयादि कर्म॑वहृत द्रव्यसाव्य हैँ तथा उनमेसे प्रत्येक कर्मका समी ्ररवाणकोंको अधिकार भी नहीं है । एसी अवस्थाने जो धनाभाव या अन्य वर्ण॑मे",
-          "science": "हि याज्ञवल्क्य ! एसा अश्वलने कहा, यह्‌ जो अन्तरिक्च है, वह निरालम्ब-सा हे। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2446,8 +2254,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yaḥ pṛthivyāṃ tiṣṭhanpṛthivyā antaro yaṃ pṛthivī na veda yasya pṛthivī śarīraṃ yaḥ pṛthivīmantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "Yâgñavalkya said: 'He who dwells in the earth, and within the earth , whom the earth does not know, whose body the earth is, and who pulls (rules) the earth within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'He who dwells in the earth, and within the earth , whom the earth does not know, whose body the earth is, and who pulls (rules) the earth within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "हे याज्ञवत्वय /' एसा अरवलने कटा, आज कितनी ऋचाओके द्वारा टोता इस यज्ञम शश्च शंसन करेगा ?  याज्ञवल्क्यने कहा- (तीनके हारा ॥ अस्वल-- षे तीन कौन-सी है ? याज्ञवल्क्य 'ुरोनुवाक्या, युखीकरणाय। कतिभिरयमचर्ि अपने अर्मिमुल करनेके लिये कहा । कतिभिरयमद्यगमिहेतास्मिन्‌ यागकालसे पहले प्रयुक्त होती है, वह॒ ऋग्जाति \"पुरोनुवाक्या\" कटी जाती हें । नो ऋचाएं यागके लिये",
-          "science": "हे याज्ञवत्वय /' एसा अरवलने कटा, आज कितनी ऋचाओके द्वारा टोता इस यज्ञम शश्च शंसन करेगा ? याज्ञवल्क्यने कहा- (तीनके हारा ॥ अस्वल-- षे तीन कौन-सी है ? याज्ञवल्क…। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2463,8 +2269,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo'psu tiṣṭhannadbhyo'ntaro yamāpo na viduḥ yasyāpaḥ śarīraṃ yo'po'ntaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the water, and within the water, whom the water does not know, whose body the water is, and who pulls (rules) the water within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the water, and within the water, whom the water does not know, whose body the water is, and who pulls (rules) the water within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "होमसम्बन्धिनी श्राहुतियां ग्रौर उनसे प्राप्र हौनेवाले फल रोकमेव ताभिर्जयति दीप्यत इव हि देवलोको था पितृलोको या हता अधिशेरते मनुष्यरोकमेव ताभिर्ज- हे याज्ञवत्वय ' एसा अश्वलने कहा, जज इस यन्मे यह्‌ अध्वर्यु कितनी आहृतिर्यां होम करेगा !'  याज्ञवल्क्य- (तीन ।'  अद्वल-  धे तीन कौन-कौन-सी है,  यान्ञवल्क्य- “जो होम की जानेपर प्रज्वलित  ति परव है याज्ञवल्क्य !' एेसा अर्वलने यालबन्क्येति होवाचेति ध पुवेवत्‌  अपने अभिमुख करमेके वत्‌ । कत्ययमद्याध्वयुरसिमन्‌  लिये  कहा, आज ध अध्वयुं इस",
-          "science": "होमसम्बन्धिनी श्राहुतियां ग्रौर उनसे प्राप्र हौनेवाले फल रोकमेव ताभिर्जयति दीप्यत इव हि देवलोको था पितृलोको या हता अधिशेरते मनुष्यरोकमेव ताभिर्ज- हे याज्ञवत्…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2480,8 +2284,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo'gnau tiṣṭhannagnerantaro yamagnirna veda yasyāgniḥ śarīraṃ yo'gnimantaro yamayati eṣa ta ātmāntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the fire, and within the fire, whom the fire does not know, whose body the fire is, and who pulls (rules) the fire within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the fire, and within the fire, whom the fire does not know, whose body the fire is, and who pulls (rules) the fire within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "पिदृलोकसे सम्बद्ध संयमनीपुरीमें  यमराजके द्वारा यातना भोगते हृए  जीवोका हाय मरे! छोड । छोड  इसपर ( याज्ञेवल्क्य ) कहते ठ “एकया इति; जिसके द्वारा दक्षिणकी ओर आसनपर बैठकर “हे याज्ञवल्क्य ! एेसा अडइवलने कहा, \"आज इस यज्ञे उद्गाता कितनी स्तोत्रिया ऋऋचवाओंका स्तवन करेगा ?\"  याज्ञवल्क्य- तीनका\"  अस्वल-- वे तीन कौन-सी हैँ ?  याज्ञवल्क्य- पुरोनुवाक्या,",
-          "science": "पिदृलोकसे सम्बद्ध संयमनीपुरीमें यमराजके द्वारा यातना भोगते हृए जीवोका हाय मरे! छोड। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2497,8 +2299,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo'ntarikṣe tiṣṭhannantarikṣādantaro yamantarikṣaṃ na veda yasyāntarikṣam̐ śarīraṃ yo'ntarikṣamantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the sky, and within the sky, whom the sky does not know, whose body the sky is, and who pulls (rules) the sky within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the sky, and within the sky, whom the sky does not know, whose body the sky is, and who pulls (rules) the sky within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "व  ठ भिमुख करनेके लिये  त्‌ स्पात्रियाः स्तीष्यती  कहा, यह उद्गाता कितनी स्तोत्रिया स्यययुहाता । स्तोत्रिया नाम  ऋचा्ओंका स्तवन करेगा ? कि ताभिजंयति' (उनसे किस- पर विजय प्राप्त करता है)- इसकी व्याख्या पहले की जा चुकी है। १. खोकोमे पृथिवीरोक प्रथम है ओर ऋचां पुरोनुवाक्या चाण थम हं । इस रकार श्रथमत्व खूप सम्बन्धकी दोनोमे समानता होनेसे पुरोलुवाक्यासे पृथिवीरोकको ही जीतता है ।",
-          "science": "व ठ भिमुख करनेके लिये त्‌ स्पात्रियाः स्तीष्यती कहा, यह उद्गाता कितनी स्तोत्रिया स्यययुहाता। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2514,8 +2314,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo vāyau tiṣṭhanvāyorantaro yaṃ vāyurna veda yasya vāyuḥ śarīraṃ yo vāyumantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the air (vâyu), and within the air, whom the air does not know, whose body the air is, and who pulls (rules) the air within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the air (vâyu), and within the air, whom the air does not know, whose body the air is, and who pulls (rules) the air within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "यह्‌ अवजरतोय कल्पना  हो जाय ओर आधी जवान रहकर बच्चा देती रहे । असम्भव है, उसी प्रकार कर्मकाण्ड साक्षात्‌ मोक्ष यां अथ हैनम्‌-दशब्द एेति-  प्रकृतं याज्ञवल्क्यं जरत्कारूगोत्रो जारत्काखः-छतमागस्यापत्य- प्राणादि इन्द्रियोका ग्रहत्व श्रौर गन्धादि विषयोका तत्राह-  इसपर याज्ञवल्क्य कहता है - प्राणो वे यहः सोऽपानेनातियाहेण ग्हीतो-",
-          "science": "यह्‌ अवजरतोय कल्पना हो जाय ओर आधी जवान रहकर बच्चा देती रहे। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2531,8 +2329,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo divi tiṣṭhandivo'ntaro yaṃ dyaurna veda yasya dyauḥ śarīraṃ yo divamantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the heaven (dyu), and within the heaven, whom the heaven does not know, whose body the heaven is, and who pulls (rules) the heaven within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the heaven (dyu), and within the heaven, whom the heaven does not know, whose body the heaven is, and who pulls (rules) the heaven within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "६५६ बृहदारण्यकोपनिषद्‌ अध्याय ३ प्राण ही ग्रह है, वह॒ अपानरूप अतिग्राहसे गृहीत हे, क्योंकि प्राण अपानसे ही गन्धोको मु घता हे प्राणो वै ग्रहः प्राण प्राण ही ग्रह है--श्राणः शन्द- से यहाँ घ्राणेद्ध्िय कही गयी है वयोकि उसीका प्रकरण है। वह जिह्वा वै यहः स रसे- ।॥  ॥ चक्षुषे यहः स रूपेणातियाहेण यहीतश्चक्चषा",
-          "science": "६५६ बृहदारण्यकोपनिषद्‌ अध्याय ३ प्राण ही ग्रह है, वह॒ अपानरूप अतिग्राहसे गृहीत हे, क्योंकि प्राण अपानसे ही गन्धोको मु घता हे प्राणो वै ग्रहः प्राण प्राण ही ग…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2548,8 +2344,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ya āditye tiṣṭhannādityādantaro yamādityo na veda yasyā''dityaḥ śarīraṃ ya ādityamantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the sun (Âditya), and within the sun, whom the sun does not know, whose body the sun is, and who pulls (rules) the sun within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the sun (Âditya), and within the sun, whom the sun does not know, whose body the sun is, and who pulls (rules) the sun within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "मनो वे गृहः स कामेनातिगाहेण खहीतो मनसा हि हस्तो वे गहः स कर्मणा- तिगूहेण गृहीतो हस्ताभ्यां हि कर्म करोति ॥ = ॥ बराह्मण २ शाङ्करभाष्याथं ६४७ वाक्‌ ही ग्रह्‌ है, वह्‌ नामरूप अतिग्रह गृहीत है, क्योंकि प्राणी वाकूसे ही नामोका उच्चारण करता है",
-          "science": "मनो वे गृहः स कामेनातिगाहेण खहीतो मनसा हि हस्तो वे गहः स कर्मणा- तिगूहेण गृहीतो हस्ताभ्यां हि कर्म करोति ॥ = ॥ बराह्मण २ शाङ्करभाष्याथं ६४७ वाक्‌ ही ग्रह्‌ ह…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2565,8 +2359,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo dikṣu tiṣṭhandigbhyo'ntaro yaṃ diśo na viduryasya diśaḥ śarīraṃ yo diśo'ntaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the space (disah), and within the space, whom the space does not know, whose body the space is, and who pulls (rules) the space within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the space (disah), and within the space, whom the space does not know, whose body the space is, and who pulls (rules) the space within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "जिह्वा ही ग्रहुहै, वह्‌ रसरूप अतिग्रहसे गृहीत है; क्योंकि प्राणी जिह्वासे ही रसोंको विशेषरूपे जानतादहं॥ ४ चक्षुही ग्रह्‌ है, वह्‌ रूप अतिग्रहुसे गृहीत दहै; क्थोकि श्रोत्र ही ग्रह है, वह शब्दरूप अतिग्रहसे गृहीत है; क्योंकि प्राणी श्रोत्रसे ही शब्दको सुनता है मन ही ग्रह है, वह्‌ कामरूप अतिग्रहसे गृहीत है; क्योंकि प्राणी मनसे ही कामोँकी कामना करताहि",
-          "science": "जिह्वा ही ग्रहुहै, वह्‌ रसरूप अतिग्रहसे गृहीत है; क्योंकि प्राणी जिह्वासे ही रसोंको विशेषरूपे जानतादहं॥ ४ चक्षुही ग्रह्‌ है, वह्‌ रूप अतिग्रहुसे गृहीत दहै; क…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2582,8 +2374,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yaścandratārake tiṣṭham̐candratārakādantaro yaṃ candratārakaṃ na veda yasya candratārakam̐ śarīraṃ yaścandratārakamantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the moon and stars (kandra-târakam), and within the moon and stars, whom the moon and stars do not know, whose body the moon and stars are, and who pulls (rules) the moon and stars within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the moon and stars (kandra-târakam), and within the moon and stars, whom the moon and stars do not know, whose body the moon and stars are, and who pulls (rules) the moon and stars within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "हस्तही ग्रह है वे क्रूप अतिग्रहते गृहीत हैँ; क्योंकि प्राणी हस्तसे ही कमं करता है वह्‌ स्परशरूप अतिग्रहसे गृहीत है; क्योंकि प्राणी त्वचासे ही स्पोको जानता है । इस प्रकार ये आठ ग्रह हैँ ओर आठ अतिग्रह हं साम्‌ वै ग्रहः-वाचा ह्ष्याल-  वाक्‌ ही ग्रह है; कथो करि असत्य, मे प्रवृत्ता आसक्तिकी विषयभ्रुना 2 अध्यात्मपरिच्छि्ावाकसे ही गृहीत",
-          "science": "हस्तही ग्रह है वे क्रूप अतिग्रहते गृहीत हैँ; क्योंकि प्राणी हस्तसे ही कमं करता है वह्‌ स्परशरूप अतिग्रहसे गृहीत है; क्योंकि प्राणी त्वचासे ही स्पोको जानता है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2599,8 +2389,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ya ākāśe tiṣṭhannākāśādantaro yamākāśo na veda yasyā''kāśaḥ śarīraṃ ya ākāśamantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the ether (âkâsa), and within the ether, whom the ether does not know, whose body the ether is, and who pulls (rules) the ether within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the ether (âkâsa), and within the ether, whom the ether does not know, whose body the ether is, and who pulls (rules) the ether within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "“हे याज्ञवल्क्य !' एेसा आर्तंभागने कहा, \"यह्‌ जो कुछ है सब मृत्युका खाद्य हे; सो वह देवता कौन है, जिसका खाद्य मृत्यु है '  इसपर याज्ञ- बल्व्य कहता है-  “अग्नि ही मृत्यु है, वह॒ जलका खाय है।  इस याज्ञवल्क्येति होवाच, यदिदं  है याज्ञवल्वय !' एेसा आतंभागने ग .   कहा, चहु जो कुह, सब ज स्योरन्नम्‌-- यदिदं व्याकृतं मृत्युका खाद्य है-यह जितना तच्वज्ञके देहावसानका कम स्मात्‌ प्राणाः कामन्त्याहो ३ नेति नेति होवाच यान्ञ-",
-          "science": "“हे याज्ञवल्क्य !' एेसा आर्तंभागने कहा, \"यह्‌ जो कुछ है सब मृत्युका खाद्य हे; सो वह देवता कौन है, जिसका खाद्य मृत्यु है ' इसपर याज्ञ- बल्व्य कहता है- “अग्नि…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2616,8 +2404,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yastamasi tiṣṭham̐stamaso'ntaro yaṃ tamo na veda yasya tamaḥ śarīraṃ yastamo'ntaro yamayatyeṣa ta ātmāntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the darkness (tamas), and within the darkness, whom the darkness does not know, whose body the darkness is, and who pulls (rules) the darkness within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the darkness (tamas), and within the darkness, whom the darkness does not know, whose body the darkness is, and who pulls (rules) the darkness within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "हे याज्ञवल्क्य !' एेसा आतंभागने कहा, “जिस समय यह्‌ मनुष्य मरता हे, उस समय इसके प्राणोका उत्रमण होता है या नहीं £ नहीं, नहीं” एेसा याज्ञवल्व्यने कहा, वे यहाँ ही लीन हो जाते है । काले प्रियते, उत्‌ उष्यम्‌ अस्माद्‌ जकाः करामन्प्युध्वेम्‌ उत्क्रामन्ति कार्याणि करणानि च स्वयोनौ कहना चाहिये कि वह॒ मरता ही नहीं हे; एसी बात नहीं है; यह मरता तो है; क्योंकि वह॒ उच्छरून-",
-          "science": "हे याज्ञवल्क्य !' एेसा आतंभागने कहा, “जिस समय यह्‌ मनुष्य मरता हे, उस समय इसके प्राणोका उत्रमण होता है या नहीं £ नहीं, नहीं” एेसा याज्ञवल्व्यने कहा, वे यहाँ…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2633,8 +2419,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yastejasi tiṣṭham̐stejaso'ntaro yaṃ tejo na veda yasya tejaḥ śarīraṃ yastejo'ntaro yamayatysa eṣa ta ātmā'ntaryāmyamṛta ityadhidaivataṃ athādhibhūtam ||",
           "translation": "'He who dwells in the light (tegas), and within the light, whom the light does not know, whose body the light is, and who pulls (rules) the light within, he is thy Self, the puller (ruler) within, the immortal.' So far with respect to the gods (adhidaivatam); now with respect to beings (adhibhûtam).",
           "explanation": "Sense: 'He who dwells in the light (tegas), and within the light, whom the light does not know, whose body the light is, and who pulls (rules) the light within, he is thy Self, the puller (ruler) within, the immortal.' So far with respect to the gods (adhidaivatam);…",
-          "hindi": "तत्प्रयोजकं सर्वम्‌, प्रयोजके अथ सवमेव कामकर्मादि, ततो तो क्या मुक्त पुरुषके केवल हे याज्ञवल्क्य !' एेसा आतंमागने कहा, जिस समय यह्‌ पुरुष मरता है, उस समय इसे क्या नहीं छोडता ?  याज्ञवल्क्य-  नाम नहीं छोडता, नाम अनन्त ही है, विदवेदेव मी अनन्त ही है, इस आनन्त्यदशेन- सो भ्रियते किमेनं न जद।  भागने कहा जिस समय यह्‌ पुरुष मर जाता हे, इसे क्या नहीं समवनीयत इत्यर्थः, नाममात्रं हा । तातन ५ है कि स कुछ",
-          "science": "तत्प्रयोजकं सर्वम्‌, प्रयोजके अथ सवमेव कामकर्मादि, ततो तो क्या मुक्त पुरुषके केवल हे याज्ञवल्क्य !' एेसा आतंमागने कहा, जिस समय यह्‌ पुरुष मरता है, उस समय इसे…। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2650,8 +2434,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yaḥ sarveṣu bhūteṣu tiṣṭhansarvebhyo bhūtebhyo'ntaro yam̐ sarvāṇi bhūtāni na viduryasya sarvāṇi bhutāni śarīraṃ yaḥ sarvāṇi bhūtānyantaro yamayatyeṣa ta ātmā'ntaryāmyamṛta ityadhibhūtamathādhyātmam ||",
           "translation": "Yâgñavalkya said: 'He who dwells in all beings, and within all beings, whom all beings do not know, whose body all beings are, and who pulls (rules) all beings within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'He who dwells in all beings, and within all beings, whom all beings do not know, whose body all beings are, and who pulls (rules) all beings within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "इद्दरियाभिमानी देवताग्नोके निवृत्त हौ जनिपर म्रस्वतन्व कर्ता पुरुषकी स्थितिका विचार है, उसका वणेन किया गया । उस \"हे याज्ञवल्क्य !' एेसा आतंभागने कहा “जिस समय इस सृतपुरुषको वाक्‌ अग्निम लीन दहो जाती है तथा प्राण वायुम, चक्षु आदित्यम, मन चन्द्रमामे, श्रोत्र दिशम, शरीर पृथिवीम, हृदयाकाश भूताकाशमे, लोम यत्रास्य पुरूषस्यासम्यण्द्रिनः  जिस समय इस सम्य्नानहीन शिरःपाण्यादिपतो मृतस्य वागभि- सृत पुरुषकी वाक्‌ अग्निम लीन हो जाती है, प्राण वाधुमे लीन हो",
-          "science": "इद्दरियाभिमानी देवताग्नोके निवृत्त हौ जनिपर म्रस्वतन्व कर्ता पुरुषकी स्थितिका विचार है, उसका वणेन किया गया। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2667,8 +2449,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yaḥ prāṇe tiṣṭhanprāṇādantaro yaṃ prāṇo na veda yasya prāṇaḥ śarīraṃ yaḥ prāṇamantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the breath (prâna), and within the breath, whom the breath does not know, whose body the breath is, and who pulls (rules) the breath within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the breath (prâna), and within the breath, whom the breath does not know, whose body the breath is, and who pulls (rules) the breath within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "प्रकार याज्ञवल्क्यद्वारा प्रहनोका  निणंय हो जानेपर याज्ञवल्क्यको वादके दा रा स्वसिद्धान्तसे विचलित अथ हैनं अुज्युर्लाह्यायनिः यस्यात्‌ सगप्रयोजका- (अथ हैनं भृज्युर्लाह्यायनिः फिर इस याज्ञवल्क्यसे लाह्यायनि भज्युने पुखा । वह बोला ह याज्ञवल्क्य  हम व्रताचरण करते हए मद्रदेशमे विचर रहे थे किं कपि- गोरोत्पन्न पतच्लके घर पहूंचे । उसकी पुत्री गन्धवंसे गृहीत थी । अर्थात्‌",
-          "science": "प्रकार याज्ञवल्क्यद्वारा प्रहनोका निणंय हो जानेपर याज्ञवल्क्यको वादके दा रा स्वसिद्धान्तसे विचलित अथ हैनं अुज्युर्लाह्यायनिः यस्यात्‌ सगप्रयोजका- (अथ हैनं भृ…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2684,8 +2464,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo vāci tiṣṭhanvāco'ntaro yaṃ vāṅna veda yasya vāk śarīraṃ yo vācamantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the tongue (vâk), and within the tongue, whom the tongue does not know, whose body the tongue is, and who pulls (rules) the tongue within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the tongue (vâk), and within the tongue, whom the tongue does not know, whose body the tongue is, and who pulls (rules) the tongue within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "अथानन्तरम्‌ उपरते जारत्कारवे,   फिर--दसके पश्चात्‌ २ जरत्कासपूतर आतंभागके चुप ज्ञानस्रचितो वा केवलज्ञान ६९४ इृदारण्यकोपनिषद्‌  अरष्याय ३ पारिक्षितोकी गतिका व्ण॑न पर्येति तद्यावती क्षुरस्य धारा यावद्रा सक्षिकायाः पत्र स होवाच याज्ञवल्क्यः; उवाच  उस याज्ञवल्क्यने कहा --उसने वे सः वैशब्दः स्मरणार्थः  निभ महौ कहा ा'- यहा ;२ । रब्द स्मरणके लिये है--उस गन्धने",
-          "science": "अथानन्तरम्‌ उपरते जारत्कारवे, फिर--दसके पश्चात्‌ २ जरत्कासपूतर आतंभागके चुप ज्ञानस्रचितो वा केवलज्ञान ६९४ इृदारण्यकोपनिषद्‌ अरष्याय ३ पारिक्षितोकी गतिका व्ण॑…। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2701,8 +2479,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yaścakṣuṣi tiṣṭham̐ścakṣuṣo'ntaro yaṃ cakṣurna veda yasya cakṣuḥ śarīraṃ yaścakṣurantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the eye, and within the eye, whom the eye does not know, whose body the eye is, and who pulls (rules) the eye within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the eye, and within the eye, whom the eye does not know, whose body the eye is, and who pulls (rules) the eye within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "प्रकार उस गन्धवेने पारिक्षितोकी गतिरूप वयुकी ही प्रशंसा ग्राख्यायिका तो समाप्त हुई । पुण्यस्य च पर उक्कर्ण व्या- एव ॒विवेकाधिगमायोषस्तप्रहन स्वरूपस्य क्रियाकारकविनिक्त- फिर उस याज्ञवल्वयसे चाक्रायण उषस्तने पूद्ा । वह्‌ बोला, ह याज्ञवल्क्य  जो साक्षात्‌ अपरोक्ष ब्रह्य ओर सर्वान्तर आत्मा है, उसकी मेरे प्रति व्याख्या करो ।'  याज्ञवल्क्य “यह तेरा आत्मा ही सर्वान्तर",
-          "science": "प्रकार उस गन्धवेने पारिक्षितोकी गतिरूप वयुकी ही प्रशंसा ग्राख्यायिका तो समाप्त हुई। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2718,8 +2494,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yaḥ śrotre tiṣṭhañchrotrādantaro yam̐ śrotraṃ na veda yasya śrotram̐ śarīraṃ yaḥ śrotramantaro yamayatysa eṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the ear, and within the ear, whom the ear does not know, whose body the ear is, and who pulls (rules) the ear within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the ear, and within the ear, whom the ear does not know, whose body the ear is, and who pulls (rules) the ear within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "अथ हैनं प्रकृतं याज्ञवल्क्यम्‌.  फिर इत प्रकृत याज्ञवल्यसे जो नामसे उषस्त था उस चाक्रायण चक्रके पुत्रने पूछा, जो ब्रह्य साक्षात्‌ ग्रात्माकी श्रनिवेचनीयता स होवाचोषस्तश्चाकायणो यथा चि्.यादसो गोर उस चाक्रायण उषस्तने कहा, “जिस प्रकार कोई चलना ओर दौडना ति बृहदारण्यकोपनिषद्धाष्ये वृतीयाध्याये",
-          "science": "अथ हैनं प्रकृतं याज्ञवल्क्यम्‌. फिर इत प्रकृत याज्ञवल्यसे जो नामसे उषस्त था उस चाक्रायण चक्रके पुत्रने पूछा, जो ब्रह्य साक्षात्‌ ग्रात्माकी श्रनिवेचनीयता स ह…। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2735,8 +2509,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo manasi tiṣṭhanmanaso'ntaro yaṃ mano na veda yasya manaḥ śarīraṃ yo mano'ntaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the mind, and within the mind, whom the mind does not know, whose body the mind is, and who pulls (rules) the mind within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the mind, and within the mind, whom the mind does not know, whose body the mind is, and who pulls (rules) the mind within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "वन्धनं सप्रयोजकयुक्तम्‌,  प्रयोजकोके सहित बन्धनका  उसका अस्तित्व तथा  देहेन्द्रि तम्‌, व्यतिरिक्तिलं च । तस्थे-  संघातसे  भिन्नत्व॒ भी विदित फिर इस याज्ञवल्क्यसे कौषीतकेय कटौलने पुछा; उसने है याज्ञ वत्वय ' इस प्रकार सम्बोधित करके कहा-जो भी साक्षात्‌ अपरोक्ष ब्रह्म ओर सर्वान्तर आत्मा है, उसकी तुम मेरे प्रति व्याख्या करौ ।'  यह्‌ सर्वान्तर आस्मेलुक्तमू्‌, तस्य  सर्वान्तर आत्मा है-हेसा कहा सर्वान्तरस्य स्वरूपाधिगमाय  यया 2 उस स्वन्तरके स्वरूपका जान प्राप्त करतेके लिये शाकल्य-",
-          "science": "वन्धनं सप्रयोजकयुक्तम्‌, प्रयोजकोके सहित बन्धनका उसका अस्तित्व तथा देहेन्द्रि तम्‌, व्यतिरिक्तिलं च। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2752,8 +2524,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yastvaci tiṣṭham̐stvaco'ntaro yaṃ tvaṅna veda yasya tvak śarīraṃ yastvacamantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in the skin, and within the skin, whom the skin does not know, whose body the skin is, and who pulls (rules) the skin within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in the skin, and within the skin, whom the skin does not know, whose body the skin is, and who pulls (rules) the skin within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "ग्रथ हैनं गागीं नामतः,  फिर उस याज्ञवल्परयसे वाचक्नवी वचकनुकी पूत्रीते, जो तामसे गार्गी „ ,  इम प्रकार सम्बोधित करके कहा-- इदानीं बरहमलोकानामन्तरतमं ( बह्मलोकोका नौ अन्तरत सूत्र हि, उसे बतलाना है, इसीलिये आगेका ग्रन्थ आरम्भ किया जाता फिर इस याज्ञवल्क्यसे आरुणि उदहालकने पूछा; वह॒ बोला, ह याज्ञ- वल्क्य ! हम मद्रदेशमे यज्ञगाखका अध्ययन करते हुए कपिगोत्रोत्पन्न पत- व्वलके घर रहते थे । उसकी भार्यां गन्धरवंद्रारा गृहीत थी । हमने उस",
-          "science": "ग्रथ हैनं गागीं नामतः, फिर उस याज्ञवल्परयसे वाचक्नवी वचकनुकी पूत्रीते, जो तामसे गार्गी „ , इम प्रकार सम्बोधित करके कहा-- इदानीं बरहमलोकानामन्तरतमं ( बह्मलोको…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2769,8 +2539,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo vijñāne tiṣṭhanvijñānādantaro yam̐ vijñānaṃ na veda yasya vijñānam̐ śarīraṃ yo vijñānamantaro yamayatyeṣa ta ātmā'ntaryāmyamṛtaḥ ||",
           "translation": "'He who dwells in knowledge , and within knowledge, whom knowledge does not know, whose body knowledge is, and who pulls (rules) knowledge within, he is thy Self, the puller (ruler) within, the immortal.'",
           "explanation": "Sense: 'He who dwells in knowledge , and within knowledge, whom knowledge does not know, whose body knowledge is, and who pulls (rules) knowledge within, he is thy Self, the puller (ruler) within, the immortal.'",
-          "hindi": "श्रथ हैनञुदहालफो नामतः, फिर उस याज्ञवत्कसे उद्‌।लक अङणस्यापस्यमारुणिः पप्रच्च; नामसे प्रसिद्ध आरुणि-अरुणके याज्ञवन्कयेति होवाच; मद्रेषु  एने खा । वह्‌ बोला, ह याज्ञ उस याज्ञवल्करयने कहा, है गौतम ! वाधु ही वह्‌ सत्र है; गौतम ! वायुरूप सूत्रके द्वारा ही यह लोक, परलोक ओर समस्त  भूतसमुदाय गंधे हुए ह 1 है गौतम ! इसीसे मरे हुए पुरुषको टसा कहते हैँ कि इसके अङ्ग स होवाच याज्ञवल्क्यः । ब्रह्म- उस याज्ञवल्क्यने कहा । जिस प्रकार जलमें पृथिवी ओतप्रोत है उसी प्रकार जिसमें वतमान कालमें",
-          "science": "श्रथ हैनञुदहालफो नामतः, फिर उस याज्ञवत्कसे उद्‌। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2786,8 +2554,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo retasi tiṣṭhan retaso'ntaro yam̐ reto na veda yasya retaḥ śarīraṃ yo reto'ntaro yamayatyeṣa ta ātmā'ntaryāmyamṛto'dṛṣṭo draṣṭā'śrutaḥ śrotā'mato mantā'vijñato vijñātā | nānyo'to'sti draṣṭā nānyo'to'sti śrotā nānyo'to'sti mantā nānyo'to'sti vijñātaiṣa ta ātmā'ntaryāmyamṛto'to'nyadārtaṃ tato hoddālaka āruṇirupararāma ||",
           "translation": "'He who dwells in the seed, and within the seed, whom the seed does not know, whose body the seed is, and who pulls (rules) the seed within, he is thy Self, the puller (ruler) within, the immortal; unseen, but seeing; unheard, but hearing; unperceived, but perceiving; unknown, but knowing. There is no other seer but he, there is no other hearer but he, there is no other perceiver but he, there is no other knower but he. This is thy Self, the ruler within, the immortal. Everything else is of evil.' After that Uddâlaka Âruni held his peace.",
           "explanation": "Sense: 'He who dwells in the seed, and within the seed, whom the seed does not know, whose body the seed is, and who pulls (rules) the seed within, he is thy Self, the puller (ruler) within, the immortal; unseen, but seeing; unheard, but hearing; unperceived, but perceiving; unknown,…",
-          "hindi": "जो पृथिवीम रहनेवाला पृथिवीकै भीतर है, जिसे पृथिवी नहीं जानती, जिसका पृथिवी शरीर है ओर जो भीतर रहकर पृथिवीका नियमन करता है, वह्‌ तुम्हारा आत्मा अन्तर्यामी अमृत हे शरीरग्रहणं बोपलत्तणाथम्‌ ,करणं जो पृथिवीमे रहनेवाला है, वह॒ सभी रहते ह, अतः इससे सर्वत्र देवताको कायं ओर करण ( देह ओर इन्द्रिय ) उसके कर्मानुसार पराप्हृए है; वे ही इस अन्तर्यामीके",
-          "science": "जो पृथिवीम रहनेवाला पृथिवीकै भीतर है, जिसे पृथिवी नहीं जानती, जिसका पृथिवी शरीर है ओर जो भीतर रहकर पृथिवीका नियमन करता है, वह्‌ तुम्हारा आत्मा अन्तर्यामी अमृ…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Antaryamin",
@@ -2811,8 +2577,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha ha vācaknavyuvāca brāhmaṇā bhagavanto hantāhamimaṃ dvau praśnau prakṣyāmi tau cenme vakṣyati na vai jātu yuṣmākamimaṃ kaścidbrahmodyaṃ jeteti | pṛccha gārgīti ||",
           "translation": "Then Vâkaknavî said: 'Venerable Brâhmanas, I shall ask him two questions. If he will answer them, none of you, I think, will defeat him in any argument concerning Brahman.' Yâgñavalkya said: 'Ask, O Gârgî.'",
           "explanation": "Sense: Then Vâkaknavî said: 'Venerable Brâhmanas, I shall ask him two questions. If he will answer them, none of you, I think, will defeat him in any argument concerning Brahman.' Yâgñavalkya said: 'Ask, O Gârgî.'",
-          "hindi": "तिष्ठन्‌ दिवोऽन्तसे यं योन वेद यस्थ योः शरीरं यो यद्चन्द्रतारके तिष्ठ  इचन्द्रतारकादन्तर य॑ चन्द्रतारकं तिष्टन्नाकाशादन्तरो यमाकाशो न वेद॒ यस्याकाशः करीरं य आकाशमन्तरो यमयव्येष त आत्मान्तयाम्य-",
-          "science": "तिष्ठन्‌ दिवोऽन्तसे यं योन वेद यस्थ योः शरीरं यो यद्चन्द्रतारके तिष्ठ इचन्द्रतारकादन्तर य॑ चन्द्रतारकं तिष्टन्नाकाशादन्तरो यमाकाशो न वेद॒ यस्याकाशः करीरं य आ…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -2828,8 +2592,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā hovācāhaṃ vai tvā yājñavalkya yathā kāśyo vā vaideho vograputra ujjyaṃ dhanuradhijyaṃ kṛtvā dvau bāṇavantau sapatnātivyādhinau haste kṛtvopottiṣṭhedevamevāhaṃ tvā dvābhyāṃ praśnābhyāmupodasthām | tau me brūhīti | pṛccha gārgīti ||",
           "translation": "Yâgñavalkya said: 'Vâyu (air) is that thread, O Gautama. By air, as by a thread, O Gautama, this world and the other world, and all creatures are strung together. Therefore, O Gautama, people say of a dead person that his limbs have become unstrung; for by air, as by a thread, O Gautama, they were strung together.' The other said: 'So it is, O Yâgñavalkya. Tell now (who is) the puller within.'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'Vâyu (air) is that thread, O Gautama. By air, as by a thread, O Gautama, this world and the other world, and all creatures are strung together. Therefore, O Gautama, people say of a dead person that his limbs have become unstrung; for by air,…",
-          "hindi": "जो आदित्यम रहनेवाला आदितथके भीतर है, जिघे आदित्य नहीं जानता, आदित्य जिसका शरीर है ओर जो भीतर रहकर अ।दित्यका नियमन करता है, वहं तुम्हारा अत्मा अन्तर्यामी अभृत है ॥ € ॥ जो चन्रमा भर तारा रहनेवाला चन्द्रमा ओर ताराओके भीतर ठै, जिसे चन्द्रमा ओौर ताराएं नहीं जानती, चन्द्रमा ओर ताराएं जिसक्रा शरीर हँ ओर जो भातर रहकर चन्द्रमा ओर ताराओंका नियमन करता वाला अकारक भीतर है, जिसे आकाश नहीं जानता, आका जिसका दारौरटै ओरजो भीतर रहकर आकाशका नियमन करतार, वह",
-          "science": "जो आदित्यम रहनेवाला आदितथके भीतर है, जिघे आदित्य नहीं जानता, आदित्य जिसका शरीर है ओर जो भीतर रहकर अ। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -2845,8 +2607,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā hovāca yadūrdhvaṃ yājñavalkya divo yadavākpṛthivyā yadantarā dyāvāpṛthivī ime yadbhūtaṃ ca bhavacca bhaviṣyaccetyācakṣate kasmim̐stadotaṃ ca protaṃ ceti ||",
           "translation": "She said: 'O Yâgñavalkya, that of which they say that it is above the heavens, beneath the earth, embracing heaven and earth , past, present, and future, tell me in what is it woven, like warp and woof?'",
           "explanation": "Sense: She said: 'O Yâg&ntilde;avalkya, that of which they say that it is above the heavens, beneath the earth, embracing heaven and earth , past, present, and future, tell me in what is it woven, like warp and woof?'",
-          "hindi": "वाणीके भीतर है, जिसे वाणी नहीं जानती, वाणी जिसका शरीर है ओर जो सीतर रहकर वाणौका नियमन करता है, वह्‌ तुम्हारा आत्मा जो नेत्रमे रहनेवाला नेत्रके भीतर है, जिसे नेत्र नहीं जानता, नेत्र जिसका गरीरहै ओर जो भीतर रहकर नेचका नियमन करता है, वह तुम्हारा आत्मा अन्तर्यामी अमृत है जो श्रोत्रमे रहुनेवाला श्रोच्रके भीतर है, जिसे श्रोत्र नहीं जानता, श्रोत्र जिसका शरीर है ओर जो भीतर रहकर श्रोत्रका नियमन करता हे, वह्‌ तुम्हारा आत्मा अन्तर्यामी अमत है",
-          "science": "वाणीके भीतर है, जिसे वाणी नहीं जानती, वाणी जिसका शरीर है ओर जो सीतर रहकर वाणौका नियमन करता है, वह्‌ तुम्हारा आत्मा जो नेत्रमे रहनेवाला नेत्रके भीतर है, जिसे…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -2870,8 +2630,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā hovāca namaste'stu yājñavalkya yo ma etaṃ vyavoco'parasmai dhārayasveti | pṛccha gārgīti ||",
           "translation": "She said: 'I bow to thee, O Yâgñavalkya, who hast solved me that question. Get thee ready for the second.' Yâgñavalkya said : 'Ask, O Gârgî.'",
           "explanation": "Sense: She said: 'I bow to thee, O Yâg&ntilde;avalkya, who hast solved me that question. Get thee ready for the second.' Yâg&ntilde;avalkya said : 'Ask, O Gârgî.'",
-          "hindi": "वह्‌ बोली, \"हे याज्ञवत््य ! आपको नमस्कार है, जिन्होंने मे इस प्रदनका उत्तर दे दिया; अब आप दुसरे प्ररनके लिये तेयार हौ जाइये । नमस्कार है--इत्यादि कथन यह प्रदशित करनेके लियेहै किइस प्ररनका उत्तर देना कठिन था । भविष्यच्चेत्याचक्षते करस्मिस्तदोतं च पोतं चेति ।६॥ वह्‌ बोली, है याज्ञवल्त्र्य ! जो चुलोकसे ऊपर हे, जो पृथिवीते नीचे है भौर जो दुलोक ओर पृथिवीके मध्यमे है ओर स्वयं भीजोये दुलोक",
-          "science": "वह्‌ बोली, \"हे याज्ञवत््य ! आपको नमस्कार है, जिन्होंने मे इस प्रदनका उत्तर दे दिया; अब आप दुसरे प्ररनके लिये तेयार हौ जाइये। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -2887,8 +2645,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā hovāca yadūrdhvaṃ yājñavalkya divo yadavāk pṛthivyāḥ yadantarā dyāvāpṛthivī ime yadbhūtaṃ ca bhavacca bhaviṣyaccetyācakṣate ācakṣate kasmim̐stadotaṃ ca protaṃ ceti ||",
           "translation": "She said: 'O Yâgñavalkya, that of which they say that it is above the heavens, beneath the earth, embracing heaven and earth, past, present, and future, tell me in what is it woven, like warp and woof?'",
           "explanation": "Sense: She said: 'O Yâg&ntilde;avalkya, that of which they say that it is above the heavens, beneath the earth, embracing heaven and earth, past, present, and future, tell me in what is it woven, like warp and woof?'",
-          "hindi": "बै तद्‌ यत्‌ पृर्वत्यसि कर्मन खराकाश्च ओतश्च प्रोतऽ्चेति, गागि ब्राह्मणा ब्रह्मविदोऽमि- श्रनुमानव्रमाखद्रारा ग्रक्षरका निरूप त्या; तथापि लोकञुद्विेक्षया  तो मौ चूक लोकछुटिक उपेक्षसे 2 व्व  उसके अस्तितवमे आशङ्का की जाती दादेत्वकी नही; क्योंकि सेव्यसे फलप्राप्नि होती देखी ही गयी है । इस विषयमे द्युलोक ओर पृथिवी",
-          "science": "बै तद्‌ यत्‌ पृर्वत्यसि कर्मन खराकाश्च ओतश्च प्रोतऽ्चेति, गागि ब्राह्मणा ब्रह्मविदोऽमि- श्रनुमानव्रमाखद्रारा ग्रक्षरका निरूप त्या; तथापि लोकञुद्विेक्षया तो म…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -2904,8 +2660,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca yadūrdhvaṃ gārgi divo yadavākpṛthivyā yadantarā dyāvāpṛthivī ime yadbhūtaṃ ca bhavacca bhaviṣyaccetyācakṣata ākāśa eva tadotaṃ ca protaṃ ceti | kasminnu khalvākāśa otaśca protaśceti ||",
           "translation": "Yâgñavalkya said: 'That of which they say that it is above the heavens, beneath the earth, embracing heaven and earth, past, present, and future, that is woven, like warp and woof, in the ether.' Gârgî said: 'In what then is the ether woven, like warp and woof?'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'That of which they say that it is above the heavens, beneath the earth, embracing heaven and earth, past, present, and future, that is woven, like warp and woof, in the ether.' Gârgî said: 'In what then is the ether woven, like warp and woof?'",
-          "hindi": "उस गार्गनि कटा, (पुज्य ब्राह्मणगण ! आपलोग इसीको वहुत मानें कि इन याज्ञवत्वयजीसे आपको नमस्कारद्रारा ही छुटकारा मिल जाय। आपसे कोई भी कभी इन्हं ब्रह्मविषयक वादमे जोतनेवाला न हीं है ॥ सा होवाच है ाह्मणा भग्‌- स्माद्‌ याक्तवन्क्यान्नसस्कारेण मुच्येष्वम्‌--अस्मे नमस्कारं भावं कथयन्‌ सर्वान्तरं ब्रह्म प्रकाशितवान्‌, तस्य च ब्रह्मणो व्पाकृतविषये घत्रभेदेषु",
-          "science": "उस गार्गनि कटा, (पुज्य ब्राह्मणगण ! आपलोग इसीको वहुत मानें कि इन याज्ञवत्वयजीसे आपको नमस्कारद्रारा ही छुटकारा मिल जाय। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -2929,8 +2683,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "etasya vā akṣarasya praśāsane gārgi sūryācandramasau vidhṛtau tiṣṭhata etasya vā akṣarasya praśāsane gārgi dyāvāpṛthivyau vidhṛte tiṣṭhata etasya vā akṣarasya praśāsane gārgi nimeṣā muhūrtā ahorātrāṇyardhamāsā māsā ṛtavaḥ saṃvatsarā iti vidhṛtāstiṣṭhantyetasya vā akṣarasya praśāsane gārgi prācyo'nyā nadyaḥ syandante śvetebhyaḥ parvatebhyaḥ pratīcyo'nyā yāṃ yāṃ ca diśamanvetasya vā akṣarasya praśāsane gārgi dadato manuṣyāḥ praśam̐santi yajamānaṃ devā darvīṃ pitaro'nvāyattāḥ ||",
           "translation": "He said: 'O Gârgî, the Brâhmanas call this the Akshara (the imperishable). It is neither coarse nor fine, neither short nor long, neither red (like fire) nor fluid (like water); it is without shadow, without darkness, without air, without ether, without attachment , without taste, without smell, without eyes, without ears, without speech, without mind, without light (vigour), without breath, without a mouth (or door), without measure, having no within and no without, it devours nothing, and no one devours it.'",
           "explanation": "Sense: He said: 'O Gârgî, the Brâhmanas call this the Akshara (the imperishable). It is neither coarse nor fine, neither short nor long, neither red (like fire) nor fluid (like water); it is without shadow, without darkness, without air, without ether, without attachment ,…",
-          "hindi": "कतमे रुद्रा इति दशेमे पुरषे पाणा आत्मैका- दशस्ते यदास्माच्छरीरान्म्यादत्कामन्त्यथ रोदयन्ति प्राण ( इद्धया ) ओर ग्पारहुवां आत्मा ( मन )। ये जिस समय इस मरणशील चरीरसे उत्रमण करते हैँ, उस समय ख्लाते है; अतः उक्तरमण- कालमें चूंकि अपने सम्बन्धिथोको रुलाते ह; इसलिये रोदनके कारण होनेसे † ति „  “इस पुरुषमे कमेद्धिय ओर ज्ञाने- आमा मन एकादशः -एका-  आत्मा--मन, जो भ्यारहकी पूति दश्चानां पूरणः ते एते प्राणा  करनेवाला है । वेये प्राण जिस",
-          "science": "कतमे रुद्रा इति दशेमे पुरषे पाणा आत्मैका- दशस्ते यदास्माच्छरीरान्म्यादत्कामन्त्यथ रोदयन्ति प्राण ( इद्धया ) ओर ग्पारहुवां आत्मा ( मन )। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -2946,8 +2698,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo vā etadakṣaraṃ gārgyaviditvā'smim̐lloke juhoti yajate tapastapyate bahūni varṣasahasrāṇyantavadevāsya tadbhavati loko bhavati yo vā etadakṣaraṃ gārgyaviditvā'smāllokātpraiti sa kṛpaṇo'tha ya etadakṣaraṃ gārgi viditvā'smāllokātpraiti sa brāhmaṇaḥ ||",
           "translation": "'Whosoever, O Gârgî, without knowing that Akshara (the imperishable), offers oblations in this world, sacrifices, and performs penance for a thousand years, his work will have an end. Whosoever, O Gargî, without knowing this Akshara, departs this world, he is miserable (like a slave) . But he, O Gârgî, who departs this world, knowing this Akshara, he is a Brâhmana.'",
           "explanation": "Sense: 'Whosoever, O Gârgî, without knowing that Akshara (the imperishable), offers oblations in this world, sacrifices, and performs penance for a thousand years, his work will have an end. Whosoever, O Gargî, without knowing this Akshara, departs this world,…",
-          "hindi": "शकल्थ- इन्द्र कौन है ओर प्रजापति कौन है ?  याज्ञवत्वय- स्तनयिल्नु ( विचयुत्‌ ) ही इर है ओर यज्ञ प्रजापति है ।  शाकल्य ब्राहमणं ९  शाङ्करभाष्याथं ७९१ कतम इन्द्रः कतमः प्रजापति- “इन्द्र कौन है ओर प्रजापति रिति, स्तनयिल्सुरेषे्द्रो यज्ञः  कौन है / स्तनयितनु ही इनदर है प्रजापतिरिति, कतमः स्तन-  ओर यज्ञ प्रनापति है ॥ स्तनथिल्नु पृथिवी, वायु, अन्तरिक्ष, आदित्य ओर द्युलोक ये खः देवगण है ये वसु आदि तंतीस देवताओंके रूपमे अग्नि आदि छः ही हैः ।",
-          "science": "शकल्थ- इन्द्र कौन है ओर प्रजापति कौन है ? याज्ञवत्वय- स्तनयिल्नु ( विचयुत्‌ ) ही इर है ओर यज्ञ प्रजापति है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -2963,8 +2713,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadvā etadakṣaraṃ gārgyadṛṣṭaṃ draṣṭṛśrutam̐ śrottramataṃ mantravijñātaṃ vijñātṛ nānyadato'sti draṣṭṛ nānyadato'sti śrotṛ nānyadato'sti mantṛ nānyadato'sti vijñāttretasminnu khalvakṣare gārgyākāśa otaśca protaśceti ||",
           "translation": "'That Brahman,' O Gârgî, 'is unseen, but seeing; unheard, but hearing; unperceived, but perceiving; unknown, but knowing. There is nothing that sees but it, nothing that hears but it, nothing that perceives but it, nothing that knows but it. In that Akshara then, O Gârgî, the ether is woven, like warp and woof.'",
           "explanation": "Sense: 'That Brahman,' O Gârgî, 'is unseen, but seeing; unheard, but hearing; unperceived, but perceiving; unknown, but knowing. There is nothing that sees but it, nothing that hears but it, nothing that perceives but it, nothing that knows but it. In that Akshara then, O Gârgî,…",
-          "hindi": "यहां एसा कहते है- \"यह जो वाय है एकही-सा बहता है, फिर यहं जध्यध-ङढ्‌ किस प्रकार है ?  उत्तर  क्योंकि इसीमे यह्‌ ब ऋद्धको प्राप्त होता है, इसलिये यह अध्यध ( उ ) है ।'  शाकल्य-  ओंसे विशिष्ट एकप्राण हीदहै।  वहाँ अधिकारमभेदसे एक ही देवके नाम, रूप, कमे, गण ओर रक्तिका  शाकल्य  \"पृथिवी हौ जिसका आयतन है तथा अग्नि लोक ( दशन ) भोर मन ज्योति ( संकल्प-विकल्पका साधन ) हे, जो भी उस पुरुषको सम्पूणं अध्यात्म कायं-करणसमूहुका परायण जानता छ",
-          "science": "यहां एसा कहते है- \"यह जो वाय है एकही-सा बहता है, फिर यहं जध्यध-ङढ्‌ किस प्रकार है ? उत्तर क्योंकि इसीमे यह्‌ ब ऋद्धको प्राप्त होता है, इसलिये यह अध्यध ( उ ) है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -2980,8 +2728,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā hovāca brāhmaṇā bhagavantastadeva bahu manyedhvaṃ yadasmānnamaskāreṇa mucyedhvaṃ na vai jātu yuṣmākamimaṃ kaścidbrahmodyaṃ jeteti tato ha vācaknavyupararāma ||",
           "translation": "Then said Gargî: 'Venerable Brâhmans, you may consider it a great thing, if you get off by bowing before him. No one, I believe, will defeat him in any argument concerning Brahman.' After that Vâkaknavî held her peace.",
           "explanation": "Sense: Then said Gargî: 'Venerable Brâhmans, you may consider it a great thing, if you get off by bowing before him. No one, I believe, will defeat him in any argument concerning Brahman.' After that Vâkaknavî held her peace. Next: III, 9 Sacred Texts | Hinduism",
-          "hindi": "शाकल्य- “काम ही जिसका आयतन है, हृदय लोक है ओर मन ज्योति है, उस पुरुषको जो भी सम्पूणं आध्यात्मिक काये-करण- ७९८ बृहदारण्यकोपनिषद्‌  अध्याय ३ रूपाण्येव यस्यायतनं चश्षुछोको मनोज्योतियों स एष वदेव शाकल्य तस्य का देवतेति सव्यमिति  शाकल्य- “रूप ही जिसका आयतन है, चक्षु लोक दहै ओर मन ज्योति हे, जो भी उस पुरुषको सम्पूणं अध्यात्म का्ं-करणसमूटका परायण जानता हवही ज्ञाता है । है याज्ञवल्व्य  तुम तो विना जाने ही",
-          "science": "शाकल्य- “काम ही जिसका आयतन है, हृदय लोक है ओर मन ज्योति है, उस पुरुषको जो भी सम्पूणं आध्यात्मिक काये-करण- ७९८ बृहदारण्यकोपनिषद्‌ अध्याय ३ रूपाण्येव यस्यायतनं…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3005,8 +2751,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha hainaṃ vidagdhaḥ śākalyaḥ papraccha kati devā yājñavalkyeti | sa haitayaiva nividā pratipede yāvanto vaiśvadevasya nividyucyante trayaśca trī ca śatā trayaśca trī ca sahasretyomiti hovāca katyeva devā yājñavalkyeti | trayastrim̐śadityomiti hovāca | katyeva devā yājñavalkyeti | ṣaḍityomiti hovāca | katyeva devā yājñavalkyeti | traya ityomiti hovāca | katyeva devā yājñavalkyetydvāvityomiti hovāca | katyeva devā yājñavalkyetyadhyardha ityomiti hovāca | katyeva devā yājñavalkyetyeka ityomiti hovāca | katame te trayaśca trī ca śatā trayaśca trī ca sahasreti ||",
           "translation": "Then Vidagdha Sâkalya asked him : 'How many gods are there, O Yâgñavalkya?' He replied with this very Nivid : 'As many as are mentioned in the Nivid of the hymn of praise addressed to the Visvedevas, viz. three and three hundred, three and three thousand .'",
           "explanation": "Sense: Then Vidagdha Sâkalya asked him : 'How many gods are there, O Yâgñavalkya?' He replied with this very Nivid : 'As many as are mentioned in the Nivid of the hymn of praise addressed to the Visvedevas, viz. three and three hundred, three and three thousand .'",
-          "hindi": "७४५२ बृहदारण्यकोपनिषद्‌  अध्याय ३ जो जलमें रहनेवाला जलके भीतर है, जिसे जल नहीं जानता, जल जिसका शरीर है ओर जो भीतर रहकर जलका नियमन करताहै, वह्‌ त्हारा आत्मा अन्तर्यामी अमृत है भौतर हे, जिसे अग्नि नहीं जानता, अग्नि जिसका शरीरहेओर जो भीतर रहकर अग्निका नियमन करता है, वह तुम्हारा आतमा अन्तर्यामी",
-          "science": "७४५२ बृहदारण्यकोपनिषद्‌ अध्याय ३ जो जलमें रहनेवाला जलके भीतर है, जिसे जल नहीं जानता, जल जिसका शरीर है ओर जो भीतर रहकर जलका नियमन करताहै, वह्‌ त्हारा आत्मा अन…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3022,8 +2766,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca mahimāna evaiṣāmete trayastrim̐śattveva devā iti katame te trayastrim̐śadityaṣṭau vasava ekādaśa rudrā dvādaśā''dityāste ekatrim̐śadindraścaiva prajāpatiśca trayastrim̐śāviti ||",
           "translation": "Yâgñavalkya replied: 'They are only the various powers of them, in reality there are only thirty-three gods .' He asked: 'Who are those thirty-three?' Yâgñavalkya replied: 'The eight Vasus, the eleven Rudras, the twelve Âdityas. They make thirty-one, and Indra and Pragâpati make the thirty-three .'",
           "explanation": "Sense: Yâg&ntilde;avalkya replied: 'They are only the various powers of them, in reality there are only thirty-three gods .' He asked: 'Who are those thirty-three?' Yâg&ntilde;avalkya replied: 'The eight Vasus, the eleven Rudras, the twelve Âdityas. They make thirty-one,…",
-          "hindi": "जो तममे रहनेवाला तमके भीतर है, जिसे तम नहीं जानता, तम॒ जिप्तकाशरीरदहै ओर जो भोतर हकर तमका नियमन करता ह वह तुम्हारा आत्मा अन्तर्यामी अपरत जो तेजपे रहुनेवाला तेजके भोतर है, जिसे तेज नहीं जानता, तेज जिसका शरीर है ओरं जो भीतर रहकर तेजका नियमन करता है, वह्‌ तुम्हारा आत्मा अन्तर्यामी अमृत है, यह्‌ अधिदेवत-दञेन हु, आगे समानमन्यत्‌ । योऽप्सु तिष्टन्‌- रोष सव वृतोय मन्त्रके समान ही । है । जो जलमे, अग्निम, अन्तरिक्षमें आदित्ये, दिक्षु, चन्द्रतारके,  दिशाओमं, चन्द्रमा एवं ताराओमिं",
-          "science": "जो तममे रहनेवाला तमके भीतर है, जिसे तम नहीं जानता, तम॒ जिप्तकाशरीरदहै ओर जो भोतर हकर तमका नियमन करता ह वह तुम्हारा आत्मा अन्तर्यामी अपरत जो तेजपे रहुनेवाला त…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3039,8 +2781,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "katame vasava ityagniśca pṛthivī ca vāyuścāntarikṣaṃ cā''dityaśca dyauśca candramāśca nakṣatrāṇi caite vasava eteṣu hīdaṃ vasu sarvam̐ hitamiti tasmādvasava iti ||",
           "translation": "He asked: 'Who are the Vasus.' Yâgñavalkya replied: 'Agni (fire), Prithivî (earth), Vâyu (air), Antariksha (sky), Âditya (sun), Dyu (heaven), Kandramas (moon), the Nakshatras (stars), these are the Vasus, for in them all that dwells (this world) rests; and therefore they are called Vasus.'",
           "explanation": "Sense: He asked: 'Who are the Vasus.' Yâg&ntilde;avalkya replied: 'Agni (fire), Prithivî (earth), Vâyu (air), Antariksha (sky), Âditya (sun), Dyu (heaven), Kandramas (moon), the Nakshatras (stars), these are the Vasus, for in them all that dwells (this world) rests;…",
-          "hindi": "जो मनमें रहनेवाला मनके भीतर है, जिसे मन नहीं जानता, मन जिसका शरीर है ओर जो भीतर रहकर मनका नियमन करता है, वह तुम्हारा आत्मा अन्तर्यामी अमृत है जो स्वकूमे रहनेवाला त्वकके भीतर है, जिसे त्वक्‌ नहीं जानती, त्वक्‌ जिसका शरीर है ओर जो भीतर रहकर त्वक्का नियमन करता हे, वह तुम्हारा आत्मा अन्तर्यामी अमृत है जो विज्ञानमें रहनेवाला विज्ञानके भीतर है, जिसे विज्ञान नहीं जानता, विज्ञान जिसका शरीर है ओर जो भीतर रहकर विज्ञानका नियमन करता हे, वह तुम्हारा आत्मा",
-          "science": "जो मनमें रहनेवाला मनके भीतर है, जिसे मन नहीं जानता, मन जिसका शरीर है ओर जो भीतर रहकर मनका नियमन करता है, वह तुम्हारा आत्मा अन्तर्यामी अमृत है जो स्वकूमे रहने…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3056,8 +2796,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "katame rudrā iti | daśeme puruṣe prāṇā ātmaikādaśaste yadā'smāccharīrānmartyādutkrāmantyatha rodayanti tadyadrodayanti tasmādrudrā iti ||",
           "translation": "He asked: 'Who are the Rudras?' Yâgñavalkya replied: 'These ten vital breaths (prânas, the senses, i.e. the five gñânendriyas, and the five karmendriyas), and Âtman , as the eleventh. When they depart from this mortal body, they make us cry (rodayanti), and because they make us cry, they are called Rudras.'",
           "explanation": "Sense: He asked: 'Who are the Rudras?' Yâg&ntilde;avalkya replied: 'These ten vital breaths (prânas, the senses, i.e. the five g&ntilde;ânendriyas, and the five karmendriyas), and Âtman , as the eleventh. When they depart from this mortal body, they make us cry (rodayanti),…",
-          "hindi": "॥ .  वल्वयसे कहा-- भें तुमसे दो प्रन होवाच-अहंवेसखाल्नां दो पद्गी' एेसा इसका अस्वय है । वे प्रश्नौ ्रष्यामीत्यनुषेञ्यते; कौ  प्रन कौनसे है ? एेसी जिज्ञासा वह्‌ बोली, है याज्ञवल्क्य ! जो दयुलोकसे ऊपर है, जो पृथिवीसे नीचे हे ओर जो द्युलोक ओर पृथिवीके मध्यमे है ओर स्वयं भीजोये चलोक ओर पृथिवी हैँ तथा जिन्हं भृत, वतंमान ओर भविष्य-इष प्रकार कहुते होवाच --पदृध्वंषुपरि  वह बोली, जो चुलोकखूप क अण्डकपालसे ऊध्वं-ऊपर है ओर दिवःच्रण्डकपरालाद्‌ यचावागधः  जो पृथिवीसे यानी इस",
-          "science": "॥ . वल्वयसे कहा-- भें तुमसे दो प्रन होवाच-अहंवेसखाल्नां दो पद्गी' एेसा इसका अस्वय है। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3073,8 +2811,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "katama ādityā iti | dvādaśa vai māsāḥ saṃvatsarasyaita ādityā ete hīdam̐ sarvamādadānā yanti te yadidam̐ sarvamādadānā yanti tasmādādityā iti ||",
           "translation": "He asked: 'Who are the Âdityas?' Yâgñavalkya replied: 'The twelve months of the year, and they are Âdityas, because they move along (yanti), taking up everything (âdadânâh). Because they move along, taking up everything, therefore they are called Âdityas.'",
           "explanation": "Sense: He asked: 'Who are the Âdityas?' Yâg&ntilde;avalkya replied: 'The twelve months of the year, and they are Âdityas, because they move along (yanti), taking up everything (âdadânâh). Because they move along, taking up everything, therefore they are called Âdityas.'",
-          "hindi": "व्याख्यातमन्यत्‌; सा हौवाच (न ( छठे मन्त्रके पदों ) कौ ह  व्याख्या पहले (दृतीय मन्त्रम) की यदुभ्व॒याज्ञवल्क्येत्यादिप्ररनः  जा चुकी है । '्यदुध्वं याज्ञवत्वयः च्चेत्याचक्षत॒ आकादा एव तदोतं च घरोतं चेति कस्मिग्नु खल्वाकादा ओतश्च पोतरचेति + उस याज्ञवल्तरयने कहा, “हे गागि ! जो चुलोकसे ऊपर, पृथिवीसे नीचे ओर जो द्युलोक क पृथिवीके मध्यमे है तथा स्वयं भी जो ये चुलोक ओर पृथिवी है मौर जिन्हं मृत, व्तंमान ओर भविष्य-इस प्रकार कहते ई,",
-          "science": "व्याख्यातमन्यत्‌; सा हौवाच (न ( छठे मन्त्रके पदों ) कौ ह व्याख्या पहले (दृतीय मन्त्रम) की यदुभ्व॒याज्ञवल्क्येत्यादिप्ररनः जा चुकी है। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3090,8 +2826,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "katama indraḥ katamaḥ prajāpatiriti | stanayitnurevendro yajñaḥ prajāpatiriti | katamaḥ stanayitnurityaśaniriti | katamo yajña iti | paśava iti ||",
           "translation": "He asked: 'And who is Indra, and who is Pragâpati?' Yâgñavalkya replied: 'Indra is thunder, Pragâpati is the sacrifice.' He asked: 'And what is the thunder?' Yâgñavalkya replied: 'The thunderbolt.' He asked: 'And what is the sacrifice?' Yâgñavalkya replied: 'The (sacrificial) animals.'",
           "explanation": "Sense: He asked: 'And who is Indra, and who is Pragâpati?' Yâg&ntilde;avalkya replied: 'Indra is thunder,…",
-          "hindi": "यो या एदन्तरं है गानि है गागि ! इस लोकमें जो कोई अपि दित्वाविज्ञाय अरस्मिस्लोह्ि  इस अक्षरको न जानकर अर्थात्‌ जुहोति यजते तपस्तप्यते विना जाते हवन, यज्ञ ओर अनेकों ग्रक्षरका स्वरूप, लक्षण ग्रौर प्रद्ितीयत्व श्रग्ेद्हनप्रकाश्चकत्ववत्‌ स्वा- प्रघानवादौका कथन है कि अग्निके दहन ओर प्रकाशकत्वके, हे गागि ! यह्‌ अक्षर स्तर दृष्टिका विषय नहीं, कितु द्रष्टा हे, श्रवणका विषय नहीं, कितु श्रोता है, मननका विषय नदीं, कितु मन्ता है, स्वयं अविज्ञात रहकर द्सरोका विज्ञाता है । इससे भिन्न कोई द्रष्टा नहीं है,",
-          "science": "यो या एदन्तरं है गानि है गागि ! इस लोकमें जो कोई अपि दित्वाविज्ञाय अरस्मिस्लोह्ि इस अक्षरको न जानकर अर्थात्‌ जुहोति यजते तपस्तप्यते विना जाते हवन, यज्ञ ओर अन…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3107,8 +2841,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "katame ṣaḍityagniśca pṛthivī ca vāyuścāntarikṣaṃ cā''dityaśca dyauścaite ṣaḍ ete hīdam̐ sarvaṃ ṣaḍiti ||",
           "translation": "He asked: 'Who are the six?' Yâgñavalkya replied: 'Agni (fire), Prithivî (earth), Vâyu (air), Antariksha (sky), Âditya (sun), Dyu (heaven), they are the six, for they are all this, the six.'",
           "explanation": "Sense: He asked: 'Who are the six?' Yâg&ntilde;avalkya replied: 'Agni (fire), Prithivî (earth), Vâyu (air), Antariksha (sky), Âditya (sun), Dyu (heaven), they are the six, for they are all this, the six.'",
-          "hindi": "इसके पश्चात्‌ इस याज्ञवल्वयसे शाकल्य विदग्धे पुद्धा, है याज्ञवल्क्य ! क्रितने देवगण हँ ?' तब याज्ञवल्क्यने इस आगे कही जानेवाली निविदुसे ही उनकी संख्याक प्रतिपादन्‌ किया । \"जितने वैरवदेवकी नि विद्म अर्थात्‌ पप्रच्छ कतिसंख्याका देवा हे याउन्तो यावत्संख्याका देवा चकानि मन्त्रपदानि, कानिचिद्‌ इती प्रकार वे तीन ओर तीन सह है । यानी सम्पण देव इतने हँ । इसपर शाकल्यने भी ठीक है\"",
-          "science": "इसके पश्चात्‌ इस याज्ञवल्वयसे शाकल्य विदग्धे पुद्धा, है याज्ञवल्क्य ! क्रितने देवगण हँ ?' तब याज्ञवल्क्यने इस आगे कही जानेवाली निविदुसे ही उनकी संख्याक प्रति…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3124,8 +2856,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "katame te trayo devā iti ima eva trayo lokā eṣu hīme sarve devā iti | katamau tau dvau devāvityannaṃ caiva prāṇaśceti | katamo'dhyardha iti | yo'yaṃ pavata iti ||",
           "translation": "He asked: 'Who are the three gods?' Yâgñavalkya replied: 'These three worlds, for in them all these gods exist.' He asked: 'Who are the two gods?' Yâgñavalkya replied: 'Food and breath.' He asked: 'Who is the one god and a half?' Yâgñavalkya replied: 'He that blows.'",
           "explanation": "Sense: He asked: 'Who are the three gods?' Yâg&ntilde;avalkya replied: 'These three worlds,…",
-          "hindi": "देवगण इन तेतीस देवताओंकी तो ठँतीस दही देवगण हैँ, वे तैंतीस देवगण कौनसे हँ? सो बतलाया  शाकल्य  “वसु कौन हैँ ?' याज्ञवल्क्य अग्नि, पृथिवी, वायु, अन्तरिक्ष, आदित्य, द्युलोक, चन्द्रमा ओर नक्षत्र-ये वयु हँ; इन्हीमे यह सव जगत्‌ निहित है, इसीसे ये वसु हं\" सवेन का्यकरणसंषातसूपेण त- “वसु कोनहि? इस प्रकार उनमेसे प्रत्येकका स्वरूप पृछा",
-          "science": "देवगण इन तेतीस देवताओंकी तो ठँतीस दही देवगण हैँ, वे तैंतीस देवगण कौनसे हँ? सो बतलाया शाकल्य “वसु कौन हैँ ?' याज्ञवल्क्य अग्नि, पृथिवी, वायु, अन्तरिक्ष, आदित्…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3141,8 +2871,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadāhuryadayameka eva eka ivaiva pavate |ātha kathamadhyardha iti | yadasminnidam̐ sarvamadhyārdhnot tenādhyardha iti | katama eko deva iti | prāṇa iti sa brahma tyadityācakṣate ||",
           "translation": "Here they say: 'How is it that he who blows like one only, should be called one and a half (adhyardha)?' And the answer is: 'Because, when the wind was blowing, everything grew (adhyardhnot).' He asked: 'Who is the one god?' Yâgñavalkya replied: 'Breath (prâna), and he is Brahman (the Sûtrâtman), and they call him That (tyad).'",
           "explanation": "Sense: Here they say: 'How is it that he who blows like one only, should be called one and a half (adhyardha)?' And the answer is: 'Because, when the wind was blowing, everything grew (adhyardhnot).' He asked: 'Who is the one god?' Yâg&ntilde;avalkya replied: 'Breath (prâna),…",
-          "hindi": "७९०  बृहदारण्यकोपनिषद्‌  अध्याय ३  शाकल्य--  आदित्य कौन हें ?'  याज्ञवल्क्य-- 'संवत्सरके अवयवभ्रूत ये बारह मास ही आदित्य है; व्थोकि ये इस सवका आदान ( ग्रहण ) करते हए चलते हे, इसलिये आदित्य ह\" । बै मासाः संबस्सरस्य कालस्याव-  वलय 'नारह महीने संवत्सररूप यवाः प्रसिद्धाः, एते आदित्याः कालके अवयव प्रसिद्ध दहै वेही कथम्‌ १ एते हि यस्मात्‌ पुनः आदित्य हँ। सो किस प्रकार ?",
-          "science": "७९० बृहदारण्यकोपनिषद्‌ अध्याय ३ शाकल्य-- आदित्य कौन हें ?' याज्ञवल्क्य-- 'संवत्सरके अवयवभ्रूत ये बारह मास ही आदित्य है; व्थोकि ये इस सवका आदान ( ग्रहण ) करते…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3158,8 +2886,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "pṛthivyeva yasyā''yatanamagnirloko mano jyotiryo vai taṃ puruṣaṃ vidyātsarvasyā''tmanaḥ parāyaṇam̐, parāyaṇaṃ sa vai veditā syād yājñavalkya | veda vā ahaṃ taṃ puruṣam̐ sarvasyā''tmanaḥ parāyaṇaṃ yamāttha ya evāyam̐ śārīraḥ puruṣaḥ sa eṣa | vadaiva śākalya tasya kā devatetyamṛtamiti hovāca ||",
           "translation": "Sâkalya said : 'Whosoever knows that person (or god) whose dwelling (body) is the earth, whose sight (world) is fire , whose mind is light,--the principle of every (living) self, he indeed is a teacher, O Yâgñavalkya.' Yâgñavalkya said: 'I know that person, the principle of every self, of whom thou speakest. This corporeal (material, earthy) person, \"he is he.\" But tell me , Sâkalya, who is his devatâ (deity)?' Sâkalya replied: 'The Immortal .'",
           "explanation": "Sense: Sâkalya said : 'Whosoever knows that person (or god) whose dwelling (body) is the earth, whose sight (world) is fire , whose mind is light,--the principle of every (living) self, he indeed is a teacher, O Yâg&ntilde;avalkya.' Yâg&ntilde;avalkya said: 'I know that person,…",
-          "hindi": "नचतत्राणि च वजंयित्वा षड मव-  चमा ओर नक्ष्रोको छोडकर छः न्ति- षटसंख्याविशिष्टाः । एते  अर्थात्‌ षट्‌संव्याविरिष्ट होते ह, दि यस्मात्‌, त्रयद्धिशदादि यदुक्त क्योंकि ये तैतीस आदि बतलाये देवताग्रोकी तीन, दो ग्रौर उढ संख्याग्नोका विवरण कतमे ते रयो देवा इतीम एव अयो खोका एषु धे दो देव कौन हैँ?  याज्ञवलप- अन्न ओर प्राण ।'  शाकल्य-- खद्‌ देव कौन हैँ?  याज्ञवल्क्य- “जो यह्‌ बहुता है\" ॥ = ॥ इम एव त्रयो लोका इति-",
-          "science": "नचतत्राणि च वजंयित्वा षड मव- चमा ओर नक्ष्रोको छोडकर छः न्ति- षटसंख्याविशिष्टाः। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3175,8 +2901,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "kāma eva yasyā''yatanam̐ hṛdayaṃ loko mano jyotiryo vai taṃ puruṣaṃ vidyātsarvasyā''tmanaḥ parāyaṇam̐, sa vai veditā syād yājñavalkya | veda vā ahaṃ taṃ puruṣam̐ sarvasyā''tmanaḥ parāyaṇaṃ yamāttha ya evāyaṃ kāmamayaḥ puruṣaḥ sa eṣa vadaiva śākalya tasya kā devateti | striya iti hovāca ||",
           "translation": "Sâkalya said: 'Whosoever knows that person whose dwelling is love (a body capable of sensual love), whose sight is the heart, whose mind is light.--the principle of every self, he indeed is a teacher, O Yâgñavalkya.' Yâgñavalkya replied: 'I know that person, the principle of every self, of whom thou speakest. This love-made (loving) person, he is he.\" But tell me, Sâkalya, who is his devatâ?' Sâkalya replied: 'The women .'",
           "explanation": "Sense: Sâkalya said: 'Whosoever knows that person whose dwelling is love (a body capable of sensual love), whose sight is the heart, whose mind is light.--the principle of every self, he indeed is a teacher, O Yâg&ntilde;avalkya.' Yâg&ntilde;avalkya replied: 'I know that person,…",
-          "hindi": "साश्रयः, अ्र्निलोको यस्य-- संकल्पविकरपादिकायं करोति कायंकरणसंधातवान्‌ दध लोहित निष्पन्न होता है। उसीसे बीजका आश्रयभूत लोहितमय शरीर बनता है । आगेके अन्य काम एव यस्थायतन . हृदयं लोको मनो- काममयः पुरुषः स॒ एष वदेव शाकस्य तस्य का",
-          "science": "साश्रयः, अ्र्निलोको यस्य-- संकल्पविकरपादिकायं करोति कायंकरणसंधातवान्‌ दध लोहित निष्पन्न होता है। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3192,8 +2916,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "rūpāṇyeva yasyā''yatanaṃ cakṣurloko mano jyotiryo vai taṃ puruṣaṃ vidyātsarvasyā''tmanaḥ parāyaṇam̐, sa vai veditā syād yājñavalkya | veda vā ahaṃ taṃ puruṣam̐ sarvasyā''tmanaḥ parāyaṇaṃ yamāttha ya evāsāvāditye puruṣaḥ sa eṣa vadaiva śākalya tasya kā devateti | satyamiti hovāca ||",
           "translation": "Sâkalya said: 'Whosoever knows that person whose dwelling are the colours, whose sight is the eye, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâgñavalkya.' Yâgñavalkya replied: 'I know that person, the principle of every self, of whom thou speakest. That person in the sun, \"he is he.\" But tell me, Sâkalya, who is his devatâ?' Sâkalya replied: 'The True .'",
           "explanation": "Sense: Sâkalya said: 'Whosoever knows that person whose dwelling are the colours, whose sight is the eye, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâg&ntilde;avalkya.' Yâg&ntilde;avalkya replied: 'I know that person, the principle of every self,…",
-          "hindi": "रूपाण्येव यस्यायतनम्‌ ।  रूप ही जिसका आयतन है । एवासावादित्ये पूुरूषः- सर्वेषां  यहं = द 1 दि रूपाणां तिशष कार्यम।दितये सूपोका जी विशिष्ट कायंहै वही आक एव यस्यायतन - न्नात्र खोको मना- श्रातिश्नुत्कः युरुषः स एष उदेव शाकस्य तस्य का  शाकल्य  आकाश ही जिसका आयतन हे, श्रोत्र लोक है ओर मन ज्योति है, जो भी उस पुरुषको सम्पणे अध्यात्म काये-करणसमृहका परायण जानता है, वही ज्ञाता है । है याज्ञवल्क्य ! तुम तो विना जानेही",
-          "science": "रूपाण्येव यस्यायतनम्‌। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3209,8 +2931,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ākāśa eva yasyā''yatanam̐ śrotraṃ loko mano jyotiryo vai taṃ puruṣaṃ vidyātsarvasyā''tmanaḥ parāyaṇam̐, sa vai veditā syād yājñavalkya | veda vā ahaṃ taṃ puruṣam̐ sarvasyā''tmanaḥ parāyaṇaṃ yamāttha ya evāyam̐ śrautraḥ prātiśrutkaḥ puruṣaḥ sa eṣa vadaiva śākalya tasya kā devateti | diśa iti hovāca ||",
           "translation": "Sâkalya said: 'Whosoever knows that person whose dwelling is ether, whose sight is the ear, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâgñavalkya.' Yâgñavalkya replied: 'I know that person, the principle of every self, of whom thou speakest. The person who hears and answers, \"he is he.\" But tell me, Sâkalya, who is his devatâ?' Sâkalya replied: 'Space.'",
           "explanation": "Sense: Sâkalya said: 'Whosoever knows that person whose dwelling is ether, whose sight is the ear, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâg&ntilde;avalkya.' Yâg&ntilde;avalkya replied: 'I know that person, the principle of every self,…",
-          "hindi": "आकराञ्च एव यस्पायतनमर्‌ आकाश ही जिसका आयतन य एवायं श्रोत्रे भवः श्रौत्रः,  ६। जो भी यह्‌ भोत्रमे रहनेवाला मयतीति प्रातिश्रुत्कः, तस्य का  प्रातिशर्क है, उसका देवता कौन तम एव॒ यस्यायतन ‡ हदयं छोको मनो- पुरुषः सं एष वदेव शाकल्य तस्य का देवतेति  शाकव्य- 'तम ही जिसका आयतन हि, हृदय लोकं है, मन ज्योति हे, जो भी उस पुरुषको सम्पूणं अध्यात्म कार्य-करणसमूहका परायण जानता हे, वही ज्ञाता है, याज्ञवस्क्य !  तुम तो बिना जाने ही पण्डित",
-          "science": "आकराञ्च एव यस्पायतनमर्‌ आकाश ही जिसका आयतन य एवायं श्रोत्रे भवः श्रौत्रः, ६। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3226,8 +2946,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tama eva yasyā''yatanam̐ hṛdayaṃ loko mano jyotiryo vai taṃ puruṣaṃ vidyātsarvasyā''tmanaḥ parāyaṇam̐, sa vai veditā syād yājñavalkya | veda vā ahaṃ taṃ puruṣam̐ sarvasyā''tmanaḥ parāyaṇaṃ yamāttha ya evāyaṃ chāyāmayaḥ puruṣaḥ sa eṣa vadaiva śākalya tasya kā devateti | mṛtyuriti hovāca ||",
           "translation": "Sâkalya said: 'Whosoever knows that person whose dwelling is darkness, whose sight is the heart, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâgñavalkya.' Yâgñavalkya replied: 'I know that person, the principle of every self, of whom thou speakest. The shadowy person, \"he is he.\" But tell me, Sâkalya, who is his devatâ?' Sâkalya replied: 'Death.'",
           "explanation": "Sense: Sâkalya said: 'Whosoever knows that person whose dwelling is darkness, whose sight is the heart, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâg&ntilde;avalkya.' Yâg&ntilde;avalkya replied: 'I know that person, the principle of every self,…",
-          "hindi": "तम्‌ एव यस्यायतनम्‌ । तम ¦ तम ही जिसका आयतन है । त शानरा्न्धकारः परिगृह्यते  (तमः शब्दसे रात्रि आादिका अन्धकार तरह्मण ९ शङ्करमाष्याथं ८०१ देवतं तस्य निष्पत्तिकारणम्‌  रूपाण्येव यस्यायतनं चक्ु्खोको मनोज्योतिर्थो वै देव शाकस्य तस्य का देवतेस्यसुरिति होवाच  शाकल्य “प ही जिसका आयतन हे, नेत्र लोक है ओर मन ज्योति हे, उस पुरुषको जो भी सम्पूणं अध्यात्म काय॑-करणसंघातका प्रायण जानता है, वही ज्ञाता है! ह याज्ञवल्क्य !  तुम तो बिना जाने",
-          "science": "तम्‌ एव यस्यायतनम्‌। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3243,8 +2961,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "rūpāṇyeva yasyā''yatanaṃ cakṣurloko mano jyotiryo vai taṃ puruṣaṃ vidyātsarvasyā''tmanaḥ parāyaṇam̐, parāyaṇaṃ sa vai veditā syād yājñavalkya | veda vā ahaṃ taṃ puruṣam̐ sarvasyā''tmanaḥ parāyaṇaṃ yamāttha ya evāyamādarśe puruṣaḥ sa eṣa vadaiva śākalya tasya kā devatetyasuriti hovāca ||",
           "translation": "Sâkalya said: 'Whosoever knows that person whose dwelling are (bright) colours, whose sight is the eye, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâgñavalkya.' Yâgñavalkya replied: 'I know that person, the principle of every self, of whom thou speakest. The person in the looking-glass, \"he is he.\" But tell me, Sâkalya, who is his devatâ?' Sâkalya replied: 'Vital breath' (asu).",
           "explanation": "Sense: Sâkalya said: 'Whosoever knows that person whose dwelling are (bright) colours, whose sight is the eye, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâg&ntilde;avalkya.' Yâg&ntilde;avalkya replied: 'I know that person,…",
-          "hindi": "रूपाण्येव यस्यायतनम्‌ । पूवं रूप ही जिसका आयतन है  साधारणानि रूपाण्युक्तानि, इह तु पहले साधारण सूप के गये है, १. मृत्यु\" शब्दसे यहां ईश्वर ( अभ्याकृत ) समन्ञना चाहिये, जसा कि आप एवं ॒यस्यायतन हृदयं लोको सनो- पुरषः स एष वदेव शाकस्य तस्य का देवतेति वरुण  शाकत्य-- जल ही जिसका आयतन है, हृदथ लोक है ओौर मन ज्योति हे, उस पूरुषको जो भी सम्पूणं अध्यात्म कार्य-करणसंघातका परायण जानता है, वही ज्ञाता है । है याज्ञवल्य !  तुम तो बिना जाने",
-          "science": "रूपाण्येव यस्यायतनम्‌। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3260,8 +2976,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "āpa eva yasyā''yatanam̐ hṛdayaṃ loko mano jyotiryo vai taṃ puruṣaṃ vidyātsarvasyā''tmanaḥ parāyaṇam̐, parāyaṇaṃ sa vai veditā syād yājñavalkya | veda vā ahaṃ taṃ puruṣam̐ sarvasyā''tmanaḥ parāyaṇaṃ yamāttha ya evāyamapsu puruṣaḥ sa eṣa vadaiva śākalya tasya kā devateti | varuṇa iti hovāca ||",
           "translation": "Sâkalya said: 'Whosoever knows that person whose dwelling is water, whose sight is the heart, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâgñavalkya.' Yâgñavalkya replied: 'I know that person, the principle of every self, of whom thou speakest. The person in the water, \"he is he.\" But tell me, Sâkalya, who is his devatâ?' Sâkalya replied: 'Varuna.'",
           "explanation": "Sense: Sâkalya said: 'Whosoever knows that person whose dwelling is water, whose sight is the heart, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâg&ntilde;avalkya.' Yâg&ntilde;avalkya replied: 'I know that person, the principle of every self,…",
-          "hindi": "९ प्राणहरा वर्षण करनेपर ही आदर्थादि प्रतिविम्ब ग्रहण करनेके योग्य होते है; इसलिये असुको भरतिविम्बसंज्ञक पुरुषकी निष्पत्तिका कारण बतलाना आप एव यस्य॒ श्रयतनम्‌ । जल हौ जिसका आयतन है । रेत एवं यस्यायतन  हृदयं खोको मनोज्योतिर्यो परुषः स एष वदेव शाकल्य तस्य का देवतेति पजा-  शाकल्य-- वीयं ही जिसका आयतन है, हृदय लोक है ओर मन ज्योतिदहे, जो भी उस पुरुषको सम्परणं अध्यात्म कायं-करणसंघातका ङ्ग परायण जानता है, वही ज्ञाता है । है याज्ञवल्क्य !  तुम तो बिना जाने",
-          "science": "९ प्राणहरा वर्षण करनेपर ही आदर्थादि प्रतिविम्ब ग्रहण करनेके योग्य होते है; इसलिये असुको भरतिविम्बसंज्ञक पुरुषकी निष्पत्तिका कारण बतलाना आप एव यस्य॒ श्रयतनम्‌। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3277,8 +2991,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "reta eva yasyā''yatanam̐ hṛdayaṃ loko mano jyotiryo vai taṃ puruṣaṃ vidyātsarvasyā''tmanaḥ parāyaṇam̐, sa vai veditā syād yājñavalkya | veda vā ahaṃ taṃ puruṣam̐ sarvasyā''tmanaḥ parāyaṇaṃ yamāttha ya evāyaṃ putramayaḥ puruṣaḥ sa eṣa vadaiva śākalya tasya kā devateti | prajāpatiriti hovāca ||",
           "translation": "Sâkalya said: 'Whosoever knows that person whose dwelling is seed, whose sight is the heart, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâgñavalkya.' Yâgñavalkya replied: 'I know that person, the principle of every self, of whom thou speakest. The filial person, \"he is he.\" But tell me, Sâkalya, who is his devatâ?' Sâkalya replied: 'Pragâpati.'",
           "explanation": "Sense: Sâkalya said: 'Whosoever knows that person whose dwelling is seed, whose sight is the heart, whose mind is light,--the principle of every self, he indeed is a teacher, O Yâg&ntilde;avalkya.' Yâg&ntilde;avalkya replied: 'I know that person, the principle of every self,…",
-          "hindi": "१. वापी एवं क्रुपादिसे पिया हृञा जल जो शरीरमे मूत्रादि संघातको करता  है वह वरुणसे ही होता है। रश्मियोद्ारा  पृथिवीपर गिरा हुआ जल (वरुण शब्दसे कहा जाता है; क्योंकि वह॒ सूंकिरणोसे पृथिवीपर गिरनेवारा जल दी वस्थित एकैको देवः प्राणमेद एक-एक देवता ही अपनेको देवलोक ओर पुरुषभेदसे' तीन-तीन ,  „  „   वल्वयने कहा! त्वां स्विद्‌ इसमे ल्क्यः । त्वा स्वादात्‌ वतक, । स्विद्‌\" यह्‌ निपात वितकं अर्थम इमे नं ब्राह्मणाः, अङ्गारावत्त-  है, निश्चय दौ इन ब्राह्मणोने तुमह",
-          "science": "१. वापी एवं क्रुपादिसे पिया हृञा जल जो शरीरमे मूत्रादि संघातको करता है वह वरुणसे ही होता है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3294,8 +3006,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "śākalyeti hovāca yājñavalkyastvām̐ svidime brāhmaṇā aṅgārāvakṣayaṇamakratā3 iti ||",
           "translation": "Yâgñavalkya said: 'Sâkalya, did those Brâhmanas (who themselves shrank from the contest) make thee the victim ?' Sâkalya said: 'Yâgñavalkya, because thou hast decried the Brâhmanas of the Kuru-Pañkâlas, what Brahman dost thou know?'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'Sâkalya, did those Brâhmanas (who themselves shrank from the contest) make thee the victim ?' Sâkalya said: 'Yâg&ntilde;avalkya, because thou hast decried the Brâhmanas of the Kuru-Pa&ntilde;kâlas, what Brahman dost thou know?'",
-          "hindi": "देवता रौर प्रतिष्ठासहित दिशाग्रोके ज्ञानकी प्रतिज्ञा पञ्ारानां ब्राह्मणानत्यवादीः किं ब्रह्म विद्वानिति \"हे याज्ञवल्क्य !' एेसा शाकल्यने कहा, यह्‌ जो तुम इन कुरुपाच्राल-  देशीय ब्राह्मणोपर आक्षेप करते होसो क्या तुम ब्रह्मवेत्ता हो-रेसौ समभाकर करते हो ?  याज्ञवल्क्य- मेरा ब्रह्यज्ञान यह है कि  भं = कि कहा, तुमने जो यह कुरुपाच्चाल-  + देशीय त्ब्राह्मणोंका अतिवाद-अति- नत्यवादीः-अरलयुक्तवानसि-स्वयं'माषण (आशक्षेपद्वारा तिरस्कारः) क्रिया",
-          "science": "देवता रौर प्रतिष्ठासहित दिशाग्रोके ज्ञानकी प्रतिज्ञा पञ्ारानां ब्राह्मणानत्यवादीः किं ब्रह्म विद्वानिति \"हे याज्ञवल्क्य !' एेसा शाकल्यने कहा, यह्‌ जो तुम इन…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3311,8 +3021,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyeti hovāca śākalyo yadidaṃ kurupañcālānāṃ brāhmaṇānatyavādīḥ kiṃ brahma vidvāniti | diśo veda sadevāḥ sapratiṣṭhā iti | yaddiśo vettha sadevāḥ sapratiṣṭhāḥ ||",
           "translation": "Yâgñavalkya said: 'I know the quarters with their deities and their abodes.' Sâkalya said: 'If thou knowest the quarters with their deities and their abodes,",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'I know the quarters with their deities and their abodes.' Sâkalya said: 'If thou knowest the quarters with their deities and their abodes,",
-          "hindi": "है कि थये स्वयं भयग्रस्त हौनेके कारण तुम्हुं अगारे निकालनेका चिमटा बनाये हुए है\" सो क्या तुम देवता ग्रौर प्रतिष्ठासटहित पूरवदिशाका वर्णन इस पुवदिशायें तुम किस देवतासे युक्तं हो ?  याज्ञवल्क्य -- \"वही में आदिय ( सूयं ) देवतावाला हं +  शाकल्य  \"वह॒ आदित्य किसे परहिष्ठित है १  याज्ञवल्क्य नेत्रमे  शाकल्य नेत्र किसमें प्रतिष्ठित",
-          "science": "है कि थये स्वयं भयग्रस्त हौनेके कारण तुम्हुं अगारे निकालनेका चिमटा बनाये हुए है\" सो क्या तुम देवता ग्रौर प्रतिष्ठासटहित पूरवदिशाका वर्णन इस पुवदिशायें तुम कि…। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3328,8 +3036,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "kindevato'syāṃ prācyāṃ diśyasītyādityadevata iti | sa ādityaḥ kasminpratiṣṭhita iti | cakṣuṣīti | kasminnu cakṣuḥ pratiṣṭhitamiti | rūpeṣviti cakṣuṣā hi rūpāṇi paśyati | kasminnu rūpāṇi pratiṣṭhitānīti | hṛdaya iti hovāca hṛdayena hi rūpāṇi jānāti hṛdaye hyeva rūpāṇi pratiṣṭhitāni bhavantītyevamevaitad yājñavalkya ||",
           "translation": "'Which is thy deity in the Eastern quarter?' Yâgñavalkya said: 'Âditya (the sun).' Sâkalya said: 'In what does that Âditya abide?' Yâgñavalkya said: 'In the eye.' Sâkalya said: 'In what does the eye abide?' Yâgñavalkya said: 'In the colours, for with the eye he sees the colours.' Sâkalya said: 'And in what then do the colours abide?' Yâgñavalkya said: 'In the heart , for we know colours by the heart, for colours abide in the heart .' Sâkalya said: 'So it is indeed, O Yâgñavalkya.'",
           "explanation": "Sense: 'Which is thy deity in the Eastern quarter?' Yâg&ntilde;avalkya said: 'Âditya (the sun).' Sâkalya said: 'In what does that Âditya abide?' Yâg&ntilde;avalkya said: 'In the eye.' Sâkalya said: 'In what does the eye abide?' Yâg&ntilde;avalkya said: 'In the colours,…",
-          "hindi": "किम्देवतः का देवतास्य तव ुषास्ते, इहैव तद्धतस्तां तां अर्थात्‌ दिशास्वरूपमें स्थित हृए द्वारा वह प्रयुक्त होता हि, उन्होने अपनेको ग्रहण करनेके लिये ही चक्षुको उत्पन्न किया है । अतः देवता ग्रौर प्रतिष्ठाके सित दक्षिण दिशाका वर्णन प्रतिष्ठित इति दक्षिणायामिति करिमन्ु दक्षिणा प्रतिष्ठि- ८१० चृहदारण्यकोपनिषद्‌  मध्याय ३",
-          "science": "किम्देवतः का देवतास्य तव ुषास्ते, इहैव तद्धतस्तां तां अर्थात्‌ दिशास्वरूपमें स्थित हृए द्वारा वह प्रयुक्त होता हि, उन्होने अपनेको ग्रहण करनेके लिये ही चक्षुक…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3345,8 +3051,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "kindevato'syāṃ dakṣiṇāyāṃ diśyasīti | yamadevata iti | sa yamaḥ kasminpratiṣṭhita iti | yajña iti | kasminnu yajñaḥ pratiṣṭhita iti| dakṣiṇāyāmiti | kasminnu dakṣiṇā pratiṣṭhiteti śraddhāyāmiti yadā hyeva śraddhatte'tha dakṣiṇāṃ dadāti śraddhāyām̐ hyeva dakṣiṇā pratiṣṭhiteti kasminnu śraddhā pratiṣṭhiteti hṛdaya iti hovāca hṛdayena hi śraddhāṃ jānāti hṛdaye hyeva śraddhā pratiṣṭhitā bhavatītyevamevaitad yājñavalkya ||",
           "translation": "Sâkalya said: 'Which is thy deity in the Southern quarter?' Yâgñavalkya said: 'Yama.' Sâkalya said: 'In what does that Yama abide?' Yâgñavalkya said: 'In the sacrifice.' Sâkalya said: 'In what does the sacrifice abide?' Yâgñavalkya said: 'In the Dakshinâ (the gifts to be given to the priests).' Sâkalya said: 'In what does the Dakshinâ abide?' Yâgñavalkya said: 'In Sraddhâ (faith), for if a man believes, then he gives Dakshinâ, and Dakshinâ truly abides in faith.' Sâkalya said: 'And in what then does faith abide?' Yâgñavalkya said: 'In the heart, for by the heart faith knows, and therefore faith abides in the heart.' Sâkalya said: 'So it is indeed, O Yâgñavalkya.'",
           "explanation": "Sense: Sâkalya said: 'Which is thy deity in the Southern quarter?' Yâg&ntilde;avalkya said: 'Yama.' Sâkalya said: 'In what does that Yama abide?' Yâg&ntilde;avalkya said: 'In the sacrifice.' Sâkalya said: 'In what does the sacrifice abide?' Yâg&ntilde;avalkya said: 'In the Dakshinâ (th…",
-          "hindi": "दिश्यसीति पूववत्‌ । दक्षिणायां असि' इस वाक्यका अथं परूदवत्‌ दिशि का देवता तत्र १ यमदेवत सममना चाहिये । अर्थात्‌ दक्षिण ५६ † दिशा तुम्हारा कौन देवता है ? किन्देवतोऽस्यां प्रतीच्यां “इस पश्चिम ॒दिशामें तुम किस देवता मम । स वरुणः कस्मिन्‌  मरा अधिष्ठावृदेव वरुण ह ।' वहं हि (जलमेः- क्योंकि वरुण ज देवता श्रौर्‌ प्रतिष्ठाके सहित उत्तर दिलाका वणंन",
-          "science": "दिश्यसीति पूववत्‌। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3362,8 +3066,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "kindevato'syāṃ pratīcyāṃ diśyasīti | varuṇadevata iti | sa varuṇaḥ kasmin pratiṣṭhita ityapsviti | kasminnvāpaḥ pratiṣṭhiteti retasīti | kasminnu retaḥ pratiṣṭhiteti iti hṛdaya iti tasmādapi pratirūpaṃ jātamāhurhṛdayādiva sṛpto hṛdayādiva nirmita iti hṛdaye hyeva retaḥ pratiṣṭhitaṃ bhavatītyevamevaitad yājñavalkya ||",
           "translation": "Sâkalya said: 'Which is thy deity in the Western quarter?' Yâgñavalkya said: 'Varuna.' Sâkalya said: 'In what does that Varuna abide?' Yâgñavalkya said: 'In the water.' Sâkalya said: 'In what does the water abide?' Yâgñavalkya said: 'In the seed.' Sâkalya said: 'And in what does the seed abide?' Yâgñavalkya said: 'In the heart. And therefore also they say of a son who is like his father, that he seems as if slipt from his heart, or made from his heart; for the seed abides in the heart.' Sâkalya said: 'So it is indeed, O Yâgñavalkya.'",
           "explanation": "Sense: Sâkalya said: 'Which is thy deity in the Western quarter?' Yâg&ntilde;avalkya said: 'Varuna.' Sâkalya said: 'In what does that Varuna abide?' Yâg&ntilde;avalkya said: 'In the water.' Sâkalya said: 'In what does the water abide?' Yâg&ntilde;avalkya said: 'In the seed.' Sâkalya sa…",
-          "hindi": "“इस उत्तर दिशामे तुम किस देवतावाले हो ?'  याज्ञवस्क्य--  सोमदेवतावाला हं  शाकल्य --  वह सोम किसमे प्रतिष्ठित है ?  याज्ञवल्क्य \"क्षामे ।'  शाकल्य  दीक्षा किसमे प्रतिष्ठित है ? कारणभ्रेषे कायभरेषो मा भूदिति; इस उत्तर दिशामें तुम कौन हू\" सोम\" इस शब्दसे सोमलता ओर सोमदेवताको एक मानकर",
-          "science": "“इस उत्तर दिशामे तुम किस देवतावाले हो ?' याज्ञवस्क्य-- सोमदेवतावाला हं शाकल्य -- वह सोम किसमे प्रतिष्ठित है ? याज्ञवल्क्य \"क्षामे। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3379,8 +3081,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "kindevato'syāmudīcyāṃ diśyasīti | somadevata iti | sa somaḥ kasminpratiṣṭhita iti | dīkṣāyāmiti | kasminnu dīkṣā pratiṣṭhiteti satya iti tasmādapi dīkṣitamāhuḥ satyaṃ vadeti satye hyeva dīkṣā pratiṣṭhiteti kasminnu satyaṃ pratiṣṭhitamiti hṛdaya iti hovāca hṛdayena hi satyaṃ jānāti hṛdaye hyeva satyaṃ pratiṣṭhitaṃ bhavatītyevamevaitad yājñavalkya ||",
           "translation": "Sâkalya said: 'Which is thy deity in the Northern quarter?' Yâgñavalkya said: 'Soma.' Sâkalya said: 'In what does that Soma abide?' Yâgñavalkya said: 'In the Dîkshâ .' Sâkalya said: 'In what does the Dîkshâ abide?' Yâgñavalkya said: 'In the True; and therefore they say to one who has performed the Dîkshâ, Speak what is true, for in the True indeed the Dîkshâ abides.' Sâkalya said: 'And in what does the True abide?' Yâgñavalkya said: 'In the heart, for with the heart do we know what is true, and in the heart indeed the True abides.' Sâkalya said: 'So it is indeed, O Yâgñavalkya.'",
           "explanation": "Sense: Sâkalya said: 'Which is thy deity in the Northern quarter?' Yâg&ntilde;avalkya said: 'Soma.' Sâkalya said: 'In what does that Soma abide?' Yâg&ntilde;avalkya said: 'In the Dîkshâ .' Sâkalya said: 'In what does the Dîkshâ abide?' Yâg&ntilde;avalkya said: 'In the True;…",
-          "hindi": "देवता श्रौर प्रतिष्ठके सित ध्रुवा दिश्ाका वर्णन \"इस ध्र वा दिशामें तुम कौन देवतावाले हो ?'  याज्ञवल्क्य  \"वह॒ अग्नि किसमं प्रतिष्ठित है?\"  याज्ञवल्क्य--  \"वाकम ”  शाकव्य--  वान्‌ किषमें प्रतिष्ठित है ?' ऊर्ध्वायां हि प्रकालभूयस्त्वम्‌  इस ध्र्‌ःवा दिशामे तुम कौन देवतावाले हो ?' मेरके चारों ओर",
-          "science": "देवता श्रौर प्रतिष्ठके सित ध्रुवा दिश्ाका वर्णन \"इस ध्र वा दिशामें तुम कौन देवतावाले हो ?' याज्ञवल्क्य \"वह॒ अग्नि किसमं प्रतिष्ठित है?\" याज्ञवल्क्य-- \"वाकम ”…। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3396,8 +3096,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "kindevato'syāṃ dhruvāyāṃ diśyasītyagnidevata iti | so'gniḥ kasminpratiṣṭhita iti vācīti | kasminnu vākpratiṣṭhiteti hṛdaya iti | kasminnu hṛdayaṃ pratiṣṭhitamiti",
           "translation": "Sâkalya said: 'Which is thy deity in the zenith?' Yâgñavalkya said: 'Agni.' Sâkalya said: 'In what does that Agni abide.' Yâgñavalkya said: 'In speech.' Sâkalya said: 'And in what does speech abide Yâgñavalkya said: 'In the heart.' Sâkalya said: 'And in what does the heart abide?'",
           "explanation": "Sense: Sâkalya said: 'Which is thy deity in the zenith?' Yâg&ntilde;avalkya said: 'Agni.' Sâkalya said: 'In what does that Agni abide.' Yâg&ntilde;avalkya said: 'In speech.' Sâkalya said: 'And in what does speech abide Yâg&ntilde;avalkya said: 'In the heart.' Sâkalya said: 'And in what…",
-          "hindi": "आत्मभूत थं। जो रूप था,वह्‌ पूव दिशाके सहित याज्ञवल्क्यका हृदय- केवल कर्म, पत्ोत्पादनरूप कमं हदय ग्रौर शरीरका भ्रन्योन्याश्चयत्व अहच्लिकेति होवाच याज्ञवल्क्यो यत्रेतदन्य- नास्मन्मन्यासे य द्धे तदन्यत्रास्मतस्याच्छ्वानो वेन- समय तुम इसे अलग मानते हो, उस तो इसे कुत्ते खा जाय, अथव ' एेसा सम्बोधन करके कटहा-“जिस",
-          "science": "आत्मभूत थं। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3421,8 +3119,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "kasminnu tvaṃ cātmā ca pratiṣṭhitau  stha iti | prāṇa iti | kasminnu prāṇaḥ pratiṣṭhita ityapāna iti | kasminnvapānaḥ pratiṣṭhita iti | vyāna iti | kasminnu vyānaḥ pratiṣṭhita ityudāna iti | kasminnūdānaḥ pratiṣṭhita iti | samāna iti | sa eṣa neti netyātmā'gṛhyo na hi gṛhyate'śīryo na hi śīryate'saṅgo na hi sajyate'sito na vyathate na riṣyatyetānyaṣṭāvāyatanānyaṣṭau lokā aṣṭau devā aṣṭau puruṣāḥ | sa yastānpuruṣānniruhya pratyuhyātyakrāmat taṃ tvaupaniṣadaṃ puruṣaṃ pṛcchāmi | taṃ cenme na vivakṣyasi mūrdhā te vipatiṣyatīti | tam̐ ha na mene śākalyastasya ha mūrdhā vipapāta api hāsya parimoṣiṇo'sthīnyapajahruranyanmanyamānāḥ ||",
           "translation": "Sâkalya said: 'And in what dost thou (thy body) and the Self (thy heart) abide?' Yâgñavalkya said: 'In the Prâna (breath).' Sâkalya said: 'In what does the Prâna abide?' Yâgñavalkya said: In the Apâna (down-breathing) .' Sâkalya said: 'In what does the Apâna abide?' Yâgñavalkya said: 'In the Vyâna (back-breathing ) .' Sâkalya said: 'In what does the Vyâna-abide?' Yâgñavalkya said: 'In the Udâna (the out-breathing) .' Sâkalya said: 'In what does the Udâna abide?' Yâgñavalkya said: 'In the Samâna . That Self (âtman) is to be described by No, no ! He is incomprehensible, for he cannot be (is not) comprehended; he is imperishable, for he cannot perish; he is unattached, for he does not attach himself; unfettered, he does not suffer, he does not fail.'",
           "explanation": "Sense: Sâkalya said: 'And in what dost thou (thy body) and the Self (thy heart) abide?' Yâg&ntilde;avalkya said: 'In the Prâna (breath).' Sâkalya said: 'In what does the Prâna abide?' Yâg&ntilde;avalkya said: In the Apâna (down-breathing) .' Sâkalya said: 'In what does the Apâna abide?…",
-          "hindi": "अहरिरकेति होवाच यान्-  जो दिनमें छोन हो जाता है वह अहल्लिक वर्कथः, नामान्तरेण सम्बोधनं  अर्थात्‌  प्रेतवाची  अन्य नामसे सम्बोधन किया । जिस समय यह्‌ हदय-इस शरीरका आत्मा हमसे अन्यत्र किसी देशान्तरमें रहता है- समानपर्यन्त शरीरादिकी प्रतिष्ठा तथा म्रात्मस्वरूपका वणन श्रौर शाकल्यका शिरःपतन शाकल्य इस प्रकार तुमने",
-          "science": "अहरिरकेति होवाच यान्- जो दिनमें छोन हो जाता है वह अहल्लिक वर्कथः, नामान्तरेण सम्बोधनं अर्थात्‌ प्रेतवाची अन्य नामसे सम्बोधन किया। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3438,8 +3134,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha hovāca brāhmaṇā bhagavanto yo vaḥ kāmayate sa mā pṛcchatu sarve vā mā pṛcchata yo vaḥ kāmayate taṃ vaḥ pṛcchāmi sarvānvā vaḥ pṛcchāmīti | te ha brāhmaṇā na dadhṛṣuḥ ||",
           "translation": "Then Yâgñavalkya said: 'Reverend Brâhmanas, whosoever among you desires to do so, may now question me. Or question me, all of you. Or whosoever among you desires it, I shall question him, or I shall question all of you. But those Brâhmanas durst not (say anything).",
           "explanation": "Sense: Then Yâg&ntilde;avalkya said: 'Reverend Brâhmanas, whosoever among you desires to do so, may now question me. Or question me, all of you. Or whosoever among you desires it, I shall question him, or I shall question all of you. But those Brâhmanas durst not (say anything).",
-          "hindi": "तुम (शरीर ) ओर आत्मा ( हृदय ) किसमें प्रतिष्ठत हो ॥'  याज्ञवल्क्य- श्राणमें ।'  शाकल्य  श्राण किसने प्रतिष्ठित है? अपाने ।' अपान किसे प्रतिष्ठित है ? 'व्यानमें । ध्यान किसमं याज्ञवल्व्यका सभासदोको प्रदन करनेके लिये श्रामन्व्रण यस्थ नेति नेतीत्यन्यप्रतिषेध-  जिस ब्रह्मका (तेति-नेति\" इष दारेण ब्रह्मणो निर्देशः कृतः,  प्रकार अन्य पदाथि प्रतिषेषद्रारा किर याज्ञवल्वयने कहा, शून्य ब्राह्मणगण ! आपमैसे जिसको इच्छा हो वह मुमे प्रन करे, अथवा आप सभौ मुभे प्रशन करे, इसी प्रकार आपेसे जिसकी इच्छा हो, उससे मेँ प्रन करता हँ या आप सभीसे मे",
-          "science": "तुम (शरीर ) ओर आत्मा ( हृदय ) किसमें प्रतिष्ठत हो ॥' याज्ञवल्क्य- श्राणमें। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3455,8 +3149,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tānhaitaiḥ ślokaiḥ papraccha yathā vṛkṣo vanaspatistathaiva puruṣo'mṛṣā tasya lomāni parṇāni tvagasyotpāṭikā bahiḥ || tvaca evāsya rudhiraṃ prasyandi tvaca utpaṭaḥ tasmāttadatṛṇṇātpraiti raso vṛkṣādivā''hatāt || mām̐sānyasya śakarāṇi kināṭam̐ snāva tatsthiram | asthīnyantarato dārūṇi majjā majjopamā kṛtā || yadvṛkṣo vṛkṇo rohati mūlānnavataraḥ punaḥ martyaḥ svinmṛtyunā vṛkṇaḥ kasmānmūlātprarohati || retasa iti mā vocata jīvatastatprajāyate dhānāruha iva vai vṛkṣo'ñjasā pretya sambhavaḥ || yatsamūlamāvṛheyurvṛkṣaṃ na punarābhavet | martyaḥ svinmṛtyunā vṛkṇaḥ kasmānmūlātprarohati || jāta eva na jāyate ko nvenaṃ janayetpunaḥ vijñānamānandaṃ brahma rātirdātuḥ parāyaṇaṃ tiṣṭhamānasya tadvida iti || || || iti bṛhadāraṇyakopaniṣadi tṛtīyo'dhyāyaḥ ||",
           "translation": "Then Yâgñavalkya questioned them with these Slokas:",
           "explanation": "Sense: Then Yâg&ntilde;avalkya questioned them with these Slokas:",
-          "hindi": "जो अन्तरिक्षमे रहनेवाला अन्तरिक्षके भीतर हे, जिसे अन्त- रिक्ष नहीं जानता, अन्तरिश्च जिसका शरीर है ओरजो भीतर रहकर अन्तरिक्षका नियमन करता है, वह तुम्हारा आत्मा अन्तर्यामी जो वायुम रहनेवाला वायके भीतर है, जिसे वाु नहीं जानता, वायु जिसका शरीर हैओरजो भीतर रहकर वायुका नियमन करतां है, वह्‌ तुम्हारा आत्मा अन्तर्यामी अमृत है जो दुलोकमे रहनेवाला दुलोकके भीतर टै, जिसे दयुलोक नहीं जानता, दुलोक्‌ जिसका शरीरहै ओर जो भीतर रहकर द्युलोक- का नियमन करतादहै, वह तुम्हारा आत्मा अन्तर्यामी अग्रत है",
-          "science": "जो अन्तरिक्षमे रहनेवाला अन्तरिक्षके भीतर हे, जिसे अन्त- रिक्ष नहीं जानता, अन्तरिश्च जिसका शरीर है ओरजो भीतर रहकर अन्तरिक्षका नियमन करता है, वह तुम्हारा आत्मा…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Akshara",
@@ -3480,8 +3172,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "oṃ janako ha vaideha āsāṃ cakre'tha ha yājñavalkya āvavrāja | tam̐ hovāca yājñavalkya kimarthamacārīḥ paśūnicchannaṇvantānityubhayameva samrāḍ iti hovāca ||",
           "translation": "When Ganaka Vaideha was sitting (to give audience), Yâgñavalkya approached, and Ganaka Vaideha said: 'Yâgñavalkya, for what object did you come, wishing for cattle, or for subtle questions ?' Yâgñavalkya replied: 'For both, Your Majesty;",
           "explanation": "Sense: When Ganaka Vaideha was sitting (to give audience), Yâgñavalkya approached, and Ganaka Vaideha said: 'Yâgñavalkya, for what object did you come, wishing for cattle, or for subtle questions ?' Yâgñavalkya replied: 'For both, Your Majesty;",
-          "hindi": "हे ब्रह्मणा भगवन्त इत्येवं कामयते इच्डति--याज्ञ्रल्क्यं यो वः कामयते याज्ञवसकधो याज्ञवल्क्यके प्रक्ष तान्‌ हेते: इटोकेः पप्रच्छ-- तस्य रोमानि पणानि खगस्योत्पाटिका बहिः याज्ञवल्क्यने उनसे इन रलोकोद्वारा प्रन किया--वनस्पति ( विज्ञा- लता आदि गुणोंसे युक्त ) वृक्ष जैसा ( जिस धमंसि युक्त ) होता है, पुरुष ( जीवका शरीर ) भी वैसा ही ( उन्हीं धर्मोसि सम्पच्च ) होता है-यह",
-          "science": "हे ब्रह्मणा भगवन्त इत्येवं कामयते इच्डति--याज्ञ्रल्क्यं यो वः कामयते याज्ञवसकधो याज्ञवल्क्यके प्रक्ष तान्‌ हेते: इटोकेः पप्रच्छ-- तस्य रोमानि पणानि खगस्योत्प…। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Shakalya",
@@ -3497,8 +3187,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yatte kaścidabravīt tacchṛṇavāmetyabravīn me jitvā śailinirvāgvai brahmeti | yathā mātṛmānpitṛmānācāryavānbrūyāt tathā tacchailirabravīd vāgvai brahmetyavadato hi kim̐ syādityabravīttu te tasyā''yatanaṃ pratiṣṭhām | na me'bravīdityekapādvā etat samrāḍ iti | sa vai no brūhi yājñavalkya | vāgevā''yatanamākāśaḥ pratiṣṭhā prajñetyenadupāsīta | kā prajñatā yājñavalkya | vāgeva samrāḍ iti hovāca vācā vai samrāḍ bandhuḥ prajñāyata ṛgvedo yajurvedaḥ sāmavedo'tharvāṅgirasa itihāsaḥ purāṇaṃ vidyā upaniṣadaḥ ślokāḥ sūtrāṇyanuvyākhyānāni vyākhyānānīṣṭam̐ hutamāśitaṃ pāyitamayaṃ ca lokaḥ paraśca lokaḥ sarvāṇi ca bhūtāni vācaiva sarvāṇi ca bhūtāni vācā eva samrāṭ prajñāyante vāgvai samrāṭ paramaṃ brahma nainaṃ vāgjahāti sarvāṇyenaṃ bhūtānyabhikṣaranti | devo bhūtvā devānapyeti ya evaṃ vidvānetadupāste | hastyṛṣabham̐ sahasraṃ dadāmīti hovāca janako vaidehaḥ | sa hovāca yājñavalkyaḥ pitā me'manyata nānanuśiṣya hareteti ||",
           "translation": "'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Gitvan Sailini told me that speech (vâk) is Brahman.' Yâgñavalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell, so did Sailini tell you, that speech is Brahman; for what is the use of a dumb person? But did he tell you the body (âyatana) and the resting-place (pratishthâ) of that Brahman?' Ganaka Vaideha said: 'He did not tell me.' Yâgñavalkya said: 'Your Majesty, this (Brahman) stands on one leg only .' Ganaka Vaideha said: 'Then tell me, Yâgñavalkya.' Yâgñavalkya said: 'The tongue is its body, ether its place, and one should worship it as knowledge.' Ganaka Vaideha said: 'What is the nature of that knowledge?' Yâgñavalkya replied: 'Your Majesty, speech itself (is knowledge). For through speech, Your Majesty, a friend is known (to be a friend), and likewise the Rig-Veda, Yagur-veda, Sâma-veda, the Atharvâ&#7749;girasas, the Itihâsa (tradition), Purâna-vidyâ (knowledge of the past), the Upanishads, Slokas (verses), Sûtras (rules), Anuvyâkhyânas and Vyâkhyânas (commentaries , &c.); what is sacrificed, what is poured out, what is (to be) eaten and drunk, this world and the other world, and all creatures. By speech alone, Your Majesty, Brahman is known, speech indeed, O King, is the Highest Brahman. Speech does not desert him who worships that (Brahman) with such knowledge, all creatures approach him, and having become a god, he goes to the gods.' Ganaka Vaideha said: 'I shall give you (for this) a thousand cows with a bull as big as an elephant.' Yâgñavalkya said: 'My father was of opinion that one should not accept a reward without having fully instructed a pupil.'",
           "explanation": "Sense: 'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Gitvan Sailini told me that speech (vâk) is Brahman.' Yâg&ntilde;avalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell, so did Sailini tell you, that speech is Brahman;…",
-          "hindi": "तेषु अप्रगरमभूतेषु ब्रह्मणेषु  तान्‌ हैतेवकष्यमणेः इलोकैः पच्छ उनसे इन आगे कहे पृष्टवान्‌ । यथा लोके वृतो वन- इस पुरुषकी त्वचासे ही रक्त चरूता है ओर वृक्षको भी त्वचा (छाल) से ही गोद निकलता है । वृक्ष ओर पुरुषकी इस समानताके कारण ही जिष प्रकार आघात लगनेपर वृक्षपे रस निकलता है, उसी प्रकार चोट सपरच एव॒ सकाशादस्व पुरुष- इस पुरुषकर त्वचाके ही पाससे स्य रुधिरं प्रस्यन्दि, वनस्पतेस्खच। रक्त चकर गिरता है ओर वनस्पतिकी ८२६ बृहदारण्यकोपनिषद्‌ अध्याय ३",
-          "science": "तेषु अप्रगरमभूतेषु ब्रह्मणेषु तान्‌ हैतेवकष्यमणेः इलोकैः पच्छ उनसे इन आगे कहे पृष्टवान्‌। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Shakalya",
@@ -3514,8 +3202,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadeva te kaścidabravīttacchṛṇavāmetyabravīnma ūdaṅkaḥ śaulbāyanaḥ prāṇo vai brahmeti | yathā mātṛmānpitṛmānācāryavānbrūyāt tathā tacchaulvāyano'bravīt prāṇo vai brahmetyaprāṇato hi kim̐ syādityabravīttu te tasyā''yatanaṃ pratiṣṭhām | na me'bravīdityekapādvā etat samrāḍ iti | sa vai no brūhi yājñavalkya | prāṇa evā''yatanamākāśaḥ pratiṣṭhā priyamityenadupāsīta | kā priyatā yājñavalkya | prāṇa eva samrāḍ iti hovāca prāṇasya vai samrāṭ kāmāyāyājyaṃ yājayatyapratigṛhyasya pratigṛhṇātyapi tatra vadhāśaṅkaṃ bhavati yāṃ diśameti prāṇasyaiva samrāṭ kāmāya prāṇo vai samrāṭ paramaṃ brahma | nainaṃ prāṇo jahāti sarvāṇyenaṃ bhūtānyabhikṣaranti | devo bhūtvā devānapyeti ya evaṃ vidvānetadupāste | hastyṛṣabham̐ sahasraṃ dadāmīti hovāca janako vaidehaḥ | sa hovāca yājñavalkyaḥ pitā me'manyata nānanuśiṣya hareteti ||",
           "translation": "Yâgñavalkya said: 'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Uda&#7749;ka Saulbâyana told me that life (prâna) is Brahman.' Yâgñavalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell, so did Uda&#7749;ka Saulbâyana tell you that life is Brahman; for what is the use of a person without life? But did he tell you the body and the resting-place of that Brahman?' Ganaka Vaideha said: 'He did not tell me.' Yâgñavalkya said: 'Your Majesty, this (Brahman) stands on one leg only.' Ganaka Vaideha said: 'Then tell me, Yâgñavalkya.' Yâgñavalkya said: 'Breath is its body, ether its place, and one should worship it as what is dear.' Ganaka Vaideha said: 'What is the nature of that which is dear?' Yâgñavalkya replied: 'Your Majesty, life itself (is that which is dear);' because for the sake of life, Your Majesty, a man sacrifices even for him who is unworthy of sacrifice, he accepts presents from him who is not worthy to bestow presents, nay, he goes to a country, even when there is fear of being hurt , for the sake of life. Life, O King, is the Highest Brahman. Life does not desert him who worships that (Brahman) with such knowledge, all creatures approach him, and having become a god, he goes to the gods.' Ganaka Vaideha said: 'I shall give you (for this) a thousand cows with a bull as big as an elephant.' Yâgñavalkya said: 'My father was of opinion that one should not accept a reward without having fully instructed a pupil.'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Uda&#7749;ka Saulbâyana told me that life (prâna) is Brahman.' Yâg&ntilde;avalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell,…",
-          "hindi": "मांसान्थस्य शकराणि किनाट ५ स्नाव तत्‌ स्थिरम्‌ । अस्थीन्यन्तरतो दारूणि मना मञ्जोपमा करता पुरुषके शरीरम मांस होते हँ ओर वनस्पतिके शकर ( छालका भौतरी अंश ), पुरुषके स्नायु- जाल होते हँ मौर वृक्षम किनाट ( शकर- के भी भीतरका अंशा-विशेष ) । वह किनाट स्नायुकी ही भांति स्थिर एवं मांसान्यस्य पुरुषस्य, इसी प्रकार इस पुरुषके मांस ह ओर वनस्पतिके मांसस्थानीय 5 शकर--शकल ( लके भोतरका",
-          "science": "मांसान्थस्य शकराणि किनाट ५ स्नाव तत्‌ स्थिरम्‌। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Shakalya",
@@ -3531,8 +3217,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadeva te kaścidabravīt tacchṛṇavāmetyabravīnme barkurvārṣṇaścakṣurvai brahmeti | yathā mātṛmānpitṛmānācāryavān brūyāt tathā tadvārṣṇo'bravītccakṣurvai brahmetyapaśyato hi kim̐ syādityabravīttu te tasyā''yatanaṃ pratiṣṭhām | na me'bravīdityekapādvā etat samrāḍ iti | sa vai no brūhi yājñavalkya | cakṣurevā''yatanamākāśaḥ pratiṣṭhā satyamityetadupāsīta | kā satyatā yājñavalkya | cakṣureva samrāḍ iti hovāca cakṣuṣā vai samrāṭ paśyantamāhuradrākṣīriti | sa āhādrākṣamiti tatsatyaṃ bhavati cakṣurvai samrāṭ paramaṃ brahma nainaṃ cakṣurjahāti sarvāṇyenaṃ bhūtānyabhikṣaranti | devo bhūtvā devānapyeti ya evaṃ vidvānetadupāste | hastyṛṣabham̐ sahasraṃ dadāmīti hovāca janako vaidehaḥ | sa hovāca yājñavalkyaḥ pitā me'manyata nānanuśiṣya hareteti ||",
           "translation": "Yâgñavalkya said: 'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Barku Vârshna told me that sight (kakshus) is Brahman.' Yâgñavalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell, so did Barku Vârshna tell you that sight is Brahman; for what is the use of a person who cannot see? But did he tell you the body and the resting-place of that Brahman?' Ganaka Vaideha said: 'He did not tell me.' Yâgñavalkya said: 'Your Majesty, this (Brahman) stands on one leg only.' Ganaka Vaideha said: 'Then tell me, Yâgñavalkya.' Yâgñavalkya said: 'The eye is its body, ether its place, and one should worship it as what is true.' Ganaka Vaideha said: 'What is the nature of that which is true?' Yâgñavalkya replied: 'Your Majesty, sight itself (is that which is true); for if they say to a man who sees with his eye, \"Didst thou see?\" and he says, \"I saw,\" then it is true. Sight, O King, is the Highest Brahman. Sight does not desert him who worships that (Brahman) with such knowledge, all creatures approach him, and having become a god, he goes to the gods.' Ganaka Vaideha said: 'I shall give you (for this) a thousand cows with a bull as big as an elephant.' Yâgñavalkya said: 'My father was of opinion that one should not accept a reward without having fully instructed a pupil.'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Barku Vârshna told me that sight (kakshus) is Brahman.' Yâg&ntilde;avalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell,…",
-          "hindi": "कितु यदि वृक्षको काट दिया जाता है तो अपने सूलसे पुनः ओर भी नवीन होकर अङ्कुरित हो जाता है; इसी प्रकार यदि मनुष्यको मल्ु यदि वृक्षको काट दिया जाय तो वह पुतः-पूनः अपनी जडसे अतिशय नवीन -पहलेको अपेक्षा रेतस इति मा वोचत जीवतस्तत्‌ पजायते । वह वीयसे उत्पन्न होता है-एेसा तो मत कहो, क्योंकि वीयं तो जीवित पुरुषसे ही उत्पन्न होता है  मृत पुरुषसे नहीं  । वृक्ष भी केवल",
-          "science": "कितु यदि वृक्षको काट दिया जाता है तो अपने सूलसे पुनः ओर भी नवीन होकर अङ्कुरित हो जाता है; इसी प्रकार यदि मनुष्यको मल्ु यदि वृक्षको काट दिया जाय तो वह पुतः-पू…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Shakalya",
@@ -3548,8 +3232,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadeva te kaścidabravīt tacchṛṇavāmetyabravīnme gardabhīvipīto bhāradvājaḥ śrotraṃ vai brahmeti yathā mātṛmānpitṛmānācāryavānbrūyāt tathā tadbhāradvājo'bravīcchrotraṃ vai brahmetyaśṛṇvato hi kim̐ syādityabravīttu te tasyā''yatanaṃ pratiṣṭhām | na me'bravīdityekapādvā etat samrāḍ iti | sa vai no brūhi yājñavalkya | śrotramevā''yatanamākāśaḥ pratiṣṭhā'nantamityenadupāsīta | kā'nantatā yājñavalkya | diśa eva samrāḍ iti hovāca tasmādvai samrāḍ api yāṃ kāñca diśaṃ gacchati naivāsyā antaṃ gacchatyanantā hi diśo diśo vai samrāṭ śrotram̐śrotraṃ vai samrāṭ paramaṃ brahma | nainam̐ śrotraṃ jahāti sarvāṇyenaṃ bhūtānyabhikṣaranti | devo bhūtvā devānapyeti ya evaṃ vidvānetadupāste | hastyṛṣabham̐ sahasraṃ dadāmīti hovāca janako vaidehaḥ | sa hovāca yājñavalkyaḥ pitā me'manyata nānanuśiṣya hareteti ||",
           "translation": "Yâgñavalkya said: 'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Gardabhîvibhîta Bhâradvâga told me that hearing (sruta) is Brahman.' Yâgñavalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell, so did Gardabhîvibhîta Bhâradvâga tell you that hearing is Brahman; for what is the use of a person who cannot hear? But did he tell you the body and the resting-place of that Brahman?' Ganaka Vaideha said: 'He did not tell me.' Yâgñavalkya said: 'Your Majesty, this (Brahman) stands on one leg only.' Ganaka Vaideha said: 'Then tell me, Yâgñavalkya.' Yâgñavalkya said: 'The ear is its body, ether its place, and we should worship it as what is endless.' Ganaka Vaideha said: 'What is the nature of that which is endless?' Yâgñavalkya, replied: 'Your Majesty, space (disah) itself (is that which is endless), and therefore to whatever space (quarter) he goes, he never comes to the end of it. For space is endless. Space indeed, O King, is hearing , and hearing indeed, O King, is the Highest Brahman. Hearing does not desert him who worships that (Brahman) with such knowledge, all creatures approach him, and having become a god, he goes to the gods.' Ganaka Vaideha said: 'I shall give you (for this) a thousand cows with a bull as big as an elephant.' Yâgñavalkya said: 'My father was of opinion that one should not accept a reward without having fully instructed a pupil.'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Gardabhîvibhîta Bhâradvâga told me that hearing (sruta) is Brahman.' Yâg&ntilde;avalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell,…",
-          "hindi": "यदि चेदेवं बदथ-रेतसःप्ररो-  यदि तुम एला कहो कि वह ९ कहो-एेसा कहना उचित नहीं है; रुत्‌ रेतः प्रजायते, न ुरुषसे हो. उत्यन्न होता है, मरे  कटनेके बाद पनः प्रादुर्भाव हो जाताहै  कितु जीवके शरीरा इस प्रकार आविर्भाव नहीं देवा यदि वृक्षको भूलसहित उखाड़ दिया जाय तो वह्‌ फिर उत्पन्न नहीं होगा; इसी प्रकार यदि मनुष्यका मृत्यु छेदन कर दे तो वह किस सूलसे उत्पन्न होता है ?॥ ६!",
-          "science": "यदि चेदेवं बदथ-रेतसःप्ररो- यदि तुम एला कहो कि वह ९ कहो-एेसा कहना उचित नहीं है; रुत्‌ रेतः प्रजायते, न ुरुषसे हो. उत्यन्न होता है, मरे कटनेके बाद पनः प्रादुर्…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Shakalya",
@@ -3565,8 +3247,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadeva te kaścidabravīt tacchṛṇavāmetyabravīnme satyakāmo jābālo mano vai brahmeti yathā mātṛmānpitṛmānācāryavānbrūyāt tathā tajjābālo abravīn mano vai brahmetyamanaso hi kim̐ syādityabravīttu te tasyā''yatanaṃ pratiṣṭhām | na me'bravīdityekapādvā etat samrāḍ iti | sa vai no brūhi yājñavalkya | mana evā''yatanamākāśaḥ pratiṣṭhā''nanda ityenadupāsīta | kā''nandatā yājñavalkya | mana eva samrāḍ iti hovāca manasā vai samrāṭ striyamabhihāryate tasyāṃ pratirūpaḥ putro jāyate sa ānando | mano vai samrāṭ paramaṃ brahma nainaṃ mano jahāti sarvāṇyenaṃ bhūtānyabhikṣaranti | devo bhūtvā devānapyeti ya evaṃ vidvānetadupāste | hastyṛṣabham̐ sahasraṃ dadāmīti hovāca janako vaidehaḥ | sa hovāca yājñavalkyaḥ pitā me'manyata nānanuśiṣya hareteti ||",
           "translation": "Yâgñavalkya said: 'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Satyakâma Gâbâla told me that mind (manas) is Brahman.' Yâgñavalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell, so did Satyakâma Gâbâla tell you that mind is Brahman; for what is the use of a person without mind? But did he tell you the body and the resting-place of that Brahman?' Ganaka Vaideha said: 'He did not tell me.' Yâgñavalkya said: 'Your Majesty, this (Brahman) stands on one leg only.' Ganaka Vaideha said: 'Then tell me, Yâgñavalkya.' Yâgñavalkya said: 'Mind itself is its body, ether its place, and we should worship it as bliss.' Ganaka Vaideha said: 'What is the nature of bliss?' Yâgñavalkya replied: 'Your Majesty, mind itself; for with the mind does a man desire a woman, and a like son is born of her, and he is bliss. Mind indeed, O King, is the Highest Brahman. Mind does not desert him who worships that (Brahman) with such knowledge, all creatures approach him, and having become a god, he goes to the gods.' Ganaka Vaideha said: 'I shall give you (for this) a thousand cows with a bull as big as an elephant.' Yâgñavalkya said: 'My father was of opinion that one should not accept a reward without having fully instructed a pupil.'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Satyakâma Gâbâla told me that mind (manas) is Brahman.' Yâg&ntilde;avalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell,…",
-          "hindi": "को न्वेनं जनयेत्‌ पुनः विज्ञानमानन्दं ब्रह्म रातिदीतुः परायणं तिष्ठमानस्य  यदि एेसा मानो कि  पुरुष तो उत्पन्नहोही गया है, अतः फिर उत्पन्न नहीं होता  तो यह्‌ ठीक नही; क्थोकि वह मरकर पुनः उत्पन्न होता ही है  एेसी दशामें मत्युके पश्चात्‌ इसे पुनः कौन उत्पन्न करेगा ? जात॒ हैति मन्यध्वं यदि अतो वः पृच्डामि-को न्वेनं उसके विषयमे क्या परूना-क्योंकि",
-          "science": "को न्वेनं जनयेत्‌ पुनः विज्ञानमानन्दं ब्रह्म रातिदीतुः परायणं तिष्ठमानस्य यदि एेसा मानो कि पुरुष तो उत्पन्नहोही गया है, अतः फिर उत्पन्न नहीं होता तो यह्‌ ठीक…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Shakalya",
@@ -3582,8 +3262,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadeva te kaścidabravīt tacchṛṇavāmetyabravīnme vidagdhaḥ śākalyo hṛdayaṃ vai brahmeti yathā mātṛmānpitṛmānācāryavānbrūyāt tathā tacchākalyo'bravīd dhṛdayaṃ vai brahmetyahṛdayasya hi kim̐ syādityabravīttu te tasyā''yatanaṃ pratiṣṭhāṃ  | na me'bravīdityekapādvā etat samrāḍ iti | sa vai no brūhi yājñavalkya | hṛdayamevā''yatanamākāśaḥ pratiṣṭhā sthitirityenadupāsīta | kā sthititā yājñavalkya | hṛdayameva samrāḍ iti hovāca hṛdayaṃ vai samrāṭ sarveṣāṃ bhūtānāmāyatanam̐ hṛdayaṃ vai samrāṭ, sarveṣāṃ bhūtānāṃ pratiṣṭhā hṛdaye hyeva samrāṭ sarvāṇi bhūtāni pratiṣṭhitāni bhavanti hṛdayaṃ vai samrāṭ paramaṃ brahma nainam̐ hṛdayaṃ jahāti sarvāṇyenaṃ bhūtānyabhikṣaranti | devo bhūtvā devānapyeti ya evaṃ vidvānetadupāste | hastyṛṣabham̐ sahasraṃ dadāmīti hovāca janako vaidehaḥ | sa hovāca yājñavalkyaḥ pitā me'manyata nānanuśiṣya hareteti ||",
           "translation": "Yâgñavalkya said: 'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Vidagdha Sâkalya told me that the heart (hridaya) is Brahman.' Yâgñavalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell, so did Vidagdha Sâkalya tell you that the heart is Brahman; for what is the use of a person without a heart? But did he tell you the body and the resting-place of that Brahman?' Ganaka Vaideha said: 'He did not tell me.' Yâgñavalkya said: 'Your Majesty, this (Brahman) stands on one leg only.' Ganaka Vaideha said: 'Then tell me, Yâgñavalkya.' Yâgñavalkya said: 'The heart itself is its body, ether its place, and we should worship it as certainty (sthiti).' Ganaka Vaideha said: 'What is the nature of certainty?' Yâgñavalkya replied: 'Your Majesty, the heart itself; for the heart indeed, O King, is the body of all things, the heart is the resting-place of all things, for in the heart, O King, all things rest. The heart indeed, O King, is the Highest Brahman. The heart does not desert him who worships that (Brahman) with such knowledge, all creatures approach him, and having become a god, he goes to the gods.' Ganaka Vaideha said: 'I shall give you (for this) a thousand cows with a bull as big as an elephant.' Yâgñavalkya said: 'My father was of opinion that one should not accept a reward without having fully instructed a pupil.'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'Let us hear what anybody may have told you.' Ganaka Vaideha replied: 'Vidagdha Sâkalya told me that the heart (hridaya) is Brahman.' Yâg&ntilde;avalkya said: 'As one who had (the benefit of a good) father, mother, and teacher might tell,…",
-          "hindi": "। , आनन्दः\" इस व।क्यके समानदही चुके है ।! अतः आनन्दप्रतिपादक समस्त वाक्योको “एषोऽस्य परम ति श्रीसद्धोविन्दभगवद्पूज्यपादशिष्यस्य परमहंसपरिवाजकाचायंस्य १. मधूकाण्डमे जो बरहाका वेद्यत्व ह, वह्‌ सोपापिक्र होते कारण ठं। तिरुपायिकर ब्रह्म तो अवेद्य हौ है 1 जनको ह वेदेह असाश्वक्रे ।",
-          "science": "। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Shakalya",
@@ -3607,8 +3285,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "janako ha vaidehaḥ kūrcādupāvasarpannuvāca namaste'stu yājñavalkyānu mā śādhīti | sa hovāca yathā vai samrāṇ mahāntamadhvānameṣyanrathaṃ vā nāvaṃ vā samādadītaivamevaitābhirupaniṣadbhiḥ samāhitātmā'syasi evaṃ vṛndāraka āḍhyaḥ sannadhītaveda uktopaniṣatka ito vimucyamānaḥ kva gamiṣyasīti | nāhaṃ tad bhagavan veda yatra gamiṣyāmītyatha vai te'haṃ tadvakṣyāmi yatra gamiṣyasīti | bravītu bhagavāniti ||",
           "translation": "Ganaka Vaideha, descending from his throne, said: 'I bow to you, O Yâgñavalkya, teach me.' Yâgñavalkya said: 'Your Majesty, as a man who wishes to make a long journey, would furnish himself with a chariot or a ship, thus is your mind well furnished by these Upanishads . You are honourable, and wealthy, you have learnt the Vedas and been told the Upanishads. Whither then will you go when departing hence?' Ganaka Vaideha said: 'Sir, I do not know whither I shall go.' Yâgñavalkya said: 'Then I shall tell you this, whither you will go.' Ganaka Vaideha said: 'Tell it, Sir.'",
           "explanation": "Sense: When Ganaka Vaideha was sitting (to give audience), Yâg&ntilde;avalkya approached, and Ganaka Vaideha said: 'Yâg&ntilde;avalkya, for what object did you come, wishing for cattle, or for subtle questions ?' Yâg&ntilde;avalkya replied: 'For both, Your Majesty;",
-          "hindi": "विदेह जनक आसनपर स्थित था । तभी उसके पास याज्ञवल्कर्यजी आये । उनसे  जनकने  कहा, 'याज्ञवल्क्यज ! कंसे आये ? पञुओोकौ विदेह देशका राजा जनक हुए था अर्थात्‌ उसने राजाका दशेन क रेकी इच्छावालोके लिये अवसर दोनोंहौके लिये भाया हूं ॥ \"सम्राट्‌\" यह पद वाजपेय यज्ञ करनेवालेका सूचक है; जो भी",
-          "science": "विदेह जनक आसनपर स्थित था। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -3624,8 +3300,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "indho ha vai nāmaiṣa yo'yaṃ dakṣiṇe'kṣanpuruṣastaṃ vā etamindham̐ santamindra ityācakṣate parokṣeṇaiva parokṣapriyā iva hi devāḥ pratyakṣadviṣaḥ ||",
           "translation": "Yâgñavalkya said: 'That person who is in the right eye , he is called Indha, and him who is Indha they call indeed Indra mysteriously, for the gods love what is mysterious, and dislike what is evident.",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'That person who is in the right eye , he is called Indha, and him who is Indha they call indeed Indra mysteriously, for the gods love what is mysterious, and dislike what is evident.",
-          "hindi": "लैलिनिके बतलाये हुए वाक्‌-ब्रह्मकी उपासनाका फलसहित वंन टनिवाग्‌ बै ब्रह्मेति ५ मातृमान्‌ पितमाना- चायवान्‌ ब.यात्तथा तच्छेलिनिरवरवीद्‌ वाग्‌ वे ब्रह्मस्य  याज्ञवल्क्य-  तुभसे किभी आचायंने जो कहा है, वह ह्म सूने ।'  जनक-  'मुसे शिलिनके पत्र जित्वाने कहा है कि वाक्‌ ही ब्रह्म हे।' याज्ञवल्क्य “जिस प्रकार मावृमान्‌, पिक्मान्‌, आचायंवान्‌ कहे, उसी दतु यत्ते तुभ्यं कथिदन्रवी- ¦ कितु तुमसे जो कुड किसी   आचार्यने कहा है, वह हम सूते, दाचायं; अनेकाव्वाय॑सेवी दि । वयोकि तुम बहूत.से आचार्योकीसेवा",
-          "science": "लैलिनिके बतलाये हुए वाक्‌-ब्रह्मकी उपासनाका फलसहित वंन टनिवाग्‌ बै ब्रह्मेति ५ मातृमान्‌ पितमाना- चायवान्‌ ब.यात्तथा तच्छेलिनिरवरवीद्‌ वाग्‌ वे ब्रह्मस्य याज…। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -3641,8 +3315,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athaitadvāme'kṣaṇi puruṣarūpameṣā'sya patnī virāṭ tayoreṣa sam̐stāvo ya eṣo'ntarhṛdaya ākāśo'thainayoretadannaṃ ya eṣo'ntarhṛdaye lohitapiṇḍo'thainayoretatprāvaraṇaṃ yadetadantarhṛdaye jālakamivāthainayoreṣā sṛtiḥ sañcaraṇī yaiṣā hṛdayādūrdhvā nāḍyuccarati | yathā keśaḥ sahasradhā bhinna evamasyaitā hitā nāma nāḍyo'ntarhṛdaye pratiṣṭhitā bhavantyevamasya etāśitāsnāma nāḍyasantarhṛdaye pratiṣṭhitāsbhavanti etābhirvā etadāsravadāsravati tasmādeṣa praviviktāhāratara ivaiva bhavatyasmācchārīrādātmanaḥ ||",
           "translation": "'Now that which in the shape of a person is in the right eye, is his wife, Virâg . Their meeting-place is the ether within the heart, and their food the red lump within the heart. Again, their covering is that which is like net-work within the heart, and the road on which they move (from sleep to waking) is the artery that rises upwards from the heart. Like a hair divided into a thousand parts, so are the veins of it, which are called Hita , placed firmly within the heart. Through these indeed that (food) flows on flowing, and he (the Taigasa) receives as it were purer food than the corporeal Self (the Vaisvânara).",
           "explanation": "Sense: 'Now that which in the shape of a person is in the right eye, is his wife, Virâg . Their meeting-place is the ether within the heart, and their food the red lump within the heart. Again, their covering is that which is like net-work within the heart,…",
-          "hindi": "उदङ्कोक्त प्राण-ब्रह्मकौ उपासनाका फलसहितत वणंन उदङ्कः ोख्बायनः प्राणो वे ब्रह्मेति यथा मातृमान्‌ प्राण एवायतनमाकाशः प्रतिष्ठा श्रियमित्येनदपा-  याज्ञवल्क्य  (तुमसे किसी  आचायं  तेजोभी कहाहे, वह्‌ हम सुने ।'  जनक “मुफसे शुल्बके पत्र उदद्कुने श्राण ही ब्रह्म है' ठेसा कहा हे ॥'  याज्ञवल्क्य--  “जिस प्रकार मातृमान्‌, पितृमा, आचार्यवान्‌ ब्रह्मेति, प्राणो वाबुर्दवता-- पूवे वतू । प्राण एव्‌ ायतनमाकाश्चः वै है सम्राट्‌ कामाय प्राणस्यार्था-",
-          "science": "उदङ्कोक्त प्राण-ब्रह्मकौ उपासनाका फलसहितत वणंन उदङ्कः ोख्बायनः प्राणो वे ब्रह्मेति यथा मातृमान्‌ प्राण एवायतनमाकाशः प्रतिष्ठा श्रियमित्येनदपा- याज्ञवल्क्य (त…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -3658,8 +3330,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tasya prācī dikprāñcaḥ prāṇāḥ dakṣiṇā digdakṣiṇe prāṇāḥ pratīcī dikpratyañcaḥ prāṇā udīcī digudañcaḥ prāṇāḥ ūrdhvā digūrdhvāḥ prāṇāḥ avācī digavāñcaḥ prāṇāḥ sarvā diśaḥ sarve prāṇāḥ | sa eṣa neti netyā'tmāgṛhyo na hi gṛhyate'śīryo na hi śīryate'saṅgo na hi sajyate'sito na vyathate na riṣyatyvyathate asaṅgasna hi sajyate asitasna vyathate na riṣyati abhayaṃ vai janaka prāpto'sīti hovāca yājñavalkyaḥ | sa hovāca janako vaideho'bhayaṃ tvā gacchatād yājñavalkya yo no bhagavann abhayaṃ vedayase namaste'stvime videhā ayamahamasmi ||",
           "translation": "'His (the Taigasa's) Eastern quarter are the prânas (breath) which go to the East;",
           "explanation": "Sense: 'His (the Taigasa's) Eastern quarter are the prânas (breath) which go to the East;",
-          "hindi": "मुभसे उदङ्क नामवाले शौल्वायन- शुल्वके पुत्रने कहाहैकिप्राण ही ब्रह्म है । पूववत्‌ श्राण' वायुदेवता ववेक बताये हए चक्षुब्र ह्यकी उपासनाका फलसहित वर्णन शश्व ब्रह्मेति यथा मातरमान्‌ पितमानाचायंवान्‌ ब्रयात्तथा तद्‌ वा्ष्णोऽत्रवीच्चक्षुवे बह्मत्यपदयता है कस्या- यहैव ते कशिद्‌ बहुरिति ना-  देव ते कधित्‌\"-बकरु इस मतो दृष्णस्यापत्यं ाष्णैः; च्व  तामवाले वार्ण णके पुतन चचक्षुही ब्रह्य हे' एसा कहाहैः",
-          "science": "मुभसे उदङ्क नामवाले शौल्वायन- शुल्वके पुत्रने कहाहैकिप्राण ही ब्रह्म है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "KingJanaka",
@@ -3683,8 +3353,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "janakam̐ ha vaidehaṃ yājñavalkyo jagāma sa mene na vadiṣya iti sa mene na vadiṣya ityatha ha yajjanakaśca vaideho yājñavalkyaścāgnihotre samūdāte tasmai ha yājñavalkyo varaṃ dadau | sa ha kāmapraśnameva vavre | tam̐ hāsmai dadau | tam̐ ha samrāḍeva pūrvaṃ papraccha ||",
           "translation": "Yâgñavalkya came to Ganaka Vaideha, and he did not mean to speak with him . But when formerly Ganaka Vaideha and Yâgñavalkya had a disputation on the Agnihotra, Yâgñavalkya had granted him a boon, and he chose (for a boon) that he might be free to ask him any question he liked. Yâgñavalkya granted it, and thus the King was the first to ask him a question.",
           "explanation": "Sense: Yâgñavalkya came to Ganaka Vaideha, and he did not mean to speak with him . But when formerly Ganaka Vaideha and Yâgñavalkya had a disputation on the Agnihotra, Yâgñavalkya had granted him a boon, and he chose (for a boon) that he might be free to ask him any question he liked.…",
-          "hindi": "गद॑भीविपीतके कहे हुए श्रोत्रन्रह्यकौ उपासनाका विपीतो भारद्वाजः शरं वे ब्रह्मेति यथा मातरमान्‌ पिन ८५२ वृदारण्यकोपनिषद्‌  अश्याय ४ यदेव ते' सदंमीविपीत इति  गदेव ते\"-गदंभीविपीत एसे वै ब्रहेति- भोपर दिग्‌ देवता,  दी बर्ह\" देषा कहा ह । भोतमे अनन्त इयेनहुपातीव; कानन्वता व र 2 जावालोक्त मनोब्रह्मकी उपासनाका फलसहित वर्णन सत्यकामो जाबाछो मनो वे व्ह्येति यथा मातमान्‌ यतनमाकाशः प्रतिषठानन्द्‌ इत्येनदुपालीत कानन्दता",
-          "science": "गद॑भीविपीतके कहे हुए श्रोत्रन्रह्यकौ उपासनाका विपीतो भारद्वाजः शरं वे ब्रह्मेति यथा मातरमान्‌ पिन ८५२ वृदारण्यकोपनिषद्‌ अश्याय ४ यदेव ते' सदंमीविपीत इति गदेव…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3700,8 +3368,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkya kiñjyotirayaṃ puruṣa ityādityajyotiḥ samrāḍ iti hovācā''dityenaivāyaṃ jyotiṣā''ste palyayate karma kurute vipalyetītyevamevaitad yājñavalkya ||",
           "translation": "'Yâgñavalkya,' he said, 'what is the light of man ?' Yâgñavalkya replied: 'The sun, O King; for, having the sun alone for his light, man sits, moves about, does his work, and returns.' Ganaka Vaideha said: 'So indeed it is, O Yâgñavalkya.'",
           "explanation": "Sense: 'Yâg&ntilde;avalkya,' he said, 'what is the light of man ?' Yâg&ntilde;avalkya replied: 'The sun, O King; for, having the sun alone for his light, man sits, moves about, does his work, and returns.' Ganaka Vaideha said: 'So indeed it is, O Yâg&ntilde;avalkya.'",
-          "hindi": "शाकल्योक्त हदयब्रह्मकी उपासनाका फलसहित वर्णन त्रे बरहमेत्यहृदयस्यं हि कि स्यादित्यत्रवीततु ते यतनमाकादाः प्रतिष्ठा स्थितिरत्यिनदपासीत्‌ का बरिष्धः शाकल्यो हृदयं वै  विदग्ध शाकल्यने हृदय ही ब्रह्म त । हदयं बै सम्राट्‌ सर्वेषां  ह' एेसा कठा है । है सम्राट्‌ । हृदय पूतनम्‌ आयतनम्‌ । नाम- ही समस्त भोका आयतन है। जनको ह वेदेहः कूचादुपावसपन्लुवाच नमस्ते",
-          "science": "शाकल्योक्त हदयब्रह्मकी उपासनाका फलसहित वर्णन त्रे बरहमेत्यहृदयस्यं हि कि स्यादित्यत्रवीततु ते यतनमाकादाः प्रतिष्ठा स्थितिरत्यिनदपासीत्‌ का बरिष्धः शाकल्यो हृ…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3717,8 +3383,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "astamita āditye yājñavalkya kiñjyotirevāyaṃ puruṣa iti | candramā evāsya jyotirbhavatīti candramasaivāyaṃ jyotiṣāste palyayate karma kurute vipalyetītyevamevaitad yājñavalkya ||",
           "translation": "Ganaka Vaideha said: 'When the sun has set, O Yâgñavalkya, what is then the light of man?' Yâgñavalkya replied: 'The moon indeed is his light; for, having the moon alone for his light, man sits, moves about, does his work, and returns.' Ganaka Vaideha said: 'So indeed it is, O Yâgñavalkya.'",
           "explanation": "Sense: Ganaka Vaideha said: 'When the sun has set, O Yâg&ntilde;avalkya, what is then the light of man?' Yâg&ntilde;avalkya replied: 'The moon indeed is his light; for, having the moon alone for his light, man sits, moves about, does his work,…",
-          "hindi": "विदेहराज जनकने क्च नामक एक विशेष प्रकारके आसन से उठ- कर याज्ञवल्वयके समीप जाकर कहा, याज्ञवत्वय । ग्रापको नमस्कार है, मने उपदेश कीजिये ॥' उघ (याज्ञवसय) ने कठा, 'राजच्‌ ! जिस प्रकार लंबे दक्षिणानेत्रस्थ इन्दरसंज्क पुरुषका परिचय परल्षिव्रसा इव हि दकाः ब्रल्यक्चद्रदः  २ यह जो दक्षिण नेत्रम पुरुष हे, इन्ध नामवाला है, उसी इस पुरुषको इन्धो ह वे नासइन्ध हव्ये- \"इन्धो ह्‌ वै नाम--इन्ध' एसे पन्नामा, यशचक्षुवे ब्रह्मेति परोक्त  नामवाला दे, चक्षु ही ब्रह्मद अआदित्यान्तगंतः पुरुषः स एष । इस प्रकार जिस आदित्यान्तगत",
-          "science": "विदेहराज जनकने क्च नामक एक विशेष प्रकारके आसन से उठ- कर याज्ञवल्वयके समीप जाकर कहा, याज्ञवत्वय। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3742,8 +3406,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "astamita āditye yājñavalkya candramasyastamite śānte'gnau kiñjyotirevāyaṃ puruṣa iti | vāgevāsya jyotirbhavatīti vācaivāyaṃ jyotiṣāste palyayate karma kurute vipalyetīti | tasmādvai samrāḍ api yatra svaḥ pāṇirna vinirjñāyate'tha yatra vāguccaratyupaiva tatra nyetītyevamevaitad yājñavalkya ||",
           "translation": "'His Southern quarter are the prânas which go to the South; 'His Western quarter are the prânas which go to the West; 'His Northern quarter are the prânas which go to the North; 'His Upper (Zenith) quarter are the prânas which go upward; 'His Lower (Nadir) quarter are the prânas which go downward; 'All the quarters are all the prânas. And he (the Âtman in that state) can only be described by No , no! He is incomprehensible, for he cannot be comprehended; he is undecaying, for he cannot decay; he is not attached, for he does not attach himself; he is unbound, he does not suffer, he does not perish. O Ganaka, you have indeed reached fearlessness,'--thus said Yâgñavalkya. Then Ganaka said: 'May that fearlessness come to you also who teachest us fearlessness. I bow to you. Here are the Videhas, and here am I (thy slave).'",
           "explanation": "Sense: 'His Southern quarter are the prânas which go to the South; 'His Western quarter are the prânas which go to the West; 'His Northern quarter are the prânas which go to the North; 'His Upper (Zenith) quarter are the prânas which go upward;…",
-          "hindi": "बाणात्मभूत विद्ठानकी सवत्मिकताका वर्णन, जनककी प्रभयव्रा्नि गनौर याज्ञवल्वयके प्रति श्रात्मसमपैण  एप हृदयभूतस्तेजसः वह ह हृदयम तैन सूधम- उस विद्वानुके पूवं दिशा पूरं प्राण ह, दक्षिण दिशा दक्षिण प्राण है पश्चिम दिशा पश्चिम प्राण ह, उत्तर दिशा उत्तर प्राण ह, उपरकी दिशा ऊपरके प्राण है, नीचेको दिशा नौचेके प्राण हँ ओौर सम्युणं दिशां सम्बुणं तस्यास्य विदुषः क्रमेण वेश्वा-  करमशः वैश्वानरसे तेज॑सको, नरात्तेजसं प्राप्स्य हृदय(त्मानमा-  उससे हृदयात्माको मौर हृदयारमासे 5 ॥.  प्राणात्मभावको प्राप्त हृए्‌ उस इस",
-          "science": "बाणात्मभूत विद्ठानकी सवत्मिकताका वर्णन, जनककी प्रभयव्रा्नि गनौर याज्ञवल्वयके प्रति श्रात्मसमपैण एप हृदयभूतस्तेजसः वह ह हृदयम तैन सूधम- उस विद्वानुके पूवं दिश…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3759,8 +3421,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "astamita āditye yājñavalkya candramasyastamite śānte'gnau śāntāyāṃ vāci kiñjyotirevāyaṃ puruṣa ityātmaivāsya jyotirbhavatyātmanaivāyaṃ jyotiṣā''ste palyayate karma kurute vipalyetīti ||",
           "translation": "Ganaka Vaideha said: 'When the sun has set, O Yâgñavalkya, and the moon has set, and the fire is gone out, and the sound hushed, what is then the light of man?' Yâgñavalkya said: 'The Self indeed is his light; for, having the Self alone as his light, man sits, moves about, does his work, and returns.'",
           "explanation": "Sense: Ganaka Vaideha said: 'When the sun has set, O Yâg&ntilde;avalkya, and the moon has set, and the fire is gone out, and the sound hushed, what is then the light of man?' Yâg&ntilde;avalkya said: 'The Self indeed is his light; for, having the Self alone as his light, man sits,…",
-          "hindi": "हो । साक्षात्‌ आत्माका ही दान करनेवाले आपको मं इस विद्याके बदलेमे ओर क्या दं? इसलिये अस्ति व्यतिरिक्त इति मधुकाण्डे- जगामः इत्यादि खूपसे आरम्भ होनेवाने ब्राह्मणका सम्बन्ध इस ्षेमाथंम्‌ । न वदिष्य इस्येधंसंक- को हेतुः संङन्पितस्यान्यथा- रणे-इत्यत्रार्पायिकामाचषे ।",
-          "science": "हो। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3776,8 +3436,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "katama ātmeti | yo'yaṃ vijñānamayaḥ prāṇeṣu hṛdyantarjyotiḥ vijñānamayaḥ prāṇeṣu hṛdyantarjyotiḥ puruṣaḥ puruṣassa samānaḥ sannubhau lokāvanusañcarati | dhyāyatīva lelāyatīva sa hi svapno bhūtvemaṃ lokamatikrāmati mṛtyo rūpāṇi ||",
           "translation": "Ganaka Vaideha said: 'Who is that Self?' Yâgñavalkya replied: 'He who is within the heart, surrounded by the Prânas (senses), the person of light, consisting of knowledge. He, remaining the same, wanders along the two worlds , as if thinking, as if moving. During sleep (in dream) he transcends this world and all the forms of death (all that falls under the sway of death, all that is perishable).",
           "explanation": "Sense: Ganaka Vaideha said: 'Who is that Self?' Yâg&ntilde;avalkya replied: 'He who is within the heart, surrounded by the Prânas (senses), the person of light, consisting of knowledge. He, remaining the same, wanders along the two worlds , as if thinking, as if moving.…",
-          "hindi": "विषयक ज्ञानको देखकर उससे संतुष्ट हो याज्ञवल्क्यने जनकको वर  इच्छानुसार प्रर्न करनेका वर ही परुषकरे भ्यवहारमें उपयोगी पांच ज्योतियां यते कर्म कुरुते षिपल्येतीस्येवमेवेतद्‌ याक्ञवल्व्य \"हे याज्ञवल्क्य  यह पूरुष किस ज्योतिवाला है ? है सम्राट्‌ ! यह्‌ आदित्यरूप ज्योतिवाला हे-एेसा याज्ञवल्क्यने कहा, \"यह आदित्यरूप",
-          "science": "विषयक ज्ञानको देखकर उससे संतुष्ट हो याज्ञवल्क्यने जनकको वर इच्छानुसार प्रर्न करनेका वर ही परुषकरे भ्यवहारमें उपयोगी पांच ज्योतियां यते कर्म कुरुते षिपल्येतीस…। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3793,8 +3451,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa vā ayaṃ puruṣo jāyamānaḥ śarīramabhisampadyamānaḥ pāpmabhiḥ sam̐sṛjyate | sa utkrāmanmriyamāṇaḥ pāpmano vijahāti ||",
           "translation": "'On being born that person, assuming his body, becomes united with all evils; when he departs and dies, he leaves all evils behind.",
           "explanation": "Sense: 'On being born that person, assuming his body, becomes united with all evils; when he departs and dies, he leaves all evils behind.",
-          "hindi": "मिञ्ुखीकरणाय, किं उणोतिरयं ञ्योतिर्येन ज्योतिष्‌! व्यवहरति, प्राकृतः कयकरणसंघातसूपः पुरूष इति चन्द्रमा एवास्य उयोतिभवतीति चन्द्रमसे-  जनक- ह याज्ञवल्क्य ! आदित्यके अस्त हो जानेपर यह्‌ पुरुष किस ज्योतिवाला होता है ?'  याज्ञवल्क्य-- उस समय चन्द्रमा ही उसकी ज्योति होता है, चन्द्रमारूप ज्योततिं हारा हौ यह्‌ बेठता, इधर-",
-          "science": "मिञ्ुखीकरणाय, किं उणोतिरयं ञ्योतिर्येन ज्योतिष्‌! व्यवहरति, प्राकृतः कयकरणसंघातसूपः पुरूष इति चन्द्रमा एवास्य उयोतिभवतीति चन्द्रमसे- जनक- ह याज्ञवल्क्य ! आदि…। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3810,8 +3466,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tasya vā etasya puruṣasya dve eva sthāne bhavata idaṃ ca paralokasthānaṃ ca sandhyaṃ tṛtīyam̐ svapnasthānaṃ tasminsandhye sthāne tiṣṭhannete ubhe sthāne paśyatīdaṃ ca paralokasthānaṃ ca atha yathākramo'yaṃ paralokasthāne bhavati tamākramamākramyobhayānpāpmana ānandām̐śca paśyati | paśyati sa yatra prasvapityasya lokasya sarvāvato mātrāmapādāya svayaṃ vihatya svayaṃ nirmāya svena bhāsā svena jyotiṣā prasvapityatrāyaṃ puruṣaḥ svayaṃ jyotirbhavati ||",
           "translation": "'And there are two states for that person, the one here in this world, the other in the other world, and as a third an intermediate state, the state of sleep. When in that intermediate state, he sees both those states together, the one here in this world, and the other in the other world. Now whatever his admission to the other world may be, having gained that admission, he sees both the evils and the blessings .",
           "explanation": "Sense: 'And there are two states for that person, the one here in this world, the other in the other world, and as a third an intermediate state, the state of sleep. When in that intermediate state, he sees both those states together, the one here in this world,…",
-          "hindi": "तथास्तमिते आदित्ये याज्ञ- तथा आदित्यके अस्त होनेपर बल्क्य कं ज्योतिरेवायं पूरुष  है याज्ञवलतय ! यह पूरुष कित व्योतिः ; ३॥ । ही इसकी ज्योति होता हे ८७६ बृहदारण्यकोपनिषद्‌  अध्याय ® “हे याज्ञवल्क्य ! आदित्यके अस्त हो जानेपर तथा चन्द्रमाके अस्त हो जानेपर यह पुरुष किस ज्योतिवाला होता है ?' अग्नि ही इसकी ज्योति श्स्तमिते ्रादिस्ये चन्द्रमस्थ-  आदित्यके अस्त होनेपर ओर । चन्द्रमाके अस्त होनेपर अस्ति",
-          "science": "तथास्तमिते आदित्ये याज्ञ- तथा आदित्यके अस्त होनेपर बल्क्य कं ज्योतिरेवायं पूरुष है याज्ञवलतय ! यह पूरुष कित व्योतिः ; ३॥। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3827,8 +3481,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "na tatra rathā na rathayogā na panthāno bhavantyatha rathānrathayogānpathaḥ sṛjate | na tatrā''nandā mudaḥ pramudo bhavantyathā''nandānmudaḥ pramudaḥ sṛjate | na tatra veśāntāḥ puṣkariṇyaḥ sravantyo bhavantyatha veśāntānpuṣkariṇīḥ sravantīḥ sṛjate sa hi kartā ||",
           "translation": "'There are no (real) chariots in that state, no horses, no roads, but he himself sends forth (creates) chariots, horses, and roads. There are no blessings there, no happiness, no joys, but he himself sends forth (creates) blessings, happiness, and joys. There are no tanks there, no lakes, no rivers, but he himself sends forth (creates) tanks, lakes, and rivers. He indeed is the maker.",
           "explanation": "Sense: 'There are no (real) chariots in that state, no horses, no roads, but he himself sends forth (creates) chariots, horses, and roads. There are no blessings there, no happiness, no joys, but he himself sends forth (creates) blessings, happiness, and joys.…",
-          "hindi": "\"हे याज्ञवल्क्य  आदित्यके मस्त होनेपर, चन्द्रमाके अस्त होनेपर मोर अग्निक शान्त होनेपर यह पुरुष किस ज्योतिवाला होता है ?' \"वाक्‌ ही इसको ज्योति होती दे । यह्‌ वाकृरूप ज्योतिकै द्वारा ही बेठता, इधर- शान्तेऽप्नो बाग््योतिः; वागिति अग्निके शान्त॒होनेपर वाक्‌ 3 ज्योति है। \"वाक्‌\" इस ॒राब्दसे शब्द्‌; परिगृह्यते; शब्देन विष- । शब्द ग्रहण किया जाता टै; शब्द- षास्ते पल्ययते कर्मं कुरते विपल्येतीति",
-          "science": "\"हे याज्ञवल्क्य आदित्यके मस्त होनेपर, चन्द्रमाके अस्त होनेपर मोर अग्निक शान्त होनेपर यह पुरुष किस ज्योतिवाला होता है ?' \"वाक्‌ ही इसको ज्योति होती दे। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3844,8 +3496,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadete ślokā bhavanti svapnena śārīramabhiprahatyā suptaḥ suptānabhicākaśīti | śukramādāya punaraiti sthānam̐ hiraṇmayaḥ puruṣa ekaham̐saḥ ||",
           "translation": "'On this there are these verses:",
           "explanation": "Sense: 'On this there are these verses:",
-          "hindi": "ह याज्ञवल्क्य ! आदित्यके अस्त होनेपर, चन्द्रमाके अस्त होनेपर, अग्निक शान्त होनेपर ओर वाकूके भी शान्त होनेपर यह पुरुष किस ज्योतिवाला रहता है “आत्मा ही इसकी ज्योति होता है । यह्‌ आत्म- शान्तायां पुनर्वाचि, गन्धादि- वाणीके शान्त हो जानेपर तथा ॑ओ ट ध गन्धादि बाह्य अनुग्राहकोके भी ष्वपि च शान्तेषु बाह्यष्ुग्राह- निवृत्त हो जानेपर इस पुरुषकी यद्यपि व्यतिरिकत्वादि सिद्धम्‌ यद्यपि आत्माका देहादिसे भिन्न कारण उत्पन्न हुई भ्रान्तिसे आत्मा बान्यतमो उदतिरिक्तो वा इत्य-  इन्ियोमेषे हौ कोई एक है अथवा",
-          "science": "ह याज्ञवल्क्य ! आदित्यके अस्त होनेपर, चन्द्रमाके अस्त होनेपर, अग्निक शान्त होनेपर ओर वाकूके भी शान्त होनेपर यह पुरुष किस ज्योतिवाला रहता है “आत्मा ही इसकी ज्…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3861,8 +3511,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "prāṇena rakṣannaparaṃ kulāyaṃ bahiṣkulāyādamṛtaścaritvā sa īyate'mṛto yatrakāmam̐ hiraṇmayaḥ puruṣa ekaham̐saḥ ||",
           "translation": "'Guarding with the breath (prâna, life) the lower nest, the immortal moves away from the nest; that immortal one goes wherever he likes, the golden person, the lonely bird. (2)",
           "explanation": "Sense: 'Guarding with the breath (prâna, life) the lower nest, the immortal moves away from the nest; that immortal one goes wherever he likes, the golden person, the lonely bird. (2)",
-          "hindi": "'आस्मा कौन है ?  याज्ञवल्व्य- यह जो प्राणोमे बुद्धिवृत्तियोके भीतर रहनेवाला विज्ञानमय ज्योतिः स्वरूप पुरुष है, वहं समान ( बुद्धि- वृत्तियोके सदृश ) हुभा इस लोक ओर परलोक दोनोमे संचार करता है । भशनसयोनिवयं दुविजञेयसादु पपद्यते  कठिनितासे समभे गती हँ; इस- ब्रीजंच भ्रान्तिः । अथवा  लिये भ्रान्ति होनी सम्भवहीहै। दशेननिमित्तभान्त्या करणानमि- श्रात्मा जन्म ओर मरणके सा थ देहेन्दरियरूप पापको ग्रहण यथेवेहैकस्मिन्‌ देहे स्वप्नो",
-          "science": "'आस्मा कौन है ? याज्ञवल्व्य- यह जो प्राणोमे बुद्धिवृत्तियोके भीतर रहनेवाला विज्ञानमय ज्योतिः स्वरूप पुरुष है, वहं समान ( बुद्धि- वृत्तियोके सदृश ) हुभा इस लो…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3878,8 +3526,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "svapnānta uccāvacamīyamāno rūpāṇi devaḥ kurute bahūni | uteva strībhiḥ saha modamāno jakṣadutevāpi bhayāni paśyan ||",
           "translation": "'Going up and down in his dream, the god makes manifold shapes for himself, either rejoicing together with women, or laughing (with his friends), or seeing terrible sights. (3)",
           "explanation": "Sense: 'Going up and down in his dream, the god makes manifold shapes for himself, either rejoicing together with women, or laughing (with his friends), or seeing terrible sights. (3)",
-          "hindi": "वह यह्‌ पुरुष जन्म लेते समय शरीरको आत्मभावसे प्राप होता हुमा पापोसे (देह ओर इन्द्रियो ) संरिलष्ट हो जाता है तथा मरते समय-उत्रमण करते समय पापोंको त्याग देता है स वर्तः पुरपोऽयं जाय-। वह यह प्रकृत पुरुष जन्म लेते मानः-कथं जायमान इत्युच्यते पनम; किस भकार चनम स (  समय ? सो बतलाया जाता है- आत्माके दो स्थानोका वर्णन नलु न स्तोऽस्योभौ लोकौ,  रतु स्वपन भौर जाग्रतके समान स घरति न जागरिते हव इसके वे दोनों लोक तो ह नही;",
-          "science": "वह यह्‌ पुरुष जन्म लेते समय शरीरको आत्मभावसे प्राप होता हुमा पापोसे (देह ओर इन्द्रियो ) संरिलष्ट हो जाता है तथा मरते समय-उत्रमण करते समय पापोंको त्याग देता ह…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3903,8 +3549,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa vā eṣa etasminsamprasāde ratvā caritvā dṛṣṭvaiva puṇyaṃ ca pāpaṃ ca punaḥ pratinyāyaṃ pratiyonyādravati svapnāyaiva eva sa yattatra kiñcitpaśyatyananvāgatastena bhavatyasaṅgo hyayaṃ puruṣa ityevamevaitad yājñavalkya | so'haṃ bhagavate sahasraṃ dadāmyata ūrdhvaṃ vimokṣāyaiva brūhīti ||",
           "translation": "Yâgñavalkya said: 'That (person) having enjoyed himself in that state of bliss (samprasâda, deep sleep), having moved about and seen both good and evil, hastens back again as he came, to the place from which he started (the place of sleep), to dream . And whatever he may have seen there, he is not followed (affected) by it, for that person is not attached to anything.' Ganaka Vaideha said: 'So it is indeed, Yâgñavalkya. I give you, Sir, a thousand. Speak on for the sake of emancipation.'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'That (person) having enjoyed himself in that state of bliss (samprasâda, deep sleep), having moved about and seen both good and evil, hastens back again as he came, to the place from which he started (the place of sleep), to dream .…",
-          "hindi": "इस उक्त अथेमे ये इलोक-- स्वप्नसे- स्वप्नभावसे शारीर  -शरीरको अभिग्रहुत्य-निर्चेष्ट रित्वा । स ईयतेऽमृतो यत्र काम हिरण्मयः पुरुष इस निकृष्ट शरीरकी प्राणसे रक्षा करता हआ वह्‌ अमृतधः से बाहर विचरता है। वह अकेला विचरनेवाला हिरण्मय असत पुरुष जहां वासना होती है, वहां चला जाता हे",
-          "science": "इस उक्त अथेमे ये इलोक-- स्वप्नसे- स्वप्नभावसे शारीर -शरीरको अभिग्रहुत्य-निर्चेष्ट रित्वा। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3920,8 +3564,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa vā eṣa etasmintsvapne ratvā caritvā dṛṣṭvaiva puṇyaṃ ca pāpaṃ ca punaḥ pratinyāyaṃ pratiyonyādravati buddhāntāyaiva ādravati buddhāntāya eva sa yattatra kiñcitpaśyatyananvāgatastena bhavatyasaṅgo hyayaṃ puruṣa ityevamevaitad yājñavalkya | so'haṃ bhagavate sahasraṃ dadāmyata ūrdhvaṃ vimokṣāyaiva brūhīti ||",
           "translation": "Yâgñavalkya said: 'That (person) having enjoyed himself in that sleep (dream), having moved about and seen both good and evil, hastens back again as he came, to the place from which he started, to be awake. And whatever he may have seen there, he is not followed (affected) by it, for that person is not attached to anything.' Ganaka Vaideha said: 'So it is indeed, Yâgñavalkya. I give you, Sir, a thousand. Speak on for the sake of emancipation.'",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'That (person) having enjoyed himself in that sleep (dream), having moved about and seen both good and evil, hastens back again as he came, to the place from which he started, to be awake. And whatever he may have seen there,…",
-          "hindi": "स्यात्‌, अवरं नि छष्टमनेकाशुचि- पषातत्वादत्यन्तबीमतसम्‌इलायम्‌ कारण इसी प्रकार प्राणापानादि पाच वह्‌ देव स्वप्नावस्थामे ऊच-नीच भावोंको प्राप्त होता हभ बहुत-से रूप बना लेता है । इसी प्रकार वह॒ चियोके साथ आनन्द मानता हुआ,  मित्रोके साथ  हसता हुआ तथा  व्याघ्रादि  भय देखता हुजा-सा इसके सिवा. स्वप्नान्तमे- तदुचचावचम्‌, ईेयमानो गम्यमानः  निकृष्टमाव- एसे ऊंच-नीच भावों ्राप्युवन्‌, रूपाणि, देवो घोतना-  को प्राप्त होता हुजा वह देव-",
-          "science": "स्यात्‌, अवरं नि छष्टमनेकाशुचि- पषातत्वादत्यन्तबीमतसम्‌इलायम्‌ कारण इसी प्रकार प्राणापानादि पाच वह्‌ देव स्वप्नावस्थामे ऊच-नीच भावोंको प्राप्त होता हभ बहुत-स…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3937,8 +3579,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa vā eṣa etasminbuddhānte ratvā caritvā dṛṣṭvaiva puṇyaṃ ca pāpaṃ ca punaḥ pratinyāyaṃ pratiyonyādravati svapnāntāyaiva || ādravati svapnāntāya eva",
           "translation": "Yâgñavalkya said: 'That (person) having enjoyed himself in that state of waking, having moved about and seen both good and evil, hastens back again as he came, to the place from which he started, to the state of sleeping (dream).",
           "explanation": "Sense: Yâg&ntilde;avalkya said: 'That (person) having enjoyed himself in that state of waking, having moved about and seen both good and evil, hastens back again as he came, to the place from which he started, to the state of sleeping (dream).",
-          "hindi": "स्वप्तस्थानके विषयमे मतभेद ओर उसके स्वयंज्योतिष्ट्वका निश्चय सब लोग उसके आराम ( क्रीडाकी सामग्री ) कौ ही देखते है, उसे कोई नहीं देवता । उस सोधे हए आत्माको सहसा न जगावे--एेसा  वेद्यलोग  कहते है । जिस इन्द्रियप्रदेशमे यह सोया हज होता हे, अआराममारमणमाक्रीडामनेन  सव लोग इस आत्माके आराम निमितं वासनारूपम्‌ अस्यातमनः  भारमण अर्थात्‌ आक्रीडाको यानी परयन्ति स जनाः्रमं नग इसकी रची हुई वासनारूप क्रीडा-",
-          "science": "स्वप्तस्थानके विषयमे मतभेद ओर उसके स्वयंज्योतिष्ट्वका निश्चय सब लोग उसके आराम ( क्रीडाकी सामग्री ) कौ ही देखते है, उसे कोई नहीं देवता। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3954,8 +3594,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadyathā mahāmatsya ubhe kūle'nusañcarati pūrvaṃ cāparaṃ caivamevāyaṃ puruṣa etāvubhāvantāvanusañcarati svapnāntaṃ ca buddhāntaṃ ca || antau anusañcarati svapnāntam ca buddhāntam ca",
           "translation": "'In fact, as a large fish moves along the two banks of a river, the right and the left, so does that person move along these two states, the state of sleeping and the state of waking.",
           "explanation": "Sense: 'In fact, as a large fish moves along the two banks of a river, the right and the left, so does that person move along these two states, the state of sleeping and the state of waking.",
-          "hindi": "जाऊ, यह सहलदान तो जो विमोक्षपदा्थंके एकदेशका नणय किया गया है, उसके लिये है ॥ १५ वह्‌ यह्‌ आत्मा इस सुषुप्षिमे रमण ओर विहार कर पुण्य ओर पापको केवल देवकर, जेस आया था ओर जहासि आया था, पुनः स्वप्नस्थांनको ही लौट आता है । वहां वह्‌ जो कु देखता टै, उससे सम्बद्ध रहता है; स वै प्रकृतः स्वयंज्योतिः वह॒ यह प्रकृत स्वर्यज्योति पृः, एष यः सप्ते प्रदशितः,  पुरुष, (6 जिसे. कि  स्वप्ना- 0 है रयत?) वस्थामे प्रदशित किया है,",
-          "science": "जाऊ, यह सहलदान तो जो विमोक्षपदा्थंके एकदेशका नणय किया गया है, उसके लिये है ॥ १५ वह्‌ यह्‌ आत्मा इस सुषुप्षिमे रमण ओर विहार कर पुण्य ओर पापको केवल देवकर, जेस…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3971,8 +3609,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadyathāsminnā'kāśe śyeno vā suparṇo vā viparipatya śrāntaḥ sam̐hatya pakṣau saṃlayāyaiva dhriyata dhriyate evamevāyaṃ puruṣa etasmā antāya dhāvati yatra supto na kaṃ cana kāmaṃ kāmayate na kaṃ cana svapnaṃ paśyati || svapnam paśyati",
           "translation": "'And as a falcon, or any other (swift) bird, after he has roamed about here in the air, becomes tired, and folding his wings is carried to his nest, so does that person hasten to that state where, when asleep, he desires no more desires, and dreams no more dreams.",
           "explanation": "Sense: 'And as a falcon, or any other (swift) bird, after he has roamed about here in the air, becomes tired, and folding his wings is carried to his nest, so does that person hasten to that state where, when asleep, he desires no more desires, and dreams no more dreams.",
-          "hindi": "किसी मी प्रकार इसे क्रियाका कठत्वं सम्भव नहींहै; देह ओर इन्द्ियोकं संरलेषसे ही कठ त्व होता स्वप्नावस्थाके भोगोसे प्रात्माकी असङ्खता ईयते यत्र काममिति; कामश्च न सेतद्स्ति; कथं तहिं १ वह्‌ यह्‌ आत्मा इस स्वप्नावस्थामे रमण ओर विहार कर तथा पुण्य ओर पापको देखकर ही फिर जिस प्रकार आया था ओर जहति आया था उस जागरित-स्थानको ही लौट जाता है; वह्‌ वहाँ जो कु देखता है,",
-          "science": "किसी मी प्रकार इसे क्रियाका कठत्वं सम्भव नहींहै; देह ओर इन्द्ियोकं संरलेषसे ही कठ त्व होता स्वप्नावस्थाके भोगोसे प्रात्माकी असङ्खता ईयते यत्र काममिति; कामश्च…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -3988,8 +3624,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tā vā asyaitā hitā nāma nāḍyo yathā keśaḥ sahasradhā bhinnastāvatā'ṇimnā tiṣṭhanti śuklasya nīlasya piṅgalasya haritasya lohitasya pūrṇā | nīlasya piṅgalasya haritasya lohitasya pūrṇāsatha yatrainaṃ ghnantīva jinantīva hastīva vicchāyayati gartamiva patati yadeva jāgradbhayaṃ paśyati tadatrāvidyayā manyate'tha yatra deva iva rājevāhamevedam̐ sarvo'smīti manyate so'sya paramo lokāḥ ||",
           "translation": "'There are in his body the veins called Hitâ, which are as small as a hair divided a thousandfold, full of white, blue, yellow, green, and red . Now when, as it were, they kill him, when, as it were they overcome him, when, as it were, an elephant chases him, when, as it were, he falls into a well, he fancies, through ignorance, that danger which he (commonly) sees in waking. But when he fancies that he is, as it were, a god, or that he is, as it were, a king , or \"I am this altogether,\" that is his highest world .",
           "explanation": "Sense: 'There are in his body the veins called Hitâ, which are as small as a hair divided a thousandfold, full of white, blue, yellow, green, and red . Now when, as it were, they kill him, when, as it were they overcome him, when, as it were, an elephant chases him, when, as it were,…",
-          "hindi": "सवा एष्‌ एतस्मिन्‌ स्वप्ने स वा एषः\"-वह्‌ यह्‌ पुरुष इस सवाएष पुरुषः सम््रसादात्‌ स्वप्नावस्थामे सुषुक्तिमे लौटकर  न = स्वप्तमे रमण ओर विहार कर + जागरित-म्रवस्थाके मोगोसे श्रात्माक्र श्रसङ्खता निस प्रकार यह्‌ स्वप्नावस्थामें असङ्ग होनेके कारण जागरित- वह यह्‌ पुरुष इस जागरित-अवस्थामें रमण ओर विहार कर तथा पुण्य ओर पापको देखकर फिर जिस प्रकार आया था उसी मा्ग॑से यथा- स्थान स्वप्नस्थानकां ही लौट जाता है",
-          "science": "सवा एष्‌ एतस्मिन्‌ स्वप्ने स वा एषः\"-वह्‌ यह्‌ पुरुष इस सवाएष पुरुषः सम््रसादात्‌ स्वप्नावस्थामे सुषुक्तिमे लौटकर न = स्वप्तमे रमण ओर विहार कर + जागरित-म्रवस…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4005,8 +3639,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadvā asyaitadaticchandā apahatapāpmābhayam̐ rūpam | tadyathā priyayā striyā sampariṣvakto na bāhyaṃ kiṃ cana veda nā''ntaramevamevāyaṃ puruṣaḥ prājñenā''tmanā sampariṣvakto na bāhyaṃ kiṃ cana veda nā''ntaram | sampariṣvaktasna bāhyam kim cana veda na antaraṃ tadvā asyaitadāptakāmamātmakāmamakāmaṃ rūpam śokāntaram ||",
           "translation": "'This indeed is his (true) form, free from desires, free from evil, free from fear . Now as a man, when embraced by a beloved wife, knows nothing that is without, nothing that is within, thus this person, when embraced by the intelligent (prâgña) Self, knows nothing that is without, nothing that is within. This indeed is his (true) form, in which his wishes are fulfilled, in which the Self (only) is his wish, in which no wish is left,--free from any sorrow .",
           "explanation": "Sense: 'This indeed is his (true) form, free from desires, free from evil, free from fear . Now as a man, when embraced by a beloved wife, knows nothing that is without, nothing that is within, thus this person, when embraced by the intelligent (prâg&ntilde;a) Self,…",
-          "hindi": "करोति च तत्र पुण्यपापे; तस्फलं न, कारकावमासकत्वेन कतं- वह यह्‌ पुरूष इस बुद्धान्त- ज्योतिः कायंकरणविलक्षणस्त- स्रयोजकाभ्यां कामकमभ्यां ति- । याभिस्तिख्ुभिः कण्डिकाभिः लोके महामत्स्यः, महांश्चासौ उदकस्रोतोकेगेन न पशी- ततुका अथं है; तत्र ( वहाँ )",
-          "science": "करोति च तत्र पुण्यपापे; तस्फलं न, कारकावमासकत्वेन कतं- वह यह्‌ पुरूष इस बुद्धान्त- ज्योतिः कायंकरणविलक्षणस्त- स्रयोजकाभ्यां कामकमभ्यां ति-। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4022,8 +3654,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atra pitā'pitā bhavati mātā'mātā lokā alokā devā adevā vedā avedā atra steno'steno bhavati bhrūṇahā'bhrūṇahā cāṇḍālo'caṇḍālaḥ paulkaso'paulkaso śramaṇo'śramaṇa stāpaso'tāpaso'nanvāgataṃ puṇyenānanvāgataṃ pāpena aśramaṇastāpasasatāpasasananvāgataspuṇyena ananvāgataspāpena tīrṇo hi tadā sarvāñchokānhṛdayasya bhavati ||",
           "translation": "'Then a father is not a father, a mother not a mother, the worlds not worlds, the gods not gods, the Vedas not Vedas. Then a thief is not a thief, a murderer not a murderer , a Kândâla not a Kândâla, a Paulkasa not a Paulkasa, a Sramana not a Sramana, a Tâpasa not a Tâpasa. He is not followed by good, not followed by evil, for he has then overcome all the sorrows of the heart .",
           "explanation": "Sense: 'Then a father is not a father, a mother not a mother, the worlds not worlds, the gods not gods, the Vedas not Vedas. Then a thief is not a thief, a murderer not a murderer , a Kândâla not a Kândâla, a Paulkasa not a Paulkasa, a Sramana not a Sramana, a Tâpasa not a Tâpasa.…",
-          "hindi": "स्व्थंज्योतिष्‌ आत्मनः काय॑ करणसंधातव्य तिरिक्तस्य काम-  अविदाध्यारोपतभू--इस्येष तदू यथा-अस्मिन्नाकारो। जिस प्रकार इस भौतिक मोतिकि च्येनो वा सुपणों वा,  आकाशमे श्येन अथवा सुपणं- सुपणंशब्देन ज्तिप्रः स्येन उच्यते; सुपण राब्दसे वेगवान्‌ द्येन कहा स्वप्नदरंनकी स्थानभूता हिता नाम्नी नाडियोका वर्णन भाविकत्वम्‌ ? आसेस्ित्‌ काम- कोपपत्तिः १ कथं वा नासं",
-          "science": "स्व्थंज्योतिष्‌ आत्मनः काय॑ करणसंधातव्य तिरिक्तस्य काम- अविदाध्यारोपतभू--इस्येष तदू यथा-अस्मिन्नाकारो। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4039,8 +3669,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadvai tanna paśyati paśyanvai tanna paśyati na hi draṣṭurdṛṣṭerviparilopo vidyate'vināśitvān na tu taddvitīyamasti tato'nyadvibhaktaṃ yatpaśyet ||",
           "translation": "'And when (it is said that) there (in the Sushupti) he does not see, yet he is seeing, though he does not see . For sight is inseparable from the seer, because it cannot perish. But there is then no second, nothing else different from him that he could see.",
           "explanation": "Sense: 'And when (it is said that) there (in the Sushupti) he does not see, yet he is seeing, though he does not see . For sight is inseparable from the seer, because it cannot perish. But there is then no second, nothing else different from him that he could see.",
-          "hindi": "उसकीवे ये हिता नामकी नाड्या, जिस प्रकार सट भागम विभक्त केश होता है वेसी ही सृष्ष्मतासे रहती हैँ । वे शुक्ल, नील, पीत, हरित भौर लाल रंगके रससे पूणं ह । सो जहां इस पुरुषको मानो मारते, तावे, शरस्य शिरःपाण्यादि- इस शिर एवं हाथ आदि अव- लक्तणस्य पुरुषस्य,एता हिता नाम यवोँवाले पुरुषी ये हिता नासकी नाल्यः, यथा केशः सहस्रधा  नाड्या, जिस प्रकार सहत भागो जिससे भेद मानता है, उसके विष- यमे कामना होती हे, कामनासे  क्रिया स्वीकार करता है ओर उससे",
-          "science": "उसकीवे ये हिता नामकी नाड्या, जिस प्रकार सट भागम विभक्त केश होता है वेसी ही सृष्ष्मतासे रहती हैँ। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4056,8 +3684,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadvai tanna jighrati jighranvai tanna jighrati na hi ghrāturghrāterviparilopo vidyate'vināśitvān na tu taddvitīyamasti tato'nyadvibhaktaṃ yajjighret ||",
           "translation": "'And when (it is said that) there (in the Sushupti) he does not smell, yet he is smelling, though he does not smell. For smelling is inseparable from the smeller, because it cannot perish. But there is then no second, nothing else different from him that he could smell.",
           "explanation": "Sense: 'And when (it is said that) there (in the Sushupti) he does not smell, yet he is smelling, though he does not smell. For smelling is inseparable from the smeller, because it cannot perish. But there is then no second, nothing else different from him that he could smell.",
-          "hindi": "मोक्षका स्वरूप प्रदित करनैमे सीसे मिले हुए पुरुषका दृष्टान्त कारकफलशून्यम्‌, स प्रत्यक्ततो निदिश्यते, यत्राविचाकामक्- तदेतद्‌ वा अरस्य श्पम्‌- इसका यह्‌ रूप, जो कि सर्वात्म- यः सर्वार्मभावः “सोऽस्य  भाव एवं “यहु इसका परम लोक परमो लोकः इत्युक्तः-- है\" इस प्रकार कहा गया है, वह सुषि ग्रात्माकी निःस्धं प्रौर निःशोक स्थितिका वर्णन वियाकामफमविनिषुक्त इत्यु- जिसका प्रकरण चल रहा है,",
-          "science": "मोक्षका स्वरूप प्रदित करनैमे सीसे मिले हुए पुरुषका दृष्टान्त कारकफलशून्यम्‌, स प्रत्यक्ततो निदिश्यते, यत्राविचाकामक्- तदेतद्‌ वा अरस्य श्पम्‌- इसका यह्‌ रूप,…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4073,8 +3699,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadvai tanna rasayate rasayanvai tanna rasayate na hi rasayitū rasayiterviparilopo vidyate'vināśitvān na tu taddvitīyamasti tato'nyadvibhaktaṃ yadrasayet ||",
           "translation": "'And when (it is said that) there (in the Sushupti) he does not taste, yet he is tasting, though he does not taste. For tasting is inseparable from the taster, because it cannot perish. But there is then no second, nothing else different from him that he could taste.",
           "explanation": "Sense: 'And when (it is said that) there (in the Sushupti) he does not taste, yet he is tasting, though he does not taste. For tasting is inseparable from the taster, because it cannot perish. But there is then no second, nothing else different from him that he could taste.",
-          "hindi": "इस सुषुप्तावस्थामे पिता अपिता हे, लोक अलोक हो जाते है ह । यहाँ चोर अचोर हो जाता, काले । तस्मात्‌ पितापुत्र सम्बन्धनिमित्तात्‌ कर्माणो तिनि- । यहां पिता अर्थात्‌ जनक-जन्म्‌ कामादिके आश्रयत्वकी कल्पना की जायगी तो वहं बाधित हो जायगा । सम्पूणं शास्त्रोके तात्पयंसे",
-          "science": "इस सुषुप्तावस्थामे पिता अपिता हे, लोक अलोक हो जाते है ह। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4090,8 +3714,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadvai tanna vadati vadanvai tanna vadati na hi vakturvakterviparilopo vidyate'vināśitvān na tu taddvitīyamasti tato'nyadvibhaktaṃ yadvadet ||",
           "translation": "'And when (it is said that) there (in the Sushupti) he does not speak, yet he is speaking, though he does not speak. For speaking is inseparable from the speaker, because it cannot perish. But there is then no second, nothing else different from him that he could speak.",
           "explanation": "Sense: 'And when (it is said that) there (in the Sushupti) he does not speak, yet he is speaking, though he does not speak. For speaking is inseparable from the speaker, because it cannot perish. But there is then no second, nothing else different from him that he could speak.",
-          "hindi": "सुषुप्ते स्वयंज्योति ग्रात्माको दृष्टि म्रादिका भ्रनुभव न होनें हेतु शङ्का-खरी ओर पुरुषके समान त्युक्तम्‌, स्वर्यज्योतिरिति च ।  सुपुतिमे जीव. परमात्माकौ यद्‌ वै सुषुप्ते तन्न परयति वह जो सृषुश्चिमे नहीं देखतासो पस्यति । यत्‌ तत्र सुषुते न जानते हो कि वह सुषुप्ते नहीं वा देने करणं व्याप्तमस्ति । वह जो नीं संता सो सुंघता हृभा ही नहीं सवता । संषनेवालेकौ गन्धग्रहणशक्तिका सर्वथा लोप नहीं होता, क्योंकि वह अविनाशी है । उस अवस्थामें उससे भिन्न कोई दसरी वस्तु है दी नहीं, जिसे सूपे",
-          "science": "सुषुप्ते स्वयंज्योति ग्रात्माको दृष्टि म्रादिका भ्रनुभव न होनें हेतु शङ्का-खरी ओर पुरुषके समान त्युक्तम्‌, स्वर्यज्योतिरिति च। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4107,8 +3729,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadvai tanna śṛṇoti śṛṇvanvai tanna śṛṇoti na hi śrotuḥ śruterviparilopo vidyate'vināśitvān na tu taddvitīyamasti tato'nyadvibhaktaṃ yacchṛṇuyāt ||",
           "translation": "'And when (it is said that) there (in the Sushupti) he does not hear, yet he is hearing, though he does not hear. For hearing is inseparable from the hearer, because it cannot perish. But. there is then no second, nothing else different from him that he could hear.",
           "explanation": "Sense: 'And when (it is said that) there (in the Sushupti) he does not hear, yet he is hearing, though he does not hear. For hearing is inseparable from the hearer, because it cannot perish. But. there is then no second, nothing else different from him that he could hear.",
-          "hindi": "वह॒जो रसास्वाद नहीं करता सो रसास्वाद करता हुआ ही नहीं करता । रसास्वाद करनेवालेकी रसग्रहणशक्िका सवथा लोप नहीं होता, क्योंकि वह्‌ अविनाली है । उस अवस्थामे उससे भिन्न कोई दसरा बोलता सो बोलता हुआ ही नहीं बोलता । वक्ताकी वचन-शक्तिका सर्वया लोप नहीं होता, क्योंकि वह अविनाङी है। उस अवस्थामें उससे भिन्न दसरा कुछ है ही नही जिसके विषयमे वह बोले वहु जो नहीं सूनला सो सुनता हमा ही नहीं सुनता । श्रोताक श्रवणशक्तिका सर्वथा लोप नहीं होता, क्योंकि वह्‌ अविनाशी है। उस अवस्थामे उससे भिन्न दूसरी कोई वस्तु है ही नही, जिसके विषयमे वह्‌",
-          "science": "वह॒जो रसास्वाद नहीं करता सो रसास्वाद करता हुआ ही नहीं करता। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4124,8 +3744,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadvai tanna manute manvāno vai tanna manute na hi manturmaterviparilopo vidyate'vināśitvān na tu taddvitīyamasti tato'nyadvibhaktaṃ yanmanvīta ||",
           "translation": "'And when (it is said that) there (in the Sushupti) he does not think, yet he is thinking, though he does not think. For thinking is inseparable from the thinker, because it cannot perish. But there is then no second, nothing else different from him that he could think.",
           "explanation": "Sense: 'And when (it is said that) there (in the Sushupti) he does not think, yet he is thinking, though he does not think. For thinking is inseparable from the thinker, because it cannot perish. But there is then no second, nothing else different from him that he could think.",
-          "hindi": "वहु जो मनन नहीं करता सो मनन करता हुआ ही मनन नहीं करता । मनन करनेवालेकौ मननशक्तिका सवथा लोप नहीं होता, क्योंकि वह॒ अविनाशी है । उस अवस्थाभे, उससे भिन्न कोई दूसरी वस्तु वह जो नहीं जानता सो नहीं जानता हुजा ही नहीं जानता । विज्ञाताकी विज्ञाति ( विज्ञानशक्ति ) का सवथा लोप नहीं होता, क्योंकि वहू श्रविनाशी है । उस अवस्थामे उससे भिन्न कों दूसरा पदाथ ही नहीं नयोः च्टवादिसहकारितेऽपि 'यश्रकाशनज्वलनादिवद्धरम- चत्र केचिद्‌ व्याचक्षते-",
-          "science": "वहु जो मनन नहीं करता सो मनन करता हुआ ही मनन नहीं करता। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4141,8 +3759,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadvai tanna spṛśati spṛśanvai tanna spṛśati na hi spraṣṭuḥ spṛṣṭerviparilopo vidyate'vināśitvān na tu taddvitīyamasti tato'nyadvibhaktaṃ yatspṛśet ||",
           "translation": "'And when (it is said that) there (in the Sushupti) he does not touch, yet he is touching, though he does not touch. For touching is inseparable from the toucher, because it cannot perish. But there is then no second, nothing else different from him that he could think.",
           "explanation": "Sense: 'And when (it is said that) there (in the Sushupti) he does not touch, yet he is touching, though he does not touch. For touching is inseparable from the toucher, because it cannot perish. But there is then no second, nothing else different from him that he could think.",
-          "hindi": "जहां (जागरित या स्वप्नावस्थामे) आत्मासे भिन्न अन्य-सा होता है वहाँ अन्य अन्यको देख सकता हे, म्रन्य अन्यको संघ सकता हे, अन्य १. भर्रंप्रपञ्चका मत है कि परमात्मामे हृष्टि, घ्राति इन्यादि भिस्न-मिस्न मे अन्यके समान अर्थात्‌ अविद्ा- द्वारा उपस्थित की हुई आत्मासे भिन्न कोई ओर वस्तु होती है, सुषु्िगत म्रात्माकी श्रभिन्न स्थिति  बस्त्वन्तरप्रत्युपस्थापिका शान्ता  तेनान्यसेन अविदयाप्रनिमक्त्य",
-          "science": "जहां (जागरित या स्वप्नावस्थामे) आत्मासे भिन्न अन्य-सा होता है वहाँ अन्य अन्यको देख सकता हे, म्रन्य अन्यको संघ सकता हे, अन्य १. भर्रंप्रपञ्चका मत है कि परमात्…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4158,8 +3774,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadvai tanna vijānāti vijānanvai tanna vijānāti na hi vijñāturvijñāterviparilopo vidyate'vināśitvān na tu taddvitīyamasti tato'nyadvibhaktaṃ yadvijānīyāt ||",
           "translation": "'And when (it is said that) there (in the Sushupti) he does not know, yet he is knowing, though he does not know. For knowing is inseparable from the knower, because it cannot perish. But there is then no second, nothing else different from him that he could know.",
           "explanation": "Sense: 'And when (it is said that) there (in the Sushupti) he does not know, yet he is knowing, though he does not know. For knowing is inseparable from the knower, because it cannot perish. But there is then no second, nothing else different from him that he could know.",
-          "hindi": "जेसे जलमे वैपे ही सुषुप्िमे एक अद्वैत द्रषटाहै। ह सम्राट्‌ ! यह तरहमलोक दे-एेसा याज्ञवल्क्यने जनकको उपदेश दिया । यह इस ( पुरुष ) कौ परमगति है, यह्‌ इसक्रौ परम सम्पत्ति है, यह इसका परम , ्ाज्ञात्मासे सम्यक्‌ प्रकारसे आलि- रिष्परक्तः समस्तः सभ्प्रसन्न  युक्त, आप्तकाम, आसकाम, जलके आप्तकाम अ(सकामः सलिल-  समान स्वच्छ, मानो जलम १००४ बृहदारण्यकोपनिषद्‌  अष्याय ¢  निष्पाप गनौर निष्काम श्रोत्रियके सावभौम श्रानन्दका दिग्दशंन यस्य परमानन्दस्य मात्रा ्रव- ब्रह्मासि लेकर मनुष्यपयन्त",
-          "science": "जेसे जलमे वैपे ही सुषुप्िमे एक अद्वैत द्रषटाहै। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4183,8 +3797,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "salila eko draṣṭādvaito bhavatyeṣa brahmalokaḥ samrāḍ iti hainamanuśaśāsa yājñavalkya| eṣāsya paramā gatireṣāsya paramā sampad eṣo'sya paramo loka eṣo'sya parama ānanda etasyaivā''nandasyānyāni bhūtāni mātrāmupajīvanti ||",
           "translation": "'An ocean is that one seer, without any duality; this is the Brahma-world , O King.' Thus did Yâgñavalkya teach him. This is his highest goal, this is his highest Success, this is his highest world, this is his highest bliss. All other creatures live on a small portion of that bliss.",
           "explanation": "Sense: 'An ocean is that one seer, without any duality; this is the Brahma-world , O King.' Thus did Yâg&ntilde;avalkya teach him. This is his highest goal, this is his highest Success, this is his highest world, this is his highest bliss.…",
-          "hindi": "वह्‌ यह्‌ पुरुष इस स्वप्नान्तमे रमण श्रौर विहार कर तथा पुण्य ओर पापको देखकर ही पुनः गये हूए मागेसे ही यथास्थान जागरित-अवस्थाको जागरितसे स्वप्तान्तक्रमद्वारा सम्प्रसादको प्राप्त हुआ वहं यह्‌ पररूष इस सम्प्रसादमे स्थित रहकर १०१४ बरृहदारण्यकोपनिषद्‌  अध्याय छ म॒मूर्घुकी दशाका वर्णन यथायमा्मा स्वप्नान्ताद्‌ बुद्धा.  वन किमा जाता हैः जिस्‌ प्रकार",
-          "science": "वह्‌ यह्‌ पुरुष इस स्वप्नान्तमे रमण श्रौर विहार कर तथा पुण्य ओर पापको देखकर ही पुनः गये हूए मागेसे ही यथास्थान जागरित-अवस्थाको जागरितसे स्वप्तान्तक्रमद्वारा…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4200,8 +3812,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yo manūṣyāṇām̐ rāddhaḥ samṛddho bhavatyanyeṣāmadhipatiḥ sarvairmānuṣyakairbhogaiḥ sampannatamaḥ anyeṣāṃ sampannatamassa manuṣyāṇāṃ parama ānando'tha ye śataṃ manuṣyāṇāmānandāḥ sa ekaḥ pitṛṇāṃ jitalokānāmānando'tha ye śataṃ pitṛṇāṃ jitalokānāmānandāḥ sa eko gandharvaloka ānando'tha ye śataṃ gandharvaloka ānandāḥ sa ekaḥ karmadevānāmānando ye karmaṇā devatvamabhisampadyante'tha ye śataṃ karmadevānāmānandāḥ sa eka ājānadevānāmānando yaśca śrotriyo'vṛjino'kāmahato'tha ye śatamājānadevānāmānandāḥ sa ekaḥ prajāpatiloka ānando yaśca śrotriyo'vṛjino'kāmahato atha ye śataṃ prajāpatiloka ānandāḥ sa eko brahmaloka ānando yaśca śrotriyo'vṛjino'kāmahato'thaiṣa eva parama ānanda eṣa brahmalokaḥ samrāḍ iti hovāca yājñavalkyaḥ | so'haṃ bhagavate sahasraṃ dadāmyata ūrdhvaṃ vimokṣāyaiva brūhītyatra ha yājñavalkyo bibhayāṃcakāraḥ medhāvī rājā sarvebhyo mā'ntebhya udarautsīditi ||",
           "translation": "'If a man is healthy, wealthy, and lord of others, surrounded by all human enjoyments, that is the highest blessing of men. Now a hundred of these human blessings make one blessing of the fathers who have conquered the world (of the fathers). A hundred blessings of the fathers who have conquered this world make one blessing in the Gandharva world. A hundred blessings in the Gandharva world make one blessing of the Devas by merit (work, sacrifice), who obtain their godhead by merit. A hundred blessings of the Devas by merit make one blessing of the Devas by birth, also (of) a Srotriya who is without sin, and not overcome by desire. A hundred blessings of the Devas by birth make one blessing in the world of Pragâpati, also (of) a Srotriya who is without sin, and not overcome. by desire. A hundred blessings in the world of Pragâpati make one blessing in the world of Brahman, also (of) a Srotriya who is without sin, and not overcome by desire. And this is the highest blessing .",
           "explanation": "Sense: 'If a man is healthy, wealthy, and lord of others, surrounded by all human enjoyments, that is the highest blessing of men. Now a hundred of these human blessings make one blessing of the fathers who have conquered the world (of the fathers).…",
-          "hindi": "ततत्र यथा लोकेऽनः शकटं  यहां जिस प्रकार लोकम सुस- र हित अर्थात्‌ भाण्डादि गृहुसामम्री-- हितं भाण्डोपर्करणेन उलूखल-  ऊलल, मूसल, सूप ओर पिठरः ऊरध्वोच्छवास क्यों ग्रौर किसलिये होता है? ४ तदस्योध्वोभ्छ्रासित्वं कर्मिन्‌  उसका ऊर््वोच्छुवास क्रिस वह्‌ यह्‌ देह जिस समय कृशताको प्राप्त होता हे, वृद्धावस्था अथवा ज्वरादि रोगकं कारणकृश हो जातादटै, उस समय जेसे आम, गूलर अथवा पिप्पल-फल बन्धने द्ूट जाता है, वेसे ही यह पुरुष इन अङ्गोसे",
-          "science": "ततत्र यथा लोकेऽनः शकटं यहां जिस प्रकार लोकम सुस- र हित अर्थात्‌ भाण्डादि गृहुसामम्री-- हितं भाण्डोपर्करणेन उलूखल- ऊलल, मूसल, सूप ओर पिठरः ऊरध्वोच्छवास क्यों…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4217,8 +3827,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa vā eṣa etasminsvapnānte ratvā caritvā dṛṣṭvaiva puṇyaṃ ca pāpaṃ ca punaḥ pratinyāyaṃ pratiyonyādravati buddhāntāyaiva ||",
           "translation": "And Yâgñavalkya said: 'That (person), having enjoyed himself in that state of sleeping (dream), having moved about and seen both good and bad, hastens back again as he came, to the place from which he started, to the state of waking 1 .",
           "explanation": "Sense: And Yâg&ntilde;avalkya said: 'That (person), having enjoyed himself in that state of sleeping (dream), having moved about and seen both good and bad, hastens back again as he came, to the place from which he started, to the state of waking 1 .",
-          "hindi": "वह्‌ यह प्राकृत-शिर एवं हाथ- त्व अर्थात्‌ कृशताको नेति\" प्राप्त हो जाता हे। किस कारणस? देदान्तरग्रहणका प्रकार तत्रास्येदं शरीरं परित्यज्य  शङ्का-मरणकालभे इस शरीर-   को छोडकर जानेवाले पुरुषे दुसरे सो जिस प्रकार आते हृए राजाको उग्रकर्मा एवं पापकम॑मे नियुक्त सत ओर गाँवके नेतालोग अन्न, पान ओर तिवासस्थान तयार रखकर ये आये, ये आये इस प्रकार कटे हुए प्रतीक्षा करते है, उसी प्रकार इस",
-          "science": "वह्‌ यह प्राकृत-शिर एवं हाथ- त्व अर्थात्‌ कृशताको नेति\" प्राप्त हो जाता हे। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4234,8 +3842,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadyathā'naḥ susamāhitamutsarjadyāyādevamevāyam̐ śārīra ātmā prājñenā''tmanā'nvārūḍha utsarjanyāti yatraitadūrdhvocchvāsī bhavati || utsarjam yāti yatraitadūrdhvocchvāsī bhavati ||",
           "translation": "'Now as a heavy-laden carriage moves along groaning, thus does this corporeal Self, mounted by the intelligent Self, move along groaning, when a man is thus going to expire 2 .",
           "explanation": "Sense: 'Now as a heavy-laden carriage moves along groaning, thus does this corporeal Self, mounted by the intelligent Self, move along groaning, when a man is thus going to expire 2 .",
-          "hindi": "उसमे दृष्टान्त-जिष प्रकार भिषिक्त राजाकी उग्र-जातिविशेष विशेषाः क्रकर्माणो वा प्रस्येनसः, अथवा करर क्म करनेवाले एवं प्राणोके देहान्तरगमनका प्रकार इस प्रकार जानैके लिये तैयार    इए उस जीवके साथ कौन जाते जिस प्रकार जानेके लिये तैयार हृए राजाके अभिमुख होकर उग्र- कर्मा जौर पापकम्ममे नियुक्त सूत एवं गांवके नेतालोग जाते ह, उसी कार जब यह ऊरभ्वोच्छवास लेने लगता है तो अन्तकालमे सारे प्राण",
-          "science": "उसमे दृष्टान्त-जिष प्रकार भिषिक्त राजाकी उग्र-जातिविशेष विशेषाः क्रकर्माणो वा प्रस्येनसः, अथवा करर क्म करनेवाले एवं प्राणोके देहान्तरगमनका प्रकार इस प्रकार ज…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4251,8 +3857,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yatrāyamaṇimānaṃ nyeti jarayā vopatapatā vā'ṇimānaṃ nigacchati tadyathā''mraṃ vodumbaraṃ vā pippalaṃ vā bandhanātpramucyata evamevāyaṃ puruṣa ebhyo'ṅgebhyaḥ sampramucya punaḥ pratinyāyaṃ pratiyonyādravati prāṇāyaiva || prāṇāya eva",
           "translation": "'And when (the body) grows weak through old age, or becomes weak through illness, at that time that person, after separating himself from his members, as an Amra (mango), or Udumbara (fig), or Pippala-fruit is separated from the stalk, hastens back again as be came, to the place from which he started, to (new) life.",
           "explanation": "Sense: 'And when (the body) grows weak through old age, or becomes weak through illness, at that time that person, after separating himself from his members, as an Amra (mango), or Udumbara (fig), or Pippala-fruit is separated from the stalk, hastens back again as be came,…",
-          "hindi": "कीमावेन तमभिपुखा चायन्त्य- भोक्तारमन्तकाले मरणकाले सवं नाज्ञप्ा एव राज्ञा केवलं तञ्जि- मरणोन्मृख जीवकी दशाका वर्णन स॒यत्रायमात्मा---संसारोप-  स यत्रायमात्मा' यहाँ संसार.  त प्सतम्‌ । तत्रायं पष के उपवणंनका प्रसङ्ग = । उसमे वह यह आत्मा जिस समय दु्ब॑लताको प्राप्त हो मानो सम्मोहको ४. प्राप्त हो जाता हे, तबये वागादि प्राण इसके प्रति अभिमुखतासे आते है: ह इन  ध्राणोको  तेजोमात्राको सम्यक्‌ प्रकारसे ग्रहण करक",
-          "science": "कीमावेन तमभिपुखा चायन्त्य- भोक्तारमन्तकाले मरणकाले सवं नाज्ञप्ा एव राज्ञा केवलं तञ्जि- मरणोन्मृख जीवकी दशाका वर्णन स॒यत्रायमात्मा---संसारोप- स यत्रायमात्मा'…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4268,8 +3872,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadyathā rājānamāyantamugrāḥ pratyenasaḥ sūtagrāmaṇyo'nnaiḥ pānairavasathaiḥ pratikalpante ayamāyātyayamāgacchatītyevam̐ haivaṃvidam̐ sarvāṇi bhūtāni pratikalpanta idaṃ brahmā''yātīdamāgacchatīti ||",
           "translation": "'And as policemen, magistrates, equerries, and governors wait for a king who is coming back, with food and drink, saying, \"He comes back, he approaches,\" thus do all the elements wait on him who knows this, saying, \"That Brahman comes, that Brahman approaches.\"",
           "explanation": "Sense: 'And as policemen, magistrates, equerries, and governors wait for a king who is coming back, with food and drink, saying, \"He comes back, he approaches,\" thus do all the elements wait on him who knows this, saying, \"That Brahman comes, that Brahman approaches.\"",
-          "hindi": "स्मिन्‌ कालेऽबन्य मबलभावं नि टता सम्मोहः विवेकाभावः, सम्मोहमिव न्येतीति; उच्करान्ति-  पुण्डरीकाकाशपन्ववक्रामत्यन्वा- ङुवंन्‌ यतंते, मरणकाले स्वस्य  जाती टै, क्षु गृहीत हो जाती है\" लिद्धाटमामे विभिन्न इन्दरियोके लय ग्रौर उसके । एकोभवति न पर्यतीव्याहुरको मवति न जिघ्र- तीत्याहुरेकी भवति न रस्यत इत्याहुरेकीभवति न उद-",
-          "science": "स्मिन्‌ कालेऽबन्य मबलभावं नि टता सम्मोहः विवेकाभावः, सम्मोहमिव न्येतीति; उच्करान्ति- पुण्डरीकाकाशपन्ववक्रामत्यन्वा- ङुवंन्‌ यतंते, मरणकाले स्वस्य जाती टै, क्…। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4285,8 +3887,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadyathā rājānaṃ prayiyāsantamugrāḥ pratyenasaḥ sūtagrāmaṇyo'bhisamāyantyevamevemamātmānamantakāle sarve prāṇā abhisamāyanti yatraitadūrdhvocchvāsī bhavati ||",
           "translation": "'And as policemen, magistrates, equerries, and governors gather round a king who is departing, thus do all the senses (prânas) gather round the Self at the time of death, when a man is thus going to expire.'",
           "explanation": "Sense: 'And as policemen, magistrates, equerries, and governors gather round a king who is departing, thus do all the senses (prânas) gather round the Self at the time of death, when a man is thus going to expire.' Next: IV, 4 Sacred Texts | Hinduism",
-          "hindi": "लिङ्ात्मासे  एकरूप हो जाती है, तो लोग नहीं €  घ्राणेन्दिय  एकरूप हो जाती है, तो नहीं सुंघता\" एसा करते है,  रसनेद्धिय  एक रूपहो जाती है तो नहीं  एकी मवति करणजातं स्वेन  जव इ्दियवभं अपने लिञ्दे्‌- लिङ्गात्मना, तहैनं पा्बस्था  क साथ प्क शि ९  श आसपास वेढे हुए लोग कहते ह एवं विदयादिसम्भारसम्भृतो ¦ इस प्रकार विद्यादिकै भारसे । लदा हृ, देहान्तरको प्राप्त करने देहान्तरं प्रतिपद्यमानः, सक्तवा  वाला जीव वदो चोड्कर",
-          "science": "लिङ्ात्मासे एकरूप हो जाती है, तो लोग नहीं € घ्राणेन्दिय एकरूप हो जाती है, तो नहीं सुंघता\" एसा करते है, रसनेद्धिय एक रूपहो जाती है तो नहीं एकी मवति करणजातं स्…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ThreeStates",
@@ -4310,8 +3910,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yatrāyamātmā'balyaṃ nyetya sammohamiva nyetyathainamete prāṇā abhisamāyanti sa etāstejomātrāḥ samabhyādadāno hṛdayamevānvavakrāmati sa yatraiṣa cākṣuṣaḥ puruṣaḥ parāṅparyāvartate'thārūpajño bhavati ||",
           "translation": "Yâgñavalkya continued: 'Now when that Self, having sunk into weakness , sinks, as it were, into unconsciousness, then gather those senses (prânas) around him, and he, taking with him those elements of light, descends into the heart When that person in the eye turns away, then he ceases to know any forms.",
           "explanation": "Sense: Yâgñavalkya continued: 'Now when that Self, having sunk into weakness , sinks, as it were, into unconsciousness, then gather those senses (prânas) around him, and he, taking with him those elements of light, descends into the heart When that person in the eye turns away,…",
-          "hindi": "वह्‌ दृष्टान्त--भिस प्रकार जोक एक वृणके अन्तम पहुंचकर दूसरे वृणरूप आश्चयको पकड़कर अपनेको सकोड लेती है, इसी प्रकार यह्‌ आत्मा इस शरीरको मारकर-अविदा ( अचेतनावस्था ) को प्राप्तकराकर तत्तत्र ॒देहान्तरसंचार इदं उस देहान्तरसंचारमे यहः निदशेनस्‌-- यथा येन प्रकारेण  उदाहरण है- यथा जिस प्रकार वृण- तणजलायुङ वणजलूरा तण- । जजुका (घासपर चलनेवाली जोक) ग्रात्माके देहान्तरनिर्पाणमें सुवणंकारका हृष्टान्त तत्र देहान्तरारम्भे निर्थोपा- उस देहान्तरके आरम्भे जीव सी ४; नित्य ग्रहण क्रिये हृए उप।दानको",
-          "science": "वह्‌ दृष्टान्त--भिस प्रकार जोक एक वृणके अन्तम पहुंचकर दूसरे वृणरूप आश्चयको पकड़कर अपनेको सकोड लेती है, इसी प्रकार यह्‌ आत्मा इस शरीरको मारकर-अविदा ( अचेतनावस…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4328,8 +3926,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ekībhavati na paśyatītyāhurekībhavati na jighratītyāhurekībhavati na rasayatītyāhurekībhavati na vadatītyāhurekībhavati na śṛṇotītyāhurekībhavati na manuta ityāhurekībhavati na spṛśatītyāhurekībhavati na vijānātītyāhustasya haitasya hṛdayasyāgraṃ pradyotate tena pradyotenaiṣa ātmā niṣkrāmati cakṣuṣṭo vā mūrdhno vā'nyebhyo vā śarīradeśebhyastamutkrāmantaṃ prāṇo'nūtkrāmati prāṇamanūtkrāmantam̐ sarve prāṇā anūtkrāmanti | savijñāno bhavati savijñānamevānvavakrāmati | taṃ vidyākarmaṇī samanvārabhete pūrvaprajñā ca ||",
           "translation": "'\"He has become one,\" they say, \"he does not see .\" \"He has become one,\" they say, \"he does not smell.\" \"He has become one,\" they say, \"he does not taste.\" \"He has become one,\" they say, \"he does not speak.\" \"He has become one,\" they say, \"he does not hear.\" \"He has become one,\" they say, \"he does not think.\" \"He has become one,\" they say, \"he does not touch.\" \"He has become one,\" they say, \"he does not know.\" The point of his heart becomes lighted up, and by that light the Self departs, either through the eye , or through the skull , or through other places of the body. And when he thus departs, life (the chief prâna) departs after him, and when life thus departs, all the other vital spirits (prânas) depart after it. He is conscious, and being conscious he follows and departs.",
           "explanation": "Sense: '\"He has become one,\" they say, \"he does not see .\" \"He has become one,\" they say, \"he does not smell.\" \"He has become one,\" they say, \"he does not taste.\" \"He has become one,\" they say, \"he does not speak.\" \"He has become one,\" they say,…",
-          "hindi": "उतमें दृष्टानत--जिस प्रकार सोनार सुवणं +7 भाग लेकर दसरे नवीन ओर कल्याणतर ( अधिक सुन्दर ) रूपक्री रचना करता है, उशी प्रकार यह आत्मा इस शरीरको नष्ट कर--अचेतनावस्थाको प्राप्तकर दसरे तत्त्रेतस्मिन्न्थ-- यथा पेश्च-  उस इस विषयमे यह्‌ दान्त  है-जिस प्रकार पेशस्कारी-पेशस सुवणंको कहते हे, उसे जो बनावे राह्मण ४  शाङ्करभाष्यं १०४१ समय श्रात्माको क्मनुसार विभिन्न गत्तियोका निरूपण येऽस्य बन्धनसंज्ञका उपाधि-  इस आत्मके जो बन्धनसंलक",
-          "science": "उतमें दृष्टानत--जिस प्रकार सोनार सुवणं +7 भाग लेकर दसरे नवीन ओर कल्याणतर ( अधिक सुन्दर ) रूपक्री रचना करता है, उशी प्रकार यह आत्मा इस शरीरको नष्ट कर--अचेतनाव…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4346,8 +3942,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadyathā tṛṇajalāyukā tṛṇasyāntaṃ gatvā'nyamākramamākramyātmānamupasam̐haratyevamevāyamātmedam̐ śarīraṃ nihatyāvidyāṃ gamayitvā'nyamākramamākramyā''tmānamupasam̐harati ||",
           "translation": "'And as a caterpillar, after having reached the end of a blade of grass, and after having made another approach (to another blade) , draws itself together towards it, thus does this Self, after having thrown off this body and dispelled all ignorance, and after making another approach (to another body), draw himself together towards it.",
           "explanation": "Sense: 'And as a caterpillar, after having reached the end of a blade of grass, and after having made another approach (to another blade) , draws itself together towards it, thus does this Self, after having thrown off this body and dispelled all ignorance,…",
-          "hindi": "त्मा, ब्रह्मेव पर एव, योऽशनाया- तथा मनोमयो मनः संनिकर्षा- हूपदशेनकाले । एवं श्रोत्रपयः कामनाके अनुसार गुभाशुभ गति तथा निष्काम  ब्रह्मज्ञके मौक्षका निरूपण तदेष दोको भवति । तदेव सक्तः सह कस॑- उस्न विषयमे यह्‌ मन्त है इसका लिङ्ग अर्थात्‌ मन जिसमे अत्यन्त भासक्त होता है, उसी फलको यहं सामिलाष होकर कम॑के सहित प्राप्त करता है । इस लोकमे यह्‌",
-          "science": "त्मा, ब्रह्मेव पर एव, योऽशनाया- तथा मनोमयो मनः संनिकर्षा- हूपदशेनकाले। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4364,8 +3958,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadyathā peśaskārī peśaso mātrāmapādāyānyannavataraṃ kalyāṇataram̐ rūpaṃ tanuta evamevāyamātmedam̐ śarīraṃ nihatyāvidyāṃ gamayitvā'nyannavataraṃ kalyāṇataram̐ rūpaṃ kurute pitryaṃ vā gāndharvaṃ vā daivaṃ vā prājāpatyaṃ vā brāhmaṃ vā'nyeṣāṃ vā bhūtānām || brāhmam vā prājāpatyam vā daivam vā anyebhyasvā bhūtebhyas",
           "translation": "And as a goldsmith, taking a piece of gold, turns it into another, newer and more beautiful shape, so does this Self, after having thrown off this body and dispelled all ignorance, make unto himself another, newer and more beautiful shape, whether it be like the Fathers, or like the Gandharvas, or like the Devas, or like Pragâpati, or like Brahman, or like other beings.",
           "explanation": "Sense: And as a goldsmith, taking a piece of gold, turns it into another, newer and more beautiful shape, so does this Self, after having thrown off this body and dispelled all ignorance, make unto himself another, newer and more beautiful shape, whether it be like the Fathers,…",
-          "hindi": "तत्तरिमन्नथं एष श्लोको तत्‌--उस विषथमे यह्‌ शलोक अर्थात्‌ मन्त्र भी है । तदेवैति-उसी- णिता । येश्ोषधिभुतः काय- करणलक्षणमृतैः परिवेष्टितः; क्तानि । तेषां साच्तासयोजक्षो  कर॒ दिषा उसी अर्थम यह मन्त्र है--जिस समय इसके हृदयम आश्रित सम्पूणं कामनाओंका नाश हो जाता है तो फिर यह्‌ मरणधर्भा अमृत हो जाता हे ओर यहीं ( इस शरीरम ही ) उसे ब्रह्मको प्राप्ति हो जाती है। इसमें",
-          "science": "तत्तरिमन्नथं एष श्लोको तत्‌--उस विषथमे यह्‌ शलोक अर्थात्‌ मन्त्र भी है। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4382,8 +3974,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa vā ayamātmā brahma vijñānamayo manomayaḥ prāṇamayaścakṣurmayaḥ śrotramayaḥ pṛthivīmaya āpomayo vāyumaya ākāśamayastejomayo'tejomayaḥ kāmamayo'kāmamayaḥ krodhamayo'krodhamayo dharmamayo'dharmamayaḥ sarvamayasśrotramayasākāśamayasvāyumayastejomaya- sāpomayaspṛthivīmayaskrodhamayasakrodhamaya- śarṣamayasaharṣamayas tadyadetadidammayo'domaya iti yathākārī yathācārī tathā bhavati | sādhukārī sādhurbhavati pāpakārī pāpo bhavati puṇyaḥ puṇyena karmaṇā bhavati pāpaḥ pāpena | atho khalvāhuḥ kāmamaya evāyaṃ puruṣa iti sa yathākāmo bhavati tatkraturbhavati yatkraturbhavati tatkarma kurute yatkarma kurute tadabhisampadyate ||",
           "translation": "'That Self is indeed Brahman, consisting of knowledge, mind, life, sight, hearing, earth, water, wind, ether, light and no light, desire and no desire, anger and no anger, right or wrong, and all things. Now as a man is like this or like that , according as he acts and according as he behaves, so will he be:--a man of good acts will become good, a man of bad acts, bad. He becomes pure by pure deeds, bad by bad deeds.",
           "explanation": "Sense: 'That Self is indeed Brahman, consisting of knowledge, mind, life, sight, hearing, earth, water, wind, ether, light and no light, desire and no desire, anger and no anger, right or wrong, and all things. Now as a man is like this or like that ,…",
-          "hindi": "तत्‌ तरिमन्नेवार्थे एष इलोको  : त्व अथमे लोकं = स्व॑ अर्थात्‌ समस्त काम-ृष्णाओं स्वे समस्ताः कामाः वष्णाप्रमेदाः ् क आत्मकामी ब्रह्यवेत्ताको मोक्ष प्राप्त होता है--दसपे प्रमाणभूत सन्त्र तदेते रलोका भवन्ति । अणुः पन्था वरिदतः युराणो १. ज्ञानके सावनभूत कर्मोको यहाँ प्रतिपत्तिकर्म कहा गया है । अल्पकामस्य ब्रह्मविद्‌। मक्त विस्तश्प्रतिषादका एते इलोका स्वगंलोक अर्थात्‌ सोक्षको आप्त होते",
-          "science": "तत्‌ तरिमन्नेवार्थे एष इलोको : त्व अथमे लोकं = स्व॑ अर्थात्‌ समस्त काम-ृष्णाओं स्वे समस्ताः कामाः वष्णाप्रमेदाः ् क आत्मकामी ब्रह्यवेत्ताको मोक्ष प्राप्त होत…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4400,8 +3990,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadeṣa śloko bhavati | tadeva saktaḥ saha karmaṇaiti liṅgaṃ mano yatra niṣaktamasya | prāpyāntaṃ karmaṇastasya yatkiñceha karotyayam | tasmāllokātpunaraityasmai lokāya karmaṇ iti nu kāmayamāno'thākāmayamāno yo'kāmo niṣkāma bhavati āptakāma ātmakāmo na tasya prāṇā utkrāmanti brahmaiva sanbrahmāpyeti ||",
           "translation": "'And here there is this verse: \"To whatever object a man's own mind is attached, to that he goes strenuously together with his deed; and having obtained the end (the last results) of whatever deed he does here on earth, he returns again from that world (which is the temporary reward of his deed) to this world of action.\"",
           "explanation": "Sense: 'And here there is this verse: \"To whatever object a man's own mind is attached, to that he goes strenuously together with his deed; and having obtained the end (the last results) of whatever deed he does here on earth,…",
-          "hindi": "मोक्षमा्गके विषयमे मत-भेद लोहितं च । एष पन्था ब्रह्मणा हाुवित्तस्तेनेति ब्रह्मवित्‌ पुण्यज्घत्तेजसश्च ॥  ॥ विद्या ग्रौर ग्रविद्यारत पुरुषोकी गति जो अविद्या ( कमं ) की उपासना करते है, वे अज्ञानसंज्ञक अन्ध- कारमें प्रवेश करते हँ ओर जो विद्या ( कमंकाण्डरूप त्रप्रीविद्या ) में रत ह, वे उनसे भौ अधिक अन्धकारमे प्रवेश करते हूँ",
-          "science": "मोक्षमा्गके विषयमे मत-भेद लोहितं च। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4418,8 +4006,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadeṣa śloko bhavati yadā sarve pramucyante kāmā ye'sya hṛdi śritāḥ | atha martyo'mṛto bhavatyatra brahma samaśnuta iti || tadyathā'hinirvlayanī valmīke mṛtā pratyastā śayītaivamevedam̐ śarīram̐ śete'thāyamaśarīro'mṛtaḥ prāṇo brahmaiva teja eva so'haṃ bhagavate sahasraṃ dadāmīti hovāca janako vaidehaḥ ||",
           "translation": "'On this there is this verse: \"When all desires which once entered his heart are undone, then does the mortal become immortal, then he obtains Brahman.",
           "explanation": "Sense: 'On this there is this verse: \"When all desires which once entered his heart are undone, then does the mortal become immortal, then he obtains Brahman.",
-          "hindi": "पन्ते; के १ ये श्रविधां विचा मिव तमः प्रविशन्ति; के १ये पादिकायां कर्मार्थायां त्रय्यामेव अन्ध अर्थात्‌ संसारके नियामक कारमें प्रवेश करते है; कौन ? जो अविद्या--विद्यासे भिन्न साध्य",
-          "science": "पन्ते; के १ ये श्रविधां विचा मिव तमः प्रविशन्ति; के १ये पादिकायां कर्मार्थायां त्रय्यामेव अन्ध अर्थात्‌ संसारके नियामक कारमें प्रवेश करते है; कौन ? जो अविद्य…। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4436,8 +4022,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadete ślokā bhavanti | aṇuḥ panthā vitataḥ purāṇo mām̐ spṛṣṭo'nuvitto mayaiva | tena dhīrā apiyanti brahmavidaḥ svargaṃ lokamita ūrdhvaṃ vimuktāḥ ||",
           "translation": "'On this there are these verses:",
           "explanation": "Sense: 'On this there are these verses:",
-          "hindi": "गरज्ञानियोको प्राप्र होनेवाले भ्रनन्द लोकोका वर्णन प्रविशन्ति, को दोषः ? इस्यु-  कारम प्रवेश करते है तो दोष क्या हे ? यह बतलाया जाता है- नामते रोकाः, तेन अन्धेना-  अभिगच्छन्ति अभियान्ति; के१। अनन्द--अनानन्द अर्थात्‌ असुख नामके वे लोक उस अन्ध-अदशंन- रूप अन्धकारसे आवृत--व्याप्त है;",
-          "science": "गरज्ञानियोको प्राप्र होनेवाले भ्रनन्द लोकोका वर्णन प्रविशन्ति, को दोषः ? इस्यु- कारम प्रवेश करते है तो दोष क्या हे ? यह बतलाया जाता है- नामते रोकाः, तेन अन्ध…। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4454,8 +4038,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tasmiñchuklamuta nīlamāhuḥ piṅgalam̐ haritaṃ lohitaṃ ca | eṣa panthā brahmaṇā hānuvittastenaiti brahmavitpuṇyakṛttaijasaśca ||",
           "translation": "'On that path they say that there is white, or blue, or yellow, or green, or red ; that path was found by Brahman, and on it goes whoever knows Brahman, and who has done good, and obtained splendour.",
           "explanation": "Sense: 'On that path they say that there is white, or blue, or yellow, or green, or red ; that path was found by Brahman, and on it goes whoever knows Brahman, and who has done good, and obtained splendour.",
-          "hindi": "श्रात्मज्ञकी निरिचन्त स्थिति किमिच्छन्‌ कस्य कामाय शरीरमनुसंज्वरेत्‌ यदि पुरूष आत्माको शँ यह्‌ हूः इस प्रकार विशेषरूयसे जान जाथ त फिर क्या इच्छा करता हुआ ओर किस कामनासे शरीरके पी",
-          "science": "श्रात्मज्ञकी निरिचन्त स्थिति किमिच्छन्‌ कस्य कामाय शरीरमनुसंज्वरेत्‌ यदि पुरूष आत्माको शँ यह्‌ हूः इस प्रकार विशेषरूयसे जान जाथ त फिर क्या इच्छा करता हुआ ओर…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4472,8 +4054,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "andhaṃ tamaḥ praviśanti ye'vidyāmupāsate | tato bhūya iva te tamo ya u vidyāyām̐ ratāḥ ||",
           "translation": "'All who worship what is not knowledge (avidyâ) enter into blind darkness: those who delight in knowledge, enter, as it were, into greater darkness .",
           "explanation": "Sense: 'All who worship what is not knowledge (avidyâ) enter into blind darkness: those who delight in knowledge, enter, as it were, into greater darkness .",
-          "hindi": "कामा प्रयोजनाय; न हि तस्य  यदि सहस्रोमें कोई एक आत्मा-  को--अपते परस्वरूपको-सम्धुणं कामनासे वह्‌ इच्छा करे, क्योंकि वहं तो सवका अत्मस्वरूप हो जाताहे। अतः वहु क्या इच्छा इम अनेकों अनथोसि पणं ओर विवेक-विज्ञानके विरोधी विषम शरीरम प्रविष्ट हा आत्मा जिस ब्राह्मणको प्राप्त ओर ज्ञात हो गया है, वही विर्वकृत्‌ ( कृतकृत्य ) है । वही सवका कर्ता है, उसीका लोक है",
-          "science": "कामा प्रयोजनाय; न हि तस्य यदि सहस्रोमें कोई एक आत्मा- को--अपते परस्वरूपको-सम्धुणं कामनासे वह्‌ इच्छा करे, क्योंकि वहं तो सवका अत्मस्वरूप हो जाताहे। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4490,8 +4070,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "anandā nāma te lokā andhena tamasā''vṛtāḥ tām̐ste pretyābhigacchantyavidvām̐so'budho janāḥ ||",
           "translation": "'There are indeed those unblessed worlds, covered with blind darkness. Men who are ignorant and not enlightened go after death to those worlds.",
           "explanation": "Sense: 'There are indeed those unblessed worlds, covered with blind darkness. Men who are ignorant and not enlightened go after death to those worlds.",
-          "hindi": "पस्य ब्राह्मणस्य, ्रनुवित्तः-- जिस ब्राह्मणको आत्मा अनु- कानथंसंकटोपचये, गहने विषमे- विश्वकरदिति नाम॒ इत्याश्चङ्‌- विश्वस्य कर्ता सवस्य आत्मा, इत्यनुसंधातव्य इति श्लोका- हम इस शरीरमे रहते हए ही यदि उसे जान लेते हँ  तो कृतार्थं हौ",
-          "science": "पस्य ब्राह्मणस्य, ्रनुवित्तः-- जिस ब्राह्मणको आत्मा अनु- कानथंसंकटोपचये, गहने विषमे- विश्वकरदिति नाम॒ इत्याश्चङ्‌- विश्वस्य कर्ता सवस्य आत्मा, इत्यनुसंधातव्य…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4508,8 +4086,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ātmānaṃ cedvijānīyādayamasmīti pūruṣaḥ kimicchankasya kāmāya śarīramanusañjvaret ||",
           "translation": "'If a man understands the Self, saying, \"I am He,\" what could he wish or desire that he should pine after the body .",
           "explanation": "Sense: 'If a man understands the Self, saying, \"I am He,\" what could he wish or desire that he should pine after the body .",
-          "hindi": "इहेव - ग्रनेकानर्थसुले मन्तो यरीं-इष अनेकों अनथंपणं   शरीरमे रहते हए हौ अर्थात्‌ सन्तः, कथं चिदिव ब्रह्मत्छम्‌  रहते हए दी किसौ प्रकार हः गये-एेसा इसका अभिप्राय है । हम जिस इस ब्रह्मो जानते हे; यदि उसे हमने न जान। होता १०८४ बृहदारण्यको पनिषद्‌ अध्याय ४ श्रमेददर्शी श्रात्सज्ञकी निर्भयता जब भृत ओर भविष्यके स्वामी इस प्रकाशमान अयता कमं-",
-          "science": "इहेव - ग्रनेकानर्थसुले मन्तो यरीं-इष अनेकों अनथंपणं शरीरमे रहते हए हौ अर्थात्‌ सन्तः, कथं चिदिव ब्रह्मत्छम्‌ रहते हए दी किसौ प्रकार हः गये-एेसा इसका अभिप्राय है। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4526,8 +4102,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yasyānuvittaḥ pratibuddha ātmā'sminsandehye gahane praviṣṭaḥ | sa viśvakṛt sa hi sarvasya kartā tasya lokaḥ sa u loka eva ||",
           "translation": "'Whoever has found and understood the Self that has entered into this patched-together hiding-place , he indeed is the creator, for he is the maker of everything, his is the world, and he is the world itself .",
           "explanation": "Sense: 'Whoever has found and understood the Self that has entered into this patched-together hiding-place , he indeed is the creator, for he is the maker of everything, his is the world, and he is the world itself .",
-          "hindi": "चित्‌ परमकारूणिङ्ं कंचिद्‌- करोति स्वमात्मानम्‌, देवं स्वामिनं भूतभव्यस्य कालत्रय देवोद्रारा उपास्य प्रायुसंज्ञक ब्रह्म",
-          "science": "चित्‌ परमकारूणिङ्ं कंचिद्‌- करोति स्वमात्मानम्‌, देवं स्वामिनं भूतभव्यस्य कालत्रय देवोद्रारा उपास्य प्रायुसंज्ञक ब्रह्म। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4544,8 +4118,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ihaiva santo'tha vidmastadvayaṃ na cedavedirmahatī vinaṣṭiḥ | ye tadviduramṛtāste bhavantyathetare duḥkhamevāpiyanti ||",
           "translation": "'While we are here, we may know this; if not, I am ignorant , and there is great destruction. Those who know it, become immortal, but others suffer pain indeed.",
           "explanation": "Sense: 'While we are here, we may know this; if not, I am ignorant , and there is great destruction. Those who know it, become immortal, but others suffer pain indeed.",
-          "hindi": "जिसके नीचे संवत्सरचक्र अहोराव्रादि अवयवो सहित चक्रुर लगाता रहता हे, उस आदित्यादि ज्योतियोके ज्योतिःस्वरूप अमृतकीः देवगण आयु\" इस प्रकार उपासना करते ह स्सरः कालात्मा सवस्य जनि- जिस ईशानसे अर्वाक्‌ अर्थात्‌ जिससे दूसरे ही विषयवाला संव- सर्वाधारभूत ब्रह्मको जाननेवाला मेँ प्रमृत दही हू -यस्मिन्प पञजना आकाराश्च बःताहतः । । जिसमे पाच पच्चजन ओौर  अव्याकुतसंज्क  आका भौ प्रतिष्ठित",
-          "science": "जिसके नीचे संवत्सरचक्र अहोराव्रादि अवयवो सहित चक्रुर लगाता रहता हे, उस आदित्यादि ज्योतियोके ज्योतिःस्वरूप अमृतकीः देवगण आयु\" इस प्रकार उपासना करते ह स्सरः का…। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4562,8 +4134,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadaitamanupaśyatyātmānaṃ devamañjasā | īśānaṃ bhūtabhavyasya na tato vijugupsate ||",
           "translation": "'If a man clearly beholds this Self as God, and as the lord of all that is and will be, then he is no more afraid.",
           "explanation": "Sense: 'If a man clearly beholds this Self as God, and as the lord of all that is and will be, then he is no more afraid.",
-          "hindi": "यटिमन्‌ यत्र ब्रह्मणि, प्व जिसमे--जिस ब्रह्मम पाचि पितर, देव, अमुर ओर राक्षस-इस संख्याता मन्धर्वः; पितरो देवा  परकारवे पाची निने गये है, तं प्राणस्य प्राणम; तथा उसे जो प्राणका प्राण तथा चष्ठषोऽपि चष्घुउव भोतरस्याणि चका भौ च्च एवं श्रोता भी न्यथिप्रता त?   भत्र जानते हैः क्योंकि ब्रह्मी",
-          "science": "यटिमन्‌ यत्र ब्रह्मणि, प्व जिसमे--जिस ब्रह्मम पाचि पितर, देव, अमुर ओर राक्षस-इस संख्याता मन्धर्वः; पितरो देवा परकारवे पाची निने गये है, तं प्राणस्य प्राणम; त…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4580,8 +4150,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yasmādarvāksaṃvatsaro'hobhiḥ parivartate | taddevā jyotiṣāṃ jyotirāyurhopāsate'mṛtam ||",
           "translation": "'He behind whom the year revolves with the days, him the gods worship as the light of lights, as immortal time.",
           "explanation": "Sense: 'He behind whom the year revolves with the days, him the gods worship as the light of lights, as immortal time.",
-          "hindi": "१०८८ बृहदारण्यकोपानषद्‌  अध्याय ¢ नानात्वदर्शीकी दुगंतिका वर्णन तदत्रहमदसने साधनयुच्यते- उस ब्रह्मदशंनमे साधन बत- मनसेव परमाथेज्ञानसंस्कृतेन  ब्रह्मणि नेह नाना अस्ति क्रचन श्राप्नोति ।  कोऽसौ १ य इह मनसेवानुद्रष्टव्यं नेह नानास्ति किचन ।",
-          "science": "१०८८ बृहदारण्यकोपानषद्‌ अध्याय ¢ नानात्वदर्शीकी दुगंतिका वर्णन तदत्रहमदसने साधनयुच्यते- उस ब्रह्मदशंनमे साधन बत- मनसेव परमाथेज्ञानसंस्कृतेन ब्रह्मणि नेह नाना…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4598,8 +4166,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yasminpañca pañcajanā ākāśaśca pratiṣṭhitaḥ | tameva manya ātmānaṃ vidvānbrahmāmṛto'mṛtam ||",
           "translation": "'He in whom the five beings and the ether rest, him alone I believe to be the Self,--I who know, believe him to be Brahman; I who am immortal, believe him to be immortal.",
           "explanation": "Sense: 'He in whom the five beings and the ether rest, him alone I believe to be the Self,--I who know, believe him to be Brahman; I who am immortal, believe him to be immortal.",
-          "hindi": "ब्रह्मको आचार्योपदेशपूवंक मनसे ही देखना चाहिये । इसमे नाना कुद भी नहीं है । जो इसमें नानाके समान देखता है, वह मृदयुसे मत्युको परमाथेज्ञानसे संस्कारयुक्त हुए क्योंकि एसा हे, इसलिये- चाहिये । यहं ब्रह्म अप्रमेय, प्रव, निल,  अव्याकृतरूप  आकाशे भी",
-          "science": "ब्रह्मको आचार्योपदेशपूवंक मनसे ही देखना चाहिये। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4616,8 +4182,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "prāṇasya prāṇamuta cakṣuṣaścakṣuruta śrotrasya śrotraṃ manaso ye mano viduḥ | te nicikyurbrahma purāṇamagryam ||",
           "translation": "'They who know the life of life, the eye of the eye, the ear of the ear, the mind of the mind, they have comprehended the ancient, primeval Brahman .",
           "explanation": "Sense: 'They who know the life of life, the eye of the eye, the ear of the ear, the mind of the mind, they have comprehended the ancient, primeval Brahman .",
-          "hindi": "विज्ञानघनेैररसप्रकारेण च्का- एकवा-एक प्रकारसे ही अर्थात आकारके समान निरन्तर एकमात्र ब्रहमानिष्ठामें ग्रधिक शाघ्राभ्यास बाधक है बुद्धिमान्‌ ब्राह्मणको उसे ही जानकर उसीमे प्रज्ञा करनी चाहिये । बहुत शब्दोका अनुध्यान ( निरन्तर चिन्तन ) न करे; वह्‌ तो वाणोका तमीद्मास्मानसेव, धीरो विषथां जिज्ञास्तापरिसमारिकरीम्‌, कुवीत बाह्मणः- एवं प्रज्ञाकरण-",
-          "science": "विज्ञानघनेैररसप्रकारेण च्का- एकवा-एक प्रकारसे ही अर्थात आकारके समान निरन्तर एकमात्र ब्रहमानिष्ठामें ग्रधिक शाघ्राभ्यास बाधक है बुद्धिमान्‌ ब्राह्मणको उसे ही…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4634,8 +4198,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "manasaivānudraṣṭavyaṃ neha nānā'sti kiṃ cana | mṛtyoḥ sa mṛtyumāpnoti ya iha nāneva paśyati ||",
           "translation": "'By the mind alone it is to be perceived , there is in it no diversity. He who perceives therein any diversity, goes from death to death.",
           "explanation": "Sense: 'By the mind alone it is to be perceived , there is in it no diversity. He who perceives therein any diversity, goes from death to death.",
-          "hindi": "धीर अर्थात्‌ बुद्धिमान्‌ ब्राह्मण उस एसे आत्माको ही आचाय॑के उपदेश ओर लासे जानकर, प्रात्माकै स्वरूप, उसकी उपलब्धिके साधनभूत संन्यास ओ्रौर म्रात्मज्ञको स्थितिका प्रतिपादन सहेतुको बन्धमोक्ावभिदहितौ",
-          "science": "धीर अर्थात्‌ बुद्धिमान्‌ ब्राह्मण उस एसे आत्माको ही आचाय॑के उपदेश ओर लासे जानकर, प्रात्माकै स्वरूप, उसकी उपलब्धिके साधनभूत संन्यास ओ्रौर म्रात्मज्ञको स्थितिक…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4652,8 +4214,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ekadhaivānudraṣṭavyametadapramayaṃ dhruvam | virajaḥ para ākāśādaja ātmā mahāndhruvaḥ ||",
           "translation": "'This eternal being that can never be proved, is to be perceived in one way only; it is spotless, beyond the ether, the unborn Self, great and eternal.",
           "explanation": "Sense: 'This eternal being that can never be proved, is to be perceived in one way only; it is spotless, beyond the ether, the unborn Self, great and eternal.",
-          "hindi": "वह्‌ यह महान्‌ अजन्मा आत्मा, जो कि यह्‌ प्राणोमे विज्ञानमय हे, जो यह्‌ हदयमे आकाश हे, उसमे शयन करता है । वह सनको वशमें रखनेवाला, सबका रासन करनेवाला ओर सबका अधिपति है । वह्‌ शुभ कोऽसावुक्तः परामृश्यते १ तं प॒ एष कामकमीविचयानाम- सः\" यह्‌ शब्द पूर्वोक्तके परा- कर्माणि भस्मीकरोति, “4 ब्रह्मवेत्ताकी स्थिति श्रौर याज्ञवल्तयके प्रति वित्तं विदिता न छिप्यते कमणा पापकेनेति । तस्मा-",
-          "science": "वह्‌ यह महान्‌ अजन्मा आत्मा, जो कि यह्‌ प्राणोमे विज्ञानमय हे, जो यह्‌ हदयमे आकाश हे, उसमे शयन करता है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4670,8 +4230,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tameva dhīro vijñāya prajñāṃ kurvīta brāhmaṇaḥ | nānudhyāyādbahūñchabdān vāco viglāpanam̐ hi taditi ||",
           "translation": "'Let a wise Brâhmana, after he has discovered him, practise wisdom . Let him not seek after many words, for that is mere weariness of the tongue.",
           "explanation": "Sense: 'Let a wise Brâhmana, after he has discovered him, practise wisdom . Let him not seek after many words, for that is mere weariness of the tongue.",
-          "hindi": "१११८ बृहदारण्यकोपनिषद्‌  अध्याय ४ यही बात ऋचाद्टारा कही गयी है--यह ब्रह्मवेत्ताकी नित्य महिमा है, जोकर्मसेन तो बदृतीदहैजगौरन घटतीहीहै। उस महिमाके ह तदेतद्‌ घरतु ब्राह्मणनोक्त- ब्राह्मणके दारा कही गयीयहु बात ऋवा अर्थात्‌ मन्त्ह्वारामी  मृचा मन्तरेण अभ्यक्तं व्रका- कही- प्रकाित की गयी है । यह्‌",
-          "science": "१११८ बृहदारण्यकोपनिषद्‌ अध्याय ४ यही बात ऋचाद्टारा कही गयी है--यह ब्रह्मवेत्ताकी नित्य महिमा है, जोकर्मसेन तो बदृतीदहैजगौरन घटतीहीहै। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4696,8 +4254,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadetadṛcābhyuktam | eṣa nityo mahimā brāhmaṇasya na vardhate karmaṇā no kanīyān | tasyaiva syāt padavittaṃ viditvā na lipyate karmaṇā pāpakeneti | tasmādevaṃvicchānto dānta uparatastitikṣuḥ samāhito bhūtvā''tmanyevā''tmānaṃ paśyati sarvamātmānaṃ paśyati nainaṃ pāpmā tarati sarvaṃ pāpmānaṃ tarati nainaṃ pāpmā tapati sarvaṃ pāpmānaṃ tapati vipāpo virajo'vicikitso brāhmaṇo bhavati eṣa brahmalokaḥ samrāḍ iti hovāca yājñavalkyaḥ | so'haṃ bhagavate videhāndadāmi mām cāpi saha dāsyāyeti ||",
           "translation": "'This has been told by a verse (Rik): \"This eternal greatness of the Brâhmana does not grow larger by work, nor does it grow smaller. Let man try to find (know) its trace, for having found (known) it, he is not sullied by any evil deed.\"",
           "explanation": "Sense: 'This has been told by a verse (Rik): \"This eternal greatness of the Brâhmana does not grow larger by work, nor does it grow smaller. Let man try to find (know) its trace, for having found (known) it, he is not sullied by any evil deed.\"",
-          "hindi": "उसे सम्पूणं कर्मोक्ता फल प्राप्त वह यह महान्‌ अजन्मा आत्मा । रहकर समस्त अन्नोका भोक्ता, वसुदान - वसु--धन अर्थात्‌ सम्पूणं",
-          "science": "उसे सम्पूणं कर्मोक्ता फल प्राप्त वह यह महान्‌ अजन्मा आत्मा। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4714,8 +4270,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa vā eṣa mahānaja ātmā'nnādo vasudāno vindate vasu ya evaṃ veda ||",
           "translation": "This indeed is the great, the unborn Self, the strong , the giver of wealth. He who knows this obtains wealth.",
           "explanation": "Sense: This indeed is the great, the unborn Self, the strong , the giver of wealth. He who knows this obtains wealth.",
-          "hindi": "ब्रह्यके स्वरूप भ्रौर ब्रहयज्ञकौ स्थितिका वर्णन ञ्रस्थां कण्डिकायां निर्दिश्यते, एतावान्‌ समस्तारण्यकाथं इति-- वही यह महान्‌ अजन्मा आत्मा अजर, अमर, असत एवं अभय ब्रह्म जनिप्रभृतिभिन्ञिभिर्मावविकारै- मावविकारेज्ञिमिस्त्कृतेश् कामकमंमोहादिभिमरस्युखपेव॑लित",
-          "science": "ब्रह्यके स्वरूप भ्रौर ब्रहयज्ञकौ स्थितिका वर्णन ञ्रस्थां कण्डिकायां निर्दिश्यते, एतावान्‌ समस्तारण्यकाथं इति-- वही यह महान्‌ अजन्मा आत्मा अजर, अमर, असत एवं अ…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4732,8 +4286,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa vā eṣa mahānaja ātmā'jaro'maro'mṛto'bhayo brahmābhayaṃ vai brahmābhayam̐ hi vai brahma bhavati ya evaṃ veda ||",
           "translation": "This great, unborn Self, undecaying, undying, immortal, fearless, is indeed Brahman. Fearless is Brahman, and he who knows this becomes verily the fearless Brahman.",
           "explanation": "Sense: This great, unborn Self, undecaying, undying, immortal, fearless, is indeed Brahman. Fearless is Brahman, and he who knows this becomes verily the fearless Brahman. Next: IV, 5 Sacred Texts | Hinduism",
-          "hindi": "कहुकर तत्त्वका उपसंहार किया हे । फिर अन्तम वह उपसंहृत, परिशुद्ध, केवल ज्ञान ही अपने यह प्रसिद्ध हं कि याज्ञवत्व्यकी भेत्रेयी ओर कात्यायनी ये दो भायर्पिं थीं । उनमें मेत्रेयी ब्रह्मवादिनी थी ओर कात्यायनी तो दियोंकी-सी बुद्धि- वाली ही थी । तब याज्ञवल्क्यने दुसरे भ्रकारकी चर्याका आरम्भ करने-",
-          "science": "कहुकर तत्त्वका उपसंहार किया हे। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SvayamJyoti",
@@ -4758,8 +4310,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha ha yājñavalkyasya dve bhārye babhūvaturmaitreyī ca kātyāyanī ca tayorha maitreyī brahmavādinī babhūva strīprajñaiva tarhi kātyāyanyatha ha yājñavalkyo'nyadvṛttamupākariṣyan ||",
           "translation": "Yâgñavalkya had two wives, Maitreyî and Kâtyâyanî. Of these Maitreyî was conversant with Brahman, but Kâtyâyanî possessed such knowledge only as women possess. And Yâgñavalkya, when he wished to get ready for another state of life (when he wished to give up the state of a householder, and retire into the forest),",
           "explanation": "Sense: Yâgñavalkya had two wives, Maitreyî and Kâtyâyanî. Of these Maitreyî was conversant with Brahman, but Kâtyâyanî possessed such knowledge only as women possess. And Yâgñavalkya,…",
-          "hindi": "अथेति हेतूपदेश्ानन्तयप्रदश्च- 6 ट राढद्‌ यह्‌ दिखानेके कः लिये है कि यह सिद्धान्तप्रतिपादक नाथः; रतप्रथानानि हि प्रकरण हेतुका उपदेश करनेके बाद उरि ऽहमस्मात्‌ स्थानादस्मि हन्त तेऽनया कात्या- 'अरी जैत्रेयि !' दसा याज्ञवल्क्यते कहा-भे इस स्थान (गाहस्थ्य- आश्रम ) से अन्यत्र सब कु त्याग कर जानेवाला है अर्थात्‌ सन्धा लेतेका विवार है । इसलिये  यै तेरी अनुमति लेता हूं ओर चाहता हू",
-          "science": "अथेति हेतूपदेश्ानन्तयप्रदश्च- 6 ट राढद्‌ यह्‌ दिखानेके कः लिये है कि यह सिद्धान्तप्रतिपादक नाथः; रतप्रथानानि हि प्रकरण हेतुका उपदेश करनेके बाद उरि ऽहमस्मात्‌…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4776,8 +4326,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "maitreyīti hovāca yājñavalkyaḥ pravrajiṣyanvā are'hamasmātsthānādasmi | hanta te'nayā katyāyānyā'ntaṃ karavāṇīti ||",
           "translation": "Said, 'Maitreyî, verily I am going away from this my house (into the forest). Forsooth, let me make a settlement between thee and that Kâtyâyanî.'",
           "explanation": "Sense: Said, 'Maitreyî, verily I am going away from this my house (into the forest). Forsooth, let me make a settlement between thee and that Kâtyâyanî.'",
-          "hindi": "हे मेतरेयीति येष्ठा भार्यामा- \"हे मैत्रेयि ! इस प्रकार याज्ञ- वल्कयने बड़ी सखोको लक्ष्य करके अन्त्रयामास, आमन्त्य चोवाच । सम्बोधन किया ओर उसे बुलाकर पृथिवी वित्तेन पूर्णा स्यात्‌ स्यां न्वहं तेनासूताऽहो ३ नेति नेति होवाच याज्ञदल्क्यो यथैवोपकरणवतां जीवितं तथेव ते जीवित स्यादश्च॒तत्वस्य तु",
-          "science": "हे मेतरेयीति येष्ठा भार्यामा- \"हे मैत्रेयि ! इस प्रकार याज्ञ- वल्कयने बड़ी सखोको लक्ष्य करके अन्त्रयामास, आमन्त्य चोवाच। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4794,8 +4342,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā hovāca maitreyī yannu ma iyaṃ bhagoḥ sarvā pṛthivī vittena pūrṇā syāt syāṃ nvahaṃ tenāmṛtā''ho3 neti neti hovāca yājñavalkyo yathaivopakaraṇavatāṃ jīvitaṃ tathaiva te jīvitam̐ syādamṛtatvasya tu nā''śā'sti vitteneti ||",
           "translation": "Maitreyî said: 'My Lord, if this whole earth, full of wealth, belonged to me, tell me, should I be immortal by it, or no?'",
           "explanation": "Sense: Maitreyî said: 'My Lord, if this whole earth, full of wealth, belonged to me, tell me, should I be immortal by it, or no?'",
-          "hindi": "उस मेत्रेयीने कहा, 'मगवनु ! यदि यह्‌ घनसे सम्पन्न सारी पृथिवी मेरीहोजायतो क्या मेँ उससे अमर हां सकतो हूं, अथवा नहीं ‰ यचिवल्त्यन कहा, नहीं, मोग सामभ्रियोसे सम्पन्न मनुष्योका जैसा जीवन मेत्रेथीका च्रमतत्व-साघनविषयक प्रशन न्‌ च अमृतत्वका साधन जानते हो, वदी ् बराह्मण ५  शाङ्करभाष्यं ११३१ सा एवमुक्ता उवाच मेत्रेयी- इस प्रकार कहे जानेपर उस",
-          "science": "उस मेत्रेयीने कहा, 'मगवनु ! यदि यह्‌ घनसे सम्पन्न सारी पृथिवी मेरीहोजायतो क्या मेँ उससे अमर हां सकतो हूं, अथवा नहीं ‰ यचिवल्त्यन कहा, नहीं, मोग सामभ्रियोसे स…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4812,8 +4358,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā hovāca maitreyī yenāhaṃ nāmṛtā syāṃ kimahaṃ tena kuryām | yadeva bhagavānveda tadeva me brūhīti ||",
           "translation": "And Maitreyî said: 'What should I do with that by which I do not become immortal? What my Lord knoweth (of immortality), tell that clearly to me.'",
           "explanation": "Sense: And Maitreyî said: 'What should I do with that by which I do not become immortal? What my Lord knoweth (of immortality), tell that clearly to me.'",
-          "hindi": "उन याज्ञवल्वयजीने कहा, निर्नय ही तू पहले भी हमारी प्रिया रही हे ओर इस समय भी तूने हमारे त्रिय (प्रसन्नता) को बाया है । अतः है देवि ! मै प्रसस्नतापूर्वक तेरे प्रति इस्त ( अगृतत्वके साधन ) की व्याद्या घ इ उवाच श्रियैव पूवं  उन्हान कहा, द निस्वय ही न्ती सती, प्रियमेव अवध वर्धि  ह, ्रसन्नताको ही बढाया है-- तवती निर्धारितवती असि; श्रत-  संतोषजनक निश्चय किया हे, इस-",
-          "science": "उन याज्ञवल्वयजीने कहा, निर्नय ही तू पहले भी हमारी प्रिया रही हे ओर इस समय भी तूने हमारे त्रिय (प्रसन्नता) को बाया है। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4830,8 +4374,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca yājñavalkyaḥ priyā vai khalu no bhavatī satī priyamavṛdhad dhanta tarhi bhavatyetad vyākhyāsyāmi te vyācakṣāṇasya tu me nididhyāsasveti ||",
           "translation": "Yâgñavalkya replied: 'Thou who art truly dear to me, thou hast increased what is dear (to me in thee) . Therefore, if you like, Lady, I will explain it to thee, and mark well what I say.'",
           "explanation": "Sense: Yâg&ntilde;avalkya replied: 'Thou who art truly dear to me, thou hast increased what is dear (to me in thee) . Therefore, if you like, Lady, I will explain it to thee, and mark well what I say.'",
-          "hindi": "अवन्ति। नवा अरे सर्वस्य कामाय सर्वं पियं मव- । ११३२ बृहदारण्यकोपनिषद्‌  अध्याय  प्रियतम भ्रात्माके लिये ही सब वस्तु प्रिय होती र  आत्मनि खलु अरे मेत्रेयि  \"हे मैतेयि ! निश्चय ही आत्माका - = दर्शन हो जानेपर; किस प्रकार इसयुस्यते-पूवमाचा्यागमाम्यां  कहा जाता है- पहले आचायं ओर भेदहष्टिसे हानि दिखाकर सब कृच भ्रात्मा ही है' इस ब्रह्म तं पशद्‌ाद्‌ योऽन्यत्रात्मनो बह्म वेद क्षत्रं तं परादाद्‌ योऽन्यत्रात्मनः क्षत्रं वेद्‌ ऊोकाश्तं परा-",
-          "science": "अवन्ति। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4848,8 +4390,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca na vā are patyuḥ kāmāya patiḥ priyo bhavatyātmanastu kāmāya patiḥ priyo bhavati | na vā are jāyāyai kāmāya jāyā priyā bhavatyātmanastu kāmāya jāyā priyā bhavati | na vā are putrāṇāṃ kāmāya putrāḥ priyā bhavantyātmanastu kāmāya putrāḥ priyā bhavanti | na vā are vittasya kāmāya vittaṃ priyaṃ bhavatyātmanastu kāmāya vittaṃ priyaṃ bhavati || na vā are paśūnāṃ kāmāya paśavaḥ priyā bhavanti ātmanastu kāmāya paśavaḥ priyā bhavanti | na vā are brahmaṇaḥ kāmāya brahma priyaṃ bhavatyātmanastu kāmāya brahma priyaṃ bhavati | na vā are kṣatrasya kāmāya kṣatraṃ priyaṃ bhavatyātmanastu kāmāya kṣatraṃ priyaṃ bhavati | na vā are lokānāṃ kāmāya lokāḥ priyā bhavantyātmanastu kāmāya lokāḥ priyā bhavanti | na vā are devānāṃ kāmāya devāḥ priyā bhavantyātmanastu kāmāya devāḥ priyā bhavanti | na vā are vedānāṃ kāmāya vedāḥ priyā bhavantyātmanastu kāmāya vedāḥ priyā bhavanti | na vā are bhūtānāṃ kāmāya bhūtāni priyāṇi bhavantyātmanastu kāmāya bhūtāni priyāṇi bhavanti | na vā are sarvasya kāmāya sarvaṃ priyaṃ bhavatyātmanastu kāmāya sarvaṃ priyaṃ bhavatyātmā vā are draṣṭavyaḥ śrotavyo mantavyo nididhyāsitavyo maitreyyātmani khalvare dṛṣṭe śrute mate vijñāta idam̐ sarvaṃ viditam |",
           "translation": "And he said: 'Verily, a husband is not dear, that you may love the husband; but that you may love the Self, therefore a husband is dear.",
           "explanation": "Sense: And he said: 'Verily, a husband is not dear, that you may love the husband; but that you may love the Self, therefore a husband is dear.",
-          "hindi": "भिन्न सपभता है । क्षत्रियजाति उसे परास्त कर देती है, जो क्षत्रियजाति- । को आत्मासे भिनच्च जानता है। लोक उसे परास्त कर देते, जो लोकोको  । आत्मासे भिन्न जानता है । देवता उसे परास्त कर देते ह, जो देवताभो- सबको श्रात्मा' रूपमे ग्रहण करनेमे दृ्टान्त--",
-          "science": "भिन्न सपभता है। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4874,8 +4414,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā dundubherhanyamānasya na bāhyāñchabdāñchaknuyād grahaṇāya dundubhestu grahaṇena dundubhyāghātasya vā śabdo gṛhītaḥ ||",
           "translation": "'Now as the sounds of a drum, when beaten, cannot be seized externally (by themselves), but the sound is seized, when the drum is seized, or the beater of the drum;",
           "explanation": "Sense: 'Now as the sounds of a drum, when beaten, cannot be seized externally (by themselves), but the sound is seized, when the drum is seized, or the beater of the drum;",
-          "hindi": "वह्‌ दृष्टान्त एेषा है कि जिसपर लकड़ी आदिसे आघात किया जाता हे; उस दुन्दुभि (नङ्कार ) के बाह्य शब्दोको जिस प्रकार कोई ग्रहण नहीं कर सकता, कितु दुन्दुमि या दुन्दुभिके आघातको ग्रहण करनेसे ञ्छक्लुयाद्‌ हणाय शङ्खस्य तु यहणेन शङ्खध्मस्य वह्‌  दुसरा  दृष्टान्त एेसा है कि जे ख हसे फके जाते हए शद्खुके बाह्य शब्दको ग्रहण करनेभ कोई समथं नहीं होता, कितु शद्ध या शङ्खके उछवनुयाद्‌ यहणाय वीणाये तु हणेन वीणावादस्य",
-          "science": "वह्‌ दृष्टान्त एेषा है कि जिसपर लकड़ी आदिसे आघात किया जाता हे; उस दुन्दुभि (नङ्कार ) के बाह्य शब्दोको जिस प्रकार कोई ग्रहण नहीं कर सकता, कितु दुन्दुमि या दुन…। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4892,8 +4430,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā śaṅkhasya dhmāyamānasya na bāhyāñchabdāñchaknuyād grahaṇāya śaṅkhasya tu grahaṇena śaṅkhadhmasya vā śabdo gṛhītaḥ ||",
           "translation": "'And as the sounds of a conch-shell, when blown, cannot be seized externally (by themselves), but the sound is seized, when the shell is seized, or the blower of the shell;",
           "explanation": "Sense: 'And as the sounds of a conch-shell, when blown, cannot be seized externally (by themselves), but the sound is seized, when the shell is seized, or the blower of the shell;",
-          "hindi": "११३६ बृहदारण्यकोपनिषद्‌  श्रध्यायण  वेह  तीसरा  दृष्टान्त एेसा है कि जैसे बजायी जाती हुई वीणाके बाह्य शब्दोको ग्रहण करनेमे कोई समथं नहीं होता, कितु वीणाया यह्वेदो यजुर्वेदः सामवेदो ऽथवीद्धिरस इतिहासः पुराणं विद्या उपनिषदः ररोकाः सूत्राण्यनुञ्याख्या-",
-          "science": "११३६ बृहदारण्यकोपनिषद्‌ श्रध्यायण वेह तीसरा दृष्टान्त एेसा है कि जैसे बजायी जाती हुई वीणाके बाह्य शब्दोको ग्रहण करनेमे कोई समथं नहीं होता, कितु वीणाया यह्वेद…। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4910,8 +4446,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā vīṇāyai vādyamānāyai na bāhyāñchabdāñchaknuyādgrahaṇāya vīṇāyai tu grahaṇena vīṇāvādasya vā śabdo gṛhītaḥ ||",
           "translation": "'And as the sounds of a lute, when played, cannot be seized externally (by themselves), but the sound is seized, when the lute is seized, or the player of the lute;",
           "explanation": "Sense: 'And as the sounds of a lute, when played, cannot be seized externally (by themselves), but the sound is seized, when the lute is seized, or the player of the lute;",
-          "hindi": "समुद्र एकायनमेव  सर्वेषा ५ स्पशानां तगेकायनमेव  सर्वेषां गन्धानां नासिके एकायनमेव  सर्वेषां ५ रसानां जिहेकायनमेव  सर्वषा रूपाणां चन्ञुरेकायनमेव ५ वह  चौथा  दृष्टान्त एेसा है किं जिस प्रकार जिसका ईधन गीला । हे, एेसे आधान किये हए अग्निसे पथक्‌ धरुएं निकलते है, उसी प्रकार   बाह्मण ४  शाङ्करमाष्याथं ११३७ वह्‌  पाँचवाँ  दृष्टान्त एसा है कि जिस प्रकार समस्त जलोका समुद्र एक अयन  प्रलयस्थान   है, इसी प्रकार समस्त स्पर्शोका त्वचा एक अयन है, इसी प्रकार समस्त",
-          "science": "समुद्र एकायनमेव सर्वेषा ५ स्पशानां तगेकायनमेव सर्वेषां गन्धानां नासिके एकायनमेव सर्वेषां ५ रसानां जिहेकायनमेव सर्वषा रूपाणां चन्ञुरेकायनमेव ५ वह चौथा दृष्टान…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4928,8 +4462,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā''rdraidhāgnerabhyāhitasya pṛthagdhūmā viniścarantyevaṃ vā are'sya mahato bhūtasya niḥśvasitametadyadṛgvedo yajurvedaḥ sāmavedo'tharvāṅgirasa itihāsaḥ purāṇaṃ vidyā upaniṣadaḥ ślokāḥ sūtrāṇyanuvyākhyānāni vyākhyānāni iṣṭam̐ hutamāśitaṃ pāyitamayaṃ ca lokaḥ paraśca lokaḥ sarvāṇi ca bhūtānyasyaivaitāni sarvāṇi niḥśvasitāni || sāmavedasatharvāṅgirasasitihāsaspurāṇaṃ vidyāsupaniṣadasślokāssūtrāṇi anuvyākhyānāni vyākhyānani dattaṃ",
           "translation": "'As clouds of smoke proceed by themselves out of lighted fire kindled with damp fuel, thus verily, O Maitreyî, has been breathed forth from this great Being what we have as Rig-veda, Yagur-veda, Sâma-veda, Atharvâ&#7749;girasas, Itihâsa, Purâna, Vidyâ, the Upanishads, Slokas, Sûtras, Anuvyâkhyânas, Vyâkhyânas, what is sacrificed, what is poured out, food, drink , this world and the other world, and all creatures. From him alone all these were breathed forth.",
           "explanation": "Sense: 'As clouds of smoke proceed by themselves out of lighted fire kindled with damp fuel, thus verily, O Maitreyî, has been breathed forth from this great Being what we have as Rig-veda, Yagur-veda, Sâma-veda, Atharvâ&#7749;girasas, Itihâsa, Purâna, Vidyâ, the Upanishads, Slokas,…",
-          "hindi": "चतुर्थ शब्दनिश्वासेनैष लो- चतुथं प्रपाठ  अर्थात्‌ द्वितीय  \"अध्याय मे शब्द-निःशासके द्वारा काचथनिधासः सामर््ादुक्तो  हो सामथ्ये लोकादि अर्थना सवेकायप्रलयेऽविद्यानिभित्त अविद्याजनित सम्पूणं काका के समान अन्तर ओर बाह्यसे",
-          "science": "चतुर्थ शब्दनिश्वासेनैष लो- चतुथं प्रपाठ अर्थात्‌ द्वितीय \"अध्याय मे शब्द-निःशासके द्वारा काचथनिधासः सामर््ादुक्तो हो सामथ्ये लोकादि अर्थना सवेकायप्रलयेऽविद्य…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4946,8 +4478,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā sarvāsāmapām̐ samudra ekāyanamevam̐ sarveṣām̐ sparśānāṃ tvagekāyanamevam̐ sarveṣāṃ gandhānāṃ nāsikaikāyanaṃ evam̐ sarveṣām̐ rasānāṃ jihvaikāyanamevam̐ sarveṣām̐ rūpāṇāṃ cakṣurekāyanamevam̐ sarveṣaṃ śabdānāṃ śrotramekāyanaṃ evam̐ sarveṣām̐ saṅkalpānāṃ mana ekāyanamevam̐ sarvāsāṃ vidyānām̐ hṛdayamekāyanamevam̐ sarveṣāṃ karmaṇām̐ hastāvekāyanamevam̐ sarveṣāmānandānāmupastha ekāyanamevam̐ sarveṣāṃ visargāṇāṃ pāyurekāyanamevam̐ sarveṣāmadhvanāṃ pādāvekāyanamevam̐ sarveṣāṃ vedānāṃ vāgekāyanam ||",
           "translation": "'As all waters find their centre in the sea, all touches in the skin, all tastes in the tongue, all smells in the nose, all colours in the eye, all sounds in the ear, all percepts in the mind, all- knowledge in the heart, all actions in the hands, all movements in the feet, and all the Vedas in speech,--",
           "explanation": "Sense: 'As all waters find their centre in the sea, all touches in the skin, all tastes in the tongue, all smells in the nose, all colours in the eye, all sounds in the ear, all percepts in the mind, all- knowledge in the heart, all actions in the hands, all movements in the feet,…",
-          "hindi": "निविशेष श्रात्माक्रे विषयमे यैत्रेयीकी शङ्धुा ग्रौर याज्ञवल्क्यका समाधान वह मत्रेयी बोली, यहीं श्रीमान्‌ने मुभे मोहको प्राप्न करा दिया है । म इसे विशोषरूपसे नहीं समती ।' उन्होने कहा, अरी मैत्रेयि  मेँ मोहको वात नहीं कह्‌ रहा हं । अरी ! यह्‌ आत्मा निश्वय ही अविनाशी आसेस्यथ;। अरे मेत्रेय्धयमात्मा वह॒ बोली-पहीं इस प्रज्ञान- घनके विषयमे ही, “मरनेपर इसकी",
-          "science": "निविशेष श्रात्माक्रे विषयमे यैत्रेयीकी शङ्धुा ग्रौर याज्ञवल्क्यका समाधान वह मत्रेयी बोली, यहीं श्रीमान्‌ने मुभे मोहको प्राप्न करा दिया है। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4964,8 +4494,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yathā saindhavaghano'nantaro'bāhyaḥ kṛtsno rasaghana evai vaṃ vā are'yamātmānantaro'bāhyaḥ kṛtsnaḥ prajñānaghana evaitebhyo bhūtebhyaḥ samutthāya tānyevānuvinayaṣyatiti prajñānaghanaseva etebhyasbhūtebhyassamutthāya tāni eva anuvinayati na pretya sañjñā'stītyare bravīmīti hovāca yājñavalkyaḥ ||",
           "translation": "'As a mass of salt has neither inside nor outside, but is altogether a mass of taste, thus indeed has that Self neither inside nor outside, but is altogether a mass of knowledge; and having risen from out these elements, vanishes again in them. When he has departed, there is no more knowledge (name), I say, O Maitreyî,'--thus spoke Yâgñavalkya.",
           "explanation": "Sense: 'As a mass of salt has neither inside nor outside, but is altogether a mass of taste, thus indeed has that Self neither inside nor outside, but is altogether a mass of knowledge; and having risen from out these elements, vanishes again in them. When he has departed,…",
-          "hindi": "उपदेशका उपसंहार श्रौर याज्ञवल्क्यका संन्यास चतुष्वंपि प्रषार्केष्वेक आसा  चारोंदही प्रपाठके एकही तुन्थो निर्थारितः, परं ब्रह्म   समान आत्माका तिश्चय किया ११७२ बृहदारण्यकोपनिषद्‌  अध्याय दे जहां  अविद्यावस्थामें  देत-सा होता है, वहीं अन्य अन्यको देखता हे, अन्य अन्यको सूँघता हे, अन्य अन्धका रसास्वादन करता है, अन्य",
-          "science": "उपदेशका उपसंहार श्रौर याज्ञवल्क्यका संन्यास चतुष्वंपि प्रषार्केष्वेक आसा चारोंदही प्रपाठके एकही तुन्थो निर्थारितः, परं ब्रह्म समान आत्माका तिश्चय किया ११७२ ब…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -4982,8 +4510,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā hovāca maitreyyatraiva mā bhagavānmohāntamāpīpipan na vā ahamimaṃ vijānāmīti sa hovāca na vā are'haṃ mohaṃ bravīmyavināśī vā are'yamātmā'nucchittidharmā ||",
           "translation": "Then Maitreyî said: 'Here, Sir, thou hast landed me in utter bewilderment. Indeed, I do not understand him.' But he replied: 'O Maitreyî, I say nothing that is bewildering. Verily, beloved, that Self is imperishable, and of an indestructible nature.",
           "explanation": "Sense: Then Maitreyî said: 'Here, Sir, thou hast landed me in utter bewilderment. Indeed, I do not understand him.' But he replied: 'O Maitreyî, I say nothing that is bewildering. Verily, beloved, that Self is imperishable, and of an indestructible nature.",
-          "hindi": "एतावदेतावन्मात्रं यदेतन्नेति  है मेत्रैयि  \"एतावत्‌\"-बस, त्वतम   इतनाहौीजो कि यहु “नेति नेतिः त इस प्रकार अद्रेत आत्माका साक्षा- इत्यादि वाक्य क्षत्रिय ओर वेश्यकीः अपेक्नापे हूं । अतः पुरूषके सामथ्यं, ज्ञान, वैराग्र ओर कापनादिकी याज्ञवत्कोय काण्डकी वंश-परम्परा गो कौशिकात्‌ कोशिकः कोण्डिन्यातं शाण्डिस्याच्छाण्डिल्यः कौशिकाच्च",
-          "science": "एतावदेतावन्मात्रं यदेतन्नेति है मेत्रैयि \"एतावत्‌\"-बस, त्वतम इतनाहौीजो कि यहु “नेति नेतिः त इस प्रकार अद्रेत आत्माका साक्षा- इत्यादि वाक्य क्षत्रिय ओर वेश्यक…। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -5000,8 +4526,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yatra hi dvaitamiva bhavati taditara itaraṃ paśyati taditara itaraṃ jighrati taditara itaram̐ rasayate taditara itaramabhivadati taditara itaram̐ śṛṇoti taditara itaraṃ manute taditara itaram̐ spṛśati taditara itaraṃ vijānāti | yatra tvasya sarvamātmaivābhūt tatkena kaṃ paśyet tatkena kaṃ jighret tatkena kam̐ rasayet tatkena kamabhivadet tatkena kam̐ śṛṇuyāt tatkena kaṃ manvīta tatkena kam̐ spṛśet tatkena kaṃ vijānīyādyenedam̐ sarvaṃ vijānāti taṃ kena vijānīyāt sa eṣa neti netyā'tmāgṛhyo na hi gṛhyate'śīryo na hi śīryate 'saṅgo na hi sajyate'sito na vyathate na riṣyati | vijñātāramare kena vijānīyādityuktānuśāsanāsi maitreyyetāvadare khalvamṛtatvamiti hoktvā yājñavalkyo vijahāra ||",
           "translation": "'For when there is as it were duality, then one sees the other, one smells the other, one tastes the other, one salutes the other, one hears the other, one perceives the other, one touches the other, one knows the other; but when the Self only is all this, how should he see another, how should he smell another, how should he taste another, how should he salute another, how should he hear another, how should he touch another, how should he know another? How should he know Him by whom he knows all this? That Self is to be described by No, no 1 ! He is incomprehensible, for he cannot be comprehended; he is imperishable, for he cannot perish; he is unattached, for he does not attach himself; unfettered, he does not suffer, he does not fail. How, O beloved, should he know the Knower? Thus, O Maitreyî, thou hast been instructed. Thus far goes immortality.' Having said so, Yâgñavalkya went away (into the forest).",
           "explanation": "Sense: 'For when there is as it were duality, then one sees the other, one smells the other, one tastes the other, one salutes the other, one hears the other, one perceives the other, one touches the other, one knows the other; but when the Self only is all this,…",
-          "hindi": "अब  याज्ञवल्कीय काण्डका  वंशा बतलाया जाता है-पौतिमाष्यनं गोपवनसे, गौपवनने पौतिमाष्यसे, पौतिमाष्यते गौपवनसे, गौपवननं 1 कोशिकसे, कौशिकने कौण्डिन्यसे, कौण्डन्यने शाण्डत्यसे, शाण्डिल्यने आग्निवेद्यसे, आग्निवेदयने गाग्यंसे, गग्येने गाग्य॑से, गाग्येने गौतमसे, गौतमने सैतवसे, सैतवने पाराशर्यायणसे, पाराशर्यायणते गार्ग्यायणसे, गार््यायणने उदालकायनसे,",
-          "science": "अब याज्ञवल्कीय काण्डका वंशा बतलाया जाता है-पौतिमाष्यनं गोपवनसे, गौपवनने पौतिमाष्यसे, पौतिमाष्यते गौपवनसे, गौपवननं 1 कोशिकसे, कौशिकने कौण्डिन्यसे, कौण्डन्यने…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Rebirth",
@@ -5026,8 +4550,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha vam̐śaḥ pautimāṣyo gaupavanād gaupavanaḥ pautimāṣyāt pautimāṣyo gaupavanād gaupavanaḥ kauśikāt kauśikaḥ kauṇḍinyāt kauṇḍinyaḥ śāṇḍilyācchāṇḍilyaḥ kauśikācca gautamācca gautamaḥ ||",
           "translation": "Now follows the stem :",
           "explanation": "Sense: Now follows the stem :",
-          "hindi": "घ्रुतकोशिकने पाराशर्यायणसे, पाराशर्यायणने पाराशर्यस, पाराय  जानुकण्यंसे, जातुकण्यंने आसुरायणसे, ओर यास्कसे आसुरायणनं  जेवणिसे, वैवणिने ओपजन्धनिसे, ओपजन्धनिने आमुरिसे आसुरिनं ॥ र्णब्रहा ग्रौर उससे उत्पन्न होनेवाला पूणं काथं आला सर्वान्तरो निरूपाधिको- केप्रलमम्रतत्वसाधनम्‌, धुना वहं ( परब्रह्म ) पूणं है ओर वह्‌ ( सोपाधिक ब्रह्य भी ) पूणं है । यहं ( कार्यस्मिक् ) पूणं ( कारणात्मक ) पूर्णसे ही उत्पन्न होता है। इसः",
-          "science": "घ्रुतकोशिकने पाराशर्यायणसे, पाराशर्यायणने पाराशर्यस, पाराय जानुकण्यंसे, जातुकण्यंने आसुरायणसे, ओर यास्कसे आसुरायणनं जेवणिसे, वैवणिने ओपजन्धनिसे, ओपजन्धनिने आ…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "FinalTeaching",
@@ -5043,8 +4565,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "āgniveśyādagniveśyo gārgyād gārgyo gārgyād gārgyo gautamād gautamaḥ saitavāt saitavaḥ pārāśaryāyaṇāt pārāśāryāyaṇo gārgyāyaṇād gārgyāyaṇa uddālakāyanāduddālakāyano jābālāyanāj jābālāyano mādhyandināyanān mādhyandināyanaḥ saukarāyaṇāt saukarāyaṇaḥ kāṣāyaṇāt kāṣāyaṇaḥ sāyakāyanāt sāyakāyanaḥ kauśikāyaneḥ kauśikāyaniḥ ||",
           "translation": "from Âgnivesya,",
           "explanation": "Sense: from Âgnivesya,",
-          "hindi": "बहस्थथः । तत्‌ सम्पृणेमाकाश- व्यवहारापन्नं पूणं स्वेन सपे तदिदं विशेषापन्नं कार्यार आकाश ब्रह्म अकार है। आकाश  यहां जड नहीं सनातन  परमात्मा  है। “जिसमे वायु रहता, वहु आकाश ही ख है-एेसा कौरव्पायणीपुत्रने कहा है । यहु ओङ्कार वेद है-एेसा ब्राह्मण जानते +",
-          "science": "बहस्थथः। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "FinalTeaching",
@@ -5060,8 +4580,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ghṛtakauśikād ghṛtakauśikaḥ pārāśaryāyaṇāt pārāśaryāyaṇaḥ pārāśaryāt pārāśaryo jātūkarṇyāj jātūkarṇya āsurāyaṇācca yāskāccā ''surāyaṇastraivaṇestraivaṇiraupajandhaneraupajandhanirāsurerāsurirbhāradvājād bhāradvāja ātreyādātreyo māṇṭermāṇṭirgautamād gautamo gautamād gautamo vātsyād vātsyaḥ śāṇḍilyācchāṇḍilyaḥ kaiśoryātkāpyāt kaiśoryaḥ kāpyaḥ kumārahāritāt kumārahārito gālavād gālavo vidarbhīkauṇḍinyād vidarbhīkauṇḍinyo vatsanapāto bābhravād vatsanapādbābhrava pathaḥ saubharāt panthāḥ saubharo'yāsyādāṅgirasādayāsya āṅgirasa ābhūtestvāṣṭrādābhūtistvāṣṭro viśvarūpāttvāṣṭrād viśvarūpastvāṣṭro'vśvibhyāmaśvinau dadhīca ātharvaṇād dadhyaṅṅātharvaṇo'tharvaṇo daivādatharvā daivo mṛtyoḥ prādhvam̐sanān mṛtyuḥ prādhvam̐sanaḥ pradhvam̐sanāt pradhvam̐sana ekarṣerekarṣirvipracitteḥ vipracittirvyaṣṭervyaṣṭiḥ sanāroḥ sanāruḥ sanātanāt sanātanaḥ sanagāt sanagaḥ parameṣṭhinaḥ parameṣṭhī brahmaṇo brahma svayambhu brahmaṇe namaḥ || || iti bṛhadāraṇyakopaniṣadi caturtho'dhyāyaḥ ||",
           "translation": "from Ghritakausika,",
           "explanation": "Sense: from Ghritakausika,",
-          "hindi": "ॐ खं ब्रह्मेति मन्त्रोऽयं ॐ खं ब्रह्म यह मन्त्र हे। १8.   इसका कहीं अन्यत्र विनियोग नहीं चान्यन्राविनयुक्त ईह ब्रह्मण  हुमा, यहाँ ब्राह्मण इसका ध्यान- “जिस प्रकार शङ्कसे सम्पूणं पत्त व्याप्त रहते है” इत्यादि अन्य श्रुति- यह्‌ वेद इसलिये भी ओङ्कार म्रजापतिका देव, मनुष्य भ्रौर श्रसुर तीनोको एक ही अ्रक्षर द' से पृथक्‌-पृथक्‌ दम, दान श्रौर दयाका उपदेश अब दमादि तीन साधनोका",
-          "science": "ॐ खं ब्रह्मेति मन्त्रोऽयं ॐ खं ब्रह्म यह मन्त्र हे। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "FinalTeaching",
@@ -5085,8 +4603,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "oṃ pūrṇamadaḥ pūrṇamidaṃ pūrṇātpūrṇamudacyate | pūrṇasya pūrṇamādāya pūrṇamevāvaśiṣyate | oṃ3 khaṃ brahma khaṃ purāṇaṃ vāyuraṃ khamiti ha smā''ha kauravyāyaṇīputro | vedo'yamṃ brāhmaṇā vidurvedainena yadveditavyam ||",
           "translation": "That (the invisible Brahman) is full, this (the visible Brahman) is full} . This full (visible Brahman) proceeds from that full (invisible Brahman). On grasping the fulness of this full (visible Brahman) there is left that full (invisible Brahman) . Om (is) ether, (is) Brahman . 'There is the old ether (the invisible), and the (visible) ether of the atmosphere,' thus said Kauravyâyanîputra. This (the Om) is the Veda (the means of knowledge), thus the Brâhmanas know. One knows through it all that has to be known.",
           "explanation": "Sense: That (the invisible Brahman) is full, this (the visible Brahman) is full} . This full (visible Brahman) proceeds from that full (invisible Brahman). On grasping the fulness of this full (visible Brahman) there is left that full (invisible Brahman) . Om (is) ether,…",
-          "hindi": "देव, मनुष्य ओर अभुर-इन प्रजापतिके तीन पूर्ने पिता प्रजापतिके यहाँ ब्रह्मचयंवाख किया । ब्रह्मचयेवास कर चुकनेपर देवोने कहा, (आप हमे उपदेश कौजिये 1\" उनसे प्रजापतिने द\" यह्‌ अक्षर कहा ओर पा त्रया्धिसंरूयाकाः प्राजापत्याः  याः\" तीनसंख्यावाले श्राजा- पत्याः-प्रजापतिके पत्र थे । उन्होने क्या किया-- पिता प्रजापतिके पास",
-          "science": "देव, मनुष्य ओर अभुर-इन प्रजापतिके तीन पूर्ने पिता प्रजापतिके यहाँ ब्रह्मचयंवाख किया। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Vamsha",
@@ -5110,8 +4626,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "trayāḥ prājāpatyāḥ prajāpatau pitari brahmacaryamūṣurdevā manuṣyā asurā uṣitvā brahmacaryaṃ devā ūcurbravītu no bhavāniti | tebhyo haitadakṣaramuvāca da iti vyajñāsiṣṭā3 iti | vyajñāsiṣmeti hocurdāmyateti na ātthetyomiti hovāca vyajñāsiṣṭeti ||",
           "translation": "The threefold descendants of Pragâpati, gods, men, and Asuras (evil spirits), dwelt as; Brahmakârins (students) with their father Pragâpati. Having finished their studentship the gods said: 'Tell us (something), Sir.' He told them the syllable Da. Then he said: 'Did you understand?' They said: 'We did understand. You told us \"Dâmyata,\" Be subdued.' 'Yes,' he said, 'you have understood.'",
           "explanation": "Sense: That (the invisible Brahman) is full, this (the visible Brahman) is full} . This full (visible Brahman) proceeds from that full (invisible Brahman). On grasping the fulness of this full (visible Brahman) there is left that full (invisible Brahman) . Om (is) ether,…",
-          "hindi": "फिर प्रजापतिस्े मनुष्योने कहा, आप हुम उपदेश कीजिये ॥ उनसे भी प्रजापतिने “द यह अक्षर ही कहा ओर पु्ा, (समभ गये क्या 2 मनुष्योने कहा, \"सममः गये, आपत हमसे दान करो' एेसा कहा है ।' तव खमानदन्यत्‌ । स्वभावतो इस ॒मन्त्रका अन्य सव अथं पूववत्‌ है । \"तुम स्वभावतः लोभी हो इसलिये यथालक्ति संविभाय सिष्टेति तदेतदेवैषा हैवी बगलुवदति स्तन-",
-          "science": "फिर प्रजापतिस्े मनुष्योने कहा, आप हुम उपदेश कीजिये ॥ उनसे भी प्रजापतिने “द यह अक्षर ही कहा ओर पु्ा, (समभ गये क्या 2 मनुष्योने कहा, \"सममः गये, आपत हमसे दान कर…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Purnamadah",
@@ -5127,8 +4641,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha hainaṃ manuṣyā ūcurbravītu no bhavāniti | tebhyo haitadevākṣaramuvāca da iti vyajñāsiṣṭā3 iti | vyajñāsiṣmeti hocurdatteti na ātthetyomiti hovāca vyajñāsiṣṭeti ||",
           "translation": "Then the men said to him: 'Tell us something, Sir.' He told them the same syllable Da. Then he said: 'Did you understand?' They said: 'We did understand. You told us, \"Datta,\" Give.' 'Yes,' he said, 'you have understood.'",
           "explanation": "Sense: Then the men said to him: 'Tell us something, Sir.' He told them the same syllable Da. Then he said: 'Did you understand?' They said: 'We did understand. You told us, \"Datta,\" Give.' 'Yes,' he said, 'you have understood.'",
-          "hindi": "फिर प्रजापतिसे अधुरोने कहा, “आप हमे उपदेश कीजिये ।' उनसे मी प्रजापतिने द यह अक्षर ही कहा ओर पृद्ा, समभ गये क्या? असुरोने कहा, सभर गये, आपने हमसे दया करो\" एेसा कहा है ।' तब  तथा अलुरा दयध्वमिति, इसी प्रकार असुरोने अपना अभिप्राय दया करोः एसा दयध्वं प्राणिषु दथां इरूत--  इसलिये दयध्वम्‌\" प्राणियो-",
-          "science": "फिर प्रजापतिसे अधुरोने कहा, “आप हमे उपदेश कीजिये। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Purnamadah",
@@ -5144,8 +4656,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha hainamasurā ūcurbravītu no bhavāniti | tebhyo haitadevākṣaramuvāca da iti vyajñāsiṣṭā3 iti | vyajñāsiṣmeti hocurdayadhvamiti na ātthetyomiti hovāca vyajñāsiṣṭeti | tadetadevaiṣā daivī vāganuvadati stanayitnurda da da iti dāmyata datta dayadhvamiti | tadetattrayam̐ śikṣed damaṃ dānaṃ dayāmiti ||",
           "translation": "Then the Asuras said to him: 'Tell us something, Sir.' He told them the same syllable Da. Then he said: 'Did you understand?' They said: 'We did understand. You told us, \"Dayadham,\" Be merciful.' 'Yes,' he said, 'you have understood.' The divine voice of thunder repeats the same, Da Da Da, that is, Be subdued, Give, Be merciful. Therefore let that triad be taught, Subduing, Giving, and Mercy.",
           "explanation": "Sense: Then the Asuras said to him: 'Tell us something, Sir.' He told them the same syllable Da. Then he said: 'Did you understand?' They said: 'We did understand. You told us, \"Dayadham,\" Be merciful.' 'Yes,' he said,…",
-          "hindi": "अतः प्रजापतिका यह्‌ पुरवोको दिया हुजा उपदेश उनका परम हित है । इसलिये मनुष्योको भी इन तीनो हुदय-ब्रह्मकी उपासना ब्रह्मणो दशंनमतिकरान्तम्‌, अथा- समस्त उपासनाओके अङ्गभ्रुत एष ्रनापतियंद्‌ हृदयं प्रजाप- जो हृदय है वहु प्रजापति तिर श  १ है । प्रजापति अनुशासन करता लुशास्तीरयनन्तरमेषाभिहित त यह शती च  जाः ता",
-          "science": "अतः प्रजापतिका यह्‌ पुरवोको दिया हुजा उपदेश उनका परम हित है। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Purnamadah",
@@ -5169,8 +4679,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "eṣa prajāpatiryaddhṛdayametadbrahmaitatsarvam | tadetattryakṣaram̐ hṛdayamiti | hṛ ityekamakṣaramabhiharantyasmai svāścānye ca ya evaṃ veda | da ityekamakṣaraṃ dadatyasmai svāścānye ca ya evaṃ veda | yamityekamakṣarameti svargaṃ lokaṃ ya evaṃ veda ||",
           "translation": "Pragâpati is the heart, is this Brahman, is all this. The heart, hridaya, consists of three syllables. One syllable is hri, and to him who knows this, his own people and others bring offerings . One syllable is da, and to him who knows this, his own people and others bring gifts. One syllable is yam, and he who knows this, goes to heaven (svarga) as his world.",
           "explanation": "Sense: Pragâpati is the heart, is this Brahman, is all this. The heart, hridaya, consists of three syllables. One syllable is hri, and to him who knows this, his own people and others bring offerings . One syllable is da, and to him who knows this,…",
-          "hindi": "सत्य-ब्रह्मकी उपासना तस्यैव हृदयाख्यस्य ब्रह्मणः   = हदयसंज्ञक ब्रहमकौ ही सत्य एेसी उपासनाका विधान करनेकी वही--वह्‌ हृदय-ब्रह्म ही वहं शा जोकिसत्यहोहै। जो भी इस महत्‌, यक्ष ( पूज्य ) प्रथम उलन्न हुएको \"यह्‌ सत्य ब्रह्म हे' एसा जानता हे, वह इन लोकोंको जीत लेता है! उसका शत्रु  उसके अधीन हो",
-          "science": "सत्य-ब्रह्मकी उपासना तस्यैव हृदयाख्यस्य ब्रह्मणः = हदयसंज्ञक ब्रहमकौ ही सत्य एेसी उपासनाका विधान करनेकी वही--वह्‌ हृदय-ब्रह्म ही वहं शा जोकिसत्यहोहै। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Damayata",
@@ -5196,8 +4704,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadvai tadetadeva tadāsa satyameva | sa yo haitaṃ mahadyakṣaṃ prathamajaṃ veda satyaṃ brahmeti jayatīmām̐llokāñ jita innvasāvasad ya evametanmahadyakṣaṃ prathamajaṃ veda satyaṃ brahmeti satyam̐ hyeva brahma ||",
           "translation": "This (heart) indeed is even that, it was indeed the true (Brahman). And whosoever knows this great glorious first-born as the true Brahman, he conquers these worlds, and conquered likewise may that (enemy) be ! yes, whosoever knows this great glorious first-born as the true Brahman; for Brahman is the true.",
           "explanation": "Sense: This (heart) indeed is even that, it was indeed the true (Brahman). And whosoever knows this great glorious first-born as the true Brahman, he conquers these worlds, and conquered likewise may that (enemy) be ! yes,…",
-          "hindi": "११९२  बहदारण्यकोपनिषद्‌  ध्याय ५ तत्‌ तदति हृदयं ब्रह्म परा-  तत्‌--तत्‌\" टेसा कहकर हृदथ-  ब्रह्मका परासहं किया गया है । पूज्य, प्रथमज अर्थात्‌ समस्त संसा- रियो पहले उत्पत्न हुए-यह्‌ ब्रह्य ही सबसे पहले उत्पन्न हुआ था, प्रथमज सत्य-ब्रह्म श्रौर “सत्य' नामक ग्रक्षरोकौ उपासना सत्यस्य ब्रह्मणः स्तुत्यथंमिद-  सत्य -्रह्मकी स्तुतिके लिये यह  ब्राह्मण उसे महत्‌, यक्ष, प्रथमजः",
-          "science": "११९२ बहदारण्यकोपनिषद्‌ ध्याय ५ तत्‌ तदति हृदयं ब्रह्म परा- तत्‌--तत्‌\" टेसा कहकर हृदथ- ब्रह्मका परासहं किया गया है। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Hridaya",
@@ -5220,8 +4726,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "apa evedamagra āsustā āpaḥ satyamasṛjanta satyaṃ brahma brahma prajāpatiṃ prajāpatirdevām̐ste devāḥ satyamevopāsate tadetattryakṣaram̐ satyamiti | sa ityekamakṣaraṃ tītyekamakṣaraṃ yamityekamakṣaram | prathamottame akṣare satyaṃ madhyato'nṛtaṃ tadetadanṛtamubhayataḥ satyena parigṛhītam̐ satyabhūyameva bhavati | nainaṃvidvām̐samanṛtam̐ hinasti ||",
           "translation": "In the beginning this (world) was water. Water produced the true , and the true is 'Brahman. Brahman produced Pragâpati , Pragâpati the Devas (gods). The Devas adore the true (satyam) alone. This satyam consists of three syllables. One syllable is sa, another t(i), the third yam. The first and last syllables are true, in the middle there is the untrue . This untrue is on both sides enclosed by the true, and thus the true preponderates. The untrue does not hurt him who knows this.",
           "explanation": "Sense: In the beginning this (world) was water. Water produced the true , and the true is 'Brahman. Brahman produced Pragâpati , Pragâpati the Devas (gods). The Devas adore the true (satyam) alone. This satyam consists of three syllables. One syllable is sa, another t(i),…",
-          "hindi": "अप एवेदमग्र आसु; । च्राप  आरम्भे यह्‌ आप (जल) ही ति ससमायिन्योऽग्निहोत्राया- अग्निहोत्र आदिकीआहृतियां कही गयी होत्रादिकर्मापवरगोत्तरकालं केन- अर्थात्‌ बीचमें अनृत है, अनृत मृच्यु है; क्योंकि मृल्यु ओर अनृत इनकी वह्‌ यह्‌ मूत्युरूप अनृत तक्रार",
-          "science": "अप एवेदमग्र आसु;। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Satyam",
@@ -5236,8 +4740,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadyattatsatyamasau sa ādityo | ya eṣa etasminmaṇḍale puruṣo yaścāyaṃ dakṣiṇe'kṣan puruṣastāvetāvanyo'nyasminpratiṣṭhitau raśmibhireṣo'sminpratiṣṭhitaḥ prāṇairayamamuṣmin sa yadotkramiṣyanbhavati śuddhamevaitanmaṇḍalaṃ paśyati nainamete raśmayaḥ pratyāyanti ||",
           "translation": "Now what is the true, that is the Âditya (the sun), the person that dwells in yonder orb, and the person in the right eye. These two rest on each other, the former resting with his rays in the latter, the latter with his prânas (senses) in the former. When the latter is on the point of departing this life, he sees that orb as white only, and those rays (of the sun) do not return to him.",
           "explanation": "Sense: Now what is the true, that is the Âditya (the sun), the person that dwells in yonder orb, and the person in the right eye. These two rest on each other, the former resting with his rays in the latter, the latter with his prânas (senses) in the former.…",
-          "hindi": "अस्याघुना सत्यस्य ब्लग: अब उस सत्य-ब्रह्यकी संस्थान- संस्थानविशेइ उपास्षनगुच्यते--  विशेषमं उपा्तना बतलायी जाती है- वह॒ जो सत्य है, सो यह्‌ आदित्य है । जो इस आदित्यमण्डल पुरुष है ओर जो भी यह्‌ दक्षिण नेत्रम पुरुष है, वे ये दोनो पूरुष एक -द्सरेम ११९८ बृहद्‌ारण्यकोपनिषद्‌  श्रध्याय ५ तद्‌ यत्‌, कि तत्‌ १ सत्यं ब्रह्म  वह जो, वहं कौन ! ४ ह यह वह॒ है। कौन है? आदित्य; कोऽप १ आदित्यः) कः पुनर कितु यह्‌ आद्त्यकौनदहै? जो",
-          "science": "अस्याघुना सत्यस्य ब्लग: अब उस सत्य-ब्रह्यकी संस्थान- संस्थानविशेइ उपास्षनगुच्यते-- विशेषमं उपा्तना बतलायी जाती है- वह॒ जो सत्य है, सो यह्‌ आदित्य है। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Satyam",
@@ -5252,8 +4754,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ya eṣa etasminmaṇḍale puruṣastasya bhūriti śira ekam̐ śira ekametadakṣaraṃ bhuva iti bāhū dvau bāhū dve ete akṣare svariti pratiṣṭhā dve pratiṣṭhe dve ete akṣare | tasyopaniṣadahariti | hanti pāpmānaṃ jahāti ca ya evaṃ veda ||",
           "translation": "Now of the person in that (solar) orb Bhûh is the head, for the head is one, and that syllable is one; Bhuvah the two arms, for the arms are two, and these syllables are two; Svar the foot, for the feet are two, and these syllables are two . Its secret name is Ahar (day), and he who knows this destroys (hanti) evil and leaves (gahâti) it.",
           "explanation": "Sense: Now of the person in that (solar) orb Bhûh is the head, for the head is one, and that syllable is one; Bhuvah the two arms, for the arms are two, and these syllables are two; Svar the foot, for the feet are two, and these syllables are two . Its secret name is Ahar (day),…",
-          "hindi": "आदित्य-पुरुषका उपकार करता हआ इस अधिदेव आदिव्य-पुरुषमें इस शरीरमे जो यहु विज्ञान १२०० बृहद्इरण्यकोपनिषद्‌  चर्याय ग्रहुःसंज्ञक श्रादित्यमण्डलस्थ पुरूषकरे व्याहुतिरूप श्रवयव तत्र योऽक्तौ, कः  एेसी स्थितिमे जो यह्‌ टै, कौन ?",
-          "science": "आदित्य-पुरुषका उपकार करता हआ इस अधिदेव आदिव्य-पुरुषमें इस शरीरमे जो यहु विज्ञान १२०० बृहद्इरण्यकोपनिषद्‌ चर्याय ग्रहुःसंज्ञक श्रादित्यमण्डलस्थ पुरूषकरे व्याह…। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Satyam",
@@ -5268,8 +4768,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo'yaṃ dakṣiṇe'kṣanpuruṣastasya bhūriti śiraḥ ekam̐ śira ekametadakṣaraṃ bhuva iti bāhū dvau bāhū dve ete akṣare svariti pratiṣṭhā dve pratiṣṭhe dve ete akṣare | tasyopaniṣadahamiti | hanti pāpmānaṃ jahāti ca ya evaṃ veda ||",
           "translation": "Of the person in the right eye Bhûh is the head, for the head is one, and that syllable is one; Bhuvah the two arms, for the arms are two, and these syllables are two; Svar the foot, for the feet are two, and these syllables are two. Its secret name is Aham (ego), and he who knows this, destroys (hanti) evil and leaves (gahâti) it.",
           "explanation": "Sense: Of the person in the right eye Bhûh is the head, for the head is one, and that syllable is one; Bhuvah the two arms, for the arms are two, and these syllables are two; Svar the foot, for the feet are two, and these syllables are two. Its secret name is Aham (ego),…",
-          "hindi": "( चरणों ) से पुरुष प्रतिष्ठित होता ह--इस ब्धुत्पत्तिके अनुसार प्रतिष्ठा उस इस व्याहृतिरूप अवयवो ग्रहुंसंज्ञक चाक्षुष पुरुषके व्याहूतिरूप श्रवयव एवम्‌-  इसी प्रकार-- । जो यह दक्षिण तेत्रमे पुरुष है, उसका भरुः\" यह्‌ शिर हः शिर एक हे ओर यह अक्षर भी एक है। श्रुवः\" यह भजा हे, भूजणेदोरहओरये अक्षर भी दो है। स्वः यह्‌ प्रतिष्ठा हे, ्रति्ठा (चरण) दोरहओरये",
-          "science": "( चरणों ) से पुरुष प्रतिष्ठित होता ह--इस ब्धुत्पत्तिके अनुसार प्रतिष्ठा उस इस व्याहृतिरूप अवयवो ग्रहुंसंज्ञक चाक्षुष पुरुषके व्याहूतिरूप श्रवयव एवम्‌- इसी प्…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Satyam",
@@ -5292,8 +4790,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "manomayo'yaṃ puruṣo bhāḥsatyastasminnantarhṛdaye yathā vrīhirvā yavo vā sa eṣa sarvasya sarvasyeśānaḥ sarvasyādhipatiḥ sarvamidaṃ praśāsti yadidaṃ kiñca ||",
           "translation": "That person, under the form of mind (manas), being light indeed , is within the heart, small like a grain of rice or barley. He is the ruler of all, the lord of all--he rules all this, whatsoever exists.",
           "explanation": "Sense: That person, under the form of mind (manas), being light indeed , is within the heart, small like a grain of rice or barley. He is the ruler of all, the lord of all--he rules all this, whatsoever exists.",
-          "hindi": "योऽयं दक्निणेऽक््‌ पुरषस्तस्य  जो यह दक्षिणनेत्रे पुरुष है, ह उसका श्रुः\" यह शिर है--इव्यादि भूरिति श्रं इत्यादि सवे समा-  सव अथं पूववत्‌ है । उसका अहम्‌ सत्यब्रह्मसंस्थानब्ब्राह्मणस्‌",
-          "science": "योऽयं दक्निणेऽक््‌ पुरषस्तस्य जो यह दक्षिणनेत्रे पुरुष है, ह उसका श्रुः\" यह शिर है--इव्यादि भूरिति श्रं इत्यादि सवे समा- सव अथं पूववत्‌ है। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "TruthSyllables",
@@ -5316,8 +4812,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "vidyud brahmetyāhurvidānādvidyud vidyatyenaṃ pāpmano ya evaṃ veda vidyudbrahmeti | vidyuddhyeva brahma ||",
           "translation": "They say that lightning is Brahman, because lightning (vidyut) is called so from cutting off (vidânât) . Whosoever knows this, that lightning is Brahman, him (that Brahman) cuts off from evil, for lightning indeed is Brahman.",
           "explanation": "Sense: That person, under the form of mind (manas), being light indeed , is within the heart, small like a grain of rice or barley. He is the ruler of all, the lord of all--he rules all this, whatsoever exists. Next: V, 7 Sacred Texts | Hinduism",
-          "hindi": "हृदयस्थ मनोमय पुरषकी उपासना उपाधीनामनेकखादनेकविशे-  उपाधिया भेक है ओर उनके षृणत्वाच्च तस्येव प्रकृतस्य बहुतसे विशेषण है, इसलिये उस करिचिदमाव्यादितन्त्रोऽयं तुन मनमें उपलब्ध होनेवाला होनेसे यहु मनोमय-मनःप्राय है। इसे विद्‌ दुब्रह्मको उपासना तथेवोपासनान्तरं सत्यस्य इसी प्रकार सत्यब्रह्मकी विशिष्ट फलवाली एक दुसरी उपासनाका",
-          "science": "हृदयस्थ मनोमय पुरषकी उपासना उपाधीनामनेकखादनेकविशे- उपाधिया भेक है ओर उनके षृणत्वाच्च तस्येव प्रकृतस्य बहुतसे विशेषण है, इसलिये उस करिचिदमाव्यादितन्त्रोऽयं तु…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Manas",
@@ -5340,8 +4834,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "vācaṃ dhenumupāsīta | tasyāścatvāraḥ stanāḥ svāhākāro vaṣaṭkāro hantakāraḥ svadhākārastasyai dvau stanau devā upajīvanti svāhākāraṃ ca vaṣaṭkāraṃ ca hantakāraṃ manuṣyāḥ svadhākāraṃ pitaraḥ | tasyāḥ prāṇa ṛṣabho mano vatsaḥ ||",
           "translation": "Let him meditate on speech as a cow. Her four udders are the words Svâhâ, Vashat, Hanta, and Svadhâ . The gods live on two of her udders, the Svâhâ and the Vashat, men on the Hanta, the fathers on the Svadhâ. The bull of that cow is breath (prâna), the calf the mind.",
           "explanation": "Sense: Let him meditate on speech as a cow. Her four udders are the words Svâhâ, Vashat, Hanta, and Svadhâ . The gods live on two of her udders, the Svâhâ and the Vashat, men on the Hanta, the fathers on the Svadhâ. The bull of that cow is breath (prâna), the calf the mind.",
-          "hindi": "विच्‌ त्‌ब्रह्यहै-एसा कहते हूं । विदान (खण्डन या विनाश) करनेके कारण विद्युत्‌ है । जो \"विचत्‌ ब्रह्म है\" ठेसा जानता है, वह्‌ इस आत्मके प्रतिकरुलभूत पापोका नाश कर देता हे, क्योंकि विद्युत्‌ ही ब्रह्म है ब्रह्मक निरुक्ति (बयुत्पत्ति) बतलाती --अन्धकारके विदान-खण्डनके । कारण, क्योंकि यह्‌ मेघके अन्धकार-",
-          "science": "विच्‌ त्‌ब्रह्यहै-एसा कहते हूं। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Vidyut",
@@ -5364,8 +4856,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ayamāgnirvaiśvānaro yo'yamantaḥ puruṣe yenedamannaṃ pacyate yadidamadyate | tasyaiṣa ghoṣo bhavati yametatkarṇāvapidhāya śṛṇoti | sa yadotkramiṣyanbhavati nainaṃ ghoṣam̐ śṛṇoti ||",
           "translation": "This is indeed the highest penance, if they carry a dead person into the forest . He who knows this, conquers the highest world. This is indeed the highest penance, if they place a dead person on the fire . He who knows this, conquers the highest world.",
           "explanation": "Sense: This is indeed the highest penance, if they carry a dead person into the forest . He who knows this, conquers the highest world. This is indeed the highest penance, if they place a dead person on the fire . He who knows this, conquers the highest world.",
-          "hindi": "घेनुरूपसे वाक्को उपासना  ब्रह्म' एेसी अस्प उपासना आरम्भ ब्रह्मणो वाम्‌ वै ब्रहति-  की जाती है वाकरूप धेनुको उवासना करे । उसके चार स्तन ह-स्वाहाकार, वषटकार हन्तकार ओर स्वधाकार। उसके दो स्तन स्वाहाकार ओर वषट्‌- १२०६ बृहदारण्यकोपनिषद्‌  अ्याय ५ पुरषान्तगंत वैदवान साग्नि, उसका घोष श्नौर मरणकालका  यमग्निर्वेश्चानसे योऽयमन्तः पुरुषे यनंदमन्न्‌",
-          "science": "घेनुरूपसे वाक्को उपासना ब्रह्म' एेसी अस्प उपासना आरम्भ ब्रह्मणो वाम्‌ वै ब्रहति- की जाती है वाकरूप धेनुको उवासना करे। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Vidyut",
@@ -5388,8 +4878,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yadā vai puruṣo'smāllokātpraiti sa vāyumāgacchati tasmai sa tatra vijihīte yathā rathacakrasya khaṃ tena sa ūrdhva ākramate | sa ādityamāgacchati tasmai sa tatra vijihīte yathālambarasya khaṃ tena sa ūrdhva ākramate | sa candramasamāgacchati tasmai sa tatra vijihīte yathā dundubheḥ khaṃ tena sa ūrdhva ākramate | sa lokamāgacchatyaśokamahimaṃ tasminvasati śāśvatīḥ samāḥ ||",
           "translation": "When the person goes away from this world, he comes to the wind. Then the wind makes room for him, like the hole of a carriage wheel, and through it he mounts higher. He comes to the sun. Then the sun makes room for him, like the hole of a Lambara , and through it he mounts higher. He comes to the moon. Then the moon makes room for him, like the hole of a drum, and through it he mounts higher, and arrives at the world where there is no sorrow, no snow . There he dwells eternal years.",
           "explanation": "Sense: When the person goes away from this world, he comes to the wind. Then the wind makes room for him, like the hole of a carriage wheel, and through it he mounts higher. He comes to the sun. Then the sun makes room for him, like the hole of a Lambara ,…",
-          "hindi": "जो यह पृरुषके भीतर है, यह्‌ अग्नि वैश्वानर है, जिसमे कि यह्‌ अञ्च, जो कि भक्षण किया जाता हे, पक्राया जाता है । उसीका यह्‌ घोष होता  है, जिसे पुरुष कानोको मूदकर्‌ सुनता हे। जिस समय पुरुष उक्रमण य \"यहु अग्ि वैश्वानर हे\" यह ब्रह्मकी न्तरम्‌ अयमर्िरवैानरः।' कोः नान्तरम्‌ एक अन्य उपासना ह । वह्‌ अग्ति",
-          "science": "जो यह पृरुषके भीतर है, यह्‌ अग्नि वैश्वानर है, जिसमे कि यह्‌ अञ्च, जो कि भक्षण किया जाता हे, पक्राया जाता है। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "SpeechAsCow",
@@ -5412,8 +4900,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "etadvai paramaṃ tapo yadvyāhitastapyate paramam̐ haiva lokaṃ jayati ya evaṃ vedaitadvai paramaṃ tapo yaṃ pretamaraṇyam̐ haranti paramam̐ haiva lokaṃ jayati ya evaṃ vedaitadvai paramaṃ tapo yaṃ pretamagnāvabhyādadhati paramam̐ haiva lokaṃ jayati ya evaṃ veda ||",
           "translation": "This is indeed the highest penance, if a man, laid up with sickness, suffers pain . He who knows this, conquers the highest world.",
           "explanation": "Sense: This is indeed the highest penance, if a man, laid up with sickness, suffers pain . He who knows this, conquers the highest world.",
-          "hindi": "प्रकरणान्तगंत उपासनाग्रोमे प्रप्र होनेवाली गति सर्वेषामस्मिन्‌ प्रकरण उपास्- इस प्रकरणम बतलायी गयी 15 वी  समस्त उपासनाओंका यहु गतिरूप जिस समय यह्‌ पुरुष इस लोकसे मरकर जाता है, उस समय वह वागुको प्राप्त होता है । वहां वह्‌ वागु उ्षके लिये च््रगुक्त हौ जाता मागंदे देता ह, जैसा कि रथके पहियेका छिद्र होता ह । उसके द्वारा कात्‌ प्रेति शरीरं परित्यजति स परिमणं चिद्रम्‌ ? इस्युच्यते-- ब्रह्मलोकं जिगमिषोर्मागनिरोधं",
-          "science": "प्रकरणान्तगंत उपासनाग्रोमे प्रप्र होनेवाली गति सर्वेषामस्मिन्‌ प्रकरण उपास्- इस प्रकरणम बतलायी गयी 15 वी समस्त उपासनाओंका यहु गतिरूप जिस समय यह्‌ पुरुष इस लो…। आहार, निद्रा और इंद्रिय-भार शरीर की स्थिति को सीधे बदलते हैं। यह पंक्ति उस शारीरिक आधार को छोड़कर नहीं चलती।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "Vaishvanara",
@@ -5436,8 +4922,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "annaṃ brahmetyeka āhustanna tathā pūyati vā annamṛte prāṇāt prāṇo brahmetyeka āhustanna tathā śuṣyati vai prāṇa ṛte'nnād ete ha tveva devate ekadhābhūyaṃ bhūtvā paramatāṃ gacchatastaddha smā''ha prātṛdaḥ pitaraṃ kim̐ svidevaivaṃ viduṣe sādhu kuryāṃ kimevāsmā asādhu kuryāmiti | sa ha smāha pāṇinā mā prātṛda kastvenayorekadhābhūyaṃ bhūtvā paramatāṃ gacchatīti | tasmā u haitaduvāca vītyannaṃ vai vi anne hīmāni sarvāṇi bhūtāni viṣṭāni | ramiti prāṇo vai raṃ prāṇe hīmāni sarvāṇi bhūtāni ramante | sarvāṇi ha vā asmin bhūtāni viśanti sarvāṇi bhūtāni ramante ya evaṃ veda ||",
           "translation": "Some say that food is Brahman, but this is not so, for food decays without life (prâna). Others say that life (prâna) is Brahman, but this is not so, for life dries up without food. Then these two deities (food and life), when they have become one, reach that highest state (i. e. are Brahman). Thereupon Prâtrida said to his father: 'Shall I be able to do any good to one who knows this, or shall I be able to do him any harm ?' The father said to him, beckoning with his hand: 'Not so, O Prâtrida; for who could reach the highest state, if he has only got to the oneness of these two?' He then said to him: 'Vi; verily, food is Vi, for all these beings rest (vishtâni) on food.' He then said: 'Ram; verily, life is Ram, for all these beings delight (ramante) in life. All beings rest on him, all beings delight in him who knows this.'",
           "explanation": "Sense: Some say that food is Brahman, but this is not so, for food decays without life (prâna). Others say that life (prâna) is Brahman, but this is not so, for life dries up without food. Then these two deities (food and life), when they have become one, reach that highest state (i.…",
-          "hindi": "वहां वहु भी उसके लिये अपने- को िद्रयुक्तकरदेतारहै, जैसा कि दन्दुभिका छिद्र प्रसिद्ध है, उसके व्याधि, श्मश्ानगमन भ्रौर ग्रग्निदाहमे परम तपोहष्टिका विधान नेतमरण्य ५ हरन्ति परम हैव॒ रोकं जयति य एवं",
-          "science": "वहां वहु भी उसके लिये अपने- को िद्रयुक्तकरदेतारहै, जैसा कि दन्दुभिका छिद्र प्रसिद्ध है, उसके व्याधि, श्मश्ानगमन भ्रौर ग्रग्निदाहमे परम तपोहष्टिका विधान नेतमर…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "AscentAfterDeath",
@@ -5468,8 +4952,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yajuḥ prāṇo vai yajuḥ prāṇe hīmāni sarvāṇi bhūtāni yujyante | yujyante hāsmai sarvāṇi bhūtāni śraiṣṭhyāya yajuṣaḥ sāyujyam̐ salokatāṃ jayati ya evaṃ veda ||",
           "translation": "Next follows the Yagus. Verily, breath is Yagus, for all these beings are joined in breath . For him who knows this, all beings are joined to procure his excellence; he obtains union and oneness with the Yagus.",
           "explanation": "Sense: Next follows the Yagus. Verily, breath is Yagus, for all these beings are joined in breath . For him who knows this, all beings are joined to procure his excellence; he obtains union and oneness with the Yagus.",
-          "hindi": "इसके सिवा रम्‌\" यहु कहा- पिताने शरमूणएेसा भी कहा, सो वह्‌ रम्‌क्याहे? प्राणही “रम्‌ (उक्थ इस एकार प्राणकी उपासना करे । प्राण ही उक्यहै, क्योंकि प्राण ही इन सबको उत्थापित करता है । इस उपासकसे उक्थ- वेत्ता पुत्र उत्पन्न होता है। जो एसी उपासना करता हे, वह्‌ प्राणके",
-          "science": "इसके सिवा रम्‌\" यहु कहा- पिताने शरमूणएेसा भी कहा, सो वह्‌ रम्‌क्याहे? प्राणही “रम्‌ (उक्थ इस एकार प्राणकी उपासना करे। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ParamamTapas",
@@ -5484,8 +4966,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sāma prāṇo vai sāma prāṇe hīmāni sarvāṇi bhūtāni samyañci | samyañci hāsmai sarvāṇi bhūtāni śraiṣṭhyāya kalpante sāmnaḥ sāyujyam̐ salokatāṃ jayati ya evaṃ veda ||",
           "translation": "Next follows the Sâman. Verily, breath is the Sâman, for all these beings meet in breath. For him who knows this, all beings meet to procure his excellence; he obtains union and oneness with the Sâman.",
           "explanation": "Sense: Next follows the Sâman. Verily, breath is the Sâman, for all these beings meet in breath. For him who knows this, all beings meet to procure his excellence; he obtains union and oneness with the Sâman.",
-          "hindi": "इसी प्रकार उक्थ एकं अन्य उपासना है । उक्थ शच्च है, वही महाव्रत क्रतुमे प्रधान होता है । यजुद्‌ ष्टिसे प्राणोपासना \"यजुः\" इस प्रकार प्राणको उपाक्तना करे । प्राण ही यजु है, क्योंकि प्राणमे ही इन सव भूतोका योग होता है । सम्पूरणं भूत इसकी श्रेष्ठताके यजुरिति चोपासीत प्राणम्‌ ध्यजुः' इस प्रकार भी प्राणकी उपासना करे; प्राण ही यजु हैः प्राणो बै यजुः; कथं यजुः प्राणः  प्राण यजु किस प्रकार है ? क्योंकि",
-          "science": "इसी प्रकार उक्थ एकं अन्य उपासना है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ParamamTapas",
@@ -5500,8 +4980,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "kṣatraṃ prāṇo vai kṣatraṃ prāṇo hi vai kṣatraṃ trāyate hainaṃ prāṇaḥ kṣaṇitoḥ | pra kṣatramatramapnoti kṣatrasya sāyujyam̐ salokatāṃ jayati ya evaṃ veda ||",
           "translation": "Next follows the Kshatra. Verily, breath is the Kshatra, for breath is Kshatra, i.e. breath protects (trâyate) him from being hurt (kshanitoh). He who knows this, obtains Kshatra (power), which requires no protection; he obtains union and oneness with Kshatra .",
           "explanation": "Sense: Next follows the Kshatra. Verily, breath is the Kshatra, for breath is Kshatra, i.e. breath protects (trâyate) him from being hurt (kshanitoh). He who knows this, obtains Kshatra (power), which requires no protection; he obtains union and oneness with Kshatra . Next: V,…",
-          "hindi": "सामः इस प्रकार प्राणको उपासना करे । प्राण ही साम दहे, क्योंकि भ्राणमे ही ये सब भूत सुसंगत होते हँ । समस्त भ्रुत उसके लिये सुसंगत होते ह तथा उसकी श्रे्ठताके लिये समथं होते है । जो इस प्रकार उपासना सामेति चोपासीत प्राणम्‌ । साम\" इस प्रकार भी प्राणको प्राणो वे साम । कथं प्राणः साम १  उपासना करे । प्राण हौ साम है । प्राणे हि यस्मात्‌ सर्वाणि भूतानि  भ्रण साम किस प्रकार है? क्यो",
-          "science": "सामः इस प्रकार प्राणको उपासना करे। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ParamamTapas",
@@ -5524,8 +5002,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "bhūmirantarikṣaṃ dyaurityaṣṭāvakṣarāṇyaṣṭākṣaram̐ ha vā ekaṃ gāyatryai padametadu haivāsyā etat sa yāvadeṣu triṣu lokeṣu tāvaddha jayati yo'syā etadevaṃ padaṃ veda ||",
           "translation": "The words Bhûmi (earth), Antariksha (sky), and Dyu (heaven) form eight syllables. One foot of the Gâyatrî consists of eight syllables. This (one foot) of it is that (i. e. the three worlds). And he who thus knows that foot of it, conquers as far as the three worlds extend.",
           "explanation": "Sense: The words Bhûmi (earth), Antariksha (sky), and Dyu (heaven) form eight syllables. One foot of the Gâyatrî consists of eight syllables. This (one foot) of it is that (i. e. the three worlds). And he who thus knows that foot of it, conquers as far as the three worlds extend.",
-          "hindi": "प्राण क्षत्र है--इस प्रकार प्राणकी उपासना करे। प्राण हीक्षत्रह। प्राण ही क्षत्र हि-यह प्रसिद्ध हे। प्राण इस देहकी शख्ादिजनित क्षतसे रक्षा करता है । अत्रम्‌--अन्य किससे त्राण न पानेवाले क्षत्र (प्राण) तं प्राणं ्तस्रभिस्युवासीत  उस प्राणको क्षत्र इस भकार राणो पर चं प्रसिद्ेदद्‌ प्राणो  उपना कर । भाण ही मह क १ यह प्रसिद्ध है किप्राणहीक्षत्रहे। - ब्रह्मणे हदयाचयनेकोपाधि- हृदय आदि अनेक उपाधियोसे विशिष्टस्थोपासनय॒क्तम्‌ । श्ये ( श उपासना 9 शं वो ययी । अब आगे गायत्रीरूप उपाधिसे",
-          "science": "प्राण क्षत्र है--इस प्रकार प्राणकी उपासना करे। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "FoodAndPrana",
@@ -5540,8 +5016,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ṛco yajūm̐ṣi sāmānītyaṣṭāvakṣarāṇyaṣṭākṣaram̐ ha vā ekaṃ gāyatryai padam | etadu haivāsyā etat sa yāvatīyaṃ trayī vidyā tāvaddha jayati yo'syā etadevaṃ padaṃ veda ||",
           "translation": "The Rikas, the Yagûmshi, and the Sâmâni form eight syllables. One foot (the second) of the Gâyatrî consists of eight syllables. This (one foot) of it is that (i.e. the three Vedas, the Rig-veda, Yagur-veda, and Sama-veda). And he who thus knows that foot of it, conquers as far as that threefold knowledge extends.",
           "explanation": "Sense: The Rikas, the Yagûmshi, and the Sâmâni form eight syllables. One foot (the second) of the Gâyatrî consists of eight syllables. This (one foot) of it is that (i.e. the three Vedas, the Rig-veda, Yagur-veda, and Sama-veda). And he who thus knows that foot of it,…",
-          "hindi": "गायत्रीका एकं ( प्रथम ) पाद हे। यह ( भूमि आदि) ही इस गायत्रीका प्रथम पादहं। इस प्रकार इसके इस पदको जो जानता, वह्‌ इस त्रिलोकीमे जितना कु हे, उस सबको जीत लेता ट । १॥ भमि, अन्तरिक्ष, दयौः--इस प्रकारये आठ अक्षर हूं। गायत्री काएक अर्थात्‌ प्रथम पाद अष्टाक्षर-",
-          "science": "गायत्रीका एकं ( प्रथम ) पाद हे। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "FoodAndPrana",
@@ -5556,8 +5030,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "prāṇo'pāno vyāna ityaṣṭāvakṣarāṇi aṣṭākṣaram̐ ha vā ekaṃ gāyatryai padametadu haivāsyā etat sa yāvadidaṃ prāṇi tāvaddha jayati yo'syā etadevaṃ padaṃ veda athāsyā etadeva turīyaṃ darśataṃ padaṃ parorajā ya eṣa tapati yadvai caturthaṃ tatturīyaṃ darśataṃ padamiti dadṛśa iva hyeṣa parorajā iti sarvamu hyevaiṣa raja uparyupari tapatyevam̐ haiva śriyā yaśasā tapati yo'syā etadevaṃ padaṃ veda ||",
           "translation": "The Prâna (the up-breathing), the Apâna (the down-breathing), and the Vyâna (the back-breathing) form eight syllables. One foot (the third) of the Gâyatrî consists of eight syllables. This (one foot) of it is that (i. e. the three vital breaths). And he who thus knows that foot of it, conquers as far as there is anything that breathes. And of that (Gâyatrî, or speech) this indeed is the fourth (turîya), the bright (darsata) foot, shining high above the skies . What is here called turîya (the fourth) is meant for katurtha (the fourth); what is called darsatam padam (the bright foot) is meant for him who is as it were seen (the person in the sun); and what is called paroragas (he who shines high above the skies) is meant for him who shines higher and higher above every sky. And he who thus knows that foot of the Gâyatrî, shines thus himself also with happiness and glory.",
           "explanation": "Sense: The Prâna (the up-breathing), the Apâna (the down-breathing), and the Vyâna (the back-breathing) form eight syllables. One foot (the third) of the Gâyatrî consists of eight syllables. This (one foot) of it is that (i. e. the three vital breaths).…",
-          "hindi": "गायत्रीके द्वितीय वरयीरूप पादकी उपासना ऋचः, यजुषि, सामानि\" ये आठ अक्षर है । आठ अक्षरवाला दी गायत्रीका एक ( द्वितीय ) पाद है। यह्‌ ( क्‌ आदि ) ही इस हैवास्या एतद्‌ ऋग्यजुःसाम- त्रयीविद्याके अक्षर हं। ये भी आठ ही ह; इसी प्रकार गायत्रीका एक गायत्रीके तृतीय प्रणादिपाद श्रौर तुरीव दशेत परो- पकं गायत्रे पदमेतदु हैवास्या एतत्‌ स यावदिदं प्राणि १२२६. बृहदारण्यकोपनिषद्‌  अध्याय ४",
-          "science": "गायत्रीके द्वितीय वरयीरूप पादकी उपासना ऋचः, यजुषि, सामानि\" ये आठ अक्षर है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "FoodAndPrana",
@@ -5572,8 +5044,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "saiṣā gāyatryetasmim̐sturīye darśate pade parorajasi pratiṣṭhitā tadvai tatsatye pratiṣṭhitaṃ cakṣurvai satyaṃ cakṣurhi vai satyaṃ tasmādyadidānīṃ dvau vivadamānāveyātāmaham adarśaṃ ahamaśrauṣamiti ya eva evaṃ brūyādaham adarśamiti tasmā eva śraddadhyāma | tadvai tatsatyaṃ bale pratiṣṭhitaṃ prāṇo vai balaṃ tatprāṇe pratiṣṭhitaṃ tasmādāhurbalam̐ satyādogīya ityevaṃ veṣā gāyatryadhyātmaṃ pratiṣṭhitā | sā haiṣā gayām̐statre prāṇā vai gayāstatprāṇām̐statre tadyadgayām̐statre tasmād gāyatrī nāma | sa yāmevāmūm̐ sāvitrīmanvāhaiṣaiva sā | sa yasmā anvāha tasya prāṇām̐strāyate ||",
           "translation": "That Gâyatrî (as described before with its three feet) rests on that fourth foot, the bright one, high above the sky. And that again rests on the True (satyam), and the True is the eye, for the eye is (known to be) true. And therefore even now, if two persons come disputing, the one saying, I saw, the other, I heard, then we should trust the one who says, I saw. And the True again rests on force (balam), and force is life (prâna), and that (the True) rests on life . Therefore they say, force is stronger than the True. Thus does that Gâyatrî rest with respect to the self (as life). That Gâyatrî protects (tatre) the vital breaths (gayas); the gayas are the prânas (vital breaths), and it protects them. And because it protects (tatre) the vital breaths (gayas), therefore it is called Gâyatrî. And that Savitri verse which the teacher teaches , that is it (the life, the prâna, and indirectly the Gâyatrî); and whomsoever he teaches, he protects his vital breaths.",
           "explanation": "Sense: That Gâyatrî (as described before with its three feet) rests on that fourth foot, the bright one, high above the sky. And that again rests on the True (satyam), and the True is the eye, for the eye is (known to be) true. And therefore even now, if two persons come disputing,…",
-          "hindi": "गायत्रीका एक ( दृतीय ) पाद है । यह्‌ प्राणादि ही इस गायत्रीका तीयः पादहै। जो गायत्रीके इस पदक्रो इस प्रकार जानता है, वह्‌ जितना यहं प्राणिसमुदाय है, सबको जीत लेता है । ओर यहु जो तपता ( प्रकारित प्राणादिके नाम भी आठ हौ अक्षर हैं । यह गायत्रीका वतीय पाद हे! जो इस प्रकार गायत्रीके इस वृतोय",
-          "science": "गायत्रीका एक ( दृतीय ) पाद है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "FoodAndPrana",
@@ -5588,8 +5058,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tām̐ haitāmeke sāvitrīmanuṣṭubhamanvāhurvāganuṣṭub etadvācamanubrūma iti | na tathā kuryād gāyatrīmevānubrūyād | yadi ha vā apyevaṃvidbahviva pratigṛhṇāti na haiva tadgāyatryā ekaṃ cana padaṃ prati ||",
           "translation": "Some teach that Sâvitrî as an Anushtubh verse, saying that speech is Anushtubh, and that we teach that speech. Let no one do this, but let him teach the Gâyatrî as Sâvitrî . And even if one who knows this receives what seems to be much as his reward (as a teacher), yet this is not equal to one foot of the Gâyatrî.",
           "explanation": "Sense: Some teach that Sâvitrî as an Anushtubh verse, saying that speech is Anushtubh, and that we teach that speech. Let no one do this, but let him teach the Gâyatrî as Sâvitrî . And even if one who knows this receives what seems to be much as his reward (as a teacher),…",
-          "hindi": "गायत्री की परम प्रतिष्ठ प्राण है, गायत्री\" शब्दका निवेचन श्रौर वटको किये गये गायच्युपदेशका फल सेषा गायत्येतस्मि स्तुरीये दशते पदे वह्‌ यह्‌ गायत्री इस चतुथं दशेत परोरजा पदमे प्रतिष्ठित है । वह्‌ पद सत्यमे प्रतिष्ठित है । चु हौ सत्य है, चक्षु ही सत्य है--यह प्रसिद्ध 1 यदि दो पुरुष मेने देखा हैः भने सुना है इस प्रकार विवाद सैषा तरिषदोक्ता या त्रेलोक्प-  पूर्वोक्त तीन पदोवाली वह यह्‌ गायत्री इस चतुथं तुरीय दशत शतु तुरीये दशैते पदे परोरजसि  परोरजा पदमे प्रतिष्ठित है ।  यह",
-          "science": "गायत्री की परम प्रतिष्ठ प्राण है, गायत्री\" शब्दका निवेचन श्रौर वटको किये गये गायच्युपदेशका फल सेषा गायत्येतस्मि स्तुरीये दशते पदे वह्‌ यह्‌ गायत्री इस चतुथं…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "FoodAndPrana",
@@ -5604,8 +5072,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa ya imām̐strīṃllokānpūrṇānpratigṛhṇīyāt so'syā etatprathamaṃ padamāpnuyād | atha yāvatīyaṃ trayī vidyā yastāvatpratigṛhṇīyāt so''syā etaddvitīyaṃ padamāpnuyādatha yāvadidaṃ prāṇi yastāvatpratigṛhṇīyāt so'syā etattṛtīyaṃ padamāpnuyādathāsyā etadeva turīyaṃ darśataṃ padaṃ parorajā ya eṣa tapati naiva kena canāpyaṃ kuta u etāvatpratigṛhṇīyāt ||",
           "translation": "If a man (a teacher) were to receive as his fee these three worlds full of all things, he would obtain that first foot of the Gâyatrî. And if a man were to receive as his fee everything as far as this threefold knowledge extends, he would obtain that second foot of the Gâyatrî. And if a man were to receive as his fee everything whatsoever breathes, he would obtain that third foot of the Gâyatrî. But 'that fourth bright foot, shining high above the skies ' cannot be obtained by anybody--whence then could one receive such a fee?",
           "explanation": "Sense: If a man (a teacher) were to receive as his fee these three worlds full of all things, he would obtain that first foot of the Gâyatrî. And if a man were to receive as his fee everything as far as this threefold knowledge extends, he would obtain that second foot of the Gâyatrî.…",
-          "hindi": "म्रनुष्ट्प्‌ सावित्री उपदेशका निषेध ग्रौर गायत्री-साविव्रीका महच ता हेतामेके साविघ्रीमनुष्टभमन्वाहूर्वागवुष्टुबेतद्‌ तापेतां साश््रीं रेके लाखि- कोई शाखावाले उपनीत वटु- . £ ॐ   को अयुष्टुप्‌-अनुष्टुप्पभव अर्थात्‌ । एति १३.९१. अनुष्टुप्‌ छन्दव।ली उस इस सावित्री-",
-          "science": "म्रनुष्ट्प्‌ सावित्री उपदेशका निषेध ग्रौर गायत्री-साविव्रीका महच ता हेतामेके साविघ्रीमनुष्टभमन्वाहूर्वागवुष्टुबेतद्‌ तापेतां साश््रीं रेके लाखि- कोई शाखावाले…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "FoodAndPrana",
@@ -5620,8 +5086,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tasyā upasthānaṃ gāyatryasyekapadī dvipadī tripadī catuṣpadyapadasi na hi padyase | namaste turīyāya darśatāya padāya parorajase'sāvado mā prāpaditi yaṃ dviṣyādasāvasmai kāmo mā samṛddhīti vā na haivāsmai sa kāmaḥ samṛddhyate yasmā evamupatiṣṭhate'hamadaḥ prāpamiti vā ||",
           "translation": "The adoration of that (Gâyatrî):",
           "explanation": "Sense: The adoration of that (Gâyatrî):",
-          "hindi": "गायत्रीछन्दवाली साविन्रीके विषयमे यह्‌ प्रासङ्िक बात कहकर अब श्रुति गायत्ुपासककी स्तुति गायत्री कै प्रत्येक पदके महुस्वका दिग्दर्शन स य इमा खील्लोकान्‌ पणीन्‌ रतिश्हुणीयात्‌ तुरीयं दशतं पदं परोरजा य एष तपति नैव केनच- जो इन तीन परणं लोकोका प्रतिग्रह करता है, उसका वहु (प्रतिग्रह) इस गायत्रीके इस प्रथम पादको व्याप्त करता है ओर जितनी यह्‌ चरयी- विद्या है, उसका जो प्रतिग्रह करता है, वह ( प्रतिग्रह ) इसके इस द्वितीय",
-          "science": "गायत्रीछन्दवाली साविन्रीके विषयमे यह्‌ प्रासङ्िक बात कहकर अब श्रुति गायत्ुपासककी स्तुति गायत्री कै प्रत्येक पदके महुस्वका दिग्दर्शन स य इमा खील्लोकान्‌ पणीन्…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "FoodAndPrana",
@@ -5636,8 +5100,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "etaddha vai tajjanako vaideho buḍilamāśvatarāśvimuvāca yannu ho tadgāyatrīvidabrūthā atha katham̐ hastī bhūto vahasīti | mukham̐ hyasyāḥ samrāṇ na vidāṃ cakāreti hovāca | tasyā agnireva mukhaṃ yadi ha vā api bahvivāgnāvabhyādadhati sarvameva tatsandahatyevam̐ haivaivaṃvid yadyapi bahviva pāpaṃ kurute sarvameva tatsampsāya śuddhaḥ pūto'jaro'mṛtaḥ sambhavati ||",
           "translation": "And thus Ganaka Vaideha spoke on this point to Budila Âsvatarâsvi : 'How is it that thou who spokest thus as knowing the Gâyatrî, hast become an elephant and carriest me?' He answered: 'Your Majesty, I did not know its mouth. Agni, fire, is indeed its mouth; and if people pile even what seems much (wood) on the fire, it consumes it all. And thus a man who knows this, even if he commits what seems much evil, consumes it all and becomes pure, clean, and free from decay and death.'",
           "explanation": "Sense: And thus Ganaka Vaideha spoke on this point to Budila Âsvatarâsvi : 'How is it that thou who spokest thus as knowing the Gâyatrî, hast become an elephant and carriest me?' He answered: 'Your Majesty, I did not know its mouth. Agni, fire, is indeed its mouth;…",
-          "hindi": "धनपूर्णह्ोकान्‌ प्रतिगृहीयात्‌  पादको, जिसकी कि व्याख्या की  गयी है, व्याप्त करता है। अर्थात्‌ गायत्नीका उपस्थान भौर उसका फल  चतुप्पययपदसि न हि प्द्यसे । नमस्ते तुरीयाय दश्शताय पदाय परोरजसेऽसावदो मा प्रापदिति यं द्विष्यादसावस्मे",
-          "science": "धनपूर्णह्ोकान्‌ प्रतिगृहीयात्‌ पादको, जिसकी कि व्याख्या की गयी है, व्याप्त करता है। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "FoodAndPrana",
@@ -5660,8 +5122,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "hiraṇmayena pātreṇa satyasyāpihitaṃ mukham | tattvaṃ pūṣann apāvṛṇu satyadharmāya dṛṣṭaye | pūṣann ekarṣe yama sūrya prājāpatya vyūha raśmīn | samūha tejo yatte rūpaṃ kalyāṇatamaṃ tatte paśyāmi | yo'sāvasau puruṣaḥ so'hamasmi | vāyuranilamamṛtamathedaṃ bhasmāntam̐ śarīram | oṃ3 krato smara kṛtam̐ smara krato smara kṛtam̐ smara | agne naya supathā rāye'smān viśvāni deva vayunāni vidvān | yuyodhyasmajjuhurāṇameno bhūyiṣṭhāṃ te nama uktiṃ vidhema || || iti bṛhadāraṇyakopaniṣadi pañcamo'dhyāyaḥ ||",
           "translation": "The face of the True (the Brahman) is covered with a golden disk . Open that, O Pûshan , that we may see the nature of the True .",
           "explanation": "Sense: The face of the True (the Brahman) is covered with a golden disk . Open that, O Pûshan , that we may see the nature of the True .",
-          "hindi": "उस गायत्रीका उपस्थान -ह गायत्रि ! तु तरैलोक्यरूप प्रथम पादस एकपदी है,  तोनों वेदलूप द्वितीय पादसे  द्विपदी हे,  प्राण, अपान जौर व्यानरूप तीसरे पादसे  त्रिपदो है ओर  तुरीय पादे  चतुष्पदी उपस्थानयुपेत्य स्थानं नपस्करण- मनेन भन्त्रेण । कों  म ५ वह्‌ मन्व कोन-सा है ? सो श्रुति इ्थाह--है गायतपरसि मवक्षि  वतलाती हहे गायत्रि । तु गायत्रीके मुखविधानके लिये श्रथ॑वाद ग(यत्या ञुखविधानायाथंबाद गायत्रीका मरुखविधान करनेके उच्यते-- लिये अथंवाद कहा जाता है--",
-          "science": "उस गायत्रीका उपस्थान -ह गायत्रि ! तु तरैलोक्यरूप प्रथम पादस एकपदी है, तोनों वेदलूप द्वितीय पादसे द्विपदी हे, प्राण, अपान जौर व्यानरूप तीसरे पादसे त्रिपदो है…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaAsSacredSong",
@@ -5684,8 +5144,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "oṃ yo ha vai jyeṣṭhaṃ ca śreṣṭhaṃ ca veda jyeṣṭhaśca śreṣṭhaśca svānāṃ bhavati | prāṇo vai jyeṣṭhaśca śreṣṭhaśca | jyeṣṭhaśca śreṣṭhaśca svānāṃ bhavatyapi ca yeṣāṃ bubhūṣati ya evaṃ veda ||",
           "translation": "The words Bhûmi (earth), Antariksha (sky), and Dyu (heaven) form eight syllables. One foot of the Gâyatrî consists of eight syllables. This (one foot) of it is that (i. e. the three worlds). And he who thus knows that foot of it, conquers as far as the three worlds extend.",
           "explanation": "Sense: The words Bhûmi (earth), Antariksha (sky), and Dyu (heaven) form eight syllables. One foot of the Gâyatrî consists of eight syllables. This (one foot) of it is that (i. e. the three worlds). And he who thus knows that foot of it, conquers as far as the three worlds extend.",
-          "hindi": "एतद्ध किल वै स्मयते । वत्त उस गायत्री.विज्ञानके विषयमे एेसा ही स्मरण मी किया जाता है गायत्रीविज्ञान विषये जनको वैदेहो (त हिरण्मयेन ज्योतिर्मयेन प्रेण  हिरण्मय अर्थात्‌ ज्योतिमंय पात्रसे जिस प्रकार पात्रसे अपनी अभीष्ट वस्तु क्कदीजातीहै, इसी प्रकार",
-          "science": "एतद्ध किल वै स्मयते। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5701,8 +5159,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo ha vai vasiṣṭhāṃ veda vasiṣṭhaḥ svānāṃ bhavati | vāgvai vasiṣṭhā | vasiṣṭhaḥ svānāṃ bhavatyapi ca yeṣāṃ bubhūṣati , ya evaṃ veda ||",
           "translation": "He who knows the richest , becomes himself the richest among his people. Speech is the richest. He who knows this, becomes the richest among his people, and among whomsoever he wishes to be so.",
           "explanation": "Sense: He who knows the richest , becomes himself the richest among his people. Speech is the richest. He who knows this, becomes the richest among his people, and among whomsoever he wishes to be so.",
-          "hindi": "अर्थात्‌ कसंफलकी प्राप्तिके लिये सु- पथसे--जुभमागंसे ले चल । पुनरा- वृत्तियुक्त दक्षिण अर्थात्‌ धुममा्॑से परमहंसपरिनाजकाचार्यस्य श्रीमच्छङ्करभगवतः कतौ  बृहदारणयको पनिषद्‌ भाष्ये कस्मात्‌ पुनः कारणात्‌ प्राणभावो विलत्वादस्य काण्डस्य पूत ॐ प्राण गायत्री है-एेसा",
-          "science": "अर्थात्‌ कसंफलकी प्राप्तिके लिये सु- पथसे--जुभमागंसे ले चल। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5718,8 +5174,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo ha vai pratiṣṭhāṃ veda pratitiṣṭhati same pratitiṣṭhati durge | cakṣurvai pratiṣṭhā cakṣuṣā hi same ca durge ca pratitiṣṭhati | pratitiṣṭhati same pratitiṣṭhati durge ya evaṃ veda ||",
           "translation": "He who knows the firm rest, becomes himself firm on even and uneven ground. The eye indeed is the firm rest, for by means of the eye a man stands firm on even and uneven ground. He who knows this, stands firm on even and uneven ground.",
           "explanation": "Sense: He who knows the firm rest, becomes himself firm on even and uneven ground. The eye indeed is the firm rest, for by means of the eye a man stands firm on even and uneven ground. He who knows this, stands firm on even and uneven ground.",
-          "hindi": "य्‌; कथिद्ध वा इस्यव- जो कोई; यहाँ षह अौर धे धारणार्थं । यो च्येष्ेष्ठगुणं  निपाक है, जो आगे बतलये छ ,   भ्राणको जानता है, वह ज्येष्ठ ओर जो वसिष्ठाको जानता है, वह्‌ स्वजनोमें वसिष्ठ होतादे। वाक ही वसिष्ठा हे। जो एसी उपासना करता है, वह्‌ स्वजनोमे तथा ओर मी जिनमे चाहता हे, उनमें वसिष्ठ होता है",
-          "science": "य्‌; कथिद्ध वा इस्यव- जो कोई; यहाँ षह अौर धे धारणार्थं। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5735,8 +5189,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo ha vai sampadaṃ veda sam̐ hāsmai padyate yaṃ kāmaṃ kāmayate | śrotraṃ vai sampacchrotre hīme sarve vedā abhisampannāḥ | sam̐ hāsmai padyate yaṃ kāmaṃ kāmayate ya evaṃ veda ||",
           "translation": "He who knows success, whatever desire he desires, it succeeds to him. The ear indeed is success. For in the ear are all these Vedas successful. He who knows this, whatever desire he desires, it succeeds to him.",
           "explanation": "Sense: He who knows success, whatever desire he desires, it succeeds to him. The ear indeed is success. For in the ear are all these Vedas successful. He who knows this, whatever desire he desires, it succeeds to him.",
-          "hindi": "रेकेण वसिष्ठो भवितुमिच्खति तहिं कासो वसिष्ठेति १ बाग्‌ वै जो वसिष्ठाको जानता है, वह्‌ प्रतिष्ठादृष्टिसे चक्षुकी उपासना जो प्रतिष्ठाको जानता हे, वहु समान देश-कालमें प्रतिष्ठित होता है ओर दुगेम देल-कालमे भी प्रतिष्ठित होता है । चक्षु ही प्रतिष्ठा है । चक्षुसे ही समान ओर दुगंम देश-कालमे प्रतिष्ठित होता है। जो एसी उपासना",
-          "science": "रेकेण वसिष्ठो भवितुमिच्खति तहिं कासो वसिष्ठेति १ बाग्‌ वै जो वसिष्ठाको जानता है, वह्‌ प्रतिष्ठादृष्टिसे चक्षुकी उपासना जो प्रतिष्ठाको जानता हे, वहु समान देश-…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5752,8 +5204,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo ha vā āyatanaṃ vedā''yatanam̐ svānāṃ bhavati āyatanaṃ janānām | mano vā āyatanamāyatanam̐ svānāṃ bhavatyāyatanaṃ janānāṃ ya evaṃ veda ||",
           "translation": "He who knows the home, becomes a home of his own people, a home of all men. The mind indeed is the home. He who knows this, becomes a home of his own people and a home of all men.",
           "explanation": "Sense: He who knows the home, becomes a home of his own people, a home of all men. The mind indeed is the home. He who knows this, becomes a home of his own people and a home of all men.",
-          "hindi": "तिष्ठा वेद प्रति- जो कोई प्रतिष्टाको जानता है, ५ ९ „  जिससे प्रतिष्ठित होता है, उसे विष्त्यनयति प्रतिष्ठा तां प्रवं  प्रतिष्ठा कहते है; उश्च भतिष्ठाको सम्पद्हृष्टिसे श्रोव्रकी उपासना योह वै संपदं वेद्‌ सहास्मे पद्यते यं कामं कामयते श्रो वे संपच्छ्रोत्रे दीम सर्वे वेदा अभिसंपन्नाः",
-          "science": "तिष्ठा वेद प्रति- जो कोई प्रतिष्टाको जानता है, ५ ९ „ जिससे प्रतिष्ठित होता है, उसे विष्त्यनयति प्रतिष्ठा तां प्रवं प्रतिष्ठा कहते है; उश्च भतिष्ठाको सम्पद्हृ…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5769,8 +5219,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yo ha vai prajātiṃ veda prajāyate ha prajayā paśubhī reto vai prajātiḥ | prajāyate ha prajayā paśubhirya evaṃ veda ||",
           "translation": "He who knows generation , becomes rich in offspring and cattle. Seed indeed is generation. He who knows this, becomes rich in offspring and cattle.",
           "explanation": "Sense: He who knows generation , becomes rich in offspring and cattle. Seed indeed is generation. He who knows this, becomes rich in offspring and cattle.",
-          "hindi": "यो ह वै संपदं वेद संपद्गुण-  जो भी सम्पद्को जानता है, अर्थात्‌  सम्पदुगुणवान्‌को जानता हे,उसे यह ¦ । फल मिलता हे-उसं ॒विद्रानूको जो आयतनको जानता है, वह स्वजनोंका आयतन होता है तथा अन्य जनोका भो आयतन होता है। मन ही आयतन है जो  इस प्रकार उपासना करता है; वह स्वजनोंका आयतन होता है तथा अन्य जनोका  ति जो भी आयतनको जानता है- योहवाश्रायतनंवद्-मराय आयतन आश्रयको कहते ह, उसे जो तनमाश्रवस्तद्‌ यो वेदायतनंस्वानां कोई जानता हे, वह स्वजनोका",
-          "science": "यो ह वै संपदं वेद संपद्गुण- जो भी सम्पद्को जानता है, अर्थात्‌ सम्पदुगुणवान्‌को जानता हे,उसे यह ¦। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5786,8 +5234,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "te heme prāṇā aham̐śreyase vivadamānā brahma jagmustaddhocuḥ ko no vasiṣṭha iti | taddhovāca yasminva utkrānta idam̐ śarīraṃ pāpīyo manyate sa vo vasiṣṭha iti ||",
           "translation": "These Prânas (senses), when quarrelling together as to who was the best, went to Brahman and said: 'Who is the richest of us?' He replied: 'He by whose departure this body seems worst, he is the richest.'",
           "explanation": "Sense: These Prânas (senses), when quarrelling together as to who was the best, went to Brahman and said: 'Who is the richest of us?' He replied: 'He by whose departure this body seems worst, he is the richest.'",
-          "hindi": "जो भी प्रजापत्िको जानता है वह्‌ प्रजा ओर पञयुदारा प्रजात- ( वृद्धिको प्राप्न) होता हे। रेतस्‌ ही प्रजापति है । जो एेसा जानता है, वह्‌ प्रजा ओर पञ्युओंदारा प्रात होता है यो ह वै प्रजातिं वेद्‌ प्रजायते  जो प्रनातिको जानता हे, वह्‌ प्रजात होता अर्थात्‌ प्रजा ओर पञ्ुओद्ारा सम्पन्न होता है । वीयं",
-          "science": "जो भी प्रजापत्िको जानता है वह्‌ प्रजा ओर पञयुदारा प्रजात- ( वृद्धिको प्राप्न) होता हे। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5803,8 +5249,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "vāgghoccakrāma | sā saṃvatsaraṃ proṣyā|ā|āgatyovāca kathamaśakata madṛte jīvitumiti | te hocuryathā'kalā avadanto vācā prāṇantaḥ prāṇena paśyantaścakṣuṣā śṛṇvantaḥ śrotreṇa vidvām̐so manasā prajāyamānā retasaivamajīviṣmeti | praviveśa ha vāk ||",
           "translation": "The tongue (speech) departed, and having been absent for a year, it came back and said: 'How have you been able to live without me?' They replied: 'Like unto people, not speaking with the tongue, but breathing with breath, seeing with the eye, hearing with the ear, knowing with the mind, generating with seed. Thus we have lived.' Then speech entered in.",
           "explanation": "Sense: The tongue (speech) departed, and having been absent for a year, it came back and said: 'How have you been able to live without me?' They replied: 'Like unto people, not speaking with the tongue, but breathing with breath, seeing with the eye, hearing with the ear,…",
-          "hindi": "ग्रपनी श्रष्ठताके लिये विवाद करते हुए वागादि प्राणका ब्रह्याके पास जाना श्रौरब्रह्याद्रारा उसका निणंय करनेके लिये ते हेमे प्राणा अहभ्रेयसे विवदमाना ब्ह्य वेयेप्राण “श्रेष्ट ह मै श्रेष्ठ हैः इस प्रकार विवाद करते हृए ब्रह्माके पास गये । उससे बोले हममे कौन वसिष्ठ है ?' उसने कहा, तुममेसे जिसके उत््रमण करनेपर ( शरीरसे अलग हो जानेपर ) यह शरीर अपने- रयसेऽहं श्रेयानिसेतःमे प्रयो-  रेभे शठ हूः इस परयो गनके जनाय बिददमाना विरुद्धं बद्‌-  लिये आपसमे विवाद करते हृए-- माना बह्म जगत्य गत्वन्तो  एक दसरेके विषुढ बोलते हए",
-          "science": "ग्रपनी श्रष्ठताके लिये विवाद करते हुए वागादि प्राणका ब्रह्याके पास जाना श्रौरब्रह्याद्रारा उसका निणंय करनेके लिये ते हेमे प्राणा अहभ्रेयसे विवदमाना ब्ह्य वेय…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5820,8 +5264,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "cakṣurhoccakrāma | tatsaṃvatsaraṃ proṣyā''gatyovāca kathamaśakata madṛte jīvitumiti | te hocuryathāndhā apaśyantaścakṣuṣā prāṇantaḥ prāṇena vadanto vācā śṛṇvantaḥ śrotreṇa vidvām̐so manasā prajāyamānā retasaivamajīviṣmeti | praviveśa ha cakṣuḥ ||",
           "translation": "The eye (sight) departed, and having been absent for a year, it came back and said: 'How have you been able to live without me?' They replied: 'Like blind people, not seeing with the eye, but breathing with the breath, speaking with the tongue, hearing with the ear, knowing with the mind, generating with seed. Thus we have lived.' Then the eye entered in.",
           "explanation": "Sense: The eye (sight) departed, and having been absent for a year, it came back and said: 'How have you been able to live without me?' They replied: 'Like blind people, not seeing with the eye, but breathing with the breath, speaking with the tongue, hearing with the ear,…",
-          "hindi": "ग्रपनी उक्करृष्टताकीौ परीक्षाके लिये वाक्का त॒ एवमुक्ता ब्रह्मणा प्राणा  ब्रह्यादारा इस प्रकार कह जाने- 6 पर उन प्राणोँने अपने प्राक्रमकी “  पहले  वाकूने उत्रमण किपा । उसने एक वतक बाहर रहकर लोटकर कहा-भेरे बिना तुम कंसे जीवित रह सके थे ? यह्‌ सुनकर उन्होने कहा, “जसे सूक पुरुष वाणीस न बोलते हए भी प्राणसे प्राणक्रिया",
-          "science": "ग्रपनी उक्करृष्टताकीौ परीक्षाके लिये वाक्का त॒ एवमुक्ता ब्रह्मणा प्राणा ब्रह्यादारा इस प्रकार कह जाने- 6 पर उन प्राणोँने अपने प्राक्रमकी “ पहले वाकूने उत्रमण…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5837,8 +5279,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "śrotram̐ hoccakrāma | tatsaṃvatsaraṃ proṣyā''gatyovāca kathamaśakata madṛte jīvitumiti | te hocuryathā badhirā aśṛṇvantaḥ śrotreṇa prāṇantaḥ prāṇena vadanto vācā paśyantaścakṣuṣā vidvām̐so manasā prajāyamānā retasaivamajīviṣmeti | praviveśa ha śrotram ||",
           "translation": "The ear (hearing) departed, and having been absent for a year, it came back and said: 'How have you been able to live without me?' They replied: 'Like deaf people, not hearing with the ear,",
           "explanation": "Sense: The ear (hearing) departed, and having been absent for a year, it came back and said: 'How have you been able to live without me?' They replied: 'Like deaf people, not hearing with the ear, but breathing with the breath, speaking with the tongue, seeing with the eye,…",
-          "hindi": "त रबभुक्त उचुयंथा लोके- ऽकला मुका श्रवद्ष्तो वाचा भ्रत्रेण विद्वांसो सनस काय- पहले वाक्नं ही इस शरीरसे केर एक वषं बाहर रहकर फिर लौटकर कहा, तुमलोग मेरे चक्षुका उत्कमण ग्रौर परीक्षामे श्रसफल होकर पुनः प्रवेश कुथम्कत महते जीवितुमिति ते होचुयंथान्धा अप- चक्षुने उत््रमण किया। उसने एक वषे बाहर रहकर लौटकर",
-          "science": "त रबभुक्त उचुयंथा लोके- ऽकला मुका श्रवद्ष्तो वाचा भ्रत्रेण विद्वांसो सनस काय- पहले वाक्नं ही इस शरीरसे केर एक वषं बाहर रहकर फिर लौटकर कहा, तुमलोग मेरे चक्षुक…। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5854,8 +5294,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "mano hoccakrāma | tatsaṃvatsaraṃ proṣyā''gatyovāca kathamaśakata madṛte jīvitumiti | te hocuryathā mugdhā avidvām̐so manasā prāṇantaḥ prāṇena vadanto vācā paśyantaścakṣuṣā śṛṇvantaḥ śrotreṇa prajāyamānā retasaivamajīviṣmeti | praviveśa ha manaḥ ||",
           "translation": "'The altar, O Gautama, is this world ; the fuel is the earth itself, the smoke the fire, the light the night, the coals the moon, the sparks the stars. On that altar the Devas offer rain. From that oblation rises food.",
           "explanation": "Sense: The mind departed, and having been absent for a year, it came back and said: 'How have you been able to live without me?' They replied: 'Like fools, not knowing with their mind, but breathing with the breath, seeing with the eye, hearing with the ear, generating with seed.…",
-          "hindi": "शरोवेने उक्क्रमण किया । उसने एक वषं बाहर रहकर लौटकर कलहा, तुम मेरे बिना केसे जीवित रह सके थे ?' वे बोले-“जिप्न ध्रकार बहरे आदमी कानोमे न सुनते हुए भो प्राणसे प्राणन करते, वाणीसे बोलते, नक्ता उक्रमण श्रौर परीक्षामे असफल होकर पुनः प्रवेश रवमराकत महते जीवितुमिति ते होचुर्यथा मुग्धा अवि. रचक्षुषा श्रृण्वन्तः श्रोत्रेण प्रजायमाना रेतसेवमजी-",
-          "science": "शरोवेने उक्क्रमण किया। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5871,8 +5309,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "reto hoccakrāma | tatsaṃvatsaraṃ proṣyā''gatyovāca kathamaśakata madṛte jīvitumiti | te hocuryathā klībā aprajāyamānā retasā prāṇantaḥ prāṇena vadanto vācā paśyantaścakṣuṣā śṛṇvantaḥ śrotreṇa vidvām̐so manasaivamajīviṣmeti | praviveśa ha retaḥ ||",
           "translation": "'The altar, O Gautama, is man; the fuel the opened mouth, the smoke the breath, the light the tongue, the coals the eye, the sparks the ear. On that altar the Devas offer food. From that oblation rises seed.",
           "explanation": "Sense: The seed departed, and having been absent for a year, it came back and said: 'How have you been able to live without me?' They replied: 'Like impotent people, not generating with seed, but breathing with the breath, seeing with the eye, hearing with the ear,…",
-          "hindi": "मनने उक्रमण किया । उसने एक वर्षं बाहुर रहकर लौटकर कहा, “तुम मेरे बिना कैसे जीवित रह्‌ सक थे ? वे बोले, “जिस प्रकार युग्ब पुरुष मनसे न सममते हुए भी प्राणसे प्राणन करते, वाणीसे बोलते, रेतस्‌का उत्क्रमण ग्रौर परीक्षामें भ्रसफल होकर पुनः प्रवेश रेतो होच्चकाम तत्‌ संवत्सरं प्रोष्यागत्योवाच कथमक्कत महते जीवितुमिति ते होचुयथा क्टीवा रेतसूने उच्छरमण किया । उसने एक वषं बाहर रहकर फिर लौटकर कहा, (तुम मेरे बिना कैसे जीवित रहं सके थे ?\" वे बोले, “जिस प्रकार नपुसकं लोग रेतसे प्रजा उलन न करते हए भी प्राणसे प्राणन करे,",
-          "science": "मनने उक्रमण किया। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5888,8 +5324,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha ha prāṇa utkramiṣyan yathā mahāsuhayaḥ saindhavaḥ paḍvīśaśaṅkūnsaṃvṛhedevam̐ haivemānprāṇānsaṃvavarha | te hocurmā bhagava utkramīrna vai śakṣyāmastvadṛte jīvitumiti | tasyo me baliṃ kuruteti tatheti ||",
           "translation": "'The altar, O Gautama, is woman . On that altar the Devas offer seed. From that oblation rises man. He lives so long as he lives, and then when he dies,",
           "explanation": "Sense: The (vital) breath, when on the point of departing, tore up these senses, as a great, excellent horse of the Sindhu country might tare up the pegs to which he is tethered. They said to him: 'Sir, do not depart.…",
-          "hindi": "च्ुहोच्चक्रमित्यादि  इसी प्रकार चकषुोचिक्राम' इत्यादि ९ ४   मन्त्रौका अथं पुवंवत्‌ है । अबतक रिति ॥ ९-१२॥ ते उक्करमण किया ॥ --१२॥ फिर प्राण उत्मण करवे लगा, तो जिस प्रकार सिन्धुदेशीय महान्‌ अर्व पैर बाँवनेके खुं टको उखाड़ डालतः है, उसी प्रकार वह्‌ इन सव प्राणोको स्थानच्यूत करने लगा! उन्होंने कहा, भगवन्‌ ! आप उत्रमण",
-          "science": "च्ुहोच्चक्रमित्यादि इसी प्रकार चकषुोचिक्राम' इत्यादि ९ ४ मन्त्रौका अथं पुवंवत्‌ है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5905,8 +5339,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā ha vāguvāca yadvā ahaṃ vasiṣṭhā'smi tvaṃ tadvasiṣṭho'sīti | yad vā ahaṃ pratiṣṭhāsmi tvaṃ tatpratiṣṭho'sīti cakṣuryadvā aham̐ sampadasmi tvaṃ tat sampadasīti śrotram | yad vā ahamāyatanamasmi tvaṃ tadāyatanamasīti mano yadvā ahaṃ prajātirasmi tvaṃ tat prajātirasīti retastasyo me kimannaṃ kiṃ vāsa iti | yadidaṃ kiñcā''śvabhya ā kṛmibhya ā kīṭapataṅgebhyastatte'nnamāpo vāsa iti | na ha vā asyānannaṃ jagdhaṃ bhavati nānannaṃ pratigṛhītaṃ ya evametadanasyānnaṃ veda | tad vidvām̐saḥ śrotriyā aśiṣyanta ācāmantyaśitvā''cāmantyetameva tadanamanagnaṃ kurvanto manyante ||",
           "translation": "'They take him to the fire (the funeral pile), and then the altar-fire is indeed fire, the fuel fuel, the smoke smoke, the light light, the coals coals, the sparks sparks. In that very altar-fire the Devas offer man, and from that oblation man rises, brilliant in colour.",
           "explanation": "Sense: Then the tongue said: 'If I am the richest, then thou art the richest by it.' The eye said: 'If I am the firm rest, then thou art possessed of firm rest by it.' The ear said: 'If I am success, then thou art possessed of success by it.' The mind said: 'If I am the home,…",
-          "hindi": "क उत्क्रमण करने लगा । उसी समय त्करभणं करिष्यं्तदानीयेव स्वस्था- वागादि प्राण अपने स्थानक  चलायमान हो गये। किसके उखाडइ डालता हे; इसौ प्रकार उसने इन वागादि प्राणोको संवह--उखाड दिया--अपने १२६२ बृहदारण्यकोपनिषद्‌  अध्याय ६ वागादिकृत प्राणकी स्तुति श्रौर उपे ग्रन्न तथा व्ल-प्रदान किंचाश्वभ्य आ छमिभ्य य! कीटपतङ्धेभ्यस्त्तेऽन्नसा-",
-          "science": "क उत्क्रमण करने लगा। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "GayatriMantra",
@@ -5930,8 +5362,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "śvetaketurha vā āruṇeyaḥ pañcālānāṃ pariṣadamājagāma | sa ājagāma jaivaliṃ pravāhaṇaṃ paricārayamāṇam | tamudīkṣyābhyuvāda kumārā3 iti | sa bhoḥ 3 iti pratiśuśrāva anuśiṣṭo'nvasi pitretyomiti hovāca ||",
           "translation": "Harih, Om. He who knows the first and the best, becomes himself the first and the best among his people. Breath is indeed the first and the best. He who knows this, becomes the first and the best among his people, and among whomsoever he wishes to be so.",
           "explanation": "Sense: Harih, Om. He who knows the first and the best, becomes himself the first and the best among his people. Breath is indeed the first and the best. He who knows this, becomes the first and the best among his people, and among whomsoever he wishes to be so.",
-          "hindi": "उस वागिन्द्रियने कहा, भ्म जो विसष्ठा ह, सो तुम ही उस वसिष्ठ गणस युक्त टो ।' भें जो प्रतिष्ठा हु, सो तुम ही उस प्रतिष्ठसे युक्त हो एता नेवने कहा । भँ जो सम्पद्‌ हूं, सो तुम ही उ सम्पदुसे युक्त होः कीटपतङ्गेभ्यः; यच्च॒ शवान्नं कृम्यन्नं कीटपतङ्गान्नं च तेन प्रथम बलि देनेके लिये प्रवृत्त",
-          "science": "उस वागिन्द्रियने कहा, भ्म जो विसष्ठा ह, सो तुम ही उस वसिष्ठ गणस युक्त टो। आहार, निद्रा और इंद्रिय-भार शरीर की स्थिति को सीधे बदलते हैं। यह पंक्ति उस शारीरिक आधार को छोड़कर नहीं चलती।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -5947,8 +5377,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "vettha yathemāḥ prajāḥ prayatyo vipratipadyantā3 iti | neti hovāca | vettho yathemaṃ lokaṃ punarāpadyantā3 iti | neti haivovāca | vettho yathā'sau loka evaṃ bahubhiḥ punaḥpunaḥ prayadbhirna sampūryatā3 iti neti haivovāca | vettho yatithyāmāhutyām̐ hutāyāmāpaḥ puruṣavāco bhūtvā samutthāya vadantī3 iti | neti haivovāca | vettho devayānasya vā pathaḥ pratipadaṃ pitṛyāṇasya vā yatkṛtvā devayānaṃ vā panthānaṃ pratipadyante pitṛyāṇaṃ vā'pi hi na ṛṣervacaḥ śrutaṃ dve sṛtī aśṛṇavaṃ pitṛṇāmahaṃ devānāmuta martyānāṃ tābhyāmidaṃ viśvamejatsameti yadantarā pitaraṃ mātaraṃ ceti | nāhamata ekaṃ cana vedeti hovāca ||",
           "translation": "The king said: 'Do you know how men, when they depart from here, separate from each other?' 'No,' he replied.",
           "explanation": "Sense: The king said: 'Do you know how men, when they depart from here, separate from each other?' 'No,' he replied.",
-          "hindi": "ही क्रिया हे। अतः भोजन करने- वाले ओर मोजन कर चुकनेवाले- काजी आचमन दहे, उसर्मे (जल इवेतकेतुह वा आ्णेष इत्यस्य पकरण- सुभ्वन्धः-िलाधिका- कमेसगुच्चयकारिणागनेर्मागंवाचनं प्रसिद्ध है कि आरुणिका पुत्र खेतकेतु पाञ्बालोकी सभामे आया । वह जीवलके पुत्र प्रवाहणके पास पहुंवा, जो  सेवकोसे  परिचर्या करा रहा था! उसे देखकर प्रवाहुणने कहा, ओ कुमार ! वह्‌ बोला भो ।'",
-          "science": "ही क्रिया हे। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -5964,8 +5392,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athainaṃ vasatyopamantrayāṃ cakre'nādṛtya vasatiṃ kumāraḥ pradudrāva | sa ājagāma pitaraṃ tam̐ hovāceti vāva kila no bhavānpurā'nuśiṣṭānavoca iti | katham̐, sumedha iti | pañca mā praśnānrājanyabandhuraprākṣīt tato naikañcana vedeti | katame ta iti ima iti ha pratīkānyudājahāra ||",
           "translation": "Then the king invited him to stay and accept his hospitality. But the boy, not caring for hospitality, ran away, went back to his father, and said: 'Thus then you called me formerly well-instructed!' The father said: 'What then, you sage?' The son replied: 'That fellow of a Râganya asked me five questions, and I did not know one of them.'",
           "explanation": "Sense: Then the king invited him to stay and accept his hospitality. But the boy, not caring for hospitality, ran away, went back to his father, and said: 'Thus then you called me formerly well-instructed!' The father said: 'What then,…",
-          "hindi": "इवेतकेतुनामतोऽङणस्यापत्य- श्राजगाम । जीवलस्यापत्यं मारमनः परिचरणं कारयन्त- प्रवाहशके पांच प्रन भ्रौर उवेतकेतुका उन सभीकै प्रति  श्रपनी श्रनभिज्ञता प्रकट करना । यद्ेवम्‌--  यदि एसी बात है तो--",
-          "science": "इवेतकेतुनामतोऽङणस्यापत्य- श्राजगाम। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -5981,8 +5407,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca tathā nastvaṃ tāta jānīthā yathā yadahaṃ kiñca veda sarvamahaṃ tattubhamavocam | prehi tu tatra pratītya brahmacaryaṃ vatsyāva iti | bhavāneva gacchatviti | sa ājagāma gautamo yatra pravāhaṇasya jaivalerāsa | tasmā āsanamāhṛtyodakamahārayāṃ cakārātha hāsmā arghyaṃ cakāra | tam̐ hovāca varaṃ bhagavate gautamāya dadma iti ||",
           "translation": "The father said: 'You know me, child, that whatever I know, I told you. But come, we shall go thither, and dwell there as students.'",
           "explanation": "Sense: The father said: 'You know me, child, that whatever I know, I told you. But come, we shall go thither, and dwell there as students.'",
-          "hindi": "जिस प्रकार मरनेपर यह्‌ प्रजा विभिन्च मागि जाती है- सो क्या त॒ जानता हे?\" श्वेतकेतु बोला, नही\"  राजा--  \"जिस प्रकार वह्‌ पूनः इस लोकम आती है, सो क्या तृज्ञे मालूम है ?' “नही रेसा वेत्थ विजानासि फि यथा (जिस प्रकार यह प्रसिद्ध प्रना येन प्रकारेणेमाः प्रजाः प्रतिद्धाः  रेत होनेपर-मरनेपर विप्रतिपन्न ववसो जिवमाणा तिरति होती है -सोक्यातु जानताहे? शवेतकेतुका श्रपने पिताके पास आकर उलाहना देना १२८० बृहद्रण्यकोषनिषट्‌  अभ्याय ६ कतमे त इतीम इति ह षतीकान्युदाजहार",
-          "science": "जिस प्रकार मरनेपर यह्‌ प्रजा विभिन्च मागि जाती है- सो क्या त॒ जानता हे?\" श्वेतकेतु बोला, नही\" राजा-- \"जिस प्रकार वह्‌ पूनः इस लोकम आती है, सो क्या तृज्ञे माल…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -5998,8 +5422,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca pratijñāto ma eṣa varo yāṃ tu kumārasyānte vācamabhāṣathāstāṃ me brūhīti ||",
           "translation": "Gautama said: 'That boon is promised to me; tell me the same speech which you made in the presence of my boy.'",
           "explanation": "Sense: Gautama said: 'That boon is promised to me; tell me the same speech which you made in the presence of my boy.'",
-          "hindi": "फिर राजाने उेतकेतुसे ठहुरनेके लिये प्रार्थना की । कितु वह्‌ कुमार ठ्हरनेकौ परवा न करके चल दिया । वह अपने पिताक पास्त आया भौर उनसे बोला, आपने यही कहा थान, किसु सव विषयोकी शिक्षा दे व्ततिं कुमारः श्वेतकेतुः प्रदुद्राव  समावतनकालेऽनुशिष्टान्‌ सर्वा- इसके पङ्चात्‌ उसके विद्याभिमान-",
-          "science": "फिर राजाने उेतकेतुसे ठहुरनेके लिये प्रार्थना की। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -6015,8 +5437,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca daiveṣu vai gautama tadvareṣu mānuṣāṇāṃ brūhīti ||",
           "translation": "He said: 'That belongs to divine boons, name one of the human boons.'",
           "explanation": "Sense: He said: 'That belongs to divine boons, name one of the human boons.'",
-          "hindi": "पिता श्रारुणिका उनके विषयमे श्रपनी श्रनभिज्ञता बताकर उसे शान्त करना ग्रौर उनका उत्तर जाननेके ब्रह्मचर्य वर्स्याव इति भवानेन गच्छषिति स आज- उस पिताने कहा, है तात  तू हमारे कथनानुसारं एसा समक कि हम जो कुछ जानते थे वह्‌ सब हमने तुभे कं विया था। जव  हम दोनों वहं चलँ ओर ब्रह्मचयंपालनपूर्वंक उसके यहां नवास करेगे ।' स होवाच पिता पुत्र करद्धयुप- शाभयंस्तथा तेन प्रकारेण नो- ऽद्मांस्त्वं है तात बस्स जानीथा",
-          "science": "पिता श्रारुणिका उनके विषयमे श्रपनी श्रनभिज्ञता बताकर उसे शान्त करना ग्रौर उनका उत्तर जाननेके ब्रह्मचर्य वर्स्याव इति भवानेन गच्छषिति स आज- उस पिताने कहा, है…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -6032,8 +5452,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca vijñāyate hāsti hiraṇyasyāpāttaṃ goaśvānāṃ dāsīnāṃ pravārāṇāṃ paridhānasya mā no bhavānbahoranantasyāparyantasyābhyavadānyo bhūditi | sa vai gautama tīrthenecchāsā ityupaimyahaṃ bhavantamiti vācā ha smaiva pūrva upayanti | sa hopāyanakīrtyovāsa ||",
           "translation": "He said: 'You know well that I have plenty of gold, plenty of cows, horses, slaves, attendants, and apparel; do not heap on me what I have already in plenty, in abundance, and superabundance.' The king said: 'Gautama, do you wish (for instruction from me) in the proper way?' Gautama replied: 'I come to you as a pupil.' In word only have former sages (though Brahmans) come as pupils (to people of lower rank), but Gautama actually dwelt as a pupil (of Pravâhana, who was a Râganya) in order to obtain the fame of having respectfully served his master .",
           "explanation": "Sense: He said: 'You know well that I have plenty of gold, plenty of cows, horses, slaves, attendants, and apparel; do not heap on me what I have already in plenty, in abundance, and superabundance.' The king said: 'Gautama,…",
-          "hindi": "षष्ठी प्रथमाके स्थानम हैः । अपने पास आये हृएु उस गौतमके लिये राजाने उचित आसन देकर-सेवको- ग्रारुणिकरा प्रवाहणसे श्रपने पुत्रे पुद्धी हुईं बात कहनेकी",
-          "science": "षष्ठी प्रथमाके स्थानम हैः। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -6049,8 +5467,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa hovāca tathā nastvaṃ gautama mā'parādhāstava ca pitāmahā yatheyaṃ vidyetaḥ pūrvaṃ na kasmim̐ścana brāhmaṇa uvāsa tāṃ tvahaṃ tubhyaṃ vakṣyāmi ko hi tvaivaṃ bruvantamarhati pratyākhyātumiti ||",
           "translation": "The king said: 'Do not be offended with us, neither you nor your forefathers, because this knowledge has before now never dwelt with any Brâhmana . But I shall tell it to you, for who could refuse you when you speak thus?",
           "explanation": "Sense: The king said: 'Do not be offended with us, neither you nor your forefathers, because this knowledge has before now never dwelt with any Brâhmana . But I shall tell it to you, for who could refuse you when you speak thus?",
-          "hindi": "उसने कहा, आपने मुके जो वर देनेके लिये प्रतिज्ञा की है, उसकं अनुसार आपने कुमारसे जो बात पृदी थौ वह्‌ जुभे कटहिये' उस गौतमने कहा, आपने इस प्रतिज्ञामे मुभे यह वर देनेकी मेममेषवरस्त्वास्यां प्रतिज्ञायाम्‌ प्रतिज्ञा की है-कुमार अर्थात्‌ १. क्योंकि \"जास\" यह्‌ क्रियापद है, अतः श्रवाहणः जवि\" यह उसका कर्ता होना चाहिये । षष्ठो होनेके कारण ही अस\" का अथं भासन' क्रिय्‌। यथा है। १२८४ बृहदारण्यकोपनिषद्‌  अध्याय ६",
-          "science": "उसने कहा, आपने मुके जो वर देनेके लिये प्रतिज्ञा की है, उसकं अनुसार आपने कुमारसे जो बात पृदी थौ वह्‌ जुभे कटहिये' उस गौतमने कहा, आपने इस प्रतिज्ञामे मुभे यह व…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -6066,8 +5482,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "asau vai loko'gnirgautama | tasyā''ditya eva samid raśmayo dhūmo 'hararcirdiśo'ṅgārā avāntaradiśo visphuliṅgāstasminnetasminnagnau devāḥ śraddhāṃ juhvati tasyā āhutyai somo rājā sambhavati ||",
           "translation": "'The altar (fire), O Gautama, is that world (heaven) ; the fuel is the sun itself, the smoke his rays, the light the day, the coals the quarters, the sparks the intermediate quarters. On that altar the Devas offer the sraddhâ libation (consisting of water ). From that oblation rises Soma, the king (the moon).",
           "explanation": "Sense: 'The altar (fire), O Gautama, is that world (heaven) ; the fuel is the sun itself, the smoke his rays, the light the day, the coals the quarters, the sparks the intermediate quarters. On that altar the Devas offer the sraddhâ libation (consisting of water ).…",
-          "hindi": "उसने कहा, \"गौतम ! वह्‌ वर तो हैव वरोमेसे हे; तुम मनुष्यसम्बन्धी वरोमेसे कोई वर मांगो स॒ होवाच राजा हैवेषु वरेषु उस राजान कहा, गौतम ! तद्‌ वै गौतम यस्त्वं प्राथयसे तुमजो वर मांगते हो, वहतो हैव मानुषाणामन्यतमं प्राथंथं  वरोमेसे है । मनुष्यसम्बन्धी वरोमेसे",
-          "science": "उसने कहा, \"गौतम ! वह्‌ वर तो हैव वरोमेसे हे; तुम मनुष्यसम्बन्धी वरोमेसे कोई वर मांगो स॒ होवाच राजा हैवेषु वरेषु उस राजान कहा, गौतम ! तद्‌ वै गौतम यस्त्वं प्र…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -6083,8 +5497,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "parjanyo vā agnirgautama | tasya saṃvatsara eva samidabhrāṇi dhūmo vidyudarciraśaniraṅgārā hrādunayo visphuliṅgāstasminnetasminnagnau devāḥ somam̐ rājānaṃ juhvati tasyā āhutyai vṛṣṭiḥ sambhavati ||",
           "translation": "'The altar, O Gautama, is Parganya (the god of rain); the fuel is the year itself, the smoke the clouds, the light the lightning, the coals the thunderbolt, the sparks the thunderings. On that altar the Devas offer Soma, the king (the moon). From that oblation rises rain.",
           "explanation": "Sense: 'The altar, O Gautama, is Parganya (the god of rain); the fuel is the year itself, the smoke the clouds, the light the lightning, the coals the thunderbolt, the sparks the thunderings. On that altar the Devas offer Soma, the king (the moon). From that oblation rises rain.",
-          "hindi": "ग्रारुणिका ग्राग्रह्‌ ओ्रौरं प्रवाहणकी स्वीकृतिसे प्रारुणिद्वास वाणीमाच्रसे उसका शिष्यत्व स्वीकार करना गोतम तीर्थनेच्छाला इत्युपैम्यहं भवन्तमिति वाचा ह उस गोतमने कहा, भाप जानते दहै, वह तो मेरे पासहे। सहे सुवणेकी प्राप्ति तथा गौ, अश्व, दासी, परिवार ओर परिधानकी भी प्रापि हे । आप महान्‌, अनन्त ओर निःसीम धनके दाता होकर मेरे लिये तेन प्रथितेन करव्यं ममयं त्वं भून्नोऽस्मानभ्यस्मानेष केवलान्‌  मां प्रत्येव केवलमदाता",
-          "science": "ग्रारुणिका ग्राग्रह्‌ ओ्रौरं प्रवाहणकी स्वीकृतिसे प्रारुणिद्वास वाणीमाच्रसे उसका शिष्यत्व स्वीकार करना गोतम तीर्थनेच्छाला इत्युपैम्यहं भवन्तमिति वाचा ह उस गो…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -6100,8 +5512,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ayaṃ vai loko'gnirgautama | tasya pṛthivyeva samid agnirdhūmo rātrirarciścandramā aṅgārā nakṣatrāṇi viṣphuliṅgāstasminnetasminnagnau devā vṛṣṭiṃ juhvati tasyā āhutyā annam̐ sambhavati ||",
           "translation": "Gânaki Âyasthûna told the same to his pupil Satyakâma Gâbâla, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.'",
           "explanation": "Sense: 'The altar, O Gautama, is this world ; the fuel is the earth itself, the smoke the fire, the light the night, the coals the moon, the sparks the stars. On that altar the Devas offer rain. From that oblation rises food.",
-          "hindi": "प्रवाहणकी क्षमाप्राथंना ग्रौर विद्यादानके लिये तत्पर होना गौतमके इस प्रकार आपदन्त॑र 4 स्वयं विद्यानमिन्ञ होनेके कारण किरी हीन वर्णे पूरके पास सिष्यमावसे स होवाच राजा पीडितं म्वा  उसे पोडित समकर उस राजाने चराभयंस्तथा नोऽस्मान्‌ व्रति क्षमा कराते हुए कहा, हमारे प्रति इसी प्रकार अपराध न कर, अर्थात्‌",
-          "science": "प्रवाहणकी क्षमाप्राथंना ग्रौर विद्यादानके लिये तत्पर होना गौतमके इस प्रकार आपदन्त॑र 4 स्वयं विद्यानमिन्ञ होनेके कारण किरी हीन वर्णे पूरके पास सिष्यमावसे स हो…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -6117,8 +5527,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "puruṣo vā agnirgautama | tasya vyāttameva samit prāṇo dhūmo vāgarciścakṣuraṅgārāḥ śrotraṃ visphuliṅgāstasminnetasminnagnau devā annaṃ juhvati tasyā āhutyai retaḥ sambhavati ||",
           "translation": "Satyakâma Gâbâla told the same to his pupils, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.' Let no one tell this to any one, except to a son or to a pupil .",
           "explanation": "Sense: 'The altar, O Gautama, is man; the fuel the opened mouth, the smoke the breath, the light the tongue, the coals the eye, the sparks the ear. On that altar the Devas offer food. From that oblation rises seed.",
-          "hindi": "चतुथं प्रर्नका उत्तर-पश्चाग्निविद्या शसो वै लोकोऽग्नि्गतिमे-। असौ वै लोकोऽग्निर्गो तमः इत्यादि किया जाता हि। क्रमभंग तो इस- लोकोको जय करते है, ठेसा श्रुति हे गौतम ! मेष ही अनिन है । संवत्सर ही उसका समिध हि, अश्र चुम हं, विद्युत्‌ ज्वाला है, अशनि ( इन््रका वजर ) अङ्गारदटै, मेधगजंन विस्फलिङ्ग है । उस इस अग्निम देवगण सोम॒राजाको हवन करते हुं ।",
-          "science": "चतुथं प्रर्नका उत्तर-पश्चाग्निविद्या शसो वै लोकोऽग्नि्गतिमे-। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -6134,8 +5542,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yoṣā vā āgnirgautama | tasyā upastha eva samillomāni dhūmo yonirarciryadantaḥ karoti te'ṅgārā abhinandā visphuliṅgāstasminnetasminnagnau devā reto juhvati tasyā āhutyai puruṣaḥ sambhavati | sa jīvati yāvajjīvatyatha yadā mriyate | 13||",
           "translation": "",
           "explanation": "",
-          "hindi": "बृहदारण्यक उपनिषद् का यह मन्त्र आत्म-ज्ञान और परब्रह्म की महिमा का प्रतिपादन करता है।",
-          "science": "Neurobiology of non-dual contemplation: resting in the unconstructed observer deactivates default mode rumination and expands attentional equanimity.",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -6151,8 +5557,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athainamagnaye haranti | tasyāgnirevāgnirbhavati samitsamid dhūmo dhūmo'rcirarciraṅgārā aṅgārā visphuliṅgā visphuliṅgāstasminnetasminnagnau devāḥ puruṣaṃ juhvati tasyā āhutyai puruṣo bhāsvaravarṇaḥ sambhavati ||",
           "translation": "Four things are made of the wood of the Udumbara tree, the sacrificial ladle (sruva), the cup (kamasa), the fuel, and the two churning sticks. There are ten kinds of village (cultivated) seeds, viz. rice and barley (brîhiyavâs), sesamum and kidney-beans (tilamâshâs), millet and panic seed (anupriya&#7749;gavas), wheat (godhûmâs), lentils (masûrâs), pulse (khalvâs), and vetches (khalakulâs ) . After having ground these he sprinkles them with curds (dadhi), honey, and ghee, and then offers (the proper portions) of clarified butter 1 (âgya).",
           "explanation": "Sense: 'The altar, O Gautama, is woman . On that altar the Devas offer seed. From that oblation rises man. He lives so long as he lives, and then when he dies,",
-          "hindi": "वृष्टयपकरणाभिमानी देवतासमा, दविः, प्रकाशप्रामान्यात्‌ । चशष- निरङ्गाराः, उपशान्तस्वकाटिन्य- अयं वै रोको ऽग्निरगोतम तस्य परथिव्येव समि-",
-          "science": "वृष्टयपकरणाभिमानी देवतासमा, दविः, प्रकाशप्रामान्यात्‌। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -6168,8 +5572,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "te ya evametadvidurye cāmī araṇye śraddhām̐ satyamupāsate te'rcirabhisambhavantyarciṣo'ho'hna āpūryamāṇapakṣaṃ āpūryamāṇapakṣādyānṣaṇmāsānudaṅṅāditya eti māsebhyo devalokaṃ devalokādādityamādityādvaidyutaṃ tānvaidyutānpuruṣo mānasa etya brahmalokān gamayati te teṣu brahmalokeṣu parāḥ parāvato vasanti | teṣāṃ na punarāvṛttiḥ |",
           "translation": "'Those who thus know this (even Grihasthas), and those who in the forest worship faith and the True (Brahman Hiranyagarbha), go to light (arkis), from light to day, from day to the increasing half, from the increasing half to the six months when the sun goes to the north, from those six months to the world of the Devas (Devaloka), from the world of the Devas to the sun, from the sun to the place of lightning. When they have thus reached the place of lightning a spirit comes near them, and leads them to the worlds of the (conditioned) Brahman. In these worlds of Brahman they dwell exalted for ages. There is no returning for them.",
           "explanation": "Sense: 'Those who thus know this (even Grihasthas), and those who in the forest worship faith and the True (Brahman Hiranyagarbha), go to light (arkis), from light to day, from day to the increasing half, from the increasing half to the six months when the sun goes to the north,…",
-          "hindi": "हे गौतम  यह लोक ही अग्निहै। इसकी पृथिवी ही समिध्‌ हे, अग्नि श्रुम है, रात्रि ज्वाला है, चन्द्रमा अङ्गार है ओर नक्षत्र विस्फुलिङ्ग ह । उस इस अग्निम देवता वृष्टिको होमते है, उस आहुतिसे अन्न श्रयं वै लोकोऽग्निगोतम; . दे गोतम! यह लोक ही अग्नि ४ है । यह लोक अर्थात्‌ प्राणियोंके , लोक इति प्राणिजन्मोप जन्म ओौर उपभोगका आश्रयभूत हे गौतम ! पुरुष ही अग्नि है । उसका खुला हुथा मुख ही समिध्‌ है, प्राण धूम है, वाक्‌ ज्वालाहै, नेव अङ्गार ह\" श्रोत्र विस्पुलिङ् है । उस इस अग्निम देवगण अन्तको होमते हँ । उस आहृतिसे वीयं",
-          "science": "हे गौतम यह लोक ही अग्निहै। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "HiranmayenaPatrena",
@@ -6201,8 +5603,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yaḥ kāmayate mahatprāpnuyāmityudagayana āpūryamāṇapakṣasya puṇyāhe dvādaśāhamupasadvratī bhūtvaudumbare kam̐se camase vā sarvauṣadhaṃ phalānīti sambhṛtya parisamuhya parilipyāgnimupasamādhāya paristīryā''vṛtā''jyam̐ sam̐skṛtya pum̐sā nakṣatreṇa mantham̐ sannīya juhoti | yāvanto devāstvayi jātavedastiryañco ghnanti puruṣasya kāmān tebhyo'haṃ bhāgadheyaṃ juhomi te mā tṛptāḥ sarvaiḥ kāmaistarpayantu svāhā | yā tiraścī nipadyate'haṃ vidharaṇī iti tāṃ tvā ghṛtasya dhārayā yaje sam̐rādhanīmaham̐ | svāhā ||",
           "translation": "Svetaketu Âruneya went to the settlement of the Pañkâlas. He came near to Pravâhana Gaivali , who was walking about (surrounded by his men). As soon as he (the king) saw him, he said: 'My boy!' Svetaketu replied: 'Sir!' Then the king said: 'Have you been taught by your father!' 'Yes,' he replied.",
           "explanation": "Sense: Svetaketu Âruneya went to the settlement of the Pañkâlas. He came near to Pravâhana Gaivali , who was walking about (surrounded by his men). As soon as he (the king) saw him,…",
-          "hindi": "पुरुषो बा अग्निशोतम प्रसिद्धः  है गौतम ! पूरुष ही अग्नि शिरःपाण्यादिमान्‌ पुरषशतरथो-  परसिद्ध पुरुष ही चतुथं अग्नि है । नि .  ुखंसमि उसका व्यात्त-खुला हुआ मुख ज्लोमानि धूमो योनिरचियंदन्तः करोति तेऽङ्गारा जुह्वति तस्या आहूस्ये पुरुषः संभवति स॒ जीवति । यावजजीवत्यथ यदा भ्रियते",
-          "science": "पुरुषो बा अग्निशोतम प्रसिद्धः है गौतम ! पूरुष ही अग्नि शिरःपाण्यादिमान्‌ पुरषशतरथो- परसिद्ध पुरुष ही चतुथं अग्नि है। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6217,8 +5617,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "jyeṣṭhāya svāhā śreṣṭhāya svāhetyagnau hutvā manthe sam̐sravamavanayati | prāṇāya svāhā vasiṣṭhāyai svāhetyagnau hutvā manthe sam̐sravamavanayati | vāce svāhā pratiṣṭhāyai svāhetyagnau hutvā manthe sam̐sravamavanayati | cakṣuṣe svāhā sampade svāheti agnau hutvā manthe sam̐sravamavanayati | śrotrāya svāhā''yatanāya svāhetyagnau hutvā manthe sam̐sravamavanayati | manase svāhā prajātyai svāhetyagnau hutvā manthe sam̐sravamavanayati | retase svāheti agnau hutvā manthe sam̐sravamavanayati ||",
           "translation": "He then says, Svâhâ to the First, Svâhâ to the Best, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to Breath, Svâhâ to her who is the richest, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to Speech, Svâhâ to the Support, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to the Eye, Svâhâ to Success, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to the Ear, Svâhâ to the Home, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to the Mind, Svâhâ to Offspring, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to Seed, pours ghee into the fire, and throws what remains into the Mantha (mortar).",
           "explanation": "Sense: He then says, Svâhâ to the First, Svâhâ to the Best, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to Breath, Svâhâ to her who is the richest, pours ghee into the fire, and throws what remains into the Mantha (mortar).…",
-          "hindi": "हे गौतम! खी ही अग्नि है। उपस्थही उसकी समिधूह, लं धम है, योनि ज्वाला है, जो भीतरको  मेधुनव्यापार  करता है, वह्‌  न क अङ्गार है, आलन्दलेड विस्फुलिङ्ग ह । उस इस \"च, वीयं  योषा बा ञ्जभ्निगोतम  योषेति  है गौतम । योषा ही अग्नि हे। योषा अर्थात्‌ सखी यह र्पाचवां ही उसका समिध्‌ है । उसौपे वह्‌ कितनी संख्यावाली आहृतिके हवन वाच्प होकर उठकर बोलने लगता उसका यह निणेय हो गया कि",
-          "science": "हे गौतम! खी ही अग्नि है। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6233,8 +5631,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "agnaye svāhetyagnau hutvā manthe sam̐sravamavanayati | somāya svāhetyagnau hutvā manthe sam̐sravamavanayati | bhūḥ svāhetyagnau hutvā manthe sam̐sravamavanayati | bhuvaḥ svāhetyagnau hutvā manthe sam̐sravamavanayati | svaḥ svāhetyagnau hutvā manthe sam̐sravamavanayati | bhūrbhuvaḥ svaḥ svāhetyagnau hutvā manthe sam̐sravamavanayati | brahmaṇe svāhetyagnau hutvā manthe sam̐sravamavanayati | kṣatrāya svāhetyagnau hutvā manthe sam̐sravamavanayati | bhūtāya svāhetyagnau hutvā manthe sam̐sravamavanayati | bhaviṣyate svāhetyagnau hutvā manthe sam̐sravamavanayati | viśvāya svāhetyagnau hutvā manthe sam̐sravamavanayati | sarvāya svāhetyagnau hutvā manthe sam̐sravamavanayati | prajāpataye svāhetyagnau hutvā manthe sam̐sravamavanayati ||",
           "translation": "He then says, Svâhâ to Agni (fire), pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to Soma, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Bhûh (earth), Svâhâ, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Bhuvah (sky), Svâhâ, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svah (heaven), Svâhâ, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Bhûr, Bhuvah, Svah, Svâhâ, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to Brahman (the priesthood), pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to Kshatra (the knighthood), pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to the Past, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to the Future, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to the Universe, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to all things, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to Pragâpati, pours ghee into the fire, and throws what remains into the Mantha (mortar).",
           "explanation": "Sense: He then says, Svâhâ to Agni (fire), pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Svâhâ to Soma, pours ghee into the fire, and throws what remains into the Mantha (mortar). He then says, Bhûh (earth), Svâhâ, pours ghee into the fire,…",
-          "hindi": "थम प्रकरा उत्तर  ग्रततयेष्टि संस्काररूप ग्रत्तिम ग्राहुति तब इसे अग्निक पासले जाते ह । उस ( आहुतिभूत षु  अग्नि ही अग्नि होता दहै, समिध्‌ समिध्‌ होती है, धूम धूम होता हे अथ तहैनं मृतमग्नयेऽगन्यथंमेवा- तव इस मूत पुरुषको “अम्नये'- अग्निके ही लिये अन्तिम आहुतिके प्रयोजनसे ऋत्विग्गण ले जाते है ।",
-          "science": "थम प्रकरा उत्तर ग्रततयेष्टि संस्काररूप ग्रत्तिम ग्राहुति तब इसे अग्निक पासले जाते ह। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6249,8 +5645,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athainamabhimṛśati bhramadasi jvaladasi pūrṇamasi prastabdhamasyekasabhamasi hiṅkṛtamasi hiṅkriyamāṇamasyudgīthamasyudgīyamānamasi śrāvitamasi pratyāśrāvitamasyardre sandīptamasi vibhūrasi prabhūrasyannamasi jyotirasi nidhanamasi saṃvargo'sīti ||",
           "translation": "Then he touches it (the Mantha, which is dedicated to Prâna, breath), saying: 'Thou art fleet (as breath). Thou art burning (as fire). Thou art full (as Brahman). Thou art firm (as the sky). Thou art the abode of all (as the earth). Thou hast been saluted with Hi&#7749; (at the beginning of the sacrifice by the prastotri). Thou art saluted with Hi&#7749; (in the middle of the sacrifice by the prastotri). Thou hast been sung (by the udgâtri at the beginning of the sacrifice). Thou art sung (by the udgâtri in the middle of the sacrifice). Thou hast been celebrated (by the adhvaryu at the beginning of the sacrifice). Thou art celebrated again (by the âgnîdhra in the middle of the sacrifice). Thou art bright in the wet (cloud). Thou art great. Thou art powerful. Thou art food (as Soma). Thou art light (as Agni, fire, the eater). Thou art the end. Thou art the absorption (of all things).'",
           "explanation": "Sense: Then he touches it (the Mantha, which is dedicated to Prâna, breath), saying: 'Thou art fleet (as breath). Thou art burning (as fire). Thou art full (as Brahman). Thou art firm (as the sky). Thou art the abode of all (as the earth). Thou hast been saluted with Hi&#7749;…",
-          "hindi": "पच्चम प्र्तका उत्तर-देवयानमागंका वंन ४, दानीं प्रथमग्रचनिराकरणा्थ- करणं न परिकरप्योऽग्निः। प्रसिद्धे वे जो  गृहस्य  इस प्रकार इस ॒ पच्चाम्निविद्या  को जानते हं तथाजो  संन्यासीया वानग्रस्थ  वनमे श्वद्धायुक्त होकर सत्य ( ब्रह्य अर्थात्‌ हिरण्यगभं ) को उपासना करते है, वे ज्योतिके अभिमानी देव- ते, के१ य एषं यथोक्तं वे, कौन ? जो इस प्रकार इष त = पञ्चाग्नि विद्याको जानते हे। ङारविस्फुलिङ्गभद्वादिविरिशः श्रद्धादिविशिष्ट पाचों अश्ियोका",
-          "science": "पच्चम प्र्तका उत्तर-देवयानमागंका वंन ४, दानीं प्रथमग्रचनिराकरणा्थ- करणं न परिकरप्योऽग्निः। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6265,8 +5659,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athainamudyacchatyamam̐syāmam̐ hi te mahi | sa hi rājeśāno'dhipatiḥ sa mām̐ rājeśano'dhipatiṃ karotviti ||",
           "translation": "Then he holds it (the Mantha) forth, saying",
           "explanation": "Sense: Then he holds it (the Mantha) forth, saying",
-          "hindi": "धूमयानमागेका वणन तथा द्वितीय भ्रौर तृतीय प्रश्षका उत्तर अथ ये यज्ञेन दनिन तपसा खोकाञ्जयन्ति ते एति मातेभ्यः पितृरोकं पित्ररोकाच्चन्द्रं ते चन्द्र मोर जो यज्ञ, दान, तपके द्वारा लो्कोको जीतते हँ, वे धूम (घृमा-  भिमानी देवता ) को प्राप्त होते ह । धूमसे रात्रिदेवताको, रात्रिसे अपक्षीयः माण पक्ष (कृष्णपन्ञाभिमानी देवता) को, अपक्षीयमाण पक्षे जिन छः",
-          "science": "धूमयानमागेका वणन तथा द्वितीय भ्रौर तृतीय प्रश्षका उत्तर अथ ये यज्ञेन दनिन तपसा खोकाञ्जयन्ति ते एति मातेभ्यः पितृरोकं पित्ररोकाच्चन्द्रं ते चन्द्र मोर जो यज्ञ…। जो बार-बार किया जाता है, वह अगली प्रवृत्ति को मजबूत करता है। यह पंक्ति कर्म को उसी चक्र के रूप में देखती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6281,8 +5673,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athainamācāmati tatsaviturvareṇyam | madhu vātā ṛtāyate madhu kṣaranti sindhavaḥ | mādhvīrnaḥ santvoṣadhīḥ | bhūḥ svāhā | bhargo devasya dhīmahi madhu naktamutoṣaso madhumatpārthivam̐ rajaḥ | madhu dyaurastu naḥ pitā | bhuvaḥ svāhā | dhiyo yo naḥ pracodayāt | madhumānno vanaspatirmadhumām̐ astu sūryaḥ | mādhvīrgāvo bhavantu naḥ | svaḥ svāheti | sarvāṃ ca sāvitrīmanvāha sarvāśca madhumatīrahamevedam̐ sarvaṃ bhūyāsam | bhūrbhuvaḥ svaḥ svāhetyantata ācamya pāṇī prakṣālya jaghanenāgniṃ prākṣirāḥ saṃviśati | prātarādityamupatiṣṭhate diśāmekapuṇḍarīkamasi ahaṃ manuṣyāṇāmekapuṇḍarīkaṃ bhūyāsamiti | yathetametya jaghanenāgnimāsīno vam̐śaṃ japati ||",
           "translation": "Then he eats it, saying: 'Tat savitur varenyam (We meditate on that adorable light)--The winds drop honey for the righteous, the rivers drop honey, may our plants be sweet as honey! Bhûh (earth) Svâhâ!",
           "explanation": "Sense: Then he eats it, saying: 'Tat savitur varenyam (We meditate on that adorable light)--The winds drop honey for the righteous, the rivers drop honey, may our plants be sweet as honey! Bhûh (earth) Svâhâ!",
-          "hindi": "अथ पुनय नैवंविदुरुक्रान्त्या-  बौर जो इस प्रकार नहीं वेदितारःकेवलकिणो यज्ञेनागिनि-   वाले केवल कर्मी हे; तथा अग्नि- श्रीमन्थक्मं श्रौर उसकी विधि स यः कामयेत- ज्ञानकमंणो-  “स यः कामयेत'-ज्ञान ओर कमं- ्ररयवायकारिणोपायेनेति तदथं जो एेसा चाहता हो कि मेँ महत्त्व प्राप करू, वह्‌ उत्तरायणमे शुक्ल पक्षकी पुण्य तिथिपर बारह दिन उपसदुब्रती ( पयोत्नती ) होकर गुलरकी लकडीके कंस ( कटोरे ) या चमसमे सर्वोषध, फल तथा अन्य सामग्रियो-",
-          "science": "अथ पुनय नैवंविदुरुक्रान्त्या- बौर जो इस प्रकार नहीं वेदितारःकेवलकिणो यज्ञेनागिनि- वाले केवल कर्मी हे; तथा अग्नि- श्रीमन्थक्मं श्रौर उसकी विधि स यः कामयेत- ज्…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6297,8 +5687,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tam̐ haitamūddālaka āruṇirvājasaneyāya yājñavalkyāyāntevāsina uktvovācāpi ya enam̐ śuṣke sthāṇau niṣiñcej śuṣke sthāṇau niṣiñcet jāyerañchākhāḥ praroheyuḥ palāśānīti ||",
           "translation": "Uddâlaka Âruni told this (Mantha-doctrine) to his pupil Vâgasaneya Yâgñavalkya, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.'",
           "explanation": "Sense: Uddâlaka Âruni told this (Mantha-doctrine) to his pupil Vâgasaneya Yâg&ntilde;avalkya, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.'",
-          "hindi": "वहु जो कामना करे अर्थात्‌ वह्‌ जो वित्तार्थी ओर कमंका अधिकारी कामना करे; क्या कामना करे ? उवेषठाय स्वाहा श्रेष्ठाय स्वहिस्यग्नो हता सन्थे स्वाहा सम्पदे स्वाहेस्यगनो हटवा सन्थं से  खवसतन- स सखवमवनयति मनसे स्वाहा प्रजातये स्वाहेत्यम्नो",
-          "science": "वहु जो कामना करे अर्थात्‌ वह्‌ जो वित्तार्थी ओर कमंका अधिकारी कामना करे; क्या कामना करे ? उवेषठाय स्वाहा श्रेष्ठाय स्वहिस्यग्नो हता सन्थे स्वाहा सम्पदे स्वाह…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6313,8 +5701,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "etamu haiva vājasaneyo yājñavalkyo madhukāya paiṅgyāyāntevāsina uktvovācāpi ya enam̐ śuṣke sthāṇau niṣiñcej sthāṇau niṣiñcet jāyerañchākhāḥ praroheyuḥ palāśānīti ||",
           "translation": "Vâgasaneya Yâgñavalkya told the same to his pupil Madhuka Pai&#7749;gya, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.'",
           "explanation": "Sense: Vâgasaneya Yâg&ntilde;avalkya told the same to his pupil Madhuka Pai&#7749;gya, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.'",
-          "hindi": "“ज्येष्ठाय स्वाहा धरष्ठाय स्वाहा\" इस सन्त्रसे अग्निम हुवन करके संखलव  को (स्‌ वामे बचे हृए घृतको ) मन्थमे डाल देता है। श्राणाय स्वाहा वसिष्ठाय स्वाहा\" इस मन्तरसे अग्निम हवन करके संखवको मन्थे डाल श सं -खवमवनयति ब्रह्मणे स्वाहेव्यग्नो हृत्वा मन्थे स  खवमवनयति विश्वाय स्वहित्यग्नो हला मन्थे स खवमवनयति प्रजापतये स्वहिश्यन्नो हता “अग्नये स्वाहा\" इस मन्त्रसे अग्निम हवन करके संस्तवको मन्थमे डाल देता है। सोमाय स्वाहा\" इस मन्वसे अभ्निमें हवन करके संखवको मन्थे डाल देता है । \"भूः स्वाहा\" इस मल्तरसे अग्तिमे हवन करके संसवको",
-          "science": "“ज्येष्ठाय स्वाहा धरष्ठाय स्वाहा\" इस सन्त्रसे अग्निम हुवन करके संखलव को (स्‌ वामे बचे हृए घृतको ) मन्थमे डाल देता है। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6329,8 +5715,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "etamu haiva madhukaḥ paiṅgyaścūlāya bhāgavittaye'ntevāsina uktvovācāpi ya enam̐ śuṣke sthāṇau niṣiñcej jāyerañchākhāḥ praroheyuḥ palāśānīti ||",
           "translation": "Madhuka Pai&#7749;gya told the same to his pupil Kûla Bhâgavitti, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.'",
           "explanation": "Sense: Madhuka Pai&#7749;gya told the same to his pupil Kûla Bhâgavitti, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.'",
-          "hindi": "उयेष्य स्वाहा श्रेष्ठाय स्वहि- एवास्मिन्‌ कमेण्यधि कारः रेतस यहाँ से लेकर दो-दो आहुतिर्यां हवन इसके पश्चात्‌ उस मन्थको “्रमदसिः इत्यादि मन्रह्रारा स्पशं करता हे । मन्यद्रव्यका अयिष्ठाक्देव प्राण हे, इसलिये प्राणसे एकरूप होनेके कारण वह्‌ सर्वात्मक है श्मदसि' इत्यादि मन्ता अथं इस प्रकार है",
-          "science": "उयेष्य स्वाहा श्रेष्ठाय स्वहि- एवास्मिन्‌ कमेण्यधि कारः रेतस यहाँ से लेकर दो-दो आहुतिर्यां हवन इसके पश्चात्‌ उस मन्थको “्रमदसिः इत्यादि मन्रह्रारा स्पशं करता हे। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6345,8 +5729,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "etamu haiva cūlo bhāgavittirjānakaya āyasthūṇāyāntevāsina uktvovācāpi ya enam̐ śuṣke sthāṇau niṣiñcej yasenam śuṣke sthāṇau niṣiñcet jāyerañchākhāḥ praroheyuḥ palāśānīti ||",
           "translation": "Kûla Bhâgavitti told the same to his pupil Gânaki Âyasthûna, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.'",
           "explanation": "Sense: Kûla Bhâgavitti told the same to his pupil Gânaki Âyasthûna, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.'",
-          "hindi": "इसके पश्चात्‌ श्रमदसि इत्यादि मन्वसे इसे स्पशं करता है शानोऽधिपतिः समा राजेशानोऽधिपतिं करोलिति। ९५ फिर आमंसि आमंहि\" इत्यादि मन्वसे इसे उप्र उठाता है ।  इस मन्वका अर्थं आमंसि' तु सब जानता है, आमहि ते महिने वेर अथे न्ुचच्चति सह पत्रेण इसके पश्चातु आमंस्यामहि ते हस्ते गृह्णात्यामंस्यामंहि ते मही-  महि\" इत्यादि मन्तसे उसे पात्रके",
-          "science": "इसके पश्चात्‌ श्रमदसि इत्यादि मन्वसे इसे स्पशं करता है शानोऽधिपतिः समा राजेशानोऽधिपतिं करोलिति। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6361,8 +5743,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "etamu haiva jānakirayasthūṇaḥ satyakāmāya jābālāyāntevāsina uktvovācāpi ya enam̐ śuṣke sthāṇau niṣiñcej jāyerañchākhāḥ praroheyuḥ palāśānīti ||",
           "translation": "Atha yâm ikkhed garbham dadhîteti tasyâm artham nishtâya mukhena mukham sandhâyâpânyâbhiprânyâd indriyena te retâsa reta âdadhâmîti garbhiny eva bhavati.",
           "explanation": "Sense: Gânaki Âyasthûna told the same to his pupil Satyakâma Gâbâla, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.'",
-          "hindi": "१३२८ बृहदारण्यकोपनिषद्‌  अध्याय  इसके पश्चात्‌ \"तत्सवितुवरेण्यम्‌\" इत्यादि मन्त्रसे इस मन्थको मक्षण करता टै । तत्सवितुः इत्यादि मन्त्रका अथं नतत्सवितुवरेण्यम्‌-- अथेनमाचामति भक्षयति । ¦ इसके पश्ात्‌ वह मन्धको भक्षण -+ करता है। गायत्रोके प्रथम पाद कया व्याहुत्या च प्रथमया ध व्याहति प्रथम ग्रास खाता है",
-          "science": "१३२८ बृहदारण्यकोपनिषद्‌ अध्याय इसके पश्चात्‌ \"तत्सवितुवरेण्यम्‌\" इत्यादि मन्त्रसे इस मन्थको मक्षण करता टै। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6377,8 +5757,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "etamu haiva satyakāmo jābālo'ntevāsibhya uktvovācāpi ya enam̐ śuṣke sthāṇau niṣiñcej jāyerañchākhāḥ praroheyuḥ palāśānīti | tametaṃ nāputrāya vā'nantevāsine vā brūyāt ||",
           "translation": "Now again, if a man's wife has a lover and the husband hates him, let him (according to rule) place fire by an unbaked jar, spread a layer of arrows in inverse order , anoint these three arrow-heads with butter in inverse order, and sacrifice, saying: 'Thou hast sacrificed in my fire, I take away thy up and down breathing, I here .'",
           "explanation": "Sense: Satyakâma Gâbâla told the same to his pupils, and said: 'If a man were to pour it on a dry stick, branches would grow, and leaves spring forth.' Let no one tell this to any one, except to a son or to a pupil .",
-          "hindi": "यान्तेवासिन उक्त्वोवाचापि य॒ एन  शुष्के स्थाणौ उस इत मन्धका उदहालक आरुणिने अपने शिष्य वाजसनेय  य्ञवल्क्थको उपदेश करके कहा था, पेजगयावान्तेवासिन उक्त्वोवाचापि य एन  शुष्के स्थाणो ह्मण ३ शङ्करभाष्याथं १२३१ उस इस मन्धका वाजसनेय याज्ञवल्वयने अपने हिष्य मधुक पेङ्गयको यान्तेवाक्षिन उक्त्वोवाचापि य एन शुष्के स्थाणो",
-          "science": "यान्तेवासिन उक्त्वोवाचापि य॒ एन शुष्के स्थाणौ उस इत मन्धका उदहालक आरुणिने अपने शिष्य वाजसनेय य्ञवल्क्थको उपदेश करके कहा था, पेजगयावान्तेवासिन उक्त्वोवाचापि य…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6393,8 +5771,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "caturaudumbaro bhavatyaudumbaraḥ sruva audumbaraścamasa audumbara idhma audumbaryā upamanthanyau | daśa grāmyāṇi dhānyāni bhavanti vrīhiyavāstilamāṣā aṇupriyaṅgavo godhūmāśca masūrāśca khalvāśca khalakulāśca tānpiṣṭāndadhani madhuni ghṛta upasiñcatyājyasya juhoti ||",
           "translation": "When the monthly illness seizes his wife, she should for three days not drink from a metal vessel, and wear a fresh dress. Let no Vrishala or Vrishalî (a Sûdra man or woman) touch her. At the end of the three days, when she has bathed, the husband should make her pound rice .",
           "explanation": "Sense: Four things are made of the wood of the Udumbara tree, the sacrificial ladle (sruva), the cup (kamasa), the fuel, and the two churning sticks. There are ten kinds of village (cultivated) seeds, viz. rice and barley (brîhiyavâs), sesamum and kidney-beans (tilamâshâs),…",
-          "hindi": "उस इस मन्थरा च्रूल भागवित्तिने अपने शिष्य जानकि सायस्मुणको उपदेश करके कहा था, “दि कोई इसे सुखे दं ठपर डाल देगा तो उसमें षतसु हैव जानकिरायस्थूणः सत्यकामाय जावा- उस इस मन्थकरा जानकि आयस्थुणने अपने शिष्य सत्यकाम जाबालको उपदेश करके कहा था, यदि कोई इसे सखे टरं ठपर डाल देगा तो उसमे",
-          "science": "उस इस मन्थरा च्रूल भागवित्तिने अपने शिष्य जानकि सायस्मुणको उपदेश करके कहा था, “दि कोई इसे सुखे दं ठपर डाल देगा तो उसमें षतसु हैव जानकिरायस्थूणः सत्यकामाय जाव…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PranaSuperiority",
@@ -6417,8 +5793,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "eṣāṃ vai bhūtānāṃ pṛthivī rasaḥ pṛthivyā āpo'pāmoṣadhaya oṣadhīnāṃ puṣpāṇi puṣpāṇāṃ phalāni phalānāṃ puruṣaḥ puruṣasya retaḥ ||",
           "translation": "The earth is the essence of all these things, water is the essence of the earth, plants of water, flowers of plants, fruits of flowers, man of fruits, seed of man.",
           "explanation": "Sense: The earth is the essence of all these things, water is the essence of the earth, plants of water, flowers of plants, fruits of flowers, man of fruits, seed of man.",
-          "hindi": "एतमु हैव सत्यकामो जाबालोऽन्तेवासिभ्य उक्त्वो- वाचापि य एन : शुष्के स्थाणो निषिन्चेजायेरञ्शाखाः १३३२ बृहदारण्यकोपनिषद्‌ अध्याय ६ उस इस मन्थका सत्यकाम जाबालने अपने क्शिष्योंको उपदेश करके कहा था, \"यदि कोई इसे सूखे टरं ठपर डाल देगा तो उसमें शाखार्णँ उत्पन्न हो जायेगी मौर पत्ते निकल आयेगे ।' उस इस मन्थका जो पत्र या शिष्य कामो जाबालोऽन्तेवा्षिभ्य उ- क्तवोवाचापि य एनं शुष्के स्थाणो मन्थगुद।लकात्‌ प्रभृत्येकेशाचायं-",
-          "science": "एतमु हैव सत्यकामो जाबालोऽन्तेवासिभ्य उक्त्वो- वाचापि य एन : शुष्के स्थाणो निषिन्चेजायेरञ्शाखाः १३३२ बृहदारण्यकोपनिषद्‌ अध्याय ६ उस इस मन्थका सत्यकाम जाबालने…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6434,8 +5808,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa ha prajāpatirīkṣāṃcakre hantāsmai pratiṣṭhāṃ kalpayānīti sa striyam̐ sasṛje | tām̐ sṛṣṭvā'dha upāsta tasmātstriyamadha upāsīta sa etaṃ prāñcaṃ grāvāṇamātmana eva samudapārayat tenaināmabhyasṛjat ||",
           "translation": "And Pragâpati thought, let me make an abode for him, and he created a woman (Satarûpâ). Tâm srishtvâdha upâsta, tasmât striyam adha upâsîta. Sa etam prâñkam grâvânam âtmana eva samudapârayat, tenainâm abhyasrigat.",
           "explanation": "Sense: And Pragâpati thought, let me make an abode for him, and he created a woman (Satarûpâ). Tâm srishtvâdha upâsta, tasmât striyam adha upâsîta. Sa etam prâ&ntilde;kam grâvânam âtmana eva samudapârayat, tenainâm abhyasrigat.",
-          "hindi": "यह्‌ सन्थकमम चतुरीदुम्बर (चार ओदुम्बर काष्ठके पदार्थोवाला ) है। इसमें ओौदुम्बरकाष्ठ ( गूल रकी लकड़ी ) का स्‌,व, ओदुम्बरकाष्ठका चमस ओौदुम्बरकाष्ठका इध्म ओर ओदुम्बरकाष्ठकौ दो उपमन्थनी होती ह । चतुरौदुम्बरो मवतीति  “चतुरौदुम्बरो भवति\" इस वाक्थ- की व्याख्या श्नुतिने स्वयं कीदहे। व्याख्यातम्‌ । दश ॒प्राम्याण  दश म्राम्य धान्य होते है । हम पहले",
-          "science": "यह्‌ सन्थकमम चतुरीदुम्बर (चार ओदुम्बर काष्ठके पदार्थोवाला ) है। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6451,8 +5823,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tasyā vedirupastho lomāni barhiścarmādhiṣavaṇe samiddho madhyatastau muṣkau | sa yāvānha vai vājapeyena yajamānasya loko bhavati tāvānasya loko bhavati ya evaṃ vidvānadhopahāsaṃ caratyāsām̐ strīṇām̐ sukṛtaṃ vṛṅkte'tha ya idamavidvānadhopahāsaṃ caratyā'sya striyaḥ sukṛtaṃ vṛñjate ||",
           "translation": "Tasyâ vedir upastho, lomâni barhis, karmâdhishavane, samiddho madhyatas, tau mushkau. Sa yâvân ha vai vâgapeyena yagamânasya loko bhavati tâvân asya loko bhavati ya evam vidvân adhopahâsam karaty a sa strînam sukritam vri&#7749;kte 'tha ya idam avidvân adhopahâsam karaty âsya striyah sukritam vriñgate.",
           "explanation": "Sense: Tasyâ vedir upastho, lomâni barhis, karmâdhishavane, samiddho madhyatas, tau mushkau.…",
-          "hindi": "दश्च तो अवदय ग्रहण करने चाहिये ।  है-त्रीहि, यव, तिल, माष, अणु, ्रियङ्ु, अणु\" शब्दके वाच्य अशु सन्तानोत्पत्ति-विज्ञान भ्रथवा पृत्रसन्थ कर्म युक्ति बतानेके ल्यि 'ुत्रमन्थः जिस प्रकार जन्म लेनेवाला, जिस इन भरतोंका रस पृथिवी हे, पृथिवीका रस जल है, जलका रस- ओषधियाँ है, ओषधि्योका रस पुष्प ह, पुष्पका रस फल हे, फलोंका रष ( आधार ) पुख्ष है तथा पुरुषका रस ( सार ) शुक्त है",
-          "science": "दश्च तो अवदय ग्रहण करने चाहिये। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6468,8 +5838,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "etaddha sma vai tadvidvānuddālaka āruṇirāhaitaddha sma vai tadvidvānnāko maudgalya āhaitaddha sma vai tadvidvān kumārahārita āha etad dha sma vai tad vidvān kumārahāritasāha bahavo maryā brāhmaṇāyanā nirindriyā visukṛto'smāllokātprayanti ya idamavidvām̐so'dhopahāsaṃ carantīti | bahu vā idam̐ suptasya vā jāgrato vā retaḥ skandati ||",
           "translation": "Etad dha sma vai tadvidvân Uddâlaka Ârunir âhaitad dha sma vai tadvidvân Nâko Maudgalya âhaitad dha sma vai tadvidvân Kumârahârita âha, bahavo maryâ brâhmanâyanâ nirindriyâ visukrito'smâl lokât prayanti ya idam avidvâmso 'dhopahâsam karantîti. Bahu vâ idam suptasya va gâgrato vâ retah skandati,",
           "explanation": "Sense: Etad dha sma vai tadvidvân Uddâlaka Ârunir âhaitad dha sma vai tadvidvân Nâko Maudgalya âhaitad dha sma vai tadvidvân Kumârahârita âha, bahavo maryâ brâhmanâyanâ nirindriyâ visukrito'smâl lokât prayanti ya idam avidvâmso 'dhopahâsam karantîti.…",
-          "hindi": "का रस-पारभूत तत्तव पृथिवी है; क्योंकि (पृथिवी सब भुगका मधु (सार) हे\", यह्‌ बात मधु कारस जल है; वर्योकि पृथिवी जलम ओतप्रोत्त है। जलका रस ओषधिर्यां (अन्न) है । जलका कायं",
-          "science": "का रस-पारभूत तत्तव पृथिवी है; क्योंकि (पृथिवी सब भुगका मधु (सार) हे\", यह्‌ बात मधु कारस जल है; वर्योकि पृथिवी जलम ओतप्रोत्त है। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6485,8 +5853,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "tadabhimṛśedanu vā mantrayeta yanme'dya retaḥ pṛthivīmaskāntsīd yadoṣadhīrapyasarad yadapaḥ | idamahaṃ tadreta ādade punarmāmaitvindriyaṃ punastejaḥ punarbhagaḥ | punaragnirdhiṣṇyā yathāsthānaṃ kalpantāmityanāmikāṅguṣṭhābhyāmādāyāntareṇa stanau vā bhruvau vā nimṛjyāt ||",
           "translation": "Tad abhimrised anu vâ mantrayeta yan me 'dya retah prithivîm askântsîd yad oshadhîr apy asarad yad apah, idam aham tad reta âdade punar mâm aitv indriyam punas tegah punar bhagah, punar agnayo dhishnyâ yathâsthânam kalpantâm, ity anâmikâ&#7749;gushthâbhyâm âdâyântarena stanau vâ bhruvau vâ nimriñgyât .",
           "explanation": "Sense: Tad abhimrised anu vâ mantrayeta yan me 'dya retah prithivîm askântsîd yad oshadhîr apy asarad yad apah, idam aham tad reta âdade punar mâm aitv indriyam punas tegah punar bhagah, punar agnayo dhishnyâ yathâsthânam kalpantâm,…",
-          "hindi": "मेतद्‌ रेतोऽतः का जु खन्वस्य यदि इस प्रकार यह रेतस्‌  वीयं ) सम्पूणं श्रुतोका सारतम सुप्रसिद्ध प्रजापतिने विचार किया कि मै इस वी्यंकी स्थापनाके लिये किसी योग्य प्रतिष्ठा (आधार-मूमि) का निर्माण कर, अतः उन्होने दीकी खृष्टि कौ । उसकी सृष्टि करके उन्होंने उसके अधोभागकी उपासना की सह सट प्रजापतिरीन्ता्करे उस सुप्रसिद्ध छषटिकर्ता प्रना- हां कृता स ज्चियं ससृजे ।  करके उन्होने स्त्रीकी छष्टि की। उसकी ष्टि करके अधोभागकी",
-          "science": "मेतद्‌ रेतोऽतः का जु खन्वस्य यदि इस प्रकार यह रेतस्‌ वीयं ) सम्पूणं श्रुतोका सारतम सुप्रसिद्ध प्रजापतिने विचार किया कि मै इस वी्यंकी स्थापनाके लिये किसी योग्…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6502,8 +5868,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha yadyudaka ātmānaṃ paśyet tadabhimantrayeta mayi teja indriyaṃ yaśo draviṇam̐ sukṛtamiti | śrīrha vā eṣā strīṇāṃ yanmalodvāsāstasmānmalodvāsasaṃ yaśasvinīmabhikramyopamantrayeta ||",
           "translation": "If a man see himself in the water , he should recite the following verse: 'May there be in me splendour, strength, glory, wealth, virtue.' She is the best of women whose garments are pure . Therefore let him approach a woman whose garments are pure, and whose fame is pure, and address her.",
           "explanation": "Sense: If a man see himself in the water , he should recite the following verse: 'May there be in me splendour, strength, glory, wealth, virtue.' She is the best of women whose garments are pure . Therefore let him approach a woman whose garments are pure, and whose fame is pure,…",
-          "hindi": "१. सष्टि-कारय॑मे इस क्रियाको अत्यन्त कत की जलन्त जव्यकता है। भोगवुद्धिसे न होकर यदि केवल उत्तम संतानोत्पादनके किय यह क्रिया हो तो वह षे्मसम्मत है ओर आवश्यक है । इस क्रियामे प्राणिमात्रकौ स्वाभाविकं प्रवृत्ति है । यह प्रवृत्ति संयमित सम वै तदिद्वन्नाको मोद्रल्य अहितद्ध स्म वै तद्विद्ान्‌ विशो ऽस्माल्लोकात्‌ भरयन्ति य इदमिद्वा  सो-",
-          "science": "१. सष्टि-कारय॑मे इस क्रियाको अत्यन्त कत की जलन्त जव्यकता है। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6519,8 +5883,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā cedasmai na dadyāt kāmamenāmavakriṇīyāt sā cedasmai naiva dadyāt kāmamenāṃ yaṣṭyā vā pāṇinā vopahatyātikrāmedindriyeṇa te yaśasā yaśa ādada ityayaśā eva bhavati ||",
           "translation": "If she do not give in , let him, as he likes, bribe her (with presents). And if she then do not give in, let him, as he likes, beat her with a stick or with his hand, and overcome her , saying: 'With manly strength and glory I take away thy glory,'--and thus she becomes unglorious .",
           "explanation": "Sense: If she do not give in , let him, as he likes, bribe her (with presents). And if she then do not give in, let him, as he likes, beat her with a stick or with his hand, and overcome her ,…",
-          "hindi": "निश्चय ही इस मेथुनक्मको वाजपेयसम्पन्न जाननेवाले अर्णनन्द उदालक कहते है, इसे उस रूपमे जाननेवाले सुदुगलपुत्र नाक कहते हु तथा इसे उक्त रूपमे जाननेवाले कुमारहारित सनि भी कहते हँ कि स्यथः; तथा नाको मौटरन्यः धर्मिणो मनुष्या ब्रह्मणा अयनं येषां ते ब्राह्मणायना ब्रह्मबन्धो पूथिवीमस्कान्त्सीद्‌ यदोषधीरप्यसरद्‌ यदपः । इदमहं र युनरम्निधिष्ण्या यथास्थानं कस्पन्तामित्यनामिकाङ्य्॒टा-",
-          "science": "निश्चय ही इस मेथुनक्मको वाजपेयसम्पन्न जाननेवाले अर्णनन्द उदालक कहते है, इसे उस रूपमे जाननेवाले सुदुगलपुत्र नाक कहते हु तथा इसे उक्त रूपमे जाननेवाले कुमारहारि…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6536,8 +5898,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sā cedasmai dadyādindriyeṇa te yaśasā yaśa ādadhāmīti yaśasvināveva bhavataḥ ||",
           "translation": "If she give in, he says: 'With manly strength and glory I give thee glory,'--and thus they both become glorious.",
           "explanation": "Sense: If she give in, he says: 'With manly strength and glory I give thee glory,'--and thus they both become glorious.",
-          "hindi": "उस वीयंको हाथसे दूए तथा अभिमन्ित करे स्पशं करते समय इस प्रकार कहे-- आज जो मेरा वीयं स्वलित होकर पृथिवीपर गिरा है, जो पहले कभीः अन्नमे भी गिरा है तथा जो जलम पड़ा है उस इस वौयंको   सत्रयेत बालज- उसका स्पशं एवं अनुमन्त्र  ५०.८५.५६ (अभिमन्वरण) अर्थात्‌ बार-बार जप = ं करे तब \"यन्मे...",
-          "science": "उस वीयंको हाथसे दूए तथा अभिमन्ित करे स्पशं करते समय इस प्रकार कहे-- आज जो मेरा वीयं स्वलित होकर पृथिवीपर गिरा है, जो पहले कभीः अन्नमे भी गिरा है तथा जो जलम प…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6553,8 +5913,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa yāmicchet kāmayeta meti tasyāmarthaṃ niṣṭhāya mukhena mukham̐ sandhāyopasthamasyā abhimṛśya japedaṅgādaṅgātsambhavasi hṛdayādadhijāyase | sa tvamaṅgakaṣāyo'si digdhaviddhamiva mādayemāmamūṃ mayīti ||",
           "translation": "Sa yâm ikkhet kâmayeta meti tasyâm artham nishtâya mukhena mukham sandhâyopastham asyâ abhimrisya gaped a&#7749;gâda&#7749;gât sambhavasi hridayâd adhi gâyase, sa tvam a&#7749;gakashâyo 'si digdhaviddhâm iva mâdayemâm amûm mayîti .",
           "explanation": "Sense: Sa yâm ikkhet kâmayeta meti tasyâm artham nishtâya mukhena mukham sandhâyopastham asyâ abhimrisya gaped a&#7749;gâda&#7749;gât sambhavasi hridayâd adhi gâyase, sa tvam a&#7749;gakashâyo 'si digdhaviddhâm iva mâdayemâm amûm mayîti .",
-          "hindi": "यदि कमी भूलसे जलम वीयं स्ललित हो जानैपर वहां पनी परद्धाई देख ले, तब उस जलको इस प्रकार अभिमन्त्रित करे देवगण सुभे तेज, इन्द्रिय ( वीयं ), यश, घन ओर सत्कर्मकौ भरतिष्ठा करें!\"  तत्पश्चात्‌ स्ललित हो जानेपर वहाँ  अपने- नमात्मच्ायां पश्येततत्राप्यमिम-  को-अपनी छायाको देखे तब ह वि “मयि तेजः” इत्यादि मन्त्रसे जलको सा चेदस्मै न दयात्‌ काममेनामवक्रीणीयात्‌ सा चेदस्मे नैव दयात्‌ काममेनां यष्ट्या वा पाणिना",
-          "science": "यदि कमी भूलसे जलम वीयं स्ललित हो जानैपर वहां पनी परद्धाई देख ले, तब उस जलको इस प्रकार अभिमन्त्रित करे देवगण सुभे तेज, इन्द्रिय ( वीयं ), यश, घन ओर सत्कर्मकौ…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6570,8 +5928,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha yāmicchen na garbhaṃ dadhīteti tasyāmarthaṃ niṣṭhāya mukhena mukham̐ sandhāyābhiprāṇyāpānyādindriyeṇa te retasā reta ādada ityaretā eva bhavati ||",
           "translation": "Atha yâm ikkhen na garbham dadhîteti tasyâm artham nishtâya mukhena mukham sandhâyâbhiprânyâpânyâd indriyena te retasâ reta âdada ity aretâ eva bhavati.",
           "explanation": "Sense: Atha yâm ikkhen na garbham dadhîteti tasyâm artham nishtâya mukhena mukham sandhâyâbhiprânyâpânyâd indriyena te retasâ reta âdada ity aretâ eva bhavati.",
-          "hindi": "वह पत्नी यदि इस पिको मेथुन न करने दं तो पति उत उसकी -इच्छाके अनुसार वख, आश्रुषण आदि देकर उसके प्रति शताय धट करे । इतने पर भी यदि वहु इसे मथुनका अवसरन दं तो वह्‌ त १३४४ बृहदारण्यकोपनिषद्‌  अष्याय ६ सा चेदस्मै न दयन्मेथुनं कतु   उह ( धमं ) पत्नी यदि इस म रण ध पतिको मेथुन न करनेदे तो वह्‌",
-          "science": "वह पत्नी यदि इस पिको मेथुन न करने दं तो पति उत उसकी -इच्छाके अनुसार वख, आश्रुषण आदि देकर उसके प्रति शताय धट करे। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6587,8 +5943,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha yāmicched dadhīteti tasyāmarthaṃ niṣṭhāya mukhena mukham̐ sandhāyāpānyābhiprāṇyādindriyeṇa te retasā reta ādadhāmīti garbhiṇyeva bhavati ||",
           "translation": "Atha yâm ikkhed garbham dadhîteti tasyâm artham nishtâya mukhena mukham sandhâyâpânyâbhiprânyâd indriyena te retâsa reta âdadhâmîti garbhiny eva bhavati.",
           "explanation": "Sense: Atha yâm ikkhed garbham dadhîteti tasyâm artham nishtâya mukhena mukham sandhâyâpânyâbhiprânyâd indriyena te retâsa reta âdadhâmîti garbhiny eva bhavati.",
-          "hindi": "बह पत्नी यदि उस पतिको मैथुनका अवसर दे तो उत्ते आशीर्वाद देते हए कहै-- भै अपनी योरूप इन्द्ियद्वारा तुभमें यशकी ही स्थापना करता हु ।' तब वे दोनों दम्पति यकञस्वी ही होतेहें सा चेदस्मै द्ादनुगुणेव वह॒ पत्नी यदि इस पतिको यशकौ ही स्थापना करता ह रसा यकश्ञ॒श्रादधामि'  इस मन्त्रका पाठ करते हए उसके स यामिच्छेत्‌ कामयेत मेति तस्यामर्थं निष्ठाय दङ्खत्‌ संभवसि हृदयादधिजायसे । स त्वमङ्गकषा-",
-          "science": "बह पत्नी यदि उस पतिको मैथुनका अवसर दे तो उत्ते आशीर्वाद देते हए कहै-- भै अपनी योरूप इन्द्ियद्वारा तुभमें यशकी ही स्थापना करता हु। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6604,8 +5958,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha yasya jāyāyai jāraḥ syāt taṃ ced dviṣyādāmapātre'gnimupasamādhāya pratilomam̐ śarabarhistīrtvā tasminnetāḥ śarabhṛṣṭīḥ pratilomāḥ sarpiṣā'ktā juhuyān mama samiddhe'hauṣīḥ prāṇāpānau ta ādade'sāviti | mama samiddhe'hauṣīḥ putrapaśūm̐sta ādade 'sāviti | mama samiddhe'hauṣīriṣṭāsukṛte ta ādade'sāviti | mama samiddhe'hauṣīrāśāparākāśau ta ādade'sāviti | sa vā eṣa nirindriyo visukṛto'smāllokātpraiti yamevaṃvidbrāhmaṇaḥ śapati | tasmādevaṃvitchrotriyasya dāreṇa nopahāsamiccheduta hyevaṃvitparo bhavati ||",
           "translation": "Now again, if a man's wife has a lover and the husband hates him, let him (according to rule) place fire by an unbaked jar, spread a layer of arrows in inverse order , anoint these three arrow-heads with butter in inverse order, and sacrifice, saying: 'Thou hast sacrificed in my fire, I take away thy up and down breathing, I here .'",
           "explanation": "Sense: Now again, if a man's wife has a lover and the husband hates him, let him (according to rule) place fire by an unbaked jar, spread a layer of arrows in inverse order , anoint these three arrow-heads with butter in inverse order, and sacrifice,…",
-          "hindi": "वह्‌ पुरुष अपनी जिस पत्नीके सम्बन्धमे एसी इच्छा करे कि यह रुमे हृदयसे चाहे, उसको योनि अपनी जननेन्धियको स्थापित करके ओर अपने मुखे उसके मुखको मिलाकर उसके उपस्थभागका स्पशं ५ स्बेदियं मा वह पुरुष अपनी जिस्‌ प्लीके सया स्वरभार्यामिष्डेदियं मां सम्बन्धमे एेसी इच्छा करे कि यह्‌ ९ मद्रि मेरे प्रति कामनायुक्त हो मुभे मन-",
-          "science": "वह्‌ पुरुष अपनी जिस पत्नीके सम्बन्धमे एसी इच्छा करे कि यह रुमे हृदयसे चाहे, उसको योनि अपनी जननेन्धियको स्थापित करके ओर अपने मुखे उसके मुखको मिलाकर उसके उपस्थ…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6621,8 +5973,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha yasya jāyāmārtavaṃ vindet tryahaṃ kam̐se na pibedahatavāsā naināṃ vṛṣalo na vṛṣalyupahanyāt apahanyāt trirātrānta āplutya vrīhīnavaghātayet ||",
           "translation": "Âtreyîputra from Gautamîputra, 14. Gautamîputra from Bhâradvâgîputra, 15. Bhâradvâgîputra from Pârasarîputra, 16. Pârasarîputra from Vâtsîputra, 17. Vâtsîputra from Pârasarîputra, 18 . Pârasarîputra from Vârkârunîputra, 19. Vârkârunîputra from Vârkârunîputra, 20. Vârkârunîputra from Ârtabhagîputra, 21. Ârtabhagîputra from Sau&#7749;gîputra, 22. Sau&#7749;gîputra from Sâ&#7749;kritîputra, 23 . Sâ&#7749;kritîputra from Âlambâyanîputra, 24. Âlambâyanîputra from Âlambîputra, 25. Âlambîputra from Gayantîputra, 26. Gayantîputra from Mândûkâyanîputra, 27. Mândûkâyanîputra from Mândûkîputra, 28. Mândûkîputra from Sândilîputra, 29. Sândilîputra from Râthîtarîputra, 30 . Râthîtarîputra from Bhâlukîputra,",
           "explanation": "Sense: When the monthly illness seizes his wife, she should for three days not drink from a metal vessel, and wear a fresh dress. Let no Vrishala or Vrishalî (a Sûdra man or woman) touch her. At the end of the three days, when she has bathed, the husband should make her pound rice .",
-          "hindi": "ते रेतसा रेत आदद्‌ इस्यरता एव भवति ॥ १०.॥ १३४६ बृहदारण्यकोपनिषद्‌  अध्या  अपनी जिस पल्नीके विषयमे एेसी इच्छा हो कि वह्‌ गभधारणन करे मथ यामिच्डेन्न गभं दधीत पुरुष अपनी जिस्‌ पत्तीके । विषयमे एषी इच्छा करं कि यहु न धारयेद्‌ गर्भिणी सा मदिति  गभं धारण न करे-गभैवती न ुरुषको अपो जिस्‌ पतनीके सम्बन्धमे एेसी इच्छा हो कि यह गभं वारण कर, वह उसकी योनिमे अपनी जननेन्द्रिय स्थापित करके उसके घुलसे मुख मिलाकर पहले अपाननः क्रिया करके पश्चात्‌ अभिप्राणन कम॑",
-          "science": "ते रेतसा रेत आदद्‌ इस्यरता एव भवति ॥ १०.॥ १३४६ बृहदारण्यकोपनिषद्‌ अध्या अपनी जिस पल्नीके विषयमे एेसी इच्छा हो कि वह्‌ गभधारणन करे मथ यामिच्डेन्न गभं दधीत पुर…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6638,8 +5988,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "sa ya icchet putro me śuklo jāyeta vedamanubruvīta sarvamāyuriyāditi kṣīraudanaṃ pācayitvā sarpiṣmantamaśnīyātāmīśvarau janayitavai ||",
           "translation": "And if a man wishes that a white son should be born to him, and that he should know one Veda, and live to his full age, then, after having prepared boiled rice with milk and butter, they should both eat, being fit to have offspring.",
           "explanation": "Sense: And if a man wishes that a white son should be born to him, and that he should know one Veda, and live to his full age, then, after having prepared boiled rice with milk and butter, they should both eat, being fit to have offspring.",
-          "hindi": "९. परुष अपनी चिष्नेन्दियद्वारया खीकी योनिम जो वायुको प्रविष्ट करता है, उसे अमिप्राणनः कमं कहते है भौर वह जा अपना शिश्नेन्दरियका बाहर र हृए उस वायुको भी बाहर निकाल देता है, उस क्रियाको (अपाननः जिस गृहस्थ विद्वानको पल्नीका किसी जार पुरुषसे सम्बन्ध हौ, वह्‌ वति उस जारसे द्ेषभाव रखकर उसे दण्ड देना चाह तो वहु मिटीके कच्चे बतनमे  पञ्चभूसंस्कारपुवेक  अग्ति-स्थापन करके विपरीत क्रससे",
-          "science": "९. परुष अपनी चिष्नेन्दियद्वारया खीकी योनिम जो वायुको प्रविष्ट करता है, उसे अमिप्राणनः कमं कहते है भौर वह जा अपना शिश्नेन्दरियका बाहर र हृए उस वायुको भी बाहर…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6655,8 +6003,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha ya icchet putro me kapilaḥ piṅgalo jāyeta dvau vedāvanubruvīta sarvamāyuriyāditi dadhyodanaṃ pācayitvā sarpiṣmantamaśnīyātāmīśvarau janayitavai ||",
           "translation": "And if a man wishes that a reddish son with tawny eyes should be born to him, and that he should know two Vedas, and live to his full age, then, after having prepared boiled rice with coagulated milk and butter, they should both eat, being fit to have offspring.",
           "explanation": "Sense: And if a man wishes that a reddish son with tawny eyes should be born to him, and that he should know two Vedas, and live to his full age, then, after having prepared boiled rice with coagulated milk and butter, they should both eat, being fit to have offspring.",
-          "hindi": "अथ पनयेस्य जायाये जार अब अभिचार कमं बताते हैँ! जस गृहस्य विद्वानुकौ पत्नीका उपपतिः स्यात्त चद्‌ दविष्यादभि-  कोई जार उपपति ह, वह परति अथ यस्य जायामातवं विन्देत्‌ तरयहं क स न जिसकी पन्नीको ऋतुभाव (रजोधमं) प्राप हो, उसकी वह्‌ पत्नी तीन दिनतक कसिके बतंनोमे न खाय ओर चौथे दिन सखानके बाद एेसा वश पहने जो फटा न हो, साफसुथरा हो ¦ इसे कोई शद्रजातीय स्त्रीया",
-          "science": "अथ पनयेस्य जायाये जार अब अभिचार कमं बताते हैँ! जस गृहस्य विद्वानुकौ पत्नीका उपपतिः स्यात्त चद्‌ दविष्यादभि- कोई जार उपपति ह, वह परति अथ यस्य जायामातवं विन्दे…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6672,8 +6018,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha ya icchet putro me śyāmo lohitākṣo jāyeta trīnvedānanubruvīta sarvamāyuriyādityudaudanaṃ pācayitvā sarpiṣmantamaśnīyātāmīśvarau janayitavai ||",
           "translation": "And if a man wishes that a dark son should be born to him with red eyes, and that he should know three Vedas, and live to his full age, then, after having prepared boiled rice with water and butter, they should both eat, being fit to have offspring.",
           "explanation": "Sense: And if a man wishes that a dark son should be born to him with red eyes, and that he should know three Vedas, and live to his full age, then, after having prepared boiled rice with water and butter, they should both eat, being fit to have offspring.",
-          "hindi": "जो पुरुष चाहता हो कि मेरा पृतं शुक्ल वर्णका हो, एक वेदका अध्ययन करे ओर पूरे सौ वर्षोकी आयुतक जीवित रहे, उस दशा वे दोनों प्ि-पली दूध ओर चावलको पकाकर खीर बना लें ओौर उसमे घी त्र शुक्ल वर्णका उ्वन्न हो, एक ४ णः वेदका अध्ययन करे तथा पूरी अधु पवंभायुरियाद्‌ वषशतं ततारीदनं  भर--सौ वर्षोतक जीवित रहे तो",
-          "science": "जो पुरुष चाहता हो कि मेरा पृतं शुक्ल वर्णका हो, एक वेदका अध्ययन करे ओर पूरे सौ वर्षोकी आयुतक जीवित रहे, उस दशा वे दोनों प्ि-पली दूध ओर चावलको पकाकर खीर बना ल…। आहार, निद्रा और इंद्रिय-भार शरीर की स्थिति को सीधे बदलते हैं। यह पंक्ति उस शारीरिक आधार को छोड़कर नहीं चलती।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6689,8 +6033,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha ya icched duhitā me paṇḍitā jāyeta sarvamāyuriyāditi tilaudanaṃ pācayitvā sarpiṣmantamaśnīyātāmīśvarau janayitavai ||",
           "translation": "And if a man wishes that a learned daughter should be born to him, and that she should live to her full age, then, after having prepared boiled rice with sesamum and butter, they should both eat, being fit to have offspring.",
           "explanation": "Sense: And if a man wishes that a learned daughter should be born to him, and that she should live to her full age, then, after having prepared boiled rice with sesamum and butter, they should both eat, being fit to have offspring.",
-          "hindi": "यिखा सपिष्नन्तमहनीयातामीशवसे जनयितवै ॥ १५ जो चाहे कि मेरा पुत्र कपिल या पिङ्गल वणका हो, दो वेदोका अध्ययन करे ओर पूरे सौ वर्षोतक जीवित रहे तो वह ओर उसको पत्ती दध्योदनं दध्ना चरुं पाच-  दध्योदन बनाकर -दहीके साथ चस यदि द्विवेदौ पुलको पानेको इच्छा हो १३५२ बृहदारण्यकोपनिषद्‌  श्रष्याय ६",
-          "science": "यिखा सपिष्नन्तमहनीयातामीशवसे जनयितवै ॥ १५ जो चाहे कि मेरा पुत्र कपिल या पिङ्गल वणका हो, दो वेदोका अध्ययन करे ओर पूरे सौ वर्षोतक जीवित रहे तो वह ओर उसको पत्ती…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6706,8 +6048,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha ya icchet putro me paṇḍito vigītaḥ samitiṅgamaḥ śuśrūṣitāṃ vācaṃ bhāṣitā jāyeta sarvānvedānanubruvīta sarvamāyuriyāditi mām̐saudanaṃ pācayitvā sarpiṣmantamaśnīyātāmīśvarau janayitavai | aukṣeṇa vā''rṣabheṇa vā ||",
           "translation": "And if a man wishes that a learned son should be born to him, famous, a public man, a popular speaker, that he should know all the Vedas, and that he should live to his full age, then, after having prepared boiled rice with meat and butter, they should both eat, being fit to have offspring. The meat should be of a young or of an old bull.",
           "explanation": "Sense: And if a man wishes that a learned son should be born to him, famous, a public man, a popular speaker, that he should know all the Vedas, and that he should live to his full age, then, after having prepared boiled rice with meat and butter, they should both eat,…",
-          "hindi": "जो चाहे किमेरापृत्र दयाम व्ण, अरुण नयन हा, तीन वेदोका स्वाध्याय करे तथा पूरे सौ वर्षोतक जीवित रहे, वहु ओर उसकी पत्नी केवल जलम चावल पकाकर मात तैयार कर लँ बौर उषम घी मिलाकर  जो चाहता हो कि मेरी पुत्री विदुषी हो भौर पूरे सौ वर्षोकी आयुतक जीवित रहे, वह ओर उसकी पत्नी तिल ओर चावलकी खिचरी पक्राकर उसमे घौ मिलाकर खार्यं । इससे वे उक्त योग्यतावाली कन्थाको जन्म",
-          "science": "जो चाहे किमेरापृत्र दयाम व्ण, अरुण नयन हा, तीन वेदोका स्वाध्याय करे तथा पूरे सौ वर्षोतक जीवित रहे, वहु ओर उसकी पत्नी केवल जलम चावल पकाकर मात तैयार कर लँ बौर…। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6723,8 +6063,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athābhiprātareva sthālīpākāvṛtā''jyaṃ ceṣṭitvā sthālīpākasyopaghātaṃ juhotyagnaye svāhā'numataye svāhā devāya savitre satyaprasavāya svāheti hutvoddhṛtya prāśnāti | prāśyetarasyāḥ prayacchati | prakṣālya pāṇī udapātraṃ pūrayitvā tenaināṃ trirabhyukṣatyuttiṣṭhāto viśvāvaso'nyāmiccha prapūrvyām̐ saṃ jāyāṃ patyā saheti ||",
           "translation": "And then toward morning, after having, according to the rule of the Sthâlîpâka (pot-boiling), performed the preparation of the Âgya (clarified butter ), he sacrifices from the Sthâlîpâka bit by bit, saying: 'This is for Agni, Svâhâ! This is for Anumati, Svâhâ! This is for the divine Savitri, the true creator, Svâhâ!' Having sacrificed, he takes out the rest of the rice and eats it, and after having eaten, he gives it to his wife. Then he washes his hands, fills a water-jar, and sprinkles her thrice with it, saying: 'Rise hence, O Visvâvasu , seek another blooming girl, a wife with her husband.'",
           "explanation": "Sense: And then toward morning, after having, according to the rule of the Sthâlîpâka (pot-boiling), performed the preparation of the Âgya (clarified butter ), he sacrifices from the Sthâlîpâka bit by bit, saying: 'This is for Agni, Svâhâ! This is for Anumati,…",
-          "hindi": "भ गणड (1 है ५ वथोनि ५ विषयमेव वेदेऽनधिकारात्‌ ।  उसका अधिकार नहीं है । तिलौ (व दनं र दनका अथं है तिल-चावलकी जो चाहताहोकि मेरा पूत्र प्रख्यात पण्डित, विद्वानोकी सभामे निर्भय प्रवेश करनेवाला तथा श्रवणसुखद वाणी बोलनेवाला हो, सम्धुणं वेदोका स्वाध्याय करे ओर पूरे सौ वर्षोतक जीवित रहे, वह्‌ पुरुष ओर विविधं गीतो विगीतः प्रख्यात  नाना प्रकारसे जिसकी महत्ता  गायी जाय, वह॒ विगीत कहलाता  है । विगीत अर्थात्‌ प्रख्यात । सभि-",
-          "science": "भ गणड (1 है ५ वथोनि ५ विषयमेव वेदेऽनधिकारात्‌। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6740,8 +6078,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athaināmabhipadyate'mo'hamasmi sā tvam̐ sā tvamasyamo'ham̐ sāmāhamasmi ṛktvaṃ dyaurahaṃ pṛthivī tvam | tāvehi sam̐rabhāvahai saha reto dadhāvahai pum̐se putrāya vittaya iti ||",
           "translation": "Then he embraces her, and says: 'I am Ama (breath), thou art Sâ (speech) . Thou art Sâ (speech), I am Ama (breath). I am the Sâman, thou art the Rik . I am the sky, thou art the earth. Come, let us strive together, that a male child may be begotten .'",
           "explanation": "Sense: Then he embraces her, and says: 'I am Ama (breath), thou art Sâ (speech) . Thou art Sâ (speech), I am Ama (breath). I am the Sâman, thou art the Rik . I am the sky, thou art the earth. Come, let us strive together, that a male child may be begotten .'",
-          "hindi": "ओषधिका पर्याय माना गया है--ऋषम ओषधौ चः । प्रसिद्ध अंग्रेज विद्वान्‌ सर मोनिग्रर विलियम्ने अपने वृहत्‌ संस्कृत-अंग्रेजीकोषमे इसे “सोम' नामक पौधेका ® \"ऋषभः नामक ओषधिका जायुर्वेदके अत्यन्त प्राचीन एवं प्रामाणिक तदनन्तर चौथे दिन प्रातःकाल ही  संध्या आादिका अनुष्ठान करके  पत्नीके कटे हुए चावलोको लेकर स्थालीपाककी विधिसे घीकः संस्कार करके चरु पकाकर उसका भी संस्कार करके स्थालीपाकके अन्तमं",
-          "science": "ओषधिका पर्याय माना गया है--ऋषम ओषधौ चः। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6757,8 +6093,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athāsyā ūrū vihāpayati vijihīthāṃ dyāvāpṛthivī iti | tasyāmarthaṃ niṣṭhāya mukhena mukham̐ sandhāya trirenāmanulomāmanumārṣṭi viṣṇuryoniṃ kalpayatu tvaṣṭā rūpāṇi pim̐śatu āsiñcatu prajāpatirdhātā garbhaṃ dadhātu te | garbhaṃ dhehi sinīvāli garbhaṃ dhehi pṛthuṣṭuke | garbhaṃ te āśvinau devāvādhattāṃ puṣkarasrajau ||",
           "translation": "Athâsyâ ûrû vihâpayati, vigihîthâm dyâvâprithivî iti tasyâm artham nishtâya mukhena mukham sandhâya trir enâm anulomâm anumârshti, Vishnur yonim kalpayatu, Tvashtâ rûpâni pimsatu, âsiñkatu Pragâpatir Dhâtâ garbham dadhatu te. Garbham dhehi Sinîvâli, garbham dhehi prithushtuke, garbham te Asvinau devâv âdhattâm pushkarasragau.",
           "explanation": "Sense: Athâsyâ ûrû vihâpayati, vigihîthâm dyâvâprithivî iti tasyâm artham nishtâya mukhena mukham sandhâya trir enâm anulomâm anumârshti, Vishnur yonim kalpayatu, Tvashtâ rûpâni pimsatu, âsi&ntilde;katu Pragâpatir Dhâtâ garbham dadhatu te. Garbham dhehi Sinîvâli,…",
-          "hindi": "अथाभिप्रातरेव काजेऽवधात-  तदनन्तर भ्रातःकाल ही कृटनेसे निश्तास्तण्डुलानादाय स्थाली-  तयार हुए चावलोको लेकर स्थाली- पाङावरता स्थालीपाकविधिनान्यं  पाककी विधिसे घीका संस्कार करके तावेहि स रभावहै सह रेतो दधावहे पु से पुत्राय तदनन्तर पति अधनी कामना अनुसार पत्नीको खीर आदि भोजन करानेके पश्चात्‌ शयनकालमे अमोऽहमस्मि इत्यादि मन्त्र पदकर उसका आलिङ्गन करे ।  उस मन्त्रका भाव इस प्रकार है-  \"देवि ! मेँ प्राण",
-          "science": "अथाभिप्रातरेव काजेऽवधात- तदनन्तर भ्रातःकाल ही कृटनेसे निश्तास्तण्डुलानादाय स्थाली- तयार हुए चावलोको लेकर स्थाली- पाङावरता स्थालीपाकविधिनान्यं पाककी विधिसे घी…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6774,8 +6108,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "hiraṇmayī araṇī yābhyāṃ nirmanthatāmāśvinau taṃ te garbham̐ havāmahe daśame māsi sūtaye | yathā'gnigarbhā pṛthivī yathā dyaurindreṇa garbhiṇī vāyurdiśāṃ yathā garbha evaṃ garbhaṃ dadhāmi te'sāviti ||",
           "translation": "Hiranmayî aranî yâbhyâm nirmanthatâm asvinau , tam te garbham havâmahe dasame mâsi sûtave. Yathâgnigarbhâ prithivî, yathâ dyaur indrena garbhinî, vâyur disâm yathâ garbha evam garbham dadhâmî te 'sav iti .",
           "explanation": "Sense: Hiranmayî aranî yâbhyâm nirmanthatâm asvinau , tam te garbham havâmahe dasame mâsi sûtave. Yathâgnigarbhâ prithivî, yathâ dyaur indrena garbhinî, vâyur disâm yathâ garbha evam garbham dadhâmî te 'sav iti .",
-          "hindi": "तदनन्तर इस पत्नीको अभिमन्त्रित, करक जैसी संतानकी इच्छा हो,  के । गभं ते अशिनो देवावाधत्तां पुष्करखजो तत्पश्चात्‌ पल्नीकं ऊरुढय ( दोनों जिं ) को एक द्सरेसे विलग करं ।  उस समय यह्‌ मन्त्र पटना चाहिये- \"विजिहीथां चावापृथिवी इसके बाद पत्नीकी योनिमे अपनी जननेन्धिय स्थापित करके उसके महसे",
-          "science": "तदनन्तर इस पत्नीको अभिमन्त्रित, करक जैसी संतानकी इच्छा हो, के। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6791,8 +6123,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "soṣyantīmadbhirabhyukṣati yathā vāyuḥ puṣkariṇīm̐ samiṅgayati sarvataḥ | evā te garbha ejatu sahāvaitu jarāyuṇā | indrasyāyaṃ vrajaḥ kṛtaḥ sārgalaḥ sapariśrayaḥ | tamīndra nirjahi garbheṇa sāvarām̐ saheti ||",
           "translation": "Soshyantîm adbhir abhyukshati. Yathâ vâyuh pushkarinîm samiñgayati sarvatah, evâ te garbha egatu sahâvaitu garâyunâ. Indrasyâyam vragah kritah sârgalah saparisrayah , tam indra nirgahi garbhena sâvarâm saheti.",
           "explanation": "Sense: Soshyantîm adbhir abhyukshati. Yathâ vâyuh pushkarinîm sami&ntilde;gayati sarvatah, evâ te garbha egatu sahâvaitu garâyunâ. Indrasyâyam vragah kritah sârgalah saparisrayah , tam indra nirgahi garbhena sâvarâm saheti.",
-          "hindi": "ह इस मन्से पत्नीके ऊरुढयको एक विजिहीथां चावाघथिवी इत्यनेन। दु्रेसे अलग करं । (तस्यामर्थं तस्यामथेमित्पादिपूवषत्‌ । त्रिरेना। इत्यादि मन्तेमागका अथं पूववत्‌ ह । प्राचीन कालमें ज्योतिम॑यी अरणिर्यां थीं, जिनसे अधिनीकरुमारोनि -मन्थन किया । उस मन्थनसे अमृतरूप गभं प्रकट हुजा । उसी अमृतहूप ग्भेको हम तेरी कुक्षिमे स्थापित करते है । इसलिये कि तु इसे दशवे श्रन्ते नाम गृह्वास्यसाविति  असौ\" पदके द्वारा यह्‌ सुचित किया गया दह कि अन्तमे पत्नीका",
-          "science": "ह इस मन्से पत्नीके ऊरुढयको एक विजिहीथां चावाघथिवी इत्यनेन। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6808,8 +6138,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "jāte'gnimupasamādhāyāṅka ādhāya kam̐se pṛṣadājyam̐ sannīya pṛṣadājyasyopaghātaṃ juhotyasminsahasraṃ puṣyāsamedhamānaḥ sve gṛhe | asyopasandyāṃ mā cchaitsīt prajayā ca paśubhiśca svāhā | mayi prāṇām̐stvayi manasā juhomi svāhā | yat karmaṇā'tyarīricaṃ yadvā nyūnamihākaram | agniṣṭatsviṣṭakṛdvidvān sviṣṭam̐ suhutaṃ karotu naḥ svāheti ||",
           "translation": "When the child is born, he prepares the fire, places the child on his lap, and having poured prishadâgya, i.e. dadhi (thick milk) mixed with ghrita (clarified butter) into a metal jug, he sacrifices bit by bit of that prishadâgya, saying: 'May I, as I increase in this my house, nourish a thousand! May fortune never fail in his race, with offspring and cattle, Svâhâ!'",
           "explanation": "Sense: When the child is born, he prepares the fire, places the child on his lap, and having poured prishadâgya, i.e. dadhi (thick milk) mixed with ghrita (clarified butter) into a metal jug, he sacrifices bit by bit of that prishadâgya, saying: 'May I, as I increase in this my house,…",
-          "hindi": "वहावेतु जराय॒णा । इन्द्रस्यायं जः कृतः सागर ्रस्येकको प्क र पत्नीके मस्तकसे वायु पोखरीके नलको सब ओरसे चञ्चल कर देती है, उसी प्रकार तेरा सोष्यन्तीमद्धरभ्ुकतति प्रसव  प्रपवकालमे सुखपुथ॑क वनवा काले सुखप्रसबनाथेमनेन  पैदा करके लिये थथा वायुः अन्तरेण । यथा वायुः पुष्करिणीं  शष्करिणीं समिङ्गयति सवतः । एवा",
-          "science": "वहावेतु जराय॒णा। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6825,8 +6153,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athāsya dakṣiṇaṃ karṇamabhinidhāya vāgvāgiti triratha dadhi madhu ghṛtam̐ sannīyānantarhitena jātarūpeṇa prāśayati | bhūste dadhāmi bhuvaste dadhāmi svaste dadhāmi bhūrbhuvaḥ svaḥ sarvaṃ tvayi dadhāmīti ||",
           "translation": "Then putting his mouth near the child's right ear, he says thrice, Speech, speech ! After that he pours together thick milk, honey, and clarified butter, and feeds the child with (a ladle of) pure gold , saying: 'I give thee Bhûh, I give thee Bhuvah, I give thee Svah . Bhûr, Bhuvah, Svah, I give thee all .'",
           "explanation": "Sense: Then putting his mouth near the child's right ear, he says thrice, Speech, speech ! After that he pours together thick milk, honey, and clarified butter, and feeds the child with (a ladle of) pure gold , saying: 'I give thee Bhûh, I give thee Bhuvah, I give thee Svah . Bhûr,…",
-          "hindi": "थ्‌ जनावकम-  अव जातकरम॑का वणन करते है - जातेऽग्निमुपसमाधायाङ्ग आधाय कसे एषदाज्य  वा न्यूनमिहाकरम्‌ । अ्निष्टत्सिष्टङ्कद्‌ विद्वान्‌ स्विष्ट पुत्र उत्पन्न होनेपर पिता उसे अपनी गोदमें लेकर अग्निकी स्थापना करके कांसकं कटोरेमे दधिमिश्रित घी रखकर उसका थोडा-थोडा-सा अंश लेकर “अस्मिन्‌ सहस्रम्‌” इत्यादि मन्वोदारा अग्निम आहुति दे ।  मन्त्रार्थं करके पुत्रको गोदे लेकर ओर आधाय पुत्रं कसे पएषदाञ्यं संनीय  कासके कटोरपे दधिमिधित घृत रखकर दहीको धीमे मिलाकर",
-          "science": "थ्‌ जनावकम- अव जातकरम॑का वणन करते है - जातेऽग्निमुपसमाधायाङ्ग आधाय कसे एषदाज्य वा न्यूनमिहाकरम्‌। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6842,8 +6168,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athāsya nāma karoti vedo'sīti | tadasyaitadguhyameva nāma bhavati ||",
           "translation": "Then he gives him his name, saying: 'Thou art Veda;' but this is his secret name .",
           "explanation": "Sense: Then he gives him his name, saying: 'Thou art Veda;' but this is his secret name .",
-          "hindi": "स्विष्टकृत्‌ होमके अनन्तर पिता शिश्ुके दाहिने कानको अपने मुखके  पास ले आकर \"वाक्‌ वाक्‌ वाक्‌\" इस प्रकार तीन बार कहे । तत्पश्चात्‌  दही, मधु ओर घी एकमं मिलाकर उसे दूसरे धातुओंके मेले रहित ॥ भ्रथास्य दक्तिणं कणंम- तदनन्तर इस बालकके दाहिने . धाय स्वं ˆ मुखं  कानको अपने मूखके पासले जाकर \"वाक्‌ वाक्‌\" यह\" तीन बार अपे।",
-          "science": "स्विष्टकृत्‌ होमके अनन्तर पिता शिश्ुके दाहिने कानको अपने मुखके पास ले आकर \"वाक्‌ वाक्‌ वाक्‌\" इस प्रकार तीन बार कहे। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6859,8 +6183,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athainaṃ mātre pradāya stanaṃ prayacchati yaste stanaḥ śaśayo yo mayobhūryo ratnadhā vasuvidyaḥ sudatro yena viśvā puṣyasi vāryāṇi sarasvati tamiha dhātave kariti ||",
           "translation": "Then he hands the boy to his mother and gives him her breast, saying: 'O Sarasvatî, that breast of thine which is inexhaustible, delightful, abundant, wealthy, generous, by which thou cherishest all blessings, make that to flow here .'",
           "explanation": "Sense: Then he hands the boy to his mother and gives him her breast, saying: 'O Sarasvatî, that breast of thine which is inexhaustible, delightful, abundant, wealthy, generous, by which thou cherishest all blessings, make that to flow here .'",
-          "hindi": "अथास्य नाम करोति वेदोऽसीति तदस्य तद्‌ इसके बाद वबालकका नामकरण करे । (तुम वेद हो ।' अतः वेद यह्‌ उस वालकका गृप्त नाम ही होतः है अथाध्य नाभधेयं करीति इसके बाद इस बालकका त „  नामकरण करे तुम वेद हो\" अतः द ९ इगु वेद उस बालकका गोपनीय नाम",
-          "science": "अथास्य नाम करोति वेदोऽसीति तदस्य तद्‌ इसके बाद वबालकका नामकरण करे। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6876,8 +6198,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "athāsya mātaramabhimantrayate | ilā'si maitrāvaruṇī vīre vīramajījanat | sā tvaṃ vīravatī bhava yā'smānvīravato'karaditi | taṃ vā etamāhuratipitā batābhūratipitāmaho batābhūḥ | paramāṃ bata kāṣṭhāṃ prāpayacchriyā yaśasā brahmavarcasena ya evaṃvido brāhmaṇasya putro jāyata iti ||",
           "translation": "Then he addresses the mother of the boy: a",
           "explanation": "Sense: Then he addresses the mother of the boy: a",
-          "hindi": "तदनन्तर इस बालकको माताकी गोदमे देकर “यस्ते स्तनः\" इत्यादि तुम्हारा जो स्तन दूधका अक्षयभण्डार तथा पोषणका आधार हे, जो रत्नो - की खान है तथा सम्पूणं धन-राशिका ज्ञाता ओर उदार दानी ह तथा १३६२ बृहदारण्यकोपनिषद्‌ अध्याय ६ । इए इस शिशुको माताकी गोदे स्तनं प्रयच्छति यस्ते सतन  देकर ध्वस्ते स्तनः इत्यादि",
-          "science": "तदनन्तर इस बालकको माताकी गोदमे देकर “यस्ते स्तनः\" इत्यादि तुम्हारा जो स्तन दूधका अक्षयभण्डार तथा पोषणका आधार हे, जो रत्नो - की खान है तथा सम्पूणं धन-राशिका ज…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "PanchagniVidya",
@@ -6901,8 +6221,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "atha vam̐śaḥ | pautimāṣīputraḥ kātyāyanīputrāt kātyāyanīputro gautamīputrād gautamīputro bhāradvājīputrād bhāradvājīputraḥ pārāśarīputrāt pārāśarīputra aupasvastīputrādaupasvastīputraḥ pārāśarīputrāt pārāśarīputraḥ kātyāyanīputrāt kātyāyanīputraḥ kauśikīputrāt kauśikīputra ālambīputrācca vaiyāghrapadīputrācca vaiyāghrapadīputraḥ kāṇvīputrācca kāpīputrācca kāpīputraḥ ||",
           "translation": "Now follows the line of pupils (vaṃśa). Pautimāṣīputra from Kātyāyanīputra.",
           "explanation": "Sense: Now follows the line of pupils (vaṃśa). Pautimāṣīputra from Kātyāyanīputra.",
-          "hindi": "यास्मान्‌ बीरवतोऽकरदिति । तं वा एतमाहूरतिपितां बताभूरतिपितामहो बताभूः परमां बत काष्ठां घरापच्छ्विया यशसा बह्मदच॑सेन य ॒दुवंविदो व्राह्मण. इसके बाद 'इलासि\" इत्यादि अभिमन्तित करे। तं वा एतमाहुः इस वाक्यद्रारा यहु बताया अथ वशः । पोतिमाषीपुत्रः काव्यायनीपुत्रात्‌ काट्यायनौ तनो गौतमी पुत्राद्‌ गौतमीपुत्रो भारदाजी- रीपुत्रः क्ायायनीपुत्रात्‌ कास्थायनीपुत्रः कोरिकी-",
-          "science": "यास्मान्‌ बीरवतोऽकरदिति। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ManthaCeremony",
@@ -6918,8 +6236,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "ātreyīputrādātreyīputro gautamīputrād gautamīputro bhāradvājīputrād bhāradvājīputraḥ pārāśarīputrāt pārāśarīputro vātsīputrād vātsīputraḥ pārāśarīputrāt pārāśarīputro vārkāruṇīputrād vārkāruṇīputro vārkāruṇīputrād vārkāruṇīputra ārtabhāgīputrādārtabhāgīputraḥ śauṅgīputrāccauṅgīputraḥ sāṅkṛtīputrāt sāṅkṛtīputra ālambāyanīputrādālambāyanīputra ālambīputrādālambīputro jāyantīputrāj jāyantīputro māṇḍūkāyanīputrān māṇḍūkāyanīputro māṇḍūkīputrān māṇḍūkīputraḥ śāṇḍilīputrācchāṇḍilīputro rāthītarīputrād rāthītarīputro bhālukīputrād bhālukīputraḥ krauñcikīputrābhyāṃ krauñcikīputrau vaidabhṛtīputrād vaidabhṛtīputraḥ kārśakeyīputrāt kārśakeyīputraḥ prācīnayogīputrāt prācīnayogīputraḥ sāñjīvīputrāt sāñjīvīputraḥ prāśnīputrādāsurivāsinaḥ prāśnīputra āsurāyaṇādāsurāyaṇa āsurerāsuriḥ ||",
           "translation": "Kâtyâyanîputra from Gotamîputra, 3. Gotamîputra from Bhâradvâgîputra, 4. Bhâradvâgîputra from Pârâsarîputra, 5. Pârâsarîputra from Aupasvatîputra, 6. Aupasvatîputra from Pârâsarîputra, 7. Pârâsarîputra from Kâtyâyanîputra, 8. Kâtyâyanîputra from Kausikîputra, 9. Kausikîputra from Âlambîputra and Vaiyâghrapadîputra, 10. Âlambîputra and Vaiyâghrapadîputra from Kânvîputra, 11. Kânvîputra from Kâpîputra, 12. Kâpîputra",
           "explanation": "Sense: Kâtyâyanîputra from Gotamîputra, 3. Gotamîputra from Bhâradvâgîputra, 4. Bhâradvâgîputra from Pârâsarîputra, 5. Pârâsarîputra from Aupasvatîputra, 6. Aupasvatîputra from Pârâsarîputra, 7. Pârâsarîputra from Kâtyâyanîputra, 8. Kâtyâyanîputra from Kausikîputra, 9.…",
-          "hindi": "ल्क्य उदारकादुद्‌ारकोऽरुणादरुण उपवेशेरपवेश्चिः वाषगणो हरितात्‌ करयपाद्धरितः कश्यपः शिस्पात्‌ कदयपाच्छिल्पः कश्यपः करयपान्नैध वेः कश्यपो  वीपुत्रो माण्डुकायनेमाण्डूकायनिर्माणडव्यान्माण्डञ्यः  कोत्सात्‌ कोर्सो माहिव्थेमाहिस्थिर्वमकक्चायणाद्‌ तचा राजस्तस्वायनस्तुरात्‌ कावषेयात्‌ तुरः कावषेयः",
-          "science": "ल्क्य उदारकादुद्‌ारकोऽरुणादरुण उपवेशेरपवेश्चिः वाषगणो हरितात्‌ करयपाद्धरितः कश्यपः शिस्पात्‌ कदयपाच्छिल्पः कश्यपः करयपान्नैध वेः कश्यपो वीपुत्रो माण्डुकायनेम…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ManthaCeremony",
@@ -6935,8 +6251,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "yājñavalkyād yājñavalkya ūddālakādūddālako'ruṇādaruṇa upaveśerupaveśiḥ kuśreḥ kuśrirvājaśravaso vājaśravā jīhvāvato bādhyogāj jīhvāvānbādhyogo'sitādvārṣagaṇādasito vārṣagaṇo haritātkaśyapādd haritaḥ kaśyapaḥ śilpātkaśyapācchilpaḥ kaśyapaḥ kaśyapānnaidhruveḥ kaśyapo naidhruvirvāco vāgambhiṇyāḥ ambhiṇyādityādādityānīmāni śuklāni yajūm̐ṣi vājasaneyena yājñavalkyenā''khyayante ||",
           "translation": "from Yâgñavalkya,",
           "explanation": "Sense: from Yâg&ntilde;avalkya,",
-          "hindi": "याज्ञवल्वयसे, याज्ञवल्कयने उहालकषे उटालकने अरुणे, अरुणने उपवेशिसे, उपवेशने कुधिसे कुधिने, वाजश्न- वासे, वाजश्रवाने जिह्वावाच्‌ बाध्योगसे, जिह्वावानच्‌ बाध्योगने असित यह्‌ एक ही वंश है । साज्ञीवीपुत्रन माण्डूक्रायनिसे, माण्डूकायनिने माण्ड- वसे माण्डव्ये कौत्ससे, कौतसने माहित्थिसे, माहित्थिनं वामकक्षायणसे वामकक्चायणने शाण्डिल्यसे, शाण्डिल्यने वात्स्यसे, वासस्य कुधिसे, कुश्निनं शयेदानीं समस्तप्रचनवंशः   इसके अनन्तर अब सम्त प्रवचनका वंश बतलाया जाता है । खी प्राधान्याद्‌ गुणवान्‌ पुत्रो  खीकी प्रधानता होनेसे गुणवाचु पुव",
-          "science": "याज्ञवल्वयसे, याज्ञवल्कयने उहालकषे उटालकने अरुणे, अरुणने उपवेशिसे, उपवेशने कुधिसे कुधिने, वाजश्न- वासे, वाजश्रवाने जिह्वावाच्‌ बाध्योगसे, जिह्वावानच्‌ बाध्यो…। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ManthaCeremony",
@@ -6952,8 +6266,6 @@ export const brihadaranyaka: Scripture = {
           "transliteration": "samānamā sāñjīvīputrāt sañjivīputro māṇḍūkāyanermāṇḍūkāyanirmāṇḍavyān māṇḍavyaḥ kautsāt kautso māhitthermāhitthirvāmakakṣāyaṇād vāmakakṣāyaṇaḥ śāṇḍilyācchāṇḍilyo vātsyād vātsyaḥ kuśreḥ kuśriryajñavacaso rājastambāyanād yajñavacā rājastambāyanasturātkāvaṣeyāt turaḥ kāvaṣeyaḥ prajāpateḥ prajāpatirbrahmaṇo brahma svayambhu | brahmaṇe namaḥ || iti bṛhadāraṇyakopaniṣadi ṣaṣṭho'dhyāyaḥ ||",
           "translation": "The same as far as Sâñgîvîputra (No. 36), then",
           "explanation": "Sense: The same as far as Sâ&ntilde;gîvîputra (No. 36), then",
-          "hindi": "श्रीमच्छङ्करभगवतः कृतौ इृहदारण्यकोपनिषद्‌भाष्ये इहदारण्यकोपनिषद्धाभ्यं सम्पण १. अर्थात्‌ इनमें पौरुषेयत्वका दोष नहीं है । नात्कात्तात्ाः तफन्तात्तनजि",
-          "science": "श्रीमच्छङ्करभगवतः कृतौ इृहदारण्यकोपनिषद्‌भाष्ये इहदारण्यकोपनिषद्धाभ्यं सम्पण १. अर्थात्‌ इनमें पौरुषेयत्वका दोष नहीं है। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
           "lifeLesson": "Notice that the awareness hearing these words is independent of passing emotions and thoughts. Rest as that aware space.",
           "keywords": [
             "ManthaCeremony",
