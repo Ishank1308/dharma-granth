@@ -482,7 +482,11 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     }
   };
 
-  const scrollToVerse = (verseNum: string | number, behavior: ScrollBehavior = 'smooth') => {
+  const scrollToVerse = (
+    verseNum: string | number,
+    behavior: ScrollBehavior = 'smooth',
+    preserveLayout = false
+  ) => {
     const el = document.getElementById(`verse-${verseNum}`);
     if (el) {
       const prefersReduced =
@@ -491,14 +495,29 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       // Temporarily set contentVisibility to 'visible' to pre-render layout dimensions accurately
       const prevVisibility = el.style.contentVisibility;
       el.style.contentVisibility = 'visible';
-      requestAnimationFrame(() => {
-        el.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
+      const alignVerse = () => {
+        if (el.isConnected) {
+          el.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
+        }
+      };
+      requestAnimationFrame(() => requestAnimationFrame(alignVerse));
+
+      if (preserveLayout) {
+        // Long chapters expand skipped cards as they enter the viewport. Correct once after that layout settles.
+        window.setTimeout(() => {
+          if (!el.isConnected) return;
+          const rect = el.getBoundingClientRect();
+          if (rect.bottom <= 0 || rect.top >= window.innerHeight) alignVerse();
+        }, 500);
+      } else {
         setTimeout(() => {
-          if (el.dataset.activeVerse !== 'true') {
+          const rect = el.getBoundingClientRect();
+          const isInViewport = rect.bottom > 0 && rect.top < window.innerHeight;
+          if (el.dataset.activeVerse !== 'true' && !isInViewport) {
             el.style.contentVisibility = prevVisibility || '';
           }
         }, 800);
-      });
+      }
     }
   };
 
@@ -552,7 +571,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     };
   }, [scriptureId, chapterId]);
 
-  // Deep-link auto-scroll on mount if ?verse= or #verse- is present
+  // Deep-link auto-scroll if ?verse= or #verse- is present; layout correction handles long chapters.
   useEffect(() => {
     if (state.kind !== 'ready') return;
     const urlParams = new URLSearchParams(window.location.search);
@@ -565,7 +584,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       const timer = setTimeout(() => {
         // Jump, like a native #hash link: a smooth scroll across a long
         // chapter is slow and can be cut short by layout shifts.
-        scrollToVerse(targetVerse, 'auto');
+        scrollToVerse(targetVerse, 'auto', true);
       }, 350);
       return () => clearTimeout(timer);
     }
