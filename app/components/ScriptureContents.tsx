@@ -74,9 +74,8 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
           {chapters.map((chapter, index) => (
             <motion.li
               key={chapter.id}
-              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={reduceMotion ? { duration: 0 } : { duration: 0.32, delay: Math.min(index * 0.035, 0.28), ease: 'easeOut' }}
+              className="fade-up-in"
+              style={{ animationDelay: reduceMotion ? undefined : `${Math.min(index * 0.035, 0.28)}s` }}
               whileHover={reduceMotion ? undefined : { y: -3 }}
               whileTap={reduceMotion ? undefined : { scale: 0.995 }}
             >
