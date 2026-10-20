@@ -11,16 +11,6 @@ import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
 
-const DharmaCopilot = dynamic(
-  () => import("@/app/components/DharmaCopilot").then((m) => m.DharmaCopilot),
-  { ssr: false }
-);
-
-const SacredAudioPlayer = dynamic(
-  () => import("@/app/components/reader/SacredAudioPlayer").then((m) => m.SacredAudioPlayer),
-  { ssr: false }
-);
-
 const PranaCapsule = dynamic(
   () => import("@/components/ui/PranaCapsule").then((m) => m.PranaCapsule),
   { ssr: false }
@@ -265,12 +255,6 @@ export default function RootLayout({
           </ErrorBoundary>
           <ErrorBoundary name="Manana Selection">
             <MananaSelectionBar />
-          </ErrorBoundary>
-          <ErrorBoundary name="Dharma Copilot">
-            <DharmaCopilot />
-          </ErrorBoundary>
-          <ErrorBoundary name="Sacred Soundscape">
-            <SacredAudioPlayer />
           </ErrorBoundary>
           <TactileLayer />
           <OfflineIndicator />
