@@ -85,6 +85,19 @@ test('verse page carries its schema and share image', async ({ page }) => {
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/og\/verse\/bhagavadgita\/2-47\.jpg$/);
 });
 
+test('concept graph offers an expandable relationship list on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/concepts/');
+
+  const list = page.locator('section[aria-labelledby="mobile-concepts-heading"]');
+  await expect(list).toBeVisible();
+  const brahman = list.locator('#concept-brahman details');
+  await brahman.locator('summary').click();
+  await expect(brahman.getByText('Related concepts')).toBeVisible();
+  await expect(brahman.getByRole('link', { name: /Atman/ })).toBeVisible();
+  await expect(page.getByText('Brahman', { exact: true }).first()).toBeVisible();
+});
+
 test('floating island clears the one-thumb reader controls on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/scripture/bhagavadgita/chapter/2/');
