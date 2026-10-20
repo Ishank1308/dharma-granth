@@ -12,12 +12,12 @@ import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
 
 const PranaCapsule = dynamic(
-  () => import("@/components/ui/PranaCapsule").then((m) => m.PranaCapsule),
+  () => retryImport(() => import("@/components/ui/PranaCapsule").then((m) => m.PranaCapsule)),
   { ssr: false }
 );
 
 const MananaSelectionBar = dynamic(
-  () => import("@/app/components/reader/MananaSelectionBar").then((m) => m.MananaSelectionBar),
+  () => retryImport(() => import("@/app/components/reader/MananaSelectionBar").then((m) => m.MananaSelectionBar)),
   { ssr: false }
 );
 // Font subsetting: Bundling only required weights (400, 600, 700) and critical
@@ -34,6 +34,7 @@ import "@fontsource/noto-sans-devanagari/devanagari-700.css";
 import "./globals.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
+import { retryImport } from "@/lib/retry-import";
 
 /**
  * Inline script that runs synchronously before React hydrates so the

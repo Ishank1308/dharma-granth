@@ -3,6 +3,7 @@
 import React, { Component, type ErrorInfo, type ReactNode } from 'react';
 import { AlertCircle, RotateCcw } from 'lucide-react';
 import { canAttemptChunkReload, isChunkLoadError, reloadOnceWithCacheBust } from '@/lib/error-recovery';
+import { ErrorRecoveryVerse } from './ErrorRecoveryVerse';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -51,38 +52,45 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   render() {
     if (this.state.hasError) {
       if (this.props.fallback) {
-        return this.props.fallback;
+        return (
+          <>
+            <meta name="robots" content="noindex, nofollow" />
+            {this.props.fallback}
+          </>
+        );
       }
 
       return (
-        <div
-          role="alert"
-          aria-live="assertive"
-          className="my-4 rounded-2xl border border-amber-300/60 bg-amber-50/50 p-6 text-center text-dharma-text shadow-sm dark:border-amber-800/60 dark:bg-amber-950/20"
-        >
+        <>
           <meta name="robots" content="noindex, nofollow" />
-          <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/60 dark:text-amber-300">
-            <AlertCircle className="h-5 w-5" aria-hidden="true" />
-          </div>
-          <h3 className="font-serif text-base font-bold text-dharma-text" lang="hi">
-            यह घटक लोड नहीं हो सका
-          </h3>
-          <p className="mt-1 text-xs text-dharma-muted">
-            {this.props.name ? `${this.props.name} घटक ` : 'घटक '}
-            में अस्थाई समस्या आई है।
-          </p>
-          <p className="mt-0.5 text-[11px] text-dharma-muted/80" lang="en">
-            An error occurred in this section. You can retry without reloading the entire page.
-          </p>
-          <button
-            type="button"
-            onClick={this.handleReset}
-            className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-amber-600 px-5 py-2 text-xs font-bold text-white shadow-sm transition hover:bg-amber-700 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+          <section
+            role="alert"
+            aria-live="assertive"
+            className="my-4 mx-auto max-w-2xl rounded-3xl border border-dharma-border bg-dharma-bg p-5 text-center text-dharma-text shadow-sm sm:p-8"
           >
-            <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-            <span>पुनः प्रयास करें (Retry)</span>
-          </button>
-        </div>
+            <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-saffron-100 text-saffron-700 dark:bg-saffron-950/50 dark:text-saffron-300">
+              <AlertCircle className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-saffron-700 dark:text-saffron-400">
+              A quiet pause · Dharma Granth
+            </p>
+            <h2 className="mt-2 font-serif text-xl font-bold text-dharma-text" lang="hi">
+              पृष्ठ लोड नहीं हो सका
+            </h2>
+            <p className="mt-1 text-sm text-dharma-muted" lang="en">
+              This part of the page could not load. Your reading can continue after a retry.
+            </p>
+            <ErrorRecoveryVerse />
+            <button
+              type="button"
+              onClick={this.handleReset}
+              className="mt-5 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-saffron-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-saffron-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2"
+            >
+              <RotateCcw className="h-4 w-4" aria-hidden="true" />
+              <span>पुनः प्रयास करें · Try again</span>
+            </button>
+          </section>
+        </>
       );
     }
 

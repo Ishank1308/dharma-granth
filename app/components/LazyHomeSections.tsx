@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState, type ComponentType } from 'react';
+import { retryImport } from '@/lib/retry-import';
 
 /**
  * Home sections far below the fold. Each one's code is fetched when its placeholder is about to scroll into view,
@@ -40,7 +41,8 @@ function OnView({ minHeight, children, fallback }: { minHeight: number; children
   );
 }
 
-const loadable = <P extends object>(load: () => Promise<ComponentType<P>>) => dynamic(load, { ssr: false });
+const loadable = <P extends object>(load: () => Promise<ComponentType<P>>) =>
+  dynamic(() => retryImport(load), { ssr: false });
 
 const Sadhana = loadable(() => import('./SadhanaPreviewSection').then((m) => m.SadhanaPreviewSection));
 const Panchang = loadable(() => import('./PanchangPreviewSection').then((m) => m.PanchangPreviewSection));
