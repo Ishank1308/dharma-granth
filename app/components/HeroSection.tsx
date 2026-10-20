@@ -190,7 +190,7 @@ export function HeroSection() {
       ref={ref}
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
-      className="relative min-h-[620px] overflow-hidden bg-[linear-gradient(135deg,var(--dharma-hero-start),var(--dharma-hero-mid),var(--dharma-hero-end))] text-white"
+      className="relative min-h-[560px] overflow-hidden bg-[linear-gradient(135deg,var(--dharma-hero-start),var(--dharma-hero-mid),var(--dharma-hero-end))] text-white"
       style={{ perspective: '1200px' }}
     >
       {/* Enhanced celestial background — drifts against the cursor for depth */}
@@ -248,7 +248,7 @@ export function HeroSection() {
       </motion.div>
 
       <motion.div
-        className="relative z-10 mx-auto max-w-6xl px-5 pb-16 pt-10 text-center sm:px-6 sm:pb-24 sm:pt-14 md:py-24"
+        className="relative z-10 mx-auto max-w-6xl px-5 pb-12 pt-8 text-center sm:px-6 sm:pb-16 sm:pt-10 md:py-16"
         style={
           !animateAmbient
             ? { transformStyle: 'preserve-3d' }
@@ -353,7 +353,7 @@ export function HeroSection() {
           </form>
 
           {/* Search Examples Pills */}
-          <div className="mx-auto mb-7 flex max-w-2xl flex-wrap items-center justify-center gap-2 px-2 text-xs">
+          <div className="mx-auto mb-4 flex max-w-2xl flex-wrap items-center justify-center gap-2 px-2 text-xs">
             <span className="text-white/70 font-medium">Try searching:</span>
             {[
               { label: 'Gita 2.47', query: 'Gita 2.47' },
