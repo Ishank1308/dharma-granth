@@ -17,8 +17,9 @@ export const metadata: Metadata = {
     title: 'Interactive Verse Relationship Engine · Dharma Granth',
     description:
       'Explore interconnected canonical verses across the Bhagavad Gita, Upanishads, Vedas, and Epics in an interactive visual network.',
-    url: 'https://dharmagranth.in/network',
+    url: 'https://dharmagranth.in/network/',
   },
+  alternates: { canonical: '/network/' },
 };
 
 export default function VerseNetworkPage() {

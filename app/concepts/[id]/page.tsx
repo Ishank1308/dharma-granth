@@ -120,18 +120,18 @@ export default async function ConceptDetailPage({ params }: PageProps) {
       {/* ── Hero Section ─────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-saffron-950/20 via-transparent to-transparent pt-10 sm:pt-14 pb-12 border-b border-dharma-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-          {/* Sanskrit Calligraphy Badge */}
-          <div className="inline-flex flex-col items-center mb-6">
-            <p
+          {/* Sanskrit Calligraphy Badge: the page's one H1 (term, then transliteration and English label) */}
+          <h1 className="inline-flex flex-col items-center mb-6 font-normal">
+            <span
               lang="sa"
-              className="font-devanagari text-6xl sm:text-7xl md:text-8xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-800 dark:from-saffron-400 dark:via-amber-300 dark:to-saffron-500 leading-tight drop-shadow-sm"
+              className="block font-devanagari text-6xl sm:text-7xl md:text-8xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-800 dark:from-saffron-400 dark:via-amber-300 dark:to-saffron-500 leading-tight drop-shadow-sm"
             >
               {concept.sanskrit}
-            </p>
-            <p className="text-base sm:text-lg text-dharma-muted tracking-widest uppercase font-serif mt-1">
+            </span>
+            <span className="block text-base sm:text-lg text-dharma-muted tracking-widest uppercase font-serif mt-1">
               {concept.transliteration} · {concept.label}
-            </p>
-          </div>
+            </span>
+          </h1>
 
           {/* Simple Definitions (Dual Language) */}
           <div className="bg-dharma-card/80 border border-dharma-border rounded-2xl p-6 sm:p-8 shadow-sm text-left max-w-3xl mx-auto space-y-4">

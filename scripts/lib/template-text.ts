@@ -3,7 +3,8 @@
  *
  * A value is a template when the same long text (over MIN_LENGTH characters) sits on TEMPLATE_MIN or more verses
  * whose Sanskrit differs. Verses that genuinely repeat (a refrain printed in several places) share Sanskrit, so they
- * are not counted: only distinct-Sanskrit verses vote.
+ * are not counted: only distinct-Sanskrit verses vote. Digits are ignored when comparing, so numbered boilerplate
+ * ("… (दोहा/चौपाई 7)", "Chapter 1, Shloka 4: …") counts as one template.
  *
  * One exception: a note written for a verse range (for example "श्लोक 4–6") is stored on each verse of the range.
  * A short run of neighbouring verses is therefore range commentary, not a template, and is kept.
@@ -25,6 +26,8 @@ export interface TemplateItem {
 }
 
 const norm = (s: string) => s.normalize('NFC').replace(/\s+/g, ' ').trim();
+/** Digits are ignored when grouping, so a template that only changes its verse number ("(दोहा/चौपाई 7)") is still one template. */
+const shape = (s: string) => norm(s).replace(/[0-9०-९]+/g, '#');
 
 /** True when every key shares a chapter and the verse positions form one unbroken run of at most MAX_RANGE_RUN. */
 function isRangeRun(keys: string[]): boolean {
@@ -47,7 +50,7 @@ export function findTemplateFields(items: TemplateItem[]): Set<string> {
       if (typeof raw !== 'string') continue;
       const text = norm(raw);
       if (text.length <= MIN_LENGTH) continue;
-      const id = `${field}\u0001${text}`;
+      const id = `${field}\u0001${shape(text)}`;
       const entry = byValue.get(id) ?? { sanskrit: new Set<string>(), where: [] };
       entry.sanskrit.add(sk);
       entry.where.push(`${it.key}|${field}`);

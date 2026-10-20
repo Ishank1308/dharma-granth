@@ -3,6 +3,7 @@ import { getAllScriptures, getScriptureChapters } from '@/data/scriptures';
 import { readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
 import { lastChanged, scriptureLastChanged } from '@/lib/content-dates';
 import { verseStaticParams } from '@/lib/verse-pages';
+import { verseMeaningById } from '@/lib/verse-meaning';
 import { chapterPartHref, chapterParts } from '@/lib/chapter-parts';
 import { topics } from '@/data/topics';
 import { wisdomTopics } from '@/data/wisdom-for-life';
@@ -84,6 +85,8 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/methodology', pageDate('/methodology')),
     entry('/sources', pageDate('/sources')),
     entry('/concepts/relationships', pageDate('/concepts/relationships')),
+    entry('/concepts/visuals', pageDate('/concepts/visuals')),
+    entry('/network', pageDate('/network')),
     entry('/ashtavakra', pageDate('/ashtavakra')),
     entry('/ashtavakra/words', pageDate('/ashtavakra/words')),
   ];
@@ -149,9 +152,10 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
 }
 
 function versesSection(): MetadataRoute.Sitemap {
-  const scriptureVerses = verseStaticParams().map((p) =>
-    entry(`/scripture/${p.id}/chapter/${p.chapterId}/verse/${p.verseId}`, scriptureLastChanged(p.id)),
-  );
+  // A verse page with no meaning or explanation yet is noindex (see the verse page); keep it out of the sitemap too.
+  const scriptureVerses = verseStaticParams()
+    .filter((p) => verseMeaningById(p.id, Number(p.chapterId), p.verseId)?.any)
+    .map((p) => entry(`/scripture/${p.id}/chapter/${p.chapterId}/verse/${p.verseId}`, scriptureLastChanged(p.id)));
   // Ashtavakra Gita has its own verse pages (/ashtavakra/<chapter>/<verse>/).
   const ashtavakraDate = lastChanged('app/ashtavakra/[chapter]/[verse]/page.tsx');
   const ashtavakraVerses = publishedChapterNumbers().flatMap((c) =>
