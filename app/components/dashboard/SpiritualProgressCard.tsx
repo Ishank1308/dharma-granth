@@ -76,7 +76,7 @@ export function SpiritualProgressCard({ stats }: Props) {
             className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold border border-saffron-300/80 dark:border-saffron-800/60 bg-dharma-card/80 text-dharma-text hover:bg-saffron-50 dark:hover:bg-saffron-950/30 transition shadow-2xs"
           >
             <Compass className="w-3.5 h-3.5 text-saffron-600 dark:text-saffron-400" />
-            <span>६ सोपान दर्शन · View All Stages</span>
+            <span>6 सोपान दर्शन · View All Stages</span>
           </button>
         </div>
 
@@ -246,7 +246,7 @@ export function SpiritualProgressCard({ stats }: Props) {
                   « चतुर्विधा भजन्ते मां जनाः सुकृतिनोऽर्जुन । आर्तो जिज्ञासुरर्थार्थी ज्ञानी च भरतर्षभ ॥ »
                 </p>
                 <p>
-                  श्रीमद्भगवद्गीता (७.१६) और उपनिषदों में स्वाध्याय की इस क्रमिक यात्रा को आत्म-साक्षात्कार का प्रशस्त मार्ग बताया गया है — जहाँ जिज्ञासु अपनी लगन से ज्ञान का साक्षात करता है।
+                  श्रीमद्भगवद्गीता (7.16) और उपनिषदों में स्वाध्याय की इस क्रमिक यात्रा को आत्म-साक्षात्कार का प्रशस्त मार्ग बताया गया है — जहाँ जिज्ञासु अपनी लगन से ज्ञान का साक्षात करता है।
                 </p>
               </div>
 

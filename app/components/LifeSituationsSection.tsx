@@ -41,7 +41,7 @@ const situations: LifeSituation[] = [
     titleEn: 'Stress and worry',
     sanskrit: 'शमः व समत्वम्',
     prompt: 'Release anxiety over outcomes you cannot control; center awareness on the present duty with an even mind.',
-    scriptureRef: 'गीता २.४८ (समत्वं योग उच्यते)',
+    scriptureRef: 'गीता 2.48 (समत्वं योग उच्यते)',
     icon: <Wind className="h-5 w-5" aria-hidden="true" />,
   },
   {
@@ -52,7 +52,7 @@ const situations: LifeSituation[] = [
     titleEn: 'Fear',
     sanskrit: 'अभयम्',
     prompt: 'Awaken the realization of the eternal, indestructible Self (Atman) which cannot be shaken by outward turbulence.',
-    scriptureRef: 'गीता २.२० व १६.१ (न जायते म्रियते वा)',
+    scriptureRef: 'गीता 2.20 व 16.1 (न जायते म्रियते वा)',
     icon: <Shield className="h-5 w-5" aria-hidden="true" />,
   },
   {
@@ -63,7 +63,7 @@ const situations: LifeSituation[] = [
     titleEn: 'Anger',
     sanskrit: 'क्रोध-संयमः',
     prompt: 'Trace anger to frustrated desire; observe the impulse and pause before reaction clouds discrimination.',
-    scriptureRef: 'गीता २.६३ (क्रोधाद्भवति संमोहः)',
+    scriptureRef: 'गीता 2.63 (क्रोधाद्भवति संमोहः)',
     icon: <Flame className="h-5 w-5" aria-hidden="true" />,
   },
   {
@@ -74,7 +74,7 @@ const situations: LifeSituation[] = [
     titleEn: 'Grief',
     sanskrit: 'अनित्यता व शोक-मुक्ति',
     prompt: 'Hold personal grief within the vast perspective of the eternal soul — bodies change like garments, but spirit abides.',
-    scriptureRef: 'गीता २.२२ (वासांसि जीर्णानि यथा विहाय)',
+    scriptureRef: 'गीता 2.22 (वासांसि जीर्णानि यथा विहाय)',
     icon: <Heart className="h-5 w-5" aria-hidden="true" />,
   },
   {
@@ -85,7 +85,7 @@ const situations: LifeSituation[] = [
     titleEn: 'Duty',
     sanskrit: 'स्वधर्मः',
     prompt: 'Engage with your authentic calling wholeheartedly, performing actions as a dedicated offering rather than for ego.',
-    scriptureRef: 'गीता ३.३५ व २.४७ (श्रेयान्स्वधर्मो विगुणः)',
+    scriptureRef: 'गीता 3.35 व 2.47 (श्रेयान्स्वधर्मो विगुणः)',
     icon: <Scale className="h-5 w-5" aria-hidden="true" />,
   },
   {
@@ -96,7 +96,7 @@ const situations: LifeSituation[] = [
     titleEn: 'Self-control',
     sanskrit: 'दमः व तपः',
     prompt: 'Walk the golden middle path of moderation in food, recreation, and sleep to cultivate sustainable clarity.',
-    scriptureRef: 'गीता ६.१६ व ६.२४ (नात्यश्नतस्तु योगोऽस्ति)',
+    scriptureRef: 'गीता 6.16 व 6.24 (नात्यश्नतस्तु योगोऽस्ति)',
     icon: <Compass className="h-5 w-5" aria-hidden="true" />,
   },
   {
@@ -107,7 +107,7 @@ const situations: LifeSituation[] = [
     titleEn: 'Focus',
     sanskrit: 'अभ्यासः व धारणा',
     prompt: 'Train the wandering mind through patient repetition (abhyāsa) and gentle dispassion (vairāgya).',
-    scriptureRef: 'गीता ६.३५ (अभ्यासेन तु कौन्तेय)',
+    scriptureRef: 'गीता 6.35 (अभ्यासेन तु कौन्तेय)',
     icon: <Target className="h-5 w-5" aria-hidden="true" />,
   },
   {
@@ -118,7 +118,7 @@ const situations: LifeSituation[] = [
     titleEn: 'Devotion',
     sanskrit: 'भक्ति-योगः',
     prompt: 'Transform ordinary daily activities into loving devotion by offering every thought and deed to the divine.',
-    scriptureRef: 'गीता ९.२६ (पत्रं पुष्पं फलं तोयम्)',
+    scriptureRef: 'गीता 9.26 (पत्रं पुष्पं फलं तोयम्)',
     icon: <Sparkles className="h-5 w-5" aria-hidden="true" />,
   },
   {
@@ -129,7 +129,7 @@ const situations: LifeSituation[] = [
     titleEn: 'Knowledge',
     sanskrit: 'ज्ञानम् व विवेकः',
     prompt: 'Discern the permanent truth from transient appearances; nothing in this world purifies like wisdom.',
-    scriptureRef: 'गीता ४.३८ (न हि ज्ञानेन सदृशं पवित्रम्)',
+    scriptureRef: 'गीता 4.38 (न हि ज्ञानेन सदृशं पवित्रम्)',
     icon: <BookOpen className="h-5 w-5" aria-hidden="true" />,
   },
   {
@@ -140,7 +140,7 @@ const situations: LifeSituation[] = [
     titleEn: 'Relationships',
     sanskrit: 'सर्वभूतहिते रताः',
     prompt: 'See the identical divine presence in all individuals, cultivating harmony through truthful speech and non-possessive love.',
-    scriptureRef: 'गीता ६.२९ (सर्वभूतस्थमात्मानं)',
+    scriptureRef: 'गीता 6.29 (सर्वभूतस्थमात्मानं)',
     icon: <Users className="h-5 w-5" aria-hidden="true" />,
   },
 ];
@@ -148,7 +148,7 @@ const situations: LifeSituation[] = [
 type CategoryFilter = 'all' | 'peace' | 'duty' | 'harmony';
 
 const FILTER_TABS: Array<{ id: CategoryFilter; label: string; sub: string }> = [
-  { id: 'all', label: 'All Dimensions', sub: 'सभी १० विषय' },
+  { id: 'all', label: 'All Dimensions', sub: 'सभी 10 विषय' },
   { id: 'peace', label: 'Inner Peace', sub: 'शांति व धैर्य' },
   { id: 'duty', label: 'Duty & Purpose', sub: 'कर्म व एकाग्रता' },
   { id: 'harmony', label: 'Solace & Connection', sub: 'सद्भाव व प्रेम' },
@@ -294,7 +294,7 @@ export function LifeSituationsSection() {
               className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-xs font-bold text-dharma-text shadow-xs active:scale-95"
               aria-expanded={showAllMobile}
             >
-              <span>{showAllMobile ? 'कम विषय दिखाएं (Show Less)' : 'सभी १० विषय देखें (Show All 10)'}</span>
+              <span>{showAllMobile ? 'कम विषय दिखाएं (Show Less)' : 'सभी 10 विषय देखें (Show All 10)'}</span>
               {showAllMobile ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
             </button>
           </div>

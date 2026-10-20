@@ -17,7 +17,7 @@ import {
   CheckCircle2,
   Volume2,
 } from 'lucide-react';
-import { cleanVerseField, toDevanagari, verseLines } from '@/lib/verse-format';
+import { cleanVerseField, toAsciiDigits, verseLines } from '@/lib/verse-format';
 import { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 import { ExplainLine } from '@/app/components/study/ExplainLine';
 import { CompareViews } from '@/app/components/study/CompareViews';
@@ -420,7 +420,7 @@ export function ReaderLayers({
               </span>
             ))}
             <span aria-hidden="true" className="mt-2 block text-[0.6em] font-bold text-amber-800 dark:text-amber-300">
-              ॥ {toDevanagari(chapterId)}.{toDevanagari(verse.number)} ॥
+              ॥ {toAsciiDigits(chapterId)}.{toAsciiDigits(verse.number)} ॥
             </span>
           </p>
           {!settings.liteMode && (

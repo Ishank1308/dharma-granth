@@ -71,7 +71,7 @@ export default function HomePage() {
         <FeaturedScripturesSection />
 
         {/* 7. Touch & Contemplate: 3D Sacred Experience System */}
-        <LazyExperience3D gitaCountLabel="१८ अध्याय · ७०० श्लोक" />
+        <LazyExperience3D gitaCountLabel="18 अध्याय · 700 श्लोक" />
 
         {/* 8. Practice tools preview */}
         <LazySadhanaPreview />

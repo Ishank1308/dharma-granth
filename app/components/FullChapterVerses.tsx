@@ -1058,7 +1058,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 )}
                 <span className="hidden sm:inline">
                   {parayanaActive && activeRecitingVerse !== null
-                    ? `पारायण (${toDevanagari(activeRecitingVerse)})`
+                    ? `पारायण (${toAsciiDigits(activeRecitingVerse)})`
                     : 'अध्याय पारायण'}
                 </span>
               </button>
@@ -1080,7 +1080,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                   aria-label={`श्लोक ${resumeVerse} से आगे`}
                 >
                   <Play className="h-3 w-3 text-amber-600 dark:text-amber-400 fill-current" />
-                  <span>{toDevanagari(resumeVerse)} से आगे</span>
+                  <span>{toAsciiDigits(resumeVerse)} से आगे</span>
                 </button>
               )}
 
@@ -1366,7 +1366,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                   </option>
                   {state.verses.map((v) => (
                     <option key={String(v.number)} value={String(v.number)}>
-                      श्लोक {toDevanagari(v.number)} ({v.number})
+                      श्लोक {toAsciiDigits(v.number)} ({v.number})
                     </option>
                   ))}
                 </select>
@@ -1505,7 +1505,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 key={`rail-${String(v.number)}`}
                 type="button"
                 onClick={() => scrollToVerse(v.number)}
-                title={`श्लोक ${toDevanagari(v.number)} (${v.number})`}
+                title={`श्लोक ${toAsciiDigits(v.number)} (${v.number})`}
                 aria-label={`श्लोक ${v.number}`}
                 className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono font-medium transition-all ${
                   isCurrent
@@ -1513,7 +1513,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     : 'text-stone-400 hover:text-stone-100 hover:bg-stone-800/80 hover:scale-105'
                 }`}
               >
-                {toDevanagari(v.number)}
+                {toAsciiDigits(v.number)}
               </button>
             );
           })}
@@ -1576,7 +1576,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           <a href={state.source.repo} target="_blank" rel="noopener noreferrer" className="underline">
             {state.source.repo.replace('https://github.com/', '')}
           </a>
-          {state.source.fetchedAt && ` · प्राप्त ${new Date(state.source.fetchedAt).toLocaleDateString('hi-IN')}`}
+          {state.source.fetchedAt && ` · प्राप्त ${new Date(state.source.fetchedAt).toLocaleDateString('hi-IN', { numberingSystem: 'latn' })}`}
         </p>
       )}
 

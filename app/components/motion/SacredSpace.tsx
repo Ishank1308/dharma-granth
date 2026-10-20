@@ -99,7 +99,7 @@ export function SacredSpace() {
                 <Granth
                   title="श्रीमद्भगवद्गीता"
                   subTitle="The Song of Eternal Truth"
-                  verseCount="७०० श्लोक · १८ अध्याय"
+                  verseCount="700 श्लोक · 18 अध्याय"
                   href="/scripture/bhagavadgita"
                 />
               ) : (
@@ -131,7 +131,7 @@ export function SacredSpace() {
                       <p className="text-sm font-bold text-dharma-text group-hover:text-saffron-700 transition">
                         The Song of Eternal Truth
                       </p>
-                      <p className="text-xs text-dharma-muted">७०० श्लोक · १८ अध्याय</p>
+                      <p className="text-xs text-dharma-muted">700 श्लोक · 18 अध्याय</p>
                     </div>
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-saffron-500/10 text-saffron-700 group-hover:bg-saffron-600 group-hover:text-white transition">
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -158,7 +158,7 @@ export function SacredSpace() {
               <p className="mt-4 text-xs font-semibold text-dharma-muted">
                 {Chakra && !isLiteMode
                   ? '3D Dharmachakra — drag, or focus it and use the arrow keys'
-                  : '२४ अरों वाला धर्मचक्र · Symbol of Truth and Cosmic Order'}
+                  : '24 अरों वाला धर्मचक्र · Symbol of Truth and Cosmic Order'}
               </p>
             </div>
           </div>

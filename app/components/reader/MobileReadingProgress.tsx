@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import { toDevanagari } from '@/lib/verse-format';
+import { toAsciiDigits } from '@/lib/verse-format';
 
 interface MobileReadingProgressProps {
   currentVerseNumber: number | string;
@@ -32,9 +32,9 @@ export function MobileReadingProgress({
           {chapterTitle ? <span className="font-devanagari">{chapterTitle}</span> : 'प्रगति'}
         </span>
         <span className="flex items-center gap-1.5 font-mono text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
-          <span className="font-devanagari">श्लोक {toDevanagari(currentVerseNumber)}</span>
+          <span className="font-devanagari">श्लोक {toAsciiDigits(currentVerseNumber)}</span>
           <span className="opacity-40">/</span>
-          <span className="font-devanagari">{toDevanagari(totalVerses)}</span>
+          <span className="font-devanagari">{toAsciiDigits(totalVerses)}</span>
           <span className="rounded-md bg-saffron-500/10 px-1 py-0.2 text-[10px] font-bold text-saffron-700 dark:text-saffron-400">
             {percent}%
           </span>

@@ -92,7 +92,7 @@ export function JournalClient() {
     const combined = entries
       .map(
         (e) =>
-          `# ${e.title}\n\n*दिनांक: ${new Date(e.createdAt).toLocaleDateString()} | भाव: ${e.moodTag || 'स्वाध्याय'} | टैग्स: ${e.tags.join(', ')}*\n\n${
+          `# ${e.title}\n\n*दिनांक: ${new Date(e.createdAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })} | भाव: ${e.moodTag || 'स्वाध्याय'} | टैग्स: ${e.tags.join(', ')}*\n\n${
             e.linkedReferences.length > 0
               ? `**संलग्न श्लोक:** ${e.linkedReferences.map((r) => r.canonicalReference).join(', ')}\n\n`
               : ''
@@ -289,7 +289,7 @@ export function JournalClient() {
           <div className="space-y-5">
             {filteredEntries.map((entry) => {
               const moodInfo = MOOD_FILTERS.find((m) => m.id === entry.moodTag);
-              const dateStr = new Date(entry.createdAt).toLocaleDateString('hi-IN', {
+              const dateStr = new Date(entry.createdAt).toLocaleDateString('hi-IN', { numberingSystem: 'latn',
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',

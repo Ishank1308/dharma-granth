@@ -203,7 +203,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     id: 'meditation',
     command: '> meditation',
     title: 'Start 10-Minute Meditation Timer',
-    titleHi: '१० मिनट ध्यान साधना प्रारंभ करें',
+    titleHi: '10 मिनट ध्यान साधना प्रारंभ करें',
     subtitle: 'Timed Silent Meditation with Bells & Wake-Lock',
     icon: '🧘',
     run: (onClose, router) => {
@@ -246,7 +246,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
         }
       } catch {}
       router.push('/scripture/bhagavadgita/chapter/2/#verse-47');
-      triggerPranaToast({ message: 'गीता २.४७ से प्रारंभ · Resumed reading', icon: '📖' });
+      triggerPranaToast({ message: 'गीता 2.47 से प्रारंभ · Resumed reading', icon: '📖' });
       onClose();
     },
   },

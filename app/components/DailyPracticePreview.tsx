@@ -6,7 +6,7 @@ import { ArrowRight, BookOpen, Clock, Heart, Lock, Sparkles } from 'lucide-react
 export function DailyPracticePreview() {
   const tools = [
     { titleHi: 'दैनिक श्लोक', titleEn: 'Daily Verse', icon: <BookOpen className="h-4 w-4" />, desc: 'प्रतिदिन एक श्लोक का अर्थ सहित पारायण' },
-    { titleHi: 'जप माला', titleEn: 'Japa Counter', icon: <Sparkles className="h-4 w-4" />, desc: '१०८ मनकों की शांत व एकाग्र जप माला' },
+    { titleHi: 'जप माला', titleEn: 'Japa Counter', icon: <Sparkles className="h-4 w-4" />, desc: '108 मनकों की शांत व एकाग्र जप माला' },
     { titleHi: 'ध्यान समय', titleEn: 'Meditation Timer', icon: <Clock className="h-4 w-4" />, desc: 'गोंग व तानपूरा की ध्वनि सहित मौन ध्यान' },
     { titleHi: 'कृतज्ञता डायरी', titleEn: 'Gratitude Journal', icon: <Heart className="h-4 w-4" />, desc: 'दैनिक कृतज्ञता व संकल्प का निजी आलेख' },
   ];
@@ -21,7 +21,7 @@ export function DailyPracticePreview() {
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300">
               <Lock className="h-3 w-3" />
-              १००% निजी (100% Private)
+              100% निजी (100% Private)
             </span>
           </div>
           <h3 className="font-serif text-xl font-bold text-dharma-text">

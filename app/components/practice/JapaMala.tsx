@@ -56,9 +56,6 @@ const FLICK = 380;
 const BEAD_SPRING = { type: 'spring', stiffness: 520, damping: 30, mass: 0.7 } as const;
 const BPM_SAMPLES = 5;
 
-const DEVANAGARI_DIGITS = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
-const toDevanagari = (n: number) => String(n).replace(/\d/g, (d) => DEVANAGARI_DIGITS[Number(d)]);
-
 /** Horizontal sweep of the strand: a gentle C-curve, the thumb rest at its apex. */
 const curveX = (t: number) => 64 * (1 - Math.cos(t * 0.27));
 /** Rubber-band the thumb's travel: easy for one bead, firmer beyond, stiff upward. */
@@ -201,7 +198,6 @@ export function JapaMala() {
   const [state, setState] = useLocalStorage<JapaState>('dharma.practice.japa', INITIAL);
   const [soundEnabled, setSoundEnabled] = useLocalStorage<boolean>('dharma.practice.japa.sound', true);
   const [vibrationEnabled, setVibrationEnabled] = useLocalStorage<boolean>('dharma.practice.japa.vibration', true);
-  const [numerals, setNumerals] = useLocalStorage<'deva' | 'latin'>('dharma.practice.japa.numerals', 'deva');
   const reduce = useReducedMotion();
 
   const today = localISODate();
@@ -430,7 +426,7 @@ export function JapaMala() {
     }
   };
 
-  const shown = (n: number) => (numerals === 'deva' ? toDevanagari(n) : String(n));
+  const shown = (n: number) => String(n);
   const beads: number[] = [];
   for (let i = anchor - WINDOW; i <= anchor + WINDOW; i++) if (i >= 0 && i <= SUMERU) beads.push(i);
 
@@ -476,14 +472,6 @@ export function JapaMala() {
               </button>
             )}
           </div>
-          <button
-            type="button"
-            className={pill}
-            onClick={() => setNumerals(numerals === 'deva' ? 'latin' : 'deva')}
-            aria-label={numerals === 'deva' ? 'Show English numerals' : 'Show Devanagari numerals'}
-          >
-            {numerals === 'deva' ? '१२३ → 123' : '123 → १२३'}
-          </button>
         </div>
 
         <label className="mt-4 block">

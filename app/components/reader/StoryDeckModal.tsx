@@ -22,6 +22,7 @@ import { speakSanskritShloka, stopSanskritSpeech } from '@/lib/sacred-audio';
 import type { VerseEditorialLayer } from '@/lib/literary-commentary';
 import { saveJournalEntry } from '@/lib/study/storage';
 import type { JournalEntry } from '@/lib/study/types';
+import { toAsciiDigits } from '@/lib/verse-format';
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -29,7 +30,7 @@ const FOCUSABLE =
 export interface StoryDeckData {
   scriptureTitle: string;
   chapterTitle?: string;
-  verseRef: string; // e.g. "भगवद्गीता २.४७" or "Bhagavad Gita 2.47"
+  verseRef: string; // e.g. "भगवद्गीता 2.47" or "Bhagavad Gita 2.47"
   sanskrit: string;
   transliteration?: string;
   hindi?: string;
@@ -207,7 +208,7 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
       <div
         role="dialog"
         aria-modal="true"
-        aria-label={`६०-सेकंड सार · ${data.verseRef}`}
+        aria-label={`60-सेकंड सार · ${toAsciiDigits(data.verseRef)}`}
         className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-950/80 backdrop-blur-md overflow-hidden"
       >
         <motion.div
@@ -226,10 +227,10 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
             <div className="flex items-center justify-between mb-2.5">
               <div className="flex items-center gap-2">
                 <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-saffron-500/20 text-saffron-300 text-[11px] font-bold tracking-wider uppercase border border-saffron-500/30">
-                  <Clock className="w-3 h-3" /> ६०-सेकंड सार
+                  <Clock className="w-3 h-3" /> 60-सेकंड सार
                 </span>
                 <span className="text-xs text-stone-400 font-medium">
-                  {data.verseRef}
+                  {toAsciiDigits(data.verseRef)}
                 </span>
               </div>
               <button
@@ -276,7 +277,7 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                   className="flex-1 flex flex-col justify-center space-y-6"
                 >
                   <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-widest">
-                    <HelpCircle className="w-4 h-4" /> कार्ड १ · आधुनिक द्वंद्व (The Human Struggle)
+                    <HelpCircle className="w-4 h-4" /> कार्ड 1 · आधुनिक द्वंद्व (The Human Struggle)
                   </div>
 
                   <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white leading-snug">
@@ -312,7 +313,7 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                   className="flex-1 flex flex-col justify-center space-y-5 text-center"
                 >
                   <div className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-saffron-400 uppercase tracking-widest">
-                    <Sparkles className="w-3.5 h-3.5" /> कार्ड २ · मूल श्लोक (Canonical Sanskrit)
+                    <Sparkles className="w-3.5 h-3.5" /> कार्ड 2 · मूल श्लोक (Canonical Sanskrit)
                   </div>
 
                   <div className="relative rounded-2xl border border-amber-500/30 bg-amber-950/20 p-6 sm:p-8 backdrop-blur-sm shadow-inner">
@@ -351,7 +352,7 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                   className="flex-1 flex flex-col justify-center space-y-5"
                 >
                   <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-300 uppercase tracking-widest">
-                    <BookOpen className="w-4 h-4" /> कार्ड ३ · साहित्यिक भावार्थ (Writerly Meaning)
+                    <BookOpen className="w-4 h-4" /> कार्ड 3 · साहित्यिक भावार्थ (Writerly Meaning)
                   </div>
 
                   {data.hindi && (
@@ -396,7 +397,7 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                   className="flex-1 flex flex-col justify-center space-y-4"
                 >
                   <div className="inline-flex items-center gap-2 text-xs font-bold text-rose-400 uppercase tracking-widest">
-                    <AlertCircle className="w-4 h-4" /> कार्ड ४ · भ्रम निवारण (Misreading vs Truth)
+                    <AlertCircle className="w-4 h-4" /> कार्ड 4 · भ्रम निवारण (Misreading vs Truth)
                   </div>
 
                   {/* Misreading Box */}
@@ -438,12 +439,12 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                   className="flex-1 flex flex-col justify-center space-y-6"
                 >
                   <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-300 uppercase tracking-widest">
-                    <Lightbulb className="w-4 h-4" /> कार्ड ५ · आज का सूक्ष्म अभ्यास (Micro-Practice)
+                    <Lightbulb className="w-4 h-4" /> कार्ड 5 · आज का सूक्ष्म अभ्यास (Micro-Practice)
                   </div>
 
                   <div className="rounded-2xl border border-amber-400/30 bg-gradient-to-br from-amber-500/15 via-saffron-500/10 to-transparent p-5 space-y-3">
                     <p className="text-xs font-bold text-amber-300 uppercase tracking-wider">
-                      १-मिनट आत्म-चिंतन:
+                      1-मिनट आत्म-चिंतन:
                     </p>
                     <p lang="hi" className="font-devanagari text-base sm:text-lg text-white font-medium leading-relaxed">
                       {data.meta.microPracticeHi}

@@ -137,7 +137,7 @@ export default function AskDharmaPage() {
 
             <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-amber-200/80">
               <span className="flex items-center gap-1.5">
-                <BookOpen className="h-4 w-4 text-amber-400" /> १००% शास्त्र-आधारित
+                <BookOpen className="h-4 w-4 text-amber-400" /> 100% शास्त्र-आधारित
               </span>
               <span className="flex items-center gap-1.5">
                 <Shield className="h-4 w-4 text-amber-400" /> निष्पक्ष व प्रामाणिक

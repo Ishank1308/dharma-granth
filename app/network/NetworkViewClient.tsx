@@ -31,7 +31,7 @@ function NetworkStaticPlaceholder() {
           ज्ञान संजाल लोड हो रहा है...
         </h3>
         <p className="text-xs text-dharma-muted">
-          १७ प्रमुख संकल्पनाओं और संवादों के नोड्स व संबंध रेखाएं तैयार की जा रही हैं।
+          17 प्रमुख संकल्पनाओं और संवादों के नोड्स व संबंध रेखाएं तैयार की जा रही हैं।
         </p>
       </div>
     </div>
@@ -125,7 +125,7 @@ export function NetworkViewClient() {
             }`}
           >
             <Network className="h-3.5 w-3.5" />
-            <span>३D / संजाल दृश्य</span>
+            <span>3D / संजाल दृश्य</span>
           </button>
           <button
             type="button"
@@ -140,7 +140,7 @@ export function NetworkViewClient() {
             }`}
           >
             <List className="h-3.5 w-3.5" />
-            <span>२D सुलभ सूची दृश्य</span>
+            <span>2D सुलभ सूची दृश्य</span>
           </button>
         </div>
 

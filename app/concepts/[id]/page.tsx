@@ -218,7 +218,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
           <div className="flex flex-wrap items-center justify-between gap-2 border-l-4 border-saffron-600 pl-4">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
-                Interactive Visual Learning Layer · चरण १०
+                Interactive Visual Learning Layer · चरण 10
               </p>
               <h2 id="visual-model-heading" className="text-2xl sm:text-3xl font-serif font-bold text-dharma-text">
                 दृश्य ज्ञान दर्शन (Sacred Visual Model)
@@ -228,7 +228,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
               href="/concepts/visuals"
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-saffron-700 dark:text-saffron-400 hover:underline min-h-[44px]"
             >
-              <span>१० मूल तत्त्वों का सम्पूर्ण दृश्य अन्वेषक</span>
+              <span>10 मूल तत्त्वों का सम्पूर्ण दृश्य अन्वेषक</span>
               <Compass className="w-4 h-4" />
             </Link>
           </div>

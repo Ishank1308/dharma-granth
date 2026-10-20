@@ -47,7 +47,7 @@ const DISCOVERY_QUESTIONS: QuestionDef[] = [
   {
     key: 'interest',
     en: '1. What interests you most?',
-    hi: '१. आप किस विषय में सबसे अधिक रुचि रखते हैं?',
+    hi: '1. आप किस विषय में सबसे अधिक रुचि रखते हैं?',
     options: [
       { value: 'practical', en: 'Practical wisdom', hi: 'दैनिक जीवन में विवेक', icon: '🌱' },
       { value: 'devotion', en: 'Devotion and prayer', hi: 'भक्ति और समर्पण', icon: '🙏' },
@@ -61,7 +61,7 @@ const DISCOVERY_QUESTIONS: QuestionDef[] = [
   {
     key: 'challenge',
     en: '2. What would you like help understanding?',
-    hi: '२. आप किस मानवीय विषय पर मार्गदर्शन चाहते हैं?',
+    hi: '2. आप किस मानवीय विषय पर मार्गदर्शन चाहते हैं?',
     options: [
       { value: 'duty', en: 'Duty and right action', hi: 'कर्तव्य और धर्म', icon: '⚖️' },
       { value: 'uncertainty', en: 'Uncertainty and anxiety', hi: 'अनिश्चितता और भय', icon: '🛡️' },
@@ -75,7 +75,7 @@ const DISCOVERY_QUESTIONS: QuestionDef[] = [
   {
     key: 'familiarity',
     en: '3. How familiar are you with scriptures?',
-    hi: '३. शास्त्रों से आपका परिचय कितना है?',
+    hi: '3. शास्त्रों से आपका परिचय कितना है?',
     options: [
       { value: 'new', en: 'Completely new (first-time reader)', hi: 'प्रथम परिचय (नया पाठक)' },
       { value: 'some', en: 'Some familiarity (heard verses or stories)', hi: 'थोड़ा परिचय' },
@@ -86,18 +86,18 @@ const DISCOVERY_QUESTIONS: QuestionDef[] = [
   {
     key: 'time',
     en: '4. How much time do you have?',
-    hi: '४. आप दैनिक कितना समय देना चाहेंगे?',
+    hi: '4. आप दैनिक कितना समय देना चाहेंगे?',
     options: [
-      { value: '5', en: '5 minutes a day', hi: '५ मिनट' },
-      { value: '10', en: '10 minutes a day', hi: '१० मिनट' },
-      { value: '20', en: '20 minutes a day', hi: '२० मिनट' },
+      { value: '5', en: '5 minutes a day', hi: '5 मिनट' },
+      { value: '10', en: '10 minutes a day', hi: '10 मिनट' },
+      { value: '20', en: '20 minutes a day', hi: '20 मिनट' },
       { value: 'deep', en: 'Longer study sessions', hi: 'विस्तृत अध्ययन' },
     ],
   },
   {
     key: 'format',
     en: '5. What format do you prefer?',
-    hi: '५. आपको किस रूप में अध्ययन पसंद है?',
+    hi: '5. आपको किस रूप में अध्ययन पसंद है?',
     options: [
       { value: 'reading', en: 'Reading text with simple explanations', hi: 'पढ़ना (सरल भावार्थ सहित)' },
       { value: 'audio', en: 'Listening to chanted pronunciation', hi: 'सुनना (मंत्र उच्चारण सहित)' },

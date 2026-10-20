@@ -87,9 +87,9 @@ const desktopDiscoveryItems = [
   { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra' },
   { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask' },
   { label: 'श्लोक संबंध जाल', description: 'Verse Relationship Network — गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network' },
-  { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — १२ क्रमिक साधना पथ', href: '/journeys' },
+  { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — 12 क्रमिक साधना पथ', href: '/journeys' },
   { label: 'स्वाध्याय मार्ग', description: 'Guided Reading Paths — विषयवार अध्ययन', href: '/learn/paths' },
-  { label: 'पठन योजनाएँ', description: 'Reading Plans — १८ दिवसीय गीता आदि', href: '/learn/plans' },
+  { label: 'पठन योजनाएँ', description: 'Reading Plans — 18 दिवसीय गीता आदि', href: '/learn/plans' },
   { label: 'जिज्ञासा समाधान', description: 'Scripture FAQs — श्रुति-स्मृति व नीति', href: '/learn/faq' },
   { label: 'स्रोत पारदर्शिता', description: 'Source Library — मूल पांडुलिपियाँ व संस्करण', href: '/sources' },
   { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — तनाव, भय, क्रोध व धर्मसंकट का समाधान', href: '/guidance' },
@@ -487,7 +487,7 @@ export function SiteNav({
       id: 'wisdom-for-life',
       label: 'जीवन मार्गदर्शन',
       labelEn: 'Wisdom for Life',
-      description: '१२ जीवन-विषय · तनाव, भय, कर्तव्य व आत्मज्ञान',
+      description: '12 जीवन-विषय · तनाव, भय, कर्तव्य व आत्मज्ञान',
       href: '/wisdom-for-life',
       icon: Compass,
       badge: 'जीवन-विषय',
@@ -900,7 +900,7 @@ export function SiteNav({
                       मुख्य अनुभाग · Navigation
                     </h3>
                     <span className="text-[10px] text-dharma-muted font-devanagari">
-                      १० पावन विभाग
+                      10 पावन विभाग
                     </span>
                   </div>
 

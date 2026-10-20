@@ -166,7 +166,7 @@ export function PackClient() {
       {loaded.length > 0 && (
         <article id="pack-print" aria-label="Study pack preview" className="mt-6 rounded-2xl border border-dharma-border bg-white p-6 text-black">
           <h2 className="font-serif text-2xl font-bold">{title}</h2>
-          <p className="text-sm text-neutral-600">Prepared from Dharma Granth · {new Date().toLocaleDateString()} · Editorial notes are labelled and are not scripture.</p>
+          <p className="text-sm text-neutral-600">Prepared from Dharma Granth · {new Date().toLocaleDateString(undefined, { numberingSystem: 'latn' })} · Editorial notes are labelled and are not scripture.</p>
 
           {loaded.map((l) => {
             const lesson = lessonFor(l.item);

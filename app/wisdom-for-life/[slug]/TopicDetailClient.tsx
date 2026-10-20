@@ -289,11 +289,11 @@ export function TopicDetailClient({
                       type="button"
                       onClick={() => setActiveStoryVerse(verse)}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-amber-300/80 bg-amber-50/80 text-xs font-bold text-amber-900 hover:bg-amber-100 transition shadow-2xs dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200"
-                      aria-label={`६०-सेकंड सार ${verse.referenceDisplay}`}
-                      title="६०-सेकंड सार (5-Card Visual Story Deck)"
+                      aria-label={`60-सेकंड सार ${verse.referenceDisplay}`}
+                      title="60-सेकंड सार (5-Card Visual Story Deck)"
                     >
                       <Zap className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                      <span>६०-सेकंड सार</span>
+                      <span>60-सेकंड सार</span>
                     </button>
 
                     <button

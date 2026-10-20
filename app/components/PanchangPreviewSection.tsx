@@ -176,7 +176,7 @@ export function PanchangPreviewSection() {
     );
     try {
       setDateHiStr(
-        today.toLocaleDateString('hi-IN', {
+        today.toLocaleDateString('hi-IN', { numberingSystem: 'latn',
           weekday: 'long',
           day: 'numeric',
           month: 'long',

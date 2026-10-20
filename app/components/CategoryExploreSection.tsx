@@ -234,7 +234,7 @@ export function CategoryExploreSection() {
             className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-xs font-bold text-dharma-text shadow-xs active:scale-95"
             aria-expanded={showAllMobile}
           >
-            <span>{showAllMobile ? 'कम श्रेणियाँ दिखाएं (Show Less)' : 'सभी ८ श्रेणियाँ देखें (Show All 8)'}</span>
+            <span>{showAllMobile ? 'कम श्रेणियाँ दिखाएं (Show Less)' : 'सभी 8 श्रेणियाँ देखें (Show All 8)'}</span>
             {showAllMobile ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
           </button>
         </div>

@@ -101,7 +101,7 @@ const GEN_Z_PATHWAYS: GenZPathway[] = [
   {
     id: 'two-min',
     labelEn: '2-Minute reading',
-    labelHi: '२ मिनट स्वाध्याय',
+    labelHi: '2 मिनट स्वाध्याय',
     sanskrit: 'नित्य श्लोक',
     href: '/daily-verse',
     icon: Clock,

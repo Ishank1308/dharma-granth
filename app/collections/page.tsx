@@ -374,7 +374,7 @@ export default function CollectionsPage() {
                   </div>
                   <p className="text-sm text-dharma-text leading-relaxed">{n.text}</p>
                   <p className="text-[10px] text-dharma-muted mt-2">
-                    {new Date(n.updatedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                    {new Date(n.updatedAt).toLocaleDateString(undefined, { numberingSystem: 'latn', month: 'short', day: 'numeric', year: 'numeric' })}
                   </p>
                 </div>
               ))}

@@ -129,7 +129,7 @@ export function SourcesAndInterpretation({
             <Layers className="w-3.5 h-3.5 text-saffron-600" />
             सामग्री वर्गीकरण संकेत (Epistemic Content Labels)
           </h3>
-          <span className="text-[11px] text-dharma-muted">६ स्तरिय प्रमाण व्यवस्था</span>
+          <span className="text-[11px] text-dharma-muted">6 स्तरिय प्रमाण व्यवस्था</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">

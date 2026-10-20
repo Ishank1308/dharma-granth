@@ -89,8 +89,8 @@ const MODES: Array<Choice<ReaderModeTier>> = [
 ];
 
 const NUMBERS: Array<Choice<NumberFormatPref>> = [
-  { id: 'indian', label: '१, २, ३', hint: 'Devanagari' },
-  { id: 'international', label: '1, 2, 3', hint: 'International' },
+  { id: 'indian', label: '1,23,456', hint: 'Indian grouping' },
+  { id: 'international', label: '123,456', hint: 'International grouping' },
 ];
 
 const LANGUAGES_PREF: Array<Choice<ReaderLanguagePref>> = [

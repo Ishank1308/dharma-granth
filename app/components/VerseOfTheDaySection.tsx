@@ -536,11 +536,11 @@ export function VerseOfTheDaySection() {
                       <button
                         type="button"
                         onClick={() => setIsStoryDeckOpen(true)}
-                        aria-label="६०-सेकंड सार (5-Card Visual Story Deck)"
+                        aria-label="60-सेकंड सार (5-Card Visual Story Deck)"
                         className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-3.5 py-2 text-xs font-bold text-amber-900 transition hover:bg-amber-100 hover:border-amber-400 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-200 shadow-sm"
                       >
                         <Zap className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-                        <span>६०-सेकंड सार</span>
+                        <span>60-सेकंड सार</span>
                       </button>
                     </div>
 

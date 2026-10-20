@@ -174,7 +174,7 @@ export function DashboardClient({ titles }: { titles: Record<string, string> }) 
                 <Flame className="w-5 h-5 text-saffron-600" />
                 <span className="text-xs font-bold uppercase tracking-wider text-saffron-700">Last read</span>
               </div>
-              <p className="text-xl font-bold text-dharma-text">{streak.lastReadDate ? new Date(streak.lastReadDate).toLocaleDateString() : 'Not yet'}</p>
+              <p className="text-xl font-bold text-dharma-text">{streak.lastReadDate ? new Date(streak.lastReadDate).toLocaleDateString(undefined, { numberingSystem: 'latn' }) : 'Not yet'}</p>
               <p className="text-xs text-dharma-muted">Return whenever you like</p>
             </div>
 

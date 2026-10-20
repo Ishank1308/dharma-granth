@@ -184,7 +184,7 @@ export default function BookmarksAndAnnotationsPage() {
 
   const exportAllDataMarkdown = () => {
     let md = `# Dharma Granth · Private Sanctuary Export\n\n`;
-    md += `*Exported on: ${new Date().toLocaleDateString()}*\n\n`;
+    md += `*Exported on: ${new Date().toLocaleDateString(undefined, { numberingSystem: 'latn' })}*\n\n`;
     md += `## 1. Bookmarked Verses (${bookmarks.length})\n\n`;
     bookmarks.forEach((b) => {
       md += `### ${b.scriptureTitle} — Chapter ${b.chapterId ?? ''}, Verse ${b.verseId}\n`;
@@ -196,7 +196,7 @@ export default function BookmarksAndAnnotationsPage() {
     md += `## 2. Private Notes & Reflections (${notes.length})\n\n`;
     notes.forEach((n) => {
       md += `### ${n.scriptureId.toUpperCase()} Ch ${n.chapterId} Verse ${n.verseId}\n`;
-      md += `> ${n.text}\n\n*Updated: ${new Date(n.updatedAt).toLocaleDateString()}*\n\n`;
+      md += `> ${n.text}\n\n*Updated: ${new Date(n.updatedAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}*\n\n`;
     });
 
     const blob = new Blob([md], { type: 'text/markdown' });
@@ -473,7 +473,7 @@ export default function BookmarksAndAnnotationsPage() {
 
                       <div className="mt-4 flex items-center justify-between pt-3 border-t border-dharma-border">
                         <span className="text-xs text-dharma-muted">
-                          Saved {new Date(bookmark.timestamp).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                          Saved {new Date(bookmark.timestamp).toLocaleDateString(undefined, { numberingSystem: 'latn', month: 'short', day: 'numeric', year: 'numeric' })}
                         </span>
 
                         <Link
@@ -608,7 +608,7 @@ export default function BookmarksAndAnnotationsPage() {
 
                     <div className="mt-4 pt-2 border-t border-dharma-border/60 flex items-center justify-between text-xs">
                       <span className="text-dharma-muted">
-                        {new Date(hl.createdAt).toLocaleDateString()}
+                        {new Date(hl.createdAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}
                       </span>
                       <Link
                         href={`/scripture/${hl.scriptureId}/chapter/${hl.chapterId}/verse/${hl.verseId}`}
@@ -664,7 +664,7 @@ export default function BookmarksAndAnnotationsPage() {
                   </div>
 
                   <div className="mt-4 pt-2 border-t border-dharma-border/60 flex items-center justify-between text-xs text-dharma-muted">
-                    <span>Updated {new Date(note.updatedAt).toLocaleDateString()}</span>
+                    <span>Updated {new Date(note.updatedAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}</span>
                     <Link
                       href={`/scripture/${note.scriptureId}/chapter/${note.chapterId}/verse/${note.verseId}`}
                       className="font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2"

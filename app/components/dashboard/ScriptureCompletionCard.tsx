@@ -62,7 +62,7 @@ export function ScriptureCompletionCard({ recordedVerseCount, recentChapters }: 
                         {visit.chapterTitle}{visit.verseId ? ` · Verse ${visit.verseId}` : ''}
                       </span>
                       <time dateTime={visit.readAt} className="mt-1 block text-xs text-dharma-muted">
-                        Last opened {new Date(visit.readAt).toLocaleDateString()}
+                        Last opened {new Date(visit.readAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}
                       </time>
                     </span>
                     <ArrowUpRight className="h-4 w-4 shrink-0 text-dharma-muted group-hover:text-saffron-600" aria-hidden="true" />

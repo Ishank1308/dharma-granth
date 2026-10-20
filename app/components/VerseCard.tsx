@@ -29,7 +29,7 @@ import Link from 'next/link';
 import type { ScriptureCategory } from '@/data/types';
 import type { VerseHighlight } from '@/lib/useStudyProgress';
 import { resolveKeywordTarget } from '@/lib/keyword-links';
-import { toDevanagari, verseLines } from '@/lib/verse-format';
+import { toAsciiDigits, verseLines } from '@/lib/verse-format';
 import { shareVerseUrl } from '@/lib/verse-paths';
 import { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 import { SITE_URL } from '@/lib/jsonld';
@@ -501,10 +501,10 @@ export function VerseCard({
               className="flex items-center gap-3 text-left focus:outline-none group/hdr"
               title="एकाग्रता मोड में पढ़ें (Focus Mode)"
             >
-              <VerseMedallion label={toDevanagari(verseLabel)} />
+              <VerseMedallion label={toAsciiDigits(verseLabel)} />
               <div className="shrink-0 whitespace-nowrap">
                 <p className="text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
-                  अध्याय {toDevanagari(chapterId)}
+                  अध्याय {toAsciiDigits(chapterId)}
                 </p>
                 <p className="font-serif text-base font-bold text-dharma-text group-hover/hdr:text-saffron-700 transition-colors">
                   श्लोक {verseLabel}
@@ -513,10 +513,10 @@ export function VerseCard({
             </button>
           ) : (
             <div className="flex items-center gap-3">
-              <VerseMedallion label={toDevanagari(verseLabel)} />
+              <VerseMedallion label={toAsciiDigits(verseLabel)} />
               <div className="shrink-0 whitespace-nowrap">
                 <p className="text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
-                  अध्याय {toDevanagari(chapterId)}
+                  अध्याय {toAsciiDigits(chapterId)}
                 </p>
                 <p className="font-serif text-base font-bold text-dharma-text">श्लोक {verseLabel}</p>
               </div>
@@ -722,7 +722,7 @@ export function VerseCard({
                 },
                 {
                   key: 'story',
-                  label: '६०-सेकंड सार · 60-second summary',
+                  label: '60-सेकंड सार · 60-second summary',
                   icon: <Zap className="h-4 w-4" />,
                   onSelect: () => setStoryDeckOpen(true),
                   hidden: chantingMode,
@@ -831,7 +831,7 @@ export function VerseCard({
                   );
                 })}
                 <span aria-hidden="true" className="mt-2 block font-bold text-saffron-700 dark:text-amber-300">
-                  ॥ {toDevanagari(verseLabel)} ॥
+                  ॥ {toAsciiDigits(verseLabel)} ॥
                 </span>
               </p>
             )}
