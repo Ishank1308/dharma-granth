@@ -9,6 +9,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { findTemplateFields } from "./lib/template-text";
+import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
+
+const PILOT = loadPilotOverlay();
 
 /**
  * A meaning that only says a meaning belongs here, for example "Adhyaya 1, Shloka 4: विदुरनीति श्लोक का अर्थ।".
@@ -78,6 +81,14 @@ function main(): void {
         }
         console.log(`  ${id}: hid ${hidden.size} template explanation field(s)`);
       }
+    }
+
+    // Editorial pilot: apply the reviewed-for-structure Artha and clear the superseded explanation fields.
+    for (const p of PILOT.filter((x) => x.scriptureId === id)) {
+      const ch = (book.chapters ?? []).find((c) => c.number === p.chapter);
+      const v = ((ch?.verses ?? []) as Record<string, unknown>[]).find((x) => String(x.number) === p.verse);
+      if (v) patchPublishedVerse(v, p.record);
+      else console.warn(`  ${id}: pilot unit ${p.record.unitId} not found in ${p.chapter}:${p.verse}`);
     }
 
     const outDir = path.join(SRC, id);

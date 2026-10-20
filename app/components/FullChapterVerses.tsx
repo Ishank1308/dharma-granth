@@ -1409,6 +1409,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     verse={v}
                     meaning={{
                       isAi: Boolean(comment?.ai),
+                      editorial: comment?.editorial,
                       explanation,
                       explanationIsHi,
                       science,

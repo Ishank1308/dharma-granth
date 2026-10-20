@@ -78,6 +78,39 @@ export interface VerseMeaning {
   scienceIsHi: boolean;
   lesson?: string;
   lessonIsHi: boolean;
+  /** Set for editorial-pilot entries: an AI-assisted draft that no person has reviewed yet. */
+  editorial?: {
+    reviewStatus: 'review-required';
+    confidence: 'high' | 'medium' | 'low';
+    vijnanaCategory: string;
+    evidenceLevel: 'editorial-observation' | 'none';
+    arthaDecision: string;
+  };
+}
+
+const VIJNANA_CATEGORIES: Record<string, string> = {
+  psychological: 'मनोवैज्ञानिक · Psychological',
+  observational: 'अवलोकन-आधारित · Observational',
+  ethical: 'नैतिक · Ethical',
+  cognitive: 'संज्ञानात्मक · Cognitive',
+  contemplative: 'ध्यान-परंपरा · Contemplative',
+  social: 'सामाजिक · Social',
+  philosophical: 'दार्शनिक · Philosophical',
+  ecological: 'पारिस्थितिक · Ecological',
+  linguistic: 'भाषा-शैली · Linguistic',
+  historical: 'ऐतिहासिक · Historical',
+};
+
+/** Honest status for AI-assisted editorial drafts: shown wherever the draft text appears. */
+function DraftBadge({ lang }: { lang: 'hi' | 'en' }) {
+  return (
+    <span
+      className="inline-flex items-center gap-1 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300"
+      title="AI-सहायता से तैयार संपादकीय प्रारूप; किसी विद्वान ने अभी इसकी समीक्षा नहीं की · AI-assisted editorial draft; not yet reviewed by a person"
+    >
+      {lang === 'hi' ? 'संपादकीय प्रारूप · समीक्षा बाकी' : 'Editor draft · review pending'}
+    </span>
+  );
 }
 
 export interface VerseLayers {
@@ -379,9 +412,9 @@ export function VerseCard({
     if (layers.commentary && depth !== 'read' && explanation) {
       list.push({ id: 'explain', label: 'व्याख्या', icon: Sparkles });
     }
-    if (layers.commentary && depth === 'study' && science) list.push({ id: 'science', label: 'विज्ञान', icon: Atom });
+    if (layers.commentary && depth === 'study' && science) list.push({ id: 'science', label: meaning.editorial ? 'आधुनिक परिप्रेक्ष्य' : 'विज्ञान', icon: Atom });
     return list;
-  }, [showHindi, showEnglish, layers.commentary, depth, explanation, science]);
+  }, [showHindi, showEnglish, layers.commentary, depth, explanation, science, meaning.editorial]);
 
   const [chosenTab, setChosenTab] = useState<TabId>('meaning');
   // Fall back to the first available tab if the chosen one was switched off.
@@ -1075,6 +1108,9 @@ export function VerseCard({
                             </div>
                             <p lang="hi" className="font-devanagari text-base leading-loose text-dharma-text md:text-[17px]">
                               {v.hindi && <GlossaryText text={v.hindi} />}
+                              {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
+                                <span className="ml-2 align-middle"><DraftBadge lang="hi" /></span>
+                              )}
                               {v.hindiSource === 'ai' && (
                                 <span
                                   className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
@@ -1100,6 +1136,9 @@ export function VerseCard({
                             </div>
                             <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text md:text-base">
                               {v.translation}
+                              {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
+                                <span className="ml-2 align-middle"><DraftBadge lang="en" /></span>
+                              )}
                               {v.translationSource === 'ai' && (
                                 <span
                                   className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
@@ -1125,6 +1164,7 @@ export function VerseCard({
                             {explanationIsHi ? 'व्याख्या व भावार्थ · Explanation' : 'Commentary & Explanation'}
                           </p>
                           <ContentLabelBadge kind="explanation" />
+                          {meaning.editorial && <DraftBadge lang="hi" />}
                           {meaning.isAi && (
                             <p
                               className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300"
@@ -1155,9 +1195,23 @@ export function VerseCard({
                       <div className="rounded-2xl border border-indigo-200/70 bg-indigo-50/40 p-4.5 dark:border-indigo-900/40 dark:bg-indigo-950/20 shadow-2xs">
                         <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
                           <p className="text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
-                            शोध व आधुनिक संदर्भ · Research & Context
+                            {meaning.editorial ? 'विवेकपूर्ण आधुनिक परिप्रेक्ष्य · Responsible Modern Perspective' : 'शोध व आधुनिक संदर्भ · Research & Context'}
                           </p>
-                          <ContentLabelBadge kind="research" />
+                          {meaning.editorial ? (
+                            <span className="flex flex-wrap items-center gap-1.5">
+                              {VIJNANA_CATEGORIES[meaning.editorial.vijnanaCategory] && (
+                                <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold text-indigo-700 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-300">
+                                  {VIJNANA_CATEGORIES[meaning.editorial.vijnanaCategory]}
+                                </span>
+                              )}
+                              <span className="rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-2 py-0.5 text-[10px] font-semibold text-dharma-muted">
+                                संपादकीय अवलोकन · Editorial observation
+                              </span>
+                              <DraftBadge lang="hi" />
+                            </span>
+                          ) : (
+                            <ContentLabelBadge kind="research" />
+                          )}
                         </div>
                         <p
                           lang={scienceIsHi ? 'hi' : 'en'}
@@ -1195,6 +1249,7 @@ export function VerseCard({
                     {lessonIsHi ? 'आधुनिक चिंतन व सीख' : 'Modern Reflection & Lesson'}
                   </p>
                   <ContentLabelBadge kind="reflection" />
+                  {meaning.editorial && <DraftBadge lang="hi" />}
                 </div>
                 <p
                   lang={lessonIsHi ? 'hi' : 'en'}

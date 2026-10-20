@@ -14,6 +14,10 @@ import { isBoilerplateField } from "../data/hi-commentary/quality";
 import { aiQueueScriptureIds, approvedAiEntries } from "../data/hi-commentary/_ai-queue";
 import type { HiCommentaryFragment } from "../data/hi-commentary/_types";
 import { findTemplateFields } from "./lib/template-text";
+import { commentaryEntry, loadPilotOverlay } from "./pilot/overlay";
+
+// Editorial pilot records (data/pilot/records) are published through this file, one entry per verse.
+const PILOT = loadPilotOverlay();
 
 const SRC = path.resolve("data/hi-commentary");
 const OUT = path.resolve("public/data/hi-commentary");
@@ -52,7 +56,7 @@ async function main(): Promise<void> {
 
   const fragmentNames = files.map((f) => path.basename(f, ".ts"));
   // Scriptures that only have AI drafts still get a file.
-  const names = Array.from(new Set([...fragmentNames, ...aiQueueScriptureIds()])).sort();
+  const names = Array.from(new Set([...fragmentNames, ...aiQueueScriptureIds(), ...PILOT.map((p) => p.scriptureId)])).sort();
 
   for (const name of names) {
     let curated: HiCommentaryFragment = {};
@@ -112,6 +116,11 @@ async function main(): Promise<void> {
         }
         console.log(`  ${name}: hid ${hidden.size} template field(s)`);
       }
+    }
+
+    // Pilot records replace any stored entry for their verse (the old text is kept in the source data).
+    for (const p of PILOT.filter((x) => x.scriptureId === name)) {
+      curated[p.commentaryKey] = commentaryEntry(p.record) as HiCommentaryFragment[string];
     }
 
     const entryCount = Object.keys(curated).length;
