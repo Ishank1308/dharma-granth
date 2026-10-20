@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { REVEAL_SEQUENCE } from '@/app/components/motion/primitives';
 import {
   Atom,
   Bookmark,
@@ -174,8 +175,6 @@ const HIGHLIGHTS: Record<HighlightColor, { label: string; swatch: string; ring: 
   emerald: { label: 'हरा', swatch: 'bg-emerald-500', ring: 'ring-2 ring-emerald-400/70', spine: 'from-emerald-400 via-emerald-500 to-emerald-600' },
   indigo: { label: 'नीला', swatch: 'bg-indigo-500', ring: 'ring-2 ring-indigo-400/70', spine: 'from-indigo-400 via-indigo-500 to-indigo-600' },
 };
-
-const EASE_OUT_QUINT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 /** Decide the language from the text itself: more Devanagari than Latin letters = Hindi. */
 function isMostlyDevanagari(text: string | undefined): boolean {
@@ -444,16 +443,8 @@ export function VerseCard({
     document.getElementById(`${tabsId}-tab-${tabs[next].id}`)?.focus();
   };
 
-  const fadeIn = (i: number) =>
-    reduce
-      ? {}
-      : {
-          initial: { opacity: 0, y: 10, filter: 'blur(4px)' },
-          whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
-          viewport: { once: true, margin: '0px 0px -40px 0px' },
-          transition: { duration: 0.55, delay: 0.08 + i * 0.12, ease: EASE_OUT_QUINT },
-        };
-
+  // The shloka, transliteration and meanings reveal in that order through CSS (.reveal-seq / data-reveal in
+  // globals.css): no opacity:0 in the server HTML, and nothing waits on hydration.
   const verseLabel = String(v.number);
 
   return (
@@ -461,7 +452,7 @@ export function VerseCard({
       ref={cardRef}
       id={`verse-${v.number}`}
       onPointerMove={onPointerMove}
-      className={`verse-card group relative scroll-mt-24 rounded-[28px] border bg-dharma-card card-3d-depth transition-all duration-300 ${
+      className={`verse-card ${REVEAL_SEQUENCE} group relative scroll-mt-24 rounded-[28px] border bg-dharma-card card-3d-depth transition-all duration-300 ${
         isReciting
           ? 'border-amber-400/80 ring-2 ring-amber-400/60 shadow-xl shadow-amber-500/15'
           : highlight
@@ -781,7 +772,7 @@ export function VerseCard({
               )}
             </div>
             {isSandhiSplit && hasSplitData ? (
-              <div className="mx-auto my-2 max-w-2xl text-center">
+              <div data-reveal="1" className="mx-auto my-2 max-w-2xl text-center">
                 <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-amber-300/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-amber-950/30">
                   {splitWords.map((w, wIdx) => {
                     const isHovered = hoveredWordIndex === wIdx;
@@ -816,34 +807,30 @@ export function VerseCard({
                 </p>
               </div>
             ) : (
-              <p lang="sa" className={`font-devanagari ${sanskritFontSizeClass} text-dharma-text`}>
+              <p data-reveal="1" lang="sa" className={`font-devanagari ${sanskritFontSizeClass} text-dharma-text`}>
                 {lines.map((line, i) => {
                   const isLineActive = isReciting && activeLineIndex === i;
                   return (
-                    <motion.span
+                    <span
                       key={i}
                       className={`block rounded-xl px-2.5 py-1 -mx-2.5 transition-colors duration-200 ${
                         isLineActive
                           ? 'bg-amber-500/20 text-amber-950 dark:text-amber-100 ring-1 ring-amber-400/50 shadow-xs font-medium'
                           : ''
                       }`}
-                      {...fadeIn(i)}
                     >
                       <GlossaryText text={line} />
-                    </motion.span>
+                    </span>
                   );
                 })}
-                <motion.span
-                  aria-hidden="true"
-                  className="mt-2 block font-bold text-saffron-700 dark:text-amber-300"
-                  {...fadeIn(lines.length)}
-                >
+                <span aria-hidden="true" className="mt-2 block font-bold text-saffron-700 dark:text-amber-300">
                   ॥ {toDevanagari(verseLabel)} ॥
-                </motion.span>
+                </span>
               </p>
             )}
             {v.transliteration && layers.translit && (
               <p
+                data-reveal="2"
                 lang="sa-Latn"
                 className="mx-auto mt-4 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-4 text-sm italic leading-relaxed text-dharma-muted md:text-[15px]"
               >
@@ -1078,6 +1065,9 @@ export function VerseCard({
                   </div>
                 )}
 
+                {/* Third in the reveal sequence; a wrapper, so the CSS reveal and framer's tab-switch fade never
+                    animate the same node. */}
+                <div data-reveal="3">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={activeTab}
@@ -1223,6 +1213,7 @@ export function VerseCard({
                     )}
                   </motion.div>
                 </AnimatePresence>
+                </div>
               </div>
             )}
 

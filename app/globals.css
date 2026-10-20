@@ -1736,6 +1736,57 @@ body::after {
 .bg-clip-text:is(.font-devanagari, body [lang='hi'], body [lang='sa']) {
     padding-block: 0.12em;
 }
+/* Verse reveal sequence: as a verse card scrolls into view the mula shloka settles first, then the
+   transliteration, then the meanings (data-reveal 1, 2, 3 inside .reveal-seq). Pure CSS on the card's own scroll
+   timeline: the text is fully visible in the server HTML and wherever scroll timelines are unsupported, cards
+   already on screen at load are past their range (so the first screen is never hidden), and reduced motion
+   turns it off. Fixed pixel ranges keep the pace the same for short and tall cards. */
+@keyframes reveal-rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .reveal-seq {
+            view-timeline-name: --verse-card;
+        }
+        .reveal-seq [data-reveal] {
+            animation: reveal-rise var(--ease-out-quint) both;
+            animation-timeline: --verse-card;
+            animation-range: entry 0px entry 160px;
+        }
+        .reveal-seq [data-reveal='2'] {
+            animation-range: entry 60px entry 220px;
+        }
+        .reveal-seq [data-reveal='3'] {
+            animation-range: entry 120px entry 280px;
+        }
+    }
+}
+
+/* Search palette results settle in as they appear (delay set per item, capped). */
+@keyframes search-result-in {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .search-result-in {
+        animation: search-result-in 180ms var(--ease-out-quint) both;
+    }
+}
+
 /* A line clamp clips at the padding box; a little bottom padding keeps the last line's lower matras visible. */
 :is([class*='line-clamp-']):is(.font-devanagari, body [lang='hi'], body [lang='sa']),
 :is([class*='line-clamp-']) :is(.font-devanagari, [lang='hi'], [lang='sa']) {

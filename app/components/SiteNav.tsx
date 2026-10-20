@@ -761,7 +761,8 @@ export function SiteNav({
                 aria-label={`थीम बदलें (${THEME_NAMES[theme].name})`}
                 title={`थीम: ${THEME_NAMES[theme].name} · ${THEME_NAMES[theme].hi}`}
               >
-                <AnimatePresence mode="wait">
+                {/* initial={false}: server-rendered visible; only later theme changes animate. */}
+                <AnimatePresence mode="wait" initial={false}>
                   <motion.span
                     key={theme}
                     initial={{ scale: 0.7, opacity: 0, rotate: -20 }}

@@ -56,7 +56,8 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
                 transition={{ type: 'spring', stiffness: 420, damping: 32 }}
               />
             )}
-            <AnimatePresence mode="wait">
+            {/* initial={false}: the icons are server-rendered visible; only later switches animate. */}
+            <AnimatePresence mode="wait" initial={false}>
               <motion.span
                 key={`${option}-${active}`}
                 initial={{ opacity: 0, scale: 0.8 }}

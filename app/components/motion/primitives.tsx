@@ -17,6 +17,27 @@ import type { HTMLAttributes, ReactNode } from 'react';
  *   its own timing.
  */
 
+/** The site's settling curve (also `--ease-out-quint` in globals.css). */
+export const EASE_OUT_QUINT: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+/**
+ * Spring presets for framer-motion. Calm by default: `settle` for layout and highlights (no overshoot),
+ * `gentle` for things that drift into place, `tactile` for objects under the finger (mala beads, a pull cord)
+ * that should feel weighted and come to rest quickly. Under reduced motion pass `{ duration: 0 }` instead.
+ */
+export const SPRINGS = {
+  settle: { type: 'spring', stiffness: 380, damping: 38 },
+  gentle: { type: 'spring', stiffness: 170, damping: 26 },
+  tactile: { type: 'spring', stiffness: 520, damping: 30, mass: 0.7 },
+} as const;
+
+/**
+ * Reveal sequence for a verse card: put `className={REVEAL_SEQUENCE}` on the card and `data-reveal="1" | "2" |
+ * "3"` on the shloka, transliteration and meanings. It is CSS on the card's scroll timeline (globals.css), so the
+ * server HTML is never hidden and nothing waits on hydration.
+ */
+export const REVEAL_SEQUENCE = 'reveal-seq';
+
 const FADE_UP_DISTANCE = 24;
 const FADE_DURATION = 0.55;
 
@@ -25,7 +46,7 @@ const fadeUpVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: FADE_DURATION, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: FADE_DURATION, ease: EASE_OUT_QUINT },
   },
 };
 
