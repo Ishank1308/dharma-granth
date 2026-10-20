@@ -105,10 +105,13 @@ jobs:
 
       - name: Deploy to Cloudflare Pages
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Pin the current Wrangler 4 uploader so deploy behaviour is
+          # reproducible and benefits from the latest Pages upload fixes.
+          wranglerVersion: "4.151.2"
           command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=master --commit-dirty=true
 
       - name: Note missing secrets
