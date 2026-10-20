@@ -15,7 +15,7 @@ import {
   Palette,
   CheckSquare,
 } from 'lucide-react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 export type AspectRatio = 'story' | 'portrait' | 'square';
@@ -56,6 +56,26 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
   const [copied, setCopied] = useState(false);
   const reduce = useReducedMotion();
   const cardRef = useRef<HTMLDivElement>(null);
+  const rotateX = useSpring(useMotionValue(0), { stiffness: 180, damping: 22, mass: 0.55 });
+  const rotateY = useSpring(useMotionValue(0), { stiffness: 180, damping: 22, mass: 0.55 });
+
+  function handleCardPointerMove(event: React.PointerEvent<HTMLDivElement>) {
+    if (reduce || event.pointerType === 'touch') return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width;
+    const y = (event.clientY - bounds.top) / bounds.height;
+    rotateX.set((0.5 - y) * 12);
+    rotateY.set((x - 0.5) * 12);
+    event.currentTarget.style.setProperty('--sheen-x', `${x * 100}%`);
+    event.currentTarget.style.setProperty('--sheen-y', `${y * 100}%`);
+  }
+
+  function resetCardPointer(event: React.PointerEvent<HTMLDivElement>) {
+    rotateX.set(0);
+    rotateY.set(0);
+    event.currentTarget.style.setProperty('--sheen-x', '50%');
+    event.currentTarget.style.setProperty('--sheen-y', '35%');
+  }
 
   const [layers, setLayers] = useState<LayerOptions>({
     sanskrit: true,
@@ -276,6 +296,19 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
             </div>
 
             {/* Scaled Preview Frame */}
+            <motion.div
+              onPointerMove={handleCardPointerMove}
+              onPointerLeave={resetCardPointer}
+              style={{
+                position: 'relative',
+                width: previewDimensions.width,
+                height: previewDimensions.height,
+                perspective: 1000,
+                rotateX: reduce ? 0 : rotateX,
+                rotateY: reduce ? 0 : rotateY,
+                transformStyle: 'preserve-3d',
+              }}
+            >
             <div
               ref={cardRef}
               style={{
@@ -367,6 +400,20 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
                 </span>
               </div>
             </div>
+            {!reduce && (
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  borderRadius: 16,
+                  pointerEvents: 'none',
+                  background: 'radial-gradient(ellipse at var(--sheen-x, 50%) var(--sheen-y, 35%), rgba(255, 226, 160, 0.2), transparent 48%)',
+                  mixBlendMode: 'screen',
+                }}
+              />
+            )}
+            </motion.div>
           </div>
 
           {/* Right / Bottom Studio Control Panel */}
