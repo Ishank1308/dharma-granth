@@ -11,12 +11,10 @@ import { getLibraryCounts } from '@/data/scriptures';
 import { formatCountDevanagari } from '@/lib/holdings-label';
 import { SiteFooter } from '@/app/components/SiteFooter';
 
+import { SplashScreen } from '@/app/components/SplashScreen';
+
 const MoodCompassSection = dynamic(
   () => import('@/app/components/MoodCompassSection').then((m) => m.MoodCompassSection),
-  { ssr: false }
-);
-const SplashScreen = dynamic(
-  () => import('@/app/components/SplashScreen').then((m) => m.SplashScreen),
   { ssr: false }
 );
 const SadhanaPreviewSection = dynamic(

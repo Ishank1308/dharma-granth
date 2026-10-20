@@ -104,6 +104,7 @@ export async function executeMasterAudit() {
       translation?: string;
       wordMeaning?: string;
       padaccheda?: string;
+      commentary?: string;
       explanation?: string;
       science?: string;
     }
@@ -129,6 +130,7 @@ export async function executeMasterAudit() {
                 translation: v.translation,
                 wordMeaning: v.wordMeaning,
                 padaccheda: v.padaccheda,
+                commentary: v.commentary,
                 explanation: v.explanation,
                 science: v.science,
               });
@@ -151,8 +153,9 @@ export async function executeMasterAudit() {
               sanskrit: v.sanskrit,
               hindi: v.hindi,
               translation: v.translation,
-              wordMeaning: v.wordMeaning,
+              wordMeaning: (v as any).wordMeaning,
               padaccheda: (v as any).padaccheda,
+              commentary: (v as any).commentary,
               explanation: (v as any).explanation,
               science: (v as any).science,
             });
@@ -203,7 +206,7 @@ export async function executeMasterAudit() {
 
       const commKey = `${v.chapter}:${v.number}`;
       const comm = commentaryMap[commKey];
-      const vyakhyaText = comm?.explanation || v.explanation;
+      const vyakhyaText = comm?.explanation || v.explanation || v.commentary;
       const vigyanaText = comm?.science || v.science;
 
       if (vyakhyaText && vyakhyaText.trim()) {
@@ -308,6 +311,8 @@ export async function executeMasterAudit() {
     scriptures: results,
   };
 
+  const pct = (value: number) => ((value / grandTotalVerses) * 100).toFixed(2);
+
   writeFileSync(JSON_OUT, JSON.stringify(auditReportData, null, 2), 'utf8');
 
   // Generate Publication-Grade Markdown Audit Report
@@ -328,8 +333,8 @@ Every textual unit in the repository was examined against the strict multi-layer
 1. **मूलपाठ (Canonical Text):** 187,490 / 187,490 (100.0%) canonical Devanagari Sanskrit / Awadhi verses preserved with zero character alteration.
 2. **अर्थ (Direct Meaning):** 187,490 / 187,490 (100.0%) verses have faithful, direct renderings answering *"What does this passage say?"*.
 3. **व्याख्या (Exposition & Context):** 187,490 / 187,490 (100.0%) verses provide clear literary and contextual commentary answering *"What is this passage communicating in context?"*.
-4. **विज्ञानसम्मत विवेचन (Responsible Analytical Perspective):** 181,868 / 187,490 (97.0%) verses possess analytical, psychological, ethical, or observational commentary categorized into the 11 typed \`AnalyticalPerspective\` domains.
-5. **Quality Review:** 149 boilerplate fields flagged for scholarly review. Zero fabricated attributions to traditional Acharyas.
+4. **विज्ञानसम्मत विवेचन (Responsible Analytical Perspective):** ${grandTotalVigyana.toLocaleString()} / ${grandTotalVerses.toLocaleString()} (${pct(grandTotalVigyana)}%) verses possess analytical, psychological, ethical, or observational commentary categorized into the 11 typed \`AnalyticalPerspective\` domains.
+5. **Quality Review:** ${grandTotalBoilerplate.toLocaleString()} boilerplate fields flagged for scholarly review. Zero fabricated attributions to traditional Acharyas.
 
 ---
 
@@ -339,11 +344,11 @@ Every textual unit in the repository was examined against the strict multi-layer
 | :--- | :--- | :--- | :--- | :--- |
 | **मूलपाठ · Canonical Scripture** | \`sanskrit\` / \`sanskrit_devanagari\` | **187,490** | **100.0%** | Cryptographically locked (SHA-256) |
 | **अर्थ · Direct Meaning (Hindi)** | \`hindi\` | **187,490** | **100.0%** | Verified literal rendering |
-| **अर्थ · Direct Meaning (English)** | \`translation\` | **2,410** | **1.28%** | Curated across core texts |
-| **अर्थ · Bilingual (Both Hi & En)** | \`hindi\` + \`translation\` | **2,410** | **1.28%** | Dual translation verified |
+| **अर्थ · Direct Meaning (English)** | \`translation\` | **${grandTotalEnglishArtha.toLocaleString()}** | **${pct(grandTotalEnglishArtha)}%** | Curated across core texts |
+| **अर्थ · Bilingual (Both Hi & En)** | \`hindi\` + \`translation\` | **${grandTotalBothArtha.toLocaleString()}** | **${pct(grandTotalBothArtha)}%** | Dual translation verified |
 | **व्याख्या · Exposition** | \`explanation\` / \`hi-commentary\` | **187,490** | **100.0%** | Full contextual narrative |
-| **विज्ञान · Analytical Wisdom** | \`science\` / \`AnalyticalPerspective\` | **181,868** | **97.00%** | Typed scientific taxonomy |
-| **शब्दार्थ · Word Meanings** | \`wordMeaning\` | **1,940** | **1.03%** | Curated pada glosses |
+| **विज्ञान · Analytical Wisdom** | \`science\` / \`AnalyticalPerspective\` | **${grandTotalVigyana.toLocaleString()}** | **${pct(grandTotalVigyana)}%** | Typed scientific taxonomy |
+| **शब्दार्थ · Word Meanings** | \`wordMeaning\` | **${grandTotalShabdartha.toLocaleString()}** | **${pct(grandTotalShabdartha)}%** | Curated pada glosses |
 | **पदच्छेद · Segmentation** | \`padaccheda\` | **701** | **0.37%** | Canonical sandhi-viccheda |
 
 ---
@@ -397,7 +402,7 @@ The following records contained generic automated English patterns and have been
 - **Brahma & Brahmanda Purana:** 4 records (Cosmological review).
 - **Other Upanishads & Vedas:** 4 records (Tejobindu, Brihadaranyaka, Kurma, Yajurveda).
 
-**Total Flagged Records:** 149 records (0.079% of the platform).
+**Total Flagged Records:** ${grandTotalFlagged.toLocaleString()} records (${pct(grandTotalFlagged)}% of the platform).
 
 ---
 
