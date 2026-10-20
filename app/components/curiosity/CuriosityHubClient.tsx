@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Sparkles,
@@ -26,6 +26,7 @@ import {
   CURIOSITY_INQUIRIES,
   AUDIENCE_CONFIG,
   INQUIRY_CATEGORIES,
+  getInquiryById,
   type InquiryAudience,
   type InquiryCategory,
   type InquiryItem,
@@ -55,6 +56,33 @@ export function CuriosityHubClient() {
 
   const audienceInfo = AUDIENCE_CONFIG[selectedAudience];
 
+  // Deep links (/curiosity/#inquiry-<id>) must open the right audience and
+  // expand the target inquiry — otherwise the article is never rendered and
+  // the anchor cannot scroll.
+  useEffect(() => {
+    const applyHash = (scroll: boolean) => {
+      const hash = window.location.hash;
+      if (!hash.startsWith('#inquiry-')) return;
+      const id = decodeURIComponent(hash.slice('#inquiry-'.length));
+      const item = getInquiryById(id);
+      if (!item) return;
+      setSelectedAudience(item.audience);
+      setSelectedCategory('all');
+      setExpandedInquiryId(item.id);
+      if (scroll) {
+        setTimeout(() => {
+          document
+            .getElementById(`inquiry-${item.id}`)
+            ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+      }
+    };
+    applyHash(false);
+    const onHashChange = () => applyHash(true);
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
   const filteredInquiries = useMemo(() => {
     return CURIOSITY_INQUIRIES.filter((item) => {
       if (item.audience !== selectedAudience) return false;
@@ -79,6 +107,7 @@ export function CuriosityHubClient() {
     const random = list[Math.floor(Math.random() * list.length)];
     if (random) {
       setSelectedAudience(random.audience);
+      setSelectedCategory('all');
       setExpandedInquiryId(random.id);
       triggerTactileFeedback('medium', 'click');
       setTimeout(() => {
@@ -210,6 +239,7 @@ export function CuriosityHubClient() {
           <button
             type="button"
             onClick={() => setSelectedCategory('all')}
+            aria-pressed={selectedCategory === 'all'}
             className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
               selectedCategory === 'all'
                 ? 'bg-saffron-600 text-white shadow-xs'
@@ -226,6 +256,7 @@ export function CuriosityHubClient() {
                 key={cat.id}
                 type="button"
                 onClick={() => setSelectedCategory(cat.id)}
+                aria-pressed={isSelected}
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition ${
                   isSelected
                     ? 'bg-saffron-600 text-white shadow-xs'
@@ -247,6 +278,7 @@ export function CuriosityHubClient() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="खोजें (Search inquiries)..."
+            aria-label="खोजें · Search inquiries"
             className="w-full rounded-full border border-dharma-border bg-dharma-card pl-8 pr-3 py-1.5 text-xs text-dharma-text placeholder:text-dharma-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
           />
         </div>
@@ -299,6 +331,7 @@ export function CuriosityHubClient() {
                     triggerTactileFeedback('selection', 'softTap');
                   }}
                   aria-expanded={isExpanded}
+                  aria-controls={`inquiry-panel-${item.id}`}
                   className="flex w-full items-start justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer"
                 >
                   <div className="space-y-2">
@@ -315,10 +348,14 @@ export function CuriosityHubClient() {
                       </span>
                     </div>
 
-                    {/* Question Heading */}
-                    <h2 className="font-serif text-lg sm:text-xl font-bold text-dharma-text leading-snug">
+                    {/* Question Heading (role=heading keeps heading navigation valid inside a button) */}
+                    <span
+                      role="heading"
+                      aria-level={2}
+                      className="block font-serif text-lg sm:text-xl font-bold text-dharma-text leading-snug"
+                    >
                       {item.questionHi}
-                    </h2>
+                    </span>
                     <p className="text-xs sm:text-sm text-dharma-muted font-normal">
                       {item.questionEn}
                     </p>
@@ -327,9 +364,9 @@ export function CuriosityHubClient() {
                   <div className="shrink-0 pt-1">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full border border-dharma-border bg-dharma-bg text-dharma-muted transition">
                       {isExpanded ? (
-                        <ChevronUp className="h-4 w-4" />
+                        <ChevronUp className="h-4 w-4" aria-hidden="true" />
                       ) : (
-                        <ChevronDown className="h-4 w-4" />
+                        <ChevronDown className="h-4 w-4" aria-hidden="true" />
                       )}
                     </span>
                   </div>
@@ -337,7 +374,12 @@ export function CuriosityHubClient() {
 
                 {/* Expanded 7-Step Cycle Content */}
                 {isExpanded && (
-                  <div className="border-t border-dharma-border/60 bg-dharma-card px-5 pb-6 pt-4 sm:px-8 sm:pb-8 space-y-6">
+                  <div
+                    id={`inquiry-panel-${item.id}`}
+                    role="region"
+                    aria-label={item.questionEn}
+                    className="border-t border-dharma-border/60 bg-dharma-card px-5 pb-6 pt-4 sm:px-8 sm:pb-8 space-y-6"
+                  >
                     {/* Step 1: Wonder (Notice something interesting...) */}
                     <div className="rounded-2xl border border-amber-200/80 bg-amber-50/70 dark:border-amber-900/40 dark:bg-amber-950/20 p-4">
                       <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 mb-1">

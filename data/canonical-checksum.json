@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-10-19T16:39:03.633Z",
+  "timestamp": "2026-10-20T04:11:12.842Z",
   "totalScriptures": 65,
   "totalChapters": 3107,
   "totalVerses": 187490,
-  "masterRootSha256": "28bacdade2753bfe1c569fb5acfc1e6e0562a446ca6d2151efcacdda0198fdb3",
+  "masterRootSha256": "0ee965ce7117783a509176b4b6218268aed3c5ec53b843185f7145e47ef19bc8",
   "scriptures": {
     "bhagavadgita": {
       "id": "bhagavadgita",
       "title": "Bhagavad Gita",
       "chapterCount": 18,
       "verseCount": 701,
-      "canonicalSha256": "94eeeb6c2fa8ba519ac92bd34a2ba9bf7fc0a47f7bed0ed5477144b3a6ff52df"
+      "canonicalSha256": "b2be285c9d5f5fe97da4a3b7881203bde96ac17e65444f471fd76e7e50f8ec4d"
     },
     "ishavasya": {
       "id": "ishavasya",

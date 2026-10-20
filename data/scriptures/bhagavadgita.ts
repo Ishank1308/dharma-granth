@@ -544,7 +544,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 7,
-          sanskrit: "कार्पण्यदोषोपहतस्वभावः\n\nपृच्छामि त्वां धर्मसंमूढचेताः।\n\nयच्छ्रेयः स्यान्निश्िचतं ब्रूहि तन्मे\n\nशिष्यस्तेऽहं शाधि मां त्वां प्रपन्नम्।।2.7।।\n ",
+          sanskrit: "कार्पण्यदोषोपहतस्वभावः\n\nपृच्छामि त्वां धर्मसंमूढचेताः।\n\nयच्छ्रेयः स्यान्निश्चितं ब्रूहि तन्मे\n\nशिष्यस्तेऽहं शाधि मां त्वां प्रपन्नम्।।2.7।।\n ",
           transliteration: "kārpaṇya-doṣhopahata-svabhāvaḥ\npṛichchhāmi tvāṁ dharma-sammūḍha-chetāḥ\nyach-chhreyaḥ syānniśhchitaṁ brūhi tanme\nśhiṣhyaste ’haṁ śhādhi māṁ tvāṁ prapannam\n",
           translation: "With my heart stricken by the fault of weak compassion, my mind perplexed about my duty, I implore you to tell me for certain what is good for me. I am your disciple; teach me, who have taken refuge in you.",
           hindi: "कायरतारूप दोषसे तिरस्कृत स्वभाववाला और धर्मके विषयमें मोहित अन्तःकरणवाला मैं आपसे पूछता हूँ कि जो निश्चित कल्याण करनेवाली हो, वह मेरे लिये कहिये। मैं आपका शिष्य हूँ। आपके शरण हुए मुझे शिक्षा दीजिये।",
@@ -1200,7 +1200,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 2,
-          sanskrit: "व्यामिश्रेणेव वाक्येन बुद्धिं मोहयसीव मे।\n\nतदेकं वद निश्िचत्य येन श्रेयोऽहमाप्नुयाम्।।3.2।।\n ",
+          sanskrit: "व्यामिश्रेणेव वाक्येन बुद्धिं मोहयसीव मे।\n\nतदेकं वद निश्चित्य येन श्रेयोऽहमाप्नुयाम्।।3.2।।\n ",
           transliteration: "vyāmiśhreṇeva vākyena buddhiṁ mohayasīva me\ntad ekaṁ vada niśhchitya yena śhreyo ’ham āpnuyām\n",
           translation: "You confuse my mind with statements that seem to contradict each other; tell me for certain the one way by which I could reach the highest good.",
           hindi: "\n\n।।3.1 -- 3.2।। अर्जुन बोले -- हे जनार्दन! अगर आप कर्मसे बुद्धि- (ज्ञान-) को श्रेष्ठ मानते हैं, तो फिर हे केशव! मुझे घोर कर्ममें क्यों लगाते हैं ? आप अपने मिले हुए-से वचनोंसे मेरी बुद्धिको मोहित-सी कर रहे हैं। अतः आप निश्चय करके एक बात को कहिये, जिससे मैं कल्याणको प्राप्त हो जाऊँ। ",
@@ -1227,7 +1227,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 5,
-          sanskrit: "न हि कश्िचत्क्षणमपि जातु तिष्ठत्यकर्मकृत्।\n\nकार्यते ह्यवशः कर्म सर्वः प्रकृतिजैर्गुणैः।।3.5।।\n ",
+          sanskrit: "न हि कश्चित्क्षणमपि जातु तिष्ठत्यकर्मकृत्।\n\nकार्यते ह्यवशः कर्म सर्वः प्रकृतिजैर्गुणैः।।3.5।।\n ",
           transliteration: "na hi kaśhchit kṣhaṇam api jātu tiṣhṭhatyakarma-kṛit\nkāryate hyavaśhaḥ karma sarvaḥ prakṛiti-jair guṇaiḥ\n",
           translation: "No one can remain still for even a moment without doing work; for everyone is compelled to act, despite themselves, by the Gunas born of Nature.",
           hindi: "कोई भी मनुष्य किसी भी अवस्थामें क्षणमात्र भी कर्म किये बिना नहीं रह सकता; क्योंकि (प्रकृतिके) परवश हुए सब प्राणियोंसे प्रकृतिजन्य गुण कर्म कराते हैं। ",
@@ -1344,7 +1344,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 18,
-          sanskrit: "नैव तस्य कृतेनार्थो नाकृतेनेह कश्चन।\n\nन चास्य सर्वभूतेषु कश्िचदर्थव्यपाश्रयः।।3.18।।\n ",
+          sanskrit: "नैव तस्य कृतेनार्थो नाकृतेनेह कश्चन।\n\nन चास्य सर्वभूतेषु कश्चिदर्थव्यपाश्रयः।।3.18।।\n ",
           transliteration: "naiva tasya kṛitenārtho nākṛiteneha kaśhchana\nna chāsya sarva-bhūteṣhu kaśhchid artha-vyapāśhrayaḥ\n",
           translation: "He has no purpose to gain from work done or left undone, nor does he have to rely on any end.",
           hindi: "उस (कर्मयोगसे सिद्ध हुए) महापुरुषका इस संसारमें न तो कर्म करनेसे कोई प्रयोजन रहता है, और न कर्म न करनेसे ही कोई प्रयोजन रहता है, तथा सम्पूर्ण प्राणियोंमें (किसी भी प्राणीके साथ) इसका किञ्चिन्मात्र भी स्वार्थका सम्बन्ध नहीं रहता। ",
@@ -1419,7 +1419,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 25,
-          sanskrit: "सक्ताः कर्मण्यविद्वांसो यथा कुर्वन्ति भारत।\n\nकुर्याद्विद्वांस्तथासक्तश्िचकीर्षुर्लोकसंग्रहम्।।3.25।।\n ",
+          sanskrit: "सक्ताः कर्मण्यविद्वांसो यथा कुर्वन्ति भारत।\n\nकुर्याद्विद्वांस्तथासक्तश्चिकीर्षुर्लोकसंग्रहम्।।3.25।।\n ",
           transliteration: "saktāḥ karmaṇyavidvānso yathā kurvanti bhārata\nkuryād vidvāns tathāsaktaśh chikīrṣhur loka-saṅgraham\n",
           translation: "Just as the ignorant, attached to their work, act, O Arjuna, so too the learned should act without any attachment, and only for the welfare of the world.",
           hindi: "(श्लोक 25–26) हे भरतवंशोद्भव अर्जुन! कर्ममें आसक्त हुए अज्ञानीजन जिस प्रकार कर्म करते हैं, आसक्तिरहित विद्वान भी लोकसंग्रह करना चाहता हुआ उसी प्रकार कर्म करे।  तत्त्वज्ञ महापुरुष कर्मोंमें आसक्तिवाले अज्ञानी मनुष्योंकी बुद्धिमें भ्रम उत्पन्न न करे, प्रत्युत स्वयं समस्त कर्मोंको अच्छी तरहसे करता हुआ उनसे भी वैसे ही करवाये।",
@@ -2000,7 +2000,7 @@ export const bhagavadGita: Scripture = {
       verses: [
         {
           id: 1,
-          sanskrit: "अर्जुन उवाच\n\nसंन्यासं कर्मणां कृष्ण पुनर्योगं च शंससि।\n\nयच्छ्रेय एतयोरेकं तन्मे ब्रूहि सुनिश्िचतम्।।5.1।।\n ",
+          sanskrit: "अर्जुन उवाच\n\nसंन्यासं कर्मणां कृष्ण पुनर्योगं च शंससि।\n\nयच्छ्रेय एतयोरेकं तन्मे ब्रूहि सुनिश्चितम्।।5.1।।\n ",
           transliteration: "arjuna uvācha\nsannyāsaṁ karmaṇāṁ kṛiṣhṇa punar yogaṁ cha śhansasi\nyach chhreya etayor ekaṁ tan me brūhi su-niśhchitam\n\n",
           translation: "Arjuna said, \"O Krsna, you praise the renunciation of actions, and then you also praise Karma Yoga. Please tell me with certainty which of these is the superior one, leading to the ultimate good.",
           hindi: "अर्जुन बोले -- हे कृष्ण ! आप कर्मोंका स्वरूपसे त्याग करनेकी और फिर कर्मयोगकी प्रशंसा करते हैं। अतः इन दोनों साधनोंमें जो एक निश्चितरूपसे कल्याणकारक हो, उसको मेरे लिये कहिये। ",
@@ -2639,7 +2639,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 40,
-          sanskrit: "श्री भगवानुवाच\n\nपार्थ नैवेह नामुत्र विनाशस्तस्य विद्यते।\n\nनहि कल्याणकृत्कश्िचद्दुर्गतिं तात गच्छति।।6.40।।\n ",
+          sanskrit: "श्री भगवानुवाच\n\nपार्थ नैवेह नामुत्र विनाशस्तस्य विद्यते।\n\nनहि कल्याणकृत्कश्चिद्दुर्गतिं तात गच्छति।।6.40।।\n ",
           transliteration: "śhrī bhagavān uvācha\npārtha naiveha nāmutra vināśhas tasya vidyate\nna hi kalyāṇa-kṛit kaśhchid durgatiṁ tāta gachchhati\n",
           translation: "The Lord said, \"Neither here in this world nor there in the next is there destruction for him. For no one who does good ever comes to an evil end.\"",
           hindi: "श्रीभगवान् बोले -- हे पृथानन्दन ! उसका न तो इस लोकमें और न परलोकमें ही विनाश होता है; क्योंकि हे प्यारे ! कल्याणकारी काम करनेवाला कोई भी मनुष्य दुर्गतिको प्राप्त नहीं जाता। ",
@@ -2737,7 +2737,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 3,
-          sanskrit: "मनुष्याणां सहस्रेषु कश्िचद्यतति सिद्धये।\n\nयततामपि सिद्धानां कश्िचन्मां वेत्ति तत्त्वतः।।7.3।।\n ",
+          sanskrit: "मनुष्याणां सहस्रेषु कश्चिद्यतति सिद्धये।\n\nयततामपि सिद्धानां कश्चिन्मां वेत्ति तत्त्वतः।।7.3।।\n ",
           transliteration: "manuṣhyāṇāṁ sahasreṣhu kaśhchid yatati siddhaye\nyatatām api siddhānāṁ kaśhchin māṁ vetti tattvataḥ\n",
           translation: "Among thousands of men, some strive for perfection; even among those who strive for perfection, only some know Me; and among those who know Me, only some truly know Me.",
           hindi: "हजारों मनुष्योंमें कोई एक वास्तविक सिद्धिके लिये यत्न करता है और उन यत्न करनेवाले सिद्धोंमें कोई एक ही मुझे तत्त्वसे जानता है। ",
@@ -4750,7 +4750,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 5,
-          sanskrit: "ऋषिभिर्बहुधा गीतं छन्दोभिर्विविधैः पृथक्।ब्रह्मसूत्रपदैश्चैव हेतुमद्भिर्विनिश्िचतैः।।13.5।।",
+          sanskrit: "ऋषिभिर्बहुधा गीतं छन्दोभिर्विविधैः पृथक्।ब्रह्मसूत्रपदैश्चैव हेतुमद्भिर्विनिश्चितैः।।13.5।।",
           transliteration: "ṛiṣhibhir bahudhā gītaṁ chhandobhir vividhaiḥ pṛithak\nbrahma-sūtra-padaiśh chaiva hetumadbhir viniśhchitaiḥ\n",
           translation: "It has been sung by seers in various ways, in various distinctive hymns, and also in the well-reasoned and conclusive words of the Brahma-sutras.",
           hindi: "(यह क्षेत्रक्षेत्रज्ञका तत्त्व) ऋषियोंके द्वारा बहुत विस्तारसे कहा गया है तथा वेदोंकी ऋचाओं-द्वारा बहुत प्रकारसे कहा गया है और युक्तियुक्त एवं निश्चित किये हुए ब्रह्मसूत्रके पदोंद्वारा भी कहा गया है।",
@@ -5614,7 +5614,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 11,
-          sanskrit: "चिन्तामपरिमेयां च प्रलयान्तामुपाश्रिताः।कामोपभोगपरमा एतावदिति निश्िचताः।।16.11।।",
+          sanskrit: "चिन्तामपरिमेयां च प्रलयान्तामुपाश्रिताः।कामोपभोगपरमा एतावदिति निश्चिताः।।16.11।।",
           transliteration: "chintām aparimeyāṁ cha pralayāntām upāśhritāḥ\nkāmopabhoga-paramā etāvad iti niśhchitāḥ\n",
           translation: "Obsessed by unlimited cares that end with dissolution, looking upon the enjoyment of desires as their highest aim, and convinced that this is all;",
           hindi: "वे मृत्युपर्यन्त रहनेवाली अपार चिन्ताओंका आश्रय लेनेवाले, पदार्थोंका संग्रह और उनका भोग करनेमें ही लगे रहनेवाले और 'जो कुछ है, वह इतना ही है' -- ऐसा निश्चय करनेवाले होते हैं।",
@@ -6071,7 +6071,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 6,
-          sanskrit: "एतान्यपि तु कर्माणि सङ्गं त्यक्त्वा फलानि च।कर्तव्यानीति मे पार्थ निश्िचतं मतमुत्तमम्।।18.6।।",
+          sanskrit: "एतान्यपि तु कर्माणि सङ्गं त्यक्त्वा फलानि च।कर्तव्यानीति मे पार्थ निश्चितं मतमुत्तमम्।।18.6।।",
           transliteration: "etāny api tu karmāṇi saṅgaṁ tyaktvā phalāni cha\nkartavyānīti me pārtha niśhchitaṁ matam uttamam\n",
           translation: "It is My decided and final view that even these acts should be done, O Arjuna, with relinquishment of attachment and the forsaking of the fruits thereof.",
           hindi: "हे पार्थ ! (पूर्वोक्त यज्ञ, दान और तप -- ) इन कर्मोंको तथा दूसरे भी कर्मोंको आसक्ति और फलोंका त्याग करके करना चाहिये -- यह मेरा निश्चित किया हुआ उत्तम मत है।",
@@ -6644,7 +6644,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 69,
-          sanskrit: "न च तस्मान्मनुष्येषु कश्िचन्मे प्रियकृत्तमः।भविता न च मे तस्मादन्यः प्रियतरो भुवि।।18.69।।",
+          sanskrit: "न च तस्मान्मनुष्येषु कश्चिन्मे प्रियकृत्तमः।भविता न च मे तस्मादन्यः प्रियतरो भुवि।।18.69।।",
           transliteration: "na cha tasmān manuṣhyeṣhu kaśhchin me priya-kṛittamaḥ\nbhavitā na cha me tasmād anyaḥ priyataro bhuvi\n",
           translation: "There is no one among men who does dearer service to Me than him. Nor shall there be anyone on earth dearer to Me than him.",
           hindi: "उसके समान मेरा अत्यन्त प्रिय कार्य करनेवाला मनुष्योंमें कोई भी नहीं है और इस भूमण्डलपर उसके समान मेरा दूसरा कोई प्रियतर होगा भी नहीं।",

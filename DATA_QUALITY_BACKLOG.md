@@ -284,3 +284,34 @@ The remaining 15 chapters were inspected: Ramayana ch1–7 are curated 13–16-v
 (numbers like `1, 1.2, 3, 4, 1.6 … 2.10, 1.14` are selection order, not a sort bug) and Manusmriti ch1 is a
 sparse selection (`1, 1.2, 3, 4, 1.15, 1.20, 1.25`). Their order is intentional — leave them. The
 bhagavatapurana/devibhagavat/mahabharata/shivpurana/brahmasutra entries are 2–7 verses each and are left as is.
+
+---
+
+## P7 — Devanagari matra-order corruption ✅ FIXED 2026-10-20 (Curiosity Engine audit)
+
+A systematic corruption of the cluster श + ् + ि + च (i-matra misordered before च instead
+of after it) was found across the canonical Gita text — 30 occurrences in the monolithic
+`bhagavadgita.json` + `data/scriptures/bhagavadgita.ts`, and 16 more in the per-chapter
+`bhagavadgita/ch-*.json` files (e.g. Gita 3.25 `तथासक्तश्िचिकीर्षु` → `तथासक्तश्चिकीर्षु`,
+`निश्िचतम्` → `निश्चितम्`, `कश्िचित्` → `कश्चित्`). All corrected at the source; the
+`data/canonical-checksum.json` baseline was regenerated (`npx tsx scripts/canonical-checksum.ts`)
+and verifies clean (`--verify`). Regression guard: `scripts/check-curiosity.ts` (part of
+`npm run check`) rejects any future Devanagari field containing this pattern or Latin letters
+inside Devanagari runs.
+
+### Still open — illegible source placeholders (do NOT guess-fix)
+
+Latin `x` placeholders embedded in canonical text where the source edition was illegible;
+needs re-sourcing from the reference edition before editing:
+
+- `vishnupurana` — `श्रवxxxम्` (curated `.ts` and monolithic `.json`), `प्रxxद्धा` (curated `.ts`)
+- `vishnupurana` per-chapter file — `रxxद`
+
+### Still open — Rigveda seed gap (blocks verse-level Rigveda links)
+
+`public/data/scriptures-full/rigveda/` (per-chapter layout) seeds only 2 verses for Mandala 1;
+Ṛgveda 1.164.46 (एकं सत्) and the rest of the Saṃhitā are not in the seeded corpus. The Curiosity
+Engine anchor for it (`data/curiosity-inquiry.ts`) therefore links to the scripture overview page
+`/scripture/rigveda/` instead of a verse page, and carries its own verified copy of the verse.
+Seeding the Rigveda properly (or adding `rigveda` to `VERSE_PAGE_SCRIPTURE_IDS` with real data)
+would let this link point at the verse itself.

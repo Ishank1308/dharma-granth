@@ -55,9 +55,14 @@ export function VerseCuriosityDrawer({
           {inquiries.map((inq) => (
             <div key={inq.id} className="space-y-2 border-b border-dharma-border/60 pb-3 last:border-b-0 last:pb-0">
               <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">
-                <Lightbulb className="h-3 w-3" />
-                <span>
-                  {inq.audience === 'child' ? '🧒 बाल प्रश्न' : inq.audience === 'teen' ? '🧑 किशोर प्रश्न' : inq.audience === 'parent' ? '👨‍👩‍👧 अभिभावक संवाद' : '🌿 आरंभिक प्रश्न'}
+                <Lightbulb className="h-3 w-3" aria-hidden="true" />
+                <span className="inline-flex items-center gap-1">
+                  <span aria-hidden="true">
+                    {inq.audience === 'child' ? '🧒' : inq.audience === 'teen' ? '🧑' : inq.audience === 'parent' ? '👨‍👩‍👧' : '🌿'}
+                  </span>
+                  <span>
+                    {inq.audience === 'child' ? 'बाल प्रश्न' : inq.audience === 'teen' ? 'किशोर प्रश्न' : inq.audience === 'parent' ? 'अभिभावक संवाद' : 'आरंभिक प्रश्न'}
+                  </span>
                 </span>
                 <span className="text-dharma-muted">· {inq.categoryLabelEn}</span>
               </div>
