@@ -5,7 +5,8 @@ import { expect, test } from '@playwright/test';
  * Automated accessibility audit (axe, WCAG 2 A/AA) in every colour theme.
  * Fails on serious and critical violations; lesser ones are only logged.
  */
-const THEMES = ['day', 'sunset', 'night'] as const;
+// All four themes (Usha, Sandhyā, Bhojpatra, Rātri).
+const THEMES = ['day', 'sunset', 'paper', 'night'] as const;
 const PAGES = [
   '/',
   '/scriptures/',
@@ -16,7 +17,7 @@ const PAGES = [
   '/practice/',
   '/concepts/',
   '/dictionary/',
-  '/topics/',
+  '/wisdom-for-life/',
   '/characters/',
   '/festivals/',
   '/learn/',
