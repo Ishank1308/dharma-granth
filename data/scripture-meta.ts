@@ -137,9 +137,11 @@ export const scriptureCatalog: ScriptureMeta[] = [
     category: "upanishad",
     description:
       "The largest Upanishad. Contains profound dialogues between Yajnavalkya and Maitreyi, and explores the nature of reality in depth.",
-    totalChapters: 45,
-    totalVerses: 386,
-    canonicalTotalVerses: 386,
+    totalChapters: 47,
+    totalVerses: 435,
+    // Kāṇva recension per the sanskritdocuments.org bribasic.itx header (I 80, II 66, III 92, IV 92, V 33, VI 75).
+    // The published text has 435: Adhyāya V carries 30 tagged mantras in that file.
+    canonicalTotalVerses: 438,
     isCurated: false,
     tags: ["Upanishad","Brihadaranyakopanishad","Yajnavalkya","Self","Advaita"],
     hasData: true,

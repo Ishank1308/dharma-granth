@@ -5110,272 +5110,284 @@
   "brihadaranyaka": [
     {
       "id": 1,
-      "title": "Chapter 1 — Aham Brahmasmi",
-      "titleSanskrit": "प्रथम अध्याय",
-      "verseCount": 3
+      "title": "Adhyāya 1 · Brāhmaṇa 1 — The Cosmic Horse",
+      "titleSanskrit": "अध्याय १ · ब्राह्मण १",
+      "verseCount": 2
     },
     {
       "id": 2,
-      "title": "Chapter 2 — Maitreyi and the Love of Self",
-      "titleSanskrit": "द्वितीय अध्याय",
-      "verseCount": 8
+      "title": "Adhyāya 1 · Brāhmaṇa 2 — Creation by Hunger and Death",
+      "titleSanskrit": "अध्याय १ · ब्राह्मण २",
+      "verseCount": 7
     },
     {
       "id": 3,
-      "title": "Chapter 3 — Neti Neti",
-      "titleSanskrit": "तृतीय अध्याय",
-      "verseCount": 12
+      "title": "Adhyāya 1 · Brāhmaṇa 3 — The Prana as the Singer of Udgitha",
+      "titleSanskrit": "अध्याय १ · ब्राह्मण ३",
+      "verseCount": 28
     },
     {
       "id": 4,
-      "title": "Chapter 4 — The Honey Doctrine (Madhu Vidya)",
-      "titleSanskrit": "चतुर्थ अध्याय — मधुविद्या",
-      "verseCount": 9
+      "title": "Adhyāya 1 · Brāhmaṇa 4 — Aham Brahmasmi (The Creation of All)",
+      "titleSanskrit": "अध्याय १ · ब्राह्मण ४",
+      "verseCount": 17
     },
     {
       "id": 5,
-      "title": "Chapter 5 — Asato Ma Sad Gamaya",
-      "titleSanskrit": "पञ्चम अध्याय",
-      "verseCount": 10
+      "title": "Adhyāya 1 · Brāhmaṇa 5 — The Seven Foods and the Mind",
+      "titleSanskrit": "अध्याय १ · ब्राह्मण ५",
+      "verseCount": 23
     },
     {
       "id": 6,
-      "title": "Chapter 6 — Janaka and the Light Within",
-      "titleSanskrit": "षष्ठ अध्याय",
-      "verseCount": 9
+      "title": "Adhyāya 1 · Brāhmaṇa 6 — The World of Name, Form, and Action",
+      "titleSanskrit": "अध्याय १ · ब्राह्मण ६",
+      "verseCount": 3
     },
     {
       "id": 7,
-      "title": "Adhyāya 7",
-      "titleSanskrit": "",
+      "title": "Adhyāya 2 · Brāhmaṇa 1 — Gargya and King Ajatashatru",
+      "titleSanskrit": "अध्याय २ · ब्राह्मण १",
       "verseCount": 20
     },
     {
       "id": 8,
-      "title": "Adhyāya 8",
-      "titleSanskrit": "",
+      "title": "Adhyāya 2 · Brāhmaṇa 2 — The Vital Force and the Senses",
+      "titleSanskrit": "अध्याय २ · ब्राह्मण २",
       "verseCount": 4
     },
     {
       "id": 9,
-      "title": "Adhyāya 9",
-      "titleSanskrit": "",
+      "title": "Adhyāya 2 · Brāhmaṇa 3 — The Two Forms of Brahman (Murta & Amurta)",
+      "titleSanskrit": "अध्याय २ · ब्राह्मण ३",
       "verseCount": 6
     },
     {
       "id": 10,
-      "title": "Adhyāya 10",
-      "titleSanskrit": "",
+      "title": "Adhyāya 2 · Brāhmaṇa 4 — Maitreyi and the Love of the Self",
+      "titleSanskrit": "अध्याय २ · ब्राह्मण ४",
       "verseCount": 14
     },
     {
       "id": 11,
-      "title": "Adhyāya 11",
-      "titleSanskrit": "",
+      "title": "Adhyāya 2 · Brāhmaṇa 5 — Madhu Vidya (The Honey Doctrine)",
+      "titleSanskrit": "अध्याय २ · ब्राह्मण ५",
       "verseCount": 19
     },
     {
       "id": 12,
-      "title": "Adhyāya 12",
-      "titleSanskrit": "",
+      "title": "Adhyāya 2 · Brāhmaṇa 6 — The Lineage of Teachers",
+      "titleSanskrit": "अध्याय २ · ब्राह्मण ६",
       "verseCount": 3
     },
     {
       "id": 13,
-      "title": "Adhyāya 13",
-      "titleSanskrit": "",
+      "title": "Adhyāya 3 · Brāhmaṇa 1 — Janaka's Sacrifice and Ashvala",
+      "titleSanskrit": "अध्याय ३ · ब्राह्मण १",
       "verseCount": 10
     },
     {
       "id": 14,
-      "title": "Adhyāya 14",
-      "titleSanskrit": "",
-      "verseCount": 12
+      "title": "Adhyāya 3 · Brāhmaṇa 2 — Artabhaga and the Grahas",
+      "titleSanskrit": "अध्याय ३ · ब्राह्मण २",
+      "verseCount": 13
     },
     {
       "id": 15,
-      "title": "Adhyāya 15",
-      "titleSanskrit": "",
+      "title": "Adhyāya 3 · Brāhmaṇa 3 — Bhujyu and the Parikshitas",
+      "titleSanskrit": "अध्याय ३ · ब्राह्मण ३",
       "verseCount": 2
     },
     {
       "id": 16,
-      "title": "Adhyāya 16",
-      "titleSanskrit": "",
+      "title": "Adhyāya 3 · Brāhmaṇa 4 — Ushasta and the Immediate Brahman",
+      "titleSanskrit": "अध्याय ३ · ब्राह्मण ४",
       "verseCount": 2
     },
     {
       "id": 17,
-      "title": "Adhyāya 17",
-      "titleSanskrit": "",
+      "title": "Adhyāya 3 · Brāhmaṇa 5 — Kahola and Renunciation",
+      "titleSanskrit": "अध्याय ३ · ब्राह्मण ५",
       "verseCount": 1
     },
     {
       "id": 18,
-      "title": "Adhyāya 18",
-      "titleSanskrit": "",
+      "title": "Adhyāya 3 · Brāhmaṇa 6 — Gargi Vachaknavi's First Challenge",
+      "titleSanskrit": "अध्याय ३ · ब्राह्मण ६",
       "verseCount": 1
     },
     {
       "id": 19,
-      "title": "Adhyāya 19",
-      "titleSanskrit": "",
+      "title": "Adhyāya 3 · Brāhmaṇa 7 — Uddalaka and the Inner Ruler (Antaryamin)",
+      "titleSanskrit": "अध्याय ३ · ब्राह्मण ७",
       "verseCount": 23
     },
     {
       "id": 20,
-      "title": "Adhyāya 20",
-      "titleSanskrit": "",
-      "verseCount": 26
+      "title": "Adhyāya 3 · Brāhmaṇa 8 — Gargi's Second Challenge: The Imperishable (Akshara)",
+      "titleSanskrit": "अध्याय ३ · ब्राह्मण ८",
+      "verseCount": 12
     },
     {
       "id": 21,
-      "title": "Adhyāya 21",
-      "titleSanskrit": "",
-      "verseCount": 7
+      "title": "Adhyāya 3 · Brāhmaṇa 9 — Vidagdha Shakalya: The Number of Devas",
+      "titleSanskrit": "अध्याय ३ · ब्राह्मण ९",
+      "verseCount": 28
     },
     {
       "id": 22,
-      "title": "Adhyāya 22",
-      "titleSanskrit": "",
-      "verseCount": 4
+      "title": "Adhyāya 4 · Brāhmaṇa 1 — Janaka and Yajnavalkya: Partial Definitions",
+      "titleSanskrit": "अध्याय ४ · ब्राह्मण १",
+      "verseCount": 7
     },
     {
       "id": 23,
-      "title": "Adhyāya 23",
-      "titleSanskrit": "",
-      "verseCount": 38
+      "title": "Adhyāya 4 · Brāhmaṇa 2 — The Self Beyond the Three States",
+      "titleSanskrit": "अध्याय ४ · ब्राह्मण २",
+      "verseCount": 4
     },
     {
       "id": 24,
-      "title": "Adhyāya 24",
-      "titleSanskrit": "",
-      "verseCount": 25
+      "title": "Adhyāya 4 · Brāhmaṇa 3 — The Light Within: Waking, Dream, and Sleep",
+      "titleSanskrit": "अध्याय ४ · ब्राह्मण ३",
+      "verseCount": 38
     },
     {
       "id": 25,
-      "title": "Adhyāya 25",
-      "titleSanskrit": "",
-      "verseCount": 14
+      "title": "Adhyāya 4 · Brāhmaṇa 4 — Rebirth, Desire, and Liberation",
+      "titleSanskrit": "अध्याय ४ · ब्राह्मण ४",
+      "verseCount": 25
     },
     {
       "id": 26,
-      "title": "Adhyāya 26",
-      "titleSanskrit": "",
-      "verseCount": 3
+      "title": "Adhyāya 4 · Brāhmaṇa 5 — Yajnavalkya's Final Teaching to Maitreyi",
+      "titleSanskrit": "अध्याय ४ · ब्राह्मण ५",
+      "verseCount": 15
     },
     {
       "id": 27,
-      "title": "Adhyāya 27",
-      "titleSanskrit": "",
-      "verseCount": 1
-    },
-    {
-      "id": 28,
-      "title": "Adhyāya 28",
-      "titleSanskrit": "",
+      "title": "Adhyāya 4 · Brāhmaṇa 6 — The Lineage of Wisdom",
+      "titleSanskrit": "अध्याय ४ · ब्राह्मण ६",
       "verseCount": 3
     },
     {
-      "id": 29,
-      "title": "Adhyāya 29",
-      "titleSanskrit": "",
+      "id": 28,
+      "title": "Adhyāya 5 · Brāhmaṇa 1 — The Fullness of Brahman (Purnamadah)",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण १",
       "verseCount": 1
     },
     {
+      "id": 29,
+      "title": "Adhyāya 5 · Brāhmaṇa 2 — The Three Directives: Da, Da, Da",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण २",
+      "verseCount": 3
+    },
+    {
       "id": 30,
-      "title": "Adhyāya 30",
-      "titleSanskrit": "",
+      "title": "Adhyāya 5 · Brāhmaṇa 3 — Brahman as the Heart",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण ३",
       "verseCount": 1
     },
     {
       "id": 31,
-      "title": "Adhyāya 31",
-      "titleSanskrit": "",
-      "verseCount": 4
-    },
-    {
-      "id": 32,
-      "title": "Adhyāya 32",
-      "titleSanskrit": "",
+      "title": "Adhyāya 5 · Brāhmaṇa 4 — Brahman as Truth (Satyam)",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण ४",
       "verseCount": 1
     },
     {
+      "id": 32,
+      "title": "Adhyāya 5 · Brāhmaṇa 5 — The Syllables of Truth",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण ५",
+      "verseCount": 4
+    },
+    {
       "id": 33,
-      "title": "Adhyāya 33",
-      "titleSanskrit": "",
+      "title": "Adhyāya 5 · Brāhmaṇa 6 — The Mind as Brahman",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण ६",
       "verseCount": 1
     },
     {
       "id": 34,
-      "title": "Adhyāya 34",
-      "titleSanskrit": "",
+      "title": "Adhyāya 5 · Brāhmaṇa 7 — Brahman as Lightning (Vidyut)",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण ७",
       "verseCount": 1
     },
     {
       "id": 35,
-      "title": "Adhyāya 35",
-      "titleSanskrit": "",
+      "title": "Adhyāya 5 · Brāhmaṇa 8 — Speech as the Cow",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण ८",
       "verseCount": 1
     },
     {
       "id": 36,
-      "title": "Adhyāya 36",
-      "titleSanskrit": "",
+      "title": "Adhyāya 5 · Brāhmaṇa 9 — The Universal Fire (Vaishvanara)",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण ९",
       "verseCount": 1
     },
     {
       "id": 37,
-      "title": "Adhyāya 37",
-      "titleSanskrit": "",
+      "title": "Adhyāya 5 · Brāhmaṇa 10 — The Ascent After Death",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण १०",
       "verseCount": 1
     },
     {
       "id": 38,
-      "title": "Adhyāya 38",
-      "titleSanskrit": "",
-      "verseCount": 4
-    },
-    {
-      "id": 39,
-      "title": "Adhyāya 39",
-      "titleSanskrit": "",
-      "verseCount": 8
-    },
-    {
-      "id": 40,
-      "title": "Adhyāya 40",
-      "titleSanskrit": "",
+      "title": "Adhyāya 5 · Brāhmaṇa 11 — Supreme Penance (Paramam Tapas)",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण ११",
       "verseCount": 1
     },
     {
+      "id": 39,
+      "title": "Adhyāya 5 · Brāhmaṇa 12 — Food and Life (Anna and Prana)",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण १२",
+      "verseCount": 1
+    },
+    {
+      "id": 40,
+      "title": "Adhyāya 5 · Brāhmaṇa 13 — Prana as Uktha, Yajus, and Saman",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण १३",
+      "verseCount": 4
+    },
+    {
       "id": 41,
-      "title": "Adhyāya 41",
-      "titleSanskrit": "",
-      "verseCount": 14
+      "title": "Adhyāya 5 · Brāhmaṇa 14 — The Gayatri Mantra and Its Quarters",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण १४",
+      "verseCount": 8
     },
     {
       "id": 42,
-      "title": "Adhyāya 42",
-      "titleSanskrit": "",
-      "verseCount": 14
+      "title": "Adhyāya 5 · Brāhmaṇa 15 — The Prayer of the Dying (Isha Finale)",
+      "titleSanskrit": "अध्याय ५ · ब्राह्मण १५",
+      "verseCount": 1
     },
     {
       "id": 43,
-      "title": "Adhyāya 43",
-      "titleSanskrit": "",
-      "verseCount": 13
+      "title": "Adhyāya 6 · Brāhmaṇa 1 — The Contest of the Faculties",
+      "titleSanskrit": "अध्याय ६ · ब्राह्मण १",
+      "verseCount": 14
     },
     {
       "id": 44,
-      "title": "Adhyāya 44",
-      "titleSanskrit": "",
-      "verseCount": 28
+      "title": "Adhyāya 6 · Brāhmaṇa 2 — The Five Fires (Panchagni Vidya)",
+      "titleSanskrit": "अध्याय ६ · ब्राह्मण २",
+      "verseCount": 16
     },
     {
       "id": 45,
-      "title": "Adhyāya 45",
-      "titleSanskrit": "",
+      "title": "Adhyāya 6 · Brāhmaṇa 3 — The Mantha Ceremony and Final Lineage",
+      "titleSanskrit": "अध्याय ६ · ब्राह्मण ३",
+      "verseCount": 13
+    },
+    {
+      "id": 46,
+      "title": "Adhyāya 6 · Brāhmaṇa 4",
+      "titleSanskrit": "अध्याय ६ · ब्राह्मण ४",
+      "verseCount": 28
+    },
+    {
+      "id": 47,
+      "title": "Adhyāya 6 · Brāhmaṇa 5",
+      "titleSanskrit": "अध्याय ६ · ब्राह्मण ५",
       "verseCount": 4
     }
   ],
