@@ -198,7 +198,7 @@
       "risk": "Canonical field contaminated; see observation.",
       "reviewer": "Awadhi and Tulsidas scholar",
       "traditionalCommentary": "Not stored.",
-      "observation": "The sanskrit field holds the Sanskrit plus a Hindi gloss in one string; translation and hindi hold a different line than the one given; wordMeaning repeats commentary. Baseline ambiguous.",
+      "observation": "Repaired 2026-10-20 by scripts/repair-ramcharitmanas.ts: the records had been parsed half a unit out of step (original mixed with Gita Press Hindi prose; the meaning fields held the next unit's verse). The original is now reassembled; the Hindi translation is held back until its license is confirmed. Still review-only: a Tulsidas scholar should verify the reassembled units against a printed edition before any editorial drafting.",
       "forceReviewOnly": true
     },
     {
@@ -213,7 +213,7 @@
       "risk": "As above.",
       "reviewer": "Awadhi and Tulsidas scholar",
       "traditionalCommentary": "Not stored.",
-      "observation": "Same structure as unit 1; ambiguous baseline.",
+      "observation": "Repaired 2026-10-20 by scripts/repair-ramcharitmanas.ts: the records had been parsed half a unit out of step (original mixed with Gita Press Hindi prose; the meaning fields held the next unit's verse). The original is now reassembled; the Hindi translation is held back until its license is confirmed. Still review-only: a Tulsidas scholar should verify the reassembled units against a printed edition before any editorial drafting.",
       "forceReviewOnly": true
     },
     {
@@ -228,7 +228,7 @@
       "risk": "As above.",
       "reviewer": "Awadhi and Tulsidas scholar",
       "traditionalCommentary": "Not stored.",
-      "observation": "Same structure as unit 1; ambiguous baseline.",
+      "observation": "Repaired 2026-10-20 by scripts/repair-ramcharitmanas.ts: the records had been parsed half a unit out of step (original mixed with Gita Press Hindi prose; the meaning fields held the next unit's verse). The original is now reassembled; the Hindi translation is held back until its license is confirmed. Still review-only: a Tulsidas scholar should verify the reassembled units against a printed edition before any editorial drafting.",
       "forceReviewOnly": true
     },
     {
