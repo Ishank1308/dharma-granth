@@ -3,16 +3,11 @@ import { resolve } from 'node:path';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { BookLearningClient } from '@/app/components/BookLearningClient';
+import { ScriptureContents } from '@/app/components/ScriptureContents';
 import { ChapterHero } from '@/app/components/motion/ChapterHero';
-import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
-import { getBookExplanation } from '@/data/book-explanations';
+import { FadeUp } from '@/app/components/motion/primitives';
 import { getScripture, getScriptureMeta, getAllScriptures } from '@/data/scriptures';
 import { ArrowLeft } from 'lucide-react';
-import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
-import { Breadcrumbs } from '@/app/components/Breadcrumbs';
-import { jsonLdGraph } from '@/lib/jsonld-graph';
-import { OfflineScriptureToggle } from '@/app/components/scripture/OfflineScriptureToggle';
 
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
@@ -107,7 +102,6 @@ export default function ScripturePage({ params }: PageProps) {
 
   const scripture = getScripture(params.id);
   const chapters = scripture?.chapters ?? [];
-  const explanation = getBookExplanation(params.id);
   const chapterPreviewsById = new Map<number, ChapterPreview>();
   for (const chapter of chapters) {
     chapterPreviewsById.set(chapter.id, {
@@ -180,19 +174,23 @@ export default function ScripturePage({ params }: PageProps) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-      { '@type': 'ListItem', position: 2, name: 'Library', item: `${siteUrl}/scriptures/` },
-      { '@type': 'ListItem', position: 3, name: meta.title, item: `${siteUrl}/scripture/${meta.id}/` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+      { '@type': 'ListItem', position: 2, name: 'Scriptures', item: `${siteUrl}/scriptures` },
+      { '@type': 'ListItem', position: 3, name: meta.title, item: `${siteUrl}/scripture/${meta.id}` },
     ],
   };
 
   return (
     <main className="min-h-screen bg-dharma-bg">
-      <Breadcrumbs items={[{ label: 'Library', href: '/scriptures/' }, { label: meta.title }]} />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(bookJsonLd, breadcrumbJsonLd)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <ChapterHero className="bg-gradient-to-b from-saffron-800 to-saffron-600 text-white py-14">
         <div className="relative max-w-5xl mx-auto px-6">
@@ -236,27 +234,19 @@ export default function ScripturePage({ params }: PageProps) {
             </div>
           </FadeUp>
           <FadeUp delay={0.2}>
-            <p className="text-lg opacity-80 max-w-3xl">{meta.description}</p>
+            <p className="text-lg opacity-80 max-w-3xl line-clamp-3">{meta.description}</p>
             {meta.author && <p className="mt-3 text-sm opacity-60">Attributed to {meta.author}</p>}
-            <OfflineScriptureToggle scriptureId={meta.id} title={meta.title} />
           </FadeUp>
         </div>
       </ChapterHero>
 
-      <FadeUpOnView className="max-w-5xl mx-auto px-6 py-12 space-y-12">
-        <BookLearningClient
-          meta={meta}
-          explanation={explanation}
-          chapters={chapterPreviews}
-          catalogueVerses={catalogueVerses}
-          catalogueChapters={catalogueChapters}
-        />
-        <SourcesAndInterpretation
+      <div className="mx-auto max-w-5xl px-6 py-12">
+        <ScriptureContents
           scriptureId={meta.id}
-          scriptureTitle={meta.title}
-          scriptureTitleSanskrit={meta.titleSanskrit}
+          chapters={chapterPreviews}
+          totalChapters={catalogueChapters}
         />
-      </FadeUpOnView>
+      </div>
     </main>
   );
 }
