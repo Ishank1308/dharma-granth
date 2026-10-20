@@ -42,7 +42,7 @@ const RecentActivityFeed = dynamic(
   { ssr: false },
 );
 
-import { readRecentChapters, type ChapterVisit } from '@/lib/reading-history';
+import { readActiveStreak, readRecentChapters, type ChapterVisit } from '@/lib/reading-history';
 import { readActivity } from '@/lib/activity-log';
 import type { UserSadhanaStats } from '@/lib/spiritual-levels';
 
@@ -59,7 +59,8 @@ export function DashboardClient({ titles }: { titles: Record<string, string> }) 
   const progress = useStudyProgress();
   const [bookmarkCount, setBookmarkCount] = useState<number>(0);
   const [recentChapters, setRecentChapters] = useState<ChapterVisit[]>([]);
-  const [totalVersesRead, setTotalVersesRead] = useState<number>(0);
+  const [recordedVerseCount, setRecordedVerseCount] = useState<number>(0);
+  const [activeStreak, setActiveStreak] = useState<number>(0);
 
   useEffect(() => {
     try {
@@ -73,8 +74,9 @@ export function DashboardClient({ titles }: { titles: Record<string, string> }) 
       const chapters = readRecentChapters();
       setRecentChapters(chapters);
       const acts = readActivity();
-      const verseActs = acts.filter((a) => a.kind === 'verse');
-      setTotalVersesRead(Math.max(verseActs.length, chapters.length * 12));
+      const verseRefs = new Set(acts.filter((a) => a.kind === 'verse').map((a) => a.ref));
+      setRecordedVerseCount(verseRefs.size);
+      setActiveStreak(readActiveStreak());
     } catch {}
   }, []);
 
@@ -149,13 +151,10 @@ export function DashboardClient({ titles }: { titles: Record<string, string> }) 
   const inProgressPathways = pathwayStats.filter((p) => p.completed > 0 && !p.isComplete).length;
 
   const sadhanaStats: UserSadhanaStats = {
-    versesReadCount: Math.max(
-      totalVersesRead,
-      recentChapters.length * 15 + notes.length + highlights.length + (streak.totalDaysRead * 3)
-    ),
+    versesReadCount: recordedVerseCount,
     totalDaysRead: streak.totalDaysRead,
-    currentStreak: streak.totalDaysRead > 0 ? Math.min(streak.totalDaysRead, 7) : 0,
-    longestStreak: streak.totalDaysRead,
+    currentStreak: activeStreak,
+    longestStreak: streak.longestStreak,
     notesCount: notes.length,
     highlightsCount: highlights.length,
     bookmarksCount: bookmarkCount,
@@ -190,7 +189,7 @@ export function DashboardClient({ titles }: { titles: Record<string, string> }) 
                 <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Days read</span>
               </div>
               <p className="text-3xl font-bold text-dharma-text">{streak.totalDaysRead}</p>
-              <p className="text-xs text-dharma-muted">days with some reading</p>
+              <p className="text-xs text-dharma-muted">{streak.totalDaysRead === 1 ? 'day' : 'days'} with some reading</p>
             </div>
 
             {/* Bookmarks */}
@@ -226,10 +225,10 @@ export function DashboardClient({ titles }: { titles: Record<string, string> }) 
           <SpiritualProgressCard stats={sadhanaStats} />
         </>
 
-        {/* Scripture Mastery & Completion Overview */}
+        {/* Honest local reading activity and recent chapter positions */}
         <>
           <ScriptureCompletionCard
-            totalVersesRead={sadhanaStats.versesReadCount}
+            recordedVerseCount={sadhanaStats.versesReadCount}
             recentChapters={recentChapters}
           />
         </>

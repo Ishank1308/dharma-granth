@@ -61,7 +61,7 @@ Intent search (extend the theme matcher in `lib/search-themes.ts`; results must 
 | Visual story mode | `/story` | Built from existing characters and narrative timelines. Each block carries one of the four labels; diagrams have a text list. No generated illustrations are used. Location map is not included (links to `/locations`). |
 | Personal study desk | `/desk` | Saved verses, notes, reading queue (reorderable), recent chapters, active journeys, offline indicator, optional PIN (salted SHA-256, a privacy screen only), export and import (existing backup), per-record delete, clear all. `lib/backup.ts` gained `clearOwnData`. |
 
-Known gaps: no recorded recitation or reciter attribution; screen-off playback depends on the browser; the story views reuse paraphrased dialogue and need editorial review; `/dashboard` still shows a streak with a "best" count, which conflicts with the calm-progress rule and should be reworded.
+Known gaps: no recorded recitation or reciter attribution; screen-off playback depends on the browser; the story views reuse paraphrased dialogue and need editorial review. The dashboard reading overview now counts distinct verses present in the local activity log and shows recent chapter visits without estimating completion from that capped history.
 
 ## Phase 4 status (built)
 
