@@ -55,8 +55,8 @@ import {
   markChapterCompleteInReadingPlan,
 } from '@/lib/reading-plan-sync';
 import { saveChapterVersesToDB, getCachedChapterVersesFromDB } from '@/lib/db/granth-indexeddb';
-import type { SvadhyayaTab } from '@/components/reader/SvadhyayaSplitDrawer';
-const SvadhyayaSplitDrawer = dynamic(() => import('@/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
+import type { SvadhyayaTab } from '@/app/components/reader/SvadhyayaSplitDrawer';
+const SvadhyayaSplitDrawer = dynamic(() => import('@/app/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
 import { MobileOneThumbControlBar } from './reader/MobileOneThumbControlBar';
 import {
   saveReadingPosition,

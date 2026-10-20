@@ -39,7 +39,7 @@ import { whatsappShareUrl } from '@/lib/whatsapp';
 import dynamic from 'next/dynamic';
 
 // Loaded when a verse's story deck is first opened, so it stays out of the page's first-load JS.
-const StoryDeckModal = dynamic(() => import('@/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
+const StoryDeckModal = dynamic(() => import('@/app/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
 import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
 
 export function TopicDetailClient({

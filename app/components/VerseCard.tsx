@@ -50,7 +50,7 @@ import dynamic from 'next/dynamic';
 import { useEverTrue } from '@/lib/use-ever-true';
 
 // Loaded the first time it opens, so the dialog stays out of the page's first-load JS.
-const StoryDeckModal = dynamic(() => import('@/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
+const StoryDeckModal = dynamic(() => import('@/app/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
 const CitationModal = dynamic(() => import('@/components/study/CitationModal').then((m) => m.CitationModal), { ssr: false });
 import { saveAnnotation, deleteAnnotation } from '@/lib/study/storage';
 

@@ -44,7 +44,7 @@ export interface VerseOfTheDayItem {
 
 // The share and story dialogs also load on first open.
 const SacredShareModal = dynamic(() => import('@/app/components/share/SacredShareModal').then((m) => m.SacredShareModal), { ssr: false });
-const StoryDeckModal = dynamic(() => import('@/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
+const StoryDeckModal = dynamic(() => import('@/app/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
 
 // Loaded on demand (first click on Embed) so the dialog stays out of the page's first-load JS.
 const EmbedVerseDialog = dynamic(
