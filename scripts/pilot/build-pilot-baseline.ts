@@ -85,6 +85,7 @@ fs.writeFileSync(
 const arthaText = (l: LayerState | null) => {
   if (!l) return 'unknown';
   if (!l.artha.hindi && !l.artha.english) return l.other.wordMeaning ? 'missing (word glosses only)' : 'missing';
+  if (l.artha.hindi && !l.artha.english && l.other.attribution) return `Hindi literal meaning present, English missing (${l.artha.hindiLength}c; from the commentary record)`;
   const parts = [l.artha.hindi ? `Hindi ${l.artha.hindiLength}c` : 'no Hindi', l.artha.english ? `English ${l.artha.englishLength}c` : 'no English'];
   return `present, unreviewed (${parts.join(', ')})`;
 };
@@ -121,7 +122,7 @@ const boiler = vigRows.filter((r) => r.layers!.vigyana.startsWithHindiMeaning ||
 const otherVig = vigRows.filter((r) => !boiler.includes(r));
 const upan = rows.filter((r) => r.u.group === 'B');
 const upanGloss = upan.filter((r) => r.layers?.vyakhya.wordGlossOnly);
-const noArtha = rows.filter((r) => r.layers && !r.layers.artha.hindi && !r.layers.artha.english && r.u.group !== 'D');
+const noArtha = rows.filter((r) => r.layers && !r.layers.artha.hindi && !r.layers.artha.english);
 md.push(
   `- **Vigyana:** ${vigRows.length} of ${rows.length} units have one. ${boiler.length} of those are boilerplate: the Hindi meaning copied, then a generic sentence that repeats across the text. That is not a responsible modern perspective. The other ${otherVig.length} (${otherVig.map((r) => r.u.reference).join('; ') || 'none'}) needs a human read; see its observation.`,
   `- **Vyakhya:** in ${upanGloss.length} of ${upan.length} Upanishad units the stored explanation is a word-by-word gloss, not an exposition.`,

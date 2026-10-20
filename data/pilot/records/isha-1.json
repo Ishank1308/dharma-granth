@@ -1,0 +1,25 @@
+{
+  "unitId": "isha-1",
+  "reference": "Isha Upanishad 1",
+  "artha": "इस गतिशील जगत में जो कुछ भी चलायमान है, वह सब ईश से आच्छादित (या व्याप्त) होने योग्य है। इसलिए त्यागपूर्वक भोग करो; किसी के धन का लोभ मत करो।",
+  "arthaEn": "Whatever moves in this moving world is to be pervaded (covered) by the Lord. Therefore enjoy through renunciation; do not covet anyone's wealth.",
+  "arthaDecision": "revise-existing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "यह ईशावास्य का पहला मंत्र है; इसमें कोई संवाद नहीं, सीधा कथन है। इसके बाद दूसरे मंत्र में कहा गया है कि कर्म करते हुए जीने की इच्छा रखो। मंत्र में दो बातें एक साथ हैं: यह सब ईश से ढका या भरा है, और इसलिए भोग त्यागपूर्वक करना है। वास्यम् शब्द के दो अर्थ चलते हैं, ढका जाना और बसा हुआ होना। तेन त्यक्तेन भुञ्जीथाः के भी दो पाठ मिलते हैं: त्याग के द्वारा भोगो, या जो त्यागा हुआ, यानी दिया हुआ है उसी से भोगो। मा गृधः का अर्थ है लालच मत करो। कस्यस्विद्धनम् को प्रश्न की तरह भी पढ़ा जाता है, यानी धन किसका है, और सीधे यह भी कि किसी के धन का। मंत्र न भोग की छूट देता है, न भोग से पूरी तरह हटने का आदेश; वह स्वामित्व की भावना को ही बदलता है। इसे अपने आप कर्मयोग का सूत्र मान लेना पाठ से आगे जाना होगा।",
+  "vijnana": "इस मंत्र का एक आधुनिक नैतिक समानांतर साझा संसाधनों की देखरेख की सोच में मिलता है: जो चीज़ सबके सहारे चलती है, उसे अपनी निजी संपत्ति की तरह भोगने की जगह उसके रखवाले की तरह बरतना। यह एक नैतिक परिप्रेक्ष्य भर है, मंत्र द्वारा पर्यावरण या अर्थव्यवस्था के बारे में किया गया वैज्ञानिक दावा नहीं। मंत्र का केंद्र ईश की व्याप्ति और त्याग की दृष्टि है, पर्यावरण-नीति नहीं। यहाँ कोई आँकड़ा या अध्ययन प्रस्तुत नहीं किया जा रहा।",
+  "vijnanaCategory": "ethical",
+  "evidenceLevel": "editorial-observation",
+  "lifeLesson": "कुछ खरीदने या जमा करने से पहले पूछो कि क्या तुम उसे ज़रूरत के लिए उपयोग करोगे या केवल रखने के लिए। जो ज़रूरत से ज़्यादा हो, उसे साझा करने या छोड़ने का एक छोटा कदम चुनो।",
+  "confidence": "medium",
+  "reviewNote": "The Sanskrit is clear but 'vasyam', 'tena tyaktena' and 'kasya svid dhanam' each admit more than one reading; the Artha keeps one neutral rendering and the Vyakhya names the alternatives. The stored explanation calls the verse 'karma-yoga in a single line'; that identification is an interpretation and was not repeated as fact. No classical commentary is stored in the repository.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged.",
+    "artha": "Editor rendering from the Sanskrit. The stored translation was read as a check.",
+    "vyakhya": "Original composition.",
+    "vijnana": "Original composition; no research source consulted and none cited.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}

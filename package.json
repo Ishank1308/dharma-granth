@@ -60,7 +60,7 @@
     "check:diagrams": "tsx scripts/check-diagrams.ts",
     "check:concept-relations": "tsx scripts/check-concept-relations.ts",
     "check:orientation": "tsx scripts/check-orientation.ts",
-    "check": "tsx scripts/check-canonical-integrity.ts && tsx scripts/pilot/check-pilot-canonical.ts && tsx scripts/check-data.ts && tsx scripts/check-topic-shlokas.ts && tsx scripts/check-filler.ts && tsx scripts/check-wisdom.ts && tsx scripts/check-commentary-quality.ts && tsx scripts/check-published-scriptures.ts",
+    "check": "tsx scripts/check-canonical-integrity.ts && tsx scripts/pilot/check-pilot-canonical.ts && tsx scripts/pilot/validate-pilot-records.ts && tsx scripts/check-data.ts && tsx scripts/check-topic-shlokas.ts && tsx scripts/check-filler.ts && tsx scripts/check-wisdom.ts && tsx scripts/check-commentary-quality.ts && tsx scripts/check-published-scriptures.ts",
     "check:commentary": "tsx scripts/check-commentary-quality.ts",
     "strip:commentary-boilerplate": "tsx scripts/strip-commentary-boilerplate.ts",
     "generate:hi-analysis": "tsx scripts/generate-hi-analysis.ts && tsx scripts/generate-analysis-index.ts",

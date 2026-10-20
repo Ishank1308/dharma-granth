@@ -168,7 +168,7 @@
       "risk": "Reading 'witness' as dissociation.",
       "reviewer": "Advaita editor",
       "traditionalCommentary": "The source file names a modern Hindi commentator (see source field).",
-      "observation": "The source has speaker, word division, word-by-word glosses and a bhavartha.",
+      "observation": "The source record has the speaker, word division, word-by-word glosses, and a bhavartha that opens with a literal meaning (शाब्दिक अर्थ), then a commentary summary attributed to the book, a philosophical discussion with a misreading note, and cross-citations. No English meaning exists.",
       "source": "ashtavakra"
     },
     {
@@ -183,7 +183,7 @@
       "risk": "Antinomian or passive reading ('nothing I do matters'); must be held against the verse's own context.",
       "reviewer": "Advaita editor; ethics reviewer",
       "traditionalCommentary": "The source file names a modern Hindi commentator.",
-      "observation": "Highest misreading risk in the set.",
+      "observation": "The source record has the speaker, word division, word-by-word glosses, and a bhavartha that opens with a literal meaning (शाब्दिक अर्थ), then a commentary summary attributed to the book, a philosophical discussion with a misreading note, and cross-citations. No English meaning exists.",
       "source": "ashtavakra"
     },
     {
@@ -279,13 +279,13 @@
       "scriptureId": "durgasaptashati",
       "chapter": 5,
       "verse": "5.77",
-      "reference": "Devi Mahatmya 5.77 (Durga Saptashati)",
-      "unitType": "stuti verse",
+      "reference": "Devi Mahatmya, Devi Stuti block (stored record labelled 5.77; spans 5.14–5.76 plus a closing verse)",
+      "unitType": "stuti block of 22 stanzas",
       "reason": "Devotion as the primary mode ('ya devi sarvabhuteshu'); Vigyana likely not-applicable.",
       "risk": "Forcing psychological analysis into hymnody.",
       "reviewer": "Devi Mahatmya editor",
       "traditionalCommentary": "Not stored.",
-      "observation": "Hindi and English look faithful; the explanation field is a short English note. The stored science field says physics recognizes that all forces are expressions of underlying field symmetries and applies that to the Ya Devi refrain. That is a forced scientific analogy for a devotional hymn, the over-reach the standard forbids; Vigyana here should most likely be not-applicable."
+      "observation": "The stored record is a block of 22 stanzas (21 \"yā devī sarvabhūteṣu\" refrains and a closing verse) under one number, but its Hindi and English cover only the shakti stanza. The next record is 5.81, so the standard \"citirūpeṇa\" stanza appears to be missing from the block (verify against an edition). The explanation field is a short English note. The stored science field says physics recognizes that all forces are expressions of field symmetries and applies that to the refrain: a forced scientific analogy for a devotional hymn, the over-reach the standard forbids."
     },
     {
       "id": "vinayapatrika-1",

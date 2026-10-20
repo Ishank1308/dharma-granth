@@ -197,8 +197,10 @@ function loadAshtavakra(u: PilotUnit): LoadedUnit {
     sourceCitation: [v.text_title, v.commentator].filter(Boolean).join(' / ') || null,
   };
   const bh = v.bhavartha ?? '';
+  const lit = bh.match(/^\s*शाब्दिक अर्थ:\s*([^\n]+)/);
+  const literal = lit ? lit[1].trim() : '';
   const layers: LayerState = {
-    artha: { hindi: false, english: false, hindiLength: 0, englishLength: 0 },
+    artha: { hindi: literal.length > 0, english: false, hindiLength: literal.length, englishLength: 0 },
     vyakhya: { present: has(bh), length: bh.length, language: has(bh) ? (script(bh).d > script(bh).l ? 'hi' : 'en') : 'none', wordGlossOnly: false, hiddenAtPublish: false },
     vigyana: { present: false, length: 0, startsWithHindiMeaning: false, endsWithRepeatedSentence: false, hiddenAtPublish: false },
     other: { wordMeaning: (v.anvaya_sabdartha ?? []).length > 0, speaker: v.speaker ?? null, attribution: v.commentator ?? null },

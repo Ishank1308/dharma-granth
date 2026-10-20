@@ -1,0 +1,25 @@
+{
+  "unitId": "chandogya-6-8-7",
+  "reference": "Chandogya Upanishad 6.8.7",
+  "artha": "जो यह अणिमा, यानी सूक्ष्म सार है, यह सारा जगत उसी को अपना आत्मा रखने वाला है। वही सत्य है, वही आत्मा है; श्वेतकेतो, वह तुम हो। श्वेतकेतु ने कहा, 'भगवन्, मुझे और समझाइए।' उद्दालक ने कहा, 'ठीक है, सौम्य।'",
+  "arthaEn": "That which is this subtle essence has the whole world as its self. That is the real; that is the Self; that you are, Shvetaketu. 'Sir, please instruct me further,' he said. 'So be it, dear,' he replied.",
+  "arthaDecision": "revise-existing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "यह मंत्र छठे अध्याय के उस संवाद में आता है जिसमें उद्दालक अपने पुत्र श्वेतकेतु को एक ऐसी शिक्षा देते हैं जिससे जो नहीं सुना गया वह भी समझ में आ जाता है। यहाँ तत् त्वम् असि पहली बार आता है, और आगे नौ बार दोहराया जाता है, हर बार एक नए उदाहरण के बाद। अणिमा का अर्थ है सबसे सूक्ष्म सार, जिसे इस अध्याय में सत् कहा गया है, यानी वह जो है। ऐतदात्म्य का अर्थ है इस सार को ही अपना आत्मा रखने वाला। इसलिए श्लोक पहले कहता है कि सारा जगत उसी सार पर टिका है, फिर कहता है कि वही सत्य और आत्मा है, और तब श्वेतकेतु से कहता है कि वह तुम हो। इस वाक्य के अर्थ पर परंपरा में मतभेद है: एक पाठ इसे जीव और सत् की एकता कहता है, दूसरे इसे गहरे संबंध या उसी पर आश्रित होने के अर्थ में लेते हैं। अंत में श्वेतकेतु का और समझाइए कहना बताता है कि यह वाक्य उपदेश की समाप्ति नहीं, एक पड़ाव है।",
+  "vijnana": "इस संवाद की एक बनावट को साहित्यिक और भाषा-शैली के अवलोकन के रूप में देखा जा सकता है: एक ही निष्कर्ष को अलग-अलग उदाहरणों के साथ नौ बार दोहराया जाता है, और हर बार शिष्य और जानना चाहता है। यह उपदेश-शैली की एक पहचान है, किसी वैज्ञानिक तथ्य का दावा नहीं। मंत्र का विषय परम सत् और आत्मा का संबंध है, जिसे प्रयोग या आँकड़े से न सिद्ध किया जा रहा है, न खंडित। इसे केवल पाठ की संरचना पर एक आधुनिक टिप्पणी की तरह पढ़ना उचित है, इसके अर्थ का विकल्प मानकर नहीं।",
+  "vijnanaCategory": "linguistic",
+  "evidenceLevel": "editorial-observation",
+  "lifeLesson": "जब कोई बड़ा विचार सुनकर अहंकार जागे, तो उसे अपने बारे में दावे की तरह मत दोहराओ। श्वेतकेतु की तरह और उदाहरण माँगो और कहो कि मुझे और समझाइए।",
+  "confidence": "medium",
+  "reviewNote": "The Sanskrit text is intact. Three stored fields are damaged and were not repaired: (1) the transliteration field is not IAST (it contains Harvard-Kyoto style artefacts such as '{\\m+}'); it is a protected canonical field, so it is routed to canonical review rather than edited. (2) The stored Hindi is OCR noise unrelated to this verse (it talks about a thief), so it was replaced. (3) The stored English is an old public-domain style translation with no attribution in the data; it was not reproduced. The dataset's chapter number 105 is a running index; the Upanishad's own reference is 6.8.7. The two readings of 'tat tvam asi' are described in general terms only; no commentary is stored.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged. Transliteration field flagged for canonical review.",
+    "artha": "Editor rendering from the Sanskrit.",
+    "vyakhya": "Original composition.",
+    "vijnana": "Original composition; a literary observation, no research source consulted.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}
