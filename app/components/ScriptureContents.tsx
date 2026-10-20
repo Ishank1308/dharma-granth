@@ -60,8 +60,10 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
             <p className="mt-2 max-w-xl text-sm text-dharma-muted">Choose a traditional section to begin reading. Explanations and verse-level study open inside each section.</p>
           </div>
           {firstChapter && (
-            <Link href={chapterHref(scriptureId, firstChapter.id)} className="inline-flex items-center gap-2 text-sm font-bold text-saffron-700 transition hover:text-saffron-900 dark:text-saffron-300 dark:hover:text-saffron-200">
-              Start reading <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <Link href={chapterHref(scriptureId, firstChapter.id)} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-saffron-800 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">
+              <BookOpen className="h-4 w-4" aria-hidden="true" />
+              Start reading
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           )}
         </div>
