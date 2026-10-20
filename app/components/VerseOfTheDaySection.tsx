@@ -24,7 +24,8 @@ import { triggerTactileFeedback } from '@/lib/haptics';
 import { PedagogicalVerseCard, type ContemplationTier } from '@/app/components/PedagogicalVerseCard';
 import type { PedagogicalVerseData } from '@/data/pedagogical-gita-2-47';
 import { DAILY_WISDOM_REGISTRY } from '@/data/daily-wisdom-engine';
-import { SacredShareModal } from '@/app/components/share/SacredShareModal';
+import { useEverTrue } from '@/lib/use-ever-true';
+import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
 
 export interface VerseOfTheDayItem {
   scriptureId: string;
@@ -40,6 +41,10 @@ export interface VerseOfTheDayItem {
   reflection: string;
   source: string;
 }
+
+// The share and story dialogs also load on first open.
+const SacredShareModal = dynamic(() => import('@/app/components/share/SacredShareModal').then((m) => m.SacredShareModal), { ssr: false });
+const StoryDeckModal = dynamic(() => import('@/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
 
 // Loaded on demand (first click on Embed) so the dialog stays out of the page's first-load JS.
 const EmbedVerseDialog = dynamic(
@@ -79,6 +84,9 @@ export function VerseOfTheDaySection() {
   const [embedMounted, setEmbedMounted] = useState(false);
   const [genericTier, setGenericTier] = useState<ContemplationTier>('simple');
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [isStoryDeckOpen, setIsStoryDeckOpen] = useState(false);
+  const shareLoaded = useEverTrue(isShareModalOpen);
+  const storyDeckLoaded = useEverTrue(isStoryDeckOpen);
 
   useEffect(() => {
     const dayIdx = getDayOfYear() % FEATURED_VERSES.length;
@@ -523,6 +531,17 @@ export function VerseOfTheDaySection() {
                         <Code2 className="h-3.5 w-3.5 text-dharma-muted" />
                         <span>Embed</span>
                       </button>
+
+                      {/* 60-Second Visual Story Deck Trigger */}
+                      <button
+                        type="button"
+                        onClick={() => setIsStoryDeckOpen(true)}
+                        aria-label="६०-सेकंड सार (5-Card Visual Story Deck)"
+                        className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-3.5 py-2 text-xs font-bold text-amber-900 transition hover:bg-amber-100 hover:border-amber-400 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-200 shadow-sm"
+                      >
+                        <Zap className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
+                        <span>६०-सेकंड सार</span>
+                      </button>
                     </div>
 
                     {/* Read Context */}
@@ -569,6 +588,7 @@ export function VerseOfTheDaySection() {
           onNotice={showToast}
         />
       )}
+      {shareLoaded && (
       <SacredShareModal
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
@@ -583,6 +603,29 @@ export function VerseOfTheDaySection() {
           url: typeof window !== 'undefined' ? `${window.location.origin}${readHref(current.scriptureId, current.chapterId, current.verseId)}` : `https://dharmagranth.in${readHref(current.scriptureId, current.chapterId, current.verseId)}`,
         }}
       />
+      )}
+      {current && storyDeckLoaded && (
+        <StoryDeckModal
+          isOpen={isStoryDeckOpen}
+          onClose={() => setIsStoryDeckOpen(false)}
+          data={{
+            scriptureTitle: current.scriptureTitle,
+            chapterTitle: current.chapterTitle,
+            verseRef: `${current.scriptureTitle} ${current.chapterId}.${current.verseId}`,
+            sanskrit: current.sanskrit,
+            transliteration: current.transliteration,
+            hindi: current.hindi,
+            english: current.translation,
+            meta: getLiteraryVerseMeta(current.scriptureId, current.chapterId, current.verseId, {
+              sanskrit: current.sanskrit,
+              translation: current.translation,
+              hindi: current.hindi,
+              lifeLesson: current.reflection,
+            }),
+            chapterHref: readHref(current.scriptureId, current.chapterId, current.verseId),
+          }}
+        />
+      )}
     </section>
   );
 }

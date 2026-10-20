@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 import dynamic from "next/dynamic";
-import { FloatingCompanion } from "@/app/components/FloatingCompanion";
 import { TactileLayer } from "@/app/components/TactileLayer";
 import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
@@ -264,9 +263,6 @@ export default function RootLayout({
           </ErrorBoundary>
           <ErrorBoundary name="Manana Selection">
             <MananaSelectionBar />
-          </ErrorBoundary>
-          <ErrorBoundary name="Floating Companion">
-            <FloatingCompanion />
           </ErrorBoundary>
           <ErrorBoundary name="Dharma Copilot">
             <DharmaCopilot />

@@ -268,15 +268,23 @@ export function WisdomClient() {
             </button>
           </div>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredTopics.map((topic) => (
-              <WisdomTopicCard key={topic.id} topic={topic} />
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            {filteredTopics.map((topic, index) => {
+              const isFeatured = index % 4 === 0;
+              return (
+                <WisdomTopicCard
+                  key={topic.id}
+                  topic={topic}
+                  isFeatured={isFeatured}
+                  className={isFeatured ? 'md:col-span-8' : 'md:col-span-4'}
+                />
+              );
+            })}
           </div>
         )}
 
         {/* ── Mandatory Medical & Contextual Disclaimer ─────────────── */}
-        <div className="mt-16 rounded-3xl border border-amber-500/30 bg-amber-500/5 dark:bg-amber-950/20 p-6 sm:p-8 backdrop-blur-sm">
+        <div className="mt-16 rounded-3xl hairline-warm-border bg-amber-500/5 dark:bg-amber-950/20 p-6 sm:p-8 backdrop-blur-sm manuscript-surface">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-700 dark:text-amber-400 shrink-0">
               <ShieldAlert className="w-6 h-6" />
@@ -284,7 +292,7 @@ export function WisdomClient() {
             <div className="space-y-2">
               <h3 className="text-base sm:text-lg font-serif font-bold text-dharma-text flex items-center gap-2">
                 <span>शास्त्रीय मार्गदर्शन एवं संदर्भ सूचना</span>
-                <span className="text-xs font-sans font-semibold text-amber-700 dark:text-amber-400 uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">
+                <span className="editorial-meta-pill text-amber-800 dark:text-amber-400 bg-amber-500/10 border-amber-500/20">
                   Important Contextual Note
                 </span>
               </h3>
@@ -310,72 +318,92 @@ export function WisdomClient() {
   );
 }
 
-function WisdomTopicCard({ topic }: { topic: WisdomTopic }) {
+function WisdomTopicCard({
+  topic,
+  isFeatured = false,
+  className = '',
+}: {
+  topic: WisdomTopic;
+  isFeatured?: boolean;
+  className?: string;
+}) {
   return (
     <article
       id={`topic-card-${topic.slug}`}
-      className="group relative flex flex-col rounded-3xl border border-dharma-border bg-dharma-card hover:border-saffron-300 dark:hover:border-saffron-500/50 hover:shadow-2xl transition-all duration-300 overflow-hidden"
+      className={`group relative flex flex-col rounded-3xl hairline-warm-border bg-dharma-card manuscript-surface hover:border-saffron-400/60 dark:hover:border-saffron-500/50 hover:shadow-2xl transition-all duration-300 overflow-hidden ${className}`}
     >
       {/* Top accent gradient bar */}
-      <div className={`h-2 w-full bg-gradient-to-r ${topic.colorGradient}`} />
+      <div className={`h-1.5 w-full bg-gradient-to-r ${topic.colorGradient}`} />
 
-      {/* Card Header with Calm Illustration */}
-      <div className="p-6 pb-4 flex flex-col flex-grow">
-        <div className="flex items-start justify-between gap-4 mb-4">
-          <div className="p-2 rounded-2xl bg-dharma-bg/80 border border-dharma-border/60 shadow-sm flex items-center justify-center group-hover:scale-105 transition-transform">
-            <TopicIllustration topicId={topic.id} size={84} />
-          </div>
+      {/* Main card body */}
+      <div className={`p-6 sm:p-7 flex flex-col flex-grow ${isFeatured ? 'md:grid md:grid-cols-12 md:gap-8 md:items-start' : ''}`}>
+        <div className={isFeatured ? 'md:col-span-4 flex flex-col items-start' : ''}>
+          <div className="flex items-start justify-between w-full gap-4 mb-4">
+            <div className="p-3 rounded-2xl bg-stone-100/80 dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800/80 shadow-sm flex items-center justify-center group-hover:scale-105 transition-transform">
+              <TopicIllustration topicId={topic.id} size={isFeatured ? 96 : 80} />
+            </div>
 
-          <div className="text-right">
-            <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300 bg-saffron-500/10 px-2.5 py-1 rounded-full border border-saffron-500/20 mb-1.5">
-              {topic.categoryLabelEn}
-            </span>
-            <div className="flex items-center justify-end gap-1 text-[11px] text-dharma-muted">
-              <Clock className="w-3 h-3" />
-              <span>{topic.readingTimeMinutes} min read</span>
+            <div className="text-right">
+              <span className="editorial-meta-pill text-saffron-800 dark:text-saffron-300 bg-saffron-500/10 border-saffron-500/20 mb-1.5">
+                {topic.categoryLabelEn}
+              </span>
+              <div className="flex items-center justify-end gap-1 font-mono text-[11px] text-dharma-muted">
+                <Clock className="w-3 h-3" />
+                <span>{topic.readingTimeMinutes} min</span>
+              </div>
             </div>
           </div>
+
+          {isFeatured && (
+            <div className="hidden md:flex items-center gap-1.5 text-xs text-saffron-700 dark:text-saffron-400 font-medium pt-2">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Editorial Spotlight</span>
+            </div>
+          )}
         </div>
 
-        {/* Titles */}
-        <div className="mb-3">
-          <h3 className="text-2xl font-serif font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-400 transition-colors">
-            {topic.titleEn}
-          </h3>
-          <p lang="hi" className="text-lg font-devanagari font-semibold text-rose-700 dark:text-rose-400 mt-0.5">
-            {topic.titleHi}
-          </p>
-          <p lang="sa" className="text-xs font-devanagari text-dharma-muted italic mt-1 line-clamp-1">
-            {topic.sanskritSubtitle}
-          </p>
-        </div>
+        {/* Content column */}
+        <div className={`flex flex-col flex-grow ${isFeatured ? 'md:col-span-8' : ''}`}>
+          {/* Titles */}
+          <div className="mb-3">
+            <h3 className={`font-serif font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-400 transition-colors ${isFeatured ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'}`}>
+              {topic.titleEn}
+            </h3>
+            <p lang="hi" className="text-base sm:text-lg font-devanagari font-semibold text-rose-700 dark:text-rose-400 mt-0.5">
+              {topic.titleHi}
+            </p>
+            <p lang="sa" className="text-xs font-devanagari text-dharma-muted italic mt-1 line-clamp-1">
+              {topic.sanskritSubtitle}
+            </p>
+          </div>
 
-        {/* Short Premise */}
-        <p className="text-sm text-dharma-muted leading-relaxed line-clamp-3 mb-4">
-          {topic.shortDescEn}
-        </p>
-
-        {/* Scripture Citation Preview Badges */}
-        <div className="mt-auto pt-3 border-t border-dharma-border/60">
-          <p className="text-[11px] uppercase tracking-wider font-bold text-dharma-muted mb-2 flex items-center gap-1.5">
-            <BookOpen className="w-3.5 h-3.5 text-saffron-600" />
-            <span>Curated Verses ({topic.verses.length})</span>
+          {/* Short Premise */}
+          <p className="text-sm text-dharma-muted leading-relaxed line-clamp-3 mb-4">
+            {topic.shortDescEn}
           </p>
-          <div className="flex flex-wrap gap-1.5">
-            {topic.verses.map((verse) => (
-              <span
-                key={verse.id}
-                className="text-[11px] font-medium bg-dharma-bg px-2.5 py-1 rounded-lg border border-dharma-border text-dharma-text/90"
-              >
-                {verse.referenceDisplay}
-              </span>
-            ))}
+
+          {/* Scripture Citation Preview Badges */}
+          <div className="mt-auto pt-3 border-t border-stone-200/70 dark:border-stone-800/70">
+            <p className="font-mono text-[10px] uppercase tracking-wider font-semibold text-dharma-muted mb-2 flex items-center gap-1.5">
+              <BookOpen className="w-3.5 h-3.5 text-saffron-600" />
+              <span>Curated Verses ({topic.verses.length})</span>
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {topic.verses.map((verse) => (
+                <span
+                  key={verse.id}
+                  className="editorial-meta-pill bg-stone-100/90 dark:bg-stone-900/90 border-stone-300/70 dark:border-stone-800 text-stone-700 dark:text-stone-300"
+                >
+                  {verse.referenceDisplay}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Card Footer Action */}
-      <div className="px-6 py-4 bg-dharma-bg/40 border-t border-dharma-border flex items-center justify-between">
+      <div className="px-6 py-3.5 bg-stone-50/60 dark:bg-stone-900/60 border-t border-stone-200/70 dark:border-stone-800/70 flex items-center justify-between">
         <span className="text-xs text-dharma-muted font-devanagari font-medium">
           सम्पूर्ण शास्त्रीय समाधान
         </span>

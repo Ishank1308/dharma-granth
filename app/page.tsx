@@ -6,9 +6,8 @@ import { ContinueReading } from '@/app/components/ContinueReading';
 import { VerseOfTheDayCompact } from '@/app/components/VerseOfTheDayCompact';
 import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
-import { Experience3DSection } from '@/app/components/Experience3DSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
-import { SadhanaPreviewSection } from '@/app/components/SadhanaPreviewSection';
+import { LazyExperience3D, LazySadhanaPreview } from '@/app/components/LazyHomeSections';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
 import { SiteFooter } from '@/app/components/SiteFooter';
 
@@ -67,10 +66,10 @@ export default function HomePage() {
         <FeaturedScripturesSection />
 
         {/* 7. Touch & Contemplate: 3D Sacred Experience System */}
-        <Experience3DSection gitaCountLabel="१८ अध्याय · ७०० श्लोक" />
+        <LazyExperience3D gitaCountLabel="१८ अध्याय · ७०० श्लोक" />
 
         {/* 8. Practice tools preview */}
-        <SadhanaPreviewSection />
+        <LazySadhanaPreview />
 
         {/* 9. Trust, sourcing and methodology */}
         <HomeTrustStrip />

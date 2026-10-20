@@ -53,6 +53,7 @@ import {
   getSoundscapeState,
 } from '@/lib/sacred-soundscape';
 import { triggerPranaToast } from '@/lib/prana-capsule-store';
+import { executeSearchWithWorker } from '@/lib/workers/search-worker-client';
 
 export type { SearchResultItem } from '@/lib/search';
 

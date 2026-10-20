@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type ComponentType } from 'react';
+import { usePathname } from 'next/navigation';
 import { Sparkles } from 'lucide-react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
@@ -11,6 +12,9 @@ import { triggerTactileFeedback } from '@/lib/haptics';
  */
 export function DharmaCopilot() {
   const [open, setOpen] = useState(false);
+  // On phones the chapter reader has its own control bar just above the bottom navigation; the guide button would sit on top of it.
+  const pathname = usePathname();
+  const onChapterPage = pathname?.startsWith('/scripture/') === true && pathname.includes('/chapter/');
   const [Modal, setModal] = useState<ComponentType<{ isOpen: boolean; onClose: () => void }> | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const wasOpen = useRef(false);
@@ -41,7 +45,7 @@ export function DharmaCopilot() {
         aria-expanded={open}
         aria-haspopup="dialog"
         onClick={() => { void toggle(); }}
-        className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] right-3 z-40 inline-flex min-h-11 items-center gap-2 rounded-full border border-amber-400/40 bg-stone-900/90 px-4 py-2 text-xs sm:text-sm font-bold text-amber-200 shadow-xl backdrop-blur-xl transition-all hover:border-amber-300 hover:scale-105 active:scale-95 md:bottom-20 md:right-6"
+        className={`${onChapterPage ? 'max-sm:hidden ' : ''}fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] right-3 z-40 inline-flex min-h-11 items-center gap-2 rounded-full border border-amber-400/40 bg-stone-900/90 px-4 py-2 text-xs sm:text-sm font-bold text-amber-200 shadow-xl backdrop-blur-xl transition-all hover:border-amber-300 hover:scale-105 active:scale-95 md:bottom-20 md:right-6`}
         title="Dharma Copilot AI · धर्म सहायक"
         aria-label="Open Dharma Copilot AI"
       >

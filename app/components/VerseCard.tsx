@@ -16,11 +16,13 @@ import {
   Library,
   Lightbulb,
   Maximize2,
+  Quote,
   ScrollText,
   Sparkles,
   StickyNote,
   Volume2,
   X,
+  Zap,
 } from 'lucide-react';
 import Link from 'next/link';
 import type { ScriptureCategory } from '@/data/types';
@@ -28,6 +30,7 @@ import type { VerseHighlight } from '@/lib/useStudyProgress';
 import { resolveKeywordTarget } from '@/lib/keyword-links';
 import { toDevanagari, verseLines } from '@/lib/verse-format';
 import { shareVerseUrl } from '@/lib/verse-paths';
+import { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 import { SITE_URL } from '@/lib/jsonld';
 import { ShareVerseButton } from './ShareVerseButton';
 import { GlossaryText } from './GlossaryTooltip';
@@ -38,6 +41,17 @@ import { speakSanskritTerm } from '@/lib/sacred-soundscape';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { showSabdaPeek } from '@/lib/prana-capsule-store';
 import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';
+import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
+import type { ReadingDepth } from '@/lib/reading-depth';
+import { ActionMenu } from '@/app/components/primitives/ActionMenu';
+import { Collapsible } from '@/app/components/primitives/Collapsible';
+import dynamic from 'next/dynamic';
+import { useEverTrue } from '@/lib/use-ever-true';
+
+// Loaded the first time it opens, so the dialog stays out of the page's first-load JS.
+const StoryDeckModal = dynamic(() => import('@/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
+const CitationModal = dynamic(() => import('@/components/study/CitationModal').then((m) => m.CitationModal), { ssr: false });
+import { saveAnnotation, deleteAnnotation } from '@/lib/study/storage';
 
 export interface VerseCardData {
   number: number | string;
@@ -48,6 +62,9 @@ export interface VerseCardData {
   hindi?: string;
   hindiSource?: 'ai';
   wordMeaning?: string;
+  padaccheda?: string;
+  speaker?: string;
+  chandas?: string;
   keywords?: string[];
 }
 
@@ -71,6 +88,8 @@ export interface VerseLayers {
 }
 
 interface Props {
+  /** How much explanation to show; defaults to everything (study) for callers that do not choose. */
+  depth?: ReadingDepth;
   verse: VerseCardData;
   meaning: VerseMeaning;
   layers: VerseLayers;
@@ -103,6 +122,10 @@ interface Props {
   isReciting?: boolean;
   /** Callback to trigger recitation of this verse */
   onPlayRecitation?: () => void;
+  /** Opens the desktop split-pane Svādhyāya workbench */
+  onOpenSvadhyaya?: (tab: 'concept' | 'parallel' | 'manana', data?: unknown) => void;
+  /** Whether this verse is active during recitation or jump */
+  isActive?: boolean;
 }
 
 type TabId = 'meaning' | 'explain' | 'science';
@@ -131,33 +154,6 @@ function isMostlyDevanagari(text: string | undefined): boolean {
     else if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) latin++;
   }
   return deva > latin;
-}
-
-function parseWordMeanings(raw?: string): Array<{ word: string; meaning: string }> {
-  if (!raw) return [];
-  const entries = raw
-    .split(/[;\n]+/)
-    .map((s) => s.trim())
-    .filter(Boolean);
-
-  const result: Array<{ word: string; meaning: string }> = [];
-
-  for (const entry of entries) {
-    const parts = entry.split(/\s*(?:—|–|=|:\s+|\s+-\s+)\s*/);
-    if (parts.length >= 2) {
-      const word = parts[0].trim();
-      const meaning = parts.slice(1).join(' ').trim();
-      if (word) {
-        result.push({ word, meaning });
-        continue;
-      }
-    }
-    if (entry.length > 0 && entry.length < 80) {
-      result.push({ word: entry, meaning: '' });
-    }
-  }
-
-  return result;
 }
 
 /** Lotus-petal medallion carrying the verse number in Devanagari numerals. */
@@ -198,6 +194,7 @@ const iconButton =
   'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card/80 text-dharma-muted backdrop-blur transition hover:border-saffron-300 hover:text-saffron-700';
 
 export function VerseCard({
+  depth = 'study',
   verse: v,
   meaning,
   layers,
@@ -223,6 +220,8 @@ export function VerseCard({
   versePageHref,
   isReciting,
   onPlayRecitation,
+  onOpenSvadhyaya,
+  isActive,
 }: Props) {
   const reduce = useReducedMotion();
   const cardRef = useRef<HTMLElement>(null);
@@ -261,7 +260,26 @@ export function VerseCard({
     setEditingNote(true);
   };
   const saveNote = () => {
-    onSaveNote(draft.trim());
+    const trimmed = draft.trim();
+    onSaveNote(trimmed);
+    if (trimmed) {
+      saveAnnotation({
+        id: `annot_${scriptureId}_${chapterId}_${v.number}`,
+        reference: {
+          scriptureId,
+          chapterId,
+          verseId: String(v.number),
+          canonicalReference: `${scriptureTitle || scriptureId} ${chapterId}.${v.number}`,
+        },
+        note: trimmed,
+        tags: [],
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        status: 'active',
+      }).catch(() => {});
+    } else {
+      deleteAnnotation(`annot_${scriptureId}_${chapterId}_${v.number}`).catch(() => {});
+    }
     setEditingNote(false);
   };
 
@@ -299,6 +317,53 @@ export function VerseCard({
     return () => window.removeEventListener('dharma:recitation-chunk', handleChunk);
   }, [isReciting]);
 
+  // ── Scholarly Citation Modal ──
+  const [citationModalOpen, setCitationModalOpen] = useState(false);
+
+  // ── 60-Second Story Deck Modal & Literary Essayist Metadata ──
+  const [storyDeckOpen, setStoryDeckOpen] = useState(false);
+  const storyDeckLoaded = useEverTrue(storyDeckOpen);
+  const citationLoaded = useEverTrue(citationModalOpen);
+  const literaryMeta = useMemo(() => {
+    return getLiteraryVerseMeta(scriptureId, chapterId, v.number, {
+      sanskrit: v.sanskrit,
+      translation: v.translation,
+      hindi: v.hindi,
+      keywords: v.keywords,
+      explanation: meaning.explanation,
+      lifeLesson: meaning.lesson,
+    });
+  }, [scriptureId, chapterId, v.number, v.sanskrit, v.translation, v.hindi, v.keywords, meaning.explanation, meaning.lesson]);
+
+  // ── Sandhi-Viccheda (Compound Split Words) ──
+  const [isSandhiSplit, setIsSandhiSplit] = useState(false);
+  const [hoveredWordIndex, setHoveredWordIndex] = useState<number | null>(null);
+
+  const parsedGloss = useMemo(() => {
+    if (v.wordMeaning) {
+      return parseWordMeanings(v.wordMeaning);
+    }
+    return [];
+  }, [v.wordMeaning]);
+
+  const splitWords = useMemo<Array<{ pada: string; meaning?: string }>>(() => {
+    if (v.padaccheda) {
+      const tokens = v.padaccheda.split(/[,;\n]+/).map((s) => s.trim()).filter(Boolean);
+      return tokens.map((pada) => {
+        const matching = parsedGloss.find(
+          (g) => g.pada.toLowerCase() === pada.toLowerCase() || g.pada.includes(pada) || pada.includes(g.pada)
+        );
+        return { pada, meaning: matching?.meaning };
+      });
+    }
+    if (parsedGloss.length > 0) {
+      return parsedGloss;
+    }
+    return [];
+  }, [v.padaccheda, parsedGloss]);
+
+  const hasSplitData = splitWords.length > 0;
+
   const { explanation, science, lesson } = meaning;
   // The source flag only says which file the text came from; Hindi व्याख्या
   // also lives in the verse data itself, so check the text.
@@ -311,17 +376,17 @@ export function VerseCard({
   const tabs = useMemo(() => {
     const list: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [];
     if (showHindi || showEnglish) list.push({ id: 'meaning', label: 'अर्थ', icon: ScrollText });
-    if (layers.commentary && explanation) {
+    if (layers.commentary && depth !== 'read' && explanation) {
       list.push({ id: 'explain', label: 'व्याख्या', icon: Sparkles });
     }
-    if (layers.commentary && science) list.push({ id: 'science', label: 'विज्ञान', icon: Atom });
+    if (layers.commentary && depth === 'study' && science) list.push({ id: 'science', label: 'विज्ञान', icon: Atom });
     return list;
-  }, [showHindi, showEnglish, layers.commentary, explanation, science]);
+  }, [showHindi, showEnglish, layers.commentary, depth, explanation, science]);
 
   const [chosenTab, setChosenTab] = useState<TabId>('meaning');
   // Fall back to the first available tab if the chosen one was switched off.
   const activeTab = tabs.some((t) => t.id === chosenTab) ? chosenTab : tabs[0]?.id;
-  const showLesson = Boolean(layers.commentary && lesson);
+  const showLesson = Boolean(layers.commentary && depth !== 'read' && lesson);
   const hasMeaning = tabs.length > 0 || showLesson;
 
   // Cursor spotlight: CSS variables only, no React re-render per move.
@@ -372,7 +437,11 @@ export function VerseCard({
           ? 'ring-2 ring-saffron-500/25 border-dharma-border'
           : 'border-dharma-border'
       } ${getVerseGraphicClass(category)}`}
-      style={getVerseGraphicStyle({ category, verseId: v.number })}
+      style={{
+        ...getVerseGraphicStyle({ category, verseId: v.number }),
+        contentVisibility: isActive || isReciting ? 'visible' : 'auto',
+        containIntrinsicSize: 'auto 420px',
+      }}
       aria-label={`श्लोक ${verseLabel}${isReciting ? ' · श्लोक उच्चारण चालू' : ''}${highlight ? ` · ${HIGHLIGHTS[highlight].label} हाइलाइट` : ''}`}
     >
       {/* Clips the decorative layers to the rounded card; kept separate so
@@ -421,6 +490,49 @@ export function VerseCard({
                 <p className="font-serif text-base font-bold text-dharma-text">श्लोक {verseLabel}</p>
               </div>
             </div>
+          )}
+
+          {/* Inline Sandhi-Viccheda (Compound Split) Toggle Pill */}
+          {hasSplitData && (
+            <button
+              type="button"
+              onClick={() => {
+                setIsSandhiSplit(!isSandhiSplit);
+                setHoveredWordIndex(null);
+              }}
+              aria-pressed={isSandhiSplit}
+              title="संधि-विच्छेद (Split Compound Words)"
+              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition border ${
+                isSandhiSplit
+                  ? 'border-saffron-500 bg-saffron-100/90 text-saffron-900 shadow-2xs dark:bg-saffron-950/60 dark:text-saffron-200 dark:border-saffron-700'
+                  : 'border-dharma-border/80 bg-dharma-card/80 text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
+              }`}
+            >
+              <ScrollText className="h-3.5 w-3.5 text-saffron-600 dark:text-saffron-400" />
+              <span>संधि-विच्छेद · Split Words</span>
+            </button>
+          )}
+
+          {/* Svadhyaya Workbench Quick Button (Desktop Note / Reflection) */}
+          {onOpenSvadhyaya && (
+            <button
+              type="button"
+              onClick={() =>
+                onOpenSvadhyaya('manana', {
+                  scriptureSlug: scriptureId,
+                  scriptureTitle,
+                  chapter: chapterId,
+                  verseNum: v.number,
+                  sanskrit: v.sanskrit,
+                  initialNote: note,
+                })
+              }
+              title="स्वाध्याय मनन टिप्पणी लिखें"
+              className="hidden lg:inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold text-indigo-700 bg-indigo-50 border border-indigo-200/80 hover:bg-indigo-100 transition dark:bg-indigo-950/40 dark:text-indigo-300 dark:border-indigo-800"
+            >
+              <StickyNote className="h-3 w-3" />
+              <span>मनन टिप्पणी</span>
+            </button>
           )}
 
           {/* On phones the actions get their own row and wrap; without shrink-0 the
@@ -548,15 +660,6 @@ export function VerseCard({
             >
               <StickyNote className="h-4 w-4" />
             </button>
-            <button
-              type="button"
-              onClick={onCopy}
-              className={`${iconButton} ${copied ? '!border-emerald-300 !text-emerald-600' : ''}`}
-              aria-label={copied ? 'कॉपी हो गया (Copied)' : 'उद्धरण सहित कॉपी करें (Copy with citation)'}
-              title="कॉपी करें"
-            >
-              {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-            </button>
             <span className="shrink-0 [&>button]:h-9 [&>button]:w-9">
               <ShareVerseButton
                 scriptureTitle={scriptureTitle}
@@ -566,31 +669,49 @@ export function VerseCard({
                 transliteration={v.transliteration}
                 hindi={v.hindi}
                 translation={v.translation}
+                coreShift={literaryMeta.isCurated ? literaryMeta.coreShiftHi || literaryMeta.coreShiftEn : undefined}
                 verseUrl={shareVerseUrl(SITE_URL, scriptureId, chapterId, v.number)}
               />
             </span>
-            {onOpenFocus && (
-              <button
-                type="button"
-                onClick={onOpenFocus}
-                className={iconButton}
-                aria-label="एकाग्रता मोड में पढ़ें (Focus Mode)"
-                title="एकाग्रता मोड (Focus Mode)"
-              >
-                <Maximize2 className="h-4 w-4" />
-              </button>
-            )}
-            {!chantingMode && (
-              <button
-                type="button"
-                onClick={onContribute}
-                className={`${iconButton} hidden sm:inline-flex`}
-                aria-label="अर्थ जोड़ें या सुधारें (Contribute a meaning)"
-                title="योगदान करें"
-              >
-                <Edit3 className="h-4 w-4" />
-              </button>
-            )}
+            <ActionMenu
+              label="और विकल्प · More actions"
+              triggerClassName={iconButton}
+              items={[
+                {
+                  key: 'copy',
+                  label: copied ? 'कॉपी हो गया · Copied' : 'उद्धरण सहित कॉपी · Copy with citation',
+                  icon: copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />,
+                  onSelect: onCopy,
+                },
+                {
+                  key: 'citation',
+                  label: 'शास्त्रीय उद्धरण · Scholarly citation',
+                  icon: <Quote className="h-4 w-4" />,
+                  onSelect: () => setCitationModalOpen(true),
+                },
+                {
+                  key: 'story',
+                  label: '६०-सेकंड सार · 60-second summary',
+                  icon: <Zap className="h-4 w-4" />,
+                  onSelect: () => setStoryDeckOpen(true),
+                  hidden: chantingMode,
+                },
+                {
+                  key: 'focus',
+                  label: 'एकाग्रता मोड · Focus mode',
+                  icon: <Maximize2 className="h-4 w-4" />,
+                  onSelect: () => onOpenFocus?.(),
+                  hidden: !onOpenFocus,
+                },
+                {
+                  key: 'contribute',
+                  label: 'अर्थ जोड़ें या सुधारें · Suggest a correction',
+                  icon: <Edit3 className="h-4 w-4" />,
+                  onSelect: onContribute,
+                  hidden: chantingMode,
+                },
+              ]}
+            />
           </div>
         </header>
 
@@ -626,31 +747,68 @@ export function VerseCard({
                 </span>
               )}
             </div>
-            <p lang="sa" className={`font-devanagari ${sanskritFontSizeClass} text-dharma-text`}>
-              {lines.map((line, i) => {
-                const isLineActive = isReciting && activeLineIndex === i;
-                return (
-                  <motion.span
-                    key={i}
-                    className={`block rounded-xl px-2.5 py-1 -mx-2.5 transition-colors duration-200 ${
-                      isLineActive
-                        ? 'bg-amber-500/20 text-amber-950 dark:text-amber-100 ring-1 ring-amber-400/50 shadow-xs font-medium'
-                        : ''
-                    }`}
-                    {...fadeIn(i)}
-                  >
-                    <GlossaryText text={line} />
-                  </motion.span>
-                );
-              })}
-              <motion.span
-                aria-hidden="true"
-                className="mt-2 block font-bold text-saffron-700 dark:text-amber-300"
-                {...fadeIn(lines.length)}
-              >
-                ॥ {toDevanagari(verseLabel)} ॥
-              </motion.span>
-            </p>
+            {isSandhiSplit && hasSplitData ? (
+              <div className="mx-auto my-2 max-w-2xl text-center">
+                <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-amber-300/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-amber-950/30">
+                  {splitWords.map((w, wIdx) => {
+                    const isHovered = hoveredWordIndex === wIdx;
+                    return (
+                      <button
+                        key={wIdx}
+                        type="button"
+                        onMouseEnter={() => setHoveredWordIndex(wIdx)}
+                        onMouseLeave={() => setHoveredWordIndex(null)}
+                        onClick={() => setHoveredWordIndex(isHovered ? null : wIdx)}
+                        className={`cursor-pointer rounded-xl px-3 py-1.5 text-base md:text-lg font-devanagari font-bold transition-all ${
+                          isHovered
+                            ? 'bg-saffron-600 text-white shadow-md scale-105 ring-2 ring-saffron-400'
+                            : 'bg-dharma-card/90 text-dharma-text border border-dharma-border/80 hover:border-saffron-400 hover:bg-saffron-50 dark:hover:bg-saffron-950/40'
+                        }`}
+                      >
+                        {w.pada}
+                      </button>
+                    );
+                  })}
+                </div>
+                {hoveredWordIndex !== null && splitWords[hoveredWordIndex] && (
+                  <div className="mt-3 inline-flex items-center gap-2 rounded-xl border border-saffron-300 bg-saffron-100/90 px-3.5 py-1.5 text-xs text-saffron-950 shadow-sm dark:border-saffron-700 dark:bg-saffron-950/60 dark:text-saffron-200">
+                    <span className="font-devanagari font-bold text-sm">{splitWords[hoveredWordIndex].pada}</span>
+                    {splitWords[hoveredWordIndex].meaning && (
+                      <span className="font-medium">→ {splitWords[hoveredWordIndex].meaning}</span>
+                    )}
+                  </div>
+                )}
+                <p className="mt-2 text-[11px] text-dharma-muted italic">
+                  किसी भी पद पर कर्सर ले जाएँ या स्पर्श करें (Hover/tap any word for Hindi & English gloss)
+                </p>
+              </div>
+            ) : (
+              <p lang="sa" className={`font-devanagari ${sanskritFontSizeClass} text-dharma-text`}>
+                {lines.map((line, i) => {
+                  const isLineActive = isReciting && activeLineIndex === i;
+                  return (
+                    <motion.span
+                      key={i}
+                      className={`block rounded-xl px-2.5 py-1 -mx-2.5 transition-colors duration-200 ${
+                        isLineActive
+                          ? 'bg-amber-500/20 text-amber-950 dark:text-amber-100 ring-1 ring-amber-400/50 shadow-xs font-medium'
+                          : ''
+                      }`}
+                      {...fadeIn(i)}
+                    >
+                      <GlossaryText text={line} />
+                    </motion.span>
+                  );
+                })}
+                <motion.span
+                  aria-hidden="true"
+                  className="mt-2 block font-bold text-saffron-700 dark:text-amber-300"
+                  {...fadeIn(lines.length)}
+                >
+                  ॥ {toDevanagari(verseLabel)} ॥
+                </motion.span>
+              </p>
+            )}
             {v.transliteration && layers.translit && (
               <p
                 lang="sa-Latn"
@@ -664,52 +822,65 @@ export function VerseCard({
         )}
 
         {/* ── Word-by-word meaning (पदच्छेद एवं शब्दार्थ) ─────── */}
-        {v.wordMeaning && !chantingMode && (
-          <div className="mt-4 rounded-2xl border border-amber-200/70 bg-amber-50/50 p-4 dark:border-amber-900/40 dark:bg-amber-950/20">
-            <p className="mb-2 flex items-center justify-between gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
-              <span className="flex items-center gap-1.5">
+        {v.wordMeaning && !chantingMode && depth === 'study' && (
+          <div
+            className={`mt-4 rounded-2xl border p-4 transition-all ${
+              isSandhiSplit
+                ? 'border-saffron-300 bg-saffron-50/50 dark:border-saffron-800/40 dark:bg-saffron-950/20'
+                : 'border-amber-200/70 bg-amber-50/50 dark:border-amber-900/40 dark:bg-amber-950/20'
+            }`}
+          >
+            <div className="mb-2 flex items-center justify-between">
+              <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
                 <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
                 पदच्छेद एवं शब्दार्थ · Word-by-Word Meaning
-              </span>
-              <span className="text-[10px] font-normal normal-case opacity-75 hidden sm:inline">
-                शब्द पर टैप कर उच्चारण सुनें
-              </span>
-            </p>
-            {parsedWordMeanings.length > 0 ? (
+              </p>
+              {hasSplitData && (
+                <button
+                  type="button"
+                  onClick={() => setIsSandhiSplit(!isSandhiSplit)}
+                  className="text-[11px] font-bold text-saffron-700 hover:underline dark:text-saffron-300"
+                >
+                  {isSandhiSplit ? 'संयुक्त श्लोक देखें' : 'विच्छेद दृश्य (Split View)'}
+                </button>
+              )}
+            </div>
+            {parsedGloss.length > 0 ? (
               <div className="flex flex-wrap gap-2">
-                {parsedWordMeanings.map((item, idx) => {
-                  const isSpoken = activeWordIndex === idx;
+                {parsedGloss.map((g, gIdx) => {
+                  const isHighlighted = hoveredWordIndex === gIdx;
+                  const isSpoken = activeWordIndex === gIdx;
                   return (
                     <button
-                      key={idx}
+                      key={gIdx}
                       type="button"
+                      onMouseEnter={() => setHoveredWordIndex(gIdx)}
+                      onMouseLeave={() => setHoveredWordIndex(null)}
                       onClick={() => {
                         triggerTactileFeedback('selection', 'softTap');
-                        setActiveWordIndex(idx);
-                        speakSanskritTerm(item.word, 0.85);
+                        setActiveWordIndex(gIdx);
+                        speakSanskritTerm(g.pada, 0.85);
                         showSabdaPeek({
-                          word: item.word,
-                          wordDevanagari: item.word,
-                          meaningHi: item.meaning,
+                          word: g.pada,
+                          wordDevanagari: g.pada,
+                          meaningHi: g.meaning,
                           verseRef: `${scriptureTitle} ${chapterId}.${v.number}`,
                         });
-                        setTimeout(() => setActiveWordIndex((cur) => (cur === idx ? null : cur)), 1800);
+                        setTimeout(() => setActiveWordIndex((cur) => (cur === gIdx ? null : cur)), 1800);
                       }}
                       className={`inline-flex min-h-[36px] items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs transition active:scale-95 text-left ${
-                        isSpoken
+                        isSpoken || isHighlighted
                           ? 'border-amber-400 bg-amber-100/90 text-amber-950 dark:border-amber-400 dark:bg-amber-900/40 dark:text-amber-100 ring-2 ring-amber-400/50 shadow-sm'
                           : 'border-amber-200/70 bg-amber-50/60 text-dharma-text hover:border-amber-300 hover:bg-amber-100/40 dark:border-amber-900/50 dark:bg-amber-950/30'
                       }`}
-                      aria-label={`उच्चारण सुनें: ${item.word}`}
-                      title={`${item.word}: क्लिक करके उच्चारण सुनें`}
+                      aria-label={`उच्चारण सुनें: ${g.pada}`}
+                      title={`${g.pada}: क्लिक करके उच्चारण सुनें`}
                     >
-                      <span className="font-devanagari font-bold text-amber-900 dark:text-amber-200">
-                        {item.word}
-                      </span>
-                      {item.meaning && (
+                      <span className="font-devanagari font-bold text-amber-900 dark:text-amber-200">{g.pada}</span>
+                      {g.meaning && (
                         <>
                           <span className="text-amber-400 dark:text-amber-600 font-serif">·</span>
-                          <span className="text-dharma-muted text-[11px] font-sans">{item.meaning}</span>
+                          <span className="text-dharma-muted text-[11px] font-sans">{g.meaning}</span>
                         </>
                       )}
                     </button>
@@ -797,6 +968,41 @@ export function VerseCard({
 
         {!chantingMode && (
           <>
+            {/* ── The Core Shift (मर्म · In One Breath) ── */}
+            {literaryMeta.isCurated && depth !== 'read' && (
+              <>
+            <div className="mt-5 rounded-2xl border border-amber-200/90 bg-gradient-to-r from-amber-50/95 via-orange-50/70 to-amber-50/95 p-4.5 sm:p-5 dark:border-amber-900/50 dark:from-amber-950/40 dark:via-orange-950/20 dark:to-amber-950/40 shadow-2xs">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-amber-800 dark:text-amber-300">
+                  <Sparkles className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" aria-hidden="true" />
+                  मर्म · In One Breath
+                </p>
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {literaryMeta.situationalMoments.map((m) => (
+                    <span
+                      key={m.id}
+                      title={m.descriptionEn}
+                      className="inline-flex items-center gap-1 rounded-full border border-amber-300/70 bg-white/80 px-2.5 py-0.5 text-[11px] font-medium text-amber-950 dark:border-amber-800/60 dark:bg-amber-900/40 dark:text-amber-200"
+                    >
+                      <span>{m.emoji}</span>
+                      <span>{m.labelHi}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <p className="font-serif italic text-base sm:text-lg font-bold leading-relaxed text-amber-950 dark:text-amber-100">
+                &ldquo;{literaryMeta.coreShiftHi}&rdquo;
+              </p>
+              {literaryMeta.coreShiftEn && (
+                <p className="font-serif text-xs sm:text-sm text-amber-900/85 dark:text-amber-300/80 mt-1.5 font-normal">
+                  {literaryMeta.coreShiftEn}
+                </p>
+              )}
+            </div>
+              <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">{literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}</p>
+              </>
+            )}
+
             {/* ── Meaning tabs ──────────────────────────────── */}
             {tabs.length > 0 && activeTab && (
               <div className="mt-5">
@@ -999,7 +1205,41 @@ export function VerseCard({
               </motion.aside>
             )}
 
-            {v.keywords && v.keywords.length > 0 && (
+            {/* ── What This Verse Does NOT Mean (भ्रम निवारण) ── */}
+            {literaryMeta.isCurated && depth !== 'read' && (
+              <Collapsible className="mt-4.5" title={<><span lang="hi" className="font-devanagari">सामान्य भ्रम और वास्तविक दृष्टि</span> · Common misreading</>}>
+            <div className="mt-4.5 grid grid-cols-1 md:grid-cols-2 gap-3">
+              {/* Misreading Box */}
+              <div className="rounded-2xl border border-rose-200/80 bg-rose-50/60 p-4 dark:border-rose-900/40 dark:bg-rose-950/20 shadow-2xs">
+                <p className="text-[11px] font-bold text-rose-800 dark:text-rose-300 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
+                  <span>❌</span> सामान्य भ्रम (What It Does NOT Mean)
+                </p>
+                <p lang="hi" className="font-devanagari text-xs sm:text-sm text-rose-950 dark:text-rose-100 leading-relaxed">
+                  {literaryMeta.misreadingHi}
+                </p>
+                <p className="text-[11px] text-rose-800/80 dark:text-rose-300/70 italic mt-1 font-serif">
+                  &ldquo;{literaryMeta.misreadingEn}&rdquo;
+                </p>
+              </div>
+
+              {/* Deeper Truth Box */}
+              <div className="rounded-2xl border border-emerald-200/80 bg-emerald-50/60 p-4 dark:border-emerald-900/40 dark:bg-emerald-950/20 shadow-2xs">
+                <p className="text-[11px] font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
+                  <span>✓</span> वास्तविक दृष्टि (The Deeper Truth)
+                </p>
+                <p lang="hi" className="font-devanagari text-xs sm:text-sm text-emerald-950 dark:text-emerald-100 leading-relaxed font-medium">
+                  {literaryMeta.deeperTruthHi}
+                </p>
+                <p className="text-[11px] text-emerald-800/80 dark:text-emerald-300/70 mt-1 font-serif">
+                  {literaryMeta.deeperTruthEn}
+                </p>
+              </div>
+            </div>
+              <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">{literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}</p>
+              </Collapsible>
+            )}
+
+            {depth === 'study' && v.keywords && v.keywords.length > 0 && (
               <div className="mt-4 flex flex-wrap items-center gap-1.5">
                 <span className="text-[11px] font-medium text-dharma-muted/80 mr-1">संबंधित:</span>
                 {v.keywords.map((k) => {
@@ -1008,6 +1248,12 @@ export function VerseCard({
                     <Link
                       key={k}
                       href={target.href}
+                      onClick={(e) => {
+                        if (onOpenSvadhyaya) {
+                          e.preventDefault();
+                          onOpenSvadhyaya('concept', k.replace(/^#+/, '').toLowerCase());
+                        }
+                      }}
                       title={target.tooltip}
                       className="inline-flex items-center gap-1 rounded-full border border-saffron-200/80 bg-saffron-50/70 px-2.5 py-0.5 text-[11px] font-semibold text-saffron-800 transition-all hover:border-saffron-400 hover:bg-saffron-100 hover:text-saffron-900 hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0 dark:border-saffron-400/25 dark:bg-saffron-500/10 dark:text-saffron-200 dark:hover:bg-saffron-500/20"
                     >
@@ -1033,6 +1279,43 @@ export function VerseCard({
           </>
         )}
       </div>
+
+      {storyDeckLoaded && (
+      <StoryDeckModal
+        isOpen={storyDeckOpen}
+        onClose={() => setStoryDeckOpen(false)}
+        data={{
+          scriptureTitle: scriptureTitle || scriptureId,
+          chapterTitle,
+          verseRef: chapterTitle ? `${scriptureTitle} ${chapterId}.${v.number}` : `श्लोक ${verseLabel}`,
+          sanskrit: v.sanskrit || '',
+          transliteration: v.transliteration,
+          hindi: v.hindi,
+          english: v.translation,
+          meta: literaryMeta,
+          chapterHref: versePageHref,
+          verseHref: shareVerseUrl(SITE_URL, scriptureId, chapterId, v.number),
+        }}
+      />
+      )}
+
+      {citationLoaded && (
+      <CitationModal
+        isOpen={citationModalOpen}
+        onClose={() => setCitationModalOpen(false)}
+        params={{
+          scriptureId,
+          scriptureTitle,
+          chapterId,
+          verseNum: v.number,
+          sanskrit: v.sanskrit ?? '',
+          transliteration: v.transliteration,
+          hindi: v.hindi,
+          translation: v.translation,
+          verseUrl: shareVerseUrl(SITE_URL, scriptureId, chapterId, v.number),
+        }}
+      />
+      )}
     </article>
   );
 }
