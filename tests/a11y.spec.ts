@@ -104,7 +104,8 @@ test('a11y: desktop discovery menu', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/scriptures/');
   await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: 'अन्वेषण' }).click();
+  // By what it controls: its visible name is "Explore", with अन्वेषण shown only from 2xl.
+  await page.locator('button[aria-controls="desktop-discovery-menu"]').click();
   await expect(page.locator('#desktop-discovery-menu')).toBeVisible();
   await audit(page, 'desktop discovery menu');
 });

@@ -1742,8 +1742,14 @@ body::after {
 :root[data-theme='paper'] .text-saffron-600 {
     color: #b8390a;
 }
-:root[data-theme='paper'] .text-saffron-700 {
+:root[data-theme='paper'] .text-saffron-700,
+:root[data-theme='sunset'] .text-saffron-700 {
     color: #a8350a;
+}
+/* Sandhyā's saffron chips (#fee7d0) had the same margin: saffron-700 was 4.32:1, now 5.52:1. Amber-700 on the
+   parchment page (#f5ede0) was 4.32:1, now 6.10:1 with amber-800. */
+:root[data-theme='paper'] .text-amber-700 {
+    color: #92400e;
 }
 
 /* Verse reveal sequence: as a verse card scrolls into view the mula shloka settles first, then the

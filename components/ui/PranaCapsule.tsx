@@ -192,7 +192,9 @@ export function PranaCapsule() {
 
       {/* Floating Island Container */}
       <aside
-        className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center"
+        // Below lg the mobile bottom nav (h-14) is fixed at the bottom; sitting on it, the island covered the middle
+        // nav buttons (axe target-size). It floats just above the nav there, and at bottom-5 on desktop.
+        className="fixed bottom-[calc(4.25rem+env(safe-area-inset-bottom))] lg:bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center"
         aria-label="Prāṇa Sūtra Active Island"
       >
         <AnimatePresence mode="wait">
