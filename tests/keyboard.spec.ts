@@ -131,3 +131,30 @@ test('reader: every button and link that takes focus shows a focus indicator', a
   }
   expect(missing).toEqual([]);
 });
+
+test('Story Deck traps keyboard focus, closes with Escape, and restores focus', async ({ page }) => {
+  await page.goto('/scripture/bhagavadgita/chapter/2/');
+  await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+
+  const trigger = page
+    .getByRole('toolbar', { name: 'श्लोक विकल्प (Verse actions)' })
+    .first()
+    .getByRole('button', { name: 'और विकल्प · More actions' });
+  await trigger.click();
+  await page.getByRole('menuitem', { name: /६०-सेकंड सार/ }).click();
+
+  const dialog = page.getByRole('dialog', { name: /६०-सेकंड सार/ });
+  const close = dialog.getByRole('button', { name: 'कथा डेक बंद करें' });
+  await expect(dialog).toBeVisible();
+  await expect(close).toBeFocused();
+
+  await page.keyboard.press('Shift+Tab');
+  const lastControl = dialog.getByRole('button', { name: /आगे बढ़ें/ });
+  await expect(lastControl).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(close).toBeFocused();
+
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(trigger).toBeFocused();
+});

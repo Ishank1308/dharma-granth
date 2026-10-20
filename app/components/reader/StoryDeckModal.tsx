@@ -23,6 +23,9 @@ import type { VerseEditorialLayer } from '@/lib/literary-commentary';
 import { saveJournalEntry } from '@/lib/study/storage';
 import type { JournalEntry } from '@/lib/study/types';
 
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 export interface StoryDeckData {
   scriptureTitle: string;
   chapterTitle?: string;
@@ -89,7 +92,28 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
 
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
         onClose();
+      } else if (e.key === 'Tab' && modalRef.current) {
+        const items = Array.from(modalRef.current.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+          (el) => el.offsetParent !== null,
+        );
+        if (items.length === 0) {
+          e.preventDefault();
+          modalRef.current.focus();
+          return;
+        }
+        const first = items[0];
+        const last = items[items.length - 1];
+        const active = document.activeElement;
+        if (e.shiftKey && (active === first || active === modalRef.current)) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && (active === last || !modalRef.current.contains(active))) {
+          e.preventDefault();
+          first.focus();
+        }
       } else if (e.key === 'ArrowRight' || (e.key === ' ' && !(e.target instanceof HTMLElement && e.target.closest('button, a, input, textarea')))) {
         e.preventDefault();
         handleNext();
@@ -192,6 +216,7 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 15 }}
           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          tabIndex={-1}
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
           className="relative flex flex-col w-full max-w-lg h-[640px] max-h-[90vh] rounded-3xl border border-stone-700/60 bg-gradient-to-b from-stone-900 via-stone-900 to-stone-950 text-white shadow-2xl overflow-hidden"

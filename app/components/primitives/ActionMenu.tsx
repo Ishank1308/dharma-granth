@@ -110,7 +110,9 @@ export function ActionMenu({ label, triggerClassName = '', items }: { label: str
                 role="menuitem"
                 tabIndex={-1}
                 onClick={() => {
-                  close(false);
+                  // Restore focus before the selected action opens a dialog. The
+                  // dialog can then capture this stable trigger as its opener.
+                  close(true);
                   item.onSelect();
                 }}
                 className="flex min-h-[44px] w-full items-center gap-3 rounded-xl px-3 text-left text-sm font-medium text-dharma-text transition hover:bg-saffron-50 focus-visible:bg-saffron-50 focus-visible:outline-none dark:hover:bg-saffron-950/30 dark:focus-visible:bg-saffron-950/30"
