@@ -3,35 +3,14 @@ import { resolve } from 'node:path';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { BookLearningClient } from '@/app/components/BookLearningClient';
+import { ScriptureContents } from '@/app/components/ScriptureContents';
 import { ChapterHero } from '@/app/components/motion/ChapterHero';
-import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
-import { getBookExplanation } from '@/data/book-explanations';
+import { FadeUp } from '@/app/components/motion/primitives';
 import { getScripture, getScriptureMeta, getAllScriptures } from '@/data/scriptures';
 import { ArrowLeft } from 'lucide-react';
-import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
-import { Breadcrumbs } from '@/app/components/Breadcrumbs';
-import { jsonLdGraph } from '@/lib/jsonld-graph';
-import { OfflineScriptureToggle } from '@/app/components/scripture/OfflineScriptureToggle';
 
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
-import { formatCount } from '@/lib/holdings-label';
-
-const CATEGORY_NAMES: Record<string, string> = {
-  itihasa: 'Itihāsa · इतिहास',
-  upanishad: 'Upaniṣad · उपनिषद्',
-  veda: 'Veda · वेद',
-  purana: 'Purāṇa · पुराण',
-  smriti: 'Smṛti · स्मृति',
-  tantra: 'Tantra · तन्त्र',
-  stotra: 'Stotra · स्तोत्र',
-  other: 'Other · अन्य',
-};
-
-function formatCategory(cat: string): string {
-  return CATEGORY_NAMES[cat] || cat;
-}
 
 interface PageProps {
   params: { id: string };
@@ -106,7 +85,6 @@ export default function ScripturePage({ params }: PageProps) {
 
   const scripture = getScripture(params.id);
   const chapters = scripture?.chapters ?? [];
-  const explanation = getBookExplanation(params.id);
   const chapterPreviewsById = new Map<number, ChapterPreview>();
   for (const chapter of chapters) {
     chapterPreviewsById.set(chapter.id, {
@@ -129,11 +107,7 @@ export default function ScripturePage({ params }: PageProps) {
   const chapterPreviews = Array.from(chapterPreviewsById.values()).sort(
     (a, b) => a.id - b.id,
   );
-  const publishedChapters = chapterPreviews.filter((chapter) => chapter.verseCount > 0);
-  const publishedVerses = publishedChapters.reduce((sum, chapter) => sum + chapter.verseCount, 0);
-  const catalogueVerses = meta.canonicalTotalVerses ?? meta.totalVerses;
   const catalogueChapters = meta.totalChapters;
-  const partial = publishedVerses > 0 && catalogueVerses > publishedVerses;
   const languageFacts = getLibraryFacts(meta.id).languages;
   const inLanguage = [
     languageFacts.sa ? 'sa' : null,
@@ -179,83 +153,60 @@ export default function ScripturePage({ params }: PageProps) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-      { '@type': 'ListItem', position: 2, name: 'Library', item: `${siteUrl}/scriptures/` },
-      { '@type': 'ListItem', position: 3, name: meta.title, item: `${siteUrl}/scripture/${meta.id}/` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+      { '@type': 'ListItem', position: 2, name: 'Scriptures', item: `${siteUrl}/scriptures` },
+      { '@type': 'ListItem', position: 3, name: meta.title, item: `${siteUrl}/scripture/${meta.id}` },
     ],
   };
 
   return (
     <main className="min-h-screen bg-dharma-bg">
-      <Breadcrumbs items={[{ label: 'Library', href: '/scriptures/' }, { label: meta.title }]} />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(bookJsonLd, breadcrumbJsonLd)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }}
       />
-      <ChapterHero className="bg-gradient-to-b from-saffron-800 to-saffron-600 text-white py-14">
-        <div className="relative max-w-5xl mx-auto px-6">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <ChapterHero className="border-b border-dharma-border bg-dharma-card py-12 text-dharma-text sm:py-16">
+        <div className="relative mx-auto max-w-5xl px-6">
           <FadeUp>
-            <Link href="/scriptures" className="inline-flex min-h-[44px] items-center gap-2 text-white/70 hover:text-white text-sm mb-2 transition">
+            <Link href="/scriptures" className="mb-8 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-dharma-muted transition hover:text-saffron-700">
               <ArrowLeft className="w-4 h-4" />
               All Scriptures
             </Link>
           </FadeUp>
-          <FadeUp delay={0.05} className="flex flex-wrap items-center gap-3 mb-3">
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 uppercase tracking-wide">
-              {formatCategory(meta.category)}
-            </span>
-            {meta.isCurated || partial ? (
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/25 text-amber-100 border border-amber-400/30">
-                {meta.isCurated
-                  ? 'सार संकलन · Curated selection'
-                  : `${publishedChapters.length} Chapters Indexed · ~${formatCount(catalogueVerses)} Canonical Verses`}
-              </span>
-            ) : publishedVerses > 0 ? (
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/15 text-white border border-white/25">
-                पुस्तकालय में पाठ · Text in the library
-              </span>
-            ) : (
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/15 text-white border border-white/25">
-                सूची प्रविष्टि · Catalogue entry
-              </span>
-            )}
+          <FadeUp delay={0.05}>
+            <p className="editorial-section-eyebrow">Scripture contents · ग्रंथ सूची</p>
+            <h1 className="mt-3 font-serif text-4xl font-bold tracking-tight text-dharma-text md:text-6xl">{meta.title}</h1>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-2">{meta.title}</h1>
-          </FadeUp>
-          <FadeUp delay={0.15}>
-            <div className="flex flex-wrap items-baseline gap-2 mb-4">
-              <p lang="sa" className="text-xl font-devanagari opacity-90">{meta.titleSanskrit}</p>
+            <div className="mt-3 flex flex-wrap items-baseline gap-3">
+              <p lang="sa" className="font-devanagari text-2xl text-dharma-muted">{meta.titleSanskrit}</p>
               {meta.titleIast && (
-                <span className="text-base font-serif italic text-white/75">
+                <span className="font-serif text-sm italic text-dharma-muted">
                   ({meta.titleIast})
                 </span>
               )}
             </div>
           </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="text-lg opacity-80 max-w-3xl">{meta.description}</p>
-            {meta.author && <p className="mt-3 text-sm opacity-60">Attributed to {meta.author}</p>}
-            <OfflineScriptureToggle scriptureId={meta.id} title={meta.title} />
+          <FadeUp delay={0.15}>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-dharma-muted line-clamp-3">{meta.description}</p>
+            {meta.author && <p className="mt-4 text-sm font-semibold text-dharma-muted">Attributed to {meta.author}</p>}
           </FadeUp>
         </div>
       </ChapterHero>
 
-      <FadeUpOnView className="max-w-5xl mx-auto px-6 py-12 space-y-12">
-        <BookLearningClient
-          meta={meta}
-          explanation={explanation}
-          chapters={chapterPreviews}
-          catalogueVerses={catalogueVerses}
-          catalogueChapters={catalogueChapters}
-        />
-        <SourcesAndInterpretation
+      <div className="mx-auto max-w-5xl px-6 py-12">
+        <ScriptureContents
           scriptureId={meta.id}
-          scriptureTitle={meta.title}
-          scriptureTitleSanskrit={meta.titleSanskrit}
+          chapters={chapterPreviews}
+          totalChapters={catalogueChapters}
         />
-      </FadeUpOnView>
+      </div>
     </main>
   );
 }
