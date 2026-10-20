@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { ToolCard, localISODate } from './shared';
+import { DiyaPullCord } from './DiyaPullCord';
 import { triggerHaptic } from '@/lib/haptics';
 import { strikeTempleBell, startMeditationDrone, stopMeditationDrone } from '@/lib/sacred-soundscape';
 import { updateSadhanaSession } from '@/lib/prana-capsule-store';
@@ -417,6 +418,11 @@ export function MeditationTimer() {
         ) : (
           /* Active Countdown Display */
           <div className="relative flex flex-col items-center justify-center py-4 select-none">
+            <DiyaPullCord
+              lit={running}
+              onPull={running ? handlePause : handleStart}
+              label={running ? 'Pull the cord to pause the meditation' : 'Pull the cord to light the diya and begin'}
+            />
             {/* Gentle breath pulse glow during meditation */}
             {running && !isReducedMotion && (
               <motion.div

@@ -1792,6 +1792,27 @@ body::after {
     animation: japa-bloom 1.4s var(--ease-out-quint) forwards;
 }
 
+/* Diya flame (DiyaPullCord): a slow, uneven flicker; reduced motion gets a still flame (no class). */
+@keyframes diya-flicker {
+    0%, 100% {
+        transform: scale(1, 1);
+    }
+    30% {
+        transform: scale(0.94, 1.06) skewX(-2deg);
+    }
+    55% {
+        transform: scale(1.04, 0.97) skewX(1.5deg);
+    }
+    80% {
+        transform: scale(0.97, 1.03);
+    }
+}
+.diya-flame {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: diya-flicker 2.6s ease-in-out infinite;
+}
+
 /* Search palette results settle in as they appear (delay set per item, capped). */
 @keyframes search-result-in {
     from {
