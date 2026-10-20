@@ -422,7 +422,7 @@ const CANONICAL_CROSS_ECHOS: Record<string, CanonicalEcho[]> = {
     {
       targetScriptureId: 'brihadaranyaka',
       targetScriptureTitle: 'Brihadaranyaka Upanishad',
-      targetChapter: 4,
+      targetChapter: 25,
       targetVerse: 22,
       targetReference: 'Brihadaranyaka 4.4.22',
       type: 'cross_scripture',

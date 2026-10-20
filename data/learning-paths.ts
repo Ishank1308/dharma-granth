@@ -1121,7 +1121,7 @@ export const learningPaths: LearningPath[] = [
         description: 'Sage Yajnavalkya’s dialogues with Gargi and Maitreyi on the transcendent, imperishable witness.',
         estimatedMinutes: 15,
         primaryFormat: 'quizzes',
-        scriptureHref: '/scripture/brihadaranyaka/chapter/1',
+        scriptureHref: '/scripture/brihadaranyaka/chapter/21',
         keyVerse: {
           sanskrit: 'स एष नेति नेत्यात्माऽगृह्यो न हि गृह्यते ।',
           transliteration: 'sa eṣa neti netyātmā\'gṛhyo na hi gṛhyate |',
