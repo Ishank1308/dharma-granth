@@ -11,11 +11,11 @@
   "evidenceLevel": "editorial-observation",
   "lifeLesson": "जब कोई बड़ा विचार सुनकर अहंकार जागे, तो उसे अपने बारे में दावे की तरह मत दोहराओ। श्वेतकेतु की तरह और उदाहरण माँगो और कहो कि मुझे और समझाइए।",
   "confidence": "medium",
-  "reviewNote": "The Sanskrit text is intact. Three stored fields are damaged and were not repaired: (1) the transliteration field is not IAST (it contains Harvard-Kyoto style artefacts such as '{\\m+}'); it is a protected canonical field, so it is routed to canonical review rather than edited. (2) The stored Hindi is OCR noise unrelated to this verse (it talks about a thief), so it was replaced. (3) The stored English is an old public-domain style translation with no attribution in the data; it was not reproduced. The dataset's chapter number 105 is a running index; the Upanishad's own reference is 6.8.7. The two readings of 'tat tvam asi' are described in general terms only; no commentary is stored.",
+  "reviewNote": "The Sanskrit text is intact. Three stored fields were damaged: (1) The transliteration field was not IAST; it has since been regenerated mechanically from the stored Devanagari for the whole text (scripts/regenerate-iast.ts) with a reviewed canonical re-baseline. (2) The stored Hindi is OCR noise unrelated to this verse (it talks about a thief), so it was replaced. (3) The stored English is an old public-domain style translation with no attribution in the data; it was not reproduced. The dataset's chapter number 105 is a running index; the Upanishad's own reference is 6.8.7. The two readings of 'tat tvam asi' are described in general terms only; no commentary is stored.",
   "reviewStatus": "review-required",
   "provenance": {
     "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
-    "originalText": "Stored canonical text, unchanged. Transliteration field flagged for canonical review.",
+    "originalText": "Stored canonical text, unchanged. Transliteration regenerated from the Devanagari (canonical re-baseline).",
     "artha": "Editor rendering from the Sanskrit.",
     "vyakhya": "Original composition.",
     "vijnana": "Original composition; a literary observation, no research source consulted.",

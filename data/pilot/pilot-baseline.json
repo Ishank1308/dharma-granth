@@ -80,10 +80,10 @@
         "verse": "6.8.7",
         "reference": "Chandogya Upanishad 6.8.7",
         "sanskrit": "स य एषोऽणिमैतदात्म्यमिदँ सर्वं तत्सत्यँ स आत्मा तत्त्वमसि श्वेतकेतो इति भूय एव मा भगवान्विज्ञापयत्विति तथा सोम्येति होवाच",
-        "iast": "sa ya eSho.aNimaitadAtmyamida{\\m+} sarvaM tatsatya{\\m+} sa AtmA tattvamasi shvetaketo iti bhUya eva mA bhagavAnvij~nApayatviti tathA somyeti hovAcha",
+        "iast": "sa ya eṣo'ṇimaitadātmyamidam̐ sarvaṃ tatsatyam̐ sa ātmā tattvamasi śvetaketo iti bhūya eva mā bhagavānvijñāpayatviti tathā somyeti hovāca",
         "sourceCitation": "{\"repo\":\"https://sanskritdocuments.org/doc_upanishhat/chhandogya.itx\",\"license\":\"Sanskrit mūla — public domain. Digitized by sanskritdocuments.org.\",\"fetchedAt\":\"2026-06-03T13:44:13.016Z\",\"translationRepo\":\"https://sacred-texts.com/hin/sbe01/index.htm\",\"translationLicense\":\"Max Müller translation (1879), Sacred Books of the East Vol. 1 — public domain.\",\"translationFetchedAt\":\"2026-06-20T00:01:12.887Z\",\"hindiRepo\":\"https://archive.org/details/phAO_chandogya-upanishad-gita-press-gorakhpur\",\"hindiLicense\":\"Gita Press Gorakhpur Hindi tika (public domain scan, archive.org OCR).\",\"hindiFetchedAt\":\"2026-06-21T00:28:33.267Z\"}"
       },
-      "sha256": "5ea48e37263206b5eafe0a5c791c722d2ee996a6163cfcf0d3c89b6378170a82",
+      "sha256": "2e8e8cabaf615576ce66ea7005719c73b3d9ff50d2b59ba8a74afc20af575350",
       "baselineStatus": "clear",
       "reviewOnlyReason": null
     },

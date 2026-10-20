@@ -83,7 +83,7 @@ q.push('Everything below needs a person. Nothing here was fixed silently.', '');
 q.push('## Canonical problems (protected fields: not edited)', '');
 q.push(
   '1. **Ramcharitmanas (3 units, review-only).** The stored `sanskrit` field mixes the original with a Hindi gloss, and `translation`, `hindi` and `wordMeaning` hold unrelated or repeated lines. No draft was written. Needs a fresh, verified source for the text.',
-  '2. **Chandogya 6.8.7 transliteration.** The stored IAST field is not IAST (it has Harvard-Kyoto style artefacts such as `{\\m+}`). The field is protected, so it was left as is.',
+  '2. **Chandogya transliteration (fixed).** 565 of 628 verses carried an ITRANS or Harvard-Kyoto romanization instead of IAST. They were regenerated from the stored Devanagari with scripts/regenerate-iast.ts and the canonical manifest was re-baselined in the same commit. A reviewer should spot-check a few chapters.',
   '3. **Devi Mahatmya Devi Stuti block.** The stored record merges 22 separate stanzas under one number (labelled 5.77), and the next record, the "citirupena" stanza, is numbered 5.81 although it precedes 5.81 in the standard text. The numbering needs checking against an edition.',
   '4. **Brihadaranyaka (not selected).** "अहं ब्रह्मास्मि" is stored as a whole verse in several positions (1:1, 2:4, 3:5, 4:4, 5:4).',
   '5. **Vishnu Purana references.** The dataset uses a running chapter index and its own verse numbering; the edition numbers of the three pilot units are unverified. Hindi and English meanings in these units belonged to other verses.',
