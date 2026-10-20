@@ -7,7 +7,7 @@ import { ScriptureContents } from '@/app/components/ScriptureContents';
 import { ChapterHero } from '@/app/components/motion/ChapterHero';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { getScripture, getScriptureMeta, getAllScriptures } from '@/data/scriptures';
-import { ArrowLeft } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
@@ -174,10 +174,25 @@ export default function ScripturePage({ params }: PageProps) {
       <ChapterHero className="border-b border-dharma-border bg-dharma-card py-12 text-dharma-text sm:py-16">
         <div className="relative mx-auto max-w-5xl px-6">
           <FadeUp>
-            <Link href="/scriptures" className="mb-8 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-dharma-muted transition hover:text-saffron-700">
-              <ArrowLeft className="w-4 h-4" />
-              All Scriptures
-            </Link>
+            <nav aria-label="Breadcrumb" className="mb-8">
+              <ol className="flex flex-wrap items-center gap-1.5 text-sm text-dharma-muted">
+                <li>
+                  <Link href="/" className="rounded-md px-1 py-1 transition hover:text-saffron-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
+                    Home
+                  </Link>
+                </li>
+                <li aria-hidden="true"><ChevronRight className="h-4 w-4" /></li>
+                <li>
+                  <Link href="/scriptures/" className="rounded-md px-1 py-1 transition hover:text-saffron-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
+                    Scriptures
+                  </Link>
+                </li>
+                <li aria-hidden="true"><ChevronRight className="h-4 w-4" /></li>
+                <li aria-current="page" className="px-1 font-semibold text-dharma-text">
+                  {meta.title}
+                </li>
+              </ol>
+            </nav>
           </FadeUp>
           <FadeUp delay={0.05}>
             <p className="editorial-section-eyebrow">Scripture contents · ग्रंथ सूची</p>
