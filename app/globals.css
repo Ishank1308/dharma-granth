@@ -1127,8 +1127,10 @@
     .vt-sa > .vt-num {
         @apply mt-2 font-bold text-saffron-800;
     }
+    /* IAST is folded by default (the card shows it behind a toggle); kept in the
+       HTML for crawlers but hidden so the hydration swap does not shift layout. */
     .vt-tr {
-        @apply mx-auto mt-4 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-4 text-sm italic leading-relaxed text-dharma-muted md:text-[15px];
+        @apply hidden mx-auto mt-4 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-4 text-sm italic leading-relaxed text-dharma-muted md:text-[15px];
     }
     .vt-block {
         @apply mt-5;

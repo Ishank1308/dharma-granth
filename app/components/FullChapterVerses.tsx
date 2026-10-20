@@ -28,6 +28,7 @@ import { AddToCollectionModal } from './AddToCollectionModal';
 import { ContributeMeaningModal } from './ContributeMeaningModal';
 import { VerseCard } from './VerseCard';
 import { VerseText } from './VerseText';
+import type { VerseInsight } from '@/lib/verse-insights';
 import { MobileFocusMode } from './MobileFocusMode';
 import { ConversationModeView } from './conversation/ConversationModeView';
 import { triggerTactileFeedback } from '@/lib/haptics';
@@ -104,6 +105,8 @@ export interface InitialChapter {
   verses: FullVerse[];
   commentary?: HiCommentaryFragment;
   source?: FullScripture['source'];
+  /** मर्म and जीवन प्रसंग for the verses that have them (lib/verse-insights). */
+  insights?: Record<string, VerseInsight>;
 }
 
 type State =
@@ -1284,6 +1287,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     onSaveNote={(text) => setNote(scriptureId, chapterId, v.number, text)}
                     highlight={getHighlight(scriptureId, chapterId, v.number)?.color}
                     onHighlight={(color) => toggleHighlight(scriptureId, chapterId, v.number, color)}
+                    insight={initialChapter?.insights?.[String(v.number)]}
                     onOpenFocus={() => {
                       setFocusVerseIndex(index);
                       setFocusModeOpen(true);

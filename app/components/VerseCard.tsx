@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import {
   Atom,
@@ -13,6 +13,7 @@ import {
   FolderCheck,
   FolderPlus,
   Highlighter,
+  Languages,
   Library,
   Lightbulb,
   Maximize2,
@@ -38,6 +39,8 @@ import { speakSanskritTerm } from '@/lib/sacred-soundscape';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { showSabdaPeek } from '@/lib/prana-capsule-store';
 import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';
+import { VerseTreeStructure, type VerseTreeBranch } from '@/app/components/reader/VerseTreeStructure';
+import type { VerseInsight } from '@/lib/verse-insights';
 
 export interface VerseCardData {
   number: number | string;
@@ -103,9 +106,10 @@ interface Props {
   isReciting?: boolean;
   /** Callback to trigger recitation of this verse */
   onPlayRecitation?: () => void;
+  /** Reviewed मर्म line and जीवन प्रसंग chips, when this verse has them. */
+  insight?: VerseInsight;
 }
 
-type TabId = 'meaning' | 'explain' | 'science';
 type HighlightColor = VerseHighlight['color'];
 
 const NOTE_MAX = 2000;
@@ -223,10 +227,10 @@ export function VerseCard({
   versePageHref,
   isReciting,
   onPlayRecitation,
+  insight,
 }: Props) {
   const reduce = useReducedMotion();
   const cardRef = useRef<HTMLElement>(null);
-  const tabsId = useId();
 
   // ── Highlight colour picker ──
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -308,21 +312,10 @@ export function VerseCard({
   const showHindi = Boolean(v.hindi && layers.hindi);
   const showEnglish = Boolean(v.translation && layers.english);
 
-  const tabs = useMemo(() => {
-    const list: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [];
-    if (showHindi || showEnglish) list.push({ id: 'meaning', label: 'अर्थ', icon: ScrollText });
-    if (layers.commentary && explanation) {
-      list.push({ id: 'explain', label: 'व्याख्या', icon: Sparkles });
-    }
-    if (layers.commentary && science) list.push({ id: 'science', label: 'विज्ञान', icon: Atom });
-    return list;
-  }, [showHindi, showEnglish, layers.commentary, explanation, science]);
-
-  const [chosenTab, setChosenTab] = useState<TabId>('meaning');
-  // Fall back to the first available tab if the chosen one was switched off.
-  const activeTab = tabs.some((t) => t.id === chosenTab) ? chosenTab : tabs[0]?.id;
   const showLesson = Boolean(layers.commentary && lesson);
-  const hasMeaning = tabs.length > 0 || showLesson;
+  // IAST stays folded under the shloka until the reader asks for it.
+  const [showIast, setShowIast] = useState(false);
+  const iastId = useId();
 
   // Cursor spotlight: CSS variables only, no React re-render per move.
   const onPointerMove = (e: PointerEvent<HTMLElement>) => {
@@ -331,19 +324,6 @@ export function VerseCard({
     const rect = el.getBoundingClientRect();
     el.style.setProperty('--mx', `${e.clientX - rect.left}px`);
     el.style.setProperty('--my', `${e.clientY - rect.top}px`);
-  };
-
-  // WAI-ARIA tabs: arrow keys / Home / End move between tabs.
-  const onTabKeyDown = (e: KeyboardEvent<HTMLButtonElement>, index: number) => {
-    let next = -1;
-    if (e.key === 'ArrowRight') next = (index + 1) % tabs.length;
-    else if (e.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
-    else if (e.key === 'Home') next = 0;
-    else if (e.key === 'End') next = tabs.length - 1;
-    if (next === -1) return;
-    e.preventDefault();
-    setChosenTab(tabs[next].id);
-    document.getElementById(`${tabsId}-tab-${tabs[next].id}`)?.focus();
   };
 
   const fadeIn = (i: number) =>
@@ -355,6 +335,238 @@ export function VerseCard({
           viewport: { once: true, margin: '0px 0px -40px 0px' },
           transition: { duration: 0.55, delay: 0.08 + i * 0.12, ease: EASE_OUT_QUINT },
         };
+
+  // ── Knowledge-tree layers (Arth → Vyakhya → Vigyan) ──
+  const wordByWordBlock = v.wordMeaning ? (
+    <div className="rounded-2xl border border-amber-200/70 bg-amber-50/50 p-4 dark:border-amber-900/40 dark:bg-amber-950/20">
+      <p className="mb-2 flex items-center justify-between gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
+        <span className="flex items-center gap-1.5">
+          <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
+          पदच्छेद एवं शब्दार्थ · Word-by-Word Meaning
+        </span>
+        <span className="text-[10px] font-normal normal-case opacity-75 hidden sm:inline">
+          शब्द पर टैप कर उच्चारण सुनें
+        </span>
+      </p>
+      {parsedWordMeanings.length > 0 ? (
+        <div className="flex flex-wrap gap-2">
+          {parsedWordMeanings.map((item, idx) => {
+            const isSpoken = activeWordIndex === idx;
+            return (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => {
+                  triggerTactileFeedback('selection', 'softTap');
+                  setActiveWordIndex(idx);
+                  speakSanskritTerm(item.word, 0.85);
+                  showSabdaPeek({
+                    word: item.word,
+                    wordDevanagari: item.word,
+                    meaningHi: item.meaning,
+                    verseRef: `${scriptureTitle} ${chapterId}.${v.number}`,
+                  });
+                  setTimeout(() => setActiveWordIndex((cur) => (cur === idx ? null : cur)), 1800);
+                }}
+                className={`inline-flex min-h-[36px] items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs transition active:scale-95 text-left ${
+                  isSpoken
+                    ? 'border-amber-400 bg-amber-100/90 text-amber-950 dark:border-amber-400 dark:bg-amber-900/40 dark:text-amber-100 ring-2 ring-amber-400/50 shadow-sm'
+                    : 'border-amber-200/70 bg-amber-50/60 text-dharma-text hover:border-amber-300 hover:bg-amber-100/40 dark:border-amber-900/50 dark:bg-amber-950/30'
+                }`}
+                aria-label={`उच्चारण सुनें: ${item.word}`}
+                title={`${item.word}: क्लिक करके उच्चारण सुनें`}
+              >
+                <span className="font-devanagari font-bold text-amber-900 dark:text-amber-200">
+                  {item.word}
+                </span>
+                {item.meaning && (
+                  <>
+                    <span className="text-amber-400 dark:text-amber-600 font-serif">·</span>
+                    <span className="text-dharma-muted text-[11px] font-sans">{item.meaning}</span>
+                  </>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      ) : (
+        <p lang="sa" className="font-devanagari text-sm leading-loose text-dharma-text">
+          {v.wordMeaning}
+        </p>
+      )}
+    </div>
+  ) : null;
+
+  const showArth = showHindi || showEnglish;
+  const showExplanation = Boolean(layers.commentary && explanation);
+  const showScience = Boolean(layers.commentary && science);
+  const treeBranches: VerseTreeBranch[] = [];
+  if (showArth) {
+    treeBranches.push({
+      id: 'arth',
+      labelHi: 'अर्थ',
+      labelEn: 'Meaning',
+      icon: ScrollText,
+      defaultOpen: true,
+      content: (
+        <div className="space-y-4">
+          <div className="space-y-4">
+            {showHindi && (
+              <div className={`rounded-2xl border p-4 shadow-2xs transition-all duration-300 ${
+                isReciting && activeTranslationLang === 'hi'
+                  ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
+                  : 'border-dharma-border/70 bg-dharma-card-soft/70'
+              }`}>
+                <div className="mb-2 flex items-center justify-between gap-2">
+                  <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                    हिंदी अनुवाद · Hindi Translation
+                  </p>
+                  <ContentLabelBadge kind="literal" />
+                </div>
+                <p lang="hi" className="font-devanagari text-base leading-loose text-dharma-text md:text-[17px]">
+                  {v.hindi && <GlossaryText text={v.hindi} />}
+                  {v.hindiSource === 'ai' && (
+                    <span
+                      className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
+                      title="संस्कृत से मशीन-अनुवादित; विद्वत् अनुवाद नहीं"
+                    >
+                      AI अनुवाद
+                    </span>
+                  )}
+                </p>
+              </div>
+            )}
+            {showEnglish && (
+              <div className={`rounded-2xl border p-4 shadow-2xs transition-all duration-300 ${
+                isReciting && activeTranslationLang === 'en'
+                  ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
+                  : 'border-dharma-border/70 bg-dharma-card/70'
+              }`}>
+                <div className="mb-2 flex items-center justify-between gap-2">
+                  <p lang="en" className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                    English Translation
+                  </p>
+                  <ContentLabelBadge kind="literal" />
+                </div>
+                <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text md:text-base">
+                  {v.translation}
+                  {v.translationSource === 'ai' && (
+                    <span
+                      className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
+                      title="Machine-translated from the Sanskrit; not a scholarly translation"
+                    >
+                      AI translation
+                    </span>
+                  )}
+                </p>
+              </div>
+            )}
+          </div>
+          <SamvadaStrip scriptureId={scriptureId} chapterId={chapterId} verseNumber={v.number} />
+        </div>
+      ),
+    });
+  }
+  if (wordByWordBlock || showExplanation) {
+    treeBranches.push({
+      id: 'vyakhya',
+      labelHi: 'व्याख्या',
+      labelEn: 'Padaccheda & Commentary',
+      icon: Sparkles,
+      hint: wordByWordBlock ? 'पदच्छेद, शब्दार्थ और परंपरागत व्याख्या' : 'परंपरागत व्याख्या',
+      content: (
+        <div className="space-y-4">
+          {wordByWordBlock}
+          {showExplanation && (
+            <div className="rounded-2xl border border-amber-200/70 bg-amber-50/40 p-4.5 dark:border-amber-900/40 dark:bg-amber-950/20 shadow-2xs">
+              <div className="mb-2.5 flex items-center justify-between gap-2">
+                <p className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">
+                  {explanationIsHi ? 'व्याख्या व भावार्थ · Explanation' : 'Commentary & Explanation'}
+                </p>
+                <ContentLabelBadge kind="explanation" />
+                {meaning.isAi && (
+                  <p
+                    className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300"
+                    title="AI द्वारा तैयार और संपादक द्वारा समीक्षित"
+                  >
+                    <Sparkles className="h-3 w-3" aria-hidden="true" />
+                    AI व्याख्या · समीक्षित
+                  </p>
+                )}
+              </div>
+              {explanation && !explanationIsHi && (
+                <p className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-2.5 py-0.5 text-[11px] font-semibold text-dharma-muted">
+                  हिन्दी व्याख्या शीघ्र · English commentary for now
+                </p>
+              )}
+              {explanation && (
+                <p
+                  lang={explanationIsHi ? 'hi' : 'en'}
+                  className={`text-sm leading-relaxed text-dharma-text md:text-base ${explanationIsHi ? 'font-devanagari leading-loose' : 'font-serif'}`}
+                >
+                  {explanation}
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      ),
+    });
+  }
+  if (showScience || showLesson) {
+    treeBranches.push({
+      id: 'vigyan',
+      labelHi: 'विज्ञान एवं आधुनिक उपयोग',
+      labelEn: 'Science & Modern Application',
+      icon: Atom,
+      hint: 'मनोविज्ञान, शोध और दैनिक जीवन में प्रयोग',
+      content: (
+        <div className="space-y-4">
+          {showScience && (
+            <div className="rounded-2xl border border-indigo-200/70 bg-indigo-50/40 p-4.5 dark:border-indigo-900/40 dark:bg-indigo-950/20 shadow-2xs">
+              <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <p className="text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
+                  शोध व आधुनिक संदर्भ · Research & Context
+                </p>
+                <ContentLabelBadge kind="research" />
+              </div>
+              <p
+                lang={scienceIsHi ? 'hi' : 'en'}
+                className={`text-sm leading-relaxed text-dharma-text md:text-base ${scienceIsHi ? 'font-devanagari leading-loose' : ''}`}
+              >
+                {science}
+              </p>
+            </div>
+          )}
+          {/* Modern reflection: its own block, never mixed into the commentary */}
+          {showLesson && (
+            <aside
+                className="relative overflow-hidden rounded-2xl border border-amber-300/70 bg-gradient-to-br from-amber-50/90 via-orange-50/60 to-transparent p-4.5 dark:border-amber-400/25 dark:from-amber-500/10 dark:via-orange-500/5 shadow-2xs"
+              >
+                <div className="mb-2 flex items-center justify-between">
+                  <p
+                    className={`flex items-center gap-1.5 font-bold text-amber-700 dark:text-amber-300 ${
+                      lessonIsHi ? 'text-xs' : 'text-[11px] uppercase tracking-[0.18em]'
+                    }`}
+                  >
+                    <Lightbulb className="h-3.5 w-3.5" aria-hidden="true" />
+                    {lessonIsHi ? 'आधुनिक चिंतन व सीख' : 'Modern Reflection & Lesson'}
+                  </p>
+                  <ContentLabelBadge kind="reflection" />
+                </div>
+                <p
+                  lang={lessonIsHi ? 'hi' : 'en'}
+                  className={`text-sm font-medium leading-relaxed text-dharma-text md:text-base ${lessonIsHi ? 'font-devanagari leading-loose' : ''}`}
+                >
+                  {lesson}
+                </p>
+            </aside>
+          )}
+        </div>
+      ),
+    });
+  }
+  const hasMeaning = treeBranches.length > 0;
 
   const verseLabel = String(v.number);
 
@@ -607,6 +819,21 @@ export function VerseCard({
           </div>
         )}
 
+        {/* ── मर्म: the reviewed one-line core shift, when this verse has one ── */}
+        {insight?.marma && !chantingMode && (
+          <figure className="mb-5 border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
+            <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
+              <span lang="hi">मर्म</span>
+              <span aria-hidden="true">·</span>
+              <span lang="en">The Core Shift</span>
+              <ContentLabelBadge kind="reflection" />
+            </figcaption>
+            <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text md:text-xl">
+              {insight.marma}
+            </blockquote>
+          </figure>
+        )}
+
         {/* ── Sanskrit on a manuscript leaf ───────────────────── */}
         {lines.length > 0 && (
           <div className={`verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8 transition-colors ${
@@ -652,77 +879,33 @@ export function VerseCard({
               </motion.span>
             </p>
             {v.transliteration && layers.translit && (
-              <p
-                lang="sa-Latn"
-                className="mx-auto mt-4 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-4 text-sm italic leading-relaxed text-dharma-muted md:text-[15px]"
-              >
-                {/* The ॥ N ॥ above already closes the verse; drop the source's trailing "||". */}
-                {v.transliteration.replace(/[\s|।॥0-9.]+$/, '')}
-              </p>
+              <div className="mt-3 flex flex-col items-center">
+                <button
+                  type="button"
+                  onClick={() => setShowIast((s) => !s)}
+                  aria-expanded={showIast}
+                  aria-controls={iastId}
+                  className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-amber-700/20 px-3 py-1 text-[11px] font-semibold text-dharma-muted transition hover:border-saffron-400 hover:text-dharma-text"
+                >
+                  <Languages className="h-3.5 w-3.5" aria-hidden="true" />
+                  <span>IAST</span>
+                  <span lang="hi" className="opacity-80">लिप्यन्तरण</span>
+                </button>
+                {showIast && (
+                  <p
+                    id={iastId}
+                    lang="sa-Latn"
+                    className="mx-auto mt-3 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-3 text-sm italic leading-relaxed text-dharma-muted md:text-[15px]"
+                  >
+                    {/* The ॥ N ॥ above already closes the verse; drop the source's trailing "||". */}
+                    {v.transliteration.replace(/[\s|।॥0-9.]+$/, '')}
+                  </p>
+                )}
+              </div>
             )}
           </div>
         )}
 
-        {/* ── Word-by-word meaning (पदच्छेद एवं शब्दार्थ) ─────── */}
-        {v.wordMeaning && !chantingMode && (
-          <div className="mt-4 rounded-2xl border border-amber-200/70 bg-amber-50/50 p-4 dark:border-amber-900/40 dark:bg-amber-950/20">
-            <p className="mb-2 flex items-center justify-between gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
-              <span className="flex items-center gap-1.5">
-                <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
-                पदच्छेद एवं शब्दार्थ · Word-by-Word Meaning
-              </span>
-              <span className="text-[10px] font-normal normal-case opacity-75 hidden sm:inline">
-                शब्द पर टैप कर उच्चारण सुनें
-              </span>
-            </p>
-            {parsedWordMeanings.length > 0 ? (
-              <div className="flex flex-wrap gap-2">
-                {parsedWordMeanings.map((item, idx) => {
-                  const isSpoken = activeWordIndex === idx;
-                  return (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() => {
-                        triggerTactileFeedback('selection', 'softTap');
-                        setActiveWordIndex(idx);
-                        speakSanskritTerm(item.word, 0.85);
-                        showSabdaPeek({
-                          word: item.word,
-                          wordDevanagari: item.word,
-                          meaningHi: item.meaning,
-                          verseRef: `${scriptureTitle} ${chapterId}.${v.number}`,
-                        });
-                        setTimeout(() => setActiveWordIndex((cur) => (cur === idx ? null : cur)), 1800);
-                      }}
-                      className={`inline-flex min-h-[36px] items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs transition active:scale-95 text-left ${
-                        isSpoken
-                          ? 'border-amber-400 bg-amber-100/90 text-amber-950 dark:border-amber-400 dark:bg-amber-900/40 dark:text-amber-100 ring-2 ring-amber-400/50 shadow-sm'
-                          : 'border-amber-200/70 bg-amber-50/60 text-dharma-text hover:border-amber-300 hover:bg-amber-100/40 dark:border-amber-900/50 dark:bg-amber-950/30'
-                      }`}
-                      aria-label={`उच्चारण सुनें: ${item.word}`}
-                      title={`${item.word}: क्लिक करके उच्चारण सुनें`}
-                    >
-                      <span className="font-devanagari font-bold text-amber-900 dark:text-amber-200">
-                        {item.word}
-                      </span>
-                      {item.meaning && (
-                        <>
-                          <span className="text-amber-400 dark:text-amber-600 font-serif">·</span>
-                          <span className="text-dharma-muted text-[11px] font-sans">{item.meaning}</span>
-                        </>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-            ) : (
-              <p lang="sa" className="font-devanagari text-sm leading-loose text-dharma-text">
-                {v.wordMeaning}
-              </p>
-            )}
-          </div>
-        )}
 
         {/* ── The reader's own note ─────────────────────────── */}
         {!chantingMode && (editingNote || note) && (
@@ -797,206 +980,23 @@ export function VerseCard({
 
         {!chantingMode && (
           <>
-            {/* ── Meaning tabs ──────────────────────────────── */}
-            {tabs.length > 0 && activeTab && (
-              <div className="mt-5">
-                {tabs.length > 1 && (
-                  <div
-                    role="tablist"
-                    aria-label="अर्थ और व्याख्या"
-                    className="relative mb-4 inline-flex rounded-full border border-dharma-border/70 bg-dharma-bg/70 p-1"
+            <VerseTreeStructure branches={treeBranches} />
+
+            {insight && insight.situations.length > 0 && (
+              <div className="mt-4 flex flex-wrap items-center gap-1.5">
+                <span lang="hi" className="mr-1 text-[11px] font-semibold text-dharma-muted">जीवन प्रसंग:</span>
+                {insight.situations.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/wisdom-for-life/${s.slug}/`}
+                    className="inline-flex items-center gap-1 rounded-full border border-indigo-200/80 bg-indigo-50/70 px-2.5 py-0.5 text-[11px] font-semibold text-indigo-800 transition hover:border-indigo-400 hover:bg-indigo-100 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-200 dark:hover:bg-indigo-500/20"
                   >
-                    {tabs.map((tab, i) => {
-                      const selected = tab.id === activeTab;
-                      const Icon = tab.icon;
-                      return (
-                        <button
-                          key={tab.id}
-                          id={`${tabsId}-tab-${tab.id}`}
-                          type="button"
-                          role="tab"
-                          aria-selected={selected}
-                          aria-controls={`${tabsId}-panel`}
-                          tabIndex={selected ? 0 : -1}
-                          onClick={() => setChosenTab(tab.id)}
-                          onKeyDown={(e) => onTabKeyDown(e, i)}
-                          className={`relative inline-flex min-h-[36px] items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-bold transition-colors ${
-                            selected ? 'text-white' : 'text-dharma-muted hover:text-dharma-text'
-                          }`}
-                        >
-                          {selected && (
-                            <motion.span
-                              layoutId={`${tabsId}-pill`}
-                              className="absolute inset-0 rounded-full bg-gradient-to-r from-saffron-600 to-amber-500 shadow-md"
-                              transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 480, damping: 36 }}
-                            />
-                          )}
-                          <Icon className="relative h-3.5 w-3.5" aria-hidden="true" />
-                          <span className="relative">{tab.label}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={activeTab}
-                    id={`${tabsId}-panel`}
-                    role={tabs.length > 1 ? 'tabpanel' : undefined}
-                    aria-labelledby={tabs.length > 1 ? `${tabsId}-tab-${activeTab}` : undefined}
-                    initial={reduce ? false : { opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={reduce ? undefined : { opacity: 0, y: -4 }}
-                    transition={{ duration: 0.18 }}
-                    className={`space-y-4 rounded-2xl transition-all duration-300 ${
-                      ''
-                    }`}
-                  >
-                    {activeTab === 'meaning' && (
-                      <div className="space-y-4">
-                        {showHindi && (
-                          <div className={`rounded-2xl border p-4 shadow-2xs transition-all duration-300 ${
-                            isReciting && activeTranslationLang === 'hi'
-                              ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
-                              : 'border-dharma-border/70 bg-dharma-card-soft/70'
-                          }`}>
-                            <div className="mb-2 flex items-center justify-between gap-2">
-                              <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                                हिंदी अनुवाद · Hindi Translation
-                              </p>
-                              <ContentLabelBadge kind="literal" />
-                            </div>
-                            <p lang="hi" className="font-devanagari text-base leading-loose text-dharma-text md:text-[17px]">
-                              {v.hindi && <GlossaryText text={v.hindi} />}
-                              {v.hindiSource === 'ai' && (
-                                <span
-                                  className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
-                                  title="संस्कृत से मशीन-अनुवादित; विद्वत् अनुवाद नहीं"
-                                >
-                                  AI अनुवाद
-                                </span>
-                              )}
-                            </p>
-                          </div>
-                        )}
-                        {showEnglish && (
-                          <div className={`rounded-2xl border p-4 shadow-2xs transition-all duration-300 ${
-                            isReciting && activeTranslationLang === 'en'
-                              ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
-                              : 'border-dharma-border/70 bg-dharma-card/70'
-                          }`}>
-                            <div className="mb-2 flex items-center justify-between gap-2">
-                              <p lang="en" className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                                English Translation
-                              </p>
-                              <ContentLabelBadge kind="literal" />
-                            </div>
-                            <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text md:text-base">
-                              {v.translation}
-                              {v.translationSource === 'ai' && (
-                                <span
-                                  className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
-                                  title="Machine-translated from the Sanskrit; not a scholarly translation"
-                                >
-                                  AI translation
-                                </span>
-                              )}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    {activeTab === 'meaning' && (
-                      <SamvadaStrip scriptureId={scriptureId} chapterId={chapterId} verseNumber={v.number} />
-                    )}
-
-                    {activeTab === 'explain' && (
-                      <div className="rounded-2xl border border-amber-200/70 bg-amber-50/40 p-4.5 dark:border-amber-900/40 dark:bg-amber-950/20 shadow-2xs">
-                        <div className="mb-2.5 flex items-center justify-between gap-2">
-                          <p className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">
-                            {explanationIsHi ? 'व्याख्या व भावार्थ · Explanation' : 'Commentary & Explanation'}
-                          </p>
-                          <ContentLabelBadge kind="explanation" />
-                          {meaning.isAi && (
-                            <p
-                              className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300"
-                              title="AI द्वारा तैयार और संपादक द्वारा समीक्षित"
-                            >
-                              <Sparkles className="h-3 w-3" aria-hidden="true" />
-                              AI व्याख्या · समीक्षित
-                            </p>
-                          )}
-                        </div>
-                        {explanation && !explanationIsHi && (
-                          <p className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-2.5 py-0.5 text-[11px] font-semibold text-dharma-muted">
-                            हिन्दी व्याख्या शीघ्र · English commentary for now
-                          </p>
-                        )}
-                        {explanation && (
-                          <p
-                            lang={explanationIsHi ? 'hi' : 'en'}
-                            className={`text-sm leading-relaxed text-dharma-text md:text-base ${explanationIsHi ? 'font-devanagari leading-loose' : 'font-serif'}`}
-                          >
-                            {explanation}
-                          </p>
-                        )}
-                      </div>
-                    )}
-
-                    {activeTab === 'science' && science && (
-                      <div className="rounded-2xl border border-indigo-200/70 bg-indigo-50/40 p-4.5 dark:border-indigo-900/40 dark:bg-indigo-950/20 shadow-2xs">
-                        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                          <p className="text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
-                            शोध व आधुनिक संदर्भ · Research & Context
-                          </p>
-                          <ContentLabelBadge kind="research" />
-                        </div>
-                        <p
-                          lang={scienceIsHi ? 'hi' : 'en'}
-                          className={`text-sm leading-relaxed text-dharma-text md:text-base ${scienceIsHi ? 'font-devanagari leading-loose' : ''}`}
-                        >
-                          {science}
-                        </p>
-                      </div>
-                    )}
-                  </motion.div>
-                </AnimatePresence>
+                    <span lang="en">{s.en}</span>
+                    <span aria-hidden="true" className="opacity-50">·</span>
+                    <span lang="hi">{s.hi}</span>
+                  </Link>
+                ))}
               </div>
-            )}
-
-            {/* ── Modern Reflection & Takeaway (Never mixed with classical commentary) ── */}
-            {showLesson && (
-              <motion.aside
-                {...(reduce
-                  ? {}
-                  : {
-                      initial: { opacity: 0, scale: 0.98 },
-                      whileInView: { opacity: 1, scale: 1 },
-                      viewport: { once: true },
-                      transition: { duration: 0.4 },
-                    })}
-                className="relative mt-5 overflow-hidden rounded-2xl border border-amber-300/70 bg-gradient-to-br from-amber-50/90 via-orange-50/60 to-transparent p-4.5 dark:border-amber-400/25 dark:from-amber-500/10 dark:via-orange-500/5 shadow-2xs"
-              >
-                <div className="mb-2 flex items-center justify-between">
-                  <p
-                    className={`flex items-center gap-1.5 font-bold text-amber-700 dark:text-amber-300 ${
-                      lessonIsHi ? 'text-xs' : 'text-[11px] uppercase tracking-[0.18em]'
-                    }`}
-                  >
-                    <Lightbulb className="h-3.5 w-3.5" aria-hidden="true" />
-                    {lessonIsHi ? 'आधुनिक चिंतन व सीख' : 'Modern Reflection & Lesson'}
-                  </p>
-                  <ContentLabelBadge kind="reflection" />
-                </div>
-                <p
-                  lang={lessonIsHi ? 'hi' : 'en'}
-                  className={`text-sm font-medium leading-relaxed text-dharma-text md:text-base ${lessonIsHi ? 'font-devanagari leading-loose' : ''}`}
-                >
-                  {lesson}
-                </p>
-              </motion.aside>
             )}
 
             {v.keywords && v.keywords.length > 0 && (

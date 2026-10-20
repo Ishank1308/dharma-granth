@@ -5,6 +5,8 @@ import { SplashScreen } from '@/app/components/SplashScreen';
 import { ContinueReading } from '@/app/components/ContinueReading';
 import { VerseOfTheDayCompact } from '@/app/components/VerseOfTheDayCompact';
 import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
+import { MoodCompass } from '@/app/components/MoodCompass';
+import { getMoodCompass } from '@/lib/mood-compass';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
 import { Experience3DSection } from '@/app/components/Experience3DSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
@@ -56,6 +58,9 @@ export default function HomePage() {
 
         {/* 3. Verse of the day, compact */}
         <VerseOfTheDayCompact />
+
+        {/* 3b. Mood compass: curated verses for how the reader feels right now */}
+        <MoodCompass moods={getMoodCompass()} />
 
         {/* 4. Browse by scripture category */}
         <CategoryExploreSection />

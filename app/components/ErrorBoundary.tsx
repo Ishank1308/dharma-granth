@@ -51,7 +51,12 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   render() {
     if (this.state.hasError) {
       if (this.props.fallback) {
-        return this.props.fallback;
+        return (
+          <>
+            <meta name="robots" content="noindex, nofollow" />
+            {this.props.fallback}
+          </>
+        );
       }
 
       return (
