@@ -7,7 +7,7 @@ import { FadeUp } from '@/app/components/motion/primitives';
 import { DailyVerse } from '@/app/components/DailyVerse';
 import { DailyReflection } from '@/app/components/practice/DailyReflection';
 import { ReadingPlan } from '@/app/components/practice/ReadingPlan';
-import { JapaCounter } from '@/app/components/practice/JapaCounter';
+import { JapaMala } from '@/app/components/practice/JapaMala';
 import { MeditationTimer } from '@/app/components/practice/MeditationTimer';
 import { PranayamaPacer } from '@/app/components/practice/PranayamaPacer';
 import { FestivalReminder } from '@/app/components/practice/FestivalReminder';
@@ -184,7 +184,7 @@ export function PracticeDashboard() {
             {/* Tool grid */}
             <div className="grid md:grid-cols-2 gap-6 items-stretch">
               {on('reflection') && <DailyReflection />}
-              {on('japa') && <JapaCounter />}
+              {on('japa') && <JapaMala />}
               {on('meditation') && <MeditationTimer />}
               {on('pranayama') && <PranayamaPacer />}
               {on('reading') && <ReadingPlan />}

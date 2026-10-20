@@ -1776,6 +1776,22 @@ body::after {
     }
 }
 
+/* Japa mala: a soft copper bloom when the Sumeru completes a mala (JapaMala renders it only without reduced
+   motion). */
+@keyframes japa-bloom {
+    from {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(0.4);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2.4);
+    }
+}
+.japa-bloom {
+    animation: japa-bloom 1.4s var(--ease-out-quint) forwards;
+}
+
 /* Search palette results settle in as they appear (delay set per item, capped). */
 @keyframes search-result-in {
     from {
