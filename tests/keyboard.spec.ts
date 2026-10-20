@@ -158,3 +158,21 @@ test('Story Deck traps keyboard focus, closes with Escape, and restores focus', 
   await expect(dialog).toBeHidden();
   await expect(trigger).toBeFocused();
 });
+
+test('reader: Modern Context is a selectable, touch-sized tab on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/scripture/bhagavadgita/chapter/2/');
+
+  const lessonTab = page.getByRole('tab', { name: /Modern Context/ }).first();
+  await expect(lessonTab).toBeVisible();
+  const card = page.locator('article.verse-card').filter({ has: lessonTab }).first();
+  const firstTab = card.getByRole('tab').first();
+  await firstTab.focus();
+  await page.keyboard.press('End');
+  await expect(lessonTab).toBeFocused();
+  await expect(lessonTab).toHaveAttribute('aria-selected', 'true');
+  await expect(card.getByRole('tabpanel')).toContainText(/Modern Context|व्यावहारिक जीवन/);
+
+  const targetHeight = await lessonTab.evaluate((el) => el.getBoundingClientRect().height);
+  expect(targetHeight).toBeGreaterThanOrEqual(44);
+});

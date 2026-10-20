@@ -162,7 +162,7 @@ interface Props {
   isActive?: boolean;
 }
 
-type TabId = 'meaning' | 'explain' | 'science';
+type TabId = 'meaning' | 'explain' | 'science' | 'lesson';
 type HighlightColor = VerseHighlight['color'];
 
 const NOTE_MAX = 2000;
@@ -400,19 +400,21 @@ export function VerseCard({
 
   const tabs = useMemo(() => {
     const list: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [];
-    if (showHindi || showEnglish) list.push({ id: 'meaning', label: 'अर्थ', icon: ScrollText });
+    if (showHindi || showEnglish) list.push({ id: 'meaning', label: 'भावार्थ · Arth', icon: ScrollText });
     if (layers.commentary && depth !== 'read' && explanation) {
-      list.push({ id: 'explain', label: 'व्याख्या', icon: Sparkles });
+      list.push({ id: 'explain', label: 'व्याख्या · Vyakhya', icon: Sparkles });
     }
-    if (layers.commentary && depth === 'study' && science) list.push({ id: 'science', label: meaning.editorial ? 'आधुनिक परिप्रेक्ष्य' : 'विज्ञान', icon: Atom });
+    if (layers.commentary && depth === 'study' && science) list.push({ id: 'science', label: 'विज्ञान · Vigyan', icon: Atom });
+    if (layers.commentary && depth !== 'read' && lesson) {
+      list.push({ id: 'lesson', label: 'व्यावहारिक जीवन · Modern Context', icon: Lightbulb });
+    }
     return list;
-  }, [showHindi, showEnglish, layers.commentary, depth, explanation, science, meaning.editorial]);
+  }, [showHindi, showEnglish, layers.commentary, depth, explanation, science, lesson]);
 
   const [chosenTab, setChosenTab] = useState<TabId>('meaning');
   // Fall back to the first available tab if the chosen one was switched off.
   const activeTab = tabs.some((t) => t.id === chosenTab) ? chosenTab : tabs[0]?.id;
-  const showLesson = Boolean(layers.commentary && depth !== 'read' && lesson);
-  const hasMeaning = tabs.length > 0 || showLesson;
+  const hasMeaning = tabs.length > 0;
 
   // Cursor spotlight: CSS variables only, no React re-render per move.
   const onPointerMove = (e: PointerEvent<HTMLElement>) => {
@@ -1022,8 +1024,9 @@ export function VerseCard({
                 {tabs.length > 1 && (
                   <div
                     role="tablist"
-                    aria-label="अर्थ और व्याख्या"
-                    className="relative mb-4 inline-flex rounded-full border border-dharma-border/70 bg-dharma-bg/70 p-1"
+                    aria-label="भावार्थ, व्याख्या, विज्ञान और व्यावहारिक जीवन"
+                    aria-orientation="horizontal"
+                    className="relative mb-4 flex w-full max-w-full gap-1 overflow-x-auto rounded-full border border-dharma-border/70 bg-dharma-bg/70 p-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                   >
                     {tabs.map((tab, i) => {
                       const selected = tab.id === activeTab;
@@ -1039,7 +1042,7 @@ export function VerseCard({
                           tabIndex={selected ? 0 : -1}
                           onClick={() => setChosenTab(tab.id)}
                           onKeyDown={(e) => onTabKeyDown(e, i)}
-                          className={`relative inline-flex min-h-[36px] items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-bold transition-colors ${
+                          className={`relative inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-full px-3 py-2 text-[11px] font-bold transition-colors sm:px-3.5 sm:text-xs ${
                             selected ? 'text-white' : 'text-dharma-muted hover:text-dharma-text'
                           }`}
                         >
@@ -1204,44 +1207,30 @@ export function VerseCard({
                         </p>
                       </div>
                     )}
+                    {activeTab === 'lesson' && lesson && (
+                      <div className="rounded-2xl border border-amber-300/70 bg-gradient-to-br from-amber-50/90 via-orange-50/60 to-transparent p-4.5 shadow-2xs dark:border-amber-400/25 dark:from-amber-500/10 dark:via-orange-500/5">
+                        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                          <p className="flex items-center gap-1.5 text-xs font-bold text-amber-700 dark:text-amber-300">
+                            <Lightbulb className="h-3.5 w-3.5" aria-hidden="true" />
+                            {lessonIsHi ? 'व्यावहारिक जीवन' : 'Modern Context'}
+                          </p>
+                          <span className="flex items-center gap-1.5">
+                            <ContentLabelBadge kind="reflection" />
+                            {meaning.editorial && <DraftBadge lang="hi" />}
+                          </span>
+                        </div>
+                        <p
+                          lang={lessonIsHi ? 'hi' : 'en'}
+                          className={`text-sm font-medium leading-relaxed text-dharma-text md:text-base ${lessonIsHi ? 'font-devanagari leading-loose' : ''}`}
+                        >
+                          {lesson}
+                        </p>
+                      </div>
+                    )}
                   </motion.div>
                 </AnimatePresence>
                 </div>
               </div>
-            )}
-
-            {/* ── Modern Reflection & Takeaway (Never mixed with classical commentary) ── */}
-            {showLesson && (
-              <motion.aside
-                {...(reduce
-                  ? {}
-                  : {
-                      initial: { opacity: 0, scale: 0.98 },
-                      whileInView: { opacity: 1, scale: 1 },
-                      viewport: { once: true },
-                      transition: { duration: 0.4 },
-                    })}
-                className="relative mt-5 overflow-hidden rounded-2xl border border-amber-300/70 bg-gradient-to-br from-amber-50/90 via-orange-50/60 to-transparent p-4.5 dark:border-amber-400/25 dark:from-amber-500/10 dark:via-orange-500/5 shadow-2xs"
-              >
-                <div className="mb-2 flex items-center justify-between">
-                  <p
-                    className={`flex items-center gap-1.5 font-bold text-amber-700 dark:text-amber-300 ${
-                      lessonIsHi ? 'text-xs' : 'text-[11px] uppercase tracking-[0.18em]'
-                    }`}
-                  >
-                    <Lightbulb className="h-3.5 w-3.5" aria-hidden="true" />
-                    {lessonIsHi ? 'आधुनिक चिंतन व सीख' : 'Modern Reflection & Lesson'}
-                  </p>
-                  <ContentLabelBadge kind="reflection" />
-                  {meaning.editorial && <DraftBadge lang="hi" />}
-                </div>
-                <p
-                  lang={lessonIsHi ? 'hi' : 'en'}
-                  className={`text-sm font-medium leading-relaxed text-dharma-text md:text-base ${lessonIsHi ? 'font-devanagari leading-loose' : ''}`}
-                >
-                  {lesson}
-                </p>
-              </motion.aside>
             )}
 
             {/* ── What This Verse Does NOT Mean (भ्रम निवारण) ── */}
