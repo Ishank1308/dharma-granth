@@ -460,36 +460,30 @@ export function ReaderLayers({
                 const displayTerm = lexiconMatch?.termDevanagari || g.pada;
                 return (
                   <li key={i} className="list-none">
+                    {/* The card is a plain container: the word is the button, and its ::after stretches over the
+                        whole card, so a click anywhere still opens the gloss. Pronounce and धातु sit above it
+                        (relative z-10) instead of being nested inside an interactive element. */}
                     <div
-                      tabIndex={0}
-                      role="button"
-                      aria-haspopup="dialog"
-                      aria-label={`शब्दार्थ: ${g.pada} — ${g.meaning}`}
-                      onClick={() =>
-                        setSelectedWordGloss({
-                          pada: g.pada,
-                          meaning: g.meaning,
-                          lexicon: lexiconMatch || undefined,
-                        })
-                      }
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          setSelectedWordGloss({
-                            pada: g.pada,
-                            meaning: g.meaning,
-                            lexicon: lexiconMatch || undefined,
-                          });
-                        }
-                      }}
-                      className={`group h-full cursor-pointer rounded-xl border p-2.5 transition active:scale-[0.99] focus-ring ${
+                      className={`group relative h-full rounded-xl border p-2.5 transition active:scale-[0.99] ${
                         lexiconMatch
                           ? 'border-saffron-500/40 bg-saffron-50/20 dark:bg-saffron-950/20 hover:border-saffron-500 hover:shadow-sm'
                           : 'border-amber-700/20 bg-dharma-card/70 hover:border-amber-500/60 hover:bg-amber-50/10'
                       }`}
                     >
                       <div className="flex items-center justify-between gap-1">
-                        <div className="flex items-center gap-1.5 flex-wrap">
+                        <button
+                          type="button"
+                          aria-haspopup="dialog"
+                          aria-label={`शब्दार्थ: ${g.pada} — ${g.meaning}`}
+                          onClick={() =>
+                            setSelectedWordGloss({
+                              pada: g.pada,
+                              meaning: g.meaning,
+                              lexicon: lexiconMatch || undefined,
+                            })
+                          }
+                          className="focus-ring flex flex-wrap items-center gap-1.5 rounded-md text-left after:absolute after:inset-0 after:rounded-xl after:content-['']"
+                        >
                           {lexiconMatch?.termDevanagari && (
                             <span lang="sa" className="font-devanagari text-sm font-bold text-dharma-text">
                               {lexiconMatch.termDevanagari}
@@ -498,8 +492,8 @@ export function ReaderLayers({
                           <span lang="sa-Latn" className="font-serif text-sm font-bold italic text-amber-900 dark:text-amber-200">
                             {g.pada}
                           </span>
-                        </div>
-                        <div className="flex items-center gap-1">
+                        </button>
+                        <div className="relative z-10 flex items-center gap-1">
                           <button
                             type="button"
                             onClick={(e) => {

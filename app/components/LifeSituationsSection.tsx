@@ -220,7 +220,8 @@ export function LifeSituationsSection() {
                 }`}
               >
                 <span>{tab.label}</span>
-                <span className={`text-[10px] ${isSelected ? 'text-amber-200' : 'text-dharma-muted'}`}>
+                {/* White on the selected saffron (#cf440a) is 4.68:1; amber-200 was 3.76. */}
+                <span lang="hi" className={`text-[10px] ${isSelected ? 'text-white' : 'text-dharma-muted'}`}>
                   {tab.sub}
                 </span>
               </button>

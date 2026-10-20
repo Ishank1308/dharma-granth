@@ -239,7 +239,8 @@ export function WisdomClient() {
                 }`}
               >
                 <span>{cat.labelEn}</span>
-                <span className="ml-1.5 opacity-80 font-devanagari text-xs">
+                {/* No dimming on the selected saffron chip: at 80% it fell to 3.52:1. */}
+                <span lang="hi" className={`ml-1.5 font-devanagari text-xs ${isSelected ? '' : 'opacity-80'}`}>
                   {cat.labelHi}
                 </span>
               </button>

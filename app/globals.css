@@ -1736,6 +1736,16 @@ body::after {
 .bg-clip-text:is(.font-devanagari, body [lang='hi'], body [lang='sa']) {
     padding-block: 0.12em;
 }
+/* Bhojpatra (paper) contrast. Its parchment card (#fdf8ee) and saffron chips (#fdebd8) are a shade darker than
+   Usha's, which tipped saffron-600 / -700 text just under 4.5:1 (4.42 and 4.45; axe flagged ~100 elements).
+   Deeper saffron on this theme only: 5.47:1 on the card and 5.68:1 on the chips. */
+:root[data-theme='paper'] .text-saffron-600 {
+    color: #b8390a;
+}
+:root[data-theme='paper'] .text-saffron-700 {
+    color: #a8350a;
+}
+
 /* Verse reveal sequence: as a verse card scrolls into view the mula shloka settles first, then the
    transliteration, then the meanings (data-reveal 1, 2, 3 inside .reveal-seq). Pure CSS on the card's own scroll
    timeline: the text is fully visible in the server HTML and wherever scroll timelines are unsupported, cards
