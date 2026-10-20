@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Sunset, Moon, BookOpen, Sparkles } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { triggerTactileFeedback } from '@/lib/haptics';
-import { THEMES, useTheme, type Theme } from './ThemeProvider';
+import { THEMES, THEME_NAMES, useTheme, type Theme } from './ThemeProvider';
 
 const ICONS: Record<Theme, ReactNode> = {
   auto: <Sparkles className="w-4 h-4 text-amber-400" />,
@@ -14,21 +14,6 @@ const ICONS: Record<Theme, ReactNode> = {
   night: <Moon className="w-4 h-4" />,
 };
 
-const LABELS: Record<Theme, string> = {
-  auto: 'सौर',
-  day: 'Day',
-  sunset: 'Sunset',
-  paper: 'Paper',
-  night: 'Dark',
-};
-
-const DESCRIPTIONS: Record<Theme, string> = {
-  auto: 'सौर चक्र · Circadian Sandhyā Auto-Theme',
-  day: 'Warm paper reading mode',
-  sunset: 'Soft amber evening mode',
-  paper: 'Antique manuscript parchment',
-  night: 'Low-glare dark reading mode',
-};
 
 /**
  * Compact 3-way segmented theme picker. Explicit choices are easier
@@ -56,8 +41,8 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
             }}
             role="radio"
             aria-checked={active}
-            aria-label={`${LABELS[option]} theme`}
-            title={DESCRIPTIONS[option]}
+            aria-label={`${THEME_NAMES[option].name} theme`}
+            title={THEME_NAMES[option].description}
             className={`relative inline-flex h-8 min-w-8 items-center justify-center gap-1.5 rounded-full px-2.5 text-xs font-bold transition-colors ${
               active
                 ? 'text-white'
@@ -83,7 +68,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
                 {ICONS[option]}
               </motion.span>
             </AnimatePresence>
-            <span className="relative hidden min-[2200px]:inline">{LABELS[option]}</span>
+            <span className="relative hidden min-[2200px]:inline">{THEME_NAMES[option].name}</span>
           </button>
         );
       })}

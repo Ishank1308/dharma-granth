@@ -2,7 +2,7 @@
 
 import { useId, type ReactNode } from 'react';
 import { RotateCcw, SlidersHorizontal } from 'lucide-react';
-import type { Theme } from '@/app/components/ThemeProvider';
+import { THEME_NAMES, type Theme } from '@/app/components/ThemeProvider';
 import type { ContrastPref, LineSpacing, NumberFormatPref, ReaderLanguagePref, ReaderModeTier, ReaderSettings, ReadingWidth, SizeStep } from '@/lib/useReaderSettings';
 import { ReaderDialog } from './ReaderDialog';
 
@@ -128,11 +128,12 @@ const WIDTHS: Array<Choice<ReadingWidth>> = [
   { id: 'wide', label: 'Wide' },
 ];
 
+// Names come from THEME_NAMES so every picker shows the same Usha / Sandhyā / Rātri / Bhojpatra.
 const THEMES: Array<{ id: Theme; label: string; hi: string; swatch: string; ring: string }> = [
-  { id: 'day', label: 'Light', hi: 'उजला', swatch: '#fdfbf7', ring: '#e8e3db' },
-  { id: 'sunset', label: 'Sunset', hi: 'संध्या', swatch: '#fff4e5', ring: '#ecc9a7' },
-  { id: 'night', label: 'Dark', hi: 'रात्रि', swatch: '#090908', ring: '#4a4036' },
-  { id: 'paper', label: 'Paper', hi: 'पाण्डुलिपि', swatch: '#f5ede0', ring: '#d9c9ae' },
+  { id: 'day', label: THEME_NAMES.day.name, hi: THEME_NAMES.day.hi, swatch: '#fdfbf7', ring: '#e8e3db' },
+  { id: 'sunset', label: THEME_NAMES.sunset.name, hi: THEME_NAMES.sunset.hi, swatch: '#fff4e5', ring: '#ecc9a7' },
+  { id: 'night', label: THEME_NAMES.night.name, hi: THEME_NAMES.night.hi, swatch: '#090908', ring: '#4a4036' },
+  { id: 'paper', label: THEME_NAMES.paper.name, hi: THEME_NAMES.paper.hi, swatch: '#f5ede0', ring: '#d9c9ae' },
 ];
 
 export function ReaderSettingsPanel({

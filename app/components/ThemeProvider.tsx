@@ -5,6 +5,19 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from '
 export type Theme = 'day' | 'sunset' | 'paper' | 'night' | 'auto';
 export const THEMES: Theme[] = ['day', 'sunset', 'paper', 'night', 'auto'];
 
+/**
+ * The one set of theme names for every picker. The ids stay day/sunset/paper/night (stored preferences and CSS
+ * depend on them); readers see Usha, Sandhyā (the dawn and dusk palette the auto theme already uses), Bhojpatra
+ * and Rātri. `name` and `hi` are rendered as separate elements, never joined into one string.
+ */
+export const THEME_NAMES: Record<Theme, { name: string; hi: string; description: string }> = {
+  day: { name: 'Usha', hi: 'उषा', description: 'Warm ivory and saffron for daytime reading' },
+  sunset: { name: 'Sandhyā', hi: 'संध्या', description: 'Soft amber for dawn and dusk' },
+  paper: { name: 'Bhojpatra', hi: 'भोजपत्र', description: 'Sepia birch-bark parchment' },
+  night: { name: 'Rātri', hi: 'रात्रि', description: 'Low-glare obsidian and copper for night reading' },
+  auto: { name: 'Auto', hi: 'सौर चक्र', description: 'Follows the sun: Usha by day, Sandhyā at dawn and dusk, Rātri at night' },
+};
+
 const STORAGE_KEY = 'dharma-theme';
 
 /**

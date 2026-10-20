@@ -48,7 +48,7 @@ import {
 } from 'lucide-react';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useTheme, type Theme } from './ThemeProvider';
+import { THEME_NAMES, useTheme, type Theme } from './ThemeProvider';
 import { cleanVerseField, toDevanagari, verseLines } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
@@ -1370,10 +1370,10 @@ ${verse.science || '—'}
                     </p>
                     <div className="grid grid-cols-2 gap-2.5">
                       {[
-                        { id: 'day' as Theme, label: 'Light', desc: 'उजला', bg: '#fdfbf7', border: '#e8e3db' },
-                        { id: 'sunset' as Theme, label: 'Sunset', desc: 'संध्या', bg: '#fff4e5', border: '#ecc9a7' },
-                        { id: 'paper' as Theme, label: 'Paper', desc: 'पाण्डुलिपि', bg: '#f5ede0', border: '#ded1bd' },
-                        { id: 'night' as Theme, label: 'Dark', desc: 'रात्रि', bg: '#090908', border: '#312b25' },
+                        { id: 'day' as Theme, label: THEME_NAMES.day.name, desc: THEME_NAMES.day.hi, bg: '#fdfbf7', border: '#e8e3db' },
+                        { id: 'sunset' as Theme, label: THEME_NAMES.sunset.name, desc: THEME_NAMES.sunset.hi, bg: '#fff4e5', border: '#ecc9a7' },
+                        { id: 'paper' as Theme, label: THEME_NAMES.paper.name, desc: THEME_NAMES.paper.hi, bg: '#f5ede0', border: '#ded1bd' },
+                        { id: 'night' as Theme, label: THEME_NAMES.night.name, desc: THEME_NAMES.night.hi, bg: '#090908', border: '#312b25' },
                       ].map((t) => (
                         <button
                           key={t.id}
@@ -1393,7 +1393,7 @@ ${verse.science || '—'}
                             <span className="block text-xs font-bold text-dharma-text">
                               {t.label}
                             </span>
-                            <span className="block text-[10px] text-dharma-muted">
+                            <span lang="hi" className="block text-[10px] text-dharma-muted">
                               {t.desc}
                             </span>
                           </div>

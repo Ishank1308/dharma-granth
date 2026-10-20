@@ -40,7 +40,7 @@ import {
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
 import { subscribeSoundscape, toggleSoundscape } from '@/lib/sacred-soundscape';
-import { THEMES, useTheme, type Theme } from './ThemeProvider';
+import { THEMES, THEME_NAMES, useTheme, type Theme } from './ThemeProvider';
 import {
   useLanguagePreference,
   type LanguagePreference,
@@ -73,21 +73,6 @@ const THEME_ICONS: Record<Theme, typeof Sun> = {
   night: Moon,
 };
 
-const THEME_LABELS: Record<Theme, string> = {
-  auto: 'Auto · सौर चक्र',
-  day: 'Day · दिन',
-  sunset: 'Sunset · संध्या',
-  paper: 'Paper · पाण्डुलिपि',
-  night: 'Dark · रात्रि',
-};
-
-const THEME_DESCRIPTIONS: Record<Theme, string> = {
-  auto: 'सौर चक्र · Circadian Sandhyā Auto-Theme',
-  day: 'Warm paper reading mode',
-  sunset: 'Soft amber evening mode',
-  paper: 'Antique manuscript parchment',
-  night: 'Low-glare dark reading mode',
-};
 
 const desktopPrimaryItems = [
   { label: 'Home', labelHi: 'मुख', href: '/' },
@@ -773,8 +758,8 @@ export function SiteNav({
                 type="button"
                 onClick={handleThemeCycle}
                 className="lg:hidden flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-dharma-border/80 bg-dharma-bg/90 text-dharma-text transition active:scale-95 hover:border-saffron-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
-                aria-label={`थीम बदलें (${THEME_LABELS[theme]})`}
-                title={`थीम: ${THEME_LABELS[theme]}`}
+                aria-label={`थीम बदलें (${THEME_NAMES[theme].name})`}
+                title={`थीम: ${THEME_NAMES[theme].name} · ${THEME_NAMES[theme].hi}`}
               >
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -1067,7 +1052,7 @@ export function SiteNav({
                                 ? 'border border-saffron-500/60 bg-saffron-500/20 text-saffron-800 dark:text-saffron-200 font-bold shadow-xs'
                                 : 'border border-dharma-border/80 bg-dharma-card text-dharma-text hover:border-saffron-300'
                             }`}
-                            title={THEME_DESCRIPTIONS[opt]}
+                            title={THEME_NAMES[opt].description}
                           >
                             <span
                               className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${
@@ -1080,10 +1065,10 @@ export function SiteNav({
                             </span>
                             <div className="flex flex-col text-left min-w-0">
                               <span className="text-xs font-semibold truncate leading-none">
-                                {THEME_LABELS[opt].split('·')[0].trim()}
+                                {THEME_NAMES[opt].name}
                               </span>
-                              <span className="text-[10px] text-dharma-muted truncate leading-tight mt-0.5">
-                                {THEME_LABELS[opt].split('·')[1]?.trim()}
+                              <span lang="hi" className="text-[10px] text-dharma-muted truncate leading-tight mt-0.5">
+                                {THEME_NAMES[opt].hi}
                               </span>
                             </div>
                           </button>

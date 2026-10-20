@@ -176,9 +176,10 @@
     --dharma-hero-mid: #3a2418;
     --dharma-hero-end: #7c2d12;
     --bg-glow-1: rgba(249, 115, 22, 0.18);
-    --bg-glow-2: rgba(20, 184, 166, 0.09);
-    --dharma-gold: #eab308;
-    --dharma-gold-border: #524223;
+    /* Rātri: obsidian with copper light (was a cool teal glow and bright yellow gold). */
+    --bg-glow-2: rgba(194, 120, 76, 0.09);
+    --dharma-gold: #e0a458;
+    --dharma-gold-border: #5a3d24;
     --dharma-saffron: #f97316;
     --dharma-maroon: #991b1b;
     --dharma-maroon-border: #7f1d1d;
