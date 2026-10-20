@@ -42,11 +42,25 @@ import { GlossaryText } from './GlossaryTooltip';
 import { getVerseGraphicClass, getVerseGraphicStyle } from './verse-background';
 import { ContentLabelBadge } from './ContentLabels';
 import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
-import { StoryDeckModal } from '@/components/reader/StoryDeckModal';
-import { CitationModal } from '@/components/study/CitationModal';
 import { saveAnnotation, deleteAnnotation } from '@/lib/study/storage';
 import { useReadingDepth, type ReadingDepth } from '@/lib/useReadingDepth';
 import { classifyAnalyticalPerspective, ANALYTICAL_PERSPECTIVES } from '@/lib/analytical-perspective';
+import dynamic from 'next/dynamic';
+
+const VerseCuriosityDrawer = dynamic(
+  () => import('./curiosity/VerseCuriosityDrawer').then((m) => m.VerseCuriosityDrawer),
+  { ssr: false }
+);
+
+const StoryDeckModal = dynamic(
+  () => import('@/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal),
+  { ssr: false }
+);
+
+const CitationModal = dynamic(
+  () => import('@/components/study/CitationModal').then((m) => m.CitationModal),
+  { ssr: false }
+);
 
 export interface VerseCardData {
   number: number | string;
@@ -604,6 +618,7 @@ export function VerseCard({
     <article
       ref={cardRef}
       id={`verse-${v.number}`}
+      data-active-verse={isActive ? 'true' : 'false'}
       onPointerMove={onPointerMove}
       className={`verse-card group relative scroll-mt-24 rounded-[26px] border border-dharma-border bg-dharma-card card-3d-depth ${
         highlight ? HIGHLIGHTS[highlight].ring : chantingMode ? 'ring-2 ring-saffron-500/25' : ''
@@ -1349,6 +1364,13 @@ export function VerseCard({
                 })}
               </div>
             )}
+
+            {/* ── Curiosity & Inquiry Drawer (Child/Teen/Parent natural questions) ── */}
+            <VerseCuriosityDrawer
+              scriptureId={scriptureId}
+              chapter={chapterId}
+              verse={v.number}
+            />
 
             {/* ── Bottom Progressive Control Footer ── */}
             <div className="flex flex-wrap items-center justify-between gap-2 border-t border-dharma-border/60 pt-3 text-xs">

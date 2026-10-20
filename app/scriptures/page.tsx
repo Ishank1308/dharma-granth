@@ -57,11 +57,11 @@ export default function ScripturesPage() {
         <div className="max-w-6xl mx-auto px-6">
           <FadeUp>
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
+              <span className="editorial-section-eyebrow text-xs font-semibold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
                 The Sacred Archive
               </span>
             </div>
-            <h1 className="text-3xl font-serif font-bold text-dharma-text sm:text-5xl tracking-tight">
+            <h1 className="editorial-section-title text-3xl font-serif font-bold text-dharma-text sm:text-5xl tracking-tight">
               Scripture Library
               <span lang="hi" className="ml-3 block font-devanagari text-2xl font-semibold leading-relaxed text-dharma-muted sm:inline sm:text-4xl">
                 ग्रंथालय

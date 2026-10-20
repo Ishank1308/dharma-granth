@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Bookmark, BookOpen, ListChecks, FileClock } from 'lucide-react';
+import { ArrowRight, Bookmark, BookOpen, Check, ListChecks, FileClock } from 'lucide-react';
 import type { ReactNode } from 'react';
 import {
   LANGUAGES,
@@ -114,17 +114,20 @@ export function LibraryCard({
     >
       <header className="flex items-start justify-between gap-3">
         <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-saffron-800 dark:text-saffron-300">{categoryLabel}</p>
-        <button
-          type="button"
-          onClick={() => onToggleSave(item.id)}
-          aria-pressed={saved}
-          aria-label={saved ? `Remove ${item.title} from saved` : `Save ${item.title}`}
-          className={`focus-ring -mr-2 -mt-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition ${
-            saved ? 'text-saffron-700 dark:text-saffron-300' : 'text-dharma-muted hover:text-saffron-700'
-          }`}
-        >
-          <Bookmark className="h-5 w-5" fill={saved ? 'currentColor' : 'none'} aria-hidden="true" />
-        </button>
+        <div className="-mr-2 -mt-2 flex items-center gap-1.5">
+          {saved && <span className="inline-flex items-center gap-1 rounded-full bg-saffron-100 px-2 py-1 text-[10px] font-bold text-saffron-800 dark:bg-saffron-900/40 dark:text-saffron-200"><Check className="h-3 w-3" aria-hidden="true" /> Saved</span>}
+          <button
+            type="button"
+            onClick={() => onToggleSave(item.id)}
+            aria-pressed={saved}
+            aria-label={saved ? `Remove ${item.title} from saved` : `Save ${item.title}`}
+            className={`focus-ring flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition ${
+              saved ? 'text-saffron-700 dark:text-saffron-300' : 'text-dharma-muted hover:text-saffron-700'
+            }`}
+          >
+            <Bookmark className="h-5 w-5" fill={saved ? 'currentColor' : 'none'} aria-hidden="true" />
+          </button>
+        </div>
       </header>
 
       <h3 id={headingId} className="mt-1">

@@ -143,13 +143,13 @@ export function LifeSituationsSection() {
           <div>
             <div className="mb-2 flex items-center gap-2">
               <span className="size-2 rounded-full bg-saffron-600 animate-pulse" />
-              <p lang="hi" className="text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400 font-devanagari">
+              <p lang="hi" className="editorial-section-eyebrow text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400 font-devanagari">
                 जीवन के लिए शास्त्रीय मार्गदर्शन
               </p>
             </div>
             <h2
               id="life-situations-heading"
-              className="font-serif text-3xl font-bold text-dharma-text sm:text-4xl"
+              className="editorial-section-title font-serif text-3xl font-bold text-dharma-text sm:text-4xl"
             >
               Wisdom for Life
             </h2>

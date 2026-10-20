@@ -108,7 +108,7 @@ export function ReadingModeSelector({
                   aria-hidden="true"
                 />
                 <span className="font-devanagari font-bold">{title}</span>
-                <span className="text-[10px] sm:text-xs font-normal opacity-70">· {sub}</span>
+                <span className="text-[10px] sm:text-xs font-normal">· {sub}</span>
               </TabsTrigger>
             );
           })}

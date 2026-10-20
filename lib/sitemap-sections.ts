@@ -78,6 +78,7 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/compare', pageDate('/compare', 'data/scripture-comparisons.ts')),
     entry('/learn/academy', pageDate('/learn/academy', 'data/academy-index.ts')),
     entry('/ask', pageDate('/ask', 'data/wisdom-for-life.ts')),
+    entry('/curiosity', pageDate('/curiosity', 'data/curiosity-inquiry.ts')),
     entry('/start-here', pageDate('/start-here')),
     entry('/daily', pageDate('/daily')),
     entry('/daily-verse', pageDate('/daily-verse', 'data/wisdom-for-life.ts')),

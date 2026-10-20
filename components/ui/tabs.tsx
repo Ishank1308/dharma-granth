@@ -136,7 +136,7 @@ export const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(funct
       role="tab"
       id={tabId}
       aria-selected={isSelected}
-      aria-controls={panelId}
+      aria-controls={props['aria-controls']}
       tabIndex={isSelected ? 0 : -1}
       disabled={disabled}
       onClick={() => onValueChange(value)}

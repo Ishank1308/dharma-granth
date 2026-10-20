@@ -186,7 +186,22 @@ export default function LearnPage() {
             </div>
 
             {/* Quick Portals Strip */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+              <Link
+                href="/curiosity"
+                className="group p-4 rounded-xl bg-gradient-to-br from-saffron-950/90 to-amber-950/70 border border-saffron-400/50 hover:border-saffron-300 transition"
+              >
+                <div className="flex items-center gap-2 text-amber-300 font-serif text-xs font-semibold">
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                  <span>जिज्ञासा व बाल प्रश्न</span>
+                </div>
+                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                  Curiosity Hub →
+                </h3>
+                <p className="mt-0.5 text-[11px] text-stone-300 font-serif">
+                  Questions for children, teens, parents & beginners
+                </p>
+              </Link>
               <Link
                 href="/learn/paths"
                 className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"

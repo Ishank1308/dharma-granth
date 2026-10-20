@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { LayoutGrid, LayoutList, Search, SlidersHorizontal, X } from 'lucide-react';
 import type { ScriptureCategory } from '@/data/types';
 import { useLocalStorage } from '@/lib/useLocalStorage';
@@ -133,6 +134,7 @@ export function ScriptureLibraryClient({
   const [hydrated, setHydrated] = useState(false);
   const online = useOnline();
   const [saved, setSaved] = useLocalStorage<string[]>(SAVED_KEY, NO_SAVED);
+  const prefersReducedMotion = useReducedMotion();
 
   const items = useMemo(() => (Array.isArray(scriptures) ? scriptures.map(withFacts) : []), [scriptures]);
   const searchable = useMemo(() => buildSearchable(items), [items]);
@@ -404,6 +406,33 @@ export function ScriptureLibraryClient({
             </div>
           </div>
 
+          <nav aria-label="Browse by category" className="mt-4 -mx-1 overflow-x-auto pb-1">
+            <div className="flex min-w-max gap-2 px-1">
+              <button
+                type="button"
+                aria-pressed={filters.category.length === 0}
+                onClick={() => setFilters((f) => ({ ...f, category: [] }))}
+                className={`focus-ring min-h-[36px] rounded-full border px-3.5 text-xs font-semibold transition ${filters.category.length === 0 ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-card text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'}`}
+              >
+                All <span className="ml-1 font-devanagari">सभी</span>
+              </button>
+              {categories.map((category) => {
+                const active = filters.category.indexOf(category.id) !== -1;
+                return (
+                  <button
+                    key={category.id}
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => toggleValue('category', category.id)}
+                    className={`focus-ring min-h-[36px] rounded-full border px-3.5 text-xs font-semibold transition ${active ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-card text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'}`}
+                  >
+                    {category.label}
+                  </button>
+                );
+              })}
+            </div>
+          </nav>
+
           {chips.length > 0 && (
             <ul aria-label="Active filters" className="mt-4 flex flex-wrap items-center gap-2">
               {chips.map((chip) => (
@@ -443,9 +472,18 @@ export function ScriptureLibraryClient({
                 <NoResults query={filters.q.trim()} onClear={() => setQuery('')} />
               )
             ) : (
-              <ul className={`grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 2xl:grid-cols-3'}`}>
-                {results.map((item) => (
-                  <li key={item.id} className="min-w-0">
+              <motion.ul layout className={`grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 2xl:grid-cols-3'}`}>
+                <AnimatePresence initial={false} mode="popLayout">
+                {results.map((item, index) => (
+                  <motion.li
+                    key={item.id}
+                    layout
+                    initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
+                    transition={prefersReducedMotion ? undefined : { duration: 0.22, delay: Math.min(index * 0.025, 0.15), ease: 'easeOut' }}
+                    className="min-w-0"
+                  >
                     <LibraryCard
                       item={item}
                       categoryLabel={categories.find((c) => c.id === item.category)?.label ?? item.category}
@@ -453,9 +491,10 @@ export function ScriptureLibraryClient({
                       saved={saved.indexOf(item.id) !== -1}
                       onToggleSave={toggleSave}
                     />
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+                </AnimatePresence>
+              </motion.ul>
             )}
           </div>
         </div>

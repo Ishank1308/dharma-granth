@@ -43,6 +43,7 @@ const KEY_PAGES = [
   '/rituals/',
   '/locations/',
   '/timelines/',
+  '/curiosity/',
   '/scripture/bhagavadgita/chapter/2/verse/47/',
   // Personal pages: data is client-side, but the header must still export.
   '/dashboard/',

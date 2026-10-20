@@ -13,6 +13,7 @@ import {
   TreePine,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { scriptureCatalog } from '@/data/scripture-meta';
 
 interface CategoryTile {
@@ -102,6 +103,7 @@ const CATEGORIES: CategoryTile[] = [
 
 export function CategoryExploreSection() {
   const allScriptures = scriptureCatalog;
+  const prefersReducedMotion = useReducedMotion();
 
   function getCount(catId: string): string {
     if (catId === 'veda') {
@@ -143,13 +145,13 @@ export function CategoryExploreSection() {
         <div className="mb-10">
           <div className="mb-2 flex items-center gap-2">
             <span className="size-2 rounded-full bg-saffron-600 animate-pulse" />
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
+            <p className="editorial-section-eyebrow text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
               परंपरा अन्वेषण · Explore the Tradition
             </p>
           </div>
           <h2
             id="explore-categories-heading"
-            className="font-serif text-3xl font-bold text-dharma-text sm:text-4xl"
+            className="editorial-section-title font-serif text-3xl font-bold text-dharma-text sm:text-4xl"
           >
             Explore by Category
           </h2>
@@ -160,18 +162,29 @@ export function CategoryExploreSection() {
 
         {/* 8 Category Tiles Grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {CATEGORIES.map((cat) => (
-            <Link
+          {CATEGORIES.map((cat, index) => (
+            <motion.div
               key={cat.id}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+              whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+              whileHover={prefersReducedMotion ? undefined : { y: -4, scale: 1.01 }}
+              whileTap={prefersReducedMotion ? undefined : { scale: 0.985 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={prefersReducedMotion ? undefined : { type: 'spring', stiffness: 360, damping: 24, delay: index * 0.045 }}
+            >
+            <Link
               href={cat.href}
-              className="group relative flex flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-5 transition-all hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-lg dark:hover:border-amber-700/60"
+              className="group relative flex h-full flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-5 transition-all hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-lg dark:hover:border-amber-700/60"
             >
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-500/10 text-saffron-700 dark:text-saffron-400 transition group-hover:bg-saffron-600 group-hover:text-white">
                     {cat.icon}
                   </span>
-                  <span className="text-[11px] font-semibold text-dharma-muted group-hover:text-saffron-700 transition">
+                  <span
+                    aria-label={`${cat.titleEn} collection size`}
+                    className="rounded-full border border-dharma-border/80 bg-dharma-bg/70 px-2.5 py-1 text-[10px] font-bold tracking-wide text-dharma-muted transition group-hover:border-saffron-300 group-hover:text-saffron-700"
+                  >
                     {getCount(cat.id)}
                   </span>
                 </div>
@@ -196,6 +209,7 @@ export function CategoryExploreSection() {
                 </span>
               </div>
             </Link>
+            </motion.div>
           ))}
         </div>
       </div>

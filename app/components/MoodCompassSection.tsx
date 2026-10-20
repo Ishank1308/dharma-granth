@@ -337,7 +337,9 @@ export function MoodCompassSection() {
               >
                 <span className="text-base">{mood.emoji}</span>
                 <span>{mood.labelHi}</span>
-                <span className="hidden md:inline opacity-75 text-[10px]">({mood.labelEn})</span>
+                <span className={`hidden md:inline text-xs font-normal ${isSelected ? 'text-white' : 'text-stone-700 dark:text-stone-300'}`}>
+                  ({mood.labelEn})
+                </span>
               </button>
             );
           })}

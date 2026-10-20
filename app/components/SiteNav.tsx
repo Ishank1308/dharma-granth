@@ -97,6 +97,7 @@ const desktopPrimaryItems = [
 
 const desktopDiscoveryItems = [
   { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra' },
+  { label: 'जिज्ञासा व बाल प्रश्न', description: 'Curiosity & Guided Discovery — बच्चे, किशोर व नए पाठक', href: '/curiosity' },
   { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — १२ क्रमिक साधना पथ', href: '/journeys' },
   { label: 'स्वाध्याय मार्ग', description: 'Guided Reading Paths — विषयवार अध्ययन', href: '/learn/paths' },
   { label: 'पठन योजनाएँ', description: 'Reading Plans — १८ दिवसीय गीता आदि', href: '/learn/plans' },
@@ -558,7 +559,7 @@ export function SiteNav({
                   )}
                   <span className="relative z-10 inline-flex items-center gap-1.5">
                     <span>{item.label}</span>{' '}
-                    <span lang="hi" className="hidden text-[11px] font-devanagari opacity-75 font-normal 2xl:inline">
+                    <span lang="hi" className="hidden text-[11px] font-devanagari font-normal 2xl:inline">
                       {item.labelHi}
                     </span>
                   </span>
@@ -618,7 +619,7 @@ export function SiteNav({
                           </Link>
                         ))}
                       </div>
-                      <div className="mt-2 flex gap-2 border-t border-dharma-border px-2 pt-3">
+                      <div className="mt-2 flex flex-wrap gap-1.5 border-t border-dharma-border px-2 pt-3">
                         {desktopPersonalItems.map((item) => (
                           <Link
                             key={item.href}
@@ -1076,7 +1077,8 @@ export function SiteNav({
               />
             )}
             <Home className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Home</span>
+            <span className="text-[10px] leading-none tracking-tight">Home</span>
+            <span lang="hi" className="font-devanagari text-[10px] leading-none font-medium">मुख</span>
           </Link>
 
           {/* 2. Search Button */}
@@ -1087,7 +1089,8 @@ export function SiteNav({
             aria-label="खोजें (Search)"
           >
             <Search className="h-5 w-5 text-saffron-600" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Search</span>
+            <span className="text-[10px] leading-none tracking-tight">Search</span>
+            <span lang="hi" className="font-devanagari text-[10px] leading-none font-medium">खोज</span>
           </button>
 
           {/* 3. Library */}
@@ -1109,7 +1112,8 @@ export function SiteNav({
               />
             )}
             <BookOpen className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Library</span>
+            <span className="text-[10px] leading-none tracking-tight">Library</span>
+            <span lang="hi" className="font-devanagari text-[10px] leading-none font-medium">ग्रंथालय</span>
           </Link>
 
           {/* 4. Sadhana */}
@@ -1131,7 +1135,8 @@ export function SiteNav({
               />
             )}
             <Sparkles className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Sadhana</span>
+            <span className="text-[10px] leading-none tracking-tight">Sadhana</span>
+            <span lang="hi" className="font-devanagari text-[10px] leading-none font-medium">साधना</span>
           </Link>
 
           {/* 5. Saved Verses */}
@@ -1160,7 +1165,8 @@ export function SiteNav({
                 </span>
               )}
             </div>
-            <span className="text-[10px] tracking-tight">Saved</span>
+            <span className="text-[10px] leading-none tracking-tight">Saved</span>
+            <span lang="hi" className="font-devanagari text-[10px] leading-none font-medium">सहेजे</span>
           </Link>
         </div>
       </nav>

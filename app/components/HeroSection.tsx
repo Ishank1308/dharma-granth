@@ -9,6 +9,7 @@ import {
   useReducedMotion,
 } from 'framer-motion';
 import { useEffect, useRef, useState, type PointerEvent } from 'react';
+import Link from 'next/link';
 import { ArrowRight, BookOpen, Flame, Search, Sparkles } from 'lucide-react';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { MagneticButton } from '@/app/components/motion/MagneticButton';
@@ -382,7 +383,7 @@ export function HeroSection() {
               tilt={12}
             >
               <Flame className="w-5 h-5 text-saffron-600" />
-              <span>Read Bhagavad Gita</span>
+              <span>Start with Bhagavad Gita</span>
               <span lang="hi" className="font-devanagari text-xs text-saffron-800 hidden md:inline">
                 (भगवद्गीता पढ़ें)
               </span>
@@ -405,6 +406,21 @@ export function HeroSection() {
           <div>
             <SurpriseVerseButton className="hidden items-center gap-2.5 rounded-full border border-white/20 px-4 py-3.5 font-semibold text-white/90 transition hover:border-white/40 hover:bg-white/10 sm:inline-flex" />
           </div>
+        </FadeUp>
+
+        <FadeUp delay={0.38}>
+          <nav aria-label="Choose a starting point" className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-2 text-xs">
+            <span className="mr-1 font-medium text-white/65">Choose a path:</span>
+            <Link href="/scriptures" className="rounded-full border border-white/20 bg-white/10 px-3.5 py-2 font-semibold text-white/90 backdrop-blur-sm transition hover:border-amber-300 hover:bg-white/20">
+              Explore scriptures
+            </Link>
+            <Link href="/concepts" className="rounded-full border border-white/20 bg-white/10 px-3.5 py-2 font-semibold text-white/90 backdrop-blur-sm transition hover:border-amber-300 hover:bg-white/20">
+              Understand a concept
+            </Link>
+            <Link href="/practice" className="rounded-full border border-white/20 bg-white/10 px-3.5 py-2 font-semibold text-white/90 backdrop-blur-sm transition hover:border-amber-300 hover:bg-white/20">
+              Begin a practice
+            </Link>
+          </nav>
         </FadeUp>
       </motion.div>
 

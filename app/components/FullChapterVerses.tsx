@@ -239,7 +239,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     if (state.kind === 'ready' && state.verses.length > 0) {
       saveChapterVersesToDB(scriptureId, chapterId, state.verses).catch(() => {});
     }
-  }, [state.kind, scriptureId, chapterId]);
+  }, [state, scriptureId, chapterId]);
 
   // Check IndexedDB cache if loading or offline
   useEffect(() => {
@@ -324,7 +324,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       window.clearTimeout(timer);
       window.removeEventListener('scroll', onScroll);
     };
-  }, [state.kind, scriptureId, chapterId]);
+  }, [state.kind, scriptureId, chapterId, scriptureTitle]);
 
   // Load verse bookmark statuses from localStorage and sync across components
   useEffect(() => {
@@ -432,19 +432,15 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     }
   };
 
-  const scrollToVerse = (verseNum: string | number, behavior: ScrollBehavior = 'smooth') => {
+  const scrollToVerse = (verseNum: string | number, behavior: ScrollBehavior = 'auto') => {
     const el = document.getElementById(`verse-${verseNum}`);
     if (el) {
-      // Temporarily set contentVisibility to 'visible' to pre-render layout dimensions accurately
-      const prevVisibility = el.style.contentVisibility;
-      el.style.contentVisibility = 'visible';
+      el.scrollIntoView({ behavior, block: 'center' });
       requestAnimationFrame(() => {
-        el.scrollIntoView({ behavior, block: 'center' });
+        el.scrollIntoView({ behavior: 'auto', block: 'center' });
         setTimeout(() => {
-          if (el.dataset.activeVerse !== 'true') {
-            el.style.contentVisibility = prevVisibility || '';
-          }
-        }, 800);
+          el.scrollIntoView({ behavior: 'auto', block: 'center' });
+        }, 120);
       });
     }
   };
@@ -459,14 +455,27 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         ? window.location.hash.replace('#verse-', '')
         : null);
     if (targetVerse) {
+      const idx = state.verses.findIndex((v) => String(v.number) === String(targetVerse));
+      if (idx !== -1) {
+        setActiveVerseIndex(idx);
+      }
       const timer = setTimeout(() => {
-        // Jump, like a native #hash link: a smooth scroll across a long
-        // chapter is slow and can be cut short by layout shifts.
         scrollToVerse(targetVerse, 'auto');
-      }, 350);
+      }, hydrated ? 150 : 450);
       return () => clearTimeout(timer);
     }
-  }, [state.kind]);
+  }, [state, hydrated]);
+
+  useEffect(() => {
+    const handleHash = () => {
+      if (window.location.hash.startsWith('#verse-')) {
+        const num = window.location.hash.replace('#verse-', '');
+        scrollToVerse(num, 'auto');
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
 
   // Close layers menu on outside click or Escape
   useEffect(() => {

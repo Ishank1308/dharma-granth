@@ -16,6 +16,19 @@ function formatCount(value: number): string {
   return new Intl.NumberFormat('en-IN').format(value);
 }
 
+function ScriptureBook({ sanskrit, author }: { sanskrit: string; author?: string }) {
+  return (
+    <div className="scripture-book-wrap" aria-hidden="true">
+      <div className="scripture-book">
+        <span className="scripture-book-spine" />
+        <span lang="hi" className="scripture-book-title font-devanagari">{sanskrit}</span>
+        {author && <span className="scripture-book-author">{author}</span>}
+        <span className="scripture-book-mark" />
+      </div>
+    </div>
+  );
+}
+
 export function FeaturedScripturesSection() {
   const ashtavakra = publishedTotals();
   const availableScriptures = getAvailableScriptures();
@@ -43,13 +56,13 @@ export function FeaturedScripturesSection() {
           <div>
             <div className="mb-2 flex items-center gap-2">
               <span className="size-2 rounded-full bg-saffron-600 animate-pulse" />
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
+              <p className="editorial-section-eyebrow text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
                 प्रमुख ग्रंथ · Curated Archive
               </p>
             </div>
             <h2
               id="featured-scriptures-heading"
-              className="font-serif text-3xl font-bold text-dharma-text sm:text-4xl"
+              className="editorial-section-title font-serif text-3xl font-bold text-dharma-text sm:text-4xl"
             >
               Featured Scriptures
             </h2>
@@ -99,11 +112,12 @@ export function FeaturedScripturesSection() {
                   aria-hidden="true"
                 />
               </div>
-              <h3 className="font-serif text-xl font-bold text-dharma-text group-hover:text-saffron-800 transition">
-                Ashtavakra Gita
-              </h3>
-              <p lang="sa" className="mt-1 font-devanagari text-sm text-saffron-800 dark:text-saffron-200">
+              <ScriptureBook sanskrit="अष्टावक्र गीता" />
+              <h3 lang="hi" className="font-devanagari text-xl font-bold text-dharma-text group-hover:text-saffron-800 transition">
                 अष्टावक्र गीता
+              </h3>
+              <p className="mt-1 font-serif text-sm text-saffron-800 dark:text-saffron-200">
+                Ashtavakra Gita
               </p>
               <p className="mt-3 line-clamp-2 text-xs leading-relaxed text-dharma-muted">
                 Sanskrit, the book’s Hindi meaning, and a simple explanation. Chapters 19 and 20 are published and marked review-required.
@@ -146,11 +160,13 @@ export function FeaturedScripturesSection() {
                     />
                   </div>
 
-                  <h3 className="font-serif text-xl font-bold text-dharma-text group-hover:text-saffron-700 transition">
-                    {scripture.title}
-                  </h3>
-                  <p lang="sa" className="mt-1 font-devanagari text-sm text-saffron-800 dark:text-saffron-200">
+                  <ScriptureBook sanskrit={scripture.titleSanskrit} author={scripture.author} />
+
+                  <h3 lang="hi" className="font-devanagari text-xl font-bold text-dharma-text group-hover:text-saffron-700 transition">
                     {scripture.titleSanskrit}
+                  </h3>
+                  <p className="mt-1 font-serif text-sm text-saffron-800 dark:text-saffron-200">
+                    {scripture.title}
                   </p>
                   <p className="mt-3 line-clamp-2 text-xs leading-relaxed text-dharma-muted">
                     {scripture.description}

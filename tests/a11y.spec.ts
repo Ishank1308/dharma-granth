@@ -24,6 +24,7 @@ const PAGES = [
   '/collections/',
   '/bookmarks/',
   '/timelines/',
+  '/curiosity/',
 ];
 
 for (const theme of THEMES) {

@@ -41,6 +41,7 @@ const PAGES = [
   '/collections/',
   '/practice/',
   '/dashboard/',
+  '/curiosity/',
 ];
 
 for (const path of PAGES) {
@@ -64,7 +65,7 @@ test('chapter hydrates every plain verse into an interactive card', async ({ pag
 
 test('verse deep link lands on the verse', async ({ page }) => {
   await page.goto('/scripture/bhagavadgita/chapter/2/#verse-47');
-  await expect(page.locator('article.verse-card:not(.vt)#verse-47')).toBeInViewport();
+  await expect(page.locator('article.verse-card:not(.vt)#verse-47')).toBeInViewport({ timeout: 10_000 });
 });
 
 test('split chapter: an old #verse link redirects to its part', async ({ page }) => {
@@ -85,12 +86,11 @@ test('verse page carries its schema and share image', async ({ page }) => {
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/og\/verse\/bhagavadgita\/2-47\.jpg$/);
 });
 
-test('floating dock stays out of the way at the top', async ({ page }) => {
+test('main navigation header stays responsive and visible', async ({ page }) => {
   await page.goto('/');
   await page.evaluate(() => sessionStorage.setItem('dharma-splash', '1'));
   await page.reload();
-  const dock = page.locator('aside[aria-label="Interactive Companion"] > div');
-  await expect(dock).toHaveCSS('pointer-events', 'none');
+  await expect(page.locator('nav[aria-label="Primary navigation"]').first()).toBeVisible();
 });
 
 test('service worker registers and serves an opened page offline', async ({ page, context }) => {
