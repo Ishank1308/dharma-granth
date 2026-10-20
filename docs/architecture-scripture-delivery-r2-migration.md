@@ -8,7 +8,14 @@ Dharma Granth's static export has reached a critical structural bottleneck:
 - **Export Size**: **3.111 GB** (2.64 GB in `dist/scripture/` alone).
 - **Root Cause**: Next.js App Router (`output: 'export'`) generates two files per route (`index.html` and `index.txt`). In addition, passing monolithic chapter data as props across Server-to-Client boundaries forces 3x payload duplication (HTML DOM + inline script hydration chunk + standalone RSC `.txt` file).
 
-This document establishes the empirical measurements and defines the concrete, zero-downtime migration to Cloudflare Pages + R2 object storage.
+This document establishes the empirical measurements and defines the concrete, zero-downtime migration to Cloudflare Pages + R2 object storage. The migration must preserve the existing Next.js static HTML and Flight payloads until a byte-for-byte canary has passed.
+
+### Current implementation status (2026-10-20)
+
+- The scripture-opening page is already a contents page: it exposes the scripture identity, one short introduction, optional reading progress, the Adhyay/traditional-section list, a start/resume action, and source links.
+- The production deployment remains static and is the rollback authority.
+- A gated Pages Function exists at `functions/scripture/bhagavadgita/chapter/2/index.txt.ts`. When `RSC_EDGE_CANARY=bhagavadgita` and the `SCRIPTURES` R2 binding are present, it serves only the matching Next.js Flight `.txt` object from R2. Otherwise it calls `context.next()` and serves the existing static file.
+- No edge HTML renderer is active. The untracked `lib/edge-chapter-renderer.ts` draft is not part of this migration and must not be wired into production without a separate semantic and visual parity review.
 
 ---
 
@@ -105,23 +112,21 @@ graph TD
    ```
 3. Verify that all 4,216 chapters are accessible over R2 with correct content-types.
 
-### Phase 2.2: Edge Function SSR Prototype (Single Scripture Proof-of-Concept)
-1. Implement prototype edge route: `functions/scripture/[id]/chapter/[chapterId]/index.ts`.
-2. Restrict to a canary test scripture (e.g. `ishavasya` or `mandukya`).
-3. The function:
-   - Fetches the chapter shard from R2 / edge cache.
-   - Streams or renders the identical `VerseText` semantic HTML.
-   - Injects the exact same JSON-LD `BreadcrumbList` and `Book` schema.
-4. Validate with automated tests:
-   - Verify HTTP 200, headers, and TTFB (<50ms).
-   - Compare HTML diff with the static export output (must match canonical text 1:1).
-   - Verify offline PWA caching.
+### Phase 2.2: Byte-preserving RSC canary (Single Chapter Proof-of-Concept)
+1. Upload the exact generated Flight payload for one chapter to R2 at the key expected by the canary route, for example `rsc/scripture/bhagavadgita/chapter/2/index.txt`.
+2. Create the `SCRIPTURES` R2 binding in a Pages preview environment and set `RSC_EDGE_CANARY=bhagavadgita` there only.
+3. Keep the static HTML and all client bundles unchanged. The Function may return the R2 object only for the exact `.txt` route and must call `context.next()` when the binding, flag, object, or read fails.
+4. Validate before expanding the canary:
+   - Compare the R2 response body and ETag with the committed static `.txt` file.
+   - Verify HTTP 200, `Content-Type: text/plain; charset=utf-8`, cache headers, client-side navigation, browser back/forward, and reduced-motion behavior.
+   - Confirm canonical scripture strings and the visible chapter UI are unchanged.
+   - Run the full build, typecheck, lint, sitemap, and post-deploy smoke checks.
 
-### Phase 2.3: Repository-Wide Rollout
-1. Expand edge routing across all scriptures.
-2. Remove static route generation for chapter pages from `app/scripture/[id]/chapter/[chapterId]/page.tsx` (`generateStaticParams` returns empty array, dynamic rendering handled at edge).
-3. Update `scripts/prune-export.mjs` to enforce the new file budget (< 2,000 files).
-4. Run full post-deploy health smoke test across all routes.
+### Phase 2.3: Repository-Wide RSC rollout
+1. Expand the exact-route canary only after the single-chapter body and interaction checks pass.
+2. Keep static `.html` and `.txt` files during the initial rollout; do not remove `generateStaticParams` or delete static payloads until rollback has been tested.
+3. Add an explicit export-file budget check and measure Pages deployment size before removing any static files.
+4. Roll out by scripture batches, with a per-batch fallback to `context.next()` and a full post-deploy health smoke test.
 
 ---
 
