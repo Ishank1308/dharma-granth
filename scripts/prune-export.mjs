@@ -9,7 +9,7 @@
 //   • a chapter's shard is removed when its page already carries its verses,
 //     and kept for the few giant chapters that still load client-side.
 // The copies in public/ stay: the build and the data scripts read them.
-import { existsSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs';
+import { appendFileSync, existsSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const DIST = resolve(process.cwd(), 'dist');
@@ -93,6 +93,22 @@ console.log(
   `✓ Export pruned: freed ${(freed / 1024 / 1024).toFixed(0)} MB, kept ${kept} shard(s) for client-loaded chapters; ` +
     `dist is ${(total / 1024 / 1024).toFixed(0)} MB in ${files} files.`,
 );
+
+if (process.env.GITHUB_STEP_SUMMARY) {
+  try {
+    const summary = [
+      '### 📦 Cloudflare Pages Export Summary',
+      '',
+      '| Metric | Value | Limit | Headroom |',
+      '|---|---|---|---|',
+      `| **Total Files** | \`${files.toLocaleString()}\` | \`${MAX_FILES.toLocaleString()}\` | **\`${(MAX_FILES - files).toLocaleString()} files remaining\`** |`,
+      `| **Export Size** | \`${(total / 1024 / 1024 / 1024).toFixed(2)} GB\` (\`${(total / 1024 / 1024).toFixed(0)} MB\`) | — | — |`,
+      `| **Pruned / Freed** | \`${(freed / 1024 / 1024).toFixed(0)} MB\` | — | — |`,
+      '',
+    ].join('\n');
+    appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary, 'utf8');
+  } catch {}
+}
 let ok = true;
 if (files > MAX_FILES) {
   console.error(`✗ ${files} files — Cloudflare Pages allows ${MAX_FILES} per deployment.`);
