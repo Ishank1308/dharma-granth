@@ -11,6 +11,7 @@
     "prune:export": "node scripts/prune-export.mjs",
     "check:export": "node scripts/check-export.mjs",
     "serve:dist": "node scripts/serve-dist.mjs",
+    "verify:rsc-canary": "node scripts/verify-rsc-canary.mjs",
     "test:smoke": "node scripts/smoke-test-dist.mjs",
     "test:e2e": "playwright test",
     "prebuild:pages": "npm run search:core && npm run publish:data && npm run samvada && npm run check && npm run og:verses",
