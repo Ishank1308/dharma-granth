@@ -111,7 +111,7 @@ const desktopDiscoveryItems = [
   { label: 'दैनिक श्लोक', description: 'Daily Verse — आज का श्लोक WhatsApp पर भेजें', href: '/daily-verse' },
   { label: 'पंचांग', description: 'दैनिक वैदिक काल व ऋतु', href: '/panchang' },
   { label: 'अवधारणाएँ', description: 'मुख्य दार्शनिक विचार', href: '/concepts' },
-  { label: 'विषय', description: 'जीवन और साधना के विषय', href: '/topics' },
+  { label: 'विषय', description: 'जीवन और साधना के विषय', href: '/wisdom-for-life' },
   { label: 'पात्र', description: 'कथाओं के प्रमुख चरित्र', href: '/characters' },
   { label: 'स्थान', description: 'पवित्र और ऐतिहासिक स्थल', href: '/locations' },
   { label: 'कालखंड', description: 'समयरेखा और परंपरा', href: '/timelines' },

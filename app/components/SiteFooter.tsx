@@ -108,7 +108,7 @@ export function SiteFooter() {
               <Link href="/guidance" className="transition hover:text-saffron-700 font-medium text-saffron-700 dark:text-saffron-300">
                 शास्त्रीय मार्गदर्शन (Life Guidance)
               </Link>
-              <Link href="/topics" className="transition hover:text-saffron-700">
+              <Link href="/wisdom-for-life" className="transition hover:text-saffron-700">
                 जीवन स्थितियाँ (Life Situations)
               </Link>
               <Link href="/daily-verse" className="transition hover:text-saffron-700">

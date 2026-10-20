@@ -1,6 +1,7 @@
 import { scriptureCatalog } from '@/data/scripture-meta';
 import { concepts } from '@/data/concepts';
 import { topics } from '@/data/topics';
+import { topicHref } from '@/lib/topic-links';
 import { characters } from '@/data/characters';
 import { sacredLocations } from '@/data/locations';
 import { dictionary } from '@/data/dictionary';
@@ -240,7 +241,7 @@ function buildMasterIndex(): SearchResultItem[] {
       groupLabel: 'विषय · Topic',
       category: 'topic',
       categoryLabel: 'विषय · Topic',
-      href: `/topics/${t.id}`,
+      href: topicHref(t.id),
       reference: `Topic · ${t.title}`,
       matchingText: `${t.title} (${t.sanskrit ?? ''})`,
       translationExcerpt: t.shortDesc,

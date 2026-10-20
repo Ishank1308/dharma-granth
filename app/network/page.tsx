@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { VerseNetworkClient } from './VerseNetworkClient';
+import { NetworkHero } from './NetworkHero';
 
 export const metadata: Metadata = {
   title: 'Interactive Verse Relationship Engine & Knowledge Graph · Dharma Granth',
@@ -27,9 +28,12 @@ export default function VerseNetworkPage() {
     <main id="main" className="min-h-screen pb-16 pt-4">
       <Suspense
         fallback={
-          <div className="mx-auto max-w-6xl px-4 py-16 text-center text-sm text-dharma-muted">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-saffron-500 border-t-transparent" />
-            <p className="mt-3">Loading Verse Knowledge Graph...</p>
+          <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 space-y-8">
+            <NetworkHero />
+            <div className="py-8 text-center text-sm text-dharma-muted">
+              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-saffron-500 border-t-transparent" />
+              <p className="mt-3">Loading Verse Knowledge Graph...</p>
+            </div>
           </div>
         }
       >

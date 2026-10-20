@@ -37,7 +37,7 @@ const KEY_PAGES = [
   '/practice/',
   '/concepts/',
   '/dictionary/',
-  '/topics/',
+  '/wisdom-for-life/',
   '/characters/',
   '/festivals/',
   '/rituals/',
@@ -164,8 +164,13 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
 let chaptersChecked = 0;
 let inlined = 0;
 let splitChapters = 0;
+// Alias ids (data/scripture-aliases.ts) are 301s in public/_redirects, not pages, even when a data file exists.
+const ALIASES = new Set(
+  [...readFileSync(join(ROOT, 'data/scripture-aliases.ts'), 'utf8').matchAll(/^\s*'?([\w-]+)'?:\s*'[\w-]+',/gm)].map((m) => m[1]),
+);
 for (const file of readdirSync(SOURCE).filter((f) => f.endsWith('.json'))) {
   const id = file.replace(/\.json$/, '');
+  if (ALIASES.has(id)) continue;
   let source;
   try {
     source = JSON.parse(readFileSync(join(SOURCE, file), 'utf8'));

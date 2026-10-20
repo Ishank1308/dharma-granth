@@ -38,9 +38,8 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
-  const params = getAllScriptures().map(s => ({ id: s.id }));
-  params.push({ id: 'yogavasistha' });
-  return params;
+  // The old 'yogavasistha' spelling is a 301 in public/_redirects, not a page.
+  return getAllScriptures().map(s => ({ id: s.id }));
 }
 
 export function generateMetadata({ params }: PageProps): Metadata {

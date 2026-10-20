@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { topicHref, WISDOM_INDEX_HREF } from '@/lib/topic-links';
 import { Compass, BookOpen, Sparkles, ArrowRight } from 'lucide-react';
 import { getConceptDetail } from '@/data/concept-details';
 import type {
@@ -97,7 +98,7 @@ export function VerseRelatedSection({
               <span>जीवन व कार्यक्षेत्र में अनुप्रयोग (Practical Applications)</span>
             </h2>
             <Link
-              href="/topics"
+              href={WISDOM_INDEX_HREF}
               className="inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-saffron-700 transition hover:text-saffron-800 dark:text-saffron-400"
             >
               <span>सभी विषय</span>
@@ -109,7 +110,7 @@ export function VerseRelatedSection({
             {topics.map((topic) => (
               <Link
                 key={topic.id}
-                href={`/topics/${topic.id}`}
+                href={topicHref(topic.id)}
                 className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-saffron-300 hover:shadow-md"
               >
                 <div

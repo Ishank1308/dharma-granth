@@ -1,5 +1,6 @@
 import { dictionary } from '@/data/dictionary';
 import { topics } from '@/data/topics';
+import { topicHref } from '@/lib/topic-links';
 import { concepts } from '@/data/concepts';
 
 export interface KeywordTarget {
@@ -12,7 +13,7 @@ export interface KeywordTarget {
 /**
  * Resolves a scripture keyword tag into the most relevant internal destination:
  * 1. Philosophical dictionary term (/dictionary/[id])
- * 2. Life topic / thematic guide (/topics/[id])
+ * 2. Life topic / thematic guide (its /wisdom-for-life page)
  * 3. Metaphysical concept graph (/concepts#[id])
  * 4. General dictionary search fallback (/dictionary?q=...)
  */
@@ -45,7 +46,7 @@ export function resolveKeywordTarget(rawKeyword: string): KeywordTarget {
   );
   if (topic) {
     return {
-      href: `/topics/${topic.id}`,
+      href: topicHref(topic.id),
       type: 'topic',
       label: topic.title,
       tooltip: `विषय: ${topic.title} — जीवन दर्शन व व्यावहारिक मार्गदर्शन`,

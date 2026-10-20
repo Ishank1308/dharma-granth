@@ -35,7 +35,7 @@ interface LifeSituation {
 const situations: LifeSituation[] = [
   {
     id: 'stress',
-    topicHref: '/topics/stress-anxiety',
+    topicHref: '/wisdom-for-life/stress-and-worry/',
     category: 'peace',
     titleHi: 'तनाव व चिंता',
     titleEn: 'Stress and worry',
@@ -46,7 +46,7 @@ const situations: LifeSituation[] = [
   },
   {
     id: 'fear',
-    topicHref: '/topics/stress-anxiety',
+    topicHref: '/wisdom-for-life/stress-and-worry/',
     category: 'peace',
     titleHi: 'भय व असुरक्षा',
     titleEn: 'Fear',
@@ -57,7 +57,7 @@ const situations: LifeSituation[] = [
   },
   {
     id: 'anger',
-    topicHref: '/topics/anger-jealousy',
+    topicHref: '/wisdom-for-life/anger/',
     category: 'peace',
     titleHi: 'क्रोध व आवेश',
     titleEn: 'Anger',
@@ -68,7 +68,7 @@ const situations: LifeSituation[] = [
   },
   {
     id: 'grief',
-    topicHref: '/topics/grief-death',
+    topicHref: '/wisdom-for-life/grief-and-loss/',
     category: 'harmony',
     titleHi: 'शोक व विछोह',
     titleEn: 'Grief',
@@ -79,7 +79,7 @@ const situations: LifeSituation[] = [
   },
   {
     id: 'duty',
-    topicHref: '/topics/career-workplace-ethics',
+    topicHref: '/wisdom-for-life/skill-in-work/',
     category: 'duty',
     titleHi: 'कर्तव्य व धर्मसंकट',
     titleEn: 'Duty',
@@ -90,7 +90,7 @@ const situations: LifeSituation[] = [
   },
   {
     id: 'self-control',
-    topicHref: '/topics/discipline-habit-formation',
+    topicHref: '/wisdom-for-life/discipline/',
     category: 'duty',
     titleHi: 'आत्म-संयम व नियम',
     titleEn: 'Self-control',
@@ -101,7 +101,7 @@ const situations: LifeSituation[] = [
   },
   {
     id: 'focus',
-    topicHref: '/topics/student-life',
+    topicHref: '/wisdom-for-life/discipline/',
     category: 'duty',
     titleHi: 'एकाग्रता व ध्यान',
     titleEn: 'Focus',
@@ -112,7 +112,7 @@ const situations: LifeSituation[] = [
   },
   {
     id: 'devotion',
-    topicHref: '/topics/relationships-marriage',
+    topicHref: '/wisdom-for-life/relationships/',
     category: 'harmony',
     titleHi: 'भक्ति व समर्पण',
     titleEn: 'Devotion',
@@ -123,7 +123,7 @@ const situations: LifeSituation[] = [
   },
   {
     id: 'knowledge',
-    topicHref: '/topics/student-life',
+    topicHref: '/wisdom-for-life/discipline/',
     category: 'harmony',
     titleHi: 'ज्ञान व विवेक',
     titleEn: 'Knowledge',
@@ -134,7 +134,7 @@ const situations: LifeSituation[] = [
   },
   {
     id: 'relationships',
-    topicHref: '/topics/relationships-marriage',
+    topicHref: '/wisdom-for-life/relationships/',
     category: 'harmony',
     titleHi: 'संबंध व सद्भाव',
     titleEn: 'Relationships',
