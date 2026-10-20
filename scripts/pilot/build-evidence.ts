@@ -84,7 +84,7 @@ q.push('## Canonical problems (protected fields: not edited)', '');
 q.push(
   '1. **Ramcharitmanas (3 units, review-only).** The stored `sanskrit` field mixes the original with a Hindi gloss, and `translation`, `hindi` and `wordMeaning` hold unrelated or repeated lines. No draft was written. Needs a fresh, verified source for the text.',
   '2. **Chandogya 6.8.7 transliteration.** The stored IAST field is not IAST (it has Harvard-Kyoto style artefacts such as `{\\m+}`). The field is protected, so it was left as is.',
-  '3. **Devi Mahatmya Devi Stuti block.** The stored record merges 22 separate stanzas under one number (labelled 5.77), and the standard "citirupena" stanza appears to be missing before the next record (5.81). Needs checking against an edition and, if confirmed, a canonical correction.',
+  '3. **Devi Mahatmya Devi Stuti block.** The stored record merges 22 separate stanzas under one number (labelled 5.77), and the next record, the "citirupena" stanza, is numbered 5.81 although it precedes 5.81 in the standard text. The numbering needs checking against an edition.',
   '4. **Brihadaranyaka (not selected).** "अहं ब्रह्मास्मि" is stored as a whole verse in several positions (1:1, 2:4, 3:5, 4:4, 5:4).',
   '5. **Vishnu Purana references.** The dataset uses a running chapter index and its own verse numbering; the edition numbers of the three pilot units are unverified. Hindi and English meanings in these units belonged to other verses.',
   '6. **Chandogya, Katha, Devi and Vishnu Purana chapter numbers** in the dataset are running indexes, not the texts\' own chapter numbers (the pilot labels use the text\'s own).',

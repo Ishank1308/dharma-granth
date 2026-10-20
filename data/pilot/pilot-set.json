@@ -285,7 +285,7 @@
       "risk": "Forcing psychological analysis into hymnody.",
       "reviewer": "Devi Mahatmya editor",
       "traditionalCommentary": "Not stored.",
-      "observation": "The stored record is a block of 22 stanzas (21 \"yā devī sarvabhūteṣu\" refrains and a closing verse) under one number, but its Hindi and English cover only the shakti stanza. The next record is 5.81, so the standard \"citirūpeṇa\" stanza appears to be missing from the block (verify against an edition). The explanation field is a short English note. The stored science field says physics recognizes that all forces are expressions of field symmetries and applies that to the refrain: a forced scientific analogy for a devotional hymn, the over-reach the standard forbids."
+      "observation": "The stored record is a block of 22 stanzas (21 \"yā devī sarvabhūteṣu\" refrains and a closing verse) under one number, but its Hindi and English cover only the shakti stanza. The \"citirūpeṇa\" stanza follows as a separate record numbered 5.81, although it precedes 5.81 in the standard text, so the block's numbering needs checking against an edition. The explanation field is a short English note. The stored science field says physics recognizes that all forces are expressions of field symmetries and applies that to the refrain: a forced scientific analogy for a devotional hymn, the over-reach the standard forbids."
     },
     {
       "id": "vinayapatrika-1",
