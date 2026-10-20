@@ -1767,6 +1767,12 @@ body::after {
         .reveal-seq [data-reveal='3'] {
             animation-range: entry 120px entry 280px;
         }
+        /* FadeUpOnView (motion/primitives.tsx): one section rising on its own timeline. */
+        .fade-up-on-view {
+            animation: reveal-rise var(--ease-out-quint) both;
+            animation-timeline: view();
+            animation-range: entry 0px entry 200px;
+        }
     }
 }
 

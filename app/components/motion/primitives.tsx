@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion, type HTMLMotionProps, type Variants } from 'framer-motion';
+import { motion, type HTMLMotionProps } from 'framer-motion';
 import type { HTMLAttributes, ReactNode } from 'react';
 
 /**
@@ -38,23 +38,6 @@ export const SPRINGS = {
  */
 export const REVEAL_SEQUENCE = 'reveal-seq';
 
-const FADE_UP_DISTANCE = 24;
-const FADE_DURATION = 0.55;
-
-const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: FADE_UP_DISTANCE },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: FADE_DURATION, ease: EASE_OUT_QUINT },
-  },
-};
-
-const reducedVariants: Variants = {
-  hidden: { opacity: 1, y: 0 },
-  visible: { opacity: 1, y: 0 },
-};
-
 /**
  * Fade-up on mount. Use for hero headlines, single elements that should
  * settle in once on load. A CSS animation (`.fade-up-in` in globals.css),
@@ -80,29 +63,24 @@ export function FadeUp({
 }
 
 /**
- * Fade-up that fires when the element enters the viewport. Use for
- * sections far down the page that should "wake up" on scroll.
+ * Fade-up as the element scrolls into view. Use for sections far down the page that should "wake up" on scroll.
+ *
+ * CSS on the element's own scroll timeline (`.fade-up-on-view` in globals.css), like the verse reveal: the
+ * framer `whileInView` version server-rendered its section at opacity:0 until hydration (the previous/next
+ * chapter links were hidden that way). Visible without scroll-timeline support or under reduced motion.
+ * `delay` and `amount` are kept for call-site compatibility; a scroll timeline has no delay.
  */
 export function FadeUpOnView({
   children,
-  delay = 0,
   className,
-  amount = 0.25,
+  delay: _delay,
+  amount: _amount,
   ...rest
-}: { children: ReactNode; delay?: number; amount?: number } & HTMLMotionProps<'div'>) {
-  const reduce = useReducedMotion();
+}: { children: ReactNode; delay?: number; amount?: number } & HTMLAttributes<HTMLDivElement>) {
   return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount }}
-      variants={reduce ? reducedVariants : fadeUpVariants}
-      transition={{ delay }}
-      {...rest}
-    >
+    <div className={className ? `fade-up-on-view ${className}` : 'fade-up-on-view'} {...rest}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
