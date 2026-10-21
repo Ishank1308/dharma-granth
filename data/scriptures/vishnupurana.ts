@@ -23917,7 +23917,7 @@ export const vishnupurana: Scripture = {
           sanskrit: 'ततः स्ववर्णधर्मा ये विप्रादीनाम् उदाहृताः तान् कुर्वीत पुमाञ् जीवेन् निजधर्मार्जनैस् तथा',
           transliteration: 'tataḥ svavarṇadharmā ye viprādīnām udāhṛtāḥ tān kurvīta pumāñ jīven nijadharmārjanais tathā',
           translation: 'commits suicide, or when one destroys himself by water,',
-          hindi: 'हे द्विज! एक दिन कार्तिकी पूर्णिमाको उपवास कर उन दोनों पति-पत्ियोंने श्रीगंगाजीमें एक साथ ही स्नान करनेके अनन्तर बाहर आनेपर एक पाखण्डीको सामने आता देखा',
+          hindi: 'हे द्विज! एक दिन कार्तिकी पूर्णिमाको उपवास कर उन दोनों पति-पत्नियोंने श्रीगंगाजीमें एक साथ ही स्नान करनेके अनन्तर बाहर आनेपर एक पाखण्डीको सामने आता देखा',
           explanation: 'commits suicide, or when one destroys himself by water,',
           keywords: [],
         },

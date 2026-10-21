@@ -8927,7 +8927,7 @@ export const lingapuran: Scripture = {
           sanskrit: 'मत्कृतेन च वर्णेन संकल्पः कृष्ण उच्यते तत्राहं कालसंकाशः कालो लोकप्रकालकः',
           transliteration: 'matkṛtena ca varṇena saṃkalpaḥ kṛṣṇa ucyate tatrāhaṃ kālasaṃkāśaḥ kālo lokaprakālakaḥ',
           translation: '"O lord, lord of the chiefs of Devas, O multiformed, O Mahesvara, O husband of Uma, O great god, honoured by all, obeisance to you.',
-          hindi: 'बाईसवें द्वापरके अन्तमें जब शुष्मायण नामक व्यास द्रक्ष्यन्ित मा कलौ तस्मिन् भवं चैव हलायुधम्। होंगे, उस समय मैं महामुनि \' भीम \' नामसे हल धारण किये तत्रापि मम ते पुत्रा भविष्यन्ति सुधार्मिकाः ॥ १०५  काशीमें अवतार ग्रहण करूँगा, जहाँपर उस कलिमें इन्द्रसहित भल्लवी मधुपिङ्गश्च श्वेतकेतुः कुशस्तथा। सभी देवतागण अस्त्ररूपमें हल धारण करनेवाले हलायुध प्राप्य माहेश्वरं योगं तेऽपि ध्यानपरायणाः',
+          hindi: 'बाईसवें द्वापरके अन्तमें जब शुष्मायण नामक व्यास द्रक्ष्यन्ति मा कलौ तस्मिन् भवं चैव हलायुधम्। होंगे, उस समय मैं महामुनि \' भीम \' नामसे हल धारण किये तत्रापि मम ते पुत्रा भविष्यन्ति सुधार्मिकाः ॥ १०५  काशीमें अवतार ग्रहण करूँगा, जहाँपर उस कलिमें इन्द्रसहित भल्लवी मधुपिङ्गश्च श्वेतकेतुः कुशस्तथा। सभी देवतागण अस्त्ररूपमें हल धारण करनेवाले हलायुध प्राप्य माहेश्वरं योगं तेऽपि ध्यानपरायणाः',
           explanation: '"O lord, lord of the chiefs of Devas, O multiformed, O Mahesvara, O husband of Uma, O great god, honoured by all, obeisance to you.',
           keywords: [],
         },
