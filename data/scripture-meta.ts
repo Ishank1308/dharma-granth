@@ -582,7 +582,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     title: "Narada Bhakti Sutras",
     titleSanskrit: "नारद भक्ति सूत्र",
     titleIast: "Nārada Bhakti Sūtra",
-    category: "other",
+    category: "sutra",
     description:
       "84 sutras by sage Narada — the most systematic philosophical treatise on bhakti in the Sanskrit tradition. Defines bhakti as para-prema (supreme love), enumerates eleven forms of the highest devotion, and culminates in the declaration that bhakti requires no external proof: it is self-luminous and self-evident. The gopis of Vraja are the supreme exemplars.",
     totalChapters: 3,
@@ -597,7 +597,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     title: "Shandilya Bhakti Sutras",
     titleSanskrit: "शाण्डिल्य भक्ति सूत्र",
     titleIast: "Śāṇḍilya Bhakti Sūtra",
-    category: "other",
+    category: "sutra",
     description:
       "100 sutras by sage Shandilya — the philosophical companion to the Narada Bhakti Sutras. Defines bhakti as para-anurakti Ishvare (supreme attachment to Ishvara). Examines the relationship between bhakti, jnana, and karma; diagnoses obstacles to bhakti (wrong company, attachment to unworthy objects); and prescribes the complete practice: arpaṇa (offering all actions) and smarana (continuous remembrance).",
     totalChapters: 3,
@@ -612,7 +612,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     title: "Patanjali Yoga Sutras",
     titleSanskrit: "पातञ्जल योगसूत्र",
     titleIast: "Pātañjala Yogasūtra",
-    category: "other",
+    category: "sutra",
     description:
       "195 sutras in four padas: Samadhi, Sadhana, Vibhuti and Kaivalya. Patanjali's concise manual of classical Yoga, from yogas citta-vritti-nirodhah (yoga is the stilling of the movements of the mind) to the eight limbs and kaivalya.",
     totalChapters: 4,
@@ -711,7 +711,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     title: "Vivekachudamani",
     titleSanskrit: "विवेकचूडामणि",
     titleIast: "Vivekacūḍāmaṇi",
-    category: "other",
+    category: "vedanta",
     description:
       "Attributed to Adi Shankaracharya, containing 580 verses on the discrimination between the real (Self) and the unreal (world).",
     author: "Adi Shankaracharya",
@@ -725,7 +725,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     title: "Brahma Sutra",
     titleSanskrit: "ब्रह्मसूत्र",
     titleIast: "Brahmasūtra",
-    category: "other",
+    category: "sutra",
     description:
       "The foundational text of Vedanta philosophy by Vyasa, consisting of 555 aphorisms (sutras) systematizing the Upanishads.",
     author: "Vyasa",
@@ -739,12 +739,12 @@ export const scriptureCatalog: ScriptureMeta[] = [
     title: "Durga Saptashati",
     titleSanskrit: "दुर्गासप्तशती",
     titleIast: "Durgā Saptaśatī",
-    category: "other",
+    category: "shakta",
     description:
-      "Also known as Devi Mahatmyam, a 700-verse hymn glorifying Goddess Durga from the Markandeya Purana.",
+      "Also known as Devi Mahatmyam, this 700-verse scripture of the Shakta tradition forms chapters 81–93 of the Markandeya Purana.",
     totalChapters: 13,
     totalVerses: 700,
-    tags: ["Devi","Durga","Chandi","Shakti"],
+    tags: ["Shakta","Devi","Durga","Chandi","Shakti"],
     hasData: true,
   },
   {
@@ -752,7 +752,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     title: "Yoga Vasishtha",
     titleSanskrit: "योगवासिष्ठ",
     titleIast: "Yoga Vāsiṣṭha",
-    category: "other",
+    category: "vedanta",
     description:
       "The Yoga Vasistha Maharamayana (~32,000 verses, 6 Prakaranas) — the most philosophically sophisticated non-dual text in Sanskrit. Sage Vasistha instructs Prince Rama through vivid narrative parables: teaching that the world is consciousness projecting itself, and that jivan-mukti (liberation while living) is attainable through self-enquiry (vichara) and the dissolution of vasanas.",
     totalChapters: 6,
@@ -957,6 +957,21 @@ export const categories = [
     description: "Philosophical teachings on Brahman and Atman",
   },
   {
+    id: "vedanta",
+    label: "Vedanta Scriptures",
+    description: "Scriptures exploring the Self, non-duality, and liberation",
+  },
+  {
+    id: "sutra",
+    label: "Sutra Scriptures",
+    description: "Concise teachings preserved in aphoristic form",
+  },
+  {
+    id: "shakta",
+    label: "Shakta Scriptures",
+    description: "Sacred texts honoring the Divine Goddess as supreme reality",
+  },
+  {
     id: "itihasa",
     label: "Itihasa",
     description: "Epics and historical narratives",
@@ -976,10 +991,5 @@ export const categories = [
     id: "stotra",
     label: "Stotras",
     description: "Hymns of praise, devotion, and daily prayers",
-  },
-  {
-    id: "other",
-    label: "Other Texts",
-    description: "Philosophical, devotional, and spiritual works",
   },
 ] satisfies readonly ScriptureCategoryMeta[];

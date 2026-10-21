@@ -1,6 +1,9 @@
 export const scriptureCategories = [
   'veda',
   'upanishad',
+  'vedanta',
+  'sutra',
+  'shakta',
   'purana',
   'itihasa',
   'smriti',

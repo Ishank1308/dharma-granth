@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { getBookExplanation } from '@/data/book-explanations';
 import { categories } from '@/data/scripture-meta';
+import type { LibraryItem } from '@/lib/library';
 import { getAllScriptures, getLibraryCounts } from '@/data/scriptures';
 import { getLibraryFacts } from '@/lib/library-server';
 import { FadeUp } from '@/app/components/motion/primitives';
@@ -10,7 +10,7 @@ import { ScriptureLibraryClient } from '@/app/components/ScriptureLibraryClient'
 import { publishedTotals } from '@/lib/ashtavakra';
 
 function loadLibrary() {
-  return getAllScriptures().map((scripture) => {
+  const catalogue = getAllScriptures().map((scripture) => {
     const held = getLibraryCounts(scripture.id);
     const catalogueVerses = scripture.canonicalTotalVerses ?? scripture.totalVerses;
     return {
@@ -22,6 +22,29 @@ function loadLibrary() {
       facts: getLibraryFacts(scripture.id),
     };
   });
+
+  // Ashtavakra Gita has its own reviewed reading route and chapter data rather
+  // than the standard seeded-scripture JSON, so include its measured totals here.
+  const ashtavakraTotals = publishedTotals();
+  const ashtavakra: LibraryItem = {
+    id: 'ashtavakra',
+    title: 'Ashtavakra Gita',
+    titleSanskrit: 'अष्टावक्र गीता',
+    titleIast: 'Aṣṭāvakra Gītā',
+    category: 'vedanta',
+    description: 'A dialogue on the nature of the Self and liberation. Some chapters remain under editorial review.',
+    totalChapters: ashtavakraTotals.chapters,
+    totalVerses: ashtavakraTotals.verses,
+    tags: ['Advaita', 'Nondualism', 'Self', 'Liberation'],
+    hasData: ashtavakraTotals.verses > 0,
+    isCurated: true,
+    facts: {
+      languages: { sa: true, hi: true, en: true },
+      hindiCommentary: false,
+    },
+  };
+
+  return [...catalogue, ashtavakra];
 }
 
 export const metadata: Metadata = {
@@ -76,24 +99,6 @@ export default function ScripturesPage() {
           </FadeUp>
         </div>
       </div>
-
-      <section className="max-w-6xl mx-auto px-6 pt-8">
-        <Link
-          href="/ashtavakra/"
-          className="flex flex-col gap-2 rounded-2xl border border-dharma-border bg-dharma-card p-5 transition hover:border-saffron-700 sm:flex-row sm:items-center sm:justify-between"
-        >
-          <div>
-            <p lang="hi" className="font-devanagari text-sm font-semibold text-saffron-800 dark:text-saffron-200">अष्टावक्र गीता</p>
-            <h2 className="font-serif text-2xl font-bold text-dharma-text">Ashtavakra Gita</h2>
-            <p className="mt-1 max-w-2xl text-sm leading-relaxed text-dharma-muted">
-              A separate reading, not one of the catalogue cards below. {publishedTotals().chapters} prakaranas and {publishedTotals().verses} verses are published. Chapters 19 and 20 stay review-required.
-            </p>
-          </div>
-          <span className="inline-flex min-h-11 items-center text-sm font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-200">
-            Open the reading
-          </span>
-        </Link>
-      </section>
 
       <ScriptureLibraryClient scriptures={scriptures} categories={categories} loadError={loadError} />
     </main>

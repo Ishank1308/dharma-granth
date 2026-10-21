@@ -1,7 +1,6 @@
 'use client';
 
-import { useRef, useState, type PointerEvent } from 'react';
-import Link from 'next/link';
+import { useRef, type PointerEvent } from 'react';
 import {
   motion,
   useMotionValue,
@@ -9,25 +8,25 @@ import {
   useTransform,
   useReducedMotion,
 } from 'framer-motion';
-import { BookOpen, Sparkles, Flame, ArrowRight } from 'lucide-react';
-import { triggerTactileFeedback } from '@/lib/haptics';
+import { Sparkles, Flame } from 'lucide-react';
 
 export function Realistic3DGranth({
   className = '',
+  compact = false,
   title = 'श्रीमद्भगवद्गीता',
+  englishTitle,
   subTitle = 'The Divine Song of Wisdom',
   verseCount = 'श्लोक पुस्तकालय में',
-  href = '/scripture/bhagavadgita',
 }: {
   className?: string;
+  compact?: boolean;
   title?: string;
+  englishTitle?: string;
   subTitle?: string;
   verseCount?: string;
-  href?: string;
 }) {
   const reduce = useReducedMotion();
   const bookRef = useRef<HTMLDivElement>(null);
-  const [isOpen, setIsOpen] = useState(false);
 
   // Normalised pointer position (-0.5 to 0.5)
   const px = useMotionValue(0);
@@ -68,13 +67,6 @@ export function Realistic3DGranth({
     py.set(0);
   };
 
-  const toggleBook = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const next = !isOpen;
-    setIsOpen(next);
-    triggerTactileFeedback('medium', next ? 'templeChime' : 'softTap');
-  };
-
   return (
     <div
       className={`relative inline-block perspective-[1400px] select-none ${className}`}
@@ -92,10 +84,10 @@ export function Realistic3DGranth({
                 transformStyle: 'preserve-3d',
               }
         }
-        className="group relative cursor-pointer"
+        className="group relative rounded-2xl"
+        role="img"
+        aria-label={`3D book cover for ${title}`}
         whileHover={{ scale: 1.03, y: -8 }}
-        whileTap={{ scale: 0.98 }}
-        onClick={toggleBook}
       >
         {/* Dynamic Cast Shadow below book */}
         <motion.div
@@ -106,7 +98,7 @@ export function Realistic3DGranth({
 
         {/* 3D Book Object Container */}
         <div
-          className="relative w-64 sm:w-72 h-84 sm:h-96 rounded-r-2xl rounded-l-md shadow-2xl transition-all duration-500"
+          className={`relative ${compact ? 'h-[22.5rem] w-[15rem] rounded-r-2xl rounded-l-md' : 'h-84 w-64 rounded-r-2xl rounded-l-md sm:h-96 sm:w-72'} shadow-2xl transition-all duration-500`}
           style={{
             transformStyle: 'preserve-3d',
             background: 'linear-gradient(135deg, #7c2d12 0%, #451a03 50%, #1c0a00 100%)',
@@ -119,7 +111,7 @@ export function Realistic3DGranth({
         >
           {/* Realistic Spine Ridges (Left edge) */}
           <div
-            className="absolute left-0 top-0 bottom-0 w-6 rounded-l-md"
+            className={`absolute left-0 top-0 bottom-0 ${compact ? 'w-6' : 'w-6'} rounded-l-md`}
             style={{
               background: 'linear-gradient(90deg, #1c0a00 0%, #7c2d12 50%, #451a03 90%, rgba(0,0,0,0.4) 100%)',
               borderRight: '1px solid rgba(251, 191, 36, 0.2)',
@@ -144,7 +136,7 @@ export function Realistic3DGranth({
 
           {/* Saffron Silk Bookmark Ribbon */}
           <motion.div
-            className="absolute -top-3 left-16 w-5 h-28 bg-gradient-to-b from-saffron-600 via-amber-500 to-saffron-700 shadow-lg"
+            className={`absolute -top-3 ${compact ? 'left-16 h-28 w-5' : 'left-16 h-28 w-5'} bg-gradient-to-b from-saffron-600 via-amber-500 to-saffron-700 shadow-lg`}
             style={{
               clipPath: 'polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%)',
               transform: 'translateZ(18px)',
@@ -155,7 +147,7 @@ export function Realistic3DGranth({
 
           {/* Book Front Cover Plate */}
           <div
-            className="relative h-full w-full pl-8 pr-5 py-6 flex flex-col justify-between overflow-hidden rounded-r-2xl"
+            className={`relative flex h-full w-full flex-col justify-between overflow-hidden rounded-r-2xl ${compact ? 'py-4 pl-5 pr-3' : 'px-5 py-6 pl-8'}`}
             style={{
               transform: 'translateZ(12px)',
               transformStyle: 'preserve-3d',
@@ -171,80 +163,51 @@ export function Realistic3DGranth({
             />
 
             {/* Embossed Gold Border Pattern */}
-            <div className="absolute inset-4 rounded-xl border border-amber-400/40 p-1 pointer-events-none">
+            <div className={`pointer-events-none absolute rounded-xl border border-amber-400/40 p-1 ${compact ? 'inset-2' : 'inset-4'}`}>
               <div className="h-full w-full rounded-lg border border-amber-300/20" />
             </div>
 
             {/* Top Badge: OM & Sacred Aura */}
             <div className="relative z-10 flex items-center justify-between">
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 border border-amber-400/30 text-[11px] font-bold text-amber-200 backdrop-blur-sm">
-                <Sparkles className="w-3 h-3 text-amber-300" />
+              <div className={`flex items-center rounded-full border border-amber-400/30 bg-black/40 font-bold text-amber-200 backdrop-blur-sm ${compact ? 'gap-1.5 px-2.5 py-1.5 text-xs' : 'gap-1.5 px-2.5 py-1 text-[11px]'}`}>
+                <Sparkles className={`${compact ? 'h-3 w-3' : 'h-3 w-3'} text-amber-300`} />
                 <span>पवित्र ग्रंथ</span>
               </div>
               <span lang="sa" className="font-devanagari text-2xl font-bold text-amber-300/80 drop-shadow">ॐ</span>
             </div>
 
             {/* Center: Embossed Sacred Title */}
-            <div className="relative z-10 text-center my-auto py-4">
+            <div className={`relative z-10 my-auto text-center ${compact ? 'py-2' : 'py-4'}`}>
               <motion.div
                 className="inline-block"
                 style={{ transform: 'translateZ(24px)' }}
               >
-                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-stone-950 font-bold shadow-lg">
-                  <Flame className="w-6 h-6 text-stone-950" />
+                <div className={`mx-auto flex items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 font-bold text-stone-950 shadow-lg ${compact ? 'mb-2 h-11 w-11' : 'mb-3 h-12 w-12'}`}>
+                  <Flame className={`${compact ? 'h-6 w-6' : 'h-6 w-6'} text-stone-950`} />
                 </div>
-                <h3 lang="sa" className="font-devanagari text-2xl sm:text-3xl font-extrabold tracking-wide bg-gradient-to-r from-amber-100 via-amber-300 to-amber-100 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(251,191,36,0.5)]">
+                <h3 lang="sa" className={`bg-gradient-to-r from-amber-100 via-amber-300 to-amber-100 bg-clip-text font-devanagari font-extrabold tracking-wide text-transparent drop-shadow-[0_2px_10px_rgba(251,191,36,0.5)] ${compact ? 'text-2xl leading-relaxed' : 'text-2xl sm:text-3xl'}`}>
                   {title}
                 </h3>
-                <p className="mt-1.5 text-xs sm:text-sm font-serif italic text-amber-200/90 tracking-wide">
+                {englishTitle && (
+                  <p lang="en" className={`mt-1 font-serif font-bold leading-tight text-amber-100 drop-shadow ${compact ? 'text-sm sm:text-base' : 'text-base sm:text-lg'}`}>
+                    {englishTitle}
+                  </p>
+                )}
+                <p className={`font-serif italic tracking-wide text-amber-200/90 ${compact ? 'mt-1.5 text-xs' : 'mt-1.5 text-xs sm:text-sm'}`}>
                   {subTitle}
                 </p>
-                <div className="mt-3 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-amber-400/80 to-transparent" />
+                <div className={`mx-auto h-px bg-gradient-to-r from-transparent via-amber-400/80 to-transparent ${compact ? 'mt-1.5 w-10' : 'mt-3 w-16'}`} />
               </motion.div>
             </div>
 
             {/* Bottom Meta & Action */}
-            <div className="relative z-10 flex items-center justify-between text-xs text-amber-200/80">
-              <span lang="hi" className="font-devanagari">{verseCount}</span>
-              <span className="inline-flex items-center gap-1 font-semibold text-amber-300 group-hover:text-white transition">
-                <span>खोलें</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-              </span>
+            <div className={`relative z-10 flex items-center justify-center text-center text-amber-200/90 ${compact ? 'text-xs' : 'text-sm'}`}>
+              <span lang="en" className="font-bold">{verseCount}</span>
             </div>
           </div>
         </div>
       </motion.div>
 
-      {/* Floating Action Modal / Quick Peek when clicked */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 15 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          className="absolute top-full mt-4 left-1/2 -translate-x-1/2 z-50 w-72 sm:w-80 rounded-2xl border border-amber-300/40 bg-stone-950/95 p-5 text-white shadow-2xl backdrop-blur-xl"
-        >
-          <div className="flex items-start justify-between mb-2">
-            <h4 lang="sa" className="font-devanagari font-bold text-amber-300 text-lg">{title}</h4>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="text-stone-400 hover:text-white text-xs px-2 py-0.5 rounded-full bg-white/10"
-            >
-              ✕
-            </button>
-          </div>
-          <p className="text-xs text-stone-300 leading-relaxed mb-4">
-            प्रत्येक श्लोक का मूल संस्कृत, देवनागरी, अन्वय, विशुद्ध सरल हिंदी भावार्थ और वैज्ञानिक संदर्भ।
-          </p>
-          <div className="flex gap-2">
-            <Link
-              href={href}
-              className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-saffron-600 to-amber-600 px-3.5 py-2 text-xs font-bold text-white shadow-lg hover:from-saffron-500 hover:to-amber-500"
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              पढ़ना शुरू करें
-            </Link>
-          </div>
-        </motion.div>
-      )}
     </div>
   );
 }
