@@ -10,7 +10,7 @@ import { MoodCompass } from '@/app/components/MoodCompass';
 import { getMoodCompass } from '@/lib/mood-compass';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
-import { LazyExperience3D, LazySadhanaPreview } from '@/app/components/LazyHomeSections';
+import { LazySadhanaPreview } from '@/app/components/LazyHomeSections';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
 import { SiteFooter } from '@/app/components/SiteFooter';
 import { getTodayWisdom } from '@/data/daily-wisdom-engine';
@@ -75,13 +75,10 @@ export default function HomePage() {
         {/* 7. Browse by life situation */}
         <LifeSituationsSection />
 
-        {/* 8. Touch & Contemplate: 3D Sacred Experience System */}
-        <LazyExperience3D gitaCountLabel="18 अध्याय · 700 श्लोक" />
-
-        {/* 9. Practice tools preview */}
+        {/* 8. Practice tools preview */}
         <LazySadhanaPreview />
 
-        {/* 10. Trust, sourcing and methodology */}
+        {/* 9. Trust, sourcing and methodology */}
         <HomeTrustStrip />
       </main>
       <SiteFooter />
