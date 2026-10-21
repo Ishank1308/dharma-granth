@@ -259,7 +259,7 @@ export function PrivacyLockBanner({
                 <HardDrive className="w-3.5 h-3.5 text-rose-600" /> स्टोरेज चेतावनी
               </span>
               <p className="text-dharma-muted">
-                ब्राउज़र हिस्ट्री या कुकीज़ पूरी तरह साफ करने से डेटा मिट सकता है; समय-समय पर बैकअप लें।
+                ब्राउज़र हिस्ट्री या कुकीज़ पूर्णतः साफ़ करने से डेटा मिट सकता है; समय-समय पर बैकअप लें।
               </p>
             </div>
           </div>
@@ -370,7 +370,7 @@ export function PrivacyLockBanner({
 
           {pinError && (
             <p className="text-xs text-rose-600 font-bold">
-              गलत पिन! कृपया पुनः प्रयास करें। (Incorrect PIN)
+              पिन अशुद्ध है। कृपया पुनः प्रयास करें। (Incorrect PIN)
             </p>
           )}
         </div>

@@ -208,6 +208,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const ashtavakraTotals = publishedTotals();
+  const archiveVerses = getRealVerseCount() + ashtavakraTotals.verses;
+
   return (
     <html lang="hi" suppressHydrationWarning>
       <head>
@@ -248,11 +251,11 @@ export default function RootLayout({
             Skip to main content
           </a>
           <SiteNav
-            libraryVerses={getRealVerseCount()}
+            libraryVerses={archiveVerses}
             gitaChapters={getLibraryCounts("bhagavadgita").chapters}
             gitaVerses={getLibraryCounts("bhagavadgita").verses}
-            ashtavakraChapters={publishedTotals().chapters}
-            ashtavakraVerses={publishedTotals().verses}
+            ashtavakraChapters={ashtavakraTotals.chapters}
+            ashtavakraVerses={ashtavakraTotals.verses}
           />
           <div id="main-content" tabIndex={-1} className="outline-none pb-16 lg:pb-0">
             <ErrorBoundary name="Main Content">

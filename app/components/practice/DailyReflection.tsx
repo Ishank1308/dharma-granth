@@ -23,7 +23,7 @@ import {
 /** Rotating contemplative prompts for introspection throughout the year. */
 const PROMPTS: { en: string; hi: string }[] = [
   { en: 'Where did I act without expecting a result today?', hi: 'आज मैंने कहाँ फल की चिंता किए बिना कर्म किया?' },
-  { en: 'What am I holding on to that I could release?', hi: 'मैं किस चीज़ को पकड़े हुए हूँ जिसे छोड़ सकता/सकती हूँ?' },
+  { en: 'What am I holding on to that I could release?', hi: 'मैं किस वस्तु को पकड़े हुए हूँ जिसे छोड़ सकता/सकती हूँ?' },
   { en: 'Who tested my patience — and what did that teach me?', hi: 'किसने मेरे धैर्य की परीक्षा ली — और उससे क्या सीखा?' },
   { en: 'What did I read or hear today that felt true?', hi: 'आज क्या पढ़ा या सुना जो सत्य लगा?' },
   { en: 'Where was I generous today? Where could I have been?', hi: 'आज मैं कहाँ उदार रहा/रही? कहाँ हो सकता/सकती थी?' },
@@ -31,7 +31,7 @@ const PROMPTS: { en: string; hi: string }[] = [
   { en: 'When did I feel most still today?', hi: 'आज मैं सबसे अधिक शांत कब था/थी?' },
   { en: 'What duty am I avoiding, and why?', hi: 'मैं किस कर्तव्य से बच रहा/रही हूँ, और क्यों?' },
   { en: 'What would I do differently if no one were watching?', hi: 'अगर कोई न देख रहा होता तो मैं क्या अलग करता/करती?' },
-  { en: 'What am I attached to that is changing?', hi: 'मैं किस बदलती हुई चीज़ से आसक्त हूँ?' },
+  { en: 'What am I attached to that is changing?', hi: 'मैं किस परिवर्तनशील वस्तु से आसक्त हूँ?' },
   { en: 'Whose wisdom guided me today?', hi: 'आज किसके ज्ञान ने मेरा मार्गदर्शन किया?' },
   { en: 'What did anger cost me this week?', hi: 'इस सप्ताह क्रोध ने मुझसे क्या छीना?' },
   { en: 'Where did I see the same Self in another?', hi: 'मैंने दूसरे में वही आत्मा कहाँ देखी?' },

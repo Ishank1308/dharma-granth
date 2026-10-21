@@ -97,7 +97,7 @@ const DISCOVERY_QUESTIONS: QuestionDef[] = [
   {
     key: 'format',
     en: '5. What format do you prefer?',
-    hi: '५. आपको किस रूप में अध्ययन पसंद है?',
+    hi: '५. आपको किस रूप में अध्ययन प्रिय है?',
     options: [
       { value: 'reading', en: 'Reading text with simple explanations', hi: 'पढ़ना (सरल भावार्थ सहित)' },
       { value: 'audio', en: 'Listening to chanted pronunciation', hi: 'सुनना (मंत्र उच्चारण सहित)' },

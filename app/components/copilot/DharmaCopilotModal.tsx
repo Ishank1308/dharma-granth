@@ -70,7 +70,7 @@ export const CURATED_KNOWLEDGE_BASE: CuratedQnA[] = [
   {
     id: 'burnout',
     question: 'How do I overcome career burnout, exhaustion, and chronic performance pressure?',
-    questionHi: 'कर्म में थकान, कार्य-दबाव और परिणाम की चिंता से मुक्ति कैसे मिले?',
+    questionHi: 'कर्म में श्रान्ति, कार्य के भार और परिणाम की चिंता से मुक्ति कैसे मिले?',
     category: 'Work & Nishkama Karma',
     categoryHi: 'कर्मयोग व कार्य-संतुलन',
     shlokaRef: 'Bhagavad Gita 2.47',

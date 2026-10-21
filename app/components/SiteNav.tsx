@@ -123,7 +123,7 @@ const desktopDiscoveryItems = [
 
 const desktopPersonalItems = [
   { label: 'मेरा डैशबोर्ड', href: '/dashboard' },
-  { label: 'यात्रा शुरू करें', href: '/start' },
+  { label: 'यात्रा आरम्भ करें', href: '/start' },
   { label: 'पठन यात्राएँ', href: '/journeys' },
   { label: 'स्वाध्याय योजनाएँ', href: '/learn/plans' },
   { label: 'कथा-दर्शन', href: '/story' },
@@ -760,7 +760,7 @@ export function SiteNav({
                 className="hidden min-[1800px]:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-4 py-2 text-sm font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-saffron-500/30"
               >
                 <Flame className="h-4 w-4" aria-hidden="true" />
-                पढ़ना शुरू करें
+                पठन आरम्भ करें
               </Link>
 
               {/* ── Mobile Compact Controls (≥ 44px Touch Targets) ─────── */}

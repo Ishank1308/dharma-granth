@@ -130,7 +130,7 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
         </section>
       )}
 
-      <Section id="modern" title="आज की जिंदगी से उदाहरण">
+      <Section id="modern" title="आज के जीवन से उदाहरण">
         <p className="ash-meta mb-2">यह एक आधुनिक संपादकीय उदाहरण है, श्लोक का अर्थ या अनुवाद नहीं।</p>
         <p lang="hi" className="ash-hindi">{v.modernExampleHindi}</p>
         <p lang="hi" className="ash-hindi mt-3"><strong>आज की पीढ़ी के लिए संदेश:</strong> {v.messageForTodayHindi}</p>

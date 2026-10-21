@@ -10,7 +10,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { filterCuratedFragment } from "../data/hi-commentary/publish";
-import { isBoilerplateField } from "../data/hi-commentary/quality";
+import { isBoilerplateField, isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-commentary/quality";
 import { aiQueueScriptureIds, approvedAiEntries } from "../data/hi-commentary/_ai-queue";
 import type { HiCommentaryFragment } from "../data/hi-commentary/_types";
 
@@ -29,6 +29,22 @@ async function safeWrite(filePath: string, data: string) {
       await new Promise((resolve) => setTimeout(resolve, 100));
     }
   }
+}
+
+/** Each verse's Hindi translation, keyed "chapter:verse", from the published book. */
+function verseHindiByKey(scriptureId: string): Map<string, string> {
+  const out = new Map<string, string>();
+  const file = path.resolve("public/data/scriptures-full", `${scriptureId}.json`);
+  if (!fs.existsSync(file)) return out;
+  const book = JSON.parse(fs.readFileSync(file, "utf8")) as {
+    chapters?: Array<{ number: number | string; verses?: Array<{ number: number | string; hindi?: string }> }>;
+  };
+  for (const ch of book.chapters ?? []) {
+    for (const v of ch.verses ?? []) {
+      if (v.hindi) out.set(`${Number(ch.number)}:${Number(v.number)}`, v.hindi);
+    }
+  }
+  return out;
 }
 
 async function main(): Promise<void> {
@@ -91,6 +107,20 @@ async function main(): Promise<void> {
         if (science && !prev.science) next.science = science;
         if (next.explanation || next.science || next.lifeLesson) curated[key] = next;
       }
+    }
+
+    // Research notes that only repeat the verse's translation plus a stock sentence.
+    if (TRANSLATION_ECHO_SCRIPTURES.has(name)) {
+      const hindi = verseHindiByKey(name);
+      let hidden = 0;
+      for (const [key, entry] of Object.entries(curated)) {
+        if (!isTranslationEchoNote(entry.science, hindi.get(key))) continue;
+        const { science: _filler, ...kept } = entry;
+        hidden++;
+        if (kept.explanation || kept.lifeLesson) curated[key] = kept;
+        else delete curated[key];
+      }
+      if (hidden) console.log(`${name}: ${hidden} filler research notes left out`);
     }
 
     const entryCount = Object.keys(curated).length;

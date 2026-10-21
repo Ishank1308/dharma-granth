@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { scriptureCatalog } from '../data/scripture-meta';
 
 interface ChapterInfo {
   id: number;
@@ -8,62 +9,58 @@ interface ChapterInfo {
   verseCount: number;
 }
 
-interface ScriptureInfo {
-  id: string;
-  chapters: ChapterInfo[];
-  verseCount: number;
-  realChapterCount: number;
-  hasData: boolean;
-}
-
 interface Stats {
   realVerseCount: number;
   realChapterCount: number;
   realScriptureCount: number;
 }
 
-async function main() {
-  const srcDir = path.resolve('public/data/scriptures');
-  const outDir = path.resolve('public/data');
-  fs.mkdirSync(outDir, { recursive: true });
+const ROOT = path.resolve(process.cwd(), 'public', 'data', 'scriptures-full');
+const OUT = path.resolve(process.cwd(), 'public', 'data');
 
-  const files = fs
-    .readdirSync(srcDir)
-    .filter((f) => f.endsWith('.json'));
+function readBookChapters(id: string): ChapterInfo[] {
+  const bookDir = path.join(ROOT, id);
+  const manifestPath = path.join(bookDir, 'manifest.json');
+  if (!fs.existsSync(manifestPath)) return [];
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')) as {
+    chapters?: Array<{
+      number?: number | string;
+      title?: string;
+      titleSanskrit?: string;
+      verseCount?: number;
+    }>;
+  };
+  return (manifest.chapters ?? []).flatMap((chapter) => {
+    const chapterId = typeof chapter.number === 'number' ? chapter.number : Number(chapter.number);
+    if (!Number.isInteger(chapterId) || chapterId < 1) return [];
+    return [{
+      id: chapterId,
+      title: chapter.title || `अध्याय ${chapterId}`,
+      titleSanskrit: chapter.titleSanskrit,
+      verseCount: chapter.verseCount ?? 0,
+    }];
+  });
+}
 
+function main(): void {
   const chapters: Record<string, ChapterInfo[]> = {};
   const stats: Stats = { realVerseCount: 0, realChapterCount: 0, realScriptureCount: 0 };
 
-  for (const file of files) {
-    const id = path.basename(file, '.json');
-    const filePath = path.join(srcDir, file);
-    const data = JSON.parse(fs.readFileSync(filePath, 'utf8')) as {
-      chapters?: Array<{ id: number; title: string; titleSanskrit?: string; verses?: unknown[] }>;
-    };
-    const chapterInfos: ChapterInfo[] = (data.chapters || []).map((ch) => ({
-      id: ch.id,
-      title: ch.title,
-      titleSanskrit: ch.titleSanskrit,
-      verseCount: ch.verses?.length ?? 0,
-    }));
-    chapters[id] = chapterInfos;
-
-    const verseCount = chapterInfos.reduce((sum, ch) => sum + ch.verseCount, 0);
-    const realChapterCount = chapterInfos.filter((ch) => ch.verseCount > 0).length;
-    const hasData = realChapterCount > 0;
-
+  for (const scripture of scriptureCatalog) {
+    const chapterRows = readBookChapters(scripture.id);
+    chapters[scripture.id] = chapterRows;
+    const verseCount = chapterRows.reduce((sum, chapter) => sum + chapter.verseCount, 0);
+    const realChapterCount = chapterRows.filter((chapter) => chapter.verseCount > 0).length;
     stats.realVerseCount += verseCount;
     stats.realChapterCount += realChapterCount;
-    if (hasData) stats.realScriptureCount += 1;
+    if (realChapterCount > 0) stats.realScriptureCount += 1;
   }
 
-  fs.writeFileSync(path.join(outDir, 'chapters.json'), JSON.stringify(chapters));
-  fs.writeFileSync(path.join(outDir, 'stats.json'), JSON.stringify(stats));
-  console.log(`Wrote chapters.json (${Object.keys(chapters).length} scriptures) and stats.json`);
-  console.log(`Stats: ${JSON.stringify(stats)}`);
+  fs.mkdirSync(OUT, { recursive: true });
+  fs.writeFileSync(path.join(OUT, 'chapters.json'), `${JSON.stringify(chapters, null, 2)}\n`);
+  fs.writeFileSync(path.join(OUT, 'stats.json'), `${JSON.stringify(stats)}\n`);
+  console.log(`Wrote chapter index for ${Object.keys(chapters).length} catalogued scriptures from published manifests.`);
+  console.log(`Published counts: ${JSON.stringify(stats)}`);
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+main();

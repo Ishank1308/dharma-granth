@@ -103,7 +103,7 @@ export function RecentActivityFeed({ recentChapters, notes, highlights, titles }
         id: `hl-${h.scriptureId}-${h.chapterId}-${h.verseId}-${h.createdAt}`,
         type: 'highlight',
         title: `${sTitle} ${h.chapterId}.${h.verseId} रेखांकित`,
-        subtitle: 'पसंदीदा श्लोक रेखांकन',
+        subtitle: 'प्रिय श्लोकों का रेखांकन',
         href: `/scripture/${h.scriptureId}/chapter/${h.chapterId}/verse/${h.verseId}`,
         timestamp: h.createdAt,
         dateStr: formatRelativeDay(h.createdAt),

@@ -45,17 +45,32 @@ function StatusBadge({ item }: { item: LibraryItem }) {
 function LanguageChips({ item }: { item: LibraryItem }) {
   const available = LANGUAGES.filter((l) => item.facts.languages[l.id]);
   return (
-    <ul aria-label="Languages available" className="flex flex-wrap gap-1.5">
-      {available.map((l) => (
-        <li
-          key={l.id}
-          className="rounded-md border border-dharma-border bg-dharma-bg px-2 py-0.5 text-xs font-medium text-dharma-text"
-          lang={l.id === 'en' ? 'en' : l.id}
-          title={l.label}
-        >
-          <span className={l.id === 'en' ? '' : 'font-devanagari'}>{l.native}</span>
-        </li>
-      ))}
+    <ul aria-label="Languages represented in the published verses" className="flex flex-wrap gap-1.5">
+      {available.map((l) => {
+        const coverage = item.facts.languageCoverage;
+        const count = coverage?.[l.id];
+        const percent = coverage && coverage.totalVerses > 0 && count !== undefined
+          ? (count / coverage.totalVerses) * 100
+          : undefined;
+        const percentLabel = percent === undefined
+          ? undefined
+          : percent > 0 && percent < 1 ? '<1%' : `${Math.round(percent)}%`;
+        const coverageText = percentLabel === undefined
+          ? l.label
+          : `${l.label} text in ${percentLabel} of published verses (${count} of ${coverage!.totalVerses})`;
+        return (
+          <li
+            key={l.id}
+            aria-label={coverageText}
+            className="rounded-md border border-dharma-border bg-dharma-bg px-2 py-0.5 text-xs font-medium text-dharma-text"
+            lang={l.id === 'en' ? 'en' : l.id}
+            title={coverageText}
+          >
+            <span className={l.id === 'en' ? '' : 'font-devanagari'}>{l.native}</span>
+            {percentLabel !== undefined && <span className="ml-1 text-[10px] text-dharma-muted">{percentLabel}</span>}
+          </li>
+        );
+      })}
     </ul>
   );
 }

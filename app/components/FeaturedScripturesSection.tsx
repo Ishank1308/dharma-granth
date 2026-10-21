@@ -28,9 +28,9 @@ export function FeaturedScripturesSection() {
   // Fallback to first 6 if any not found
   const displayTexts = featured.length === 6 ? featured : availableScriptures.slice(0, 6);
 
-  const realVerses = getRealVerseCount();
-  const realChapters = getRealChapterCount();
-  const realScriptures = getRealScriptureCount();
+  const archiveVerses = getRealVerseCount() + ashtavakra.verses;
+  const archiveChapters = getRealChapterCount() + ashtavakra.chapters;
+  const archiveScriptures = getRealScriptureCount() + (ashtavakra.verses > 0 ? 1 : 0);
 
   return (
     <section
@@ -54,7 +54,7 @@ export function FeaturedScripturesSection() {
               Featured Scriptures
             </h2>
             <p className="mt-1 max-w-2xl text-sm leading-relaxed text-dharma-muted">
-              The Ashtavakra Gita has its own reading. The other cards are texts in the shared catalogue. A language is listed only when that text’s sample includes it.
+              The Ashtavakra Gita has its own reading. Language labels on the other cards show the share of published verses available in each language.
             </p>
           </div>
 
@@ -71,15 +71,15 @@ export function FeaturedScripturesSection() {
         <dl className="mb-8 flex flex-wrap gap-x-8 gap-y-2 border-y border-dharma-border py-4 text-xs">
           <div className="flex items-baseline gap-2">
             <dt className="text-dharma-muted">Texts with verses:</dt>
-            <dd className="font-bold text-dharma-text">{formatCount(realScriptures)}</dd>
+            <dd className="font-bold text-dharma-text">{formatCount(archiveScriptures)}</dd>
           </div>
           <div className="flex items-baseline gap-2">
             <dt className="text-dharma-muted">Chapters in the library:</dt>
-            <dd className="font-bold text-dharma-text">{formatCount(realChapters)}</dd>
+            <dd className="font-bold text-dharma-text">{formatCount(archiveChapters)}</dd>
           </div>
           <div className="flex items-baseline gap-2">
             <dt className="text-dharma-muted">Verses in the library:</dt>
-            <dd className="font-bold text-dharma-text">{formatCount(realVerses)}</dd>
+            <dd className="font-bold text-dharma-text">{formatCount(archiveVerses)}</dd>
           </div>
         </dl>
 
@@ -128,7 +128,7 @@ export function FeaturedScripturesSection() {
               facts.languages.sa ? { id: 'sa', label: 'संस्कृत' } : null,
               facts.languages.hi ? { id: 'hi', label: 'हिन्दी' } : null,
               facts.languages.en ? { id: 'en', label: 'English' } : null,
-            ].filter((lang): lang is { id: string; label: string } => lang !== null);
+            ].filter((lang): lang is { id: 'sa' | 'hi' | 'en'; label: string } => lang !== null);
             return (
               <Link
                 key={scripture.id}
@@ -157,12 +157,26 @@ export function FeaturedScripturesSection() {
                   </p>
 
                   {/* Language availability */}
-                  <ul aria-label="Languages in the library sample" className="mt-4 flex items-center gap-1.5 text-[11px] font-semibold text-dharma-muted">
-                    {languages.map((lang) => (
-                      <li key={lang.id} lang={lang.id} className="rounded-md border border-dharma-border bg-dharma-bg px-2 py-0.5">
-                        {lang.label}
-                      </li>
-                    ))}
+                  <ul aria-label="Language coverage across published verses" className="mt-4 flex flex-wrap items-center gap-1.5 text-[11px] font-semibold text-dharma-muted">
+                    {languages.map((lang) => {
+                      const coverage = facts.languageCoverage;
+                      const count = coverage?.[lang.id];
+                      const percent = coverage && coverage.totalVerses > 0 && count !== undefined
+                        ? (count / coverage.totalVerses) * 100
+                        : undefined;
+                      const percentLabel = percent === undefined
+                        ? undefined
+                        : percent > 0 && percent < 1 ? '<1%' : `${Math.round(percent)}%`;
+                      const description = percentLabel && coverage && count !== undefined
+                        ? `${lang.label}: ${percentLabel} of published verses (${count} of ${coverage.totalVerses})`
+                        : lang.label;
+                      return (
+                        <li key={lang.id} lang={lang.id} title={description} aria-label={description} className="rounded-md border border-dharma-border bg-dharma-bg px-2 py-0.5">
+                          {lang.label}
+                          {percentLabel && <span className="ml-1 text-[10px]">{percentLabel}</span>}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
 

@@ -121,7 +121,7 @@ export default function ReadingPlansPage() {
             Scripture Reading Plans
           </h1>
           <p className="mt-1 font-devanagari text-xl text-dharma-muted">
-            दबाव-मुक्त, शांत एवं संरचित अध्ययन समय-सारिणी
+            सहज, शांत एवं संरचित अध्ययन समय-सारिणी
           </p>
 
           <p className="mt-3 text-sm sm:text-base leading-relaxed text-dharma-muted max-w-2xl">

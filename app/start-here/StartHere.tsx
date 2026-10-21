@@ -106,7 +106,7 @@ export function StartHere() {
   return (
     <main id="main" className="mx-auto max-w-2xl px-4 py-10 sm:px-6">
       <h1 className="font-serif text-3xl font-bold text-dharma-text">Start Here</h1>
-      <p lang="hi" className="font-devanagari text-lg text-dharma-muted">कहाँ से शुरू करें?</p>
+      <p lang="hi" className="font-devanagari text-lg text-dharma-muted">कहाँ से आरम्भ करें?</p>
       <p className="mt-3 text-sm text-dharma-muted">Four short questions. You can skip them and browse the library instead.</p>
 
       <aside aria-label="What is stored" className="mt-4 rounded-xl border border-dharma-border bg-dharma-card p-4 text-sm text-dharma-muted">

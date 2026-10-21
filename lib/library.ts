@@ -13,8 +13,10 @@ import { normalizeTransliteration } from '@/lib/normalize-search';
 
 /** Facts measured from the published data files at build time (lib/library-server.ts). */
 export interface LibraryFacts {
-  /** Languages with real verse text, sampled from the first chapter shard. */
+  /** Languages with text present in at least one published verse. */
   languages: { sa: boolean; hi: boolean; en: boolean };
+  /** Full-corpus counts, measured across the published chapter shards. */
+  languageCoverage?: { totalVerses: number; sa: number; hi: number; en: number };
   /** A Hindi verse-commentary file exists for this text. */
   hindiCommentary: boolean;
   /** Host of the Sanskrit source (e.g. sanskritdocuments.org). */

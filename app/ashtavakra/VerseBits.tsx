@@ -95,7 +95,7 @@ export function ContinueReading({ chapters }: { chapters: Array<{ number: number
   const p = next.id.split('.');
   return (
     <p className="ash-hindi">
-      {next.started ? 'जहाँ से छोड़ा था:' : 'यहाँ से शुरू करें:'}{' '}
+      {next.started ? 'जहाँ से छोड़ा था:' : 'यहाँ से आरम्भ करें:'}{' '}
       <Link href={`/ashtavakra/${p[0]}/${p[1]}/`} className="ash-link font-bold underline" style={{ color: 'var(--ash-accent)' }}>
         अध्याय {next.chapter.number}, श्लोक {next.id}
       </Link>

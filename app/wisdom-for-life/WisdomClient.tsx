@@ -33,7 +33,7 @@ export function WisdomClient() {
 
   // Quick feelings to immediately jump to scriptural answers
   const quickFeelings = [
-    { label: 'Anxious / Overthinking', labelHi: 'व्याकुल / बेचैन', topicId: 'stress-and-worry' },
+    { label: 'Anxious / Overthinking', labelHi: 'व्याकुल / अशान्त', topicId: 'stress-and-worry' },
     { label: 'Afraid of the Future', labelHi: 'भविष्य का भय', topicId: 'fear-and-courage' },
     { label: 'Burning with Frustration', labelHi: 'क्रोध / अशांति', topicId: 'anger' },
     { label: 'Heartbroken / Bereaved', labelHi: 'शोक / वियोग', topicId: 'grief-and-loss' },

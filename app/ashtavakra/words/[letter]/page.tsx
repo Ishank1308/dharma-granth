@@ -16,7 +16,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const letter = decodeURIComponent(params.letter);
   return {
     title: `शब्द-अन्वेषण: ${letter}`,
-    description: `अष्टावक्र गीता के सत्यापित श्लोकों में ${letter} से शुरू होने वाले पद।`,
+    description: `अष्टावक्र गीता के सत्यापित श्लोकों में ${letter} से आरम्भ होने वाले पद।`,
     alternates: { canonical: `/ashtavakra/words/${encodeURIComponent(letter)}/` },
   };
 }

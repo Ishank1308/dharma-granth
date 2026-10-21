@@ -251,7 +251,7 @@ export function SourcesAndInterpretation({
               </div>
               <div>
                 <label htmlFor="correction-details-textarea" className="font-semibold text-dharma-text block mb-1">
-                  विवरण एवं सही पाठ (Details & Suggested Correction):
+                  विवरण एवं शुद्ध पाठ (Details & Suggested Correction):
                 </label>
                 <textarea
                   id="correction-details-textarea"

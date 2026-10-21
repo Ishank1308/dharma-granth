@@ -231,7 +231,7 @@ export function HeroSection() {
 
         {/* Clear Value Statement */}
         <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-amber-50/95">
-          A calm, ad-free scripture library with original canonical Sanskrit, authentic Hindi explanation, English translation, and verified scholarly citations.
+          A calm, ad-free scripture library with Sanskrit texts, Hindi and English translations where available, and clearly labeled explanations with source notes.
         </p>
 
         {/* Prominent Semantic Scripture Search */}

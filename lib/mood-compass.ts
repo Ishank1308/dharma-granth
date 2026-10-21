@@ -31,7 +31,7 @@ export interface Mood {
 }
 
 const MOODS: Array<{ id: string; en: string; hi: string; topics: string[] }> = [
-  { id: 'restless', en: 'Restless', hi: 'बेचैन मन', topics: ['stress-and-worry', 'uncertainty'] },
+  { id: 'restless', en: 'Restless', hi: 'अशान्त मन', topics: ['stress-and-worry', 'uncertainty'] },
   { id: 'overthinking', en: 'Overthinking', hi: 'अति-चिंतन', topics: ['concentration', 'attachment'] },
   { id: 'torn', en: 'Torn', hi: 'दुविधा', topics: ['duty-and-decision-making'] },
   { id: 'discipline', en: 'Seeking Discipline', hi: 'अनुशासन की खोज', topics: ['discipline', 'self-control'] },

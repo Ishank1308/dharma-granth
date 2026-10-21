@@ -151,7 +151,7 @@ export function PwaInstallBanner() {
               >
                 <p className="font-semibold flex items-center gap-1 mb-1">
                   <Share className="h-3.5 w-3.5" />
-                  <span>Safari में जोड़ने का तरीका:</span>
+                  <span>Safari में जोड़ने की विधि:</span>
                 </p>
                 <ol className="list-decimal list-inside space-y-0.5 text-[11px] leading-relaxed">
                   <li>नीचे Safari मेनू में <strong>Share</strong> (साझा) बटन दबाएँ।</li>

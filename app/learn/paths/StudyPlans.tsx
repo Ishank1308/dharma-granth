@@ -16,7 +16,7 @@ import { useStudyProgress } from '@/lib/useStudyProgress';
 
 const TODAY_LABEL = {
   resume: { hi: 'आज का चरण', en: "Today's step" },
-  start: { hi: 'शुरुआत का चरण', en: 'A place to start' },
+  start: { hi: 'आरम्भिक चरण', en: 'A place to start' },
   next: { hi: 'अगला खुला क्रम', en: 'Next open order' },
 } as const;
 

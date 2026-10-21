@@ -108,7 +108,7 @@ export default function ScripturePage({ params }: PageProps) {
   const chapterPreviews = Array.from(chapterPreviewsById.values()).sort(
     (a, b) => a.id - b.id,
   );
-  const catalogueChapters = meta.totalChapters;
+  const publishedChapterCount = chapterPreviews.length;
   const languageFacts = getLibraryFacts(meta.id).languages;
   const inLanguage = [
     languageFacts.sa ? 'sa' : null,
@@ -205,7 +205,7 @@ export default function ScripturePage({ params }: PageProps) {
         <ScriptureContents
           scriptureId={meta.id}
           chapters={chapterPreviews}
-          totalChapters={catalogueChapters}
+          totalChapters={publishedChapterCount}
         />
       </div>
     </main>
