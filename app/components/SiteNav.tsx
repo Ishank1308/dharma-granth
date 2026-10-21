@@ -743,8 +743,9 @@ export function SiteNav({
               {/* Desktop Language Toggle */}
               <LanguageToggle className="hidden lg:inline-flex" />
 
-              {/* Desktop Segmented Theme Toggle */}
-              <div className="hidden lg:inline-block">
+              {/* Desktop Segmented Theme Toggle: only where the bar has room for it
+                  beside the full nav; below that the single cycle button (2. Theme Button) stands in. */}
+              <div className="hidden min-[1800px]:inline-block">
                 <ThemeToggle />
               </div>
 
@@ -756,7 +757,7 @@ export function SiteNav({
               {/* Desktop CTA */}
               <Link
                 href="/scripture/bhagavadgita"
-                className="hidden 2xl:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-4 py-2 text-sm font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-saffron-500/30"
+                className="hidden min-[1800px]:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-4 py-2 text-sm font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-saffron-500/30"
               >
                 <Flame className="h-4 w-4" aria-hidden="true" />
                 पढ़ना शुरू करें
@@ -783,7 +784,7 @@ export function SiteNav({
               <button
                 type="button"
                 onClick={handleThemeCycle}
-                className="lg:hidden flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-dharma-border/80 bg-dharma-bg/90 text-dharma-text transition active:scale-95 hover:border-saffron-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                className="min-[1800px]:hidden flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-dharma-border/80 bg-dharma-bg/90 text-dharma-text transition active:scale-95 hover:border-saffron-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                 aria-label={`थीम बदलें (${THEME_LABELS[theme]})`}
                 title={`थीम: ${THEME_LABELS[theme]}`}
               >
