@@ -12,6 +12,7 @@ import { FullChapterVerses } from '@/app/components/FullChapterVerses';
 import { ChapterOrientation } from '@/app/components/ChapterOrientation';
 import { ChapterSummaryBox } from '@/app/components/ChapterSummaryBox';
 import { getGitaChapterSummary } from '@/data/gita-chapter-summaries';
+import { getChapterOrientation } from '@/data/chapter-orientation';
 import { ChapterKeyboardNav } from '@/app/components/ChapterKeyboardNav';
 import { ChapterCompletion } from '@/app/components/ChapterCompletion';
 import { ChapterVisitRecorder } from '@/app/components/ChapterVisitRecorder';
@@ -26,7 +27,7 @@ import {
 } from '@/lib/read-seeded-chapters';
 import type { InitialChapter } from '@/app/components/FullChapterVerses';
 import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
-import { ArrowLeft, ArrowRight, BookOpen, Layers, MessageCircle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, ChevronDown, Layers, MessageCircle } from 'lucide-react';
 import { ShareButton } from '@/app/components/ShareButton';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
@@ -237,6 +238,9 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           source: seeded.source as InitialChapter['source'],
         }
       : undefined;
+  const chapterSummary = meta.id === 'bhagavadgita' ? getGitaChapterSummary(chapter.id) : undefined;
+  const hasChapterContext = Boolean(chapterSummary || getChapterOrientation(meta.id, chapter.id));
+  const firstVerseAnchor = pageVerses.length > 0 ? `#verse-${pageVerses[0].number}` : '#chapter-text';
 
   // Only send the current chapter part's existing, approved editorial links
   // to the reader. No recommendations are inferred or generated here.
@@ -314,7 +318,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(chapterJsonLd, breadcrumbJsonLd)) }}
       />
-      <ChapterHero className="bg-gradient-to-br from-saffron-900 via-saffron-700 to-orange-600 text-white py-16">
+      <ChapterHero className="bg-gradient-to-br from-saffron-900 via-saffron-700 to-orange-600 py-8 text-white sm:py-10">
         <div className="relative max-w-4xl mx-auto px-6">
           <Link href={`/scripture/${meta.id}`} className="inline-flex min-h-[44px] items-center gap-2 text-white/70 hover:text-white text-sm transition mb-2">
             <ArrowLeft className="w-4 h-4" />
@@ -332,8 +336,16 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             </div>
           </div>
           {chapter.summary ? (
-            <p className="text-base opacity-80 max-w-3xl leading-relaxed">{chapter.summary}</p>
+            <p className="line-clamp-2 max-w-3xl text-base leading-relaxed opacity-80">{chapter.summary}</p>
           ) : null}
+          {chapter.verseCount > 0 && (
+            <a
+              href={firstVerseAnchor}
+              className="mt-5 inline-flex min-h-[48px] items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-bold text-saffron-900 shadow-sm transition hover:bg-amber-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-saffron-800"
+            >
+              Begin reading <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          )}
           <div className="mt-5 flex flex-wrap items-center gap-3">
             {chapter.verseCount > 0 ? (
               <>
@@ -374,19 +386,20 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         </div>
       </ChapterHero>
 
-      <div className="relative max-w-4xl mx-auto px-4 py-8 sm:px-6 md:py-12">
+      <div className="relative max-w-4xl mx-auto px-4 py-5 sm:px-6 md:py-7">
         <AmbientOrbs />
         <div className="relative">
-        {(!part || part.part === 1) && meta.id === 'bhagavadgita' && getGitaChapterSummary(chapter.id) && (
-          <ChapterSummaryBox summary={getGitaChapterSummary(chapter.id)!} allHref={`/scripture/${meta.id}/summary`} />
-        )}
-        {(!part || part.part === 1) && (
-          <ChapterOrientation
-            scriptureId={meta.id}
-            chapterId={chapter.id}
-            verseCount={chapter.verseCount}
-            firstVerseHref={`/scripture/${meta.id}/chapter/${chapter.id}/verse/1`}
-          />
+        {(!part || part.part === 1) && hasChapterContext && (
+          <details className="group mb-5 overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card">
+            <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-3 px-5 py-3 text-sm font-semibold text-dharma-text transition hover:bg-dharma-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-saffron-500 [&::-webkit-details-marker]:hidden">
+              <span>About this chapter <span lang="hi" className="font-devanagari font-normal text-dharma-muted">· अध्याय परिचय</span></span>
+              <ChevronDown className="h-5 w-5 shrink-0 text-dharma-muted transition-transform group-open:rotate-180" aria-hidden="true" />
+            </summary>
+            <div className="border-t border-dharma-border px-4 pb-1 pt-5 sm:px-5">
+              {chapterSummary && <ChapterSummaryBox summary={chapterSummary} allHref={`/scripture/${meta.id}/summary`} />}
+              <ChapterOrientation scriptureId={meta.id} chapterId={chapter.id} verseCount={chapter.verseCount} />
+            </div>
+          </details>
         )}
         {part && parts && (
           <>
@@ -401,18 +414,20 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         {/* With initialChapter, the reader's server render is the plain
             VerseText list (every verse in the HTML); it swaps in the
             interactive cards once hydrated. */}
-        <FullChapterVerses
-          scriptureId={params.id}
-          category={meta.category}
-          chapterId={chapter.id}
-          curatedVerseIds={[]}
-          scriptureTitle={meta.title}
-          chapterTitle={chapter.title || `अध्याय ${chapter.id}`}
-          basePath={process.env.NEXT_PUBLIC_BASE_PATH || ''}
-          autoLoad
-          initialChapter={initialChapter}
-          relatedTeachingsByVerse={relatedTeachingsByVerse}
-        />
+        <div id="chapter-text" className="scroll-mt-24">
+          <FullChapterVerses
+            scriptureId={params.id}
+            category={meta.category}
+            chapterId={chapter.id}
+            curatedVerseIds={[]}
+            scriptureTitle={meta.title}
+            chapterTitle={chapter.title || `अध्याय ${chapter.id}`}
+            basePath={process.env.NEXT_PUBLIC_BASE_PATH || ''}
+            autoLoad
+            initialChapter={initialChapter}
+            relatedTeachingsByVerse={relatedTeachingsByVerse}
+          />
+        </div>
 
         {part && parts && (
           <nav className="mt-10 flex items-stretch justify-between gap-4" aria-label="इस अध्याय के भाग">

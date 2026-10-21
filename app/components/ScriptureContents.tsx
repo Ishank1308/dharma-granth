@@ -30,7 +30,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
   const progress = visit ? Math.min(100, Math.round((visit.chapterId / Math.max(chapterTotal, visit.chapterId)) * 100)) : 0;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-7">
       {visit && (
         <section aria-labelledby="continue-reading-heading" className="rounded-3xl border border-saffron-200/80 bg-gradient-to-br from-saffron-50 to-amber-50 p-5 shadow-sm dark:border-saffron-900/50 dark:from-saffron-950/30 dark:to-amber-950/20 sm:p-6">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
@@ -68,7 +68,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
           )}
         </div>
 
-        <ol className="mt-6 grid gap-3 sm:grid-cols-2">
+        <ol className="mt-4 grid gap-3 sm:grid-cols-2">
           {chapters.map((chapter, index) => (
             <motion.li
               key={chapter.id}
