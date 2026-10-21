@@ -69,6 +69,10 @@ export function ExplainLine({ scriptureId, chapterId, verseNumber, lines, scopeI
   const verified = selected ? entries?.find((e) => norm(lineText).includes(norm(e.line))) : undefined;
   const partial = Boolean(selected && norm(selected.text) !== norm(lineText));
 
+  // Only verses with reviewed line explanations get the buttons; elsewhere every
+  // button would open a dialog that only says no explanation exists.
+  if (!entries?.length) return null;
+
   return (
     <div className="mt-4 border-t border-amber-700/20 pt-3 text-center">
       <p className="text-sm font-semibold text-dharma-muted">

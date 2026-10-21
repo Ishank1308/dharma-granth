@@ -6,9 +6,11 @@ import { ContinueReading } from '@/app/components/ContinueReading';
 import { HomeDiscoveryBento } from '@/app/components/HomeDiscoveryBento';
 import { VerseOfTheDayCompact } from '@/app/components/VerseOfTheDayCompact';
 import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
+import { MoodCompass } from '@/app/components/MoodCompass';
+import { getMoodCompass } from '@/lib/mood-compass';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
-import { LazyExperience3D, LazySadhanaPreview } from '@/app/components/LazyHomeSections';
+import { LazySadhanaPreview } from '@/app/components/LazyHomeSections';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
 import { SiteFooter } from '@/app/components/SiteFooter';
 import { getTodayWisdom } from '@/data/daily-wisdom-engine';
@@ -55,23 +57,23 @@ export default function HomePage() {
         {/* 2. Continue reading, or a beginner path when there is no history */}
         <ContinueReading />
 
-        {/* 3. Verse of the day, compact */}
-        <VerseOfTheDayCompact />
-
-        {/* 3.5. Daily discovery, Panchang, local resume and a gentle reading rhythm */}
-        <HomeDiscoveryBento initialWisdom={getTodayWisdom()} />
-
-        {/* 4. Browse by scripture category */}
-        <CategoryExploreSection />
-
-        {/* 5. Browse by life situation */}
-        <LifeSituationsSection />
-
-        {/* 6. Recommended scriptures */}
+        {/* 3. Make the scripture library the first clear browse destination */}
         <FeaturedScripturesSection />
 
-        {/* 7. Touch & Contemplate: 3D Sacred Experience System */}
-        <LazyExperience3D gitaCountLabel="18 अध्याय · 700 श्लोक" />
+        {/* 4. A short daily reading, followed by alternative discovery paths */}
+        <VerseOfTheDayCompact />
+
+        {/* 4b. Daily discovery, Panchang, local resume and a gentle reading rhythm */}
+        <HomeDiscoveryBento initialWisdom={getTodayWisdom()} />
+
+        {/* 5. Mood compass: curated verses for how the reader feels right now */}
+        <MoodCompass moods={getMoodCompass()} />
+
+        {/* 6. Browse by scripture category */}
+        <CategoryExploreSection />
+
+        {/* 7. Browse by life situation */}
+        <LifeSituationsSection />
 
         {/* 8. Practice tools preview */}
         <LazySadhanaPreview />

@@ -7031,7 +7031,7 @@ export const narasimhapuran: Scripture = {
           sanskrit: 'तपोबलेन देवेशं नारायणम् अजं मुने द्रष्टुम् इच्छाम्य् अहं तत्र उपायं तं वदस्व मे',
           transliteration: 'tapobalena deveśaṃ nārāyaṇam ajaṃ mune draṣṭum icchāmy ahaṃ tatra upāyaṃ taṃ vadasva me',
           translation: 'the god of the gods, without penance. Hence, do penance to meet him.',
-          hindi: 'भरद्वाज शृणुष्वैतत् पुरावृत्तं वदामि ते। सर्वपापहरं तद्धि चरितं शांतनोर्नृणाम्॥ बभूव शांतनुर्भक्तो नरसिंहतनौ पुरा। नरसिंहस्य देवस्य निर्माल्यं तेन लङ्ितम्।',
+          hindi: 'भरद्वाज शृणुष्वैतत् पुरावृत्तं वदामि ते। सर्वपापहरं तद्धि चरितं शांतनोर्नृणाम्॥ बभूव शांतनुर्भक्तो नरसिंहतनौ पुरा। नरसिंहस्य देवस्य निर्माल्यं तेन लङ्घितम्।',
           explanation: 'the god of the gods, without penance. Hence, do penance to meet him.',
           keywords: [],
         },

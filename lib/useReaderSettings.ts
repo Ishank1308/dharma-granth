@@ -43,7 +43,8 @@ export const DEFAULT_READER_SETTINGS: ReaderSettings = {
   translationSize: 'md',
   lineSpacing: 'relaxed',
   readingWidth: 'standard',
-  showTransliteration: true,
+  // IAST is opt-in: off by default to keep the shloka uncluttered.
+  showTransliteration: false,
   showHindi: true,
   showEnglish: true,
   preferredLanguage: 'all',

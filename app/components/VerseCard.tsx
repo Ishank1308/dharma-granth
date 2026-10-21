@@ -42,6 +42,8 @@ import { speakSanskritTerm } from '@/lib/sacred-soundscape';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { showSabdaPeek } from '@/lib/prana-capsule-store';
 import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';
+import type { VerseInsight } from '@/lib/verse-insights';
+import { AI_COMMENTARY_LABEL } from '@/lib/ai-labels';
 import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
 import type { ReadingDepth } from '@/lib/reading-depth';
 import { ActionMenu } from '@/app/components/primitives/ActionMenu';
@@ -63,6 +65,10 @@ export interface VerseCardData {
   translationSource?: 'ai';
   hindi?: string;
   hindiSource?: 'ai';
+  /** This verse's Hindi covers a range ("15-17") translated together in the edition. */
+  hindiRange?: string;
+  /** The Hindi for this verse is stored on that verse (the first of its range). */
+  hindiSeeVerse?: number | string;
   wordMeaning?: string;
   padaccheda?: string;
   speaker?: string;
@@ -72,7 +78,7 @@ export interface VerseCardData {
 
 /** Commentary resolved by the parent (Hindi commentary file first, then verse fields). */
 export interface VerseMeaning {
-  /** AI-drafted and reviewer-approved (not hand-written); shown with a label. */
+  /** AI-drafted and editor-approved (not hand-written); labelled per lib/ai-labels. */
   isAi?: boolean;
   explanation?: string;
   explanationIsHi: boolean;
@@ -159,6 +165,8 @@ interface Props {
   isReciting?: boolean;
   /** Callback to trigger recitation of this verse */
   onPlayRecitation?: () => void;
+  /** Reviewed मर्म line and जीवन प्रसंग chips, when this verse has them. */
+  insight?: VerseInsight;
   /** Opens the desktop split-pane Svādhyāya workbench */
   onOpenSvadhyaya?: (tab: 'concept' | 'parallel' | 'manana', data?: unknown) => void;
   /** Whether this verse is active during recitation or jump */
@@ -264,6 +272,7 @@ export function VerseCard({
   versePageHref,
   isReciting,
   onPlayRecitation,
+  insight,
   onOpenSvadhyaya,
   isActive,
 }: Props) {
@@ -407,7 +416,7 @@ export function VerseCard({
   const explanationIsHi = meaning.explanationIsHi || isMostlyDevanagari(explanation);
   const scienceIsHi = meaning.scienceIsHi || isMostlyDevanagari(science);
   const lessonIsHi = meaning.lessonIsHi || isMostlyDevanagari(lesson);
-  const showHindi = Boolean(v.hindi && layers.hindi);
+  const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null) && layers.hindi);
   const showEnglish = Boolean(v.translation && layers.english);
 
   const tabs = useMemo(() => {
@@ -759,6 +768,21 @@ export function VerseCard({
           </div>
         )}
 
+        {/* ── मर्म: the reviewed one-line core shift, unless the curated मर्म block below covers it ── */}
+        {insight?.marma && !chantingMode && !(literaryMeta.isCurated && depth !== 'read') && (
+          <figure className="mb-5 border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
+            <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
+              <span lang="hi">मर्म</span>
+              <span aria-hidden="true">·</span>
+              <span lang="en">The Core Shift</span>
+              <ContentLabelBadge kind="reflection" />
+            </figcaption>
+            <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text md:text-xl">
+              {insight.marma}
+            </blockquote>
+          </figure>
+        )}
+
         {/* ── Sanskrit on a manuscript leaf ───────────────────── */}
         {lines.length > 0 && (
           <div className={`verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8 transition-colors ${
@@ -1100,10 +1124,21 @@ export function VerseCard({
                           }`}>
                             <div className="mb-2 flex items-center justify-between gap-2">
                               <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                                हिंदी अनुवाद · Hindi Translation
+                                {v.hindiRange
+                                  ? `श्लोक ${toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिंदी अनुवाद · Hindi for verses ${v.hindiRange.replace('-', '–')}`
+                                  : 'हिंदी अनुवाद · Hindi Translation'}
                               </p>
                               <ContentLabelBadge kind="literal" />
                             </div>
+                            {!v.hindi && v.hindiSeeVerse != null && (
+                              // The edition translates this verse together with earlier ones; the passage is stored once.
+                              <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-muted">
+                                इस श्लोक का अर्थ श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
+                                <a href={`#verse-${v.hindiSeeVerse}`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                                  देखें श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} ↑
+                                </a>
+                              </p>
+                            )}
                             <p lang="hi" className="font-devanagari text-base leading-loose text-dharma-text md:text-[17px]">
                               {v.hindi && <GlossaryText text={v.hindi} />}
                               {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
@@ -1166,10 +1201,10 @@ export function VerseCard({
                           {meaning.isAi && (
                             <p
                               className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300"
-                              title="AI द्वारा तैयार और संपादक द्वारा समीक्षित"
+                              title={`${AI_COMMENTARY_LABEL.detailHi} ${AI_COMMENTARY_LABEL.detail}`}
                             >
                               <Sparkles className="h-3 w-3" aria-hidden="true" />
-                              AI व्याख्या · समीक्षित
+                              {AI_COMMENTARY_LABEL.hi}
                             </p>
                           )}
                         </div>
@@ -1314,6 +1349,23 @@ export function VerseCard({
             </div>
               <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">{literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}</p>
               </Collapsible>
+            )}
+
+            {insight && insight.situations.length > 0 && depth !== 'read' && (
+              <div className="mt-4 flex flex-wrap items-center gap-1.5">
+                <span lang="hi" className="mr-1 text-[11px] font-semibold text-dharma-muted">जीवन प्रसंग:</span>
+                {insight.situations.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={s.href}
+                    className="inline-flex items-center gap-1 rounded-full border border-indigo-200/80 bg-indigo-50/70 px-2.5 py-0.5 text-[11px] font-semibold text-indigo-800 transition hover:border-indigo-400 hover:bg-indigo-100 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-200 dark:hover:bg-indigo-500/20"
+                  >
+                    <span lang="en">{s.en}</span>
+                    <span aria-hidden="true" className="opacity-50">·</span>
+                    <span lang="hi">{s.hi}</span>
+                  </Link>
+                ))}
+              </div>
             )}
 
             {depth === 'study' && v.keywords && v.keywords.length > 0 && (

@@ -11,7 +11,7 @@ import { ReviewRequiredNotice } from '@/app/components/study/ReviewRequiredNotic
 import { CONNECTIONS, verseKey } from '@/data/study-content';
 import { VerseRelatedSection } from '@/app/components/VerseRelatedSection';
 import { VerseReader } from '@/app/components/reader/VerseReader';
-import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
+import { getVerseInsight } from '@/lib/verse-insights';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { getScriptureMeta } from '@/data/scriptures';
 import { readSeededChapter, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
@@ -26,13 +26,10 @@ import { UnderstandPanel } from '@/app/components/understand/UnderstandPanel';
 import { VerseCompletion } from '@/app/components/understand/VerseCompletion';
 import { getUnderstandingExtras } from '@/data/understanding';
 import { getPedagogicalVerse } from '@/data/pedagogical-registry';
-import { VerseReadingGap } from '@/app/components/reader/LayeredVerseExperience';
 import { ActivityRecorder } from '@/app/components/study/ActivityRecorder';
 import { badgesFor, latestReview } from '@/lib/review-badges';
 import { PENDING_CORRECTIONS, REVIEW_RECORDS } from '@/data/review-records';
-import { getScriptureSourceMeta } from '@/data/sources-registry';
-import { wisdomTopicsForVerse } from '@/lib/wisdom-verse-topics';
-import { WisdomTopicLinks } from '@/app/components/WisdomTopicLinks';
+import { getScriptureSourceMeta, SCRIPTURE_SOURCES } from '@/data/sources-registry';
 import { getConceptDetail } from '@/data/concept-details';
 
 /**
@@ -52,6 +49,10 @@ interface SeedVerse {
   sanskrit?: string;
   transliteration?: string;
   hindi?: string;
+  /** The Hindi translates a range of verses together ("15-17"). */
+  hindiRange?: string;
+  /** This verse's Hindi is stored on that verse (the first of its range). */
+  hindiSeeVerse?: number | string;
   translation?: string;
   explanation?: string;
   commentary?: string;
@@ -410,6 +411,8 @@ export default function VersePage({ params }: PageProps) {
           transliteration: verse.transliteration,
           wordMeaning: verse.wordMeaning,
           hindi: verse.hindi,
+          hindiRange: verse.hindiRange,
+          hindiSeeVerse: verse.hindiSeeVerse,
           translation: verse.translation,
           explanation,
           reflection: lesson,
@@ -427,11 +430,22 @@ export default function VersePage({ params }: PageProps) {
           translator: sourceMeta.primaryTranslator,
           edition: `${sourceMeta.sanskritEdition}. ${sourceMeta.publisherArchive}`,
           translationReview: translationReview ? `Reviewed ${translationReview.date}` : 'Not yet reviewed',
+          variantNote: SCRIPTURE_SOURCES[meta.id]?.alternativeReadingNote,
         }}
         prev={prev && prevHref ? { number: prev.number, href: prevHref } : undefined}
         next={next && nextHref ? { number: next.number, href: nextHref } : undefined}
+        sourceStatus={
+          <TrustBadges
+            className="mb-4"
+            sourceHost={repoLabel(source.repo)}
+            translationIsAi={verse.hindiSource === 'ai' || verse.translationSource === 'ai'}
+            commentaryIsAi={Boolean(comment?.ai)}
+            hasEditorial={Boolean(pedagogical)}
+            badges={badgesFor({ scriptureId: meta.id, chapter: chapterId, verse: params.verseId, hasEditorial: Boolean(pedagogical), records: REVIEW_RECORDS, corrections: PENDING_CORRECTIONS })}
+          />
+        }
+        insight={getVerseInsight(meta.id, chapterId, params.verseId)}
       >
-        {pedagogical ? null : <VerseReadingGap />}
         {pedagogical && (
           <UnderstandPanel
             data={pedagogical}
@@ -448,24 +462,6 @@ export default function VersePage({ params }: PageProps) {
         <VerseDiagrams scriptureId={meta.id} chapter={chapterId} verse={params.verseId} />
         <ModernScenarios scriptureId={meta.id} chapter={chapterId} verse={params.verseId} />
         {!pedagogical && !explanation && <ReviewRequiredNotice className="mt-8" />}
-        <TrustBadges
-          className="mt-8"
-          sourceHost={repoLabel(source.repo)}
-          translationIsAi={verse.hindiSource === 'ai' || verse.translationSource === 'ai'}
-          commentaryIsAi={Boolean(comment?.ai)}
-          hasEditorial={Boolean(pedagogical)}
-          badges={badgesFor({ scriptureId: meta.id, chapter: chapterId, verse: params.verseId, hasEditorial: Boolean(pedagogical), records: REVIEW_RECORDS, corrections: PENDING_CORRECTIONS })}
-        />
-        <SourcesAndInterpretation
-          scriptureId={meta.id}
-          scriptureTitle={meta.title}
-          scriptureTitleSanskrit={meta.titleSanskrit}
-          chapterId={chapterId}
-          verseId={params.verseId}
-          editionOverride={source.repo}
-          sourceUrlOverride={source.repo}
-          className="mt-8"
-        />
         <VerseGraphNetwork
           scriptureId={meta.id}
           chapterId={chapterId}
@@ -481,10 +477,9 @@ export default function VersePage({ params }: PageProps) {
         />
         <RelatedTeachings scriptureId={meta.id} chapterId={chapterId} verseNumber={params.verseId} />
         <NextTeachings candidates={nextCandidates} verseId={String(params.verseId)} />
-        <WisdomTopicLinks topics={wisdomTopicsForVerse(meta.id, chapterId, String(params.verseId))} />
         <VerseRelatedSection
           concepts={integrations.concepts}
-          topics={integrations.topics}
+          topics={integrations.topics.filter((t) => t.directVerseMatch)}
           crossReferences={integrations.crossReferences}
           currentScriptureTitle={meta.title}
         />

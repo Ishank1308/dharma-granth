@@ -17,6 +17,7 @@ import {
   Flame,
   Globe,
   GraduationCap,
+  Heart,
   Home,
   Menu,
   Moon,
@@ -101,6 +102,7 @@ const desktopDiscoveryItems = [
   { label: 'कालखंड', description: 'समयरेखा और परंपरा', href: '/timelines' },
   { label: 'उत्सव', description: 'पर्व और उनका अर्थ', href: '/festivals' },
   { label: 'अनुष्ठान', description: 'विधियाँ और परंपराएँ', href: '/rituals' },
+  { label: 'सहयोग व सेवा', description: 'Voluntary Support — प्रत्यक्ष UPI व QR द्वारा धर्म ग्रंथ का संवर्धन', href: '/contribute' },
 ];
 
 const desktopPersonalItems = [
@@ -113,6 +115,7 @@ const desktopPersonalItems = [
   { label: 'बुकमार्क व नोट्स', href: '/bookmarks' },
   { label: 'संग्रह', href: '/collections' },
   { label: 'अध्ययन पथ', href: '/learn/pathways' },
+  { label: 'ऐच्छिक सहयोग', href: '/contribute' },
 ];
 
 interface DrawerItem {
@@ -537,6 +540,14 @@ export function SiteNav({
       icon: Clock,
       badge: activeStreak > 0 ? `🔥 ${activeStreak} दिन` : undefined,
       badgeType: 'streak',
+    },
+    {
+      id: 'contribute',
+      label: 'ऐच्छिक सहयोग',
+      labelEn: 'Support',
+      description: 'प्रत्यक्ष UPI व QR द्वारा ग्रंथालय सेवा',
+      href: '/contribute',
+      icon: Heart,
     },
   ];
 

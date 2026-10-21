@@ -26,6 +26,8 @@ function loadParallels(): Promise<ParallelMap> {
   return cache;
 }
 
+const isTruncated = (snippet: string) => /(…|\.\.\.)\s*$/.test(snippet);
+
 function hrefFor(targetVerseId: string): string {
   const [scriptureId, chapter, verse] = targetVerseId.split(':');
   return `/scripture/${scriptureId}/chapter/${chapter}/#verse-${verse}`;
@@ -83,9 +85,12 @@ export function SamvadaStrip({ scriptureId, chapterId, verseNumber }: { scriptur
               <p className="text-[11px] font-bold uppercase tracking-wider text-dharma-muted">
                 {KIND_LABEL[p.relationshipType].en} · <span lang="hi" className="font-devanagari normal-case">{KIND_LABEL[p.relationshipType].hi}</span>
               </p>
-              <p lang="sa" className="mt-1.5 font-devanagari text-sm leading-relaxed text-dharma-text">
-                {p.sanskritSnippet}
-              </p>
+              {/* Most stored snippets stop mid-shloka ("…"); quote only complete ones (CLAUDE.md rule 4). */}
+              {!isTruncated(p.sanskritSnippet) && (
+                <p lang="sa" className="mt-1.5 font-devanagari text-sm leading-relaxed text-dharma-text">
+                  {p.sanskritSnippet}
+                </p>
+              )}
               <Link
                 href={hrefFor(p.targetVerseId)}
                 className="mt-2 inline-flex min-h-[44px] items-center text-sm font-semibold text-saffron-800 hover:underline dark:text-saffron-300"

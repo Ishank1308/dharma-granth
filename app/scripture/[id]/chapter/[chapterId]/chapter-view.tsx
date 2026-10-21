@@ -26,6 +26,7 @@ import {
   type ChapterPreview,
 } from '@/lib/read-seeded-chapters';
 import type { InitialChapter } from '@/app/components/FullChapterVerses';
+import { getChapterInsights } from '@/lib/verse-insights';
 import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
 import { ArrowLeft, ArrowRight, BookOpen, ChevronDown, Layers, MessageCircle } from 'lucide-react';
 import { ShareButton } from '@/app/components/ShareButton';
@@ -236,6 +237,11 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           verses: pageVerses,
           commentary: readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId),
           source: seeded.source as InitialChapter['source'],
+          insights: getChapterInsights(
+            meta.id,
+            chapterId,
+            pageVerses.map((v) => v.number),
+          ),
         }
       : undefined;
   const chapterSummary = meta.id === 'bhagavadgita' ? getGitaChapterSummary(chapter.id) : undefined;

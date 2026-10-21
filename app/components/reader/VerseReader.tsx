@@ -49,6 +49,8 @@ import {
 import { ReaderDialog } from './ReaderDialog';
 import { ReaderSettingsPanel } from './ReaderSettingsPanel';
 import { ReaderLayers } from './ReaderLayers';
+import { ReaderControlBar } from './ReaderControlBar';
+import type { VerseInsight } from '@/lib/verse-insights';
 import { SacredShareModal, type SacredShareData } from '@/app/components/share/SacredShareModal';
 import { useSwipeGesture } from '@/lib/useSwipeGesture';
 import { MobileSwipeIndicator } from './MobileSwipeIndicator';
@@ -92,6 +94,10 @@ export interface VerseReaderProps {
   provenance: ReaderProvenance;
   prev?: ReaderVerseLink;
   next?: ReaderVerseLink;
+  /** Reviewed मर्म line and जीवन प्रसंग chips for this verse (lib/verse-insights). */
+  insight?: VerseInsight;
+  /** Status chips (server-rendered TrustBadges), shown at the top of the Sources card. */
+  sourceStatus?: ReactNode;
   /** Related concepts, topics and cross-references, rendered under the layers. */
   children?: ReactNode;
 }
@@ -107,7 +113,7 @@ const actionBtn =
 export function VerseReader(props: VerseReaderProps) {
   const {
     scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, scriptureHref, chapterHref,
-    pageUrl, chapters, verses, index, verse, provenance, prev, next, children,
+    pageUrl, chapters, verses, index, verse, provenance, prev, next, children, insight, sourceStatus,
   } = props;
 
   const router = useRouter();
@@ -622,68 +628,15 @@ export function VerseReader(props: VerseReaderProps) {
             </button>
           </div>
 
-          {/* 3 · Reader Mode Bar: [Quick] [Simple] [Deep] [Traditional] */}
-          <div
-            role="tablist"
-            aria-label="Reading depth: Quick, Simple, Deep or Traditional"
-            className="mb-6 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-dharma-border bg-dharma-card/70 p-2 shadow-sm"
-          >
-            <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
-              {(
-                [
-                  { id: 'quick', en: 'Quick', hi: 'जिज्ञासु', hint: '1-min core takeaway' },
-                  { id: 'simple', en: 'Simple', hi: 'सरल', hint: 'Clear meaning & life example' },
-                  { id: 'deep', en: 'Deep', hi: 'गहन', hint: 'Full padas, commentary & sources' },
-                  { id: 'traditional', en: 'Traditional', hi: 'शास्त्रीय', hint: 'Mūla, padachheda, anvaya & traditional bhashya' },
-                ] as const
-              ).map((m) => {
-                const active = settings.readerMode === m.id;
-                return (
-                  <button
-                    key={m.id}
-                    type="button"
-                    role="tab"
-                    id={`mode-${m.id}`}
-                    aria-selected={active}
-                    aria-controls="mode-panel"
-                    tabIndex={active ? 0 : -1}
-                    onKeyDown={(e) => {
-                      const ids = ['quick', 'simple', 'deep', 'traditional'] as const;
-                      const i = ids.indexOf(settings.readerMode as (typeof ids)[number]);
-                      const n = e.key === 'ArrowRight' ? (i + 1) % 4 : e.key === 'ArrowLeft' ? (i + 3) % 4 : -1;
-                      if (n < 0) return;
-                      e.preventDefault();
-                      e.stopPropagation();
-                      update('readerMode', ids[n]);
-                      setTimeout(() => document.getElementById(`mode-${ids[n]}`)?.focus(), 0);
-                    }}
-                    onClick={() => {
-                      triggerTactileFeedback('light', 'softTap');
-                      update('readerMode', m.id);
-                      track('mode_selected', { mode: m.id });
-                    }}
-                    className={`focus-ring flex-1 sm:flex-none min-h-[44px] px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
-                      active
-                        ? 'bg-saffron-600 text-white shadow-sm'
-                        : 'text-dharma-muted hover:text-dharma-text hover:bg-dharma-bg/80'
-                    }`}
-                  >
-                    <span className="flex items-center justify-center gap-1.5">
-                      <span lang="hi" className="font-devanagari">{m.hi}</span>
-                      <span className="opacity-60">·</span>
-                      <span>{m.en}</span>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-            <span className="hidden sm:inline-block text-xs text-dharma-muted pr-3">
-              {settings.readerMode === 'quick' && 'त्वरित बोध · सार व व्यावहारिक प्रयोग'}
-              {settings.readerMode === 'simple' && 'सुबोध व्याख्या · जीवन में प्रासंगिकता'}
-              {settings.readerMode === 'deep' && 'गहन अध्ययन · पदच्छेद, भाष्य व संदर्भ'}
-              {settings.readerMode === 'traditional' && 'शास्त्रीय अध्ययन · मूल श्लोक, पदच्छेद, अन्वय व प्रामाणिक भाष्य'}
-            </span>
-          </div>
+          {/* 3 · Reading controls: depth (readerMode) and perspective in one row */}
+          <ReaderControlBar
+            settings={settings}
+            onChange={(key, value) => {
+              triggerTactileFeedback('light', 'softTap');
+              update(key, value);
+              if (key === 'readerMode') track('mode_selected', { mode: value });
+            }}
+          />
 
           {/* 4 · The layers */}
           <ReaderLayers
@@ -694,6 +647,8 @@ export function VerseReader(props: VerseReaderProps) {
             settings={settings}
             onReport={() => setDialog('report')}
             onUpdateSetting={update}
+            insight={insight}
+            sourceStatus={sourceStatus}
           />
 
           {noteText && (

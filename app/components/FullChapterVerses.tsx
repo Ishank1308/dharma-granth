@@ -34,6 +34,7 @@ import { VerseCard } from './VerseCard';
 import { ReadingDepthSwitch } from '@/app/components/reader/ReadingDepthSwitch';
 import { useReadingDepth } from '@/lib/reading-depth';
 import { VerseText } from './VerseText';
+import type { VerseInsight } from '@/lib/verse-insights';
 const MobileFocusMode = dynamic(() => import('./MobileFocusMode').then((m) => m.MobileFocusMode), { ssr: false });
 const ConversationModeView = dynamic(() => import('./conversation/ConversationModeView').then((m) => m.ConversationModeView), { ssr: false });
 import { triggerTactileFeedback } from '@/lib/haptics';
@@ -75,6 +76,8 @@ interface FullVerse {
   translationSource?: 'ai';
   hindi?: string;
   hindiSource?: 'ai';
+  hindiRange?: string;
+  hindiSeeVerse?: number | string;
   wordMeaning?: string;
   padaccheda?: string;
   commentary?: string;
@@ -128,6 +131,8 @@ export interface InitialChapter {
   verses: FullVerse[];
   commentary?: HiCommentaryFragment;
   source?: FullScripture['source'];
+  /** मर्म and जीवन प्रसंग for the verses that have them (lib/verse-insights). */
+  insights?: Record<string, VerseInsight>;
 }
 
 type State =
@@ -1474,6 +1479,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     onSaveNote={(text) => setNote(scriptureId, chapterId, v.number, text)}
                     highlight={getHighlight(scriptureId, chapterId, v.number)?.color}
                     onHighlight={(color) => toggleHighlight(scriptureId, chapterId, v.number, color)}
+                    insight={initialChapter?.insights?.[String(v.number)]}
                     onOpenFocus={() => {
                       setFocusVerseIndex(index);
                       setFocusModeOpen(true);

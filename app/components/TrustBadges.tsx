@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Archive, FileWarning, Languages, Lightbulb, Sparkles } from 'lucide-react';
 import type { Badge } from '@/lib/review-badges';
+import { AI_COMMENTARY_LABEL } from '@/lib/ai-labels';
 
 /**
  * Status of what a verse page shows, computed from flags the data really
@@ -43,9 +44,12 @@ export function TrustBadges({
           {translationIsAi ? 'Translation · AI-assisted, not human-reviewed' : 'Translation · from the source archive'}
         </li>
         {commentaryIsAi && (
-          <li className={`${chip} border-violet-500/40 bg-violet-50 text-violet-950 dark:bg-violet-950/40 dark:text-violet-100`}>
+          <li
+            className={`${chip} border-violet-500/40 bg-violet-50 text-violet-950 dark:bg-violet-950/40 dark:text-violet-100`}
+            title={AI_COMMENTARY_LABEL.detail}
+          >
             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-            Commentary · AI-assisted, not human-reviewed
+            Commentary · {AI_COMMENTARY_LABEL.en}
           </li>
         )}
         {hasEditorial && (

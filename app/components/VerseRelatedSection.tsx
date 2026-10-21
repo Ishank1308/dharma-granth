@@ -8,6 +8,8 @@ import type {
   CrossScriptureVerse,
 } from '@/lib/verse-integrations';
 
+const isCompleteShloka = (s?: string) => Boolean(s && /॥/.test(s));
+
 interface Props {
   concepts: IntegratedConcept[];
   topics: IntegratedTopic[];
@@ -177,12 +179,16 @@ export function VerseRelatedSection({
                 </div>
 
                 <div className="mt-3 space-y-2">
-                  <p
-                    lang="sa"
-                    className="font-devanagari text-sm font-medium leading-relaxed text-dharma-text"
-                  >
-                    {ref.sanskrit}
-                  </p>
+                  {/* Concept lists often store only the famous half-line; a shloka is
+                      quoted here only when it is complete (closes with ॥). */}
+                  {isCompleteShloka(ref.sanskrit) && (
+                    <p
+                      lang="sa"
+                      className="whitespace-pre-line font-devanagari text-sm font-medium leading-relaxed text-dharma-text"
+                    >
+                      {ref.sanskrit}
+                    </p>
+                  )}
                   <p className="text-xs italic leading-relaxed text-dharma-muted">
                     &quot;{ref.translation}&quot;
                   </p>

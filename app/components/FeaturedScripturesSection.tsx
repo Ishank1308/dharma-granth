@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { ArrowRight, BookOpen, ChevronRight, Sparkles } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import {
   getAvailableScriptures,
   getLibraryCounts,
@@ -59,7 +59,7 @@ export function FeaturedScripturesSection() {
           </div>
 
           <Link
-            href="/scriptures?explained=1"
+            href="/scriptures/?explained=1"
             className="inline-flex w-fit items-center gap-2 rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-xs font-bold text-dharma-text transition hover:border-saffron-300 hover:text-saffron-700 shadow-sm"
           >
             <span>View Full Library</span>
@@ -132,7 +132,7 @@ export function FeaturedScripturesSection() {
             return (
               <Link
                 key={scripture.id}
-                href={`/scripture/${scripture.id}`}
+                href={`/scripture/${scripture.id}/`}
                 className={`${index >= 3 ? 'hidden sm:flex ' : ''}group relative flex flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-6 transition-all hover:-translate-y-1 hover:border-amber-400/80 hover:shadow-lg dark:hover:border-amber-700/60`}
               >
                 <div>
@@ -182,17 +182,6 @@ export function FeaturedScripturesSection() {
           })}
         </div>
 
-        {/* View Full Library Button CTA */}
-        <div className="mt-12 text-center">
-          <Link
-            href="/scriptures?explained=1"
-            className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:from-saffron-700 hover:to-amber-700 hover:shadow-xl"
-          >
-            <BookOpen className="h-4 w-4" />
-            <span>View Full Scripture Library</span>
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
       </div>
     </section>
   );

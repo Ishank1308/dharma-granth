@@ -12,6 +12,10 @@ export interface FullVerse {
   hindi?: string;
   /** "ai" when the Hindi meaning was machine-generated from the Sanskrit. */
   hindiSource?: "ai";
+  /** The Hindi translates a range of verses together ("15-17"); stored on its first verse. */
+  hindiRange?: string;
+  /** This verse's Hindi is in the passage stored on that verse (the first of its range). */
+  hindiSeeVerse?: number | string;
   wordMeaning?: string;
   commentary?: string;
   explanation?: string;

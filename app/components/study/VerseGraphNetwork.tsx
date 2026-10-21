@@ -77,21 +77,8 @@ export function VerseGraphNetwork({ scriptureId, chapterId, verseId, currentVers
     });
   }, [filteredNodes, graphData.nodes, centerX, centerY, radius]);
 
-  if (graphData.nodes.length === 0) {
-    return (
-      <section aria-labelledby="verse-graph-gap" className="mt-10 rounded-2xl border border-dharma-border bg-dharma-card p-5">
-        <h2 id="verse-graph-gap" className="font-serif text-lg font-bold text-dharma-text">
-          <span lang="hi" className="font-devanagari">संबंध अभी दर्ज नहीं</span>
-        </h2>
-        <p lang="hi" className="mt-2 text-sm leading-relaxed text-dharma-text">
-          इस श्लोक के लिए कोई समीक्षित संबंध, पार-ग्रंथ कड़ी या अवधारणा-सूची नहीं है। पड़ोस का श्लोक अपने आप संबंध नहीं बनता।
-        </p>
-        <p className="mt-1 text-sm leading-relaxed text-dharma-text-secondary">
-          No reviewed link is stored for this verse. A neighboring verse is not labeled a teaching.
-        </p>
-      </section>
-    );
-  }
+  // No reviewed links: render nothing rather than a "not recorded yet" box.
+  if (graphData.nodes.length === 0) return null;
 
   return (
     <section
