@@ -8,6 +8,11 @@ export interface HiCommentaryEntry {
    */
   ai?: true;
   /**
+   * Only the explanation is an approved AI draft (it replaced hand-written
+   * व्याख्या); science and lifeLesson on this entry are still hand-written.
+   */
+  explanationAi?: true;
+  /**
    * Set on entries from the editorial pilot (data/pilot/records). The site labels these as drafts that still
    * need a person to review them.
    */

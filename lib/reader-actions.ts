@@ -42,6 +42,8 @@ export interface ReaderProvenance {
   englishIsAi: boolean;
   /** The explanation, reflection and research layers are AI-drafted and editor-approved (lib/ai-labels). */
   commentaryIsAi: boolean;
+  /** The व्याख्या alone is an approved AI draft (also true when commentaryIsAi is). */
+  explanationIsAi?: boolean;
   /** ISO date the text or its commentary last changed in the repository. */
   lastUpdated?: string;
   /** Who translated the Hindi and English layers, as recorded for the text. */

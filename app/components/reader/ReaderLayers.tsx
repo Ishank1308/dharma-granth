@@ -582,6 +582,7 @@ export function ReaderLayers({
                 kind="editorial"
                 title={isQuick ? 'Key Message' : 'Vyakhya (व्याख्या)'}
                 titleHi={isQuick ? 'मुख्य संदेश' : 'व्याख्या'}
+                badge={p.explanationIsAi ? <AiBadge title={AI_COMMENTARY_LABEL.detail}>{AI_COMMENTARY_LABEL.en}</AiBadge> : undefined}
                 collapsible={false}
               >
                 <p

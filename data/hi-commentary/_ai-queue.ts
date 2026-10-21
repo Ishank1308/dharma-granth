@@ -13,6 +13,8 @@ interface QueuedEntry {
   lifeLesson?: string;
   status?: "pending" | "approved" | "rejected";
   sanskrit?: string;
+  /** The draft's explanation replaces this verse's hand-written व्याख्या. */
+  replacesHandWritten?: boolean;
 }
 
 const norm = (s = "") => s.replace(/[\s|।॥०-९\d.]/g, "");
@@ -40,11 +42,17 @@ function currentSanskrit(scriptureId: string): Map<string, string> {
  * rejected drafts are never returned, nor are drafts whose verse text no
  * longer matches what was reviewed (e.g. after a data repair renumbered it).
  */
-export function approvedAiEntries(scriptureId: string): { entries: HiCommentaryFragment; stale: string[] } {
+export function approvedAiEntries(scriptureId: string): {
+  entries: HiCommentaryFragment;
+  stale: string[];
+  /** Keys whose approved explanation replaces the hand-written one. */
+  replaces: Set<string>;
+} {
   const file = path.join(AI_QUEUE_DIR, `${scriptureId}.json`);
   const entries: HiCommentaryFragment = {};
   const stale: string[] = [];
-  if (!fs.existsSync(file)) return { entries, stale };
+  const replaces = new Set<string>();
+  if (!fs.existsSync(file)) return { entries, stale, replaces };
 
   const queue = JSON.parse(fs.readFileSync(file, "utf8")) as Record<string, QueuedEntry>;
   const sanskritNow = currentSanskrit(scriptureId);
@@ -60,8 +68,9 @@ export function approvedAiEntries(scriptureId: string): { entries: HiCommentaryF
     if (q.science?.trim()) entry.science = q.science.trim();
     if (q.lifeLesson?.trim()) entry.lifeLesson = q.lifeLesson.trim();
     if (entry.explanation || entry.science || entry.lifeLesson) entries[key] = entry;
+    if (q.replacesHandWritten && entry.explanation) replaces.add(key);
   }
-  return { entries, stale };
+  return { entries, stale, replaces };
 }
 
 export function aiQueueScriptureIds(): string[] {

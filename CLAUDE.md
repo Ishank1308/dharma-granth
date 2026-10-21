@@ -16,4 +16,5 @@ Bilingual (Sanskrit / Hindi / English) scripture library. Next.js app router, st
 - Other tools (Cursor, other Claude sessions) edit this checkout at the same time. Run `git status` before editing, stage only your own files, and never revert changes you did not make.
 - Many files are CRLF. Verify scripted edits with `git diff --stat`.
 - Runtime reads the `scriptures-full` JSON, not `data/scriptures/*.ts`. Build guards cap export size and file count for Cloudflare Pages.
+- Verse व्याख्या (Hindi explanations): follow `docs/vyakhya-guide.md` for voice, register and workflow. Draft one chapter per file in `data/ai-commentary/staged/<scripture>-<chapter>.json`, check it with `node scripts/check-hindi-register.mjs`, then `node scripts/stage-commentary.mjs` and `npm run publish:commentary`. Never rewrite the printed translations.
 - Ashtavakra Gita content pipeline: `scripts/ashtavakra-compose.mjs N`, then `scripts/ashtavakra-build.mjs N`. Reproduce the book's commentary in original words; omit polemic or derogatory passages.

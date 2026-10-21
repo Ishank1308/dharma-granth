@@ -430,6 +430,7 @@ export default function VersePage({ params }: PageProps) {
           hindiIsAi: verse.hindiSource === 'ai',
           englishIsAi: verse.translationSource === 'ai',
           commentaryIsAi: Boolean(comment?.ai),
+          explanationIsAi: Boolean(comment?.ai || comment?.explanationAi),
           lastUpdated: modified,
           translator: sourceMeta.primaryTranslator,
           edition: `${sourceMeta.sanskritEdition}. ${sourceMeta.publisherArchive}`,

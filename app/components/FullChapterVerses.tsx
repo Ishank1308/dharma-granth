@@ -1440,7 +1440,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     verse={v}
                     relatedTeachings={relatedTeachingsByVerse[String(v.number)]}
                     meaning={{
-                      isAi: Boolean(comment?.ai),
+                      isAi: Boolean(comment?.ai || comment?.explanationAi),
                       editorial: comment?.editorial,
                       explanation,
                       explanationIsHi,

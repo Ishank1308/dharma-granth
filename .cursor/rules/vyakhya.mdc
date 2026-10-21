@@ -1,0 +1,13 @@
+---
+description: Writing Hindi verse व्याख्या (explanations) or any site Hindi for Dharma Granth
+globs: data/ai-commentary/**, data/hi-commentary/**
+alwaysApply: false
+---
+
+Before writing any व्याख्या or site Hindi, read `docs/vyakhya-guide.md` and follow it exactly:
+
+- Voice: a profound, deeply experienced teacher; about 200–280 words in three movements (the moment and its feeling, the insight in the key Sanskrit words, what it asks of the reader). Every feeling must earn its place; no padding.
+- Register: dignified, tatsam-leaning Gita Press Hindi; honorifics for revered figures; address the reader as आप; no colloquial, Urdu-Persian or English words (see the table in the guide).
+- Faithfulness: no invented events, quotations or sentiment; never rewrite the printed translations.
+- Workflow: one chapter per file in `data/ai-commentary/staged/<scripture>-<chapter>.json`; `node scripts/check-hindi-register.mjs <file>` must report `sentences to fix 0`; then `node scripts/stage-commentary.mjs <file>` and `npm run publish:commentary`.
+- Before starting a chapter, check that no other tool already has a staged file for it.

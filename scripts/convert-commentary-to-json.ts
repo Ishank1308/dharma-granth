@@ -87,13 +87,22 @@ async function main(): Promise<void> {
       curated = filterCuratedFragment(name, fragment);
     }
 
-    // Approved AI drafts fill gaps only; hand-written commentary always wins.
-    const { entries: ai, stale } = approvedAiEntries(name);
+    // Approved AI drafts fill gaps only; hand-written commentary wins, except
+    // where a draft was approved to replace the hand-written व्याख्या.
+    const { entries: ai, stale, replaces } = approvedAiEntries(name);
     for (const key of stale) {
       console.warn(`⚠ ${name}:${key} approved AI draft skipped — the verse text changed since review`);
     }
     for (const [key, entry] of Object.entries(ai)) {
-      // Any hand-written field for this verse means a human owns it; never mix.
+      // A hand-written entry with no व्याख्या of its own gets the approved one, labelled.
+      const handWrittenHasNoExplanation = curated[key] && !curated[key].explanation;
+      if (curated[key] && (replaces.has(key) || handWrittenHasNoExplanation) && entry.explanation) {
+        // Only the व्याख्या changes hands; hand-written science and lifeLesson stay, unlabelled.
+        curated[key] = { ...curated[key], explanation: entry.explanation, explanationAi: true };
+        aiPublished++;
+        continue;
+      }
+      // Otherwise any hand-written field for this verse means a human owns it; never mix.
       if (curated[key]) continue;
       curated[key] = entry;
       aiPublished++;
