@@ -8,6 +8,10 @@ interface Props {
     sanskrit?: string;
     transliteration?: string;
     hindi?: string;
+    /** Hindi translating a range of verses together ("15-17"), stored on its first verse. */
+    hindiRange?: string;
+    /** This verse's Hindi is in the passage stored on that verse. */
+    hindiSeeVerse?: number | string;
     translation?: string;
   };
   chapterId: number;
@@ -69,11 +73,18 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
 
       {hindi && (
         <div className="vt-block">
-          <p className="vt-label" lang="hi">हिन्दी अर्थ</p>
+          <p className="vt-label" lang="hi">
+            {v.hindiRange ? `श्लोक ${toDevanagari(v.hindiRange.replace('-', '–'))} का हिन्दी अर्थ` : 'हिन्दी अर्थ'}
+          </p>
           <p lang="hi" className="vt-hi">
             {hindi}
           </p>
         </div>
+      )}
+      {!hindi && v.hindiSeeVerse != null && (
+        <p className="vt-block vt-label" lang="hi">
+          अर्थ श्लोक <a href={`#verse-${v.hindiSeeVerse}`}>{toDevanagari(String(v.hindiSeeVerse))}</a> के साथ
+        </p>
       )}
       {english && (
         <div className="vt-block">

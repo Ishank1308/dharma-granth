@@ -51,6 +51,10 @@ export interface VerseCardData {
   translationSource?: 'ai';
   hindi?: string;
   hindiSource?: 'ai';
+  /** This verse's Hindi covers a range ("15-17") translated together in the edition. */
+  hindiRange?: string;
+  /** The Hindi for this verse is stored on that verse (the first of its range). */
+  hindiSeeVerse?: number | string;
   wordMeaning?: string;
   keywords?: string[];
 }
@@ -313,7 +317,7 @@ export function VerseCard({
   const explanationIsHi = meaning.explanationIsHi || isMostlyDevanagari(explanation);
   const scienceIsHi = meaning.scienceIsHi || isMostlyDevanagari(science);
   const lessonIsHi = meaning.lessonIsHi || isMostlyDevanagari(lesson);
-  const showHindi = Boolean(v.hindi && layers.hindi);
+  const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null) && layers.hindi);
   const showEnglish = Boolean(v.translation && layers.english);
 
   const showLesson = Boolean(layers.commentary && lesson);
@@ -426,10 +430,21 @@ export function VerseCard({
               }`}>
                 <div className="mb-2 flex items-center justify-between gap-2">
                   <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                    हिंदी अनुवाद · Hindi Translation
+                    {v.hindiRange
+                      ? `श्लोक ${toDevanagari(v.hindiRange.replace('-', '–'))} का हिंदी अनुवाद · Hindi for verses ${v.hindiRange.replace('-', '–')}`
+                      : 'हिंदी अनुवाद · Hindi Translation'}
                   </p>
                   <ContentLabelBadge kind="literal" />
                 </div>
+                {!v.hindi && v.hindiSeeVerse != null && (
+                  // The edition translates this verse together with earlier ones; the passage is stored once.
+                  <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-muted">
+                    इस श्लोक का अर्थ श्लोक {toDevanagari(String(v.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
+                    <a href={`#verse-${v.hindiSeeVerse}`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                      देखें श्लोक {toDevanagari(String(v.hindiSeeVerse))} ↑
+                    </a>
+                  </p>
+                )}
                 <p lang="hi" className="font-devanagari text-base leading-loose text-dharma-text md:text-[17px]">
                   {v.hindi && <GlossaryText text={v.hindi} />}
                   {v.hindiSource === 'ai' && (

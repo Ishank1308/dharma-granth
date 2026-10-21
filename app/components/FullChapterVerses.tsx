@@ -58,6 +58,8 @@ interface FullVerse {
   translationSource?: 'ai';
   hindi?: string;
   hindiSource?: 'ai';
+  hindiRange?: string;
+  hindiSeeVerse?: number | string;
   wordMeaning?: string;
   commentary?: string;
   explanation?: string;

@@ -288,7 +288,8 @@ export function ReaderLayers({
     settings.showEnglish &&
     (settings.preferredLanguage === 'all' || settings.preferredLanguage === 'english' || isDeep);
 
-  const hasArth = Boolean(showHindiTrans && verse.hindi) || Boolean(showEnglishTrans && verse.translation);
+  const hasArth =
+    Boolean(showHindiTrans && (verse.hindi || verse.hindiSeeVerse != null)) || Boolean(showEnglishTrans && verse.translation);
   const hasPadas = Boolean(!isQuick && !settings.liteMode && verse.wordMeaning);
   const [showPadas, setShowPadas] = useState(false);
   // Traditional commentary appears only once a reviewed commentary exists for this verse;
@@ -522,12 +523,21 @@ export function ReaderLayers({
             defaultOpen: true,
             content: (
               <div className="space-y-4">
+                {showHindiTrans && !verse.hindi && verse.hindiSeeVerse != null && (
+                  // The edition translates this verse together with earlier ones; the passage lives there.
+                  <p lang="hi" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 font-devanagari text-sm text-dharma-muted">
+                    इस श्लोक का हिन्दी अर्थ श्लोक {toDevanagari(String(verse.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
+                    <a href={`../${verse.hindiSeeVerse}/`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                      श्लोक {toDevanagari(String(verse.hindiSeeVerse))} देखें →
+                    </a>
+                  </p>
+                )}
                 {showHindiTrans && verse.hindi && (
                   <Layer
                     id="layer-hindi"
                     kind="translation"
-                    title="Literal Hindi Translation"
-                    titleHi="मूल हिन्दी अनुवाद (अक्षरशः)"
+                    title={verse.hindiRange ? `Hindi Translation · verses ${verse.hindiRange.replace('-', '–')}` : 'Literal Hindi Translation'}
+                    titleHi={verse.hindiRange ? `श्लोक ${toDevanagari(verse.hindiRange.replace('-', '–'))} का अनुवाद` : 'मूल हिन्दी अनुवाद (अक्षरशः)'}
                     badge={
                       <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
                         मूलानुवाद · Literal

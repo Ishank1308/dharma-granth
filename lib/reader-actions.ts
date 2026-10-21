@@ -16,6 +16,10 @@ export interface ReaderVerseText {
   transliteration?: string;
   wordMeaning?: string;
   hindi?: string;
+  /** The Hindi translates a range of verses together ("15-17"). */
+  hindiRange?: string;
+  /** This verse's Hindi is stored on that verse (the first of its range). */
+  hindiSeeVerse?: number | string;
   translation?: string;
   explanation?: string;
   reflection?: string;
