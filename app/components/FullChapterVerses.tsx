@@ -21,7 +21,7 @@ import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
 import { canonicalVerseId } from '@/lib/canonical-verse-id';
 import { versePageHref } from '@/lib/verse-paths';
 import { normalizeForSearch, normalizeTransliteration } from '@/lib/normalize-search';
-import { toAsciiDigits, toDevanagari } from '@/lib/verse-format';
+import { splitVyakhyaCommentary, toAsciiDigits, toDevanagari } from '@/lib/verse-format';
 import { useStudyProgress, type VerseRef } from '@/lib/useStudyProgress';
 import { updateLastVerse } from '@/lib/reading-history';
 import dynamic from 'next/dynamic';
@@ -1419,8 +1419,12 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               const explanationHi = comment?.explanation;
               const scienceHi = comment?.science;
               const lifeLessonHi = comment?.lifeLesson;
-              const explanation = explanationHi ?? v.explanation ?? v.commentary;
-              const explanationIsHi = Boolean(explanationHi);
+              const { vyakhya, commentary } = splitVyakhyaCommentary(
+                [explanationHi, v.explanation, v.commentary],
+                v.wordMeaning,
+              );
+              const explanation = vyakhya ?? commentary;
+              const explanationIsHi = Boolean(vyakhya);
               const science = scienceHi ?? v.science;
               const scienceIsHi = Boolean(scienceHi);
               const lesson = lifeLessonHi ?? v.lifeLesson;
@@ -1440,6 +1444,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                       editorial: comment?.editorial,
                       explanation,
                       explanationIsHi,
+                      vyakhya,
+                      commentary,
                       science,
                       scienceIsHi,
                       lesson,

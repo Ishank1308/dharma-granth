@@ -62,6 +62,7 @@ export function MobileAudioPill() {
   return (
     <aside
       aria-label="तन्पूरा"
+      data-hide-during-chapter-reading
       className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] left-3 z-30 md:bottom-5 md:left-5"
     >
       {/* Expanded Control Sheet */}

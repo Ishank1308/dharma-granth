@@ -7,6 +7,7 @@ import {
   useSpring,
   useTransform,
   useReducedMotion,
+  useInView,
 } from 'framer-motion';
 import { Sparkles, Flame } from 'lucide-react';
 
@@ -27,6 +28,8 @@ export function Realistic3DGranth({
 }) {
   const reduce = useReducedMotion();
   const bookRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(bookRef, { amount: 0.1, margin: '96px' });
+  const motionEnabled = !reduce && isInView;
 
   // Normalised pointer position (-0.5 to 0.5)
   const px = useMotionValue(0);
@@ -54,7 +57,7 @@ export function Realistic3DGranth({
   const shadowY = useTransform(smoothY, [-0.5, 0.5], [35, 15]);
 
   const handlePointerMove = (e: PointerEvent<HTMLDivElement>) => {
-    if (reduce) return;
+    if (!motionEnabled) return;
     const el = bookRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -87,7 +90,7 @@ export function Realistic3DGranth({
         className="group relative rounded-2xl"
         role="img"
         aria-label={`3D book cover for ${title}`}
-        whileHover={{ scale: 1.03, y: -8 }}
+        whileHover={motionEnabled ? { scale: 1.03, y: -8 } : undefined}
       >
         {/* Dynamic Cast Shadow below book */}
         <motion.div
@@ -141,7 +144,7 @@ export function Realistic3DGranth({
               clipPath: 'polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%)',
               transform: 'translateZ(18px)',
             }}
-            animate={reduce ? undefined : { rotate: [0, 3, -2, 0] }}
+            animate={motionEnabled ? { rotate: [0, 3, -2, 0] } : undefined}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
           />
 

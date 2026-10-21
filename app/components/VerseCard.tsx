@@ -82,6 +82,9 @@ export interface VerseMeaning {
   isAi?: boolean;
   explanation?: string;
   explanationIsHi: boolean;
+  /** Hindi व्याख्या and English commentary are kept separate when both exist. */
+  vyakhya?: string;
+  commentary?: string;
   science?: string;
   scienceIsHi: boolean;
   lesson?: string;
@@ -414,6 +417,9 @@ export function VerseCard({
   // The source flag only says which file the text came from; Hindi व्याख्या
   // also lives in the verse data itself, so check the text.
   const explanationIsHi = meaning.explanationIsHi || isMostlyDevanagari(explanation);
+  const vyakhya = meaning.vyakhya ?? (explanationIsHi ? explanation : undefined);
+  const commentary = meaning.commentary ?? (!explanationIsHi ? explanation : undefined);
+  const hasExplanation = Boolean(vyakhya || commentary);
   const scienceIsHi = meaning.scienceIsHi || isMostlyDevanagari(science);
   const lessonIsHi = meaning.lessonIsHi || isMostlyDevanagari(lesson);
   const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null) && layers.hindi);
@@ -422,7 +428,7 @@ export function VerseCard({
   const tabs = useMemo(() => {
     const list: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [];
     if (showHindi || showEnglish) list.push({ id: 'meaning', label: 'भावार्थ · Arth', icon: ScrollText });
-    if (layers.commentary && depth !== 'read' && explanation) {
+    if (layers.commentary && depth !== 'read' && hasExplanation) {
       list.push({ id: 'explain', label: 'व्याख्या · Vyakhya', icon: Sparkles });
     }
     if (layers.commentary && depth === 'study' && science) list.push({ id: 'science', label: 'विज्ञान · Vigyan', icon: Atom });
@@ -430,7 +436,7 @@ export function VerseCard({
       list.push({ id: 'lesson', label: 'व्यावहारिक जीवन · Modern Context', icon: Lightbulb });
     }
     return list;
-  }, [showHindi, showEnglish, layers.commentary, depth, explanation, science, lesson]);
+  }, [showHindi, showEnglish, layers.commentary, depth, hasExplanation, science, lesson]);
 
   const [chosenTab, setChosenTab] = useState<TabId>('meaning');
   // Fall back to the first available tab if the chosen one was switched off.
@@ -1191,35 +1197,31 @@ export function VerseCard({
                     )}
 
                     {activeTab === 'explain' && (
-                      <div className="rounded-2xl border border-amber-200/70 bg-amber-50/40 p-4.5 dark:border-amber-900/40 dark:bg-amber-950/20 shadow-2xs">
-                        <div className="mb-2.5 flex items-center justify-between gap-2">
-                          <p className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">
-                            {explanationIsHi ? 'व्याख्या व भावार्थ · Explanation' : 'Commentary & Explanation'}
-                          </p>
-                          <ContentLabelBadge kind="explanation" />
-                          {meaning.editorial && <DraftBadge lang="hi" />}
-                          {meaning.isAi && (
-                            <p
-                              className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300"
-                              title={`${AI_COMMENTARY_LABEL.detailHi} ${AI_COMMENTARY_LABEL.detail}`}
-                            >
-                              <Sparkles className="h-3 w-3" aria-hidden="true" />
-                              {AI_COMMENTARY_LABEL.hi}
-                            </p>
-                          )}
-                        </div>
-                        {explanation && !explanationIsHi && (
-                          <p className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-2.5 py-0.5 text-[11px] font-semibold text-dharma-muted">
-                            हिन्दी व्याख्या शीघ्र · English commentary for now
-                          </p>
+                      <div className="space-y-4">
+                        {vyakhya && (
+                          <div className="rounded-2xl border border-amber-200/70 bg-amber-50/40 p-4.5 shadow-2xs dark:border-amber-900/40 dark:bg-amber-950/20">
+                            <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
+                              <p lang="hi" className="font-devanagari text-sm font-bold text-saffron-800 dark:text-saffron-300">व्याख्या</p>
+                              <ContentLabelBadge kind="explanation" />
+                              {meaning.editorial && <DraftBadge lang="hi" />}
+                              {meaning.isAi && (
+                                <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300" title={`${AI_COMMENTARY_LABEL.detailHi} ${AI_COMMENTARY_LABEL.detail}`}>
+                                  <Sparkles className="h-3 w-3" aria-hidden="true" />
+                                  {AI_COMMENTARY_LABEL.hi}
+                                </span>
+                              )}
+                            </div>
+                            <p lang="hi" className="font-devanagari text-sm leading-loose text-dharma-text md:text-base">{vyakhya}</p>
+                          </div>
                         )}
-                        {explanation && (
-                          <p
-                            lang={explanationIsHi ? 'hi' : 'en'}
-                            className={`text-sm leading-relaxed text-dharma-text md:text-base ${explanationIsHi ? 'font-devanagari leading-loose' : 'font-serif'}`}
-                          >
-                            {explanation}
-                          </p>
+                        {commentary && (
+                          <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4.5 shadow-2xs">
+                            <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
+                              <p className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">Commentary &amp; Explanation</p>
+                              <ContentLabelBadge kind="explanation" />
+                            </div>
+                            <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text md:text-base">{commentary}</p>
+                          </div>
                         )}
                       </div>
                     )}

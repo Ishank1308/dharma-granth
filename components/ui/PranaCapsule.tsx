@@ -247,6 +247,7 @@ export function PranaCapsule() {
         // Keep it above the reader's one-thumb controls on chapter pages, and above the mobile nav elsewhere.
         className={`fixed ${isChapterReader ? 'bottom-[calc(10rem+env(safe-area-inset-bottom))]' : 'bottom-[calc(4.25rem+env(safe-area-inset-bottom))]'} lg:bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center`}
         aria-label="Prāṇa Sūtra Active Island"
+        data-hide-during-chapter-reading
         aria-hidden={!shouldShowIsland}
         inert={!shouldShowIsland}
         onFocusCapture={() => setIsCapsuleFocused(true)}

@@ -57,7 +57,8 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
       <section aria-labelledby="contents-heading">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 id="contents-heading" className="editorial-section-title">Adhyay / Sections</h2>
+            <p className="editorial-section-eyebrow">पाठ संरचना · Reading structure</p>
+            <h2 id="contents-heading" className="editorial-section-title mt-2">Adhyay / Sections</h2>
           </div>
           {firstChapter && (
             <Link href={chapterHref(scriptureId, firstChapter.id)} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-saffron-800 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">

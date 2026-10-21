@@ -21,7 +21,10 @@ export interface ReaderVerseText {
   /** This verse's Hindi is stored on that verse (the first of its range). */
   hindiSeeVerse?: number | string;
   translation?: string;
+  /** व्याख्या: the Hindi exposition. */
   explanation?: string;
+  /** Commentary & Explanation: the English exposition, shown after the व्याख्या. */
+  commentary?: string;
   reflection?: string;
   research?: string;
 }
@@ -104,7 +107,8 @@ export function buildDownloadMarkdown(ref: ReaderRef, verse: ReaderVerseText, p:
     section('Word-by-word', verse.wordMeaning),
     section(`Hindi translation${layerNote(p, 'hindi')}`, verse.hindi),
     section(`English translation${layerNote(p, 'english')}`, verse.translation),
-    verse.explanation ? `${section('Explanation', verse.explanation)}${aiNote}\n` : '',
+    verse.explanation ? `${section('व्याख्या (Vyakhya)', verse.explanation)}${aiNote}\n` : '',
+    verse.commentary ? `${section('Commentary & Explanation', verse.commentary)}${aiNote}\n` : '',
     verse.reflection ? `${section('Modern reflection', verse.reflection)}${aiNote}\n` : '',
     verse.research ? `${section('Research context', verse.research)}${aiNote}\n` : '',
     '## Source',

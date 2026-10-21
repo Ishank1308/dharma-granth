@@ -20,6 +20,7 @@ const PAGES = [
   '/wisdom-for-life/',
   '/characters/',
   '/festivals/',
+  '/curiosity/',
   '/learn/',
   '/learn/pathways/',
   '/collections/',

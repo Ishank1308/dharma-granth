@@ -19,7 +19,7 @@ import { verseStaticParams } from '@/lib/verse-pages';
 import { commentaryFor, verseMeaningSummary } from '@/lib/verse-meaning';
 import { verseOgPath, versePageHref, verseSlug } from '@/lib/verse-paths';
 import { scriptureLastChanged } from '@/lib/content-dates';
-import { cleanVerseField, verseLines } from '@/lib/verse-format';
+import { cleanVerseField, splitVyakhyaCommentary, verseLines } from '@/lib/verse-format';
 import { getVerseIntegrations } from '@/lib/verse-integrations';
 import { TrustBadges } from '@/app/components/TrustBadges';
 import { UnderstandPanel } from '@/app/components/understand/UnderstandPanel';
@@ -246,7 +246,11 @@ export default function VersePage({ params }: PageProps) {
 
   // Same key as the chapter reader, so dotted verse numbers (Brihadaranyaka "1.3.28") find their commentary too.
   const comment = commentaryFor(meta.id, chapterId, params.verseId);
-  const explanation = comment?.explanation ?? verse.explanation ?? verse.commentary;
+  const { vyakhya, commentary } = splitVyakhyaCommentary(
+    [comment?.explanation, verse.explanation, verse.commentary],
+    verse.wordMeaning,
+  );
+  const explanation = vyakhya ?? commentary;
   const science = comment?.science ?? verse.science;
   const lesson = comment?.lifeLesson ?? verse.lifeLesson;
 

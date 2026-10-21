@@ -296,7 +296,8 @@ export function ReaderLayers({
   // until then the layer would just repeat the text above around an "add commentary" notice.
   const hasCommentary = (COMMENTARIES[verseKey(scriptureId, chapterId, verse.number)]?.length ?? 0) > 0;
   const showTradition = !isQuick && !settings.liteMode && hasCommentary;
-  const hasVyakhya = showTradition || Boolean(verse.explanation);
+  const hasVyakhya = Boolean(verse.explanation);
+  const hasCommentaryLayer = showTradition || Boolean(verse.commentary);
   const hasVigyan = Boolean(!settings.liteMode && verse.reflection) || Boolean(!isQuick && !settings.liteMode && verse.research);
 
   const handleInspectPada = (pada: string) => {
@@ -571,12 +572,48 @@ export function ReaderLayers({
           hasVyakhya && {
             id: 'vyakhya',
             labelHi: 'व्याख्या',
-            labelEn: 'Commentary',
+            labelEn: 'Vyakhya',
+            icon: Lightbulb,
+            hint: 'श्लोक का सरल हिन्दी विवेचन',
+            defaultOpen: true,
+            content: (
+              <Layer
+                id="layer-explanation"
+                kind="editorial"
+                title={isQuick ? 'Key Message' : 'Vyakhya (व्याख्या)'}
+                titleHi={isQuick ? 'मुख्य संदेश' : 'व्याख्या'}
+                collapsible={false}
+              >
+                <p
+                  lang={/[ऀ-ॿ]/.test(verse.explanation ?? '') ? 'hi' : 'en'}
+                  className={`whitespace-pre-line text-dharma-text ${tSize} ${/[ऀ-ॿ]/.test(verse.explanation ?? '') ? `${devLeading} font-devanagari` : `${latinLeading} font-serif`}`}
+                >
+                  {verse.explanation}
+                </p>
+              </Layer>
+            ),
+          },
+          hasCommentaryLayer && {
+            id: 'commentary',
+            labelHi: 'टीका एवं विवेचन',
+            labelEn: 'Commentary & Explanation',
             icon: Sparkles,
-            hint: 'परम्परागत भाष्य और सरल व्याख्या',
+            hint: 'Commentary in English and traditional bhashya',
             defaultOpen: true,
             content: (
               <div className="space-y-4">
+                {verse.commentary && (
+                  <Layer
+                    id="layer-commentary"
+                    kind="editorial"
+                    title="Commentary & Explanation"
+                    collapsible={false}
+                  >
+                    <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
+                      {verse.commentary}
+                    </p>
+                  </Layer>
+                )}
                 {showTradition && (
                   <Layer
                     id="layer-tradition"
@@ -592,27 +629,6 @@ export function ReaderLayers({
                       </p>
                     </div>
                     <CommentaryCompare scriptureId={scriptureId} chapterId={chapterId} verse={verse} />
-                  </Layer>
-                )}
-                {verse.explanation && (
-                  <Layer
-                    id="layer-explanation"
-                    kind="editorial"
-                    title={isQuick ? "Key Message" : "Simple Explanation (सरल व्याख्या)"}
-                    titleHi={isQuick ? "मुख्य संदेश" : "सरल व्याख्या"}
-                    badge={
-                      <span className="inline-flex items-center gap-1 rounded-full border border-sky-500/40 bg-sky-100/70 dark:bg-sky-900/40 px-2.5 py-0.5 text-[11px] font-bold text-sky-900 dark:text-sky-200">
-                        Editorial Exposition · Not Scripture
-                      </span>
-                    }
-                    collapsible={false}
-                  >
-                    <p
-                      lang={/[ऀ-ॿ]/.test(verse.explanation) ? 'hi' : 'en'}
-                      className={`whitespace-pre-line text-dharma-text ${tSize} ${/[ऀ-ॿ]/.test(verse.explanation) ? devLeading : latinLeading} ${/[ऀ-ॿ]/.test(verse.explanation) ? 'font-devanagari' : 'font-serif'}`}
-                    >
-                      {verse.explanation}
-                    </p>
                   </Layer>
                 )}
               </div>

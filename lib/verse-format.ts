@@ -50,6 +50,37 @@ export function isMostlyDevanagari(text: string | undefined): boolean {
   return deva > latin;
 }
 
+/**
+ * The reader shows a verse as श्लोक → अर्थ → व्याख्या → Commentary & Explanation.
+ * Hindi exposition is the व्याख्या and English the commentary, whichever field
+ * (Hindi commentary file, `explanation`, `commentary`) it was stored in.
+ * A word-by-word gloss stored in a commentary field is skipped: the पदच्छेद
+ * layer already shows it, and it is not an explanation.
+ */
+export function splitVyakhyaCommentary(
+  candidates: Array<string | undefined>,
+  wordMeaning?: string,
+): { vyakhya?: string; commentary?: string } {
+  let vyakhya: string | undefined;
+  let commentary: string | undefined;
+  const gloss = wordMeaning?.trim();
+  for (const text of candidates) {
+    if (!text || !text.trim()) continue;
+    if ((gloss && text.trim() === gloss) || looksLikeWordGloss(text)) continue;
+    if (isMostlyDevanagari(text)) vyakhya ??= text;
+    else commentary ??= text;
+  }
+  return { vyakhya, commentary };
+}
+
+/** "pada—meaning; pada—meaning; …": a word gloss, not prose. */
+export function looksLikeWordGloss(text: string): boolean {
+  const parts = text.split(/;\s*/).filter((p) => p.trim());
+  if (parts.length < 4) return false;
+  const pairs = parts.filter((p) => /^[^—–:]{1,40}\s*[—–]\s*\S/.test(p.trim())).length;
+  return pairs / parts.length > 0.7;
+}
+
 /** Drop source whitespace that shows up as a blank line under the verse. */
 export function cleanVerseField(text: string | undefined): string {
   if (!text) return '';

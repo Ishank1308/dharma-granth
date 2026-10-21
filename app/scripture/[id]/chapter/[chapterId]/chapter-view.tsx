@@ -318,7 +318,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   };
 
   return (
-    <main className="min-h-screen bg-dharma-bg">
+    <main data-chapter-reading className="min-h-screen bg-dharma-bg">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
