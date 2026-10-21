@@ -49,7 +49,6 @@ import {
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { formatCountDevanagari } from '@/lib/holdings-label';
 import { readActiveStreak } from '@/lib/reading-history';
-import logoMark from '@/public/logo-mark.webp';
 import { OPEN_SEARCH_EVENT, type OpenSearchDetail } from '@/lib/search-events';
 
 // Lazy-load the heavy search modal to avoid bundling search index in the critical path
@@ -565,7 +564,7 @@ export function SiteNav({
                 aria-hidden="true"
               >
                 <Image
-                  src={logoMark}
+                  src="/logo-mark.webp"
                   alt=""
                   width={40}
                   height={40}
@@ -848,7 +847,7 @@ export function SiteNav({
               <div className="flex items-center justify-between border-b border-dharma-border/80 px-4 py-3 sm:px-6">
                 <div className="flex items-center gap-2.5">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#fdf6ea] shadow-sm ring-1 ring-saffron-500/30">
-                    <Image src={logoMark} alt="" width={36} height={36} className="h-full w-full object-cover" />
+                    <Image src="/logo-mark.webp" alt="" width={36} height={36} className="h-full w-full object-cover" />
                   </span>
                   <div>
                     <h2 className="font-serif text-base font-bold text-dharma-text leading-tight">
