@@ -1,13 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { ArrowRight, Bookmark, BookOpen, ListChecks, FileClock } from 'lucide-react';
 import type { ReactNode } from 'react';
 import {
   LANGUAGES,
-  countLabel,
   isBeginnerFriendly,
-  plural,
   readingLevelOf,
   summaryOf,
   themesOf,
@@ -72,6 +71,60 @@ function Detail({ label, children }: { label: string; children: ReactNode }) {
 
 const missing = <span className="text-dharma-muted">{NOT_RECORDED}</span>;
 
+// English cover names follow the local Gita Press editions when that title is
+// present in the source collection; all other scriptures use the catalogue name.
+const GITA_PRESS_COVER_TITLES: Readonly<Record<string, string>> = {
+  ashtavakra: 'Ashtavakra Gita',
+  bhagavadgita: 'Shrimad Bhagavad Gita',
+  ishavasya: 'Ishavashya Upanishad',
+  kena: 'Keno Upanishad',
+  mundaka: 'Mundako Upanishad',
+  chandogya: 'Chandogyo Upanishad',
+  brihadaranyaka: 'Brihadaranyak Upanishad',
+  shvetashvatara: 'Shwetashwatara Upanishad',
+  taittiriya: 'Taitiriya Upanishad',
+  prashna: 'Prashnopanishad',
+  mahabharata: 'Mahabharat',
+  garudpurana: 'Garuda Puran',
+  harivanshpuran: 'Harivansh Puran',
+  naradapuran: 'Narad Puran',
+  padmapuran: 'Padma Puran',
+  brahmasutra: 'Vedant Darshan (Brahma Sutra)',
+  vivekchudamani: 'Vivek Chudamani',
+  viduraniti: 'Vidura Niti',
+  vinayapatrika: 'Vinaya Patrika',
+};
+
+const Realistic3DGranth = dynamic(
+  () => import('@/app/components/motion/Realistic3DGranth').then((mod) => mod.Realistic3DGranth),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-80 w-64 items-center justify-center rounded-2xl border border-amber-400/30 bg-stone-900 text-sm text-amber-100 sm:w-72">
+        Opening book preview…
+      </div>
+    ),
+  },
+);
+
+function LibraryBookPreview({ item, categoryLabel }: { item: LibraryItem; categoryLabel: string }) {
+  const countLabel = item.totalVerses > 0
+    ? `${formatNumber(item.totalChapters)} Chapters · ${formatNumber(item.totalVerses)} Verses`
+    : 'ग्रंथ सूची';
+
+  return (
+    <div className="mt-3 flex min-h-[24rem] items-center justify-center overflow-visible">
+      <Realistic3DGranth
+        compact
+        title={item.titleSanskrit || item.title}
+        englishTitle={GITA_PRESS_COVER_TITLES[item.id] ?? item.title}
+        subTitle={item.author ? `Attributed to ${item.author}` : categoryLabel}
+        verseCount={countLabel}
+      />
+    </div>
+  );
+}
+
 export function LibraryCard({
   item,
   categoryLabel,
@@ -85,20 +138,8 @@ export function LibraryCard({
   saved: boolean;
   onToggleSave: (id: string) => void;
 }) {
-  const counts = countLabel(item);
   const detailed = view === 'detailed';
   const headingId = `lib-${item.id}-title`;
-  // Indexed chapters and canonical verse totals are different measures; never show them as one count.
-  const hasCanonical = item.canonicalTotalVerses != null && item.canonicalTotalVerses !== item.totalVerses;
-  const chapterLabel = hasCanonical ? `${plural(item.totalChapters, 'chapter')} indexed` : counts.chapters;
-  const verses = item.isCurated && item.canonicalTotalVerses
-    ? `${plural(item.totalVerses, 'verse')} selected · ${formatNumber(item.canonicalTotalVerses)} canonical verses`
-    : hasCanonical
-      ? `${formatNumber(item.canonicalTotalVerses as number)} canonical verses`
-      : counts.verses;
-  const verseCatalogue = item.isCurated || !hasCanonical
-    ? undefined
-    : `${plural(item.totalVerses, 'verse')} readable in this library`;
   const level = readingLevelOf(item);
   const themes = themesOf(item).slice(0, 6);
   const updated = formatDate(item.facts.lastUpdated, true);
@@ -106,6 +147,7 @@ export function LibraryCard({
   const commentary: string[] = [];
   if (item.facts.hindiCommentary) commentary.push('Hindi verse-by-verse commentary');
   if (item.explanation) commentary.push('Book overview (English & Hindi)');
+  const readingHref = item.id === 'ashtavakra' ? '/ashtavakra/' : `/scripture/${item.id}`;
 
   return (
     <article
@@ -127,13 +169,13 @@ export function LibraryCard({
         </button>
       </header>
 
-      <h3 id={headingId} className="mt-1">
-        <span lang="sa" className="block font-devanagari text-[1.375rem] font-semibold leading-[1.6] text-dharma-text">
-          {item.titleSanskrit}
-        </span>
-        <span className="mt-0.5 block font-serif text-lg font-bold leading-snug text-dharma-text">{item.title}</span>
+      <h3 id={headingId} className="sr-only">
+        <span lang="sa" className="font-devanagari">{item.titleSanskrit}</span>
+        <span lang="en">{item.title}</span>
         {detailed && item.titleIast && <span className="mt-0.5 block font-serif text-sm italic text-dharma-muted">{item.titleIast}</span>}
       </h3>
+
+      <LibraryBookPreview item={item} categoryLabel={categoryLabel} />
 
       <p className={`mt-3 text-sm leading-relaxed text-dharma-muted ${detailed ? '' : 'line-clamp-3'}`}>
         {detailed ? item.description : summaryOf(item.description)}
@@ -143,13 +185,6 @@ export function LibraryCard({
           {item.explanation.overview.hi}
         </p>
       )}
-
-      <p className="mt-4 text-sm font-medium text-dharma-text">
-        {chapterLabel} <span aria-hidden="true">·</span> {verses}
-        {verseCatalogue && (
-          <span className="mt-1 block text-xs font-normal text-dharma-muted">{verseCatalogue}</span>
-        )}
-      </p>
 
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
         <LanguageChips item={item} />
@@ -172,9 +207,9 @@ export function LibraryCard({
         </dl>
       )}
 
-      <div className="mt-auto pt-5">
+      <div className="mt-auto flex flex-wrap items-center gap-2 pt-5">
         <Link
-          href={`/scripture/${item.id}`}
+          href={readingHref}
           aria-label={`Start reading ${item.title}`}
           className="focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-full bg-saffron-700 px-5 text-sm font-semibold text-white transition hover:bg-saffron-800 group-hover:shadow-md"
         >
