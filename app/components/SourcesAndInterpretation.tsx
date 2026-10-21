@@ -21,6 +21,7 @@ import {
 import { CONTENT_LABELS, type ContentLabelKey } from '@/lib/content-labels';
 import {
   getScriptureSourceMeta,
+  SCRIPTURE_SOURCES,
   type ScriptureSourceMeta,
   type SourceCorrectionEntry,
 } from '@/data/sources-registry';
@@ -55,18 +56,8 @@ export function SourcesAndInterpretation({
     scriptureTitleSanskrit,
   );
 
-  // Active tab on desktop
-  const [activeTab, setActiveTab] = useState<'corrections'>('corrections');
-  const onTabKey = (e: React.KeyboardEvent) => {
-    const ids = ['corrections'] as const;
-    const i = ids.indexOf(activeTab);
-    const n = e.key === 'ArrowRight' ? (i + 1) % 1 : e.key === 'ArrowLeft' ? (i + 0) % 1 : -1;
-    if (n < 0) return;
-    e.preventDefault();
-    e.stopPropagation();
-    setActiveTab(ids[n]);
-    setTimeout(() => document.getElementById(`src-tab-${ids[n]}`)?.focus(), 0);
-  };
+  // A variant note only when one is recorded for this text (not the registry's default line).
+  const variantNote = SCRIPTURE_SOURCES[scriptureId]?.alternativeReadingNote;
 
   // Report correction modal state
   const [reportModalOpen, setReportModalOpen] = useState(false);
@@ -122,15 +113,19 @@ export function SourcesAndInterpretation({
         </button>
       </div>
 
-      {/* ── 1. Content Labels: 6 Epistemic Tiers Guide ── */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
+      {/* ── 1. Content Labels: 6 Epistemic Tiers Guide ──
+          The same guide on every verse page, so it stays folded until asked for. */}
+      <details className="group space-y-3">
+        <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-2 rounded-xl [&::-webkit-details-marker]:hidden">
           <h3 className="text-xs font-bold uppercase tracking-wider text-dharma-muted flex items-center gap-1.5">
             <Layers className="w-3.5 h-3.5 text-saffron-600" />
             सामग्री वर्गीकरण संकेत (Epistemic Content Labels)
           </h3>
-          <span className="text-[11px] text-dharma-muted">६ स्तरिय प्रमाण व्यवस्था</span>
-        </div>
+          <span className="flex items-center gap-1 text-[11px] text-dharma-muted">
+            ६ स्तरिय प्रमाण व्यवस्था
+            <ChevronDown className="h-3.5 w-3.5 transition group-open:rotate-180" aria-hidden="true" />
+          </span>
+        </summary>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
           {labelKeys.map((key) => {
@@ -163,78 +158,46 @@ export function SourcesAndInterpretation({
             );
           })}
         </div>
-      </div>
+      </details>
 
-      {/* ── 2. Unified Responsive Tabbed Panel ── */}
-      <div className="pt-2">
-        {/* Navigation Tabs */}
-        <div className="flex border-b border-dharma-border gap-1 sm:gap-2 overflow-x-auto pb-1 scrollbar-none" role="tablist" aria-label="Sources and interpretation">
-          <button
-            type="button"
-            role="tab"
-            id="src-tab-corrections"
-            aria-selected={activeTab === 'corrections'}
-            aria-controls="src-panel"
-            tabIndex={activeTab === 'corrections' ? 0 : -1}
-            onKeyDown={onTabKey}
-            onClick={() => setActiveTab('corrections')}
-            className={`pb-2.5 px-3 text-xs font-bold border-b-2 transition flex items-center gap-1.5 ${
-              activeTab === 'corrections'
-                ? 'border-saffron-600 text-saffron-700 dark:text-saffron-300'
-                : 'border-transparent text-dharma-muted hover:text-dharma-text'
-            }`}
-          >
-            <History className="w-3.5 h-3.5" />
-            <span>पाठ-भेद एवं संशोधन (Variants & History)</span>
-          </button>
-        </div>
-
-        <div role="tabpanel" id="src-panel" aria-labelledby={`src-tab-${activeTab}`}>
-        {/* Tab Content 3: Variants & Corrections */}
-        {activeTab === 'corrections' && (
-          <div className="pt-4 space-y-4 text-xs">
+      {/* ── 2. Variants & corrections: only what is actually recorded for this text ── */}
+      {(variantNote || meta.correctionHistory.length > 0) && (
+        <div className="space-y-4 border-t border-dharma-border pt-4 text-xs">
+          <h3 className="flex items-center gap-1.5 text-xs font-bold text-saffron-700 dark:text-saffron-300">
+            <History className="w-3.5 h-3.5" aria-hidden="true" />
+            <span lang="hi" className="font-devanagari">पाठ-भेद एवं संशोधन</span>
+            <span aria-hidden="true">·</span>
+            <span>Variants & corrections</span>
+          </h3>
+          {variantNote && (
             <div className="p-3.5 rounded-xl border border-amber-200/60 dark:border-amber-900/40 bg-amber-50/40 dark:bg-amber-950/20 space-y-1">
               <span className="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-1.5">
-                <Info className="w-3.5 h-3.5 text-amber-700" />
+                <Info className="w-3.5 h-3.5 text-amber-700" aria-hidden="true" />
                 पाठ-भेद टिप्पणी (Alternative Reading / Variant Notes):
               </span>
-              <p className="text-dharma-text leading-relaxed mt-0.5">{meta.alternativeReadingNote}</p>
+              <p className="text-dharma-text leading-relaxed mt-0.5">{variantNote}</p>
             </div>
-
-            <div className="space-y-2">
-              <span className="font-bold text-dharma-muted uppercase tracking-wider text-[11px]">
-                संशोधन इतिहास · Correction History:
-              </span>
-              <div className="space-y-2">
-                {meta.correctionHistory.length === 0 && (
-                  <p className="text-dharma-muted">
-                    No corrections are logged here yet. Reported errors are tracked as public issues on GitHub.
-                  </p>
-                )}
-                {meta.correctionHistory.map((entry: SourceCorrectionEntry, idx: number) => (
-                  <div
-                    key={idx}
-                    className="p-3 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 flex items-start justify-between gap-3"
-                  >
-                    <div className="space-y-0.5">
-                      <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded-md bg-stone-200 dark:bg-stone-800 text-[10px] font-bold">
-                          {entry.version}
-                        </span>
-                        <span className="text-dharma-muted text-[11px]">{entry.date}</span>
-                      </div>
-                      <p className="text-dharma-text font-devanagari">{entry.noteHi}</p>
-                      <p className="text-dharma-muted text-[11px]">{entry.note}</p>
-                    </div>
-                    <FileCheck2 className="w-4 h-4 text-emerald-600 shrink-0 mt-1" />
-                  </div>
-                ))}
+          )}
+          {meta.correctionHistory.map((entry: SourceCorrectionEntry, idx: number) => (
+            <div
+              key={idx}
+              className="p-3 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/40 flex items-start justify-between gap-3"
+            >
+              <div className="space-y-0.5">
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-0.5 rounded-md bg-stone-200 dark:bg-stone-800 text-[10px] font-bold">
+                    {entry.version}
+                  </span>
+                  <span className="text-dharma-muted text-[11px]">{entry.date}</span>
+                </div>
+                <p className="text-dharma-text font-devanagari">{entry.noteHi}</p>
+                <p className="text-dharma-muted text-[11px]">{entry.note}</p>
               </div>
+              <FileCheck2 className="w-4 h-4 text-emerald-600 shrink-0 mt-1" aria-hidden="true" />
             </div>
-          </div>
-        )}
+          ))}
         </div>
-      </div>
+      )}
 
       {/* ── 3. Report Correction Accessible Modal ── */}
       {reportModalOpen && (
