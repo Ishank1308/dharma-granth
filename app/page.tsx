@@ -56,28 +56,28 @@ export default function HomePage() {
         {/* 2. Continue reading, or a beginner path when there is no history */}
         <ContinueReading />
 
-        {/* 3. Verse of the day, compact */}
-        <VerseOfTheDayCompact />
-
-        {/* 3b. Mood compass: curated verses for how the reader feels right now */}
-        <MoodCompass moods={getMoodCompass()} />
-
-        {/* 4. Browse by scripture category */}
-        <CategoryExploreSection />
-
-        {/* 5. Browse by life situation */}
-        <LifeSituationsSection />
-
-        {/* 6. Recommended scriptures */}
+        {/* 3. Make the scripture library the first clear browse destination */}
         <FeaturedScripturesSection />
 
-        {/* 7. Touch & Contemplate: 3D Sacred Experience System */}
+        {/* 4. A short daily reading, followed by alternative discovery paths */}
+        <VerseOfTheDayCompact />
+
+        {/* 5. Mood compass: curated verses for how the reader feels right now */}
+        <MoodCompass moods={getMoodCompass()} />
+
+        {/* 6. Browse by scripture category */}
+        <CategoryExploreSection />
+
+        {/* 7. Browse by life situation */}
+        <LifeSituationsSection />
+
+        {/* 8. Touch & Contemplate: 3D Sacred Experience System */}
         <Experience3DSection gitaCountLabel="१८ अध्याय · ७०० श्लोक" />
 
-        {/* 8. Practice tools preview */}
+        {/* 9. Practice tools preview */}
         <SadhanaPreviewSection />
 
-        {/* 9. Trust, sourcing and methodology */}
+        {/* 10. Trust, sourcing and methodology */}
         <HomeTrustStrip />
       </main>
       <SiteFooter />
