@@ -5,9 +5,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "सञ्जय उवाच\n\nतं तथा कृपयाऽविष्टमश्रुपूर्णाकुलेक्षणम्।\n\nविषीदन्तमिदं वाक्यमुवाच मधुसूदनः।।2.1।।\n "
   },
   "2:2": {
@@ -16,9 +16,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "श्री भगवानुवाच\n\nकुतस्त्वा कश्मलमिदं विषमे समुपस्थितम्।\n\nअनार्यजुष्टमस्वर्ग्यमकीर्तिकरमर्जुन।।2.2।।\n "
   },
   "2:3": {
@@ -27,9 +27,9 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "The Gita Press Hindi renders क्लैब्य as 'नपुंसकता'; the draft uses 'दुर्बलता' to stay respectful. Please confirm.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "क्लैब्यं मा स्म गमः पार्थ नैतत्त्वय्युपपद्यते।\n\nक्षुद्रं हृदयदौर्बल्यं त्यक्त्वोत्तिष्ठ परन्तप।।2.3।।\n "
   },
   "2:4": {
@@ -38,9 +38,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "अर्जुन उवाच\n\nकथं भीष्ममहं संख्ये द्रोणं च मधुसूदन।\n\nइषुभिः प्रतियोत्स्यामि पूजार्हावरिसूदन।।2.4।।\n "
   },
   "2:5": {
@@ -49,20 +49,20 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "गुरूनहत्वा हि महानुभावान्\n\nश्रेयो भोक्तुं भैक्ष्यमपीह लोके।\n\nहत्वार्थकामांस्तु गुरूनिहैव\n\nभुञ्जीय भोगान् रुधिरप्रदिग्धान्।।2.5।।\n "
   },
   "2:6": {
-    "explanation": "इस श्लोक में अर्जुन का मन किसी निर्णय पर नहीं, एक गहरे असमंजस पर आकर रुक गया है। 'न चैतद्विद्मः कतरन्नो गरीयः', हम यह भी नहीं जानते कि हमारे लिए क्या श्रेष्ठ है: लड़ना या न लड़ना, जीतना या हारना। यह वह अवस्था है जब मन हर ओर से घिर जाता है और कोई भी द्वार खुला दिखाई नहीं देता।\n\nसबसे मार्मिक है उनका यह कथन: 'यानेव हत्वा न जिजीविषामः', जिन्हें मारकर हम जीना भी नहीं चाहेंगे, वही सामने खड़े हैं। अर्थात् विजय भी उनके लिए पराजय जैसी है। यह केवल युद्ध का भय नहीं, उस जीवन का भय है जो विजय के बाद बचेगा: अपनों के बिना, स्मृतियों के बोझ के साथ। जब विजय और पराजय दोनों ही दुःख के रूप दिखें, तब मनुष्य समझ जाता है कि समस्या परिस्थिति में नहीं, उसकी दृष्टि में है।\n\nयही इस श्लोक का मोड़ है। अर्जुन अब तर्क की सीमा तक पहुँच चुके हैं। उनकी बुद्धि थक गई है, और यही थकान उन्हें अगले श्लोक में शरणागति तक ले जाएगी। जीवन में भी, जब हमारे सारे तर्क एक-दूसरे को काटने लगें, तब यह स्वीकार करना कि 'मैं नहीं जानता', अज्ञान नहीं, ज्ञान की पहली सीढ़ी होता है।",
+    "explanation": "इस श्लोक में अर्जुन का मन किसी निर्णय पर नहीं, एक गहरे असमंजस पर आकर रुक गया है। 'न चैतद्विद्मः कतरन्नो गरीयः', हम यह भी नहीं जानते कि हमारे लिए क्या श्रेष्ठ है: लड़ना या न लड़ना, जीतना या हारना। यह वह अवस्था है जब मन हर ओर से घिर जाता है और कोई भी द्वार खुला दिखाई नहीं देता।\n\nसबसे मार्मिक है उनका यह कथन: 'यानेव हत्वा न जिजीविषामः', जिन्हें मारकर हम जीना भी नहीं चाहेंगे, वही सामने खड़े हैं। अर्थात् विजय भी उनके लिए पराजय जैसी है। यह केवल युद्ध का भय नहीं, उस जीवन का भय है जो विजय के बाद बचेगा: अपनों के बिना, स्मृतियों के बोझ के साथ। जब विजय और पराजय दोनों ही दुःख के रूप दिखें, तब मनुष्य समझ जाता है कि समस्या परिस्थिति में नहीं, उसकी दृष्टि में है।\n\nयही इस श्लोक का मोड़ है। अर्जुन अब तर्क की सीमा तक पहुँच चुके हैं। उनकी बुद्धि थक गई है, और यही श्रान्ति उन्हें अगले श्लोक में शरणागति तक ले जाएगी। जीवन में भी, जब हमारे सारे तर्क एक-दूसरे को काटने लगें, तब यह स्वीकार करना कि 'मैं नहीं जानता', अज्ञान नहीं, ज्ञान की पहली सीढ़ी होता है।",
     "science": "",
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "न चैतद्विद्मः कतरन्नो गरीयो\n\nयद्वा जयेम यदि वा नो जयेयुः।\n\nयानेव हत्वा न जिजीविषाम\n\nस्तेऽवस्थिताः प्रमुखे धार्तराष्ट्राः।।2.6।।\n "
   },
   "2:7": {
@@ -71,9 +71,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "कार्पण्यदोषोपहतस्वभावः\n\nपृच्छामि त्वां धर्मसंमूढचेताः।\n\nयच्छ्रेयः स्यान्निश्चितं ब्रूहि तन्मे\n\nशिष्यस्तेऽहं शाधि मां त्वां प्रपन्नम्।।2.7।।\n "
   },
   "2:8": {
@@ -82,20 +82,20 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "न हि प्रपश्यामि ममापनुद्या\n\nद्यच्छोकमुच्छोषणमिन्द्रियाणाम्।\n\nअवाप्य भूमावसपत्नमृद्धम्\n\nराज्यं सुराणामपि चाधिपत्यम्।।2.8।।\n "
   },
   "2:9": {
-    "explanation": "संजय इस क्षण को एक ऐसे मौन में बाँधते हैं जो पूरे युद्धक्षेत्र पर छा जाता है। 'गुडाकेश', निद्रा को जीतने वाले अर्जुन, जो कभी थकते नहीं थे, 'हृषीकेश', इन्द्रियों के स्वामी भगवान से स्पष्ट शब्दों में कह देते हैं: 'न योत्स्ये', मैं युद्ध नहीं करूँगा। और फिर 'तूष्णीं बभूव ह', वे चुप हो जाते हैं।\n\nइन दो नामों का एक साथ आना बहुत अर्थपूर्ण है। जिसने निद्रा को जीता है, वह आज मोह की निद्रा में डूब गया है; और जो इन्द्रियों का स्वामी है, वही उसे जगाने वाला है। अर्जुन का यह मौन हार का मौन नहीं, थकान का मौन है। उन्होंने अपनी सारी बात कह दी, अपनी सारी पीड़ा उड़ेल दी, अब उनके पास कहने को कुछ नहीं बचा।\n\nपर इसी मौन में गीता का द्वार खुलता है। जब तक अर्जुन बोल रहे थे, तब तक वे केवल अपनी सुन रहे थे। अब जब वे चुप हुए, तब भगवान की वाणी के लिए स्थान बना। हमारे जीवन में भी, जब हम अपनी उलझनों को कहते-कहते थक जाते हैं और भीतर मौन हो जाते हैं, वही मौन सबसे उपजाऊ होता है। उस मौन से डरिए नहीं; प्रायः वहीं से उत्तर आता है।",
+    "explanation": "संजय इस क्षण को एक ऐसे मौन में बाँधते हैं जो पूरे युद्धक्षेत्र पर छा जाता है। 'गुडाकेश', निद्रा को जीतने वाले अर्जुन, जो कभी थकते नहीं थे, 'हृषीकेश', इन्द्रियों के स्वामी भगवान से स्पष्ट शब्दों में कह देते हैं: 'न योत्स्ये', मैं युद्ध नहीं करूँगा। और फिर 'तूष्णीं बभूव ह', वे चुप हो जाते हैं।\n\nइन दो नामों का एक साथ आना बहुत अर्थपूर्ण है। जिसने निद्रा को जीता है, वह आज मोह की निद्रा में डूब गया है; और जो इन्द्रियों का स्वामी है, वही उसे जगाने वाला है। अर्जुन का यह मौन हार का मौन नहीं, श्रान्ति का मौन है। उन्होंने अपनी सारी बात कह दी, अपनी सारी पीड़ा उड़ेल दी, अब उनके पास कहने को कुछ नहीं बचा।\n\nपर इसी मौन में गीता का द्वार खुलता है। जब तक अर्जुन बोल रहे थे, तब तक वे केवल अपनी सुन रहे थे। अब जब वे चुप हुए, तब भगवान की वाणी के लिए स्थान बना। हमारे जीवन में भी, जब हम अपनी उलझनों को कहते-कहते थक जाते हैं और भीतर मौन हो जाते हैं, वही मौन सबसे उपजाऊ होता है। उस मौन से डरिए नहीं; प्रायः वहीं से उत्तर आता है।",
     "science": "",
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "सञ्जय उवाच\n\nएवमुक्त्वा हृषीकेशं गुडाकेशः परन्तप।\n\nन योत्स्य इति गोविन्दमुक्त्वा तूष्णीं बभूव ह।।2.9।।\n "
   },
   "2:10": {
@@ -104,9 +104,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "The stored English for 2.10 adds '(by way of ridicule)', which is a gloss not in the verse; the draft reads प्रहसन्निव as an affectionate smile, as most commentators do.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "तमुवाच हृषीकेशः प्रहसन्निव भारत।\n\nसेनयोरुभयोर्मध्ये विषीदन्तमिदं वचः।।2.10।।\n "
   },
   "2:11": {
@@ -115,9 +115,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.11.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "श्री भगवानुवाच\n\nअशोच्यानन्वशोचस्त्वं प्रज्ञावादांश्च भाषसे।\n\nगतासूनगतासूंश्च नानुशोचन्ति पण्डिताः।।2.11।।\n ",
     "replacesHandWritten": true
   },
@@ -127,9 +127,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "न त्वेवाहं जातु नासं न त्वं नेमे जनाधिपाः।\n\nन चैव न भविष्यामः सर्वे वयमतः परम्।।2.12।।\n "
   },
   "2:13": {
@@ -138,9 +138,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.13.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "देहिनोऽस्मिन्यथा देहे कौमारं यौवनं जरा।\n\nतथा देहान्तरप्राप्तिर्धीरस्तत्र न मुह्यति।।2.13।।\n ",
     "replacesHandWritten": true
   },
@@ -150,9 +150,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.14.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः।\n\nआगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत।।2.14।।\n ",
     "replacesHandWritten": true
   },
@@ -162,9 +162,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "यं हि न व्यथयन्त्येते पुरुषं पुरुषर्षभ।\n\nसमदुःखसुखं धीरं सोऽमृतत्वाय कल्पते।।2.15।।\n "
   },
   "2:16": {
@@ -173,9 +173,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "नासतो विद्यते भावो नाभावो विद्यते सतः।\n\nउभयोरपि दृष्टोऽन्तस्त्वनयोस्तत्त्वदर्शिभिः।।2.16।।\n "
   },
   "2:17": {
@@ -184,9 +184,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "अविनाशि तु तद्विद्धि येन सर्वमिदं ततम्।\n\nविनाशमव्ययस्यास्य न कश्चित् कर्तुमर्हति।।2.17।।\n "
   },
   "2:18": {
@@ -195,9 +195,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Contains 'तस्माद्युध्यस्व'; the draft states clearly that this is about not abandoning a righteous duty, not an endorsement of violence.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "अन्तवन्त इमे देहा नित्यस्योक्ताः शरीरिणः।\n\nअनाशिनोऽप्रमेयस्य तस्माद्युध्यस्व भारत।।2.18।।\n "
   },
   "2:19": {
@@ -206,9 +206,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Notes the near-identical Katha Upanishad verse (1.2.19). Draft says plainly that it is not a licence for violence.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "य एनं वेत्ति हन्तारं यश्चैनं मन्यते हतम्।\n\nउभौ तौ न विजानीतो नायं हन्ति न हन्यते।।2.19।।\n "
   },
   "2:20": {
@@ -217,9 +217,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.20. Near-identical to Katha Upanishad 1.2.18.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "न जायते म्रियते वा कदाचि\n\nन्नायं भूत्वा भविता वा न भूयः।\n\nअजो नित्यः शाश्वतोऽयं पुराणो\n\nन हन्यते हन्यमाने शरीरे।।2.20।।\n ",
     "replacesHandWritten": true
   },
@@ -229,9 +229,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "वेदाविनाशिनं नित्यं य एनमजमव्ययम्।\n\nकथं स पुरुषः पार्थ कं घातयति हन्ति कम्।।2.21।।\n "
   },
   "2:22": {
@@ -240,9 +240,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.22.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "वासांसि जीर्णानि यथा विहाय\n\nनवानि गृह्णाति नरोऽपराणि।\n\nतथा शरीराणि विहाय जीर्णा\n\nन्यन्यानि संयाति नवानि देही।।2.22।।\n ",
     "replacesHandWritten": true
   },
@@ -252,9 +252,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.23.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "नैनं छिन्दन्ति शस्त्राणि नैनं दहति पावकः।\n\nन चैनं क्लेदयन्त्यापो न शोषयति मारुतः।।2.23।।\n ",
     "replacesHandWritten": true
   },
@@ -264,9 +264,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "अच्छेद्योऽयमदाह्योऽयमक्लेद्योऽशोष्य एव च।\n\nनित्यः सर्वगतः स्थाणुरचलोऽयं सनातनः।।2.24।।\n "
   },
   "2:25": {
@@ -275,9 +275,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "अव्यक्तोऽयमचिन्त्योऽयमविकार्योऽयमुच्यते।\n\nतस्मादेवं विदित्वैनं नानुशोचितुमर्हसि।।2.25।।\n "
   },
   "2:26": {
@@ -286,9 +286,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "अथ चैनं नित्यजातं नित्यं वा मन्यसे मृतम्।\n\nतथापि त्वं महाबाहो नैवं शोचितुमर्हसि।।2.26।।\n "
   },
   "2:27": {
@@ -297,9 +297,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.27. Refers to the Yaksha-prashna in the Mahabharata (Vana Parva) in paraphrase, not quotation.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "जातस्य हि ध्रुवो मृत्युर्ध्रुवं जन्म मृतस्य च।\n\nतस्मादपरिहार्येऽर्थे न त्वं शोचितुमर्हसि।।2.27।।\n ",
     "replacesHandWritten": true
   },
@@ -309,9 +309,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "अव्यक्तादीनि भूतानि व्यक्तमध्यानि भारत।\n\nअव्यक्तनिधनान्येव तत्र का परिदेवना।।2.28।।\n "
   },
   "2:29": {
@@ -320,9 +320,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "आश्चर्यवत्पश्यति कश्चिदेन\n\nमाश्चर्यवद्वदति तथैव चान्यः।\n\nआश्चर्यवच्चैनमन्यः श्रृणोति\n\nश्रुत्वाप्येनं वेद न चैव कश्चित्।।2.29।।\n "
   },
   "2:30": {
@@ -331,9 +331,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "देही नित्यमवध्योऽयं देहे सर्वस्य भारत।\n\nतस्मात्सर्वाणि भूतानि न त्वं शोचितुमर्हसि।।2.30।।\n "
   },
   "2:31": {
@@ -342,9 +342,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Kshatriya-dharma verse; the draft frames 'धर्म्य युद्ध' as resistance to injustice after peace was refused, and generalises to svadharma. Mentions the five-villages episode from the Mahabharata in paraphrase.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "स्वधर्ममपि चावेक्ष्य न विकम्पितुमर्हसि।\n\nधर्म्याद्धि युद्धाछ्रेयोऽन्यत्क्षत्रियस्य न विद्यते।।2.31।।\n "
   },
   "2:32": {
@@ -353,9 +353,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Kshatriya-dharma verse; framed around a duty that arrives unsought after peace failed.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "यदृच्छया चोपपन्नं स्वर्गद्वारमपावृतम्।\n\nसुखिनः क्षत्रियाः पार्थ लभन्ते युद्धमीदृशम्।।2.32।।\n "
   },
   "2:33": {
@@ -364,9 +364,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "अथ चैत्त्वमिमं धर्म्यं संग्रामं न करिष्यसि।\n\nततः स्वधर्मं कीर्तिं च हित्वा पापमवाप्स्यसि।।2.33।।\n "
   },
   "2:34": {
@@ -375,9 +375,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "अकीर्तिं चापि भूतानि कथयिष्यन्ति तेऽव्ययाम्।\n\nसंभावितस्य चाकीर्तिर्मरणादतिरिच्यते।।2.34।।\n "
   },
   "2:35": {
@@ -386,9 +386,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "भयाद्रणादुपरतं मंस्यन्ते त्वां महारथाः।\n\nयेषां च त्वं बहुमतो भूत्वा यास्यसि लाघवम्।।2.35।।\n "
   },
   "2:36": {
@@ -397,9 +397,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "अवाच्यवादांश्च बहून् वदिष्यन्ति तवाहिताः।\n\nनिन्दन्तस्तव सामर्थ्यं ततो दुःखतरं नु किम्।।2.36।।\n "
   },
   "2:37": {
@@ -408,9 +408,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "हतो वा प्राप्स्यसि स्वर्गं जित्वा वा भोक्ष्यसे महीम्।\n\nतस्मादुत्तिष्ठ कौन्तेय युद्धाय कृतनिश्चयः।।2.37।।\n "
   },
   "2:38": {
@@ -419,9 +419,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.38.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "सुखदुःखे समे कृत्वा लाभालाभौ जयाजयौ।\n\nततो युद्धाय युज्यस्व नैवं पापमवाप्स्यसि।।2.38।।\n ",
     "replacesHandWritten": true
   },
@@ -431,9 +431,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "एषा तेऽभिहिता सांख्ये बुद्धिर्योगे त्विमां श्रृणु।\n\nबुद्ध्यायुक्तो यया पार्थ कर्मबन्धं प्रहास्यसि।।2.39।।\n "
   },
   "2:40": {
@@ -442,9 +442,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "नेहाभिक्रमनाशोऽस्ति प्रत्यवायो न विद्यते।\n\nस्वल्पमप्यस्य धर्मस्य त्रायते महतो भयात्।।2.40।।\n "
   },
   "2:41": {
@@ -453,9 +453,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "व्यवसायात्मिका बुद्धिरेकेह कुरुनन्दन।\n\nबहुशाखा ह्यनन्ताश्च बुद्धयोऽव्यवसायिनाम्।।2.41।।\n "
   },
   "2:42": {
@@ -464,9 +464,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Gita Press translates 2.42–44 as one passage; the stored English for 2.42–44 is also one shared passage (2.44's English repeats it). Draft stresses that the verse criticises a desire-centred reading of the Vedas, not the Vedas themselves.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "यामिमां पुष्पितां वाचं प्रवदन्त्यविपश्चितः।\n\nवेदवादरताः पार्थ नान्यदस्तीति वादिनः।।2.42।।\n "
   },
   "2:43": {
@@ -475,9 +475,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Same combined Gita Press Hindi as 2.42.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "कामात्मानः स्वर्गपरा जन्मकर्मफलप्रदाम्।\n\nक्रियाविशेषबहुलां भोगैश्वर्यगतिं प्रति।।2.43।।\n "
   },
   "2:44": {
@@ -486,9 +486,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "The stored English for 2.44 repeats the whole 2.42–43 passage; worth fixing in the data.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "भोगैश्वर्यप्रसक्तानां तयापहृतचेतसाम्।\n\nव्यवसायात्मिका बुद्धिः समाधौ न विधीयते।।2.44।।\n "
   },
   "2:45": {
@@ -497,9 +497,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Links to 9.22 (योगक्षेमं वहाम्यहम्).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "त्रैगुण्यविषया वेदा निस्त्रैगुण्यो भवार्जुन।\n\nनिर्द्वन्द्वो नित्यसत्त्वस्थो निर्योगक्षेम आत्मवान्।।2.45।।\n "
   },
   "2:46": {
@@ -508,9 +508,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "The stored English for 2.46 is garbled ('What use does a thirsty person have for a water reservoir when all sides of it are flooded—that is the only use…'); worth fixing.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "यावानर्थ उदपाने सर्वतः संप्लुतोदके।\n\nतावान्सर्वेषु वेदेषु ब्राह्मणस्य विजानतः।।2.46।।\n "
   },
   "2:47": {
@@ -519,9 +519,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.47. This is the sample you approved, lightly tightened.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\n\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि।।2.47।।\n ",
     "replacesHandWritten": true
   },
@@ -531,9 +531,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.48.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय।\n\nसिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते।।2.48।।\n ",
     "replacesHandWritten": true
   },
@@ -543,9 +543,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "दूरेण ह्यवरं कर्म बुद्धियोगाद्धनञ्जय।\n\nबुद्धौ शरणमन्विच्छ कृपणाः फलहेतवः।।2.49।।\n "
   },
   "2:50": {
@@ -554,9 +554,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.50.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "बुद्धियुक्तो जहातीह उभे सुकृतदुष्कृते।\n\nतस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम्।।2.50।।\n ",
     "replacesHandWritten": true
   },
@@ -566,9 +566,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "कर्मजं बुद्धियुक्ता हि फलं त्यक्त्वा मनीषिणः।\n\nजन्मबन्धविनिर्मुक्ताः पदं गच्छन्त्यनामयम्।।2.51।।\n "
   },
   "2:52": {
@@ -577,9 +577,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "The stored English says 'you will yourself feel disgusted with…', which is harsh for निर्वेद; the draft reads it as calm dispassion.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "यदा ते मोहकलिलं बुद्धिर्व्यतितरिष्यति।\n\nतदा गन्तासि निर्वेदं श्रोतव्यस्य श्रुतस्य च।।2.52।।\n "
   },
   "2:53": {
@@ -588,9 +588,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "The stored English for 2.53 ('having been well enlightened by hearing from Me') departs from the Sanskrit (श्रुतिविप्रतिपन्ना = confused by conflicting texts).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "श्रुतिविप्रतिपन्ना ते यदा स्थास्यति निश्चला।\n\nसमाधावचला बुद्धिस्तदा योगमवाप्स्यसि।।2.53।।\n "
   },
   "2:54": {
@@ -599,9 +599,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Mentions that Gandhi used the sthitaprajna verses in daily prayer, which is well documented; drop if you prefer no modern names.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "अर्जुन उवाच\n\nस्थितप्रज्ञस्य का भाषा समाधिस्थस्य केशव।\n\nस्थितधीः किं प्रभाषेत किमासीत व्रजेत किम्।।2.54।।\n "
   },
   "2:55": {
@@ -610,9 +610,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "श्री भगवानुवाच\n\nप्रजहाति यदा कामान् सर्वान् पार्थ मनोगतान्।\n\nआत्मन्येवात्मना तुष्टः स्थितप्रज्ञस्तदोच्यते।।2.55।।\n "
   },
   "2:56": {
@@ -621,9 +621,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.56.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "दुःखेष्वनुद्विग्नमनाः सुखेषु विगतस्पृहः।\n\nवीतरागभयक्रोधः स्थितधीर्मुनिरुच्यते।।2.56।।\n ",
     "replacesHandWritten": true
   },
@@ -633,9 +633,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "यः सर्वत्रानभिस्नेहस्तत्तत्प्राप्य शुभाशुभम्।\n\nनाभिनन्दति न द्वेष्टि तस्य प्रज्ञा प्रतिष्ठिता।।2.57।।\n "
   },
   "2:58": {
@@ -644,9 +644,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "यदा संहरते चायं कूर्मोऽङ्गानीव सर्वशः।\n\nइन्द्रियाणीन्द्रियार्थेभ्यस्तस्य प्रज्ञा प्रतिष्ठिता।।2.58।।\n "
   },
   "2:59": {
@@ -655,9 +655,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "विषया विनिवर्तन्ते निराहारस्य देहिनः।\n\nरसवर्जं रसोऽप्यस्य परं दृष्ट्वा निवर्तते।।2.59।।\n "
   },
   "2:60": {
@@ -666,9 +666,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "यततो ह्यपि कौन्तेय पुरुषस्य विपश्चितः।\n\nइन्द्रियाणि प्रमाथीनि हरन्ति प्रसभं मनः।।2.60।।\n "
   },
   "2:61": {
@@ -677,9 +677,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "तानि सर्वाणि संयम्य युक्त आसीत मत्परः।\n\nवशे हि यस्येन्द्रियाणि तस्य प्रज्ञा प्रतिष्ठिता।।2.61।।\n "
   },
   "2:62": {
@@ -688,9 +688,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.62. Gita Press translates 2.62–63 as one passage.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "ध्यायतो विषयान्पुंसः सङ्गस्तेषूपजायते।\n\nसङ्गात् संजायते कामः कामात्क्रोधोऽभिजायते।।2.62।।\n ",
     "replacesHandWritten": true
   },
@@ -700,9 +700,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.63. Same combined Gita Press Hindi as 2.62.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "क्रोधाद्भवति संमोहः संमोहात्स्मृतिविभ्रमः।\n\nस्मृतिभ्रंशाद् बुद्धिनाशो बुद्धिनाशात्प्रणश्यति।।2.63।।\n ",
     "replacesHandWritten": true
   },
@@ -712,9 +712,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Gita Press translates 2.64–65 as one passage.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "रागद्वेषवियुक्तैस्तु विषयानिन्द्रियैश्चरन्।\n\nआत्मवश्यैर्विधेयात्मा प्रसादमधिगच्छति।।2.64।।\n "
   },
   "2:65": {
@@ -723,9 +723,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Same combined Gita Press Hindi as 2.64.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "प्रसादे सर्वदुःखानां हानिरस्योपजायते।\n\nप्रसन्नचेतसो ह्याशु बुद्धिः पर्यवतिष्ठते।।2.65।।\n "
   },
   "2:66": {
@@ -734,9 +734,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "नास्ति बुद्धिरयुक्तस्य न चायुक्तस्य भावना।\n\nन चाभावयतः शान्तिरशान्तस्य कुतः सुखम्।।2.66।।\n "
   },
   "2:67": {
@@ -745,9 +745,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "इन्द्रियाणां हि चरतां यन्मनोऽनुविधीयते।\n\nतदस्य हरति प्रज्ञां वायुर्नावमिवाम्भसि।।2.67।।\n "
   },
   "2:68": {
@@ -756,9 +756,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "तस्माद्यस्य महाबाहो निगृहीतानि सर्वशः।\n\nइन्द्रियाणीन्द्रियार्थेभ्यस्तस्य प्रज्ञा प्रतिष्ठिता।।2.68।।\n "
   },
   "2:69": {
@@ -767,9 +767,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "या निशा सर्वभूतानां तस्यां जागर्ति संयमी।\n\nयस्यां जाग्रति भूतानि सा निशा पश्यतो मुनेः।।2.69।।\n "
   },
   "2:70": {
@@ -778,9 +778,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Replaces the existing hand-written व्याख्या for 2.70.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "आपूर्यमाणमचलप्रतिष्ठं\n\nसमुद्रमापः प्रविशन्ति यद्वत्।\n\nतद्वत्कामा यं प्रविशन्ति सर्वे\n\nस शान्तिमाप्नोति न कामकामी।।2.70।।\n ",
     "replacesHandWritten": true
   },
@@ -790,9 +790,9 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "विहाय कामान्यः सर्वान्पुमांश्चरति निःस्पृहः।\n\nनिर्ममो निरहंकारः स शांतिमधिगच्छति।।2.71।।\n "
   },
   "2:72": {
@@ -801,10 +801,487 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude-opus-5-5",
-    "generatedAt": "2026-10-21T19:42:05.833Z",
+    "generatedAt": "2026-10-21T20:07:15.215Z",
     "sanskrit": "एषा ब्राह्मी स्थितिः पार्थ नैनां प्राप्य विमुह्यति।\n\nस्थित्वाऽस्यामन्तकालेऽपि ब्रह्मनिर्वाणमृच्छति।।2.72।।\n "
+  },
+  "3:1": {
+    "explanation": "दूसरे अध्याय में भगवान ने आत्म-ज्ञान की ऊँचाई भी दिखाई और कर्मयोग का मार्ग भी। पर अर्जुन का मन, जो अभी पूर्णतः शांत नहीं हुआ, इन दोनों को एक साथ थाम नहीं पा रहा। उनके प्रश्न में एक सच्ची उलझन है, और संभवतः थोड़ी-सी आशा भी: 'ज्यायसी चेत्कर्मणस्ते मता बुद्धिर्जनार्दन', हे जनार्दन, यदि आप ज्ञान को कर्म से श्रेष्ठ मानते हैं, 'तत्किं कर्मणि घोरे मां नियोजयसि केशव', तो फिर मुझे इस घोर कर्म में क्यों लगा रहे हैं?\n\n'घोर' शब्द में अर्जुन का सारा भय छिपा है। युद्ध उनके लिए केवल कर्तव्य नहीं, एक भयंकर कर्म है जिसमें उनके पूज्यों का रक्त बहेगा। उनका मन एक सुविधाजनक निष्कर्ष की ओर झुक रहा है: यदि ज्ञान श्रेष्ठ है, तो मैं ज्ञान का मार्ग चुन लूँ और इस भयानक कर्म से बच जाऊँ। यह भ्रम बहुत मानवीय है; जब कोई कर्तव्य कठिन हो, तो मन ऐसे दार्शनिक तर्क खोज लेता है जो उससे बचने की आड़ बन सकें।\n\nयह प्रश्न तीसरे अध्याय, 'कर्मयोग', की नींव है। भगवान आगे दिखाएँगे कि ज्ञान और कर्म विरोधी नहीं, और कर्म से भागना ज्ञान नहीं। जब आप किसी कठिन दायित्व से बचने के लिए कोई 'ऊँचा' कारण गढ़ने लगें, तो एक क्षण रुककर स्वयं से पूछिए: यह विवेक बोल रहा है, या मेरा भय किसी विवेक का वस्त्र पहनकर आया है?",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Gita Press translates 3.1–2 as one passage.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "अर्जुन उवाच\n\nज्यायसी चेत्कर्मणस्ते मता बुद्धिर्जनार्दन।\n\nतत्किं कर्मणि घोरे मां नियोजयसि केशव।।3.1।।\n "
+  },
+  "3:2": {
+    "explanation": "अर्जुन का प्रश्न यहाँ एक निष्कपट विनती में बदल जाता है, और उसमें एक शिष्य की श्रान्ति और प्रेम, दोनों झलकते हैं। 'व्यामिश्रेणेव वाक्येन बुद्धिं मोहयसीव मे', आप मिले-जुले से वचनों से मानो मेरी बुद्धि को मोहित कर रहे हैं। 'तदेकं वद निश्चित्य येन श्रेयोऽहमाप्नुयाम्', इसलिए निश्चय करके वह एक बात कहिए जिससे मैं कल्याण को प्राप्त होऊँ।\n\n'इव', मानो, यह छोटा सा शब्द दो बार आता है, और इसमें अर्जुन की विनम्रता छिपी है। वे यह नहीं कहते कि भगवान उन्हें भ्रमित कर रहे हैं; वे कहते हैं कि ऐसा लग रहा है। वे जानते हैं कि दोष वचनों में नहीं, उनकी अपनी समझ में हो सकता है। फिर भी उनकी पुकार सच्ची है: मुझे अनेक मार्ग नहीं, एक निश्चित मार्ग चाहिए।\n\nयह पुकार हर उस साधक की पुकार है जो अनेक ग्रन्थों, अनेक गुरुओं और अनेक विचारों के बीच उलझ गया है। हम सब कभी न कभी कहते हैं: मुझे केवल एक बात बता दीजिए जिस पर मैं चल सकूँ। 'श्रेय' शब्द पर ध्यान दीजिए: अर्जुन सुविधा या सुख नहीं, अपना वास्तविक कल्याण माँग रहे हैं। जब आपका मन भी अनेक दिशाओं में बँट जाए, तब इसी सच्चाई से प्रार्थना कीजिए: मुझे वह एक मार्ग दिखाइए जो मेरे लिए वास्तव में कल्याणकारी है। ऐसी सच्ची पुकार का उत्तर अवश्य आता है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Same combined Gita Press Hindi as 3.1.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "व्यामिश्रेणेव वाक्येन बुद्धिं मोहयसीव मे।\n\nतदेकं वद निश्चित्य येन श्रेयोऽहमाप्नुयाम्।।3.2।।\n "
+  },
+  "3:3": {
+    "explanation": "भगवान अर्जुन की उलझन को एक कोमल स्पष्टता से सुलझाना आरम्भ करते हैं, और उनका पहला सम्बोधन ही आश्वासन से भरा है: 'अनघ', हे निष्पाप। जो अर्जुन स्वयं को भ्रमित और दोषी मान रहे हैं, उन्हें भगवान निष्पाप कहकर पुकारते हैं, मानो कह रहे हों कि तुम्हारा प्रश्न कोई अपराध नहीं, एक पवित्र जिज्ञासा है।\n\nफिर वे कहते हैं: 'लोकेऽस्मिन्द्विविधा निष्ठा पुरा प्रोक्ता मया', इस संसार में मैंने पहले से ही दो प्रकार की निष्ठा बताई है: 'ज्ञानयोगेन सांख्यानाम्', ज्ञानियों के लिए ज्ञानयोग से, और 'कर्मयोगेन योगिनाम्', योगियों के लिए कर्मयोग से। यहाँ भगवान यह नहीं कहते कि एक मार्ग उचित है और दूसरा अनुचित। वे दिखाते हैं कि अलग-अलग स्वभाव के लोगों के लिए अलग-अलग मार्ग हैं, पर दोनों एक ही लक्ष्य तक ले जाते हैं।\n\nइस श्लोक में एक गहरी उदारता है। भारत की आध्यात्मिक परम्परा ने सदा माना है कि सत्य एक है, पर उस तक पहुँचने के मार्ग अनेक। कोई चिंतन से पहुँचता है, कोई सेवा से, कोई भक्ति से। अर्जुन को लग रहा था कि उन्हें दो विरोधी मार्गों में से एक चुनना होगा; भगवान दिखाते हैं कि ये विरोधी नहीं, पूरक हैं। अपने आध्यात्मिक मार्ग को दूसरों से तुलना करके छोटा मत समझिए; जो आपके स्वभाव के अनुकूल है, वही आपकी निष्ठा है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "श्री भगवानुवाच\n\nलोकेऽस्मिन्द्विविधा निष्ठा पुरा प्रोक्ता मयानघ।\n\nज्ञानयोगेन सांख्यानां कर्मयोगेन योगिनाम्।।3.3।।\n "
+  },
+  "3:4": {
+    "explanation": "भगवान यहाँ अर्जुन के उस मौन विचार पर प्रकाश डालते हैं कि कर्म छोड़ देने से ही मुक्ति मिल जाएगी। 'न कर्मणामनारम्भान्नैष्कर्म्यं पुरुषोऽश्नुते', कर्मों का आरम्भ न करने से मनुष्य निष्कर्मता को प्राप्त नहीं होता; 'न च संन्यसनादेव सिद्धिं समधिगच्छति', और केवल कर्मों का त्याग कर देने से सिद्धि भी नहीं मिलती।\n\nयह श्लोक एक बहुत बड़े भ्रम को तोड़ता है। हम प्रायः सोचते हैं कि शांति पाने के लिए सब कुछ छोड़ देना होगा: काम, परिवार, संसार। पर भगवान कहते हैं कि 'नैष्कर्म्य', कर्म के बंधन से मुक्ति, कर्म न करने से नहीं आती। जैसे कोई तैरना सीखे बिना नदी से बचकर किनारे पर बैठ जाए, तो वह डूबने से तो बच जाता है, पर नदी पार नहीं कर पाता।\n\n'संन्यसनादेव', केवल त्याग से, इस 'एव' पर ध्यान दीजिए। भगवान संन्यास का विरोध नहीं करते; वे उस संन्यास का विरोध करते हैं जो केवल बाहरी हो, जिसमें भीतर की आसक्ति, अहंकार और कामनाएँ वैसी की वैसी बनी रहें। सच्चा त्याग पहले भीतर होता है, बाहर बाद में। यदि आप किसी कठिन परिस्थिति से भागकर शांति खोजना चाहते हैं, तो स्मरण रखिए कि आपका मन आपके साथ ही जाएगा। मुक्ति स्थान बदलने से नहीं, दृष्टि बदलने से मिलती है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "न कर्मणामनारम्भान्नैष्कर्म्यं पुरुषोऽश्नुते।\n\nन च संन्यसनादेव सिद्धिं समधिगच्छति।।3.4।।\n "
+  },
+  "3:5": {
+    "explanation": "भगवान इस श्लोक में मनुष्य के अस्तित्व का एक ऐसा सत्य रखते हैं जिससे कोई भी बच नहीं सकता। 'न हि कश्चित्क्षणमपि जातु तिष्ठत्यकर्मकृत्', कोई भी व्यक्ति एक क्षण के लिए भी बिना कर्म किए नहीं रह सकता। 'कार्यते ह्यवशः कर्म सर्वः प्रकृतिजैर्गुणैः', क्योंकि प्रकृति से उत्पन्न गुण हर किसी से, विवश करके, कर्म कराते रहते हैं।\n\nआप अभी यह पढ़ रहे हैं, यह भी कर्म है। आपकी श्वास चल रही है, हृदय धड़क रहा है, मन सोच रहा है; यह सब कर्म है। जब आप सोते हैं, तब भी स्वप्न चलते हैं। जो व्यक्ति कहता है कि मैं कुछ नहीं कर रहा, उसका 'कुछ न करना' भी एक कर्म है, एक निर्णय है। 'अवशः', विवश होकर, यह शब्द बताता है कि कर्म हमारा चुनाव नहीं, हमारी प्रकृति है।\n\nइस सत्य को जानकर एक बड़ी मुक्ति मिलती है। यदि कर्म से बचना असंभव है, तो प्रश्न यह नहीं रह जाता कि कर्म करें या न करें; प्रश्न यह हो जाता है कि कर्म कैसे करें। यह श्लोक अर्जुन के लिए भी एक संकेत है: युद्ध से भागकर भी वे कर्म से नहीं बच सकते। वे वन में जाएँगे, तो वहाँ भी कुछ न कुछ करेंगे ही। तो फिर उस कर्म को क्यों न चुनें जो धर्मसंगत है? अपनी ऊर्जा कर्म से बचने में नहीं, उसे शुद्ध करने में लगाइए।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "न हि कश्चित्क्षणमपि जातु तिष्ठत्यकर्मकृत्।\n\nकार्यते ह्यवशः कर्म सर्वः प्रकृतिजैर्गुणैः।।3.5।।\n "
+  },
+  "3:6": {
+    "explanation": "यह श्लोक एक ऐसे आत्म-छल को उजागर करता है जो अक्सर आध्यात्मिकता का वस्त्र पहनकर आता है। 'कर्मेन्द्रियाणि संयम्य य आस्ते मनसा स्मरन्', जो व्यक्ति कर्मेन्द्रियों को रोककर बैठ जाता है पर मन से 'इन्द्रियार्थान्', विषयों का चिंतन करता रहता है, 'विमूढात्मा मिथ्याचारः स उच्यते', वह मोहित बुद्धि वाला मिथ्याचारी कहलाता है।\n\nइस श्लोक में भगवान की दृष्टि बहुत सूक्ष्म है। बाहर से ऐसा व्यक्ति संयमी दिखता है: वह ध्यान में बैठा है, उपवास कर रहा है, संसार से दूर है। पर भीतर उसका मन उन्हीं विषयों के पीछे दौड़ रहा है जिन्हें उसने बाहर से छोड़ा है। यह संयम नहीं, केवल दमन है; और दमन किया गया मन प्रायः और भी अधिक उग्र होकर लौटता है।\n\n'मिथ्याचार' शब्द कठोर लगता है, पर इसका उद्देश्य किसी की निंदा नहीं, स्वयं के प्रति सत्यनिष्ठा जगाना है। हम सब कभी न कभी ऐसा करते हैं: बाहर से कुछ और, भीतर से कुछ और। भगवान कहते हैं कि आध्यात्मिक जीवन का पहला नियम सत्य है, विशेषकर स्वयं के प्रति। बाहरी आचरण और भीतरी भाव में जितना अंतर होगा, साधना उतनी ही खोखली होगी। अपने संयम की परख इस बात से कीजिए कि जब कोई देख नहीं रहा, तब आपका मन कहाँ भटकता है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "कर्मेन्द्रियाणि संयम्य य आस्ते मनसा स्मरन्।\n\nइन्द्रियार्थान्विमूढात्मा मिथ्याचारः स उच्यते।।3.6।।\n "
+  },
+  "3:7": {
+    "explanation": "पिछले श्लोक के दिखावटी संयम के विपरीत, भगवान अब सच्चे कर्मयोगी का चित्र रखते हैं, जो भीतर और बाहर, दोनों से एक है। 'यस्त्विन्द्रियाणि मनसा नियम्यारभतेऽर्जुन', हे अर्जुन, जो व्यक्ति मन के द्वारा इन्द्रियों को नियंत्रित करके, 'कर्मेन्द्रियैः कर्मयोगमसक्तः', आसक्ति-रहित होकर कर्मेन्द्रियों से कर्मयोग का आचरण करता है, 'स विशिष्यते', वह श्रेष्ठ है।\n\nदोनों श्लोकों की तुलना बहुत सुंदर है। पहले व्यक्ति ने बाहर को रोका और भीतर को खुला छोड़ दिया; इस व्यक्ति ने भीतर को संयमित किया और बाहर को सेवा के लिए खोल दिया। पहला व्यक्ति कुछ नहीं करते हुए भी बँधा है; दूसरा सब कुछ करते हुए भी मुक्त है। अंतर कर्म में नहीं, कर्म करने वाले के भीतर की अवस्था में है।\n\n'असक्तः', आसक्ति-रहित, यह इस श्लोक का प्राण है। कर्मयोगी संसार में पूरी ऊर्जा से काम करता है, पर उसका मन किसी परिणाम या व्यक्ति से चिपकता नहीं। जैसे कमल का पत्ता जल में रहकर भी गीला नहीं होता। यह श्लोक उन सबके लिए आशा है जो संसार छोड़ नहीं सकते और छोड़ना भी नहीं चाहते: आप अपने परिवार, कार्य और समाज के बीच रहकर भी उतने ही आध्यात्मिक हो सकते हैं, यदि आपका मन अपने वश में है और आपका कर्म आसक्ति से मुक्त।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "यस्त्विन्द्रियाणि मनसा नियम्यारभतेऽर्जुन।\n\nकर्मेन्द्रियैः कर्मयोगमसक्तः स विशिष्यते।।3.7।।\n "
+  },
+  "3:8": {
+    "explanation": "भगवान यहाँ एक सीधा, व्यावहारिक आदेश देते हैं, जिसमें एक पिता की दृढ़ता और एक मित्र की सरलता है। 'नियतं कुरु कर्म त्वम्', तुम अपना नियत कर्म करो; 'कर्म ज्यायो ह्यकर्मणः', क्योंकि कर्म न करने से कर्म करना श्रेष्ठ है। 'शरीरयात्रापि च ते न प्रसिद्ध्येदकर्मणः', और कर्म न करने से तो तुम्हारी शरीर-यात्रा, तुम्हारा जीवन-निर्वाह भी नहीं चल सकेगा।\n\n'नियत कर्म' का अर्थ है वह कर्म जो आपकी स्थिति, आपके दायित्व और आपके स्वभाव के अनुसार आपके लिए निश्चित है। अर्जुन के लिए वह धर्म-युद्ध था; एक किसान के लिए खेती, एक माता के लिए संतान का पालन, एक विद्यार्थी के लिए अध्ययन। भगवान कोई असाधारण कर्म नहीं माँगते; वे वही माँगते हैं जो जीवन ने आपके सामने रखा है।\n\n'शरीरयात्रा' शब्द बहुत मानवीय है। भगवान ऊँचे दर्शन से उतरकर एक साधारण बात कहते हैं: कुछ न करने से तो जीवन भी नहीं चल सकता। भोजन, वस्त्र, घर, इन सबके लिए कर्म चाहिए। यह श्लोक हमें आलस्य को त्याग का नाम देने से रोकता है। जब मन किसी दायित्व से बचने के लिए कोई ऊँचा कारण खोजे, तब यह सरल वचन स्मरण कीजिए: जो कर्म आपके सामने है, उसे कीजिए; वही आपकी साधना है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "नियतं कुरु कर्म त्वं कर्म ज्यायो ह्यकर्मणः।\n\nशरीरयात्रापि च ते न प्रसिद्ध्येदकर्मणः।।3.8।।\n "
+  },
+  "3:9": {
+    "explanation": "भगवान इस श्लोक में कर्म के बंधन का रहस्य खोलते हैं, और साथ ही उससे मुक्ति का मार्ग भी। 'यज्ञार्थात्कर्मणोऽन्यत्र लोकोऽयं कर्मबन्धनः', यज्ञ के लिए किए गए कर्मों को छोड़कर, बाकी कर्मों से यह संसार बँधता है। 'तदर्थं कर्म कौन्तेय मुक्तसङ्गः समाचर', इसलिए हे कुन्तीपुत्र, आसक्ति छोड़कर उस यज्ञ के लिए ही कर्म करो।\n\nयहाँ 'यज्ञ' शब्द का अर्थ केवल अग्नि में आहुति देना नहीं है। गीता प्रेस इसे 'कर्तव्य-पालन' कहता है, और इसका व्यापक अर्थ है वह कर्म जो स्वार्थ से ऊपर उठकर, ईश्वर और समष्टि के लिए समर्पण भाव से किया जाए। जब कोई कर्म केवल 'मेरे लिए' होता है, तब वह एक गाँठ बाँधता है; जब वही कर्म 'सबके लिए' या 'ईश्वर के लिए' होता है, तब वह गाँठ खोलता है।\n\nयह श्लोक एक अद्भुत परिवर्तन का सूत्र देता है: कर्म को बदले बिना, केवल उसका उद्देश्य बदलकर उसे पवित्र बनाया जा सकता है। एक ही भोजन, जो केवल अपनी भूख के लिए पकाया जाए तो साधारण है, वही भोग लगाकर या दूसरों के साथ बाँटकर प्रसाद बन जाता है। अपने दैनिक कार्य को इसी दृष्टि से देखिए: कार्य आरम्भ करने से पहले मन में एक क्षण के लिए यह संकल्प कीजिए कि यह मैं केवल अपने लिए नहीं, सबके कल्याण के लिए कर रहा हूँ।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "यज्ञार्थात्कर्मणोऽन्यत्र लोकोऽयं कर्मबन्धनः।\n\nतदर्थं कर्म कौन्तेय मुक्तसंगः समाचर।।3.9।।\n "
+  },
+  "3:10": {
+    "explanation": "यहाँ भगवान यज्ञ की परम्परा को सृष्टि के आदि तक ले जाते हैं, और इस वर्णन में एक प्राचीन, मंगलमय गरिमा है। 'सहयज्ञाः प्रजाः सृष्ट्वा पुरोवाच प्रजापतिः', सृष्टि के आरम्भ में प्रजापति ने यज्ञ के साथ प्रजा की रचना करके कहा: 'अनेन प्रसविष्यध्वम्', इसके द्वारा तुम समृद्धि को प्राप्त होओ; 'एष वोऽस्त्विष्टकामधुक्', यह तुम्हारे लिए इष्ट कामनाओं को देने वाली कामधेनु बने।\n\n'सहयज्ञाः', यज्ञ के साथ, यह शब्द बहुत गहरा है। मनुष्य को अकेले नहीं, एक दायित्व के साथ रचा गया। हमारे अस्तित्व के साथ ही देने का, बाँटने का, योगदान करने का भाव जुड़ा हुआ है। जैसे एक बीज के भीतर ही वृक्ष बनने और फल देने की संभावना छिपी होती है, वैसे ही मनुष्य के भीतर ही यज्ञ का बीज है।\n\n'कामधेनु' की उपमा बहुत सुंदर है। कामधेनु वह दिव्य गाय है जो सब कुछ देती है, पर वह केवल उसी को देती है जो उसकी सेवा करता है। यज्ञ, अर्थात् सेवा और समर्पण का जीवन, ऐसी ही कामधेनु है: जो देता है, उसे सब कुछ मिलता है। यह श्लोक हमें स्मरण कराता है कि हमारी समृद्धि अकेले हमारे परिश्रम का फल नहीं, एक विशाल परस्पर-निर्भरता का फल है। उस चक्र के प्रति कृतज्ञ रहिए, और उसमें अपना योगदान दीजिए।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Gita Press translates 3.10–11 as one passage.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "सहयज्ञाः प्रजाः सृष्ट्वा पुरोवाच प्रजापतिः।\n\nअनेन प्रसविष्यध्वमेष वोऽस्त्विष्टकामधुक्।।3.10।।\n "
+  },
+  "3:11": {
+    "explanation": "पिछले श्लोक के यज्ञ-विधान को प्रजापति आगे बढ़ाते हैं, और उनके वचनों में परस्पर प्रेम और सहयोग का एक सुंदर चित्र उभरता है। 'देवान्भावयतानेन', इस यज्ञ के द्वारा तुम देवताओं को उन्नत करो; 'ते देवा भावयन्तु वः', और वे देवता तुम्हें उन्नत करें। 'परस्परं भावयन्तः श्रेयः परमवाप्स्यथ', इस प्रकार एक-दूसरे को उन्नत करते हुए तुम परम कल्याण को प्राप्त होगे।\n\n'भावयन्तः', पोषित करते हुए, उन्नत करते हुए, यह शब्द बहुत कोमल है। यह केवल लेन-देन नहीं, एक-दूसरे को बढ़ाने का भाव है। यहाँ 'देवता' केवल स्वर्ग के देव नहीं, प्रकृति की वे सारी शक्तियाँ भी हैं जो हमारा पोषण करती हैं: सूर्य, वायु, जल, पृथ्वी। हम उनका आदर करें, उनकी रक्षा करें, और वे हमारा पालन करें।\n\nइस श्लोक में आज के युग के लिए एक गहरा संदेश है। जब मनुष्य केवल प्रकृति से लेता है और कुछ लौटाता नहीं, तब यह चक्र टूट जाता है, और उसके परिणाम हम सबको भोगने पड़ते हैं। 'परस्परम्', एक-दूसरे को, इस शब्द को अपने संबंधों में भी अनुभव कीजिए: परिवार में, समाज में, कार्यस्थल पर। जब हर व्यक्ति दूसरे को उन्नत करने का प्रयत्न करता है, तब सबका कल्याण स्वयं हो जाता है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Same combined Gita Press Hindi as 3.10.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "देवान्भावयतानेन ते देवा भावयन्तु वः।\n\nपरस्परं भावयन्तः श्रेयः परमवाप्स्यथ।।3.11।।\n "
+  },
+  "3:12": {
+    "explanation": "इस श्लोक में भगवान यज्ञ-चक्र का एक नैतिक निष्कर्ष रखते हैं, जो सुनने में कठोर पर हृदय से अत्यंत न्यायपूर्ण है। 'इष्टान्भोगान्हि वो देवा दास्यन्ते यज्ञभाविताः', यज्ञ से पोषित देवता तुम्हें वांछित भोग देंगे। 'तैर्दत्तानप्रदायैभ्यो यो भुङ्क्ते स्तेन एव सः', पर जो उनके दिए हुए को उन्हें लौटाए बिना, दूसरों के साथ बाँटे बिना, अकेले भोगता है, वह चोर ही है।\n\n'स्तेन', चोर, यह शब्द चौंकाता है। हम चोर उसे मानते हैं जो किसी और की वस्तु छीने। पर भगवान कहते हैं कि जो केवल लेता है और लौटाता नहीं, वह भी एक प्रकार की चोरी कर रहा है। क्योंकि जो कुछ हमारे पास है, अन्न, जल, वायु, ज्ञान, अवसर, वह सब हमें किसी न किसी से मिला है। उसे अकेले अपना मान लेना एक सूक्ष्म चोरी है।\n\nयह श्लोक हमें कृतज्ञता और दान का एक नया अर्थ देता है। दान कोई उपकार नहीं, एक ऋण चुकाना है। भारतीय परम्परा में भोजन से पहले कुछ अंश अलग रखने, अतिथि को भोजन कराने, और पशु-पक्षियों के लिए अन्न रखने की जो प्रथा है, वह इसी भाव से जन्मी है। अपने जीवन में देखिए: आप जो कुछ पाते हैं, उसका कितना भाग दूसरों तक पहुँचता है? वही भाग आपकी समृद्धि को पवित्र बनाता है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "इष्टान्भोगान्हि वो देवा दास्यन्ते यज्ञभाविताः।\n\nतैर्दत्तानप्रदायैभ्यो यो भुङ्क्ते स्तेन एव सः।।3.12।।\n "
+  },
+  "3:13": {
+    "explanation": "भगवान यहाँ उसी भाव को और गहरा करते हैं, और एक अत्यंत सुंदर प्रतीक के द्वारा: यज्ञ का शेष, प्रसाद। 'यज्ञशिष्टाशिनः सन्तो मुच्यन्ते सर्वकिल्बिषैः', जो सज्जन यज्ञ के शेष अन्न को ग्रहण करते हैं, वे सब पापों से मुक्त हो जाते हैं। 'भुञ्जते ते त्वघं पापा ये पचन्त्यात्मकारणात्', पर जो केवल अपने लिए ही पकाते हैं, वे पाप ही खाते हैं।\n\n'यज्ञशिष्ट', यज्ञ का शेष, यह विचार बहुत मधुर है। जब भोजन पहले ईश्वर को अर्पित होता है, फिर अतिथि और अभावग्रस्त को, और उसके बाद जो बचता है वह स्वयं ग्रहण किया जाता है, तब वह साधारण भोजन नहीं, प्रसाद बन जाता है। उसमें स्वार्थ का कोई अंश नहीं रहता, इसलिए वह आत्मा को बाँधता नहीं, शुद्ध करता है।\n\n'पचन्त्यात्मकारणात्', जो केवल अपने लिए पकाते हैं, यह वाक्यांश केवल भोजन पर नहीं, पूरे जीवन पर लागू होता है। जो व्यक्ति अपने सारे कर्म, अपनी सारी कमाई, अपना सारा समय केवल अपने लिए रखता है, उसका जीवन एक बंद कमरे जैसा हो जाता है। गीता प्रेस इस यज्ञशेष को 'योग' का अनुभव भी कहता है: कर्तव्य निभाने के बाद जो शांति शेष रहती है। आज अपने भोजन से पहले एक क्षण का मौन रखिए, उसे ईश्वर को अर्पित कीजिए; उस क्षण में भोजन प्रसाद बन जाएगा।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "यज्ञशिष्टाशिनः सन्तो मुच्यन्ते सर्वकिल्बिषैः।\n\nभुञ्जते ते त्वघं पापा ये पचन्त्यात्मकारणात्।।3.13।।\n "
+  },
+  "3:14": {
+    "explanation": "भगवान यहाँ सृष्टि के महान चक्र को एक ऐसी श्रृंखला में खोलते हैं, जिसमें हर कड़ी दूसरी से बँधी है। 'अन्नाद्भवन्ति भूतानि', सभी प्राणी अन्न से उत्पन्न होते हैं; 'पर्जन्यादन्नसम्भवः', अन्न वर्षा से होता है; 'यज्ञाद्भवति पर्जन्यः', वर्षा यज्ञ से होती है; 'यज्ञः कर्मसमुद्भवः', और यज्ञ कर्म से उत्पन्न होता है।\n\nइस श्रृंखला को धीरे-धीरे अनुभव कीजिए। आपकी थाली का हर दाना किसी खेत से आया, उस खेत को वर्षा ने सींचा, वर्षा प्रकृति के एक संतुलित चक्र से आई, और वह संतुलन तभी बना रहता है जब मनुष्य अपना कर्तव्य निभाता है। आप इस विशाल चक्र के बाहर खड़े दर्शक नहीं, उसकी एक जीवित कड़ी हैं। आपका हर कर्म इस चक्र को या तो पोषित करता है, या दुर्बल।\n\nयह श्लोक एक गहरी पारिस्थितिक और आध्यात्मिक चेतना जगाता है। प्राचीन ऋषियों ने अनुभव किया था कि मनुष्य और प्रकृति अलग नहीं हैं; हमारा जीवन वर्षा, अन्न और ऋतुओं के उसी चक्र पर टिका है जिसे हम कभी-कभी भूल जाते हैं। जब आप अगली बार भोजन करें, तो इस श्रृंखला को एक क्षण के लिए स्मरण कीजिए: किसान का पसीना, बादल की वर्षा, धरती की उर्वरता। उस स्मरण से कृतज्ञता स्वयं जाग उठेगी।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Gita Press translates 3.14–15 as one passage.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "अन्नाद्भवन्ति भूतानि पर्जन्यादन्नसम्भवः।\n\nयज्ञाद्भवति पर्जन्यो यज्ञः कर्मसमुद्भवः।।3.14।।\n "
+  },
+  "3:15": {
+    "explanation": "यज्ञ-चक्र की श्रृंखला यहाँ अपने मूल तक पहुँचती है, और वह मूल स्वयं परमात्मा है। 'कर्म ब्रह्मोद्भवं विद्धि', कर्म को वेद से उत्पन्न जानो; 'ब्रह्माक्षरसमुद्भवम्', और वेद को अविनाशी परमात्मा से प्रकट हुआ जानो। 'तस्मात्सर्वगतं ब्रह्म नित्यं यज्ञे प्रतिष्ठितम्', इसलिए सर्वव्यापी परमात्मा सदा यज्ञ में प्रतिष्ठित है।\n\nपिछले श्लोक की श्रृंखला अन्न से आरम्भ होकर कर्म तक गई थी; यह श्लोक उसे कर्म से परमात्मा तक ले जाता है। इस प्रकार एक पूर्ण वृत्त बनता है: परमात्मा से वेद, वेद से कर्म का विधान, कर्म से यज्ञ, यज्ञ से वर्षा, वर्षा से अन्न, अन्न से प्राणी। इस वृत्त का केंद्र और परिधि, दोनों परमात्मा ही है।\n\n'नित्यं यज्ञे प्रतिष्ठितम्', परमात्मा सदा यज्ञ में स्थित है, यह वचन बहुत सुंदर है। इसका अर्थ है कि जब भी कोई कर्म निःस्वार्थ भाव से, सबके कल्याण के लिए किया जाता है, तब उस कर्म में स्वयं परमात्मा उपस्थित होता है। आपको ईश्वर को खोजने के लिए कहीं दूर जाने की आवश्यकता नहीं; आपका हर निःस्वार्थ कर्म, हर सेवा, हर दान उसी की उपस्थिति का स्थान है। अपने कार्य को पूजा बना लीजिए, और ईश्वर उसमें स्वयं विराजमान होंगे।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "medium",
+    "reviewNote": "The stored English glosses ब्रह्म in 'कर्म ब्रह्मोद्भवं' as 'the physical body', following one commentator; the draft follows Gita Press (ब्रह्म = वेद). Same combined Gita Press Hindi as 3.14.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "कर्म ब्रह्मोद्भवं विद्धि ब्रह्माक्षरसमुद्भवम्।\n\nतस्मात्सर्वगतं ब्रह्म नित्यं यज्ञे प्रतिष्ठितम्।।3.15।।\n "
+  },
+  "3:16": {
+    "explanation": "यज्ञ-चक्र का पूरा विवेचन करने के बाद भगवान अब उस व्यक्ति की दशा बताते हैं जो इस चक्र से स्वयं को अलग कर लेता है, और उनके शब्दों में एक गहरी वेदना है। 'एवं प्रवर्तितं चक्रं नानुवर्तयतीह यः', हे पार्थ, जो इस प्रकार चलाए गए चक्र के अनुसार नहीं चलता, 'अघायुरिन्द्रियारामः', वह पापमय जीवन वाला, केवल इन्द्रियों में रमने वाला, 'मोघं पार्थ स जीवति', व्यर्थ ही जीता है।\n\n'मोघम्', व्यर्थ, यह शब्द हृदय को छू जाता है। भगवान ऐसे व्यक्ति को दंड नहीं देते, उसकी निंदा भी नहीं करते; वे केवल एक दुःखद सत्य कहते हैं कि उसका जीवन व्यर्थ जा रहा है। जैसे एक नदी जो सागर की ओर बहने के बजाय एक गड्ढे में रुक जाए, धीरे-धीरे गंदली हो जाती है। जो जीवन केवल अपने इन्द्रिय-सुख के लिए जिया जाए, वह जीते हुए भी अपनी सार्थकता खो देता है।\n\n'इन्द्रियाराम', जो केवल इन्द्रियों में रमता है, यह शब्द आज के उपभोग-प्रधान युग पर भी सटीक बैठता है। जब जीवन का सारा उद्देश्य केवल अधिक पाना और अधिक भोगना हो जाए, तब वह एक खालीपन को जन्म देता है जिसे कोई भोग नहीं भर सकता। यह श्लोक हमें एक प्रश्न पूछने को कहता है: मेरा जीवन किस चक्र का अंग है? क्या वह किसी को कुछ दे रहा है, या केवल ले रहा है? उत्तर ही बताएगा कि जीवन सार्थक है या व्यर्थ।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "एवं प्रवर्तितं चक्रं नानुवर्तयतीह यः।\n\nअघायुरिन्द्रियारामो मोघं पार्थ स जीवति।।3.16।।\n "
+  },
+  "3:17": {
+    "explanation": "अब तक भगवान कर्तव्य की अनिवार्यता बता रहे थे; यहाँ वे एक ऐसे दुर्लभ व्यक्ति का वर्णन करते हैं जिसके लिए कोई कर्तव्य शेष नहीं रहता। 'यस्त्वात्मरतिरेव स्यादात्मतृप्तश्च मानवः', जो मनुष्य आत्मा में ही रमण करता है, आत्मा में ही तृप्त है, 'आत्मन्येव च सन्तुष्टः', और आत्मा में ही संतुष्ट है, 'तस्य कार्यं न विद्यते', उसके लिए कोई कर्तव्य नहीं रहता।\n\nइस श्लोक में तीन शब्द हैं: 'रति', 'तृप्ति' और 'संतोष'। रति वह आनंद है जो किसी वस्तु के साथ होने में मिलता है; तृप्ति वह शांति है जो भूख मिटने पर आती है; संतोष वह भाव है कि अब कुछ और नहीं चाहिए। साधारण मनुष्य ये तीनों बाहर खोजता है; ज्ञानी इन्हें अपने भीतर पा लेता है। उसके लिए आनंद का स्रोत ही भीतर है, इसलिए बाहर उसे कुछ पाना नहीं रह जाता।\n\nपर यह श्लोक अर्जुन को कर्म से छुट्टी देने के लिए नहीं कहा गया। भगवान अगले श्लोकों में दिखाएँगे कि ऐसा ज्ञानी भी लोक-कल्याण के लिए कर्म करता रहता है। इस श्लोक का सौंदर्य यह है कि यह हमें उस अवस्था की झलक देता है जिसकी ओर हमारी यात्रा है: एक ऐसी पूर्णता, जहाँ कर्म बोझ नहीं, आनंद का स्वाभाविक प्रवाह बन जाता है। उस भीतरी तृप्ति के कुछ क्षण प्रतिदिन खोजिए, मौन में, ध्यान में।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "यस्त्वात्मरतिरेव स्यादात्मतृप्तश्च मानवः।\n\nआत्मन्येव च सन्तुष्टस्तस्य कार्यं न विद्यते।।3.17।।\n "
+  },
+  "3:18": {
+    "explanation": "पिछले श्लोक में वर्णित आत्म-तृप्त महापुरुष की अवस्था को भगवान यहाँ और स्पष्ट करते हैं। 'नैव तस्य कृतेनार्थो नाकृतेनेह कश्चन', उसका इस संसार में न कुछ करने से कोई प्रयोजन है, न न करने से। 'न चास्य सर्वभूतेषु कश्चिदर्थव्यपाश्रयः', और सभी प्राणियों में किसी से भी उसका कोई स्वार्थ का संबंध नहीं रहता।\n\nयह अवस्था कितनी मुक्त है! साधारण मनुष्य हर कर्म किसी प्रयोजन से करता है: लाभ, यश, सुरक्षा, प्रेम। और हर संबंध में कहीं न कहीं कोई अपेक्षा छिपी रहती है। पर इस महापुरुष ने सब कुछ भीतर पा लिया है, इसलिए उसे किसी से कुछ चाहिए नहीं। उसके संबंध शुद्ध हैं, क्योंकि उनमें माँग नहीं, केवल देना है।\n\n'अर्थव्यपाश्रय', किसी पर स्वार्थ के लिए निर्भर होना, इस शब्द को अपने जीवन में देखिए। हम कितने संबंधों में इसलिए हैं क्योंकि हमें उनसे कुछ चाहिए? और जब वह नहीं मिलता, तो कितनी पीड़ा होती है? यह श्लोक हमें एक ऐसे प्रेम की ओर संकेत करता है जो किसी पर टिका नहीं, किसी से कुछ माँगता नहीं। ऐसा प्रेम ही सबसे अधिक मुक्त और सबसे अधिक गहरा होता है। अपने किसी प्रियजन के लिए आज कुछ ऐसा कीजिए जिसके बदले में आप कुछ भी न चाहें।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "नैव तस्य कृतेनार्थो नाकृतेनेह कश्चन।\n\nन चास्य सर्वभूतेषु कश्चिदर्थव्यपाश्रयः।।3.18।।\n "
+  },
+  "3:19": {
+    "explanation": "आत्म-तृप्त महापुरुष का वर्णन करने के बाद भगवान अर्जुन की ओर मुड़ते हैं, और उनके निष्कर्ष में एक स्नेहभरा आग्रह है। 'तस्मादसक्तः सततं कार्यं कर्म समाचर', इसलिए तुम निरंतर आसक्ति-रहित होकर कर्तव्य-कर्म का भलीभाँति आचरण करो। 'असक्तो ह्याचरन्कर्म परमाप्नोति पूरुषः', क्योंकि आसक्ति-रहित होकर कर्म करता हुआ मनुष्य परमात्मा को प्राप्त हो जाता है।\n\n'तस्मात्', इसलिए, इस शब्द पर ध्यान दीजिए। भगवान यह नहीं कहते कि क्योंकि तुम अभी आत्म-तृप्त नहीं हो, इसलिए कर्म करो। वे कहते हैं कि आसक्ति-रहित कर्म ही वह मार्ग है जो तुम्हें उस आत्म-तृप्ति तक ले जाएगा। जो अवस्था पिछले श्लोकों में लक्ष्य के रूप में दिखाई गई, उस तक पहुँचने का साधन यही निष्काम कर्म है।\n\n'सततम्', निरंतर, यह शब्द बहुत महत्त्वपूर्ण है। आसक्ति-रहित कर्म कभी-कभी का अभ्यास नहीं, जीवन की एक निरंतर शैली है। यह एक दिन में नहीं आता; जैसे नदी का जल धीरे-धीरे पत्थर को चिकना कर देता है, वैसे ही निरंतर अभ्यास से मन धीरे-धीरे आसक्ति से मुक्त होता है। आज के अपने कार्य को देखिए: उसमें से कौन-सा अंश आप केवल कर्तव्य मानकर, बिना किसी अपेक्षा के कर सकते हैं? वहीं से इस यात्रा का आरम्भ है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Replaces the existing hand-written व्याख्या for 3.19.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "तस्मादसक्तः सततं कार्यं कर्म समाचर।\n\nअसक्तो ह्याचरन्कर्म परमाप्नोति पूरुषः।।3.19।।\n ",
+    "replacesHandWritten": true
+  },
+  "3:20": {
+    "explanation": "भगवान यहाँ अपने उपदेश को एक जीवित उदाहरण से पुष्ट करते हैं, ताकि अर्जुन को लगे कि यह मार्ग केवल सिद्धांत नहीं, जिया हुआ सत्य है। 'कर्मणैव हि संसिद्धिमास्थिता जनकादयः', राजा जनक आदि महापुरुष कर्म के द्वारा ही परम सिद्धि को प्राप्त हुए। 'लोकसंग्रहमेवापि संपश्यन्कर्तुमर्हसि', और लोक-संग्रह को देखते हुए भी तुम्हें कर्म करना चाहिए।\n\nराजा जनक का उदाहरण बहुत अर्थपूर्ण है। वे एक राजा थे, राज्य का संचालन करते थे, न्याय करते थे, युद्ध और शासन के निर्णय लेते थे, फिर भी उन्हें 'विदेह' कहा गया, देह-भाव से मुक्त। उन्होंने संसार छोड़े बिना, अपने राजधर्म का पालन करते हुए ही परम ज्ञान पाया। अर्जुन के लिए यह एक स्पष्ट संकेत है: तुम भी एक राजकुमार हो, तुम्हारा मार्ग भी जनक का ही मार्ग है।\n\n'लोकसंग्रह', लोक का कल्याण, समाज को एक साथ बाँधे रखना, यह इस श्लोक का दूसरा महत्त्वपूर्ण विचार है। भगवान कहते हैं कि यदि अपने लिए नहीं, तो दूसरों के लिए कर्म करो। एक श्रेष्ठ व्यक्ति का कर्म केवल उसका नहीं होता; वह समाज को दिशा देता है, उसे बिखरने से बचाता है। अपने जीवन में देखिए: आपके कर्म से कितने लोगों का जीवन जुड़ा है? उनके लिए भी आपका कर्तव्य-पालन एक सहारा है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "कर्मणैव हि संसिद्धिमास्थिता जनकादयः।\n\nलोकसंग्रहमेवापि संपश्यन्कर्तुमर्हसि।।3.20।।\n "
+  },
+  "3:21": {
+    "explanation": "यह श्लोक नेतृत्व और उत्तरदायित्व का एक शाश्वत सत्य है, जो हर माता-पिता, हर शिक्षक और हर नेता के लिए एक दर्पण है। 'यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः', श्रेष्ठ व्यक्ति जो-जो आचरण करता है, दूसरे लोग भी वैसा ही आचरण करते हैं। 'स यत्प्रमाणं कुरुते लोकस्तदनुवर्तते', वह जो मानक स्थापित करता है, संसार उसी का अनुसरण करता है।\n\n'यद्यत्', जो-जो, यह दोहराव बताता है कि श्रेष्ठ व्यक्ति के छोटे से छोटे आचरण का भी प्रभाव होता है, केवल उसके बड़े निर्णयों का नहीं। लोग उसके शब्दों से अधिक उसके कर्मों को देखते हैं। एक बालक वह नहीं सीखता जो उसके माता-पिता कहते हैं; वह सीखता है जो वे करते हैं। अर्जुन एक महान योद्धा और आदर्श थे; यदि वे युद्ध से भागते, तो उनका पलायन हजारों के लिए एक उदाहरण बन जाता।\n\nयह श्लोक एक गहरे उत्तरदायित्व का बोध कराता है, पर साथ ही एक अवसर का भी। आप जहाँ भी हैं, परिवार में, कार्यस्थल पर, मित्रों के बीच, आप किसी न किसी के लिए 'श्रेष्ठ' हैं, कोई न कोई आपको देख रहा है। आपका धैर्य, आपकी सत्यनिष्ठा, आपकी करुणा उन्हें मौन रूप से सिखा रही है। आज अपने किसी एक आचरण को इस दृष्टि से देखिए: यदि सब लोग वैसा ही करें, तो संसार कैसा होगा?",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Replaces the existing hand-written व्याख्या for 3.21.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः।\n\nस यत्प्रमाणं कुरुते लोकस्तदनुवर्तते।।3.21।।\n ",
+    "replacesHandWritten": true
+  },
+  "3:22": {
+    "explanation": "यहाँ भगवान स्वयं को उदाहरण के रूप में रखते हैं, और इस विनम्रता में उनकी करुणा की गहराई दिखाई देती है। 'न मे पार्थास्ति कर्तव्यं त्रिषु लोकेषु किञ्चन', हे पार्थ, मेरे लिए तीनों लोकों में कोई कर्तव्य नहीं है; 'नानवाप्तमवाप्तव्यम्', न कोई ऐसी वस्तु है जो मुझे प्राप्त नहीं और जिसे पाना हो। 'वर्त एव च कर्मणि', फिर भी मैं कर्म में लगा रहता हूँ।\n\nइस वचन को धीरे-धीरे अनुभव कीजिए। जिसके पास सब कुछ है, जो सृष्टि का स्वामी है, जिसे कुछ भी पाने की आवश्यकता नहीं, वह भी निरंतर कर्म कर रहा है। श्रीकृष्ण का पूरा जीवन इसका साक्षी है: वे सारथी बने, दूत बने, सखा बने, गायों को चराया, घोड़ों की सेवा की। उन्होंने कोई कर्म छोटा नहीं माना, क्योंकि उनका हर कर्म प्रेम और लोक-कल्याण से प्रेरित था, किसी अभाव से नहीं।\n\nयह श्लोक हमें कर्म का एक नया उद्देश्य दिखाता है। हम प्रायः इसलिए कर्म करते हैं क्योंकि हमें कुछ चाहिए। पर भगवान दिखाते हैं कि पूर्णता की अवस्था में भी कर्म रुकता नहीं; वह केवल अपना रंग बदल लेता है, आवश्यकता से प्रेम की ओर। जब आप किसी के लिए कुछ करें, बिना किसी विवशता के, केवल प्रेम से, तब आप उसी दिव्य कर्म का एक अंश जी रहे होते हैं। ऐसे कर्म में श्रम का बोझ नहीं, आनंद होता है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "न मे पार्थास्ति कर्तव्यं त्रिषु लोकेषु किञ्चन।\n\nनानवाप्तमवाप्तव्यं वर्त एव च कर्मणि।।3.22।।\n "
+  },
+  "3:23": {
+    "explanation": "भगवान यहाँ बताते हैं कि वे कर्म क्यों करते रहते हैं, और उनका कारण अपने लिए नहीं, संसार के लिए है। 'यदि ह्यहं न वर्तेयं जातु कर्मण्यतन्द्रितः', यदि मैं कभी सावधान होकर, आलस्य-रहित होकर कर्म न करूँ, 'मम वर्त्मानुवर्तन्ते मनुष्याः पार्थ सर्वशः', तो हे पार्थ, मनुष्य सब प्रकार से मेरे ही मार्ग का अनुसरण करेंगे।\n\n'अतन्द्रितः', जो कभी तंद्रा में न पड़े, कभी आलसी न हो, यह शब्द भगवान के कर्म की एक सुंदर विशेषता बताता है। सूर्य कभी उदय होना नहीं भूलता, वायु कभी बहना नहीं छोड़ती, ऋतुएँ अपने समय पर आती हैं। यह सृष्टि का अतन्द्रित कर्म ही है जो संसार को चला रहा है। यदि वह एक क्षण के लिए भी रुक जाए, तो सब कुछ थम जाए।\n\nइस श्लोक में एक गहरा संदेश छिपा है: जिसे लोग आदर्श मानते हैं, उसका आलस्य भी एक उदाहरण बन जाता है। भगवान जैसे पूर्ण पुरुष भी इस बात के प्रति सजग हैं कि उनका आचरण दूसरों को क्या सिखा रहा है। यदि उन्हें भी यह सजगता रखनी है, तो हमें तो और अधिक रखनी चाहिए। आपके बच्चे, आपके सहकर्मी, आपके मित्र आपके 'वर्त्म', आपके मार्ग को देख रहे हैं। उन्हें अपने आचरण से वह मार्ग दिखाइए जिस पर आप उन्हें चलते देखना चाहते हैं।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Gita Press translates 3.23–24 as one passage.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "यदि ह्यहं न वर्तेयं जातु कर्मण्यतन्द्रितः।\n\nमम वर्त्मानुवर्तन्ते मनुष्याः पार्थ सर्वशः।।3.23।।\n "
+  },
+  "3:24": {
+    "explanation": "भगवान यहाँ उस परिणाम का चित्र खींचते हैं जो उनके कर्म छोड़ देने पर होता, और इस चित्र में संसार के प्रति उनकी चिंता झलकती है। 'उत्सीदेयुरिमे लोका न कुर्यां कर्म चेदहम्', यदि मैं कर्म न करूँ, तो ये सारे लोक नष्ट हो जाएँ। 'सङ्करस्य च कर्ता स्याम्', और मैं अव्यवस्था का कारण बनूँ, 'उपहन्यामिमाः प्रजाः', और इस समस्त प्रजा का नाश करने वाला होऊँ।\n\n'सङ्कर' शब्द का पारम्परिक अर्थ वर्ण-व्यवस्था का मिश्रण है, पर इसका व्यापक भाव है समाज की उस मर्यादा और व्यवस्था का टूट जाना जो लोगों को कर्तव्य, नैतिकता और परस्पर उत्तरदायित्व में बाँधे रखती है। जब आदर्श व्यक्ति ही अपने दायित्व छोड़ दें, तब समाज में दिशाहीनता फैलती है, लोग भ्रमित होते हैं कि क्या उचित है और क्या नहीं, और धीरे-धीरे वह ताना-बाना बिखर जाता है जो सबको एक साथ बाँधे है।\n\nयह श्लोक हमें अपने कर्मों के सामाजिक प्रभाव के प्रति सजग करता है। हम सोचते हैं कि हमारा एक छोटा सा पलायन किसी को प्रभावित नहीं करेगा। पर जब एक शिक्षक पढ़ाना छोड़ दे, एक चिकित्सक सेवा छोड़ दे, एक माता-पिता अपने दायित्व से मुँह मोड़ लें, तो उसका प्रभाव दूर तक जाता है। आपका कर्तव्य-पालन समाज की व्यवस्था का एक अदृश्य स्तम्भ है; उसे दृढ़ रखिए।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "medium",
+    "reviewNote": "वर्णसंकर verse: the draft gives the traditional meaning in one line and frames the wider sense as breakdown of social and moral order, without ranking anyone. Same combined Gita Press Hindi as 3.23.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "उत्सीदेयुरिमे लोका न कुर्यां कर्म चेदहम्।\n\nसङ्करस्य च कर्ता स्यामुपहन्यामिमाः प्रजाः।।3.24।।\n "
+  },
+  "3:25": {
+    "explanation": "भगवान यहाँ ज्ञानी और अज्ञानी के कर्म में एक सूक्ष्म पर गहरा अंतर बताते हैं: बाहर से दोनों एक जैसे दिख सकते हैं, पर भीतर का भाव बिलकुल भिन्न होता है। 'सक्ताः कर्मण्यविद्वांसो यथा कुर्वन्ति भारत', हे भारत, जैसे अज्ञानी लोग कर्म में आसक्त होकर कर्म करते हैं, 'कुर्याद्विद्वांस्तथासक्तश्चिकीर्षुर्लोकसंग्रहम्', वैसे ही ज्ञानी को भी, आसक्ति-रहित होकर, लोक-कल्याण की इच्छा से कर्म करना चाहिए।\n\n'यथा... तथा', जैसे... वैसे ही, इन शब्दों में एक सुंदर संतुलन है। ज्ञानी को कर्म में उतनी ही लगन, उतनी ही ऊर्जा और उतनी ही निपुणता रखनी चाहिए जितनी एक आसक्त व्यक्ति रखता है। अंतर केवल उद्देश्य में है: अज्ञानी अपने लाभ के लिए दौड़ता है, ज्ञानी सबके कल्याण के लिए। जैसे एक माँ और एक धाय, दोनों बालक को खिलाती हैं, पर एक के कर्म में ममता का बंधन है और दूसरी के कर्म में सेवा का।\n\nयह श्लोक एक भ्रान्त धारणा को तोड़ता है कि ज्ञानी या आध्यात्मिक व्यक्ति को कर्म में ढीला या उदासीन होना चाहिए। सच्चा आध्यात्मिक व्यक्ति सबसे अधिक कर्मठ होता है, क्योंकि उसकी ऊर्जा चिंता, भय और लालसा में व्यर्थ नहीं जाती। अपने कार्य को पूरी लगन से कीजिए, पर उसके फल को मन में गाँठ मत बनने दीजिए। यही 'असक्त होकर पूर्ण कर्म' का रहस्य है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Gita Press translates 3.25–26 as one passage.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "सक्ताः कर्मण्यविद्वांसो यथा कुर्वन्ति भारत।\n\nकुर्याद्विद्वांस्तथासक्तश्चिकीर्षुर्लोकसंग्रहम्।।3.25।।\n "
+  },
+  "3:26": {
+    "explanation": "भगवान यहाँ ज्ञानी को एक अत्यंत करुणामय सावधानी देते हैं, जो हर गुरु और हर मार्गदर्शक के लिए अनमोल है। 'न बुद्धिभेदं जनयेदज्ञानां कर्मसङ्गिनाम्', कर्म में आसक्त अज्ञानी लोगों की बुद्धि में भ्रम उत्पन्न न करे; 'जोषयेत्सर्वकर्माणि विद्वान्युक्तः समाचरन्', बल्कि स्वयं योगयुक्त होकर सब कर्म भलीभाँति करते हुए उन्हें भी कर्म में लगाए रखे।\n\nइस श्लोक में एक गहरी शिक्षण-बुद्धि है। मान लीजिए कोई व्यक्ति फल की इच्छा से, पर निष्ठा से, अपना कर्तव्य निभा रहा है। यदि कोई ज्ञानी उससे कहे कि 'फल की इच्छा तो बंधन है, कर्म व्यर्थ है', तो वह व्यक्ति निष्काम कर्म तक तो नहीं पहुँचेगा, उलटे जो कर्म कर रहा था वह भी छोड़ देगा। उसकी स्थिति पहले से भी बुरी हो जाएगी। सत्य भी यदि अनुचित समय पर, अनुचित ढंग से कहा जाए, तो हानि कर सकता है।\n\nभगवान का मार्ग उपदेश का नहीं, उदाहरण का है: 'समाचरन्', स्वयं आचरण करते हुए। ज्ञानी को दूसरों को उनके मार्ग से नहीं हटाना, बल्कि अपने आचरण से धीरे-धीरे उन्हें ऊपर उठाना है। जैसे एक अच्छा शिक्षक बालक को उसकी समझ के स्तर से आरम्भ करके आगे ले जाता है। जब आप किसी को कुछ सिखाना चाहें, तो पहले उसकी वर्तमान अवस्था का सम्मान कीजिए; उसका विश्वास तोड़कर नहीं, उसे पोषित करके आगे बढ़ाइए।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Same combined Gita Press Hindi as 3.25.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "न बुद्धिभेदं जनयेदज्ञानां कर्मसङ्गिनाम्।\n\nजोषयेत्सर्वकर्माणि विद्वान् युक्तः समाचरन्।।3.26।।\n "
+  },
+  "3:27": {
+    "explanation": "यह श्लोक कर्तापन के अहंकार की जड़ को छूता है, और इसमें एक ऐसा सत्य है जो पहली बार सुनने पर चौंकाता है और फिर धीरे-धीरे मुक्त करता है। 'प्रकृतेः क्रियमाणानि गुणैः कर्माणि सर्वशः', सारे कर्म सब प्रकार से प्रकृति के गुणों के द्वारा किए जाते हैं; 'अहङ्कारविमूढात्मा कर्ताऽहमिति मन्यते', पर अहंकार से मोहित व्यक्ति मानता है कि 'मैं कर्ता हूँ'।\n\nइसे एक सरल अनुभव से समझिए। आप भोजन करते हैं, पर उसे पचाता कौन है? आप सोते हैं, पर आपकी श्वास कौन चलाता है? आपके विचार कहाँ से आते हैं, आपकी भावनाएँ कैसे उठती हैं? यदि ध्यान से देखें, तो पाएँगे कि अधिकांश कर्म अपने आप हो रहे हैं: प्रकृति के, शरीर के, मन के नियमों से। फिर भी हम हर कर्म पर 'मैंने किया' की मुहर लगा देते हैं।\n\nयह 'मैं कर्ता हूँ' का भाव ही सफलता में अहंकार और असफलता में अपराधबोध, दोनों को जन्म देता है। जब यह भाव ढीला पड़ता है, तब मन हल्का हो जाता है: न सफलता का बोझ, न असफलता का। इसका अर्थ उत्तरदायित्व से भागना नहीं, बल्कि यह स्वीकार करना है कि हम एक विशाल प्रक्रिया के माध्यम हैं, स्वामी नहीं। किसी उपलब्धि पर आज 'मैंने किया' के स्थान पर 'मेरे द्वारा हुआ' कहकर देखिए, और उस सूक्ष्म अंतर में मिलने वाली शांति को अनुभव कीजिए।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Replaces the existing hand-written व्याख्या for 3.27.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "प्रकृतेः क्रियमाणानि गुणैः कर्माणि सर्वशः।\n\nअहङ्कारविमूढात्मा कर्ताऽहमिति मन्यते।।3.27।।\n ",
+    "replacesHandWritten": true
+  },
+  "3:28": {
+    "explanation": "पिछले श्लोक के अहंकारी कर्ता के विपरीत, भगवान अब तत्त्वज्ञानी की दृष्टि का वर्णन करते हैं, जो कर्म के बीच भी अछूता रहता है। 'तत्त्ववित्तु महाबाहो गुणकर्मविभागयोः', हे महाबाहो, जो गुण-विभाग और कर्म-विभाग के तत्त्व को जानता है, 'गुणा गुणेषु वर्तन्त इति मत्वा न सज्जते', वह यह जानकर कि 'गुण ही गुणों में बरत रहे हैं', उनमें आसक्त नहीं होता।\n\n'गुणा गुणेषु वर्तन्ते', गुण ही गुणों में बरत रहे हैं, यह वाक्य गीता के सबसे गहरे सूत्रों में से एक है। इसका अर्थ है कि इन्द्रियाँ, जो गुणों से बनी हैं, विषयों में, जो भी गुणों से बने हैं, विचरती हैं। आँख रूप को देखती है, कान शब्द को सुनते हैं; यह प्रकृति का प्रकृति से खेल है। ज्ञानी इस खेल को देखता है, पर स्वयं को इसका खिलाड़ी नहीं मानता; वह साक्षी है।\n\nइस दृष्टि में एक अद्भुत स्वतंत्रता है। जब कोई आपको अपमानित करे, या कोई प्रशंसा करे, तब यह सूत्र स्मरण कीजिए: ये शब्द, ये भावनाएँ, ये प्रतिक्रियाएँ प्रकृति के गुणों का ही खेल हैं। आप उस खेल को देख रहे हैं, उसमें उलझे नहीं हैं। जैसे कोई व्यक्ति नदी के किनारे बैठकर लहरों को आते-जाते देखे, पर स्वयं भीगे नहीं। यह साक्षी भाव धीरे-धीरे अभ्यास से आता है, और जैसे-जैसे आता है, जीवन का हर उतार-चढ़ाव हल्का होता जाता है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "तत्त्ववित्तु महाबाहो गुणकर्मविभागयोः।\n\nगुणा गुणेषु वर्तन्त इति मत्वा न सज्जते।।3.28।।\n "
+  },
+  "3:29": {
+    "explanation": "भगवान यहाँ फिर से उस करुणा की ओर लौटते हैं जो ज्ञानी को अज्ञानियों के प्रति रखनी चाहिए। 'प्रकृतेर्गुणसम्मूढाः सज्जन्ते गुणकर्मसु', जो प्रकृति के गुणों से मोहित हैं, वे गुणों और कर्मों में आसक्त रहते हैं। 'तानकृत्स्नविदो मन्दान्कृत्स्नविन्न विचालयेत्', उन अधूरा जानने वालों को पूर्ण ज्ञानी विचलित न करे।\n\n'अकृत्स्नविद्' और 'कृत्स्नविद्', अधूरा जानने वाला और पूरा जानने वाला, यह भेद बहुत विनम्र है। भगवान अज्ञानी को मूर्ख नहीं कहते, केवल इतना कहते हैं कि उसकी समझ अभी पूर्ण नहीं हुई। जैसे एक बालक जो अभी गिनती सीख रहा है, वह भ्रान्त नहीं, केवल अधूरा है। उसे उच्च गणित की बातें सुनाकर भ्रमित करना करुणा नहीं, उसके विकास में बाधा है।\n\n'न विचालयेत्', विचलित न करे, यह आदेश हर उस व्यक्ति के लिए है जिसे कुछ ज्ञान मिला है। ज्ञान के साथ प्रायः एक सूक्ष्म अहंकार आता है, जो दूसरों की आस्थाओं को तुच्छ समझने लगता है। भगवान कहते हैं: हर किसी की यात्रा उसके अपने स्तर से आरम्भ होती है; उसकी सरल आस्था का सम्मान कीजिए। आपका ज्ञान दूसरों को नीचा दिखाने के लिए नहीं, उन्हें धीरे-धीरे ऊपर उठाने के लिए है। जो ज्ञान करुणा से रहित हो, वह अभी स्वयं भी अधूरा है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Gita Press renders मन्दान् as 'मन्दबुद्धि'; the draft keeps the sense respectfully as 'whose understanding is not yet complete'.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "प्रकृतेर्गुणसम्मूढाः सज्जन्ते गुणकर्मसु।\n\nतानकृत्स्नविदो मन्दान्कृत्स्नविन्न विचालयेत्।।3.29।।\n "
+  },
+  "3:30": {
+    "explanation": "यह श्लोक तीसरे अध्याय का हृदय है, जहाँ कर्मयोग भक्ति में खिल उठता है। 'मयि सर्वाणि कर्माणि संन्यस्याध्यात्मचेतसा', अपने सारे कर्म अध्यात्म-चेतना के साथ मुझमें अर्पित करके, 'निराशीर्निर्ममो भूत्वा', कामना-रहित और ममता-रहित होकर, 'युध्यस्व विगतज्वरः', संताप-रहित होकर युद्ध करो।\n\n'मयि संन्यस्य', मुझमें अर्पित करके, यह इस श्लोक का सबसे कोमल भाव है। अब तक भगवान निष्काम कर्म की बात कर रहे थे, जो कठिन लग सकता है: फल की इच्छा छोड़ना, आसक्ति छोड़ना। पर यहाँ वे एक सरल मार्ग दिखाते हैं: अपने कर्म मुझे सौंप दो। जब कर्म ईश्वर को अर्पित हो जाता है, तब उसके फल की चिंता स्वयं छूट जाती है, क्योंकि वह अब हमारा नहीं, उसका है।\n\n'विगतज्वरः', बिना ज्वर के, यह शब्द अर्जुन की दशा का बहुत सटीक चित्र है। वे सचमुच एक मानसिक ज्वर में थे: भय, चिंता, शोक, अपराधबोध का ज्वर। भगवान उस ज्वर की औषधि देते हैं: समर्पण। जब हम अपने जीवन का भार किसी बड़े, प्रेमपूर्ण हाथ में सौंप देते हैं, तब वह ज्वर उतरने लगता है। आज जो भी कार्य आपको चिंता दे रहा हो, उसे आरम्भ करने से पहले मन ही मन कहिए: 'यह मैं आपको अर्पित करता हूँ।' और फिर पूरे मन से कीजिए।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "मयि सर्वाणि कर्माणि संन्यस्याध्यात्मचेतसा।\n\nनिराशीर्निर्ममो भूत्वा युध्यस्व विगतज्वरः।।3.30।।\n "
+  },
+  "3:31": {
+    "explanation": "अपने उपदेश के बाद भगवान उन लोगों को एक मधुर आश्वासन देते हैं जो इस मार्ग पर चलते हैं, भले ही वे अभी पूर्ण न हों। 'ये मे मतमिदं नित्यमनुतिष्ठन्ति मानवाः', जो मनुष्य मेरे इस मत का सदा अनुसरण करते हैं, 'श्रद्धावन्तोऽनसूयन्तः', श्रद्धा के साथ और दोष-दृष्टि से रहित होकर, 'मुच्यन्ते तेऽपि कर्मभिः', वे भी कर्मों के बंधन से मुक्त हो जाते हैं।\n\n'तेऽपि', वे भी, यह छोटा सा शब्द बहुत बड़ी आशा देता है। भगवान यह नहीं कहते कि केवल महान ज्ञानी या सिद्ध पुरुष मुक्त होते हैं। जो साधारण मनुष्य, श्रद्धा के साथ, इस मार्ग पर चलने का प्रयत्न करते हैं, वे भी मुक्त होते हैं। पूर्णता की प्रतीक्षा नहीं करनी; निष्ठापूर्ण प्रयत्न ही पर्याप्त है।\n\nइस श्लोक में दो गुण आवश्यक बताए गए हैं: 'श्रद्धा', विश्वास, और 'अनसूया', दोष न खोजने का स्वभाव। ये दोनों एक-दूसरे के पूरक हैं। जो व्यक्ति हर उपदेश में कमी खोजता है, वह उसका लाभ नहीं ले पाता, चाहे वह कितना भी बुद्धिमान हो। और जो खुले, विश्वासपूर्ण मन से सुनता है, उसके भीतर वह उपदेश धीरे-धीरे काम करने लगता है। गीता को पढ़ते समय इसी भाव से पढ़िए: आलोचक की तरह नहीं, एक जिज्ञासु की तरह, जो सीखना चाहता है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "ये मे मतमिदं नित्यमनुतिष्ठन्ति मानवाः।\n\nश्रद्धावन्तोऽनसूयन्तो मुच्यन्ते तेऽपि कर्मभिः।।3.31।।\n "
+  },
+  "3:32": {
+    "explanation": "पिछले श्लोक के आश्वासन के विपरीत, यहाँ भगवान उन लोगों की दशा बताते हैं जो इस मार्ग का तिरस्कार करते हैं, और उनके शब्दों में चेतावनी से अधिक एक वेदना है। 'ये त्वेतदभ्यसूयन्तो नानुतिष्ठन्ति मे मतम्', जो लोग इस मत में दोष-दृष्टि करते हुए इसका अनुसरण नहीं करते, 'सर्वज्ञानविमूढांस्तान्विद्धि नष्टानचेतसः', उन्हें सब प्रकार के ज्ञान में मोहित, विवेकहीन और नष्ट हुआ ही जानो।\n\n'अभ्यसूयन्तः', दोष-दृष्टि करते हुए, यह शब्द बताता है कि समस्या न जानने में नहीं, न मानने के हठ में है। कोई व्यक्ति किसी बात को समझ न पाए, तो उसके लिए आशा है। पर जो व्यक्ति पहले से तय कर ले कि इसमें केवल कमियाँ ही खोजनी हैं, वह अपने लिए ज्ञान का द्वार स्वयं बंद कर देता है। जैसे कोई व्यक्ति आँखें बंद करके कहे कि सूर्य है ही नहीं।\n\n'नष्टान्', नष्ट हुए, यह शब्द किसी दंड की घोषणा नहीं, एक दुःखद परिणाम का वर्णन है। जो व्यक्ति आत्म-ज्ञान के मार्ग को अस्वीकार करता है, वह स्वयं को उस प्रकाश से वंचित कर लेता है जो उसे भ्रम और दुःख से बचा सकता था। यह श्लोक हमें स्वयं को परखने को कहता है: क्या मैं किसी सत्य को इसलिए अस्वीकार कर रहा हूँ कि वह असत्य है, या इसलिए कि वह मुझे असुविधाजनक लगता है?",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "ये त्वेतदभ्यसूयन्तो नानुतिष्ठन्ति मे मतम्।\n\nसर्वज्ञानविमूढांस्तान्विद्धि नष्टानचेतसः।।3.32।।\n "
+  },
+  "3:33": {
+    "explanation": "भगवान यहाँ मनुष्य के स्वभाव की शक्ति के बारे में एक ऐसा यथार्थ रखते हैं जिसे अनदेखा करना कठिन है। 'सदृशं चेष्टते स्वस्याः प्रकृतेर्ज्ञानवानपि', ज्ञानी भी अपनी प्रकृति के अनुसार ही चेष्टा करता है। 'प्रकृतिं यान्ति भूतानि', सभी प्राणी अपनी प्रकृति का ही अनुसरण करते हैं। 'निग्रहः किं करिष्यति', फिर हठ से किया गया दमन क्या करेगा?\n\nयह श्लोक पहली बार में निराशाजनक लग सकता है, मानो कह रहा हो कि मनुष्य अपनी प्रकृति का दास है। पर इसका गहरा अर्थ कुछ और है। भगवान बताते हैं कि हठपूर्वक, बलपूर्वक अपने स्वभाव को दबाने से वह बदलता नहीं; वह भीतर छिपा रहता है और अवसर मिलते ही फिर उभर आता है। जैसे किसी कमानी को जितना दबाया जाए, वह उतने ही वेग से उछलती है।\n\nतो उपाय क्या है? अगला श्लोक इसका उत्तर देगा: राग-द्वेष के वश में न होना। इस श्लोक का संदेश है कि अपने स्वभाव से युद्ध नहीं, उसे समझकर उचित दिशा देना है। एक नदी को रोकने से बाढ़ आती है, पर उसे उचित मार्ग देने से वह खेतों को सींचती है। अपने स्वभाव को पहचानिए: उसकी शक्तियों को, उसकी प्रवृत्तियों को। फिर उसे दबाने के बजाय, उसे धर्म और सेवा के मार्ग पर मोड़िए। यही अर्जुन के लिए भी संकेत है: तुम्हारा योद्धा-स्वभाव दबाने के लिए नहीं, धर्म की रक्षा में लगाने के लिए है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "सदृशं चेष्टते स्वस्याः प्रकृतेर्ज्ञानवानपि।\n\nप्रकृतिं यान्ति भूतानि निग्रहः किं करिष्यति।।3.33।।\n "
+  },
+  "3:34": {
+    "explanation": "पिछले श्लोक में भगवान ने कहा कि हठ से स्वभाव नहीं बदलता; अब वे बताते हैं कि साधक का वास्तविक युद्ध कहाँ है। 'इन्द्रियस्येन्द्रियस्यार्थे रागद्वेषौ व्यवस्थितौ', हर इन्द्रिय के हर विषय में राग और द्वेष स्थित रहते हैं। 'तयोर्न वशमागच्छेत्', मनुष्य को उन दोनों के वश में नहीं होना चाहिए; 'तौ ह्यस्य परिपन्थिनौ', क्योंकि वे दोनों ही इसके मार्ग के लुटेरे हैं।\n\n'परिपन्थिनौ', मार्ग के लुटेरे, यह उपमा बहुत सजीव है। प्राचीन काल में यात्री जब किसी वन से होकर गुजरते थे, तो लुटेरे मार्ग में घात लगाए बैठे रहते थे। राग और द्वेष भी ऐसे ही हैं: वे हर विषय में, हर अनुभव में छिपे बैठे हैं, और जैसे ही मन असावधान होता है, वे उसकी शांति लूट लेते हैं। जो प्रिय लगता है उसके प्रति राग, जो अप्रिय लगता है उसके प्रति द्वेष; ये दोनों मिलकर हमें निरंतर खींचते-धकेलते रहते हैं।\n\nइस श्लोक में एक सूक्ष्म बात है: भगवान राग-द्वेष के होने को स्वीकार करते हैं, 'व्यवस्थितौ', वे स्थित हैं। वे यह नहीं कहते कि उन्हें कभी उठने ही मत दो, बल्कि कहते हैं कि 'उनके वश में मत आओ'। भावना का उठना स्वाभाविक है; उसके द्वारा संचालित होना हमारा चुनाव है। जब अगली बार कोई तीव्र प्रिय या अप्रिय भाव उठे, तो उसे पहचानिए, उसे नाम दीजिए, और फिर निर्णय विवेक से लीजिए, भावना से नहीं।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "इन्द्रियस्येन्द्रियस्यार्थे रागद्वेषौ व्यवस्थितौ।\n\nतयोर्न वशमागच्छेत्तौ ह्यस्य परिपन्थिनौ।।3.34।।\n "
+  },
+  "3:35": {
+    "explanation": "यह श्लोक गीता के सबसे प्रसिद्ध और सबसे गहरे वचनों में से एक है, जो हर उस व्यक्ति से बात करता है जो दूसरों से अपनी तुलना करते-करते स्वयं को भूल गया है। 'श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्', अच्छी तरह से निभाए गए दूसरे के धर्म से, गुणों की कमी वाला अपना धर्म श्रेष्ठ है। 'स्वधर्मे निधनं श्रेयः', अपने धर्म में मृत्यु भी कल्याणकारी है; 'परधर्मो भयावहः', दूसरे का धर्म भय देने वाला है।\n\n'स्वधर्म' का अर्थ यहाँ किसी सम्प्रदाय या मत से नहीं, बल्कि व्यक्ति के अपने स्वभाव, अपनी क्षमता और अपनी स्थिति के अनुसार उसका कर्तव्य है। अर्जुन का स्वधर्म योद्धा का था। उस क्षण उन्हें संन्यासी का मार्ग अधिक शांत और पवित्र लग रहा था, पर वह उनके लिए परधर्म था। दूसरे का मार्ग दूर से सदा अधिक सुंदर दिखता है, क्योंकि हम उसकी कठिनाइयाँ नहीं देखते।\n\n'विगुणः', गुणों की कमी वाला, यह शब्द बहुत मानवीय है। भगवान यह नहीं कहते कि अपना धर्म पूर्णता से निभाओ। वे कहते हैं कि यदि तुम उसे अपूर्ण रूप से भी निभाओ, तब भी वह दूसरे के मार्ग के पूर्ण अनुकरण से श्रेष्ठ है। क्योंकि अपने मार्ग पर चलते हुए आप अपने भीतर से विकसित होते हैं, जबकि दूसरे के मार्ग पर आप केवल एक वेश पहनते हैं। अपने स्वभाव का सम्मान कीजिए; दूसरों की सफलता देखकर अपना मार्ग छोड़ने से पहले सौ बार सोचिए।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Replaces the existing hand-written व्याख्या for 3.35.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्।\n\nस्वधर्मे निधनं श्रेयः परधर्मो भयावहः।।3.35।।\n ",
+    "replacesHandWritten": true
+  },
+  "3:36": {
+    "explanation": "भगवान के उपदेश को सुनते हुए अर्जुन के मन में एक अत्यंत निष्कपट, अत्यंत मानवीय प्रश्न जागता है, जो युगों से हर साधक के हृदय में उठता रहा है। 'अथ केन प्रयुक्तोऽयं पापं चरति पूरुषः', तो फिर किसके द्वारा प्रेरित होकर यह मनुष्य पाप का आचरण करता है, 'अनिच्छन्नपि वार्ष्णेय', हे वार्ष्णेय, न चाहते हुए भी, 'बलादिव नियोजितः', मानो बलपूर्वक लगाया गया हो?\n\n'अनिच्छन्नपि', न चाहते हुए भी, ये शब्द हर उस व्यक्ति की पीड़ा कहते हैं जिसने कभी कोई ऐसा कार्य किया हो जिसे वह जानता था कि नहीं करना चाहिए। हम जानते हैं कि क्या उचित है, हम उसे करना भी चाहते हैं, फिर भी किसी क्षण कोई शक्ति हमें खींचकर उलटी दिशा में ले जाती है। और बाद में हम स्वयं से पूछते हैं: मैंने ऐसा क्यों किया?\n\nयह प्रश्न दिखाता है कि अर्जुन अब केवल युद्ध के बारे में नहीं, मनुष्य के भीतर के युद्ध के बारे में सोच रहे हैं। यह गीता का एक मोड़ है, जहाँ बाहरी कुरुक्षेत्र भीतर के कुरुक्षेत्र की ओर मुड़ता है। 'वार्ष्णेय', वृष्णि-वंशी, यह सम्बोधन एक आत्मीय पुकार है। जब आप भी अपने किसी कर्म पर पछताएँ, तो स्वयं को कोसने के बजाय अर्जुन की तरह यह प्रश्न पूछिए: वह कौन-सी शक्ति थी? उसे पहचानना ही उससे मुक्ति का पहला कदम है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "अर्जुन उवाच\n\nअथ केन प्रयुक्तोऽयं पापं चरति पूरुषः।\n\nअनिच्छन्नपि वार्ष्णेय बलादिव नियोजितः।।3.36।।\n "
+  },
+  "3:37": {
+    "explanation": "अर्जुन के प्रश्न का उत्तर भगवान एक स्पष्ट और दृढ़ निदान से देते हैं, जैसे एक कुशल वैद्य रोग का मूल पहचान लेता है। 'काम एष क्रोध एष रजोगुणसमुद्भवः', यह काम ही है, यह क्रोध ही है, जो रजोगुण से उत्पन्न होता है। 'महाशनो महापाप्मा', यह बहुत खाने वाला, कभी तृप्त न होने वाला, और महापापी है। 'विद्ध्येनमिह वैरिणम्', इसे ही इस विषय में अपना शत्रु जानो।\n\nभगवान काम और क्रोध को एक ही शक्ति के दो रूप बताते हैं, और यह अंतर्दृष्टि बहुत गहरी है। क्रोध प्रायः एक अपूर्ण इच्छा का ही दूसरा चेहरा होता है। जब हम कुछ चाहते हैं और वह नहीं मिलता, या कोई उसके मार्ग में आता है, तब वही इच्छा क्रोध बन जाती है। इसलिए क्रोध को जीतने के लिए उसके नीचे छिपी इच्छा को देखना होगा।\n\n'महाशन', बहुत खाने वाला, यह विशेषण काम के स्वभाव को बहुत सटीक पकड़ता है। इच्छा को जितना भोजन दो, उतनी ही बढ़ती है; जैसे अग्नि में घी डालने से वह और प्रज्वलित होती है। एक इच्छा पूरी होते ही दूसरी जन्म ले लेती है। भगवान इसे 'वैरी', शत्रु कहते हैं, क्योंकि यह मित्र का वेश धारण करके आता है, सुख का वचन देकर, और अंत में दुःख देकर जाता है। अपनी इच्छाओं को देखिए: वे आपकी सेवक हैं, या स्वामी?",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "श्री भगवानुवाच\n\nकाम एष क्रोध एष रजोगुणसमुद्भवः।\n\nमहाशनो महापाप्मा विद्ध्येनमिह वैरिणम्।।3.37।।\n "
+  },
+  "3:38": {
+    "explanation": "भगवान यहाँ तीन सुंदर उपमाओं से बताते हैं कि काम कैसे हमारे विवेक को ढक देता है, और ये उपमाएँ तीन अलग-अलग स्तरों को दिखाती हैं। 'धूमेनाव्रियते वह्निः', जैसे धुएँ से अग्नि ढकी रहती है; 'यथादर्शो मलेन च', जैसे मैल से दर्पण; 'यथोल्बेनावृतो गर्भः', और जैसे जेर से गर्भ ढका रहता है; 'तथा तेनेदमावृतम्', वैसे ही उस काम से यह ज्ञान ढका हुआ है।\n\nइन तीनों उपमाओं में एक क्रम है, जिसे परम्परा ने बहुत सुंदरता से समझाया है। धुआँ अग्नि को हल्का ढकता है; थोड़ी हवा चलते ही अग्नि फिर दिखने लगती है। यह सत्त्व-प्रधान व्यक्ति की दशा है, जिसका विवेक थोड़े प्रयत्न से ही प्रकट हो जाता है। मैल दर्पण को अधिक ढकता है; उसे स्वच्छ करने के लिए प्रयत्न चाहिए। यह रजस-प्रधान व्यक्ति की दशा है। और जेर गर्भ को पूर्णतः ढक लेता है; वह समय और धैर्य से ही हटता है। यह तमस-प्रधान व्यक्ति की दशा है।\n\nइस श्लोक में एक बहुत बड़ी आशा छिपी है: ढकी हुई वस्तु नष्ट नहीं हुई है। अग्नि धुएँ के नीचे भी जल रही है, दर्पण मैल के नीचे भी चमकदार है, गर्भ में जीवन पल रहा है। वैसे ही आपका विवेक, आपका ज्ञान, कामनाओं के नीचे भी पूर्णतः सुरक्षित है। उसे बनाना नहीं, केवल उघाड़ना है। अपनी साधना को इसी दृष्टि से देखिए: आप कुछ नया नहीं जोड़ रहे, केवल ढकने वाली परतें हटा रहे हैं।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "The smoke/mirror/womb gradation by guna is a traditional reading (e.g. in several commentaries), given in paraphrase.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "धूमेनाव्रियते वह्निर्यथाऽऽदर्शो मलेन च।\n\nयथोल्बेनावृतो गर्भस्तथा तेनेदमावृतम्।।3.38।।\n "
+  },
+  "3:39": {
+    "explanation": "भगवान काम के स्वभाव का एक और गहरा चित्र देते हैं, और इस बार उसे ज्ञानी का स्थायी शत्रु कहते हैं। 'आवृतं ज्ञानमेतेन ज्ञानिनो नित्यवैरिणा', ज्ञानी के इस नित्य शत्रु द्वारा ज्ञान ढका हुआ है, 'कामरूपेण कौन्तेय', हे कुन्तीपुत्र, जो कामना के रूप में है, 'दुष्पूरेणानलेन च', और जो अग्नि के समान कभी तृप्त न होने वाला है।\n\n'ज्ञानिनो नित्यवैरिणा', ज्ञानी का नित्य शत्रु, यह वाक्यांश बहुत अर्थपूर्ण है। अज्ञानी के लिए काम पहले मित्र लगता है: वह सुख देता है, आनंद का वचन देता है; बाद में दुःख आने पर ही वह शत्रु दिखता है। पर ज्ञानी उसे पहले क्षण से ही पहचान लेता है। उसके लिए काम सदा शत्रु है, क्योंकि वह जानता है कि यह उसके सबसे बहुमूल्य धन, उसके विवेक, को चुराने आया है।\n\n'दुष्पूर', जिसे कभी भरा न जा सके, और 'अनल', अग्नि, ये दोनों मिलकर एक भयावह सत्य बताते हैं। जैसे अग्नि को जितना ईंधन दो, वह उतनी ही भूखी होती जाती है, वैसे ही इच्छाएँ पूरी होकर शांत नहीं होतीं, और बढ़ती हैं। हम सोचते हैं कि केवल यह एक वस्तु मिल जाए, तो संतोष हो जाएगा; पर वह मिलते ही मन अगली वस्तु की ओर दौड़ने लगता है। इस अग्नि को शांत करने का एक ही उपाय है: उसे ईंधन देना बंद करना। आज किसी एक छोटी इच्छा को पूरा न करके देखिए, और उस संयम में छिपी शक्ति को अनुभव कीजिए।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "आवृतं ज्ञानमेतेन ज्ञानिनो नित्यवैरिणा।\n\nकामरूपेण कौन्तेय दुष्पूरेणानलेन च।।3.39।।\n "
+  },
+  "3:40": {
+    "explanation": "शत्रु को जीतने के लिए पहले यह जानना आवश्यक है कि वह कहाँ छिपा है, और भगवान यहाँ काम के निवास-स्थान बताते हैं। 'इन्द्रियाणि मनो बुद्धिरस्याधिष्ठानमुच्यते', इन्द्रियाँ, मन और बुद्धि, ये इसके निवास-स्थान कहे गए हैं। 'एतैर्विमोहयत्येष ज्ञानमावृत्य देहिनम्', इन्हीं के द्वारा यह ज्ञान को ढककर देही को मोहित करता है।\n\nइस श्लोक में एक युद्ध-नीति है, जो अर्जुन जैसे योद्धा के लिए बहुत परिचित होगी। शत्रु के दुर्गों को जानना युद्ध की पहली आवश्यकता है। काम के तीन दुर्ग हैं, और वे एक-दूसरे के भीतर हैं: सबसे बाहर इन्द्रियाँ, जो विषयों को देखती और चखती हैं; उनके भीतर मन, जो उन विषयों का चिंतन करता है; और सबसे भीतर बुद्धि, जो उनके पक्ष में तर्क गढ़ती है।\n\nबुद्धि का इस सूची में होना बहुत चौंकाने वाला है। हम सोचते हैं कि बुद्धि तो हमारी रक्षक है, वह हमें अनुचित से बचाती है। पर भगवान कहते हैं कि काम बुद्धि में भी घर कर सकता है; तब वह हमारी इच्छाओं को उचित ठहराने के लिए बड़े सुंदर तर्क देने लगती है। जब आप किसी इच्छा के पक्ष में बहुत तर्क गढ़ने लगें, तब सावधान हो जाइए; हो सकता है कि वह तर्क आपकी बुद्धि का नहीं, आपकी बुद्धि में छिपी कामना का हो।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "इन्द्रियाणि मनो बुद्धिरस्याधिष्ठानमुच्यते।\n\nएतैर्विमोहयत्येष ज्ञानमावृत्य देहिनम्।।3.40।।\n "
+  },
+  "3:41": {
+    "explanation": "शत्रु और उसके दुर्गों को पहचानने के बाद भगवान अब युद्ध का आदेश देते हैं, और यह युद्ध बाहर नहीं, भीतर लड़ना है। 'तस्मात्त्वमिन्द्रियाण्यादौ नियम्य भरतर्षभ', इसलिए हे भरतश्रेष्ठ, तुम सबसे पहले इन्द्रियों को वश में करो, 'पाप्मानं प्रजहि ह्येनं ज्ञानविज्ञाननाशनम्', और ज्ञान और विज्ञान का नाश करने वाले इस पापी काम को अवश्य मार डालो।\n\n'आदौ', सबसे पहले, यह शब्द एक बहुत व्यावहारिक क्रम बताता है। पिछले श्लोक में काम के तीन दुर्ग बताए गए थे: इन्द्रियाँ, मन, बुद्धि। भगवान कहते हैं कि युद्ध सबसे बाहरी दुर्ग से आरम्भ करो। मन और बुद्धि पर सीधे विजय पाना कठिन है, पर इन्द्रियों पर संयम, अर्थात् क्या देखें, क्या सुनें, क्या खाएँ, यह हमारे हाथ में है। बाहरी दुर्ग गिरते ही भीतर के दुर्ग भी दुर्बल पड़ने लगते हैं।\n\n'ज्ञानविज्ञाननाशनम्', ज्ञान और विज्ञान का नाश करने वाला, यह विशेषण बताता है कि काम केवल नैतिक समस्या नहीं, एक बौद्धिक समस्या भी है। 'ज्ञान' शास्त्र की समझ है, 'विज्ञान' उसका अनुभव। काम इन दोनों को नष्ट करता है: वह हमें सत्य को समझने भी नहीं देता, और अनुभव करने भी नहीं। 'प्रजहि', मार डालो, यह शब्द दृढ़ संकल्प माँगता है। अपनी इन्द्रियों के द्वार पर एक सजग प्रहरी बिठाइए; यहीं से भीतर की विजय आरम्भ होती है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "तस्मात्त्वमिन्द्रियाण्यादौ नियम्य भरतर्षभ।\n\nपाप्मानं प्रजहि ह्येनं ज्ञानविज्ञाननाशनम्।।3.41।।\n "
+  },
+  "3:42": {
+    "explanation": "भगवान यहाँ मनुष्य के भीतर की एक सीढ़ी दिखाते हैं, जो स्थूल से सूक्ष्म की ओर, बाहर से भीतर की ओर जाती है। 'इन्द्रियाणि पराण्याहुः', इन्द्रियों को शरीर से श्रेष्ठ कहा गया है; 'इन्द्रियेभ्यः परं मनः', इन्द्रियों से श्रेष्ठ मन है; 'मनसस्तु परा बुद्धिः', मन से श्रेष्ठ बुद्धि है; 'यो बुद्धेः परतस्तु सः', और जो बुद्धि से भी परे है, वह 'वह' है।\n\nइस अंतिम 'सः', 'वह', के अर्थ पर परम्पराओं में दो दृष्टियाँ हैं। अधिकांश आचार्य, जैसे शंकराचार्य, इसे आत्मा मानते हैं: बुद्धि से परे वह चेतना जो हमारा वास्तविक स्वरूप है। गीता प्रेस इसे काम के रूप में पढ़ता है, जो बुद्धि में भी छिपकर उस पर शासन करता है। दोनों दृष्टियों का एक ही संदेश है: इस विजय के लिए हमें अपने भीतर की गहराई तक जाना होगा।\n\nयह सीढ़ी हमें एक बहुत व्यावहारिक बात सिखाती है: जो सूक्ष्म है, वह स्थूल पर शासन कर सकता है। इन्द्रियाँ शरीर को चलाती हैं, मन इन्द्रियों को, बुद्धि मन को, और आत्मा सबको। जब हम अपने को इन्द्रियों या मन के स्तर पर पहचानते हैं, तब हम उनके दास बन जाते हैं। पर जब हम अपने को उस सबसे भीतरी 'वह' के रूप में पहचानते हैं, तब सब कुछ हमारे वश में आने लगता है। कठिन क्षणों में स्वयं से कहिए: मैं यह मन नहीं, मैं इसका साक्षी हूँ।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "medium",
+    "reviewNote": "सः is read as आत्मा by most classical commentators (Shankara, Ramanuja) and as काम by Gita Press (and in the stored English). The draft presents both. Gita Press translates 3.42–43 as one passage.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "इन्द्रियाणि पराण्याहुरिन्द्रियेभ्यः परं मनः।\n\nमनसस्तु परा बुद्धिर्यो बुद्धेः परतस्तु सः।।3.42।।\n "
+  },
+  "3:43": {
+    "explanation": "तीसरे अध्याय का यह अंतिम श्लोक एक योद्धा के लिए युद्ध का अंतिम और सबसे बड़ा आह्वान है। 'एवं बुद्धेः परं बुद्ध्वा', इस प्रकार बुद्धि से भी परे उस तत्त्व को जानकर, 'संस्तभ्यात्मानमात्मना', अपने द्वारा अपने आपको स्थिर करके, 'जहि शत्रुं महाबाहो कामरूपं दुरासदम्', हे महाबाहो, इस कामरूपी कठिन शत्रु को मार डालो।\n\n'संस्तभ्यात्मानमात्मना', अपने द्वारा अपने को स्थिर करके, यह वाक्यांश इस पूरे युद्ध की कुंजी है। यह युद्ध कोई दूसरा हमारे लिए नहीं लड़ सकता। भगवान मार्ग दिखा सकते हैं, शक्ति दे सकते हैं, पर अपने भीतर के शत्रु से युद्ध हमें स्वयं करना होगा, अपनी ही उच्चतर शक्ति से अपनी निम्नतर प्रवृत्तियों को थामकर। जैसे एक घुड़सवार लगाम से अपने ही घोड़े को नियंत्रित करता है।\n\n'दुरासद', जिसे पकड़ना कठिन है, यह विशेषण निष्कपट है। भगवान यह नहीं कहते कि यह युद्ध सरल है। काम बहुत चतुर शत्रु है; वह रूप बदलता है, छिपता है, मित्र का वेश धरता है। पर 'महाबाहो', विशाल भुजाओं वाले, यह सम्बोधन अर्जुन को स्मरण कराता है कि उनमें यह शक्ति है। इस अध्याय का अंत एक विश्वास के साथ होता है: जो शत्रु भीतर है, उसे जीतने की शक्ति भी भीतर ही है। हर दिन उस शक्ति का थोड़ा-थोड़ा अभ्यास कीजिए; यही सबसे बड़ी विजय है।",
+    "science": "",
+    "lifeLesson": "",
+    "confidence": "high",
+    "reviewNote": "Same combined Gita Press Hindi as 3.42.",
+    "status": "approved",
+    "model": "claude-opus-5-5",
+    "generatedAt": "2026-10-21T20:07:15.271Z",
+    "sanskrit": "एवं बुद्धेः परं बुद्ध्वा संस्तभ्यात्मानमात्मना।\n\nजहि शत्रुं महाबाहो कामरूपं दुरासदम्।।3.43।।\n "
   },
   "17:1": {
     "explanation": "सोलहवें अध्याय के अंत में भगवान ने कहा था कि शास्त्र-विधि छोड़कर मनमाने ढंग से चलने वाले को न सिद्धि मिलती है, न सुख। इसी से अर्जुन के मन में एक स्वाभाविक प्रश्न उठता है, और यहीं से सत्रहवाँ अध्याय, 'श्रद्धात्रयविभागयोग', आरंभ होता है। अर्जुन पूछते हैं कि उन लोगों का क्या, जो शास्त्र की विधि तो नहीं जानते या उसका पालन नहीं करते, पर श्रद्धा से पूजा करते हैं? उनकी 'निष्ठा' अर्थात् भीतरी आधार या स्थिति क्या है: सत्त्व, रज या तम? यह प्रश्न बहुत मानवीय है, क्योंकि अधिकांश लोग शास्त्रों का विस्तृत ज्ञान नहीं रखते, फिर भी सच्चे मन से उपासना करते हैं। अर्जुन यह नहीं पूछ रहे कि श्रद्धा अच्छी है या बुरी, वे पूछ रहे हैं कि श्रद्धा का स्वरूप किस बात से तय होता है। भाष्यकारों में यहाँ हल्का मतभेद है: कुछ इसे उन लोगों के बारे में मानते हैं जो विधि जानते ही नहीं, और कुछ उनके बारे में जो जानकर भी उसकी उपेक्षा करते हैं। पूरे अध्याय का उत्तर इसी प्रश्न के इर्द-गिर्द बुना गया है।",
