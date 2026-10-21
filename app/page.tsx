@@ -8,7 +8,6 @@ import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
 import { MoodCompass } from '@/app/components/MoodCompass';
 import { getMoodCompass } from '@/lib/mood-compass';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
-import { Experience3DSection } from '@/app/components/Experience3DSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
 import { SadhanaPreviewSection } from '@/app/components/SadhanaPreviewSection';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
@@ -71,13 +70,10 @@ export default function HomePage() {
         {/* 7. Browse by life situation */}
         <LifeSituationsSection />
 
-        {/* 8. Touch & Contemplate: 3D Sacred Experience System */}
-        <Experience3DSection gitaCountLabel="१८ अध्याय · ७०० श्लोक" />
-
-        {/* 9. Practice tools preview */}
+        {/* 8. Practice tools preview */}
         <SadhanaPreviewSection />
 
-        {/* 10. Trust, sourcing and methodology */}
+        {/* 9. Trust, sourcing and methodology */}
         <HomeTrustStrip />
       </main>
       <SiteFooter />
