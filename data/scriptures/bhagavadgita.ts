@@ -544,7 +544,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 7,
-          sanskrit: "कार्पण्यदोषोपहतस्वभावः\n\nपृच्छामि त्वां धर्मसंमूढचेताः।\n\nयच्छ्रेयः स्यान्निश्िचतं ब्रूहि तन्मे\n\nशिष्यस्तेऽहं शाधि मां त्वां प्रपन्नम्।।2.7।।\n ",
+          sanskrit: "कार्पण्यदोषोपहतस्वभावः\n\nपृच्छामि त्वां धर्मसंमूढचेताः।\n\nयच्छ्रेयः स्यान्निश्चितं ब्रूहि तन्मे\n\nशिष्यस्तेऽहं शाधि मां त्वां प्रपन्नम्।।2.7।।\n ",
           transliteration: "kārpaṇya-doṣhopahata-svabhāvaḥ\npṛichchhāmi tvāṁ dharma-sammūḍha-chetāḥ\nyach-chhreyaḥ syānniśhchitaṁ brūhi tanme\nśhiṣhyaste ’haṁ śhādhi māṁ tvāṁ prapannam\n",
           translation: "With my heart stricken by the fault of weak compassion, my mind perplexed about my duty, I implore you to tell me for certain what is good for me. I am your disciple; teach me, who have taken refuge in you.",
           hindi: "कायरतारूप दोषसे तिरस्कृत स्वभाववाला और धर्मके विषयमें मोहित अन्तःकरणवाला मैं आपसे पूछता हूँ कि जो निश्चित कल्याण करनेवाली हो, वह मेरे लिये कहिये। मैं आपका शिष्य हूँ। आपके शरण हुए मुझे शिक्षा दीजिये।",
@@ -1200,7 +1200,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 2,
-          sanskrit: "व्यामिश्रेणेव वाक्येन बुद्धिं मोहयसीव मे।\n\nतदेकं वद निश्िचत्य येन श्रेयोऽहमाप्नुयाम्।।3.2।।\n ",
+          sanskrit: "व्यामिश्रेणेव वाक्येन बुद्धिं मोहयसीव मे।\n\nतदेकं वद निश्चित्य येन श्रेयोऽहमाप्नुयाम्।।3.2।।\n ",
           transliteration: "vyāmiśhreṇeva vākyena buddhiṁ mohayasīva me\ntad ekaṁ vada niśhchitya yena śhreyo ’ham āpnuyām\n",
           translation: "You confuse my mind with statements that seem to contradict each other; tell me for certain the one way by which I could reach the highest good.",
           hindi: "\n\n।।3.1 -- 3.2।। अर्जुन बोले -- हे जनार्दन! अगर आप कर्मसे बुद्धि- (ज्ञान-) को श्रेष्ठ मानते हैं, तो फिर हे केशव! मुझे घोर कर्ममें क्यों लगाते हैं ? आप अपने मिले हुए-से वचनोंसे मेरी बुद्धिको मोहित-सी कर रहे हैं। अतः आप निश्चय करके एक बात को कहिये, जिससे मैं कल्याणको प्राप्त हो जाऊँ। ",
@@ -1227,7 +1227,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 5,
-          sanskrit: "न हि कश्िचत्क्षणमपि जातु तिष्ठत्यकर्मकृत्।\n\nकार्यते ह्यवशः कर्म सर्वः प्रकृतिजैर्गुणैः।।3.5।।\n ",
+          sanskrit: "न हि कश्चित्क्षणमपि जातु तिष्ठत्यकर्मकृत्।\n\nकार्यते ह्यवशः कर्म सर्वः प्रकृतिजैर्गुणैः।।3.5।।\n ",
           transliteration: "na hi kaśhchit kṣhaṇam api jātu tiṣhṭhatyakarma-kṛit\nkāryate hyavaśhaḥ karma sarvaḥ prakṛiti-jair guṇaiḥ\n",
           translation: "No one can remain still for even a moment without doing work; for everyone is compelled to act, despite themselves, by the Gunas born of Nature.",
           hindi: "कोई भी मनुष्य किसी भी अवस्थामें क्षणमात्र भी कर्म किये बिना नहीं रह सकता; क्योंकि (प्रकृतिके) परवश हुए सब प्राणियोंसे प्रकृतिजन्य गुण कर्म कराते हैं। ",
@@ -1344,7 +1344,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 18,
-          sanskrit: "नैव तस्य कृतेनार्थो नाकृतेनेह कश्चन।\n\nन चास्य सर्वभूतेषु कश्िचदर्थव्यपाश्रयः।।3.18।।\n ",
+          sanskrit: "नैव तस्य कृतेनार्थो नाकृतेनेह कश्चन।\n\nन चास्य सर्वभूतेषु कश्चिदर्थव्यपाश्रयः।।3.18।।\n ",
           transliteration: "naiva tasya kṛitenārtho nākṛiteneha kaśhchana\nna chāsya sarva-bhūteṣhu kaśhchid artha-vyapāśhrayaḥ\n",
           translation: "He has no purpose to gain from work done or left undone, nor does he have to rely on any end.",
           hindi: "उस (कर्मयोगसे सिद्ध हुए) महापुरुषका इस संसारमें न तो कर्म करनेसे कोई प्रयोजन रहता है, और न कर्म न करनेसे ही कोई प्रयोजन रहता है, तथा सम्पूर्ण प्राणियोंमें (किसी भी प्राणीके साथ) इसका किञ्चिन्मात्र भी स्वार्थका सम्बन्ध नहीं रहता। ",
@@ -1419,7 +1419,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 25,
-          sanskrit: "सक्ताः कर्मण्यविद्वांसो यथा कुर्वन्ति भारत।\n\nकुर्याद्विद्वांस्तथासक्तश्िचकीर्षुर्लोकसंग्रहम्।।3.25।।\n ",
+          sanskrit: "सक्ताः कर्मण्यविद्वांसो यथा कुर्वन्ति भारत।\n\nकुर्याद्विद्वांस्तथासक्तश्चिकीर्षुर्लोकसंग्रहम्।।3.25।।\n ",
           transliteration: "saktāḥ karmaṇyavidvānso yathā kurvanti bhārata\nkuryād vidvāns tathāsaktaśh chikīrṣhur loka-saṅgraham\n",
           translation: "Just as the ignorant, attached to their work, act, O Arjuna, so too the learned should act without any attachment, and only for the welfare of the world.",
           hindi: "(श्लोक 25–26) हे भरतवंशोद्भव अर्जुन! कर्ममें आसक्त हुए अज्ञानीजन जिस प्रकार कर्म करते हैं, आसक्तिरहित विद्वान भी लोकसंग्रह करना चाहता हुआ उसी प्रकार कर्म करे।  तत्त्वज्ञ महापुरुष कर्मोंमें आसक्तिवाले अज्ञानी मनुष्योंकी बुद्धिमें भ्रम उत्पन्न न करे, प्रत्युत स्वयं समस्त कर्मोंको अच्छी तरहसे करता हुआ उनसे भी वैसे ही करवाये।",
@@ -2000,7 +2000,7 @@ export const bhagavadGita: Scripture = {
       verses: [
         {
           id: 1,
-          sanskrit: "अर्जुन उवाच\n\nसंन्यासं कर्मणां कृष्ण पुनर्योगं च शंससि।\n\nयच्छ्रेय एतयोरेकं तन्मे ब्रूहि सुनिश्िचतम्।।5.1।।\n ",
+          sanskrit: "अर्जुन उवाच\n\nसंन्यासं कर्मणां कृष्ण पुनर्योगं च शंससि।\n\nयच्छ्रेय एतयोरेकं तन्मे ब्रूहि सुनिश्चितम्।।5.1।।\n ",
           transliteration: "arjuna uvācha\nsannyāsaṁ karmaṇāṁ kṛiṣhṇa punar yogaṁ cha śhansasi\nyach chhreya etayor ekaṁ tan me brūhi su-niśhchitam\n\n",
           translation: "Arjuna said, \"O Krsna, you praise the renunciation of actions, and then you also praise Karma Yoga. Please tell me with certainty which of these is the superior one, leading to the ultimate good.",
           hindi: "अर्जुन बोले -- हे कृष्ण ! आप कर्मोंका स्वरूपसे त्याग करनेकी और फिर कर्मयोगकी प्रशंसा करते हैं। अतः इन दोनों साधनोंमें जो एक निश्चितरूपसे कल्याणकारक हो, उसको मेरे लिये कहिये। ",
@@ -2639,7 +2639,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 40,
-          sanskrit: "श्री भगवानुवाच\n\nपार्थ नैवेह नामुत्र विनाशस्तस्य विद्यते।\n\nनहि कल्याणकृत्कश्िचद्दुर्गतिं तात गच्छति।।6.40।।\n ",
+          sanskrit: "श्री भगवानुवाच\n\nपार्थ नैवेह नामुत्र विनाशस्तस्य विद्यते।\n\nनहि कल्याणकृत्कश्चिद्दुर्गतिं तात गच्छति।।6.40।।\n ",
           transliteration: "śhrī bhagavān uvācha\npārtha naiveha nāmutra vināśhas tasya vidyate\nna hi kalyāṇa-kṛit kaśhchid durgatiṁ tāta gachchhati\n",
           translation: "The Lord said, \"Neither here in this world nor there in the next is there destruction for him. For no one who does good ever comes to an evil end.\"",
           hindi: "श्रीभगवान् बोले -- हे पृथानन्दन ! उसका न तो इस लोकमें और न परलोकमें ही विनाश होता है; क्योंकि हे प्यारे ! कल्याणकारी काम करनेवाला कोई भी मनुष्य दुर्गतिको प्राप्त नहीं जाता। ",
@@ -2737,7 +2737,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 3,
-          sanskrit: "मनुष्याणां सहस्रेषु कश्िचद्यतति सिद्धये।\n\nयततामपि सिद्धानां कश्िचन्मां वेत्ति तत्त्वतः।।7.3।।\n ",
+          sanskrit: "मनुष्याणां सहस्रेषु कश्चिद्यतति सिद्धये।\n\nयततामपि सिद्धानां कश्चिन्मां वेत्ति तत्त्वतः।।7.3।।\n ",
           transliteration: "manuṣhyāṇāṁ sahasreṣhu kaśhchid yatati siddhaye\nyatatām api siddhānāṁ kaśhchin māṁ vetti tattvataḥ\n",
           translation: "Among thousands of men, some strive for perfection; even among those who strive for perfection, only some know Me; and among those who know Me, only some truly know Me.",
           hindi: "हजारों मनुष्योंमें कोई एक वास्तविक सिद्धिके लिये यत्न करता है और उन यत्न करनेवाले सिद्धोंमें कोई एक ही मुझे तत्त्वसे जानता है। ",
@@ -2875,7 +2875,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 17,
-          sanskrit: "तेषां ज्ञानी नित्ययुक्त एकभक्ितर्विशिष्यते।\n\nप्रियो हि ज्ञानिनोऽत्यर्थमहं स च मम प्रियः।।7.17।।\n ",
+          sanskrit: "तेषां ज्ञानी नित्ययुक्त एकभक्तिर्विशिष्यते।\n\nप्रियो हि ज्ञानिनोऽत्यर्थमहं स च मम प्रियः।।7.17।।\n ",
           transliteration: "teṣhāṁ jñānī nitya-yukta eka-bhaktir viśhiṣhyate\npriyo hi jñānino ’tyartham ahaṁ sa cha mama priyaḥ\n",
           translation: "Of these, the man of knowledge, who is ever with Me in Yoga and devoted to the One only, is the foremost; for I am very dear to the man of knowledge, and he is also dear to Me.",
           hindi: "उन चार भक्तोंमें मेरेमें निरन्तर लगा हुआ, अनन्यभक्तिवाला ज्ञानी अर्थात् प्रेमी भक्त श्रेष्ठ है; क्योंकि ज्ञानी भक्तको मैं अत्यन्त प्रिय हूँ और वह भी मेरेको अत्यन्त प्रिय है। ",
@@ -2938,7 +2938,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 24,
-          sanskrit: "अव्यक्तं व्यक्ितमापन्नं मन्यन्ते मामबुद्धयः।\n\nपरं भावमजानन्तो ममाव्ययमनुत्तमम्।।7.24।।\n ",
+          sanskrit: "अव्यक्तं व्यक्तिमापन्नं मन्यन्ते मामबुद्धयः।\n\nपरं भावमजानन्तो ममाव्ययमनुत्तमम्।।7.24।।\n ",
           transliteration: "avyaktaṁ vyaktim āpannaṁ manyante mām abuddhayaḥ\nparaṁ bhāvam ajānanto mamāvyayam anuttamam\n",
           translation: "Not knowing My higher, immutable, and unsurpassed nature, the ignorant think of Me as an entity that has now become manifest, though I was previously unmanifest.",
           hindi: "बुद्धिहीन मनुष्य मेरे सर्वश्रेष्ठ अविनाशी परमभावको न जानते हुए अव्यक्त (मन-इन्द्रियोंसे पर) मुझ सच्चिदानन्दघन परमात्माको मनुष्यकी तरह ही शरीर धारण करनेवाला मानते हैं। ",
@@ -3718,7 +3718,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 14,
-          sanskrit: "सर्वमेतदृतं मन्ये यन्मां वदसि केशव।\n\nन हि ते भगवन् व्यक्ितं विदुर्देवा न दानवाः।।10.14।।\n ",
+          sanskrit: "सर्वमेतदृतं मन्ये यन्मां वदसि केशव।\n\nन हि ते भगवन् व्यक्तिं विदुर्देवा न दानवाः।।10.14।।\n ",
           transliteration: "sarvam etad ṛitaṁ manye yan māṁ vadasi keśhava\nna hi te bhagavan vyaktiṁ vidur devā na dānavāḥ\n",
           translation: "I deem as true all that you have said to me, O Krishna. Truly, O Lord, neither the gods nor the demons know your manifestation.",
           hindi: "हे केशव ! मेरेसे आप जो कुछ कह रहे हैं, यह सब मैं सत्य मानता हूँ। हे भगवन् ! आपके प्रकट होनेको न तो देवता जानते हैं और न दानव ही जानते हैं।",
@@ -4038,7 +4038,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 6,
-          sanskrit: "पश्यादित्यान्वसून्रुद्रानश्िवनौ मरुतस्तथा।\n\nबहून्यदृष्टपूर्वाणि पश्याऽश्चर्याणि भारत।।11.6।।\n ",
+          sanskrit: "पश्यादित्यान्वसून्रुद्रानश्विनौ मरुतस्तथा।\n\nबहून्यदृष्टपूर्वाणि पश्याऽश्चर्याणि भारत।।11.6।।\n ",
           transliteration: "paśhyādityān vasūn rudrān aśhvinau marutas tathā\nbahūny adṛiṣhṭa-pūrvāṇi paśhyāśhcharyāṇi bhārata\n",
           translation: "Behold, O Arjuna, the Adityas, the Vasus, the Rudras, the two Asvins, and the Maruts—many marvels never seen before.",
           hindi: "हे भरतवंशोद्भव अर्जुन! तू बारह आदित्योंको, आठ वसुओंको, ग्यारह रुद्रोंको और दो अश्विनीकुमारोंको तथा उनचास मरुद्गणोंको देख। जिनको तूने पहले कभी देखा नहीं, ऐसे बहुत-से आश्चर्यजनक रूपोंको भी तू देख।",
@@ -4188,7 +4188,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 22,
-          sanskrit: "रुद्रादित्या वसवो ये च साध्या\n\nविश्वेऽश्िवनौ मरुतश्चोष्मपाश्च।\n\nगन्धर्वयक्षासुरसिद्धसङ्घा\n\nवीक्षन्ते त्वां विस्मिताश्चैव सर्वे।।11.22।।\n ",
+          sanskrit: "रुद्रादित्या वसवो ये च साध्या\n\nविश्वेऽश्विनौ मरुतश्चोष्मपाश्च।\n\nगन्धर्वयक्षासुरसिद्धसङ्घा\n\nवीक्षन्ते त्वां विस्मिताश्चैव सर्वे।।11.22।।\n ",
           transliteration: "rudrādityā vasavo ye cha sādhyā\nviśhve ’śhvinau marutaśh choṣhmapāśh cha\ngandharva-yakṣhāsura-siddha-saṅghā\nvīkṣhante tvāṁ vismitāśh chaiva sarve\n",
           translation: "The Rudras, the Adityas, the Vasus, the Sadhyas, the Visvas, the Asvins, the Maruts, and the Manes, as well as the hosts of Gandharvas, Yaksas, Asuras, and Siddhas—all gaze upon You in amazement.",
           hindi: "जो ग्यारह रुद्र, बारह आदित्य, आठ वसु, बारह साध्यगण, दस विश्वेदेव और दो अश्विनीकुमार, उनचास मरुद्गण, सात पितृगण तथा गन्धर्व, यक्ष, असुर और सिद्धोंके समुदाय हैं, वे सभी चकित होकर आपको देख रहे हैं।",
@@ -4658,7 +4658,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 17,
-          sanskrit: "यो न हृष्यति न द्वेष्टि न शोचति न काङ्क्षति।शुभाशुभपरित्यागी भक्ितमान्यः स मे प्रियः।।12.17।।",
+          sanskrit: "यो न हृष्यति न द्वेष्टि न शोचति न काङ्क्षति।शुभाशुभपरित्यागी भक्तिमान्यः स मे प्रियः।।12.17।।",
           transliteration: "yo na hṛiṣhyati na dveṣhṭi na śhochati na kāṅkṣhati\nśhubhāśhubha-parityāgī bhaktimān yaḥ sa me priyaḥ\n",
           translation: "He who does not rejoice, nor hate, nor grieve, nor desire, who renounces both good and evil, and who is full of devotion to Me—such a devotee is dear to Me.",
           hindi: "जो न कभी हर्षित होता है, न द्वेष करता है, न शोक करता है, न कामना करता है और जो शुभ-अशुभ कर्मोंमें राग-द्वेषका त्यागी है, वह भक्तिमान् मनुष्य मुझे प्रिय है।",
@@ -4682,7 +4682,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 19,
-          sanskrit: "तुल्यनिन्दास्तुतिर्मौनी सन्तुष्टो येनकेनचित्।अनिकेतः स्थिरमतिर्भक्ितमान्मे प्रियो नरः।।12.19।।",
+          sanskrit: "तुल्यनिन्दास्तुतिर्मौनी सन्तुष्टो येनकेनचित्।अनिकेतः स्थिरमतिर्भक्तिमान्मे प्रियो नरः।।12.19।।",
           transliteration: "tulya-nindā-stutir maunī santuṣhṭo yena kenachit\naniketaḥ sthira-matir bhaktimān me priyo naraḥ\n",
           translation: "He who regards both blame and praise alike, who is silent and content with any lot, who has no home, who is firm of mind, and who is devoted to Me - such a man is dear to Me.",
           hindi: "जो शत्रु और मित्रमें तथा मान-अपमानमें सम है और शीतउष्ण (अनुकूलता-प्रतिकूलता) तथा सुख-दुःखमें सम है एवं आसक्तिसे रहित है, और जो निन्दा-स्तुतिको समान समझनेवाला, मननशील, जिस-किसी प्रकारसे भी (शरीरका निर्वाह होनेमें) संतुष्ट, रहनेके स्थान तथा शरीरमें ममता-आसक्तिसे रहित और स्थिर बुद्धिवाला है, वह भक्तिमान् मनुष्य मुझे प्रिय है।",
@@ -4750,7 +4750,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 5,
-          sanskrit: "ऋषिभिर्बहुधा गीतं छन्दोभिर्विविधैः पृथक्।ब्रह्मसूत्रपदैश्चैव हेतुमद्भिर्विनिश्िचतैः।।13.5।।",
+          sanskrit: "ऋषिभिर्बहुधा गीतं छन्दोभिर्विविधैः पृथक्।ब्रह्मसूत्रपदैश्चैव हेतुमद्भिर्विनिश्चितैः।।13.5।।",
           transliteration: "ṛiṣhibhir bahudhā gītaṁ chhandobhir vividhaiḥ pṛithak\nbrahma-sūtra-padaiśh chaiva hetumadbhir viniśhchitaiḥ\n",
           translation: "It has been sung by seers in various ways, in various distinctive hymns, and also in the well-reasoned and conclusive words of the Brahma-sutras.",
           hindi: "(यह क्षेत्रक्षेत्रज्ञका तत्त्व) ऋषियोंके द्वारा बहुत विस्तारसे कहा गया है तथा वेदोंकी ऋचाओं-द्वारा बहुत प्रकारसे कहा गया है और युक्तियुक्त एवं निश्चित किये हुए ब्रह्मसूत्रके पदोंद्वारा भी कहा गया है।",
@@ -4795,7 +4795,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 10,
-          sanskrit: "असक्ितरनभिष्वङ्गः पुत्रदारगृहादिषु।नित्यं च समचित्तत्वमिष्टानिष्टोपपत्तिषु।।13.10।।",
+          sanskrit: "असक्तिरनभिष्वङ्गः पुत्रदारगृहादिषु।नित्यं च समचित्तत्वमिष्टानिष्टोपपत्तिषु।।13.10।।",
           transliteration: "asaktir anabhiṣhvaṅgaḥ putra-dāra-gṛihādiṣhu\nnityaṁ cha sama-chittatvam iṣhṭāniṣhṭopapattiṣhu\n",
           translation: "Non-attachment, absence of clinging to son, wife, home, and the like, and constant even-mindedness in regard to all desirable and undesirable events;",
           hindi: "आसक्तिरहित होना;  पुत्र,  स्त्री, घर आदिमें एकात्मता (घनिष्ठ सम्बन्ध) न होना और अनुकूलता-प्रतिकूलताकी प्राप्तिमें चित्तका नित्य सम रहना।",
@@ -4804,7 +4804,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 11,
-          sanskrit: "मयि चानन्ययोगेन भक्ितरव्यभिचारिणी।विविक्तदेशसेवित्वमरतिर्जनसंसदि।।13.11।।",
+          sanskrit: "मयि चानन्ययोगेन भक्तिरव्यभिचारिणी।विविक्तदेशसेवित्वमरतिर्जनसंसदि।।13.11।।",
           transliteration: "mayi chānanya-yogena bhaktir avyabhichāriṇī\nvivikta-deśha-sevitvam aratir jana-sansadi\n",
           translation: "Constantly devote yourself to Me alone, resort to solitary places, and dislike crowds.",
           hindi: "मेरेमें अनन्ययोगके द्वारा अव्यभिचारिणी भक्तिका होना, एकान्त स्थानमें रहनेका स्वभाव होना और जन-समुदायमें प्रीतिका न होना।",
@@ -5280,7 +5280,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 26,
-          sanskrit: "मां च योऽव्यभिचारेण भक्ितयोगेन सेवते।स गुणान्समतीत्यैतान् ब्रह्मभूयाय कल्पते।।14.26।।",
+          sanskrit: "मां च योऽव्यभिचारेण भक्तियोगेन सेवते।स गुणान्समतीत्यैतान् ब्रह्मभूयाय कल्पते।।14.26।।",
           transliteration: "māṁ cha yo ’vyabhichāreṇa bhakti-yogena sevate\nsa guṇān samatītyaitān brahma-bhūyāya kalpate\n\n",
           translation: "One who serves Me with undeviating devotion, transcending these three qualities, becomes fit to realize Brahman.",
           hindi: "जो अव्यभिचारी भक्तियोग से मेरी सेवा करता है, वह इन तीनों गुणों को पार करके ब्रह्म-प्राप्ति के योग्य हो जाता है।",
@@ -5614,7 +5614,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 11,
-          sanskrit: "चिन्तामपरिमेयां च प्रलयान्तामुपाश्रिताः।कामोपभोगपरमा एतावदिति निश्िचताः।।16.11।।",
+          sanskrit: "चिन्तामपरिमेयां च प्रलयान्तामुपाश्रिताः।कामोपभोगपरमा एतावदिति निश्चिताः।।16.11।।",
           transliteration: "chintām aparimeyāṁ cha pralayāntām upāśhritāḥ\nkāmopabhoga-paramā etāvad iti niśhchitāḥ\n",
           translation: "Obsessed by unlimited cares that end with dissolution, looking upon the enjoyment of desires as their highest aim, and convinced that this is all;",
           hindi: "वे मृत्युपर्यन्त रहनेवाली अपार चिन्ताओंका आश्रय लेनेवाले, पदार्थोंका संग्रह और उनका भोग करनेमें ही लगे रहनेवाले और 'जो कुछ है, वह इतना ही है' -- ऐसा निश्चय करनेवाले होते हैं।",
@@ -5904,7 +5904,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 17,
-          sanskrit: "श्रद्धया परया तप्तं तपस्तत्ित्रविधं नरैः।अफलाकाङ्क्षिभिर्युक्तैः सात्त्विकं परिचक्षते।।17.17।।",
+          sanskrit: "श्रद्धया परया तप्तं तपस्तत्त्रिविधं नरैः।अफलाकाङ्क्षिभिर्युक्तैः सात्त्विकं परिचक्षते।।17.17।।",
           transliteration: "śhraddhayā parayā taptaṁ tapas tat tri-vidhaṁ naraiḥ\naphalākāṅkṣhibhir yuktaiḥ sāttvikaṁ parichakṣhate\n",
           translation: "When that three-fold austerity is practiced by men of steadfastness and highest faith, without expectation of fruit — that is called sattvic austerity.",
           hindi: "जब वह त्रिविध तप (शरीर, वाणी, मन का) श्रेष्ठ श्रद्धा से युक्त और फल की आकांक्षा रहित पुरुषों द्वारा किया जाता है — उसे सात्त्विक तप कहते हैं।",
@@ -6071,7 +6071,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 6,
-          sanskrit: "एतान्यपि तु कर्माणि सङ्गं त्यक्त्वा फलानि च।कर्तव्यानीति मे पार्थ निश्िचतं मतमुत्तमम्।।18.6।।",
+          sanskrit: "एतान्यपि तु कर्माणि सङ्गं त्यक्त्वा फलानि च।कर्तव्यानीति मे पार्थ निश्चितं मतमुत्तमम्।।18.6।।",
           transliteration: "etāny api tu karmāṇi saṅgaṁ tyaktvā phalāni cha\nkartavyānīti me pārtha niśhchitaṁ matam uttamam\n",
           translation: "It is My decided and final view that even these acts should be done, O Arjuna, with relinquishment of attachment and the forsaking of the fruits thereof.",
           hindi: "हे पार्थ ! (पूर्वोक्त यज्ञ, दान और तप -- ) इन कर्मोंको तथा दूसरे भी कर्मोंको आसक्ति और फलोंका त्याग करके करना चाहिये -- यह मेरा निश्चित किया हुआ उत्तम मत है।",
@@ -6377,7 +6377,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 40,
-          sanskrit: "न तदस्ति पृथिव्यां वा दिवि देवेषु वा पुनः।सत्त्वं प्रकृतिजैर्मुक्तं यदेभिः स्यात्ित्रभिर्गुणैः।।18.40।।",
+          sanskrit: "न तदस्ति पृथिव्यां वा दिवि देवेषु वा पुनः।सत्त्वं प्रकृतिजैर्मुक्तं यदेभिः स्यात्त्रिभिर्गुणैः।।18.40।।",
           transliteration: "na tad asti pṛithivyāṁ vā divi deveṣhu vā punaḥ\nsattvaṁ prakṛiti-jair muktaṁ yad ebhiḥ syāt tribhir guṇaiḥ\n",
           translation: "There is no creature, on earth or among the gods in heaven, that is exempt from these three Gunas born of Prakrti.",
           hindi: "पृथ्वीमें या स्वर्गमें अथवा देवताओंमें तथा इनके सिवाय और कहीं भी वह ऐसी कोई वस्तु नहीं है, जो प्रकृतिसे उत्पन्न इन तीनों गुणोंसे रहित हो।",
@@ -6635,7 +6635,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 68,
-          sanskrit: "य इमं परमं गुह्यं मद्भक्तेष्वभिधास्यति।भक्ितं मयि परां कृत्वा मामेवैष्यत्यसंशयः।।18.68।।",
+          sanskrit: "य इमं परमं गुह्यं मद्भक्तेष्वभिधास्यति।भक्तिं मयि परां कृत्वा मामेवैष्यत्यसंशयः।।18.68।।",
           transliteration: "ya idaṁ paramaṁ guhyaṁ mad-bhakteṣhv abhidhāsyati\nbhaktiṁ mayi parāṁ kṛitvā mām evaiṣhyaty asanśhayaḥ\n",
           translation: "He who proclaims this supreme mystery among My devotees shall come to Me, acquiring supreme devotion towards Me. There is no doubt about this.",
           hindi: "मेरेमें पराभक्ति करके जो इस परम गोपनीय संवाद-(गीता-ग्रन्थ) को मेरे भक्तोंमें कहेगा, वह मुझे ही प्राप्त होगा -- इसमें कोई सन्देह नहीं है।",
@@ -6644,7 +6644,7 @@ export const bhagavadGita: Scripture = {
         },
         {
           id: 69,
-          sanskrit: "न च तस्मान्मनुष्येषु कश्िचन्मे प्रियकृत्तमः।भविता न च मे तस्मादन्यः प्रियतरो भुवि।।18.69।।",
+          sanskrit: "न च तस्मान्मनुष्येषु कश्चिन्मे प्रियकृत्तमः।भविता न च मे तस्मादन्यः प्रियतरो भुवि।।18.69।।",
           transliteration: "na cha tasmān manuṣhyeṣhu kaśhchin me priya-kṛittamaḥ\nbhavitā na cha me tasmād anyaḥ priyataro bhuvi\n",
           translation: "There is no one among men who does dearer service to Me than him. Nor shall there be anyone on earth dearer to Me than him.",
           hindi: "उसके समान मेरा अत्यन्त प्रिय कार्य करनेवाला मनुष्योंमें कोई भी नहीं है और इस भूमण्डलपर उसके समान मेरा दूसरा कोई प्रियतर होगा भी नहीं।",
