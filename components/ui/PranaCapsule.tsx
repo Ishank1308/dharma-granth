@@ -194,6 +194,7 @@ export function PranaCapsule() {
       <aside
         className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center"
         aria-label="Prāṇa Sūtra Active Island"
+        data-hide-during-chapter-reading
       >
         <AnimatePresence mode="wait">
           {capsuleState.isExpanded ? (

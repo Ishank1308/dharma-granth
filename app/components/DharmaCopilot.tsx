@@ -34,7 +34,7 @@ export function DharmaCopilot() {
   };
 
   return (
-    <div className="print:hidden">
+    <div className="print:hidden" data-hide-during-chapter-reading>
       <button
         ref={buttonRef}
         type="button"

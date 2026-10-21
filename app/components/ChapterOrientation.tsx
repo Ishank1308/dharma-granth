@@ -9,7 +9,6 @@ interface Props {
   scriptureId: string;
   chapterId: number;
   verseCount: number;
-  firstVerseHref?: string;
 }
 
 /** About one minute per verse to read with the translation; study takes longer. */
@@ -18,10 +17,10 @@ function readingMinutes(verseCount: number): number {
 }
 
 /**
- * Orientation before the verses. Facts about the chapter come from the library;
+ * Optional orientation beside the verses. Facts about the chapter come from the library;
  * the narrative panel appears only where an editorial entry exists, and says so.
  */
-export function ChapterOrientation({ scriptureId, chapterId, verseCount, firstVerseHref }: Props) {
+export function ChapterOrientation({ scriptureId, chapterId, verseCount }: Props) {
   const o = getChapterOrientation(scriptureId, chapterId);
   if (!o) return null; // no invented introductions: only reviewed-or-draft editorial entries render
   const minutes = verseCount > 0 ? readingMinutes(verseCount) : null;
@@ -207,11 +206,6 @@ export function ChapterOrientation({ scriptureId, chapterId, verseCount, firstVe
       )}
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        {firstVerseHref && (
-          <Link href={firstVerseHref} className="focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-xl bg-saffron-700 px-6 text-sm font-semibold text-white hover:bg-saffron-800">
-            Begin reading verse 1 <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        )}
         <Link href={`/learn/paths`} className="focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card px-5 text-sm font-semibold text-dharma-text hover:border-saffron-400">
           Guided Learning Paths
         </Link>

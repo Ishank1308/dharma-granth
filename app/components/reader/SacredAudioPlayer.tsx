@@ -200,7 +200,7 @@ export function SacredAudioPlayer({ currentVerseSanskrit, reference }: SacredAud
   return (
     <>
       {/* Floating Sacred Audio Pill & Modal */}
-      <aside aria-label="Sacred audio contemplation player" className="fixed bottom-6 right-6 z-40">
+      <aside aria-label="Sacred audio contemplation player" data-hide-during-chapter-reading className="fixed bottom-6 right-6 z-40">
         <AnimatePresence>
           {isOpen && (
             <motion.div

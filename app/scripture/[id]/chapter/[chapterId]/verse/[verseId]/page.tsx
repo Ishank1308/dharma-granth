@@ -19,7 +19,7 @@ import { readChapterCommentary, readSeededChapter, readSeededChapterPreviews } f
 import { verseStaticParams } from '@/lib/verse-pages';
 import { verseOgPath, versePageHref, verseSlug } from '@/lib/verse-paths';
 import { scriptureLastChanged } from '@/lib/content-dates';
-import { cleanVerseField, verseLines } from '@/lib/verse-format';
+import { cleanVerseField, splitVyakhyaCommentary, verseLines } from '@/lib/verse-format';
 import { getVerseIntegrations } from '@/lib/verse-integrations';
 import { TrustBadges } from '@/app/components/TrustBadges';
 import { UnderstandPanel } from '@/app/components/understand/UnderstandPanel';
@@ -242,7 +242,11 @@ export default function VersePage({ params }: PageProps) {
   const commentary = readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId);
   const comment =
     commentary?.[`${chapterId}:${params.verseId}`] ?? commentary?.[`${chapterId}:${Number(params.verseId)}`];
-  const explanation = comment?.explanation ?? verse.explanation ?? verse.commentary;
+  const { vyakhya, commentary: commentaryText } = splitVyakhyaCommentary(
+    [comment?.explanation, verse.explanation, verse.commentary],
+    verse.wordMeaning,
+  );
+  const explanation = vyakhya ?? commentaryText;
   const science = comment?.science ?? verse.science;
   const lesson = comment?.lifeLesson ?? verse.lifeLesson;
 
@@ -410,7 +414,8 @@ export default function VersePage({ params }: PageProps) {
           hindiRange: verse.hindiRange,
           hindiSeeVerse: verse.hindiSeeVerse,
           translation: verse.translation,
-          explanation,
+          explanation: vyakhya,
+          commentary: commentaryText,
           reflection: lesson,
           research: science,
         }}

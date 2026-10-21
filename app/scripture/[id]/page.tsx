@@ -172,20 +172,20 @@ export default function ScripturePage({ params }: PageProps) {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <ChapterHero className="border-b border-dharma-border bg-dharma-card py-12 text-dharma-text sm:py-16">
+      <ChapterHero className="border-b border-dharma-border bg-dharma-card py-5 text-dharma-text sm:py-7">
         <div className="relative mx-auto max-w-5xl px-6">
           <FadeUp>
-            <Link href="/scriptures" className="mb-8 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-dharma-muted transition hover:text-saffron-700">
+            <Link href="/scriptures" className="mb-3 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-dharma-muted transition hover:text-saffron-700">
               <ArrowLeft className="w-4 h-4" />
               All Scriptures
             </Link>
           </FadeUp>
           <FadeUp delay={0.05}>
             <p className="editorial-section-eyebrow">Scripture contents · ग्रंथ सूची</p>
-            <h1 className="mt-3 font-serif text-4xl font-bold tracking-tight text-dharma-text md:text-6xl">{meta.title}</h1>
+            <h1 className="mt-2 font-serif text-4xl font-bold tracking-tight text-dharma-text md:text-5xl">{meta.title}</h1>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <div className="mt-3 flex flex-wrap items-baseline gap-3">
+            <div className="mt-2 flex flex-wrap items-baseline gap-3">
               <p lang="sa" className="font-devanagari text-2xl text-dharma-muted">{meta.titleSanskrit}</p>
               {meta.titleIast && (
                 <span className="font-serif text-sm italic text-dharma-muted">
@@ -195,13 +195,13 @@ export default function ScripturePage({ params }: PageProps) {
             </div>
           </FadeUp>
           <FadeUp delay={0.15}>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-dharma-muted line-clamp-3">{meta.description}</p>
-            {meta.author && <p className="mt-4 text-sm font-semibold text-dharma-muted">Attributed to {meta.author}</p>}
+            <p className="mt-3 max-w-2xl text-base leading-7 text-dharma-muted line-clamp-2">{meta.description}</p>
+            {meta.author && <p className="mt-2 text-sm font-semibold text-dharma-muted">Attributed to {meta.author}</p>}
           </FadeUp>
         </div>
       </ChapterHero>
 
-      <div className="mx-auto max-w-5xl px-6 py-12">
+      <div className="mx-auto max-w-5xl px-6 pb-10 pt-5 sm:pt-7">
         <ScriptureContents
           scriptureId={meta.id}
           chapters={chapterPreviews}

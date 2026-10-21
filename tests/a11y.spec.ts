@@ -19,6 +19,7 @@ const PAGES = [
   '/topics/',
   '/characters/',
   '/festivals/',
+  '/curiosity/',
   '/learn/',
   '/learn/pathways/',
   '/collections/',

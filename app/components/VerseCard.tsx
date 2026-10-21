@@ -63,8 +63,10 @@ export interface VerseCardData {
 export interface VerseMeaning {
   /** AI-drafted and editor-approved (not hand-written); labelled per lib/ai-labels. */
   isAi?: boolean;
-  explanation?: string;
-  explanationIsHi: boolean;
+  /** व्याख्या: Hindi exposition, shown right after the अर्थ. */
+  vyakhya?: string;
+  /** Commentary & Explanation: English exposition, shown after the व्याख्या. */
+  commentary?: string;
   science?: string;
   scienceIsHi: boolean;
   lesson?: string;
@@ -311,10 +313,7 @@ export function VerseCard({
     return () => window.removeEventListener('dharma:recitation-chunk', handleChunk);
   }, [isReciting]);
 
-  const { explanation, science, lesson } = meaning;
-  // The source flag only says which file the text came from; Hindi व्याख्या
-  // also lives in the verse data itself, so check the text.
-  const explanationIsHi = meaning.explanationIsHi || isMostlyDevanagari(explanation);
+  const { vyakhya, commentary, science, lesson } = meaning;
   const scienceIsHi = meaning.scienceIsHi || isMostlyDevanagari(science);
   const lessonIsHi = meaning.lessonIsHi || isMostlyDevanagari(lesson);
   const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null) && layers.hindi);
@@ -409,7 +408,17 @@ export function VerseCard({
   ) : null;
 
   const showArth = showHindi || showEnglish;
-  const showExplanation = Boolean(layers.commentary && explanation);
+  const showVyakhya = Boolean(layers.commentary && vyakhya);
+  const showCommentary = Boolean(layers.commentary && commentary);
+  const aiBadge = meaning.isAi ? (
+    <p
+      className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300"
+      title={`${AI_COMMENTARY_LABEL.detailHi} ${AI_COMMENTARY_LABEL.detail}`}
+    >
+      <Sparkles className="h-3 w-3" aria-hidden="true" />
+      {AI_COMMENTARY_LABEL.hi}
+    </p>
+  ) : null;
   const showScience = Boolean(layers.commentary && science);
   const treeBranches: VerseTreeBranch[] = [];
   if (showArth) {
@@ -489,48 +498,45 @@ export function VerseCard({
       ),
     });
   }
-  if (showExplanation) {
+  if (showVyakhya) {
     treeBranches.push({
       id: 'vyakhya',
       labelHi: 'व्याख्या',
-      labelEn: 'Commentary',
-      icon: Sparkles,
-      hint: 'परंपरागत व्याख्या',
-      defaultOpen: true,
+      labelEn: 'Vyakhya',
+      icon: Lightbulb,
+      hint: 'श्लोक का सरल हिन्दी विवेचन',
+      defaultOpen: false,
       content: (
-        <div className="space-y-4">
-          {showExplanation && (
-            <div className="rounded-2xl border border-amber-200/70 bg-amber-50/40 p-4.5 dark:border-amber-900/40 dark:bg-amber-950/20 shadow-2xs">
-              <div className="mb-2.5 flex items-center justify-between gap-2">
-                <p className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">
-                  {explanationIsHi ? 'व्याख्या व भावार्थ · Explanation' : 'Commentary & Explanation'}
-                </p>
-                <ContentLabelBadge kind="explanation" />
-                {meaning.isAi && (
-                  <p
-                    className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300"
-                    title={`${AI_COMMENTARY_LABEL.detailHi} ${AI_COMMENTARY_LABEL.detail}`}
-                  >
-                    <Sparkles className="h-3 w-3" aria-hidden="true" />
-                    {AI_COMMENTARY_LABEL.hi}
-                  </p>
-                )}
-              </div>
-              {explanation && !explanationIsHi && (
-                <p className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-2.5 py-0.5 text-[11px] font-semibold text-dharma-muted">
-                  हिन्दी व्याख्या शीघ्र · English commentary for now
-                </p>
-              )}
-              {explanation && (
-                <p
-                  lang={explanationIsHi ? 'hi' : 'en'}
-                  className={`text-sm leading-relaxed text-dharma-text md:text-base ${explanationIsHi ? 'font-devanagari leading-loose' : 'font-serif'}`}
-                >
-                  {explanation}
-                </p>
-              )}
-            </div>
-          )}
+        <div className="rounded-2xl border border-amber-200/70 bg-amber-50/40 p-4.5 dark:border-amber-900/40 dark:bg-amber-950/20 shadow-2xs">
+          <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
+            <p lang="hi" className="font-devanagari text-sm font-bold text-saffron-800 dark:text-saffron-300">व्याख्या</p>
+            <ContentLabelBadge kind="explanation" />
+            {aiBadge}
+          </div>
+          <p lang="hi" className="font-devanagari text-sm leading-loose text-dharma-text md:text-base">
+            {vyakhya}
+          </p>
+        </div>
+      ),
+    });
+  }
+  if (showCommentary) {
+    treeBranches.push({
+      id: 'commentary',
+      labelHi: 'टीका एवं विवेचन',
+      labelEn: 'Commentary & Explanation',
+      icon: Sparkles,
+      hint: 'Explanation in English',
+      defaultOpen: false,
+      content: (
+        <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4.5 shadow-2xs">
+          <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
+            <p className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">Commentary &amp; Explanation</p>
+            <ContentLabelBadge kind="explanation" />
+          </div>
+          <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text md:text-base">
+            {commentary}
+          </p>
         </div>
       ),
     });
@@ -542,7 +548,7 @@ export function VerseCard({
       labelEn: 'Science & Modern Application',
       icon: Atom,
       hint: 'मनोविज्ञान, शोध और दैनिक जीवन में प्रयोग',
-      defaultOpen: true,
+      defaultOpen: false,
       content: (
         <div className="space-y-4">
           {showScience && (

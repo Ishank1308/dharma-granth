@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { ArrowRight, Bookmark, BookOpen, ListChecks, FileClock } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import {
   LANGUAGES,
   isBeginnerFriendly,
@@ -108,19 +108,70 @@ const Realistic3DGranth = dynamic(
 );
 
 function LibraryBookPreview({ item, categoryLabel }: { item: LibraryItem; categoryLabel: string }) {
+  const previewRef = useRef<HTMLDivElement>(null);
+  const [nearViewport, setNearViewport] = useState(false);
   const countLabel = item.totalVerses > 0
     ? `${formatNumber(item.totalChapters)} Chapters · ${formatNumber(item.totalVerses)} Verses`
     : 'ग्रंथ सूची';
+  const englishTitle = GITA_PRESS_COVER_TITLES[item.id] ?? item.title;
+  const subTitle = item.author ? `Attributed to ${item.author}` : categoryLabel;
+
+  useEffect(() => {
+    const element = previewRef.current;
+    if (!element) return;
+    if (typeof IntersectionObserver === 'undefined') {
+      setNearViewport(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setNearViewport(true);
+        observer.disconnect();
+      },
+      { rootMargin: '360px 0px' },
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="mt-3 flex min-h-[24rem] items-center justify-center overflow-visible">
-      <Realistic3DGranth
-        compact
-        title={item.titleSanskrit || item.title}
-        englishTitle={GITA_PRESS_COVER_TITLES[item.id] ?? item.title}
-        subTitle={item.author ? `Attributed to ${item.author}` : categoryLabel}
-        verseCount={countLabel}
-      />
+    <div ref={previewRef} className="mt-3 flex min-h-[24rem] items-center justify-center overflow-visible">
+      {nearViewport ? (
+        <Realistic3DGranth
+          compact
+          title={item.titleSanskrit || item.title}
+          englishTitle={englishTitle}
+          subTitle={subTitle}
+          verseCount={countLabel}
+        />
+      ) : (
+        <div className="[perspective:1200px]" aria-hidden="true">
+          <div
+            className="relative h-[22.5rem] w-[15rem] rounded-r-2xl rounded-l-md border border-amber-400/35 bg-gradient-to-br from-[#7c2d12] via-[#451a03] to-[#1c0a00] p-4 shadow-[inset_4px_0_10px_rgba(0,0,0,0.8),12px_16px_40px_rgba(0,0,0,0.6)]"
+            style={{ transform: 'rotateY(-7deg)', transformStyle: 'preserve-3d' }}
+          >
+            <span className="pointer-events-none absolute inset-2 rounded-xl border border-amber-400/40" />
+            <span className="pointer-events-none absolute inset-3 rounded-lg border border-amber-300/20" />
+            <span className="absolute inset-y-0 left-0 w-5 rounded-l-md border-r border-amber-400/20 bg-gradient-to-r from-[#1c0a00] via-[#7c2d12] to-[#451a03]" />
+            <span className="absolute -right-2 top-2 bottom-2 w-2 bg-[repeating-linear-gradient(0deg,#fef3c7_0px,#d97706_1px,#fef3c7_2px)]" />
+            <span className="absolute -top-1 left-16 h-24 w-4 bg-gradient-to-b from-amber-500 to-orange-700 shadow-lg [clip-path:polygon(0_0,100%_0,100%_90%,50%_100%,0_90%)]" />
+            <div className="relative z-10 flex h-full flex-col justify-between py-2 pl-3 text-center text-amber-100">
+              <div className="flex items-center justify-between gap-2 text-xs font-bold text-amber-200">
+                <span className="rounded-full border border-amber-400/30 bg-black/35 px-2 py-1 font-devanagari">पवित्र ग्रंथ</span>
+                <span lang="sa" className="font-devanagari text-2xl">ॐ</span>
+              </div>
+              <div className="space-y-2">
+                <p lang="sa" className="font-devanagari text-xl font-extrabold leading-relaxed text-amber-200">{item.titleSanskrit || item.title}</p>
+                <p lang="en" className="font-serif text-sm font-bold leading-tight">{englishTitle}</p>
+                <p className="font-serif text-xs italic text-amber-200/85">{subTitle}</p>
+              </div>
+              <p className="text-[10px] font-bold text-amber-200/90">{countLabel}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

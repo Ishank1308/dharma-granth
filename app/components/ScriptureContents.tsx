@@ -28,7 +28,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
   const progress = visit ? Math.min(100, Math.round((visit.chapterId / Math.max(chapterTotal, visit.chapterId)) * 100)) : 0;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-7">
       {visit && (
         <section aria-labelledby="continue-reading-heading" className="rounded-3xl border border-saffron-200/80 bg-gradient-to-br from-saffron-50 to-amber-50 p-5 shadow-sm dark:border-saffron-900/50 dark:from-saffron-950/30 dark:to-amber-950/20 sm:p-6">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
@@ -57,7 +57,6 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
           <div>
             <p className="editorial-section-eyebrow">पाठ संरचना · Reading structure</p>
             <h2 id="contents-heading" className="editorial-section-title mt-2">Adhyay / Sections</h2>
-            <p className="mt-2 max-w-xl text-sm text-dharma-muted">Choose a traditional section to begin reading. Explanations and verse-level study open inside each section.</p>
           </div>
           {firstChapter && (
             <Link href={chapterHref(scriptureId, firstChapter.id)} className="inline-flex items-center gap-2 text-sm font-bold text-saffron-700 transition hover:text-saffron-900 dark:text-saffron-300 dark:hover:text-saffron-200">
@@ -66,7 +65,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
           )}
         </div>
 
-        <ol className="mt-6 grid gap-3 sm:grid-cols-2">
+        <ol className="mt-4 grid gap-3 sm:grid-cols-2">
           {chapters.map((chapter) => (
             <li key={chapter.id}>
               <Link href={chapterHref(scriptureId, chapter.id)} className="group flex min-h-[104px] items-center gap-4 rounded-2xl border border-dharma-border bg-dharma-card p-4 transition duration-200 hover:-translate-y-0.5 hover:border-saffron-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">

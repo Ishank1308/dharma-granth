@@ -36,6 +36,7 @@ const PAGES = [
   '/scripture/bhagavadgita/chapter/2/',
   '/scripture/bhagavadgita/chapter/2/verse/47/',
   '/scripture/mahabharata/chapter/12/part/2/',
+  '/curiosity/',
   '/learn/',
   '/learn/pathways/',
   '/collections/',

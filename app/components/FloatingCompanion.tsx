@@ -115,6 +115,7 @@ export function FloatingCompanion() {
     <aside
       ref={dockRef}
       aria-label="Interactive Companion"
+      data-hide-during-chapter-reading
       onFocus={() => setHidden(false)}
       className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:bottom-5 left-1/2 -translate-x-1/2 z-40 select-none"
     >
