@@ -64,16 +64,51 @@ const DRONE_TRACKS: Array<{ id: SoundscapeTrackId; label: string; icon: React.Re
 export function PranaCapsule() {
   const pathname = usePathname();
   const isChapterReader = pathname?.startsWith('/scripture/') && pathname.includes('/chapter/');
+  const isAutoHideRoute = pathname === '/scriptures' || pathname?.startsWith('/scriptures/') || pathname?.startsWith('/scripture/');
   const [capsuleState, setCapsuleState] = useState<PranaCapsuleState>(getPranaCapsuleState);
   const [soundState, setSoundState] = useState<SoundscapeState>(getSoundscapeState);
   const [activePadaLine, setActivePadaLine] = useState<string | null>(null);
   const [isBreathInterval, setIsBreathInterval] = useState(false);
   const [breathCountdown, setBreathCountdown] = useState(2.5);
   const [ekagrataActive, setEkagrataActive] = useState(false);
+  const [isScrollHidden, setIsScrollHidden] = useState(false);
+  const [isCapsuleFocused, setIsCapsuleFocused] = useState(false);
 
   const reduceMotion = useReducedMotion();
   const pillRef = useRef<HTMLButtonElement>(null);
   const islandRef = useRef<HTMLDivElement>(null);
+
+  // Tuck the persistent island away while readers browse down long scripture pages.
+  // Scrolling back up or returning near the top makes it available again.
+  useEffect(() => {
+    setIsScrollHidden(false);
+    if (!isAutoHideRoute) return;
+
+    let lastScrollY = window.scrollY;
+    let accumulatedDelta = 0;
+    const handleScroll = () => {
+      const currentScrollY = Math.max(0, window.scrollY);
+      accumulatedDelta += currentScrollY - lastScrollY;
+      lastScrollY = currentScrollY;
+
+      if (currentScrollY <= 72) {
+        accumulatedDelta = 0;
+        setIsScrollHidden(false);
+        return;
+      }
+
+      if (accumulatedDelta >= 16) {
+        accumulatedDelta = 0;
+        setIsScrollHidden(true);
+      } else if (accumulatedDelta <= -12) {
+        accumulatedDelta = 0;
+        setIsScrollHidden(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isAutoHideRoute, pathname]);
 
   // Sync with Prāṇa Capsule State Machine
   useEffect(() => {
@@ -184,6 +219,9 @@ export function PranaCapsule() {
   // Determine current active mode
   const mode = capsuleState.activeMode;
   const isParayanaActive = soundState.isPlaying || soundState.continuousParayana;
+  const isIslandPinned =
+    capsuleState.isExpanded || isParayanaActive || mode === 'toast' || mode === 'sabda-peek' || mode === 'sadhana';
+  const shouldShowIsland = !isAutoHideRoute || !isScrollHidden || isIslandPinned || isCapsuleFocused;
 
   return (
     <>
@@ -193,11 +231,30 @@ export function PranaCapsule() {
           (isParayanaActive ? `Pārāyaṇa active: ${soundState.currentVerseReference || 'recitation'}` : '')}
       </div>
 
-      {/* Floating Island Container */}
-      <aside
+      {/* Scroll-aware Floating Island Container */}
+      <motion.aside
+        initial={false}
+        animate={
+          shouldShowIsland
+            ? reduceMotion
+              ? { opacity: 1 }
+              : { opacity: 1, y: 0, scale: 1 }
+            : reduceMotion
+              ? { opacity: 0 }
+              : { opacity: 0, y: 12, scale: 0.98 }
+        }
+        transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
         // Keep it above the reader's one-thumb controls on chapter pages, and above the mobile nav elsewhere.
         className={`fixed ${isChapterReader ? 'bottom-[calc(10rem+env(safe-area-inset-bottom))]' : 'bottom-[calc(4.25rem+env(safe-area-inset-bottom))]'} lg:bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center`}
         aria-label="Prāṇa Sūtra Active Island"
+        aria-hidden={!shouldShowIsland}
+        inert={!shouldShowIsland}
+        onFocusCapture={() => setIsCapsuleFocused(true)}
+        onBlurCapture={(event) => {
+          if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget as Node)) {
+            setIsCapsuleFocused(false);
+          }
+        }}
       >
         <AnimatePresence mode="wait">
           {capsuleState.isExpanded ? (
@@ -556,7 +613,7 @@ export function PranaCapsule() {
             </motion.button>
           )}
         </AnimatePresence>
-      </aside>
+      </motion.aside>
     </>
   );
 }
