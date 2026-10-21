@@ -1558,7 +1558,7 @@ export const wisdomTopics: WisdomTopic[] = [
         chapterNumber: 1,
         verseNumber: '3.28',
         referenceDisplay: 'Brihadaranyaka Upanishad 1.3.28',
-        libraryRef: { chapter: 3, verse: '3.8' },
+        libraryRef: { chapter: 3, verse: '1.3.28' },
         referenceDisplayHi: 'बृहदारण्यकोपनिषद् १.३.२८',
         sanskritDevanagari: 'असतो मा सद्गमय ।\nतमसो मा ज्योतिर्गमय ।\nमृत्योर्माऽमृतं गमय ॥\n',
         sanskritTransliteration: "asato mā sadgamaya |\ntamaso mā jyotirgamaya |\nmṛtyormā'mṛtaṁ gamaya ||\nom śāntiḥ śāntiḥ śāntiḥ ||",
@@ -1572,7 +1572,7 @@ export const wisdomTopics: WisdomTopic[] = [
           commentaryNote: '',
           commentaryNoteHi: '',
         },
-        readerHref: '/scripture/brihadaranyaka/chapter/1'
+        readerHref: '/scripture/brihadaranyaka/chapter/3'
       },
       {
         id: 'isha-1',

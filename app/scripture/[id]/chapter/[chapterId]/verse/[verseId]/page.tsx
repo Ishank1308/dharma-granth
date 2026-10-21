@@ -14,9 +14,9 @@ import { VerseReader } from '@/app/components/reader/VerseReader';
 import { getVerseInsight } from '@/lib/verse-insights';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { getScriptureMeta } from '@/data/scriptures';
-import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
-import { readChapterCommentary, readSeededChapter, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
+import { readSeededChapter, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { verseStaticParams } from '@/lib/verse-pages';
+import { commentaryFor, verseMeaningSummary } from '@/lib/verse-meaning';
 import { verseOgPath, versePageHref, verseSlug } from '@/lib/verse-paths';
 import { scriptureLastChanged } from '@/lib/content-dates';
 import { cleanVerseField, splitVyakhyaCommentary, verseLines } from '@/lib/verse-format';
@@ -141,8 +141,12 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
   const ref = `${meta.title} ${chapterId}.${params.verseId}`;
   const words = opening(found.verse.sanskrit);
-  // Search engines show about 60 characters: lead with the reference and "Meaning in Hindi & English".
-  const title = `${ref} Meaning in Hindi & English${words ? ` | ${words}` : ''}`;
+  // The title names only the meanings the page really has; a page with none says so and is kept out of the index
+  // (and out of the sitemap, see lib/sitemap-sections.ts) until a meaning is written.
+  const has = verseMeaningSummary(meta.id, chapterId, found.verse);
+  const promise = has.hindi && has.english ? 'Meaning in Hindi & English' : has.hindi ? 'Meaning in Hindi' : has.english ? 'Meaning in English' : has.explanation ? 'Explanation' : 'Original Text';
+  // Search engines show about 60 characters: lead with the reference and what the page offers.
+  const title = `${ref} ${promise}${words ? ` | ${words}` : ''}`;
   // Hindi reference stays in the keywords ("श्रीमद्भगवद्गीता 2.47 का हिंदी अर्थ").
   const refHi = `${meta.titleSanskrit ?? meta.title} ${chapterId}.${params.verseId}`;
   const cleanSanskrit = cleanVerseField(found.verse.sanskrit).replace(/\s+/g, ' ').trim();
@@ -176,6 +180,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
       (k): k is string => Boolean(k),
     ),
     alternates: { canonical },
+    ...(has.any ? {} : { robots: { index: false, follow: true } }),
     openGraph: {
       type: 'article',
       locale: 'hi_IN',
@@ -239,14 +244,13 @@ export default function VersePage({ params }: PageProps) {
     }
   }
 
-  const commentary = readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId);
-  const comment =
-    commentary?.[`${chapterId}:${params.verseId}`] ?? commentary?.[`${chapterId}:${Number(params.verseId)}`];
-  const { vyakhya, commentary: commentaryText } = splitVyakhyaCommentary(
+  // Same key as the chapter reader, so dotted verse numbers (Brihadaranyaka "1.3.28") find their commentary too.
+  const comment = commentaryFor(meta.id, chapterId, params.verseId);
+  const { vyakhya, commentary } = splitVyakhyaCommentary(
     [comment?.explanation, verse.explanation, verse.commentary],
     verse.wordMeaning,
   );
-  const explanation = vyakhya ?? commentaryText;
+  const explanation = vyakhya ?? commentary;
   const science = comment?.science ?? verse.science;
   const lesson = comment?.lifeLesson ?? verse.lifeLesson;
 
@@ -414,8 +418,7 @@ export default function VersePage({ params }: PageProps) {
           hindiRange: verse.hindiRange,
           hindiSeeVerse: verse.hindiSeeVerse,
           translation: verse.translation,
-          explanation: vyakhya,
-          commentary: commentaryText,
+          explanation,
           reflection: lesson,
           research: science,
         }}

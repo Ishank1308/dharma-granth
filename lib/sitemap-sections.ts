@@ -3,8 +3,8 @@ import { getAllScriptures, getScriptureChapters } from '@/data/scriptures';
 import { readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
 import { lastChanged, scriptureLastChanged } from '@/lib/content-dates';
 import { verseStaticParams } from '@/lib/verse-pages';
+import { verseMeaningById } from '@/lib/verse-meaning';
 import { chapterPartHref, chapterParts } from '@/lib/chapter-parts';
-import { topics } from '@/data/topics';
 import { wisdomTopics } from '@/data/wisdom-for-life';
 import { characters } from '@/data/characters';
 import { dictionary } from '@/data/dictionary';
@@ -62,7 +62,6 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/wisdom-for-life', pageDate('/wisdom-for-life', 'data/wisdom-for-life.ts')),
     entry('/guidance', pageDate('/guidance', 'data/wisdom-for-life.ts')),
     entry('/concepts', pageDate('/concepts')),
-    entry('/topics', pageDate('/topics', 'data/topics.ts')),
     entry('/characters', pageDate('/characters', 'data/characters.ts')),
     entry('/locations', pageDate('/locations')),
     entry('/festivals', pageDate('/festivals')),
@@ -85,6 +84,8 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/sources', pageDate('/sources')),
     entry('/contribute', pageDate('/contribute')),
     entry('/concepts/relationships', pageDate('/concepts/relationships')),
+    entry('/concepts/visuals', pageDate('/concepts/visuals')),
+    entry('/network', pageDate('/network')),
     entry('/ashtavakra', pageDate('/ashtavakra')),
     entry('/ashtavakra/words', pageDate('/ashtavakra/words')),
   ];
@@ -92,10 +93,8 @@ function pagesSection(): MetadataRoute.Sitemap {
   // 2. Individual Entity Pages
   const wisdomDate = lastChanged('data/wisdom-for-life.ts', 'app/wisdom-for-life/[slug]/page.tsx');
   const wisdomRoutes = wisdomTopics.map((w) => entry(`/wisdom-for-life/${w.slug}`, wisdomDate));
-  // /guidance/<slug> serves the same page with a canonical to /wisdom-for-life/<slug>, so only the canonical URL is listed.
+  // /guidance/<slug> and the old /topics/<id> 301 to /wisdom-for-life (public/_redirects), so only canonical URLs are listed.
 
-  const topicDate = lastChanged('data/topics.ts', 'app/topics/[id]/page.tsx');
-  const topicRoutes = topics.map((t) => entry(`/topics/${t.id}`, topicDate));
 
   const characterDate = lastChanged('data/characters.ts', 'app/characters/[id]/page.tsx');
   const characterRoutes = characters.map((c) => entry(`/characters/${c.id}`, characterDate));
@@ -121,7 +120,7 @@ function pagesSection(): MetadataRoute.Sitemap {
   const festivalDate = lastChanged('data/festivals.ts', 'app/festivals/[id]/page.tsx');
   const festivalRoutes = festivals.map((f) => entry(`/festivals/${f.id}`, festivalDate));
 
-  return [...staticRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...topicRoutes, ...characterRoutes, ...dictionaryRoutes];
+  return [...staticRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...characterRoutes, ...dictionaryRoutes];
 }
 
 /** Scripture landing pages and chapter pages (all seeded + curated chapters), dated by when the scripture's text or commentary last changed. */
@@ -150,9 +149,10 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
 }
 
 function versesSection(): MetadataRoute.Sitemap {
-  const scriptureVerses = verseStaticParams().map((p) =>
-    entry(`/scripture/${p.id}/chapter/${p.chapterId}/verse/${p.verseId}`, scriptureLastChanged(p.id)),
-  );
+  // A verse page with no meaning or explanation yet is noindex (see the verse page); keep it out of the sitemap too.
+  const scriptureVerses = verseStaticParams()
+    .filter((p) => verseMeaningById(p.id, Number(p.chapterId), p.verseId)?.any)
+    .map((p) => entry(`/scripture/${p.id}/chapter/${p.chapterId}/verse/${p.verseId}`, scriptureLastChanged(p.id)));
   // Ashtavakra Gita has its own verse pages (/ashtavakra/<chapter>/<verse>/).
   const ashtavakraDate = lastChanged('app/ashtavakra/[chapter]/[verse]/page.tsx');
   const ashtavakraVerses = publishedChapterNumbers().flatMap((c) =>

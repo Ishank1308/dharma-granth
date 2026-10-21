@@ -24,7 +24,7 @@ export function Certificate({
   const ref = useRef<HTMLDivElement>(null);
 
   const formattedDate = useMemo(
-    () => new Date(completedDate).toLocaleDateString(undefined, {
+    () => new Date(completedDate).toLocaleDateString(undefined, { numberingSystem: 'latn',
       year: 'numeric',
       month: 'long',
       day: 'numeric',

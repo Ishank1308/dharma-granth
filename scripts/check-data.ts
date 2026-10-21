@@ -165,7 +165,7 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   bhagavatapurana: 21,
   brahmandpuran: 5,
   brahmapuran: 4,
-  brihadaranyaka: 15,
+  brihadaranyaka: 5, // genuine repeats in the source (e.g. the Maitreyi dialogue in II.4 and IV.5) after the 2026-10 rebuild
   chandogya: 26,
   devibhagavat: 3,
   garudpurana: 9,

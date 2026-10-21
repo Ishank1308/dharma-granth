@@ -208,7 +208,7 @@ export function BookLearningClient({
                 )}
                 {chapter.summary && <span className="mt-2 block text-sm text-dharma-muted line-clamp-2">{chapter.summary}</span>}
                 <span className="mt-2 block text-xs font-semibold text-dharma-muted">
-                  {chapter.verseCount.toLocaleString()} {labels.versesLabel}
+                  {chapter.verseCount.toLocaleString(undefined, { numberingSystem: 'latn' })} {labels.versesLabel}
                 </span>
               </span>
               <ChevronRight className="mt-2 h-5 w-5 flex-shrink-0 text-dharma-muted group-hover:text-saffron-700" />

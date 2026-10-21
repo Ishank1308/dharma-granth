@@ -7,6 +7,17 @@ export interface HiCommentaryEntry {
    * reviewer; the site labels these. Absent for hand-written commentary.
    */
   ai?: true;
+  /**
+   * Set on entries from the editorial pilot (data/pilot/records). The site labels these as drafts that still
+   * need a person to review them.
+   */
+  editorial?: {
+    reviewStatus: "review-required";
+    confidence: "high" | "medium" | "low";
+    vijnanaCategory: string;
+    evidenceLevel: "editorial-observation" | "none";
+    arthaDecision: string;
+  };
 }
 
 /**

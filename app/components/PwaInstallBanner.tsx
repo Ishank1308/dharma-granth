@@ -139,7 +139,7 @@ export function PwaInstallBanner() {
               <span>Dharma Granth ऍप इंस्टॉल करें</span>
             </h4>
             <p className="text-xs text-dharma-muted mt-0.5 leading-snug">
-              १००% ऑफ़लाइन · विज्ञापन-मुक्त · बिना किसी स्टोरेज भार के सीधा फोन पर।
+              100% ऑफ़लाइन · विज्ञापन-मुक्त · बिना किसी स्टोरेज भार के सीधा फोन पर।
             </p>
 
             {/* iOS Step Guide Popup */}

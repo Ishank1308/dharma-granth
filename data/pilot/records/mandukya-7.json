@@ -1,0 +1,25 @@
+{
+  "unitId": "mandukya-7",
+  "reference": "Mandukya Upanishad 7",
+  "artha": "जो न भीतर की ओर प्रज्ञा वाला है, न बाहर की ओर, न दोनों ओर; जो न प्रज्ञा का घन है, न प्रज्ञावान, न अप्रज्ञ। जो अदृष्ट, व्यवहार से परे, अग्राह्य, अलक्षण, अचिन्त्य और अव्यपदेश्य है; जिसका सार एक आत्मा की प्रतीति है; जिसमें प्रपञ्च शांत हो जाता है; जो शांत, शिव और अद्वैत है, उसे चतुर्थ माना जाता है। वही आत्मा है, वही जानने योग्य है।",
+  "arthaEn": "Not inwardly aware, not outwardly aware, not aware of both; not a mass of awareness, not aware, not unaware. Unseen, beyond everyday dealing, ungraspable, without distinguishing mark, unthinkable, indescribable; its essence is the conviction of the one Self; in it the manifold world comes to rest; peaceful, auspicious, non-dual. This they regard as the fourth. That is the Self; that is to be known.",
+  "arthaDecision": "revise-existing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "माण्डूक्य उपनिषद में आत्मा के चार पाद बताए गए हैं: जाग्रत, स्वप्न और सुषुप्ति तीन अवस्थाओं के रूप में, और चौथा इन तीनों से भिन्न। यह मंत्र उसी चौथे का वर्णन करता है, और वह भी केवल निषेध के सहारे। प्रज्ञा का अर्थ है चेतन जानना। पहले छह पद बताते हैं कि वह भीतर-बाहर के किसी भी जानने जैसा नहीं, न ही सुषुप्ति के प्रज्ञानघन जैसा, न बेहोशी जैसा। फिर अदृष्ट, अग्राह्य जैसे शब्द जोड़े जाते हैं, ताकि कोई भी वर्णन उसे सीमित न कर दे। एकात्मप्रत्ययसार का अर्थ है जिसका सार एक आत्मा की प्रतीति है, और प्रपञ्चोपशम का अर्थ है जिसमें दृश्य जगत का विस्तार शांत हो जाता है। चतुर्थं मन्यन्ते का अर्थ है जिसे लोग चौथा मानते हैं, यानी वर्णन एक मान्य परंपरा का है, कोई नई गिनती नहीं। इसे चौथी अवस्था को पाने की तकनीक या किसी ध्यान-अनुभव का नाम समझ लेना भूल है।",
+  "vijnana": "नकार के सहारे वर्णन करना, यानी यह कहना कि वह क्या नहीं है, दार्शनिक और धार्मिक साहित्य की एक पहचानी हुई भाषा-शैली है, और इसी रूप में यह मंत्र एक साहित्यिक अवलोकन का विषय बन सकता है। इसे मस्तिष्क की किसी अवस्था, चेतना के किसी मापे हुए रूप या किसी भौतिक सिद्धांत से जोड़ना उचित नहीं होगा; मंत्र ऐसा कोई वैज्ञानिक दावा नहीं करता और यहाँ कोई ऐसा दावा किया भी नहीं जा रहा। यह केवल कहने की शैली पर एक टिप्पणी है।",
+  "vijnanaCategory": "linguistic",
+  "evidenceLevel": "editorial-observation",
+  "lifeLesson": "किसी गहरे अनुभव या विचार को तुरंत किसी लेबल, अवस्था या उपलब्धि में बाँधने की जल्दी मत करो। जो बात शब्दों में पूरी नहीं आती, उसे अभी नहीं जानता कहकर खुला छोड़ना सीखो।",
+  "confidence": "high",
+  "reviewNote": "The Sanskrit is clear. The stored explanation says the fourth is 'the essence of the conviction I am'; the Sanskrit says 'conviction of the one Self' (ekatma-pratyaya), and 'I am' was not carried over. The stored English renders 'avyavaharya' as 'beyond action'; it was revised to 'beyond everyday dealing'. No classical commentary is stored; the classical gloss on this Upanishad was not consulted.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged.",
+    "artha": "Editor rendering from the Sanskrit. The stored translation was read as a check.",
+    "vyakhya": "Original composition.",
+    "vijnana": "Original composition; a literary observation, no research source consulted.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}

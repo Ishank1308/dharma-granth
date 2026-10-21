@@ -26,7 +26,7 @@ import {
 } from 'lucide-react';
 import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
 import { useTheme } from '@/app/components/ThemeProvider';
-import { toDevanagari } from '@/lib/verse-format';
+import { toAsciiDigits } from '@/lib/verse-format';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import { EmbedVerseDialog } from '@/app/components/EmbedVerseDialog';
@@ -357,9 +357,9 @@ export function VerseReader(props: VerseReaderProps) {
     const hiLabel = crosses != null ? (dir === 'prev' ? 'पिछला अध्याय' : 'अगला अध्याय') : hi;
     const verseLine = crosses != null
       ? (size === 'bar'
-        ? `${toDevanagari(crosses)}.${toDevanagari(target.number)}`
-        : `अध्याय ${toDevanagari(crosses)}, श्लोक ${toDevanagari(target.number)}`)
-      : `श्लोक ${toDevanagari(target.number)}`;
+        ? `${toAsciiDigits(crosses)}.${toAsciiDigits(target.number)}`
+        : `अध्याय ${toAsciiDigits(crosses)}, श्लोक ${toAsciiDigits(target.number)}`)
+      : `श्लोक ${toAsciiDigits(target.number)}`;
     return (
       <Link
         href={target.href}
@@ -712,7 +712,7 @@ export function VerseReader(props: VerseReaderProps) {
               aria-haspopup="dialog"
               className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-xl px-2 text-center transition active:scale-95"
             >
-              <span lang="hi" className="font-devanagari text-sm font-bold text-dharma-text">श्लोक {toDevanagari(verse.number)}</span>
+              <span lang="hi" className="font-devanagari text-sm font-bold text-dharma-text">श्लोक {toAsciiDigits(verse.number)}</span>
               <span className="text-[11px] font-medium text-saffron-700 dark:text-saffron-400">{index + 1} / {total} · माला खोलें</span>
             </button>
             {navLink(next, 'next', 'bar')}

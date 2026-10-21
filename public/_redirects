@@ -5,6 +5,8 @@
 /guidance/:slug/ /wisdom-for-life/:slug/ 301
 /bhagavad-gita /scripture/bhagavadgita/ 301
 /bhagavad-gita/ /scripture/bhagavadgita/ 301
+/scripture/yogavasistha /scripture/yogavasishtha/ 301
+/scripture/yogavasistha/* /scripture/yogavasishtha/:splat 301
 
 # Topics consolidated into canonical Wisdom for Life directory
 /topics/career-workplace-ethics /wisdom-for-life/skill-in-work/ 301

@@ -83,3 +83,11 @@ Re-reading the data field by field corrected part of section 2.
 - **Accessibility (Mood Compass):** the six mood buttons now carry `aria-pressed` (1 of 6 true); the three listen buttons now have an `aria-label` ("श्लोक उच्चारण सुनें · Gita 6.26", etc.). Checked in the running app: 0 buttons without an accessible name.
 
 Still open from the plan: commit Phase 7 in slices, the typed `VerseEditorialLayer` overlay, replacing the re-export shims, browser tests of Story Deck / Quote Studio / swipe / reduced motion / 375 px, and the 20,000-file deploy limit.
+
+## 7. UI follow-up (2026-10-20)
+
+- The modern-life lesson now lives in its own fourth `VerseCard` tab alongside Arth, Vyakhya and Vigyan. This keeps the lesson available without adding another always-visible block below every verse.
+- The tab row scrolls horizontally on narrow screens, uses 44 px minimum touch targets, and retains its existing arrow/Home/End keyboard navigation and animated selected-pill indicator.
+- The lesson remains labelled as reflection/editorial content. No scripture or editorial source data was changed in this UI follow-up.
+- Verification: TypeScript, ESLint, production build (7,609 routes), export check (4,212 chapters and 2,548 verse pages), sitemap check (7,383 URLs), and the focused 375 px Playwright keyboard/selection test all passed.
+- The older checklist above records the 2026-10-19 audit snapshot; this follow-up updates the VerseCard tab/navigation item only. Other listed editorial-review and integration work remains separate.

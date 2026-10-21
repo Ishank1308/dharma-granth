@@ -92,7 +92,10 @@ for (const t of wisdomTopics) {
     const run = letters(chapter.verses.slice(index, index + 4).map((x) => x.sanskrit ?? '').join(' '));
     const head = quoted.slice(0, 24);
     const tail = quoted.slice(Math.max(0, quoted.length - 24));
-    if (!run.includes(head) || !run.includes(tail)) {
+    // A quotation's initial अ can be absorbed by sandhi with the preceding word in the library's running text
+    // (Brihadaranyaka 1.3.28 has जपेदसतो for "japed asato"), so the head may match without it.
+    const headOk = run.includes(head) || (quoted.startsWith('अ') && run.includes(quoted.slice(1, 25)));
+    if (!headOk || !run.includes(tail)) {
       fail(at, `${v.referenceDisplay}: quoted Sanskrit does not match library ch. ${loc.chapter} v. ${loc.verse}`);
     }
   }

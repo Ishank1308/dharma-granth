@@ -37,7 +37,7 @@ const KEY_PAGES = [
   '/practice/',
   '/concepts/',
   '/dictionary/',
-  '/topics/',
+  '/wisdom-for-life/',
   '/characters/',
   '/festivals/',
   '/rituals/',
@@ -164,8 +164,13 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
 let chaptersChecked = 0;
 let inlined = 0;
 let splitChapters = 0;
+// Alias ids (data/scripture-aliases.ts) are 301s in public/_redirects, not pages, even when a data file exists.
+const ALIASES = new Set(
+  [...readFileSync(join(ROOT, 'data/scripture-aliases.ts'), 'utf8').matchAll(/^\s*'?([\w-]+)'?:\s*'[\w-]+',/gm)].map((m) => m[1]),
+);
 for (const file of readdirSync(SOURCE).filter((f) => f.endsWith('.json'))) {
   const id = file.replace(/\.json$/, '');
+  if (ALIASES.has(id)) continue;
   let source;
   try {
     source = JSON.parse(readFileSync(join(SOURCE, file), 'utf8'));
@@ -231,22 +236,43 @@ for (const file of readdirSync(SOURCE).filter((f) => f.endsWith('.json'))) {
 // measures ~288 KB, i.e. ~12 KB of real headroom.
 const MAX_HTML_BYTES = 1.5 * 1024 * 1024;
 const MAX_FIRST_LOAD_JS_GZ = 350 * 1024;
+// ── No page server-renders content hidden until hydration ──
+// A framer `initial={{ opacity: 0 }}`, `whileInView`, or `AnimatePresence` without `initial={false}` writes
+// style="opacity:0" into the static HTML: the content is invisible until JavaScript runs (header theme icons,
+// chapter links and the japa count all shipped that way). Reveals belong in CSS (motion/primitives.tsx).
+// Decorative elements marked aria-hidden="true" are allowed.
+const HIDDEN_ELEMENT = /<([a-z][\w-]*)\b[^>]*\sstyle="[^"]*\bopacity:\s*0(?![.\d])[^"]*"[^>]*>/gi;
 {
   let worst = { size: 0, path: '' };
+  let hiddenPages = 0;
+  const hiddenExamples = new Map();
   const walk = (dir) => {
     for (const name of readdirSync(dir)) {
       const p = join(dir, name);
       const st = statSync(p);
       if (st.isDirectory()) {
         if (!['_next', 'og', 'pinterest', 'data'].includes(name)) walk(p);
-      } else if (name === 'index.html' && st.size > worst.size) {
-        worst = { size: st.size, path: p };
+      } else if (name === 'index.html') {
+        if (st.size > worst.size) worst = { size: st.size, path: p };
+        let hidden = false;
+        for (const m of readFileSync(p, 'utf8').matchAll(HIDDEN_ELEMENT)) {
+          if (/\saria-hidden="true"/.test(m[0])) continue;
+          hidden = true;
+          // Group by the tag and its classes, so one component shows once however many pages carry it.
+          const shape = `<${m[1]} ${(m[0].match(/\sclass="[^"]*"/)?.[0] ?? '').trim().slice(0, 90)}>`;
+          if (!hiddenExamples.has(shape)) hiddenExamples.set(shape, p.slice(DIST.length).replace(/\\/g, '/'));
+        }
+        if (hidden) hiddenPages++;
       }
     }
   };
   walk(DIST);
   if (worst.size > MAX_HTML_BYTES) {
     fail('weight', `${worst.path} is ${Math.round(worst.size / 1024)} KB (budget ${MAX_HTML_BYTES / 1024} KB)`);
+  }
+  if (hiddenPages > 0) {
+    fail('hidden', `${hiddenPages} page(s) server-render content at opacity:0 until hydration:`);
+    for (const [shape, page] of [...hiddenExamples].slice(0, 8)) fail('hidden', `  ${shape} (first on ${page})`);
   }
   for (const path of ['/', '/scripture/bhagavadgita/chapter/2/', '/dashboard/']) {
     const html = pageHtml(path) ?? '';

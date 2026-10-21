@@ -195,6 +195,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
 
   const visibleConcepts = allConcepts.filter((c) => activeCats.has(c.category));
   const visibleIds = new Set(visibleConcepts.map((c) => c.id));
+  const mobileConcepts = visibleConcepts.filter((c) => !matchedIds || matchedIds.has(c.id));
 
   const getNodeRadius = (concept: Concept) => {
     const connCount = concept.connections.length;
@@ -288,12 +289,14 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="अवधारणाएँ खोजें..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-dharma-card border border-dharma-border text-sm text-dharma-text placeholder:text-dharma-muted focus:outline-none focus:border-saffron-400 focus:ring-2 focus:ring-saffron-200 transition"
+            className="min-h-[44px] w-full pl-10 pr-4 py-2.5 rounded-xl bg-dharma-card border border-dharma-border text-sm text-dharma-text placeholder:text-dharma-muted focus:outline-none focus:border-saffron-400 focus:ring-2 focus:ring-saffron-200 transition"
           />
           {search && (
             <button
+              type="button"
+              aria-label="Clear concept search"
               onClick={() => setSearch('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-dharma-muted hover:text-dharma-text"
+              className="absolute right-1 top-1/2 flex min-h-[44px] min-w-[44px] -translate-y-1/2 items-center justify-center rounded-lg text-dharma-muted hover:text-dharma-text"
             >
               <X className="w-4 h-4" />
             </button>
@@ -301,7 +304,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
         </div>
 
         {/* Zoom controls */}
-        <div className="flex items-center gap-2">
+        <div className="hidden items-center gap-2 lg:flex">
           <button
             onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))}
             className="p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 transition"
@@ -337,7 +340,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
             <button
               key={cat.key}
               onClick={() => toggleCat(cat.key)}
-              className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all ${
+              className={`inline-flex min-h-[44px] items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all ${
                 isActive
                   ? `bg-gradient-to-r ${cat.gradient} text-white border-transparent shadow-md`
                   : 'bg-dharma-card text-dharma-muted border-dharma-border hover:border-saffron-300'
@@ -354,7 +357,87 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
       </div>
 
       {/* ── Graph SVG ────────────────────────────────────────────── */}
-      <div className="relative rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-lg" style={{ aspectRatio: `${VW}/${VH}` }}>
+      <section aria-labelledby="mobile-concepts-heading" className="mb-5 lg:hidden">
+        <div className="mb-3">
+          <h2 id="mobile-concepts-heading" className="font-serif text-lg font-bold text-dharma-text">
+            अवधारणाएँ · Browse concepts
+          </h2>
+          <p className="mt-1 text-sm text-dharma-muted">
+            Expand a concept to read its summary and see its connections.
+          </p>
+        </div>
+        {mobileConcepts.length === 0 ? (
+          <p role="status" className="rounded-xl border border-dashed border-dharma-border p-4 text-sm text-dharma-muted">
+            No concepts match the current search and filters.
+          </p>
+        ) : (
+          <ul className="space-y-2">
+            {mobileConcepts.map((concept) => {
+              const connections = getConnectedConcepts(concept.id);
+              const category = conceptCategories.find((item) => item.key === concept.category);
+              return (
+                <li key={concept.id} id={`concept-${concept.id}`} className="rounded-2xl border border-dharma-border bg-dharma-card">
+                  <details className="group">
+                    <summary className="flex min-h-[56px] cursor-pointer list-none items-center gap-3 rounded-2xl p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 [&::-webkit-details-marker]:hidden">
+                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${category?.gradient} font-devanagari text-sm font-bold text-white`} lang="sa">
+                        {concept.sanskrit.slice(0, 2)}
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                          <span className="font-serif font-bold text-dharma-text">{concept.label}</span>
+                          <span lang="sa" className="font-devanagari text-sm text-dharma-muted">{concept.sanskrit}</span>
+                        </span>
+                        <span className="mt-0.5 block text-xs text-dharma-muted">{category?.label}</span>
+                      </span>
+                      <ChevronRight aria-hidden="true" className="h-4 w-4 shrink-0 text-dharma-muted transition-transform group-open:rotate-90" />
+                    </summary>
+                    <div className="space-y-3 border-t border-dharma-border/70 px-4 pb-4 pt-3">
+                      <p className="text-sm leading-relaxed text-dharma-text">{concept.shortDesc}</p>
+                      {connections.length > 0 && (
+                        <div>
+                          <h3 className="text-xs font-bold uppercase tracking-wide text-dharma-muted">
+                            Related concepts · संबंधित अवधारणाएँ
+                          </h3>
+                          <ul className="mt-2 flex flex-wrap gap-2">
+                            {connections.map((connection) => (
+                              <li key={connection.id}>
+                                {articles.has(connection.id) ? (
+                                  <Link
+                                    href={`/concepts/${connection.id}`}
+                                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-dharma-border bg-dharma-bg px-3 text-sm text-dharma-text hover:border-saffron-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                                  >
+                                    <span lang="sa" className="font-devanagari text-saffron-700 dark:text-saffron-300">{connection.sanskrit}</span>
+                                    <span>{connection.label}</span>
+                                  </Link>
+                                ) : (
+                                  <span className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-dharma-border bg-dharma-bg px-3 text-sm text-dharma-text">
+                                    <span lang="sa" className="font-devanagari text-dharma-muted">{connection.sanskrit}</span>
+                                    <span>{connection.label}</span>
+                                  </span>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      {articles.has(concept.id) && (
+                        <Link
+                          href={`/concepts/${concept.id}`}
+                          className="inline-flex min-h-[44px] items-center gap-2 font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300"
+                        >
+                          Open concept page <ChevronRight aria-hidden="true" className="h-4 w-4" />
+                        </Link>
+                      )}
+                    </div>
+                  </details>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </section>
+
+      <div className="relative hidden rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-lg lg:block" style={{ aspectRatio: `${VW}/${VH}` }}>
         <svg
           ref={svgRef}
           viewBox={`0 0 ${VW} ${VH}`}

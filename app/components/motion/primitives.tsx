@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion, type HTMLMotionProps, type Variants } from 'framer-motion';
+import { motion, type HTMLMotionProps } from 'framer-motion';
 import type { HTMLAttributes, ReactNode } from 'react';
 
 /**
@@ -17,22 +17,26 @@ import type { HTMLAttributes, ReactNode } from 'react';
  *   its own timing.
  */
 
-const FADE_UP_DISTANCE = 24;
-const FADE_DURATION = 0.55;
+/** The site's settling curve (also `--ease-out-quint` in globals.css). */
+export const EASE_OUT_QUINT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: FADE_UP_DISTANCE },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: FADE_DURATION, ease: [0.22, 1, 0.36, 1] },
-  },
-};
+/**
+ * Spring presets for framer-motion. Calm by default: `settle` for layout and highlights (no overshoot),
+ * `gentle` for things that drift into place, `tactile` for objects under the finger (mala beads, a pull cord)
+ * that should feel weighted and come to rest quickly. Under reduced motion pass `{ duration: 0 }` instead.
+ */
+export const SPRINGS = {
+  settle: { type: 'spring', stiffness: 380, damping: 38 },
+  gentle: { type: 'spring', stiffness: 170, damping: 26 },
+  tactile: { type: 'spring', stiffness: 520, damping: 30, mass: 0.7 },
+} as const;
 
-const reducedVariants: Variants = {
-  hidden: { opacity: 1, y: 0 },
-  visible: { opacity: 1, y: 0 },
-};
+/**
+ * Reveal sequence for a verse card: put `className={REVEAL_SEQUENCE}` on the card and `data-reveal="1" | "2" |
+ * "3"` on the shloka, transliteration and meanings. It is CSS on the card's scroll timeline (globals.css), so the
+ * server HTML is never hidden and nothing waits on hydration.
+ */
+export const REVEAL_SEQUENCE = 'reveal-seq';
 
 /**
  * Fade-up on mount. Use for hero headlines, single elements that should
@@ -59,29 +63,24 @@ export function FadeUp({
 }
 
 /**
- * Fade-up that fires when the element enters the viewport. Use for
- * sections far down the page that should "wake up" on scroll.
+ * Fade-up as the element scrolls into view. Use for sections far down the page that should "wake up" on scroll.
+ *
+ * CSS on the element's own scroll timeline (`.fade-up-on-view` in globals.css), like the verse reveal: the
+ * framer `whileInView` version server-rendered its section at opacity:0 until hydration (the previous/next
+ * chapter links were hidden that way). Visible without scroll-timeline support or under reduced motion.
+ * `delay` and `amount` are kept for call-site compatibility; a scroll timeline has no delay.
  */
 export function FadeUpOnView({
   children,
-  delay = 0,
   className,
-  amount = 0.25,
+  delay: _delay,
+  amount: _amount,
   ...rest
-}: { children: ReactNode; delay?: number; amount?: number } & HTMLMotionProps<'div'>) {
-  const reduce = useReducedMotion();
+}: { children: ReactNode; delay?: number; amount?: number } & HTMLAttributes<HTMLDivElement>) {
   return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount }}
-      variants={reduce ? reducedVariants : fadeUpVariants}
-      transition={{ delay }}
-      {...rest}
-    >
+    <div className={className ? `fade-up-on-view ${className}` : 'fade-up-on-view'} {...rest}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 

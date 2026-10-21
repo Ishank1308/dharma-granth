@@ -47,7 +47,7 @@ const GEN_Z_PATHWAYS: GenZPathway[] = [
     labelEn: 'I feel stressed',
     labelHi: 'तनाव व अशांति',
     sanskrit: 'शमः',
-    href: '/topics/stress-anxiety',
+    href: '/wisdom-for-life/stress-and-worry/',
     icon: Wind,
   },
   {
@@ -55,7 +55,7 @@ const GEN_Z_PATHWAYS: GenZPathway[] = [
     labelEn: 'I need focus',
     labelHi: 'एकाग्रता व ध्यान',
     sanskrit: 'अभ्यासः',
-    href: '/topics/student-life',
+    href: '/wisdom-for-life/discipline/',
     icon: Target,
   },
   {
@@ -63,7 +63,7 @@ const GEN_Z_PATHWAYS: GenZPathway[] = [
     labelEn: 'I fear failure',
     labelHi: 'पराजय का भय',
     sanskrit: 'अभयम्',
-    href: '/topics/stress-anxiety',
+    href: '/wisdom-for-life/stress-and-worry/',
     icon: Shield,
   },
   {
@@ -71,7 +71,7 @@ const GEN_Z_PATHWAYS: GenZPathway[] = [
     labelEn: 'I feel angry',
     labelHi: 'क्रोध व आवेश',
     sanskrit: 'संयमः',
-    href: '/topics/anger-jealousy',
+    href: '/wisdom-for-life/anger/',
     icon: Flame,
   },
   {
@@ -79,7 +79,7 @@ const GEN_Z_PATHWAYS: GenZPathway[] = [
     labelEn: 'I am grieving',
     labelHi: 'शोक व विछोह',
     sanskrit: 'अनित्यता',
-    href: '/topics/grief-death',
+    href: '/wisdom-for-life/grief-and-loss/',
     icon: Heart,
   },
   {
@@ -87,7 +87,7 @@ const GEN_Z_PATHWAYS: GenZPathway[] = [
     labelEn: 'I need direction',
     labelHi: 'स्वधर्म व कर्तव्य',
     sanskrit: 'स्वधर्मः',
-    href: '/topics/career-workplace-ethics',
+    href: '/wisdom-for-life/skill-in-work/',
     icon: Compass,
   },
   {
@@ -101,7 +101,7 @@ const GEN_Z_PATHWAYS: GenZPathway[] = [
   {
     id: 'two-min',
     labelEn: '2-Minute reading',
-    labelHi: '२ मिनट स्वाध्याय',
+    labelHi: '2 मिनट स्वाध्याय',
     sanskrit: 'नित्य श्लोक',
     href: '/daily-verse',
     icon: Clock,

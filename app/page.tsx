@@ -3,15 +3,17 @@ import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { HeroSection } from '@/app/components/HeroSection';
 import { SplashScreen } from '@/app/components/SplashScreen';
 import { ContinueReading } from '@/app/components/ContinueReading';
+import { HomeDiscoveryBento } from '@/app/components/HomeDiscoveryBento';
 import { VerseOfTheDayCompact } from '@/app/components/VerseOfTheDayCompact';
 import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
 import { MoodCompass } from '@/app/components/MoodCompass';
 import { getMoodCompass } from '@/lib/mood-compass';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
-import { SadhanaPreviewSection } from '@/app/components/SadhanaPreviewSection';
+import { LazySadhanaPreview } from '@/app/components/LazyHomeSections';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
 import { SiteFooter } from '@/app/components/SiteFooter';
+import { getTodayWisdom } from '@/data/daily-wisdom-engine';
 
 export const metadata: Metadata = {
   title: { absolute: 'Dharma Granth — Calm, Bilingual Digital Scripture Library' },
@@ -61,6 +63,9 @@ export default function HomePage() {
         {/* 4. A short daily reading, followed by alternative discovery paths */}
         <VerseOfTheDayCompact />
 
+        {/* 4b. Daily discovery, Panchang, local resume and a gentle reading rhythm */}
+        <HomeDiscoveryBento initialWisdom={getTodayWisdom()} />
+
         {/* 5. Mood compass: curated verses for how the reader feels right now */}
         <MoodCompass moods={getMoodCompass()} />
 
@@ -71,7 +76,7 @@ export default function HomePage() {
         <LifeSituationsSection />
 
         {/* 8. Practice tools preview */}
-        <SadhanaPreviewSection />
+        <LazySadhanaPreview />
 
         {/* 9. Trust, sourcing and methodology */}
         <HomeTrustStrip />

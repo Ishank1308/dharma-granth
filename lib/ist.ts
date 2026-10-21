@@ -20,4 +20,4 @@ export function istDate(date: Date = new Date()): IstDate {
 }
 
 export const formatIstLong = (date: Date = new Date(), locale = 'en-IN'): string =>
-  date.toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', timeZone: 'Asia/Kolkata' });
+  date.toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric', numberingSystem: 'latn', timeZone: 'Asia/Kolkata' });

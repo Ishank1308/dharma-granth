@@ -48,8 +48,8 @@ import {
 } from 'lucide-react';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useTheme, type Theme } from './ThemeProvider';
-import { cleanVerseField, toDevanagari, verseLines } from '@/lib/verse-format';
+import { THEME_NAMES, useTheme, type Theme } from './ThemeProvider';
+import { cleanVerseField, toAsciiDigits, verseLines } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 export interface VerseItemData {
@@ -176,10 +176,10 @@ function detectChhanda(sanskrit?: string): string {
   const clean = sanskrit.replace(/[\s|।॥0-9०-९.,\-–—!]/g, '');
   const vowels = clean.match(/[अआइईउऊऋॠएऐओऔािीुूृॄेैोौ]/g);
   const aksharas = vowels ? vowels.length : Math.round(clean.length / 2);
-  if (aksharas >= 40 && aksharas <= 48) return 'त्रिष्टुप् छन्दः (Triṣṭubh Metre · ११×४ वर्ण)';
-  if (aksharas >= 48 && aksharas <= 54) return 'जगती छन्दः (Jagatī Metre · १२×४ वर्ण)';
-  if (aksharas >= 20 && aksharas <= 28) return 'गायत्री छन्दः (Gāyatrī Metre · ८×३ वर्ण)';
-  return 'अनुष्टुप् छन्दः (Anuṣṭubh Metre · ८×४ वर्ण · ३२ अक्षरात्मक)';
+  if (aksharas >= 40 && aksharas <= 48) return 'त्रिष्टुप् छन्दः (Triṣṭubh Metre · 11×4 वर्ण)';
+  if (aksharas >= 48 && aksharas <= 54) return 'जगती छन्दः (Jagatī Metre · 12×4 वर्ण)';
+  if (aksharas >= 20 && aksharas <= 28) return 'गायत्री छन्दः (Gāyatrī Metre · 8×3 वर्ण)';
+  return 'अनुष्टुप् छन्दः (Anuṣṭubh Metre · 8×4 वर्ण · 32 अक्षरात्मक)';
 }
 
 export function ScriptureReader({
@@ -655,7 +655,7 @@ ${verse.science || '—'}
           <div className="hidden items-center gap-3 sm:flex">
             <div className="flex flex-col items-center">
               <span className="font-devanagari text-xs font-semibold text-dharma-muted">
-                श्लोक {toDevanagari(verse.number)} / {toDevanagari(totalVersesInChapter)}
+                श्लोक {toAsciiDigits(verse.number)} / {toAsciiDigits(totalVersesInChapter)}
               </span>
               <div className="mt-1 h-1.5 w-28 overflow-hidden rounded-full bg-dharma-border/60">
                 <div
@@ -676,7 +676,7 @@ ${verse.science || '—'}
               title="श्लोक चुनें · Select Verse"
             >
               <span className="font-devanagari font-semibold">
-                श्लोक {toDevanagari(verse.number)}
+                श्लोक {toAsciiDigits(verse.number)}
               </span>
               <ChevronDown className="h-3.5 w-3.5 opacity-60" />
             </button>
@@ -739,7 +739,7 @@ ${verse.science || '—'}
                 पिछला श्लोक
               </span>
               <span className="font-devanagari text-sm font-bold text-dharma-text">
-                श्लोक {toDevanagari(prevVerse.number)}
+                श्लोक {toAsciiDigits(prevVerse.number)}
               </span>
             </div>
           </Link>
@@ -770,7 +770,7 @@ ${verse.science || '—'}
                 अगला श्लोक
               </span>
               <span className="font-devanagari text-sm font-bold text-dharma-text">
-                श्लोक {toDevanagari(nextVerse.number)}
+                श्लोक {toAsciiDigits(nextVerse.number)}
               </span>
             </div>
             <ArrowRight className="h-4 w-4 shrink-0 text-saffron-600 transition group-hover:translate-x-1" />
@@ -916,7 +916,7 @@ ${verse.science || '—'}
                     </span>
                   ))}
                   <span className="mt-3 block font-bold text-amber-700 dark:text-amber-400">
-                    ॥ {toDevanagari(chapterId)}.{toDevanagari(verse.number)} ॥
+                    ॥ {toAsciiDigits(chapterId)}.{toAsciiDigits(verse.number)} ॥
                   </span>
                 </p>
               ) : (
@@ -1301,7 +1301,7 @@ ${verse.science || '—'}
             className="inline-flex h-11 items-center gap-1.5 rounded-full border border-saffron-500/40 bg-saffron-500/10 px-4 text-xs font-bold text-saffron-800 dark:text-saffron-300 active:scale-95"
           >
             <span className="font-devanagari">
-              श्लोक {toDevanagari(verse.number)} / {toDevanagari(totalVersesInChapter)}
+              श्लोक {toAsciiDigits(verse.number)} / {toAsciiDigits(totalVersesInChapter)}
             </span>
             <ChevronUp className="h-3.5 w-3.5 opacity-70" />
           </button>
@@ -1370,10 +1370,10 @@ ${verse.science || '—'}
                     </p>
                     <div className="grid grid-cols-2 gap-2.5">
                       {[
-                        { id: 'day' as Theme, label: 'Light', desc: 'उजला', bg: '#fdfbf7', border: '#e8e3db' },
-                        { id: 'sunset' as Theme, label: 'Sunset', desc: 'संध्या', bg: '#fff4e5', border: '#ecc9a7' },
-                        { id: 'paper' as Theme, label: 'Paper', desc: 'पाण्डुलिपि', bg: '#f5ede0', border: '#ded1bd' },
-                        { id: 'night' as Theme, label: 'Dark', desc: 'रात्रि', bg: '#090908', border: '#312b25' },
+                        { id: 'day' as Theme, label: THEME_NAMES.day.name, desc: THEME_NAMES.day.hi, bg: '#fdfbf7', border: '#e8e3db' },
+                        { id: 'sunset' as Theme, label: THEME_NAMES.sunset.name, desc: THEME_NAMES.sunset.hi, bg: '#fff4e5', border: '#ecc9a7' },
+                        { id: 'paper' as Theme, label: THEME_NAMES.paper.name, desc: THEME_NAMES.paper.hi, bg: '#f5ede0', border: '#ded1bd' },
+                        { id: 'night' as Theme, label: THEME_NAMES.night.name, desc: THEME_NAMES.night.hi, bg: '#090908', border: '#312b25' },
                       ].map((t) => (
                         <button
                           key={t.id}
@@ -1393,7 +1393,7 @@ ${verse.science || '—'}
                             <span className="block text-xs font-bold text-dharma-text">
                               {t.label}
                             </span>
-                            <span className="block text-[10px] text-dharma-muted">
+                            <span lang="hi" className="block text-[10px] text-dharma-muted">
                               {t.desc}
                             </span>
                           </div>
@@ -1630,7 +1630,7 @@ ${verse.science || '—'}
                   >
                     <div className="flex items-center gap-3">
                       <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-dharma-card font-devanagari text-xs font-bold text-dharma-muted">
-                        {toDevanagari(ch.id)}
+                        {toAsciiDigits(ch.id)}
                       </span>
                       <div>
                         <span className="block font-devanagari text-sm">
@@ -1706,7 +1706,7 @@ ${verse.science || '—'}
                             : 'border border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-400 hover:text-saffron-700'
                         }`}
                       >
-                        {toDevanagari(num)}
+                        {toAsciiDigits(num)}
                       </Link>
                     );
                   })}

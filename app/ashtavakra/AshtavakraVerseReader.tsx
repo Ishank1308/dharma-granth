@@ -4,7 +4,7 @@ import { useState, useCallback, type ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Grid, Disc, Sparkles } from 'lucide-react';
-import { toDevanagari } from '@/lib/verse-format';
+import { toAsciiDigits } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { useSwipeGesture } from '@/lib/useSwipeGesture';
 import { MobileSwipeIndicator } from '@/app/components/reader/MobileSwipeIndicator';
@@ -101,7 +101,7 @@ export function AshtavakraVerseReader({
             >
               <ArrowLeft className="h-4 w-4 text-[var(--ash-accent)]" />
               <span className="text-xs font-devanagari">
-                {toDevanagari(prev.crossesChapter ? prev.verseNumber : (prevVerseNum ?? ''))}
+                {toAsciiDigits(prev.crossesChapter ? prev.verseNumber : (prevVerseNum ?? ''))}
               </span>
             </button>
           ) : (
@@ -120,7 +120,7 @@ export function AshtavakraVerseReader({
             className="flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-2xl border border-[var(--ash-line)] bg-[var(--ash-card)] px-2.5 py-1 text-center shadow-sm transition active:scale-95"
           >
             <span lang="hi" className="font-devanagari text-sm font-bold text-[var(--ash-ink)]">
-              श्लोक {toDevanagari(verse.verseNumber)}
+              श्लोक {toAsciiDigits(verse.verseNumber)}
             </span>
             <span className="text-[10px] font-semibold text-[var(--ash-accent)]">
               {currentIndex + 1} / {totalVerses} · माला खोलें
@@ -135,7 +135,7 @@ export function AshtavakraVerseReader({
               className="ash-btn flex min-h-[48px] items-center gap-1.5 px-3 font-semibold transition active:scale-95"
             >
               <span className="text-xs font-devanagari">
-                {toDevanagari(next.crossesChapter ? next.verseNumber : (nextVerseNum ?? ''))}
+                {toAsciiDigits(next.crossesChapter ? next.verseNumber : (nextVerseNum ?? ''))}
               </span>
               <ArrowRight className="h-4 w-4 text-[var(--ash-accent)]" />
             </button>

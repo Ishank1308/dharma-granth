@@ -6,7 +6,6 @@ import {
   ChevronRight,
   BookOpen,
   Calendar,
-  Flame,
   FileText,
   Compass,
   Check,
@@ -77,7 +76,7 @@ export function SpiritualProgressCard({ stats }: Props) {
             className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold border border-saffron-300/80 dark:border-saffron-800/60 bg-dharma-card/80 text-dharma-text hover:bg-saffron-50 dark:hover:bg-saffron-950/30 transition shadow-2xs"
           >
             <Compass className="w-3.5 h-3.5 text-saffron-600 dark:text-saffron-400" />
-            <span>६ सोपान दर्शन · View All Stages</span>
+            <span>6 सोपान दर्शन · View All Stages</span>
           </button>
         </div>
 
@@ -127,7 +126,7 @@ export function SpiritualProgressCard({ stats }: Props) {
             {remainingForNext && (
               <div className="pt-1">
                 <p className="text-2xs font-bold uppercase tracking-wider text-dharma-muted mb-2">
-                  अगले सोपान हेतु साधना संकल्प (Milestones toward {nextLevel.titleHi}):
+                  स्वाध्याय के वैकल्पिक संकेत · Optional study markers
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                   {remainingForNext.verses > 0 ? (
@@ -140,7 +139,7 @@ export function SpiritualProgressCard({ stats }: Props) {
                   ) : (
                     <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
                       <Check className="w-3.5 h-3.5 shrink-0" />
-                      <span>श्लोक लक्ष्य पूर्ण</span>
+                      <span>पठन दर्ज</span>
                     </div>
                   )}
 
@@ -154,21 +153,7 @@ export function SpiritualProgressCard({ stats }: Props) {
                   ) : (
                     <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
                       <Check className="w-3.5 h-3.5 shrink-0" />
-                      <span>दिवस लक्ष्य पूर्ण</span>
-                    </div>
-                  )}
-
-                  {remainingForNext.streak > 0 ? (
-                    <div className="flex items-center gap-2 p-2 rounded-xl bg-dharma-card/60 border border-dharma-border/60">
-                      <Flame className="w-3.5 h-3.5 text-orange-600 shrink-0" />
-                      <span className="text-dharma-muted">
-                        <strong className="text-dharma-text">{remainingForNext.streak}</strong> दिन निरंतरता
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
-                      <Check className="w-3.5 h-3.5 shrink-0" />
-                      <span>नियम लक्ष्य पूर्ण</span>
+                      <span>दिवस दर्ज</span>
                     </div>
                   )}
 
@@ -182,7 +167,21 @@ export function SpiritualProgressCard({ stats }: Props) {
                   ) : (
                     <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
                       <Check className="w-3.5 h-3.5 shrink-0" />
-                      <span>चिंतन लक्ष्य पूर्ण</span>
+                      <span>चिंतन दर्ज</span>
+                    </div>
+                  )}
+
+                  {remainingForNext.pathways > 0 ? (
+                    <div className="flex items-center gap-2 p-2 rounded-xl bg-dharma-card/60 border border-dharma-border/60">
+                      <Compass className="w-3.5 h-3.5 text-violet-600 shrink-0" />
+                      <span className="text-dharma-muted">
+                        <strong className="text-dharma-text">{remainingForNext.pathways}</strong> अध्ययन पथ
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2 p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
+                      <Check className="w-3.5 h-3.5 shrink-0" />
+                      <span>अध्ययन पथ पूर्ण</span>
                     </div>
                   )}
                 </div>
@@ -247,7 +246,7 @@ export function SpiritualProgressCard({ stats }: Props) {
                   « चतुर्विधा भजन्ते मां जनाः सुकृतिनोऽर्जुन । आर्तो जिज्ञासुरर्थार्थी ज्ञानी च भरतर्षभ ॥ »
                 </p>
                 <p>
-                  श्रीमद्भगवद्गीता (७.१६) और उपनिषदों में स्वाध्याय की इस क्रमिक यात्रा को आत्म-साक्षात्कार का प्रशस्त मार्ग बताया गया है — जहाँ जिज्ञासु अपनी लगन से ज्ञान का साक्षात करता है।
+                  श्रीमद्भगवद्गीता (7.16) और उपनिषदों में स्वाध्याय की इस क्रमिक यात्रा को आत्म-साक्षात्कार का प्रशस्त मार्ग बताया गया है — जहाँ जिज्ञासु अपनी लगन से ज्ञान का साक्षात करता है।
                 </p>
               </div>
 

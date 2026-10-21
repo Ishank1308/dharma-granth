@@ -39,11 +39,39 @@
     src: url('/fonts/merriweather-400.woff2') format('woff2');
 }
 
-/* Font family variables mapped to local + bundled fonts */
+/* Size-Adjusted Fallback Metrics for Zero CLS (CLS = 0.00) */
+@font-face {
+    font-family: 'Inter-Fallback';
+    src: local('Arial'), local('Helvetica');
+    ascent-override: 90%;
+    descent-override: 22.5%;
+    line-gap-override: 0%;
+    size-adjust: 107.4%;
+}
+
+@font-face {
+    font-family: 'Noto-Devanagari-Fallback';
+    src: local('Nirmala UI'), local('Mangal'), local('Kokila');
+    ascent-override: 95%;
+    descent-override: 25%;
+    line-gap-override: 0%;
+    size-adjust: 100%;
+}
+
+@font-face {
+    font-family: 'Merriweather-Fallback';
+    src: local('Georgia'), local('Times New Roman');
+    ascent-override: 98%;
+    descent-override: 27%;
+    line-gap-override: 0%;
+    size-adjust: 99.2%;
+}
+
+/* Font family variables mapped to local + bundled fonts + size-adjusted fallbacks */
 :root {
-    --font-inter: 'Inter', system-ui, sans-serif;
-    --font-merriweather: 'Merriweather', Georgia, serif;
-    --font-noto-devanagari: 'Noto Sans Devanagari', sans-serif;
+    --font-inter: 'Inter', 'Inter-Fallback', system-ui, sans-serif;
+    --font-merriweather: 'Merriweather', 'Merriweather-Fallback', Georgia, serif;
+    --font-noto-devanagari: 'Noto Sans Devanagari', 'Noto-Devanagari-Fallback', sans-serif;
 
     /* Shared Motion Tokens (Phase 6) */
     --motion-instant: 120ms;
@@ -148,9 +176,10 @@
     --dharma-hero-mid: #3a2418;
     --dharma-hero-end: #7c2d12;
     --bg-glow-1: rgba(249, 115, 22, 0.18);
-    --bg-glow-2: rgba(20, 184, 166, 0.09);
-    --dharma-gold: #eab308;
-    --dharma-gold-border: #524223;
+    /* Rātri: obsidian with copper light (was a cool teal glow and bright yellow gold). */
+    --bg-glow-2: rgba(194, 120, 76, 0.09);
+    --dharma-gold: #e0a458;
+    --dharma-gold-border: #5a3d24;
     --dharma-saffron: #f97316;
     --dharma-maroon: #991b1b;
     --dharma-maroon-border: #7f1d1d;
@@ -1598,4 +1627,235 @@ body:has(main[data-chapter-reading]) [data-hide-during-chapter-reading] {
   .verse-card-spotlight { display: none !important; }
   h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
   a { color: #000 !important; text-decoration: none !important; }
+}
+
+/* ==========================================================================
+   Phase 7: Editorial Bento Grid, Manuscript Surfaces & Tactile Typography
+   ========================================================================== */
+
+/* Zero-network inline SVG paper-grain overlay for physical cotton rag texture */
+.manuscript-surface {
+  position: relative;
+  background-image: radial-gradient(rgba(120, 80, 40, 0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+:root[data-theme='dark'] .manuscript-surface,
+:root[data-theme='night'] .manuscript-surface {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+.editorial-bento-card {
+  position: relative;
+  border-radius: 1.5rem;
+  border-width: 1px;
+  border-color: rgba(214, 211, 209, 0.7);
+  background-color: var(--dharma-card);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+:root[data-theme='dark'] .editorial-bento-card,
+:root[data-theme='night'] .editorial-bento-card {
+  border-color: rgba(41, 37, 36, 0.8);
+}
+
+.editorial-bento-card:hover {
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Hairline warm borders */
+.hairline-warm-border {
+  border: 1px solid rgba(214, 211, 209, 0.7);
+}
+
+:root[data-theme='dark'] .hairline-warm-border,
+:root[data-theme='night'] .hairline-warm-border {
+  border: 1px solid rgba(41, 37, 36, 0.8);
+}
+
+/* Editorial typography display headings */
+.editorial-display-heading {
+  font-family: var(--font-merriweather, serif);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Tabular numeral metadata pills */
+.editorial-meta-pill {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Atmosphere: Bhojpatra grain and Devanagari leading
+   ========================================================================== */
+
+/* Paper grain over the whole page: one fixed layer, an inline SVG noise tile (no request, no script), never
+   interactive. Strength follows the theme; Paper is the most textured, Night uses a lighter-toned grain. */
+:root,
+:root[data-theme='day'] {
+    --grain-opacity: 0.035;
+    --grain-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.22 0 0 0 0 0.1 0 0 0 1.4 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+:root[data-theme='sunset'] {
+    --grain-opacity: 0.045;
+}
+:root[data-theme='paper'] {
+    --grain-opacity: 0.07;
+}
+:root[data-theme='night'] {
+    --grain-opacity: 0.05;
+    --grain-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.85 0 0 0 0 0.72 0 0 0 1.4 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: var(--grain-image);
+    background-size: 180px 180px;
+    opacity: var(--grain-opacity);
+}
+@media (prefers-contrast: more), print {
+    body::after {
+        display: none;
+    }
+}
+
+/* Devanagari matras sit above and below the Latin line box, so the tight leadings (1, 1.25, 1.375) clip them.
+   Hindi and Sanskrit text never goes below 1.4 there. <html lang="hi"> matches every element, so only explicit
+   lang attributes below the root and the Devanagari font class count. */
+:is(.leading-none, .leading-tight, .leading-snug):is(.font-devanagari, body [lang='hi'], body [lang='sa']),
+:is(.leading-none, .leading-tight, .leading-snug) :is(.font-devanagari, [lang='hi'], [lang='sa']) {
+    line-height: 1.4;
+}
+/* Tailwind's text-5xl and larger also set line-height: 1 (responsive variants included). */
+:is([class*='text-5xl'], [class*='text-6xl'], [class*='text-7xl'], [class*='text-8xl'], [class*='text-9xl']):is(.font-devanagari, body [lang='hi'], body [lang='sa']) {
+    line-height: 1.3;
+}
+/* Gradient text paints only inside the element's box, so a reph or anusvara above it would vanish. */
+.bg-clip-text:is(.font-devanagari, body [lang='hi'], body [lang='sa']) {
+    padding-block: 0.12em;
+}
+/* Bhojpatra (paper) contrast. Its parchment card (#fdf8ee) and saffron chips (#fdebd8) are a shade darker than
+   Usha's, which tipped saffron-600 / -700 text just under 4.5:1 (4.42 and 4.45; axe flagged ~100 elements).
+   Deeper saffron on this theme only: 5.47:1 on the card and 5.68:1 on the chips. */
+:root[data-theme='paper'] .text-saffron-600 {
+    color: #b8390a;
+}
+:root[data-theme='paper'] .text-saffron-700,
+:root[data-theme='sunset'] .text-saffron-700 {
+    color: #a8350a;
+}
+/* Sandhyā's saffron chips (#fee7d0) had the same margin: saffron-700 was 4.32:1, now 5.52:1. Amber-700 on the
+   parchment page (#f5ede0) was 4.32:1, now 6.10:1 with amber-800. */
+:root[data-theme='paper'] .text-amber-700 {
+    color: #92400e;
+}
+
+/* Verse reveal sequence: as a verse card scrolls into view the mula shloka settles first, then the
+   transliteration, then the meanings (data-reveal 1, 2, 3 inside .reveal-seq). Pure CSS on the card's own scroll
+   timeline: the text is fully visible in the server HTML and wherever scroll timelines are unsupported, cards
+   already on screen at load are past their range (so the first screen is never hidden), and reduced motion
+   turns it off. Fixed pixel ranges keep the pace the same for short and tall cards. */
+@keyframes reveal-rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .reveal-seq {
+            view-timeline-name: --verse-card;
+        }
+        .reveal-seq [data-reveal] {
+            animation: reveal-rise var(--ease-out-quint) both;
+            animation-timeline: --verse-card;
+            animation-range: entry 0px entry 160px;
+        }
+        .reveal-seq [data-reveal='2'] {
+            animation-range: entry 60px entry 220px;
+        }
+        .reveal-seq [data-reveal='3'] {
+            animation-range: entry 120px entry 280px;
+        }
+        /* FadeUpOnView (motion/primitives.tsx): one section rising on its own timeline. */
+        .fade-up-on-view {
+            animation: reveal-rise var(--ease-out-quint) both;
+            animation-timeline: view();
+            animation-range: entry 0px entry 200px;
+        }
+    }
+}
+
+/* Japa mala: a soft copper bloom when the Sumeru completes a mala (JapaMala renders it only without reduced
+   motion). */
+@keyframes japa-bloom {
+    from {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(0.4);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2.4);
+    }
+}
+.japa-bloom {
+    animation: japa-bloom 1.4s var(--ease-out-quint) forwards;
+}
+
+/* Diya flame (DiyaPullCord): a slow, uneven flicker; reduced motion gets a still flame (no class). */
+@keyframes diya-flicker {
+    0%, 100% {
+        transform: scale(1, 1);
+    }
+    30% {
+        transform: scale(0.94, 1.06) skewX(-2deg);
+    }
+    55% {
+        transform: scale(1.04, 0.97) skewX(1.5deg);
+    }
+    80% {
+        transform: scale(0.97, 1.03);
+    }
+}
+.diya-flame {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: diya-flicker 2.6s ease-in-out infinite;
+}
+
+/* Search palette results settle in as they appear (delay set per item, capped). */
+@keyframes search-result-in {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .search-result-in {
+        animation: search-result-in 180ms var(--ease-out-quint) both;
+    }
+}
+
+/* A line clamp clips at the padding box; a little bottom padding keeps the last line's lower matras visible. */
+:is([class*='line-clamp-']):is(.font-devanagari, body [lang='hi'], body [lang='sa']),
+:is([class*='line-clamp-']) :is(.font-devanagari, [lang='hi'], [lang='sa']) {
+    padding-bottom: 0.15em;
 }

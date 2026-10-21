@@ -24,13 +24,19 @@ import { normalizeForSearch, normalizeTransliteration } from '@/lib/normalize-se
 import { splitVyakhyaCommentary, toAsciiDigits, toDevanagari } from '@/lib/verse-format';
 import { useStudyProgress, type VerseRef } from '@/lib/useStudyProgress';
 import { updateLastVerse } from '@/lib/reading-history';
-import { AddToCollectionModal } from './AddToCollectionModal';
-import { ContributeMeaningModal } from './ContributeMeaningModal';
+import dynamic from 'next/dynamic';
+import { useEverTrue } from '@/lib/use-ever-true';
+
+// Dialogs and alternate reading modes load the first time they are used, so they stay out of the chapter's first-load JS.
+const AddToCollectionModal = dynamic(() => import('./AddToCollectionModal').then((m) => m.AddToCollectionModal), { ssr: false });
+const ContributeMeaningModal = dynamic(() => import('./ContributeMeaningModal').then((m) => m.ContributeMeaningModal), { ssr: false });
 import { VerseCard } from './VerseCard';
+import { ReadingDepthSwitch } from '@/app/components/reader/ReadingDepthSwitch';
+import { useReadingDepth } from '@/lib/reading-depth';
 import { VerseText } from './VerseText';
 import type { VerseInsight } from '@/lib/verse-insights';
-import { MobileFocusMode } from './MobileFocusMode';
-import { ConversationModeView } from './conversation/ConversationModeView';
+const MobileFocusMode = dynamic(() => import('./MobileFocusMode').then((m) => m.MobileFocusMode), { ssr: false });
+const ConversationModeView = dynamic(() => import('./conversation/ConversationModeView').then((m) => m.ConversationModeView), { ssr: false });
 import { triggerTactileFeedback } from '@/lib/haptics';
 import {
   startSoundscape,
@@ -49,6 +55,18 @@ import {
   getParayanaChapterProgress,
   markChapterCompleteInReadingPlan,
 } from '@/lib/reading-plan-sync';
+import { saveChapterVersesToDB, getCachedChapterVersesFromDB } from '@/lib/db/granth-indexeddb';
+import type { SvadhyayaTab } from '@/app/components/reader/SvadhyayaSplitDrawer';
+const SvadhyayaSplitDrawer = dynamic(() => import('@/app/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
+import { MobileOneThumbControlBar } from './reader/MobileOneThumbControlBar';
+import {
+  saveReadingPosition,
+  recordReadingHistory,
+  saveVerseBookmark,
+  deleteSavedVerse,
+} from '@/lib/study/storage';
+import { runStudyDataMigration } from '@/lib/study/migration';
+import type { Connection } from '@/data/study-content';
 
 interface FullVerse {
   number: number | string;
@@ -61,11 +79,15 @@ interface FullVerse {
   hindiRange?: string;
   hindiSeeVerse?: number | string;
   wordMeaning?: string;
+  padaccheda?: string;
   commentary?: string;
   explanation?: string;
   science?: string;
   lifeLesson?: string;
   keywords?: string[];
+  speaker?: string;
+  chandas?: string;
+  concepts?: string[];
 }
 
 interface FullChapter {
@@ -101,6 +123,8 @@ interface Props {
    * Passed so the island can upgrade the server-rendered list into cards.
    */
   initialChapter?: InitialChapter;
+  /** Approved, pre-existing cross-scripture links for verses in this page. */
+  relatedTeachingsByVerse?: Record<string, Connection[]>;
 }
 
 export interface InitialChapter {
@@ -118,7 +142,7 @@ type State =
   | { kind: 'empty' }
   | { kind: 'error'; message: string };
 
-export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter }: Props) {
+export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {} }: Props) {
   const curatedVerseSet = useMemo(
     () => new Set(curatedVerseIds.map((id) => String(id))),
     [curatedVerseIds],
@@ -142,10 +166,12 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const [hydrated, setHydrated] = useState(false);
   useEffect(() => {
     setHydrated(true);
+    runStudyDataMigration().catch(() => {});
   }, []);
 
   const [fontSize, setFontSize] = useState<'normal' | 'large' | 'xl'>('normal');
   const [chantingMode, setChantingMode] = useState(false);
+  const [readingDepth] = useReadingDepth();
   const [isConversationMode, setIsConversationMode] = useState(false);
   const [showTranslit, setShowTranslit] = useState(true);
   const [showHindi, setShowHindi] = useState(true);
@@ -178,6 +204,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   // collections are passed down to each VerseCard.
   const { recordReading, getNote, setNote, getHighlight, toggleHighlight, collections } = useStudyProgress();
   const [collectionVerse, setCollectionVerse] = useState<VerseRef | null>(null);
+  const contributeLoaded = useEverTrue(Boolean(contributeVerse));
+  const collectionLoaded = useEverTrue(Boolean(collectionVerse));
+  const focusLoaded = useEverTrue(focusModeOpen);
 
   const getCollectionCount = (verseNum: number | string) => {
     return collections.filter((c) =>
@@ -197,6 +226,89 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     }
   }, [state, recordReading]);
 
+  // ── Svadhyaya Split Workbench & Mobile Drawer State ──
+  const [svadhyayaOpen, setSvadhyayaOpen] = useState(false);
+  const svadhyayaLoaded = useEverTrue(svadhyayaOpen);
+  const [svadhyayaTab, setSvadhyayaTab] = useState<SvadhyayaTab>('concept');
+  const [svadhyayaConcept, setSvadhyayaConcept] = useState<string | null>(null);
+  const [svadhyayaParallel, setSvadhyayaParallel] = useState<{
+    scriptureSlug: string;
+    scriptureTitle: string;
+    chapter: number;
+    verseNum: string | number;
+    sanskrit: string;
+    transliteration?: string;
+    hindi?: string;
+    translation?: string;
+    relationNoteHi?: string;
+  } | null>(null);
+  const [svadhyayaMananaContext, setSvadhyayaMananaContext] = useState<{
+    scriptureSlug: string;
+    scriptureTitle: string;
+    chapter: number;
+    verseNum: string | number;
+    sanskrit?: string;
+    initialNote?: string;
+  } | null>(null);
+
+  // ── Mobile Reader & Level State ──
+  const [activeVerseIndex, setActiveVerseIndex] = useState(0);
+
+  const handleOpenSvadhyaya = (tab: SvadhyayaTab, data?: unknown) => {
+    setSvadhyayaTab(tab);
+    if (tab === 'concept' && typeof data === 'string') {
+      setSvadhyayaConcept(data);
+    } else if (tab === 'parallel' && data) {
+      setSvadhyayaParallel(data as typeof svadhyayaParallel);
+    } else if (tab === 'manana' && data) {
+      setSvadhyayaMananaContext(data as typeof svadhyayaMananaContext);
+    }
+    setSvadhyayaOpen(true);
+    triggerTactileFeedback('selection', 'softTap');
+  };
+
+  // Background hydration into IndexedDB for sub-5ms repeat visits and offline resolution
+  useEffect(() => {
+    if (state.kind === 'ready' && state.verses.length > 0) {
+      saveChapterVersesToDB(scriptureId, chapterId, state.verses).catch(() => {});
+    }
+  }, [state.kind, scriptureId, chapterId]);
+
+  // Check IndexedDB cache if loading or offline
+  useEffect(() => {
+    if (state.kind !== 'loading') return;
+    let cancelled = false;
+    getCachedChapterVersesFromDB(scriptureId, chapterId)
+      .then((cached) => {
+        if (!cancelled && cached && cached.length > 0) {
+          setState({
+            kind: 'ready',
+            verses: cached.map((c) => ({
+              number: c.verseNum,
+              sanskrit: c.sanskrit,
+              transliteration: c.transliteration,
+              translation: c.translation,
+              hindi: c.hindi,
+              wordMeaning: c.wordMeaning,
+              padaccheda: c.padaccheda,
+              commentary: c.commentary,
+              explanation: c.explanation,
+              science: c.science,
+              lifeLesson: c.lifeLesson,
+              keywords: c.keywords,
+              speaker: c.speaker,
+              chandas: c.chandas,
+              concepts: c.concepts,
+            })),
+          });
+        }
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [state.kind, scriptureId, chapterId]);
+
   // Remember the verse being read, so "continue reading" resumes at it.
   useEffect(() => {
     if (state.kind !== 'ready') return;
@@ -205,11 +317,13 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       // The reading line: a third of the way down the viewport.
       const line = window.innerHeight / 3;
       const cards = document.querySelectorAll<HTMLElement>('.verse-card[id^="verse-"]');
-      for (const card of Array.from(cards)) {
+      for (let idx = 0; idx < cards.length; idx++) {
+        const card = cards[idx];
         if (card.getBoundingClientRect().bottom > line) {
           const vNumStr = card.id.slice('verse-'.length);
           updateLastVerse(scriptureId, chapterId, vNumStr);
           setCurrentViewportVerse(vNumStr);
+          setActiveVerseIndex(idx);
           const vNum = Number(vNumStr);
           if (!Number.isNaN(vNum) && state.verses.length > 0) {
             const percent = Math.round((vNum / state.verses.length) * 100);
@@ -222,6 +336,27 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               percent,
             });
           }
+          const pct = Math.round(((idx + 1) / cards.length) * 100);
+          saveReadingPosition({
+            scriptureId,
+            chapterId,
+            verseId: vNumStr,
+            scrollAnchor: `verse-${vNumStr}`,
+            updatedAt: new Date().toISOString(),
+            percentage: pct,
+          }).catch(() => {});
+          recordReadingHistory({
+            id: `hist_${scriptureId}_${chapterId}_${Date.now()}`,
+            reference: {
+              scriptureId,
+              chapterId,
+              verseId: vNumStr,
+              canonicalReference: `${scriptureTitle || scriptureId} ${chapterId}.${vNumStr}`,
+            },
+            visitedAt: new Date().toISOString(),
+            progressPercent: pct,
+            timeSpentSeconds: 0,
+          }).catch(() => {});
           return;
         }
       }
@@ -328,6 +463,26 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         ...prev,
         [vId]: !isCurrentlySaved,
       }));
+
+      // Sync with IndexedDB v2 study storage
+      if (isCurrentlySaved) {
+        deleteSavedVerse(`saved:${scriptureId}:${chapterId}:${vId}`).catch(() => {});
+      } else {
+        saveVerseBookmark({
+          id: `saved:${scriptureId}:${chapterId}:${vId}`,
+          reference: {
+            scriptureId,
+            chapterId,
+            verseId: vId,
+            canonicalReference: `${scriptureTitle ?? scriptureId} ${chapterId}.${vId}`,
+            sanskritSnippet: v.sanskrit,
+            translationSnippet: v.translation,
+          },
+          collectionIds: [],
+          savedAt: new Date().toISOString(),
+        }).catch(() => {});
+      }
+
       window.dispatchEvent(new Event('dharma-bookmark-updated'));
       triggerTactileFeedback(!isCurrentlySaved ? 'success' : 'medium', !isCurrentlySaved ? 'success' : 'softTap');
     } catch (err) {
@@ -335,13 +490,42 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     }
   };
 
-  const scrollToVerse = (verseNum: string | number, behavior: ScrollBehavior = 'smooth') => {
+  const scrollToVerse = (
+    verseNum: string | number,
+    behavior: ScrollBehavior = 'smooth',
+    preserveLayout = false
+  ) => {
     const el = document.getElementById(`verse-${verseNum}`);
     if (el) {
       const prefersReduced =
         typeof window !== 'undefined' &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      el.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
+      // Temporarily set contentVisibility to 'visible' to pre-render layout dimensions accurately
+      const prevVisibility = el.style.contentVisibility;
+      el.style.contentVisibility = 'visible';
+      const alignVerse = () => {
+        if (el.isConnected) {
+          el.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
+        }
+      };
+      requestAnimationFrame(() => requestAnimationFrame(alignVerse));
+
+      if (preserveLayout) {
+        // Long chapters expand skipped cards as they enter the viewport. Correct once after that layout settles.
+        window.setTimeout(() => {
+          if (!el.isConnected) return;
+          const rect = el.getBoundingClientRect();
+          if (rect.bottom <= 0 || rect.top >= window.innerHeight) alignVerse();
+        }, 500);
+      } else {
+        setTimeout(() => {
+          const rect = el.getBoundingClientRect();
+          const isInViewport = rect.bottom > 0 && rect.top < window.innerHeight;
+          if (el.dataset.activeVerse !== 'true' && !isInViewport) {
+            el.style.contentVisibility = prevVisibility || '';
+          }
+        }, 800);
+      }
     }
   };
 
@@ -395,7 +579,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     };
   }, [scriptureId, chapterId]);
 
-  // Deep-link auto-scroll on mount if ?verse= or #verse- is present
+  // Deep-link auto-scroll if ?verse= or #verse- is present; layout correction handles long chapters.
   useEffect(() => {
     if (state.kind !== 'ready') return;
     const urlParams = new URLSearchParams(window.location.search);
@@ -408,7 +592,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       const timer = setTimeout(() => {
         // Jump, like a native #hash link: a smooth scroll across a long
         // chapter is slow and can be cut short by layout shifts.
-        scrollToVerse(targetVerse, 'auto');
+        scrollToVerse(targetVerse, 'auto', true);
       }, 350);
       return () => clearTimeout(timer);
     }
@@ -879,7 +1063,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 )}
                 <span className="hidden sm:inline">
                   {parayanaActive && activeRecitingVerse !== null
-                    ? `पारायण (${toDevanagari(activeRecitingVerse)})`
+                    ? `पारायण (${toAsciiDigits(activeRecitingVerse)})`
                     : 'अध्याय पारायण'}
                 </span>
               </button>
@@ -901,7 +1085,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                   aria-label={`श्लोक ${resumeVerse} से आगे`}
                 >
                   <Play className="h-3 w-3 text-amber-600 dark:text-amber-400 fill-current" />
-                  <span>{toDevanagari(resumeVerse)} से आगे</span>
+                  <span>{toAsciiDigits(resumeVerse)} से आगे</span>
                 </button>
               )}
 
@@ -1053,6 +1237,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 </button>
               </div>
 
+              {/* Reading depth: Read / Understand / Study */}
+              {!chantingMode && <ReadingDepthSwitch />}
+
               {/* Layer Toggles (Hidden in chanting mode) */}
               {!chantingMode && (
                 <div className="relative" ref={layersMenuRef}>
@@ -1184,7 +1371,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                   </option>
                   {state.verses.map((v) => (
                     <option key={String(v.number)} value={String(v.number)}>
-                      श्लोक {toDevanagari(v.number)} ({v.number})
+                      श्लोक {toAsciiDigits(v.number)} ({v.number})
                     </option>
                   ))}
                 </select>
@@ -1236,6 +1423,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 [explanationHi, v.explanation, v.commentary],
                 v.wordMeaning,
               );
+              const explanation = vyakhya ?? commentary;
+              const explanationIsHi = Boolean(vyakhya);
               const science = scienceHi ?? v.science;
               const scienceIsHi = Boolean(scienceHi);
               const lesson = lifeLessonHi ?? v.lifeLesson;
@@ -1247,9 +1436,14 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                   className={`transition-opacity duration-300 ${!isSpotlighted ? 'opacity-35 hover:opacity-90 focus-within:opacity-100' : 'opacity-100'}`}
                 >
                   <VerseCard
+                    depth={readingDepth}
                     verse={v}
+                    relatedTeachings={relatedTeachingsByVerse[String(v.number)]}
                     meaning={{
                       isAi: Boolean(comment?.ai),
+                      editorial: comment?.editorial,
+                      explanation,
+                      explanationIsHi,
                       vyakhya,
                       commentary,
                       science,
@@ -1299,6 +1493,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     versePageHref={versePageHref(scriptureId, chapterId, v.number)}
                     isReciting={String(activeRecitingVerse) === String(v.number)}
                     onPlayRecitation={() => togglePlayVerse(v)}
+                    onOpenSvadhyaya={handleOpenSvadhyaya}
+                    isActive={index === activeVerseIndex}
                   />
                 </div>
               );
@@ -1321,7 +1517,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 key={`rail-${String(v.number)}`}
                 type="button"
                 onClick={() => scrollToVerse(v.number)}
-                title={`श्लोक ${toDevanagari(v.number)} (${v.number})`}
+                title={`श्लोक ${toAsciiDigits(v.number)} (${v.number})`}
                 aria-label={`श्लोक ${v.number}`}
                 className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono font-medium transition-all ${
                   isCurrent
@@ -1329,11 +1525,71 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     : 'text-stone-400 hover:text-stone-100 hover:bg-stone-800/80 hover:scale-105'
                 }`}
               >
-                {toDevanagari(v.number)}
+                {toAsciiDigits(v.number)}
               </button>
             );
           })}
         </aside>
+      )}
+
+      {/* Svadhyaya Split Workbench (Desktop sticky workbench / Mobile bottom sheet) */}
+      {svadhyayaLoaded && (
+      <SvadhyayaSplitDrawer
+        isOpen={svadhyayaOpen}
+        onClose={() => setSvadhyayaOpen(false)}
+        activeTab={svadhyayaTab}
+        onTabChange={setSvadhyayaTab}
+        conceptSlug={svadhyayaConcept}
+        parallelVerse={svadhyayaParallel}
+        mananaContext={svadhyayaMananaContext}
+        onJumpToVerse={(slug, ch, vNum) => {
+          if (slug === scriptureId && ch === chapterId) {
+            scrollToVerse(vNum);
+          } else {
+            window.location.href = `/scripture/${slug}/?ch=${ch}&verse=${vNum}`;
+          }
+        }}
+      />
+      )}
+
+      {/* Mobile One-Thumb Reader Control Bar (<768px) */}
+      {state.kind === 'ready' && state.verses.length > 0 && (
+        <MobileOneThumbControlBar
+          currentVerseNumber={state.verses[activeVerseIndex]?.number ?? 1}
+          totalVerses={state.verses.length}
+          currentVerseSanskrit={state.verses[activeVerseIndex]?.sanskrit}
+          onPrevVerse={() => {
+            const nextIdx = Math.max(0, activeVerseIndex - 1);
+            setActiveVerseIndex(nextIdx);
+            scrollToVerse(state.verses[nextIdx].number);
+          }}
+          onNextVerse={() => {
+            const nextIdx = Math.min(state.verses.length - 1, activeVerseIndex + 1);
+            setActiveVerseIndex(nextIdx);
+            scrollToVerse(state.verses[nextIdx].number);
+          }}
+          activeLayers={{
+            translit: showTranslit,
+            hindi: showHindi,
+            english: showEnglish,
+            commentary: showCommentary,
+          }}
+          onToggleLayer={(layer) => {
+            if (layer === 'translit') updateLayers({ translit: !showTranslit });
+            if (layer === 'hindi') updateLayers({ hindi: !showHindi });
+            if (layer === 'english') updateLayers({ english: !showEnglish });
+            if (layer === 'commentary') updateLayers({ commentary: !showCommentary });
+          }}
+        />
+      )}
+      {state.source?.repo && (
+        <p className="mt-6 text-xs text-dharma-muted text-center">
+          स्रोत:{' '}
+          <a href={state.source.repo} target="_blank" rel="noopener noreferrer" className="underline">
+            {state.source.repo.replace('https://github.com/', '')}
+          </a>
+          {state.source.fetchedAt && ` · प्राप्त ${new Date(state.source.fetchedAt).toLocaleDateString('hi-IN', { numberingSystem: 'latn' })}`}
+        </p>
       )}
 
       {/* Floating toast notification */}
@@ -1350,6 +1606,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     </section>
 
       {/* Single contribute modal for bulk verses */}
+      {contributeLoaded && (
       <ContributeMeaningModal
         open={!!contributeVerse}
         onClose={() => setContributeVerse(null)}
@@ -1367,15 +1624,19 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           lifeLesson: contributeVerse?.lifeLesson,
         }}
       />
+      )}
 
       {/* Add verse to collection modal */}
+      {collectionLoaded && (
       <AddToCollectionModal
         open={Boolean(collectionVerse)}
         onClose={() => setCollectionVerse(null)}
         verse={collectionVerse}
       />
+      )}
 
       {/* Fullscreen Mobile & Screen Focus Mode */}
+      {focusLoaded && (
       <MobileFocusMode
         isOpen={focusModeOpen}
         onClose={() => setFocusModeOpen(false)}
@@ -1391,6 +1652,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         onToggleBookmark={(v) => toggleBookmark(v as FullVerse)}
         onVerseChange={(verseNum) => scrollToVerse(verseNum)}
       />
+      )}
     </>
   );
 }

@@ -1,0 +1,124 @@
+{
+  "scripture": "Shrimad Bhagavad Gita",
+  "reference": {
+    "chapter": 2,
+    "verse": 47
+  },
+  "original": {
+    "devanagari": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\n\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि।।2.47।।\n ",
+    "iast": "karmaṇy-evādhikāras te mā phaleṣhu kadāchana\nmā karma-phala-hetur bhūr mā te saṅgo ’stvakarmaṇi\n",
+    "anvaya_order": "ते कर्मणि एव अधिकारः, फलेषु कदाचन मा। कर्मफलहेतुः मा भूः। ते अकर्मणि सङ्गः मा अस्तु।",
+    "anvaya": [
+      {
+        "word": "ते",
+        "translit": "te",
+        "grammar": "युष्मद्, षष्ठी एकवचन (genitive singular)",
+        "meaning": "your"
+      },
+      {
+        "word": "कर्मणि",
+        "translit": "karmaṇi",
+        "grammar": "कर्मन्, सप्तमी एकवचन (locative singular)",
+        "meaning": "in action"
+      },
+      {
+        "word": "एव",
+        "translit": "eva",
+        "grammar": "अव्यय (particle)",
+        "meaning": "only"
+      },
+      {
+        "word": "अधिकारः",
+        "translit": "adhikāraḥ",
+        "grammar": "अधिकार, प्रथमा एकवचन (nominative singular)",
+        "meaning": "entitlement, rightful scope"
+      },
+      {
+        "word": "फलेषु",
+        "translit": "phaleṣu",
+        "grammar": "फल, सप्तमी बहुवचन (locative plural)",
+        "meaning": "in the fruits, the results"
+      },
+      {
+        "word": "कदाचन",
+        "translit": "kadācana",
+        "grammar": "अव्यय (particle)",
+        "meaning": "ever, at any time"
+      },
+      {
+        "word": "मा",
+        "translit": "mā",
+        "grammar": "निषेधार्थक अव्यय (prohibitive particle)",
+        "meaning": "not, never"
+      },
+      {
+        "word": "कर्मफलहेतुः",
+        "translit": "karma-phala-hetuḥ",
+        "grammar": "तत्पुरुष समास, प्रथमा एकवचन (compound, nominative singular)",
+        "meaning": "one whose motive is the fruit of action; or, the cause of the fruit of action"
+      },
+      {
+        "word": "भूः",
+        "translit": "bhūḥ",
+        "grammar": "भू धातु, लुङ् (अडागम-रहित) मध्यम पुरुष एकवचन; मा के साथ निषेध (aorist injunctive with mā)",
+        "meaning": "(do not) be, (do not) become"
+      },
+      {
+        "word": "अकर्मणि",
+        "translit": "akarmaṇi",
+        "grammar": "अकर्मन्, सप्तमी एकवचन (locative singular)",
+        "meaning": "in inaction"
+      },
+      {
+        "word": "सङ्गः",
+        "translit": "saṅgaḥ",
+        "grammar": "सङ्ग, प्रथमा एकवचन (nominative singular)",
+        "meaning": "attachment"
+      },
+      {
+        "word": "अस्तु",
+        "translit": "astu",
+        "grammar": "अस् धातु, लोट् प्रथम पुरुष एकवचन (imperative, third person singular)",
+        "meaning": "let (there) be"
+      }
+    ]
+  },
+  "arth": {
+    "hindi": "तुम्हारा अधिकार केवल कर्म करने में है, उसके फलों में कभी नहीं। तुम कर्मफल के हेतु मत बनो, और कर्म न करने में भी तुम्हारी आसक्ति न हो।",
+    "english": "Your entitlement is to action alone, never to its fruits. Do not become the cause of the fruit of action, and do not be attached to inaction."
+  },
+  "vyakhya": {
+    "title": "दार्शनिक व्याख्या (Philosophical Exposition)",
+    "hindi": "यह श्लोक अध्याय 2 के उस प्रसंग का हिस्सा है जहाँ कृष्ण अर्जुन को आत्मा के बोध से आगे ले जाकर कर्म के प्रति दृष्टि देते हैं। इससे पहले कामना से प्रेरित कर्मकाण्ड पर प्रश्न उठाया गया है, और अगले श्लोक में समता को ही योग कहा गया है। श्लोक में चार कथन हैं। पहला, अधिकार केवल कर्म में है; यहाँ अधिकार का अर्थ वह दायरा है जिसमें व्यक्ति सचमुच कुछ कर सकता है। दूसरा, फलों पर यह अधिकार नहीं, क्योंकि फल अनेक कारणों पर टिका होता है, केवल कर्ता पर नहीं। तीसरा, कर्मफलहेतु शब्द को दो तरह पढ़ा जाता है: फल को ही कर्म का प्रयोजन मत बनाओ, या यह मत मानो कि फल के उत्पन्न होने का कारण केवल तुम हो। दोनों पाठ प्रचलित हैं और एक-दूसरे के विरोधी नहीं। चौथा, अकर्म में आसक्ति न हो, यानी कर्म छोड़ देना भी इसका उत्तर नहीं है। इसलिए यह श्लोक परिणामों की उपेक्षा या लापरवाही की अनुमति नहीं देता। यह मन को परिणाम की बेचैनी से अलग करके कर्म में लगने की बात कहता है।",
+    "english": "The verse belongs to the passage of chapter 2 where Krishna moves Arjuna from the knowledge of the Self to a way of acting. The verses before it question ritual driven by desire, and the next verse calls evenness of mind yoga. The verse makes four statements. First, one's entitlement is to action alone: adhikāra here is the scope within which a person can actually do something. Second, that entitlement does not extend to the fruits, because a result rests on many causes, not on the doer alone. Third, karma-phala-hetu is read in two ways: do not make the fruit the motive of the act, or do not take yourself to be the sole cause of the fruit. Both readings are current and they do not contradict each other. Fourth, there should be no attachment to inaction: giving up action is not the answer either. The verse therefore does not license indifference to consequences or carelessness. It asks that the mind be freed from anxiety about the result while it engages in the work."
+  },
+  "vigyan": {
+    "title": "आध्यात्मिक एवं चेतना विज्ञान (Inner Science & Psychology)",
+    "concept": "Separating effort from outcome (controllable and uncontrollable factors)",
+    "relationship": "modern parallel, not a claim made by the verse",
+    "hindi": "आधुनिक मनोविज्ञान की चर्चाओं में लक्ष्य के बारे में सोचते समय अक्सर प्रयास और परिणाम को अलग करके देखा जाता है: जिन बातों पर व्यक्ति का सीधा नियंत्रण है, जैसे तैयारी और अभ्यास, और जिन पर नहीं है, जैसे दूसरों की प्रतिक्रिया या परिस्थितियाँ। इन्हें अलग पहचानना तनाव से निपटने का एक व्यावहारिक तरीका माना जाता है। यह श्लोक के अर्थ की केवल एक आधुनिक समानता है, श्लोक द्वारा किया गया वैज्ञानिक दावा नहीं। श्लोक का उद्देश्य कार्यक्षमता बढ़ाना या तनाव घटाना नहीं, कर्म के प्रति मुक्त दृष्टि देना है। यहाँ किसी शोध-परिणाम का हवाला भी नहीं दिया जा रहा।",
+    "english": "Discussions in modern psychology often separate effort from outcome when people think about goals: what is under a person's direct control, such as preparation and practice, and what is not, such as other people's responses or circumstances. Telling the two apart is commonly treated as a practical way of coping with stress. This is only a modern parallel to the verse's meaning, not a scientific claim the verse makes. The verse's aim is not to raise performance or lower stress but to offer a free relation to action. No research finding is cited here, and none should be read into it (claims about specific brain regions or hormones are deliberately left out: they would need sources this record does not have)."
+  },
+  "modern_application": {
+    "title": "आधुनिक जीवन और व्यावहारिक उदाहरण (Contemporary Life & Example)",
+    "scenario": "Preparing for an exam or an interview whose result depends on more than one's own effort",
+    "hindi": "उदाहरण: कोई विद्यार्थी प्रवेश-परीक्षा की तैयारी कर रहा है। अंक और परिणाम उसके परिश्रम के साथ-साथ प्रश्नपत्र, प्रतियोगिता और उस दिन की परिस्थितियों पर भी निर्भर हैं। वह दो सूचियाँ बनाता है: उसके हाथ में क्या है (रोज़ का अभ्यास, नींद, पिछली गलतियों को सुधारना) और क्या नहीं (कट-ऑफ, दूसरों का प्रदर्शन)। वह पहली सूची पर पूरा ध्यान देता है और दूसरी को बार-बार सोचने से बचता है। श्लोक की दृष्टि से इसका अर्थ परिणाम के प्रति लापरवाही नहीं है, और न ही तैयारी छोड़ देना; परिणाम को प्रयत्न का एकमात्र प्रयोजन और अपनी शान्ति की शर्त न बनाना है। यदि चिंता बहुत गहरी और लगातार हो, तो किसी विश्वसनीय व्यक्ति या विशेषज्ञ से बात करना भी उतना ही ज़रूरी है।",
+    "english": "Example: a student preparing for an entrance exam. The marks depend on their work, and also on the paper, the competition and the circumstances of the day. They make two lists: what is in their hands (daily practice, sleep, correcting past mistakes) and what is not (the cut-off, how others perform). They give full attention to the first list and stop rehearsing the second. In the verse's terms this is not indifference to the result, nor dropping the preparation; it is not making the result the only reason for the effort or the condition of one's peace. If the worry is deep and persistent, talking to someone trusted, or to a professional, matters just as much."
+  },
+  "review": {
+    "reviewStatus": "review-required",
+    "confidence": "high",
+    "notes": [
+      "Built on data/pilot/records/gita-2-47.json: the Hindi artha, Hindi vyakhya and Hindi vijnana are that record's text; this sample adds the anvaya, the English vyakhya and vijnana, and the modern application.",
+      "Sanskrit and transliteration are the stored canonical text, reproduced exactly (including the stored verse marker and spacing). The stored transliteration uses 'ṣh' and 'ch' (phaleṣhu, kadāchana) where strict IAST has 'ṣ' and 'c'; the anvaya uses strict IAST. Changing the stored text is a separate, reviewed decision.",
+      "'karma-phala-hetu' is given both current readings without choosing between them.",
+      "No classical commentary is quoted or attributed: none is stored in the repository. Śaṅkara, Rāmānuja or others should be added only as sourced quotations with an edition and page.",
+      "The template's example claims about the amygdala, dopamine and cortisol were not used: they are unsourced physiological claims."
+    ],
+    "provenance": {
+      "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+      "traditionalCommentaryConsulted": false,
+      "externalSourcesConsulted": []
+    }
+  }
+}

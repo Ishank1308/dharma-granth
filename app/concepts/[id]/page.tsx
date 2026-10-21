@@ -120,18 +120,18 @@ export default async function ConceptDetailPage({ params }: PageProps) {
       {/* ── Hero Section ─────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-saffron-950/20 via-transparent to-transparent pt-10 sm:pt-14 pb-12 border-b border-dharma-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-          {/* Sanskrit Calligraphy Badge */}
-          <div className="inline-flex flex-col items-center mb-6">
-            <p
+          {/* Sanskrit Calligraphy Badge: the page's one H1 (term, then transliteration and English label) */}
+          <h1 className="inline-flex flex-col items-center mb-6 font-normal">
+            <span
               lang="sa"
-              className="font-devanagari text-6xl sm:text-7xl md:text-8xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-800 dark:from-saffron-400 dark:via-amber-300 dark:to-saffron-500 leading-tight drop-shadow-sm"
+              className="block font-devanagari text-6xl sm:text-7xl md:text-8xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-800 dark:from-saffron-400 dark:via-amber-300 dark:to-saffron-500 leading-tight drop-shadow-sm"
             >
               {concept.sanskrit}
-            </p>
-            <p className="text-base sm:text-lg text-dharma-muted tracking-widest uppercase font-serif mt-1">
+            </span>
+            <span className="block text-base sm:text-lg text-dharma-muted tracking-widest uppercase font-serif mt-1">
               {concept.transliteration} · {concept.label}
-            </p>
-          </div>
+            </span>
+          </h1>
 
           {/* Simple Definitions (Dual Language) */}
           <div className="bg-dharma-card/80 border border-dharma-border rounded-2xl p-6 sm:p-8 shadow-sm text-left max-w-3xl mx-auto space-y-4">
@@ -218,7 +218,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
           <div className="flex flex-wrap items-center justify-between gap-2 border-l-4 border-saffron-600 pl-4">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
-                Interactive Visual Learning Layer · चरण १०
+                Interactive Visual Learning Layer · चरण 10
               </p>
               <h2 id="visual-model-heading" className="text-2xl sm:text-3xl font-serif font-bold text-dharma-text">
                 दृश्य ज्ञान दर्शन (Sacred Visual Model)
@@ -228,7 +228,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
               href="/concepts/visuals"
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-saffron-700 dark:text-saffron-400 hover:underline min-h-[44px]"
             >
-              <span>१० मूल तत्त्वों का सम्पूर्ण दृश्य अन्वेषक</span>
+              <span>10 मूल तत्त्वों का सम्पूर्ण दृश्य अन्वेषक</span>
               <Compass className="w-4 h-4" />
             </Link>
           </div>

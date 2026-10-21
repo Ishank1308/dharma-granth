@@ -18,6 +18,7 @@ import { FadeUp } from '@/app/components/motion/primitives';
 import { Realistic3DCard } from '@/app/components/motion/Realistic3DCard';
 import { MagneticButton } from '@/app/components/motion/MagneticButton';
 import { getTodayWisdom, type DailyWisdomItem } from '@/data/daily-wisdom-engine';
+import { toAsciiDigits } from '@/lib/verse-format';
 import {
   speakSanskritShloka,
   stopSanskritSpeech,
@@ -201,7 +202,7 @@ export function DailyVerse() {
                   <span>जीवन में प्रयोग · Practical Application</span>
                 </p>
                 <p className="text-xs text-dharma-text leading-relaxed">
-                  {wisdom.practicalTeaching}
+                  {toAsciiDigits(wisdom.practicalTeaching)}
                 </p>
               </div>
 
@@ -212,7 +213,7 @@ export function DailyVerse() {
                   <span>आज का आत्म-चिंतन · Reflection Prompt</span>
                 </p>
                 <p className="text-xs text-dharma-text leading-relaxed">
-                  {wisdom.reflectionPrompt}
+                  {toAsciiDigits(wisdom.reflectionPrompt)}
                 </p>
               </div>
             </div>
@@ -224,10 +225,10 @@ export function DailyVerse() {
                   🎯 आज का साधना संकल्प (Daily Challenge)
                 </span>
                 <p lang="hi" className="font-devanagari text-xs font-medium text-dharma-text">
-                  {wisdom.dailyChallengeHi}
+                  {toAsciiDigits(wisdom.dailyChallengeHi)}
                 </p>
                 <p className="text-xs text-dharma-text-secondary">
-                  {wisdom.dailyChallenge}
+                  {toAsciiDigits(wisdom.dailyChallenge)}
                 </p>
               </div>
 

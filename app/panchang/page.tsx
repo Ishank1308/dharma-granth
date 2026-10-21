@@ -56,7 +56,7 @@ export default function PanchangPage() {
             <div className="rounded-2xl border border-dharma-border bg-dharma-panel p-5">
               <div className="flex items-center gap-2 font-serif font-bold text-base text-dharma-text">
                 <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-saffron-500/15 text-saffron-700 text-xs">
-                  १
+                  1
                 </span>
                 <span>Self-Study (Svādhyāya)</span>
               </div>
@@ -70,7 +70,7 @@ export default function PanchangPage() {
             <div className="rounded-2xl border border-dharma-border bg-dharma-panel p-5">
               <div className="flex items-center gap-2 font-serif font-bold text-base text-dharma-text">
                 <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-saffron-500/15 text-saffron-700 text-xs">
-                  २
+                  2
                 </span>
                 <span>Contextualizing Scripture</span>
               </div>
@@ -84,7 +84,7 @@ export default function PanchangPage() {
             <div className="rounded-2xl border border-dharma-border bg-dharma-panel p-5">
               <div className="flex items-center gap-2 font-serif font-bold text-base text-dharma-text">
                 <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-saffron-500/15 text-saffron-700 text-xs">
-                  ३
+                  3
                 </span>
                 <span>Honesty Over Prediction</span>
               </div>

@@ -21,7 +21,10 @@ for (const j of READING_JOURNEYS) {
     } catch {
       /* reported below */
     }
-    if (!strip(found).includes(strip(l.expect))) {
+    // A quotation's initial अ can be absorbed by sandhi with the word before it in the running text
+    // (Brihadaranyaka 1.3.28 reads "japed asato" as जपेदसतो), so the expectation may match without it.
+    const want = strip(l.expect);
+    if (!strip(found).includes(want) && !(want.startsWith('अ') && strip(found).includes(want.slice(1)))) {
       bad++;
       console.error(`MISMATCH ${j.id} ${l.id}: ${l.scriptureId} ${l.chapter}.${l.verse} does not contain "${l.expect}"`);
     }

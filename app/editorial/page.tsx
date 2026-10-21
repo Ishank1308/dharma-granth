@@ -41,7 +41,7 @@ export default function EditorialPage() {
         </p>
       ) : (
         <>
-          <p className="mt-2 text-sm text-dharma-muted">Generated {new Date(report.generatedAt).toLocaleString()} · {report.verseTotal.toLocaleString()} verses scanned.</p>
+          <p className="mt-2 text-sm text-dharma-muted">Generated {new Date(report.generatedAt).toLocaleString(undefined, { numberingSystem: 'latn' })} · {report.verseTotal.toLocaleString(undefined, { numberingSystem: 'latn' })} verses scanned.</p>
 
           <section aria-labelledby="ed-checks" className="mt-6">
             <h2 id="ed-checks" className="font-serif text-xl font-bold text-dharma-text">Checks</h2>

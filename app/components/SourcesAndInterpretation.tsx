@@ -122,7 +122,7 @@ export function SourcesAndInterpretation({
             सामग्री वर्गीकरण संकेत (Epistemic Content Labels)
           </h3>
           <span className="flex items-center gap-1 text-[11px] text-dharma-muted">
-            ६ स्तरिय प्रमाण व्यवस्था
+            6 स्तरिय प्रमाण व्यवस्था
             <ChevronDown className="h-3.5 w-3.5 transition group-open:rotate-180" aria-hidden="true" />
           </span>
         </summary>

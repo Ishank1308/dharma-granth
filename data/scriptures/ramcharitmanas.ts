@@ -11,2160 +11,2580 @@ export const ramcharitmanas: Scripture = {
   tags: ['Bhakti', 'Rama', 'Tulsidas', 'Doha', 'Chaupai', 'Awadhi', 'Devotion', 'GitaPress', 'SundarKanda'],
   chapters: [
     {
-      id: 1,
-      title: "Bal Kanda — Beginnings",
-      titleSanskrit: "बालकाण्ड",
-      summary: "The invocation, Shiva-Parvati dialogue, Rama's divine birth, childhood in Ayodhya, protection of Vishvamitra's yajna, breaking of Shiva's bow, and the wedding of Sita-Rama in Janakpur.",
-      verses: [
+      "id": 1,
+      "title": "Bal Kanda — Beginnings",
+      "titleSanskrit": "बालकाण्ड",
+      "summary": "The invocation, Shiva-Parvati dialogue, Rama's divine birth, childhood in Ayodhya, protection of Vishvamitra's yajna, breaking of Shiva's bow, and the wedding of Sita-Rama in Janakpur.",
+      "verses": [
         {
-          id: 1,
-          number: 1,
-          sanskrit: "श्रीजानकीवल्लभो विजयते श्रीरामचरितमानस प्रथम सोपान श्लोक वर्णानामर्थसंघानां रसानां छन्दसामपि। मङ्गलानां च कर्त्तारौ वन्दे वाणीविनायकौ॥ १॥ अक्षरों, अर्थसमूहों, रसों, छन्दों और मंगलोंकी करनेवाली सरस्वतीजी और गणेशजीकी मैं वन्दना करता हूँ॥ १॥",
-          transliteration: "śrījānakīvallabho vijayate śrīrāmacaritamānasa prathama sopāna śloka varṇānāmarthasṃghānāṃ rasānāṃ chandasāmapi| maṅgalānāṃ ca karttārau vande vāṇīvināyakau|| 1|| akṣaroṃ, arthasamūhoṃ, rasoṃ, chandoṃ aura mṃgaloṃkī karanevālī sarasvatījī aura gaṇeśajīkī maiṃ vandanā karatā hūँ|| 1||",
-          translation: "भवानीशङ्करौ वन्दे श्रद्धाविश्वासरूपिणौ।",
-          hindi: "भवानीशङ्करौ वन्दे श्रद्धाविश्वासरूपिणौ।",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 1,
+          "number": 1,
+          "sanskrit": "वर्णानामर्थसंघानां रसानां छन्दसामपि। मङ्गलानां च कर्त्तारौ वन्दे वाणीविनायकौ॥ १॥",
+          "transliteration": "varṇānāmarthasaṃghānāṃ rasānāṃ chandasāmapi| maṅgalānāṃ ca karttārau vande vāṇīvināyakau|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 2,
-          number: 2,
-          sanskrit: "याभ्यां विना न पश्यन्ति सिद्धा: स्वान्त:स्थमीश्वरम्॥ २॥ श्रद्धा और विश्वासके स्वरूप श्रीपार्वतीजी और श्रीशंकरजीकी मैं वन्दना करता हूँ, जिनके बिना सिद्धजन अपने अन्त:करणमें स्थित ईश्वरको नहीं देख सकते॥ २॥",
-          transliteration: "yābhyāṃ vinā na paśyanti siddhā: svānta:sthamīśvaram|| 2|| śraddhā aura viśvāsake svarūpa śrīpārvatījī aura śrīśṃkarajīkī maiṃ vandanā karatā hūँ, jinake binā siddhajana apane anta:karaṇameṃ sthita īśvarako nahīṃ dekha sakate|| 2||",
-          translation: "वन्दे बोधमयं नित्यं गुरुं शङ्कररूपिणम्।",
-          hindi: "वन्दे बोधमयं नित्यं गुरुं शङ्कररूपिणम्।",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 2,
+          "number": 2,
+          "sanskrit": "भवानीशङ्करौ वन्दे श्रद्धाविश्वासरूपिणौ। याभ्यां विना न पश्यन्ति सिद्धा: स्वान्त:स्थमीश्वरम्॥ २॥",
+          "transliteration": "bhavānīśaṅkarau vande śraddhāviśvāsarūpiṇau| yābhyāṃ vinā na paśyanti siddhā: svānta:sthamīśvaram|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 3,
-          number: 3,
-          sanskrit: "यमाश्रितो हि वक्रोऽपि चन्द्र: सर्वत्र वन्द्यते॥ ३॥ ज्ञानमय, नित्य, शंकररूपी गुरुकी मैं वन्दना करता हूँ, जिनके आश्रित होनेसे ही टेढ़ा चन्द्रमा भी सर्वत्र वन्दित होता है॥ ३॥",
-          transliteration: "yamāśrito hi vakro'pi candra: sarvatra vandyate|| 3|| jñānamaya, nitya, śṃkararūpī gurukī maiṃ vandanā karatā hūँ, jinake āśrita honese hī ṭeḍha़ā candramā bhī sarvatra vandita hotā hai|| 3||",
-          translation: "सीतारामगुणग्रामपुण्यारण्यविहारिणौ।",
-          hindi: "सीतारामगुणग्रामपुण्यारण्यविहारिणौ।",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 3,
+          "number": 3,
+          "sanskrit": "वन्दे बोधमयं नित्यं गुरुं शङ्कररूपिणम्। यमाश्रितो हि वक्रोऽपि चन्द्र: सर्वत्र वन्द्यते॥ ३॥",
+          "transliteration": "vande bodhamayaṃ nityaṃ guruṃ śaṅkararūpiṇam| yamāśrito hi vakro'pi candra: sarvatra vandyate|| 3||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 4,
-          number: 4,
-          sanskrit: "वन्दे विशुद्धविज्ञानौ कवीश्वरकपीश्वरौ॥ ४॥ श्रीसीतारामजीके गुणसमूहरूपी पवित्र वनमें विहार करनेवाले, विशुद्ध विज्ञानसम्पन्न कवीश्वर श्रीवाल्मीकिजी और कपीश्वर श्रीहनुमान्जीकी मैं वन्दना करता हूँ॥ ४॥",
-          transliteration: "vande viśuddhavijñānau kavīśvarakapīśvarau|| 4|| śrīsītārāmajīke guṇasamūharūpī pavitra vanameṃ vihāra karanevāle, viśuddha vijñānasampanna kavīśvara śrīvālmīkijī aura kapīśvara śrīhanumānjīkī maiṃ vandanā karatā hūँ|| 4||",
-          translation: "उद्भवस्थितिसंहारकारिणीं क्लेशहारिणीम्।",
-          hindi: "उद्भवस्थितिसंहारकारिणीं क्लेशहारिणीम्।",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 4,
+          "number": 4,
+          "sanskrit": "सीतारामगुणग्रामपुण्यारण्यविहारिणौ। वन्दे विशुद्धविज्ञानौ कवीश्वरकपीश्वरौ॥ ४॥",
+          "transliteration": "sītārāmaguṇagrāmapuṇyāraṇyavihāriṇau| vande viśuddhavijñānau kavīśvarakapīśvarau|| 4||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 5,
-          number: 5,
-          sanskrit: "सर्वश्रेयस्करीं सीतां नतोऽहं रामवल्लभाम्॥ ५॥ उत्पत्ति, स्थिति (पालन) और संहार करनेवाली, क्लेशोंकी हरनेवाली तथा सम्पूर्ण कल्याणोंकी करनेवाली श्रीरामचन्द्रजीकी प्रियतमा श्रीसीताजीको मैं नमस्कार करता हूँ॥ ५॥",
-          transliteration: "sarvaśreyaskarīṃ sītāṃ nato'hṃ rāmavallabhām|| 5|| utpatti, sthiti (pālana) aura sṃhāra karanevālī, kleśoṃkī haranevālī tathā sampūrṇa kalyāṇoṃkī karanevālī śrīrāmacandrajīkī priyatamā śrīsītājīko maiṃ namaskāra karatā hūँ|| 5||",
-          translation: "यन्मायावशवर्त्ति विश्वमखिलं ब्रह्मादिदेवासुरा",
-          hindi: "यन्मायावशवर्त्ति विश्वमखिलं ब्रह्मादिदेवासुरा",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 5,
+          "number": 5,
+          "sanskrit": "उद्भवस्थितिसंहारकारिणीं क्लेशहारिणीम्। सर्वश्रेयस्करीं सीतां नतोऽहं रामवल्लभाम्॥ ५॥",
+          "transliteration": "udbhavasthitisaṃhārakāriṇīṃ kleśahāriṇīm| sarvaśreyaskarīṃ sītāṃ nato'haṃ rāmavallabhām|| 5||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 6,
-          number: 6,
-          sanskrit: "यत्सत्त्वादमृषैव भाति सकलं रज्जौ यथाहेर्भ्रम:। यत्पादप्लवमेकमेव हि भवाम्भोधेस्तितीर्षावतां वन्देऽहं तमशेषकारणपरं रामाख्यमीशं हरिम्॥ ६॥ जिनकी मायाके वशीभूत सम्पूर्ण विश्व, ब्रह्मादि देवता और असुर हैं, जिनकी सत्तासे रस्सीमें सर्पके भ्रमकी भाँति यह सारा दृश्य-जगत् सत्य ही प्रतीत होता है और जिनके केवल चरण ही भवसागरसे तरनेकी इच्छावालोंके लिये एकमात्र नौका हैं, उन समस्त कारणोंसे पर (सब कारणोंके कारण और सबसे श्रेष्ठ) राम कहानेवाले भगवान् हरिकी मैं वन्दना करता हूँ॥ ६॥",
-          transliteration: "yatsattvādamṛṣaiva bhāti sakalṃ rajjau yathāherbhrama:| yatpādaplavamekameva hi bhavāmbhodhestitīrṣāvatāṃ vande'hṃ tamaśeṣakāraṇaparṃ rāmākhyamīśṃ harim|| 6|| jinakī māyāke vaśībhūta sampūrṇa viśva, brahmādi devatā aura asura haiṃ, jinakī sattāse rassīmeṃ sarpake bhramakī bhāँti yaha sārā dṛśya-jagat satya hī pratīta hotā hai aura jinake kevala caraṇa hī bhavasāgarase taranekī icchāvāloṃke liye ekamātra naukā haiṃ, una samasta kāraṇoṃse para (saba kāraṇoṃke kāraṇa aura sabase śreṣṭha) rāma kahānevāle bhagavān harikī maiṃ vandanā karatā hūँ|| 6||",
-          translation: "नानापुराणनिगमागमसम्मतं यद्",
-          hindi: "नानापुराणनिगमागमसम्मतं यद्",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 6,
+          "number": 6,
+          "sanskrit": "यन्मायावशवर्त्ति विश्वमखिलं ब्रह्मादिदेवासुरा यत्सत्त्वादमृषैव भाति सकलं रज्जौ यथाहेर्भ्रम:। यत्पादप्लवमेकमेव हि भवाम्भोधेस्तितीर्षावतां वन्देऽहं तमशेषकारणपरं रामाख्यमीशं हरिम्॥ ६॥",
+          "transliteration": "yanmāyāvaśavartti viśvamakhilaṃ brahmādidevāsurā yatsattvādamṛṣaiva bhāti sakalaṃ rajjau yathāherbhrama:| yatpādaplavamekameva hi bhavāmbhodhestitīrṣāvatāṃ vande'haṃ tamaśeṣakāraṇaparaṃ rāmākhyamīśaṃ harim|| 6||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 7,
-          number: 7,
-          sanskrit: "रामायणे निगदितं क्वचिदन्यतोऽपि। स्वान्त:सुखाय तुलसी रघुनाथगाथा- भाषानिबन्धमतिमञ्जुलमातनोति ॥ ७॥ अनेक पुराण, वेद और [तन्त्र] शास्त्रसे सम्मत तथा जो रामायणमें वर्णित है और कुछ अन्यत्रसे भी उपलब्ध श्रीरघुनाथजीकी कथाको तुलसीदास अपने अन्त:करणके सुखके लिये अत्यन्त मनोहर भाषारचनामें विस्तृत करता है॥ ७॥",
-          transliteration: "rāmāyaṇe nigaditṃ kvacidanyato'pi| svānta:sukhāya tulasī raghunāthagāthā- bhāṣānibandhamatimañjulamātanoti || 7|| aneka purāṇa, veda aura [tantra] śāstrase sammata tathā jo rāmāyaṇameṃ varṇita hai aura kucha anyatrase bhī upalabdha śrīraghunāthajīkī kathāko tulasīdāsa apane anta:karaṇake sukhake liye atyanta manohara bhāṣāracanāmeṃ vistṛta karatā hai|| 7||",
-          translation: "सो०—जो सुमिरत सिधि होइ गन नायक करिबर बदन।",
-          hindi: "सो०—जो सुमिरत सिधि होइ गन नायक करिबर बदन।",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 7,
+          "number": 7,
+          "sanskrit": "नानापुराणनिगमागमसम्मतं यद् रामायणे निगदितं क्वचिदन्यतोऽपि। स्वान्त:सुखाय तुलसी रघुनाथगाथा- भाषानिबन्धमतिमञ्जुलमातनोति ॥ ७॥",
+          "transliteration": "nānāpurāṇanigamāgamasammataṃ yad rāmāyaṇe nigaditaṃ kvacidanyato'pi| svānta:sukhāya tulasī raghunāthagāthā- bhāṣānibandhamatimañjulamātanoti || 7||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 8,
-          number: 8,
-          sanskrit: "करउ अनुग्रह सोइ बुद्धि रासि सुभ गुन सदन॥ १॥ जिन्हें स्मरण करनेसे सब कार्य सिद्ध होते हैं, जो गणोंके स्वामी और सुन्दर हाथीके मुखवाले हैं, वे ही बुद्धिके राशि और शुभ गुणोंके धाम (श्रीगणेशजी) मुझपर कृपा करें॥ १॥",
-          transliteration: "karau anugraha soi buddhi rāsi subha guna sadana|| 1|| jinheṃ smaraṇa karanese saba kārya siddha hote haiṃ, jo gaṇoṃke svāmī aura sundara hāthīke mukhavāle haiṃ, ve hī buddhike rāśi aura śubha guṇoṃke dhāma (śrīgaṇeśajī) mujhapara kṛpā kareṃ|| 1||",
-          translation: "मूक होइ बाचाल पंगु चढ़इ गिरिबर गहन।",
-          hindi: "मूक होइ बाचाल पंगु चढ़इ गिरिबर गहन।",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 8,
+          "number": 8,
+          "sanskrit": "सो०—जो सुमिरत सिधि होइ गन नायक करिबर बदन। करउ अनुग्रह सोइ बुद्धि रासि सुभ गुन सदन॥ १॥",
+          "transliteration": "so0—jo sumirata sidhi hoi gana nāyaka karibara badana| karau anugraha soi buddhi rāsi subha guna sadana|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 9,
-          number: 9,
-          sanskrit: "जासु कृपाँ सो दयाल द्रवउ सकल कलि मल दहन॥ २॥ जिनकी कृपासे गूँगा बहुत सुन्दर बोलनेवाला हो जाता है और लँगड़ा-लूला दुर्गम पहाड़पर चढ़ जाता है, वे कलियुगके सब पापोंको जला डालनेवाले दयालु (भगवान्) मुझपर द्रवित हों (दया करें),॥ २॥",
-          transliteration: "jāsu kṛpāँ so dayāla dravau sakala kali mala dahana|| 2|| jinakī kṛpāse gūँgā bahuta sundara bolanevālā ho jātā hai aura laँgaḍa़ā-lūlā durgama pahāḍa़para caḍha़ jātā hai, ve kaliyugake saba pāpoṃko jalā ḍālanevāle dayālu (bhagavān) mujhapara dravita hoṃ (dayā kareṃ),|| 2||",
-          translation: "नील सरोरुह स्याम तरुन अरुन बारिज नयन।",
-          hindi: "नील सरोरुह स्याम तरुन अरुन बारिज नयन।",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 9,
+          "number": 9,
+          "sanskrit": "मूक होइ बाचाल पंगु चढ़इ गिरिबर गहन। जासु कृपाँ सो दयाल द्रवउ सकल कलि मल दहन॥ २॥",
+          "transliteration": "mūka hoi bācāla paṃgu caḍha़i giribara gahana| jāsu kṛpām̐ so dayāla dravau sakala kali mala dahana|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 10,
-          number: 10,
-          sanskrit: "करउ सो मम उर धाम सदा छीरसागर सयन॥ ३॥ जो नील कमलके समान श्यामवर्ण हैं, पूर्ण खिले हुए लाल कमलके समान जिनके नेत्र हैं और जो सदा क्षीरसागरमें शयन करते हैं, वे भगवान् (नारायण) मेरे हृदयमें निवास करें॥ ३॥",
-          transliteration: "karau so mama ura dhāma sadā chīrasāgara sayana|| 3|| jo nīla kamalake samāna śyāmavarṇa haiṃ, pūrṇa khile hue lāla kamalake samāna jinake netra haiṃ aura jo sadā kṣīrasāgarameṃ śayana karate haiṃ, ve bhagavān (nārāyaṇa) mere hṛdayameṃ nivāsa kareṃ|| 3||",
-          translation: "कुंद इंदु सम देह उमा रमन करुना अयन।",
-          hindi: "कुंद इंदु सम देह उमा रमन करुना अयन।",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 10,
+          "number": 10,
+          "sanskrit": "नील सरोरुह स्याम तरुन अरुन बारिज नयन। करउ सो मम उर धाम सदा छीरसागर सयन॥ ३॥",
+          "transliteration": "nīla saroruha syāma taruna aruna bārija nayana| karau so mama ura dhāma sadā chīrasāgara sayana|| 3||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 11,
-          number: 11,
-          sanskrit: "जाहि दीन पर नेह करउ कृपा मर्दन मयन॥ ४॥ जिनका कुन्दके पुष्प और चन्द्रमाके समान (गौर) शरीर है, जो पार्वतीजीके प्रियतम और दयाके धाम हैं और जिनका दीनोंपर स्नेह है, वे कामदेवका मर्दन करनेवाले (शंकरजी) मुझपर कृपा करें॥ ४॥",
-          transliteration: "jāhi dīna para neha karau kṛpā mardana mayana|| 4|| jinakā kundake puṣpa aura candramāke samāna (gaura) śarīra hai, jo pārvatījīke priyatama aura dayāke dhāma haiṃ aura jinakā dīnoṃpara sneha hai, ve kāmadevakā mardana karanevāle (śṃkarajī) mujhapara kṛpā kareṃ|| 4||",
-          translation: "बंदउँ गुरु पद कंज कृपा सिंधु नररूप हरि।",
-          hindi: "बंदउँ गुरु पद कंज कृपा सिंधु नररूप हरि।",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 11,
+          "number": 11,
+          "sanskrit": "कुंद इंदु सम देह उमा रमन करुना अयन। जाहि दीन पर नेह करउ कृपा मर्दन मयन॥ ४॥",
+          "transliteration": "kuṃda iṃdu sama deha umā ramana karunā ayana| jāhi dīna para neha karau kṛpā mardana mayana|| 4||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 12,
-          number: 12,
-          sanskrit: "महामोह तम पुंज जासु बचन रबि कर निकर॥ ५॥ मैं उन गुरु महाराजके चरणकमलकी वन्दना करता हूँ, जो कृपाके समुद्र और नररूपमें श्रीहरि ही हैं और जिनके वचन महामोहरूपी घने अन्धकारके नाश करनेके लिये सूर्य-किरणोंके समूह हैं॥ ५॥",
-          transliteration: "mahāmoha tama puṃja jāsu bacana rabi kara nikara|| 5|| maiṃ una guru mahārājake caraṇakamalakī vandanā karatā hūँ, jo kṛpāke samudra aura nararūpameṃ śrīhari hī haiṃ aura jinake vacana mahāmoharūpī ghane andhakārake nāśa karaneke liye sūrya-kiraṇoṃke samūha haiṃ|| 5||",
-          translation: "बंदउँ गुरु पद पदुम परागा। सुरुचि सुबास सरस अनुरागा॥",
-          hindi: "बंदउँ गुरु पद पदुम परागा। सुरुचि सुबास सरस अनुरागा॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 12,
+          "number": 12,
+          "sanskrit": "बंदउँ गुरु पद कंज कृपा सिंधु नररूप हरि। महामोह तम पुंज जासु बचन रबि कर निकर॥ ५॥",
+          "transliteration": "baṃdaum̐ guru pada kaṃja kṛpā siṃdhu nararūpa hari| mahāmoha tama puṃja jāsu bacana rabi kara nikara|| 5||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 13,
-          number: 13,
-          sanskrit: "अमिअ मूरिमय चूरन चारू। समन सकल भव रुज परिवारू॥ मैं गुरु महाराजके चरणकमलोंकी रजकी वन्दना करता हूँ, जो सुरुचि(सुन्दर स्वाद), सुगन्ध तथा अनुरागरूपी रससे पूर्ण है। वह अमर मूल (संजीवनी जड़ी)-का सुन्दर चूर्ण है, जो सम्पूर्ण भवरोगोंके परिवारको नाश करनेवाला है॥ १॥",
-          transliteration: "amia mūrimaya cūrana cārū| samana sakala bhava ruja parivārū|| maiṃ guru mahārājake caraṇakamaloṃkī rajakī vandanā karatā hūँ, jo suruci(sundara svāda), sugandha tathā anurāgarūpī rasase pūrṇa hai| vaha amara mūla (sṃjīvanī jaḍa़ī)-kā sundara cūrṇa hai, jo sampūrṇa bhavarogoṃke parivārako nāśa karanevālā hai|| 1||",
-          translation: "सुकृति संभु तन बिमल बिभूती। मंजुल मंगल मोद प्रसूती॥",
-          hindi: "सुकृति संभु तन बिमल बिभूती। मंजुल मंगल मोद प्रसूती॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 13,
+          "number": 13,
+          "sanskrit": "बंदउँ गुरु पद पदुम परागा। सुरुचि सुबास सरस अनुरागा॥ अमिअ मूरिमय चूरन चारू। समन सकल भव रुज परिवारू॥",
+          "transliteration": "baṃdaum̐ guru pada paduma parāgā| suruci subāsa sarasa anurāgā|| amia mūrimaya cūrana cārū| samana sakala bhava ruja parivārū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 14,
-          number: 14,
-          sanskrit: "जन मन मंजु मुकुर मल हरनी। किएँ तिलक गुन गन बस करनी॥ वह रज सुकृती (पुण्यवान् पुरुष)-रूपी शिवजीके शरीरपर सुशोभित निर्मल विभूति है और सुन्दर कल्याण और आनन्दकी जननी है, भक्तके मनरूपी सुन्दर दर्पणके मैलको दूर करनेवाली और तिलक करनेसे गुणोंके समूहको वशमें करनेवाली है॥ २॥",
-          transliteration: "jana mana mṃju mukura mala haranī| kieँ tilaka guna gana basa karanī|| vaha raja sukṛtī (puṇyavān puruṣa)-rūpī śivajīke śarīrapara suśobhita nirmala vibhūti hai aura sundara kalyāṇa aura ānandakī jananī hai, bhaktake manarūpī sundara darpaṇake mailako dūra karanevālī aura tilaka karanese guṇoṃke samūhako vaśameṃ karanevālī hai|| 2||",
-          translation: "श्रीगुर पद नख मनि गन जोती। सुमिरत दिब्य दृष्टि हियँ होती॥",
-          hindi: "श्रीगुर पद नख मनि गन जोती। सुमिरत दिब्य दृष्टि हियँ होती॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 14,
+          "number": 14,
+          "sanskrit": "सुकृति संभु तन बिमल बिभूती। मंजुल मंगल मोद प्रसूती॥ जन मन मंजु मुकुर मल हरनी। किएँ तिलक गुन गन बस करनी॥",
+          "transliteration": "sukṛti saṃbhu tana bimala bibhūtī| maṃjula maṃgala moda prasūtī|| jana mana maṃju mukura mala haranī| kiem̐ tilaka guna gana basa karanī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 15,
-          number: 15,
-          sanskrit: "दलन मोह तम सो सप्रकासू। बड़े भाग उर आवइ जासू॥ श्रीगुरु महाराजके चरण-नखोंकी ज्योति मणियोंके प्रकाशके समान है, जिसके स्मरण करते ही हृदयमें दिव्य दृष्टि उत्पन्न हो जाती है। वह प्रकाश अज्ञानरूपी अन्धकारका नाश करनेवाला है; वह जिसके हृदयमें आ जाता है, उसके बड़े भाग्य हैं॥ ३॥",
-          transliteration: "dalana moha tama so saprakāsū| baḍa़e bhāga ura āvai jāsū|| śrīguru mahārājake caraṇa-nakhoṃkī jyoti maṇiyoṃke prakāśake samāna hai, jisake smaraṇa karate hī hṛdayameṃ divya dṛṣṭi utpanna ho jātī hai| vaha prakāśa ajñānarūpī andhakārakā nāśa karanevālā hai; vaha jisake hṛdayameṃ ā jātā hai, usake baḍa़e bhāgya haiṃ|| 3||",
-          translation: "उघरहिं बिमल बिलोचन ही के। मिटहिं दोष दुख भव रजनी के॥",
-          hindi: "उघरहिं बिमल बिलोचन ही के। मिटहिं दोष दुख भव रजनी के॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 15,
+          "number": 15,
+          "sanskrit": "श्रीगुर पद नख मनि गन जोती। सुमिरत दिब्य दृष्टि हियँ होती॥ दलन मोह तम सो सप्रकासू। बड़े भाग उर आवइ जासू॥",
+          "transliteration": "śrīgura pada nakha mani gana jotī| sumirata dibya dṛṣṭi hiyam̐ hotī|| dalana moha tama so saprakāsū| baḍa़e bhāga ura āvai jāsū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 16,
-          number: 16,
-          sanskrit: "सूझहिं राम चरित मनि मानिक। गुपुत प्रगट जहँ जो जेहि खानिक॥ उसके हृदयमें आते ही हृदयके निर्मल नेत्र खुल जाते हैं और संसाररूपी रात्रिके दोष-दु:ख मिट जाते हैं एवं श्रीरामचरित्ररूपी मणि और माणिक्य, गुप्त और प्रकट जहाँ जो जिस खानमें है, सब दिखायी पड़ने लगते हैं—॥ ४॥",
-          transliteration: "sūjhahiṃ rāma carita mani mānika| guputa pragaṭa jahaँ jo jehi khānika|| usake hṛdayameṃ āte hī hṛdayake nirmala netra khula jāte haiṃ aura sṃsārarūpī rātrike doṣa-du:kha miṭa jāte haiṃ evṃ śrīrāmacaritrarūpī maṇi aura māṇikya, gupta aura prakaṭa jahāँ jo jisa khānameṃ hai, saba dikhāyī paḍa़ne lagate haiṃ—|| 4||",
-          translation: "दो०—जथा सुअंजन अंजि दृग साधक सिद्ध सुजान।",
-          hindi: "दो०—जथा सुअंजन अंजि दृग साधक सिद्ध सुजान।",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 16,
+          "number": 16,
+          "sanskrit": "उघरहिं बिमल बिलोचन ही के। मिटहिं दोष दुख भव रजनी के॥ सूझहिं राम चरित मनि मानिक। गुपुत प्रगट जहँ जो जेहि खानिक॥",
+          "transliteration": "ugharahiṃ bimala bilocana hī ke| miṭahiṃ doṣa dukha bhava rajanī ke|| sūjhahiṃ rāma carita mani mānika| guputa pragaṭa jaham̐ jo jehi khānika||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 17,
-          number: 17,
-          sanskrit: "कौतुक देखत सैल बन भूतल भूरि निधान॥ १॥ जैसे सिद्धांजनको नेत्रोंमें लगाकर साधक, सिद्ध और सुजान पर्वतों, वनों और पृथ्वीके अंदर कौतुकसे ही बहुत-सी खानें देखते हैं॥ १॥",
-          transliteration: "kautuka dekhata saila bana bhūtala bhūri nidhāna|| 1|| jaise siddhāṃjanako netroṃmeṃ lagākara sādhaka, siddha aura sujāna parvatoṃ, vanoṃ aura pṛthvīke ṃdara kautukase hī bahuta-sī khāneṃ dekhate haiṃ|| 1||",
-          translation: "गुरु पद रज मृदु मंजुल अंजन। नयन अमिअ दृग दोष बिभंजन॥",
-          hindi: "गुरु पद रज मृदु मंजुल अंजन। नयन अमिअ दृग दोष बिभंजन॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 17,
+          "number": 17,
+          "sanskrit": "दो०—जथा सुअंजन अंजि दृग साधक सिद्ध सुजान। कौतुक देखत सैल बन भूतल भूरि निधान॥ १॥",
+          "transliteration": "do0—jathā suaṃjana aṃji dṛga sādhaka siddha sujāna| kautuka dekhata saila bana bhūtala bhūri nidhāna|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 18,
-          number: 18,
-          sanskrit: "तेहिं करि बिमल बिबेक बिलोचन। बरनउँ राम चरित भव मोचन॥ श्रीगुरु महाराजके चरणोंकी रज कोमल और सुन्दर नयनामृत-अंजन है, जो नेत्रोंके दोषोंका नाश करनेवाला है। उस अंजनसे विवेकरूपी नेत्रोंको निर्मल करके मैं संसाररूपी बन्धनसे छुड़ानेवाले श्रीरामचरित्रका वर्णन करता हूँ॥ १॥",
-          transliteration: "tehiṃ kari bimala bibeka bilocana| baranauँ rāma carita bhava mocana|| śrīguru mahārājake caraṇoṃkī raja komala aura sundara nayanāmṛta-ṃjana hai, jo netroṃke doṣoṃkā nāśa karanevālā hai| usa ṃjanase vivekarūpī netroṃko nirmala karake maiṃ sṃsārarūpī bandhanase chuḍa़ānevāle śrīrāmacaritrakā varṇana karatā hūँ|| 1||",
-          translation: "बंदउँ प्रथम महीसुर चरना। मोह जनित संसय सब हरना॥",
-          hindi: "बंदउँ प्रथम महीसुर चरना। मोह जनित संसय सब हरना॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 18,
+          "number": 18,
+          "sanskrit": "गुरु पद रज मृदु मंजुल अंजन। नयन अमिअ दृग दोष बिभंजन॥ तेहिं करि बिमल बिबेक बिलोचन। बरनउँ राम चरित भव मोचन॥",
+          "transliteration": "guru pada raja mṛdu maṃjula aṃjana| nayana amia dṛga doṣa bibhaṃjana|| tehiṃ kari bimala bibeka bilocana| baranaum̐ rāma carita bhava mocana||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 19,
-          number: 19,
-          sanskrit: "सुजन समाज सकल गुन खानी। करउँ प्रनाम सप्रेम सुबानी॥ पहले पृथ्वीके देवता ब्राह्मणोंके चरणोंकी वन्दना करता हूँ, जो अज्ञानसे उत्पन्न सब संदेहोंको हरनेवाले हैं। फिर सब गुणोंकी खान संत-समाजको प्रेमसहित सुन्दर वाणीसे प्रणाम करता हूँ॥ २॥",
-          transliteration: "sujana samāja sakala guna khānī| karauँ pranāma saprema subānī|| pahale pṛthvīke devatā brāhmaṇoṃke caraṇoṃkī vandanā karatā hūँ, jo ajñānase utpanna saba sṃdehoṃko haranevāle haiṃ| phira saba guṇoṃkī khāna sṃta-samājako premasahita sundara vāṇīse praṇāma karatā hūँ|| 2||",
-          translation: "साधु चरित सुभ चरित कपासू। निरस बिसद गुनमय फल जासू॥",
-          hindi: "साधु चरित सुभ चरित कपासू। निरस बिसद गुनमय फल जासू॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 19,
+          "number": 19,
+          "sanskrit": "बंदउँ प्रथम महीसुर चरना। मोह जनित संसय सब हरना॥ सुजन समाज सकल गुन खानी। करउँ प्रनाम सप्रेम सुबानी॥",
+          "transliteration": "baṃdaum̐ prathama mahīsura caranā| moha janita saṃsaya saba haranā|| sujana samāja sakala guna khānī| karaum̐ pranāma saprema subānī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 20,
-          number: 20,
-          sanskrit: "जो सहि दुख परछिद्र दुरावा। बंदनीय जेहिं जग जस पावा॥ संतोंका चरित्र कपासके चरित्र (जीवन)-के समान शुभ है, जिसका फल नीरस, विशद और गुणमय होता है। (कपासकी डोडी नीरस होती है, संत-चरित्रमें भी विषयासक्ति नहीं है, इससे वह भी नीरस है, कपास उज्ज्वल होता है, संतका हृदय भी अज्ञान और पापरूपी अन्धकारसे रहित होता है, इसलिये वह विशद है, और कपासमें गुण (तन्तु) होते हैं, इसी प्रकार संतका चरित्र भी सद्गुणोंका भण्डार होता है, इसलिये वह गुणमय है।) [जैसे कपासका धागा सूईके किये हुए छेदको अपना तन देकर ढक देता है, अथवा कपास जैसे लोढ़े जाने, काते जाने और बुने जानेका कष्ट सहकर भी वस्त्रके रूपमें परिणत होकर दूसरोंके गोपनीय स्थानोंको ढकता है, उसी प्रकार] संत स्वयं दु:ख सहकर दूसरोंके छिद्रों (दोषों)-को ढकता है, जिसके कारण उसने जगत् में वन्दनीय यश प्राप्त किया है॥ ३॥",
-          transliteration: "jo sahi dukha parachidra durāvā| bṃdanīya jehiṃ jaga jasa pāvā|| sṃtoṃkā caritra kapāsake caritra (jīvana)-ke samāna śubha hai, jisakā phala nīrasa, viśada aura guṇamaya hotā hai| (kapāsakī ḍoḍī nīrasa hotī hai, sṃta-caritrameṃ bhī viṣayāsakti nahīṃ hai, isase vaha bhī nīrasa hai, kapāsa ujjvala hotā hai, sṃtakā hṛdaya bhī ajñāna aura pāparūpī andhakārase rahita hotā hai, isaliye vaha viśada hai, aura kapāsameṃ guṇa (tantu) hote haiṃ, isī prakāra sṃtakā caritra bhī sadguṇoṃkā bhaṇḍāra hotā hai, isaliye vaha guṇamaya hai|) [jaise kapāsakā dhāgā sūīke kiye hue chedako apanā tana dekara ḍhaka detā hai, athavā kapāsa jaise loḍha़e jāne, kāte jāne aura bune jānekā kaṣṭa sahakara bhī vastrake rūpameṃ pariṇata hokara dūsaroṃke gopanīya sthānoṃko ḍhakatā hai, usī prakāra] sṃta svayṃ du:kha sahakara dūsaroṃke chidroṃ (doṣoṃ)-ko ḍhakatā hai, jisake kāraṇa usane jagat meṃ vandanīya yaśa prāpta kiyā hai|| 3||",
-          translation: "मुद मंगलमय संत समाजू। जो जग जंगम तीरथराजू॥",
-          hindi: "मुद मंगलमय संत समाजू। जो जग जंगम तीरथराजू॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 20,
+          "number": 20,
+          "sanskrit": "साधु चरित सुभ चरित कपासू। निरस बिसद गुनमय फल जासू॥ जो सहि दुख परछिद्र दुरावा। बंदनीय जेहिं जग जस पावा॥",
+          "transliteration": "sādhu carita subha carita kapāsū| nirasa bisada gunamaya phala jāsū|| jo sahi dukha parachidra durāvā| baṃdanīya jehiṃ jaga jasa pāvā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 21,
-          number: 21,
-          sanskrit: "राम भक्ति जहँ सुरसरि धारा। सरसइ ब्रह्म बिचार प्रचारा॥ संतोंका समाज आनन्द और कल्याणमय है, जो जगत् में चलता-फिरता तीर्थराज (प्रयाग)है। जहाँ (उस संतसमाजरूपी प्रयागराजमें) रामभक्तिरूपी गंगाजीकी धारा है और ब्रह्मविचारका प्रचार सरस्वतीजी हैं॥ ४॥",
-          transliteration: "rāma bhakti jahaँ surasari dhārā| sarasai brahma bicāra pracārā|| sṃtoṃkā samāja ānanda aura kalyāṇamaya hai, jo jagat meṃ calatā-phiratā tīrtharāja (prayāga)hai| jahāँ (usa sṃtasamājarūpī prayāgarājameṃ) rāmabhaktirūpī gṃgājīkī dhārā hai aura brahmavicārakā pracāra sarasvatījī haiṃ|| 4||",
-          translation: "बिधि निषेधमय कलिमल हरनी। करम कथा रबिनंदनि बरनी॥",
-          hindi: "बिधि निषेधमय कलिमल हरनी। करम कथा रबिनंदनि बरनी॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 21,
+          "number": 21,
+          "sanskrit": "मुद मंगलमय संत समाजू। जो जग जंगम तीरथराजू॥ राम भक्ति जहँ सुरसरि धारा। सरसइ ब्रह्म बिचार प्रचारा॥",
+          "transliteration": "muda maṃgalamaya saṃta samājū| jo jaga jaṃgama tīratharājū|| rāma bhakti jaham̐ surasari dhārā| sarasai brahma bicāra pracārā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 22,
-          number: 22,
-          sanskrit: "हरि हर कथा बिराजति बेनी। सुनत सकल मुद मंगल देनी॥ विधि और निषेध (यह करो और यह न करो)-रूपी कर्मोंकी कथा कलियुगके पापोंको हरनेवाली सूर्यतनया यमुनाजी हैं और भगवान् विष्णु और शंकरजीकी कथाएँ त्रिवेणीरूपसे सुशोभित हैं, जो सुनते ही सब आनन्द और कल्याणोंकी देनेवाली हैं॥ ५॥",
-          transliteration: "hari hara kathā birājati benī| sunata sakala muda mṃgala denī|| vidhi aura niṣedha (yaha karo aura yaha na karo)-rūpī karmoṃkī kathā kaliyugake pāpoṃko haranevālī sūryatanayā yamunājī haiṃ aura bhagavān viṣṇu aura śṃkarajīkī kathāeँ triveṇīrūpase suśobhita haiṃ, jo sunate hī saba ānanda aura kalyāṇoṃkī denevālī haiṃ|| 5||",
-          translation: "बटु बिस्वास अचल निज धरमा। तीरथराज समाज सुकरमा॥",
-          hindi: "बटु बिस्वास अचल निज धरमा। तीरथराज समाज सुकरमा॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 22,
+          "number": 22,
+          "sanskrit": "बिधि निषेधमय कलिमल हरनी। करम कथा रबिनंदनि बरनी॥ हरि हर कथा बिराजति बेनी। सुनत सकल मुद मंगल देनी॥",
+          "transliteration": "bidhi niṣedhamaya kalimala haranī| karama kathā rabinaṃdani baranī|| hari hara kathā birājati benī| sunata sakala muda maṃgala denī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 23,
-          number: 23,
-          sanskrit: "सबहि सुलभ सब दिन सब देसा। सेवत सादर समन कलेसा॥ [उस संतसमाजरूपी प्रयागमें] अपने धर्ममें जो अटल विश्वास है वह अक्षयवट है, और शुभकर्म ही उस तीर्थराजका समाज (परिकर) है। वह (संतसमाजरूपी प्रयागराज) सब देशोंमें, सब समय सभीको सहजहीमें प्राप्त हो सकता है और आदरपूर्वक सेवन करनेसे क्लेशोंको नष्ट करनेवाला है॥ ६॥",
-          transliteration: "sabahi sulabha saba dina saba desā| sevata sādara samana kalesā|| [usa sṃtasamājarūpī prayāgameṃ] apane dharmameṃ jo aṭala viśvāsa hai vaha akṣayavaṭa hai, aura śubhakarma hī usa tīrtharājakā samāja (parikara) hai| vaha (sṃtasamājarūpī prayāgarāja) saba deśoṃmeṃ, saba samaya sabhīko sahajahīmeṃ prāpta ho sakatā hai aura ādarapūrvaka sevana karanese kleśoṃko naṣṭa karanevālā hai|| 6||",
-          translation: "अकथ अलौकिक तीरथराऊ। देइ सद्य फल प्रगट प्रभाऊ॥",
-          hindi: "अकथ अलौकिक तीरथराऊ। देइ सद्य फल प्रगट प्रभाऊ॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 23,
+          "number": 23,
+          "sanskrit": "बटु बिस्वास अचल निज धरमा। तीरथराज समाज सुकरमा॥ सबहि सुलभ सब दिन सब देसा। सेवत सादर समन कलेसा॥",
+          "transliteration": "baṭu bisvāsa acala nija dharamā| tīratharāja samāja sukaramā|| sabahi sulabha saba dina saba desā| sevata sādara samana kalesā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 24,
-          number: 24,
-          sanskrit: "वह तीर्थराज अलौकिक और अकथनीय है, एवं तत्काल फल देनेवाला है; उसका प्रभाव प्रत्यक्ष है॥ ७॥",
-          transliteration: "vaha tīrtharāja alaukika aura akathanīya hai, evṃ tatkāla phala denevālā hai; usakā prabhāva pratyakṣa hai|| 7||",
-          translation: "दो०—सुनि समुझहिं जन मुदित मन मज्जहिं अति अनुराग।",
-          hindi: "दो०—सुनि समुझहिं जन मुदित मन मज्जहिं अति अनुराग।",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 24,
+          "number": 24,
+          "sanskrit": "अकथ अलौकिक तीरथराऊ। देइ सद्य फल प्रगट प्रभाऊ॥",
+          "transliteration": "akatha alaukika tīratharāū| dei sadya phala pragaṭa prabhāū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 25,
-          number: 25,
-          sanskrit: "लहहिं चारि फल अछत तनु साधु समाज प्रयाग॥ २॥ जो मनुष्य इस संतसमाजरूपी तीर्थराजका प्रभाव प्रसन्न मनसे सुनते और समझते हैं और फिर अत्यन्त प्रेमपूर्वक इसमें गोते लगाते हैं, वे इस शरीरके रहते ही धर्म, अर्थ, काम, मोक्ष—चारों फल पा जाते हैं॥ २॥",
-          transliteration: "lahahiṃ cāri phala achata tanu sādhu samāja prayāga|| 2|| jo manuṣya isa sṃtasamājarūpī tīrtharājakā prabhāva prasanna manase sunate aura samajhate haiṃ aura phira atyanta premapūrvaka isameṃ gote lagāte haiṃ, ve isa śarīrake rahate hī dharma, artha, kāma, mokṣa—cāroṃ phala pā jāte haiṃ|| 2||",
-          translation: "मज्जन फल पेखिअ ततकाला। काक होहिं पिक बकउ मराला॥",
-          hindi: "मज्जन फल पेखिअ ततकाला। काक होहिं पिक बकउ मराला॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 25,
+          "number": 25,
+          "sanskrit": "दो०—सुनि समुझहिं जन मुदित मन मज्जहिं अति अनुराग। लहहिं चारि फल अछत तनु साधु समाज प्रयाग॥ २॥",
+          "transliteration": "do0—suni samujhahiṃ jana mudita mana majjahiṃ ati anurāga| lahahiṃ cāri phala achata tanu sādhu samāja prayāga|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 26,
-          number: 26,
-          sanskrit: "सुनि आचरज करै जनि कोई। सतसंगति महिमा नहिं गोई॥ इस तीर्थराजमें स्नानका फल तत्काल ऐसा देखनेमें आता है कि कौए कोयल बन जाते हैं और बगुले हंस। यह सुनकर कोई आश्चर्य न करे, क्योंकि सत्संगकी महिमा छिपी नहीं है॥ १॥",
-          transliteration: "suni ācaraja karai jani koī| satasṃgati mahimā nahiṃ goī|| isa tīrtharājameṃ snānakā phala tatkāla aisā dekhanemeṃ ātā hai ki kaue koyala bana jāte haiṃ aura bagule hṃsa| yaha sunakara koī āścarya na kare, kyoṃki satsṃgakī mahimā chipī nahīṃ hai|| 1||",
-          translation: "बालमीक नारद घटजोनी। निज निज मुखनि कही निज होनी॥",
-          hindi: "बालमीक नारद घटजोनी। निज निज मुखनि कही निज होनी॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 26,
+          "number": 26,
+          "sanskrit": "मज्जन फल पेखिअ ततकाला। काक होहिं पिक बकउ मराला॥ सुनि आचरज करै जनि कोई। सतसंगति महिमा नहिं गोई॥",
+          "transliteration": "majjana phala pekhia tatakālā| kāka hohiṃ pika bakau marālā|| suni ācaraja karai jani koī| satasaṃgati mahimā nahiṃ goī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 27,
-          number: 27,
-          sanskrit: "जलचर थलचर नभचर नाना। जे जड़ चेतन जीव जहाना॥ वाल्मीकिजी, नारदजी और अगस्त्यजीने अपने-अपने मुखोंसे अपनी होनी (जीवनका वृत्तान्त) कही है। जलमें रहनेवाले, जमीनपर चलनेवाले और आकाशमें विचरनेवाले नाना प्रकारके जड़-चेतन जितने जीव इस जगत् में हैं,॥ २॥",
-          transliteration: "jalacara thalacara nabhacara nānā| je jaḍa़ cetana jīva jahānā|| vālmīkijī, nāradajī aura agastyajīne apane-apane mukhoṃse apanī honī (jīvanakā vṛttānta) kahī hai| jalameṃ rahanevāle, jamīnapara calanevāle aura ākāśameṃ vicaranevāle nānā prakārake jaḍa़-cetana jitane jīva isa jagat meṃ haiṃ,|| 2||",
-          translation: "मति कीरति गति भूति भलाई। जब जेहिं जतन जहाँ जेहिं पाई॥",
-          hindi: "मति कीरति गति भूति भलाई। जब जेहिं जतन जहाँ जेहिं पाई॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 27,
+          "number": 27,
+          "sanskrit": "बालमीक नारद घटजोनी। निज निज मुखनि कही निज होनी॥ जलचर थलचर नभचर नाना। जे जड़ चेतन जीव जहाना॥",
+          "transliteration": "bālamīka nārada ghaṭajonī| nija nija mukhani kahī nija honī|| jalacara thalacara nabhacara nānā| je jaḍa़ cetana jīva jahānā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 28,
-          number: 28,
-          sanskrit: "सो जानब सतसंग प्रभाऊ। लोकहुँ बेद न आन उपाऊ॥ उनमेंसे जिसने जिस समय जहाँ कहीं भी जिस किसी यत्नसे बुद्धि, कीर्ति, सद्गति, विभूति (ऐश्वर्य) और भलाई पायी है, सो सब सत्संगका ही प्रभाव समझना चाहिये। वेदोंमें और लोकमें इनकी प्राप्तिका दूसरा कोई उपाय नहीं है॥ ३॥",
-          transliteration: "so jānaba satasṃga prabhāū| lokahuँ beda na āna upāū|| unameṃse jisane jisa samaya jahāँ kahīṃ bhī jisa kisī yatnase buddhi, kīrti, sadgati, vibhūti (aiśvarya) aura bhalāī pāyī hai, so saba satsṃgakā hī prabhāva samajhanā cāhiye| vedoṃmeṃ aura lokameṃ inakī prāptikā dūsarā koī upāya nahīṃ hai|| 3||",
-          translation: "बिनु सतसंग बिबेक न होई। राम कृपा बिनु सुलभ न सोई॥",
-          hindi: "बिनु सतसंग बिबेक न होई। राम कृपा बिनु सुलभ न सोई॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 28,
+          "number": 28,
+          "sanskrit": "मति कीरति गति भूति भलाई। जब जेहिं जतन जहाँ जेहिं पाई॥ सो जानब सतसंग प्रभाऊ। लोकहुँ बेद न आन उपाऊ॥",
+          "transliteration": "mati kīrati gati bhūti bhalāī| jaba jehiṃ jatana jahām̐ jehiṃ pāī|| so jānaba satasaṃga prabhāū| lokahum̐ beda na āna upāū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 29,
-          number: 29,
-          sanskrit: "सतसंगत मुद मंगल मूला। सोइ फल सिधि सब साधन फूला॥ सत्संगके बिना विवेक नहीं होता और श्रीरामजीकी कृपाके बिना वह सत्संग सहजमें मिलता नहीं। सत्संगति आनन्द और कल्याणकी जड़ है। सत्संगकी सिद्धि (प्राप्ति) ही फल है और सब साधन तो फूल हैं॥ ४॥",
-          transliteration: "satasṃgata muda mṃgala mūlā| soi phala sidhi saba sādhana phūlā|| satsṃgake binā viveka nahīṃ hotā aura śrīrāmajīkī kṛpāke binā vaha satsṃga sahajameṃ milatā nahīṃ| satsṃgati ānanda aura kalyāṇakī jaḍa़ hai| satsṃgakī siddhi (prāpti) hī phala hai aura saba sādhana to phūla haiṃ|| 4||",
-          translation: "सठ सुधरहिं सतसंगति पाई। पारस परस कुधात सुहाई॥",
-          hindi: "सठ सुधरहिं सतसंगति पाई। पारस परस कुधात सुहाई॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
+          "id": 29,
+          "number": 29,
+          "sanskrit": "बिनु सतसंग बिबेक न होई। राम कृपा बिनु सुलभ न सोई॥ सतसंगत मुद मंगल मूला। सोइ फल सिधि सब साधन फूला॥",
+          "transliteration": "binu satasaṃga bibeka na hoī| rāma kṛpā binu sulabha na soī|| satasaṃgata muda maṃgala mūlā| soi phala sidhi saba sādhana phūlā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
         },
         {
-          id: 30,
-          number: 30,
-          sanskrit: "बिधि बस सुजन कुसंगत परहीं। फनि मनि सम निज गुन अनुसरहीं॥ दुष्ट भी सत्संगति पाकर सुधर जाते हैं, जैसे पारसके स्पर्शसे लोहा सुहावना हो जाता है (सुन्दर सोना बन जाता है)। किन्तु दैवयोगसे यदि कभी सज्जन कुसंगतिमें पड़ जाते हैं, तो वे वहाँ भी साँपकी मणिके समान अपने गुणोंका ही अनुसरण करते हैं (अर्थात् जिस प्रकार साँपका संसर्ग पाकर भी मणि उसके विषको ग्रहण नहीं करती तथा अपने सहज गुण प्रकाशको नहीं छोड़ती, उसी प्रकार साधु पुरुष दुष्टोंके संगमें रहकर भी दूसरोंको प्रकाश ही देते हैं, दुष्टोंका उनपर कोई प्रभाव नहीं पड़ता।)॥ ५॥",
-          transliteration: "bidhi basa sujana kusṃgata parahīṃ| phani mani sama nija guna anusarahīṃ|| duṣṭa bhī satsṃgati pākara sudhara jāte haiṃ, jaise pārasake sparśase lohā suhāvanā ho jātā hai (sundara sonā bana jātā hai)| kintu daivayogase yadi kabhī sajjana kusṃgatimeṃ paḍa़ jāte haiṃ, to ve vahāँ bhī sāँpakī maṇike samāna apane guṇoṃkā hī anusaraṇa karate haiṃ (arthāt jisa prakāra sāँpakā sṃsarga pākara bhī maṇi usake viṣako grahaṇa nahīṃ karatī tathā apane sahaja guṇa prakāśako nahīṃ choḍa़tī, usī prakāra sādhu puruṣa duṣṭoṃke sṃgameṃ rahakara bhī dūsaroṃko prakāśa hī dete haiṃ, duṣṭoṃkā unapara koī prabhāva nahīṃ paḍa़tā|)|| 5||",
-          translation: "बिधि हरि हर कबि कोबिद बानी। कहत साधु महिमा सकुचानी॥",
-          hindi: "बिधि हरि हर कबि कोबिद बानी। कहत साधु महिमा सकुचानी॥",
-          explanation: "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","बालकाण्ड"]
-        },
-      ],
+          "id": 30,
+          "number": 30,
+          "sanskrit": "सठ सुधरहिं सतसंगति पाई। पारस परस कुधात सुहाई॥ बिधि बस सुजन कुसंगत परहीं। फनि मनि सम निज गुन अनुसरहीं॥",
+          "transliteration": "saṭha sudharahiṃ satasaṃgati pāī| pārasa parasa kudhāta suhāī|| bidhi basa sujana kusaṃgata parahīṃ| phani mani sama nija guna anusarahīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस बालकाण्ड — प्रारम्भ एवं मङ्गलाचरण का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "बालकाण्ड"
+          ]
+        }
+      ]
     },
     {
-      id: 2,
-      title: "Ayodhya Kanda — The Forest Exile",
-      titleSanskrit: "अयोध्याकाण्ड",
-      summary: "The planned coronation, Kaikeyi's boons, Rama's exile with Sita and Lakshmana, Dasharatha's passing, and Bharata's profound love and sacrifice at Chitrakoot.",
-      verses: [
+      "id": 2,
+      "title": "Ayodhya Kanda — The Forest Exile",
+      "titleSanskrit": "अयोध्याकाण्ड",
+      "summary": "The planned coronation, Kaikeyi's boons, Rama's exile with Sita and Lakshmana, Dasharatha's passing, and Bharata's profound love and sacrifice at Chitrakoot.",
+      "verses": [
         {
-          id: 1,
-          number: 1,
-          sanskrit: "श्रीजानकीवल्लभो विजयते श्रीरामचरितमानस द्वितीय सोपान श्लोक यस्याङ्के च विभाति भूधरसुता देवापगा मस्तके भाले बालविधुर्गले च गरलं यस्योरसि व्यालराट्। सोऽयं भूतिविभूषण: सुरवर: सर्वाधिप: सर्वदा शर्व: सर्वगत: शिव: शशिनिभ: श्रीशङ्कर: पातु माम्॥ १॥ जिनकी गोदमें हिमाचलसुता पार्वतीजी, मस्तकपर गंगाजी, ललाटपर द्वितीयाका चन्द्रमा, कण्ठमें हलाहल विष और वक्ष:स्थलपर सर्पराज शेषजी सुशोभित हैं, वे भस्मसे विभूषित, देवताओंमें श्रेष्ठ, सर्वेश्वर, संहारकर्ता [या भक्तोंके पापनाशक], सर्वव्यापक, कल्याणरूप, चन्द्रमाके समान शुभ्रवर्ण श्रीशंकरजी सदा मेरी रक्षा करें॥ १॥",
-          transliteration: "śrījānakīvallabho vijayate śrīrāmacaritamānasa dvitīya sopāna śloka yasyāṅke ca vibhāti bhūdharasutā devāpagā mastake bhāle bālavidhurgale ca garalṃ yasyorasi vyālarāṭ| so'yṃ bhūtivibhūṣaṇa: suravara: sarvādhipa: sarvadā śarva: sarvagata: śiva: śaśinibha: śrīśaṅkara: pātu mām|| 1|| jinakī godameṃ himācalasutā pārvatījī, mastakapara gṃgājī, lalāṭapara dvitīyākā candramā, kaṇṭhameṃ halāhala viṣa aura vakṣa:sthalapara sarparāja śeṣajī suśobhita haiṃ, ve bhasmase vibhūṣita, devatāoṃmeṃ śreṣṭha, sarveśvara, sṃhārakartā [yā bhaktoṃke pāpanāśaka], sarvavyāpaka, kalyāṇarūpa, candramāke samāna śubhravarṇa śrīśṃkarajī sadā merī rakṣā kareṃ|| 1||",
-          translation: "प्रसन्नतां या न गताभिषेकतस्तथा न मम्ले वनवासदु:खत:।",
-          hindi: "प्रसन्नतां या न गताभिषेकतस्तथा न मम्ले वनवासदु:खत:।",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 1,
+          "number": 1,
+          "sanskrit": "यस्याङ्के च विभाति भूधरसुता देवापगा मस्तके भाले बालविधुर्गले च गरलं यस्योरसि व्यालराट्। सोऽयं भूतिविभूषण: सुरवर: सर्वाधिप: सर्वदा शर्व: सर्वगत: शिव: शशिनिभ: श्रीशङ्कर: पातु माम्॥ १॥",
+          "transliteration": "yasyāṅke ca vibhāti bhūdharasutā devāpagā mastake bhāle bālavidhurgale ca garalaṃ yasyorasi vyālarāṭ| so'yaṃ bhūtivibhūṣaṇa: suravara: sarvādhipa: sarvadā śarva: sarvagata: śiva: śaśinibha: śrīśaṅkara: pātu mām|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 2,
-          number: 2,
-          sanskrit: "मुखाम्बुजश्री रघुनन्दनस्य मे सदास्तु सा मञ्जुलमङ्गलप्रदा॥ २॥ रघुकुलको आनन्द देनेवाले श्रीरामचन्द्रजीके मुखारविन्दकी जो शोभा राज्याभिषेकसे (राज्याभिषेककी बात सुनकर) न तो प्रसन्नताको प्राप्त हुई और न वनवासके दु:खसे मलिन ही हुई, वह (मुखकमलकी छबि) मेरे लिये सदा सुन्दर मंगलोंकी देनेवाली हो॥ २॥",
-          transliteration: "mukhāmbujaśrī raghunandanasya me sadāstu sā mañjulamaṅgalapradā|| 2|| raghukulako ānanda denevāle śrīrāmacandrajīke mukhāravindakī jo śobhā rājyābhiṣekase (rājyābhiṣekakī bāta sunakara) na to prasannatāko prāpta huī aura na vanavāsake du:khase malina hī huī, vaha (mukhakamalakī chabi) mere liye sadā sundara mṃgaloṃkī denevālī ho|| 2||",
-          translation: "नीलाम्बुजश्यामलकोमलाङ्गं सीतासमारोपितवामभागम्।",
-          hindi: "नीलाम्बुजश्यामलकोमलाङ्गं सीतासमारोपितवामभागम्।",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 2,
+          "number": 2,
+          "sanskrit": "प्रसन्नतां या न गताभिषेकतस्तथा न मम्ले वनवासदु:खत:। मुखाम्बुजश्री रघुनन्दनस्य मे सदास्तु सा मञ्जुलमङ्गलप्रदा॥ २॥",
+          "transliteration": "prasannatāṃ yā na gatābhiṣekatastathā na mamle vanavāsadu:khata:| mukhāmbujaśrī raghunandanasya me sadāstu sā mañjulamaṅgalapradā|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 3,
-          number: 3,
-          sanskrit: "पाणौ महासायकचारुचापं नमामि रामं रघुवंशनाथम्॥ ३॥ नीले कमलके समान श्याम और कोमल जिनके अंग हैं, श्रीसीताजी जिनके वाम-भागमें विराजमान हैं और जिनके हाथोंमें [क्रमश:] अमोघ बाण और सुन्दर धनुष है, उन रघुवंशके स्वामी श्रीरामचन्द्रजीको मैं नमस्कार करता हूँ॥ ३॥",
-          transliteration: "pāṇau mahāsāyakacārucāpṃ namāmi rāmṃ raghuvṃśanātham|| 3|| nīle kamalake samāna śyāma aura komala jinake ṃga haiṃ, śrīsītājī jinake vāma-bhāgameṃ virājamāna haiṃ aura jinake hāthoṃmeṃ [kramaśa:] amogha bāṇa aura sundara dhanuṣa hai, una raghuvṃśake svāmī śrīrāmacandrajīko maiṃ namaskāra karatā hūँ|| 3||",
-          translation: "दो०—श्रीगुरु चरन सरोज रज निज मनु मुकुरु सुधारि।",
-          hindi: "दो०—श्रीगुरु चरन सरोज रज निज मनु मुकुरु सुधारि।",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 3,
+          "number": 3,
+          "sanskrit": "नीलाम्बुजश्यामलकोमलाङ्गं सीतासमारोपितवामभागम्। पाणौ महासायकचारुचापं नमामि रामं रघुवंशनाथम्॥ ३॥",
+          "transliteration": "nīlāmbujaśyāmalakomalāṅgaṃ sītāsamāropitavāmabhāgam| pāṇau mahāsāyakacārucāpaṃ namāmi rāmaṃ raghuvaṃśanātham|| 3||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 4,
-          number: 4,
-          sanskrit: "बरनउँ रघुबर बिमल जसु जो दायकु फल चारि॥ श्रीगुरुजीके चरणकमलोंकी रजसे अपने मनरूपी दर्पणको साफ करके मैं श्रीरघुनाथजीके उस निर्मल यशका वर्णन करता हूँ, जो चारों फलोंको (धर्म, अर्थ, काम, मोक्षको) देनेवाला है। जब तें रामु ब्याहि घर आए। नित नव मंगल मोद बधाए॥ भुवन चारिदस भूधर भारी। सुकृत मेघ बरषहिं सुख बारी॥ जबसे श्रीरामचन्द्रजी विवाह करके घर आये, तबसे [अयोध्यामें] नित्य नये मंगल हो रहे हैं और आनन्दके बधावे बज रहे हैं। चौदहों लोकरूपी बड़े भारी पर्वतोंपर पुण्यरूपी मेघ सुखरूपी जल बरसा रहे हैं॥ १॥",
-          transliteration: "baranauँ raghubara bimala jasu jo dāyaku phala cāri|| śrīgurujīke caraṇakamaloṃkī rajase apane manarūpī darpaṇako sāpha karake maiṃ śrīraghunāthajīke usa nirmala yaśakā varṇana karatā hūँ, jo cāroṃ phaloṃko (dharma, artha, kāma, mokṣako) denevālā hai| jaba teṃ rāmu byāhi ghara āe| nita nava mṃgala moda badhāe|| bhuvana cāridasa bhūdhara bhārī| sukṛta megha baraṣahiṃ sukha bārī|| jabase śrīrāmacandrajī vivāha karake ghara āye, tabase [ayodhyāmeṃ] nitya naye mṃgala ho rahe haiṃ aura ānandake badhāve baja rahe haiṃ| caudahoṃ lokarūpī baḍa़e bhārī parvatoṃpara puṇyarūpī megha sukharūpī jala barasā rahe haiṃ|| 1||",
-          translation: "रिधि सिधि संपति नदीं सुहाई। उमगि अवध अंबुधि कहुँ आई॥",
-          hindi: "रिधि सिधि संपति नदीं सुहाई। उमगि अवध अंबुधि कहुँ आई॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 4,
+          "number": 4,
+          "sanskrit": "दो०—श्रीगुरु चरन सरोज रज निज मनु मुकुरु सुधारि। बरनउँ रघुबर बिमल जसु जो दायकु फल चारि॥",
+          "transliteration": "do0—śrīguru carana saroja raja nija manu mukuru sudhāri| baranaum̐ raghubara bimala jasu jo dāyaku phala cāri||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 5,
-          number: 5,
-          sanskrit: "मनिगन पुर नर नारि सुजाती। सुचि अमोल सुंदर सब भाँती॥ ऋद्धि-सिद्धि और सम्पत्तिरूपी सुहावनी नदियाँ उमड़-उमड़कर अयोध्यारूपी समुद्रमें आ मिलीं। नगरके स्त्री-पुरुष अच्छी जातिके मणियोंके समूह हैं, जो सब प्रकारसे पवित्र, अमूल्य और सुन्दर हैं॥ २॥",
-          transliteration: "manigana pura nara nāri sujātī| suci amola suṃdara saba bhāँtī|| ṛddhi-siddhi aura sampattirūpī suhāvanī nadiyāँ umaḍa़-umaḍa़kara ayodhyārūpī samudrameṃ ā milīṃ| nagarake strī-puruṣa acchī jātike maṇiyoṃke samūha haiṃ, jo saba prakārase pavitra, amūlya aura sundara haiṃ|| 2||",
-          translation: "कहि न जाइ कछु नगर बिभूती। जनु एतनिअ बिरंचि करतूती॥",
-          hindi: "कहि न जाइ कछु नगर बिभूती। जनु एतनिअ बिरंचि करतूती॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 5,
+          "number": 5,
+          "sanskrit": "रिधि सिधि संपति नदीं सुहाई। उमगि अवध अंबुधि कहुँ आई॥ मनिगन पुर नर नारि सुजाती। सुचि अमोल सुंदर सब भाँती॥",
+          "transliteration": "ridhi sidhi saṃpati nadīṃ suhāī| umagi avadha aṃbudhi kahum̐ āī|| manigana pura nara nāri sujātī| suci amola suṃdara saba bhām̐tī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 6,
-          number: 6,
-          sanskrit: "सब बिधि सब पुर लोग सुखारी। रामचंद मुख चंदु निहारी॥ नगरका ऐश्वर्य कुछ कहा नहीं जाता। ऐसा जान पड़ता है, मानो ब्रह्माजीकी कारीगरी बस इतनी ही है। सब नगरनिवासी श्रीरामचन्द्रजीके मुखचन्द्रको देखकर सब प्रकारसे सुखी हैं॥ ३॥",
-          transliteration: "saba bidhi saba pura loga sukhārī| rāmacṃda mukha cṃdu nihārī|| nagarakā aiśvarya kucha kahā nahīṃ jātā| aisā jāna paḍa़tā hai, māno brahmājīkī kārīgarī basa itanī hī hai| saba nagaranivāsī śrīrāmacandrajīke mukhacandrako dekhakara saba prakārase sukhī haiṃ|| 3||",
-          translation: "मुदित मातु सब सखीं सहेली। फलित बिलोकि मनोरथ बेली॥",
-          hindi: "मुदित मातु सब सखीं सहेली। फलित बिलोकि मनोरथ बेली॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 6,
+          "number": 6,
+          "sanskrit": "कहि न जाइ कछु नगर बिभूती। जनु एतनिअ बिरंचि करतूती॥ सब बिधि सब पुर लोग सुखारी। रामचंद मुख चंदु निहारी॥",
+          "transliteration": "kahi na jāi kachu nagara bibhūtī| janu etania biraṃci karatūtī|| saba bidhi saba pura loga sukhārī| rāmacaṃda mukha caṃdu nihārī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 7,
-          number: 7,
-          sanskrit: "राम रूपु गुन सीलु सुभाऊ। प्रमुदित होइ देखि सुनि राऊ॥ सब माताएँ और सखी-सहेलियाँ अपनी मनोरथरूपी बेलको फली हुई देखकर आनन्दित हैं। श्रीरामचन्द्रजीके रूप, गुण, शील और स्वभावको देख-सुनकर राजा दशरथजी बहुत ही आनन्दित होते हैं॥ ४॥",
-          transliteration: "rāma rūpu guna sīlu subhāū| pramudita hoi dekhi suni rāū|| saba mātāeँ aura sakhī-saheliyāँ apanī manoratharūpī belako phalī huī dekhakara ānandita haiṃ| śrīrāmacandrajīke rūpa, guṇa, śīla aura svabhāvako dekha-sunakara rājā daśarathajī bahuta hī ānandita hote haiṃ|| 4||",
-          translation: "दो०—सब कें उर अभिलाषु अस कहहिं मनाइ महेसु।",
-          hindi: "दो०—सब कें उर अभिलाषु अस कहहिं मनाइ महेसु।",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 7,
+          "number": 7,
+          "sanskrit": "मुदित मातु सब सखीं सहेली। फलित बिलोकि मनोरथ बेली॥ राम रूपु गुन सीलु सुभाऊ। प्रमुदित होइ देखि सुनि राऊ॥",
+          "transliteration": "mudita mātu saba sakhīṃ sahelī| phalita biloki manoratha belī|| rāma rūpu guna sīlu subhāū| pramudita hoi dekhi suni rāū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 8,
-          number: 8,
-          sanskrit: "आप अछत जुबराज पद रामहि देउ नरेसु॥ १॥ सबके हृदयमें ऐसी अभिलाषा है और सब महादेवजीको मनाकर (प्रार्थना करके) कहते हैं कि राजा अपने जीते-जी श्रीरामचन्द्रजीको युवराजपद दे दें॥ १॥",
-          transliteration: "āpa achata jubarāja pada rāmahi deu naresu|| 1|| sabake hṛdayameṃ aisī abhilāṣā hai aura saba mahādevajīko manākara (prārthanā karake) kahate haiṃ ki rājā apane jīte-jī śrīrāmacandrajīko yuvarājapada de deṃ|| 1||",
-          translation: "एक समय सब सहित समाजा। राजसभाँ रघुराजु बिराजा॥",
-          hindi: "एक समय सब सहित समाजा। राजसभाँ रघुराजु बिराजा॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 8,
+          "number": 8,
+          "sanskrit": "दो०—सब कें उर अभिलाषु अस कहहिं मनाइ महेसु। आप अछत जुबराज पद रामहि देउ नरेसु॥ १॥",
+          "transliteration": "do0—saba keṃ ura abhilāṣu asa kahahiṃ manāi mahesu| āpa achata jubarāja pada rāmahi deu naresu|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 9,
-          number: 9,
-          sanskrit: "सकल सुकृत मूरति नरनाहू। राम सुजसु सुनि अतिहि उछाहू॥ एक समय रघुकुलके राजा दशरथजी अपने सारे समाजसहित राजसभामें विराजमान थे। महाराज समस्त पुण्योंकी मूर्ति हैं, उन्हें श्रीरामचन्द्रजीका सुन्दर यश सुनकर अत्यन्त आनन्द हो रहा है॥ १॥",
-          transliteration: "sakala sukṛta mūrati naranāhū| rāma sujasu suni atihi uchāhū|| eka samaya raghukulake rājā daśarathajī apane sāre samājasahita rājasabhāmeṃ virājamāna the| mahārāja samasta puṇyoṃkī mūrti haiṃ, unheṃ śrīrāmacandrajīkā sundara yaśa sunakara atyanta ānanda ho rahā hai|| 1||",
-          translation: "नृप सब रहहिं कृपा अभिलाषें। लोकप करहिं प्रीति रुख राखें॥",
-          hindi: "नृप सब रहहिं कृपा अभिलाषें। लोकप करहिं प्रीति रुख राखें॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 9,
+          "number": 9,
+          "sanskrit": "एक समय सब सहित समाजा। राजसभाँ रघुराजु बिराजा॥ सकल सुकृत मूरति नरनाहू। राम सुजसु सुनि अतिहि उछाहू॥",
+          "transliteration": "eka samaya saba sahita samājā| rājasabhām̐ raghurāju birājā|| sakala sukṛta mūrati naranāhū| rāma sujasu suni atihi uchāhū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 10,
-          number: 10,
-          sanskrit: "तिभुवन तीनि काल जग माहीं। भूरिभाग दसरथ सम नाहीं॥ सब राजा उनकी कृपा चाहते हैं और लोकपालगण उनके रुखको रखते हुए (अनुकूल होकर) प्रीति करते हैं। [पृथ्वी, आकाश, पाताल] तीनों भुवनोंमें और [भूत, भविष्य, वर्तमान] तीनों कालोंमें दशरथजीके समान बड़भागी [और] कोई नहीं है॥ २॥",
-          transliteration: "tibhuvana tīni kāla jaga māhīṃ| bhūribhāga dasaratha sama nāhīṃ|| saba rājā unakī kṛpā cāhate haiṃ aura lokapālagaṇa unake rukhako rakhate hue (anukūla hokara) prīti karate haiṃ| [pṛthvī, ākāśa, pātāla] tīnoṃ bhuvanoṃmeṃ aura [bhūta, bhaviṣya, vartamāna] tīnoṃ kāloṃmeṃ daśarathajīke samāna baḍa़bhāgī [aura] koī nahīṃ hai|| 2||",
-          translation: "मंगलमूल रामु सुत जासू। जो कछु कहिअ थोर सबु तासू॥",
-          hindi: "मंगलमूल रामु सुत जासू। जो कछु कहिअ थोर सबु तासू॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 10,
+          "number": 10,
+          "sanskrit": "नृप सब रहहिं कृपा अभिलाषें। लोकप करहिं प्रीति रुख राखें॥ तिभुवन तीनि काल जग माहीं। भूरिभाग दसरथ सम नाहीं॥",
+          "transliteration": "nṛpa saba rahahiṃ kṛpā abhilāṣeṃ| lokapa karahiṃ prīti rukha rākheṃ|| tibhuvana tīni kāla jaga māhīṃ| bhūribhāga dasaratha sama nāhīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 11,
-          number: 11,
-          sanskrit: "रायँ सुभायँ मुकुरु कर लीन्हा। बदनु बिलोकि मुकुटु सम कीन्हा॥ मंगलोंके मूल श्रीरामचन्द्रजी जिनके पुत्र हैं, उनके लिये जो कुछ कहा जाय सब थोड़ा है। राजाने स्वाभाविक ही हाथमें दर्पण ले लिया और उसमें अपना मुँह देखकर मुकुटको सीधा किया॥ ३॥",
-          transliteration: "rāyaँ subhāyaँ mukuru kara līnhā| badanu biloki mukuṭu sama kīnhā|| mṃgaloṃke mūla śrīrāmacandrajī jinake putra haiṃ, unake liye jo kucha kahā jāya saba thoḍa़ā hai| rājāne svābhāvika hī hāthameṃ darpaṇa le liyā aura usameṃ apanā muँha dekhakara mukuṭako sīdhā kiyā|| 3||",
-          translation: "श्रवन समीप भए सित केसा। मनहुँ जरठपनु अस उपदेसा॥",
-          hindi: "श्रवन समीप भए सित केसा। मनहुँ जरठपनु अस उपदेसा॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 11,
+          "number": 11,
+          "sanskrit": "मंगलमूल रामु सुत जासू। जो कछु कहिअ थोर सबु तासू॥ रायँ सुभायँ मुकुरु कर लीन्हा। बदनु बिलोकि मुकुटु सम कीन्हा॥",
+          "transliteration": "maṃgalamūla rāmu suta jāsū| jo kachu kahia thora sabu tāsū|| rāyam̐ subhāyam̐ mukuru kara līnhā| badanu biloki mukuṭu sama kīnhā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 12,
-          number: 12,
-          sanskrit: "नृप जुबराजु राम कहुँ देहू। जीवन जनम लाहु किन लेहू॥ [देखा कि] कानोंके पास बाल सफेद हो गये हैं, मानो बुढ़ापा ऐसा उपदेश कर रहा है कि हे राजन्! श्रीरामचन्द्रजीको युवराज-पद देकर अपने जीवन और जन्मका लाभ क्योंनहीं लेते॥ ४॥",
-          transliteration: "nṛpa jubarāju rāma kahuँ dehū| jīvana janama lāhu kina lehū|| [dekhā ki] kānoṃke pāsa bāla sapheda ho gaye haiṃ, māno buḍha़āpā aisā upadeśa kara rahā hai ki he rājan! śrīrāmacandrajīko yuvarāja-pada dekara apane jīvana aura janmakā lābha kyoṃnahīṃ lete|| 4||",
-          translation: "दो०—यह बिचारु उर आनि नृप सुदिनु सुअवसरु पाइ।",
-          hindi: "दो०—यह बिचारु उर आनि नृप सुदिनु सुअवसरु पाइ।",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 12,
+          "number": 12,
+          "sanskrit": "श्रवन समीप भए सित केसा। मनहुँ जरठपनु अस उपदेसा॥ नृप जुबराजु राम कहुँ देहू। जीवन जनम लाहु किन लेहू॥",
+          "transliteration": "śravana samīpa bhae sita kesā| manahum̐ jaraṭhapanu asa upadesā|| nṛpa jubarāju rāma kahum̐ dehū| jīvana janama lāhu kina lehū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 13,
-          number: 13,
-          sanskrit: "प्रेम पुलकि तन मुदित मन गुरहि सुनायउ जाइ॥ २॥ हृदयमें यह विचार लाकर (युवराज-पद देनेका निश्चय कर) राजा दशरथजीने शुभ दिन और सुन्दर समय पाकर, प्रेमसे पुलकितशरीर हो आनन्दमग्न मनसे उसे गुरु वसिष्ठजीको जा सुनाया॥ २॥",
-          transliteration: "prema pulaki tana mudita mana gurahi sunāyau jāi|| 2|| hṛdayameṃ yaha vicāra lākara (yuvarāja-pada denekā niścaya kara) rājā daśarathajīne śubha dina aura sundara samaya pākara, premase pulakitaśarīra ho ānandamagna manase use guru vasiṣṭhajīko jā sunāyā|| 2||",
-          translation: "कहइ भुआलु सुनिअ मुनिनायक। भए राम सब बिधि सब लायक॥",
-          hindi: "कहइ भुआलु सुनिअ मुनिनायक। भए राम सब बिधि सब लायक॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 13,
+          "number": 13,
+          "sanskrit": "दो०—यह बिचारु उर आनि नृप सुदिनु सुअवसरु पाइ। प्रेम पुलकि तन मुदित मन गुरहि सुनायउ जाइ॥ २॥",
+          "transliteration": "do0—yaha bicāru ura āni nṛpa sudinu suavasaru pāi| prema pulaki tana mudita mana gurahi sunāyau jāi|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 14,
-          number: 14,
-          sanskrit: "सेवक सचिव सकल पुरबासी। जे हमारे अरि मित्र उदासी॥ राजाने कहा—हे मुनिराज! [कृपया यह निवेदन] सुनिये। श्रीरामचन्द्र अब सब प्रकारसे सब योग्य हो गये हैं। सेवक, मन्त्री, सब नगरनिवासी और जो हमारे शत्रु, मित्र या उदासीन हैं—॥ १॥",
-          transliteration: "sevaka saciva sakala purabāsī| je hamāre ari mitra udāsī|| rājāne kahā—he munirāja! [kṛpayā yaha nivedana] suniye| śrīrāmacandra aba saba prakārase saba yogya ho gaye haiṃ| sevaka, mantrī, saba nagaranivāsī aura jo hamāre śatru, mitra yā udāsīna haiṃ—|| 1||",
-          translation: "सबहि रामु प्रिय जेहि बिधि मोही। प्रभु असीस जनु तनु धरि सोही॥",
-          hindi: "सबहि रामु प्रिय जेहि बिधि मोही। प्रभु असीस जनु तनु धरि सोही॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 14,
+          "number": 14,
+          "sanskrit": "कहइ भुआलु सुनिअ मुनिनायक। भए राम सब बिधि सब लायक॥ सेवक सचिव सकल पुरबासी। जे हमारे अरि मित्र उदासी॥",
+          "transliteration": "kahai bhuālu sunia munināyaka| bhae rāma saba bidhi saba lāyaka|| sevaka saciva sakala purabāsī| je hamāre ari mitra udāsī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 15,
-          number: 15,
-          sanskrit: "बिप्र सहित परिवार गोसाईं। करहिं छोहु सब रौरिहि नाईं॥ सभीको श्रीरामचन्द्र वैसे ही प्रिय हैं जैसे वे मुझको हैं। [उनके रूपमें] आपका आशीर्वाद ही मानो शरीर धारण करके शोभित हो रहा है। हे स्वामी! सारे ब्राह्मण, परिवारसहित आपके ही समान उनपर स्नेह करते हैं॥ २॥",
-          transliteration: "bipra sahita parivāra gosāīṃ| karahiṃ chohu saba raurihi nāīṃ|| sabhīko śrīrāmacandra vaise hī priya haiṃ jaise ve mujhako haiṃ| [unake rūpameṃ] āpakā āśīrvāda hī māno śarīra dhāraṇa karake śobhita ho rahā hai| he svāmī! sāre brāhmaṇa, parivārasahita āpake hī samāna unapara sneha karate haiṃ|| 2||",
-          translation: "जे गुर चरन रेनु सिर धरहीं। ते जनु सकल बिभव बस करहीं॥",
-          hindi: "जे गुर चरन रेनु सिर धरहीं। ते जनु सकल बिभव बस करहीं॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 15,
+          "number": 15,
+          "sanskrit": "सबहि रामु प्रिय जेहि बिधि मोही। प्रभु असीस जनु तनु धरि सोही॥ बिप्र सहित परिवार गोसाईं। करहिं छोहु सब रौरिहि नाईं॥",
+          "transliteration": "sabahi rāmu priya jehi bidhi mohī| prabhu asīsa janu tanu dhari sohī|| bipra sahita parivāra gosāīṃ| karahiṃ chohu saba raurihi nāīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 16,
-          number: 16,
-          sanskrit: "मोहि सम यहु अनुभयउ न दूजें। सबु पायउँ रज पावनि पूजें॥ जो लोग गुरुके चरणोंकी रजको मस्तकपर धारण करते हैं, वे मानो समस्त ऐश्वर्यको अपने वशमें कर लेते हैं। इसका अनुभव मेरे समान दूसरे किसीने नहीं किया। आपकी पवित्र चरण-रजकी पूजा करके मैंने सब कुछ पा लिया॥ ३॥",
-          transliteration: "mohi sama yahu anubhayau na dūjeṃ| sabu pāyauँ raja pāvani pūjeṃ|| jo loga guruke caraṇoṃkī rajako mastakapara dhāraṇa karate haiṃ, ve māno samasta aiśvaryako apane vaśameṃ kara lete haiṃ| isakā anubhava mere samāna dūsare kisīne nahīṃ kiyā| āpakī pavitra caraṇa-rajakī pūjā karake maiṃne saba kucha pā liyā|| 3||",
-          translation: "अब अभिलाषु एकु मन मोरें। पूजिहि नाथ अनुग्रह तोरें॥",
-          hindi: "अब अभिलाषु एकु मन मोरें। पूजिहि नाथ अनुग्रह तोरें॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 16,
+          "number": 16,
+          "sanskrit": "जे गुर चरन रेनु सिर धरहीं। ते जनु सकल बिभव बस करहीं॥ मोहि सम यहु अनुभयउ न दूजें। सबु पायउँ रज पावनि पूजें॥",
+          "transliteration": "je gura carana renu sira dharahīṃ| te janu sakala bibhava basa karahīṃ|| mohi sama yahu anubhayau na dūjeṃ| sabu pāyaum̐ raja pāvani pūjeṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 17,
-          number: 17,
-          sanskrit: "मुनि प्रसन्न लखि सहज सनेहू। कहेउ नरेस रजायसु देहू॥ अब मेरे मनमें एक ही अभिलाषा है। हे नाथ! वह भी आपहीके अनुग्रहसे पूरी होगी। राजाका सहज प्रेम देखकर मुनिने प्रसन्न होकर कहा—नरेश! आज्ञा दीजिये (कहिये, क्या अभिलाषा है?)॥ ४॥",
-          transliteration: "muni prasanna lakhi sahaja sanehū| kaheu naresa rajāyasu dehū|| aba mere manameṃ eka hī abhilāṣā hai| he nātha! vaha bhī āpahīke anugrahase pūrī hogī| rājākā sahaja prema dekhakara munine prasanna hokara kahā—nareśa! ājñā dījiye (kahiye, kyā abhilāṣā hai?)|| 4||",
-          translation: "दो०—राजन राउर नामु जसु सब अभिमत दातार।",
-          hindi: "दो०—राजन राउर नामु जसु सब अभिमत दातार।",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 17,
+          "number": 17,
+          "sanskrit": "अब अभिलाषु एकु मन मोरें। पूजिहि नाथ अनुग्रह तोरें॥ मुनि प्रसन्न लखि सहज सनेहू। कहेउ नरेस रजायसु देहू॥",
+          "transliteration": "aba abhilāṣu eku mana moreṃ| pūjihi nātha anugraha toreṃ|| muni prasanna lakhi sahaja sanehū| kaheu naresa rajāyasu dehū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 18,
-          number: 18,
-          sanskrit: "फल अनुगामी महिप मनि मन अभिलाषु तुम्हार॥ ३॥ हे राजन्! आपका नाम और यश ही सम्पूर्ण मनचाही वस्तुओंको देनेवाला है। हे राजाओंके मुकुटमणि! आपके मनकी अभिलाषा फलका अनुगमन करती है (अर्थात् आपके इच्छा करनेके पहले ही फल उत्पन्न हो जाता है)॥ ३॥",
-          transliteration: "phala anugāmī mahipa mani mana abhilāṣu tumhāra|| 3|| he rājan! āpakā nāma aura yaśa hī sampūrṇa manacāhī vastuoṃko denevālā hai| he rājāoṃke mukuṭamaṇi! āpake manakī abhilāṣā phalakā anugamana karatī hai (arthāt āpake icchā karaneke pahale hī phala utpanna ho jātā hai)|| 3||",
-          translation: "सब बिधि गुरु प्रसन्न जियँ जानी। बोलेउ राउ रहँसि मृदु बानी॥",
-          hindi: "सब बिधि गुरु प्रसन्न जियँ जानी। बोलेउ राउ रहँसि मृदु बानी॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 18,
+          "number": 18,
+          "sanskrit": "दो०—राजन राउर नामु जसु सब अभिमत दातार। फल अनुगामी महिप मनि मन अभिलाषु तुम्हार॥ ३॥",
+          "transliteration": "do0—rājana rāura nāmu jasu saba abhimata dātāra| phala anugāmī mahipa mani mana abhilāṣu tumhāra|| 3||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 19,
-          number: 19,
-          sanskrit: "नाथ रामु करिअहिं जुबराजू। कहिअ कृपा करि करिअ समाजू॥ अपने जीमें गुरुजीको सब प्रकारसे प्रसन्न जानकर, हर्षित होकर राजा कोमल वाणीसे बोले—हे नाथ! श्रीरामचन्द्रको युवराज कीजिये। कृपा करके कहिये (आज्ञा दीजिये) तो तैयारी की जाय॥ १॥",
-          transliteration: "nātha rāmu kariahiṃ jubarājū| kahia kṛpā kari karia samājū|| apane jīmeṃ gurujīko saba prakārase prasanna jānakara, harṣita hokara rājā komala vāṇīse bole—he nātha! śrīrāmacandrako yuvarāja kījiye| kṛpā karake kahiye (ājñā dījiye) to taiyārī kī jāya|| 1||",
-          translation: "मोहि अछत यहु होइ उछाहू। लहहिं लोग सब लोचन लाहू॥",
-          hindi: "मोहि अछत यहु होइ उछाहू। लहहिं लोग सब लोचन लाहू॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 19,
+          "number": 19,
+          "sanskrit": "सब बिधि गुरु प्रसन्न जियँ जानी। बोलेउ राउ रहँसि मृदु बानी॥ नाथ रामु करिअहिं जुबराजू। कहिअ कृपा करि करिअ समाजू॥",
+          "transliteration": "saba bidhi guru prasanna jiyam̐ jānī| boleu rāu raham̐si mṛdu bānī|| nātha rāmu kariahiṃ jubarājū| kahia kṛpā kari karia samājū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 20,
-          number: 20,
-          sanskrit: "प्रभु प्रसाद सिव सबइ निबाहीं। यह लालसा एक मन माहीं॥ मेरे जीते-जी यह आनन्द-उत्सव हो जाय, [जिससे] सब लोग अपने नेत्रोंका लाभ प्राप्त करें। प्रभु (आप)-के प्रसादसे शिवजीने सब कुछ निबाह दिया (सब इच्छाएँ पूर्ण कर दीं), केवल यही एक लालसा मनमें रह गयी है॥ २॥",
-          transliteration: "prabhu prasāda siva sabai nibāhīṃ| yaha lālasā eka mana māhīṃ|| mere jīte-jī yaha ānanda-utsava ho jāya, [jisase] saba loga apane netroṃkā lābha prāpta kareṃ| prabhu (āpa)-ke prasādase śivajīne saba kucha nibāha diyā (saba icchāeँ pūrṇa kara dīṃ), kevala yahī eka lālasā manameṃ raha gayī hai|| 2||",
-          translation: "पुनि न सोच तनु रहउ कि जाऊ। जेहिं न होइ पाछें पछिताऊ॥",
-          hindi: "पुनि न सोच तनु रहउ कि जाऊ। जेहिं न होइ पाछें पछिताऊ॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 20,
+          "number": 20,
+          "sanskrit": "मोहि अछत यहु होइ उछाहू। लहहिं लोग सब लोचन लाहू॥ प्रभु प्रसाद सिव सबइ निबाहीं। यह लालसा एक मन माहीं॥",
+          "transliteration": "mohi achata yahu hoi uchāhū| lahahiṃ loga saba locana lāhū|| prabhu prasāda siva sabai nibāhīṃ| yaha lālasā eka mana māhīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 21,
-          number: 21,
-          sanskrit: "सुनि मुनि दसरथ बचन सुहाए। मंगल मोद मूल मन भाए॥ [इस लालसाके पूर्ण हो जानेपर] फिर सोच नहीं, शरीर रहे या चला जाय, जिससे मुझे पीछे पछतावा न हो। दशरथजीके मंगल और आनन्दके मूल सुन्दर वचन सुनकर मुनि मनमें बहुत प्रसन्न हुए॥ ३॥",
-          transliteration: "suni muni dasaratha bacana suhāe| mṃgala moda mūla mana bhāe|| [isa lālasāke pūrṇa ho jānepara] phira soca nahīṃ, śarīra rahe yā calā jāya, jisase mujhe pīche pachatāvā na ho| daśarathajīke mṃgala aura ānandake mūla sundara vacana sunakara muni manameṃ bahuta prasanna hue|| 3||",
-          translation: "सुनु नृप जासु बिमुख पछिताहीं। जासु भजन बिनु जरनि न जाहीं॥",
-          hindi: "सुनु नृप जासु बिमुख पछिताहीं। जासु भजन बिनु जरनि न जाहीं॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 21,
+          "number": 21,
+          "sanskrit": "पुनि न सोच तनु रहउ कि जाऊ। जेहिं न होइ पाछें पछिताऊ॥ सुनि मुनि दसरथ बचन सुहाए। मंगल मोद मूल मन भाए॥",
+          "transliteration": "puni na soca tanu rahau ki jāū| jehiṃ na hoi pācheṃ pachitāū|| suni muni dasaratha bacana suhāe| maṃgala moda mūla mana bhāe||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 22,
-          number: 22,
-          sanskrit: "भयउ तुम्हार तनय सोइ स्वामी। रामु पुनीत प्रेम अनुगामी॥ [वसिष्ठजीने कहा—] हे राजन्! सुनिये, जिनसे विमुख होकर लोग पछताते हैं और जिनके भजन बिना जीकी जलन नहीं जाती, वही स्वामी (सर्वलोकमहेश्वर) श्रीरामजी आपके पुत्र हुए हैं, जो पवित्र प्रेमके अनुगामी हैं। [श्रीरामजी पवित्र प्रेमके पीछे-पीछे चलनेवाले हैं, इसीसे तो प्रेमवश आपके पुत्र हुए हैं]॥ ४॥",
-          transliteration: "bhayau tumhāra tanaya soi svāmī| rāmu punīta prema anugāmī|| [vasiṣṭhajīne kahā—] he rājan! suniye, jinase vimukha hokara loga pachatāte haiṃ aura jinake bhajana binā jīkī jalana nahīṃ jātī, vahī svāmī (sarvalokamaheśvara) śrīrāmajī āpake putra hue haiṃ, jo pavitra premake anugāmī haiṃ| [śrīrāmajī pavitra premake pīche-pīche calanevāle haiṃ, isīse to premavaśa āpake putra hue haiṃ]|| 4||",
-          translation: "दो०—बेगि बिलंबु न करिअ नृप साजिअ सबुइ समाजु।",
-          hindi: "दो०—बेगि बिलंबु न करिअ नृप साजिअ सबुइ समाजु।",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 22,
+          "number": 22,
+          "sanskrit": "सुनु नृप जासु बिमुख पछिताहीं। जासु भजन बिनु जरनि न जाहीं॥ भयउ तुम्हार तनय सोइ स्वामी। रामु पुनीत प्रेम अनुगामी॥",
+          "transliteration": "sunu nṛpa jāsu bimukha pachitāhīṃ| jāsu bhajana binu jarani na jāhīṃ|| bhayau tumhāra tanaya soi svāmī| rāmu punīta prema anugāmī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 23,
-          number: 23,
-          sanskrit: "सुदिन सुमंगलु तबहिं जब रामु होहिं जुबराजु॥ ४॥ हे राजन्! अब देर न कीजिये; शीघ्र सब सामान सजाइये। शुभ दिन और सुन्दर मंगल तभी है जब श्रीरामचन्द्रजी युवराज हो जायँ (अर्थात् उनके अभिषेकके लिये सभी दिन शुभ और मंगलमय हैं)॥ ४॥",
-          transliteration: "sudina sumṃgalu tabahiṃ jaba rāmu hohiṃ jubarāju|| 4|| he rājan! aba dera na kījiye; śīghra saba sāmāna sajāiye| śubha dina aura sundara mṃgala tabhī hai jaba śrīrāmacandrajī yuvarāja ho jāyaँ (arthāt unake abhiṣekake liye sabhī dina śubha aura mṃgalamaya haiṃ)|| 4||",
-          translation: "मुदित महीपति मंदिर आए। सेवक सचिव सुमंत्रु बोलाए॥",
-          hindi: "मुदित महीपति मंदिर आए। सेवक सचिव सुमंत्रु बोलाए॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 23,
+          "number": 23,
+          "sanskrit": "दो०—बेगि बिलंबु न करिअ नृप साजिअ सबुइ समाजु। सुदिन सुमंगलु तबहिं जब रामु होहिं जुबराजु॥ ४॥",
+          "transliteration": "do0—begi bilaṃbu na karia nṛpa sājia sabui samāju| sudina sumaṃgalu tabahiṃ jaba rāmu hohiṃ jubarāju|| 4||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 24,
-          number: 24,
-          sanskrit: "कहि जयजीव सीस तिन्ह नाए। भूप सुमंगल बचन सुनाए॥ राजा आनन्दित होकर महलमें आये और उन्होंने सेवकोंको तथा मन्त्री सुमन्त्रको बुलवाया। उन लोगोंने ‘जय-जीव’ कहकर सिर नवाये। तब राजाने सुन्दर मंगलमय वचन (श्रीरामजीको युवराज-पद देनेका प्रस्ताव) सुनाये॥ १॥",
-          transliteration: "kahi jayajīva sīsa tinha nāe| bhūpa sumṃgala bacana sunāe|| rājā ānandita hokara mahalameṃ āye aura unhoṃne sevakoṃko tathā mantrī sumantrako bulavāyā| una logoṃne ‘jaya-jīva’ kahakara sira navāye| taba rājāne sundara mṃgalamaya vacana (śrīrāmajīko yuvarāja-pada denekā prastāva) sunāye|| 1||",
-          translation: "जौं पाँचहि मत लागै नीका। करहु हरषि हियँ रामहि टीका॥",
-          hindi: "जौं पाँचहि मत लागै नीका। करहु हरषि हियँ रामहि टीका॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 24,
+          "number": 24,
+          "sanskrit": "मुदित महीपति मंदिर आए। सेवक सचिव सुमंत्रु बोलाए॥ कहि जयजीव सीस तिन्ह नाए। भूप सुमंगल बचन सुनाए॥",
+          "transliteration": "mudita mahīpati maṃdira āe| sevaka saciva sumaṃtru bolāe|| kahi jayajīva sīsa tinha nāe| bhūpa sumaṃgala bacana sunāe||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 25,
-          number: 25,
-          sanskrit: "[और कहा—] यदि पंचोंको (आप सबको) यह मत अच्छा लगे, तो हृदयमें हर्षित होकर आपलोग श्रीरामचन्द्रका राजतिलक कीजिये॥ २॥",
-          transliteration: "[aura kahā—] yadi pṃcoṃko (āpa sabako) yaha mata acchā lage, to hṛdayameṃ harṣita hokara āpaloga śrīrāmacandrakā rājatilaka kījiye|| 2||",
-          translation: "मंत्री मुदित सुनत प्रिय बानी। अभिमत बिरवँ परेउ जनु पानी॥",
-          hindi: "मंत्री मुदित सुनत प्रिय बानी। अभिमत बिरवँ परेउ जनु पानी॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 25,
+          "number": 25,
+          "sanskrit": "जौं पाँचहि मत लागै नीका। करहु हरषि हियँ रामहि टीका॥",
+          "transliteration": "jauṃ pām̐cahi mata lāgai nīkā| karahu haraṣi hiyam̐ rāmahi ṭīkā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 26,
-          number: 26,
-          sanskrit: "बिनती सचिव करहिं कर जोरी। जिअहु जगतपति बरिस करोरी॥ इस प्रिय वाणीको सुनते ही मन्त्री ऐसे आनन्दित हुए मानो उनके मनोरथरूपी पौधेपर पानी पड़ गया हो। मन्त्री हाथ जोड़कर विनती करते हैं कि हे जगत्पति! आप करोड़ों वर्ष जियें॥ ३॥",
-          transliteration: "binatī saciva karahiṃ kara jorī| jiahu jagatapati barisa karorī|| isa priya vāṇīko sunate hī mantrī aise ānandita hue māno unake manoratharūpī paudhepara pānī paḍa़ gayā ho| mantrī hātha joḍa़kara vinatī karate haiṃ ki he jagatpati! āpa karoḍa़oṃ varṣa jiyeṃ|| 3||",
-          translation: "जग मंगल भल काजु बिचारा। बेगिअ नाथ न लाइअ बारा॥",
-          hindi: "जग मंगल भल काजु बिचारा। बेगिअ नाथ न लाइअ बारा॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 26,
+          "number": 26,
+          "sanskrit": "मंत्री मुदित सुनत प्रिय बानी। अभिमत बिरवँ परेउ जनु पानी॥ बिनती सचिव करहिं कर जोरी। जिअहु जगतपति बरिस करोरी॥",
+          "transliteration": "maṃtrī mudita sunata priya bānī| abhimata biravam̐ pareu janu pānī|| binatī saciva karahiṃ kara jorī| jiahu jagatapati barisa karorī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 27,
-          number: 27,
-          sanskrit: "नृपहि मोदु सुनि सचिव सुभाषा। बढ़त बौंड़ जनु लही सुसाखा॥ आपने जगत्भरका मंगल करनेवाला भला काम सोचा है। हे नाथ! शीघ्रता कीजिये, देर न लगाइये। मन्त्रियोंकी सुन्दर वाणी सुनकर राजाको ऐसा आनन्द हुआ मानो बढ़ती हुई बेल सुन्दर डालीका सहारा पा गयी हो॥ ४॥",
-          transliteration: "nṛpahi modu suni saciva subhāṣā| baḍha़ta bauṃḍa़ janu lahī susākhā|| āpane jagatbharakā mṃgala karanevālā bhalā kāma socā hai| he nātha! śīghratā kījiye, dera na lagāiye| mantriyoṃkī sundara vāṇī sunakara rājāko aisā ānanda huā māno baḍha़tī huī bela sundara ḍālīkā sahārā pā gayī ho|| 4||",
-          translation: "दो०—कहेउ भूप मुनिराज कर जोइ जोइ आयसु होइ।",
-          hindi: "दो०—कहेउ भूप मुनिराज कर जोइ जोइ आयसु होइ।",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 27,
+          "number": 27,
+          "sanskrit": "जग मंगल भल काजु बिचारा। बेगिअ नाथ न लाइअ बारा॥ नृपहि मोदु सुनि सचिव सुभाषा। बढ़त बौंड़ जनु लही सुसाखा॥",
+          "transliteration": "jaga maṃgala bhala kāju bicārā| begia nātha na lāia bārā|| nṛpahi modu suni saciva subhāṣā| baḍha़ta bauṃḍa़ janu lahī susākhā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 28,
-          number: 28,
-          sanskrit: "राम राज अभिषेक हित बेगि करहु सोइ सोइ॥ ५॥ राजाने कहा—श्रीरामचन्द्रके राज्याभिषेकके लिये मुनिराज वसिष्ठजीकी जो-जो आज्ञा हो, आपलोग वही सब तुरंत करें॥ ५॥",
-          transliteration: "rāma rāja abhiṣeka hita begi karahu soi soi|| 5|| rājāne kahā—śrīrāmacandrake rājyābhiṣekake liye munirāja vasiṣṭhajīkī jo-jo ājñā ho, āpaloga vahī saba turṃta kareṃ|| 5||",
-          translation: "हरषि मुनीस कहेउ मृदु बानी। आनहु सकल सुतीरथ पानी॥",
-          hindi: "हरषि मुनीस कहेउ मृदु बानी। आनहु सकल सुतीरथ पानी॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 28,
+          "number": 28,
+          "sanskrit": "दो०—कहेउ भूप मुनिराज कर जोइ जोइ आयसु होइ। राम राज अभिषेक हित बेगि करहु सोइ सोइ॥ ५॥",
+          "transliteration": "do0—kaheu bhūpa munirāja kara joi joi āyasu hoi| rāma rāja abhiṣeka hita begi karahu soi soi|| 5||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 29,
-          number: 29,
-          sanskrit: "औषध मूल फूल फल पाना। कहे नाम गनि मंगल नाना॥ मुनिराजने हर्षित होकर कोमल वाणीसे कहा कि सम्पूर्ण श्रेष्ठ तीर्थोंका जल ले आओ। फिर उन्होंने ओषधि, मूल, फूल, फल और पत्र आदि अनेकों मांगलिक वस्तुओंके नाम गिनकर बताये॥ १॥",
-          transliteration: "auṣadha mūla phūla phala pānā| kahe nāma gani mṃgala nānā|| munirājane harṣita hokara komala vāṇīse kahā ki sampūrṇa śreṣṭha tīrthoṃkā jala le āo| phira unhoṃne oṣadhi, mūla, phūla, phala aura patra ādi anekoṃ māṃgalika vastuoṃke nāma ginakara batāye|| 1||",
-          translation: "चामर चरम बसन बहु भाँती। रोम पाट पट अगनित जाती॥",
-          hindi: "चामर चरम बसन बहु भाँती। रोम पाट पट अगनित जाती॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
+          "id": 29,
+          "number": 29,
+          "sanskrit": "हरषि मुनीस कहेउ मृदु बानी। आनहु सकल सुतीरथ पानी॥ औषध मूल फूल फल पाना। कहे नाम गनि मंगल नाना॥",
+          "transliteration": "haraṣi munīsa kaheu mṛdu bānī| ānahu sakala sutīratha pānī|| auṣadha mūla phūla phala pānā| kahe nāma gani maṃgala nānā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
         },
         {
-          id: 30,
-          number: 30,
-          sanskrit: "मनिगन मंगल बस्तु अनेका। जो जग जोगु भूप अभिषेका॥ चँवर, मृगचर्म, बहुत प्रकारके वस्त्र, असंख्यों जातियोंके ऊनी और रेशमी कपड़े, [नाना प्रकारकी] मणियाँ (रत्न) तथा और भी बहुत-सी मंगल वस्तुएँ, जो जगत् में राज्याभिषेकके योग्य होती हैं [सबको मँगानेकी उन्होंने आज्ञा दी]॥ २॥",
-          transliteration: "manigana mṃgala bastu anekā| jo jaga jogu bhūpa abhiṣekā|| caँvara, mṛgacarma, bahuta prakārake vastra, asṃkhyoṃ jātiyoṃke ūnī aura reśamī kapaḍa़e, [nānā prakārakī] maṇiyāँ (ratna) tathā aura bhī bahuta-sī mṃgala vastueँ, jo jagat meṃ rājyābhiṣekake yogya hotī haiṃ [sabako maँgānekī unhoṃne ājñā dī]|| 2||",
-          translation: "बेद बिदित कहि सकल बिधाना। कहेउ रचहु पुर बिबिध बिताना॥",
-          hindi: "बेद बिदित कहि सकल बिधाना। कहेउ रचहु पुर बिबिध बिताना॥",
-          explanation: "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अयोध्याकाण्ड"]
-        },
-      ],
+          "id": 30,
+          "number": 30,
+          "sanskrit": "चामर चरम बसन बहु भाँती। रोम पाट पट अगनित जाती॥ मनिगन मंगल बस्तु अनेका। जो जग जोगु भूप अभिषेका॥",
+          "transliteration": "cāmara carama basana bahu bhām̐tī| roma pāṭa paṭa aganita jātī|| manigana maṃgala bastu anekā| jo jaga jogu bhūpa abhiṣekā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अयोध्याकाण्ड — राम-वनवास एवं भरत-प्रेम का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अयोध्याकाण्ड"
+          ]
+        }
+      ]
     },
     {
-      id: 3,
-      title: "Aranya Kanda — The Forest Life",
-      titleSanskrit: "अरण्यकाण्ड",
-      summary: "Life in Dandakaranya, the hermitage at Panchavati, the Golden Deer, Ravana's abduction of Sita, Jatayu's valor, and the supreme devotion of Mother Shabari.",
-      verses: [
+      "id": 3,
+      "title": "Aranya Kanda — The Forest Life",
+      "titleSanskrit": "अरण्यकाण्ड",
+      "summary": "Life in Dandakaranya, the hermitage at Panchavati, the Golden Deer, Ravana's abduction of Sita, Jatayu's valor, and the supreme devotion of Mother Shabari.",
+      "verses": [
         {
-          id: 1,
-          number: 1,
-          sanskrit: "श्रीजानकीवल्लभो विजयते श्रीरामचरितमानस तृतीय सोपान श्लोक मूलं धर्मतरोर्विवेकजलधे: पूर्णेन्दुमानन्ददं वैराग्याम्बुजभास्करं ह्यघघनध्वान्तापहं तापहम्। मोहाम्भोधरपूगपाटनविधौ स्व:सम्भवं शङ्करं वन्दे ब्रह्मकुलं कलङ्कशमनं श्रीरामभूपप्रियम्॥ १॥ धर्मरूपी वृक्षके मूल, विवेकरूपी समुद्रको आनन्द देनेवाले पूर्णचन्द्र, वैराग्यरूपी कमलके [विकसित करनेवाले] सूर्य, पापरूपी घोर अन्धकारको निश्चय ही मिटानेवाले, तीनों तापोंको हरनेवाले, मोहरूपी बादलोंके समूहको छिन्न-भिन्न करनेकी विधि (क्रिया)-में आकाशसे उत्पन्न पवनस्वरूप, ब्रह्माजीके वंशज (आत्मज) तथा कलंकनाशक महाराज श्रीरामचन्द्रजीके प्रिय श्रीशंकरजीकी मैं वन्दना करता हूँ॥ १॥",
-          transliteration: "śrījānakīvallabho vijayate śrīrāmacaritamānasa tṛtīya sopāna śloka mūlṃ dharmatarorvivekajaladhe: pūrṇendumānandadṃ vairāgyāmbujabhāskarṃ hyaghaghanadhvāntāpahṃ tāpaham| mohāmbhodharapūgapāṭanavidhau sva:sambhavṃ śaṅkarṃ vande brahmakulṃ kalaṅkaśamanṃ śrīrāmabhūpapriyam|| 1|| dharmarūpī vṛkṣake mūla, vivekarūpī samudrako ānanda denevāle pūrṇacandra, vairāgyarūpī kamalake [vikasita karanevāle] sūrya, pāparūpī ghora andhakārako niścaya hī miṭānevāle, tīnoṃ tāpoṃko haranevāle, moharūpī bādaloṃke samūhako chinna-bhinna karanekī vidhi (kriyā)-meṃ ākāśase utpanna pavanasvarūpa, brahmājīke vṃśaja (ātmaja) tathā kalṃkanāśaka mahārāja śrīrāmacandrajīke priya śrīśṃkarajīkī maiṃ vandanā karatā hūँ|| 1||",
-          translation: "सान्द्रानन्दपयोदसौभगतनुं पीताम्बरं सुन्दरं",
-          hindi: "सान्द्रानन्दपयोदसौभगतनुं पीताम्बरं सुन्दरं",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 1,
+          "number": 1,
+          "sanskrit": "मूलं धर्मतरोर्विवेकजलधे: पूर्णेन्दुमानन्ददं वैराग्याम्बुजभास्करं ह्यघघनध्वान्तापहं तापहम्। मोहाम्भोधरपूगपाटनविधौ स्व:सम्भवं शङ्करं वन्दे ब्रह्मकुलं कलङ्कशमनं श्रीरामभूपप्रियम्॥ १॥",
+          "transliteration": "mūlaṃ dharmatarorvivekajaladhe: pūrṇendumānandadaṃ vairāgyāmbujabhāskaraṃ hyaghaghanadhvāntāpahaṃ tāpaham| mohāmbhodharapūgapāṭanavidhau sva:sambhavaṃ śaṅkaraṃ vande brahmakulaṃ kalaṅkaśamanaṃ śrīrāmabhūpapriyam|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 2,
-          number: 2,
-          sanskrit: "पाणौ बाणशरासनं कटिलसब्ाणीरभारं वरम्। राजीवायतलोचनं धृतजटाजूटेन संशोभितं सीतालक्ष्मणसंयुतं पथिगतं रामाभिरामं भजे॥ २॥ जिनका शरीर जलयुक्त मेघोंके समान सुन्दर (श्यामवर्ण) एवं आनन्दघन है, जो सुन्दर [वल्कलका] पीतवस्त्र धारण किये हैं, जिनके हाथोंमें बाण और धनुष हैं, कमर उत्तम तरकसके भारसे सुशोभित है, कमलके समान विशाल नेत्र हैं और मस्तकपर जटाजूट धारण किये हैं, उन अत्यन्त शोभायमान श्रीसीताजी और लक्ष्मणजीसहित मार्गमें चलते हुए आनन्द देनेवाले श्रीरामचन्द्रजीको मैं भजता हूँ॥ २॥",
-          transliteration: "pāṇau bāṇaśarāsanṃ kaṭilasabāṇīrabhārṃ varam| rājīvāyatalocanṃ dhṛtajaṭājūṭena sṃśobhitṃ sītālakṣmaṇasṃyutṃ pathigatṃ rāmābhirāmṃ bhaje|| 2|| jinakā śarīra jalayukta meghoṃke samāna sundara (śyāmavarṇa) evṃ ānandaghana hai, jo sundara [valkalakā] pītavastra dhāraṇa kiye haiṃ, jinake hāthoṃmeṃ bāṇa aura dhanuṣa haiṃ, kamara uttama tarakasake bhārase suśobhita hai, kamalake samāna viśāla netra haiṃ aura mastakapara jaṭājūṭa dhāraṇa kiye haiṃ, una atyanta śobhāyamāna śrīsītājī aura lakṣmaṇajīsahita mārgameṃ calate hue ānanda denevāle śrīrāmacandrajīko maiṃ bhajatā hūँ|| 2||",
-          translation: "सो०—उमा राम गुन गूढ़ पंडित मुनि पावहिं बिरति।",
-          hindi: "सो०—उमा राम गुन गूढ़ पंडित मुनि पावहिं बिरति।",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 2,
+          "number": 2,
+          "sanskrit": "सान्द्रानन्दपयोदसौभगतनुं पीताम्बरं सुन्दरं पाणौ बाणशरासनं कटिलसब्ाणीरभारं वरम्। राजीवायतलोचनं धृतजटाजूटेन संशोभितं सीतालक्ष्मणसंयुतं पथिगतं रामाभिरामं भजे॥ २॥",
+          "transliteration": "sāndrānandapayodasaubhagatanuṃ pītāmbaraṃ sundaraṃ pāṇau bāṇaśarāsanaṃ kaṭilasabāṇīrabhāraṃ varam| rājīvāyatalocanaṃ dhṛtajaṭājūṭena saṃśobhitaṃ sītālakṣmaṇasaṃyutaṃ pathigataṃ rāmābhirāmaṃ bhaje|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 3,
-          number: 3,
-          sanskrit: "पावहिं मोह बिमूढ़ जे हरि बिमुख न धर्म रति॥ हे पार्वती! श्रीरामजीके गुण गूढ़ हैं, पण्डित और मुनि उन्हें समझकर वैराग्य प्राप्त करते हैं। परन्तु जो भगवान्से विमुख हैं और जिनका धर्ममें प्रेम नहीं है, वे महामूढ़ [उन्हें सुनकर] मोहको प्राप्त होते हैं। पुर नर भरत प्रीति मैं गाई। मति अनुरूप अनूप सुहाई॥ अब प्रभु चरित सुनहु अति पावन। करत जे बन सुर नर मुनि भावन॥ पुरवासियोंके और भरतजीके अनुपम और सुन्दर प्रेमका मैंने अपनी बुद्धिके अनुसार गान किया। अब देवता, मनुष्य और मुनियोंके मनको भानेवाले प्रभु श्रीरामचन्द्रजीके वे अत्यन्त पवित्र चरित्र सुनो, जिन्हें वे वनमें कर रहे हैं॥ १॥",
-          transliteration: "pāvahiṃ moha bimūḍha़ je hari bimukha na dharma rati|| he pārvatī! śrīrāmajīke guṇa gūḍha़ haiṃ, paṇḍita aura muni unheṃ samajhakara vairāgya prāpta karate haiṃ| parantu jo bhagavānse vimukha haiṃ aura jinakā dharmameṃ prema nahīṃ hai, ve mahāmūḍha़ [unheṃ sunakara] mohako prāpta hote haiṃ| pura nara bharata prīti maiṃ gāī| mati anurūpa anūpa suhāī|| aba prabhu carita sunahu ati pāvana| karata je bana sura nara muni bhāvana|| puravāsiyoṃke aura bharatajīke anupama aura sundara premakā maiṃne apanī buddhike anusāra gāna kiyā| aba devatā, manuṣya aura muniyoṃke manako bhānevāle prabhu śrīrāmacandrajīke ve atyanta pavitra caritra suno, jinheṃ ve vanameṃ kara rahe haiṃ|| 1||",
-          translation: "एक बार चुनि कुसुम सुहाए। निज कर भूषन राम बनाए॥",
-          hindi: "एक बार चुनि कुसुम सुहाए। निज कर भूषन राम बनाए॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 3,
+          "number": 3,
+          "sanskrit": "सो०—उमा राम गुन गूढ़ पंडित मुनि पावहिं बिरति। पावहिं मोह बिमूढ़ जे हरि बिमुख न धर्म रति॥",
+          "transliteration": "so0—umā rāma guna gūḍha़ paṃḍita muni pāvahiṃ birati| pāvahiṃ moha bimūḍha़ je hari bimukha na dharma rati||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 4,
-          number: 4,
-          sanskrit: "सीतहि पहिराए प्रभु सादर। बैठे फटिक सिला पर सुंदर॥ एक बार सुन्दर फूल चुनकर श्रीरामजीने अपने हाथोंसे भाँति-भाँतिके गहने बनाये और सुन्दर स्फटिकशिलापर बैठे हुए प्रभुने आदरके साथ वे गहने श्रीसीताजीको पहनाये॥ २॥",
-          transliteration: "sītahi pahirāe prabhu sādara| baiṭhe phaṭika silā para suṃdara|| eka bāra sundara phūla cunakara śrīrāmajīne apane hāthoṃse bhāँti-bhāँtike gahane banāye aura sundara sphaṭikaśilāpara baiṭhe hue prabhune ādarake sātha ve gahane śrīsītājīko pahanāye|| 2||",
-          translation: "सुरपति सुत धरि बायस बेषा। सठ चाहत रघुपति बल देखा॥",
-          hindi: "सुरपति सुत धरि बायस बेषा। सठ चाहत रघुपति बल देखा॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 4,
+          "number": 4,
+          "sanskrit": "एक बार चुनि कुसुम सुहाए। निज कर भूषन राम बनाए॥ सीतहि पहिराए प्रभु सादर। बैठे फटिक सिला पर सुंदर॥",
+          "transliteration": "eka bāra cuni kusuma suhāe| nija kara bhūṣana rāma banāe|| sītahi pahirāe prabhu sādara| baiṭhe phaṭika silā para suṃdara||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 5,
-          number: 5,
-          sanskrit: "जिमि पिपीलिका सागर थाहा। महा मंदमति पावन चाहा॥ देवराज इन्द्रका मूर्ख पुत्र जयन्त कौएका रूप धरकर श्रीरघुनाथजीका बल देखना चाहता है। जैसे महान् मन्दबुद्धि चींटी समुद्रका थाह पाना चाहती हो॥ ३॥",
-          transliteration: "jimi pipīlikā sāgara thāhā| mahā mṃdamati pāvana cāhā|| devarāja indrakā mūrkha putra jayanta kauekā rūpa dharakara śrīraghunāthajīkā bala dekhanā cāhatā hai| jaise mahān mandabuddhi cīṃṭī samudrakā thāha pānā cāhatī ho|| 3||",
-          translation: "सीता चरन चोंच हति भागा। मूढ़ मंदमति कारन कागा॥",
-          hindi: "सीता चरन चोंच हति भागा। मूढ़ मंदमति कारन कागा॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 5,
+          "number": 5,
+          "sanskrit": "सुरपति सुत धरि बायस बेषा। सठ चाहत रघुपति बल देखा॥ जिमि पिपीलिका सागर थाहा। महा मंदमति पावन चाहा॥",
+          "transliteration": "surapati suta dhari bāyasa beṣā| saṭha cāhata raghupati bala dekhā|| jimi pipīlikā sāgara thāhā| mahā maṃdamati pāvana cāhā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 6,
-          number: 6,
-          sanskrit: "चला रुधिर रघुनायक जाना। सींक धनुष सायक संधाना॥ वह मूढ़, मन्दबुद्धि कारणसे (भगवान्के बलकी परीक्षा करनेके लिये) बना हुआ कौआ सीताजीके चरणोंमें चोंच मारकर भागा। जब रक्त बह चला, तब श्रीरघुनाथजीने जाना और धनुषपर सींक (सरकंडे)-का बाण सन्धान किया॥ ४॥",
-          transliteration: "calā rudhira raghunāyaka jānā| sīṃka dhanuṣa sāyaka sṃdhānā|| vaha mūḍha़, mandabuddhi kāraṇase (bhagavānke balakī parīkṣā karaneke liye) banā huā kauā sītājīke caraṇoṃmeṃ coṃca mārakara bhāgā| jaba rakta baha calā, taba śrīraghunāthajīne jānā aura dhanuṣapara sīṃka (sarakṃḍe)-kā bāṇa sandhāna kiyā|| 4||",
-          translation: "दो०—अति कृपाल रघुनायक सदा दीन पर नेह।",
-          hindi: "दो०—अति कृपाल रघुनायक सदा दीन पर नेह।",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 6,
+          "number": 6,
+          "sanskrit": "सीता चरन चोंच हति भागा। मूढ़ मंदमति कारन कागा॥ चला रुधिर रघुनायक जाना। सींक धनुष सायक संधाना॥",
+          "transliteration": "sītā carana coṃca hati bhāgā| mūḍha़ maṃdamati kārana kāgā|| calā rudhira raghunāyaka jānā| sīṃka dhanuṣa sāyaka saṃdhānā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 7,
-          number: 7,
-          sanskrit: "ता सन आइ कीन्ह छलु मूरख अवगुन गेह॥ १॥ श्रीरघुनाथजी, जो अत्यन्त ही कृपालु हैं और जिनका दीनोंपर सदा प्रेम रहता है, उनसे भी उस अवगुणोंके घर मूर्ख जयन्तने आकर छल किया॥ १॥",
-          transliteration: "tā sana āi kīnha chalu mūrakha avaguna geha|| 1|| śrīraghunāthajī, jo atyanta hī kṛpālu haiṃ aura jinakā dīnoṃpara sadā prema rahatā hai, unase bhī usa avaguṇoṃke ghara mūrkha jayantane ākara chala kiyā|| 1||",
-          translation: "प्रेरित मंत्र ब्रह्मसर धावा। चला भाजि बायस भय पावा॥",
-          hindi: "प्रेरित मंत्र ब्रह्मसर धावा। चला भाजि बायस भय पावा॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 7,
+          "number": 7,
+          "sanskrit": "दो०—अति कृपाल रघुनायक सदा दीन पर नेह। ता सन आइ कीन्ह छलु मूरख अवगुन गेह॥ १॥",
+          "transliteration": "do0—ati kṛpāla raghunāyaka sadā dīna para neha| tā sana āi kīnha chalu mūrakha avaguna geha|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 8,
-          number: 8,
-          sanskrit: "धरि निज रूप गयउ पितु पाहीं। राम बिमुख राखा तेहि नाहीं॥ मन्त्रसे प्रेरित होकर वह ब्रह्मबाण दौड़ा। कौआ भयभीत होकर भाग चला। वह अपना असली रूप धरकर पिता इन्द्रके पास गया, पर श्रीरामजीका विरोधी जानकर इन्द्रने उसको नहीं रखा॥ १॥",
-          transliteration: "dhari nija rūpa gayau pitu pāhīṃ| rāma bimukha rākhā tehi nāhīṃ|| mantrase prerita hokara vaha brahmabāṇa dauḍa़ā| kauā bhayabhīta hokara bhāga calā| vaha apanā asalī rūpa dharakara pitā indrake pāsa gayā, para śrīrāmajīkā virodhī jānakara indrane usako nahīṃ rakhā|| 1||",
-          translation: "भा निरास उपजी मन त्रासा। जथा चक्र भय रिषि दुर्बासा॥",
-          hindi: "भा निरास उपजी मन त्रासा। जथा चक्र भय रिषि दुर्बासा॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 8,
+          "number": 8,
+          "sanskrit": "प्रेरित मंत्र ब्रह्मसर धावा। चला भाजि बायस भय पावा॥ धरि निज रूप गयउ पितु पाहीं। राम बिमुख राखा तेहि नाहीं॥",
+          "transliteration": "prerita maṃtra brahmasara dhāvā| calā bhāji bāyasa bhaya pāvā|| dhari nija rūpa gayau pitu pāhīṃ| rāma bimukha rākhā tehi nāhīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 9,
-          number: 9,
-          sanskrit: "ब्रह्मधाम सिवपुर सब लोका। फिरा श्रमित ब्याकुल भय सोका॥ तब वह निराश हो गया, उसके मनमें भय उत्पन्न हो गया; जैसे दुर्वासा ऋषिको चक्रसे भय हुआ था। वह ब्रह्मलोक, शिवलोक आदि समस्त लोकोंमें थका हुआ और भय-शोकसे व्याकुल होकर भागता फिरा॥ २॥",
-          transliteration: "brahmadhāma sivapura saba lokā| phirā śramita byākula bhaya sokā|| taba vaha nirāśa ho gayā, usake manameṃ bhaya utpanna ho gayā; jaise durvāsā ṛṣiko cakrase bhaya huā thā| vaha brahmaloka, śivaloka ādi samasta lokoṃmeṃ thakā huā aura bhaya-śokase vyākula hokara bhāgatā phirā|| 2||",
-          translation: "काहूँ बैठन कहा न ओही। राखि को सकइ राम कर द्रोही॥",
-          hindi: "काहूँ बैठन कहा न ओही। राखि को सकइ राम कर द्रोही॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 9,
+          "number": 9,
+          "sanskrit": "भा निरास उपजी मन त्रासा। जथा चक्र भय रिषि दुर्बासा॥ ब्रह्मधाम सिवपुर सब लोका। फिरा श्रमित ब्याकुल भय सोका॥",
+          "transliteration": "bhā nirāsa upajī mana trāsā| jathā cakra bhaya riṣi durbāsā|| brahmadhāma sivapura saba lokā| phirā śramita byākula bhaya sokā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 10,
-          number: 10,
-          sanskrit: "मातु मृत्यु पितु समन समाना। सुधा होइ बिष सुनु हरिजाना॥ [पर रखना तो दूर रहा] किसीने उसे बैठनेतकके लिये नहीं कहा। श्रीरामजीके द्रोहीको कौन रख सकता है? [काकभुशुण्डिजी कहते हैं—] हे गरुड़! सुनिये, उसके लिये माता मृत्युके समान, पिता यमराजके समान और अमृत विषके समान हो जाता है॥ ३॥",
-          transliteration: "mātu mṛtyu pitu samana samānā| sudhā hoi biṣa sunu harijānā|| [para rakhanā to dūra rahā] kisīne use baiṭhanetakake liye nahīṃ kahā| śrīrāmajīke drohīko kauna rakha sakatā hai? [kākabhuśuṇḍijī kahate haiṃ—] he garuḍa़! suniye, usake liye mātā mṛtyuke samāna, pitā yamarājake samāna aura amṛta viṣake samāna ho jātā hai|| 3||",
-          translation: "मित्र करइ सत रिपु कै करनी। ता कहँ बिबुधनदी बैतरनी॥",
-          hindi: "मित्र करइ सत रिपु कै करनी। ता कहँ बिबुधनदी बैतरनी॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 10,
+          "number": 10,
+          "sanskrit": "काहूँ बैठन कहा न ओही। राखि को सकइ राम कर द्रोही॥ मातु मृत्यु पितु समन समाना। सुधा होइ बिष सुनु हरिजाना॥",
+          "transliteration": "kāhūm̐ baiṭhana kahā na ohī| rākhi ko sakai rāma kara drohī|| mātu mṛtyu pitu samana samānā| sudhā hoi biṣa sunu harijānā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 11,
-          number: 11,
-          sanskrit: "सब जगु ताहि अनलहु ते ताता। जो रघुबीर बिमुख सुनु भ्राता॥ मित्र सैकड़ों शत्रुओंकी-सी करनी करने लगता है। देवनदी गंगाजी उसके लिये वैतरणी (यमपुरीकी नदी) हो जाती है। हे भाई! सुनिये, जो श्रीरघुनाथजीके विमुख होता है, समस्त जगत् उसके लिये अग्निसे भी अधिक गरम (जलानेवाला) हो जाता है॥ ४॥",
-          transliteration: "saba jagu tāhi analahu te tātā| jo raghubīra bimukha sunu bhrātā|| mitra saikaḍa़oṃ śatruoṃkī-sī karanī karane lagatā hai| devanadī gṃgājī usake liye vaitaraṇī (yamapurīkī nadī) ho jātī hai| he bhāī! suniye, jo śrīraghunāthajīke vimukha hotā hai, samasta jagat usake liye agnise bhī adhika garama (jalānevālā) ho jātā hai|| 4||",
-          translation: "नारद देखा बिकल जयंता। लागि दया कोमल चित संता॥",
-          hindi: "नारद देखा बिकल जयंता। लागि दया कोमल चित संता॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 11,
+          "number": 11,
+          "sanskrit": "मित्र करइ सत रिपु कै करनी। ता कहँ बिबुधनदी बैतरनी॥ सब जगु ताहि अनलहु ते ताता। जो रघुबीर बिमुख सुनु भ्राता॥",
+          "transliteration": "mitra karai sata ripu kai karanī| tā kaham̐ bibudhanadī baitaranī|| saba jagu tāhi analahu te tātā| jo raghubīra bimukha sunu bhrātā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 12,
-          number: 12,
-          sanskrit: "पठवा तुरत राम पहिं ताही। कहेसि पुकारि प्रनत हित पाही॥ नारदजीने जयन्तको व्याकुल देखा तो उन्हें दया आ गयी; क्योंकि संतोंका चित्त बड़ा कोमल होता है। उन्होंने उसे [समझाकर] तुरंत श्रीरामजीके पास भेज दिया। उसने [जाकर] पुकारकर कहा— हे शरणागतके हितकारी! मेरी रक्षा कीजिये॥ ५॥",
-          transliteration: "paṭhavā turata rāma pahiṃ tāhī| kahesi pukāri pranata hita pāhī|| nāradajīne jayantako vyākula dekhā to unheṃ dayā ā gayī; kyoṃki sṃtoṃkā citta baḍa़ā komala hotā hai| unhoṃne use [samajhākara] turṃta śrīrāmajīke pāsa bheja diyā| usane [jākara] pukārakara kahā— he śaraṇāgatake hitakārī! merī rakṣā kījiye|| 5||",
-          translation: "आतुर सभय गहेसि पद जाई। त्राहि त्राहि दयाल रघुराई॥",
-          hindi: "आतुर सभय गहेसि पद जाई। त्राहि त्राहि दयाल रघुराई॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 12,
+          "number": 12,
+          "sanskrit": "नारद देखा बिकल जयंता। लागि दया कोमल चित संता॥ पठवा तुरत राम पहिं ताही। कहेसि पुकारि प्रनत हित पाही॥",
+          "transliteration": "nārada dekhā bikala jayaṃtā| lāgi dayā komala cita saṃtā|| paṭhavā turata rāma pahiṃ tāhī| kahesi pukāri pranata hita pāhī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 13,
-          number: 13,
-          sanskrit: "अतुलित बल अतुलित प्रभुताई। मैं मतिमंद जानि नहिं पाई॥ आतुर और भयभीत जयन्तने जाकर श्रीरामजीके चरण पकड़ लिये [और कहा—] हे दयालु रघुनाथजी! रक्षा कीजिये, रक्षा कीजिये। आपके अतुलित बल और आपकी अतुलित प्रभुता (सामर्थ्य)-को मैं मन्दबुद्धि जान नहीं पाया था॥ ६॥",
-          transliteration: "atulita bala atulita prabhutāī| maiṃ matimṃda jāni nahiṃ pāī|| ātura aura bhayabhīta jayantane jākara śrīrāmajīke caraṇa pakaḍa़ liye [aura kahā—] he dayālu raghunāthajī! rakṣā kījiye, rakṣā kījiye| āpake atulita bala aura āpakī atulita prabhutā (sāmarthya)-ko maiṃ mandabuddhi jāna nahīṃ pāyā thā|| 6||",
-          translation: "निज कृत कर्म जनित फल पायउँ। अब प्रभु पाहि सरन तकि आयउँ॥",
-          hindi: "निज कृत कर्म जनित फल पायउँ। अब प्रभु पाहि सरन तकि आयउँ॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 13,
+          "number": 13,
+          "sanskrit": "आतुर सभय गहेसि पद जाई। त्राहि त्राहि दयाल रघुराई॥ अतुलित बल अतुलित प्रभुताई। मैं मतिमंद जानि नहिं पाई॥",
+          "transliteration": "ātura sabhaya gahesi pada jāī| trāhi trāhi dayāla raghurāī|| atulita bala atulita prabhutāī| maiṃ matimaṃda jāni nahiṃ pāī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 14,
-          number: 14,
-          sanskrit: "सुनि कृपाल अति आरत बानी। एकनयन करि तजा भवानी॥ अपने किये हुए कर्मसे उत्पन्न हुआ फल मैंने पा लिया। अब हे प्रभु! मेरी रक्षा कीजिये। मैं आपकी शरण तककर आया हूँ। [शिवजी कहते हैं—] हे पार्वती! कृपालु श्रीरघुनाथजीने उसकी अत्यन्त आर्त्त [दु:खभरी] वाणी सुनकर उसे एक आँखका काना करके छोड़ दिया॥ ७॥",
-          transliteration: "suni kṛpāla ati ārata bānī| ekanayana kari tajā bhavānī|| apane kiye hue karmase utpanna huā phala maiṃne pā liyā| aba he prabhu! merī rakṣā kījiye| maiṃ āpakī śaraṇa takakara āyā hūँ| [śivajī kahate haiṃ—] he pārvatī! kṛpālu śrīraghunāthajīne usakī atyanta ārtta [du:khabharī] vāṇī sunakara use eka āँkhakā kānā karake choḍa़ diyā|| 7||",
-          translation: "सो०—कीन्ह मोह बस द्रोह जद्यपि तेहि कर बध उचित।",
-          hindi: "सो०—कीन्ह मोह बस द्रोह जद्यपि तेहि कर बध उचित।",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 14,
+          "number": 14,
+          "sanskrit": "निज कृत कर्म जनित फल पायउँ। अब प्रभु पाहि सरन तकि आयउँ॥ सुनि कृपाल अति आरत बानी। एकनयन करि तजा भवानी॥",
+          "transliteration": "nija kṛta karma janita phala pāyaum̐| aba prabhu pāhi sarana taki āyaum̐|| suni kṛpāla ati ārata bānī| ekanayana kari tajā bhavānī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 15,
-          number: 15,
-          sanskrit: "प्रभु छाड़ेउ करि छोह को कृपाल रघुबीर सम॥ २॥ उसने मोहवश द्रोह किया था, इसलिये यद्यपि उसका वध ही उचित था, पर प्रभुने कृपा करके उसे छोड़ दिया। श्रीरामजीके समान कृपालु और कौन होगा?॥ २॥",
-          transliteration: "prabhu chāḍa़eu kari choha ko kṛpāla raghubīra sama|| 2|| usane mohavaśa droha kiyā thā, isaliye yadyapi usakā vadha hī ucita thā, para prabhune kṛpā karake use choḍa़ diyā| śrīrāmajīke samāna kṛpālu aura kauna hogā?|| 2||",
-          translation: "रघुपति चित्रकूट बसि नाना। चरित किए श्रुति सुधा समाना॥",
-          hindi: "रघुपति चित्रकूट बसि नाना। चरित किए श्रुति सुधा समाना॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 15,
+          "number": 15,
+          "sanskrit": "सो०—कीन्ह मोह बस द्रोह जद्यपि तेहि कर बध उचित। प्रभु छाड़ेउ करि छोह को कृपाल रघुबीर सम॥ २॥",
+          "transliteration": "so0—kīnha moha basa droha jadyapi tehi kara badha ucita| prabhu chāḍa़eu kari choha ko kṛpāla raghubīra sama|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 16,
-          number: 16,
-          sanskrit: "बहुरि राम अस मन अनुमाना। होइहि भीर सबहिं मोहि जाना॥ चित्रकूटमें बसकर श्रीरघुनाथजीने बहुत-से चरित्र किये, जो कानोंको अमृतके समान [प्रिय] हैं। फिर (कुछ समय पश्चात्) श्रीरामजीने मनमें ऐसा अनुमान किया कि मुझे सब लोग जान गये हैं, इससे [यहाँ] बड़ी भीड़ हो जायगी॥ १॥",
-          transliteration: "bahuri rāma asa mana anumānā| hoihi bhīra sabahiṃ mohi jānā|| citrakūṭameṃ basakara śrīraghunāthajīne bahuta-se caritra kiye, jo kānoṃko amṛtake samāna [priya] haiṃ| phira (kucha samaya paścāt) śrīrāmajīne manameṃ aisā anumāna kiyā ki mujhe saba loga jāna gaye haiṃ, isase [yahāँ] baḍa़ī bhīḍa़ ho jāyagī|| 1||",
-          translation: "सकल मुनिन्ह सन बिदा कराई। सीता सहित चले द्वौ भाई॥",
-          hindi: "सकल मुनिन्ह सन बिदा कराई। सीता सहित चले द्वौ भाई॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 16,
+          "number": 16,
+          "sanskrit": "रघुपति चित्रकूट बसि नाना। चरित किए श्रुति सुधा समाना॥ बहुरि राम अस मन अनुमाना। होइहि भीर सबहिं मोहि जाना॥",
+          "transliteration": "raghupati citrakūṭa basi nānā| carita kie śruti sudhā samānā|| bahuri rāma asa mana anumānā| hoihi bhīra sabahiṃ mohi jānā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 17,
-          number: 17,
-          sanskrit: "अत्रि के आश्रम जब प्रभु गयऊ। सुनत महामुनि हरषित भयऊ॥ [इसलिये] सब मुनियोंसे विदा लेकर सीताजीसहित दोनों भाई चले! जब प्रभु अत्रिजीके आश्रममें गये, तो उनका आगमन सुनते ही महामुनि हर्षित हो गये॥ २॥",
-          transliteration: "atri ke āśrama jaba prabhu gayaū| sunata mahāmuni haraṣita bhayaū|| [isaliye] saba muniyoṃse vidā lekara sītājīsahita donoṃ bhāī cale! jaba prabhu atrijīke āśramameṃ gaye, to unakā āgamana sunate hī mahāmuni harṣita ho gaye|| 2||",
-          translation: "पुलकित गात अत्रि उठि धाए। देखि रामु आतुर चलि आए॥",
-          hindi: "पुलकित गात अत्रि उठि धाए। देखि रामु आतुर चलि आए॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 17,
+          "number": 17,
+          "sanskrit": "सकल मुनिन्ह सन बिदा कराई। सीता सहित चले द्वौ भाई॥ अत्रि के आश्रम जब प्रभु गयऊ। सुनत महामुनि हरषित भयऊ॥",
+          "transliteration": "sakala muninha sana bidā karāī| sītā sahita cale dvau bhāī|| atri ke āśrama jaba prabhu gayaū| sunata mahāmuni haraṣita bhayaū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 18,
-          number: 18,
-          sanskrit: "करत दंडवत मुनि उर लाए। प्रेम बारि द्वौ जन अन्हवाए॥ शरीर पुलकित हो गया, अत्रिजी उठकर दौड़े। उन्हें दौड़े आते देखकर श्रीरामजी और भी शीघ्रतासे चले आये। दण्डवत् करते हुए ही श्रीरामजीको [उठाकर] मुनिने हृदयसे लगा लिया और प्रेमाश्रुओंके जलसे दोनों जनोंको (दोनों भाइयोंको) नहला दिया॥ ३॥",
-          transliteration: "karata dṃḍavata muni ura lāe| prema bāri dvau jana anhavāe|| śarīra pulakita ho gayā, atrijī uṭhakara dauḍa़e| unheṃ dauḍa़e āte dekhakara śrīrāmajī aura bhī śīghratāse cale āye| daṇḍavat karate hue hī śrīrāmajīko [uṭhākara] munine hṛdayase lagā liyā aura premāśruoṃke jalase donoṃ janoṃko (donoṃ bhāiyoṃko) nahalā diyā|| 3||",
-          translation: "देखि राम छबि नयन जुड़ाने। सादर निज आश्रम तब आने॥",
-          hindi: "देखि राम छबि नयन जुड़ाने। सादर निज आश्रम तब आने॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 18,
+          "number": 18,
+          "sanskrit": "पुलकित गात अत्रि उठि धाए। देखि रामु आतुर चलि आए॥ करत दंडवत मुनि उर लाए। प्रेम बारि द्वौ जन अन्हवाए॥",
+          "transliteration": "pulakita gāta atri uṭhi dhāe| dekhi rāmu ātura cali āe|| karata daṃḍavata muni ura lāe| prema bāri dvau jana anhavāe||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 19,
-          number: 19,
-          sanskrit: "करि पूजा कहि बचन सुहाए। दिए मूल फल प्रभु मन भाए॥ श्रीरामजीकी छबि देखकर मुनिके नेत्र शीतल हो गये। तब वे उनको आदरपूर्वक अपने आश्रममें ले आये। पूजन करके सुन्दर वचन कहकर मुनिने मूल और फल दिये, जो प्रभुके मनको बहुत रुचे॥ ४॥",
-          transliteration: "kari pūjā kahi bacana suhāe| die mūla phala prabhu mana bhāe|| śrīrāmajīkī chabi dekhakara munike netra śītala ho gaye| taba ve unako ādarapūrvaka apane āśramameṃ le āye| pūjana karake sundara vacana kahakara munine mūla aura phala diye, jo prabhuke manako bahuta ruce|| 4||",
-          translation: "सो०—प्रभु आसन आसीन भरि लोचन सोभा निरखि।",
-          hindi: "सो०—प्रभु आसन आसीन भरि लोचन सोभा निरखि।",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 19,
+          "number": 19,
+          "sanskrit": "देखि राम छबि नयन जुड़ाने। सादर निज आश्रम तब आने॥ करि पूजा कहि बचन सुहाए। दिए मूल फल प्रभु मन भाए॥",
+          "transliteration": "dekhi rāma chabi nayana juḍa़āne| sādara nija āśrama taba āne|| kari pūjā kahi bacana suhāe| die mūla phala prabhu mana bhāe||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 20,
-          number: 20,
-          sanskrit: "मुनिबर परम प्रबीन जोरि पानि अस्तुति करत॥ ३॥ प्रभु आसनपर विराजमान हैं। नेत्र भरकर उनकी शोभा देखकर परम प्रवीण मुनिश्रेष्ठ हाथ जोड़कर स्तुति करने लगे—॥ ३॥",
-          transliteration: "munibara parama prabīna jori pāni astuti karata|| 3|| prabhu āsanapara virājamāna haiṃ| netra bharakara unakī śobhā dekhakara parama pravīṇa muniśreṣṭha hātha joḍa़kara stuti karane lage—|| 3||",
-          translation: "छं०—नमामि भक्त वत्सलं। कृपालु शील कोमलं॥",
-          hindi: "छं०—नमामि भक्त वत्सलं। कृपालु शील कोमलं॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 20,
+          "number": 20,
+          "sanskrit": "सो०—प्रभु आसन आसीन भरि लोचन सोभा निरखि। मुनिबर परम प्रबीन जोरि पानि अस्तुति करत॥ ३॥",
+          "transliteration": "so0—prabhu āsana āsīna bhari locana sobhā nirakhi| munibara parama prabīna jori pāni astuti karata|| 3||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 21,
-          number: 21,
-          sanskrit: "भजामि ते पदांबुजं। अकामिनां स्वधामदं॥ हे भक्तवत्सल! हे कृपालु! हे कोमल स्वभाववाले! मैं आपको नमस्कार करता हूँ। निष्काम पुरुषोंको अपना परमधाम देनेवाले आपके चरणकमलोंको मैं भजता हूँ॥ १॥",
-          transliteration: "bhajāmi te padāṃbujṃ| akāmināṃ svadhāmadṃ|| he bhaktavatsala! he kṛpālu! he komala svabhāvavāle! maiṃ āpako namaskāra karatā hūँ| niṣkāma puruṣoṃko apanā paramadhāma denevāle āpake caraṇakamaloṃko maiṃ bhajatā hūँ|| 1||",
-          translation: "निकाम श्याम सुंदरं। भवांबुनाथ मंदरं॥",
-          hindi: "निकाम श्याम सुंदरं। भवांबुनाथ मंदरं॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 21,
+          "number": 21,
+          "sanskrit": "छं०—नमामि भक्त वत्सलं। कृपालु शील कोमलं॥ भजामि ते पदांबुजं। अकामिनां स्वधामदं॥",
+          "transliteration": "chaṃ0—namāmi bhakta vatsalaṃ| kṛpālu śīla komalaṃ|| bhajāmi te padāṃbujaṃ| akāmināṃ svadhāmadaṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 22,
-          number: 22,
-          sanskrit: "प्रफुल्ल कंज लोचनं। मदादि दोष मोचनं॥ आप नितान्त सुन्दर श्याम, संसार [आवागमन]-रूपी समुद्रको मथनेके लिये मन्दराचलरूप, फूले हुए कमलके समान नेत्रोंवाले और मद आदि दोषोंसे छुड़ानेवाले हैं॥ २॥",
-          transliteration: "praphulla kṃja locanṃ| madādi doṣa mocanṃ|| āpa nitānta sundara śyāma, sṃsāra [āvāgamana]-rūpī samudrako mathaneke liye mandarācalarūpa, phūle hue kamalake samāna netroṃvāle aura mada ādi doṣoṃse chuḍa़ānevāle haiṃ|| 2||",
-          translation: "प्रलंब बाहु विक्रमं। प्रभोऽप्रमेय वैभवं॥",
-          hindi: "प्रलंब बाहु विक्रमं। प्रभोऽप्रमेय वैभवं॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 22,
+          "number": 22,
+          "sanskrit": "निकाम श्याम सुंदरं। भवांबुनाथ मंदरं॥ प्रफुल्ल कंज लोचनं। मदादि दोष मोचनं॥",
+          "transliteration": "nikāma śyāma suṃdaraṃ| bhavāṃbunātha maṃdaraṃ|| praphulla kaṃja locanaṃ| madādi doṣa mocanaṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 23,
-          number: 23,
-          sanskrit: "निषंग चाप सायकं। धरं त्रिलोक नायकं॥ हे प्रभो! आपकी लंबी भुजाओंका पराक्रम और आपका ऐश्वर्य अप्रमेय (बुद्धिके परे अथवा असीम) है। आप तरकस और धनुष-बाण धारण करनेवाले तीनों लोकोंके स्वामी,॥ ३॥",
-          transliteration: "niṣṃga cāpa sāyakṃ| dharṃ triloka nāyakṃ|| he prabho! āpakī lṃbī bhujāoṃkā parākrama aura āpakā aiśvarya aprameya (buddhike pare athavā asīma) hai| āpa tarakasa aura dhanuṣa-bāṇa dhāraṇa karanevāle tīnoṃ lokoṃke svāmī,|| 3||",
-          translation: "दिनेश वंश मंडनं। महेश चाप खंडनं॥",
-          hindi: "दिनेश वंश मंडनं। महेश चाप खंडनं॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 23,
+          "number": 23,
+          "sanskrit": "प्रलंब बाहु विक्रमं। प्रभोऽप्रमेय वैभवं॥ निषंग चाप सायकं। धरं त्रिलोक नायकं॥",
+          "transliteration": "pralaṃba bāhu vikramaṃ| prabho'prameya vaibhavaṃ|| niṣaṃga cāpa sāyakaṃ| dharaṃ triloka nāyakaṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 24,
-          number: 24,
-          sanskrit: "मुनींद्र संत रंजनं। सुरारि वृंद भंजनं॥ सूर्यवंशके भूषण, महादेवजीके धनुषको तोड़नेवाले, मुनिराजों और संतोंको आनन्द देनेवाले तथा देवताओंके शत्रु असुरोंके समूहका नाश करनेवाले हैं॥ ४॥",
-          transliteration: "munīṃdra sṃta rṃjanṃ| surāri vṛṃda bhṃjanṃ|| sūryavṃśake bhūṣaṇa, mahādevajīke dhanuṣako toḍa़nevāle, munirājoṃ aura sṃtoṃko ānanda denevāle tathā devatāoṃke śatru asuroṃke samūhakā nāśa karanevāle haiṃ|| 4||",
-          translation: "मनोज वैरि वंदितं। अजादि देव सेवितं॥",
-          hindi: "मनोज वैरि वंदितं। अजादि देव सेवितं॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 24,
+          "number": 24,
+          "sanskrit": "दिनेश वंश मंडनं। महेश चाप खंडनं॥ मुनींद्र संत रंजनं। सुरारि वृंद भंजनं॥",
+          "transliteration": "dineśa vaṃśa maṃḍanaṃ| maheśa cāpa khaṃḍanaṃ|| munīṃdra saṃta raṃjanaṃ| surāri vṛṃda bhaṃjanaṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 25,
-          number: 25,
-          sanskrit: "विशुद्ध बोध विग्रहं। समस्त दूषणापहं॥ आप कामदेवके शत्रु महादेवजीके द्वारा वन्दित, ब्रह्मा आदि देवताओंसे सेवित, विशुद्ध ज्ञानमय विग्रह और समस्त दोषोंको नष्ट करनेवाले हैं॥ ५॥",
-          transliteration: "viśuddha bodha vigrahṃ| samasta dūṣaṇāpahṃ|| āpa kāmadevake śatru mahādevajīke dvārā vandita, brahmā ādi devatāoṃse sevita, viśuddha jñānamaya vigraha aura samasta doṣoṃko naṣṭa karanevāle haiṃ|| 5||",
-          translation: "नमामि इंदिरा पतिं। सुखाकरं सतां गतिं॥",
-          hindi: "नमामि इंदिरा पतिं। सुखाकरं सतां गतिं॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 25,
+          "number": 25,
+          "sanskrit": "मनोज वैरि वंदितं। अजादि देव सेवितं॥ विशुद्ध बोध विग्रहं। समस्त दूषणापहं॥",
+          "transliteration": "manoja vairi vaṃditaṃ| ajādi deva sevitaṃ|| viśuddha bodha vigrahaṃ| samasta dūṣaṇāpahaṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 26,
-          number: 26,
-          sanskrit: "भजे सशक्ति सानुजं। शची पति प्रियानुजं॥ हे लक्ष्मीपते! हे सुखोंकी खान और सत्पुरुषोंकी एकमात्र गति! मैं आपको नमस्कार करता हूँ। हे शचीपति (इन्द्र)-के प्रिय छोटे भाई (वामनजी)! स्वरूपा-शक्ति श्रीसीताजी और छोटे भाई लक्ष्मणजीसहित आपको मैं भजता हूँ॥ ६॥",
-          transliteration: "bhaje saśakti sānujṃ| śacī pati priyānujṃ|| he lakṣmīpate! he sukhoṃkī khāna aura satpuruṣoṃkī ekamātra gati! maiṃ āpako namaskāra karatā hūँ| he śacīpati (indra)-ke priya choṭe bhāī (vāmanajī)! svarūpā-śakti śrīsītājī aura choṭe bhāī lakṣmaṇajīsahita āpako maiṃ bhajatā hūँ|| 6||",
-          translation: "त्वदंघ्रि मूल ये नरा:। भजंति हीन मत्सरा:॥",
-          hindi: "त्वदंघ्रि मूल ये नरा:। भजंति हीन मत्सरा:॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 26,
+          "number": 26,
+          "sanskrit": "नमामि इंदिरा पतिं। सुखाकरं सतां गतिं॥ भजे सशक्ति सानुजं। शची पति प्रियानुजं॥",
+          "transliteration": "namāmi iṃdirā patiṃ| sukhākaraṃ satāṃ gatiṃ|| bhaje saśakti sānujaṃ| śacī pati priyānujaṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 27,
-          number: 27,
-          sanskrit: "पतंति नो भवार्णवे। वितर्क वीचि संकुले॥ जो मनुष्य मत्सर (डाह) रहित होकर आपके चरणकमलोंका सेवन करते हैं, वे तर्क-वितर्क (अनेक प्रकारके सन्देह)-रूपी तरंगोंसे पूर्ण संसाररूपी समुद्रमें नहीं गिरते (आवागमनके चक्करमें नहीं पड़ते)॥ ७॥",
-          transliteration: "patṃti no bhavārṇave| vitarka vīci sṃkule|| jo manuṣya matsara (ḍāha) rahita hokara āpake caraṇakamaloṃkā sevana karate haiṃ, ve tarka-vitarka (aneka prakārake sandeha)-rūpī tarṃgoṃse pūrṇa sṃsārarūpī samudrameṃ nahīṃ girate (āvāgamanake cakkarameṃ nahīṃ paḍa़te)|| 7||",
-          translation: "विविक्त वासिन: सदा। भजंति मुक्तये मुदा॥",
-          hindi: "विविक्त वासिन: सदा। भजंति मुक्तये मुदा॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 27,
+          "number": 27,
+          "sanskrit": "त्वदंघ्रि मूल ये नरा:। भजंति हीन मत्सरा:॥ पतंति नो भवार्णवे। वितर्क वीचि संकुले॥",
+          "transliteration": "tvadaṃghri mūla ye narā:| bhajaṃti hīna matsarā:|| pataṃti no bhavārṇave| vitarka vīci saṃkule||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 28,
-          number: 28,
-          sanskrit: "निरस्य इंद्रियादिकं। प्रयांति ते गतिं स्वकं॥ जो एकान्तवासी पुरुष मुक्तिके लिये, इन्द्रियादिका निग्रह करके (उन्हें विषयोंसे हटाकर) प्रसन्नतापूर्वक आपको भजते हैं, वे स्वकीय गतिको (अपने स्वरूपको) प्राप्त होते हैं॥ ८॥",
-          transliteration: "nirasya iṃdriyādikṃ| prayāṃti te gatiṃ svakṃ|| jo ekāntavāsī puruṣa muktike liye, indriyādikā nigraha karake (unheṃ viṣayoṃse haṭākara) prasannatāpūrvaka āpako bhajate haiṃ, ve svakīya gatiko (apane svarūpako) prāpta hote haiṃ|| 8||",
-          translation: "तमेकमद्भुतं प्रभुं। निरीहमीश्वरं विभुं॥",
-          hindi: "तमेकमद्भुतं प्रभुं। निरीहमीश्वरं विभुं॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 28,
+          "number": 28,
+          "sanskrit": "विविक्त वासिन: सदा। भजंति मुक्तये मुदा॥ निरस्य इंद्रियादिकं। प्रयांति ते गतिं स्वकं॥",
+          "transliteration": "vivikta vāsina: sadā| bhajaṃti muktaye mudā|| nirasya iṃdriyādikaṃ| prayāṃti te gatiṃ svakaṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 29,
-          number: 29,
-          sanskrit: "जगद्गुरुं च शाश्वतं। तुरीयमेव केवलं॥ उन (आप)-को जो एक (अद्वितीय), अद्भुत (मायिक जगत्से विलक्षण), प्रभु (सर्वसमर्थ), इच्छारहित, ईश्वर (सबके स्वामी), व्यापक, जगद्गुरु, सनातन (नित्य), तुरीय (तीनों गुणोंसे सर्वथा परे) और केवल (अपने स्वरूपमें स्थित) हैं॥ ९॥",
-          transliteration: "jagadguruṃ ca śāśvatṃ| turīyameva kevalṃ|| una (āpa)-ko jo eka (advitīya), adbhuta (māyika jagatse vilakṣaṇa), prabhu (sarvasamartha), icchārahita, īśvara (sabake svāmī), vyāpaka, jagadguru, sanātana (nitya), turīya (tīnoṃ guṇoṃse sarvathā pare) aura kevala (apane svarūpameṃ sthita) haiṃ|| 9||",
-          translation: "भजामि भाव वल्लभं। कुयोगिनां सुदुर्लभं॥",
-          hindi: "भजामि भाव वल्लभं। कुयोगिनां सुदुर्लभं॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
+          "id": 29,
+          "number": 29,
+          "sanskrit": "तमेकमद्भुतं प्रभुं। निरीहमीश्वरं विभुं॥ जगद्गुरुं च शाश्वतं। तुरीयमेव केवलं॥",
+          "transliteration": "tamekamadbhutaṃ prabhuṃ| nirīhamīśvaraṃ vibhuṃ|| jagadguruṃ ca śāśvataṃ| turīyameva kevalaṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
         },
         {
-          id: 30,
-          number: 30,
-          sanskrit: "स्वभक्त कल्प पादपं। समं सुसेव्यमन्वहं॥ [तथा] जो भावप्रिय, कुयोगियों (विषयी पुरुषों)-के लिये अत्यन्त दुर्लभ, अपने भक्तोंके लिये कल्पवृक्ष (अर्थात् उनकी समस्त कामनाओंको पूर्ण करनेवाले), सम (पक्षपातरहित) और सदा सुखपूर्वक सेवन करनेयोग्य हैं; मैं निरन्तर भजता हूँ॥ १०॥",
-          transliteration: "svabhakta kalpa pādapṃ| samṃ susevyamanvahṃ|| [tathā] jo bhāvapriya, kuyogiyoṃ (viṣayī puruṣoṃ)-ke liye atyanta durlabha, apane bhaktoṃke liye kalpavṛkṣa (arthāt unakī samasta kāmanāoṃko pūrṇa karanevāle), sama (pakṣapātarahita) aura sadā sukhapūrvaka sevana karaneyogya haiṃ; maiṃ nirantara bhajatā hūँ|| 10||",
-          translation: "अनूप रूप भूपतिं। नतोऽहमुर्विजा पतिं॥",
-          hindi: "अनूप रूप भूपतिं। नतोऽहमुर्विजा पतिं॥",
-          explanation: "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","अरण्यकाण्ड"]
-        },
-      ],
+          "id": 30,
+          "number": 30,
+          "sanskrit": "भजामि भाव वल्लभं। कुयोगिनां सुदुर्लभं॥ स्वभक्त कल्प पादपं। समं सुसेव्यमन्वहं॥",
+          "transliteration": "bhajāmi bhāva vallabhaṃ| kuyogināṃ sudurlabhaṃ|| svabhakta kalpa pādapaṃ| samaṃ susevyamanvahaṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस अरण्यकाण्ड — पञ्चवटी, शबरी-भक्ति एवं सीता-हरण का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "अरण्यकाण्ड"
+          ]
+        }
+      ]
     },
     {
-      id: 4,
-      title: "Kishkindha Kanda — The Alliance",
-      titleSanskrit: "किष्किन्धाकाण्ड",
-      summary: "Rama meets Hanuman at Rishyamukha, makes friendship with Sugriva, slays Vali, and dispatches the Vanara search parties southwards in search of Sita.",
-      verses: [
+      "id": 4,
+      "title": "Kishkindha Kanda — The Alliance",
+      "titleSanskrit": "किष्किन्धाकाण्ड",
+      "summary": "Rama meets Hanuman at Rishyamukha, makes friendship with Sugriva, slays Vali, and dispatches the Vanara search parties southwards in search of Sita.",
+      "verses": [
         {
-          id: 1,
-          number: 1,
-          sanskrit: "श्रीजानकीवल्लभो विजयते श्रीरामचरितमानस चतुर्थ सोपान श्लोक कुन्देन्दीवरसुन्दरावतिबलौ विज्ञानधामावुभौ शोभाढ्यौ वरधन्विनौ श्रुतिनुतौ गोविप्रवृन्दप्रियौ। मायामानुषरूपिणौ रघुवरौ सद्धर्मवर्मौ हितौ सीतान्वेषणतत्परौ पथिगतौ भक्तिप्रदौ तौ हि न:॥ १॥ कुन्दपुष्प और नील कमलके समान सुन्दर गौर एवं श्यामवर्ण, अत्यन्त बलवान्, विज्ञानके धाम, शोभासम्पन्न, श्रेष्ठ धनुर्धर, वेदोंके द्वारा वन्दित, गौ एवं ब्राह्मणोंके समूहके प्रिय [अथवा प्रेमी], मायासे मनुष्यरूप धारण किये हुए, श्रेष्ठ धर्मके लिये कवचस्वरूप, सबके हितकारी, श्रीसीताजीकी खोजमें लगे हुए, पथिकरूप रघुकुलके श्रेष्ठ श्रीरामजी और श्रीलक्ष्मणजी दोनों भाई निश्चय ही हमें भक्तिप्रद हों॥ १॥",
-          transliteration: "śrījānakīvallabho vijayate śrīrāmacaritamānasa caturtha sopāna śloka kundendīvarasundarāvatibalau vijñānadhāmāvubhau śobhāḍhyau varadhanvinau śrutinutau govipravṛndapriyau| māyāmānuṣarūpiṇau raghuvarau saddharmavarmau hitau sītānveṣaṇatatparau pathigatau bhaktipradau tau hi na:|| 1|| kundapuṣpa aura nīla kamalake samāna sundara gaura evṃ śyāmavarṇa, atyanta balavān, vijñānake dhāma, śobhāsampanna, śreṣṭha dhanurdhara, vedoṃke dvārā vandita, gau evṃ brāhmaṇoṃke samūhake priya [athavā premī], māyāse manuṣyarūpa dhāraṇa kiye hue, śreṣṭha dharmake liye kavacasvarūpa, sabake hitakārī, śrīsītājīkī khojameṃ lage hue, pathikarūpa raghukulake śreṣṭha śrīrāmajī aura śrīlakṣmaṇajī donoṃ bhāī niścaya hī hameṃ bhaktiprada hoṃ|| 1||",
-          translation: "ब्रह्माम्भोधिसमुद्भवं कलिमलप्रध्वंसनं चाव्ययं",
-          hindi: "ब्रह्माम्भोधिसमुद्भवं कलिमलप्रध्वंसनं चाव्ययं",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 1,
+          "number": 1,
+          "sanskrit": "कुन्देन्दीवरसुन्दरावतिबलौ विज्ञानधामावुभौ शोभाढ्यौ वरधन्विनौ श्रुतिनुतौ गोविप्रवृन्दप्रियौ। मायामानुषरूपिणौ रघुवरौ सद्धर्मवर्मौ हितौ सीतान्वेषणतत्परौ पथिगतौ भक्तिप्रदौ तौ हि न:॥ १॥",
+          "transliteration": "kundendīvarasundarāvatibalau vijñānadhāmāvubhau śobhāḍhyau varadhanvinau śrutinutau govipravṛndapriyau| māyāmānuṣarūpiṇau raghuvarau saddharmavarmau hitau sītānveṣaṇatatparau pathigatau bhaktipradau tau hi na:|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 2,
-          number: 2,
-          sanskrit: "श्रीमच्छम्भुमुखेन्दुसुन्दरवरे संशोभितं सर्वदा। संसारामयभेषजं सुखकरं श्रीजानकीजीवनं धन्यास्ते कृतिन: पिबन्ति सततं श्रीरामनामामृतम्॥ २॥ वे सुकृती (पुण्यात्मा पुरुष) धन्य हैं जो वेदरूपी समुद्र [के मथने]-से उत्पन्न हुए कलियुगके मलको सर्वथा नष्ट कर देनेवाले, अविनाशी, भगवान् श्रीशम्भुके सुन्दर एवं श्रेष्ठ मुखरूपी चन्द्रमामें सदा शोभायमान, जन्म-मरणरूपी रोगके औषध, सबको सुख देनेवाले और श्रीजानकीजीके जीवनस्वरूप श्रीरामनामरूपी अमृतका निरन्तर पान करते रहते हैं॥ २॥",
-          transliteration: "śrīmacchambhumukhendusundaravare sṃśobhitṃ sarvadā| sṃsārāmayabheṣajṃ sukhakarṃ śrījānakījīvanṃ dhanyāste kṛtina: pibanti satatṃ śrīrāmanāmāmṛtam|| 2|| ve sukṛtī (puṇyātmā puruṣa) dhanya haiṃ jo vedarūpī samudra [ke mathane]-se utpanna hue kaliyugake malako sarvathā naṣṭa kara denevāle, avināśī, bhagavān śrīśambhuke sundara evṃ śreṣṭha mukharūpī candramāmeṃ sadā śobhāyamāna, janma-maraṇarūpī rogake auṣadha, sabako sukha denevāle aura śrījānakījīke jīvanasvarūpa śrīrāmanāmarūpī amṛtakā nirantara pāna karate rahate haiṃ|| 2||",
-          translation: "सो०—मुक्ति जन्म महि जानि ग्यान खानि अघ हानि कर।",
-          hindi: "सो०—मुक्ति जन्म महि जानि ग्यान खानि अघ हानि कर।",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 2,
+          "number": 2,
+          "sanskrit": "ब्रह्माम्भोधिसमुद्भवं कलिमलप्रध्वंसनं चाव्ययं श्रीमच्छम्भुमुखेन्दुसुन्दरवरे संशोभितं सर्वदा। संसारामयभेषजं सुखकरं श्रीजानकीजीवनं धन्यास्ते कृतिन: पिबन्ति सततं श्रीरामनामामृतम्॥ २॥",
+          "transliteration": "brahmāmbhodhisamudbhavaṃ kalimalapradhvaṃsanaṃ cāvyayaṃ śrīmacchambhumukhendusundaravare saṃśobhitaṃ sarvadā| saṃsārāmayabheṣajaṃ sukhakaraṃ śrījānakījīvanaṃ dhanyāste kṛtina: pibanti satataṃ śrīrāmanāmāmṛtam|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 3,
-          number: 3,
-          sanskrit: "जहँ बस संभु भवानि सो कासी सेइअ कस न॥ जहाँ श्रीशिव-पार्वती बसते हैं, उस काशीको मुक्तिकी जन्मभूमि, ज्ञानकी खान और पापोंका नाश करनेवाली जानकर उसका सेवन क्यों न किया जाय? जरत सकल सुर बृंद बिषम गरल जेहिं पान किय। तेहि न भजसि मन मंद को कृपाल संकर सरिस॥ जिस भीषण हलाहल विषसे सब देवतागण जल रहे थे उसको जिन्होंने स्वयं पान कर लिया, रे मन्द मन! तू उन शंकरजीको क्यों नहीं भजता? उनके समान कृपालु [और] कौन है? आगें चले बहुरि रघुराया। रिष्यमूक पर्बत निअराया॥ तहँ रह सचिव सहित सुग्रीवा। आवत देखि अतुल बल सींवा॥ श्रीरघुनाथजी फिर आगे चले। ऋष्यमूक पर्वत निकट आ गया। वहाँ (ऋष्यमूक पर्वतपर) मन्त्रियोंसहित सुग्रीव रहते थे। अतुलनीय बलकी सीमा श्रीरामचन्द्रजी और लक्ष्मणजीको आते देखकर—॥ १॥",
-          transliteration: "jahaँ basa sṃbhu bhavāni so kāsī seia kasa na|| jahāँ śrīśiva-pārvatī basate haiṃ, usa kāśīko muktikī janmabhūmi, jñānakī khāna aura pāpoṃkā nāśa karanevālī jānakara usakā sevana kyoṃ na kiyā jāya? jarata sakala sura bṛṃda biṣama garala jehiṃ pāna kiya| tehi na bhajasi mana mṃda ko kṛpāla sṃkara sarisa|| jisa bhīṣaṇa halāhala viṣase saba devatāgaṇa jala rahe the usako jinhoṃne svayṃ pāna kara liyā, re manda mana! tū una śṃkarajīko kyoṃ nahīṃ bhajatā? unake samāna kṛpālu [aura] kauna hai? āgeṃ cale bahuri raghurāyā| riṣyamūka parbata niarāyā|| tahaँ raha saciva sahita sugrīvā| āvata dekhi atula bala sīṃvā|| śrīraghunāthajī phira āge cale| ṛṣyamūka parvata nikaṭa ā gayā| vahāँ (ṛṣyamūka parvatapara) mantriyoṃsahita sugrīva rahate the| atulanīya balakī sīmā śrīrāmacandrajī aura lakṣmaṇajīko āte dekhakara—|| 1||",
-          translation: "अति सभीत कह सुनु हनुमाना। पुरुष जुगल बल रूप निधाना॥",
-          hindi: "अति सभीत कह सुनु हनुमाना। पुरुष जुगल बल रूप निधाना॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 3,
+          "number": 3,
+          "sanskrit": "सो०—मुक्ति जन्म महि जानि ग्यान खानि अघ हानि कर। जहँ बस संभु भवानि सो कासी सेइअ कस न॥",
+          "transliteration": "so0—mukti janma mahi jāni gyāna khāni agha hāni kara| jaham̐ basa saṃbhu bhavāni so kāsī seia kasa na||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 4,
-          number: 4,
-          sanskrit: "धरि बटु रूप देखु तैं जाई। कहेसु जानि जियँ सयन बुझाई॥ सुग्रीव अत्यन्त भयभीत होकर बोले—हे हनुमान्! सुनो, ये दोनों पुरुष बल और रूपके निधान हैं। तुम ब्रह्मचारीका रूप धारण करके जाकर देखो। अपने हृदयमें उनकी यथार्थ बात जानकर मुझे इशारेसे समझाकर कह देना॥ २॥",
-          transliteration: "dhari baṭu rūpa dekhu taiṃ jāī| kahesu jāni jiyaँ sayana bujhāī|| sugrīva atyanta bhayabhīta hokara bole—he hanumān! suno, ye donoṃ puruṣa bala aura rūpake nidhāna haiṃ| tuma brahmacārīkā rūpa dhāraṇa karake jākara dekho| apane hṛdayameṃ unakī yathārtha bāta jānakara mujhe iśārese samajhākara kaha denā|| 2||",
-          translation: "पठए बालि होहिं मन मैला। भागौं तुरत तजौं यह सैला॥",
-          hindi: "पठए बालि होहिं मन मैला। भागौं तुरत तजौं यह सैला॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 4,
+          "number": 4,
+          "sanskrit": "अति सभीत कह सुनु हनुमाना। पुरुष जुगल बल रूप निधाना॥ धरि बटु रूप देखु तैं जाई। कहेसु जानि जियँ सयन बुझाई॥",
+          "transliteration": "ati sabhīta kaha sunu hanumānā| puruṣa jugala bala rūpa nidhānā|| dhari baṭu rūpa dekhu taiṃ jāī| kahesu jāni jiyam̐ sayana bujhāī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 5,
-          number: 5,
-          sanskrit: "बिप्र रूप धरि कपि तहँ गयऊ। माथ नाइ पूछत अस भयऊ॥ यदि वे मनके मलिन बालिके भेजे हुए हों तो मैं तुरंत ही इस पर्वतको छोड़कर भाग जाऊँ। [यह सुनकर] हनुमान्जी ब्राह्मणका रूप धरकर वहाँ गये और मस्तक नवाकर इस प्रकार पूछने लगे—॥ ३॥",
-          transliteration: "bipra rūpa dhari kapi tahaँ gayaū| mātha nāi pūchata asa bhayaū|| yadi ve manake malina bālike bheje hue hoṃ to maiṃ turṃta hī isa parvatako choḍa़kara bhāga jāūँ| [yaha sunakara] hanumānjī brāhmaṇakā rūpa dharakara vahāँ gaye aura mastaka navākara isa prakāra pūchane lage—|| 3||",
-          translation: "को तुम्ह स्यामल गौर सरीरा। छत्री रूप फिरहु बन बीरा॥",
-          hindi: "को तुम्ह स्यामल गौर सरीरा। छत्री रूप फिरहु बन बीरा॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 5,
+          "number": 5,
+          "sanskrit": "पठए बालि होहिं मन मैला। भागौं तुरत तजौं यह सैला॥ बिप्र रूप धरि कपि तहँ गयऊ। माथ नाइ पूछत अस भयऊ॥",
+          "transliteration": "paṭhae bāli hohiṃ mana mailā| bhāgauṃ turata tajauṃ yaha sailā|| bipra rūpa dhari kapi taham̐ gayaū| mātha nāi pūchata asa bhayaū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 6,
-          number: 6,
-          sanskrit: "कठिन भूमि कोमल पद गामी। कवन हेतु बिचरहु बन स्वामी॥ हे वीर! साँवले और गोरे शरीरवाले आप कौन हैं, जो क्षत्रियके रूपमें वनमें फिर रहे हैं? हे स्वामी! कठोर भूमिपर कोमल चरणोंसे चलनेवाले आप किस कारण वनमें विचर रहे हैं?॥ ४॥",
-          transliteration: "kaṭhina bhūmi komala pada gāmī| kavana hetu bicarahu bana svāmī|| he vīra! sāँvale aura gore śarīravāle āpa kauna haiṃ, jo kṣatriyake rūpameṃ vanameṃ phira rahe haiṃ? he svāmī! kaṭhora bhūmipara komala caraṇoṃse calanevāle āpa kisa kāraṇa vanameṃ vicara rahe haiṃ?|| 4||",
-          translation: "मृदुल मनोहर सुंदर गाता। सहत दुसह बन आतप बाता॥",
-          hindi: "मृदुल मनोहर सुंदर गाता। सहत दुसह बन आतप बाता॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 6,
+          "number": 6,
+          "sanskrit": "को तुम्ह स्यामल गौर सरीरा। छत्री रूप फिरहु बन बीरा॥ कठिन भूमि कोमल पद गामी। कवन हेतु बिचरहु बन स्वामी॥",
+          "transliteration": "ko tumha syāmala gaura sarīrā| chatrī rūpa phirahu bana bīrā|| kaṭhina bhūmi komala pada gāmī| kavana hetu bicarahu bana svāmī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 7,
-          number: 7,
-          sanskrit: "की तुम्ह तीनि देव महँ कोऊ। नर नारायन की तुम्ह दोऊ॥ मनको हरण करनेवाले आपके सुन्दर, कोमल अंग हैं, और आप वनके दु:सह धूप और वायुको सह रहे हैं। क्या आप ब्रह्मा, विष्णु, महेश—इन तीन देवताओंमेंसे कोई हैं, या आप दोनों नर और नारायण हैं॥ ५॥",
-          transliteration: "kī tumha tīni deva mahaँ koū| nara nārāyana kī tumha doū|| manako haraṇa karanevāle āpake sundara, komala ṃga haiṃ, aura āpa vanake du:saha dhūpa aura vāyuko saha rahe haiṃ| kyā āpa brahmā, viṣṇu, maheśa—ina tīna devatāoṃmeṃse koī haiṃ, yā āpa donoṃ nara aura nārāyaṇa haiṃ|| 5||",
-          translation: "दो०—जग कारन तारन भव भंजन धरनी भार।",
-          hindi: "दो०—जग कारन तारन भव भंजन धरनी भार।",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 7,
+          "number": 7,
+          "sanskrit": "मृदुल मनोहर सुंदर गाता। सहत दुसह बन आतप बाता॥",
+          "transliteration": "mṛdula manohara suṃdara gātā| sahata dusaha bana ātapa bātā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 8,
-          number: 8,
-          sanskrit: "की तुम्ह अखिल भुवन पति लीन्ह मनुज अवतार॥ १॥ अथवा आप जगत् के मूल कारण और सम्पूर्ण लोकोंके स्वामी स्वयं भगवान् हैं, जिन्होंने लोगोंको भवसागरसे पार उतारने तथा पृथ्वीका भार नष्ट करनेके लिये मनुष्य-रूपमें अवतार लिया है?॥ १॥",
-          transliteration: "kī tumha akhila bhuvana pati līnha manuja avatāra|| 1|| athavā āpa jagat ke mūla kāraṇa aura sampūrṇa lokoṃke svāmī svayṃ bhagavān haiṃ, jinhoṃne logoṃko bhavasāgarase pāra utārane tathā pṛthvīkā bhāra naṣṭa karaneke liye manuṣya-rūpameṃ avatāra liyā hai?|| 1||",
-          translation: "कोसलेस दसरथ के जाए। हम पितु बचन मानि बन आए॥",
-          hindi: "कोसलेस दसरथ के जाए। हम पितु बचन मानि बन आए॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 8,
+          "number": 8,
+          "sanskrit": "दो०—जग कारन तारन भव भंजन धरनी भार। की तुम्ह अखिल भुवन पति लीन्ह मनुज अवतार॥ १॥",
+          "transliteration": "do0—jaga kārana tārana bhava bhaṃjana dharanī bhāra| kī tumha akhila bhuvana pati līnha manuja avatāra|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 9,
-          number: 9,
-          sanskrit: "नाम राम लछिमन दोउ भाई। संग नारि सुकुमारि सुहाई॥ [श्रीरामचन्द्रजीने कहा—] हम कोसलराज दशरथजीके पुत्र हैं और पिताका वचन मानकर वन आये हैं। हमारे राम-लक्ष्मण नाम हैं, हम दोनों भाई हैं। हमारे साथ सुन्दर सुकुमारी स्त्री थी॥ १॥",
-          transliteration: "nāma rāma lachimana dou bhāī| sṃga nāri sukumāri suhāī|| [śrīrāmacandrajīne kahā—] hama kosalarāja daśarathajīke putra haiṃ aura pitākā vacana mānakara vana āye haiṃ| hamāre rāma-lakṣmaṇa nāma haiṃ, hama donoṃ bhāī haiṃ| hamāre sātha sundara sukumārī strī thī|| 1||",
-          translation: "इहाँ हरी निसिचर बैदेही। बिप्र फिरहिं हम खोजत तेही॥",
-          hindi: "इहाँ हरी निसिचर बैदेही। बिप्र फिरहिं हम खोजत तेही॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 9,
+          "number": 9,
+          "sanskrit": "कोसलेस दसरथ के जाए। हम पितु बचन मानि बन आए॥ नाम राम लछिमन दोउ भाई। संग नारि सुकुमारि सुहाई॥",
+          "transliteration": "kosalesa dasaratha ke jāe| hama pitu bacana māni bana āe|| nāma rāma lachimana dou bhāī| saṃga nāri sukumāri suhāī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 10,
-          number: 10,
-          sanskrit: "आपन चरित कहा हम गाई। कहहु बिप्र निज कथा बुझाई॥ यहाँ (वनमें) राक्षसने [मेरी पत्नी] जानकीको हर लिया। हे ब्राह्मण! हम उसे ही खोजते फिरते हैं। हमने तो अपना चरित्र कह सुनाया। अब हे ब्राह्मण! अपनी कथा समझाकर कहिये॥ २॥",
-          transliteration: "āpana carita kahā hama gāī| kahahu bipra nija kathā bujhāī|| yahāँ (vanameṃ) rākṣasane [merī patnī] jānakīko hara liyā| he brāhmaṇa! hama use hī khojate phirate haiṃ| hamane to apanā caritra kaha sunāyā| aba he brāhmaṇa! apanī kathā samajhākara kahiye|| 2||",
-          translation: "प्रभु पहिचानि परेउ गहि चरना। सो सुख उमा जाइ नहिं बरना॥",
-          hindi: "प्रभु पहिचानि परेउ गहि चरना। सो सुख उमा जाइ नहिं बरना॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 10,
+          "number": 10,
+          "sanskrit": "इहाँ हरी निसिचर बैदेही। बिप्र फिरहिं हम खोजत तेही॥ आपन चरित कहा हम गाई। कहहु बिप्र निज कथा बुझाई॥",
+          "transliteration": "ihām̐ harī nisicara baidehī| bipra phirahiṃ hama khojata tehī|| āpana carita kahā hama gāī| kahahu bipra nija kathā bujhāī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 11,
-          number: 11,
-          sanskrit: "पुलकित तन मुख आव न बचना। देखत रुचिर बेष कै रचना॥ प्रभुको पहचानकर हनुमान्जी उनके चरण पकड़कर पृथ्वीपर गिर पड़े (उन्होंने साष्टांग दण्डवत्-प्रणाम किया)। [शिवजी कहते हैं—] हे पार्वती! वह सुख वर्णन नहीं किया जा सकता। शरीर पुलकित है, मुखसे वचन नहीं निकलता। वे प्रभुके सुन्दर वेषकी रचना देख रहे हैं!॥ ३॥",
-          transliteration: "pulakita tana mukha āva na bacanā| dekhata rucira beṣa kai racanā|| prabhuko pahacānakara hanumānjī unake caraṇa pakaḍa़kara pṛthvīpara gira paḍa़e (unhoṃne sāṣṭāṃga daṇḍavat-praṇāma kiyā)| [śivajī kahate haiṃ—] he pārvatī! vaha sukha varṇana nahīṃ kiyā jā sakatā| śarīra pulakita hai, mukhase vacana nahīṃ nikalatā| ve prabhuke sundara veṣakī racanā dekha rahe haiṃ!|| 3||",
-          translation: "पुनि धीरजु धरि अस्तुति कीन्ही। हरष हृदयँ निज नाथहि चीन्ही॥",
-          hindi: "पुनि धीरजु धरि अस्तुति कीन्ही। हरष हृदयँ निज नाथहि चीन्ही॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 11,
+          "number": 11,
+          "sanskrit": "प्रभु पहिचानि परेउ गहि चरना। सो सुख उमा जाइ नहिं बरना॥ पुलकित तन मुख आव न बचना। देखत रुचिर बेष कै रचना॥",
+          "transliteration": "prabhu pahicāni pareu gahi caranā| so sukha umā jāi nahiṃ baranā|| pulakita tana mukha āva na bacanā| dekhata rucira beṣa kai racanā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 12,
-          number: 12,
-          sanskrit: "मोर न्याउ मैं पूछा साईं। तुम्ह पूछहु कस नर की नाईं॥ फिर धीरज धरकर स्तुति की। अपने नाथको पहचान लेनेसे हृदयमें हर्ष हो रहा है। [फिर हनुमान्जीने कहा—] हे स्वामी! मैंने जो पूछा वह मेरा पूछना तो न्याय था, [वर्षोंके बाद आपको देखा, वह भी तपस्वीके वेषमें और मेरी वानरी-बुद्धि, इससे मैं तो आपको पहचान न सका और अपनी परिस्थितिके अनुसार मैंने आपसे पूछा] परन्तु आप मनुष्यकी तरह कैसे पूछ रहे हैं?॥ ४॥",
-          transliteration: "mora nyāu maiṃ pūchā sāīṃ| tumha pūchahu kasa nara kī nāīṃ|| phira dhīraja dharakara stuti kī| apane nāthako pahacāna lenese hṛdayameṃ harṣa ho rahā hai| [phira hanumānjīne kahā—] he svāmī! maiṃne jo pūchā vaha merā pūchanā to nyāya thā, [varṣoṃke bāda āpako dekhā, vaha bhī tapasvīke veṣameṃ aura merī vānarī-buddhi, isase maiṃ to āpako pahacāna na sakā aura apanī paristhitike anusāra maiṃne āpase pūchā] parantu āpa manuṣyakī taraha kaise pūcha rahe haiṃ?|| 4||",
-          translation: "तव माया बस फिरउँ भुलाना। ता ते मैं नहिं प्रभु पहिचाना॥",
-          hindi: "तव माया बस फिरउँ भुलाना। ता ते मैं नहिं प्रभु पहिचाना॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 12,
+          "number": 12,
+          "sanskrit": "पुनि धीरजु धरि अस्तुति कीन्ही। हरष हृदयँ निज नाथहि चीन्ही॥ मोर न्याउ मैं पूछा साईं। तुम्ह पूछहु कस नर की नाईं॥",
+          "transliteration": "puni dhīraju dhari astuti kīnhī| haraṣa hṛdayam̐ nija nāthahi cīnhī|| mora nyāu maiṃ pūchā sāīṃ| tumha pūchahu kasa nara kī nāīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 13,
-          number: 13,
-          sanskrit: "मैं तो आपकी मायाके वश भूला फिरता हूँ; इसीसे मैंने अपने स्वामी (आप)-को नहीं पहचाना॥ ५॥",
-          transliteration: "maiṃ to āpakī māyāke vaśa bhūlā phiratā hūँ; isīse maiṃne apane svāmī (āpa)-ko nahīṃ pahacānā|| 5||",
-          translation: "दो०—एकु मैं मंद मोहबस कुटिल हृदय अग्यान।",
-          hindi: "दो०—एकु मैं मंद मोहबस कुटिल हृदय अग्यान।",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 13,
+          "number": 13,
+          "sanskrit": "तव माया बस फिरउँ भुलाना। ता ते मैं नहिं प्रभु पहिचाना॥",
+          "transliteration": "tava māyā basa phiraum̐ bhulānā| tā te maiṃ nahiṃ prabhu pahicānā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 14,
-          number: 14,
-          sanskrit: "पुनि प्रभु मोहि बिसारेउ दीनबंधु भगवान॥ २॥ एक तो मैं यों ही मन्द हूँ, दूसरे मोहके वशमें हूँ, तीसरे हृदयका कुटिल और अज्ञान हूँ, फिर हे दीनबन्धु भगवान्! प्रभु (आप)-ने भी मुझे भुला दिया!॥ २॥",
-          transliteration: "puni prabhu mohi bisāreu dīnabṃdhu bhagavāna|| 2|| eka to maiṃ yoṃ hī manda hūँ, dūsare mohake vaśameṃ hūँ, tīsare hṛdayakā kuṭila aura ajñāna hūँ, phira he dīnabandhu bhagavān! prabhu (āpa)-ne bhī mujhe bhulā diyā!|| 2||",
-          translation: "जदपि नाथ बहु अवगुन मोरें। सेवक प्रभुहि परै जनि भोरें॥",
-          hindi: "जदपि नाथ बहु अवगुन मोरें। सेवक प्रभुहि परै जनि भोरें॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 14,
+          "number": 14,
+          "sanskrit": "दो०—एकु मैं मंद मोहबस कुटिल हृदय अग्यान। पुनि प्रभु मोहि बिसारेउ दीनबंधु भगवान॥ २॥",
+          "transliteration": "do0—eku maiṃ maṃda mohabasa kuṭila hṛdaya agyāna| puni prabhu mohi bisāreu dīnabaṃdhu bhagavāna|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 15,
-          number: 15,
-          sanskrit: "नाथ जीव तव मायाँ मोहा। सो निस्तरइ तुम्हारेहिं छोहा॥ हे नाथ! यद्यपि मुझमें बहुत-से अवगुण हैं, तथापि सेवक स्वामीकी विस्मृतिमें न पड़े (आप उसे न भूल जायँ) हे नाथ! जीव आपकी मायासे मोहित है। वह आपहीकी कृपासे निस्तार पा सकता है॥ १॥",
-          transliteration: "nātha jīva tava māyāँ mohā| so nistarai tumhārehiṃ chohā|| he nātha! yadyapi mujhameṃ bahuta-se avaguṇa haiṃ, tathāpi sevaka svāmīkī vismṛtimeṃ na paḍa़e (āpa use na bhūla jāyaँ) he nātha! jīva āpakī māyāse mohita hai| vaha āpahīkī kṛpāse nistāra pā sakatā hai|| 1||",
-          translation: "ता पर मैं रघुबीर दोहाई। जानउँ नहिं कछु भजन उपाई॥",
-          hindi: "ता पर मैं रघुबीर दोहाई। जानउँ नहिं कछु भजन उपाई॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 15,
+          "number": 15,
+          "sanskrit": "जदपि नाथ बहु अवगुन मोरें। सेवक प्रभुहि परै जनि भोरें॥ नाथ जीव तव मायाँ मोहा। सो निस्तरइ तुम्हारेहिं छोहा॥",
+          "transliteration": "jadapi nātha bahu avaguna moreṃ| sevaka prabhuhi parai jani bhoreṃ|| nātha jīva tava māyām̐ mohā| so nistarai tumhārehiṃ chohā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 16,
-          number: 16,
-          sanskrit: "सेवक सुत पति मातु भरोसें। रहइ असोच बनइ प्रभु पोसें॥ उसपर हे रघुवीर! मैं आपकी दुहाई (शपथ) करके कहता हूँ कि मैं भजन-साधन कुछ नहीं जानता। सेवक स्वामीके और पुत्र माताके भरोसे निश्चिन्त रहता है। प्रभुको सेवकका पालन-पोषण करते ही बनता है (करना ही पड़ता है)॥ २॥",
-          transliteration: "sevaka suta pati mātu bharoseṃ| rahai asoca banai prabhu poseṃ|| usapara he raghuvīra! maiṃ āpakī duhāī (śapatha) karake kahatā hūँ ki maiṃ bhajana-sādhana kucha nahīṃ jānatā| sevaka svāmīke aura putra mātāke bharose niścinta rahatā hai| prabhuko sevakakā pālana-poṣaṇa karate hī banatā hai (karanā hī paḍa़tā hai)|| 2||",
-          translation: "अस कहि परेउ चरन अकुलाई। निज तनु प्रगटि प्रीति उर छाई॥",
-          hindi: "अस कहि परेउ चरन अकुलाई। निज तनु प्रगटि प्रीति उर छाई॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 16,
+          "number": 16,
+          "sanskrit": "ता पर मैं रघुबीर दोहाई। जानउँ नहिं कछु भजन उपाई॥ सेवक सुत पति मातु भरोसें। रहइ असोच बनइ प्रभु पोसें॥",
+          "transliteration": "tā para maiṃ raghubīra dohāī| jānaum̐ nahiṃ kachu bhajana upāī|| sevaka suta pati mātu bharoseṃ| rahai asoca banai prabhu poseṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 17,
-          number: 17,
-          sanskrit: "तब रघुपति उठाइ उर लावा। निज लोचन जल सींचि जुड़ावा॥ ऐसा कहकर हनुमान्जी अकुलाकर प्रभुके चरणोंपर गिर पड़े, उन्होंने अपना असली शरीर प्रकट कर दिया। उनके हृदयमें प्रेम छा गया। तब श्रीरघुनाथजीने उन्हें उठाकर हृदयसे लगा लिया और अपने नेत्रोंके जलसे सींचकर शीतल किया॥ ३॥",
-          transliteration: "taba raghupati uṭhāi ura lāvā| nija locana jala sīṃci juḍa़āvā|| aisā kahakara hanumānjī akulākara prabhuke caraṇoṃpara gira paḍa़e, unhoṃne apanā asalī śarīra prakaṭa kara diyā| unake hṛdayameṃ prema chā gayā| taba śrīraghunāthajīne unheṃ uṭhākara hṛdayase lagā liyā aura apane netroṃke jalase sīṃcakara śītala kiyā|| 3||",
-          translation: "सुनु कपि जियँ मानसि जनि ऊना। तैं मम प्रिय लछिमन ते दूना॥",
-          hindi: "सुनु कपि जियँ मानसि जनि ऊना। तैं मम प्रिय लछिमन ते दूना॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 17,
+          "number": 17,
+          "sanskrit": "अस कहि परेउ चरन अकुलाई। निज तनु प्रगटि प्रीति उर छाई॥ तब रघुपति उठाइ उर लावा। निज लोचन जल सींचि जुड़ावा॥",
+          "transliteration": "asa kahi pareu carana akulāī| nija tanu pragaṭi prīti ura chāī|| taba raghupati uṭhāi ura lāvā| nija locana jala sīṃci juḍa़āvā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 18,
-          number: 18,
-          sanskrit: "समदरसी मोहि कह सब कोऊ। सेवक प्रिय अनन्यगति सोऊ॥ [फिर कहा—] हे कपि! सुनो, मनमें ग्लानि मत मानना (मन छोटा न करना)। तुम मुझे लक्ष्मणसे भी दूने प्रिय हो। सब कोई मुझे समदर्शी कहते हैं (मेरे लिये न कोई प्रिय है न अप्रिय) पर मुझको सेवक प्रिय है, क्योंकि वह अनन्यगति होता है (मुझे छोड़कर उसको कोई दूसरा सहारा नहीं होता)॥ ४॥",
-          transliteration: "samadarasī mohi kaha saba koū| sevaka priya ananyagati soū|| [phira kahā—] he kapi! suno, manameṃ glāni mata mānanā (mana choṭā na karanā)| tuma mujhe lakṣmaṇase bhī dūne priya ho| saba koī mujhe samadarśī kahate haiṃ (mere liye na koī priya hai na apriya) para mujhako sevaka priya hai, kyoṃki vaha ananyagati hotā hai (mujhe choḍa़kara usako koī dūsarā sahārā nahīṃ hotā)|| 4||",
-          translation: "दो०—सो अनन्य जाकें असि मति न टरइ हनुमंत।",
-          hindi: "दो०—सो अनन्य जाकें असि मति न टरइ हनुमंत।",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 18,
+          "number": 18,
+          "sanskrit": "सुनु कपि जियँ मानसि जनि ऊना। तैं मम प्रिय लछिमन ते दूना॥ समदरसी मोहि कह सब कोऊ। सेवक प्रिय अनन्यगति सोऊ॥",
+          "transliteration": "sunu kapi jiyam̐ mānasi jani ūnā| taiṃ mama priya lachimana te dūnā|| samadarasī mohi kaha saba koū| sevaka priya ananyagati soū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 19,
-          number: 19,
-          sanskrit: "मैं सेवक सचराचर रूप स्वामि भगवंत॥ ३॥ और हे हनुमान्! अनन्य वही है जिसकी ऐसी बुद्धि कभी नहीं टलती कि मैं सेवक हूँ और यह चराचर (जड-चेतन) जगत् मेरे स्वामी भगवान्का रूप है॥ ३॥",
-          transliteration: "maiṃ sevaka sacarācara rūpa svāmi bhagavṃta|| 3|| aura he hanumān! ananya vahī hai jisakī aisī buddhi kabhī nahīṃ ṭalatī ki maiṃ sevaka hūँ aura yaha carācara (jaḍa-cetana) jagat mere svāmī bhagavānkā rūpa hai|| 3||",
-          translation: "देखि पवनसुत पति अनुकूला। हृदयँ हरष बीती सब सूला॥",
-          hindi: "देखि पवनसुत पति अनुकूला। हृदयँ हरष बीती सब सूला॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 19,
+          "number": 19,
+          "sanskrit": "दो०—सो अनन्य जाकें असि मति न टरइ हनुमंत। मैं सेवक सचराचर रूप स्वामि भगवंत॥ ३॥",
+          "transliteration": "do0—so ananya jākeṃ asi mati na ṭarai hanumaṃta| maiṃ sevaka sacarācara rūpa svāmi bhagavaṃta|| 3||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 20,
-          number: 20,
-          sanskrit: "नाथ सैल पर कपिपति रहई। सो सुग्रीव दास तव अहई॥ स्वामीको अनुकूल (प्रसन्न) देखकर पवनकुमार हनुमान्जीके हृदयमें हर्ष छा गया और उनके सब दु:ख जाते रहे। [उन्होंने कहा—] हे नाथ! इस पर्वतपर वानरराज सुग्रीव रहता है, वह आपका दास है॥ १॥",
-          transliteration: "nātha saila para kapipati rahaī| so sugrīva dāsa tava ahaī|| svāmīko anukūla (prasanna) dekhakara pavanakumāra hanumānjīke hṛdayameṃ harṣa chā gayā aura unake saba du:kha jāte rahe| [unhoṃne kahā—] he nātha! isa parvatapara vānararāja sugrīva rahatā hai, vaha āpakā dāsa hai|| 1||",
-          translation: "तेहि सन नाथ मयत्री कीजे। दीन जानि तेहि अभय करीजे॥",
-          hindi: "तेहि सन नाथ मयत्री कीजे। दीन जानि तेहि अभय करीजे॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 20,
+          "number": 20,
+          "sanskrit": "देखि पवनसुत पति अनुकूला। हृदयँ हरष बीती सब सूला॥ नाथ सैल पर कपिपति रहई। सो सुग्रीव दास तव अहई॥",
+          "transliteration": "dekhi pavanasuta pati anukūlā| hṛdayam̐ haraṣa bītī saba sūlā|| nātha saila para kapipati rahaī| so sugrīva dāsa tava ahaī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 21,
-          number: 21,
-          sanskrit: "सो सीता कर खोज कराइहि। जहँ तहँ मरकट कोटि पठाइहि॥ हे नाथ! उससे मित्रता कीजिये और उसे दीन जानकर निर्भय कर दीजिये। वह सीताजीकी खोज करावेगा और जहाँ-तहाँ करोड़ों वानरोंको भेजेगा॥ २॥",
-          transliteration: "so sītā kara khoja karāihi| jahaँ tahaँ marakaṭa koṭi paṭhāihi|| he nātha! usase mitratā kījiye aura use dīna jānakara nirbhaya kara dījiye| vaha sītājīkī khoja karāvegā aura jahāँ-tahāँ karoḍa़oṃ vānaroṃko bhejegā|| 2||",
-          translation: "एहि बिधि सकल कथा समुझाई। लिए दुऔ जन पीठि चढ़ाई॥",
-          hindi: "एहि बिधि सकल कथा समुझाई। लिए दुऔ जन पीठि चढ़ाई॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 21,
+          "number": 21,
+          "sanskrit": "तेहि सन नाथ मयत्री कीजे। दीन जानि तेहि अभय करीजे॥ सो सीता कर खोज कराइहि। जहँ तहँ मरकट कोटि पठाइहि॥",
+          "transliteration": "tehi sana nātha mayatrī kīje| dīna jāni tehi abhaya karīje|| so sītā kara khoja karāihi| jaham̐ taham̐ marakaṭa koṭi paṭhāihi||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 22,
-          number: 22,
-          sanskrit: "जब सुग्रीवँ राम कहुँ देखा। अतिसय जन्म धन्य करि लेखा॥ इस प्रकार सब बातें समझाकर हनुमान्जीने (श्रीराम-लक्ष्मण) दोनों जनोंको पीठपर चढ़ा लिया। जब सुग्रीवने श्रीरामचन्द्रजीको देखा तो अपने जन्मको अत्यन्त धन्य समझा॥ ३॥",
-          transliteration: "jaba sugrīvaँ rāma kahuँ dekhā| atisaya janma dhanya kari lekhā|| isa prakāra saba bāteṃ samajhākara hanumānjīne (śrīrāma-lakṣmaṇa) donoṃ janoṃko pīṭhapara caḍha़ā liyā| jaba sugrīvane śrīrāmacandrajīko dekhā to apane janmako atyanta dhanya samajhā|| 3||",
-          translation: "सादर मिलेउ नाइ पद माथा। भेंटेउ अनुज सहित रघुनाथा॥",
-          hindi: "सादर मिलेउ नाइ पद माथा। भेंटेउ अनुज सहित रघुनाथा॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 22,
+          "number": 22,
+          "sanskrit": "एहि बिधि सकल कथा समुझाई। लिए दुऔ जन पीठि चढ़ाई॥ जब सुग्रीवँ राम कहुँ देखा। अतिसय जन्म धन्य करि लेखा॥",
+          "transliteration": "ehi bidhi sakala kathā samujhāī| lie duau jana pīṭhi caḍha़āī|| jaba sugrīvam̐ rāma kahum̐ dekhā| atisaya janma dhanya kari lekhā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 23,
-          number: 23,
-          sanskrit: "कपि कर मन बिचार एहि रीती। करिहहिं बिधि मो सन ए प्रीती॥ सुग्रीव चरणोंमें मस्तक नवाकर आदरसहित मिले। श्रीरघुनाथजी भी छोटे भाईसहित उनसे गले लगकर मिले। सुग्रीव मनमें इस प्रकार सोच रहे हैं कि हे विधाता! क्या ये मुझसे प्रीति करेंगे?॥ ४॥",
-          transliteration: "kapi kara mana bicāra ehi rītī| karihahiṃ bidhi mo sana e prītī|| sugrīva caraṇoṃmeṃ mastaka navākara ādarasahita mile| śrīraghunāthajī bhī choṭe bhāīsahita unase gale lagakara mile| sugrīva manameṃ isa prakāra soca rahe haiṃ ki he vidhātā! kyā ye mujhase prīti kareṃge?|| 4||",
-          translation: "दो०—तब हनुमंत उभय दिसि की सब कथा सुनाइ।",
-          hindi: "दो०—तब हनुमंत उभय दिसि की सब कथा सुनाइ।",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 23,
+          "number": 23,
+          "sanskrit": "सादर मिलेउ नाइ पद माथा। भेंटेउ अनुज सहित रघुनाथा॥ कपि कर मन बिचार एहि रीती। करिहहिं बिधि मो सन ए प्रीती॥",
+          "transliteration": "sādara mileu nāi pada māthā| bheṃṭeu anuja sahita raghunāthā|| kapi kara mana bicāra ehi rītī| karihahiṃ bidhi mo sana e prītī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 24,
-          number: 24,
-          sanskrit: "पावक साखी देइ करि जोरी प्रीति दृढ़ाइ॥ ४॥ तब हनुमान्जीने दोनों ओरकी सब कथा सुनाकर अग्निको साक्षी देकर परस्पर दृढ़ करके प्रीति जोड़ दी (अर्थात् अग्निकी साक्षी देकर प्रतिज्ञापूर्वक उनकी मैत्री करवा दी)॥ ४॥",
-          transliteration: "pāvaka sākhī dei kari jorī prīti dṛḍha़āi|| 4|| taba hanumānjīne donoṃ orakī saba kathā sunākara agniko sākṣī dekara paraspara dṛḍha़ karake prīti joḍa़ dī (arthāt agnikī sākṣī dekara pratijñāpūrvaka unakī maitrī karavā dī)|| 4||",
-          translation: "कीन्हि प्रीति कछु बीच न राखा। लछिमन राम चरित सब भाषा॥",
-          hindi: "कीन्हि प्रीति कछु बीच न राखा। लछिमन राम चरित सब भाषा॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 24,
+          "number": 24,
+          "sanskrit": "दो०—तब हनुमंत उभय दिसि की सब कथा सुनाइ। पावक साखी देइ करि जोरी प्रीति दृढ़ाइ॥ ४॥",
+          "transliteration": "do0—taba hanumaṃta ubhaya disi kī saba kathā sunāi| pāvaka sākhī dei kari jorī prīti dṛḍha़āi|| 4||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 25,
-          number: 25,
-          sanskrit: "कह सुग्रीव नयन भरि बारी। मिलिहि नाथ मिथिलेसकुमारी॥ दोनोंने [हृदयसे] प्रीति की, कुछ भी अन्तर नहीं रखा। तब लक्ष्मणजीने श्रीरामचन्द्रजीका सारा इतिहास कहा। सुग्रीवने नेत्रोंमें जल भरकर कहा—हे नाथ! मिथिलेशकुमारी जानकीजी मिल जायँगी॥ १॥",
-          transliteration: "kaha sugrīva nayana bhari bārī| milihi nātha mithilesakumārī|| donoṃne [hṛdayase] prīti kī, kucha bhī antara nahīṃ rakhā| taba lakṣmaṇajīne śrīrāmacandrajīkā sārā itihāsa kahā| sugrīvane netroṃmeṃ jala bharakara kahā—he nātha! mithileśakumārī jānakījī mila jāyaँgī|| 1||",
-          translation: "मंत्रिन्ह सहित इहाँ एक बारा। बैठ रहेउँ मैं करत बिचारा॥",
-          hindi: "मंत्रिन्ह सहित इहाँ एक बारा। बैठ रहेउँ मैं करत बिचारा॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 25,
+          "number": 25,
+          "sanskrit": "कीन्हि प्रीति कछु बीच न राखा। लछिमन राम चरित सब भाषा॥ कह सुग्रीव नयन भरि बारी। मिलिहि नाथ मिथिलेसकुमारी॥",
+          "transliteration": "kīnhi prīti kachu bīca na rākhā| lachimana rāma carita saba bhāṣā|| kaha sugrīva nayana bhari bārī| milihi nātha mithilesakumārī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 26,
-          number: 26,
-          sanskrit: "गगन पंथ देखी मैं जाता। परबस परी बहुत बिलपाता॥ मैं एक बार यहाँ मन्त्रियोंके साथ बैठा हुआ कुछ विचार कर रहा था। तब मैंने पराये (शत्रु)-के वशमें पड़ी बहुत विलाप करती हुई सीताजीको आकाशमार्गसे जाते देखा था॥ २॥",
-          transliteration: "gagana pṃtha dekhī maiṃ jātā| parabasa parī bahuta bilapātā|| maiṃ eka bāra yahāँ mantriyoṃke sātha baiṭhā huā kucha vicāra kara rahā thā| taba maiṃne parāye (śatru)-ke vaśameṃ paḍa़ī bahuta vilāpa karatī huī sītājīko ākāśamārgase jāte dekhā thā|| 2||",
-          translation: "राम राम हा राम पुकारी। हमहि देखि दीन्हेउ पट डारी॥",
-          hindi: "राम राम हा राम पुकारी। हमहि देखि दीन्हेउ पट डारी॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 26,
+          "number": 26,
+          "sanskrit": "मंत्रिन्ह सहित इहाँ एक बारा। बैठ रहेउँ मैं करत बिचारा॥",
+          "transliteration": "maṃtrinha sahita ihām̐ eka bārā| baiṭha raheum̐ maiṃ karata bicārā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 27,
-          number: 27,
-          sanskrit: "मागा राम तुरत तेहिं दीन्हा। पट उर लाइ सोच अति कीन्हा॥ हमें देखकर उन्होंने ‘राम! राम! हा राम!’ पुकारकर वस्त्र गिरा दिया था। श्रीरामजीने उसे माँगा, तब सुग्रीवने तुरंत ही दे दिया। वस्त्रको हृदयसे लगाकर श्रीरामचन्द्रजीने बहुत ही सोच किया॥ ३॥",
-          transliteration: "māgā rāma turata tehiṃ dīnhā| paṭa ura lāi soca ati kīnhā|| hameṃ dekhakara unhoṃne ‘rāma! rāma! hā rāma!’ pukārakara vastra girā diyā thā| śrīrāmajīne use māँgā, taba sugrīvane turṃta hī de diyā| vastrako hṛdayase lagākara śrīrāmacandrajīne bahuta hī soca kiyā|| 3||",
-          translation: "कह सुग्रीव सुनहु रघुबीरा। तजहु सोच मन आनहु धीरा॥",
-          hindi: "कह सुग्रीव सुनहु रघुबीरा। तजहु सोच मन आनहु धीरा॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 27,
+          "number": 27,
+          "sanskrit": "राम राम हा राम पुकारी। हमहि देखि दीन्हेउ पट डारी॥ मागा राम तुरत तेहिं दीन्हा। पट उर लाइ सोच अति कीन्हा॥",
+          "transliteration": "rāma rāma hā rāma pukārī| hamahi dekhi dīnheu paṭa ḍārī|| māgā rāma turata tehiṃ dīnhā| paṭa ura lāi soca ati kīnhā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 28,
-          number: 28,
-          sanskrit: "सब प्रकार करिहउँ सेवकाई। जेहि बिधि मिलिहि जानकी आई॥ सुग्रीवने कहा—हे रघुवीर! सुनिये, सोच छोड़ दीजिये और मनमें धीरज लाइये। मैं सब प्रकारसे आपकी सेवा करूँगा, जिस उपायसे जानकीजी आकर आपको मिलें॥ ४॥",
-          transliteration: "saba prakāra karihauँ sevakāī| jehi bidhi milihi jānakī āī|| sugrīvane kahā—he raghuvīra! suniye, soca choḍa़ dījiye aura manameṃ dhīraja lāiye| maiṃ saba prakārase āpakī sevā karūँgā, jisa upāyase jānakījī ākara āpako mileṃ|| 4||",
-          translation: "दो०—सखा बचन सुनि हरषे कृपासिंधु बलसींव।",
-          hindi: "दो०—सखा बचन सुनि हरषे कृपासिंधु बलसींव।",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 28,
+          "number": 28,
+          "sanskrit": "कह सुग्रीव सुनहु रघुबीरा। तजहु सोच मन आनहु धीरा॥ सब प्रकार करिहउँ सेवकाई। जेहि बिधि मिलिहि जानकी आई॥",
+          "transliteration": "kaha sugrīva sunahu raghubīrā| tajahu soca mana ānahu dhīrā|| saba prakāra karihaum̐ sevakāī| jehi bidhi milihi jānakī āī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 29,
-          number: 29,
-          sanskrit: "कारन कवन बसहु बन मोहि कहहु सुग्रीव॥ ५॥ कृपाके समुद्र और बलकी सीमा श्रीरामजी सखा सुग्रीवके वचन सुनकर हर्षित हुए। [और बोले—] हे सुग्रीव! मुझे बताओ, तुम वनमें किस कारण रहते हो?॥ ५॥",
-          transliteration: "kārana kavana basahu bana mohi kahahu sugrīva|| 5|| kṛpāke samudra aura balakī sīmā śrīrāmajī sakhā sugrīvake vacana sunakara harṣita hue| [aura bole—] he sugrīva! mujhe batāo, tuma vanameṃ kisa kāraṇa rahate ho?|| 5||",
-          translation: "नाथ बालि अरु मैं द्वौ भाई। प्रीति रही कछु बरनि न जाई॥",
-          hindi: "नाथ बालि अरु मैं द्वौ भाई। प्रीति रही कछु बरनि न जाई॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
+          "id": 29,
+          "number": 29,
+          "sanskrit": "दो०—सखा बचन सुनि हरषे कृपासिंधु बलसींव। कारन कवन बसहु बन मोहि कहहु सुग्रीव॥ ५॥",
+          "transliteration": "do0—sakhā bacana suni haraṣe kṛpāsiṃdhu balasīṃva| kārana kavana basahu bana mohi kahahu sugrīva|| 5||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
         },
         {
-          id: 30,
-          number: 30,
-          sanskrit: "मयसुत मायावी तेहि नाऊँ। आवा सो प्रभु हमरें गाऊँ॥ [सुग्रीवने कहा—] हे नाथ! बालि और मैं दो भाई हैं। हम दोनोंमें ऐसी प्रीति थी कि वर्णन नहीं की जा सकती। हे प्रभो! मय दानवका एक पुत्र था, उसका नाम मायावी था। एक बार वह हमारे गाँवमें आया॥ १॥",
-          transliteration: "mayasuta māyāvī tehi nāūँ| āvā so prabhu hamareṃ gāūँ|| [sugrīvane kahā—] he nātha! bāli aura maiṃ do bhāī haiṃ| hama donoṃmeṃ aisī prīti thī ki varṇana nahīṃ kī jā sakatī| he prabho! maya dānavakā eka putra thā, usakā nāma māyāvī thā| eka bāra vaha hamāre gāँvameṃ āyā|| 1||",
-          translation: "अर्ध राति पुर द्वार पुकारा। बाली रिपु बल सहइ न पारा॥",
-          hindi: "अर्ध राति पुर द्वार पुकारा। बाली रिपु बल सहइ न पारा॥",
-          explanation: "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","किष्किन्धाकाण्ड"]
-        },
-      ],
+          "id": 30,
+          "number": 30,
+          "sanskrit": "नाथ बालि अरु मैं द्वौ भाई। प्रीति रही कछु बरनि न जाई॥ मयसुत मायावी तेहि नाऊँ। आवा सो प्रभु हमरें गाऊँ॥",
+          "transliteration": "nātha bāli aru maiṃ dvau bhāī| prīti rahī kachu barani na jāī|| mayasuta māyāvī tehi nāūm̐| āvā so prabhu hamareṃ gāūm̐||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस किष्किन्धाकाण्ड — राम-सुग्रीव मित्रता एवं हनुमान-प्रस्थान का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "किष्किन्धाकाण्ड"
+          ]
+        }
+      ]
     },
     {
-      id: 5,
-      title: "Sundar Kanda — Hanuman's Flight",
-      titleSanskrit: "सुन्दरकाण्ड",
-      summary: "Hanuman leaps across the ocean to Lanka, discovers Sita in the Ashoka Vatika, gives the signet ring, burns Lanka, and returns with joyful news of Sita's steadfastness.",
-      verses: [
+      "id": 5,
+      "title": "Sundar Kanda — Hanuman's Flight",
+      "titleSanskrit": "सुन्दरकाण्ड",
+      "summary": "Hanuman leaps across the ocean to Lanka, discovers Sita in the Ashoka Vatika, gives the signet ring, burns Lanka, and returns with joyful news of Sita's steadfastness.",
+      "verses": [
         {
-          id: 1,
-          number: 1,
-          sanskrit: "श्रीजानकीवल्लभो विजयते श्रीरामचरितमानस पञ्चम सोपान श्लोक शान्तं शाश्वतमप्रमेयमनघं निर्वाणशान्तिप्रदं ब्रह्माशम्भुफणीन्द्रसेव्यमनिशं वेदान्तवेद्यं विभुम्। रामाख्यं जगदीश्वरं सुरगुरुं मायामनुष्यं हरिं वन्देऽहं करुणाकरं रघुवरं भूपालचूडामणिम्॥ १॥ शान्त, सनातन, अप्रमेय (प्रमाणोंसे परे), निष्पाप, मोक्षरूप परमशान्ति देनेवाले, ब्रह्मा, शम्भु और शेषजीसे निरन्तर सेवित, वेदान्तके द्वारा जाननेयोग्य, सर्वव्यापक, देवताओंमें सबसे बड़े, मायासे मनुष्यरूपमें दीखनेवाले, समस्त पापोंको हरनेवाले, करुणाकी खान, रघुकुलमें श्रेष्ठ तथा राजाओंके शिरोमणि, राम कहलानेवाले जगदीश्वरकी मैं वन्दना करता हूँ॥ १॥",
-          transliteration: "śrījānakīvallabho vijayate śrīrāmacaritamānasa pañcama sopāna śloka śāntṃ śāśvatamaprameyamanaghṃ nirvāṇaśāntipradṃ brahmāśambhuphaṇīndrasevyamaniśṃ vedāntavedyṃ vibhum| rāmākhyṃ jagadīśvarṃ suraguruṃ māyāmanuṣyṃ hariṃ vande'hṃ karuṇākarṃ raghuvarṃ bhūpālacūḍāmaṇim|| 1|| śānta, sanātana, aprameya (pramāṇoṃse pare), niṣpāpa, mokṣarūpa paramaśānti denevāle, brahmā, śambhu aura śeṣajīse nirantara sevita, vedāntake dvārā jānaneyogya, sarvavyāpaka, devatāoṃmeṃ sabase baḍa़e, māyāse manuṣyarūpameṃ dīkhanevāle, samasta pāpoṃko haranevāle, karuṇākī khāna, raghukulameṃ śreṣṭha tathā rājāoṃke śiromaṇi, rāma kahalānevāle jagadīśvarakī maiṃ vandanā karatā hūँ|| 1||",
-          translation: "नान्या स्पृहा रघुपते हृदयेऽस्मदीये",
-          hindi: "नान्या स्पृहा रघुपते हृदयेऽस्मदीये",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 1,
+          "number": 1,
+          "sanskrit": "शान्तं शाश्वतमप्रमेयमनघं निर्वाणशान्तिप्रदं ब्रह्माशम्भुफणीन्द्रसेव्यमनिशं वेदान्तवेद्यं विभुम्। रामाख्यं जगदीश्वरं सुरगुरुं मायामनुष्यं हरिं वन्देऽहं करुणाकरं रघुवरं भूपालचूडामणिम्॥ १॥",
+          "transliteration": "śāntaṃ śāśvatamaprameyamanaghaṃ nirvāṇaśāntipradaṃ brahmāśambhuphaṇīndrasevyamaniśaṃ vedāntavedyaṃ vibhum| rāmākhyaṃ jagadīśvaraṃ suraguruṃ māyāmanuṣyaṃ hariṃ vande'haṃ karuṇākaraṃ raghuvaraṃ bhūpālacūḍāmaṇim|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 2,
-          number: 2,
-          sanskrit: "सत्यं वदामि च भवानखिलान्तरात्मा। भक्तिं प्रयच्छ रघुपुङ्गव निर्भरां मे कामादिदोषरहितं कुरु मानसं च॥ २॥ हे रघुनाथजी! मैं सत्य कहता हूँ और फिर आप सबके अन्तरात्मा ही हैं (सब जानते ही हैं) कि मेरे हृदयमें दूसरी कोई इच्छा नहीं है। हे रघुकुलश्रेष्ठ! मुझे अपनी निर्भरा (पूर्ण) भक्ति दीजिये और मेरे मनको काम आदि दोषोंसे रहित कीजिये॥ २॥",
-          transliteration: "satyṃ vadāmi ca bhavānakhilāntarātmā| bhaktiṃ prayaccha raghupuṅgava nirbharāṃ me kāmādidoṣarahitṃ kuru mānasṃ ca|| 2|| he raghunāthajī! maiṃ satya kahatā hūँ aura phira āpa sabake antarātmā hī haiṃ (saba jānate hī haiṃ) ki mere hṛdayameṃ dūsarī koī icchā nahīṃ hai| he raghukulaśreṣṭha! mujhe apanī nirbharā (pūrṇa) bhakti dījiye aura mere manako kāma ādi doṣoṃse rahita kījiye|| 2||",
-          translation: "अतुलितबलधामं हेमशैलाभदेहं",
-          hindi: "अतुलितबलधामं हेमशैलाभदेहं",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 2,
+          "number": 2,
+          "sanskrit": "नान्या स्पृहा रघुपते हृदयेऽस्मदीये सत्यं वदामि च भवानखिलान्तरात्मा। भक्तिं प्रयच्छ रघुपुङ्गव निर्भरां मे कामादिदोषरहितं कुरु मानसं च॥ २॥",
+          "transliteration": "nānyā spṛhā raghupate hṛdaye'smadīye satyaṃ vadāmi ca bhavānakhilāntarātmā| bhaktiṃ prayaccha raghupuṅgava nirbharāṃ me kāmādidoṣarahitaṃ kuru mānasaṃ ca|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 3,
-          number: 3,
-          sanskrit: "दनुजवनकृशानुं ज्ञानिनामग्रगण्यम्। सकलगुणनिधानं वानराणामधीशं रघुपतिप्रियभक्तं वातजातं नमामि॥ ३॥ अतुल बलके धाम, सोनेके पर्वत (सुमेरु)-के समान कान्तियुक्त शरीरवाले, दैत्यरूपी वन [को ध्वंस करने]-के लिये अग्निरूप, ज्ञानियोंमें अग्रगण्य, सम्पूर्ण गुणोंके निधान, वानरोंके स्वामी, श्रीरघुनाथजीके प्रिय भक्त पवनपुत्र श्रीहनुमान्जीको मैं प्रणाम करता हूँ॥ ३॥",
-          transliteration: "danujavanakṛśānuṃ jñānināmagragaṇyam| sakalaguṇanidhānṃ vānarāṇāmadhīśṃ raghupatipriyabhaktṃ vātajātṃ namāmi|| 3|| atula balake dhāma, soneke parvata (sumeru)-ke samāna kāntiyukta śarīravāle, daityarūpī vana [ko dhvṃsa karane]-ke liye agnirūpa, jñāniyoṃmeṃ agragaṇya, sampūrṇa guṇoṃke nidhāna, vānaroṃke svāmī, śrīraghunāthajīke priya bhakta pavanaputra śrīhanumānjīko maiṃ praṇāma karatā hūँ|| 3||",
-          translation: "जामवंत के बचन सुहाए। सुनि हनुमंत हृदय अति भाए॥",
-          hindi: "जामवंत के बचन सुहाए। सुनि हनुमंत हृदय अति भाए॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 3,
+          "number": 3,
+          "sanskrit": "अतुलितबलधामं हेमशैलाभदेहं दनुजवनकृशानुं ज्ञानिनामग्रगण्यम्। सकलगुणनिधानं वानराणामधीशं रघुपतिप्रियभक्तं वातजातं नमामि॥ ३॥",
+          "transliteration": "atulitabaladhāmaṃ hemaśailābhadehaṃ danujavanakṛśānuṃ jñānināmagragaṇyam| sakalaguṇanidhānaṃ vānarāṇāmadhīśaṃ raghupatipriyabhaktaṃ vātajātaṃ namāmi|| 3||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 4,
-          number: 4,
-          sanskrit: "तब लगि मोहि परिखेहु तुम्ह भाई। सहि दुख कंद मूल फल खाई॥ जाम्बवान्के सुन्दर वचन सुनकर हनुमान्जीके हृदयको बहुत ही भाये। [वे बोले—] हे भाई! तुमलोग दु:ख सहकर, कन्द-मूल-फल खाकर तबतक मेरी राह देखना॥ १॥",
-          transliteration: "taba lagi mohi parikhehu tumha bhāī| sahi dukha kṃda mūla phala khāī|| jāmbavānke sundara vacana sunakara hanumānjīke hṛdayako bahuta hī bhāye| [ve bole—] he bhāī! tumaloga du:kha sahakara, kanda-mūla-phala khākara tabataka merī rāha dekhanā|| 1||",
-          translation: "जब लगि आवौं सीतहि देखी। होइहि काजु मोहि हरष बिसेषी॥",
-          hindi: "जब लगि आवौं सीतहि देखी। होइहि काजु मोहि हरष बिसेषी॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 4,
+          "number": 4,
+          "sanskrit": "जामवंत के बचन सुहाए। सुनि हनुमंत हृदय अति भाए॥ तब लगि मोहि परिखेहु तुम्ह भाई। सहि दुख कंद मूल फल खाई॥",
+          "transliteration": "jāmavaṃta ke bacana suhāe| suni hanumaṃta hṛdaya ati bhāe|| taba lagi mohi parikhehu tumha bhāī| sahi dukha kaṃda mūla phala khāī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 5,
-          number: 5,
-          sanskrit: "यह कहि नाइ सबन्हि कहुँ माथा। चलेउ हरषि हियँ धरि रघुनाथा॥ जबतक मैं सीताजीको देखकर [लौट] न आऊँ। काम अवश्य होगा, क्योंकि मुझे बहुत ही हर्ष हो रहा है। यह कहकर और सबको मस्तक नवाकर तथा हृदयमें श्रीरघुनाथजीको धारण करके हनुमान्जी हर्षित होकर चले॥ २॥",
-          transliteration: "yaha kahi nāi sabanhi kahuँ māthā| caleu haraṣi hiyaँ dhari raghunāthā|| jabataka maiṃ sītājīko dekhakara [lauṭa] na āūँ| kāma avaśya hogā, kyoṃki mujhe bahuta hī harṣa ho rahā hai| yaha kahakara aura sabako mastaka navākara tathā hṛdayameṃ śrīraghunāthajīko dhāraṇa karake hanumānjī harṣita hokara cale|| 2||",
-          translation: "सिंधु तीर एक भूधर सुंदर। कौतुक कूदि चढ़ेउ ता ऊपर॥",
-          hindi: "सिंधु तीर एक भूधर सुंदर। कौतुक कूदि चढ़ेउ ता ऊपर॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 5,
+          "number": 5,
+          "sanskrit": "जब लगि आवौं सीतहि देखी। होइहि काजु मोहि हरष बिसेषी॥ यह कहि नाइ सबन्हि कहुँ माथा। चलेउ हरषि हियँ धरि रघुनाथा॥",
+          "transliteration": "jaba lagi āvauṃ sītahi dekhī| hoihi kāju mohi haraṣa biseṣī|| yaha kahi nāi sabanhi kahum̐ māthā| caleu haraṣi hiyam̐ dhari raghunāthā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 6,
-          number: 6,
-          sanskrit: "बार बार रघुबीर सँभारी। तरकेउ पवनतनय बल भारी॥ समुद्रके तीरपर एक सुन्दर पर्वत था। हनुमान्जी खेलसे ही (अनायास ही) कूदकर उसके ऊपर जा चढ़े और बार-बार श्रीरघुवीरका स्मरण करके अत्यन्त बलवान् हनुमान्जी उसपरसे बड़े वेगसे उछले॥ ३॥",
-          transliteration: "bāra bāra raghubīra saँbhārī| tarakeu pavanatanaya bala bhārī|| samudrake tīrapara eka sundara parvata thā| hanumānjī khelase hī (anāyāsa hī) kūdakara usake ūpara jā caḍha़e aura bāra-bāra śrīraghuvīrakā smaraṇa karake atyanta balavān hanumānjī usaparase baḍa़e vegase uchale|| 3||",
-          translation: "जेहिं गिरि चरन देइ हनुमंता। चलेउ सो गा पाताल तुरंता॥",
-          hindi: "जेहिं गिरि चरन देइ हनुमंता। चलेउ सो गा पाताल तुरंता॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 6,
+          "number": 6,
+          "sanskrit": "सिंधु तीर एक भूधर सुंदर। कौतुक कूदि चढ़ेउ ता ऊपर॥ बार बार रघुबीर सँभारी। तरकेउ पवनतनय बल भारी॥",
+          "transliteration": "siṃdhu tīra eka bhūdhara suṃdara| kautuka kūdi caḍha़eu tā ūpara|| bāra bāra raghubīra sam̐bhārī| tarakeu pavanatanaya bala bhārī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 7,
-          number: 7,
-          sanskrit: "जिमि अमोघ रघुपति कर बाना। एही भाँति चलेउ हनुमाना॥ जिस पर्वतपर हनुमान्जी पैर रखकर चले (जिसपरसे वे उछले), वह तुरंत ही पातालमें धँस गया। जैसे श्रीरघुनाथजीका अमोघ बाण चलता है, उसी तरह हनुमान्जी चले॥ ४॥",
-          transliteration: "jimi amogha raghupati kara bānā| ehī bhāँti caleu hanumānā|| jisa parvatapara hanumānjī paira rakhakara cale (jisaparase ve uchale), vaha turṃta hī pātālameṃ dhaँsa gayā| jaise śrīraghunāthajīkā amogha bāṇa calatā hai, usī taraha hanumānjī cale|| 4||",
-          translation: "जलनिधि रघुपति दूत बिचारी। तैं मैनाक होहि श्रमहारी॥",
-          hindi: "जलनिधि रघुपति दूत बिचारी। तैं मैनाक होहि श्रमहारी॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 7,
+          "number": 7,
+          "sanskrit": "जेहिं गिरि चरन देइ हनुमंता। चलेउ सो गा पाताल तुरंता॥ जिमि अमोघ रघुपति कर बाना। एही भाँति चलेउ हनुमाना॥",
+          "transliteration": "jehiṃ giri carana dei hanumaṃtā| caleu so gā pātāla turaṃtā|| jimi amogha raghupati kara bānā| ehī bhām̐ti caleu hanumānā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 8,
-          number: 8,
-          sanskrit: "समुद्रने उन्हें श्रीरघुनाथजीका दूत समझकर मैनाक पर्वतसे कहा कि हे मैनाक! तू इनकी थकावट दूर करनेवाला हो (अर्थात् अपने ऊपर इन्हें विश्राम दे)॥ ५॥",
-          transliteration: "samudrane unheṃ śrīraghunāthajīkā dūta samajhakara maināka parvatase kahā ki he maināka! tū inakī thakāvaṭa dūra karanevālā ho (arthāt apane ūpara inheṃ viśrāma de)|| 5||",
-          translation: "दो०—हनूमान तेहि परसा कर पुनि कीन्ह प्रनाम।",
-          hindi: "दो०—हनूमान तेहि परसा कर पुनि कीन्ह प्रनाम।",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 8,
+          "number": 8,
+          "sanskrit": "जलनिधि रघुपति दूत बिचारी। तैं मैनाक होहि श्रमहारी॥",
+          "transliteration": "jalanidhi raghupati dūta bicārī| taiṃ maināka hohi śramahārī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 9,
-          number: 9,
-          sanskrit: "राम काजु कीन्हें बिनु मोहि कहाँ बिश्राम॥ १॥ हनुमान्जीने उसे हाथसे छू दिया, फिर प्रणाम करके कहा—भाई! श्रीरामचन्द्रजीका काम किये बिना मुझे विश्राम कहाँ?॥ १॥",
-          transliteration: "rāma kāju kīnheṃ binu mohi kahāँ biśrāma|| 1|| hanumānjīne use hāthase chū diyā, phira praṇāma karake kahā—bhāī! śrīrāmacandrajīkā kāma kiye binā mujhe viśrāma kahāँ?|| 1||",
-          translation: "जात पवनसुत देवन्ह देखा। जानैं कहुँ बल बुद्धि बिसेषा॥",
-          hindi: "जात पवनसुत देवन्ह देखा। जानैं कहुँ बल बुद्धि बिसेषा॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 9,
+          "number": 9,
+          "sanskrit": "दो०—हनूमान तेहि परसा कर पुनि कीन्ह प्रनाम। राम काजु कीन्हें बिनु मोहि कहाँ बिश्राम॥ १॥",
+          "transliteration": "do0—hanūmāna tehi parasā kara puni kīnha pranāma| rāma kāju kīnheṃ binu mohi kahām̐ biśrāma|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 10,
-          number: 10,
-          sanskrit: "सुरसा नाम अहिन्ह कै माता। पठइन्हि आइ कही तेहिं बाता॥ देवताओेंने पवनपुत्र हनुमान्जीको जाते हुए देखा। उनकी विशेष बल-बुद्धिको जाननेके लिये (परीक्षार्थ) उन्होंने सुरसा नामक सर्पोंकी माताको भेजा, उसने आकर हनुमान्जीसे यह बात कही—॥ १॥",
-          transliteration: "surasā nāma ahinha kai mātā| paṭhainhi āi kahī tehiṃ bātā|| devatāoeṃne pavanaputra hanumānjīko jāte hue dekhā| unakī viśeṣa bala-buddhiko jānaneke liye (parīkṣārtha) unhoṃne surasā nāmaka sarpoṃkī mātāko bhejā, usane ākara hanumānjīse yaha bāta kahī—|| 1||",
-          translation: "आजु सुरन्ह मोहि दीन्ह अहारा। सुनत बचन कह पवनकुमारा॥",
-          hindi: "आजु सुरन्ह मोहि दीन्ह अहारा। सुनत बचन कह पवनकुमारा॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 10,
+          "number": 10,
+          "sanskrit": "जात पवनसुत देवन्ह देखा। जानैं कहुँ बल बुद्धि बिसेषा॥ सुरसा नाम अहिन्ह कै माता। पठइन्हि आइ कही तेहिं बाता॥",
+          "transliteration": "jāta pavanasuta devanha dekhā| jānaiṃ kahum̐ bala buddhi biseṣā|| surasā nāma ahinha kai mātā| paṭhainhi āi kahī tehiṃ bātā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 11,
-          number: 11,
-          sanskrit: "राम काजु करि फिरि मैं आवौं। सीता कइ सुधि प्रभुहि सुनावौं॥ आज देवताओंने मुझे भोजन दिया है। यह वचन सुनकर पवनकुमार हनुमान्जीने कहा—श्रीरामजीका कार्य करके मैं लौट आऊँ और सीताजीकी खबर प्रभुको सुना दूँ,॥ २॥",
-          transliteration: "rāma kāju kari phiri maiṃ āvauṃ| sītā kai sudhi prabhuhi sunāvauṃ|| āja devatāoṃne mujhe bhojana diyā hai| yaha vacana sunakara pavanakumāra hanumānjīne kahā—śrīrāmajīkā kārya karake maiṃ lauṭa āūँ aura sītājīkī khabara prabhuko sunā dūँ,|| 2||",
-          translation: "तब तव बदन पैठिहउँ आई। सत्य कहउँ मोहि जान दे माई॥",
-          hindi: "तब तव बदन पैठिहउँ आई। सत्य कहउँ मोहि जान दे माई॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 11,
+          "number": 11,
+          "sanskrit": "आजु सुरन्ह मोहि दीन्ह अहारा। सुनत बचन कह पवनकुमारा॥ राम काजु करि फिरि मैं आवौं। सीता कइ सुधि प्रभुहि सुनावौं॥",
+          "transliteration": "āju suranha mohi dīnha ahārā| sunata bacana kaha pavanakumārā|| rāma kāju kari phiri maiṃ āvauṃ| sītā kai sudhi prabhuhi sunāvauṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 12,
-          number: 12,
-          sanskrit: "कवनेहुँ जतन देइ नहिं जाना। ग्रससि न मोहि कहेउ हनुमाना॥ तब मैं आकर तुम्हारे मुँहमें घुस जाऊँगा [तुम मुझे खा लेना]। हे माता! मैं सत्य कहता हूँ, अभी मुझे जाने दे। जब किसी भी उपायसे उसने जाने नहीं दिया, तब हनुमान्जीने कहा—तो फिर मुझे खा न ले॥ ३॥",
-          transliteration: "kavanehuँ jatana dei nahiṃ jānā| grasasi na mohi kaheu hanumānā|| taba maiṃ ākara tumhāre muँhameṃ ghusa jāūँgā [tuma mujhe khā lenā]| he mātā! maiṃ satya kahatā hūँ, abhī mujhe jāne de| jaba kisī bhī upāyase usane jāne nahīṃ diyā, taba hanumānjīne kahā—to phira mujhe khā na le|| 3||",
-          translation: "जोजन भरि तेहिं बदनु पसारा। कपि तनु कीन्ह दुगुन बिस्तारा॥",
-          hindi: "जोजन भरि तेहिं बदनु पसारा। कपि तनु कीन्ह दुगुन बिस्तारा॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 12,
+          "number": 12,
+          "sanskrit": "तब तव बदन पैठिहउँ आई। सत्य कहउँ मोहि जान दे माई॥ कवनेहुँ जतन देइ नहिं जाना। ग्रससि न मोहि कहेउ हनुमाना॥",
+          "transliteration": "taba tava badana paiṭhihaum̐ āī| satya kahaum̐ mohi jāna de māī|| kavanehum̐ jatana dei nahiṃ jānā| grasasi na mohi kaheu hanumānā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 13,
-          number: 13,
-          sanskrit: "सोरह जोजन मुख तेहिं ठयऊ। तुरत पवनसुत बत्तिस भयऊ॥ उसने योजनभर (चार कोसमें) मुँह फैलाया। तब हनुमान्जीने अपने शरीरको उससे दूना बढ़ा लिया। उसने सोलह योजनका मुख किया। हनुमान्जी तुरंत ही बत्तिस योजनके हो गये॥ ४॥",
-          transliteration: "soraha jojana mukha tehiṃ ṭhayaū| turata pavanasuta battisa bhayaū|| usane yojanabhara (cāra kosameṃ) muँha phailāyā| taba hanumānjīne apane śarīrako usase dūnā baḍha़ā liyā| usane solaha yojanakā mukha kiyā| hanumānjī turṃta hī battisa yojanake ho gaye|| 4||",
-          translation: "जस जस सुरसा बदनु बढ़ावा। तासु दून कपि रूप देखावा॥",
-          hindi: "जस जस सुरसा बदनु बढ़ावा। तासु दून कपि रूप देखावा॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 13,
+          "number": 13,
+          "sanskrit": "जोजन भरि तेहिं बदनु पसारा। कपि तनु कीन्ह दुगुन बिस्तारा॥ सोरह जोजन मुख तेहिं ठयऊ। तुरत पवनसुत बत्तिस भयऊ॥",
+          "transliteration": "jojana bhari tehiṃ badanu pasārā| kapi tanu kīnha duguna bistārā|| soraha jojana mukha tehiṃ ṭhayaū| turata pavanasuta battisa bhayaū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 14,
-          number: 14,
-          sanskrit: "सत जोजन तेहिं आनन कीन्हा। अति लघु रूप पवनसुत लीन्हा॥ जैसे-जैसे सुरसा मुखका विस्तार बढ़ाती थी, हनुमान्जी उसका दूना रूप दिखलाते थे। उसने सौ योजन (चार सौ कोसका) मुख किया। तब हनुमान्जीने बहुत ही छोटा रूप धारण कर लिया॥ ५॥",
-          transliteration: "sata jojana tehiṃ ānana kīnhā| ati laghu rūpa pavanasuta līnhā|| jaise-jaise surasā mukhakā vistāra baḍha़ātī thī, hanumānjī usakā dūnā rūpa dikhalāte the| usane sau yojana (cāra sau kosakā) mukha kiyā| taba hanumānjīne bahuta hī choṭā rūpa dhāraṇa kara liyā|| 5||",
-          translation: "बदन पइठि पुनि बाहेर आवा। मागा बिदा ताहि सिरु नावा॥",
-          hindi: "बदन पइठि पुनि बाहेर आवा। मागा बिदा ताहि सिरु नावा॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 14,
+          "number": 14,
+          "sanskrit": "जस जस सुरसा बदनु बढ़ावा। तासु दून कपि रूप देखावा॥ सत जोजन तेहिं आनन कीन्हा। अति लघु रूप पवनसुत लीन्हा॥",
+          "transliteration": "jasa jasa surasā badanu baḍha़āvā| tāsu dūna kapi rūpa dekhāvā|| sata jojana tehiṃ ānana kīnhā| ati laghu rūpa pavanasuta līnhā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 15,
-          number: 15,
-          sanskrit: "मोहि सुरन्ह जेहि लागि पठावा। बुधि बल मरमु तोर मैं पावा॥ और वे उसके मुखमें घुसकर [तुरंत] फिर बाहर निकल आये और उसे सिर नवाकर विदा माँगने लगे। [उसने कहा—] मैंने तुम्हारे बुद्धि-बलका भेद पा लिया, जिसके लिये देवताओंने मुझे भेजा था॥ ६॥",
-          transliteration: "mohi suranha jehi lāgi paṭhāvā| budhi bala maramu tora maiṃ pāvā|| aura ve usake mukhameṃ ghusakara [turṃta] phira bāhara nikala āye aura use sira navākara vidā māँgane lage| [usane kahā—] maiṃne tumhāre buddhi-balakā bheda pā liyā, jisake liye devatāoṃne mujhe bhejā thā|| 6||",
-          translation: "दो०—राम काजु सबु करिहहु तुम्ह बल बुद्धि निधान।",
-          hindi: "दो०—राम काजु सबु करिहहु तुम्ह बल बुद्धि निधान।",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 15,
+          "number": 15,
+          "sanskrit": "बदन पइठि पुनि बाहेर आवा। मागा बिदा ताहि सिरु नावा॥ मोहि सुरन्ह जेहि लागि पठावा। बुधि बल मरमु तोर मैं पावा॥",
+          "transliteration": "badana paiṭhi puni bāhera āvā| māgā bidā tāhi siru nāvā|| mohi suranha jehi lāgi paṭhāvā| budhi bala maramu tora maiṃ pāvā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 16,
-          number: 16,
-          sanskrit: "आसिष देइ गई सो हरषि चलेउ हनुमान॥ २॥ तुम श्रीरामचन्द्रजीका सब कार्य करोगे, क्योंकि तुम बल-बुद्धिके भण्डार हो। यह आशीर्वाद देकर वह चली गयी, तब हनुमान्जी हर्षित होकर चले॥ २॥",
-          transliteration: "āsiṣa dei gaī so haraṣi caleu hanumāna|| 2|| tuma śrīrāmacandrajīkā saba kārya karoge, kyoṃki tuma bala-buddhike bhaṇḍāra ho| yaha āśīrvāda dekara vaha calī gayī, taba hanumānjī harṣita hokara cale|| 2||",
-          translation: "निसिचरि एक सिंधु महुँ रहई। करि माया नभु के खग गहई॥",
-          hindi: "निसिचरि एक सिंधु महुँ रहई। करि माया नभु के खग गहई॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 16,
+          "number": 16,
+          "sanskrit": "दो०—राम काजु सबु करिहहु तुम्ह बल बुद्धि निधान। आसिष देइ गई सो हरषि चलेउ हनुमान॥ २॥",
+          "transliteration": "do0—rāma kāju sabu karihahu tumha bala buddhi nidhāna| āsiṣa dei gaī so haraṣi caleu hanumāna|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 17,
-          number: 17,
-          sanskrit: "जीव जंतु जे गगन उड़ाहीं। जल बिलोकि तिन्ह कै परिछाहीं॥ समुद्रमें एक राक्षसी रहती थी। वह माया करके आकाशमें उड़ते हुए पक्षियोंको पकड़ लेती थी। आकाशमें जो जीव-जन्तु उड़ा करते थे, वह जलमें उनकी परछाईं देखकर॥ १॥",
-          transliteration: "jīva jṃtu je gagana uḍa़āhīṃ| jala biloki tinha kai parichāhīṃ|| samudrameṃ eka rākṣasī rahatī thī| vaha māyā karake ākāśameṃ uḍa़te hue pakṣiyoṃko pakaḍa़ letī thī| ākāśameṃ jo jīva-jantu uḍa़ā karate the, vaha jalameṃ unakī parachāīṃ dekhakara|| 1||",
-          translation: "गहइ छाहँ सक सो न उड़ाई। एहि बिधि सदा गगनचर खाई॥",
-          hindi: "गहइ छाहँ सक सो न उड़ाई। एहि बिधि सदा गगनचर खाई॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 17,
+          "number": 17,
+          "sanskrit": "निसिचरि एक सिंधु महुँ रहई। करि माया नभु के खग गहई॥ जीव जंतु जे गगन उड़ाहीं। जल बिलोकि तिन्ह कै परिछाहीं॥",
+          "transliteration": "nisicari eka siṃdhu mahum̐ rahaī| kari māyā nabhu ke khaga gahaī|| jīva jaṃtu je gagana uḍa़āhīṃ| jala biloki tinha kai parichāhīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 18,
-          number: 18,
-          sanskrit: "सोइ छल हनूमान कहँ कीन्हा। तासु कपटु कपि तुरतहिं चीन्हा॥ उस परछाईंको पकड़ लेती थी, जिससे वे उड़ नहीं सकते थे [और जलमें गिर पड़ते थे] इस प्रकार वह सदा आकाशमें उड़नेवाले जीवोंको खाया करती थी। उसने वही छल हनुमान्जीसे भी किया। हनुमान्जीने तुरंत ही उसका कपट पहचान लिया॥ २॥",
-          transliteration: "soi chala hanūmāna kahaँ kīnhā| tāsu kapaṭu kapi turatahiṃ cīnhā|| usa parachāīṃko pakaḍa़ letī thī, jisase ve uḍa़ nahīṃ sakate the [aura jalameṃ gira paḍa़te the] isa prakāra vaha sadā ākāśameṃ uḍa़nevāle jīvoṃko khāyā karatī thī| usane vahī chala hanumānjīse bhī kiyā| hanumānjīne turṃta hī usakā kapaṭa pahacāna liyā|| 2||",
-          translation: "ताहि मारि मारुतसुत बीरा। बारिधि पार गयउ मतिधीरा॥",
-          hindi: "ताहि मारि मारुतसुत बीरा। बारिधि पार गयउ मतिधीरा॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 18,
+          "number": 18,
+          "sanskrit": "गहइ छाहँ सक सो न उड़ाई। एहि बिधि सदा गगनचर खाई॥ सोइ छल हनूमान कहँ कीन्हा। तासु कपटु कपि तुरतहिं चीन्हा॥",
+          "transliteration": "gahai chāham̐ saka so na uḍa़āī| ehi bidhi sadā gaganacara khāī|| soi chala hanūmāna kaham̐ kīnhā| tāsu kapaṭu kapi turatahiṃ cīnhā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 19,
-          number: 19,
-          sanskrit: "तहाँ जाइ देखी बन सोभा। गुंजत चंचरीक मधु लोभा॥ पवनपुत्र धीरबुद्धि वीर श्रीहनुमान्जी उसको मारकर समुद्रके पार गये। वहाँ जाकर उन्होंने वनकी शोभा देखी। मधु (पुष्परस)-के लोभसे भौंरे गुंजार कर रहे थे॥ ३॥",
-          transliteration: "tahāँ jāi dekhī bana sobhā| guṃjata cṃcarīka madhu lobhā|| pavanaputra dhīrabuddhi vīra śrīhanumānjī usako mārakara samudrake pāra gaye| vahāँ jākara unhoṃne vanakī śobhā dekhī| madhu (puṣparasa)-ke lobhase bhauṃre guṃjāra kara rahe the|| 3||",
-          translation: "नाना तरु फल फूल सुहाए। खग मृग बृंद देखि मन भाए॥",
-          hindi: "नाना तरु फल फूल सुहाए। खग मृग बृंद देखि मन भाए॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 19,
+          "number": 19,
+          "sanskrit": "ताहि मारि मारुतसुत बीरा। बारिधि पार गयउ मतिधीरा॥ तहाँ जाइ देखी बन सोभा। गुंजत चंचरीक मधु लोभा॥",
+          "transliteration": "tāhi māri mārutasuta bīrā| bāridhi pāra gayau matidhīrā|| tahām̐ jāi dekhī bana sobhā| guṃjata caṃcarīka madhu lobhā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 20,
-          number: 20,
-          sanskrit: "सैल बिसाल देखि एक आगें। ता पर धाइ चढ़ेउ भय त्यागें॥ अनेकों प्रकारके वृक्ष फल-फूलसे शोभित हैं। पक्षी और पशुओंके समूहको देखकर तो वे मनमें [बहुत ही] प्रसन्न हुए। सामने एक विशाल पर्वत देखकर हनुमान्जी भय त्यागकर उसपर दौड़कर जा चढ़े॥ ४॥",
-          transliteration: "saila bisāla dekhi eka āgeṃ| tā para dhāi caḍha़eu bhaya tyāgeṃ|| anekoṃ prakārake vṛkṣa phala-phūlase śobhita haiṃ| pakṣī aura paśuoṃke samūhako dekhakara to ve manameṃ [bahuta hī] prasanna hue| sāmane eka viśāla parvata dekhakara hanumānjī bhaya tyāgakara usapara dauḍa़kara jā caḍha़e|| 4||",
-          translation: "उमा न कछु कपि कै अधिकाई। प्रभु प्रताप जो कालहि खाई॥",
-          hindi: "उमा न कछु कपि कै अधिकाई। प्रभु प्रताप जो कालहि खाई॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 20,
+          "number": 20,
+          "sanskrit": "नाना तरु फल फूल सुहाए। खग मृग बृंद देखि मन भाए॥ सैल बिसाल देखि एक आगें। ता पर धाइ चढ़ेउ भय त्यागें॥",
+          "transliteration": "nānā taru phala phūla suhāe| khaga mṛga bṛṃda dekhi mana bhāe|| saila bisāla dekhi eka āgeṃ| tā para dhāi caḍha़eu bhaya tyāgeṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 21,
-          number: 21,
-          sanskrit: "गिरि पर चढि़ लंका तेहिं देखी। कहि न जाइ अति दुर्ग बिसेषी॥ [शिवजी कहते हैं—] हे उमा! इसमें वानर हनुमान्की कुछ बड़ाई नहीं है। यह प्रभुका प्रताप है, जो कालको भी खा जाता है। पर्वतपर चढ़कर उन्होंने लंका देखी। बहुत ही बड़ा किला है, कुछ कहा नहीं जाता॥ ५॥",
-          transliteration: "giri para caḍhi़ lṃkā tehiṃ dekhī| kahi na jāi ati durga biseṣī|| [śivajī kahate haiṃ—] he umā! isameṃ vānara hanumānkī kucha baḍa़āī nahīṃ hai| yaha prabhukā pratāpa hai, jo kālako bhī khā jātā hai| parvatapara caḍha़kara unhoṃne lṃkā dekhī| bahuta hī baḍa़ā kilā hai, kucha kahā nahīṃ jātā|| 5||",
-          translation: "अति उतंग जलनिधि चहु पासा। कनक कोट कर परम प्रकासा॥",
-          hindi: "अति उतंग जलनिधि चहु पासा। कनक कोट कर परम प्रकासा॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 21,
+          "number": 21,
+          "sanskrit": "उमा न कछु कपि कै अधिकाई। प्रभु प्रताप जो कालहि खाई॥ गिरि पर चढि़ लंका तेहिं देखी। कहि न जाइ अति दुर्ग बिसेषी॥",
+          "transliteration": "umā na kachu kapi kai adhikāī| prabhu pratāpa jo kālahi khāī|| giri para caḍhi़ laṃkā tehiṃ dekhī| kahi na jāi ati durga biseṣī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 22,
-          number: 22,
-          sanskrit: "वह अत्यन्त ऊँचा है, उसके चारों ओर समुद्र है। सोनेके परकोटे (चहारदीवारी)-का परम प्रकाश हो रहा है॥ ६॥",
-          transliteration: "vaha atyanta ūँcā hai, usake cāroṃ ora samudra hai| soneke parakoṭe (cahāradīvārī)-kā parama prakāśa ho rahā hai|| 6||",
-          translation: "छं०—कनक कोट बिचित्र मनि कृत सुंदरायतना घना।",
-          hindi: "छं०—कनक कोट बिचित्र मनि कृत सुंदरायतना घना।",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 22,
+          "number": 22,
+          "sanskrit": "अति उतंग जलनिधि चहु पासा। कनक कोट कर परम प्रकासा॥",
+          "transliteration": "ati utaṃga jalanidhi cahu pāsā| kanaka koṭa kara parama prakāsā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 23,
-          number: 23,
-          sanskrit: "चउहट्ट हट्ट सुबट्ट बीथीं चारु पुर बहु बिधि बना॥ गज बाजि खच्चर निकर पदचर रथ बरूथन्हि को गनै। बहुरूप निसिचर जूथ अतिबल सेन बरनत नहिं बनै॥ विचित्र मणियोंसे जड़ा हुआ सोनेका परकोटा है, उसके अंदर बहुत-से सुन्दर-सुन्दर घर हैं। चौराहे, बाजार, सुन्दर मार्ग और गलियाँ हैं; सुन्दर नगर बहुत प्रकारसे सजा हुआ है। हाथी, घोड़े, खच्चरोंके समूह तथा पैदल और रथोंके समूहोंको कौन गिन सकता है! अनेक रूपोंके राक्षसोंके दल हैं, उनकी अत्यन्त बलवती सेना वर्णन करते नहीं बनती॥ १॥",
-          transliteration: "cauhaṭṭa haṭṭa subaṭṭa bīthīṃ cāru pura bahu bidhi banā|| gaja bāji khaccara nikara padacara ratha barūthanhi ko ganai| bahurūpa nisicara jūtha atibala sena baranata nahiṃ banai|| vicitra maṇiyoṃse jaḍa़ā huā sonekā parakoṭā hai, usake ṃdara bahuta-se sundara-sundara ghara haiṃ| caurāhe, bājāra, sundara mārga aura galiyāँ haiṃ; sundara nagara bahuta prakārase sajā huā hai| hāthī, ghoḍa़e, khaccaroṃke samūha tathā paidala aura rathoṃke samūhoṃko kauna gina sakatā hai! aneka rūpoṃke rākṣasoṃke dala haiṃ, unakī atyanta balavatī senā varṇana karate nahīṃ banatī|| 1||",
-          translation: "बन बाग उपबन बाटिका सर कूप बापीं सोहहीं।",
-          hindi: "बन बाग उपबन बाटिका सर कूप बापीं सोहहीं।",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 23,
+          "number": 23,
+          "sanskrit": "छं०—कनक कोट बिचित्र मनि कृत सुंदरायतना घना। चउहट्ट हट्ट सुबट्ट बीथीं चारु पुर बहु बिधि बना॥ गज बाजि खच्चर निकर पदचर रथ बरूथन्हि को गनै। बहुरूप निसिचर जूथ अतिबल सेन बरनत नहिं बनै॥",
+          "transliteration": "chaṃ0—kanaka koṭa bicitra mani kṛta suṃdarāyatanā ghanā| cauhaṭṭa haṭṭa subaṭṭa bīthīṃ cāru pura bahu bidhi banā|| gaja bāji khaccara nikara padacara ratha barūthanhi ko ganai| bahurūpa nisicara jūtha atibala sena baranata nahiṃ banai||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 24,
-          number: 24,
-          sanskrit: "नर नाग सुर गंधर्ब कन्या रूप मुनि मन मोहहीं॥ कहुँ माल देह बिसाल सैल समान अतिबल गर्जहीं। नाना अखारेन्ह भिरहिं बहुबिधि एक एकन्ह तर्जहीं॥ वन, बाग, उपवन (बगीचे), फुलवाड़ी, तालाब, कुएँ और बावलियाँ सुशोभित हैं। मनुष्य, नाग, देवताओं और गन्धर्वोंकी कन्याएँ अपने सौन्दर्यसे मुनियोंके भी मनोंको मोहे लेती हैं। कहीं पर्वतके समान विशाल शरीरवाले बड़े ही बलवान् मल्ल (पहलवान) गरज रहे हैं। वे अनेकों अखाड़ोंमें बहुत प्रकारसे भिड़ते और एक-दूसरेको ललकारते हैं॥ २॥",
-          transliteration: "nara nāga sura gṃdharba kanyā rūpa muni mana mohahīṃ|| kahuँ māla deha bisāla saila samāna atibala garjahīṃ| nānā akhārenha bhirahiṃ bahubidhi eka ekanha tarjahīṃ|| vana, bāga, upavana (bagīce), phulavāḍa़ī, tālāba, kueँ aura bāvaliyāँ suśobhita haiṃ| manuṣya, nāga, devatāoṃ aura gandharvoṃkī kanyāeँ apane saundaryase muniyoṃke bhī manoṃko mohe letī haiṃ| kahīṃ parvatake samāna viśāla śarīravāle baḍa़e hī balavān malla (pahalavāna) garaja rahe haiṃ| ve anekoṃ akhāḍa़oṃmeṃ bahuta prakārase bhiḍa़te aura eka-dūsareko lalakārate haiṃ|| 2||",
-          translation: "करि जतन भट कोटिन्ह बिकट तन नगर चहुँ दिसि रच्छहीं।",
-          hindi: "करि जतन भट कोटिन्ह बिकट तन नगर चहुँ दिसि रच्छहीं।",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 24,
+          "number": 24,
+          "sanskrit": "बन बाग उपबन बाटिका सर कूप बापीं सोहहीं। नर नाग सुर गंधर्ब कन्या रूप मुनि मन मोहहीं॥ कहुँ माल देह बिसाल सैल समान अतिबल गर्जहीं। नाना अखारेन्ह भिरहिं बहुबिधि एक एकन्ह तर्जहीं॥",
+          "transliteration": "bana bāga upabana bāṭikā sara kūpa bāpīṃ sohahīṃ| nara nāga sura gaṃdharba kanyā rūpa muni mana mohahīṃ|| kahum̐ māla deha bisāla saila samāna atibala garjahīṃ| nānā akhārenha bhirahiṃ bahubidhi eka ekanha tarjahīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 25,
-          number: 25,
-          sanskrit: "कहुँ महिष मानुष धेनु खर अज खल निसाचर भच्छहीं॥ एहि लागि तुलसीदास इन्ह की कथा कछु एक है कही। रघुबीर सर तीरथ सरीरन्हि त्यागि गति पैहहिं सही॥ भयंकर शरीरवाले करोड़ों योद्धा यत्न करके (बड़ी सावधानीसे) नगरकी चारों दिशाओंमें (सब ओरसे) रखवाली करते हैं। कहीं दुष्ट राक्षस भैंसों, मनुष्यों, गायों, गदहों और बकरोंको खा रहे हैं। तुलसीदासने इनकी कथा इसीलिये कुछ थोड़ी-सी कही है कि ये निश्चय ही श्रीरामचन्द्रजीके बाणरूपी तीर्थमें शरीरोंको त्यागकर परमगति पावेंगे॥ ३॥",
-          transliteration: "kahuँ mahiṣa mānuṣa dhenu khara aja khala nisācara bhacchahīṃ|| ehi lāgi tulasīdāsa inha kī kathā kachu eka hai kahī| raghubīra sara tīratha sarīranhi tyāgi gati paihahiṃ sahī|| bhayṃkara śarīravāle karoḍa़oṃ yoddhā yatna karake (baḍa़ī sāvadhānīse) nagarakī cāroṃ diśāoṃmeṃ (saba orase) rakhavālī karate haiṃ| kahīṃ duṣṭa rākṣasa bhaiṃsoṃ, manuṣyoṃ, gāyoṃ, gadahoṃ aura bakaroṃko khā rahe haiṃ| tulasīdāsane inakī kathā isīliye kucha thoḍa़ī-sī kahī hai ki ye niścaya hī śrīrāmacandrajīke bāṇarūpī tīrthameṃ śarīroṃko tyāgakara paramagati pāveṃge|| 3||",
-          translation: "दो०—पुर रखवारे देखि बहु कपि मन कीन्ह बिचार।",
-          hindi: "दो०—पुर रखवारे देखि बहु कपि मन कीन्ह बिचार।",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 25,
+          "number": 25,
+          "sanskrit": "करि जतन भट कोटिन्ह बिकट तन नगर चहुँ दिसि रच्छहीं। कहुँ महिष मानुष धेनु खर अज खल निसाचर भच्छहीं॥",
+          "transliteration": "kari jatana bhaṭa koṭinha bikaṭa tana nagara cahum̐ disi racchahīṃ| kahum̐ mahiṣa mānuṣa dhenu khara aja khala nisācara bhacchahīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 26,
-          number: 26,
-          sanskrit: "अति लघु रूप धरौं निसि नगर करौं पइसार॥ ३॥ नगरके बहुसंख्यक रखवालोंको देखकर हनुमान्जीने मनमें विचार किया कि अत्यन्त छोटा रूप धरूँ और रातके समय नगरमें प्रवेश करूँ॥ ३॥",
-          transliteration: "ati laghu rūpa dharauṃ nisi nagara karauṃ paisāra|| 3|| nagarake bahusṃkhyaka rakhavāloṃko dekhakara hanumānjīne manameṃ vicāra kiyā ki atyanta choṭā rūpa dharūँ aura rātake samaya nagarameṃ praveśa karūँ|| 3||",
-          translation: "मसक समान रूप कपि धरी। लंकहि चलेउ सुमिरि नरहरी॥",
-          hindi: "मसक समान रूप कपि धरी। लंकहि चलेउ सुमिरि नरहरी॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 26,
+          "number": 26,
+          "sanskrit": "दो०—पुर रखवारे देखि बहु कपि मन कीन्ह बिचार। अति लघु रूप धरौं निसि नगर करौं पइसार॥ ३॥",
+          "transliteration": "do0—pura rakhavāre dekhi bahu kapi mana kīnha bicāra| ati laghu rūpa dharauṃ nisi nagara karauṃ paisāra|| 3||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 27,
-          number: 27,
-          sanskrit: "नाम लंकिनी एक निसिचरी। सो कह चलेसि मोहि निंदरी॥ हनुमान्जी मच्छड़के समान (छोटा-सा) रूप धारण कर नररूपसे लीला करनेवाले भगवान् श्रीरामचन्द्रजीका स्मरण करके लंकाको चले। [लंकाके द्वारपर] लंकिनी नामकी एक राक्षसी रहती थी। वह बोली—मेरा निरादर करके (बिना मुझसे पूछे) कहाँ चला जा रहा है?॥ १॥",
-          transliteration: "nāma lṃkinī eka nisicarī| so kaha calesi mohi niṃdarī|| hanumānjī macchaḍa़ke samāna (choṭā-sā) rūpa dhāraṇa kara nararūpase līlā karanevāle bhagavān śrīrāmacandrajīkā smaraṇa karake lṃkāko cale| [lṃkāke dvārapara] lṃkinī nāmakī eka rākṣasī rahatī thī| vaha bolī—merā nirādara karake (binā mujhase pūche) kahāँ calā jā rahā hai?|| 1||",
-          translation: "जानेहि नहीं मरमु सठ मोरा। मोर अहार जहाँ लगि चोरा॥",
-          hindi: "जानेहि नहीं मरमु सठ मोरा। मोर अहार जहाँ लगि चोरा॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 27,
+          "number": 27,
+          "sanskrit": "मसक समान रूप कपि धरी। लंकहि चलेउ सुमिरि नरहरी॥ नाम लंकिनी एक निसिचरी। सो कह चलेसि मोहि निंदरी॥",
+          "transliteration": "masaka samāna rūpa kapi dharī| laṃkahi caleu sumiri naraharī|| nāma laṃkinī eka nisicarī| so kaha calesi mohi niṃdarī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 28,
-          number: 28,
-          sanskrit: "मुठिका एक महा कपि हनी। रुधिर बमत धरनीं ढनमनी॥ हे मूर्ख! तूने मेरा भेद नहीं जाना? जहाँतक (जितने) चोर हैं, वे सब मेरे आहार हैं। महाकपि हनुमान्जीने उसे एक घूँसा मारा, जिससे वह खूनकी उलटी करती हुई पृथ्वीपर लुढ़क पड़ी॥ २॥",
-          transliteration: "muṭhikā eka mahā kapi hanī| rudhira bamata dharanīṃ ḍhanamanī|| he mūrkha! tūne merā bheda nahīṃ jānā? jahāँtaka (jitane) cora haiṃ, ve saba mere āhāra haiṃ| mahākapi hanumānjīne use eka ghūँsā mārā, jisase vaha khūnakī ulaṭī karatī huī pṛthvīpara luḍha़ka paḍa़ī|| 2||",
-          translation: "पुनि संभारि उठी सो लंका। जोरि पानि कर बिनय ससंका॥",
-          hindi: "पुनि संभारि उठी सो लंका। जोरि पानि कर बिनय ससंका॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 28,
+          "number": 28,
+          "sanskrit": "जानेहि नहीं मरमु सठ मोरा। मोर अहार जहाँ लगि चोरा॥ मुठिका एक महा कपि हनी। रुधिर बमत धरनीं ढनमनी॥",
+          "transliteration": "jānehi nahīṃ maramu saṭha morā| mora ahāra jahām̐ lagi corā|| muṭhikā eka mahā kapi hanī| rudhira bamata dharanīṃ ḍhanamanī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 29,
-          number: 29,
-          sanskrit: "जब रावनहि ब्रह्म बर दीन्हा। चलत बिरंचि कहा मोहि चीन्हा॥ वह लंकिनी फिर अपनेको सँभालकर उठी और डरके मारे हाथ जोड़कर विनती करने लगी। [वह बोली—] रावणको जब ब्रह्माजीने वर दिया था, तब चलते समय उन्होंने मुझे राक्षसोंके विनाशकी यह पहचान बता दी थी कि—॥ ३॥",
-          transliteration: "jaba rāvanahi brahma bara dīnhā| calata birṃci kahā mohi cīnhā|| vaha lṃkinī phira apaneko saँbhālakara uṭhī aura ḍarake māre hātha joḍa़kara vinatī karane lagī| [vaha bolī—] rāvaṇako jaba brahmājīne vara diyā thā, taba calate samaya unhoṃne mujhe rākṣasoṃke vināśakī yaha pahacāna batā dī thī ki—|| 3||",
-          translation: "बिकल होसि तैं कपि कें मारे। तब जानेसु निसिचर संघारे॥",
-          hindi: "बिकल होसि तैं कपि कें मारे। तब जानेसु निसिचर संघारे॥",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
+          "id": 29,
+          "number": 29,
+          "sanskrit": "पुनि संभारि उठी सो लंका। जोरि पानि कर बिनय ससंका॥ जब रावनहि ब्रह्म बर दीन्हा। चलत बिरंचि कहा मोहि चीन्हा॥",
+          "transliteration": "puni saṃbhāri uṭhī so laṃkā| jori pāni kara binaya sasaṃkā|| jaba rāvanahi brahma bara dīnhā| calata biraṃci kahā mohi cīnhā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
         },
         {
-          id: 30,
-          number: 30,
-          sanskrit: "तात मोर अति पुन्य बहूता। देखेउँ नयन राम कर दूता॥ जब तू बंदरके मारनेसे व्याकुल हो जाय, तब तू राक्षसोंका संहार हुआ जान लेना। हे तात! मेरे बड़े पुण्य हैं, जो मैं श्रीरामचन्द्रजीके दूत (आप)-को नेत्रोंसे देख पायी॥ ४॥",
-          transliteration: "tāta mora ati punya bahūtā| dekheuँ nayana rāma kara dūtā|| jaba tū bṃdarake māranese vyākula ho jāya, taba tū rākṣasoṃkā sṃhāra huā jāna lenā| he tāta! mere baḍa़e puṇya haiṃ, jo maiṃ śrīrāmacandrajīke dūta (āpa)-ko netroṃse dekha pāyī|| 4||",
-          translation: "दो०—तात स्वर्ग अपबर्ग सुख धरिअ तुला एक अंग।",
-          hindi: "दो०—तात स्वर्ग अपबर्ग सुख धरिअ तुला एक अंग।",
-          explanation: "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","सुन्दरकाण्ड"]
-        },
-      ],
+          "id": 30,
+          "number": 30,
+          "sanskrit": "बिकल होसि तैं कपि कें मारे। तब जानेसु निसिचर संघारे॥ तात मोर अति पुन्य बहूता। देखेउँ नयन राम कर दूता॥",
+          "transliteration": "bikala hosi taiṃ kapi keṃ māre| taba jānesu nisicara saṃghāre|| tāta mora ati punya bahūtā| dekheum̐ nayana rāma kara dūtā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस सुन्दरकाण्ड — हनुमानजीकी लंका-यात्रा एवं विभीषण-शरणागति का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "सुन्दरकाण्ड"
+          ]
+        }
+      ]
     },
     {
-      id: 6,
-      title: "Lanka Kanda — The Great War",
-      titleSanskrit: "लंकाकाण्ड",
-      summary: "Building of Ram Setu, the siege of Lanka, the fierce battles involving Kumbhakarna, Meghanada, and Ravana, the victory of dharma, and the triumphant return to Ayodhya.",
-      verses: [
+      "id": 6,
+      "title": "Lanka Kanda — The Great War",
+      "titleSanskrit": "लंकाकाण्ड",
+      "summary": "Building of Ram Setu, the siege of Lanka, the fierce battles involving Kumbhakarna, Meghanada, and Ravana, the victory of dharma, and the triumphant return to Ayodhya.",
+      "verses": [
         {
-          id: 1,
-          number: 1,
-          sanskrit: "श्रीजानकीवल्लभो विजयते श्रीरामचरितमानस षष्ठ सोपान श्लोक रामं कामारिसेव्यं भवभयहरणं कालमत्तेभसिंहं योगीन्द्रं ज्ञानगम्यं गुणनिधिमजितं निर्गुणं निर्विकारम्। मायातीतं सुरेशं खलवधनिरतं ब्रह्मवृन्दैकदेवं वन्दे कन्दावदातं सरसिजनयनं देवमुर्वीशरूपम्॥ १॥ कामदेवके शत्रु शिवजीके सेव्य, भव (जन्म-मृत्यु)-के भयको हरनेवाले, कालरूपी मतवाले हाथीके लिये सिंहके समान, योगियोंके स्वामी (योगीश्वर), ज्ञानके द्वारा जाननेयोग्य, गुणोंकी निधि, अजेय, निर्गुण, निर्विकार, मायासे परे, देवताओंके स्वामी, दुष्टोंके वधमें तत्पर, ब्राह्मणवृन्दके एकमात्र देवता (रक्षक), जलवाले मेघके समान सुन्दर श्याम, कमलके-से नेत्रवाले, पृथ्वीपति (राजा)-के रूपमें परमदेव श्रीरामजीकी मैं वन्दना करता हूँ॥ १॥",
-          transliteration: "śrījānakīvallabho vijayate śrīrāmacaritamānasa ṣaṣṭha sopāna śloka rāmṃ kāmārisevyṃ bhavabhayaharaṇṃ kālamattebhasiṃhṃ yogīndrṃ jñānagamyṃ guṇanidhimajitṃ nirguṇṃ nirvikāram| māyātītṃ sureśṃ khalavadhaniratṃ brahmavṛndaikadevṃ vande kandāvadātṃ sarasijanayanṃ devamurvīśarūpam|| 1|| kāmadevake śatru śivajīke sevya, bhava (janma-mṛtyu)-ke bhayako haranevāle, kālarūpī matavāle hāthīke liye siṃhake samāna, yogiyoṃke svāmī (yogīśvara), jñānake dvārā jānaneyogya, guṇoṃkī nidhi, ajeya, nirguṇa, nirvikāra, māyāse pare, devatāoṃke svāmī, duṣṭoṃke vadhameṃ tatpara, brāhmaṇavṛndake ekamātra devatā (rakṣaka), jalavāle meghake samāna sundara śyāma, kamalake-se netravāle, pṛthvīpati (rājā)-ke rūpameṃ paramadeva śrīrāmajīkī maiṃ vandanā karatā hūँ|| 1||",
-          translation: "शङ्खेन्द्वाभमतीवसुन्दरतनुं शार्दूलचर्माम्बरं",
-          hindi: "शङ्खेन्द्वाभमतीवसुन्दरतनुं शार्दूलचर्माम्बरं",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 1,
+          "number": 1,
+          "sanskrit": "रामं कामारिसेव्यं भवभयहरणं कालमत्तेभसिंहं योगीन्द्रं ज्ञानगम्यं गुणनिधिमजितं निर्गुणं निर्विकारम्। मायातीतं सुरेशं खलवधनिरतं ब्रह्मवृन्दैकदेवं वन्दे कन्दावदातं सरसिजनयनं देवमुर्वीशरूपम्॥ १॥",
+          "transliteration": "rāmaṃ kāmārisevyaṃ bhavabhayaharaṇaṃ kālamattebhasiṃhaṃ yogīndraṃ jñānagamyaṃ guṇanidhimajitaṃ nirguṇaṃ nirvikāram| māyātītaṃ sureśaṃ khalavadhanirataṃ brahmavṛndaikadevaṃ vande kandāvadātaṃ sarasijanayanaṃ devamurvīśarūpam|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 2,
-          number: 2,
-          sanskrit: "कालव्यालकरालभूषणधरं गङ्गाशशाङ्कप्रियम्। काशीशं कलिकल्मषौघशमनं कल्याणकल्पद्रुमं नौमीड्यं गिरिजापतिं गुणनिधिं कन्दर्पहं शङ्करम्॥ २॥ शंख और चन्द्रमाकी-सी कान्तिके अत्यन्त सुन्दर शरीरवाले, व्याघ्रचर्मके वस्त्रवाले, कालके समान [अथवा काले रंगके] भयानक सर्पोंका भूषण धारण करनेवाले, गंगा और चन्द्रमाके प्रेमी, काशीपति, कलियुगके पाप-समूहका नाश करनेवाले, कल्याणके कल्पवृक्ष, गुणोंके निधान और कामदेवको भस्म करनेवाले पार्वतीपति वन्दनीय श्रीशंकरजीको मैं नमस्कार करता हूँ॥ २॥",
-          transliteration: "kālavyālakarālabhūṣaṇadharṃ gaṅgāśaśāṅkapriyam| kāśīśṃ kalikalmaṣaughaśamanṃ kalyāṇakalpadrumṃ naumīḍyṃ girijāpatiṃ guṇanidhiṃ kandarpahṃ śaṅkaram|| 2|| śṃkha aura candramākī-sī kāntike atyanta sundara śarīravāle, vyāghracarmake vastravāle, kālake samāna [athavā kāle rṃgake] bhayānaka sarpoṃkā bhūṣaṇa dhāraṇa karanevāle, gṃgā aura candramāke premī, kāśīpati, kaliyugake pāpa-samūhakā nāśa karanevāle, kalyāṇake kalpavṛkṣa, guṇoṃke nidhāna aura kāmadevako bhasma karanevāle pārvatīpati vandanīya śrīśṃkarajīko maiṃ namaskāra karatā hūँ|| 2||",
-          translation: "यो ददाति सतां शम्भु: कैवल्यमपि दुर्लभम्।",
-          hindi: "यो ददाति सतां शम्भु: कैवल्यमपि दुर्लभम्।",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 2,
+          "number": 2,
+          "sanskrit": "शङ्खेन्द्वाभमतीवसुन्दरतनुं शार्दूलचर्माम्बरं कालव्यालकरालभूषणधरं गङ्गाशशाङ्कप्रियम्। काशीशं कलिकल्मषौघशमनं कल्याणकल्पद्रुमं नौमीड्यं गिरिजापतिं गुणनिधिं कन्दर्पहं शङ्करम्॥ २॥",
+          "transliteration": "śaṅkhendvābhamatīvasundaratanuṃ śārdūlacarmāmbaraṃ kālavyālakarālabhūṣaṇadharaṃ gaṅgāśaśāṅkapriyam| kāśīśaṃ kalikalmaṣaughaśamanaṃ kalyāṇakalpadrumaṃ naumīḍyaṃ girijāpatiṃ guṇanidhiṃ kandarpahaṃ śaṅkaram|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 3,
-          number: 3,
-          sanskrit: "खलानां दण्डकृद्योऽसौ शङ्कर: शं तनोतु मे॥ ३॥ जो सत्पुरुषोंको अत्यन्त दुर्लभ कैवल्यमुक्तितक दे डालते हैं और जो दुष्टोंको दण्ड देनेवाले हैं, वे कल्याणकारी श्रीशम्भु मेरे कल्याणका विस्तार करें॥ ३॥",
-          transliteration: "khalānāṃ daṇḍakṛdyo'sau śaṅkara: śṃ tanotu me|| 3|| jo satpuruṣoṃko atyanta durlabha kaivalyamuktitaka de ḍālate haiṃ aura jo duṣṭoṃko daṇḍa denevāle haiṃ, ve kalyāṇakārī śrīśambhu mere kalyāṇakā vistāra kareṃ|| 3||",
-          translation: "दो०—लव निमेष परमानु जुग बरष कलप सर चंड।",
-          hindi: "दो०—लव निमेष परमानु जुग बरष कलप सर चंड।",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 3,
+          "number": 3,
+          "sanskrit": "यो ददाति सतां शम्भु: कैवल्यमपि दुर्लभम्। खलानां दण्डकृद्योऽसौ शङ्कर: शं तनोतु मे॥ ३॥",
+          "transliteration": "yo dadāti satāṃ śambhu: kaivalyamapi durlabham| khalānāṃ daṇḍakṛdyo'sau śaṅkara: śaṃ tanotu me|| 3||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 4,
-          number: 4,
-          sanskrit: "भजसि न मन तेहि राम को कालु जासु कोदंड॥ लव, निमेष, परमाणु, वर्ष, युग और कल्प जिनके प्रचण्ड बाण हैं और काल जिनका धनुष है, हे मन! तू उन श्रीरामजीको क्यों नहीं भजता? सो०—सिंधु बचन सुनि राम सचिव बोलि प्रभु अस कहेउ। अब बिलंबु केहि काम करहु सेतु उतरै कटकु॥ समुद्रके वचन सुनकर प्रभु श्रीरामजीने मन्त्रियोंको बुलाकर ऐसा कहा—अब विलम्ब किसलिये हो रहा है? सेतु (पुल) तैयार करो, जिसमें सेना उतरे। सुनहु भानुकुल केतु जामवंत कर जोरि कह। नाथ नाम तव सेतु नर चढि़ भवसागर तरहिं॥ जाम्बवान्ने हाथ जोड़कर कहा—हे सूर्यकुलके ध्वजा-स्वरूप (कीर्तिको बढ़ानेवाले) श्रीरामजी! सुनिये। हे नाथ! [सबसे बड़ा] सेतु तो आपका नाम ही है, जिसपर चढ़कर (जिसका आश्रय लेकर) मनुष्य संसाररूपी समुद्रसे पार हो जाते हैं। यह लघु जलधि तरत कति बारा। अस सुनि पुनि कह पवनकुमारा॥ प्रभु प्रताप बड़वानल भारी। सोषेउ प्रथम पयोनिधि बारी॥ फिर यह छोटा-सा समुद्र पार करनेमें कितनी देर लगेगी? ऐसा सुनकर फिर पवनकुमार श्रीहनुमान्जीने कहा—प्रभुका प्रताप भारी बड़वानल (समुद्रकी आग)-के समान है। इसने पहले समुद्रके जलको सोख लिया था॥ १॥",
-          transliteration: "bhajasi na mana tehi rāma ko kālu jāsu kodṃḍa|| lava, nimeṣa, paramāṇu, varṣa, yuga aura kalpa jinake pracaṇḍa bāṇa haiṃ aura kāla jinakā dhanuṣa hai, he mana! tū una śrīrāmajīko kyoṃ nahīṃ bhajatā? so0—siṃdhu bacana suni rāma saciva boli prabhu asa kaheu| aba bilṃbu kehi kāma karahu setu utarai kaṭaku|| samudrake vacana sunakara prabhu śrīrāmajīne mantriyoṃko bulākara aisā kahā—aba vilamba kisaliye ho rahā hai? setu (pula) taiyāra karo, jisameṃ senā utare| sunahu bhānukula ketu jāmavṃta kara jori kaha| nātha nāma tava setu nara caḍhi़ bhavasāgara tarahiṃ|| jāmbavānne hātha joḍa़kara kahā—he sūryakulake dhvajā-svarūpa (kīrtiko baḍha़ānevāle) śrīrāmajī! suniye| he nātha! [sabase baḍa़ā] setu to āpakā nāma hī hai, jisapara caḍha़kara (jisakā āśraya lekara) manuṣya sṃsārarūpī samudrase pāra ho jāte haiṃ| yaha laghu jaladhi tarata kati bārā| asa suni puni kaha pavanakumārā|| prabhu pratāpa baḍa़vānala bhārī| soṣeu prathama payonidhi bārī|| phira yaha choṭā-sā samudra pāra karanemeṃ kitanī dera lagegī? aisā sunakara phira pavanakumāra śrīhanumānjīne kahā—prabhukā pratāpa bhārī baḍa़vānala (samudrakī āga)-ke samāna hai| isane pahale samudrake jalako sokha liyā thā|| 1||",
-          translation: "तव रिपु नारि रुदन जल धारा। भरेउ बहोरि भयउ तेहिं खारा॥",
-          hindi: "तव रिपु नारि रुदन जल धारा। भरेउ बहोरि भयउ तेहिं खारा॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 4,
+          "number": 4,
+          "sanskrit": "दो०—लव निमेष परमानु जुग बरष कलप सर चंड। भजसि न मन तेहि राम को कालु जासु कोदंड॥",
+          "transliteration": "do0—lava nimeṣa paramānu juga baraṣa kalapa sara caṃḍa| bhajasi na mana tehi rāma ko kālu jāsu kodaṃḍa||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 5,
-          number: 5,
-          sanskrit: "सुनि अति उकुति पवनसुत केरी। हरषे कपि रघुपति तन हेरी॥ परन्तु आपके शत्रुओंकी स्त्रियोंके आँसुओंकी धारासे यह फिर भर गया और उसीसे खारा भी हो गया। हनुमान्जीकी यह अत्युक्ति (अलंकारपूर्ण युक्ति) सुनकर वानर श्रीरघुनाथजीकी ओर देखकर हर्षित हो गये॥ २॥",
-          transliteration: "suni ati ukuti pavanasuta kerī| haraṣe kapi raghupati tana herī|| parantu āpake śatruoṃkī striyoṃke āँsuoṃkī dhārāse yaha phira bhara gayā aura usīse khārā bhī ho gayā| hanumānjīkī yaha atyukti (alṃkārapūrṇa yukti) sunakara vānara śrīraghunāthajīkī ora dekhakara harṣita ho gaye|| 2||",
-          translation: "जामवंत बोले दोउ भाई। नल नीलहि सब कथा सुनाई॥",
-          hindi: "जामवंत बोले दोउ भाई। नल नीलहि सब कथा सुनाई॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 5,
+          "number": 5,
+          "sanskrit": "तव रिपु नारि रुदन जल धारा। भरेउ बहोरि भयउ तेहिं खारा॥ सुनि अति उकुति पवनसुत केरी। हरषे कपि रघुपति तन हेरी॥",
+          "transliteration": "tava ripu nāri rudana jala dhārā| bhareu bahori bhayau tehiṃ khārā|| suni ati ukuti pavanasuta kerī| haraṣe kapi raghupati tana herī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 6,
-          number: 6,
-          sanskrit: "राम प्रताप सुमिरि मन माहीं। करहु सेतु प्रयास कछु नाहीं॥ जाम्बवान्ने नल-नील दोनों भाइयोंको बुलाकर उन्हें सारी कथा कह सुनायी [और कहा—] मनमें श्रीरामजीके प्रतापको स्मरण करके सेतु तैयार करो, [रामप्रतापसे] कुछ भी परिश्रम नहीं होगा॥ ३॥",
-          transliteration: "rāma pratāpa sumiri mana māhīṃ| karahu setu prayāsa kachu nāhīṃ|| jāmbavānne nala-nīla donoṃ bhāiyoṃko bulākara unheṃ sārī kathā kaha sunāyī [aura kahā—] manameṃ śrīrāmajīke pratāpako smaraṇa karake setu taiyāra karo, [rāmapratāpase] kucha bhī pariśrama nahīṃ hogā|| 3||",
-          translation: "बोलि लिए कपि निकर बहोरी। सकल सुनहु बिनती कछु मोरी॥",
-          hindi: "बोलि लिए कपि निकर बहोरी। सकल सुनहु बिनती कछु मोरी॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 6,
+          "number": 6,
+          "sanskrit": "जामवंत बोले दोउ भाई। नल नीलहि सब कथा सुनाई॥ राम प्रताप सुमिरि मन माहीं। करहु सेतु प्रयास कछु नाहीं॥",
+          "transliteration": "jāmavaṃta bole dou bhāī| nala nīlahi saba kathā sunāī|| rāma pratāpa sumiri mana māhīṃ| karahu setu prayāsa kachu nāhīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 7,
-          number: 7,
-          sanskrit: "राम चरन पंकज उर धरहू। कौतुक एक भालु कपि करहू॥ फिर वानरोंके समूहको बुला लिया [और कहा—] आप सब लोग मेरी कुछ विनती सुनिये। अपने हृदयमें श्रीरामजीके चरणकमलोंको धारण कर लीजिये और सब भालू और वानर एक खेल कीजिये॥ ४॥",
-          transliteration: "rāma carana pṃkaja ura dharahū| kautuka eka bhālu kapi karahū|| phira vānaroṃke samūhako bulā liyā [aura kahā—] āpa saba loga merī kucha vinatī suniye| apane hṛdayameṃ śrīrāmajīke caraṇakamaloṃko dhāraṇa kara lījiye aura saba bhālū aura vānara eka khela kījiye|| 4||",
-          translation: "धावहु मर्कट बिकट बरूथा। आनहु बिटप गिरिन्ह के जूथा॥",
-          hindi: "धावहु मर्कट बिकट बरूथा। आनहु बिटप गिरिन्ह के जूथा॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 7,
+          "number": 7,
+          "sanskrit": "बोलि लिए कपि निकर बहोरी। सकल सुनहु बिनती कछु मोरी॥ राम चरन पंकज उर धरहू। कौतुक एक भालु कपि करहू॥",
+          "transliteration": "boli lie kapi nikara bahorī| sakala sunahu binatī kachu morī|| rāma carana paṃkaja ura dharahū| kautuka eka bhālu kapi karahū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 8,
-          number: 8,
-          sanskrit: "सुनि कपि भालु चले करि हूहा। जय रघुबीर प्रताप समूहा॥ विकट वानरोंके समूह (आप) दौड़ जाइये और वृक्षों तथा पर्वतोंके समूहोंको उखाड़ लाइये। यह सुनकर वानर और भालू हूह (हुंकार) करके और श्रीरघुनाथजीके प्रतापसमूहकी [अथवा प्रतापके पुंज श्रीरामजीकी] जय पुकारते हुए चले॥ ५॥",
-          transliteration: "suni kapi bhālu cale kari hūhā| jaya raghubīra pratāpa samūhā|| vikaṭa vānaroṃke samūha (āpa) dauḍa़ jāiye aura vṛkṣoṃ tathā parvatoṃke samūhoṃko ukhāḍa़ lāiye| yaha sunakara vānara aura bhālū hūha (huṃkāra) karake aura śrīraghunāthajīke pratāpasamūhakī [athavā pratāpake puṃja śrīrāmajīkī] jaya pukārate hue cale|| 5||",
-          translation: "दो०—अति उतंग गिरि पादप लीलहिं लेहिं उठाइ।",
-          hindi: "दो०—अति उतंग गिरि पादप लीलहिं लेहिं उठाइ।",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 8,
+          "number": 8,
+          "sanskrit": "धावहु मर्कट बिकट बरूथा। आनहु बिटप गिरिन्ह के जूथा॥ सुनि कपि भालु चले करि हूहा। जय रघुबीर प्रताप समूहा॥",
+          "transliteration": "dhāvahu markaṭa bikaṭa barūthā| ānahu biṭapa girinha ke jūthā|| suni kapi bhālu cale kari hūhā| jaya raghubīra pratāpa samūhā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 9,
-          number: 9,
-          sanskrit: "आनि देहिं नल नीलहि रचहिं ते सेतु बनाइ॥ १॥ बहुत ऊँचे-ऊँचे पर्वतों और वृक्षोंको खेलकी तरह ही [उखाड़कर] उठा लेते हैं और ला-लाकर नल-नीलको देते हैं। वे अच्छी तरह गढ़कर [सुन्दर] सेतु बनाते हैं॥ १॥",
-          transliteration: "āni dehiṃ nala nīlahi racahiṃ te setu banāi|| 1|| bahuta ūँce-ūँce parvatoṃ aura vṛkṣoṃko khelakī taraha hī [ukhāḍa़kara] uṭhā lete haiṃ aura lā-lākara nala-nīlako dete haiṃ| ve acchī taraha gaḍha़kara [sundara] setu banāte haiṃ|| 1||",
-          translation: "सैल बिसाल आनि कपि देहीं। कंदुक इव नल नील ते लेहीं॥",
-          hindi: "सैल बिसाल आनि कपि देहीं। कंदुक इव नल नील ते लेहीं॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 9,
+          "number": 9,
+          "sanskrit": "दो०—अति उतंग गिरि पादप लीलहिं लेहिं उठाइ। आनि देहिं नल नीलहि रचहिं ते सेतु बनाइ॥ १॥",
+          "transliteration": "do0—ati utaṃga giri pādapa līlahiṃ lehiṃ uṭhāi| āni dehiṃ nala nīlahi racahiṃ te setu banāi|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 10,
-          number: 10,
-          sanskrit: "देखि सेतु अति सुंदर रचना। बिहसि कृपानिधि बोले बचना॥ वानर बड़े-बड़े पहाड़ ला-लाकर देते हैं और नल-नील उन्हें गेंदकी तरह ले लेते हैं। सेतुकी अत्यन्त सुन्दर रचना देखकर कृपासिन्धु श्रीरामजी हँसकर वचन बोले—॥ १॥",
-          transliteration: "dekhi setu ati suṃdara racanā| bihasi kṛpānidhi bole bacanā|| vānara baḍa़e-baḍa़e pahāḍa़ lā-lākara dete haiṃ aura nala-nīla unheṃ geṃdakī taraha le lete haiṃ| setukī atyanta sundara racanā dekhakara kṛpāsindhu śrīrāmajī haँsakara vacana bole—|| 1||",
-          translation: "परम रम्य उत्तम यह धरनी। महिमा अमित जाइ नहिं बरनी॥",
-          hindi: "परम रम्य उत्तम यह धरनी। महिमा अमित जाइ नहिं बरनी॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 10,
+          "number": 10,
+          "sanskrit": "सैल बिसाल आनि कपि देहीं। कंदुक इव नल नील ते लेहीं॥ देखि सेतु अति सुंदर रचना। बिहसि कृपानिधि बोले बचना॥",
+          "transliteration": "saila bisāla āni kapi dehīṃ| kaṃduka iva nala nīla te lehīṃ|| dekhi setu ati suṃdara racanā| bihasi kṛpānidhi bole bacanā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 11,
-          number: 11,
-          sanskrit: "करिहउँ इहाँ संभु थापना। मोरे हृदयँ परम कलपना॥ यह (यहाँकी) भूमि परम रमणीय और उत्तम है। इसकी असीम महिमा वर्णन नहीं की जा सकती। मैं यहाँ शिवजीकी स्थापना करूँगा। मेरे हृदयमें यह महान् संकल्प है॥ २॥",
-          transliteration: "karihauँ ihāँ sṃbhu thāpanā| more hṛdayaँ parama kalapanā|| yaha (yahāँkī) bhūmi parama ramaṇīya aura uttama hai| isakī asīma mahimā varṇana nahīṃ kī jā sakatī| maiṃ yahāँ śivajīkī sthāpanā karūँgā| mere hṛdayameṃ yaha mahān sṃkalpa hai|| 2||",
-          translation: "सुनि कपीस बहु दूत पठाए। मुनिबर सकल बोलि लै आए॥",
-          hindi: "सुनि कपीस बहु दूत पठाए। मुनिबर सकल बोलि लै आए॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 11,
+          "number": 11,
+          "sanskrit": "परम रम्य उत्तम यह धरनी। महिमा अमित जाइ नहिं बरनी॥ करिहउँ इहाँ संभु थापना। मोरे हृदयँ परम कलपना॥",
+          "transliteration": "parama ramya uttama yaha dharanī| mahimā amita jāi nahiṃ baranī|| karihaum̐ ihām̐ saṃbhu thāpanā| more hṛdayam̐ parama kalapanā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 12,
-          number: 12,
-          sanskrit: "लिंग थापि बिधिवत करि पूजा। सिव समान प्रिय मोहि न दूजा॥ श्रीरामजीके वचन सुनकर वानरराज सुग्रीवने बहुत-से दूत भेजे, जो सब श्रेष्ठ मुनियोंको बुलाकर ले आये। शिवलिंगकी स्थापना करके विधिपूर्वक उसका पूजन किया। [फिर भगवान् बोले—] शिवजीके समान मुझको दूसरा कोई प्रिय नहीं है॥ ३॥",
-          transliteration: "liṃga thāpi bidhivata kari pūjā| siva samāna priya mohi na dūjā|| śrīrāmajīke vacana sunakara vānararāja sugrīvane bahuta-se dūta bheje, jo saba śreṣṭha muniyoṃko bulākara le āye| śivaliṃgakī sthāpanā karake vidhipūrvaka usakā pūjana kiyā| [phira bhagavān bole—] śivajīke samāna mujhako dūsarā koī priya nahīṃ hai|| 3||",
-          translation: "सिव द्रोही मम भगत कहावा। सो नर सपनेहुँ मोहि न पावा॥",
-          hindi: "सिव द्रोही मम भगत कहावा। सो नर सपनेहुँ मोहि न पावा॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 12,
+          "number": 12,
+          "sanskrit": "सुनि कपीस बहु दूत पठाए। मुनिबर सकल बोलि लै आए॥ लिंग थापि बिधिवत करि पूजा। सिव समान प्रिय मोहि न दूजा॥",
+          "transliteration": "suni kapīsa bahu dūta paṭhāe| munibara sakala boli lai āe|| liṃga thāpi bidhivata kari pūjā| siva samāna priya mohi na dūjā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 13,
-          number: 13,
-          sanskrit: "संकर बिमुख भगति चह मोरी। सो नारकी मूढ़ मति थोरी॥ जो शिवसे द्रोह रखता है और मेरा भक्त कहलाता है, वह मनुष्य स्वप्नमें भी मुझे नहीं पाता। शंकरजीसे विमुख होकर (विरोध करके) जो मेरी भक्ति चाहता है, वह नरकगामी, मूर्ख और अल्पबुद्धि है॥ ४॥",
-          transliteration: "sṃkara bimukha bhagati caha morī| so nārakī mūḍha़ mati thorī|| jo śivase droha rakhatā hai aura merā bhakta kahalātā hai, vaha manuṣya svapnameṃ bhī mujhe nahīṃ pātā| śṃkarajīse vimukha hokara (virodha karake) jo merī bhakti cāhatā hai, vaha narakagāmī, mūrkha aura alpabuddhi hai|| 4||",
-          translation: "दो०—संकरप्रिय मम द्रोही सिव द्रोही मम दास।",
-          hindi: "दो०—संकरप्रिय मम द्रोही सिव द्रोही मम दास।",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 13,
+          "number": 13,
+          "sanskrit": "सिव द्रोही मम भगत कहावा। सो नर सपनेहुँ मोहि न पावा॥ संकर बिमुख भगति चह मोरी। सो नारकी मूढ़ मति थोरी॥",
+          "transliteration": "siva drohī mama bhagata kahāvā| so nara sapanehum̐ mohi na pāvā|| saṃkara bimukha bhagati caha morī| so nārakī mūḍha़ mati thorī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 14,
-          number: 14,
-          sanskrit: "ते नर करहिं कलप भरि घोर नरक महुँ बास॥ २॥ जिनको शंकरजी प्रिय हैं, परन्तु जो मेरे द्रोही हैं; एवं जो शिवजीके द्रोही हैं और मेरे दास [बनना चाहते] हैं, वे मनुष्य कल्पभर घोर नरकमें निवास करते हैं॥ २॥",
-          transliteration: "te nara karahiṃ kalapa bhari ghora naraka mahuँ bāsa|| 2|| jinako śṃkarajī priya haiṃ, parantu jo mere drohī haiṃ; evṃ jo śivajīke drohī haiṃ aura mere dāsa [bananā cāhate] haiṃ, ve manuṣya kalpabhara ghora narakameṃ nivāsa karate haiṃ|| 2||",
-          translation: "जे रामेस्वर दरसनु करिहहिं। ते तनु तजि मम लोक सिधरिहहिं॥",
-          hindi: "जे रामेस्वर दरसनु करिहहिं। ते तनु तजि मम लोक सिधरिहहिं॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 14,
+          "number": 14,
+          "sanskrit": "दो०—संकरप्रिय मम द्रोही सिव द्रोही मम दास। ते नर करहिं कलप भरि घोर नरक महुँ बास॥ २॥",
+          "transliteration": "do0—saṃkarapriya mama drohī siva drohī mama dāsa| te nara karahiṃ kalapa bhari ghora naraka mahum̐ bāsa|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 15,
-          number: 15,
-          sanskrit: "जो गंगाजलु आनि चढ़ाइहि। सो साजुज्य मुक्ति नर पाइहि॥ जो मनुष्य [मेरे स्थापित किये हुए इन] रामेश्वरजीका दर्शन करेंगे, वे शरीर छोड़कर मेरे लोकको जायँगे। और जो गंगाजल लाकर इनपर चढ़ावेगा, वह मनुष्य सायुज्य मुक्ति पावेगा (अर्थात् मेरे साथ एक हो जायगा)॥ १॥",
-          transliteration: "jo gṃgājalu āni caḍha़āihi| so sājujya mukti nara pāihi|| jo manuṣya [mere sthāpita kiye hue ina] rāmeśvarajīkā darśana kareṃge, ve śarīra choḍa़kara mere lokako jāyaँge| aura jo gṃgājala lākara inapara caḍha़āvegā, vaha manuṣya sāyujya mukti pāvegā (arthāt mere sātha eka ho jāyagā)|| 1||",
-          translation: "होइ अकाम जो छल तजि सेइहि। भगति मोरि तेहि संकर देइहि॥",
-          hindi: "होइ अकाम जो छल तजि सेइहि। भगति मोरि तेहि संकर देइहि॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 15,
+          "number": 15,
+          "sanskrit": "जे रामेस्वर दरसनु करिहहिं। ते तनु तजि मम लोक सिधरिहहिं॥ जो गंगाजलु आनि चढ़ाइहि। सो साजुज्य मुक्ति नर पाइहि॥",
+          "transliteration": "je rāmesvara darasanu karihahiṃ| te tanu taji mama loka sidharihahiṃ|| jo gaṃgājalu āni caḍha़āihi| so sājujya mukti nara pāihi||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 16,
-          number: 16,
-          sanskrit: "मम कृत सेतु जो दरसनु करिही। सो बिनु श्रम भवसागर तरिही॥ जो छल छोड़कर और निष्काम होकर श्रीरामेश्वरजीकी सेवा करेंगे, उन्हें शंकरजी मेरी भक्ति देंगे। और जो मेरे बनाये सेतुका दर्शन करेगा, वह बिना ही परिश्रम संसाररूपी समुद्रसे तर जायगा॥ २॥",
-          transliteration: "mama kṛta setu jo darasanu karihī| so binu śrama bhavasāgara tarihī|| jo chala choḍa़kara aura niṣkāma hokara śrīrāmeśvarajīkī sevā kareṃge, unheṃ śṃkarajī merī bhakti deṃge| aura jo mere banāye setukā darśana karegā, vaha binā hī pariśrama sṃsārarūpī samudrase tara jāyagā|| 2||",
-          translation: "राम बचन सब के जिय भाए। मुनिबर निज निज आश्रम आए॥",
-          hindi: "राम बचन सब के जिय भाए। मुनिबर निज निज आश्रम आए॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 16,
+          "number": 16,
+          "sanskrit": "होइ अकाम जो छल तजि सेइहि। भगति मोरि तेहि संकर देइहि॥ मम कृत सेतु जो दरसनु करिही। सो बिनु श्रम भवसागर तरिही॥",
+          "transliteration": "hoi akāma jo chala taji seihi| bhagati mori tehi saṃkara deihi|| mama kṛta setu jo darasanu karihī| so binu śrama bhavasāgara tarihī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 17,
-          number: 17,
-          sanskrit: "गिरिजा रघुपति कै यह रीती। संतत करहिं प्रनत पर प्रीती॥ श्रीरामजीके वचन सबके मनको अच्छे लगे। तदनन्तर वे श्रेष्ठ मुनि अपने-अपने आश्रमोंको लौट आये। [शिवजी कहते हैं—] हे पार्वती! श्रीरघुनाथजीकी यह रीति है कि वे शरणागतपर सदा प्रीति करते हैं॥ ३॥",
-          transliteration: "girijā raghupati kai yaha rītī| sṃtata karahiṃ pranata para prītī|| śrīrāmajīke vacana sabake manako acche lage| tadanantara ve śreṣṭha muni apane-apane āśramoṃko lauṭa āye| [śivajī kahate haiṃ—] he pārvatī! śrīraghunāthajīkī yaha rīti hai ki ve śaraṇāgatapara sadā prīti karate haiṃ|| 3||",
-          translation: "बाँधा सेतु नील नल नागर। राम कृपाँ जसु भयउ उजागर॥",
-          hindi: "बाँधा सेतु नील नल नागर। राम कृपाँ जसु भयउ उजागर॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 17,
+          "number": 17,
+          "sanskrit": "राम बचन सब के जिय भाए। मुनिबर निज निज आश्रम आए॥ गिरिजा रघुपति कै यह रीती। संतत करहिं प्रनत पर प्रीती॥",
+          "transliteration": "rāma bacana saba ke jiya bhāe| munibara nija nija āśrama āe|| girijā raghupati kai yaha rītī| saṃtata karahiṃ pranata para prītī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 18,
-          number: 18,
-          sanskrit: "बूड़हिं आनहि बोरहिं जेई। भए उपल बोहित सम तेई॥ चतुर नल और नीलने सेतु बाँधा। श्रीरामजीकी कृपासे उनका यह [उज्ज्वल] यश सर्वत्र फैल गया। जो पत्थर आप डूबते हैं और दूसरोंको डुबा देते हैं, वे ही जहाजके समान [स्वयं तैरनेवाले और दूसरोंको पार ले जानेवाले] हो गये॥ ४॥",
-          transliteration: "būḍa़hiṃ ānahi borahiṃ jeī| bhae upala bohita sama teī|| catura nala aura nīlane setu bāँdhā| śrīrāmajīkī kṛpāse unakā yaha [ujjvala] yaśa sarvatra phaila gayā| jo patthara āpa ḍūbate haiṃ aura dūsaroṃko ḍubā dete haiṃ, ve hī jahājake samāna [svayṃ tairanevāle aura dūsaroṃko pāra le jānevāle] ho gaye|| 4||",
-          translation: "महिमा यह न जलधि कइ बरनी। पाहन गुन न कपिन्ह कइ करनी॥",
-          hindi: "महिमा यह न जलधि कइ बरनी। पाहन गुन न कपिन्ह कइ करनी॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 18,
+          "number": 18,
+          "sanskrit": "बाँधा सेतु नील नल नागर। राम कृपाँ जसु भयउ उजागर॥ बूड़हिं आनहि बोरहिं जेई। भए उपल बोहित सम तेई॥",
+          "transliteration": "bām̐dhā setu nīla nala nāgara| rāma kṛpām̐ jasu bhayau ujāgara|| būḍa़hiṃ ānahi borahiṃ jeī| bhae upala bohita sama teī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 19,
-          number: 19,
-          sanskrit: "यह न तो समुद्रकी महिमा वर्णन की गयी है, न पत्थरोंका गुण है और न वानरोंकी ही कोई करामात है॥ ५॥",
-          transliteration: "yaha na to samudrakī mahimā varṇana kī gayī hai, na pattharoṃkā guṇa hai aura na vānaroṃkī hī koī karāmāta hai|| 5||",
-          translation: "दो०—श्री रघुबीर प्रताप ते सिंधु तरे पाषान।",
-          hindi: "दो०—श्री रघुबीर प्रताप ते सिंधु तरे पाषान।",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 19,
+          "number": 19,
+          "sanskrit": "महिमा यह न जलधि कइ बरनी। पाहन गुन न कपिन्ह कइ करनी॥",
+          "transliteration": "mahimā yaha na jaladhi kai baranī| pāhana guna na kapinha kai karanī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 20,
-          number: 20,
-          sanskrit: "ते मतिमंद जे राम तजि भजहिं जाइ प्रभु आन॥ ३॥ श्रीरघुवीरके प्रतापसे पत्थर भी समुद्रपर तैर गये। ऐसे श्रीरामजीको छोड़कर जो किसी दूसरे स्वामीको जाकर भजते हैं वे [निश्चय ही] मन्दबुद्धि हैं॥ ३॥",
-          transliteration: "te matimṃda je rāma taji bhajahiṃ jāi prabhu āna|| 3|| śrīraghuvīrake pratāpase patthara bhī samudrapara taira gaye| aise śrīrāmajīko choḍa़kara jo kisī dūsare svāmīko jākara bhajate haiṃ ve [niścaya hī] mandabuddhi haiṃ|| 3||",
-          translation: "बाँधि सेतु अति सुदृढ़ बनावा। देखि कृपानिधि के मन भावा॥",
-          hindi: "बाँधि सेतु अति सुदृढ़ बनावा। देखि कृपानिधि के मन भावा॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 20,
+          "number": 20,
+          "sanskrit": "दो०—श्री रघुबीर प्रताप ते सिंधु तरे पाषान। ते मतिमंद जे राम तजि भजहिं जाइ प्रभु आन॥ ३॥",
+          "transliteration": "do0—śrī raghubīra pratāpa te siṃdhu tare pāṣāna| te matimaṃda je rāma taji bhajahiṃ jāi prabhu āna|| 3||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 21,
-          number: 21,
-          sanskrit: "चली सेन कछु बरनि न जाई। गर्जहिं मर्कट भट समुदाई॥ नल-नीलने सेतु बाँधकर उसे बहुत मजबूत बनाया। देखनेपर वह कृपानिधान श्रीरामजीके मनको [बहुत ही] अच्छा लगा। सेना चली, जिसका कुछ वर्णन नहीं हो सकता। योद्धा वानरोंके समुदाय गरज रहे हैं॥ १॥",
-          transliteration: "calī sena kachu barani na jāī| garjahiṃ markaṭa bhaṭa samudāī|| nala-nīlane setu bāँdhakara use bahuta majabūta banāyā| dekhanepara vaha kṛpānidhāna śrīrāmajīke manako [bahuta hī] acchā lagā| senā calī, jisakā kucha varṇana nahīṃ ho sakatā| yoddhā vānaroṃke samudāya garaja rahe haiṃ|| 1||",
-          translation: "सेतुबंध ढिग चढि़ रघुराई। चितव कृपाल सिंधु बहुताई॥",
-          hindi: "सेतुबंध ढिग चढि़ रघुराई। चितव कृपाल सिंधु बहुताई॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 21,
+          "number": 21,
+          "sanskrit": "बाँधि सेतु अति सुदृढ़ बनावा। देखि कृपानिधि के मन भावा॥ चली सेन कछु बरनि न जाई। गर्जहिं मर्कट भट समुदाई॥",
+          "transliteration": "bām̐dhi setu ati sudṛḍha़ banāvā| dekhi kṛpānidhi ke mana bhāvā|| calī sena kachu barani na jāī| garjahiṃ markaṭa bhaṭa samudāī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 22,
-          number: 22,
-          sanskrit: "देखन कहुँ प्रभु करुना कंदा। प्रगट भए सब जलचर बृंदा॥ कृपालु श्रीरघुनाथजी सेतुबन्धके तटपर चढ़कर समुद्रका विस्तार देखने लगे। करुणाकन्द (करुणाके मूल) प्रभुके दर्शनके लिये सब जलचरोंके समूह प्रकट हो गये (जलके ऊपर निकल आये)॥ २॥",
-          transliteration: "dekhana kahuँ prabhu karunā kṃdā| pragaṭa bhae saba jalacara bṛṃdā|| kṛpālu śrīraghunāthajī setubandhake taṭapara caḍha़kara samudrakā vistāra dekhane lage| karuṇākanda (karuṇāke mūla) prabhuke darśanake liye saba jalacaroṃke samūha prakaṭa ho gaye (jalake ūpara nikala āye)|| 2||",
-          translation: "मकर नक्र नाना झष ब्याला। सत जोजन तन परम बिसाला॥",
-          hindi: "मकर नक्र नाना झष ब्याला। सत जोजन तन परम बिसाला॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 22,
+          "number": 22,
+          "sanskrit": "सेतुबंध ढिग चढि़ रघुराई। चितव कृपाल सिंधु बहुताई॥ देखन कहुँ प्रभु करुना कंदा। प्रगट भए सब जलचर बृंदा॥",
+          "transliteration": "setubaṃdha ḍhiga caḍhi़ raghurāī| citava kṛpāla siṃdhu bahutāī|| dekhana kahum̐ prabhu karunā kaṃdā| pragaṭa bhae saba jalacara bṛṃdā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 23,
-          number: 23,
-          sanskrit: "अइसेउ एक तिन्हहि जे खाहीं। एकन्ह कें डर तेपि डेराहीं॥ बहुत तरहके मगर, नाक (घडि़याल), मच्छ और सर्प थे, जिनके सौ-सौ योजनके बहुत बड़े विशाल शरीर थे। कुछ ऐसे भी जन्तु थे जो उनको भी खा जायँ। किसी-किसीके डरसे तो वे भी डर रहे थे॥ ३॥",
-          transliteration: "aiseu eka tinhahi je khāhīṃ| ekanha keṃ ḍara tepi ḍerāhīṃ|| bahuta tarahake magara, nāka (ghaḍi़yāla), maccha aura sarpa the, jinake sau-sau yojanake bahuta baḍa़e viśāla śarīra the| kucha aise bhī jantu the jo unako bhī khā jāyaँ| kisī-kisīke ḍarase to ve bhī ḍara rahe the|| 3||",
-          translation: "प्रभुहि बिलोकहिं टरहिं न टारे। मन हरषित सब भए सुखारे॥",
-          hindi: "प्रभुहि बिलोकहिं टरहिं न टारे। मन हरषित सब भए सुखारे॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 23,
+          "number": 23,
+          "sanskrit": "मकर नक्र नाना झष ब्याला। सत जोजन तन परम बिसाला॥ अइसेउ एक तिन्हहि जे खाहीं। एकन्ह कें डर तेपि डेराहीं॥",
+          "transliteration": "makara nakra nānā jhaṣa byālā| sata jojana tana parama bisālā|| aiseu eka tinhahi je khāhīṃ| ekanha keṃ ḍara tepi ḍerāhīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 24,
-          number: 24,
-          sanskrit: "तिन्ह कीं ओट न देखिअ बारी। मगन भए हरि रूप निहारी॥ वे सब [वैर-विरोध भूलकर] प्रभुके दर्शन कर रहे हैं, हटानेसे भी नहीं हटते। सबके मन हर्षित हैं; सब सुखी हो गये। उनकी आड़के कारण जल नहीं दिखायी पड़ता। वे सब भगवान्का रूप देखकर [आनन्द और प्रेममें] मग्न हो गये॥ ४॥",
-          transliteration: "tinha kīṃ oṭa na dekhia bārī| magana bhae hari rūpa nihārī|| ve saba [vaira-virodha bhūlakara] prabhuke darśana kara rahe haiṃ, haṭānese bhī nahīṃ haṭate| sabake mana harṣita haiṃ; saba sukhī ho gaye| unakī āḍa़ke kāraṇa jala nahīṃ dikhāyī paḍa़tā| ve saba bhagavānkā rūpa dekhakara [ānanda aura premameṃ] magna ho gaye|| 4||",
-          translation: "चला कटकु प्रभु आयसु पाई। को कहि सक कपि दल बिपुलाई॥",
-          hindi: "चला कटकु प्रभु आयसु पाई। को कहि सक कपि दल बिपुलाई॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 24,
+          "number": 24,
+          "sanskrit": "प्रभुहि बिलोकहिं टरहिं न टारे। मन हरषित सब भए सुखारे॥ तिन्ह कीं ओट न देखिअ बारी। मगन भए हरि रूप निहारी॥",
+          "transliteration": "prabhuhi bilokahiṃ ṭarahiṃ na ṭāre| mana haraṣita saba bhae sukhāre|| tinha kīṃ oṭa na dekhia bārī| magana bhae hari rūpa nihārī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 25,
-          number: 25,
-          sanskrit: "प्रभु श्रीरामचन्द्रजीकी आज्ञा पाकर सेना चली। वानर-सेनाकी विपुलता (अत्यधिक संख्या)-को कौन कह सकता है?॥ ५॥",
-          transliteration: "prabhu śrīrāmacandrajīkī ājñā pākara senā calī| vānara-senākī vipulatā (atyadhika sṃkhyā)-ko kauna kaha sakatā hai?|| 5||",
-          translation: "दो०—सेतुबंध भइ भीर अति कपि नभ पंथ उड़ाहिं।",
-          hindi: "दो०—सेतुबंध भइ भीर अति कपि नभ पंथ उड़ाहिं।",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 25,
+          "number": 25,
+          "sanskrit": "चला कटकु प्रभु आयसु पाई। को कहि सक कपि दल बिपुलाई॥",
+          "transliteration": "calā kaṭaku prabhu āyasu pāī| ko kahi saka kapi dala bipulāī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 26,
-          number: 26,
-          sanskrit: "अपर जलचरन्हि ऊपर चढि़ चढि़ पारहि जाहिं॥ ४॥ सेतुबन्धपर बड़ी भीड़ हो गयी, इससे कुछ वानर आकाशमार्गसे उड़ने लगे। और दूसरे [कितने ही] जलचर जीवोंपर चढ़-चढ़कर पार जा रहे हैं॥ ४॥",
-          transliteration: "apara jalacaranhi ūpara caḍhi़ caḍhi़ pārahi jāhiṃ|| 4|| setubandhapara baḍa़ī bhīḍa़ ho gayī, isase kucha vānara ākāśamārgase uḍa़ne lage| aura dūsare [kitane hī] jalacara jīvoṃpara caḍha़-caḍha़kara pāra jā rahe haiṃ|| 4||",
-          translation: "अस कौतुक बिलोकि द्वौ भाई। बिहँसि चले कृपाल रघुराई॥",
-          hindi: "अस कौतुक बिलोकि द्वौ भाई। बिहँसि चले कृपाल रघुराई॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 26,
+          "number": 26,
+          "sanskrit": "दो०—सेतुबंध भइ भीर अति कपि नभ पंथ उड़ाहिं। अपर जलचरन्हि ऊपर चढि़ चढि़ पारहि जाहिं॥ ४॥",
+          "transliteration": "do0—setubaṃdha bhai bhīra ati kapi nabha paṃtha uḍa़āhiṃ| apara jalacaranhi ūpara caḍhi़ caḍhi़ pārahi jāhiṃ|| 4||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 27,
-          number: 27,
-          sanskrit: "सेन सहित उतरे रघुबीरा। कहि न जाइ कपि जूथप भीरा॥ कृपालु रघुनाथजी [तथा लक्ष्मणजी] दोनों भाई ऐसा कौतुक देखकर हँसते हुए चले। श्रीरघुवीर सेनासहित समुद्रके पार हो गये। वानरों और उनके सेनापतियोंकी भीड़ कही नहीं जा सकती॥ १॥",
-          transliteration: "sena sahita utare raghubīrā| kahi na jāi kapi jūthapa bhīrā|| kṛpālu raghunāthajī [tathā lakṣmaṇajī] donoṃ bhāī aisā kautuka dekhakara haँsate hue cale| śrīraghuvīra senāsahita samudrake pāra ho gaye| vānaroṃ aura unake senāpatiyoṃkī bhīḍa़ kahī nahīṃ jā sakatī|| 1||",
-          translation: "सिंधु पार प्रभु डेरा कीन्हा। सकल कपिन्ह कहुँ आयसु दीन्हा॥",
-          hindi: "सिंधु पार प्रभु डेरा कीन्हा। सकल कपिन्ह कहुँ आयसु दीन्हा॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 27,
+          "number": 27,
+          "sanskrit": "अस कौतुक बिलोकि द्वौ भाई। बिहँसि चले कृपाल रघुराई॥ सेन सहित उतरे रघुबीरा। कहि न जाइ कपि जूथप भीरा॥",
+          "transliteration": "asa kautuka biloki dvau bhāī| biham̐si cale kṛpāla raghurāī|| sena sahita utare raghubīrā| kahi na jāi kapi jūthapa bhīrā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 28,
-          number: 28,
-          sanskrit: "खाहु जाइ फल मूल सुहाए। सुनत भालु कपि जहँ तहँ धाए॥ प्रभुने समुद्रके पार डेरा डाला और सब वानरोंको आज्ञा दी कि तुम जाकर सुन्दर फल-मूल खाओ। यह सुनते ही रीछ-वानर जहाँ-तहाँ दौड़ पड़े॥ २॥",
-          transliteration: "khāhu jāi phala mūla suhāe| sunata bhālu kapi jahaँ tahaँ dhāe|| prabhune samudrake pāra ḍerā ḍālā aura saba vānaroṃko ājñā dī ki tuma jākara sundara phala-mūla khāo| yaha sunate hī rīcha-vānara jahāँ-tahāँ dauḍa़ paḍa़e|| 2||",
-          translation: "सब तरु फरे राम हित लागी। रितु अरु कुरितु काल गति त्यागी॥",
-          hindi: "सब तरु फरे राम हित लागी। रितु अरु कुरितु काल गति त्यागी॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 28,
+          "number": 28,
+          "sanskrit": "सिंधु पार प्रभु डेरा कीन्हा। सकल कपिन्ह कहुँ आयसु दीन्हा॥ खाहु जाइ फल मूल सुहाए। सुनत भालु कपि जहँ तहँ धाए॥",
+          "transliteration": "siṃdhu pāra prabhu ḍerā kīnhā| sakala kapinha kahum̐ āyasu dīnhā|| khāhu jāi phala mūla suhāe| sunata bhālu kapi jaham̐ taham̐ dhāe||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 29,
-          number: 29,
-          sanskrit: "खाहिं मधुर फल बिटप हलावहिं। लंका सन्मुख सिखर चलावहिं॥ श्रीरामजीके हित (सेवा)-के लिये सब वृक्ष ऋतु-कुऋतु—समयकी गतिको छोड़कर फल उठे। वानर-भालू मीठे-मीठे फल खा रहे हैं, वृक्षोंको हिला रहे हैं और पर्वतोंके शिखरोंको लंकाकी ओर फेंक रहे हैं॥ ३॥",
-          transliteration: "khāhiṃ madhura phala biṭapa halāvahiṃ| lṃkā sanmukha sikhara calāvahiṃ|| śrīrāmajīke hita (sevā)-ke liye saba vṛkṣa ṛtu-kuṛtu—samayakī gatiko choḍa़kara phala uṭhe| vānara-bhālū mīṭhe-mīṭhe phala khā rahe haiṃ, vṛkṣoṃko hilā rahe haiṃ aura parvatoṃke śikharoṃko lṃkākī ora pheṃka rahe haiṃ|| 3||",
-          translation: "जहँ कहुँ फिरत निसाचर पावहिं। घेरि सकल बहु नाच नचावहिं॥",
-          hindi: "जहँ कहुँ फिरत निसाचर पावहिं। घेरि सकल बहु नाच नचावहिं॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
+          "id": 29,
+          "number": 29,
+          "sanskrit": "सब तरु फरे राम हित लागी। रितु अरु कुरितु काल गति त्यागी॥ खाहिं मधुर फल बिटप हलावहिं। लंका सन्मुख सिखर चलावहिं॥",
+          "transliteration": "saba taru phare rāma hita lāgī| ritu aru kuritu kāla gati tyāgī|| khāhiṃ madhura phala biṭapa halāvahiṃ| laṃkā sanmukha sikhara calāvahiṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
         },
         {
-          id: 30,
-          number: 30,
-          sanskrit: "दसनन्हि काटि नासिका काना। कहि प्रभु सुजसु देहिं तब जाना॥ घूमते-फिरते जहाँ कहीं किसी राक्षसको पा जाते हैं तो सब उसे घेरकर खूब नाच नचाते हैं और दाँतोंसे उसके नाक-कान काटकर, प्रभुका सुयश कहकर [अथवा कहलाकर] तब उसे जाने देते हैं॥ ४॥",
-          transliteration: "dasananhi kāṭi nāsikā kānā| kahi prabhu sujasu dehiṃ taba jānā|| ghūmate-phirate jahāँ kahīṃ kisī rākṣasako pā jāte haiṃ to saba use gherakara khūba nāca nacāte haiṃ aura dāँtoṃse usake nāka-kāna kāṭakara, prabhukā suyaśa kahakara [athavā kahalākara] taba use jāne dete haiṃ|| 4||",
-          translation: "जिन्ह कर नासा कान निपाता। तिन्ह रावनहि कही सब बाता॥",
-          hindi: "जिन्ह कर नासा कान निपाता। तिन्ह रावनहि कही सब बाता॥",
-          explanation: "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","लंकाकाण्ड"]
-        },
-      ],
+          "id": 30,
+          "number": 30,
+          "sanskrit": "जहँ कहुँ फिरत निसाचर पावहिं। घेरि सकल बहु नाच नचावहिं॥ दसनन्हि काटि नासिका काना। कहि प्रभु सुजसु देहिं तब जाना॥",
+          "transliteration": "jaham̐ kahum̐ phirata nisācara pāvahiṃ| gheri sakala bahu nāca nacāvahiṃ|| dasananhi kāṭi nāsikā kānā| kahi prabhu sujasu dehiṃ taba jānā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस लंकाकाण्ड — सेतु-निर्माण, रावण-वध एवं विजयोत्सव का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "लंकाकाण्ड"
+          ]
+        }
+      ]
     },
     {
-      id: 7,
-      title: "Uttar Kanda — The Golden Age",
-      titleSanskrit: "उत्तरकाण्ड",
-      summary: "Rama's coronation as king of Ayodhya (Ramrajya), the nature of ideal governance and brotherhood, Sanaka's teachings, and the sublime dialogue between Sage Kakabhushundi and Garuda on the supremacy of Bhakti.",
-      verses: [
+      "id": 7,
+      "title": "Uttar Kanda — The Golden Age",
+      "titleSanskrit": "उत्तरकाण्ड",
+      "summary": "Rama's coronation as king of Ayodhya (Ramrajya), the nature of ideal governance and brotherhood, Sanaka's teachings, and the sublime dialogue between Sage Kakabhushundi and Garuda on the supremacy of Bhakti.",
+      "verses": [
         {
-          id: 1,
-          number: 1,
-          sanskrit: "श्रीजानकीवल्लभो विजयते श्रीरामचरितमानस सप्तम सोपान श्लोक केकीकण्ठाभनीलं सुरवरविलसद्विप्रपादाब्जचिह्नं शोभाढ्यं पीतवस्त्रं सरसिजनयनं सर्वदा सुप्रसन्नम्। पाणौ नाराचचापं कपिनिकरयुतं बन्धुना सेव्यमानं नौमीड्यं जानकीशं रघुवरमनिशं पुष्पकारूढरामम्॥ १॥ मोरके कण्ठकी आभाके समान (हरिताभ) नीलवर्ण, देवताओंमें श्रेष्ठ, ब्राह्मण (भृगुजी)- के चरणकमलके चिह्नसे सुशोभित, शोभासे पूर्ण, पीताम्बरधारी, कमलनेत्र, सदा परम प्रसन्न, हाथोंमें बाण और धनुष धारण किये हुए, वानरसमूहसे युक्त, भाई लक्ष्मणजीसे सेवित, स्तुति किये जाने योग्य, श्रीजानकीजीके पति, रघुकुलश्रेष्ठ, पुष्पकविमानपर सवार श्रीरामचन्द्रजीको मैं निरन्तर नमस्कार करता हूँ॥ १॥",
-          transliteration: "śrījānakīvallabho vijayate śrīrāmacaritamānasa saptama sopāna śloka kekīkaṇṭhābhanīlṃ suravaravilasadviprapādābjacihnṃ śobhāḍhyṃ pītavastrṃ sarasijanayanṃ sarvadā suprasannam| pāṇau nārācacāpṃ kapinikarayutṃ bandhunā sevyamānṃ naumīḍyṃ jānakīśṃ raghuvaramaniśṃ puṣpakārūḍharāmam|| 1|| morake kaṇṭhakī ābhāke samāna (haritābha) nīlavarṇa, devatāoṃmeṃ śreṣṭha, brāhmaṇa (bhṛgujī)- ke caraṇakamalake cihnase suśobhita, śobhāse pūrṇa, pītāmbaradhārī, kamalanetra, sadā parama prasanna, hāthoṃmeṃ bāṇa aura dhanuṣa dhāraṇa kiye hue, vānarasamūhase yukta, bhāī lakṣmaṇajīse sevita, stuti kiye jāne yogya, śrījānakījīke pati, raghukulaśreṣṭha, puṣpakavimānapara savāra śrīrāmacandrajīko maiṃ nirantara namaskāra karatā hūँ|| 1||",
-          translation: "कोसलेन्द्रपदकञ्जमञ्जुलौ कोमलावजमहेशवन्दितौ।",
-          hindi: "कोसलेन्द्रपदकञ्जमञ्जुलौ कोमलावजमहेशवन्दितौ।",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 1,
+          "number": 1,
+          "sanskrit": "केकीकण्ठाभनीलं सुरवरविलसद्विप्रपादाब्जचिह्नं शोभाढ्यं पीतवस्त्रं सरसिजनयनं सर्वदा सुप्रसन्नम्। पाणौ नाराचचापं कपिनिकरयुतं बन्धुना सेव्यमानं नौमीड्यं जानकीशं रघुवरमनिशं पुष्पकारूढरामम्॥ १॥",
+          "transliteration": "kekīkaṇṭhābhanīlaṃ suravaravilasadviprapādābjacihnaṃ śobhāḍhyaṃ pītavastraṃ sarasijanayanaṃ sarvadā suprasannam| pāṇau nārācacāpaṃ kapinikarayutaṃ bandhunā sevyamānaṃ naumīḍyaṃ jānakīśaṃ raghuvaramaniśaṃ puṣpakārūḍharāmam|| 1||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 1)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 2,
-          number: 2,
-          sanskrit: "जानकीकरसरोजलालितौ चिन्तकस्य मनभृङ्गसङ्गिनौ॥ २॥ कोसलपुरीके स्वामी श्रीरामचन्द्रजीके सुन्दर और कोमल दोनों चरणकमल ब्रह्माजी और शिवजीके द्वारा वन्दित हैं, श्रीजानकीजीके करकमलोंसे दुलराये हुए हैं और चिन्तन करनेवालेके मनरूपी भौंरेके नित्य संगी हैं अर्थात् चिन्तन करनेवालोंका मनरूपी भ्रमर सदा उन चरणकमलोंमें बसा रहता है॥ २॥",
-          transliteration: "jānakīkarasarojalālitau cintakasya manabhṛṅgasaṅginau|| 2|| kosalapurīke svāmī śrīrāmacandrajīke sundara aura komala donoṃ caraṇakamala brahmājī aura śivajīke dvārā vandita haiṃ, śrījānakījīke karakamaloṃse dularāye hue haiṃ aura cintana karanevāleke manarūpī bhauṃreke nitya sṃgī haiṃ arthāt cintana karanevāloṃkā manarūpī bhramara sadā una caraṇakamaloṃmeṃ basā rahatā hai|| 2||",
-          translation: "कुन्दइन्दुदरगौरसुन्दरं अम्बिकापतिमभीष्टसिद्धिदम्।",
-          hindi: "कुन्दइन्दुदरगौरसुन्दरं अम्बिकापतिमभीष्टसिद्धिदम्।",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 2,
+          "number": 2,
+          "sanskrit": "कोसलेन्द्रपदकञ्जमञ्जुलौ कोमलावजमहेशवन्दितौ। जानकीकरसरोजलालितौ चिन्तकस्य मनभृङ्गसङ्गिनौ॥ २॥",
+          "transliteration": "kosalendrapadakañjamañjulau komalāvajamaheśavanditau| jānakīkarasarojalālitau cintakasya manabhṛṅgasaṅginau|| 2||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 2)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 3,
-          number: 3,
-          sanskrit: "कारुणीककलकञ्जलोचनं नौमि शङ्करमनङ्गमोचनम्॥ ३॥ कुन्दके फूल, चन्द्रमा और शंखके समान सुन्दर गौरवर्ण, जगज्जननी श्रीपार्वतीजीके पति, वांछित फलके देनेवाले, [दु:खियोंपर सदा] दया करनेवाले, सुन्दर कमलके समान नेत्रवाले, कामदेवसे छुड़ानेवाले, [कल्याणकारी] श्रीशंकरजीको मैं नमस्कार करता हूँ॥ ३॥",
-          transliteration: "kāruṇīkakalakañjalocanṃ naumi śaṅkaramanaṅgamocanam|| 3|| kundake phūla, candramā aura śṃkhake samāna sundara gauravarṇa, jagajjananī śrīpārvatījīke pati, vāṃchita phalake denevāle, [du:khiyoṃpara sadā] dayā karanevāle, sundara kamalake samāna netravāle, kāmadevase chuḍa़ānevāle, [kalyāṇakārī] śrīśṃkarajīko maiṃ namaskāra karatā hūँ|| 3||",
-          translation: "दो०—रहा एक दिन अवधि कर अति आरत पुर लोग।",
-          hindi: "दो०—रहा एक दिन अवधि कर अति आरत पुर लोग।",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 3,
+          "number": 3,
+          "sanskrit": "कुन्दइन्दुदरगौरसुन्दरं अम्बिकापतिमभीष्टसिद्धिदम्। कारुणीककलकञ्जलोचनं नौमि शङ्करमनङ्गमोचनम्॥ ३॥",
+          "transliteration": "kundaindudaragaurasundaraṃ ambikāpatimabhīṣṭasiddhidam| kāruṇīkakalakañjalocanaṃ naumi śaṅkaramanaṅgamocanam|| 3||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 3)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 4,
-          number: 4,
-          sanskrit: "जहँ तहँ सोचहिं नारि नर कृस तन राम बियोग॥ [श्रीरामजीके लौटनेकी] अवधिका एक ही दिन बाकी रह गया, अतएव नगरके लोग बहुत आतुर (अधीर) हो रहे हैं। रामके वियोगमें दुबले हुए स्त्री-पुरुष जहाँ-तहाँ सोच (विचार) कर रहे हैं [कि क्या बात है, श्रीरामजी क्यों नहीं आये]। सगुन होहिं सुंदर सकल मन प्रसन्न सब केर। प्रभु आगवन जनाव जनु नगर रम्य चहुँ फेर॥ इतनेमें ही सब सुन्दर शकुन होने लगे और सबके मन प्रसन्न हो गये। नगर भी चारों ओरसे रमणीक हो गया। मानो ये सब-के-सब चिह्न प्रभुके [शुभ] आगमनको जना रहे हैं। कौसल्यादि मातु सब मन अनंद अस होइ। आयउ प्रभु श्री अनुजजुत कहन चहत अब कोइ॥ कौसल्या आदि सब माताओंके मनमें ऐसा आनन्द हो रहा है जैसे अभी कोई कहना ही चाहता है कि सीताजी और लक्ष्मणजीसहित प्रभु श्रीरामचन्द्रजी आ गये। भरत नयन भुज दच्छिन फरकत बारहिं बार। जानि सगुन मन हरष अति लागे करन बिचार॥ भरतजीकी दाहिनी आँख और दाहिनी भुजा बार-बार फड़क रही है। इसे शुभ शकुन जानकर उनके मनमें अत्यन्त हर्ष हुआ और वे विचार करने लगे— रहेउ एक दिन अवधि अधारा। समुझत मन दुख भयउ अपारा॥ कारन कवन नाथ नहिं आयउ। जानि कुटिल किधौं मोहि बिसरायउ॥ प्राणोंकी आधाररूप अवधिका एक ही दिन शेष रह गया। यह सोचते ही भरतजीके मनमें अपार दु:ख हुआ। क्या कारण हुआ कि नाथ नहीं आये? प्रभुने कुटिल जानकर मुझे कहीं भुला तो नहीं दिया?॥ १॥",
-          transliteration: "jahaँ tahaँ socahiṃ nāri nara kṛsa tana rāma biyoga|| [śrīrāmajīke lauṭanekī] avadhikā eka hī dina bākī raha gayā, ataeva nagarake loga bahuta ātura (adhīra) ho rahe haiṃ| rāmake viyogameṃ dubale hue strī-puruṣa jahāँ-tahāँ soca (vicāra) kara rahe haiṃ [ki kyā bāta hai, śrīrāmajī kyoṃ nahīṃ āye]| saguna hohiṃ suṃdara sakala mana prasanna saba kera| prabhu āgavana janāva janu nagara ramya cahuँ phera|| itanemeṃ hī saba sundara śakuna hone lage aura sabake mana prasanna ho gaye| nagara bhī cāroṃ orase ramaṇīka ho gayā| māno ye saba-ke-saba cihna prabhuke [śubha] āgamanako janā rahe haiṃ| kausalyādi mātu saba mana anṃda asa hoi| āyau prabhu śrī anujajuta kahana cahata aba koi|| kausalyā ādi saba mātāoṃke manameṃ aisā ānanda ho rahā hai jaise abhī koī kahanā hī cāhatā hai ki sītājī aura lakṣmaṇajīsahita prabhu śrīrāmacandrajī ā gaye| bharata nayana bhuja dacchina pharakata bārahiṃ bāra| jāni saguna mana haraṣa ati lāge karana bicāra|| bharatajīkī dāhinī āँkha aura dāhinī bhujā bāra-bāra phaḍa़ka rahī hai| ise śubha śakuna jānakara unake manameṃ atyanta harṣa huā aura ve vicāra karane lage— raheu eka dina avadhi adhārā| samujhata mana dukha bhayau apārā|| kārana kavana nātha nahiṃ āyau| jāni kuṭila kidhauṃ mohi bisarāyau|| prāṇoṃkī ādhārarūpa avadhikā eka hī dina śeṣa raha gayā| yaha socate hī bharatajīke manameṃ apāra du:kha huā| kyā kāraṇa huā ki nātha nahīṃ āye? prabhune kuṭila jānakara mujhe kahīṃ bhulā to nahīṃ diyā?|| 1||",
-          translation: "अहह धन्य लछिमन बड़भागी। राम पदारबिंदु अनुरागी॥",
-          hindi: "अहह धन्य लछिमन बड़भागी। राम पदारबिंदु अनुरागी॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 4,
+          "number": 4,
+          "sanskrit": "दो०—रहा एक दिन अवधि कर अति आरत पुर लोग। जहँ तहँ सोचहिं नारि नर कृस तन राम बियोग॥",
+          "transliteration": "do0—rahā eka dina avadhi kara ati ārata pura loga| jaham̐ taham̐ socahiṃ nāri nara kṛsa tana rāma biyoga||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 4)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 5,
-          number: 5,
-          sanskrit: "कपटी कुटिल मोहि प्रभु चीन्हा। ताते नाथ संग नहिं लीन्हा॥ अहा हा! लक्ष्मण बड़े धन्य एवं बड़भागी हैं, जो श्रीरामचन्द्रजीके चरणारविन्दके प्रेमी हैं (अर्थात् उनसे अलग नहीं हुए)। मुझे तो प्रभुने कपटी और कुटिल पहचान लिया, इसीसे नाथने मुझे साथ नहीं लिया!॥ २॥",
-          transliteration: "kapaṭī kuṭila mohi prabhu cīnhā| tāte nātha sṃga nahiṃ līnhā|| ahā hā! lakṣmaṇa baḍa़e dhanya evṃ baḍa़bhāgī haiṃ, jo śrīrāmacandrajīke caraṇāravindake premī haiṃ (arthāt unase alaga nahīṃ hue)| mujhe to prabhune kapaṭī aura kuṭila pahacāna liyā, isīse nāthane mujhe sātha nahīṃ liyā!|| 2||",
-          translation: "जौं करनी समुझै प्रभु मोरी। नहिं निस्तार कलप सत कोरी॥",
-          hindi: "जौं करनी समुझै प्रभु मोरी। नहिं निस्तार कलप सत कोरी॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 5,
+          "number": 5,
+          "sanskrit": "अहह धन्य लछिमन बड़भागी। राम पदारबिंदु अनुरागी॥ कपटी कुटिल मोहि प्रभु चीन्हा। ताते नाथ संग नहिं लीन्हा॥",
+          "transliteration": "ahaha dhanya lachimana baḍa़bhāgī| rāma padārabiṃdu anurāgī|| kapaṭī kuṭila mohi prabhu cīnhā| tāte nātha saṃga nahiṃ līnhā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 5)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 6,
-          number: 6,
-          sanskrit: "जन अवगुन प्रभु मान न काऊ। दीन बंधु अति मृदुल सुभाऊ॥ [बात भी ठीक ही है, क्योंकि] यदि प्रभु मेरी करनीपर ध्यान दें, तो सौ करोड़ (असंख्य) कल्पोंतक भी मेरा निस्तार (छुटकारा) नहीं हो सकता। [परन्तु आशा इतनी ही है कि] प्रभु सेवकका अवगुण कभी नहीं मानते। वे दीनबन्धु हैं और अत्यन्त ही कोमल स्वभावके हैं॥ ३॥",
-          transliteration: "jana avaguna prabhu māna na kāū| dīna bṃdhu ati mṛdula subhāū|| [bāta bhī ṭhīka hī hai, kyoṃki] yadi prabhu merī karanīpara dhyāna deṃ, to sau karoḍa़ (asṃkhya) kalpoṃtaka bhī merā nistāra (chuṭakārā) nahīṃ ho sakatā| [parantu āśā itanī hī hai ki] prabhu sevakakā avaguṇa kabhī nahīṃ mānate| ve dīnabandhu haiṃ aura atyanta hī komala svabhāvake haiṃ|| 3||",
-          translation: "मोरे जियँ भरोस दृढ़ सोई। मिलिहहिं राम सगुन सुभ होई॥",
-          hindi: "मोरे जियँ भरोस दृढ़ सोई। मिलिहहिं राम सगुन सुभ होई॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 6,
+          "number": 6,
+          "sanskrit": "जौं करनी समुझै प्रभु मोरी। नहिं निस्तार कलप सत कोरी॥ जन अवगुन प्रभु मान न काऊ। दीन बंधु अति मृदुल सुभाऊ॥",
+          "transliteration": "jauṃ karanī samujhai prabhu morī| nahiṃ nistāra kalapa sata korī|| jana avaguna prabhu māna na kāū| dīna baṃdhu ati mṛdula subhāū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 6)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 7,
-          number: 7,
-          sanskrit: "बीतें अवधि रहहिं जौं प्राना। अधम कवन जग मोहि समाना॥ अतएव मेरे हृदयमें ऐसा पक्का भरोसा है कि श्रीरामजी अवश्य मिलेंगे, [क्योंकि] मुझे शकुन बड़े शुभ हो रहे हैं। किन्तु अवधि बीत जानेपर यदि मेरे प्राण रह गये तो जगत् में मेरे समान नीच कौन होगा?॥ ४॥",
-          transliteration: "bīteṃ avadhi rahahiṃ jauṃ prānā| adhama kavana jaga mohi samānā|| ataeva mere hṛdayameṃ aisā pakkā bharosā hai ki śrīrāmajī avaśya mileṃge, [kyoṃki] mujhe śakuna baḍa़e śubha ho rahe haiṃ| kintu avadhi bīta jānepara yadi mere prāṇa raha gaye to jagat meṃ mere samāna nīca kauna hogā?|| 4||",
-          translation: "दो०—राम बिरह सागर महँ भरत मगन मन होत।",
-          hindi: "दो०—राम बिरह सागर महँ भरत मगन मन होत।",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 7,
+          "number": 7,
+          "sanskrit": "मोरे जियँ भरोस दृढ़ सोई। मिलिहहिं राम सगुन सुभ होई॥ बीतें अवधि रहहिं जौं प्राना। अधम कवन जग मोहि समाना॥",
+          "transliteration": "more jiyam̐ bharosa dṛḍha़ soī| milihahiṃ rāma saguna subha hoī|| bīteṃ avadhi rahahiṃ jauṃ prānā| adhama kavana jaga mohi samānā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 7)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 8,
-          number: 8,
-          sanskrit: "बिप्र रूप धरि पवनसुत आइ गयउ जनु पोत॥१ (क)॥ श्रीरामजीके विरह-समुद्रमें भरतजीका मन डूब रहा था, उसी समय पवनपुत्र हनुमान्जी ब्राह्मणका रूप धरकर इस प्रकार आ गये, मानो [उन्हें डूबनेसे बचानेके लिये] नाव आ गयी हो॥ १ (क)॥ बैठे देखि कुसासन जटा मुकुट कृस गात। राम राम रघुपति जपत स्रवत नयन जलजात॥१ (ख)॥ हनुमान्जीने दुर्बलशरीर भरतजीको जटाओंका मुकुट बनाये, राम! राम! रघुपति! जपते और कमलके समान नेत्रोंसे [प्रेमाश्रुओंका] जल बहाते कुशके आसनपर बैठे देखा॥ १ (ख)॥ देखत हनूमान अति हरषेउ। पुलक गात लोचन जल बरषेउ॥ मन महँ बहुत भाँति सुख मानी। बोलेउ श्रवन सुधा सम बानी॥ उन्हें देखते ही हनुमान्जी अत्यन्त हर्षित हुए। उनका शरीर पुलकित हो गया, नेत्रोंसे [प्रेमाश्रुओंका] जल बरसने लगा। मनमें बहुत प्रकारसे सुख मानकर वे कानोंके लिये अमृतके समान वाणी बोले—॥ १॥",
-          transliteration: "bipra rūpa dhari pavanasuta āi gayau janu pota||1 (ka)|| śrīrāmajīke viraha-samudrameṃ bharatajīkā mana ḍūba rahā thā, usī samaya pavanaputra hanumānjī brāhmaṇakā rūpa dharakara isa prakāra ā gaye, māno [unheṃ ḍūbanese bacāneke liye] nāva ā gayī ho|| 1 (ka)|| baiṭhe dekhi kusāsana jaṭā mukuṭa kṛsa gāta| rāma rāma raghupati japata sravata nayana jalajāta||1 (kha)|| hanumānjīne durbalaśarīra bharatajīko jaṭāoṃkā mukuṭa banāye, rāma! rāma! raghupati! japate aura kamalake samāna netroṃse [premāśruoṃkā] jala bahāte kuśake āsanapara baiṭhe dekhā|| 1 (kha)|| dekhata hanūmāna ati haraṣeu| pulaka gāta locana jala baraṣeu|| mana mahaँ bahuta bhāँti sukha mānī| boleu śravana sudhā sama bānī|| unheṃ dekhate hī hanumānjī atyanta harṣita hue| unakā śarīra pulakita ho gayā, netroṃse [premāśruoṃkā] jala barasane lagā| manameṃ bahuta prakārase sukha mānakara ve kānoṃke liye amṛtake samāna vāṇī bole—|| 1||",
-          translation: "जासु बिरहँ सोचहु दिन राती। रटहु निरंतर गुन गन पाँती॥",
-          hindi: "जासु बिरहँ सोचहु दिन राती। रटहु निरंतर गुन गन पाँती॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 8,
+          "number": 8,
+          "sanskrit": "दो०—राम बिरह सागर महँ भरत मगन मन होत। बिप्र रूप धरि पवनसुत आइ गयउ जनु पोत॥",
+          "transliteration": "do0—rāma biraha sāgara maham̐ bharata magana mana hota| bipra rūpa dhari pavanasuta āi gayau janu pota||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 8)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 9,
-          number: 9,
-          sanskrit: "रघुकुल तिलक सुजन सुखदाता। आयउ कुसल देव मुनि त्राता॥ जिनके विरहमें आप दिन-रात सोच करते (घुलते) रहते हैं और जिनके गुण-समूहोंकी पंक्तियोंको आप निरन्तर रटते रहते हैं, वे ही रघुकुलके तिलक, सज्जनोंको सुख देनेवाले और देवताओं तथा मुनियोंके रक्षक श्रीरामजी सकुशल आ गये॥ २॥",
-          transliteration: "raghukula tilaka sujana sukhadātā| āyau kusala deva muni trātā|| jinake virahameṃ āpa dina-rāta soca karate (ghulate) rahate haiṃ aura jinake guṇa-samūhoṃkī pṃktiyoṃko āpa nirantara raṭate rahate haiṃ, ve hī raghukulake tilaka, sajjanoṃko sukha denevāle aura devatāoṃ tathā muniyoṃke rakṣaka śrīrāmajī sakuśala ā gaye|| 2||",
-          translation: "रिपु रन जीति सुजस सुर गावत। सीता सहित अनुज प्रभु आवत॥",
-          hindi: "रिपु रन जीति सुजस सुर गावत। सीता सहित अनुज प्रभु आवत॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 9,
+          "number": 9,
+          "sanskrit": "जासु बिरहँ सोचहु दिन राती। रटहु निरंतर गुन गन पाँती॥ रघुकुल तिलक सुजन सुखदाता। आयउ कुसल देव मुनि त्राता॥",
+          "transliteration": "jāsu biraham̐ socahu dina rātī| raṭahu niraṃtara guna gana pām̐tī|| raghukula tilaka sujana sukhadātā| āyau kusala deva muni trātā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 9)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 10,
-          number: 10,
-          sanskrit: "सुनत बचन बिसरे सब दूखा। तृषावंत जिमि पाइ पियूषा॥ शत्रुको रणमें जीतकर सीताजी और लक्ष्मणजीसहित प्रभु आ रहे हैं; देवता उनका सुन्दर यश गा रहे हैं। ये वचन सुनते ही [भरतजीको] सारे दु:ख भूल गये। जैसे प्यासा आदमी अमृत पाकर प्यासके दु:खको भूल जाय॥ ३॥",
-          transliteration: "sunata bacana bisare saba dūkhā| tṛṣāvṃta jimi pāi piyūṣā|| śatruko raṇameṃ jītakara sītājī aura lakṣmaṇajīsahita prabhu ā rahe haiṃ; devatā unakā sundara yaśa gā rahe haiṃ| ye vacana sunate hī [bharatajīko] sāre du:kha bhūla gaye| jaise pyāsā ādamī amṛta pākara pyāsake du:khako bhūla jāya|| 3||",
-          translation: "को तुम्ह तात कहाँ ते आए। मोहि परम प्रिय बचन सुनाए॥",
-          hindi: "को तुम्ह तात कहाँ ते आए। मोहि परम प्रिय बचन सुनाए॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 10,
+          "number": 10,
+          "sanskrit": "रिपु रन जीति सुजस सुर गावत। सीता सहित अनुज प्रभु आवत॥ सुनत बचन बिसरे सब दूखा। तृषावंत जिमि पाइ पियूषा॥",
+          "transliteration": "ripu rana jīti sujasa sura gāvata| sītā sahita anuja prabhu āvata|| sunata bacana bisare saba dūkhā| tṛṣāvaṃta jimi pāi piyūṣā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 10)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 11,
-          number: 11,
-          sanskrit: "मारुत सुत मैं कपि हनुमाना। नामु मोर सुनु कृपानिधाना॥ [भरतजीने पूछा—] हे तात! तुम कौन हो? और कहाँसे आये हो? [जो] तुमने मुझको [ये] परम प्रिय (अत्यन्त आनन्द देनेवाले) वचन सुनाये। [हनुमान्जीने कहा—] हे कृपानिधान! सुनिये, मैं पवनका पुत्र और जातिका वानर हूँ; मेरा नाम हनुमान् है॥ ४॥",
-          transliteration: "māruta suta maiṃ kapi hanumānā| nāmu mora sunu kṛpānidhānā|| [bharatajīne pūchā—] he tāta! tuma kauna ho? aura kahāँse āye ho? [jo] tumane mujhako [ye] parama priya (atyanta ānanda denevāle) vacana sunāye| [hanumānjīne kahā—] he kṛpānidhāna! suniye, maiṃ pavanakā putra aura jātikā vānara hūँ; merā nāma hanumān hai|| 4||",
-          translation: "दीनबंधु रघुपति कर किंकर। सुनत भरत भेंटेउ उठि सादर॥",
-          hindi: "दीनबंधु रघुपति कर किंकर। सुनत भरत भेंटेउ उठि सादर॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 11,
+          "number": 11,
+          "sanskrit": "को तुम्ह तात कहाँ ते आए। मोहि परम प्रिय बचन सुनाए॥ मारुत सुत मैं कपि हनुमाना। नामु मोर सुनु कृपानिधाना॥",
+          "transliteration": "ko tumha tāta kahām̐ te āe| mohi parama priya bacana sunāe|| māruta suta maiṃ kapi hanumānā| nāmu mora sunu kṛpānidhānā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 11)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 12,
-          number: 12,
-          sanskrit: "मिलत प्रेम नहिं हृदयँ समाता। नयन स्रवत जल पुलकित गाता॥ मैं दीनोंके बन्धु श्रीरघुनाथजीका दास हूँ। यह सुनते ही भरतजी उठकर आदरपूर्वक हनुमान्जीसे गले लगकर मिले। मिलते समय प्रेम हृदयमें नहीं समाता। नेत्रोंसे [आनन्द और प्रेमके आँसुओंका] जल बहने लगा और शरीर पुलकित हो गया॥ ५॥",
-          transliteration: "milata prema nahiṃ hṛdayaँ samātā| nayana sravata jala pulakita gātā|| maiṃ dīnoṃke bandhu śrīraghunāthajīkā dāsa hūँ| yaha sunate hī bharatajī uṭhakara ādarapūrvaka hanumānjīse gale lagakara mile| milate samaya prema hṛdayameṃ nahīṃ samātā| netroṃse [ānanda aura premake āँsuoṃkā] jala bahane lagā aura śarīra pulakita ho gayā|| 5||",
-          translation: "कपि तव दरस सकल दुख बीते। मिले आजु मोहि राम पिरीते॥",
-          hindi: "कपि तव दरस सकल दुख बीते। मिले आजु मोहि राम पिरीते॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 12,
+          "number": 12,
+          "sanskrit": "दीनबंधु रघुपति कर किंकर। सुनत भरत भेंटेउ उठि सादर॥ मिलत प्रेम नहिं हृदयँ समाता। नयन स्रवत जल पुलकित गाता॥",
+          "transliteration": "dīnabaṃdhu raghupati kara kiṃkara| sunata bharata bheṃṭeu uṭhi sādara|| milata prema nahiṃ hṛdayam̐ samātā| nayana sravata jala pulakita gātā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 12)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 13,
-          number: 13,
-          sanskrit: "बार बार बूझी कुसलाता। तो कहुँ देउँ काह सुनु भ्राता॥ [भरतजीने कहा—] हे हनुमान्! तुम्हारे दर्शनसे मेरे समस्त दु:ख समाप्त हो गये (दु:खोंका अन्त हो गया)। [तुम्हारे रूपमें] आज मुझे प्यारे रामजी ही मिल गये। भरतजीने बार-बार कुशल पूछी [और कहा—] हे भाई! सुनो, [इस शुभ संवादके बदलेमें] तुम्हें क्या दूँ?॥ ६॥",
-          transliteration: "bāra bāra būjhī kusalātā| to kahuँ deuँ kāha sunu bhrātā|| [bharatajīne kahā—] he hanumān! tumhāre darśanase mere samasta du:kha samāpta ho gaye (du:khoṃkā anta ho gayā)| [tumhāre rūpameṃ] āja mujhe pyāre rāmajī hī mila gaye| bharatajīne bāra-bāra kuśala pūchī [aura kahā—] he bhāī! suno, [isa śubha sṃvādake badalemeṃ] tumheṃ kyā dūँ?|| 6||",
-          translation: "एहि संदेस सरिस जग माहीं। करि बिचार देखेउँ कछु नाहीं॥",
-          hindi: "एहि संदेस सरिस जग माहीं। करि बिचार देखेउँ कछु नाहीं॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 13,
+          "number": 13,
+          "sanskrit": "कपि तव दरस सकल दुख बीते। मिले आजु मोहि राम पिरीते॥ बार बार बूझी कुसलाता। तो कहुँ देउँ काह सुनु भ्राता॥",
+          "transliteration": "kapi tava darasa sakala dukha bīte| mile āju mohi rāma pirīte|| bāra bāra būjhī kusalātā| to kahum̐ deum̐ kāha sunu bhrātā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 13)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 14,
-          number: 14,
-          sanskrit: "नाहिन तात उरिन मैं तोही। अब प्रभु चरित सुनावहु मोही॥ इस सन्देशके समान (इसके बदलेमें देने लायक पदार्थ) जगत् में कुछ भी नहीं है, मैंने यह विचार कर देख लिया है। [इसलिये] हे तात! मैं तुमसे किसी प्रकार भी उऋण नहीं हो सकता। अब मुझे प्रभुका चरित्र (हाल) सुनाओ॥ ७॥",
-          transliteration: "nāhina tāta urina maiṃ tohī| aba prabhu carita sunāvahu mohī|| isa sandeśake samāna (isake badalemeṃ dene lāyaka padārtha) jagat meṃ kucha bhī nahīṃ hai, maiṃne yaha vicāra kara dekha liyā hai| [isaliye] he tāta! maiṃ tumase kisī prakāra bhī uṛṇa nahīṃ ho sakatā| aba mujhe prabhukā caritra (hāla) sunāo|| 7||",
-          translation: "तब हनुमंत नाइ पद माथा। कहे सकल रघुपति गुन गाथा॥",
-          hindi: "तब हनुमंत नाइ पद माथा। कहे सकल रघुपति गुन गाथा॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 14,
+          "number": 14,
+          "sanskrit": "एहि संदेस सरिस जग माहीं। करि बिचार देखेउँ कछु नाहीं॥ नाहिन तात उरिन मैं तोही। अब प्रभु चरित सुनावहु मोही॥",
+          "transliteration": "ehi saṃdesa sarisa jaga māhīṃ| kari bicāra dekheum̐ kachu nāhīṃ|| nāhina tāta urina maiṃ tohī| aba prabhu carita sunāvahu mohī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 14)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 15,
-          number: 15,
-          sanskrit: "कहु कपि कबहुँ कृपाल गोसाईं। सुमिरहिं मोहि दास की नाईं॥ तब हनुमान्जीने भरतजीके चरणोंमें मस्तक नवाकर श्रीरघुनाथजीकी सारी गुणगाथा कही। [भरतजीने पूछा—] हे हनुमान्! कहो, कृपालु स्वामी श्रीरामचन्द्रजी कभी मुझे अपने दासकी तरह याद भी करते हैं?॥ ८॥",
-          transliteration: "kahu kapi kabahuँ kṛpāla gosāīṃ| sumirahiṃ mohi dāsa kī nāīṃ|| taba hanumānjīne bharatajīke caraṇoṃmeṃ mastaka navākara śrīraghunāthajīkī sārī guṇagāthā kahī| [bharatajīne pūchā—] he hanumān! kaho, kṛpālu svāmī śrīrāmacandrajī kabhī mujhe apane dāsakī taraha yāda bhī karate haiṃ?|| 8||",
-          translation: "छं०—निज दास ज्यों रघुबंसभूषन कबहुँ मम सुमिरन कर्यो।",
-          hindi: "छं०—निज दास ज्यों रघुबंसभूषन कबहुँ मम सुमिरन कर्यो।",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 15,
+          "number": 15,
+          "sanskrit": "तब हनुमंत नाइ पद माथा। कहे सकल रघुपति गुन गाथा॥ कहु कपि कबहुँ कृपाल गोसाईं। सुमिरहिं मोहि दास की नाईं॥",
+          "transliteration": "taba hanumaṃta nāi pada māthā| kahe sakala raghupati guna gāthā|| kahu kapi kabahum̐ kṛpāla gosāīṃ| sumirahiṃ mohi dāsa kī nāīṃ||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 15)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 16,
-          number: 16,
-          sanskrit: "सुनि भरत बचन बिनीत अति कपि पुलकि तन चरनन्हि पर्यो॥ रघुबीर निज मुख जासु गुन गन कहत अग जग नाथ जो। काहे न होइ बिनीत परम पुनीत सदगुन सिंधु सो॥ रघुवंशके भूषण श्रीरामजी क्या कभी अपने दासकी भाँति मेरा स्मरण करते रहे हैं? भरतजीके अत्यन्त नम्र वचन सुनकर हनुमान्जी पुलकित शरीर होकर उनके चरणोंपर गिर पड़े [और मनमें विचारने लगे कि] जो चराचरके स्वामी हैं वे श्रीरघुवीर अपने श्रीमुखसे जिनके गुणसमूहोंका वर्णन करते हैं, वे भरतजी ऐसे विनम्र, परम पवित्र और सद्गुणोंके समुद्र क्यों न हों? दो०—राम प्रान प्रिय नाथ तुम्ह सत्य बचन मम तात। पुनि पुनि मिलत भरत सुनि हरष न हृदयँ समात॥२ (क)॥ [हनुमान्जीने कहा—] हे नाथ! आप श्रीरामजीको प्राणोंके समान प्रिय हैं, हे तात! मेरा वचन सत्य है। यह सुनकर भरतजी बार-बार मिलते हैं, हृदयमें हर्ष समाता नहीं है॥ २ (क)॥ सो०—भरत चरन सिरु नाइ तुरित गयउ कपि राम पहिं। कही कुसल सब जाइ हरषि चलेउ प्रभु जान चढि़॥२ (ख)॥ फिर भरतजीके चरणोंमें सिर नवाकर हनुमान्जी तुरंत ही श्रीरामजीके पास [लौट] गये और जाकर उन्होंने सब कुशल कही। तब प्रभु हर्षित होकर विमानपर चढ़कर चले॥ २ (ख)॥ हरषि भरत कोसलपुर आए। समाचार सब गुरहि सुनाए॥ पुनि मंदिर महँ बात जनाई। आवत नगर कुसल रघुराई॥ इधर भरतजी भी हर्षित होकर अयोध्यापुरीमें आये और उन्होंने गुरुजीको सब समाचार सुनाया। फिर राजमहलमें खबर जनायी कि श्रीरघुनाथजी कुशलपूर्वक नगरको आ रहे हैं॥ १॥",
-          transliteration: "suni bharata bacana binīta ati kapi pulaki tana carananhi paryo|| raghubīra nija mukha jāsu guna gana kahata aga jaga nātha jo| kāhe na hoi binīta parama punīta sadaguna siṃdhu so|| raghuvṃśake bhūṣaṇa śrīrāmajī kyā kabhī apane dāsakī bhāँti merā smaraṇa karate rahe haiṃ? bharatajīke atyanta namra vacana sunakara hanumānjī pulakita śarīra hokara unake caraṇoṃpara gira paḍa़e [aura manameṃ vicārane lage ki] jo carācarake svāmī haiṃ ve śrīraghuvīra apane śrīmukhase jinake guṇasamūhoṃkā varṇana karate haiṃ, ve bharatajī aise vinamra, parama pavitra aura sadguṇoṃke samudra kyoṃ na hoṃ? do0—rāma prāna priya nātha tumha satya bacana mama tāta| puni puni milata bharata suni haraṣa na hṛdayaँ samāta||2 (ka)|| [hanumānjīne kahā—] he nātha! āpa śrīrāmajīko prāṇoṃke samāna priya haiṃ, he tāta! merā vacana satya hai| yaha sunakara bharatajī bāra-bāra milate haiṃ, hṛdayameṃ harṣa samātā nahīṃ hai|| 2 (ka)|| so0—bharata carana siru nāi turita gayau kapi rāma pahiṃ| kahī kusala saba jāi haraṣi caleu prabhu jāna caḍhi़||2 (kha)|| phira bharatajīke caraṇoṃmeṃ sira navākara hanumānjī turṃta hī śrīrāmajīke pāsa [lauṭa] gaye aura jākara unhoṃne saba kuśala kahī| taba prabhu harṣita hokara vimānapara caḍha़kara cale|| 2 (kha)|| haraṣi bharata kosalapura āe| samācāra saba gurahi sunāe|| puni mṃdira mahaँ bāta janāī| āvata nagara kusala raghurāī|| idhara bharatajī bhī harṣita hokara ayodhyāpurīmeṃ āye aura unhoṃne gurujīko saba samācāra sunāyā| phira rājamahalameṃ khabara janāyī ki śrīraghunāthajī kuśalapūrvaka nagarako ā rahe haiṃ|| 1||",
-          translation: "सुनत सकल जननीं उठि धाईं। कहि प्रभु कुसल भरत समुझाईं॥",
-          hindi: "सुनत सकल जननीं उठि धाईं। कहि प्रभु कुसल भरत समुझाईं॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 16,
+          "number": 16,
+          "sanskrit": "छं०—निज दास ज्यों रघुबंसभूषन कबहुँ मम सुमिरन कर्यो। सुनि भरत बचन बिनीत अति कपि पुलकि तन चरनन्हि पर्यो॥ रघुबीर निज मुख जासु गुन गन कहत अग जग नाथ जो। काहे न होइ बिनीत परम पुनीत सदगुन सिंधु सो॥",
+          "transliteration": "chaṃ0—nija dāsa jyoṃ raghubaṃsabhūṣana kabahum̐ mama sumirana karyo| suni bharata bacana binīta ati kapi pulaki tana carananhi paryo|| raghubīra nija mukha jāsu guna gana kahata aga jaga nātha jo| kāhe na hoi binīta parama punīta sadaguna siṃdhu so||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 16)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 17,
-          number: 17,
-          sanskrit: "समाचार पुरबासिन्ह पाए। नर अरु नारि हरषि सब धाए॥ खबर सुनते ही सब माताएँ उठ दौड़ीं। भरतजीने प्रभुकी कुशल कहकर सबको समझाया। नगरनिवासियोंने यह समाचार पाया, तो स्त्री-पुरुष सभी हर्षित होकर दौड़े॥ २॥",
-          transliteration: "samācāra purabāsinha pāe| nara aru nāri haraṣi saba dhāe|| khabara sunate hī saba mātāeँ uṭha dauḍa़īṃ| bharatajīne prabhukī kuśala kahakara sabako samajhāyā| nagaranivāsiyoṃne yaha samācāra pāyā, to strī-puruṣa sabhī harṣita hokara dauḍa़e|| 2||",
-          translation: "दधि दुर्बा रोचन फल फूला। नव तुलसी दल मंगल मूला॥",
-          hindi: "दधि दुर्बा रोचन फल फूला। नव तुलसी दल मंगल मूला॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 17,
+          "number": 17,
+          "sanskrit": "सुनत सकल जननीं उठि धाईं। कहि प्रभु कुसल भरत समुझाईं॥ समाचार पुरबासिन्ह पाए। नर अरु नारि हरषि सब धाए॥",
+          "transliteration": "sunata sakala jananīṃ uṭhi dhāīṃ| kahi prabhu kusala bharata samujhāīṃ|| samācāra purabāsinha pāe| nara aru nāri haraṣi saba dhāe||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 17)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 18,
-          number: 18,
-          sanskrit: "भरि भरि हेम थार भामिनी। गावत चलिं सिंधुरगामिनी॥ [श्रीरामजीके स्वागतके लिये] दही, दूब, गोरोचन, फल, फूल और मंगलके मूल नवीन तुलसीदल आदि वस्तुएँ सोनेके थालोंमें भर-भरकर हथिनीकी-सी चालवाली सौभाग्यवती स्त्रियाँ [उन्हें लेकर] गाती हुई चलीं॥ ३॥",
-          transliteration: "bhari bhari hema thāra bhāminī| gāvata caliṃ siṃdhuragāminī|| [śrīrāmajīke svāgatake liye] dahī, dūba, gorocana, phala, phūla aura mṃgalake mūla navīna tulasīdala ādi vastueँ soneke thāloṃmeṃ bhara-bharakara hathinīkī-sī cālavālī saubhāgyavatī striyāँ [unheṃ lekara] gātī huī calīṃ|| 3||",
-          translation: "जे जैसेहिं तैसेहिं उठि धावहिं। बाल बृद्ध कहँ संग न लावहिं॥",
-          hindi: "जे जैसेहिं तैसेहिं उठि धावहिं। बाल बृद्ध कहँ संग न लावहिं॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 18,
+          "number": 18,
+          "sanskrit": "दधि दुर्बा रोचन फल फूला। नव तुलसी दल मंगल मूला॥ भरि भरि हेम थार भामिनी। गावत चलिं सिंधुरगामिनी॥",
+          "transliteration": "dadhi durbā rocana phala phūlā| nava tulasī dala maṃgala mūlā|| bhari bhari hema thāra bhāminī| gāvata caliṃ siṃdhuragāminī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 18)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 19,
-          number: 19,
-          sanskrit: "एक एकन्ह कहँ बूझहिं भाई। तुम्ह देखे दयाल रघुराई॥ जो जैसे हैं (जहाँ जिस दशामें हैं) वे वैसे ही (वहींसे उसी दशामें) उठ दौड़ते हैं। [देर हो जानेके डरसे] बालकों और बूढ़ोंको कोई साथ नहीं लाते। एक-दूसरेसे पूछते हैं—भाई! तुमने दयालु श्रीरघुनाथजीको देखा है?॥ ४॥",
-          transliteration: "eka ekanha kahaँ būjhahiṃ bhāī| tumha dekhe dayāla raghurāī|| jo jaise haiṃ (jahāँ jisa daśāmeṃ haiṃ) ve vaise hī (vahīṃse usī daśāmeṃ) uṭha dauḍa़te haiṃ| [dera ho jāneke ḍarase] bālakoṃ aura būḍha़oṃko koī sātha nahīṃ lāte| eka-dūsarese pūchate haiṃ—bhāī! tumane dayālu śrīraghunāthajīko dekhā hai?|| 4||",
-          translation: "अवधपुरी प्रभु आवत जानी। भई सकल सोभा कै खानी॥",
-          hindi: "अवधपुरी प्रभु आवत जानी। भई सकल सोभा कै खानी॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 19,
+          "number": 19,
+          "sanskrit": "जे जैसेहिं तैसेहिं उठि धावहिं। बाल बृद्ध कहँ संग न लावहिं॥ एक एकन्ह कहँ बूझहिं भाई। तुम्ह देखे दयाल रघुराई॥",
+          "transliteration": "je jaisehiṃ taisehiṃ uṭhi dhāvahiṃ| bāla bṛddha kaham̐ saṃga na lāvahiṃ|| eka ekanha kaham̐ būjhahiṃ bhāī| tumha dekhe dayāla raghurāī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 19)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 20,
-          number: 20,
-          sanskrit: "बहइ सुहावन त्रिबिध समीरा। भइ सरजू अति निर्मल नीरा॥ प्रभुको आते जानकर अवधपुरी सम्पूर्ण शोभाओंकी खान हो गयी। तीनों प्रकारकी सुन्दर वायु बहने लगी। सरयूजी अति निर्मल जलवाली हो गयीं (अर्थात् सरयूजीका जल अत्यन्त निर्मल हो गया)॥ ५॥",
-          transliteration: "bahai suhāvana tribidha samīrā| bhai sarajū ati nirmala nīrā|| prabhuko āte jānakara avadhapurī sampūrṇa śobhāoṃkī khāna ho gayī| tīnoṃ prakārakī sundara vāyu bahane lagī| sarayūjī ati nirmala jalavālī ho gayīṃ (arthāt sarayūjīkā jala atyanta nirmala ho gayā)|| 5||",
-          translation: "दो०—हरषित गुर परिजन अनुज भूसुर बृंद समेत।",
-          hindi: "दो०—हरषित गुर परिजन अनुज भूसुर बृंद समेत।",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 20,
+          "number": 20,
+          "sanskrit": "अवधपुरी प्रभु आवत जानी। भई सकल सोभा कै खानी॥ बहइ सुहावन त्रिबिध समीरा। भइ सरजू अति निर्मल नीरा॥",
+          "transliteration": "avadhapurī prabhu āvata jānī| bhaī sakala sobhā kai khānī|| bahai suhāvana tribidha samīrā| bhai sarajū ati nirmala nīrā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 20)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 21,
-          number: 21,
-          sanskrit: "चले भरत मन प्रेम अति सन्मुख कृपानिकेत॥३ (क)॥ गुरु वसिष्ठजी, कुटुम्बी, छोटे भाई शत्रुघ्न तथा ब्राह्मणोंके समूहके साथ हर्षित होकर भरतजी अत्यन्त प्रेमपूर्ण मनसे कृपाधाम श्रीरामजीके सामने (अर्थात् उनकी अगवानीके लिये) चले॥ ३ (क)॥ बहुतक चढ़ीं अटारिन्ह निरखहिं गगन बिमान। देखि मधुर सुर हरषित करहिं सुमंगल गान॥३ (ख)॥ बहुत-सी स्त्रियाँ अटारियोंपर चढ़ीं आकाशमें विमान देख रही हैं और उसे देखकर हर्षित होकर मीठे स्वरसे सुन्दर मंगलगीत गा रही हैं॥ ३ (ख)॥ राका ससि रघुपति पुर सिंधु देखि हरषान। बढ़्यो कोलाहल करत जनु नारि तरंग समान॥३ (ग)॥ श्रीरघुनाथजी पूर्णिमाके चन्द्रमा हैं, तथा अवधपुर समुद्र है, जो उस पूर्णचन्द्रको देखकर हर्षित हो रहा है और शोर करता हुआ बढ़ रहा है [इधर-उधर दौड़ती हुई] स्त्रियाँ उसकी तरंगोंके समान लगती हैं॥ ३ (ग)॥ इहाँ भानुकुल कमल दिवाकर। कपिन्ह देखावत नगर मनोहर॥ सुनु कपीस अंगद लंकेसा। पावन पुरी रुचिर यह देसा॥ यहाँ (विमानपरसे) सूर्यकुलरूपी कमलके प्रफुल्लित करनेवाले सूर्य श्रीरामजी वानरोंको मनोहर नगर दिखला रहे हैं। [वे कहते हैं—] हे सुग्रीव! हे अंगद! हे लंकापति विभीषण! सुनो। यह पुरी पवित्र है और यह देश सुन्दर है॥ १॥",
-          transliteration: "cale bharata mana prema ati sanmukha kṛpāniketa||3 (ka)|| guru vasiṣṭhajī, kuṭumbī, choṭe bhāī śatrughna tathā brāhmaṇoṃke samūhake sātha harṣita hokara bharatajī atyanta premapūrṇa manase kṛpādhāma śrīrāmajīke sāmane (arthāt unakī agavānīke liye) cale|| 3 (ka)|| bahutaka caḍha़īṃ aṭārinha nirakhahiṃ gagana bimāna| dekhi madhura sura haraṣita karahiṃ sumṃgala gāna||3 (kha)|| bahuta-sī striyāँ aṭāriyoṃpara caḍha़īṃ ākāśameṃ vimāna dekha rahī haiṃ aura use dekhakara harṣita hokara mīṭhe svarase sundara mṃgalagīta gā rahī haiṃ|| 3 (kha)|| rākā sasi raghupati pura siṃdhu dekhi haraṣāna| baḍha़yo kolāhala karata janu nāri tarṃga samāna||3 (ga)|| śrīraghunāthajī pūrṇimāke candramā haiṃ, tathā avadhapura samudra hai, jo usa pūrṇacandrako dekhakara harṣita ho rahā hai aura śora karatā huā baḍha़ rahā hai [idhara-udhara dauḍa़tī huī] striyāँ usakī tarṃgoṃke samāna lagatī haiṃ|| 3 (ga)|| ihāँ bhānukula kamala divākara| kapinha dekhāvata nagara manohara|| sunu kapīsa ṃgada lṃkesā| pāvana purī rucira yaha desā|| yahāँ (vimānaparase) sūryakularūpī kamalake praphullita karanevāle sūrya śrīrāmajī vānaroṃko manohara nagara dikhalā rahe haiṃ| [ve kahate haiṃ—] he sugrīva! he ṃgada! he lṃkāpati vibhīṣaṇa! suno| yaha purī pavitra hai aura yaha deśa sundara hai|| 1||",
-          translation: "जद्यपि सब बैकुंठ बखाना। बेद पुरान बिदित जगु जाना॥",
-          hindi: "जद्यपि सब बैकुंठ बखाना। बेद पुरान बिदित जगु जाना॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 21,
+          "number": 21,
+          "sanskrit": "दो०—हरषित गुर परिजन अनुज भूसुर बृंद समेत। चले भरत मन प्रेम अति सन्मुख कृपानिकेत॥",
+          "transliteration": "do0—haraṣita gura parijana anuja bhūsura bṛṃda sameta| cale bharata mana prema ati sanmukha kṛpāniketa||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 21)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 22,
-          number: 22,
-          sanskrit: "अवधपुरी सम प्रिय नहिं सोऊ। यह प्रसंग जानइ कोउ कोऊ॥ यद्यपि सबने वैकुण्ठकी बड़ाई की है—यह वेद-पुराणोंमें प्रसिद्ध है और जगत् जानता है, परन्तु अवधपुरीके समान मुझे वह भी प्रिय नहीं है। यह बात (भेद) कोई-कोई (विरले ही) जानते हैं॥ २॥",
-          transliteration: "avadhapurī sama priya nahiṃ soū| yaha prasṃga jānai kou koū|| yadyapi sabane vaikuṇṭhakī baḍa़āī kī hai—yaha veda-purāṇoṃmeṃ prasiddha hai aura jagat jānatā hai, parantu avadhapurīke samāna mujhe vaha bhī priya nahīṃ hai| yaha bāta (bheda) koī-koī (virale hī) jānate haiṃ|| 2||",
-          translation: "जन्मभूमि मम पुरी सुहावनि। उत्तर दिसि बह सरजू पावनि॥",
-          hindi: "जन्मभूमि मम पुरी सुहावनि। उत्तर दिसि बह सरजू पावनि॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 22,
+          "number": 22,
+          "sanskrit": "जद्यपि सब बैकुंठ बखाना। बेद पुरान बिदित जगु जाना॥ अवधपुरी सम प्रिय नहिं सोऊ। यह प्रसंग जानइ कोउ कोऊ॥",
+          "transliteration": "jadyapi saba baikuṃṭha bakhānā| beda purāna bidita jagu jānā|| avadhapurī sama priya nahiṃ soū| yaha prasaṃga jānai kou koū||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 22)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 23,
-          number: 23,
-          sanskrit: "जा मज्जन ते बिनहिं प्रयासा। मम समीप नर पावहिं बासा॥ यह सुहावनी पुरी मेरी जन्मभूमि है। इसके उत्तर दिशामें [जीवोंको] पवित्र करनेवाली सरयू नदी बहती है, जिसमें स्नान करनेसे मनुष्य बिना ही परिश्रम मेरे समीप निवास (सामीप्य मुक्ति) पा जाते हैं॥ ३॥",
-          transliteration: "jā majjana te binahiṃ prayāsā| mama samīpa nara pāvahiṃ bāsā|| yaha suhāvanī purī merī janmabhūmi hai| isake uttara diśāmeṃ [jīvoṃko] pavitra karanevālī sarayū nadī bahatī hai, jisameṃ snāna karanese manuṣya binā hī pariśrama mere samīpa nivāsa (sāmīpya mukti) pā jāte haiṃ|| 3||",
-          translation: "अति प्रिय मोहि इहाँ के बासी। मम धामदा पुरी सुख रासी॥",
-          hindi: "अति प्रिय मोहि इहाँ के बासी। मम धामदा पुरी सुख रासी॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 23,
+          "number": 23,
+          "sanskrit": "जन्मभूमि मम पुरी सुहावनि। उत्तर दिसि बह सरजू पावनि॥ जा मज्जन ते बिनहिं प्रयासा। मम समीप नर पावहिं बासा॥",
+          "transliteration": "janmabhūmi mama purī suhāvani| uttara disi baha sarajū pāvani|| jā majjana te binahiṃ prayāsā| mama samīpa nara pāvahiṃ bāsā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 23)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 24,
-          number: 24,
-          sanskrit: "हरषे सब कपि सुनि प्रभु बानी। धन्य अवध जो राम बखानी॥ यहाँके निवासी मुझे बहुत ही प्रिय हैं। यह पुरी सुखकी राशि और मेरे परमधामको देनेवाली है। प्रभुकी वाणी सुनकर सब वानर हर्षित हुए [और कहने लगे कि] जिस अवधकी स्वयं श्रीरामजीने बड़ाई की, वह [अवश्य ही] धन्य है॥ ४॥",
-          transliteration: "haraṣe saba kapi suni prabhu bānī| dhanya avadha jo rāma bakhānī|| yahāँke nivāsī mujhe bahuta hī priya haiṃ| yaha purī sukhakī rāśi aura mere paramadhāmako denevālī hai| prabhukī vāṇī sunakara saba vānara harṣita hue [aura kahane lage ki] jisa avadhakī svayṃ śrīrāmajīne baḍa़āī kī, vaha [avaśya hī] dhanya hai|| 4||",
-          translation: "दो०—आवत देखि लोग सब कृपासिंधु भगवान।",
-          hindi: "दो०—आवत देखि लोग सब कृपासिंधु भगवान।",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 24,
+          "number": 24,
+          "sanskrit": "अति प्रिय मोहि इहाँ के बासी। मम धामदा पुरी सुख रासी॥ हरषे सब कपि सुनि प्रभु बानी। धन्य अवध जो राम बखानी॥",
+          "transliteration": "ati priya mohi ihām̐ ke bāsī| mama dhāmadā purī sukha rāsī|| haraṣe saba kapi suni prabhu bānī| dhanya avadha jo rāma bakhānī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 24)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 25,
-          number: 25,
-          sanskrit: "नगर निकट प्रभु प्रेरेउ उतरेउ भूमि बिमान॥४ (क)॥ कृपासागर भगवान् श्रीरामचन्द्रजीने सब लोगोंको आते देखा, तो प्रभुने विमानको नगरके समीप उतरनेकी प्रेरणा की। तब वह पृथ्वीपर उतरा॥ ४ (क)॥ उतरि कहेउ प्रभु पुष्पकहि तुम्ह कुबेर पहिं जाहु। प्रेरित राम चलेउ सो हरषु बिरहु अति ताहु॥४ (ख)॥ विमानसे उतरकर प्रभुने पुष्पकविमानसे कहा कि तुम अब कुबेरके पास जाओ। श्रीरामजीकी प्रेरणासे वह चला; उसे [अपने स्वामीके पास जानेका] हर्ष है और प्रभु श्रीरामचन्द्रजीसे अलग होनेका अत्यन्त दु:ख भी॥ ४ (ख)॥ आए भरत संग सब लोगा। कृस तन श्रीरघुबीर बियोगा॥ बामदेव बसिष्ट मुनिनायक। देखे प्रभु महि धरि धनु सायक॥ भरतजीके साथ सब लोग आये। श्रीरघुवीरके वियोगसे सबके शरीर दुबले हो रहे हैं। प्रभुने वामदेव, वसिष्ठ आदि मुनिश्रेष्ठोंको देखा, तो उन्होंने धनुष-बाण पृथ्वीपर रखकर—॥ १॥",
-          transliteration: "nagara nikaṭa prabhu prereu utareu bhūmi bimāna||4 (ka)|| kṛpāsāgara bhagavān śrīrāmacandrajīne saba logoṃko āte dekhā, to prabhune vimānako nagarake samīpa utaranekī preraṇā kī| taba vaha pṛthvīpara utarā|| 4 (ka)|| utari kaheu prabhu puṣpakahi tumha kubera pahiṃ jāhu| prerita rāma caleu so haraṣu birahu ati tāhu||4 (kha)|| vimānase utarakara prabhune puṣpakavimānase kahā ki tuma aba kuberake pāsa jāo| śrīrāmajīkī preraṇāse vaha calā; use [apane svāmīke pāsa jānekā] harṣa hai aura prabhu śrīrāmacandrajīse alaga honekā atyanta du:kha bhī|| 4 (kha)|| āe bharata sṃga saba logā| kṛsa tana śrīraghubīra biyogā|| bāmadeva basiṣṭa munināyaka| dekhe prabhu mahi dhari dhanu sāyaka|| bharatajīke sātha saba loga āye| śrīraghuvīrake viyogase sabake śarīra dubale ho rahe haiṃ| prabhune vāmadeva, vasiṣṭha ādi muniśreṣṭhoṃko dekhā, to unhoṃne dhanuṣa-bāṇa pṛthvīpara rakhakara—|| 1||",
-          translation: "धाइ धरे गुर चरन सरोरुह। अनुज सहित अति पुलक तनोरुह॥",
-          hindi: "धाइ धरे गुर चरन सरोरुह। अनुज सहित अति पुलक तनोरुह॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 25,
+          "number": 25,
+          "sanskrit": "दो०—आवत देखि लोग सब कृपासिंधु भगवान। नगर निकट प्रभु प्रेरेउ उतरेउ भूमि बिमान॥",
+          "transliteration": "do0—āvata dekhi loga saba kṛpāsiṃdhu bhagavāna| nagara nikaṭa prabhu prereu utareu bhūmi bimāna||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 25)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 26,
-          number: 26,
-          sanskrit: "भेंटि कुसल बूझी मुनिराया। हमरें कुसल तुम्हारिहिं दाया॥ छोटे भाई लक्ष्मणजीसहित दौड़कर गुरुजीके चरणकमल पकड़ लिये; उनके रोम-रोम अत्यन्त पुलकित हो रहे हैं। मुनिराज वसिष्ठजीने [उठाकर] उन्हें गले लगाकर कुशल पूछी। [प्रभुने कहा—] आपहीकी दयामें हमारी कुशल है॥ २॥",
-          transliteration: "bheṃṭi kusala būjhī munirāyā| hamareṃ kusala tumhārihiṃ dāyā|| choṭe bhāī lakṣmaṇajīsahita dauḍa़kara gurujīke caraṇakamala pakaḍa़ liye; unake roma-roma atyanta pulakita ho rahe haiṃ| munirāja vasiṣṭhajīne [uṭhākara] unheṃ gale lagākara kuśala pūchī| [prabhune kahā—] āpahīkī dayāmeṃ hamārī kuśala hai|| 2||",
-          translation: "सकल द्विजन्ह मिलि नायउ माथा। धर्म धुरंधर रघुकुलनाथा॥",
-          hindi: "सकल द्विजन्ह मिलि नायउ माथा। धर्म धुरंधर रघुकुलनाथा॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 26,
+          "number": 26,
+          "sanskrit": "धाइ धरे गुर चरन सरोरुह। अनुज सहित अति पुलक तनोरुह॥ भेंटि कुसल बूझी मुनिराया। हमरें कुसल तुम्हारिहिं दाया॥",
+          "transliteration": "dhāi dhare gura carana saroruha| anuja sahita ati pulaka tanoruha|| bheṃṭi kusala būjhī munirāyā| hamareṃ kusala tumhārihiṃ dāyā||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 26)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 27,
-          number: 27,
-          sanskrit: "गहे भरत पुनि प्रभु पद पंकज। नमत जिन्हहि सुर मुनि संकर अज॥ धर्मकी धुरी धारण करनेवाले रघुकुलके स्वामी श्रीरामजीने सब ब्राह्मणोंसे मिलकर उन्हें मस्तक नवाया। फिर भरतजीने प्रभुके वे चरणकमल पकड़े जिन्हें देवता, मुनि, शंकरजी और ब्रह्माजी [भी] नमस्कार करते हैं॥ ३॥",
-          transliteration: "gahe bharata puni prabhu pada pṃkaja| namata jinhahi sura muni sṃkara aja|| dharmakī dhurī dhāraṇa karanevāle raghukulake svāmī śrīrāmajīne saba brāhmaṇoṃse milakara unheṃ mastaka navāyā| phira bharatajīne prabhuke ve caraṇakamala pakaḍa़e jinheṃ devatā, muni, śṃkarajī aura brahmājī [bhī] namaskāra karate haiṃ|| 3||",
-          translation: "परे भूमि नहिं उठत उठाए। बर करि कृपासिंधु उर लाए॥",
-          hindi: "परे भूमि नहिं उठत उठाए। बर करि कृपासिंधु उर लाए॥",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 27,
+          "number": 27,
+          "sanskrit": "सकल द्विजन्ह मिलि नायउ माथा। धर्म धुरंधर रघुकुलनाथा॥ गहे भरत पुनि प्रभु पद पंकज। नमत जिन्हहि सुर मुनि संकर अज॥",
+          "transliteration": "sakala dvijanha mili nāyau māthā| dharma dhuraṃdhara raghukulanāthā|| gahe bharata puni prabhu pada paṃkaja| namata jinhahi sura muni saṃkara aja||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 27)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 28,
-          number: 28,
-          sanskrit: "स्यामल गात रोम भए ठाढ़े। नव राजीव नयन जल बाढ़े॥ भरतजी पृथ्वीपर पड़े हैं, उठाये उठते नहीं। तब कृपासिंधु श्रीरामजीने उन्हें जबर्दस्ती उठाकर हृदयसे लगा लिया। [उनके] साँवले शरीरपर रोएँ खड़े हो गये। नवीन कमलके समान नेत्रोंमें [पे्रमाश्रुओंके] जलकी बाढ़ आ गयी॥ ४॥",
-          transliteration: "syāmala gāta roma bhae ṭhāḍha़e| nava rājīva nayana jala bāḍha़e|| bharatajī pṛthvīpara paḍa़e haiṃ, uṭhāye uṭhate nahīṃ| taba kṛpāsiṃdhu śrīrāmajīne unheṃ jabardastī uṭhākara hṛdayase lagā liyā| [unake] sāँvale śarīrapara roeँ khaḍa़e ho gaye| navīna kamalake samāna netroṃmeṃ [peramāśruoṃke] jalakī bāḍha़ ā gayī|| 4||",
-          translation: "छं०—राजीव लोचन स्रवत जल तन ललित पुलकावलि बनी।",
-          hindi: "छं०—राजीव लोचन स्रवत जल तन ललित पुलकावलि बनी।",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 28,
+          "number": 28,
+          "sanskrit": "परे भूमि नहिं उठत उठाए। बर करि कृपासिंधु उर लाए॥ स्यामल गात रोम भए ठाढ़े। नव राजीव नयन जल बाढ़े॥",
+          "transliteration": "pare bhūmi nahiṃ uṭhata uṭhāe| bara kari kṛpāsiṃdhu ura lāe|| syāmala gāta roma bhae ṭhāḍha़e| nava rājīva nayana jala bāḍha़e||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 28)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 29,
-          number: 29,
-          sanskrit: "अति प्रेम हृदयँ लगाइ अनुजहि मिले प्रभु त्रिभुअन धनी॥ प्रभु मिलत अनुजहि सोह मो पहिं जाति नहिं उपमा कही। जनु प्रेम अरु सिंगार तनु धरि मिले बर सुषमा लही॥ कमलके समान नेत्रोंसे जल बह रहा है। सुन्दर शरीरमें पुलकावली [अत्यन्त] शोभा दे रही है। त्रिलोकीके स्वामी प्रभु श्रीरामजी छोटे भाई भरतजीको अत्यन्त प्रेमसे हृदयसे लगाकर मिले। भाईसे मिलते समय प्रभु जैसे शोभित हो रहे हैं उसकी उपमा मुझसे कही नहीं जाती। मानो प्रेम और शृंगार शरीर धारण करके मिले और श्रेष्ठ शोभाको प्राप्त हुए॥ १॥",
-          transliteration: "ati prema hṛdayaँ lagāi anujahi mile prabhu tribhuana dhanī|| prabhu milata anujahi soha mo pahiṃ jāti nahiṃ upamā kahī| janu prema aru siṃgāra tanu dhari mile bara suṣamā lahī|| kamalake samāna netroṃse jala baha rahā hai| sundara śarīrameṃ pulakāvalī [atyanta] śobhā de rahī hai| trilokīke svāmī prabhu śrīrāmajī choṭe bhāī bharatajīko atyanta premase hṛdayase lagākara mile| bhāīse milate samaya prabhu jaise śobhita ho rahe haiṃ usakī upamā mujhase kahī nahīṃ jātī| māno prema aura śṛṃgāra śarīra dhāraṇa karake mile aura śreṣṭha śobhāko prāpta hue|| 1||",
-          translation: "बूझत कृपानिधि कुसल भरतहि बचन बेगि न आवई।",
-          hindi: "बूझत कृपानिधि कुसल भरतहि बचन बेगि न आवई।",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
+          "id": 29,
+          "number": 29,
+          "sanskrit": "छं०—राजीव लोचन स्रवत जल तन ललित पुलकावलि बनी। अति प्रेम हृदयँ लगाइ अनुजहि मिले प्रभु त्रिभुअन धनी॥ प्रभु मिलत अनुजहि सोह मो पहिं जाति नहिं उपमा कही। जनु प्रेम अरु सिंगार तनु धरि मिले बर सुषमा लही॥",
+          "transliteration": "chaṃ0—rājīva locana sravata jala tana lalita pulakāvali banī| ati prema hṛdayam̐ lagāi anujahi mile prabhu tribhuana dhanī|| prabhu milata anujahi soha mo pahiṃ jāti nahiṃ upamā kahī| janu prema aru siṃgāra tanu dhari mile bara suṣamā lahī||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 29)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
         },
         {
-          id: 30,
-          number: 30,
-          sanskrit: "सुनु सिवा सो सुख बचन मन ते भिन्न जान जो पावई॥ अब कुसल कौसलनाथ आरत जानि जन दरसन दियो। बूड़त बिरह बारीस कृपानिधान मोहि कर गहि लियो॥ कृपानिधान श्रीरामजी भरतजीसे कुशल पूछते हैं; परन्तु आनन्दवश भरतजीके मुखसे वचन शीघ्र नहीं निकलते। [शिवजीने कहा—] हे पार्वती! सुनो, वह सुख (जो उस समय भरतजीको मिल रहा था) वचन और मनसे परे है; उसे वही जानता है जो उसे पाता है। [भरतजीने कहा—] हे कोसलनाथ! आपने आर्त्त (दु:खी) जानकर दासको दर्शन दिये, इससे अब कुशल है। विरहसमुद्रमें डूबते हुए मुझको कृपानिधानने हाथ पकड़कर बचा लिया!॥ २॥",
-          transliteration: "sunu sivā so sukha bacana mana te bhinna jāna jo pāvaī|| aba kusala kausalanātha ārata jāni jana darasana diyo| būḍa़ta biraha bārīsa kṛpānidhāna mohi kara gahi liyo|| kṛpānidhāna śrīrāmajī bharatajīse kuśala pūchate haiṃ; parantu ānandavaśa bharatajīke mukhase vacana śīghra nahīṃ nikalate| [śivajīne kahā—] he pārvatī! suno, vaha sukha (jo usa samaya bharatajīko mila rahā thā) vacana aura manase pare hai; use vahī jānatā hai jo use pātā hai| [bharatajīne kahā—] he kosalanātha! āpane ārtta (du:khī) jānakara dāsako darśana diye, isase aba kuśala hai| virahasamudrameṃ ḍūbate hue mujhako kṛpānidhānane hātha pakaḍa़kara bacā liyā!|| 2||",
-          translation: "दो०—पुनि प्रभु हरषि सत्रुहन भेंटे हृदयँ लगाइ।",
-          hindi: "दो०—पुनि प्रभु हरषि सत्रुहन भेंटे हृदयँ लगाइ।",
-          explanation: "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
-          keywords: ["रामचरितमानस","उत्तरकाण्ड"]
-        },
-      ],
-    },
-  ],
+          "id": 30,
+          "number": 30,
+          "sanskrit": "बूझत कृपानिधि कुसल भरतहि बचन बेगि न आवई। सुनु सिवा सो सुख बचन मन ते भिन्न जान जो पावई॥ अब कुसल कौसलनाथ आरत जानि जन दरसन दियो। बूड़त बिरह बारीस कृपानिधान मोहि कर गहि लियो॥",
+          "transliteration": "būjhata kṛpānidhi kusala bharatahi bacana begi na āvaī| sunu sivā so sukha bacana mana te bhinna jāna jo pāvaī|| aba kusala kausalanātha ārata jāni jana darasana diyo| būḍa़ta biraha bārīsa kṛpānidhāna mohi kara gahi liyo||",
+          "translation": "",
+          "explanation": "श्रीरामचरितमानस उत्तरकाण्ड — राम-राज्याभिषेक एवं कागभुशुण्डि-गरुड़ संवाद का पावन प्रसंग (दोहा/चौपाई 30)। गोस्वामी तुलसीदासकृत इस अमृतमयी वाणीमें श्रीरामभक्ति, आदर्श मर्यादा और कल्याणकारी उपदेशोंका अनुपम निरूपण है।",
+          "keywords": [
+            "रामचरितमानस",
+            "उत्तरकाण्ड"
+          ]
+        }
+      ]
+    }
+  ]
 };

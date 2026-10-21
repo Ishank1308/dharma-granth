@@ -1,0 +1,25 @@
+{
+  "unitId": "vp-1-17-narrative",
+  "reference": "Vishnu Purana, Book 1, Adhyaya 17, unit 10 (edition numbering unverified)",
+  "artha": "उस हिरण्यकशिपु का महाभाग पुत्र प्रह्लाद नाम से जाना जाता था। बालक ही था, और वह गुरु के घर जाकर बालकों के पढ़ने योग्य पाठ पढ़ने लगा।",
+  "arthaEn": "His son, the highly fortunate one named Prahlada, was still a child; he went to his teacher's house and studied the lessons suited to boys.",
+  "arthaDecision": "revise-existing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "यह श्लोक प्रह्लाद की कथा का पहला परिचय-बिंदु है। इससे पहले के श्लोकों में हिरण्यकशिपु का वर्णन है: वरदान के गर्व में उसने तीनों लोकों को जीत लिया, इंद्र और अन्य लोकपालों का स्थान ले लिया, और मद में डूबा हुआ अप्सराओं के नृत्य के बीच पान करता रहा। उसी वैभव के बीच यह श्लोक उसके पुत्र का नाम लेता है। तस्य का अर्थ यहाँ हिरण्यकशिपु है। महाभागः विशेषण पुत्र को भाग्यवान या श्रेष्ठ बताता है। अर्भक का अर्थ बालक है और बालपाठ्यानि का अर्थ बच्चों के पढ़ने योग्य पाठ। गुरुगेह का अर्थ गुरु का घर है, जो उस समय की शिक्षा का स्थान बताता है। श्लोक में कोई उपदेश नहीं, केवल दृश्य का परिवर्तन है: पिता का शोर-भरा सत्ता-मद और पुत्र की शांत पढ़ाई। अगले श्लोकों में पिता और पुत्र का संवाद शुरू होता है। इस श्लोक से किसी निष्कर्ष की उम्मीद करना जल्दबाज़ी होगी, क्योंकि वह आगे की कथा बनाती है।",
+  "vijnana": "",
+  "vijnanaCategory": "",
+  "evidenceLevel": "none",
+  "lifeLesson": "जब किसी माहौल में शोर, दिखावा या दबाव ज़्यादा हो, तो अपने लिए पढ़ने या सीखने की एक शांत जगह और समय तय रखो। उसे बाहर की हलचल के हिसाब से मत बदलो।",
+  "confidence": "medium",
+  "reviewNote": "The Sanskrit is clear and its neighbouring verses (2 to 9) establish who 'tasya' is. The stored Hindi stops mid-sentence and the stored English is a 2,000-character OCR-damaged passage from a later part of the chapter; neither renders this verse, so both were replaced. The reference uses the dataset's running chapter index and its verse number is not verified against an edition. The speaker is not named in this record. Vijnana is empty: this is plain narrative with no honest modern parallel. No classical commentary is stored.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged.",
+    "artha": "Editor rendering from the Sanskrit; the stored Hindi and English were unusable.",
+    "vyakhya": "Original composition from the stored neighbouring verses.",
+    "vijnana": "None written: narrative with no honest parallel.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}

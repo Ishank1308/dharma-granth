@@ -9,7 +9,6 @@ import { X, BookOpen, MapPin, Sparkles, Music, Utensils, Leaf, Clock, AlertCircl
 import Link from 'next/link';
 
 export default function FestivalsPage() {
-  const reduce = useReducedMotion();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selected = festivals.find((f) => f.id === selectedId);
 
@@ -38,12 +37,8 @@ export default function FestivalsPage() {
       <section className="max-w-6xl mx-auto px-6 -mt-8 relative z-10 pb-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {festivals.map((festival, i) => (
-            <motion.div
-              key={festival.id}
-              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}
-            >
+            // CSS fade-up (globals.css): plays from the server HTML, so the cards are never shipped hidden.
+            <div key={festival.id} className="fade-up-in" style={{ animationDelay: `${Math.min(i, 12) * 50}ms` }}>
               <Link
                 href={`/festivals/${festival.id}/`}
                 className="group block relative overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-6 text-left hover:shadow-xl transition-all h-full"
@@ -66,7 +61,7 @@ export default function FestivalsPage() {
                   </span>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>

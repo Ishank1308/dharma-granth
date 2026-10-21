@@ -42,9 +42,9 @@ const QUESTIONS: Question[] = [
   {
     key: 'time', en: 'How much time would you like to spend?', hi: 'कितना समय देना चाहेंगे?',
     options: [
-      { value: '5', en: '5 minutes', hi: '५ मिनट' },
-      { value: '10', en: '10 minutes', hi: '१० मिनट' },
-      { value: '20', en: '20 minutes', hi: '२० मिनट' },
+      { value: '5', en: '5 minutes', hi: '5 मिनट' },
+      { value: '10', en: '10 minutes', hi: '10 मिनट' },
+      { value: '20', en: '20 minutes', hi: '20 मिनट' },
       { value: 'deep', en: 'Deep study', hi: 'गहन अध्ययन' },
     ],
   },

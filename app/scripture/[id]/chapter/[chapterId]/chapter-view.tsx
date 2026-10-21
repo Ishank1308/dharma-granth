@@ -37,6 +37,7 @@ import { PrintChapterButton } from '@/app/components/PrintChapterButton';
 import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPart } from '@/lib/chapter-parts';
+import { CONNECTIONS, type Connection } from '@/data/study-content';
 
 export interface ChapterParams {
   id: string;
@@ -246,6 +247,23 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   const chapterSummary = meta.id === 'bhagavadgita' ? getGitaChapterSummary(chapter.id) : undefined;
   const hasChapterContext = Boolean(chapterSummary || getChapterOrientation(meta.id, chapter.id));
   const firstVerseAnchor = pageVerses.length > 0 ? `#verse-${pageVerses[0].number}` : '#chapter-text';
+
+  // Only send the current chapter part's existing, approved editorial links
+  // to the reader. No recommendations are inferred or generated here.
+  const relatedTeachingsByVerse: Record<string, Connection[]> = {};
+  const pageVerseNumbers = new Set(pageVerses.map((verse) => String(verse.number)));
+  const connectionPrefix = `${meta.id}:${chapter.id}:`;
+  for (const [key, connections] of Object.entries(CONNECTIONS)) {
+    if (!key.startsWith(connectionPrefix)) continue;
+    const verseNumber = key.slice(connectionPrefix.length);
+    if (!pageVerseNumbers.has(verseNumber)) continue;
+    const approvedConnections = connections
+      .filter((connection) => connection.review === 'approved')
+      .slice(0, 3);
+    if (approvedConnections.length > 0) {
+      relatedTeachingsByVerse[verseNumber] = approvedConnections;
+    }
+  }
   const partHref = (p: number) => chapterPartHref(meta.id, chapterId, p);
   const prevPartHref = part && part.part > 1 ? partHref(part.part - 1) : undefined;
   const nextPartHref = part && parts && part.part < parts.length ? partHref(part.part + 1) : undefined;
@@ -413,6 +431,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             basePath={process.env.NEXT_PUBLIC_BASE_PATH || ''}
             autoLoad
             initialChapter={initialChapter}
+            relatedTeachingsByVerse={relatedTeachingsByVerse}
           />
         </div>
 

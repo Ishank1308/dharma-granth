@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { VISUAL_CONCEPTS, type VisualConceptData, type VisualLayerRing, type FlowNode } from '@/data/visual-concepts';
 import { triggerTactileFeedback, playSoundEffect } from '@/lib/haptics';
-import { toDevanagari } from '@/lib/verse-format';
+import { toAsciiDigits } from '@/lib/verse-format';
 
 export type VisualMode = 'geometry' | 'flowchart' | 'knowledge' | 'stages';
 
@@ -552,7 +552,7 @@ export function InteractiveVisualLayer({
                   className="rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 transition hover:border-saffron-400 shadow-sm"
                 >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-saffron-500/15 text-saffron-700 dark:text-saffron-300 font-devanagari text-lg font-black border border-saffron-500/30">
-                    {toDevanagari(stage.step)}
+                    {toAsciiDigits(stage.step)}
                   </div>
                   <div className="min-w-0 flex-1 space-y-1">
                     <div className="flex flex-wrap items-center gap-2">

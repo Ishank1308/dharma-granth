@@ -114,6 +114,12 @@ jobs:
           wranglerVersion: "4.151.2"
           command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=master --commit-dirty=true
 
+      # Tell IndexNow (Bing and others) which pages changed; never fails the deploy.
+      - name: Notify IndexNow
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        continue-on-error: true
+        run: node scripts/seo/indexnow.mjs --send
+
       - name: Note missing secrets
         if: env.HAS_CLOUDFLARE_SECRETS != 'true'
         run: echo "::notice::Built and checked, not deployed — add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID (docs/deploy-cloudflare.md)."
@@ -122,3 +128,10 @@ jobs:
       # Verifies HTTP 200, valid HTML content, and zero Error Boundary text across core routes
       - name: Post-deploy health smoke test
         run: npm run test:smoke
+
+      # Compare the deployed Flight payload with the exact dist artifact from
+      # this run. This catches stale or mismatched RSC files before any R2
+      # canary is enabled.
+      - name: Verify deployed RSC payload parity
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        run: npm run verify:rsc-canary -- --local dist/scripture/bhagavadgita/chapter/2/index.txt --url https://dharmagranth.in/scripture/bhagavadgita/chapter/2/index.txt

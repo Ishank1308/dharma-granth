@@ -6,29 +6,18 @@ import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 import dynamic from "next/dynamic";
-import { FloatingCompanion } from "@/app/components/FloatingCompanion";
 import { TactileLayer } from "@/app/components/TactileLayer";
 import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
 
-const DharmaCopilot = dynamic(
-  () => import("@/app/components/DharmaCopilot").then((m) => m.DharmaCopilot),
-  { ssr: false }
-);
-
-const SacredAudioPlayer = dynamic(
-  () => import("@/app/components/reader/SacredAudioPlayer").then((m) => m.SacredAudioPlayer),
-  { ssr: false }
-);
-
 const PranaCapsule = dynamic(
-  () => import("@/components/ui/PranaCapsule").then((m) => m.PranaCapsule),
+  () => retryImport(() => import("@/components/ui/PranaCapsule").then((m) => m.PranaCapsule)),
   { ssr: false }
 );
 
 const MananaSelectionBar = dynamic(
-  () => import("@/app/components/reader/MananaSelectionBar").then((m) => m.MananaSelectionBar),
+  () => retryImport(() => import("@/app/components/reader/MananaSelectionBar").then((m) => m.MananaSelectionBar)),
   { ssr: false }
 );
 // Font subsetting: Bundling only required weights (400, 600, 700) and critical
@@ -45,6 +34,7 @@ import "@fontsource/noto-sans-devanagari/devanagari-700.css";
 import "./globals.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
+import { retryImport } from "@/lib/retry-import";
 
 /**
  * Inline script that runs synchronously before React hydrates so the
@@ -188,6 +178,8 @@ const siteJsonLd = {
       "@id": `${SITE_URL}/#website`,
       url: `${SITE_URL}/`,
       name: SITE_NAME,
+      // Spellings readers search with (Search Console, 2026-10): "dharm granth", "dharmgranth", "धर्म ग्रंथ".
+      alternateName: ["Dharm Granth", "Dharmagranth", "DharmaGranth", "धर्म ग्रंथ", "धर्मग्रंथ"],
       description: DEFAULT_DESCRIPTION,
       publisher: { "@id": `${SITE_URL}/#organization` },
       inLanguage: ["hi", "sa", "en"],
@@ -267,15 +259,6 @@ export default function RootLayout({
           </ErrorBoundary>
           <ErrorBoundary name="Manana Selection">
             <MananaSelectionBar />
-          </ErrorBoundary>
-          <ErrorBoundary name="Floating Companion">
-            <FloatingCompanion />
-          </ErrorBoundary>
-          <ErrorBoundary name="Dharma Copilot">
-            <DharmaCopilot />
-          </ErrorBoundary>
-          <ErrorBoundary name="Sacred Soundscape">
-            <SacredAudioPlayer />
           </ErrorBoundary>
           <TactileLayer />
           <OfflineIndicator />

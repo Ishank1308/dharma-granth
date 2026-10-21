@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { cleanVerseField, toDevanagari, verseLines } from '@/lib/verse-format';
+import { cleanVerseField, toAsciiDigits, verseLines } from '@/lib/verse-format';
 
 interface Props {
   verse: {
@@ -44,10 +44,10 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
     <article id={`verse-${label}`} className="verse-card vt" aria-label={title}>
       <header className="vt-head">
         <span aria-hidden="true" className="vt-medal">
-          {toDevanagari(label)}
+          {toAsciiDigits(label)}
         </span>
         <div>
-          <p className="vt-ch">अध्याय {toDevanagari(chapterId)}</p>
+          <p className="vt-ch">अध्याय {toAsciiDigits(chapterId)}</p>
           <h3 className="vt-title">
             {href ? <Link href={href}>{title}</Link> : title}
           </h3>
@@ -61,7 +61,7 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
             {lines.map((line, i) => (
               <span key={i}>{line}</span>
             ))}
-            <span className="vt-num" aria-hidden="true">॥ {toDevanagari(label)} ॥</span>
+            <span className="vt-num" aria-hidden="true">॥ {toAsciiDigits(label)} ॥</span>
           </p>
           {transliteration && (
             <p lang="sa-Latn" className="vt-tr">
@@ -74,7 +74,7 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
       {hindi && (
         <div className="vt-block">
           <p className="vt-label" lang="hi">
-            {v.hindiRange ? `श्लोक ${toDevanagari(v.hindiRange.replace('-', '–'))} का हिन्दी अर्थ` : 'हिन्दी अर्थ'}
+            {v.hindiRange ? `श्लोक ${toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिन्दी अर्थ` : 'हिन्दी अर्थ'}
           </p>
           <p lang="hi" className="vt-hi">
             {hindi}
@@ -83,7 +83,7 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
       )}
       {!hindi && v.hindiSeeVerse != null && (
         <p className="vt-block vt-label" lang="hi">
-          अर्थ श्लोक <a href={`#verse-${v.hindiSeeVerse}`}>{toDevanagari(String(v.hindiSeeVerse))}</a> के साथ
+          अर्थ श्लोक <a href={`#verse-${v.hindiSeeVerse}`}>{toAsciiDigits(String(v.hindiSeeVerse))}</a> के साथ
         </p>
       )}
       {english && (

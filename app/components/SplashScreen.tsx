@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
-import logoSplash from '@/public/logo-splash.webp';
 
 /**
  * Brand splash on the home page, shown once per browser session (the head
@@ -49,7 +48,7 @@ export function SplashScreen() {
             <circle cx="100" cy="100" r="97" pathLength={1} />
           </svg>
           <div className="splash-badge" data-decorative>
-            <Image src={logoSplash} alt="" width={176} height={176} priority />
+            <Image src="/logo-splash.webp" alt="" width={176} height={176} priority />
           </div>
         </div>
         <p className="splash-wordmark">Dharma Granth</p>

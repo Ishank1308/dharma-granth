@@ -28,7 +28,7 @@ import {
   subscribeSoundscape,
   type SoundscapeState,
 } from '@/lib/sacred-soundscape';
-import { splitVerseLines } from '@/lib/verse-format';
+import { splitVerseLines, toAsciiDigits } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 export interface FocusVerse {
@@ -61,11 +61,6 @@ interface MobileFocusModeProps {
   bookmarkedMap: Record<string, boolean>;
   onToggleBookmark: (verse: FocusVerse) => void;
   onVerseChange?: (verseNumber: number | string) => void;
-}
-
-const DEVANAGARI_DIGITS = '०१२३४५६७८९';
-function toDevanagari(value: number | string): string {
-  return String(value).replace(/[0-9]/g, (d) => DEVANAGARI_DIGITS[Number(d)]);
 }
 
 const slideVariants = {
@@ -286,7 +281,7 @@ export function MobileFocusMode({
                 {scriptureTitle} · {chapterTitle}
               </p>
               <p className="text-sm font-serif font-bold text-stone-200">
-                श्लोक {toDevanagari(verseLabel)}{' '}
+                श्लोक {toAsciiDigits(verseLabel)}{' '}
                 <span className="text-xs font-sans text-stone-400 font-normal">
                   ({currentIndex + 1} / {totalVerses})
                 </span>
@@ -482,7 +477,7 @@ export function MobileFocusMode({
                   <span aria-hidden="true" className="absolute right-4 top-3 text-amber-500/20 text-lg">❁</span>
 
                   <div lang="hi" className="mb-4 inline-flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-br from-amber-500/20 to-saffron-500/30 text-amber-300 font-devanagari font-bold border border-amber-500/30">
-                    {toDevanagari(verseLabel)}
+                    {toAsciiDigits(verseLabel)}
                   </div>
 
                   {lines.length > 0 && (
@@ -503,7 +498,7 @@ export function MobileFocusMode({
                         );
                       })}
                       <p className="mt-3 font-bold text-saffron-400">
-                        ॥ {toDevanagari(verseLabel)} ॥
+                        ॥ {toAsciiDigits(verseLabel)} ॥
                       </p>
                     </div>
                   )}

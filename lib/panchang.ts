@@ -1475,7 +1475,7 @@ export function calculateEducationalPanchang(
     year: 'numeric',
   }).format(date);
 
-  const fullDateHindi = new Intl.DateTimeFormat('hi-IN', {
+  const fullDateHindi = new Intl.DateTimeFormat('hi-IN', { numberingSystem: 'latn',
     weekday: 'long',
     day: 'numeric',
     month: 'long',
@@ -1483,7 +1483,7 @@ export function calculateEducationalPanchang(
   }).format(date);
 
   const dayOfWeek = new Intl.DateTimeFormat('en-IN', { weekday: 'long' }).format(date);
-  const dayOfWeekHi = new Intl.DateTimeFormat('hi-IN', { weekday: 'long' }).format(date);
+  const dayOfWeekHi = new Intl.DateTimeFormat('hi-IN', { numberingSystem: 'latn', weekday: 'long' }).format(date);
 
   return {
     date,
