@@ -46,7 +46,7 @@ function formatRelativeDay(isoDate: string): string {
     if (diffDays === 0) return 'आज (Today)';
     if (diffDays === 1) return 'कल (Yesterday)';
     if (diffDays < 7) return `${diffDays} दिन पूर्व`;
-    return d.toLocaleDateString('hi-IN', { month: 'short', day: 'numeric' });
+    return d.toLocaleDateString('hi-IN', { numberingSystem: 'latn', month: 'short', day: 'numeric' });
   } catch {
     return 'पूर्व में';
   }

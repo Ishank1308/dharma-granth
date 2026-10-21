@@ -277,7 +277,7 @@ export function DailyDharmaDashboard() {
                       <BookOpen className="w-4 h-4" />
                       1. Continue Reading
                     </span>
-                    <span>Last read {new Date(recentChapter.readAt).toLocaleDateString()}</span>
+                    <span>Last read {new Date(recentChapter.readAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}</span>
                   </div>
 
                   <h3 className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">

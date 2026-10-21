@@ -41,7 +41,7 @@ export function RecommendationCards() {
         const here = `${last.scriptureTitle} ${last.chapterId}`;
         let nextHref = `/scripture/${last.scriptureId}/chapter/${last.chapterId}`;
         let nextLabel = `Return to ${here}`;
-        let reason = `You last opened this chapter on ${new Date(last.readAt).toLocaleDateString()}.`;
+        let reason = `You last opened this chapter on ${new Date(last.readAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}.`;
         const basis = `The last chapter you opened on this device: ${here}.`;
         if (last.verseId) {
           try {

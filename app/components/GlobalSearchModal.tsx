@@ -4,6 +4,7 @@ import { Fragment, useCallback, useDeferredValue, useEffect, useId, useMemo, use
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { EASE_OUT_QUINT, SPRINGS } from '@/app/components/motion/primitives';
 import {
   ArrowRight,
   BookMarked,
@@ -53,6 +54,7 @@ import {
   getSoundscapeState,
 } from '@/lib/sacred-soundscape';
 import { triggerPranaToast } from '@/lib/prana-capsule-store';
+import { executeSearchWithWorker } from '@/lib/workers/search-worker-client';
 
 export type { SearchResultItem } from '@/lib/search';
 
@@ -201,7 +203,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     id: 'meditation',
     command: '> meditation',
     title: 'Start 10-Minute Meditation Timer',
-    titleHi: '१० मिनट ध्यान साधना प्रारंभ करें',
+    titleHi: '10 मिनट ध्यान साधना प्रारंभ करें',
     subtitle: 'Timed Silent Meditation with Bells & Wake-Lock',
     icon: '🧘',
     run: (onClose, router) => {
@@ -244,7 +246,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
         }
       } catch {}
       router.push('/scripture/bhagavadgita/chapter/2/#verse-47');
-      triggerPranaToast({ message: 'गीता २.४७ से प्रारंभ · Resumed reading', icon: '📖' });
+      triggerPranaToast({ message: 'गीता 2.47 से प्रारंभ · Resumed reading', icon: '📖' });
       onClose();
     },
   },
@@ -636,7 +638,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             initial={{ opacity: 0, scale: 0.97, y: -12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: -8 }}
-            transition={{ duration: reduce ? 0 : 0.2 }}
+            transition={{ duration: reduce ? 0 : 0.24, ease: EASE_OUT_QUINT }}
             ref={windowRef}
             className="relative z-10 flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-amber-500/30 bg-dharma-card shadow-[0_25px_70px_rgba(0,0,0,0.5)]"
           >
@@ -1019,12 +1021,22 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                               onMouseMove={() => {
                                 if (!selected) setSelectedIndex(index);
                               }}
-                              className={`group block rounded-xl border p-3.5 transition sm:p-4 ${
+                              className={`search-result-in group relative isolate block rounded-xl border p-3.5 transition-colors sm:p-4 ${
                                 selected
-                                  ? 'border-saffron-600/70 bg-saffron-500/10 shadow-md ring-1 ring-saffron-600/40'
+                                  ? 'border-saffron-600/70'
                                   : 'border-dharma-border/70 bg-dharma-card hover:border-amber-600/40 hover:bg-dharma-bg/50'
                               }`}
+                              style={{ animationDelay: `${Math.min(index, 8) * 25}ms` }}
                             >
+                              {/* One highlight layer shared by every result, so the selection glides between them. */}
+                              {selected && (
+                                <motion.span
+                                  layoutId="search-selection"
+                                  aria-hidden="true"
+                                  className="pointer-events-none absolute inset-0 -z-10 rounded-xl bg-saffron-500/10 shadow-md ring-1 ring-saffron-600/40"
+                                  transition={reduce ? { duration: 0 } : SPRINGS.settle}
+                                />
+                              )}
                               <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
                                 <span className="font-mono text-xs font-bold text-amber-800 dark:text-amber-300">
                                   {item.reference ?? item.groupLabel}

@@ -9,7 +9,7 @@ import {
 } from '@/lib/sacred-soundscape';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { getParayanaChapterProgress } from '@/lib/reading-plan-sync';
-import { toDevanagari } from '@/lib/verse-format';
+import { toAsciiDigits } from '@/lib/verse-format';
 
 interface Props {
   className?: string;
@@ -120,7 +120,7 @@ export function ChapterAudioHeroAction({
           title={`श्लोक ${resumeVerse} से पारायण जारी रखें`}
         >
           <Play className="w-3.5 h-3.5 text-amber-300 fill-amber-300" aria-hidden="true" />
-          <span>श्लोक {toDevanagari(resumeVerse)} से आगे · Resume #{resumeVerse}</span>
+          <span>श्लोक {toAsciiDigits(resumeVerse)} से आगे · Resume #{resumeVerse}</span>
         </button>
       )}
     </div>

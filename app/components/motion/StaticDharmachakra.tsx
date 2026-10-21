@@ -21,7 +21,7 @@ export function StaticDharmachakra({
       className={`relative flex items-center justify-center ${className}`}
       style={{ maxWidth: size, width: '100%', aspectRatio: '1/1' }}
       role="img"
-      aria-label="२४ अरों वाला धर्मचक्र (24-spoke Dharmachakra sacred emblem)"
+      aria-label="24 अरों वाला धर्मचक्र (24-spoke Dharmachakra sacred emblem)"
     >
       <svg
         viewBox="0 0 400 400"

@@ -5,7 +5,8 @@ import { expect, test } from '@playwright/test';
  * Automated accessibility audit (axe, WCAG 2 A/AA) in every colour theme.
  * Fails on serious and critical violations; lesser ones are only logged.
  */
-const THEMES = ['day', 'sunset', 'night'] as const;
+// All four themes (Usha, Sandhyā, Bhojpatra, Rātri).
+const THEMES = ['day', 'sunset', 'paper', 'night'] as const;
 const PAGES = [
   '/',
   '/scriptures/',
@@ -16,7 +17,7 @@ const PAGES = [
   '/practice/',
   '/concepts/',
   '/dictionary/',
-  '/topics/',
+  '/wisdom-for-life/',
   '/characters/',
   '/festivals/',
   '/learn/',
@@ -104,7 +105,8 @@ test('a11y: desktop discovery menu', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/scriptures/');
   await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: 'अन्वेषण' }).click();
+  // By what it controls: its visible name is "Explore", with अन्वेषण shown only from 2xl.
+  await page.locator('button[aria-controls="desktop-discovery-menu"]').click();
   await expect(page.locator('#desktop-discovery-menu')).toBeVisible();
   await audit(page, 'desktop discovery menu');
 });

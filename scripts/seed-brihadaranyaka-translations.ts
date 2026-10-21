@@ -5,6 +5,10 @@
  * Maps verses via bracket refs `[III.ix.28]` → SBE brâhmaṇa page + mantra number.
  * Chapters 1–6 keep curated highlights unless missing or `--force`.
  *
+ * Superseded: BRIHAD_BRAHMANA_PAGE_ENTRIES maps I,1 to page 54 (it is on 53) and the rebuilt text has no
+ * bracket refs, so its English drifted onto the wrong mantras. Use scripts/realign-brihadaranyaka-english.ts,
+ * which aligns every brāhmaṇa by mantra number.
+ *
  * Run: npx tsx scripts/seed-brihadaranyaka-translations.ts
  */
 import { readFileSync } from "node:fs";

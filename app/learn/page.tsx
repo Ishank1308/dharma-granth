@@ -539,7 +539,7 @@ export default function LearnPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-5 rounded-xl bg-white/80 dark:bg-stone-800/80 border border-saffron-200 dark:border-stone-700">
               <span className="font-devanagari text-lg text-saffron-700 dark:text-saffron-300 font-bold block mb-1">
-                १. श्रवण (Śravaṇa)
+                1. श्रवण (Śravaṇa)
               </span>
               <h4 className="font-serif font-bold text-sm text-dharma-text mb-1">
                 Receptive Hearing & Reading
@@ -551,7 +551,7 @@ export default function LearnPage() {
 
             <div className="p-5 rounded-xl bg-white/80 dark:bg-stone-800/80 border border-saffron-200 dark:border-stone-700">
               <span className="font-devanagari text-lg text-saffron-700 dark:text-saffron-300 font-bold block mb-1">
-                २. मनन (Manana)
+                2. मनन (Manana)
               </span>
               <h4 className="font-serif font-bold text-sm text-dharma-text mb-1">
                 Reflective Pondering & Analysis
@@ -563,7 +563,7 @@ export default function LearnPage() {
 
             <div className="p-5 rounded-xl bg-white/80 dark:bg-stone-800/80 border border-saffron-200 dark:border-stone-700">
               <span className="font-devanagari text-lg text-saffron-700 dark:text-saffron-300 font-bold block mb-1">
-                ३. निदिध्यासन (Nididhyāsana)
+                3. निदिध्यासन (Nididhyāsana)
               </span>
               <h4 className="font-serif font-bold text-sm text-dharma-text mb-1">
                 Deep Meditative Assimilation

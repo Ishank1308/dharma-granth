@@ -59,7 +59,7 @@ export function formatDate(
 ): string {
   const d = parseLocalDate(value);
   if (Number.isNaN(d.getTime())) return '–';
-  return new Intl.DateTimeFormat(lang === 'hi' ? 'hi-IN' : 'en-IN', { ...options, ...(timeZone ? { timeZone } : {}) }).format(d);
+  return new Intl.DateTimeFormat(lang === 'hi' ? 'hi-IN' : 'en-IN', { ...options, numberingSystem: 'latn', ...(timeZone ? { timeZone } : {}) }).format(d);
 }
 
 /** "Last opened 3 days ago" style helper without false precision. */

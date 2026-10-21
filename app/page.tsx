@@ -3,17 +3,18 @@ import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { HeroSection } from '@/app/components/HeroSection';
 import { SplashScreen } from '@/app/components/SplashScreen';
 import { ContinueReading } from '@/app/components/ContinueReading';
+import { HomeDiscoveryBento } from '@/app/components/HomeDiscoveryBento';
 import { VerseOfTheDayCompact } from '@/app/components/VerseOfTheDayCompact';
 import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
 import { MoodCompass } from '@/app/components/MoodCompass';
 import { getMoodCompass } from '@/lib/mood-compass';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
 import { HomeTourVideo } from '@/app/components/HomeTourVideo';
-import { Experience3DSection } from '@/app/components/Experience3DSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
-import { SadhanaPreviewSection } from '@/app/components/SadhanaPreviewSection';
+import { LazyExperience3D, LazySadhanaPreview } from '@/app/components/LazyHomeSections';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
 import { SiteFooter } from '@/app/components/SiteFooter';
+import { getTodayWisdom } from '@/data/daily-wisdom-engine';
 
 export const metadata: Metadata = {
   title: { absolute: 'Dharma Granth — Calm, Bilingual Digital Scripture Library' },
@@ -62,8 +63,12 @@ export default function HomePage() {
 
         {/* 3b. A 15-second video tour of the page, loaded only on play */}
         <HomeTourVideo />
+
         {/* 4. A short daily reading, followed by alternative discovery paths */}
         <VerseOfTheDayCompact />
+
+        {/* 4b. Daily discovery, Panchang, local resume and a gentle reading rhythm */}
+        <HomeDiscoveryBento initialWisdom={getTodayWisdom()} />
 
         {/* 5. Mood compass: curated verses for how the reader feels right now */}
         <MoodCompass moods={getMoodCompass()} />
@@ -75,10 +80,10 @@ export default function HomePage() {
         <LifeSituationsSection />
 
         {/* 8. Touch & Contemplate: 3D Sacred Experience System */}
-        <Experience3DSection gitaCountLabel="१८ अध्याय · ७०० श्लोक" />
+        <LazyExperience3D gitaCountLabel="18 अध्याय · 700 श्लोक" />
 
         {/* 9. Practice tools preview */}
-        <SadhanaPreviewSection />
+        <LazySadhanaPreview />
 
         {/* 10. Trust, sourcing and methodology */}
         <HomeTrustStrip />

@@ -59,7 +59,7 @@ export function StorageInfo() {
           </tbody>
         </table>
       )}
-      {quota && <p className="mt-2 text-dharma-muted">Your browser reports using about {(quota.usage / 1048576).toFixed(1)} MB of roughly {Math.round(quota.quota / 1048576).toLocaleString()} MB available to this site.</p>}
+      {quota && <p className="mt-2 text-dharma-muted">Your browser reports using about {(quota.usage / 1048576).toFixed(1)} MB of roughly {Math.round(quota.quota / 1048576).toLocaleString(undefined, { numberingSystem: 'latn' })} MB available to this site.</p>}
     </div>
   );
 }

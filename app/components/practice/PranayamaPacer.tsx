@@ -188,7 +188,7 @@ export function PranayamaPacer() {
           <button
             type="button"
             onClick={() => (running ? stop() : setRunning(true))}
-            className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-emerald-700 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-full bg-emerald-700 px-5 py-2 text-sm font-bold text-white transition hover:bg-emerald-800 active:scale-95"
           >
             {running ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
             {running ? 'Pause · रुकें' : 'Begin · आरंभ'}

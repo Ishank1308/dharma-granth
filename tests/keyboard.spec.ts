@@ -131,3 +131,66 @@ test('reader: every button and link that takes focus shows a focus indicator', a
   }
   expect(missing).toEqual([]);
 });
+
+test('Story Deck traps keyboard focus, closes with Escape, and restores focus', async ({ page }) => {
+  await page.goto('/scripture/bhagavadgita/chapter/2/');
+  await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+
+  const trigger = page
+    .getByRole('toolbar', { name: 'श्लोक विकल्प (Verse actions)' })
+    .first()
+    .getByRole('button', { name: 'और विकल्प · More actions' });
+  await trigger.click();
+  await page.getByRole('menuitem', { name: /६०-सेकंड सार/ }).click();
+
+  const dialog = page.getByRole('dialog', { name: /६०-सेकंड सार/ });
+  const close = dialog.getByRole('button', { name: 'कथा डेक बंद करें' });
+  await expect(dialog).toBeVisible();
+  await expect(close).toBeFocused();
+
+  await page.keyboard.press('Shift+Tab');
+  const lastControl = dialog.getByRole('button', { name: /आगे बढ़ें/ });
+  await expect(lastControl).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(close).toBeFocused();
+
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
+test('reader: Modern Context is a selectable, touch-sized tab on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/scripture/bhagavadgita/chapter/2/');
+
+  const lessonTab = page.getByRole('tab', { name: /Modern Context/ }).first();
+  await expect(lessonTab).toBeVisible();
+  const card = page.locator('article.verse-card').filter({ has: lessonTab }).first();
+  const firstTab = card.getByRole('tab').first();
+  await firstTab.focus();
+  await page.keyboard.press('End');
+  await expect(lessonTab).toBeFocused();
+  await expect(lessonTab).toHaveAttribute('aria-selected', 'true');
+  await expect(card.getByRole('tabpanel')).toContainText(/Modern Context|व्यावहारिक जीवन/);
+
+  const targetHeight = await lessonTab.evaluate((el) => el.getBoundingClientRect().height);
+  expect(targetHeight).toBeGreaterThanOrEqual(44);
+});
+
+test('reader: approved related teachings stay collapsed and show their editorial reasons on request', async ({ page }) => {
+  await page.goto('/scripture/bhagavadgita/chapter/2/');
+
+  const card = page.locator('#verse-47');
+  const disclosure = card.locator('details').filter({ hasText: /Related teachings/ });
+  const summary = disclosure.locator('summary');
+  await expect(summary).toBeVisible();
+  await expect(disclosure).not.toHaveAttribute('open', '');
+
+  await summary.click();
+  await expect(disclosure).toHaveAttribute('open', '');
+  await expect(disclosure).toContainText('The next verse names the balance that 2.47 asks for.');
+  await expect(disclosure).toContainText('Approved editorial connection · Not scripture');
+  expect(await disclosure.locator('li').count()).toBeLessThanOrEqual(3);
+
+  await expect(page.locator('#verse-1 details').filter({ hasText: /Related teachings/ })).toHaveCount(0);
+});

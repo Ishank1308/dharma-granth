@@ -1,23 +1,25 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import { retryImport } from '@/lib/retry-import';
 import { Lock, Settings2, Trash2, ShieldCheck, Heart, Sparkles } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { FadeUp } from '@/app/components/motion/primitives';
-import { DailyVerse } from '@/app/components/DailyVerse';
-import { DailyReflection } from '@/app/components/practice/DailyReflection';
-import { ReadingPlan } from '@/app/components/practice/ReadingPlan';
-import { JapaCounter } from '@/app/components/practice/JapaCounter';
-import { MeditationTimer } from '@/app/components/practice/MeditationTimer';
-import { PranayamaPacer } from '@/app/components/practice/PranayamaPacer';
-import { FestivalReminder } from '@/app/components/practice/FestivalReminder';
-import { SankalpaJournal } from '@/app/components/practice/SankalpaJournal';
-import { GratitudeJournal } from '@/app/components/practice/GratitudeJournal';
-import { RoutineBuilder } from '@/app/components/practice/RoutineBuilder';
-import { PracticeHistory } from '@/app/components/practice/PracticeHistory';
-import { PrivacyLockBanner } from '@/app/components/practice/PrivacyLockBanner';
-import { BackupRestore } from '@/app/components/BackupRestore';
-import { SadhanaPortability } from '@/app/components/SadhanaPortability';
+const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((module) => module.DailyVerse)));
+const DailyReflection = dynamic(() => retryImport(() => import('@/app/components/practice/DailyReflection').then((module) => module.DailyReflection)));
+const ReadingPlan = dynamic(() => retryImport(() => import('@/app/components/practice/ReadingPlan').then((module) => module.ReadingPlan)));
+const JapaMala = dynamic(() => retryImport(() => import('@/app/components/practice/JapaMala').then((module) => module.JapaMala)));
+const MeditationTimer = dynamic(() => retryImport(() => import('@/app/components/practice/MeditationTimer').then((module) => module.MeditationTimer)));
+const PranayamaPacer = dynamic(() => retryImport(() => import('@/app/components/practice/PranayamaPacer').then((module) => module.PranayamaPacer)));
+const FestivalReminder = dynamic(() => retryImport(() => import('@/app/components/practice/FestivalReminder').then((module) => module.FestivalReminder)));
+const SankalpaJournal = dynamic(() => retryImport(() => import('@/app/components/practice/SankalpaJournal').then((module) => module.SankalpaJournal)));
+const GratitudeJournal = dynamic(() => retryImport(() => import('@/app/components/practice/GratitudeJournal').then((module) => module.GratitudeJournal)));
+const RoutineBuilder = dynamic(() => retryImport(() => import('@/app/components/practice/RoutineBuilder').then((module) => module.RoutineBuilder)));
+const PracticeHistory = dynamic(() => retryImport(() => import('@/app/components/practice/PracticeHistory').then((module) => module.PracticeHistory)));
+const PrivacyLockBanner = dynamic(() => retryImport(() => import('@/app/components/practice/PrivacyLockBanner').then((module) => module.PrivacyLockBanner)));
+const BackupRestore = dynamic(() => retryImport(() => import('@/app/components/BackupRestore').then((module) => module.BackupRestore)));
+const SadhanaPortability = dynamic(() => retryImport(() => import('@/app/components/SadhanaPortability').then((module) => module.SadhanaPortability)));
 
 /**
  * The redesigned daily practice (sādhanā) dashboard.
@@ -184,7 +186,7 @@ export function PracticeDashboard() {
             {/* Tool grid */}
             <div className="grid md:grid-cols-2 gap-6 items-stretch">
               {on('reflection') && <DailyReflection />}
-              {on('japa') && <JapaCounter />}
+              {on('japa') && <JapaMala />}
               {on('meditation') && <MeditationTimer />}
               {on('pranayama') && <PranayamaPacer />}
               {on('reading') && <ReadingPlan />}

@@ -19,7 +19,7 @@
  *      npm run og:verses
  */
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
@@ -539,9 +539,22 @@ async function renderVerseImages(fonts: SatoriFont[]): Promise<void> {
     if (written % 50 === 0) console.log(`  ${written} new verse images`);
   }
   mkdirSync(resolve(OUT_DIR, "verse"), { recursive: true });
+  // A restored CI cache still holds images for verse pages that no longer exist (renumbered or noindexed);
+  // they would be deployed and count against the Cloudflare Pages file limit.
+  let removed = 0;
+  for (const entry of readdirSync(resolve(OUT_DIR, "verse"), { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const dir = resolve(OUT_DIR, "verse", entry.name);
+    for (const name of readdirSync(dir)) {
+      if (!name.endsWith(".jpg") || nextFiles[`${entry.name}/${name}`]) continue;
+      rmSync(resolve(dir, name));
+      removed++;
+    }
+    if (readdirSync(dir).length === 0) rmSync(dir, { recursive: true });
+  }
   writeFileSync(VERSE_STAMPS, JSON.stringify({ rev: VERSE_IMAGE_REV, files: nextFiles }));
   console.log(
-    `  ✓ ${written} new, ${params.length - written} already present (${VERSE_PAGE_SCRIPTURE_IDS.length} books)`,
+    `  ✓ ${written} new, ${params.length - written} already present, ${removed} stale removed (${VERSE_PAGE_SCRIPTURE_IDS.length} books)`,
   );
 }
 

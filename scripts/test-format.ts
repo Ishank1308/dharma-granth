@@ -1,6 +1,7 @@
 /** Run: npm run test:format */
 import assert from 'node:assert/strict';
 import { chapterCount, countLabel, daysAgo, dayCount, formatDate, formatNumber, languageLabel, parseLocalDate, plural, scriptureTitle, sessionCount, verseCount } from '../lib/format';
+import { toAsciiDigits } from '../lib/verse-format';
 
 assert.equal(plural(0, 'verse'), 'verses');
 assert.equal(plural(1, 'verse'), 'verse');
@@ -20,11 +21,14 @@ assert.equal(formatNumber(1234567, 'indian'), '12,34,567');
 assert.equal(formatNumber(1234567, 'international'), '1,234,567');
 assert.equal(formatNumber(Number.NaN), '–');
 assert.equal(verseCount(187392, 'en', 'indian'), '1,87,392 verses');
+assert.equal(toAsciiDigits('गीता २.४७'), 'गीता 2.47');
+assert.equal(toAsciiDigits('2026-10-08'), '2026-10-08');
 
 // A calendar day stays on that day whatever the machine's time zone.
 const d = parseLocalDate('2026-10-08');
 assert.deepEqual([d.getFullYear(), d.getMonth(), d.getDate()], [2026, 9, 8]);
 assert.match(formatDate('2026-10-08', 'en'), /8 October 2026/);
+assert.doesNotMatch(formatDate('2026-10-08', 'hi'), /[०-९]/);
 assert.equal(formatDate('not a date'), '–');
 assert.equal(daysAgo('2026-10-08', new Date(2026, 9, 8, 23, 59)), 'today');
 assert.equal(daysAgo('2026-10-07', new Date(2026, 9, 8, 0, 1)), 'yesterday');

@@ -321,8 +321,8 @@ export function CharacterMap() {
           )}
         </div>
 
-        {/* Detail Panel */}
-        <AnimatePresence mode="wait">
+        {/* Detail Panel. initial={false}: the first panel is server-rendered visible; later switches animate. */}
+        <AnimatePresence mode="wait" initial={false}>
           {selectedCharacter ? (
             <motion.div
               key={selectedCharacter.id}

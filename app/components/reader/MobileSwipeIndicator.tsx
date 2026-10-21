@@ -2,7 +2,7 @@
 
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import type { SwipeGestureState } from '@/lib/useSwipeGesture';
-import { toDevanagari } from '@/lib/verse-format';
+import { toAsciiDigits } from '@/lib/verse-format';
 
 interface MobileSwipeIndicatorProps {
   gestureState: SwipeGestureState;
@@ -61,7 +61,7 @@ export function MobileSwipeIndicator({
         <span className="font-devanagari">
           {isNext ? 'अगला श्लोक' : 'पिछला श्लोक'}{' '}
           <strong className="font-bold underline decoration-saffron-300">
-            {toDevanagari(targetNumber)}
+            {toAsciiDigits(targetNumber)}
           </strong>
         </span>
         {isNext && <ArrowRight className="h-4 w-4 shrink-0 animate-pulse text-current" />}

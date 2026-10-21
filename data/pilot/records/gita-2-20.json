@@ -1,0 +1,25 @@
+{
+  "unitId": "gita-2-20",
+  "reference": "Bhagavad Gita 2.20",
+  "artha": "यह आत्मा न कभी जन्म लेती है, न कभी मरती है; और ऐसा भी नहीं कि एक बार अस्तित्व में आकर फिर वह न रहे। यह अजन्मा, नित्य, शाश्वत और पुरातन है। शरीर के मारे जाने पर भी यह नहीं मारी जाती।",
+  "arthaEn": "It is never born and never dies; nor, having once come to be, does it cease to be. Unborn, eternal, everlasting and ancient, it is not killed when the body is killed.",
+  "arthaDecision": "revise-existing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "यह श्लोक अध्याय 2 में आत्मा के स्वरूप की उस श्रृंखला का केंद्र है जो अर्जुन के शोक के उत्तर में कही गई है। इससे पहले कहा गया है कि इसे मारने वाला या मरने वाला समझना दोनों भूल हैं; यहाँ कारण बताया जाता है कि आत्मा जन्म और मृत्यु के क्रम में है ही नहीं। अज, नित्य, शाश्वत और पुराण चार विशेषण हैं: बिना जन्म का, सदा रहने वाला, काल से अप्रभावित, और जो पुराना होकर भी जीर्ण नहीं होता। पद भूत्वा भविता वा न भूयः को दो तरह से अलग किया जाता है, इसलिए अर्थ भी दो तरह के मिलते हैं: एक बार होकर फिर न रहना ऐसा नहीं है, या होकर फिर दोबारा नए सिरे से होना ऐसा नहीं है। दोनों आत्मा को उत्पत्ति-नाश से परे बताते हैं। इसी श्लोक से मिलता-जुलता पाठ कठोपनिषद में भी आता है, जो दोनों ग्रंथों के संबंध की ओर संकेत करता है। अगले श्लोकों में इसी आधार पर मारने-मरने की धारणा का प्रश्न उठाया जाता है।",
+  "vijnana": "",
+  "vijnanaCategory": "",
+  "evidenceLevel": "none",
+  "lifeLesson": "जब किसी बड़े नुकसान या भय से घबराहट हो, तब यह देखने का अभ्यास करो कि कौन-सी बात बदलने वाले शरीर, पद या परिस्थिति की है और कौन-सी उस जानने वाले की जो इन सबको जानता है। पर किसी दूसरे के शोक में यह श्लोक सुनाने से पहले उसकी बात सुनो।",
+  "confidence": "medium",
+  "reviewNote": "The Sanskrit is clear. The phrase 'bhutva bhavita va na bhuyah' can be parsed two ways and the stored Hindi and English follow different parsings, so they disagree; the revision keeps one neutral rendering and the Vyakhya names both. Vijnana is left empty on purpose: a statement about the unborn Self is metaphysical and any physics or biology parallel would be forced. The Kathopanishad parallel (1.2.18) is mentioned from general knowledge and should be checked against the Katha record. No classical commentary is stored.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged.",
+    "artha": "Editor rendering from the Sanskrit. The stored translations were read as a check and are not reproduced.",
+    "vyakhya": "Original composition.",
+    "vijnana": "None written: no honest modern parallel.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}

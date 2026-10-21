@@ -82,7 +82,7 @@ export default function ConceptsPage() {
           <div className="space-y-2 max-w-2xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 font-bold text-xs border border-saffron-500/20">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>चरण १० · Interactive Visual Learning Layer</span>
+              <span>चरण 10 · Interactive Visual Learning Layer</span>
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
               दृश्य ज्ञान दर्शन — 10 मूल तत्त्वों के पवित्र आरेख

@@ -132,6 +132,9 @@ function FloatingPetals() {
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
       {petals.map((p, i) => (
         <motion.svg
+          // Decorative and invisible until it drifts in; marked on the element so check:export's hidden-content
+          // guard (which reads attributes, not ancestors) passes it.
+          aria-hidden="true"
           key={i}
           viewBox="-12 -12 24 24"
           className="absolute"

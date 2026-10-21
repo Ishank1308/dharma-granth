@@ -86,12 +86,39 @@ test('verse page carries its schema and share image', async ({ page }) => {
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/og\/verse\/bhagavadgita\/2-47\.jpg$/);
 });
 
-test('floating dock stays out of the way at the top', async ({ page }) => {
-  await page.goto('/');
-  await page.evaluate(() => sessionStorage.setItem('dharma-splash', '1'));
-  await page.reload();
-  const dock = page.locator('aside[aria-label="Interactive Companion"] > div');
-  await expect(dock).toHaveCSS('pointer-events', 'none');
+test('concept graph offers an expandable relationship list on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/concepts/');
+
+  const list = page.locator('section[aria-labelledby="mobile-concepts-heading"]');
+  await expect(list).toBeVisible();
+  const brahman = list.locator('#concept-brahman details');
+  await brahman.locator('summary').click();
+  await expect(brahman.getByText('Related concepts')).toBeVisible();
+  await expect(brahman.getByRole('link', { name: /Atman/ })).toBeVisible();
+  await expect(page.getByText('Brahman', { exact: true }).first()).toBeVisible();
+});
+
+test('floating island clears the one-thumb reader controls on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/scripture/bhagavadgita/chapter/2/');
+  await page.waitForLoadState('networkidle');
+  const island = page.locator('button[aria-label="Open Prāṇa Live Island"]');
+  const nextVerse = page.locator('button[aria-label="अगला श्लोक (Next verse)"]');
+  await expect(island).toBeVisible();
+  await expect(nextVerse).toBeVisible();
+  const islandBox = await island.boundingBox();
+  const nextVerseBox = await nextVerse.boundingBox();
+  expect(islandBox).not.toBeNull();
+  expect(nextVerseBox).not.toBeNull();
+  const overlaps = Boolean(
+    islandBox && nextVerseBox &&
+      islandBox.x < nextVerseBox.x + nextVerseBox.width &&
+      islandBox.x + islandBox.width > nextVerseBox.x &&
+      islandBox.y < nextVerseBox.y + nextVerseBox.height &&
+      islandBox.y + islandBox.height > nextVerseBox.y,
+  );
+  expect(overlaps).toBe(false);
 });
 
 test('service worker registers and serves an opened page offline', async ({ page, context }) => {

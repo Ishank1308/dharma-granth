@@ -41,7 +41,7 @@ import {
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
 import { subscribeSoundscape, toggleSoundscape } from '@/lib/sacred-soundscape';
-import { THEMES, useTheme, type Theme } from './ThemeProvider';
+import { THEMES, THEME_NAMES, useTheme, type Theme } from './ThemeProvider';
 import {
   useLanguagePreference,
   type LanguagePreference,
@@ -50,7 +50,6 @@ import {
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { formatCountDevanagari } from '@/lib/holdings-label';
 import { readActiveStreak } from '@/lib/reading-history';
-import logoMark from '@/public/logo-mark.webp';
 import { OPEN_SEARCH_EVENT, type OpenSearchDetail } from '@/lib/search-events';
 
 // Lazy-load the heavy search modal to avoid bundling search index in the critical path
@@ -74,21 +73,6 @@ const THEME_ICONS: Record<Theme, typeof Sun> = {
   night: Moon,
 };
 
-const THEME_LABELS: Record<Theme, string> = {
-  auto: 'Auto · सौर चक्र',
-  day: 'Day · दिन',
-  sunset: 'Sunset · संध्या',
-  paper: 'Paper · पाण्डुलिपि',
-  night: 'Dark · रात्रि',
-};
-
-const THEME_DESCRIPTIONS: Record<Theme, string> = {
-  auto: 'सौर चक्र · Circadian Sandhyā Auto-Theme',
-  day: 'Warm paper reading mode',
-  sunset: 'Soft amber evening mode',
-  paper: 'Antique manuscript parchment',
-  night: 'Low-glare dark reading mode',
-};
 
 const desktopPrimaryItems = [
   { label: 'Home', labelHi: 'मुख', href: '/' },
@@ -103,16 +87,16 @@ const desktopDiscoveryItems = [
   { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra' },
   { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask' },
   { label: 'श्लोक संबंध जाल', description: 'Verse Relationship Network — गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network' },
-  { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — १२ क्रमिक साधना पथ', href: '/journeys' },
+  { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — 12 क्रमिक साधना पथ', href: '/journeys' },
   { label: 'स्वाध्याय मार्ग', description: 'Guided Reading Paths — विषयवार अध्ययन', href: '/learn/paths' },
-  { label: 'पठन योजनाएँ', description: 'Reading Plans — १८ दिवसीय गीता आदि', href: '/learn/plans' },
+  { label: 'पठन योजनाएँ', description: 'Reading Plans — 18 दिवसीय गीता आदि', href: '/learn/plans' },
   { label: 'जिज्ञासा समाधान', description: 'Scripture FAQs — श्रुति-स्मृति व नीति', href: '/learn/faq' },
   { label: 'स्रोत पारदर्शिता', description: 'Source Library — मूल पांडुलिपियाँ व संस्करण', href: '/sources' },
   { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — तनाव, भय, क्रोध व धर्मसंकट का समाधान', href: '/guidance' },
   { label: 'दैनिक श्लोक', description: 'Daily Verse — आज का श्लोक WhatsApp पर भेजें', href: '/daily-verse' },
   { label: 'पंचांग', description: 'दैनिक वैदिक काल व ऋतु', href: '/panchang' },
   { label: 'अवधारणाएँ', description: 'मुख्य दार्शनिक विचार', href: '/concepts' },
-  { label: 'विषय', description: 'जीवन और साधना के विषय', href: '/topics' },
+  { label: 'विषय', description: 'जीवन और साधना के विषय', href: '/wisdom-for-life' },
   { label: 'पात्र', description: 'कथाओं के प्रमुख चरित्र', href: '/characters' },
   { label: 'स्थान', description: 'पवित्र और ऐतिहासिक स्थल', href: '/locations' },
   { label: 'कालखंड', description: 'समयरेखा और परंपरा', href: '/timelines' },
@@ -505,7 +489,7 @@ export function SiteNav({
       id: 'wisdom-for-life',
       label: 'जीवन मार्गदर्शन',
       labelEn: 'Wisdom for Life',
-      description: '१२ जीवन-विषय · तनाव, भय, कर्तव्य व आत्मज्ञान',
+      description: '12 जीवन-विषय · तनाव, भय, कर्तव्य व आत्मज्ञान',
       href: '/wisdom-for-life',
       icon: Compass,
       badge: 'जीवन-विषय',
@@ -591,7 +575,7 @@ export function SiteNav({
                 aria-hidden="true"
               >
                 <Image
-                  src={logoMark}
+                  src="/logo-mark.webp"
                   alt=""
                   width={40}
                   height={40}
@@ -784,10 +768,11 @@ export function SiteNav({
                 type="button"
                 onClick={handleThemeCycle}
                 className="lg:hidden flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-dharma-border/80 bg-dharma-bg/90 text-dharma-text transition active:scale-95 hover:border-saffron-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
-                aria-label={`थीम बदलें (${THEME_LABELS[theme]})`}
-                title={`थीम: ${THEME_LABELS[theme]}`}
+                aria-label={`थीम बदलें (${THEME_NAMES[theme].name})`}
+                title={`थीम: ${THEME_NAMES[theme].name} · ${THEME_NAMES[theme].hi}`}
               >
-                <AnimatePresence mode="wait">
+                {/* initial={false}: server-rendered visible; only later theme changes animate. */}
+                <AnimatePresence mode="wait" initial={false}>
                   <motion.span
                     key={theme}
                     initial={{ scale: 0.7, opacity: 0, rotate: -20 }}
@@ -873,7 +858,7 @@ export function SiteNav({
               <div className="flex items-center justify-between border-b border-dharma-border/80 px-4 py-3 sm:px-6">
                 <div className="flex items-center gap-2.5">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#fdf6ea] shadow-sm ring-1 ring-saffron-500/30">
-                    <Image src={logoMark} alt="" width={36} height={36} className="h-full w-full object-cover" />
+                    <Image src="/logo-mark.webp" alt="" width={36} height={36} className="h-full w-full object-cover" />
                   </span>
                   <div>
                     <h2 className="font-serif text-base font-bold text-dharma-text leading-tight">
@@ -925,7 +910,7 @@ export function SiteNav({
                       मुख्य अनुभाग · Navigation
                     </h3>
                     <span className="text-[10px] text-dharma-muted font-devanagari">
-                      १० पावन विभाग
+                      10 पावन विभाग
                     </span>
                   </div>
 
@@ -1078,7 +1063,7 @@ export function SiteNav({
                                 ? 'border border-saffron-500/60 bg-saffron-500/20 text-saffron-800 dark:text-saffron-200 font-bold shadow-xs'
                                 : 'border border-dharma-border/80 bg-dharma-card text-dharma-text hover:border-saffron-300'
                             }`}
-                            title={THEME_DESCRIPTIONS[opt]}
+                            title={THEME_NAMES[opt].description}
                           >
                             <span
                               className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${
@@ -1091,10 +1076,10 @@ export function SiteNav({
                             </span>
                             <div className="flex flex-col text-left min-w-0">
                               <span className="text-xs font-semibold truncate leading-none">
-                                {THEME_LABELS[opt].split('·')[0].trim()}
+                                {THEME_NAMES[opt].name}
                               </span>
-                              <span className="text-[10px] text-dharma-muted truncate leading-tight mt-0.5">
-                                {THEME_LABELS[opt].split('·')[1]?.trim()}
+                              <span lang="hi" className="text-[10px] text-dharma-muted truncate leading-tight mt-0.5">
+                                {THEME_NAMES[opt].hi}
                               </span>
                             </div>
                           </button>

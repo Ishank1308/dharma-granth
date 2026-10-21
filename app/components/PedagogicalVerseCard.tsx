@@ -249,7 +249,7 @@ export function PedagogicalVerseCard({
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-600/30 bg-amber-500/15 px-3 py-1 text-xs font-bold text-amber-900 dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-200">
               <Sparkles className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-              <span>{data.scriptureTitleSanskrit} २.४७</span>
+              <span>{data.scriptureTitleSanskrit} 2.47</span>
             </span>
             <span className="text-xs text-dharma-muted">
               {data.scriptureTitle} {data.chapterId}.{data.verseId} · {data.meter}
@@ -593,7 +593,7 @@ export function PedagogicalVerseCard({
                 </div>
               </div>
 
-              {/* 4. Key Words (४ मुख्य शब्द) */}
+              {/* 4. Key Words (4 मुख्य शब्द) */}
               <div className="border-t border-dharma-border pt-4">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-dharma-muted mb-3">
                   🔑 4 Crucial Words (मुख्य शब्द)
