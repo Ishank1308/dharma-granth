@@ -42,6 +42,10 @@
 /icons/*
   ! Cache-Control
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+# Homepage tour video and poster: unhashed names, so a week, then revalidate.
+/media/*
+  ! Cache-Control
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
 # Notes on the policy:
 # - `! Cache-Control` removes the HTML rule's value so asset rules do not merge with it.
