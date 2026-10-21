@@ -8,7 +8,6 @@ import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
 import { MoodCompass } from '@/app/components/MoodCompass';
 import { getMoodCompass } from '@/lib/mood-compass';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
-import { HomeTourVideo } from '@/app/components/HomeTourVideo';
 import { Experience3DSection } from '@/app/components/Experience3DSection';
 import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
 import { SadhanaPreviewSection } from '@/app/components/SadhanaPreviewSection';
@@ -60,8 +59,6 @@ export default function HomePage() {
         {/* 3. Make the scripture library the first clear browse destination */}
         <FeaturedScripturesSection />
 
-        {/* 3b. A 15-second video tour of the page, loaded only on play */}
-        <HomeTourVideo />
         {/* 4. A short daily reading, followed by alternative discovery paths */}
         <VerseOfTheDayCompact />
 
