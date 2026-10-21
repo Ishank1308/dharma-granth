@@ -8,6 +8,8 @@
  * is assumed about editions, translators or reviewers.
  */
 
+import { AI_COMMENTARY_LABEL } from '@/lib/ai-labels';
+
 export interface ReaderVerseText {
   number: number | string;
   sanskrit?: string;
@@ -31,12 +33,14 @@ export interface ReaderProvenance {
   /** Hindi / English text is machine-translated (flagged in the data). */
   hindiIsAi: boolean;
   englishIsAi: boolean;
-  /** The explanation, reflection and research layers are AI-drafted (reviewed). */
+  /** The explanation, reflection and research layers are AI-drafted and editor-approved (lib/ai-labels). */
   commentaryIsAi: boolean;
   /** ISO date the text or its commentary last changed in the repository. */
   lastUpdated?: string;
   /** Who translated the Hindi and English layers, as recorded for the text. */
   translator?: string;
+  /** Variant-reading note recorded for this text; absent when none is recorded. */
+  variantNote?: string;
   /** The Sanskrit edition or archive, as recorded for the text. */
   edition?: string;
   /** Review of the translation: 'Not yet reviewed' or 'Reviewed <date>'. */
@@ -87,7 +91,7 @@ export function buildCopyText(
  */
 export function buildDownloadMarkdown(ref: ReaderRef, verse: ReaderVerseText, p: ReaderProvenance): string {
   const section = (title: string, body?: string) => (body && clean(body) ? `## ${title}\n\n${clean(body)}\n` : '');
-  const aiNote = p.commentaryIsAi ? '\n_AI-drafted and editor-reviewed; not part of the scripture._' : '';
+  const aiNote = p.commentaryIsAi ? `\n_${AI_COMMENTARY_LABEL.detail} Not part of the scripture._` : '';
   const lines = [
     `# ${verseReference(ref, verse)}`,
     `${ref.scriptureTitle}${ref.scriptureTitleSanskrit ? ` (${ref.scriptureTitleSanskrit})` : ''} · ${ref.chapterTitle}\n`,

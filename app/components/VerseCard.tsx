@@ -41,6 +41,7 @@ import { showSabdaPeek } from '@/lib/prana-capsule-store';
 import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';
 import { VerseTreeStructure, type VerseTreeBranch } from '@/app/components/reader/VerseTreeStructure';
 import type { VerseInsight } from '@/lib/verse-insights';
+import { AI_COMMENTARY_LABEL } from '@/lib/ai-labels';
 
 export interface VerseCardData {
   number: number | string;
@@ -56,7 +57,7 @@ export interface VerseCardData {
 
 /** Commentary resolved by the parent (Hindi commentary file first, then verse fields). */
 export interface VerseMeaning {
-  /** AI-drafted and reviewer-approved (not hand-written); shown with a label. */
+  /** AI-drafted and editor-approved (not hand-written); labelled per lib/ai-labels. */
   isAi?: boolean;
   explanation?: string;
   explanationIsHi: boolean;
@@ -198,6 +199,9 @@ function VerseMedallion({ label }: { label: string }) {
   );
 }
 
+const aidToggle =
+  'inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-amber-700/20 px-3 py-1 text-[11px] font-semibold text-dharma-muted transition hover:border-saffron-400 hover:text-dharma-text aria-expanded:border-saffron-500 aria-expanded:text-dharma-text';
+
 const iconButton =
   'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card/80 text-dharma-muted backdrop-blur transition hover:border-saffron-300 hover:text-saffron-700';
 
@@ -316,6 +320,9 @@ export function VerseCard({
   // IAST stays folded under the shloka until the reader asks for it.
   const [showIast, setShowIast] = useState(false);
   const iastId = useId();
+  // Word by word is a reading aid for the shloka, not part of the व्याख्या: folded by default.
+  const [showPadas, setShowPadas] = useState(false);
+  const padasId = useId();
 
   // Cursor spotlight: CSS variables only, no React re-render per move.
   const onPointerMove = (e: PointerEvent<HTMLElement>) => {
@@ -467,16 +474,16 @@ export function VerseCard({
       ),
     });
   }
-  if (wordByWordBlock || showExplanation) {
+  if (showExplanation) {
     treeBranches.push({
       id: 'vyakhya',
       labelHi: 'व्याख्या',
-      labelEn: 'Padaccheda & Commentary',
+      labelEn: 'Commentary',
       icon: Sparkles,
-      hint: wordByWordBlock ? 'पदच्छेद, शब्दार्थ और परंपरागत व्याख्या' : 'परंपरागत व्याख्या',
+      hint: 'परंपरागत व्याख्या',
+      defaultOpen: true,
       content: (
         <div className="space-y-4">
-          {wordByWordBlock}
           {showExplanation && (
             <div className="rounded-2xl border border-amber-200/70 bg-amber-50/40 p-4.5 dark:border-amber-900/40 dark:bg-amber-950/20 shadow-2xs">
               <div className="mb-2.5 flex items-center justify-between gap-2">
@@ -487,10 +494,10 @@ export function VerseCard({
                 {meaning.isAi && (
                   <p
                     className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300"
-                    title="AI द्वारा तैयार और संपादक द्वारा समीक्षित"
+                    title={`${AI_COMMENTARY_LABEL.detailHi} ${AI_COMMENTARY_LABEL.detail}`}
                   >
                     <Sparkles className="h-3 w-3" aria-hidden="true" />
-                    AI व्याख्या · समीक्षित
+                    {AI_COMMENTARY_LABEL.hi}
                   </p>
                 )}
               </div>
@@ -520,6 +527,7 @@ export function VerseCard({
       labelEn: 'Science & Modern Application',
       icon: Atom,
       hint: 'मनोविज्ञान, शोध और दैनिक जीवन में प्रयोग',
+      defaultOpen: true,
       content: (
         <div className="space-y-4">
           {showScience && (
@@ -878,27 +886,44 @@ export function VerseCard({
                 ॥ {toDevanagari(verseLabel)} ॥
               </motion.span>
             </p>
-            {v.transliteration && layers.translit && (
+            {((v.transliteration && layers.translit) || (wordByWordBlock && !chantingMode)) && (
               <div className="mt-3 flex flex-col items-center">
-                <button
-                  type="button"
-                  onClick={() => setShowIast((s) => !s)}
-                  aria-expanded={showIast}
-                  aria-controls={iastId}
-                  className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-amber-700/20 px-3 py-1 text-[11px] font-semibold text-dharma-muted transition hover:border-saffron-400 hover:text-dharma-text"
-                >
-                  <Languages className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span>IAST</span>
-                  <span lang="hi" className="opacity-80">लिप्यन्तरण</span>
-                </button>
-                {showIast && (
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                  {v.transliteration && layers.translit && (
+                    <button
+                      type="button"
+                      onClick={() => setShowIast((s) => !s)}
+                      aria-expanded={showIast}
+                      aria-controls={iastId}
+                      className={aidToggle}
+                    >
+                      <Languages className="h-3.5 w-3.5" aria-hidden="true" />
+                      <span>IAST</span>
+                      <span lang="hi" className="opacity-80">लिप्यन्तरण</span>
+                    </button>
+                  )}
+                  {wordByWordBlock && !chantingMode && (
+                    <button
+                      type="button"
+                      onClick={() => setShowPadas((s) => !s)}
+                      aria-expanded={showPadas}
+                      aria-controls={padasId}
+                      className={aidToggle}
+                    >
+                      <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
+                      <span lang="hi">पदच्छेद</span>
+                      <span className="opacity-80">Word by word</span>
+                    </button>
+                  )}
+                </div>
+                {showIast && v.transliteration && (
                   <p
                     id={iastId}
                     lang="sa-Latn"
                     className="mx-auto mt-3 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-3 text-sm italic leading-relaxed text-dharma-muted md:text-[15px]"
                   >
                     {/* The ॥ N ॥ above already closes the verse; drop the source's trailing "||". */}
-                    {v.transliteration.replace(/[\s|।॥0-9.]+$/, '')}
+                    {v.transliteration.replace(/[s|।॥0-9.]+$/, '')}
                   </p>
                 )}
               </div>
@@ -906,6 +931,12 @@ export function VerseCard({
           </div>
         )}
 
+        {/* ── Word by word (पदच्छेद), shown only when the reader opens it ── */}
+        {showPadas && wordByWordBlock && !chantingMode && (
+          <div id={padasId} className="mt-4">
+            {wordByWordBlock}
+          </div>
+        )}
 
         {/* ── The reader's own note ─────────────────────────── */}
         {!chantingMode && (editingNote || note) && (
@@ -988,7 +1019,7 @@ export function VerseCard({
                 {insight.situations.map((s) => (
                   <Link
                     key={s.slug}
-                    href={`/wisdom-for-life/${s.slug}/`}
+                    href={s.href}
                     className="inline-flex items-center gap-1 rounded-full border border-indigo-200/80 bg-indigo-50/70 px-2.5 py-0.5 text-[11px] font-semibold text-indigo-800 transition hover:border-indigo-400 hover:bg-indigo-100 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-200 dark:hover:bg-indigo-500/20"
                   >
                     <span lang="en">{s.en}</span>

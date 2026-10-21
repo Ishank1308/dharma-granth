@@ -15,11 +15,15 @@
 
 import { MODERN_SCENARIOS } from '@/data/modern-scenarios';
 import { getAllWisdomTopics } from '@/data/wisdom-for-life';
+import { libraryLocation } from '@/lib/wisdom-links';
+import { coveredVerses } from '@/lib/wisdom-verse-topics';
 
 export interface VerseSituation {
   slug: string;
   en: string;
   hi: string;
+  /** The topic page, scrolled to this verse. */
+  href: string;
 }
 
 export interface VerseInsight {
@@ -50,12 +54,18 @@ function buildIndex(): Map<string, VerseInsight> {
 
   for (const topic of getAllWisdomTopics()) {
     for (const ref of topic.verses) {
-      // Library numbering, which is what the reader's chapter/verse ids use.
-      const chapter = ref.libraryRef?.chapter ?? ref.chapterNumber;
-      const verse = ref.libraryRef?.verse ?? ref.verseNumber;
-      const e = entry(key(ref.scriptureId, chapter, verse));
-      if (!e.situations.some((s) => s.slug === topic.slug)) {
-        e.situations.push({ slug: topic.slug, en: topic.titleEn, hi: topic.titleHi });
+      // Library numbering (what the reader's ids use); a cited range covers each verse in it.
+      const { chapter } = libraryLocation(ref);
+      for (const verse of coveredVerses(ref)) {
+        const e = entry(key(ref.scriptureId, chapter, verse));
+        if (!e.situations.some((s) => s.slug === topic.slug)) {
+          e.situations.push({
+            slug: topic.slug,
+            en: topic.titleEn,
+            hi: topic.titleHi,
+            href: `/wisdom-for-life/${topic.slug}/#verse-${ref.id}`,
+          });
+        }
       }
     }
   }
