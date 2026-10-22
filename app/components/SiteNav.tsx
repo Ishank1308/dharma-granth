@@ -561,11 +561,11 @@ export function SiteNav({
         aria-label="Primary navigation"
       >
         <div className="mx-auto max-w-7xl px-3 sm:px-6 2xl:max-w-[1760px]">
-          <div className="flex h-14 sm:h-16 lg:h-[72px] items-center justify-between gap-2 sm:gap-4 lg:gap-1 xl:gap-4">
+          <div className="flex h-14 sm:h-16 lg:h-[72px] items-center justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
             {/* Logo */}
             <Link
               href="/"
-              className="group flex min-h-[44px] min-w-[44px] shrink-0 items-center gap-2.5 rounded-xl pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500/40"
+              className="group flex min-h-[44px] min-w-[44px] shrink-0 items-center gap-1.5 rounded-xl pr-0 sm:gap-2.5 sm:pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500/40"
               aria-label="Dharma Granth Home"
             >
               <motion.span
@@ -584,7 +584,7 @@ export function SiteNav({
                 />
               </motion.span>
               <div className="flex flex-col">
-                <span className="font-serif text-base sm:text-xl font-bold tracking-tight text-dharma-text transition group-hover:text-saffron-700">
+                <span className="whitespace-nowrap font-serif text-sm min-[400px]:text-base sm:text-xl font-bold tracking-tight text-dharma-text transition group-hover:text-saffron-700">
                   Dharma Granth
                 </span>
                 <span className="hidden font-devanagari text-[10px] text-dharma-muted -mt-0.5 sm:block">
@@ -697,7 +697,7 @@ export function SiteNav({
             </div>
 
             {/* Header Right Cluster */}
-            <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+            <div className="flex shrink-0 items-center gap-1 sm:gap-2">
               {/* Desktop Live Status Indicator */}
               <div
                 className="hidden items-center gap-2 pr-1 text-xs text-dharma-muted min-[2200px]:flex"
@@ -762,7 +762,7 @@ export function SiteNav({
               </button>
 
               {/* 1.5. Mobile Sacred Soundscape Button */}
-              <SoundscapeNavButton className="lg:hidden h-11 w-11 min-h-[44px] min-w-[44px]" />
+              <SoundscapeNavButton className="max-[359px]:hidden lg:hidden h-11 w-11 min-h-[44px] min-w-[44px]" />
 
               {/* 2. Theme Button */}
               <button
