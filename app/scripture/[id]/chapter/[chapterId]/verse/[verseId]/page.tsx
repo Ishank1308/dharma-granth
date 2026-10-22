@@ -431,6 +431,7 @@ export default function VersePage({ params }: PageProps) {
           englishIsAi: verse.translationSource === 'ai',
           commentaryIsAi: Boolean(comment?.ai),
           explanationIsAi: Boolean(comment?.ai || comment?.explanationAi),
+          researchIsAi: Boolean(comment?.ai || comment?.scienceAi),
           lastUpdated: modified,
           translator: sourceMeta.primaryTranslator,
           edition: `${sourceMeta.sanskritEdition}. ${sourceMeta.publisherArchive}`,

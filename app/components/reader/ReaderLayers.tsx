@@ -663,7 +663,7 @@ export function ReaderLayers({
                   </Layer>
                 )}
                 {!isQuick && !settings.liteMode && verse.research && (
-                  <Layer id="layer-research" kind="research" title="Comparative Research Note" titleHi="शोध टिप्पणी" badge={aiCommentary} collapsible={perspective !== 'researcher'}>
+                  <Layer id="layer-research" kind="research" title="Comparative Research Note" titleHi="शोध टिप्पणी" badge={p.researchIsAi ? <AiBadge title={AI_COMMENTARY_LABEL.detail}>{AI_COMMENTARY_LABEL.en}</AiBadge> : aiCommentary} collapsible={perspective !== 'researcher'}>
                     <p
                       lang={/[ऀ-ॿ]/.test(verse.research) ? 'hi' : 'en'}
                       className={`whitespace-pre-line text-dharma-text ${tSize} ${/[ऀ-ॿ]/.test(verse.research) ? devLeading : latinLeading} ${/[ऀ-ॿ]/.test(verse.research) ? 'font-devanagari' : 'font-serif'}`}

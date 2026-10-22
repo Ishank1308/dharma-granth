@@ -73,6 +73,14 @@ Every व्याख्या has three movements, in one flowing piece of abou
 
 The site labels these entries as AI-drafted (on the व्याख्या only).
 
+## Research notes (शोध व आधुनिक संदर्भ)
+
+Rewritten research notes go in `data/ai-commentary/<scripture>-research.json` as `{ "2:13": { "status": "approved", "science": "…" } }`; `npm run publish:commentary` applies them and the site labels that note as AI-drafted. Same register as the व्याख्या, about 60–100 words, and:
+
+- An honest, well-established parallel only, framed as a resonance, never as proof of the verse. Say when evidence is mostly correlational or still debated.
+- No English words, no researcher names, studies, dates or figures.
+- No quantum mysticism or other pseudo-science. When a verse has no honest parallel, set `"science": ""`: that withdraws the stored note.
+
 ## Two approved examples
 
 ### 2.47 · कर्मण्येवाधिकारस्ते मा फलेषु कदाचन

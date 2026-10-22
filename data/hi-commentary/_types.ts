@@ -13,6 +13,11 @@ export interface HiCommentaryEntry {
    */
   explanationAi?: true;
   /**
+   * Only the research note (शोध व आधुनिक संदर्भ) is an approved AI rewrite
+   * (data/ai-commentary/<id>-research.json); the site labels that note alone.
+   */
+  scienceAi?: true;
+  /**
    * Set on entries from the editorial pilot (data/pilot/records). The site labels these as drafts that still
    * need a person to review them.
    */

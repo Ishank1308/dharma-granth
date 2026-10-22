@@ -157,6 +157,28 @@ async function main(): Promise<void> {
       }
     }
 
+    // Approved rewrites of research notes (शोध व आधुनिक संदर्भ). An empty note withdraws the stored one;
+    // it is published as "" so the shard's own note does not show through.
+    const researchPath = path.resolve("data/ai-commentary", `${name}-research.json`);
+    if (fs.existsSync(researchPath)) {
+      const research = JSON.parse(fs.readFileSync(researchPath, "utf8")) as Record<string, { science: string; status: string }>;
+      let rewritten = 0;
+      let withdrawn = 0;
+      for (const [key, r] of Object.entries(research)) {
+        if (r.status !== "approved") continue;
+        const science = r.science.trim();
+        if (science) {
+          curated[key] = { ...curated[key], science, scienceAi: true };
+          rewritten++;
+        } else {
+          const { scienceAi: _label, ...rest } = curated[key] ?? {};
+          curated[key] = { ...rest, science: "" };
+          withdrawn++;
+        }
+      }
+      console.log(`${name}: ${rewritten} research notes rewritten, ${withdrawn} withdrawn`);
+    }
+
     // Pilot records replace any stored entry for their verse (the old text is kept in the source data).
     for (const p of PILOT.filter((x) => x.scriptureId === name)) {
       curated[p.commentaryKey] = commentaryEntry(p.record) as HiCommentaryFragment[string];

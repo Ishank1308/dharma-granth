@@ -1448,6 +1448,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                       commentary,
                       science,
                       scienceIsHi,
+                      scienceIsAi: Boolean(comment?.ai || comment?.scienceAi),
                       lesson,
                       lessonIsHi,
                     }}

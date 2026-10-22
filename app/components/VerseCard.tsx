@@ -87,6 +87,8 @@ export interface VerseMeaning {
   commentary?: string;
   science?: string;
   scienceIsHi: boolean;
+  /** The research note alone is an approved AI rewrite. */
+  scienceIsAi?: boolean;
   lesson?: string;
   lessonIsHi: boolean;
   /** Set for editorial-pilot entries: an AI-assisted draft that no person has reviewed yet. */
@@ -1245,7 +1247,15 @@ export function VerseCard({
                               <DraftBadge lang="hi" />
                             </span>
                           ) : (
-                            <ContentLabelBadge kind="research" />
+                            <span className="flex flex-wrap items-center gap-1.5">
+                              <ContentLabelBadge kind="research" />
+                              {meaning.scienceIsAi && (
+                                <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300" title={`${AI_COMMENTARY_LABEL.detailHi} ${AI_COMMENTARY_LABEL.detail}`}>
+                                  <Sparkles className="h-3 w-3" aria-hidden="true" />
+                                  {AI_COMMENTARY_LABEL.hi}
+                                </span>
+                              )}
+                            </span>
                           )}
                         </div>
                         <p

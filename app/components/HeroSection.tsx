@@ -180,7 +180,7 @@ export function HeroSection() {
       ref={heroRef}
       onPointerMove={handlePointerMove}
       aria-labelledby="home-hero-heading"
-      className="relative overflow-hidden bg-[linear-gradient(145deg,var(--dharma-hero-start,#451a03),var(--dharma-hero-mid,#7c2d12),var(--dharma-hero-end,#c2410c))] text-white transition-colors duration-300"
+      className="relative w-screen max-w-[100vw] overflow-hidden bg-[linear-gradient(145deg,var(--dharma-hero-start,#451a03),var(--dharma-hero-mid,#7c2d12),var(--dharma-hero-end,#c2410c))] text-white transition-colors duration-300 sm:w-full sm:max-w-none"
       style={
         {
           '--hero-light-x': '50%',

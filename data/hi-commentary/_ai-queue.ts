@@ -77,6 +77,7 @@ export function aiQueueScriptureIds(): string[] {
   if (!fs.existsSync(AI_QUEUE_DIR)) return [];
   return fs
     .readdirSync(AI_QUEUE_DIR)
-    .filter((f) => f.endsWith(".json"))
+    // <id>-research.json holds rewritten research notes, not a queue.
+    .filter((f) => f.endsWith(".json") && !f.endsWith("-research.json"))
     .map((f) => path.basename(f, ".json"));
 }
