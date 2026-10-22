@@ -44,7 +44,7 @@ export const MOODS: MoodConfig[] = [
     subheadEn: 'When mental currents run too fast and the nervous system needs grounding.',
     subheadHi: 'जब विचारों की आंधी चित्त को स्थिर न होने दे।',
     readingPath: {
-      title: 'शांत मन और तनाव मुक्ति (Stress & Worry Guide)',
+      title: 'शान्त मन और उद्वेग से मुक्ति (Stress & Worry Guide)',
       href: '/wisdom-for-life/stress-and-worry',
       description: 'Understanding the witness consciousness behind mental racing.',
     },
@@ -133,7 +133,7 @@ export const MOODS: MoodConfig[] = [
         href: '/scripture/bhagavadgita/chapter/3/verse/35',
         sanskrit: 'श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात् । स्वधर्मे निधनं श्रेयः परधर्मो भयावहः ॥',
         coreShiftEn: 'Better your own authentic path done imperfectly than living an imitated life flawlessly.',
-        coreShiftHi: 'दूसरों की नकल करने से कहीं बेहतर है अपनी प्रामाणिक प्रकृति के अनुसार जीना।',
+        coreShiftHi: 'दूसरों का अनुकरण करने से कहीं श्रेष्ठ है अपनी प्रामाणिक प्रकृति के अनुसार जीना।',
       },
       {
         ref: 'Taittiriya 1.11.1',
@@ -196,7 +196,7 @@ export const MOODS: MoodConfig[] = [
     id: 'beginner',
     emoji: '🌱',
     labelEn: 'Curious Beginner',
-    labelHi: 'अध्यात्म की सरल शुरुआत',
+    labelHi: 'अध्यात्म का सरल आरम्भ',
     subheadEn: 'When you want wisdom without dogmatism, superstition, or complexity.',
     subheadHi: 'बिना किसी आडंबर के वेदों व गीता के मूल सत्य की खोज।',
     readingPath: {

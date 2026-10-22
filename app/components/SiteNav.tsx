@@ -87,12 +87,12 @@ const desktopDiscoveryItems = [
   { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra' },
   { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask' },
   { label: 'श्लोक संबंध जाल', description: 'Verse Relationship Network — गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network' },
-  { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — 12 क्रमिक साधना पथ', href: '/journeys' },
+  { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — 12 क्रमिक साधना पथ', href: '/learn/journeys/' },
   { label: 'स्वाध्याय मार्ग', description: 'Guided Reading Paths — विषयवार अध्ययन', href: '/learn/paths' },
   { label: 'पठन योजनाएँ', description: 'Reading Plans — 18 दिवसीय गीता आदि', href: '/learn/plans' },
   { label: 'जिज्ञासा समाधान', description: 'Scripture FAQs — श्रुति-स्मृति व नीति', href: '/learn/faq' },
   { label: 'स्रोत पारदर्शिता', description: 'Source Library — मूल पांडुलिपियाँ व संस्करण', href: '/sources' },
-  { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — उद्वेग, भय, क्रोध व धर्मसंकट का समाधान', href: '/guidance' },
+  { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — उद्वेग, भय, क्रोध व धर्मसंकट का समाधान', href: '/wisdom-for-life/' },
   { label: 'दैनिक श्लोक', description: 'Daily Verse — आज का श्लोक WhatsApp पर भेजें', href: '/daily-verse' },
   { label: 'पंचांग', description: 'दैनिक वैदिक काल व ऋतु', href: '/panchang' },
   { label: 'अवधारणाएँ', description: 'मुख्य दार्शनिक विचार', href: '/concepts' },
@@ -106,13 +106,13 @@ const desktopDiscoveryItems = [
 ];
 
 const desktopPersonalItems = [
-  { label: 'मेरा डैशबोर्ड', href: '/dashboard' },
-  { label: 'यात्रा आरम्भ करें', href: '/start' },
-  { label: 'पठन यात्राएँ', href: '/journeys' },
+  { label: 'मेरा डैशबोर्ड', href: '/practice/dashboard/' },
+  { label: 'यात्रा आरम्भ करें', href: '/learn/start/' },
+  { label: 'पठन यात्राएँ', href: '/learn/journeys/' },
   { label: 'स्वाध्याय योजनाएँ', href: '/learn/plans' },
   { label: 'कथा-दर्शन', href: '/story' },
-  { label: 'अध्ययन-पटल', href: '/desk' },
-  { label: 'बुकमार्क व नोट्स', href: '/bookmarks' },
+  { label: 'अध्ययन-पटल', href: '/practice/desk/' },
+  { label: 'बुकमार्क व नोट्स', href: '/practice/bookmarks/' },
   { label: 'संग्रह', href: '/collections' },
   { label: 'अध्ययन पथ', href: '/learn/pathways' },
   { label: 'ऐच्छिक सहयोग', href: '/contribute' },
@@ -527,7 +527,7 @@ export function SiteNav({
       label: 'सहेजे गए श्लोक',
       labelEn: 'Saved verses',
       description: 'निजी संग्रह व पसंदीदा श्लोक',
-      href: '/bookmarks',
+      href: '/practice/bookmarks/',
       icon: Bookmark,
       badge: bookmarkCount > 0 ? `${bookmarkCount}` : undefined,
       badgeType: 'count',
@@ -537,7 +537,7 @@ export function SiteNav({
       label: 'अध्ययन इतिहास',
       labelEn: 'Reading history',
       description: 'पठन प्रगति व अभ्यास डैशबोर्ड',
-      href: '/dashboard',
+      href: '/practice/dashboard/',
       icon: Clock,
       badge: activeStreak > 0 ? `🔥 ${activeStreak} दिन` : undefined,
       badgeType: 'streak',
@@ -1220,16 +1220,16 @@ export function SiteNav({
 
           {/* 5. Saved Verses */}
           <Link
-            href="/bookmarks"
+            href="/practice/bookmarks/"
             onClick={() => triggerTactileFeedback('light', 'softTap')}
-            aria-current={isActive('/bookmarks') ? 'page' : undefined}
+            aria-current={isActive('/practice/bookmarks/') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
-              isActive('/bookmarks')
+              isActive('/practice/bookmarks/')
                 ? 'text-saffron-700 dark:text-saffron-400 font-bold'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            {isActive('/bookmarks') && (
+            {isActive('/practice/bookmarks/') && (
               <motion.span
                 layoutId="mobile-bottom-active-indicator"
                 className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500"

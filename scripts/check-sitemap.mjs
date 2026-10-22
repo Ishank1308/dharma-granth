@@ -136,7 +136,7 @@ for (const [label, loc] of [
   ['chapter page', `${ORIGIN}/scripture/bhagavadgita/chapter/2/`],
   ['verse page', `${ORIGIN}/scripture/bhagavadgita/chapter/2/verse/47/`],
   ['sources page', `${ORIGIN}/sources/`],
-  ['topics index', `${ORIGIN}/topics/`],
+  ['topics hub', `${ORIGIN}/wisdom-for-life/`],
   ['privacy page', `${ORIGIN}/privacy/`],
   ['terms page', `${ORIGIN}/terms/`],
   ['contact page', `${ORIGIN}/contact/`],

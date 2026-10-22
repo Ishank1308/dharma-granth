@@ -42,7 +42,7 @@ export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; l
   const [copied, setCopied] = useState(false);
 
   const shareText = encodeURIComponent(
-    `🕉️ *${journey.title} (${journey.titleHi})*\n${journey.objective}\n\n📖 Read with me on Dharma Granth:\nhttps://dharmagranth.in/journeys/${journey.id}/`
+    `🕉️ *${journey.title} (${journey.titleHi})*\n${journey.objective}\n\n📖 Read with me on Dharma Granth:\nhttps://dharmagranth.in/learn/journeys/${journey.id}/`
   );
 
   return (
@@ -50,7 +50,7 @@ export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; l
       {/* ─── TOP BREADCRUMB & SHARE ────────────────────────────────────────── */}
       <div className="flex items-center justify-between border-b border-dharma-border/60 pb-4">
         <Link
-          href="/journeys"
+          href="/learn/journeys/"
           className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-dharma-muted hover:text-saffron-800 dark:hover:text-saffron-300 transition"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -174,7 +174,7 @@ export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; l
           </p>
           <div className="pt-2 flex flex-wrap items-center gap-3">
             <Link
-              href="/journeys"
+              href="/learn/journeys/"
               className="inline-flex items-center gap-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-4 py-2 text-xs font-bold text-white transition shadow-xs"
             >
               <span>Explore Next Journey</span>

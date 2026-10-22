@@ -141,9 +141,9 @@ test('Story Deck traps keyboard focus, closes with Escape, and restores focus', 
     .first()
     .getByRole('button', { name: 'और विकल्प · More actions' });
   await trigger.click();
-  await page.getByRole('menuitem', { name: /६०-सेकंड सार/ }).click();
+  await page.getByRole('menuitem', { name: /60-सेकंड सार/ }).click();
 
-  const dialog = page.getByRole('dialog', { name: /६०-सेकंड सार/ });
+  const dialog = page.getByRole('dialog', { name: /60-सेकंड सार/ });
   const close = dialog.getByRole('button', { name: 'कथा डेक बंद करें' });
   await expect(dialog).toBeVisible();
   await expect(close).toBeFocused();

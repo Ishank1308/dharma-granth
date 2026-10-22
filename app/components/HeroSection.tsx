@@ -46,7 +46,7 @@ const GEN_Z_PATHWAYS: GenZPathway[] = [
   {
     id: 'stressed',
     labelEn: 'I feel stressed',
-    labelHi: 'तनाव व अशांति',
+    labelHi: 'उद्वेग व अशान्ति',
     sanskrit: 'शमः',
     href: '/wisdom-for-life/stress-and-worry/',
     icon: Wind,
@@ -225,7 +225,7 @@ export function HeroSection() {
             id="home-hero-heading"
             className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-md"
           >
-            Dharma Granth
+            <span lang="en">Dharma Granth</span>{' '}
             <span lang="sa" className="mt-2 block font-devanagari text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-amber-100 bg-clip-text text-transparent">
               धर्म ग्रंथ
             </span>
@@ -267,7 +267,7 @@ export function HeroSection() {
               type="submit"
               aria-label="Search"
               onClick={() => triggerTactileFeedback('light', 'softTap')}
-              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-gradient-to-r from-saffron-700 to-amber-700 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:from-saffron-800 hover:to-amber-800 active:scale-95 sm:px-6"
+              className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-saffron-700 to-amber-700 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:from-saffron-800 hover:to-amber-800 active:scale-95 sm:px-6"
             >
               <span className="hidden sm:inline">Search</span>
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -278,7 +278,7 @@ export function HeroSection() {
         {/* Quick Search Chips */}
         <FadeUp delay={0.24}>
         <div className="mx-auto mt-3 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-xs">
-          <span className="text-amber-200/75 text-[11px] font-medium mr-1">Quick searches:</span>
+          <span className="text-amber-100 text-xs font-medium mr-1">Quick searches:</span>
           {QUICK_SEARCHES.map((q) => (
             <button
               key={q}
@@ -287,7 +287,7 @@ export function HeroSection() {
                 triggerTactileFeedback('light', 'softTap');
                 openGlobalSearch(q);
               }}
-              className="inline-flex min-h-[38px] items-center rounded-full border border-white/20 bg-black/20 px-3.5 py-1 text-xs font-medium text-amber-100 transition hover:border-amber-300 hover:bg-white/15"
+              className="inline-flex min-h-11 items-center rounded-full border border-white/20 bg-black/20 px-3.5 py-1 text-xs font-medium text-amber-100 transition hover:border-amber-300 hover:bg-white/15"
             >
               {q}
             </button>
@@ -324,7 +324,7 @@ export function HeroSection() {
               triggerTactileFeedback('light', 'softTap');
               setCopilotOpen(true);
             }}
-            className="inline-flex min-h-[40px] items-center gap-1.5 underline decoration-amber-300/40 underline-offset-4 hover:decoration-amber-200 hover:text-white transition"
+            className="inline-flex min-h-11 items-center gap-1.5 underline decoration-amber-300/40 underline-offset-4 hover:decoration-amber-200 hover:text-white transition"
           >
             <Sparkles className="h-4 w-4 text-amber-300" aria-hidden="true" />
             <span>Not sure where to begin? Ask the Dharma Guide</span>

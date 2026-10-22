@@ -189,7 +189,7 @@ export function DashboardClient({ titles }: { titles: Record<string, string> }) 
             </div>
 
             {/* Bookmarks */}
-            <Link href="/bookmarks" className="rounded-2xl bg-gradient-to-br from-rose-50 to-pink-50 border border-rose-200 p-5 shadow-sm hover:shadow-md transition group">
+            <Link href="/practice/bookmarks/" className="rounded-2xl bg-gradient-to-br from-rose-50 to-pink-50 border border-rose-200 p-5 shadow-sm hover:shadow-md transition group">
               <div className="flex items-center gap-2 mb-2">
                 <Bookmark className="w-5 h-5 text-rose-600" />
                 <span className="text-xs font-bold uppercase tracking-wider text-rose-700">Bookmarks</span>

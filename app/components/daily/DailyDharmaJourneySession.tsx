@@ -369,7 +369,7 @@ export function DailyDharmaJourneySession({
 
         <div className="flex items-center gap-2 self-start md:self-center">
           <Link
-            href="/dashboard"
+            href="/practice/dashboard/"
             className="focus-ring inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-dharma-border bg-dharma-bg hover:border-saffron-400 text-xs font-semibold text-dharma-muted hover:text-dharma-text transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />

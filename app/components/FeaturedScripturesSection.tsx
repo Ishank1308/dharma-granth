@@ -60,7 +60,7 @@ export function FeaturedScripturesSection() {
 
           <Link
             href="/scriptures/?explained=1"
-            className="inline-flex w-fit items-center gap-2 rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-xs font-bold text-dharma-text transition hover:border-saffron-300 hover:text-saffron-700 shadow-sm"
+            className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-xs font-bold text-dharma-text transition hover:border-saffron-300 hover:text-saffron-700 shadow-sm"
           >
             <span>View Full Library</span>
             <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

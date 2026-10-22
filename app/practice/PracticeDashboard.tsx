@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { retryImport } from '@/lib/retry-import';
-import { Lock, Settings2, Trash2, ShieldCheck, Heart, Sparkles } from 'lucide-react';
+import Link from 'next/link';
+import { Lock, Settings2, Trash2, ShieldCheck, Heart, Sparkles, Bookmark, NotebookPen, LayoutDashboard, BarChart3, HardDriveDownload } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { FadeUp } from '@/app/components/motion/primitives';
 const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((module) => module.DailyVerse)));
@@ -60,6 +61,14 @@ const ALL_ON: Record<ToolId, boolean> = {
   routine: true,
   history: true,
 };
+
+const MY_SPACE = [
+  { href: '/practice/bookmarks/', hi: 'सुरक्षित श्लोक', en: 'Saved verses', Icon: Bookmark },
+  { href: '/practice/desk/', hi: 'अध्ययन-पटल', en: 'Study desk', Icon: LayoutDashboard },
+  { href: '/practice/journal/', hi: 'स्वाध्याय डायरी', en: 'Journal', Icon: NotebookPen },
+  { href: '/practice/dashboard/', hi: 'पठन प्रगति', en: 'Reading progress', Icon: BarChart3 },
+  { href: '/practice/saved/', hi: 'ऑफ़लाइन ग्रंथ', en: 'Offline texts', Icon: HardDriveDownload },
+];
 
 export function PracticeDashboard() {
   const [enabled, setEnabled] = useLocalStorage<Record<ToolId, boolean>>(
@@ -138,6 +147,23 @@ export function PracticeDashboard() {
       </section>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-8">
+        {/* My space: everything personal lives under /practice/ (saved verses, desk, journal, progress, offline). */}
+        <nav aria-label="मेरा स्थान · My space" className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+          {MY_SPACE.map(({ href, hi, en, Icon }) => (
+            <Link
+              key={href}
+              href={href}
+              className="flex min-h-[56px] items-center gap-2.5 rounded-xl border border-dharma-border bg-dharma-card px-3 py-2 shadow-sm transition hover:border-saffron-400"
+            >
+              <Icon className="h-4 w-4 shrink-0 text-saffron-600" aria-hidden="true" />
+              <span className="min-w-0 leading-tight">
+                <span lang="hi" className="block font-devanagari text-sm font-semibold text-dharma-text">{hi}</span>{' '}
+                <span lang="en" className="block text-[11px] text-dharma-muted">{en}</span>
+              </span>
+            </Link>
+          ))}
+        </nav>
+
         {/* Privacy, PIN Lock & Backup Notification Banner */}
         <PrivacyLockBanner />
 

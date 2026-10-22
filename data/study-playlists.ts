@@ -73,7 +73,7 @@ export const STUDY_PLAYLISTS: StudyPlaylist[] = [
     noteHi: 'यह सूची आपके सहेजे श्लोक हैं।',
     noteEn: 'This list is the verses you save.',
     links: [
-      { titleHi: 'सहेजे पृष्ठ', titleEn: 'Saved pages', href: '/bookmarks' },
+      { titleHi: 'सहेजे पृष्ठ', titleEn: 'Saved pages', href: '/practice/bookmarks/' },
     ],
   },
   {

@@ -70,7 +70,7 @@ export function RecommendationCards() {
               id: `journey:${j.id}:${next.id}`,
               basis: `Your progress in “${j.title}” on this device.`,
               title: `${j.title}: reading ${done.length + 1} of ${j.lessons.length}`,
-              href: `/journeys/${j.id}#${next.id}`,
+              href: `/learn/journeys/${j.id}#${next.id}`,
               reason: `You have completed ${done.length} of ${j.lessons.length} readings.`,
             });
           }

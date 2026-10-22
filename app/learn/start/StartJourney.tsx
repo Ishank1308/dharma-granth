@@ -97,7 +97,7 @@ const DISCOVERY_QUESTIONS: QuestionDef[] = [
   {
     key: 'format',
     en: '5. What format do you prefer?',
-    hi: '5. आपको किस रूप में अध्ययन पसंद है?',
+    hi: '5. आपको किस रूप में अध्ययन प्रिय है?',
     options: [
       { value: 'reading', en: 'Reading text with simple explanations', hi: 'पढ़ना (सरल भावार्थ सहित)' },
       { value: 'audio', en: 'Listening to chanted pronunciation', hi: 'सुनना (मंत्र उच्चारण सहित)' },
@@ -313,7 +313,7 @@ export function StartJourney() {
           <div className="pt-4 border-t border-dharma-border flex flex-wrap items-center justify-between gap-3 text-xs text-dharma-muted">
             <div className="flex flex-wrap items-center gap-3">
               <Link
-                href="/journeys"
+                href="/learn/journeys/"
                 className="hover:text-dharma-text underline focus-ring"
               >
                 Explore All Guided Paths

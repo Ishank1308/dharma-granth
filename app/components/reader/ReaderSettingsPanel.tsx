@@ -3,7 +3,8 @@
 import { useId, type ReactNode } from 'react';
 import { RotateCcw, SlidersHorizontal } from 'lucide-react';
 import { THEME_NAMES, type Theme } from '@/app/components/ThemeProvider';
-import type { ContrastPref, LineSpacing, NumberFormatPref, ReaderLanguagePref, ReaderModeTier, ReaderSettings, ReadingWidth, SizeStep } from '@/lib/useReaderSettings';
+import type { ContrastPref, LineSpacing, NumberFormatPref, ReaderLanguagePref, ReaderSettings, ReadingWidth, SizeStep } from '@/lib/useReaderSettings';
+import { ReaderControlBar } from './ReaderControlBar';
 import { ReaderDialog } from './ReaderDialog';
 
 interface Choice<T extends string> {
@@ -80,13 +81,6 @@ function Toggle({
     </label>
   );
 }
-
-const MODES: Array<Choice<ReaderModeTier>> = [
-  { id: 'quick', label: 'Quick', hint: 'जिज्ञासु' },
-  { id: 'simple', label: 'Simple', hint: 'सरल' },
-  { id: 'deep', label: 'Deep', hint: 'गहन' },
-  { id: 'traditional', label: 'Traditional', hint: 'शास्त्रीय' },
-];
 
 const NUMBERS: Array<Choice<NumberFormatPref>> = [
   { id: 'indian', label: '1,23,456', hint: 'Indian grouping' },
@@ -183,15 +177,16 @@ export function ReaderSettingsPanel({
           </p>
         </div>
 
-        {/* Reader Mode: Quick / Simple / Deep */}
-        <Segmented
-          legend="Reading mode"
-          legendHi="पठन स्तर"
-          value={settings.readerMode}
-          options={MODES}
-          onChange={(v) => update('readerMode', v)}
-          columns="grid-cols-3"
-        />
+        {/* Reading level and perspective live here, not above the verse, so the page opens on scripture. */}
+        <fieldset>
+          <legend className="mb-2 text-sm font-semibold text-dharma-text">
+            Reading level
+            <span lang="hi" className="ml-2 font-devanagari text-[0.85rem] font-normal text-dharma-muted">
+              पठन स्तर व दृष्टि
+            </span>
+          </legend>
+          <ReaderControlBar settings={settings} onChange={update} />
+        </fieldset>
 
         <fieldset>
           <legend className="mb-2 text-sm font-semibold text-dharma-text">

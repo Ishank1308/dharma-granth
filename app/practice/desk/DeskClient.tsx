@@ -172,7 +172,16 @@ export function DeskClient() {
     flash(`${n} stored items deleted.`);
   };
 
-  if (!ready) return <main id="main" className="mx-auto max-w-3xl px-4 py-10"><p role="status" className="text-sm text-dharma-muted">Loading…</p></main>;
+  if (!ready) return (
+    <main id="main" className="mx-auto max-w-3xl space-y-5 px-4 py-10 sm:px-6">
+      <header>
+        <h1 className="font-serif text-3xl font-bold text-dharma-text">My Study Desk</h1>
+        <p lang="hi" className="font-devanagari text-lg text-dharma-muted">मेरा अध्ययन-पटल</p>
+        <p className="mt-2 text-sm text-dharma-muted">Your private reading notes, saved verses and study progress, stored only in this browser.</p>
+      </header>
+      <p role="status" className="text-sm text-dharma-muted">Loading your study desk…</p>
+    </main>
+  );
 
   const activeJourneys = READING_JOURNEYS.filter((j) => (journeyProgress[j.id] ?? []).length > 0);
 
@@ -273,12 +282,12 @@ export function DeskClient() {
 
           <Section id="journeys-h" title="Active journeys" titleHi="चालू यात्राएँ">
             {activeJourneys.length === 0 ? (
-              <p className="text-dharma-muted">None yet. <Link href="/journeys" className="underline underline-offset-2">Browse reading journeys</Link>.</p>
+              <p className="text-dharma-muted">None yet. <Link href="/learn/journeys/" className="underline underline-offset-2">Browse reading journeys</Link>.</p>
             ) : (
               <ul className="space-y-2">
                 {activeJourneys.map((j) => (
                   <li key={j.id} className="flex items-center gap-2 rounded-xl border border-dharma-border p-2">
-                    <Link href={`/journeys/${j.id}`} className="min-w-0 flex-1">
+                    <Link href={`/learn/journeys/${j.id}`} className="min-w-0 flex-1">
                       <span className="font-semibold text-dharma-text">{j.title}</span>
                       <span className="block text-dharma-muted">You have completed {(journeyProgress[j.id] ?? []).length} of {j.lessons.length} readings.</span>
                     </Link>
@@ -308,7 +317,7 @@ export function DeskClient() {
           </Section>
 
           <Section id="settings-h" title="Language and reader settings" titleHi="भाषा एवं सेटिंग">
-            <p className="text-dharma-muted">Reader settings (text size, language, depth, focus mode) are saved in this browser. Change them from the settings button on any verse, or <Link href="/start" className="underline underline-offset-2">redo Start My Journey</Link>.</p>
+            <p className="text-dharma-muted">Reader settings (text size, language, depth, focus mode) are saved in this browser. Change them from the settings button on any verse, or <Link href="/learn/start/" className="underline underline-offset-2">redo Start My Journey</Link>.</p>
             <BackupRestore />
           </Section>
 

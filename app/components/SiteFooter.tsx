@@ -106,7 +106,7 @@ export function SiteFooter() {
               <Link href="/festivals" className="transition hover:text-saffron-700">
                 उत्सव ज्ञान केंद्र (Festivals)
               </Link>
-              <Link href="/guidance" className="transition hover:text-saffron-700 font-medium text-saffron-700 dark:text-saffron-300">
+              <Link href="/wisdom-for-life/" className="transition hover:text-saffron-700 font-medium text-saffron-700 dark:text-saffron-300">
                 शास्त्रीय मार्गदर्शन (Life Guidance)
               </Link>
               <Link href="/wisdom-for-life" className="transition hover:text-saffron-700">
@@ -170,7 +170,7 @@ export function SiteFooter() {
             <Link href="/practice" className="transition hover:text-dharma-text">
               Private Sadhana
             </Link>
-            <Link href="/dashboard" className="transition hover:text-dharma-text">
+            <Link href="/practice/dashboard/" className="transition hover:text-dharma-text">
               Personal Study
             </Link>
             <Link

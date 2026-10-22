@@ -324,35 +324,40 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(chapterJsonLd, breadcrumbJsonLd)) }}
       />
-      <ChapterHero className="bg-gradient-to-br from-saffron-900 via-saffron-700 to-orange-600 py-8 text-white sm:py-10">
+      {/* Slim on phones so the first verse sits close to the top: title, verse count, Listen and one
+          Share chip. The summary, "Begin reading", Print and WhatsApp chips show from sm up; the summary
+          is also in "About this chapter" below. */}
+      <ChapterHero className="bg-gradient-to-br from-saffron-900 via-saffron-700 to-orange-600 py-4 text-white sm:py-10">
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
-          <Link href={`/scripture/${meta.id}`} className="inline-flex min-h-[44px] items-center gap-2 text-white/70 hover:text-white text-sm transition mb-2">
+          <Link href={`/scripture/${meta.id}`} className="inline-flex min-h-[44px] items-center gap-2 text-white/70 hover:text-white text-sm transition sm:mb-2">
             <ArrowLeft className="w-4 h-4" />
             <span>{meta.title}</span>
-            {meta.titleIast && <span className="opacity-75 italic font-serif">· {meta.titleIast}</span>}
+            {meta.titleIast && <span className="hidden opacity-75 italic font-serif sm:inline">· {meta.titleIast}</span>}
           </Link>
-          <div className="flex items-start gap-5 mb-4">
-            <span className="flex-shrink-0 w-16 h-16 rounded-2xl bg-white/15 backdrop-blur text-white flex items-center justify-center text-2xl font-bold ring-1 ring-white/20 shadow-xl">
+          <div className="mb-2 flex items-start gap-3 sm:mb-4 sm:gap-5">
+            <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-white/15 text-lg font-bold text-white shadow-xl ring-1 ring-white/20 backdrop-blur sm:h-16 sm:w-16 sm:rounded-2xl sm:text-2xl">
               {chapter.id}
             </span>
             <div className="flex-1 min-w-0">
               <div className="text-xs uppercase text-saffron-200/90 mb-1">अध्याय {chapter.id} / {totalChapterCount}</div>
-              <h1 className="text-3xl md:text-4xl font-serif font-bold mb-1">{chapter.title}</h1>
-              <p lang="sa" className="text-xl font-devanagari opacity-90">{chapter.titleSanskrit}</p>
+              <h1 className="text-2xl font-serif font-bold mb-1 sm:text-3xl md:text-4xl">{chapter.title}</h1>
+              <p lang="sa" className="text-lg font-devanagari opacity-90 sm:text-xl">{chapter.titleSanskrit}</p>
             </div>
           </div>
           {chapter.summary ? (
-            <p className="line-clamp-2 max-w-3xl text-base leading-relaxed opacity-80">{chapter.summary}</p>
+            <div className="hidden sm:block">
+              <p className="line-clamp-2 max-w-3xl text-base leading-relaxed opacity-80">{chapter.summary}</p>
+            </div>
           ) : null}
           {chapter.verseCount > 0 && (
             <a
               href={firstVerseAnchor}
-              className="mt-5 inline-flex min-h-[48px] items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-bold text-saffron-900 shadow-sm transition hover:bg-amber-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-saffron-800"
+              className="mt-5 hidden min-h-[48px] items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-bold text-saffron-900 shadow-sm transition hover:bg-amber-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-saffron-800 sm:inline-flex"
             >
               Begin reading <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
           )}
-          <div className="mt-5 flex flex-wrap items-center gap-3">
+          <div className="mt-2 flex flex-wrap items-center gap-2 sm:mt-5 sm:gap-3">
             {chapter.verseCount > 0 ? (
               <>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur text-xs font-medium">
@@ -373,7 +378,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
                   firstVerseId={part ? part.first : 1}
                   totalVerses={chapter.verseCount}
                 />
-                <PrintChapterButton className={shareChip} />
+                <PrintChapterButton className={`${shareChip} hidden sm:inline-flex`} />
               </>
             ) : (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur text-xs font-medium">
@@ -381,7 +386,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
                 श्लोक पाठ अभी प्रकाशित नहीं है
               </span>
             )}
-            <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label={`Share ${shareHeading} on WhatsApp`} className={shareChip}>
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label={`Share ${shareHeading} on WhatsApp`} className={`${shareChip} hidden sm:inline-flex`}>
               <MessageCircle className="w-3.5 h-3.5" aria-hidden="true" />
               <span>WhatsApp</span>
             </a>

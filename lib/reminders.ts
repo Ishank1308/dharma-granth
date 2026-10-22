@@ -34,8 +34,8 @@ export interface ReminderOptions {
 
 export const REMINDER_COPY: Record<ReminderType, { path: string; en: { title: string; label: string }; hi: { title: string; label: string } }> = {
   'daily-verse': { path: '/daily', en: { title: 'Dharma Granth: daily verse', label: 'Daily verse' }, hi: { title: 'धर्म ग्रंथ: दैनिक श्लोक', label: 'दैनिक श्लोक' } },
-  journey: { path: '/journeys', en: { title: 'Dharma Granth: your reading journey', label: 'Active reading journey' }, hi: { title: 'धर्म ग्रंथ: आपकी पठन यात्रा', label: 'चालू पठन यात्रा' } },
-  'saved-review': { path: '/desk', en: { title: 'Dharma Granth: saved verses', label: 'Saved verse review' }, hi: { title: 'धर्म ग्रंथ: सहेजे श्लोक', label: 'सहेजे श्लोकों की समीक्षा' } },
+  journey: { path: '/learn/journeys/', en: { title: 'Dharma Granth: your reading journey', label: 'Active reading journey' }, hi: { title: 'धर्म ग्रंथ: आपकी पठन यात्रा', label: 'चालू पठन यात्रा' } },
+  'saved-review': { path: '/practice/desk/', en: { title: 'Dharma Granth: saved verses', label: 'Saved verse review' }, hi: { title: 'धर्म ग्रंथ: सहेजे श्लोक', label: 'सहेजे श्लोकों की समीक्षा' } },
   sadhana: { path: '/practice', en: { title: 'Dharma Granth: Sadhana', label: 'Sadhana routine' }, hi: { title: 'धर्म ग्रंथ: साधना', label: 'साधना क्रम' } },
   festival: { path: '/festivals', en: { title: 'Dharma Granth: festival information', label: 'Festival information' }, hi: { title: 'धर्म ग्रंथ: उत्सव जानकारी', label: 'उत्सव जानकारी' } },
 };

@@ -160,7 +160,7 @@ export function PackClient() {
           <span role="status" className="text-sm text-dharma-muted">{busy ? 'Preparing…' : loaded.length === 0 ? 'Add at least one verse to see a preview.' : `${loaded.length} verse${loaded.length === 1 ? '' : 's'} ready.`}</span>
         </div>
         {error && <p role="alert" className="mt-2 text-sm text-rose-700 dark:text-rose-300">{error}</p>}
-        <p className="mt-2 text-sm text-dharma-muted"><Link href="/desk" className="underline underline-offset-2">Back to my study desk</Link></p>
+        <p className="mt-2 text-sm text-dharma-muted"><Link href="/practice/desk/" className="underline underline-offset-2">Back to my study desk</Link></p>
       </div>
 
       {loaded.length > 0 && (

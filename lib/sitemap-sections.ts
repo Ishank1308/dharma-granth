@@ -60,8 +60,7 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/learn/paths', pageDate('/learn/paths', 'data/guided-reading-paths.ts')),
     entry('/learn/plans', pageDate('/learn/plans', 'data/reading-plans.ts')),
     entry('/wisdom-for-life', pageDate('/wisdom-for-life', 'data/wisdom-for-life.ts')),
-    entry('/topics', pageDate('/topics', 'data/wisdom-for-life.ts')),
-    entry('/guidance', pageDate('/guidance', 'data/wisdom-for-life.ts')),
+    // /topics/ and /guidance/ 301 to /wisdom-for-life/ (public/_redirects).
     entry('/concepts', pageDate('/concepts')),
     entry('/characters', pageDate('/characters', 'data/characters.ts')),
     entry('/locations', pageDate('/locations')),
@@ -71,11 +70,11 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/rituals', pageDate('/rituals')),
     entry('/dictionary', pageDate('/dictionary', 'data/dictionary.ts')),
     entry('/practice', pageDate('/practice')),
-    entry('/start', pageDate('/start')),
+    entry('/learn/start', pageDate('/learn/start')),
     entry('/privacy', pageDate('/privacy')),
     entry('/terms', pageDate('/terms')),
     entry('/contact', pageDate('/contact')),
-    entry('/journeys', pageDate('/journeys', 'data/reading-journeys.ts')),
+    entry('/learn/journeys', pageDate('/learn/journeys', 'data/reading-journeys.ts')),
     entry('/story', pageDate('/story')),
     entry('/collections', pageDate('/collections')),
     entry('/compare', pageDate('/compare', 'data/scripture-comparisons.ts')),
@@ -111,8 +110,8 @@ function pagesSection(): MetadataRoute.Sitemap {
   const courseDate = lastChanged('data/learning-paths.ts', 'app/learn/[courseId]/page.tsx');
   const courseRoutes = learningPaths.map((p) => entry(`/learn/${p.id}`, courseDate));
 
-  const journeyDate = lastChanged('data/reading-journeys.ts', 'app/journeys/[id]/page.tsx');
-  const journeyRoutes = READING_JOURNEYS.map((j) => entry(`/journeys/${j.id}`, journeyDate));
+  const journeyDate = lastChanged('data/reading-journeys.ts', 'app/learn/journeys/[id]/page.tsx');
+  const journeyRoutes = READING_JOURNEYS.map((j) => entry(`/learn/journeys/${j.id}`, journeyDate));
 
   const ashtavakraDate = lastChanged('app/ashtavakra/[chapter]/page.tsx');
   const ashtavakraRoutes = publishedChapterNumbers().map((n) => entry(`/ashtavakra/${n}`, ashtavakraDate));

@@ -49,14 +49,12 @@ import {
 import { ReaderDialog } from './ReaderDialog';
 import { ReaderSettingsPanel } from './ReaderSettingsPanel';
 import { ReaderLayers } from './ReaderLayers';
-import { ReaderControlBar } from './ReaderControlBar';
 import type { VerseInsight } from '@/lib/verse-insights';
 import { SacredShareModal, type SacredShareData } from '@/app/components/share/SacredShareModal';
 import { useSwipeGesture } from '@/lib/useSwipeGesture';
 import { MobileSwipeIndicator } from './MobileSwipeIndicator';
 import { MobileReadingProgress } from './MobileReadingProgress';
 import { MobileVerseCarousel } from './MobileVerseCarousel';
-import { MobileAudioPill } from './MobileAudioPill';
 import { setCurrentVerseContext, getSoundscapeState, stopSoundscape } from '@/lib/sacred-soundscape';
 import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
@@ -449,8 +447,9 @@ export function VerseReader(props: VerseReaderProps) {
             <button type="button" onClick={() => update('focusMode', !settings.focusMode)} aria-pressed={settings.focusMode} aria-label={settings.focusMode ? 'Exit focus mode' : 'Enter focus mode'} className={`${iconBtn} ${settings.focusMode ? '!border-saffron-600 !text-saffron-800 dark:!text-saffron-300' : ''}`}>
               <Focus className="h-4 w-4" aria-hidden="true" />
             </button>
-            <button type="button" onClick={() => setDialog('settings')} aria-haspopup="dialog" aria-label="Reader settings" className={iconBtn}>
-              <SlidersHorizontal className="h-4 w-4" aria-hidden="true" />
+            {/* The one "Aa" sheet: reading level, perspective, type, theme and layers. */}
+            <button type="button" onClick={() => setDialog('settings')} aria-haspopup="dialog" aria-label="Reader settings · पठन व्यवस्था" title="पठन व्यवस्था · Reader settings" className={iconBtn}>
+              <span aria-hidden="true" className="font-serif text-sm font-bold">Aa</span>
             </button>
           </div>
           <div className="h-0.5 bg-dharma-border/50 sm:hidden" aria-hidden="true">
@@ -505,7 +504,8 @@ export function VerseReader(props: VerseReaderProps) {
           </nav>
         </aside>
 
-        <main className={`min-w-0 flex-1 px-4 pb-32 pt-6 sm:pb-20 sm:pt-8 xl:px-0 ${WIDTH[settings.readingWidth]}`}>
+        {/* data-chapter-reading hides the global floating docks (globals.css), so nothing sits on the verse text. */}
+        <main data-chapter-reading className={`min-w-0 flex-1 px-4 pb-32 pt-6 sm:pb-20 sm:pt-8 xl:px-0 ${WIDTH[settings.readingWidth]}`}>
           {/* 2 · Verse navigation (desktop; phones get the sticky bar below) */}
           <nav aria-label="Verse navigation" className="mb-6 hidden items-center justify-between gap-3 sm:flex">
             {navLink(prev, 'prev', 'row')}
@@ -628,15 +628,7 @@ export function VerseReader(props: VerseReaderProps) {
             </button>
           </div>
 
-          {/* 3 · Reading controls: depth (readerMode) and perspective in one row */}
-          <ReaderControlBar
-            settings={settings}
-            onChange={(key, value) => {
-              triggerTactileFeedback('light', 'softTap');
-              update(key, value);
-              if (key === 'readerMode') track('mode_selected', { mode: value });
-            }}
-          />
+          {/* 3 · Reading level and perspective now live in the Aa sheet (ReaderSettingsPanel). */}
 
           {/* 4 · The layers */}
           <ReaderLayers
@@ -724,7 +716,18 @@ export function VerseReader(props: VerseReaderProps) {
         </div>
 
         {/* Dialogs */}
-        <ReaderSettingsPanel open={dialog === 'settings'} onClose={close} settings={settings} update={update} reset={reset} reducedMotion={reducedMotion} theme={theme} setTheme={setTheme} />
+        <ReaderSettingsPanel
+          open={dialog === 'settings'}
+          onClose={close}
+          settings={settings}
+          update={(key, value) => {
+            update(key, value);
+            if (key === 'readerMode') {
+              triggerTactileFeedback('light', 'softTap');
+              track('mode_selected', { mode: value });
+            }
+          }}
+          reset={reset} reducedMotion={reducedMotion} theme={theme} setTheme={setTheme} />
 
         <ReaderDialog open={dialog === 'chapters'} onClose={close} title="Chapters" titleHi="अध्याय" variant="modal">
           <ul className="space-y-1">
@@ -881,8 +884,7 @@ export function VerseReader(props: VerseReaderProps) {
           chapterTitle={`अध्याय ${chapterId}: ${chapterTitle}`}
           scriptureTitle={scriptureTitle}
         />
-
-        <MobileAudioPill />
+        {/* No floating Tanpura button here: on phones it sat over the verse text. Tanpura stays in focus mode. */}
       </div>
     </MotionConfig>
   );

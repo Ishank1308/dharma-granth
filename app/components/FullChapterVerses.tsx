@@ -14,6 +14,7 @@ import {
   Pause,
   Play,
   Target,
+  ChevronDown,
 } from 'lucide-react';
 import { updateReaderScrollProgress, triggerPranaToast } from '@/lib/prana-capsule-store';
 import type { ScriptureCategory } from '@/data/types';
@@ -143,6 +144,18 @@ type State =
   | { kind: 'empty' }
   | { kind: 'error'; message: string };
 
+/** Verses that hydrate as full cards straight away; later ones upgrade near the viewport. */
+const RICH_BATCH = 10;
+
+/** The set with these verse numbers added; the same set when nothing is new, so React skips the render. */
+function withRich(prev: Set<string>, numbers: Array<string | number>): Set<string> {
+  const missing = numbers.map(String).filter((n) => !prev.has(n));
+  if (missing.length === 0) return prev;
+  const next = new Set(prev);
+  missing.forEach((n) => next.add(n));
+  return next;
+}
+
 export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {} }: Props) {
   const isOnline = useConnectivity();
   const curatedVerseSet = useMemo(
@@ -170,6 +183,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     setHydrated(true);
     runStudyDataMigration().catch(() => {});
   }, []);
+  // Long chapters: the first RICH_BATCH verses hydrate as full cards; the rest stay as the plain
+  // VerseText the server rendered (same id and text) and upgrade as they near the viewport.
+  const [richVerses, setRichVerses] = useState<Set<string>>(() => new Set());
 
   const [fontSize, setFontSize] = useState<'normal' | 'large' | 'xl'>('normal');
   const [chantingMode, setChantingMode] = useState(false);
@@ -180,6 +196,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const [showEnglish, setShowEnglish] = useState(true);
   const [showCommentary, setShowCommentary] = useState(true);
   const [showLayersMenu, setShowLayersMenu] = useState(false);
+  // Phones show only title, count and parayana; the rest opens on tap so the first shloka stays near the top.
+  const [toolsOpen, setToolsOpen] = useState(false);
   const [filterQuery, setFilterQuery] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [bookmarkedMap, setBookmarkedMap] = useState<Record<string, boolean>>({});
@@ -497,6 +515,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     behavior: ScrollBehavior = 'smooth',
     preserveLayout = false
   ) => {
+    // The target becomes a full card; the plain verse it replaces has the same id, so the jump still lands.
+    setRichVerses((prev) => withRich(prev, [verseNum]));
     const el = document.getElementById(`verse-${verseNum}`);
     if (el) {
       const prefersReduced =
@@ -718,6 +738,28 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       );
     });
   }, [state, filterQuery, verseSearchKeys]);
+
+  // Upgrade plain verses to full cards as they come within ~1.5 screens, a few at a time.
+  useEffect(() => {
+    if (!hydrated) return;
+    const plain = document.querySelectorAll<HTMLElement>('[data-plain-verse]');
+    if (plain.length === 0) return;
+    const order = filteredVerses.map((v) => String(v.number));
+    const io = new IntersectionObserver(
+      (entries) => {
+        const near: string[] = [];
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          const at = order.indexOf((e.target as HTMLElement).dataset.plainVerse ?? '');
+          if (at !== -1) near.push(...order.slice(Math.max(0, at - 2), at + 4));
+        }
+        if (near.length > 0) setRichVerses((prev) => withRich(prev, near));
+      },
+      { rootMargin: '1200px 0px' },
+    );
+    plain.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [hydrated, filteredVerses, richVerses]);
 
   // Handle continuous recitation (अध्याय पारायण), media keys, and external triggers
   useEffect(() => {
@@ -1014,7 +1056,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     <>
       <section>
         {/* Reader Customization Toolbar */}
-        <div className="mb-6 rounded-2xl border border-dharma-border/80 bg-dharma-card p-4 shadow-sm">
+        <div className="mb-4 rounded-2xl border border-dharma-border/80 bg-dharma-card p-3 shadow-sm sm:mb-6 sm:p-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h3 className="text-lg font-serif font-bold text-dharma-text flex items-center gap-2">
@@ -1091,6 +1133,23 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 </button>
               )}
 
+              <button
+                type="button"
+                onClick={() => setToolsOpen((o) => !o)}
+                className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-3 py-1.5 text-xs font-semibold text-dharma-text sm:hidden"
+                aria-expanded={toolsOpen}
+                aria-controls="chapter-reader-tools"
+              >
+                <SlidersHorizontal className="h-3.5 w-3.5 text-saffron-600" />
+                <span>विकल्प</span>
+                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${toolsOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* On sm+ this wrapper dissolves (sm:contents) so the desktop row is unchanged. */}
+              <div
+                id="chapter-reader-tools"
+                className={`${toolsOpen ? 'flex' : 'hidden'} w-full flex-wrap items-center gap-2 sm:contents`}
+              >
               {/* Bilingual Cadence Mode Selector */}
               <div
                 className="inline-flex items-center rounded-xl border border-dharma-border bg-dharma-bg p-0.5 text-xs font-semibold text-dharma-text"
@@ -1327,11 +1386,12 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                   <span>संवाद स्वरूप</span>
                 </button>
               )}
+              </div>
             </div>
           </div>
 
           {/* Quick in-chapter search & verse jump */}
-          <div className="mt-3 pt-3 border-t border-dharma-border/60 flex flex-wrap items-center gap-3">
+          <div className={`mt-3 pt-3 border-t border-dharma-border/60 ${toolsOpen ? 'flex' : 'hidden'} flex-wrap items-center gap-3 sm:flex`}>
             <div className="relative flex-1 min-w-[200px]">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-dharma-muted" />
               <input
@@ -1413,6 +1473,13 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     chapterId={chapterId}
                     href={versePageHref(scriptureId, chapterId, v.number)}
                   />
+                );
+              }
+              if (index >= RICH_BATCH && !richVerses.has(String(v.number))) {
+                return (
+                  <div key={`${String(v.number)}-${index}`} data-plain-verse={String(v.number)}>
+                    <VerseText verse={v} chapterId={chapterId} href={versePageHref(scriptureId, chapterId, v.number)} />
+                  </div>
                 );
               }
               const verseKey = canonicalVerseId(chapterId, v.number);

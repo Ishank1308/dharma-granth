@@ -41,9 +41,9 @@ export function WisdomClient() {
     { label: 'Lacking Willpower', labelHi: 'आलस्य / संकल्प की कमी', topicId: 'discipline' },
     { label: 'Distracted & Scattered', labelHi: 'मन का भटकाव', topicId: 'concentration' },
     { label: 'Burdened by Leadership', labelHi: 'नेतृत्व का भार', topicId: 'leadership' },
-    { label: 'Family Friction', labelHi: 'पारिवारिक तनाव', topicId: 'family-responsibilities' },
-    { label: 'Strained Relationships', labelHi: 'सम्बन्धों में तनाव / संवेदनशीलता', topicId: 'relationships' },
-    { label: 'Spiritually Exhausted', labelHi: 'अहंकार की थकान', topicId: 'devotion' },
+    { label: 'Family Friction', labelHi: 'पारिवारिक कलह', topicId: 'family-responsibilities' },
+    { label: 'Strained Relationships', labelHi: 'सम्बन्धों में दूरी / संवेदनशीलता', topicId: 'relationships' },
+    { label: 'Spiritually Exhausted', labelHi: 'अहंकार की श्रान्ति', topicId: 'devotion' },
     { label: 'Who Am I Really?', labelHi: 'सच्चा आत्म-स्वरूप', topicId: 'self-knowledge' },
     { label: 'What is My Purpose?', labelHi: 'जीवन का परम लक्ष्य', topicId: 'meaning-of-life' },
   ];

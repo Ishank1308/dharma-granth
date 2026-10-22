@@ -13,18 +13,20 @@ const PAGES = [
   '/scripture/bhagavadgita/',
   '/scripture/bhagavadgita/chapter/2/',
   '/scripture/bhagavadgita/chapter/2/verse/47/',
-  '/dashboard/',
+  '/practice/dashboard/',
+  '/practice/desk/',
   '/practice/',
   '/concepts/',
   '/dictionary/',
-  '/wisdom-for-life/',
   '/characters/',
   '/festivals/',
-  '/curiosity/',
+  '/wisdom-for-life/',
   '/learn/',
+  '/learn/start/',
+  '/learn/journeys/',
   '/learn/pathways/',
   '/collections/',
-  '/bookmarks/',
+  '/practice/bookmarks/',
   '/timelines/',
   '/contribute/',
 ];
@@ -113,7 +115,7 @@ test('a11y: desktop discovery menu', async ({ page }) => {
 });
 
 /** WCAG 2.2 AA: touch targets on a phone-sized screen. */
-for (const path of ['/', '/scriptures/', '/scripture/bhagavadgita/', '/scripture/bhagavadgita/chapter/2/', '/dashboard/']) {
+for (const path of ['/', '/scriptures/', '/scripture/bhagavadgita/', '/scripture/bhagavadgita/chapter/2/', '/practice/dashboard/']) {
   test(`a11y [mobile target size]: ${path}`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.emulateMedia({ reducedMotion: 'reduce' });

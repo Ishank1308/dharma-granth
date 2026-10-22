@@ -3,17 +3,10 @@ import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { HeroSection } from '@/app/components/HeroSection';
 import { SplashScreen } from '@/app/components/SplashScreen';
 import { ContinueReading } from '@/app/components/ContinueReading';
-import { HomeDiscoveryBento } from '@/app/components/HomeDiscoveryBento';
 import { VerseOfTheDayCompact } from '@/app/components/VerseOfTheDayCompact';
-import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
-import { MoodCompass } from '@/app/components/MoodCompass';
-import { getMoodCompass } from '@/lib/mood-compass';
 import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
-import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
-import { LazySadhanaPreview } from '@/app/components/LazyHomeSections';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
 import { SiteFooter } from '@/app/components/SiteFooter';
-import { getTodayWisdom } from '@/data/daily-wisdom-engine';
 
 export const metadata: Metadata = {
   title: { absolute: 'Dharma Granth — Calm, Bilingual Digital Scripture Library' },
@@ -57,28 +50,16 @@ export default function HomePage() {
         {/* 2. Continue reading, or a beginner path when there is no history */}
         <ContinueReading />
 
-        {/* 3. Make the scripture library the first clear browse destination */}
-        <FeaturedScripturesSection />
-
-        {/* 4. A short daily reading, followed by alternative discovery paths */}
+        {/* 3. Today's verse, shown once */}
         <VerseOfTheDayCompact />
 
-        {/* 4b. Daily discovery, Panchang, local resume and a gentle reading rhythm */}
-        <HomeDiscoveryBento initialWisdom={getTodayWisdom()} />
+        {/* 4. The library */}
+        <FeaturedScripturesSection />
 
-        {/* 5. Mood compass: curated verses for how the reader feels right now */}
-        <MoodCompass moods={getMoodCompass()} />
-
-        {/* 6. Browse by scripture category */}
-        <CategoryExploreSection />
-
-        {/* 7. Browse by life situation */}
-        <LifeSituationsSection />
-
-        {/* 8. Practice tools preview */}
-        <LazySadhanaPreview />
-
-        {/* 9. Trust, sourcing and methodology */}
+        {/* 5. Trust, sourcing and methodology.
+            Cut from Home (audit 2026-10-22, P0): HomeDiscoveryBento repeated the daily verse and the resume card;
+            MoodCompass and LifeSituationsSection repeated the hero's "Where are you right now?" picker;
+            CategoryExploreSection was a second library; the Sadhana preview is reachable from the nav. */}
         <HomeTrustStrip />
       </main>
       <SiteFooter />

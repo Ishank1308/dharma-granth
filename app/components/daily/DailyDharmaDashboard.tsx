@@ -391,7 +391,7 @@ export function DailyDharmaDashboard() {
 
               <div className="mt-6">
                 <Link
-                  href={journeyProgress ? `/journeys/${journeyProgress.id}` : '/journeys'}
+                  href={journeyProgress ? `/learn/journeys/${journeyProgress.id}` : '/learn/journeys/'}
                   className="focus-ring w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-dharma-border bg-dharma-bg hover:border-saffron-400 text-xs font-semibold text-dharma-text transition-colors"
                 >
                   Continue Lesson
@@ -422,7 +422,7 @@ export function DailyDharmaDashboard() {
 
               <div className="mt-6">
                 <Link
-                  href="/desk"
+                  href="/practice/desk/"
                   className="focus-ring w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-dharma-border bg-dharma-bg hover:border-saffron-400 text-xs font-semibold text-dharma-text transition-colors"
                 >
                   Open Study Desk
@@ -562,7 +562,7 @@ export function DailyDharmaDashboard() {
             </Link>
 
             <Link
-              href="/start"
+              href="/learn/start/"
               className="sm:col-span-2 p-5 rounded-2xl border border-saffron-300 dark:border-saffron-900/60 bg-saffron-50/50 dark:bg-saffron-950/20 hover:border-saffron-500 hover:shadow-xs transition-all focus-ring group flex items-center justify-between"
             >
               <div>

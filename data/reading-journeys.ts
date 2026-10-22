@@ -107,7 +107,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Bhagavad Gita Foundations', href: '/journeys/bhagavad-gita-foundations' },
+      { label: 'Bhagavad Gita Foundations', href: '/learn/journeys/bhagavad-gita-foundations' },
       { label: 'Concept: Atman', href: '/concepts/atman' },
     ],
     sources: SOURCES,
@@ -166,7 +166,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Gita in 18 Lessons', href: '/journeys/gita-in-18-lessons' },
+      { label: 'Gita in 18 Lessons', href: '/learn/journeys/gita-in-18-lessons' },
       { label: 'Concept: Dharma', href: '/concepts/dharma' },
     ],
     sources: SOURCES,
@@ -338,7 +338,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Introduction to Bhakti', href: '/journeys/introduction-to-bhakti' },
+      { label: 'Introduction to Bhakti', href: '/learn/journeys/introduction-to-bhakti' },
       { label: 'Wisdom for Life: Devotion', href: '/wisdom-for-life/devotion' },
     ],
     sources: SOURCES,
@@ -391,7 +391,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Introduction to the Upanishads', href: '/journeys/introduction-to-the-upanishads' },
+      { label: 'Introduction to the Upanishads', href: '/learn/journeys/introduction-to-the-upanishads' },
       { label: 'Concept: Brahman', href: '/concepts/brahman' },
     ],
     sources: SOURCES,
@@ -445,7 +445,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Seven Days of Focus', href: '/journeys/seven-days-of-focus' },
+      { label: 'Seven Days of Focus', href: '/learn/journeys/seven-days-of-focus' },
       { label: 'Wisdom for Life: Meditation', href: '/wisdom-for-life/meditation' },
     ],
     sources: SOURCES,
@@ -499,7 +499,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Wisdom for Students', href: '/journeys/wisdom-for-students' },
+      { label: 'Wisdom for Students', href: '/learn/journeys/wisdom-for-students' },
       { label: 'Wisdom for Life: Concentration', href: '/wisdom-for-life/concentration' },
     ],
     sources: SOURCES,
@@ -553,7 +553,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
     ],
     related: [
       { label: 'Wisdom for Life: Leadership', href: '/wisdom-for-life/leadership' },
-      { label: 'Understanding Karma Yoga', href: '/journeys/understanding-karma-yoga' },
+      { label: 'Understanding Karma Yoga', href: '/learn/journeys/understanding-karma-yoga' },
     ],
     sources: SOURCES,
   },
@@ -606,7 +606,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Seven Days of Focus', href: '/journeys/seven-days-of-focus' },
+      { label: 'Seven Days of Focus', href: '/learn/journeys/seven-days-of-focus' },
       { label: 'Wisdom for Life: Fear and anxiety', href: '/wisdom-for-life/fear-and-anxiety' },
     ],
     sources: SOURCES,
@@ -659,7 +659,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Self Discovery', href: '/journeys/self-discovery' },
+      { label: 'Self Discovery', href: '/learn/journeys/self-discovery' },
       { label: 'Wisdom for Life: Purpose of life', href: '/wisdom-for-life/purpose-of-life' },
     ],
     sources: SOURCES,
@@ -712,8 +712,8 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Seven Days of Focus', href: '/journeys/seven-days-of-focus' },
-      { label: 'Meditation Journey', href: '/journeys/meditation-journey' },
+      { label: 'Seven Days of Focus', href: '/learn/journeys/seven-days-of-focus' },
+      { label: 'Meditation Journey', href: '/learn/journeys/meditation-journey' },
     ],
     sources: SOURCES,
   },
@@ -1174,7 +1174,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Gita in 18 Lessons', href: '/journeys/gita-in-18-lessons' },
+      { label: 'Gita in 18 Lessons', href: '/learn/journeys/gita-in-18-lessons' },
       { label: 'Bhagavad Gita learning path', href: '/learn/bhagavad-gita' },
     ],
     sources: SOURCES,

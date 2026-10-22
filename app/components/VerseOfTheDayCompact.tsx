@@ -172,7 +172,7 @@ export function VerseOfTheDayCompact() {
                       <button
                         type="button"
                         onClick={() => setLangTab('bilingual')}
-                        className={`px-2 py-0.5 rounded-md font-semibold transition ${
+                        className={`min-h-11 px-2.5 py-0.5 rounded-md font-semibold transition sm:min-h-0 ${
                           langTab === 'bilingual'
                             ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 shadow-xs'
                             : 'text-dharma-muted hover:text-dharma-text'
@@ -183,7 +183,7 @@ export function VerseOfTheDayCompact() {
                       <button
                         type="button"
                         onClick={() => setLangTab('hindi')}
-                        className={`px-2 py-0.5 rounded-md font-semibold transition ${
+                        className={`min-h-11 px-2.5 py-0.5 rounded-md font-semibold transition sm:min-h-0 ${
                           langTab === 'hindi'
                             ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 shadow-xs'
                             : 'text-dharma-muted hover:text-dharma-text'
@@ -194,7 +194,7 @@ export function VerseOfTheDayCompact() {
                       <button
                         type="button"
                         onClick={() => setLangTab('english')}
-                        className={`px-2 py-0.5 rounded-md font-semibold transition ${
+                        className={`min-h-11 px-2.5 py-0.5 rounded-md font-semibold transition sm:min-h-0 ${
                           langTab === 'english'
                             ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 shadow-xs'
                             : 'text-dharma-muted hover:text-dharma-text'
@@ -207,7 +207,7 @@ export function VerseOfTheDayCompact() {
                     <button
                       type="button"
                       onClick={handleCopy}
-                      className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-dharma-border bg-dharma-card text-dharma-muted transition hover:border-saffron-300 hover:text-dharma-text"
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-dharma-border bg-dharma-card text-dharma-muted sm:h-8 sm:w-8 transition hover:border-saffron-300 hover:text-dharma-text"
                       title="Copy verse citation"
                       aria-label="Copy verse citation"
                     >
@@ -277,7 +277,7 @@ export function VerseOfTheDayCompact() {
                   <Link
                     href={readHref(item.scriptureId, item.chapterId, item.verseId)}
                     onClick={() => triggerTactileFeedback('medium', 'softTap')}
-                    className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-saffron-600 to-amber-600 px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700 hover:shadow-lg active:scale-98"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-gradient-to-r from-saffron-600 to-amber-600 px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700 hover:shadow-lg active:scale-98"
                   >
                     <span>Read Full Explanation & Commentary</span>
                     <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />

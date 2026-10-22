@@ -508,9 +508,9 @@ export function VerseCard({
         />
       </div>
 
-      <div className="relative p-5 md:p-7">
+      <div className="relative p-4 sm:p-5 md:p-7">
         {/* ── Header ─────────────────────────────────────────── */}
-        <header className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-3">
+        <header className="mb-3 sm:mb-5 flex flex-wrap items-center gap-x-3 gap-y-3">
           {onOpenFocus ? (
             <button
               type="button"
@@ -763,35 +763,7 @@ export function VerseCard({
           </div>
         </header>
 
-        {versePageHref && (
-          <div className="mb-4 -mt-2 flex items-center justify-between">
-            <Link
-              href={versePageHref}
-              className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-saffron-200/80 bg-saffron-50/70 px-3 py-2 text-xs font-semibold text-saffron-800 transition hover:border-saffron-300 hover:bg-saffron-100 dark:border-saffron-900/60 dark:bg-saffron-950/40 dark:text-saffron-300 lg:min-h-0 lg:py-1"
-            >
-              <Compass className="h-3.5 w-3.5 text-saffron-600 dark:text-saffron-400" aria-hidden="true" />
-              <span>विस्तृत श्लोक विश्लेषण व संदर्भ</span>
-              <span aria-hidden="true">→</span>
-            </Link>
-          </div>
-        )}
-
-        {/* ── मर्म: the reviewed one-line core shift, unless the curated मर्म block below covers it ── */}
-        {insight?.marma && !chantingMode && !(literaryMeta.isCurated && depth !== 'read') && (
-          <figure className="mb-5 border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
-            <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
-              <span lang="hi">मर्म</span>
-              <span aria-hidden="true">·</span>
-              <span lang="en">The Core Shift</span>
-              <ContentLabelBadge kind="reflection" />
-            </figcaption>
-            <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text md:text-xl">
-              {insight.marma}
-            </blockquote>
-          </figure>
-        )}
-
-        {/* ── Sanskrit on a manuscript leaf ───────────────────── */}
+        {/* ── Sanskrit on a manuscript leaf: scripture first; मर्म and the verse-page link follow it ── */}
         {lines.length > 0 && (
           <div className={`verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8 transition-colors ${
             isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
@@ -877,6 +849,34 @@ export function VerseCard({
                 {v.transliteration.replace(/[\s|।॥0-9.]+$/, '')}
               </p>
             )}
+          </div>
+        )}
+
+        {/* ── मर्म: the reviewed one-line core shift, unless the curated मर्म block below covers it ── */}
+        {insight?.marma && !chantingMode && !(literaryMeta.isCurated && depth !== 'read') && (
+          <figure className="mt-5 border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
+            <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
+              <span lang="hi">मर्म</span>
+              <span aria-hidden="true">·</span>
+              <span lang="en">The Core Shift</span>
+              <ContentLabelBadge kind="reflection" />
+            </figcaption>
+            <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text md:text-xl">
+              {insight.marma}
+            </blockquote>
+          </figure>
+        )}
+
+        {versePageHref && (
+          <div className="mt-3 flex items-center justify-between">
+            <Link
+              href={versePageHref}
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-saffron-200/80 bg-saffron-50/70 px-3 py-2 text-xs font-semibold text-saffron-800 transition hover:border-saffron-300 hover:bg-saffron-100 dark:border-saffron-900/60 dark:bg-saffron-950/40 dark:text-saffron-300 lg:min-h-0 lg:py-1"
+            >
+              <Compass className="h-3.5 w-3.5 text-saffron-600 dark:text-saffron-400" aria-hidden="true" />
+              <span>विस्तृत श्लोक विश्लेषण व संदर्भ</span>
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
         )}
 

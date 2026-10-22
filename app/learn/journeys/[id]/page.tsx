@@ -23,7 +23,7 @@ function journeyDescription(objective: string, minutesPerLesson: number): string
 export function generateMetadata({ params }: PageProps): Metadata {
   const j = getJourney(params.id);
   return j
-    ? { title: `${j.title} · ${j.titleHi}`, description: journeyDescription(j.objective, j.minutesPerLesson), alternates: { canonical: `/journeys/${j.id}/` } }
+    ? { title: `${j.title} · ${j.titleHi}`, description: journeyDescription(j.objective, j.minutesPerLesson), alternates: { canonical: `/learn/journeys/${j.id}/` } }
     : { title: 'Journey not found' };
 }
 

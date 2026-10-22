@@ -9,25 +9,25 @@
 
 [[redirects]]
   from = "/start-here"
-  to = "/start/"
+  to = "/learn/start/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/start-here/"
-  to = "/start/"
+  to = "/learn/start/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/start"
-  to = "/start/"
+  to = "/learn/start/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/topics"
-  to = "/topics/"
+  to = "/wisdom-for-life/"
   status = 301
   force = true
 

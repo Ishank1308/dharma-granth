@@ -186,8 +186,38 @@ export default function LearnPage() {
               </div>
             </div>
 
-            {/* Quick Portals Strip */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {/* Quick Portals Strip: /learn/ is the one hub for starting points, journeys, paths and plans */}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <Link
+                href="/learn/start/"
+                className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
+              >
+                <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
+                  <Sparkle className="w-4 h-4" />
+                  <span>आरम्भ</span>
+                </div>
+                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                  Find Your Starting Point →
+                </h3>
+                <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
+                  Five short questions, a calm first step
+                </p>
+              </Link>
+              <Link
+                href="/learn/journeys/"
+                className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
+              >
+                <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
+                  <Flame className="w-4 h-4" />
+                  <span>स्वाध्याय यात्राएँ</span>
+                </div>
+                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                  Guided Journeys →
+                </h3>
+                <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
+                  Daily lessons with reflection and progress
+                </p>
+              </Link>
               <Link
                 href="/learn/paths"
                 className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"

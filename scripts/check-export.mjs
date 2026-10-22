@@ -35,9 +35,8 @@ const KEY_PAGES = [
   '/learn/',
   '/learn/pathways/',
   '/practice/',
-  '/start/',
-  '/start-here/',
-  '/topics/',
+  '/learn/start/',
+  '/learn/journeys/',
   '/privacy/',
   '/terms/',
   '/contact/',
@@ -51,9 +50,12 @@ const KEY_PAGES = [
   '/timelines/',
   '/scripture/bhagavadgita/chapter/2/verse/47/',
   // Personal pages: data is client-side, but the header must still export.
-  '/dashboard/',
+  '/practice/dashboard/',
+  '/practice/desk/',
+  '/practice/journal/',
+  '/practice/saved/',
   '/collections/',
-  '/bookmarks/',
+  '/practice/bookmarks/',
 ];
 const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
 const RAW_TEXT = new Set(['script', 'style']);
@@ -172,11 +174,12 @@ for (const route of KEY_PAGES) {
   const cloudflareRules = readFileSync(join(ROOT, 'public/_redirects'), 'utf8');
   const netlifyRules = readFileSync(join(ROOT, 'netlify.toml'), 'utf8');
   for (const [label, rules, pattern] of [
-    ['Cloudflare', cloudflareRules, /^\/start-here\s+\/start\//m],
+    ['Cloudflare', cloudflareRules, /^\/start-here\s+\/learn\/start\//m],
     ['Cloudflare', cloudflareRules, /^\/sadhana\/?\s+\/practice\//m],
-    ['Cloudflare', cloudflareRules, /^\/topics\s+\/topics\//m],
-    ['Netlify', netlifyRules, /from\s*=\s*"\/start-here"[\s\S]*?to\s*=\s*"\/start\/"/],
+    ['Cloudflare', cloudflareRules, /^\/topics\s+\/wisdom-for-life\//m],
+    ['Netlify', netlifyRules, /from\s*=\s*"\/start-here"[\s\S]*?to\s*=\s*"\/learn\/start\/"/],
     ['Netlify', netlifyRules, /from\s*=\s*"\/sadhana"[\s\S]*?to\s*=\s*"\/practice\/"/],
+    ['Netlify', netlifyRules, /from\s*=\s*"\/topics"[\s\S]*?to\s*=\s*"\/wisdom-for-life\/"/],
   ]) {
     if (!pattern.test(rules)) fail('routing', `${label} missing required route redirect: ${pattern}`);
   }
@@ -373,7 +376,7 @@ const HIDDEN_ELEMENT = /<([a-z][\w-]*)\b[^>]*\sstyle="[^"]*\bopacity:\s*0(?![.\d
     fail('hidden', `${hiddenPages} page(s) server-render content at opacity:0 until hydration:`);
     for (const [shape, page] of [...hiddenExamples].slice(0, 8)) fail('hidden', `  ${shape} (first on ${page})`);
   }
-  for (const path of ['/', '/scripture/bhagavadgita/chapter/2/', '/dashboard/']) {
+  for (const path of ['/', '/scripture/bhagavadgita/chapter/2/', '/practice/dashboard/']) {
     const html = pageHtml(path) ?? '';
     const files = new Set([...html.matchAll(/_next\/static\/[^"']+\.js/g)].map((m) => m[0]));
     // Drop `<script nomodule>` files: legacy-browser polyfills that modern browsers never fetch.

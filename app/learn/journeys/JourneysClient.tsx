@@ -171,7 +171,7 @@ export function JourneysClient() {
 
             <div className="self-start sm:self-center">
               <Link
-                href={`/journeys/${activeJourney.journey.id}/#${activeJourney.nextLesson.id}`}
+                href={`/learn/journeys/${activeJourney.journey.id}/#${activeJourney.nextLesson.id}`}
                 className="focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-2xl bg-saffron-600 hover:bg-saffron-700 px-5 py-3 text-sm font-bold text-white transition shadow-sm"
               >
                 <span>Continue Reading</span>
@@ -262,7 +262,7 @@ export function JourneysClient() {
                 {/* Card Title & Objective */}
                 <div>
                   <h2 className="font-serif text-lg sm:text-xl font-bold text-dharma-text leading-snug">
-                    <Link href={`/journeys/${j.id}`} className="hover:underline">
+                    <Link href={`/learn/journeys/${j.id}`} className="hover:underline">
                       {j.title}
                     </Link>
                   </h2>
@@ -314,7 +314,7 @@ export function JourneysClient() {
                 </div>
 
                 <Link
-                  href={`/journeys/${j.id}`}
+                  href={`/learn/journeys/${j.id}`}
                   className={`inline-flex items-center gap-1 rounded-xl px-3.5 py-1.5 text-xs font-bold transition shadow-2xs ${
                     isComplete
                       ? 'border border-emerald-600 text-emerald-800 dark:text-emerald-200 hover:bg-emerald-100/50'
@@ -353,7 +353,7 @@ export function JourneysClient() {
           </div>
 
           <Link
-            href={`/journeys/${recommendation.id}`}
+            href={`/learn/journeys/${recommendation.id}`}
             className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-5 py-2.5 text-xs sm:text-sm font-bold text-white transition shadow-xs self-start sm:self-center"
           >
             <span>Start This Journey</span>

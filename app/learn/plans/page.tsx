@@ -403,7 +403,7 @@ export default function ReadingPlansPage() {
           </Link>
 
           <Link
-            href="/bookmarks"
+            href="/practice/bookmarks/"
             className="group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-saffron-400 hover:shadow-sm transition"
           >
             <BookOpen className="h-5 w-5 text-saffron-700 dark:text-saffron-300" />

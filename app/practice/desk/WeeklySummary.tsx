@@ -30,7 +30,7 @@ export function WeeklySummary({ onChange }: { onChange?: () => void }) {
       for (const j of READING_JOURNEYS) {
         const done = progress[j.id] ?? [];
         const next = j.lessons.find((l) => !done.includes(l.id));
-        if (done.length > 0 && next) { setJourneyHref(`/journeys/${j.id}#${next.id}`); return; }
+        if (done.length > 0 && next) { setJourneyHref(`/learn/journeys/${j.id}#${next.id}`); return; }
       }
     } catch { /* no journey in progress */ }
     setJourneyHref(null);

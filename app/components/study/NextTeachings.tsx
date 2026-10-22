@@ -60,7 +60,7 @@ export function NextTeachings({ candidates, verseId }: { candidates: NextCandida
             id: `journey:${j.id}:${nextLesson.id}`,
             kind: 'journey',
             title: `${j.title}: reading ${done.length + 1} of ${j.lessons.length}`,
-            href: `/journeys/${j.id}#${nextLesson.id}`,
+            href: `/learn/journeys/${j.id}#${nextLesson.id}`,
             reason: `You have completed ${done.length} of ${j.lessons.length} readings.`,
             basis: `Your progress in “${j.title}” on this device.`,
           };

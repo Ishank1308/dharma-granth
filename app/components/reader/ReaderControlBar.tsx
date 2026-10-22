@@ -44,7 +44,7 @@ export function ReaderControlBar({
   return (
     <section
       aria-label="Reading controls · पठन नियंत्रण"
-      className="mb-6 rounded-2xl border border-dharma-border bg-dharma-card/70 p-2 shadow-sm"
+      className="rounded-2xl border border-dharma-border bg-dharma-card/70 p-2 shadow-sm"
     >
       <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
         <div role="group" aria-label="Reading depth · पठन गहराई" className="flex items-center gap-1">

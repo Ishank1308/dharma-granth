@@ -196,7 +196,7 @@ export function ContinueReading() {
             <div className="mt-5 flex flex-wrap gap-2">
               <Link
                 href={resumeHref(latest)}
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-5 py-2.5 text-sm font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-5 py-2.5 text-sm font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700"
               >
                 <BookOpen className="h-4 w-4" aria-hidden="true" />
                 {latest.verseId ? `श्लोक ${latest.verseId} से जारी रखें` : 'जारी रखें'}
@@ -204,7 +204,7 @@ export function ContinueReading() {
               {hasNext && (
                 <Link
                   href={chapterHref(latest, latest.chapterId + 1)}
-                  className="inline-flex items-center gap-2 rounded-full border border-dharma-border px-5 py-2.5 text-sm font-semibold text-dharma-text transition hover:border-saffron-300 hover:text-saffron-700"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-dharma-border px-5 py-2.5 text-sm font-semibold text-dharma-text transition hover:border-saffron-300 hover:text-saffron-700"
                 >
                   अगला अध्याय {latest.chapterId + 1}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />

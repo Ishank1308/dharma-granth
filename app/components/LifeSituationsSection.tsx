@@ -37,7 +37,7 @@ const situations: LifeSituation[] = [
     id: 'stress',
     topicHref: '/wisdom-for-life/stress-and-worry/',
     category: 'peace',
-    titleHi: 'तनाव व चिंता',
+    titleHi: 'उद्वेग व चिन्ता',
     titleEn: 'Stress and worry',
     sanskrit: 'शमः व समत्वम्',
     prompt: 'Release anxiety over outcomes you cannot control; center awareness on the present duty with an even mind.',

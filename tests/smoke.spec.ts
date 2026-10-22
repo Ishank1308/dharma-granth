@@ -36,12 +36,12 @@ const PAGES = [
   '/scripture/bhagavadgita/chapter/2/',
   '/scripture/bhagavadgita/chapter/2/verse/47/',
   '/scripture/mahabharata/chapter/12/part/2/',
-  '/curiosity/',
+  '/wisdom-for-life/',
   '/learn/',
   '/learn/pathways/',
   '/collections/',
   '/practice/',
-  '/dashboard/',
+  '/practice/dashboard/',
   '/contribute/',
 ];
 
@@ -100,26 +100,14 @@ test('concept graph offers an expandable relationship list on mobile', async ({ 
   await expect(page.getByText('Brahman', { exact: true }).first()).toBeVisible();
 });
 
-test('floating island clears the one-thumb reader controls on mobile', async ({ page }) => {
+test('floating island stays hidden beside one-thumb reader controls on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/scripture/bhagavadgita/chapter/2/');
   await page.waitForLoadState('networkidle');
   const island = page.locator('button[aria-label="Open Prāṇa Live Island"]');
   const nextVerse = page.locator('button[aria-label="अगला श्लोक (Next verse)"]');
-  await expect(island).toBeVisible();
+  await expect(island).toBeHidden();
   await expect(nextVerse).toBeVisible();
-  const islandBox = await island.boundingBox();
-  const nextVerseBox = await nextVerse.boundingBox();
-  expect(islandBox).not.toBeNull();
-  expect(nextVerseBox).not.toBeNull();
-  const overlaps = Boolean(
-    islandBox && nextVerseBox &&
-      islandBox.x < nextVerseBox.x + nextVerseBox.width &&
-      islandBox.x + islandBox.width > nextVerseBox.x &&
-      islandBox.y < nextVerseBox.y + nextVerseBox.height &&
-      islandBox.y + islandBox.height > nextVerseBox.y,
-  );
-  expect(overlaps).toBe(false);
 });
 
 test('service worker registers and serves an opened page offline', async ({ page, context }) => {
@@ -135,7 +123,7 @@ test('service worker registers and serves an opened page offline', async ({ page
 });
 
 test('dashboard backup exports bookmarks and restores them', async ({ page }) => {
-  await page.goto('/dashboard/');
+  await page.goto('/practice/dashboard/');
   await page.evaluate(() => localStorage.setItem('dharma.bookmarkedVerses', '["x"]'));
   const download = page.waitForEvent('download');
   await page.locator('section[aria-labelledby="backup-heading"]').getByRole('button', { name: /export/i }).click();

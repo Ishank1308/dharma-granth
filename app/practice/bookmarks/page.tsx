@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { readHref } from '@/lib/verse-paths';
+import { migrateLegacyBookmarks } from '@/lib/reader-actions';
 import { SavedScriptures } from '@/app/components/SavedScriptures';
 import {
   useStudyProgress,
@@ -101,6 +102,7 @@ export default function BookmarksAndAnnotationsPage() {
   useEffect(() => {
     function loadBookmarks() {
       try {
+        migrateLegacyBookmarks();
         const saved = localStorage.getItem('dharma.bookmarkedVerses');
         if (saved) {
           const parsed: unknown = JSON.parse(saved);

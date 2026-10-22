@@ -25,7 +25,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   }
   return {
     title: `शब्द-अन्वेषण: ${letter} · अष्टावक्र गीता`,
-    description: `अष्टावक्र गीता में ${letter} से शुरू होने वाले ${words.length} पद, हिंदी अर्थ और श्लोक-संदर्भ सहित${sample ? `: ${sample}` : ''}।`,
+    description: `अष्टावक्र गीता में ${letter} से आरम्भ होने वाले ${words.length} पद, हिंदी अर्थ और श्लोक-संदर्भ सहित${sample ? `: ${sample}` : ''}।`,
     alternates: { canonical: `/ashtavakra/words/${encodeURIComponent(letter)}/` },
   };
 }

@@ -35,7 +35,7 @@ const PROMPTS: { en: string; hi: string }[] = [
   { en: 'Whose wisdom guided me today?', hi: 'आज किसके ज्ञान ने मेरा मार्गदर्शन किया?' },
   { en: 'What did anger cost me this week?', hi: 'इस सप्ताह क्रोध ने मुझसे क्या छीना?' },
   { en: 'Where did I see the same Self in another?', hi: 'मैंने दूसरे में वही आत्मा कहाँ देखी?' },
-  { en: 'What small discipline improved my day?', hi: 'किस छोटे अनुशासन ने मेरा दिन बेहतर बनाया?' },
+  { en: 'What small discipline improved my day?', hi: 'किस छोटे अनुशासन ने मेरे दिन को उत्तम बनाया?' },
 ];
 
 const QUESTIONS: { key: keyof ReflectionFields; hi: string; en: string }[] = [

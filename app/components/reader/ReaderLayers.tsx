@@ -327,22 +327,7 @@ export function ReaderLayers({
         </div>
       )}
 
-      {/* मर्म: the reviewed one-line core shift, when this verse has one */}
-      {insight?.marma && !settings.liteMode && (
-        <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
-          <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
-            <span lang="hi">मर्म</span>
-            <span aria-hidden="true">·</span>
-            <span lang="en">The Core Shift</span>
-            <span className="normal-case tracking-normal text-dharma-muted">· Editorial, not scripture</span>
-          </figcaption>
-          <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text sm:text-xl">
-            {insight.marma}
-          </blockquote>
-        </figure>
-      )}
-
-      {/* 1 · Original Sanskrit */}
+      {/* 1 · Original Sanskrit: scripture comes first on the page; editorial lines follow it. */}
       <Layer id="layer-sanskrit" kind="source" title="Original Sanskrit" titleHi="मूल संस्कृत">
         {lines.length > 0 ? (
           <>
@@ -377,7 +362,7 @@ export function ReaderLayers({
                 >
                   <Languages className="h-3.5 w-3.5" aria-hidden="true" />
                   <span>IAST</span>
-                  <span lang="hi" className="font-devanagari opacity-80">लिप्यन्तरण</span>
+                  <span lang="hi" className="font-devanagari">लिप्यन्तरण</span>
                 </button>
               )}
               {hasPadas && (
@@ -390,7 +375,7 @@ export function ReaderLayers({
                 >
                   <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
                   <span lang="hi" className="font-devanagari">पदच्छेद</span>
-                  <span className="opacity-80">Word by word</span>
+                  <span>Word by word</span>
                 </button>
               )}
             </div>
@@ -408,6 +393,22 @@ export function ReaderLayers({
           </div>
         )}
       </Layer>
+
+      {/* मर्म: the reviewed one-line core shift, when this verse has one. It sits after the
+          Sanskrit so the reader meets scripture before any editorial line. */}
+      {insight?.marma && !settings.liteMode && (
+        <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
+          <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
+            <span lang="hi">मर्म</span>
+            <span aria-hidden="true">·</span>
+            <span lang="en">The Core Shift</span>
+            <span className="normal-case tracking-normal text-dharma-muted">· Editorial, not scripture</span>
+          </figcaption>
+          <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text sm:text-xl">
+            {insight.marma}
+          </blockquote>
+        </figure>
+      )}
 
       {/* Word by word: a reading aid for the shloka, kept apart from the व्याख्या and
           hidden by default. In the HTML either way, so crawlers and no-JS readers get it. */}

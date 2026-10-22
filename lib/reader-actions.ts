@@ -175,7 +175,53 @@ export interface SavedVerse {
 const sameVerse = (b: SavedVerse, ref: ReaderRef, verse: ReaderVerseText): boolean =>
   b.scriptureId === ref.scriptureId && b.chapterId === ref.chapterId && String(b.verseId) === String(verse.number);
 
+/** Keys older builds wrote verse bookmarks to (VerseBookmark, June 2026, and the first sync layer). */
+const LEGACY_BOOKMARK_KEYS = ['verse-bookmarks', 'dharma-bookmarks-v1'];
+
+/**
+ * One-time fold of legacy bookmark lists into BOOKMARKS_KEY, so a reader's
+ * older saves appear on /practice/bookmarks/. A legacy key is removed only
+ * after the merged list is written; unreadable entries are left in place.
+ */
+export function migrateLegacyBookmarks(): void {
+  try {
+    for (const key of LEGACY_BOOKMARK_KEYS) {
+      const raw = localStorage.getItem(key);
+      if (raw === null) continue;
+      const legacy: unknown = JSON.parse(raw);
+      if (!Array.isArray(legacy)) continue;
+      const current: SavedVerse[] = JSON.parse(localStorage.getItem(BOOKMARKS_KEY) ?? '[]');
+      const seen = new Set(current.map((b) => `${b.scriptureId}:${b.chapterId ?? ''}:${b.verseId}`));
+      for (const item of legacy as Array<Record<string, unknown>>) {
+        const scriptureId = typeof item.scriptureId === 'string' ? item.scriptureId : '';
+        const verseId = (item.verseNumber ?? item.verse ?? item.verseId) as number | string | undefined;
+        if (!scriptureId || verseId === undefined || verseId === '') continue;
+        const chapterId = item.chapterId === undefined ? undefined : Number(item.chapterId);
+        const id = `${scriptureId}:${chapterId ?? ''}:${verseId}`;
+        if (seen.has(id)) continue;
+        seen.add(id);
+        current.push({
+          scriptureId,
+          scriptureTitle: typeof item.scriptureTitle === 'string' ? item.scriptureTitle : scriptureId,
+          chapterId: Number.isFinite(chapterId) ? chapterId : undefined,
+          chapterTitle: typeof item.chapterTitle === 'string' ? item.chapterTitle : chapterId ? `अध्याय ${chapterId}` : '',
+          verseId,
+          sanskrit: typeof item.sanskrit === 'string' ? item.sanskrit : '',
+          translation: String(item.english ?? item.translation ?? item.hindi ?? ''),
+          hindi: typeof item.hindi === 'string' ? item.hindi : undefined,
+          timestamp: String(item.savedAt ?? item.timestamp ?? new Date().toISOString()),
+        });
+      }
+      localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(current));
+      localStorage.removeItem(key);
+    }
+  } catch {
+    // Storage blocked or a malformed legacy value: keep everything as it was.
+  }
+}
+
 export function readBookmarks(): SavedVerse[] {
+  migrateLegacyBookmarks();
   try {
     const parsed: unknown = JSON.parse(localStorage.getItem(BOOKMARKS_KEY) ?? '[]');
     return Array.isArray(parsed) ? (parsed as SavedVerse[]) : [];
