@@ -1,0 +1,44 @@
+{
+  "1:2": {
+    "status": "approved",
+    "science": "",
+    "explanation": [
+      [
+        "re: ?\\([A-Za-z][A-Za-z' \\-/,]*\\)",
+        ""
+      ]
+    ]
+  },
+  "1:3": {
+    "status": "approved",
+    "science": ""
+  },
+  "1:21": {
+    "status": "approved",
+    "science": "",
+    "explanation": [
+      [
+        "re: ?\\([A-Za-z][A-Za-z' \\-/,]*\\)",
+        ""
+      ]
+    ]
+  },
+  "1:38": {
+    "status": "approved",
+    "science": ""
+  },
+  "1:55": {
+    "status": "approved",
+    "science": "",
+    "lifeLesson": [
+      [
+        "re: ?\\([A-Za-z][A-Za-z' \\-/,]*\\)",
+        ""
+      ]
+    ]
+  },
+  "1:67": {
+    "status": "approved",
+    "science": ""
+  }
+}
