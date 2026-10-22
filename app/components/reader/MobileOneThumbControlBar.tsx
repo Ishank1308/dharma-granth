@@ -47,7 +47,7 @@ export function MobileOneThumbControlBar({
   const lastScrollY = useRef(0);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  // Auto-hide on fast downward scroll, reveal on upward scroll or pause
+  // Keep reading space clear after a scroll settles; show controls briefly on upward navigation.
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -64,11 +64,13 @@ export function MobileOneThumbControlBar({
 
       lastScrollY.current = currentScrollY;
 
-      // Reveal on scroll pause
+      // Let readers reach the controls during a pause, then tuck them away again.
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
       scrollTimeout.current = setTimeout(() => {
-        setIsVisible(true);
-      }, 1000);
+        if (!isPlayingAudio && !showSettingsMenu) {
+          setIsVisible(false);
+        }
+      }, 1800);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -76,7 +78,7 @@ export function MobileOneThumbControlBar({
       window.removeEventListener('scroll', handleScroll);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
-  }, []);
+  }, [isPlayingAudio, showSettingsMenu]);
 
   const handleToggleAudio = () => {
     triggerTactileFeedback('medium', 'softTap');
@@ -97,13 +99,16 @@ export function MobileOneThumbControlBar({
     }
   };
 
+  const shouldShowControls = isVisible || isPlayingAudio || showSettingsMenu;
+
   return (
     <div
       role="toolbar"
       aria-label="एक-अंगूठा पाठक नियंत्रण (One-Thumb Reader Controls)"
       className={`fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] left-2 right-2 sm:hidden z-30 transition-all duration-300 transform ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0 pointer-events-none'
+        shouldShowControls ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0 pointer-events-none'
       }`}
+      onFocusCapture={() => setIsVisible(true)}
     >
       {/* Combined settings sheet keeps the mobile reading bar clear on narrow screens. */}
       <div
