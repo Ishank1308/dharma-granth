@@ -12,7 +12,7 @@
 import { appendFileSync, existsSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
-const DIST = resolve(process.cwd(), 'dist');
+const DIST = resolve(process.cwd(), process.env.NEXT_DIST_DIR || 'dist');
 const DATA = join(DIST, 'data/scriptures-full');
 
 function sizeOf(path) {

@@ -9,7 +9,8 @@ const skipBuildChecks = process.env.CI === 'true';
 
 const nextConfig = {
   output: 'export',
-  distDir: 'dist',
+  // NEXT_DIST_DIR lets a second dev server run beside another one without both rewriting dist/.
+  distDir: process.env.NEXT_DIST_DIR || 'dist',
   basePath: basePath,
   assetPrefix: basePath || undefined,
   eslint: { ignoreDuringBuilds: skipBuildChecks },

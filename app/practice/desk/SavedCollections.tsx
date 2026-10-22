@@ -2,10 +2,12 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { Download, StickyNote, Trash2, Upload } from 'lucide-react';
+import { Download, Link2, StickyNote, Trash2, Upload } from 'lucide-react';
 import { BOOKMARKS_KEY, readBookmarks, type SavedVerse } from '@/lib/reader-actions';
 import {
   buildExport,
+  buildSharePath,
+  SHARE_MAX,
   collectionOf,
   createCollection,
   deleteCollection,
@@ -150,6 +152,18 @@ export function SavedCollections({ onChange, onQueue }: { onChange: () => void; 
     reset();
   };
 
+  // The list on screen, as a link: references and the collection name only, never notes.
+  const copyShareLink = async () => {
+    const path = buildSharePath(current?.name ?? '', shown.slice(0, SHARE_MAX));
+    const url = `${window.location.origin}${process.env.NEXT_PUBLIC_BASE_PATH || ''}${path}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setMsg(shown.length > SHARE_MAX ? `Link copied with the first ${SHARE_MAX} verses. Notes are never included.` : 'Link copied. It holds the verse references only; notes are never included.');
+    } catch {
+      window.prompt('Copy this link:', url);
+    }
+  };
+
   const chip = (on: boolean) => `focus-ring min-h-[44px] rounded-full border px-3 text-sm font-semibold ${on ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-400'}`;
 
   return (
@@ -251,6 +265,7 @@ export function SavedCollections({ onChange, onQueue }: { onChange: () => void; 
         </label>
         <button type="button" className={btn} onClick={download}><Download className="h-4 w-4" aria-hidden="true" /> Export saved verses</button>
         <button type="button" className={btn} onClick={() => file.current?.click()}><Upload className="h-4 w-4" aria-hidden="true" /> Import</button>
+        <button type="button" className={btn} disabled={shown.length === 0} onClick={() => void copyShareLink()}><Link2 className="h-4 w-4" aria-hidden="true" /> Copy share link</button>
         <input ref={file} type="file" accept="application/json,.json" className="sr-only" tabIndex={-1} aria-hidden="true" onChange={(e) => void upload(e.target.files?.[0])} />
       </div>
       <p role="status" aria-live="polite" className="mt-1 min-h-[1.25rem] text-sm text-dharma-muted">{msg}</p>

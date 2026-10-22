@@ -4,6 +4,8 @@
 // so that query opens the mandala and says the rik is not in the selection.
 
 import { versePageHref } from '@/lib/verse-paths';
+import { CITATION_SCHEMES, type CitationScheme } from '@/lib/citation-schemes';
+import { CITATION_MAP, type CitationChapterEntry } from '@/lib/citation-map.generated';
 
 export interface DirectCitation {
   scriptureId: string;
@@ -124,6 +126,80 @@ export function parseDirectCitation(raw: string): DirectCitation | null {
   const rig = /^(?:rv|rigveda|rig veda|ऋग्वेद)\s*(\d+)\s*[.:]\s*(\d+)\s*[.:]\s*(\d+)$/.exec(q);
   if (rig) return rigveda(Number(rig[1]), Number(rig[2]), Number(rig[3]));
 
+  return schemeCitation(q);
+}
+
+/* ── Every other text in lib/citation-schemes.ts, checked against the generated verse map ── */
+
+const ALIASES = CITATION_SCHEMES.flatMap((s) => s.aliases.map((a) => [a, s] as const)).sort((x, y) => y[0].length - x[0].length);
+const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s*');
+const SCHEME_RE = new RegExp(
+  `^(${ALIASES.map(([a]) => escape(a)).join('|')})\\s*(?:chapter|ch|adhyaya|अध्याय|valli|वल्ली|pada|पाद|sutra|सूत्र|mantra|मन्त्र)?\\s*` +
+    `(\\d+(?:\\s*(?:[.:]|\\s|verse|v|shloka|श्लोक)\\s*\\d+){0,2})$`,
+);
+
+function labelsOf(entry: CitationChapterEntry): string[] {
+  if (typeof entry === 'number') return Array.from({ length: entry }, (_, i) => String(i + 1));
+  if (entry.length === 2 && typeof entry[1] === 'number') return Array.from({ length: entry[1] }, (_, i) => `${entry[0]}.${i + 1}`);
+  return entry as string[];
+}
+
+function verseHit(scheme: CitationScheme, chapter: string, label: string, shown: string): DirectCitation {
+  const href = versePageHref(scheme.id, Number(chapter), label) ?? `/scripture/${scheme.id}/chapter/${chapter}/#verse-${label}`;
+  return {
+    scriptureId: scheme.id,
+    title: `${scheme.title} ${shown}`,
+    subtitle: `${scheme.titleHi} · exact verse`,
+    href,
+    matchReason: 'Exact reference',
+  };
+}
+
+function schemeCitation(q: string): DirectCitation | null {
+  const m = SCHEME_RE.exec(q);
+  if (!m) return null;
+  const scheme = ALIASES.find(([a]) => new RegExp(`^${escape(a)}$`).test(m[1]))?.[1];
+  const chapters = scheme && CITATION_MAP[scheme.id];
+  if (!scheme || !chapters) return null;
+  const n = m[2].split(/\s*(?:[.:]|\s|verse|v|shloka|श्लोक)\s*/).filter(Boolean).map((x) => String(Number(x)));
+  const shown = n.join('.');
+  const ids = Object.keys(chapters);
+  const has = (chapter: string, label: string) => chapters[chapter] !== undefined && labelsOf(chapters[chapter]).includes(label);
+
+  // 1. The whole reference is a verse label (Chandogya 6.8.7, Brahma Sutra 1.1.1).
+  if (n.length >= 2) {
+    const owners = ids.filter((c) => has(c, shown));
+    if (owners.length === 1) return verseHit(scheme, owners[0], shown, shown);
+  }
+  // 2. Traditional three-part numbering folded into library chapters (Mundaka 3.1.1, Aitareya 1.2.3).
+  if (n.length === 3 && scheme.groups) {
+    const [a, b, v] = n.map(Number);
+    if (a >= 1 && a <= scheme.groups.length && b >= 1 && b <= scheme.groups[a - 1]) {
+      const chapter = String(scheme.groups.slice(0, a - 1).reduce((s, g) => s + g, 0) + b);
+      if (has(chapter, String(v))) return verseHit(scheme, chapter, String(v), shown);
+    }
+    return null;
+  }
+  // 3. Taittiriya 2.4.1: anuvaka 4 of valli 2 is one library verse.
+  if (n.length === 3 && scheme.subPartsInVerse && has(n[0], n[1])) return verseHit(scheme, n[0], n[1], `${n[0]}.${n[1]}`);
+  // 4. Chapter and verse; the label may also carry the chapter (Prashna "2.3").
+  if (n.length === 2) {
+    for (const label of [n[1], `${n[0]}.${n[1]}`]) if (has(n[0], label)) return verseHit(scheme, n[0], label, shown);
+    return null;
+  }
+  // 5. One number: a verse of a one-chapter text, or a chapter.
+  if (n.length === 1) {
+    if (ids.length === 1 && has(ids[0], n[0])) return verseHit(scheme, ids[0], n[0], n[0]);
+    if (chapters[n[0]] !== undefined && ids.length > 1) {
+      return {
+        scriptureId: scheme.id,
+        title: `${scheme.title}, chapter ${n[0]}`,
+        subtitle: `${scheme.titleHi} · अध्याय ${n[0]}`,
+        href: `/scripture/${scheme.id}/chapter/${n[0]}/`,
+        matchReason: 'Exact reference',
+      };
+    }
+  }
   return null;
 }
 
@@ -145,6 +221,7 @@ const HINTS: Record<string, string> = {
 export function citationScriptureHint(raw: string): string | null {
   const direct = parseDirectCitation(raw);
   if (direct) return direct.scriptureId;
-  const first = clean(raw).split(/[\s.:]+/)[0] ?? '';
-  return HINTS[first.replace(/\s+/g, '')] ?? null;
+  const q = clean(raw);
+  const first = q.split(/[\s.:]+/)[0] ?? '';
+  return HINTS[first.replace(/\s+/g, '')] ?? ALIASES.find(([a]) => new RegExp(`^${escape(a)}(?:\\s|\\d|$)`).test(q))?.[1].id ?? null;
 }

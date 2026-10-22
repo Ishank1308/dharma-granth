@@ -136,7 +136,7 @@ function assertHref(href: string): void {
     assert.ok(timelineIds.has(timeline[1] as string), href);
     return;
   }
-  if (href === '/bookmarks' || href === '/daily' || href === '/practice') {
+  if (href === '/practice/bookmarks/' || href === '/daily' || href === '/practice') {
     assert.equal(fs.existsSync(path.join('app', href.slice(1), 'page.tsx')), true, href);
     return;
   }

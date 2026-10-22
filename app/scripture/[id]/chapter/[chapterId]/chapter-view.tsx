@@ -529,6 +529,21 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             nextLabel={nextLabel}
           />
         )}
+        {/* One quiet line after the reading, never during it (audit 2026-10-22, Phase 8). */}
+        {!nextPartHref && (
+          <p className="mt-10 text-center text-sm leading-relaxed text-dharma-muted">
+            <span lang="hi" className="font-devanagari">धर्म ग्रंथ निःशुल्क और विज्ञापन-रहित है।</span>{' '}
+            <span lang="en">Dharma Granth is free and has no ads.</span>{' '}
+            <Link href="/contribute/" className="inline-flex min-h-11 items-center font-semibold text-saffron-700 underline-offset-4 hover:underline dark:text-saffron-300">
+              <span lang="hi" className="font-devanagari">इसे ऐसा बनाए रखने में सहयोग करें</span>
+              <span aria-hidden="true" className="mx-1">·</span>
+              <span lang="en">Help keep it that way →</span>
+            </Link>{' '}
+            <Link href="/about/funding/" className="inline-flex min-h-11 items-center text-xs underline underline-offset-4 hover:text-dharma-text">
+              How it is funded
+            </Link>
+          </p>
+        )}
         <SourcesAndInterpretation
           scriptureId={meta.id}
           scriptureTitle={meta.title}

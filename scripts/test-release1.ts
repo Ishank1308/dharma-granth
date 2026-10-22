@@ -102,6 +102,15 @@ async function main() {
   assert.equal(col.parseExport(plain).saved.length, 2);
   assert.equal(col.parseExport(plain).state.assign[col.verseKey(v2)], 'favourites', 'export then import keeps assignments');
   assert.throws(() => col.parseExport('{"format":"other","version":1}'), /Not a Dharma Granth/);
+  const sharePath = col.buildSharePath('Prarthana & courage', [v1, v2]);
+  const shared = col.parseSharePath(sharePath.slice(sharePath.indexOf('?')));
+  assert.equal(shared.name, 'Prarthana & courage', 'share names survive URL encoding');
+  assert.deepEqual(shared.refs, [v1, v2], 'share links preserve only verse references');
+  assert.equal(JSON.stringify(shared).includes('private'), false, 'share links never contain private notes');
+  const boundedShare = col.parseSharePath(`?v=${Array.from({ length: col.SHARE_MAX + 5 }, (_, i) => `bhagavadgita:2:${i + 1}`).join(',')}`);
+  assert.equal(boundedShare.refs.length, col.SHARE_MAX, 'share links are capped at the supported reference limit');
+  const malformedShare = col.parseSharePath('?v=../secret,unknown,ishavasya:1:1,ishavasya:1:1');
+  assert.deepEqual(malformedShare.refs, [{ scriptureId: 'ishavasya', chapterId: 1, verseId: 1 }], 'malformed and duplicate references are dropped');
   assert.equal(col.sanitize({ collections: [{ id: 'bad id!', name: 'x' }, { id: 'ok-1', name: 'Fine' }], assign: { 'bhagavadgita:2:47': 'missing' } }).collections.length, 6);
   assert.deepEqual(col.sanitize(null), col.emptyState());
 
@@ -244,7 +253,7 @@ async function main() {
     }
   }
   const routeOk = (href: string) => {
-    let m = /^\/journeys\/([^/]+)$/.exec(href);
+    let m = /^\/learn\/journeys\/([^/]+)\/?$/.exec(href);
     if (m) return READING_JOURNEYS.some((j) => j.id === m![1]);
     m = /^\/concepts\/([^/]+)$/.exec(href);
     if (m) return Boolean(CONCEPT_DETAILS[m[1]]);

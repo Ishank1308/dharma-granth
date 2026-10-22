@@ -5,7 +5,7 @@ import { createServer } from 'node:http';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { extname, join, normalize, resolve } from 'node:path';
 
-const ROOT = resolve(process.cwd(), 'dist');
+const ROOT = resolve(process.cwd(), process.env.NEXT_DIST_DIR || 'dist');
 const PORT = 4174;
 
 const URLS_TO_TEST = [
@@ -14,6 +14,8 @@ const URLS_TO_TEST = [
   '/practice/',
   '/panchang/',
   '/wisdom-for-life/discipline/',
+  '/practice/shared/',
+  '/about/funding/',
   '/sources/',
   '/methodology/',
   '/scripture/bhagavadgita/chapter/2/verse/47/',

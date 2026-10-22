@@ -205,3 +205,41 @@ export function parseExport(raw: string): ParsedExport {
   });
   return { saved, state: sanitize(o.collections), notes };
 }
+
+/* ── Share links ──────────────────────────────────────────────────────────
+ * A shared list travels in the URL and nowhere else: verse references and an
+ * optional list name. Notes, highlights and dates are never part of a link.
+ */
+
+export const SHARE_PATH = '/practice/shared/';
+export const SHARE_MAX = 100;
+const SHARE_REF = /^([a-z0-9-]{1,48}):(\d{1,4}):([0-9A-Za-z.]{1,16})$/;
+
+export interface SharedList {
+  name: string;
+  refs: Array<Required<VerseRef> & { chapterId: number }>;
+}
+
+/** Path and query for a share link, e.g. /practice/shared/?n=Morning&v=bhagavadgita:2:47,katha:2:18 */
+export function buildSharePath(name: string, refs: VerseRef[]): string {
+  const v = refs.slice(0, SHARE_MAX).map((r) => `${r.scriptureId}:${r.chapterId ?? 1}:${r.verseId}`).join(',');
+  const params = new URLSearchParams();
+  const clean = name.trim().slice(0, MAX_NAME);
+  if (clean) params.set('n', clean);
+  params.set('v', v);
+  return `${SHARE_PATH}?${params.toString()}`;
+}
+
+/** Reads a share link's query. Anything malformed is dropped, never guessed. */
+export function parseSharePath(search: string): SharedList {
+  const params = new URLSearchParams(search);
+  const seen = new Set<string>();
+  const refs: SharedList['refs'] = [];
+  for (const part of (params.get('v') ?? '').split(',')) {
+    const m = SHARE_REF.exec(part.trim());
+    if (!m || seen.has(m[0]) || refs.length >= SHARE_MAX) continue;
+    seen.add(m[0]);
+    refs.push({ scriptureId: m[1], chapterId: Number(m[2]), verseId: /^\d+$/.test(m[3]) ? Number(m[3]) : m[3] });
+  }
+  return { name: (params.get('n') ?? '').trim().slice(0, MAX_NAME), refs };
+}

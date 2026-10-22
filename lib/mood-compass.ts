@@ -35,7 +35,7 @@ const MOODS: Array<{ id: string; en: string; hi: string; topics: string[] }> = [
   { id: 'overthinking', en: 'Overthinking', hi: 'अति-चिंतन', topics: ['concentration', 'attachment'] },
   { id: 'torn', en: 'Torn', hi: 'दुविधा', topics: ['duty-and-decision-making'] },
   { id: 'discipline', en: 'Seeking Discipline', hi: 'अनुशासन की खोज', topics: ['discipline', 'self-control'] },
-  { id: 'burnout', en: 'Burnout', hi: 'थकान व बोझ', topics: ['skill-in-work', 'detachment'] },
+  { id: 'burnout', en: 'Burnout', hi: 'श्रान्ति व बोझ', topics: ['skill-in-work', 'detachment'] },
   { id: 'setback', en: 'After a Setback', hi: 'असफलता के बाद', topics: ['failure-and-setbacks'] },
   { id: 'letting-go', en: 'Letting Go', hi: 'छोड़ना सीखना', topics: ['grief-and-loss', 'detachment'] },
   { id: 'curious', en: 'Curious Beginner', hi: 'जिज्ञासु', topics: ['meaning-of-life', 'self-knowledge'] },

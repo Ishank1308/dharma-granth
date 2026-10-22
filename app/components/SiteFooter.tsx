@@ -133,6 +133,9 @@ export function SiteFooter() {
               <Link href="/contribute" className="transition hover:text-saffron-700 font-medium text-saffron-700 dark:text-saffron-400">
                 ऐच्छिक सहयोग (Contribute & Support)
               </Link>
+              <Link href="/about/funding/" className="transition hover:text-saffron-700">
+                व्यय और पारदर्शिता (How It Is Funded)
+              </Link>
             </nav>
 
             <div className="pt-2">

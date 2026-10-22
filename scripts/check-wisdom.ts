@@ -39,6 +39,7 @@ const REQUIRED_TOPICS = [
   'stress-and-worry', 'fear-and-courage', 'anger', 'grief-and-loss', 'duty-and-decision-making', 'discipline',
   'concentration', 'leadership', 'family-responsibilities', 'devotion', 'self-knowledge', 'meaning-of-life',
   'failure-and-setbacks', 'success', 'attachment', 'detachment', 'death', 'contentment', 'self-control', 'skill-in-work',
+  'meditation', 'karma', 'the-self', 'ego', 'desire-and-greed', 'peace-of-mind', 'forgiveness', 'faith',
 ];
 
 /** Claims that need evidence this repository does not contain. */

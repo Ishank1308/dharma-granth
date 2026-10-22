@@ -14,7 +14,7 @@ import { gzipSync } from 'node:zlib';
 import { join, resolve } from 'node:path';
 
 const ROOT = resolve(process.cwd());
-const DIST = join(ROOT, 'dist');
+const DIST = resolve(ROOT, process.env.NEXT_DIST_DIR || 'dist');
 const SOURCE = join(ROOT, 'public/data/scriptures-full');
 
 const errors = [];

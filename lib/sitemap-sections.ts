@@ -85,6 +85,7 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/methodology', pageDate('/methodology')),
     entry('/sources', pageDate('/sources')),
     entry('/contribute', pageDate('/contribute')),
+    entry('/about/funding', pageDate('/about/funding')),
     entry('/concepts/relationships', pageDate('/concepts/relationships')),
     entry('/concepts/visuals', pageDate('/concepts/visuals')),
     entry('/network', pageDate('/network')),

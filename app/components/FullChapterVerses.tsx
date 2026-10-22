@@ -745,6 +745,10 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     const plain = document.querySelectorAll<HTMLElement>('[data-plain-verse]');
     if (plain.length === 0) return;
     const order = filteredVerses.map((v) => String(v.number));
+    if (typeof IntersectionObserver === 'undefined') {
+      setRichVerses((prev) => withRich(prev, order));
+      return;
+    }
     const io = new IntersectionObserver(
       (entries) => {
         const near: string[] = [];

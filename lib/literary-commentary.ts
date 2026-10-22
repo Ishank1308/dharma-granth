@@ -32,7 +32,7 @@ export const SITUATIONAL_MOMENTS: Record<string, SituationalMoment> = {
   burnout: {
     id: 'burnout',
     labelEn: 'Burnout & Hustle Fatigue',
-    labelHi: 'थकान और आंतरिक शून्यता',
+    labelHi: 'श्रान्ति और आंतरिक शून्यता',
     emoji: '🔥',
     descriptionEn: 'When nonstop ambition drains your spirit and work feels like empty labor.',
     descriptionHi: 'जब निरंतर दौड़ने के बाद भी भीतर एक गहरा खालीपन महसूस हो।',
@@ -43,7 +43,7 @@ export const SITUATIONAL_MOMENTS: Record<string, SituationalMoment> = {
     labelHi: 'असफलता का भय और अपेक्षाओं का बोझ',
     emoji: '🧭',
     descriptionEn: 'When expectations from family, society, or yourself turn suffocating.',
-    descriptionHi: 'जब परीक्षाओं, करियर और दूसरों की अपेक्षाओं का तनाव भारी लगने लगे।',
+    descriptionHi: 'जब परीक्षाओं, आजीविका और दूसरों की अपेक्षाओं का भार असह्य लगने लगे।',
   },
   heartbreak: {
     id: 'heartbreak',
@@ -111,7 +111,7 @@ export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<VerseEditorialLayer, 'is
       SITUATIONAL_MOMENTS.burnout,
     ],
     misreadingEn: 'Stop caring about your career goals, ambition, or the outcomes of your exams.',
-    misreadingHi: 'अपने लक्ष्यों, करियर या परीक्षाओं के परिणाम की कोई परवाह ही न करना।',
+    misreadingHi: 'अपने लक्ष्यों, आजीविका या परीक्षाओं के परिणाम की कोई चिन्ता ही न करना।',
     deeperTruthEn: 'Give 100% of your energy to the present action while unburdening your nervous system from the terror of what happens tomorrow. Results depend on a thousand variables outside your control; your effort is the only territory you truly own.',
     deeperTruthHi: 'वर्तमान में किए जा रहे कार्य में संपूर्ण एकाग्रता दें, किंतु भविष्य के भय से स्नायुतंत्र को मुक्त रखें। परिणाम हजारों बाहरी कारणों पर निर्भर करता है, आपका अधिकार केवल इस क्षण के प्रयास पर है।',
     humanQuestionEn: 'How do you keep creating, studying, or building when the fear of failure makes every next step feel terrifying?',
@@ -148,7 +148,7 @@ export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<VerseEditorialLayer, 'is
       breakdownHi: 'इंद्रियों का विषयों से स्पर्श केवल भौतिक प्रतिक्रिया है; यह आपका आंतरिक चैतन्य नहीं है।',
     },
     microPracticeEn: 'When anxiety or longing flares up today, close your eyes and silently breathe: "This is a passing weather pattern. The sky remains untouched."',
-    microPracticeHi: 'जब भी आज बेचैनी या दुःख उठे, गहरी सांस लेकर स्वयं से कहें: "यह केवल एक बादल है, आकाश शांत है।"',
+    microPracticeHi: 'जब भी आज अशान्ति या दुःख उठे, गहरी सांस लेकर स्वयं से कहें: "यह केवल एक बादल है, आकाश शांत है।"',
   },
 
   // Bhagavad Gita 2.56 (Dukheshvanudvigna-manah)
@@ -192,13 +192,13 @@ export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<VerseEditorialLayer, 'is
       breakdownHi: 'स्वयं को नीचे गिरने से बचाना और ऊपर उठाना। आपकी चेतना ही आपका उत्तोलक है।',
     },
     microPracticeEn: 'Identify one promise you broke to yourself this week. Do not shame yourself; simply fulfill a tiny 5-minute version of it right now.',
-    microPracticeHi: 'इस सप्ताह अपने आप से किया गया कोई एक छोटा वादा याद करें और बिना आत्म-ग्लानि के उसे अभी ५ मिनट में पूरा करें।',
+    microPracticeHi: 'इस सप्ताह अपने आप से किया गया कोई एक छोटा वादा स्मरण करें और बिना आत्म-ग्लानि के उसे अभी ५ मिनट में पूरा करें।',
   },
 
   // Isha Upanishad 1 (Isha Vasyam Idam Sarvam)
   'ishavasya:1:1': {
     coreShiftEn: 'The whole living universe is saturated with the sacred; savor life with boundless joy by surrendering the fever to possess it.',
-    coreShiftHi: 'यह संपूर्ण चर-अचर जगत चैतन्य से व्याप्त है; इसे पूरी तरह भोगो, किंतु इसके स्वामित्व की तृष्णा छोड़कर।',
+    coreShiftHi: 'यह संपूर्ण चर-अचर जगत चैतन्य से व्याप्त है; इसे पूर्णतः भोगिए, किंतु इसके स्वामित्व की तृष्णा छोड़कर।',
     situationalMoments: [
       SITUATIONAL_MOMENTS.burnout,
       SITUATIONAL_MOMENTS.heartbreak,
@@ -249,7 +249,7 @@ export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<VerseEditorialLayer, 'is
     humanQuestionEn: 'How do you stop defining yourself by your past failures and childhood conditioning?',
     humanQuestionHi: 'अतीत की गलतियों और अपराधबोध से स्वयं को कैसे मुक्त करें?',
     microPracticeEn: 'Drop the heavy story of who you were yesterday. Right here, in this breath, meet yourself with clean slate forgiveness.',
-    microPracticeHi: 'कल आप क्या थे उस बोझ को छोड़ दें। इस क्षण में एक नई शुरुआत करें और स्वयं को क्षमा करें।',
+    microPracticeHi: 'कल आप क्या थे उस बोझ को छोड़ दें। इस क्षण में एक नया आरम्भ करें और स्वयं को क्षमा करें।',
   },
 
   // Yoga Sutra 1.2 (Yogas citta-vritti-nirodha)
@@ -262,7 +262,7 @@ export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<VerseEditorialLayer, 'is
       SITUATIONAL_MOMENTS.burnout,
     ],
     misreadingEn: 'Forcibly emptying your brain of every thought until you become a blank zombie.',
-    misreadingHi: 'जबरदस्ती विचारों को दबाना और मस्तिष्क को शून्य करने का संघर्ष करना।',
+    misreadingHi: 'बलपूर्वक विचारों को दबाना और मस्तिष्क को शून्य करने का संघर्ष करना।',
     deeperTruthEn: 'Allowing the mud of compulsive mental chatter to settle naturally so the pure lake of consciousness becomes mirror-clear.',
     deeperTruthHi: 'विचारों से युद्ध किए बिना उनके प्रवाह के साक्षी बन जाना, जिससे मन की झील स्वतः निर्मल हो जाए।',
     humanQuestionEn: 'How do you quiet a racing brain in an era of information overload?',

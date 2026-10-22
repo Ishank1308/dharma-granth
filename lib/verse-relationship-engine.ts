@@ -205,7 +205,7 @@ const CANONICAL_CROSS_ECHOS: Record<string, CanonicalEcho[]> = {
       sanskrit: 'बुद्धियुक्तो जहातीह उभे सुकृतदुष्कृते । तस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम् ॥',
       translation: 'One endowed with equanimity casts off both good and evil deeds here. Therefore, dedicate yourself to Yoga; Yoga is dexterity in action.',
       reason: 'Definition of Karmasu Kaushalam: Explains how equanimity produces supreme excellence and craftsmanship without psychological exhaustion.',
-      reasonHi: 'कर्मसु कौशलम् की व्याख्या: समत्व बुद्धि किस प्रकार बिना तनाव के सर्वोच्च कार्य-कुशलता प्रदान करती है।',
+      reasonHi: 'कर्मसु कौशलम् की व्याख्या: समत्व बुद्धि किस प्रकार बिना उद्वेग के सर्वोच्च कार्य-कुशलता प्रदान करती है।',
     },
     {
       targetScriptureId: 'katha',

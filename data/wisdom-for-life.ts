@@ -1,4 +1,5 @@
 import { lifeProblemTopics } from './wisdom-life-problems';
+import { coreTeachingTopics } from './wisdom-core-teachings';
 
 export interface ScriptureReference {
   id: string;
@@ -2004,6 +2005,7 @@ export const wisdomTopics: WisdomTopic[] = [
       }
   },
   ...lifeProblemTopics,
+  ...coreTeachingTopics,
 ];
 
 export function getAllWisdomTopics(): WisdomTopic[] {
