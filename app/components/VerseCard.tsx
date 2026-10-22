@@ -247,7 +247,7 @@ function VerseMedallion({ label }: { label: string }) {
 }
 
 const iconButton =
-  'inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card/80 text-dharma-muted backdrop-blur transition hover:border-saffron-300 hover:text-saffron-700';
+  'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card/80 text-dharma-muted backdrop-blur transition hover:border-saffron-300 hover:text-saffron-700 lg:h-9 lg:w-9';
 
 export function VerseCard({
   depth = 'study',
@@ -550,7 +550,7 @@ export function VerseCard({
               }}
               aria-pressed={isSandhiSplit}
               title="संधि-विच्छेद (Split Compound Words)"
-              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition border ${
+              className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold transition border lg:min-h-0 lg:py-1 ${
                 isSandhiSplit
                   ? 'border-saffron-500 bg-saffron-100/90 text-saffron-900 shadow-2xs dark:bg-saffron-950/60 dark:text-saffron-200 dark:border-saffron-700'
                   : 'border-dharma-border/80 bg-dharma-card/80 text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
@@ -708,7 +708,7 @@ export function VerseCard({
             >
               <StickyNote className="h-4 w-4" />
             </button>
-            <span className="shrink-0 [&>button]:h-9 [&>button]:w-9">
+            <span className="shrink-0 [&>button]:h-11 [&>button]:w-11 lg:[&>button]:h-9 lg:[&>button]:w-9">
               <ShareVerseButton
                 scriptureTitle={scriptureTitle}
                 chapterTitle={chapterTitle}
@@ -767,7 +767,7 @@ export function VerseCard({
           <div className="mb-4 -mt-2 flex items-center justify-between">
             <Link
               href={versePageHref}
-              className="inline-flex items-center gap-1.5 rounded-full border border-saffron-200/80 bg-saffron-50/70 px-3 py-1 text-xs font-semibold text-saffron-800 transition hover:border-saffron-300 hover:bg-saffron-100 dark:border-saffron-900/60 dark:bg-saffron-950/40 dark:text-saffron-300"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-saffron-200/80 bg-saffron-50/70 px-3 py-2 text-xs font-semibold text-saffron-800 transition hover:border-saffron-300 hover:bg-saffron-100 dark:border-saffron-900/60 dark:bg-saffron-950/40 dark:text-saffron-300 lg:min-h-0 lg:py-1"
             >
               <Compass className="h-3.5 w-3.5 text-saffron-600 dark:text-saffron-400" aria-hidden="true" />
               <span>विस्तृत श्लोक विश्लेषण व संदर्भ</span>
