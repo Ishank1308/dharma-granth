@@ -216,6 +216,7 @@ export function PranaCapsule() {
   // Determine current active mode
   const mode = capsuleState.activeMode;
   const isParayanaActive = soundState.isPlaying || soundState.continuousParayana;
+  const compactIdleCapsule = mode === 'idle' && !capsuleState.isExpanded;
   const isIslandPinned =
     capsuleState.isExpanded || isParayanaActive || mode === 'toast' || mode === 'sabda-peek' || mode === 'sadhana';
   const shouldShowIsland = !isScrollHidden || isIslandPinned || isCapsuleFocused;
@@ -242,7 +243,7 @@ export function PranaCapsule() {
         }
         transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
         // Keep it above the reader's one-thumb controls on chapter pages, and above the mobile nav elsewhere.
-        className={`fixed ${isChapterReader ? 'bottom-[calc(10rem+env(safe-area-inset-bottom))]' : 'bottom-[calc(4.25rem+env(safe-area-inset-bottom))]'} lg:bottom-5 inset-x-0 z-50 pointer-events-none flex flex-col items-center px-2`}
+        className={`fixed ${isChapterReader ? 'bottom-[calc(10rem+env(safe-area-inset-bottom))]' : 'bottom-[calc(4.25rem+env(safe-area-inset-bottom))]'} lg:bottom-5 inset-x-0 z-50 pointer-events-none flex flex-col items-center px-2 ${compactIdleCapsule ? 'max-sm:items-start max-sm:px-0 max-sm:pl-3 max-sm:pr-0' : ''}`}
         aria-label="Prāṇa Sūtra Active Island"
         data-hide-during-chapter-reading
         aria-hidden={!shouldShowIsland}
@@ -543,7 +544,7 @@ export function PranaCapsule() {
               animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
               exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="pointer-events-auto group inline-flex h-11 items-center gap-2.5 rounded-full border border-amber-500/40 bg-stone-950/95 px-4 text-amber-50 shadow-2xl backdrop-blur-xl ring-1 ring-amber-400/20 hover:border-amber-400 transition"
+              className={`pointer-events-auto group inline-flex h-11 items-center gap-2.5 rounded-full border border-amber-500/40 bg-stone-950/95 px-4 text-amber-50 shadow-2xl backdrop-blur-xl ring-1 ring-amber-400/20 hover:border-amber-400 transition ${compactIdleCapsule ? 'max-sm:w-11 max-sm:justify-center max-sm:gap-0 max-sm:px-0' : ''}`}
             >
               {/* Left Indicator Icon */}
               {mode === 'toast' ? (
@@ -568,7 +569,7 @@ export function PranaCapsule() {
               )}
 
               {/* Compact Center Content */}
-              <div className="max-w-[240px] sm:max-w-[300px] truncate text-left text-xs font-medium">
+              <div className={`${compactIdleCapsule ? 'hidden sm:block ' : ''}max-w-[240px] sm:max-w-[300px] truncate text-left text-xs font-medium`}>
                 {mode === 'toast' && capsuleState.toast ? (
                   <span className="text-emerald-200 font-semibold">{capsuleState.toast.message}</span>
                 ) : mode === 'sabda-peek' && capsuleState.sabdaPeek ? (
@@ -607,7 +608,7 @@ export function PranaCapsule() {
               </div>
 
               {/* Expand Hint Indicator */}
-              <ChevronUp className="w-3.5 h-3.5 text-amber-400/70 group-hover:text-amber-200 transition" />
+              <ChevronUp className={`${compactIdleCapsule ? 'hidden sm:block ' : ''}w-3.5 h-3.5 text-amber-400/70 group-hover:text-amber-200 transition`} />
             </motion.button>
           )}
         </AnimatePresence>
