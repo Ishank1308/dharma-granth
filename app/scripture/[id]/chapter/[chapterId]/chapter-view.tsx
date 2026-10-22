@@ -325,7 +325,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(chapterJsonLd, breadcrumbJsonLd)) }}
       />
       <ChapterHero className="bg-gradient-to-br from-saffron-900 via-saffron-700 to-orange-600 py-8 text-white sm:py-10">
-        <div className="relative max-w-4xl mx-auto px-6">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
           <Link href={`/scripture/${meta.id}`} className="inline-flex min-h-[44px] items-center gap-2 text-white/70 hover:text-white text-sm transition mb-2">
             <ArrowLeft className="w-4 h-4" />
             <span>{meta.title}</span>
@@ -392,7 +392,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         </div>
       </ChapterHero>
 
-      <div className="relative max-w-4xl mx-auto px-4 py-5 sm:px-6 md:py-7">
+      <div className="relative mx-auto w-full max-w-4xl px-4 py-5 pb-[calc(9rem+env(safe-area-inset-bottom))] sm:px-6 md:py-7 md:pb-7">
         <AmbientOrbs />
         <div className="relative">
         {(!part || part.part === 1) && hasChapterContext && (

@@ -4,12 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import {
   ChevronLeft,
   ChevronRight,
-  Globe,
-  Headphones,
+  Maximize2,
   SlidersHorizontal,
   Square,
   Volume2,
-  VolumeX,
 } from 'lucide-react';
 import { speakSanskritShloka, stopSanskritSpeech, isSpeakingSanskrit } from '@/lib/sacred-audio';
 import { triggerTactileFeedback } from '@/lib/haptics';
@@ -21,6 +19,7 @@ export interface MobileOneThumbControlBarProps {
   currentVerseSanskrit?: string;
   onPrevVerse: () => void;
   onNextVerse: () => void;
+  onOpenFocus: () => void;
   activeLayers: {
     translit: boolean;
     hindi: boolean;
@@ -36,14 +35,14 @@ export function MobileOneThumbControlBar({
   currentVerseSanskrit,
   onPrevVerse,
   onNextVerse,
+  onOpenFocus,
   activeLayers,
   onToggleLayer,
 }: MobileOneThumbControlBarProps) {
   const [depth, setDepth] = useReadingDepth();
   const [isVisible, setIsVisible] = useState(true);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
-  const [showLevelMenu, setShowLevelMenu] = useState(false);
-  const [showLangMenu, setShowLangMenu] = useState(false);
+  const [showSettingsMenu, setShowSettingsMenu] = useState(false);
 
   const lastScrollY = useRef(0);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -57,8 +56,7 @@ export function MobileOneThumbControlBar({
       if (deltaY > 12 && currentScrollY > 100) {
         // Fast scroll down -> hide
         setIsVisible(false);
-        setShowLevelMenu(false);
-        setShowLangMenu(false);
+        setShowSettingsMenu(false);
       } else if (deltaY < -8) {
         // Scroll up -> reveal
         setIsVisible(true);
@@ -99,21 +97,22 @@ export function MobileOneThumbControlBar({
     }
   };
 
-  const currentLevelLabel = READING_DEPTHS.find((d) => d.id === depth)?.hi ?? 'समझें';
-
   return (
     <div
       role="toolbar"
       aria-label="एक-अंगूठा पाठक नियंत्रण (One-Thumb Reader Controls)"
-      className={`fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] left-3 right-3 sm:hidden z-30 transition-all duration-300 transform ${
+      className={`fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] left-2 right-2 sm:hidden z-30 transition-all duration-300 transform ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0 pointer-events-none'
       }`}
     >
-      {/* Popover Menu: Spiritual Level Selector */}
-      {showLevelMenu && (
-        <div className="absolute bottom-full mb-2 left-0 right-0 rounded-2xl border border-dharma-border bg-dharma-card p-3 shadow-2xl backdrop-blur-md">
-          <p className="text-[11px] font-bold uppercase tracking-wider text-dharma-muted mb-2 px-1">
-            पठन गहराई (Reading depth)
+      {/* Combined settings sheet keeps the mobile reading bar clear on narrow screens. */}
+      <div
+        id="mobile-reader-settings"
+        hidden={!showSettingsMenu}
+        className={`absolute bottom-full mb-2 left-0 right-0 max-h-[min(68dvh,34rem)] overflow-y-auto rounded-2xl border border-dharma-border bg-dharma-card p-3 shadow-2xl backdrop-blur-md ${showSettingsMenu ? 'motion-safe:animate-fade-up' : ''}`}
+      >
+          <p className="px-1 mb-2 text-[11px] font-bold uppercase tracking-wider text-dharma-muted">
+            पाठ सेटिंग्स · Reading settings
           </p>
           <div className="space-y-1">
             {READING_DEPTHS.map((lvl) => (
@@ -122,7 +121,7 @@ export function MobileOneThumbControlBar({
                 type="button"
                 onClick={() => {
                   setDepth(lvl.id);
-                  setShowLevelMenu(false);
+                  setShowSettingsMenu(false);
                   triggerTactileFeedback('selection', 'softTap');
                 }}
                 className={`w-full flex items-center justify-between p-2.5 rounded-xl text-left text-xs transition ${
@@ -141,14 +140,9 @@ export function MobileOneThumbControlBar({
               </button>
             ))}
           </div>
-        </div>
-      )}
-
-      {/* Popover Menu: Language & Layers Selector */}
-      {showLangMenu && (
-        <div className="absolute bottom-full mb-2 left-0 right-0 rounded-2xl border border-dharma-border bg-dharma-card p-3 shadow-2xl backdrop-blur-md">
-          <p className="text-[11px] font-bold uppercase tracking-wider text-dharma-muted mb-2 px-1">
-            भाषा व सामग्री (Reader Layers)
+          <div className="my-3 border-t border-dharma-border/70" />
+          <p className="px-1 mb-2 text-[11px] font-bold uppercase tracking-wider text-dharma-muted">
+            भाषा एवं सामग्री · Language and layers
           </p>
           <div className="grid grid-cols-2 gap-2 text-xs">
             <button
@@ -208,11 +202,10 @@ export function MobileOneThumbControlBar({
               विस्तृत व्याख्या
             </button>
           </div>
-        </div>
-      )}
+      </div>
 
       {/* The Floating Thumb Bar with >=44px touch targets */}
-      <div className="flex items-center justify-between gap-1 p-1.5 rounded-2xl border border-dharma-border/90 bg-dharma-card/95 backdrop-blur-md shadow-2xl">
+      <div className="flex items-center gap-1 p-1.5 rounded-2xl border border-dharma-border/90 bg-dharma-card/95 backdrop-blur-md shadow-2xl">
         {/* Previous Verse Button (>=44px) */}
         <button
           type="button"
@@ -221,7 +214,7 @@ export function MobileOneThumbControlBar({
             triggerTactileFeedback('light', 'softTap');
           }}
           aria-label="पिछला श्लोक (Previous verse)"
-          className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-dharma-text hover:bg-dharma-bg transition active:scale-95"
+          className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-dharma-text transition hover:bg-dharma-bg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
@@ -231,7 +224,7 @@ export function MobileOneThumbControlBar({
           type="button"
           onClick={handleToggleAudio}
           aria-label={isPlayingAudio ? 'उच्चारण रोकें (Stop audio)' : 'पारायण / उच्चारण सुनें (Play shloka audio)'}
-          className={`min-h-[44px] flex-1 flex items-center justify-center gap-1.5 px-3 rounded-xl text-xs font-bold transition active:scale-95 ${
+          className={`min-h-[44px] min-w-0 flex-1 flex items-center justify-center gap-1.5 px-2 rounded-xl text-xs font-bold transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 ${
             isPlayingAudio
               ? 'bg-saffron-600 text-white shadow-md animate-pulse'
               : 'bg-saffron-50 text-saffron-800 border border-saffron-200/80 dark:bg-saffron-950/40 dark:text-saffron-300'
@@ -258,50 +251,42 @@ export function MobileOneThumbControlBar({
             triggerTactileFeedback('light', 'softTap');
           }}
           aria-label="अगला श्लोक (Next verse)"
-          className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-dharma-text hover:bg-dharma-bg transition active:scale-95"
+          className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-dharma-text transition hover:bg-dharma-bg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
 
-        <div className="h-6 w-px bg-dharma-border my-auto" />
-
-        {/* Depth / Spiritual Level Toggle (>=44px) */}
+        {/* Fullscreen Focus Mode (>=44px) */}
         <button
           type="button"
           onClick={() => {
-            setShowLevelMenu((prev) => !prev);
-            setShowLangMenu(false);
-            triggerTactileFeedback('selection', 'softTap');
+            triggerTactileFeedback('medium', 'click');
+            onOpenFocus();
           }}
-          aria-label="पठन गहराई चुनें (Reading depth)"
-          aria-expanded={showLevelMenu}
-          className={`min-h-[44px] px-2.5 flex items-center gap-1 rounded-xl text-xs font-semibold transition active:scale-95 ${
-            showLevelMenu
-              ? 'bg-dharma-bg text-saffron-700 font-bold'
-              : 'text-dharma-text hover:bg-dharma-bg'
-          }`}
+          aria-label="एकाग्रता मोड खोलें (Open focus reader)"
+          title="एकाग्रता मोड · Focus reader"
+          className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-dharma-text transition hover:bg-dharma-bg active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
         >
-          <SlidersHorizontal className="h-3.5 w-3.5 text-saffron-600" />
-          <span className="text-[11px] truncate max-w-[55px]">{currentLevelLabel}</span>
+          <Maximize2 className="h-4 w-4 text-saffron-600" />
         </button>
 
-        {/* Language & Layers Toggle (>=44px) */}
+        {/* Combined Reading Settings menu (>=44px) */}
         <button
           type="button"
           onClick={() => {
-            setShowLangMenu((prev) => !prev);
-            setShowLevelMenu(false);
+            setShowSettingsMenu((prev) => !prev);
             triggerTactileFeedback('selection', 'softTap');
           }}
           aria-label="भाषा एवं दृश्य विकल्प"
-          aria-expanded={showLangMenu}
-          className={`min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl transition active:scale-95 ${
-            showLangMenu
+          aria-controls="mobile-reader-settings"
+          aria-expanded={showSettingsMenu}
+          className={`min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 ${
+            showSettingsMenu
               ? 'bg-dharma-bg text-saffron-700'
               : 'text-dharma-text hover:bg-dharma-bg'
           }`}
         >
-          <Globe className="h-4 w-4 text-saffron-600" />
+          <SlidersHorizontal className="h-4 w-4 text-saffron-600" />
         </button>
       </div>
     </div>

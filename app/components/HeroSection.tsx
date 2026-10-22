@@ -21,6 +21,7 @@ import {
 import { motion, useReducedMotion } from 'framer-motion';
 import { openGlobalSearch } from '@/lib/search-events';
 import { DharmaCopilotModal } from '@/app/components/copilot/DharmaCopilotModal';
+import { FadeUp } from '@/app/components/motion/primitives';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -209,9 +210,9 @@ export function HeroSection() {
       {/* Subtle sacred mandala watermark */}
       <div className="pointer-events-none absolute inset-0 opacity-10 mandala-bg" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-5 pb-16 pt-12 sm:px-8 sm:pb-20 sm:pt-16 text-center">
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pb-14 pt-8 sm:px-8 sm:pb-20 sm:pt-16 text-center">
         {/* Purpose Badge */}
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-300/30 bg-black/25 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-200 backdrop-blur-md shadow-sm">
+        <div className="mb-3 inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-amber-300/30 bg-black/25 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-200 backdrop-blur-md shadow-sm">
           <Sparkles className="h-3.5 w-3.5 text-amber-300" aria-hidden="true" />
           <span>सनातन ज्ञान कोश</span>
           <span className="text-amber-300/50">·</span>
@@ -219,57 +220,64 @@ export function HeroSection() {
         </div>
 
         {/* Hero Title */}
-        <h1
-          id="home-hero-heading"
-          className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-md"
-        >
-          Dharma Granth
-          <span lang="sa" className="mt-2 block font-devanagari text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-amber-100 bg-clip-text text-transparent">
-            धर्म ग्रंथ
-          </span>
-        </h1>
+        <FadeUp>
+          <h1
+            id="home-hero-heading"
+            className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-md"
+          >
+            Dharma Granth
+            <span lang="sa" className="mt-2 block font-devanagari text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-amber-100 bg-clip-text text-transparent">
+              धर्म ग्रंथ
+            </span>
+          </h1>
+        </FadeUp>
 
         {/* Clear Value Statement */}
-        <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-amber-50/95">
-          A calm, ad-free scripture library with Sanskrit texts, Hindi and English translations where available, and clearly labeled explanations with source notes.
-        </p>
+        <FadeUp delay={0.08}>
+          <p className="mx-auto mt-3 max-w-2xl text-base sm:mt-4 sm:text-lg lg:text-xl font-normal leading-relaxed text-amber-50/95">
+            A calm, ad-free scripture library with Sanskrit texts, Hindi and English translations where available, and clearly labeled explanations with source notes.
+          </p>
+        </FadeUp>
 
         {/* Prominent Semantic Scripture Search */}
-        <form
-          role="search"
-          onSubmit={(event) => {
-            event.preventDefault();
-            const input = event.currentTarget.elements.namedItem('q');
-            const query = input instanceof HTMLInputElement ? input.value.trim() : '';
-            openGlobalSearch(query);
-          }}
-          className="mx-auto mt-8 flex max-w-2xl items-center rounded-2xl border border-amber-200/40 bg-white/95 p-1.5 text-left shadow-[0_12px_36px_rgba(0,0,0,0.35)] backdrop-blur-xl focus-within:ring-4 focus-within:ring-amber-400/40 transition-all"
-        >
-          <Search className="ml-3 h-5 w-5 shrink-0 text-saffron-700" aria-hidden="true" />
-          <label htmlFor="hero-scripture-search" className="sr-only">
-            Search scriptures, chapters, verses and philosophical concepts
-          </label>
-          <input
-            id="hero-scripture-search"
-            name="q"
-            type="search"
-            autoComplete="off"
-            placeholder="Search a verse, keyword or question (e.g. Gita 2.47, कर्म, fear, Tat Tvam Asi)"
-            className="min-w-0 flex-1 bg-transparent px-3 py-3 text-sm text-stone-900 outline-none placeholder:text-stone-500 sm:text-base"
-          />
-          <button
-            type="submit"
-            aria-label="Search"
-            onClick={() => triggerTactileFeedback('light', 'softTap')}
-            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-gradient-to-r from-saffron-700 to-amber-700 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:from-saffron-800 hover:to-amber-800 active:scale-95 sm:px-6"
+        <FadeUp delay={0.16}>
+          <form
+            role="search"
+            onSubmit={(event) => {
+              event.preventDefault();
+              const input = event.currentTarget.elements.namedItem('q');
+              const query = input instanceof HTMLInputElement ? input.value.trim() : '';
+              openGlobalSearch(query);
+            }}
+            className="mx-auto mt-6 flex max-w-2xl items-center rounded-2xl border border-amber-200/40 bg-white/95 p-1.5 text-left shadow-[0_12px_36px_rgba(0,0,0,0.35)] backdrop-blur-xl focus-within:ring-4 focus-within:ring-amber-400/40 transition-all sm:mt-8"
           >
-            <span className="hidden sm:inline">Search</span>
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </button>
-        </form>
+            <Search className="ml-3 h-5 w-5 shrink-0 text-saffron-700" aria-hidden="true" />
+            <label htmlFor="hero-scripture-search" className="sr-only">
+              Search scriptures, chapters, verses and philosophical concepts
+            </label>
+            <input
+              id="hero-scripture-search"
+              name="q"
+              type="search"
+              autoComplete="off"
+              placeholder="Search a verse, keyword or question (e.g. Gita 2.47, कर्म, fear, Tat Tvam Asi)"
+              className="min-w-0 flex-1 bg-transparent px-3 py-3 text-sm text-stone-900 outline-none placeholder:text-stone-500 sm:text-base"
+            />
+            <button
+              type="submit"
+              aria-label="Search"
+              onClick={() => triggerTactileFeedback('light', 'softTap')}
+              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-gradient-to-r from-saffron-700 to-amber-700 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:from-saffron-800 hover:to-amber-800 active:scale-95 sm:px-6"
+            >
+              <span className="hidden sm:inline">Search</span>
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </button>
+          </form>
+        </FadeUp>
 
         {/* Quick Search Chips */}
-        <div className="mx-auto mt-3.5 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-xs">
+        <FadeUp delay={0.24}>
+        <div className="mx-auto mt-3 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-xs">
           <span className="text-amber-200/75 text-[11px] font-medium mr-1">Quick searches:</span>
           {QUICK_SEARCHES.map((q) => (
             <button
@@ -285,13 +293,15 @@ export function HeroSection() {
             </button>
           ))}
         </div>
+        </FadeUp>
 
         {/* Primary & Secondary CTAs */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
+        <FadeUp delay={0.32}>
+        <div className="mt-6 flex flex-col items-center justify-center gap-2.5 sm:mt-8 sm:flex-row sm:gap-3.5">
           <Link
             href="/scripture/bhagavadgita"
             onClick={() => triggerTactileFeedback('medium', 'softTap')}
-            className="inline-flex min-h-[48px] items-center gap-2.5 rounded-full bg-white px-7 py-3 text-sm font-bold text-stone-950 shadow-xl transition hover:bg-amber-50 active:scale-98"
+            className="inline-flex min-h-[48px] w-full max-w-md items-center justify-center gap-2.5 rounded-full bg-white px-5 py-3 text-sm font-bold text-stone-950 shadow-xl transition hover:bg-amber-50 active:scale-98 sm:w-auto sm:px-7"
           >
             <BookOpen className="h-4 w-4 text-saffron-700" aria-hidden="true" />
             <span>Start with the Bhagavad Gita</span>
@@ -299,14 +309,15 @@ export function HeroSection() {
           <Link
             href="/scriptures"
             onClick={() => triggerTactileFeedback('light', 'softTap')}
-            className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-white/30 bg-black/25 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 active:scale-98"
+            className="inline-flex min-h-[48px] w-full max-w-md items-center justify-center gap-2 rounded-full border border-white/30 bg-black/25 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 active:scale-98 sm:w-auto sm:px-6"
           >
             <span>Browse All Scriptures</span>
           </Link>
         </div>
+        </FadeUp>
 
         {/* Guide Prompt Link */}
-        <div className="mt-4 text-sm text-amber-100/80">
+        <div className="mt-3 text-sm text-amber-100/80 sm:mt-4">
           <button
             type="button"
             onClick={() => {

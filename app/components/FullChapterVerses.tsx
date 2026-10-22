@@ -1559,6 +1559,10 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           currentVerseNumber={state.verses[activeVerseIndex]?.number ?? 1}
           totalVerses={state.verses.length}
           currentVerseSanskrit={state.verses[activeVerseIndex]?.sanskrit}
+          onOpenFocus={() => {
+            setFocusVerseIndex(activeVerseIndex);
+            setFocusModeOpen(true);
+          }}
           onPrevVerse={() => {
             const nextIdx = Math.max(0, activeVerseIndex - 1);
             setActiveVerseIndex(nextIdx);
