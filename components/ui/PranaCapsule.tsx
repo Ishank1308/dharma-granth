@@ -64,7 +64,6 @@ const DRONE_TRACKS: Array<{ id: SoundscapeTrackId; label: string; icon: React.Re
 export function PranaCapsule() {
   const pathname = usePathname();
   const isChapterReader = pathname?.startsWith('/scripture/') && pathname.includes('/chapter/');
-  const isAutoHideRoute = pathname === '/scriptures' || pathname?.startsWith('/scriptures/') || pathname?.startsWith('/scripture/');
   const [capsuleState, setCapsuleState] = useState<PranaCapsuleState>(getPranaCapsuleState);
   const [soundState, setSoundState] = useState<SoundscapeState>(getSoundscapeState);
   const [activePadaLine, setActivePadaLine] = useState<string | null>(null);
@@ -78,12 +77,10 @@ export function PranaCapsule() {
   const pillRef = useRef<HTMLButtonElement>(null);
   const islandRef = useRef<HTMLDivElement>(null);
 
-  // Tuck the persistent island away while readers browse down long scripture pages.
+  // Tuck the floating island away while readers browse down the page.
   // Scrolling back up or returning near the top makes it available again.
   useEffect(() => {
     setIsScrollHidden(false);
-    if (!isAutoHideRoute) return;
-
     let lastScrollY = window.scrollY;
     let accumulatedDelta = 0;
     const handleScroll = () => {
@@ -108,7 +105,7 @@ export function PranaCapsule() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isAutoHideRoute, pathname]);
+  }, [pathname]);
 
   // Sync with Prāṇa Capsule State Machine
   useEffect(() => {
@@ -221,7 +218,7 @@ export function PranaCapsule() {
   const isParayanaActive = soundState.isPlaying || soundState.continuousParayana;
   const isIslandPinned =
     capsuleState.isExpanded || isParayanaActive || mode === 'toast' || mode === 'sabda-peek' || mode === 'sadhana';
-  const shouldShowIsland = !isAutoHideRoute || !isScrollHidden || isIslandPinned || isCapsuleFocused;
+  const shouldShowIsland = !isScrollHidden || isIslandPinned || isCapsuleFocused;
 
   return (
     <>
