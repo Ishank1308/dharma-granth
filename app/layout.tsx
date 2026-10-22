@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { SiteNav } from "@/app/components/SiteNav";
-import { getLibraryCounts, getRealVerseCount } from "@/data/scriptures";
-import { publishedTotals } from "@/lib/ashtavakra";
+import { getSiteShellData } from "@/lib/site-shell-data";
+import { FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
@@ -35,6 +35,7 @@ import "./globals.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
 import { retryImport } from "@/lib/retry-import";
+import { StoragePersistenceRequest } from "@/app/components/StoragePersistenceRequest";
 
 /**
  * Inline script that runs synchronously before React hydrates so the
@@ -46,7 +47,8 @@ const THEME_INIT_SCRIPT = `
 (function () {
   try {
     var t = localStorage.getItem('dharma-theme');
-    if (t === 'sunset' || t === 'night' || t === 'day' || t === 'paper') {
+    var fixedThemes = ${JSON.stringify(FIXED_THEME_IDS)};
+    if (fixedThemes.indexOf(t) !== -1) {
       document.documentElement.setAttribute('data-theme', t);
     } else if (t === 'auto') {
       var d = new Date();
@@ -200,12 +202,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const ashtavakraTotals = publishedTotals();
-  const archiveVerses = getRealVerseCount() + ashtavakraTotals.verses;
+  const shell = getSiteShellData();
 
   return (
     <html lang="hi" suppressHydrationWarning>
       <head>
+        <meta name="dharma-library-verse-count" content={String(shell.libraryVerses)} />
+        <meta name="dharma-theme-options" content={THEME_IDS.join(',')} />
+        <meta name="dharma-ui-script" content="Devanagari,Latin" />
         {/* Preload only critical font files to minimize layout shifts (CLS) and accelerate LCP */}
         <link
           rel="preload"
@@ -243,11 +247,11 @@ export default function RootLayout({
             Skip to main content
           </a>
           <SiteNav
-            libraryVerses={archiveVerses}
-            gitaChapters={getLibraryCounts("bhagavadgita").chapters}
-            gitaVerses={getLibraryCounts("bhagavadgita").verses}
-            ashtavakraChapters={ashtavakraTotals.chapters}
-            ashtavakraVerses={ashtavakraTotals.verses}
+            libraryVerses={shell.libraryVerses}
+            gitaChapters={shell.gita.chapters}
+            gitaVerses={shell.gita.verses}
+            ashtavakraChapters={shell.ashtavakra.chapters}
+            ashtavakraVerses={shell.ashtavakra.verses}
           />
           <div id="main-content" tabIndex={-1} className="outline-none pb-16 lg:pb-0">
             <ErrorBoundary name="Main Content">
@@ -263,6 +267,7 @@ export default function RootLayout({
           <TactileLayer />
           <OfflineIndicator />
           <ServiceWorkerRegister />
+          <StoragePersistenceRequest />
           <PwaInstallBanner />
         </ThemeProvider>
       </body>

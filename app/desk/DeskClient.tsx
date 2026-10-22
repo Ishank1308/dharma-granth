@@ -16,6 +16,7 @@ import { WeeklyGoal } from './WeeklyGoal';
 import { Reminders } from './Reminders';
 import { SavedConcepts } from './SavedConcepts';
 import { StorageInfo } from './StorageInfo';
+import { useConnectivity } from '@/lib/useConnectivity';
 
 const NOTES_KEY = 'dharma.notes';
 const QUEUE_KEY = 'dharma.desk.queue';
@@ -66,7 +67,7 @@ export function DeskClient() {
   const [queue, setQueue] = useState<QueueItem[]>([]);
   const [recent, setRecent] = useState<ChapterVisit[]>([]);
   const [journeyProgress, setJourneyProgress] = useState<Record<string, string[]>>({});
-  const [online, setOnline] = useState(true);
+  const online = useConnectivity();
   const [cached, setCached] = useState<number | null>(null);
   const [pin, setPin] = useState<PinRecord | null>(null);
   const [locked, setLocked] = useState(false);
@@ -90,18 +91,12 @@ export function DeskClient() {
   useEffect(() => {
     load();
     setReady(true);
-    setOnline(navigator.onLine);
-    const on = () => setOnline(true);
-    const off = () => setOnline(false);
-    window.addEventListener('online', on);
-    window.addEventListener('offline', off);
     if ('caches' in window) {
       caches.keys()
         .then((names) => Promise.all(names.map((n) => caches.open(n).then((c) => c.keys()))))
         .then((all) => setCached(all.reduce((n, k) => n + k.length, 0)))
         .catch(() => setCached(null));
     }
-    return () => { window.removeEventListener('online', on); window.removeEventListener('offline', off); };
   }, [load]);
 
   const flash = (m: string) => setMsg(m);
@@ -189,10 +184,12 @@ export function DeskClient() {
         <p className="mt-2 text-sm text-dharma-muted">
           <strong className="text-dharma-text">Stored only in this browser.</strong> No account, nothing uploaded. Clearing your browser data, or using another device, will not carry this over unless you export a backup. Notes are never shared by the share buttons.
         </p>
-        <p className="mt-2 inline-flex items-center gap-2 rounded-full border border-dharma-border px-3 py-1 text-sm text-dharma-muted" role="status">
-          {online ? <Wifi className="h-3.5 w-3.5" aria-hidden="true" /> : <WifiOff className="h-3.5 w-3.5" aria-hidden="true" />}
-          {online ? 'Online' : 'Offline mode active: your saved items are still here.'}
-        </p>
+        {online !== null ? (
+          <p className="mt-2 inline-flex items-center gap-2 rounded-full border border-dharma-border px-3 py-1 text-sm text-dharma-muted" role="status">
+            {online ? <Wifi className="h-3.5 w-3.5" aria-hidden="true" /> : <WifiOff className="h-3.5 w-3.5" aria-hidden="true" />}
+            {online ? 'Online' : 'Offline mode active: your saved items are still here.'}
+          </p>
+        ) : null}
       </header>
 
       {msg && <p role="status" aria-live="polite" className="rounded-lg bg-sky-50 px-3 py-2 text-sm text-sky-950 dark:bg-sky-950/30 dark:text-sky-100">{msg}</p>}
@@ -312,6 +309,7 @@ export function DeskClient() {
 
           <Section id="settings-h" title="Language and reader settings" titleHi="भाषा एवं सेटिंग">
             <p className="text-dharma-muted">Reader settings (text size, language, depth, focus mode) are saved in this browser. Change them from the settings button on any verse, or <Link href="/start" className="underline underline-offset-2">redo Start My Journey</Link>.</p>
+            <BackupRestore />
           </Section>
 
           <Section id="pin-h" title="Optional PIN" titleHi="वैकल्पिक पिन">
@@ -328,8 +326,6 @@ export function DeskClient() {
             )}
             {pinMsg && <p role="status" className="mt-2 text-dharma-muted">{pinMsg}</p>}
           </Section>
-
-          <BackupRestore />
 
           <div className="flex justify-end">
             <button type="button" onClick={clearAll} className="focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-rose-300 px-4 text-sm font-semibold text-rose-700 hover:bg-rose-50 dark:border-rose-900/50 dark:text-rose-300 dark:hover:bg-rose-950/30">

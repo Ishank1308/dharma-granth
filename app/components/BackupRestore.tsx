@@ -1,14 +1,16 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import { Download, Upload } from 'lucide-react';
-import { createBackup, restoreBackup } from '@/lib/backup';
+import { createBackup, restoreBackup, type BackupRestoreMode } from '@/lib/backup';
 
 const MAX_BACKUP_BYTES = 5 * 1024 * 1024;
 
-/** Export / import of bookmarks, notes and progress, which live only in this browser. */
+/** Export / import of local bookmarks, notes, settings and reading/practice progress. */
 export function BackupRestore() {
   const fileInput = useRef<HTMLInputElement>(null);
+  const groupId = useId();
+  const [mode, setMode] = useState<BackupRestoreMode>('merge');
   const [message, setMessage] = useState('');
 
   function download() {
@@ -18,15 +20,13 @@ export function BackupRestore() {
       const a = document.createElement('a');
       a.href = url;
       a.download = `dharma-granth-backup-${new Date().toISOString().slice(0, 10)}.json`;
-      // Some browsers only start the download if the link is in the DOM, and
-      // revoking the URL straight away can cancel it.
       document.body.appendChild(a);
       a.click();
       a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 10_000);
-      setMessage('बैकअप डाउनलोड हो गया · Backup downloaded.');
+      window.setTimeout(() => URL.revokeObjectURL(url), 10_000);
+      setMessage('बैकअप डाउनलोड हो गया · JSON backup downloaded.');
     } catch {
-      setMessage('बैकअप नहीं बन सका (ब्राउज़र स्टोरेज बंद हो सकता है) · Could not create a backup; browser storage may be blocked.');
+      setMessage('बैकअप नहीं बन सका · Could not create a backup; browser storage may be blocked.');
     }
   }
 
@@ -40,38 +40,60 @@ export function BackupRestore() {
       reset();
       return;
     }
-    if (!window.confirm('इससे इस ब्राउज़र के वर्तमान बुकमार्क, नोट्स और प्रगति बदल सकते हैं। जारी रखें?\n\nThis will overwrite matching bookmarks, notes and progress in this browser. Continue?')) {
+
+    const choice = mode === 'merge'
+      ? 'Merge keeps other local data and replaces matching keys with the imported values.'
+      : 'Replace removes all Dharma Granth data in this browser before restoring the file.';
+    if (!window.confirm(`${choice}\n\n${mode === 'merge' ? 'मिलाएँ' : 'प्रतिस्थापित करें'}? जारी रखें?`)) {
       reset();
       return;
     }
+
     try {
-      const count = restoreBackup(await file.text());
+      const count = restoreBackup(await file.text(), mode);
       setMessage(`${count} items restored — reloading… · ${count} आइटम पुनर्स्थापित`);
-      setTimeout(() => window.location.reload(), 900);
-    } catch {
-      setMessage('यह फ़ाइल मान्य बैकअप नहीं है · This is not a valid backup file.');
+      window.setTimeout(() => window.location.reload(), 900);
+    } catch (error) {
+      const reason = error instanceof Error ? error.message : '';
+      setMessage(reason.includes('unsupported') || reason.includes('supported')
+        ? 'यह बैकअप संस्करण समर्थित नहीं है · This backup version is not supported.'
+        : 'यह फ़ाइल मान्य बैकअप नहीं है · This is not a valid backup file.');
+    } finally {
+      reset();
     }
-    reset();
   }
 
   return (
-    <section aria-labelledby="backup-heading" className="mt-10 rounded-2xl border border-saffron-200 bg-white/60 p-5 dark:bg-white/5">
+    <section aria-labelledby="backup-heading" className="mt-6 rounded-2xl border border-saffron-200 bg-white/60 p-5 dark:bg-white/5">
       <h2 id="backup-heading" className="text-lg font-serif font-bold text-dharma-text">
-        बैकअप · Backup
+        बैकअप और पुनर्स्थापन · Backup &amp; Restore
       </h2>
       <p className="mt-1 text-sm text-dharma-muted">
-        Your bookmarks, notes and progress are saved only in this browser. Download a copy to move them to another device.
+        Your practice and study data stays in this browser. Export a JSON copy to move it to another device; no account is needed.
       </p>
+
+      <fieldset className="mt-4 grid gap-2 sm:grid-cols-2">
+        <legend className="mb-2 text-sm font-semibold text-dharma-text">Import behavior · आयात विकल्प</legend>
+        <label htmlFor={`${groupId}-merge`} className="flex cursor-pointer items-start gap-2 rounded-xl border border-dharma-border p-3 text-sm">
+          <input id={`${groupId}-merge`} type="radio" name={`${groupId}-mode`} value="merge" checked={mode === 'merge'} onChange={() => setMode('merge')} className="mt-1 accent-orange-700" />
+          Merge · मिलाएँ — Keep other local entries; imported values replace matching keys.
+        </label>
+        <label htmlFor={`${groupId}-replace`} className="flex cursor-pointer items-start gap-2 rounded-xl border border-dharma-border p-3 text-sm">
+          <input id={`${groupId}-replace`} type="radio" name={`${groupId}-mode`} value="replace" checked={mode === 'replace'} onChange={() => setMode('replace')} className="mt-1 accent-orange-700" />
+          Replace · बदलें — Remove all current Dharma Granth data before importing.
+        </label>
+      </fieldset>
+
       <div className="mt-4 flex flex-wrap gap-3">
-        <button type="button" onClick={download} className="inline-flex items-center gap-2 rounded-lg bg-saffron-600 px-4 py-2 text-sm font-medium text-white hover:bg-saffron-700">
-          <Download className="h-4 w-4" aria-hidden /> Export
+        <button type="button" onClick={download} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-saffron-600 px-4 py-2 text-sm font-medium text-white hover:bg-saffron-700">
+          <Download className="h-4 w-4" aria-hidden="true" /> Export JSON
         </button>
-        <button type="button" onClick={() => fileInput.current?.click()} className="inline-flex items-center gap-2 rounded-lg border border-saffron-300 px-4 py-2 text-sm font-medium text-saffron-800 hover:bg-saffron-50 dark:text-saffron-200">
-          <Upload className="h-4 w-4" aria-hidden /> Import
+        <button type="button" onClick={() => fileInput.current?.click()} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-saffron-300 px-4 py-2 text-sm font-medium text-saffron-800 hover:bg-saffron-50 dark:text-saffron-200">
+          <Upload className="h-4 w-4" aria-hidden="true" /> Import JSON
         </button>
-        <input ref={fileInput} type="file" accept="application/json,.json" className="hidden" onChange={(e) => upload(e.target.files?.[0])} />
+        <input ref={fileInput} type="file" accept="application/json,.json" className="hidden" onChange={(event) => void upload(event.target.files?.[0])} />
       </div>
-      <p role="status" className="mt-3 text-sm text-dharma-muted">{message}</p>
+      <p role="status" aria-live="polite" className="mt-3 text-sm text-dharma-muted">{message}</p>
     </section>
   );
 }

@@ -33,6 +33,7 @@ const ContributeMeaningModal = dynamic(() => import('./ContributeMeaningModal').
 import { VerseCard } from './VerseCard';
 import { ReadingDepthSwitch } from '@/app/components/reader/ReadingDepthSwitch';
 import { useReadingDepth } from '@/lib/reading-depth';
+import { useConnectivity } from '@/lib/useConnectivity';
 import { VerseText } from './VerseText';
 import type { VerseInsight } from '@/lib/verse-insights';
 const MobileFocusMode = dynamic(() => import('./MobileFocusMode').then((m) => m.MobileFocusMode), { ssr: false });
@@ -143,6 +144,7 @@ type State =
   | { kind: 'error'; message: string };
 
 export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {} }: Props) {
+  const isOnline = useConnectivity();
   const curatedVerseSet = useMemo(
     () => new Set(curatedVerseIds.map((id) => String(id))),
     [curatedVerseIds],
@@ -970,7 +972,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   }
 
   if (state.kind === 'error') {
-    const offline = typeof navigator !== 'undefined' && navigator.onLine === false;
+    const offline = isOnline === false;
     return (
       <div
         role="alert"

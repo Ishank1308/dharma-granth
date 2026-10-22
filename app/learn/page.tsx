@@ -7,6 +7,7 @@ import { useStudyProgress } from '@/lib/useStudyProgress';
 import { ManuscriptDivider, PalmLeafBorder } from '@/app/components/ManuscriptDivider';
 import { CalmProgress } from '@/app/components/CalmProgress';
 import { SadhanaPortability } from '@/app/components/SadhanaPortability';
+import { BackupRestore } from '@/app/components/BackupRestore';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { JsonLd } from '@/app/components/JsonLd';
 import { courseListLd, pageLd } from '@/lib/jsonld';
@@ -578,6 +579,7 @@ export default function LearnPage() {
 
       <div className="max-w-6xl mx-auto px-6 pb-16">
         <SadhanaPortability />
+        <BackupRestore />
       </div>
     </main>
   );

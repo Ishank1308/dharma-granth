@@ -1,12 +1,13 @@
 'use client';
 
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { AlertTriangle, Home, RotateCcw } from 'lucide-react';
 import { ErrorRecoveryVerse } from './components/ErrorRecoveryVerse';
 import {
   canAttemptChunkReload,
   isChunkLoadError,
+  isChunkReloadInProgress,
   markNoindex,
   reloadOnceWithCacheBust,
 } from '@/lib/error-recovery';
@@ -20,11 +21,11 @@ export default function Error({
 }) {
   const isChunkError = isChunkLoadError(error);
 
-  useLayoutEffect(() => {
-    console.error('[dharma-granth] route error:', error);
+  useEffect(() => {
+    if (!isChunkError) console.error('[dharma-granth] route error:', error);
     const unmark = markNoindex();
-    if (isChunkError && canAttemptChunkReload()) {
-      reloadOnceWithCacheBust();
+    if (isChunkError && !reloadOnceWithCacheBust() && !isChunkReloadInProgress()) {
+      console.error('[dharma-granth] route chunk error after automatic recovery:', error);
     }
     return unmark;
   }, [error, isChunkError]);
@@ -35,20 +36,11 @@ export default function Error({
     } else reset();
   };
 
-  // If this is a chunk error and we haven't exhausted our reload guard, trigger reload immediately
-  // and show a calm transition state so the user never sees a flashed error UI.
-  if (isChunkError && canAttemptChunkReload()) {
-    if (typeof window !== 'undefined') {
-      reloadOnceWithCacheBust();
-    }
+  // This is a transient state while the effect performs the one-time reload.
+  if (isChunkError && (canAttemptChunkReload() || isChunkReloadInProgress())) {
     return (
       <main className="min-h-screen bg-dharma-bg flex items-center justify-center px-6 py-24">
         <meta name="robots" content="noindex, nofollow" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var k='dharma.chunk-retry';var last=Number(sessionStorage.getItem(k)||0);if(!last||Date.now()-last>=60000){sessionStorage.setItem(k,String(Date.now()));var u=new URL(window.location.href);u.searchParams.set('_r',String(Date.now()));window.location.replace(u.toString());}}catch(e){}})();`,
-          }}
-        />
         <div className="max-w-md w-full text-center">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-saffron-100 dark:bg-saffron-950/60 text-saffron-700 dark:text-saffron-400 mb-4 animate-spin">
             <RotateCcw className="w-5 h-5" />

@@ -8,6 +8,42 @@
   NEXT_TELEMETRY_DISABLED = "1"
 
 [[redirects]]
+  from = "/start-here"
+  to = "/start/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/start-here/"
+  to = "/start/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/start"
+  to = "/start/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/topics"
+  to = "/topics/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sadhana"
+  to = "/practice/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sadhana/"
+  to = "/practice/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/404.html"
   status = 404

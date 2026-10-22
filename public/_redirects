@@ -1,4 +1,16 @@
 # Cloudflare Pages redirects (GitHub Pages ignores this file). Trailing slashes everywhere.
+/start-here /start/ 301
+/start-here/ /start/ 301
+/start /start/ 301
+/topics /topics/ 301
+/sadhana /practice/ 301
+/sadhana/ /practice/ 301
+/scriptures /scriptures/ 301
+/practice /practice/ 301
+/learn /learn/ 301
+/privacy /privacy/ 301
+/terms /terms/ 301
+/contact /contact/ 301
 /wisdom /wisdom-for-life/ 301
 /wisdom/ /wisdom-for-life/ 301
 /guidance/:slug /wisdom-for-life/:slug/ 301
@@ -35,5 +47,3 @@
 /topics/discipline-habit-formation/ /wisdom-for-life/discipline/ 301
 /topics/:slug /wisdom-for-life/:slug/ 301
 /topics/:slug/ /wisdom-for-life/:slug/ 301
-/topics /wisdom-for-life/ 301
-/topics/ /wisdom-for-life/ 301

@@ -2,7 +2,7 @@
 
 import React, { Component, type ErrorInfo, type ReactNode } from 'react';
 import { AlertCircle, RotateCcw } from 'lucide-react';
-import { canAttemptChunkReload, isChunkLoadError, reloadOnceWithCacheBust } from '@/lib/error-recovery';
+import { canAttemptChunkReload, isChunkLoadError, isChunkReloadInProgress, reloadOnceWithCacheBust } from '@/lib/error-recovery';
 import { ErrorRecoveryVerse } from './ErrorRecoveryVerse';
 
 interface ErrorBoundaryProps {
@@ -28,13 +28,16 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error(
-      `[ErrorBoundary: ${this.props.name || 'Component'}] caught error:`,
-      error,
-      errorInfo.componentStack,
-    );
-    if (isChunkLoadError(error) && canAttemptChunkReload()) {
-      reloadOnceWithCacheBust();
+    if (isChunkLoadError(error)) {
+      if (!reloadOnceWithCacheBust() && !isChunkReloadInProgress()) {
+        console.error(`[ErrorBoundary: ${this.props.name || 'Component'}] chunk error after automatic recovery:`, error, errorInfo.componentStack);
+      }
+    } else {
+      console.error(
+        `[ErrorBoundary: ${this.props.name || 'Component'}] caught error:`,
+        error,
+        errorInfo.componentStack,
+      );
     }
   }
 
@@ -51,6 +54,14 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
   render() {
     if (this.state.hasError) {
+      if (isChunkLoadError(this.state.error) && (canAttemptChunkReload() || isChunkReloadInProgress())) {
+        return (
+          <section role="status" aria-live="polite" className="my-4 mx-auto max-w-lg rounded-2xl border border-saffron-200 bg-dharma-bg p-5 text-center text-dharma-text">
+            <p className="font-semibold" lang="hi">नवीनतम पृष्ठ लोड हो रहा है…</p>
+            <p className="mt-1 text-sm text-dharma-muted" lang="en">Refreshing the latest site assets…</p>
+          </section>
+        );
+      }
       if (this.props.fallback) {
         return (
           <>

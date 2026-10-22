@@ -28,7 +28,7 @@ import {
   isTanpuraActive,
 } from '@/lib/sacred-audio';
 import { recordSadhanaActivity, useSadhanaStreak } from '@/lib/sadhana-streak';
-import { formatIstLong, istDate } from '@/lib/ist';
+import { istDate } from '@/lib/ist';
 import { SacredShareModal } from '@/app/components/share/SacredShareModal';
 
 export function DailyVerse() {
@@ -44,7 +44,11 @@ export function DailyVerse() {
     const today = getTodayWisdom();
     setWisdom(today);
     setDateStr(
-      formatIstLong()
+      new Intl.DateTimeFormat(navigator.language || 'en-IN', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+      }).format(new Date())
     );
 
     // Check if challenge completed today

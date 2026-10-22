@@ -1,3 +1,5 @@
+import { isChunkLoadError, reloadOnceWithCacheBust } from '@/lib/error-recovery';
+
 export interface RetryImportOptions {
   /** Number of additional attempts after the initial load. */
   retries?: number;
@@ -17,7 +19,10 @@ export async function retryImport<T>(
     try {
       return await loader();
     } catch (error) {
-      if (attempt >= retryCount) throw error;
+      if (attempt >= retryCount) {
+        if (error instanceof Error && isChunkLoadError(error)) reloadOnceWithCacheBust();
+        throw error;
+      }
 
       const exponentialDelay = baseDelay * 2 ** attempt;
       const jitter = exponentialDelay * 0.25 * Math.random();

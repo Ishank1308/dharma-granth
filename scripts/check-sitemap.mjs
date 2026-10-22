@@ -136,9 +136,16 @@ for (const [label, loc] of [
   ['chapter page', `${ORIGIN}/scripture/bhagavadgita/chapter/2/`],
   ['verse page', `${ORIGIN}/scripture/bhagavadgita/chapter/2/verse/47/`],
   ['sources page', `${ORIGIN}/sources/`],
+  ['topics index', `${ORIGIN}/topics/`],
+  ['privacy page', `${ORIGIN}/privacy/`],
+  ['terms page', `${ORIGIN}/terms/`],
+  ['contact page', `${ORIGIN}/contact/`],
 ]) {
   if (!seen.has(loc)) fail('coverage', `${label} ${loc} is not in the sitemap`);
 }
+
+if (counts.scriptures < 65) fail('coverage', `scriptures sitemap has ${counts.scriptures} entries; expected all 65+ library texts`);
+if (noCanonical > 0) fail('canonical', `${noCanonical} sitemap page(s) have no canonical URL`);
 
 if (errors.length) {
   console.error(`✗ sitemap check failed (${errors.length}):`);

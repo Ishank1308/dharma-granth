@@ -5,6 +5,7 @@ import { LayoutGrid, LayoutList, Search, SlidersHorizontal, X } from 'lucide-rea
 import type { ScriptureCategory } from '@/data/types';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { useConnectivity } from '@/lib/useConnectivity';
 import {
   EMPTY_FILTERS,
   LANGUAGES,
@@ -101,21 +102,6 @@ function writeUrl(f: Filters, sort: SortMode, view: ViewMode): string {
   return qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
 }
 
-function useOnline(): boolean {
-  const [online, setOnline] = useState(true);
-  useEffect(() => {
-    const update = () => setOnline(navigator.onLine);
-    update();
-    window.addEventListener('online', update);
-    window.addEventListener('offline', update);
-    return () => {
-      window.removeEventListener('online', update);
-      window.removeEventListener('offline', update);
-    };
-  }, []);
-  return online;
-}
-
 export function ScriptureLibraryClient({
   scriptures,
   categories,
@@ -131,7 +117,7 @@ export function ScriptureLibraryClient({
   const [viewMode, setViewMode] = useState<ViewMode>('compact');
   const [sheetOpen, setSheetOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
-  const online = useOnline();
+  const online = useConnectivity();
   const [saved, setSaved] = useLocalStorage<string[]>(SAVED_KEY, NO_SAVED);
 
   const items = useMemo(() => (Array.isArray(scriptures) ? scriptures.map(withFacts) : []), [scriptures]);
@@ -314,7 +300,7 @@ export function ScriptureLibraryClient({
 
   return (
     <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6">
-      {!online && (
+      {online === false && (
         <div className="pt-5">
           <OfflineBanner />
         </div>

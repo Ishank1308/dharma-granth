@@ -35,6 +35,12 @@ const KEY_PAGES = [
   '/learn/',
   '/learn/pathways/',
   '/practice/',
+  '/start/',
+  '/start-here/',
+  '/topics/',
+  '/privacy/',
+  '/terms/',
+  '/contact/',
   '/concepts/',
   '/dictionary/',
   '/wisdom-for-life/',
@@ -96,6 +102,88 @@ for (const route of KEY_PAGES) {
   const visibility = firstH1Visibility(html);
   if (visibility === null) fail(route, 'no <h1> in the exported HTML (content rendered client-only?)');
   else if (visibility) fail(route, `<h1> is server-rendered hidden, ${visibility}`);
+}
+
+// ── Shared static shell: a single export must ship the same header counters and themes everywhere ──
+{
+  const pages = [];
+  const walkPages = (dir) => {
+    for (const name of readdirSync(dir)) {
+      const path = join(dir, name);
+      const stat = statSync(path);
+      if (stat.isDirectory()) {
+        if (!['_next', 'og', 'pinterest', 'data'].includes(name)) walkPages(path);
+      } else if (name === 'index.html') pages.push(path);
+    }
+  };
+  walkPages(DIST);
+  const expectedThemes = 'day,sunset,paper,night,auto';
+  const observedCounts = new Set();
+  let missingShell = 0;
+  let badEncoding = 0;
+  let kaithiPages = 0;
+  let errorFallbacks = 0;
+  for (const path of pages) {
+    const html = readFileSync(path, 'utf8');
+    const route = path.slice(DIST.length).replace(/\\/g, '/').replace(/\/index\.html$/, '/') || '/';
+    const countMeta = /<meta name="dharma-library-verse-count" content="(\d+)"\s*\/?\s*>/i.exec(html)?.[1];
+    const themeMeta = /<meta name="dharma-theme-options" content="([^"]+)"\s*\/?\s*>/i.exec(html)?.[1];
+    const uiScript = /<meta name="dharma-ui-script" content="([^"]+)"\s*\/?\s*>/i.exec(html)?.[1];
+    const header = /<nav\b[^>]*data-site-header="true"[^>]*data-library-verse-count="(\d+)"[^>]*data-theme-options="([^"]+)"/i.exec(html);
+    if (!countMeta || !themeMeta || !uiScript || !header || !/lang="hi"/.test(html)) {
+      missingShell++;
+      if (missingShell <= 5) fail(route, 'shared shell metadata/header missing from exported HTML');
+      continue;
+    }
+    observedCounts.add(countMeta);
+    if (header[1] !== countMeta) fail(route, `header count ${header[1]} differs from shared metadata ${countMeta}`);
+    if (themeMeta !== expectedThemes || header[2] !== expectedThemes) fail(route, `theme controls differ from expected options (${expectedThemes})`);
+    if (uiScript !== 'Devanagari,Latin') fail(route, `unexpected UI script declaration: ${uiScript}`);
+    if (!/[\u0900-\u097F]/.test(html) || !/[A-Za-z]/.test(html) || html.includes('�')) badEncoding++;
+    if (/[\u{11080}-\u{110CF}]/u.test(html)) kaithiPages++;
+    if (/त्रुटि निवारण · Error Recovery|This page could not load|Part of the page failed to download/.test(html)) errorFallbacks++;
+  }
+  if (pages.length === 0) fail('shell', 'no exported HTML pages found');
+  if (observedCounts.size !== 1) fail('shell', `header verse counts vary across pages: ${[...observedCounts].join(', ') || 'none'}`);
+  if (missingShell > 5) fail('shell', `${missingShell} pages are missing shared header metadata`);
+  if (badEncoding > 0) fail('encoding', `${badEncoding} exported page(s) are missing Devanagari/Latin text or contain the replacement character`);
+  if (kaithiPages > 0) fail('encoding', `${kaithiPages} exported page(s) contain Kaithi UI glyphs (U+11080–U+110CF)`);
+  if (errorFallbacks > 0) fail('SSG', `${errorFallbacks} exported page(s) contain the manual chunk recovery screen`);
+  if (!/dharma-library-verse-count/.test(pageHtml('/') ?? '')) fail('/', 'home page lacks the shared library count');
+}
+
+// The hero search must keep the query and open grouped results; it must not route to a first match.
+{
+  const hero = readFileSync(join(ROOT, 'app/components/HeroSection.tsx'), 'utf8');
+  const searchTypes = readFileSync(join(ROOT, 'lib/search-types.ts'), 'utf8');
+  if (!/onSubmit=\{\(event\) => \{[\s\S]*?openGlobalSearch\(query\)/.test(hero)) {
+    fail('hero search', 'form submit does not open global search with the entered query');
+  }
+  if (!/SEARCH_GROUPS\.map\(\(group\)/.test(readFileSync(join(ROOT, 'app/components/GlobalSearchModal.tsx'), 'utf8'))) {
+    fail('hero search', 'global search does not render categorized result groups');
+  }
+  for (const group of ['verse', 'scripture', 'concept', 'topic', 'learning']) {
+    if (!new RegExp(`id: '${group}'`).test(searchTypes)) fail('hero search', `search category ${group} is missing`);
+  }
+}
+
+// Redirects and privacy pages are part of the static-host contract as well as the app routes.
+{
+  const cloudflareRules = readFileSync(join(ROOT, 'public/_redirects'), 'utf8');
+  const netlifyRules = readFileSync(join(ROOT, 'netlify.toml'), 'utf8');
+  for (const [label, rules, pattern] of [
+    ['Cloudflare', cloudflareRules, /^\/start-here\s+\/start\//m],
+    ['Cloudflare', cloudflareRules, /^\/sadhana\/?\s+\/practice\//m],
+    ['Cloudflare', cloudflareRules, /^\/topics\s+\/topics\//m],
+    ['Netlify', netlifyRules, /from\s*=\s*"\/start-here"[\s\S]*?to\s*=\s*"\/start\/"/],
+    ['Netlify', netlifyRules, /from\s*=\s*"\/sadhana"[\s\S]*?to\s*=\s*"\/practice\/"/],
+  ]) {
+    if (!pattern.test(rules)) fail('routing', `${label} missing required route redirect: ${pattern}`);
+  }
+  const practice = pageHtml('/practice/') ?? '';
+  if (/Friday, September 18|Sharad Navaratri begins.{0,30}23 days|Durga Ashtami.{0,30}30 days/i.test(practice)) {
+    fail('/practice/', 'static HTML contains stale, build-time daily or festival dates');
+  }
 }
 
 // ── Splash screen is home-only (readers arriving from search go straight in) ──
@@ -226,15 +314,17 @@ for (const file of readdirSync(SOURCE).filter((f) => f.endsWith('.json'))) {
 }
 
 // ── Page-weight budgets (measured 2026-09-29: worst page 1.15 MB raw / 240 KB gz,
-// first-load JS 215–260 KB gz). Headroom is deliberate; a breach means a change
-// made pages meaningfully heavier and should be looked at, not waved through.
+// first-load JS 215–260 KB gz). Long, detail-rich chapters can have larger raw
+// HTML because Next serializes the verse props for hydration as well as rendering
+// semantic HTML. Guard both raw output size and compressed transfer size.
 //
 // First-load JS counts only scripts a modern browser downloads. Next's
 // polyfills file (~30 KB gz) carries `noModule`, which every browser that runs
 // the site's ES modules skips, so it is not counted. The limit was lowered from
 // 320 KB (when it was counted) to 300 KB so the check stays as tight: chapter 2
 // measures ~288 KB, i.e. ~12 KB of real headroom.
-const MAX_HTML_BYTES = 1.5 * 1024 * 1024;
+const MAX_HTML_BYTES = 2.5 * 1024 * 1024;
+const MAX_HTML_GZ = 450 * 1024;
 const MAX_FIRST_LOAD_JS_GZ = 350 * 1024;
 // ── No page server-renders content hidden until hydration ──
 // A framer `initial={{ opacity: 0 }}`, `whileInView`, or `AnimatePresence` without `initial={false}` writes
@@ -244,6 +334,7 @@ const MAX_FIRST_LOAD_JS_GZ = 350 * 1024;
 const HIDDEN_ELEMENT = /<([a-z][\w-]*)\b[^>]*\sstyle="[^"]*\bopacity:\s*0(?![.\d])[^"]*"[^>]*>/gi;
 {
   let worst = { size: 0, path: '' };
+  let worstGz = { size: 0, path: '' };
   let hiddenPages = 0;
   const hiddenExamples = new Map();
   const walk = (dir) => {
@@ -254,8 +345,13 @@ const HIDDEN_ELEMENT = /<([a-z][\w-]*)\b[^>]*\sstyle="[^"]*\bopacity:\s*0(?![.\d
         if (!['_next', 'og', 'pinterest', 'data'].includes(name)) walk(p);
       } else if (name === 'index.html') {
         if (st.size > worst.size) worst = { size: st.size, path: p };
+        const html = readFileSync(p);
+        if (st.size > MAX_HTML_GZ) {
+          const compressedSize = gzipSync(html).length;
+          if (compressedSize > worstGz.size) worstGz = { size: compressedSize, path: p };
+        }
         let hidden = false;
-        for (const m of readFileSync(p, 'utf8').matchAll(HIDDEN_ELEMENT)) {
+        for (const m of html.toString('utf8').matchAll(HIDDEN_ELEMENT)) {
           if (/\saria-hidden="true"/.test(m[0])) continue;
           hidden = true;
           // Group by the tag and its classes, so one component shows once however many pages carry it.
@@ -269,6 +365,9 @@ const HIDDEN_ELEMENT = /<([a-z][\w-]*)\b[^>]*\sstyle="[^"]*\bopacity:\s*0(?![.\d
   walk(DIST);
   if (worst.size > MAX_HTML_BYTES) {
     fail('weight', `${worst.path} is ${Math.round(worst.size / 1024)} KB (budget ${MAX_HTML_BYTES / 1024} KB)`);
+  }
+  if (worstGz.size > MAX_HTML_GZ) {
+    fail('weight', `${worstGz.path} is ${Math.round(worstGz.size / 1024)} KB gz (budget ${MAX_HTML_GZ / 1024} KB)`);
   }
   if (hiddenPages > 0) {
     fail('hidden', `${hiddenPages} page(s) server-render content at opacity:0 until hydration:`);

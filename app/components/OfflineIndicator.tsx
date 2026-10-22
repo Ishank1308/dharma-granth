@@ -1,38 +1,25 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Wifi, WifiOff } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useConnectivity } from '@/lib/useConnectivity';
 
 export function OfflineIndicator() {
-  const [isOffline, setIsOffline] = useState(false);
+  const isOnline = useConnectivity();
   const [showReconnected, setShowReconnected] = useState(false);
+  const previousOnline = useRef<boolean | null>(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    const wasOffline = previousOnline.current === false;
+    previousOnline.current = isOnline;
+    if (isOnline !== true || !wasOffline) return;
+    setShowReconnected(true);
+    const timer = window.setTimeout(() => setShowReconnected(false), 3500);
+    return () => window.clearTimeout(timer);
+  }, [isOnline]);
 
-    const handleOffline = () => {
-      setIsOffline(true);
-      setShowReconnected(false);
-    };
-
-    const handleOnline = () => {
-      setIsOffline(false);
-      setShowReconnected(true);
-      const timer = setTimeout(() => setShowReconnected(false), 3500);
-      return () => clearTimeout(timer);
-    };
-
-    setIsOffline(!navigator.onLine);
-
-    window.addEventListener('offline', handleOffline);
-    window.addEventListener('online', handleOnline);
-
-    return () => {
-      window.removeEventListener('offline', handleOffline);
-      window.removeEventListener('online', handleOnline);
-    };
-  }, []);
+  const isOffline = isOnline === false;
 
   return (
     <AnimatePresence>

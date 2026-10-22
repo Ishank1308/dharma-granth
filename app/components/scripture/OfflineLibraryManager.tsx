@@ -4,29 +4,23 @@ import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import { Trash2, WifiOff } from 'lucide-react';
 import { formatBytes, readManifest, removeScripture, totalBytes, type OfflineManifest } from '@/lib/offline-scriptures';
+import { useConnectivity } from '@/lib/useConnectivity';
 
 /** Lists the scriptures saved for offline reading, their total size, and a remove button for each. */
 export function OfflineLibraryManager() {
   const [manifest, setManifest] = useState<OfflineManifest>({});
-  const [online, setOnline] = useState(true);
+  const online = useConnectivity();
   const [quota, setQuota] = useState('');
 
   const refresh = useCallback(() => setManifest(readManifest()), []);
 
   useEffect(() => {
     refresh();
-    setOnline(navigator.onLine);
-    const on = () => setOnline(true);
-    const off = () => setOnline(false);
-    window.addEventListener('online', on);
-    window.addEventListener('offline', off);
     window.addEventListener('dharma-offline-changed', refresh);
     navigator.storage?.estimate?.().then((e) => {
       if (e.usage != null && e.quota != null) setQuota(`${formatBytes(e.usage)} of about ${formatBytes(e.quota)} used by this site`);
     });
     return () => {
-      window.removeEventListener('online', on);
-      window.removeEventListener('offline', off);
       window.removeEventListener('dharma-offline-changed', refresh);
     };
   }, [refresh]);
@@ -35,7 +29,7 @@ export function OfflineLibraryManager() {
 
   return (
     <section aria-labelledby="offline-heading" className="mt-8">
-      {!online && (
+      {online === false && (
         <p role="status" className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50 px-3 py-1.5 text-sm font-semibold text-amber-900 dark:bg-amber-950/40 dark:text-amber-100">
           <WifiOff className="h-4 w-4" aria-hidden="true" /> You are offline. Saved scriptures still open.
         </p>

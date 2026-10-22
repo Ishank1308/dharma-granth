@@ -48,7 +48,7 @@ import {
   LANGUAGE_OPTIONS,
 } from '@/lib/useLanguagePreference';
 import { triggerTactileFeedback } from '@/lib/haptics';
-import { formatCountDevanagari } from '@/lib/holdings-label';
+import { THEME_IDS } from '@/lib/site-theme';
 import { readActiveStreak } from '@/lib/reading-history';
 import { OPEN_SEARCH_EVENT, type OpenSearchDetail } from '@/lib/search-events';
 
@@ -92,7 +92,7 @@ const desktopDiscoveryItems = [
   { label: 'पठन योजनाएँ', description: 'Reading Plans — 18 दिवसीय गीता आदि', href: '/learn/plans' },
   { label: 'जिज्ञासा समाधान', description: 'Scripture FAQs — श्रुति-स्मृति व नीति', href: '/learn/faq' },
   { label: 'स्रोत पारदर्शिता', description: 'Source Library — मूल पांडुलिपियाँ व संस्करण', href: '/sources' },
-  { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — तनाव, भय, क्रोध व धर्मसंकट का समाधान', href: '/guidance' },
+  { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — उद्वेग, भय, क्रोध व धर्मसंकट का समाधान', href: '/guidance' },
   { label: 'दैनिक श्लोक', description: 'Daily Verse — आज का श्लोक WhatsApp पर भेजें', href: '/daily-verse' },
   { label: 'पंचांग', description: 'दैनिक वैदिक काल व ऋतु', href: '/panchang' },
   { label: 'अवधारणाएँ', description: 'मुख्य दार्शनिक विचार', href: '/concepts' },
@@ -187,6 +187,7 @@ export function SiteNav({
   ashtavakraChapters: number;
   ashtavakraVerses: number;
 }) {
+  const formatCount = (value: number) => new Intl.NumberFormat('en-IN').format(value);
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [discoverOpen, setDiscoverOpen] = useState(false);
@@ -435,30 +436,30 @@ export function SiteNav({
       id: 'library',
       label: 'सम्पूर्ण ग्रंथालय',
       labelEn: 'Scripture Library',
-      description: `पुस्तकालय में ${formatCountDevanagari(libraryVerses)} श्लोक`,
+      description: `पुस्तकालय में ${formatCount(libraryVerses)} श्लोक`,
       href: '/scriptures',
       icon: BookOpen,
-      badge: formatCountDevanagari(libraryVerses),
+      badge: formatCount(libraryVerses),
       badgeType: 'accent',
     },
     {
       id: 'gita',
       label: 'श्रीमद्भगवद्गीता',
       labelEn: 'Bhagavad Gita',
-      description: `${formatCountDevanagari(gitaChapters)} अध्याय · ${formatCountDevanagari(gitaVerses)} श्लोक`,
+      description: `${formatCount(gitaChapters)} अध्याय · ${formatCount(gitaVerses)} श्लोक`,
       href: '/scripture/bhagavadgita',
       icon: Flame,
-      badge: `${formatCountDevanagari(gitaVerses)} श्लोक`,
+      badge: `${formatCount(gitaVerses)} श्लोक`,
       badgeType: 'accent',
     },
     {
       id: 'ashtavakra',
       label: 'अष्टावक्र गीता',
       labelEn: 'Ashtavakra Gita',
-      description: `${formatCountDevanagari(ashtavakraChapters)} प्रकरण · ${formatCountDevanagari(ashtavakraVerses)} श्लोक`,
+      description: `${formatCount(ashtavakraChapters)} प्रकरण · ${formatCount(ashtavakraVerses)} श्लोक`,
       href: '/ashtavakra',
       icon: BookOpen,
-      badge: `${formatCountDevanagari(ashtavakraVerses)} श्लोक`,
+      badge: `${formatCount(ashtavakraVerses)} श्लोक`,
       badgeType: 'accent',
     },
     {
@@ -489,7 +490,7 @@ export function SiteNav({
       id: 'wisdom-for-life',
       label: 'जीवन मार्गदर्शन',
       labelEn: 'Wisdom for Life',
-      description: '12 जीवन-विषय · तनाव, भय, कर्तव्य व आत्मज्ञान',
+      description: '12 जीवन-विषय · उद्वेग, भय, कर्तव्य व आत्मज्ञान',
       href: '/wisdom-for-life',
       icon: Compass,
       badge: 'जीवन-विषय',
@@ -557,6 +558,9 @@ export function SiteNav({
     <>
       {/* ── Compact Sticky Header ────────────────────────────────────────── */}
       <nav
+        data-site-header="true"
+        data-library-verse-count={libraryVerses}
+        data-theme-options={THEME_IDS.join(',')}
         className="sticky top-0 z-40 border-b border-dharma-border/80 bg-dharma-card/95 backdrop-blur-xl shadow-[0_4px_24px_rgba(45,42,38,0.05)] transition-colors duration-200"
         aria-label="Primary navigation"
       >
@@ -704,7 +708,7 @@ export function SiteNav({
                 aria-hidden="true"
               >
                 <span className="size-1.5 rounded-full bg-saffron-600 animate-status-pulse" />
-                <span className="tracking-tight">{formatCountDevanagari(libraryVerses)} श्लोक पुस्तकालय में</span>
+                <span className="tracking-tight">{formatCount(libraryVerses)} श्लोक पुस्तकालय में</span>
               </div>
 
               {/* Desktop Search Button */}

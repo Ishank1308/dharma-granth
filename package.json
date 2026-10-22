@@ -40,6 +40,8 @@
     "content:validate": "tsx scripts/content-integrity-report.ts --strict",
     "content:all": "tsx scripts/content-integrity-report.ts --strict --counts --links",
     "test:holdings": "tsx scripts/test-holdings-label.ts",
+    "test:backup": "tsx scripts/test-backup.ts",
+    "test:festival-dates": "tsx scripts/test-festival-dates.ts",
     "test:search-normalizer": "tsx scripts/test-search-normalizer.ts",
     "test:search-queries": "tsx scripts/test-search-queries.ts",
     "ocr:scan": "tsx scripts/ocr-granth-pipeline.ts",

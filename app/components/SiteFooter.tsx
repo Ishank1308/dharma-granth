@@ -74,7 +74,7 @@ export function SiteFooter() {
                 <strong className="text-dharma-text">Scholarly Transparency:</strong> AI-assisted translations and commentaries are flagged where they appear. They are not yet independently reviewed.
               </li>
               <li>
-                <Link href="/methodology" className="font-semibold text-saffron-700 underline-offset-2 hover:underline dark:text-saffron-400">
+                <Link href="/methodology" className="inline-flex min-h-11 items-center font-semibold text-saffron-700 sm:min-h-0 underline-offset-2 hover:underline dark:text-saffron-400">
                   How this site is made →
                 </Link>
               </li>
@@ -89,7 +89,8 @@ export function SiteFooter() {
             <h3 className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
               Navigation & Corrections
             </h3>
-            <nav className="flex flex-col space-y-2 text-sm text-dharma-muted">
+            {/* 44px rows on touch screens; the desktop list keeps its tight spacing. */}
+            <nav className="flex flex-col text-sm text-dharma-muted [&>a]:py-3 sm:space-y-2 sm:[&>a]:py-0">
               <Link href="/scriptures" className="transition hover:text-saffron-700">
                 ग्रंथालय (Scripture Library)
               </Link>
@@ -162,7 +163,10 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} Dharma Granth. Dedicated to knowledge and spiritual self-discovery.
           </p>
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 [&>a]:inline-flex [&>a]:min-h-11 [&>a]:items-center sm:gap-y-0 sm:[&>a]:min-h-0">
+            <Link href="/privacy/" className="transition hover:text-dharma-text">Privacy · गोपनीयता</Link>
+            <Link href="/terms/" className="transition hover:text-dharma-text">Terms · शर्तें</Link>
+            <Link href="/contact/" className="transition hover:text-dharma-text">Contact · संपर्क</Link>
             <Link href="/practice" className="transition hover:text-dharma-text">
               Private Sadhana
             </Link>

@@ -55,6 +55,7 @@ import {
 } from '@/lib/sacred-soundscape';
 import { triggerPranaToast } from '@/lib/prana-capsule-store';
 import { executeSearchWithWorker } from '@/lib/workers/search-worker-client';
+import { useConnectivity } from '@/lib/useConnectivity';
 
 export type { SearchResultItem } from '@/lib/search';
 
@@ -340,7 +341,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
   const [query, setQuery] = useState('');
   const [selectedGroup, setSelectedGroup] = useState<SearchResultGroup | null>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [isOnline, setIsOnline] = useState(true);
+  const isOnline = useConnectivity();
   const [chaptersReady, setChaptersReady] = useState(isChapterIndexLoaded);
   const [coreReady, setCoreReady] = useState(isCoreIndexLoaded);
   const [shardToken, setShardToken] = useState('');
@@ -368,18 +369,6 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
         a.titleHi.toLowerCase().includes(actionFilter)
     );
   }, [isActionQuery, actionFilter]);
-
-  useEffect(() => {
-    setIsOnline(navigator.onLine);
-    const on = () => setIsOnline(true);
-    const off = () => setIsOnline(false);
-    window.addEventListener('online', on);
-    window.addEventListener('offline', off);
-    return () => {
-      window.removeEventListener('online', on);
-      window.removeEventListener('offline', off);
-    };
-  }, []);
 
   useEffect(() => {
     if (!isOpen || chaptersReady) return;
@@ -666,7 +655,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                 enterKeyHint="search"
               />
               <div className="ml-2 flex shrink-0 items-center gap-2">
-                {!isOnline && (
+                {isOnline === false && (
                   <span className="inline-flex items-center gap-1 rounded-full border border-amber-600/40 bg-amber-500/10 px-2 py-0.5 text-[11px] font-medium text-amber-900 dark:text-amber-200">
                     <WifiOff className="h-3 w-3" aria-hidden="true" />
                     <span className="hidden sm:inline">Offline</span>
@@ -731,7 +720,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             )}
 
             {/* Notices: offline, loading, load failure, did-you-mean */}
-            {!isOnline && (
+            {isOnline === false && (
               <div role="status" className="flex items-start gap-2 border-b border-amber-600/30 bg-amber-500/10 px-4 py-2.5 text-xs text-amber-950 dark:text-amber-100">
                 <WifiOff className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 <p>

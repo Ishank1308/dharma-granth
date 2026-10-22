@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { isChunkLoadError, markNoindex, reloadOnceWithCacheBust } from '@/lib/error-recovery';
+import { canAttemptChunkReload, isChunkLoadError, isChunkReloadInProgress, markNoindex, reloadOnceWithCacheBust } from '@/lib/error-recovery';
 import { ERROR_RECOVERY_VERSE } from '@/lib/error-recovery-verse';
 
 export default function GlobalError({
@@ -12,11 +12,27 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error('[dharma-granth] global error:', error);
+    const isChunkError = isChunkLoadError(error);
+    if (!isChunkError) console.error('[dharma-granth] global error:', error);
     const unmark = markNoindex();
-    if (isChunkLoadError(error)) reloadOnceWithCacheBust();
+    if (isChunkError && !reloadOnceWithCacheBust() && !isChunkReloadInProgress()) {
+      console.error('[dharma-granth] global chunk error after automatic recovery:', error);
+    }
     return unmark;
   }, [error]);
+
+  if (isChunkLoadError(error) && (canAttemptChunkReload() || isChunkReloadInProgress())) {
+    return (
+      <html lang="hi">
+        <body style={{ margin: 0, minHeight: '100vh', display: 'grid', placeItems: 'center', background: '#fdfbf7', color: '#2d2a26', fontFamily: 'Arial, sans-serif' }}>
+          <main role="status" aria-live="polite" style={{ padding: 24, textAlign: 'center' }}>
+            <p>नवीनतम पृष्ठ लोड हो रहा है…</p>
+            <p lang="en">Refreshing the latest site assets…</p>
+          </main>
+        </body>
+      </html>
+    );
+  }
 
   return (
     <html lang="en">
