@@ -10,9 +10,6 @@ import type { FullScripture } from "./lib/scripture-schema";
 
 const ROOT = resolve(__dirname, "..");
 const PUB_PATH = resolve(ROOT, "public/data/scriptures-full/brahmasutra.json");
-const AI_LATIN_REPAIRS = JSON.parse(
-  readFileSync(resolve(ROOT, "scripts/brahmasutra-hindi-repairs.json"), "utf8"),
-) as Record<string, string>;
 
 /**
  * Common Vedanta philosophical terms mapped from English to dignified Hindi.
@@ -346,23 +343,15 @@ async function main(): Promise<void> {
   const scripture = JSON.parse(readFileSync(PUB_PATH, "utf8")) as FullScripture;
   let filled = 0;
   let kept = 0;
-  let repaired = 0;
 
   for (const ch of scripture.chapters) {
     for (const v of ch.verses) {
-      const key = String(v.number);
-      const repair = AI_LATIN_REPAIRS[key];
-      if (repair && v.hindiSource === "ai" && /[A-Za-z]{4,}/.test(v.hindi || "")) {
-        v.hindi = repair;
-        repaired++;
-        continue;
-      }
-
       if (v.hindi && v.hindi.trim()) {
         kept++;
         continue;
       }
 
+      const key = String(v.number);
       let translation = CLASSICAL_SUTRAS[key];
 
       if (!translation) {
@@ -388,9 +377,7 @@ async function main(): Promise<void> {
   } as FullScripture["source"];
 
   writeFileSync(PUB_PATH, JSON.stringify(scripture, null, 2) + "\n", "utf8");
-  console.log(
-    `✓ Repaired ${repaired} AI Hindi meanings; seeded ${filled} missing translations; kept ${kept} existing meanings.`,
-  );
+  console.log(`✓ Seeded ${filled} Hindi sutra translations (kept ${kept} curated). Total: ${filled + kept}/564.`);
 }
 
 main().catch((err) => {
