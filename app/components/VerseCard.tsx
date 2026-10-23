@@ -37,6 +37,7 @@ import { ShareVerseButton } from './ShareVerseButton';
 import { GlossaryText } from './GlossaryTooltip';
 import { getVerseGraphicClass, getVerseGraphicStyle } from './verse-background';
 import { ContentLabelBadge } from './ContentLabels';
+import { ModernContextBlock } from './ModernContextBlock';
 import { detectChandas } from '@/lib/chandas-detector';
 import { speakSanskritTerm } from '@/lib/sacred-soundscape';
 import { triggerTactileFeedback } from '@/lib/haptics';
@@ -1280,12 +1281,11 @@ export function VerseCard({
                             {meaning.editorial && <DraftBadge lang="hi" />}
                           </span>
                         </div>
-                        <p
+                        <ModernContextBlock
+                          content={lesson}
                           lang={lessonIsHi ? 'hi' : 'en'}
-                          className={`text-sm font-medium leading-relaxed text-dharma-text md:text-base ${lessonIsHi ? 'font-devanagari leading-loose' : ''}`}
-                        >
-                          {lesson}
-                        </p>
+                          className={lessonIsHi ? 'leading-loose' : ''}
+                        />
                       </div>
                     )}
                   </motion.div>

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://dharmagranth.in/schemas/granth-ocr-page.json",
+  "$id": "https://dharmagranth.dev/schemas/granth-ocr-page.json",
   "title": "Granth OCR page",
   "type": "object",
   "required": ["source_pdf", "pdf_page", "engine", "confidence", "text_raw", "text_normalized"],

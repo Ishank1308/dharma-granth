@@ -13,7 +13,7 @@ import { getAllMananaItems, saveMananaItem, type StoredMananaItem } from './gran
 export interface SadhanaSyncPayload {
   version: 1;
   exportedAt: string;
-  source: 'dharmagranth.in';
+  source: 'dharmagranth.dev' | 'dharmagranth.in';
   localStorageState: Record<string, string>;
   mananaState: StoredMananaItem[];
 }
@@ -150,7 +150,7 @@ export async function collectSadhanaPayload(): Promise<SadhanaSyncPayload> {
   return {
     version: 1,
     exportedAt: new Date().toISOString(),
-    source: 'dharmagranth.in',
+    source: 'dharmagranth.dev',
     localStorageState,
     mananaState,
   };

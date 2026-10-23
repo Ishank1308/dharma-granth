@@ -142,7 +142,7 @@ export function parseJournalBackup(raw: string): JournalEntry[] {
     }
     timestamp(file.exportedAt, 'exportedAt');
     entries = file.entries;
-  } else if (file.version === 2 && file.source === 'dharmagranth.in') {
+  } else if (file.version === 2 && (file.source === 'dharmagranth.in' || file.source === 'dharmagranth.dev')) {
     // Full Study V2 exports predate the journal-only file; restore just their journal records.
     entries = file.journal;
   } else {

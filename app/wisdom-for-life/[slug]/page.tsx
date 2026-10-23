@@ -49,7 +49,7 @@ export function generateMetadata({
       images: [DEFAULT_OG_IMAGE],
       title: `${title} — Dharma Granth`,
       description,
-      url: `https://dharmagranth.in/wisdom-for-life/${topic.slug}/`,
+      url: `https://dharmagranth.dev/wisdom-for-life/${topic.slug}/`,
     },
   };
 }

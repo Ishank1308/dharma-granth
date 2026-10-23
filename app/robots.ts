@@ -4,7 +4,7 @@ import type { MetadataRoute } from 'next';
 export const dynamic = 'force-static';
 
 // Same origin as the canonical tags and the sitemap (NEXT_PUBLIC_SITE_URL).
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in').replace(/\/+$/, '');
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev').replace(/\/+$/, '');
 
 /**
  * Only the personal, client-side pages are disallowed (they hold the reader's

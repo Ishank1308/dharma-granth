@@ -117,7 +117,7 @@ export default function ScripturePage({ params }: PageProps) {
 
   // JSON-LD structured data: emit a Book entity for any catalog entry, with workExample
   // pointing to a Chapter entity for chapters that actually have verse data.
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   const workExample =
     meta.hasData && chapterPreviews.length > 0
       ? chapterPreviews

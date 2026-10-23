@@ -32,14 +32,23 @@ assert.equal(backup.schemaVersion, 1);
 assert.equal(backup.exportedAt, '2026-10-23T10:10:00.000Z');
 assert.deepEqual(parseJournalBackup(JSON.stringify(backup)), [entry]);
 
-const fullStudyV2 = {
+const fullStudyV2In = {
   version: 2,
   source: 'dharmagranth.in',
   exportedAt: '2026-10-23T10:10:00.000Z',
   journal: [entry],
   annotations: [{ note: 'must not be imported by journal restore' }],
 };
-assert.deepEqual(parseJournalBackup(JSON.stringify(fullStudyV2)), [entry]);
+assert.deepEqual(parseJournalBackup(JSON.stringify(fullStudyV2In)), [entry]);
+
+const fullStudyV2Dev = {
+  version: 2,
+  source: 'dharmagranth.dev',
+  exportedAt: '2026-10-23T10:10:00.000Z',
+  journal: [entry],
+  annotations: [{ note: 'must not be imported by journal restore' }],
+};
+assert.deepEqual(parseJournalBackup(JSON.stringify(fullStudyV2Dev)), [entry]);
 
 assert.throws(() => parseJournalBackup('{broken'), /valid JSON/);
 assert.throws(() => parseJournalBackup(JSON.stringify({ ...backup, schemaVersion: 99 })), /version/);

@@ -6,13 +6,13 @@
  *
  * "Changed" means a sitemap <lastmod> within the last DAYS days. Sitemap dates come from git history
  * (lib/content-dates.ts), so only pages whose source really changed are submitted. The key file is
- * public/<KEY>.txt and is served at https://dharmagranth.in/<KEY>.txt.
+ * public/<KEY>.txt and is served at https://dharmagranth.dev/<KEY>.txt.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 
 const KEY = 'fa298db023656200e497147438ebcbf0';
-const HOST = 'dharmagranth.in';
+const HOST = 'dharmagranth.dev';
 const DAYS = 3;
 const LIMIT = 10000; // IndexNow accepts up to 10,000 URLs per request
 const send = process.argv.includes('--send');

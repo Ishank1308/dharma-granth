@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: 'पञ्चाङ्ग · आज का पंचांग व दैनिक काल दर्शन (Vedic Panchang) — Dharma Granth',
     description:
       'दैनिक पञ्चाङ्ग: तिथि, पक्ष, नक्षत्र, योग, करण, ऋतु, सूर्योदय और सूर्यास्त समय। A clear, authentic educational Panchang for daily contemplation and study.',
-    url: 'https://dharmagranth.in/panchang/',
+    url: 'https://dharmagranth.dev/panchang/',
   },
 };
 

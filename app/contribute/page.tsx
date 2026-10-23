@@ -27,14 +27,14 @@ const contributeJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: 'ऐच्छिक सहयोग व सेवा · Voluntary Contribution — Dharma Granth',
-  url: 'https://dharmagranth.in/contribute/',
+  url: 'https://dharmagranth.dev/contribute/',
   description:
     'Voluntary, zero-commission, direct UPI and verified QR contribution system for sustaining Dharma Granth free and ad-free scripture library.',
   inLanguage: ['hi', 'sa', 'en'],
   publisher: {
     '@type': 'Organization',
     name: 'Dharma Granth',
-    url: 'https://dharmagranth.in/',
+    url: 'https://dharmagranth.dev/',
   },
 };
 

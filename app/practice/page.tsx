@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'साधना — Daily Practice — Dharma Granth',
     description:
       'A private daily practice dashboard: daily verse, reflection prompts, reading plans, japa counter, meditation timer, and journals.',
-    url: 'https://dharmagranth.in/practice',
+    url: 'https://dharmagranth.dev/practice',
   },
 };
 

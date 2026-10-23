@@ -254,7 +254,7 @@ export default function VersePage({ params }: PageProps) {
   const science = comment?.science ?? verse.science;
   const lesson = comment?.lifeLesson ?? verse.lifeLesson;
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   const verseHref = versePageHref(meta.id, chapterId, params.verseId) ?? '';
   const pageUrl = `${siteUrl}${verseHref.endsWith('/') ? verseHref : `${verseHref}/`}`;
   const ref = `${meta.title} ${chapterId}.${params.verseId}`;

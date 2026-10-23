@@ -20,9 +20,9 @@ concurrency:
 
 env:
   NEXT_TELEMETRY_DISABLED: 1
-  # Custom domain (dharmagranth.in) serves from the root — no base path.
+  # Custom domain (dharmagranth.dev) serves from the root — no base path.
   NEXT_PUBLIC_BASE_PATH: ""
-  NEXT_PUBLIC_SITE_URL: https://dharmagranth.in
+  NEXT_PUBLIC_SITE_URL: https://dharmagranth.dev
   CLOUDFLARE_PROJECT: dharma-granth
 
 jobs:
@@ -136,4 +136,4 @@ jobs:
       # canary is enabled.
       - name: Verify deployed RSC payload parity
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
-        run: npm run verify:rsc-canary -- --local dist/scripture/bhagavadgita/chapter/2/index.txt --url https://dharmagranth.in/scripture/bhagavadgita/chapter/2/index.txt
+        run: npm run verify:rsc-canary -- --local dist/scripture/bhagavadgita/chapter/2/index.txt --url https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/index.txt

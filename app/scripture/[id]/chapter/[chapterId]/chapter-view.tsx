@@ -274,7 +274,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   const prevLabel = prevHref ? neighbourLabel(meta.id, chapterId - 1) : undefined;
   const nextLabel = nextHref ? neighbourLabel(meta.id, chapterId + 1) : undefined;
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   // Share links are built here, at build time: the WhatsApp link is a plain anchor (no JS),
   // and the page's own canonical URL (with the trailing slash the site is served at) is what gets shared.
   const shareUrl = `${siteUrl}${chapterPartHref(meta.id, chapter.id, part?.part ?? 1)}/`;

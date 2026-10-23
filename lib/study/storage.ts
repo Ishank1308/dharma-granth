@@ -544,7 +544,7 @@ export async function exportFullStudyBackup(): Promise<DharmaStudyBackupV2> {
   return {
     version: 2,
     exportedAt: new Date().toISOString(),
-    source: 'dharmagranth.in',
+    source: 'dharmagranth.dev',
     stats: {
       journalCount: journal.length,
       annotationCount: annotations.length,
@@ -563,7 +563,7 @@ export async function exportFullStudyBackup(): Promise<DharmaStudyBackupV2> {
 }
 
 export async function restoreFullStudyBackup(backup: DharmaStudyBackupV2): Promise<boolean> {
-  if (!backup || backup.version !== 2 || backup.source !== 'dharmagranth.in') {
+  if (!backup || backup.version !== 2 || (backup.source !== 'dharmagranth.in' && backup.source !== 'dharmagranth.dev')) {
     throw new Error('Invalid or incompatible Dharma Granth backup file');
   }
 

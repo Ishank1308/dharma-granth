@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: `${title} — Dharma Granth`,
       description,
-      url: `https://dharmagranth.in/concepts/${concept.id}/`,
+      url: `https://dharmagranth.dev/concepts/${concept.id}/`,
       images: [DEFAULT_OG_IMAGE],
     },
   };
@@ -152,7 +152,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
             <ShareCardButton
               reference={concept.label}
               concept={{ term: concept.sanskrit, transliteration: concept.transliteration, definition: concept.simpleDefinition.en }}
-              url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in'}/concepts/${concept.id}`}
+              url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev'}/concepts/${concept.id}`}
             />
             <ShareChips
               title={`${concept.label} (${concept.sanskrit})`}

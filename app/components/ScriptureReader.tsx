@@ -423,7 +423,7 @@ export function ScriptureReader({
     whatsappShareUrl({
       heading: `${scriptureTitle} ${chapterId}.${verse.number} · Dharma Granth`,
       body: [verse.sanskrit ? cleanVerseField(verse.sanskrit) : '', verse.hindi || verse.translation || ''],
-      url: typeof window !== 'undefined' ? window.location.href : 'https://dharmagranth.in/',
+      url: typeof window !== 'undefined' ? window.location.href : 'https://dharmagranth.dev/',
     });
 
   // Share Verse

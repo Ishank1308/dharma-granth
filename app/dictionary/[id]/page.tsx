@@ -33,7 +33,7 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
       images: [DEFAULT_OG_IMAGE],
       title: `${term.term} (${term.sanskrit}) — Dharma Granth Dictionary`,
       description: term.shortDef,
-      url: `https://dharmagranth.in/dictionary/${term.id}/`,
+      url: `https://dharmagranth.dev/dictionary/${term.id}/`,
     },
   };
 }

@@ -67,7 +67,7 @@ export function VerseOfTheDayCompact() {
 
   const handleCopy = async () => {
     if (!item) return;
-    const shareText = `${item.sanskrit}\n\n${item.hindi || item.translation}\n— ${item.scriptureTitle} ${item.chapterId}.${item.verseId}\nhttps://dharmagranth.in${readHref(item.scriptureId, item.chapterId, item.verseId)}`;
+    const shareText = `${item.sanskrit}\n\n${item.hindi || item.translation}\n— ${item.scriptureTitle} ${item.chapterId}.${item.verseId}\nhttps://dharmagranth.dev${readHref(item.scriptureId, item.chapterId, item.verseId)}`;
     try {
       await navigator.clipboard.writeText(shareText);
       setCopied(true);

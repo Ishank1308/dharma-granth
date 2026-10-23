@@ -29,6 +29,7 @@ import type { ReaderSettings } from '@/lib/useReaderSettings';
 import type { VerseInsight } from '@/lib/verse-insights';
 import { AI_COMMENTARY_LABEL } from '@/lib/ai-labels';
 import { VerseTreeStructure, type VerseTreeBranch } from '@/app/components/reader/VerseTreeStructure';
+import { ModernContextBlock } from '@/app/components/ModernContextBlock';
 import Link from 'next/link';
 
 /* ── Type scale: full class strings so Tailwind keeps them ──────────── */
@@ -655,12 +656,11 @@ export function ReaderLayers({
                     badge={aiCommentary}
                     collapsible={perspective === 'researcher'}
                   >
-                    <p
+                    <ModernContextBlock
+                      content={verse.reflection}
                       lang={/[ऀ-ॿ]/.test(verse.reflection) ? 'hi' : 'en'}
-                      className={`whitespace-pre-line text-dharma-text ${tSize} ${/[ऀ-ॿ]/.test(verse.reflection) ? devLeading : latinLeading} ${/[ऀ-ॿ]/.test(verse.reflection) ? 'font-devanagari' : 'font-serif'}`}
-                    >
-                      {verse.reflection}
-                    </p>
+                      className={`${tSize} ${/[ऀ-ॿ]/.test(verse.reflection) ? devLeading : latinLeading}`}
+                    />
                   </Layer>
                 )}
                 {!isQuick && !settings.liteMode && verse.research && (

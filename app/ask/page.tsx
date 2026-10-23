@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: 'धर्म सहायक — पुस्तकालय से जीवन के प्रश्न | Dharma Granth',
     description:
       'Questions about anxiety, anger, duty, and Karma Yoga, answered from verses already in the library.',
-    url: 'https://dharmagranth.in/ask/',
+    url: 'https://dharmagranth.dev/ask/',
     images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
 
 const faqJsonLd = {
   '@context': 'https://schema.org',

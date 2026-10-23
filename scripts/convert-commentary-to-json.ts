@@ -137,6 +137,37 @@ async function main(): Promise<void> {
       if (hidden) console.log(`${name}: ${hidden} filler research notes left out`);
     }
 
+    // Research and practical-life notes that end in the same stock sentence on many verses are generated filler
+    // wrapped around each verse's own text; the whole note is left out (source files are untouched).
+    {
+      const STOCK_MIN = 5;
+      const lastSentence = (text: string) => {
+        const parts = text.split(/(?<=[।?!])\s+/).map((s) => s.trim()).filter(Boolean);
+        return (parts[parts.length - 1] ?? "").replace(/[0-9०-९]+/g, "#");
+      };
+      let stock = 0;
+      for (const field of ["science", "lifeLesson"] as const) {
+        const groups = new Map<string, string[]>();
+        for (const [key, entry] of Object.entries(curated)) {
+          const text = entry[field];
+          if (!text) continue;
+          const tail = lastSentence(text);
+          if (tail.length < 40) continue;
+          groups.set(tail, [...(groups.get(tail) ?? []), key]);
+        }
+        for (const keys of groups.values()) {
+          if (keys.length < STOCK_MIN) continue;
+          for (const key of keys) {
+            const { [field]: _stock, ...kept } = curated[key];
+            stock++;
+            if (kept.explanation || kept.science || kept.lifeLesson) curated[key] = kept;
+            else delete curated[key];
+          }
+        }
+      }
+      if (stock) console.log(`  ${name}: ${stock} stock-sentence research/life notes left out`);
+    }
+
     // Leave out explanation text that is the same template on several different verses (source files are untouched).
     {
       const FIELDS = ["explanation", "science", "lifeLesson"] as const;
@@ -161,27 +192,63 @@ async function main(): Promise<void> {
     // it is published as "" so the shard's own note does not show through.
     const researchPath = path.resolve("data/ai-commentary", `${name}-research.json`);
     if (fs.existsSync(researchPath)) {
-      const research = JSON.parse(fs.readFileSync(researchPath, "utf8")) as Record<string, { science: string; status: string }>;
+      // `science` is the research note (labelled when rewritten); `explanation` and `lifeLesson` are register
+      // corrections of existing text. An empty string withdraws the stored field.
+      const research = JSON.parse(fs.readFileSync(researchPath, "utf8")) as Record<
+        string,
+        { science?: string; explanation?: string | [string, string][]; lifeLesson?: string | [string, string][]; status: string }
+      >;
       let rewritten = 0;
       let withdrawn = 0;
       for (const [key, r] of Object.entries(research)) {
         if (r.status !== "approved") continue;
-        const science = r.science.trim();
-        if (science) {
-          curated[key] = { ...curated[key], science, scienceAi: true };
-          rewritten++;
-        } else {
-          const { scienceAi: _label, ...rest } = curated[key] ?? {};
-          curated[key] = { ...rest, science: "" };
-          withdrawn++;
+        if (typeof r.science === "string") {
+          const science = r.science.trim();
+          if (science) {
+            curated[key] = { ...curated[key], science, scienceAi: true };
+            rewritten++;
+          } else {
+            const { scienceAi: _label, ...rest } = curated[key] ?? {};
+            curated[key] = { ...rest, science: "" };
+            withdrawn++;
+          }
+        }
+        for (const field of ["explanation", "lifeLesson"] as const) {
+          if (field === "lifeLesson" && curated[key]?.lifeLesson?.includes("### आधुनिक संदर्भ")) {
+            continue;
+          }
+          const value = r[field];
+          if (typeof value === "string") {
+            curated[key] = { ...curated[key], [field]: value.trim() };
+            rewritten++;
+          } else if (Array.isArray(value)) {
+            // A list of [old, new] phrase pairs applied to the stored text.
+            let text = curated[key]?.[field] ?? "";
+            for (const [from, to] of value) {
+              // "re:<pattern>" pairs are regular expressions (for example to drop a bracketed English gloss).
+              const next = from.startsWith("re:") ? text.replace(new RegExp(from.slice(3), "gu"), to) : text.split(from).join(to);
+              if (next === text) {
+                console.warn(`⚠ ${name}:${key} ${field}: "${from.slice(0, 30)}" not found in the stored text`);
+                continue;
+              }
+              text = next;
+            }
+            curated[key] = { ...curated[key], [field]: text };
+            rewritten++;
+          }
         }
       }
-      console.log(`${name}: ${rewritten} research notes rewritten, ${withdrawn} withdrawn`);
+      console.log(`${name}: ${rewritten} fields rewritten, ${withdrawn} research notes withdrawn`);
     }
 
     // Pilot records replace any stored entry for their verse (the old text is kept in the source data).
     for (const p of PILOT.filter((x) => x.scriptureId === name)) {
-      curated[p.commentaryKey] = commentaryEntry(p.record) as HiCommentaryFragment[string];
+      const existing = curated[p.commentaryKey];
+      const entry = commentaryEntry(p.record) as HiCommentaryFragment[string];
+      if (existing?.lifeLesson && existing.lifeLesson.includes('### आधुनिक संदर्भ')) {
+        entry.lifeLesson = existing.lifeLesson;
+      }
+      curated[p.commentaryKey] = entry;
     }
 
     const entryCount = Object.keys(curated).length;

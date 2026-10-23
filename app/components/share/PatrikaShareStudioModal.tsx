@@ -125,7 +125,7 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
     layers.coreShift && data.coreShift ? `💡 *मर्म:* ${data.coreShift}` : '',
     '',
     `🔗 *पूरा पाठ एवं अध्ययन:* ${data.url}`,
-    '— *Dharma Granth* (dharmagranth.in)',
+    '— *Dharma Granth* (dharmagranth.dev)',
   ]
     .filter(Boolean)
     .join('\n');
@@ -393,7 +393,7 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
               {/* Card Footer Colophon */}
               <div className="relative z-10 flex items-center justify-between border-t pt-3" style={{ borderColor: 'rgba(150, 150, 150, 0.15)' }}>
                 <span className={`font-mono text-[9px] uppercase tracking-widest ${templateConfig.colophonText}`}>
-                  dharmagranth.in · धर्म ग्रंथ
+                  dharmagranth.dev · धर्म ग्रंथ
                 </span>
                 <span className={`text-[10px] font-devanagari ${templateConfig.colophonText}`}>
                   सत्यमेव जयते

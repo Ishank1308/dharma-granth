@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: 'Wisdom for Life — जीवन के लिए शास्त्रीय मार्गदर्शन — Dharma Granth',
     description:
       'Life questions opened through verses already in the library, without requiring a scripture name first.',
-    url: 'https://dharmagranth.in/wisdom-for-life',
+    url: 'https://dharmagranth.dev/wisdom-for-life',
   },
 };
 

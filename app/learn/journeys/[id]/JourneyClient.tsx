@@ -42,7 +42,7 @@ export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; l
   const [copied, setCopied] = useState(false);
 
   const shareText = encodeURIComponent(
-    `🕉️ *${journey.title} (${journey.titleHi})*\n${journey.objective}\n\n📖 Read with me on Dharma Granth:\nhttps://dharmagranth.in/learn/journeys/${journey.id}/`
+    `🕉️ *${journey.title} (${journey.titleHi})*\n${journey.objective}\n\n📖 Read with me on Dharma Granth:\nhttps://dharmagranth.dev/learn/journeys/${journey.id}/`
   );
 
   return (

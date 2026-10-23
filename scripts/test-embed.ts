@@ -7,15 +7,15 @@ const base = {
   sanskrit: 'कर्मण्येवाधिकारस्ते\nमा फलेषु कदाचन',
   hindi: 'तुम्हारा अधिकार कर्म पर है।',
   english: 'You have a right to action alone.',
-  url: 'https://dharmagranth.in/scripture/bhagavadgita/chapter/2/verse/47/',
+  url: 'https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/verse/47/',
 };
 
 const hi = verseEmbedHtml({ ...base, meaning: 'hindi' });
-assert.match(hi, /^<blockquote cite="https:\/\/dharmagranth\.in\/scripture\/bhagavadgita\/chapter\/2\/verse\/47\/"/);
+assert.match(hi, /^<blockquote cite="https:\/\/dharmagranth\.dev\/scripture\/bhagavadgita\/chapter\/2\/verse\/47\/"/);
 assert.ok(hi.includes('कर्मण्येवाधिकारस्ते<br>मा फलेषु कदाचन'), 'Sanskrit lines keep their break');
 assert.ok(hi.includes('lang="hi"') && hi.includes('तुम्हारा अधिकार'), 'Hindi meaning');
 assert.ok(!hi.includes('You have a right'), 'other language left out');
-assert.ok(hi.includes('<a href="https://dharmagranth.in/scripture/bhagavadgita/chapter/2/verse/47/"'), 'credit link');
+assert.ok(hi.includes('<a href="https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/verse/47/"'), 'credit link');
 
 const en = verseEmbedHtml({ ...base, meaning: 'english' });
 assert.ok(en.includes('lang="en"') && en.includes('You have a right to action alone.'));

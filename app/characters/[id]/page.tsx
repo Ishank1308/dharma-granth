@@ -33,7 +33,7 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
       images: [DEFAULT_OG_IMAGE],
       title: `${character.name} (${character.sanskrit}) — Dharma Granth`,
       description: character.shortDesc,
-      url: `https://dharmagranth.in/characters/${character.id}/`,
+      url: `https://dharmagranth.dev/characters/${character.id}/`,
     },
   };
 }

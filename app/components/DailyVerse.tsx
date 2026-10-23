@@ -296,7 +296,7 @@ export function DailyVerse() {
           translation: wisdom.translation,
           hindi: wisdom.hindi,
           quote: wisdom.practicalTeaching,
-          url: typeof window !== 'undefined' ? `${window.location.origin}${wisdom.href}` : `https://dharmagranth.in${wisdom.href}`,
+          url: typeof window !== 'undefined' ? `${window.location.origin}${wisdom.href}` : `https://dharmagranth.dev${wisdom.href}`,
         }}
       />
     </>
