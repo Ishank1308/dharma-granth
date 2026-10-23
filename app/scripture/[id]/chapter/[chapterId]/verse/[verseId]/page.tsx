@@ -9,7 +9,7 @@ import { VerseDiagrams } from '@/app/components/study/VerseDiagram';
 import { ModernScenarios } from '@/app/components/study/ModernScenarios';
 import { ReviewRequiredNotice } from '@/app/components/study/ReviewRequiredNotice';
 import { CONNECTIONS, verseKey } from '@/data/study-content';
-import { VerseRelatedSection } from '@/app/components/VerseRelatedSection';
+import { RelatedWisdom } from '@/app/components/RelatedWisdom';
 import { VerseReader } from '@/app/components/reader/VerseReader';
 import { getVerseInsight } from '@/lib/verse-insights';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
@@ -20,7 +20,7 @@ import { commentaryFor, verseMeaningSummary } from '@/lib/verse-meaning';
 import { verseOgPath, versePageHref, verseSlug } from '@/lib/verse-paths';
 import { scriptureLastChanged } from '@/lib/content-dates';
 import { cleanVerseField, splitVyakhyaCommentary, verseLines } from '@/lib/verse-format';
-import { getVerseIntegrations } from '@/lib/verse-integrations';
+import { resolveVerseKnowledge } from '@/lib/knowledge-graph';
 import { TrustBadges } from '@/app/components/TrustBadges';
 import { UnderstandPanel } from '@/app/components/understand/UnderstandPanel';
 import { VerseCompletion } from '@/app/components/understand/VerseCompletion';
@@ -30,7 +30,7 @@ import { ActivityRecorder } from '@/app/components/study/ActivityRecorder';
 import { badgesFor, latestReview } from '@/lib/review-badges';
 import { PENDING_CORRECTIONS, REVIEW_RECORDS } from '@/data/review-records';
 import { getScriptureSourceMeta, SCRIPTURE_SOURCES } from '@/data/sources-registry';
-import { getConceptDetail } from '@/data/concept-details';
+import type { VerseLink, VerseQuestionLink } from '@/data/types';
 
 /**
  * One static page per verse for the scriptures in VERSE_PAGE_SCRIPTURE_IDS
@@ -302,13 +302,8 @@ export default function VersePage({ params }: PageProps) {
 
   const chapterName = seeded.chapter.title ?? `अध्याय ${chapterId}`;
 
-  const integrations = getVerseIntegrations(meta.id, chapterId, params.verseId, {
-    sanskrit: verse.sanskrit,
-    transliteration: verse.transliteration,
-    hindi: verse.hindi,
-    translation: verse.translation,
-    explanation,
-  });
+  const tagged = verse as { concepts?: string[]; relatedVerses?: VerseLink[]; relatedQuestions?: VerseQuestionLink[] };
+  const knowledge = resolveVerseKnowledge(meta.id, chapterId, params.verseId, tagged);
 
   const source = (seeded.source ?? {}) as { repo?: string; license?: string; fetchedAt?: string };
   const chapterLinks = readSeededChapterPreviews(meta.id).map((c) => ({
@@ -360,15 +355,15 @@ export default function VersePage({ params }: PageProps) {
       basis: 'A reviewed link from this verse (still marked draft until reviewed).',
     });
   }
-  const topConcept = integrations.concepts.find((concept) => getConceptDetail(concept.id));
+  const topConcept = knowledge.concepts.find((concept) => concept.href.startsWith('/concepts/') && concept.href !== '/concepts/');
   if (topConcept) {
     nextCandidates.push({
-      id: `concept:${topConcept.id}`,
+      id: `concept:${topConcept.href}`,
       kind: 'concept',
-      title: `Explore the concept ${topConcept.label} (${topConcept.sanskrit})`,
-      href: `/concepts/${topConcept.id}`,
-      reason: topConcept.matchType === 'direct' ? `This verse is cited for ${topConcept.label}.` : `This verse touches the idea of ${topConcept.label}.`,
-      basis: 'The concept links recorded for this verse.',
+      title: `Explore the concept ${topConcept.labelEn}${topConcept.sanskrit ? ` (${topConcept.sanskrit})` : ''}`,
+      href: topConcept.href,
+      reason: `This verse is cited for ${topConcept.labelEn}.`,
+      basis: 'A stored concept citation for this verse.',
     });
   }
 
@@ -387,7 +382,7 @@ export default function VersePage({ params }: PageProps) {
           { label: `Verse ${params.verseId}` },
         ]}
       />
-      <ActivityRecorder scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} concepts={integrations.concepts.map((c) => c.id)} />
+      <ActivityRecorder scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} concepts={knowledge.concepts.flatMap((concept) => concept.id ? [concept.id] : [])} />
       <ChapterVisitRecorder
         scriptureId={meta.id}
         scriptureTitle={meta.title}
@@ -452,6 +447,7 @@ export default function VersePage({ params }: PageProps) {
         }
         insight={getVerseInsight(meta.id, chapterId, params.verseId)}
       >
+        <RelatedWisdom knowledge={knowledge} />
         {pedagogical && (
           <UnderstandPanel
             data={pedagogical}
@@ -483,12 +479,6 @@ export default function VersePage({ params }: PageProps) {
         />
         <RelatedTeachings scriptureId={meta.id} chapterId={chapterId} verseNumber={params.verseId} />
         <NextTeachings candidates={nextCandidates} verseId={String(params.verseId)} />
-        <VerseRelatedSection
-          concepts={integrations.concepts}
-          topics={integrations.topics.filter((t) => t.directVerseMatch)}
-          crossReferences={integrations.crossReferences}
-          currentScriptureTitle={meta.title}
-        />
         <VerseCompletion
           reference={ref}
           readerRef={{ scriptureId: meta.id, scriptureTitle: meta.title, scriptureTitleSanskrit: meta.titleSanskrit, chapterId, chapterTitle: chapterName, url: pageUrl }}
