@@ -127,7 +127,7 @@ export function ModernContextBlock({ content, lang = 'hi', className = '' }: Mod
             <span>चिंतन प्रश्न · Self-Reflection</span>
           </div>
           <p className="font-serif text-sm md:text-base font-semibold italic text-dharma-text leading-relaxed">
-            "{parsed.reflectionQuestion}"
+            &ldquo;{parsed.reflectionQuestion}&rdquo;
           </p>
         </section>
       )}
