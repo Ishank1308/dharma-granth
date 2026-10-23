@@ -9,6 +9,7 @@ import { wisdomTopics } from '@/data/wisdom-for-life';
 import { characters } from '@/data/characters';
 import { dictionary } from '@/data/dictionary';
 import { getAllConceptDetails } from '@/data/concept-details';
+import { graphPageIds } from '@/data/knowledge-graph';
 import { learningPaths } from '@/data/learning-paths';
 import { READING_JOURNEYS, isJourneyIndexable } from '@/data/reading-journeys';
 import { festivals } from '@/data/festivals';
@@ -107,8 +108,10 @@ function pagesSection(): MetadataRoute.Sitemap {
   const dictionaryDate = lastChanged('data/dictionary.ts', 'app/dictionary/[id]/page.tsx');
   const dictionaryRoutes = dictionary.map((d) => entry(`/dictionary/${d.id}`, dictionaryDate));
 
-  const conceptDate = lastChanged('data/concept-details.ts', 'app/concepts/[id]/page.tsx');
-  const conceptRoutes = getAllConceptDetails().map((c) => entry(`/concepts/${c.id}`, conceptDate));
+  const conceptDate = lastChanged('data/concept-details.ts', 'data/knowledge-graph.ts', 'app/concepts/[id]/page.tsx');
+  const detailIds = getAllConceptDetails().map((c) => c.id);
+  const conceptIds = detailIds.concat(graphPageIds().filter((id) => detailIds.indexOf(id) === -1));
+  const conceptRoutes = conceptIds.map((id) => entry(`/concepts/${id}`, conceptDate));
 
   const courseDate = lastChanged('data/learning-paths.ts', 'app/learn/[courseId]/page.tsx');
   const courseRoutes = learningPaths.map((p) => entry(`/learn/${p.id}`, courseDate));

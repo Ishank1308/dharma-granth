@@ -6,6 +6,9 @@ import {
   getAllConceptDetails,
   getConceptDetail,
 } from '@/data/concept-details';
+import { graphPageIds } from '@/data/knowledge-graph';
+import { buildGraphPage } from '@/lib/knowledge-graph';
+import { GraphConceptPage, GraphConceptSections } from '../GraphConceptPage';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { JsonLd } from '@/app/components/JsonLd';
 import { pageLd, articleLd, definedTermLd } from '@/lib/jsonld';
@@ -31,15 +34,30 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const all = getAllConceptDetails();
-  return all.map((c) => ({ id: c.id }));
+  const detailIds = getAllConceptDetails().map((c) => c.id);
+  const ids = detailIds.concat(graphPageIds().filter((id) => detailIds.indexOf(id) === -1));
+  return ids.map((id) => ({ id }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolved = await params;
   const concept = getConceptDetail(resolved.id);
+  const graph = buildGraphPage(resolved.id);
   if (!concept) {
-    return { title: 'अवधारणा नहीं मिली (Concept Not Found)' };
+    if (!graph) return { title: 'अवधारणा नहीं मिली (Concept Not Found)' };
+    const title = `${graph.label} (${graph.sanskrit}) — शास्त्रीय अर्थ व दर्शन`;
+    const description = clipDescription(graph.overviewEn || graph.overviewHi);
+    return {
+      title,
+      description,
+      alternates: { canonical: `/concepts/${graph.id}/` },
+      openGraph: {
+        title: `${title} — Dharma Granth`,
+        description,
+        url: `https://dharmagranth.dev/concepts/${graph.id}/`,
+        images: [DEFAULT_OG_IMAGE],
+      },
+    };
   }
 
   const title = `${concept.label} (${concept.sanskrit}) — शास्त्रीय अर्थ व दर्शन`;
@@ -61,9 +79,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ConceptDetailPage({ params }: PageProps) {
   const resolved = await params;
   const concept = getConceptDetail(resolved.id);
+  const graph = buildGraphPage(resolved.id);
 
   if (!concept) {
-    notFound();
+    if (!graph) notFound();
+    return <GraphConceptPage model={graph} />;
   }
 
   const categoryLabels: Record<string, { en: string; hi: string }> = {
@@ -478,6 +498,8 @@ export default async function ConceptDetailPage({ params }: PageProps) {
             </div>
           </section>
         )}
+
+        {graph ? <GraphConceptSections model={graph} /> : null}
 
         {/* ── Section 7: Sources & Academic Citations ───────────────────────── */}
         <section aria-labelledby="sources-heading" className="p-6 rounded-2xl bg-dharma-card/50 border border-dharma-border space-y-3">

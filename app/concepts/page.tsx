@@ -6,6 +6,8 @@ import { ConceptGraph } from '@/app/components/ConceptGraph';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { concepts } from '@/data/concepts';
 import { getAllConceptDetails, getConceptDetail } from '@/data/concept-details';
+import { GRAPH_CONCEPTS } from '@/data/knowledge-graph';
+import { graphConceptLink } from '@/lib/knowledge-graph';
 
 export const metadata: Metadata = {
   title: 'अवधारणा ज्ञान ग्राफ (Concepts Knowledge Graph)',
@@ -68,6 +70,29 @@ export default function ConceptsPage() {
           </FadeUp>
         </div>
       </section>
+
+      <nav aria-label="पच्चीस मूल अवधारणाएँ" className="max-w-6xl mx-auto px-6 pt-8">
+        <h2 className="font-serif text-xl font-bold text-dharma-text">
+          <span lang="hi" className="font-devanagari">पच्चीस मूल अवधारणाएँ</span>
+        </h2>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {GRAPH_CONCEPTS.map((concept) => {
+            const link = graphConceptLink(concept.id);
+            if (!link) return null;
+            return (
+              <li key={concept.id}>
+                <Link
+                  href={link.href}
+                  className="inline-flex min-h-[44px] items-center rounded-full border border-dharma-border bg-dharma-card px-3 text-sm text-dharma-text hover:border-saffron-400"
+                >
+                  <span lang="sa" className="font-devanagari">{concept.sanskrit}</span>
+                  <span className="ml-2 text-dharma-muted">{concept.label}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
       {/* ── Graph ────────────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 -mt-8 relative z-10 pb-12">
