@@ -118,7 +118,7 @@ export function MananaSelectionBar() {
   const handleCopyQuote = async (e: React.MouseEvent) => {
     e.stopPropagation();
     triggerTactileFeedback('selection');
-    const quote = `> "${selectedText}"\n— dharmagranth.in (${window.location.pathname})`;
+    const quote = `> "${selectedText}"\n— dharmagranth.dev (${window.location.pathname})`;
     try {
       await navigator.clipboard.writeText(quote);
       setCopied(true);

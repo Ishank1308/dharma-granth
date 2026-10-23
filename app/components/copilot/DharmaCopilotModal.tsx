@@ -401,7 +401,7 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
                               type="button"
                               onClick={() =>
                                 handleCopy(
-                                  `« ${verse.sanskrit} »\n\n${verse.refHi}\n\n${verse.hindi}\n\n${verse.english}\n\nRead more at DharmaGranth.in`
+                                  `« ${verse.sanskrit} »\n\n${verse.refHi}\n\n${verse.hindi}\n\n${verse.english}\n\nRead more at DharmaGranth.dev`
                                 )
                               }
                               className="flex items-center gap-1 text-xs text-stone-400 hover:text-amber-200 transition"
@@ -521,7 +521,7 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
                           type="button"
                           onClick={() =>
                             handleCopy(
-                              `« ${activeCurated.sanskrit} »\n\n${activeCurated.shlokaRef}\n\n${activeCurated.hindi}\n\n${activeCurated.english}\n\n⚡ Modern Insight: ${activeCurated.genZSimplified}\n\nRead more at DharmaGranth.in`
+                              `« ${activeCurated.sanskrit} »\n\n${activeCurated.shlokaRef}\n\n${activeCurated.hindi}\n\n${activeCurated.english}\n\n⚡ Modern Insight: ${activeCurated.genZSimplified}\n\nRead more at DharmaGranth.dev`
                             )
                           }
                           className="flex items-center gap-1 text-xs text-stone-400 hover:text-amber-200 transition"

@@ -12,7 +12,7 @@ import path from 'node:path';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..', '..');
 const DIST = path.join(ROOT, 'dist');
-const ORIGIN = 'https://dharmagranth.in';
+const ORIGIN = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
 
 const read = (p) => fs.readFileSync(p, 'utf8');
 const locs = (file) => [...read(path.join(DIST, file)).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());

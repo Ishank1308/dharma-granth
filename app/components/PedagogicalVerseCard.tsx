@@ -72,7 +72,7 @@ export function PedagogicalVerseCard({
 
   // The verse page's absolute URL; read from window, so only call it in the browser (event handlers, or once the dialog is open).
   function verseUrl(): string {
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.in';
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.dev';
     return shareVerseUrl(origin, data.scriptureId, data.chapterId, data.verseId);
   }
 

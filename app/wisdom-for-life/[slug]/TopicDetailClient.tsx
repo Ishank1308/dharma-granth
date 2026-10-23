@@ -61,7 +61,7 @@ export function TopicDetailClient({
   const [imageNote, setImageNote] = useState('');
 
   const handleCopyVerse = (verse: ScriptureReference) => {
-    const textToCopy = `${verse.referenceDisplay}\n\n${verse.sanskritDevanagari}\n\n${verse.sanskritTransliteration}\n\n[Hindi]: ${verse.literalTranslationHi}\n\n[English]: ${verse.literalTranslationEn}\n\n— Via Dharma Granth (https://dharmagranth.in/wisdom-for-life/${topic.slug})`;
+    const textToCopy = `${verse.referenceDisplay}\n\n${verse.sanskritDevanagari}\n\n${verse.sanskritTransliteration}\n\n[Hindi]: ${verse.literalTranslationHi}\n\n[English]: ${verse.literalTranslationEn}\n\n— Via Dharma Granth (https://dharmagranth.dev/wisdom-for-life/${topic.slug})`;
     navigator.clipboard.writeText(textToCopy).then(() => {
       setCopiedVerseId(verse.id);
       setTimeout(() => setCopiedVerseId(null), 2500);
@@ -72,7 +72,7 @@ export function TopicDetailClient({
     const href = whatsappShareUrl({
       heading: verse.referenceDisplay,
       body: [verse.sanskritDevanagari, verse.literalTranslationHi || verse.literalTranslationEn],
-      url: `https://dharmagranth.in/wisdom-for-life/${topic.slug}#verse-${verse.id}`,
+      url: `https://dharmagranth.dev/wisdom-for-life/${topic.slug}#verse-${verse.id}`,
     });
     window.open(href, '_blank', 'noopener,noreferrer');
   };
@@ -345,7 +345,7 @@ export function TopicDetailClient({
                       translation={verse.literalTranslationEn}
                       coreShift={literaryMeta.isCurated ? literaryMeta.coreShiftHi || literaryMeta.coreShiftEn : undefined}
                       compact
-                      verseUrl={`https://dharmagranth.in/wisdom-for-life/${topic.slug}#verse-${verse.id}`}
+                      verseUrl={`https://dharmagranth.dev/wisdom-for-life/${topic.slug}#verse-${verse.id}`}
                     />
 
                     <Link
@@ -880,7 +880,7 @@ export function TopicDetailClient({
               activeStoryVerse.verseNumber,
             ),
             chapterHref: activeStoryVerse.readerHref,
-            verseHref: `https://dharmagranth.in/wisdom-for-life/${topic.slug}#verse-${activeStoryVerse.id}`,
+            verseHref: `https://dharmagranth.dev/wisdom-for-life/${topic.slug}#verse-${activeStoryVerse.id}`,
           }}
         />
       )}

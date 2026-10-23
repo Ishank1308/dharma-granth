@@ -5,4 +5,4 @@ Allow: /fonts/
 Disallow: /dashboard/
 Disallow: /bookmarks/
 
-Sitemap: https://dharmagranth.in/sitemap.xml
+Sitemap: https://dharmagranth.dev/sitemap.xml

@@ -15,7 +15,7 @@ import { festivals } from '@/data/festivals';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in').replace(/\/+$/, '');
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev').replace(/\/+$/, '');
 
 type Entry = MetadataRoute.Sitemap[number];
 

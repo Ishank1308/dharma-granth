@@ -196,7 +196,7 @@ export function PackClient() {
             <footer className="mt-8 border-t border-neutral-300 pt-3 text-sm text-neutral-700">
               <p className="font-semibold">Sources</p>
               <ul className="ml-5 list-disc">{sourceList.map((s) => <li key={s}>Sanskrit text: {s}</li>)}</ul>
-              <p className="mt-1">Translations marked “AI” are machine translations. Editorial explanations and reflections are not part of the scripture. Dharma Granth · dharmagranth.in</p>
+              <p className="mt-1">Translations marked “AI” are machine translations. Editorial explanations and reflections are not part of the scripture. Dharma Granth · dharmagranth.dev</p>
             </footer>
           )}
         </article>

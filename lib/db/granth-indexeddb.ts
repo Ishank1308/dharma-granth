@@ -1,5 +1,5 @@
 /**
- * Client-Side IndexedDB Scripture Store for Dharma Granth (dharmagranth.in)
+ * Client-Side IndexedDB Scripture Store for Dharma Granth (dharmagranth.dev)
  * Database Name: dharma_granth_db_v1
  * 
  * Zero-dependency, lightweight Promise wrapper for client-side persistence:

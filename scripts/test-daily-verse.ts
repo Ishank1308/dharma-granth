@@ -27,8 +27,8 @@ assert.equal(verseForDay(pool, 5).id, verseForDay(pool, 5 + pool.length).id);
 assert.equal(verseForDay(pool, -1).id, pool[pool.length - 1].id, 'days before the epoch still resolve');
 
 const verse = pool.find((v) => v.reference === 'Bhagavad Gita 2.47')!;
-const url = channelUrl('https://dharmagranth.in', verse);
-assert.equal(url, 'https://dharmagranth.in/scripture/bhagavadgita/chapter/2/verse/47/?utm_source=whatsapp&utm_medium=channel');
+const url = channelUrl('https://dharmagranth.dev', verse);
+assert.equal(url, 'https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/verse/47/?utm_source=whatsapp&utm_medium=channel');
 
 const msg = channelMessage(verse, url);
 assert.ok(msg.startsWith('🕉️ *दैनिक श्लोक · Verse of the Day*\n\n*Bhagavad Gita 2.47*\n\n'));

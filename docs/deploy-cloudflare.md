@@ -62,29 +62,41 @@ Expect the three headers, and a count of 1 or more for the other two. Open a
 few pages in a browser and check the console shows no "Content Security
 Policy" errors.
 
-## 5. Move dharmagranth.in to Cloudflare
+## 5. Configure dharmagranth.dev on Cloudflare Pages
 
-1. **Add the domain to Cloudflare** (if it isn't already): Websites → Add a
-   site → `dharmagranth.in` → Free. Cloudflare copies the existing DNS
-   records. At your registrar, change the nameservers to the two Cloudflare
-   shows. Wait for the domain to show **Active** (minutes to a few hours).
-2. **Attach it to Pages:** Workers & Pages → `dharma-granth` → Custom domains →
-   **Set up a custom domain** → `dharmagranth.in`, then again for
-   `www.dharmagranth.in`. Cloudflare replaces the GitHub Pages DNS records
-   (the `185.199.108–111.153` A records and the `*.github.io` CNAME) with its
-   own; if it asks, confirm removing the old ones.
-3. **SSL/TLS → Overview:** mode **Full**. **Edge Certificates:** turn on
-   **Always Use HTTPS**.
-4. Verify with the step 4 commands against `https://dharmagranth.in`.
+Since `dharmagranth.dev` was purchased directly on Cloudflare Registrar:
 
-## 6. Retire GitHub Pages
+1. **Attach it to Pages:**
+   - In Cloudflare Dashboard → **Workers & Pages** → select **`dharma-granth`** project.
+   - Go to the **Custom domains** tab.
+   - Click **Set up a custom domain** → enter `dharmagranth.dev` → **Continue** → **Activate domain**.
+   - Repeat for `www.dharmagranth.dev` (enter `www.dharmagranth.dev` → **Activate domain**).
+   - Cloudflare automatically manages the DNS CNAME/ALIAS records because the domain is registered on Cloudflare.
 
-Once `dharmagranth.in` serves from Cloudflare:
+2. **Remove the old dharmagranth.in domain:**
+   - Under the same **Custom domains** tab in `dharma-granth` Pages project:
+   - Find `dharmagranth.in` and `www.dharmagranth.in` in the list.
+   - Click the `...` (three dots) menu on the right of each → select **Remove domain** and confirm.
+   - (Optional) If you still own `dharmagranth.in`: Go to the `dharmagranth.in` zone → **Rules** → **Redirect Rules** → Create rule: Redirect all requests to `https://dharmagranth.dev/$1` (301 Permanent) to preserve existing backlinks and SEO traffic.
+
+3. **SSL/TLS & Security:**
+   - For `dharmagranth.dev`: In **SSL/TLS → Overview**, ensure encryption mode is **Full** or **Full (strict)**.
+   - In **Edge Certificates**, enable **Always Use HTTPS**.
+
+4. **Verify deployment:**
+   - Test against `https://dharmagranth.dev`:
+   ```bash
+   curl -sI https://dharmagranth.dev/ | grep -iE "strict-transport|content-security|x-content-type"
+   curl -s https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/ | grep -c "कर्मण्येवाधिकारस्ते"
+   ```
+
+## 6. Retire GitHub Pages and Update Search Console
+
+Once `dharmagranth.dev` serves from Cloudflare:
 
 1. GitHub repo **Settings → Pages**: set the source to **None**.
-2. Delete `.github/workflows/deploy.yml` (already manual-only) and
-   `public/CNAME` (only GitHub Pages reads it).
-3. In Google Search Console, resubmit `https://dharmagranth.in/sitemap.xml`.
+2. In Google Search Console, add `dharmagranth.dev` as a Domain property and submit `https://dharmagranth.dev/sitemap.xml`.
+3. Delete `.github/workflows/deploy.yml` (already manual-only).
 
 ## Optional
 

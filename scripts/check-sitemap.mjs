@@ -15,7 +15,7 @@ import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const DIST = resolve(process.cwd(), process.env.NEXT_DIST_DIR || 'dist');
-const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in').replace(/\/+$/, '');
+const ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev').replace(/\/+$/, '');
 const SECTIONS = ['pages', 'scriptures', 'chapters', 'verses'];
 const MAX_URLS = 50000;
 const MAX_BYTES = 50 * 1024 * 1024;

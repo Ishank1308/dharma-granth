@@ -214,7 +214,7 @@ export function VerseOfTheDaySection() {
 
   // 5b. WHATSAPP SHARE
   function whatsappHref(): string {
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.in';
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.dev';
     return whatsappShareUrl({
       heading: `${current.scriptureTitle} ${current.chapterId}.${current.verseId} · Dharma Granth`,
       body: [current.sanskrit, current.hindi || current.translation],
@@ -577,7 +577,7 @@ export function VerseOfTheDaySection() {
           onClose={() => setEmbedOpen(false)}
           label={`${current.scriptureTitle} ${current.chapterId}.${current.verseId}`}
           url={shareVerseUrl(
-            typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.in',
+            typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.dev',
             current.scriptureId,
             current.chapterId,
             current.verseId,
@@ -600,7 +600,7 @@ export function VerseOfTheDaySection() {
           translation: current.translation,
           hindi: current.hindi,
           quote: current.reflection,
-          url: typeof window !== 'undefined' ? `${window.location.origin}${readHref(current.scriptureId, current.chapterId, current.verseId)}` : `https://dharmagranth.in${readHref(current.scriptureId, current.chapterId, current.verseId)}`,
+          url: typeof window !== 'undefined' ? `${window.location.origin}${readHref(current.scriptureId, current.chapterId, current.verseId)}` : `https://dharmagranth.dev${readHref(current.scriptureId, current.chapterId, current.verseId)}`,
         }}
       />
       )}

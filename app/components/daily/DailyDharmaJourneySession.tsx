@@ -198,7 +198,7 @@ export function DailyDharmaJourneySession({
   };
 
   const handleCopyCitation = () => {
-    const textToCopy = `${session.referenceDisplayEn} (${session.referenceDisplayHi})\n\n${session.sanskritDevanagari}\n\n${session.sanskritTransliteration}\n\n[Literal English]: ${session.literalTranslationEn}\n\n[Hindi]: ${session.literalTranslationHi}\n\n— Via Dharma Granth (https://dharmagranth.in/scripture/${session.scriptureId}/chapter/${session.chapterNumber}/verse/${session.verseNumber})`;
+    const textToCopy = `${session.referenceDisplayEn} (${session.referenceDisplayHi})\n\n${session.sanskritDevanagari}\n\n${session.sanskritTransliteration}\n\n[Literal English]: ${session.literalTranslationEn}\n\n[Hindi]: ${session.literalTranslationHi}\n\n— Via Dharma Granth (https://dharmagranth.dev/scripture/${session.scriptureId}/chapter/${session.chapterNumber}/verse/${session.verseNumber})`;
 
     navigator.clipboard.writeText(textToCopy).then(() => {
       setCopiedCitation(true);
@@ -1116,7 +1116,7 @@ export function DailyDharmaJourneySession({
           url:
             typeof window !== 'undefined'
               ? `${window.location.origin}/scripture/${session.scriptureId}/chapter/${session.chapterNumber}/verse/${session.verseNumber}`
-              : `https://dharmagranth.in/scripture/${session.scriptureId}/chapter/${session.chapterNumber}/verse/${session.verseNumber}`,
+              : `https://dharmagranth.dev/scripture/${session.scriptureId}/chapter/${session.chapterNumber}/verse/${session.verseNumber}`,
         }}
       />
     </article>

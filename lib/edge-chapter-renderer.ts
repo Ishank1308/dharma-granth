@@ -132,7 +132,7 @@ export function renderEdgeChapterHtml(
     basePath?: string;
   } = {}
 ): string {
-  const siteUrl = options.siteUrl || 'https://dharmagranth.in';
+  const siteUrl = options.siteUrl || 'https://dharmagranth.dev';
   const scriptureId = meta.id;
   const chapter = payload.chapter;
   const chapterId = chapter.number;

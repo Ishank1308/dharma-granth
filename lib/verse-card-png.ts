@@ -79,7 +79,7 @@ function draw(canvas: HTMLCanvasElement, input: VerseCardImage) {
 
   ctx.fillStyle = '#8a4b12';
   ctx.font = `700 26px ${dev}`;
-  ctx.fillText('dharmagranth.in', W / 2, H - 110);
+  ctx.fillText('dharmagranth.dev', W / 2, H - 110);
 }
 
 /** Saves a PNG of the verse card. Rejects when the browser cannot draw or save it. */

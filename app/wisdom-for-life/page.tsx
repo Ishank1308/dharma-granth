@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: 'Wisdom for Life — जीवन के लिए शास्त्रीय मार्गदर्शन — Dharma Granth',
     description:
       'Life questions opened through verses already in the library, without requiring a scripture name first.',
-    url: 'https://dharmagranth.in/wisdom-for-life',
+    url: 'https://dharmagranth.dev/wisdom-for-life',
   },
 };
 
@@ -95,6 +95,33 @@ export default function WisdomForLifeIndexPage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      {/* ── Wisdom Operating System (WOS) Interactive Portal ────── */}
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 pt-4 pb-2">
+        <div className="relative overflow-hidden rounded-2xl border border-saffron-500/30 bg-gradient-to-r from-saffron-500/10 via-amber-500/5 to-transparent p-6 sm:p-8 transition hover:border-saffron-500/50">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="space-y-1.5">
+              <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-saffron-600 dark:text-saffron-400">
+                <Sparkles className="w-4 h-4" />
+                <span>Wisdom Operating System (WOS) • प्रज्ञा व्यवस्था</span>
+              </div>
+              <h3 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+                Explore Questions, Emotions & Guided Reflection
+              </h3>
+              <p className="text-sm text-dharma-muted max-w-2xl">
+                Experience our contemplative operating system: question-first inquiries, emotional pauses, 7 structured wisdom journeys, daily sacred rhythms, and distraction-free attentional modes.
+              </p>
+            </div>
+            <Link
+              href="/wos"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-saffron-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-saffron-700 active:scale-95"
+            >
+              <span>Launch WOS</span>
+              <Compass className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* ── Client Search, Filters & Cards ───────────────────────── */}

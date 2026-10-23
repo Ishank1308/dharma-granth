@@ -185,7 +185,7 @@ export function SacredShareModal({ isOpen, onClose, data }: Props) {
     data.quote ? `💡 *सूत्र:* ${data.quote}` : '',
     '',
     `🔗 *पूरा पाठ एवं अध्ययन:* ${data.url}`,
-    '— *Dharma Granth* (dharmagranth.in)',
+    '— *Dharma Granth* (dharmagranth.dev)',
   ]
     .filter(Boolean)
     .join('\n');
@@ -674,7 +674,7 @@ export function SacredShareModal({ isOpen, onClose, data }: Props) {
                     color: currentTheme.accentColor,
                   }}
                 >
-                  <span>dharmagranth.in</span>
+                  <span>dharmagranth.dev</span>
                   <span style={{ opacity: 0.5 }}>·</span>
                   <span style={{ fontWeight: 500, color: currentTheme.mutedColor }}>
                     सनातन ज्ञान का जीवित स्रोत

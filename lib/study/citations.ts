@@ -49,7 +49,7 @@ export function formatCitation(params: CitationParams, format: CitationFormat): 
       return `"${scriptureTitle} ${chapterId}.${verseNum}." Dharma Granth: The Complete Digital Library of Sanatana Dharma, ${todayYear}, ${verseUrl}.`;
 
     case 'markdown':
-      return `> ${sanskrit.replace(/\n+/g, ' ')}\n>\n> *"${(hindi || translation || '').trim()}"*\n>\n> — **${scriptureTitle} ${chapterId}.${verseNum}** · [dharmagranth.in](${verseUrl})`;
+      return `> ${sanskrit.replace(/\n+/g, ' ')}\n>\n> *"${(hindi || translation || '').trim()}"*\n>\n> — **${scriptureTitle} ${chapterId}.${verseNum}** · [dharmagranth.dev](${verseUrl})`;
 
     case 'whatsapp':
       return `📜 *${scriptureTitle} ${chapterId}.${verseNum}*\n\n॥ ${sanskrit.trim()} ॥\n\n${

@@ -51,7 +51,7 @@ export function ShareVerseButton(props: Props) {
     verseUrl ||
     (typeof window !== 'undefined'
       ? window.location.href.split('#')[0]
-      : 'https://dharmagranth.in');
+      : 'https://dharmagranth.dev');
 
   const handleOpen = () => {
     triggerTactileFeedback('selection', 'softTap');

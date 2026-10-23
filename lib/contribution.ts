@@ -21,7 +21,7 @@ export const UPI_CONFIG: UpiConfiguration = {
   payeeName: 'Dharma Granth',
   purpose: 'Support Dharma Granth',
   currency: 'INR',
-  contactEmail: 'contact@dharmagranth.in',
+  contactEmail: 'contact@dharmagranth.dev',
 };
 
 export interface ContributionTier {

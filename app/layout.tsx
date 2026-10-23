@@ -74,7 +74,7 @@ const THEME_INIT_SCRIPT = `
 `;
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://dharmagranth.in";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://dharmagranth.dev";
 const SITE_NAME = "Dharma Granth";
 const DEFAULT_TITLE = "Dharma Granth — Hindu Scriptures, Verse by Verse";
 const DEFAULT_DESCRIPTION =
@@ -142,7 +142,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  // Google Search Console ownership proof for https://dharmagranth.in/
+  // Google Search Console ownership proof for https://dharmagranth.dev/
   // (URL-prefix property). Env var overrides for other environments.
   verification: {
     google:

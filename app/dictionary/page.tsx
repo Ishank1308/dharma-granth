@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: 'Terminology Dictionary (शब्दकोश) — Dharma Granth',
     description:
       'A structured dictionary of fundamental Hindu terminology: Dharma, Ṛta, Satya, Ātman, Brahman, Mokṣa, and more.',
-    url: 'https://dharmagranth.in/dictionary',
+    url: 'https://dharmagranth.dev/dictionary',
   },
 };
 

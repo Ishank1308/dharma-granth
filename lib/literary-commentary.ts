@@ -1,5 +1,5 @@
 /**
- * Literary Commentary & Situational Wisdom Layer for Dharma Granth (dharmagranth.in)
+ * Literary Commentary & Situational Wisdom Layer for Dharma Granth (dharmagranth.dev)
  * 
  * Blends the warmth of Indian Kathā storytelling with the psychological clarity
  * of contemporary essayists (The School of Life, Substack essayists).

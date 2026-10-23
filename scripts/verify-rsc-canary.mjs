@@ -5,7 +5,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
 const DEFAULT_LOCAL = 'dist/scripture/bhagavadgita/chapter/2/index.txt';
-const DEFAULT_URL = 'https://dharmagranth.in/scripture/bhagavadgita/chapter/2/index.txt';
+const DEFAULT_URL = 'https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/index.txt';
 
 function option(name, fallback) {
   const index = process.argv.indexOf(name);

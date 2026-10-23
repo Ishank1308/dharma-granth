@@ -109,7 +109,7 @@ export default function CollectionsPage() {
       ...col.verseRefs.map((r, i) => (
         `### ${i + 1}. ${r.scriptureTitle} — ${r.chapterTitle}, Verse ${r.verseId}\n> ${r.sanskrit}\n\n${r.translation}\n`
       )),
-      '---\n*Exported from Dharma Granth (dharmagranth.in)*',
+      '---\n*Exported from Dharma Granth (dharmagranth.dev)*',
     ];
     navigator.clipboard.writeText(lines.filter(Boolean).join('\n')).then(() => {
       setCopiedId(col.id);

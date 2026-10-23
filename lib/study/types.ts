@@ -103,7 +103,7 @@ export interface OfflineReadingPack {
 export interface DharmaStudyBackupV2 {
   version: 2;
   exportedAt: string;
-  source: 'dharmagranth.in';
+  source: 'dharmagranth.dev' | 'dharmagranth.in';
   stats: {
     journalCount: number;
     annotationCount: number;
