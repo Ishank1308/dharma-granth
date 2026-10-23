@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Download, Share, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
@@ -15,6 +16,7 @@ const DISMISS_DAYS = 14;
 
 export function PwaInstallBanner() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [isIos, setIsIos] = useState(false);
   const [showIosInstructions, setShowIosInstructions] = useState(false);
@@ -101,7 +103,9 @@ export function PwaInstallBanner() {
     }
   }
 
-  if (!visible) return null;
+  // Never over the text being read: the offer waits for a non-reading page.
+  const reading = /^\/scripture\/[^/]+\/chapter\//.test(pathname ?? '');
+  if (!visible || reading) return null;
 
   return (
     <AnimatePresence>

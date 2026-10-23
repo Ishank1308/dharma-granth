@@ -21,7 +21,7 @@ export function DailyPracticePreview() {
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300">
               <Lock className="h-3 w-3" />
-              100% निजी (100% Private)
+              स्थानीय साधना (Local practice)
             </span>
           </div>
           <h3 className="font-serif text-xl font-bold text-dharma-text">

@@ -9,6 +9,10 @@ node_modules
 
 # next.js
 /.next/
+/.preview-dist/
+/reader-modes-build/
+/wellbeing-dist/
+/wellbeing-phase3-build/
 /out/
 /dist/
 next-env.d.ts

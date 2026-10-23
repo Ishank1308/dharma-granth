@@ -137,7 +137,8 @@ export function SadhanaPortability() {
           </h2>
         </div>
         <p className="text-xs text-dharma-muted leading-relaxed">
-          आपका समस्त साधना डेटा (जप, ध्यान, स्वाध्याय नोट्स, बुकमार्क व अध्ययन प्रगति) पूर्णतः एन्क्रिप्टेड व संकुचित रूप में आपके उपकरण पर सुरक्षित रहता है। बिना किसी अकाउंट के एक उपकरण से दूसरे उपकरण पर स्थानांतरण करें।
+          यह स्थानांतरण इसी उपकरण पर तैयार होता है और किसी सर्वर पर नहीं भेजा जाता। बैकअप फ़ाइल और सिंक कोड GZIP से संपीड़ित होते हैं, कूटबद्ध नहीं। जिसके पास फ़ाइल या कोड होगा, वह उसमें रखा निजी डेटा पढ़ सकता है; इसे निजी रखें।
+          <span lang="en" className="ml-1">Transfer is prepared on this device and is not sent to a server. Backup files and sync codes are compressed with GZIP, not encrypted. Anyone with the file or code may read its private data; keep it private.</span>
         </p>
       </div>
 
@@ -148,7 +149,8 @@ export function SadhanaPortability() {
           साधना सिंक स्ट्रिंग (Compressed Sync Code)
         </h3>
         <p className="text-[11px] text-dharma-muted">
-          यह कोड आपके संपूर्ण अध्ययन व साधना स्थिति को GZIP संपीड़न द्वारा एक कॉम्पैक्ट टेक्स्ट में बदलता है।
+          यह कोड आपके अध्ययन व साधना डेटा को GZIP संपीड़न द्वारा छोटा करता है। यह कूटबद्ध नहीं है; जिसे भी कोड मिलेगा, वह इसे पढ़ सकेगा।
+          <span lang="en" className="ml-1">The code compresses your study and practice data into compact text. It is not encrypted; anyone who gets the code can read it.</span>
         </p>
 
         <div className="flex flex-wrap gap-2">

@@ -71,6 +71,10 @@ export function BackupRestore() {
       <p className="mt-1 text-sm text-dharma-muted">
         Your practice and study data stays in this browser. Export a JSON copy to move it to another device; no account is needed.
       </p>
+      <p className="mt-2 text-xs leading-relaxed text-dharma-muted">
+        JSON backups are readable and not encrypted. Keep the downloaded file somewhere private.
+        <span lang="hi" className="ml-1 font-devanagari">JSON बैकअप पढ़े जा सकते हैं और कूटबद्ध नहीं होते। डाउनलोड की गई फ़ाइल को निजी स्थान पर रखें।</span>
+      </p>
 
       <fieldset className="mt-4 grid gap-2 sm:grid-cols-2">
         <legend className="mb-2 text-sm font-semibold text-dharma-text">Import behavior · आयात विकल्प</legend>

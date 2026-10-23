@@ -290,15 +290,15 @@ export function ReaderLayers({
 
   const hasArth =
     Boolean(showHindiTrans && (verse.hindi || verse.hindiSeeVerse != null)) || Boolean(showEnglishTrans && verse.translation);
-  const hasPadas = Boolean(!isQuick && !settings.liteMode && verse.wordMeaning);
+  const hasPadas = Boolean(settings.showCommentary && !isQuick && !settings.liteMode && verse.wordMeaning);
   const [showPadas, setShowPadas] = useState(false);
   // Traditional commentary appears only once a reviewed commentary exists for this verse;
   // until then the layer would just repeat the text above around an "add commentary" notice.
   const hasCommentary = (COMMENTARIES[verseKey(scriptureId, chapterId, verse.number)]?.length ?? 0) > 0;
-  const showTradition = !isQuick && !settings.liteMode && hasCommentary;
-  const hasVyakhya = Boolean(verse.explanation);
-  const hasCommentaryLayer = showTradition || Boolean(verse.commentary);
-  const hasVigyan = Boolean(!settings.liteMode && verse.reflection) || Boolean(!isQuick && !settings.liteMode && verse.research);
+  const showTradition = settings.showCommentary && !isQuick && !settings.liteMode && hasCommentary;
+  const hasVyakhya = settings.showCommentary && Boolean(verse.explanation);
+  const hasCommentaryLayer = settings.showCommentary && (showTradition || Boolean(verse.commentary));
+  const hasVigyan = settings.showCommentary && (Boolean(!settings.liteMode && verse.reflection) || Boolean(!isQuick && !settings.liteMode && verse.research));
 
   const handleInspectPada = (pada: string) => {
     const entry = findLexiconEntry(pada);
@@ -396,7 +396,7 @@ export function ReaderLayers({
 
       {/* मर्म: the reviewed one-line core shift, when this verse has one. It sits after the
           Sanskrit so the reader meets scripture before any editorial line. */}
-      {insight?.marma && !settings.liteMode && (
+      {insight?.marma && settings.showCommentary && !settings.liteMode && (
         <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
           <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
             <span lang="hi">मर्म</span>
@@ -684,7 +684,7 @@ export function ReaderLayers({
         ).filter((b): b is VerseTreeBranch => Boolean(b))}
       />
 
-      {insight && insight.situations.length > 0 && !settings.liteMode && (
+      {insight && insight.situations.length > 0 && settings.showCommentary && !settings.liteMode && (
         <nav aria-label="जीवन प्रसंग · Life situations" className="flex flex-wrap items-center gap-1.5">
           <span lang="hi" className="mr-1 font-devanagari text-xs font-semibold text-dharma-muted">जीवन प्रसंग:</span>
           {insight.situations.map((s) => (
@@ -701,7 +701,7 @@ export function ReaderLayers({
         </nav>
       )}
 
-      {isDeep && !settings.liteMode && (
+      {isDeep && settings.showCommentary && !settings.liteMode && (
         <CompareViews scriptureId={scriptureId} chapterId={chapterId} verse={verse} provenance={p} />
       )}
 

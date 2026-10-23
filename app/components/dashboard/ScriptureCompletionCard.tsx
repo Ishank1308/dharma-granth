@@ -6,11 +6,10 @@ import { ArrowUpRight, BookOpen, Compass } from 'lucide-react';
 import type { ChapterVisit } from '@/lib/reading-history';
 
 interface Props {
-  recordedVerseCount: number;
   recentChapters: ChapterVisit[];
 }
 
-export function ScriptureCompletionCard({ recordedVerseCount, recentChapters }: Props) {
+export function ScriptureCompletionCard({ recentChapters }: Props) {
   return (
     <section aria-labelledby="reading-overview-heading" className="w-full">
       <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 shadow-sm sm:p-8">
@@ -24,10 +23,7 @@ export function ScriptureCompletionCard({ recordedVerseCount, recentChapters }: 
               Recent reading · हाल का स्वाध्याय
             </h2>
             <p className="mt-1 text-sm text-dharma-muted">
-              {recordedVerseCount > 0
-                ? `${recordedVerseCount} distinct verses in your recent activity log.`
-                : 'No individual verse pages are recorded yet; your last-opened chapters still appear below.'}{' '}
-              Activity stays in this browser and is kept for up to 120 days.
+              Your latest chapter is kept on this device as a return point. It is not an engagement score.
             </p>
           </div>
           <Link
@@ -42,7 +38,7 @@ export function ScriptureCompletionCard({ recordedVerseCount, recentChapters }: 
 
         {recentChapters.length === 0 ? (
           <p className="mt-4 rounded-2xl border border-dashed border-dharma-border p-5 text-sm text-dharma-muted">
-            Chapters you open will appear here so you can return to them.
+            A chapter you open can appear here as a private return point for another time.
           </p>
         ) : (
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">

@@ -148,6 +148,7 @@ interface Props {
   chapterTitle: string;
   chantingMode: boolean;
   sanskritFontSizeClass: string;
+  translationFontSizeClass?: string;
   bookmarked: boolean;
   copied: boolean;
   onToggleBookmark: () => void;
@@ -262,6 +263,7 @@ export function VerseCard({
   chapterTitle,
   chantingMode,
   sanskritFontSizeClass,
+  translationFontSizeClass = 'text-base md:text-lg leading-relaxed',
   bookmarked,
   copied,
   onToggleBookmark,
@@ -1147,7 +1149,7 @@ export function VerseCard({
                                 </a>
                               </p>
                             )}
-                            <p lang="hi" className="font-devanagari text-base leading-loose text-dharma-text md:text-[17px]">
+                            <p lang="hi" className={`font-devanagari ${translationFontSizeClass} text-dharma-text`}>
                               {v.hindi && <GlossaryText text={v.hindi} />}
                               {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
                                 <span className="ml-2 align-middle"><DraftBadge lang="hi" /></span>
@@ -1175,7 +1177,7 @@ export function VerseCard({
                               </p>
                               <ContentLabelBadge kind="literal" />
                             </div>
-                            <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text md:text-base">
+                            <p lang="en" className={`font-serif ${translationFontSizeClass} text-dharma-text`}>
                               {v.translation}
                               {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
                                 <span className="ml-2 align-middle"><DraftBadge lang="en" /></span>

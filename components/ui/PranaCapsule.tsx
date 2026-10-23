@@ -53,6 +53,7 @@ import {
 } from '@/lib/sacred-soundscape';
 import { openGlobalSearch } from '@/lib/search-events';
 import { triggerTactileFeedback, triggerHaptic } from '@/lib/haptics';
+import { useReaderSettings } from '@/lib/useReaderSettings';
 
 const DRONE_TRACKS: Array<{ id: SoundscapeTrackId; label: string; icon: React.ReactNode }> = [
   { id: 'tanpura', label: 'Tanpura', icon: <Music className="w-3.5 h-3.5" /> },
@@ -69,7 +70,8 @@ export function PranaCapsule() {
   const [activePadaLine, setActivePadaLine] = useState<string | null>(null);
   const [isBreathInterval, setIsBreathInterval] = useState(false);
   const [breathCountdown, setBreathCountdown] = useState(2.5);
-  const [ekagrataActive, setEkagrataActive] = useState(false);
+  const { settings: readerSettings, update: updateReaderSetting } = useReaderSettings();
+  const ekagrataActive = readerSettings.spotlightMode;
   const [isScrollHidden, setIsScrollHidden] = useState(false);
   const [isCapsuleFocused, setIsCapsuleFocused] = useState(false);
 
@@ -149,19 +151,12 @@ export function PranaCapsule() {
       }, 100);
     };
 
-    const handleEkagrataChange = (e: Event) => {
-      const custom = e as CustomEvent<{ active: boolean }>;
-      if (custom.detail) setEkagrataActive(custom.detail.active);
-    };
-
     window.addEventListener('dharma:recitation-chunk', handleRecitationChunk as EventListener);
     window.addEventListener('dharma:recitation-ended', handleRecitationEnded);
-    window.addEventListener('dharma:ekagrata-toggle', handleEkagrataChange as EventListener);
 
     return () => {
       window.removeEventListener('dharma:recitation-chunk', handleRecitationChunk as EventListener);
       window.removeEventListener('dharma:recitation-ended', handleRecitationEnded);
-      window.removeEventListener('dharma:ekagrata-toggle', handleEkagrataChange as EventListener);
     };
   }, []);
 
@@ -205,12 +200,8 @@ export function PranaCapsule() {
 
   const handleToggleEkagrata = () => {
     const next = !ekagrataActive;
-    setEkagrataActive(next);
+    updateReaderSetting('spotlightMode', next);
     triggerTactileFeedback('medium', 'softTap');
-    window.dispatchEvent(new CustomEvent('dharma:ekagrata-toggle', { detail: { active: next } }));
-    try {
-      localStorage.setItem('dharma_ekagrata_mode', JSON.stringify(next));
-    } catch {}
   };
 
   // Determine current active mode

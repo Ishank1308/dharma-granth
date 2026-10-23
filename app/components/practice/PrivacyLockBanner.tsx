@@ -134,7 +134,7 @@ export function PrivacyLockBanner({
                 साधना बैकअप अनुस्मारक · Device Backup Reminder
               </p>
               <p className="text-amber-950 dark:text-amber-100 mt-0.5">
-                आपकी साधना का डेटा केवल इस ब्राउज़र में सहेजा गया है। आकस्मिक डेटा हानि से बचने के लिए बैकअप फ़ाइल डाउनलोड करें।
+                आपकी साधना का डेटा केवल इस ब्राउज़र में सहेजा गया है। JSON बैकअप कूटबद्ध नहीं होता; डाउनलोड की गई फ़ाइल निजी रखें।
               </p>
             </div>
           </div>
@@ -168,7 +168,7 @@ export function PrivacyLockBanner({
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-sm font-bold text-dharma-text font-serif">
-                  100% निजी एवं गोपनीय · Completely Private
+                  स्थानीय साधना डेटा · Practice data stays local
                 </h3>
                 <button
                   type="button"
@@ -180,7 +180,7 @@ export function PrivacyLockBanner({
                 </button>
               </div>
               <p className="text-xs text-dharma-muted">
-                सारा डेटा केवल आपके फोन या कंप्यूटर पर रहता है · Zero tracking, zero public profiles
+                आपकी जप, चिंतन और डायरी इसी ब्राउज़र में रहती है · No public profiles or account
               </p>
             </div>
           </div>
@@ -223,6 +223,11 @@ export function PrivacyLockBanner({
             )}
           </div>
         </div>
+
+        <p className="text-xs leading-relaxed text-dharma-muted">
+          The optional PIN is an in-app screen lock; it does not encrypt browser storage or backup files.
+          <span lang="hi" className="ml-1 font-devanagari">वैकल्पिक पिन केवल ऐप के भीतर स्क्रीन लॉक है; यह ब्राउज़र स्टोरेज या बैकअप फ़ाइलों को कूटबद्ध नहीं करता।</span>
+        </p>
 
         {/* The 4 Privacy Pillars Explainer (Collapsible) */}
         {showPrivacyPillars && (

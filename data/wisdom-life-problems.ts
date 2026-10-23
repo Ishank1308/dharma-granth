@@ -566,27 +566,3 @@ export const lifeProblemTopics: WisdomTopic[] = [
     contextualNote: CARE,
   },
 ];
-
-/** The twenty struggles from the product spec, each pointed at one library page. */
-export const lifeProblemIndex: Array<{ en: string; hi: string; slug: string }> = [
-  { en: 'Anxiety', hi: 'चिंता', slug: 'stress-and-worry' },
-  { en: 'Fear', hi: 'भय', slug: 'fear-and-courage' },
-  { en: 'Stress', hi: 'तनाव', slug: 'stress-and-worry' },
-  { en: 'Failure', hi: 'असफलता', slug: 'failure-and-setbacks' },
-  { en: 'Purpose', hi: 'उद्देश्य', slug: 'meaning-of-life' },
-  { en: 'Meaning', hi: 'जीवन का अर्थ', slug: 'meaning-of-life' },
-  { en: 'Discipline', hi: 'अनुशासन', slug: 'discipline' },
-  { en: 'Focus', hi: 'एकाग्रता', slug: 'concentration' },
-  { en: 'Productivity', hi: 'कर्म में कुशलता', slug: 'skill-in-work' },
-  { en: 'Leadership', hi: 'नेतृत्व', slug: 'leadership' },
-  { en: 'Relationships', hi: 'संबंध', slug: 'relationships' },
-  { en: 'Family', hi: 'परिवार', slug: 'family-responsibilities' },
-  { en: 'Success', hi: 'सिद्धि', slug: 'success' },
-  { en: 'Attachment', hi: 'आसक्ति', slug: 'attachment' },
-  { en: 'Detachment', hi: 'अनासक्ति', slug: 'detachment' },
-  { en: 'Grief', hi: 'शोक', slug: 'grief-and-loss' },
-  { en: 'Death', hi: 'मृत्यु', slug: 'death' },
-  { en: 'Courage', hi: 'साहस', slug: 'fear-and-courage' },
-  { en: 'Gratitude', hi: 'संतोष', slug: 'contentment' },
-  { en: 'Self-control', hi: 'आत्मसंयम', slug: 'self-control' },
-];

@@ -93,7 +93,7 @@ export function SadhanaPreviewSection() {
               </p>
               <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300">
                 <Lock className="h-3 w-3" />
-                100% Private (No Accounts)
+                Local-first (No accounts)
               </span>
             </div>
             <h2

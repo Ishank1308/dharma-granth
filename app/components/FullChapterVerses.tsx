@@ -13,7 +13,6 @@ import {
   Volume2,
   Pause,
   Play,
-  Target,
   ChevronDown,
 } from 'lucide-react';
 import { updateReaderScrollProgress, triggerPranaToast } from '@/lib/prana-capsule-store';
@@ -24,6 +23,8 @@ import { versePageHref } from '@/lib/verse-paths';
 import { normalizeForSearch, normalizeTransliteration } from '@/lib/normalize-search';
 import { splitVyakhyaCommentary, toAsciiDigits, toDevanagari } from '@/lib/verse-format';
 import { useStudyProgress, type VerseRef } from '@/lib/useStudyProgress';
+import { useReaderSettings } from '@/lib/useReaderSettings';
+import { useTheme } from '@/app/components/ThemeProvider';
 import { updateLastVerse } from '@/lib/reading-history';
 import dynamic from 'next/dynamic';
 import { useEverTrue } from '@/lib/use-ever-true';
@@ -31,6 +32,7 @@ import { useEverTrue } from '@/lib/use-ever-true';
 // Dialogs and alternate reading modes load the first time they are used, so they stay out of the chapter's first-load JS.
 const AddToCollectionModal = dynamic(() => import('./AddToCollectionModal').then((m) => m.AddToCollectionModal), { ssr: false });
 const ContributeMeaningModal = dynamic(() => import('./ContributeMeaningModal').then((m) => m.ContributeMeaningModal), { ssr: false });
+const ReaderSettingsPanel = dynamic(() => import('@/app/components/reader/ReaderSettingsPanel').then((m) => m.ReaderSettingsPanel), { ssr: false });
 import { VerseCard } from './VerseCard';
 import { ReadingDepthSwitch } from '@/app/components/reader/ReadingDepthSwitch';
 import { useReadingDepth } from '@/lib/reading-depth';
@@ -158,6 +160,8 @@ function withRich(prev: Set<string>, numbers: Array<string | number>): Set<strin
 
 export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {} }: Props) {
   const isOnline = useConnectivity();
+  const { settings: readerSettings, update: updateReaderSetting, reset: resetReaderSettings, reducedMotion } = useReaderSettings();
+  const { theme, setTheme } = useTheme();
   const curatedVerseSet = useMemo(
     () => new Set(curatedVerseIds.map((id) => String(id))),
     [curatedVerseIds],
@@ -187,21 +191,18 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   // VerseText the server rendered (same id and text) and upgrade as they near the viewport.
   const [richVerses, setRichVerses] = useState<Set<string>>(() => new Set());
 
-  const [fontSize, setFontSize] = useState<'normal' | 'large' | 'xl'>('normal');
   const [chantingMode, setChantingMode] = useState(false);
   const [readingDepth] = useReadingDepth();
   const [isConversationMode, setIsConversationMode] = useState(false);
-  const [showTranslit, setShowTranslit] = useState(true);
-  const [showHindi, setShowHindi] = useState(true);
-  const [showEnglish, setShowEnglish] = useState(true);
-  const [showCommentary, setShowCommentary] = useState(true);
-  const [showLayersMenu, setShowLayersMenu] = useState(false);
+  const showCommentary = readerSettings.showCommentary;
+  const [readerSettingsOpen, setReaderSettingsOpen] = useState(false);
   // Phones show only title, count and parayana; the rest opens on tap so the first shloka stays near the top.
   const [toolsOpen, setToolsOpen] = useState(false);
   const [filterQuery, setFilterQuery] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [bookmarkedMap, setBookmarkedMap] = useState<Record<string, boolean>>({});
   const [focusModeOpen, setFocusModeOpen] = useState(false);
+  const closeFocusMode = useCallback(() => setFocusModeOpen(false), []);
   const [focusVerseIndex, setFocusVerseIndex] = useState(0);
   const [activeRecitingVerse, setActiveRecitingVerse] = useState<number | string | null>(null);
   const [parayanaActive, setParayanaActive] = useState(false);
@@ -209,17 +210,11 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const [cadenceMode, setCadenceMode] = useState<ParayanaCadenceMode>(() => getSoundscapeState().parayanaCadenceMode);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [currentViewportVerse, setCurrentViewportVerse] = useState<string | null>(null);
-  const [ekagrataMode, setEkagrataMode] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false;
-    try {
-      return JSON.parse(localStorage.getItem('dharma_ekagrata_mode') || 'false');
-    } catch {
-      return false;
-    }
-  });
+  const ekagrataMode = readerSettings.spotlightMode;
   const pendingParayanaRef = useRef(false);
-  const layersMenuRef = useRef<HTMLDivElement>(null);
-  const layersTriggerRef = useRef<HTMLButtonElement>(null);
+  const showTranslit = readerSettings.showTransliteration;
+  const showHindi = readerSettings.showHindi;
+  const showEnglish = readerSettings.showEnglish;
   // One store for the whole chapter (not one per card): notes, highlights and
   // collections are passed down to each VerseCard.
   const { recordReading, getNote, setNote, getHighlight, toggleHighlight, collections } = useStudyProgress();
@@ -391,16 +386,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       window.removeEventListener('scroll', onScroll);
     };
   }, [state, scriptureId, chapterId, scriptureTitle]);
-
-  // Sync Ekāgratā mode from external events
-  useEffect(() => {
-    const handleEkagrata = (e: Event) => {
-      const custom = e as CustomEvent<{ active: boolean }>;
-      if (custom.detail) setEkagrataMode(custom.detail.active);
-    };
-    window.addEventListener('dharma:ekagrata-toggle', handleEkagrata as EventListener);
-    return () => window.removeEventListener('dharma:ekagrata-toggle', handleEkagrata as EventListener);
-  }, []);
 
   // Load verse bookmark statuses from localStorage and sync across components
   useEffect(() => {
@@ -620,70 +605,14 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     }
   }, [state.kind]);
 
-  // Close layers menu on outside click or Escape
-  useEffect(() => {
-    function handlePointerDown(e: MouseEvent) {
-      if (!layersMenuRef.current?.contains(e.target as Node)) {
-        setShowLayersMenu(false);
-      }
-    }
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') {
-        setShowLayersMenu(false);
-        layersTriggerRef.current?.focus();
-      }
-    }
-    if (showLayersMenu) {
-      document.addEventListener('mousedown', handlePointerDown);
-      document.addEventListener('keydown', handleKeyDown);
-      return () => {
-        document.removeEventListener('mousedown', handlePointerDown);
-        document.removeEventListener('keydown', handleKeyDown);
-      };
-    }
-  }, [showLayersMenu]);
-
-  // Load preferences from localStorage on mount
-  useEffect(() => {
-    try {
-      const savedFontSize = localStorage.getItem('dharma_reader_fontsize');
-      if (savedFontSize === 'normal' || savedFontSize === 'large' || savedFontSize === 'xl') {
-        setFontSize(savedFontSize);
-      }
-      const savedLayers = localStorage.getItem('dharma_reader_layers');
-      if (savedLayers) {
-        const parsed = JSON.parse(savedLayers);
-        if (typeof parsed.translit === 'boolean') setShowTranslit(parsed.translit);
-        if (typeof parsed.hindi === 'boolean') setShowHindi(parsed.hindi);
-        if (typeof parsed.english === 'boolean') setShowEnglish(parsed.english);
-        if (typeof parsed.commentary === 'boolean') setShowCommentary(parsed.commentary);
-      }
-    } catch {
-      // ignore localStorage errors
-    }
-  }, []);
-
-  const updateFontSize = (size: 'normal' | 'large' | 'xl') => {
-    setFontSize(size);
-    try {
-      localStorage.setItem('dharma_reader_fontsize', size);
-    } catch {}
-  };
-
   const updateLayers = (updates: Partial<{ translit: boolean; hindi: boolean; english: boolean; commentary: boolean }>) => {
-    const next = {
-      translit: updates.translit ?? showTranslit,
-      hindi: updates.hindi ?? showHindi,
-      english: updates.english ?? showEnglish,
-      commentary: updates.commentary ?? showCommentary,
-    };
-    if (updates.translit !== undefined) setShowTranslit(updates.translit);
-    if (updates.hindi !== undefined) setShowHindi(updates.hindi);
-    if (updates.english !== undefined) setShowEnglish(updates.english);
-    if (updates.commentary !== undefined) setShowCommentary(updates.commentary);
-    try {
-      localStorage.setItem('dharma_reader_layers', JSON.stringify(next));
-    } catch {}
+    if (updates.translit !== undefined) updateReaderSetting('showTransliteration', updates.translit);
+    if (updates.hindi !== undefined) updateReaderSetting('showHindi', updates.hindi);
+    if (updates.english !== undefined) updateReaderSetting('showEnglish', updates.english);
+    if (updates.commentary !== undefined) updateReaderSetting('showCommentary', updates.commentary);
+    if (updates.commentary !== undefined || updates.translit !== undefined || updates.hindi !== undefined || updates.english !== undefined) {
+      triggerTactileFeedback('light', 'softTap');
+    }
   };
 
   const handleCopyVerse = async (v: FullVerse) => {
@@ -867,12 +796,28 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   }, [state, parayanaActive, activeRecitingVerse, filteredVerses, playVerse]);
 
 
-  const sanskritFontSizeClass =
-    fontSize === 'xl'
-      ? 'text-xl md:text-2xl leading-loose font-medium'
-      : fontSize === 'large'
-      ? 'text-lg md:text-xl leading-loose'
-      : 'text-base md:text-lg leading-loose';
+  const sanskritFontSizeClass = `${{
+    sm: 'text-sm md:text-base',
+    md: 'text-base md:text-lg',
+    lg: 'text-lg md:text-xl',
+    xl: 'text-xl md:text-2xl font-medium',
+  }[readerSettings.sanskritSize]} ${{
+    compact: 'leading-[1.7]',
+    normal: 'leading-[1.85]',
+    relaxed: 'leading-[2.05]',
+    loose: 'leading-[2.35]',
+  }[readerSettings.lineSpacing]}`;
+  const translationFontSizeClass = `${{
+    sm: 'text-sm md:text-base',
+    md: 'text-base md:text-lg',
+    lg: 'text-lg md:text-xl',
+    xl: 'text-xl md:text-2xl',
+  }[readerSettings.translationSize]} ${{
+    compact: 'leading-[1.7]',
+    normal: 'leading-[1.85]',
+    relaxed: 'leading-[2.05]',
+    loose: 'leading-[2.35]',
+  }[readerSettings.lineSpacing]}`;
 
   useEffect(() => {
     if (state.kind !== 'loading') return;
@@ -1237,141 +1182,21 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 <span className="hidden sm:inline">एकाग्रता मोड</span>
               </button>
 
-              {/* Ekāgratā Spotlight Toggle */}
-              <button
-                type="button"
-                onClick={() => {
-                  const next = !ekagrataMode;
-                  setEkagrataMode(next);
-                  triggerTactileFeedback('medium', 'softTap');
-                  window.dispatchEvent(new CustomEvent('dharma:ekagrata-toggle', { detail: { active: next } }));
-                  try {
-                    localStorage.setItem('dharma_ekagrata_mode', JSON.stringify(next));
-                  } catch {}
-                }}
-                className={`inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-xl sm:min-h-0 px-3 py-1.5 text-xs font-semibold transition ${
-                  ekagrataMode
-                    ? 'bg-amber-500 text-stone-950 font-bold shadow-md shadow-amber-500/20'
-                    : 'border border-dharma-border bg-dharma-bg text-dharma-text hover:border-amber-400 hover:text-amber-700'
-                }`}
-                title="सक्रिय श्लोक पर एकाग्र ध्यान (Spotlight Focus)"
-                aria-label="एकाग्रता स्पॉटलाइट"
-                aria-pressed={ekagrataMode}
-              >
-                <Target className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">स्पॉटलाइट</span>
-              </button>
-
-              {/* Font Size Selector */}
-              <div className="inline-flex items-center rounded-xl border border-dharma-border bg-dharma-bg p-0.5 text-xs font-semibold text-dharma-text">
-                <button
-                  type="button"
-                  onClick={() => updateFontSize('normal')}
-                  className={`min-h-[36px] min-w-[36px] rounded-lg px-2.5 py-1 transition sm:min-h-0 sm:min-w-0 ${
-                    fontSize === 'normal'
-                      ? 'bg-dharma-card text-saffron-700 shadow-sm font-bold'
-                      : 'text-dharma-muted hover:text-dharma-text'
-                  }`}
-                  title="सामान्य अक्षर (Normal font size)"
-                >
-                  A
-                </button>
-                <button
-                  type="button"
-                  onClick={() => updateFontSize('large')}
-                  className={`min-h-[36px] min-w-[36px] rounded-lg px-2.5 py-1 transition sm:min-h-0 sm:min-w-0 ${
-                    fontSize === 'large'
-                      ? 'bg-dharma-card text-saffron-700 shadow-sm font-bold'
-                      : 'text-dharma-muted hover:text-dharma-text'
-                  }`}
-                  title="बड़े अक्षर (Large font size)"
-                >
-                  A+
-                </button>
-                <button
-                  type="button"
-                  onClick={() => updateFontSize('xl')}
-                  className={`min-h-[36px] min-w-[36px] rounded-lg px-2.5 py-1 transition sm:min-h-0 sm:min-w-0 ${
-                    fontSize === 'xl'
-                      ? 'bg-dharma-card text-saffron-700 shadow-sm font-bold'
-                      : 'text-dharma-muted hover:text-dharma-text'
-                  }`}
-                  title="विशाल अक्षर (Extra large font size)"
-                >
-                  A++
-                </button>
-              </div>
-
               {/* Reading depth: Read / Understand / Study */}
               {!chantingMode && <ReadingDepthSwitch />}
 
-              {/* Layer Toggles (Hidden in chanting mode) */}
-              {!chantingMode && (
-                <div className="relative" ref={layersMenuRef}>
-                  <button
-                    type="button"
-                    ref={layersTriggerRef}
-                    onClick={() => setShowLayersMenu(!showLayersMenu)}
-                    className={`inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-xl sm:min-h-0 border px-3 py-1.5 text-xs font-semibold transition ${
-                      showLayersMenu || (!showTranslit || !showHindi || !showEnglish || !showCommentary)
-                        ? 'border-saffron-300 bg-saffron-50 text-saffron-800'
-                        : 'border-dharma-border bg-dharma-bg text-dharma-text hover:border-saffron-300'
-                    }`}
-                    title="भाषा व व्याख्या विकल्प"
-                    aria-label="दृश्य — भाषा व व्याख्या विकल्प"
-                    aria-expanded={showLayersMenu}
-                  >
-                    <SlidersHorizontal className="h-3.5 w-3.5 text-saffron-600" />
-                    <span className="hidden sm:inline">दृश्य</span>
-                  </button>
-
-                  {showLayersMenu && (
-                    <div className="absolute right-0 top-full mt-2 z-20 w-48 rounded-xl border border-dharma-border bg-dharma-card p-2.5 shadow-xl">
-                      <p className="px-2 py-1 text-[11px] font-bold uppercase tracking-wider text-dharma-muted">
-                        सामग्री चयन
-                      </p>
-                      <div className="space-y-1">
-                        <label className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-medium text-dharma-text hover:bg-dharma-bg cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={showTranslit}
-                            onChange={(e) => updateLayers({ translit: e.target.checked })}
-                            className="rounded text-saffron-600 focus:ring-saffron-500"
-                          />
-                          <span>लिप्यंतरण (Translit)</span>
-                        </label>
-                        <label className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-medium text-dharma-text hover:bg-dharma-bg cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={showHindi}
-                            onChange={(e) => updateLayers({ hindi: e.target.checked })}
-                            className="rounded text-saffron-600 focus:ring-saffron-500"
-                          />
-                          <span>हिन्दी अर्थ</span>
-                        </label>
-                        <label className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-medium text-dharma-text hover:bg-dharma-bg cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={showEnglish}
-                            onChange={(e) => updateLayers({ english: e.target.checked })}
-                            className="rounded text-saffron-600 focus:ring-saffron-500"
-                          />
-                          <span>English Translation</span>
-                        </label>
-                        <label className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-medium text-dharma-text hover:bg-dharma-bg cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={showCommentary}
-                            onChange={(e) => updateLayers({ commentary: e.target.checked })}
-                            className="rounded text-saffron-600 focus:ring-saffron-500"
-                          />
-                          <span>विस्तृत व्याख्या / दृष्टि</span>
-                        </label>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
+              <button
+                type="button"
+                onClick={() => setReaderSettingsOpen(true)}
+                className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-3 py-1.5 text-xs font-semibold text-dharma-text transition hover:border-saffron-300 hover:text-saffron-700"
+                title="पठन व्यवस्था · Reader settings"
+                aria-label="पठन व्यवस्था · Reader settings"
+                aria-haspopup="dialog"
+                aria-expanded={readerSettingsOpen}
+              >
+                <SlidersHorizontal className="h-3.5 w-3.5 text-saffron-600" aria-hidden="true" />
+                <span>पठन व्यवस्था</span>
+              </button>
 
               {/* Conversation Mode for Dialogue Scriptures (Bhagavad Gita) */}
               {scriptureId === 'bhagavadgita' && (
@@ -1538,6 +1363,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     chapterTitle={chapterTitle ?? `अध्याय ${chapterId}`}
                     chantingMode={chantingMode}
                     sanskritFontSizeClass={sanskritFontSizeClass}
+                    translationFontSizeClass={translationFontSizeClass}
                     bookmarked={Boolean(bookmarkedMap[String(v.number)])}
                     copied={copiedId === String(v.number)}
                     onToggleBookmark={() => toggleBookmark(v)}
@@ -1713,11 +1539,23 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       />
       )}
 
+      <ReaderSettingsPanel
+        open={readerSettingsOpen}
+        onClose={() => setReaderSettingsOpen(false)}
+        settings={readerSettings}
+        update={updateReaderSetting}
+        reset={resetReaderSettings}
+        reducedMotion={reducedMotion}
+        theme={theme}
+        setTheme={setTheme}
+        scope="chapter"
+      />
+
       {/* Fullscreen Mobile & Screen Focus Mode */}
       {focusLoaded && (
       <MobileFocusMode
         isOpen={focusModeOpen}
-        onClose={() => setFocusModeOpen(false)}
+        onClose={closeFocusMode}
         verses={filteredVerses}
         initialVerseIndex={focusVerseIndex}
         scriptureId={scriptureId}

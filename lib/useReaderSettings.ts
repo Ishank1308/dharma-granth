@@ -20,6 +20,9 @@ export interface ReaderSettings {
   showTransliteration: boolean;
   showHindi: boolean;
   showEnglish: boolean;
+  showCommentary: boolean;
+  /** Chapter reading spotlight follows the verse in view and dims nearby verses. */
+  spotlightMode: boolean;
   preferredLanguage: ReaderLanguagePref;
   numberFormat: NumberFormatPref;
   readerMode: ReaderModeTier;
@@ -47,6 +50,8 @@ export const DEFAULT_READER_SETTINGS: ReaderSettings = {
   showTransliteration: false,
   showHindi: true,
   showEnglish: true,
+  showCommentary: true,
+  spotlightMode: false,
   preferredLanguage: 'all',
   numberFormat: 'indian',
   readerMode: 'simple',
@@ -74,6 +79,71 @@ const PERSPECTIVES: PerspectiveMode[] = ['beginner', 'student', 'practitioner', 
 /** Same-tab broadcast, so every component using the hook sees a change at once. */
 const CHANGE_EVENT = 'dharma:reader-settings';
 
+/** Import the chapter reader's older controls once, without replacing any newer setting. */
+function readStoredSettings(): ReaderSettings {
+  const values: Record<string, unknown> = {};
+  let migrationNeeded = false;
+
+  try {
+    const legacySize = localStorage.getItem('dharma_reader_fontsize');
+    migrationNeeded ||= legacySize !== null;
+    if (legacySize === 'normal') values.sanskritSize = 'md';
+    if (legacySize === 'large') values.sanskritSize = 'lg';
+    if (legacySize === 'xl') values.sanskritSize = 'xl';
+
+    const legacyLayers = localStorage.getItem('dharma_reader_layers');
+    migrationNeeded ||= legacyLayers !== null;
+    if (legacyLayers) {
+      const parsed: unknown = JSON.parse(legacyLayers);
+      if (parsed && typeof parsed === 'object') {
+        const layers = parsed as Record<string, unknown>;
+        if (typeof layers.translit === 'boolean') values.showTransliteration = layers.translit;
+        if (typeof layers.hindi === 'boolean') values.showHindi = layers.hindi;
+        if (typeof layers.english === 'boolean') values.showEnglish = layers.english;
+        if (typeof layers.commentary === 'boolean') values.showCommentary = layers.commentary;
+      }
+    }
+    const legacySpotlight = localStorage.getItem('dharma_ekagrata_mode');
+    migrationNeeded ||= legacySpotlight !== null;
+    if (legacySpotlight) {
+      const parsed: unknown = JSON.parse(legacySpotlight);
+      if (typeof parsed === 'boolean') values.spotlightMode = parsed;
+    }
+  } catch {
+    // Keep defaults if a legacy preference is malformed or storage is blocked.
+  }
+
+  try {
+    const stored = localStorage.getItem(KEY);
+    if (stored) {
+      const parsed: unknown = JSON.parse(stored);
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+        // Current preferences take precedence; the legacy values fill only gaps.
+        Object.assign(values, parsed);
+      }
+    } else {
+      migrationNeeded = true;
+    }
+  } catch {
+    // The legacy values above can still be used if the current record is invalid.
+  }
+
+  const settings = sanitize(values);
+  if (migrationNeeded) {
+    try {
+      // Persist the migration before removing its source so a reset cannot
+      // accidentally resurrect old chapter-reader preferences.
+      localStorage.setItem(KEY, JSON.stringify(settings));
+      localStorage.removeItem('dharma_reader_fontsize');
+      localStorage.removeItem('dharma_reader_layers');
+      localStorage.removeItem('dharma_ekagrata_mode');
+    } catch {
+      // Keep the in-memory values when storage is unavailable.
+    }
+  }
+  return settings;
+}
+
 /** Keep only well-formed values from storage; anything else falls back to the default. */
 function sanitize(raw: unknown): ReaderSettings {
   const d = DEFAULT_READER_SETTINGS;
@@ -89,6 +159,8 @@ function sanitize(raw: unknown): ReaderSettings {
     showTransliteration: bool(o.showTransliteration, d.showTransliteration),
     showHindi: bool(o.showHindi, d.showHindi),
     showEnglish: bool(o.showEnglish, d.showEnglish),
+    showCommentary: bool(o.showCommentary, d.showCommentary),
+    spotlightMode: bool(o.spotlightMode, d.spotlightMode),
     preferredLanguage: pick(o.preferredLanguage, LANG_PREFS, d.preferredLanguage),
     numberFormat: pick(o.numberFormat, NUMBER_PREFS, d.numberFormat),
     readerMode: pick(o.readerMode, MODE_TIERS, d.readerMode),
@@ -112,20 +184,8 @@ export function useReaderSettings() {
   const [deviceReducedMotion, setDeviceReducedMotion] = useState(false);
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(KEY);
-      if (stored) setSettings(sanitize(JSON.parse(stored)));
-    } catch {
-      // Unreadable or blocked storage: keep the defaults.
-    }
-    const resync = () => {
-      try {
-        const stored = localStorage.getItem(KEY);
-        setSettings(stored ? sanitize(JSON.parse(stored)) : DEFAULT_READER_SETTINGS);
-      } catch {
-        // Keep what is on screen.
-      }
-    };
+    setSettings(readStoredSettings());
+    const resync = () => setSettings(readStoredSettings());
     window.addEventListener(CHANGE_EVENT, resync);
     window.addEventListener('storage', resync);
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -141,7 +201,14 @@ export function useReaderSettings() {
 
   const update = useCallback(<K extends keyof ReaderSettings>(key: K, value: ReaderSettings[K]) => {
     setSettings((prev) => {
-      const next = { ...prev, [key]: value };
+      let latest = prev;
+      try {
+        const stored = localStorage.getItem(KEY);
+        if (stored) latest = { ...prev, ...sanitize(JSON.parse(stored)) };
+      } catch {
+        // Retain this component's state if storage is unavailable or malformed.
+      }
+      const next = { ...latest, [key]: value };
       try {
         localStorage.setItem(KEY, JSON.stringify(next));
       } catch {
@@ -156,6 +223,9 @@ export function useReaderSettings() {
     setSettings(DEFAULT_READER_SETTINGS);
     try {
       localStorage.removeItem(KEY);
+      localStorage.removeItem('dharma_reader_fontsize');
+      localStorage.removeItem('dharma_reader_layers');
+      localStorage.removeItem('dharma_ekagrata_mode');
     } catch {
       // ignore
     }

@@ -139,6 +139,8 @@ export function ReaderSettingsPanel({
   reducedMotion,
   theme,
   setTheme,
+  scope = 'verse',
+  additionalControls,
 }: {
   open: boolean;
   onClose: () => void;
@@ -149,6 +151,9 @@ export function ReaderSettingsPanel({
   reducedMotion: boolean;
   theme: Theme;
   setTheme: (t: Theme) => void;
+  /** Hide controls that do not apply to chapter reading while keeping shared preferences. */
+  scope?: 'verse' | 'chapter';
+  additionalControls?: ReactNode;
 }) {
   const themeName = useId();
   return (
@@ -177,16 +182,17 @@ export function ReaderSettingsPanel({
           </p>
         </div>
 
-        {/* Reading level and perspective live here, not above the verse, so the page opens on scripture. */}
-        <fieldset>
-          <legend className="mb-2 text-sm font-semibold text-dharma-text">
-            Reading level
-            <span lang="hi" className="ml-2 font-devanagari text-[0.85rem] font-normal text-dharma-muted">
-              पठन स्तर व दृष्टि
-            </span>
-          </legend>
-          <ReaderControlBar settings={settings} onChange={update} />
-        </fieldset>
+        {scope === 'verse' && (
+          <fieldset>
+            <legend className="mb-2 text-sm font-semibold text-dharma-text">
+              Reading level
+              <span lang="hi" className="ml-2 font-devanagari text-[0.85rem] font-normal text-dharma-muted">
+                पठन स्तर व दृष्टि
+              </span>
+            </legend>
+            <ReaderControlBar settings={settings} onChange={update} />
+          </fieldset>
+        )}
 
         <fieldset>
           <legend className="mb-2 text-sm font-semibold text-dharma-text">
@@ -213,34 +219,55 @@ export function ReaderSettingsPanel({
           </div>
         </fieldset>
 
-        <Segmented legend="Preferred language" legendHi="भाषा प्राथमिकता" value={settings.preferredLanguage} options={LANGUAGES_PREF} onChange={(v) => update('preferredLanguage', v)} columns="grid-cols-3" />
-        <Segmented legend="Number format" legendHi="संख्या प्रारूप" value={settings.numberFormat} options={NUMBERS} onChange={(v) => update('numberFormat', v)} columns="grid-cols-2" />
+        {scope === 'verse' && <Segmented legend="Preferred language" legendHi="भाषा प्राथमिकता" value={settings.preferredLanguage} options={LANGUAGES_PREF} onChange={(v) => update('preferredLanguage', v)} columns="grid-cols-3" />}
+        {scope === 'verse' && <Segmented legend="Number format" legendHi="संख्या प्रारूप" value={settings.numberFormat} options={NUMBERS} onChange={(v) => update('numberFormat', v)} columns="grid-cols-2" />}
         <Segmented legend="Sanskrit size" legendHi="संस्कृत आकार" value={settings.sanskritSize} options={SIZES} onChange={(v) => update('sanskritSize', v)} columns="grid-cols-4" />
         <Segmented legend="Translation size" legendHi="अनुवाद आकार" value={settings.translationSize} options={SIZES} onChange={(v) => update('translationSize', v)} columns="grid-cols-4" />
         <Segmented legend="Line spacing" legendHi="पंक्ति अंतराल" value={settings.lineSpacing} options={SPACINGS} onChange={(v) => update('lineSpacing', v)} columns="grid-cols-4" />
-        <Segmented legend="Reading width" legendHi="पठन चौड़ाई" value={settings.readingWidth} options={WIDTHS} onChange={(v) => update('readingWidth', v)} columns="grid-cols-3" />
-        <Segmented legend="Contrast" legendHi="विरोधाभास" value={settings.contrast} options={CONTRASTS} onChange={(v) => update('contrast', v)} columns="grid-cols-2" />
+        {scope === 'verse' && <Segmented legend="Reading width" legendHi="पठन चौड़ाई" value={settings.readingWidth} options={WIDTHS} onChange={(v) => update('readingWidth', v)} columns="grid-cols-3" />}
+        {scope === 'verse' && <Segmented legend="Contrast" legendHi="विरोधाभास" value={settings.contrast} options={CONTRASTS} onChange={(v) => update('contrast', v)} columns="grid-cols-2" />}
 
         <fieldset className="rounded-2xl border border-dharma-border bg-dharma-bg/60 p-3">
-          <legend className="px-1 text-sm font-semibold text-dharma-text">Show elements</legend>
+          <legend className="px-1 text-sm font-semibold text-dharma-text">{scope === 'chapter' ? 'Show reading layers' : 'Show elements'}</legend>
           <Toggle label="Roman transliteration" hint="IAST" checked={settings.showTransliteration} onChange={(v) => update('showTransliteration', v)} />
           <Toggle label={<>Hindi translation <span lang="hi" className="font-devanagari">हिन्दी</span></>} checked={settings.showHindi} onChange={(v) => update('showHindi', v)} />
           <Toggle label="English translation" checked={settings.showEnglish} onChange={(v) => update('showEnglish', v)} />
+          <Toggle
+            label="Show explanations and study layers"
+            hint="Commentary, reflections, and related study material"
+            checked={settings.showCommentary}
+            onChange={(v) => update('showCommentary', v)}
+          />
         </fieldset>
 
-        <Toggle
-          label="Reduce motion"
-          hint={settings.reducedMotion === null ? 'Following your device setting' : undefined}
-          checked={reducedMotion}
-          onChange={(v) => update('reducedMotion', v)}
-        />
-        <Toggle label="Hide decorative elements" hint="Corner ornaments, card icons and entrance motion" checked={settings.hideDecor} onChange={(v) => update('hideDecor', v)} />
-        <Toggle
-          label={<>Reading Lite Mode <span lang="hi" className="font-devanagari text-xs text-dharma-muted">विशुद्ध पाठ</span></>}
-          hint="Strips secondary panels and ornaments for pure text focus and high reading speed"
-          checked={settings.liteMode}
-          onChange={(v) => update('liteMode', v)}
-        />
+        {scope === 'chapter' && (
+          <Toggle
+            label="Highlight the verse in view"
+            hint="एकाग्रता · Dim nearby verses while reading"
+            checked={settings.spotlightMode}
+            onChange={(v) => update('spotlightMode', v)}
+          />
+        )}
+
+        {additionalControls}
+
+        {scope === 'verse' && (
+          <>
+            <Toggle
+              label="Reduce motion"
+              hint={settings.reducedMotion === null ? 'Following your device setting' : undefined}
+              checked={reducedMotion}
+              onChange={(v) => update('reducedMotion', v)}
+            />
+            <Toggle label="Hide decorative elements" hint="Corner ornaments, card icons and entrance motion" checked={settings.hideDecor} onChange={(v) => update('hideDecor', v)} />
+            <Toggle
+              label={<>Reading Lite Mode <span lang="hi" className="font-devanagari text-xs text-dharma-muted">विशुद्ध पाठ</span></>}
+              hint="Strips secondary panels and ornaments for pure text focus and high reading speed"
+              checked={settings.liteMode}
+              onChange={(v) => update('liteMode', v)}
+            />
+          </>
+        )}
       </div>
     </ReaderDialog>
   );

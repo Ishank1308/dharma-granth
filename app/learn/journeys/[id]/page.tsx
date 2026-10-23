@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { READING_JOURNEYS, getJourney } from '@/data/reading-journeys';
+import { READING_JOURNEYS, getJourney, isJourneyIndexable } from '@/data/reading-journeys';
 import { readSeededChapter } from '@/lib/read-seeded-chapters';
 import { getScriptureMeta } from '@/data/scriptures';
 import { clipDescription } from '@/lib/meta-text';
@@ -23,7 +23,12 @@ function journeyDescription(objective: string, minutesPerLesson: number): string
 export function generateMetadata({ params }: PageProps): Metadata {
   const j = getJourney(params.id);
   return j
-    ? { title: `${j.title} · ${j.titleHi}`, description: journeyDescription(j.objective, j.minutesPerLesson), alternates: { canonical: `/learn/journeys/${j.id}/` } }
+    ? {
+        title: `${j.title} · ${j.titleHi}`,
+        description: journeyDescription(j.objective, j.minutesPerLesson),
+        alternates: { canonical: `/learn/journeys/${j.id}/` },
+        robots: { index: isJourneyIndexable(j), follow: true },
+      }
     : { title: 'Journey not found' };
 }
 

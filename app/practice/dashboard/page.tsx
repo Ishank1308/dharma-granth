@@ -1,9 +1,12 @@
-import { scriptureCatalog } from '@/data/scripture-meta';
+import type { Metadata } from 'next';
 import { DashboardClient } from './DashboardClient';
 
-/** Titles only. The full catalogue stays on the server so the dashboard bundle does not ship every description. */
-const titles = Object.fromEntries(scriptureCatalog.map((scripture) => [scripture.id, scripture.title]));
+export const metadata: Metadata = {
+  title: 'Private Practice Dashboard | Dharma Granth',
+  description: 'A private, local view of your reading, reflection, and chosen study sessions.',
+  robots: { index: false, follow: false },
+};
 
 export default function DashboardPage() {
-  return <DashboardClient titles={titles} />;
+  return <DashboardClient />;
 }

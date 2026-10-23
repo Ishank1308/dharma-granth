@@ -36,7 +36,7 @@ export function SiteFooter() {
             </p>
             <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
               <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-              <span>100% Private · Zero tracking · Ad-free</span>
+              <span>Local-first · No accounts · Ad-free</span>
             </div>
           </div>
 

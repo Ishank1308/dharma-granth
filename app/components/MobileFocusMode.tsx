@@ -30,6 +30,7 @@ import {
 } from '@/lib/sacred-soundscape';
 import { splitVerseLines, toAsciiDigits } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { useReaderSettings } from '@/lib/useReaderSettings';
 
 export interface FocusVerse {
   number: number | string;
@@ -91,6 +92,8 @@ const slideVariants = {
   }),
 };
 
+const FOCUSABLE = 'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 export function MobileFocusMode({
   isOpen,
   onClose,
@@ -110,11 +113,16 @@ export function MobileFocusMode({
     Math.max(0, Math.min(initialVerseIndex, verses.length - 1)),
   );
   const [direction, setDirection] = useState(0);
-  const [fontSize, setFontSize] = useState<'normal' | 'large' | 'xl'>('large');
-  const [showTranslit, setShowTranslit] = useState(true);
-  const [showHindi, setShowHindi] = useState(true);
-  const [showEnglish, setShowEnglish] = useState(true);
-  const [showCommentary, setShowCommentary] = useState(true);
+  const { settings, update } = useReaderSettings();
+  const {
+    sanskritSize,
+    translationSize,
+    lineSpacing,
+    showTransliteration: showTranslit,
+    showHindi,
+    showEnglish,
+    showCommentary,
+  } = settings;
   const [showMenu, setShowMenu] = useState(false);
 
   const [tanpuraActive, setTanpuraActive] = useState(false);
@@ -139,6 +147,8 @@ export function MobileFocusMode({
 
   const reduce = useReducedMotion();
   const cardScrollRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   // Sync index when initialVerseIndex changes or modal opens
   useEffect(() => {
@@ -146,14 +156,44 @@ export function MobileFocusMode({
       const idx = Math.max(0, Math.min(initialVerseIndex, verses.length - 1));
       setCurrentIndex(idx);
       setDirection(0);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
   }, [isOpen, initialVerseIndex, verses.length]);
+
+  // Keep keyboard focus inside this full-screen reader and return it to the opener.
+  useEffect(() => {
+    if (!isOpen) return;
+    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const frame = window.requestAnimationFrame(() => closeButtonRef.current?.focus());
+
+    const trapTab = (event: globalThis.KeyboardEvent) => {
+      if (event.key !== 'Tab' || !dialogRef.current) return;
+      const items = Array.from(dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE)).filter((item) => item.offsetParent !== null);
+      if (items.length === 0) {
+        event.preventDefault();
+        dialogRef.current.focus();
+        return;
+      }
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === dialogRef.current)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', trapTab, true);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener('keydown', trapTab, true);
+      document.body.style.overflow = previousOverflow;
+      if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
+    };
+  }, [isOpen]);
 
   const currentVerse: FocusVerse | undefined = verses[currentIndex];
   const verseKey = currentVerse ? currentVerse.sanskrit || currentVerse.hindi || currentVerse.translation || '' : '';
@@ -196,6 +236,8 @@ export function MobileFocusMode({
     if (!isOpen) return;
     const handleKeyDown = (e: globalThis.KeyboardEvent) => {
       if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
         onClose();
       } else if (e.key === 'ArrowRight' || e.key === 'PageDown') {
         next();
@@ -236,19 +278,33 @@ export function MobileFocusMode({
 
   const lines = currentVerse.sanskrit ? splitVerseLines(currentVerse.sanskrit) : [];
 
-  const sanskritSizeClass =
-    fontSize === 'xl'
-      ? 'text-2xl md:text-3xl leading-relaxed md:leading-loose'
-      : fontSize === 'large'
-      ? 'text-xl md:text-2xl leading-relaxed md:leading-loose'
-      : 'text-lg md:text-xl leading-relaxed';
+  const lineSpacingClass = {
+    compact: 'leading-[1.7]',
+    normal: 'leading-[1.85]',
+    relaxed: 'leading-[2.05]',
+    loose: 'leading-[2.35]',
+  }[lineSpacing];
+  const sanskritSizeClass = `${{
+    sm: 'text-base md:text-lg',
+    md: 'text-lg md:text-xl',
+    lg: 'text-xl md:text-2xl',
+    xl: 'text-2xl md:text-3xl',
+  }[sanskritSize]} ${lineSpacingClass}`;
+  const translationSizeClass = `${{
+    sm: 'text-sm md:text-base',
+    md: 'text-base md:text-lg',
+    lg: 'text-lg md:text-xl',
+    xl: 'text-xl md:text-2xl',
+  }[translationSize]} ${lineSpacingClass}`;
 
   return (
     <AnimatePresence>
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label={`एकाग्रता मोड · श्लोक ${verseLabel}`}
+        tabIndex={-1}
         className="fixed inset-0 z-50 flex flex-col bg-stone-950/95 text-stone-100 backdrop-blur-xl touch-none select-none"
       >
         {/* Progress bar at the top */}
@@ -265,6 +321,7 @@ export function MobileFocusMode({
         <header className="relative flex shrink-0 items-center justify-between border-b border-stone-800/80 px-4 py-3 sm:px-6">
           <div className="flex items-center gap-3">
             <button
+              ref={closeButtonRef}
               type="button"
               onClick={() => {
                 triggerTactileFeedback('light', 'softTap');
@@ -362,33 +419,47 @@ export function MobileFocusMode({
             <div className="hidden sm:inline-flex items-center rounded-full border border-stone-800 bg-stone-900 p-0.5 text-xs font-semibold">
               <button
                 type="button"
-                onClick={() => setFontSize('normal')}
+                onClick={() => update('sanskritSize', 'sm')}
                 className={`rounded-full px-2 py-0.5 transition ${
-                  fontSize === 'normal' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                  sanskritSize === 'sm' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
                 }`}
-                title="सामान्य अक्षर"
+                title="छोटे अक्षर"
+                aria-pressed={sanskritSize === 'sm'}
               >
                 A
               </button>
               <button
                 type="button"
-                onClick={() => setFontSize('large')}
+                onClick={() => update('sanskritSize', 'md')}
                 className={`rounded-full px-2 py-0.5 transition ${
-                  fontSize === 'large' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                  sanskritSize === 'md' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
                 }`}
-                title="बड़े अक्षर"
+                title="सामान्य अक्षर"
+                aria-pressed={sanskritSize === 'md'}
               >
                 A+
               </button>
               <button
                 type="button"
-                onClick={() => setFontSize('xl')}
+                onClick={() => update('sanskritSize', 'lg')}
                 className={`rounded-full px-2 py-0.5 transition ${
-                  fontSize === 'xl' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                  sanskritSize === 'lg' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
                 }`}
-                title="विशाल अक्षर"
+                title="बड़े अक्षर"
+                aria-pressed={sanskritSize === 'lg'}
               >
                 A++
+              </button>
+              <button
+                type="button"
+                onClick={() => update('sanskritSize', 'xl')}
+                className={`rounded-full px-2 py-0.5 transition ${
+                  sanskritSize === 'xl' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                }`}
+                title="विशाल अक्षर"
+                aria-pressed={sanskritSize === 'xl'}
+              >
+                A+++
               </button>
             </div>
 
@@ -402,20 +473,87 @@ export function MobileFocusMode({
                 }`}
                 aria-label="दृश्य विकल्प"
                 title="विकल्प"
+                aria-expanded={showMenu}
+                aria-controls="focus-reader-settings"
               >
                 <SlidersHorizontal className="h-3.5 w-3.5" />
               </button>
 
               {showMenu && (
-                <div className="absolute right-0 top-full mt-2 z-30 w-48 rounded-2xl border border-stone-800 bg-stone-900 p-3 shadow-2xl space-y-1.5 text-xs">
+                <div id="focus-reader-settings" className="absolute right-0 top-full mt-2 z-30 w-72 max-w-[calc(100vw-2rem)] max-h-[min(75vh,38rem)] overflow-y-auto rounded-2xl border border-stone-800 bg-stone-900 p-3 shadow-2xl space-y-3 text-xs">
                   <p className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-stone-400">
-                    सामग्री दृश्य
+                    पठन विकल्प · Reading options
                   </p>
+                  <fieldset className="rounded-xl border border-stone-800 p-2">
+                    <legend className="px-1 font-semibold text-stone-200">Sanskrit size · संस्कृत आकार</legend>
+                    <div className="grid grid-cols-4 gap-1">
+                      {([
+                        ['sm', 'A', 'Small'],
+                        ['md', 'A+', 'Default'],
+                        ['lg', 'A++', 'Large'],
+                        ['xl', 'A+++', 'Largest'],
+                      ] as const).map(([size, label, name]) => (
+                        <button
+                          key={size}
+                          type="button"
+                          aria-label={`${name} Sanskrit text`}
+                          aria-pressed={sanskritSize === size}
+                          onClick={() => update('sanskritSize', size)}
+                          className={`min-h-9 rounded-lg border px-1 font-semibold ${sanskritSize === size ? 'border-amber-400 bg-amber-500 text-stone-950' : 'border-stone-700 text-stone-300 hover:border-stone-500'}`}
+                        >
+                          {label}
+                        </button>
+                      ))}
+                    </div>
+                  </fieldset>
+                  <fieldset className="rounded-xl border border-stone-800 p-2">
+                    <legend className="px-1 font-semibold text-stone-200">Translation size · अनुवाद आकार</legend>
+                    <div className="grid grid-cols-4 gap-1">
+                      {([
+                        ['sm', 'S'],
+                        ['md', 'M'],
+                        ['lg', 'L'],
+                        ['xl', 'XL'],
+                      ] as const).map(([size, label]) => (
+                        <button
+                          key={size}
+                          type="button"
+                          aria-label={`${label} translation text`}
+                          aria-pressed={translationSize === size}
+                          onClick={() => update('translationSize', size)}
+                          className={`min-h-9 rounded-lg border px-1 font-semibold ${translationSize === size ? 'border-amber-400 bg-amber-500 text-stone-950' : 'border-stone-700 text-stone-300 hover:border-stone-500'}`}
+                        >
+                          {label}
+                        </button>
+                      ))}
+                    </div>
+                  </fieldset>
+                  <fieldset className="rounded-xl border border-stone-800 p-2">
+                    <legend className="px-1 font-semibold text-stone-200">Line spacing · पंक्ति अंतराल</legend>
+                    <div className="grid grid-cols-2 gap-1">
+                      {([
+                        ['compact', 'Compact'],
+                        ['normal', 'Normal'],
+                        ['relaxed', 'Relaxed'],
+                        ['loose', 'Loose'],
+                      ] as const).map(([spacing, label]) => (
+                        <button
+                          key={spacing}
+                          type="button"
+                          aria-pressed={lineSpacing === spacing}
+                          onClick={() => update('lineSpacing', spacing)}
+                          className={`min-h-9 rounded-lg border px-2 font-medium ${lineSpacing === spacing ? 'border-amber-400 bg-amber-500 text-stone-950' : 'border-stone-700 text-stone-300 hover:border-stone-500'}`}
+                        >
+                          {label}
+                        </button>
+                      ))}
+                    </div>
+                  </fieldset>
                   <label className="flex items-center gap-2 rounded-lg px-2 py-1 text-stone-200 hover:bg-stone-800 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={showTranslit}
-                      onChange={(e) => setShowTranslit(e.target.checked)}
+                      onChange={(e) => update('showTransliteration', e.target.checked)}
                       className="rounded text-saffron-600 focus:ring-0"
                     />
                     <span>लिप्यंतरण (Translit)</span>
@@ -424,7 +562,7 @@ export function MobileFocusMode({
                     <input
                       type="checkbox"
                       checked={showHindi}
-                      onChange={(e) => setShowHindi(e.target.checked)}
+                      onChange={(e) => update('showHindi', e.target.checked)}
                       className="rounded text-saffron-600 focus:ring-0"
                     />
                     <span>हिन्दी अर्थ</span>
@@ -433,7 +571,7 @@ export function MobileFocusMode({
                     <input
                       type="checkbox"
                       checked={showEnglish}
-                      onChange={(e) => setShowEnglish(e.target.checked)}
+                      onChange={(e) => update('showEnglish', e.target.checked)}
                       className="rounded text-saffron-600 focus:ring-0"
                     />
                     <span>English Meaning</span>
@@ -442,7 +580,7 @@ export function MobileFocusMode({
                     <input
                       type="checkbox"
                       checked={showCommentary}
-                      onChange={(e) => setShowCommentary(e.target.checked)}
+                      onChange={(e) => update('showCommentary', e.target.checked)}
                       className="rounded text-saffron-600 focus:ring-0"
                     />
                     <span>व्याख्या व सीख</span>
@@ -525,7 +663,7 @@ export function MobileFocusMode({
                       <p className="mb-1 text-[11px] font-bold uppercase tracking-wider text-saffron-400">
                         हिन्दी अर्थ
                       </p>
-                      <p lang="hi" className="font-devanagari text-base md:text-lg leading-loose text-stone-200">
+                      <p lang="hi" className={`font-devanagari ${translationSizeClass} text-stone-200`}>
                         {currentVerse.hindi}
                       </p>
                     </div>
@@ -536,7 +674,7 @@ export function MobileFocusMode({
                       <p className="mb-1 text-[11px] font-bold uppercase tracking-wider text-stone-400">
                         English Meaning
                       </p>
-                      <p lang="en" className="text-sm md:text-base leading-relaxed text-stone-300">
+                      <p lang="en" className={`${translationSizeClass} text-stone-300`}>
                         {currentVerse.translation}
                       </p>
                     </div>
@@ -549,7 +687,7 @@ export function MobileFocusMode({
                     <p lang="hi" className="mb-1 text-xs font-bold text-amber-300 flex items-center gap-1.5 font-devanagari">
                       <span>✨</span> आज की सीख (Life Insight)
                     </p>
-                    <p lang="hi" className="font-devanagari text-sm md:text-base leading-relaxed text-stone-200">
+                    <p lang="hi" className={`font-devanagari ${translationSizeClass} text-stone-200`}>
                       {lesson}
                     </p>
                   </div>

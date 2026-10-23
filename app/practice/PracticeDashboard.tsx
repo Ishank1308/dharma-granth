@@ -4,7 +4,7 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { retryImport } from '@/lib/retry-import';
 import Link from 'next/link';
-import { Lock, Settings2, Trash2, ShieldCheck, Heart, Sparkles, Bookmark, NotebookPen, LayoutDashboard, BarChart3, HardDriveDownload } from 'lucide-react';
+import { Lock, Settings2, Trash2, ShieldCheck, Heart, Sparkles, Bookmark, NotebookPen, LayoutDashboard, BarChart3, HardDriveDownload, BellRing } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { FadeUp } from '@/app/components/motion/primitives';
 const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((module) => module.DailyVerse)));
@@ -29,7 +29,7 @@ const SadhanaPortability = dynamic(() => retryImport(() => import('@/app/compone
  * - Peaceful, private daily spiritual practice sanctuary.
  * - Zero commercial, competitive, or productivity feel.
  * - Every tool is optional — users pick which ones appear, stored locally.
- * - Everything is private: localStorage only, optional PIN protection, zero tracking.
+ * - Practice notes stay in local storage with optional local PIN protection.
  */
 
 const TOOLS = [
@@ -48,19 +48,31 @@ const TOOLS = [
 
 type ToolId = (typeof TOOLS)[number]['id'];
 
-const ALL_ON: Record<ToolId, boolean> = {
+const DEFAULT_ENABLED: Record<ToolId, boolean> = {
   verse: true,
   reflection: true,
   reading: true,
-  japa: true,
-  meditation: true,
-  pranayama: true,
-  festivals: true,
-  gratitude: true,
-  sankalpa: true,
-  routine: true,
-  history: true,
+  japa: false,
+  meditation: false,
+  pranayama: false,
+  festivals: false,
+  gratitude: false,
+  sankalpa: false,
+  routine: false,
+  history: false,
 };
+
+const TOOL_GROUPS: Array<{
+  id: string;
+  title: string;
+  titleHi: string;
+  toolIds: ToolId[];
+}> = [
+  { id: 'read', title: 'Read', titleHi: 'पठन', toolIds: ['verse', 'reading'] },
+  { id: 'pause', title: 'Pause', titleHi: 'विराम', toolIds: ['meditation', 'pranayama', 'japa'] },
+  { id: 'reflect', title: 'Reflect', titleHi: 'मनन', toolIds: ['reflection', 'gratitude', 'sankalpa'] },
+  { id: 'organize', title: 'Keep in view', titleHi: 'स्मरण', toolIds: ['festivals', 'routine', 'history'] },
+];
 
 const MY_SPACE = [
   { href: '/practice/bookmarks/', hi: 'सुरक्षित श्लोक', en: 'Saved verses', Icon: Bookmark },
@@ -68,12 +80,13 @@ const MY_SPACE = [
   { href: '/practice/journal/', hi: 'स्वाध्याय डायरी', en: 'Journal', Icon: NotebookPen },
   { href: '/practice/dashboard/', hi: 'पठन प्रगति', en: 'Reading progress', Icon: BarChart3 },
   { href: '/practice/saved/', hi: 'ऑफ़लाइन ग्रंथ', en: 'Offline texts', Icon: HardDriveDownload },
+  { href: '/practice/desk/#reminders-h', hi: 'स्मरण', en: 'Calendar reminders', Icon: BellRing },
 ];
 
 export function PracticeDashboard() {
   const [enabled, setEnabled] = useLocalStorage<Record<ToolId, boolean>>(
     'dharma.practice.tools',
-    ALL_ON,
+    DEFAULT_ENABLED,
   );
   const [pin] = useLocalStorage<string | null>('dharma.practice.pin', null);
   const [isLocked] = useLocalStorage<boolean>('dharma.practice.is_locked', false);
@@ -140,7 +153,7 @@ export function PracticeDashboard() {
             </p>
             <div className="mt-4 inline-flex items-center gap-2 text-xs sm:text-sm bg-white/10 border border-white/20 rounded-full px-4 py-2 backdrop-blur-sm">
               <Lock className="w-3.5 h-3.5 text-amber-200" />
-              <span>100% निजी · सारा डेटा केवल आपके डिवाइस पर सहेजा जाता है (Zero public profiles, zero tracking)</span>
+              <span>स्थानीय साधना · आपकी निजी प्रविष्टियाँ इसी उपकरण पर रहती हैं (Local practice, no public profiles)</span>
             </div>
           </FadeUp>
         </div>
@@ -148,7 +161,7 @@ export function PracticeDashboard() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-8">
         {/* My space: everything personal lives under /practice/ (saved verses, desk, journal, progress, offline). */}
-        <nav aria-label="मेरा स्थान · My space" className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+        <nav aria-label="मेरा स्थान · My space" className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
           {MY_SPACE.map(({ href, hi, en, Icon }) => (
             <Link
               key={href}
@@ -182,26 +195,45 @@ export function PracticeDashboard() {
           <>
             {/* Tool picker */}
             <section aria-label="Choose your tools" className="rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-5 shadow-sm">
-              <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-dharma-muted mb-3">
-                <Settings2 className="w-3.5 h-3.5 text-saffron-600" />
-                <span>अपने साधन चुनें · choose your tools</span>
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {TOOLS.map((t) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    onClick={() => toggle(t.id)}
-                    aria-pressed={on(t.id)}
-                    className={`practice-tool-chip px-3.5 py-1.5 rounded-full text-xs font-semibold border transition ${
-                      on(t.id)
-                        ? 'practice-tool-chip-on bg-saffron-100 dark:bg-saffron-950/40 border-saffron-300 dark:border-saffron-800 text-saffron-800 dark:text-saffron-200 shadow-xs'
-                        : 'border-dharma-border text-dharma-muted hover:border-saffron-200 dark:hover:border-saffron-800/60'
-                    }`}
-                  >
-                    <span lang="hi" className="font-devanagari">{t.label}</span>
-                    <span> · {t.sub}</span>
-                  </button>
+              <div className="mb-4">
+                <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-dharma-muted">
+                  <Settings2 className="w-3.5 h-3.5 text-saffron-600" />
+                  <span>Choose what appears here · यहाँ दिखने वाले साधन चुनें</span>
+                </p>
+                <p className="mt-1 text-xs leading-relaxed text-dharma-muted">
+                  Start with a verse and reflection. Add or hide any tool; your choices stay on this device.
+                  <span lang="hi" className="ml-1 font-devanagari">श्लोक और चिंतन से शुरू करें। साधन जोड़ें या छिपाएँ; आपकी पसंद इसी उपकरण पर रहती है।</span>
+                </p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {TOOL_GROUPS.map((group) => (
+                  <fieldset key={group.id} className="min-w-0 rounded-xl border border-dharma-border/70 bg-dharma-bg/40 p-3">
+                    <legend className="px-1 text-xs font-semibold text-dharma-muted">
+                      {group.title}<span lang="hi" className="ml-1.5 font-devanagari">· {group.titleHi}</span>
+                    </legend>
+                    <div className="flex flex-wrap gap-2">
+                      {group.toolIds.map((toolId) => {
+                        const tool = TOOLS.find((item) => item.id === toolId);
+                        if (!tool) return null;
+                        return (
+                          <button
+                            key={tool.id}
+                            type="button"
+                            onClick={() => toggle(tool.id)}
+                            aria-pressed={on(tool.id)}
+                            className={`practice-tool-chip inline-flex min-h-11 items-center rounded-xl border px-3 text-left text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 ${
+                              on(tool.id)
+                                ? 'practice-tool-chip-on bg-saffron-100 dark:bg-saffron-950/40 border-saffron-300 dark:border-saffron-800 text-saffron-800 dark:text-saffron-200 shadow-xs'
+                                : 'border-dharma-border text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
+                            }`}
+                          >
+                            <span lang="hi" className="font-devanagari">{tool.label}</span>
+                            <span className="ml-1 opacity-80">· {tool.sub}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </fieldset>
                 ))}
               </div>
             </section>
@@ -228,7 +260,16 @@ export function PracticeDashboard() {
         {/* Private Backup, Restore & Clear Controls */}
         <div className="border-t border-dharma-border/80 pt-8 space-y-4">
           <BackupRestore />
-          <SadhanaPortability />
+          <details className="rounded-2xl border border-dharma-border bg-dharma-card px-4">
+            <summary className="flex min-h-12 cursor-pointer items-center font-semibold text-sm text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
+              वैकल्पिक उपकरण-स्थानांतरण · Alternate compressed transfer options
+            </summary>
+            <p className="pb-2 text-xs leading-relaxed text-dharma-muted">
+              The alternate sync code and .dharma file are compressed, not encrypted. Keep them private; use the JSON backup above for the standard export and restore flow.
+              <span lang="hi" className="ml-1 font-devanagari">वैकल्पिक सिंक कोड और .dharma फ़ाइल संपीड़ित हैं, कूटबद्ध नहीं। इन्हें निजी रखें; सामान्य बैकअप के लिए ऊपर दिया JSON विकल्प उपयोग करें।</span>
+            </p>
+            <div className="pb-4"><SadhanaPortability /></div>
+          </details>
           <div className="flex justify-end pt-2">
             <button
               type="button"
@@ -242,7 +283,7 @@ export function PracticeDashboard() {
         </div>
 
         <p className="text-center text-xs text-dharma-muted pb-4">
-          साधना आत्मा का एकांत है — this page keeps no score, no rankings, and shares nothing. Clearing your browser data erases it completely.
+          साधना आत्मा का एकांत है — no scores or rankings. Practice notes stay on this device; clearing browser data can erase them.
         </p>
       </div>
     </main>

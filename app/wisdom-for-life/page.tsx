@@ -9,7 +9,7 @@ import { Compass, BookOpen, Heart, Sparkles } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Wisdom for Life — जीवन के लिए शास्त्रीय मार्गदर्शन',
   description:
-    'Scriptural teachings from the Gita and Upanishads for everyday challenges: stress, fear, anger, decisions, grief, discipline and purpose.',
+    'Source-linked passages from the Gita and Upanishads for reflecting on life questions, relationships, discipline, grief, purpose, and attention.',
   alternates: { canonical: '/wisdom-for-life/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
@@ -52,7 +52,10 @@ export default function WisdomForLifeIndexPage() {
                 Wisdom for Life
               </h1>
               <p className="text-base sm:text-lg text-amber-50/90 leading-relaxed font-normal mb-6">
-                You do not need to memorize scripture names or chapter and verse coordinates to receive the profound healing clarity of ancient wisdom. Browse directly by what you are going through: stress, grief, moral dilemmas, restless focus, family duties, or the search for enduring purpose.
+                Explore selected passages by a life question, situation, or practice—without needing chapter coordinates. Each topic is a starting point for study and reflection, not a diagnosis or treatment.
+              </p>
+              <p lang="hi" className="max-w-3xl text-sm sm:text-base leading-relaxed font-devanagari text-amber-100/90">
+                जीवन के प्रश्नों और परिस्थितियों के अनुसार चयनित शास्त्रीय पाठ पढ़ें। ये अध्ययन और मनन के विषय हैं, निदान या उपचार नहीं।
               </p>
             </div>
 
@@ -68,7 +71,7 @@ export default function WisdomForLifeIndexPage() {
               </div>
               <div className="flex items-center gap-2 bg-black/20 backdrop-blur-sm px-3.5 py-1.5 rounded-xl border border-white/10">
                 <Heart className="w-4 h-4 text-amber-300" />
-                <span>Zero Medical Diagnosis • Grounded Sources</span>
+                <span>Study and reflection • Sources shown</span>
               </div>
             </div>
           </FadeUp>

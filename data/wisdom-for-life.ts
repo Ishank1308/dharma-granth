@@ -223,10 +223,10 @@ export const wisdomTopics: WisdomTopic[] = [
       }
     ],
     traditionalContextOverview: {
-      titleEn: 'The Classical Vedantic View of Mental Agitation (Chitta-Vikshepa)',
-      titleHi: 'चित्त-विक्षेप पर शास्त्रीय वेदांतिक दृष्टिकोण',
-      bodyEn: 'In Patanjali Yoga Sutras (1.33) and the Gita, chronic worry is diagnosed as "chitta-vikshepa"—mental dispersion caused by attachment to outcome and identification with perishable roles. The remedy is two-fold: Abhyasa (steady grounding in practice) and Vairagya (healthy dispassion toward what cannot be controlled).',
-      bodyHi: 'योगसूत्र और गीता में चिंता को "चित्त-विक्षेप" कहा गया है—यानी मन का अपनी केंद्रस्थ शांति से भटक जाना। इसका शास्त्रीय समाधान दोहरे स्तंभों पर टिका है: अभ्यास (सतत प्रयास) और वैराग्य (जिस पर अपना वश नहीं है, उसके प्रति अनासक्ति)।',
+      titleEn: 'The Restless Mind in the Bhagavad Gita',
+      titleHi: 'भगवद्गीता में चंचल मन का प्रसंग',
+      bodyEn: 'The Gita describes the mind as restless without naming ordinary worry as a medical condition. In 6.26, Krishna teaches Arjuna to bring the wandering mind back; in 6.35, he acknowledges how difficult restraint can be and names practice (abhyāsa) and dispassion (vairāgya). This page places those teachings alongside selected passages for study. It does not diagnose chronic worry or promise treatment.',
+      bodyHi: 'गीता मन की चंचलता का वर्णन करती है, सामान्य चिंता को रोग का नाम नहीं देती। अध्याय ६ के श्लोक २६ में भटके हुए मन को पुनः आत्मा की ओर लाने का उपदेश है; श्लोक ३५ मन को वश में करना कठिन मानते हुए अभ्यास और वैराग्य का उल्लेख करता है। यहाँ इन उपदेशों को चयनित श्लोकों के साथ अध्ययन हेतु रखा गया है; यह किसी अवस्था का निदान या उपचार का आश्वासन नहीं है।',
       keyThemes: ['Chitta-Prasadana (Clarity of Mind)', 'Kripa & Sharanagati (Surrendering Outcome)', 'Sakshi Bhava (Witness Consciousness)'],
       keyThemesHi: ['चित्त-प्रसादन (मन की निर्मलता)', 'फलासक्ति-त्याग (परिणाम से अनासक्ति)', 'साक्षी भाव (तटस्थ अवलोकन)']
     },
@@ -252,7 +252,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'katha', title: 'Katha Upanishad', titleHi: 'कठोपनिषद्', titleSanskrit: 'कठोपनिषत्', description: 'Illuminates the chariot of the senses and the mastery of the mind.', descriptionHi: 'इंद्रिय रूपी घोड़ों और मन रूपी लगाम के नियंत्रण का दिव्य रूपक।', href: '/scripture/katha' }
     ],
     sources: [
-      { citation: 'Bhagavad Gita 2.66 and 6.26', textName: 'Bhagavad Gita', section: 'Chapter 2, Verse 66; Chapter 6, Verse 26' }
+      { citation: 'Bhagavad Gita 2.66, 6.26, and 6.35', textName: 'Bhagavad Gita', section: 'Chapter 2, Verse 66; Chapter 6, Verses 26 and 35' }
     ],
     contextualNote: {
       headlineEn: 'Important Contextual & Mental Health Note',
@@ -367,7 +367,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'taittiriya', title: 'Taittiriya Upanishad', titleHi: 'तैत्तिरीयोपनिषद्', titleSanskrit: 'तैत्तिरीयोपनिषत्', description: 'Reveals the supreme joy that obliterates all fear.', descriptionHi: 'आनंद के उस महासागर का वर्णन जो हर भय को मिटा देता है।', href: '/scripture/taittiriya' }
     ],
     sources: [
-      { citation: 'Taittiriya Upanishad Anandavalli', textName: 'Taittiriya Upanishad', section: 'Chapter 2, Section 9' }
+      { citation: 'Bhagavad Gita 16.1', textName: 'Bhagavad Gita', section: 'Chapter 16, Verse 1' },
+      { citation: 'Taittiriya Upanishad 2.4.1', textName: 'Taittiriya Upanishad', section: 'Anandavalli, Chapter 2, Section 4' }
     ],
     contextualNote: {
       headlineEn: 'Contextual Disclaimer Regarding Acute Trauma & Phobias',
@@ -482,7 +483,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'viduraniti', title: 'Vidura Niti', titleHi: 'विदुर नीति', titleSanskrit: 'विदुरनीतिः', description: 'Practical statesman wisdom on ruling one’s own tongue and temper.', descriptionHi: 'वाणी और चित्त के अनुशासन पर विदुर का व्यावहारिक उपदेश।', href: '/scripture/viduraniti' }
     ],
     sources: [
-      { citation: 'Vidura Niti (Prajāgara section of the Mahābhārata, Udyoga Parva)', textName: 'Vidura Niti', section: 'Library chapter 7, verse 58' }
+      { citation: 'Bhagavad Gita 2.62–63', textName: 'Bhagavad Gita', section: 'Chapter 2, Verses 62–63' },
+      { citation: 'Vidura Niti 7.72 (Prajāgara section of the Mahābhārata, Udyoga Parva)', textName: 'Vidura Niti', section: 'Traditional reference 7.72; library chapter 7, verse 58' }
     ],
     contextualNote: {
       headlineEn: 'Important Note Regarding Chronic Rage & Safety',
@@ -596,7 +598,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'katha', title: 'Katha Upanishad', titleHi: 'कठोपनिषद्', titleSanskrit: 'कठोपनिषत्', description: 'Nachiketa faces Death itself and learns the secret of immortality.', descriptionHi: 'नचिकेता और यमराज का अमर संवाद मृत्यु के रहस्य पर।', href: '/scripture/katha' }
     ],
     sources: [
-      { citation: 'Bhagavad Gita Chapter 2', textName: 'Bhagavad Gita', section: 'Verses 11 and 22' }
+      { citation: 'Bhagavad Gita 2.11 and 2.22', textName: 'Bhagavad Gita', section: 'Chapter 2, Verses 11 and 22' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Complicated Grief & Depression',
@@ -710,7 +712,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'viduraniti', title: 'Vidura Niti', titleHi: 'विदुर नीति', titleSanskrit: 'विदुरनीतिः', description: 'Pragmatic ethical guidelines for high-stakes decisions.', descriptionHi: 'जटिल परिस्थितियों में नीतिसंगत निर्णय के सुनहरे सूत्र।', href: '/scripture/viduraniti' }
     ],
     sources: [
-      { citation: 'Bhagavad Gita Chapters 2 and 3', textName: 'Bhagavad Gita', section: '2.47 and 3.35' }
+      { citation: 'Bhagavad Gita 2.47 and 3.35', textName: 'Bhagavad Gita', section: 'Chapters 2 and 3' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Legal & Professional Guidance',
@@ -826,7 +828,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'katha', title: 'Katha Upanishad', titleHi: 'कठोपनिषद्', titleSanskrit: 'कठोपनिषत्', description: 'The timeless allegory of the chariot and the horses of the senses.', descriptionHi: 'रथ, सारथि और घोड़ों का अमर मनोवैज्ञानिक रूपक।', href: '/scripture/katha' }
     ],
     sources: [
-      { citation: 'Katha Upanishad Chapter 1, Valli 3', textName: 'Katha Upanishad', section: '1.3.3–4' }
+      { citation: 'Bhagavad Gita 6.16–17', textName: 'Bhagavad Gita', section: 'Chapter 6, Verses 16–17' },
+      { citation: 'Katha Upanishad 1.3.3–4', textName: 'Katha Upanishad', section: 'Chapter 1, Valli 3' }
     ],
     contextualNote: {
       headlineEn: 'Important Note Regarding Eating & Compulsive Disorders',
@@ -941,6 +944,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'bhagavadgita', title: 'Bhagavad Gita', titleHi: 'भगवद्गीता', titleSanskrit: 'श्रीमद्भगवद्गीता', description: 'Chapter 6 details sitting posture, gaze, and mental stilling.', descriptionHi: 'आसन, दृष्टि और मन की शांति की संपूर्ण पद्धति।', href: '/scripture/bhagavadgita' }
     ],
     sources: [
+      { citation: 'Bhagavad Gita 2.41', textName: 'Bhagavad Gita', section: 'Chapter 2, Verse 41' },
       { citation: 'Mundaka Upanishad 2.2.4', textName: 'Mundaka Upanishad', section: 'Mundaka 2, Khanda 2' }
     ],
     contextualNote: {
@@ -1055,7 +1059,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'viduraniti', title: 'Vidura Niti', titleHi: 'विदुर नीति', titleSanskrit: 'विदुरनीतिः', description: 'Principles of wise statesmanship and guarding against sycophancy.', descriptionHi: 'सच्चे नेतृत्व और चापलूसों से बचने के विदुर के नियम।', href: '/scripture/viduraniti' }
     ],
     sources: [
-      { citation: 'Bhagavad Gita 3.20-21', textName: 'Bhagavad Gita', section: 'Chapter 3, Verses 20–21' }
+      { citation: 'Bhagavad Gita 3.20 and 3.21', textName: 'Bhagavad Gita', section: 'Chapter 3, Verses 20 and 21' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Corporate & Governance Compliance',
@@ -1170,7 +1174,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'bhagavadgita', title: 'Bhagavad Gita', titleHi: 'भगवद्गीता', titleSanskrit: 'श्रीमद्भगवद्गीता', description: 'Sacred mutual nourishment in Chapter 3.', descriptionHi: 'पारस्परिक पोषण और सहयोग का सार्वभौमिक सिद्धांत।', href: '/scripture/bhagavadgita' }
     ],
     sources: [
-      { citation: 'Taittiriya Upanishad Shikshavalli 1.11', textName: 'Taittiriya Upanishad', section: 'Chapter 1, Anuvaka 11' }
+      { citation: 'Taittiriya Upanishad 1.11.1–2', textName: 'Taittiriya Upanishad', section: 'Chapter 1, Anuvaka 11' },
+      { citation: 'Bhagavad Gita 3.11', textName: 'Bhagavad Gita', section: 'Chapter 3, Verse 11' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Family Safety & Domestic Abuse',
@@ -1399,7 +1404,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'naradabhaktisutra', title: 'Narada Bhakti Sutra', titleHi: 'नारद भक्ति सूत्र', titleSanskrit: 'नारदभक्तिसूत्रम्', description: 'The classical aphorisms on the nectar of divine love.', descriptionHi: 'परम प्रेम के स्वरूप पर देवर्षि नारद के अमर सूत्र।', href: '/scripture/naradabhaktisutra' }
     ],
     sources: [
-      { citation: 'Bhagavad Gita Chapter 9 & 18', textName: 'Bhagavad Gita', section: '9.26 and 18.66' }
+      { citation: 'Bhagavad Gita 9.26 and 18.66', textName: 'Bhagavad Gita', section: 'Chapters 9 and 18' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Healthy Faith vs. Passivity',
@@ -1514,7 +1519,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'bhagavadgita', title: 'Bhagavad Gita', titleHi: 'भगवद्गीता', titleSanskrit: 'श्रीमद्भगवद्गीता', description: 'Chapter 2’s immortal verses on the unborn Self.', descriptionHi: 'आत्मा की अमरता पर दूसरा अध्याय।', href: '/scripture/bhagavadgita' }
     ],
     sources: [
-      { citation: 'Chandogya Upanishad 6.8.7', textName: 'Chandogya Upanishad', section: 'Prapathaka 6, Khanda 8' }
+      { citation: 'Chandogya Upanishad 6.8.7', textName: 'Chandogya Upanishad', section: 'Prapathaka 6, Khanda 8' },
+      { citation: 'Bhagavad Gita 2.20', textName: 'Bhagavad Gita', section: 'Chapter 2, Verse 20' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Depersonalization & Dissociation',
@@ -1629,7 +1635,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'brihadaranyaka', title: 'Brihadaranyaka Upanishad', titleHi: 'बृहदारण्यकोपनिषद्', titleSanskrit: 'बृहदारण्यकोपनिषत्', description: 'Contains the immortal Pavamana prayer: Asato Ma Sadgamaya.', descriptionHi: 'असतो मा सद्गमय का विश्व-विख्यात अमर उद्घोष।', href: '/scripture/brihadaranyaka' }
     ],
     sources: [
-      { citation: 'Brihadaranyaka 1.3.28; Isha 1', textName: 'Principal Upanishads', section: 'Brihadaranyaka & Isha Upanishad' }
+      { citation: 'Brihadaranyaka Upanishad 1.3.28', textName: 'Brihadaranyaka Upanishad', section: 'Chapter 1, Brahmana 3, Verse 28' },
+      { citation: 'Isha Upanishad 1', textName: 'Isha Upanishad', section: 'Verse 1' }
     ],
     contextualNote: {
       headlineEn: 'Important Note Regarding Existential Crisis & Hopelessness',

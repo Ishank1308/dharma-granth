@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { MotionConfig } from 'framer-motion';
 import {
@@ -19,6 +20,7 @@ import {
   Maximize2,
   Minimize2,
   Network,
+  PenLine,
   Share2,
   SlidersHorizontal,
   StickyNote,
@@ -60,6 +62,12 @@ import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
 import { logActivity } from '@/lib/activity-log';
 import { isHistoryPaused } from '@/lib/reading-history';
+import type { PersonalStudyReference } from '@/lib/study/types';
+
+const JournalEditorModal = dynamic(
+  () => import('@/components/study/JournalEditorModal').then((module) => module.JournalEditorModal),
+  { ssr: false },
+);
 
 export interface ReaderChapter {
   id: number;
@@ -124,6 +132,15 @@ export function VerseReader(props: VerseReaderProps) {
     [scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, pageUrl],
   );
   const label = verseReference(ref, verse);
+  const journalReference: PersonalStudyReference = useMemo(() => ({
+    scriptureId,
+    scriptureTitle,
+    chapterId,
+    verseId: verse.number,
+    canonicalReference: label,
+    sanskritSnippet: (verse.sanskrit ?? '').slice(0, 2_000),
+    translationSnippet: (verse.hindi ?? verse.translation ?? '').slice(0, 2_000),
+  }), [scriptureId, scriptureTitle, chapterId, verse.number, verse.sanskrit, verse.hindi, verse.translation, label]);
 
   /* Reader mode: the site navand companion dock step aside (see globals.css). */
   useEffect(() => {
@@ -133,6 +150,7 @@ export function VerseReader(props: VerseReaderProps) {
 
   /* ── Dialog state ── */
   const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'note' | 'report' | 'embed'>(null);
+  const [journalOpen, setJournalOpen] = useState(false);
   const close = useCallback(() => setDialog(null), []);
 
   /* ── Toast ── */
@@ -578,6 +596,9 @@ export function VerseReader(props: VerseReaderProps) {
               {noteText ? 'Edit note' : 'Note'}
               {noteText && <span className="h-1.5 w-1.5 rounded-full bg-saffron-600" aria-label="has a note" />}
             </button>
+            <button type="button" onClick={() => setJournalOpen(true)} className={actionBtn}>
+              <PenLine className="h-4 w-4" aria-hidden="true" /> Reflect privately
+            </button>
             <button type="button" onClick={onCopy} className={actionBtn}>
               <Copy className="h-4 w-4" aria-hidden="true" /> Copy
             </button>
@@ -874,6 +895,15 @@ export function VerseReader(props: VerseReaderProps) {
           onClose={() => setShowShareModal(false)}
           data={shareData}
         />
+
+        {journalOpen && (
+          <JournalEditorModal
+            isOpen
+            onClose={() => setJournalOpen(false)}
+            linkedReference={journalReference}
+            onSaved={() => say('Private reflection saved on this device')}
+          />
+        )}
 
         {/* Mobile Tactile Verse Carousel Drawer */}
         <MobileVerseCarousel

@@ -17,6 +17,11 @@ import type {
   DharmaStudyBackupV2,
 } from './types';
 
+export const STUDY_UPDATE_CHANNEL = 'dharma-study-updates';
+export const STUDY_UPDATE_STORAGE_KEY = 'dharma-study-update-signal';
+
+let studyUpdateChannel: BroadcastChannel | null = null;
+
 // Default Builtin Collections
 export const DEFAULT_STUDY_COLLECTIONS: PersonalCollection[] = [
   {
@@ -78,11 +83,30 @@ export const DEFAULT_STUDY_COLLECTIONS: PersonalCollection[] = [
 
 function notifyChange(storeName: string, action: 'save' | 'delete' | 'wipe', id?: string) {
   if (typeof window !== 'undefined') {
+    const timestamp = Date.now();
     window.dispatchEvent(
       new CustomEvent('dharma-study-updated', {
-        detail: { store: storeName, action, id, timestamp: Date.now() },
+        detail: { store: storeName, action, id, timestamp },
       })
     );
+
+    const signal = { store: storeName, action, timestamp };
+    try {
+      if (typeof BroadcastChannel !== 'undefined') {
+        studyUpdateChannel ??= new BroadcastChannel(STUDY_UPDATE_CHANNEL);
+        studyUpdateChannel.postMessage(signal);
+        return;
+      }
+    } catch {
+      // Use the storage event fallback when BroadcastChannel is unavailable.
+    }
+
+    try {
+      window.localStorage.setItem(STUDY_UPDATE_STORAGE_KEY, JSON.stringify(signal));
+      window.localStorage.removeItem(STUDY_UPDATE_STORAGE_KEY);
+    } catch {
+      // Storage may be disabled; same-tab updates still work through the event above.
+    }
   }
 }
 
@@ -140,6 +164,38 @@ export async function deleteJournalEntry(id: string): Promise<void> {
     };
     tx.onerror = () => reject(tx.error);
   });
+}
+
+/** Restore only private journal entries. Replace clears and writes in one transaction. */
+export async function restoreJournalEntries(
+  entries: readonly JournalEntry[],
+  mode: 'merge' | 'replace',
+): Promise<void> {
+  const db = await getGranthDB();
+  const tx = db.transaction('journal_entries', 'readwrite');
+  const store = tx.objectStore('journal_entries');
+  if (mode === 'replace') store.clear();
+  entries.forEach((entry) => store.put(entry));
+
+  await new Promise<void>((resolve, reject) => {
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error ?? new Error('Could not restore journal entries'));
+    tx.onabort = () => reject(tx.error ?? new Error('Journal restore was cancelled'));
+  });
+  notifyChange('journal_entries', mode === 'replace' ? 'wipe' : 'save');
+}
+
+/** Clear the private journal without touching notes, bookmarks, or reading history. */
+export async function clearJournalEntries(): Promise<void> {
+  const db = await getGranthDB();
+  const tx = db.transaction('journal_entries', 'readwrite');
+  tx.objectStore('journal_entries').clear();
+  await new Promise<void>((resolve, reject) => {
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error ?? new Error('Could not clear journal entries'));
+    tx.onabort = () => reject(tx.error ?? new Error('Journal clear was cancelled'));
+  });
+  notifyChange('journal_entries', 'wipe');
 }
 
 // ── 2. PERSONAL VERSE ANNOTATIONS ──────────────────────────────────────────

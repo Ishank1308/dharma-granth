@@ -36,7 +36,25 @@ export function SharedListClient({ titles }: { titles: Record<string, string> })
   useEffect(() => {
     if (!list) return;
     let cancelled = false;
-    const chapters = new Map<string, Promise<Array<{ number?: number | string; sanskrit?: string; hindi?: string; translation?: string }>>>();
+    type ChapterVerse = { number?: number | string; sanskrit?: string; hindi?: string; translation?: string };
+    const chapters = new Map<string, Promise<ChapterVerse[]>>();
+    // The export drops a chapter's JSON when its page already carries the verses (scripts/prune-export.mjs),
+    // so fall back to the plain verses in the chapter page itself.
+    const fromPage = async (id: string, chapter: number): Promise<ChapterVerse[]> => {
+      const res = await fetch(`${BASE}/scripture/${id}/chapter/${chapter}/`);
+      if (!res.ok) return [];
+      const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+      return Array.from(doc.querySelectorAll<HTMLElement>('article.vt[id^="verse-"]')).map((a) => {
+        const sa = a.querySelector('.vt-sa');
+        sa?.querySelector('.vt-num')?.remove();
+        return {
+          number: a.id.slice('verse-'.length),
+          sanskrit: Array.from(sa?.children ?? []).map((s) => s.textContent ?? '').join(' '),
+          hindi: a.querySelector('.vt-hi')?.textContent ?? '',
+          translation: a.querySelector('.vt-en')?.textContent ?? '',
+        };
+      });
+    };
     const load = (id: string, chapter: number) => {
       const key = `${id}:${chapter}`;
       if (!chapters.has(key)) {
@@ -44,8 +62,8 @@ export function SharedListClient({ titles }: { titles: Record<string, string> })
           key,
           fetch(`${BASE}/data/scriptures-full/${id}/ch-${chapter}.json`)
             .then((r) => (r.ok ? r.json() : null))
-            .then((j) => (j?.chapter?.verses as Array<{ number?: number | string }>) ?? [])
-            .catch(() => []),
+            .then((j) => (j?.chapter?.verses as ChapterVerse[] | undefined) ?? fromPage(id, chapter))
+            .catch(() => fromPage(id, chapter).catch(() => [])),
         );
       }
       return chapters.get(key)!;

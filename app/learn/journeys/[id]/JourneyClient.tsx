@@ -7,21 +7,24 @@ import {
   Share2,
   ArrowLeft,
   ArrowRight,
-  Flame,
   Sparkles,
-  Trophy,
   CheckCircle2,
-  BookOpen,
   Clock,
-  Compass,
   RotateCcw,
   ChevronRight,
 } from 'lucide-react';
 import { REVIEW_LABEL } from '@/data/study-content';
+import type { ReviewStatus } from '@/data/study-content';
 import type { JourneyLesson, ReadingJourney } from '@/data/reading-journeys';
 import { cleanVerseField, verseLines } from '@/lib/verse-format';
 import { useJourneyProgress } from '../JourneyProgress';
-import { useSadhanaStreak } from '@/lib/sadhana-streak';
+
+const REVIEW_LABEL_HI: Record<ReviewStatus, string> = {
+  draft: 'संपादकीय प्रारूप · समीक्षा शेष',
+  'editorial-review': 'संपादकीय समीक्षा में',
+  'source-review': 'स्रोत-समीक्षा में',
+  approved: 'समीक्षित',
+};
 
 export interface LessonView extends JourneyLesson {
   reference: string;
@@ -33,11 +36,8 @@ export interface LessonView extends JourneyLesson {
 
 export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; lessons: LessonView[] }) {
   const { progress, ready, toggle, reset } = useJourneyProgress();
-  const { streak } = useSadhanaStreak();
   const done = progress[journey.id] ?? [];
   const next = lessons.find((l) => !done.includes(l.id));
-  const isAllComplete = done.length >= lessons.length && lessons.length > 0;
-  const percentComplete = Math.round((done.length / lessons.length) * 100);
 
   const [copied, setCopied] = useState(false);
 
@@ -90,106 +90,31 @@ export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; l
               {journey.titleHi}
             </p>
           </div>
-
-          {streak.currentStreak > 0 && (
-            <div className="flex items-center gap-2 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-3.5 py-2 text-xs font-bold text-amber-900 dark:text-amber-200 self-start sm:self-center">
-              <Flame className="h-4 w-4 text-amber-600" />
-              <span>{streak.currentStreak} Day Streak</span>
-            </div>
-          )}
         </div>
 
         <p className="text-sm sm:text-base text-dharma-text leading-relaxed">
           {journey.objective}
         </p>
 
-        {/* Progress Bar & Milestone Summary */}
-        <div className="space-y-2 pt-2 border-t border-dharma-border/60">
-          <div className="flex items-center justify-between text-xs font-semibold text-dharma-muted">
-            <span>
-              {!ready
-                ? 'Loading...'
-                : isAllComplete
-                ? 'All readings completed! 🎉'
-                : `Progress: ${done.length} of ${lessons.length} readings (${percentComplete}%)`}
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <Clock className="h-3 w-3" />
-              <span>~{journey.minutesPerLesson} min / reading</span>
-            </span>
-          </div>
-
-          <div className="h-2.5 w-full overflow-hidden rounded-full bg-dharma-border/60">
-            <div
-              className={`h-full rounded-full transition-all duration-500 ${
-                isAllComplete ? 'bg-emerald-600' : 'bg-saffron-600'
-              }`}
-              style={{ width: `${percentComplete}%` }}
-            />
-          </div>
-
-          {/* Duolingo-style Milestone Stepper */}
-          <div className="flex items-center justify-between gap-1 pt-2 overflow-x-auto no-scrollbar">
-            {lessons.map((l, idx) => {
-              const isDone = done.includes(l.id);
-              const isCurrent = next?.id === l.id;
-              return (
-                <a
-                  key={l.id}
-                  href={`#${l.id}`}
-                  className={`flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-2xs font-semibold whitespace-nowrap transition ${
-                    isDone
-                      ? 'border-emerald-600/40 bg-emerald-500/10 text-emerald-900 dark:text-emerald-200'
-                      : isCurrent
-                      ? 'border-saffron-500 bg-saffron-600 text-white shadow-2xs'
-                      : 'border-dharma-border bg-dharma-panel text-dharma-muted hover:border-saffron-300'
-                  }`}
-                >
-                  {isDone ? (
-                    <Check className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
-                  ) : (
-                    <span>{idx + 1}</span>
-                  )}
-                  <span>Reading {idx + 1}</span>
-                </a>
-              );
-            })}
-          </div>
+        <div className="flex flex-wrap items-center gap-2 border-t border-dharma-border/60 pt-3 text-xs text-dharma-muted">
+          <span className="inline-flex items-center gap-1.5">
+            <Clock className="h-3.5 w-3.5" />
+            <span>About {journey.minutesPerLesson} minutes per reading</span>
+          </span>
+          <span aria-hidden="true">·</span>
+          <span>{ready ? 'Optional reading markers are saved only on this device.' : 'Reading markers stay on this device.'}</span>
         </div>
       </section>
 
-      {/* ─── ALL COMPLETE CELEBRATION CARD ─────────────────────────────────── */}
-      {isAllComplete && (
-        <section className="rounded-3xl border-2 border-emerald-500/50 bg-gradient-to-br from-emerald-500/15 via-emerald-500/5 to-transparent p-6 sm:p-8 space-y-3">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
-            <Trophy className="h-4 w-4" />
-            <span>स्वाध्याय सिद्धि · Pathway Completed</span>
-          </div>
-          <h2 className="font-serif text-2xl font-bold text-dharma-text">
-            Congratulations! You have completed {journey.title}.
-          </h2>
-          <p className="text-sm text-dharma-text max-w-2xl leading-relaxed">
-            You have walked this pathway of wisdom verse by verse. These teachings are living companions—return to
-            them anytime you seek clarity, courage, or calm.
+      {journey.review !== 'approved' && (
+        <aside aria-label="Editorial review status" className="rounded-2xl border border-amber-700/25 bg-amber-500/5 p-4 text-sm text-dharma-text">
+          <p className="font-semibold text-amber-900 dark:text-amber-200">
+            {REVIEW_LABEL[journey.review]} · <span lang="hi" className="font-devanagari">{REVIEW_LABEL_HI[journey.review]}</span>
           </p>
-          <div className="pt-2 flex flex-wrap items-center gap-3">
-            <Link
-              href="/learn/journeys/"
-              className="inline-flex items-center gap-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-4 py-2 text-xs font-bold text-white transition shadow-xs"
-            >
-              <span>Explore Next Journey</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-            <button
-              type="button"
-              onClick={() => reset(journey.id)}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-4 py-2 text-xs font-bold text-dharma-muted hover:text-dharma-text transition"
-            >
-              <RotateCcw className="h-3.5 w-3.5" />
-              <span>Reset & Read Again</span>
-            </button>
-          </div>
-        </section>
+          <p className="mt-1 text-xs leading-relaxed text-dharma-muted">
+            Context, explanation, reflection, and activities are editorial study notes, not scripture. They have not been approved; read the cited verse and sources below.
+          </p>
+        </aside>
       )}
 
       {/* ─── LESSONS LIST ──────────────────────────────────────────────────── */}
@@ -220,7 +145,7 @@ export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; l
                     {isDone && (
                       <span className="inline-flex items-center gap-1 text-2xs font-bold text-emerald-700 dark:text-emerald-400">
                         <CheckCircle2 className="h-3.5 w-3.5" />
-                        <span>Completed</span>
+                        <span>Marked read on this device</span>
                       </span>
                     )}
                   </div>
@@ -326,7 +251,7 @@ export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; l
                   }`}
                 >
                   <Check className="h-4 w-4" />
-                  <span>{isDone ? 'Reading Completed (पठन पूर्ण)' : 'Mark as Read & Done'}</span>
+                  <span>{isDone ? 'Remove read marker (पठन चिह्न हटाएँ)' : 'Mark read on this device (यहाँ पढ़ा)'}</span>
                 </button>
 
                 {i < lessons.length - 1 && (
@@ -343,6 +268,28 @@ export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; l
           );
         })}
       </ol>
+
+      <section aria-label="Pause or leave this reading" className="flex flex-col gap-3 rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-sm text-dharma-muted">You can pause here and return whenever you choose.</p>
+        <div className="flex flex-wrap gap-2">
+          <Link
+            href="/learn/journeys/"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-dharma-border px-3 text-xs font-semibold text-dharma-text hover:border-saffron-400"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            <span>Finish for now</span>
+          </Link>
+          <button
+            type="button"
+            onClick={() => reset(journey.id)}
+            disabled={done.length === 0}
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-dharma-border px-3 text-xs font-semibold text-dharma-muted enabled:hover:text-dharma-text disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+            <span>Clear read markers</span>
+          </button>
+        </div>
+      </section>
 
       {/* ─── FOOTER SOURCES & RELATED READING ──────────────────────────────── */}
       <section aria-labelledby="jr-rel" className="rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 space-y-4 text-xs sm:text-sm">

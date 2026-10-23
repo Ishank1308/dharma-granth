@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import {
   PenLine,
@@ -9,6 +9,7 @@ import {
   Calendar,
   Sparkles,
   Download,
+  Upload,
   Trash2,
   Edit3,
   Filter,
@@ -19,7 +20,12 @@ import {
 import {
   getAllJournalEntries,
   deleteJournalEntry,
+  restoreJournalEntries,
+  clearJournalEntries,
+  STUDY_UPDATE_CHANNEL,
+  STUDY_UPDATE_STORAGE_KEY,
 } from '@/lib/study/storage';
+import { createJournalBackup, parseJournalBackup, type JournalRestoreMode } from '@/lib/study/journal-backup';
 import { runStudyDataMigration } from '@/lib/study/migration';
 import type { JournalEntry, JournalMood } from '@/lib/study/types';
 import { JournalEditorModal } from '@/components/study/JournalEditorModal';
@@ -44,26 +50,58 @@ export function JournalClient() {
 
   const [editorOpen, setEditorOpen] = useState(false);
   const [editingEntry, setEditingEntry] = useState<JournalEntry | null>(null);
-
-  const loadData = async () => {
-    await runStudyDataMigration();
-    const list = await getAllJournalEntries();
-    setEntries(list);
-    setLoading(false);
-  };
+  const [restoreMode, setRestoreMode] = useState<JournalRestoreMode>('merge');
+  const [backupStatus, setBackupStatus] = useState<string | null>(null);
+  const [backupBusy, setBackupBusy] = useState(false);
+  const backupFileInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    loadData();
-
-    const handleUpdate = () => {
-      loadData();
+    let active = true;
+    const refreshEntries = async () => {
+      const list = await getAllJournalEntries();
+      if (active) {
+        setEntries(list);
+        setLoading(false);
+      }
+    };
+    const relevantStore = (store?: string) => store === 'journal_entries' || store === 'all';
+    const handleUpdate = (event: Event) => {
+      const detail = (event as CustomEvent<{ store?: string }>).detail;
+      if (!detail?.store || relevantStore(detail.store)) void refreshEntries();
+    };
+    const handleMigration = () => void refreshEntries();
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key !== STUDY_UPDATE_STORAGE_KEY || !event.newValue) return;
+      try {
+        const signal = JSON.parse(event.newValue) as { store?: string };
+        if (relevantStore(signal.store)) void refreshEntries();
+      } catch {
+        // Ignore malformed cross-tab signals; the journal remains local and intact.
+      }
     };
 
+    let channel: BroadcastChannel | null = null;
+    try {
+      if (typeof BroadcastChannel !== 'undefined') {
+        channel = new BroadcastChannel(STUDY_UPDATE_CHANNEL);
+        channel.onmessage = (event: MessageEvent<{ store?: string }>) => {
+          if (relevantStore(event.data?.store)) void refreshEntries();
+        };
+      }
+    } catch {
+      channel = null;
+    }
+
     window.addEventListener('dharma-study-updated', handleUpdate);
-    window.addEventListener('dharma-study-migrated', handleUpdate);
+    window.addEventListener('dharma-study-migrated', handleMigration);
+    window.addEventListener('storage', handleStorage);
+    void runStudyDataMigration().catch(() => undefined).finally(refreshEntries);
     return () => {
+      active = false;
+      channel?.close();
       window.removeEventListener('dharma-study-updated', handleUpdate);
-      window.removeEventListener('dharma-study-migrated', handleUpdate);
+      window.removeEventListener('dharma-study-migrated', handleMigration);
+      window.removeEventListener('storage', handleStorage);
     };
   }, []);
 
@@ -109,6 +147,65 @@ export function JournalClient() {
     URL.revokeObjectURL(url);
   };
 
+  const exportJSONBackup = () => {
+    try {
+      const backup = createJournalBackup(entries);
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `dharma-granth-journal-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      setBackupStatus('JSON backup downloaded · बैकअप डाउनलोड हो गया। The file is not encrypted · यह फ़ाइल कूटबद्ध नहीं है।');
+    } catch (error) {
+      setBackupStatus(error instanceof Error ? error.message : 'Journal backup could not be created.');
+    }
+  };
+
+  const importJSONBackup = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const input = event.currentTarget;
+    const file = input.files?.[0];
+    input.value = '';
+    if (!file) return;
+    if (file.size > 10 * 1024 * 1024) {
+      setBackupStatus('The backup file exceeds 10 MB · बैकअप फ़ाइल 10 MB से बड़ी है।');
+      return;
+    }
+
+    setBackupBusy(true);
+    setBackupStatus(null);
+    try {
+      const importedEntries = parseJournalBackup(await file.text());
+      if (restoreMode === 'replace' && !confirm(`Replace this browser's journal with ${importedEntries.length} entries? Existing journal entries will be removed.\n\nक्या इस ब्राउज़र की वर्तमान डायरी हटाकर बैकअप की ${importedEntries.length} प्रविष्टियाँ रखी जाएँ?`)) {
+        return;
+      }
+      await restoreJournalEntries(importedEntries, restoreMode);
+      setEntries(await getAllJournalEntries());
+      setBackupStatus(`${importedEntries.length} journal ${importedEntries.length === 1 ? 'entry' : 'entries'} imported (${restoreMode}) · ${importedEntries.length} प्रविष्टियाँ आयातित।`);
+    } catch (error) {
+      setBackupStatus(error instanceof Error ? error.message : 'The journal backup could not be imported.');
+    } finally {
+      setBackupBusy(false);
+    }
+  };
+
+  const clearJournal = async () => {
+    if (!confirm('Clear every journal entry stored in this browser? This will not clear bookmarks or reading notes.\n\nक्या इस ब्राउज़र की सभी डायरी प्रविष्टियाँ मिटाएँ? बुकमार्क और पठन-टिप्पणियाँ सुरक्षित रहेंगी।')) return;
+    setBackupBusy(true);
+    try {
+      await clearJournalEntries();
+      setEntries([]);
+      setBackupStatus('Journal cleared from this browser · इस ब्राउज़र की डायरी मिटा दी गई।');
+    } catch (error) {
+      setBackupStatus(error instanceof Error ? error.message : 'The journal could not be cleared · डायरी नहीं मिटाई जा सकी।');
+    } finally {
+      setBackupBusy(false);
+    }
+  };
+
   const allTags = useMemo(() => {
     const set = new Set<string>();
     entries.forEach((e) => e.tags?.forEach((t) => set.add(t)));
@@ -151,17 +248,35 @@ export function JournalClient() {
             </div>
 
             <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+              <input
+                ref={backupFileInput}
+                type="file"
+                accept="application/json,.json"
+                onChange={importJSONBackup}
+                className="sr-only"
+                aria-label="Choose a Dharma Granth journal JSON backup"
+              />
               {entries.length > 0 && (
-                <button
-                  type="button"
-                  onClick={exportMarkdownVault}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 text-xs font-semibold hover:border-stone-400 transition"
-                  title="Export all entries to Markdown"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Markdown निर्यात</span>
-                </button>
+                <>
+                  <button type="button" onClick={exportJSONBackup} disabled={backupBusy} className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 text-xs font-semibold hover:border-stone-400 transition disabled:opacity-50" title="Export a portable JSON journal backup">
+                    <Download className="w-3.5 h-3.5" /><span>JSON बैकअप</span>
+                  </button>
+                  <button type="button" onClick={exportMarkdownVault} disabled={backupBusy} className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 text-xs font-semibold hover:border-stone-400 transition disabled:opacity-50" title="Export all entries to Markdown">
+                    <Download className="w-3.5 h-3.5" /><span>Markdown निर्यात</span>
+                  </button>
+                  <button type="button" onClick={clearJournal} disabled={backupBusy} className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-full border border-rose-200 dark:border-rose-900 bg-white dark:bg-stone-800 text-rose-700 dark:text-rose-300 text-xs font-semibold hover:bg-rose-50 dark:hover:bg-rose-950/40 transition disabled:opacity-50" title="Clear only journal entries">
+                    <Trash2 className="w-3.5 h-3.5" /><span>डायरी मिटाएँ</span>
+                  </button>
+                </>
               )}
+              <label className="sr-only" htmlFor="journal-restore-mode">Import behavior</label>
+              <select id="journal-restore-mode" value={restoreMode} onChange={(event) => setRestoreMode(event.target.value as JournalRestoreMode)} disabled={backupBusy} className="min-h-[40px] rounded-full border border-stone-300 bg-white px-3 text-xs font-semibold text-stone-700 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200">
+                <option value="merge">प्रविष्टियाँ मिलाएँ · Merge</option>
+                <option value="replace">डायरी बदलें · Replace</option>
+              </select>
+              <button type="button" onClick={() => backupFileInput.current?.click()} disabled={backupBusy} className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-200 text-xs font-semibold hover:border-stone-400 transition disabled:opacity-50">
+                <Upload className="w-3.5 h-3.5" /><span>{backupBusy ? 'आयात हो रहा है…' : 'JSON आयात'}</span>
+              </button>
               <button
                 type="button"
                 onClick={handleOpenNew}
@@ -172,6 +287,10 @@ export function JournalClient() {
               </button>
             </div>
           </div>
+          {backupStatus && <p role="status" aria-live="polite" className="mt-3 text-xs text-stone-600 dark:text-stone-300">{backupStatus}</p>}
+          <p className="mt-3 max-w-3xl text-xs leading-relaxed text-stone-500 dark:text-stone-400">
+            Journal backups stay on your device until you choose a file. JSON files contain readable, unencrypted reflections · निजी डायरी का JSON बैकअप कूटबद्ध नहीं होता।
+          </p>
         </div>
       </section>
 

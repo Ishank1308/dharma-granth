@@ -10,7 +10,7 @@ import { characters } from '@/data/characters';
 import { dictionary } from '@/data/dictionary';
 import { getAllConceptDetails } from '@/data/concept-details';
 import { learningPaths } from '@/data/learning-paths';
-import { READING_JOURNEYS } from '@/data/reading-journeys';
+import { READING_JOURNEYS, isJourneyIndexable } from '@/data/reading-journeys';
 import { festivals } from '@/data/festivals';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
@@ -74,7 +74,9 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/privacy', pageDate('/privacy')),
     entry('/terms', pageDate('/terms')),
     entry('/contact', pageDate('/contact')),
-    entry('/learn/journeys', pageDate('/learn/journeys', 'data/reading-journeys.ts')),
+    ...(READING_JOURNEYS.some(isJourneyIndexable)
+      ? [entry('/learn/journeys', pageDate('/learn/journeys', 'data/reading-journeys.ts'))]
+      : []),
     entry('/story', pageDate('/story')),
     entry('/collections', pageDate('/collections')),
     entry('/compare', pageDate('/compare', 'data/scripture-comparisons.ts')),
@@ -112,7 +114,9 @@ function pagesSection(): MetadataRoute.Sitemap {
   const courseRoutes = learningPaths.map((p) => entry(`/learn/${p.id}`, courseDate));
 
   const journeyDate = lastChanged('data/reading-journeys.ts', 'app/learn/journeys/[id]/page.tsx');
-  const journeyRoutes = READING_JOURNEYS.map((j) => entry(`/learn/journeys/${j.id}`, journeyDate));
+  const journeyRoutes = READING_JOURNEYS
+    .filter(isJourneyIndexable)
+    .map((j) => entry(`/learn/journeys/${j.id}`, journeyDate));
 
   const ashtavakraDate = lastChanged('app/ashtavakra/[chapter]/page.tsx');
   const ashtavakraRoutes = publishedChapterNumbers().map((n) => entry(`/ashtavakra/${n}`, ashtavakraDate));
