@@ -85,7 +85,7 @@ export function detectChandas(sanskritText?: string): ChandasInfo | null {
       syllables: totalSyllables,
       padasCount: 4,
       description: 'Classic 32-syllable meter (4 pādas of 8 syllables). The signature cadence of the Bhagavad Gita & Epics.',
-      descriptionHi: '३२ वर्णों का शास्त्रीय छन्द (८ वर्ण प्रति पाद)। श्रीमद्भगवद्गीता व रामायण का प्रधान छन्द।',
+      descriptionHi: '32 वर्णों का शास्त्रीय छन्द (8 वर्ण प्रति पाद)। श्रीमद्भगवद्गीता व रामायण का प्रधान छन्द।',
     };
   }
 
@@ -97,7 +97,7 @@ export function detectChandas(sanskritText?: string): ChandasInfo | null {
       syllables: totalSyllables,
       padasCount: 4,
       description: 'Vedic & classical 44-syllable heroic meter (4 pādas of 11 syllables). Used in intense philosophical dialogues.',
-      descriptionHi: '४४ वर्णों का छन्द (११ वर्ण प्रति पाद)। गूढ़ संवादों व विश्वरूप दर्शन में प्रयुक्त।',
+      descriptionHi: '44 वर्णों का छन्द (11 वर्ण प्रति पाद)। गूढ़ संवादों व विश्वरूप दर्शन में प्रयुक्त।',
     };
   }
 
@@ -109,7 +109,7 @@ export function detectChandas(sanskritText?: string): ChandasInfo | null {
       syllables: totalSyllables,
       padasCount: 4,
       description: 'Lyrical 48-syllable meter (4 pādas of 12 syllables). Flowing and melodious cadence.',
-      descriptionHi: '४८ वर्णों का छन्द (१२ वर्ण प्रति पाद)। प्रवाहमयी व गेय वृत्ति।',
+      descriptionHi: '48 वर्णों का छन्द (12 वर्ण प्रति पाद)। प्रवाहमयी व गेय वृत्ति।',
     };
   }
 
@@ -121,7 +121,7 @@ export function detectChandas(sanskritText?: string): ChandasInfo | null {
       syllables: totalSyllables,
       padasCount: 3,
       description: 'Sacred 24-syllable Vedic meter (3 pādas of 8 syllables). The mother of Vedic mantras.',
-      descriptionHi: '२४ वर्णों का वैदिक छन्द (८ वर्ण प्रति पाद, ३ पाद)। वेदों का परम पवित्र छन्द।',
+      descriptionHi: '24 वर्णों का वैदिक छन्द (8 वर्ण प्रति पाद, 3 पाद)। वेदों का परम पवित्र छन्द।',
     };
   }
 
@@ -133,7 +133,7 @@ export function detectChandas(sanskritText?: string): ChandasInfo | null {
       syllables: totalSyllables,
       padasCount: 4,
       description: 'Vedic 36-syllable meter with expansive resonance.',
-      descriptionHi: '३६ वर्णों का वैदिक छन्द।',
+      descriptionHi: '36 वर्णों का वैदिक छन्द।',
     };
   }
 
@@ -145,7 +145,7 @@ export function detectChandas(sanskritText?: string): ChandasInfo | null {
       syllables: totalSyllables,
       padasCount: 4,
       description: 'Vedic 40-syllable rhythmic meter.',
-      descriptionHi: '४० वर्णों का वैदिक छन्द।',
+      descriptionHi: '40 वर्णों का वैदिक छन्द।',
     };
   }
 

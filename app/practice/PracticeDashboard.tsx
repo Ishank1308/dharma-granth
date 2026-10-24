@@ -202,7 +202,7 @@ export function PracticeDashboard() {
                 </p>
                 <p className="mt-1 text-xs leading-relaxed text-dharma-muted">
                   Start with a verse and reflection. Add or hide any tool; your choices stay on this device.
-                  <span lang="hi" className="ml-1 font-devanagari">श्लोक और चिंतन से शुरू करें। साधन जोड़ें या छिपाएँ; आपकी पसंद इसी उपकरण पर रहती है।</span>
+                  <span lang="hi" className="ml-1 font-devanagari">श्लोक और चिंतन से आरम्भ करें। साधन जोड़ें या छिपाएँ; आपका चयन इसी उपकरण पर सुरक्षित रहता है।</span>
                 </p>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">

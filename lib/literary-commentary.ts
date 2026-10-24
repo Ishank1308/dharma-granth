@@ -123,7 +123,7 @@ export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<VerseEditorialLayer, 'is
       breakdownHi: 'कर्म बीज बोना है; फल प्रकृति की संपूर्ण व्यवस्था से पकता है। आप केवल बीज बोने के स्वामी हैं, मौसमों के नहीं।',
     },
     microPracticeEn: 'Set a timer for 25 minutes. Pour your complete care into one single task without once checking views, grades, or replies.',
-    microPracticeHi: 'अगले २५ मिनट के लिए फोन दूर रखें और केवल एक कार्य में डूब जाएँ। परिणाम की चिंता को एक तरफ रख दें।',
+    microPracticeHi: 'अगले 25 मिनट के लिए फोन दूर रखें और केवल एक कार्य में डूब जाएँ। परिणाम की चिंता को एक तरफ रख दें।',
   },
 
   // Bhagavad Gita 2.14 (Matra-sparshas tu kaunteya)
@@ -230,7 +230,7 @@ export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<VerseEditorialLayer, 'is
     humanQuestionEn: 'Why is it so painful to resist short-term temptation even when we know our long-term dreams depend on it?',
     humanQuestionHi: 'क्षणभंगुर सुखों के आकर्षण से बचकर अपने दीर्घकालिक लक्ष्यों पर टिके रहना इतना कठिन क्यों है?',
     microPracticeEn: 'Next time you reach for your phone during deep work, pause for 10 seconds and ask: "Is this Preya (instant escape) or Shreya (what truly serves me)?"',
-    microPracticeHi: 'जब भी काम के बीच फोन उठाने का मन हो, १० सेकंड रुकें और पूछें: "क्या यह केवल तात्कालिक भटकाव है या मेरे कल्याण का मार्ग?"',
+    microPracticeHi: 'जब भी काम के बीच फोन उठाने का मन हो, 10 सेकंड रुकें और पूछें: "क्या यह केवल तात्कालिक भटकाव है या मेरे कल्याण का मार्ग?"',
   },
 
   // Ashtavakra Gita 1.15 (Muktabhimani mukto hi)
@@ -268,7 +268,7 @@ export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<VerseEditorialLayer, 'is
     humanQuestionEn: 'How do you quiet a racing brain in an era of information overload?',
     humanQuestionHi: 'सूचनाओं के इस दौर में अशांत मन को कैसे स्थिर और शांत किया जाए?',
     microPracticeEn: 'Sit still for 2 minutes. Do not suppress thoughts; simply watch them like traffic passing on a road below your balcony.',
-    microPracticeHi: '२ मिनट के लिए आंखें बंद करें। विचारों को रोकने का प्रयास न करें, केवल एक दर्शक की भाँति उन्हें आते-जाते देखें।',
+    microPracticeHi: '2 मिनट के लिए आंखें बंद करें। विचारों को रोकने का प्रयास न करें, केवल एक दर्शक की भाँति उन्हें आते-जाते देखें।',
   },
 };
 
