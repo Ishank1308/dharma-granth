@@ -1,13 +1,7 @@
 {
   "1:2": {
     "status": "approved",
-    "science": "",
-    "explanation": [
-      [
-        "re: ?\\([A-Za-z][A-Za-z' \\-/,]*\\)",
-        ""
-      ]
-    ]
+    "science": ""
   },
   "1:3": {
     "status": "approved",
