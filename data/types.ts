@@ -46,6 +46,17 @@ export interface Verse {
   relatedVerses?: VerseLink[];
   /** Questions or topic pages an editor has connected. */
   relatedQuestions?: VerseQuestionLink[];
+  /**
+   * Discovery questions an editor has connected (Phase 2 of the Wisdom
+   * Discovery System). Merged with relatedQuestions by
+   * normalizeVerseDiscoveryTags; either field may be absent.
+   */
+  questions?: VerseQuestionLink[];
+  /**
+   * Life situations this verse speaks to, as wisdom-concept slugs
+   * (see data/wisdom-concepts.ts). Absent means untagged.
+   */
+  lifeSituations?: string[];
 }
 
 export interface Chapter {
