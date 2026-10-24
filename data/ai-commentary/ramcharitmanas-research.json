@@ -1,0 +1,29 @@
+{
+  "1:8": {
+    "status": "approved",
+    "explanation": [
+      [
+        "सही मार्ग",
+        "उचित मार्ग"
+      ]
+    ]
+  },
+  "3:9": {
+    "status": "approved",
+    "explanation": [
+      [
+        "थकान",
+        "श्रान्ति"
+      ]
+    ]
+  },
+  "5:8": {
+    "status": "approved",
+    "explanation": [
+      [
+        "थकान",
+        "श्रान्ति"
+      ]
+    ]
+  }
+}
