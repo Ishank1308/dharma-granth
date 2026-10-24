@@ -1,0 +1,36 @@
+{
+  "1:1": {
+    "status": "approved",
+    "science": ""
+  },
+  "2:1": {
+    "status": "approved",
+    "science": ""
+  },
+  "3:1": {
+    "status": "approved",
+    "science": ""
+  },
+  "4:1": {
+    "status": "approved",
+    "science": ""
+  },
+  "5:1": {
+    "status": "approved",
+    "science": "",
+    "lifeLesson": [
+      [
+        "उसे पसंद करते हैं",
+        "उसे प्रिय मानते हैं"
+      ]
+    ]
+  },
+  "5:35": {
+    "status": "approved",
+    "science": ""
+  },
+  "5:40": {
+    "status": "approved",
+    "science": ""
+  }
+}
