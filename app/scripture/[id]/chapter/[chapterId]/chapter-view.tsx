@@ -6,7 +6,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { AmbientOrbs } from '@/app/components/motion/AmbientOrbs';
 import { ChapterHero } from '@/app/components/motion/ChapterHero';
 import { FullChapterVerses } from '@/app/components/FullChapterVerses';
 import { ChapterOrientation } from '@/app/components/ChapterOrientation';
@@ -398,7 +397,6 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       </ChapterHero>
 
       <div className="relative mx-auto w-full max-w-4xl px-4 py-5 pb-[calc(9rem+env(safe-area-inset-bottom))] sm:px-6 md:py-7 md:pb-7">
-        <AmbientOrbs />
         <div className="relative">
         {(!part || part.part === 1) && hasChapterContext && (
           <details className="group mb-5 overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card">
@@ -433,6 +431,8 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             curatedVerseIds={[]}
             scriptureTitle={meta.title}
             chapterTitle={chapter.title || `अध्याय ${chapter.id}`}
+            nextChapterHref={nextHref}
+            nextChapterTitle={nextLabel ? `अध्याय ${chapterId + 1} · ${nextLabel}` : undefined}
             basePath={process.env.NEXT_PUBLIC_BASE_PATH || ''}
             autoLoad
             initialChapter={initialChapter}
@@ -445,6 +445,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             {prevPartHref ? (
               <Link
                 href={prevPartHref}
+                rel="prev"
                 className="inline-flex min-w-0 max-w-[48%] items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card px-5 py-3 text-dharma-text transition hover:border-saffron-300"
               >
                 <ArrowLeft className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -461,6 +462,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             {nextPartHref && (
               <Link
                 href={nextPartHref}
+                rel="next"
                 className="ml-auto inline-flex min-w-0 max-w-[48%] items-center gap-2 rounded-xl bg-gradient-to-br from-saffron-600 to-saffron-700 px-5 py-3 text-white transition hover:shadow-lg"
               >
                 <span className="min-w-0 text-right">
@@ -479,6 +481,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           {prevHref ? (
             <Link
               href={prevHref}
+              rel="prev"
               aria-keyshortcuts="ArrowLeft"
               className="group inline-flex min-w-0 max-w-[48%] items-center gap-2 px-5 py-3 rounded-xl border border-dharma-border bg-dharma-card text-dharma-text hover:bg-dharma-bg hover:border-saffron-300 hover:shadow-md transition"
             >
@@ -497,6 +500,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           {nextHref && (
             <Link
               href={nextHref}
+              rel="next"
               aria-keyshortcuts="ArrowRight"
               className="group inline-flex min-w-0 max-w-[48%] items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-br from-saffron-600 to-saffron-700 text-white hover:shadow-lg transition ml-auto"
             >

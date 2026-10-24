@@ -41,7 +41,7 @@ export default function MethodologyPage() {
         <h1 className="mt-1 font-serif text-3xl font-bold text-dharma-text sm:text-4xl">How this site is made</h1>
         <p className={p}>
           This page says plainly where each kind of content comes from, what is machine-assisted, and what has not been reviewed by a person.
-          It describes what is true today, not what is intended.
+          It describes what is true today, not what is intended. For a shorter overview, see <Link href="/how-dharma-granth-works" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">how Dharma Granth works</Link>.
         </p>
 
         <nav aria-label="On this page" className="mt-6 rounded-2xl border border-dharma-border bg-dharma-card p-4">

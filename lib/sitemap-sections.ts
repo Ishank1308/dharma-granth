@@ -6,6 +6,8 @@ import { verseStaticParams } from '@/lib/verse-pages';
 import { verseMeaningById } from '@/lib/verse-meaning';
 import { chapterPartHref, chapterParts } from '@/lib/chapter-parts';
 import { wisdomTopics } from '@/data/wisdom-for-life';
+import { wisdomPathways } from '@/data/wisdom-pathways';
+import { knowledgeHubs } from '@/data/knowledge-hubs';
 import { characters } from '@/data/characters';
 import { dictionary } from '@/data/dictionary';
 import { getAllConceptDetails } from '@/data/concept-details';
@@ -61,6 +63,10 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/learn/paths', pageDate('/learn/paths', 'data/guided-reading-paths.ts')),
     entry('/learn/plans', pageDate('/learn/plans', 'data/reading-plans.ts')),
     entry('/wisdom-for-life', pageDate('/wisdom-for-life', 'data/wisdom-for-life.ts')),
+    entry('/wisdom-pathways', pageDate('/wisdom-pathways', 'data/wisdom-pathways.ts')),
+    // Named pathway entrances (/pathways/[slug]) are non-canonical aliases
+    // of /wisdom-pathways/[pathway]/, so only the index is listed.
+    entry('/pathways', pageDate('/pathways', 'data/wisdom-pathway-starters.ts', 'data/wisdom-pathways.ts')),
     // /topics/ and /guidance/ 301 to /wisdom-for-life/ (public/_redirects).
     entry('/concepts', pageDate('/concepts')),
     entry('/characters', pageDate('/characters', 'data/characters.ts')),
@@ -94,11 +100,16 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/network', pageDate('/network')),
     entry('/ashtavakra', pageDate('/ashtavakra')),
     entry('/ashtavakra/words', pageDate('/ashtavakra/words')),
+    entry('/api-docs', pageDate('/api-docs')),
   ];
 
   // 2. Individual Entity Pages
   const wisdomDate = lastChanged('data/wisdom-for-life.ts', 'app/wisdom-for-life/[slug]/page.tsx');
   const wisdomRoutes = wisdomTopics.map((w) => entry(`/wisdom-for-life/${w.slug}`, wisdomDate));
+  const pathwayDate = lastChanged('data/wisdom-pathways.ts', 'app/wisdom-pathways/[slug]/page.tsx');
+  const pathwayRoutes = wisdomPathways.map((p) => entry(`/wisdom-pathways/${p.slug}`, pathwayDate));
+  const hubDate = lastChanged('data/knowledge-hubs.ts', 'data/wisdom-concepts.ts', 'app/knowledge/[slug]/page.tsx');
+  const hubRoutes = knowledgeHubs.map((h) => entry(`/knowledge/${h.slug}`, hubDate));
   // /guidance/<slug> and the old /topics/<id> 301 to /wisdom-for-life (public/_redirects), so only canonical URLs are listed.
 
 
@@ -130,7 +141,7 @@ function pagesSection(): MetadataRoute.Sitemap {
   const festivalDate = lastChanged('data/festivals.ts', 'app/festivals/[id]/page.tsx');
   const festivalRoutes = festivals.map((f) => entry(`/festivals/${f.id}`, festivalDate));
 
-  return [...staticRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...characterRoutes, ...dictionaryRoutes];
+  return [...staticRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
 }
 
 /** Scripture landing pages and chapter pages (all seeded + curated chapters), dated by when the scripture's text or commentary last changed. */

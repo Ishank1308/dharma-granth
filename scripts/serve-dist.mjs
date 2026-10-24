@@ -79,10 +79,13 @@ createServer((req, res) => {
     res.end('Not Found');
     return;
   }
+  // _headers rules win (e.g. /.well-known/api-catalog sets
+  // Content-Type: application/linkset+json); otherwise guess from extension.
+  const configured = headersFor(pathOnly);
   res.writeHead(status, {
-    ...headersFor(pathOnly),
-    'Content-Type': TYPES[extname(target)] ?? 'application/octet-stream',
-    'Cache-Control': 'no-cache',
+    ...configured,
+    'Content-Type': configured['Content-Type'] ?? TYPES[extname(target)] ?? 'application/octet-stream',
+    'Cache-Control': configured['Cache-Control'] ?? 'no-cache',
   });
   createReadStream(target).pipe(res);
 }).listen(PORT, () => console.log(`Serving ${ROOT} on http://localhost:${PORT}`));

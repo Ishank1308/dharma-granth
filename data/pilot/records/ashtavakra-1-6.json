@@ -5,11 +5,11 @@
   "arthaEn": "O all-pervading one, dharma and adharma, pleasure and pain belong to the mind, not to you. You are neither doer nor enjoyer; you are ever free.",
   "arthaDecision": "preserve-existing",
   "arthaBasis": "existing-data",
-  "vyakhya": "यह श्लोक अष्टावक्र के उसी उत्तर का हिस्सा है जो जनक के प्रश्नों के जवाब में चल रहा है। पिछले श्लोक में कहा गया था कि तुम किसी वर्ण या आश्रम के नहीं, असंग और साक्षी हो। इस श्लोक में बात आगे बढ़ती है: धर्म और अधर्म, सुख और दुख मन के गुण हैं, और तुम न करने वाले हो, न भोगने वाले, इसलिए तुम सदा मुक्त हो। मानसानि शब्द का अर्थ है जो मन से जुड़ा है, और विभो का अर्थ है हे व्यापक। यह कथन आत्मा की दृष्टि से किया गया है, किसी के व्यवहार का नियम नहीं। इसी अध्याय के दूसरे श्लोक में अष्टावक्र क्षमा, सरलता, दया, संतोष और सत्य अपनाने को कहते हैं, इसलिए यह श्लोक नैतिकता को खारिज नहीं करता। इसे यह मानकर पढ़ना कि कुछ भी करना बराबर है, या कर्तव्य से हटने की छूट, पाठ से उलटा है। कर्ता और भोक्ता की पहचान को चुनौती दी जा रही है, कर्म की ज़िम्मेदारी को नहीं।",
+  "vyakhya": "यह श्लोक अष्टावक्र के उसी उत्तर का अंश है जो जनक के प्रश्नों के उत्तर में चल रहा है। पिछले श्लोक में कहा गया था कि तुम किसी वर्ण या आश्रम के नहीं, असंग और साक्षी हो। इस श्लोक में बात आगे बढ़ती है: धर्म और अधर्म, सुख और दुख मन के गुण हैं, और तुम न करने वाले हो, न भोगने वाले, इसलिए तुम सदा मुक्त हो। मानसानि शब्द का अर्थ है जो मन से जुड़ा है, और विभो का अर्थ है हे व्यापक। यह कथन आत्मा की दृष्टि से किया गया है, किसी के व्यवहार का नियम नहीं। इसी अध्याय के दूसरे श्लोक में अष्टावक्र क्षमा, सरलता, दया, संतोष और सत्य अपनाने को कहते हैं, इसलिए यह श्लोक नैतिकता को खारिज नहीं करता। इसे यह मानकर पढ़ना कि कुछ भी करना बराबर है, या कर्तव्य से हटने की छूट, पाठ से उलटा है। कर्ता और भोक्ता की पहचान को चुनौती दी जा रही है, कर्म की ज़िम्मेदारी को नहीं।",
   "vijnana": "",
   "vijnanaCategory": "",
   "evidenceLevel": "none",
-  "lifeLesson": "जब तुम अपनी किसी भूल या सफलता के लिए बहुत बोझ या गर्व महसूस करो, तो सोचो कि यह भाव मन की एक अवस्था है, पूरी पहचान नहीं। फिर भी अपने कर्मों की ज़िम्मेदारी लो और जहाँ ज़रूरी हो वहाँ सुधार करो।",
+  "lifeLesson": "जब तुम अपनी किसी भूल या सफलता के लिए बहुत बोझ या गर्व महसूस करो, तो सोचो कि यह भाव मन की एक अवस्था है, पूरी पहचान नहीं। फिर भी अपने कर्मों की ज़िम्मेदारी लो और जहाँ आवश्यक हो वहाँ सुधार करो।",
   "confidence": "high",
   "reviewNote": "Vijnana is left empty on purpose: this verse is addressed from the standpoint of the Self, and any psychological parallel would invite the passive or amoral misreading the Vyakhya warns against. The Hindi literal meaning was kept from the stored source record; the English meaning is new. The Vyakhya relies on the verse 1.2 as shown in the stored data. Not in the published scripture shards, so reader presentation cannot be verified from this pipeline. No classical commentary was consulted.",
   "reviewStatus": "review-required",
@@ -20,6 +20,8 @@
     "vyakhya": "Original composition, informed by the stored commentary record and reworded.",
     "vijnana": "None written: any parallel would invite misreading.",
     "traditionalCommentaryConsulted": false,
-    "externalSourcesConsulted": ["data/ashtavakra/ashtavakra_prakaran_1.json (stored modern Hindi commentary record, read for structure and cross-references only)"]
+    "externalSourcesConsulted": [
+      "data/ashtavakra/ashtavakra_prakaran_1.json (stored modern Hindi commentary record, read for structure and cross-references only)"
+    ]
   }
 }

@@ -89,7 +89,7 @@ export function AshtavakraVerseReader({
       {/* Mobile: Sticky One-Handed Bottom Navigation Bar */}
       <nav
         aria-label="अष्टावक्र श्लोक नेविगेशन"
-        className="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--ash-line)] bg-[var(--ash-bg)]/95 backdrop-blur-lg sm:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 border-t border-dharma-border bg-dharma-bg/95 backdrop-blur-lg sm:hidden"
       >
         <div className="flex items-center justify-between gap-2 px-3 pb-[max(0.6rem,env(safe-area-inset-bottom))] pt-2">
           {prev ? (
@@ -97,9 +97,9 @@ export function AshtavakraVerseReader({
               type="button"
               onClick={() => handleNavClick(prev.href)}
               aria-label={prev.crossesChapter ? `पिछला प्रकरण, श्लोक ${prev.verseNumber}` : `पिछला श्लोक ${prev.verseNumber}`}
-              className="ash-btn flex min-h-[48px] items-center gap-1.5 px-3 font-semibold transition active:scale-95"
+              className="flex min-h-[48px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3 font-semibold text-dharma-text transition active:scale-95"
             >
-              <ArrowLeft className="h-4 w-4 text-[var(--ash-accent)]" />
+              <ArrowLeft className="h-4 w-4 text-saffron-700 dark:text-saffron-300" />
               <span className="text-xs font-devanagari">
                 {toAsciiDigits(prev.crossesChapter ? prev.verseNumber : (prevVerseNum ?? ''))}
               </span>
@@ -117,12 +117,12 @@ export function AshtavakraVerseReader({
             }}
             aria-haspopup="dialog"
             aria-label="श्लोक माला खोलें"
-            className="flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-2xl border border-[var(--ash-line)] bg-[var(--ash-card)] px-2.5 py-1 text-center shadow-sm transition active:scale-95"
+            className="flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-2xl border border-dharma-border bg-dharma-card px-2.5 py-1 text-center shadow-sm transition active:scale-95"
           >
-            <span lang="hi" className="font-devanagari text-sm font-bold text-[var(--ash-ink)]">
+            <span lang="hi" className="font-devanagari text-sm font-bold text-dharma-text">
               श्लोक {toAsciiDigits(verse.verseNumber)}
             </span>
-            <span className="text-[10px] font-semibold text-[var(--ash-accent)]">
+            <span className="text-[10px] font-semibold text-saffron-700 dark:text-saffron-300">
               {currentIndex + 1} / {totalVerses} · माला खोलें
             </span>
           </button>
@@ -132,12 +132,12 @@ export function AshtavakraVerseReader({
               type="button"
               onClick={() => handleNavClick(next.href)}
               aria-label={next.crossesChapter ? `अगला प्रकरण, श्लोक ${next.verseNumber}` : `अगला श्लोक ${next.verseNumber}`}
-              className="ash-btn flex min-h-[48px] items-center gap-1.5 px-3 font-semibold transition active:scale-95"
+              className="flex min-h-[48px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3 font-semibold text-dharma-text transition active:scale-95"
             >
               <span className="text-xs font-devanagari">
                 {toAsciiDigits(next.crossesChapter ? next.verseNumber : (nextVerseNum ?? ''))}
               </span>
-              <ArrowRight className="h-4 w-4 text-[var(--ash-accent)]" />
+              <ArrowRight className="h-4 w-4 text-saffron-700 dark:text-saffron-300" />
             </button>
           ) : (
             <span className="w-16" aria-hidden="true" />

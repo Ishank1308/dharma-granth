@@ -45,6 +45,7 @@ import { getSearchThemes } from '@/lib/search-themes';
 import { findHighlights } from '@/lib/search-highlight';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { reviewStatusForHref } from '@/lib/review-badges';
+import { EDITORIAL_DRAFT_LABEL, STUDY_TRANSLATION_SHORT } from '@/lib/editorial-terminology';
 import { REVIEW_RECORDS } from '@/data/review-records';
 import { useTheme } from '@/app/components/ThemeProvider';
 import {
@@ -133,6 +134,17 @@ function ensureVerseIndex(): Promise<void> {
       });
   }
   return verseIndexRequest;
+}
+
+/**
+ * Fire-and-forget index warmup for search-button hover/focus (SiteNav).
+ * Opening the modal starts the same fetches; warming only moves them earlier.
+ * Safe to call repeatedly: each index fetches at most once (see ensure* above).
+ */
+export function warmSearchIndexes(): void {
+  void ensureChapterIndex();
+  void ensureCoreIndex();
+  void ensureVerseIndex().catch(() => {});
 }
 
 /* ── Suggestions ─────────────────────────────────────────────────────── */
@@ -1049,7 +1061,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                                     <Highlighted text={item.translationExcerpt} query={trimmed} />
                                   </span>
                                   {item.translationIsAi && (
-                                    <span className="ml-2 rounded-full border border-violet-500/40 bg-violet-500/10 px-1.5 py-px text-[10px] font-semibold text-violet-900 dark:text-violet-200">AI translation</span>
+                                    <span className="ml-2 rounded-full border border-violet-500/40 bg-violet-500/10 px-1.5 py-px text-[10px] font-semibold text-violet-900 dark:text-violet-200" title={STUDY_TRANSLATION_SHORT.detail}>{STUDY_TRANSLATION_SHORT.en}</span>
                                   )}
                                 </p>
                               )}
@@ -1059,7 +1071,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                                   <span className="mr-1.5 font-semibold text-sky-900 dark:text-sky-200">Explanation:</span>
                                   <Highlighted text={item.commentaryExcerpt} query={trimmed} />
                                   {item.aiDrafted && (
-                                    <span className="ml-2 rounded-full border border-violet-500/40 bg-violet-500/10 px-1.5 py-px text-[10px] font-semibold text-violet-900 dark:text-violet-200">AI-drafted</span>
+                                    <span className="ml-2 rounded-full border border-violet-500/40 bg-violet-500/10 px-1.5 py-px text-[10px] font-semibold text-violet-900 dark:text-violet-200" title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</span>
                                   )}
                                 </p>
                               )}

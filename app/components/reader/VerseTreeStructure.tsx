@@ -7,7 +7,8 @@
  *   श्लोक (root, rendered by the card above)
  *     └─ अर्थ  (open by default)
  *          └─ व्याख्या
- *               └─ विज्ञान एवं आधुनिक उपयोग
+ *               └─ आधुनिक संदर्भ
+ *                    └─ चिंतन
  *
  * Every node header stays visible so the reader can see how deep the verse
  * goes; a node's body unfolds on demand. Children are nested inside their

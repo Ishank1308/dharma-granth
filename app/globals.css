@@ -399,16 +399,21 @@
         position: relative;
         isolation: isolate;
         overflow: hidden;
+        contain: paint;
     }
     .verse-graphic-card::before {
         content: "";
         position: absolute;
-        inset: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         z-index: -2;
+        contain: strict;
         background-image:
             radial-gradient(circle at var(--verse-bg-x) var(--verse-bg-y), var(--verse-graphic-tint), transparent 42%),
             linear-gradient(135deg, var(--verse-graphic-glow), transparent 52%),
-            var(--verse-bg-image);
+            var(--verse-bg-image, none);
         background-position:
             center,
             center,
@@ -424,12 +429,17 @@
             opacity 0.35s ease,
             transform 0.5s ease;
         pointer-events: none;
+        will-change: transform, opacity;
     }
     .verse-graphic-card::after {
         content: "";
         position: absolute;
-        inset: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         z-index: -1;
+        contain: strict;
         background:
             linear-gradient(180deg, color-mix(in srgb, var(--dharma-card) 94%, transparent), color-mix(in srgb, var(--dharma-card) 88%, transparent)),
             radial-gradient(circle at 8% 0%, var(--verse-graphic-tint), transparent 36%),
@@ -1858,4 +1868,49 @@ body::after {
 :is([class*='line-clamp-']):is(.font-devanagari, body [lang='hi'], body [lang='sa']),
 :is([class*='line-clamp-']) :is(.font-devanagari, [lang='hi'], [lang='sa']) {
     padding-bottom: 0.15em;
+}
+
+/* Sacred reading flow (lib/sacred-reading-order.ts): Vyakhya → Modern Context →
+   Reflection read as one connected flow. A single calm rail joins the steps;
+   dharma tokens only, so Day, Sunset, Paper and Dark all stay quiet. */
+.sacred-flow-wrap {
+    display: grid;
+    gap: 1.5rem;
+    min-width: 0;
+}
+.sacred-flow {
+    display: grid;
+    gap: 1.5rem;
+    min-width: 0;
+    border-left: 2px solid color-mix(in srgb, var(--dharma-gold, #b45309) 40%, transparent);
+    padding-left: 1rem;
+}
+.sacred-section {
+    min-width: 0;
+    scroll-margin-top: 6rem;
+}
+@media (min-width: 640px) {
+    .sacred-flow-wrap {
+        gap: 1.75rem;
+    }
+    .sacred-flow {
+        gap: 1.75rem;
+        padding-left: 1.25rem;
+    }
+}
+/* Small phones (320–400px): the rail narrows and the manuscript leaf sheds
+   padding so the shloka and the flow never overflow or squeeze. */
+@media (max-width: 400px) {
+    .sacred-flow {
+        padding-left: 0.75rem;
+    }
+    .verse-leaf {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+@media print {
+    .sacred-flow {
+        border-left-color: #999;
+    }
 }

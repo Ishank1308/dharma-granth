@@ -7,14 +7,14 @@ import { Bookmark, Check, Copy, Volume2 } from 'lucide-react';
 /** Content that is fetched only after the reader opens a deeper study tab. */
 export interface VerseDeepLayers {
   vyakhya?: { text: string; language: 'hi' | 'en' };
-  vigyan?: {
-    text: string;
-    language: 'hi' | 'en';
-    concepts?: string[];
-  };
   modernContext?: {
     example: string;
     language: 'hi' | 'en';
+  };
+  reflection?: {
+    text: string;
+    language: 'hi' | 'en';
+    concepts?: string[];
   };
 }
 
@@ -57,18 +57,18 @@ export const SAMPLE_PROGRESSIVE_VERSE: ProgressiveVerse = {
 export async function loadSampleVerseDeepLayers(): Promise<VerseDeepLayers> {
   return {
     vyakhya: { text: 'यह उदाहरण दार्शनिक व्याख्या है।', language: 'hi' },
-    vigyan: { text: 'यह उदाहरण मनोवैज्ञानिक संदर्भ है।', language: 'hi', concepts: ['ध्यान', 'निर्णय'] },
     modernContext: { example: 'यह उदाहरण आधुनिक जीवन में प्रयोग दिखाने के लिए है।', language: 'hi' },
+    reflection: { text: 'यह उदाहरण चिंतन प्रश्न है।', language: 'hi', concepts: ['ध्यान', 'निर्णय'] },
   };
 }
 
-type TabId = 'arth' | 'vyakhya' | 'vigyan' | 'modern';
+type TabId = 'arth' | 'vyakhya' | 'modern' | 'reflection';
 
 const TAB_META: Array<{ id: TabId; hindi: string; english: string }> = [
   { id: 'arth', hindi: 'भावार्थ', english: 'Arth' },
   { id: 'vyakhya', hindi: 'दार्शनिक व्याख्या', english: 'Vyakhya' },
-  { id: 'vigyan', hindi: 'चेतना विज्ञान', english: 'Vigyan' },
   { id: 'modern', hindi: 'व्यावहारिक जीवन', english: 'Modern Context' },
+  { id: 'reflection', hindi: 'चिंतन', english: 'Reflection' },
 ];
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -234,17 +234,17 @@ export function ProgressiveVerseCard({
               {activeTab === 'vyakhya' && !loading && deepLayers?.vyakhya && (
                 <p lang={deepLayers.vyakhya.language} className={`${deepLayers.vyakhya.language === 'hi' ? 'font-devanagari leading-[2]' : 'font-serif leading-relaxed'} text-sm text-[#E6D5B8] sm:text-base`}>{deepLayers.vyakhya.text}</p>
               )}
-              {activeTab === 'vigyan' && !loading && deepLayers?.vigyan && (
-                <div className="space-y-4">
-                  {deepLayers.vigyan.concepts && deepLayers.vigyan.concepts.length > 0 && <div className="flex flex-wrap gap-2">{deepLayers.vigyan.concepts.map((concept) => <span key={concept} className="rounded-full border border-[#D97706]/45 bg-[#D97706]/10 px-3 py-1 text-xs font-medium text-[#F3A53B]">{concept}</span>)}</div>}
-                  <p lang={deepLayers.vigyan.language} className={`${deepLayers.vigyan.language === 'hi' ? 'font-devanagari leading-[2]' : 'font-serif leading-relaxed'} text-sm text-[#E6D5B8] sm:text-base`}>{deepLayers.vigyan.text}</p>
-                </div>
-              )}
               {activeTab === 'modern' && !loading && deepLayers?.modernContext && (
                 <aside className="rounded-xl border-l-2 border-[#D97706] bg-[#D97706]/[0.07] p-4">
                   <p className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-[#F3A53B]">जीवन में प्रयोग · In practice</p>
                   <p lang={deepLayers.modernContext.language} className={`${deepLayers.modernContext.language === 'hi' ? 'font-devanagari leading-[2]' : 'font-serif leading-relaxed'} text-sm text-[#E6D5B8] sm:text-base`}>{deepLayers.modernContext.example}</p>
                 </aside>
+              )}
+              {activeTab === 'reflection' && !loading && deepLayers?.reflection && (
+                <div className="space-y-4">
+                  {deepLayers.reflection.concepts && deepLayers.reflection.concepts.length > 0 && <div className="flex flex-wrap gap-2">{deepLayers.reflection.concepts.map((concept) => <span key={concept} className="rounded-full border border-[#D97706]/45 bg-[#D97706]/10 px-3 py-1 text-xs font-medium text-[#F3A53B]">{concept}</span>)}</div>}
+                  <p lang={deepLayers.reflection.language} className={`${deepLayers.reflection.language === 'hi' ? 'font-devanagari leading-[2]' : 'font-serif leading-relaxed'} text-sm text-[#E6D5B8] sm:text-base`}>{deepLayers.reflection.text}</p>
+                </div>
               )}
             </motion.section>
           </AnimatePresence>

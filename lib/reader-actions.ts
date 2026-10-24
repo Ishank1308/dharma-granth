@@ -8,7 +8,7 @@
  * is assumed about editions, translators or reviewers.
  */
 
-import { AI_COMMENTARY_LABEL } from '@/lib/ai-labels';
+import { EDITORIAL_DRAFT_LABEL } from '@/lib/editorial-terminology';
 
 export interface ReaderVerseText {
   number: number | string;
@@ -75,7 +75,7 @@ export const verseReference = (ref: ReaderRef, verse: ReaderVerseText): string =
 /** Human-readable layer labels used in copied and downloaded text. */
 export function layerNote(p: ReaderProvenance, layer: 'hindi' | 'english'): string {
   const ai = layer === 'hindi' ? p.hindiIsAi : p.englishIsAi;
-  return ai ? ' (AI translation, not a scholarly edition)' : '';
+  return ai ? ' (study translation, AI-assisted draft — not a scholarly edition)' : '';
 }
 
 /** Text for "Copy with reference": only the layers the reader currently shows. */
@@ -102,7 +102,7 @@ export function buildCopyText(
  */
 export function buildDownloadMarkdown(ref: ReaderRef, verse: ReaderVerseText, p: ReaderProvenance): string {
   const section = (title: string, body?: string) => (body && clean(body) ? `## ${title}\n\n${clean(body)}\n` : '');
-  const aiNote = p.commentaryIsAi ? `\n_${AI_COMMENTARY_LABEL.detail} Not part of the scripture._` : '';
+  const aiNote = p.commentaryIsAi ? `\n_Editorial draft: ${EDITORIAL_DRAFT_LABEL.detail} Not part of the scripture._` : '';
   const lines = [
     `# ${verseReference(ref, verse)}`,
     `${ref.scriptureTitle}${ref.scriptureTitleSanskrit ? ` (${ref.scriptureTitleSanskrit})` : ''} · ${ref.chapterTitle}\n`,

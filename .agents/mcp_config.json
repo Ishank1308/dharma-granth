@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "muse-spark": {
+      "command": "node",
+      "args": ["scripts/mcp-muse-server.mjs"],
+      "env": {
+        "MUSE_SPARK_BASE_URL": "https://api.meta.ai/v1",
+        "MUSE_SPARK_MODEL": "muse-spark-1.3-contributor"
+      }
+    }
+  }
+}

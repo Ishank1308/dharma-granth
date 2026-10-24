@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { BookOpen, ExternalLink, Flame, Heart, MessageSquare, ShieldCheck } from 'lucide-react';
 import { PerformanceToggle } from './PerformanceToggle';
+import { TRANSPARENCY_LINE } from '@/lib/editorial-terminology';
 
 export function SiteFooter() {
   return (
@@ -71,11 +72,16 @@ export function SiteFooter() {
                 <strong className="text-dharma-text">Canonical Distinction:</strong> Original Sanskrit root text (संहिता) is always kept distinct from translations, classical bhashya, and modern reflections.
               </li>
               <li>
-                <strong className="text-dharma-text">Scholarly Transparency:</strong> AI-assisted translations and commentaries are flagged where they appear. They are not yet independently reviewed.
+                <strong className="text-dharma-text">Scholarly Transparency:</strong> {TRANSPARENCY_LINE}
               </li>
               <li>
                 <Link href="/methodology" className="inline-flex min-h-11 items-center font-semibold text-saffron-700 sm:min-h-0 underline-offset-2 hover:underline dark:text-saffron-400">
                   How this site is made →
+                </Link>
+              </li>
+              <li>
+                <Link href="/how-dharma-granth-works" className="inline-flex min-h-11 items-center font-semibold text-saffron-700 sm:min-h-0 underline-offset-2 hover:underline dark:text-saffron-400">
+                  How Dharma Granth works →
                 </Link>
               </li>
               <li>

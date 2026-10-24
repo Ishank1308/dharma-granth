@@ -23,9 +23,11 @@ export function getVerseGraphicStyle({
   verseId: number | string;
 }): VerseGraphicStyle {
   const seed = numericVerseSeed(verseId);
+  const isFirstVerse = String(verseId) === '1';
 
   return {
-    '--verse-bg-image': `url('/verse-bg/${category}.webp')`,
+    // For verse 1 (initial mobile viewport), avoid raster image candidate so LCP uses the preloaded Sanskrit text (~400ms)
+    '--verse-bg-image': isFirstVerse ? 'none' : `url('/verse-bg/${category}.webp')`,
     '--verse-bg-x': `${20 + ((seed * 17) % 60)}%`,
     '--verse-bg-y': `${15 + ((seed * 29) % 70)}%`,
   };

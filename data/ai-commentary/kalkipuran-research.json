@@ -1,0 +1,54 @@
+{
+  "1:1": {
+    "status": "approved",
+    "science": "",
+    "lifeLesson": [
+      [
+        "बस उसकी ओर",
+        "केवल उसकी ओर"
+      ]
+    ]
+  },
+  "1:2": {
+    "status": "approved",
+    "science": ""
+  },
+  "2:1": {
+    "status": "approved",
+    "science": ""
+  },
+  "3:1": {
+    "status": "approved",
+    "science": ""
+  },
+  "3:2": {
+    "status": "approved",
+    "science": ""
+  },
+  "3:5": {
+    "status": "approved",
+    "science": "",
+    "lifeLesson": [
+      [
+        "यह परिवर्तन की पूर्व-शर्त है",
+        "यह परिवर्तन की पूर्वापेक्षा है"
+      ],
+      [
+        "re: ?\\([A-Za-z][A-Za-z' \\-/,]*\\)",
+        ""
+      ]
+    ]
+  },
+  "3:26": {
+    "status": "approved",
+    "science": ""
+  },
+  "3:27": {
+    "status": "approved",
+    "science": ""
+  },
+  "3:28": {
+    "status": "approved",
+    "science": ""
+  }
+}

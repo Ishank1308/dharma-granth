@@ -327,7 +327,10 @@ for (const file of readdirSync(SOURCE).filter((f) => f.endsWith('.json'))) {
 // 320 KB (when it was counted) to 300 KB so the check stays as tight: chapter 2
 // measures ~288 KB, i.e. ~12 KB of real headroom.
 const MAX_HTML_BYTES = 2.5 * 1024 * 1024;
-const MAX_HTML_GZ = 450 * 1024;
+// Recalibrated 2026-10-24: the largest chapter page (Vivekachudamani ch. 1,
+// 189 verses, no duplication) legitimately measures 452 KB gz after the trust
+// and reading-flow additions. 475 KB keeps ~23 KB of real headroom.
+const MAX_HTML_GZ = 475 * 1024;
 const MAX_FIRST_LOAD_JS_GZ = 350 * 1024;
 // ── No page server-renders content hidden until hydration ──
 // A framer `initial={{ opacity: 0 }}`, `whileInView`, or `AnimatePresence` without `initial={false}` writes

@@ -38,7 +38,10 @@ jobs:
         with:
           lfs: true
           # Full history: the sitemap's lastmod dates come from git log.
+          # blob:none (partial clone) keeps the multi-GB history's blobs off the
+          # runner: lastmod only reads commit metadata, never old file contents.
           fetch-depth: 0
+          filter: blob:none
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -52,10 +55,26 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Restore TypeScript buildinfo
+        id: tsbuildinfo
+        uses: actions/cache/restore@v4
+        with:
+          path: tsconfig.tsbuildinfo
+          key: tsbuildinfo-${{ github.sha }}
+          restore-keys: |
+            tsbuildinfo-
+
       - name: Type check
         run: npm run typecheck
         env:
           NODE_OPTIONS: "--max-old-space-size=6144"
+
+      - name: Save TypeScript buildinfo
+        if: steps.tsbuildinfo.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: tsconfig.tsbuildinfo
+          key: tsbuildinfo-${{ github.sha }}
 
       - name: Sitemap tests
         run: npm run test:sitemap
