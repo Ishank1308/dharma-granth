@@ -64,6 +64,7 @@ export interface VerseCardData {
   translationSource?: 'ai';
   hindi?: string;
   hindiSource?: 'ai';
+  hindiReviewRequired?: boolean;
   /** This verse's Hindi covers a range ("15-17") translated together in the edition. */
   hindiRange?: string;
   /** The Hindi for this verse is stored on that verse (the first of its range). */
@@ -443,7 +444,7 @@ export function VerseCard({
   const hasExplanation = Boolean(vyakhya || commentary);
   const scienceIsHi = meaning.scienceIsHi || isMostlyDevanagari(science);
   const lessonIsHi = meaning.lessonIsHi || isMostlyDevanagari(lesson);
-  const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null) && layers.hindi);
+  const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null || v.hindiReviewRequired) && layers.hindi);
   const showEnglish = Boolean(v.translation && layers.english);
 
   // Sacred reading order (lib/sacred-reading-order): every layer renders in one
@@ -971,11 +972,13 @@ export function VerseCard({
                   }`}>
                     <div className="mb-2 flex items-center justify-between gap-2">
                       <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                        {v.hindiRange
+                        {v.hindiReviewRequired
+                          ? 'हिन्दी अर्थ · स्रोत सत्यापनाधीन'
+                          : v.hindiRange
                           ? `श्लोक ${toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिंदी अनुवाद · Hindi Translation`
                           : 'हिंदी अनुवाद · Hindi Translation'}
                       </p>
-                      <ContentLabelBadge kind="literal" />
+                      {!v.hindiReviewRequired && <ContentLabelBadge kind="literal" />}
                     </div>
                     {!v.hindi && v.hindiSeeVerse != null && (
                       <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-muted">
@@ -986,11 +989,13 @@ export function VerseCard({
                       </p>
                     )}
                     <p lang="hi" className={`font-devanagari ${translationFontSizeClass} text-dharma-text`}>
-                      {v.hindi && <GlossaryText text={v.hindi} />}
-                      {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
+                      {v.hindiReviewRequired
+                        ? 'हिन्दी अर्थ स्रोत-संस्करण से सत्यापनाधीन है।'
+                        : v.hindi && <GlossaryText text={v.hindi} />}
+                      {!v.hindiReviewRequired && meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
                         <span className="ml-2 align-middle"><DraftBadge lang="hi" /></span>
                       )}
-                      {v.hindiSource === 'ai' && (
+                      {!v.hindiReviewRequired && v.hindiSource === 'ai' && (
                         <span
                           className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
                           title="संस्कृत से मशीन-अनुवादित; विद्वत् अनुवाद नहीं"

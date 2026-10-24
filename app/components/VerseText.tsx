@@ -8,6 +8,7 @@ interface Props {
     sanskrit?: string;
     transliteration?: string;
     hindi?: string;
+    hindiReviewRequired?: boolean;
     /** Hindi translating a range of verses together ("15-17"), stored on its first verse. */
     hindiRange?: string;
     /** This verse's Hindi is in the passage stored on that verse. */
@@ -80,6 +81,11 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
             {hindi}
           </p>
         </div>
+      )}
+      {!hindi && v.hindiReviewRequired && (
+        <p className="vt-block vt-label" lang="hi">
+          हिन्दी अर्थ स्रोत-संस्करण से सत्यापनाधीन है।
+        </p>
       )}
       {!hindi && v.hindiSeeVerse != null && (
         <p className="vt-block vt-label" lang="hi">

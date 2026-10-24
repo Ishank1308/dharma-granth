@@ -62,6 +62,7 @@ import {
   markChapterCompleteInReadingPlan,
 } from '@/lib/reading-plan-sync';
 import { saveChapterVersesToDB, getCachedChapterVersesFromDB } from '@/lib/db/granth-indexeddb';
+import { isHindiSourceReviewRequired } from '@/lib/ocr-hindi-review';
 import type { SvadhyayaTab } from '@/app/components/reader/SvadhyayaSplitDrawer';
 const SvadhyayaSplitDrawer = dynamic(() => import('@/app/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
 import { MobileOneThumbControlBar } from './reader/MobileOneThumbControlBar';
@@ -82,6 +83,7 @@ interface FullVerse {
   translationSource?: 'ai';
   hindi?: string;
   hindiSource?: 'ai';
+  hindiReviewRequired?: boolean;
   hindiRange?: string;
   hindiSeeVerse?: number | string;
   wordMeaning?: string;
@@ -308,7 +310,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               sanskrit: c.sanskrit,
               transliteration: c.transliteration,
               translation: c.translation,
-              hindi: c.hindi,
+              hindi: isHindiSourceReviewRequired(scriptureId, chapterId, c.verseNum) ? undefined : c.hindi,
+              hindiReviewRequired: isHindiSourceReviewRequired(scriptureId, chapterId, c.verseNum),
               wordMeaning: c.wordMeaning,
               padaccheda: c.padaccheda,
               commentary: c.commentary,

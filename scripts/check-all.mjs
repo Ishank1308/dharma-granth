@@ -24,6 +24,7 @@ const CHECKS = [
   'scripts/check-wisdom.ts',
   'scripts/check-commentary-quality.ts',
   'scripts/check-published-scriptures.ts',
+  'scripts/test-ocr-hindi-review.ts',
 ];
 
 const filters = process.argv.slice(2).map((f) => f.toLowerCase());

@@ -1,0 +1,327 @@
+{
+  "sourceRevision": "aef2fdcb",
+  "reason": "Latin OCR remnants were removed without source-edition verification of the remaining Hindi meaning.",
+  "status": "source-review-required",
+  "entries": [
+    {
+      "scriptureId": "agnipuran",
+      "chapter": 18,
+      "verse": "16"
+    },
+    {
+      "scriptureId": "agnipuran",
+      "chapter": 74,
+      "verse": "72"
+    },
+    {
+      "scriptureId": "agnipuran",
+      "chapter": 287,
+      "verse": "43"
+    },
+    {
+      "scriptureId": "agnipuran",
+      "chapter": 325,
+      "verse": "9"
+    },
+    {
+      "scriptureId": "brahmandpuran",
+      "chapter": 36,
+      "verse": "220"
+    },
+    {
+      "scriptureId": "brahmapuran",
+      "chapter": 152,
+      "verse": "27"
+    },
+    {
+      "scriptureId": "garudpurana",
+      "chapter": 241,
+      "verse": "77"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 10,
+      "verse": "24"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 10,
+      "verse": "32"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 20,
+      "verse": "24"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 40,
+      "verse": "9"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 43,
+      "verse": "17"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 69,
+      "verse": "87"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 70,
+      "verse": "103"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 70,
+      "verse": "344"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 71,
+      "verse": "143"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 72,
+      "verse": "172"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 80,
+      "verse": "37"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 82,
+      "verse": "26"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 85,
+      "verse": "222"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 92,
+      "verse": "76"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 107,
+      "verse": "12"
+    },
+    {
+      "scriptureId": "lingapuran",
+      "chapter": 107,
+      "verse": "42"
+    },
+    {
+      "scriptureId": "matsyapuran",
+      "chapter": 18,
+      "verse": "18"
+    },
+    {
+      "scriptureId": "matsyapuran",
+      "chapter": 18,
+      "verse": "21"
+    },
+    {
+      "scriptureId": "matsyapuran",
+      "chapter": 44,
+      "verse": "60"
+    },
+    {
+      "scriptureId": "matsyapuran",
+      "chapter": 74,
+      "verse": "20"
+    },
+    {
+      "scriptureId": "matsyapuran",
+      "chapter": 106,
+      "verse": "36"
+    },
+    {
+      "scriptureId": "matsyapuran",
+      "chapter": 158,
+      "verse": "48"
+    },
+    {
+      "scriptureId": "matsyapuran",
+      "chapter": 163,
+      "verse": "27"
+    },
+    {
+      "scriptureId": "matsyapuran",
+      "chapter": 167,
+      "verse": "42"
+    },
+    {
+      "scriptureId": "narasimhapuran",
+      "chapter": 5,
+      "verse": "56"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 6,
+      "verse": "3"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 6,
+      "verse": "40"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 8,
+      "verse": "18"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 8,
+      "verse": "109"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 10,
+      "verse": "6"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 10,
+      "verse": "45"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 12,
+      "verse": "32"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 13,
+      "verse": "28"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 14,
+      "verse": "3"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 19,
+      "verse": "42"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 19,
+      "verse": "50"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 19,
+      "verse": "86"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 20,
+      "verse": "4"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 20,
+      "verse": "65"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 20,
+      "verse": "68"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 21,
+      "verse": "33"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 21,
+      "verse": "37"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 22,
+      "verse": "14"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 22,
+      "verse": "47"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 22,
+      "verse": "49"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 23,
+      "verse": "4"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 23,
+      "verse": "10"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 24,
+      "verse": "43"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 27,
+      "verse": "24"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 29,
+      "verse": "31"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 29,
+      "verse": "40"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 29,
+      "verse": "66"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 30,
+      "verse": "12"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 30,
+      "verse": "50"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 30,
+      "verse": "68"
+    },
+    {
+      "scriptureId": "skandapuran",
+      "chapter": 31,
+      "verse": "22"
+    },
+    {
+      "scriptureId": "vamanpuran",
+      "chapter": 80,
+      "verse": "2"
+    }
+  ]
+}

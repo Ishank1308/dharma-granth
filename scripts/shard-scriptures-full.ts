@@ -12,15 +12,16 @@ import path from "node:path";
 import { isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-commentary/quality";
 import { findTemplateFields } from "./lib/template-text";
 import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
+import { isHindiSourceReviewRequired } from "../lib/ocr-hindi-review";
 
 const PILOT = loadPilotOverlay();
 
 /** Bump when shard output logic changes (stubs, templates, echo rules, manifest shape). */
-const SHARD_REV = "1";
+const SHARD_REV = "2";
 
 interface ShardStamp {
   rev: string;
-  /** sha256 over the full-book JSON bytes + pilot overlay bytes. */
+  /** sha256 over the full-book, pilot overlay, and Hindi review registry bytes. */
   stamp: string;
   /** Chapter numbers written, so a changed chapter set reshards. */
   chapters: number[];
@@ -47,6 +48,7 @@ function pilotBytes(): Buffer {
   return Buffer.concat(parts);
 }
 const PILOT_BYTES = pilotBytes();
+const HINDI_REVIEW_BYTES = fs.readFileSync(path.resolve("data/ocr-hindi-review.json"));
 
 function readShardStamp(outDir: string): ShardStamp | null {
   const file = path.join(outDir, "_stamps.json");
@@ -109,7 +111,7 @@ function main(): void {
     // Raw bytes feed the stamp and the parse below; read once.
     const bookRaw = fs.readFileSync(bookPath);
     if (!DRY) {
-      const stamp = sha256Hex(Buffer.concat([bookRaw, PILOT_BYTES]));
+      const stamp = sha256Hex(Buffer.concat([bookRaw, PILOT_BYTES, HINDI_REVIEW_BYTES]));
       const prev = readShardStamp(outDir);
       if (
         prev?.stamp === stamp &&
@@ -164,6 +166,19 @@ function main(): void {
       const v = ((ch?.verses ?? []) as Record<string, unknown>[]).find((x) => String(x.number) === p.verse);
       if (v) patchPublishedVerse(v, p.record);
       else console.warn(`  ${id}: pilot unit ${p.record.unitId} not found in ${p.chapter}:${p.verse}`);
+    }
+
+    // Keep the original transcription for edition review, but withhold its
+    // unverified Hindi meaning from generated chapter shards.
+    for (const ch of book.chapters ?? []) {
+      for (const verse of (ch.verses ?? []) as Record<string, unknown>[]) {
+        if (!isHindiSourceReviewRequired(id, ch.number, String(verse.number))) continue;
+        if (typeof verse.hindi !== "string" || !verse.hindi.trim()) {
+          throw new Error(`Hindi source-review entry has no source text: ${id}:${ch.number}:${String(verse.number)}`);
+        }
+        delete verse.hindi;
+        verse.hindiReviewRequired = true;
+      }
     }
 
     if (!DRY) fs.mkdirSync(outDir, { recursive: true });
@@ -246,7 +261,7 @@ function main(): void {
         path.join(outDir, "_stamps.json"),
         JSON.stringify({
           rev: SHARD_REV,
-          stamp: sha256Hex(Buffer.concat([bookRaw, PILOT_BYTES])),
+          stamp: sha256Hex(Buffer.concat([bookRaw, PILOT_BYTES, HINDI_REVIEW_BYTES])),
           chapters: [...expectedShards]
             .map((name) => Number(name.slice(3, -".json".length)))
             .filter((number) => Number.isFinite(number))
