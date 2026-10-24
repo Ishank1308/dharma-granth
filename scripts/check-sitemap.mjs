@@ -68,9 +68,23 @@ else {
   const lines = robots.split(/\r?\n/).map((l) => l.trim());
   if (!lines.includes(`Sitemap: ${ORIGIN}/sitemap.xml`)) fail('robots.txt', `missing "Sitemap: ${ORIGIN}/sitemap.xml"`);
   if (lines.filter((l) => /^sitemap:/i.test(l)).length !== 1) fail('robots.txt', 'expected exactly one Sitemap line');
+  // Only the `User-Agent: *` group governs sitemap crawlability. Crawler-specific
+  // groups (AI assistants with tailored allows, Google-Extended with a training
+  // opt-out) intentionally differ and must not fail URLs that stay crawlable.
+  // A new group starts at a User-Agent line following any rule line.
+  let starGroup = false;
+  let seenRule = true;
   for (const l of lines) {
+    const ua = /^user-agent:\s*(\S*)/i.exec(l);
+    if (ua) {
+      if (seenRule) { starGroup = false; seenRule = false; }
+      if (ua[1] === '*') starGroup = true;
+      continue;
+    }
+    if (l === '' || l.startsWith('#')) continue;
+    seenRule = true;
     const m = /^disallow:\s*(\S*)/i.exec(l);
-    if (m && m[1]) disallowed.push(m[1]);
+    if (m && m[1] && starGroup) disallowed.push(m[1]);
   }
   // Rendering assets and every sitemap URL must stay crawlable.
   for (const d of disallowed) {
