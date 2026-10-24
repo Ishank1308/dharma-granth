@@ -1,7 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, startTransition } from 'react';
 import {
+  ArrowRight,
   BookOpen,
   Flame,
   Maximize2,
@@ -15,6 +16,7 @@ import {
   Play,
   ChevronDown,
 } from 'lucide-react';
+import Link from 'next/link';
 import { updateReaderScrollProgress, triggerPranaToast } from '@/lib/prana-capsule-store';
 import type { ScriptureCategory } from '@/data/types';
 import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
@@ -115,6 +117,9 @@ interface Props {
   /** Display titles for the share card; fall back to ids when absent. */
   scriptureTitle?: string;
   chapterTitle?: string;
+  /** Link and title for continuous meditative transition to the next chapter */
+  nextChapterHref?: string;
+  nextChapterTitle?: string;
   basePath?: string;
   /**
    * Skip the "Load full chapter text" button and fetch immediately. Used on
@@ -158,7 +163,7 @@ function withRich(prev: Set<string>, numbers: Array<string | number>): Set<strin
   return next;
 }
 
-export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {} }: Props) {
+export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, nextChapterHref, nextChapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {} }: Props) {
   const isOnline = useConnectivity();
   const { settings: readerSettings, update: updateReaderSetting, reset: resetReaderSettings, reducedMotion } = useReaderSettings();
   const { theme, setTheme } = useTheme();
@@ -1294,23 +1299,24 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
             </div>
           ) : (
             filteredVerses.map((v, index) => {
-              if (!hydrated) {
-                return (
-                  <VerseText
-                    key={`${String(v.number)}-${index}`}
-                    verse={v}
-                    chapterId={chapterId}
-                    href={versePageHref(scriptureId, chapterId, v.number)}
-                  />
-                );
-              }
+              const isSpotlighted = !ekagrataMode || (activeRecitingVerse ? String(activeRecitingVerse) === String(v.number) : (currentViewportVerse ? currentViewportVerse === String(v.number) : index === 0));
+
+              // For index >= RICH_BATCH when not in richVerses: render lightweight plain VerseText
+              // with the identical outer wrapper div so container height and child selectors remain stable.
               if (index >= RICH_BATCH && !richVerses.has(String(v.number))) {
                 return (
-                  <div key={`${String(v.number)}-${index}`} data-plain-verse={String(v.number)}>
+                  <div
+                    key={`${String(v.number)}-${index}`}
+                    data-plain-verse={String(v.number)}
+                    className={`transition-opacity duration-300 ${!isSpotlighted ? 'opacity-35 hover:opacity-90 focus-within:opacity-100' : 'opacity-100'}`}
+                  >
                     <VerseText verse={v} chapterId={chapterId} href={versePageHref(scriptureId, chapterId, v.number)} />
                   </div>
                 );
               }
+
+              // Otherwise (initial RICH_BATCH verses and scrolled verses): render full VerseCard
+              // directly both on SSR and client to completely eliminate the 2.816 CLS hydration swap.
               const verseKey = canonicalVerseId(chapterId, v.number);
               const verseIdNum = Number(verseKey);
               const comment = state.commentary?.[`${chapterId}:${verseIdNum}`];
@@ -1327,7 +1333,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               const scienceIsHi = Boolean(scienceHi);
               const lesson = lifeLessonHi ?? v.lifeLesson;
               const lessonIsHi = Boolean(lifeLessonHi);
-              const isSpotlighted = !ekagrataMode || (activeRecitingVerse ? String(activeRecitingVerse) === String(v.number) : (currentViewportVerse ? currentViewportVerse === String(v.number) : index === 0));
+
               return (
                 <div
                   key={`${String(v.number)}-${index}`}
@@ -1400,6 +1406,33 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               );
             })
           )}
+        </div>
+      )}
+
+      {/* ── Meditative Chapter Transition Bridge (Infinite Reading Flow) ── */}
+      {nextChapterHref && state.kind === 'ready' && (
+        <div className="mt-12 rounded-[28px] border border-amber-300/70 bg-gradient-to-br from-amber-50/90 via-orange-50/50 to-amber-50/90 p-6 sm:p-8 text-center shadow-sm dark:border-amber-900/50 dark:from-amber-950/40 dark:via-orange-950/20 dark:to-amber-950/40">
+          <span aria-hidden="true" className="font-serif text-lg font-bold text-saffron-700 dark:text-amber-300">
+            ॥ ॐ तत्सत् ॥
+          </span>
+          <p className="mt-2 text-xs font-bold uppercase tracking-widest text-saffron-800 dark:text-saffron-300">
+            अध्याय {toAsciiDigits(chapterId)} पूर्ण · Chapter {toAsciiDigits(chapterId)} Complete
+          </p>
+          <h3 className="mt-2 font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+            {nextChapterTitle || `अगला अध्याय ${toAsciiDigits(chapterId + 1)}`}
+          </h3>
+          <p className="mx-auto mt-2 max-w-lg text-sm text-dharma-muted">
+            पठन के इस ध्यानपूर्ण प्रवाह को अविराम जारी रखें।
+          </p>
+          <div className="mt-6 flex justify-center">
+            <Link
+              href={nextChapterHref}
+              className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-700 px-7 py-3 text-sm font-bold text-white shadow-md transition-all hover:shadow-lg hover:scale-105 active:scale-95"
+            >
+              <span>अगला अध्याय प्रारम्भ करें</span>
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       )}
 
@@ -1489,7 +1522,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       {state.source?.repo && (
         <p className="mt-6 text-xs text-dharma-muted text-center">
           स्रोत:{' '}
-          <a href={state.source.repo} target="_blank" rel="noopener noreferrer" className="underline">
+          <a href={state.source.repo} target="_blank" rel="noopener noreferrer" className="underline" onClick={(e) => e.stopPropagation()}>
             {state.source.repo.replace('https://github.com/', '')}
           </a>
           {state.source.fetchedAt && ` · प्राप्त ${new Date(state.source.fetchedAt).toLocaleDateString('hi-IN', { numberingSystem: 'latn' })}`}

@@ -48,7 +48,7 @@ export function SplashScreen() {
             <circle cx="100" cy="100" r="97" pathLength={1} />
           </svg>
           <div className="splash-badge" data-decorative>
-            <Image src="/logo-splash.webp" alt="" width={176} height={176} priority />
+            <Image src="/logo-splash.webp" alt="" width={176} height={176} priority fetchPriority="high" />
           </div>
         </div>
         <p className="splash-wordmark">Dharma Granth</p>

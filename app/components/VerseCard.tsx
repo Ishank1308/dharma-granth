@@ -1,10 +1,9 @@
 'use client';
 
-import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { REVEAL_SEQUENCE } from '@/app/components/motion/primitives';
 import {
-  Atom,
   Bookmark,
   BookmarkCheck,
   Check,
@@ -14,8 +13,6 @@ import {
   FolderCheck,
   FolderPlus,
   Highlighter,
-  Library,
-  Lightbulb,
   Maximize2,
   Quote,
   ScrollText,
@@ -31,20 +28,21 @@ import type { VerseHighlight } from '@/lib/useStudyProgress';
 import { resolveKeywordTarget } from '@/lib/keyword-links';
 import { toAsciiDigits, verseLines } from '@/lib/verse-format';
 import { shareVerseUrl } from '@/lib/verse-paths';
-import { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
+import { parseWordMeanings } from '@/lib/word-gloss';
 import { SITE_URL } from '@/lib/jsonld';
 import { ShareVerseButton } from './ShareVerseButton';
 import { GlossaryText } from './GlossaryTooltip';
 import { getVerseGraphicClass, getVerseGraphicStyle } from './verse-background';
 import { ContentLabelBadge } from './ContentLabels';
-import { ModernContextBlock } from './ModernContextBlock';
+import { ModernContextBody, ReflectionBody, parseModernContext } from './ModernContextBlock';
+import { ConnectedFlow, SacredSection } from '@/app/components/reader/SacredReadingFlow';
 import { detectChandas } from '@/lib/chandas-detector';
 import { speakSanskritTerm } from '@/lib/sacred-soundscape';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { showSabdaPeek } from '@/lib/prana-capsule-store';
 import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';
 import type { VerseInsight } from '@/lib/verse-insights';
-import { AI_COMMENTARY_LABEL } from '@/lib/ai-labels';
+import { EDITORIAL_DRAFT_LABEL, STUDY_TRANSLATION_SHORT } from '@/lib/editorial-terminology';
 import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
 import type { ReadingDepth } from '@/lib/reading-depth';
 import { ActionMenu } from '@/app/components/primitives/ActionMenu';
@@ -180,7 +178,6 @@ interface Props {
   isActive?: boolean;
 }
 
-type TabId = 'meaning' | 'explain' | 'science' | 'lesson';
 type HighlightColor = VerseHighlight['color'];
 
 const NOTE_MAX = 2000;
@@ -285,8 +282,6 @@ export function VerseCard({
   isActive,
 }: Props) {
   const reduce = useReducedMotion();
-  const cardRef = useRef<HTMLElement>(null);
-  const tabsId = useId();
 
   // ── Highlight colour picker ──
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -346,17 +341,19 @@ export function VerseCard({
 
   const lines = useMemo(() => (v.sanskrit ? verseLines(v.sanskrit) : []), [v.sanskrit]);
   const chandas = useMemo(() => detectChandas(v.sanskrit), [v.sanskrit]);
-  const parsedWordMeanings = useMemo(() => parseWordMeanings(v.wordMeaning), [v.wordMeaning]);
 
   // Recitation line-by-line / translation live highlighting
   const [activeLineIndex, setActiveLineIndex] = useState<number | null>(null);
   const [activeTranslationLang, setActiveTranslationLang] = useState<'hi' | 'en' | null>(null);
   const [activeWordIndex, setActiveWordIndex] = useState<number | null>(null);
 
+  const [activeWordBoundary, setActiveWordBoundary] = useState<{ chunkIndex: number; charIndex: number; length: number } | null>(null);
+
   useEffect(() => {
     if (!isReciting) {
       setActiveLineIndex(null);
       setActiveTranslationLang(null);
+      setActiveWordBoundary(null);
       return;
     }
 
@@ -365,17 +362,36 @@ export function VerseCard({
       if (detail?.isTranslation) {
         setActiveLineIndex(null);
         setActiveTranslationLang(detail.language);
+        setActiveWordBoundary(null);
       } else if (typeof detail?.chunkIndex === 'number') {
         setActiveLineIndex(detail.chunkIndex);
         setActiveTranslationLang(null);
       } else {
         setActiveLineIndex(null);
         setActiveTranslationLang(null);
+        setActiveWordBoundary(null);
+      }
+    };
+
+    const handleWord = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (typeof detail?.chunkIndex === 'number' && typeof detail?.charIndex === 'number') {
+        setActiveWordBoundary({
+          chunkIndex: detail.chunkIndex,
+          charIndex: detail.charIndex,
+          length: detail.charLength || 0,
+        });
+      } else {
+        setActiveWordBoundary(null);
       }
     };
 
     window.addEventListener('dharma:recitation-chunk', handleChunk);
-    return () => window.removeEventListener('dharma:recitation-chunk', handleChunk);
+    window.addEventListener('dharma:recitation-word', handleWord);
+    return () => {
+      window.removeEventListener('dharma:recitation-chunk', handleChunk);
+      window.removeEventListener('dharma:recitation-word', handleWord);
+    };
   }, [isReciting]);
 
   // ── Scholarly Citation Modal ──
@@ -430,45 +446,29 @@ export function VerseCard({
   const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null) && layers.hindi);
   const showEnglish = Boolean(v.translation && layers.english);
 
-  const tabs = useMemo(() => {
-    const list: Array<{ id: TabId; label: string; icon: typeof Sparkles }> = [];
-    if (showHindi || showEnglish) list.push({ id: 'meaning', label: 'भावार्थ · Arth', icon: ScrollText });
-    if (layers.commentary && depth !== 'read' && hasExplanation) {
-      list.push({ id: 'explain', label: 'व्याख्या · Vyakhya', icon: Sparkles });
-    }
-    if (layers.commentary && depth === 'study' && science) list.push({ id: 'science', label: 'विज्ञान · Vigyan', icon: Atom });
-    if (layers.commentary && depth !== 'read' && lesson) {
-      list.push({ id: 'lesson', label: 'व्यावहारिक जीवन · Modern Context', icon: Lightbulb });
-    }
-    return list;
-  }, [showHindi, showEnglish, layers.commentary, depth, hasExplanation, science, lesson]);
-
-  const [chosenTab, setChosenTab] = useState<TabId>('meaning');
-  // Fall back to the first available tab if the chosen one was switched off.
-  const activeTab = tabs.some((t) => t.id === chosenTab) ? chosenTab : tabs[0]?.id;
-  const hasMeaning = tabs.length > 0;
-
-  // Cursor spotlight: CSS variables only, no React re-render per move.
-  const onPointerMove = (e: PointerEvent<HTMLElement>) => {
-    const el = cardRef.current;
-    if (!el || reduce || e.pointerType !== 'mouse') return;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty('--mx', `${e.clientX - rect.left}px`);
-    el.style.setProperty('--my', `${e.clientY - rect.top}px`);
-  };
-
-  // WAI-ARIA tabs: arrow keys / Home / End move between tabs.
-  const onTabKeyDown = (e: KeyboardEvent<HTMLButtonElement>, index: number) => {
-    let next = -1;
-    if (e.key === 'ArrowRight') next = (index + 1) % tabs.length;
-    else if (e.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
-    else if (e.key === 'Home') next = 0;
-    else if (e.key === 'End') next = tabs.length - 1;
-    if (next === -1) return;
-    e.preventDefault();
-    setChosenTab(tabs[next].id);
-    document.getElementById(`${tabsId}-tab-${tabs[next].id}`)?.focus();
-  };
+  // Sacred reading order (lib/sacred-reading-order): every layer renders in one
+  // connected flow — Verse, Arth, Vyakhya, Modern Context, Reflection, Related
+  // Wisdom. Gates stay as they were: science appears only at study depth, the
+  // lesson and explanations only when the commentary layer is on.
+  const modernParsed = useMemo(() => (lesson ? parseModernContext(lesson) : null), [lesson]);
+  const showArth = showHindi || showEnglish;
+  const showVyakhya = Boolean(layers.commentary && depth !== 'read' && (hasExplanation || literaryMeta.isCurated));
+  const showScience = Boolean(layers.commentary && depth === 'study' && science);
+  const showLessonModern = Boolean(
+    layers.commentary && depth !== 'read' && lesson && modernParsed
+      && (!modernParsed.hasStructuredFormat || modernParsed.contextText || modernParsed.applicationText),
+  );
+  const showModern = showScience || showLessonModern;
+  const showReflection = Boolean(
+    (layers.commentary && depth !== 'read' && modernParsed?.hasStructuredFormat && modernParsed.reflectionQuestion)
+    || (depth !== 'read' && (literaryMeta.isCurated || insight?.marma)),
+  );
+  const showRelated = Boolean(
+    (relatedTeachings && relatedTeachings.length > 0)
+    || (insight && insight.situations.length > 0 && depth !== 'read')
+    || (depth === 'study' && v.keywords && v.keywords.length > 0),
+  );
+  const hasMeaning = showArth || showVyakhya || showModern || showReflection;
 
   // The shloka, transliteration and meanings reveal in that order through CSS (.reveal-seq / data-reveal in
   // globals.css): no opacity:0 in the server HTML, and nothing waits on hydration.
@@ -476,10 +476,8 @@ export function VerseCard({
 
   return (
     <article
-      ref={cardRef}
       id={`verse-${v.number}`}
-      onPointerMove={onPointerMove}
-      className={`verse-card ${REVEAL_SEQUENCE} group relative scroll-mt-24 rounded-[28px] border bg-dharma-card card-3d-depth transition-all duration-300 ${
+      className={`verse-card ${REVEAL_SEQUENCE} group relative scroll-mt-24 rounded-[28px] border bg-dharma-card transition-all duration-300 ${
         isReciting
           ? 'border-amber-400/80 ring-2 ring-amber-400/60 shadow-xl shadow-amber-500/15'
           : highlight
@@ -495,22 +493,6 @@ export function VerseCard({
       }}
       aria-label={`श्लोक ${verseLabel}${isReciting ? ' · श्लोक उच्चारण चालू' : ''}${highlight ? ` · ${HIGHLIGHTS[highlight].label} हाइलाइट` : ''}`}
     >
-      {/* Clips the decorative layers to the rounded card; kept separate so
-          the highlight picker can overflow the card edge. */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden rounded-[28px]">
-        <div className="verse-card-spotlight" />
-        {/* Gilded spine, like the binding edge of a manuscript leaf; takes the highlight colour */}
-        <div
-          className={`absolute inset-y-8 left-0 rounded-r-full bg-gradient-to-b opacity-80 ${
-            isReciting
-              ? 'w-2 from-amber-300 via-amber-500 to-amber-600 shadow-sm'
-              : highlight
-              ? `w-1.5 ${HIGHLIGHTS[highlight].spine}`
-              : 'w-1 from-amber-300 via-saffron-500 to-rose-500'
-          }`}
-        />
-      </div>
-
       <div className="relative p-4 sm:p-5 md:p-7">
         {/* ── Header ─────────────────────────────────────────── */}
         <header className="mb-3 sm:mb-5 flex flex-wrap items-center gap-x-3 gap-y-3">
@@ -564,36 +546,13 @@ export function VerseCard({
             </button>
           )}
 
-          {/* Svadhyaya Workbench Quick Button (Desktop Note / Reflection) */}
-          {onOpenSvadhyaya && (
-            <button
-              type="button"
-              onClick={() =>
-                onOpenSvadhyaya('manana', {
-                  scriptureSlug: scriptureId,
-                  scriptureTitle,
-                  chapter: chapterId,
-                  verseNum: v.number,
-                  sanskrit: v.sanskrit,
-                  initialNote: note,
-                })
-              }
-              title="स्वाध्याय मनन टिप्पणी लिखें"
-              className="hidden lg:inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold text-indigo-700 bg-indigo-50 border border-indigo-200/80 hover:bg-indigo-100 transition dark:bg-indigo-950/40 dark:text-indigo-300 dark:border-indigo-800"
-            >
-              <StickyNote className="h-3 w-3" />
-              <span>मनन टिप्पणी</span>
-            </button>
-          )}
-
-          {/* On phones the actions get their own row and wrap; without shrink-0 the
-          eight 36px buttons were squeezed to ~22px at 320px. */}
+          {/* Streamlined, calm toolbar: 3 essential icons + ActionMenu overflow. Never wraps awkwardly on mobile. */}
           <div
-            className="order-last flex w-full flex-wrap items-center justify-start gap-2 sm:order-none sm:ml-auto sm:w-auto sm:flex-nowrap sm:justify-end sm:gap-1.5"
+            className="ml-auto flex shrink-0 items-center gap-1.5"
             role="toolbar"
             aria-label="श्लोक विकल्प (Verse actions)"
           >
-            {/* Audio Recitation button */}
+            {/* Audio Recitation */}
             {onPlayRecitation && v.sanskrit && (
               <button
                 type="button"
@@ -611,6 +570,7 @@ export function VerseCard({
               </button>
             )}
 
+            {/* Bookmark */}
             <button
               type="button"
               onClick={onToggleBookmark}
@@ -626,35 +586,23 @@ export function VerseCard({
               )}
             </button>
 
-            {onAddToCollection && (
-              <button
-                type="button"
-                onClick={onAddToCollection}
-                className={`${iconButton} ${inCollectionCount && inCollectionCount > 0 ? '!border-saffron-400 !bg-saffron-50 !text-saffron-700 dark:!bg-saffron-900/30' : ''}`}
-                aria-label={inCollectionCount && inCollectionCount > 0 ? `संग्रह में सुरक्षित (${inCollectionCount})` : 'संग्रह में जोड़ें (Add to collection)'}
-                title={inCollectionCount && inCollectionCount > 0 ? `संग्रह में सुरक्षित (${inCollectionCount})` : 'संग्रह में जोड़ें'}
-              >
-                {inCollectionCount && inCollectionCount > 0 ? (
-                  <FolderCheck className="h-4 w-4" />
-                ) : (
-                  <FolderPlus className="h-4 w-4" />
-                )}
-              </button>
-            )}
+            {/* Share */}
+            <span className="shrink-0 [&>button]:h-9 [&>button]:w-9">
+              <ShareVerseButton
+                scriptureTitle={scriptureTitle}
+                chapterTitle={chapterTitle}
+                verseLabel={verseLabel}
+                sanskrit={v.sanskrit}
+                transliteration={v.transliteration}
+                hindi={v.hindi}
+                translation={v.translation}
+                coreShift={literaryMeta.isCurated ? literaryMeta.coreShiftHi || literaryMeta.coreShiftEn : undefined}
+                verseUrl={shareVerseUrl(SITE_URL, scriptureId, chapterId, v.number)}
+              />
+            </span>
 
-            {/* Highlight: colour picker popover */}
+            {/* Colour picker popover when open */}
             <div className="relative" ref={pickerRef}>
-              <button
-                type="button"
-                onClick={() => setPickerOpen((o) => !o)}
-                className={`${iconButton} ${highlight ? '!border-transparent !text-white ' + HIGHLIGHTS[highlight].swatch : ''}`}
-                aria-expanded={pickerOpen}
-                aria-haspopup="true"
-                aria-label={highlight ? `हाइलाइट: ${HIGHLIGHTS[highlight].label} (Change highlight)` : 'हाइलाइट करें (Highlight)'}
-                title="हाइलाइट करें"
-              >
-                <Highlighter className="h-4 w-4" />
-              </button>
               <AnimatePresence>
                 {pickerOpen && (
                   <motion.div
@@ -664,7 +612,7 @@ export function VerseCard({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.14 }}
-                    className="absolute left-1/2 top-full z-30 mt-2 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card p-1.5 shadow-xl"
+                    className="absolute right-0 top-full z-30 mt-2 flex items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card p-1.5 shadow-xl"
                   >
                     {(Object.keys(HIGHLIGHTS) as HighlightColor[]).map((c) => (
                       <button
@@ -686,7 +634,7 @@ export function VerseCard({
                       <button
                         type="button"
                         onClick={() => {
-                          onHighlight(highlight); // same colour toggles it off
+                          onHighlight(highlight);
                           setPickerOpen(false);
                         }}
                         className="flex h-7 w-7 items-center justify-center rounded-full border border-dharma-border text-dharma-muted hover:text-dharma-text"
@@ -701,33 +649,37 @@ export function VerseCard({
               </AnimatePresence>
             </div>
 
-            <button
-              type="button"
-              onClick={() => (editingNote ? setEditingNote(false) : openNoteEditor())}
-              className={`${iconButton} ${note ? '!border-indigo-300 !bg-indigo-50 !text-indigo-700 dark:!bg-indigo-500/15 dark:!text-indigo-300' : ''}`}
-              aria-expanded={editingNote}
-              aria-label={note ? 'नोट संपादित करें (Edit note)' : 'नोट लिखें (Add a note)'}
-              title={note ? 'नोट संपादित करें' : 'नोट लिखें'}
-            >
-              <StickyNote className="h-4 w-4" />
-            </button>
-            <span className="shrink-0 [&>button]:h-11 [&>button]:w-11 lg:[&>button]:h-9 lg:[&>button]:w-9">
-              <ShareVerseButton
-                scriptureTitle={scriptureTitle}
-                chapterTitle={chapterTitle}
-                verseLabel={verseLabel}
-                sanskrit={v.sanskrit}
-                transliteration={v.transliteration}
-                hindi={v.hindi}
-                translation={v.translation}
-                coreShift={literaryMeta.isCurated ? literaryMeta.coreShiftHi || literaryMeta.coreShiftEn : undefined}
-                verseUrl={shareVerseUrl(SITE_URL, scriptureId, chapterId, v.number)}
-              />
-            </span>
+            {/* ActionMenu overflow */}
             <ActionMenu
               label="और विकल्प · More actions"
               triggerClassName={iconButton}
               items={[
+                {
+                  key: 'note',
+                  label: note ? 'नोट संपादित करें · Edit note' : 'नोट लिखें · Add note',
+                  icon: <StickyNote className="h-4 w-4" />,
+                  onSelect: () => (editingNote ? setEditingNote(false) : openNoteEditor()),
+                },
+                {
+                  key: 'highlight',
+                  label: highlight ? 'हाइलाइट बदलें या हटाएं · Highlight' : 'हाइलाइट करें · Highlight',
+                  icon: <Highlighter className="h-4 w-4" />,
+                  onSelect: () => setPickerOpen((o) => !o),
+                },
+                {
+                  key: 'collection',
+                  label: inCollectionCount && inCollectionCount > 0 ? `संग्रह में सुरक्षित (${inCollectionCount})` : 'संग्रह में जोड़ें · Add to collection',
+                  icon: inCollectionCount && inCollectionCount > 0 ? <FolderCheck className="h-4 w-4" /> : <FolderPlus className="h-4 w-4" />,
+                  onSelect: onAddToCollection ?? (() => {}),
+                  hidden: !onAddToCollection,
+                },
+                {
+                  key: 'sandhi',
+                  label: isSandhiSplit ? 'संयुक्त श्लोक दृश्य · Standard view' : 'पदच्छेद विच्छेद दृश्य · Split view',
+                  icon: <ScrollText className="h-4 w-4" />,
+                  onSelect: () => setIsSandhiSplit(!isSandhiSplit),
+                  hidden: !hasSplitData,
+                },
                 {
                   key: 'copy',
                   label: copied ? 'कॉपी हो गया · Copied' : 'उद्धरण सहित कॉपी · Copy with citation',
@@ -827,9 +779,9 @@ export function VerseCard({
                   return (
                     <span
                       key={i}
-                      className={`block rounded-xl px-2.5 py-1 -mx-2.5 transition-colors duration-200 ${
+                      className={`block rounded-xl px-3 py-1.5 -mx-3 transition-all duration-300 ${
                         isLineActive
-                          ? 'bg-amber-500/20 text-amber-950 dark:text-amber-100 ring-1 ring-amber-400/50 shadow-xs font-medium'
+                          ? 'bg-amber-500/15 text-amber-950 dark:text-amber-100 ring-1 ring-amber-400/50 font-medium'
                           : ''
                       }`}
                     >
@@ -855,33 +807,7 @@ export function VerseCard({
           </div>
         )}
 
-        {/* ── मर्म: the reviewed one-line core shift, unless the curated मर्म block below covers it ── */}
-        {insight?.marma && !chantingMode && !(literaryMeta.isCurated && depth !== 'read') && (
-          <figure className="mt-5 border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
-            <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
-              <span lang="hi">मर्म</span>
-              <span aria-hidden="true">·</span>
-              <span lang="en">The Core Shift</span>
-              <ContentLabelBadge kind="reflection" />
-            </figcaption>
-            <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text md:text-xl">
-              {insight.marma}
-            </blockquote>
-          </figure>
-        )}
 
-        {versePageHref && (
-          <div className="mt-3 flex items-center justify-between">
-            <Link
-              href={versePageHref}
-              className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-saffron-200/80 bg-saffron-50/70 px-3 py-2 text-xs font-semibold text-saffron-800 transition hover:border-saffron-300 hover:bg-saffron-100 dark:border-saffron-900/60 dark:bg-saffron-950/40 dark:text-saffron-300 lg:min-h-0 lg:py-1"
-            >
-              <Compass className="h-3.5 w-3.5 text-saffron-600 dark:text-saffron-400" aria-hidden="true" />
-              <span>विस्तृत श्लोक विश्लेषण व संदर्भ</span>
-              <span aria-hidden="true">→</span>
-            </Link>
-          </div>
-        )}
 
         {/* ── Word-by-word meaning (पदच्छेद एवं शब्दार्थ) ─────── */}
         {v.wordMeaning && !chantingMode && depth === 'study' && (
@@ -1029,273 +955,328 @@ export function VerseCard({
         )}
 
         {!chantingMode && (
-          <>
-            {/* ── The Core Shift (मर्म · In One Breath) ── */}
-            {literaryMeta.isCurated && depth !== 'read' && (
-              <>
-            <div className="mt-5 rounded-2xl border border-amber-200/90 bg-gradient-to-r from-amber-50/95 via-orange-50/70 to-amber-50/95 p-4.5 sm:p-5 dark:border-amber-900/50 dark:from-amber-950/40 dark:via-orange-950/20 dark:to-amber-950/40 shadow-2xs">
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-                <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-amber-800 dark:text-amber-300">
-                  <Sparkles className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" aria-hidden="true" />
-                  मर्म · In One Breath
-                </p>
-                <div className="flex flex-wrap items-center gap-1.5">
-                  {literaryMeta.situationalMoments.map((m) => (
-                    <span
-                      key={m.id}
-                      title={m.descriptionEn}
-                      className="inline-flex items-center gap-1 rounded-full border border-amber-300/70 bg-white/80 px-2.5 py-0.5 text-[11px] font-medium text-amber-950 dark:border-amber-800/60 dark:bg-amber-900/40 dark:text-amber-200"
-                    >
-                      <span>{m.emoji}</span>
-                      <span>{m.labelHi}</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <p className="font-serif italic text-base sm:text-lg font-bold leading-relaxed text-amber-950 dark:text-amber-100">
-                &ldquo;{literaryMeta.coreShiftHi}&rdquo;
-              </p>
-              {literaryMeta.coreShiftEn && (
-                <p className="font-serif text-xs sm:text-sm text-amber-900/85 dark:text-amber-300/80 mt-1.5 font-normal">
-                  {literaryMeta.coreShiftEn}
-                </p>
-              )}
-            </div>
-              <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">{literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}</p>
-              </>
-            )}
+          <div className="sacred-flow-wrap mt-5" data-reveal="3">
+            {/* Dialogue context for the verse above; renders nothing without dialogue data. */}
+            <SamvadaStrip scriptureId={scriptureId} chapterId={chapterId} verseNumber={v.number} />
 
-            {/* ── Meaning tabs ──────────────────────────────── */}
-            {tabs.length > 0 && activeTab && (
-              <div className="mt-5">
-                {tabs.length > 1 && (
-                  <div
-                    role="tablist"
-                    aria-label="भावार्थ, व्याख्या, विज्ञान और व्यावहारिक जीवन"
-                    aria-orientation="horizontal"
-                    className="relative mb-4 flex w-full max-w-full gap-1 overflow-x-auto rounded-full border border-dharma-border/70 bg-dharma-bg/70 p-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                  >
-                    {tabs.map((tab, i) => {
-                      const selected = tab.id === activeTab;
-                      const Icon = tab.icon;
-                      return (
-                        <button
-                          key={tab.id}
-                          id={`${tabsId}-tab-${tab.id}`}
-                          type="button"
-                          role="tab"
-                          aria-selected={selected}
-                          aria-controls={`${tabsId}-panel`}
-                          tabIndex={selected ? 0 : -1}
-                          onClick={() => setChosenTab(tab.id)}
-                          onKeyDown={(e) => onTabKeyDown(e, i)}
-                          className={`relative inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-full px-3 py-2 text-[11px] font-bold transition-colors sm:px-3.5 sm:text-xs ${
-                            selected ? 'text-white' : 'text-dharma-muted hover:text-dharma-text'
-                          }`}
+            {/* ── Arth: the literal meaning, always first after the verse ── */}
+            {showArth && (
+              <SacredSection id={`verse-${v.number}-arth`} section="arth">
+              <div className="space-y-3.5">
+                {showHindi && (
+                  <div className={`rounded-2xl border p-4.5 sm:p-5 shadow-2xs transition-all duration-300 ${
+                    isReciting && activeTranslationLang === 'hi'
+                      ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
+                      : 'border-dharma-border/70 bg-dharma-card-soft/70'
+                  }`}>
+                    <div className="mb-2 flex items-center justify-between gap-2">
+                      <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                        {v.hindiRange
+                          ? `श्लोक ${toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिंदी अनुवाद · Hindi Translation`
+                          : 'हिंदी अनुवाद · Hindi Translation'}
+                      </p>
+                      <ContentLabelBadge kind="literal" />
+                    </div>
+                    {!v.hindi && v.hindiSeeVerse != null && (
+                      <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-muted">
+                        इस श्लोक का अर्थ श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
+                        <a href={`#verse-${v.hindiSeeVerse}`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                          देखें श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} ↑
+                        </a>
+                      </p>
+                    )}
+                    <p lang="hi" className={`font-devanagari ${translationFontSizeClass} text-dharma-text`}>
+                      {v.hindi && <GlossaryText text={v.hindi} />}
+                      {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
+                        <span className="ml-2 align-middle"><DraftBadge lang="hi" /></span>
+                      )}
+                      {v.hindiSource === 'ai' && (
+                        <span
+                          className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
+                          title="संस्कृत से मशीन-अनुवादित; विद्वत् अनुवाद नहीं"
                         >
-                          {selected && (
-                            <motion.span
-                              layoutId={`${tabsId}-pill`}
-                              className="absolute inset-0 rounded-full bg-gradient-to-r from-saffron-600 to-amber-500 shadow-md"
-                              transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 480, damping: 36 }}
-                            />
-                          )}
-                          <Icon className="relative h-3.5 w-3.5" aria-hidden="true" />
-                          <span className="relative">{tab.label}</span>
-                        </button>
-                      );
-                    })}
+                          AI अनुवाद
+                        </span>
+                      )}
+                    </p>
                   </div>
                 )}
 
-                {/* Third in the reveal sequence; a wrapper, so the CSS reveal and framer's tab-switch fade never
-                    animate the same node. */}
-                <div data-reveal="3">
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={activeTab}
-                    id={`${tabsId}-panel`}
-                    role={tabs.length > 1 ? 'tabpanel' : undefined}
-                    aria-labelledby={tabs.length > 1 ? `${tabsId}-tab-${activeTab}` : undefined}
-                    initial={reduce ? false : { opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={reduce ? undefined : { opacity: 0, y: -4 }}
-                    transition={{ duration: 0.18 }}
-                    className={`space-y-4 rounded-2xl transition-all duration-300 ${
-                      ''
-                    }`}
-                  >
-                    {activeTab === 'meaning' && (
-                      <div className="space-y-4">
-                        {showHindi && (
-                          <div className={`rounded-2xl border p-4 shadow-2xs transition-all duration-300 ${
-                            isReciting && activeTranslationLang === 'hi'
-                              ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
-                              : 'border-dharma-border/70 bg-dharma-card-soft/70'
-                          }`}>
-                            <div className="mb-2 flex items-center justify-between gap-2">
-                              <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                                {v.hindiRange
-                                  ? `श्लोक ${toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिंदी अनुवाद · Hindi for verses ${v.hindiRange.replace('-', '–')}`
-                                  : 'हिंदी अनुवाद · Hindi Translation'}
-                              </p>
-                              <ContentLabelBadge kind="literal" />
-                            </div>
-                            {!v.hindi && v.hindiSeeVerse != null && (
-                              // The edition translates this verse together with earlier ones; the passage is stored once.
-                              <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-muted">
-                                इस श्लोक का अर्थ श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
-                                <a href={`#verse-${v.hindiSeeVerse}`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
-                                  देखें श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} ↑
-                                </a>
-                              </p>
-                            )}
-                            <p lang="hi" className={`font-devanagari ${translationFontSizeClass} text-dharma-text`}>
-                              {v.hindi && <GlossaryText text={v.hindi} />}
-                              {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
-                                <span className="ml-2 align-middle"><DraftBadge lang="hi" /></span>
-                              )}
-                              {v.hindiSource === 'ai' && (
-                                <span
-                                  className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
-                                  title="संस्कृत से मशीन-अनुवादित; विद्वत् अनुवाद नहीं"
-                                >
-                                  AI अनुवाद
-                                </span>
-                              )}
-                            </p>
-                          </div>
-                        )}
-                        {showEnglish && (
-                          <div className={`rounded-2xl border p-4 shadow-2xs transition-all duration-300 ${
-                            isReciting && activeTranslationLang === 'en'
-                              ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
-                              : 'border-dharma-border/70 bg-dharma-card/70'
-                          }`}>
-                            <div className="mb-2 flex items-center justify-between gap-2">
-                              <p lang="en" className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                                English Translation
-                              </p>
-                              <ContentLabelBadge kind="literal" />
-                            </div>
-                            <p lang="en" className={`font-serif ${translationFontSizeClass} text-dharma-text`}>
-                              {v.translation}
-                              {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
-                                <span className="ml-2 align-middle"><DraftBadge lang="en" /></span>
-                              )}
-                              {v.translationSource === 'ai' && (
-                                <span
-                                  className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
-                                  title="Machine-translated from the Sanskrit; not a scholarly translation"
-                                >
-                                  AI translation
-                                </span>
-                              )}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    {activeTab === 'meaning' && (
-                      <SamvadaStrip scriptureId={scriptureId} chapterId={chapterId} verseNumber={v.number} />
-                    )}
-
-                    {activeTab === 'explain' && (
-                      <div className="space-y-4">
-                        {vyakhya && (
-                          <div className="rounded-2xl border border-amber-200/70 bg-amber-50/40 p-4.5 shadow-2xs dark:border-amber-900/40 dark:bg-amber-950/20">
-                            <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
-                              <p lang="hi" className="font-devanagari text-sm font-bold text-saffron-800 dark:text-saffron-300">व्याख्या</p>
-                              <ContentLabelBadge kind="explanation" />
-                              {meaning.editorial && <DraftBadge lang="hi" />}
-                              {meaning.isAi && (
-                                <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300" title={`${AI_COMMENTARY_LABEL.detailHi} ${AI_COMMENTARY_LABEL.detail}`}>
-                                  <Sparkles className="h-3 w-3" aria-hidden="true" />
-                                  {AI_COMMENTARY_LABEL.hi}
-                                </span>
-                              )}
-                            </div>
-                            <p lang="hi" className="font-devanagari text-sm leading-loose text-dharma-text md:text-base">{vyakhya}</p>
-                          </div>
-                        )}
-                        {commentary && (
-                          <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4.5 shadow-2xs">
-                            <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
-                              <p className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">Commentary &amp; Explanation</p>
-                              <ContentLabelBadge kind="explanation" />
-                            </div>
-                            <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text md:text-base">{commentary}</p>
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    {activeTab === 'science' && science && (
-                      <div className="rounded-2xl border border-indigo-200/70 bg-indigo-50/40 p-4.5 dark:border-indigo-900/40 dark:bg-indigo-950/20 shadow-2xs">
-                        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                          <p className="text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
-                            {meaning.editorial ? 'विवेकपूर्ण आधुनिक परिप्रेक्ष्य · Responsible Modern Perspective' : 'शोध व आधुनिक संदर्भ · Research & Context'}
-                          </p>
-                          {meaning.editorial ? (
-                            <span className="flex flex-wrap items-center gap-1.5">
-                              {VIJNANA_CATEGORIES[meaning.editorial.vijnanaCategory] && (
-                                <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold text-indigo-700 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-300">
-                                  {VIJNANA_CATEGORIES[meaning.editorial.vijnanaCategory]}
-                                </span>
-                              )}
-                              <span className="rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-2 py-0.5 text-[10px] font-semibold text-dharma-muted">
-                                संपादकीय अवलोकन · Editorial observation
-                              </span>
-                              <DraftBadge lang="hi" />
-                            </span>
-                          ) : (
-                            <span className="flex flex-wrap items-center gap-1.5">
-                              <ContentLabelBadge kind="research" />
-                              {meaning.scienceIsAi && (
-                                <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300" title={`${AI_COMMENTARY_LABEL.detailHi} ${AI_COMMENTARY_LABEL.detail}`}>
-                                  <Sparkles className="h-3 w-3" aria-hidden="true" />
-                                  {AI_COMMENTARY_LABEL.hi}
-                                </span>
-                              )}
-                            </span>
-                          )}
-                        </div>
-                        <p
-                          lang={scienceIsHi ? 'hi' : 'en'}
-                          className={`text-sm leading-relaxed text-dharma-text md:text-base ${scienceIsHi ? 'font-devanagari leading-loose' : ''}`}
+                {showEnglish && (
+                  <div className={`rounded-2xl border p-4.5 sm:p-5 shadow-2xs transition-all duration-300 ${
+                    isReciting && activeTranslationLang === 'en'
+                      ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
+                      : 'border-dharma-border/70 bg-dharma-card/70'
+                  }`}>
+                    <div className="mb-2 flex items-center justify-between gap-2">
+                      <p lang="en" className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                        English Translation
+                      </p>
+                      <ContentLabelBadge kind="literal" />
+                    </div>
+                    <p lang="en" className={`font-serif ${translationFontSizeClass} text-dharma-text`}>
+                      {v.translation}
+                      {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
+                        <span className="ml-2 align-middle"><DraftBadge lang="en" /></span>
+                      )}
+                      {v.translationSource === 'ai' && (
+                        <span
+                          className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
+                          title={STUDY_TRANSLATION_SHORT.detail}
                         >
-                          {science}
-                        </p>
-                      </div>
-                    )}
-                    {activeTab === 'lesson' && lesson && (
-                      <div className="rounded-2xl border border-amber-300/70 bg-gradient-to-br from-amber-50/90 via-orange-50/60 to-transparent p-4.5 shadow-2xs dark:border-amber-400/25 dark:from-amber-500/10 dark:via-orange-500/5">
-                        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                          <p className="flex items-center gap-1.5 text-xs font-bold text-amber-700 dark:text-amber-300">
-                            <Lightbulb className="h-3.5 w-3.5" aria-hidden="true" />
-                            {lessonIsHi ? 'व्यावहारिक जीवन' : 'Modern Context'}
-                          </p>
-                          <span className="flex items-center gap-1.5">
-                            <ContentLabelBadge kind="reflection" />
-                            {meaning.editorial && <DraftBadge lang="hi" />}
+                          {STUDY_TRANSLATION_SHORT.en}
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                )}
+              </div>
+              </SacredSection>
+            )}
+
+            {/* ── Vyakhya → Modern Context → Reflection: one connected flow ── */}
+            {(showVyakhya || showModern || showReflection) && (
+              <ConnectedFlow label="व्याख्या से आधुनिक जीवन तक · From explanation to modern life">
+              {showVyakhya && (
+              <SacredSection id={`verse-${v.number}-vyakhya`} section="vyakhya">
+              <div className="space-y-4">
+                {/* Vyakhya: What does this teaching mean? */}
+                {vyakhya && (
+                  <div className="rounded-2xl border border-amber-200/70 bg-amber-50/40 p-4.5 sm:p-5 shadow-2xs dark:border-amber-900/40 dark:bg-amber-950/20">
+                    <div className="mb-2.5 flex flex-wrap items-center justify-end gap-1.5">
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <ContentLabelBadge kind="explanation" />
+                        {meaning.editorial && <DraftBadge lang="hi" />}
+                        {meaning.isAi && (
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300" title={`${EDITORIAL_DRAFT_LABEL.detailHi} ${EDITORIAL_DRAFT_LABEL.detail}`}>
+                            <Sparkles className="h-3 w-3" aria-hidden="true" />
+                            {EDITORIAL_DRAFT_LABEL.hi}
                           </span>
-                        </div>
-                        <ModernContextBlock
-                          content={lesson}
-                          lang={lessonIsHi ? 'hi' : 'en'}
-                          className={lessonIsHi ? 'leading-loose' : ''}
-                        />
+                        )}
                       </div>
-                    )}
-                  </motion.div>
-                </AnimatePresence>
+                    </div>
+                    <p lang="hi" className="font-devanagari text-sm leading-loose text-dharma-text md:text-base">
+                      {vyakhya}
+                    </p>
+                  </div>
+                )}
+
+                {commentary && (
+                  <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4.5 sm:p-5 shadow-2xs">
+                    <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
+                      <p className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">Commentary &amp; Explanation</p>
+                      <ContentLabelBadge kind="explanation" />
+                    </div>
+                    <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text md:text-base">{commentary}</p>
+                  </div>
+                )}
+
+                {/* What the verse does NOT mean belongs to Vyakhya: it answers "what it means" by clearing the common misreading. */}
+                {literaryMeta.isCurated && depth !== 'read' && (
+                  <Collapsible title={<><span lang="hi" className="font-devanagari">सामान्य भ्रम और वास्तविक दृष्टि</span> · Common misreading &amp; deeper truth</>}>
+                    <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="rounded-2xl border border-rose-200/80 bg-rose-50/60 p-4 dark:border-rose-900/40 dark:bg-rose-950/20 shadow-2xs">
+                        <p className="text-[11px] font-bold text-rose-800 dark:text-rose-300 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
+                          <span>❌</span> सामान्य भ्रम (What It Does NOT Mean)
+                        </p>
+                        <p lang="hi" className="font-devanagari text-xs sm:text-sm text-rose-950 dark:text-rose-100 leading-relaxed">
+                          {literaryMeta.misreadingHi}
+                        </p>
+                        {literaryMeta.misreadingEn && (
+                          <p className="text-[11px] text-rose-800/80 dark:text-rose-300/70 italic mt-1 font-serif">
+                            &ldquo;{literaryMeta.misreadingEn}&rdquo;
+                          </p>
+                        )}
+                      </div>
+                      <div className="rounded-2xl border border-emerald-200/80 bg-emerald-50/60 p-4 dark:border-emerald-900/40 dark:bg-emerald-950/20 shadow-2xs">
+                        <p className="text-[11px] font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
+                          <span>✓</span> वास्तविक दृष्टि (The Deeper Truth)
+                        </p>
+                        <p lang="hi" className="font-devanagari text-xs sm:text-sm text-emerald-950 dark:text-emerald-100 leading-relaxed font-medium">
+                          {literaryMeta.deeperTruthHi}
+                        </p>
+                        {literaryMeta.deeperTruthEn && (
+                          <p className="text-[11px] text-emerald-800/80 dark:text-emerald-300/70 mt-1 font-serif">
+                            {literaryMeta.deeperTruthEn}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </Collapsible>
+                )}
+              </div>
+              </SacredSection>
+              )}
+
+              {/* ── Modern Context: how the teaching appears in life today ── */}
+              {showModern && (
+              <SacredSection id={`verse-${v.number}-modern`} section="modern">
+              <div className="space-y-4">
+                {showScience && science && (
+                  <div className="rounded-2xl border border-dharma-border bg-dharma-card-soft p-4 sm:p-5 shadow-2xs">
+                    <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                      <p className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                        {meaning.editorial ? 'विवेकपूर्ण आधुनिक परिप्रेक्ष्य · Responsible Modern Perspective' : 'आधुनिक परिप्रेक्ष्य · Modern perspective'}
+                      </p>
+                  {meaning.editorial ? (
+                    <span className="flex flex-wrap items-center gap-1.5">
+                      {VIJNANA_CATEGORIES[meaning.editorial.vijnanaCategory] && (
+                        <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold text-indigo-700 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-300">
+                          {VIJNANA_CATEGORIES[meaning.editorial.vijnanaCategory]}
+                        </span>
+                      )}
+                      <span className="rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-2 py-0.5 text-[10px] font-semibold text-dharma-muted">
+                        संपादकीय अवलोकन · Editorial observation
+                      </span>
+                      <DraftBadge lang="hi" />
+                    </span>
+                  ) : (
+                    <span className="flex flex-wrap items-center gap-1.5">
+                      <ContentLabelBadge kind="research" />
+                      {meaning.scienceIsAi && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300" title={`${EDITORIAL_DRAFT_LABEL.detailHi} ${EDITORIAL_DRAFT_LABEL.detail}`}>
+                          <Sparkles className="h-3 w-3" aria-hidden="true" />
+                          {EDITORIAL_DRAFT_LABEL.hi}
+                        </span>
+                      )}
+                    </span>
+                  )}
                 </div>
+                <p
+                  lang={scienceIsHi ? 'hi' : 'en'}
+                  className={`text-sm leading-relaxed text-dharma-text md:text-base ${scienceIsHi ? 'font-devanagari leading-loose' : ''}`}
+                >
+                  {science}
+                </p>
+                  </div>
+                )}
+                {showLessonModern && lesson && modernParsed && (
+                  <div>
+                    <div className="mb-2 flex flex-wrap items-center justify-end gap-1.5">
+                      <ContentLabelBadge kind="reflection" />
+                      {meaning.editorial && <DraftBadge lang="hi" />}
+                    </div>
+                    <ModernContextBody
+                      parsed={modernParsed}
+                      lang={lessonIsHi ? 'hi' : 'en'}
+                      className={lessonIsHi ? 'leading-loose' : ''}
+                    />
+                  </div>
+                )}
+              </div>
+              </SacredSection>
+              )}
+
+              {/* ── Reflection: one question to sit with, then the core shift ── */}
+              {showReflection && (
+              <SacredSection id={`verse-${v.number}-reflection`} section="reflection">
+                {layers.commentary && depth !== 'read' && modernParsed?.hasStructuredFormat && modernParsed.reflectionQuestion && (
+                  <ReflectionBody
+                    question={modernParsed.reflectionQuestion}
+                    lang={lessonIsHi ? 'hi' : 'en'}
+                  />
+                )}
+            {literaryMeta.isCurated && depth !== 'read' ? (
+              <div className="rounded-2xl border border-dharma-border bg-dharma-card-soft p-4 sm:p-5 shadow-2xs">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                  <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-amber-800 dark:text-amber-300">
+                    <Sparkles className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" aria-hidden="true" />
+                    मर्म · In One Breath
+                  </p>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    {literaryMeta.situationalMoments.map((m) => (
+                      <span
+                        key={m.id}
+                        title={m.descriptionEn}
+                        className="inline-flex items-center gap-1 rounded-full border border-amber-300/70 bg-white/80 px-2.5 py-0.5 text-[11px] font-medium text-amber-950 dark:border-amber-800/60 dark:bg-amber-900/40 dark:text-amber-200"
+                      >
+                        <span>{m.emoji}</span>
+                        <span>{m.labelHi}</span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <p className="font-serif italic text-base sm:text-lg font-bold leading-relaxed text-amber-950 dark:text-amber-100">
+                  &ldquo;{literaryMeta.coreShiftHi}&rdquo;
+                </p>
+                {literaryMeta.coreShiftEn && (
+                  <p className="font-serif text-xs sm:text-sm text-amber-900/85 dark:text-amber-300/80 mt-1.5 font-normal">
+                    {literaryMeta.coreShiftEn}
+                  </p>
+                )}
+                <p className="mt-2.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">
+                  {literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}
+                </p>
+              </div>
+            ) : (
+              insight?.marma && depth !== 'read' && (
+                <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
+                  <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
+                    <span lang="hi">मर्म</span>
+                    <span aria-hidden="true">·</span>
+                    <span lang="en">The Core Shift</span>
+                    <ContentLabelBadge kind="reflection" />
+                  </figcaption>
+                  <blockquote lang="en" className="font-serif text-base sm:text-lg font-semibold leading-snug text-dharma-text">
+                    {insight.marma}
+                  </blockquote>
+                </figure>
+              )
+            )}
+              </SacredSection>
+              )}
+              </ConnectedFlow>
+            )}
+
+            {/* ── Related Wisdom: approved links, life situations, keywords ── */}
+            {showRelated && (
+            <SacredSection id={`verse-${v.number}-related`} section="related">
+            {/* Life situations */}
+            {insight && insight.situations.length > 0 && depth !== 'read' && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span lang="hi" className="mr-1 text-[11px] font-semibold text-dharma-muted">जीवन प्रसंग:</span>
+                {insight.situations.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={s.href}
+                    className="inline-flex items-center gap-1 rounded-full border border-indigo-200/80 bg-indigo-50/70 px-2.5 py-0.5 text-[11px] font-semibold text-indigo-800 transition hover:border-indigo-400 hover:bg-indigo-100 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-200 dark:hover:bg-indigo-500/20"
+                  >
+                    <span lang="en">{s.en}</span>
+                    <span aria-hidden="true" className="opacity-50">·</span>
+                    <span lang="hi">{s.hi}</span>
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {/* Keywords */}
+            {depth === 'study' && v.keywords && v.keywords.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-[11px] font-medium text-dharma-muted/80 mr-1">संबंधित:</span>
+                {v.keywords.map((k) => {
+                  const target = resolveKeywordTarget(k);
+                  return (
+                    <Link
+                      key={k}
+                      href={target.href}
+                      onClick={(e) => {
+                        if (onOpenSvadhyaya) {
+                          e.preventDefault();
+                          onOpenSvadhyaya('concept', k.replace(/^#+/, '').toLowerCase());
+                        }
+                      }}
+                      title={target.tooltip}
+                      className="inline-flex items-center gap-1 rounded-full border border-saffron-200/80 bg-saffron-50/70 px-2.5 py-0.5 text-[11px] font-semibold text-saffron-800 transition-all hover:border-saffron-400 hover:bg-saffron-100 hover:text-saffron-900 hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0 dark:border-saffron-400/25 dark:bg-saffron-500/10 dark:text-saffron-200 dark:hover:bg-saffron-500/20"
+                    >
+                      <span>#{k.replace(/^#+/, '')}</span>
+                    </Link>
+                  );
+                })}
               </div>
             )}
 
             {relatedTeachings && relatedTeachings.length > 0 && (
-              <details className="mt-4 rounded-2xl border border-dharma-border/70 bg-dharma-card/50">
+              <details className="rounded-2xl border border-dharma-border/70 bg-dharma-card/50">
                 <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-4 py-2 text-sm font-semibold text-dharma-text outline-none transition-colors hover:bg-dharma-card focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 focus-visible:ring-offset-dharma-bg [&::-webkit-details-marker]:hidden">
                   <span><span lang="hi" className="font-devanagari">संबंधित उपदेश</span> · Related teachings</span>
                   <span className="shrink-0 text-xs font-medium text-dharma-muted">{Math.min(relatedTeachings.length, 3)} links</span>
@@ -1323,88 +1304,13 @@ export function VerseCard({
                         <p className="mt-1 text-xs leading-relaxed text-dharma-muted">
                           <span className="font-semibold">Why linked:</span> {connection.reason}
                         </p>
-                        <p className="mt-1 text-[10px] font-medium text-dharma-muted">Approved editorial connection · Not scripture</p>
                       </li>
                     ))}
                   </ul>
                 </div>
               </details>
             )}
-
-            {/* ── What This Verse Does NOT Mean (भ्रम निवारण) ── */}
-            {literaryMeta.isCurated && depth !== 'read' && (
-              <Collapsible className="mt-4.5" title={<><span lang="hi" className="font-devanagari">सामान्य भ्रम और वास्तविक दृष्टि</span> · Common misreading</>}>
-            <div className="mt-4.5 grid grid-cols-1 md:grid-cols-2 gap-3">
-              {/* Misreading Box */}
-              <div className="rounded-2xl border border-rose-200/80 bg-rose-50/60 p-4 dark:border-rose-900/40 dark:bg-rose-950/20 shadow-2xs">
-                <p className="text-[11px] font-bold text-rose-800 dark:text-rose-300 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
-                  <span>❌</span> सामान्य भ्रम (What It Does NOT Mean)
-                </p>
-                <p lang="hi" className="font-devanagari text-xs sm:text-sm text-rose-950 dark:text-rose-100 leading-relaxed">
-                  {literaryMeta.misreadingHi}
-                </p>
-                <p className="text-[11px] text-rose-800/80 dark:text-rose-300/70 italic mt-1 font-serif">
-                  &ldquo;{literaryMeta.misreadingEn}&rdquo;
-                </p>
-              </div>
-
-              {/* Deeper Truth Box */}
-              <div className="rounded-2xl border border-emerald-200/80 bg-emerald-50/60 p-4 dark:border-emerald-900/40 dark:bg-emerald-950/20 shadow-2xs">
-                <p className="text-[11px] font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
-                  <span>✓</span> वास्तविक दृष्टि (The Deeper Truth)
-                </p>
-                <p lang="hi" className="font-devanagari text-xs sm:text-sm text-emerald-950 dark:text-emerald-100 leading-relaxed font-medium">
-                  {literaryMeta.deeperTruthHi}
-                </p>
-                <p className="text-[11px] text-emerald-800/80 dark:text-emerald-300/70 mt-1 font-serif">
-                  {literaryMeta.deeperTruthEn}
-                </p>
-              </div>
-            </div>
-              <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">{literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}</p>
-              </Collapsible>
-            )}
-
-            {insight && insight.situations.length > 0 && depth !== 'read' && (
-              <div className="mt-4 flex flex-wrap items-center gap-1.5">
-                <span lang="hi" className="mr-1 text-[11px] font-semibold text-dharma-muted">जीवन प्रसंग:</span>
-                {insight.situations.map((s) => (
-                  <Link
-                    key={s.slug}
-                    href={s.href}
-                    className="inline-flex items-center gap-1 rounded-full border border-indigo-200/80 bg-indigo-50/70 px-2.5 py-0.5 text-[11px] font-semibold text-indigo-800 transition hover:border-indigo-400 hover:bg-indigo-100 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-200 dark:hover:bg-indigo-500/20"
-                  >
-                    <span lang="en">{s.en}</span>
-                    <span aria-hidden="true" className="opacity-50">·</span>
-                    <span lang="hi">{s.hi}</span>
-                  </Link>
-                ))}
-              </div>
-            )}
-
-            {depth === 'study' && v.keywords && v.keywords.length > 0 && (
-              <div className="mt-4 flex flex-wrap items-center gap-1.5">
-                <span className="text-[11px] font-medium text-dharma-muted/80 mr-1">संबंधित:</span>
-                {v.keywords.map((k) => {
-                  const target = resolveKeywordTarget(k);
-                  return (
-                    <Link
-                      key={k}
-                      href={target.href}
-                      onClick={(e) => {
-                        if (onOpenSvadhyaya) {
-                          e.preventDefault();
-                          onOpenSvadhyaya('concept', k.replace(/^#+/, '').toLowerCase());
-                        }
-                      }}
-                      title={target.tooltip}
-                      className="inline-flex items-center gap-1 rounded-full border border-saffron-200/80 bg-saffron-50/70 px-2.5 py-0.5 text-[11px] font-semibold text-saffron-800 transition-all hover:border-saffron-400 hover:bg-saffron-100 hover:text-saffron-900 hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0 dark:border-saffron-400/25 dark:bg-saffron-500/10 dark:text-saffron-200 dark:hover:bg-saffron-500/20"
-                    >
-                      <span>#{k.replace(/^#+/, '')}</span>
-                    </Link>
-                  );
-                })}
-              </div>
+            </SacredSection>
             )}
 
             {!hasMeaning && (
@@ -1419,7 +1325,21 @@ export function VerseCard({
                 </button>
               </div>
             )}
-          </>
+
+            {/* ── 7. Quiet Footnote Link ───────────────────────── */}
+            {versePageHref && (
+              <div className="mt-6 flex items-center justify-end border-t border-dharma-border/50 pt-3">
+                <Link
+                  href={versePageHref}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-dharma-muted transition hover:text-saffron-700 dark:hover:text-saffron-400"
+                >
+                  <Compass className="h-3.5 w-3.5" aria-hidden="true" />
+                  <span>विस्तृत श्लोक विश्लेषण व संदर्भ</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            )}
+          </div>
         )}
       </div>
 

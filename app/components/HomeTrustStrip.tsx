@@ -21,6 +21,9 @@ export function HomeTrustStrip() {
           <Link href="/methodology/" className="inline-flex min-h-[44px] items-center text-saffron-800 hover:underline dark:text-saffron-300">
             Methodology
           </Link>
+          <Link href="/how-dharma-granth-works/" className="inline-flex min-h-[44px] items-center text-saffron-800 hover:underline dark:text-saffron-300">
+            How this library works
+          </Link>
         </p>
       </div>
     </section>

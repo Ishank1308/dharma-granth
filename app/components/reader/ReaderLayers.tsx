@@ -27,9 +27,10 @@ import { speakSanskritTerm } from '@/lib/sacred-soundscape';
 import type { ReaderProvenance, ReaderVerseText } from '@/lib/reader-actions';
 import type { ReaderSettings } from '@/lib/useReaderSettings';
 import type { VerseInsight } from '@/lib/verse-insights';
-import { AI_COMMENTARY_LABEL } from '@/lib/ai-labels';
+import { EDITORIAL_DRAFT_LABEL } from '@/lib/editorial-terminology';
 import { VerseTreeStructure, type VerseTreeBranch } from '@/app/components/reader/VerseTreeStructure';
-import { ModernContextBlock } from '@/app/components/ModernContextBlock';
+import { ModernContextBody, ReflectionBody, parseModernContext } from '@/app/components/ModernContextBlock';
+import { SACRED_SECTION_LABEL } from '@/lib/sacred-reading-order';
 import Link from 'next/link';
 
 /* ── Type scale: full class strings so Tailwind keeps them ──────────── */
@@ -273,7 +274,7 @@ export function ReaderLayers({
   const devLeading = DEVANAGARI_LEADING[settings.lineSpacing];
   const latinLeading = LATIN_LEADING[settings.lineSpacing];
   const tSize = TRANSLATION_SIZE[settings.translationSize];
-  const aiCommentary = p.commentaryIsAi ? <AiBadge title={AI_COMMENTARY_LABEL.detail}>{AI_COMMENTARY_LABEL.en}</AiBadge> : undefined;
+  const aiCommentary = p.commentaryIsAi ? <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</AiBadge> : undefined;
 
   const perspective = settings.perspective || 'beginner';
 
@@ -297,9 +298,16 @@ export function ReaderLayers({
   // until then the layer would just repeat the text above around an "add commentary" notice.
   const hasCommentary = (COMMENTARIES[verseKey(scriptureId, chapterId, verse.number)]?.length ?? 0) > 0;
   const showTradition = settings.showCommentary && !isQuick && !settings.liteMode && hasCommentary;
-  const hasVyakhya = settings.showCommentary && Boolean(verse.explanation);
-  const hasCommentaryLayer = settings.showCommentary && (showTradition || Boolean(verse.commentary));
-  const hasVigyan = settings.showCommentary && (Boolean(!settings.liteMode && verse.reflection) || Boolean(!isQuick && !settings.liteMode && verse.research));
+  // Sacred reading order (lib/sacred-reading-order): one Vyakhya branch carries
+  // the explanation, the English commentary and the traditional bhashya together;
+  // Modern Context carries the lesson and the research note; Reflection carries
+  // only the चिंतन प्रश्न. Gates are unchanged from the old Vigyan branch.
+  const hasVyakhya = settings.showCommentary && (Boolean(verse.explanation) || Boolean(verse.commentary) || showTradition);
+  const modernParsed = verse.reflection ? parseModernContext(verse.reflection) : null;
+  const showModernLesson = Boolean(!settings.liteMode && verse.reflection && modernParsed
+    && (!modernParsed.hasStructuredFormat || modernParsed.contextText || modernParsed.applicationText));
+  const hasModern = settings.showCommentary && (showModernLesson || Boolean(!isQuick && !settings.liteMode && verse.research));
+  const hasReflection = Boolean(settings.showCommentary && !settings.liteMode && modernParsed?.hasStructuredFormat && modernParsed.reflectionQuestion);
 
   const handleInspectPada = (pada: string) => {
     const entry = findLexiconEntry(pada);
@@ -506,16 +514,17 @@ export function ReaderLayers({
       )}
 
 
-      {/* 2–9 · The knowledge tree: अर्थ → व्याख्या → विज्ञान एवं आधुनिक उपयोग.
-          Native <details> branches, so every layer stays in the server HTML. */}
+      {/* 2–9 · The knowledge tree in sacred reading order (lib/sacred-reading-order):
+          अर्थ → व्याख्या → आधुनिक संदर्भ → चिंतन. Native <details> branches, so
+          every layer stays in the server HTML. */}
       <VerseTreeStructure
         persistent
         branches={(
           [
           hasArth && {
             id: 'arth',
-            labelHi: 'अर्थ',
-            labelEn: 'Meaning',
+            labelHi: SACRED_SECTION_LABEL.arth.hi,
+            labelEn: SACRED_SECTION_LABEL.arth.en,
             icon: ScrollText,
             defaultOpen: true,
             content: (
@@ -573,38 +582,30 @@ export function ReaderLayers({
           },
           hasVyakhya && {
             id: 'vyakhya',
-            labelHi: 'व्याख्या',
-            labelEn: 'Vyakhya',
+            labelHi: SACRED_SECTION_LABEL.vyakhya.hi,
+            labelEn: SACRED_SECTION_LABEL.vyakhya.en,
             icon: Lightbulb,
             hint: 'श्लोक का सरल हिन्दी विवेचन',
             defaultOpen: true,
             content: (
-              <Layer
-                id="layer-explanation"
-                kind="editorial"
-                title={isQuick ? 'Key Message' : 'Vyakhya (व्याख्या)'}
-                titleHi={isQuick ? 'मुख्य संदेश' : 'व्याख्या'}
-                badge={p.explanationIsAi ? <AiBadge title={AI_COMMENTARY_LABEL.detail}>{AI_COMMENTARY_LABEL.en}</AiBadge> : undefined}
-                collapsible={false}
-              >
-                <p
-                  lang={/[ऀ-ॿ]/.test(verse.explanation ?? '') ? 'hi' : 'en'}
-                  className={`whitespace-pre-line text-dharma-text ${tSize} ${/[ऀ-ॿ]/.test(verse.explanation ?? '') ? `${devLeading} font-devanagari` : `${latinLeading} font-serif`}`}
-                >
-                  {verse.explanation}
-                </p>
-              </Layer>
-            ),
-          },
-          hasCommentaryLayer && {
-            id: 'commentary',
-            labelHi: 'टीका एवं विवेचन',
-            labelEn: 'Commentary & Explanation',
-            icon: Sparkles,
-            hint: 'Commentary in English and traditional bhashya',
-            defaultOpen: true,
-            content: (
               <div className="space-y-4">
+                {verse.explanation && (
+                  <Layer
+                    id="layer-explanation"
+                    kind="editorial"
+                    title={isQuick ? 'Key Message' : 'Vyakhya (व्याख्या)'}
+                    titleHi={isQuick ? 'मुख्य संदेश' : 'व्याख्या'}
+                    badge={p.explanationIsAi ? <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</AiBadge> : undefined}
+                    collapsible={false}
+                  >
+                    <p
+                      lang={/[ऀ-ॿ]/.test(verse.explanation ?? '') ? 'hi' : 'en'}
+                      className={`whitespace-pre-line text-dharma-text ${tSize} ${/[ऀ-ॿ]/.test(verse.explanation ?? '') ? `${devLeading} font-devanagari` : `${latinLeading} font-serif`}`}
+                    >
+                      {verse.explanation}
+                    </p>
+                  </Layer>
+                )}
                 {verse.commentary && (
                   <Layer
                     id="layer-commentary"
@@ -637,34 +638,34 @@ export function ReaderLayers({
               </div>
             ),
           },
-          hasVigyan && {
-            id: 'vigyan',
-            labelHi: 'विज्ञान एवं आधुनिक उपयोग',
-            labelEn: 'Science & Modern Application',
-            icon: Atom,
-            hint: 'मनोविज्ञान, शोध और दैनिक जीवन में प्रयोग',
+          hasModern && {
+            id: 'modern',
+            labelHi: SACRED_SECTION_LABEL.modern.hi,
+            labelEn: SACRED_SECTION_LABEL.modern.en,
+            icon: Compass,
+            hint: 'आज के जीवन में प्रयोग',
             defaultOpen: true,
             content: (
               <div className="space-y-4">
                 {/* Modern reflection and research stay separate frames, never mixed into the commentary */}
-                {!settings.liteMode && verse.reflection && (
+                {showModernLesson && verse.reflection && modernParsed && (
                   <Layer
-                    id="layer-reflection"
+                    id="layer-modern"
                     kind="reflection"
-                    title={isQuick ? "Practical Action & Takeaway" : "Contemplative Reflection & Action"}
-                    titleHi={isQuick ? "दैनिक आचरण" : "आधुनिक चिंतन"}
+                    title={isQuick ? "Practical Action & Takeaway" : "Modern Context & Application"}
+                    titleHi={isQuick ? "दैनिक आचरण" : "आधुनिक संदर्भ"}
                     badge={aiCommentary}
                     collapsible={perspective === 'researcher'}
                   >
-                    <ModernContextBlock
-                      content={verse.reflection}
+                    <ModernContextBody
+                      parsed={modernParsed}
                       lang={/[ऀ-ॿ]/.test(verse.reflection) ? 'hi' : 'en'}
                       className={`${tSize} ${/[ऀ-ॿ]/.test(verse.reflection) ? devLeading : latinLeading}`}
                     />
                   </Layer>
                 )}
                 {!isQuick && !settings.liteMode && verse.research && (
-                  <Layer id="layer-research" kind="research" title="Comparative Research Note" titleHi="शोध टिप्पणी" badge={p.researchIsAi ? <AiBadge title={AI_COMMENTARY_LABEL.detail}>{AI_COMMENTARY_LABEL.en}</AiBadge> : aiCommentary} collapsible={perspective !== 'researcher'}>
+                  <Layer id="layer-research" kind="research" title="Comparative Research Note" titleHi="शोध टिप्पणी" badge={p.researchIsAi ? <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</AiBadge> : aiCommentary} collapsible={perspective !== 'researcher'}>
                     <p
                       lang={/[ऀ-ॿ]/.test(verse.research) ? 'hi' : 'en'}
                       className={`whitespace-pre-line text-dharma-text ${tSize} ${/[ऀ-ॿ]/.test(verse.research) ? devLeading : latinLeading} ${/[ऀ-ॿ]/.test(verse.research) ? 'font-devanagari' : 'font-serif'}`}
@@ -678,6 +679,30 @@ export function ReaderLayers({
                   </Layer>
                 )}
               </div>
+            ),
+          },
+          hasReflection && modernParsed?.reflectionQuestion && {
+            id: 'reflection',
+            labelHi: SACRED_SECTION_LABEL.reflection.hi,
+            labelEn: SACRED_SECTION_LABEL.reflection.en,
+            icon: Sparkles,
+            hint: 'चिंतन प्रश्न',
+            defaultOpen: true,
+            content: (
+              <Layer
+                id="layer-reflection"
+                kind="reflection"
+                title="Reflection"
+                titleHi="चिंतन प्रश्न"
+                badge={aiCommentary}
+                collapsible={false}
+              >
+                <ReflectionBody
+                  question={modernParsed.reflectionQuestion}
+                  lang={verse.reflection && /[ऀ-ॿ]/.test(verse.reflection) ? 'hi' : 'en'}
+                  className={`${tSize} ${verse.reflection && /[ऀ-ॿ]/.test(verse.reflection) ? devLeading : latinLeading}`}
+                />
+              </Layer>
             ),
           },
           ] as Array<VerseTreeBranch | false>

@@ -60,7 +60,7 @@ export class MuseSparkClient {
     this.model =
       config.model ||
       process.env.MUSE_SPARK_MODEL ||
-      'muse-spark-1.3';
+      'muse-spark-1.3-contributor';
   }
 
   get isConfigured(): boolean {
@@ -68,7 +68,7 @@ export class MuseSparkClient {
   }
 
   /**
-   * General-purpose chat completion with Muse Spark 1.3
+   * General-purpose chat completion with Muse Spark 1.3 Contributor
    */
   async chat(
     messages: ChatMessage[],
@@ -90,8 +90,8 @@ export class MuseSparkClient {
       model: this.model,
       messages,
       temperature: options.temperature ?? 0.2,
-      max_tokens: options.maxTokens ?? 4096,
-      reasoning_effort: options.reasoningEffort ?? 'low',
+      max_tokens: options.maxTokens ?? 32000,
+      reasoning_effort: options.reasoningEffort ?? 'max',
     };
 
     if (options.responseFormat?.type === 'json_object') {
@@ -144,25 +144,27 @@ export class MuseSparkClient {
     science: string;
   }> {
     const systemPrompt = `You are an erudite Vedic scholar and philosopher writing for Dharma Granth (dharmagranth.dev).
-You compose insightful, dignified commentary in high-register tatsam Hindi (Gita Press standard).
+You compose insightful, dignified commentary in clear, accessible Hindi that any regular Hindi reader can easily understand.
 
 STRICT RULES:
 1. Hindi Register:
-   - Use dignified tatsam vocabulary.
-   - Do NOT use colloquial, Urdu-Persian terms (replace तनाव with उद्वेग, शुरू with आरम्भ, पैदा with उत्पन्न, थकान with श्रान्ति, नकल with अनुकरण, याद with स्मरण, जल्दबाजी with शीघ्रता).
+   - Use simple, dignified Hindi (सरल और गरिमापूर्ण हिन्दी).
+   - Common everyday Hindi words are perfectly fine: तनाव, शुरू, याद, थकान, पैदा, नकल, जल्दबाजी — use them naturally.
+   - Do NOT use Urdu/Persian terms (replace खुदा with ईश्वर, दुआ with प्रार्थना, इंसाफ with न्याय, तसल्ली with सान्त्वना, बंदगी with उपासना, रहम with कृपा, फरमान with आदेश).
    - Address the reader respectfully as 'आप'.
+   - Sanskrit terms/verse citations are fine, but always provide their simple Hindi meaning alongside.
 2. Numerals:
    - ZERO Devanagari numerals (०, १, २, ३, ४, ५, ६, ७, ८, ९).
-   - Use standard ASCII digits 0-9 (1, 2, 3, 2026) or Hindi word forms (प्रथम, द्वितीय, एक, दो).
+   - Use standard ASCII digits 0-9 (1, 2, 3, 2026) or Hindi word forms (पहला, दूसरा, एक, दो).
 3. 4-Layer Modern Context Framework for 'lifeLesson':
-   - Layer 1: Exactly heading "### आधुनिक संदर्भ" followed by 1-2 substantial paragraphs connecting Vedic wisdom to modern cognitive science, psychology, physics, ethics, or existential challenges.
+   - Layer 1: Exactly heading "### आधुनिक संदर्भ" followed by 1-2 substantial paragraphs connecting Vedic wisdom to modern cognitive science, psychology, physics, ethics, or existential challenges. Write in simple Hindi.
    - Layer 2: Exactly heading "### आज के जीवन में प्रयोग" followed by exactly 3 bullet points in format: "- **शीर्षक (Descriptor)**: विवरण"
    - Layer 3: Exactly heading "### चिंतन प्रश्न" followed by exactly 1 thought-provoking contemplation question.
 4. Output JSON:
    {
-     "explanation": "Deep philosophical exposition in pure tatsam Hindi (200-280 words)",
+     "explanation": "Deep philosophical exposition in simple, accessible Hindi (200-280 words). Explain Sanskrit terms in plain Hindi.",
      "lifeLesson": "Structured modern context with the 3 exact headings",
-     "science": "Underlying universal cosmic/natural principle (100-150 words)"
+     "science": "Underlying universal cosmic/natural principle in simple Hindi (100-150 words)"
    }`;
 
     const userPrompt = `Scripture: ${verse.scriptureName}

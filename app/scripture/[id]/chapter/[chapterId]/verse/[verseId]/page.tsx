@@ -23,6 +23,7 @@ import { scriptureLastChanged } from '@/lib/content-dates';
 import { cleanVerseField, splitVyakhyaCommentary, verseLines } from '@/lib/verse-format';
 import { resolveVerseKnowledge } from '@/lib/knowledge-graph';
 import { TrustBadges } from '@/app/components/TrustBadges';
+import { SourceStudyNotes } from '@/app/components/SourceStudyNotes';
 import { UnderstandPanel } from '@/app/components/understand/UnderstandPanel';
 import { VerseCompletion } from '@/app/components/understand/VerseCompletion';
 import { getUnderstandingExtras } from '@/data/understanding';
@@ -177,6 +178,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
       `${refHi} हिंदी अर्थ`,
       meta.titleSanskrit,
       'श्लोक अर्थ',
+      'traditional commentary',
     ].filter(
       (k): k is string => Boolean(k),
     ),
@@ -277,6 +279,7 @@ export default function VersePage({ params }: PageProps) {
         headline: `${ref} — Meaning in Hindi & English (हिंदी अर्थ)`,
         inLanguage: ['sa', 'hi', 'en'],
         isAccessibleForFree: true,
+        genre: 'Scriptural study',
         ...(modified ? { dateModified: modified } : {}),
         url: pageUrl,
         mainEntityOfPage: pageUrl,
@@ -449,11 +452,22 @@ export default function VersePage({ params }: PageProps) {
         insight={getVerseInsight(meta.id, chapterId, params.verseId)}
       >
         {/*
-          Related Wisdom discovery (lib/wisdom-discovery): first child of
-          VerseReader, so it renders AFTER the Modern Context layer
+          Source & Study Notes, then Related Wisdom discovery (lib/wisdom-discovery):
+          children of VerseReader, so they render AFTER the Modern Context layer
           (layer-reflection inside ReaderLayers above) without interrupting
           reading. Server HTML only.
         */}
+        <SourceStudyNotes
+          scriptureId={meta.id}
+          scriptureTitle={meta.title}
+          scriptureTitleSanskrit={meta.titleSanskrit}
+          verseRef={ref}
+          sourceHost={repoLabel(source.repo)}
+          hindiIsAi={verse.hindiSource === 'ai'}
+          englishIsAi={verse.translationSource === 'ai'}
+          commentaryIsAi={Boolean(comment?.ai)}
+          translationReview={translationReview ? `Reviewed ${translationReview.date}` : 'Not yet reviewed'}
+        />
         <RelatedWisdomDiscovery
           scriptureId={meta.id}
           chapterId={chapterId}

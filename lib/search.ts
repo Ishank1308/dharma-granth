@@ -1,4 +1,5 @@
 import { scriptureCatalog } from '@/data/scripture-meta';
+import { EDITORIAL_DRAFT_LABEL } from '@/lib/editorial-terminology';
 import { concepts } from '@/data/concepts';
 import { topics } from '@/data/topics';
 import { topicHref } from '@/lib/topic-links';
@@ -680,7 +681,7 @@ function explanationItem(e: VerseEntry): SearchResultItem {
   return {
     id: `explanation-${e.id}`,
     title: `व्याख्या · ${reference}`,
-    subtitle: ai ? 'Editorial explanation · AI-drafted' : 'Editorial explanation',
+    subtitle: ai ? `Editorial explanation · ${EDITORIAL_DRAFT_LABEL.en}` : 'Editorial explanation',
     group: 'commentary',
     groupLabel: 'टीका व व्याख्या · Commentary',
     category: 'commentary',

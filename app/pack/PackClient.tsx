@@ -6,6 +6,7 @@ import { readBookmarks } from '@/lib/reader-actions';
 import { READING_JOURNEYS } from '@/data/reading-journeys';
 import { cleanVerseField, verseLines } from '@/lib/verse-format';
 import { parseWordMeanings } from '@/lib/word-gloss';
+import { COMPARE_STUDY_TRANSLATION_SOURCE, STUDY_TRANSLATION_SHORT } from '@/lib/editorial-terminology';
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
@@ -178,8 +179,8 @@ export function PackClient() {
                   <p lang="sa" className="mt-2 font-devanagari text-xl leading-[2]">{verseLines(l.sanskrit).map((x, i) => <span key={i} className="block">{x}</span>)}</p>
                 )}
                 {opts.translit && l.transliteration && <p className="mt-1 italic">{l.transliteration.split('\n').map((x, i) => <span key={i} className="block">{x}</span>)}</p>}
-                {opts.hindi && l.hindi && <p lang="hi" className="mt-2 font-devanagari leading-[1.9]"><strong>हिन्दी{l.hindiAi ? ' (AI अनुवाद)' : ''}: </strong>{l.hindi}</p>}
-                {opts.english && l.english && <p lang="en" className="mt-2"><strong>English{l.englishAi ? ' (AI translation, not a scholarly edition)' : ''}: </strong>{l.english}</p>}
+                {opts.hindi && l.hindi && <p lang="hi" className="mt-2 font-devanagari leading-[1.9]"><strong>हिन्दी: </strong>{l.hindiAi ? <em>{STUDY_TRANSLATION_SHORT.hi} (AI-सहायता प्राप्त प्रारूप)। </em> : null}{l.hindi}</p>}
+                {opts.english && l.english && <p lang="en" className="mt-2"><strong>English: </strong>{l.englishAi ? <em>{COMPARE_STUDY_TRANSLATION_SOURCE}. </em> : null}{l.english}</p>}
                 {opts.explain && lesson && <p className="mt-2"><strong>Simple explanation (editorial, not scripture): </strong>{lesson.explanation}</p>}
                 {opts.explain && !lesson && <p className="mt-2 text-sm text-neutral-600">No reviewed simple explanation is available for this verse.</p>}
                 {opts.vocab && l.words.length > 1 && (

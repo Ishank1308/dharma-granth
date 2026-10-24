@@ -43,6 +43,16 @@
   ! Cache-Control
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
+# API discovery (RFC 9727): exact content types so automated scanners pass.
+/.well-known/api-catalog
+  ! Cache-Control
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+  Content-Type: application/linkset+json
+/openapi.json
+  ! Cache-Control
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+  Content-Type: application/openapi+json
+
 # Notes on the policy:
 # - `! Cache-Control` removes the HTML rule's value so asset rules do not merge with it.
 # - /assets/* and /_astro/* from other frameworks do not exist in this Next export.

@@ -100,6 +100,7 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/network', pageDate('/network')),
     entry('/ashtavakra', pageDate('/ashtavakra')),
     entry('/ashtavakra/words', pageDate('/ashtavakra/words')),
+    entry('/api-docs', pageDate('/api-docs')),
   ];
 
   // 2. Individual Entity Pages

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Lightbulb, Compass, HelpCircle, Sparkles } from 'lucide-react';
 
 interface ModernContextBlockProps {
   content: string;
@@ -71,9 +70,20 @@ export function parseModernContext(text: string): ParsedModernContext {
   };
 }
 
-export function ModernContextBlock({ content, lang = 'hi', className = '' }: ModernContextBlockProps) {
-  const parsed = parseModernContext(content);
-
+/**
+ * Modern Context alone (context + application, or the raw text when the lesson
+ * is unstructured). Rendered inside the Modern Context step of the sacred
+ * reading flow; the reflection question gets its own Reflection step.
+ */
+export function ModernContextBody({
+  parsed,
+  lang = 'hi',
+  className = '',
+}: {
+  parsed: ParsedModernContext;
+  lang?: string;
+  className?: string;
+}) {
   if (!parsed.hasStructuredFormat) {
     return (
       <div
@@ -90,10 +100,9 @@ export function ModernContextBlock({ content, lang = 'hi', className = '' }: Mod
       {/* 1. आधुनिक संदर्भ (Deep Modern Context) */}
       {parsed.contextText && (
         <section aria-label="आधुनिक संदर्भ" className="space-y-2">
-          <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
-            <Lightbulb className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-            <span>आधुनिक संदर्भ · Modern Context</span>
-          </div>
+          <p className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
+            आधुनिक संदर्भ · Modern Context
+          </p>
           <div className="whitespace-pre-line text-sm md:text-base leading-relaxed sm:leading-loose text-dharma-text/95">
             {parsed.contextText}
           </div>
@@ -104,32 +113,58 @@ export function ModernContextBlock({ content, lang = 'hi', className = '' }: Mod
       {parsed.applicationText && (
         <section
           aria-label="आज के जीवन में प्रयोग"
-          className="rounded-xl border border-amber-500/25 bg-amber-500/5 p-4 sm:p-5 transition-colors hover:border-amber-500/40"
+          className="rounded-xl border border-dharma-border bg-dharma-card-soft p-4 sm:p-5"
         >
-          <div className="mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
-            <Compass className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" aria-hidden="true" />
-            <span>आज के जीवन में प्रयोग · Practical Application</span>
-          </div>
+          <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
+            आज के जीवन में प्रयोग · Practical Application
+          </p>
           <div className="whitespace-pre-line text-sm md:text-base leading-relaxed text-dharma-text/95 font-medium">
             {parsed.applicationText}
           </div>
         </section>
       )}
+    </div>
+  );
+}
 
-      {/* 3. चिंतन प्रश्न (Contemplation Question) */}
+/**
+ * The चिंतन प्रश्न as its own calm Reflection step — dharma tokens only, no
+ * gradient wash. Quoted so it reads as a question to sit with, not a label.
+ */
+export function ReflectionBody({
+  question,
+  lang = 'hi',
+  className = '',
+}: {
+  question: string;
+  lang?: string;
+  className?: string;
+}) {
+  if (!question.trim()) return null;
+  return (
+    <figure className={`border-l-2 border-saffron-500 pl-4 dark:border-saffron-400 ${className}`}>
+      <blockquote
+        lang={lang}
+        className={`font-serif text-base font-semibold italic leading-relaxed text-dharma-text md:text-lg ${lang === 'hi' ? 'font-devanagari not-italic font-medium' : ''}`}
+      >
+        &ldquo;{question.trim()}&rdquo;
+      </blockquote>
+    </figure>
+  );
+}
+
+export function ModernContextBlock({ content, lang = 'hi', className = '' }: ModernContextBlockProps) {
+  const parsed = parseModernContext(content);
+
+  if (!parsed.hasStructuredFormat) {
+    return <ModernContextBody parsed={parsed} lang={lang} className={className} />;
+  }
+
+  return (
+    <div className={`space-y-4 ${className}`}>
+      <ModernContextBody parsed={parsed} lang={lang} />
       {parsed.reflectionQuestion && (
-        <section
-          aria-label="चिंतन प्रश्न"
-          className="rounded-xl border border-indigo-500/25 bg-gradient-to-r from-indigo-500/10 via-indigo-500/5 to-transparent p-4 sm:p-5"
-        >
-          <div className="mb-1.5 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
-            <HelpCircle className="h-4 w-4 shrink-0 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
-            <span>चिंतन प्रश्न · Self-Reflection</span>
-          </div>
-          <p className="font-serif text-sm md:text-base font-semibold italic text-dharma-text leading-relaxed">
-            &ldquo;{parsed.reflectionQuestion}&rdquo;
-          </p>
-        </section>
+        <ReflectionBody question={parsed.reflectionQuestion} lang={lang} />
       )}
     </div>
   );

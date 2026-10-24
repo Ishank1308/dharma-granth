@@ -14,8 +14,8 @@
  */
 
 .ash {
-  /* brand palette */
-  --ash-ivory: #f7f0df;
+  /* brand palette aligned with Dharma Granth */
+  --ash-ivory: var(--dharma-bg);
   --ash-saffron: #d7862a;
   --ash-indigo: #17213f;
   --ash-maroon: #6d2932;
@@ -25,16 +25,16 @@
   --ash-teal: #315c59;
   --ash-midnight: #0d1428;
 
-  /* light reading theme (parchment, never pure black) */
-  --ash-bg: #f7f0df;
-  --ash-bg-soft: #f2e8cf;
-  --ash-surface: #fbf6e8;
-  --ash-ink: #2b241b;
-  --ash-ink-soft: #5a4d3b;
-  --ash-line: rgba(185, 144, 69, 0.45);
-  --ash-accent: #9a4e14; /* saffron darkened for 4.5:1+ text contrast on parchment */
+  /* reading theme: unified with Dharma Granth core tokens */
+  --ash-bg: var(--dharma-bg);
+  --ash-bg-soft: var(--dharma-card-soft, var(--dharma-bg));
+  --ash-surface: var(--dharma-card);
+  --ash-ink: var(--dharma-text);
+  --ash-ink-soft: var(--dharma-muted);
+  --ash-line: var(--dharma-border);
+  --ash-accent: var(--dharma-gold, #9a4e14);
   --ash-accent-fill: #d7862a;
-  --ash-glow: rgba(215, 134, 42, 0.18);
+  --ash-glow: rgba(215, 134, 42, 0.12);
 
   --ash-sanskrit: clamp(1.4rem, 1.05rem + 1.7vw, 2.15rem);
   --ash-hindi: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
@@ -46,14 +46,16 @@
   isolation: isolate;
 }
 
-/* contemplation (dark) theme: deep indigo, warm ivory text, muted gold */
-.ash[data-scheme='dark'] {
-  --ash-bg: #17213f;
-  --ash-bg-soft: #111a33;
-  --ash-surface: #1d2850;
-  --ash-ink: #f1e8d2;
-  --ash-ink-soft: #cfc6af;
-  --ash-line: rgba(185, 144, 69, 0.5);
+/* contemplation (dark) theme: synced with Dharma Granth dark mode */
+.ash[data-scheme='dark'],
+.dark .ash,
+[data-theme='dark'] .ash {
+  --ash-bg: var(--dharma-bg);
+  --ash-bg-soft: var(--dharma-card-soft, #161c28);
+  --ash-surface: var(--dharma-card);
+  --ash-ink: var(--dharma-text);
+  --ash-ink-soft: var(--dharma-muted);
+  --ash-line: var(--dharma-border);
   --ash-accent: #e0b066;
   --ash-accent-fill: #b99045;
   --ash-glow: rgba(224, 176, 102, 0.14);

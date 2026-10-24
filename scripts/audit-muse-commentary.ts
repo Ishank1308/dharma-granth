@@ -25,18 +25,19 @@ if (process.platform === 'win32') {
   } catch {}
 }
 
+// Only block genuinely Urdu/Persian vocabulary.
+// Common Hindi words (तनाव, शुरू, याद, थकान, पैदा, नकल, जल्दबाजी) are
+// perfectly understood by regular readers and should NOT be replaced.
 const TATSAM_REPLACEMENTS: Record<string, string> = {
-  'तनाव': 'उद्वेग',
-  'शुरू': 'आरम्भ',
-  'पैदा': 'उत्पन्न',
-  'थकान': 'श्रान्ति',
-  'नकल': 'अनुकरण',
-  'याद': 'स्मरण',
-  'जल्दबाजी': 'शीघ्रता',
-  'इंसाफ': 'न्याय',
-  'तसल्ली': 'आश्वासन',
   'खुदा': 'ईश्वर',
   'दुआ': 'प्रार्थना',
+  'इंसाफ': 'न्याय',
+  'तसल्ली': 'सान्त्वना',
+  'बंदगी': 'उपासना',
+  'रहम': 'कृपा',
+  'फरमान': 'आदेश',
+  'मरहम': 'औषधि',
+  'फ़ितरत': 'स्वभाव',
 };
 
 const DEVANAGARI_DIGITS: Record<string, string> = {

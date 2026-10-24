@@ -11,6 +11,6 @@ Antigravity has full access to Meta's **Muse Spark 1.3 Contributor** reasoning m
 - **Active Skill**: Use the `muse-spark` skill in `.agents/skills/muse-spark/SKILL.md`.
 
 ### Core Rules for Output:
-1. **Hindi Register**: Dignified tatsam Hindi (Gita Press standard), addressing the user as 'आप'. Avoid colloquialisms and Urdu/Persian vocabulary.
+1. **Hindi Register**: Simple, accessible, and dignified Hindi that any regular Hindi reader can understand. Everyday Hindi words (तनाव, शुरू, याद, थकान) are fine. Only block Urdu/Persian vocabulary (खुदा, दुआ, इंसाफ, तसल्ली). Address the user as 'आप'.
 2. **Numbers**: Use standard ASCII digits (0-9). Do not output Devanagari numerals.
 3. **Reasoning Tokens**: When using `max` reasoning effort, maintain a 32,000 `max_tokens` budget.

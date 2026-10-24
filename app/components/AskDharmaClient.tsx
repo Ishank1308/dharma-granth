@@ -6,6 +6,7 @@ import { BookOpen, Shield, Sparkles } from 'lucide-react';
 import { answerQuestion, COPILOT_EXAMPLES, type CopilotAnswer } from '@/lib/copilot';
 import { askMuseSparkAgent } from '@/lib/muse-chat-agent';
 import { MuseAgentResponseView } from './copilot/MuseAgentResponseView';
+import { STUDY_HELPER_CAUTION_HI, STUDY_HELPER_MODEL_CREDIT, STUDY_HELPER_NAME, STUDY_HELPER_NAME_HI } from '@/lib/editorial-terminology';
 
 /** Full-page library guide & Meta Muse Spark 1.3 reasoning agent. */
 export function AskDharmaClient() {
@@ -83,11 +84,11 @@ export function AskDharmaClient() {
               }`}
             >
               <Sparkles className="h-3.5 w-3.5 text-amber-500" />
-              <span>✨ Muse Spark 1.3 (AI सारथी)</span>
+              <span>✨ {STUDY_HELPER_NAME} ({STUDY_HELPER_NAME_HI})</span>
             </button>
           </div>
           <span className="text-2xs text-dharma-text-secondary font-mono">
-            {activeTab === 'muse' ? 'Meta Muse Spark 1.3 Reasoning' : 'Offline Verified Verses'}
+            {activeTab === 'muse' ? STUDY_HELPER_NAME : 'Offline Verified Verses'}
           </span>
         </div>
 
@@ -120,7 +121,7 @@ export function AskDharmaClient() {
             className="flex items-center gap-2 min-h-11 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-400 px-5 font-bold text-stone-950 shadow-md hover:brightness-105 active:scale-95 transition text-sm"
           >
             <Sparkles className="h-4 w-4" />
-            <span>Ask Muse Spark 1.3</span>
+            <span>Ask the study helper</span>
           </button>
         </div>
 
@@ -159,13 +160,13 @@ export function AskDharmaClient() {
             <div className="space-y-6 py-4 text-center">
               <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
                 <Sparkles className="h-4 w-4 text-amber-500" />
-                <span>Meta Muse Spark 1.3 · AI चिंतन सारथी</span>
+                <span>{STUDY_HELPER_NAME} · {STUDY_HELPER_NAME_HI}</span>
               </div>
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
                 जीवन के जटिल द्वंद्वों पर गहन दार्शनिक चिंतन
               </h3>
               <p className="max-w-2xl mx-auto text-sm sm:text-base text-dharma-text-secondary leading-relaxed font-devanagari">
-                Meta Muse Spark 1.3 विस्तृत विवेक (Reasoning) द्वारा संचालित है। यह वेदों, उपनिषदों और भगवद्गीता के प्रामाणिक संदर्भों के साथ आपकी विशिष्ट परिस्थिति पर व्यक्तिगत मार्गदर्शन प्रस्तुत करता है।
+                यह सहायक AI ({STUDY_HELPER_MODEL_CREDIT}) द्वारा संचालित है। यह वेदों, उपनिषदों और भगवद्गीता के प्रामाणिक संदर्भों के साथ आपकी विशिष्ट परिस्थिति पर व्यक्तिगत मार्गदर्शन प्रस्तुत करता है। {STUDY_HELPER_CAUTION_HI}
               </p>
             </div>
           )}
@@ -250,11 +251,11 @@ export function AskDharmaClient() {
                 <h4 className="font-bold text-sm text-dharma-text flex items-center gap-2">
                   इस विषय पर गहन व्यक्तिगत चिंतन चाहिए?
                   <span className="text-3xs font-mono uppercase bg-amber-500/20 text-amber-600 dark:text-amber-300 border border-amber-500/30 px-1.5 py-0.5 rounded">
-                    Muse Spark 1.3
+                    AI helper
                   </span>
                 </h4>
                 <p className="text-xs text-dharma-text-secondary font-devanagari mt-0.5">
-                  Meta Muse Spark 1.3 आपकी विशिष्ट स्थिति के अनुसार शास्त्रीय सिद्धांतों का व्यावहारिक अनुप्रयोग प्रस्तुत करेगा।
+                  AI study helper आपकी विशिष्ट स्थिति के अनुसार शास्त्रीय सिद्धांतों का व्यावहारिक अनुप्रयोग प्रस्तुत करेगा ({STUDY_HELPER_MODEL_CREDIT} द्वारा संचालित; {STUDY_HELPER_CAUTION_HI})।
                 </p>
               </div>
             </div>
@@ -264,7 +265,7 @@ export function AskDharmaClient() {
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 px-4 py-2.5 text-xs font-bold text-stone-950 shadow-md hover:brightness-105 active:scale-95 transition shrink-0"
             >
               <Sparkles className="h-3.5 w-3.5" />
-              <span>Ask Muse Spark 1.3</span>
+              <span>Ask the study helper</span>
             </button>
           </div>
 

@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { setMuseApiKey, getMuseApiKey } from '@/lib/muse-chat-agent';
+import { STUDY_HELPER_CAUTION, STUDY_HELPER_MODEL_CREDIT, STUDY_HELPER_NAME } from '@/lib/editorial-terminology';
 
 interface MuseAgentResponseViewProps {
   query: string;
@@ -82,7 +83,7 @@ export function MuseAgentResponseView({
         </div>
         <div className="space-y-1.5 max-w-md mx-auto">
           <h4 className="text-base font-bold text-amber-200">
-            Muse Spark 1.3 मनन कर रहा है...
+            Study helper मनन कर रहा है...
           </h4>
           <p className="text-xs text-stone-400 font-devanagari">
             वेदों, उपनिषदों और भगवद्गीता के सूत्रों का दार्शनिक विश्लेषण एवं समाधान संकलित हो रहा है।
@@ -171,13 +172,13 @@ export function MuseAgentResponseView({
           </span>
           <div>
             <h3 className="text-sm font-bold text-amber-100 flex items-center gap-2">
-              Muse Spark 1.3 · ज्ञान सारथी
+              {STUDY_HELPER_NAME} · ज्ञान सारथी
               <span className="text-3xs font-mono font-normal uppercase bg-amber-400/20 border border-amber-400/30 text-amber-300 px-1.5 py-0.5 rounded">
-                Meta AI
+                {STUDY_HELPER_MODEL_CREDIT}
               </span>
             </h3>
             <p className="text-2xs text-stone-400 font-devanagari">
-              गहन दार्शनिक विवेक एवं शास्त्रीय समाधान
+              गहन दार्शनिक विवेक एवं शास्त्रीय समाधान · {STUDY_HELPER_CAUTION}
             </p>
           </div>
         </div>

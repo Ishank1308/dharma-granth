@@ -288,7 +288,7 @@ export function WisdomOperatingSystem() {
             {filteredQuestions.map((q) => (
               <div
                 key={q.id}
-                onClick={() => handleOpenQuestion(q)}
+                role="button" tabIndex={0} aria-pressed={selectedQuestion?.id === q.id} onClick={() => handleOpenQuestion(q)} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleOpenQuestion(q); } }}
                 className={`p-5 rounded-2xl border cursor-pointer transition-all ${
                   selectedQuestion?.id === q.id
                     ? 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/20 shadow-md ring-1 ring-amber-500'
@@ -380,7 +380,7 @@ export function WisdomOperatingSystem() {
                       {v.translationHi}
                     </p>
                     <p className="text-xs text-stone-600 dark:text-stone-400 italic">
-                      "{v.translationEn}"
+                      &ldquo;{v.translationEn}&rdquo;
                     </p>
 
                     <div className="mt-4 pt-3 border-t border-stone-100 dark:border-stone-700/60 flex items-center justify-between">
@@ -400,7 +400,7 @@ export function WisdomOperatingSystem() {
               <div className="p-4 rounded-xl bg-amber-100/60 dark:bg-amber-950/40 border border-amber-300/60 dark:border-amber-800">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 mb-1 flex items-center gap-1.5">
                   <Flame className="w-4 h-4 text-amber-600" />
-                  Today's Contemplative Micro-Action (आज का आचरण)
+                  Today&apos;s Contemplative Micro-Action (आज का आचरण)
                 </h4>
                 <p className="text-sm text-stone-800 dark:text-stone-200">
                   {selectedQuestion.contemplativeActionEn}
@@ -550,7 +550,7 @@ export function WisdomOperatingSystem() {
                       {v.translationHi}
                     </p>
                     <p className="text-xs text-stone-600 dark:text-stone-400 italic">
-                      "{v.translationEn}"
+                      &ldquo;{v.translationEn}&rdquo;
                     </p>
 
                     <div className="mt-4 pt-3 border-t border-stone-100 dark:border-stone-700 flex justify-between">
@@ -606,7 +606,7 @@ export function WisdomOperatingSystem() {
                   {daily.verse.translationHi}
                 </p>
                 <p className="text-sm text-stone-600 dark:text-stone-400 italic">
-                  "{daily.verse.translationEn}"
+                  &ldquo;{daily.verse.translationEn}&rdquo;
                 </p>
               </div>
             </div>
@@ -630,10 +630,10 @@ export function WisdomOperatingSystem() {
                 Question of the Day (आज का आत्म-प्रश्न)
               </h4>
               <p className="text-base font-serif font-semibold text-stone-900 dark:text-stone-100 mb-1">
-                "{daily.questionOfTheDayEn}"
+                &ldquo;{daily.questionOfTheDayEn}&rdquo;
               </p>
               <p lang="hi" className="text-sm font-devanagari text-stone-700 dark:text-stone-300">
-                "{daily.questionOfTheDayHi}"
+                &ldquo;{daily.questionOfTheDayHi}&rdquo;
               </p>
             </div>
 
@@ -725,7 +725,7 @@ export function WisdomOperatingSystem() {
             {Object.values(ATTENTIONAL_MODE_CONFIGS).map((cfg) => (
               <div
                 key={cfg.mode}
-                onClick={() => handleSelectMode(cfg.mode)}
+                role="button" tabIndex={0} aria-pressed={activeMode === cfg.mode} onClick={() => handleSelectMode(cfg.mode)} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleSelectMode(cfg.mode); } }}
                 className={`p-5 rounded-2xl border cursor-pointer transition-all ${
                   activeMode === cfg.mode
                     ? 'border-indigo-600 bg-indigo-50/50 dark:bg-indigo-950/30 shadow-md ring-1 ring-indigo-600'

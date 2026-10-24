@@ -21,6 +21,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    // Tree-shake barrel imports (lucide-react icons) per-module so page
+    // bundles only carry the icons they render.
+    optimizePackageImports: ['lucide-react'],
+  },
 };
 
 module.exports = nextConfig;

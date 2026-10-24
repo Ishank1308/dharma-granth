@@ -154,9 +154,9 @@ async function main() {
         science: draft.science,
         lifeLesson: draft.lifeLesson,
         confidence: 'high',
-        reviewNote: 'Generated via Muse Spark 1.3 (high-register tatsam Hindi standard)',
+        reviewNote: 'Generated via Muse Spark 1.3 Contributor (Gita Press dignified tatsam Hindi standard)',
         status: 'pending',
-        model: 'muse-spark-1.3',
+        model: 'muse-spark-1.3-contributor',
         generatedAt: new Date().toISOString(),
         sanskrit: v.sanskrit || '',
       };

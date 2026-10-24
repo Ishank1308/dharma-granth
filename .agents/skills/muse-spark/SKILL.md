@@ -44,6 +44,6 @@ cmd /c npm run generate:commentary:muse -- --scripture <id> --chapter <n> [--ver
 ```
 
 ## Guidelines for Muse Spark Outputs
-1. **Dignified Tatsam Hindi**: Gita Press register, address reader with 'आप', zero colloquialisms.
+1. **Accessible Dignified Hindi**: Simple Hindi any regular reader can understand. Common words (तनाव, शुरू, याद, थकान) are fine. Only block Urdu/Persian vocab (खुदा, दुआ, इंसाफ). Address reader with 'आप'.
 2. **Numbers**: ASCII 0-9 only (1, 2, 3), zero Devanagari numerals.
 3. **Token Budget**: With `max` reasoning effort, maintain a 32,000 `max_tokens` budget to prevent reasoning truncation.

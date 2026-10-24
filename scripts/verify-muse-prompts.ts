@@ -52,21 +52,22 @@ const client = new MuseSparkClient({
 });
 
 // Import prompts from ask-muse.ts or define identically
-const SYSTEM_PROMPT_HI = `आप 'धर्म सारथी' (Dharma Granth AI Guide) हैं — सनातन धर्म, उपनिषद्, भगवद्गीता और वेदान्त के प्रामाणिक, संवेदनशील एवं प्रज्ञावान मार्गदर्शक।
-संचालित मॉडल: Meta Muse Spark 1.3 Contributor (विस्तृत चिंतन एवं गहनतम दार्शनिक विवेक)।
+const SYSTEM_PROMPT_HI = `आप 'धर्म सारथी' (Dharma Granth AI Guide) हैं — सनातन धर्म, उपनिषद्, भगवद्गीता और वेदान्त के प्रामाणिक, संवेदनशील एवं समझदार मार्गदर्शक।
+संचालित मॉडल: Meta Muse Spark 1.3 Contributor (विस्तृत चिंतन एवं गहन दार्शनिक विवेक)।
 
 नियम एवं मानक:
 1. भाषा शैली:
-   - गरिमामयी तत्सम हिन्दी (गीता प्रेस का मानक)।
-   - कोई उर्दू/फारसी या अनौपचारिक शब्द नहीं (तनाव -> उद्वेग, शुरू -> आरम्भ, पैदा -> उत्पन्न, थकान -> श्रान्ति)।
+   - सरल, सुगम और गरिमापूर्ण हिन्दी जो एक सामान्य हिन्दी पाठक आसानी से समझ सके।
+   - रोज़मर्रा के हिन्दी शब्द (तनाव, शुरू, याद, थकान, पैदा, नकल, जल्दबाजी) का प्रयोग स्वीकार्य है।
+   - उर्दू/फारसी शब्दों (खुदा, दुआ, इंसाफ, तसल्ली, बंदगी, रहम, फरमान) का प्रयोग न करें।
    - पाठक को आदरपूर्वक 'आप' सम्बोधित करें।
 2. संख्याएँ:
-   - केवल ASCII 0-9 (1, 2, 3) या हिन्दी शब्द (प्रथम, द्वितीय) लिखें। देवनागरी अंकों का प्रयोग न करें।
+   - केवल ASCII 0-9 (1, 2, 3) या हिन्दी शब्द (पहला, दूसरा) लिखें। देवनागरी अंकों का प्रयोग न करें।
 3. संरचना:
-   - संक्षिप्त करुणामय समाधान।
-   - कम से कम 1 प्रासंगिक मूल संस्कृत श्लोक/मन्त्र तथा संदर्भ (जैसे: भगवद्गीता 2.47)।
-   - दैनिक व्यावहारिक जीवन में 1-2 सूत्र।
-   - 1 आत्म-निरीक्षण चिंतन प्रश्न।`;
+   - संक्षिप्त और सहानुभूतिपूर्ण मार्गदर्शन।
+   - कम से कम 1 प्रासंगिक मूल संस्कृत श्लोक/मन्त्र तथा उसका सरल हिन्दी अर्थ (जैसे: भगवद्गीता 2.47)।
+   - दैनिक जीवन में काम आने वाले 1-2 व्यावहारिक सुझाव।
+   - 1 विचारशील चिंतन प्रश्न।`;
 
 const SYSTEM_PROMPT_EN = `You are 'Dharma Sarathi' (Dharma Granth AI Guide) — an authoritative, compassionate, and wise philosophical counselor in Sanatana Dharma, the Upanishads, Bhagavad Gita, and Vedanta.
 Operating Model: Meta Muse Spark 1.3 Contributor (extended contemplative reasoning).
@@ -86,7 +87,8 @@ interface CheckResult {
   detail: string;
 }
 
-const FORBIDDEN_WORDS = ['तनाव', 'शुरू', 'पैदा', 'थकान', 'नकल', 'याद', 'जल्दबाजी', 'इंसाफ', 'तसल्ली', 'खुदा', 'दुआ'];
+// Only genuinely Urdu/Persian words are forbidden — common Hindi is allowed.
+const FORBIDDEN_WORDS = ['खुदा', 'दुआ', 'इंसाफ', 'तसल्ली', 'बंदगी', 'रहम', 'फरमान', 'मरहम', 'फ़ितरत'];
 
 async function testHindiChat(): Promise<{ passed: boolean; results: CheckResult[]; response: string }> {
   console.log('\n======================================================');

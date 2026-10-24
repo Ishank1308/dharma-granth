@@ -6,6 +6,7 @@
  *   npm run shard:scriptures -- --write   (default)
  *   npm run shard:scriptures -- --dry-run
  */
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-commentary/quality";
@@ -13,6 +14,51 @@ import { findTemplateFields } from "./lib/template-text";
 import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
 
 const PILOT = loadPilotOverlay();
+
+/** Bump when shard output logic changes (stubs, templates, echo rules, manifest shape). */
+const SHARD_REV = "1";
+
+interface ShardStamp {
+  rev: string;
+  /** sha256 over the full-book JSON bytes + pilot overlay bytes. */
+  stamp: string;
+  /** Chapter numbers written, so a changed chapter set reshards. */
+  chapters: number[];
+}
+
+function sha256Hex(data: string | Buffer): string {
+  return createHash("sha256").update(data).digest("hex");
+}
+
+/** Bytes of every pilot input the shard overlay reads (see pilot/overlay.ts). */
+function pilotBytes(): Buffer {
+  const parts: Buffer[] = [];
+  const root = path.resolve("data/pilot");
+  for (const name of ["pilot-set.json", "pilot-baseline.json"]) {
+    const file = path.join(root, name);
+    if (fs.existsSync(file)) parts.push(fs.readFileSync(file));
+  }
+  const recordsDir = path.join(root, "records");
+  if (fs.existsSync(recordsDir)) {
+    for (const f of fs.readdirSync(recordsDir).filter((x) => x.endsWith(".json")).sort()) {
+      parts.push(fs.readFileSync(path.join(recordsDir, f)));
+    }
+  }
+  return Buffer.concat(parts);
+}
+const PILOT_BYTES = pilotBytes();
+
+function readShardStamp(outDir: string): ShardStamp | null {
+  const file = path.join(outDir, "_stamps.json");
+  if (!fs.existsSync(file)) return null;
+  try {
+    const parsed = JSON.parse(fs.readFileSync(file, "utf8")) as Partial<ShardStamp>;
+    if (parsed.rev !== SHARD_REV || typeof parsed.stamp !== "string" || !Array.isArray(parsed.chapters)) return null;
+    return parsed as ShardStamp;
+  } catch {
+    return null;
+  }
+}
 
 /**
  * A meaning that only says a meaning belongs here, for example "Adhyaya 1, Shloka 4: विदुरनीति श्लोक का अर्थ।".
@@ -54,11 +100,27 @@ function main(): void {
   const files = fs.readdirSync(SRC).filter((f) => f.endsWith(".json"));
   let totalShards = 0;
   let totalBytes = 0;
+  let skipped = 0;
 
   for (const file of files.sort()) {
     const id = path.basename(file, ".json");
     const bookPath = path.join(SRC, file);
-    const book = JSON.parse(fs.readFileSync(bookPath, "utf8")) as {
+    const outDir = path.join(SRC, id);
+    // Raw bytes feed the stamp and the parse below; read once.
+    const bookRaw = fs.readFileSync(bookPath);
+    if (!DRY) {
+      const stamp = sha256Hex(Buffer.concat([bookRaw, PILOT_BYTES]));
+      const prev = readShardStamp(outDir);
+      if (
+        prev?.stamp === stamp &&
+        fs.existsSync(path.join(outDir, "manifest.json")) &&
+        prev.chapters.every((n) => fs.existsSync(path.join(outDir, `ch-${n}.json`)))
+      ) {
+        skipped++;
+        continue;
+      }
+    }
+    const book = JSON.parse(bookRaw.toString("utf8")) as {
       id?: string;
       source?: unknown;
       chapters?: Array<{
@@ -104,7 +166,6 @@ function main(): void {
       else console.warn(`  ${id}: pilot unit ${p.record.unitId} not found in ${p.chapter}:${p.verse}`);
     }
 
-    const outDir = path.join(SRC, id);
     if (!DRY) fs.mkdirSync(outDir, { recursive: true });
 
     let shardBytes = 0;
@@ -181,6 +242,17 @@ function main(): void {
           fs.unlinkSync(path.join(outDir, existing));
         }
       }
+      fs.writeFileSync(
+        path.join(outDir, "_stamps.json"),
+        JSON.stringify({
+          rev: SHARD_REV,
+          stamp: sha256Hex(Buffer.concat([bookRaw, PILOT_BYTES])),
+          chapters: [...expectedShards]
+            .map((name) => Number(name.slice(3, -".json".length)))
+            .filter((number) => Number.isFinite(number))
+            .sort((a, b) => a - b),
+        }),
+      );
     }
 
     totalBytes += shardBytes;
@@ -191,7 +263,8 @@ function main(): void {
   }
 
   console.log(
-    `\n${DRY ? "Dry-run" : "Wrote"} ${totalShards} chapter shards (${(totalBytes / 1024 / 1024).toFixed(1)}MB total)`,
+    `\n${DRY ? "Dry-run" : "Wrote"} ${totalShards} chapter shards (${(totalBytes / 1024 / 1024).toFixed(1)}MB total)` +
+      (skipped ? `, skipped ${skipped} unchanged scripture(s)` : ""),
   );
 }
 

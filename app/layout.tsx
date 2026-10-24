@@ -78,7 +78,7 @@ const SITE_URL =
 const SITE_NAME = "Dharma Granth";
 const DEFAULT_TITLE = "Dharma Granth — Hindu Scriptures, Verse by Verse";
 const DEFAULT_DESCRIPTION =
-  "Famous verses from the Bhagavad Gita, Upanishads, and other Hindu scriptures, explained verse by verse in Sanskrit, Hindi, and plain English. Free and ad-free.";
+  "Scriptural study, verse by verse: the Bhagavad Gita, Upanishads, and more in original Sanskrit, with Hindi and English study aids. A free, ad-free research edition.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -95,6 +95,8 @@ export const metadata: Metadata = {
     "Sanskrit verses",
     "Vedas",
     "Hindi commentary",
+    "scriptural study",
+    "traditional perspectives",
     "dharma",
     "verse meaning",
   ],
@@ -231,6 +233,13 @@ export default function RootLayout({
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/logo-splash.webp"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
         />
 
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}

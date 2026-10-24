@@ -8,6 +8,7 @@ import { answerQuestion, COPILOT_EXAMPLES, wisdomSlugFromPath, type CopilotAnswe
 import { getWisdomTopic } from '@/data/wisdom-for-life';
 import { askMuseSparkAgent } from '@/lib/muse-chat-agent';
 import { MuseAgentResponseView } from './MuseAgentResponseView';
+import { STUDY_HELPER_CAUTION_HI, STUDY_HELPER_MODEL_CREDIT, STUDY_HELPER_NAME } from '@/lib/editorial-terminology';
 
 export function CopilotPanel({ onClose }: { onClose: () => void }) {
   const titleId = useId();
@@ -75,12 +76,12 @@ export function CopilotPanel({ onClose }: { onClose: () => void }) {
             <div className="flex items-center gap-2">
               <h2 id={titleId} className="text-lg font-bold" lang="hi">धर्म सहायक</h2>
               <span className="text-3xs font-mono uppercase bg-amber-500/20 text-amber-500 border border-amber-500/30 px-1.5 py-0.5 rounded">
-                Muse Spark
+                AI helper
               </span>
             </div>
             <p className="text-xs text-dharma-text-secondary" lang="hi">
               {activeTab === 'muse'
-                ? 'Meta Muse Spark 1.3 AI चिंतन सारथी'
+                ? `${STUDY_HELPER_NAME} · सारथी`
                 : 'पुस्तकालय में दर्ज श्लोक और विषय'}
             </p>
           </div>
@@ -117,7 +118,7 @@ export function CopilotPanel({ onClose }: { onClose: () => void }) {
             }`}
           >
             <Sparkles className="h-3.5 w-3.5" />
-            <span>✨ Muse Spark</span>
+            <span>✨ Study helper</span>
           </button>
         </div>
 
@@ -133,7 +134,7 @@ export function CopilotPanel({ onClose }: { onClose: () => void }) {
           }}
         >
           <label htmlFor="dharma-copilot-q" className="text-sm font-semibold" lang="hi">
-            {activeTab === 'muse' ? 'ज्ञान जिज्ञासा (Ask Muse Spark)' : 'प्रश्न (Library Search)'}
+            {activeTab === 'muse' ? 'ज्ञान जिज्ञासा (AI helper)' : 'प्रश्न (Library Search)'}
           </label>
           <textarea
             id="dharma-copilot-q"
@@ -162,7 +163,7 @@ export function CopilotPanel({ onClose }: { onClose: () => void }) {
               className="flex-1 flex items-center justify-center gap-1 min-h-10 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 px-3 text-xs font-bold text-stone-950 shadow-sm hover:brightness-105 active:scale-95 transition"
             >
               <Sparkles className="h-3.5 w-3.5" />
-              <span>Ask Muse Spark</span>
+              <span>Ask the study helper</span>
             </button>
           </div>
         </form>
@@ -183,10 +184,10 @@ export function CopilotPanel({ onClose }: { onClose: () => void }) {
                   <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-center space-y-1.5">
                     <h3 className="text-sm font-bold text-amber-800 dark:text-amber-200 flex items-center justify-center gap-1.5">
                       <Sparkles className="h-4 w-4 text-amber-500" />
-                      <span>Meta Muse Spark 1.3</span>
+                      <span>{STUDY_HELPER_NAME}</span>
                     </h3>
                     <p className="text-xs text-dharma-text-secondary font-devanagari">
-                      गहन दार्शनिक विवेक एवं शास्त्रीय समाधान। नीचे दिए गए किसी विषय पर क्लिक करें अथवा ऊपर प्रश्न लिखें:
+                      गहन दार्शनिक विवेक एवं शास्त्रीय समाधान ({STUDY_HELPER_MODEL_CREDIT} द्वारा संचालित; {STUDY_HELPER_CAUTION_HI})। नीचे दिए गए किसी विषय पर क्लिक करें अथवा ऊपर प्रश्न लिखें:
                     </p>
                   </div>
 
@@ -248,7 +249,7 @@ export function CopilotPanel({ onClose }: { onClose: () => void }) {
                   <AnswerView answer={answer} />
                   <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-3.5 flex flex-col gap-2">
                     <p className="text-xs font-semibold text-amber-800 dark:text-amber-200">
-                      इस विषय पर Muse Spark 1.3 से गहन दार्शनिक समाधान चाहते हैं?
+                      इस विषय पर {STUDY_HELPER_NAME} से गहन दार्शनिक समाधान चाहते हैं?
                     </p>
                     <button
                       type="button"
@@ -256,7 +257,7 @@ export function CopilotPanel({ onClose }: { onClose: () => void }) {
                       className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-amber-500 px-3 py-2 text-xs font-bold text-stone-950 hover:bg-amber-400 transition"
                     >
                       <Sparkles className="h-3.5 w-3.5" />
-                      <span>Ask Muse Spark 1.3</span>
+                      <span>Ask the study helper</span>
                     </button>
                   </div>
                 </div>

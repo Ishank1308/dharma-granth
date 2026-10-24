@@ -91,12 +91,12 @@ export default function ChapterPage({ params }: { params: { chapter: string } })
           </dl>
         </section>
 
-        <section id="verses" aria-labelledby="verses-h" className="grid gap-4 scroll-mt-6">
+        <section id="verses" aria-labelledby="verses-h" className="grid gap-6 sm:gap-8 scroll-mt-6">
           <div>
-            <h2 id="verses-h" className="font-bold" style={{ fontSize: '1.5rem' }}>श्लोक-दर-श्लोक व्याख्या</h2>
+            <h2 id="verses-h" className="font-bold text-xl sm:text-2xl text-dharma-text">श्लोक-दर-श्लोक स्वाध्याय · Sacred Reading</h2>
             <p className="ash-meta mt-1">
               {d.verses.length} श्लोक, पुस्तक के क्रम में।{' '}
-              {reviewCount > 0 ? `${reviewCount} श्लोकों पर पुस्तक के छपे पाठ में भेद मिला है और उन पर “समीक्षा आवश्यक” दर्शाया गया है।` : 'सभी श्लोक पृष्ठ से मिलान किए गए हैं।'}
+              {reviewCount > 0 ? `${reviewCount} श्लोकों पर पुस्तक के छपे पाठ में भेद मिला है और उन पर “समीक्षा आवश्यक” दर्शाया गया है।` : 'सभी श्लोक मूल पृष्ठ से मिलान किए गए हैं।'}
             </p>
             <p className="mt-2 flex flex-wrap gap-2"><VerificationBadge status="verified" /><VerificationBadge status="review-required" /></p>
           </div>

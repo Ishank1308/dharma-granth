@@ -568,6 +568,21 @@ function speakCurrentVerse(text?: string) {
       }
     };
 
+    utt.onboundary = (e: SpeechSynthesisEvent) => {
+      if (typeof window !== 'undefined' && e.name === 'word') {
+        window.dispatchEvent(
+          new CustomEvent('dharma:recitation-word', {
+            detail: {
+              chunkIndex: index,
+              charIndex: e.charIndex,
+              charLength: e.charLength || 0,
+              reference: state.currentVerseReference,
+            },
+          })
+        );
+      }
+    };
+
     if (index === chunks.length - 1) {
       utt.onend = handleSanskritDone;
       utt.onerror = finishRecitation;

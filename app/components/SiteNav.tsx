@@ -53,7 +53,12 @@ import { readActiveStreak } from '@/lib/reading-history';
 import { OPEN_SEARCH_EVENT, type OpenSearchDetail } from '@/lib/search-events';
 
 // Lazy-load the heavy search modal to avoid bundling search index in the critical path
-const loadSearchModal = () => import('./GlobalSearchModal');
+const loadSearchModal = () =>
+  import('./GlobalSearchModal').then((m) => {
+    // Hover/focus warms the index JSON before first open; the modal dedupes repeats.
+    m.warmSearchIndexes();
+    return m;
+  });
 const GlobalSearchModal = dynamic(
   () => loadSearchModal().then((m) => m.GlobalSearchModal),
   { ssr: false },
@@ -1145,7 +1150,7 @@ export function SiteNav({
           {/* 1. Home */}
           <Link
             href="/"
-            onClick={() => triggerTactileFeedback('light', 'softTap')}
+            onClick={() => setTimeout(() => triggerTactileFeedback('light', 'softTap'), 0)}
             aria-current={isActive('/') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
               isActive('/')
@@ -1154,10 +1159,9 @@ export function SiteNav({
             }`}
           >
             {isActive('/') && (
-              <motion.span
-                layoutId="mobile-bottom-active-indicator"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500"
-                transition={{ type: 'spring', stiffness: 420, damping: 30 }}
+              <span
+                aria-hidden="true"
+                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500 animate-in fade-in duration-150"
               />
             )}
             <Home className="h-5 w-5" aria-hidden="true" />
@@ -1178,7 +1182,7 @@ export function SiteNav({
           {/* 3. Library */}
           <Link
             href="/scriptures"
-            onClick={() => triggerTactileFeedback('light', 'softTap')}
+            onClick={() => setTimeout(() => triggerTactileFeedback('light', 'softTap'), 0)}
             aria-current={isActive('/scriptures') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
               isActive('/scriptures')
@@ -1187,10 +1191,9 @@ export function SiteNav({
             }`}
           >
             {isActive('/scriptures') && (
-              <motion.span
-                layoutId="mobile-bottom-active-indicator"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500"
-                transition={{ type: 'spring', stiffness: 420, damping: 30 }}
+              <span
+                aria-hidden="true"
+                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500 animate-in fade-in duration-150"
               />
             )}
             <BookOpen className="h-5 w-5" aria-hidden="true" />
@@ -1200,7 +1203,7 @@ export function SiteNav({
           {/* 4. Sadhana */}
           <Link
             href="/practice"
-            onClick={() => triggerTactileFeedback('light', 'softTap')}
+            onClick={() => setTimeout(() => triggerTactileFeedback('light', 'softTap'), 0)}
             aria-current={isActive('/practice') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
               isActive('/practice')
@@ -1209,10 +1212,9 @@ export function SiteNav({
             }`}
           >
             {isActive('/practice') && (
-              <motion.span
-                layoutId="mobile-bottom-active-indicator"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500"
-                transition={{ type: 'spring', stiffness: 420, damping: 30 }}
+              <span
+                aria-hidden="true"
+                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500 animate-in fade-in duration-150"
               />
             )}
             <Sparkles className="h-5 w-5" aria-hidden="true" />
@@ -1222,7 +1224,7 @@ export function SiteNav({
           {/* 5. Saved Verses */}
           <Link
             href="/practice/bookmarks/"
-            onClick={() => triggerTactileFeedback('light', 'softTap')}
+            onClick={() => setTimeout(() => triggerTactileFeedback('light', 'softTap'), 0)}
             aria-current={isActive('/practice/bookmarks/') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
               isActive('/practice/bookmarks/')
@@ -1231,10 +1233,9 @@ export function SiteNav({
             }`}
           >
             {isActive('/practice/bookmarks/') && (
-              <motion.span
-                layoutId="mobile-bottom-active-indicator"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500"
-                transition={{ type: 'spring', stiffness: 420, damping: 30 }}
+              <span
+                aria-hidden="true"
+                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500 animate-in fade-in duration-150"
               />
             )}
             <div className="relative">
