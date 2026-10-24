@@ -2,7 +2,7 @@
  * Dharma Granth: Automated Prompt Compliance Verification for Meta Muse Spark 1.3 Contributor
  * 
  * Verifies that Meta Muse Spark strictly obeys all rules from:
- * 1. Hindi Chat System Prompt (tatsam Hindi, no Urdu/colloquialisms, ASCII digits, 'आप' address, Sanskrit citation, daily सूत्र, चिंतन प्रश्न)
+ * 1. Hindi Chat System Prompt (accessible dignified Hindi, no Urdu/Persian vocabulary, ASCII digits, 'आप' address, Sanskrit citation, daily सूत्र, चिंतन प्रश्न)
  * 2. English Chat System Prompt (dignified tone, Romanized Sanskrit citation, daily protocols, reflection question)
  * 3. 4-Layer Commentary Drafting Framework (JSON schema, 3 required headings, 3 bullet points, 1 question)
  * 
@@ -129,7 +129,7 @@ async function testHindiChat(): Promise<{ passed: boolean; results: CheckResult[
   results.push({
     rule: 'वर्जित अनौपचारिक / उर्दू शब्द निषेध',
     passed: foundForbidden.length === 0,
-    detail: foundForbidden.length === 0 ? 'उत्कृष्ट! कोई वर्जित शब्द नहीं मिला (तत्सम शब्दावली का पालन)।' : `वर्जित शब्द मिले: ${foundForbidden.join(', ')}`,
+    detail: foundForbidden.length === 0 ? 'उत्कृष्ट! कोई वर्जित शब्द नहीं मिला (सुगम हिन्दी शब्दावली का पालन)।' : `वर्जित शब्द मिले: ${foundForbidden.join(', ')}`,
   });
 
   // 3. Respectful address 'आप'

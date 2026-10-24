@@ -247,7 +247,7 @@ async function runChat() {
         case '/lang':
           if (arg === 'en' || arg === 'hi') {
             lang = arg;
-            console.log(`Language set to: ${lang === 'en' ? 'English (with Romanized Sanskrit)' : 'Dignified Tatsam Hindi'}\n`);
+            console.log(`Language set to: ${lang === 'en' ? 'English (with Romanized Sanskrit)' : 'Accessible Dignified Hindi'}\n`);
           } else {
             console.log('Usage: /lang en  or  /lang hi\n');
           }

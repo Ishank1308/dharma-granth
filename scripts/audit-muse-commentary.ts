@@ -3,7 +3,7 @@
  * 
  * Scans generated and staged AI commentary files to audit and repair:
  * 1. Absence of Devanagari numerals (०-९) -> Auto-replaces with ASCII 0-9
- * 2. Absence of prohibited colloquial/Urdu words -> Auto-replaces with dignified tatsam equivalents
+ * 2. Absence of prohibited Urdu/Persian words -> Auto-replaces with dignified equivalents
  * 3. 4-Layer framework headings:
  *    - "### आधुनिक संदर्भ"
  *    - "### आज के जीवन में प्रयोग" (exactly 3 bullets: - **शीर्षक**: विवरण)
@@ -276,7 +276,7 @@ function main() {
   console.log(`- Clean & Pristine Entries: ${cleanEntriesAll} (${cleanPercent}%)`);
   console.log(`- Quality Notices:          ${totalIssuesAll}`);
   if (doFix) {
-    console.log(`- Total Entries Repaired:   ${totalFixedAll} (converted to pure tatsam & ASCII digits)`);
+    console.log(`- Total Entries Repaired:   ${totalFixedAll} (converted to accessible Hindi & ASCII digits)`);
   }
   if (Object.keys(issueCounts).length > 0) {
     console.log('\nBreakdown of Notices:');

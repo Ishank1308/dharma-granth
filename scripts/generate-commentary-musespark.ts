@@ -1,7 +1,7 @@
 /**
  * Dharma Granth: Generate Hindi Commentary Drafts with Muse Spark 1.3
  * 
- * Generates verified, high-register tatsam Hindi व्याख्या with the 4-layer
+ * Generates verified, accessible and dignified Hindi व्याख्या with the 4-layer
  * modern context framework directly into the review queue (data/ai-commentary/).
  * 
  * Usage:
@@ -154,7 +154,7 @@ async function main() {
         science: draft.science,
         lifeLesson: draft.lifeLesson,
         confidence: 'high',
-        reviewNote: 'Generated via Muse Spark 1.3 Contributor (Gita Press dignified tatsam Hindi standard)',
+        reviewNote: 'Generated via Muse Spark 1.3 Contributor (accessible dignified Hindi standard)',
         status: 'pending',
         model: 'muse-spark-1.3-contributor',
         generatedAt: new Date().toISOString(),
