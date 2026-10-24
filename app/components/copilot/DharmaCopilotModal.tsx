@@ -22,6 +22,8 @@ import {
 } from 'lucide-react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { answerQuestion, type CopilotAnswer } from '@/lib/copilot';
+import { askMuseSparkAgent } from '@/lib/muse-chat-agent';
+import { MuseAgentResponseView } from './MuseAgentResponseView';
 
 export interface CuratedQnA {
   id: string;
@@ -178,7 +180,28 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
   const [selectedCuratedId, setSelectedCuratedId] = useState<string>(CURATED_KNOWLEDGE_BASE[0].id);
   const [copied, setCopied] = useState(false);
   const [speaking, setSpeaking] = useState(false);
+  const [activeTab, setActiveTab] = useState<'curated' | 'muse'>('curated');
+  const [museResponse, setMuseResponse] = useState<string | null>(null);
+  const [museLoading, setMuseLoading] = useState(false);
+  const [museError, setMuseError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleAskMuse = useCallback(async (promptQuery?: string) => {
+    const target = (promptQuery || query).trim();
+    if (!target) return;
+    triggerTactileFeedback('selection', 'softTap');
+    setActiveTab('muse');
+    setMuseLoading(true);
+    setMuseError(null);
+    try {
+      const res = await askMuseSparkAgent(target);
+      setMuseResponse(res);
+    } catch (err: any) {
+      setMuseError(err?.message || 'Error communicating with Muse Spark 1.3');
+    } finally {
+      setMuseLoading(false);
+    }
+  }, [query]);
 
   // Initialize or reset when modal opens
   useEffect(() => {
@@ -284,7 +307,7 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
             className="relative z-10 flex h-[92vh] max-h-[820px] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-amber-300/40 bg-stone-900/95 shadow-2xl backdrop-blur-2xl text-stone-100"
           >
             {/* Top Bar */}
-            <div className="flex items-center justify-between border-b border-stone-800 px-5 sm:px-7 py-3.5 sm:py-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-stone-800 px-5 sm:px-7 py-3.5 sm:py-4">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-300 text-stone-950 shadow-md">
                   <Bot className="h-5 w-5" />
@@ -297,54 +320,122 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
                     </span>
                   </h2>
                   <p className="text-2xs sm:text-xs text-stone-400">
-                    Offline AI-Guided Scripture Wisdom & Modern Life Protocols
+                    Offline Canonical Wisdom & Meta Muse Spark 1.3 AI Agent
                   </p>
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={onClose}
-                className="rounded-full p-2 text-stone-400 hover:bg-stone-800 hover:text-stone-200 transition"
-                aria-label="Close Dharma Copilot"
-              >
-                <X className="h-5 w-5" />
-              </button>
+
+              <div className="flex items-center gap-2">
+                {/* Mode Selector Tabs */}
+                <div className="flex items-center gap-1 rounded-2xl bg-stone-950/80 p-1 border border-stone-800">
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('curated')}
+                    className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition ${
+                      activeTab === 'curated'
+                        ? 'bg-amber-400 text-stone-950 font-bold shadow-sm'
+                        : 'text-stone-400 hover:text-stone-200'
+                    }`}
+                  >
+                    📚 पुस्तकालय
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('muse')}
+                    className={`flex items-center gap-1 rounded-xl px-3 py-1.5 text-xs font-semibold transition ${
+                      activeTab === 'muse'
+                        ? 'bg-gradient-to-r from-amber-500 to-amber-400 text-stone-950 font-bold shadow-sm'
+                        : 'text-stone-400 hover:text-amber-300'
+                    }`}
+                  >
+                    <Sparkles className="h-3.5 w-3.5" />
+                    <span>✨ Muse Spark</span>
+                  </button>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="rounded-full p-2 text-stone-400 hover:bg-stone-800 hover:text-stone-200 transition"
+                  aria-label="Close Dharma Copilot"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
             </div>
 
             {/* Smart Search Input Bar */}
             <div className="border-b border-stone-800/80 bg-stone-950/40 px-5 sm:px-7 py-3">
-              <div className="relative flex items-center">
-                <Search className="absolute left-3.5 h-4 w-4 text-amber-400" />
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Ask about anxiety, anger, burnout, focus, karma, grief, leadership, purpose..."
-                  className="w-full rounded-2xl border border-stone-700/80 bg-stone-900/90 py-2.5 pl-10 pr-10 text-sm text-stone-100 placeholder:text-stone-500 outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20"
-                />
-                {query && (
-                  <button
-                    type="button"
-                    onClick={() => setQuery('')}
-                    className="absolute right-3 text-stone-400 hover:text-stone-200"
-                    aria-label="Clear search"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
-                )}
-              </div>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (activeTab === 'muse' || (!dynamicAnswer && query.trim())) {
+                    handleAskMuse();
+                  }
+                }}
+                className="flex items-center gap-2"
+              >
+                <div className="relative flex-1 flex items-center">
+                  <Search className="absolute left-3.5 h-4 w-4 text-amber-400" />
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder={
+                      activeTab === 'muse'
+                        ? 'Ask Meta Muse Spark 1.3 anything about dharma, karma, anxiety, purpose...'
+                        : 'Ask about anxiety, anger, burnout, focus, karma, grief, leadership, purpose...'
+                    }
+                    className="w-full rounded-2xl border border-stone-700/80 bg-stone-900/90 py-2.5 pl-10 pr-10 text-sm text-stone-100 placeholder:text-stone-500 outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20"
+                  />
+                  {query && (
+                    <button
+                      type="button"
+                      onClick={() => setQuery('')}
+                      className="absolute right-3 text-stone-400 hover:text-stone-200"
+                      aria-label="Clear search"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => handleAskMuse()}
+                  className={`inline-flex items-center gap-1.5 rounded-2xl px-4 py-2.5 text-xs font-bold transition shadow-sm shrink-0 active:scale-95 ${
+                    activeTab === 'muse'
+                      ? 'bg-gradient-to-r from-amber-500 to-amber-300 text-stone-950 hover:brightness-110'
+                      : 'border border-amber-400/40 bg-amber-500/10 text-amber-300 hover:bg-amber-400 hover:text-stone-950'
+                  }`}
+                  title="Meta Muse Spark 1.3 से पूछें"
+                >
+                  <Sparkles className="h-3.5 w-3.5" />
+                  <span className="hidden sm:inline">Ask Muse Spark</span>
+                  <span className="sm:hidden">Muse</span>
+                </button>
+              </form>
 
               {/* Quick Topic Chips */}
               <div className="mt-2.5 flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
-                <span className="text-2xs text-stone-400 shrink-0 font-medium mr-1">Top Dilemmas:</span>
+                <span className="text-2xs text-stone-400 shrink-0 font-medium mr-1">
+                  {activeTab === 'muse' ? 'ज्ञान प्रेरणा:' : 'Top Dilemmas:'}
+                </span>
                 {CURATED_KNOWLEDGE_BASE.map((item) => (
                   <button
                     key={item.id}
                     type="button"
-                    onClick={() => handleSelectCurated(item)}
+                    onClick={() => {
+                      if (activeTab === 'muse') {
+                        setQuery(item.questionHi);
+                        handleAskMuse(item.questionHi);
+                      } else {
+                        handleSelectCurated(item);
+                      }
+                    }}
                     className={`rounded-full px-3 py-1 text-2xs font-medium whitespace-nowrap transition shrink-0 ${
-                      activeCurated?.id === item.id
+                      activeCurated?.id === item.id && activeTab === 'curated'
                         ? 'bg-amber-400 text-stone-950 font-bold shadow-sm'
                         : 'border border-stone-700/80 bg-stone-800/60 text-stone-300 hover:border-amber-400/60 hover:text-white'
                     }`}
@@ -357,8 +448,84 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
 
             {/* Answer Body Showcase */}
             <div className="flex-1 overflow-y-auto px-5 sm:px-7 py-5 space-y-6">
-              {/* Dynamic Semantic Copilot Match (if searching custom question) */}
-              {dynamicAnswer && dynamicAnswer.kind !== 'empty' && dynamicAnswer.verses.length > 0 ? (
+              {activeTab === 'muse' ? (
+                /* Muse Spark 1.3 Active Chat View */
+                <div>
+                  {museResponse || museLoading || museError ? (
+                    <MuseAgentResponseView
+                      query={query}
+                      response={museResponse}
+                      loading={museLoading}
+                      error={museError}
+                      onRetry={() => handleAskMuse()}
+                    />
+                  ) : (
+                    /* Muse Spark Welcome & Prompt Showcase */
+                    <div className="space-y-6 py-2 animate-in fade-in duration-200">
+                      <div className="rounded-3xl border border-amber-400/30 bg-gradient-to-b from-amber-500/10 via-amber-500/5 to-transparent p-6 text-center space-y-3">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-3.5 py-1 text-2xs font-bold uppercase tracking-widest text-amber-300">
+                          <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+                          <span>Meta Muse Spark 1.3 · Reasoning Engine</span>
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-serif font-bold text-amber-100">
+                          धर्म सारथी — गहन शास्त्रीय चिंतन
+                        </h3>
+                        <p className="max-w-xl mx-auto text-xs sm:text-sm text-stone-300 leading-relaxed font-devanagari">
+                          अपनी किसी भी व्यक्तिगत परिस्थिति, धर्म-संकट, कार्यक्षेत्र के तनाव अथवा दार्शनिक जिज्ञासा के विषय में पूछें। Muse Spark 1.3 प्रमाणिक श्लोक और व्यावहारिक समाधान प्रस्तुत करेगा।
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-3">
+                          शीघ्र प्रारंभ हेतु सुझाव (Click to ask Muse):
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {[
+                            {
+                              title: 'अति-चिंतन और मानसिक अशांति',
+                              desc: 'अनिर्णय, भविष्य की चिंता और घबराहट को शांत करने का गीता-सम्मत उपाय क्या है?',
+                              q: 'अति-चिंतन, मानसिक अशांति और भविष्य के भय को शांत करने का दार्शनिक समाधान क्या है?',
+                            },
+                            {
+                              title: 'कर्मयोग और कार्यक्षेत्र में बर्नआउट',
+                              desc: 'निरंतर परिश्रम के बाद भी परिणाम की चिंता से मुक्त रहने की कला क्या है?',
+                              q: 'कार्यक्षेत्र में अत्यधिक परिश्रम और असंतोष होने पर निष्काम कर्म का आचरण कैसे करें?',
+                            },
+                            {
+                              title: 'क्रोध और आवेश पर नियंत्रण',
+                              desc: 'आवेश और कटु वचनों के समय विवेक को सम्मोह से कैसे बचाएँ?',
+                              q: 'तीव्र क्रोध और आवेश के समय बुद्धि को सम्मोह से बचाने का शास्त्रीय नियम क्या है?',
+                            },
+                            {
+                              title: 'स्वधर्म और जीवन का उद्देश्य',
+                              desc: 'दूसरों की नकल करने के बजाय अपना स्वाभाविक मार्ग कैसे पहचानें?',
+                              q: 'भगवद्गीता के आधार पर स्वधर्म की पहचान कैसे करें और अपनी प्रकृति के अनुकूल कर्म कैसे चुनें?',
+                            },
+                          ].map((item, idx) => (
+                            <button
+                              key={idx}
+                              type="button"
+                              onClick={() => {
+                                setQuery(item.q);
+                                handleAskMuse(item.q);
+                              }}
+                              className="rounded-2xl border border-stone-800 bg-stone-950/60 p-4 text-left transition hover:border-amber-400/50 hover:bg-stone-900 group"
+                            >
+                              <div className="flex items-center justify-between text-xs font-bold text-amber-200 group-hover:text-amber-300">
+                                <span>{item.title}</span>
+                                <Sparkles className="h-3 w-3 text-amber-400 opacity-60 group-hover:opacity-100" />
+                              </div>
+                              <p className="mt-1 text-2xs text-stone-400 leading-relaxed font-devanagari">
+                                {item.desc}
+                              </p>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : dynamicAnswer && dynamicAnswer.kind !== 'empty' && dynamicAnswer.verses.length > 0 ? (
                 <div className="space-y-5 animate-in fade-in duration-200">
                   {/* Topic Header Banner */}
                   <div className="rounded-2xl border border-amber-500/25 bg-amber-500/10 p-4">
@@ -568,6 +735,37 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
                         {activeCurated.modernApplication}
                       </p>
                     </div>
+                  </div>
+
+                  {/* Muse Spark 1.3 Deep Consultation CTA */}
+                  <div className="rounded-2xl border border-amber-400/30 bg-gradient-to-r from-amber-500/15 via-stone-900 to-stone-950 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-lg">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-amber-400 text-stone-950 shadow-md">
+                        <Sparkles className="h-5 w-5" />
+                      </span>
+                      <div>
+                        <h4 className="text-xs sm:text-sm font-bold text-amber-100 flex items-center gap-2">
+                          अपनी स्थिति पर गहन दार्शनिक चिंतन चाहिए?
+                          <span className="text-3xs font-mono uppercase bg-amber-400/20 text-amber-300 px-1.5 py-0.5 rounded">
+                            Muse Spark 1.3
+                          </span>
+                        </h4>
+                        <p className="text-2xs text-stone-400 font-devanagari mt-0.5">
+                          Meta Muse Spark 1.3 का विवेक इंजन आपके विशिष्ट प्रश्न का विस्तृत विश्लेषण और शास्त्रीय समाधान प्रस्तुत करेगा।
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const targetQ = query || activeCurated?.questionHi || activeCurated?.question || '';
+                        handleAskMuse(targetQ);
+                      }}
+                      className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-300 px-4 py-2.5 text-xs font-bold text-stone-950 shadow-md hover:brightness-110 active:scale-95 transition shrink-0"
+                    >
+                      <Sparkles className="h-3.5 w-3.5" />
+                      <span>Ask Muse Spark 1.3</span>
+                    </button>
                   </div>
 
                   {/* Deep Reader Navigation CTA */}
