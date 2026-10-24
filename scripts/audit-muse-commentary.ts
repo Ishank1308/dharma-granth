@@ -71,9 +71,10 @@ function cleanText(text: string): { text: string; changed: boolean } {
     }
   }
 
-  // 2. Forbidden words with Unicode boundaries
+  // 2. Forbidden words. Marks and virama stay inside the word so
+  // मर्यादा and Sanskrit quotations are not split on याद.
   for (const [colloquial, tatsam] of Object.entries(TATSAM_REPLACEMENTS)) {
-    const rx = new RegExp(`(?<=^|[^\\p{L}])${colloquial}(?=[^\\p{L}]|$)`, 'gu');
+    const rx = new RegExp(`(?<![\\p{L}\\p{M}])${colloquial}(?![\\p{L}\\p{M}])`, 'gu');
     if (rx.test(current)) {
       current = current.replace(rx, tatsam);
       changed = true;
@@ -104,7 +105,7 @@ function auditEntry(key: string, entry: any): AuditIssue[] {
 
   // 2. Forbidden words
   for (const word of Object.keys(TATSAM_REPLACEMENTS)) {
-    const rx = new RegExp(`(?:^|[^\\p{L}])${word}(?:[^\\p{L}]|$)`, 'u');
+    const rx = new RegExp(`(?<![\\p{L}\\p{M}])${word}(?![\\p{L}\\p{M}])`, 'u');
     if (rx.test(combined)) {
       issues.push({
         key,
