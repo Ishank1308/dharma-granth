@@ -10,6 +10,7 @@ import { ModernScenarios } from '@/app/components/study/ModernScenarios';
 import { ReviewRequiredNotice } from '@/app/components/study/ReviewRequiredNotice';
 import { CONNECTIONS, verseKey } from '@/data/study-content';
 import { RelatedWisdom } from '@/app/components/RelatedWisdom';
+import { RelatedWisdomDiscovery } from '@/components/wisdom/RelatedWisdomDiscovery';
 import { VerseReader } from '@/app/components/reader/VerseReader';
 import { getVerseInsight } from '@/lib/verse-insights';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
@@ -302,7 +303,7 @@ export default function VersePage({ params }: PageProps) {
 
   const chapterName = seeded.chapter.title ?? `अध्याय ${chapterId}`;
 
-  const tagged = verse as { concepts?: string[]; relatedVerses?: VerseLink[]; relatedQuestions?: VerseQuestionLink[] };
+  const tagged = verse as { concepts?: string[]; relatedVerses?: VerseLink[]; relatedQuestions?: VerseQuestionLink[]; questions?: VerseQuestionLink[]; lifeSituations?: string[]; relatedScriptures?: string[]; relatedPathways?: string[]; relatedSages?: string[] };
   const knowledge = resolveVerseKnowledge(meta.id, chapterId, params.verseId, tagged);
 
   const source = (seeded.source ?? {}) as { repo?: string; license?: string; fetchedAt?: string };
@@ -447,6 +448,25 @@ export default function VersePage({ params }: PageProps) {
         }
         insight={getVerseInsight(meta.id, chapterId, params.verseId)}
       >
+        {/*
+          Related Wisdom discovery (lib/wisdom-discovery): first child of
+          VerseReader, so it renders AFTER the Modern Context layer
+          (layer-reflection inside ReaderLayers above) without interrupting
+          reading. Server HTML only.
+        */}
+        <RelatedWisdomDiscovery
+          scriptureId={meta.id}
+          chapterId={chapterId}
+          verseId={params.verseId}
+          concepts={tagged.concepts}
+          relatedVerses={tagged.relatedVerses}
+          relatedQuestions={tagged.relatedQuestions}
+          questions={tagged.questions}
+          lifeSituations={tagged.lifeSituations}
+          relatedScriptures={tagged.relatedScriptures}
+          relatedPathways={tagged.relatedPathways}
+          relatedSages={tagged.relatedSages}
+        />
         <RelatedWisdom knowledge={knowledge} />
         {pedagogical && (
           <UnderstandPanel
