@@ -38,7 +38,7 @@ const PAGES = [
   '/scripture/mahabharata/chapter/12/part/2/',
   '/wisdom-for-life/',
   '/learn/',
-  '/learn/pathways/',
+  '/learn/plans/',
   '/collections/',
   '/practice/',
   '/practice/dashboard/',

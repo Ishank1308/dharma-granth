@@ -186,7 +186,7 @@ export default function LearnPage() {
               </div>
             </div>
 
-            {/* Quick Portals Strip: /learn/ is the one hub for starting points, journeys, paths and plans */}
+            {/* Quick Portals Strip: /learn/ is the one hub for starting points, journeys, plans and courses */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               <Link
                 href="/learn/start/"
@@ -219,22 +219,22 @@ export default function LearnPage() {
                 </p>
               </Link>
               <Link
-                href="/learn/paths"
+                href="/wisdom-pathways/"
                 className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
               >
                 <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
                   <Compass className="w-4 h-4" />
-                  <span>स्वाध्याय मार्ग</span>
+                  <span>ज्ञान मार्ग</span>
                 </div>
                 <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
-                  Guided Reading Paths →
+                  Wisdom Pathways →
                 </h3>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
-                  Life questions, philosophy, and decision dilemmas
+                  Begin from fear, anger, grief or purpose
                 </p>
               </Link>
               <Link
-                href="/learn/plans"
+                href="/learn/plans/"
                 className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
               >
                 <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
@@ -245,7 +245,7 @@ export default function LearnPage() {
                   Reading Plans →
                 </h3>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
-                  18-day Gita & 7-day foundation calm schedules
+                  Day-by-day schedules, study orders, guided readings
                 </p>
               </Link>
               <Link
@@ -355,8 +355,8 @@ export default function LearnPage() {
         </div>
       </section>
 
-      {/* ── Guided Learning Pathways Grid ────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6">
+      {/* ── Guided Learning Pathways Grid (also the target of the /learn/pathways/ 301) ── */}
+      <section id="courses" className="max-w-6xl mx-auto px-6 scroll-mt-24">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-serif font-bold text-dharma-text">
