@@ -45,7 +45,7 @@ export default function GitaSummaryPage({ params }: { params: { id: string } }) 
   const allApproved = chapters.every((c) => c.review === 'approved');
 
   return (
-    <main className="min-h-screen bg-dharma-bg pb-20 text-dharma-text">
+    <main className="min-h-screen bg-dharma-bg pb-20 text-dharma-text" data-scripture-id={SCRIPTURE_ID}>
       <JsonLd
         data={pageLd(
           [

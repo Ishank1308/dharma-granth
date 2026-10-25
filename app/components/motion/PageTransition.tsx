@@ -51,8 +51,8 @@ export function PageTransition({ children }: { children: ReactNode }) {
             className="absolute inset-y-0 w-1/3"
             style={{
               background:
-                'linear-gradient(90deg, transparent 0%, rgba(249, 115, 22, 0.9) 30%, rgba(245, 158, 11, 1) 50%, rgba(249, 115, 22, 0.9) 70%, transparent 100%)',
-              boxShadow: '0 0 12px rgba(249, 115, 22, 0.6)',
+                'linear-gradient(90deg, transparent 0%, var(--sc-1) 30%, var(--sc-2) 50%, var(--sc-3) 70%, transparent 100%)',
+              boxShadow: '0 0 14px var(--sc-1)',
             }}
             initial={{ x: '-100%' }}
             animate={{ x: '400%' }}
@@ -63,9 +63,11 @@ export function PageTransition({ children }: { children: ReactNode }) {
 
       <motion.div
         key={pathname}
-        initial={reduce || firstLoad.current ? false : { opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.25, ease: 'easeOut' }}
+        // A liquid arrival: the page settles out of a soft blur. `filter` is cleared afterwards so it
+        // never becomes a containing block for the page's fixed bars.
+        initial={reduce || firstLoad.current ? false : { opacity: 0, y: 14, scale: 0.985, filter: 'blur(8px)' }}
+        animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', transitionEnd: { filter: 'none' } }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         {children}
       </motion.div>

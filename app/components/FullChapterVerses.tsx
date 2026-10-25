@@ -1016,11 +1016,11 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               )}
             </p>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => setReaderSettingsOpen(true)}
-                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-full px-3 text-sm font-semibold text-dharma-muted transition hover:bg-dharma-card hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                className="liquid-pill inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-full px-3 text-sm font-semibold text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                 title="पठन व्यवस्था · Reader settings"
                 aria-label="पठन व्यवस्था · Reader settings"
                 aria-haspopup="dialog"
@@ -1031,7 +1031,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               <button
                 type="button"
                 onClick={() => setToolsOpen((o) => !o)}
-                className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full px-3 text-xs font-medium text-dharma-muted transition hover:bg-dharma-card hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                className="liquid-pill inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full px-3.5 text-xs font-medium text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                 aria-expanded={toolsOpen}
                 aria-controls="chapter-reader-tools"
               >
@@ -1044,7 +1044,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
 
           <div
             id="chapter-reader-tools"
-            className={`${toolsOpen ? 'flex' : 'hidden'} mt-3 flex-col gap-3`}
+            className={`${toolsOpen ? 'flex liquid-reveal' : 'hidden'} mt-3 flex-col gap-3`}
           >
               <div className="flex flex-wrap items-center gap-2">
               {/* Bilingual Cadence Mode Selector */}

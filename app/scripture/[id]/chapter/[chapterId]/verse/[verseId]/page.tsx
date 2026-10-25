@@ -373,6 +373,8 @@ export default function VersePage({ params }: PageProps) {
 
   return (
     <>
+      {/* Carries the scripture's palette to the liquid backdrop (globals.css). */}
+      <span hidden data-scripture={meta.category} data-scripture-id={meta.id} />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger

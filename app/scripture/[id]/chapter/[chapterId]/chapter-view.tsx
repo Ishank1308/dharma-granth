@@ -276,7 +276,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   const shareSummary = (chapter.summary ?? '').replace(/\s+/g, ' ').trim();
   const shareLines = [shareSummary.length > 180 ? `${shareSummary.slice(0, 179).trimEnd()}…` : shareSummary];
   const quietAction =
-    'inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-3.5 text-xs font-medium text-dharma-muted transition hover:bg-dharma-card hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500';
+    'liquid-pill inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-4 text-xs font-medium text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500';
 
   const chapterJsonLd = {
     '@context': 'https://schema.org',
@@ -311,7 +311,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   };
 
   return (
-    <main data-chapter-reading className="min-h-screen bg-dharma-bg">
+    <main data-chapter-reading data-scripture={meta.category} data-scripture-id={meta.id} className="min-h-screen bg-dharma-bg">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -340,8 +340,8 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         {chapter.titleSanskrit && (
           <p lang="sa" className="mt-2 font-devanagari text-lg text-dharma-muted sm:text-xl">{chapter.titleSanskrit}</p>
         )}
-        <div aria-hidden="true" className="mx-auto mt-6 h-px w-16 bg-dharma-border" />
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-1">
+        <div aria-hidden="true" className="liquid-rule mx-auto mt-6 w-24" />
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
           {chapter.verseCount > 0 ? (
             <ChapterAudioHeroAction
               className={quietAction}
@@ -369,7 +369,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
               <span>About this chapter <span lang="hi" className="font-devanagari">· अध्याय परिचय</span></span>
               <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" aria-hidden="true" />
             </summary>
-            <div className="mt-4 border-t border-dharma-border/60 pt-5">
+            <div className="liquid-reveal-details mt-4 border-t border-dharma-border/60 pt-5">
               {chapterSummary && <ChapterSummaryBox summary={chapterSummary} allHref={`/scripture/${meta.id}/summary`} />}
               <ChapterOrientation scriptureId={meta.id} chapterId={chapter.id} verseCount={chapter.verseCount} />
             </div>

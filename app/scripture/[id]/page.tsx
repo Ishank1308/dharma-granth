@@ -160,7 +160,7 @@ export default function ScripturePage({ params }: PageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-dharma-bg">
+    <main className="min-h-screen bg-dharma-bg" data-scripture={meta.category} data-scripture-id={meta.id}>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -171,7 +171,7 @@ export default function ScripturePage({ params }: PageProps) {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <ChapterHero className="border-b border-dharma-border bg-dharma-card py-5 text-dharma-text sm:py-7">
+      <ChapterHero className="liquid-glass border-b border-dharma-border/60 py-5 text-dharma-text sm:py-7">
         <div className="relative mx-auto max-w-5xl px-6">
           <FadeUp>
             <nav aria-label="Breadcrumb" className="mb-3">

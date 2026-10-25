@@ -250,6 +250,12 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans bg-dharma-bg text-dharma-text antialiased">
+        {/* Drifting colour behind every page, tinted by the scripture in view (globals.css). */}
+        <div aria-hidden="true" className="liquid-backdrop">
+          <span />
+          <span />
+          <span />
+        </div>
         <ThemeProvider>
           <SpatialLightCursor />
           <a href="#main-content" className="skip-link" lang="en">
