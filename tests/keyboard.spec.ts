@@ -95,6 +95,11 @@ test('reader: ArrowRight goes to the next chapter, ArrowLeft back', async ({ pag
 test('reader: toggle buttons expose their state to keyboard users', async ({ page }) => {
   await page.goto('/scripture/bhagavadgita/chapter/2/');
   await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+  // The reader tools sit behind Options; open it from the keyboard first.
+  const options = page.getByRole('button', { name: /Options/ });
+  await options.focus();
+  await page.keyboard.press('Enter');
+  await expect(options).toHaveAttribute('aria-expanded', 'true');
   const chanting = page.getByRole('button', { name: 'स्वाध्याय मोड' });
   await chanting.focus();
   await expect(chanting).toHaveAttribute('aria-pressed', 'false');
