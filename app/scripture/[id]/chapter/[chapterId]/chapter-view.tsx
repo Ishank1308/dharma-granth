@@ -29,6 +29,8 @@ import { ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react';
 import { ShareButton } from '@/app/components/ShareButton';
 import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
 import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction';
+import { Motif } from '@/app/components/vibe/Motif';
+import { scriptureVibe } from '@/lib/scripture-vibes';
 import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPart } from '@/lib/chapter-parts';
@@ -320,6 +322,8 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       {/* A book's chapter opening: the title and two quiet actions, nothing else between the reader and
           the first verse. The summary lives in "About this chapter" below. */}
       <header className="mx-auto max-w-2xl px-4 pb-6 pt-8 text-center sm:px-6 sm:pb-10 sm:pt-14">
+        {/* The scripture's emblem draws itself in as the chapter opens. */}
+        <Motif id={scriptureVibe(meta.id, meta.category).motif} className="motif-draw mx-auto mb-2 h-10 w-10 text-[color:var(--dharma-accent)]" />
         <Link
           href={`/scripture/${meta.id}`}
           className="inline-flex min-h-[44px] items-center gap-1.5 text-xs font-medium uppercase tracking-[0.16em] text-dharma-muted transition hover:text-dharma-text"
@@ -361,7 +365,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         </div>
       </header>
 
-      <div className="relative mx-auto w-full max-w-3xl px-4 pb-[calc(9rem+env(safe-area-inset-bottom))] sm:px-6 md:pb-12">
+      <div className="relative mx-auto w-full max-w-3xl px-4 pb-[calc(11rem+env(safe-area-inset-bottom))] sm:px-6 lg:pb-32">
         <div className="relative">
         {(!part || part.part === 1) && hasChapterContext && (
           <details className="group mb-8">

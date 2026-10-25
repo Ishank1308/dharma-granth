@@ -1,35 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
-import { BookOpen, Compass, HelpCircle, Info, Sparkles, Sun } from 'lucide-react';
+import { BookOpen, Compass, HelpCircle } from 'lucide-react';
 import { PanchangCalendar } from '@/app/components/PanchangCalendar';
+import { PanchangCosmos } from '@/app/components/cosmos/PanchangCosmos';
 
 export default function PanchangPage() {
   return (
-    <main className="min-h-screen bg-dharma-bg">
-      {/* ─── HERO SECTION ─────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-amber-900/90 via-saffron-950/90 to-stone-900 text-white py-14 sm:py-16">
-        <div className="absolute inset-0 mandala-bg opacity-10 pointer-events-none" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dharma-bg via-transparent to-transparent pointer-events-none" />
-
-        <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
-          <div className="max-w-3xl space-y-3">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-amber-200">
-              <Sun className="h-3.5 w-3.5 text-amber-400" />
-              <span>दैनिक काल दर्शन · Educational Calendar</span>
-            </div>
-
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
-              पञ्चाङ्ग · Sacred Rhythm for Daily Study
-            </h1>
-
-            <p className="text-base sm:text-lg text-amber-100/90 leading-relaxed">
-              A transparent educational calendar for contemplative scripture reading, seasonal
-              mindfulness, and daily practice — intentionally designed as a learning companion
-              rather than an authoritative ritual calculator.
-            </p>
-          </div>
-        </div>
-      </section>
+    <main data-cosmos className="min-h-screen bg-dharma-bg">
+      {/* ─── THE NIGHT SKY: Kāla-chakra and the five limbs of time ───────── */}
+      <PanchangCosmos />
 
       {/* ─── MAIN CALENDAR INTERFACE ──────────────────────────────────────── */}
       <section className="relative mx-auto max-w-6xl px-5 sm:px-6 -mt-6 sm:-mt-8 pb-16 z-10">

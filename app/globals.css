@@ -31,12 +31,37 @@
     font-display: swap;
     src: url('/fonts/noto-devanagari-600.woff2') format('woff2');
 }
+/* Newsreader: English translations, IAST and editorial headings. */
 @font-face {
-    font-family: 'Merriweather';
+    font-family: 'Newsreader';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('/fonts/merriweather-400.woff2') format('woff2');
+    src: url('/fonts/newsreader-400.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Newsreader';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/newsreader-400-italic.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Newsreader';
+    font-style: normal;
+    font-weight: 500 700;
+    font-display: swap;
+    src: url('/fonts/newsreader-600.woff2') format('woff2');
+}
+/* Tiro Devanagari Sanskrit: the shlokas themselves (any lang="sa" text). Not preloaded: it loads
+   only on pages that show Sanskrit. */
+@font-face {
+    font-family: 'Tiro Devanagari Sanskrit';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/tiro-devanagari-sanskrit-400.woff2') format('woff2');
+    unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FF;
 }
 
 /* Size-Adjusted Fallback Metrics for Zero CLS (CLS = 0.00) */
@@ -59,7 +84,7 @@
 }
 
 @font-face {
-    font-family: 'Merriweather-Fallback';
+    font-family: 'Newsreader-Fallback';
     src: local('Georgia'), local('Times New Roman');
     ascent-override: 98%;
     descent-override: 27%;
@@ -70,8 +95,11 @@
 /* Font family variables mapped to local + bundled fonts + size-adjusted fallbacks */
 :root {
     --font-inter: 'Inter', 'Inter-Fallback', system-ui, sans-serif;
-    --font-merriweather: 'Merriweather', 'Merriweather-Fallback', Georgia, serif;
+    --font-sans: var(--font-inter);
+    --font-serif: 'Newsreader', 'Newsreader-Fallback', Georgia, serif;
+    --font-merriweather: var(--font-serif);
     --font-noto-devanagari: 'Noto Sans Devanagari', 'Noto-Devanagari-Fallback', sans-serif;
+    --font-sanskrit: 'Tiro Devanagari Sanskrit', 'Noto Serif Devanagari', var(--font-noto-devanagari);
 
     /* Shared Motion Tokens (Phase 6) */
     --motion-instant: 120ms;
@@ -86,8 +114,9 @@
 /* Theme variables. The default (no data-theme attribute) is "day". */
 :root,
 :root[data-theme='day'] {
-    --dharma-bg: #fdfbf7;
-    --dharma-text: #2d2a26;
+    /* Uṣā · "Aged Bhojpatra": parchment canvas, near-black ink, kumkum accent. */
+    --dharma-bg: #fbf9f5;
+    --dharma-text: #1c1c1e;
     --dharma-text-secondary: #57524d;
     --dharma-muted: #6b6560;
     --dharma-border: #e8e3db;
@@ -103,12 +132,12 @@
     --bg-glow-2: rgba(14, 165, 148, 0.08);
     --dharma-gold: #c69234;
     --dharma-gold-border: #e6ce9d;
-    --dharma-saffron: #c2410c;
+    --dharma-saffron: #c84b31;
     --dharma-maroon: #7c2d12;
     --dharma-maroon-border: #9a3412;
     --dharma-manuscript-surface: #fdfaf3;
     --dharma-manuscript-border: #ebdfcb;
-    --dharma-focus-ring: #f97316;
+    --dharma-focus-ring: #c84b31;
     --dharma-success: #15803d;
     --dharma-success-bg: #f0fdf4;
     --dharma-success-border: #bbf7d0;
@@ -162,30 +191,31 @@
 }
 
 :root[data-theme='night'] {
-    --dharma-bg: #090908;
-    --dharma-text: #f2eee7;
-    --dharma-text-secondary: #d1c8be;
-    --dharma-muted: #b3aaa0;
-    --dharma-border: #312b25;
-    --dharma-card: #151412;
-    --dharma-card-soft: #201a16;
-    --dharma-panel: #171512;
-    --dharma-panel-muted: #241c17;
-    --dharma-reading-surface: #131210;
+    /* Rātri · "Cosmic Obsidian": blue-black canvas, warm ivory ink, muted gold. */
+    --dharma-bg: #090a0f;
+    --dharma-text: #f2efe9;
+    --dharma-text-secondary: rgba(242, 239, 233, 0.78);
+    --dharma-muted: rgba(242, 239, 233, 0.62);
+    --dharma-border: #23242c;
+    --dharma-card: #11121a;
+    --dharma-card-soft: #171822;
+    --dharma-panel: #12131b;
+    --dharma-panel-muted: #1a1b26;
+    --dharma-reading-surface: #0d0e14;
     --dharma-hero-start: #0f0e0d;
     --dharma-hero-mid: #3a2418;
     --dharma-hero-end: #7c2d12;
     --bg-glow-1: rgba(249, 115, 22, 0.18);
     /* Rātri: obsidian with copper light (was a cool teal glow and bright yellow gold). */
     --bg-glow-2: rgba(194, 120, 76, 0.09);
-    --dharma-gold: #e0a458;
-    --dharma-gold-border: #5a3d24;
-    --dharma-saffron: #f97316;
+    --dharma-gold: #e5c158;
+    --dharma-gold-border: #5a4a24;
+    --dharma-saffron: #f59e0b;
     --dharma-maroon: #991b1b;
     --dharma-maroon-border: #7f1d1d;
-    --dharma-manuscript-surface: #171613;
-    --dharma-manuscript-border: #383127;
-    --dharma-focus-ring: #f97316;
+    --dharma-manuscript-surface: #11121a;
+    --dharma-manuscript-border: #2c2a24;
+    --dharma-focus-ring: #e5c158;
     --dharma-success: #22c55e;
     --dharma-success-bg: #052e16;
     --dharma-success-border: #14532d;
@@ -1916,8 +1946,11 @@ body::after {
       turn behind every page. Transform-only animation, no filter, so it stays
       on the compositor. Quieter on chapter pages; off for reduced motion and
       print.
-   3. .liquid-glass / .liquid-pill / .liquid-reveal: frosted surfaces and the
-      blur-to-clear reveal used by panels and disclosures. */
+   3. Surfaces. Real Liquid Glass (.liquid-glass, backdrop blur) is kept to
+      three places so phones hold 60fps: the reader dock, the focused shloka
+      and the ⌘K palette. Everything else (header, bottom bar, pills) is
+      .liquid-surface / .liquid-pill: translucent with a specular rim, no blur.
+      .liquid-reveal is the blur-to-clear entrance for panels. */
 @property --sc-1 {
     syntax: '<color>';
     inherits: true;
@@ -1946,7 +1979,22 @@ body::after {
 :root[data-theme='sunset'] { --liquid-strength: 34%; }
 :root[data-theme='paper'] { --liquid-strength: 16%; }
 :root[data-theme='night'],
-:root[data-theme='dark'] { --liquid-strength: 26%; }
+:root[data-theme='dark'] {
+    --liquid-strength: 26%;
+    /* Cosmic Obsidian ambient: sacred saffron, Vedic gold, deep indigo. */
+    --sc-1: #ff9933;
+    --sc-2: #d4af37;
+    --sc-3: #1e1b4b;
+    --lb-1: 10%;
+    --lb-2: 8%;
+    --lb-3: 15%;
+}
+/* Sacred accent: kumkum on parchment, muted gold on obsidian. */
+:root { --dharma-accent: #c84b31; --dharma-accent-2: #b45309; }
+:root[data-theme='sunset'],
+:root[data-theme='paper'] { --dharma-accent: #b45309; --dharma-accent-2: #c2410c; }
+:root[data-theme='night'],
+:root[data-theme='dark'] { --dharma-accent: #e5c158; --dharma-accent-2: #f59e0b; }
 
 /* Agni's altar: fire, gold, ember. */
 :root:has([data-scripture='veda']) { --sc-1: #f97316; --sc-2: #eab308; --sc-3: #b91c1c; }
@@ -2001,12 +2049,12 @@ main.bg-dharma-bg,
 .liquid-backdrop > span:nth-child(1) {
     top: -28vmax;
     left: -22vmax;
-    background: radial-gradient(ellipse 50% 36% at 50% 50%, color-mix(in srgb, var(--sc-1) var(--liquid-strength), transparent), transparent 100%);
+    background: radial-gradient(ellipse 50% 36% at 50% 50%, color-mix(in srgb, var(--sc-1) var(--lb-1, var(--liquid-strength)), transparent), transparent 100%);
 }
 .liquid-backdrop > span:nth-child(2) {
     right: -26vmax;
     bottom: -32vmax;
-    background: radial-gradient(ellipse 48% 34% at 50% 50%, color-mix(in srgb, var(--sc-2) var(--liquid-strength), transparent), transparent 100%);
+    background: radial-gradient(ellipse 48% 34% at 50% 50%, color-mix(in srgb, var(--sc-2) var(--lb-2, var(--liquid-strength)), transparent), transparent 100%);
     animation-name: liquid-drift-b;
     animation-duration: 41s;
 }
@@ -2015,7 +2063,7 @@ main.bg-dharma-bg,
     left: 30%;
     width: 52vmax;
     height: 52vmax;
-    background: radial-gradient(ellipse 46% 30% at 50% 50%, color-mix(in srgb, var(--sc-3) calc(var(--liquid-strength) * 0.7), transparent), transparent 100%);
+    background: radial-gradient(ellipse 46% 30% at 50% 50%, color-mix(in srgb, var(--sc-3) var(--lb-3, calc(var(--liquid-strength) * 0.7)), transparent), transparent 100%);
     animation-name: liquid-drift-c;
     animation-duration: 47s;
 }
@@ -2039,43 +2087,38 @@ main.bg-dharma-bg,
     opacity: 0.75;
 }
 
-/* Frosted glass. Does not set `position` (the sticky header and fixed bars
-   keep theirs); the element must already be positioned for the sheen. */
+/* Apple Liquid Glass (dock, focused shloka, ⌘K palette only). Specular rim formula:
+   white 14% → 4% body, 2xl blur at 190% saturation, a 14% white rim, a deep drop shadow and
+   two inner highlights. Does not set `position`; the element must already be positioned. */
 .liquid-glass {
     isolation: isolate;
-    background-color: color-mix(in srgb, var(--dharma-card) 64%, transparent);
-    -webkit-backdrop-filter: blur(22px) saturate(180%);
-    backdrop-filter: blur(22px) saturate(180%);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+    -webkit-backdrop-filter: blur(40px) saturate(190%);
+    backdrop-filter: blur(40px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.55),
-        inset 0 -1px 0 rgba(45, 42, 38, 0.04),
-        0 12px 32px -18px rgba(45, 42, 38, 0.28);
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1px 0 0 rgba(255, 255, 255, 0.08);
 }
-.liquid-glass::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: inherit;
-    pointer-events: none;
-    background: linear-gradient(
-        120deg,
-        rgba(255, 255, 255, 0.32),
-        transparent 38%,
-        transparent 62%,
-        color-mix(in srgb, var(--sc-1) 9%, transparent)
-    );
-}
-:root[data-theme='night'] .liquid-glass,
-:root[data-theme='dark'] .liquid-glass {
+/* On parchment the same material needs a little body and a softer shadow to read as glass. */
+:root:not([data-theme='night']):not([data-theme='dark']) .liquid-glass {
+    background-color: rgba(251, 249, 245, 0.55);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.25));
+    border-color: rgba(255, 255, 255, 0.7);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.07),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
-        0 12px 32px -18px rgba(0, 0, 0, 0.6);
+        0 20px 50px rgba(28, 28, 30, 0.14),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 0 0 rgba(28, 28, 30, 0.04);
 }
-:root[data-theme='night'] .liquid-glass::before,
-:root[data-theme='dark'] .liquid-glass::before {
-    background: linear-gradient(120deg, rgba(255, 255, 255, 0.06), transparent 40%, transparent 60%, color-mix(in srgb, var(--sc-1) 12%, transparent));
+
+/* Bars without blur: near-opaque, with the same specular top rim. */
+.liquid-surface {
+    background-color: color-mix(in srgb, var(--dharma-bg) 92%, transparent);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06), 0 1px 0 0 color-mix(in srgb, var(--dharma-border) 60%, transparent);
+}
+:root:not([data-theme='night']):not([data-theme='dark']) .liquid-surface {
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.8), 0 1px 0 0 color-mix(in srgb, var(--dharma-border) 70%, transparent);
 }
 
 /* A glass pill whose light pours across on hover. */
@@ -2084,9 +2127,7 @@ main.bg-dharma-bg,
     overflow: hidden;
     isolation: isolate;
     border: 1px solid color-mix(in srgb, var(--dharma-border) 70%, transparent);
-    background-color: color-mix(in srgb, var(--dharma-card) 55%, transparent);
-    -webkit-backdrop-filter: blur(14px) saturate(170%);
-    backdrop-filter: blur(14px) saturate(170%);
+    background-image: linear-gradient(to bottom, color-mix(in srgb, var(--dharma-card) 92%, transparent), color-mix(in srgb, var(--dharma-card) 70%, transparent));
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 6px 18px -12px rgba(45, 42, 38, 0.3);
     transition:
         transform 0.5s var(--ease-spring),
@@ -2185,4 +2226,508 @@ details[open] > .liquid-reveal-details {
     .liquid-backdrop {
         display: none;
     }
+}
+
+/* Shlokas: Tiro Devanagari Sanskrit wherever text is marked lang="sa". Verse blocks get 1.95 line
+   height so stacked matras and repha never clip. */
+[lang='sa'] {
+    font-family: var(--font-sanskrit);
+}
+.vt-sa,
+.shloka-text {
+    font-family: var(--font-sanskrit);
+    line-height: 1.95;
+}
+
+/* SF Symbols weight for every lucide icon. */
+svg.lucide {
+    stroke-width: 1.5;
+}
+
+/* ── Liquid components (app/components/liquid) ─────────────────────── */
+
+/* Yantra ink for the hero (SVG and WebGL read these). */
+:root {
+    --yantra-ink: #7c2d12;
+    --yantra-accent: #c84b31;
+    --yantra-soft: #c9a36a;
+}
+:root[data-theme='night'],
+:root[data-theme='dark'] {
+    --yantra-ink: #f2efe9;
+    --yantra-accent: #e5c158;
+    --yantra-soft: #8a7440;
+}
+:root[data-theme='sunset'] {
+    --yantra-ink: #6f1d1b;
+    --yantra-accent: #b45309;
+    --yantra-soft: #d6a06b;
+}
+:root[data-theme='paper'] {
+    --yantra-ink: #5c4a32;
+    --yantra-accent: #9a6b2f;
+    --yantra-soft: #c4ab84;
+}
+
+/* Reader dock: above the phone's bottom navigation, 24px off the floor on desktop. */
+.liquid-dock {
+    bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+}
+@media (min-width: 1024px) {
+    .liquid-dock {
+        bottom: 1.5rem;
+    }
+}
+.dock-pill {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+        0 6px 16px -8px color-mix(in srgb, var(--dharma-accent) 60%, transparent);
+}
+:root:not([data-theme='night']):not([data-theme='dark']) .dock-pill {
+    background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.7));
+    box-shadow:
+        inset 0 1px 0 0 #ffffff,
+        0 6px 16px -8px rgba(28, 28, 30, 0.25);
+}
+.dock-wave {
+    display: inline-flex;
+    height: 16px;
+    align-items: center;
+    gap: 2px;
+}
+.dock-wave > span {
+    display: block;
+    width: 3px;
+    height: 100%;
+    border-radius: 2px;
+    background: var(--dharma-accent);
+    transform: scaleY(0.35);
+    transform-origin: center;
+}
+.dock-wave.is-playing > span {
+    animation: dock-wave 1s ease-in-out infinite;
+}
+.dock-wave.is-playing > span:nth-child(2) { animation-delay: -0.25s; }
+.dock-wave.is-playing > span:nth-child(3) { animation-delay: -0.5s; }
+.dock-wave.is-playing > span:nth-child(4) { animation-delay: -0.75s; }
+@keyframes dock-wave {
+    0%, 100% { transform: scaleY(0.3); }
+    50% { transform: scaleY(1); }
+}
+
+/* Spatial focus: inside the lifted glass card the verse drops its page hairline. */
+.spatial-focused > .verse-card.book-verse,
+.spatial-focused > .verse-card.vt {
+    border-bottom-color: transparent;
+    padding-bottom: 0.5rem;
+}
+.anvaya-pill {
+    border-color: color-mix(in srgb, var(--dharma-border) 80%, transparent);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+}
+:root:not([data-theme='night']):not([data-theme='dark']) .anvaya-pill {
+    background: rgba(255, 255, 255, 0.6);
+}
+.bhashya-active {
+    background: color-mix(in srgb, var(--dharma-accent) 16%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--dharma-accent) 42%, transparent);
+}
+
+/* Bento cards: no blur (the glass budget is spent elsewhere); a tinted surface and a specular rim. */
+.granth-card {
+    border-color: color-mix(in srgb, var(--dharma-border) 70%, transparent);
+    background:
+        radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--c1) 22%, transparent), transparent 60%),
+        radial-gradient(90% 80% at 0% 100%, color-mix(in srgb, var(--c2) 16%, transparent), transparent 60%),
+        linear-gradient(to bottom, color-mix(in srgb, var(--dharma-card) 92%, transparent), color-mix(in srgb, var(--dharma-card) 72%, transparent));
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+        0 18px 40px -28px rgba(0, 0, 0, 0.6);
+    transition: border-color 0.4s var(--ease-gentle), box-shadow 0.4s var(--ease-gentle);
+}
+.granth-card:hover {
+    border-color: color-mix(in srgb, var(--c1) 45%, var(--dharma-border));
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.16),
+        0 28px 60px -30px color-mix(in srgb, var(--c1) 70%, transparent);
+}
+:root:not([data-theme='night']):not([data-theme='dark']) .granth-card {
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+        0 18px 40px -30px rgba(28, 28, 30, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dock-wave.is-playing > span {
+        animation: none;
+        transform: scaleY(0.7);
+    }
+}
+
+/* ── Panchang: the night sky (app/components/cosmos) ───────────────── */
+/* The page's ambient light turns to indigo, violet and moonlight. */
+:root:has([data-cosmos]) {
+    --sc-1: #6366f1;
+    --sc-2: #a78bfa;
+    --sc-3: #fde68a;
+}
+.cosmos-sky {
+    background:
+        radial-gradient(120% 80% at 70% 10%, #26214a 0%, transparent 60%),
+        radial-gradient(90% 70% at 10% 90%, #1a1440 0%, transparent 65%),
+        linear-gradient(180deg, #05060f 0%, #0a0b1e 55%, #0d0b22 100%);
+}
+.cosmos-milkyway {
+    background: linear-gradient(118deg, transparent 30%, rgba(167, 139, 250, 0.10) 44%, rgba(253, 230, 138, 0.07) 50%, rgba(99, 102, 241, 0.10) 56%, transparent 70%);
+    filter: blur(18px);
+}
+.cosmos-drift-far { animation: cosmos-drift 240s linear infinite alternate; }
+.cosmos-drift-near { animation: cosmos-drift 150s linear infinite alternate-reverse; }
+@keyframes cosmos-drift {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-4%, 2%, 0); }
+}
+.cosmos-twinkle { animation: cosmos-twinkle 4.5s ease-in-out infinite; }
+@keyframes cosmos-twinkle {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 1; }
+}
+.cosmos-meteor {
+    position: absolute;
+    top: 12%;
+    left: 70%;
+    width: 140px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(253, 246, 227, 0.9), transparent);
+    transform: rotate(-24deg);
+    opacity: 0;
+    animation: cosmos-meteor 11s ease-out 3s infinite;
+}
+@keyframes cosmos-meteor {
+    0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(-24deg); }
+    2% { opacity: 1; }
+    8% { opacity: 0; transform: translate3d(-260px, 116px, 0) rotate(-24deg); }
+    100% { opacity: 0; transform: translate3d(-260px, 116px, 0) rotate(-24deg); }
+}
+.cosmos-halo {
+    background: radial-gradient(closest-side, rgba(167, 139, 250, 0.16), rgba(99, 102, 241, 0.06) 60%, transparent);
+}
+.cosmos-turn { animation: cosmos-turn 720s linear infinite; transform-origin: 260px 260px; }
+@keyframes cosmos-turn { to { transform: rotate(360deg); } }
+.cosmos-nak {
+    fill: rgba(236, 232, 245, 0.035);
+    stroke: rgba(185, 178, 214, 0.22);
+    stroke-width: 0.8;
+    transition: fill 0.8s ease;
+}
+.cosmos-nak.is-current {
+    fill: rgba(243, 227, 179, 0.2);
+    stroke: rgba(243, 227, 179, 0.8);
+    filter: drop-shadow(0 0 10px rgba(243, 227, 179, 0.5));
+}
+.cosmos-nak-label {
+    fill: rgba(201, 195, 224, 0.62);
+    font-family: var(--font-sanskrit);
+    font-size: 10.5px;
+}
+.cosmos-nak-label.is-current { fill: #fdf6e3; font-size: 12px; }
+.cosmos-tithi { stroke: none; }
+.cosmos-tithi.is-shukla { fill: rgba(253, 246, 227, 0.32); }
+.cosmos-tithi.is-krishna { fill: rgba(129, 120, 180, 0.28); }
+.cosmos-tithi.is-current { fill: #f3e3b3; filter: drop-shadow(0 0 6px rgba(243, 227, 179, 0.8)); }
+.cosmos-star {
+    fill: none;
+    stroke: rgba(243, 227, 179, 0.5);
+    stroke-width: 0.9;
+    stroke-linejoin: round;
+}
+.cosmos-limb-node { fill: #f3e3b3; filter: drop-shadow(0 0 5px rgba(243, 227, 179, 0.9)); }
+.cosmos-limb-label {
+    fill: #ece8f5;
+    font-family: var(--font-sanskrit);
+    font-size: 13px;
+}
+.cosmos-limb {
+    border: 1px solid rgba(185, 178, 214, 0.14);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+@media (prefers-reduced-motion: reduce) {
+    .cosmos-drift-far, .cosmos-drift-near, .cosmos-twinkle, .cosmos-turn, .cosmos-meteor { animation: none; }
+}
+
+/* ── The scripture opening as a book (app/components/vibe/ScriptureBook) ── */
+.sbook-stage {
+    --bw: clamp(150px, 38vw, 250px);
+    width: calc(var(--bw) * 2);
+    display: flex;
+    justify-content: flex-end;
+    perspective: 1800px;
+}
+.sbook {
+    position: relative;
+    width: var(--bw);
+    aspect-ratio: 3 / 4;
+    transform-style: preserve-3d;
+    transform: rotateX(10deg) rotateY(-6deg);
+    animation: sbook-float 9s ease-in-out 3s infinite alternate;
+}
+@keyframes sbook-float {
+    from { transform: rotateX(10deg) rotateY(-6deg) translateY(0); }
+    to { transform: rotateX(6deg) rotateY(-2deg) translateY(-6px); }
+}
+.sbook-body {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+}
+/* Page block: the thickness of the book at its fore-edge. */
+.sbook-block {
+    position: absolute;
+    inset: 2% -3% 2% 0;
+    border-radius: 2px 6px 6px 2px;
+    background: repeating-linear-gradient(180deg, #efe4cc 0 2px, #e2d4b6 2px 3px);
+    box-shadow: 18px 26px 40px -18px rgba(0, 0, 0, 0.55);
+    transform: translateZ(-6px);
+}
+.sbook-titlepage {
+    position: absolute;
+    inset: 2% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12% 10%;
+    text-align: center;
+    border-radius: 2px 6px 6px 2px;
+    background:
+        radial-gradient(120% 90% at 50% 40%, #fbf5e6, #efe3c7 70%, #e3d3b0);
+    box-shadow: inset 10px 0 18px -10px rgba(80, 50, 20, 0.35);
+}
+.sbook-cover,
+.sbook-leaf {
+    position: absolute;
+    inset: 0;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+}
+.sbook-leaf {
+    inset: 2% 0;
+    border-radius: 2px 6px 6px 2px;
+    background: linear-gradient(90deg, #e9dcc0, #f8f0dc 30%, #f3e8cf);
+    box-shadow: inset 6px 0 10px -6px rgba(80, 50, 20, 0.3);
+    animation: sbook-leaf-1 2.4s cubic-bezier(0.3, 0.75, 0.25, 1) 1.15s both;
+}
+.sbook-leaf-2 { animation-name: sbook-leaf-2; animation-delay: 1.4s; }
+@keyframes sbook-leaf-1 {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(-150deg); }
+}
+@keyframes sbook-leaf-2 {
+    from { transform: rotateY(0deg); }
+    60% { transform: rotateY(-120deg); }
+    to { transform: rotateY(-146deg); }
+}
+.sbook-cover {
+    animation: sbook-open 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.55s both;
+}
+@keyframes sbook-open {
+    0% { transform: rotateY(0deg); }
+    18% { transform: rotateY(8deg); }
+    100% { transform: rotateY(-158deg); }
+}
+.sbook-cover-front,
+.sbook-cover-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 3px 8px 8px 3px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.sbook-cover-front {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9%;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%, rgba(255, 255, 255, 0.06) 8%, transparent 11%),
+        radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%),
+        linear-gradient(160deg, var(--cover-2), var(--cover-1));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+        24px 30px 50px -22px rgba(0, 0, 0, 0.6);
+}
+.sbook-cover-back {
+    transform: rotateY(180deg);
+    background:
+        radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--foil) 30%, transparent) 0 1.5px, transparent 2px) 0 0 / 14px 14px,
+        linear-gradient(160deg, var(--cover-1), var(--cover-2));
+}
+.sbook-frame {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, var(--foil) 55%, transparent);
+    outline: 1px solid color-mix(in srgb, var(--foil) 25%, transparent);
+    outline-offset: 4px;
+    border-radius: 4px;
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.35));
+}
+/* Cover materials */
+.sbook-palm-leaf .sbook-cover-front { background-image: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 9px), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); }
+.sbook-silk .sbook-cover-front { background-image: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.16) 48%, transparent 60%), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); background-size: 250% 100%, auto, auto, auto; animation: sbook-silk 7s ease-in-out infinite alternate; }
+@keyframes sbook-silk { from { background-position: 100% 0, 0 0, 0 0, 0 0; } to { background-position: 0% 0, 0 0, 0 0, 0 0; } }
+.sbook-velvet .sbook-cover-front { background-image: radial-gradient(140% 100% at 50% 0%, rgba(255, 255, 255, 0.1), transparent 60%), linear-gradient(90deg, rgba(0, 0, 0, 0.4), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); }
+.sbook-bark .sbook-cover-front { background-image: repeating-linear-gradient(95deg, rgba(0, 0, 0, 0.08) 0 1px, transparent 1px 6px), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); }
+.sbook-cloth .sbook-cover-front { background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 4px), repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.06) 0 1px, transparent 1px 4px), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); }
+
+@media (prefers-reduced-motion: reduce) {
+    .sbook, .sbook-cover, .sbook-leaf, .sbook-silk .sbook-cover-front { animation: none; }
+    .sbook-cover { transform: rotateY(-158deg); }
+    .sbook-leaf-1 { transform: rotateY(-150deg); }
+    .sbook-leaf-2 { transform: rotateY(-146deg); }
+}
+@media print {
+    .sbook-stage { display: none; }
+}
+.scripture-vibe-hero {
+    background:
+        radial-gradient(80% 120% at 100% 0%, color-mix(in srgb, var(--cover-3) 14%, transparent), transparent 60%),
+        radial-gradient(60% 90% at 0% 100%, color-mix(in srgb, var(--cover-2) 10%, transparent), transparent 65%);
+}
+
+/* Chapter page turn: a leaf the colour of the page, shaded toward its spine, turning away. */
+.page-leaf {
+    position: absolute;
+    inset: 0;
+    background: var(--dharma-bg);
+    backface-visibility: hidden;
+}
+.page-leaf.is-forward {
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.22), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.05) 96%, rgba(0, 0, 0, 0.25)),
+        var(--dharma-bg);
+    box-shadow: 30px 0 60px rgba(0, 0, 0, 0.35);
+}
+.page-leaf.is-back {
+    background:
+        linear-gradient(270deg, rgba(0, 0, 0, 0.22), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.05) 96%, rgba(0, 0, 0, 0.25)),
+        var(--dharma-bg);
+    box-shadow: -30px 0 60px rgba(0, 0, 0, 0.35);
+}
+
+/* Uṣā: first light. The day theme's ambient colours are a sunrise: rose, gold, soft lavender. */
+:root:not([data-theme]),
+:root[data-theme='day'] {
+    --sc-1: #fb7185;
+    --sc-2: #fbbf24;
+    --sc-3: #a78bfa;
+    --liquid-strength: 22%;
+}
+
+/* ── Rāt-rānī blossoms (app/components/vibe/RaatRani) ──────────────── */
+.rr { position: absolute; inset: 0; pointer-events: none; }
+.rr-spot {
+    position: absolute;
+    width: calc(34px * var(--rr-s, 1));
+    transform: translate(-50%, -50%) rotate(var(--rr-r, 0deg));
+}
+.rr-flower { display: block; width: 100%; overflow: visible; }
+.rr-tube { fill: none; stroke: #9bbf8a; stroke-width: 1.6; stroke-linecap: round; opacity: 0.7; }
+.rr-petal { fill: #fffdf6; stroke: rgba(160, 190, 140, 0.55); stroke-width: 0.6; }
+.rr-heart { fill: #e9f5c8; }
+.rr-petals {
+    transform-origin: 0 0;
+    transform: scale(0.15) rotate(-60deg);
+    opacity: 0;
+    animation:
+        rr-open 3.2s cubic-bezier(0.22, 1, 0.36, 1) var(--rr-d, 0s) forwards,
+        rr-breathe 7s ease-in-out calc(var(--rr-d, 0s) + 3.2s) infinite alternate;
+}
+@keyframes rr-open {
+    0% { transform: scale(0.15) rotate(-60deg); opacity: 0; }
+    40% { opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+@keyframes rr-breathe {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1.06) rotate(4deg); }
+}
+/* A thread of scent rising from each flower. */
+.rr-scent {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(255, 253, 246, 0.9);
+    opacity: 0;
+    animation: rr-scent 9s ease-out calc(var(--rr-d, 0s) + 3s) infinite;
+}
+@keyframes rr-scent {
+    0% { transform: translate(0, 0) scale(1); opacity: 0; }
+    15% { opacity: 0.8; }
+    100% { transform: translate(14px, -70px) scale(0.3); opacity: 0; }
+}
+.rr-ambient { opacity: 0.55; }
+.rr-hero { opacity: 0.9; }
+:root[data-theme='night'] .rr-flower,
+:root[data-theme='dark'] .rr-flower {
+    filter: drop-shadow(0 0 6px rgba(240, 253, 244, 0.55));
+}
+:root[data-theme='night'] .rr-ambient,
+:root[data-theme='dark'] .rr-ambient { opacity: 0.7; }
+:root[data-theme='paper'] .rr-ambient { opacity: 0.35; }
+/* While reading, the blossoms stay at the edges and quieter. */
+:root:has([data-chapter-reading]) .rr-ambient { opacity: 0.3; }
+@media (max-width: 640px) {
+    .rr-ambient .rr-spot:nth-child(n + 4) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .rr-petals { animation: none; transform: none; opacity: 1; }
+    .rr-scent { animation: none; display: none; }
+}
+@media print {
+    .rr { display: none; }
+}
+/* An emblem drawn stroke by stroke. */
+.motif-draw path,
+.motif-draw ellipse,
+.motif-draw circle,
+.motif-draw rect {
+    stroke-dasharray: 420;
+    stroke-dashoffset: 420;
+    animation: motif-draw 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+.motif-draw text { opacity: 0; animation: rr-fade 1.6s ease 0.3s forwards; }
+@keyframes motif-draw { to { stroke-dashoffset: 0; } }
+@keyframes rr-fade { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+    .motif-draw path, .motif-draw ellipse, .motif-draw circle, .motif-draw rect { animation: none; stroke-dashoffset: 0; }
+    .motif-draw text { animation: none; opacity: 1; }
+}
+/* Chapter loading: hairline placeholders that breathe, and one blossom opening and closing. */
+.skeleton-line {
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--dharma-text) 9%, transparent);
+    animation: skeleton-breathe 2.4s ease-in-out infinite;
+}
+@keyframes skeleton-breathe {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+}
+.loading-blossom path { fill: color-mix(in srgb, var(--dharma-accent) 70%, transparent); }
+.loading-blossom { animation: loading-blossom 2.6s ease-in-out infinite; }
+@keyframes loading-blossom {
+    0%, 100% { transform: scale(0.7) rotate(-20deg); opacity: 0.6; }
+    50% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .skeleton-line, .loading-blossom { animation: none; }
 }

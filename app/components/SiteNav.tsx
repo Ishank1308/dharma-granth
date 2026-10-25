@@ -567,7 +567,7 @@ export function SiteNav({
         data-site-header="true"
         data-library-verse-count={libraryVerses}
         data-theme-options={THEME_IDS.join(',')}
-        className="liquid-glass sticky top-0 z-40 border-b border-dharma-border/60 transition-colors duration-200"
+        className="liquid-surface sticky top-0 z-40 border-b border-dharma-border/60 transition-colors duration-200"
         aria-label="Primary navigation"
       >
         <div className="mx-auto max-w-7xl px-3 sm:px-6 2xl:max-w-[1760px]">
@@ -1141,7 +1141,7 @@ export function SiteNav({
       {/* Strictly limited to the 5 requested items: Home, Search, Library, Sadhana, Saved */}
       <nav
         aria-label="Mobile quick navigation"
-        className="liquid-glass fixed bottom-0 inset-x-0 z-30 lg:hidden border-t border-dharma-border/60"
+        className="liquid-surface fixed bottom-0 inset-x-0 z-30 lg:hidden border-t border-dharma-border/60"
         style={{
           paddingBottom: 'env(safe-area-inset-bottom, 0px)',
         }}

@@ -165,6 +165,9 @@ interface Props {
   onHighlight: (color: HighlightColor) => void;
   /** Opens full-screen focus contemplation mode on this verse */
   onOpenFocus?: () => void;
+  /** Spatial focus (liquid/SpatialShloka): the verse number lifts or lowers this verse. */
+  spatialFocused?: boolean;
+  onToggleSpatial?: () => void;
   /** Dedicated verse page, linked from the card so the URL survives hydration. */
   versePageHref?: string;
   /** Whether this verse is currently being recited */
@@ -250,6 +253,8 @@ export function VerseCard({
   highlight,
   onHighlight,
   onOpenFocus,
+  spatialFocused = false,
+  onToggleSpatial,
   versePageHref,
   isReciting,
   onPlayRecitation,
@@ -456,12 +461,13 @@ export function VerseCard({
       <div className="relative px-1 py-2 sm:px-2">
         {/* ── Header ─────────────────────────────────────────── */}
         <header className="mb-2 flex items-center gap-3">
-          {onOpenFocus ? (
+          {onToggleSpatial || onOpenFocus ? (
             <button
               type="button"
-              onClick={onOpenFocus}
+              onClick={onToggleSpatial ?? onOpenFocus}
+              aria-pressed={onToggleSpatial ? spatialFocused : undefined}
               className="group/hdr flex min-h-11 items-center gap-3 rounded-lg px-1 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dharma-card"
-              title="एकाग्रता मोड में पढ़ें (Focus Mode)"
+              title={onToggleSpatial ? (spatialFocused ? 'श्लोक नीचे रखें · Lower this verse' : 'श्लोक उठाएँ · Lift this verse into focus') : 'एकाग्रता मोड में पढ़ें (Focus Mode)'}
             >
               <span className="sr-only">श्लोक</span>
               <VerseReference label={`${toAsciiDigits(chapterId)}.${toAsciiDigits(verseLabel)}`} />

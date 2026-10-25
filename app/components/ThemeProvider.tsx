@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-import { THEME_IDS, THEME_NAMES, type Theme } from '@/lib/site-theme';
+import { DEFAULT_THEME, THEME_IDS, THEME_NAMES, type Theme } from '@/lib/site-theme';
 
 export { THEME_NAMES } from '@/lib/site-theme';
 export type { Theme } from '@/lib/site-theme';
@@ -41,8 +41,8 @@ const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
  * state in sync and exposes setters.
  */
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('day');
-  const [effectiveTheme, setEffectiveTheme] = useState<'day' | 'sunset' | 'paper' | 'night'>('day');
+  const [theme, setThemeState] = useState<Theme>(DEFAULT_THEME);
+  const [effectiveTheme, setEffectiveTheme] = useState<'day' | 'sunset' | 'paper' | 'night'>(DEFAULT_THEME);
 
   useEffect(() => {
     let stored: Theme | null = null;
@@ -51,7 +51,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     } catch {
       stored = null;
     }
-    const initialTheme: Theme = stored && THEMES.includes(stored) ? stored : 'day';
+    const initialTheme: Theme = stored && THEMES.includes(stored) ? stored : DEFAULT_THEME;
     setThemeState(initialTheme);
 
     const applyTheme = (t: Theme) => {

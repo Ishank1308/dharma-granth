@@ -60,7 +60,8 @@ import { saveChapterVersesToDB, getCachedChapterVersesFromDB } from '@/lib/db/gr
 import { isHindiSourceReviewRequired } from '@/lib/ocr-hindi-review';
 import type { SvadhyayaTab } from '@/app/components/reader/SvadhyayaSplitDrawer';
 const SvadhyayaSplitDrawer = dynamic(() => import('@/app/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
-import { MobileOneThumbControlBar } from './reader/MobileOneThumbControlBar';
+import { SpatialShloka, type BhashyaSource, type ReaderMode } from './liquid/SpatialShloka';
+import { LiquidGlassDock } from './liquid/LiquidGlassDock';
 import {
   saveReadingPosition,
   recordReadingHistory,
@@ -209,6 +210,17 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const [cadenceMode, setCadenceMode] = useState<ParayanaCadenceMode>(() => getSoundscapeState().parayanaCadenceMode);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [currentViewportVerse, setCurrentViewportVerse] = useState<string | null>(null);
+  // Spatial focus: the lifted verse, and what the dock asks it to open (Anvaya, Bhāṣya or nothing).
+  const [focusedVerse, setFocusedVerse] = useState<string | null>(null);
+  const [readerMode, setReaderMode] = useState<ReaderMode>('samhita');
+  useEffect(() => {
+    if (!focusedVerse) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setFocusedVerse(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [focusedVerse]);
   const ekagrataMode = readerSettings.spotlightMode;
   const pendingParayanaRef = useRef(false);
   const showTranslit = readerSettings.showTransliteration;
@@ -802,10 +814,11 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     lg: 'text-lg md:text-xl',
     xl: 'text-xl md:text-2xl font-medium',
   }[readerSettings.sanskritSize]} ${{
-    compact: 'leading-[1.7]',
-    normal: 'leading-[1.85]',
-    relaxed: 'leading-[2.05]',
-    loose: 'leading-[2.35]',
+    // 1.95 is the floor for Devanagari: below it stacked matras and repha clip.
+    compact: 'leading-[1.95]',
+    normal: 'leading-[2.05]',
+    relaxed: 'leading-[2.2]',
+    loose: 'leading-[2.4]',
   }[readerSettings.lineSpacing]}`;
   const translationFontSizeClass = `${{
     sm: 'text-sm md:text-base',
@@ -992,6 +1005,52 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       </div>
     );
   }
+
+  /** The commentaries this verse actually carries, for the Bhāṣya switcher. Absent ones are not listed. */
+  const bhashyaFor = (v: FullVerse): BhashyaSource[] => {
+    const comment = state.commentary?.[`${chapterId}:${Number(canonicalVerseId(chapterId, v.number))}`];
+    const { vyakhya, commentary } = splitVyakhyaCommentary([comment?.explanation, v.explanation, v.commentary], v.wordMeaning);
+    const isHi = (t: string) => (t.match(/[\u0900-\u097F]/g)?.length ?? 0) > (t.match(/[A-Za-z]/g)?.length ?? 0);
+    const draft = Boolean(comment?.ai || comment?.explanationAi || comment?.editorial);
+    const out: BhashyaSource[] = [];
+    if (vyakhya) out.push({ id: 'vyakhya', labelHi: 'व्याख्या', labelEn: 'Explanation', text: vyakhya, lang: 'hi', draft });
+    if (commentary && commentary !== vyakhya) {
+      out.push({ id: 'commentary', labelHi: 'टीका', labelEn: 'Commentary', text: commentary, lang: isHi(commentary) ? 'hi' : 'en', draft: !vyakhya && draft });
+    }
+    const science = comment?.science ?? v.science;
+    if (science) out.push({ id: 'research', labelHi: 'शोध टिप्पणी', labelEn: 'Research note', text: science, lang: isHi(science) ? 'hi' : 'en', draft: Boolean(comment?.ai || comment?.scienceAi) });
+    const lesson = comment?.lifeLesson ?? v.lifeLesson;
+    if (lesson) out.push({ id: 'lesson', labelHi: 'जीवन सूत्र', labelEn: 'For life', text: lesson, lang: isHi(lesson) ? 'hi' : 'en', draft: Boolean(comment?.ai) });
+    return out;
+  };
+
+  const changeReaderMode = (mode: ReaderMode) => {
+    setReaderMode(mode);
+    if (mode === 'samhita') {
+      setFocusedVerse(null);
+      return;
+    }
+    if (!focusedVerse && state.kind === 'ready' && state.verses.length > 0) {
+      // Nothing lifted yet: lift the verse being read.
+      const target = currentViewportVerse ?? String(state.verses[activeVerseIndex]?.number ?? state.verses[0].number);
+      setFocusedVerse(target);
+      document.getElementById(`verse-${target}`)?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
+    }
+  };
+
+  const toggleListening = () => {
+    triggerTactileFeedback('selection', 'click');
+    if (parayanaActive) {
+      stopSoundscape();
+      setParayanaActive(false);
+      setActiveRecitingVerse(null);
+      setContinuousParayana(false);
+      return;
+    }
+    window.dispatchEvent(
+      new CustomEvent('dharma:start-chapter-parayana', { detail: { startVerse: focusedVerse ?? currentViewportVerse ?? undefined } }),
+    );
+  };
 
   if (state.verses.length === 0) {
     return (
@@ -1240,7 +1299,16 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     data-plain-verse={String(v.number)}
                     className={`transition-opacity duration-300 ${!isSpotlighted ? 'opacity-35 hover:opacity-90 focus-within:opacity-100' : 'opacity-100'}`}
                   >
-                    <VerseText verse={v} chapterId={chapterId} href={versePageHref(scriptureId, chapterId, v.number)} />
+                    <SpatialShloka
+                      focused={focusedVerse === String(v.number)}
+                      dimmed={focusedVerse !== null && focusedVerse !== String(v.number)}
+                      onFocusChange={(on) => setFocusedVerse(on ? String(v.number) : null)}
+                      mode={readerMode}
+                      wordMeaning={v.wordMeaning}
+                      bhashya={focusedVerse === String(v.number) ? bhashyaFor(v) : []}
+                    >
+                      <VerseText verse={v} chapterId={chapterId} href={versePageHref(scriptureId, chapterId, v.number)} />
+                    </SpatialShloka>
                   </div>
                 );
               }
@@ -1269,7 +1337,17 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                   key={`${String(v.number)}-${index}`}
                   className={`transition-opacity duration-300 ${!isSpotlighted ? 'opacity-35 hover:opacity-90 focus-within:opacity-100' : 'opacity-100'}`}
                 >
+                  <SpatialShloka
+                    focused={focusedVerse === String(v.number)}
+                    dimmed={focusedVerse !== null && focusedVerse !== String(v.number)}
+                    onFocusChange={(on) => setFocusedVerse(on ? String(v.number) : null)}
+                    mode={readerMode}
+                    wordMeaning={v.wordMeaning}
+                    bhashya={focusedVerse === String(v.number) ? bhashyaFor(v) : []}
+                  >
                   <VerseCard
+                    spatialFocused={focusedVerse === String(v.number)}
+                    onToggleSpatial={() => setFocusedVerse((cur) => (cur === String(v.number) ? null : String(v.number)))}
                     depth={readingDepth}
                     verse={v}
                     relatedTeachings={relatedTeachingsByVerse[String(v.number)]}
@@ -1332,6 +1410,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     onOpenSvadhyaya={handleOpenSvadhyaya}
                     isActive={index === activeVerseIndex}
                   />
+                  </SpatialShloka>
                 </div>
               );
             })
@@ -1359,38 +1438,14 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       />
       )}
 
-      {/* Mobile One-Thumb Reader Control Bar (<768px) */}
+      {/* The reader's Liquid Glass dock: Saṁhitā, Anvaya, Śravaṇa, Bhāṣya, ⌘K. */}
       {state.kind === 'ready' && state.verses.length > 0 && (
-        <MobileOneThumbControlBar
-          currentVerseNumber={state.verses[activeVerseIndex]?.number ?? 1}
-          totalVerses={state.verses.length}
-          currentVerseSanskrit={state.verses[activeVerseIndex]?.sanskrit}
-          onOpenFocus={() => {
-            setFocusVerseIndex(activeVerseIndex);
-            setFocusModeOpen(true);
-          }}
-          onPrevVerse={() => {
-            const nextIdx = Math.max(0, activeVerseIndex - 1);
-            setActiveVerseIndex(nextIdx);
-            scrollToVerse(state.verses[nextIdx].number);
-          }}
-          onNextVerse={() => {
-            const nextIdx = Math.min(state.verses.length - 1, activeVerseIndex + 1);
-            setActiveVerseIndex(nextIdx);
-            scrollToVerse(state.verses[nextIdx].number);
-          }}
-          activeLayers={{
-            translit: showTranslit,
-            hindi: showHindi,
-            english: showEnglish,
-            commentary: showCommentary,
-          }}
-          onToggleLayer={(layer) => {
-            if (layer === 'translit') updateLayers({ translit: !showTranslit });
-            if (layer === 'hindi') updateLayers({ hindi: !showHindi });
-            if (layer === 'english') updateLayers({ english: !showEnglish });
-            if (layer === 'commentary') updateLayers({ commentary: !showCommentary });
-          }}
+        <LiquidGlassDock
+          mode={readerMode}
+          onModeChange={changeReaderMode}
+          listening={parayanaActive}
+          onToggleListening={toggleListening}
+          pinned={focusedVerse !== null}
         />
       )}
       {state.source?.repo && (

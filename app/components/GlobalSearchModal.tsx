@@ -4,7 +4,8 @@ import { Fragment, useCallback, useDeferredValue, useEffect, useId, useMemo, use
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { EASE_OUT_QUINT, SPRINGS } from '@/app/components/motion/primitives';
+import { SPRINGS } from '@/app/components/motion/primitives';
+import { SPRING as PALETTE_SPRING } from '@/app/components/liquid/motion';
 import {
   ArrowRight,
   BookMarked,
@@ -630,7 +631,8 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduce ? 0 : 0.18 }}
-            className="fixed inset-0 bg-stone-950/75 backdrop-blur-md"
+            // A plain dim, no blur: the palette itself is the one glass layer here.
+            className="fixed inset-0 bg-[#05060a]/70"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -639,9 +641,9 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             initial={{ opacity: 0, scale: 0.97, y: -12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: -8 }}
-            transition={{ duration: reduce ? 0 : 0.24, ease: EASE_OUT_QUINT }}
+            transition={reduce ? { duration: 0 } : PALETTE_SPRING}
             ref={windowRef}
-            className="relative z-10 flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-amber-500/30 bg-dharma-card shadow-[0_25px_70px_rgba(0,0,0,0.5)]"
+            className="liquid-glass command-palette relative z-10 flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-[28px]"
           >
             {/* Search box */}
             <div className="flex items-center border-b border-dharma-border/80 px-4 py-3 sm:px-6">

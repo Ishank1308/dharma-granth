@@ -35,6 +35,18 @@ export function PageTransition({ children }: { children: ReactNode }) {
     firstLoad.current = false;
   }, []);
 
+  // Chapter to chapter turns like a page: forward swings in from the right edge, back from the left.
+  const lastPath = useRef(pathname);
+  const turn = useRef<0 | 1 | -1>(0);
+  if (lastPath.current !== pathname) {
+    const chapterOf = (p: string) => p.match(/^\/scripture\/([^/]+)\/chapter\/(\d+)/);
+    const from = chapterOf(lastPath.current);
+    const to = chapterOf(pathname);
+    turn.current = from && to && from[1] === to[1] && from[2] !== to[2] ? (Number(to[2]) > Number(from[2]) ? 1 : -1) : 0;
+    lastPath.current = pathname;
+  }
+  const pageTurn = turn.current !== 0;
+
   return (
     <>
       {/* Shimmer sweep — keyed by pathname so it remounts on each nav. */}
@@ -61,16 +73,42 @@ export function PageTransition({ children }: { children: ReactNode }) {
         </motion.div>
       )}
 
-      <motion.div
-        key={pathname}
-        // A liquid arrival: the page settles out of a soft blur. `filter` is cleared afterwards so it
-        // never becomes a containing block for the page's fixed bars.
-        initial={reduce || firstLoad.current ? false : { opacity: 0, y: 14, scale: 0.985, filter: 'blur(8px)' }}
-        animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', transitionEnd: { filter: 'none' } }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {children}
-      </motion.div>
+      {pageTurn ? (
+        <>
+          {/* One viewport-sized leaf turns away on its spine, revealing the next chapter beneath. */}
+          {!reduce && (
+            <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[45]" style={{ perspective: 1600 }}>
+              <motion.div
+                key={`leaf-${pathname}`}
+                className={`page-leaf ${turn.current === 1 ? 'is-forward' : 'is-back'}`}
+                style={{ transformOrigin: turn.current === 1 ? 'left center' : 'right center' }}
+                initial={{ rotateY: 0, opacity: 1 }}
+                animate={{ rotateY: turn.current === 1 ? -115 : 115, opacity: 0 }}
+                transition={{ rotateY: { type: 'spring', stiffness: 90, damping: 20 }, opacity: { duration: 0.9, ease: [0.4, 0, 0.6, 1] } }}
+              />
+            </div>
+          )}
+          <motion.div
+            key={pathname}
+            initial={reduce ? false : { opacity: 0, x: turn.current * 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ type: 'spring', stiffness: 280, damping: 26 }}
+          >
+            {children}
+          </motion.div>
+        </>
+      ) : (
+        <motion.div
+          key={pathname}
+          // A liquid arrival: the page settles out of a soft blur. `filter` is cleared afterwards so it
+          // never becomes a containing block for the page's fixed bars.
+          initial={reduce || firstLoad.current ? false : { opacity: 0, y: 14, scale: 0.985, filter: 'blur(8px)' }}
+          animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', transitionEnd: { filter: 'none' } }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {children}
+        </motion.div>
+      )}
     </>
   );
 }

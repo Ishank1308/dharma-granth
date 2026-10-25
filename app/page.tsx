@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
-import { HeroSection } from '@/app/components/HeroSection';
+import { HeroSacredGeometry } from '@/app/components/liquid/HeroSacredGeometry';
 import { SplashScreen } from '@/app/components/SplashScreen';
 import { ContinueReading } from '@/app/components/ContinueReading';
 import { VerseOfTheDayCompact } from '@/app/components/VerseOfTheDayCompact';
-import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
+import { GranthBentoGrid } from '@/app/components/liquid/GranthBentoGrid';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
 import { SiteFooter } from '@/app/components/SiteFooter';
 
@@ -44,8 +44,8 @@ export default function HomePage() {
         {/* Brand splash: CSS-only, once per session, hidden from assistive tech */}
         <SplashScreen />
 
-        {/* 1. What this is, and search */}
-        <HeroSection />
+        {/* 1. What this is, and search: the yantra hero with the ⌘K glass pill */}
+        <HeroSacredGeometry />
 
         {/* 2. Continue reading, or a beginner path when there is no history */}
         <ContinueReading />
@@ -53,8 +53,8 @@ export default function HomePage() {
         {/* 3. Today's verse, shown once */}
         <VerseOfTheDayCompact />
 
-        {/* 4. The library */}
-        <FeaturedScripturesSection />
+        {/* 4. The library: Śruti and Smṛti as a Bento grid */}
+        <GranthBentoGrid />
 
         {/* 5. Trust, sourcing and methodology.
             Cut from Home (audit 2026-10-22, P0): HomeDiscoveryBento repeated the daily verse and the resume card;
