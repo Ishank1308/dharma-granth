@@ -333,7 +333,7 @@ function buildMasterIndex(): SearchResultItem[] {
       groupLabel: 'अध्ययन सामग्री · Learning',
       category: 'pathway',
       categoryLabel: 'अध्ययन पथ · Pathway',
-      href: `/learn/pathways`,
+      href: `/learn/${p.id}/`,
       reference: 'Study Pathway',
       matchingText: p.title,
       translationExcerpt: p.description,

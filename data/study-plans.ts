@@ -1,5 +1,5 @@
 /**
- * Short reading orders for /learn/paths/.
+ * Short reading orders for /learn/plans/ (study orders section).
  * Each step opens a page that already exists. Notes name that page.
  * They are not a translation, a commentary, or a new teaching.
  * Progress is stored with the existing pathway ids in this browser.

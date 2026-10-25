@@ -121,10 +121,10 @@ export function SiteFooter() {
               <Link href="/daily-verse" className="transition hover:text-saffron-700">
                 दैनिक श्लोक (Daily Verse for WhatsApp)
               </Link>
-              <Link href="/learn/paths" className="transition hover:text-saffron-700">
-                स्वाध्याय मार्ग (Guided Paths)
+              <Link href="/learn/journeys/" className="transition hover:text-saffron-700">
+                स्वाध्याय यात्राएँ (Guided Journeys)
               </Link>
-              <Link href="/learn/plans" className="transition hover:text-saffron-700">
+              <Link href="/learn/plans/" className="transition hover:text-saffron-700">
                 पठन योजनाएँ (Reading Plans)
               </Link>
               <Link href="/learn/faq" className="transition hover:text-saffron-700">

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { wisdomPathways } from '@/data/wisdom-pathways';
-import { pathwayDiscovery } from '@/lib/wisdom-pathways';
+import { STARTER_PATHWAYS } from '@/data/wisdom-pathway-starters';
+import { pathwayDiscovery, questionsForStarter, topicsForStarter } from '@/lib/wisdom-pathways';
+import { StarterCard } from '@/components/pathways/StarterCard';
 import { JsonLd } from '@/app/components/JsonLd';
 
 export const metadata: Metadata = {
@@ -45,6 +47,26 @@ export default function WisdomPathwaysPage() {
               <p className="mt-2 text-sm text-dharma-muted">{p.questionEn}</p>
               <p className="mt-2 text-xs text-dharma-muted">{p.mastersFocusEn}</p>
             </Link>
+          ))}
+        </div>
+        {/* Life-question starters (formerly /pathways/, now 301s here). */}
+        <h2 className="mt-12 font-serif text-2xl">Begin from a life question</h2>
+        <p className="mt-2 text-sm text-dharma-muted">
+          Fear, anger, stress, distraction, failure, purpose, karma, the restless mind, the search for self, devotion,
+          leadership, grief: each starting point leads into one of the pathways above.
+        </p>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          {STARTER_PATHWAYS.map((s) => (
+            <StarterCard
+              key={s.slug}
+              starter={s}
+              topicLinks={topicsForStarter(s)}
+              questionLinks={questionsForStarter(s).map((q) => ({
+                href: q.href,
+                labelEn: q.question.questionEn,
+                labelHi: q.question.questionHi,
+              }))}
+            />
           ))}
         </div>
         <h2 className="mt-12 font-serif text-2xl">Discovery paths</h2>

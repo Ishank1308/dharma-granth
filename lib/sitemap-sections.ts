@@ -58,15 +58,11 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/', pageDate('/')),
     entry('/scriptures', pageDate('/scriptures', 'data/scripture-meta.ts')),
     entry('/learn', pageDate('/learn')),
-    entry('/learn/pathways', pageDate('/learn/pathways', 'data/pathways.ts')),
     entry('/learn/faq', pageDate('/learn/faq', 'data/scripture-faqs.ts')),
-    entry('/learn/paths', pageDate('/learn/paths', 'data/guided-reading-paths.ts')),
-    entry('/learn/plans', pageDate('/learn/plans', 'data/reading-plans.ts')),
+    // /learn/paths/, /learn/pathways/ and /pathways/ 301 to /learn/plans/, /learn/ and /wisdom-pathways/.
+    entry('/learn/plans', pageDate('/learn/plans', 'data/reading-plans.ts', 'data/study-plans.ts', 'data/guided-reading-paths.ts')),
     entry('/wisdom-for-life', pageDate('/wisdom-for-life', 'data/wisdom-for-life.ts')),
-    entry('/wisdom-pathways', pageDate('/wisdom-pathways', 'data/wisdom-pathways.ts')),
-    // Named pathway entrances (/pathways/[slug]) are non-canonical aliases
-    // of /wisdom-pathways/[pathway]/, so only the index is listed.
-    entry('/pathways', pageDate('/pathways', 'data/wisdom-pathway-starters.ts', 'data/wisdom-pathways.ts')),
+    entry('/wisdom-pathways', pageDate('/wisdom-pathways', 'data/wisdom-pathways.ts', 'data/wisdom-pathway-starters.ts')),
     // /topics/ and /guidance/ 301 to /wisdom-for-life/ (public/_redirects).
     entry('/concepts', pageDate('/concepts')),
     entry('/characters', pageDate('/characters', 'data/characters.ts')),
