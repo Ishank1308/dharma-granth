@@ -10,7 +10,7 @@ import { ChapterHero } from '@/app/components/motion/ChapterHero';
 import { FullChapterVerses } from '@/app/components/FullChapterVerses';
 import { ChapterOrientation } from '@/app/components/ChapterOrientation';
 import { ChapterSummaryBox } from '@/app/components/ChapterSummaryBox';
-import { getGitaChapterSummary } from '@/data/gita-chapter-summaries';
+import { getChapterSummary, getChapterSummaryCollection } from '@/data/chapter-summaries';
 import { getChapterOrientation } from '@/data/chapter-orientation';
 import { ChapterKeyboardNav } from '@/app/components/ChapterKeyboardNav';
 import { ChapterCompletion } from '@/app/components/ChapterCompletion';
@@ -137,9 +137,9 @@ export function chapterMetadata(params: ChapterParams, partNumber = 1): Metadata
   const firstVerse = readSeededChapter(meta.id, chapterId)?.chapter.verses[part?.start ?? 0] as
     | { hindi?: string; translation?: string }
     | undefined;
-  // Gita chapters describe themselves with their editorial summary (गीता सार); others with the first verse.
-  const gitaSummary = meta.id === 'bhagavadgita' && !part ? getGitaChapterSummary(chapter.id)?.summaryHi : undefined;
-  const opening = (gitaSummary || firstVerse?.hindi || firstVerse?.translation || chapter.summary || '').replace(/\s+/g, ' ').trim();
+  // Chapters with an editorial summary (गीता सार, योगसूत्र सार) describe themselves with it; others with the first verse.
+  const editorialSummary = !part ? getChapterSummary(meta.id, chapter.id)?.summaryHi : undefined;
+  const opening = (editorialSummary || firstVerse?.hindi || firstVerse?.translation || chapter.summary || '').replace(/\s+/g, ' ').trim();
   const lead = part
     ? `${meta.titleSanskrit} (${meta.title}) अध्याय ${chapter.id}, भाग ${part.part}: श्लोक ${partRange(part)} — संस्कृत मूल, हिंदी अर्थ और English translation।`
     : `${meta.titleSanskrit} (${meta.title}) अध्याय ${chapter.id}` +
@@ -243,7 +243,8 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           ),
         }
       : undefined;
-  const chapterSummary = meta.id === 'bhagavadgita' ? getGitaChapterSummary(chapter.id) : undefined;
+  const summaryCollection = getChapterSummaryCollection(meta.id);
+  const chapterSummary = getChapterSummary(meta.id, chapter.id);
   const hasChapterContext = Boolean(chapterSummary || getChapterOrientation(meta.id, chapter.id));
   const firstVerseAnchor = pageVerses.length > 0 ? `#verse-${pageVerses[0].number}` : '#chapter-text';
 
@@ -405,7 +406,14 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
               <ChevronDown className="h-5 w-5 shrink-0 text-dharma-muted transition-transform group-open:rotate-180" aria-hidden="true" />
             </summary>
             <div className="border-t border-dharma-border px-4 pb-1 pt-5 sm:px-5">
-              {chapterSummary && <ChapterSummaryBox summary={chapterSummary} allHref={`/scripture/${meta.id}/summary`} />}
+              {chapterSummary && summaryCollection && (
+                <ChapterSummaryBox
+                  summary={chapterSummary}
+                  unitHi={summaryCollection.unitHi}
+                  allHref={`/scripture/${meta.id}/summary/`}
+                  allLinkHi={summaryCollection.allLinkHi}
+                />
+              )}
               <ChapterOrientation scriptureId={meta.id} chapterId={chapter.id} verseCount={chapter.verseCount} />
             </div>
           </details>
