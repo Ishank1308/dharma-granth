@@ -1,5 +1,5 @@
 /**
- * Curated Offline Reading Packs for Dharma Granth (dharmagranth.in)
+ * Curated Offline Reading Packs for Dharma Granth (dharmagranth.dev)
  * 
  * Enables proactive, single-click downloads of entire scriptures and thematic
  * anthologies for offline retreats, flights, pilgrimages, and low-connectivity environments.
