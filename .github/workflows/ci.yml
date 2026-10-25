@@ -12,9 +12,9 @@ permissions:
 
 env:
   NEXT_TELEMETRY_DISABLED: 1
-  # Custom domain (dharmagranth.in) serves from the root — no repo base path.
+  # Custom domain (dharmagranth.dev) serves from the root — no repo base path.
   NEXT_PUBLIC_BASE_PATH: ""
-  NEXT_PUBLIC_SITE_URL: https://dharmagranth.in
+  NEXT_PUBLIC_SITE_URL: https://dharmagranth.dev
 
 jobs:
   validate:
