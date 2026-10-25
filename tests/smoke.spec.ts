@@ -60,6 +60,14 @@ for (const path of PAGES) {
 
 test('chapter hydrates every plain verse into an interactive card', async ({ page }) => {
   await page.goto('/scripture/bhagavadgita/chapter/2/');
+  // The first verses hydrate at once; the rest upgrade as they come near the viewport.
+  await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+  await page.evaluate(async () => {
+    for (let y = 0; y < document.documentElement.scrollHeight; y += 600) {
+      window.scrollTo(0, y);
+      await new Promise((resolve) => setTimeout(resolve, 40));
+    }
+  });
   await expect(page.locator('article.verse-card:not(.vt)')).toHaveCount(72);
   await expect(page.locator('article.vt')).toHaveCount(0);
 });

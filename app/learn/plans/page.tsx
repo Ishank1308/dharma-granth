@@ -274,6 +274,7 @@ export default function ReadingPlansPage() {
               aria-valuemin={0}
               aria-valuemax={100}
               aria-valuenow={completionPercent}
+              aria-label={`${activePlan.title} progress`}
               className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-dharma-border/70"
             >
               <div
@@ -365,7 +366,7 @@ export default function ReadingPlansPage() {
 
                       <p className="mt-1 text-xs text-dharma-muted leading-relaxed">
                         {day.focusTheme}
-                        <span lang="hi" className="block sm:inline sm:ml-1 font-devanagari text-dharma-muted/80">
+                        <span lang="hi" className="block sm:inline sm:ml-1 font-devanagari text-dharma-muted">
                           ({day.focusThemeHi})
                         </span>
                       </p>
