@@ -207,7 +207,7 @@ export function ChapterOrientation({ scriptureId, chapterId, verseCount }: Props
       )}
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        <Link href={`/learn/paths`} className="focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card px-5 text-sm font-semibold text-dharma-text hover:border-saffron-400">
+        <Link href="/learn/plans/" className="focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card px-5 text-sm font-semibold text-dharma-text hover:border-saffron-400">
           Guided Learning Paths
         </Link>
       </div>

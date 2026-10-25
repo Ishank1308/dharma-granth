@@ -29,7 +29,7 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: ['GPTBot', 'OAI-SearchBot', 'PerplexityBot', 'ClaudeBot', 'Bytespider'],
-        allow: ['/', '/scripture/', '/knowledge/', '/wisdom-pathways/', '/pathways/', '/_next/', '/fonts/', '/og/'],
+        allow: ['/', '/scripture/', '/knowledge/', '/wisdom-pathways/', '/_next/', '/fonts/', '/og/'],
         disallow: privatePaths,
       },
       {

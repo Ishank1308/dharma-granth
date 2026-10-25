@@ -1,5 +1,5 @@
 /**
- * Personal Study System Type Definitions for Dharma Granth (dharmagranth.in)
+ * Personal Study System Type Definitions for Dharma Granth (dharmagranth.dev)
  * 
  * 100% Client-Side, Local-First, Zero-Account, Privacy-Sovereign Data Models.
  * Personal annotations, journal entries, and collections are strictly isolated

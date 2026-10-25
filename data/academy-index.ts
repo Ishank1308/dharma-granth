@@ -28,6 +28,6 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
 ];
 
 export const ACADEMY_ORDERS = [
-  { href: '/learn/paths/#plan-karma-yoga', titleHi: 'कर्मयोग', titleEn: 'Karma Yoga' },
-  { href: '/learn/paths/#plan-meditation-journey', titleHi: 'ध्यान', titleEn: 'Meditation' },
+  { href: '/learn/plans/#plan-karma-yoga', titleHi: 'कर्मयोग', titleEn: 'Karma Yoga' },
+  { href: '/learn/plans/#plan-meditation-journey', titleHi: 'ध्यान', titleEn: 'Meditation' },
 ];

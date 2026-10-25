@@ -15,6 +15,7 @@ import { graphPageIds } from '@/data/knowledge-graph';
 import { learningPaths } from '@/data/learning-paths';
 import { READING_JOURNEYS, isJourneyIndexable } from '@/data/reading-journeys';
 import { festivals } from '@/data/festivals';
+import { getChapterSummaryCollection } from '@/data/chapter-summaries';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
 
@@ -58,15 +59,11 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/', pageDate('/')),
     entry('/scriptures', pageDate('/scriptures', 'data/scripture-meta.ts')),
     entry('/learn', pageDate('/learn')),
-    entry('/learn/pathways', pageDate('/learn/pathways', 'data/pathways.ts')),
     entry('/learn/faq', pageDate('/learn/faq', 'data/scripture-faqs.ts')),
-    entry('/learn/paths', pageDate('/learn/paths', 'data/guided-reading-paths.ts')),
-    entry('/learn/plans', pageDate('/learn/plans', 'data/reading-plans.ts')),
+    // /learn/paths/, /learn/pathways/ and /pathways/ 301 to /learn/plans/, /learn/ and /wisdom-pathways/.
+    entry('/learn/plans', pageDate('/learn/plans', 'data/reading-plans.ts', 'data/study-plans.ts', 'data/guided-reading-paths.ts')),
     entry('/wisdom-for-life', pageDate('/wisdom-for-life', 'data/wisdom-for-life.ts')),
-    entry('/wisdom-pathways', pageDate('/wisdom-pathways', 'data/wisdom-pathways.ts')),
-    // Named pathway entrances (/pathways/[slug]) are non-canonical aliases
-    // of /wisdom-pathways/[pathway]/, so only the index is listed.
-    entry('/pathways', pageDate('/pathways', 'data/wisdom-pathway-starters.ts', 'data/wisdom-pathways.ts')),
+    entry('/wisdom-pathways', pageDate('/wisdom-pathways', 'data/wisdom-pathways.ts', 'data/wisdom-pathway-starters.ts')),
     // /topics/ and /guidance/ 301 to /wisdom-for-life/ (public/_redirects).
     entry('/concepts', pageDate('/concepts')),
     entry('/characters', pageDate('/characters', 'data/characters.ts')),
@@ -151,8 +148,9 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
   for (const meta of getAllScriptures()) {
     const date = scriptureLastChanged(meta.id);
     scriptures.push(entry(`/scripture/${meta.id}`, date));
-    if (meta.id === 'bhagavadgita') {
-      scriptures.push(entry('/scripture/bhagavadgita/summary', lastChanged('app/scripture/[id]/summary/page.tsx', 'data/gita-chapter-summaries.ts')));
+    const summaries = getChapterSummaryCollection(meta.id);
+    if (summaries) {
+      scriptures.push(entry(`/scripture/${meta.id}/summary`, lastChanged('app/scripture/[id]/summary/page.tsx', summaries.source)));
     }
 
     const chapterSet = new Set<number>(readSeededChapterNumbers(meta.id));

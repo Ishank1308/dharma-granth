@@ -12,6 +12,35 @@
 /journeys/ /learn/journeys/ 301
 /journeys/:id /learn/journeys/:id/ 301
 /journeys/:id/ /learn/journeys/:id/ 301
+# Learn merge (2026-10-25): four homes, /learn/start/, /learn/journeys/, /learn/plans/ and courses on /learn/.
+/learn/paths /learn/plans/ 301
+/learn/paths/ /learn/plans/ 301
+/learn/pathways /learn/#courses 301
+/learn/pathways/ /learn/#courses 301
+# /pathways/ was a set of named entrances to /wisdom-pathways/ (already its canonical).
+/pathways /wisdom-pathways/ 301
+/pathways/ /wisdom-pathways/ 301
+/pathways/fear-to-courage /wisdom-pathways/gita-on-fear/ 301
+/pathways/fear-to-courage/ /wisdom-pathways/gita-on-fear/ 301
+/pathways/stress-to-inner-balance /wisdom-pathways/krishna-on-duty/ 301
+/pathways/stress-to-inner-balance/ /wisdom-pathways/krishna-on-duty/ 301
+/pathways/distraction-to-focus /wisdom-pathways/yoga-on-mind/ 301
+/pathways/distraction-to-focus/ /wisdom-pathways/yoga-on-mind/ 301
+/pathways/purpose-and-dharma /wisdom-pathways/ramayana-on-dharma/ 301
+/pathways/purpose-and-dharma/ /wisdom-pathways/ramayana-on-dharma/ 301
+/pathways/understanding-karma /wisdom-pathways/krishna-on-duty/ 301
+/pathways/understanding-karma/ /wisdom-pathways/krishna-on-duty/ 301
+/pathways/mastering-the-mind /wisdom-pathways/yoga-on-mind/ 301
+/pathways/mastering-the-mind/ /wisdom-pathways/yoga-on-mind/ 301
+/pathways/search-for-self /wisdom-pathways/upanishads-on-self/ 301
+/pathways/search-for-self/ /wisdom-pathways/upanishads-on-self/ 301
+/pathways/bhakti-and-devotion /wisdom-pathways/saints-on-devotion/ 301
+/pathways/bhakti-and-devotion/ /wisdom-pathways/saints-on-devotion/ 301
+/pathways/leadership-through-dharma /wisdom-pathways/ramayana-on-dharma/ 301
+/pathways/leadership-through-dharma/ /wisdom-pathways/ramayana-on-dharma/ 301
+/pathways/living-with-wisdom /wisdom-pathways/sanatan-on-grief/ 301
+/pathways/living-with-wisdom/ /wisdom-pathways/sanatan-on-grief/ 301
+/pathways/* /wisdom-pathways/ 301
 /journal /practice/journal/ 301
 /journal/ /practice/journal/ 301
 /desk /practice/desk/ 301

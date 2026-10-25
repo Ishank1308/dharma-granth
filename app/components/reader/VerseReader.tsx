@@ -8,6 +8,7 @@ import { MotionConfig } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
+  BookOpen,
   Bookmark,
   BookmarkCheck,
   ChevronDown,
@@ -584,9 +585,24 @@ export function VerseReader(props: VerseReaderProps) {
           )}
 
 
-          {/* Actions */}
-          {/* One swipeable row on phones keeps the verse near the top; it wraps from sm up. */}
-          <div role="toolbar" aria-label="Verse actions" data-focus-hide className="-mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
+          {/* 3 · Reading level and perspective now live in the Aa sheet (ReaderSettingsPanel). */}
+
+          {/* 4 · The layers */}
+          <ReaderLayers
+            scriptureId={scriptureId}
+            verse={verse}
+            chapterId={chapterId}
+            provenance={provenance}
+            settings={settings}
+            onReport={() => setDialog('report')}
+            onUpdateSetting={update}
+            insight={insight}
+            sourceStatus={sourceStatus}
+          />
+
+          {/* Actions come after the verse and its layers, so the shloka is the first thing read. */}
+          {/* One swipeable row on phones; it wraps from sm up. */}
+          <div role="toolbar" aria-label="Verse actions" data-focus-hide className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
             <button type="button" onClick={onBookmark} aria-pressed={saved} className={actionBtn}>
               {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
               {saved ? 'Saved' : 'Save'}
@@ -649,27 +665,33 @@ export function VerseReader(props: VerseReaderProps) {
             </button>
           </div>
 
-          {/* 3 · Reading level and perspective now live in the Aa sheet (ReaderSettingsPanel). */}
-
-          {/* 4 · The layers */}
-          <ReaderLayers
-            scriptureId={scriptureId}
-            verse={verse}
-            chapterId={chapterId}
-            provenance={provenance}
-            settings={settings}
-            onReport={() => setDialog('report')}
-            onUpdateSetting={update}
-            insight={insight}
-            sourceStatus={sourceStatus}
-          />
-
           {noteText && (
             <section aria-label="Your private note" className="mt-5 rounded-2xl border border-dashed border-dharma-border bg-dharma-card/60 p-4">
               <p className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-dharma-muted">Your note · private to this device</p>
               <p className="whitespace-pre-line text-sm text-dharma-text">{noteText}</p>
             </section>
           )}
+
+          {/* A deliberate stopping point: the reader may continue, note, or simply stop. */}
+          <section aria-labelledby="verse-pause-h" data-focus-hide className="mt-8 rounded-2xl border border-dharma-border bg-dharma-card/60 p-4 text-sm">
+            <h2 id="verse-pause-h" className="text-base font-semibold text-dharma-text">
+              <span>Pause here</span> <span lang="hi" className="font-devanagari text-dharma-muted">विराम</span>
+            </h2>
+            <p className="mt-1 text-dharma-text-secondary">You can stop at this verse. Your place in this chapter is kept on this device, so Continue reading brings you back here.</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <button type="button" onClick={openNote} className={actionBtn}>
+                <StickyNote className="h-4 w-4" aria-hidden="true" /> {noteText ? 'Edit your note' : 'Save a note'}
+              </button>
+              {next && (
+                <Link href={next.href} rel="next" className={actionBtn}>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" /> Next verse
+                </Link>
+              )}
+              <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
+                <BookOpen className="h-4 w-4" aria-hidden="true" /> Back to the chapter
+              </Link>
+            </div>
+          </section>
 
           <div data-focus-hide>{children}</div>
         </main>

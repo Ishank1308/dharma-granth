@@ -3,8 +3,8 @@ import type { StarterPathway } from '@/data/wisdom-pathway-starters';
 
 /**
  * Starter pathway card (MISSION Phases 5 + 8).
- * Server-rendered only — no client JS. Mapped starters link to their calm
- * reading page; starters still waiting for a canonical pathway link to the
+ * Server-rendered only — no client JS. Mapped starters link to their
+ * canonical /wisdom-pathways/ reading page; starters still waiting for a canonical pathway link to the
  * validated topics and questions instead (editorial links only).
  */
 export function StarterCard({
@@ -20,15 +20,15 @@ export function StarterCard({
   return (
     <article className="rounded-2xl border border-dharma-line bg-dharma-card p-5">
       <p className="text-xs font-bold uppercase tracking-wider text-dharma-muted">{starter.questionEn}</p>
-      <h2 className="mt-1 font-serif text-xl">
+      <h3 className="mt-1 font-serif text-xl">
         {mapped ? (
-          <Link href={`/pathways/${starter.slug}/`} className="hover:underline">
+          <Link href={`/wisdom-pathways/${starter.pathwaySlug}/`} className="hover:underline">
             {starter.titleEn}
           </Link>
         ) : (
           starter.titleEn
         )}
-      </h2>
+      </h3>
       <p lang="hi" className="mt-0.5 text-base text-dharma-muted">
         {starter.titleHi}
       </p>
@@ -36,7 +36,7 @@ export function StarterCard({
       {mapped ? (
         <p className="mt-3">
           <Link
-            href={`/pathways/${starter.slug}/`}
+            href={`/wisdom-pathways/${starter.pathwaySlug}/`}
             className="inline-block min-h-[44px] rounded-full border border-dharma-line px-4 py-2 text-sm font-semibold"
           >
             Walk this path

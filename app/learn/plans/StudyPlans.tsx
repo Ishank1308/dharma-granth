@@ -46,7 +46,7 @@ export function StudyPlans() {
   }
 
   return (
-    <section id="study-orders" aria-labelledby="study-orders-title" className="mx-auto max-w-5xl px-5 sm:px-8 mt-10">
+    <section id="study-orders" aria-labelledby="study-orders-title" className="scroll-mt-24 pt-4">
       <h2 id="study-orders-title" className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
         <span lang="hi" className="font-devanagari">पढ़ने के क्रम</span>
         <span className="font-normal text-dharma-text-secondary"> · Study orders</span>
