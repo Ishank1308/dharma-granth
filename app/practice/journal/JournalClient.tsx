@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
+import { readHref } from '@/lib/verse-paths';
 import {
   PenLine,
   Search,
@@ -476,7 +477,7 @@ export function JournalClient() {
                       {entry.linkedReferences.map((ref, idx) => (
                         <Link
                           key={idx}
-                          href={`/scripture/${ref.scriptureId}/chapter/${ref.chapterId}/verse/${ref.verseId}`}
+                          href={readHref(ref.scriptureId, ref.chapterId, ref.verseId)}
                           className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-saffron-500/10 border border-saffron-500/20 text-xs font-semibold text-saffron-900 dark:text-saffron-200 hover:bg-saffron-500/20 transition"
                         >
                           <span>{ref.canonicalReference}</span>

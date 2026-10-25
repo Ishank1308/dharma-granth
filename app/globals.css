@@ -1442,42 +1442,21 @@
     opacity: 1;
 }
 
-/* Sanskrit set on a warm manuscript leaf with a double gilt rule. */
+/* A quiet, warm surface keeps the canonical Sanskrit in focus. */
 .verse-leaf {
     background:
-        radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.75), transparent 60%),
-        linear-gradient(180deg, rgba(255, 251, 235, 0.92), rgba(254, 243, 199, 0.55));
-    border: 1px solid rgba(217, 119, 6, 0.28);
-    box-shadow:
-        inset 0 0 0 4px rgba(255, 251, 235, 0.6),
-        inset 0 0 0 5px rgba(217, 119, 6, 0.18),
-        inset 0 -18px 36px -24px rgba(180, 83, 9, 0.25),
-        0 10px 30px -18px rgba(124, 45, 18, 0.35);
-}
-.verse-leaf-ornament {
-    position: absolute;
-    font-size: 13px;
-    line-height: 1;
-    color: rgba(217, 119, 6, 0.55);
-    pointer-events: none;
+        linear-gradient(180deg, rgba(255, 251, 235, 0.72), rgba(254, 243, 199, 0.3));
+    border: 1px solid rgba(180, 132, 68, 0.18);
+    box-shadow: 0 1px 2px rgba(72, 48, 25, 0.035);
 }
 :root[data-theme='sunset'] .verse-leaf {
     background:
-        radial-gradient(120% 90% at 50% 0%, rgba(255, 237, 213, 0.7), transparent 60%),
-        linear-gradient(180deg, rgba(255, 237, 213, 0.9), rgba(253, 186, 116, 0.25));
+        linear-gradient(180deg, rgba(255, 237, 213, 0.64), rgba(253, 186, 116, 0.16));
 }
 :root[data-theme='night'] .verse-leaf {
-    background:
-        radial-gradient(120% 90% at 50% 0%, rgba(251, 191, 36, 0.08), transparent 60%),
-        linear-gradient(180deg, rgba(41, 30, 16, 0.92), rgba(24, 19, 12, 0.85));
-    border-color: rgba(251, 191, 36, 0.22);
-    box-shadow:
-        inset 0 0 0 4px rgba(24, 19, 12, 0.6),
-        inset 0 0 0 5px rgba(251, 191, 36, 0.12),
-        0 10px 30px -18px rgba(0, 0, 0, 0.6);
-}
-:root[data-theme='night'] .verse-leaf-ornament {
-    color: rgba(251, 191, 36, 0.4);
+    background: linear-gradient(180deg, rgba(41, 30, 16, 0.52), rgba(24, 19, 12, 0.36));
+    border-color: rgba(251, 191, 36, 0.16);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 :root[data-theme='night'] .verse-card-spotlight {
     background: radial-gradient(

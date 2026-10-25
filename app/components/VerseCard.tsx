@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { REVEAL_SEQUENCE } from '@/app/components/motion/primitives';
 import {
@@ -14,6 +14,7 @@ import {
   FolderPlus,
   Highlighter,
   Maximize2,
+  Pause,
   Quote,
   ScrollText,
   Sparkles,
@@ -212,42 +213,17 @@ function isMostlyDevanagari(text: string | undefined): boolean {
   return deva > latin;
 }
 
-/** Lotus-petal medallion carrying the verse number in Devanagari numerals. */
-function VerseMedallion({ label }: { label: string }) {
-  const gradId = useId();
-  const petals = Array.from({ length: 8 }, (_, i) => i * 45);
+/** Quiet verse reference that stays legible without competing with the shloka. */
+function VerseReference({ label }: { label: string }) {
   return (
-    <span className="relative inline-flex h-12 w-12 shrink-0 items-center justify-center">
-      <svg viewBox="0 0 48 48" className="absolute inset-0 h-full w-full drop-shadow-sm" aria-hidden="true">
-        <defs>
-          <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#fbbf24" />
-            <stop offset="55%" stopColor="#f97316" />
-            <stop offset="100%" stopColor="#c2410c" />
-          </linearGradient>
-        </defs>
-        {petals.map((deg) => (
-          <ellipse
-            key={deg}
-            cx="24"
-            cy="9"
-            rx="5"
-            ry="8.5"
-            fill={`url(#${gradId})`}
-            opacity="0.28"
-            transform={`rotate(${deg} 24 24)`}
-          />
-        ))}
-        <circle cx="24" cy="24" r="14" fill={`url(#${gradId})`} />
-        <circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="0.8" />
-      </svg>
-      <span lang="hi" className="relative font-devanagari text-[15px] font-bold leading-none text-white">{label}</span>
+    <span className="inline-flex h-11 min-w-11 shrink-0 items-center justify-center rounded-xl border border-saffron-200/80 bg-saffron-50/80 px-2 font-serif text-sm font-semibold tabular-nums text-saffron-800 dark:border-saffron-800/60 dark:bg-saffron-950/35 dark:text-saffron-200">
+      {label}
     </span>
   );
 }
 
 const iconButton =
-  'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card/80 text-dharma-muted backdrop-blur transition hover:border-saffron-300 hover:text-saffron-700 lg:h-9 lg:w-9';
+  'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card text-dharma-muted transition-colors duration-200 hover:border-saffron-300 hover:bg-saffron-50/60 hover:text-saffron-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 dark:hover:bg-saffron-950/40 dark:focus-visible:ring-offset-dharma-card';
 
 export function VerseCard({
   depth = 'study',
@@ -501,27 +477,27 @@ export function VerseCard({
             <button
               type="button"
               onClick={onOpenFocus}
-              className="flex items-center gap-3 text-left focus:outline-none group/hdr"
+              className="group/hdr flex items-center gap-3 rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dharma-card"
               title="एकाग्रता मोड में पढ़ें (Focus Mode)"
             >
-              <VerseMedallion label={toAsciiDigits(verseLabel)} />
+              <VerseReference label={toAsciiDigits(verseLabel)} />
               <div className="shrink-0 whitespace-nowrap">
                 <p className="text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
-                  अध्याय {toAsciiDigits(chapterId)}
+                  अध्याय {toAsciiDigits(chapterId)} · Chapter {toAsciiDigits(chapterId)}
                 </p>
                 <p className="font-serif text-base font-bold text-dharma-text group-hover/hdr:text-saffron-700 transition-colors">
-                  श्लोक {verseLabel}
+                  श्लोक · Verse
                 </p>
               </div>
             </button>
           ) : (
             <div className="flex items-center gap-3">
-              <VerseMedallion label={toAsciiDigits(verseLabel)} />
+              <VerseReference label={toAsciiDigits(verseLabel)} />
               <div className="shrink-0 whitespace-nowrap">
                 <p className="text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
-                  अध्याय {toAsciiDigits(chapterId)}
+                  अध्याय {toAsciiDigits(chapterId)} · Chapter {toAsciiDigits(chapterId)}
                 </p>
-                <p className="font-serif text-base font-bold text-dharma-text">श्लोक {verseLabel}</p>
+                <p className="font-serif text-base font-bold text-dharma-text">श्लोक · Verse</p>
               </div>
             </div>
           )}
@@ -550,7 +526,7 @@ export function VerseCard({
           {/* Streamlined, calm toolbar: 3 essential icons + ActionMenu overflow. Never wraps awkwardly on mobile. */}
           <div
             className="ml-auto flex shrink-0 items-center gap-1.5"
-            role="toolbar"
+            role="group"
             aria-label="श्लोक विकल्प (Verse actions)"
           >
             {/* Audio Recitation */}
@@ -564,7 +540,7 @@ export function VerseCard({
                 title={isReciting ? 'श्लोक उच्चारण रोकें' : 'श्लोक उच्चारण सुनें'}
               >
                 {isReciting ? (
-                  <Volume2 className="h-4 w-4 text-amber-600 dark:text-amber-400 animate-pulse" />
+                  <Pause className="h-4 w-4 text-amber-700 dark:text-amber-300" />
                 ) : (
                   <Volume2 className="h-4 w-4" />
                 )}
@@ -588,7 +564,7 @@ export function VerseCard({
             </button>
 
             {/* Share */}
-            <span className="shrink-0 [&>button]:h-9 [&>button]:w-9">
+            <span className="shrink-0 [&>button]:h-11 [&>button]:w-11">
               <ShareVerseButton
                 scriptureTitle={scriptureTitle}
                 chapterTitle={chapterTitle}
@@ -719,13 +695,11 @@ export function VerseCard({
           </div>
         </header>
 
-        {/* ── Sanskrit on a manuscript leaf: scripture first; मर्म and the verse-page link follow it ── */}
+        {/* ── The canonical verse remains the visual center of the card. ── */}
         {lines.length > 0 && (
           <div className={`verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8 transition-colors ${
             isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
           }`}>
-            <span aria-hidden="true" className="verse-leaf-ornament left-3 top-2">❁</span>
-            <span aria-hidden="true" className="verse-leaf-ornament right-3 top-2">❁</span>
             <div className="mb-3.5 flex flex-wrap items-center justify-center gap-2">
               <ContentLabelBadge kind="mula" />
               {chandas && (
@@ -963,12 +937,12 @@ export function VerseCard({
             {/* ── Arth: the literal meaning, always first after the verse ── */}
             {showArth && (
               <SacredSection id={`verse-${v.number}-arth`} section="arth">
-              <div className="space-y-3.5">
+              <div className="overflow-hidden rounded-2xl border border-dharma-border/70 bg-dharma-card-soft/40 divide-y divide-dharma-border/70">
                 {showHindi && (
-                  <div className={`rounded-2xl border p-4.5 sm:p-5 shadow-2xs transition-all duration-300 ${
+                  <div className={`p-4 sm:p-5 transition-colors duration-200 ${
                     isReciting && activeTranslationLang === 'hi'
-                      ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
-                      : 'border-dharma-border/70 bg-dharma-card-soft/70'
+                      ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
+                      : ''
                   }`}>
                     <div className="mb-2 flex items-center justify-between gap-2">
                       <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
@@ -1008,10 +982,10 @@ export function VerseCard({
                 )}
 
                 {showEnglish && (
-                  <div className={`rounded-2xl border p-4.5 sm:p-5 shadow-2xs transition-all duration-300 ${
+                  <div className={`p-4 sm:p-5 transition-colors duration-200 ${
                     isReciting && activeTranslationLang === 'en'
-                      ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
-                      : 'border-dharma-border/70 bg-dharma-card/70'
+                      ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
+                      : ''
                   }`}>
                     <div className="mb-2 flex items-center justify-between gap-2">
                       <p lang="en" className="text-xs font-bold uppercase tracking-wider text-dharma-muted">

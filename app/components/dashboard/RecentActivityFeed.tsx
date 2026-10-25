@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import type { ChapterVisit } from '@/lib/reading-history';
 import type { VerseNote, VerseHighlight } from '@/lib/useStudyProgress';
+import { readHref } from '@/lib/verse-paths';
 
 export type ActivityFilter = 'all' | 'read' | 'saved' | 'notes';
 
@@ -68,7 +69,7 @@ export function RecentActivityFeed({ recentChapters, notes, highlights, titles }
         type: 'read',
         title: `${sTitle} · अध्याय ${visit.chapterId}${versePart}`,
         subtitle: visit.chapterTitle,
-        href: `/scripture/${visit.scriptureId}/chapter/${visit.chapterId}${visit.verseId ? `/verse/${visit.verseId}` : ''}`,
+        href: readHref(visit.scriptureId, visit.chapterId, visit.verseId),
         timestamp: visit.readAt,
         dateStr: formatRelativeDay(visit.readAt),
         badge: {
@@ -86,7 +87,7 @@ export function RecentActivityFeed({ recentChapters, notes, highlights, titles }
         type: 'note',
         title: `${sTitle} ${n.chapterId}.${n.verseId} पर निजी विचार`,
         subtitle: n.text,
-        href: `/scripture/${n.scriptureId}/chapter/${n.chapterId}/verse/${n.verseId}`,
+        href: readHref(n.scriptureId, n.chapterId, n.verseId),
         timestamp: n.updatedAt,
         dateStr: formatRelativeDay(n.updatedAt),
         badge: {
@@ -104,7 +105,7 @@ export function RecentActivityFeed({ recentChapters, notes, highlights, titles }
         type: 'highlight',
         title: `${sTitle} ${h.chapterId}.${h.verseId} रेखांकित`,
         subtitle: 'प्रिय श्लोकों का रेखांकन',
-        href: `/scripture/${h.scriptureId}/chapter/${h.chapterId}/verse/${h.verseId}`,
+        href: readHref(h.scriptureId, h.chapterId, h.verseId),
         timestamp: h.createdAt,
         dateStr: formatRelativeDay(h.createdAt),
         badge: {

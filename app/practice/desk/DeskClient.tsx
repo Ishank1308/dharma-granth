@@ -17,6 +17,7 @@ import { Reminders } from './Reminders';
 import { SavedConcepts } from './SavedConcepts';
 import { StorageInfo } from './StorageInfo';
 import { useConnectivity } from '@/lib/useConnectivity';
+import { readHref } from '@/lib/verse-paths';
 
 const NOTES_KEY = 'dharma.notes';
 const QUEUE_KEY = 'dharma.desk.queue';
@@ -47,7 +48,7 @@ async function hashPin(pin: string, salt: string): Promise<string> {
 }
 
 const verseHref = (s: { scriptureId: string; chapterId?: number; verseId: number | string }) =>
-  `/scripture/${s.scriptureId}/chapter/${s.chapterId ?? 1}/verse/${s.verseId}`;
+  readHref(s.scriptureId, s.chapterId ?? 1, s.verseId);
 
 function Section({ id, title, titleHi, children }: { id: string; title: string; titleHi: string; children: ReactNode }) {
   return (
@@ -266,7 +267,7 @@ export function DeskClient() {
               <ul className="space-y-2">
                 {recent.map((r) => (
                   <li key={r.scriptureId} className="flex items-center gap-2 rounded-xl border border-dharma-border p-2">
-                    <Link href={`/scripture/${r.scriptureId}/chapter/${r.chapterId}${r.verseId ? `/verse/${r.verseId}` : ''}`} className="min-w-0 flex-1">
+                    <Link href={readHref(r.scriptureId, r.chapterId, r.verseId)} className="min-w-0 flex-1">
                       <span className="font-semibold text-dharma-text">Continue {r.scriptureTitle}</span>
                       <span className="block font-normal text-dharma-muted">
                         Chapter {r.chapterId}{r.verseId ? `, verse ${r.verseId}` : ''} · last opened {daysAgo(r.readAt)}

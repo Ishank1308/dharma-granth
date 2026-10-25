@@ -17,6 +17,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { readRecentChapters, type ChapterVisit } from '@/lib/reading-history';
+import { readHref } from '@/lib/verse-paths';
 import { SAMPLE_DAILY_JOURNEYS } from '@/data/daily-dharma-data';
 
 interface DashboardPrefs {
@@ -221,9 +222,7 @@ export function DailyDharmaDashboard() {
 
                 <div className="mt-6 pt-4 border-t border-dharma-border/60 flex flex-wrap items-center gap-3">
                   <Link
-                    href={`/scripture/${recentChapter.scriptureId}/chapter/${recentChapter.chapterId}${
-                      recentChapter.verseId ? `/verse/${recentChapter.verseId}` : ''
-                    }`}
+                    href={readHref(recentChapter.scriptureId, recentChapter.chapterId, recentChapter.verseId)}
                     className="focus-ring inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-saffron-600 hover:bg-saffron-700 text-white font-semibold text-sm transition-colors shadow-2xs"
                   >
                     Resume Reading

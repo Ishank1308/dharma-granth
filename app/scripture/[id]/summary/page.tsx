@@ -6,7 +6,7 @@ import { JsonLd } from '@/app/components/JsonLd';
 import { gitaChapterSummaries } from '@/data/gita-chapter-summaries';
 import { getChapterOrientation } from '@/data/chapter-orientation';
 import { articleLd, pageLd } from '@/lib/jsonld';
-import { versePageHref } from '@/lib/verse-paths';
+import { readHref } from '@/lib/verse-paths';
 
 // Only the Gita has chapter summaries so far.
 const SCRIPTURE_ID = 'bhagavadgita';
@@ -121,7 +121,7 @@ export default function GitaSummaryPage({ params }: { params: { id: string } }) 
                   </h3>
                   <ul className="mt-2 space-y-1.5 text-sm">
                     {o.importantVerses.map((v) => {
-                      const href = versePageHref(SCRIPTURE_ID, c.chapter, v.verse) ?? `${chapterHref}#verse-${v.verse}`;
+                      const href = readHref(SCRIPTURE_ID, c.chapter, v.verse);
                       return (
                         <li key={v.verse}>
                           <Link href={href} className="font-semibold text-saffron-700 hover:underline dark:text-saffron-400">

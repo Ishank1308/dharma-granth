@@ -18,6 +18,7 @@ import {
 import { GUIDED_READING_PATHS, type GuidedReadingPath } from '@/data/guided-reading-paths';
 import { ShareLinkButtons } from '@/app/components/ShareLinkButtons';
 import { StudyPlans } from './StudyPlans';
+import { readHref } from '@/lib/verse-paths';
 
 type CategoryFilter = 'all' | GuidedReadingPath['category'];
 
@@ -203,7 +204,7 @@ export default function GuidedReadingPathsPage() {
                         </div>
 
                         <Link
-                          href={`/scripture/${v.scriptureId}/chapter/${v.chapter}/verse/${v.verse}`}
+                          href={readHref(v.scriptureId, v.chapter, v.verse)}
                           className="focus-ring inline-flex min-h-[36px] items-center gap-1 rounded-lg border border-saffron-600/30 bg-saffron-50 dark:bg-saffron-950/30 px-3 py-1 text-xs font-bold text-saffron-800 dark:text-saffron-300 hover:border-saffron-600 transition"
                         >
                           <span>श्लोक {v.chapter}.{v.verse} पढ़ें</span>
@@ -211,9 +212,11 @@ export default function GuidedReadingPathsPage() {
                         </Link>
                       </div>
 
-                      <p lang="sa" className="mt-2 font-devanagari text-xs font-semibold text-amber-900 dark:text-amber-200">
-                        {v.sanskritSnippet}
-                      </p>
+                      {!/(?:\.{3}|…)\s*$/.test(v.sanskritSnippet.trim()) && (
+                        <p lang="sa" className="mt-2 font-devanagari text-xs font-semibold text-amber-900 dark:text-amber-200">
+                          {v.sanskritSnippet}
+                        </p>
+                      )}
 
                       <p className="mt-1 text-xs sm:text-sm text-dharma-text leading-relaxed">
                         <strong>Takeaway:</strong> {v.takeaway}

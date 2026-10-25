@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { CONCEPT_DETAILS } from '@/data/concept-details';
 import { CONCEPT_RELATIONS, RELATION_LABEL } from '@/data/concept-relations';
+import { readHref } from '@/lib/verse-paths';
 import { REVIEW_LABEL } from '@/data/study-content';
 import { RelationshipExplorer, type ExplorerConcept, type ExplorerRelation } from './RelationshipExplorer';
 
@@ -53,7 +54,7 @@ export default function RelationshipsPage() {
     typeLabel: RELATION_LABEL[r.type],
     note: r.note,
     source: `Bhagavad Gita ${r.evidence.chapter}.${r.evidence.verse}`,
-    href: `/scripture/${r.evidence.scriptureId}/chapter/${r.evidence.chapter}/verse/${r.evidence.verse}`,
+    href: readHref(r.evidence.scriptureId, r.evidence.chapter, r.evidence.verse),
     status: REVIEW_LABEL[r.review],
   }));
   return <RelationshipExplorer concepts={concepts} relations={relations} />;

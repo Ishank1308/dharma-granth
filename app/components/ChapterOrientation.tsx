@@ -3,6 +3,7 @@ import { ArrowDown, ArrowRight, Clock, HelpCircle, ShieldAlert, Sparkles, UserCh
 import { getChapterOrientation } from '@/data/chapter-orientation';
 import { CONCEPT_DETAILS } from '@/data/concept-details';
 import { verseCount as fmtVerses } from '@/lib/format';
+import { readHref } from '@/lib/verse-paths';
 import { InteractiveChapterMap } from '@/app/components/InteractiveChapterMap';
 
 interface Props {
@@ -152,7 +153,7 @@ export function ChapterOrientation({ scriptureId, chapterId, verseCount }: Props
               <ol className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
                 {o.flow.map((f, i) => (
                   <li key={f.label}>
-                    <Link href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${f.verse}`} className="focus-ring flex min-h-[44px] flex-col rounded-xl border border-dharma-border bg-dharma-bg p-3 text-sm hover:border-saffron-400">
+                    <Link href={readHref(scriptureId, chapterId, f.verse)} className="focus-ring flex min-h-[44px] flex-col rounded-xl border border-dharma-border bg-dharma-bg p-3 text-sm hover:border-saffron-400">
                       <span className="font-semibold text-dharma-text">{i + 1}. {f.label} <span lang="hi" className="font-devanagari font-normal text-dharma-muted">· {f.labelHi}</span></span>
                       <span className="text-dharma-muted">Verses {f.range}</span>
                     </Link>
@@ -188,7 +189,7 @@ export function ChapterOrientation({ scriptureId, chapterId, verseCount }: Props
               <ul className="mt-1 space-y-1">
                 {o.importantVerses.map((v) => (
                   <li key={v.verse}>
-                    <Link href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${v.verse}`} className="font-semibold text-saffron-800 underline underline-offset-2 hover:text-saffron-900 dark:text-saffron-300">
+                    <Link href={readHref(scriptureId, chapterId, v.verse)} className="font-semibold text-saffron-800 underline underline-offset-2 hover:text-saffron-900 dark:text-saffron-300">
                       {chapterId}.{v.verse}
                     </Link>{' '}
                     <span className="text-dharma-muted">{v.note}</span>

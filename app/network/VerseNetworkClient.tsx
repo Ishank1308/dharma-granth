@@ -20,6 +20,7 @@ import {
 import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
 import { NetworkHero } from './NetworkHero';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { readHref } from '@/lib/verse-paths';
 
 interface SeedVerse {
   key: string;
@@ -265,7 +266,7 @@ export function VerseNetworkClient() {
             </h2>
           </div>
           <Link
-            href={`/scripture/${selectedSeed.scriptureId}/chapter/${selectedSeed.chapterId}/verse/${selectedSeed.verseId}/`}
+            href={readHref(selectedSeed.scriptureId, selectedSeed.chapterId, selectedSeed.verseId)}
             className="inline-flex items-center gap-1.5 self-start sm:self-center rounded-xl bg-saffron-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-saffron-700 transition"
           >
             <span>Read Full Chapter Verse</span>

@@ -4,6 +4,7 @@ import { READING_JOURNEYS, getJourney, isJourneyIndexable } from '@/data/reading
 import { readSeededChapter } from '@/lib/read-seeded-chapters';
 import { getScriptureMeta } from '@/data/scriptures';
 import { clipDescription } from '@/lib/meta-text';
+import { readHref } from '@/lib/verse-paths';
 import { JourneyClient, type LessonView } from './JourneyClient';
 
 interface PageProps {
@@ -43,7 +44,7 @@ export default function JourneyPage({ params }: PageProps) {
     return {
       ...l,
       reference: `${getScriptureMeta(l.scriptureId)?.title ?? l.scriptureId} ${l.chapter}.${l.verse}`,
-      href: `/scripture/${l.scriptureId}/chapter/${l.chapter}/verse/${l.verse}`,
+      href: readHref(l.scriptureId, l.chapter, l.verse),
       sanskrit: v?.sanskrit ?? '',
       translation: v?.translation ?? '',
       translationIsAi: v?.translationSource === 'ai',

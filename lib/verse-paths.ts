@@ -64,7 +64,7 @@ export function verseOgPath(
  * highlights, bookmarks), which only show on the chapter's verse cards.
  */
 export function chapterVerseHref(scriptureId: string, chapterId: number, verseId?: number | string): string {
-  const base = `/scripture/${scriptureId}/chapter/${chapterId}`;
+  const base = `/scripture/${scriptureId}/chapter/${chapterId}/`;
   return verseId != null && String(verseId) !== '' ? `${base}#verse-${verseId}` : base;
 }
 
@@ -72,9 +72,9 @@ export function chapterVerseHref(scriptureId: string, chapterId: number, verseId
 export function readHref(scriptureId: string, chapterId: number, verseId?: number | string): string {
   if (verseId != null && String(verseId) !== '') {
     return versePageHref(scriptureId, chapterId, verseId)
-      ?? `/scripture/${scriptureId}/chapter/${chapterId}#verse-${verseId}`;
+      ?? `/scripture/${scriptureId}/chapter/${chapterId}/#verse-${verseId}`;
   }
-  return `/scripture/${scriptureId}/chapter/${chapterId}`;
+  return `/scripture/${scriptureId}/chapter/${chapterId}/`;
 }
 
 /**
@@ -84,5 +84,8 @@ export function readHref(scriptureId: string, chapterId: number, verseId?: numbe
  */
 export function shareVerseUrl(origin: string, scriptureId: string, chapterId: number, verseId: number | string): string {
   const path = readHref(scriptureId, chapterId, verseId);
-  return `${origin}${path.includes('#') || path.endsWith('/') ? path : `${path}/`}`;
+  const [pathname, hash] = path.split('#', 2);
+  const canonicalPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  const cleanOrigin = origin.replace(/\/+$/, '');
+  return `${cleanOrigin}${canonicalPath}${hash ? `#${hash}` : ''}`;
 }

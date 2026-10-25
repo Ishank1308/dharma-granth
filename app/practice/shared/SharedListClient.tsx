@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { BookmarkPlus, Check } from 'lucide-react';
 import { BOOKMARKS_KEY, readBookmarks, type SavedVerse } from '@/lib/reader-actions';
 import { parseSharePath, verseKey, type SharedList } from '@/lib/verse-collections';
-import { versePageHref } from '@/lib/verse-paths';
+import { readHref } from '@/lib/verse-paths';
 import { verseCount } from '@/lib/format';
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -78,7 +78,7 @@ export function SharedListClient({ titles }: { titles: Record<string, string> })
         return {
           ref,
           title,
-          href: versePageHref(ref.scriptureId, ref.chapterId, ref.verseId) ?? `/scripture/${ref.scriptureId}/chapter/${ref.chapterId}/#verse-${ref.verseId}`,
+          href: readHref(ref.scriptureId, ref.chapterId, ref.verseId),
           sanskrit: (v?.sanskrit ?? '').replace(/\s+/g, ' ').trim(),
           meaning: (v?.hindi || v?.translation || '').replace(/\s+/g, ' ').trim(),
           found: Boolean(v?.sanskrit),

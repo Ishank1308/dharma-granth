@@ -11,6 +11,7 @@ import {
 } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { readHref } from '@/lib/verse-paths';
 import {
   AlertTriangle,
   ArrowLeft,
@@ -1620,7 +1621,7 @@ ${verse.science || '—'}
                 {chaptersList.map((ch) => (
                   <Link
                     key={ch.id}
-                    href={`/scripture/${scriptureId}/chapter/${ch.id}/verse/1`}
+                    href={readHref(scriptureId, ch.id, 1)}
                     onClick={() => setChapterSelectorOpen(false)}
                     className={`flex items-center justify-between rounded-xl p-3 transition ${
                       ch.id === chapterId
@@ -1698,7 +1699,7 @@ ${verse.science || '—'}
                     return (
                       <Link
                         key={String(num)}
-                        href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${num}`}
+                        href={readHref(scriptureId, chapterId, num)}
                         onClick={() => setVerseSelectorOpen(false)}
                         className={`flex h-11 items-center justify-center rounded-xl font-devanagari text-sm font-bold transition ${
                           isCurrent
