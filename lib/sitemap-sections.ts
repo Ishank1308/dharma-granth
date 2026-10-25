@@ -15,6 +15,7 @@ import { graphPageIds } from '@/data/knowledge-graph';
 import { learningPaths } from '@/data/learning-paths';
 import { READING_JOURNEYS, isJourneyIndexable } from '@/data/reading-journeys';
 import { festivals } from '@/data/festivals';
+import { getChapterSummaryCollection } from '@/data/chapter-summaries';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
 
@@ -151,8 +152,9 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
   for (const meta of getAllScriptures()) {
     const date = scriptureLastChanged(meta.id);
     scriptures.push(entry(`/scripture/${meta.id}`, date));
-    if (meta.id === 'bhagavadgita') {
-      scriptures.push(entry('/scripture/bhagavadgita/summary', lastChanged('app/scripture/[id]/summary/page.tsx', 'data/gita-chapter-summaries.ts')));
+    const summaries = getChapterSummaryCollection(meta.id);
+    if (summaries) {
+      scriptures.push(entry(`/scripture/${meta.id}/summary`, lastChanged('app/scripture/[id]/summary/page.tsx', summaries.source)));
     }
 
     const chapterSet = new Set<number>(readSeededChapterNumbers(meta.id));
