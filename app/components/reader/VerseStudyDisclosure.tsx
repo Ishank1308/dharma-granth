@@ -50,7 +50,7 @@ export function VerseStudyDisclosure({
       </button>
 
       {open && (
-        <div id={panelId} role="region" aria-labelledby={titleId} className="liquid-reveal pt-3">
+        <div id={panelId} role="region" aria-labelledby={titleId} className="verse-study-panel liquid-reveal pt-3">
           {studyDepth === 'understand' && canDeepen && (
             <div className="mb-4 flex justify-end">
               <button

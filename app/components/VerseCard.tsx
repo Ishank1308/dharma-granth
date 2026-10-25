@@ -118,7 +118,7 @@ const VIJNANA_CATEGORIES: Record<string, string> = {
 function DraftBadge({ lang }: { lang: 'hi' | 'en' }) {
   return (
     <span
-      className="inline-flex items-center gap-1 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300"
+      className="inline-flex items-center gap-1 text-[11px] font-medium text-violet-700/80 dark:text-violet-300/80"
       title="AI-सहायता से तैयार संपादकीय प्रारूप; किसी विद्वान ने अभी इसकी समीक्षा नहीं की · AI-assisted editorial draft; not yet reviewed by a person"
     >
       {lang === 'hi' ? 'संपादकीय प्रारूप · समीक्षा बाकी' : 'Editor draft · review pending'}
@@ -797,9 +797,6 @@ export function VerseCard({
 
         {!chantingMode && (
           <div className="sacred-flow-wrap mt-5" data-reveal="3">
-            {/* Dialogue context for the verse above; renders nothing without dialogue data. */}
-            <SamvadaStrip scriptureId={scriptureId} chapterId={chapterId} verseNumber={v.number} />
-
             {/* ── Arth: the literal meaning, always first after the verse ── */}
             {showArth && (
               <section id={`verse-${v.number}-arth`} aria-label="अर्थ · Meaning">
@@ -869,6 +866,9 @@ export function VerseCard({
               </div>
               </section>
             )}
+
+            {/* Dialogue context for the verse above; renders nothing without dialogue data. */}
+            <SamvadaStrip scriptureId={scriptureId} chapterId={chapterId} verseNumber={v.number} />
 
             {hasStudyContent && (
               <VerseStudyDisclosure
@@ -1057,11 +1057,11 @@ export function VerseCard({
                             {meaning.editorial ? (
                               <span className="flex flex-wrap items-center gap-1.5">
                                 {VIJNANA_CATEGORIES[meaning.editorial.vijnanaCategory] && (
-                                  <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold text-indigo-700 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-300">
+                                  <span data-content-label="vijnana" className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold text-indigo-700 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-300">
                                     {VIJNANA_CATEGORIES[meaning.editorial.vijnanaCategory]}
                                   </span>
                                 )}
-                                <span className="rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-2 py-0.5 text-[10px] font-semibold text-dharma-muted">
+                                <span data-content-label="editorial" className="rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-2 py-0.5 text-[10px] font-semibold text-dharma-muted">
                                   संपादकीय अवलोकन · Editorial observation
                                 </span>
                                 <DraftBadge lang="hi" />
