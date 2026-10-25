@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import type { ScriptureCategory } from '@/data/types';
 
 export type MotifId = 'flame' | 'leaf' | 'feather' | 'bow' | 'lotus' | 'trishula' | 'om' | 'sutra';
@@ -55,4 +56,16 @@ const BY_ID: Record<string, Partial<ScriptureVibe>> = {
 
 export function scriptureVibe(id: string, category: ScriptureCategory): ScriptureVibe {
   return { ...(BY_CATEGORY[category] ?? BY_CATEGORY.other), ...(BY_ID[id] ?? {}) };
+}
+
+/**
+ * Props for the element that wraps a scripture's pages: its colours as CSS
+ * variables and its cover material, which globals.css turns into the verse
+ * folio (palm leaf, bark, silk, velvet or cloth), marker and number colours.
+ */
+export function vibeAttrs(vibe: ScriptureVibe): { style: CSSProperties; 'data-material': CoverMaterial } {
+  return {
+    style: { '--v1': vibe.cover[0], '--v2': vibe.cover[1], '--v3': vibe.cover[2], '--foil': vibe.foil } as CSSProperties,
+    'data-material': vibe.material,
+  };
 }

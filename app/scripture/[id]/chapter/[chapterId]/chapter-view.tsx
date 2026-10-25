@@ -30,7 +30,7 @@ import { ShareButton } from '@/app/components/ShareButton';
 import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
 import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction';
 import { Motif } from '@/app/components/vibe/Motif';
-import { scriptureVibe } from '@/lib/scripture-vibes';
+import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPart } from '@/lib/chapter-parts';
@@ -280,6 +280,8 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   const quietAction =
     'liquid-pill inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-4 text-xs font-medium text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500';
 
+  const vibe = scriptureVibe(meta.id, meta.category);
+
   const chapterJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Chapter',
@@ -313,7 +315,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   };
 
   return (
-    <main data-chapter-reading data-scripture={meta.category} data-scripture-id={meta.id} className="min-h-screen bg-dharma-bg">
+    <main data-chapter-reading data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} className="min-h-screen bg-dharma-bg">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -323,7 +325,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           the first verse. The summary lives in "About this chapter" below. */}
       <header className="mx-auto max-w-2xl px-4 pb-6 pt-8 text-center sm:px-6 sm:pb-10 sm:pt-14">
         {/* The scripture's emblem draws itself in as the chapter opens. */}
-        <Motif id={scriptureVibe(meta.id, meta.category).motif} className="motif-draw mx-auto mb-2 h-10 w-10 text-[color:var(--dharma-accent)]" />
+        <Motif id={vibe.motif} className="motif-draw mx-auto mb-2 h-10 w-10 text-[color:var(--dharma-accent)]" />
         <Link
           href={`/scripture/${meta.id}`}
           className="inline-flex min-h-[44px] items-center gap-1.5 text-xs font-medium uppercase tracking-[0.16em] text-dharma-muted transition hover:text-dharma-text"

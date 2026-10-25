@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
-import { scriptureVibe } from '@/lib/scripture-vibes';
+import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { Motif } from '@/app/components/vibe/Motif';
 import { ScriptureBook } from '@/app/components/vibe/ScriptureBook';
 import { ScriptureContents } from '@/app/components/ScriptureContents';
@@ -165,7 +165,7 @@ export default function ScripturePage({ params }: PageProps) {
   const vibe = scriptureVibe(meta.id, meta.category);
 
   return (
-    <main className="min-h-screen bg-dharma-bg" data-scripture={meta.category} data-scripture-id={meta.id}>
+    <main className="min-h-screen bg-dharma-bg" data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)}>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger

@@ -2731,3 +2731,125 @@ svg.lucide {
 @media (prefers-reduced-motion: reduce) {
     .skeleton-line, .loading-blossom { animation: none; }
 }
+
+/* ── Verses in their scripture's own manuscript (lib/scripture-vibes vibeAttrs) ──
+   The page wrapper carries --v1..3 (cover colours), --foil and data-material.
+   The Sanskrit sits on a folio of that material; numbers and ॥ markers take the
+   scripture's ink: its cover colour on light themes, its foil on dark. */
+[data-material] {
+    --v-ink: color-mix(in srgb, var(--v2) 82%, #000);
+    --v-wash: color-mix(in srgb, var(--v2) 6%, transparent);
+    --v-edge: color-mix(in srgb, var(--v2) 18%, transparent);
+}
+:root[data-theme='night'] [data-material],
+:root[data-theme='dark'] [data-material] {
+    --v-ink: var(--foil);
+    --v-wash: color-mix(in srgb, var(--v2) 13%, transparent);
+    --v-edge: color-mix(in srgb, var(--v3) 22%, transparent);
+}
+[data-material] .verse-mark,
+[data-material] .vt-sa > .vt-num,
+[data-material] .verse-ref,
+[data-material] .vt-title {
+    color: var(--v-ink);
+}
+[data-material] .verse-folio {
+    position: relative;
+    border: 1px solid var(--v-edge);
+    background-color: var(--v-wash);
+    border-radius: 20px;
+    padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* Vedas and sūtras: a palm-leaf folio. A flat strip with rounded ends, two binding holes, and the
+   vertical margin rules scribes drew beside them. */
+[data-material='palm-leaf'] .verse-folio {
+    border-radius: 44px / 50%;
+    --pl-rule: color-mix(in srgb, var(--v2) 22%, transparent);
+    --pl-margin: clamp(2.6rem, 8vw, 3.6rem);
+    background-image:
+        linear-gradient(90deg, transparent calc(var(--pl-margin) - 1px), var(--pl-rule) calc(var(--pl-margin) - 1px), var(--pl-rule) var(--pl-margin), transparent var(--pl-margin)),
+        linear-gradient(270deg, transparent calc(var(--pl-margin) - 1px), var(--pl-rule) calc(var(--pl-margin) - 1px), var(--pl-rule) var(--pl-margin), transparent var(--pl-margin)),
+        repeating-linear-gradient(92deg, transparent 0 11px, color-mix(in srgb, #8a6a3c 4%, transparent) 11px 12px),
+        linear-gradient(180deg, color-mix(in srgb, #d6b16e 12%, transparent), color-mix(in srgb, #b98d45 7%, transparent));
+    padding-inline: calc(var(--pl-margin) + clamp(0.75rem, 3vw, 1.5rem));
+}
+[data-material='palm-leaf'] .verse-folio::before,
+[data-material='palm-leaf'] .verse-folio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    margin-top: -4.5px;
+    border-radius: 50%;
+    background: var(--dharma-bg);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--v-edge);
+}
+[data-material='palm-leaf'] .verse-folio::before { left: clamp(0.9rem, 3vw, 1.6rem); }
+[data-material='palm-leaf'] .verse-folio::after { right: clamp(0.9rem, 3vw, 1.6rem); }
+
+/* Upanishads: bhojpatra, birch bark, warm with fine horizontal fibres. */
+[data-material='bark'] .verse-folio {
+    border-radius: 14px 22px 16px 24px;
+    background-image:
+        repeating-linear-gradient(178deg, transparent 0 7px, color-mix(in srgb, #8a6a3c 6%, transparent) 7px 8px, transparent 8px 19px),
+        linear-gradient(180deg, color-mix(in srgb, #e3c99a 12%, transparent), color-mix(in srgb, var(--v2) 5%, transparent));
+}
+
+/* Gita, Purāṇas, Rāmāyaṇa, stotras: silk, with a slow sheen across it. */
+[data-material='silk'] .verse-folio {
+    background-image:
+        linear-gradient(115deg, transparent 30%, color-mix(in srgb, var(--v3) 12%, transparent) 48%, transparent 62%),
+        linear-gradient(180deg, var(--v-wash), color-mix(in srgb, var(--v3) 5%, transparent));
+    background-size: 260% 100%, auto;
+    animation: folio-sheen 9s ease-in-out infinite alternate;
+    border-top: 2px solid color-mix(in srgb, var(--foil) 45%, transparent);
+}
+@keyframes folio-sheen {
+    from { background-position: 100% 0, 0 0; }
+    to { background-position: 0% 0, 0 0; }
+}
+
+/* Śākta, Tantra and the epics: velvet, lit from above. */
+[data-material='velvet'] .verse-folio {
+    background-image:
+        radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--v3) 13%, transparent), transparent 70%),
+        linear-gradient(180deg, transparent, color-mix(in srgb, var(--v1) 8%, transparent));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--foil) 14%, transparent);
+}
+
+/* Vedānta and Smṛti: plain woven cloth. */
+[data-material='cloth'] .verse-folio {
+    background-image:
+        repeating-linear-gradient(45deg, color-mix(in srgb, var(--v2) 4%, transparent) 0 1px, transparent 1px 5px),
+        repeating-linear-gradient(-45deg, color-mix(in srgb, var(--v2) 4%, transparent) 0 1px, transparent 1px 5px);
+}
+
+/* The lifted verse's glass takes the scripture's colour. */
+[data-material] .liquid-glass.spatial-focused {
+    background-image: linear-gradient(to bottom, color-mix(in srgb, var(--v3) 16%, rgba(255, 255, 255, 0.12)), color-mix(in srgb, var(--v1) 10%, rgba(255, 255, 255, 0.03)));
+    border-color: color-mix(in srgb, var(--foil) 30%, rgba(255, 255, 255, 0.14));
+}
+
+/* The contents list on the scripture's page. */
+[data-material] .vibe-num {
+    background: color-mix(in srgb, var(--v2) 14%, transparent);
+    color: var(--v-ink);
+}
+[data-material] .vibe-card:hover {
+    border-color: color-mix(in srgb, var(--v2) 45%, var(--dharma-border));
+}
+[data-material] .vibe-cta {
+    background-image: linear-gradient(135deg, var(--v2), var(--v1));
+    color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-material='silk'] .verse-folio { animation: none; }
+}
+@media print {
+    [data-material] .verse-folio { background: none; border-color: #ccc; }
+    [data-material='palm-leaf'] .verse-folio::before,
+    [data-material='palm-leaf'] .verse-folio::after { display: none; }
+}

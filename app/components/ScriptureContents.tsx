@@ -61,7 +61,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
             <h2 id="contents-heading" className="editorial-section-title mt-2">Adhyay / Sections</h2>
           </div>
           {firstChapter && (
-            <Link href={chapterHref(scriptureId, firstChapter.id)} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-saffron-800 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">
+            <Link href={chapterHref(scriptureId, firstChapter.id)} className="vibe-cta inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-saffron-800 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">
               <BookOpen className="h-4 w-4" aria-hidden="true" />
               Start reading
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -78,8 +78,8 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
               whileHover={reduceMotion ? undefined : { y: -3 }}
               whileTap={reduceMotion ? undefined : { scale: 0.995 }}
             >
-              <Link href={chapterHref(scriptureId, chapter.id)} className="group flex min-h-[104px] items-center gap-4 rounded-2xl border border-dharma-border bg-dharma-card p-4 transition duration-200 hover:-translate-y-0.5 hover:border-saffron-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-saffron-500/10 font-serif text-lg font-bold text-saffron-700 dark:text-saffron-300">{chapter.id}</span>
+              <Link href={chapterHref(scriptureId, chapter.id)} className="vibe-card group flex min-h-[104px] items-center gap-4 rounded-2xl border border-dharma-border bg-dharma-card p-4 transition duration-200 hover:-translate-y-0.5 hover:border-saffron-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">
+                <span className="vibe-num flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-saffron-500/10 font-serif text-lg font-bold text-saffron-700 dark:text-saffron-300">{chapter.id}</span>
                 <span className="min-w-0 flex-1">
                   <span className="block font-serif text-lg font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-300">{chapter.title}</span>
                   {chapter.titleSanskrit && <span lang="sa" className="mt-0.5 block truncate font-devanagari text-sm text-dharma-muted">{chapter.titleSanskrit}</span>}

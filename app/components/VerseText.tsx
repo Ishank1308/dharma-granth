@@ -57,7 +57,7 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
       </header>
 
       {lines.length > 0 && (
-        <div className="vt-leaf">
+        <div className="vt-leaf verse-folio">
           <p lang="sa" className="vt-sa">
             {lines.map((line, i) => (
               <span key={i}>{line}</span>

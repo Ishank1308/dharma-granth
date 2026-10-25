@@ -218,7 +218,7 @@ function isMostlyDevanagari(text: string | undefined): boolean {
 /** Quiet verse reference that stays legible without competing with the shloka. */
 function VerseReference({ label }: { label: string }) {
   return (
-    <span className="font-serif text-sm font-semibold tabular-nums text-saffron-800 dark:text-saffron-300">
+    <span className="verse-ref font-serif text-sm font-semibold tabular-nums text-saffron-800 dark:text-saffron-300">
       {label}
     </span>
   );
@@ -653,7 +653,7 @@ export function VerseCard({
 
         {/* ── The canonical verse remains the visual center of the card. ── */}
         {lines.length > 0 && (
-          <div className={`relative rounded-2xl px-2 py-4 text-center md:px-8 md:py-6 transition-colors ${
+          <div className={`verse-folio relative rounded-2xl px-2 py-4 text-center md:px-8 md:py-6 transition-colors ${
             isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
           }`}>
             {isSandhiSplit && hasSplitData ? (
@@ -710,7 +710,7 @@ export function VerseCard({
                 })}
                 <span
                   aria-hidden="true"
-                  className="mt-2 block text-base font-semibold text-saffron-700/90 dark:text-amber-300/90"
+                  className="verse-mark mt-2 block text-base font-semibold text-saffron-700/90 dark:text-amber-300/90"
                   title={chandas ? `छन्दः ${chandas.name} · ${chandas.nameEn} (${chandas.syllables} वर्ण)` : undefined}
                 >
                   ॥ {toAsciiDigits(verseLabel)} ॥
