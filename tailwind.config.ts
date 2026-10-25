@@ -1,5 +1,11 @@
 import type { Config } from 'tailwindcss';
 
+// Theme colours are CSS variables holding hex values, which Tailwind cannot
+// split into channels, so opacity modifiers (`bg-dharma-card/95`) were silently
+// dropped. color-mix lets `<alpha-value>` apply to any variable colour.
+const themeVar = (name: string) =>
+  `color-mix(in srgb, var(${name}) calc(<alpha-value> * 100%), transparent)`;
+
 const config: Config = {
   // Follow the site's own theme switcher (ThemeProvider sets data-theme on
   // <html>), not the OS colour scheme, so `dark:` matches what users picked.
@@ -26,23 +32,23 @@ const config: Config = {
           900: '#7c2d12',
         },
         dharma: {
-          bg: 'var(--dharma-bg)',
+          bg: themeVar('--dharma-bg'),
           dark: '#1a1814',
-          text: 'var(--dharma-text)',
-          'text-secondary': 'var(--dharma-text-secondary)',
-          muted: 'var(--dharma-muted)',
-          border: 'var(--dharma-border)',
-          card: 'var(--dharma-card)',
-          'card-soft': 'var(--dharma-card-soft)',
-          panel: 'var(--dharma-panel)',
-          'panel-muted': 'var(--dharma-panel-muted)',
-          reading: 'var(--dharma-reading-surface)',
-          gold: 'var(--dharma-gold)',
-          saffron: 'var(--dharma-saffron)',
-          maroon: 'var(--dharma-maroon)',
-          success: 'var(--dharma-success)',
-          warning: 'var(--dharma-warning)',
-          error: 'var(--dharma-error)',
+          text: themeVar('--dharma-text'),
+          'text-secondary': themeVar('--dharma-text-secondary'),
+          muted: themeVar('--dharma-muted'),
+          border: themeVar('--dharma-border'),
+          card: themeVar('--dharma-card'),
+          'card-soft': themeVar('--dharma-card-soft'),
+          panel: themeVar('--dharma-panel'),
+          'panel-muted': themeVar('--dharma-panel-muted'),
+          reading: themeVar('--dharma-reading-surface'),
+          gold: themeVar('--dharma-gold'),
+          saffron: themeVar('--dharma-saffron'),
+          maroon: themeVar('--dharma-maroon'),
+          success: themeVar('--dharma-success'),
+          warning: themeVar('--dharma-warning'),
+          error: themeVar('--dharma-error'),
         }
       },
       fontFamily: {
