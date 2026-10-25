@@ -26,8 +26,8 @@ interface Props {
  * A verse as plain, semantic HTML: the form every chapter page is exported
  * in, so crawlers, link previews and no-JS readers get the full text.
  * FullChapterVerses swaps each one for the interactive VerseCard right after
- * hydration. It mirrors the card's box, header and manuscript leaf (same id,
- * padding and line breaks) so the swap barely moves the layout, but carries
+ * hydration. It mirrors the card's flat page layout, header and verse block
+ * (same id, padding and line breaks) so the swap barely moves the layout, but carries
  * no toolbar, icons or animation: a rich card is ~13 KB of HTML per verse,
  * which would add ~2 GB across the 180k-verse export.
  * Styling lives in the short `.vt-*` classes in globals.css for the same
@@ -41,23 +41,23 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
   const english = cleanVerseField(v.translation);
   const lines = sanskrit ? verseLines(sanskrit) : [];
   const title = `श्लोक ${label}`;
+  const reference = (
+    <>
+      <span className="sr-only">श्लोक </span>
+      {toAsciiDigits(chapterId)}.{toAsciiDigits(label)}
+    </>
+  );
   return (
     <article id={`verse-${label}`} className="verse-card vt" aria-label={title}>
       <header className="vt-head">
-        <span aria-hidden="true" className="vt-medal">
-          {toAsciiDigits(label)}
-        </span>
-        <div>
-          <p className="vt-ch">अध्याय {toAsciiDigits(chapterId)}</p>
-          <h3 className="vt-title">
-            {href ? <Link href={href}>{title}</Link> : title}
-          </h3>
-        </div>
-        {actions ?? <div aria-hidden="true" className="vt-toolbar" />}
+        <h3 className="vt-title">
+          {href ? <Link href={href}>{reference}</Link> : reference}
+        </h3>
+        {actions}
       </header>
 
       {lines.length > 0 && (
-        <div className="verse-leaf vt-leaf">
+        <div className="vt-leaf">
           <p lang="sa" className="vt-sa">
             {lines.map((line, i) => (
               <span key={i}>{line}</span>
@@ -74,9 +74,11 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
 
       {hindi && (
         <div className="vt-block">
-          <p className="vt-label" lang="hi">
-            {v.hindiRange ? `श्लोक ${toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिन्दी अर्थ` : 'हिन्दी अर्थ'}
-          </p>
+          {v.hindiRange && (
+            <p className="vt-label" lang="hi">
+              श्लोक {toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिन्दी अर्थ
+            </p>
+          )}
           <p lang="hi" className="vt-hi">
             {hindi}
           </p>
@@ -94,7 +96,6 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
       )}
       {english && (
         <div className="vt-block">
-          <p className="vt-label" lang="en">English</p>
           <p lang="en" className="vt-en">
             {english}
           </p>

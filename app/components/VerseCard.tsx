@@ -32,7 +32,6 @@ import { parseWordMeanings } from '@/lib/word-gloss';
 import { SITE_URL } from '@/lib/jsonld';
 import { ShareVerseButton } from './ShareVerseButton';
 import { GlossaryText } from './GlossaryTooltip';
-import { getVerseGraphicClass, getVerseGraphicStyle } from './verse-background';
 import { ContentLabelBadge } from './ContentLabels';
 import { ModernContextBody, ReflectionBody, parseModernContext } from './ModernContextBlock';
 import { ConnectedFlow, SacredSection } from '@/app/components/reader/SacredReadingFlow';
@@ -216,14 +215,14 @@ function isMostlyDevanagari(text: string | undefined): boolean {
 /** Quiet verse reference that stays legible without competing with the shloka. */
 function VerseReference({ label }: { label: string }) {
   return (
-    <span className="inline-flex h-11 min-w-11 shrink-0 items-center justify-center rounded-xl border border-saffron-200/80 bg-saffron-50/80 px-2 font-serif text-sm font-semibold tabular-nums text-saffron-800 dark:border-saffron-800/60 dark:bg-saffron-950/35 dark:text-saffron-200">
+    <span className="font-serif text-sm font-semibold tabular-nums text-saffron-800 dark:text-saffron-300">
       {label}
     </span>
   );
 }
 
 const iconButton =
-  'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card text-dharma-muted transition-colors duration-200 hover:border-saffron-300 hover:bg-saffron-50/60 hover:text-saffron-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 dark:hover:bg-saffron-950/40 dark:focus-visible:ring-offset-dharma-card';
+  'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-transparent text-dharma-muted/80 transition-colors duration-200 hover:bg-dharma-card-soft hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500';
 
 export function VerseCard({
   depth = 'study',
@@ -441,78 +440,42 @@ export function VerseCard({
   return (
     <article
       id={`verse-${v.number}`}
-      className={`verse-card ${REVEAL_SEQUENCE} group relative scroll-mt-24 rounded-[28px] border bg-dharma-card transition-all duration-300 ${
+      className={`verse-card book-verse ${REVEAL_SEQUENCE} group relative scroll-mt-24 transition-all duration-300 ${
         isReciting
-          ? 'border-amber-400/80 ring-2 ring-amber-400/60 shadow-xl shadow-amber-500/15'
+          ? 'book-verse-ringed bg-amber-500/5 ring-2 ring-amber-400/50'
           : highlight
-          ? `${HIGHLIGHTS[highlight].ring} border-dharma-border`
-          : chantingMode
-          ? 'ring-2 ring-saffron-500/25 border-dharma-border'
-          : 'border-dharma-border'
-      } ${getVerseGraphicClass(category)}`}
+          ? `book-verse-ringed ${HIGHLIGHTS[highlight].ring}`
+          : ''
+      }`}
       style={{
-        ...getVerseGraphicStyle({ category, verseId: v.number }),
         contentVisibility: isActive || isReciting ? 'visible' : 'auto',
         containIntrinsicSize: 'auto 420px',
       }}
       aria-label={`श्लोक ${verseLabel}${isReciting ? ' · श्लोक उच्चारण चालू' : ''}${highlight ? ` · ${HIGHLIGHTS[highlight].label} हाइलाइट` : ''}`}
     >
-      <div className="relative p-4 sm:p-5 md:p-7">
+      <div className="relative px-1 py-2 sm:px-2">
         {/* ── Header ─────────────────────────────────────────── */}
-        <header className="mb-3 sm:mb-5 flex flex-wrap items-center gap-x-3 gap-y-3">
+        <header className="mb-2 flex items-center gap-3">
           {onOpenFocus ? (
             <button
               type="button"
               onClick={onOpenFocus}
-              className="group/hdr flex items-center gap-3 rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dharma-card"
+              className="group/hdr flex min-h-11 items-center gap-3 rounded-lg px-1 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dharma-card"
               title="एकाग्रता मोड में पढ़ें (Focus Mode)"
             >
-              <VerseReference label={toAsciiDigits(verseLabel)} />
-              <div className="shrink-0 whitespace-nowrap">
-                <p className="text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
-                  अध्याय {toAsciiDigits(chapterId)} · Chapter {toAsciiDigits(chapterId)}
-                </p>
-                <p className="font-serif text-base font-bold text-dharma-text group-hover/hdr:text-saffron-700 transition-colors">
-                  श्लोक · Verse
-                </p>
-              </div>
+              <span className="sr-only">श्लोक</span>
+              <VerseReference label={`${toAsciiDigits(chapterId)}.${toAsciiDigits(verseLabel)}`} />
             </button>
           ) : (
-            <div className="flex items-center gap-3">
-              <VerseReference label={toAsciiDigits(verseLabel)} />
-              <div className="shrink-0 whitespace-nowrap">
-                <p className="text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
-                  अध्याय {toAsciiDigits(chapterId)} · Chapter {toAsciiDigits(chapterId)}
-                </p>
-                <p className="font-serif text-base font-bold text-dharma-text">श्लोक · Verse</p>
-              </div>
+            <div className="flex min-h-11 items-center gap-3 px-1">
+              <span className="sr-only">श्लोक</span>
+              <VerseReference label={`${toAsciiDigits(chapterId)}.${toAsciiDigits(verseLabel)}`} />
             </div>
-          )}
-
-          {/* Inline Sandhi-Viccheda (Compound Split) Toggle Pill */}
-          {hasSplitData && (
-            <button
-              type="button"
-              onClick={() => {
-                setIsSandhiSplit(!isSandhiSplit);
-                setHoveredWordIndex(null);
-              }}
-              aria-pressed={isSandhiSplit}
-              title="संधि-विच्छेद (Split Compound Words)"
-              className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold transition border lg:min-h-0 lg:py-1 ${
-                isSandhiSplit
-                  ? 'border-saffron-500 bg-saffron-100/90 text-saffron-900 shadow-2xs dark:bg-saffron-950/60 dark:text-saffron-200 dark:border-saffron-700'
-                  : 'border-dharma-border/80 bg-dharma-card/80 text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
-              }`}
-            >
-              <ScrollText className="h-3.5 w-3.5 text-saffron-600 dark:text-saffron-400" />
-              <span>संधि-विच्छेद · Split Words</span>
-            </button>
           )}
 
           {/* Streamlined, calm toolbar: 3 essential icons + ActionMenu overflow. Never wraps awkwardly on mobile. */}
           <div
-            className="ml-auto flex shrink-0 items-center gap-1.5"
+            className="ml-auto flex shrink-0 items-center gap-0.5 transition-opacity duration-200 [@media(hover:hover)]:opacity-40 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-within:opacity-100"
             role="group"
             aria-label="श्लोक विकल्प (Verse actions)"
           >
@@ -551,7 +514,7 @@ export function VerseCard({
             </button>
 
             {/* Share */}
-            <span className="shrink-0 [&>button]:h-11 [&>button]:w-11">
+            <span className="shrink-0 [&>button]:h-11 [&>button]:w-11 [&>button]:border-transparent [&>button]:bg-transparent [&>button]:shadow-none [&>button]:backdrop-blur-none [&>button]:text-dharma-muted/80 [&>button:hover]:bg-dharma-card-soft [&>button:hover]:text-dharma-text">
               <ShareVerseButton
                 scriptureTitle={scriptureTitle}
                 chapterTitle={chapterTitle}
@@ -684,21 +647,9 @@ export function VerseCard({
 
         {/* ── The canonical verse remains the visual center of the card. ── */}
         {lines.length > 0 && (
-          <div className={`verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8 transition-colors ${
+          <div className={`relative rounded-2xl px-2 py-4 text-center md:px-8 md:py-6 transition-colors ${
             isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
           }`}>
-            <div className="mb-3.5 flex flex-wrap items-center justify-center gap-2">
-              <ContentLabelBadge kind="mula" />
-              {chandas && (
-                <span
-                  className="inline-flex items-center gap-1 rounded-full border border-amber-300/60 bg-amber-50/80 px-2.5 py-0.5 text-[11px] font-semibold text-amber-900 shadow-2xs dark:border-amber-700/40 dark:bg-amber-950/40 dark:text-amber-200"
-                  title={`${chandas.descriptionHi} · ${chandas.description} (${chandas.syllables} वर्ण)`}
-                >
-                  <span className="font-serif text-amber-700 dark:text-amber-400 font-bold">छन्दः</span>
-                  <span>{chandas.name} · {chandas.nameEn}</span>
-                </span>
-              )}
-            </div>
             {isSandhiSplit && hasSplitData ? (
               <div data-reveal="1" className="mx-auto my-2 max-w-2xl text-center">
                 <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-amber-300/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-amber-950/30">
@@ -751,7 +702,11 @@ export function VerseCard({
                     </span>
                   );
                 })}
-                <span aria-hidden="true" className="mt-2 block font-bold text-saffron-700 dark:text-amber-300">
+                <span
+                  aria-hidden="true"
+                  className="mt-2 block text-base font-semibold text-saffron-700/90 dark:text-amber-300/90"
+                  title={chandas ? `छन्दः ${chandas.name} · ${chandas.nameEn} (${chandas.syllables} वर्ण)` : undefined}
+                >
                   ॥ {toAsciiDigits(verseLabel)} ॥
                 </span>
               </p>
@@ -847,24 +802,21 @@ export function VerseCard({
 
             {/* ── Arth: the literal meaning, always first after the verse ── */}
             {showArth && (
-              <SacredSection id={`verse-${v.number}-arth`} section="arth">
-              <div className="overflow-hidden rounded-2xl border border-dharma-border/70 bg-dharma-card-soft/40 divide-y divide-dharma-border/70">
+              <section id={`verse-${v.number}-arth`} aria-label="अर्थ · Meaning">
+              <div className="space-y-4">
                 {showHindi && (
-                  <div className={`p-4 sm:p-5 transition-colors duration-200 ${
+                  <div className={`-mx-2 rounded-xl px-2 py-1 transition-colors duration-200 ${
                     isReciting && activeTranslationLang === 'hi'
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''
                   }`}>
-                    <div className="mb-2 flex items-center justify-between gap-2">
-                      <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                    {(v.hindiReviewRequired || v.hindiRange) && (
+                      <p lang="hi" className="mb-1 text-xs text-dharma-muted">
                         {v.hindiReviewRequired
                           ? 'हिन्दी अर्थ · स्रोत सत्यापनाधीन'
-                          : v.hindiRange
-                          ? `श्लोक ${toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिंदी अनुवाद · Hindi Translation`
-                          : 'हिंदी अनुवाद · Hindi Translation'}
+                          : `श्लोक ${toAsciiDigits(v.hindiRange!.replace('-', '–'))} का हिंदी अनुवाद`}
                       </p>
-                      {!v.hindiReviewRequired && <ContentLabelBadge kind="literal" />}
-                    </div>
+                    )}
                     {!v.hindi && v.hindiSeeVerse != null && (
                       <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-muted">
                         इस श्लोक का अर्थ श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
@@ -893,17 +845,11 @@ export function VerseCard({
                 )}
 
                 {showEnglish && (
-                  <div className={`p-4 sm:p-5 transition-colors duration-200 ${
+                  <div className={`-mx-2 rounded-xl px-2 py-1 transition-colors duration-200 ${
                     isReciting && activeTranslationLang === 'en'
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''
                   }`}>
-                    <div className="mb-2 flex items-center justify-between gap-2">
-                      <p lang="en" className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                        English Translation
-                      </p>
-                      <ContentLabelBadge kind="literal" />
-                    </div>
                     <p lang="en" className={`font-serif ${translationFontSizeClass} text-dharma-text`}>
                       {v.translation}
                       {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
@@ -921,7 +867,7 @@ export function VerseCard({
                   </div>
                 )}
               </div>
-              </SacredSection>
+              </section>
             )}
 
             {hasStudyContent && (

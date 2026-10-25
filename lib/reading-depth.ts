@@ -19,7 +19,7 @@ export const READING_DEPTHS: { id: ReadingDepth; en: string; hi: string; hint: s
 
 const KEY = 'dharma.readingDepth';
 const EVENT = 'dharma-reading-depth';
-export const DEFAULT_DEPTH: ReadingDepth = 'understand';
+export const DEFAULT_DEPTH: ReadingDepth = 'read';
 
 function readStored(): ReadingDepth {
   try {

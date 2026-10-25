@@ -1127,22 +1127,16 @@
 /* ── Static verse (<VerseText>) ─────────────────────────────────────
    The exported, pre-hydration form of a verse card. Short class names on
    purpose: this markup repeats for ~180k verses across the export. Mirrors
-   VerseCard's box (p-5 md:p-7, rounded-[28px]), header and leaf. */
+   VerseCard's flat page layout, header and verse block. */
 @layer components {
     .vt {
-        @apply relative scroll-mt-24 rounded-[28px] border border-dharma-border bg-dharma-card p-5 md:p-7;
+        @apply relative scroll-mt-24 px-1 py-2 sm:px-2;
     }
     .vt-head {
-        @apply mb-5 flex flex-wrap items-center gap-x-3 gap-y-3;
-    }
-    .vt-medal {
-        @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-saffron-500/15 font-devanagari text-sm font-bold text-saffron-800;
-    }
-    .vt-ch {
-        @apply text-[11px] font-semibold text-saffron-700;
+        @apply mb-2 flex min-h-11 items-center gap-3 px-1;
     }
     .vt-title {
-        @apply font-serif text-base font-bold text-dharma-text;
+        @apply font-serif text-sm font-semibold tabular-nums text-saffron-800;
     }
     .vt-title a {
         color: inherit;
@@ -1151,11 +1145,8 @@
     .vt-title a:hover {
         text-decoration: underline;
     }
-    .vt-toolbar {
-        @apply order-last h-11 w-full sm:hidden;
-    }
     .vt-leaf {
-        @apply relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8;
+        @apply relative px-2 py-4 text-center md:px-8 md:py-6;
     }
     .vt-sa {
         @apply font-devanagari text-base leading-loose text-dharma-text md:text-lg;
@@ -1164,7 +1155,7 @@
         @apply block px-2.5 py-1;
     }
     .vt-sa > .vt-num {
-        @apply mt-2 font-bold text-saffron-800;
+        @apply mt-2 font-semibold text-saffron-700;
     }
     /* IAST is folded by default (the card shows it behind a toggle); kept in the
        HTML for crawlers but hidden so the hydration swap does not shift layout. */
@@ -1172,16 +1163,16 @@
         @apply hidden mx-auto mt-4 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-4 text-sm italic leading-relaxed text-dharma-muted md:text-[15px];
     }
     .vt-block {
-        @apply mt-5;
+        @apply mt-4 px-1;
     }
     .vt-label {
-        @apply mb-1 text-[11px] font-bold uppercase tracking-wide text-saffron-700;
+        @apply mb-1 text-xs text-dharma-muted;
     }
     .vt-hi {
-        @apply font-devanagari text-base leading-loose text-dharma-text md:text-[17px];
+        @apply font-devanagari text-base leading-[1.85] text-dharma-text md:text-lg;
     }
     .vt-en {
-        @apply text-sm leading-relaxed text-dharma-muted md:text-base;
+        @apply font-serif text-base leading-[1.85] text-dharma-text md:text-lg;
     }
 }
 [data-reader-size='large'] .vt-sa {
@@ -1190,7 +1181,7 @@
 [data-reader-size='xl'] .vt-sa {
     @apply text-xl font-medium leading-loose md:text-2xl;
 }
-:root[data-theme='night'] .vt-ch,
+:root[data-theme='night'] .vt-title,
 :root[data-theme='night'] .vt-sa > .vt-num {
     color: theme('colors.amber.300');
 }
@@ -1440,6 +1431,27 @@
 }
 .verse-card:hover .verse-card-spotlight {
     opacity: 1;
+}
+
+/* Chapter reader: verses sit on the page like a book (Apple Books / Kindle),
+   divided by a hairline rather than boxed in cards. Overrides .verse-card. */
+.verse-card.book-verse,
+.verse-card.vt {
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--dharma-border) 55%, transparent);
+}
+.verse-card.book-verse:hover,
+.verse-card.vt:hover {
+    box-shadow: none;
+}
+/* Reciting or highlighted: the ring needs its corners back. */
+.verse-card.book-verse.book-verse-ringed {
+    border-radius: 1rem;
 }
 
 /* A quiet, warm surface keeps the canonical Sanskrit in focus. */

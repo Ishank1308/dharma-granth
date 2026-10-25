@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, startTransition } from 'react';
 import {
-  ArrowRight,
   BookOpen,
   Flame,
   Maximize2,
@@ -11,12 +10,8 @@ import {
   SlidersHorizontal,
   X,
   MessageSquare,
-  Volume2,
-  Pause,
-  Play,
   ChevronDown,
 } from 'lucide-react';
-import Link from 'next/link';
 import { updateReaderScrollProgress, triggerPranaToast } from '@/lib/prana-capsule-store';
 import type { ScriptureCategory } from '@/data/types';
 import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
@@ -119,9 +114,6 @@ interface Props {
   /** Display titles for the share card; fall back to ids when absent. */
   scriptureTitle?: string;
   chapterTitle?: string;
-  /** Link and title for continuous meditative transition to the next chapter */
-  nextChapterHref?: string;
-  nextChapterTitle?: string;
   basePath?: string;
   /**
    * Skip the "Load full chapter text" button and fetch immediately. Used on
@@ -165,7 +157,7 @@ function withRich(prev: Set<string>, numbers: Array<string | number>): Set<strin
   return next;
 }
 
-export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, nextChapterHref, nextChapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {} }: Props) {
+export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {} }: Props) {
   const isOnline = useConnectivity();
   const { settings: readerSettings, update: updateReaderSetting, reset: resetReaderSettings, reducedMotion } = useReaderSettings();
   const { theme, setTheme } = useTheme();
@@ -1012,101 +1004,49 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   return (
     <>
       <section>
-        {/* Reader Customization Toolbar */}
-        <div className="mb-4 rounded-2xl border border-dharma-border/80 bg-dharma-card p-3 shadow-sm sm:mb-6 sm:p-4">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h3 className="text-lg font-serif font-bold text-dharma-text flex items-center gap-2">
-                <span>पूर्ण अध्याय पाठ</span>
-                <span className="text-xs font-sans font-normal text-dharma-muted rounded-full bg-dharma-bg px-2.5 py-0.5 border border-dharma-border/60">
-                  {filterQuery.trim() ? `${filteredVerses.length} / ${state.verses.length}` : state.verses.length} श्लोक
-                </span>
-              </h3>
-            </div>
+        {/* One quiet line above the text, like a book's running head: the verse count, type settings (Aa)
+            and everything else folded behind "Options". Listening starts from the chapter title above. */}
+        <div className="mb-6 border-b border-dharma-border/60 pb-3">
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-xs text-dharma-muted">
+              <span className="sr-only">पूर्ण अध्याय पाठ · </span>
+              {filterQuery.trim() ? `${filteredVerses.length} / ${state.verses.length}` : state.verses.length} श्लोक
+              {parayanaActive && activeRecitingVerse !== null && (
+                <span className="ml-2 text-amber-700 dark:text-amber-300">· पारायण {toAsciiDigits(activeRecitingVerse)}</span>
+              )}
+            </p>
 
-            <div className="flex flex-wrap items-center gap-2">
-              {/* Continuous Chapter Parayana Button */}
+            <div className="flex items-center gap-1">
               <button
                 type="button"
-                onClick={() => {
-                  triggerTactileFeedback('selection', 'click');
-                  if (parayanaActive) {
-                    stopSoundscape();
-                    setParayanaActive(false);
-                    setActiveRecitingVerse(null);
-                    setContinuousParayana(false);
-                  } else {
-                    setContinuousParayana(true);
-                    setParayanaActive(true);
-                    const list = filteredVerses.length > 0 ? filteredVerses : state.verses;
-                    const startV =
-                      (activeRecitingVerse !== null
-                        ? list.find((v) => String(v.number) === String(activeRecitingVerse))
-                        : null) || list[0];
-                    if (startV) {
-                      playVerse(startV);
-                    }
-                  }
-                }}
-                className={`inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-xl sm:min-h-0 px-3 py-1.5 text-xs font-semibold transition ${
-                  parayanaActive
-                    ? 'bg-amber-600 text-white shadow-sm ring-2 ring-amber-400/30'
-                    : 'border border-dharma-border bg-dharma-bg text-dharma-text hover:border-amber-300 hover:text-amber-700'
-                }`}
-                title="सम्पूर्ण अध्याय के श्लोकों का क्रमिक उच्चारण सुनें (Continuous Chapter Recitation)"
-                aria-label="अध्याय पारायण"
-                aria-pressed={parayanaActive}
+                onClick={() => setReaderSettingsOpen(true)}
+                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-full px-3 text-sm font-semibold text-dharma-muted transition hover:bg-dharma-card hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                title="पठन व्यवस्था · Reader settings"
+                aria-label="पठन व्यवस्था · Reader settings"
+                aria-haspopup="dialog"
+                aria-expanded={readerSettingsOpen}
               >
-                {parayanaActive ? (
-                  <Pause className="h-3.5 w-3.5 text-white" />
-                ) : (
-                  <Volume2 className="h-3.5 w-3.5 text-amber-600" />
-                )}
-                <span className="hidden sm:inline">
-                  {parayanaActive && activeRecitingVerse !== null
-                    ? `पारायण (${toAsciiDigits(activeRecitingVerse)})`
-                    : 'अध्याय पारायण'}
-                </span>
+                <span aria-hidden="true" className="font-serif">Aa</span>
               </button>
-
-              {/* Resume In-Progress Bookmark Pill */}
-              {resumeVerse && !parayanaActive && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    triggerTactileFeedback('selection', 'click');
-                    setContinuousParayana(true);
-                    setParayanaActive(true);
-                    const list = filteredVerses.length > 0 ? filteredVerses : state.verses;
-                    const targetV = list.find((v) => String(v.number) === String(resumeVerse)) || list[0];
-                    if (targetV) playVerse(targetV);
-                  }}
-                  className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-xl sm:min-h-0 border border-amber-400/80 bg-amber-500/15 px-3 py-1.5 text-xs font-semibold text-amber-800 dark:text-amber-200 transition hover:bg-amber-500/25 active:scale-95"
-                  title={`श्लोक ${resumeVerse} से आगे पारायण जारी रखें`}
-                  aria-label={`श्लोक ${resumeVerse} से आगे`}
-                >
-                  <Play className="h-3 w-3 text-amber-600 dark:text-amber-400 fill-current" />
-                  <span>{toAsciiDigits(resumeVerse)} से आगे</span>
-                </button>
-              )}
-
               <button
                 type="button"
                 onClick={() => setToolsOpen((o) => !o)}
-                className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-3 py-1.5 text-xs font-semibold text-dharma-text sm:hidden"
+                className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full px-3 text-xs font-medium text-dharma-muted transition hover:bg-dharma-card hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                 aria-expanded={toolsOpen}
                 aria-controls="chapter-reader-tools"
               >
-                <SlidersHorizontal className="h-3.5 w-3.5 text-saffron-600" />
-                <span>विकल्प</span>
-                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${toolsOpen ? 'rotate-180' : ''}`} />
+                <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
+                <span><span lang="hi">विकल्प</span> · Options</span>
+                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${toolsOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
               </button>
+            </div>
+          </div>
 
-              {/* On sm+ this wrapper dissolves (sm:contents) so the desktop row is unchanged. */}
-              <div
-                id="chapter-reader-tools"
-                className={`${toolsOpen ? 'flex' : 'hidden'} w-full flex-wrap items-center gap-2 sm:contents`}
-              >
+          <div
+            id="chapter-reader-tools"
+            className={`${toolsOpen ? 'flex' : 'hidden'} mt-3 flex-col gap-3`}
+          >
+              <div className="flex flex-wrap items-center gap-2">
               {/* Bilingual Cadence Mode Selector */}
               <div
                 className="inline-flex items-center rounded-xl border border-dharma-border bg-dharma-bg p-0.5 text-xs font-semibold text-dharma-text"
@@ -1193,18 +1133,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               {/* Reading depth: Read / Understand / Study */}
               {!chantingMode && <ReadingDepthSwitch />}
 
-              <button
-                type="button"
-                onClick={() => setReaderSettingsOpen(true)}
-                className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-3 py-1.5 text-xs font-semibold text-dharma-text transition hover:border-saffron-300 hover:text-saffron-700"
-                title="पठन व्यवस्था · Reader settings"
-                aria-label="पठन व्यवस्था · Reader settings"
-                aria-haspopup="dialog"
-                aria-expanded={readerSettingsOpen}
-              >
-                <SlidersHorizontal className="h-3.5 w-3.5 text-saffron-600" aria-hidden="true" />
-                <span>पठन व्यवस्था</span>
-              </button>
 
               {/* Conversation Mode for Dialogue Scriptures (Bhagavad Gita) */}
               {scriptureId === 'bhagavadgita' && (
@@ -1224,11 +1152,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 </button>
               )}
               </div>
-            </div>
-          </div>
 
           {/* Quick in-chapter search & verse jump */}
-          <div className={`mt-3 pt-3 border-t border-dharma-border/60 ${toolsOpen ? 'flex' : 'hidden'} flex-wrap items-center gap-3 sm:flex`}>
+          <div className="flex flex-wrap items-center gap-3">
             <div className="relative flex-1 min-w-[200px]">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-dharma-muted" />
               <input
@@ -1277,6 +1203,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               </div>
             )}
           </div>
+          </div>
         </div>
 
         {isConversationMode && scriptureId === 'bhagavadgita' ? (
@@ -1287,7 +1214,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
             onExitConversationMode={() => setIsConversationMode(false)}
           />
         ) : (
-          <div className="space-y-6">
+          <div className="space-y-8">
             {filteredVerses.length === 0 ? (
             <div className="rounded-xl border border-dashed border-dharma-border bg-dharma-card p-8 text-center text-sm text-dharma-muted">
               <p className="font-semibold text-dharma-text mb-1">&lsquo;{filterQuery}&rsquo; के लिए कोई श्लोक नहीं मिला</p>
@@ -1410,62 +1337,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
             })
           )}
         </div>
-      )}
-
-      {/* ── Meditative Chapter Transition Bridge (Infinite Reading Flow) ── */}
-      {nextChapterHref && state.kind === 'ready' && (
-        <div className="mt-12 rounded-[28px] border border-amber-300/70 bg-gradient-to-br from-amber-50/90 via-orange-50/50 to-amber-50/90 p-6 sm:p-8 text-center shadow-sm dark:border-amber-900/50 dark:from-amber-950/40 dark:via-orange-950/20 dark:to-amber-950/40">
-          <span aria-hidden="true" className="font-serif text-lg font-bold text-saffron-700 dark:text-amber-300">
-            ॥ ॐ तत्सत् ॥
-          </span>
-          <p className="mt-2 text-xs font-bold uppercase tracking-widest text-saffron-800 dark:text-saffron-300">
-            अध्याय {toAsciiDigits(chapterId)} पूर्ण · Chapter {toAsciiDigits(chapterId)} Complete
-          </p>
-          <h3 className="mt-2 font-serif text-xl sm:text-2xl font-bold text-dharma-text">
-            {nextChapterTitle || `अगला अध्याय ${toAsciiDigits(chapterId + 1)}`}
-          </h3>
-          <p className="mx-auto mt-2 max-w-lg text-sm text-dharma-muted">
-            पठन के इस ध्यानपूर्ण प्रवाह को अविराम जारी रखें।
-          </p>
-          <div className="mt-6 flex justify-center">
-            <Link
-              href={nextChapterHref}
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-700 px-7 py-3 text-sm font-bold text-white shadow-md transition-all hover:shadow-lg hover:scale-105 active:scale-95"
-            >
-              <span>अगला अध्याय प्रारम्भ करें</span>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      )}
-
-      {/* Adhyāya Sūtra: Desktop Vertical Verse Rail */}
-      {hydrated && state.verses.length > 8 && (
-        <aside
-          aria-label="अध्याय सूत्र - श्लोक पथ"
-          className="hidden xl:flex fixed right-3 top-1/2 -translate-y-1/2 z-20 flex-col items-center gap-1 p-1.5 rounded-full bg-stone-900/75 dark:bg-stone-950/85 backdrop-blur-md border border-amber-500/20 shadow-xl max-h-[70vh] overflow-y-auto no-scrollbar scroll-smooth"
-        >
-          <span className="text-[9px] font-mono text-amber-500/70 select-none pb-0.5">सूत्र</span>
-          {state.verses.map((v) => {
-            const isCurrent = currentViewportVerse === String(v.number) || String(activeRecitingVerse) === String(v.number);
-            return (
-              <button
-                key={`rail-${String(v.number)}`}
-                type="button"
-                onClick={() => scrollToVerse(v.number)}
-                title={`श्लोक ${toAsciiDigits(v.number)} (${v.number})`}
-                aria-label={`श्लोक ${v.number}`}
-                className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono font-medium transition-all ${
-                  isCurrent
-                    ? 'bg-amber-500 text-stone-950 shadow-md shadow-amber-500/40 scale-110 font-bold'
-                    : 'text-stone-400 hover:text-stone-100 hover:bg-stone-800/80 hover:scale-105'
-                }`}
-              >
-                {toAsciiDigits(v.number)}
-              </button>
-            );
-          })}
-        </aside>
       )}
 
       {/* Svadhyaya Split Workbench (Desktop sticky workbench / Mobile bottom sheet) */}

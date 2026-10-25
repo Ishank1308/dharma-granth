@@ -74,19 +74,14 @@ export function renderVerseArticle(v: EdgeVerseData, chapterId: number, scriptur
   return `
     <article id="verse-${escapeHtml(label)}" class="verse-card vt" aria-label="${escapeHtml(title)}">
       <header class="vt-head">
-        <span aria-hidden="true" class="vt-medal">${escapeHtml(toDevanagari(label))}</span>
-        <div>
-          <p class="vt-ch">अध्याय ${escapeHtml(toDevanagari(chapterId))}</p>
-          <h3 class="vt-title">
-            <a href="${verseHref}">${escapeHtml(title)}</a>
-          </h3>
-        </div>
-        <div aria-hidden="true" class="vt-toolbar"></div>
+        <h3 class="vt-title">
+          <a href="${verseHref}"><span class="sr-only">श्लोक </span>${escapeHtml(toDevanagari(chapterId))}.${escapeHtml(toDevanagari(label))}</a>
+        </h3>
       </header>
 
       ${
         lines.length > 0
-          ? `<div class="verse-leaf vt-leaf">
+          ? `<div class="vt-leaf">
               <p lang="sa" class="vt-sa">
                 ${linesHtml}
                 <span class="vt-num" aria-hidden="true">॥ ${escapeHtml(toDevanagari(label))} ॥</span>

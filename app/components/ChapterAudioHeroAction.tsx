@@ -18,6 +18,8 @@ interface Props {
   chapterTitle?: string;
   firstVerseId?: number | string;
   totalVerses?: number;
+  /** 'hero' sits on the saffron hero; 'quiet' on the page background. */
+  tone?: 'hero' | 'quiet';
 }
 
 export function ChapterAudioHeroAction({
@@ -27,7 +29,13 @@ export function ChapterAudioHeroAction({
   chapterTitle: _chapterTitle,
   firstVerseId = 1,
   totalVerses,
+  tone = 'hero',
 }: Props) {
+  const icon = tone === 'quiet' ? 'text-saffron-600 dark:text-amber-300' : 'text-amber-300';
+  const resumeTone =
+    tone === 'quiet'
+      ? '!bg-amber-500/10 !text-amber-800 dark:!text-amber-200'
+      : '!bg-amber-400/25 !text-amber-100 hover:!bg-amber-400/35 border border-amber-300/40';
   const [isPlaying, setIsPlaying] = useState(false);
   const [resumeVerse, setResumeVerse] = useState<number | null>(null);
 
@@ -91,7 +99,7 @@ export function ChapterAudioHeroAction({
   };
 
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="flex flex-wrap items-center justify-center gap-1">
       <button
         type="button"
         onClick={handleStartFromFirst}
@@ -104,9 +112,9 @@ export function ChapterAudioHeroAction({
         title="सम्पूर्ण अध्याय का क्रमिक उच्चारण सुनें"
       >
         {isPlaying ? (
-          <Pause className="w-3.5 h-3.5 text-amber-300 animate-pulse" aria-hidden="true" />
+          <Pause className={`w-3.5 h-3.5 animate-pulse ${icon}`} aria-hidden="true" />
         ) : (
-          <Volume2 className="w-3.5 h-3.5 text-amber-300" aria-hidden="true" />
+          <Volume2 className={`w-3.5 h-3.5 ${icon}`} aria-hidden="true" />
         )}
         <span>{isPlaying ? 'पारायण चालू · Pause' : 'अध्याय श्रवण · Listen'}</span>
       </button>
@@ -116,10 +124,10 @@ export function ChapterAudioHeroAction({
           type="button"
           onClick={handleResume}
           aria-label={`श्लोक ${resumeVerse} से आगे सुनें (Resume Chapter Recitation from verse ${resumeVerse})`}
-          className={`${className} !bg-amber-400/25 !text-amber-100 hover:!bg-amber-400/35 border border-amber-300/40`}
+          className={`${className} ${resumeTone}`}
           title={`श्लोक ${resumeVerse} से पारायण जारी रखें`}
         >
-          <Play className="w-3.5 h-3.5 text-amber-300 fill-amber-300" aria-hidden="true" />
+          <Play className={`w-3.5 h-3.5 fill-current ${icon}`} aria-hidden="true" />
           <span>श्लोक {toAsciiDigits(resumeVerse)} से आगे · Resume #{resumeVerse}</span>
         </button>
       )}
