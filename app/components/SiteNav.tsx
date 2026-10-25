@@ -618,7 +618,7 @@ export function SiteNav({
                   {isActive(item.href) && (
                     <motion.span
                       layoutId="desktop-nav-active"
-                      className="absolute inset-0 rounded-xl border border-saffron-200 bg-gradient-to-r from-saffron-50 to-amber-50 shadow-sm dark:border-saffron-800 dark:bg-saffron-950/40"
+                      className="absolute inset-0 rounded-xl border border-saffron-200 bg-gradient-to-r from-saffron-50 to-amber-50 shadow-sm dark:border-saffron-800 dark:bg-saffron-950/40 dark:bg-none"
                       transition={{ type: 'spring', stiffness: 420, damping: 34 }}
                     />
                   )}

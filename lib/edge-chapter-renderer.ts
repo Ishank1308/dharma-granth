@@ -81,7 +81,7 @@ export function renderVerseArticle(v: EdgeVerseData, chapterId: number, scriptur
 
       ${
         lines.length > 0
-          ? `<div class="vt-leaf">
+          ? `<div class="vt-leaf verse-folio">
               <p lang="sa" class="vt-sa">
                 ${linesHtml}
                 <span class="vt-num" aria-hidden="true">॥ ${escapeHtml(toDevanagari(label))} ॥</span>

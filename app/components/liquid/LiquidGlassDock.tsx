@@ -93,7 +93,7 @@ export function LiquidGlassDock({ mode, onModeChange, listening, onToggleListeni
   return (
     <motion.nav
       aria-label="पठन नियंत्रण · Reader dock"
-      initial={reduce ? false : { y: 40, opacity: 0 }}
+      initial={reduce ? false : { y: 40 }}
       animate={{ y: hidden && !listening && !pinned ? 120 : 0, opacity: hidden && !listening && !pinned ? 0 : 1 }}
       transition={SPRING}
       className="liquid-dock fixed inset-x-0 z-40 mx-auto flex w-fit max-w-[calc(100vw-1.5rem)] justify-center"

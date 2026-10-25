@@ -85,8 +85,8 @@ export function GranthCard3D({ card }: { card: GranthCardData }) {
   return (
     <motion.div
       className={`${SIZE[card.size]} [perspective:1100px]`}
-      initial={reduce ? false : { opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={reduce ? false : { y: 24 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={SPRING}
     >

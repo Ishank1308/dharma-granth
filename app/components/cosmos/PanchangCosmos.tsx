@@ -97,7 +97,7 @@ export function PanchangCosmos() {
             five measures by which the old astronomers read a day, from the moon’s place among the stars and its distance from the sun.
           </p>
           {panchang && (
-            <motion.p initial={reduce ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={SPRING} className="mt-6 text-sm text-[#b9b2d6]">
+            <motion.p initial={reduce ? false : { y: 8 }} animate={{ y: 0 }} transition={SPRING} className="mt-6 text-sm text-[#b9b2d6]">
               <span lang="hi">{panchang.fullDateHindi}</span> · {panchang.location.name}
               <span className="mx-2 text-[#6f6890]">·</span>
               <span>Moon {Math.round(panchang.paksha.illuminationPercent)}% lit, {panchang.paksha.isWaxing ? 'waxing' : 'waning'}</span>
@@ -108,8 +108,8 @@ export function PanchangCosmos() {
             {limbs.map((l, i) => (
               <motion.li
                 key={l.en}
-                initial={reduce ? false : { opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={reduce ? false : { y: 14 }}
+                animate={{ y: 0 }}
                 transition={{ ...SPRING, delay: 0.15 + i * 0.08 }}
                 className={`cosmos-limb rounded-2xl px-4 py-3 ${i === 4 ? 'sm:col-span-2' : ''}`}
               >
@@ -136,8 +136,8 @@ export function PanchangCosmos() {
 
         <motion.div
           className="relative order-first mx-auto aspect-square w-full max-w-[340px] sm:max-w-[460px] lg:order-none lg:max-w-[560px]"
-          initial={reduce ? false : { opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={reduce ? false : { scale: 0.92 }}
+          animate={{ scale: 1 }}
           transition={{ ...SPRING, stiffness: 120 }}
         >
           <div aria-hidden="true" className="cosmos-halo absolute inset-[8%] rounded-full" />
