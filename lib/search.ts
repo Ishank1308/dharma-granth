@@ -513,7 +513,7 @@ export function getSearchIndex(): SearchResultItem[] {
 /* ── Dynamic Chapter Index Loading ────────────────────────────────────── */
 
 function chapterHref(scriptureId: string, n: number): string {
-  return `/scripture/${scriptureId}/chapter/${n}`;
+  return `/scripture/${scriptureId}/chapter/${n}/`;
 }
 
 export function loadChapterIndex(data: ChapterIndex): void {
@@ -659,7 +659,7 @@ function verseItem(e: VerseEntry, kind: VerseMatchKind | 'reference' | 'theme', 
     groupLabel: 'श्लोक · Exact Verse',
     category: 'verse',
     categoryLabel: 'श्लोक · Exact Verse',
-    href: versePageHref(e.scriptureId, e.chapter, e.verse) ?? `/scripture/${e.scriptureId}/chapter/${e.chapter}`,
+    href: versePageHref(e.scriptureId, e.chapter, e.verse) ?? `/scripture/${e.scriptureId}/chapter/${e.chapter}/`,
     reference,
     matchingText,
     matchedField: field,
@@ -686,7 +686,7 @@ function explanationItem(e: VerseEntry): SearchResultItem {
     groupLabel: 'टीका व व्याख्या · Commentary',
     category: 'commentary',
     categoryLabel: 'व्याख्या · Explanation',
-    href: versePageHref(e.scriptureId, e.chapter, e.verse) ?? `/scripture/${e.scriptureId}/chapter/${e.chapter}`,
+    href: versePageHref(e.scriptureId, e.chapter, e.verse) ?? `/scripture/${e.scriptureId}/chapter/${e.chapter}/`,
     reference,
     matchingText: e.explanation,
     matchedField: 'explanation',
