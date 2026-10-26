@@ -4,11 +4,9 @@ import { getSiteShellData } from "@/lib/site-shell-data";
 import { DEFAULT_THEME, FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
-import { RaatRani } from "@/app/components/vibe/RaatRani";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 import dynamic from "next/dynamic";
 import { TactileLayer } from "@/app/components/TactileLayer";
-import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
 
@@ -156,8 +154,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#c2410c" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1412" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f5f7" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -250,15 +248,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans bg-dharma-bg text-dharma-text antialiased">
-        {/* Drifting colour behind every page, tinted by the scripture in view (globals.css). */}
-        <div aria-hidden="true" className="liquid-backdrop">
-          <span />
-          <span />
-          <span />
-          <RaatRani />
-        </div>
         <ThemeProvider>
-          <SpatialLightCursor />
           <a href="#main-content" className="skip-link" lang="en">
             Skip to main content
           </a>

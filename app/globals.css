@@ -114,30 +114,30 @@
 /* Theme variables. The default (no data-theme attribute) is "day". */
 :root,
 :root[data-theme='day'] {
-    /* Uṣā · "Aged Bhojpatra": parchment canvas, near-black ink, kumkum accent. */
-    --dharma-bg: #fbf9f5;
-    --dharma-text: #1c1c1e;
-    --dharma-text-secondary: #57524d;
-    --dharma-muted: #6b6560;
-    --dharma-border: #e8e3db;
+    /* Uṣā: Apple-style neutrals (light grey canvas, white cards, near-black ink) with one kumkum tint. */
+    --dharma-bg: #f5f5f7;
+    --dharma-text: #1d1d1f;
+    --dharma-text-secondary: #424245;
+    --dharma-muted: #6e6e73;
+    --dharma-border: #d2d2d7;
     --dharma-card: #ffffff;
-    --dharma-card-soft: #fff8ef;
+    --dharma-card-soft: #fbfbfd;
     --dharma-panel: #ffffff;
-    --dharma-panel-muted: #f8f3ec;
-    --dharma-reading-surface: #fdfaf4;
+    --dharma-panel-muted: #f5f5f7;
+    --dharma-reading-surface: #ffffff;
     --dharma-hero-start: #7c2d12;
     --dharma-hero-mid: #c2410c;
     --dharma-hero-end: #f97316;
-    --bg-glow-1: rgba(255, 193, 120, 0.14);
-    --bg-glow-2: rgba(14, 165, 148, 0.08);
+    --bg-glow-1: transparent;
+    --bg-glow-2: transparent;
     --dharma-gold: #c69234;
     --dharma-gold-border: #e6ce9d;
-    --dharma-saffron: #c84b31;
+    --dharma-saffron: #c2410c;
     --dharma-maroon: #7c2d12;
     --dharma-maroon-border: #9a3412;
-    --dharma-manuscript-surface: #fdfaf3;
-    --dharma-manuscript-border: #ebdfcb;
-    --dharma-focus-ring: #c84b31;
+    --dharma-manuscript-surface: #ffffff;
+    --dharma-manuscript-border: #e5e5ea;
+    --dharma-focus-ring: #c2410c;
     --dharma-success: #15803d;
     --dharma-success-bg: #f0fdf4;
     --dharma-success-border: #bbf7d0;
@@ -166,8 +166,8 @@
     --dharma-hero-start: #6f1d1b;
     --dharma-hero-mid: #b45309;
     --dharma-hero-end: #e11d48;
-    --bg-glow-1: rgba(244, 114, 32, 0.24);
-    --bg-glow-2: rgba(225, 29, 72, 0.14);
+    --bg-glow-1: transparent;
+    --bg-glow-2: transparent;
     --dharma-gold: #d97706;
     --dharma-gold-border: #f4c284;
     --dharma-saffron: #ea580c;
@@ -191,31 +191,31 @@
 }
 
 :root[data-theme='night'] {
-    /* Rātri · "Cosmic Obsidian": blue-black canvas, warm ivory ink, muted gold. */
-    --dharma-bg: #090a0f;
-    --dharma-text: #f2efe9;
-    --dharma-text-secondary: rgba(242, 239, 233, 0.78);
-    --dharma-muted: rgba(242, 239, 233, 0.62);
-    --dharma-border: #23242c;
-    --dharma-card: #11121a;
-    --dharma-card-soft: #171822;
-    --dharma-panel: #12131b;
-    --dharma-panel-muted: #1a1b26;
-    --dharma-reading-surface: #0d0e14;
+    /* Rātri: true black canvas, grouped greys for cards, ivory ink and one amber tint. */
+    --dharma-bg: #000000;
+    --dharma-text: #f5f5f7;
+    --dharma-text-secondary: rgba(245, 245, 247, 0.8);
+    --dharma-muted: #a1a1a6;
+    --dharma-border: #38383a;
+    --dharma-card: #1c1c1e;
+    --dharma-card-soft: #2c2c2e;
+    --dharma-panel: #1c1c1e;
+    --dharma-panel-muted: #2c2c2e;
+    --dharma-reading-surface: #000000;
     --dharma-hero-start: #0f0e0d;
     --dharma-hero-mid: #3a2418;
     --dharma-hero-end: #7c2d12;
-    --bg-glow-1: rgba(249, 115, 22, 0.18);
+    --bg-glow-1: transparent;
     /* Rātri: obsidian with copper light (was a cool teal glow and bright yellow gold). */
-    --bg-glow-2: rgba(194, 120, 76, 0.09);
+    --bg-glow-2: transparent;
     --dharma-gold: #e5c158;
     --dharma-gold-border: #5a4a24;
-    --dharma-saffron: #f59e0b;
+    --dharma-saffron: #ff9f0a;
     --dharma-maroon: #991b1b;
     --dharma-maroon-border: #7f1d1d;
-    --dharma-manuscript-surface: #11121a;
-    --dharma-manuscript-border: #2c2a24;
-    --dharma-focus-ring: #e5c158;
+    --dharma-manuscript-surface: #1c1c1e;
+    --dharma-manuscript-border: #38383a;
+    --dharma-focus-ring: #ff9f0a;
     --dharma-success: #22c55e;
     --dharma-success-bg: #052e16;
     --dharma-success-border: #14532d;
@@ -244,8 +244,8 @@
     --dharma-hero-start: #5a3723;
     --dharma-hero-mid: #9a5327;
     --dharma-hero-end: #c46d32;
-    --bg-glow-1: rgba(217, 119, 6, 0.16);
-    --bg-glow-2: rgba(180, 83, 9, 0.10);
+    --bg-glow-1: transparent;
+    --bg-glow-2: transparent;
     --dharma-gold: #b45309;
     --dharma-gold-border: #d4a373;
     --dharma-saffron: #b45309;
@@ -289,7 +289,9 @@
     h4,
     h5,
     h6 {
-        @apply font-serif tracking-normal;
+        @apply font-sans font-semibold;
+        letter-spacing: -0.022em;
+        text-wrap: balance;
     }
     h1 {
         @apply text-4xl md:text-5xl lg:text-6xl;
@@ -1990,11 +1992,11 @@ body::after {
     --lb-3: 15%;
 }
 /* Sacred accent: kumkum on parchment, muted gold on obsidian. */
-:root { --dharma-accent: #c84b31; --dharma-accent-2: #b45309; }
+:root { --dharma-accent: #c2410c; --dharma-accent-2: #b45309; }
 :root[data-theme='sunset'],
 :root[data-theme='paper'] { --dharma-accent: #b45309; --dharma-accent-2: #c2410c; }
 :root[data-theme='night'],
-:root[data-theme='dark'] { --dharma-accent: #e5c158; --dharma-accent-2: #f59e0b; }
+:root[data-theme='dark'] { --dharma-accent: #ff9f0a; --dharma-accent-2: #f59e0b; }
 
 /* Agni's altar: fire, gold, ember. */
 :root:has([data-scripture='veda']) { --sc-1: #f97316; --sc-2: #eab308; --sc-3: #b91c1c; }
@@ -2852,4 +2854,35 @@ svg.lucide {
     [data-material] .verse-folio { background: none; border-color: #ccc; }
     [data-material='palm-leaf'] .verse-folio::before,
     [data-material='palm-leaf'] .verse-folio::after { display: none; }
+}
+
+/* ── Apple layer ─────────────────────────────────────────────────────
+   The site-wide chrome in Apple's idiom: one thin translucent bar on top,
+   one on the bottom on phones, hairline separators and a single tint
+   (--dharma-saffron). Page layouts adopt the rest page by page. */
+.apple-bar {
+    background-color: color-mix(in srgb, var(--dharma-bg) 78%, transparent);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-color: color-mix(in srgb, var(--dharma-text) 10%, transparent);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .apple-bar { background-color: var(--dharma-bg); }
+}
+.apple-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    color: var(--dharma-text);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.apple-icon-button:hover {
+    background-color: color-mix(in srgb, var(--dharma-text) 7%, transparent);
+}
+.apple-icon-button:active {
+    background-color: color-mix(in srgb, var(--dharma-text) 12%, transparent);
+}
+@media print {
+    .apple-bar { -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
