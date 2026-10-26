@@ -222,6 +222,7 @@ export function SiteNav({
       if (href === '/scriptures') {
         return (
           pathname === '/scriptures' ||
+          pathname === '/scriptures/' ||
           (pathname.startsWith('/scripture/') && !pathname.startsWith('/scripture/bhagavadgita'))
         );
       }
