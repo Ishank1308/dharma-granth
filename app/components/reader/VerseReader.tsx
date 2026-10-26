@@ -520,10 +520,7 @@ export function VerseReader(props: VerseReaderProps) {
           <button type="button" onClick={() => setDialog('chapters')} aria-haspopup="dialog" className="focus-ring mt-0.5 min-h-[44px] w-full rounded-lg text-left text-sm text-dharma-muted hover:text-saffron-800 dark:hover:text-saffron-300">
             Chapter {chapterId}: {chapterTitle} <ChevronDown className="inline h-3.5 w-3.5" aria-hidden="true" />
           </button>
-          <p className="mt-2 text-xs font-medium text-dharma-muted">Verse {index + 1} of {total}</p>
-          <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-dharma-border/70" aria-hidden="true">
-            <div className="h-full rounded-full bg-saffron-600" style={{ width: `${percent}%` }} />
-          </div>
+          {/* Progress is shown once, in the sticky header; this grid marks the current verse. */}
           <nav aria-label="Verses in this chapter" className="mt-4">
             <ul className="grid grid-cols-5 gap-1.5">
               {verses.map((v) => {
@@ -558,7 +555,7 @@ export function VerseReader(props: VerseReaderProps) {
             >
               <span className="font-serif text-lg font-bold text-dharma-text">{label}</span>
               <span className="inline-flex items-center gap-1 text-xs text-dharma-muted">
-                Verse {index + 1} of {total} · jump to verse <ChevronDown className="h-3 w-3" aria-hidden="true" />
+                Jump to verse <ChevronDown className="h-3 w-3" aria-hidden="true" />
               </span>
             </button>
             {navLink(next, 'next', 'row')}
