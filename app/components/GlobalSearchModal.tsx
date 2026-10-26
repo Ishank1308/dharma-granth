@@ -1062,7 +1062,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                                   {reviewStatus.startsWith('Reviewed') ? (
                                     <span className="rounded-full border border-emerald-600/40 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-900 dark:text-emerald-200">{reviewStatus}</span>
                                   ) : (
-                                    <span className="px-1 text-xs text-dharma-muted/80">{reviewStatus}</span>
+                                    <span className="px-1 text-xs text-dharma-muted">{reviewStatus}</span>
                                   )}
                                 </span>
                               </div>
