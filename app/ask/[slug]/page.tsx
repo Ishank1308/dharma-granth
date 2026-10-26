@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowRight, BookOpen, HeartHandshake } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, FlaskConical, HeartHandshake } from 'lucide-react';
 import { JsonLd } from '@/app/components/JsonLd';
 import { ANSWER_THEMES, GRANTH_ANSWERS, getGranthAnswer } from '@/data/granth-answers';
 import { faqLd, pageLd } from '@/lib/jsonld';
@@ -135,8 +135,8 @@ export default function GranthAnswerPage({ params }: { params: { slug: string } 
           </div>
 
           <p className="mt-4 text-xs text-dharma-muted">
-            <span lang="hi">श्लोक, अर्थ और अनुवाद पुस्तकालय से हैं। सार, दृष्टान्त और अभ्यास सम्पादकीय टिप्पणियाँ हैं, शास्त्र‑पाठ नहीं।</span>{' '}
-            <span>Verses and translations come from the library. The summary, story and practice are editorial notes, not scripture.</span>
+            <span lang="hi">श्लोक, अर्थ और अनुवाद पुस्तकालय से हैं। सार, दृष्टान्त, शोध‑टिप्पणी और अभ्यास सम्पादकीय टिप्पणियाँ हैं, शास्त्र‑पाठ नहीं।</span>{' '}
+            <span>Verses and translations come from the library. The summary, story, research note and practice are editorial notes, not scripture.</span>
           </p>
         </div>
       </section>
@@ -189,6 +189,22 @@ export default function GranthAnswerPage({ params }: { params: { slug: string } 
               <p lang="hi" className="font-devanagari leading-relaxed">{answer.myth.truthHi}</p>
               <p lang="en" className="mt-1 text-sm leading-relaxed text-dharma-muted">{answer.myth.truthEn}</p>
             </div>
+          </Section>
+        )}
+
+        {answer.science && (
+          <Section hi="विज्ञान की दृष्टि से" en="What research says">
+            <p lang="hi" className="font-devanagari leading-relaxed">{answer.science.hi}</p>
+            <p lang="en" className="leading-relaxed text-dharma-muted">{answer.science.en}</p>
+            <p className="flex items-start gap-2 text-xs text-dharma-muted">
+              <FlaskConical className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+              <span>
+                <span>Source: {answer.science.source}</span>
+                {' · '}
+                <span lang="hi">शोध एक समानान्तर दृष्टि है, शास्त्र का प्रमाण नहीं।</span>{' '}
+                <span>Research is a parallel view, not proof of scripture.</span>
+              </span>
+            </p>
           </Section>
         )}
 

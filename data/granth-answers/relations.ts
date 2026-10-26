@@ -21,6 +21,11 @@ export const relationsAnswers: GranthAnswer[] = [
       truthHi: 'क्षमा अन्याय को उचित नहीं ठहराती। आप सीमा रख सकते हैं, दूरी रख सकते हैं; क्षमा केवल अपने भीतर का विष छोड़ देना है।',
       truthEn: 'Forgiveness does not call the wrong right. You may keep boundaries and distance; forgiving only means letting the poison go from inside you.',
     },
+    science: {
+      hi: 'क्षमा पर आधारित परामर्श के अध्ययनों के विश्लेषण में पाया गया कि क्षमा का अभ्यास करने वालों में उदासी और घबराहट घटी और आशा बढ़ी। क्षमा दूसरे से अधिक अपने मन को मुक्त करती है।',
+      en: 'An analysis of studies on forgiveness-based counselling found that people who practised forgiving had less depression and anxiety and more hope. Forgiveness frees your own mind more than the other person.',
+      source: 'Wade, Hoyt, Kidwell & Worthington, Journal of Consulting and Clinical Psychology, 2014 (meta-analysis)',
+    },
     practiceHi: 'उस व्यक्ति का नाम लिखें और उसके नीचे एक वाक्य: “मैं यह भार आज से नहीं ढोऊँगा/ढोऊँगी।” मिलना या बात करना आवश्यक नहीं।',
     practiceEn: 'Write the person’s name and one line under it: “I will stop carrying this from today.” You don’t have to meet or speak to them.',
     next: ['hurt-by-people', 'anger'],
@@ -197,6 +202,11 @@ export const relationsAnswers: GranthAnswer[] = [
       en: '“Charity means giving large sums.”',
       truthHi: 'श्लोक 9.26 पत्र, पुष्प और जल तक को स्वीकार्य कहता है। समय, ध्यान और श्रम भी दान हैं।',
       truthEn: 'Verse 9.26 accepts even a leaf, a flower or water. Time, attention and effort are gifts too.',
+    },
+    science: {
+      hi: 'एक प्रयोग में लोगों को थोड़े पैसे दिए गए: कुछ को अपने पर, कुछ को दूसरों पर खर्च करने को कहा गया। दिन के अन्त में दूसरों पर खर्च करने वाले अधिक प्रसन्न थे।',
+      en: 'In an experiment, people were given a small sum: some were told to spend it on themselves, others on someone else. By evening, those who spent on others were happier.',
+      source: 'Dunn, Aknin & Norton, Science, 2008',
     },
     practiceHi: 'आज किसी को कुछ ऐसा दें जिसकी उसे वास्तव में आवश्यकता हो, और किसी को न बताएँ।',
     practiceEn: 'Today, give someone something they truly need, and tell no one.',

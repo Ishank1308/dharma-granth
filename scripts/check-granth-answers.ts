@@ -4,7 +4,7 @@
  *   - a slug repeats, a `next` slug does not exist, or a required field is empty;
  *   - a cited verse cannot be found, or lacks real Sanskrit, Hindi or English
  *     (the answer pages show only verses the library has in full);
- *   - an answer has fewer than two verses, or a story has no source;
+ *   - an answer has fewer than two verses, or a story or science note has no source;
  *   - the Hindi notes use a word docs/vyakhya-guide.md replaces.
  *
  * Run: tsx scripts/check-granth-answers.ts
@@ -46,6 +46,7 @@ for (const a of GRANTH_ANSWERS) {
   for (const n of a.next) if (!slugs.has(n)) fail(a.slug, `next question "${n}" does not exist`);
   if (a.next.includes(a.slug)) fail(a.slug, 'links to itself in next');
   if (a.story && (!a.story.sourceHi.trim() || !a.story.sourceEn.trim())) fail(a.slug, 'story has no source');
+  if (a.science && (!a.science.hi.trim() || !a.science.en.trim() || !a.science.source.trim())) fail(a.slug, 'science note needs Hindi, English and a named source');
 
   for (const v of a.verses) {
     if (!resolveAnswerVerse(v)) fail(a.slug, `${v.s} ${v.c}:${v.v} is missing or lacks Sanskrit, Hindi or English`);
@@ -55,6 +56,7 @@ for (const a of GRANTH_ANSWERS) {
   const hindi = [a.sarHi, a.practiceHi, a.questionHi, ...a.verses.map((v) => v.whyHi)];
   if (a.story) hindi.push(a.story.titleHi, a.story.hi);
   if (a.myth) hindi.push(a.myth.hi, a.myth.truthHi);
+  if (a.science) hindi.push(a.science.hi);
   for (const text of hindi) {
     const hits = AVOID_RE.filter(([, r]) => r.test(text)).map(([w]) => w);
     if (hits.length) fail(a.slug, `Hindi uses ${hits.join(', ')} (see docs/vyakhya-guide.md): ${text.slice(0, 80)}`);
