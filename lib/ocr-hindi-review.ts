@@ -20,6 +20,22 @@ export function isHindiSourceReviewRequired(
   return HINDI_REVIEW_KEYS.has(`${scriptureId}:${Number(chapter)}:${String(verse)}`);
 }
 
+/**
+ * `showRefillUnproofread` in data/ocr-hindi-review.json: when true, refilled Hindi (entries with a `queue`) is published
+ * with a "from the printed edition, not yet proofread" label instead of being withheld. Off until the editor decides.
+ */
+export const SHOW_REFILL_UNPROOFREAD = (review as { showRefillUnproofread?: boolean }).showRefillUnproofread === true;
+
+/** This verse's refilled Hindi is shown with the unproofread label rather than withheld. */
+export function isUnproofreadShown(scriptureId: string, chapter: number | string, verse: number | string): boolean {
+  return SHOW_REFILL_UNPROOFREAD && REFILL_REVIEW_KEYS.has(`${scriptureId}:${Number(chapter)}:${String(verse)}`);
+}
+
+/** The reader withholds this verse's Hindi and shows the review notice instead. */
+export function isHindiWithheld(scriptureId: string, chapter: number | string, verse: number | string): boolean {
+  return isHindiSourceReviewRequired(scriptureId, chapter, verse) && !isUnproofreadShown(scriptureId, chapter, verse);
+}
+
 /** The publish-time alignment test leaves this field of the verse to the review step. */
 export function isReviewKept(
   scriptureId: string,

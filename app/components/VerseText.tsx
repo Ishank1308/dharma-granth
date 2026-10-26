@@ -9,6 +9,8 @@ interface Props {
     transliteration?: string;
     hindi?: string;
     hindiReviewRequired?: boolean;
+    /** Hindi from a printed edition, published before it was proofread. */
+    hindiUnproofread?: boolean;
     /** Hindi translating a range of verses together ("15-17"), stored on its first verse. */
     hindiRange?: string;
     /** This verse's Hindi is in the passage stored on that verse. */
@@ -77,6 +79,11 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
           {v.hindiRange && (
             <p className="vt-label" lang="hi">
               श्लोक {toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिन्दी अर्थ
+            </p>
+          )}
+          {v.hindiUnproofread && (
+            <p className="vt-label" lang="hi">
+              मुद्रित संस्करण से, प्रूफ़ जाँच शेष
             </p>
           )}
           <p lang="hi" className="vt-hi">

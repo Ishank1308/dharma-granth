@@ -13,7 +13,7 @@ import { isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-c
 import { findTemplateFields } from "./lib/template-text";
 import { exemptFields, hideUnalignedMeanings } from "./lib/meaning-alignment";
 import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
-import { isHindiSourceReviewRequired, isReviewKept } from "../lib/ocr-hindi-review";
+import { isHindiSourceReviewRequired, isReviewKept, isUnproofreadShown } from "../lib/ocr-hindi-review";
 
 const PILOT = loadPilotOverlay();
 
@@ -190,6 +190,11 @@ function main(): void {
         if (!isHindiSourceReviewRequired(id, ch.number, String(verse.number))) continue;
         if (typeof verse.hindi !== "string" || !verse.hindi.trim()) {
           throw new Error(`Hindi source-review entry has no source text: ${id}:${ch.number}:${String(verse.number)}`);
+        }
+        // Refilled Hindi from a printed edition can be shown, labelled, before it is proofread (showRefillUnproofread).
+        if (isUnproofreadShown(id, ch.number, String(verse.number))) {
+          verse.hindiUnproofread = true;
+          continue;
         }
         delete verse.hindi;
         verse.hindiReviewRequired = true;

@@ -10,6 +10,7 @@ type Verse = {
   translation?: string;
   hindi?: string;
   hindiReviewRequired?: boolean;
+  hindiUnproofread?: boolean;
 };
 type Chapter = { number: number | string; verses: Verse[] };
 type Book = { chapters: Chapter[] };
@@ -50,8 +51,13 @@ for (const entry of review.entries) {
   const published = shardCache.get(shardKey)?.chapter.verses
     .find((candidate) => String(candidate.number) === verse);
   assert.ok(published, `published verse exists: ${key}`);
-  assert.equal(published.hindi, undefined, `unverified Hindi is withheld: ${key}`);
-  assert.equal(published.hindiReviewRequired, true, `reader gets a review notice: ${key}`);
+  if (refilled && review.showRefillUnproofread) {
+    assert.equal(published.hindi, source.hindi, `refilled Hindi is shown as printed: ${key}`);
+    assert.equal(published.hindiUnproofread, true, `reader gets the unproofread label: ${key}`);
+  } else {
+    assert.equal(published.hindi, undefined, `unverified Hindi is withheld: ${key}`);
+    assert.equal(published.hindiReviewRequired, true, `reader gets a review notice: ${key}`);
+  }
   assert.equal(published.sanskrit, source.sanskrit, `canonical Sanskrit is unchanged: ${key}`);
   assert.equal(published.transliteration, source.transliteration, `IAST is unchanged: ${key}`);
   if (refilled) assert.ok(published.translation === undefined || published.translation === source.translation, `English is withheld or unchanged: ${key}`);
