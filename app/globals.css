@@ -2950,3 +2950,13 @@ svg.lucide {
     [data-material='palm-leaf'] .verse-folio::before,
     [data-material='palm-leaf'] .verse-folio::after { display: none; }
 }
+
+/* Letter-spacing pulls Devanagari conjuncts and vowel signs apart ("का ल द र्श न"), so Devanagari
+   text never takes tracking. <html> is lang="hi", hence explicit attributes rather than :lang(). */
+[lang='hi']:not(html),
+[lang='sa'],
+[lang='mr'],
+.font-devanagari,
+.font-sanskrit {
+    letter-spacing: normal;
+}

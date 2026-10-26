@@ -87,7 +87,7 @@ export function PanchangCosmos() {
 
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-20 pt-14 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:gap-14 lg:pb-28 lg:pt-20">
         <div>
-          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#b9b2d6]">काल दर्शन · An educational calendar</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#b9b2d6]"><span lang="hi">काल दर्शन</span> · An educational calendar</p>
           <h1 id="panchang-title" className="mt-4 font-serif text-5xl font-medium leading-[1.02] tracking-tight sm:text-6xl">
             <span lang="sa" className="shloka-text block text-[#f3e3b3]">पञ्चाङ्ग</span>{' '}
             <span className="mt-2 block text-3xl text-[#ece8f5] sm:text-4xl">Pañcāṅga</span>

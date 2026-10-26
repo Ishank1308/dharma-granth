@@ -140,7 +140,7 @@ export default function LearnPage() {
           <FadeUp>
             <div className="flex items-center gap-2 mb-3 text-saffron-400 text-xs md:text-sm font-serif uppercase tracking-widest font-semibold">
               <Sparkles className="w-4 h-4" />
-              <span>स्वाध्यायान्मा प्रमदः — Never Neglect Sacred Study</span>
+              <span><span lang="sa">स्वाध्यायान्मा प्रमदः</span> — Never Neglect Sacred Study</span>
             </div>
 
             <h1 className="text-3xl md:text-5xl font-serif font-bold tracking-tight text-white mb-3">

@@ -44,7 +44,7 @@ export function ContinueReading() {
                 <div className="mb-2 flex items-center gap-2">
                   <span className="size-2 rounded-full bg-saffron-600 animate-pulse" />
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
-                    पहला कदम · New to Dharma Granth?
+                    <span lang="hi">पहला कदम</span> · New to Dharma Granth?
                   </p>
                 </div>
                 <h2
