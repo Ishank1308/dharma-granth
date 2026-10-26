@@ -154,6 +154,8 @@
     "@fontsource/inter": "^5.2.8",
     "@fontsource/merriweather": "^5.2.11",
     "@fontsource/noto-sans-devanagari": "^5.2.8",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
     "@tanstack/react-virtual": "^3.14.21",
     "@types/qrcode": "^1.5.6",
     "clsx": "^2.1.0",
@@ -161,12 +163,14 @@
     "html-to-image": "^1.11.13",
     "idb-keyval": "^6.3.0",
     "lucide-react": "^0.400.0",
+    "motion": "^12.38.0",
     "next": "14.2.35",
     "pdf-parse": "^2.4.5",
     "qrcode": "^1.5.4",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "^2.3.0",
+    "three": "^0.170.0"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.128.0",
@@ -178,6 +182,7 @@
     "@types/node": "^20.12.0",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.170.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.35",

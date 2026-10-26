@@ -108,14 +108,14 @@ test('concept graph offers an expandable relationship list on mobile', async ({ 
   await expect(page.getByText('Brahman', { exact: true }).first()).toBeVisible();
 });
 
-test('floating island stays hidden beside one-thumb reader controls on mobile', async ({ page }) => {
+test('floating island stays hidden beside the reader dock on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/scripture/bhagavadgita/chapter/2/');
   await page.waitForLoadState('networkidle');
   const island = page.locator('button[aria-label="Open Prāṇa Live Island"]');
-  const nextVerse = page.locator('button[aria-label="अगला श्लोक (Next verse)"]');
+  const dock = page.getByRole('navigation', { name: 'पठन नियंत्रण · Reader dock' });
   await expect(island).toBeHidden();
-  await expect(nextVerse).toBeVisible();
+  await expect(dock).toBeVisible();
 });
 
 test('service worker registers and serves an opened page offline', async ({ page, context }) => {

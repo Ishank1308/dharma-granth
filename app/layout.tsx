@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { SiteNav } from "@/app/components/SiteNav";
 import { getSiteShellData } from "@/lib/site-shell-data";
-import { FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
+import { DEFAULT_THEME, FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
+import { RaatRani } from "@/app/components/vibe/RaatRani";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 import dynamic from "next/dynamic";
 import { TactileLayer } from "@/app/components/TactileLayer";
@@ -25,9 +26,6 @@ const MananaSelectionBar = dynamic(
 import "@fontsource/inter/latin-400.css";
 import "@fontsource/inter/latin-600.css";
 import "@fontsource/inter/latin-700.css";
-import "@fontsource/merriweather/latin-400.css";
-import "@fontsource/merriweather/latin-700.css";
-import "@fontsource/merriweather/latin-400-italic.css";
 import "@fontsource/noto-sans-devanagari/devanagari-400.css";
 import "@fontsource/noto-sans-devanagari/devanagari-600.css";
 import "@fontsource/noto-sans-devanagari/devanagari-700.css";
@@ -55,6 +53,8 @@ const THEME_INIT_SCRIPT = `
       var m = d.getHours() * 60 + d.getMinutes();
       var eff = (m >= 300 && m < 390) || (m >= 1005 && m < 1140) ? 'sunset' : (m >= 390 && m < 1005 ? 'day' : 'night');
       document.documentElement.setAttribute('data-theme', eff);
+    } else {
+      document.documentElement.setAttribute('data-theme', ${JSON.stringify(DEFAULT_THEME)});
     }
   } catch (e) {}
   // The home-page splash plays once per browser session; later page loads
@@ -207,7 +207,7 @@ export default function RootLayout({
   const shell = getSiteShellData();
 
   return (
-    <html lang="hi" suppressHydrationWarning>
+    <html lang="hi" data-theme={DEFAULT_THEME} suppressHydrationWarning>
       <head>
         <meta name="dharma-library-verse-count" content={String(shell.libraryVerses)} />
         <meta name="dharma-theme-options" content={THEME_IDS.join(',')} />
@@ -229,7 +229,7 @@ export default function RootLayout({
         />
         <link
           rel="preload"
-          href="/fonts/merriweather-400.woff2"
+          href="/fonts/newsreader-400.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
@@ -250,6 +250,13 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans bg-dharma-bg text-dharma-text antialiased">
+        {/* Drifting colour behind every page, tinted by the scripture in view (globals.css). */}
+        <div aria-hidden="true" className="liquid-backdrop">
+          <span />
+          <span />
+          <span />
+          <RaatRani />
+        </div>
         <ThemeProvider>
           <SpatialLightCursor />
           <a href="#main-content" className="skip-link" lang="en">

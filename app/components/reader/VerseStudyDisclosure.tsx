@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useRef, useState, type ReactNode } from 'react';
-import { ChevronDown, ChevronUp, Compass, Layers } from 'lucide-react';
+import { ChevronDown, ChevronUp, Layers } from 'lucide-react';
 import type { ReadingDepth } from '@/lib/reading-depth';
 
 type StudyDepth = Exclude<ReadingDepth, 'read'>;
@@ -33,27 +33,24 @@ export function VerseStudyDisclosure({
   }
 
   return (
-    <div className="mt-5 border-t border-dharma-border/60 pt-3">
+    <div className="mt-4">
       <button
         ref={triggerRef}
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
-        className="flex min-h-12 w-full items-center justify-between gap-3 rounded-xl px-3 py-2 text-left text-dharma-text transition-colors hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+        className="flex min-h-11 items-center gap-1.5 rounded-full px-2 py-2 text-left text-xs font-medium text-dharma-muted transition-colors hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
       >
-        <span className="flex min-w-0 items-center gap-2.5">
-          <Compass className="h-4 w-4 shrink-0 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />
-          <span id={titleId} className="text-sm font-semibold">
-            <span lang="hi" className="font-devanagari">व्याख्या एवं संदर्भ</span>{' '}
-            <span className="ml-1.5 text-xs font-normal text-dharma-muted" lang="en">Verse study</span>
-          </span>
+        <span id={titleId}>
+          <span lang="hi" className="font-devanagari">व्याख्या एवं संदर्भ</span>{' '}
+          <span lang="en">· Verse study</span>
         </span>
         <ChevronDown className={`h-4 w-4 shrink-0 text-dharma-muted transition-transform motion-reduce:transition-none ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
 
       {open && (
-        <div id={panelId} role="region" aria-labelledby={titleId} className="pt-3">
+        <div id={panelId} role="region" aria-labelledby={titleId} className="verse-study-panel liquid-reveal pt-3">
           {studyDepth === 'understand' && canDeepen && (
             <div className="mb-4 flex justify-end">
               <button

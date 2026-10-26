@@ -340,13 +340,13 @@ export function ReaderLayers({
       <Layer id="layer-sanskrit" kind="source" title="Original Sanskrit" titleHi="मूल संस्कृत">
         {lines.length > 0 ? (
           <>
-          <p id="sanskrit-text" lang="sa" className={`text-center font-devanagari font-semibold text-dharma-text ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
+          <p id="sanskrit-text" lang="sa" className={`verse-folio rounded-2xl px-4 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-8 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
             {lines.map((line, i) => (
               <span key={i} className="block">
                 {line}
               </span>
             ))}
-            <span aria-hidden="true" className="mt-2 block text-[0.6em] font-bold text-amber-800 dark:text-amber-300">
+            <span aria-hidden="true" className="verse-mark mt-2 block text-[0.6em] font-bold text-amber-800 dark:text-amber-300">
               ॥ {toAsciiDigits(chapterId)}.{toAsciiDigits(verse.number)} ॥
             </span>
           </p>

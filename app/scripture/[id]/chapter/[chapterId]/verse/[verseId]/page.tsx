@@ -1,3 +1,4 @@
+import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { clipDescription } from '@/lib/meta-text';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -373,6 +374,8 @@ export default function VersePage({ params }: PageProps) {
 
   return (
     <>
+      {/* The scripture's palette and folio material for everything on the page (display: contents, no box). */}
+      <div className="contents" data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(scriptureVibe(meta.id, meta.category))}>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -521,6 +524,7 @@ export default function VersePage({ params }: PageProps) {
           chapterHref={chapterHref}
         />
       </VerseReader>
+      </div>
     </>
   );
 }

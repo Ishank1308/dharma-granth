@@ -10,4 +10,7 @@ export const THEME_NAMES: Record<Theme, { name: string; hi: string; description:
   auto: { name: 'Auto', hi: 'सौर चक्र', description: 'Follows the sun: Usha by day, Sandhyā at dawn and dusk, Rātri at night' },
 };
 
+/** First visit, before the reader picks a theme: Rātri ("Cosmic Obsidian"). */
+export const DEFAULT_THEME = 'night' as const;
+
 export const FIXED_THEME_IDS = THEME_IDS.filter((theme): theme is Exclude<Theme, 'auto'> => theme !== 'auto');

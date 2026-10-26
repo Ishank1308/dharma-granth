@@ -53,8 +53,9 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-merriweather)', 'Georgia', 'serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
         devanagari: ['var(--font-noto-devanagari)', 'sans-serif'],
+        sanskrit: ['var(--font-sanskrit)', 'serif'],
       },
     },
   },
