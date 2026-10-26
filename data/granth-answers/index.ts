@@ -24,3 +24,9 @@ export function getGranthAnswer(slug: string): GranthAnswer | undefined {
 export function granthAnswersByTheme(theme: AnswerThemeId): GranthAnswer[] {
   return GRANTH_ANSWERS.filter((a) => a.theme === theme);
 }
+
+/** Answers that cite a verse, for the "this verse answers" links on its page. */
+export function granthAnswersForVerse(scriptureId: string, chapter: number, verse: string | number): GranthAnswer[] {
+  const v = String(verse);
+  return GRANTH_ANSWERS.filter((a) => a.verses.some((x) => x.s === scriptureId && x.c === chapter && x.v === v));
+}

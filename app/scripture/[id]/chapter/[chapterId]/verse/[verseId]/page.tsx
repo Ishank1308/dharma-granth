@@ -11,6 +11,7 @@ import { ModernScenarios } from '@/app/components/study/ModernScenarios';
 import { ReviewRequiredNotice } from '@/app/components/study/ReviewRequiredNotice';
 import { CONNECTIONS, verseKey } from '@/data/study-content';
 import { RelatedWisdom } from '@/app/components/RelatedWisdom';
+import { VerseAnswers } from '@/app/components/VerseAnswers';
 import { RelatedWisdomDiscovery } from '@/components/wisdom/RelatedWisdomDiscovery';
 import { VerseReader } from '@/app/components/reader/VerseReader';
 import { getVerseInsight } from '@/lib/verse-insights';
@@ -460,6 +461,7 @@ export default function VersePage({ params }: PageProps) {
           (layer-reflection inside ReaderLayers above) without interrupting
           reading. Server HTML only.
         */}
+        <VerseAnswers scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} />
         <SourceStudyNotes
           scriptureId={meta.id}
           scriptureTitle={meta.title}
