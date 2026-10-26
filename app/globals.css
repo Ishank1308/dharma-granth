@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Critical Preloaded Local Fonts with font-display: swap */
+/* Inter and Noto Sans Devanagari come only from /fonts (the same files @fontsource ships),
+   so each weight downloads once. The 400s are preloaded in layout.tsx. */
 @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -18,6 +19,13 @@
     src: url('/fonts/inter-600.woff2') format('woff2');
 }
 @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/inter-700.woff2') format('woff2');
+}
+@font-face {
     font-family: 'Noto Sans Devanagari';
     font-style: normal;
     font-weight: 400;
@@ -30,6 +38,13 @@
     font-weight: 600;
     font-display: swap;
     src: url('/fonts/noto-devanagari-600.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Noto Sans Devanagari';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/noto-devanagari-700.woff2') format('woff2');
 }
 /* Newsreader: English translations, IAST and editorial headings. */
 @font-face {
@@ -1171,6 +1186,7 @@
         @apply font-serif text-sm font-semibold tabular-nums text-saffron-800;
     }
     .vt-title a {
+        @apply inline-flex min-h-11 min-w-11 items-center;
         color: inherit;
         text-underline-offset: 2px;
     }
@@ -1583,6 +1599,15 @@ html[data-reader] nav[aria-label='Primary navigation'],
 html[data-reader] nav[aria-label='Mobile quick navigation'],
 html[data-reader] aside[aria-label='Interactive Companion'],
 html[data-reader] [aria-label^='सस्वर पाठ'] {
+  display: none !important;
+}
+/* The same from the first paint: data-reader is only set after hydration, and hiding the
+   header then moved the whole verse page up (a layout shift). Its own rule, so a browser
+   without :has() still applies the one above. */
+html:has(.reader-root) nav[aria-label='Primary navigation'],
+html:has(.reader-root) nav[aria-label='Mobile quick navigation'],
+html:has(.reader-root) aside[aria-label='Interactive Companion'],
+html:has(.reader-root) [aria-label^='सस्वर पाठ'] {
   display: none !important;
 }
 
@@ -2248,7 +2273,7 @@ svg.lucide {
 
 /* ── Liquid components (app/components/liquid) ─────────────────────── */
 
-/* Yantra ink for the hero (SVG and WebGL read these). */
+/* Yantra ink for the hero's SVG. */
 :root {
     --yantra-ink: #7c2d12;
     --yantra-accent: #c84b31;
@@ -2271,13 +2296,85 @@ svg.lucide {
     --yantra-soft: #c4ab84;
 }
 
-/* Reader dock: above the phone's bottom navigation, 24px off the floor on desktop. */
+/* Reader dock: on phones a full-width bar in the bottom navigation's place, so the chapter
+   has one bar, not two stacked over the verse; 24px off the floor on desktop. */
 .liquid-dock {
-    bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+    bottom: 0;
+}
+@media (max-width: 1023px) {
+    body:has(.liquid-dock) nav[aria-label='Mobile quick navigation'] {
+        display: none !important;
+    }
 }
 @media (min-width: 1024px) {
     .liquid-dock {
         bottom: 1.5rem;
+    }
+}
+
+/* Touch screens: every control at least 44px. A button centres its content, so a minimum size
+   keeps its look; links that act as buttons opt in with .tap-target, and the min-heights sized
+   for a mouse (28–40px) grow. Inline text links and switches are left as they are. */
+@media (pointer: coarse) {
+    button:not([role='switch']):not(.tap-exempt),
+    summary,
+    select,
+    input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='hidden']),
+    .tap-target,
+    .min-h-\[28px\],
+    .min-h-\[32px\],
+    .min-h-\[36px\],
+    .min-h-\[38px\],
+    .min-h-\[40px\] {
+        min-height: 44px;
+    }
+    button:not([role='switch']):not(.tap-exempt),
+    .tap-target {
+        min-width: 44px;
+    }
+}
+
+/* Phones: no text under 12px, and text meant to be read (paragraphs, list items) at 14px.
+   SVG text is left alone: it scales with its drawing. */
+@media (max-width: 639px) {
+    .text-\[9px\]:not(text),
+    .text-\[10px\]:not(text),
+    .text-\[10\.5px\]:not(text),
+    .text-\[11px\]:not(text) {
+        font-size: 0.75rem;
+    }
+    p.text-xs,
+    li.text-xs,
+    dd.text-xs,
+    p.text-\[11px\],
+    p.text-\[13px\] {
+        font-size: 0.875rem;
+    }
+    p.text-xs:not([class*='leading-']),
+    li.text-xs:not([class*='leading-']),
+    dd.text-xs:not([class*='leading-']),
+    p.text-\[11px\]:not([class*='leading-']) {
+        line-height: 1.5;
+    }
+}
+
+/* Keyboard hints (Ctrl K) mean nothing on a touch screen; .touch-only is what shows there instead. */
+.touch-only {
+    display: none;
+}
+@media (pointer: coarse) {
+    .kbd-hint {
+        display: none !important;
+    }
+    .touch-only {
+        display: inline;
+    }
+}
+
+/* Phones: while the install offer is up, the floating ॐ button steps aside instead of sitting on it. */
+@media (max-width: 1023px) {
+    body:has(aside[aria-label='Install App Banner']) aside[aria-label='Prāṇa Sūtra Active Island'] {
+        display: none !important;
     }
 }
 .dock-pill {
@@ -2915,4 +3012,14 @@ svg.lucide {
 [data-material='palm-leaf'] .verse-folio {
     background-color: transparent;
     border-color: color-mix(in srgb, var(--v2) 14%, transparent);
+}
+
+/* Letter-spacing pulls Devanagari conjuncts and vowel signs apart ("का ल द र्श न"), so Devanagari
+   text never takes tracking. <html> is lang="hi", hence explicit attributes rather than :lang(). */
+[lang='hi']:not(html),
+[lang='sa'],
+[lang='mr'],
+.font-devanagari,
+.font-sanskrit {
+    letter-spacing: normal;
 }

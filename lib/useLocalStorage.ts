@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { startTransition, useCallback, useEffect, useRef, useState } from 'react';
 
 /**
  * Generic localStorage-backed state hook.
@@ -34,19 +34,24 @@ export function useLocalStorage<T>(
   // until the post-hydration re-render, so it can only ever write values
   // the user has genuinely seen.
   const [hydrated, setHydrated] = useState(false);
-  // Hydrate from localStorage after mount or when key changes.
+  // Hydrate from localStorage after mount or when key changes. As a transition, so React
+  // finishes hydrating the page first: an urgent update here reaches lazy (next/dynamic)
+  // children before their chunks arrive, React switches them to client rendering, and they
+  // blank out for a moment (a large layout shift on /practice/).
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(key);
-      if (raw !== null) {
-        setValue(JSON.parse(raw) as T);
-      } else {
-        setValue(initialRef.current);
+    startTransition(() => {
+      try {
+        const raw = window.localStorage.getItem(key);
+        if (raw !== null) {
+          setValue(JSON.parse(raw) as T);
+        } else {
+          setValue(initialRef.current);
+        }
+      } catch {
+        // ignore parse / access errors
       }
-    } catch {
-      // ignore parse / access errors
-    }
-    setHydrated(true);
+      setHydrated(true);
+    });
   }, [key]);
 
   // Persist on change (only after hydration, so the initial value can never

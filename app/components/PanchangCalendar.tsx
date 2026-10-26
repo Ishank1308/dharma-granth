@@ -975,7 +975,7 @@ export function PanchangCalendar() {
                 <span className="text-dharma-muted">{fest.dateStr}</span>
                 <Link
                   href="/festivals"
-                  className="font-semibold text-saffron-700 dark:text-saffron-400 hover:underline"
+                  className="tap-target inline-flex items-center font-semibold text-saffron-700 dark:text-saffron-400 hover:underline"
                 >
                   विवरण &rarr;
                 </Link>

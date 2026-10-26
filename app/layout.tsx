@@ -19,14 +19,7 @@ const MananaSelectionBar = dynamic(
   () => retryImport(() => import("@/app/components/reader/MananaSelectionBar").then((m) => m.MananaSelectionBar)),
   { ssr: false }
 );
-// Font subsetting: Bundling only required weights (400, 600, 700) and critical
-// styles; unused weights (300, 500, 300-italic, 700-italic) are omitted to reduce bundle size.
-import "@fontsource/inter/latin-400.css";
-import "@fontsource/inter/latin-600.css";
-import "@fontsource/inter/latin-700.css";
-import "@fontsource/noto-sans-devanagari/devanagari-400.css";
-import "@fontsource/noto-sans-devanagari/devanagari-600.css";
-import "@fontsource/noto-sans-devanagari/devanagari-700.css";
+// Fonts: @font-face rules for /fonts live in globals.css (one source per weight, 400/600/700).
 import "./globals.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";

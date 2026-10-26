@@ -423,19 +423,17 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
   }, [coreReady, scriptureHint, shardToken]);
 
   // Verse text: loaded when the dialog opens, retried when "Try again" resets the state to idle.
+  // No cancel-on-cleanup here: setting 'loading' re-runs this effect, and a cleanup flag would
+  // swallow the 'ready' that follows, leaving search stuck on "Loading verse text…".
   useEffect(() => {
     if (!isOpen || verseState !== 'idle') return;
-    let cancelled = false;
     setVerseState('loading');
     ensureVerseIndex()
-      .then(() => !cancelled && setVerseState('ready'))
+      .then(() => setVerseState('ready'))
       .catch((err) => {
         console.warn('[search] verse index unavailable:', err);
-        if (!cancelled) setVerseState('error');
+        setVerseState('error');
       });
-    return () => {
-      cancelled = true;
-    };
   }, [isOpen, verseState]);
 
   // Reset and focus on open.
@@ -604,11 +602,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
   const shownGroups = SEARCH_GROUPS.filter((g) => (counts[g.id] ?? 0) > 0);
   const suggestion = result?.suggestion && result.suggestion.toLowerCase() !== trimmed.toLowerCase() ? result.suggestion : null;
   const verseLoading = verseState === 'loading' || verseState === 'idle';
+  // Nothing found yet, but the verse text (the largest index, so the last to arrive) is still
+  // on its way: say so rather than "No results".
+  const waitingForIndex = !!result && result.totalMatches === 0 && verseLoading && isOnline !== false;
 
   // What a screen reader hears; it follows the deferred query, so it does not chatter on every keystroke.
   const announcement = !trimmed
     ? 'Search is ready. Type to search scriptures, verses, topics and practices.'
-    : isStale
+    : isStale || waitingForIndex
       ? 'Searching…'
       : result && result.totalMatches > 0
         ? `${result.totalMatches} result${result.totalMatches === 1 ? '' : 's'} for ${trimmed}. ${shownGroups
@@ -936,14 +937,23 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                 </div>
               ) : null}
 
-              {trimmed && result && verseLoading && isOnline && (
+              {trimmed && result && result.totalMatches > 0 && verseLoading && isOnline && (
                 <div role="status" className="mb-3 flex items-center gap-2 rounded-lg border border-dharma-border bg-dharma-bg/60 px-3 py-2 text-xs text-dharma-muted">
                   <span className="h-3 w-3 animate-spin rounded-full border-2 border-saffron-600 border-t-transparent" aria-hidden="true" />
                   Loading verse text… verse results will appear in a moment.
                 </div>
               )}
 
-              {trimmed && result && result.totalMatches === 0 && (
+              {trimmed && waitingForIndex && (
+                <div className="flex flex-col items-center gap-3 px-3 py-12 text-center text-sm text-dharma-muted">
+                  <span className="h-6 w-6 animate-spin rounded-full border-2 border-saffron-600 border-t-transparent" aria-hidden="true" />
+                  <p>
+                    <span lang="hi" className="font-devanagari">खोज रहे हैं…</span> · Searching the verses…
+                  </p>
+                </div>
+              )}
+
+              {trimmed && result && result.totalMatches === 0 && !waitingForIndex && (
                 <div className="px-3 py-10 text-center">
                   <HelpCircle className="mx-auto mb-3 h-10 w-10 text-amber-600/70" aria-hidden="true" />
                   <h3 className="text-base font-bold text-dharma-text">
@@ -1008,6 +1018,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                           const style = matchedTextStyle(item);
                           const matched = item.matchingText || item.title;
                           const showSubtitle = item.subtitle && item.subtitle !== item.reference && item.subtitle !== matched;
+                          const reviewStatus = reviewStatusForHref(item.href, REVIEW_RECORDS);
                           return (
                             <Link
                               key={item.id}
@@ -1015,7 +1026,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                               href={item.href}
                               role="option"
                               aria-selected={selected}
-                              aria-label={`${item.reference ?? item.title}. ${item.matchReason}. ${item.languageLabel}. ${reviewStatusForHref(item.href, REVIEW_RECORDS)}.`}
+                              aria-label={`${item.reference ?? item.title}. ${item.matchReason}. ${item.languageLabel}. ${reviewStatus}.`}
                               tabIndex={selected ? 0 : -1}
                               onClick={() => {
                                 remember(query);
@@ -1047,7 +1058,12 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                                 <span className="flex flex-wrap items-center gap-1.5">
                                   <span className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${reasonClass(item.matchReason)}`}>{item.matchReason}</span>
                                   <span className="rounded-full border border-dharma-border bg-dharma-bg px-2 py-0.5 text-[11px] font-medium text-dharma-muted">{item.languageLabel}</span>
-                                  <span className="rounded-full border border-dharma-border bg-dharma-bg px-2 py-0.5 text-xs font-medium text-dharma-muted">{reviewStatusForHref(item.href, REVIEW_RECORDS)}</span>
+                                  {/* Kept on every result, but "Not yet reviewed" (most of the library) is plain text, not a pill. */}
+                                  {reviewStatus.startsWith('Reviewed') ? (
+                                    <span className="rounded-full border border-emerald-600/40 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-900 dark:text-emerald-200">{reviewStatus}</span>
+                                  ) : (
+                                    <span className="px-1 text-xs text-dharma-muted">{reviewStatus}</span>
+                                  )}
                                 </span>
                               </div>
 
@@ -1103,7 +1119,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                 <span className="flex items-center gap-1"><kbd className="rounded border border-dharma-border bg-dharma-card px-1.5 py-0.5 font-mono text-[10px]">Esc</kbd> Close</span>
               </div>
               <span className="ml-auto font-medium text-dharma-text">
-                {result ? `${result.totalMatches} result${result.totalMatches === 1 ? '' : 's'}${result.totalMatches > RESULT_LIMIT ? ` · top ${RESULT_LIMIT}` : ''}` : 'Dharma Granth search'}
+                {waitingForIndex ? 'Searching…' : result ? `${result.totalMatches} result${result.totalMatches === 1 ? '' : 's'}${result.totalMatches > RESULT_LIMIT ? ` · top ${RESULT_LIMIT}` : ''}` : 'Dharma Granth search'}
               </span>
             </div>
           </motion.div>

@@ -192,6 +192,7 @@ export function SiteNav({
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [discoverOpen, setDiscoverOpen] = useState(false);
+  const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchMounted, setSearchMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -199,11 +200,13 @@ export function SiteNav({
   const [bookmarkCount, setBookmarkCount] = useState<number>(0);
   const [activeStreak, setActiveStreak] = useState<number>(0);
 
-  const { theme, setTheme, cycleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const { preference, setPreference } = useLanguagePreference();
 
   const discoverRef = useRef<HTMLDivElement>(null);
   const discoverButtonRef = useRef<HTMLButtonElement>(null);
+  const themeMenuRef = useRef<HTMLDivElement>(null);
+  const themeButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
   const drawerCloseBtnRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -324,6 +327,28 @@ export function SiteNav({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [discoverOpen]);
 
+  // The theme menu closes on Escape (focus back to its button) or a tap outside it
+  useEffect(() => {
+    if (!themeMenuOpen) return;
+    function handleKey(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setThemeMenuOpen(false);
+      themeButtonRef.current?.focus();
+    }
+    function handlePointerDown(event: MouseEvent | TouchEvent) {
+      if (!themeMenuRef.current?.contains(event.target as Node)) setThemeMenuOpen(false);
+    }
+    document.addEventListener('keydown', handleKey);
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('touchstart', handlePointerDown);
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('touchstart', handlePointerDown);
+    };
+  }, [themeMenuOpen]);
+
   // Outside click to close desktop discovery
   useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
@@ -413,9 +438,11 @@ export function SiteNav({
     menuButtonRef.current?.focus();
   };
 
-  const handleThemeCycle = () => {
+  const handlePickTheme = (next: Theme) => {
     triggerTactileFeedback('medium', 'softTap');
-    cycleTheme();
+    setTheme(next);
+    setThemeMenuOpen(false);
+    themeButtonRef.current?.focus();
   };
 
   const handleOpenSearchModal = () => {
@@ -579,6 +606,8 @@ export function SiteNav({
                 whileHover={reduce ? undefined : { scale: 1.05 }}
                 whileTap={reduce ? undefined : { scale: 0.95 }}
                 aria-hidden="true"
+                // whileTap makes motion add tabIndex=0; the link around it is the focus target.
+                tabIndex={-1}
               >
                 <Image
                   src="/logo-mark.webp"
@@ -597,7 +626,7 @@ export function SiteNav({
                   धर्म ग्रंथ
                 </span>
               </div>
-            </Link>
+            </Link>{' '}
 
             {/* Desktop Primary Navigation */}
             <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex">
@@ -718,10 +747,10 @@ export function SiteNav({
                 aria-keyshortcuts="Control+K Meta+K /"
               >
                 <Search className="h-4 w-4 text-dharma-text" aria-hidden="true" />
-                <kbd className="hidden xl:inline rounded-md bg-dharma-text/[0.07] px-1.5 py-0.5 font-sans text-[11px] text-dharma-muted">
+                <kbd className="kbd-hint hidden xl:inline rounded-md bg-dharma-text/[0.07] px-1.5 py-0.5 font-sans text-[11px] text-dharma-text-secondary">
                   {shortcutLabel}
                 </kbd>
-              </button>
+              </button>{' '}
 
               {/* Desktop Language Toggle */}
               <LanguageToggle className="hidden lg:inline-flex" />
@@ -737,7 +766,7 @@ export function SiteNav({
                 <SoundscapeNavButton className="h-9 w-9" />
               </div>
 
-              {/* Desktop CTA */}
+              {/* Desktop CTA */}{' '}
               <Link
                 href="/scripture/bhagavadgita"
                 className="hidden min-[1800px]:inline-flex items-center rounded-full bg-dharma-saffron px-3.5 py-1.5 text-[13px] text-dharma-bg transition hover:opacity-90"
@@ -762,12 +791,16 @@ export function SiteNav({
               {/* 1.5. Mobile Sacred Soundscape Button */}
               <SoundscapeNavButton className="max-[359px]:hidden lg:hidden h-11 w-11 min-h-[44px] min-w-[44px]" />
 
-              {/* 2. Theme Button */}
+              {/* 2. Theme Button: opens a menu of the named themes (cycling through five unnamed states confused readers) */}
+              <div ref={themeMenuRef} className="relative min-[1800px]:hidden">
               <button
+                ref={themeButtonRef}
                 type="button"
-                onClick={handleThemeCycle}
-                className="apple-icon-button min-[1800px]:hidden h-11 w-11 min-h-[44px] min-w-[44px] lg:h-9 lg:w-9 lg:min-h-0 lg:min-w-0"
-                aria-label={`थीम बदलें (${THEME_NAMES[theme].name})`}
+                onClick={() => setThemeMenuOpen((open) => !open)}
+                aria-haspopup="menu"
+                aria-expanded={themeMenuOpen}
+                className="apple-icon-button h-11 w-11 min-h-[44px] min-w-[44px] lg:h-9 lg:w-9 lg:min-h-0 lg:min-w-0"
+                aria-label={`थीम बदलें · Theme: ${THEME_NAMES[theme].name}`}
                 title={`थीम: ${THEME_NAMES[theme].name} · ${THEME_NAMES[theme].hi}`}
               >
                 {/* initial={false}: server-rendered visible; only later theme changes animate. */}
@@ -784,6 +817,36 @@ export function SiteNav({
                   </motion.span>
                 </AnimatePresence>
               </button>
+              {themeMenuOpen && (
+                <div
+                  role="menu"
+                  aria-label="Theme · थीम"
+                  className="absolute right-0 top-full z-50 mt-2 w-56 rounded-xl border border-dharma-border bg-dharma-card p-1 shadow-xl"
+                >
+                  {THEME_IDS.map((id) => {
+                    const Icon = THEME_ICONS[id] || Sun;
+                    const active = id === theme;
+                    return (
+                      <button
+                        key={id}
+                        type="button"
+                        role="menuitemradio"
+                        aria-checked={active}
+                        onClick={() => handlePickTheme(id)}
+                        title={THEME_NAMES[id].description}
+                        className={`flex min-h-11 w-full items-center gap-2.5 rounded-lg px-3 text-left text-sm font-semibold transition ${
+                          active ? 'bg-saffron-500/15 text-dharma-text' : 'text-dharma-muted hover:bg-saffron-500/10 hover:text-dharma-text'
+                        }`}
+                      >
+                        <Icon className="h-4 w-4 shrink-0 text-saffron-600 dark:text-amber-400" aria-hidden="true" />
+                        <span>{THEME_NAMES[id].name}</span>{' '}
+                        <span lang="hi" className="ml-auto font-devanagari font-normal text-dharma-muted">{THEME_NAMES[id].hi}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+              </div>
 
               {/* 3. Menu Button */}
               <button
@@ -892,7 +955,7 @@ export function SiteNav({
                     <Search className="h-4 w-4 text-saffron-600" aria-hidden="true" />
                     <span className="font-devanagari text-sm">ग्रंथ, श्लोक या विषय खोजें...</span>
                   </div>
-                  <kbd className="rounded border border-dharma-border bg-dharma-card px-2 py-0.5 font-mono text-[10px] text-dharma-muted">
+                  <kbd className="kbd-hint rounded border border-dharma-border bg-dharma-card px-2 py-0.5 font-mono text-[10px] text-dharma-muted">
                     {shortcutLabel}
                   </kbd>
                 </button>
@@ -1145,7 +1208,7 @@ export function SiteNav({
             }`}
           >
             <Home className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Home</span>
+            <span className="text-xs tracking-tight">Home</span>
           </Link>
 
           {/* 2. Search Button */}
@@ -1156,7 +1219,7 @@ export function SiteNav({
             aria-label="खोजें (Search)"
           >
             <Search className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Search</span>
+            <span className="text-xs tracking-tight">Search</span>
           </button>
 
           {/* 3. Library */}
@@ -1171,7 +1234,7 @@ export function SiteNav({
             }`}
           >
             <BookOpen className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Library</span>
+            <span className="text-xs tracking-tight">Library</span>
           </Link>
 
           {/* 4. Sadhana */}
@@ -1186,7 +1249,7 @@ export function SiteNav({
             }`}
           >
             <Sparkles className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Sadhana</span>
+            <span className="text-xs tracking-tight">Sadhana</span>
           </Link>
 
           {/* 5. Saved Verses */}
@@ -1208,7 +1271,7 @@ export function SiteNav({
                 </span>
               )}
             </div>
-            <span className="text-[10px] tracking-tight">Saved</span>
+            <span className="text-xs tracking-tight">Saved</span>
           </Link>
         </div>
       </nav>

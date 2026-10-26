@@ -414,6 +414,8 @@ export function ScriptureLibraryClient({
           )}
 
           <div className="mt-6">
+            {/* Parent heading for the cards' h3s (the visible Filters h2 is desktop-only). */}
+            <h2 className="sr-only">ग्रंथ · Texts</h2>
             {results.length === 0 ? (
               activeCount > 0 ? (
                 <FilteredEmpty
@@ -429,7 +431,7 @@ export function ScriptureLibraryClient({
                 <NoResults query={filters.q.trim()} onClear={() => setQuery('')} />
               )
             ) : (
-              <ul className={`grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 2xl:grid-cols-3'}`}>
+              <ul className={`grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'}`}>
                 {results.map((item) => (
                   <li key={item.id} className="min-w-0">
                     <LibraryCard

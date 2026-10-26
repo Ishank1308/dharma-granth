@@ -180,7 +180,8 @@ export default function ScripturePage({ params }: PageProps) {
       <section className="scripture-vibe-hero relative isolate overflow-hidden border-b border-dharma-border/60 py-6 text-dharma-text sm:py-10" style={{ '--cover-1': vibe.cover[0], '--cover-2': vibe.cover[1], '--cover-3': vibe.cover[2] } as CSSProperties}>
         <Motif id={vibe.motif} className="pointer-events-none absolute -right-10 -top-10 -z-10 h-[420px] w-[420px] text-[color:var(--cover-2)] opacity-[0.07]" />
         <div className="relative mx-auto grid max-w-5xl items-center gap-8 px-6 lg:grid-cols-[1fr_auto]">
-        <div className="order-2 lg:order-1">
+        {/* Title and description first; on phones the book illustration follows them. */}
+        <div>
           <FadeUp>
             <nav aria-label="Breadcrumb" className="mb-3">
               <ol className="flex flex-wrap items-center gap-1.5 text-sm text-dharma-muted">
@@ -217,11 +218,11 @@ export default function ScripturePage({ params }: PageProps) {
             </div>
           </FadeUp>
           <FadeUp delay={0.15}>
-            <p className="mt-3 max-w-2xl text-base leading-7 text-dharma-muted line-clamp-2">{meta.description}</p>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-dharma-muted">{meta.description}</p>
             {meta.author && <p className="mt-2 text-sm font-semibold text-dharma-muted">Attributed to {meta.author}</p>}
           </FadeUp>
         </div>
-        <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} className="order-1 mx-auto lg:order-2" />
+        <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} className="mx-auto" />
         </div>
       </section>
 

@@ -24,7 +24,7 @@ export function MobileReadingProgress({
   return (
     <div
       className="relative z-30 sm:hidden"
-      role="group"
+      role="region"
       aria-label="अध्याय पठन प्रगति"
     >
       <div className="flex items-center justify-between px-3.5 py-1 text-[11px] font-medium text-dharma-muted">

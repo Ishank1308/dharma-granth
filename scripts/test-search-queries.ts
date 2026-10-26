@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parseDirectCitation } from '../lib/search-citation';
 import { normalizePhonetic } from '../lib/searchNormalizer';
+import { loadCoreIndex, searchCoreIndex } from '../lib/search-core';
 
 const GITA_247 = '/scripture/bhagavadgita/chapter/2/verse/47/';
 for (const q of ['Gita 2.47', 'Bhagavad Gita 2.47', 'bg 2.47', 'गीता २.४७', 'गीता 2.47']) {
@@ -35,6 +36,17 @@ for (const ref of ['rv 1.1.999', 'rv 1.1.0', 'rv 1.0.1', 'rv 1.192.1', 'rv 0.1.1
 assert.equal(parseDirectCitation('ऋग्वेद १.१६४.४६')?.href, '/scripture/rigveda/chapter/1/#verse-164.46');
 assert.equal(parseDirectCitation('rv 10.129.1')?.href, '/scripture/rigveda/chapter/10/#verse-129.1');
 
+loadCoreIndex({
+  v: 1,
+  scriptures: [['bhagavatapurana', 'Bhagavata Purana', 'भागवत पुराण', '/scripture/bhagavatapurana/']],
+  chapters: [['bhagavatapurana', 247, 'Chapter 247', 'अध्याय 247']],
+  pathways: [], topics: [], verses: [],
+});
+assert.equal(searchCoreIndex('2.47').some(({ item }) => item.group === 'chapter'), false,
+  'a dotted verse query must not become chapter 247');
+const chapter247 = searchCoreIndex('247').find(({ item }) => item.group === 'chapter')?.item;
+assert.equal(chapter247?.href, '/scripture/bhagavatapurana/chapter/247/');
+assert.equal(chapter247?.reference, 'Bhagavata Purana · Ch. 247');
 assert.equal(normalizePhonetic('तत्त्वमसि'), normalizePhonetic('tattvamasi'), 'तत्त्वमसि = tattvamasi');
 assert.equal(normalizePhonetic('कर्म'), normalizePhonetic('karma'), 'कर्म = karma');
 console.log('search query checks passed');

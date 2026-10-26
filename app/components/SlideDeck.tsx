@@ -295,7 +295,7 @@ export function SlideDeck({ slides, className = '', autoPlay = false, autoPlayIn
               <button
                 key={idx}
                 onClick={() => goToSlide(idx)}
-                className={`w-3 h-3 rounded-full transition-all ${
+                className={`tap-exempt w-3 h-3 rounded-full transition-all ${
                   idx === currentIndex
                     ? 'bg-saffron-600 w-8'
                     : 'bg-dharma-border hover:bg-saffron-300'

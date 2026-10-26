@@ -134,14 +134,14 @@ export default function PanchangPage() {
             <div className="flex items-center gap-3">
               <Link
                 href="/festivals"
-                className="text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:underline"
+                className="tap-target inline-flex items-center text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:underline"
               >
                 Explore All Festivals &rarr;
               </Link>
               <span className="text-dharma-border">•</span>
               <Link
                 href="/practice"
-                className="text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:underline"
+                className="tap-target inline-flex items-center text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:underline"
               >
                 Daily Sadhana Dashboard &rarr;
               </Link>

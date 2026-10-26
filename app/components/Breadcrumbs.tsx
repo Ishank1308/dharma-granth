@@ -23,7 +23,7 @@ export function Breadcrumbs({ items, className = '' }: { items: Crumb[]; classNa
               {item.href && !last ? (
                 <Link
                   href={item.href}
-                  className="inline-flex min-h-[44px] max-w-[14rem] items-center truncate rounded font-medium hover:text-saffron-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 dark:hover:text-saffron-300"
+                  className="inline-flex min-h-[44px] min-w-11 max-w-[14rem] items-center truncate rounded font-medium hover:text-saffron-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 dark:hover:text-saffron-300"
                 >
                   {item.label}
                 </Link>

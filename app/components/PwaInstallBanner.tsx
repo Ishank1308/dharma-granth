@@ -13,6 +13,25 @@ interface BeforeInstallPromptEvent extends Event {
 
 const STORAGE_KEY = 'dharma.pwa-banner-dismissed-until';
 const DISMISS_DAYS = 14;
+// The offer waits for a returning reader: a first visit is for the texts, not an install prompt.
+const VISITS_KEY = 'dharma.visit-count';
+const VISIT_COUNTED_KEY = 'dharma.visit-counted';
+const MIN_VISITS = 2;
+
+/** Counts this browser session once and returns how many sessions this browser has had. */
+function countVisit(): number {
+  try {
+    let visits = Number(localStorage.getItem(VISITS_KEY)) || 0;
+    if (!sessionStorage.getItem(VISIT_COUNTED_KEY)) {
+      visits += 1;
+      localStorage.setItem(VISITS_KEY, String(visits));
+      sessionStorage.setItem(VISIT_COUNTED_KEY, '1');
+    }
+    return visits;
+  } catch {
+    return 0;
+  }
+}
 
 export function PwaInstallBanner() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
@@ -31,7 +50,10 @@ export function PwaInstallBanner() {
       return;
     }
 
-    // 2. Check if recently dismissed
+    // 2. First visit, or recently dismissed: not now
+    if (countVisit() < MIN_VISITS) {
+      return;
+    }
     try {
       const dismissedUntil = localStorage.getItem(STORAGE_KEY);
       if (dismissedUntil && Date.now() < Number(dismissedUntil)) {
@@ -116,7 +138,7 @@ export function PwaInstallBanner() {
         transition={{ duration: 0.3, ease: 'easeOut' }}
         role="region"
         aria-label="Install App Banner"
-        className="fixed bottom-4 left-3 right-3 sm:left-auto sm:right-6 sm:max-w-md z-40 rounded-2xl border border-amber-300/40 dark:border-amber-700/40 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md p-4 shadow-xl shadow-amber-900/10 dark:shadow-black/40 text-dharma-text"
+        className="fixed bottom-[calc(4.25rem+env(safe-area-inset-bottom,0px))] left-3 right-3 sm:left-auto sm:right-6 sm:max-w-md lg:bottom-4 z-40 rounded-2xl border border-amber-300/40 dark:border-amber-700/40 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md p-4 shadow-xl shadow-amber-900/10 dark:shadow-black/40 text-dharma-text"
       >
         <div className="flex items-start gap-3.5">
           {/* App Icon */}
