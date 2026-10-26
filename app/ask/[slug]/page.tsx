@@ -73,8 +73,8 @@ function VerseCard({ group }: { group: AnswerVerseGroup }) {
           <p lang="hi" className="whitespace-pre-line pb-2 pt-1 font-devanagari text-sm leading-relaxed">{v.vyakhya}</p>
         </details>
       ))}
-      <Link href={group.verses[0].href} className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-saffron-700 underline underline-offset-4">
-        <span lang="hi">श्लोक पृष्ठ खोलें</span> <span>Open the verse page</span> <ArrowRight className="h-4 w-4" aria-hidden="true" />
+      <Link href={group.verses[0].href} className="inline-flex min-h-11 items-center justify-self-end text-xs text-dharma-muted underline underline-offset-2 hover:text-saffron-700">
+        <span lang="hi">श्लोक पृष्ठ</span>&nbsp;<span>· verse page</span>
       </Link>
     </article>
   );
