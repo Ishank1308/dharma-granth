@@ -2,7 +2,8 @@
  * Seed the four Vedas from the public DharmicData dataset.
  *
  * Source: https://github.com/bhavykhatri/DharmicData
- * Output: public/data/scriptures-full/{rigveda,atharvaveda,yajurveda,samaveda}.json
+ * Output: public/data/scriptures-full/{atharvaveda,yajurveda,samaveda}.json
+ * (The Rig Veda has its own script, scripts/seed-rigveda.mjs, which checks every hymn's verse count.)
  *
  * Only Sanskrit mūla text is loaded here — those verses are firmly public
  * domain. Translations should be loaded separately from explicitly-licensed
@@ -72,16 +73,6 @@ function splitMantras(text: string, sukta: number | string): FullVerse[] {
 }
 
 const VEDAS: VedaSpec[] = [
-  {
-    id: "rigveda",
-    title: "Rig Veda",
-    titleSanskrit: "ऋग्वेद",
-    repoFolder: "Rigveda",
-    filePattern: (n) => `rigveda_mandala_${n}.json`,
-    unit: "Mandala",
-    unitSanskrit: "मण्डल",
-    count: 10,
-  },
   {
     id: "atharvaveda",
     title: "Atharva Veda",
