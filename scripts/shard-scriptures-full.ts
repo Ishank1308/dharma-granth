@@ -12,13 +12,14 @@ import path from "node:path";
 import { isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-commentary/quality";
 import { findTemplateFields } from "./lib/template-text";
 import { exemptFields, hideUnalignedMeanings } from "./lib/meaning-alignment";
+import { FOOTNOTE_SCRIPTURES, stripPrintedFootnote } from "./lib/printed-footnotes";
 import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
 import { isHindiSourceReviewRequired, isReviewKept, isUnproofreadShown } from "../lib/ocr-hindi-review";
 
 const PILOT = loadPilotOverlay();
 
 /** Bump when shard output logic changes (stubs, templates, echo rules, manifest shape). */
-const SHARD_REV = "3";
+const SHARD_REV = "4";
 
 interface ShardStamp {
   rev: string;
@@ -139,6 +140,22 @@ function main(): void {
       for (const v of (ch.verses ?? []) as Record<string, unknown>[]) {
         for (const f of ["translation", "hindi", "explanation", "commentary", "science", "lifeLesson", "wordMeaning"]) if (isMeaningStub(v[f])) delete v[f];
       }
+    }
+
+    // Printed footnotes filed in front of a verse (scripts/lib/printed-footnotes.ts): publish the verse alone.
+    if (FOOTNOTE_SCRIPTURES.has(id)) {
+      let stripped = 0;
+      for (const ch of book.chapters ?? []) {
+        for (const v of (ch.verses ?? []) as Record<string, unknown>[]) {
+          if (typeof v.sanskrit !== "string") continue;
+          const clean = stripPrintedFootnote(v.sanskrit, typeof v.transliteration === "string" ? v.transliteration : undefined);
+          if (!clean) continue;
+          v.sanskrit = clean.sanskrit;
+          if (clean.transliteration !== undefined) v.transliteration = clean.transliteration;
+          stripped++;
+        }
+      }
+      if (stripped) console.log(`  ${id}: published ${stripped} verse(s) without the printed footnotes filed in front of them`);
     }
 
     // Hide text that is the same template on many different verses; the source file is not touched.
