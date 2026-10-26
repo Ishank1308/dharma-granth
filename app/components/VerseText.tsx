@@ -14,6 +14,10 @@ interface Props {
     /** This verse's Hindi is in the passage stored on that verse. */
     hindiSeeVerse?: number | string;
     translation?: string;
+    /** English translating a range of verses together ("1.1-1.63", a whole hymn), stored on its first verse. */
+    translationRange?: string;
+    /** This verse's English is in the passage stored on that verse. */
+    translationSeeVerse?: number | string;
   };
   chapterId: number;
   /** Dedicated verse URL, when this scripture has verse pages. */
@@ -94,12 +98,27 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
           अर्थ श्लोक <a href={`#verse-${v.hindiSeeVerse}`}>{toAsciiDigits(String(v.hindiSeeVerse))}</a> के साथ
         </p>
       )}
-      {english && (
+      {english && !v.translationRange && (
         <div className="vt-block">
           <p lang="en" className="vt-en">
             {english}
           </p>
         </div>
+      )}
+      {english && v.translationRange && (
+        <details className="vt-block">
+          <summary className="vt-label" lang="en">
+            English for verses {v.translationRange.replace('-', '–')}, translated together
+          </summary>
+          <p lang="en" className="vt-en vt-lines">
+            {english}
+          </p>
+        </details>
+      )}
+      {!english && v.translationSeeVerse != null && (
+        <p className="vt-block vt-label" lang="en">
+          English with verse <a href={`#verse-${v.translationSeeVerse}`}>{String(v.translationSeeVerse)}</a>
+        </p>
       )}
     </article>
   );

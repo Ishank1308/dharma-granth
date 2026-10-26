@@ -62,6 +62,10 @@ export interface VerseCardData {
   transliteration?: string;
   translation?: string;
   translationSource?: 'ai';
+  /** This verse's English covers a range ("1.1-1.63", a whole hymn) translated together in the edition. */
+  translationRange?: string;
+  /** The English for this verse is stored on that verse (the first of its range). */
+  translationSeeVerse?: number | string;
   hindi?: string;
   hindiSource?: 'ai';
   hindiReviewRequired?: boolean;
@@ -425,7 +429,7 @@ export function VerseCard({
   const scienceIsHi = meaning.scienceIsHi || isMostlyDevanagari(science);
   const lessonIsHi = meaning.lessonIsHi || isMostlyDevanagari(lesson);
   const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null || v.hindiReviewRequired) && layers.hindi);
-  const showEnglish = Boolean(v.translation && layers.english);
+  const showEnglish = Boolean((v.translation || v.translationSeeVerse != null) && layers.english);
 
   const modernParsed = useMemo(() => (lesson ? parseModernContext(lesson) : null), [lesson]);
   const showArth = showHindi || showEnglish;
@@ -434,7 +438,7 @@ export function VerseCard({
     || insight?.marma || insight?.situations.length || v.keywords?.length || relatedTeachings?.length,
   );
   const hasMeaning = Boolean(
-    v.hindi || v.translation || v.hindiSeeVerse != null || v.hindiReviewRequired
+    v.hindi || v.translation || v.hindiSeeVerse != null || v.translationSeeVerse != null || v.hindiReviewRequired
     || hasExplanation || science || lesson || literaryMeta.isCurated || insight?.marma,
   );
 
@@ -853,20 +857,41 @@ export function VerseCard({
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''
                   }`}>
-                    <p lang="en" className={`font-serif ${translationFontSizeClass} text-dharma-text`}>
-                      {v.translation}
-                      {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
-                        <span className="ml-2 align-middle"><DraftBadge lang="en" /></span>
-                      )}
-                      {v.translationSource === 'ai' && (
-                        <span
-                          className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
-                          title={STUDY_TRANSLATION_SHORT.detail}
-                        >
-                          {STUDY_TRANSLATION_SHORT.en}
-                        </span>
-                      )}
-                    </p>
+                    {!v.translation && v.translationSeeVerse != null && (
+                      <p lang="en" className="text-sm leading-relaxed text-dharma-muted">
+                        This verse is translated together with verse {String(v.translationSeeVerse)}.{' '}
+                        <a href={`#verse-${v.translationSeeVerse}`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                          See verse {String(v.translationSeeVerse)} ↑
+                        </a>
+                      </p>
+                    )}
+                    {v.translation && v.translationRange && (
+                      // A whole hymn translated as one passage: folded, so the verses below stay close.
+                      <details>
+                        <summary lang="en" className="cursor-pointer text-sm font-medium text-saffron-800 dark:text-saffron-300">
+                          English for verses {v.translationRange.replace('-', '–')}, translated together
+                        </summary>
+                        <p lang="en" className={`mt-2 whitespace-pre-line font-serif ${translationFontSizeClass} text-dharma-text`}>
+                          {v.translation}
+                        </p>
+                      </details>
+                    )}
+                    {v.translation && !v.translationRange && (
+                      <p lang="en" className={`font-serif ${translationFontSizeClass} text-dharma-text`}>
+                        {v.translation}
+                        {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
+                          <span className="ml-2 align-middle"><DraftBadge lang="en" /></span>
+                        )}
+                        {v.translationSource === 'ai' && (
+                          <span
+                            className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
+                            title={STUDY_TRANSLATION_SHORT.detail}
+                          >
+                            {STUDY_TRANSLATION_SHORT.en}
+                          </span>
+                        )}
+                      </p>
+                    )}
                   </div>
                 )}
               </div>

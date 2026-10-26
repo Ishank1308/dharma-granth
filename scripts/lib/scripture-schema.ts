@@ -9,6 +9,10 @@ export interface FullVerse {
   translation?: string;
   /** "ai" when the translation was machine-generated from the Sanskrit. */
   translationSource?: "ai";
+  /** The English translates a range of verses together ("1.1-1.63", a whole hymn); stored on its first verse. */
+  translationRange?: string;
+  /** This verse's English is in the passage stored on that verse (the first of its range). */
+  translationSeeVerse?: number | string;
   hindi?: string;
   /** "ai" when the Hindi meaning was machine-generated from the Sanskrit. */
   hindiSource?: "ai";

@@ -77,6 +77,8 @@ interface FullVerse {
   transliteration?: string;
   translation?: string;
   translationSource?: 'ai';
+  translationRange?: string;
+  translationSeeVerse?: number | string;
   hindi?: string;
   hindiSource?: 'ai';
   hindiReviewRequired?: boolean;
