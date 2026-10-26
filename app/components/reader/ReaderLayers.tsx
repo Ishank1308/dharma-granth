@@ -127,19 +127,6 @@ const KINDS: Record<Kind, { chip: string; chipHi: string; frame: string; chipCls
   },
 };
 
-/** Quiet corner brackets for the source verse only. Decorative: hidden from assistive tech and by the "hide decorative" setting. */
-function CornerMarks() {
-  const c = 'absolute h-3 w-3 border-amber-700/50 dark:border-amber-400/40';
-  return (
-    <span aria-hidden="true" data-decor="">
-      <span className={`${c} left-2 top-2 border-l-2 border-t-2 rounded-tl-md`} />
-      <span className={`${c} right-2 top-2 border-r-2 border-t-2 rounded-tr-md`} />
-      <span className={`${c} bottom-2 left-2 border-b-2 border-l-2 rounded-bl-md`} />
-      <span className={`${c} bottom-2 right-2 border-b-2 border-r-2 rounded-br-md`} />
-    </span>
-  );
-}
-
 function AiBadge({ children, title }: { children: ReactNode; title?: string }) {
   return (
     <span title={title} className="inline-flex items-center gap-1 rounded-full border border-violet-500/40 bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-950 dark:border-violet-400/40 dark:bg-violet-900/40 dark:text-violet-100">
@@ -178,22 +165,16 @@ function Layer({
     if (collapsible && ref.current && window.matchMedia('(max-width: 639px)').matches) ref.current.open = false;
   }, [collapsible]);
 
+  // Apple-style layer heading: a small label naming what kind of text this is (source or interpretation), then the title.
   const head = (
     <>
-      <span aria-hidden="true" className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border ${k.chipCls}`}>
-        <k.Icon className="h-4 w-4" />
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className={`inline-flex flex-wrap items-center gap-x-2 rounded-full border px-2.5 py-0.5 text-xs font-bold ${k.chipCls}`}>
-          <span lang="hi" className="font-devanagari text-[0.8125rem] leading-snug">
-            {k.chipHi}
-          </span>
-          <span aria-hidden="true" className="opacity-50">
-            ·
-          </span>
+      <span className={`min-w-0 flex-1 ${kind === 'source' ? 'text-center' : ''}`}>
+        <span className="block text-xs font-semibold text-dharma-muted">
+          <span lang="hi" className="font-devanagari">{k.chipHi}</span>
+          <span aria-hidden="true"> · </span>
           <span>{k.chip}</span>
         </span>
-        <span className="mt-1 block font-serif text-base font-bold text-dharma-text sm:text-lg">
+        <span className={`mt-0.5 block font-sans font-semibold tracking-[-0.02em] text-dharma-text ${kind === 'source' ? 'sr-only' : 'text-[17px] sm:text-[19px]'}`}>
           <span id={`${id}-title`}>{title}</span>{' '}
           {titleHi && (
             <span lang="hi" className="ml-1 font-devanagari text-[0.95rem] font-normal text-dharma-muted">
@@ -207,11 +188,10 @@ function Layer({
   );
 
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className={`relative rounded-2xl shadow-sm ${k.frame}`}>
-      {kind === 'source' && <CornerMarks />}
+    <section id={id} aria-labelledby={`${id}-title`} className={`relative rounded-[18px] ${kind === 'source' ? '' : 'bg-dharma-card'}`}>
       {collapsible ? (
         <details ref={ref} open className="group">
-          <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center gap-3 rounded-2xl px-4 py-3 sm:px-6 [&::-webkit-details-marker]:hidden">
+          <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center gap-3 rounded-[18px] px-4 py-3 sm:px-6 [&::-webkit-details-marker]:hidden">
             {head}
             <ChevronDown className="h-5 w-5 shrink-0 text-dharma-muted transition group-open:rotate-180" aria-hidden="true" />
           </summary>
@@ -234,7 +214,7 @@ export { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 const dash = (s: string) => s.replace(/[\s|।॥0-9.]+$/, '');
 
 const aidToggle =
-  'focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full border border-amber-700/25 px-3 py-1 text-xs font-semibold text-dharma-muted transition hover:border-saffron-400 hover:text-dharma-text aria-expanded:border-saffron-500 aria-expanded:text-dharma-text';
+  'focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-3.5 py-1 text-[13px] text-dharma-text transition hover:bg-dharma-text/[0.1] aria-expanded:bg-dharma-saffron/15 aria-expanded:text-dharma-saffron';
 
 /* ── The layers: root shloka, then the अर्थ → व्याख्या → विज्ञान tree ── */
 
@@ -344,7 +324,7 @@ export function ReaderLayers({
                 {line}
               </span>
             ))}
-            <span aria-hidden="true" className="verse-mark mt-2 block text-[0.6em] font-bold text-amber-800 dark:text-amber-300">
+            <span aria-hidden="true" className="verse-mark mt-2 block text-[0.6em] text-dharma-saffron">
               ॥ {toAsciiDigits(chapterId)}.{toAsciiDigits(verse.number)} ॥
             </span>
           </p>
@@ -356,7 +336,7 @@ export function ReaderLayers({
           <p className="text-center text-sm text-dharma-muted">The Sanskrit text is not available for this verse.</p>
         )}
         {!isQuick && (verse.transliteration || hasPadas) && (
-          <div className="mt-4 border-t border-amber-700/15 pt-3">
+          <div className="mt-4 pt-1">
             {/* Reading aids for the shloka: folded until the reader asks for them. */}
             <div className="flex flex-wrap items-center justify-center gap-2">
               {verse.transliteration && (

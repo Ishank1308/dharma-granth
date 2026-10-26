@@ -32,7 +32,7 @@ export interface ToggleOption {
 
 const row =
   'flex min-h-[44px] cursor-pointer items-center gap-3 rounded-lg px-2 text-sm text-dharma-text transition hover:bg-dharma-bg lg:min-h-[34px]';
-const box = 'h-4 w-4 shrink-0 rounded border-dharma-border accent-saffron-700';
+const box = 'h-4 w-4 shrink-0 rounded border-dharma-border accent-[color:var(--dharma-saffron)]';
 
 function Group({
   group,
@@ -52,14 +52,14 @@ function Group({
   const hidden = group.options.length - visible.length;
 
   return (
-    <details open={group.defaultOpen ?? true} className="group/filter border-t border-dharma-border/70 py-1 first:border-t-0">
+    <details open={group.defaultOpen ?? true} className="group/filter border-t border-dharma-text/10 py-1 first:border-t-0">
       <summary className="focus-ring flex min-h-[44px] cursor-pointer list-none items-center justify-between rounded-lg px-2 text-sm font-semibold text-dharma-text [&::-webkit-details-marker]:hidden">
         <span>
           {group.title}{' '}
           <span lang="hi" className="ml-1 font-devanagari text-[0.8rem] font-normal text-dharma-muted">
             {group.titleHi}
           </span>
-          {selected.length > 0 && <span className="ml-2 rounded-full bg-saffron-700 px-1.5 py-0.5 text-[11px] font-bold text-white">{selected.length}</span>}
+          {selected.length > 0 && <span className="ml-2 rounded-full bg-dharma-saffron px-1.5 py-0.5 text-[11px] font-semibold text-dharma-bg">{selected.length}</span>}
         </span>
         <ChevronDown className="h-4 w-4 text-dharma-muted transition group-open/filter:rotate-180" aria-hidden="true" />
       </summary>
@@ -85,7 +85,7 @@ function Group({
         })}
       </ul>
       {(hidden > 0 || expanded) && group.options.length > limit && (
-        <button type="button" onClick={() => setExpanded((v) => !v)} className="focus-ring mb-2 ml-2 min-h-[36px] rounded px-1 text-xs font-semibold text-saffron-800 hover:underline dark:text-saffron-300">
+        <button type="button" onClick={() => setExpanded((v) => !v)} className="focus-ring mb-2 ml-2 min-h-[36px] rounded px-1 text-[13px] text-dharma-saffron hover:underline">
           {expanded ? 'Show fewer' : `Show all ${group.options.length}`}
         </button>
       )}

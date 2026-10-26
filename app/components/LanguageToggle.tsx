@@ -49,9 +49,9 @@ export function LanguageToggle({ className = '' }: { className?: string }) {
         aria-haspopup="listbox"
         aria-label={`भाषा प्राथमिकता: ${currentOption.label}`}
         title={`भाषा प्राथमिकता: ${currentOption.label}`}
-        className="inline-flex h-9 items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card/90 px-3 text-xs font-semibold text-dharma-text shadow-sm backdrop-blur-sm transition hover:border-saffron-300 hover:text-saffron-700 focus:outline-none focus:ring-2 focus:ring-saffron-500/20"
+        className="apple-icon-button h-9 gap-1.5 px-2.5 text-[13px]"
       >
-        <Globe className="h-3.5 w-3.5 text-saffron-600" aria-hidden="true" />
+        <Globe className="h-4 w-4" aria-hidden="true" />
         <span className="max-w-[70px] truncate sm:max-w-none">
           {currentOption.shortLabel}
         </span>

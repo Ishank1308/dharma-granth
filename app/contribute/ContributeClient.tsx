@@ -269,7 +269,7 @@ export function ContributeClient() {
                     <span className="font-devanagari text-lg font-bold">
                       {tier.labelHi}
                     </span>
-                    <span className="text-[10px] text-dharma-muted leading-tight mt-0.5 truncate max-w-full">
+                    <span className="text-[10px] text-dharma-text-secondary leading-tight mt-0.5 truncate max-w-full">
                       {tier.meaningHi}
                     </span>
                   </button>
