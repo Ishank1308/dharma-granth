@@ -5,6 +5,7 @@
 import { chapterVerseHref, versePageHref } from '@/lib/verse-paths';
 import { CITATION_SCHEMES, type CitationScheme } from '@/lib/citation-schemes';
 import { CITATION_MAP, type CitationChapterEntry } from '@/lib/citation-map.generated';
+import RIGVEDA_COUNTS from '@/data/rigveda-hymn-verses.json';
 
 export interface DirectCitation {
   scriptureId: string;
@@ -21,9 +22,6 @@ const GITA_VERSES = [47, 72, 43, 42, 29, 47, 30, 28, 34, 42, 55, 20, 35, 27, 20,
 
 /** Katha library chapters are the six vallis, in traditional order. */
 const KATHA_VALLI_VERSES = [29, 25, 17, 15, 15, 18];
-
-/** Hymns per Rigveda mandala (data/rigveda-hymn-verses.json). Hymn 8.67 is not in the library. */
-const RIGVEDA_HYMNS = [191, 43, 62, 58, 87, 75, 104, 103, 114, 191];
 
 function clean(raw: string): string {
   return raw
@@ -79,8 +77,8 @@ function kathaLibrary(chapter: number, verse: number): DirectCitation | null {
 }
 
 function rigveda(mandala: number, sukta: number, rik: number): DirectCitation | null {
-  const hymns = RIGVEDA_HYMNS[mandala - 1];
-  if (!hymns || sukta < 1 || sukta > hymns || rik < 1 || (mandala === 8 && sukta === 67)) return null;
+  const verses = RIGVEDA_COUNTS.mandalas[mandala - 1]?.[sukta - 1];
+  if (!verses || rik < 1 || rik > verses || (mandala === 8 && sukta === 67)) return null;
   return {
     scriptureId: 'rigveda',
     title: `Rigveda ${mandala}.${sukta}.${rik}`,
@@ -105,7 +103,7 @@ function ashtavakra(chapter: number, verse: number): DirectCitation | null {
 
 /**
  * `bg 2.47`, `gita 6.16`, `katha 1.3.3`, `rv 1.1.1`, `av 1.1`.
- * Returns null when the reference is not a published verse (or, for the Rigveda, not a real mandala).
+ * Returns null when the reference is not a published verse.
  */
 export function parseDirectCitation(raw: string): DirectCitation | null {
   const q = clean(raw);
