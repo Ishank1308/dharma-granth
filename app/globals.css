@@ -2247,7 +2247,7 @@ svg.lucide {
 
 /* ── Liquid components (app/components/liquid) ─────────────────────── */
 
-/* Yantra ink for the hero (SVG and WebGL read these). */
+/* Yantra ink for the hero's SVG. */
 :root {
     --yantra-ink: #7c2d12;
     --yantra-accent: #c84b31;

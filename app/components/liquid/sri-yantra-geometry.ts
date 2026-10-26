@@ -1,12 +1,11 @@
 /**
- * Sri Yantra-inspired geometry, shared by the WebGL hero (SriYantraCanvas) and
- * its server-rendered SVG fallback (SriYantraSvg), so both draw the same figure.
+ * Sri Yantra-inspired geometry for the home hero's server-rendered SVG (SriYantraSvg).
  *
  * Not a ritual-accurate construction: the nine interlocking triangles (four
  * Śiva, apex up; five Śakti, apex down) use proportions close to the classic
  * figure, ringed by the eight- and sixteen-petal lotuses, three circles
  * (trivṛtta) and the gated square (bhūpura). Units: the triangle circle has
- * radius 1. `depth` is each layer's z-offset for the 3D scene.
+ * radius 1. `depth` is each layer's z-offset (from an earlier 3D version; unused by the SVG).
  */
 export type Point = [number, number];
 
