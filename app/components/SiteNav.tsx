@@ -595,8 +595,8 @@ export function SiteNav({
               <div className="flex flex-col">
                 <span className="whitespace-nowrap font-serif text-sm min-[400px]:text-base sm:text-xl font-bold tracking-tight text-dharma-text transition group-hover:text-saffron-700">
                   Dharma Granth
-                </span>
-                <span className="hidden font-devanagari text-[10px] text-dharma-muted -mt-0.5 sm:block">
+                </span>{' '}
+                <span lang="hi" className="hidden font-devanagari text-[10px] text-dharma-muted -mt-0.5 sm:block">
                   धर्म ग्रंथ · ज्ञान अमृत
                 </span>
               </div>
@@ -625,7 +625,7 @@ export function SiteNav({
                     <span>{item.label}</span>{' '}
                     <span lang="hi" className="hidden text-[11px] font-devanagari opacity-75 font-normal 2xl:inline">
                       {item.labelHi}
-                    </span>
+                    </span>{' '}
                   </span>
                 </Link>
               ))}

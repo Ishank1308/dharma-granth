@@ -161,7 +161,7 @@ export default function TimelinesPage() {
                               <h3 className="font-serif font-bold text-dharma-text">
                                 {event.title}
                                 {event.sanskrit && (
-                                  <span lang="sa" className="font-devanagari text-sm text-saffron-600 ml-2">
+                                  <span lang="sa" className="font-devanagari text-sm text-saffron-700 dark:text-saffron-400 ml-2">
                                     {event.sanskrit}
                                   </span>
                                 )}

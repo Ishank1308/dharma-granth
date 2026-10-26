@@ -61,15 +61,16 @@ test('skip link is the first Tab stop and moves focus to the main content', asyn
 
 /** Chapter reader controls, keyboard only. */
 
-test('reader: layers menu opens with Enter, Space toggles a layer, Escape closes and restores focus', async ({ page }) => {
+test('reader: settings dialog opens with Enter, Space toggles a layer, Escape closes and restores focus', async ({ page }) => {
   await page.goto('/scripture/bhagavadgita/chapter/2/');
   await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
-  const trigger = page.getByRole('button', { name: /भाषा व व्याख्या विकल्प/ });
+  // The language and layer choices live in the reader settings dialog.
+  const trigger = page.getByRole('button', { name: /Reader settings/ });
   await trigger.focus();
   await page.keyboard.press('Enter');
   await expect(trigger).toHaveAttribute('aria-expanded', 'true');
 
-  const hindi = page.getByRole('checkbox', { name: /हिन्दी अर्थ/ });
+  const hindi = page.getByRole('checkbox', { name: /Hindi translation/ });
   await hindi.focus();
   const before = await hindi.isChecked();
   await page.keyboard.press('Space');
@@ -84,6 +85,8 @@ test('reader: layers menu opens with Enter, Space toggles a layer, Escape closes
 test('reader: ArrowRight goes to the next chapter, ArrowLeft back', async ({ page }) => {
   await page.goto('/scripture/bhagavadgita/chapter/2/');
   await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+  // The first cards are server-rendered, so they show before the key handler hydrates.
+  await page.waitForLoadState('networkidle');
   await page.locator('body').click({ position: { x: 5, y: 5 } });
   await page.keyboard.press('ArrowRight');
   await expect(page).toHaveURL(/chapter\/3\/?$/);
@@ -142,7 +145,7 @@ test('Story Deck traps keyboard focus, closes with Escape, and restores focus', 
   await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
 
   const trigger = page
-    .getByRole('toolbar', { name: 'श्लोक विकल्प (Verse actions)' })
+    .getByRole('group', { name: 'श्लोक विकल्प (Verse actions)' })
     .first()
     .getByRole('button', { name: 'और विकल्प · More actions' });
   await trigger.click();
@@ -164,28 +167,32 @@ test('Story Deck traps keyboard focus, closes with Escape, and restores focus', 
   await expect(trigger).toBeFocused();
 });
 
-test('reader: Modern Context is a selectable, touch-sized tab on mobile', async ({ page }) => {
+test('reader: verse study opens in place with a touch-sized control on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/scripture/bhagavadgita/chapter/2/');
 
-  const lessonTab = page.getByRole('tab', { name: /Modern Context/ }).first();
-  await expect(lessonTab).toBeVisible();
-  const card = page.locator('article.verse-card').filter({ has: lessonTab }).first();
-  const firstTab = card.getByRole('tab').first();
-  await firstTab.focus();
-  await page.keyboard.press('End');
-  await expect(lessonTab).toBeFocused();
-  await expect(lessonTab).toHaveAttribute('aria-selected', 'true');
-  await expect(card.getByRole('tabpanel')).toContainText(/Modern Context|व्यावहारिक जीवन/);
+  // Vyakhya, Modern Context and Reflection sit behind one disclosure per verse, inside the chapter.
+  const card = page.locator('article.verse-card:not(.vt)').filter({ has: page.getByRole('button', { name: /Verse study/ }) }).first();
+  const study = card.getByRole('button', { name: /Verse study/ });
+  await expect(study).toBeVisible();
+  if ((await study.getAttribute('aria-expanded')) === 'true') await study.click();
+  await study.focus();
+  await page.keyboard.press('Enter');
+  await expect(study).toHaveAttribute('aria-expanded', 'true');
+  await expect(card.getByRole('region', { name: /Verse study/ })).toBeVisible();
 
-  const targetHeight = await lessonTab.evaluate((el) => el.getBoundingClientRect().height);
+  const targetHeight = await study.evaluate((el) => el.getBoundingClientRect().height);
   expect(targetHeight).toBeGreaterThanOrEqual(44);
 });
 
 test('reader: approved related teachings stay collapsed and show their editorial reasons on request', async ({ page }) => {
   await page.goto('/scripture/bhagavadgita/chapter/2/');
 
-  const card = page.locator('#verse-47');
+  // Verses past the first few upgrade to full cards as they near the viewport.
+  await page.locator('#verse-47').scrollIntoViewIfNeeded();
+  const card = page.locator('article.verse-card:not(.vt)#verse-47');
+  const study = card.getByRole('button', { name: /Verse study/ });
+  if ((await study.getAttribute('aria-expanded')) !== 'true') await study.click();
   const disclosure = card.locator('details').filter({ hasText: /Related teachings/ });
   const summary = disclosure.locator('summary');
   await expect(summary).toBeVisible();
@@ -194,7 +201,7 @@ test('reader: approved related teachings stay collapsed and show their editorial
   await summary.click();
   await expect(disclosure).toHaveAttribute('open', '');
   await expect(disclosure).toContainText('The next verse names the balance that 2.47 asks for.');
-  await expect(disclosure).toContainText('Approved editorial connection · Not scripture');
+  await expect(disclosure).toContainText('Editorial links for study. A link does not claim that two passages teach exactly the same thing.');
   expect(await disclosure.locator('li').count()).toBeLessThanOrEqual(3);
 
   await expect(page.locator('#verse-1 details').filter({ hasText: /Related teachings/ })).toHaveCount(0);

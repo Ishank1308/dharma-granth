@@ -37,14 +37,14 @@ export default function NotFound() {
             मुख्य पृष्ठ · Home
           </a>
           <a
-            href="/scriptures"
+            href="/scriptures/"
             className="inline-flex items-center gap-2 bg-dharma-card border border-dharma-border text-dharma-text px-5 py-3 rounded-full font-semibold hover:bg-dharma-bg transition"
           >
             <Search className="w-4 h-4" />
             ग्रंथालय · Browse the Library
           </a>
           <a
-            href="/scripture/bhagavadgita"
+            href="/scripture/bhagavadgita/"
             className="inline-flex items-center gap-2 bg-dharma-card border border-dharma-border text-dharma-text px-5 py-3 rounded-full font-semibold hover:bg-dharma-bg transition"
           >
             <BookOpen className="w-4 h-4" />
