@@ -13,11 +13,11 @@
  ],
  "counts": {
   "verses": 2272,
-  "kept": 102,
-  "keptInRanges": 198,
-  "ranges": 95,
-  "queued": 370,
-  "dropped": 1602
+  "kept": 101,
+  "keptInRanges": 194,
+  "ranges": 93,
+  "queued": 374,
+  "dropped": 1603
  },
  "verses": {
   "8:2.12": {
@@ -558,13 +558,6 @@
    "sanskritScore": 1,
    "ownStems": 4,
    "neighbourStems": 2
-  },
-  "8:37.22": {
-   "page": null,
-   "ocrLine": 35848,
-   "sanskritScore": 0.904,
-   "ownStems": 4,
-   "neighbourStems": 1
   },
   "8:37.35": {
    "page": null,
@@ -1371,16 +1364,6 @@
    "ownStems": 7,
    "neighbourStems": 1
   },
-  "8:37.11-12": {
-   "verses": [
-    "37.11",
-    "37.12"
-   ],
-   "ocrLine": 35815,
-   "minSanskritScore": 1,
-   "ownStems": 9,
-   "neighbourStems": 0
-  },
   "8:37.16-17": {
    "verses": [
     "37.16",
@@ -1643,16 +1626,6 @@
    "minSanskritScore": 0.746,
    "ownStems": 3,
    "neighbourStems": 0
-  },
-  "8:42.16-17": {
-   "verses": [
-    "42.16",
-    "42.17"
-   ],
-   "ocrLine": 38233,
-   "minSanskritScore": 0.915,
-   "ownStems": 7,
-   "neighbourStems": 2
   },
   "8:43.32-33": {
    "verses": [
