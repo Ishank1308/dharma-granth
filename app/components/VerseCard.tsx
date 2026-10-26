@@ -47,6 +47,8 @@ import type { ReadingDepth } from '@/lib/reading-depth';
 import { ActionMenu } from '@/app/components/primitives/ActionMenu';
 import { Collapsible } from '@/app/components/primitives/Collapsible';
 import { VerseStudyDisclosure } from '@/app/components/reader/VerseStudyDisclosure';
+import { MeaningPendingNote } from '@/app/components/MeaningPending';
+import type { NearbyMeaning } from '@/lib/verse-has-meaning';
 import dynamic from 'next/dynamic';
 import { useEverTrue } from '@/lib/use-ever-true';
 
@@ -180,6 +182,8 @@ interface Props {
   onOpenSvadhyaya?: (tab: 'concept' | 'parallel' | 'manana', data?: unknown) => void;
   /** Whether this verse is active during recitation or jump */
   isActive?: boolean;
+  /** For a verse without a meaning: the nearest verses in this chapter that have one. */
+  meaningNearby?: NearbyMeaning;
 }
 
 type HighlightColor = VerseHighlight['color'];
@@ -261,6 +265,7 @@ export function VerseCard({
   insight,
   onOpenSvadhyaya,
   isActive,
+  meaningNearby,
 }: Props) {
   const reduce = useReducedMotion();
 
@@ -1262,8 +1267,12 @@ export function VerseCard({
             )}
 
             {!hasMeaning && (
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-dashed border-dharma-border bg-dharma-bg/60 p-4">
-                <p className="text-sm text-dharma-muted">इस श्लोक का अर्थ अभी जोड़ा जाना बाकी है।</p>
+              <div className="mt-5 flex flex-wrap items-start justify-between gap-3 rounded-2xl border border-dashed border-dharma-border bg-dharma-bg/60 p-4">
+                <MeaningPendingNote
+                  chapterId={chapterId}
+                  transliteration={!layers.translit ? v.transliteration : undefined}
+                  nearby={meaningNearby}
+                />
                 <button
                   type="button"
                   onClick={onContribute}
