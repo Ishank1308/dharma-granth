@@ -108,10 +108,10 @@ export interface VerseReaderProps {
 const WIDTH = { narrow: 'max-w-xl', standard: 'max-w-3xl', wide: 'max-w-5xl' } as const;
 
 const iconBtn =
-  'focus-ring inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-dharma-border bg-dharma-card/80 text-dharma-muted transition hover:border-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300';
+  'focus-ring apple-icon-button h-11 w-11 shrink-0';
 
 const actionBtn =
-  'focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-2 whitespace-nowrap rounded-xl border border-dharma-border bg-dharma-card px-3.5 text-sm font-semibold text-dharma-text transition hover:border-saffron-400 hover:text-saffron-800 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:text-saffron-300';
+  'focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-dharma-text/[0.06] px-4 text-[15px] text-dharma-text transition hover:bg-dharma-text/[0.1] disabled:cursor-not-allowed disabled:opacity-50';
 
 export function VerseReader(props: VerseReaderProps) {
   const {
@@ -374,9 +374,9 @@ export function VerseReader(props: VerseReaderProps) {
         rel={dir}
         onClick={() => triggerTactileFeedback('selection', 'click')}
         aria-label={crosses != null ? `${hiLabel}, श्लोक ${crosses}.${target.number}` : `${text} verse, ${target.number}`}
-        className={`focus-ring inline-flex items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card font-semibold text-dharma-text transition hover:border-saffron-400 ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
+        className={`focus-ring inline-flex items-center gap-2 rounded-full bg-dharma-text/[0.06] text-dharma-text transition hover:bg-dharma-text/[0.1] ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
       >
-        <Icon className="h-4 w-4 shrink-0 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />
+        <Icon className="h-4 w-4 shrink-0 text-dharma-saffron" aria-hidden="true" />
         <span className="leading-tight">
           <span className="block text-[11px] font-medium text-dharma-muted">
             <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null ? ` · ${text}` : ''}
@@ -409,8 +409,8 @@ export function VerseReader(props: VerseReaderProps) {
           .reader-root[data-hide-decor] h3 svg,.reader-root[data-hide-decor] [data-decor]{display:none}
         `}</style>
         {/* 1 · Sticky reader header */}
-        <header className="sticky top-0 z-40 border-b border-dharma-border/80 bg-dharma-bg/95 backdrop-blur">
-          <div className="mx-auto flex h-14 max-w-5xl items-center gap-2 px-3 sm:h-16 sm:gap-3 sm:px-6">
+        <header className="apple-bar sticky top-0 z-40 border-b">
+          <div className="mx-auto flex h-[52px] max-w-5xl items-center gap-1 px-2 sm:gap-2 sm:px-6">
             <Link href={scriptureHref} aria-label={`Back to ${scriptureTitle}`} className={iconBtn}>
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
@@ -436,12 +436,12 @@ export function VerseReader(props: VerseReaderProps) {
               <p className="text-right text-xs font-medium text-dharma-muted">
                 Verse {index + 1} of {total}
               </p>
-              <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-dharma-border/70" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent} aria-label="Progress through this chapter">
-                <div className="h-full rounded-full bg-saffron-600" style={{ width: `${percent}%` }} />
+              <div className="mt-1 h-1 overflow-hidden rounded-full bg-dharma-text/10" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent} aria-label="Progress through this chapter">
+                <div className="h-full rounded-full bg-dharma-saffron" style={{ width: `${percent}%` }} />
               </div>
             </div>
 
-            <button type="button" data-focus-hide onClick={onBookmark} aria-pressed={saved} aria-label={saved ? 'Remove bookmark' : 'Bookmark this verse'} className={`${iconBtn} ${saved ? '!border-saffron-600 !text-saffron-800 dark:!text-saffron-300' : ''}`}>
+            <button type="button" data-focus-hide onClick={onBookmark} aria-pressed={saved} aria-label={saved ? 'Remove bookmark' : 'Bookmark this verse'} className={`${iconBtn} ${saved ? '!text-dharma-saffron' : ''}`}>
               {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
             </button>
             <button
@@ -450,11 +450,11 @@ export function VerseReader(props: VerseReaderProps) {
               aria-pressed={settings.liteMode}
               aria-label={settings.liteMode ? 'Exit reading lite mode' : 'Reading Lite Mode (विशुद्ध पाठ)'}
               title={settings.liteMode ? 'Exit reading lite mode' : 'Reading Lite Mode (विशुद्ध पाठ)'}
-              className={`${iconBtn} ${settings.liteMode ? '!border-saffron-600 !text-saffron-800 dark:!text-saffron-300' : ''}`}
+              className={`${iconBtn} ${settings.liteMode ? '!text-dharma-saffron' : ''}`}
             >
               <span className="font-serif text-[11px] font-bold">LITE</span>
             </button>
-            <button type="button" onClick={() => update('focusMode', !settings.focusMode)} aria-pressed={settings.focusMode} aria-label={settings.focusMode ? 'Exit focus mode' : 'Enter focus mode'} className={`${iconBtn} ${settings.focusMode ? '!border-saffron-600 !text-saffron-800 dark:!text-saffron-300' : ''}`}>
+            <button type="button" onClick={() => update('focusMode', !settings.focusMode)} aria-pressed={settings.focusMode} aria-label={settings.focusMode ? 'Exit focus mode' : 'Enter focus mode'} className={`${iconBtn} ${settings.focusMode ? '!text-dharma-saffron' : ''}`}>
               <Focus className="h-4 w-4" aria-hidden="true" />
             </button>
             {/* The one "Aa" sheet: reading level, perspective, type, theme and layers. */}
@@ -462,8 +462,8 @@ export function VerseReader(props: VerseReaderProps) {
               <span aria-hidden="true" className="font-serif text-sm font-bold">Aa</span>
             </button>
           </div>
-          <div className="h-0.5 bg-dharma-border/50 sm:hidden" aria-hidden="true">
-            <div className="h-full bg-saffron-600" style={{ width: `${percent}%` }} />
+          <div className="h-px bg-transparent sm:hidden" aria-hidden="true">
+            <div className="h-full bg-dharma-saffron" style={{ width: `${percent}%` }} />
           </div>
         </header>
 
@@ -490,8 +490,8 @@ export function VerseReader(props: VerseReaderProps) {
             Chapter {chapterId}: {chapterTitle} <ChevronDown className="inline h-3.5 w-3.5" aria-hidden="true" />
           </button>
           <p className="mt-2 text-xs font-medium text-dharma-muted">Verse {index + 1} of {total}</p>
-          <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-dharma-border/70" aria-hidden="true">
-            <div className="h-full rounded-full bg-saffron-600" style={{ width: `${percent}%` }} />
+          <div className="mt-1 h-1 overflow-hidden rounded-full bg-dharma-text/10" aria-hidden="true">
+            <div className="h-full rounded-full bg-dharma-saffron" style={{ width: `${percent}%` }} />
           </div>
           <nav aria-label="Verses in this chapter" className="mt-4">
             <ul className="grid grid-cols-5 gap-1.5">
@@ -503,7 +503,7 @@ export function VerseReader(props: VerseReaderProps) {
                       href={v.href}
                       aria-current={current ? 'true' : undefined}
                       aria-label={`Verse ${v.number}`}
-                      className={`focus-ring flex h-11 items-center justify-center rounded-lg border text-xs font-semibold transition ${current ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-500'}`}
+                      className={`focus-ring flex h-11 items-center justify-center rounded-lg border text-xs font-semibold transition ${current ? 'border-transparent bg-dharma-saffron text-dharma-bg' : 'border-transparent bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'}`}
                     >
                       {v.number}
                     </Link>
@@ -525,15 +525,17 @@ export function VerseReader(props: VerseReaderProps) {
               aria-haspopup="dialog"
               className="focus-ring inline-flex min-h-[52px] flex-col items-center justify-center rounded-xl px-4 text-center transition hover:bg-dharma-card"
             >
-              <span className="font-serif text-lg font-bold text-dharma-text">{label}</span>
-              <span className="inline-flex items-center gap-1 text-xs text-dharma-muted">
+              <span className="inline-flex items-center gap-1 text-[13px] text-dharma-muted">
                 Verse {index + 1} of {total} · jump to verse <ChevronDown className="h-3 w-3" aria-hidden="true" />
               </span>
             </button>
             {navLink(next, 'next', 'row')}
           </nav>
 
-          <h1 className="sr-only">{label}</h1>
+          <header className="mb-8 text-center">
+            <p className="text-sm font-semibold text-dharma-saffron">{chapterTitle}</p>
+            <h1 className="mt-1 text-[30px] font-semibold leading-tight tracking-[-0.03em] text-dharma-text sm:text-[40px]">{label}</h1>
+          </header>
 
           {settings.focusMode && (
             <div role="region" aria-label="Focus mode controls" className="mb-6 flex flex-wrap items-center gap-2 rounded-2xl border border-dharma-border bg-dharma-card/80 p-2 text-xs">
@@ -614,10 +616,10 @@ export function VerseReader(props: VerseReaderProps) {
             <button
               type="button"
               onClick={onShare}
-              className={`${actionBtn} border-saffron-500/50 bg-saffron-500/10 font-bold text-saffron-900 dark:text-saffron-200`}
+              className={`${actionBtn} !bg-dharma-saffron/15 text-dharma-saffron`}
               aria-label="Generate sacred verse card for WhatsApp / Instagram"
             >
-              <Share2 className="h-4 w-4 text-saffron-600 dark:text-saffron-400" aria-hidden="true" />
+              <Share2 className="h-4 w-4" aria-hidden="true" />
               <span>Share Card</span>
             </button>
             <a
@@ -660,7 +662,7 @@ export function VerseReader(props: VerseReaderProps) {
           )}
 
           {/* A deliberate stopping point: the reader may continue, note, or simply stop. */}
-          <section aria-labelledby="verse-pause-h" data-focus-hide className="mt-8 rounded-2xl border border-dharma-border bg-dharma-card/60 p-4 text-sm">
+          <section aria-labelledby="verse-pause-h" data-focus-hide className="mt-8 rounded-[18px] bg-dharma-card p-5 text-[15px]">
             <h2 id="verse-pause-h" className="text-base font-semibold text-dharma-text">
               <span>Pause here</span> <span lang="hi" className="font-devanagari text-dharma-muted">विराम</span>
             </h2>
@@ -707,9 +709,9 @@ export function VerseReader(props: VerseReaderProps) {
             <button
               type="button"
               onClick={onShare}
-              className={`${actionBtn} border-saffron-500/40 bg-saffron-500/10 text-saffron-900 dark:text-saffron-200`}
+              className={`${actionBtn} !bg-dharma-saffron/15 text-dharma-saffron`}
             >
-              <Share2 className="h-4 w-4 text-saffron-600 dark:text-saffron-400" aria-hidden="true" /> Share Card (9:16)
+              <Share2 className="h-4 w-4" aria-hidden="true" /> Share Card (9:16)
             </button>
             <button type="button" onClick={() => setDialog('settings')} aria-haspopup="dialog" className={actionBtn}>
               <SlidersHorizontal className="h-4 w-4" aria-hidden="true" /> Reader settings
@@ -719,7 +721,7 @@ export function VerseReader(props: VerseReaderProps) {
         </div>
 
         {/* Mobile: sticky bottom verse navigation (the page has matching bottom padding, so it never covers the verse) */}
-        <nav aria-label="Verse navigation" className="fixed inset-x-0 bottom-0 z-40 border-t border-dharma-border/80 bg-dharma-bg/95 backdrop-blur sm:hidden">
+        <nav aria-label="Verse navigation" className="apple-bar fixed inset-x-0 bottom-0 z-40 border-t sm:hidden">
           <div className="flex items-center justify-between gap-2 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2">
             {navLink(prev, 'prev', 'bar')}
             <button
@@ -732,7 +734,7 @@ export function VerseReader(props: VerseReaderProps) {
               className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-xl px-2 text-center transition active:scale-95"
             >
               <span lang="hi" className="font-devanagari text-sm font-bold text-dharma-text">श्लोक {toAsciiDigits(verse.number)}</span>
-              <span className="text-[11px] font-medium text-saffron-700 dark:text-saffron-400">{index + 1} / {total} · माला खोलें</span>
+              <span className="text-[11px] text-dharma-saffron">{index + 1} / {total} · माला खोलें</span>
             </button>
             {navLink(next, 'next', 'bar')}
           </div>
