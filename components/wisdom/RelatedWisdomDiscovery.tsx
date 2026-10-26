@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getRelatedWisdom, type RelatedWisdomInput } from '@/lib/wisdom-discovery/related-wisdom';
 
 const groupHeading = 'text-sm font-semibold text-dharma-text';
-const groupSub = 'ml-2 text-xs font-medium text-dharma-muted';
+const groupSub = 'ml-1 text-xs font-medium text-dharma-muted';
 const linkCls =
   'inline-flex min-h-[44px] items-center text-sm text-saffron-800 underline decoration-saffron-800/30 underline-offset-4 hover:decoration-saffron-800 dark:text-saffron-300';
 
@@ -26,8 +26,8 @@ export function RelatedWisdomDiscovery({ scriptureId, chapterId, verseId, ...exp
   return (
     <section aria-label="संबंधित ज्ञान — खोज" className="mt-8 border-t border-dharma-border pt-6">
       <h2 className="font-serif text-lg font-bold text-dharma-text">
-        <span lang="hi" className="font-devanagari">संबंधित ज्ञान</span>
-        <span className="ml-2 text-sm font-medium text-dharma-muted">Related wisdom</span>
+        <span lang="hi" className="font-devanagari">संबंधित ज्ञान</span>{' '}
+        <span className="ml-1 text-sm font-medium text-dharma-muted">Related wisdom</span>
       </h2>
       <p className="mt-1 text-xs leading-relaxed text-dharma-muted">
         ये दर्ज संबंध हैं। अपने आप सुझाए हुए पाठ नहीं।
@@ -36,7 +36,7 @@ export function RelatedWisdomDiscovery({ scriptureId, chapterId, verseId, ...exp
         {related.concepts.length > 0 && (
           <div>
             <h3 className={groupHeading}>
-              <span lang="hi" className="font-devanagari">संबंधित अवधारणाएँ</span>
+              <span lang="hi" className="font-devanagari">संबंधित अवधारणाएँ</span>{' '}
               <span className={groupSub}>Related concepts</span>
             </h3>
             <ul className="mt-1">
@@ -64,7 +64,7 @@ export function RelatedWisdomDiscovery({ scriptureId, chapterId, verseId, ...exp
         {related.questions.length > 0 && (
           <div>
             <h3 className={groupHeading}>
-              <span lang="hi" className="font-devanagari">संबंधित प्रश्न</span>
+              <span lang="hi" className="font-devanagari">संबंधित प्रश्न</span>{' '}
               <span className={groupSub}>Related questions</span>
             </h3>
             <ul className="mt-1">
@@ -84,7 +84,7 @@ export function RelatedWisdomDiscovery({ scriptureId, chapterId, verseId, ...exp
         {related.teachings.length > 0 && (
           <div>
             <h3 className={groupHeading}>
-              <span lang="hi" className="font-devanagari">संबंधित उपदेश</span>
+              <span lang="hi" className="font-devanagari">संबंधित उपदेश</span>{' '}
               <span className={groupSub}>Related teachings</span>
             </h3>
             <ul className="mt-1 space-y-1">
@@ -107,7 +107,7 @@ export function RelatedWisdomDiscovery({ scriptureId, chapterId, verseId, ...exp
         {related.verses.length > 0 && (
           <div>
             <h3 className={groupHeading}>
-              <span lang="hi" className="font-devanagari">संबंधित श्लोक</span>
+              <span lang="hi" className="font-devanagari">संबंधित श्लोक</span>{' '}
               <span className={groupSub}>Related verses</span>
             </h3>
             <ul className="mt-1">
@@ -129,7 +129,7 @@ export function RelatedWisdomDiscovery({ scriptureId, chapterId, verseId, ...exp
         {related.scriptures.length > 0 && (
           <div>
             <h3 className={groupHeading}>
-              <span lang="hi" className="font-devanagari">संबंधित ग्रंथ</span>
+              <span lang="hi" className="font-devanagari">संबंधित ग्रंथ</span>{' '}
               <span className={groupSub}>Related scriptures</span>
             </h3>
             <ul className="mt-1">
@@ -151,7 +151,7 @@ export function RelatedWisdomDiscovery({ scriptureId, chapterId, verseId, ...exp
         {related.pathways.length > 0 && (
           <div>
             <h3 className={groupHeading}>
-              <span lang="hi" className="font-devanagari">ज्ञान-मार्ग</span>
+              <span lang="hi" className="font-devanagari">ज्ञान-मार्ग</span>{' '}
               <span className={groupSub}>Wisdom paths</span>
             </h3>
             <ul className="mt-1">
@@ -171,7 +171,7 @@ export function RelatedWisdomDiscovery({ scriptureId, chapterId, verseId, ...exp
         {related.sages.length > 0 && (
           <div>
             <h3 className={groupHeading}>
-              <span lang="hi" className="font-devanagari">संबंधित ऋषि-संत</span>
+              <span lang="hi" className="font-devanagari">संबंधित ऋषि-संत</span>{' '}
               <span className={groupSub}>Related sages</span>
             </h3>
             <ul className="mt-1">

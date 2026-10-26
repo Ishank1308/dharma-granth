@@ -600,7 +600,7 @@ export function SiteNav({
                   धर्म ग्रंथ · ज्ञान अमृत
                 </span>
               </div>
-            </Link>
+            </Link>{' '}
 
             {/* Desktop Primary Navigation */}
             <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex">
@@ -731,7 +731,7 @@ export function SiteNav({
                 <kbd className="kbd-hint hidden xl:inline rounded border border-dharma-border bg-dharma-card px-1.5 py-0.5 font-mono text-[10px] text-dharma-muted">
                   {shortcutLabel}
                 </kbd>
-              </button>
+              </button>{' '}
 
               {/* Desktop Language Toggle */}
               <LanguageToggle className="hidden lg:inline-flex" />
@@ -747,7 +747,7 @@ export function SiteNav({
                 <SoundscapeNavButton className="h-9 w-9" />
               </div>
 
-              {/* Desktop CTA */}
+              {/* Desktop CTA */}{' '}
               <Link
                 href="/scripture/bhagavadgita"
                 className="hidden min-[1800px]:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-4 py-2 text-sm font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-saffron-500/30"

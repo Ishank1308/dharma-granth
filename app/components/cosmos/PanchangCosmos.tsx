@@ -123,7 +123,7 @@ export function PanchangCosmos() {
                   {l.value ? (
                     <>
                       <span lang="hi" className="font-devanagari">{l.value}</span>
-                      {l.sub && <span className="ml-2 text-sm text-[#b9b2d6]">{l.sub}</span>}
+                      {l.sub && <> <span className="ml-1 text-sm text-[#b9b2d6]">{l.sub}</span></>}
                     </>
                   ) : (
                     <span className="text-sm text-[#7c759c]">…</span>

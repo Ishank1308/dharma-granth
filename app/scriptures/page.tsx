@@ -86,8 +86,8 @@ export default function ScripturesPage() {
               </span>
             </div>
             <h1 className="text-3xl font-serif font-bold text-dharma-text sm:text-5xl tracking-tight">
-              Scripture Library
-              <span lang="hi" className="ml-3 block font-devanagari text-2xl font-semibold leading-relaxed text-dharma-muted sm:inline sm:text-4xl">
+              Scripture Library{' '}
+              <span lang="hi" className="ml-3 block font-devanagari text-2xl font-semibold leading-relaxed text-dharma-muted sm:ml-1 sm:inline sm:text-4xl">
                 ग्रंथालय
               </span>
             </h1>

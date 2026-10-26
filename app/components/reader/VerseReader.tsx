@@ -395,7 +395,7 @@ export function VerseReader(props: VerseReaderProps) {
         <span className="leading-tight">
           <span className="block text-[11px] font-medium text-dharma-muted">
             <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null ? ` · ${text}` : ''}
-          </span>
+          </span>{' '}
           <span lang="hi" className="font-devanagari text-sm">{verseLine}</span>
         </span>
       </Link>
