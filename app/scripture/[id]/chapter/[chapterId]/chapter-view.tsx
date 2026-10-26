@@ -29,7 +29,6 @@ import { ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react';
 import { ShareButton } from '@/app/components/ShareButton';
 import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
 import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction';
-import { Motif } from '@/app/components/vibe/Motif';
 import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
@@ -79,7 +78,7 @@ function partRange(part: ChapterPart): string {
 /** Every part of a split chapter, as compact links (current one marked). */
 function PartsNav({ parts, current, href }: { parts: ChapterPart[]; current: number; href: (p: number) => string }) {
   return (
-    <nav aria-label="अध्याय के भाग" className="mb-6 rounded-2xl border border-dharma-border bg-dharma-card p-4">
+    <nav aria-label="अध्याय के भाग" className="mb-6 rounded-[18px] bg-dharma-card p-4">
       <p lang="hi" className="mb-3 text-sm font-semibold text-dharma-text">
         यह अध्याय बड़ा है — {parts.length} भागों में पढ़ें
       </p>
@@ -92,12 +91,12 @@ function PartsNav({ parts, current, href }: { parts: ChapterPart[]; current: num
               title={`श्लोक ${partRange(p)}`}
               className={`inline-flex items-baseline gap-1.5 rounded-lg border px-2.5 py-1 text-xs transition ${
                 p.part === current
-                  ? 'border-saffron-500 bg-saffron-600 font-semibold text-white'
-                  : 'border-dharma-border text-dharma-text hover:border-saffron-300'
+                  ? 'border-transparent bg-dharma-saffron font-semibold text-dharma-bg'
+                  : 'border-transparent bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
               }`}
             >
               <span className="font-semibold">{p.part}</span>
-              <span className={p.part === current ? 'text-white/80' : 'text-dharma-muted'}>{partRange(p)}</span>
+              <span className={p.part === current ? 'opacity-80' : 'text-dharma-muted'}>{partRange(p)}</span>
             </Link>
           </li>
         ))}
@@ -279,7 +278,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   const shareSummary = (chapter.summary ?? '').replace(/\s+/g, ' ').trim();
   const shareLines = [shareSummary.length > 180 ? `${shareSummary.slice(0, 179).trimEnd()}…` : shareSummary];
   const quietAction =
-    'liquid-pill inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-4 text-xs font-medium text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500';
+    'inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-4 text-[13px] text-dharma-text transition hover:bg-dharma-text/[0.1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dharma-saffron';
 
   const vibe = scriptureVibe(meta.id, meta.category);
 
@@ -322,33 +321,29 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(chapterJsonLd, breadcrumbJsonLd)) }}
       />
-      {/* A book's chapter opening: the title and two quiet actions, nothing else between the reader and
-          the first verse. The summary lives in "About this chapter" below. */}
-      <header className="mx-auto max-w-2xl px-4 pb-6 pt-8 text-center sm:px-6 sm:pb-10 sm:pt-14">
-        {/* The scripture's emblem draws itself in as the chapter opens. */}
-        <Motif id={vibe.motif} className="motif-draw mx-auto mb-2 h-10 w-10 text-[color:var(--dharma-accent)]" />
-        <Link
-          href={`/scripture/${meta.id}`}
-          className="inline-flex min-h-[44px] items-center gap-1.5 text-xs font-medium uppercase tracking-[0.16em] text-dharma-muted transition hover:text-dharma-text"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
-          <span>{meta.title}</span>
-        </Link>
-        <p className="mt-2 text-xs text-dharma-muted">
-          <span lang="hi">अध्याय {chapter.id}</span> <span aria-hidden="true">/</span> {totalChapterCount}
+      {/* A book's chapter opening, as an Apple large title: the chapter, its Sanskrit name and two quiet actions,
+          nothing else between the reader and the first verse. The summary lives in "About this chapter" below. */}
+      <header className="mx-auto max-w-3xl px-4 pb-6 pt-8 sm:px-6 sm:pb-8 sm:pt-12">
+        <p className="text-sm font-semibold text-dharma-saffron">
+          <Link href={`/scripture/${meta.id}`} className="hover:underline">
+            {meta.title}
+          </Link>
+          <span aria-hidden="true"> · </span>
+          <span>Chapter {chapter.id} of {totalChapterCount}</span>
+          <span aria-hidden="true"> · </span>
+          <span lang="hi" className="font-devanagari">अध्याय {chapter.id}</span>
           {part && parts && (
             <>
               {' '}<span aria-hidden="true">·</span>{' '}
-              <span lang="hi">भाग {part.part}/{parts.length} · श्लोक {partRange(part)}</span>
+              <span lang="hi" className="font-devanagari">भाग {part.part}/{parts.length} · श्लोक {partRange(part)}</span>
             </>
           )}
         </p>
-        <h1 className="mt-3 font-serif text-3xl font-bold leading-tight text-dharma-text sm:text-4xl">{chapter.title}</h1>
+        <h1 className="mt-2 text-[34px] font-semibold leading-[1.08] tracking-[-0.03em] text-dharma-text sm:text-5xl">{chapter.title}</h1>
         {chapter.titleSanskrit && (
-          <p lang="sa" className="mt-2 font-devanagari text-lg text-dharma-muted sm:text-xl">{chapter.titleSanskrit}</p>
+          <p lang="sa" className="mt-2 font-devanagari text-xl text-dharma-muted sm:text-2xl">{chapter.titleSanskrit}</p>
         )}
-        <div aria-hidden="true" className="liquid-rule mx-auto mt-6 w-24" />
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+        <div className="mt-6 flex flex-wrap items-center gap-2">
           {chapter.verseCount > 0 ? (
             <ChapterAudioHeroAction
               className={quietAction}
@@ -360,7 +355,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
               totalVerses={chapter.verseCount}
             />
           ) : (
-            <span lang="hi" className="px-3 text-xs text-dharma-muted">श्लोक पाठ अभी प्रकाशित नहीं है</span>
+            <span lang="hi" className="text-[13px] text-dharma-muted">श्लोक पाठ अभी प्रकाशित नहीं है</span>
           )}
           <ShareButton title={`${shareHeading} · Dharma Granth`} text={shareLines[0]} url={shareUrl} className={quietAction}>
             Share
@@ -372,7 +367,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         <div className="relative">
         {(!part || part.part === 1) && hasChapterContext && (
           <details className="group mb-8">
-            <summary className="mx-auto flex min-h-[44px] w-fit cursor-pointer list-none items-center gap-1.5 rounded-full px-3 text-xs font-medium text-dharma-muted transition hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 [&::-webkit-details-marker]:hidden">
+            <summary className="flex min-h-[44px] w-fit cursor-pointer list-none items-center gap-1.5 rounded-full text-[15px] text-dharma-saffron transition hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 [&::-webkit-details-marker]:hidden">
               <span>About this chapter <span lang="hi" className="font-devanagari">· अध्याय परिचय</span></span>
               <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" aria-hidden="true" />
             </summary>

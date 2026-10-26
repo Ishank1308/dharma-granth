@@ -2767,13 +2767,13 @@ svg.lucide {
    vertical margin rules scribes drew beside them. */
 [data-material='palm-leaf'] .verse-folio {
     border-radius: 44px / 50%;
-    --pl-rule: color-mix(in srgb, var(--v2) 22%, transparent);
+    --pl-rule: color-mix(in srgb, var(--v2) 12%, transparent);
     --pl-margin: clamp(2.6rem, 8vw, 3.6rem);
     background-image:
         linear-gradient(90deg, transparent calc(var(--pl-margin) - 1px), var(--pl-rule) calc(var(--pl-margin) - 1px), var(--pl-rule) var(--pl-margin), transparent var(--pl-margin)),
         linear-gradient(270deg, transparent calc(var(--pl-margin) - 1px), var(--pl-rule) calc(var(--pl-margin) - 1px), var(--pl-rule) var(--pl-margin), transparent var(--pl-margin)),
-        repeating-linear-gradient(92deg, transparent 0 11px, color-mix(in srgb, #8a6a3c 4%, transparent) 11px 12px),
-        linear-gradient(180deg, color-mix(in srgb, #d6b16e 12%, transparent), color-mix(in srgb, #b98d45 7%, transparent));
+        repeating-linear-gradient(92deg, transparent 0 11px, color-mix(in srgb, #8a6a3c 2%, transparent) 11px 12px),
+        linear-gradient(180deg, color-mix(in srgb, #d6b16e 5%, transparent), color-mix(in srgb, #b98d45 3%, transparent));
     padding-inline: calc(var(--pl-margin) + clamp(0.75rem, 3vw, 1.5rem));
 }
 [data-material='palm-leaf'] .verse-folio::before,
@@ -2891,4 +2891,28 @@ svg.lucide {
 }
 @media print {
     .apple-bar { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* Reader surfaces in the Apple idiom (unlayered, to sit over the material rules above).
+   The verse in focus is a plain card rather than tinted glass, and the shloka is plain text
+   on every scripture except those written on palm leaf, which keep a faint leaf. */
+[data-chapter-reading] .liquid-glass.spatial-focused,
+[data-material] .liquid-glass.spatial-focused {
+    background-image: none;
+    background-color: var(--dharma-card);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: transparent;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+[data-material]:not([data-material='palm-leaf']) .verse-folio {
+    background-image: none;
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    animation: none;
+}
+[data-material='palm-leaf'] .verse-folio {
+    background-color: transparent;
+    border-color: color-mix(in srgb, var(--v2) 14%, transparent);
 }
