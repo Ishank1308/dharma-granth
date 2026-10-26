@@ -2084,62 +2084,62 @@
     {
       "id": 1,
       "title": "Mandala 1",
-      "titleSanskrit": "मण्डल 1",
-      "verseCount": 2
+      "titleSanskrit": "प्रथम मण्डल",
+      "verseCount": 2006
     },
     {
       "id": 2,
       "title": "Mandala 2",
-      "titleSanskrit": "मण्डल 2",
-      "verseCount": 6
+      "titleSanskrit": "द्वितीय मण्डल",
+      "verseCount": 429
     },
     {
       "id": 3,
       "title": "Mandala 3",
-      "titleSanskrit": "मण्डल 3",
-      "verseCount": 7
+      "titleSanskrit": "तृतीय मण्डल",
+      "verseCount": 617
     },
     {
       "id": 4,
       "title": "Mandala 4",
-      "titleSanskrit": "मण्डल 4",
-      "verseCount": 6
+      "titleSanskrit": "चतुर्थ मण्डल",
+      "verseCount": 589
     },
     {
       "id": 5,
       "title": "Mandala 5",
-      "titleSanskrit": "मण्डल 5",
-      "verseCount": 6
+      "titleSanskrit": "पञ्चम मण्डल",
+      "verseCount": 727
     },
     {
       "id": 6,
       "title": "Mandala 6",
-      "titleSanskrit": "मण्डल 6",
-      "verseCount": 8
+      "titleSanskrit": "षष्ठ मण्डल",
+      "verseCount": 765
     },
     {
       "id": 7,
       "title": "Mandala 7",
-      "titleSanskrit": "मण्डल 7",
-      "verseCount": 6
+      "titleSanskrit": "सप्तम मण्डल",
+      "verseCount": 841
     },
     {
       "id": 8,
       "title": "Mandala 8",
-      "titleSanskrit": "मण्डल 8",
-      "verseCount": 8
+      "titleSanskrit": "अष्टम मण्डल",
+      "verseCount": 1695
     },
     {
       "id": 9,
       "title": "Mandala 9",
-      "titleSanskrit": "मण्डल 9",
-      "verseCount": 9
+      "titleSanskrit": "नवम मण्डल",
+      "verseCount": 1108
     },
     {
       "id": 10,
       "title": "Mandala 10",
-      "titleSanskrit": "मण्डल 10",
-      "verseCount": 9
+      "titleSanskrit": "दशम मण्डल",
+      "verseCount": 1754
     }
   ],
   "yajurveda": [

@@ -313,12 +313,11 @@ export const scriptureCatalog: ScriptureMeta[] = [
     titleIast: "Ṛgveda Saṁhitā",
     category: "veda",
     description:
-      "The oldest scripture of humanity — 10,552 hymns across 10 Mandalas. Opens with RV 1.1.1 (Agni Suktam — the very first word of the oldest text in human history is 'agni'). Contains: Gayatri Mantra (3.62.10), Nasadiya Sukta (10.129 — the most scientifically honest creation hymn in ancient literature), Purusha Sukta, Ekam Sat (1.164.46 — truth is one, the wise call it by many names). Mandala 2: Rita (cosmic order as both physical and moral law). Mandala 4: Vamadeva's non-dual declaration 'aham manurabhaваṃ' (4.26.1) — the paradigm case in the Aitareya Upanishad. Mandala 5: Ushas (Dawn as renewal archetype; circadian wisdom), Maruts (bala-satya-kratu as the triad of resilience). Mandala 6: Bharadvaja's dhi (illumined vision as the product of inner sacrifice), Purandara (destroyer of inner limitations). Mandala 7: Vasishtha's Varuna hymns (7.86 — guilt without a clear object; the oldest psychology of conscience; release the pāśa). Mandala 8: Kanva's sakha hymns (the divine as friend), RV 8.48 (apāma somam amṛtā abhūma). Mandala 9: Soma Pavamana (purification uncovers, does not add; the drop already contains the abundance of immortality). Mandala 10: Nasadiya Sukta + Purusha Sukta.",
+      "The oldest Veda: 1,028 hymns (sūktas) in 10 Maṇḍalas, in the Śākala recension with its svara marks. It opens with Agni (1.1.1, agnim īḷe purohitam) and holds the Gayatri Mantra (3.62.10), Ekam Sat (1.164.46: truth is one, the wise call it by many names), Vasishtha's Varuna hymn (7.86), the Soma Pavamāna hymns of Maṇḍala 9, the Purusha Sukta (10.90) and the Nasadiya Sukta (10.129). The full Sanskrit text is here, numbered maṇḍala.sūkta.ṛk; hymn 8.67 is not yet included, and translations are available for a few verses so far.",
     totalChapters: 10,
-    totalVerses: 29,
-    isCurated: true,
-    canonicalTotalVerses: 10600,
-    tags: ["Veda","Hymns","Gayatri","NasadiyaSukta","AgniSuktam","Rita","EkamSat","VarunaHymns","SomaMandala","PurushaSukta","NonDual","Ushas","Maruts","Dhi","Sakhi"],
+    totalVerses: 10531,
+    canonicalTotalVerses: 10552,
+    tags: ["Veda","Hymns","Gayatri","NasadiyaSukta","AgniSuktam","Rita","EkamSat","VarunaHymns","SomaMandala","PurushaSukta","Ushas","Maruts"],
     hasData: true,
   },
   {
