@@ -73,17 +73,31 @@ function neighbourLabel(scriptureId: string, chapterId: number): string | undefi
 
 /** A part's verse range as a label, e.g. "1.1–12.45". */
 function partRange(part: ChapterPart): string {
-  return part.first === part.last ? part.first : `${part.first}–${part.last}`;
+  // A section's verse 0 is its opening invocation (॥ श्रीगणेशाय नमः), not a verse: label from verse 1.
+  const first = part.first.replace(/^(\d+)\.0$/, '$1.1');
+  return first === part.last ? first : `${first}–${part.last}`;
 }
 
-/** Every part of a split chapter, as compact links (current one marked). */
+/** Every part of a split chapter, as compact links (current one marked), folded so the first verse stays in view. */
 function PartsNav({ parts, current, href }: { parts: ChapterPart[]; current: number; href: (p: number) => string }) {
+  const here = parts.find((p) => p.part === current);
   return (
-    <nav aria-label="अध्याय के भाग" className="mb-6 rounded-2xl border border-dharma-border bg-dharma-card p-4">
-      <p lang="hi" className="mb-3 text-sm font-semibold text-dharma-text">
-        यह अध्याय बड़ा है — {parts.length} भागों में पढ़ें
-      </p>
-      <ol className="flex flex-wrap gap-2">
+    <nav aria-label="अध्याय के भाग" className="mb-6 rounded-2xl border border-dharma-border bg-dharma-card px-4 py-1">
+      <details className="group">
+        <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold text-dharma-text [&::-webkit-details-marker]:hidden">
+          <span lang="hi">
+            भाग {current} / {parts.length}
+            {here && <span className="ml-2 font-normal text-dharma-muted">श्लोक {partRange(here)}</span>}
+          </span>
+          <span className="inline-flex items-center gap-1 text-xs font-medium text-saffron-800 dark:text-saffron-300">
+            <span lang="hi">भाग चुनें</span>
+            <ChevronDown className="h-4 w-4 transition group-open:rotate-180" aria-hidden="true" />
+          </span>
+        </summary>
+        <p lang="hi" className="mb-3 mt-1 text-sm text-dharma-muted">
+          यह अध्याय बड़ा है — {parts.length} भागों में पढ़ें
+        </p>
+        <ol className="flex flex-wrap gap-2 pb-3">
         {parts.map((p) => (
           <li key={p.part}>
             <Link
@@ -101,7 +115,8 @@ function PartsNav({ parts, current, href }: { parts: ChapterPart[]; current: num
             </Link>
           </li>
         ))}
-      </ol>
+        </ol>
+      </details>
     </nav>
   );
 }

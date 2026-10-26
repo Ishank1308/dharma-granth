@@ -137,7 +137,7 @@ export function PanchangCosmos() {
         </div>
 
         <motion.div
-          className="relative order-first mx-auto aspect-square w-full max-w-[340px] sm:max-w-[460px] lg:order-none lg:max-w-[560px]"
+          className="relative mx-auto aspect-square w-full max-w-[340px] sm:max-w-[460px] lg:max-w-[560px]"
           initial={reduce ? false : { scale: 0.92 }}
           animate={{ scale: 1 }}
           transition={{ ...SPRING, stiffness: 120 }}
