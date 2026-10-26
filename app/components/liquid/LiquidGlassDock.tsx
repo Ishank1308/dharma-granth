@@ -52,7 +52,7 @@ function DockButton({
       onClick={onClick}
       aria-pressed={pressed ?? active}
       title={`${label} · ${sublabel}`}
-      className={`relative flex min-h-[52px] min-w-[52px] flex-col items-center justify-center gap-0.5 rounded-full px-2.5 text-[10px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--dharma-accent)] sm:min-w-[64px] sm:px-3 ${
+      className={`relative flex min-h-[52px] min-w-[52px] flex-col items-center justify-center gap-0.5 rounded-full px-2.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--dharma-accent)] sm:min-w-[64px] sm:px-3 ${
         active || pressed ? 'text-dharma-text' : 'text-dharma-muted hover:text-dharma-text'
       }`}
     >

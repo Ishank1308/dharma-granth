@@ -299,9 +299,9 @@ export function VerseGraphNetwork({ scriptureId, chapterId, verseId, currentVers
                   x={centerX}
                   y={centerY + 10}
                   textAnchor="middle"
-                  className="text-[9px] font-semibold tracking-wider uppercase fill-white/80 select-none pointer-events-none"
+                  className="text-xs font-semibold fill-white/80 select-none pointer-events-none"
                 >
-                  Current Verse
+                  Current verse
                 </text>
               </g>
 
