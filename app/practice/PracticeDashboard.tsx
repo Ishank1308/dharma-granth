@@ -228,7 +228,7 @@ export function PracticeDashboard() {
                             }`}
                           >
                             <span lang="hi" className="font-devanagari">{tool.label}</span>
-                            <span className="ml-1 opacity-80">· {tool.sub}</span>
+                            <span className="ml-1">· {tool.sub}</span>
                           </button>
                         );
                       })}

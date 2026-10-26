@@ -1102,10 +1102,10 @@ export const wisdomTopics: WisdomTopic[] = [
         scriptureName: 'Taittiriya Upanishad',
         scriptureNameHi: 'तैत्तिरीयोपनिषद्',
         chapterNumber: 1,
-        verseNumber: '11.1-2',
-        referenceDisplay: 'Taittiriya Upanishad 1.11.1–2',
+        verseNumber: '11.2',
+        referenceDisplay: 'Taittiriya Upanishad 1.11.2',
         libraryRef: { chapter: 1, verse: 11 },
-        referenceDisplayHi: 'तैत्तिरीयोपनिषद् १.११.१–२',
+        referenceDisplayHi: 'तैत्तिरीयोपनिषद् १.११.२',
         sanskritDevanagari: 'मातृदेवो भव । पितृदेवो भव ।\nआचार्यदेवो भव । अतिथिदेवो भव ।\nयान्यनवद्यानि कर्माणि तानि सेवितव्यानि । नो इतराणि ॥',
         sanskritTransliteration: "mātṛdevo bhava | pitṛdevo bhava |\nācāryadevo bhava | atithidevo bhava |\nyānyanavadyāni karmāṇi tāni sevitavyāni | no itarāṇi ||",
         literalTranslationHi: 'माता को देवता के समान पूज्य मानो। पिता को देवता के समान पूज्य मानो। आचार्य को देवता के समान पूज्य मानो। अतिथि को देवता के समान पूज्य मानो। जो दोषरहित और कल्याणकारी कर्म हैं, उन्हीं का सेवन करो; दूसरों का नहीं।',
@@ -1174,7 +1174,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'bhagavadgita', title: 'Bhagavad Gita', titleHi: 'भगवद्गीता', titleSanskrit: 'श्रीमद्भगवद्गीता', description: 'Sacred mutual nourishment in Chapter 3.', descriptionHi: 'पारस्परिक पोषण और सहयोग का सार्वभौमिक सिद्धांत।', href: '/scripture/bhagavadgita' }
     ],
     sources: [
-      { citation: 'Taittiriya Upanishad 1.11.1–2', textName: 'Taittiriya Upanishad', section: 'Chapter 1, Anuvaka 11' },
+      { citation: 'Taittiriya Upanishad 1.11.2', textName: 'Taittiriya Upanishad', section: 'Chapter 1, Anuvaka 11' },
       { citation: 'Bhagavad Gita 3.11', textName: 'Bhagavad Gita', section: 'Chapter 3, Verse 11' }
     ],
     contextualNote: {
