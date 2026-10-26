@@ -194,9 +194,9 @@ function Layer({
           <span>{k.chip}</span>
         </span>
         <span className="mt-1 block font-serif text-base font-bold text-dharma-text sm:text-lg">
-          <span id={`${id}-title`}>{title}</span>
+          <span id={`${id}-title`}>{title}</span>{' '}
           {titleHi && (
-            <span lang="hi" className="ml-2 font-devanagari text-[0.95rem] font-normal text-dharma-muted">
+            <span lang="hi" className="ml-1 font-devanagari text-[0.95rem] font-normal text-dharma-muted">
               {titleHi}
             </span>
           )}

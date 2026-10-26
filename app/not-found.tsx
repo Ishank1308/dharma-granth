@@ -18,7 +18,7 @@ export default function NotFound() {
           ॐ
         </div>
         <p className="text-xs uppercase tracking-[0.3em] text-saffron-700 font-semibold mb-3">
-          पृष्ठ नहीं मिला · Page Not Found
+          <span lang="hi">पृष्ठ नहीं मिला</span> · Page Not Found
         </p>
         <h1 className="text-4xl md:text-5xl font-serif font-bold text-dharma-text mb-4">
           यह पथ ग्रंथालय में उपलब्ध नहीं है

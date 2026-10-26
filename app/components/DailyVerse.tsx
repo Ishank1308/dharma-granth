@@ -262,7 +262,7 @@ export function DailyVerse() {
               <div className="flex items-center gap-2">
                 <Link
                   href="/daily"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-dharma-muted hover:text-saffron-700 transition"
+                  className="tap-target inline-flex items-center gap-1 text-xs font-semibold text-dharma-muted hover:text-saffron-700 transition"
                 >
                   <span>दैनिक धर्म यात्रा (Daily Hub)</span>
                   <ArrowRight className="w-3 h-3" />

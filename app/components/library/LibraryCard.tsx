@@ -236,7 +236,7 @@ export function LibraryCard({
       </header>
 
       <h3 id={headingId} className="sr-only">
-        <span lang="sa" className="font-devanagari">{item.titleSanskrit}</span>
+        <span lang="sa" className="font-devanagari">{item.titleSanskrit}</span>{' '}
         <span lang="en">{item.title}</span>
         {detailed && item.titleIast && <span className="mt-0.5 block font-serif text-sm italic text-dharma-muted">{item.titleIast}</span>}
       </h3>

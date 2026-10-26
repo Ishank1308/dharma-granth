@@ -87,7 +87,7 @@ export function PanchangCosmos() {
 
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-20 pt-14 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:gap-14 lg:pb-28 lg:pt-20">
         <div>
-          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#b9b2d6]">काल दर्शन · An educational calendar</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#b9b2d6]"><span lang="hi">काल दर्शन</span> · An educational calendar</p>
           <h1 id="panchang-title" className="mt-4 font-serif text-5xl font-medium leading-[1.02] tracking-tight sm:text-6xl">
             <span lang="sa" className="shloka-text block text-[#f3e3b3]">पञ्चाङ्ग</span>{' '}
             <span className="mt-2 block text-3xl text-[#ece8f5] sm:text-4xl">Pañcāṅga</span>
@@ -96,13 +96,16 @@ export function PanchangCosmos() {
             <span lang="sa" className="font-sanskrit">पञ्च</span> five + <span lang="sa" className="font-sanskrit">अङ्ग</span> limbs: the
             five measures by which the old astronomers read a day, from the moon’s place among the stars and its distance from the sun.
           </p>
-          {panchang && (
-            <motion.p initial={reduce ? false : { y: 8 }} animate={{ y: 0 }} transition={SPRING} className="mt-6 text-sm text-[#b9b2d6]">
-              <span lang="hi">{panchang.fullDateHindi}</span> · {panchang.location.name}
-              <span className="mx-2 text-[#6f6890]">·</span>
-              <span>Moon {Math.round(panchang.paksha.illuminationPercent)}% lit, {panchang.paksha.isWaxing ? 'waxing' : 'waning'}</span>
-            </motion.p>
-          )}
+          {/* The date line needs today's date, so it fills in after load; its two lines are kept free meanwhile. */}
+          <div className="mt-6 min-h-[2.5rem] text-sm text-[#b9b2d6]">
+            {panchang && (
+              <motion.p initial={reduce ? false : { y: 8 }} animate={{ y: 0 }} transition={SPRING}>
+                <span lang="hi">{panchang.fullDateHindi}</span> · {panchang.location.name}
+                <span className="mx-2 text-[#6f6890]">·</span>
+                <span>Moon {Math.round(panchang.paksha.illuminationPercent)}% lit, {panchang.paksha.isWaxing ? 'waxing' : 'waning'}</span>
+              </motion.p>
+            )}
+          </div>
 
           <ol className="mt-8 grid gap-2.5 sm:grid-cols-2">
             {limbs.map((l, i) => (
@@ -121,21 +124,20 @@ export function PanchangCosmos() {
                 </p>
                 <p className="mt-1 min-h-[1.75rem] text-lg text-[#fdf6e3]">
                   {l.value ? (
-                    <>
-                      <span lang="hi" className="font-devanagari">{l.value}</span>
-                      {l.sub && <span className="ml-2 text-sm text-[#b9b2d6]">{l.sub}</span>}
-                    </>
+                    <span lang="hi" className="font-devanagari">{l.value}</span>
                   ) : (
                     <span className="text-sm text-[#7c759c]">…</span>
                   )}
                 </p>
+                {/* Its own reserved line, so the card does not grow when the values arrive. */}
+                <p className="min-h-[1.25rem] text-sm text-[#b9b2d6]">{l.value ? l.sub : null}</p>
               </motion.li>
             ))}
           </ol>
         </div>
 
         <motion.div
-          className="relative order-first mx-auto aspect-square w-full max-w-[340px] sm:max-w-[460px] lg:order-none lg:max-w-[560px]"
+          className="relative mx-auto aspect-square w-full max-w-[340px] sm:max-w-[460px] lg:max-w-[560px]"
           initial={reduce ? false : { scale: 0.92 }}
           animate={{ scale: 1 }}
           transition={{ ...SPRING, stiffness: 120 }}

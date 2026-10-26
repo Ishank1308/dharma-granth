@@ -23,6 +23,8 @@ export function ReadingDepthSwitch({ className = '' }: { className?: string }) {
             }`}
           >
             <span lang="hi" className="font-devanagari">{d.hi}</span>
+            {/* A flex gap separates the words on screen; this space separates them for screen readers and copy. */}
+            <span className="sr-only">{'\u00a0'}</span>
             <span className="hidden sm:inline">{d.en}</span>
           </button>
         );

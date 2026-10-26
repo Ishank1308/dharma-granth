@@ -167,9 +167,9 @@ export function PrivacyLockBanner({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-sm font-bold text-dharma-text font-serif">
+                <h2 className="text-sm font-bold text-dharma-text font-serif">
                   स्थानीय साधना डेटा · Practice data stays local
-                </h3>
+                </h2>
                 <button
                   type="button"
                   onClick={() => setShowPrivacyPillars(!showPrivacyPillars)}

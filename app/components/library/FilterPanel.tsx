@@ -55,8 +55,8 @@ function Group({
     <details open={group.defaultOpen ?? true} className="group/filter border-t border-dharma-border/70 py-1 first:border-t-0">
       <summary className="focus-ring flex min-h-[44px] cursor-pointer list-none items-center justify-between rounded-lg px-2 text-sm font-semibold text-dharma-text [&::-webkit-details-marker]:hidden">
         <span>
-          {group.title}
-          <span lang="hi" className="ml-2 font-devanagari text-[0.8rem] font-normal text-dharma-muted">
+          {group.title}{' '}
+          <span lang="hi" className="ml-1 font-devanagari text-[0.8rem] font-normal text-dharma-muted">
             {group.titleHi}
           </span>
           {selected.length > 0 && <span className="ml-2 rounded-full bg-saffron-700 px-1.5 py-0.5 text-[11px] font-bold text-white">{selected.length}</span>}
@@ -74,7 +74,7 @@ function Group({
                 <input id={id} type="checkbox" className={box} checked={checked} disabled={unavailable} onChange={() => onToggle(group.key, o.id)} />
                 <span className="min-w-0 flex-1">
                   {o.label}
-                  {o.hint && <span className="ml-1.5 text-xs text-dharma-muted">{o.hint}</span>}
+                  {o.hint && <> <span className="ml-0.5 text-xs text-dharma-muted">{o.hint}</span></>}
                 </span>
                 <span className="text-xs tabular-nums text-dharma-muted" aria-label={`${o.count} results`}>
                   {o.count}
@@ -120,8 +120,8 @@ export function FilterPanel({
             <label key={t.key} htmlFor={id} className={`${row} ${unavailable ? 'cursor-not-allowed opacity-45' : ''}`}>
               <input id={id} type="checkbox" className={box} checked={checked} disabled={unavailable} onChange={() => onToggleFlag(t.key)} />
               <span className="min-w-0 flex-1">
-                {t.label}
-                <span lang="hi" className="ml-2 font-devanagari text-[0.8rem] text-dharma-muted">
+                {t.label}{' '}
+                <span lang="hi" className="ml-1 font-devanagari text-[0.8rem] text-dharma-muted">
                   {t.labelHi}
                 </span>
               </span>

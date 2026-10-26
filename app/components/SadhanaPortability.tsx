@@ -137,8 +137,8 @@ export function SadhanaPortability() {
           </h2>
         </div>
         <p className="text-xs text-dharma-muted leading-relaxed">
-          यह स्थानांतरण इसी उपकरण पर तैयार होता है और किसी सर्वर पर नहीं भेजा जाता। बैकअप फ़ाइल और सिंक कोड GZIP से संपीड़ित होते हैं, कूटबद्ध नहीं। जिसके पास फ़ाइल या कोड होगा, वह उसमें रखा निजी डेटा पढ़ सकता है; इसे निजी रखें।
-          <span lang="en" className="ml-1">Transfer is prepared on this device and is not sent to a server. Backup files and sync codes are compressed with GZIP, not encrypted. Anyone with the file or code may read its private data; keep it private.</span>
+          यह स्थानांतरण इसी उपकरण पर तैयार होता है और किसी सर्वर पर नहीं भेजा जाता। बैकअप फ़ाइल और सिंक कोड GZIP से संपीड़ित होते हैं, कूटबद्ध नहीं। जिसके पास फ़ाइल या कोड होगा, वह उसमें रखा निजी डेटा पढ़ सकता है; इसे निजी रखें।{' '}
+          <span lang="en">Transfer is prepared on this device and is not sent to a server. Backup files and sync codes are compressed with GZIP, not encrypted. Anyone with the file or code may read its private data; keep it private.</span>
         </p>
       </div>
 

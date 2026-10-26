@@ -15,8 +15,8 @@ export function RelatedWisdom({ knowledge }: { knowledge: VerseKnowledge }) {
   return (
     <section aria-label="संबंधित ज्ञान" className="mt-8 border-t border-dharma-border pt-6">
       <h2 className="font-serif text-lg font-bold text-dharma-text">
-        <span lang="hi" className="font-devanagari">संबंधित ज्ञान</span>
-        <span className="ml-2 text-sm font-medium text-dharma-muted">Related wisdom</span>
+        <span lang="hi" className="font-devanagari">संबंधित ज्ञान</span>{' '}
+        <span className="ml-1 text-sm font-medium text-dharma-muted">Related wisdom</span>
       </h2>
       <p className="mt-1 text-xs leading-relaxed text-dharma-muted">
         ये दर्ज संबंध हैं। अपने आप सुझाए हुए पाठ नहीं।
@@ -25,8 +25,8 @@ export function RelatedWisdom({ knowledge }: { knowledge: VerseKnowledge }) {
         {visible.map((group) => (
           <div key={group.key}>
             <h3 className="text-sm font-semibold text-dharma-text">
-              <span lang="hi" className="font-devanagari">{group.hi}</span>
-              <span className="ml-2 text-xs font-medium text-dharma-muted">{group.en}</span>
+              <span lang="hi" className="font-devanagari">{group.hi}</span>{' '}
+              <span className="ml-1 text-xs font-medium text-dharma-muted">{group.en}</span>
             </h3>
             <ul className="mt-1">
               {knowledge[group.key].map((item) => {

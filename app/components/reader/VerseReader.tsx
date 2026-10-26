@@ -18,16 +18,20 @@ import {
   Focus,
   MessageCircle,
   Maximize2,
+  Menu,
   Minimize2,
   Network,
   PenLine,
+  Search,
   Share2,
   SlidersHorizontal,
   StickyNote,
+  Sun,
   X,
 } from 'lucide-react';
 import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
-import { useTheme } from '@/app/components/ThemeProvider';
+import { THEMES, THEME_NAMES, useTheme } from '@/app/components/ThemeProvider';
+import { openGlobalSearch } from '@/lib/search-events';
 import { toAsciiDigits } from '@/lib/verse-format';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { downloadVerseCardPng } from '@/lib/verse-card-png';
@@ -107,6 +111,16 @@ export interface VerseReaderProps {
 
 const WIDTH = { narrow: 'max-w-xl', standard: 'max-w-3xl', wide: 'max-w-5xl' } as const;
 
+/** The site's primary routes, for the reader's own menu (reader mode hides the site header). */
+const SITE_LINKS = [
+  { href: '/', en: 'Home', hi: 'मुख' },
+  { href: '/scriptures/', en: 'Scripture Library', hi: 'ग्रंथालय' },
+  { href: '/scripture/bhagavadgita/', en: 'Bhagavad Gita', hi: 'गीता' },
+  { href: '/learn/', en: 'Learn', hi: 'अध्ययन' },
+  { href: '/practice/', en: 'Practice', hi: 'साधना' },
+  { href: '/panchang/', en: 'Panchang', hi: 'पंचांग' },
+] as const;
+
 const iconBtn =
   'focus-ring inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-dharma-border bg-dharma-card/80 text-dharma-muted transition hover:border-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300';
 
@@ -115,7 +129,7 @@ const actionBtn =
 
 export function VerseReader(props: VerseReaderProps) {
   const {
-    scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, scriptureHref, chapterHref,
+    scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, chapterHref,
     pageUrl, chapters, verses, index, verse, provenance, prev, next, children, insight, sourceStatus,
   } = props;
 
@@ -139,14 +153,15 @@ export function VerseReader(props: VerseReaderProps) {
     translationSnippet: (verse.hindi ?? verse.translation ?? '').slice(0, 2_000),
   }), [scriptureId, scriptureTitle, chapterId, verse.number, verse.sanskrit, verse.hindi, verse.translation, label]);
 
-  /* Reader mode: the site navand companion dock step aside (see globals.css). */
+  /* Reader mode: the site nav and companion dock step aside (see globals.css). The reader's own
+     header keeps a way out: back to the chapter, the site menu and the theme. */
   useEffect(() => {
     document.documentElement.setAttribute('data-reader', '');
     return () => document.documentElement.removeAttribute('data-reader');
   }, []);
 
   /* ── Dialog state ── */
-  const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'note' | 'embed'>(null);
+  const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'note' | 'embed' | 'site'>(null);
   const [journalOpen, setJournalOpen] = useState(false);
   const close = useCallback(() => setDialog(null), []);
 
@@ -380,7 +395,7 @@ export function VerseReader(props: VerseReaderProps) {
         <span className="leading-tight">
           <span className="block text-[11px] font-medium text-dharma-muted">
             <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null ? ` · ${text}` : ''}
-          </span>
+          </span>{' '}
           <span lang="hi" className="font-devanagari text-sm">{verseLine}</span>
         </span>
       </Link>
@@ -411,7 +426,7 @@ export function VerseReader(props: VerseReaderProps) {
         {/* 1 · Sticky reader header */}
         <header className="sticky top-0 z-40 border-b border-dharma-border/80 bg-dharma-bg/95 backdrop-blur">
           <div className="mx-auto flex h-14 max-w-5xl items-center gap-2 px-3 sm:h-16 sm:gap-3 sm:px-6">
-            <Link href={scriptureHref} aria-label={`Back to ${scriptureTitle}`} className={iconBtn}>
+            <Link href={chapterHref} aria-label={`Back to chapter ${chapterId}`} title={`Chapter ${chapterId}`} className={iconBtn}>
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
 
@@ -450,7 +465,7 @@ export function VerseReader(props: VerseReaderProps) {
               aria-pressed={settings.liteMode}
               aria-label={settings.liteMode ? 'Exit reading lite mode' : 'Reading Lite Mode (विशुद्ध पाठ)'}
               title={settings.liteMode ? 'Exit reading lite mode' : 'Reading Lite Mode (विशुद्ध पाठ)'}
-              className={`${iconBtn} ${settings.liteMode ? '!border-saffron-600 !text-saffron-800 dark:!text-saffron-300' : ''}`}
+              className={`${iconBtn} max-sm:!hidden ${settings.liteMode ? '!border-saffron-600 !text-saffron-800 dark:!text-saffron-300' : ''}`}
             >
               <span className="font-serif text-[11px] font-bold">LITE</span>
             </button>
@@ -460,6 +475,22 @@ export function VerseReader(props: VerseReaderProps) {
             {/* The one "Aa" sheet: reading level, perspective, type, theme and layers. */}
             <button type="button" onClick={() => setDialog('settings')} aria-haspopup="dialog" aria-label="Reader settings · पठन व्यवस्था" title="पठन व्यवस्था · Reader settings" className={iconBtn}>
               <span aria-hidden="true" className="font-serif text-sm font-bold">Aa</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const next = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+                setTheme(next);
+                say(`थीम · Theme: ${THEME_NAMES[next].name}`);
+              }}
+              aria-label={`Theme: ${THEME_NAMES[theme].name}. Change theme`}
+              title={`थीम: ${THEME_NAMES[theme].hi} · ${THEME_NAMES[theme].name}`}
+              className={`${iconBtn} max-sm:!hidden`}
+            >
+              <Sun className="h-4 w-4" aria-hidden="true" />
+            </button>
+            <button type="button" onClick={() => setDialog('site')} aria-haspopup="dialog" aria-label="Site menu · मेनू" title="मेनू · Site menu" className={iconBtn}>
+              <Menu className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
           <div className="h-0.5 bg-dharma-border/50 sm:hidden" aria-hidden="true">
@@ -489,10 +520,7 @@ export function VerseReader(props: VerseReaderProps) {
           <button type="button" onClick={() => setDialog('chapters')} aria-haspopup="dialog" className="focus-ring mt-0.5 min-h-[44px] w-full rounded-lg text-left text-sm text-dharma-muted hover:text-saffron-800 dark:hover:text-saffron-300">
             Chapter {chapterId}: {chapterTitle} <ChevronDown className="inline h-3.5 w-3.5" aria-hidden="true" />
           </button>
-          <p className="mt-2 text-xs font-medium text-dharma-muted">Verse {index + 1} of {total}</p>
-          <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-dharma-border/70" aria-hidden="true">
-            <div className="h-full rounded-full bg-saffron-600" style={{ width: `${percent}%` }} />
-          </div>
+          {/* Progress is shown once, in the sticky header; this grid marks the current verse. */}
           <nav aria-label="Verses in this chapter" className="mt-4">
             <ul className="grid grid-cols-5 gap-1.5">
               {verses.map((v) => {
@@ -527,7 +555,7 @@ export function VerseReader(props: VerseReaderProps) {
             >
               <span className="font-serif text-lg font-bold text-dharma-text">{label}</span>
               <span className="inline-flex items-center gap-1 text-xs text-dharma-muted">
-                Verse {index + 1} of {total} · jump to verse <ChevronDown className="h-3 w-3" aria-hidden="true" />
+                Jump to verse <ChevronDown className="h-3 w-3" aria-hidden="true" />
               </span>
             </button>
             {navLink(next, 'next', 'row')}
@@ -755,6 +783,56 @@ export function VerseReader(props: VerseReaderProps) {
             }
           }}
           reset={reset} reducedMotion={reducedMotion} theme={theme} setTheme={setTheme} />
+
+        <ReaderDialog open={dialog === 'site'} onClose={close} title="Menu" titleHi="मेनू" variant="modal">
+          <nav aria-label="Site pages">
+            <ul className="space-y-1">
+              {SITE_LINKS.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} onClick={close} className="focus-ring flex min-h-[48px] items-center gap-2 rounded-xl px-3 text-sm font-semibold text-dharma-text hover:bg-dharma-bg">
+                    <span>{l.en}</span>{' '}
+                    <span lang="hi" className="font-devanagari font-normal text-dharma-muted">{l.hi}</span>
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    close();
+                    openGlobalSearch();
+                  }}
+                  className="focus-ring flex min-h-[48px] w-full items-center gap-2 rounded-xl px-3 text-left text-sm font-semibold text-dharma-text hover:bg-dharma-bg"
+                >
+                  <Search className="h-4 w-4 text-saffron-700" aria-hidden="true" />
+                  <span>Search</span>{' '}
+                  <span lang="hi" className="font-devanagari font-normal text-dharma-muted">खोजें</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+          <div role="radiogroup" aria-label="Theme" className="mt-5 border-t border-dharma-border pt-4">
+            <p className="mb-2 px-1 text-sm font-semibold text-dharma-muted">
+              Theme <span lang="hi" className="font-devanagari font-normal">थीम</span>
+            </p>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+              {THEMES.map((t) => (
+                <button
+                  key={t}
+                  type="button"
+                  role="radio"
+                  aria-checked={theme === t}
+                  onClick={() => setTheme(t)}
+                  title={THEME_NAMES[t].description}
+                  className={`focus-ring min-h-[48px] rounded-xl border px-3 text-sm font-semibold transition ${theme === t ? 'border-saffron-600 bg-saffron-500/10 text-dharma-text' : 'border-dharma-border text-dharma-muted hover:border-saffron-400'}`}
+                >
+                  <span>{THEME_NAMES[t].name}</span>{' '}
+                  <span lang="hi" className="font-devanagari font-normal">{THEME_NAMES[t].hi}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </ReaderDialog>
 
         <ReaderDialog open={dialog === 'chapters'} onClose={close} title="Chapters" titleHi="अध्याय" variant="modal">
           <ul className="space-y-1">

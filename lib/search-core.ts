@@ -69,7 +69,12 @@ export function coreScriptureHint(query: string): string | null {
 
 function chapterHref(id: string, n: number): string {
   if (id === 'ashtavakra') return `/ashtavakra/${n}/`;
-  return `/scripture/${id}/chapter/${n}`;
+  return `/scripture/${id}/chapter/${n}/`;
+}
+
+/** Display title for a scripture id ("bhagavatapurana" → "Bhagavata Purana"); results never show a raw slug. */
+function scriptureTitle(id: string): string {
+  return core?.scriptures.find(([sid]) => sid === id)?.[1] ?? id;
 }
 
 function row(item: SearchResultItem, p: string): Prepared {
@@ -95,6 +100,7 @@ function ensurePrepared(): Prepared[] {
       actionLabel: 'Open scripture →',
     }, phoneticIndex(`${title} ${sanskrit} ${id}`)));
   }
+  const titles = new Map(core.scriptures.map(([id, title]) => [id, title]));
   for (const [id, n, title, sanskrit] of core.chapters) {
     const label = title || sanskrit || `Chapter ${n}`;
     next.push(row({
@@ -106,7 +112,7 @@ function ensurePrepared(): Prepared[] {
       category: 'chapter',
       categoryLabel: 'अध्याय · Chapter',
       href: chapterHref(id, n),
-      reference: `${id} ${n}`,
+      reference: `${titles.get(id) ?? id} · Ch. ${n}`,
       matchingText: `${label} ${sanskrit}`,
       matchReason: 'Matches a chapter',
       languageLabel: 'Sanskrit & English',
@@ -184,16 +190,17 @@ function ensurePrepared(): Prepared[] {
 
 function ensureShard(): Prepared[] {
   if (shardPrepared || !shard) return shardPrepared ?? [];
+  const bookTitle = scriptureTitle(shard.id);
   shardPrepared = shard.verses.map(([chapter, verse, sanskrit, translation, href]) => row({
     id: `shard-${shard!.id}-${chapter}-${verse}`,
-    title: sanskrit.split('\n')[0]?.slice(0, 80) || `${shard!.id} ${chapter}.${verse}`,
+    title: sanskrit.split('\n')[0]?.slice(0, 80) || `${bookTitle} ${chapter}.${verse}`,
     subtitle: translation.slice(0, 120),
     group: 'verse',
     groupLabel: 'श्लोक · Exact Verse',
     category: 'verse',
     categoryLabel: 'श्लोक · Exact Verse',
     href,
-    reference: `${shard!.id} ${chapter}.${verse}`,
+    reference: `${bookTitle} ${chapter}.${verse}`,
     matchingText: sanskrit,
     translationExcerpt: translation,
     matchedField: 'sanskrit',
@@ -215,8 +222,11 @@ function scorePrepared(p: string, rowP: string): number {
 /** Results from the Tier-1 index, plus the open scripture shard when the query names that book. */
 export function searchCoreIndex(query: string): Array<{ item: SearchResultItem; score: number }> {
   const p = phoneticIndex(query);
+  // "2.47" is chapter 2, verse 47: the folded "247" must not match every book's chapter 247.
+  const chapterDotVerse = /\d\s*[.:]\s*\d/.test(query);
   const out: Array<{ item: SearchResultItem; score: number }> = [];
   for (const entry of ensurePrepared()) {
+    if (chapterDotVerse && entry.item.group === 'chapter') continue;
     const score = scorePrepared(p, entry.p);
     if (score > 0) out.push({ item: entry.item, score });
   }

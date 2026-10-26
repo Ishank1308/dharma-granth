@@ -12,8 +12,7 @@ const STROKE: Record<string, string> = {
 
 /**
  * The yantra as plain SVG: server-rendered, so the hero is complete without
- * JavaScript, and kept as the fallback where WebGL is unavailable or the
- * reader prefers reduced motion. Colours come from --yantra-* (globals.css).
+ * JavaScript. Colours come from --yantra-* (globals.css).
  */
 export function SriYantraSvg({ className = '' }: { className?: string }) {
   return (
