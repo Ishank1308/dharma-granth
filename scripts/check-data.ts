@@ -193,7 +193,7 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   // Gita Press text repeats these two verses (the eight qualities of the learned; "a favour with no fruit") in different adhyayas.
   viduraniti: 2,
   vishnupurana: 3,
-  yajurveda: 40,
+  yajurveda: 43, // the Saṃhitā repeats some mantras across adhyāyas (2.24 = 8.14, 3.14 = 12.52)
 };
 
 /** Scriptures whose text must never repeat a verse anywhere, within a chapter or across. */

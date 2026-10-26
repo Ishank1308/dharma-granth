@@ -327,10 +327,11 @@ export const scriptureCatalog: ScriptureMeta[] = [
     titleIast: "Yajurveda Saṁhitā",
     category: "veda",
     description:
-      "The Veda of rituals and sacrifices, containing prose mantras and verses used during Vedic ceremonies.",
+      "The White (Śukla) Yajur Veda, Vājasaneyi Mādhyandina Saṃhitā, in Sanskrit with svara marks: 40 adhyāyas, 1,975 mantras for the Vedic rites, each under its adhyāya.mantra number. It holds the Mahāmṛtyuñjaya mantra (3.60), the Rudrādhyāya (adhyāya 16), the Puruṣa Sūkta (31.1–16), the Śiva-saṅkalpa Sūkta (34.1–6) and the Īśa Upaniṣad (adhyāya 40). English: R. T. H. Griffith's translation (1899), verse by verse for adhyāyas 5–40. Hindi will be added later.",
     totalChapters: 40,
     totalVerses: 1975,
-    tags: ["Veda","Rituals","Sacrifices","Mantras"],
+    canonicalTotalVerses: 1975,
+    tags: ["Veda","Rituals","Sacrifices","Mantras","MrityunjayaMantra","Rudradhyaya","PurushaSukta","ShivaSankalpa","IshaUpanishad"],
     hasData: true,
   },
   {
@@ -340,12 +341,11 @@ export const scriptureCatalog: ScriptureMeta[] = [
     titleIast: "Sāmaveda Saṁhitā",
     category: "veda",
     description:
-      "The Veda of melodies and chants — the world's oldest musical scripture (1,875 verses). Krishna in the Gita: 'Among the Vedas, I am the Sama Veda.' Purva Archika: Agni invoked through sacred sound; OM as Udgitha (the upward chant); the inner fire that must be fed daily. Uttara Archika: 'Sam gacchadhvam sam vadadhvam' — come together, speak together, let your minds be one (the Vedic vision of collective intelligence). Agnihotra: 'Sa id dive sa id dive' — day by day; the daily renewal of the inner fire. Chandogya Udgitha (the Upanishad rooted in Sama tradition): 'Sarvam khalvidam brahma' — all this is Brahman; kratumayaḥ puruṣaḥ — a person is made of intention; Madhu Vidya — all beings merge into Being as honey; Adityo brahma — the Sun sings the cosmic Sama upward. Foundation of Indian classical music (raga system, saptasvara).",
+      "The Veda of melodies and chants (Kauthuma recension): the Pūrvārcika and Uttarārcika with the Āraṇyaka and Mahānāmnī verses, 1,873 mantras in all, most of them drawn from the Rig Veda and set for singing. Krishna says in the Gita, 'Among the Vedas, I am the Sama Veda.' The Sanskrit is complete. The English and Hindi are machine translations, labelled AI on each verse, except for a few opening verses.",
     totalChapters: 4,
-    totalVerses: 14,
-    isCurated: true,
+    totalVerses: 1873,
     canonicalTotalVerses: 1873,
-    tags: ["Veda","Music","Chants","Udgitha","OM","SamGacchadhvam","ChandogyaUpanishad","MadhuVidya","SarvamBrahma","Kratumaya","AdityoBrahma","SacredSound","Agnihotra"],
+    tags: ["Veda","Music","Chants","Udgitha","SacredSound","Agni","Soma","Indra"],
     hasData: true,
   },
   {

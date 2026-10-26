@@ -1,5 +1,5 @@
 /**
- * Seed authentic, dignified Hindi translations for all 1,873 verses of Sama Veda.
+ * Machine-translate Hindi for the Sama Veda from its English (all 1,873 verses), labelled hindiSource "ai".
  *
  * Uses the English translation and Sanskrit roots to produce Vedic Hindi,
  * refined with traditional Vedic bhashya terminology (अग्नि, इन्द्र, सोम, बर्हि, हव्य, etc.).
@@ -255,6 +255,13 @@ async function main() {
     }
 
     await new Promise((r) => setTimeout(r, 150));
+  }
+
+  // Everything outside CURATED_SV is machine-translated from the English, so the reader labels it as AI.
+  for (const ch of scripture.chapters) {
+    for (const v of ch.verses as Array<{ number: number; hindi?: string; hindiSource?: string }>) {
+      if (v.hindi && !CURATED_SV[`${ch.number}:${v.number}`]) v.hindiSource = "ai";
+    }
   }
 
   // Final cache save
