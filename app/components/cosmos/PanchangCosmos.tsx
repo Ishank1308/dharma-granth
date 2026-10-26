@@ -96,13 +96,16 @@ export function PanchangCosmos() {
             <span lang="sa" className="font-sanskrit">पञ्च</span> five + <span lang="sa" className="font-sanskrit">अङ्ग</span> limbs: the
             five measures by which the old astronomers read a day, from the moon’s place among the stars and its distance from the sun.
           </p>
-          {panchang && (
-            <motion.p initial={reduce ? false : { y: 8 }} animate={{ y: 0 }} transition={SPRING} className="mt-6 text-sm text-[#b9b2d6]">
-              <span lang="hi">{panchang.fullDateHindi}</span> · {panchang.location.name}
-              <span className="mx-2 text-[#6f6890]">·</span>
-              <span>Moon {Math.round(panchang.paksha.illuminationPercent)}% lit, {panchang.paksha.isWaxing ? 'waxing' : 'waning'}</span>
-            </motion.p>
-          )}
+          {/* The date line needs today's date, so it fills in after load; its two lines are kept free meanwhile. */}
+          <div className="mt-6 min-h-[2.5rem] text-sm text-[#b9b2d6]">
+            {panchang && (
+              <motion.p initial={reduce ? false : { y: 8 }} animate={{ y: 0 }} transition={SPRING}>
+                <span lang="hi">{panchang.fullDateHindi}</span> · {panchang.location.name}
+                <span className="mx-2 text-[#6f6890]">·</span>
+                <span>Moon {Math.round(panchang.paksha.illuminationPercent)}% lit, {panchang.paksha.isWaxing ? 'waxing' : 'waning'}</span>
+              </motion.p>
+            )}
+          </div>
 
           <ol className="mt-8 grid gap-2.5 sm:grid-cols-2">
             {limbs.map((l, i) => (
@@ -121,14 +124,13 @@ export function PanchangCosmos() {
                 </p>
                 <p className="mt-1 min-h-[1.75rem] text-lg text-[#fdf6e3]">
                   {l.value ? (
-                    <>
-                      <span lang="hi" className="font-devanagari">{l.value}</span>
-                      {l.sub && <> <span className="ml-1 text-sm text-[#b9b2d6]">{l.sub}</span></>}
-                    </>
+                    <span lang="hi" className="font-devanagari">{l.value}</span>
                   ) : (
                     <span className="text-sm text-[#7c759c]">…</span>
                   )}
                 </p>
+                {/* Its own reserved line, so the card does not grow when the values arrive. */}
+                <p className="min-h-[1.25rem] text-sm text-[#b9b2d6]">{l.value ? l.sub : null}</p>
               </motion.li>
             ))}
           </ol>

@@ -1599,6 +1599,15 @@ html[data-reader] aside[aria-label='Interactive Companion'],
 html[data-reader] [aria-label^='सस्वर पाठ'] {
   display: none !important;
 }
+/* The same from the first paint: data-reader is only set after hydration, and hiding the
+   header then moved the whole verse page up (a layout shift). Its own rule, so a browser
+   without :has() still applies the one above. */
+html:has(.reader-root) nav[aria-label='Primary navigation'],
+html:has(.reader-root) nav[aria-label='Mobile quick navigation'],
+html:has(.reader-root) aside[aria-label='Interactive Companion'],
+html:has(.reader-root) [aria-label^='सस्वर पाठ'] {
+  display: none !important;
+}
 
 /* Full chapter reading keeps the site navigation and in-page controls visible,
    while removing the global floating docks that sit on top of verse text. */
