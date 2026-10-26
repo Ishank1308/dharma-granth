@@ -111,6 +111,9 @@ export default function ScripturePage({ params }: PageProps) {
     (a, b) => a.id - b.id,
   );
   const publishedChapterCount = chapterPreviews.length;
+  const heldChapters = chapterPreviews.filter((chapter) => chapter.verseCount > 0).length;
+  const heldVerses = chapterPreviews.reduce((sum, chapter) => sum + chapter.verseCount, 0);
+  const partialOf = meta.canonicalTotalVerses && meta.canonicalTotalVerses > heldVerses ? meta.canonicalTotalVerses : undefined;
   const languageFacts = getLibraryFacts(meta.id).languages;
   const inLanguage = [
     languageFacts.sa ? 'sa' : null,
@@ -220,6 +223,26 @@ export default function ScripturePage({ params }: PageProps) {
           <FadeUp delay={0.15}>
             <p className="mt-3 max-w-2xl text-base leading-7 text-dharma-muted">{meta.description}</p>
             {meta.author && <p className="mt-2 text-sm font-semibold text-dharma-muted">Attributed to {meta.author}</p>}
+            {meta.selectedVerses && heldVerses > 0 && (
+              <p className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-saffron-300 bg-saffron-50 px-3 py-1 text-xs font-bold text-saffron-800 dark:bg-saffron-500/10 dark:text-saffron-200">
+                <span lang="hi" className="font-devanagari">चयनित श्लोक</span> <span aria-hidden="true">·</span>{' '}
+                <span lang="en">Selected verses, not the full text</span>
+              </p>
+            )}
+            {heldVerses > 0 && (
+              // What the library holds, and, for a partial text, of how much.
+              <p className="mt-2 text-sm text-dharma-muted">
+                <span lang="hi" className="font-devanagari">
+                  पुस्तकालय में {heldChapters.toLocaleString('en-IN')} अध्याय, {heldVerses.toLocaleString('en-IN')} श्लोक
+                  {partialOf ? ` (लगभग ${partialOf.toLocaleString('en-IN')} में से)` : ''}
+                </span>{' '}
+                <span aria-hidden="true">·</span>{' '}
+                <span lang="en">
+                  {heldChapters.toLocaleString('en-IN')} chapters, {heldVerses.toLocaleString('en-IN')}
+                  {partialOf ? ` of about ${partialOf.toLocaleString('en-IN')}` : ''} verses in the library
+                </span>
+              </p>
+            )}
           </FadeUp>
         </div>
         <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} className="mx-auto" />

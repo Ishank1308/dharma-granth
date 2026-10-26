@@ -13,13 +13,14 @@ import { isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-c
 import { findTemplateFields } from "./lib/template-text";
 import { exemptFields, hideUnalignedMeanings } from "./lib/meaning-alignment";
 import { FOOTNOTE_SCRIPTURES, stripPrintedFootnote } from "./lib/printed-footnotes";
+import { fillerChapters } from "./lib/filler-chapters";
 import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
 import { isHindiSourceReviewRequired, isReviewKept, isUnproofreadShown } from "../lib/ocr-hindi-review";
 
 const PILOT = loadPilotOverlay();
 
 /** Bump when shard output logic changes (stubs, templates, echo rules, manifest shape). */
-const SHARD_REV = "4";
+const SHARD_REV = "6";
 
 interface ShardStamp {
   rev: string;
@@ -156,6 +157,18 @@ function main(): void {
         }
       }
       if (stripped) console.log(`  ${id}: published ${stripped} verse(s) without the printed footnotes filed in front of them`);
+    }
+
+    // Filler chapters (scripts/lib/filler-chapters.ts): publish them empty, so the reader shows "text being added".
+    {
+      const filler = fillerChapters(id, book.chapters ?? []);
+      let verses = 0;
+      for (const ch of book.chapters ?? []) {
+        if (!filler.has(Number(ch.number))) continue;
+        verses += ch.verses?.length ?? 0;
+        ch.verses = [];
+      }
+      if (filler.size) console.log(`  ${id}: ${filler.size} filler chapter(s) published without their ${verses} hand-picked verse(s)`);
     }
 
     // Hide text that is the same template on many different verses; the source file is not touched.
