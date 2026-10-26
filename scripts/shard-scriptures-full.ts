@@ -13,7 +13,7 @@ import { isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-c
 import { findTemplateFields } from "./lib/template-text";
 import { exemptFields, hideUnalignedMeanings } from "./lib/meaning-alignment";
 import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
-import { isHindiSourceReviewRequired } from "../lib/ocr-hindi-review";
+import { isHindiSourceReviewRequired, isReviewKept } from "../lib/ocr-hindi-review";
 
 const PILOT = loadPilotOverlay();
 
@@ -167,7 +167,7 @@ function main(): void {
     {
       const pilotVerses = new Set(PILOT.filter((p) => p.scriptureId === id).map((p) => `${p.chapter}:${p.verse}`));
       const hidden = hideUnalignedMeanings(book, {
-        keepVerse: (chapter, verse) => pilotVerses.has(`${chapter}:${verse}`) || isHindiSourceReviewRequired(id, chapter, verse),
+        keepVerse: (chapter, verse, field) => pilotVerses.has(`${chapter}:${verse}`) || isReviewKept(id, chapter, verse, field),
         skipFields: exemptFields(id),
       });
       if (hidden.translation || hidden.hindi || hidden.notes) {

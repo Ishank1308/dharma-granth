@@ -105,9 +105,10 @@ export interface AlignmentOptions {
    * Leaves a verse's Hindi and English alone: verses in the Hindi review registry (a later step withholds their Hindi
    * and keeps their English as it is), or pilot verses whose meaning an editor has already replaced. A kept verse is
    * neither changed nor counted in the repeat test or the alignment measurement, so the shard step and the build
-   * check judge the same text.
+   * check judge the same text. `field` lets a verse keep only one of them (refilled Hindi under review, see
+   * lib/ocr-hindi-review.ts isReviewKept).
    */
-  keepVerse?: (chapter: number | string, verse: string) => boolean;
+  keepVerse?: (chapter: number | string, verse: string, field: 'hindi' | 'translation') => boolean;
   /**
    * Judge only chapters with enough verses to measure, never by their book's verdict. The build check uses this, so
    * it reports what is measurably wrong in the published data rather than re-deciding the small chapters.
@@ -144,7 +145,7 @@ export function hideUnalignedMeanings(
   const chapters = (book.chapters ?? []).map((ch) => ({ ch, verses: (ch.verses ?? []) as Verse[] }));
   /** The field is present, judged by this measure, not exempt for this book, and its verse is not kept. */
   const judged = (chNumber: number | string, v: Verse, field: Field) =>
-    !skipFields.includes(field) && MEASURES[field].applies(v) && !keepVerse(chNumber, String(v.number));
+    !skipFields.includes(field) && MEASURES[field].applies(v) && !keepVerse(chNumber, String(v.number), field);
 
   /** Removes a meaning and the notes generated from it. */
   const drop = (v: Verse, field: Field) => {

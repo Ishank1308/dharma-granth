@@ -1,0 +1,1296 @@
+{
+ "note": "Shiva Purana samhita 7 (Shatarudra) Hindi put back on the verse it belongs to, matched by Sanskrit content. The Hindi is the printed text with mechanical clean-up only (ASCII digits, page artefacts, avagraha and visarga glyphs). Every verse is in data/ocr-hindi-review.json under this queue and is withheld until reviewed against the printed page.",
+ "source": {
+  "edition": "Gita Press Gorakhpur, श्रीशिवमहापुराण (मूल संस्कृत–हिन्दी व्याख्यासहित), खण्ड 2",
+  "text": "archive.org OCR text of that edition (\"शिवपुराण - खंड 2 (संस्कृत - हिंदी) - गीता प्रेस_djvu.txt\"), cached as scripts/cache/shivpurana-hindi-djvu/2.txt by scripts/extract-shivapurana-hindi.py"
+ },
+ "guards": [
+  "Sanskrit 3-gram Jaccard >= 0.6 and >= 0.15 above the next printed verse",
+  "printed verse number and printed adhyaya (from the Hindi colophons) agree with the verse",
+  "the Hindi paragraph covers exactly one verse (ranges are in the .queue.json file)",
+  "no page number, running head or previous-verse text left after mechanical clean-up",
+  "the Hindi shares at least 2 more word stems with its own verse than with any verse 1-3 places away"
+ ],
+ "counts": {
+  "verses": 2269,
+  "kept": 182,
+  "queued": 554,
+  "dropped": 1533
+ },
+ "verses": {
+  "7:1.2": {
+   "page": null,
+   "ocrLine": 1016,
+   "sanskritScore": 0.697,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:1.3": {
+   "page": null,
+   "ocrLine": 1021,
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:1.6": {
+   "page": null,
+   "ocrLine": 1034,
+   "sanskritScore": 1,
+   "ownStems": 6,
+   "neighbourStems": 3
+  },
+  "7:1.12": {
+   "page": null,
+   "ocrLine": 1115,
+   "sanskritScore": 0.907,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:1.13": {
+   "page": null,
+   "ocrLine": 1120,
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:1.14": {
+   "page": null,
+   "ocrLine": 1124,
+   "sanskritScore": 0.746,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "7:1.15": {
+   "page": null,
+   "ocrLine": 1128,
+   "sanskritScore": 0.603,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:1.36": {
+   "page": null,
+   "ocrLine": 1265,
+   "sanskritScore": 0.893,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:1.37": {
+   "page": null,
+   "ocrLine": 1270,
+   "sanskritScore": 0.738,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:1.38": {
+   "page": null,
+   "ocrLine": 1274,
+   "sanskritScore": 0.895,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:2.3": {
+   "page": null,
+   "ocrLine": 1496,
+   "sanskritScore": 0.625,
+   "ownStems": 6,
+   "neighbourStems": 1
+  },
+  "7:2.6": {
+   "page": null,
+   "ocrLine": 1505,
+   "sanskritScore": 0.712,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:2.7": {
+   "page": null,
+   "ocrLine": 1510,
+   "sanskritScore": 0.915,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:2.11": {
+   "page": null,
+   "ocrLine": 1526,
+   "sanskritScore": 0.643,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:2.13": {
+   "page": null,
+   "ocrLine": 1535,
+   "sanskritScore": 0.738,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:3.25": {
+   "page": null,
+   "ocrLine": 1810,
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:3.28": {
+   "page": null,
+   "ocrLine": 1821,
+   "sanskritScore": 0.639,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:4.15": {
+   "page": null,
+   "ocrLine": 2018,
+   "sanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:4.40": {
+   "page": null,
+   "ocrLine": 2134,
+   "sanskritScore": 0.672,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:4.45": {
+   "page": null,
+   "ocrLine": 2190,
+   "sanskritScore": 0.81,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:5.52": {
+   "page": null,
+   "ocrLine": 2592,
+   "sanskritScore": 0.82,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "7:6.17": {
+   "page": null,
+   "ocrLine": 2798,
+   "sanskritScore": 0.776,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:6.60": {
+   "page": null,
+   "ocrLine": 3127,
+   "sanskritScore": 0.794,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:7.25": {
+   "page": null,
+   "ocrLine": 3429,
+   "sanskritScore": 0.786,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:7.41": {
+   "page": null,
+   "ocrLine": 3547,
+   "sanskritScore": 0.873,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:7.46": {
+   "page": null,
+   "ocrLine": 3562,
+   "sanskritScore": 0.683,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:7.47": {
+   "page": null,
+   "ocrLine": 3566,
+   "sanskritScore": 0.907,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:7.48": {
+   "page": null,
+   "ocrLine": 3570,
+   "sanskritScore": 0.7,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:7.57": {
+   "page": null,
+   "ocrLine": 3622,
+   "sanskritScore": 0.822,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "7:7.61": {
+   "page": null,
+   "ocrLine": 3636,
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:8.2": {
+   "page": null,
+   "ocrLine": 3697,
+   "sanskritScore": 0.631,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:8.12": {
+   "page": null,
+   "ocrLine": 3796,
+   "sanskritScore": 0.735,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:8.15": {
+   "page": null,
+   "ocrLine": 3807,
+   "sanskritScore": 0.682,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:8.26": {
+   "page": null,
+   "ocrLine": 3861,
+   "sanskritScore": 0.833,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:8.28": {
+   "page": null,
+   "ocrLine": 3871,
+   "sanskritScore": 0.75,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:8.58": {
+   "page": null,
+   "ocrLine": 4201,
+   "sanskritScore": 0.824,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:9.13": {
+   "page": null,
+   "ocrLine": 4367,
+   "sanskritScore": 0.746,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:9.29": {
+   "page": null,
+   "ocrLine": 4551,
+   "sanskritScore": 0.635,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:9.39": {
+   "page": null,
+   "ocrLine": 4587,
+   "sanskritScore": 0.614,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:9.45": {
+   "page": null,
+   "ocrLine": 4666,
+   "sanskritScore": 0.688,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:9.55": {
+   "page": null,
+   "ocrLine": 4763,
+   "sanskritScore": 0.722,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:9.62": {
+   "page": null,
+   "ocrLine": 4790,
+   "sanskritScore": 0.893,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:9.68": {
+   "page": null,
+   "ocrLine": 4857,
+   "sanskritScore": 0.814,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:9.70": {
+   "page": null,
+   "ocrLine": 4865,
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:10.14": {
+   "page": null,
+   "ocrLine": 5016,
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:10.19": {
+   "page": null,
+   "ocrLine": 5095,
+   "sanskritScore": 0.813,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:10.32": {
+   "page": null,
+   "ocrLine": 5200,
+   "sanskritScore": 0.707,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:10.40": {
+   "page": null,
+   "ocrLine": 5231,
+   "sanskritScore": 0.904,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:11.23": {
+   "page": null,
+   "ocrLine": 5481,
+   "sanskritScore": 0.768,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:11.31": {
+   "page": null,
+   "ocrLine": 5510,
+   "sanskritScore": 0.818,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:11.32": {
+   "page": null,
+   "ocrLine": 5514,
+   "sanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:11.37": {
+   "page": null,
+   "ocrLine": 5593,
+   "sanskritScore": 0.8,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:11.39": {
+   "page": null,
+   "ocrLine": 5603,
+   "sanskritScore": 0.882,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:11.47": {
+   "page": null,
+   "ocrLine": 5687,
+   "sanskritScore": 0.893,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:11.48": {
+   "page": null,
+   "ocrLine": 5691,
+   "sanskritScore": 0.909,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:11.49": {
+   "page": null,
+   "ocrLine": 5697,
+   "sanskritScore": 0.793,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:11.55": {
+   "page": null,
+   "ocrLine": 5720,
+   "sanskritScore": 0.897,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:12.2": {
+   "page": null,
+   "ocrLine": 5828,
+   "sanskritScore": 0.831,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:12.24": {
+   "page": null,
+   "ocrLine": 6015,
+   "sanskritScore": 0.843,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:13.7": {
+   "page": null,
+   "ocrLine": 6302,
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:13.20": {
+   "page": null,
+   "ocrLine": 6407,
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:13.32": {
+   "page": null,
+   "ocrLine": 6502,
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:13.45": {
+   "page": null,
+   "ocrLine": 6613,
+   "sanskritScore": 0.677,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:13.48": {
+   "page": null,
+   "ocrLine": 6630,
+   "sanskritScore": 0.889,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:13.49": {
+   "page": null,
+   "ocrLine": 6703,
+   "sanskritScore": 0.616,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:13.57": {
+   "page": null,
+   "ocrLine": 6736,
+   "sanskritScore": 0.931,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:14.35": {
+   "page": null,
+   "ocrLine": 7081,
+   "sanskritScore": 0.6,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:14.37": {
+   "page": null,
+   "ocrLine": 7090,
+   "sanskritScore": 0.879,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:14.38": {
+   "page": null,
+   "ocrLine": 7094,
+   "sanskritScore": 0.726,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:14.41": {
+   "page": null,
+   "ocrLine": 7104,
+   "sanskritScore": 0.932,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:17.12": {
+   "page": null,
+   "ocrLine": 8201,
+   "sanskritScore": 0.797,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:18.13": {
+   "page": null,
+   "ocrLine": 8357,
+   "sanskritScore": 0.778,
+   "ownStems": 7,
+   "neighbourStems": 2
+  },
+  "7:18.21": {
+   "page": null,
+   "ocrLine": 8443,
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:18.30": {
+   "page": null,
+   "ocrLine": 8474,
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:18.33": {
+   "page": null,
+   "ocrLine": 8512,
+   "sanskritScore": 0.706,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:19.5": {
+   "page": null,
+   "ocrLine": 8572,
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:19.26": {
+   "page": null,
+   "ocrLine": 8766,
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:19.38": {
+   "page": null,
+   "ocrLine": 8865,
+   "sanskritScore": 0.761,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:19.39": {
+   "page": null,
+   "ocrLine": 8870,
+   "sanskritScore": 0.696,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:19.48": {
+   "page": null,
+   "ocrLine": 8958,
+   "sanskritScore": 0.929,
+   "ownStems": 6,
+   "neighbourStems": 3
+  },
+  "7:19.63": {
+   "page": null,
+   "ocrLine": 9078,
+   "sanskritScore": 0.757,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:19.68": {
+   "page": null,
+   "ocrLine": 9137,
+   "sanskritScore": 0.898,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:19.70": {
+   "page": null,
+   "ocrLine": 9146,
+   "sanskritScore": 0.891,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:20.9": {
+   "page": null,
+   "ocrLine": 9264,
+   "sanskritScore": 0.839,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:20.32": {
+   "page": null,
+   "ocrLine": 9465,
+   "sanskritScore": 0.889,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:20.35": {
+   "page": null,
+   "ocrLine": 9477,
+   "sanskritScore": 0.846,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:22.9": {
+   "page": null,
+   "ocrLine": 9756,
+   "sanskritScore": 0.807,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:22.26": {
+   "page": null,
+   "ocrLine": 9903,
+   "sanskritScore": 0.78,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:22.27": {
+   "page": null,
+   "ocrLine": 9907,
+   "sanskritScore": 0.93,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:22.28": {
+   "page": null,
+   "ocrLine": 9911,
+   "sanskritScore": 0.603,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:22.35": {
+   "page": null,
+   "ocrLine": 10025,
+   "sanskritScore": 0.815,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:23.20": {
+   "page": null,
+   "ocrLine": 10337,
+   "sanskritScore": 1,
+   "ownStems": 6,
+   "neighbourStems": 1
+  },
+  "7:23.34": {
+   "page": null,
+   "ocrLine": 10427,
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:24.8": {
+   "page": null,
+   "ocrLine": 10555,
+   "sanskritScore": 0.831,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:24.23": {
+   "page": null,
+   "ocrLine": 10675,
+   "sanskritScore": 0.813,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:24.25": {
+   "page": null,
+   "ocrLine": 10684,
+   "sanskritScore": 0.855,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:24.30": {
+   "page": null,
+   "ocrLine": 10766,
+   "sanskritScore": 0.934,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:24.33": {
+   "page": null,
+   "ocrLine": 10778,
+   "sanskritScore": 0.803,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:24.60": {
+   "page": null,
+   "ocrLine": 10983,
+   "sanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:24.62": {
+   "page": null,
+   "ocrLine": 10991,
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:25.10": {
+   "page": null,
+   "ocrLine": 11122,
+   "sanskritScore": 0.906,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:25.24": {
+   "page": null,
+   "ocrLine": 11224,
+   "sanskritScore": 0.857,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:26.12": {
+   "page": null,
+   "ocrLine": 11349,
+   "sanskritScore": 0.912,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "7:26.14": {
+   "page": null,
+   "ocrLine": 11417,
+   "sanskritScore": 0.82,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:26.16": {
+   "page": null,
+   "ocrLine": 11425,
+   "sanskritScore": 0.842,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:26.23": {
+   "page": null,
+   "ocrLine": 11454,
+   "sanskritScore": 0.881,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:26.24": {
+   "page": null,
+   "ocrLine": 11458,
+   "sanskritScore": 0.905,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:26.28": {
+   "page": null,
+   "ocrLine": 11519,
+   "sanskritScore": 0.694,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:26.29": {
+   "page": null,
+   "ocrLine": 11523,
+   "sanskritScore": 0.792,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:26.45": {
+   "page": null,
+   "ocrLine": 11629,
+   "sanskritScore": 0.6,
+   "ownStems": 6,
+   "neighbourStems": 2
+  },
+  "7:26.46": {
+   "page": null,
+   "ocrLine": 11632,
+   "sanskritScore": 0.734,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:26.52": {
+   "page": null,
+   "ocrLine": 11707,
+   "sanskritScore": 0.779,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:26.54": {
+   "page": null,
+   "ocrLine": 11716,
+   "sanskritScore": 0.797,
+   "ownStems": 7,
+   "neighbourStems": 1
+  },
+  "7:26.55": {
+   "page": null,
+   "ocrLine": 11720,
+   "sanskritScore": 0.738,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:27.9": {
+   "page": null,
+   "ocrLine": 11913,
+   "sanskritScore": 0.727,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:27.25": {
+   "page": null,
+   "ocrLine": 12038,
+   "sanskritScore": 0.781,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:27.31": {
+   "page": null,
+   "ocrLine": 12125,
+   "sanskritScore": 0.713,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:27.45": {
+   "page": null,
+   "ocrLine": 12267,
+   "sanskritScore": 0.788,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:27.51": {
+   "page": null,
+   "ocrLine": 12291,
+   "sanskritScore": 0.758,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:27.58": {
+   "page": null,
+   "ocrLine": 12381,
+   "sanskritScore": 0.917,
+   "ownStems": 6,
+   "neighbourStems": 1
+  },
+  "7:27.64": {
+   "page": null,
+   "ocrLine": 12408,
+   "sanskritScore": 0.696,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:27.69": {
+   "page": null,
+   "ocrLine": 12463,
+   "sanskritScore": 0.782,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:27.70": {
+   "page": null,
+   "ocrLine": 12467,
+   "sanskritScore": 0.64,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:28.8": {
+   "page": null,
+   "ocrLine": 12589,
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:28.19": {
+   "page": null,
+   "ocrLine": 12712,
+   "sanskritScore": 0.606,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:28.22": {
+   "page": null,
+   "ocrLine": 12724,
+   "sanskritScore": 0.897,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:28.32": {
+   "page": null,
+   "ocrLine": 12817,
+   "sanskritScore": 0.819,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:28.38": {
+   "page": null,
+   "ocrLine": 12837,
+   "sanskritScore": 0.663,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:29.3": {
+   "page": null,
+   "ocrLine": 12934,
+   "sanskritScore": 0.852,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:29.15": {
+   "page": null,
+   "ocrLine": 12990,
+   "sanskritScore": 0.91,
+   "ownStems": 6,
+   "neighbourStems": 0
+  },
+  "7:29.17": {
+   "page": null,
+   "ocrLine": 12999,
+   "sanskritScore": 0.615,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:29.19": {
+   "page": null,
+   "ocrLine": 13007,
+   "sanskritScore": 0.787,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:29.33": {
+   "page": null,
+   "ocrLine": 13226,
+   "sanskritScore": 0.81,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:29.43": {
+   "page": null,
+   "ocrLine": 13258,
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:29.53": {
+   "page": null,
+   "ocrLine": 13358,
+   "sanskritScore": 0.895,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:30.10": {
+   "page": null,
+   "ocrLine": 13550,
+   "sanskritScore": 0.724,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:30.26": {
+   "page": null,
+   "ocrLine": 13662,
+   "sanskritScore": 0.949,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:30.28": {
+   "page": null,
+   "ocrLine": 13671,
+   "sanskritScore": 0.928,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:30.29": {
+   "page": null,
+   "ocrLine": 13676,
+   "sanskritScore": 0.843,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:31.17": {
+   "page": null,
+   "ocrLine": 13975,
+   "sanskritScore": 0.906,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:31.20": {
+   "page": null,
+   "ocrLine": 13986,
+   "sanskritScore": 0.778,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:31.21": {
+   "page": null,
+   "ocrLine": 13990,
+   "sanskritScore": 0.825,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:31.35": {
+   "page": null,
+   "ocrLine": 14158,
+   "sanskritScore": 0.918,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:31.41": {
+   "page": null,
+   "ocrLine": 14184,
+   "sanskritScore": 0.81,
+   "ownStems": 7,
+   "neighbourStems": 2
+  },
+  "7:31.47": {
+   "page": null,
+   "ocrLine": 14258,
+   "sanskritScore": 0.828,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:31.57": {
+   "page": null,
+   "ocrLine": 14296,
+   "sanskritScore": 0.823,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:31.65": {
+   "page": null,
+   "ocrLine": 14386,
+   "sanskritScore": 0.912,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:31.66": {
+   "page": null,
+   "ocrLine": 14390,
+   "sanskritScore": 0.742,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:31.68": {
+   "page": null,
+   "ocrLine": 14398,
+   "sanskritScore": 0.824,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:37.6": {
+   "page": null,
+   "ocrLine": 16794,
+   "sanskritScore": 0.757,
+   "ownStems": 5,
+   "neighbourStems": 3
+  },
+  "7:37.17": {
+   "page": null,
+   "ocrLine": 16869,
+   "sanskritScore": 0.844,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:37.30": {
+   "page": null,
+   "ocrLine": 17019,
+   "sanskritScore": 0.81,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "7:37.37": {
+   "page": null,
+   "ocrLine": 17052,
+   "sanskritScore": 0.705,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:37.38": {
+   "page": null,
+   "ocrLine": 17056,
+   "sanskritScore": 0.803,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:37.47": {
+   "page": null,
+   "ocrLine": 17090,
+   "sanskritScore": 0.847,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:37.51": {
+   "page": null,
+   "ocrLine": 17218,
+   "sanskritScore": 0.906,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:38.12": {
+   "page": null,
+   "ocrLine": 17454,
+   "sanskritScore": 0.787,
+   "ownStems": 6,
+   "neighbourStems": 3
+  },
+  "7:38.27": {
+   "page": null,
+   "ocrLine": 17611,
+   "sanskritScore": 0.764,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:39.6": {
+   "page": null,
+   "ocrLine": 17949,
+   "sanskritScore": 0.844,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:39.8": {
+   "page": null,
+   "ocrLine": 18014,
+   "sanskritScore": 0.733,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:39.30": {
+   "page": null,
+   "ocrLine": 18107,
+   "sanskritScore": 0.672,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:39.45": {
+   "page": null,
+   "ocrLine": 18237,
+   "sanskritScore": 0.855,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "7:39.49": {
+   "page": null,
+   "ocrLine": 18282,
+   "sanskritScore": 0.891,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "7:40.20": {
+   "page": null,
+   "ocrLine": 18453,
+   "sanskritScore": 0.93,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:40.21": {
+   "page": null,
+   "ocrLine": 18457,
+   "sanskritScore": 0.892,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:40.33": {
+   "page": null,
+   "ocrLine": 18600,
+   "sanskritScore": 0.804,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:41.32": {
+   "page": null,
+   "ocrLine": 19000,
+   "sanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "7:41.34": {
+   "page": null,
+   "ocrLine": 19009,
+   "sanskritScore": 0.823,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "7:41.49": {
+   "page": null,
+   "ocrLine": 19175,
+   "sanskritScore": 0.754,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "7:41.50": {
+   "page": null,
+   "ocrLine": 19180,
+   "sanskritScore": 0.713,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "7:41.63": {
+   "page": null,
+   "ocrLine": 19281,
+   "sanskritScore": 0.8,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:42.9": {
+   "page": null,
+   "ocrLine": 19363,
+   "sanskritScore": 0.797,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "7:42.19": {
+   "page": null,
+   "ocrLine": 19440,
+   "sanskritScore": 0.714,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "7:42.28": {
+   "page": null,
+   "ocrLine": 19540,
+   "sanskritScore": 0.891,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:42.29": {
+   "page": null,
+   "ocrLine": 19544,
+   "sanskritScore": 0.672,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "7:42.31": {
+   "page": null,
+   "ocrLine": 19552,
+   "sanskritScore": 0.839,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:42.32": {
+   "page": null,
+   "ocrLine": 19556,
+   "sanskritScore": 0.867,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "7:42.40": {
+   "page": null,
+   "ocrLine": 19643,
+   "sanskritScore": 0.797,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:42.49": {
+   "page": null,
+   "ocrLine": 19675,
+   "sanskritScore": 0.82,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:42.56": {
+   "page": null,
+   "ocrLine": 19796,
+   "sanskritScore": 0.877,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:42.57": {
+   "page": null,
+   "ocrLine": 19800,
+   "sanskritScore": 0.879,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "7:42.59": {
+   "page": null,
+   "ocrLine": 19808,
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 0
+  }
+ }
+}

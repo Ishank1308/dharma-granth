@@ -12,7 +12,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { canonicalVerseId } from "../lib/canonical-verse-id";
-import { isHindiSourceReviewRequired } from "../lib/ocr-hindi-review";
+import { isReviewKept } from "../lib/ocr-hindi-review";
 import { exemptFields, hideUnalignedMeanings } from "./lib/meaning-alignment";
 import { loadPilotOverlay } from "./pilot/overlay";
 
@@ -30,9 +30,9 @@ for (const id of readdirSync(FULL_DIR).filter((name) => existsSync(join(FULL_DIR
   const chapters = shards.map(
     (f) => (JSON.parse(readFileSync(join(FULL_DIR, id, f), "utf8")) as { chapter: { number: number; verses: unknown[] } }).chapter,
   );
-  const isKept = (chapter: number | string, verse: string) =>
+  const isKept = (chapter: number | string, verse: string, field: "hindi" | "translation") =>
     pilot.has(`${id}:${Number(chapter)}:${Number(canonicalVerseId(Number(chapter), verse))}`) ||
-    isHindiSourceReviewRequired(id, chapter, verse);
+    isReviewKept(id, chapter, verse, field);
   const found = hideUnalignedMeanings({ chapters }, { keepVerse: isKept, measuredOnly: true, skipFields: exemptFields(id) });
   checked++;
   if (found.translation || found.hindi || found.notes) {
