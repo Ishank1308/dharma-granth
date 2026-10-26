@@ -355,10 +355,10 @@ export const scriptureCatalog: ScriptureMeta[] = [
     titleIast: "Atharvaveda Saṁhitā",
     category: "veda",
     description:
-      "The fourth Veda containing hymns, spells, and incantations for healing, protection, and daily life.",
+      "The Atharva Veda Saṃhitā (Śaunaka recension) in Sanskrit with svara marks: 20 kāṇḍas, 5,985 mantras, each under its kāṇḍa.sūkta.mantra number (the Pṛthivī Sūkta is 12.1). Hymns of healing, protection, household life, kingship and reflection, including the Brahmacārī Sūkta (11.5) and the Skambha Sūkta (10.7). Hymns 20.3 and 20.13 are missing from the source. English and Hindi translations are being matched verse by verse and will be added.",
     totalChapters: 20,
-    totalVerses: 7300,
-    tags: ["Veda","Healing","Spells","Daily Life"],
+    totalVerses: 5985,
+    tags: ["Veda","Healing","Protection","Daily Life","PrithviSukta"],
     hasData: true,
   },
   {

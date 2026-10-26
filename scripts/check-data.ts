@@ -161,7 +161,7 @@ const MIN_DUPLICATE_TEXT_LENGTH = 24;
  */
 const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   agnipuran: 2,
-  atharvaveda: 34,
+  atharvaveda: 55, // whole mantras the Saṃhitā repeats across kāṇḍas (2.32.3–5 recur as 5.23.10–12) after the 2026-10 rebuild
   bhagavatapurana: 21,
   brahmandpuran: 5,
   brahmapuran: 4,

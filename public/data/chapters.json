@@ -2414,122 +2414,122 @@
     {
       "id": 1,
       "title": "Kanda 1",
-      "titleSanskrit": "काण्ड 1",
-      "verseCount": 5
+      "titleSanskrit": "प्रथम काण्ड",
+      "verseCount": 153
     },
     {
       "id": 2,
       "title": "Kanda 2",
-      "titleSanskrit": "काण्ड 2",
-      "verseCount": 4
+      "titleSanskrit": "द्वितीय काण्ड",
+      "verseCount": 207
     },
     {
       "id": 3,
       "title": "Kanda 3",
-      "titleSanskrit": "काण्ड 3",
-      "verseCount": 7
+      "titleSanskrit": "तृतीय काण्ड",
+      "verseCount": 230
     },
     {
       "id": 4,
       "title": "Kanda 4",
-      "titleSanskrit": "काण्ड 4",
-      "verseCount": 331
+      "titleSanskrit": "चतुर्थ काण्ड",
+      "verseCount": 324
     },
     {
       "id": 5,
       "title": "Kanda 5",
-      "titleSanskrit": "काण्ड 5",
+      "titleSanskrit": "पञ्चम काण्ड",
       "verseCount": 376
     },
     {
       "id": 6,
       "title": "Kanda 6",
-      "titleSanskrit": "काण्ड 6",
-      "verseCount": 453
+      "titleSanskrit": "षष्ठ काण्ड",
+      "verseCount": 454
     },
     {
       "id": 7,
       "title": "Kanda 7",
-      "titleSanskrit": "काण्ड 7",
+      "titleSanskrit": "सप्तम काण्ड",
       "verseCount": 286
     },
     {
       "id": 8,
       "title": "Kanda 8",
-      "titleSanskrit": "काण्ड 8",
-      "verseCount": 292
+      "titleSanskrit": "अष्टम काण्ड",
+      "verseCount": 293
     },
     {
       "id": 9,
       "title": "Kanda 9",
-      "titleSanskrit": "काण्ड 9",
-      "verseCount": 313
+      "titleSanskrit": "नवम काण्ड",
+      "verseCount": 302
     },
     {
       "id": 10,
       "title": "Kanda 10",
-      "titleSanskrit": "काण्ड 10",
+      "titleSanskrit": "दशम काण्ड",
       "verseCount": 350
     },
     {
       "id": 11,
       "title": "Kanda 11",
-      "titleSanskrit": "काण्ड 11",
-      "verseCount": 420
+      "titleSanskrit": "एकादश काण्ड",
+      "verseCount": 313
     },
     {
       "id": 12,
       "title": "Kanda 12",
-      "titleSanskrit": "काण्ड 12",
+      "titleSanskrit": "द्वादश काण्ड",
       "verseCount": 304
     },
     {
       "id": 13,
       "title": "Kanda 13",
-      "titleSanskrit": "काण्ड 13",
+      "titleSanskrit": "त्रयोदश काण्ड",
       "verseCount": 188
     },
     {
       "id": 14,
       "title": "Kanda 14",
-      "titleSanskrit": "काण्ड 14",
+      "titleSanskrit": "चतुर्दश काण्ड",
       "verseCount": 139
     },
     {
       "id": 15,
       "title": "Kanda 15",
-      "titleSanskrit": "काण्ड 15",
+      "titleSanskrit": "पञ्चदश काण्ड",
       "verseCount": 230
     },
     {
       "id": 16,
       "title": "Kanda 16",
-      "titleSanskrit": "काण्ड 16",
-      "verseCount": 175
+      "titleSanskrit": "षोडश काण्ड",
+      "verseCount": 97
     },
     {
       "id": 17,
       "title": "Kanda 17",
-      "titleSanskrit": "काण्ड 17",
+      "titleSanskrit": "सप्तदश काण्ड",
       "verseCount": 30
     },
     {
       "id": 18,
       "title": "Kanda 18",
-      "titleSanskrit": "काण्ड 18",
+      "titleSanskrit": "अष्टादश काण्ड",
       "verseCount": 283
     },
     {
       "id": 19,
       "title": "Kanda 19",
-      "titleSanskrit": "काण्ड 19",
+      "titleSanskrit": "एकोनविंश काण्ड",
       "verseCount": 453
     },
     {
       "id": 20,
       "title": "Kanda 20",
-      "titleSanskrit": "काण्ड 20",
-      "verseCount": 975
+      "titleSanskrit": "विंश काण्ड",
+      "verseCount": 973
     }
   ],
   "ramayana": [
