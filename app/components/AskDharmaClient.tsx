@@ -2,17 +2,19 @@
 
 import { useState, useCallback } from 'react';
 import Link from 'next/link';
-import { BookOpen, Shield, Sparkles } from 'lucide-react';
+import { ArrowRight, BookOpen, Shield, Sparkles } from 'lucide-react';
 import { answerQuestion, COPILOT_EXAMPLES, type CopilotAnswer } from '@/lib/copilot';
 import { askMuseSparkAgent } from '@/lib/muse-chat-agent';
 import { MuseAgentResponseView } from './copilot/MuseAgentResponseView';
+import { matchQuestions, type QuestionMatch, type QuestionBankEntry } from '@/lib/granth-answers-match';
 import { STUDY_HELPER_CAUTION_HI, STUDY_HELPER_MODEL_CREDIT, STUDY_HELPER_NAME, STUDY_HELPER_NAME_HI } from '@/lib/editorial-terminology';
 
 /** Full-page library guide & Meta Muse Spark 1.3 reasoning agent. */
-export function AskDharmaClient() {
+export function AskDharmaClient({ questionBank = [] }: { questionBank?: QuestionBankEntry[] }) {
   const [queryInput, setQueryInput] = useState('');
   const [asked, setAsked] = useState('');
   const [answer, setAnswer] = useState<CopilotAnswer | null>(null);
+  const [matches, setMatches] = useState<QuestionMatch[] | null>(null);
 
   // Muse Spark Agent states
   const [activeTab, setActiveTab] = useState<'library' | 'muse'>('library');
@@ -26,6 +28,7 @@ export function AskDharmaClient() {
     setQueryInput(next);
     setAsked(next);
     setActiveTab('library');
+    setMatches(matchQuestions(next, questionBank));
     setAnswer(answerQuestion(next));
   };
 
@@ -171,6 +174,39 @@ export function AskDharmaClient() {
             </div>
           )}
         </div>
+      )}
+
+      {activeTab === 'library' && matches && (
+        <section className="grid gap-3 rounded-3xl border-2 border-saffron-500/40 bg-dharma-card p-5 sm:p-7" aria-labelledby="granth-matches">
+          <h2 id="granth-matches" className="font-serif text-xl font-bold">
+            <span lang="hi" className="font-devanagari">ग्रन्थ से उत्तर</span>{' '}
+            <span className="text-base font-semibold text-dharma-muted">Answers from the scriptures</span>
+          </h2>
+          {matches.length > 0 ? (
+            <ul className="grid gap-2">
+              {matches.map(({ entry }) => (
+                <li key={entry.slug}>
+                  <Link
+                    href={`/ask/${entry.slug}/`}
+                    className="flex min-h-11 items-center justify-between gap-3 rounded-2xl border border-dharma-border bg-dharma-bg/60 px-4 py-3 hover:border-saffron-500/60"
+                  >
+                    <span className="grid gap-1">
+                      <span lang="hi" className="font-devanagari font-semibold">{entry.questionHi}</span>
+                      <span className="text-sm text-dharma-text-secondary">{entry.questionEn}</span>
+                      <span lang="hi" className="font-devanagari text-sm">{entry.sarHi}</span>
+                    </span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-saffron-700" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-sm text-dharma-text-secondary">
+              <span lang="hi">इस प्रश्न का उत्तर‑पृष्ठ अभी नहीं बना। नीचे की सूची में मिलता‑जुलता प्रश्न देखें।</span>{' '}
+              <span>No answer page for this yet. Look for a close question in the list below.</span>
+            </p>
+          )}
+        </section>
       )}
 
       {answer && (

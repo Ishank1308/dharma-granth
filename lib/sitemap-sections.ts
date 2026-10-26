@@ -15,6 +15,7 @@ import { graphPageIds } from '@/data/knowledge-graph';
 import { learningPaths } from '@/data/learning-paths';
 import { READING_JOURNEYS, isJourneyIndexable } from '@/data/reading-journeys';
 import { festivals } from '@/data/festivals';
+import { GRANTH_ANSWERS } from '@/data/granth-answers';
 import { getChapterSummaryCollection } from '@/data/chapter-summaries';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
@@ -103,6 +104,8 @@ function pagesSection(): MetadataRoute.Sitemap {
   // 2. Individual Entity Pages
   const wisdomDate = lastChanged('data/wisdom-for-life.ts', 'app/wisdom-for-life/[slug]/page.tsx');
   const wisdomRoutes = wisdomTopics.map((w) => entry(`/wisdom-for-life/${w.slug}`, wisdomDate));
+  const askDate = lastChanged('data/granth-answers', 'app/ask/[slug]/page.tsx');
+  const askRoutes = GRANTH_ANSWERS.map((a) => entry(`/ask/${a.slug}`, askDate));
   const pathwayDate = lastChanged('data/wisdom-pathways.ts', 'app/wisdom-pathways/[slug]/page.tsx');
   const pathwayRoutes = wisdomPathways.map((p) => entry(`/wisdom-pathways/${p.slug}`, pathwayDate));
   const hubDate = lastChanged('data/knowledge-hubs.ts', 'data/wisdom-concepts.ts', 'app/knowledge/[slug]/page.tsx');
@@ -138,7 +141,7 @@ function pagesSection(): MetadataRoute.Sitemap {
   const festivalDate = lastChanged('data/festivals.ts', 'app/festivals/[id]/page.tsx');
   const festivalRoutes = festivals.map((f) => entry(`/festivals/${f.id}`, festivalDate));
 
-  return [...staticRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
+  return [...staticRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
 }
 
 /** Scripture landing pages and chapter pages (all seeded + curated chapters), dated by when the scripture's text or commentary last changed. */
