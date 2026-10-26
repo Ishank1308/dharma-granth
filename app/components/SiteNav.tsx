@@ -196,6 +196,7 @@ export function SiteNav({
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [discoverOpen, setDiscoverOpen] = useState(false);
+  const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchMounted, setSearchMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -203,11 +204,13 @@ export function SiteNav({
   const [bookmarkCount, setBookmarkCount] = useState<number>(0);
   const [activeStreak, setActiveStreak] = useState<number>(0);
 
-  const { theme, setTheme, cycleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const { preference, setPreference } = useLanguagePreference();
 
   const discoverRef = useRef<HTMLDivElement>(null);
   const discoverButtonRef = useRef<HTMLButtonElement>(null);
+  const themeMenuRef = useRef<HTMLDivElement>(null);
+  const themeButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
   const drawerCloseBtnRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -327,6 +330,28 @@ export function SiteNav({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [discoverOpen]);
 
+  // The theme menu closes on Escape (focus back to its button) or a tap outside it
+  useEffect(() => {
+    if (!themeMenuOpen) return;
+    function handleKey(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setThemeMenuOpen(false);
+      themeButtonRef.current?.focus();
+    }
+    function handlePointerDown(event: MouseEvent | TouchEvent) {
+      if (!themeMenuRef.current?.contains(event.target as Node)) setThemeMenuOpen(false);
+    }
+    document.addEventListener('keydown', handleKey);
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('touchstart', handlePointerDown);
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('touchstart', handlePointerDown);
+    };
+  }, [themeMenuOpen]);
+
   // Outside click to close desktop discovery
   useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
@@ -416,9 +441,11 @@ export function SiteNav({
     menuButtonRef.current?.focus();
   };
 
-  const handleThemeCycle = () => {
+  const handlePickTheme = (next: Theme) => {
     triggerTactileFeedback('medium', 'softTap');
-    cycleTheme();
+    setTheme(next);
+    setThemeMenuOpen(false);
+    themeButtonRef.current?.focus();
   };
 
   const handleOpenSearchModal = () => {
@@ -773,12 +800,16 @@ export function SiteNav({
               {/* 1.5. Mobile Sacred Soundscape Button */}
               <SoundscapeNavButton className="max-[359px]:hidden lg:hidden h-11 w-11 min-h-[44px] min-w-[44px]" />
 
-              {/* 2. Theme Button */}
+              {/* 2. Theme Button: opens a menu of the named themes (cycling through five unnamed states confused readers) */}
+              <div ref={themeMenuRef} className="relative min-[1800px]:hidden">
               <button
+                ref={themeButtonRef}
                 type="button"
-                onClick={handleThemeCycle}
-                className="min-[1800px]:hidden flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-dharma-border/80 bg-dharma-bg/90 text-dharma-text transition active:scale-95 hover:border-saffron-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
-                aria-label={`थीम बदलें (${THEME_NAMES[theme].name})`}
+                onClick={() => setThemeMenuOpen((open) => !open)}
+                aria-haspopup="menu"
+                aria-expanded={themeMenuOpen}
+                className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-dharma-border/80 bg-dharma-bg/90 text-dharma-text transition active:scale-95 hover:border-saffron-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                aria-label={`थीम बदलें · Theme: ${THEME_NAMES[theme].name}`}
                 title={`थीम: ${THEME_NAMES[theme].name} · ${THEME_NAMES[theme].hi}`}
               >
                 {/* initial={false}: server-rendered visible; only later theme changes animate. */}
@@ -795,6 +826,36 @@ export function SiteNav({
                   </motion.span>
                 </AnimatePresence>
               </button>
+              {themeMenuOpen && (
+                <div
+                  role="menu"
+                  aria-label="Theme · थीम"
+                  className="absolute right-0 top-full z-50 mt-2 w-56 rounded-xl border border-dharma-border bg-dharma-card p-1 shadow-xl"
+                >
+                  {THEME_IDS.map((id) => {
+                    const Icon = THEME_ICONS[id] || Sun;
+                    const active = id === theme;
+                    return (
+                      <button
+                        key={id}
+                        type="button"
+                        role="menuitemradio"
+                        aria-checked={active}
+                        onClick={() => handlePickTheme(id)}
+                        title={THEME_NAMES[id].description}
+                        className={`flex min-h-11 w-full items-center gap-2.5 rounded-lg px-3 text-left text-sm font-semibold transition ${
+                          active ? 'bg-saffron-500/15 text-dharma-text' : 'text-dharma-muted hover:bg-saffron-500/10 hover:text-dharma-text'
+                        }`}
+                      >
+                        <Icon className="h-4 w-4 shrink-0 text-saffron-600 dark:text-amber-400" aria-hidden="true" />
+                        <span>{THEME_NAMES[id].name}</span>{' '}
+                        <span lang="hi" className="ml-auto font-devanagari font-normal text-dharma-muted">{THEME_NAMES[id].hi}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+              </div>
 
               {/* 3. Menu Button */}
               <button
