@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getAllScriptures, getScriptureChapters } from '@/data/scriptures';
-import { readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
+import { readSeededChapterNumbers, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { lastChanged, scriptureLastChanged } from '@/lib/content-dates';
 import { verseStaticParams } from '@/lib/verse-pages';
 import { verseMeaningById } from '@/lib/verse-meaning';
@@ -155,7 +155,10 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
 
     const chapterSet = new Set<number>(readSeededChapterNumbers(meta.id));
     for (const ch of getScriptureChapters(meta.id)) chapterSet.add(ch.id);
+    // A seeded chapter published without verses (its text is being added, scripts/lib/filler-chapters.ts) is noindex.
+    const emptySeeded = new Set(readSeededChapterPreviews(meta.id).filter((c) => c.verseCount === 0).map((c) => c.id));
     for (const chId of Array.from(chapterSet).sort((a, b) => a - b)) {
+      if (emptySeeded.has(chId)) continue;
       chapters.push(entry(`/scripture/${meta.id}/chapter/${chId}`, date));
       // Parts 2…N of chapters too large for one page (lib/chapter-parts).
       for (const part of chapterParts(meta.id, chId)?.slice(1) ?? []) {
