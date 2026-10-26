@@ -805,7 +805,7 @@ export function VerseCard({
           <div className="sacred-flow-wrap mt-5" data-reveal="3">
             {/* ── Arth: the literal meaning, always first after the verse ── */}
             {showArth && (
-              <section id={`verse-${v.number}-arth`} aria-label="अर्थ · Meaning">
+              <section id={`verse-${v.number}-arth`} aria-label={`अर्थ · Meaning, ${toAsciiDigits(chapterId)}.${toAsciiDigits(verseLabel)}`}>
               <div className="space-y-4">
                 {showHindi && (
                   <div className={`-mx-2 rounded-xl px-2 py-1 transition-colors duration-200 ${

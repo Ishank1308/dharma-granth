@@ -609,6 +609,8 @@ export function SiteNav({
                 whileHover={reduce ? undefined : { scale: 1.05 }}
                 whileTap={reduce ? undefined : { scale: 0.95 }}
                 aria-hidden="true"
+                // whileTap makes motion add tabIndex=0; the link around it is the focus target.
+                tabIndex={-1}
               >
                 <Image
                   src="/logo-mark.webp"

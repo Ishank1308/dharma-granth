@@ -196,9 +196,9 @@ export default function LearnPage() {
                   <Sparkle className="w-4 h-4" />
                   <span>आरम्भ</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
                   Find Your Starting Point →
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
                   Five short questions, a calm first step
                 </p>
@@ -211,9 +211,9 @@ export default function LearnPage() {
                   <Flame className="w-4 h-4" />
                   <span>स्वाध्याय यात्राएँ</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
                   Guided Journeys →
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
                   Daily lessons with reflection and progress
                 </p>
@@ -226,9 +226,9 @@ export default function LearnPage() {
                   <Compass className="w-4 h-4" />
                   <span>ज्ञान मार्ग</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
                   Wisdom Pathways →
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
                   Begin from fear, anger, grief or purpose
                 </p>
@@ -241,9 +241,9 @@ export default function LearnPage() {
                   <Clock className="w-4 h-4" />
                   <span>स्वाध्याय योजना</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
                   Reading Plans →
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
                   Day-by-day schedules, study orders, guided readings
                 </p>
@@ -256,9 +256,9 @@ export default function LearnPage() {
                   <GraduationCap className="w-4 h-4" />
                   <span>जिज्ञासा समाधान</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
                   Scripture FAQs →
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
                   Canon, ethics, philosophical schools & clarity
                 </p>
@@ -271,9 +271,9 @@ export default function LearnPage() {
                   <Library className="w-4 h-4" />
                   <span>स्रोत पारदर्शिता</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
                   Source Library →
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
                   Critical editions, recensions, and methodology
                 </p>

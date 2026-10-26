@@ -106,12 +106,12 @@ function PartsNav({ parts, current, href }: { parts: ChapterPart[]; current: num
               title={`श्लोक ${partRange(p)}`}
               className={`inline-flex min-h-11 items-center gap-1.5 rounded-lg border px-3 py-1 text-xs transition ${
                 p.part === current
-                  ? 'border-saffron-500 bg-saffron-600 font-semibold text-white'
+                  ? 'border-saffron-700 bg-saffron-700 font-semibold text-white'
                   : 'border-dharma-border text-dharma-text hover:border-saffron-300'
               }`}
             >
               <span className="font-semibold">{p.part}</span>
-              <span className={p.part === current ? 'text-white/80' : 'text-dharma-muted'}>{partRange(p)}</span>
+              <span className={p.part === current ? 'text-white' : 'text-dharma-muted'}>{partRange(p)}</span>
             </Link>
           </li>
         ))}

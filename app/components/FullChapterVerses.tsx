@@ -1265,6 +1265,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           </div>
         </div>
 
+        {/* Gives each verse's h3 a parent heading (h1 chapter → h2 verses → h3 verse). */}
+        <h2 className="sr-only">श्लोक · Verses</h2>
         {isConversationMode && scriptureId === 'bhagavadgita' ? (
           <ConversationModeView
             scriptureId={scriptureId}

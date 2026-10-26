@@ -238,6 +238,9 @@ export function PracticeDashboard() {
               </div>
             </section>
 
+            {/* Parent heading for the tool cards' h3s. */}
+            <h2 className="sr-only">साधन · Practice tools</h2>
+
             {/* Daily verse — full width */}
             {on('verse') && <DailyVerse />}
 

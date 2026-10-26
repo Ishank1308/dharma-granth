@@ -414,6 +414,8 @@ export function ScriptureLibraryClient({
           )}
 
           <div className="mt-6">
+            {/* Parent heading for the cards' h3s (the visible Filters h2 is desktop-only). */}
+            <h2 className="sr-only">ग्रंथ · Texts</h2>
             {results.length === 0 ? (
               activeCount > 0 ? (
                 <FilteredEmpty
