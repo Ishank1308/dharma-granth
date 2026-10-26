@@ -107,7 +107,6 @@
     "seed:manusmriti-hindi": "tsx scripts/seed-manusmriti-hindi.ts",
     "seed:yajurveda-translations": "tsx scripts/seed-yajurveda-translations.ts",
     "seed:yajurveda-hindi": "tsx scripts/seed-yajurveda-hindi.ts",
-    "seed:atharvaveda-translations": "tsx scripts/seed-atharvaveda-translations.ts",
     "seed:atharvaveda-hindi": "tsx scripts/seed-atharvaveda-hindi.ts",
     "seed:samaveda-hindi": "tsx scripts/seed-samaveda-hindi.ts",
     "seed:narasimhapuran-translations": "tsx scripts/seed-narasimhapuran-translations.ts",

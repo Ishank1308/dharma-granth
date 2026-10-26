@@ -1,12 +1,16 @@
-"""Extract Griffith Atharva Veda translations from the Global Grey PDF cache.
+"""Extract Griffith's Atharva Veda (1895-96, public domain), hymn by hymn, from the Global Grey PDF.
 
-Maps each DharmicData mantra (sukta.mantra) to grouped Griffith stanzas
-within the matching hymn. Output: scripts/cache/atharvaveda-translations.json
+The PDF prints each hymn under a HYMN heading but without verse numbers or stanza breaks, so the English
+can be matched to a hymn but not to its verses. scripts/seed-atharvaveda.mjs shows each hymn's English
+once, with its first verse.
 
 Prerequisite: scripts/cache/atharvaveda-griffith.pdf
   (https://www.globalgreyebooks.com/ebooks/ralph-t-h-griffith_hymns-of-the-atharva-veda.pdf)
+  and PyMuPDF (pip install pymupdf).
 
 Run: python scripts/extract-atharvaveda-griffith.py
+Output: data/atharvaveda-griffith.json, {"hymns": {"12.1": "line\\nline…"}}. The first line is
+Griffith's heading for the hymn where he gives one.
 """
 from __future__ import annotations
 
@@ -14,328 +18,105 @@ import json
 import re
 from pathlib import Path
 
-import fitz
+import pymupdf
 
 ROOT = Path(__file__).resolve().parent.parent
 PDF_PATH = ROOT / "scripts/cache/atharvaveda-griffith.pdf"
-JSON_PATH = ROOT / "public/data/scriptures-full/atharvaveda.json"
-OUT_PATH = ROOT / "scripts/cache/atharvaveda-translations.json"
-FIRST_KANDA = 4
+OUT_PATH = ROOT / "data/atharvaveda-griffith.json"
 
-ROMAN: dict[str, int] = {
-    "I": 1,
-    "II": 2,
-    "III": 3,
-    "IV": 4,
-    "V": 5,
-    "VI": 6,
-    "VII": 7,
-    "VIII": 8,
-    "IX": 9,
-    "X": 10,
-    "XI": 11,
-    "XII": 12,
-    "XIII": 13,
-    "XIV": 14,
-    "XV": 15,
-    "XVI": 16,
-    "XVII": 17,
-    "XVIII": 18,
-    "XIX": 19,
-    "XX": 20,
-    "XXI": 21,
-    "XXII": 22,
-    "XXIII": 23,
-    "XXIV": 24,
-    "XXV": 25,
-    "XXVI": 26,
-    "XXVII": 27,
-    "XXVIII": 28,
-    "XXIX": 29,
-    "XXX": 30,
-    "XXXI": 31,
-    "XXXII": 32,
-    "XXXIII": 33,
-    "XXXIV": 34,
-    "XXXV": 35,
-    "XXXVI": 36,
-    "XXXVII": 37,
-    "XXXVIII": 38,
-    "XXXIX": 39,
-    "XL": 40,
-    "XLI": 41,
-    "XLII": 42,
-    "XLIII": 43,
-    "XLIV": 44,
-    "XLV": 45,
-    "XLVI": 46,
-    "XLVII": 47,
-    "XLVIII": 48,
-    "XLIX": 49,
-    "L": 50,
-    "LI": 51,
-    "LII": 52,
-    "LIII": 53,
-    "LIV": 54,
-    "LV": 55,
-    "LVI": 56,
-    "LVII": 57,
-    "LVIII": 58,
-    "LIX": 59,
-    "LX": 60,
-    "LXI": 61,
-    "LXII": 62,
-    "LXIII": 63,
-    "LXIV": 64,
-    "LXV": 65,
-    "LXVI": 66,
-    "LXVII": 67,
-    "LXVIII": 68,
-    "LXIX": 69,
-    "LXX": 70,
-    "LXXI": 71,
-    "LXXII": 72,
-    "LXXIII": 73,
-    "LXXIV": 74,
-    "LXXV": 75,
-    "LXXVI": 76,
-    "LXXVII": 77,
-    "LXXVIII": 78,
-    "LXXIX": 79,
-    "LXXX": 80,
-    "LXXXI": 81,
-    "LXXXII": 82,
-    "LXXXIII": 83,
-    "LXXXIV": 84,
-    "LXXXV": 85,
-    "LXXXVI": 86,
-    "LXXXVII": 87,
-    "LXXXVIII": 88,
-    "LXXXIX": 89,
-    "XC": 90,
-    "XCI": 91,
-    "XCII": 92,
-    "XCIII": 93,
-    "XCIV": 94,
-    "XCV": 95,
-    "XCVI": 96,
-    "XCVII": 97,
-    "XCVIII": 98,
-    "XCIX": 99,
-    "C": 100,
-    "CI": 101,
-    "CII": 102,
-    "CIII": 103,
-    "CIV": 104,
-    "CV": 105,
-    "CVI": 106,
-    "CVII": 107,
-    "CVIII": 108,
-    "CIX": 109,
-    "CX": 110,
-    "CXI": 111,
-    "CXII": 112,
-    "CXIII": 113,
-    "CXIV": 114,
-    "CXV": 115,
-    "CXVI": 116,
-    "CXVII": 117,
-    "CXVIII": 118,
-    "CXIX": 119,
-    "CXX": 120,
-    "CXXI": 121,
-    "CXXII": 122,
-    "CXXIII": 123,
-    "CXXIV": 124,
-    "CXXV": 125,
-    "CXXVI": 126,
-    "CXXVII": 127,
-    "CXXVIII": 128,
-    "CXXIX": 129,
-    "CXXX": 130,
-    "CXXXI": 131,
-    "CXXXII": 132,
-    "CXXXIII": 133,
-    "CXXXIV": 134,
-    "CXXXV": 135,
-    "CXXXVI": 136,
-    "CXXXVII": 137,
-    "CXXXVIII": 138,
-    "CXXXIX": 139,
-    "CXL": 140,
-    "CXLI": 141,
-    "CXLII": 142,
-    "CXLIII": 143,
-    "CXLIV": 144,
-    "CXLV": 145,
-    "CXLVI": 146,
-    "CXLVII": 147,
-    "CXLVIII": 148,
-    "CXLIX": 149,
-    "CL": 150,
-}
-
-TITLE_PREFIXES = {
-    "To the waters, for the prosperity of cattle",
-    "To the waters, for strength and power",
-    "To the waters, for health and wealth",
-}
+# Ends a printed line of verse; a line that does not end so was wrapped by the PDF layout.
+LINE_END = re.compile(r"[.,;:!?—’”)\]]$")
+LINE_START = re.compile(r"[A-Z0-9‘“\"(ĀĪŪṚṢŚ]")
 
 
-def roman(raw: str) -> int:
-    return ROMAN.get(raw.strip().upper(), 0)
+def roman(numeral: str) -> int:
+    values = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100}
+    total = 0
+    for i, ch in enumerate(numeral):
+        value = values[ch]
+        total += -value if i + 1 < len(numeral) and values[numeral[i + 1]] > value else value
+    return total
 
 
-def load_pdf_text() -> str:
-    if not PDF_PATH.exists():
-        raise FileNotFoundError(
-            f"Missing {PDF_PATH}. Download Griffith AV PDF from Global Grey first.",
-        )
-    text = ""
-    with fitz.open(PDF_PATH) as doc:
+def pdf_lines() -> list[tuple[float, float, str]]:
+    """Every text line as (font size, right edge, text)."""
+    lines = []
+    with pymupdf.open(PDF_PATH) as doc:
         for page in doc:
-            text += page.get_text() + "\n"
-    start = re.search(r"Book I\s*\n\s*HYMN I\s*\n", text)
-    if not start:
-        raise RuntimeError("Could not locate Book I / HYMN I in Griffith PDF")
-    return text[start.start() :]
+            for block in page.get_text("dict")["blocks"]:
+                for line in block.get("lines", []):
+                    text = "".join(span["text"] for span in line["spans"]).strip()
+                    if text:
+                        lines.append((line["spans"][0]["size"], line["bbox"][2], text))
+    return lines
 
 
-def split_books(text: str) -> dict[int, str]:
-    markers = [
-        (match.start(), roman(match.group(1)))
-        for match in re.finditer(r"(?:^|\n)Book ([IVXLC]+)\s*\n", text)
-    ]
-    books: dict[int, str] = {}
-    for index, (pos, book_num) in enumerate(markers):
-        end = markers[index + 1][0] if index + 1 < len(markers) else len(text)
-        books[book_num] = text[pos:end]
-    return books
-
-
-def parse_hymn_stanzas(body: str) -> list[str]:
-    lines: list[str] = []
-    for line in body.split("\n"):
-        stripped = line.strip()
-        if not stripped:
+def hymns() -> dict[str, list[tuple[float, str]]]:
+    """Lines of each hymn, keyed "book.hymn". The table of contents before the second "Book I" is skipped."""
+    out: dict[str, list[tuple[float, str]]] = {}
+    book = hymn = None
+    started = False
+    for size, right, text in pdf_lines():
+        if size > 20 and re.fullmatch(r"Book [IVXLC]+", text):
+            book = roman(text.split()[1])
+            started = started or book == 1
+            hymn = None
             continue
-        if re.fullmatch(r"Book [IVXLC]+", stripped):
-            break
-        if stripped.startswith("HYMN "):
+        if not started or size < 10:  # page numbers are set small
             continue
-        lines.append(stripped)
-
-    while lines and (
-        lines[0] in TITLE_PREFIXES
-        or re.match(r"^[A-Z][^.]{0,100}\.$", lines[0])
-        or re.match(r"^\d+$", lines[0])
-    ):
-        lines.pop(0)
-
-    def is_junk(stanza: str) -> bool:
-        s = stanza.strip()
-        if not s or len(s) < 4:
-            return True
-        # Page numbers and OCR debris from PDF footers
-        if re.fullmatch(r"\d{1,4}\.?", s):
-            return True
-        if re.fullmatch(r"[-–—]+", s):
-            return True
-        if re.fullmatch(r"(and|or|the|of|to|in|a|an|me\.?|etc\.?)", s, re.I):
-            return True
-        return False
-
-    stanzas: list[str] = []
-    buffer = ""
-    for line in lines:
-        if line.endswith("-"):
-            buffer += line[:-1]
-            continue
-        chunk = f"{buffer} {line}".strip() if buffer else line
-        buffer = ""
-        if chunk and not chunk.startswith("It appears that hymns") and not is_junk(chunk):
-            stanzas.append(re.sub(r"\s+", " ", chunk))
-    if buffer and not is_junk(buffer):
-        stanzas.append(re.sub(r"\s+", " ", buffer))
-    return stanzas
+        heading = re.fullmatch(r"HYMN ([IVXLC]+)", text)
+        if heading:
+            hymn = f"{book}.{roman(heading.group(1))}"
+            out[hymn] = []
+        elif hymn:
+            out[hymn].append((right, text))
+    return out
 
 
-def extract_hymns(book_text: str) -> list[list[str]]:
-    content = re.sub(r"^Book [IVXLC]+\s*", "", book_text)
-    chunks = re.split(r"HYMN ([IVXLC]+)\s*\n", content)
-    hymns: list[list[str]] = []
-    for index in range(1, len(chunks), 2):
-        hymns.append(parse_hymn_stanzas(chunks[index + 1]))
-    return hymns
+def join(lines: list[str]) -> list[str]:
+    """Undo the PDF's line wrapping: a line continues unless it ends a clause and the next starts one."""
+    out: list[str] = []
+    buf = ""
+    for i, text in enumerate(lines):
+        if re.search(r"\w-$", buf):
+            buf = buf[:-1] + text
+        else:
+            buf = f"{buf} {text}" if buf else text
+        buf = re.sub(r"(\w)- (?=[a-z])", r"\1-", buf)
+        nxt = lines[i + 1] if i + 1 < len(lines) else None
+        if nxt is None or (LINE_END.search(buf) and LINE_START.match(nxt)):
+            out.append(re.sub(r"\s+", " ", buf).strip())
+            buf = ""
+    return out
 
 
-def flatten_hymns(hymns: list[list[str]]) -> list[str]:
-    flat: list[str] = []
-    for hymn in hymns:
-        flat.extend(hymn)
-    return flat
-
-
-def map_book_sequential(hymns: list[list[str]], verse_count: int) -> list[str]:
-    """Map Griffith stanzas to JSON verses in order (robust across recension gaps)."""
-    flat = flatten_hymns(hymns)
-    if not flat:
-        return [""] * verse_count
-
-    mapped: list[str] = []
-    cursor = 0
-    for index in range(verse_count):
-        remaining_verses = verse_count - index
-        remaining_stanzas = len(flat) - cursor
-        if remaining_stanzas <= 0:
-            mapped.append(mapped[-1] if mapped else "")
-            continue
-        if remaining_verses <= 1:
-            mapped.append(" ".join(flat[cursor:]))
-            cursor = len(flat)
-            continue
-        take = max(1, round(remaining_stanzas / remaining_verses))
-        chunk = flat[cursor : cursor + take]
-        cursor += take
-        mapped.append(" ".join(chunk))
-    return mapped
+def hymn_text(lines: list[tuple[float, str]]) -> str:
+    # The heading is the first line, carried on while it fills the line and the next starts lower-case.
+    k = 1
+    while k < len(lines) and lines[k - 1][0] > 470 and re.match(r"[a-z]", lines[k][1]):
+        k += 1
+    heading = re.sub(r"\s+", " ", " ".join(t for _, t in lines[:k])).strip()
+    # The PDF's own editorial notes ("It appears that hymns 20-23 were omitted") are not Griffith's.
+    body = [t for t in join([t for _, t in lines[k:]]) if not t.startswith("It appears that")]
+    # Page markers of the printed edition ("p. a269") are left in the running text.
+    return re.sub(r" ?\bp\. a?\d+\b ?", " ", "\n".join([heading, *body]))
 
 
 def main() -> None:
-    scripture = json.loads(JSON_PATH.read_text(encoding="utf-8"))
-    books = split_books(load_pdf_text())
-    cache: dict[str, dict[str, str]] = {}
-    stats: list[str] = []
-
-    for chapter in scripture["chapters"]:
-        kanda = chapter["number"]
-        if kanda < FIRST_KANDA:
-            continue
-        if kanda not in books:
-            stats.append(f"kanda {kanda}: missing Griffith book")
-            continue
-
-        hymns = extract_hymns(books[kanda])
-        verse_keys = [str(verse["number"]) for verse in chapter["verses"]]
-        translations = map_book_sequential(hymns, len(verse_keys))
-
-        chapter_cache: dict[str, str] = {}
-        empty = 0
-        for key, text in zip(verse_keys, translations, strict=True):
-            cleaned = text.strip()
-            if cleaned:
-                chapter_cache[key] = cleaned
-            else:
-                empty += 1
-        cache[str(kanda)] = chapter_cache
-        stats.append(
-            f"kanda {kanda}: {len(chapter_cache)} translations, {empty} empty slots",
-        )
-
-    OUT_PATH.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Wrote {OUT_PATH}")
-    for line in stats:
-        print(f"  {line}")
+    texts = {ref: hymn_text(lines) for ref, lines in hymns().items() if lines}
+    # The edition drops the verses of 6.141 and the heading of 6.142, so the barley hymn (6.142) follows
+    # the heading of 6.141 ("A blessing on cattle").
+    texts["6.142"] = texts.pop("6.141").split("\n", 1)[1]
+    note = (
+        "R. T. H. Griffith, The Hymns of the Atharva-Veda (1895-96), public domain, from the Global Grey "
+        "edition. One entry per hymn: the edition has no verse numbers, so the English is not split by verse. "
+        "Regenerate with scripts/extract-atharvaveda-griffith.py."
+    )
+    ordered = dict(sorted(texts.items(), key=lambda kv: tuple(map(int, kv[0].split(".")))))
+    OUT_PATH.write_text(
+        json.dumps({"note": note, "hymns": ordered}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    print(f"wrote {OUT_PATH.relative_to(ROOT)}: {len(ordered)} hymns")
 
 
 if __name__ == "__main__":

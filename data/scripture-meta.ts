@@ -355,7 +355,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     titleIast: "Atharvaveda Saṁhitā",
     category: "veda",
     description:
-      "The Atharva Veda Saṃhitā (Śaunaka recension) in Sanskrit with svara marks: 20 kāṇḍas, 5,985 mantras, each under its kāṇḍa.sūkta.mantra number (the Pṛthivī Sūkta is 12.1). Hymns of healing, protection, household life, kingship and reflection, including the Brahmacārī Sūkta (11.5) and the Skambha Sūkta (10.7). Hymns 20.3 and 20.13 are missing from the source. English and Hindi translations are being matched verse by verse and will be added.",
+      "The Atharva Veda Saṃhitā (Śaunaka recension) in Sanskrit with svara marks: 20 kāṇḍas, 5,985 mantras, each under its kāṇḍa.sūkta.mantra number (the Pṛthivī Sūkta is 12.1). Hymns of healing, protection, household life, kingship and reflection, including the Brahmacārī Sūkta (11.5) and the Skambha Sūkta (10.7). Hymns 20.3 and 20.13 are missing from the source. English: R. T. H. Griffith's translation (1895–96), given once for each whole hymn. Hindi will be added later.",
     totalChapters: 20,
     totalVerses: 5985,
     tags: ["Veda","Healing","Protection","Daily Life","PrithviSukta"],

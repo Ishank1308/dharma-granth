@@ -21,8 +21,10 @@
  *   - hymn 4.12 is stored twice, and 13.4 is split into 13.4–13.9 by paryāya.
  * Hymns 20.3 and 20.13 have no text in the source, so they are not published.
  *
- * Translations: none yet. The earlier English (Griffith) and Hindi were attached to the wrong verses,
- * so they are not carried over; a verse-by-verse realignment is the next step.
+ * English: Griffith's translation from data/atharvaveda-griffith.json (scripts/extract-atharvaveda-griffith.py).
+ * His edition has no verse numbers, so each hymn's English is stored once, on its first verse, with
+ * translationRange; the hymn's other verses point to it with translationSeeVerse. The few hymns the
+ * edition omits (2.20–23, 3.30, 4.2, 6.7, 6.141, 7.3, 19.8) have no English.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -32,6 +34,7 @@ const ROOT = process.cwd();
 const BASE = 'https://raw.githubusercontent.com/bhavykhatri/DharmicData/main/AtharvaVeda';
 const OUT = path.join(ROOT, 'public/data/scriptures-full/atharvaveda.json');
 const COUNTS_FILE = path.join(ROOT, 'data/atharvaveda-hymn-verses.json');
+const GRIFFITH = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/atharvaveda-griffith.json'), 'utf8')).hymns;
 /** Hymns with no text in the source. */
 const MISSING = new Set(['20.3', '20.13']);
 /** Source hymns that are paryāyas of an earlier hymn: 13.5–13.9 continue 13.4. */
@@ -171,9 +174,18 @@ async function main() {
       kandaCounts[h - 1] = split.verses.length;
       const want = counts?.[k - 1]?.[h - 1];
       if (counts && want !== split.verses.length) problems.push(`${ref}: ${split.verses.length} verses, expected ${want}`);
+      const english = GRIFFITH[ref];
+      const last = split.verses.length;
       split.verses.forEach((ls, i) => {
         const sanskrit = verseText(ls);
-        verses.push({ number: `${h}.${i + 1}`, sanskrit, transliteration: iast(sanskrit) });
+        const verse = { number: `${h}.${i + 1}`, sanskrit, transliteration: iast(sanskrit) };
+        if (english && i === 0) {
+          verse.translation = english;
+          if (last > 1) verse.translationRange = `${h}.1-${h}.${last}`;
+        } else if (english) {
+          verse.translationSeeVerse = `${h}.1`;
+        }
+        verses.push(verse);
       });
     }
     found.push(Array.from(kandaCounts, (c) => c ?? 0));
@@ -202,9 +214,9 @@ async function main() {
     category: 'veda',
     source: {
       repo: 'https://github.com/bhavykhatri/DharmicData',
-      license: 'Sanskrit mula text - public domain. Verify any translations separately.',
+      license: 'Sanskrit mula text and R. T. H. Griffith\'s English (1895-96) - public domain.',
       fetchedAt: new Date().toISOString(),
-      note: 'Śaunaka Saṃhitā with svara marks. Hymns 20.3 and 20.13 are missing from the source.',
+      note: 'Śaunaka Saṃhitā with svara marks. Hymns 20.3 and 20.13 are missing from the source. English: Griffith, The Hymns of the Atharva-Veda, one translation per hymn.',
     },
     totalVerses: total,
     totalChapters: chapters.length,
