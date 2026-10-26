@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { cleanVerseField, toAsciiDigits, verseLines } from '@/lib/verse-format';
+import { cleanVerseField, isLongPassage, meaningState, MEANING_COPY, verseLines, verseMarkNumber, formatVerseRef } from '@/lib/verse-format';
 
 interface Props {
   verse: {
@@ -20,6 +20,8 @@ interface Props {
     translationSeeVerse?: number | string;
   };
   chapterId: number;
+  /** Decides how the verse reference is written (see formatVerseRef). */
+  scriptureId?: string;
   /** Dedicated verse URL, when this scripture has verse pages. */
   href?: string;
   /** Bookmark and the rest. Chapter pages leave this empty. */
@@ -37,18 +39,19 @@ interface Props {
  * Styling lives in the short `.vt-*` classes in globals.css for the same
  * reason (repeated Tailwind lists cost ~1 KB per verse).
  */
-export function VerseText({ verse: v, chapterId, href, actions }: Props) {
+export function VerseText({ verse: v, chapterId, scriptureId, href, actions }: Props) {
   const label = String(v.number);
   const sanskrit = cleanVerseField(v.sanskrit);
   const transliteration = cleanVerseField(v.transliteration).replace(/[\s|।॥0-9.]+$/, '');
   const hindi = cleanVerseField(v.hindi);
   const english = cleanVerseField(v.translation);
   const lines = sanskrit ? verseLines(sanskrit) : [];
+  const state = meaningState(v);
   const title = `श्लोक ${label}`;
   const reference = (
     <>
       <span className="sr-only">श्लोक </span>
-      {toAsciiDigits(chapterId)}.{toAsciiDigits(label)}
+      {formatVerseRef(scriptureId, chapterId, label)}
     </>
   );
   return (
@@ -66,7 +69,7 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
             {lines.map((line, i) => (
               <span key={i}>{line}</span>
             ))}
-            <span className="vt-num" aria-hidden="true">॥ {toAsciiDigits(label)} ॥</span>
+            <span className="vt-num" aria-hidden="true">॥ {verseMarkNumber(label)} ॥</span>
           </p>
           {transliteration && (
             <p lang="sa-Latn" className="vt-tr">
@@ -76,50 +79,74 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
         </div>
       )}
 
-      {hindi && (
-        <div className="vt-block">
-          {v.hindiRange && (
-            <p className="vt-label" lang="hi">
-              श्लोक {toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिन्दी अर्थ
+      {/* अर्थ: Hindi, then English, on every verse. A meaning not written yet says so in its place. */}
+      {state.hi === 'pending' && state.en === 'pending' ? (
+        <p className="vt-block vt-label vt-pending">
+          <span lang="hi">{MEANING_COPY.bothPendingHi}</span> · <span lang="en">{MEANING_COPY.bothPendingEn}</span>
+        </p>
+      ) : (
+        <>
+          {state.hi === 'text' && (
+            <Passage label={v.hindiRange ? MEANING_COPY.hiRange(v.hindiRange) : undefined} lang="hi" className="vt-hi" text={hindi} />
+          )}
+          {state.hi === 'review' && (
+            <p className="vt-block vt-label" lang="hi">
+              {MEANING_COPY.hiReview}
             </p>
           )}
-          <p lang="hi" className="vt-hi">
-            {hindi}
-          </p>
-        </div>
-      )}
-      {!hindi && v.hindiReviewRequired && (
-        <p className="vt-block vt-label" lang="hi">
-          हिन्दी अर्थ स्रोत-संस्करण से सत्यापनाधीन है।
-        </p>
-      )}
-      {!hindi && v.hindiSeeVerse != null && (
-        <p className="vt-block vt-label" lang="hi">
-          अर्थ श्लोक <a href={`#verse-${v.hindiSeeVerse}`}>{toAsciiDigits(String(v.hindiSeeVerse))}</a> के साथ
-        </p>
-      )}
-      {english && !v.translationRange && (
-        <div className="vt-block">
-          <p lang="en" className="vt-en">
-            {english}
-          </p>
-        </div>
-      )}
-      {english && v.translationRange && (
-        <details className="vt-block">
-          <summary className="vt-label" lang="en">
-            English for verses {v.translationRange.replace('-', '–')}, translated together
-          </summary>
-          <p lang="en" className="vt-en vt-lines">
-            {english}
-          </p>
-        </details>
-      )}
-      {!english && v.translationSeeVerse != null && (
-        <p className="vt-block vt-label" lang="en">
-          English with verse <a href={`#verse-${v.translationSeeVerse}`}>{String(v.translationSeeVerse)}</a>
-        </p>
+          {state.hi === 'with' && (
+            <p className="vt-block vt-label" lang="hi">
+              <a href={`#verse-${v.hindiSeeVerse}`}>{MEANING_COPY.hiWith(v.hindiSeeVerse!)}</a>
+            </p>
+          )}
+          {state.hi === 'pending' && (
+            <p className="vt-block vt-label vt-pending" lang="hi">
+              {MEANING_COPY.hiPending}
+            </p>
+          )}
+          {state.en === 'text' && (
+            <Passage label={v.translationRange ? MEANING_COPY.enRange(v.translationRange) : undefined} lang="en" className="vt-en" text={english} />
+          )}
+          {state.en === 'with' && (
+            <p className="vt-block vt-label" lang="en">
+              <a href={`#verse-${v.translationSeeVerse}`}>{MEANING_COPY.enWith(v.translationSeeVerse!)}</a>
+            </p>
+          )}
+          {state.en === 'pending' && (
+            <p className="vt-block vt-label vt-pending" lang="en">
+              {MEANING_COPY.enPending}
+            </p>
+          )}
+        </>
       )}
     </article>
+  );
+}
+
+/** One translation; a passage covering several verses carries its label, and a long one is folded under it. */
+function Passage({ label, lang, className, text }: { label?: string; lang: 'hi' | 'en'; className: string; text: string }) {
+  if (label && isLongPassage(text)) {
+    return (
+      <details className="vt-block">
+        <summary className="vt-label" lang={lang}>
+          {label}
+        </summary>
+        <p lang={lang} className={`${className} vt-lines`}>
+          {text}
+        </p>
+      </details>
+    );
+  }
+  return (
+    <div className="vt-block">
+      {label && (
+        <p className="vt-label" lang={lang}>
+          {label}
+        </p>
+      )}
+      <p lang={lang} className={className}>
+        {text}
+      </p>
+    </div>
   );
 }

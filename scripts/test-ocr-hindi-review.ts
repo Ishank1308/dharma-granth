@@ -51,7 +51,11 @@ for (const { scriptureId, chapter, verse } of review.entries) {
   assert.equal(published.hindiReviewRequired, true, `reader gets a review notice: ${key}`);
   assert.equal(published.sanskrit, source.sanskrit, `canonical Sanskrit is unchanged: ${key}`);
   assert.equal(published.transliteration, source.transliteration, `IAST is unchanged: ${key}`);
-  assert.equal(published.translation, source.translation, `English translation is unchanged: ${key}`);
+  // English is never rewritten; it is only left out when the same English sits on other, different verses
+  // (a template or misplaced line, see findMeaningTemplates in scripts/lib/template-text.ts).
+  if (published.translation !== undefined) {
+    assert.equal(published.translation, source.translation, `English translation is unchanged: ${key}`);
+  }
 }
 
 const control = shardCache.get('agnipuran:18')?.chapter.verses

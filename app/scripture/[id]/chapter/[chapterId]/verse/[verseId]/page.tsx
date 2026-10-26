@@ -21,7 +21,7 @@ import { verseStaticParams } from '@/lib/verse-pages';
 import { commentaryFor, verseMeaningSummary } from '@/lib/verse-meaning';
 import { verseOgPath, versePageHref, verseSlug } from '@/lib/verse-paths';
 import { scriptureLastChanged } from '@/lib/content-dates';
-import { cleanVerseField, splitVyakhyaCommentary, verseLines } from '@/lib/verse-format';
+import { cleanVerseField, splitVyakhyaCommentary, verseLines, formatVerseRef, withPassageMeaning } from '@/lib/verse-format';
 import { resolveVerseKnowledge } from '@/lib/knowledge-graph';
 import { TrustBadges } from '@/app/components/TrustBadges';
 import { SourceStudyNotes } from '@/app/components/SourceStudyNotes';
@@ -56,7 +56,10 @@ interface SeedVerse {
   hindiRange?: string;
   /** This verse's Hindi is stored on that verse (the first of its range). */
   hindiSeeVerse?: number | string;
+  hindiReviewRequired?: boolean;
   translation?: string;
+  translationRange?: string;
+  translationSeeVerse?: number | string;
   explanation?: string;
   commentary?: string;
   science?: string;
@@ -99,7 +102,7 @@ function findVerse(scriptureId: string, chapterId: number, verseId: string) {
     return slug === verseId || slug === decoded || String(verse.number).trim() === decoded;
   });
   if (index < 0) return null;
-  return { seeded, verses, index, verse: verses[index] };
+  return { seeded, verses, index, verse: withPassageMeaning(verses, verses[index]) };
 }
 
 function plain(text: string | undefined, max: number): string {
@@ -142,7 +145,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const found = meta && Number.isFinite(chapterId) ? findVerse(params.id, chapterId, params.verseId) : null;
   if (!meta || !found) return {};
 
-  const ref = `${meta.title} ${chapterId}.${params.verseId}`;
+  const ref = `${meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
   const words = opening(found.verse.sanskrit);
   // The title names only the meanings the page really has; a page with none says so and is kept out of the index
   // (and out of the sitemap, see lib/sitemap-sections.ts) until a meaning is written.
@@ -151,7 +154,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   // Search engines show about 60 characters: lead with the reference and what the page offers.
   const title = `${ref} ${promise}${words ? ` | ${words}` : ''}`;
   // Hindi reference stays in the keywords ("श्रीमद्भगवद्गीता 2.47 का हिंदी अर्थ").
-  const refHi = `${meta.titleSanskrit ?? meta.title} ${chapterId}.${params.verseId}`;
+  const refHi = `${meta.titleSanskrit ?? meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
   const cleanSanskrit = cleanVerseField(found.verse.sanskrit).replace(/\s+/g, ' ').trim();
   const cleanTranslation = (found.verse.translation || found.verse.hindi || '').replace(/\s+/g, ' ').trim();
   const description = clipDescription(
@@ -261,7 +264,7 @@ export default function VersePage({ params }: PageProps) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   const verseHref = versePageHref(meta.id, chapterId, params.verseId) ?? '';
   const pageUrl = `${siteUrl}${verseHref.endsWith('/') ? verseHref : `${verseHref}/`}`;
-  const ref = `${meta.title} ${chapterId}.${params.verseId}`;
+  const ref = `${meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
   const hindi = plain(verse.hindi, 600);
   const english = plain(verse.translation, 600);
   const modified = scriptureLastChanged(meta.id)?.toISOString();
@@ -339,7 +342,7 @@ export default function VersePage({ params }: PageProps) {
     nextCandidates.push({
       id: `next:${meta.id}:${nextChapterId}:${next.number}`,
       kind: 'next',
-      title: `Continue with ${meta.title} ${nextChapterId}.${next.number}`,
+      title: `Continue with ${meta.title} ${formatVerseRef(meta.id, nextChapterId, next.number)}`,
       href: nextHref,
       reason: crosses ? 'It is the first verse of the next chapter.' : linked ? linked.reason : 'It is the next verse in the same chapter.',
       basis: `You are reading ${ref}.`,
@@ -419,7 +422,10 @@ export default function VersePage({ params }: PageProps) {
           hindi: verse.hindi,
           hindiRange: verse.hindiRange,
           hindiSeeVerse: verse.hindiSeeVerse,
+          hindiReviewRequired: verse.hindiReviewRequired,
           translation: verse.translation,
+          translationRange: verse.translationRange,
+          translationSeeVerse: verse.translationSeeVerse,
           explanation,
           reflection: lesson,
           research: science,

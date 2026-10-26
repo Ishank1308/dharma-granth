@@ -10,14 +10,14 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-commentary/quality";
-import { findTemplateFields } from "./lib/template-text";
+import { collapsePassages, findMeaningTemplates, findTemplateFields, isSanskritCopy, type PassageVerse } from "./lib/template-text";
 import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
 import { isHindiSourceReviewRequired } from "../lib/ocr-hindi-review";
 
 const PILOT = loadPilotOverlay();
 
 /** Bump when shard output logic changes (stubs, templates, echo rules, manifest shape). */
-const SHARD_REV = "2";
+const SHARD_REV = "5";
 
 interface ShardStamp {
   rev: string;
@@ -70,6 +70,9 @@ const isMeaningStub = (t: unknown) => typeof t === "string" && t.length < 90 && 
 
 /** Verse fields that carry explanation, not scripture or translation. */
 const EDITORIAL_FIELDS = ["explanation", "commentary", "science", "lifeLesson"] as const;
+
+/** Verse fields that carry a translation or word gloss of this one verse. */
+const MEANING_FIELDS = ["translation", "hindi", "wordMeaning"] as const;
 
 const SRC = path.resolve("public/data/scriptures-full");
 const DRY = process.argv.includes("--dry-run");
@@ -179,6 +182,36 @@ function main(): void {
         delete verse.hindi;
         verse.hindiReviewRequired = true;
       }
+    }
+
+    // Every verse shows the same parts in the same order, so a part that is not about this verse is left out and
+    // the reader shows its "not yet translated" line instead: translations and glosses that are templates or
+    // misplaced headers, then one passage translation copied onto each of its verses is shown once.
+    {
+      const items = (book.chapters ?? []).flatMap((ch) =>
+        ((ch.verses ?? []) as Record<string, unknown>[]).map((v, i) => ({
+          key: `${ch.number}:${i}`,
+          sanskrit: String(v.sanskrit ?? ""),
+          fields: Object.fromEntries(MEANING_FIELDS.map((f) => [f, typeof v[f] === "string" ? (v[f] as string) : undefined])),
+        })),
+      );
+      const hidden = findMeaningTemplates(items);
+      let collapsed = 0;
+      let copies = 0;
+      for (const ch of book.chapters ?? []) {
+        const verses = (ch.verses ?? []) as PassageVerse[];
+        verses.forEach((v, i) => {
+          for (const f of MEANING_FIELDS) if (hidden.has(`${ch.number}:${i}|${f}`)) delete v[f];
+          if (typeof v.hindi === "string" && isSanskritCopy(v.hindi, v.sanskrit)) {
+            delete v.hindi;
+            copies++;
+          }
+        });
+        collapsed += collapsePassages(verses, "hindi") + collapsePassages(verses, "translation");
+      }
+      if (hidden.size > 0) console.log(`  ${id}: hid ${hidden.size} template or misplaced translation field(s)`);
+      if (copies > 0) console.log(`  ${id}: hid ${copies} "Hindi" field(s) that repeat the Sanskrit`);
+      if (collapsed > 0) console.log(`  ${id}: ${collapsed} verse(s) point to their passage translation`);
     }
 
     if (!DRY) fs.mkdirSync(outDir, { recursive: true });
