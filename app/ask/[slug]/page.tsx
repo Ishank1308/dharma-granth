@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight, BookOpen, HeartHandshake } from 'lucide-react';
 import { JsonLd } from '@/app/components/JsonLd';
 import { ANSWER_THEMES, GRANTH_ANSWERS, getGranthAnswer } from '@/data/granth-answers';
 import { faqLd, pageLd } from '@/lib/jsonld';
-import { resolveAnswerVerse, type ResolvedAnswerVerse } from '@/lib/granth-answers-server';
+import { groupAnswerVerses, resolveAnswerVerse, type AnswerVerseGroup, type ResolvedAnswerVerse } from '@/lib/granth-answers-server';
 
 const pathFor = (slug: string) => `/ask/${slug}/`;
 
@@ -39,22 +39,42 @@ function Section({ hi, en, children }: { hi: string; en: string; children: React
   );
 }
 
-function VerseCard({ verse }: { verse: ResolvedAnswerVerse }) {
+function VerseCard({ group }: { group: AnswerVerseGroup }) {
+  const joint = group.verses.length > 1;
   return (
     <article className="grid gap-3 rounded-2xl border border-dharma-border bg-dharma-bg/60 p-4 sm:p-5">
       <p className="text-sm font-semibold text-saffron-700">
-        <span lang="hi" className="font-devanagari">{verse.labelHi}</span>{' '}
-        <span className="text-dharma-muted">{verse.labelEn}</span>
+        <span lang="hi" className="font-devanagari">{group.labelHi}</span>{' '}
+        <span className="text-dharma-muted">{group.labelEn}</span>
       </p>
-      <p lang="sa" className="whitespace-pre-line font-devanagari text-lg leading-relaxed">{verse.sanskrit}</p>
-      <p lang="hi" className="font-devanagari leading-relaxed">{verse.hindi}</p>
-      <p lang="en" className="text-sm leading-relaxed text-dharma-muted">{verse.english}</p>
-      <div className="rounded-xl border-l-4 border-saffron-500 bg-amber-50/60 px-4 py-3 dark:bg-amber-950/20">
-        <p lang="hi" className="font-devanagari text-sm font-semibold">{verse.whyHi}</p>
-        <p lang="en" className="mt-1 text-sm text-dharma-muted">{verse.whyEn}</p>
+      {group.verses.map((v) => (
+        <p key={v.v} lang="sa" className="whitespace-pre-line font-devanagari text-lg leading-relaxed">{v.sanskrit}</p>
+      ))}
+      <p lang="hi" className="font-devanagari leading-relaxed">{group.hindi}</p>
+      {group.verses.map((v) => (
+        <p key={v.v} lang="en" className="text-sm leading-relaxed text-dharma-muted">
+          {joint && <span className="font-semibold">{v.c}.{v.v} </span>}
+          {v.english}
+        </p>
+      ))}
+      <div className="grid gap-2 rounded-xl border-l-4 border-saffron-500 bg-amber-50/60 px-4 py-3 dark:bg-amber-950/20">
+        {group.verses.map((v) => (
+          <div key={v.v}>
+            <p lang="hi" className="font-devanagari text-sm font-semibold">{v.whyHi}</p>
+            <p lang="en" className="mt-1 text-sm text-dharma-muted">{v.whyEn}</p>
+          </div>
+        ))}
       </div>
-      <Link href={verse.href} className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-saffron-700 underline underline-offset-4">
-        <span lang="hi">पूरा श्लोक पढ़ें</span> <span>Read the verse</span> <ArrowRight className="h-4 w-4" aria-hidden="true" />
+      {group.verses.filter((v) => v.vyakhya).map((v) => (
+        <details key={v.v} className="group rounded-xl border border-dharma-border px-4 py-2">
+          <summary className="flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold text-saffron-700">
+            <span lang="hi">पूरी व्याख्या पढ़ें</span> <span className="font-normal text-dharma-muted">Full explanation{joint ? ` · ${v.labelEn}` : ''}</span>
+          </summary>
+          <p lang="hi" className="whitespace-pre-line pb-2 pt-1 font-devanagari text-sm leading-relaxed">{v.vyakhya}</p>
+        </details>
+      ))}
+      <Link href={group.verses[0].href} className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-saffron-700 underline underline-offset-4">
+        <span lang="hi">श्लोक पृष्ठ खोलें</span> <span>Open the verse page</span> <ArrowRight className="h-4 w-4" aria-hidden="true" />
       </Link>
     </article>
   );
@@ -65,6 +85,7 @@ export default function GranthAnswerPage({ params }: { params: { slug: string } 
   if (!answer) notFound();
   const path = pathFor(answer.slug);
   const verses = answer.verses.map(resolveAnswerVerse).filter((v): v is ResolvedAnswerVerse => v !== null);
+  const groups = groupAnswerVerses(verses);
   const theme = ANSWER_THEMES.find((t) => t.id === answer.theme);
   const next = answer.next.map(getGranthAnswer).filter((a): a is NonNullable<typeof a> => Boolean(a));
 
@@ -114,8 +135,8 @@ export default function GranthAnswerPage({ params }: { params: { slug: string } 
           </div>
 
           <p className="mt-4 text-xs text-dharma-muted">
-            <span lang="hi">श्लोक, अर्थ और अनुवाद पुस्तकालय से हैं। व्याख्या‑पंक्तियाँ AI द्वारा तैयार की गई हैं और सम्पादकीय समीक्षा की प्रतीक्षा में हैं।</span>{' '}
-            <span>Verses and translations come from the library. The notes are AI‑drafted and awaiting editorial review.</span>
+            <span lang="hi">श्लोक, अर्थ और अनुवाद पुस्तकालय से हैं। सार, दृष्टान्त और अभ्यास सम्पादकीय टिप्पणियाँ हैं, शास्त्र‑पाठ नहीं।</span>{' '}
+            <span>Verses and translations come from the library. The summary, story and practice are editorial notes, not scripture.</span>
           </p>
         </div>
       </section>
@@ -128,13 +149,18 @@ export default function GranthAnswerPage({ params }: { params: { slug: string } 
               <p lang="hi" className="font-devanagari font-semibold">यह पृष्ठ अध्ययन है, उपचार नहीं।</p>
               <p lang="hi" className="font-devanagari">यदि दुःख या निराशा सँभालना कठिन हो, तो योग्य परामर्शदाता, चिकित्सक या स्थानीय सहायता‑सेवा से सम्पर्क करें।</p>
               <p className="text-dharma-muted">This page is for study, not treatment. If distress is hard to carry, please reach a counsellor, doctor or local helpline.</p>
+              <p>
+                <span lang="hi" className="font-devanagari">भारत में निःशुल्क, चौबीसों घण्टे:</span>{' '}
+                <span>Free, 24 hours in India: Tele‑MANAS </span>
+                <a href="tel:14416" className="font-semibold underline underline-offset-2">14416</a>
+              </p>
             </div>
           </aside>
         )}
 
         <Section hi="शास्त्र क्या कहते हैं" en="What the scriptures say">
-          {verses.map((v) => (
-            <VerseCard key={`${v.s}-${v.c}-${v.v}`} verse={v} />
+          {groups.map((g) => (
+            <VerseCard key={`${g.verses[0].s}-${g.verses[0].c}-${g.verses[0].v}`} group={g} />
           ))}
         </Section>
 

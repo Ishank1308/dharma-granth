@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     absolute: 'धर्म सहायक — पुस्तकालय से जीवन के प्रश्न | Dharma Granth',
   },
   description:
-    'Questions about anxiety, anger, duty, and Karma Yoga, answered with verses and notes already published in the Dharma Granth library. No generated commentary.',
+    'Ask about worry, anger, grief, duty or God in your own words. Fifty answer pages give a one-line answer, verses from the Gita and Upanishads, a story and one step for today.',
   keywords: [
     'Dharma guide',
     'Bhagavad Gita on anxiety',
@@ -136,7 +136,7 @@ export default function AskDharmaPage() {
             </h1>
 
             <p className="text-base sm:text-lg text-amber-100/90 leading-relaxed font-devanagari">
-              चिंता, क्रोध, धर्म या कर्मयोग पूछें। उत्तर उन्हीं श्लोकों और विषय-पृष्ठों से आता है जो पुस्तकालय में पहले से लिखे हैं। नई टीका नहीं लिखी जाती।
+              अपने शब्दों में पूछें: चिंता, क्रोध, दुःख, कर्तव्य या ईश्वर। उत्तर‑पृष्ठ के श्लोक और अर्थ पुस्तकालय से हैं; सार, दृष्टान्त और अभ्यास सम्पादकीय टिप्पणियाँ हैं।
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-amber-200/80">
