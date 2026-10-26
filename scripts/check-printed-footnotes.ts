@@ -23,6 +23,8 @@ for (const id of FOOTNOTE_SCRIPTURES) {
     const shardFile = join(FULL_DIR, id, `ch-${ch.number}.json`);
     if (!existsSync(shardFile)) continue;
     const published = (JSON.parse(readFileSync(shardFile, "utf8")) as { chapter: Chapter }).chapter.verses;
+    // A filler chapter is published empty on purpose (scripts/check-filler-chapters.ts guards that).
+    if (published.length === 0) continue;
     ch.verses.forEach((source, i) => {
       const out = published[i];
       const ref = `${id}:${ch.number}:${source.number}`;
