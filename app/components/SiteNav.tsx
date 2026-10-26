@@ -728,7 +728,7 @@ export function SiteNav({
               >
                 <Search className="h-3.5 w-3.5 text-saffron-600" />
                 <span className="hidden xl:inline">खोजें...</span>
-                <kbd className="hidden xl:inline rounded border border-dharma-border bg-dharma-card px-1.5 py-0.5 font-mono text-[10px] text-dharma-muted">
+                <kbd className="kbd-hint hidden xl:inline rounded border border-dharma-border bg-dharma-card px-1.5 py-0.5 font-mono text-[10px] text-dharma-muted">
                   {shortcutLabel}
                 </kbd>
               </button>
@@ -905,7 +905,7 @@ export function SiteNav({
                     <Search className="h-4 w-4 text-saffron-600" aria-hidden="true" />
                     <span className="font-devanagari text-sm">ग्रंथ, श्लोक या विषय खोजें...</span>
                   </div>
-                  <kbd className="rounded border border-dharma-border bg-dharma-card px-2 py-0.5 font-mono text-[10px] text-dharma-muted">
+                  <kbd className="kbd-hint rounded border border-dharma-border bg-dharma-card px-2 py-0.5 font-mono text-[10px] text-dharma-muted">
                     {shortcutLabel}
                   </kbd>
                 </button>

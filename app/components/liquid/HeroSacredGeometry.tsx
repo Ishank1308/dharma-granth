@@ -167,7 +167,10 @@ export function HeroSacredGeometry() {
         >
           <Search className="h-4 w-4 shrink-0 text-dharma-text" aria-hidden="true" />
           <span className="flex-1">
-            Press <kbd className="font-sans font-semibold text-dharma-text">{shortcut}</kbd> to jump to any Shloka…
+            <span className="kbd-hint">
+              Press <kbd className="font-sans font-semibold text-dharma-text">{shortcut}</kbd> to jump
+            </span>
+            <span className="touch-only">Jump</span> to any Shloka…
           </span>
           <span aria-hidden="true" className="rounded-md border border-dharma-border/70 px-1.5 py-0.5 font-mono text-[11px] text-dharma-muted">
             BG 2.47

@@ -2269,13 +2269,39 @@ svg.lucide {
     --yantra-soft: #c4ab84;
 }
 
-/* Reader dock: above the phone's bottom navigation, 24px off the floor on desktop. */
+/* Reader dock: on phones a full-width bar in the bottom navigation's place, so the chapter
+   has one bar, not two stacked over the verse; 24px off the floor on desktop. */
 .liquid-dock {
-    bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+    bottom: 0;
+}
+@media (max-width: 1023px) {
+    body:has(.liquid-dock) nav[aria-label='Mobile quick navigation'] {
+        display: none !important;
+    }
 }
 @media (min-width: 1024px) {
     .liquid-dock {
         bottom: 1.5rem;
+    }
+}
+
+/* Keyboard hints (Ctrl K) mean nothing on a touch screen; .touch-only is what shows there instead. */
+.touch-only {
+    display: none;
+}
+@media (pointer: coarse) {
+    .kbd-hint {
+        display: none !important;
+    }
+    .touch-only {
+        display: inline;
+    }
+}
+
+/* Phones: while the install offer is up, the floating ॐ button steps aside instead of sitting on it. */
+@media (max-width: 1023px) {
+    body:has(aside[aria-label='Install App Banner']) aside[aria-label='Prāṇa Sūtra Active Island'] {
+        display: none !important;
     }
 }
 .dock-pill {

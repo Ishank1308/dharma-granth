@@ -781,7 +781,7 @@ export function VerseCard({
                     </button>
                   )}
                   <span
-                    className={`hidden text-[11px] text-dharma-muted sm:inline ${note ? '' : 'ml-auto'}`}
+                    className={`kbd-hint hidden text-[11px] text-dharma-muted sm:inline ${note ? '' : 'ml-auto'}`}
                     aria-hidden="true"
                   >
                     Ctrl + Enter

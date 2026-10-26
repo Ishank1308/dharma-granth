@@ -32,6 +32,7 @@ function DockButton({
   active,
   pressed,
   label,
+  touchLabel,
   sublabel,
   onClick,
   children,
@@ -39,6 +40,8 @@ function DockButton({
   active?: boolean;
   pressed?: boolean;
   label: string;
+  /** Shown instead of `label` on touch screens, where a keyboard shortcut means nothing. */
+  touchLabel?: string;
   sublabel: string;
   onClick: () => void;
   children: ReactNode;
@@ -58,7 +61,16 @@ function DockButton({
         <motion.span layoutId="liquid-dock-pill" transition={SPRING} className="dock-pill absolute inset-0 rounded-full" />
       )}
       <span className="relative flex h-5 items-center">{children}</span>
-      <span className="relative leading-none">{label}</span>
+      <span className="relative leading-none">
+        {touchLabel ? (
+          <>
+            <span className="kbd-hint">{label}</span>
+            <span className="touch-only">{touchLabel}</span>
+          </>
+        ) : (
+          label
+        )}
+      </span>
       <span className="sr-only"> · {sublabel}</span>
     </button>
   );
@@ -67,8 +79,9 @@ function DockButton({
 /**
  * The reader's floating dock: Saṁhitā (plain reading), Anvaya (word by
  * word), Śravaṇa (chanting), Bhāṣya (commentary) and ⌘K. On phones it
- * floats just above the bottom navigation; on larger screens 24px from the
- * bottom. Hides while scrolling down through the text and returns on the
+ * is a full-width bar in the bottom navigation's place (the header menu still
+ * reaches every page), so the chapter has one bar, not two stacked over the
+ * text; on larger screens it floats 24px from the bottom. Hides while scrolling down through the text and returns on the
  * way back up, like Safari's toolbar; stays up while a verse is lifted or
  * the chapter is being chanted.
  */
@@ -96,9 +109,9 @@ export function LiquidGlassDock({ mode, onModeChange, listening, onToggleListeni
       initial={reduce ? false : { y: 40 }}
       animate={{ y: hidden && !listening && !pinned ? 120 : 0, opacity: hidden && !listening && !pinned ? 0 : 1 }}
       transition={SPRING}
-      className="liquid-dock fixed inset-x-0 z-40 mx-auto flex w-fit max-w-[calc(100vw-1.5rem)] justify-center"
+      className="liquid-dock fixed inset-x-0 z-40 flex justify-center lg:mx-auto lg:w-fit lg:max-w-[calc(100vw-1.5rem)]"
     >
-      <div className="liquid-glass relative flex items-center gap-0.5 rounded-full p-1.5">
+      <div className="liquid-glass relative flex items-center gap-0.5 p-1.5 max-lg:w-full max-lg:justify-around max-lg:rounded-none max-lg:pb-[calc(0.375rem+env(safe-area-inset-bottom,0px))] lg:rounded-full">
         <DockButton active={mode === 'samhita'} label="Saṁhitā" sublabel="संहिता · Read" onClick={() => onModeChange('samhita')}>
           <BookOpen className="h-[18px] w-[18px]" aria-hidden="true" />
         </DockButton>
@@ -111,8 +124,8 @@ export function LiquidGlassDock({ mode, onModeChange, listening, onToggleListeni
         <DockButton active={mode === 'bhashya'} label="Bhāṣya" sublabel="भाष्य · Commentary" onClick={() => onModeChange('bhashya')}>
           <MessageSquareQuote className="h-[18px] w-[18px]" aria-hidden="true" />
         </DockButton>
-        <span aria-hidden="true" className="mx-1 h-7 w-px bg-white/15" />
-        <DockButton label={shortcut} sublabel="खोज · Jump to any shloka" onClick={() => openGlobalSearch()}>
+        <span aria-hidden="true" className="mx-1 h-7 w-px bg-white/15 max-lg:hidden" />
+        <DockButton label={shortcut} touchLabel="Search" sublabel="खोज · Jump to any shloka" onClick={() => openGlobalSearch()}>
           <Command className="h-[18px] w-[18px]" aria-hidden="true" />
         </DockButton>
       </div>

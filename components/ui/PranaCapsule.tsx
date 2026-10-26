@@ -593,7 +593,7 @@ export function PranaCapsule() {
                   </span>
                 ) : (
                   <span className="text-stone-300">
-                    धर्म ग्रन्थ <span className="text-amber-400/80">· Ctrl+K खोजें</span>
+                    धर्म ग्रन्थ <span className="kbd-hint text-amber-400/80">· Ctrl+K खोजें</span>
                   </span>
                 )}
               </div>
