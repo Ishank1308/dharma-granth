@@ -1,0 +1,78 @@
+/**
+ * Granth se Poochhiye (ग्रन्थ से पूछिए): one answer page per life question.
+ *
+ * Every answer starts from a reader's question, gives the answer in one line
+ * (सार), then the verses that carry it, a traditional story where one fits, the
+ * common misreading, and one step for today. Verse text is never copied here:
+ * pages read Sanskrit, Hindi and English from the published scripture files by
+ * reference, so a later text repair shows up everywhere.
+ *
+ * The notes are editorial (AI-drafted, awaiting review) and the page says so.
+ */
+
+export type AnswerThemeId = 'mind' | 'work' | 'relations' | 'spirit' | 'life';
+
+/** A verse that answers the question, by its published reference. */
+export interface AnswerVerse {
+  /** Scripture id, e.g. `bhagavadgita`. */
+  s: string;
+  /** Chapter number as stored in the scripture file. */
+  c: number;
+  /** Verse number as stored in the scripture file. */
+  v: string;
+  /** One line on why this verse answers the question. */
+  whyHi: string;
+  whyEn: string;
+}
+
+/** A traditional story (दृष्टान्त), always with the text it comes from. */
+export interface AnswerStory {
+  titleHi: string;
+  titleEn: string;
+  hi: string;
+  en: string;
+  sourceHi: string;
+  sourceEn: string;
+}
+
+/** A common misreading and what the scripture actually says. */
+export interface AnswerMyth {
+  hi: string;
+  en: string;
+  truthHi: string;
+  truthEn: string;
+}
+
+export interface GranthAnswer {
+  slug: string;
+  theme: AnswerThemeId;
+  questionHi: string;
+  questionEn: string;
+  /** Words people type for this question: Hindi, Hinglish and English. */
+  terms: string[];
+  sarHi: string;
+  sarEn: string;
+  verses: AnswerVerse[];
+  story?: AnswerStory;
+  myth?: AnswerMyth;
+  practiceHi: string;
+  practiceEn: string;
+  /** Slugs of the likely next questions. */
+  next: string[];
+  /** Emotional topics show the study-not-treatment note. */
+  care?: boolean;
+}
+
+export interface AnswerTheme {
+  id: AnswerThemeId;
+  titleHi: string;
+  titleEn: string;
+}
+
+export const ANSWER_THEMES: AnswerTheme[] = [
+  { id: 'mind', titleHi: 'मन और भावनाएँ', titleEn: 'Mind and emotions' },
+  { id: 'work', titleHi: 'कर्म और जीवन‑मार्ग', titleEn: 'Work and purpose' },
+  { id: 'relations', titleHi: 'सम्बन्ध और व्यवहार', titleEn: 'People and conduct' },
+  { id: 'spirit', titleHi: 'आत्मा और ईश्वर', titleEn: 'Self and God' },
+  { id: 'life', titleHi: 'सुख, शान्ति और मार्ग', titleEn: 'Happiness, peace and the path' },
+];
