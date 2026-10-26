@@ -125,8 +125,12 @@ const Realistic3DGranth = dynamic(
 function LibraryBookPreview({ item, categoryLabel }: { item: LibraryItem; categoryLabel: string }) {
   const previewRef = useRef<HTMLDivElement>(null);
   const [nearViewport, setNearViewport] = useState(false);
+  // A partial text says how much of the traditional whole the library holds.
+  const ofAbout = item.canonicalTotalVerses != null && item.canonicalTotalVerses > item.totalVerses
+    ? ` of about ${formatNumber(item.canonicalTotalVerses)}`
+    : '';
   const countLabel = item.totalVerses > 0
-    ? `${formatNumber(item.totalChapters)} Chapters · ${formatNumber(item.totalVerses)} Verses`
+    ? `${formatNumber(item.totalChapters)} Chapters · ${formatNumber(item.totalVerses)}${ofAbout} Verses`
     : 'ग्रंथ सूची';
   const englishTitle = GITA_PRESS_COVER_TITLES[item.id] ?? item.title;
   const subTitle = item.author ? `Attributed to ${item.author}` : categoryLabel;
