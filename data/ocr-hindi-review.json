@@ -2,6 +2,7 @@
   "sourceRevision": "aef2fdcb",
   "reason": "Latin OCR remnants were removed without source-edition verification of the remaining Hindi meaning.",
   "status": "source-review-required",
+  "showRefillUnproofread": false,
   "entries": [
     {
       "scriptureId": "agnipuran",
@@ -322,6 +323,4794 @@
       "scriptureId": "vamanpuran",
       "chapter": 80,
       "verse": "2"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.2",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.3",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.6",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.12",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.13",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.14",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.15",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.36",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.37",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.38",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "2.3",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "2.6",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "2.7",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "2.11",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "2.13",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "3.25",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "3.28",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "4.15",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "4.40",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "4.45",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "5.52",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "6.17",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "6.60",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "7.25",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "7.41",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "7.46",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "7.47",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "7.48",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "7.57",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "7.61",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "8.2",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "8.12",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "8.15",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "8.26",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "8.28",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "8.58",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "9.13",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "9.29",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "9.39",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "9.45",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "9.55",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "9.62",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "9.68",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "9.70",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "10.14",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "10.19",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "10.32",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "10.40",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.23",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.31",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.32",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.37",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.39",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.47",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.48",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.49",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.55",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "12.2",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "12.24",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "13.7",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "13.20",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "13.32",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "13.45",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "13.48",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "13.49",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "13.57",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "14.35",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "14.37",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "14.38",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "14.41",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "17.12",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "18.13",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "18.30",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "18.33",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "19.5",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "19.26",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "19.38",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "19.39",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "19.48",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "19.68",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "19.70",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "20.9",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "20.32",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "20.35",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "22.9",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "22.26",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "22.27",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "22.28",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "22.35",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "23.20",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "23.34",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "24.8",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "24.23",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "24.25",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "24.33",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "24.60",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "24.62",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "25.10",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "25.24",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.12",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.14",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.16",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.23",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.24",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.28",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.29",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.45",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.46",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.52",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.54",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.55",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "27.9",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "27.25",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "27.31",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "27.45",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "27.51",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "27.58",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "27.64",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "27.69",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "27.70",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "28.8",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "28.19",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "28.22",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "28.32",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "28.38",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "29.3",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "29.15",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "29.17",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "29.19",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "29.33",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "29.43",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "29.53",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "30.10",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "30.26",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "30.28",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "30.29",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.17",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.20",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.21",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.35",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.41",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.47",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.57",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.65",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.66",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.68",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.6",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.17",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.30",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.37",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.38",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.47",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.51",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "38.12",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "38.27",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "39.6",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "39.8",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "39.30",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "39.45",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "39.49",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "40.20",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "40.21",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "40.33",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "41.32",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "41.34",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "41.49",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "41.50",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "41.63",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.9",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.19",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.28",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.29",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.31",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.32",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.40",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.49",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.56",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.57",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.59",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.9",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.17",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "1.26",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "2.4",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "3.3",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "3.11",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "4.24",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "4.27",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "4.31",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "4.38",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "5.5",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "5.8",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "5.10",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "5.17",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "5.20",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "5.35",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "5.37",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "5.39",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "5.41",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "5.54",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "6.43",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "6.50",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "7.27",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "7.44",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "8.31",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "9.36",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "9.58",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.25",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.51",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.53",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "11.60",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "12.13",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "12.21",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "13.11",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "14.12",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "14.24",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "17.15",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "19.24",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "19.27",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "19.30",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "20.12",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "21.2",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "22.24",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "22.42",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "24.12",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "25.15",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "25.21",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.31",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "26.47",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "27.67",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "29.8",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "30.15",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.18",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.30",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "31.49",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.7",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.13",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.18",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.20",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.22",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.28",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.53",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "37.65",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "38.10",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "38.20",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "39.35",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "39.37",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "39.42",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "40.15",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "40.35",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "41.21",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "41.38",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "41.40",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "41.42",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "41.44",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "41.59",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.6",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.41",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 7,
+      "verse": "42.43",
+      "queue": "shivpurana-7-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "2.12",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "2.13",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "2.16",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "2.17",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "3.10",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "4.5",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "4.7",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "4.58",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "4.60",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "5.6",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "5.8",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "5.13",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "5.17",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "5.36",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "5.37",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "5.38",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "8.19",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "8.25",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "9.12",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "9.23",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "10.7",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "10.15",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "10.35",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "11.4",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "11.7",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "11.16",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "11.17",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "12.32",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "13.11",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "13.19",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "14.39",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "14.45",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "14.56",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "17.67",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "18.16",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "21.15",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "21.17",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "21.38",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "21.48",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "22.16",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "22.24",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "22.27",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "22.31",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "22.36",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "23.4",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "23.9",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "23.29",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "23.41",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "23.42",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "24.6",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "24.7",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "24.10",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "24.12",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "24.20",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "24.24",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "24.26",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "24.31",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "24.33",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.4",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.9",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.16",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.17",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.27",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.32",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.33",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.34",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.35",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.43",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "31.26",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "31.42",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "36.20",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "36.21",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "36.22",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "36.30",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.10",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.20",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.21",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.35",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.38",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.19",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.79",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "39.17",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.3",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.10",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.40",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.43",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.59",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.67",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.95",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.96",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "41.4",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "41.5",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "41.15",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "41.20",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "41.22",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "41.26",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "42.10",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "42.29",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "43.16",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "43.22",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "43.37",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "1.37",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "1.42",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "2.18",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "2.28",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "4.39",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "5.9",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "5.34",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "8.2",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "8.20",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "9.3",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "9.7",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "9.35",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "9.38",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "10.4",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "10.16",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "10.18",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "10.28",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "10.44",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "11.5",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "11.10",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "11.18",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "12.5",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "12.14",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "12.22",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "12.28",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "13.24",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "13.29",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "13.56",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "14.9",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "14.26",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "14.36",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "14.52",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "14.54",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "17.15",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "17.31",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "17.37",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "17.58",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "21.30",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "21.33",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "21.39",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "21.51",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "22.9",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "22.17",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "22.25",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "22.29",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "22.32",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "23.15",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "23.18",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "23.21",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "23.25",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "23.27",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "23.43",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "24.16",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.12",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.14",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.22",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "30.29",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "31.43",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "36.23",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "36.25",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "36.33",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.5",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.8",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.16",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.18",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.23",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.28",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "37.50",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.12",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.15",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.17",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.24",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.28",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.30",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.35",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.39",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.62",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "38.80",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.4",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.19",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.23",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.26",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.28",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.56",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.68",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.70",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "40.93",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "41.17",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "42.3",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "43.32",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "43.44",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "43.46",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 8,
+      "verse": "43.48",
+      "queue": "shivpurana-8-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "1.55",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "1.56",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "1.69",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "2.25",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "2.33",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "2.42",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "2.44",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "2.48",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "3.4",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "3.8",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "3.9",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "3.10",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "3.20",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "3.45",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "3.61",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "6.34",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "6.53",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "7.48",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "9.2",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "9.20",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "9.23",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "11.32",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "12.22",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "12.34",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "12.41",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "12.43",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "13.16",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "17.2",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "17.31",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "18.12",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "18.17",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "18.38",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "18.65",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "18.73",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "18.75",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "19.40",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "21.8",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "21.35",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "21.37",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "22.2",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "22.31",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "22.38",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "22.51",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "23.34",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "23.37",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "25.13",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "25.15",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "25.20",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "25.22",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "25.26",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "26.14",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "26.26",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "28.9",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "28.14",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "28.15",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "30.24",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "30.46",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "30.53",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "31.11",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "31.12",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "31.16",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "32.13",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "36.2",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "36.56",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "38.2",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "39.20",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "40.36",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "40.43",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "41.9",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "41.37",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "41.44",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "46.35",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "46.58",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.6",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.9",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.34",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.53",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.54",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "48.9",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "48.13",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "48.38",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "50.13",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "50.21",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "50.37",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "50.45",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "50.51",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.7",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.27",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.37",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.38",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.43",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.52",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.53",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.54",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.62",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.77",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "1.12",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "1.18",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "1.53",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "2.18",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "2.34",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "2.36",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "3.43",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "3.46",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "7.7",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "7.26",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "7.29",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "8.4",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "8.44",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "9.38",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "10.3",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "11.23",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "11.25",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "11.33",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "12.12",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "12.17",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "12.27",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "13.9",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "13.28",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "13.35",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "13.39",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "17.22",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "18.33",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "18.35",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "18.39",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "18.66",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "19.17",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "19.34",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "20.11",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "20.27",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "20.38",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "21.12",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "21.24",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "21.26",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "21.33",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "22.3",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "22.8",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "23.11",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "23.22",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "23.35",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "23.54",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "23.60",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "25.23",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "25.33",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "25.43",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "25.49",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "25.73",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "26.4",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "26.18",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "26.22",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "26.35",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "27.8",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "27.11",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "27.13",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "27.32",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "27.35",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "30.25",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "30.38",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "30.41",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "31.14",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "32.16",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "32.43",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "33.14",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "33.16",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "33.18",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "34.7",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "34.64",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "34.66",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "34.77",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "36.26",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "36.29",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "36.38",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "36.48",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "36.53",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "37.37",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "37.39",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "37.51",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "37.56",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "38.6",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "38.9",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "38.17",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "38.19",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "38.32",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "38.47",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "38.49",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "39.3",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "39.7",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "39.12",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "39.17",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "39.24",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "39.39",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "39.42",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "40.20",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "40.34",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "40.59",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "41.14",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "41.27",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "41.29",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "41.42",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "42.4",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "42.7",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "42.17",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "42.20",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "46.19",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "46.22",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "46.24",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "46.27",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "46.37",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "46.42",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "46.52",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "46.61",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.7",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.12",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.14",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.40",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.47",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.50",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "47.55",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "48.25",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "48.48",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "49.14",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "49.36",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "49.38",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "50.3",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "50.11",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "50.26",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "50.46",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "50.48",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.16",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.33",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.46",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.63",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.67",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 9,
+      "verse": "51.71",
+      "queue": "shivpurana-9-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "3.2",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "3.9",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "3.26",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "4.15",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "9.56",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "11.46",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "11.51",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "17.24",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "18.11",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "3.17",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "3.27",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "3.34",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "3.53",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "3.55",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "4.16",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "5.14",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "5.20",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "6.29",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "6.43",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "6.61",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "6.66",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "7.31",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "7.74",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "8.9",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "9.29",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "10.3",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "10.13",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "11.23",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "11.52",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "17.11",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "18.22",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "18.36",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "19.22",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "19.56",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "20.32",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "22.33",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "23.16",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 10,
+      "verse": "23.25",
+      "queue": "shivpurana-10-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "4.16",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "5.2",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "6.10",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "6.47",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "11.8",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "12.49",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "12.50",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "18.12",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "19.13",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "20.19",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "23.24",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "23.25",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "23.26",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "23.48",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "24.53",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "26.11",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "28.3",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "29.3",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "30.14",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "30.15",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "30.17",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "30.21",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "31.20",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "31.37",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "31.43",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "31.58",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "31.65",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "32.23",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "1.4",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "1.14",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "1.58",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "5.31",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "5.58",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "6.2",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "6.36",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "6.51",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "6.64",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "7.21",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "11.2",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "12.8",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "12.37",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "12.73",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "19.10",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "19.22",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "19.39",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "19.43",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "20.14",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "20.25",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "21.33",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "21.38",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "23.8",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "23.34",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "23.42",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "25.13",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "25.26",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "25.36",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "25.38",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "25.40",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "25.42",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "26.21",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "27.9",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "27.33",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "28.15",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "29.6",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "29.17",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "29.27",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "29.29",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "30.3",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "30.19",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "30.35",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "32.24",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "32.27",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "32.29",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
+    },
+    {
+      "scriptureId": "shivpurana",
+      "chapter": 11,
+      "verse": "32.45",
+      "queue": "shivpurana-11-gitapress-2026-10-26"
     }
   ]
 }

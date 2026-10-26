@@ -58,7 +58,7 @@ import {
   markChapterCompleteInReadingPlan,
 } from '@/lib/reading-plan-sync';
 import { saveChapterVersesToDB, getCachedChapterVersesFromDB } from '@/lib/db/granth-indexeddb';
-import { isHindiSourceReviewRequired } from '@/lib/ocr-hindi-review';
+import { isHindiWithheld, isUnproofreadShown } from '@/lib/ocr-hindi-review';
 import type { SvadhyayaTab } from '@/app/components/reader/SvadhyayaSplitDrawer';
 const SvadhyayaSplitDrawer = dynamic(() => import('@/app/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
 import { SpatialShloka, type BhashyaSource, type ReaderMode } from './liquid/SpatialShloka';
@@ -83,6 +83,8 @@ interface FullVerse {
   hindi?: string;
   hindiSource?: 'ai';
   hindiReviewRequired?: boolean;
+  /** Hindi from a printed edition, published before it was proofread (lib/ocr-hindi-review.ts). */
+  hindiUnproofread?: boolean;
   hindiRange?: string;
   hindiSeeVerse?: number | string;
   wordMeaning?: string;
@@ -317,8 +319,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               sanskrit: c.sanskrit,
               transliteration: c.transliteration,
               translation: c.translation,
-              hindi: isHindiSourceReviewRequired(scriptureId, chapterId, c.verseNum) ? undefined : c.hindi,
-              hindiReviewRequired: isHindiSourceReviewRequired(scriptureId, chapterId, c.verseNum),
+              hindi: isHindiWithheld(scriptureId, chapterId, c.verseNum) ? undefined : c.hindi,
+              hindiReviewRequired: isHindiWithheld(scriptureId, chapterId, c.verseNum),
+              hindiUnproofread: isUnproofreadShown(scriptureId, chapterId, c.verseNum),
               wordMeaning: c.wordMeaning,
               padaccheda: c.padaccheda,
               commentary: c.commentary,

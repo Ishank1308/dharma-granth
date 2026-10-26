@@ -71,6 +71,8 @@ export interface VerseCardData {
   hindi?: string;
   hindiSource?: 'ai';
   hindiReviewRequired?: boolean;
+  /** Hindi from a printed edition, published before it was proofread (lib/ocr-hindi-review.ts). */
+  hindiUnproofread?: boolean;
   /** This verse's Hindi covers a range ("15-17") translated together in the edition. */
   hindiRange?: string;
   /** The Hindi for this verse is stored on that verse (the first of its range). */
@@ -827,6 +829,12 @@ export function VerseCard({
                         {v.hindiReviewRequired
                           ? 'हिन्दी अर्थ · स्रोत सत्यापनाधीन'
                           : `श्लोक ${toAsciiDigits(v.hindiRange!.replace('-', '–'))} का हिंदी अनुवाद`}
+                      </p>
+                    )}
+                    {v.hindiUnproofread && v.hindi && (
+                      <p className="mb-1 text-xs text-dharma-muted">
+                        <span lang="hi" className="font-devanagari">मुद्रित संस्करण से, प्रूफ़ जाँच शेष</span>{' '}
+                        <span aria-hidden="true">·</span> <span lang="en">From the printed edition, not yet proofread</span>
                       </p>
                     )}
                     {!v.hindi && v.hindiSeeVerse != null && (

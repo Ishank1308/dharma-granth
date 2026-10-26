@@ -10,6 +10,7 @@ type Verse = {
   translation?: string;
   hindi?: string;
   hindiReviewRequired?: boolean;
+  hindiUnproofread?: boolean;
 };
 type Chapter = { number: number | string; verses: Verse[] };
 type Book = { chapters: Chapter[] };
@@ -20,8 +21,11 @@ const sourceCache = new Map<string, Book>();
 const shardCache = new Map<string, Shard>();
 const keys = new Set<string>();
 
-assert.equal(review.entries.length, 64, 'the original OCR review queue has 64 verse coordinates');
-for (const { scriptureId, chapter, verse } of review.entries) {
+assert.equal(review.entries.filter((e) => !('queue' in e)).length, 64, 'the original OCR review queue has 64 verse coordinates');
+for (const entry of review.entries) {
+  const { scriptureId, chapter, verse } = entry;
+  // Refilled Hindi (data/refill/*.json) waits for review; its English is judged by the alignment step like any other.
+  const refilled = 'queue' in entry;
   const key = `${scriptureId}:${chapter}:${verse}`;
   assert.ok(!keys.has(key), `duplicate review coordinate ${key}`);
   keys.add(key);
@@ -47,11 +51,17 @@ for (const { scriptureId, chapter, verse } of review.entries) {
   const published = shardCache.get(shardKey)?.chapter.verses
     .find((candidate) => String(candidate.number) === verse);
   assert.ok(published, `published verse exists: ${key}`);
-  assert.equal(published.hindi, undefined, `unverified Hindi is withheld: ${key}`);
-  assert.equal(published.hindiReviewRequired, true, `reader gets a review notice: ${key}`);
+  if (refilled && review.showRefillUnproofread) {
+    assert.equal(published.hindi, source.hindi, `refilled Hindi is shown as printed: ${key}`);
+    assert.equal(published.hindiUnproofread, true, `reader gets the unproofread label: ${key}`);
+  } else {
+    assert.equal(published.hindi, undefined, `unverified Hindi is withheld: ${key}`);
+    assert.equal(published.hindiReviewRequired, true, `reader gets a review notice: ${key}`);
+  }
   assert.equal(published.sanskrit, source.sanskrit, `canonical Sanskrit is unchanged: ${key}`);
   assert.equal(published.transliteration, source.transliteration, `IAST is unchanged: ${key}`);
-  assert.equal(published.translation, source.translation, `English translation is unchanged: ${key}`);
+  if (refilled) assert.ok(published.translation === undefined || published.translation === source.translation, `English is withheld or unchanged: ${key}`);
+  else assert.equal(published.translation, source.translation, `English translation is unchanged: ${key}`);
 }
 
 // The control comes from an aligned chapter: chapters whose Hindi drifted are hidden by scripts/lib/meaning-alignment.ts.
