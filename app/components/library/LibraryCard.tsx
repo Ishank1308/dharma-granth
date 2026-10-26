@@ -66,7 +66,7 @@ function LanguageChips({ item }: { item: LibraryItem }) {
             title={coverageText}
           >
             <span className={l.id === 'en' ? '' : 'font-devanagari'}>{l.native}</span>
-            {percentLabel !== undefined && <span className="ml-1 text-[10px] text-dharma-muted">{percentLabel}</span>}
+            {percentLabel !== undefined && <span className="ml-1 text-[10px] text-dharma-text-secondary">{percentLabel}</span>}
           </li>
         );
       })}
