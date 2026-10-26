@@ -244,7 +244,6 @@ export function ReaderLayers({
   chapterId,
   provenance: p,
   settings,
-  onReport,
   onUpdateSetting,
   insight,
   sourceStatus,
@@ -254,7 +253,6 @@ export function ReaderLayers({
   chapterId: number;
   provenance: ReaderProvenance;
   settings: ReaderSettings;
-  onReport: () => void;
   onUpdateSetting?: <K extends keyof ReaderSettings>(key: K, value: ReaderSettings[K]) => void;
   /** Reviewed मर्म line and जीवन प्रसंग chips, when this verse has them. */
   insight?: VerseInsight;
@@ -779,12 +777,6 @@ export function ReaderLayers({
             </div>
           )}
         </dl>
-        <p className="mt-3 flex flex-wrap items-center gap-x-2 text-sm text-dharma-muted">
-          Found a mistake?{' '}
-          <button type="button" onClick={onReport} className="focus-ring inline-flex min-h-[44px] items-center rounded font-semibold text-saffron-800 underline underline-offset-4 dark:text-saffron-300">
-            Report a textual error
-          </button>
-        </p>
       </Layer>
 
       {/* Sanskrit Word Explorer Modal/Drawer */}

@@ -15,7 +15,6 @@ import {
   Copy,
   Code2,
   Download,
-  Flag,
   Focus,
   MessageCircle,
   Maximize2,
@@ -37,17 +36,14 @@ import { useStudyProgress } from '@/lib/useStudyProgress';
 import { useReaderSettings } from '@/lib/useReaderSettings';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import {
-  REPORT_KINDS,
   buildCopyText,
   buildDownloadMarkdown,
-  buildIssueUrl,
   isBookmarked,
   toggleBookmark,
   verseReference,
   type ReaderProvenance,
   type ReaderRef,
   type ReaderVerseText,
-  type ReportKind,
 } from '@/lib/reader-actions';
 import { ReaderDialog } from './ReaderDialog';
 import { ReaderSettingsPanel } from './ReaderSettingsPanel';
@@ -150,7 +146,7 @@ export function VerseReader(props: VerseReaderProps) {
   }, []);
 
   /* ── Dialog state ── */
-  const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'note' | 'report' | 'embed'>(null);
+  const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'note' | 'embed'>(null);
   const [journalOpen, setJournalOpen] = useState(false);
   const close = useCallback(() => setDialog(null), []);
 
@@ -311,11 +307,6 @@ export function VerseReader(props: VerseReaderProps) {
     close();
     say(draft.trim() ? 'Note saved on this device' : 'Note removed');
   };
-
-  /* ── Report ── */
-  const [kind, setKind] = useState<ReportKind>('sanskrit');
-  const [details, setDetails] = useState('');
-  const issueUrl = buildIssueUrl(ref, verse, kind, details);
 
   /* ── Verse picker ── */
   const [pick, setPick] = useState('');
@@ -594,7 +585,6 @@ export function VerseReader(props: VerseReaderProps) {
             chapterId={chapterId}
             provenance={provenance}
             settings={settings}
-            onReport={() => setDialog('report')}
             onUpdateSetting={update}
             insight={insight}
             sourceStatus={sourceStatus}
@@ -660,9 +650,6 @@ export function VerseReader(props: VerseReaderProps) {
             <button type="button" onClick={onDownload} className={actionBtn}>
               <Download className="h-4 w-4" aria-hidden="true" /> Download
             </button>
-            <button type="button" onClick={() => setDialog('report')} className={actionBtn}>
-              <Flag className="h-4 w-4" aria-hidden="true" /> Report error
-            </button>
           </div>
 
           {noteText && (
@@ -726,9 +713,6 @@ export function VerseReader(props: VerseReaderProps) {
             </button>
             <button type="button" onClick={() => setDialog('settings')} aria-haspopup="dialog" className={actionBtn}>
               <SlidersHorizontal className="h-4 w-4" aria-hidden="true" /> Reader settings
-            </button>
-            <button type="button" onClick={() => setDialog('report')} className={actionBtn}>
-              <Flag className="h-4 w-4" aria-hidden="true" /> Report correction
             </button>
           </div>
         </aside>
@@ -866,23 +850,6 @@ export function VerseReader(props: VerseReaderProps) {
           english={verse.translation}
           onNotice={say}
         />
-
-        <ReaderDialog open={dialog === 'report'} onClose={close} title="Report a textual error" titleHi="पाठ-त्रुटि" icon={<Flag className="h-5 w-5 text-rose-700" aria-hidden="true" />}>
-          <p className="mb-4 text-sm text-dharma-muted">
-            Describe what is wrong in {label}. This opens a prefilled issue on GitHub; nothing is sent until you press “Create issue” there, and this site stores nothing.
-          </p>
-          <label htmlFor="reader-report-kind" className="mb-1 block text-sm font-semibold text-dharma-text">What kind of error?</label>
-          <select id="reader-report-kind" value={kind} onChange={(e) => setKind(e.target.value as ReportKind)} className="mb-4 min-h-[48px] w-full rounded-xl border border-dharma-border bg-dharma-bg px-3 text-base text-dharma-text">
-            {REPORT_KINDS.map((k) => (
-              <option key={k.id} value={k.id}>{k.label}</option>
-            ))}
-          </select>
-          <label htmlFor="reader-report-details" className="mb-1 block text-sm font-semibold text-dharma-text">What is wrong, and what should it be?</label>
-          <textarea id="reader-report-details" value={details} rows={5} onChange={(e) => setDetails(e.target.value)} className="mb-4 w-full resize-y rounded-xl border border-dharma-border bg-dharma-bg p-3 text-base text-dharma-text outline-none focus:border-saffron-600 focus:ring-2 focus:ring-saffron-600/25" />
-          <a href={issueUrl} target="_blank" rel="noopener noreferrer" onClick={close} className="focus-ring inline-flex min-h-[48px] w-full items-center justify-center rounded-xl bg-saffron-700 px-5 text-sm font-semibold text-white hover:bg-saffron-800">
-            Open prefilled GitHub issue
-          </a>
-        </ReaderDialog>
 
         {/* Interactive Verse Relationship Modal */}
         {showNetworkModal && (

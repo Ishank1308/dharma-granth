@@ -124,38 +124,6 @@ export function buildDownloadMarkdown(ref: ReaderRef, verse: ReaderVerseText, p:
   return `${lines.filter((l) => l !== '').join('\n')}\n`;
 }
 
-export const REPORT_KINDS = [
-  { id: 'sanskrit', label: 'Sanskrit spelling or sandhi', hi: 'संस्कृत वर्तनी / संधि' },
-  { id: 'transliteration', label: 'Transliteration (IAST)', hi: 'लिप्यन्तरण' },
-  { id: 'hindi', label: 'Hindi translation', hi: 'हिन्दी अनुवाद' },
-  { id: 'english', label: 'English translation', hi: 'अंग्रेज़ी अनुवाद' },
-  { id: 'wordmeaning', label: 'Word-by-word meaning', hi: 'पदच्छेद / शब्दार्थ' },
-  { id: 'order', label: 'Verse order or missing text', hi: 'श्लोक क्रम / छूटा पाठ' },
-  { id: 'other', label: 'Something else', hi: 'अन्य' },
-] as const;
-
-export type ReportKind = (typeof REPORT_KINDS)[number]['id'];
-
-export const ISSUES_REPO = 'https://github.com/Ishank567/dharma-granth';
-
-/**
- * A prefilled GitHub issue. The report is sent only when the reader presses
- * "Create issue" on GitHub: nothing is stored or transmitted by this site.
- */
-export function buildIssueUrl(ref: ReaderRef, verse: ReaderVerseText, kind: ReportKind, details: string): string {
-  const label = REPORT_KINDS.find((k) => k.id === kind)?.label ?? kind;
-  const title = `Text issue: ${verseReference(ref, verse)} — ${label}`;
-  const body = [
-    `**Verse:** ${verseReference(ref, verse)}`,
-    `**Page:** ${ref.url}`,
-    `**Type:** ${label}`,
-    '',
-    '**What is wrong, and what should it be?**',
-    clean(details) || '(please describe)',
-  ].join('\n');
-  return `${ISSUES_REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
-}
-
 /* ── Bookmarks (same record and key as the chapter reader and verse page) ── */
 
 export const BOOKMARKS_KEY = 'dharma.bookmarkedVerses';

@@ -42,8 +42,7 @@ function readAll(): Record<string, FeedbackRecord> {
 /**
  * "Was this explanation clear?" A small, optional prompt under a simplified
  * explanation. It stores a rating and fixed reasons only (no free text, no
- * identity) in this browser. It is separate from "Report correction", which
- * is for suspected textual errors in the scripture itself.
+ * identity) in this browser. It is not a channel for textual corrections.
  */
 export function ExplanationFeedback({ refKey, reference }: { refKey: string; reference: string }) {
   const [rating, setRating] = useState<Rating | null>(null);
@@ -149,7 +148,7 @@ export function ExplanationFeedback({ refKey, reference }: { refKey: string; ref
           </button>
           {reasons.includes('Possible textual error') && (
             <p className="mt-2 text-sm text-dharma-muted">
-              To report a mistake in the verse or translation itself, use <strong>Report correction</strong> at the top of this page. Clarity feedback does not start a correction.
+              Clarity feedback is about how the explanation reads. It does not start a correction to the verse or translation.
             </p>
           )}
         </fieldset>
