@@ -21,7 +21,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import Sanscript from '@indic-transliteration/sanscript';
+import { ACCENT, iast, letters, tidy, verseText } from './lib/vedic-text.mjs';
 
 const ROOT = process.cwd();
 const BASE = 'https://raw.githubusercontent.com/bhavykhatri/DharmicData/main/Rigveda';
@@ -38,8 +38,6 @@ const ORDINALS = ['प्रथम', 'द्वितीय', 'तृतीय',
 const D = '०-९';
 const TERM = new RegExp(`(?:॥\\s*[${D}]+(?:\\s*॥\\s*[${D}]*)*\\s*॥?|[${D}]+\\s*॥|॥[ \\t]*(?=\\n|$))[ \\t${D}]*`, 'g');
 const LINE_MARK = new RegExp(`[ \\t]{2,}[${D}]+[ \\t]*$|(?<=[^\\s${D}])[ \\t]+[${D}]+[ \\t]*$`);
-const ACCENT = /[\u0951\u0952]/;
-const letters = (s) => s.replace(/[^\u0900-\u0963\u0970-\u097F]|[।॥]/g, '');
 
 async function readMandala(n, from) {
   const name = `rigveda_mandala_${n}.json`;
@@ -81,23 +79,6 @@ function splitHymn(text) {
   return verses.map((v) => v.map((l) => tidy(l.replace(LINE_MARK, '').trim())));
 }
 
-/**
- * The source types visarga as a colon (नर॒:) and sometimes spaces out the in-word markers १ (kampa) and
- * ३ (pluti) that printed Saṃhitās place inside the word (स्व १ र्दृशीके → स्व१र्दृशीके).
- */
-function tidy(line) {
-  return line
-    .replace(/(?<=[\u0900-\u097F\u1CD0-\u1CFF])\s*:/g, 'ः')
-    // Visarga belongs to the syllable, the accent mark after it: वि॒श्वत॑ः → वि॒श्वतः॑.
-    .replace(/([\u0951\u0952])ः/g, 'ः$1')
-    .replace(/(?<=[\u0900-\u0963\u1CD0-\u1CFF])\s+([१३])\s*(?=[\u0900-\u0963])/g, '$1');
-}
-
-function iast(devanagari) {
-  const plain = devanagari.replace(/[\u0951\u0952\u1CD0-\u1CFF]/g, '').replace(/\s*[०-९]+(?=\S)|(?<=\S)[०-९]+/g, '');
-  return Sanscript.t(plain, 'devanagari', 'iast').replace(/l̤h/g, 'ḷh').replace(/l̤/g, 'ḷ').replace(/~/g, 'm̐');
-}
-
 async function main() {
   const fromIdx = process.argv.indexOf('--from');
   const from = fromIdx > 0 ? process.argv[fromIdx + 1] : null;
@@ -125,8 +106,7 @@ async function main() {
       if (got.length !== want) problems.push(`${m}.${h}: ${got.length} verses, the Saṃhitā has ${want}`);
       got.forEach((lines, k) => {
         const ref = `${m}.${h}.${k + 1}`;
-        const last = lines.length - 1;
-        const sanskrit = lines.map((l, j) => (j === last ? `${l.replace(/[।|]\s*$/, '')} ॥` : l)).join('\n');
+        const sanskrit = verseText(lines);
         verses.push({
           number: `${h}.${k + 1}`,
           sanskrit,
