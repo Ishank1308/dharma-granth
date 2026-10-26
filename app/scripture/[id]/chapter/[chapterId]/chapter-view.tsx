@@ -90,7 +90,7 @@ function PartsNav({ parts, current, href }: { parts: ChapterPart[]; current: num
               href={href(p.part)}
               aria-current={p.part === current ? 'page' : undefined}
               title={`श्लोक ${partRange(p)}`}
-              className={`inline-flex items-baseline gap-1.5 rounded-lg border px-2.5 py-1 text-xs transition ${
+              className={`inline-flex min-h-11 items-center gap-1.5 rounded-lg border px-3 py-1 text-xs transition ${
                 p.part === current
                   ? 'border-saffron-500 bg-saffron-600 font-semibold text-white'
                   : 'border-dharma-border text-dharma-text hover:border-saffron-300'
@@ -466,7 +466,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
                 href={prevHref}
                 rel="prev"
                 aria-keyshortcuts="ArrowLeft"
-                className="group inline-flex min-w-0 max-w-[48%] items-start gap-2 text-dharma-muted transition hover:text-dharma-text"
+                className="group inline-flex min-h-11 min-w-0 max-w-[48%] items-start gap-2 py-1 text-dharma-muted transition hover:text-dharma-text"
               >
                 <ArrowLeft className="mt-0.5 h-4 w-4 shrink-0 transition-transform group-hover:-translate-x-0.5" aria-hidden="true" />
                 <span className="min-w-0">
@@ -482,7 +482,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
                 href={nextHref}
                 rel="next"
                 aria-keyshortcuts="ArrowRight"
-                className="group ml-auto inline-flex min-w-0 max-w-[48%] items-start gap-2 text-right text-dharma-muted transition hover:text-dharma-text"
+                className="group ml-auto inline-flex min-h-11 min-w-0 max-w-[48%] items-start gap-2 py-1 text-right text-dharma-muted transition hover:text-dharma-text"
               >
                 <span className="min-w-0">
                   <span lang="hi" className="block text-sm font-semibold text-saffron-700 dark:text-saffron-300">अध्याय {chapterId + 1}</span>

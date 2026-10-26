@@ -515,7 +515,7 @@ export default function LearnPage() {
 
                   <Link
                     href={`/learn/${course.id}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-serif font-bold bg-saffron-700 text-white hover:bg-saffron-800 transition shadow-xs"
+                    className="tap-target inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-serif font-bold bg-saffron-700 text-white hover:bg-saffron-800 transition shadow-xs"
                   >
                     <span>
                       {completedCount === 0

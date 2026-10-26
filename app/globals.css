@@ -1169,6 +1169,7 @@
         @apply font-serif text-sm font-semibold tabular-nums text-saffron-800;
     }
     .vt-title a {
+        @apply inline-flex min-h-11 min-w-11 items-center;
         color: inherit;
         text-underline-offset: 2px;
     }
@@ -2282,6 +2283,28 @@ svg.lucide {
 @media (min-width: 1024px) {
     .liquid-dock {
         bottom: 1.5rem;
+    }
+}
+
+/* Touch screens: every control at least 44px. A button centres its content, so a minimum size
+   keeps its look; links that act as buttons opt in with .tap-target, and the min-heights sized
+   for a mouse (28–40px) grow. Inline text links and switches are left as they are. */
+@media (pointer: coarse) {
+    button:not([role='switch']):not(.tap-exempt),
+    summary,
+    select,
+    input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='hidden']),
+    .tap-target,
+    .min-h-\[28px\],
+    .min-h-\[32px\],
+    .min-h-\[36px\],
+    .min-h-\[38px\],
+    .min-h-\[40px\] {
+        min-height: 44px;
+    }
+    button:not([role='switch']):not(.tap-exempt),
+    .tap-target {
+        min-width: 44px;
     }
 }
 

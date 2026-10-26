@@ -409,7 +409,7 @@ export function VerseGraphNetwork({ scriptureId, chapterId, verseId, currentVers
                 <div className="self-start sm:self-center">
                   <Link
                     href={activeNode.href}
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-4 py-2 text-xs font-bold text-white transition shadow-2xs"
+                    className="tap-target inline-flex items-center gap-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-4 py-2 text-xs font-bold text-white transition shadow-2xs"
                   >
                     <span>{activeNode.type === 'concept_connection' ? 'Explore Concept' : 'Read Verse'}</span>
                     <ArrowRight className="h-3.5 w-3.5" />

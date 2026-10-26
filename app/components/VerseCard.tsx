@@ -466,7 +466,7 @@ export function VerseCard({
               type="button"
               onClick={onToggleSpatial ?? onOpenFocus}
               aria-pressed={onToggleSpatial ? spatialFocused : undefined}
-              className="group/hdr flex min-h-11 items-center gap-3 rounded-lg px-1 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dharma-card"
+              className="group/hdr flex min-h-11 min-w-11 items-center gap-3 rounded-lg px-1 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dharma-card"
               title={onToggleSpatial ? (spatialFocused ? 'श्लोक नीचे रखें · Lower this verse' : 'श्लोक उठाएँ · Lift this verse into focus') : 'एकाग्रता मोड में पढ़ें (Focus Mode)'}
             >
               <span className="sr-only">श्लोक</span>
