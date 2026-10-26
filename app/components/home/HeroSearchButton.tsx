@@ -21,7 +21,7 @@ export function HeroSearchButton() {
     >
       <Search className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
       <span className="min-w-0 flex-1 truncate">Search a verse, word or question</span>
-      <kbd className="shrink-0 rounded-md bg-dharma-text/[0.07] px-1.5 py-0.5 font-sans text-xs text-dharma-muted">{shortcut}</kbd>
+      <kbd className="shrink-0 rounded-md bg-dharma-text/[0.07] px-1.5 py-0.5 font-sans text-xs text-dharma-text-secondary">{shortcut}</kbd>
     </button>
   );
 }

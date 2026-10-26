@@ -378,7 +378,7 @@ export function VerseReader(props: VerseReaderProps) {
       >
         <Icon className="h-4 w-4 shrink-0 text-dharma-saffron" aria-hidden="true" />
         <span className="leading-tight">
-          <span className="block text-[11px] font-medium text-dharma-muted">
+          <span className="block text-[11px] font-medium text-dharma-text-secondary">
             <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null ? ` · ${text}` : ''}
           </span>
           <span lang="hi" className="font-devanagari text-sm">{verseLine}</span>
