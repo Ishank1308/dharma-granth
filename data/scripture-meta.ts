@@ -372,6 +372,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     isCurated: true,
     tags: ["Epic","Rama","Sita","Dharma","Hanuman","Valmiki","AdiKavya","Itihasa"],
     hasData: true,
+    selectedVerses: true,
   },
   {
     id: "mahabharata",
@@ -404,6 +405,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     isCurated: true,
     tags: ["Bhakti","Rama","Tulsidas","Awadhi"],
     hasData: true,
+    selectedVerses: true,
   },
   {
     id: "vishnupurana",
@@ -517,6 +519,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     isCurated: true,
     tags: ["Purana","Brahma","Bhakti","Rama","Shiva","Tirtha","KarmaYoga","Mahapurana"],
     hasData: true,
+    selectedVerses: true,
   },
   {
     id: "brahmandpuran",
@@ -576,6 +579,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     isCurated: true,
     tags: ["Purana","Kalki","Vishnu","KaliYuga","Avatar","Prophecy","YugaCycle"],
     hasData: true,
+    selectedVerses: true,
   },
   {
     id: "naradabhaktisutra",
@@ -762,6 +766,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     isCurated: true,
     tags: ["Advaita","NonDual","Consciousness","JnanaYoga","Vasistha","Vasishtha","Rama","JivanMukti","Vasana","SelfEnquiry","Brahman","Vairagya","Viveka","Mumukshutva","Maya","Prakarana","YogaVasistha"],
     hasData: true,
+    selectedVerses: true,
   },
   {
     id: "ravanasamhita",
@@ -778,6 +783,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     isCurated: true,
     tags: ["Tantra","Shiva","Ravana","Mantra","Jyotisha","Ayurveda","Niti","Vastu","SamudrikaShastra","Sangita","Yoga","MokshaVichara","TantraVidhi","ShaktiUpasana","KarmaVichara","YuddhaNiti","MrityuVichara","BhaktiRahasya","Stotra","Sharanagati","ShivaUpasana","KnowledgeWithoutSurrender"],
     hasData: true,
+    selectedVerses: true,
   },
   {
     id: "shivasamhita",
@@ -851,6 +857,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     isCurated: true,
     tags: ["Purana","Krishna","Radha","Shakti","Brahman","Bhakti","Mahapurana","Prakriti","KaliYuga","RasaLila","ParaBrahman","DivineFeminine","Ganesha"],
     hasData: true,
+    selectedVerses: true,
   },
   {
     id: "vamanpuran",
@@ -880,6 +887,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     isCurated: true,
     tags: ["Purana","Varaha","Vishnu","Bhudevi","Earth","Dashavatara","Prapatti","Ahimsa","Mahapurana","Dharma","EcologicalDharma","Surrender"],
     hasData: true,
+    selectedVerses: true,
   },
   {
     id: "vayupuran",

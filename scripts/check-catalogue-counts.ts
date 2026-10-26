@@ -26,6 +26,10 @@ for (const meta of scriptureCatalog) {
   if (meta.canonicalTotalVerses != null && meta.canonicalTotalVerses <= verses) {
     failures.push(`${meta.id}: canonicalTotalVerses ${meta.canonicalTotalVerses} is not larger than the ${verses} verses held`);
   }
+  // A book labelled "Selected verses" must really be a small part of a larger whole.
+  if (meta.selectedVerses && !(meta.canonicalTotalVerses != null && meta.canonicalTotalVerses > verses * 5)) {
+    failures.push(`${meta.id}: labelled as selected verses but holds ${verses} of ${meta.canonicalTotalVerses ?? '?'}`);
+  }
 }
 
 if (failures.length) {

@@ -222,6 +222,12 @@ export default function ScripturePage({ params }: PageProps) {
           <FadeUp delay={0.15}>
             <p className="mt-3 max-w-2xl text-base leading-7 text-dharma-muted line-clamp-2">{meta.description}</p>
             {meta.author && <p className="mt-2 text-sm font-semibold text-dharma-muted">Attributed to {meta.author}</p>}
+            {meta.selectedVerses && heldVerses > 0 && (
+              <p className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-saffron-300 bg-saffron-50 px-3 py-1 text-xs font-bold text-saffron-800 dark:bg-saffron-500/10 dark:text-saffron-200">
+                <span lang="hi" className="font-devanagari">चयनित श्लोक</span> <span aria-hidden="true">·</span>{' '}
+                <span lang="en">Selected verses, not the full text</span>
+              </p>
+            )}
             {heldVerses > 0 && (
               // What the library holds, and, for a partial text, of how much.
               <p className="mt-2 text-sm text-dharma-muted">
