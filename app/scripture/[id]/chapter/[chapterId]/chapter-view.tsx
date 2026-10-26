@@ -34,6 +34,8 @@ import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPart } from '@/lib/chapter-parts';
 import { CONNECTIONS, type Connection } from '@/data/study-content';
+import { MeaningPendingNotice } from '@/app/components/MeaningPending';
+import { commentaryOf, verseHasMeaning } from '@/lib/verse-has-meaning';
 
 export interface ChapterParams {
   id: string;
@@ -257,6 +259,13 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       : undefined;
   const summaryCollection = getChapterSummaryCollection(meta.id);
   const chapterSummary = getChapterSummary(meta.id, chapter.id);
+
+  // Verses on this page whose meaning is not published yet (see MeaningPending): counted once, in the HTML.
+  const pageCommentary = initialChapter?.commentary ?? readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId);
+  const pageHasMeaning = pageVerses.map((v) => verseHasMeaning(v, commentaryOf(pageCommentary, chapterId, v.number)));
+  const pendingCount = pageHasMeaning.filter((h) => !h).length;
+  const pendingSummary = (chapterSummary?.summaryHi || (seeded ? chapter.summary : undefined) || '').trim() || undefined;
+  const pageWithMeaning = pageVerses.filter((_, i) => pageHasMeaning[i]).slice(0, 6).map((v) => String(v.number));
   const hasChapterContext = Boolean(chapterSummary || getChapterOrientation(meta.id, chapter.id));
 
   // Only send the current chapter part's existing, approved editorial links
@@ -408,6 +417,15 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
               parts={parts.map(({ part: p, first, last }) => ({ part: p, first, last }))}
             />
           </>
+        )}
+        {pendingCount > 0 && (
+          <MeaningPendingNotice
+            chapterId={chapter.id}
+            pending={pendingCount}
+            total={pageVerses.length}
+            summary={pendingSummary}
+            withMeaning={pageWithMeaning}
+          />
         )}
         {/* With initialChapter, the reader's server render is the plain
             VerseText list (every verse in the HTML); it swaps in the

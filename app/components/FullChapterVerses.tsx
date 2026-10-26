@@ -17,6 +17,7 @@ import type { ScriptureCategory } from '@/data/types';
 import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
 import { canonicalVerseId } from '@/lib/canonical-verse-id';
 import { versePageHref } from '@/lib/verse-paths';
+import { commentaryOf, nearestWithMeaning, verseHasMeaning, type NearbyMeaning } from '@/lib/verse-has-meaning';
 import { normalizeForSearch, normalizeTransliteration } from '@/lib/normalize-search';
 import { splitVyakhyaCommentary, toAsciiDigits, toDevanagari } from '@/lib/verse-format';
 import { useStudyProgress, type VerseRef } from '@/lib/useStudyProgress';
@@ -661,6 +662,15 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       text: normalizeForSearch([v.sanskrit, v.hindi, v.translation].filter(Boolean).join(' ')),
     }));
   }, [state]);
+
+  // Verses without a meaning link to the nearest ones in the chapter that have one.
+  const meaningNearby = useMemo(() => {
+    if (state.kind !== 'ready') return new Map<string, NearbyMeaning>();
+    return nearestWithMeaning(
+      state.verses.map((v) => String(v.number)),
+      state.verses.map((v) => verseHasMeaning(v, commentaryOf(state.commentary, chapterId, v.number))),
+    );
+  }, [state, chapterId]);
 
   const filteredVerses = useMemo(() => {
     if (state.kind !== 'ready') return [];
@@ -1413,6 +1423,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     onPlayRecitation={() => togglePlayVerse(v)}
                     onOpenSvadhyaya={handleOpenSvadhyaya}
                     isActive={index === activeVerseIndex}
+                    meaningNearby={meaningNearby.get(String(v.number))}
                   />
                   </SpatialShloka>
                 </div>
