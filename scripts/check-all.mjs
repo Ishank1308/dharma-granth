@@ -24,6 +24,7 @@ const CHECKS = [
   'scripts/check-wisdom.ts',
   'scripts/check-commentary-quality.ts',
   'scripts/check-published-scriptures.ts',
+  'scripts/check-meaning-alignment.ts',
   'scripts/test-ocr-hindi-review.ts',
 ];
 
