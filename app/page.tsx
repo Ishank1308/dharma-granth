@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
-import { HeroSacredGeometry } from '@/app/components/liquid/HeroSacredGeometry';
 import { SplashScreen } from '@/app/components/SplashScreen';
+import { HomeHero } from '@/app/components/home/HomeHero';
+import { TodayVerseCard } from '@/app/components/home/TodayVerseCard';
 import { ContinueReading } from '@/app/components/ContinueReading';
-import { VerseOfTheDayCompact } from '@/app/components/VerseOfTheDayCompact';
-import { GranthBentoGrid } from '@/app/components/liquid/GranthBentoGrid';
+import { HomeLibrary } from '@/app/components/home/HomeLibrary';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
 import { SiteFooter } from '@/app/components/SiteFooter';
 
@@ -40,26 +40,23 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <main className="min-h-screen bg-dharma-bg text-dharma-text selection:bg-amber-200 selection:text-amber-900">
+      <main className="min-h-screen bg-dharma-bg text-dharma-text">
         {/* Brand splash: CSS-only, once per session, hidden from assistive tech */}
         <SplashScreen />
 
-        {/* 1. What this is, and search: the yantra hero with the ⌘K glass pill */}
-        <HeroSacredGeometry />
+        {/* 1. The promise, the way in, and search */}
+        <HomeHero />
 
-        {/* 2. Continue reading, or a beginner path when there is no history */}
-        <ContinueReading />
+        {/* 2. Today's verse, then the reader's own place (nothing on a first visit) */}
+        <div className="mx-auto flex max-w-[980px] flex-col gap-4 px-5">
+          <TodayVerseCard />
+          <ContinueReading />
+        </div>
 
-        {/* 3. Today's verse, shown once */}
-        <VerseOfTheDayCompact />
+        {/* 3. The library as book tiles */}
+        <HomeLibrary />
 
-        {/* 4. The library: Śruti and Smṛti as a Bento grid */}
-        <GranthBentoGrid />
-
-        {/* 5. Trust, sourcing and methodology.
-            Cut from Home (audit 2026-10-22, P0): HomeDiscoveryBento repeated the daily verse and the resume card;
-            MoodCompass and LifeSituationsSection repeated the hero's "Where are you right now?" picker;
-            CategoryExploreSection was a second library; the Sadhana preview is reachable from the nav. */}
+        {/* 4. Sourcing and methodology */}
         <HomeTrustStrip />
       </main>
       <SiteFooter />

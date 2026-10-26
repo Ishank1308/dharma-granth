@@ -2860,28 +2860,34 @@ svg.lucide {
    The site-wide chrome in Apple's idiom: one thin translucent bar on top,
    one on the bottom on phones, hairline separators and a single tint
    (--dharma-saffron). Page layouts adopt the rest page by page. */
-.apple-bar {
-    background-color: color-mix(in srgb, var(--dharma-bg) 78%, transparent);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-    border-color: color-mix(in srgb, var(--dharma-text) 10%, transparent);
-}
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .apple-bar { background-color: var(--dharma-bg); }
-}
-.apple-icon-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 9999px;
-    color: var(--dharma-text);
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-.apple-icon-button:hover {
-    background-color: color-mix(in srgb, var(--dharma-text) 7%, transparent);
-}
-.apple-icon-button:active {
-    background-color: color-mix(in srgb, var(--dharma-text) 12%, transparent);
+@layer components {
+    .apple-bar {
+        background-color: color-mix(in srgb, var(--dharma-bg) 78%, transparent);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        backdrop-filter: saturate(180%) blur(20px);
+        border-color: color-mix(in srgb, var(--dharma-text) 10%, transparent);
+    }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+        .apple-bar { background-color: var(--dharma-bg); }
+    }
+    .apple-icon-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        color: var(--dharma-text);
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .apple-icon-button:hover {
+        background-color: color-mix(in srgb, var(--dharma-text) 7%, transparent);
+    }
+    .apple-icon-button:active {
+        background-color: color-mix(in srgb, var(--dharma-text) 12%, transparent);
+    }
+    /* Home library tiles: the book's colour, lifted on dark canvases. */
+    .home-book { --book-ink: var(--book); }
+    :root[data-theme='night'] .home-book,
+    :root[data-theme='dark'] .home-book { --book-ink: color-mix(in srgb, var(--book) 55%, #fff); }
 }
 @media print {
     .apple-bar { -webkit-backdrop-filter: none; backdrop-filter: none; }
