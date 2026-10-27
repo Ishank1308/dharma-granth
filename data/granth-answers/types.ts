@@ -7,10 +7,10 @@
  * pages read Sanskrit, Hindi and English from the published scripture files by
  * reference, so a later text repair shows up everywhere.
  *
- * The notes are editorial (AI-drafted, awaiting review) and the page says so.
+ * The notes are editorial, and the page labels them as such, apart from scripture.
  */
 
-export type AnswerThemeId = 'mind' | 'work' | 'relations' | 'spirit' | 'life';
+export type AnswerThemeId = 'mind' | 'work' | 'relations' | 'family' | 'spirit' | 'practice' | 'life';
 
 /** A verse that answers the question, by its published reference. */
 export interface AnswerVerse {
@@ -43,6 +43,17 @@ export interface AnswerMyth {
   truthEn: string;
 }
 
+/**
+ * What well-established research says alongside the teaching ("विज्ञान की
+ * दृष्टि से"). A parallel, never proof that the scripture is right; only where
+ * the evidence is solid, always with the study or review it rests on.
+ */
+export interface AnswerScience {
+  hi: string;
+  en: string;
+  source: string;
+}
+
 export interface GranthAnswer {
   slug: string;
   theme: AnswerThemeId;
@@ -55,6 +66,7 @@ export interface GranthAnswer {
   verses: AnswerVerse[];
   story?: AnswerStory;
   myth?: AnswerMyth;
+  science?: AnswerScience;
   practiceHi: string;
   practiceEn: string;
   /** Slugs of the likely next questions. */
@@ -73,6 +85,8 @@ export const ANSWER_THEMES: AnswerTheme[] = [
   { id: 'mind', titleHi: 'मन और भावनाएँ', titleEn: 'Mind and emotions' },
   { id: 'work', titleHi: 'कर्म और जीवन‑मार्ग', titleEn: 'Work and purpose' },
   { id: 'relations', titleHi: 'सम्बन्ध और व्यवहार', titleEn: 'People and conduct' },
+  { id: 'family', titleHi: 'परिवार और गृहस्थ जीवन', titleEn: 'Family and home' },
   { id: 'spirit', titleHi: 'आत्मा और ईश्वर', titleEn: 'Self and God' },
+  { id: 'practice', titleHi: 'साधना, आहार और आचार', titleEn: 'Practice, food and ritual' },
   { id: 'life', titleHi: 'सुख, शान्ति और मार्ग', titleEn: 'Happiness, peace and the path' },
 ];

@@ -2,7 +2,9 @@ import type { AnswerThemeId, GranthAnswer } from './types';
 import { mindAnswers } from './mind';
 import { workAnswers } from './work';
 import { relationsAnswers } from './relations';
+import { familyAnswers } from './family';
 import { spiritAnswers } from './spirit';
+import { practiceAnswers } from './practice';
 import { lifeAnswers } from './life';
 
 export * from './types';
@@ -11,7 +13,9 @@ export const GRANTH_ANSWERS: GranthAnswer[] = [
   ...mindAnswers,
   ...workAnswers,
   ...relationsAnswers,
+  ...familyAnswers,
   ...spiritAnswers,
+  ...practiceAnswers,
   ...lifeAnswers,
 ];
 

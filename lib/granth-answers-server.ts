@@ -36,6 +36,8 @@ const NAMES: Record<string, { en: string; hi: string }> = {
   ishavasya: { en: 'Isha Upanishad', hi: 'ईशावास्योपनिषद्' },
   shvetashvatara: { en: 'Shvetashvatara Upanishad', hi: 'श्वेताश्वतरोपनिषद्' },
   kena: { en: 'Kena Upanishad', hi: 'केनोपनिषद्' },
+  mandukya: { en: 'Mandukya Upanishad', hi: 'माण्डूक्योपनिषद्' },
+  vivekchudamani: { en: 'Vivekachudamani', hi: 'विवेकचूडामणि' },
 };
 
 /** Same stub test the shard step uses to hide "… श्लोक का अर्थ।" filler. */
