@@ -335,7 +335,7 @@ export const mindAnswers: GranthAnswer[] = [
     theme: 'mind',
     questionHi: 'मन पर बहुत दबाव रहता है। शान्त कैसे रहूँ?',
     questionEn: 'I am under constant pressure. How do I stay calm?',
-    terms: ['tanav bahut', 'बहुत तनाव', 'tension bahut', 'तनाव', 'दबाव', 'stress', 'stressed', 'pressure', 'tension', 'tanav', 'dabav', 'pareshan', 'परेशान', 'pareshani', 'overwhelmed', 'burnout', 'calm', 'shant kaise rahe'],
+    terms: ['tanav bahut', 'बहुत तनाव', 'tension bahut', 'तनाव', 'दबाव', 'stress', 'stressed', 'pressure', 'tension', 'tanav', 'dabav', 'pareshan', 'परेशान', 'pareshani', 'overwhelmed', 'calm', 'shant kaise rahe'],
     sarHi: 'दबाव तब बढ़ता है जब मन परिणाम को पकड़कर बैठ जाता है। गीता समत्व सिखाती है: सफलता‑असफलता में सम रहकर काम करना। मन को शान्त करने का पहला उपाय शरीर में है: धीमी श्वास।',
     sarEn: 'Pressure grows when the mind clings to the outcome. The Gita teaches evenness: working while staying the same in success and failure. The first way to calm the mind is in the body: slow breath.',
     verses: [

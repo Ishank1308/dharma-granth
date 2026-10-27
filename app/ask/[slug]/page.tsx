@@ -149,6 +149,13 @@ export default function GranthAnswerPage({ params }: { params: { slug: string } 
               <p lang="hi" className="font-devanagari font-semibold">यह पृष्ठ अध्ययन है, उपचार नहीं।</p>
               <p lang="hi" className="font-devanagari">यदि दुःख या निराशा सँभालना कठिन हो, तो योग्य परामर्शदाता, चिकित्सक या स्थानीय सहायता‑सेवा से सम्पर्क करें।</p>
               <p className="text-dharma-muted">This page is for study, not treatment. If distress is hard to carry, please reach a counsellor, doctor or local helpline.</p>
+              {answer.help?.map((h) => (
+                <p key={h.number}>
+                  <span lang="hi" className="font-devanagari">{h.nameHi}:</span>{' '}
+                  <span>{h.nameEn} </span>
+                  <a href={`tel:${h.number.replace(/-/g, '')}`} className="font-semibold underline underline-offset-2">{h.number}</a>
+                </p>
+              ))}
               <p>
                 <span lang="hi" className="font-devanagari">भारत में निःशुल्क, चौबीसों घण्टे:</span>{' '}
                 <span>Free, 24 hours in India: Tele‑MANAS </span>
