@@ -83,6 +83,8 @@ export interface GranthAnswer {
   care?: boolean;
   /** Helplines for this problem, listed before Tele-MANAS in the care note. */
   help?: AnswerHelp[];
+  /** Thoughts of not wanting to live: the page opens with Tele-MANAS and 112, before the सार. */
+  crisis?: boolean;
 }
 
 export interface AnswerTheme {

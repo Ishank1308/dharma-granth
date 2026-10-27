@@ -126,6 +126,21 @@ export default function GranthAnswerPage({ params }: { params: { slug: string } 
             <span className="mt-2 block text-xl font-semibold text-dharma-muted sm:text-2xl">{answer.questionEn}</span>
           </h1>
 
+          {answer.crisis && (
+            <aside className="mt-6 rounded-3xl border-2 border-sky-400/60 bg-sky-50 p-5 dark:border-sky-700 dark:bg-sky-950/40 sm:p-6" aria-label="Talk to someone now">
+              <p lang="hi" className="font-devanagari text-lg font-semibold leading-relaxed">आप अकेले नहीं हैं। अभी किसी से बात करना चाहें, तो Tele‑MANAS पर निःशुल्क, चौबीसों घण्टे, अपनी भाषा में बात कर सकते हैं।</p>
+              <p className="mt-1 text-dharma-muted">You are not alone. To talk to someone now, Tele‑MANAS is free, 24 hours, in your own language.</p>
+              <p className="mt-3 flex flex-wrap gap-3">
+                <a href="tel:14416" className="inline-flex items-center gap-2 rounded-full bg-sky-700 px-4 py-2 font-semibold text-white hover:bg-sky-800">
+                  <span>Tele‑MANAS 14416</span>
+                </a>
+                <a href="tel:112" className="inline-flex items-center gap-2 rounded-full border border-sky-700 px-4 py-2 font-semibold text-sky-800 dark:text-sky-200">
+                  <span lang="hi" className="font-devanagari">तुरन्त खतरा:</span> <span>Emergency 112</span>
+                </a>
+              </p>
+            </aside>
+          )}
+
           <div className="mt-6 rounded-3xl border-2 border-saffron-500/40 bg-dharma-card p-5 shadow-sm sm:p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-saffron-700">
               <span lang="hi">सार</span> <span>In one line</span>
