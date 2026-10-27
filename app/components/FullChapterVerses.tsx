@@ -1324,7 +1324,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                       wordMeaning={v.wordMeaning}
                       bhashya={focusedVerse === String(v.number) ? bhashyaFor(v) : []}
                     >
-                      <VerseText verse={v} chapterId={chapterId} href={versePageHref(scriptureId, chapterId, v.number)} />
+                      <VerseText verse={v} chapterId={chapterId} scriptureId={scriptureId} href={versePageHref(scriptureId, chapterId, v.number)} />
                     </SpatialShloka>
                   </div>
                 );

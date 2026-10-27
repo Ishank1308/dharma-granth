@@ -9,6 +9,7 @@
     "build": "next build",
     "postbuild": "npm run check:export && npm run check:rules && npm run check:sitemap && npm run check:js-budget && npm run prune:export",
     "check:js-budget": "node scripts/check-js-budget.mjs",
+    "audit:verses": "node scripts/audit-verse-structure.mjs",
     "prune:export": "node scripts/prune-export.mjs",
     "check:export": "node scripts/check-export.mjs",
     "check:rules": "node scripts/check-site-rules.mjs",

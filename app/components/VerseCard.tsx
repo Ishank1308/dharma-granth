@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { REVEAL_SEQUENCE } from '@/app/components/motion/primitives';
 import {
@@ -26,7 +26,7 @@ import Link from 'next/link';
 import type { ScriptureCategory } from '@/data/types';
 import type { VerseHighlight } from '@/lib/useStudyProgress';
 import { resolveKeywordTarget } from '@/lib/keyword-links';
-import { toAsciiDigits, verseLines } from '@/lib/verse-format';
+import { isLongPassage, meaningState, MEANING_COPY, verseLines, verseMarkNumber, formatVerseRef } from '@/lib/verse-format';
 import { shareVerseUrl } from '@/lib/verse-paths';
 import { parseWordMeanings } from '@/lib/word-gloss';
 import { SITE_URL } from '@/lib/jsonld';
@@ -234,6 +234,44 @@ function VerseReference({ label }: { label: string }) {
   );
 }
 
+/** One translation; a passage covering several verses carries its label, and a long one is folded under it. */
+function PassageText({ lang, label, long, className, children }: { lang: 'hi' | 'en'; label?: string; long: boolean; className: string; children: ReactNode }) {
+  const labelClass = `text-xs text-dharma-muted ${lang === 'hi' ? 'font-devanagari' : ''}`;
+  if (label && long) {
+    return (
+      <details>
+        <summary lang={lang} className={`cursor-pointer ${labelClass} font-medium`}>
+          {label}
+        </summary>
+        <p lang={lang} className={`mt-2 whitespace-pre-line ${className}`}>
+          {children}
+        </p>
+      </details>
+    );
+  }
+  return (
+    <>
+      {label && (
+        <p lang={lang} className={`mb-1 ${labelClass}`}>
+          {label}
+        </p>
+      )}
+      <p lang={lang} className={className}>
+        {children}
+      </p>
+    </>
+  );
+}
+
+/** A meaning not written yet in one language, said quietly in the slot it will fill. */
+function PendingMeaning({ lang, children }: { lang: 'hi' | 'en'; children: ReactNode }) {
+  return (
+    <p lang={lang} className={`text-sm italic text-dharma-muted ${lang === 'hi' ? 'font-devanagari' : ''}`}>
+      {children}
+    </p>
+  );
+}
+
 const iconButton =
   'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-transparent text-dharma-muted/80 transition-colors duration-200 hover:bg-dharma-card-soft hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500';
 
@@ -435,18 +473,17 @@ export function VerseCard({
   const hasExplanation = Boolean(vyakhya || commentary);
   const scienceIsHi = meaning.scienceIsHi || isMostlyDevanagari(science);
   const lessonIsHi = meaning.lessonIsHi || isMostlyDevanagari(lesson);
-  const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null || v.hindiReviewRequired) && layers.hindi);
-  const showEnglish = Boolean((v.translation || v.translationSeeVerse != null) && layers.english);
+  // The अर्थ slot is always there for each language the reader shows; a meaning not written yet says so.
+  const state = meaningState(v);
+  const showHindi = layers.hindi;
+  const showEnglish = layers.english;
+  const bothPending = showHindi && showEnglish && state.hi === 'pending' && state.en === 'pending';
 
   const modernParsed = useMemo(() => (lesson ? parseModernContext(lesson) : null), [lesson]);
   const showArth = showHindi || showEnglish;
   const hasStudyContent = Boolean(
     v.wordMeaning || hasExplanation || science || lesson || literaryMeta.isCurated
     || insight?.marma || insight?.situations.length || v.keywords?.length || relatedTeachings?.length,
-  );
-  const hasMeaning = Boolean(
-    v.hindi || v.translation || v.hindiSeeVerse != null || v.translationSeeVerse != null || v.hindiReviewRequired
-    || hasExplanation || science || lesson || literaryMeta.isCurated || insight?.marma,
   );
 
   // The shloka, transliteration and meanings reveal in that order through CSS (.reveal-seq / data-reveal in
@@ -481,12 +518,12 @@ export function VerseCard({
               title={onToggleSpatial ? (spatialFocused ? 'श्लोक नीचे रखें · Lower this verse' : 'श्लोक उठाएँ · Lift this verse into focus') : 'एकाग्रता मोड में पढ़ें (Focus Mode)'}
             >
               <span className="sr-only">श्लोक</span>
-              <VerseReference label={`${toAsciiDigits(chapterId)}.${toAsciiDigits(verseLabel)}`} />
+              <VerseReference label={formatVerseRef(scriptureId, chapterId, verseLabel)} />
             </button>
           ) : (
             <div className="flex min-h-11 items-center gap-3 px-1">
               <span className="sr-only">श्लोक</span>
-              <VerseReference label={`${toAsciiDigits(chapterId)}.${toAsciiDigits(verseLabel)}`} />
+              <VerseReference label={formatVerseRef(scriptureId, chapterId, verseLabel)} />
             </div>
           )}
 
@@ -724,7 +761,7 @@ export function VerseCard({
                   className="verse-mark mt-2 block text-base font-semibold text-saffron-700/90 dark:text-amber-300/90"
                   title={chandas ? `छन्दः ${chandas.name} · ${chandas.nameEn} (${chandas.syllables} वर्ण)` : undefined}
                 >
-                  ॥ {toAsciiDigits(verseLabel)} ॥
+                  ॥ {verseMarkNumber(verseLabel)} ॥
                 </span>
               </p>
             )}
@@ -816,51 +853,78 @@ export function VerseCard({
           <div className="sacred-flow-wrap mt-5" data-reveal="3">
             {/* ── Arth: the literal meaning, always first after the verse ── */}
             {showArth && (
-              <section id={`verse-${v.number}-arth`} aria-label={`अर्थ · Meaning, ${toAsciiDigits(chapterId)}.${toAsciiDigits(verseLabel)}`}>
+              <section id={`verse-${v.number}-arth`} aria-label={`अर्थ · Meaning, ${formatVerseRef(scriptureId, chapterId, verseLabel)}`}>
               <div className="space-y-4">
+                {bothPending ? (
+                  <div className="flex flex-col gap-3">
+                    {/* No meaning in either language: why, the transliteration when that layer is off, and the nearest verses with one. */}
+                    <MeaningPendingNote
+                      chapterId={chapterId}
+                      transliteration={!layers.translit ? v.transliteration : undefined}
+                      nearby={meaningNearby}
+                    />
+                    {!chantingMode && (
+                      <button
+                        type="button"
+                        onClick={onContribute}
+                        className="inline-flex min-h-[44px] items-center gap-1 self-start text-xs font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300"
+                      >
+                        <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
+                        <span lang="hi" className="font-devanagari">अर्थ सुझाएँ</span>
+                        <span lang="en">Suggest one</span>
+                      </button>
+                    )}
+                  </div>
+                ) : (
+                <>
                 {showHindi && (
                   <div className={`-mx-2 rounded-xl px-2 py-1 transition-colors duration-200 ${
                     isReciting && activeTranslationLang === 'hi'
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''
                   }`}>
-                    {(v.hindiReviewRequired || v.hindiRange) && (
-                      <p lang="hi" className="mb-1 text-xs text-dharma-muted">
-                        {v.hindiReviewRequired
-                          ? 'हिन्दी अर्थ · स्रोत सत्यापनाधीन'
-                          : `श्लोक ${toAsciiDigits(v.hindiRange!.replace('-', '–'))} का हिंदी अनुवाद`}
-                      </p>
-                    )}
-                    {v.hindiUnproofread && v.hindi && (
+                    {state.hi === 'text' && v.hindiUnproofread && (
                       <p className="mb-1 text-xs text-dharma-muted">
-                        <span lang="hi" className="font-devanagari">मुद्रित संस्करण से, प्रूफ़ जाँच शेष</span>{' '}
+                        <span lang="hi" className="font-devanagari">{MEANING_COPY.hiUnproofread}</span>{' '}
                         <span aria-hidden="true">·</span> <span lang="en">From the printed edition, not yet proofread</span>
                       </p>
                     )}
-                    {!v.hindi && v.hindiSeeVerse != null && (
+                    {state.hi === 'text' && (
+                      <PassageText
+                        lang="hi"
+                        label={v.hindiRange ? MEANING_COPY.hiRange(v.hindiRange) : undefined}
+                        long={Boolean(v.hindiRange) && isLongPassage(v.hindi)}
+                        className={`font-devanagari ${translationFontSizeClass} text-dharma-text`}
+                      >
+                        <GlossaryText text={v.hindi!} />
+                        {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
+                          <span className="ml-2 align-middle"><DraftBadge lang="hi" /></span>
+                        )}
+                        {v.hindiSource === 'ai' && (
+                          <span
+                            className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
+                            title="संस्कृत से मशीन-अनुवादित; विद्वत् अनुवाद नहीं"
+                          >
+                            AI अनुवाद
+                          </span>
+                        )}
+                      </PassageText>
+                    )}
+                    {state.hi === 'review' && (
                       <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-muted">
-                        इस श्लोक का अर्थ श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
+                        {MEANING_COPY.hiReview}
+                      </p>
+                    )}
+                    {state.hi === 'with' && (
+                      <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-muted">
                         <a href={`#verse-${v.hindiSeeVerse}`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
-                          देखें श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} ↑
+                          {MEANING_COPY.hiWith(v.hindiSeeVerse!)}
                         </a>
                       </p>
                     )}
-                    <p lang="hi" className={`font-devanagari ${translationFontSizeClass} text-dharma-text`}>
-                      {v.hindiReviewRequired
-                        ? 'हिन्दी अर्थ स्रोत-संस्करण से सत्यापनाधीन है।'
-                        : v.hindi && <GlossaryText text={v.hindi} />}
-                      {!v.hindiReviewRequired && meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
-                        <span className="ml-2 align-middle"><DraftBadge lang="hi" /></span>
-                      )}
-                      {!v.hindiReviewRequired && v.hindiSource === 'ai' && (
-                        <span
-                          className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
-                          title="संस्कृत से मशीन-अनुवादित; विद्वत् अनुवाद नहीं"
-                        >
-                          AI अनुवाद
-                        </span>
-                      )}
-                    </p>
+                    {state.hi === 'pending' && (
+                      <PendingMeaning lang="hi">{MEANING_COPY.hiPending}</PendingMeaning>
+                    )}
                   </div>
                 )}
 
@@ -870,27 +934,13 @@ export function VerseCard({
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''
                   }`}>
-                    {!v.translation && v.translationSeeVerse != null && (
-                      <p lang="en" className="text-sm leading-relaxed text-dharma-muted">
-                        This verse is translated together with verse {String(v.translationSeeVerse)}.{' '}
-                        <a href={`#verse-${v.translationSeeVerse}`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
-                          See verse {String(v.translationSeeVerse)} ↑
-                        </a>
-                      </p>
-                    )}
-                    {v.translation && v.translationRange && (
-                      // A whole hymn translated as one passage: folded, so the verses below stay close.
-                      <details>
-                        <summary lang="en" className="cursor-pointer text-sm font-medium text-saffron-800 dark:text-saffron-300">
-                          English for verses {v.translationRange.replace('-', '–')}, translated together
-                        </summary>
-                        <p lang="en" className={`mt-2 whitespace-pre-line font-serif ${translationFontSizeClass} text-dharma-text`}>
-                          {v.translation}
-                        </p>
-                      </details>
-                    )}
-                    {v.translation && !v.translationRange && (
-                      <p lang="en" className={`font-serif ${translationFontSizeClass} text-dharma-text`}>
+                    {state.en === 'text' && (
+                      <PassageText
+                        lang="en"
+                        label={v.translationRange ? MEANING_COPY.enRange(v.translationRange) : undefined}
+                        long={Boolean(v.translationRange) && isLongPassage(v.translation)}
+                        className={`font-serif ${translationFontSizeClass} text-dharma-text`}
+                      >
                         {v.translation}
                         {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
                           <span className="ml-2 align-middle"><DraftBadge lang="en" /></span>
@@ -903,9 +953,21 @@ export function VerseCard({
                             {STUDY_TRANSLATION_SHORT.en}
                           </span>
                         )}
+                      </PassageText>
+                    )}
+                    {state.en === 'with' && (
+                      <p lang="en" className="text-sm leading-relaxed text-dharma-muted">
+                        <a href={`#verse-${v.translationSeeVerse}`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                          {MEANING_COPY.enWith(v.translationSeeVerse!)}
+                        </a>
                       </p>
                     )}
+                    {state.en === 'pending' && (
+                      <PendingMeaning lang="en">{MEANING_COPY.enPending}</PendingMeaning>
+                    )}
                   </div>
+                )}
+                </>
                 )}
               </div>
               </section>
@@ -1299,22 +1361,6 @@ export function VerseCard({
               </VerseStudyDisclosure>
             )}
 
-            {!hasMeaning && (
-              <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-dashed border-dharma-border bg-dharma-bg/60 p-4">
-                <MeaningPendingNote
-                  chapterId={chapterId}
-                  transliteration={!layers.translit ? v.transliteration : undefined}
-                  nearby={meaningNearby}
-                />
-                <button
-                  type="button"
-                  onClick={onContribute}
-                  className="inline-flex items-center gap-1.5 self-start rounded-full border border-saffron-300 bg-saffron-50 px-3 py-1.5 text-xs font-bold text-saffron-800 transition hover:bg-saffron-100 dark:bg-saffron-500/10 dark:text-saffron-200"
-                >
-                  <Edit3 className="h-3.5 w-3.5" aria-hidden="true" /> पहला अर्थ जोड़ें
-                </button>
-              </div>
-            )}
 
           </div>
         )}

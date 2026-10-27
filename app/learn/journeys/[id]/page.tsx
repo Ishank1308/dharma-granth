@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { READING_JOURNEYS, getJourney, isJourneyIndexable } from '@/data/reading-journeys';
 import { readSeededChapter } from '@/lib/read-seeded-chapters';
+import { withPassageMeaning } from '@/lib/verse-format';
 import { getScriptureMeta } from '@/data/scriptures';
 import { clipDescription } from '@/lib/meta-text';
 import { readHref } from '@/lib/verse-paths';
@@ -39,8 +40,9 @@ export default function JourneyPage({ params }: PageProps) {
 
   const lessons: LessonView[] = journey.lessons.map((l) => {
     const chapter = readSeededChapter(l.scriptureId, l.chapter);
-    const verses = (chapter?.chapter.verses ?? []) as Array<{ number: number | string; sanskrit?: string; translation?: string; translationSource?: string }>;
-    const v = verses.find((x) => String(x.number) === String(l.verse));
+    const verses = (chapter?.chapter.verses ?? []) as Array<{ number: number | string; sanskrit?: string; translation?: string; translationSeeVerse?: number | string; translationSource?: string }>;
+    const found = verses.find((x) => String(x.number) === String(l.verse));
+    const v = found && withPassageMeaning(verses, found);
     return {
       ...l,
       reference: `${getScriptureMeta(l.scriptureId)?.title ?? l.scriptureId} ${l.chapter}.${l.verse}`,

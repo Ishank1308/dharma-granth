@@ -6,7 +6,7 @@
  */
 import { readSeededChapter } from './read-seeded-chapters';
 import { commentaryFor } from './verse-meaning';
-import { splitVyakhyaCommentary } from './verse-format';
+import { splitVyakhyaCommentary, withPassageMeaning } from './verse-format';
 import { readHref } from './verse-paths';
 import type { AnswerVerse } from '../data/granth-answers';
 
@@ -58,7 +58,9 @@ interface RawVerse {
   number?: number | string;
   sanskrit?: string;
   hindi?: string;
+  hindiSeeVerse?: number | string;
   translation?: string;
+  translationSeeVerse?: number | string;
   explanation?: string;
   commentary?: string;
   wordMeaning?: string;
@@ -66,7 +68,10 @@ interface RawVerse {
 
 export function resolveAnswerVerse(ref: AnswerVerse): ResolvedAnswerVerse | null {
   const chapter = readSeededChapter(ref.s, ref.c);
-  const verse = (chapter?.chapter.verses as RawVerse[] | undefined)?.find((x) => String(x.number) === ref.v);
+  const verses = chapter?.chapter.verses as RawVerse[] | undefined;
+  const found = verses?.find((x) => String(x.number) === ref.v);
+  // A passage translated as one is published once, on its first verse; the answer shows it with each verse.
+  const verse = verses && found ? withPassageMeaning(verses, found) : undefined;
   if (!verse || isStub(verse.sanskrit) || isStub(verse.hindi) || isStub(verse.translation)) return null;
   const name = NAMES[ref.s] ?? { en: ref.s, hi: ref.s };
   const num = traditionalRef(ref.s, ref.c, ref.v);

@@ -60,8 +60,11 @@ for (const entry of review.entries) {
   }
   assert.equal(published.sanskrit, source.sanskrit, `canonical Sanskrit is unchanged: ${key}`);
   assert.equal(published.transliteration, source.transliteration, `IAST is unchanged: ${key}`);
-  if (refilled) assert.ok(published.translation === undefined || published.translation === source.translation, `English is withheld or unchanged: ${key}`);
-  else assert.equal(published.translation, source.translation, `English translation is unchanged: ${key}`);
+  // English is never rewritten. It is only left out when it belongs to other verses: a template or misplaced line
+  // (findMeaningTemplates in scripts/lib/template-text.ts) or a refilled verse's unaligned English.
+  if (published.translation !== undefined) {
+    assert.equal(published.translation, source.translation, `English translation is unchanged: ${key}`);
+  }
 }
 
 // The control comes from an aligned chapter: chapters whose Hindi drifted are hidden by scripts/lib/meaning-alignment.ts.

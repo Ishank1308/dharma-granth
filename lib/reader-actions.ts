@@ -9,6 +9,7 @@
  */
 
 import { EDITORIAL_DRAFT_LABEL } from '@/lib/editorial-terminology';
+import { formatVerseRef } from '@/lib/verse-format';
 
 export interface ReaderVerseText {
   number: number | string;
@@ -20,7 +21,13 @@ export interface ReaderVerseText {
   hindiRange?: string;
   /** This verse's Hindi is stored on that verse (the first of its range). */
   hindiSeeVerse?: number | string;
+  /** The Hindi meaning is withheld until it is checked against the printed edition. */
+  hindiReviewRequired?: boolean;
   translation?: string;
+  /** The English translates a range of verses together ("24-25"). */
+  translationRange?: string;
+  /** This verse's English is stored on that verse (the first of its range). */
+  translationSeeVerse?: number | string;
   /** व्याख्या: the Hindi exposition. */
   explanation?: string;
   /** Commentary & Explanation: the English exposition, shown after the व्याख्या. */
@@ -70,7 +77,7 @@ export interface ReaderRef {
 const clean = (s?: string): string => (s ?? '').replace(/\s+\n/g, '\n').trim();
 
 export const verseReference = (ref: ReaderRef, verse: ReaderVerseText): string =>
-  `${ref.scriptureTitle} ${ref.chapterId}.${verse.number}`;
+  `${ref.scriptureTitle} ${formatVerseRef(ref.scriptureId, ref.chapterId, verse.number)}`;
 
 /** Human-readable layer labels used in copied and downloaded text. */
 export function layerNote(p: ReaderProvenance, layer: 'hindi' | 'english'): string {

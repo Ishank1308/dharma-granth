@@ -29,6 +29,7 @@ import wawoff2 from "wawoff2";
 import { scriptureCatalog } from "../data/scripture-meta";
 import type { ScriptureMeta } from "../data/types";
 import { readSeededChapter } from "../lib/read-seeded-chapters";
+import { withPassageMeaning } from "../lib/verse-format";
 import { VERSE_PAGE_SCRIPTURE_IDS, verseSlug, verseStaticParams } from "../lib/verse-pages";
 
 const ROOT = resolve(__dirname, "..");
@@ -453,8 +454,10 @@ async function renderVerseImages(fonts: SatoriFont[]): Promise<void> {
       number?: number | string;
       transliteration?: string;
       translation?: string;
+      translationSeeVerse?: number | string;
     }>;
-    const verse = verses.find((item) => verseSlug(item.number) === param.verseId);
+    const found = verses.find((item) => verseSlug(item.number) === param.verseId);
+    const verse = found && withPassageMeaning(verses, found);
     const meta = scriptureCatalog.find((item) => item.id === param.id);
     // Latin script only: satori does not shape Devanagari conjuncts
     // (कर्मण्येवाधिकारस्ते renders as कर्‌मण्‌ये… with visible halants), so the

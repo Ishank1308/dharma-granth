@@ -1216,6 +1216,10 @@
     .vt-label {
         @apply mb-1 text-xs text-dharma-muted;
     }
+    /* A meaning not written yet: said quietly, in the slot the meaning will fill. */
+    .vt-pending {
+        @apply italic;
+    }
     .vt-hi {
         @apply font-devanagari text-base leading-[1.85] text-dharma-text md:text-lg;
     }

@@ -1,6 +1,6 @@
 import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
 import { readChapterCommentary, readSeededChapter, readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
-import { cleanVerseField } from '@/lib/verse-format';
+import { cleanVerseField, withPassageMeaning } from '@/lib/verse-format';
 import { VERSE_PAGE_SCRIPTURE_IDS, verseSlug } from '@/lib/verse-paths';
 import type { VerseIndexFile, VerseRow } from '@/lib/search-verse-index';
 
@@ -16,7 +16,9 @@ interface SeedVerse {
   sanskrit?: string;
   transliteration?: string;
   hindi?: string;
+  hindiSeeVerse?: number | string;
   translation?: string;
+  translationSeeVerse?: number | string;
   explanation?: string;
   commentary?: string;
   hindiSource?: 'ai';
@@ -48,7 +50,10 @@ export function buildVerseIndex(): VerseIndexFile {
       if (!seeded) continue;
       const commentary = readChapterCommentary<HiCommentaryEntry>(id, chapterId);
       const seen = new Set<string>();
-      for (const verse of seeded.chapter.verses as SeedVerse[]) {
+      const verses = seeded.chapter.verses as SeedVerse[];
+      for (const stored of verses) {
+        // A passage translated as one is published on its first verse; each verse of it is found by that text.
+        const verse = withPassageMeaning(verses, stored);
         const slug = verseSlug(verse.number);
         if (!slug || seen.has(slug)) continue;
         seen.add(slug);

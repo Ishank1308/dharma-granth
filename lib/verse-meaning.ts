@@ -8,11 +8,14 @@
 import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
 import { canonicalVerseId } from './canonical-verse-id';
 import { readChapterCommentary, readSeededChapter } from './read-seeded-chapters';
+import { withPassageMeaning } from './verse-format';
 
 export interface VerseLike {
   number?: number | string;
   hindi?: string;
+  hindiSeeVerse?: number | string;
   translation?: string;
+  translationSeeVerse?: number | string;
   explanation?: string;
   commentary?: string;
 }
@@ -52,6 +55,7 @@ const chapterCache = new Map<string, VerseLike[] | null>();
 export function verseMeaningById(scriptureId: string, chapterId: number, verseId: string): VerseMeaningSummary | null {
   const key = `${scriptureId}:${chapterId}`;
   if (!chapterCache.has(key)) chapterCache.set(key, (readSeededChapter(scriptureId, chapterId)?.chapter.verses as VerseLike[] | undefined) ?? null);
-  const verse = chapterCache.get(key)?.find((v) => String(v.number) === verseId);
-  return verse ? verseMeaningSummary(scriptureId, chapterId, verse) : null;
+  const verses = chapterCache.get(key);
+  const verse = verses?.find((v) => String(v.number) === verseId);
+  return verses && verse ? verseMeaningSummary(scriptureId, chapterId, withPassageMeaning(verses, verse)) : null;
 }

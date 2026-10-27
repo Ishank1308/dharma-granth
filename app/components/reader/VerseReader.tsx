@@ -32,7 +32,7 @@ import {
 import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
 import { THEMES, THEME_NAMES, useTheme } from '@/app/components/ThemeProvider';
 import { openGlobalSearch } from '@/lib/search-events';
-import { toAsciiDigits } from '@/lib/verse-format';
+import { formatVerseRef, toAsciiDigits } from '@/lib/verse-format';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import { EmbedVerseDialog } from '@/app/components/EmbedVerseDialog';
@@ -183,8 +183,8 @@ export function VerseReader(props: VerseReaderProps) {
 
   /* ── Sync Active Verse Context to Sacred Soundscape Engine ── */
   useEffect(() => {
-    setCurrentVerseContext(verse.sanskrit, `${scriptureTitle} ${chapterId}.${verse.number}`);
-  }, [verse.sanskrit, scriptureTitle, chapterId, verse.number]);
+    setCurrentVerseContext(verse.sanskrit, `${scriptureTitle} ${formatVerseRef(scriptureId, chapterId, verse.number)}`);
+  }, [verse.sanskrit, scriptureId, scriptureTitle, chapterId, verse.number]);
 
   /* ── MediaSession Lock-Screen Controls & Continuous Pārāyaṇa ── */
   useEffect(() => {
