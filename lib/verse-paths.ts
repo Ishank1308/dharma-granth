@@ -8,6 +8,7 @@
  *
  * This module is imported by client components, so it must not touch node:fs.
  */
+import { VERSE_PAGE_SUBSET } from '@/lib/verse-page-subset.generated';
 export const VERSE_PAGE_SCRIPTURE_IDS = [
   'bhagavadgita',
   'ishavasya',
@@ -31,6 +32,16 @@ export function hasVersePages(scriptureId: string): boolean {
   return (VERSE_PAGE_SCRIPTURE_IDS as readonly string[]).includes(scriptureId);
 }
 
+// The Ramcharitmanas is too long for a page per verse: only the verses in lib/verse-page-subset.generated.ts get one.
+const SUBSET = new Map(Object.entries(VERSE_PAGE_SUBSET).map(([id, keys]) => [id, new Set(keys)]));
+
+/** Whether this verse has its own page (its scripture has verse pages, and the verse is in its subset if it has one). */
+export function hasVersePage(scriptureId: string, chapterId: number, slug: string): boolean {
+  if (!hasVersePages(scriptureId)) return false;
+  const subset = SUBSET.get(scriptureId);
+  return !subset || subset.has(`${chapterId}:${slug}`);
+}
+
 /** Path segment for a verse number, or null when it cannot be a static path. */
 export function verseSlug(number: number | string | undefined): string | null {
   const slug = String(number ?? '').trim();
@@ -42,9 +53,8 @@ export function versePageHref(
   chapterId: number,
   verseNumber: number | string,
 ): string | undefined {
-  if (!hasVersePages(scriptureId)) return undefined;
   const slug = verseSlug(verseNumber);
-  if (!slug) return undefined;
+  if (!slug || !hasVersePage(scriptureId, chapterId, slug)) return undefined;
   return `/scripture/${scriptureId}/chapter/${chapterId}/verse/${slug}/`;
 }
 
@@ -55,7 +65,7 @@ export function verseOgPath(
   verseNumber: number | string,
 ): string | undefined {
   const slug = verseSlug(verseNumber);
-  if (!slug || !hasVersePages(scriptureId)) return undefined;
+  if (!slug || !hasVersePage(scriptureId, chapterId, slug)) return undefined;
   return `/og/verse/${scriptureId}/${chapterId}-${slug.replace(/\./g, '-')}.jpg`;
 }
 

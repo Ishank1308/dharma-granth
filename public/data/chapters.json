@@ -2581,43 +2581,43 @@
       "id": 1,
       "title": "Adi Parva",
       "titleSanskrit": "आदिपर्व",
-      "verseCount": 6
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Sabha Parva",
       "titleSanskrit": "सभापर्व",
-      "verseCount": 6
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Vana Parva",
       "titleSanskrit": "वनपर्व",
-      "verseCount": 6
+      "verseCount": 0
     },
     {
       "id": 4,
       "title": "Virata Parva",
       "titleSanskrit": "विराटपर्व",
-      "verseCount": 6
+      "verseCount": 0
     },
     {
       "id": 5,
       "title": "Udyoga Parva",
       "titleSanskrit": "उद्योगपर्व",
-      "verseCount": 6
+      "verseCount": 0
     },
     {
       "id": 6,
       "title": "Bhishma Parva",
       "titleSanskrit": "भीष्मपर्व",
-      "verseCount": 6
+      "verseCount": 0
     },
     {
       "id": 7,
       "title": "Drona Parva",
       "titleSanskrit": "द्रोणपर्व",
-      "verseCount": 5
+      "verseCount": 0
     },
     {
       "id": 8,
@@ -2689,45 +2689,45 @@
   "ramcharitmanas": [
     {
       "id": 1,
-      "title": "Bal Kanda — Beginnings",
+      "title": "Bal Kanda",
       "titleSanskrit": "बालकाण्ड",
-      "verseCount": 30
+      "verseCount": 1958
     },
     {
       "id": 2,
-      "title": "Ayodhya Kanda — The Forest Exile",
+      "title": "Ayodhya Kanda",
       "titleSanskrit": "अयोध्याकाण्ड",
-      "verseCount": 30
+      "verseCount": 1648
     },
     {
       "id": 3,
-      "title": "Aranya Kanda — The Forest Life",
+      "title": "Aranya Kanda",
       "titleSanskrit": "अरण्यकाण्ड",
-      "verseCount": 30
+      "verseCount": 353
     },
     {
       "id": 4,
-      "title": "Kishkindha Kanda — The Alliance",
+      "title": "Kishkindha Kanda",
       "titleSanskrit": "किष्किन्धाकाण्ड",
-      "verseCount": 30
+      "verseCount": 193
     },
     {
       "id": 5,
-      "title": "Sundar Kanda — Hanuman's Flight",
+      "title": "Sundar Kanda",
       "titleSanskrit": "सुन्दरकाण्ड",
-      "verseCount": 30
+      "verseCount": 344
     },
     {
       "id": 6,
-      "title": "Lanka Kanda — The Great War",
+      "title": "Lanka Kanda",
       "titleSanskrit": "लंकाकाण्ड",
-      "verseCount": 30
+      "verseCount": 803
     },
     {
       "id": 7,
-      "title": "Uttar Kanda — The Golden Age",
+      "title": "Uttar Kanda",
       "titleSanskrit": "उत्तरकाण्ड",
-      "verseCount": 30
+      "verseCount": 873
     }
   ],
   "vishnupurana": [
@@ -2735,19 +2735,19 @@
       "id": 1,
       "title": "Book 1 - Adhyaya 1",
       "titleSanskrit": "प्रथम अंश",
-      "verseCount": 3
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Book 1 - Adhyaya 2",
       "titleSanskrit": "प्रह्लाद चरित्र",
-      "verseCount": 3
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Book 1 - Adhyaya 3",
       "titleSanskrit": "पञ्चम अंश — ध्रुव चरित्र",
-      "verseCount": 2
+      "verseCount": 0
     },
     {
       "id": 4,
@@ -3370,37 +3370,37 @@
       "id": 1,
       "title": "Vidyeshvara Samhita",
       "titleSanskrit": "विद्येश्वर संहिता",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Rudra Samhita — Srishti Khanda",
       "titleSanskrit": "कैलाश संहिता — पञ्चाक्षर",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Rudra Samhita — Sati Khanda",
       "titleSanskrit": "रुद्र संहिता — तांडव",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 4,
       "title": "Rudra Samhita — Parvati Khanda",
       "titleSanskrit": "उमा संहिता — अर्धनारीश्वर",
-      "verseCount": 3
+      "verseCount": 0
     },
     {
       "id": 5,
       "title": "Rudra Samhita — Kumara Khanda",
       "titleSanskrit": "कोटिरुद्र संहिता — द्वादश ज्योतिर्लिङ्ग",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 6,
       "title": "Rudra Samhita — Yuddha Khanda",
       "titleSanskrit": "वायवीय संहिता — शिवतत्त्व",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 7,
@@ -6697,19 +6697,19 @@
       "id": 1,
       "title": "Book 1 - Adhyaya 1",
       "titleSanskrit": "प्रेतकल्प",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Book 1 - Adhyaya 2",
       "titleSanskrit": "नीतिसार",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Book 1 - Adhyaya 3",
       "titleSanskrit": "मोक्षधर्म",
-      "verseCount": 3
+      "verseCount": 0
     },
     {
       "id": 4,
@@ -8287,19 +8287,19 @@
       "id": 1,
       "title": "Adhyaya 1",
       "titleSanskrit": "धर्मज्ञान",
-      "verseCount": 3
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Adhyaya 2",
       "titleSanskrit": "राजधर्म",
-      "verseCount": 3
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Adhyaya 3",
       "titleSanskrit": "आयुर्वेदसार",
-      "verseCount": 3
+      "verseCount": 0
     },
     {
       "id": 4,
@@ -11483,19 +11483,19 @@
       "id": 1,
       "title": "Book 1 - Adhyaya 1",
       "titleSanskrit": "ब्रह्माण्ड उत्पत्ति",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Book 1 - Adhyaya 2",
       "titleSanskrit": "ललितासहस्रनाम",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Book 1 - Adhyaya 3",
       "titleSanskrit": "कालचक्र",
-      "verseCount": 3
+      "verseCount": 0
     },
     {
       "id": 4,
@@ -12268,19 +12268,19 @@
       "id": 1,
       "title": "Adhyaya 1",
       "titleSanskrit": "मार्कण्डेय चरित्र",
-      "verseCount": 5
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Adhyaya 2",
       "titleSanskrit": "धर्मोपदेश",
-      "verseCount": 5
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Adhyaya 3",
       "titleSanskrit": "देवीमाहात्म्य",
-      "verseCount": 5
+      "verseCount": 0
     },
     {
       "id": 4,
@@ -14385,25 +14385,25 @@
       "id": 1,
       "title": "Adhyaya 1",
       "titleSanskrit": "नृसिंह — असम्भव क्षण का अवतार",
-      "verseCount": 7
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Adhyaya 2",
       "titleSanskrit": "प्रह्लाद चरित्र",
-      "verseCount": 7
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Adhyaya 3",
       "titleSanskrit": "नृसिंह कवचम्",
-      "verseCount": 6
+      "verseCount": 0
     },
     {
       "id": 4,
       "title": "Adhyaya 4",
       "titleSanskrit": "अभय — शरणागति का फल",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 5,
@@ -14731,37 +14731,37 @@
       "id": 1,
       "title": "Book 1 - Adhyaya 2",
       "titleSanskrit": "नारद — दिव्य दूत",
-      "verseCount": 9
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Book 1 - Adhyaya 3",
       "titleSanskrit": "नवविधा भक्ति",
-      "verseCount": 11
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Book 1 - Adhyaya 4",
       "titleSanskrit": "नाम-संकीर्तन महिमा",
-      "verseCount": 11
+      "verseCount": 0
     },
     {
       "id": 4,
       "title": "Book 1 - Adhyaya 5",
       "titleSanskrit": "गान्धर्व वेद — संगीत और मोक्ष",
-      "verseCount": 11
+      "verseCount": 0
     },
     {
       "id": 5,
       "title": "Book 1 - Adhyaya 6",
       "titleSanskrit": "पाञ्चरात्र आगम",
-      "verseCount": 11
+      "verseCount": 0
     },
     {
       "id": 6,
       "title": "Book 1 - Adhyaya 7",
       "titleSanskrit": "उत्तर खण्ड — सृष्टि, मृत्यु और मोक्ष",
-      "verseCount": 11
+      "verseCount": 0
     },
     {
       "id": 7,
@@ -15574,37 +15574,37 @@
       "id": 1,
       "title": "Adhyaya 1",
       "titleSanskrit": "मत्स्यावतार",
-      "verseCount": 7
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Adhyaya 2",
       "titleSanskrit": "धर्म-नियम",
-      "verseCount": 7
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Adhyaya 3",
       "titleSanskrit": "वास्तु एवं मूर्तिविज्ञान",
-      "verseCount": 7
+      "verseCount": 0
     },
     {
       "id": 4,
       "title": "Adhyaya 4",
       "titleSanskrit": "काल विचार — चतुर्युग",
-      "verseCount": 6
+      "verseCount": 0
     },
     {
       "id": 5,
       "title": "Adhyaya 5",
       "titleSanskrit": "तीर्थ माहात्म्य",
-      "verseCount": 7
+      "verseCount": 0
     },
     {
       "id": 6,
       "title": "Adhyaya 6",
       "titleSanskrit": "राजधर्म",
-      "verseCount": 7
+      "verseCount": 0
     },
     {
       "id": 7,
@@ -16462,19 +16462,19 @@
       "id": 1,
       "title": "Book 1 - Adhyaya 1",
       "titleSanskrit": "पूर्व खण्ड — लिङ्गोत्पत्ति",
-      "verseCount": 5
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Book 1 - Adhyaya 2",
       "titleSanskrit": "शिव सहस्रनाम",
-      "verseCount": 5
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Book 1 - Adhyaya 3",
       "titleSanskrit": "उत्तर खण्ड — शैव योग",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 4,
@@ -17007,19 +17007,19 @@
       "id": 1,
       "title": "Book 1 - Adhyaya 1",
       "titleSanskrit": "पूर्व खण्ड — कूर्मावतार",
-      "verseCount": 5
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Book 1 - Adhyaya 2",
       "titleSanskrit": "ईश्वर गीता",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Book 1 - Adhyaya 3",
       "titleSanskrit": "उत्तर खण्ड — धर्म और मोक्ष",
-      "verseCount": 3
+      "verseCount": 0
     },
     {
       "id": 4,
@@ -17487,19 +17487,19 @@
       "id": 1,
       "title": "Adhyāya 1",
       "titleSanskrit": "सार्वभौमिक नैतिक सिद्धान्त",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Adhyāya 2",
       "titleSanskrit": "आचार अध्याय",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Adhyāya 3",
       "titleSanskrit": "विद्वान् लक्षण",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 4,
@@ -19316,19 +19316,19 @@
       "id": 1,
       "title": "Adhyaya 1",
       "titleSanskrit": "बलिचरित्र",
-      "verseCount": 3
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Adhyaya 2",
       "titleSanskrit": "वामनावतार",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Adhyaya 3",
       "titleSanskrit": "बलिमुक्ति",
-      "verseCount": 3
+      "verseCount": 0
     },
     {
       "id": 4,
@@ -19816,19 +19816,19 @@
       "id": 1,
       "title": "Adhyaya 1",
       "titleSanskrit": "पूर्वखण्ड",
-      "verseCount": 7
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Adhyaya 2",
       "titleSanskrit": "वायुस्वरूप महेश्वर",
-      "verseCount": 7
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Adhyaya 3",
       "titleSanskrit": "उत्तरखण्ड",
-      "verseCount": 5
+      "verseCount": 0
     },
     {
       "id": 4,
@@ -21031,25 +21031,25 @@
       "id": 1,
       "title": "Adhyaya 1",
       "titleSanskrit": "माहेश्वर खण्ड",
-      "verseCount": 5
+      "verseCount": 0
     },
     {
       "id": 2,
       "title": "Adhyaya 2",
       "titleSanskrit": "काशी खण्ड",
-      "verseCount": 6
+      "verseCount": 0
     },
     {
       "id": 3,
       "title": "Adhyaya 3",
       "titleSanskrit": "आवन्त्य खण्ड",
-      "verseCount": 4
+      "verseCount": 0
     },
     {
       "id": 4,
       "title": "Adhyaya 4",
       "titleSanskrit": "प्रभास खण्ड",
-      "verseCount": 5
+      "verseCount": 0
     },
     {
       "id": 5,
