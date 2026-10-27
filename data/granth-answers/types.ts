@@ -10,7 +10,7 @@
  * The notes are editorial, and the page labels them as such, apart from scripture.
  */
 
-export type AnswerThemeId = 'mind' | 'work' | 'relations' | 'family' | 'spirit' | 'practice' | 'life';
+export type AnswerThemeId = 'mind' | 'health' | 'work' | 'relations' | 'family' | 'spirit' | 'practice' | 'life';
 
 /** A verse that answers the question, by its published reference. */
 export interface AnswerVerse {
@@ -54,6 +54,14 @@ export interface AnswerScience {
   source: string;
 }
 
+/** A helpline for this problem, shown in the care note above the verses. */
+export interface AnswerHelp {
+  nameHi: string;
+  nameEn: string;
+  /** As dialled, e.g. `14446` or `1800-891-4416`. */
+  number: string;
+}
+
 export interface GranthAnswer {
   slug: string;
   theme: AnswerThemeId;
@@ -73,6 +81,10 @@ export interface GranthAnswer {
   next: string[];
   /** Emotional topics show the study-not-treatment note. */
   care?: boolean;
+  /** Helplines for this problem, listed before Tele-MANAS in the care note. */
+  help?: AnswerHelp[];
+  /** Thoughts of not wanting to live: the page opens with Tele-MANAS and 112, before the सार. */
+  crisis?: boolean;
 }
 
 export interface AnswerTheme {
@@ -83,6 +95,7 @@ export interface AnswerTheme {
 
 export const ANSWER_THEMES: AnswerTheme[] = [
   { id: 'mind', titleHi: 'मन और भावनाएँ', titleEn: 'Mind and emotions' },
+  { id: 'health', titleHi: 'शरीर, नींद और नशा', titleEn: 'Body, sleep and addiction' },
   { id: 'work', titleHi: 'कर्म और जीवन‑मार्ग', titleEn: 'Work and purpose' },
   { id: 'relations', titleHi: 'सम्बन्ध और व्यवहार', titleEn: 'People and conduct' },
   { id: 'family', titleHi: 'परिवार और गृहस्थ जीवन', titleEn: 'Family and home' },

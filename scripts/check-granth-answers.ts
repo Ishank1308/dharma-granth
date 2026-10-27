@@ -46,6 +46,8 @@ for (const a of GRANTH_ANSWERS) {
   for (const n of a.next) if (!slugs.has(n)) fail(a.slug, `next question "${n}" does not exist`);
   if (a.next.includes(a.slug)) fail(a.slug, 'links to itself in next');
   if (a.story && (!a.story.sourceHi.trim() || !a.story.sourceEn.trim())) fail(a.slug, 'story has no source');
+  if (a.crisis && !a.care) fail(a.slug, 'a crisis page needs the care note too');
+  if (a.help?.length && !a.care) fail(a.slug, 'helplines show only in the care note, so an answer with help needs care');
   if (a.science && (!a.science.hi.trim() || !a.science.en.trim() || !a.science.source.trim())) fail(a.slug, 'science note needs Hindi, English and a named source');
 
   for (const v of a.verses) {
