@@ -211,8 +211,11 @@ export default function VersePage({ params }: PageProps) {
   if (!found) return notFound();
 
   const { seeded, verses, index, verse } = found;
-  let prev = index > 0 ? verses[index - 1] : undefined;
-  let next = index < verses.length - 1 ? verses[index + 1] : undefined;
+  // The nearest verses that have a page (in the Ramcharitmanas only some do, lib/verse-paths.ts).
+  const before = verses.slice(0, index).reverse().find((v) => versePageHref(meta.id, chapterId, v.number));
+  const after = verses.slice(index + 1).find((v) => versePageHref(meta.id, chapterId, v.number));
+  let prev = before;
+  let next = after;
   let prevHref = prev ? versePageHref(meta.id, chapterId, prev.number) : undefined;
   let nextHref = next ? versePageHref(meta.id, chapterId, next.number) : undefined;
   let nextChapterId = chapterId;
@@ -222,9 +225,9 @@ export default function VersePage({ params }: PageProps) {
     const seededNeighbor = loadChapter(meta.id, neighborId);
     const list = seededNeighbor?.chapter.verses as SeedVerse[] | undefined;
     if (!list || list.length === 0) return undefined;
-    const verseEdge = which === 'first' ? list[0] : list[list.length - 1];
-    const href = versePageHref(meta.id, neighborId, verseEdge.number);
-    if (!href) return undefined;
+    const verseEdge = (which === 'first' ? list : [...list].reverse()).find((v) => versePageHref(meta.id, neighborId, v.number));
+    const href = verseEdge && versePageHref(meta.id, neighborId, verseEdge.number);
+    if (!verseEdge || !href) return undefined;
     return { verse: verseEdge, href };
   };
   if (!nextHref || !prevHref) {
