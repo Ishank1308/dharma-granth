@@ -43,7 +43,7 @@ export const livelihoodAnswers: GranthAnswer[] = [
     sarEn: 'Repaying money you borrowed is a duty, but threats, abuse, morphed photos or messaging your contacts are crimes. Don’t pay more out of fear; file a complaint. Standing up with truth and courage is dharma.',
     verses: [
       gita(2, 3, 'इस दुर्बलता को त्यागकर खड़े हो जाएँ।', 'Cast off this faint-heartedness and stand up.'),
-      gita(16, 3, 'तेज, क्षमा, धैर्य और निर्भयता दैवी गुण हैं।', 'Vigour, forgiveness, fortitude and fearlessness are divine qualities.'),
+      gita(16, 3, 'तेज, क्षमा, धैर्य और पवित्रता दैवी गुण हैं।', 'Vigour, forgiveness, fortitude and purity are divine qualities.'),
       { s: 'mundaka', c: 5, v: '6', whyHi: 'सत्य की ही विजय होती है, असत्य की नहीं।', whyEn: 'Truth alone triumphs, not falsehood.' },
     ],
     myth: {
