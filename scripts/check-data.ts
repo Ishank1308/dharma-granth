@@ -172,7 +172,7 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   harivanshpuran: 24, // genealogical lists in the Harivamsa repeat whole shlokas in two adhyayas (e.g. 26.11 = 27.2)
   kurmapuran: 7,
   lingapuran: 11,
-  mahabharata: 37,
+  mahabharata: 85, // the critical edition repeats whole ślokas across parvas (1.82.8 = 2.59.6) after the 2026-10 GRETIL rebuild
   mahanarayana: 1,
   mahaupanishad: 1, // the jivanmukta verse "ahankaramayim tyaktva…" repeats in ch. 2 and 6 of the source
   manusmriti: 2,
