@@ -211,6 +211,11 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
   const listSrc = /VERSE_PAGE_SCRIPTURE_IDS\s*=\s*\[([^\]]*)\]/.exec(idsSrc)?.[1] ?? '';
   const ids = [...listSrc.matchAll(/'([^']+)'/g)].map((m) => m[1]);
   if (ids.length === 0) fail('verse pages', 'could not read VERSE_PAGE_SCRIPTURE_IDS from lib/verse-paths.ts');
+  // Scriptures with only some verse pages (lib/verse-page-subset.generated.ts) expect only those.
+  const subsetSrc = readFileSync(join(ROOT, 'lib/verse-page-subset.generated.ts'), 'utf8');
+  const subsetJson = /VERSE_PAGE_SUBSET[^=]*=\s*(\{[\s\S]*\});/.exec(subsetSrc)?.[1];
+  if (!subsetJson) fail('verse pages', 'could not read VERSE_PAGE_SUBSET from lib/verse-page-subset.generated.ts');
+  const subsets = new Map(Object.entries(JSON.parse(subsetJson ?? '{}')).map(([id, keys]) => [id, new Set(keys)]));
   let expected = 0;
   let missing = 0;
   let sample = '';
@@ -221,6 +226,7 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
     for (const chapter of book.chapters ?? []) {
       for (const verse of chapter.verses ?? []) {
         if (!/^[0-9A-Za-z]+(?:[.\-][0-9A-Za-z]+)*$/.test(String(verse.number))) continue;
+        if (subsets.has(id) && !subsets.get(id).has(`${chapter.number}:${verse.number}`)) continue;
         expected++;
         const html = pageHtml(`/scripture/${id}/chapter/${chapter.number}/verse/${verse.number}/`);
         // The FAQ structured data is built from the verse's Hindi / English meaning, so a verse

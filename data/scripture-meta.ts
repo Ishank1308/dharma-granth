@@ -400,12 +400,10 @@ export const scriptureCatalog: ScriptureMeta[] = [
       "The retelling of the Ramayana in Awadhi by Goswami Tulsidas. A cornerstone of Bhakti literature.",
     author: "Tulsidas",
     totalChapters: 7,
-    totalVerses: 210,
-    canonicalTotalVerses: 16000,
+    totalVerses: 6172,
     isCurated: true,
     tags: ["Bhakti","Rama","Tulsidas","Awadhi"],
     hasData: true,
-    selectedVerses: true,
   },
   {
     id: "vishnupurana",

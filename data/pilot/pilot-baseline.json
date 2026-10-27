@@ -229,14 +229,14 @@
       "protected": {
         "scriptureId": "ramcharitmanas",
         "chapter": 1,
-        "chapterTitle": "Bal Kanda — Beginnings",
-        "verse": "1",
+        "chapterTitle": "Bal Kanda",
+        "verse": "0.1",
         "reference": "Ramcharitmanas, Bala Kanda, opening",
-        "sanskrit": "वर्णानामर्थसंघानां रसानां छन्दसामपि। मङ्गलानां च कर्त्तारौ वन्दे वाणीविनायकौ॥ १॥",
-        "iast": "varṇānāmarthasaṃghānāṃ rasānāṃ chandasāmapi| maṅgalānāṃ ca karttārau vande vāṇīvināyakau|| 1||",
-        "sourceCitation": "{\"repo\":\"Gita Press Gorakhpur (Code 0080)\",\"license\":\"Public Domain Awadhi text and Hindi translation\",\"fetchedAt\":\"2026-10-19T10:32:47.825Z\"}"
+        "sanskrit": "वर्णानामर्थसंघानां रसानां छन्दसामपि। मङ्गलानां च कर्त्तारौ वन्दे वाणीविनायकौ॥",
+        "iast": "varṇānāmarthasaṃghānāṃ rasānāṃ chandasāmapi| maṅgalānāṃ ca karttārau vande vāṇīvināyakau||",
+        "sourceCitation": "{\"repo\":\"Awadhi text: https://github.com/bhavykhatri/DharmicData (from IIT Kanpur's Ramcharitmanas site, Gita Press text) @ 96b3baf; last sections of kandas 2–7: https://github.com/pawanprakashpal/RamayanaPath @ 0a37683\",\"license\":\"Tulsidas's Awadhi text (16th century) is in the public domain. No translation from either source is used.\",\"fetchedAt\":\"2026-10-27T00:00:00.000Z\"}"
       },
-      "sha256": "cc70380fc74c7b647eab04c3c7f6cf1dc9916bba30268952ffcfb2e8b9703437",
+      "sha256": "cf448addf2d1d8e8a1b131d6113072287c4904a6f905eadc648f9844f5e5de2e",
       "baselineStatus": "review-only",
       "reviewOnlyReason": "Canonical fields are mixed with commentary in the stored record (see observation)."
     },
@@ -246,14 +246,14 @@
       "protected": {
         "scriptureId": "ramcharitmanas",
         "chapter": 1,
-        "chapterTitle": "Bal Kanda — Beginnings",
-        "verse": "2",
+        "chapterTitle": "Bal Kanda",
+        "verse": "0.2",
         "reference": "Ramcharitmanas, Bala Kanda, second unit",
-        "sanskrit": "भवानीशङ्करौ वन्दे श्रद्धाविश्वासरूपिणौ। याभ्यां विना न पश्यन्ति सिद्धा: स्वान्त:स्थमीश्वरम्॥ २॥",
-        "iast": "bhavānīśaṅkarau vande śraddhāviśvāsarūpiṇau| yābhyāṃ vinā na paśyanti siddhā: svānta:sthamīśvaram|| 2||",
-        "sourceCitation": "{\"repo\":\"Gita Press Gorakhpur (Code 0080)\",\"license\":\"Public Domain Awadhi text and Hindi translation\",\"fetchedAt\":\"2026-10-19T10:32:47.825Z\"}"
+        "sanskrit": "भवानीशङ्करौ वन्दे श्रद्धाविश्वासरूपिणौ। याभ्यां विना न पश्यन्ति सिद्धाःस्वान्तःस्थमीश्वरम्॥",
+        "iast": "bhavānīśaṅkarau vande śraddhāviśvāsarūpiṇau| yābhyāṃ vinā na paśyanti siddhāḥsvāntaḥsthamīśvaram||",
+        "sourceCitation": "{\"repo\":\"Awadhi text: https://github.com/bhavykhatri/DharmicData (from IIT Kanpur's Ramcharitmanas site, Gita Press text) @ 96b3baf; last sections of kandas 2–7: https://github.com/pawanprakashpal/RamayanaPath @ 0a37683\",\"license\":\"Tulsidas's Awadhi text (16th century) is in the public domain. No translation from either source is used.\",\"fetchedAt\":\"2026-10-27T00:00:00.000Z\"}"
       },
-      "sha256": "1062277682751c7117e4f776247603e2533b42e40819a9fa8b1cca29e04a12ca",
+      "sha256": "66cb77bcc9d75cdebff3de32a157c2cb005313245cbacdc2cfb136bf6395a39a",
       "baselineStatus": "review-only",
       "reviewOnlyReason": "Canonical fields are mixed with commentary in the stored record (see observation)."
     },
@@ -263,14 +263,14 @@
       "protected": {
         "scriptureId": "ramcharitmanas",
         "chapter": 5,
-        "chapterTitle": "Sundar Kanda — Hanuman's Flight",
-        "verse": "1",
+        "chapterTitle": "Sundar Kanda",
+        "verse": "0.1",
         "reference": "Ramcharitmanas, Sundar Kanda, opening",
-        "sanskrit": "शान्तं शाश्वतमप्रमेयमनघं निर्वाणशान्तिप्रदं ब्रह्माशम्भुफणीन्द्रसेव्यमनिशं वेदान्तवेद्यं विभुम्। रामाख्यं जगदीश्वरं सुरगुरुं मायामनुष्यं हरिं वन्देऽहं करुणाकरं रघुवरं भूपालचूडामणिम्॥ १॥",
-        "iast": "śāntaṃ śāśvatamaprameyamanaghaṃ nirvāṇaśāntipradaṃ brahmāśambhuphaṇīndrasevyamaniśaṃ vedāntavedyaṃ vibhum| rāmākhyaṃ jagadīśvaraṃ suraguruṃ māyāmanuṣyaṃ hariṃ vande'haṃ karuṇākaraṃ raghuvaraṃ bhūpālacūḍāmaṇim|| 1||",
-        "sourceCitation": "{\"repo\":\"Gita Press Gorakhpur (Code 0080)\",\"license\":\"Public Domain Awadhi text and Hindi translation\",\"fetchedAt\":\"2026-10-19T10:32:47.825Z\"}"
+        "sanskrit": "शान्तं शाश्वतमप्रमेयमनघं निर्वाणशान्तिप्रदं ब्रह्माशम्भुफणीन्द्रसेव्यमनिशं वेदान्तवेद्यं विभुम्। रामाख्यं जगदीश्वरं सुरगुरुं मायामनुष्यं हरिं वन्देऽहं करुणाकरं रघुवरं भूपालचूड़ामणिम्॥",
+        "iast": "śāntaṃ śāśvatamaprameyamanaghaṃ nirvāṇaśāntipradaṃ brahmāśambhuphaṇīndrasevyamaniśaṃ vedāntavedyaṃ vibhum| rāmākhyaṃ jagadīśvaraṃ suraguruṃ māyāmanuṣyaṃ hariṃ vande'haṃ karuṇākaraṃ raghuvaraṃ bhūpālacūṛāmaṇim||",
+        "sourceCitation": "{\"repo\":\"Awadhi text: https://github.com/bhavykhatri/DharmicData (from IIT Kanpur's Ramcharitmanas site, Gita Press text) @ 96b3baf; last sections of kandas 2–7: https://github.com/pawanprakashpal/RamayanaPath @ 0a37683\",\"license\":\"Tulsidas's Awadhi text (16th century) is in the public domain. No translation from either source is used.\",\"fetchedAt\":\"2026-10-27T00:00:00.000Z\"}"
       },
-      "sha256": "93bdba0097364bfac1ec3cc6eb9ae889b36b2ca6769beb2b76dfd5e727e7db0d",
+      "sha256": "c5863acd3086c2c8bb9d78a6feb528f0efd7203e2b9382eb0c98d14bc52f254c",
       "baselineStatus": "review-only",
       "reviewOnlyReason": "Canonical fields are mixed with commentary in the stored record (see observation)."
     },
