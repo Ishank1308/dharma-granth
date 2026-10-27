@@ -47,6 +47,8 @@ import type { ReadingDepth } from '@/lib/reading-depth';
 import { ActionMenu } from '@/app/components/primitives/ActionMenu';
 import { Collapsible } from '@/app/components/primitives/Collapsible';
 import { VerseStudyDisclosure } from '@/app/components/reader/VerseStudyDisclosure';
+import { MeaningPendingNote } from '@/app/components/MeaningPending';
+import type { NearbyMeaning } from '@/lib/verse-has-meaning';
 import dynamic from 'next/dynamic';
 import { useEverTrue } from '@/lib/use-ever-true';
 
@@ -69,6 +71,8 @@ export interface VerseCardData {
   hindi?: string;
   hindiSource?: 'ai';
   hindiReviewRequired?: boolean;
+  /** Hindi from a printed edition, published before it was proofread (lib/ocr-hindi-review.ts). */
+  hindiUnproofread?: boolean;
   /** This verse's Hindi covers a range ("15-17") translated together in the edition. */
   hindiRange?: string;
   /** The Hindi for this verse is stored on that verse (the first of its range). */
@@ -184,6 +188,8 @@ interface Props {
   onOpenSvadhyaya?: (tab: 'concept' | 'parallel' | 'manana', data?: unknown) => void;
   /** Whether this verse is active during recitation or jump */
   isActive?: boolean;
+  /** For a verse without a meaning: the nearest verses in this chapter that have one. */
+  meaningNearby?: NearbyMeaning;
 }
 
 type HighlightColor = VerseHighlight['color'];
@@ -265,6 +271,7 @@ export function VerseCard({
   insight,
   onOpenSvadhyaya,
   isActive,
+  meaningNearby,
 }: Props) {
   const reduce = useReducedMotion();
 
@@ -824,6 +831,12 @@ export function VerseCard({
                           : `श्लोक ${toAsciiDigits(v.hindiRange!.replace('-', '–'))} का हिंदी अनुवाद`}
                       </p>
                     )}
+                    {v.hindiUnproofread && v.hindi && (
+                      <p className="mb-1 text-xs text-dharma-muted">
+                        <span lang="hi" className="font-devanagari">मुद्रित संस्करण से, प्रूफ़ जाँच शेष</span>{' '}
+                        <span aria-hidden="true">·</span> <span lang="en">From the printed edition, not yet proofread</span>
+                      </p>
+                    )}
                     {!v.hindi && v.hindiSeeVerse != null && (
                       <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-muted">
                         इस श्लोक का अर्थ श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
@@ -1287,12 +1300,16 @@ export function VerseCard({
             )}
 
             {!hasMeaning && (
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-dashed border-dharma-border bg-dharma-bg/60 p-4">
-                <p className="text-sm text-dharma-muted">इस श्लोक का अर्थ अभी जोड़ा जाना बाकी है।</p>
+              <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-dashed border-dharma-border bg-dharma-bg/60 p-4">
+                <MeaningPendingNote
+                  chapterId={chapterId}
+                  transliteration={!layers.translit ? v.transliteration : undefined}
+                  nearby={meaningNearby}
+                />
                 <button
                   type="button"
                   onClick={onContribute}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-saffron-300 bg-saffron-50 px-3 py-1.5 text-xs font-bold text-saffron-800 transition hover:bg-saffron-100 dark:bg-saffron-500/10 dark:text-saffron-200"
+                  className="inline-flex items-center gap-1.5 self-start rounded-full border border-saffron-300 bg-saffron-50 px-3 py-1.5 text-xs font-bold text-saffron-800 transition hover:bg-saffron-100 dark:bg-saffron-500/10 dark:text-saffron-200"
                 >
                   <Edit3 className="h-3.5 w-3.5" aria-hidden="true" /> पहला अर्थ जोड़ें
                 </button>

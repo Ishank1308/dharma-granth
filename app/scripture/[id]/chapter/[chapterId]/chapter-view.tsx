@@ -34,6 +34,8 @@ import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPart } from '@/lib/chapter-parts';
 import { CONNECTIONS, type Connection } from '@/data/study-content';
+import { MeaningPendingNotice } from '@/app/components/MeaningPending';
+import { commentaryOf, verseHasMeaning } from '@/lib/verse-has-meaning';
 
 export interface ChapterParams {
   id: string;
@@ -173,6 +175,8 @@ export function chapterMetadata(params: ChapterParams, partNumber = 1): Metadata
   return {
     title,
     description,
+    // A chapter whose own text is not in the library yet (its filler verses are not published) is not indexed.
+    ...(chapter.verseCount === 0 ? { robots: { index: false, follow: true } } : {}),
     keywords: [
       `${meta.title} chapter ${chapter.id}`,
       `${meta.title} chapter ${chapter.id} meaning in english`,
@@ -257,6 +261,13 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       : undefined;
   const summaryCollection = getChapterSummaryCollection(meta.id);
   const chapterSummary = getChapterSummary(meta.id, chapter.id);
+
+  // Verses on this page whose meaning is not published yet (see MeaningPending): counted once, in the HTML.
+  const pageCommentary = initialChapter?.commentary ?? readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId);
+  const pageHasMeaning = pageVerses.map((v) => verseHasMeaning(v, commentaryOf(pageCommentary, chapterId, v.number)));
+  const pendingCount = pageHasMeaning.filter((h) => !h).length;
+  const pendingSummary = (chapterSummary?.summaryHi || (seeded ? chapter.summary : undefined) || '').trim() || undefined;
+  const pageWithMeaning = pageVerses.filter((_, i) => pageHasMeaning[i]).slice(0, 6).map((v) => String(v.number));
   const hasChapterContext = Boolean(chapterSummary || getChapterOrientation(meta.id, chapter.id));
 
   // Only send the current chapter part's existing, approved editorial links
@@ -409,22 +420,46 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             />
           </>
         )}
+        {pendingCount > 0 && (
+          <MeaningPendingNotice
+            chapterId={chapter.id}
+            pending={pendingCount}
+            total={pageVerses.length}
+            summary={pendingSummary}
+            withMeaning={pageWithMeaning}
+          />
+        )}
         {/* With initialChapter, the reader's server render is the plain
             VerseText list (every verse in the HTML); it swaps in the
             interactive cards once hydrated. */}
         <div id="chapter-text" className="scroll-mt-24">
-          <FullChapterVerses
-            scriptureId={params.id}
-            category={meta.category}
-            chapterId={chapter.id}
-            curatedVerseIds={[]}
-            scriptureTitle={meta.title}
-            chapterTitle={chapter.title || `अध्याय ${chapter.id}`}
-            basePath={process.env.NEXT_PUBLIC_BASE_PATH || ''}
-            autoLoad
-            initialChapter={initialChapter}
-            relatedTeachingsByVerse={relatedTeachingsByVerse}
-          />
+          {seeded && allVerses.length === 0 ? (
+            // The chapter's own text is not in the library yet (scripts/lib/filler-chapters.ts): say so plainly.
+            <section className="rounded-2xl border border-dashed border-dharma-border bg-dharma-bg/60 p-5 text-center">
+              <p lang="hi" className="font-devanagari text-base text-dharma-text">इस अध्याय का पाठ जोड़ा जा रहा है।</p>
+              <p lang="en" className="mt-1 text-sm text-dharma-muted">This chapter&apos;s text is being added.</p>
+              <Link
+                href={`/scripture/${meta.id}/`}
+                className="mt-4 inline-flex min-h-11 items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card px-4 text-sm font-semibold text-saffron-800 transition hover:border-saffron-300 dark:text-saffron-200"
+              >
+                <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                <span lang="hi" className="font-devanagari">ग्रंथ सूची</span> <span aria-hidden="true">·</span> <span lang="en">{meta.title} contents</span>
+              </Link>
+            </section>
+          ) : (
+            <FullChapterVerses
+              scriptureId={params.id}
+              category={meta.category}
+              chapterId={chapter.id}
+              curatedVerseIds={[]}
+              scriptureTitle={meta.title}
+              chapterTitle={chapter.title || `अध्याय ${chapter.id}`}
+              basePath={process.env.NEXT_PUBLIC_BASE_PATH || ''}
+              autoLoad
+              initialChapter={initialChapter}
+              relatedTeachingsByVerse={relatedTeachingsByVerse}
+            />
+          )}
         </div>
 
         {part && parts && (

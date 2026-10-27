@@ -148,8 +148,12 @@ export function LibraryCard({
   if (item.explanation) commentary.push('Book overview (English & Hindi)');
   const readingHref = item.id === 'ashtavakra' ? '/ashtavakra/' : `/scripture/${item.id}`;
   const englishTitle = GITA_PRESS_COVER_TITLES[item.id] ?? item.title;
+  // A partial text says how much of the traditional whole the library holds.
+  const ofAbout = item.canonicalTotalVerses != null && item.canonicalTotalVerses > item.totalVerses
+    ? ` of about ${formatNumber(item.canonicalTotalVerses)}`
+    : '';
   const countLabel = item.totalVerses > 0
-    ? `${formatNumber(item.totalChapters)} chapters · ${formatNumber(item.totalVerses)} verses`
+    ? `${formatNumber(item.totalChapters)} chapters · ${formatNumber(item.totalVerses)}${ofAbout} verses`
     : 'Catalogue entry';
 
   return (
