@@ -1,0 +1,421 @@
+{
+  "note": "Bhagavata Purana: Hindi put back on verses that had none, from the extracted Gita Press sample in scripts/bhagavata_extracted.json, matched by Sanskrit content and the printed verse number. Mechanical clean-up only. Every entry is in data/ocr-hindi-review.json under this queue and is withheld until proofread against the printed page.",
+  "source": {
+    "edition": "Gita Press Gorakhpur, श्रीमद्भागवतमहापुराण (सानुवाद)",
+    "text": "scripts/bhagavata_extracted.json (first verses of each part, extracted from the Gita Press e-book); built by scripts/refill-hindi-from-extracted.mjs"
+  },
+  "guards": [
+    "Sanskrit 3-gram Jaccard >= 0.6 and >= 0.15 above the next book verse",
+    "exactly one printed verse number (॥ N॥), at the end of the Hindi, equal to the book verse number",
+    "Hindi function words present and Sanskrit 3-gram overlap < 0.3 (not a copy of the shloka)",
+    "book verse had no Hindi and no hindiSeeVerse"
+  ],
+  "counts": {
+    "extractVerses": 387,
+    "lackingHindiBefore": 14401,
+    "filled": 66,
+    "skipped": {
+      "verse already has Hindi": 1,
+      "printed verse number missing or not this verse": 127,
+      "Sanskrit match weak or ambiguous": 193
+    }
+  },
+  "verses": {
+    "1:1": {
+      "extractPart": "1",
+      "extractNumber": 1,
+      "sanskritScore": 1,
+      "nextScore": 0.107
+    },
+    "1:3": {
+      "extractPart": "1",
+      "extractNumber": 3,
+      "sanskritScore": 1,
+      "nextScore": 0.072
+    },
+    "2:2": {
+      "extractPart": "1",
+      "extractNumber": 25,
+      "sanskritScore": 1,
+      "nextScore": 0.084
+    },
+    "20:22": {
+      "extractPart": "2",
+      "extractNumber": 21,
+      "sanskritScore": 1,
+      "nextScore": 0.136
+    },
+    "20:25": {
+      "extractPart": "2",
+      "extractNumber": 24,
+      "sanskritScore": 1,
+      "nextScore": 0.126
+    },
+    "20:26": {
+      "extractPart": "2",
+      "extractNumber": 25,
+      "sanskritScore": 1,
+      "nextScore": 0.158
+    },
+    "20:27": {
+      "extractPart": "2",
+      "extractNumber": 26,
+      "sanskritScore": 1,
+      "nextScore": 0.124
+    },
+    "20:28": {
+      "extractPart": "2",
+      "extractNumber": 27,
+      "sanskritScore": 1,
+      "nextScore": 0.083
+    },
+    "20:29": {
+      "extractPart": "2",
+      "extractNumber": 28,
+      "sanskritScore": 1,
+      "nextScore": 0.11
+    },
+    "30:5": {
+      "extractPart": "3",
+      "extractNumber": 5,
+      "sanskritScore": 1,
+      "nextScore": 0.157
+    },
+    "63:16": {
+      "extractPart": "4",
+      "extractNumber": 16,
+      "sanskritScore": 1,
+      "nextScore": 0.177
+    },
+    "63:17": {
+      "extractPart": "4",
+      "extractNumber": 17,
+      "sanskritScore": 1,
+      "nextScore": 0.104
+    },
+    "63:27": {
+      "extractPart": "4",
+      "extractNumber": 27,
+      "sanskritScore": 0.881,
+      "nextScore": 0.123
+    },
+    "63:28": {
+      "extractPart": "4",
+      "extractNumber": 28,
+      "sanskritScore": 0.835,
+      "nextScore": 0.098
+    },
+    "94:1": {
+      "extractPart": "5",
+      "extractNumber": 1,
+      "sanskritScore": 1,
+      "nextScore": 0.099
+    },
+    "94:2": {
+      "extractPart": "5",
+      "extractNumber": 2,
+      "sanskritScore": 1,
+      "nextScore": 0.1
+    },
+    "94:3": {
+      "extractPart": "5",
+      "extractNumber": 3,
+      "sanskritScore": 1,
+      "nextScore": 0.108
+    },
+    "94:4": {
+      "extractPart": "5",
+      "extractNumber": 4,
+      "sanskritScore": 1,
+      "nextScore": 0.171
+    },
+    "94:16": {
+      "extractPart": "5",
+      "extractNumber": 10,
+      "sanskritScore": 1,
+      "nextScore": 0.115
+    },
+    "95:12": {
+      "extractPart": "5",
+      "extractNumber": 23,
+      "sanskritScore": 1,
+      "nextScore": 0.088
+    },
+    "95:13": {
+      "extractPart": "5",
+      "extractNumber": 24,
+      "sanskritScore": 0.949,
+      "nextScore": 0.086
+    },
+    "95:14": {
+      "extractPart": "5",
+      "extractNumber": 25,
+      "sanskritScore": 1,
+      "nextScore": 0.068
+    },
+    "95:15": {
+      "extractPart": "5",
+      "extractNumber": 26,
+      "sanskritScore": 1,
+      "nextScore": 0.081
+    },
+    "95:16": {
+      "extractPart": "5",
+      "extractNumber": 27,
+      "sanskritScore": 1,
+      "nextScore": 0.093
+    },
+    "120:1": {
+      "extractPart": "6",
+      "extractNumber": 1,
+      "sanskritScore": 1,
+      "nextScore": 0.119
+    },
+    "120:2": {
+      "extractPart": "6",
+      "extractNumber": 2,
+      "sanskritScore": 1,
+      "nextScore": 0.133
+    },
+    "120:3": {
+      "extractPart": "6",
+      "extractNumber": 3,
+      "sanskritScore": 1,
+      "nextScore": 0.152
+    },
+    "120:4": {
+      "extractPart": "6",
+      "extractNumber": 4,
+      "sanskritScore": 1,
+      "nextScore": 0.173
+    },
+    "120:5": {
+      "extractPart": "6",
+      "extractNumber": 5,
+      "sanskritScore": 1,
+      "nextScore": 0.125
+    },
+    "120:6": {
+      "extractPart": "6",
+      "extractNumber": 6,
+      "sanskritScore": 1,
+      "nextScore": 0.151
+    },
+    "120:7": {
+      "extractPart": "6",
+      "extractNumber": 7,
+      "sanskritScore": 0.959,
+      "nextScore": 0.101
+    },
+    "120:8": {
+      "extractPart": "6",
+      "extractNumber": 8,
+      "sanskritScore": 0.953,
+      "nextScore": 0.106
+    },
+    "120:9": {
+      "extractPart": "6",
+      "extractNumber": 9,
+      "sanskritScore": 1,
+      "nextScore": 0.125
+    },
+    "120:10": {
+      "extractPart": "6",
+      "extractNumber": 10,
+      "sanskritScore": 0.921,
+      "nextScore": 0.134
+    },
+    "120:11": {
+      "extractPart": "6",
+      "extractNumber": 11,
+      "sanskritScore": 1,
+      "nextScore": 0.162
+    },
+    "120:12": {
+      "extractPart": "6",
+      "extractNumber": 12,
+      "sanskritScore": 1,
+      "nextScore": 0.098
+    },
+    "120:26": {
+      "extractPart": "6",
+      "extractNumber": 26,
+      "sanskritScore": 1,
+      "nextScore": 0.092
+    },
+    "139:14": {
+      "extractPart": "7",
+      "extractNumber": 14,
+      "sanskritScore": 1,
+      "nextScore": 0.138
+    },
+    "139:21": {
+      "extractPart": "7",
+      "extractNumber": 21,
+      "sanskritScore": 1,
+      "nextScore": 0.149
+    },
+    "154:1": {
+      "extractPart": "8",
+      "extractNumber": 1,
+      "sanskritScore": 1,
+      "nextScore": 0.144
+    },
+    "154:2": {
+      "extractPart": "8",
+      "extractNumber": 2,
+      "sanskritScore": 1,
+      "nextScore": 0.132
+    },
+    "154:3": {
+      "extractPart": "8",
+      "extractNumber": 3,
+      "sanskritScore": 1,
+      "nextScore": 0.219
+    },
+    "154:4": {
+      "extractPart": "8",
+      "extractNumber": 4,
+      "sanskritScore": 0.905,
+      "nextScore": 0.123
+    },
+    "154:5": {
+      "extractPart": "8",
+      "extractNumber": 5,
+      "sanskritScore": 1,
+      "nextScore": 0.148
+    },
+    "154:13": {
+      "extractPart": "8",
+      "extractNumber": 13,
+      "sanskritScore": 0.924,
+      "nextScore": 0.149
+    },
+    "154:14": {
+      "extractPart": "8",
+      "extractNumber": 14,
+      "sanskritScore": 1,
+      "nextScore": 0.107
+    },
+    "154:15": {
+      "extractPart": "8",
+      "extractNumber": 15,
+      "sanskritScore": 1,
+      "nextScore": 0.092
+    },
+    "154:16": {
+      "extractPart": "8",
+      "extractNumber": 16,
+      "sanskritScore": 0.941,
+      "nextScore": 0.137
+    },
+    "154:18": {
+      "extractPart": "8",
+      "extractNumber": 18,
+      "sanskritScore": 1,
+      "nextScore": 0.171
+    },
+    "178:6": {
+      "extractPart": "9",
+      "extractNumber": 6,
+      "sanskritScore": 1,
+      "nextScore": 0.158
+    },
+    "202:14": {
+      "extractPart": "10",
+      "extractNumber": 14,
+      "sanskritScore": 1,
+      "nextScore": 0.112
+    },
+    "202:17": {
+      "extractPart": "10",
+      "extractNumber": 17,
+      "sanskritScore": 1,
+      "nextScore": 0.113
+    },
+    "251:20": {
+      "extractPart": "11",
+      "extractNumber": 20,
+      "sanskritScore": 0.835,
+      "nextScore": 0.109
+    },
+    "292:1": {
+      "extractPart": "12",
+      "extractNumber": 1,
+      "sanskritScore": 0.793,
+      "nextScore": 0.11
+    },
+    "292:2": {
+      "extractPart": "12",
+      "extractNumber": 2,
+      "sanskritScore": 1,
+      "nextScore": 0.114
+    },
+    "292:3": {
+      "extractPart": "12",
+      "extractNumber": 3,
+      "sanskritScore": 1,
+      "nextScore": 0.09
+    },
+    "292:4": {
+      "extractPart": "12",
+      "extractNumber": 4,
+      "sanskritScore": 0.936,
+      "nextScore": 0.1
+    },
+    "292:5": {
+      "extractPart": "12",
+      "extractNumber": 5,
+      "sanskritScore": 0.711,
+      "nextScore": 0.145
+    },
+    "292:8": {
+      "extractPart": "12",
+      "extractNumber": 8,
+      "sanskritScore": 1,
+      "nextScore": 0.137
+    },
+    "292:9": {
+      "extractPart": "12",
+      "extractNumber": 9,
+      "sanskritScore": 1,
+      "nextScore": 0.126
+    },
+    "293:1": {
+      "extractPart": "12",
+      "extractNumber": 25,
+      "sanskritScore": 1,
+      "nextScore": 0.123
+    },
+    "293:2": {
+      "extractPart": "12",
+      "extractNumber": 26,
+      "sanskritScore": 1,
+      "nextScore": 0.172
+    },
+    "293:3": {
+      "extractPart": "12",
+      "extractNumber": 27,
+      "sanskritScore": 1,
+      "nextScore": 0.165
+    },
+    "293:4": {
+      "extractPart": "12",
+      "extractNumber": 28,
+      "sanskritScore": 1,
+      "nextScore": 0.162
+    },
+    "293:5": {
+      "extractPart": "12",
+      "extractNumber": 29,
+      "sanskritScore": 1,
+      "nextScore": 0.143
+    },
+    "323:1": {
+      "extractPart": "13",
+      "extractNumber": 1,
+      "sanskritScore": 1,
+      "nextScore": 0.115
+    }
+  }
+}
