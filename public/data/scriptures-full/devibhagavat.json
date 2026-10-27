@@ -61615,12 +61615,16 @@
         {
           "number": 15,
           "sanskrit": "इलावृतात्पश्चिमतो माल्यवान्नामपर्वतः । पूर्वेण च ततः श्रीमान् गन्धमादनपर्वतः ॥ १५ ॥",
-          "transliteration": "ilāvṛtātpaścimato mālyavānnāmaparvataḥ | pūrveṇa ca tataḥ śrīmān gandhamādanaparvataḥ || 15 ||"
+          "transliteration": "ilāvṛtātpaścimato mālyavānnāmaparvataḥ | pūrveṇa ca tataḥ śrīmān gandhamādanaparvataḥ || 15 ||",
+          "hindi": "इलाबृतके पश्चिममें माल्यवान्‌ नामक पर्वत और पूर्वकी ओर श्रीयुक्त गन्धमादनपर्वत स्थित हैं। ये दोनों पर्वत नीलपर्वतसे लेकर निषधपर्वततक लम्बाईमें फैले हैं और चौड़ाईमें इनका विस्तार दो हजार योजन है। वे दोनों पर्वत केतुमाल और भद्राश्व-इन दोनों वर्षोंकी सीमा निश्चित करते हैं",
+          "hindiRange": "15-16"
         },
         {
           "number": 16,
           "sanskrit": "आनीलनिषधं त्वेतौ चायतौ द्विसहस्रतः । योजनैः पृथुतां यातौ मर्यादाकारकौ गिरी ॥ १६ ॥",
-          "transliteration": "ānīlaniṣadhaṃ tvetau cāyatau dvisahasrataḥ | yojanaiḥ pṛthutāṃ yātau maryādākārakau girī || 16 ||"
+          "transliteration": "ānīlaniṣadhaṃ tvetau cāyatau dvisahasrataḥ | yojanaiḥ pṛthutāṃ yātau maryādākārakau girī || 16 ||",
+          "hindi": "",
+          "hindiSeeVerse": "15"
         },
         {
           "number": 17,
@@ -61665,27 +61669,37 @@
         {
           "number": 25,
           "sanskrit": "मन्दरोत्सङ्गसंस्थस्य देवचूतस्य मस्तकात् । एकादशशतोच्छ्रायात्फलान्यमृतभाञ्जि च ॥ २५ ॥",
-          "transliteration": "mandarotsaṅgasaṃsthasya devacūtasya mastakāt | ekādaśaśatocchrāyātphalānyamṛtabhāñji ca || 25 ||"
+          "transliteration": "mandarotsaṅgasaṃsthasya devacūtasya mastakāt | ekādaśaśatocchrāyātphalānyamṛtabhāñji ca || 25 ||",
+          "hindi": "मन्दराचलके शिखरपर विराजमान ग्यारह सौ योजन ऊँचे दिव्य आम्र-वृक्षके फल अमृतमय पर्वत-शिखरके समान विशाल, अत्यन्त स्वादिष्ट तथा कोमल होते हैं। उस वृक्षके ऊँचे शिरोभागसे गिरकर विदीर्ण हुए उन फलोंके सुस्वादु एवं लाल वर्णवाले रससे ' अरुणोदा' नामक नदी बन गयी। रम्य जलवाली यह नदी बड़े-बड़े देवताओं तथा दैत्योंद्वारा पूजी जाती है",
+          "hindiRange": "25-27"
         },
         {
           "number": 26,
           "sanskrit": "गिरिकूटप्रमाणानि सुस्वादूनि मृदूनि च । तेषां विशीर्यमाणानां फलानां सुरसेन च ॥ २६ ॥",
-          "transliteration": "girikūṭapramāṇāni susvādūni mṛdūni ca | teṣāṃ viśīryamāṇānāṃ phalānāṃ surasena ca || 26 ||"
+          "transliteration": "girikūṭapramāṇāni susvādūni mṛdūni ca | teṣāṃ viśīryamāṇānāṃ phalānāṃ surasena ca || 26 ||",
+          "hindi": "",
+          "hindiSeeVerse": "25"
         },
         {
           "number": 27,
           "sanskrit": "अरुणोदसवर्णेन अरुणोदा प्रवर्तते । नदी रम्यजला देवदैत्यराजप्रपूजिता ॥ २७ ॥",
-          "transliteration": "aruṇodasavarṇena aruṇodā pravartate | nadī ramyajalā devadaityarājaprapūjitā || 27 ||"
+          "transliteration": "aruṇodasavarṇena aruṇodā pravartate | nadī ramyajalā devadaityarājaprapūjitā || 27 ||",
+          "hindi": "",
+          "hindiSeeVerse": "25"
         },
         {
           "number": 28,
           "sanskrit": "अरुणाख्या महाराज वर्तते पापहारिणी । पूजयन्ति च तां देवीं सर्वकामफलप्रदाम् ॥ २८ ॥",
-          "transliteration": "aruṇākhyā mahārāja vartate pāpahāriṇī | pūjayanti ca tāṃ devīṃ sarvakāmaphalapradām || 28 ||"
+          "transliteration": "aruṇākhyā mahārāja vartate pāpahāriṇī | pūjayanti ca tāṃ devīṃ sarvakāmaphalapradām || 28 ||",
+          "hindi": "हे महाराज! उसी पर्वतपर पापनाशिनी भगवती अरुणा' प्रतिष्ठित हैं। लोग अनेकविध उपहारों तथा बलिसे समस्त मनोरथ पूर्ण करनेवाली, पापोंका शमन करनेवाली तथा अभय प्रदान करनेवाली उन भगवतीका पूजन करते हैं। उनकी कृपादृष्टिमात्रसे वे कल्याण तथा आरोग्य प्राप्त कर लेते हैं",
+          "hindiRange": "28-29"
         },
         {
           "number": 29,
           "sanskrit": "नानोपहारबलिभिः कल्मषघ्न्यभयप्रदाम् । तस्याः कृपावलोकेन क्षेमारोग्यं व्रजन्ति ते ॥ २९ ॥",
-          "transliteration": "nānopahārabalibhiḥ kalmaṣaghnyabhayapradām | tasyāḥ kṛpāvalokena kṣemārogyaṃ vrajanti te || 29 ||"
+          "transliteration": "nānopahārabalibhiḥ kalmaṣaghnyabhayapradām | tasyāḥ kṛpāvalokena kṣemārogyaṃ vrajanti te || 29 ||",
+          "hindi": "",
+          "hindiSeeVerse": "28"
         },
         {
           "number": 30,
@@ -62032,7 +62046,8 @@
         {
           "number": 33,
           "sanskrit": "अन्ये नदाश्च नद्यश्च वर्षे वर्षेऽपि सन्ति हि । बहुशो मेरुमन्दारप्रसूताश्चैव नारद ॥ ३३ ॥",
-          "transliteration": "anye nadāśca nadyaśca varṣe varṣe'pi santi hi | bahuśo merumandāraprasūtāścaiva nārada || 33 ||"
+          "transliteration": "anye nadāśca nadyaśca varṣe varṣe'pi santi hi | bahuśo merumandāraprasūtāścaiva nārada || 33 ||",
+          "hindi": "हे नारद! अन्य बहुतसे नद और नदियाँ प्रत्येक वर्षमें हैं। प्रायः ये सभी मेरु और मन्दारपर्वतसे ही निकले हुए हैं"
         },
         {
           "number": 34,
@@ -62068,7 +62083,8 @@
         {
           "number": 2,
           "sanskrit": "सर्वर्तुकुसुमश्रेणी शोभिता वनराजयः । फलानां पल्लवानां च यत्र शोभा निरन्तरम् ॥ २ ॥",
-          "transliteration": "sarvartukusumaśreṇī śobhitā vanarājayaḥ | phalānāṃ pallavānāṃ ca yatra śobhā nirantaram || 2 ||"
+          "transliteration": "sarvartukusumaśreṇī śobhitā vanarājayaḥ | phalānāṃ pallavānāṃ ca yatra śobhā nirantaram || 2 ||",
+          "hindi": "सभी ऋतुओंमें खिलनेवाले पुष्पोंके समूहोंसे सुशोभित अनेक वन उनमें विद्यमान हैं, जहाँ फलों तथा पल्‍लवोंकी शोभा निरन्तर बनी रहती है"
         },
         {
           "number": 3,
@@ -62143,7 +62159,8 @@
         {
           "number": 17,
           "sanskrit": "यस्याद्य आसीद् गुणविग्रहो महान् विज्ञानधिष्ण्यो भगवानजः किल । यत्संवृतोऽहं त्रिवृता स्वतेजसा वैकारिकं तामसमैन्द्रियं सृजे ॥ १७ ॥",
-          "transliteration": "yasyādya āsīd guṇavigraho mahān vijñānadhiṣṇyo bhagavānajaḥ kila | yatsaṃvṛto'haṃ trivṛtā svatejasā vaikārikaṃ tāmasamaindriyaṃ sṛje || 17 ||"
+          "transliteration": "yasyādya āsīd guṇavigraho mahān vijñānadhiṣṇyo bhagavānajaḥ kila | yatsaṃvṛto'haṃ trivṛtā svatejasā vaikārikaṃ tāmasamaindriyaṃ sṛje || 17 ||",
+          "hindi": "जिनसे उत्पन्न हुआ मैं अहंकाररूप अपने त्रिगुणमय तेजसे देवता, इन्द्रिय और भूतोंकी रचना करता हूँ--वे विज्ञानके आश्रय भगवान्‌ ब्रह्माजी भी आपके ही महत्तत्त्वसंज्ञक प्रथम गुणमय स्वरूप हैं"
         },
         {
           "number": 18,
@@ -62153,32 +62170,41 @@
         {
           "number": 19,
           "sanskrit": "यन्निर्मितां कर्ह्यपि कर्मपर्वणीं मायां जनोऽयं गुरुसर्गमोहितः । न वेद निस्तारणयोगमञ्जसा तस्मै नमस्ते विलयोदयात्मने ॥ १९ ॥",
-          "transliteration": "yannirmitāṃ karhyapi karmaparvaṇīṃ māyāṃ jano'yaṃ gurusargamohitaḥ | na veda nistāraṇayogamañjasā tasmai namaste vilayodayātmane || 19 ||"
+          "transliteration": "yannirmitāṃ karhyapi karmaparvaṇīṃ māyāṃ jano'yaṃ gurusargamohitaḥ | na veda nistāraṇayogamañjasā tasmai namaste vilayodayātmane || 19 ||",
+          "hindi": "सत्त्वादि गुणोंकी सृष्टिसे मोहित यह जीव जिनके द्वारा रचित तथा कर्मबन्धनमें बाँधनेवाली मायाकों तो कदाचित्‌ जान लेता है, किंतु उससे छूटनेका उपाय उसे सरलतापूर्वक नहीं ज्ञात हो पाता--उन जगत्‌की उत्पत्ति तथा लयरूप आप परमात्माको मेरा नमस्कार है"
         },
         {
           "number": 20,
           "sanskrit": "श्रीनारायण उवाच । एवं स भगवान् रुद्रो देवं सङ्कर्षणं प्रभुम् । इलावृतमुपासीत देवीगणसमाहितः ॥ २० ॥",
-          "transliteration": "śrīnārāyaṇa uvāca | evaṃ sa bhagavān rudro devaṃ saṅkarṣaṇaṃ prabhum | ilāvṛtamupāsīta devīgaṇasamāhitaḥ || 20 ||"
+          "transliteration": "śrīnārāyaṇa uvāca | evaṃ sa bhagavān rudro devaṃ saṅkarṣaṇaṃ prabhum | ilāvṛtamupāsīta devīgaṇasamāhitaḥ || 20 ||",
+          "hindi": "श्रीनारायण बोले--[हे नारद!] इस प्रकार देवीके गणोंसे घिरे हुए वे भगवान्‌ रुद्र इलावृतवर्षमें सर्वसमर्थ परमेश्वर संकर्षषकी उपासना करते हैं"
         },
         {
           "number": 21,
           "sanskrit": "तथैव धर्मपुत्रोऽसौ नाम्ना भद्रश्रवा इति । तत्कुलस्यापि पतयः पुरुषा भद्रसेवकाः ॥ २१ ॥",
-          "transliteration": "tathaiva dharmaputro'sau nāmnā bhadraśravā iti | tatkulasyāpi patayaḥ puruṣā bhadrasevakāḥ || 21 ||"
+          "transliteration": "tathaiva dharmaputro'sau nāmnā bhadraśravā iti | tatkulasyāpi patayaḥ puruṣā bhadrasevakāḥ || 21 ||",
+          "hindi": "उसी प्रकार भद्राश्ववर्षमें भद्रश्रवा नामक वे धर्मपुत्र और उनके कुलके प्रधान पुरुष तथा सेवक भी भगवान्‌ वासुदेवकी हयग्रीव नामसे प्रसिद्ध हयमूर्तिको एकनिष्ठ परम समाधिके द्वारा अपने हृदयमें धारण किये रहते हैं और इस प्रकार उस हयमूर्तिरूप भगवान्‌ वासुदेवको स्तुति करते हुए उनके समीप रहते हैं",
+          "hindiRange": "21-23"
         },
         {
           "number": 22,
           "sanskrit": "भद्राश्ववर्षे तां मूर्तिं वासुदेवस्य विश्रुताम् । हयमूर्तिभिदा तां तु हयग्रीवपदाङ्किताम् ॥ २२ ॥",
-          "transliteration": "bhadrāśvavarṣe tāṃ mūrtiṃ vāsudevasya viśrutām | hayamūrtibhidā tāṃ tu hayagrīvapadāṅkitām || 22 ||"
+          "transliteration": "bhadrāśvavarṣe tāṃ mūrtiṃ vāsudevasya viśrutām | hayamūrtibhidā tāṃ tu hayagrīvapadāṅkitām || 22 ||",
+          "hindi": "",
+          "hindiSeeVerse": "21"
         },
         {
           "number": 23,
           "sanskrit": "परमेण समाध्यन्यवारकेण नियन्त्रिताम् । एवमेव च तां मूर्तिं गृणन्त उपयान्ति च ॥ २३ ॥",
-          "transliteration": "parameṇa samādhyanyavārakeṇa niyantritām | evameva ca tāṃ mūrtiṃ gṛṇanta upayānti ca || 23 ||"
+          "transliteration": "parameṇa samādhyanyavārakeṇa niyantritām | evameva ca tāṃ mūrtiṃ gṛṇanta upayānti ca || 23 ||",
+          "hindi": "",
+          "hindiSeeVerse": "21"
         },
         {
           "number": 24,
           "sanskrit": "भद्रश्रवस ऊचुः । ॐ नमो भगवते धर्मायात्मविशोधनाय नम इति । अहो विचित्रं भगवद्विचेष्टितं घ्नन्तं जनोऽयं हि मिषन्न पश्यति । ध्यायन्न सद्यर्हि विकर्म सेवितुं निर्हृत्य पुत्रं पितरं जिजीविषुः ॥ २४ ॥",
-          "transliteration": "bhadraśravasa ūcuḥ | oṃ namo bhagavate dharmāyātmaviśodhanāya nama iti | aho vicitraṃ bhagavadviceṣṭitaṃ ghnantaṃ jano'yaṃ hi miṣanna paśyati | dhyāyanna sadyarhi vikarma sevituṃ nirhṛtya putraṃ pitaraṃ jijīviṣuḥ || 24 ||"
+          "transliteration": "bhadraśravasa ūcuḥ | oṃ namo bhagavate dharmāyātmaviśodhanāya nama iti | aho vicitraṃ bhagavadviceṣṭitaṃ ghnantaṃ jano'yaṃ hi miṣanna paśyati | dhyāyanna sadyarhi vikarma sevituṃ nirhṛtya putraṃ pitaraṃ jijīviṣuḥ || 24 ||",
+          "hindi": "भद्रश्रता बोले--चित्तको शुद्ध करनेवाले ओंकारस्वरूप भगवान्‌ धर्मको नमस्कार है। अहो, ईश्वरकी लीला बड़ी विचित्र है कि यह जीव सम्पूर्ण लोकोंका संहार करनेवाले कालको देखता हुआ भी नहीं देखता और तुच्छ विषयोंका सेवन करनेके लिये कुत्सित चिन्तन करता हुआ अपने ही पुत्र तथा पिताको जलाकर भी स्वयं जीवित रहनेकी इच्छा करता है"
         },
         {
           "number": 25,
@@ -62188,7 +62214,8 @@
         {
           "number": 26,
           "sanskrit": "विश्वोद्भवस्थाननिरोधकर्म ते ह्यकर्तुरङ्गीकृतमप्यपावृतः । युक्तं न चित्रं त्वयि कार्यकारणे सर्वात्मनि व्यतिरिक्ते च वस्तुतः ॥ २६ ॥",
-          "transliteration": "viśvodbhavasthānanirodhakarma te hyakarturaṅgīkṛtamapyapāvṛtaḥ | yuktaṃ na citraṃ tvayi kāryakāraṇe sarvātmani vyatirikte ca vastutaḥ || 26 ||"
+          "transliteration": "viśvodbhavasthānanirodhakarma te hyakarturaṅgīkṛtamapyapāvṛtaḥ | yuktaṃ na citraṃ tvayi kāryakāraṇe sarvātmani vyatirikte ca vastutaḥ || 26 ||",
+          "hindi": "मायाके आवरणसे रहित आपने अकर्ता होते हुए भी विश्वकी उत्पत्ति, पालन तथा संहारका कार्य अंगीकृत किया है। यह उचित ही है, सर्वात्मरूप तथा कार्यकारणभावसे सर्वथा अतीत आपके लिये यह कोई आश्चर्य नहीं है"
         },
         {
           "number": 27,
@@ -62198,7 +62225,8 @@
         {
           "number": 28,
           "sanskrit": "एवं स्तुवन्ति देवेशं हयशीर्षं हरिं च ते । भद्रश्रवसनामानो वर्णयन्ति च तद्गुणान् ॥ २८ ॥",
-          "transliteration": "evaṃ stuvanti deveśaṃ hayaśīrṣaṃ hariṃ ca te | bhadraśravasanāmāno varṇayanti ca tadguṇān || 28 ||"
+          "transliteration": "evaṃ stuvanti deveśaṃ hayaśīrṣaṃ hariṃ ca te | bhadraśravasanāmāno varṇayanti ca tadguṇān || 28 ||",
+          "hindi": "इस प्रकार भद्र श्रवा नामवाले वे महात्मागण हयग्रीवरूप देवेश्वर श्रीहरिकी स्तुति करते हैं और उनके गुणोंका संकीर्तन करते हैं"
         },
         {
           "number": 29,
@@ -62808,17 +62836,22 @@
         {
           "number": 2,
           "sanskrit": "श्रीरानारायण उवाच । कुशद्वीपस्य परितो घृतोदावरणं महत् । ततो बहिः क्रौञ्चद्वीपो द्विगुणः स्यात्स्वमानतः ॥ २ ॥",
-          "transliteration": "śrīrānārāyaṇa uvāca | kuśadvīpasya parito ghṛtodāvaraṇaṃ mahat | tato bahiḥ krauñcadvīpo dviguṇaḥ syātsvamānataḥ || 2 ||"
+          "transliteration": "śrīrānārāyaṇa uvāca | kuśadvīpasya parito ghṛtodāvaraṇaṃ mahat | tato bahiḥ krauñcadvīpo dviguṇaḥ syātsvamānataḥ || 2 ||",
+          "hindi": "श्रीनारायण बोले--[हे नारद!] कुशद्वीपके चारों ओर घृतके समुद्रका महान्‌ आवरण है। उसके बाहर उससे दूने परिमाणवाला क्रौंचद्वीप है, जो अपने ही समान विस्तारवाले क्षीरसमुद्रसे घिरा हुआ सुशोभित होता है। उसमें क्रौंच नामक पर्वत विद्यमान है, उसीके कारण इसका नाम क्रौंचद्वीप पड़ गया",
+          "hindiRange": "2-3"
         },
         {
           "number": 3,
           "sanskrit": "क्षीरोदेनावृतो भाति यस्मिन्क्रौञ्चाद्रिरस्ति च । नामनिर्वर्तकः सोऽयं द्वीपस्य परिवर्तते ॥ ३ ॥",
-          "transliteration": "kṣīrodenāvṛto bhāti yasminkrauñcādrirasti ca | nāmanirvartakaḥ so'yaṃ dvīpasya parivartate || 3 ||"
+          "transliteration": "kṣīrodenāvṛto bhāti yasminkrauñcādrirasti ca | nāmanirvartakaḥ so'yaṃ dvīpasya parivartate || 3 ||",
+          "hindi": "",
+          "hindiSeeVerse": "2"
         },
         {
           "number": 4,
           "sanskrit": "योऽसौ गुहस्य शक्त्या च भिन्नकुक्षिः पुराभवत् । क्षीरोदेनासिच्यमानो वरुणेन च रक्षितः ॥ ४ ॥",
-          "transliteration": "yo'sau guhasya śaktyā ca bhinnakukṣiḥ purābhavat | kṣīrodenāsicyamāno varuṇena ca rakṣitaḥ || 4 ||"
+          "transliteration": "yo'sau guhasya śaktyā ca bhinnakukṣiḥ purābhavat | kṣīrodenāsicyamāno varuṇena ca rakṣitaḥ || 4 ||",
+          "hindi": "पूर्वकालमें स्वामी कार्तिकियकी शक्तिके प्रहारसे इसका कटिप्रदेश कट गया था, किंतु क्षीरसमुद्रसे सिंचित और वरुणदेवसे रक्षित होकर यह पुनः स्थिर हो गया"
         },
         {
           "number": 5,
@@ -62873,27 +62906,37 @@
         {
           "number": 15,
           "sanskrit": "एवं परस्तात्क्षीरोदात्परितश्चोपवेशितः । द्वात्रिंशल्लक्षसङ्ख्याकयोजनायाममाश्रितः ॥ १५ ॥",
-          "transliteration": "evaṃ parastātkṣīrodātparitaścopaveśitaḥ | dvātriṃśallakṣasaṅkhyākayojanāyāmamāśritaḥ || 15 ||"
+          "transliteration": "evaṃ parastātkṣīrodātparitaścopaveśitaḥ | dvātriṃśallakṣasaṅkhyākayojanāyāmamāśritaḥ || 15 ||",
+          "hindi": "इसी प्रकार क्षीरसमुद्रसे आगे उसके चारों ओर बत्तीस लाख योजन विस्तारवाला शाकद्ठीप फैला हुआ है। यह द्वीप भी अपने ही समान परिमाणवाले दधिमण्डोदक समुद्रसे घिरा हुआ है। यह शाकद्ठीप एक विशिष्ट द्वीप है, जिसमें 'शाक' नामक एक विशाल वृक्ष स्थित है। हे नारद! वही वृक्ष इस क्षेत्रके नामका कारण है। प्रियव्रतपुत्र मेधातिथि उस द्वीपके अधिपति कहे जाते हैं। वे इस द्वीपको सात वर्षोमें विभाजित करके उनमें उन्हींके समान नामवाले अपने सात पुत्रोंको नियुक्तकर स्वयं योगगतिकी प्राप्तिके उद्देश्यस्से निकल पड़े। पुरोजव, मनोजव, पवमान, धूम्रानीक, चित्ररेफ, बहुरूप और विश्वधृक्‌ू--ये उनके सात पुत्र थे",
+          "hindiRange": "15-19"
         },
         {
           "number": 16,
           "sanskrit": "स्वमानेन च द्वीपोऽयं दधिमण्डोदकेन च । शाकद्वीपो विशिष्टोऽयं यस्मिच्छाको महीरुहः ॥ १६ ॥",
-          "transliteration": "svamānena ca dvīpo'yaṃ dadhimaṇḍodakena ca | śākadvīpo viśiṣṭo'yaṃ yasmicchāko mahīruhaḥ || 16 ||"
+          "transliteration": "svamānena ca dvīpo'yaṃ dadhimaṇḍodakena ca | śākadvīpo viśiṣṭo'yaṃ yasmicchāko mahīruhaḥ || 16 ||",
+          "hindi": "",
+          "hindiSeeVerse": "15"
         },
         {
           "number": 17,
           "sanskrit": "स्वक्षेत्रव्यपदेशस्य कारणं स हि नारद । प्रैयव्रतोऽधिपस्तस्य मेधातिथिरिति स्मृतः ॥ १७ ॥",
-          "transliteration": "svakṣetravyapadeśasya kāraṇaṃ sa hi nārada | praiyavrato'dhipastasya medhātithiriti smṛtaḥ || 17 ||"
+          "transliteration": "svakṣetravyapadeśasya kāraṇaṃ sa hi nārada | praiyavrato'dhipastasya medhātithiriti smṛtaḥ || 17 ||",
+          "hindi": "",
+          "hindiSeeVerse": "15"
         },
         {
           "number": 18,
           "sanskrit": "विभज्य सप्त वर्षाणि पुत्रनामानि तेषु च । सप्त पुत्रान्निजान् स्थाप्य स्वयं योगगतिं गतः ॥ १८ ॥",
-          "transliteration": "vibhajya sapta varṣāṇi putranāmāni teṣu ca | sapta putrānnijān sthāpya svayaṃ yogagatiṃ gataḥ || 18 ||"
+          "transliteration": "vibhajya sapta varṣāṇi putranāmāni teṣu ca | sapta putrānnijān sthāpya svayaṃ yogagatiṃ gataḥ || 18 ||",
+          "hindi": "",
+          "hindiSeeVerse": "15"
         },
         {
           "number": 19,
           "sanskrit": "पुरोजवो मनःपूर्वजवोऽथ पवमानकः । धूम्रानीकश्चित्ररेफो बहुरूपोऽथ विश्वधृक् ॥ १९ ॥",
-          "transliteration": "purojavo manaḥpūrvajavo'tha pavamānakaḥ | dhūmrānīkaścitrarepho bahurūpo'tha viśvadhṛk || 19 ||"
+          "transliteration": "purojavo manaḥpūrvajavo'tha pavamānakaḥ | dhūmrānīkaścitrarepho bahurūpo'tha viśvadhṛk || 19 ||",
+          "hindi": "",
+          "hindiSeeVerse": "15"
         },
         {
           "number": 20,
@@ -62938,12 +62981,16 @@
         {
           "number": 28,
           "sanskrit": "यत्रास्ते पुष्करं भ्राजदग्निचूडानिभानि च । पत्राणि विशदानीह स्वर्णपत्रायुतायुतम् ॥ २८ ॥",
-          "transliteration": "yatrāste puṣkaraṃ bhrājadagnicūḍānibhāni ca | patrāṇi viśadānīha svarṇapatrāyutāyutam || 28 ||"
+          "transliteration": "yatrāste puṣkaraṃ bhrājadagnicūḍānibhāni ca | patrāṇi viśadānīha svarṇapatrāyutāyutam || 28 ||",
+          "hindi": "अग्निकी शिखाके समान प्रकाशमान विशाल पंखुड़ियोंवाला तथा लाखों स्वर्णमय पत्रोंबाला एक पुष्कर (कमल) इस द्वीपमें विराजमान है। समस्त लोकोंकी रचना करनेकी कामनासे लोकगुरु श्रीहरिने भगवान्‌ ब्रह्मके आसनके रूपमें उस कमलकी रचना की",
+          "hindiRange": "28-29"
         },
         {
           "number": 29,
           "sanskrit": "श्रीमद्भगवतश्चेदमासनं परमेष्ठिनः । कल्पितं लोकगुरुणा सर्वलोकसिसृक्षया ॥ २९ ॥",
-          "transliteration": "śrīmadbhagavataścedamāsanaṃ parameṣṭhinaḥ | kalpitaṃ lokaguruṇā sarvalokasisṛkṣayā || 29 ||"
+          "transliteration": "śrīmadbhagavataścedamāsanaṃ parameṣṭhinaḥ | kalpitaṃ lokaguruṇā sarvalokasisṛkṣayā || 29 ||",
+          "hindi": "",
+          "hindiSeeVerse": "28"
         },
         {
           "number": 30,
@@ -63240,32 +63287,44 @@
         {
           "number": 21,
           "sanskrit": "मेरुस्थानां सदा मध्यं गत एव विभाति हि । सव्यं गच्छन्दक्षिणेन करोति स्वर्णपर्वतम् ॥ २१ ॥",
-          "transliteration": "merusthānāṃ sadā madhyaṃ gata eva vibhāti hi | savyaṃ gacchandakṣiṇena karoti svarṇaparvatam || 21 ||"
+          "transliteration": "merusthānāṃ sadā madhyaṃ gata eva vibhāti hi | savyaṃ gacchandakṣiṇena karoti svarṇaparvatam || 21 ||",
+          "hindi": "सुमेरुपर रहनेवालोंको सूर्य सदा मध्यमें विराजमान प्रतीत होते हैं। सूर्यका रथ सुमेरुके बायें चलते हुए वायुकी प्रेरणासे दायें हो जाता है। अतः उदय तथा अस्त-समयोंमें सर्वदा वह सामने ही पड़ता है। हे देवर्षे! सभी दिशाओं तथा विदिशाओंमें रहनेवाले जो लोग सूर्यको जहाँ देखते हैं, उनके लिये वह सूर्योदय तथा जहाँ सूर्य छिप जाते हैं, वहाँके लोगोंके लिये वह सूर्यास्त माना गया है। सर्वदा विद्यमान रहनेवाले सूर्यका न तो उदय होता है और न अस्त ही होता है, उनका दर्शन तथा अदर्शन ही उदय और अस्त नामसे कहा गया है",
+          "hindiRange": "21-24"
         },
         {
           "number": 22,
           "sanskrit": "उदयास्तमये चैव सर्वकालं तु सम्मुखे । दिशास्वशेषासु तथा सुरर्षे विदिशासु च ॥ २२ ॥",
-          "transliteration": "udayāstamaye caiva sarvakālaṃ tu sammukhe | diśāsvaśeṣāsu tathā surarṣe vidiśāsu ca || 22 ||"
+          "transliteration": "udayāstamaye caiva sarvakālaṃ tu sammukhe | diśāsvaśeṣāsu tathā surarṣe vidiśāsu ca || 22 ||",
+          "hindi": "",
+          "hindiSeeVerse": "21"
         },
         {
           "number": 23,
           "sanskrit": "यैर्यत्र दृश्यते भास्वान्स तेषामुदयः स्मृतः । तिरोभावं च यत्रैति तत्रैवास्तमनं रवेः ॥ २३ ॥",
-          "transliteration": "yairyatra dṛśyate bhāsvānsa teṣāmudayaḥ smṛtaḥ | tirobhāvaṃ ca yatraiti tatraivāstamanaṃ raveḥ || 23 ||"
+          "transliteration": "yairyatra dṛśyate bhāsvānsa teṣāmudayaḥ smṛtaḥ | tirobhāvaṃ ca yatraiti tatraivāstamanaṃ raveḥ || 23 ||",
+          "hindi": "",
+          "hindiSeeVerse": "21"
         },
         {
           "number": 24,
           "sanskrit": "नैवास्तमनमर्कस्य नोदयः सर्वदा सतः । उदयास्तमनाख्यं हि दर्शनादर्शनं रवेः ॥ २४ ॥",
-          "transliteration": "naivāstamanamarkasya nodayaḥ sarvadā sataḥ | udayāstamanākhyaṃ hi darśanādarśanaṃ raveḥ || 24 ||"
+          "transliteration": "naivāstamanamarkasya nodayaḥ sarvadā sataḥ | udayāstamanākhyaṃ hi darśanādarśanaṃ raveḥ || 24 ||",
+          "hindi": "",
+          "hindiSeeVerse": "21"
         },
         {
           "number": 25,
           "sanskrit": "शक्रादीनां पुरे तिष्ठन्स्पृशत्येष पुरत्रयम् । विकर्णौ द्वौ विकर्णस्थस्त्रीन्कोणान्द्वे पुरे तथा ॥ २५ ॥",
-          "transliteration": "śakrādīnāṃ pure tiṣṭhanspṛśatyeṣa puratrayam | vikarṇau dvau vikarṇasthastrīnkoṇāndve pure tathā || 25 ||"
+          "transliteration": "śakrādīnāṃ pure tiṣṭhanspṛśatyeṣa puratrayam | vikarṇau dvau vikarṇasthastrīnkoṇāndve pure tathā || 25 ||",
+          "hindi": "जिस समय सूर्य इन्द्र आदिकी पुरीमें पहुँचते हैं, उस समय उनके प्रकाशसे तीनों लोक प्रकाशित होने लगते हैं। दो विकर्ण, उनके तीन कोण तथा दो पुरियाँ--सबमें सूर्यकी किरणसे प्रकाश फैल जाता है। सम्पूर्ण द्वीप और वर्ष सुमेरुके उत्तरमें स्थित हैं। जो लोग सूर्यको जहाँ उदय होते देखते हैं, उनके लिये वही पूर्व दिशा कही जाती है",
+          "hindiRange": "25-26"
         },
         {
           "number": 26,
           "sanskrit": "सर्वेषां द्वीपवर्षाणां मेरुरुत्तरतः स्थितः । यैर्यत्र दृश्यते भानुः सैव प्राचीति चोच्यते ॥ २६ ॥",
-          "transliteration": "sarveṣāṃ dvīpavarṣāṇāṃ meruruttarataḥ sthitaḥ | yairyatra dṛśyate bhānuḥ saiva prācīti cocyate || 26 ||"
+          "transliteration": "sarveṣāṃ dvīpavarṣāṇāṃ meruruttarataḥ sthitaḥ | yairyatra dṛśyate bhānuḥ saiva prācīti cocyate || 26 ||",
+          "hindi": "",
+          "hindiSeeVerse": "25"
         },
         {
           "number": 27,
@@ -63461,7 +63520,8 @@
         {
           "number": 20,
           "sanskrit": "पूर्यमाणकलाभिश्चामराणां प्रीतिमावहन् । क्षीयमाणकलाभिश्च पितॄणां चित्तरञ्जकः ॥ २० ॥",
-          "transliteration": "pūryamāṇakalābhiścāmarāṇāṃ prītimāvahan | kṣīyamāṇakalābhiśca pitṝṇāṃ cittarañjakaḥ || 20 ||"
+          "transliteration": "pūryamāṇakalābhiścāmarāṇāṃ prītimāvahan | kṣīyamāṇakalābhiśca pitṝṇāṃ cittarañjakaḥ || 20 ||",
+          "hindi": "ये चन्द्र क्रमशः अपनी पूर्ण होनेवाली कलाओंसे देवताओंको प्रसन्‍न करते हैं और क्षीण होती हुई कलाओंसे पितरोंका चित्तानुरंजन करते हैं"
         },
         {
           "number": 21,
@@ -63531,12 +63591,16 @@
         {
           "number": 34,
           "sanskrit": "ततः शनैश्चरो घोरो लक्षद्वयपरो मितः । योजनैः सूर्यपुत्रोऽयं त्रिंशन्मासैः परिभ्रमन् ॥ ३४ ॥",
-          "transliteration": "tataḥ śanaiścaro ghoro lakṣadvayaparo mitaḥ | yojanaiḥ sūryaputro'yaṃ triṃśanmāsaiḥ paribhraman || 34 ||"
+          "transliteration": "tataḥ śanaiścaro ghoro lakṣadvayaparo mitaḥ | yojanaiḥ sūryaputro'yaṃ triṃśanmāsaiḥ paribhraman || 34 ||",
+          "hindi": "उनसे भी दो लाख योजन ऊपर भयंकर शनि हैं। सूर्यके पुत्र कहे जानेवाले ये महाग्रह शनि एक-एक राशिको तीस-तीस महीनोंमें भोगते हुए सभी राशियोंका परिभ्रमण करते रहते हैं। श्रेष्ठ कालज्ञ पुरुषोंने शनिको सबके लिये अशुभ बताया है",
+          "hindiRange": "34-35"
         },
         {
           "number": 35,
           "sanskrit": "एकैकराशौ पर्येति सर्वान् राशीन्महाग्रहः । सर्वेषामशुभो मन्दः प्रोक्तः कालविदां वरैः ॥ ३५ ॥",
-          "transliteration": "ekaikarāśau paryeti sarvān rāśīnmahāgrahaḥ | sarveṣāmaśubho mandaḥ proktaḥ kālavidāṃ varaiḥ || 35 ||"
+          "transliteration": "ekaikarāśau paryeti sarvān rāśīnmahāgrahaḥ | sarveṣāmaśubho mandaḥ proktaḥ kālavidāṃ varaiḥ || 35 ||",
+          "hindi": "",
+          "hindiSeeVerse": "34"
         },
         {
           "number": 36,
@@ -63602,37 +63666,50 @@
         {
           "number": 11,
           "sanskrit": "ज्योतिश्चक्रं केचिदेतच्छिशुमारस्वरूपकम् । सोपयोगं भगवतो योगधारणकर्मणि ॥ ११ ॥",
-          "transliteration": "jyotiścakraṃ kecidetacchiśumārasvarūpakam | sopayogaṃ bhagavato yogadhāraṇakarmaṇi || 11 ||"
+          "transliteration": "jyotiścakraṃ kecidetacchiśumārasvarūpakam | sopayogaṃ bhagavato yogadhāraṇakarmaṇi || 11 ||",
+          "hindi": "हे मुने। कुछ लोग भगवान्‌ श्रीहरिकी योग-मायाके आधारपर स्थित इस ज्योतिष्चक्रका वर्णन शिशुमारके रूपमें करते हैं, जो नीचेकी ओर सिर किये हुए कुण्डली मारकर स्थित है। उसको फूँछके अग्रभागपर उत्तानपादपुत्र श्रुव विराजमान कहे गये हैं। उसकी पूँछके मध्यभागमें देवताओंद्वारा पूजित पवित्रात्मा प्रजापति, अग्नि, इन्द्र और धर्म विराजमान हैं। पूँछकी जड़में धाता और विधाता तथा उसके कटिभागमें सप्तर्षिगण स्थित हैं। यह शिशुमार अपने शरीरको दाहिनी ओरसे कुण्डलाकार बनाकर स्थित है",
+          "hindiRange": "11-14"
         },
         {
           "number": 12,
           "sanskrit": "यस्यार्वाक्शिरसः कुण्डलीभूतवपुषो मुने । पुच्छाग्रे कल्पितो योऽयं ध्रुव उत्तानपादजः ॥ १२ ॥",
-          "transliteration": "yasyārvākśirasaḥ kuṇḍalībhūtavapuṣo mune | pucchāgre kalpito yo'yaṃ dhruva uttānapādajaḥ || 12 ||"
+          "transliteration": "yasyārvākśirasaḥ kuṇḍalībhūtavapuṣo mune | pucchāgre kalpito yo'yaṃ dhruva uttānapādajaḥ || 12 ||",
+          "hindi": "",
+          "hindiSeeVerse": "11"
         },
         {
           "number": 13,
           "sanskrit": "लाङ्गूलेऽस्य च सम्प्रोक्तः प्रजापतिरकल्मषः । अग्निरिन्द्रश्च धर्मश्च तिष्ठन्ते सुरपूजिताः ॥ १३ ॥",
-          "transliteration": "lāṅgūle'sya ca samproktaḥ prajāpatirakalmaṣaḥ | agnirindraśca dharmaśca tiṣṭhante surapūjitāḥ || 13 ||"
+          "transliteration": "lāṅgūle'sya ca samproktaḥ prajāpatirakalmaṣaḥ | agnirindraśca dharmaśca tiṣṭhante surapūjitāḥ || 13 ||",
+          "hindi": "",
+          "hindiSeeVerse": "11"
         },
         {
           "number": 14,
           "sanskrit": "धाता विधाता पुच्छान्ते कट्यां सप्तर्षयस्ततः । दक्षिणावर्तभोगेन कुण्डलाकारमीयुषः ॥ १४ ॥",
-          "transliteration": "dhātā vidhātā pucchānte kaṭyāṃ saptarṣayastataḥ | dakṣiṇāvartabhogena kuṇḍalākāramīyuṣaḥ || 14 ||"
+          "transliteration": "dhātā vidhātā pucchānte kaṭyāṃ saptarṣayastataḥ | dakṣiṇāvartabhogena kuṇḍalākāramīyuṣaḥ || 14 ||",
+          "hindi": "",
+          "hindiSeeVerse": "11"
         },
         {
           "number": 15,
           "sanskrit": "उत्तरायणभानीह दक्षपार्श्वेऽर्पितानि च । दक्षिणायनभानीह सव्ये पार्श्वेऽर्पितानि च ॥ १५ ॥",
-          "transliteration": "uttarāyaṇabhānīha dakṣapārśve'rpitāni ca | dakṣiṇāyanabhānīha savye pārśve'rpitāni ca || 15 ||"
+          "transliteration": "uttarāyaṇabhānīha dakṣapārśve'rpitāni ca | dakṣiṇāyanabhānīha savye pārśve'rpitāni ca || 15 ||",
+          "hindi": "उत्तरायणके चौदह नक्षत्र इसके दाहिने भागमें हैं और दक्षिणायनके चौदह नक्षत्र इसके बायें भागमें हैं। हे ब्रह्मापुत्र नारद! लोकमें भी शिशुमार जब कुण्डलाकार होकर बैठता है तो उसके दोनों पार्श्वभागोंके अवयवोंकी संख्या समान होती है, उसी प्रकार यहाँ नक्षत्रसंख्यामें भी समानता है",
+          "hindiRange": "15-16"
         },
         {
           "number": 16,
           "sanskrit": "कुण्डलाभोगवेशस्य पार्श्वयोरुभयोरपि । समसङ्ख्याश्चावयवा भवन्ति कजनन्दन ॥ १६ ॥",
-          "transliteration": "kuṇḍalābhogaveśasya pārśvayorubhayorapi | samasaṅkhyāścāvayavā bhavanti kajanandana || 16 ||"
+          "transliteration": "kuṇḍalābhogaveśasya pārśvayorubhayorapi | samasaṅkhyāścāvayavā bhavanti kajanandana || 16 ||",
+          "hindi": "",
+          "hindiSeeVerse": "15"
         },
         {
           "number": 17,
           "sanskrit": "अजवीथी पृष्ठभागे आकाशसरिदौदरे । पुनर्वसुश्च पुष्यश्च श्रोण्यौ दक्षिणवामयोः ॥ १७ ॥",
-          "transliteration": "ajavīthī pṛṣṭhabhāge ākāśasaridaudare | punarvasuśca puṣyaśca śroṇyau dakṣiṇavāmayoḥ || 17 ||"
+          "transliteration": "ajavīthī pṛṣṭhabhāge ākāśasaridaudare | punarvasuśca puṣyaśca śroṇyau dakṣiṇavāmayoḥ || 17 ||",
+          "hindi": "इसके पृष्ठभागमें अजवीथी (मूल, पूर्वाषाढ़, उत्तराषाढ़ नक्षत्रोंका समूह) और उदरमें आकाशगंगा है। दायें तथा बायें कटिप्रदेशमें पुनर्वसु और पुष्य नक्षत्र स्थित हैं"
         },
         {
           "number": 18,
@@ -63662,37 +63739,50 @@
         {
           "number": 23,
           "sanskrit": "अगस्तिश्चोत्तरहनावधरायां हनौ यमः । मुखेष्वङ्गारकः प्रोक्तो मन्दः प्रोक्त उपस्थके ॥ २३ ॥",
-          "transliteration": "agastiścottarahanāvadharāyāṃ hanau yamaḥ | mukheṣvaṅgārakaḥ prokto mandaḥ prokta upasthake || 23 ||"
+          "transliteration": "agastiścottarahanāvadharāyāṃ hanau yamaḥ | mukheṣvaṅgārakaḥ prokto mandaḥ prokta upasthake || 23 ||",
+          "hindi": "इसकी ऊपरकी ठोड़ीमें अगस्ति, नीचेकी ठोड़ीमें यमराज, मुखमें मंगल और जननेन्द्रियमें शनि स्थित कहे गये हैं। इसके ककुद्पर बृहस्पति, वक्षपर ग्रहपति सूर्य, हृदयमें नारायण और मनमें चन्द्रमा स्थित रहते हैं",
+          "hindiRange": "23-24"
         },
         {
           "number": 24,
           "sanskrit": "बृहस्पतिश्च ककुदि वक्षस्यर्को ग्रहाधिपः । नारायणश्च हृदये चन्द्रो मनसि तिष्ठति ॥ २४ ॥",
-          "transliteration": "bṛhaspatiśca kakudi vakṣasyarko grahādhipaḥ | nārāyaṇaśca hṛdaye candro manasi tiṣṭhati || 24 ||"
+          "transliteration": "bṛhaspatiśca kakudi vakṣasyarko grahādhipaḥ | nārāyaṇaśca hṛdaye candro manasi tiṣṭhati || 24 ||",
+          "hindi": "",
+          "hindiSeeVerse": "23"
         },
         {
           "number": 25,
           "sanskrit": "स्तनयोरश्विनौ नाभ्यामुशनाः परिकीर्तितः । बुधः प्राणापानयोश्च गले राहुश्च केतवः ॥ २५ ॥",
-          "transliteration": "stanayoraśvinau nābhyāmuśanāḥ parikīrtitaḥ | budhaḥ prāṇāpānayośca gale rāhuśca ketavaḥ || 25 ||"
+          "transliteration": "stanayoraśvinau nābhyāmuśanāḥ parikīrtitaḥ | budhaḥ prāṇāpānayośca gale rāhuśca ketavaḥ || 25 ||",
+          "hindi": "दोनों स्तनोंमें दोनों अश्विनीकुमारों तथा नाभिमें शुक्रका स्थान कहा गया है। प्राण और अपानमें बुध, गलेमें राहु और केतु एवं सभी अंगों तथा रोमकृपोंमें तारागण कहे गये हैं। हे नारद! भगवान्‌ विष्णुका यह सर्वदेवमय विग्रह है। परम बुद्धिमान साधकको चाहिये कि वह प्रतिदिन सायंकालके समय मौन धारण करके अपने हृदयमें भगवान्‌को स्थित देखते हुए उनके उस दिव्य स्वरूपका ध्यान करे और इस मन्त्रसे जप करते हुए स्तुति करे--सम्पूर्ण ज्योतिर्गणोंके आश्रय, कालचक्ररूपसे विराजमान तथा देवताओंके अधिपति परम पुरुषको मेरा नमस्कार है; मैं आपका ध्यान करता हूँ",
+          "hindiRange": "25-28"
         },
         {
           "number": 26,
           "sanskrit": "सर्वाङ्गेषु तथा रोमकूपे तारागणाः स्मृताः । एतद्भगवतो विष्णोः सर्वदेवमयं वपुः ॥ २६ ॥",
-          "transliteration": "sarvāṅgeṣu tathā romakūpe tārāgaṇāḥ smṛtāḥ | etadbhagavato viṣṇoḥ sarvadevamayaṃ vapuḥ || 26 ||"
+          "transliteration": "sarvāṅgeṣu tathā romakūpe tārāgaṇāḥ smṛtāḥ | etadbhagavato viṣṇoḥ sarvadevamayaṃ vapuḥ || 26 ||",
+          "hindi": "",
+          "hindiSeeVerse": "25"
         },
         {
           "number": 27,
           "sanskrit": "सन्ध्यायां प्रत्यहं ध्यायेत्प्रयतो वाग्यतो मुनिः । निरीक्षमाणश्चोत्तिष्ठेन्मन्त्रेणानेन धीश्वरः ॥ २७ ॥",
-          "transliteration": "sandhyāyāṃ pratyahaṃ dhyāyetprayato vāgyato muniḥ | nirīkṣamāṇaścottiṣṭhenmantreṇānena dhīśvaraḥ || 27 ||"
+          "transliteration": "sandhyāyāṃ pratyahaṃ dhyāyetprayato vāgyato muniḥ | nirīkṣamāṇaścottiṣṭhenmantreṇānena dhīśvaraḥ || 27 ||",
+          "hindi": "",
+          "hindiSeeVerse": "25"
         },
         {
           "number": 28,
           "sanskrit": "नमो ज्योतिर्लोकाय कालायानिमिषां पतये महापुरुषायाभिधीमहीति ॥ २८ ॥",
-          "transliteration": "namo jyotirlokāya kālāyānimiṣāṃ pataye mahāpuruṣāyābhidhīmahīti || 28 ||"
+          "transliteration": "namo jyotirlokāya kālāyānimiṣāṃ pataye mahāpuruṣāyābhidhīmahīti || 28 ||",
+          "hindi": "",
+          "hindiSeeVerse": "25"
         },
         {
           "number": 29,
           "sanskrit": "ग्रहर्क्षतारामयमाधिदैविकं पापापहं मन्त्रकृतां त्रिकालम् । नमस्यतः स्मरतो वा त्रिकालं नश्येत तत्कालजमाशु पापम् ॥ २९ ॥",
-          "transliteration": "graharkṣatārāmayamādhidaivikaṃ pāpāpahaṃ mantrakṛtāṃ trikālam | namasyataḥ smarato vā trikālaṃ naśyeta tatkālajamāśu pāpam || 29 ||"
+          "transliteration": "graharkṣatārāmayamādhidaivikaṃ pāpāpahaṃ mantrakṛtāṃ trikālam | namasyataḥ smarato vā trikālaṃ naśyeta tatkālajamāśu pāpam || 29 ||",
+          "hindi": "ग्रहों, नक्षत्रों तथा ताराओंके रूपमें भासित होता हुआ भगवान्‌का आधिदेविकस्वरूप तीनों कालोंमें इस मन्त्रका जप करनेवाले पुरुषोंके पापोंका नाश कर देता। तीनों कालोंमें भगवान्‌के इस रूपका वन्दन तथा ध्यान करनेवाले व्यक्तिका उस समयका किया हुआ पाप तत्काल नष्ट हो जाता है"
         }
       ]
     },
@@ -63914,17 +64004,22 @@
         {
           "number": 8,
           "sanskrit": "एवं प्रोक्ता स्थितिश्चात्र अतलस्य च नारद । द्वितीयविवरस्यात्र वितलस्य निबोधत ॥ ८ ॥",
-          "transliteration": "evaṃ proktā sthitiścātra atalasya ca nārada | dvitīyavivarasyātra vitalasya nibodhata || 8 ||"
+          "transliteration": "evaṃ proktā sthitiścātra atalasya ca nārada | dvitīyavivarasyātra vitalasya nibodhata || 8 ||",
+          "hindi": "हे नारद! इस प्रकार मैंने अतललोककी स्थितिका वर्णन कर दिया। अब आप वितल नामक द्वितीय विवरके विषयमें सुनिये"
         },
         {
           "number": 9,
           "sanskrit": "भूतलाधस्तले चैव वितले भगवान्भवः । हाटकेश्वरनामायं स्वपार्षदगणैर्वृतः ॥ ९ ॥",
-          "transliteration": "bhūtalādhastale caiva vitale bhagavānbhavaḥ | hāṭakeśvaranāmāyaṃ svapārṣadagaṇairvṛtaḥ || 9 ||"
+          "transliteration": "bhūtalādhastale caiva vitale bhagavānbhavaḥ | hāṭakeśvaranāmāyaṃ svapārṣadagaṇairvṛtaḥ || 9 ||",
+          "hindi": "भूतलके नीचे वितल नामक विवरमें हाटकेश्वर नामसे प्रसिद्ध ये भगवान्‌ शिव अपने पार्षदगणोंसे निरन्तर घिरे रहते हैं। देवताओंसे सुपूजित ये भगवान्‌ शिव त्रह्माकी रची गयी सृष्टिके विस्तारके लिये भवानीके साथ रमण करते हुए यहाँ विराजमान रहते हैं",
+          "hindiRange": "9-10"
         },
         {
           "number": 10,
           "sanskrit": "प्रजापतिकृतस्यापि सर्गस्य बृंहणाय च । भवान्या मिथुनीभूय आस्ते देवाधिपूजितः ॥ १० ॥",
-          "transliteration": "prajāpatikṛtasyāpi sargasya bṛṃhaṇāya ca | bhavānyā mithunībhūya āste devādhipūjitaḥ || 10 ||"
+          "transliteration": "prajāpatikṛtasyāpi sargasya bṛṃhaṇāya ca | bhavānyā mithunībhūya āste devādhipūjitaḥ || 10 ||",
+          "hindi": "",
+          "hindiSeeVerse": "9"
         },
         {
           "number": 11,
@@ -63939,17 +64034,23 @@
         {
           "number": 13,
           "sanskrit": "तद्बिलाधस्तलात्प्रोक्तं सुतलाख्यं बिलेश्वरम् । पुण्यश्लोको बलिर्नामा आस्ते वैरोचनिर्मुने ॥ १३ ॥",
-          "transliteration": "tadbilādhastalātproktaṃ sutalākhyaṃ bileśvaram | puṇyaśloko balirnāmā āste vairocanirmune || 13 ||"
+          "transliteration": "tadbilādhastalātproktaṃ sutalākhyaṃ bileśvaram | puṇyaśloko balirnāmā āste vairocanirmune || 13 ||",
+          "hindi": "हे मुने! उस वितलके नीचे सुतल नामक विवर कहा गया है, जो सभी बिलोंमें श्रेष्ठ है। यहाँ विरोचनके पवित्र कीर्तिवाले बलि नामक पुत्र रहते हैं। देवराज इन्रका परम प्रिय कार्य करनेकी इच्छासे वामनरूप त्रिविक्रम भगवान्‌ विष्णु बलिको इस सुतलमें लाये और उन्होंने तीनों लोकोंकी लक्ष्मी सन्निविष्ट करके दानवराज बलिको यहाँ स्थापित किया। इन्द्र आदि देवताओंके पास भी जो लक्ष्मी नहीं है, वह उस बलिके पीछे-पीछे चलती है",
+          "hindiRange": "13-15"
         },
         {
           "number": 14,
           "sanskrit": "महेन्द्रस्य च देवस्य चिकीर्षुः प्रियमुत्तमम् । त्रिविक्रमोऽपि भगवान् सुतले बलिमानयत् ॥ १४ ॥",
-          "transliteration": "mahendrasya ca devasya cikīrṣuḥ priyamuttamam | trivikramo'pi bhagavān sutale balimānayat || 14 ||"
+          "transliteration": "mahendrasya ca devasya cikīrṣuḥ priyamuttamam | trivikramo'pi bhagavān sutale balimānayat || 14 ||",
+          "hindi": "",
+          "hindiSeeVerse": "13"
         },
         {
           "number": 15,
           "sanskrit": "त्रैलोक्यलक्ष्मीमाक्षिप्य स्थापितः किल दैत्यराट् । इन्द्रादिष्वप्यलब्धा या सा श्रीस्तमनुवर्तते ॥ १५ ॥",
-          "transliteration": "trailokyalakṣmīmākṣipya sthāpitaḥ kila daityarāṭ | indrādiṣvapyalabdhā yā sā śrīstamanuvartate || 15 ||"
+          "transliteration": "trailokyalakṣmīmākṣipya sthāpitaḥ kila daityarāṭ | indrādiṣvapyalabdhā yā sā śrīstamanuvartate || 15 ||",
+          "hindi": "",
+          "hindiSeeVerse": "13"
         },
         {
           "number": 16,
@@ -64135,7 +64236,8 @@
         {
           "number": 19,
           "sanskrit": "अहमित्यभिमानस्य लक्षणं यं प्रचक्षते । सङ्कर्षणं सात्वतीयाः कर्षणं द्रष्ट्टदृश्ययोः ॥ १९ ॥",
-          "transliteration": "ahamityabhimānasya lakṣaṇaṃ yaṃ pracakṣate | saṅkarṣaṇaṃ sātvatīyāḥ karṣaṇaṃ draṣṭṭadṛśyayoḥ || 19 ||"
+          "transliteration": "ahamityabhimānasya lakṣaṇaṃ yaṃ pracakṣate | saṅkarṣaṇaṃ sātvatīyāḥ karṣaṇaṃ draṣṭṭadṛśyayoḥ || 19 ||",
+          "hindi": "अहंरूप अभिमानका लक्षण होनेके कारण यह द्रष्टा तथा दृश्यका कर्षण करके एक कर देती है, इसीलिये पांचरात्र आगमके अनुयायी इसे संकर्षण कहते हैं"
         },
         {
           "number": 20,
@@ -64185,27 +64287,37 @@
         {
           "number": 29,
           "sanskrit": "तदभिमर्षसञ्जातकामावेशसमायुताः । ललितस्मितसंयुक्ताः सव्रीडं लोकयन्ति च ॥ २९ ॥",
-          "transliteration": "tadabhimarṣasañjātakāmāveśasamāyutāḥ | lalitasmitasaṃyuktāḥ savrīḍaṃ lokayanti ca || 29 ||"
+          "transliteration": "tadabhimarṣasañjātakāmāveśasamāyutāḥ | lalitasmitasaṃyuktāḥ savrīḍaṃ lokayanti ca || 29 ||",
+          "hindi": "उन भगवान्‌ संकर्षणके स्पर्शजन्य कामावेशसे समन्वित तथा मधुर मुस्कानसे युक्त होकर उन अनुराग-मदसे उन्मत्त विधघूर्णित रक्त नेत्रोंवाले तथा करुणापूर्ण दृष्टिवाले भगवान्‌को वे नागकन्याएँ आशीर्वादकी आशासे लज्ञापूर्वक निहारती रहती हैं",
+          "hindiRange": "29-30"
         },
         {
           "number": 30,
           "sanskrit": "अनुरागमदोन्मत्तविघूर्णारुणलोचनम् । करुणावलोकनेत्रं च आशासानास्तथाशिषः ॥ ३० ॥",
-          "transliteration": "anurāgamadonmattavighūrṇāruṇalocanam | karuṇāvalokanetraṃ ca āśāsānāstathāśiṣaḥ || 30 ||"
+          "transliteration": "anurāgamadonmattavighūrṇāruṇalocanam | karuṇāvalokanetraṃ ca āśāsānāstathāśiṣaḥ || 30 ||",
+          "hindi": "",
+          "hindiSeeVerse": "29"
         },
         {
           "number": 31,
           "sanskrit": "सोऽनन्तो भगवान्देवोऽनन्तसत्त्वो महाशयः । अनन्तगुणवार्धिश्च आदिदेवो महाद्युतिः ॥ ३१ ॥",
-          "transliteration": "so'nanto bhagavāndevo'nantasattvo mahāśayaḥ | anantaguṇavārdhiśca ādidevo mahādyutiḥ || 31 ||"
+          "transliteration": "so'nanto bhagavāndevo'nantasattvo mahāśayaḥ | anantaguṇavārdhiśca ādidevo mahādyutiḥ || 31 ||",
+          "hindi": "अनन्त पराक्रमवाले, अत्यन्त उदार हृदयवाले, अनन्त गुणोंके सागर, महान्‌ तेजस्वी, क्रोध-रोष आदिके वेगोंको रोकनेवाले, असीम शक्तिके आगार-स्वरूप वे आदिदेव भगवान्‌ अनन्त सभी देवताओंसे प्रपूजित होकर सिद्धों, देवताओं, असुरों, नागों, विद्याधरों, गन्धरवों और मुनिगणोंके द्वारा निरन्तर ध्यान किये जाते हुए लोकोंके कल्याणार्थ वहाँ विराजमान रहते हैं",
+          "hindiRange": "31-33"
         },
         {
           "number": 32,
           "sanskrit": "संहृतामर्षरोषादिवेगो लोकशुभाय च । आस्ते महासत्त्वनिधिः सर्वदेवप्रपूजितः ॥ ३२ ॥",
-          "transliteration": "saṃhṛtāmarṣaroṣādivego lokaśubhāya ca | āste mahāsattvanidhiḥ sarvadevaprapūjitaḥ || 32 ||"
+          "transliteration": "saṃhṛtāmarṣaroṣādivego lokaśubhāya ca | āste mahāsattvanidhiḥ sarvadevaprapūjitaḥ || 32 ||",
+          "hindi": "",
+          "hindiSeeVerse": "31"
         },
         {
           "number": 33,
           "sanskrit": "ध्यायमानः सुरैः सिद्धैरसुरैश्चोरगैस्तथा । विद्याधरैश्च गन्धर्वैर्मुनिसङ्घैश्च नित्यशः ॥ ३३ ॥",
-          "transliteration": "dhyāyamānaḥ suraiḥ siddhairasuraiścoragaistathā | vidyādharaiśca gandharvairmunisaṅghaiśca nityaśaḥ || 33 ||"
+          "transliteration": "dhyāyamānaḥ suraiḥ siddhairasuraiścoragaistathā | vidyādharaiśca gandharvairmunisaṅghaiśca nityaśaḥ || 33 ||",
+          "hindi": "",
+          "hindiSeeVerse": "31"
         },
         {
           "number": 34,
