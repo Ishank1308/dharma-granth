@@ -18,7 +18,8 @@
         {
           "number": 1,
           "sanskrit": "ॐ सर्वचैतन्यरूपां तां आद्यां विद्यां च धीमहि । बुद्धिं या नः प्रचोदयात् ॥ १ ॥",
-          "transliteration": "oṃ sarvacaitanyarūpāṃ tāṃ ādyāṃ vidyāṃ ca dhīmahi | buddhiṃ yā naḥ pracodayāt || 1 ||"
+          "transliteration": "oṃ sarvacaitanyarūpāṃ tāṃ ādyāṃ vidyāṃ ca dhīmahi | buddhiṃ yā naḥ pracodayāt || 1 ||",
+          "hindi": "जो सर्वचेतनास्वरूपा, आदिशक्ति तथा ब्रह्मविद्या-स्वरूपिणी भगवती जगदम्बा हैं, उनका हम ध्यान करते हैं। वे हमारी बुद्धिको प्रेरणा प्रदान करें"
         },
         {
           "number": 2,
@@ -48,7 +49,8 @@
         {
           "number": 7,
           "sanskrit": "दीर्घायुर्भव सर्वज्ञ तापत्रयविवर्जितः । कथयाद्य महाभाग पुराणं ब्रह्मसम्मितम् ॥ ७ ॥",
-          "transliteration": "dīrghāyurbhava sarvajña tāpatrayavivarjitaḥ | kathayādya mahābhāga purāṇaṃ brahmasammitam || 7 ||"
+          "transliteration": "dīrghāyurbhava sarvajña tāpatrayavivarjitaḥ | kathayādya mahābhāga purāṇaṃ brahmasammitam || 7 ||",
+          "hindi": "हे सर्वज्ञ! आप तीनों तापों (दैहिक, दैविक, भौतिक)-से रहित होकर दीर्घजीवी हों। हे महाभाग! ब्रह्मप्रतिपादक देवीभागवतमहापुराणका वर्णन करें"
         },
         {
           "number": 8,
@@ -63,22 +65,26 @@
         {
           "number": 10,
           "sanskrit": "अश्रोत्राः फणिनः कामं मुह्यन्ति हि नभोगुणैः । सकर्णा ये न शृण्वन्ति तेऽप्यकर्णाः कथं न च ॥ १० ॥",
-          "transliteration": "aśrotrāḥ phaṇinaḥ kāmaṃ muhyanti hi nabhoguṇaiḥ | sakarṇā ye na śṛṇvanti te'pyakarṇāḥ kathaṃ na ca || 10 ||"
+          "transliteration": "aśrotrāḥ phaṇinaḥ kāmaṃ muhyanti hi nabhoguṇaiḥ | sakarṇā ye na śṛṇvanti te'pyakarṇāḥ kathaṃ na ca || 10 ||",
+          "hindi": "जब कर्णहीन सर्प भी मधुर ध्वनि सुनकर मोहित हो जाते हैं, तब भला कर्णयुक्त मानव यदि कथा नहीं सुनते तो उन्हें बधिर क्यों न कहा जाय?"
         },
         {
           "number": 11,
           "sanskrit": "अतः सर्वे द्विजाः सौम्य श्रोतुकामाः समाहिताः । वर्तन्ते नैमिषारण्ये क्षेत्रे कलिभयार्दिताः ॥ ११ ॥",
-          "transliteration": "ataḥ sarve dvijāḥ saumya śrotukāmāḥ samāhitāḥ | vartante naimiṣāraṇye kṣetre kalibhayārditāḥ || 11 ||"
+          "transliteration": "ataḥ sarve dvijāḥ saumya śrotukāmāḥ samāhitāḥ | vartante naimiṣāraṇye kṣetre kalibhayārditāḥ || 11 ||",
+          "hindi": "अत: हे सौम्य! समाहितचित्त होकर कथा सुननेकी इच्छासे सभी द्विजगण कलिकालके भयसे पीड़ित हो इस नैमिषारण्यमें उपस्थित हैं"
         },
         {
           "number": 12,
           "sanskrit": "येन केनाप्युपायेन कालातिवाहनं स्मृतम् । व्यसनैरिह मूर्खाणां बुधानां शास्त्रचिन्तनैः ॥ १२ ॥",
-          "transliteration": "yena kenāpyupāyena kālātivāhanaṃ smṛtam | vyasanairiha mūrkhāṇāṃ budhānāṃ śāstracintanaiḥ || 12 ||"
+          "transliteration": "yena kenāpyupāyena kālātivāhanaṃ smṛtam | vyasanairiha mūrkhāṇāṃ budhānāṃ śāstracintanaiḥ || 12 ||",
+          "hindi": "जिस किसी प्रकारसे समय तो बीतता ही रहता है, किंतु मूर्खोंका समय व्यर्थ दुर्व्यसनोंमें बीतता है और विद्वानोंका समय शास्त्र-चिन्तनमें जाता है"
         },
         {
           "number": 13,
           "sanskrit": "शास्त्राण्यपि विचित्राणि जल्पवादयुतानि च । त्रिविधानि पुराणानि शास्त्राणि विविधानि च । विताण्डाच्छलयुक्तानि गर्वामर्षकराणि च । नानार्थवादयुक्तानि हेतुमन्ति बृहन्ति च ॥ १३ ॥",
-          "transliteration": "śāstrāṇyapi vicitrāṇi jalpavādayutāni ca | trividhāni purāṇāni śāstrāṇi vividhāni ca | vitāṇḍācchalayuktāni garvāmarṣakarāṇi ca | nānārthavādayuktāni hetumanti bṛhanti ca || 13 ||"
+          "transliteration": "śāstrāṇyapi vicitrāṇi jalpavādayutāni ca | trividhāni purāṇāni śāstrāṇi vividhāni ca | vitāṇḍācchalayuktāni garvāmarṣakarāṇi ca | nānārthavādayuktāni hetumanti bṛhanti ca || 13 ||",
+          "hindi": "शास्त्र भी विचित्र प्रकारके तर्क-वितर्कसे युक्त हैं। (पुराण तीन प्रकारके तथा शास्त्र विविध प्रकारके हैं, जो नानाविध वाद-विवाद तथा छल-प्रपंचसे युक्त हैं और अहंकार तथा अमर्ष उत्पन्न करनेवाले हैं) वे अनेक अर्थवाद तथा हेतुवादसे युक्त और बहुत विस्तारवाले हैं"
         },
         {
           "number": 14,
@@ -88,12 +94,14 @@
         {
           "number": 15,
           "sanskrit": "तथैव च पुराणानि त्रिगुणानि कथानकैः । कथितानि त्वया सौम्य पञ्चलक्षणवन्ति च ॥ १५ ॥",
-          "transliteration": "tathaiva ca purāṇāni triguṇāni kathānakaiḥ | kathitāni tvayā saumya pañcalakṣaṇavanti ca || 15 ||"
+          "transliteration": "tathaiva ca purāṇāni triguṇāni kathānakaiḥ | kathitāni tvayā saumya pañcalakṣaṇavanti ca || 15 ||",
+          "hindi": "इसी प्रकार हे सौम्य! आपके द्वारा कहे गये पुराण कथा-भेदसे तीन गुणोंवाले तथा पाँच लक्षणोंसे समन्वित हैं"
         },
         {
           "number": 16,
           "sanskrit": "तत्र भागवतं पुण्यं पञ्चमं वेदसम्मितम् । कथितं यत्त्वया पूर्वं सर्वलक्षणसंयुतम् ॥ १६ ॥",
-          "transliteration": "tatra bhāgavataṃ puṇyaṃ pañcamaṃ vedasammitam | kathitaṃ yattvayā pūrvaṃ sarvalakṣaṇasaṃyutam || 16 ||"
+          "transliteration": "tatra bhāgavataṃ puṇyaṃ pañcamaṃ vedasammitam | kathitaṃ yattvayā pūrvaṃ sarvalakṣaṇasaṃyutam || 16 ||",
+          "hindi": "आपने यह भी बताया है कि उन पुराणोंमें यह श्रीमद्देवीभागवत पाँचवाँ पुराण है, पवित्र है, वेदके समान है और सभी लक्षणोंसे युक्त है"
         },
         {
           "number": 17,
@@ -108,17 +116,20 @@
         {
           "number": 19,
           "sanskrit": "त्वं तु जानासि धर्मज्ञ पौराणीं संहितां किल । कृष्णोक्तां गुरुभक्तत्वात् सम्यक् सत्त्वगुणाश्रयः ॥ १९ ॥",
-          "transliteration": "tvaṃ tu jānāsi dharmajña paurāṇīṃ saṃhitāṃ kila | kṛṣṇoktāṃ gurubhaktatvāt samyak sattvaguṇāśrayaḥ || 19 ||"
+          "transliteration": "tvaṃ tu jānāsi dharmajña paurāṇīṃ saṃhitāṃ kila | kṛṣṇoktāṃ gurubhaktatvāt samyak sattvaguṇāśrayaḥ || 19 ||",
+          "hindi": "हे धर्मज्ञ! गुरुभक्त एवं सत्त्वगुणसे सम्पन्न होनेके कारण आप कृष्णद्वैपायनके द्वारा कही गयी इस प्राचीन संहिताका ज्ञान प्राप्त कर चुके हैं"
         },
         {
           "number": 20,
           "sanskrit": "श्रुतान्यन्यानि सर्वज्ञ त्वन्मुखान्निःसृतानि च । नैव तृप्तिं व्रजामोऽद्य सुधापानेऽमरा यथा ॥ २० ॥",
-          "transliteration": "śrutānyanyāni sarvajña tvanmukhānniḥsṛtāni ca | naiva tṛptiṃ vrajāmo'dya sudhāpāne'marā yathā || 20 ||"
+          "transliteration": "śrutānyanyāni sarvajña tvanmukhānniḥsṛtāni ca | naiva tṛptiṃ vrajāmo'dya sudhāpāne'marā yathā || 20 ||",
+          "hindi": "जिस प्रकार देवतालोग अमृतपान करते हुए तृप्त नहीं होते, उसी प्रकार हमलोगोंने भी यहाँ आपके मुखारविन्दसे निकली अन्यान्य कथाएँ सुनीं, किंतु अभी भी हम तृप्त नहीं हुए हैं"
         },
         {
           "number": 21,
           "sanskrit": "धिक्सुधां पिबतां सूत मुक्तिर्नैव कदाचन । पिबन्भागवतं सद्यो नरो मुच्येत सङ्कटात् ॥ २१ ॥",
-          "transliteration": "dhiksudhāṃ pibatāṃ sūta muktirnaiva kadācana | pibanbhāgavataṃ sadyo naro mucyeta saṅkaṭāt || 21 ||"
+          "transliteration": "dhiksudhāṃ pibatāṃ sūta muktirnaiva kadācana | pibanbhāgavataṃ sadyo naro mucyeta saṅkaṭāt || 21 ||",
+          "hindi": "हे सूतजी! उस अमृतको धिक्कार है, जिसके पीनेसे कभी मुक्ति नहीं होती, परंतु इस भागवतरूपी कथा-सुधाके पानसे तो मनुष्य शीघ्र ही भवसंकटसे मुक्त हो जाता है"
         },
         {
           "number": 22,
@@ -6495,7 +6506,8 @@
         {
           "number": 1,
           "sanskrit": "ऋषय ऊचुः । आश्चर्यकरमेतत्ते वचनं गर्भहेतुकम् । सन्देहोऽत्र समुत्पन्नः सर्वेषां नस्तपस्विनाम् ॥ १ ॥",
-          "transliteration": "ṛṣaya ūcuḥ | āścaryakarametatte vacanaṃ garbhahetukam | sandeho'tra samutpannaḥ sarveṣāṃ nastapasvinām || 1 ||"
+          "transliteration": "ṛṣaya ūcuḥ | āścaryakarametatte vacanaṃ garbhahetukam | sandeho'tra samutpannaḥ sarveṣāṃ nastapasvinām || 1 ||",
+          "hindi": "ऋषिगण बोले—[हे सूतजी!] आपकी यह बात आश्चर्यजनक एवं रहस्यपूर्ण है। इस सम्बन्धमें हम सब तपस्वियोंको महान् सन्देह उत्पन्न हो गया है"
         },
         {
           "number": 2,
@@ -6560,7 +6572,8 @@
         {
           "number": 13,
           "sanskrit": "पुत्राश्चास्य महावीर्याः पञ्चासन्नमितौजसः । पृथग्देशेषु राजानः स्थापितास्तेन भूभुजा ॥ १३ ॥",
-          "transliteration": "putrāścāsya mahāvīryāḥ pañcāsannamitaujasaḥ | pṛthagdeśeṣu rājānaḥ sthāpitāstena bhūbhujā || 13 ||"
+          "transliteration": "putrāścāsya mahāvīryāḥ pañcāsannamitaujasaḥ | pṛthagdeśeṣu rājānaḥ sthāpitāstena bhūbhujā || 13 ||",
+          "hindi": "महाराज उपरिचरके पाँच पुत्र हुए जो बड़े महान् वीर एवं परम प्रतापी थे। [यथासमय] उन्होंने अपने राजकुमारोंको अलग-अलग देशोंका राजा बना दिया"
         },
         {
           "number": 14,
@@ -6615,12 +6628,14 @@
         {
           "number": 24,
           "sanskrit": "सूत उवाच । इत्युक्त्वा प्रददौ पर्णं श्येनाय नृपसत्तमः । स गृहीत्वोत्पपाताशु गगनं गतिवित्तमः ॥ २४ ॥",
-          "transliteration": "sūta uvāca | ityuktvā pradadau parṇaṃ śyenāya nṛpasattamaḥ | sa gṛhītvotpapātāśu gaganaṃ gativittamaḥ || 24 ||"
+          "transliteration": "sūta uvāca | ityuktvā pradadau parṇaṃ śyenāya nṛpasattamaḥ | sa gṛhītvotpapātāśu gaganaṃ gativittamaḥ || 24 ||",
+          "hindi": "सूतजी बोले—ऐसा कहकर नृपश्रेष्ठने बाजको वह दोना दे दिया और वह द्रुतगामी बाज भी उसे लेकर शीघ्र ही आकाशमें उड़ने लगा"
         },
         {
           "number": 25,
           "sanskrit": "गच्छन्तं गगनं श्येनं धृत्वा चञ्चुपुटे पुटम् । तमपश्यदथायान्तं खगं श्येनस्तथापरः ॥ २५ ॥",
-          "transliteration": "gacchantaṃ gaganaṃ śyenaṃ dhṛtvā cañcupuṭe puṭam | tamapaśyadathāyāntaṃ khagaṃ śyenastathāparaḥ || 25 ||"
+          "transliteration": "gacchantaṃ gaganaṃ śyenaṃ dhṛtvā cañcupuṭe puṭam | tamapaśyadathāyāntaṃ khagaṃ śyenastathāparaḥ || 25 ||",
+          "hindi": "चोंचमें पत्तेका दोना लेकर आकाशमें उड़ते हुए उस बाजको एक दूसरे बाजपक्षीने अपनी ओर आते हुए देखा"
         },
         {
           "number": 26,
@@ -10325,97 +10340,116 @@
         {
           "number": 1,
           "sanskrit": "भगवन् भवता प्रोक्तं यज्ञमम्बाभिधं महत् । सा का कथं समुत्पन्ना कुत्र कस्माच्च किङ्गुणा ॥ १ ॥",
-          "transliteration": "bhagavan bhavatā proktaṃ yajñamambābhidhaṃ mahat | sā kā kathaṃ samutpannā kutra kasmācca kiṅguṇā || 1 ||"
+          "transliteration": "bhagavan bhavatā proktaṃ yajñamambābhidhaṃ mahat | sā kā kathaṃ samutpannā kutra kasmācca kiṅguṇā || 1 ||",
+          "hindi": "जनमेजय बोले—हे भगवन्! आपने महान् अम्बा-यज्ञके विषयमें कहा है। वे अम्बा कौन हैं, वे कैसे, कहाँ और किसलिये उत्पन्न हुई हैं और वे कौन-कौनसे गुणोंवाली हैं?"
         },
         {
           "number": 2,
           "sanskrit": "कीदृशश्च मखस्तस्याः स्वरूपं कीदृशं तथा । विधानं विधिवद्ब्रूहि सर्वज्ञोऽसि दयानिधे ॥ २ ॥",
-          "transliteration": "kīdṛśaśca makhastasyāḥ svarūpaṃ kīdṛśaṃ tathā | vidhānaṃ vidhivadbrūhi sarvajño'si dayānidhe || 2 ||"
+          "transliteration": "kīdṛśaśca makhastasyāḥ svarūpaṃ kīdṛśaṃ tathā | vidhānaṃ vidhivadbrūhi sarvajño'si dayānidhe || 2 ||",
+          "hindi": "उनका यह यज्ञ कैसा है और उसका क्या स्वरूप है? हे दयानिधान! आप सब कुछ जाननेवाले हैं; उस यज्ञका विधान सम्यक् रूपसे बताइये"
         },
         {
           "number": 3,
           "sanskrit": "ब्रह्माण्डस्य तथोत्पत्तिं वद विस्तरतस्तथा । यथोक्तं यादृशं ब्रह्मन्नखिलं वेत्सि भूसुर ॥ ३ ॥",
-          "transliteration": "brahmāṇḍasya tathotpattiṃ vada vistaratastathā | yathoktaṃ yādṛśaṃ brahmannakhilaṃ vetsi bhūsura || 3 ||"
+          "transliteration": "brahmāṇḍasya tathotpattiṃ vada vistaratastathā | yathoktaṃ yādṛśaṃ brahmannakhilaṃ vetsi bhūsura || 3 ||",
+          "hindi": "हे ब्रह्मन्! आप विस्तारपूर्वक ब्रह्माण्डकी उत्पत्तिका भी वर्णन कीजिये। हे भूसुर! इस विषयमें अन्य ज्ञानियोंने जैसा कहा है, वह सब कुछ भी आप भलीभाँति जानते हैं"
         },
         {
           "number": 4,
           "sanskrit": "ब्रह्मा विष्णुश्च रुद्रश्च त्रयो देवा मया श्रुताः । सृष्टिपालनसंहारकारकाः सगुणास्त्वमी ॥ ४ ॥",
-          "transliteration": "brahmā viṣṇuśca rudraśca trayo devā mayā śrutāḥ | sṛṣṭipālanasaṃhārakārakāḥ saguṇāstvamī || 4 ||"
+          "transliteration": "brahmā viṣṇuśca rudraśca trayo devā mayā śrutāḥ | sṛṣṭipālanasaṃhārakārakāḥ saguṇāstvamī || 4 ||",
+          "hindi": "मैंने ब्रह्मा, विष्णु और महेश—इन तीनों देवताओंके विषयमें सुना है कि ये सगुण रूपमें सम्पूर्ण जगत्का सृजन, पालन एवं संहार करते हैं"
         },
         {
           "number": 5,
           "sanskrit": "स्वतन्त्रास्ते महात्मानः पाराशर्य वदस्व मे । आहोस्वित्परतन्त्रास्ते श्रोतुमिच्छामि साम्प्रतम् ॥ ५ ॥",
-          "transliteration": "svatantrāste mahātmānaḥ pārāśarya vadasva me | āhosvitparatantrāste śrotumicchāmi sāmpratam || 5 ||"
+          "transliteration": "svatantrāste mahātmānaḥ pārāśarya vadasva me | āhosvitparatantrāste śrotumicchāmi sāmpratam || 5 ||",
+          "hindi": "हे पराशरसुत व्यासजी! वे तीनों देवश्रेष्ठ स्वाधीन हैं अथवा पराधीन; आप मुझे बताइये, मैं इस समय सुनना चाहता हूँ"
         },
         {
           "number": 6,
           "sanskrit": "मृत्युधर्माश्च ते नो वा सच्चिदानन्दरूपिणः । अधिभूतादिभिर्युक्ता न वा दुःखैस्त्रिधात्मकैः ॥ ६ ॥",
-          "transliteration": "mṛtyudharmāśca te no vā saccidānandarūpiṇaḥ | adhibhūtādibhiryuktā na vā duḥkhaistridhātmakaiḥ || 6 ||"
+          "transliteration": "mṛtyudharmāśca te no vā saccidānandarūpiṇaḥ | adhibhūtādibhiryuktā na vā duḥkhaistridhātmakaiḥ || 6 ||",
+          "hindi": "वे सच्चिदानन्दस्वरूप देवगण मरणधर्मा हैं अथवा नहीं; और वे आधिभौतिक, आधिदैविक तथा आध्यात्मिक—इन तीन प्रकारके दु:खोंसे युक्त हैं अथवा नहीं?"
         },
         {
           "number": 7,
           "sanskrit": "कालस्य वशगा नो वा ते सुरेन्द्रा महाबलाः । कथं ते वै समुत्पन्ना कस्मादिति च संशयः ॥ ७ ॥",
-          "transliteration": "kālasya vaśagā no vā te surendrā mahābalāḥ | kathaṃ te vai samutpannā kasmāditi ca saṃśayaḥ || 7 ||"
+          "transliteration": "kālasya vaśagā no vā te surendrā mahābalāḥ | kathaṃ te vai samutpannā kasmāditi ca saṃśayaḥ || 7 ||",
+          "hindi": "वे तीनों महाबली देवेश कालके वशवर्ती हैं अथवा नहीं; और वे कैसे तथा किससे आविर्भूत हुए, मेरी यह भी एक शंका है"
         },
         {
           "number": 8,
           "sanskrit": "हर्षशोकयुतास्ते वै निद्रालस्यसमन्विताः । सप्तधातुमयास्तेषां देहाः किं वान्यथा मुने ॥ ८ ॥",
-          "transliteration": "harṣaśokayutāste vai nidrālasyasamanvitāḥ | saptadhātumayāsteṣāṃ dehāḥ kiṃ vānyathā mune || 8 ||"
+          "transliteration": "harṣaśokayutāste vai nidrālasyasamanvitāḥ | saptadhātumayāsteṣāṃ dehāḥ kiṃ vānyathā mune || 8 ||",
+          "hindi": "हे मुने! क्या वे हर्ष, शोक आदि द्वन्द्वोंसे युक्त हैं, क्या वे निद्रा एवं प्रमाद आदिसे प्रभावित हैं तथा क्या उनके शरीर सप्त धातुओं (अन्नरस, रुधिर, मांस, मेद, अस्थि, मज्जा, वीर्य)-से निर्मित हैं अथवा नहीं?"
         },
         {
           "number": 9,
           "sanskrit": "कैर्द्रव्यैर्निर्मितास्ते वै कैर्गुणैरिन्द्रियैस्तथा । भोगश्च कीदृशस्तेषां प्रमाणमायुषस्तथा ॥ ९ ॥",
-          "transliteration": "kairdravyairnirmitāste vai kairguṇairindriyaistathā | bhogaśca kīdṛśasteṣāṃ pramāṇamāyuṣastathā || 9 ||"
+          "transliteration": "kairdravyairnirmitāste vai kairguṇairindriyaistathā | bhogaśca kīdṛśasteṣāṃ pramāṇamāyuṣastathā || 9 ||",
+          "hindi": "वे किन द्रव्योंसे निर्मित हैं, वे किन-किन गुणोंको धारण करते हैं, उनमें कौन-कौन-सी इन्द्रियाँ अवस्थित हैं, उनका भोग कैसा होता है तथा उनकी आयुका परिमाण क्या है?"
         },
         {
           "number": 10,
           "sanskrit": "निवासस्थानमप्येषां विभूतिं च वदस्व मे । श्रोतुमिच्छाम्यहं ब्रह्मन् विस्तरेण कथामिमाम् ॥ १० ॥",
-          "transliteration": "nivāsasthānamapyeṣāṃ vibhūtiṃ ca vadasva me | śrotumicchāmyahaṃ brahman vistareṇa kathāmimām || 10 ||"
+          "transliteration": "nivāsasthānamapyeṣāṃ vibhūtiṃ ca vadasva me | śrotumicchāmyahaṃ brahman vistareṇa kathāmimām || 10 ||",
+          "hindi": "इनके निवास-स्थान एवं विभूतियोंके भी विषयमें मुझको बतलाइये। हे ब्रह्मन्! इस कथाको विस्तारपूर्वक सुननेकी मेरी अभिलाषा है"
         },
         {
           "number": 11,
           "sanskrit": "दुर्गमः प्रश्नभारोऽयं कृतो राजंस्त्वयाऽधुना । ब्रह्मादीनां समुत्पत्तिः कस्मादिति महामते ॥ ११ ॥",
-          "transliteration": "durgamaḥ praśnabhāro'yaṃ kṛto rājaṃstvayā'dhunā | brahmādīnāṃ samutpattiḥ kasmāditi mahāmate || 11 ||"
+          "transliteration": "durgamaḥ praśnabhāro'yaṃ kṛto rājaṃstvayā'dhunā | brahmādīnāṃ samutpattiḥ kasmāditi mahāmate || 11 ||",
+          "hindi": "व्यासजी बोले—हे महामति राजन्! ब्रह्मादि देवोंकी उत्पत्ति किससे हुई, इस समय आपने यह बड़ा दुर्गम प्रश्न किया है"
         },
         {
           "number": 12,
           "sanskrit": "एतदेव मया पूर्वं पृष्टोऽसौ नारदो मुनिः । विस्मितः प्रत्युवाचेदमुत्थितः शृणु भूपते ॥ १२ ॥",
-          "transliteration": "etadeva mayā pūrvaṃ pṛṣṭo'sau nārado muniḥ | vismitaḥ pratyuvācedamutthitaḥ śṛṇu bhūpate || 12 ||"
+          "transliteration": "etadeva mayā pūrvaṃ pṛṣṭo'sau nārado muniḥ | vismitaḥ pratyuvācedamutthitaḥ śṛṇu bhūpate || 12 ||",
+          "hindi": "हे राजन्! पूर्वमें मैंने यही प्रश्न देवर्षि नारदजीसे पूछा था। तब विस्मित होकर वे उठ खड़े हुए और उन्होंने जो उत्तर दिया था, उसे आप सुनें"
         },
         {
           "number": 13,
           "sanskrit": "कस्मिंश्च समये चाहं गङ्गातीरे स्थितं मुनिम् । अपश्यं नारदं शान्तं सर्वज्ञं वेदवित्तमम् ॥ १३ ॥",
-          "transliteration": "kasmiṃśca samaye cāhaṃ gaṅgātīre sthitaṃ munim | apaśyaṃ nāradaṃ śāntaṃ sarvajñaṃ vedavittamam || 13 ||"
+          "transliteration": "kasmiṃśca samaye cāhaṃ gaṅgātīre sthitaṃ munim | apaśyaṃ nāradaṃ śāntaṃ sarvajñaṃ vedavittamam || 13 ||",
+          "hindi": "किसी समय मैंने शान्त, सर्ववेत्ता तथा वेद-विद्वानोंमें श्रेष्ठ नारदमुनिको गंगाके किनारे विद्यमान देखा"
         },
         {
           "number": 14,
           "sanskrit": "दृष्ट्वाहं मुदितो भूत्वा पादयोरपतं मुनेः । तेजाज्ञप्तः समीपेऽस्य संविष्टश्च वरासने ॥ १४ ॥",
-          "transliteration": "dṛṣṭvāhaṃ mudito bhūtvā pādayorapataṃ muneḥ | tejājñaptaḥ samīpe'sya saṃviṣṭaśca varāsane || 14 ||"
+          "transliteration": "dṛṣṭvāhaṃ mudito bhūtvā pādayorapataṃ muneḥ | tejājñaptaḥ samīpe'sya saṃviṣṭaśca varāsane || 14 ||",
+          "hindi": "मुनिको देखकर तथा प्रसन्न होकर मैं उनके चरणोंपर गिर पड़ा। तदनन्तर उनके द्वारा आज्ञा देनेपर मैं उनके पासमें ही एक सुन्दर आसनपर बैठ गया"
         },
         {
           "number": 15,
           "sanskrit": "श्रुत्वा कुशलवार्तां वै तमपृच्छं विधेः सुतम् । निर्विष्टं जाह्नवीतीरे निर्जने सूक्ष्मवालुके ॥ १५ ॥",
-          "transliteration": "śrutvā kuśalavārtāṃ vai tamapṛcchaṃ vidheḥ sutam | nirviṣṭaṃ jāhnavītīre nirjane sūkṣmavāluke || 15 ||"
+          "transliteration": "śrutvā kuśalavārtāṃ vai tamapṛcchaṃ vidheḥ sutam | nirviṣṭaṃ jāhnavītīre nirjane sūkṣmavāluke || 15 ||",
+          "hindi": "कुशल-क्षेमकी वार्ता सुन करके सूक्ष्म बालूवाले गंगा-तटके निर्जन स्थानपर बैठे हुए बह्मापुत्र देवर्षि नारदसे मैंने पूछा—"
         },
         {
           "number": 16,
           "sanskrit": "मुनेऽतिविततस्यास्य ब्रह्माण्डस्य महामते । कः कर्ता परमः प्रोक्तस्तन्मे ब्रूहि विधानतः ॥ १६ ॥",
-          "transliteration": "mune'tivitatasyāsya brahmāṇḍasya mahāmate | kaḥ kartā paramaḥ proktastanme brūhi vidhānataḥ || 16 ||"
+          "transliteration": "mune'tivitatasyāsya brahmāṇḍasya mahāmate | kaḥ kartā paramaḥ proktastanme brūhi vidhānataḥ || 16 ||",
+          "hindi": "हे महामति मुनिदेव! इस अति विस्तीर्ण ब्रह्माण्डका प्रधान कर्ता कौन कहा गया है? उसे आप मुझे सम्यक् रूपसे बताइये"
         },
         {
           "number": 17,
           "sanskrit": "कस्मादेतत्समुत्पन्नं ब्रह्माण्डं मुनिसत्तम । अनित्यं वा तथा नित्यं तदाचक्ष्व द्विजोत्तम ॥ १७ ॥",
-          "transliteration": "kasmādetatsamutpannaṃ brahmāṇḍaṃ munisattama | anityaṃ vā tathā nityaṃ tadācakṣva dvijottama || 17 ||"
+          "transliteration": "kasmādetatsamutpannaṃ brahmāṇḍaṃ munisattama | anityaṃ vā tathā nityaṃ tadācakṣva dvijottama || 17 ||",
+          "hindi": "हे मुनिश्रेष्ठ! इस ब्रह्माण्डकी उत्पत्ति किससे हुई है? हे विप्रवर! आप मुझे यह भी बताइये कि यह ब्रह्माण्ड नित्य है अथवा अनित्य?"
         },
         {
           "number": 18,
           "sanskrit": "एककर्तृकमेतद्वा बहुकर्तृकमन्यथा । अकर्तृकं न कार्यं स्याद्विरोधोऽयं विभाति मे ॥ १८ ॥",
-          "transliteration": "ekakartṛkametadvā bahukartṛkamanyathā | akartṛkaṃ na kāryaṃ syādvirodho'yaṃ vibhāti me || 18 ||"
+          "transliteration": "ekakartṛkametadvā bahukartṛkamanyathā | akartṛkaṃ na kāryaṃ syādvirodho'yaṃ vibhāti me || 18 ||",
+          "hindi": "यह ब्रह्माण्ड किसी एकके द्वारा विरचित है अथवा अनेक कर्ताओंद्वारा मिलकर इसका निर्माण किया गया है? किसी कर्ताके बिना कार्यकी सत्ता सम्भव नहीं है। इस विषयमें मुझे अत्यन्त सन्देह हो रहा है"
         },
         {
           "number": 19,
           "sanskrit": "इति सन्देहसन्दोहे मग्नं मां तारयाधुना । विकल्पकोटीः कृर्वाणं संसारेऽस्मिन् प्रविस्तरे ॥ १९ ॥",
-          "transliteration": "iti sandehasandohe magnaṃ māṃ tārayādhunā | vikalpakoṭīḥ kṛrvāṇaṃ saṃsāre'smin pravistare || 19 ||"
+          "transliteration": "iti sandehasandohe magnaṃ māṃ tārayādhunā | vikalpakoṭīḥ kṛrvāṇaṃ saṃsāre'smin pravistare || 19 ||",
+          "hindi": "इस प्रकार इस विस्तृत ब्रह्माण्डके विषयमें विविध कल्पना करते हुए तथा सन्देहसागरमें डूबते हुए मुझ दु:खीका आप उद्धार कीजिये"
         },
         {
           "number": 20,
@@ -19839,7 +19873,8 @@
         {
           "number": 1,
           "sanskrit": "जनमेजय उवाच । वासवेय मुनिश्रेष्ठ सर्वज्ञाननिधेऽनघ । प्रष्टुमिच्छाम्यहं स्वामिन्नस्माकं कुलवर्धन ॥ १ ॥",
-          "transliteration": "janamejaya uvāca | vāsaveya muniśreṣṭha sarvajñānanidhe'nagha | praṣṭumicchāmyahaṃ svāminnasmākaṃ kulavardhana || 1 ||"
+          "transliteration": "janamejaya uvāca | vāsaveya muniśreṣṭha sarvajñānanidhe'nagha | praṣṭumicchāmyahaṃ svāminnasmākaṃ kulavardhana || 1 ||",
+          "hindi": "जनमेजय बोले—हे वासवेय! हे मुनिवर! हे सर्वज्ञाननिधे! हे अनघ! हमारे कुलकी वृद्धि करनेवाले हे स्वामिन्! मैं [श्रीकृष्णके विषयमें] पूछना चाहता हूँ"
         },
         {
           "number": 2,
@@ -19924,7 +19959,8 @@
         {
           "number": 17,
           "sanskrit": "यौ चक्रतुस्तपश्चोग्रं मुक्त्यर्थं मुनिसत्तमौ । तौ कथं प्रापतुर्देहौ प्राप्तयोगौ महातपौ ॥ १७ ॥",
-          "transliteration": "yau cakratustapaścograṃ muktyarthaṃ munisattamau | tau kathaṃ prāpaturdehau prāptayogau mahātapau || 17 ||"
+          "transliteration": "yau cakratustapaścograṃ muktyarthaṃ munisattamau | tau kathaṃ prāpaturdehau prāptayogau mahātapau || 17 ||",
+          "hindi": "जिन मुनिप्रवर नर-नारायणने मुक्तिहेतु कठोर तपस्या की थी; उन महातपस्वी तथा योगसिद्धिसम्पन्न दोनों देवोंने मानव-शरीर क्यों प्राप्त किया?"
         },
         {
           "number": 18,
@@ -27431,7 +27467,8 @@
         {
           "number": 1,
           "sanskrit": "ऋषय ऊचुः । भवता कथितं सूत महदाख्यानमुत्तमम् । कृष्णस्य चरितं दिव्यं सर्वपातकनाशनम् ॥ १ ॥",
-          "transliteration": "ṛṣaya ūcuḥ | bhavatā kathitaṃ sūta mahadākhyānamuttamam | kṛṣṇasya caritaṃ divyaṃ sarvapātakanāśanam || 1 ||"
+          "transliteration": "ṛṣaya ūcuḥ | bhavatā kathitaṃ sūta mahadākhyānamuttamam | kṛṣṇasya caritaṃ divyaṃ sarvapātakanāśanam || 1 ||",
+          "hindi": "ऋषिगण बोले—हे सूतजी! आपने यह बहुत ही उत्तम कथा कही, जिसमें भगवान् श्रीकृष्णके सर्वपापविनाशक तथा अलौकिक चरित्रका वर्णन है"
         },
         {
           "number": 2,
@@ -27468,7 +27505,8 @@
         {
           "number": 7,
           "sanskrit": "वृत्तान्तं व्यासतः श्रुत्वा वैराटीसुतजस्तदा । पुनः पप्रच्छ मेधावी सन्देहं परमं गतः ॥ ७ ॥",
-          "transliteration": "vṛttāntaṃ vyāsataḥ śrutvā vairāṭīsutajastadā | punaḥ papraccha medhāvī sandehaṃ paramaṃ gataḥ || 7 ||"
+          "transliteration": "vṛttāntaṃ vyāsataḥ śrutvā vairāṭīsutajastadā | punaḥ papraccha medhāvī sandehaṃ paramaṃ gataḥ || 7 ||",
+          "hindi": "व्यासजीसे यह वृत्तान्त सुनकर प्रतिभावान् राजा जनमेजय और भी अधिक सन्देहमें पड़ गये; तब उन्होंने फिर पूछा"
         },
         {
           "number": 8,
@@ -27525,17 +27563,20 @@
         {
           "number": 18,
           "sanskrit": "हरणं लुण्ठनं तद्वत्तत्पत्नीनां नराधिप । अर्जुनस्यास्त्रमोक्षे च क्लीबत्वं तस्करेषु च ॥ १८ ॥",
-          "transliteration": "haraṇaṃ luṇṭhanaṃ tadvattatpatnīnāṃ narādhipa | arjunasyāstramokṣe ca klībatvaṃ taskareṣu ca || 18 ||"
+          "transliteration": "haraṇaṃ luṇṭhanaṃ tadvattatpatnīnāṃ narādhipa | arjunasyāstramokṣe ca klībatvaṃ taskareṣu ca || 18 ||",
+          "hindi": "हे राजन्! उसी प्रकार उनकी स्त्रियोंका हरण हुआ, उनका धन लूट लिया गया तथा अर्जुन उन लुटेरोंपर अपना अस्त्र चलानेमें पुरुषार्थहीन हो गये"
         },
         {
           "number": 19,
           "sanskrit": "अज्ञत्वं हरणे गेहात्तत्प्रद्युम्नानिरुद्धयोः । एवं मानुषदेहेऽस्मिन्मानुषं खलु चेष्टितम् ॥ १९ ॥",
-          "transliteration": "ajñatvaṃ haraṇe gehāttatpradyumnāniruddhayoḥ | evaṃ mānuṣadehe'sminmānuṣaṃ khalu ceṣṭitam || 19 ||"
+          "transliteration": "ajñatvaṃ haraṇe gehāttatpradyumnāniruddhayoḥ | evaṃ mānuṣadehe'sminmānuṣaṃ khalu ceṣṭitam || 19 ||",
+          "hindi": "श्रीकृष्णको अपने घरसे प्रद्युम्न तथा अनिरुद्धके हरणकी जानकारी नहीं हो पायी। इस प्रकार यह मानव-शरीर पाकर उन्होंने साधारण प्राणीकी भाँति सभी मानवीय चेष्टाओंका प्रदर्शन किया"
         },
         {
           "number": 20,
           "sanskrit": "विष्णोरंशावतारेऽस्मिन्नारायणमुनेस्तथा । अंशजे वासुदेवेऽत्र किं चित्रं शिवसेवने ॥ २० ॥",
-          "transliteration": "viṣṇoraṃśāvatāre'sminnārāyaṇamunestathā | aṃśaje vāsudeve'tra kiṃ citraṃ śivasevane || 20 ||"
+          "transliteration": "viṣṇoraṃśāvatāre'sminnārāyaṇamunestathā | aṃśaje vāsudeve'tra kiṃ citraṃ śivasevane || 20 ||",
+          "hindi": "तब भगवान् विष्णुके अंशावतार तथा साक्षात् नारायणके अंशसे उत्पन्न इन श्रीकृष्णने यदि शिवजीकी उपासना की तो इसमें आश्चर्य क्या?"
         },
         {
           "number": 21,
@@ -27561,7 +27602,8 @@
         {
           "number": 25,
           "sanskrit": "विष्णोरप्यथिको रुद्रो विष्णुस्तु ब्रह्मणोऽधिकः । तस्मान्न संशयः कार्यः कृष्णेन शिवपूजने ॥ २५ ॥",
-          "transliteration": "viṣṇorapyathiko rudro viṣṇustu brahmaṇo'dhikaḥ | tasmānna saṃśayaḥ kāryaḥ kṛṣṇena śivapūjane || 25 ||"
+          "transliteration": "viṣṇorapyathiko rudro viṣṇustu brahmaṇo'dhikaḥ | tasmānna saṃśayaḥ kāryaḥ kṛṣṇena śivapūjane || 25 ||",
+          "hindi": "ब्रह्माजीसे भी बढ़कर विष्णु तथा विष्णुसे भी बढ़कर भगवान् शिव हैं। अत: श्रीकृष्णद्वारा शिवकी आराधनामें किसी प्रकारका सन्देह नहीं करना चाहिये"
         },
         {
           "number": 26,
@@ -38594,12 +38636,14 @@
         {
           "number": 9,
           "sanskrit": "कृतमिन्द्रेण हरिणा किमेतत्सूत साहसम् । महान्तोऽपि च मोहेन वञ्चिताः पापबुद्धयः ॥ ९ ॥",
-          "transliteration": "kṛtamindreṇa hariṇā kimetatsūta sāhasam | mahānto'pi ca mohena vañcitāḥ pāpabuddhayaḥ || 9 ||"
+          "transliteration": "kṛtamindreṇa hariṇā kimetatsūta sāhasam | mahānto'pi ca mohena vañcitāḥ pāpabuddhayaḥ || 9 ||",
+          "hindi": "हे सूतजी! इन्द्र और विष्णुके द्वारा ऐसा दु:साहस क्यों किया गया? महान् लोग भी मोहमें फँसकर पापबुद्धि हो जाते हैं"
         },
         {
           "number": 10,
           "sanskrit": "अन्यायवर्तिनोऽत्यर्थं भवन्ति सुरसत्तमाः । सदाचारेण युक्तेन देवाः शिष्टत्वमागताः ॥ १० ॥",
-          "transliteration": "anyāyavartino'tyarthaṃ bhavanti surasattamāḥ | sadācāreṇa yuktena devāḥ śiṣṭatvamāgatāḥ || 10 ||"
+          "transliteration": "anyāyavartino'tyarthaṃ bhavanti surasattamāḥ | sadācāreṇa yuktena devāḥ śiṣṭatvamāgatāḥ || 10 ||",
+          "hindi": "श्रेष्ठ देवगण भी घोर अन्याय-मार्गके अनुगामी हो जाते हैं, जबकि सदाचारके कारण ही देवताओंको विशिष्टता प्राप्त है"
         },
         {
           "number": 11,
@@ -38639,7 +38683,8 @@
         {
           "number": 18,
           "sanskrit": "महतां चरितं शृण्वन् को विरज्येत मानवः । कथयाम्बावैभवं त्वं वृत्रासुरवधाश्रितम् ॥ १८ ॥",
-          "transliteration": "mahatāṃ caritaṃ śṛṇvan ko virajyeta mānavaḥ | kathayāmbāvaibhavaṃ tvaṃ vṛtrāsuravadhāśritam || 18 ||"
+          "transliteration": "mahatāṃ caritaṃ śṛṇvan ko virajyeta mānavaḥ | kathayāmbāvaibhavaṃ tvaṃ vṛtrāsuravadhāśritam || 18 ||",
+          "hindi": "कौन मनुष्य महापुरुषोंके चरित्रको सुननेसे विरत होगा। अत: आप वृत्रासुरके वधपर आधारित जगदम्बाके माहात्म्यको कहिये"
         },
         {
           "number": 19,
@@ -38654,27 +38699,32 @@
         {
           "number": 21,
           "sanskrit": "युद्धं पुरा वासववृत्रयोर्यद् वेदे प्रसिद्धं च तथा पुराणे । दुःखं सुरेन्द्रेण तथैव लब्धं हत्वा रिपुं त्वाष्ट्रमपापमेव ॥ २१ ॥",
-          "transliteration": "yuddhaṃ purā vāsavavṛtrayoryad vede prasiddhaṃ ca tathā purāṇe | duḥkhaṃ surendreṇa tathaiva labdhaṃ hatvā ripuṃ tvāṣṭramapāpameva || 21 ||"
+          "transliteration": "yuddhaṃ purā vāsavavṛtrayoryad vede prasiddhaṃ ca tathā purāṇe | duḥkhaṃ surendreṇa tathaiva labdhaṃ hatvā ripuṃ tvāṣṭramapāpameva || 21 ||",
+          "hindi": "पूर्वकालमें इन्द्र तथा वृत्रासुरका जो युद्ध हुआ था और निरपराध शत्रु वृत्रासुरका वध करके देवराज इन्द्रको जो दु:ख प्राप्त हुआ था, वह वेद और पुराणमें प्रसिद्ध है"
         },
         {
           "number": 22,
           "sanskrit": "चित्रं किमत्र नृपते हरिवज्रभृद्भ्यां यच्छद्मना विनिहतस्त्रिशिरोऽथ वृत्रः । मायाबलेन मुनयोऽपि विमोहितास्ते चक्रुश्च निन्द्यमनिशं किल पापभीताः ॥ २२ ॥",
-          "transliteration": "citraṃ kimatra nṛpate harivajrabhṛdbhyāṃ yacchadmanā vinihatastriśiro'tha vṛtraḥ | māyābalena munayo'pi vimohitāste cakruśca nindyamaniśaṃ kila pāpabhītāḥ || 22 ||"
+          "transliteration": "citraṃ kimatra nṛpate harivajrabhṛdbhyāṃ yacchadmanā vinihatastriśiro'tha vṛtraḥ | māyābalena munayo'pi vimohitāste cakruśca nindyamaniśaṃ kila pāpabhītāḥ || 22 ||",
+          "hindi": "जब मायाके बलसे मुनिगण भी मोहमें पड़ जाते हैं और वे पापभीरु होकर निरन्तर निन्दनीय कर्म करने लग जाते हैं तब हे राजन्! विष्णु और वज्रधारी इन्द्रने छलसे त्रिशिरा और वृत्रासुरका वध कर दिया तो इसमें आश्चर्यकी क्या बात है?"
         },
         {
           "number": 23,
           "sanskrit": "विष्णुः सदैव कपटेन जघान दैत्यान् सत्त्वात्ममूर्तिरपि मोहमवाप्य कामम् । कोऽन्योऽस्ति तां भगवतीं मनसापि जेतुं शक्तः समस्तजनमोहकरीं भवानीम् ॥ २३ ॥",
-          "transliteration": "viṣṇuḥ sadaiva kapaṭena jaghāna daityān sattvātmamūrtirapi mohamavāpya kāmam | ko'nyo'sti tāṃ bhagavatīṃ manasāpi jetuṃ śaktaḥ samastajanamohakarīṃ bhavānīm || 23 ||"
+          "transliteration": "viṣṇuḥ sadaiva kapaṭena jaghāna daityān sattvātmamūrtirapi mohamavāpya kāmam | ko'nyo'sti tāṃ bhagavatīṃ manasāpi jetuṃ śaktaḥ samastajanamohakarīṃ bhavānīm || 23 ||",
+          "hindi": "सत्त्वगुणके मूर्तिमान् विग्रह होते हुए भी भगवान् विष्णुने जिनकी मायासे मोहित होकर सदैव छलपूर्वक दैत्योंका संहार किया तब भला ऐसा कौन प्राणी होगा जो सब लोगोंको मोहमें डाल देनेवाली उन भगवती भवानीको अपने मनोबलसे जीतनेमें सक्षम हो सके!"
         },
         {
           "number": 24,
           "sanskrit": "मत्स्यादियोनिषु सहस्रयुगेषु सद्यः साक्षाद्भवत्यपि यया विनियोजितोऽत्र । नारायणो नरसखो भगवाननन्तः कार्यं करोति विहिताविहितं कदाचित् ॥ २४ ॥",
-          "transliteration": "matsyādiyoniṣu sahasrayugeṣu sadyaḥ sākṣādbhavatyapi yayā viniyojito'tra | nārāyaṇo narasakho bhagavānanantaḥ kāryaṃ karoti vihitāvihitaṃ kadācit || 24 ||"
+          "transliteration": "matsyādiyoniṣu sahasrayugeṣu sadyaḥ sākṣādbhavatyapi yayā viniyojito'tra | nārāyaṇo narasakho bhagavānanantaḥ kāryaṃ karoti vihitāvihitaṃ kadācit || 24 ||",
+          "hindi": "भगवतीकी ही प्रेरणासे नरऋषिके सखा नारायण भगवान् अनन्त हजारों युगोंमें मत्स्यादि योनियोंमें अवतार लेते हैं और कभी अनुकूल तथा कभी प्रतिकूल कार्य करते हैं"
         },
         {
           "number": 25,
           "sanskrit": "देहं धनं गृहमिदं स्वजना मदीयं पुत्राः कलत्रमिति मोहमुपेत्य सर्वः । पुण्यं करोत्यथ च पापचयं करोति मायागुणैरतिबलैर्विकलीकृतो यत् ॥ २५ ॥",
-          "transliteration": "dehaṃ dhanaṃ gṛhamidaṃ svajanā madīyaṃ putrāḥ kalatramiti mohamupetya sarvaḥ | puṇyaṃ karotyatha ca pāpacayaṃ karoti māyāguṇairatibalairvikalīkṛto yat || 25 ||"
+          "transliteration": "dehaṃ dhanaṃ gṛhamidaṃ svajanā madīyaṃ putrāḥ kalatramiti mohamupetya sarvaḥ | puṇyaṃ karotyatha ca pāpacayaṃ karoti māyāguṇairatibalairvikalīkṛto yat || 25 ||",
+          "hindi": "यह मेरा शरीर है, यह मेरा धन है, यह मेरा घर है, ये मेरे स्त्री-पुत्र और बन्धु-बान्धव हैं—इस मोहमें पड़कर सभी प्राणी पुण्य तथा पापकर्म करते रहते हैं; क्योंकि अत्यन्त बलशाली मायागुणोंसे वे मोहित कर दिये गये हैं"
         },
         {
           "number": 26,
@@ -48484,117 +48534,140 @@
         {
           "number": 1,
           "sanskrit": "श्रुत्वैतां तापसाद्दिव्यां कथां राजा मुदान्वितः । व्यासं पप्रच्छ धर्मात्मा परीक्षितसुतः पुनः ॥ १ ॥",
-          "transliteration": "śrutvaitāṃ tāpasāddivyāṃ kathāṃ rājā mudānvitaḥ | vyāsaṃ papraccha dharmātmā parīkṣitasutaḥ punaḥ || 1 ||"
+          "transliteration": "śrutvaitāṃ tāpasāddivyāṃ kathāṃ rājā mudānvitaḥ | vyāsaṃ papraccha dharmātmā parīkṣitasutaḥ punaḥ || 1 ||",
+          "hindi": "सूतजी बोले—[हे ऋषियो!] तपस्वी व्यासजीसे यह दिव्य कथा सुनकर परीक्षित्के पुत्र धर्मात्मा राजा जनमेजयने प्रसन्नतापूर्वक पुन: व्यासजीसे पूछा"
         },
         {
           "number": 2,
           "sanskrit": "स्वामिन् सूर्यान्वयानां च राज्ञां वंशस्य विस्तरम् । तथा सोमान्वयानां च श्रोतुकामोऽस्मि सर्वथा ॥ २ ॥",
-          "transliteration": "svāmin sūryānvayānāṃ ca rājñāṃ vaṃśasya vistaram | tathā somānvayānāṃ ca śrotukāmo'smi sarvathā || 2 ||"
+          "transliteration": "svāmin sūryānvayānāṃ ca rājñāṃ vaṃśasya vistaram | tathā somānvayānāṃ ca śrotukāmo'smi sarvathā || 2 ||",
+          "hindi": "जनमेजय बोले—हे स्वामिन्! मैं सूर्यवंशी तथा चन्द्रवंशी राजाओंके वंशका विस्तृत वर्णन सम्यक् प्रकारसे सुनना चाहता हूँ"
         },
         {
           "number": 3,
           "sanskrit": "कथयानघ सर्वज्ञ कथां पापप्रणाशिनीम् । चरितं भूपतीनां च विस्तराद्वंशयोर्द्वयोः ॥ ३ ॥",
-          "transliteration": "kathayānagha sarvajña kathāṃ pāpapraṇāśinīm | caritaṃ bhūpatīnāṃ ca vistarādvaṃśayordvayoḥ || 3 ||"
+          "transliteration": "kathayānagha sarvajña kathāṃ pāpapraṇāśinīm | caritaṃ bhūpatīnāṃ ca vistarādvaṃśayordvayoḥ || 3 ||",
+          "hindi": "हे पुण्यात्मन्! हे सर्वज्ञ! आप उन राजाओंके चरित्र तथा उनके दोनों वंशोंसे सम्बन्धित उस पापनाशिनी कथाका विस्तारसे वर्णन कीजिये"
         },
         {
           "number": 4,
           "sanskrit": "ते हि सर्वे पराशक्तिभक्ता इति मया श्रुतम् । देवीभक्तस्य चरितं शृण्वन्कोऽस्ति विरक्तिभाक् ॥ ४ ॥",
-          "transliteration": "te hi sarve parāśaktibhaktā iti mayā śrutam | devībhaktasya caritaṃ śṛṇvanko'sti viraktibhāk || 4 ||"
+          "transliteration": "te hi sarve parāśaktibhaktā iti mayā śrutam | devībhaktasya caritaṃ śṛṇvanko'sti viraktibhāk || 4 ||",
+          "hindi": "मैंने ऐसा सुना है कि वे सभी पराशक्ति जगदम्बाके महान् भक्त थे; अत: देवीभक्तका चरित्र सुननेसे भला कौन विमुख होना चाहेगा?"
         },
         {
           "number": 5,
           "sanskrit": "इति राजर्षिणा पृष्टो व्यासः सत्यवतीसुतः । तमुवाच मुनिश्रेष्ठः प्रसन्नवदनो मुनिः ॥ ५ ॥",
-          "transliteration": "iti rājarṣiṇā pṛṣṭo vyāsaḥ satyavatīsutaḥ | tamuvāca muniśreṣṭhaḥ prasannavadano muniḥ || 5 ||"
+          "transliteration": "iti rājarṣiṇā pṛṣṭo vyāsaḥ satyavatīsutaḥ | tamuvāca muniśreṣṭhaḥ prasannavadano muniḥ || 5 ||",
+          "hindi": "राजर्षि जनमेजयके ऐसा पूछनेपर प्रसन्न मुखमण्डलवाले सत्यवतीनन्दन मुनि व्यासने उनसे कहा"
         },
         {
           "number": 6,
           "sanskrit": "निशामय महाराज विस्तराद्गदतो मम । सोमसूर्यान्वयानां च तथान्येषां समुद्भवम् ॥ ६ ॥",
-          "transliteration": "niśāmaya mahārāja vistarādgadato mama | somasūryānvayānāṃ ca tathānyeṣāṃ samudbhavam || 6 ||"
+          "transliteration": "niśāmaya mahārāja vistarādgadato mama | somasūryānvayānāṃ ca tathānyeṣāṃ samudbhavam || 6 ||",
+          "hindi": "व्यासजी बोले—हे महाराज! अब मैं सूर्यवंश, चन्द्रवंश तथा अन्य वंशोंकी उत्पत्तिसे सम्बन्धित कथाओंका विस्तारपूर्वक वर्णन करता हूँ, आप सुनिये"
         },
         {
           "number": 7,
           "sanskrit": "विष्णोर्नाभिसरोजाद्वै ब्रह्माभूच्चतुराननः । तपस्तप्त्वा समाराध्य महादेवीं सुदुर्गमाम् ॥ ७ ॥",
-          "transliteration": "viṣṇornābhisarojādvai brahmābhūccaturānanaḥ | tapastaptvā samārādhya mahādevīṃ sudurgamām || 7 ||"
+          "transliteration": "viṣṇornābhisarojādvai brahmābhūccaturānanaḥ | tapastaptvā samārādhya mahādevīṃ sudurgamām || 7 ||",
+          "hindi": "भगवान् विष्णुके नाभिकमलसे चार मुखवाले ब्रह्माजी उत्पन्न हुए। उन्होंने घोर तपस्या करके अत्यन्त कठिनतापूर्वक प्राप्त होनेवाली महादेवीकी आराधना की"
         },
         {
           "number": 8,
           "sanskrit": "तया दत्तवरो धाता जगत्कर्तुं समुद्यतः । नाशकन्मानुषीं सृष्टिं कर्तुं लोकपितामहः ॥ ८ ॥",
-          "transliteration": "tayā dattavaro dhātā jagatkartuṃ samudyataḥ | nāśakanmānuṣīṃ sṛṣṭiṃ kartuṃ lokapitāmahaḥ || 8 ||"
+          "transliteration": "tayā dattavaro dhātā jagatkartuṃ samudyataḥ | nāśakanmānuṣīṃ sṛṣṭiṃ kartuṃ lokapitāmahaḥ || 8 ||",
+          "hindi": "उन भगवतीसे वरदान प्राप्त करके ब्रह्माजी जगत्की रचना करनेमें प्रवृत्त हुए, किंतु लोकपितामह ब्रह्माजी मानवी सृष्टि कर पानेमें सफल नहीं हुए"
         },
         {
           "number": 9,
           "sanskrit": "विचिन्त्य बहुधा चित्ते सृष्ट्यर्थं चतुराननः । न विस्तारं जगामाशु रचितापि महात्मना ॥ ९ ॥",
-          "transliteration": "vicintya bahudhā citte sṛṣṭyarthaṃ caturānanaḥ | na vistāraṃ jagāmāśu racitāpi mahātmanā || 9 ||"
+          "transliteration": "vicintya bahudhā citte sṛṣṭyarthaṃ caturānanaḥ | na vistāraṃ jagāmāśu racitāpi mahātmanā || 9 ||",
+          "hindi": "ब्रह्माजीके मनमें सृष्टिके लिये अनेक प्रकारके विचार उत्पन्न हुए, किंतु वे महात्मा अपनी रचनाको शीघ्र विस्तार प्रदान करनेमें समर्थ नहीं हुए"
         },
         {
           "number": 10,
           "sanskrit": "मरीचिरङ्गिरात्रिश्च वसिष्ठः पुलहः क्रतुः । पुलस्त्यश्चेति विख्याताः सप्तैते मानसाः सुताः ॥ १० ॥",
-          "transliteration": "marīciraṅgirātriśca vasiṣṭhaḥ pulahaḥ kratuḥ | pulastyaśceti vikhyātāḥ saptaite mānasāḥ sutāḥ || 10 ||"
+          "transliteration": "marīciraṅgirātriśca vasiṣṭhaḥ pulahaḥ kratuḥ | pulastyaśceti vikhyātāḥ saptaite mānasāḥ sutāḥ || 10 ||",
+          "hindi": "(तत्पश्चात् प्रजापति ब्रह्माजीने अपने सात मानस पुत्रोंका सृजन किया।) मरीचि, अंगिरा, अत्रि, वसिष्ठ, पुलह, क्रतु और पुलस्त्य—इन नामोंसे उन सात मानस पुत्रोंकी प्रसिद्धि हुई"
         },
         {
           "number": 11,
           "sanskrit": "रुद्रो रोषात्समुत्पन्नोऽप्युत्सङ्गान्नारदोऽभवत् । दक्षोऽङ्गुष्ठात्तथान्येऽपि मानसाः सनकादयः ॥ ११ ॥",
-          "transliteration": "rudro roṣātsamutpanno'pyutsaṅgānnārado'bhavat | dakṣo'ṅguṣṭhāttathānye'pi mānasāḥ sanakādayaḥ || 11 ||"
+          "transliteration": "rudro roṣātsamutpanno'pyutsaṅgānnārado'bhavat | dakṣo'ṅguṣṭhāttathānye'pi mānasāḥ sanakādayaḥ || 11 ||",
+          "hindi": "ब्रह्माजीके रोषसे रुद्र उत्पन्न हुए तथा उनकी गोदसे नारदजीका प्राकट्य हुआ। अँगूठेसे दक्षप्रजापति उत्पन्न हुए। इसी प्रकार सनक आदि अन्य मानस पुत्रोंकी उत्पत्ति हुई"
         },
         {
           "number": 12,
           "sanskrit": "वामाङ्गुष्ठाद्दक्षपत्नी जाता सर्वाङ्गसुन्दरी । वीरिणी नाम विख्याता पुराणेषु महीपते ॥ १२ ॥",
-          "transliteration": "vāmāṅguṣṭhāddakṣapatnī jātā sarvāṅgasundarī | vīriṇī nāma vikhyātā purāṇeṣu mahīpate || 12 ||"
+          "transliteration": "vāmāṅguṣṭhāddakṣapatnī jātā sarvāṅgasundarī | vīriṇī nāma vikhyātā purāṇeṣu mahīpate || 12 ||",
+          "hindi": "बायें हाथके अँगूठेसे समस्त सुन्दर अंगोंवाली दक्षपत्नीका प्रादुर्भाव हुआ। हे राजन्! वे पुराणोंमें ‘वीरिणी’ नामसे प्रसिद्ध हैं"
         },
         {
           "number": 13,
           "sanskrit": "असिक्नीति च नाम्ना सा यस्यां जातोऽथ नारदः । देवर्षिप्रवरः कामं ब्रह्मणो मानसः सुतः ॥ १३ ॥",
-          "transliteration": "asiknīti ca nāmnā sā yasyāṃ jāto'tha nāradaḥ | devarṣipravaraḥ kāmaṃ brahmaṇo mānasaḥ sutaḥ || 13 ||"
+          "transliteration": "asiknīti ca nāmnā sā yasyāṃ jāto'tha nāradaḥ | devarṣipravaraḥ kāmaṃ brahmaṇo mānasaḥ sutaḥ || 13 ||",
+          "hindi": "वे असिक्नी नामसे भी विख्यात हैं और उन्हींसे ब्रह्माजीके मानसपुत्र देवर्षिश्रेष्ठ नारदजीका प्रादुर्भाव हुआ है"
         },
         {
           "number": 14,
           "sanskrit": "अत्र मे संशयो ब्रह्मन् यदुक्तं भवता वचः । वीरिण्यां नारदो जातो दक्षादिति महातपाः ॥ १४ ॥",
-          "transliteration": "atra me saṃśayo brahman yaduktaṃ bhavatā vacaḥ | vīriṇyāṃ nārado jāto dakṣāditi mahātapāḥ || 14 ||"
+          "transliteration": "atra me saṃśayo brahman yaduktaṃ bhavatā vacaḥ | vīriṇyāṃ nārado jāto dakṣāditi mahātapāḥ || 14 ||",
+          "hindi": "जनमेजय बोले—हे ब्रह्मन्! अभी-अभी आपने जो बात कही है कि महान् तपस्वी नारदजी दक्षसे तथा वीरिणीके गर्भसे उत्पन्न हुए थे, इस विषयमें मुझे सन्देह हो रहा है"
         },
         {
           "number": 15,
           "sanskrit": "कथं दक्षस्य पत्न्यां तु वीरिण्यां नारदो मुनिः । जातो हि ब्रह्मणः पुत्रो धर्मज्ञस्तापसोत्तमः ॥ १५ ॥",
-          "transliteration": "kathaṃ dakṣasya patnyāṃ tu vīriṇyāṃ nārado muniḥ | jāto hi brahmaṇaḥ putro dharmajñastāpasottamaḥ || 15 ||"
+          "transliteration": "kathaṃ dakṣasya patnyāṃ tu vīriṇyāṃ nārado muniḥ | jāto hi brahmaṇaḥ putro dharmajñastāpasottamaḥ || 15 ||",
+          "hindi": "धर्मके पूर्ण ज्ञाता तथा तपस्वियोंमें श्रेष्ठ नारदमुनि तो ब्रह्माके मानस पुत्र हैं तो फिर वे दक्षपत्नी वीरिणीसे किस प्रकार उत्पन्न हुए?"
         },
         {
           "number": 16,
           "sanskrit": "विचित्रमिदमाख्यातं भवता नारदस्य च । दक्षाज्जन्मास्य भार्यायां तद्वदस्व सविस्तरम् ॥ १६ ॥",
-          "transliteration": "vicitramidamākhyātaṃ bhavatā nāradasya ca | dakṣājjanmāsya bhāryāyāṃ tadvadasva savistaram || 16 ||"
+          "transliteration": "vicitramidamākhyātaṃ bhavatā nāradasya ca | dakṣājjanmāsya bhāryāyāṃ tadvadasva savistaram || 16 ||",
+          "hindi": "आपके द्वारा कथित यह वार्ता अत्यन्त विस्मयमें डालनेवाली है। दक्षसे तथा उनकी भार्या ‘वीरिणी’ से इन नारदजीके जन्मके विषयमें आप मुझे विस्तारपूर्वक बताइये"
         },
         {
           "number": 17,
           "sanskrit": "पूर्वदेहः कथं मुक्तः शापात्कस्य महामना । नारदेन बहुज्ञेन कस्माज्जन्म कृतं मुने ॥ १७ ॥",
-          "transliteration": "pūrvadehaḥ kathaṃ muktaḥ śāpātkasya mahāmanā | nāradena bahujñena kasmājjanma kṛtaṃ mune || 17 ||"
+          "transliteration": "pūrvadehaḥ kathaṃ muktaḥ śāpātkasya mahāmanā | nāradena bahujñena kasmājjanma kṛtaṃ mune || 17 ||",
+          "hindi": "हे मुने! विपुल ज्ञान रखनेवाले महात्मा नारदजीने किसके शापसे अपने पूर्व शरीरका त्याग करके किसलिये फिरसे जन्म धारण किया?"
         },
         {
           "number": 18,
           "sanskrit": "ब्रह्मणासौ समादिष्टो दक्षः सृष्ट्यर्थमादितः । प्रजाः सृजेति सुभृशं वृद्धिहेतोः स्वयम्भुवा ॥ १८ ॥",
-          "transliteration": "brahmaṇāsau samādiṣṭo dakṣaḥ sṛṣṭyarthamāditaḥ | prajāḥ sṛjeti subhṛśaṃ vṛddhihetoḥ svayambhuvā || 18 ||"
+          "transliteration": "brahmaṇāsau samādiṣṭo dakṣaḥ sṛṣṭyarthamāditaḥ | prajāḥ sṛjeti subhṛśaṃ vṛddhihetoḥ svayambhuvā || 18 ||",
+          "hindi": "व्यासजी बोले—स्वयम्भू ब्रह्माजीने सबसे पहले दक्षप्रजापतिको सृष्टिके लिये आज्ञा दी और कहा कि तुम प्रजाकी रचनामें तत्पर हो जाओ, जिससे प्रजाकी अधिकाधिक वृद्धि हो सके"
         },
         {
           "number": 19,
           "sanskrit": "ततः पञ्चसहस्रांश्च जनयामास वीर्यवान् । दक्षः प्रजापतिः पुत्रान् वीरिण्यां बलवत्तरान् ॥ १९ ॥",
-          "transliteration": "tataḥ pañcasahasrāṃśca janayāmāsa vīryavān | dakṣaḥ prajāpatiḥ putrān vīriṇyāṃ balavattarān || 19 ||"
+          "transliteration": "tataḥ pañcasahasrāṃśca janayāmāsa vīryavān | dakṣaḥ prajāpatiḥ putrān vīriṇyāṃ balavattarān || 19 ||",
+          "hindi": "तब दक्षप्रजापतिने वीरिणीके गर्भसे अत्यन्त बल-शाली तथा पराक्रमी पाँच हजार पुत्र उत्पन्न किये"
         },
         {
           "number": 20,
           "sanskrit": "दृष्ट्वा तान्नारदः पुत्रान्सर्वान्वर्धयिषून्प्रजाः । उवाच प्रहसन्वाचं देवर्षिः कालनोदितः ॥ २० ॥",
-          "transliteration": "dṛṣṭvā tānnāradaḥ putrānsarvānvardhayiṣūnprajāḥ | uvāca prahasanvācaṃ devarṣiḥ kālanoditaḥ || 20 ||"
+          "transliteration": "dṛṣṭvā tānnāradaḥ putrānsarvānvardhayiṣūnprajāḥ | uvāca prahasanvācaṃ devarṣiḥ kālanoditaḥ || 20 ||",
+          "hindi": "प्रजाकी वृद्धिहेतु विपुल उत्साहसे सम्पन्न उन सभी पुत्रोंको देखकर कालकी प्रेरणाके अनुसार देवर्षि नारदजी हँसते हुए यह बात कहने लगे"
         },
         {
           "number": 21,
           "sanskrit": "भुवः प्रमाणमज्ञात्वा स्रष्टुकामाः प्रजाः कथम् । लोकानां हास्यतां यूयं गमिष्यथ न संशयः ॥ २१ ॥",
-          "transliteration": "bhuvaḥ pramāṇamajñātvā sraṣṭukāmāḥ prajāḥ katham | lokānāṃ hāsyatāṃ yūyaṃ gamiṣyatha na saṃśayaḥ || 21 ||"
+          "transliteration": "bhuvaḥ pramāṇamajñātvā sraṣṭukāmāḥ prajāḥ katham | lokānāṃ hāsyatāṃ yūyaṃ gamiṣyatha na saṃśayaḥ || 21 ||",
+          "hindi": "पृथ्वीकी वास्तविक परिमितिका बिना ज्ञान किये ही तुमलोग प्रजाके सृष्टिकार्यमें कैसे तत्पर हो गये? इससे तो तुमलोग नि:सन्देह जगत्में उपहासके पात्र बनोगे"
         },
         {
           "number": 22,
           "sanskrit": "पृथिव्या वै प्रमाणं तु ज्ञात्वा कार्यः समुद्यमः । कृत्तोऽसौ सिद्धिमायाति नान्यथेति विनिश्चयः ॥ २२ ॥",
-          "transliteration": "pṛthivyā vai pramāṇaṃ tu jñātvā kāryaḥ samudyamaḥ | kṛtto'sau siddhimāyāti nānyatheti viniścayaḥ || 22 ||"
+          "transliteration": "pṛthivyā vai pramāṇaṃ tu jñātvā kāryaḥ samudyamaḥ | kṛtto'sau siddhimāyāti nānyatheti viniścayaḥ || 22 ||",
+          "hindi": "पृथ्वीका परिमाण जानकर ही तुम्हें इस कार्यमें संलग्न होना चाहिये। ऐसा करनेपर ही तुमलोगोंका कार्य सिद्ध होगा, अन्यथा नहीं; इसमें कोई सन्देह नहीं है"
         },
         {
           "number": 23,
           "sanskrit": "बालिशा बत यूयं वै यदज्ञात्वा भुवस्तलम् । समुद्यताः प्रजाः कर्तुं कथं सिद्धिर्भविष्यति ॥ २३ ॥",
-          "transliteration": "bāliśā bata yūyaṃ vai yadajñātvā bhuvastalam | samudyatāḥ prajāḥ kartuṃ kathaṃ siddhirbhaviṣyati || 23 ||"
+          "transliteration": "bāliśā bata yūyaṃ vai yadajñātvā bhuvastalam | samudyatāḥ prajāḥ kartuṃ kathaṃ siddhirbhaviṣyati || 23 ||",
+          "hindi": "तुमलोग तो मूर्ख हो जो कि पृथ्वीके परिमाणको जाने बिना ही प्रजोत्पत्तिमें संलग्न हो गये हो; इसमें सफलता कैसे मिल सकती है?"
         },
         {
           "number": 24,
@@ -60694,7 +60767,8 @@
         {
           "number": 4,
           "sanskrit": "ध्यात्वैवं तच्छिखामध्ये सच्चिदानन्दरूपिणीम् । मां ध्यायेदथ शौचादिक्रियाः सर्वाः समापयेत् ॥ ४ ॥",
-          "transliteration": "dhyātvaivaṃ tacchikhāmadhye saccidānandarūpiṇīm | māṃ dhyāyedatha śaucādikriyāḥ sarvāḥ samāpayet || 4 ||"
+          "transliteration": "dhyātvaivaṃ tacchikhāmadhye saccidānandarūpiṇīm | māṃ dhyāyedatha śaucādikriyāḥ sarvāḥ samāpayet || 4 ||",
+          "hindi": "इस प्रकार कुण्डलिनी शक्तिका ध्यान करके उसकी शिखाके मध्यमें सच्चिदानन्दरूपिणी मुझ भगवतीका ध्यान करना चाहिये। इसके बाद शौच आदि सभी नित्य क्रियाएँ सम्पन्न करनी चाहिये"
         },
         {
           "number": 5,
@@ -60866,12 +60940,14 @@
         {
           "number": 38,
           "sanskrit": "व्यास उवाच । इत्युक्त्वा सा भगवती तत्रैवान्तरधीयत । देवाश्च मुदिताः सर्वे देवीदर्शनतोऽभवन् ॥ ३८ ॥",
-          "transliteration": "vyāsa uvāca | ityuktvā sā bhagavatī tatraivāntaradhīyata | devāśca muditāḥ sarve devīdarśanato'bhavan || 38 ||"
+          "transliteration": "vyāsa uvāca | ityuktvā sā bhagavatī tatraivāntaradhīyata | devāśca muditāḥ sarve devīdarśanato'bhavan || 38 ||",
+          "hindi": "व्यासजी बोले—[हे जनमेजय!] ऐसा कहकर वे भगवती वहींपर अन्तर्धान हो गयीं और देवीके दर्शनसे सभी देवता अत्यन्त प्रसन्न हो गये"
         },
         {
           "number": 39,
           "sanskrit": "ततो हिमालये जज्ञे देवी हैमवती तु सा । या गौरीति प्रसिद्धासीद्दत्ता सा शङ्कराय च ॥ ३९ ॥",
-          "transliteration": "tato himālaye jajñe devī haimavatī tu sā | yā gaurīti prasiddhāsīddattā sā śaṅkarāya ca || 39 ||"
+          "transliteration": "tato himālaye jajñe devī haimavatī tu sā | yā gaurīti prasiddhāsīddattā sā śaṅkarāya ca || 39 ||",
+          "hindi": "तदनन्तर वे देवी हैमवती हिमालयके यहाँ उत्पन्न हुईं, जो ‘गौरी’ नामसे प्रसिद्ध हुईं। बादमें वे शंकरजीको प्रदान की गयीं। तत्पश्चात् कार्तिकेय उत्पन्न हुए और उन्होंने तारकासुरका संहार किया"
         },
         {
           "number": 40,
@@ -60907,7 +60983,8 @@
         {
           "number": 1,
           "sanskrit": "जनमेजय उवाच । सूर्यचन्द्रान्वयोत्थानां नृपाणां सत्कथाश्रितम् । चरितं भवता प्रोक्तं श्रुतं तदमृतास्पदम् ॥ १ ॥",
-          "transliteration": "janamejaya uvāca | sūryacandrānvayotthānāṃ nṛpāṇāṃ satkathāśritam | caritaṃ bhavatā proktaṃ śrutaṃ tadamṛtāspadam || 1 ||"
+          "transliteration": "janamejaya uvāca | sūryacandrānvayotthānāṃ nṛpāṇāṃ satkathāśritam | caritaṃ bhavatā proktaṃ śrutaṃ tadamṛtāspadam || 1 ||",
+          "hindi": "जनमेजय बोले—[हे मुने!] आपने सूर्यवंश तथा चन्द्रवंशमें उत्पन्न राजाओंका जो उत्तम कथाओंसे अन्वित तथा अमृतमय चरित्र वर्णित किया, उसे मैंने सुना"
         },
         {
           "number": 2,
@@ -60922,17 +60999,20 @@
         {
           "number": 4,
           "sanskrit": "येन ध्यानेन तत्सूक्ष्मे स्वरूपे स्यान्मतेर्गतिः । तत्सर्वं वद विप्रर्षे येन श्रेयोऽहमाप्नुयाम् ॥ ४ ॥",
-          "transliteration": "yena dhyānena tatsūkṣme svarūpe syānmatergatiḥ | tatsarvaṃ vada viprarṣe yena śreyo'hamāpnuyām || 4 ||"
+          "transliteration": "yena dhyānena tatsūkṣme svarūpe syānmatergatiḥ | tatsarvaṃ vada viprarṣe yena śreyo'hamāpnuyām || 4 ||",
+          "hindi": "हे विप्रर्षे! जिस ध्यानसे उन भगवतीके सूक्ष्म स्वरूपमें बुद्धि स्थिर हो जाय, वह सब मुझे बतलाइये जिससे मैं कल्याणको प्राप्त हो जाऊँ"
         },
         {
           "number": 5,
           "sanskrit": "व्यास उवाच । शृणु राजन् प्रवक्ष्यामि देव्याराधनमुत्तमम् । यत्कृतेन श्रुतेनापि नरः श्रेयोऽत्र विन्दते ॥ ५ ॥",
-          "transliteration": "vyāsa uvāca | śṛṇu rājan pravakṣyāmi devyārādhanamuttamam | yatkṛtena śrutenāpi naraḥ śreyo'tra vindate || 5 ||"
+          "transliteration": "vyāsa uvāca | śṛṇu rājan pravakṣyāmi devyārādhanamuttamam | yatkṛtena śrutenāpi naraḥ śreyo'tra vindate || 5 ||",
+          "hindi": "व्यासजी बोले—हे राजन्! सुनिये, अब मैं देवीकी उत्तम आराधनाके विषयमें कह रहा हूँ, जिसे करने अथवा सुननेसे भी मनुष्य इस लोकमें कल्याण प्राप्त कर लेता है"
         },
         {
           "number": 6,
           "sanskrit": "एवमेतन्नारदेन पृष्टो नारायणः पुरा । तस्मै यदुक्तवान्देवो योगचर्याप्रवर्तकः ॥ ६ ॥",
-          "transliteration": "evametannāradena pṛṣṭo nārāyaṇaḥ purā | tasmai yaduktavāndevo yogacaryāpravartakaḥ || 6 ||"
+          "transliteration": "evametannāradena pṛṣṭo nārāyaṇaḥ purā | tasmai yaduktavāndevo yogacaryāpravartakaḥ || 6 ||",
+          "hindi": "इसी प्रकार पूर्वकालमें नारदजीके द्वारा योगचर्याके प्रवर्तक भगवान् नारायणसे पूछे जानेपर उन्होंने नारदजीसे जो कहा था, वही मैं बता रहा हूँ"
         },
         {
           "number": 7,
@@ -64926,7 +65006,8 @@
         {
           "number": 3,
           "sanskrit": "श्रीनारायण उवाच । देवर्षे शृणु चित्तैकाग्र्येण मे विदुषां वर । यथा प्रसीदते देवी धर्माराधनतः स्वयम् ॥ ३ ॥",
-          "transliteration": "śrīnārāyaṇa uvāca | devarṣe śṛṇu cittaikāgryeṇa me viduṣāṃ vara | yathā prasīdate devī dharmārādhanataḥ svayam || 3 ||"
+          "transliteration": "śrīnārāyaṇa uvāca | devarṣe śṛṇu cittaikāgryeṇa me viduṣāṃ vara | yathā prasīdate devī dharmārādhanataḥ svayam || 3 ||",
+          "hindi": "श्रीनारायण बोले—हे विद्वद्वर! हे देवर्षे! जिस प्रकार धर्मपूर्वक आराधना करनेसे देवी स्वयं प्रसन्न हो जाती हैं, उसे अब आप एकाग्रचित्त होकर मुझसे सुनिये। हे नारद! जैसा स्वधर्मका स्वरूप बताया गया है, उसे भी आप मुझसे सुनिये"
         },
         {
           "number": 4,
@@ -64941,87 +65022,104 @@
         {
           "number": 6,
           "sanskrit": "प्रतिपत्तिथिमासाद्य देवीमाज्येन पूजयेत् । घृतं दद्याद् ब्राह्मणाय रोगहीनो भवेत्सदा ॥ ६ ॥",
-          "transliteration": "pratipattithimāsādya devīmājyena pūjayet | ghṛtaṃ dadyād brāhmaṇāya rogahīno bhavetsadā || 6 ||"
+          "transliteration": "pratipattithimāsādya devīmājyena pūjayet | ghṛtaṃ dadyād brāhmaṇāya rogahīno bhavetsadā || 6 ||",
+          "hindi": "[शुक्लपक्षकी] प्रतिपदा तिथिमें घृतसे देवीकी पूजा करनी चाहिये और ब्राह्मणको घृतका दान करना चाहिये; ऐसा करनेवाला सदा निरोग रहता है"
         },
         {
           "number": 7,
           "sanskrit": "द्वितीयायां शर्करया पूजयेज्जगदम्बिकाम् । शर्करां प्रददेद्विप्रे दीर्घायुर्जायते नरः ॥ ७ ॥",
-          "transliteration": "dvitīyāyāṃ śarkarayā pūjayejjagadambikām | śarkarāṃ pradadedvipre dīrghāyurjāyate naraḥ || 7 ||"
+          "transliteration": "dvitīyāyāṃ śarkarayā pūjayejjagadambikām | śarkarāṃ pradadedvipre dīrghāyurjāyate naraḥ || 7 ||",
+          "hindi": "द्वितीया तिथिको शर्करासे जगदम्बाका पूजन करना चाहिये और विप्रको शर्कराका ही दान करना चाहिये; ऐसा करनेवाला मनुष्य दीर्घजीवी होता है"
         },
         {
           "number": 8,
           "sanskrit": "तृतीयादिवसे देव्यै दुग्धं पूजनकर्मणि । क्षीरं दत्त्वा द्विजाग्र्याय सर्वदुःखातिगो भवेत् ॥ ८ ॥",
-          "transliteration": "tṛtīyādivase devyai dugdhaṃ pūjanakarmaṇi | kṣīraṃ dattvā dvijāgryāya sarvaduḥkhātigo bhavet || 8 ||"
+          "transliteration": "tṛtīyādivase devyai dugdhaṃ pūjanakarmaṇi | kṣīraṃ dattvā dvijāgryāya sarvaduḥkhātigo bhavet || 8 ||",
+          "hindi": "तृतीया तिथिको भगवतीके पूजनकर्ममें उन्हें दुग्ध अर्पण करना चाहिये और श्रेष्ठ ब्राह्मणको दुग्धका दान करना चाहिये; ऐसा करनेसे मनुष्य सभी प्रकारके दु:खोंसे मुक्त हो जाता है"
         },
         {
           "number": 9,
           "sanskrit": "चतुर्थ्यां पूजनेऽपूपा देया देव्यै द्विजाय च । अपूपा एव दातव्या न विघ्नैरभिभूयते ॥ ९ ॥",
-          "transliteration": "caturthyāṃ pūjane'pūpā deyā devyai dvijāya ca | apūpā eva dātavyā na vighnairabhibhūyate || 9 ||"
+          "transliteration": "caturthyāṃ pūjane'pūpā deyā devyai dvijāya ca | apūpā eva dātavyā na vighnairabhibhūyate || 9 ||",
+          "hindi": "चतुर्थीके दिन पूआ अर्पण करके देवीका पूजन करना चाहिये और ब्राह्मणको पूआ ही दान करना चाहिये; ऐसा करनेसे मनुष्य विघ्न-बाधाओंसे आक्रान्त नहीं होता"
         },
         {
           "number": 10,
           "sanskrit": "पञ्चम्यां कदलीजातं फलं देव्यै निवेदयेत् । तदेव ब्राह्मणे देयं मेधावान्पुरुषो भवेत् ॥ १० ॥",
-          "transliteration": "pañcamyāṃ kadalījātaṃ phalaṃ devyai nivedayet | tadeva brāhmaṇe deyaṃ medhāvānpuruṣo bhavet || 10 ||"
+          "transliteration": "pañcamyāṃ kadalījātaṃ phalaṃ devyai nivedayet | tadeva brāhmaṇe deyaṃ medhāvānpuruṣo bhavet || 10 ||",
+          "hindi": "पंचमी तिथिको भगवतीका पूजन करके उन्हें केला अर्पण करे और ब्राह्मणको केलेका ही दान करे; ऐसा करनेसे मनुष्य बुद्धिमान् होता है"
         },
         {
           "number": 11,
           "sanskrit": "षष्ठीतिथौ मधु प्रोक्तं देवीपूजनकर्मणि । ब्राह्मणाय च दातव्यं मधु कान्तिर्यतो भवेत् ॥ ११ ॥",
-          "transliteration": "ṣaṣṭhītithau madhu proktaṃ devīpūjanakarmaṇi | brāhmaṇāya ca dātavyaṃ madhu kāntiryato bhavet || 11 ||"
+          "transliteration": "ṣaṣṭhītithau madhu proktaṃ devīpūjanakarmaṇi | brāhmaṇāya ca dātavyaṃ madhu kāntiryato bhavet || 11 ||",
+          "hindi": "षष्ठी तिथिको भगवतीके पूजनकर्ममें मधुको प्रधान बताया गया है। ब्राह्मणको मधु ही देना चाहिये; ऐसा करनेसे मनुष्य दिव्य कान्तिवाला हो जाता है"
         },
         {
           "number": 12,
           "sanskrit": "सप्तम्यां गुडनैवेद्यं देव्यै दत्त्वा द्विजाय च । गुडं दत्त्वा शोकहीनो जायते द्विजसत्तम ॥ १२ ॥",
-          "transliteration": "saptamyāṃ guḍanaivedyaṃ devyai dattvā dvijāya ca | guḍaṃ dattvā śokahīno jāyate dvijasattama || 12 ||"
+          "transliteration": "saptamyāṃ guḍanaivedyaṃ devyai dattvā dvijāya ca | guḍaṃ dattvā śokahīno jāyate dvijasattama || 12 ||",
+          "hindi": "हे मुनिश्रेष्ठ! सप्तमी तिथिको भगवतीको गुड़का नैवेद्य अर्पण करके ब्राह्मणको गुड़का दान करनेसे मनुष्य सभी प्रकारके शोकोंसे मुक्त हो जाता है"
         },
         {
           "number": 13,
           "sanskrit": "नारिकेलमथाष्टम्यां देव्यै नैवेद्यमर्पयेत् । ब्राह्मणाय प्रदातव्यं तापहीनो भवेन्नरः ॥ १३ ॥",
-          "transliteration": "nārikelamathāṣṭamyāṃ devyai naivedyamarpayet | brāhmaṇāya pradātavyaṃ tāpahīno bhavennaraḥ || 13 ||"
+          "transliteration": "nārikelamathāṣṭamyāṃ devyai naivedyamarpayet | brāhmaṇāya pradātavyaṃ tāpahīno bhavennaraḥ || 13 ||",
+          "hindi": "अष्टमीको भगवतीको नारियलका नैवेद्य अर्पित करना चाहिये और ब्राह्मणको भी नारियलका दान करना चाहिये; ऐसा करनेवाला मनुष्य सभी सन्तापोंसे रहित हो जाता है"
         },
         {
           "number": 14,
           "sanskrit": "नवम्यां लाजमम्बायै चार्पयित्वा द्विजाय च । दत्त्वा सुखाधिको भूयादिह लोके परत्र च ॥ १४ ॥",
-          "transliteration": "navamyāṃ lājamambāyai cārpayitvā dvijāya ca | dattvā sukhādhiko bhūyādiha loke paratra ca || 14 ||"
+          "transliteration": "navamyāṃ lājamambāyai cārpayitvā dvijāya ca | dattvā sukhādhiko bhūyādiha loke paratra ca || 14 ||",
+          "hindi": "नवमीके दिन भगवतीको लावा अर्पण करनेके बाद ब्राह्मणको भी लावाका दान करनेसे मनुष्य इस लोकमें तथा परलोकमें परम सुखी रहता है"
         },
         {
           "number": 15,
           "sanskrit": "दशम्यामर्पयित्वा तु देव्यै कृष्णतिलान्मुने । ब्राह्मणाय प्रदत्त्वा तु यमलोकाद्भयं न हि ॥ १५ ॥",
-          "transliteration": "daśamyāmarpayitvā tu devyai kṛṣṇatilānmune | brāhmaṇāya pradattvā tu yamalokādbhayaṃ na hi || 15 ||"
+          "transliteration": "daśamyāmarpayitvā tu devyai kṛṣṇatilānmune | brāhmaṇāya pradattvā tu yamalokādbhayaṃ na hi || 15 ||",
+          "hindi": "हे मुने! दशमी तिथिको भगवतीको काले तिल अर्पित करने और ब्राह्मणको उसी तिलका दान करनेसे मनुष्यको यमलोकका भय नहीं रह जाता"
         },
         {
           "number": 16,
           "sanskrit": "एकादश्यां दधि तथा देव्यै चार्पयते तु यः । ददाति ब्राह्मणायैतद्देवीप्रियतमो भवेत् ॥ १६ ॥",
-          "transliteration": "ekādaśyāṃ dadhi tathā devyai cārpayate tu yaḥ | dadāti brāhmaṇāyaitaddevīpriyatamo bhavet || 16 ||"
+          "transliteration": "ekādaśyāṃ dadhi tathā devyai cārpayate tu yaḥ | dadāti brāhmaṇāyaitaddevīpriyatamo bhavet || 16 ||",
+          "hindi": "जो मनुष्य एकादशी तिथिको भगवतीको दधि अर्पित करता है और ब्राह्मणको भी दधि प्रदान करता है, वह देवीका परम प्रिय हो जाता है"
         },
         {
           "number": 17,
           "sanskrit": "द्वादश्यां पृथुकान्देव्यै दत्त्वाचार्याय यो ददेत् । तानेव च मुनिश्रेष्ठ स देवीप्रियतां व्रजेत् ॥ १७ ॥",
-          "transliteration": "dvādaśyāṃ pṛthukāndevyai dattvācāryāya yo dadet | tāneva ca muniśreṣṭha sa devīpriyatāṃ vrajet || 17 ||"
+          "transliteration": "dvādaśyāṃ pṛthukāndevyai dattvācāryāya yo dadet | tāneva ca muniśreṣṭha sa devīpriyatāṃ vrajet || 17 ||",
+          "hindi": "हे मुनिश्रेष्ठ! जो द्वादशीके दिन भगवतीको चिउड़ेका भोग लगाकर आचार्यको भी चिउड़ेका दान करता है, वह भगवतीका प्रियपात्र बन जाता है"
         },
         {
           "number": 18,
           "sanskrit": "त्रयोदश्यां च दुर्गायै चणकान्प्रददाति च । तानेव दत्त्वा विप्राय प्रजासन्ततिमान्भवेत् ॥ १८ ॥",
-          "transliteration": "trayodaśyāṃ ca durgāyai caṇakānpradadāti ca | tāneva dattvā viprāya prajāsantatimānbhavet || 18 ||"
+          "transliteration": "trayodaśyāṃ ca durgāyai caṇakānpradadāti ca | tāneva dattvā viprāya prajāsantatimānbhavet || 18 ||",
+          "hindi": "जो त्रयोदशीको भगवतीको चना अर्पित करता है और ब्राह्मणको चनेका दान करता है, वह प्रजाओं तथा सन्तानोंसे सदा सम्पन्न रहता है"
         },
         {
           "number": 19,
           "sanskrit": "चतुर्दश्यां च देवर्षे देव्यै सक्तून्प्रयच्छति । तानेव दद्याद्विप्राय शिवस्य दयितो भवेत् ॥ १९ ॥",
-          "transliteration": "caturdaśyāṃ ca devarṣe devyai saktūnprayacchati | tāneva dadyādviprāya śivasya dayito bhavet || 19 ||"
+          "transliteration": "caturdaśyāṃ ca devarṣe devyai saktūnprayacchati | tāneva dadyādviprāya śivasya dayito bhavet || 19 ||",
+          "hindi": "हे देवर्षे! जो मनुष्य चतुर्दशीके दिन भगवतीको सत्तू अर्पण करता है और ब्राह्मणको भी सत्तू प्रदान करता है, वह भगवान् शंकरका प्रिय हो जाता है"
         },
         {
           "number": 20,
           "sanskrit": "पायसं पूर्णिमातिथ्यामपर्णायै प्रयच्छति । ददाति च द्विजाग्र्याय पितृनुद्धरतेऽखिलान् ॥ २० ॥",
-          "transliteration": "pāyasaṃ pūrṇimātithyāmaparṇāyai prayacchati | dadāti ca dvijāgryāya pitṛnuddharate'khilān || 20 ||"
+          "transliteration": "pāyasaṃ pūrṇimātithyāmaparṇāyai prayacchati | dadāti ca dvijāgryāya pitṛnuddharate'khilān || 20 ||",
+          "hindi": "जो पूर्णिमा तिथिको भगवती अपर्णाको खीरका भोग लगाता है और श्रेष्ठ ब्राह्मणको खीर प्रदान करता है, वह अपने सभी पितरोंका उद्धार कर देता है"
         },
         {
           "number": 21,
           "sanskrit": "तत्तिथौ हवनं प्रोक्तं देवीप्रीत्यै महामुने । तत्तत्तिथ्युक्तवस्तूनामशेषारिष्टनाशनम् ॥ २१ ॥",
-          "transliteration": "tattithau havanaṃ proktaṃ devīprītyai mahāmune | tattattithyuktavastūnāmaśeṣāriṣṭanāśanam || 21 ||"
+          "transliteration": "tattithau havanaṃ proktaṃ devīprītyai mahāmune | tattattithyuktavastūnāmaśeṣāriṣṭanāśanam || 21 ||",
+          "hindi": "हे महामुने! देवीकी प्रसन्नताके लिये उसी तिथिको हवन भी बताया गया है। जिस तिथिमें नैवेद्यके लिये जो वस्तु बतायी गयी है, उसी वस्तुसे उन-उन तिथियोंमें हवन करनेसे सभी विपत्तियोंका नाश हो जाता है"
         },
         {
           "number": 22,
           "sanskrit": "रविवारे पायसं च नैवेद्यं परिकीर्तितम् । सोमवारे पयः प्रोक्तं भौमे च कदलीफलम् ॥ २२ ॥",
-          "transliteration": "ravivāre pāyasaṃ ca naivedyaṃ parikīrtitam | somavāre payaḥ proktaṃ bhaume ca kadalīphalam || 22 ||"
+          "transliteration": "ravivāre pāyasaṃ ca naivedyaṃ parikīrtitam | somavāre payaḥ proktaṃ bhaume ca kadalīphalam || 22 ||",
+          "hindi": "रविवारको खीरका नैवेद्य अर्पण करना चाहिये। सोमवारको दूध और मंगलवारको केलेका भोग लगाना बताया गया है"
         },
         {
           "number": 23,
@@ -84664,7 +84762,8 @@
         {
           "number": 1,
           "sanskrit": "नारद उवाच । नारायण धराधार सर्वपालनकारण । भवतोदीरितं देवीचरितं पापनाशनम् ॥ १ ॥",
-          "transliteration": "nārada uvāca | nārāyaṇa dharādhāra sarvapālanakāraṇa | bhavatodīritaṃ devīcaritaṃ pāpanāśanam || 1 ||"
+          "transliteration": "nārada uvāca | nārāyaṇa dharādhāra sarvapālanakāraṇa | bhavatodīritaṃ devīcaritaṃ pāpanāśanam || 1 ||",
+          "hindi": "नारदजी बोले—हे नारायण! हे धराके आधार! हे सर्वपालनकारण! आपने पापोंका नाश करनेवाले देवीचरित्रका वर्णन कर दिया"
         },
         {
           "number": 2,
@@ -84795,7 +84894,8 @@
         {
           "number": 1,
           "sanskrit": "श्रीदेव्युवाच । भूमिपाल महाबाहो सर्वमेतद्भविष्यति । यत्त्वया प्रार्थितं तत्ते ददामि मनुजाधिप ॥ १ ॥",
-          "transliteration": "śrīdevyuvāca | bhūmipāla mahābāho sarvametadbhaviṣyati | yattvayā prārthitaṃ tatte dadāmi manujādhipa || 1 ||"
+          "transliteration": "śrīdevyuvāca | bhūmipāla mahābāho sarvametadbhaviṣyati | yattvayā prārthitaṃ tatte dadāmi manujādhipa || 1 ||",
+          "hindi": "श्रीदेवी बोलीं—हे भूमिपाल! हे महाबाहो! हे मनुजाधिप! यह सब पूर्ण होगा। तुमने जो-जो माँगा है, वह मैं तुम्हें दे रही हूँ"
         },
         {
           "number": 2,
@@ -84810,17 +84910,20 @@
         {
           "number": 4,
           "sanskrit": "एवं वरान्महादेवी तस्मै दत्त्वा महात्मने । पश्यतस्तु मनोरेव जगाम विन्ध्यपर्वतम् ॥ ४ ॥",
-          "transliteration": "evaṃ varānmahādevī tasmai dattvā mahātmane | paśyatastu manoreva jagāma vindhyaparvatam || 4 ||"
+          "transliteration": "evaṃ varānmahādevī tasmai dattvā mahātmane | paśyatastu manoreva jagāma vindhyaparvatam || 4 ||",
+          "hindi": "इस प्रकार उन महात्मा मनुको वर देकर महादेवी जगदम्बा उनके देखते-देखते विन्ध्यपर्वतपर चली गयीं"
         },
         {
           "number": 5,
           "sanskrit": "योऽसौ विन्ध्याचलो रुद्धः कुम्भोद्भवमहर्षिणा । भानुमार्गावरोधार्थं प्रवृत्तो गगनं स्पृशन् ॥ ५ ॥",
-          "transliteration": "yo'sau vindhyācalo ruddhaḥ kumbhodbhavamaharṣiṇā | bhānumārgāvarodhārthaṃ pravṛtto gaganaṃ spṛśan || 5 ||"
+          "transliteration": "yo'sau vindhyācalo ruddhaḥ kumbhodbhavamaharṣiṇā | bhānumārgāvarodhārthaṃ pravṛtto gaganaṃ spṛśan || 5 ||",
+          "hindi": "यह वही विन्ध्याचल है, जो सूर्यके मार्गका अवरोध करनेके लिये आकाशको छूता हुआ ऊपरकी ओर बढ़नेके लिये प्रवृत्त था और महर्षि अगस्त्यने उसे रोक दिया था"
         },
         {
           "number": 6,
           "sanskrit": "सा विन्ध्यवासिनी विष्णोरनुजा वरदेश्वरी । बभूव पूज्या लोकानां सर्वेषां मुनिसत्तम ॥ ६ ॥",
-          "transliteration": "sā vindhyavāsinī viṣṇoranujā varadeśvarī | babhūva pūjyā lokānāṃ sarveṣāṃ munisattama || 6 ||"
+          "transliteration": "sā vindhyavāsinī viṣṇoranujā varadeśvarī | babhūva pūjyā lokānāṃ sarveṣāṃ munisattama || 6 ||",
+          "hindi": "हे मुनिश्रेष्ठ! वरदायिनी तथा परमेश्वरी वे विष्णुभगिनी विन्ध्यवासिनी सभी लोगोंके लिये पूज्य हो गयीं"
         },
         {
           "number": 7,
@@ -84835,7 +84938,8 @@
         {
           "number": 9,
           "sanskrit": "न हि तृप्यामहे साधो त्वदास्यगलितामृतम् । देव्याश्चरित्ररूपाख्यं पीत्वा तृष्णा प्रवर्धते ॥ ९ ॥",
-          "transliteration": "na hi tṛpyāmahe sādho tvadāsyagalitāmṛtam | devyāścaritrarūpākhyaṃ pītvā tṛṣṇā pravardhate || 9 ||"
+          "transliteration": "na hi tṛpyāmahe sādho tvadāsyagalitāmṛtam | devyāścaritrarūpākhyaṃ pītvā tṛṣṇā pravardhate || 9 ||",
+          "hindi": "हे साधो! आपके मुखसे नि:सृत देवीचरित्ररूपी अमृतका पान करते हुए हम सब तृप्त नहीं हो रहे हैं, अपितु तृष्णा बढ़ती ही जा रही है"
         },
         {
           "number": 10,
@@ -84860,7 +84964,8 @@
         {
           "number": 14,
           "sanskrit": "एतादृशे विन्ध्यनगे कदाचित्पर्यटन् महीम् । देवर्षिः परमप्रीतो जगाम स्वेच्छया मुनिः ॥ १४ ॥",
-          "transliteration": "etādṛśe vindhyanage kadācitparyaṭan mahīm | devarṣiḥ paramaprīto jagāma svecchayā muniḥ || 14 ||"
+          "transliteration": "etādṛśe vindhyanage kadācitparyaṭan mahīm | devarṣiḥ paramaprīto jagāma svecchayā muniḥ || 14 ||",
+          "hindi": "किसी समय देवर्षि नारद परम प्रसन्न होकर इच्छापूर्वक पृथ्वीलोकमें विचरण करते हुए इस प्रकारके विन्ध्यपर्वतपर पहुँच गये"
         },
         {
           "number": 15,
@@ -87435,22 +87540,26 @@
         {
           "number": 3,
           "sanskrit": "अधुना श्रोतुमिच्छामि येन प्रीणाति सर्वदा । स्वभक्तान्परिपुष्णाति तमाचारं वद प्रभो ॥ ३ ॥",
-          "transliteration": "adhunā śrotumicchāmi yena prīṇāti sarvadā | svabhaktānparipuṣṇāti tamācāraṃ vada prabho || 3 ||"
+          "transliteration": "adhunā śrotumicchāmi yena prīṇāti sarvadā | svabhaktānparipuṣṇāti tamācāraṃ vada prabho || 3 ||",
+          "hindi": "हे प्रभो! अब मैं उस आचारके विषयमें सुनना चाहता हूँ, जिससे भगवती अपने भक्तोंपर सदा प्रसन्न होती हैं तथा उनका पालन-पोषण करती हैं, उसे बताइये"
         },
         {
           "number": 4,
           "sanskrit": "श्रीनारायण उवाच । शृणु नारद तत्त्वज्ञ सदाचारविधिक्रमम् । यदनुष्ठानमात्रेण देवी प्रीणाति सर्वदा ॥ ४ ॥",
-          "transliteration": "śrīnārāyaṇa uvāca | śṛṇu nārada tattvajña sadācāravidhikramam | yadanuṣṭhānamātreṇa devī prīṇāti sarvadā || 4 ||"
+          "transliteration": "śrīnārāyaṇa uvāca | śṛṇu nārada tattvajña sadācāravidhikramam | yadanuṣṭhānamātreṇa devī prīṇāti sarvadā || 4 ||",
+          "hindi": "श्रीनारायण बोले—हे तत्त्वोंके ज्ञाता नारद! जिस सदाचारके अनुष्ठानसे देवी सर्वदा प्रसन्न रहती हैं, उसकी विधिके विषयमें अब आप क्रमसे सुनिये"
         },
         {
           "number": 5,
           "sanskrit": "प्रातरुत्थाय कर्तव्यं यद् द्विजेन दिने दिने । तदहं सम्प्रवक्ष्यामि द्विजानामुपकारकम् ॥ ५ ॥",
-          "transliteration": "prātarutthāya kartavyaṃ yad dvijena dine dine | tadahaṃ sampravakṣyāmi dvijānāmupakārakam || 5 ||"
+          "transliteration": "prātarutthāya kartavyaṃ yad dvijena dine dine | tadahaṃ sampravakṣyāmi dvijānāmupakārakam || 5 ||",
+          "hindi": "प्रात:काल उठकर द्विजको प्रतिदिन जिस आचारका पालन करना चाहिये; अब मैं द्विजोंका उपकार करनेवाले उस आचारका भलीभाँति वर्णन करूँगा"
         },
         {
           "number": 6,
           "sanskrit": "उदयास्तमयं यावद् द्विजः सत्कर्मकृद्भवेत् । नित्यनैमित्तिकैर्युक्तः काम्यैश्चान्यैरगर्हितैः ॥ ६ ॥",
-          "transliteration": "udayāstamayaṃ yāvad dvijaḥ satkarmakṛdbhavet | nityanaimittikairyuktaḥ kāmyaiścānyairagarhitaiḥ || 6 ||"
+          "transliteration": "udayāstamayaṃ yāvad dvijaḥ satkarmakṛdbhavet | nityanaimittikairyuktaḥ kāmyaiścānyairagarhitaiḥ || 6 ||",
+          "hindi": "द्विजको सूर्योदयसे लेकर सूर्यास्तपर्यन्त नित्य, नैमित्तिक तथा अनिन्द्य काम्य कर्मोंसे युक्त होकर सत्कर्मोंमें संलग्न रहना चाहिये"
         },
         {
           "number": 7,
@@ -87465,7 +87574,8 @@
         {
           "number": 9,
           "sanskrit": "आचारः प्रथमो धर्मः श्रुत्युक्तः स्मार्त एव च । तस्मादस्मिन्समायुक्तो नित्यं स्यादात्मनो द्विजः ॥ ९ ॥",
-          "transliteration": "ācāraḥ prathamo dharmaḥ śrutyuktaḥ smārta eva ca | tasmādasminsamāyukto nityaṃ syādātmano dvijaḥ || 9 ||"
+          "transliteration": "ācāraḥ prathamo dharmaḥ śrutyuktaḥ smārta eva ca | tasmādasminsamāyukto nityaṃ syādātmano dvijaḥ || 9 ||",
+          "hindi": "आचार ही प्रथम (मुख्य) धर्म है—ऐसा श्रुतियों तथा स्मृतियोंमें कहा गया है, अतएव द्विजको चाहिये कि वह अपने कल्याणके लिये इस सदाचारके पालनमें नित्य संलग्न रहे"
         },
         {
           "number": 10,
@@ -87480,82 +87590,98 @@
         {
           "number": 11,
           "sanskrit": "आचारः परमो धर्मो नृणां कल्याणकारकः । इह लोके सुखी भूत्वा परत्र लभते सुखम् ॥ ११ ॥",
-          "transliteration": "ācāraḥ paramo dharmo nṛṇāṃ kalyāṇakārakaḥ | iha loke sukhī bhūtvā paratra labhate sukham || 11 ||"
+          "transliteration": "ācāraḥ paramo dharmo nṛṇāṃ kalyāṇakārakaḥ | iha loke sukhī bhūtvā paratra labhate sukham || 11 ||",
+          "hindi": "आचार मनुष्योंका परम धर्म है तथा उनके लिये कल्याणप्रद है। सदाचारी व्यक्ति इस लोकमें सुखी रहकर परलोकमें भी सुख प्राप्त करता है"
         },
         {
           "number": 12,
           "sanskrit": "अज्ञानान्धजनानां तु मोहितैर्भ्रामितात्मनाम् । धर्मरूपो महादीपो मुक्तिमार्गप्रदर्शकः ॥ १२ ॥",
-          "transliteration": "ajñānāndhajanānāṃ tu mohitairbhrāmitātmanām | dharmarūpo mahādīpo muktimārgapradarśakaḥ || 12 ||"
+          "transliteration": "ajñānāndhajanānāṃ tu mohitairbhrāmitātmanām | dharmarūpo mahādīpo muktimārgapradarśakaḥ || 12 ||",
+          "hindi": "मोहसे भ्रमित चित्तवाले तथा अज्ञानान्धकारमें भटकनेवाले लोगोंके लिये यह आचार धर्मरूपी महान् दीपक बनकर उन्हें मुक्तिका मार्ग दिखाता है"
         },
         {
           "number": 13,
           "sanskrit": "आचारात्प्राप्यते श्रैष्ठ्यमाचारात्कर्म लभ्यते । कर्मणो जायते ज्ञानमिति वाक्यं मनोः स्मृतम् ॥ १३ ॥",
-          "transliteration": "ācārātprāpyate śraiṣṭhyamācārātkarma labhyate | karmaṇo jāyate jñānamiti vākyaṃ manoḥ smṛtam || 13 ||"
+          "transliteration": "ācārātprāpyate śraiṣṭhyamācārātkarma labhyate | karmaṇo jāyate jñānamiti vākyaṃ manoḥ smṛtam || 13 ||",
+          "hindi": "आचारसे श्रेष्ठता प्राप्त होती है, आचारसे ही सत्कर्मोंमें प्रवृत्ति होती है और सत्कर्मसे ज्ञान उत्पन्न होता है—मनुका यह प्रसिद्ध वचन है"
         },
         {
           "number": 14,
           "sanskrit": "सर्वधर्मवरिष्ठोऽयमाचारः परमं तपः । तदेव ज्ञानमुद्दिष्टं तेन सर्वं प्रसाध्यते ॥ १४ ॥",
-          "transliteration": "sarvadharmavariṣṭho'yamācāraḥ paramaṃ tapaḥ | tadeva jñānamuddiṣṭaṃ tena sarvaṃ prasādhyate || 14 ||"
+          "transliteration": "sarvadharmavariṣṭho'yamācāraḥ paramaṃ tapaḥ | tadeva jñānamuddiṣṭaṃ tena sarvaṃ prasādhyate || 14 ||",
+          "hindi": "यह आचार सभी धर्मोंसे श्रेष्ठ तथा परम तप है। उसीको ज्ञान भी कहा गया है। उसीसे सब कुछ सिद्ध कर लिया जाता है"
         },
         {
           "number": 15,
           "sanskrit": "यस्त्वाचारविहीनोऽत्र वर्तते द्विजसत्तमः । स शूद्रवद् बहिष्कार्यो यथा शूद्रस्तथैव सः ॥ १५ ॥",
-          "transliteration": "yastvācāravihīno'tra vartate dvijasattamaḥ | sa śūdravad bahiṣkāryo yathā śūdrastathaiva saḥ || 15 ||"
+          "transliteration": "yastvācāravihīno'tra vartate dvijasattamaḥ | sa śūdravad bahiṣkāryo yathā śūdrastathaiva saḥ || 15 ||",
+          "hindi": "द्विजश्रेष्ठ होकर भी जो इस लोकमें आचारसे रहित है, वह शूद्रकी भाँति बहिष्कारके योग्य है; क्योंकि जैसा शूद्र है वैसा ही वह भी है"
         },
         {
           "number": 16,
           "sanskrit": "आचारो द्विविधः प्रोक्तः शास्त्रीयो लौकिकस्तथा । उभावपि प्रकर्तव्यौ न त्याज्यौ शुभमिच्छता ॥ १६ ॥",
-          "transliteration": "ācāro dvividhaḥ proktaḥ śāstrīyo laukikastathā | ubhāvapi prakartavyau na tyājyau śubhamicchatā || 16 ||"
+          "transliteration": "ācāro dvividhaḥ proktaḥ śāstrīyo laukikastathā | ubhāvapi prakartavyau na tyājyau śubhamicchatā || 16 ||",
+          "hindi": "आचार शास्त्रीय तथा लौकिक-भेदसे दो प्रकारका कहा गया है। अपना कल्याण चाहनेवालेको इन दोनों ही आचारोंका सम्यक् पालन करना चाहिये और उनसे कभी भी विरत नहीं होना चाहिये"
         },
         {
           "number": 17,
           "sanskrit": "ग्रामधर्मा जातिधर्मा देशधर्माः कुलोद्भवाः । परिग्राह्या नृभिः सर्वैर्नैव ताँल्लङ्घयेन्मुने ॥ १७ ॥",
-          "transliteration": "grāmadharmā jātidharmā deśadharmāḥ kulodbhavāḥ | parigrāhyā nṛbhiḥ sarvairnaiva tā~llaṅghayenmune || 17 ||"
+          "transliteration": "grāmadharmā jātidharmā deśadharmāḥ kulodbhavāḥ | parigrāhyā nṛbhiḥ sarvairnaiva tā~llaṅghayenmune || 17 ||",
+          "hindi": "हे मुने! सभी मनुष्योंको ग्रामधर्म, जातिधर्म, देशधर्म तथा कुलधर्मोंका भलीभाँति पालन करना चाहिये, उनका कभी उल्लंघन नहीं करना चाहिये"
         },
         {
           "number": 18,
           "sanskrit": "दुराचारो हि पुरुषो लोके भवति निन्दितः । दुःखभागी च सततं व्याधिना व्याप्त एव च ॥ १८ ॥",
-          "transliteration": "durācāro hi puruṣo loke bhavati ninditaḥ | duḥkhabhāgī ca satataṃ vyādhinā vyāpta eva ca || 18 ||"
+          "transliteration": "durācāro hi puruṣo loke bhavati ninditaḥ | duḥkhabhāgī ca satataṃ vyādhinā vyāpta eva ca || 18 ||",
+          "hindi": "दुराचारी पुरुष लोकमें निन्दित होता है, दु:ख प्राप्त करता है और रोगसे सदा ग्रस्त रहता है"
         },
         {
           "number": 19,
           "sanskrit": "परित्यजेदर्थकामौ यौ स्यातां धर्मवर्जितौ । धर्ममप्यसुखोदर्कं लोकविद्विष्टमेव च ॥ १९ ॥",
-          "transliteration": "parityajedarthakāmau yau syātāṃ dharmavarjitau | dharmamapyasukhodarkaṃ lokavidviṣṭameva ca || 19 ||"
+          "transliteration": "parityajedarthakāmau yau syātāṃ dharmavarjitau | dharmamapyasukhodarkaṃ lokavidviṣṭameva ca || 19 ||",
+          "hindi": "जो अर्थ तथा काम धर्मसे रहित हों, उनका त्याग कर देना चाहिये। साथ ही लोकविरुद्ध धर्मको भी छोड़ देना चाहिये; क्योंकि वह परिणाममें दु:खदायी होता है"
         },
         {
           "number": 20,
           "sanskrit": "नारद उवाच । बहुत्वादिह शास्त्राणां निश्चयः स्यात्कथं मुने । कियत्प्रमाणं तद् ब्रूहि धर्ममार्गविनिर्णये ॥ २० ॥",
-          "transliteration": "nārada uvāca | bahutvādiha śāstrāṇāṃ niścayaḥ syātkathaṃ mune | kiyatpramāṇaṃ tad brūhi dharmamārgavinirṇaye || 20 ||"
+          "transliteration": "nārada uvāca | bahutvādiha śāstrāṇāṃ niścayaḥ syātkathaṃ mune | kiyatpramāṇaṃ tad brūhi dharmamārgavinirṇaye || 20 ||",
+          "hindi": "नारदजी बोले—हे मुने! जगत्में तो शास्त्रोंका बाहुल्य है; ऐसी स्थितिमें कुछ भी कैसे निश्चित किया जाय। धर्ममार्गका निर्णय करनेवाले कितने प्रमाण हैं; यह मुझे बताइये"
         },
         {
           "number": 21,
           "sanskrit": "श्रीनारायण उवाच । श्रुतिस्मृती उभे नेत्रे पुराणं हृदयं स्मृतम् । एतत्त्रयोक्त एव स्याद्धर्मो नान्यत्र कुत्रचित् ॥ २१ ॥",
-          "transliteration": "śrīnārāyaṇa uvāca | śrutismṛtī ubhe netre purāṇaṃ hṛdayaṃ smṛtam | etattrayokta eva syāddharmo nānyatra kutracit || 21 ||"
+          "transliteration": "śrīnārāyaṇa uvāca | śrutismṛtī ubhe netre purāṇaṃ hṛdayaṃ smṛtam | etattrayokta eva syāddharmo nānyatra kutracit || 21 ||",
+          "hindi": "श्रीनारायण बोले—[हे नारद!] श्रुति तथा स्मृति दोनों नेत्र हैं तथा पुराणको हृदय कहा गया है। इन तीनोंमें जो भी कहा गया है, वही धर्म है, इसके अतिरिक्त कहीं भी नहीं"
         },
         {
           "number": 22,
           "sanskrit": "विरोधो यत्र तु भवेत्त्रयाणां च परस्परम् । श्रुतिस्तत्र प्रमाणं स्याद् द्वयोर्द्वैधे स्मृतिर्वरा ॥ २२ ॥",
-          "transliteration": "virodho yatra tu bhavettrayāṇāṃ ca parasparam | śrutistatra pramāṇaṃ syād dvayordvaidhe smṛtirvarā || 22 ||"
+          "transliteration": "virodho yatra tu bhavettrayāṇāṃ ca parasparam | śrutistatra pramāṇaṃ syād dvayordvaidhe smṛtirvarā || 22 ||",
+          "hindi": "इन तीनोंमें जहाँ परस्पर विरोध हो, वहाँ श्रुतिको प्रमाण मानना चाहिये। इसी प्रकार स्मृति तथा पुराणमें विरोध होनेपर स्मृति श्रेष्ठ है"
         },
         {
           "number": 23,
           "sanskrit": "श्रुतिद्वैधं भवेद्यत्र तत्र धर्मावुभौ स्मृतौ । स्मृतिद्वैधं तु यत्र स्याद्विषयः कल्प्यतां पृथक् ॥ २३ ॥",
-          "transliteration": "śrutidvaidhaṃ bhavedyatra tatra dharmāvubhau smṛtau | smṛtidvaidhaṃ tu yatra syādviṣayaḥ kalpyatāṃ pṛthak || 23 ||"
+          "transliteration": "śrutidvaidhaṃ bhavedyatra tatra dharmāvubhau smṛtau | smṛtidvaidhaṃ tu yatra syādviṣayaḥ kalpyatāṃ pṛthak || 23 ||",
+          "hindi": "श्रुतिमें जहाँ दो वचनोंमें परस्पर विरोध हो तो वहाँ वे दोनों ही वचन धर्म हैं। यदि स्मृतिमें द्वैध-स्थिति हो जाय तो प्रसंगानुसार पृथक्-पृथक् विषय कल्पित कर लेने चाहिये"
         },
         {
           "number": 24,
           "sanskrit": "पुराणेषु क्वचिच्चैव तन्त्रदृष्टं यथातथम् । धर्मं वदन्ति तं धर्मं गृह्णीयान्न कथञ्चन ॥ २४ ॥",
-          "transliteration": "purāṇeṣu kvaciccaiva tantradṛṣṭaṃ yathātatham | dharmaṃ vadanti taṃ dharmaṃ gṛhṇīyānna kathañcana || 24 ||"
+          "transliteration": "purāṇeṣu kvaciccaiva tantradṛṣṭaṃ yathātatham | dharmaṃ vadanti taṃ dharmaṃ gṛhṇīyānna kathañcana || 24 ||",
+          "hindi": "पुराणोंमें कही-कहीं तन्त्र भी सूक्ष्मरूपसे व्याख्यायित किये गये हैं। जिसे धर्म बताया गया है, उसीको धर्मरूपसे ग्रहण करना चाहिये, किसी अन्यको किसी भी तरह नहीं"
         },
         {
           "number": 25,
           "sanskrit": "वेदाविरोधि चेत्तन्त्रं तत्प्रमाणं न संशयः । प्रत्यक्षश्रुतिरुद्धं यत्तत्प्रमाणं भवेन्न च ॥ २५ ॥",
-          "transliteration": "vedāvirodhi cettantraṃ tatpramāṇaṃ na saṃśayaḥ | pratyakṣaśrutiruddhaṃ yattatpramāṇaṃ bhavenna ca || 25 ||"
+          "transliteration": "vedāvirodhi cettantraṃ tatpramāṇaṃ na saṃśayaḥ | pratyakṣaśrutiruddhaṃ yattatpramāṇaṃ bhavenna ca || 25 ||",
+          "hindi": "यदि तन्त्रका वचन वेदविरोधी नहीं है तो उसकी प्रामाणिकतामें सन्देह नहीं है, किंतु श्रुतिसे जो प्रत्यक्ष विरुद्ध हो, वह वचन प्रमाण नहीं हो सकता"
         },
         {
           "number": 26,
           "sanskrit": "सर्वथा वेद एवासौ धर्ममार्गप्रमाणकः । तेनाविरुद्धं यत्किञ्चित्तत्प्रमाणं न चान्यथा ॥ २६ ॥",
-          "transliteration": "sarvathā veda evāsau dharmamārgapramāṇakaḥ | tenāviruddhaṃ yatkiñcittatpramāṇaṃ na cānyathā || 26 ||"
+          "transliteration": "sarvathā veda evāsau dharmamārgapramāṇakaḥ | tenāviruddhaṃ yatkiñcittatpramāṇaṃ na cānyathā || 26 ||",
+          "hindi": "वेद ही पूर्णरूपसे धर्म-मार्गके प्रमाण हैं। उस वेदराशिसे विरोध न रखनेवाला जो कुछ भी है, वही प्रमाण है; दूसरा नहीं"
         },
         {
           "number": 27,
@@ -93706,7 +93832,8 @@
         {
           "number": 1,
           "sanskrit": "नारद उवाच । सदाचारविधिर्देव भवता वर्णितः प्रभो । तस्याप्यतुलमाहात्म्यं सर्वपापविनाशनम् ॥ १ ॥",
-          "transliteration": "nārada uvāca | sadācāravidhirdeva bhavatā varṇitaḥ prabho | tasyāpyatulamāhātmyaṃ sarvapāpavināśanam || 1 ||"
+          "transliteration": "nārada uvāca | sadācāravidhirdeva bhavatā varṇitaḥ prabho | tasyāpyatulamāhātmyaṃ sarvapāpavināśanam || 1 ||",
+          "hindi": "नारदजी बोले—हे देव! हे प्रभो! आपने सदाचार-विधिका वर्णन कर दिया; उस विधिका माहात्म्य अत्यन्त अतुलनीय तथा सभी पापोंका नाश करनेवाला है"
         },
         {
           "number": 2,
@@ -93726,7 +93853,8 @@
         {
           "number": 5,
           "sanskrit": "सदाचारविधौ यश्च गायत्रीविधिरीरितः । तस्मिन्मुख्यतमं किं स्यात्किं वा पुण्याधिकप्रदम् ॥ ५ ॥",
-          "transliteration": "sadācāravidhau yaśca gāyatrīvidhirīritaḥ | tasminmukhyatamaṃ kiṃ syātkiṃ vā puṇyādhikapradam || 5 ||"
+          "transliteration": "sadācāravidhau yaśca gāyatrīvidhirīritaḥ | tasminmukhyatamaṃ kiṃ syātkiṃ vā puṇyādhikapradam || 5 ||",
+          "hindi": "सदाचारविधानके अन्तर्गत आपने जिस गायत्री-विधिका वर्णन किया है, उसमें मुख्यतम वस्तु क्या है और क्या करनेसे अधिक पुण्यकी प्राप्ति होती है?"
         },
         {
           "number": 6,
@@ -93741,12 +93869,14 @@
         {
           "number": 8,
           "sanskrit": "श्रीनारायणाय उवाच । कुर्यादन्यन्न वा कुर्यादनुष्ठानादिकं तथा । गायत्रीमात्रनिष्ठस्तु कृतकृत्यो भवेद्द्विजः ॥ ८ ॥",
-          "transliteration": "śrīnārāyaṇāya uvāca | kuryādanyanna vā kuryādanuṣṭhānādikaṃ tathā | gāyatrīmātraniṣṭhastu kṛtakṛtyo bhaveddvijaḥ || 8 ||"
+          "transliteration": "śrīnārāyaṇāya uvāca | kuryādanyanna vā kuryādanuṣṭhānādikaṃ tathā | gāyatrīmātraniṣṭhastu kṛtakṛtyo bhaveddvijaḥ || 8 ||",
+          "hindi": "श्रीनारायण बोले—द्विज कोई दूसरा अनुष्ठान आदि कर्म करे अथवा न करे, किंतु एकनिष्ठ होकर केवल गायत्रीका अनुष्ठान कर ले तो वह कृतकृत्य हो जाता है"
         },
         {
           "number": 9,
           "sanskrit": "सन्ध्यासु चार्घ्यदानं च गायत्रीजपमेव च । सहस्रत्रितयं कुर्वन्सुरैः पूज्यो भवेन्मुने ॥ ९ ॥",
-          "transliteration": "sandhyāsu cārghyadānaṃ ca gāyatrījapameva ca | sahasratritayaṃ kurvansuraiḥ pūjyo bhavenmune || 9 ||"
+          "transliteration": "sandhyāsu cārghyadānaṃ ca gāyatrījapameva ca | sahasratritayaṃ kurvansuraiḥ pūjyo bhavenmune || 9 ||",
+          "hindi": "हे मुने! तीनों संध्याओंमें भगवान् सूर्यको अर्घ्य प्रदान करनेवाला तथा तीन हजार गायत्रीजप करनेवाला पुरुष देवताओंका पूज्य हो जाता है"
         },
         {
           "number": 10,
@@ -93761,12 +93891,14 @@
         {
           "number": 11,
           "sanskrit": "यदक्षरैकसंसिद्धेः स्पर्धते ब्राह्मणोत्तमः । हरिशङ्करकञ्जोत्थसूर्यचन्द्रहुताशनैः ॥ ११ ॥",
-          "transliteration": "yadakṣaraikasaṃsiddheḥ spardhate brāhmaṇottamaḥ | hariśaṅkarakañjotthasūryacandrahutāśanaiḥ || 11 ||"
+          "transliteration": "yadakṣaraikasaṃsiddheḥ spardhate brāhmaṇottamaḥ | hariśaṅkarakañjotthasūryacandrahutāśanaiḥ || 11 ||",
+          "hindi": "उसके एक अक्षरकी भी सिद्धि हो जानेपर ब्राह्मणश्रेष्ठ ब्रह्मा, विष्णु, महेश, सूर्य, चन्द्र और अग्निके साथ स्पर्धा करनेयोग्य हो जाता है"
         },
         {
           "number": 12,
           "sanskrit": "अथातः श्रूयतां ब्रह्मन् वर्णऋष्यादिकांस्तथा । छन्दांसि देवतास्तद्वत्क्रमात्तत्त्वानि चैव हि ॥ १२ ॥",
-          "transliteration": "athātaḥ śrūyatāṃ brahman varṇaṛṣyādikāṃstathā | chandāṃsi devatāstadvatkramāttattvāni caiva hi || 12 ||"
+          "transliteration": "athātaḥ śrūyatāṃ brahman varṇaṛṣyādikāṃstathā | chandāṃsi devatāstadvatkramāttattvāni caiva hi || 12 ||",
+          "hindi": "हे ब्रह्मन्! अब आप गायत्रीके वर्ण, ऋषि, छन्द, देवता तथा तत्त्व आदिके विषयमें क्रमसे सुनिये"
         },
         {
           "number": 13,
@@ -93963,7 +94095,8 @@
         {
           "number": 4,
           "sanskrit": "श्रीनारायण उवाच । अस्त्येकं परमं गुह्यं गायत्रीकवचं तथा । पठनाद्धारणान्मर्त्यः सर्वपापैः प्रमुच्यते ॥ ४ ॥",
-          "transliteration": "śrīnārāyaṇa uvāca | astyekaṃ paramaṃ guhyaṃ gāyatrīkavacaṃ tathā | paṭhanāddhāraṇānmartyaḥ sarvapāpaiḥ pramucyate || 4 ||"
+          "transliteration": "śrīnārāyaṇa uvāca | astyekaṃ paramaṃ guhyaṃ gāyatrīkavacaṃ tathā | paṭhanāddhāraṇānmartyaḥ sarvapāpaiḥ pramucyate || 4 ||",
+          "hindi": "श्रीनारायण बोले—गायत्रीकवच नामक एक परम गोपनीय उपाय है, जिसके पाठ करने तथा धारण करनेसे मनुष्य समस्त पापोंसे मुक्त हो जाता है, उसके सभी मनोरथ पूर्ण हो जाते हैं तथा वह स्वयं देवीरूप हो जाता है"
         },
         {
           "number": 5,
@@ -93984,7 +94117,8 @@
         {
           "number": 8,
           "sanskrit": "चतुर्भिर्हृदयं प्रोक्तं त्रिभिर्वर्णेः शिरः स्मृतम् । चतुर्भिः स्याच्छिखा पश्चात् त्रिभिस्तु कवचं स्मृतम् ॥ ८ ॥",
-          "transliteration": "caturbhirhṛdayaṃ proktaṃ tribhirvarṇeḥ śiraḥ smṛtam | caturbhiḥ syācchikhā paścāt tribhistu kavacaṃ smṛtam || 8 ||"
+          "transliteration": "caturbhirhṛdayaṃ proktaṃ tribhirvarṇeḥ śiraḥ smṛtam | caturbhiḥ syācchikhā paścāt tribhistu kavacaṃ smṛtam || 8 ||",
+          "hindi": "चार वर्णोंसे इसका हृदय, तीन वर्णोंसे सिर, चार वर्णोंसे शिखा, तीन वर्णोंसे कवच, चार वर्णोंसे नेत्र तथा चार वर्णोंसे अस्त्र कहा गया है"
         },
         {
           "number": 9,

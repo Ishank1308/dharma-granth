@@ -1,0 +1,43 @@
+{
+  "note": "Harivamsha Purana: Hindi put back on verses that had none, from the extracted Gita Press sample in scripts/harivansh_extracted.json, matched by Sanskrit content and the printed verse number. Mechanical clean-up only. Every entry is in data/ocr-hindi-review.json under this queue and is withheld until proofread against the printed page.",
+  "source": {
+    "edition": "Gita Press Gorakhpur, हरिवंशपुराण (सानुवाद), book code 38",
+    "text": "scripts/harivansh_extracted.json (first verses of each part, extracted from the Gita Press e-book); built by scripts/refill-hindi-from-extracted.mjs"
+  },
+  "guards": [
+    "Sanskrit 3-gram Jaccard >= 0.6 and >= 0.15 above the next book verse",
+    "exactly one printed verse number (॥ N॥), at the end of the Hindi, equal to the book verse number",
+    "Hindi function words present and Sanskrit 3-gram overlap < 0.3 (not a copy of the shloka)",
+    "book verse had no Hindi and no hindiSeeVerse"
+  ],
+  "counts": {
+    "extractVerses": 105,
+    "lackingHindiBefore": 2589,
+    "filled": 3,
+    "skipped": {
+      "Sanskrit match weak or ambiguous": 99,
+      "verse already has Hindi": 2,
+      "printed verse number missing or not this verse": 1
+    }
+  },
+  "verses": {
+    "3:15": {
+      "extractPart": "1",
+      "extractNumber": 21,
+      "sanskritScore": 1,
+      "nextScore": 0.22
+    },
+    "3:59": {
+      "extractPart": "1",
+      "extractNumber": 26,
+      "sanskritScore": 1,
+      "nextScore": 0.2
+    },
+    "224:20": {
+      "extractPart": "3",
+      "extractNumber": 23,
+      "sanskritScore": 1,
+      "nextScore": 0.53
+    }
+  }
+}
