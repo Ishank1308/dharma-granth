@@ -1,0 +1,2891 @@
+{
+ "note": "Devi Bhagavata, Skandha 3: Hindi put back on the verse it belongs to, matched by Sanskrit content and the printed numbering. The Hindi is the printed Gita Press translation with mechanical clean-up only; where the edition groups verses, the paragraph is shown once on the first verse (hindiRange) and the others point to it (hindiSeeVerse). Every entry is in data/ocr-hindi-review.json under this queue and is withheld until proofread against the printed page.",
+ "source": {
+  "edition": "Gita Press Gorakhpur, श्रीमद्देवीभागवतमहापुराण (सचित्र, सरल हिन्दी-व्याख्यासहित), 2 खण्ड",
+  "text": "archive.org item \"21-devi-bhagavata-with-hindi-translation-vol-1-gitapress-2010\": the OCR text of the edition (\"21 Devi Bhagavata with Hindi Translation Vol 1 (Gitapress) 2010_djvu.txt\", 6,085,913 bytes), downloaded with the owner's approval on 2026-10-27; kept locally in scripts/cache/devibhagavat-gitapress-2010/, not committed. \"page\" is a running-head page of that text, not a PDF page."
+ },
+ "guards": [
+  "Sanskrit 3-gram Jaccard >= 0.6 and >= 0.15 above the next printed verse",
+  "printed adhyaya (between two consecutive Sanskrit colophons; skandha named in the colophon or the running heads) agrees with the verse",
+  "printed Sanskrit verse number agrees with the verse",
+  "the Hindi paragraph is printed beside it, closes with its own \"॥ n ॥\", its printed number covers the verse, and the paragraph before it ends exactly on the verse before (no half verses)",
+  "a range covers at most 5 verses, every one passes the Sanskrit and number guards, and they are consecutive in the library",
+  "the library verse holds a single printed verse",
+  "no line of the paragraph was dropped or left unclassified as unreadable, and it does not open with a stray letter",
+  "no page number, running head, colophon or heading left after mechanical clean-up (ASCII digits, page specks, avagraha and visarga glyphs)",
+  "a single: the Hindi shares at least 2 more word stems with its own verse than with any verse 1-3 places away; a range: at least 3 stems and 2 more than the neighbouring range of the same length"
+ ],
+ "counts": {
+  "lackingHindiBefore": 1745,
+  "filled": 417,
+  "singles": 225,
+  "ranges": 87,
+  "versesInRanges": 192
+ },
+ "verses": {
+  "34:2": {
+   "ref": "3.2.2",
+   "page": 141,
+   "reading": "archive",
+   "sanskritScore": 0.923,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "34:3": {
+   "ref": "3.2.3",
+   "page": 141,
+   "reading": "archive",
+   "sanskritScore": 0.839,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "34:6": {
+   "ref": "3.2.6",
+   "page": 141,
+   "reading": "archive",
+   "sanskritScore": 0.746,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "34:8": {
+   "ref": "3.2.8",
+   "page": 141,
+   "reading": "archive",
+   "sanskritScore": 0.881,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "34:9": {
+   "ref": "3.2.9",
+   "page": 141,
+   "reading": "archive",
+   "sanskritScore": 0.909,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "34:10": {
+   "ref": "3.2.10",
+   "page": 141,
+   "reading": "archive",
+   "sanskritScore": 0.9,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "34:11": {
+   "ref": "3.2.11",
+   "page": 141,
+   "reading": "archive",
+   "sanskritScore": 0.836,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "34:12": {
+   "ref": "3.2.12",
+   "page": 141,
+   "reading": "archive",
+   "sanskritScore": 0.828,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "34:13": {
+   "ref": "3.2.13",
+   "page": 141,
+   "reading": "archive",
+   "sanskritScore": 0.778,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "34:14": {
+   "ref": "3.2.14",
+   "page": 141,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "34:16": {
+   "ref": "3.2.16",
+   "page": 142,
+   "reading": "archive",
+   "sanskritScore": 0.726,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "34:21": {
+   "ref": "3.2.21",
+   "page": 142,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "34:23": {
+   "ref": "3.2.23",
+   "page": 142,
+   "reading": "archive",
+   "sanskritScore": 0.982,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "34:28": {
+   "ref": "3.2.28",
+   "page": 142,
+   "reading": "archive",
+   "sanskritScore": 0.915,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "35:17": {
+   "ref": "3.3.17",
+   "page": 144,
+   "reading": "archive",
+   "sanskritScore": 0.772,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "35:49": {
+   "ref": "3.3.49",
+   "page": 148,
+   "reading": "archive",
+   "sanskritScore": 0.875,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "35:55": {
+   "ref": "3.3.55",
+   "page": 148,
+   "reading": "archive",
+   "sanskritScore": 0.706,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "35:57": {
+   "ref": "3.3.57",
+   "page": 148,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "35:60": {
+   "ref": "3.3.60",
+   "page": 148,
+   "reading": "archive",
+   "sanskritScore": 0.734,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "35:66": {
+   "ref": "3.3.66",
+   "page": 150,
+   "reading": "archive",
+   "sanskritScore": 0.895,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "35:67": {
+   "ref": "3.3.67",
+   "page": 150,
+   "reading": "archive",
+   "sanskritScore": 0.836,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "36:23": {
+   "ref": "3.4.23",
+   "page": 152,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "36:26": {
+   "ref": "3.4.26",
+   "page": 152,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "36:32": {
+   "ref": "3.4.32",
+   "page": 152,
+   "reading": "archive",
+   "sanskritScore": 0.891,
+   "ownStems": 6,
+   "neighbourStems": 1
+  },
+  "36:41": {
+   "ref": "3.4.41",
+   "page": 153,
+   "reading": "archive",
+   "sanskritScore": 0.882,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "36:42": {
+   "ref": "3.4.42",
+   "page": 153,
+   "reading": "archive",
+   "sanskritScore": 0.947,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "36:44": {
+   "ref": "3.4.44",
+   "page": 153,
+   "reading": "archive",
+   "sanskritScore": 0.947,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "36:46": {
+   "ref": "3.4.46",
+   "page": 153,
+   "reading": "archive",
+   "sanskritScore": 0.767,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "36:47": {
+   "ref": "3.4.47",
+   "page": 153,
+   "reading": "archive",
+   "sanskritScore": 0.827,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "36:49": {
+   "ref": "3.4.49",
+   "page": 153,
+   "reading": "archive",
+   "sanskritScore": 0.831,
+   "ownStems": 5,
+   "neighbourStems": 0
+  },
+  "37:10": {
+   "ref": "3.5.10",
+   "page": 155,
+   "reading": "archive",
+   "sanskritScore": 0.826,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "37:14": {
+   "ref": "3.5.14",
+   "page": 155,
+   "reading": "archive",
+   "sanskritScore": 0.8,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "37:19": {
+   "ref": "3.5.19",
+   "page": 155,
+   "reading": "archive",
+   "sanskritScore": 0.644,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "37:30": {
+   "ref": "3.5.30",
+   "page": 157,
+   "reading": "archive",
+   "sanskritScore": 0.859,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "37:32": {
+   "ref": "3.5.32",
+   "page": 157,
+   "reading": "archive",
+   "sanskritScore": 0.945,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "37:33": {
+   "ref": "3.5.33",
+   "page": 157,
+   "reading": "archive",
+   "sanskritScore": 0.943,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "37:37": {
+   "ref": "3.5.37",
+   "page": 158,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "37:45": {
+   "ref": "3.5.45",
+   "page": 158,
+   "reading": "archive",
+   "sanskritScore": 0.731,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "37:46": {
+   "ref": "3.5.46",
+   "page": 158,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 0
+  },
+  "38:3": {
+   "ref": "3.6.3",
+   "page": 158,
+   "reading": "archive",
+   "sanskritScore": 0.909,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "38:38": {
+   "ref": "3.6.38",
+   "page": 160,
+   "reading": "archive",
+   "sanskritScore": 0.907,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "38:42": {
+   "ref": "3.6.42",
+   "page": 160,
+   "reading": "archive",
+   "sanskritScore": 0.921,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "38:44": {
+   "ref": "3.6.44",
+   "page": 160,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "38:47": {
+   "ref": "3.6.47",
+   "page": 160,
+   "reading": "archive",
+   "sanskritScore": 0.925,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "38:48": {
+   "ref": "3.6.48",
+   "page": 160,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "38:49": {
+   "ref": "3.6.49",
+   "page": 160,
+   "reading": "archive",
+   "sanskritScore": 0.908,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "38:50": {
+   "ref": "3.6.50",
+   "page": 160,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "38:69": {
+   "ref": "3.6.69",
+   "page": 161,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "38:71": {
+   "ref": "3.6.71",
+   "page": 161,
+   "reading": "archive",
+   "sanskritScore": 0.824,
+   "ownStems": 5,
+   "neighbourStems": 3
+  },
+  "38:74": {
+   "ref": "3.6.74",
+   "page": 161,
+   "reading": "archive",
+   "sanskritScore": 0.879,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "39:2": {
+   "ref": "3.7.2",
+   "page": 162,
+   "reading": "archive",
+   "sanskritScore": 0.906,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "39:8": {
+   "ref": "3.7.8",
+   "page": 162,
+   "reading": "archive",
+   "sanskritScore": 0.8,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "39:9": {
+   "ref": "3.7.9",
+   "page": 162,
+   "reading": "archive",
+   "sanskritScore": 0.905,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "39:13": {
+   "ref": "3.7.13",
+   "page": 163,
+   "reading": "archive",
+   "sanskritScore": 0.7,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "39:14": {
+   "ref": "3.7.14",
+   "page": 163,
+   "reading": "archive",
+   "sanskritScore": 0.844,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "39:15": {
+   "ref": "3.7.15",
+   "page": 163,
+   "reading": "archive",
+   "sanskritScore": 0.821,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "39:18": {
+   "ref": "3.7.18",
+   "page": 163,
+   "reading": "archive",
+   "sanskritScore": 0.939,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "39:25": {
+   "ref": "3.7.25",
+   "page": 163,
+   "reading": "archive",
+   "sanskritScore": 0.873,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "39:39": {
+   "ref": "3.7.39",
+   "page": 164,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "39:40": {
+   "ref": "3.7.40",
+   "page": 164,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 3
+  },
+  "39:48": {
+   "ref": "3.7.48",
+   "page": 164,
+   "reading": "archive",
+   "sanskritScore": 0.734,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "40:5": {
+   "ref": "3.8.5",
+   "page": 165,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "40:7": {
+   "ref": "3.8.7",
+   "page": 165,
+   "reading": "archive",
+   "sanskritScore": 0.828,
+   "ownStems": 7,
+   "neighbourStems": 2
+  },
+  "40:13": {
+   "ref": "3.8.13",
+   "page": 165,
+   "reading": "archive",
+   "sanskritScore": 0.847,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "40:17": {
+   "ref": "3.8.17",
+   "page": 165,
+   "reading": "archive",
+   "sanskritScore": 0.868,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "40:21": {
+   "ref": "3.8.21",
+   "page": 165,
+   "reading": "archive",
+   "sanskritScore": 0.889,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "40:29": {
+   "ref": "3.8.29",
+   "page": 167,
+   "reading": "archive",
+   "sanskritScore": 0.912,
+   "ownStems": 5,
+   "neighbourStems": 0
+  },
+  "40:33": {
+   "ref": "3.8.33",
+   "page": 167,
+   "reading": "archive",
+   "sanskritScore": 0.914,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "40:37": {
+   "ref": "3.8.37",
+   "page": 167,
+   "reading": "archive",
+   "sanskritScore": 0.757,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "40:45": {
+   "ref": "3.8.45",
+   "page": 167,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "40:48": {
+   "ref": "3.8.48",
+   "page": 167,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "40:51": {
+   "ref": "3.8.51",
+   "page": 168,
+   "reading": "archive",
+   "sanskritScore": 0.922,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "41:2": {
+   "ref": "3.9.2",
+   "page": 168,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "41:3": {
+   "ref": "3.9.3",
+   "page": 168,
+   "reading": "archive",
+   "sanskritScore": 0.871,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "41:4": {
+   "ref": "3.9.4",
+   "page": 168,
+   "reading": "archive",
+   "sanskritScore": 0.635,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "41:5": {
+   "ref": "3.9.5",
+   "page": 168,
+   "reading": "archive",
+   "sanskritScore": 0.828,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "42:5": {
+   "ref": "3.10.5",
+   "page": 172,
+   "reading": "archive",
+   "sanskritScore": 0.915,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "42:23": {
+   "ref": "3.10.23",
+   "page": 173,
+   "reading": "archive",
+   "sanskritScore": 0.878,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "42:44": {
+   "ref": "3.10.44",
+   "page": 175,
+   "reading": "archive",
+   "sanskritScore": 0.803,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "42:45": {
+   "ref": "3.10.45",
+   "page": 175,
+   "reading": "archive",
+   "sanskritScore": 0.817,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "42:46": {
+   "ref": "3.10.46",
+   "page": 175,
+   "reading": "archive",
+   "sanskritScore": 0.908,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "42:61": {
+   "ref": "3.10.61",
+   "page": 175,
+   "reading": "archive",
+   "sanskritScore": 0.873,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "43:10": {
+   "ref": "3.11.10",
+   "page": 176,
+   "reading": "archive",
+   "sanskritScore": 0.766,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "43:11": {
+   "ref": "3.11.11",
+   "page": 176,
+   "reading": "archive",
+   "sanskritScore": 0.786,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "43:15": {
+   "ref": "3.11.15",
+   "page": 176,
+   "reading": "archive",
+   "sanskritScore": 0.9,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "43:17": {
+   "ref": "3.11.17",
+   "page": 176,
+   "reading": "archive",
+   "sanskritScore": 0.889,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "43:18": {
+   "ref": "3.11.18",
+   "page": 176,
+   "reading": "archive",
+   "sanskritScore": 0.9,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "43:20": {
+   "ref": "3.11.20",
+   "page": 176,
+   "reading": "archive",
+   "sanskritScore": 0.797,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "43:30": {
+   "ref": "3.11.30",
+   "page": 178,
+   "reading": "archive",
+   "sanskritScore": 0.929,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "43:44": {
+   "ref": "3.11.44",
+   "page": 180,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "43:45": {
+   "ref": "3.11.45",
+   "page": 180,
+   "reading": "archive",
+   "sanskritScore": 0.806,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "43:57": {
+   "ref": "3.11.57",
+   "page": 180,
+   "reading": "archive",
+   "sanskritScore": 0.864,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "43:58": {
+   "ref": "3.11.58",
+   "page": 180,
+   "reading": "archive",
+   "sanskritScore": 0.897,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "44:17": {
+   "ref": "3.12.17",
+   "page": 181,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "44:23": {
+   "ref": "3.12.23",
+   "page": 183,
+   "reading": "archive",
+   "sanskritScore": 0.914,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "44:30": {
+   "ref": "3.12.30",
+   "page": 183,
+   "reading": "archive",
+   "sanskritScore": 0.895,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "44:37": {
+   "ref": "3.12.37",
+   "page": 183,
+   "reading": "archive",
+   "sanskritScore": 0.828,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "44:38": {
+   "ref": "3.12.38",
+   "page": 183,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "44:39": {
+   "ref": "3.12.39",
+   "page": 183,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "44:48": {
+   "ref": "3.12.48",
+   "page": 185,
+   "reading": "archive",
+   "sanskritScore": 0.893,
+   "ownStems": 5,
+   "neighbourStems": 3
+  },
+  "44:60": {
+   "ref": "3.12.60",
+   "page": 185,
+   "reading": "archive",
+   "sanskritScore": 0.9,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "44:65": {
+   "ref": "3.12.65",
+   "page": 185,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "44:68": {
+   "ref": "3.12.68",
+   "page": 185,
+   "reading": "archive",
+   "sanskritScore": 0.864,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "45:8": {
+   "ref": "3.13.8",
+   "page": 189,
+   "reading": "archive",
+   "sanskritScore": 0.915,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "45:15": {
+   "ref": "3.13.15",
+   "page": 189,
+   "reading": "archive",
+   "sanskritScore": 0.898,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "45:17": {
+   "ref": "3.13.17",
+   "page": 189,
+   "reading": "archive",
+   "sanskritScore": 0.651,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "45:18": {
+   "ref": "3.13.18",
+   "page": 189,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "45:19": {
+   "ref": "3.13.19",
+   "page": 189,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "45:39": {
+   "ref": "3.13.39",
+   "page": 191,
+   "reading": "archive",
+   "sanskritScore": 0.889,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "45:59": {
+   "ref": "3.13.59",
+   "page": 193,
+   "reading": "archive",
+   "sanskritScore": 0.951,
+   "ownStems": 5,
+   "neighbourStems": 0
+  },
+  "51:48": {
+   "ref": "3.19.48",
+   "page": 215,
+   "reading": "archive",
+   "sanskritScore": 0.731,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "51:56": {
+   "ref": "3.19.56",
+   "page": 216,
+   "reading": "archive",
+   "sanskritScore": 0.929,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "51:61": {
+   "ref": "3.19.61",
+   "page": 216,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "51:62": {
+   "ref": "3.19.62",
+   "page": 216,
+   "reading": "archive",
+   "sanskritScore": 0.87,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "52:2": {
+   "ref": "3.20.2",
+   "page": 216,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "52:8": {
+   "ref": "3.20.8",
+   "page": 216,
+   "reading": "archive",
+   "sanskritScore": 0.895,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "52:19": {
+   "ref": "3.20.19",
+   "page": 218,
+   "reading": "archive",
+   "sanskritScore": 0.905,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "52:20": {
+   "ref": "3.20.20",
+   "page": 218,
+   "reading": "archive",
+   "sanskritScore": 0.746,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "52:22": {
+   "ref": "3.20.22",
+   "page": 218,
+   "reading": "archive",
+   "sanskritScore": 0.817,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "52:30": {
+   "ref": "3.20.30",
+   "page": 218,
+   "reading": "archive",
+   "sanskritScore": 0.85,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "52:34": {
+   "ref": "3.20.34",
+   "page": 220,
+   "reading": "archive",
+   "sanskritScore": 0.743,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "52:39": {
+   "ref": "3.20.39",
+   "page": 220,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "52:42": {
+   "ref": "3.20.42",
+   "page": 220,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 6,
+   "neighbourStems": 0
+  },
+  "52:44": {
+   "ref": "3.20.44",
+   "page": 220,
+   "reading": "archive",
+   "sanskritScore": 0.786,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "52:61": {
+   "ref": "3.20.61",
+   "page": 222,
+   "reading": "archive",
+   "sanskritScore": 0.855,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "52:68": {
+   "ref": "3.20.68",
+   "page": 222,
+   "reading": "archive",
+   "sanskritScore": 0.683,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "53:9": {
+   "ref": "3.21.9",
+   "page": 223,
+   "reading": "archive",
+   "sanskritScore": 0.902,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "53:20": {
+   "ref": "3.21.20",
+   "page": 223,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "54:7": {
+   "ref": "3.22.7",
+   "page": 226,
+   "reading": "archive",
+   "sanskritScore": 0.857,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "54:8": {
+   "ref": "3.22.8",
+   "page": 226,
+   "reading": "archive",
+   "sanskritScore": 0.827,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "54:22": {
+   "ref": "3.22.22",
+   "page": 228,
+   "reading": "archive",
+   "sanskritScore": 0.795,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "54:27": {
+   "ref": "3.22.27",
+   "page": 230,
+   "reading": "archive",
+   "sanskritScore": 0.667,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "55:5": {
+   "ref": "3.23.5",
+   "page": 231,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "55:12": {
+   "ref": "3.23.12",
+   "page": 231,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "55:32": {
+   "ref": "3.23.32",
+   "page": 232,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "55:37": {
+   "ref": "3.23.37",
+   "page": 232,
+   "reading": "archive",
+   "sanskritScore": 0.779,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "55:43": {
+   "ref": "3.23.43",
+   "page": 232,
+   "reading": "archive",
+   "sanskritScore": 0.75,
+   "ownStems": 7,
+   "neighbourStems": 1
+  },
+  "55:44": {
+   "ref": "3.23.44",
+   "page": 232,
+   "reading": "archive",
+   "sanskritScore": 0.863,
+   "ownStems": 7,
+   "neighbourStems": 1
+  },
+  "55:46": {
+   "ref": "3.23.46",
+   "page": 232,
+   "reading": "archive",
+   "sanskritScore": 0.94,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "55:47": {
+   "ref": "3.23.47",
+   "page": 232,
+   "reading": "archive",
+   "sanskritScore": 0.786,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "55:50": {
+   "ref": "3.23.50",
+   "page": 232,
+   "reading": "archive",
+   "sanskritScore": 0.8,
+   "ownStems": 7,
+   "neighbourStems": 2
+  },
+  "55:53": {
+   "ref": "3.23.53",
+   "page": 232,
+   "reading": "archive",
+   "sanskritScore": 0.922,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "55:54": {
+   "ref": "3.23.54",
+   "page": 232,
+   "reading": "archive",
+   "sanskritScore": 0.774,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "56:2": {
+   "ref": "3.24.2",
+   "page": 233,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 6,
+   "neighbourStems": 1
+  },
+  "56:10": {
+   "ref": "3.24.10",
+   "page": 233,
+   "reading": "archive",
+   "sanskritScore": 0.843,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "56:13": {
+   "ref": "3.24.13",
+   "page": 233,
+   "reading": "archive",
+   "sanskritScore": 0.762,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "56:16": {
+   "ref": "3.24.16",
+   "page": 233,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "56:22": {
+   "ref": "3.24.22",
+   "page": 233,
+   "reading": "archive",
+   "sanskritScore": 0.982,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "56:24": {
+   "ref": "3.24.24",
+   "page": 234,
+   "reading": "archive",
+   "sanskritScore": 0.867,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "56:27": {
+   "ref": "3.24.27",
+   "page": 234,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "56:28": {
+   "ref": "3.24.28",
+   "page": 234,
+   "reading": "archive",
+   "sanskritScore": 0.918,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "56:31": {
+   "ref": "3.24.31",
+   "page": 234,
+   "reading": "archive",
+   "sanskritScore": 0.915,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "56:32": {
+   "ref": "3.24.32",
+   "page": 234,
+   "reading": "archive",
+   "sanskritScore": 0.9,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "56:44": {
+   "ref": "3.24.44",
+   "page": 234,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "57:6": {
+   "ref": "3.25.6",
+   "page": 235,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "57:16": {
+   "ref": "3.25.16",
+   "page": 235,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "57:20": {
+   "ref": "3.25.20",
+   "page": 236,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "57:24": {
+   "ref": "3.25.24",
+   "page": 236,
+   "reading": "archive",
+   "sanskritScore": 0.645,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "57:31": {
+   "ref": "3.25.31",
+   "page": 236,
+   "reading": "archive",
+   "sanskritScore": 0.921,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "57:35": {
+   "ref": "3.25.35",
+   "page": 236,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 6,
+   "neighbourStems": 3
+  },
+  "57:36": {
+   "ref": "3.25.36",
+   "page": 236,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 6,
+   "neighbourStems": 2
+  },
+  "58:2": {
+   "ref": "3.26.2",
+   "page": 238,
+   "reading": "archive",
+   "sanskritScore": 0.923,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "58:3": {
+   "ref": "3.26.3",
+   "page": 238,
+   "reading": "archive",
+   "sanskritScore": 0.897,
+   "ownStems": 5,
+   "neighbourStems": 3
+  },
+  "58:8": {
+   "ref": "3.26.8",
+   "page": 238,
+   "reading": "archive",
+   "sanskritScore": 0.794,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "58:11": {
+   "ref": "3.26.11",
+   "page": 238,
+   "reading": "archive",
+   "sanskritScore": 0.765,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "58:14": {
+   "ref": "3.26.14",
+   "page": 238,
+   "reading": "archive",
+   "sanskritScore": 0.897,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "58:24": {
+   "ref": "3.26.24",
+   "page": 240,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "58:25": {
+   "ref": "3.26.25",
+   "page": 240,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "58:37": {
+   "ref": "3.26.37",
+   "page": 240,
+   "reading": "archive",
+   "sanskritScore": 0.647,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "58:47": {
+   "ref": "3.26.47",
+   "page": 241,
+   "reading": "archive",
+   "sanskritScore": 0.895,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "58:48": {
+   "ref": "3.26.48",
+   "page": 241,
+   "reading": "archive",
+   "sanskritScore": 0.793,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "58:49": {
+   "ref": "3.26.49",
+   "page": 241,
+   "reading": "archive",
+   "sanskritScore": 0.911,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "58:50": {
+   "ref": "3.26.50",
+   "page": 241,
+   "reading": "archive",
+   "sanskritScore": 0.82,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "58:51": {
+   "ref": "3.26.51",
+   "page": 241,
+   "reading": "archive",
+   "sanskritScore": 0.833,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "58:52": {
+   "ref": "3.26.52",
+   "page": 241,
+   "reading": "archive",
+   "sanskritScore": 0.733,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "58:53": {
+   "ref": "3.26.53",
+   "page": 241,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "58:57": {
+   "ref": "3.26.57",
+   "page": 241,
+   "reading": "archive",
+   "sanskritScore": 0.907,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "58:60": {
+   "ref": "3.26.60",
+   "page": 241,
+   "reading": "archive",
+   "sanskritScore": 0.742,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "58:62": {
+   "ref": "3.26.62",
+   "page": 241,
+   "reading": "archive",
+   "sanskritScore": 0.658,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "59:9": {
+   "ref": "3.27.9",
+   "page": 242,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "59:12": {
+   "ref": "3.27.12",
+   "page": 242,
+   "reading": "archive",
+   "sanskritScore": 0.792,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "59:14": {
+   "ref": "3.27.14",
+   "page": 242,
+   "reading": "archive",
+   "sanskritScore": 0.731,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "59:17": {
+   "ref": "3.27.17",
+   "page": 242,
+   "reading": "archive",
+   "sanskritScore": 0.893,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "59:18": {
+   "ref": "3.27.18",
+   "page": 242,
+   "reading": "archive",
+   "sanskritScore": 0.742,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "59:19": {
+   "ref": "3.27.19",
+   "page": 242,
+   "reading": "archive",
+   "sanskritScore": 0.813,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "59:22": {
+   "ref": "3.27.22",
+   "page": 242,
+   "reading": "archive",
+   "sanskritScore": 0.667,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "59:23": {
+   "ref": "3.27.23",
+   "page": 242,
+   "reading": "archive",
+   "sanskritScore": 0.869,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "59:27": {
+   "ref": "3.27.27",
+   "page": 244,
+   "reading": "archive",
+   "sanskritScore": 0.948,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "59:29": {
+   "ref": "3.27.29",
+   "page": 244,
+   "reading": "archive",
+   "sanskritScore": 0.82,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "59:30": {
+   "ref": "3.27.30",
+   "page": 244,
+   "reading": "archive",
+   "sanskritScore": 0.912,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "59:48": {
+   "ref": "3.27.48",
+   "page": 244,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "59:53": {
+   "ref": "3.27.53",
+   "page": 244,
+   "reading": "archive",
+   "sanskritScore": 0.797,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "59:54": {
+   "ref": "3.27.54",
+   "page": 244,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "60:14": {
+   "ref": "3.28.14",
+   "page": 246,
+   "reading": "archive",
+   "sanskritScore": 0.647,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "60:18": {
+   "ref": "3.28.18",
+   "page": 246,
+   "reading": "archive",
+   "sanskritScore": 0.882,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "60:19": {
+   "ref": "3.28.19",
+   "page": 246,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "60:20": {
+   "ref": "3.28.20",
+   "page": 246,
+   "reading": "archive",
+   "sanskritScore": 0.909,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "60:32": {
+   "ref": "3.28.32",
+   "page": 246,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "60:48": {
+   "ref": "3.28.48",
+   "page": 248,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "60:52": {
+   "ref": "3.28.52",
+   "page": 248,
+   "reading": "archive",
+   "sanskritScore": 0.839,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "60:53": {
+   "ref": "3.28.53",
+   "page": 248,
+   "reading": "archive",
+   "sanskritScore": 0.91,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "60:59": {
+   "ref": "3.28.59",
+   "page": 250,
+   "reading": "archive",
+   "sanskritScore": 0.719,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "60:63": {
+   "ref": "3.28.63",
+   "page": 250,
+   "reading": "archive",
+   "sanskritScore": 0.823,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "60:64": {
+   "ref": "3.28.64",
+   "page": 250,
+   "reading": "archive",
+   "sanskritScore": 0.817,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "60:65": {
+   "ref": "3.28.65",
+   "page": 250,
+   "reading": "archive",
+   "sanskritScore": 0.632,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "60:66": {
+   "ref": "3.28.66",
+   "page": 250,
+   "reading": "archive",
+   "sanskritScore": 0.645,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "60:68": {
+   "ref": "3.28.68",
+   "page": 250,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "61:4": {
+   "ref": "3.29.4",
+   "page": 252,
+   "reading": "archive",
+   "sanskritScore": 0.793,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "61:13": {
+   "ref": "3.29.13",
+   "page": 252,
+   "reading": "archive",
+   "sanskritScore": 0.887,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "61:18": {
+   "ref": "3.29.18",
+   "page": 252,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "61:29": {
+   "ref": "3.29.29",
+   "page": 253,
+   "reading": "archive",
+   "sanskritScore": 0.766,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "61:33": {
+   "ref": "3.29.33",
+   "page": 253,
+   "reading": "archive",
+   "sanskritScore": 0.825,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "61:35": {
+   "ref": "3.29.35",
+   "page": 253,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "61:43": {
+   "ref": "3.29.43",
+   "page": 253,
+   "reading": "archive",
+   "sanskritScore": 0.889,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "61:53": {
+   "ref": "3.29.53",
+   "page": 255,
+   "reading": "archive",
+   "sanskritScore": 0.895,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "62:2": {
+   "ref": "3.30.2",
+   "page": 255,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "62:14": {
+   "ref": "3.30.14",
+   "page": 255,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "62:15": {
+   "ref": "3.30.15",
+   "page": 255,
+   "reading": "archive",
+   "sanskritScore": 0.885,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "62:18": {
+   "ref": "3.30.18",
+   "page": 257,
+   "reading": "archive",
+   "sanskritScore": 0.803,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "62:21": {
+   "ref": "3.30.21",
+   "page": 257,
+   "reading": "archive",
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "62:27": {
+   "ref": "3.30.27",
+   "page": 257,
+   "reading": "archive",
+   "sanskritScore": 0.702,
+   "ownStems": 6,
+   "neighbourStems": 2
+  },
+  "62:28": {
+   "ref": "3.30.28",
+   "page": 257,
+   "reading": "archive",
+   "sanskritScore": 0.899,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "62:34": {
+   "ref": "3.30.34",
+   "page": 257,
+   "reading": "archive",
+   "sanskritScore": 0.857,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "62:38": {
+   "ref": "3.30.38",
+   "page": 257,
+   "reading": "archive",
+   "sanskritScore": 0.709,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "62:63": {
+   "ref": "3.30.63",
+   "page": 259,
+   "reading": "archive",
+   "sanskritScore": 0.915,
+   "ownStems": 4,
+   "neighbourStems": 1
+  }
+ },
+ "ranges": {
+  "34:25-26": {
+   "ref": "3.2.25-26",
+   "verses": [
+    "25",
+    "26"
+   ],
+   "page": 142,
+   "reading": "archive",
+   "minSanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 0
+  },
+  "35:12-13": {
+   "ref": "3.3.12-13",
+   "verses": [
+    "12",
+    "13"
+   ],
+   "page": 144,
+   "reading": "archive",
+   "minSanskritScore": 0.785,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "35:28-29": {
+   "ref": "3.3.28-29",
+   "verses": [
+    "28",
+    "29"
+   ],
+   "page": 146,
+   "reading": "archive",
+   "minSanskritScore": 0.742,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "35:38-39": {
+   "ref": "3.3.38-39",
+   "verses": [
+    "38",
+    "39"
+   ],
+   "page": 146,
+   "reading": "archive",
+   "minSanskritScore": 0.828,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "35:42-46": {
+   "ref": "3.3.42-46",
+   "verses": [
+    "42",
+    "43",
+    "44",
+    "45",
+    "46"
+   ],
+   "page": 148,
+   "reading": "archive",
+   "minSanskritScore": 0.6,
+   "ownStems": 6,
+   "neighbourStems": 2
+  },
+  "35:50-51": {
+   "ref": "3.3.50-51",
+   "verses": [
+    "50",
+    "51"
+   ],
+   "page": 148,
+   "reading": "archive",
+   "minSanskritScore": 0.73,
+   "ownStems": 9,
+   "neighbourStems": 1
+  },
+  "37:22-23": {
+   "ref": "3.5.22-23",
+   "verses": [
+    "22",
+    "23"
+   ],
+   "page": 157,
+   "reading": "archive",
+   "minSanskritScore": 0.8,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "38:8-10": {
+   "ref": "3.6.8-10",
+   "verses": [
+    "8",
+    "9",
+    "10"
+   ],
+   "page": 159,
+   "reading": "archive",
+   "minSanskritScore": 0.705,
+   "ownStems": 22,
+   "neighbourStems": 3
+  },
+  "38:13-15": {
+   "ref": "3.6.13-15",
+   "verses": [
+    "13",
+    "14",
+    "15"
+   ],
+   "page": 159,
+   "reading": "archive",
+   "minSanskritScore": 0.786,
+   "ownStems": 15,
+   "neighbourStems": 2
+  },
+  "38:19-20": {
+   "ref": "3.6.19-20",
+   "verses": [
+    "19",
+    "20"
+   ],
+   "page": 159,
+   "reading": "archive",
+   "minSanskritScore": 0.738,
+   "ownStems": 6,
+   "neighbourStems": 4
+  },
+  "38:26-27": {
+   "ref": "3.6.26-27",
+   "verses": [
+    "26",
+    "27"
+   ],
+   "page": 159,
+   "reading": "archive",
+   "minSanskritScore": 0.782,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "38:29-30": {
+   "ref": "3.6.29-30",
+   "verses": [
+    "29",
+    "30"
+   ],
+   "page": 160,
+   "reading": "archive",
+   "minSanskritScore": 0.638,
+   "ownStems": 5,
+   "neighbourStems": 0
+  },
+  "38:32-33": {
+   "ref": "3.6.32-33",
+   "verses": [
+    "32",
+    "33"
+   ],
+   "page": 160,
+   "reading": "archive",
+   "minSanskritScore": 0.962,
+   "ownStems": 7,
+   "neighbourStems": 2
+  },
+  "38:34-35": {
+   "ref": "3.6.34-35",
+   "verses": [
+    "34",
+    "35"
+   ],
+   "page": 160,
+   "reading": "archive",
+   "minSanskritScore": 0.852,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "38:36-37": {
+   "ref": "3.6.36-37",
+   "verses": [
+    "36",
+    "37"
+   ],
+   "page": 160,
+   "reading": "archive",
+   "minSanskritScore": 0.788,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "38:45-46": {
+   "ref": "3.6.45-46",
+   "verses": [
+    "45",
+    "46"
+   ],
+   "page": 160,
+   "reading": "archive",
+   "minSanskritScore": 0.81,
+   "ownStems": 9,
+   "neighbourStems": 2
+  },
+  "38:57-58": {
+   "ref": "3.6.57-58",
+   "verses": [
+    "57",
+    "58"
+   ],
+   "page": 161,
+   "reading": "archive",
+   "minSanskritScore": 0.836,
+   "ownStems": 6,
+   "neighbourStems": 1
+  },
+  "38:59-60": {
+   "ref": "3.6.59-60",
+   "verses": [
+    "59",
+    "60"
+   ],
+   "page": 161,
+   "reading": "archive",
+   "minSanskritScore": 0.836,
+   "ownStems": 8,
+   "neighbourStems": 2
+  },
+  "38:67-68": {
+   "ref": "3.6.67-68",
+   "verses": [
+    "67",
+    "68"
+   ],
+   "page": 161,
+   "reading": "archive",
+   "minSanskritScore": 0.914,
+   "ownStems": 6,
+   "neighbourStems": 2
+  },
+  "38:72-73": {
+   "ref": "3.6.72-73",
+   "verses": [
+    "72",
+    "73"
+   ],
+   "page": 161,
+   "reading": "archive",
+   "minSanskritScore": 0.768,
+   "ownStems": 7,
+   "neighbourStems": 4
+  },
+  "39:5-6": {
+   "ref": "3.7.5-6",
+   "verses": [
+    "5",
+    "6"
+   ],
+   "page": 162,
+   "reading": "archive",
+   "minSanskritScore": 0.786,
+   "ownStems": 6,
+   "neighbourStems": 1
+  },
+  "40:2-3": {
+   "ref": "3.8.2-3",
+   "verses": [
+    "2",
+    "3"
+   ],
+   "page": 164,
+   "reading": "archive",
+   "minSanskritScore": 0.898,
+   "ownStems": 8,
+   "neighbourStems": 3
+  },
+  "40:18-20": {
+   "ref": "3.8.18-20",
+   "verses": [
+    "18",
+    "19",
+    "20"
+   ],
+   "page": 165,
+   "reading": "archive",
+   "minSanskritScore": 0.82,
+   "ownStems": 6,
+   "neighbourStems": 2
+  },
+  "40:23-24": {
+   "ref": "3.8.23-24",
+   "verses": [
+    "23",
+    "24"
+   ],
+   "page": 165,
+   "reading": "archive",
+   "minSanskritScore": 0.839,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "40:43-44": {
+   "ref": "3.8.43-44",
+   "verses": [
+    "43",
+    "44"
+   ],
+   "page": 167,
+   "reading": "archive",
+   "minSanskritScore": 0.923,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "41:6-9": {
+   "ref": "3.9.6-9",
+   "verses": [
+    "6",
+    "7",
+    "8",
+    "9"
+   ],
+   "page": 168,
+   "reading": "archive",
+   "minSanskritScore": 0.71,
+   "ownStems": 8,
+   "neighbourStems": 4
+  },
+  "41:38-40": {
+   "ref": "3.9.38-40",
+   "verses": [
+    "38",
+    "39",
+    "40"
+   ],
+   "page": 170,
+   "reading": "archive",
+   "minSanskritScore": 0.768,
+   "ownStems": 9,
+   "neighbourStems": 1
+  },
+  "42:21-22": {
+   "ref": "3.10.21-22",
+   "verses": [
+    "21",
+    "22"
+   ],
+   "page": 173,
+   "reading": "archive",
+   "minSanskritScore": 0.857,
+   "ownStems": 11,
+   "neighbourStems": 1
+  },
+  "42:39-40": {
+   "ref": "3.10.39-40",
+   "verses": [
+    "39",
+    "40"
+   ],
+   "page": 173,
+   "reading": "archive",
+   "minSanskritScore": 0.921,
+   "ownStems": 5,
+   "neighbourStems": 3
+  },
+  "42:47-49": {
+   "ref": "3.10.47-49",
+   "verses": [
+    "47",
+    "48",
+    "49"
+   ],
+   "page": 175,
+   "reading": "archive",
+   "minSanskritScore": 0.828,
+   "ownStems": 8,
+   "neighbourStems": 3
+  },
+  "42:52-53": {
+   "ref": "3.10.52-53",
+   "verses": [
+    "52",
+    "53"
+   ],
+   "page": 175,
+   "reading": "archive",
+   "minSanskritScore": 0.732,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "43:5-6": {
+   "ref": "3.11.5-6",
+   "verses": [
+    "5",
+    "6"
+   ],
+   "page": 176,
+   "reading": "archive",
+   "minSanskritScore": 0.738,
+   "ownStems": 5,
+   "neighbourStems": 3
+  },
+  "43:8-9": {
+   "ref": "3.11.8-9",
+   "verses": [
+    "8",
+    "9"
+   ],
+   "page": 176,
+   "reading": "archive",
+   "minSanskritScore": 0.885,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "44:14-15": {
+   "ref": "3.12.14-15",
+   "verses": [
+    "14",
+    "15"
+   ],
+   "page": 181,
+   "reading": "archive",
+   "minSanskritScore": 0.734,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "44:24-26": {
+   "ref": "3.12.24-26",
+   "verses": [
+    "24",
+    "25",
+    "26"
+   ],
+   "page": 183,
+   "reading": "archive",
+   "minSanskritScore": 0.813,
+   "ownStems": 7,
+   "neighbourStems": 1
+  },
+  "44:35-36": {
+   "ref": "3.12.35-36",
+   "verses": [
+    "35",
+    "36"
+   ],
+   "page": 183,
+   "reading": "archive",
+   "minSanskritScore": 0.815,
+   "ownStems": 6,
+   "neighbourStems": 2
+  },
+  "44:40-41": {
+   "ref": "3.12.40-41",
+   "verses": [
+    "40",
+    "41"
+   ],
+   "page": 183,
+   "reading": "archive",
+   "minSanskritScore": 0.718,
+   "ownStems": 6,
+   "neighbourStems": 1
+  },
+  "44:46-47": {
+   "ref": "3.12.46-47",
+   "verses": [
+    "46",
+    "47"
+   ],
+   "page": 185,
+   "reading": "archive",
+   "minSanskritScore": 0.815,
+   "ownStems": 6,
+   "neighbourStems": 0
+  },
+  "44:49-50": {
+   "ref": "3.12.49-50",
+   "verses": [
+    "49",
+    "50"
+   ],
+   "page": 185,
+   "reading": "archive",
+   "minSanskritScore": 0.698,
+   "ownStems": 6,
+   "neighbourStems": 4
+  },
+  "44:58-59": {
+   "ref": "3.12.58-59",
+   "verses": [
+    "58",
+    "59"
+   ],
+   "page": 185,
+   "reading": "archive",
+   "minSanskritScore": 0.8,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "44:61-62": {
+   "ref": "3.12.61-62",
+   "verses": [
+    "61",
+    "62"
+   ],
+   "page": 185,
+   "reading": "archive",
+   "minSanskritScore": 0.81,
+   "ownStems": 10,
+   "neighbourStems": 1
+  },
+  "44:63-64": {
+   "ref": "3.12.63-64",
+   "verses": [
+    "63",
+    "64"
+   ],
+   "page": 185,
+   "reading": "archive",
+   "minSanskritScore": 0.9,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "44:66-67": {
+   "ref": "3.12.66-67",
+   "verses": [
+    "66",
+    "67"
+   ],
+   "page": 185,
+   "reading": "archive",
+   "minSanskritScore": 0.897,
+   "ownStems": 7,
+   "neighbourStems": 3
+  },
+  "44:73-74": {
+   "ref": "3.12.73-74",
+   "verses": [
+    "73",
+    "74"
+   ],
+   "page": 187,
+   "reading": "archive",
+   "minSanskritScore": 0.632,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "45:12-13": {
+   "ref": "3.13.12-13",
+   "verses": [
+    "12",
+    "13"
+   ],
+   "page": 189,
+   "reading": "archive",
+   "minSanskritScore": 0.603,
+   "ownStems": 9,
+   "neighbourStems": 2
+  },
+  "45:21-23": {
+   "ref": "3.13.21-23",
+   "verses": [
+    "21",
+    "22",
+    "23"
+   ],
+   "page": 189,
+   "reading": "archive",
+   "minSanskritScore": 0.682,
+   "ownStems": 8,
+   "neighbourStems": 2
+  },
+  "45:24-26": {
+   "ref": "3.13.24-26",
+   "verses": [
+    "24",
+    "25",
+    "26"
+   ],
+   "page": 189,
+   "reading": "archive",
+   "minSanskritScore": 0.652,
+   "ownStems": 8,
+   "neighbourStems": 1
+  },
+  "45:33-34": {
+   "ref": "3.13.33-34",
+   "verses": [
+    "33",
+    "34"
+   ],
+   "page": 191,
+   "reading": "archive",
+   "minSanskritScore": 0.761,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "51:3-4": {
+   "ref": "3.19.3-4",
+   "verses": [
+    "3",
+    "4"
+   ],
+   "page": 214,
+   "reading": "archive",
+   "minSanskritScore": 0.667,
+   "ownStems": 6,
+   "neighbourStems": 1
+  },
+  "51:5-6": {
+   "ref": "3.19.5-6",
+   "verses": [
+    "5",
+    "6"
+   ],
+   "page": 214,
+   "reading": "archive",
+   "minSanskritScore": 0.642,
+   "ownStems": 7,
+   "neighbourStems": 3
+  },
+  "51:8-9": {
+   "ref": "3.19.8-9",
+   "verses": [
+    "8",
+    "9"
+   ],
+   "page": 214,
+   "reading": "archive",
+   "minSanskritScore": 0.778,
+   "ownStems": 6,
+   "neighbourStems": 1
+  },
+  "51:46-47": {
+   "ref": "3.19.46-47",
+   "verses": [
+    "46",
+    "47"
+   ],
+   "page": 215,
+   "reading": "archive",
+   "minSanskritScore": 0.806,
+   "ownStems": 7,
+   "neighbourStems": 1
+  },
+  "52:11-12": {
+   "ref": "3.20.11-12",
+   "verses": [
+    "11",
+    "12"
+   ],
+   "page": 216,
+   "reading": "archive",
+   "minSanskritScore": 0.789,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "53:22-23": {
+   "ref": "3.21.22-23",
+   "verses": [
+    "22",
+    "23"
+   ],
+   "page": 223,
+   "reading": "archive",
+   "minSanskritScore": 0.921,
+   "ownStems": 6,
+   "neighbourStems": 2
+  },
+  "53:30-31": {
+   "ref": "3.21.30-31",
+   "verses": [
+    "30",
+    "31"
+   ],
+   "page": 224,
+   "reading": "archive",
+   "minSanskritScore": 0.687,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "54:13-14": {
+   "ref": "3.22.13-14",
+   "verses": [
+    "13",
+    "14"
+   ],
+   "page": 228,
+   "reading": "archive",
+   "minSanskritScore": 0.709,
+   "ownStems": 6,
+   "neighbourStems": 2
+  },
+  "55:2-3": {
+   "ref": "3.23.2-3",
+   "verses": [
+    "2",
+    "3"
+   ],
+   "page": 231,
+   "reading": "archive",
+   "minSanskritScore": 0.875,
+   "ownStems": 7,
+   "neighbourStems": 1
+  },
+  "55:7-8": {
+   "ref": "3.23.7-8",
+   "verses": [
+    "7",
+    "8"
+   ],
+   "page": 231,
+   "reading": "archive",
+   "minSanskritScore": 0.789,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "55:10-11": {
+   "ref": "3.23.10-11",
+   "verses": [
+    "10",
+    "11"
+   ],
+   "page": 231,
+   "reading": "archive",
+   "minSanskritScore": 0.807,
+   "ownStems": 7,
+   "neighbourStems": 2
+  },
+  "56:18-19": {
+   "ref": "3.24.18-19",
+   "verses": [
+    "18",
+    "19"
+   ],
+   "page": 233,
+   "reading": "archive",
+   "minSanskritScore": 0.849,
+   "ownStems": 8,
+   "neighbourStems": 3
+  },
+  "56:20-21": {
+   "ref": "3.24.20-21",
+   "verses": [
+    "20",
+    "21"
+   ],
+   "page": 233,
+   "reading": "archive",
+   "minSanskritScore": 0.836,
+   "ownStems": 9,
+   "neighbourStems": 2
+  },
+  "56:29-30": {
+   "ref": "3.24.29-30",
+   "verses": [
+    "29",
+    "30"
+   ],
+   "page": 234,
+   "reading": "archive",
+   "minSanskritScore": 0.783,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "56:37-38": {
+   "ref": "3.24.37-38",
+   "verses": [
+    "37",
+    "38"
+   ],
+   "page": 234,
+   "reading": "archive",
+   "minSanskritScore": 1,
+   "ownStems": 7,
+   "neighbourStems": 3
+  },
+  "56:47-48": {
+   "ref": "3.24.47-48",
+   "verses": [
+    "47",
+    "48"
+   ],
+   "page": 235,
+   "reading": "archive",
+   "minSanskritScore": 0.694,
+   "ownStems": 5,
+   "neighbourStems": 3
+  },
+  "56:49-50": {
+   "ref": "3.24.49-50",
+   "verses": [
+    "49",
+    "50"
+   ],
+   "page": 235,
+   "reading": "archive",
+   "minSanskritScore": 0.783,
+   "ownStems": 7,
+   "neighbourStems": 1
+  },
+  "57:7-8": {
+   "ref": "3.25.7-8",
+   "verses": [
+    "7",
+    "8"
+   ],
+   "page": 235,
+   "reading": "archive",
+   "minSanskritScore": 0.915,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "57:11-13": {
+   "ref": "3.25.11-13",
+   "verses": [
+    "11",
+    "12",
+    "13"
+   ],
+   "page": 235,
+   "reading": "archive",
+   "minSanskritScore": 0.909,
+   "ownStems": 6,
+   "neighbourStems": 0
+  },
+  "57:18-19": {
+   "ref": "3.25.18-19",
+   "verses": [
+    "18",
+    "19"
+   ],
+   "page": 236,
+   "reading": "archive",
+   "minSanskritScore": 0.803,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "57:43-44": {
+   "ref": "3.25.43-44",
+   "verses": [
+    "43",
+    "44"
+   ],
+   "page": 238,
+   "reading": "archive",
+   "minSanskritScore": 1,
+   "ownStems": 7,
+   "neighbourStems": 2
+  },
+  "57:45-46": {
+   "ref": "3.25.45-46",
+   "verses": [
+    "45",
+    "46"
+   ],
+   "page": 238,
+   "reading": "archive",
+   "minSanskritScore": 0.8,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "58:6-7": {
+   "ref": "3.26.6-7",
+   "verses": [
+    "6",
+    "7"
+   ],
+   "page": 238,
+   "reading": "archive",
+   "minSanskritScore": 0.732,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "58:12-13": {
+   "ref": "3.26.12-13",
+   "verses": [
+    "12",
+    "13"
+   ],
+   "page": 238,
+   "reading": "archive",
+   "minSanskritScore": 0.758,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "58:28-29": {
+   "ref": "3.26.28-29",
+   "verses": [
+    "28",
+    "29"
+   ],
+   "page": 240,
+   "reading": "archive",
+   "minSanskritScore": 0.746,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "58:40-44": {
+   "ref": "3.26.40-44",
+   "verses": [
+    "40",
+    "41",
+    "42",
+    "43",
+    "44"
+   ],
+   "page": 240,
+   "reading": "archive",
+   "minSanskritScore": 0.7,
+   "ownStems": 13,
+   "neighbourStems": 5
+  },
+  "59:6-8": {
+   "ref": "3.27.6-8",
+   "verses": [
+    "6",
+    "7",
+    "8"
+   ],
+   "page": 242,
+   "reading": "archive",
+   "minSanskritScore": 0.75,
+   "ownStems": 9,
+   "neighbourStems": 4
+  },
+  "59:49-50": {
+   "ref": "3.27.49-50",
+   "verses": [
+    "49",
+    "50"
+   ],
+   "page": 244,
+   "reading": "archive",
+   "minSanskritScore": 0.81,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "59:51-52": {
+   "ref": "3.27.51-52",
+   "verses": [
+    "51",
+    "52"
+   ],
+   "page": 244,
+   "reading": "archive",
+   "minSanskritScore": 0.734,
+   "ownStems": 7,
+   "neighbourStems": 2
+  },
+  "60:12-13": {
+   "ref": "3.28.12-13",
+   "verses": [
+    "12",
+    "13"
+   ],
+   "page": 246,
+   "reading": "archive",
+   "minSanskritScore": 0.8,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "60:60-61": {
+   "ref": "3.28.60-61",
+   "verses": [
+    "60",
+    "61"
+   ],
+   "page": 250,
+   "reading": "archive",
+   "minSanskritScore": 0.922,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "61:8-9": {
+   "ref": "3.29.8-9",
+   "verses": [
+    "8",
+    "9"
+   ],
+   "page": 252,
+   "reading": "archive",
+   "minSanskritScore": 0.758,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "61:20-21": {
+   "ref": "3.29.20-21",
+   "verses": [
+    "20",
+    "21"
+   ],
+   "page": 252,
+   "reading": "archive",
+   "minSanskritScore": 0.917,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "61:41-42": {
+   "ref": "3.29.41-42",
+   "verses": [
+    "41",
+    "42"
+   ],
+   "page": 253,
+   "reading": "archive",
+   "minSanskritScore": 0.902,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "62:6-7": {
+   "ref": "3.30.6-7",
+   "verses": [
+    "6",
+    "7"
+   ],
+   "page": 255,
+   "reading": "archive",
+   "minSanskritScore": 0.81,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "62:9-10": {
+   "ref": "3.30.9-10",
+   "verses": [
+    "9",
+    "10"
+   ],
+   "page": 255,
+   "reading": "archive",
+   "minSanskritScore": 0.813,
+   "ownStems": 7,
+   "neighbourStems": 1
+  },
+  "62:32-33": {
+   "ref": "3.30.32-33",
+   "verses": [
+    "32",
+    "33"
+   ],
+   "page": 257,
+   "reading": "archive",
+   "minSanskritScore": 0.9,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "62:36-37": {
+   "ref": "3.30.36-37",
+   "verses": [
+    "36",
+    "37"
+   ],
+   "page": 257,
+   "reading": "archive",
+   "minSanskritScore": 0.758,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "62:39-40": {
+   "ref": "3.30.39-40",
+   "verses": [
+    "39",
+    "40"
+   ],
+   "page": 257,
+   "reading": "archive",
+   "minSanskritScore": 0.708,
+   "ownStems": 6,
+   "neighbourStems": 1
+  }
+ }
+}
