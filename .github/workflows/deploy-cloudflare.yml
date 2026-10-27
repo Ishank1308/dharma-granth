@@ -212,7 +212,20 @@ jobs:
       # canary is enabled.
       - name: Verify deployed RSC payload parity
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
-        run: npm run verify:rsc-canary -- --local dist/scripture/bhagavadgita/chapter/2/index.txt --url https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/index.txt
+        # The upload can finish before the custom domain serves the new alias.
+        # Keep exact byte comparison on every attempt and fail after five minutes.
+        run: |
+          for attempt in {1..16}; do
+            if npm run verify:rsc-canary -- --local dist/scripture/bhagavadgita/chapter/2/index.txt --url https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/index.txt; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 16 ]; then
+              echo "::error::Deployed RSC payload did not match this build after the propagation window."
+              exit 1
+            fi
+            echo "::warning::RSC parity attempt $attempt has not matched yet; checking again in 20 seconds."
+            sleep 20
+          done
 
       # The export is live; stop paying to store it.
       - name: Delete the used CI export

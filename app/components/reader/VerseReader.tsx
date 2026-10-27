@@ -184,7 +184,7 @@ export function VerseReader(props: VerseReaderProps) {
   /* ── Sync Active Verse Context to Sacred Soundscape Engine ── */
   useEffect(() => {
     setCurrentVerseContext(verse.sanskrit, `${scriptureTitle} ${formatVerseRef(scriptureId, chapterId, verse.number)}`);
-  }, [verse.sanskrit, scriptureTitle, chapterId, verse.number]);
+  }, [verse.sanskrit, scriptureId, scriptureTitle, chapterId, verse.number]);
 
   /* ── MediaSession Lock-Screen Controls & Continuous Pārāyaṇa ── */
   useEffect(() => {

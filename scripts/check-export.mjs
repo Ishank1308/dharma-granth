@@ -277,6 +277,12 @@ for (const file of readdirSync(SOURCE).filter((f) => f.endsWith('.json'))) {
     fail(id, `source JSON unreadable: ${err.message}`);
     continue;
   }
+  // Publishing can leave a chapter's verses out on purpose (filler chapters, scripts/lib/filler-chapters.ts): the page
+  // must carry what the published manifest lists, which is the source count everywhere else.
+  const manifestPath = join(SOURCE, id, 'manifest.json');
+  const published = existsSync(manifestPath)
+    ? new Map(JSON.parse(readFileSync(manifestPath, 'utf8')).chapters.map((c) => [String(c.number), c.verseCount]))
+    : new Map();
   for (const chapter of source.chapters ?? []) {
     chaptersChecked++;
     const ref = `${id} ch${chapter.number}`;
@@ -285,7 +291,7 @@ for (const file of readdirSync(SOURCE).filter((f) => f.endsWith('.json'))) {
       fail(ref, 'chapter page was not exported');
       continue;
     }
-    const want = chapter.verses?.length ?? 0;
+    const want = published.get(String(chapter.number)) ?? chapter.verses?.length ?? 0;
     const html = readFileSync(pagePath, 'utf8');
     const cards = (h) => new Set(h.match(/<article[^>]*\bid="verse-[^"]+"/g) ?? []).size;
     let got = cards(html);

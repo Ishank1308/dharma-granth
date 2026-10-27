@@ -47,6 +47,8 @@ import type { ReadingDepth } from '@/lib/reading-depth';
 import { ActionMenu } from '@/app/components/primitives/ActionMenu';
 import { Collapsible } from '@/app/components/primitives/Collapsible';
 import { VerseStudyDisclosure } from '@/app/components/reader/VerseStudyDisclosure';
+import { MeaningPendingNote } from '@/app/components/MeaningPending';
+import type { NearbyMeaning } from '@/lib/verse-has-meaning';
 import dynamic from 'next/dynamic';
 import { useEverTrue } from '@/lib/use-ever-true';
 
@@ -69,6 +71,8 @@ export interface VerseCardData {
   hindi?: string;
   hindiSource?: 'ai';
   hindiReviewRequired?: boolean;
+  /** Hindi from a printed edition, published before it was proofread (lib/ocr-hindi-review.ts). */
+  hindiUnproofread?: boolean;
   /** This verse's Hindi covers a range ("15-17") translated together in the edition. */
   hindiRange?: string;
   /** The Hindi for this verse is stored on that verse (the first of its range). */
@@ -184,6 +188,8 @@ interface Props {
   onOpenSvadhyaya?: (tab: 'concept' | 'parallel' | 'manana', data?: unknown) => void;
   /** Whether this verse is active during recitation or jump */
   isActive?: boolean;
+  /** For a verse without a meaning: the nearest verses in this chapter that have one. */
+  meaningNearby?: NearbyMeaning;
 }
 
 type HighlightColor = VerseHighlight['color'];
@@ -257,22 +263,11 @@ function PassageText({ lang, label, long, className, children }: { lang: 'hi' | 
   );
 }
 
-/** A meaning not written yet, said quietly in the slot it will fill. */
-function PendingMeaning({ lang, onContribute, children }: { lang?: 'hi' | 'en'; onContribute?: () => void; children: ReactNode }) {
+/** A meaning not written yet in one language, said quietly in the slot it will fill. */
+function PendingMeaning({ lang, children }: { lang: 'hi' | 'en'; children: ReactNode }) {
   return (
-    <p lang={lang} className={`flex flex-wrap items-center gap-x-3 gap-y-1 text-sm italic text-dharma-muted ${lang === 'hi' ? 'font-devanagari' : ''}`}>
-      <span>{children}</span>
-      {onContribute && (
-        <button
-          type="button"
-          onClick={onContribute}
-          className="inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold not-italic text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300"
-        >
-          <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
-          <span lang="hi" className="font-devanagari">अर्थ सुझाएँ</span>
-          <span lang="en">Suggest one</span>
-        </button>
-      )}
+    <p lang={lang} className={`text-sm italic text-dharma-muted ${lang === 'hi' ? 'font-devanagari' : ''}`}>
+      {children}
     </p>
   );
 }
@@ -314,6 +309,7 @@ export function VerseCard({
   insight,
   onOpenSvadhyaya,
   isActive,
+  meaningNearby,
 }: Props) {
   const reduce = useReducedMotion();
 
@@ -860,11 +856,25 @@ export function VerseCard({
               <section id={`verse-${v.number}-arth`} aria-label={`अर्थ · Meaning, ${formatVerseRef(scriptureId, chapterId, verseLabel)}`}>
               <div className="space-y-4">
                 {bothPending ? (
-                  <PendingMeaning onContribute={chantingMode ? undefined : onContribute}>
-                    <span lang="hi" className="font-devanagari">{MEANING_COPY.bothPendingHi}</span>
-                    {' · '}
-                    <span lang="en">{MEANING_COPY.bothPendingEn}</span>
-                  </PendingMeaning>
+                  <div className="flex flex-col gap-3">
+                    {/* No meaning in either language: why, the transliteration when that layer is off, and the nearest verses with one. */}
+                    <MeaningPendingNote
+                      chapterId={chapterId}
+                      transliteration={!layers.translit ? v.transliteration : undefined}
+                      nearby={meaningNearby}
+                    />
+                    {!chantingMode && (
+                      <button
+                        type="button"
+                        onClick={onContribute}
+                        className="inline-flex min-h-[44px] items-center gap-1 self-start text-xs font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300"
+                      >
+                        <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
+                        <span lang="hi" className="font-devanagari">अर्थ सुझाएँ</span>
+                        <span lang="en">Suggest one</span>
+                      </button>
+                    )}
+                  </div>
                 ) : (
                 <>
                 {showHindi && (
@@ -873,6 +883,12 @@ export function VerseCard({
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''
                   }`}>
+                    {state.hi === 'text' && v.hindiUnproofread && (
+                      <p className="mb-1 text-xs text-dharma-muted">
+                        <span lang="hi" className="font-devanagari">{MEANING_COPY.hiUnproofread}</span>{' '}
+                        <span aria-hidden="true">·</span> <span lang="en">From the printed edition, not yet proofread</span>
+                      </p>
+                    )}
                     {state.hi === 'text' && (
                       <PassageText
                         lang="hi"

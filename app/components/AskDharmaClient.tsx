@@ -2,17 +2,19 @@
 
 import { useState, useCallback } from 'react';
 import Link from 'next/link';
-import { BookOpen, Shield, Sparkles } from 'lucide-react';
+import { ArrowRight, BookOpen, Shield, Sparkles } from 'lucide-react';
 import { answerQuestion, COPILOT_EXAMPLES, type CopilotAnswer } from '@/lib/copilot';
 import { askMuseSparkAgent } from '@/lib/muse-chat-agent';
 import { MuseAgentResponseView } from './copilot/MuseAgentResponseView';
+import { matchQuestions, type QuestionMatch, type QuestionBankEntry } from '@/lib/granth-answers-match';
 import { STUDY_HELPER_CAUTION_HI, STUDY_HELPER_MODEL_CREDIT, STUDY_HELPER_NAME, STUDY_HELPER_NAME_HI } from '@/lib/editorial-terminology';
 
 /** Full-page library guide & Meta Muse Spark 1.3 reasoning agent. */
-export function AskDharmaClient() {
+export function AskDharmaClient({ questionBank = [] }: { questionBank?: QuestionBankEntry[] }) {
   const [queryInput, setQueryInput] = useState('');
   const [asked, setAsked] = useState('');
   const [answer, setAnswer] = useState<CopilotAnswer | null>(null);
+  const [matches, setMatches] = useState<QuestionMatch[] | null>(null);
 
   // Muse Spark Agent states
   const [activeTab, setActiveTab] = useState<'library' | 'muse'>('library');
@@ -26,6 +28,7 @@ export function AskDharmaClient() {
     setQueryInput(next);
     setAsked(next);
     setActiveTab('library');
+    setMatches(matchQuestions(next, questionBank));
     setAnswer(answerQuestion(next));
   };
 
@@ -173,7 +176,46 @@ export function AskDharmaClient() {
         </div>
       )}
 
-      {answer && (
+      {activeTab === 'library' && matches && matches.length > 0 && (
+        <section className="grid gap-4" aria-labelledby="granth-matches">
+          <Link
+            href={`/ask/${matches[0].entry.slug}/`}
+            className="grid gap-2 rounded-3xl border-2 border-saffron-500/50 bg-dharma-card p-5 shadow-lg hover:border-saffron-500 sm:p-7"
+          >
+            <span id="granth-matches" className="text-xs font-bold uppercase tracking-widest text-saffron-700">
+              <span lang="hi">आपका उत्तर</span> <span>Your answer</span>
+            </span>
+            <span lang="hi" className="font-serif font-devanagari text-2xl font-bold">{matches[0].entry.questionHi}</span>
+            <span className="text-dharma-text-secondary">{matches[0].entry.questionEn}</span>
+            <span lang="hi" className="font-devanagari text-lg leading-relaxed">{matches[0].entry.sarHi}</span>
+            <span className="mt-1 inline-flex items-center gap-1.5 font-semibold text-saffron-700">
+              <span lang="hi">पूरा उत्तर पढ़ें</span> <span>Read the answer</span> <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </span>
+          </Link>
+          {matches.length > 1 && (
+            <p className="px-1 text-sm text-dharma-text-secondary">
+              <span lang="hi">मिलते‑जुलते प्रश्न:</span> <span>Close questions:</span>{' '}
+              {matches.slice(1, 3).map(({ entry }, i) => (
+                <span key={entry.slug}>
+                  {i > 0 && ' · '}
+                  <Link href={`/ask/${entry.slug}/`} lang="hi" className="font-devanagari font-semibold text-saffron-700 underline underline-offset-2">
+                    {entry.questionHi}
+                  </Link>
+                </span>
+              ))}
+            </p>
+          )}
+        </section>
+      )}
+
+      {activeTab === 'library' && matches && matches.length === 0 && !answer && (
+        <p className="rounded-3xl border border-dharma-border bg-dharma-card p-5 text-sm text-dharma-text-secondary">
+          <span lang="hi">इस प्रश्न का उत्तर‑पृष्ठ अभी नहीं बना। नीचे की सूची में मिलता‑जुलता प्रश्न देखें।</span>{' '}
+          <span>No answer page for this yet. Look for a close question in the list below.</span>
+        </p>
+      )}
+
+      {answer && !(matches && matches.length > 0) && (
         <article className="grid gap-6 rounded-3xl border border-dharma-border bg-dharma-card p-5 sm:p-8" lang="hi">
           <header className="grid gap-2">
             <p className="text-sm text-dharma-text-secondary">{asked}</p>

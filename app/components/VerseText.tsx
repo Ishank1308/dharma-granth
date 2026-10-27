@@ -9,6 +9,8 @@ interface Props {
     transliteration?: string;
     hindi?: string;
     hindiReviewRequired?: boolean;
+    /** Hindi from a printed edition, published before it was proofread. */
+    hindiUnproofread?: boolean;
     /** Hindi translating a range of verses together ("15-17"), stored on its first verse. */
     hindiRange?: string;
     /** This verse's Hindi is in the passage stored on that verse. */
@@ -87,7 +89,13 @@ export function VerseText({ verse: v, chapterId, scriptureId, href, actions }: P
       ) : (
         <>
           {state.hi === 'text' && (
-            <Passage label={v.hindiRange ? MEANING_COPY.hiRange(v.hindiRange) : undefined} lang="hi" className="vt-hi" text={hindi} />
+            <Passage
+              label={v.hindiRange ? MEANING_COPY.hiRange(v.hindiRange) : undefined}
+              note={v.hindiUnproofread ? MEANING_COPY.hiUnproofread : undefined}
+              lang="hi"
+              className="vt-hi"
+              text={hindi}
+            />
           )}
           {state.hi === 'review' && (
             <p className="vt-block vt-label" lang="hi">
@@ -124,13 +132,18 @@ export function VerseText({ verse: v, chapterId, scriptureId, href, actions }: P
 }
 
 /** One translation; a passage covering several verses carries its label, and a long one is folded under it. */
-function Passage({ label, lang, className, text }: { label?: string; lang: 'hi' | 'en'; className: string; text: string }) {
+function Passage({ label, note, lang, className, text }: { label?: string; note?: string; lang: 'hi' | 'en'; className: string; text: string }) {
   if (label && isLongPassage(text)) {
     return (
       <details className="vt-block">
         <summary className="vt-label" lang={lang}>
           {label}
         </summary>
+        {note && (
+          <p className="vt-label" lang={lang}>
+            {note}
+          </p>
+        )}
         <p lang={lang} className={`${className} vt-lines`}>
           {text}
         </p>
@@ -142,6 +155,11 @@ function Passage({ label, lang, className, text }: { label?: string; lang: 'hi' 
       {label && (
         <p className="vt-label" lang={lang}>
           {label}
+        </p>
+      )}
+      {note && (
+        <p className="vt-label" lang={lang}>
+          {note}
         </p>
       )}
       <p lang={lang} className={className}>

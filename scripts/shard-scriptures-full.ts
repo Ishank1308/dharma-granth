@@ -11,13 +11,16 @@ import fs from "node:fs";
 import path from "node:path";
 import { isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-commentary/quality";
 import { collapsePassages, findMeaningTemplates, findTemplateFields, isSanskritCopy, type PassageVerse } from "./lib/template-text";
+import { exemptFields, hideUnalignedMeanings } from "./lib/meaning-alignment";
+import { FOOTNOTE_SCRIPTURES, stripPrintedFootnote } from "./lib/printed-footnotes";
+import { fillerChapters } from "./lib/filler-chapters";
 import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
-import { isHindiSourceReviewRequired } from "../lib/ocr-hindi-review";
+import { isHindiSourceReviewRequired, isReviewKept, isUnproofreadShown } from "../lib/ocr-hindi-review";
 
 const PILOT = loadPilotOverlay();
 
 /** Bump when shard output logic changes (stubs, templates, echo rules, manifest shape). */
-const SHARD_REV = "5";
+const SHARD_REV = "7";
 
 interface ShardStamp {
   rev: string;
@@ -143,6 +146,34 @@ function main(): void {
       }
     }
 
+    // Printed footnotes filed in front of a verse (scripts/lib/printed-footnotes.ts): publish the verse alone.
+    if (FOOTNOTE_SCRIPTURES.has(id)) {
+      let stripped = 0;
+      for (const ch of book.chapters ?? []) {
+        for (const v of (ch.verses ?? []) as Record<string, unknown>[]) {
+          if (typeof v.sanskrit !== "string") continue;
+          const clean = stripPrintedFootnote(v.sanskrit, typeof v.transliteration === "string" ? v.transliteration : undefined);
+          if (!clean) continue;
+          v.sanskrit = clean.sanskrit;
+          if (clean.transliteration !== undefined) v.transliteration = clean.transliteration;
+          stripped++;
+        }
+      }
+      if (stripped) console.log(`  ${id}: published ${stripped} verse(s) without the printed footnotes filed in front of them`);
+    }
+
+    // Filler chapters (scripts/lib/filler-chapters.ts): publish them empty, so the reader shows "text being added".
+    {
+      const filler = fillerChapters(id, book.chapters ?? []);
+      let verses = 0;
+      for (const ch of book.chapters ?? []) {
+        if (!filler.has(Number(ch.number))) continue;
+        verses += ch.verses?.length ?? 0;
+        ch.verses = [];
+      }
+      if (filler.size) console.log(`  ${id}: ${filler.size} filler chapter(s) published without their ${verses} hand-picked verse(s)`);
+    }
+
     // Hide text that is the same template on many different verses; the source file is not touched.
     {
       const items = (book.chapters ?? []).flatMap((ch) =>
@@ -163,6 +194,20 @@ function main(): void {
       }
     }
 
+    // Hide Hindi and English that belong to other verses (OCR laid over the Sanskrit in reading order), and the
+    // notes generated from them. Pilot verses are left to the pilot step below, and verses in the Hindi review registry
+    // to the step after it (it withholds their Hindi and keeps their English); the build check exempts both the same way.
+    {
+      const pilotVerses = new Set(PILOT.filter((p) => p.scriptureId === id).map((p) => `${p.chapter}:${p.verse}`));
+      const hidden = hideUnalignedMeanings(book, {
+        keepVerse: (chapter, verse, field) => pilotVerses.has(`${chapter}:${verse}`) || isReviewKept(id, chapter, verse, field),
+        skipFields: exemptFields(id),
+      });
+      if (hidden.translation || hidden.hindi || hidden.notes) {
+        console.log(`  ${id}: hid ${hidden.translation} English, ${hidden.hindi} Hindi and ${hidden.notes} note field(s) not aligned to their verse`);
+      }
+    }
+
     // Editorial pilot: apply the reviewed-for-structure Artha and clear the superseded explanation fields.
     for (const p of PILOT.filter((x) => x.scriptureId === id)) {
       const ch = (book.chapters ?? []).find((c) => c.number === p.chapter);
@@ -178,6 +223,11 @@ function main(): void {
         if (!isHindiSourceReviewRequired(id, ch.number, String(verse.number))) continue;
         if (typeof verse.hindi !== "string" || !verse.hindi.trim()) {
           throw new Error(`Hindi source-review entry has no source text: ${id}:${ch.number}:${String(verse.number)}`);
+        }
+        // Refilled Hindi from a printed edition can be shown, labelled, before it is proofread (showRefillUnproofread).
+        if (isUnproofreadShown(id, ch.number, String(verse.number))) {
+          verse.hindiUnproofread = true;
+          continue;
         }
         delete verse.hindi;
         verse.hindiReviewRequired = true;

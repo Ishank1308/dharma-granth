@@ -22,8 +22,13 @@ const CHECKS = [
   'scripts/check-topic-shlokas.ts',
   'scripts/check-filler.ts',
   'scripts/check-wisdom.ts',
+  'scripts/check-granth-answers.ts',
   'scripts/check-commentary-quality.ts',
   'scripts/check-published-scriptures.ts',
+  'scripts/check-meaning-alignment.ts',
+  'scripts/check-printed-footnotes.ts',
+  'scripts/check-filler-chapters.ts',
+  'scripts/check-catalogue-counts.ts',
   'scripts/test-ocr-hindi-review.ts',
 ];
 

@@ -134,6 +134,8 @@ export const MEANING_COPY = {
   hiWith: (verse: number | string) => `इस श्लोक का हिन्दी अर्थ श्लोक ${toAsciiDigits(String(verse))} के साथ दिया गया है।`,
   enWith: (verse: number | string) => `Translated together with verse ${String(verse)}.`,
   hiReview: 'हिन्दी अर्थ स्रोत-संस्करण से सत्यापनाधीन है।',
+  /** Hindi refilled from a printed edition and shown before it is proofread. */
+  hiUnproofread: 'मुद्रित संस्करण से, प्रूफ़ जाँच शेष',
 } as const;
 
 /** A passage translation longer than this is folded under its label, in either language. */

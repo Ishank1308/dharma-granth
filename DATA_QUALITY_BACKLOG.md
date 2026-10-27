@@ -12,6 +12,7 @@ the older 316,102 figure was not a count of these files). Coverage:
 | **P4** — invented "filler" verses in ~40 scriptures | ✅ **Done** — removed from JSON, curated `.ts` and Hindi commentary; `scripts/check-filler.ts` (part of `npm run check`) blocks them and caps principal-Upanishad counts; the curated merge no longer appends curated-only chapters to a real seed |
 | **P5** — Upanishads rebuilt from source | ✅ **Done** for Kaivalya, Jabala, Shvetashvatara (113), Tejobindu, Niralamba, Maitri, Mahanarayana, Muktika (`scripts/rebuild-upanishads.ts`); Brahma Sutra, Vivekachudamani, Samaveda re-seeded in full. **Open:** Taittiriya (accented source), Kaushitaki, Amritabindu (no source found) |
 | **P6** — newly rebuilt texts have no translation/Hindi | ✅ **Done** — 100% complete for tejobindu, mahanarayana, maitri, muktika, samaveda, brahmasutra, vivekchudamani, shvetashvatara |
+| **P7** — Hindi and English that belong to other verses | ⚠️ **Hidden at publish, not fixed** (2026-10-26) — see P7 below. 166,102 Hindi and 94,764 English meanings, plus 285,936 notes built from them or ending in a stock sentence, are left out of the chapter shards; source JSON untouched; `scripts/check-meaning-alignment.ts` (part of `npm run check`) blocks them |
 
 Earlier status (2026-09-29), kept for the items below:
 
@@ -23,6 +24,47 @@ Earlier status (2026-09-29), kept for the items below:
 | **P1b** — missing Hindi (bulk corpus) | ⚠️ **Open** — 53/65 complete; worst: shivpurana, brahmapuran, brahmandpuran, skandapuran, manusmriti (35%), durgasaptashati (2%) (`npx tsx scripts/_hindi-coverage-report.ts`) |
 | **P3** — durgasaptashati misalignment | ✅ **Done** — structural `chapter.id` + `verse.id` merge (16/16 aligned) |
 | **P2b** — mangled mixed-script headers | ✅ **Done** — parser fix + `fix-mixed-script-verses.ts` (0 mixed-script verses remain) |
+
+## P7 — Hindi and English that belong to other verses ⚠️ HIDDEN AT PUBLISH (2026-10-26)
+
+Most Puranas, the Mahabharata and several other texts were filled from OCR of a printed translation laid over
+the Sanskrit in reading order. The printed book does not break where the Sanskrit edition does, so the meanings
+drift onto other verses. Examples: Shiva Purana 21.26 (ganas striking heads) showed Upamanyu asking his mother for
+milk; one Hindi line, "शिवको मेरा नमस्कार है", was the Hindi of 3,372 different verses; Mahabharata 22.35 showed a
+Sanskrit half-line from another verse as its "Hindi". The explanation and research notes were then generated as
+"<that Hindi>। <one of ~10 stock sentences>", so they drifted too.
+
+**How it is measured** (`scripts/lib/meaning-alignment.ts`). A Hindi meaning shares words with its own Sanskrit,
+and an English one carries its proper names. Per chapter we compare how often a meaning shares a word with its own
+verse against a verse half a chapter away. Aligned text scores far above the baseline (Gita Hindi 89% vs 12%,
+Harivamsha Hindi 87% vs 8%); drifted text scores at the baseline (Shiva Purana Hindi 2% vs 1%, Mahabharata 6% vs
+3%). English made for one verse at a time (`translationSource: "ai"`) is verse-aligned and is kept.
+
+**What publishing now does** (`scripts/shard-scriptures-full.ts`, SHARD_REV 3): leaves out every meaning in a
+chapter that fails the test, every Hindi or English value repeated on 3+ verses with different Sanskrit, every
+note ending in a stock sentence, and the notes generated from a removed meaning. The source JSON keeps all of it.
+Pages left without a meaning show the "meaning not yet added" notice, and `lib/verse-meaning.ts` keeps them out of the sitemap.
+
+| | Hidden | Main texts |
+|---|--:|---|
+| Hindi | 166,102 | Mahabharata (all), Naradiya, Brahmanda, Brahma, Shiva, Garuda, Agni, Matsya, Vayu, Linga, Skanda, Vamana, Kurma, Vishnu, Markandeya, Narasimha; Manusmriti, Yajurveda |
+| English (non-"ai") | 94,764 | Garuda, Brahmanda, Shiva, Matsya, Vayu, Naradiya, Linga, Kurma, Vamana, Brahma, Agni, Markandeya, Vishnu, Mahabharata (Ganguli part), Narasimha, Skanda, Harivamsha, Manusmriti (Bühler, ch. 11 drifts by a verse or two) |
+| Placeholders | 696 + 696 | every Hindi and English line of Shiva Swarodaya (395) and Yoga Rasayanam (301) |
+| Notes | 285,936 | the notes of every hidden meaning, and every note ending in a stock sentence, including 1 in the Gita, 118 in Katha and 564 in Chandogya |
+
+Exempt (`ALIGNMENT_EXEMPT` in `scripts/lib/meaning-alignment.ts`): the word test cannot measure Maitri, Chandogya
+and Mundaka (unspaced Sanskrit), or Griffith's Yajurveda English, and the repeat test misreads the Samaveda's
+repeated mantras and the Durga Saptashati's Hindi, printed across groups of verses. All of these were checked by
+eye and are aligned. Their meanings are kept, along with those of the Gita, the other Upanishads, Brahma Sutra,
+Vivekachudamani, the Max Müller SBE English and all "ai" English.
+
+Known loss: the small seeded chapters at the start of most Puranas and Mahabharata parvas (P4-style hand-picked
+verses, often from another text) carry correct meanings, but they take their book's failing verdict and are hidden.
+
+**Open:** bring meanings back only from verse-aligned sources, a text at a time. Re-running the seeders' prose
+mapping will not pass `check-meaning-alignment`.
+
+---
 
 ## TL;DR
 
@@ -119,7 +161,10 @@ removed, brihadaranyaka ×4, manusmriti ×2, yogarasayanam ×5. Verify:
 
 ---
 
-## P1 — Missing English translations ✅ DONE (2026-06-21)
+## P1 — Missing English translations ⚠️ REOPENED (2026-10-25)
+
+> **Correction 2026-10-25:** "100%" below meant *filled*, not *correct*. Most of the prose-mapped English
+> belongs to other verses; see P7. Real coverage is the verse-aligned English only.
 
 All **65** `scriptures-full` JSON files now have **100% English translation
 coverage** (316k+ verses). Seeded via public-domain sources (GRETIL, Tagare,

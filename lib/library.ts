@@ -194,6 +194,13 @@ export function verificationOf(item: ScriptureMeta): VerificationStatus {
   if (!item.hasData || item.totalVerses === 0) {
     return { id: 'catalog', label: 'Catalogue entry', hint: 'सूची में है। श्लोक पाठ अभी प्रकाशित नहीं है।' };
   }
+  if (item.selectedVerses) {
+    return {
+      id: 'curated',
+      label: 'चयनित श्लोक · Selected verses',
+      hint: 'पुस्तकालय में इस ग्रंथ के चुने हुए श्लोक हैं, पूरा पाठ नहीं।',
+    };
+  }
   if (item.isCurated || partial) {
     return {
       id: item.isCurated ? 'curated' : 'partial',

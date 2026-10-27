@@ -41,15 +41,16 @@ function isRangeRun(keys: string[]): boolean {
   return pos[pos.length - 1] - pos[0] + 1 === pos.length;
 }
 
-/** Returns "<key>|<field>" for every field value that is a template. */
-export function findTemplateFields(items: TemplateItem[]): Set<string> {
+/** Returns "<key>|<field>" for every field value that is a template. `minLength` overrides MIN_LENGTH for short fields. */
+export function findTemplateFields(items: TemplateItem[], opts: { minLength?: number } = {}): Set<string> {
+  const minLength = opts.minLength ?? MIN_LENGTH;
   const byValue = new Map<string, { sanskrit: Set<string>; where: string[] }>();
   for (const it of items) {
     const sk = norm(it.sanskrit);
     for (const [field, raw] of Object.entries(it.fields)) {
       if (typeof raw !== 'string') continue;
       const text = norm(raw);
-      if (text.length <= MIN_LENGTH) continue;
+      if (text.length <= minLength) continue;
       const id = `${field}\u0001${shape(text)}`;
       const entry = byValue.get(id) ?? { sanskrit: new Set<string>(), where: [] };
       entry.sanskrit.add(sk);
