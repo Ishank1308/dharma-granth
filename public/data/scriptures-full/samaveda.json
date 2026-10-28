@@ -1881,420 +1881,480 @@
           "sanskrit": "अभि त्वा शूर नोनुमोऽदुग्धा इव धेनवः । ईशानमस्य जगतः स्वर्दृशमीशानमिन्द्र तस्थुषः",
           "transliteration": "abhi tvā śūra nonumo'dugdhā iva dhenavaḥ | īśānamasya jagataḥ svardṛśamīśānamindra tasthuṣaḥ",
           "translation": "We cry to you, O hero, like unmilked cows — you who rule this world, who see the sun, who rule what stands, Indra.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे शूर इन्द्र! जैसे बिना दुही गौएँ (बछड़े के लिए) रँभाती हैं, वैसे ही हम आपकी स्तुति करते हैं; आप इस चलते हुए जगत् के स्वामी हैं, स्वर्ग के द्रष्टा हैं, और स्थावर जगत् के भी स्वामी हैं।"
         },
         {
           "number": 234,
           "sanskrit": "त्वामिद्धि हवामहे सातौ वाजस्य कार्वः । त्वां वृत्रेष्विन्द्र सत्पतिं नरस्त्वां काष्ठास्वर्वतः",
           "transliteration": "tvāmiddhi havāmahe sātau vājasya kārvaḥ | tvāṃ vṛtreṣvindra satpatiṃ narastvāṃ kāṣṭhāsvarvataḥ",
           "translation": "We call on you alone for the winning of strength, the poets; you, lord of the good in battles, Indra — men call on you, as do racers at the goals.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हम कवि (स्तोता) अन्न-बल की प्राप्ति के लिए आपको ही बुलाते हैं; हे इन्द्र! शत्रुओं के बीच सज्जनों के रक्षक आपको मनुष्य बुलाते हैं, और घुड़दौड़ की सीमाओं पर घोड़ों वाले भी आपको ही बुलाते हैं।"
         },
         {
           "number": 235,
           "sanskrit": "अभि प्र वः सुराधसमिन्द्रमर्च यथा विदे । यो जरितृभ्यो मघवा पुरूवसुः सहस्रेणेव शिक्षति",
           "transliteration": "abhi pra vaḥ surādhasamindramarca yathā vide | yo jaritṛbhyo maghavā purūvasuḥ sahasreṇeva śikṣati",
           "translation": "Praise Indra, bounteous, as one who knows, who gives to singers, rich in wealth, giving as if by thousands.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "(हे स्तोताओ!) उत्तम धन वाले इन्द्र की ऐसी अर्चना करो, जैसी वे जानते हैं; वे बहुत धन वाले मघवा स्तुति करने वालों को मानो हजारों का दान देते हैं।"
         },
         {
           "number": 236,
           "sanskrit": "तं वो दस्ममृतीषहं वसोर्मन्दानमन्धसः । अभि वत्सं न स्वसरेषु धेनव इन्द्रं गीर्भिर्नवामहे",
           "transliteration": "taṃ vo dasmamṛtīṣahaṃ vasormandānamandhasaḥ | abhi vatsaṃ na svasareṣu dhenava indraṃ gīrbhirnavāmahe",
           "translation": "Him, your wondrous victor over foes, rejoicing in the soma-drink of the Vasu — with songs we praise Indra anew, as cows their calf in their stalls.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हम उस दर्शनीय, शत्रुओं को दबाने वाले, उत्तम सोम-रस से आनन्दित होने वाले इन्द्र की वाणियों से स्तुति करते हैं, जैसे गौएँ अपने बाड़ों में बछड़े की ओर रँभाती हैं।"
         },
         {
           "number": 237,
           "sanskrit": "तरोभिर्वो विदद्वसुमिन्द्रँ सबाध ऊतये । बृहद्गायन्तः सुतसोमे अध्वरे हुवे भरं न कारिणम्",
           "transliteration": "tarobhirvo vidadvasumindram̐ sabādha ūtaye | bṛhadgāyantaḥ sutasome adhvare huve bharaṃ na kāriṇam",
           "translation": "With strengths I invoke Indra, finder of wealth, together with our fellows for help, at the soma-pressing sacrifice, singing loudly, as one calls a worker for his burden.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "कष्ट से घिरा हुआ मैं अपनी रक्षा के लिए, सोम वाले यज्ञ में ऊँचे स्वर से गाते हुए, अपने वेग से धन पाने वाले इन्द्र का ऐसे आह्वान करता हूँ, जैसे (लोग) पालन करने वाले कर्मठ (स्वामी) को बुलाते हैं।"
         },
         {
           "number": 238,
           "sanskrit": "तरणिरित्सिषासति वाजं पुरन्ध्या युजा । आ व इन्द्रं पुरुहूतं नमे गिरा नेमिं तष्टेव सुद्रुवम्",
           "transliteration": "taraṇiritsiṣāsati vājaṃ purandhyā yujā | ā va indraṃ puruhūtaṃ name girā nemiṃ taṣṭeva sudruvam",
           "translation": "The swift one desires strength with his yoked fullness; with song I bow to Indra, invoked by many, as a carpenter to a well-running wheel-rim.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "वेगवान् (उपासक) ही बुद्धि को साथी बनाकर अन्न-बल प्राप्त करना चाहता है; जैसे बढ़ई अच्छी लकड़ी की नेमि को झुकाता है, वैसे ही मैं अनेकों द्वारा बुलाए गए इन्द्र को अपनी वाणी से तुम्हारी ओर झुकाता हूँ।"
         },
         {
           "number": 239,
           "sanskrit": "पिबा सुतस्य रसिनो मत्स्वा न इन्द्र गोमतः । आपिर्नो बोधि सधमाद्ये वृधे३ऽस्माँ अवन्तु ते धियः",
           "transliteration": "pibā sutasya rasino matsvā na indra gomataḥ | āpirno bodhi sadhamādye vṛdhe3'smām̐ avantu te dhiyaḥ",
           "translation": "Drink the flavored pressed soma, Indra, and rejoice for us, rich in cattle; be our kinsman in the shared feast; may your thoughts protect us.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! इस रसीले, दूध मिले निचोड़े हुए सोम को पीजिए और हमें आनन्दित कीजिए; साथ आनन्द मनाने में हमारी वृद्धि के लिए बन्धु बनिए; आपकी कृपा-बुद्धियाँ हमारी रक्षा करें।"
         },
         {
           "number": 240,
           "sanskrit": "त्वँ ह्येहि चेरवे विदा भगं वसुत्तये । उद्वावृषस्व मघवन्गविष्टय उदिन्द्राश्वमिष्टये",
           "transliteration": "tvam̐ hyehi cerave vidā bhagaṃ vasuttaye | udvāvṛṣasva maghavangaviṣṭaya udindrāśvamiṣṭaye",
           "translation": "You come, for the wanderer; find fortune for the winning of wealth; rise up, bounteous one, for the seeking of cattle, Indra, for the seeking of horses.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे मघवन्! (आपकी) सेवा करने वाले के लिए पधारिए, धन पाने के लिए (उसे) सौभाग्य प्राप्त कराइए; हे इन्द्र! गौ चाहने वाले के लिए और घोड़ा चाहने वाले के लिए (धन की) वर्षा कीजिए।"
         },
         {
           "number": 241,
           "sanskrit": "न हि वश्चरमं च न वसिष्ठः परिमँस्ते । अस्माकमद्य मरुतः सुते सचा विश्वे पिबन्तु कामिनः",
           "transliteration": "na hi vaścaramaṃ ca na vasiṣṭhaḥ parimam̐ste | asmākamadya marutaḥ sute sacā viśve pibantu kāminaḥ",
           "translation": "For neither the last nor Vasishtha will be shut out from you; today, O Maruts, may all the wishful ones drink together at our pressing.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "(हे मरुतो!) वसिष्ठ तुममें से अन्तिम (छोटे से छोटे) की भी उपेक्षा नहीं करता; आज हमारे सोम-यज्ञ में (सोम) चाहने वाले सब मरुत साथ मिलकर पिएँ।"
         },
         {
           "number": 242,
           "sanskrit": "मा चिदन्यद्वि शँसत सखायो मा रिषण्यत । इन्द्रमित्स्तोता वृषणँ सचा सुते मुहुरुक्था च शँसत",
           "transliteration": "mā cidanyadvi śam̐sata sakhāyo mā riṣaṇyata | indramitstotā vṛṣaṇam̐ sacā sute muhurukthā ca śam̐sata",
           "translation": "Friends, praise no other; do not wish harm. Praise Indra the bull together at the pressing, and recite the hymns again and again.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे मित्रो! किसी दूसरे की स्तुति मत करो, (यों) हानि मत उठाओ; सोम निकलने पर सब मिलकर वर्षणशील इन्द्र की ही स्तुति करो और बार-बार स्तोत्र बोलो।"
         },
         {
           "number": 243,
           "sanskrit": "न किष्टं कर्मणा नशद्यश्चकार सदावृधम् । इन्द्रं न यज्ञैर्विश्वगूर्तमृभ्वसमधृष्टं धृष्णुमोजसा",
           "transliteration": "na kiṣṭaṃ karmaṇā naśadyaścakāra sadāvṛdham | indraṃ na yajñairviśvagūrtamṛbhvasamadhṛṣṭaṃ dhṛṣṇumojasā",
           "translation": "No work of him who has made the ever-growing one perishes; by sacrifices praise Indra, the all-praised, skilful, unassailable, bold in strength.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जिसने सदा बढ़ने वाले, सबके द्वारा प्रशंसित, महान्, अजेय और बल से (शत्रु को) दबाने वाले इन्द्र को यज्ञों से अपना बना लिया, उसे कोई कर्म से पीछे नहीं छोड़ सकता।"
         },
         {
           "number": 244,
           "sanskrit": "य ऋते चिदभिश्रिषः पुरा जत्रुभ्य आतृदः । सन्धाता सन्धिं मघवा पुरूवसुर्निष्कर्ता विह्रुतं पुनः",
           "transliteration": "ya ṛte cidabhiśriṣaḥ purā jatrubhya ātṛdaḥ | sandhātā sandhiṃ maghavā purūvasurniṣkartā vihrutaṃ punaḥ",
           "translation": "He who, without any support, breaks things before the collar-bones, the bounteous, rich in wealth, joins what is joined and restores again what is broken.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "बहुत धन वाले मघवा, बिना किसी लेप के भी, गले की हड्डियाँ कटने से पहले ही जोड़ को जोड़ देने वाले और टूटे हुए को फिर से ठीक कर देने वाले हैं।"
         },
         {
           "number": 245,
           "sanskrit": "आ त्वा सहस्रमा शतं युक्ता रथे हिरण्यये । ब्रह्मयुजो हरय इन्द्र केशिनो वहन्तु सोमपीतये",
           "transliteration": "ā tvā sahasramā śataṃ yuktā rathe hiraṇyaye | brahmayujo haraya indra keśino vahantu somapītaye",
           "translation": "May a thousand, a hundred, yoked to your golden chariot, your prayer-yoked, long-maned bay horses carry you, Indra, to drink the soma.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! सोने के रथ में जुते हुए, मन्त्र से जुड़ने वाले, अयाल वाले हजार और सौ हरि घोड़े आपको सोम-पान के लिए यहाँ ले आएँ।"
         },
         {
           "number": 246,
           "sanskrit": "आ मन्द्रैरिन्द्र हरिभिर्याहि मयूररोमभिः । मा त्वा के चिन्नि येमुरिन्न पाशिनोऽति धन्वेव ताँ इहि",
           "transliteration": "ā mandrairindra haribhiryāhi mayūraromabhiḥ | mā tvā ke cinni yemurinna pāśino'ti dhanveva tām̐ ihi",
           "translation": "Come, Indra, with your joyful bay horses, with peacock-feathered coats; let none, though they bind you, hold you back; pass beyond them like an archer.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! मोर-पंख जैसे रोमों वाले आनन्ददायी हरि घोड़ों के साथ पधारिए; कोई आपको (मार्ग में) रोक न ले, जैसे बहेलिए पक्षी को रोकते हैं; उन्हें मरुभूमि की तरह पार करके यहाँ आइए।"
         },
         {
           "number": 247,
           "sanskrit": "त्वमङ्ग प्र शँसिषो देवः शविष्ठ मर्त्यम् । न त्वदन्यो मघवन्नस्ति मर्डितेन्द्र ब्रवीमि ते वचः",
           "transliteration": "tvamaṅga pra śam̐siṣo devaḥ śaviṣṭha martyam | na tvadanyo maghavannasti marḍitendra bravīmi te vacaḥ",
           "translation": "You indeed, O mightiest god, are praised for the mortal; there is no other than you, bounteous one, to be gracious; Indra, I speak this word to you.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे प्रिय, सबसे बलवान् इन्द्रदेव! आप मनुष्य की प्रशंसा करते हैं; हे मघवन्! आपके सिवा कोई दूसरा सुख देने वाला नहीं है; हे इन्द्र! मैं आपसे यही वचन कहता हूँ।"
         },
         {
           "number": 248,
           "sanskrit": "त्वमिन्द्र यशा अस्यृजीषी शवसस्पतिः । त्वं वृत्राणि हँस्यप्रतीन्येक इत्पुर्वनुत्तश्चर्षणीधृतिः",
           "transliteration": "tvamindra yaśā asyṛjīṣī śavasaspatiḥ | tvaṃ vṛtrāṇi ham̐syapratīnyeka itpurvanuttaścarṣaṇīdhṛtiḥ",
           "translation": "You, Indra, are glorious, the receiver of the pressed soma, lord of strength; you alone slay the unopposed Vritras, the supporter of peoples, urged on by many.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! आप यशस्वी, सोम के तलछट को भी स्वीकार करने वाले और बल के स्वामी हैं; आप अकेले ही अजेय वृत्रों का वध करते हैं; आप किसी से न हटाए जाने वाले और मनुष्यों के धारक हैं।"
         },
         {
           "number": 249,
           "sanskrit": "इन्द्रमिद्देवतातय इन्द्रं प्रयत्यध्वरे । इन्द्रँ समीके वनिनो हवामह इन्द्रं धनस्य सातये",
           "transliteration": "indramiddevatātaya indraṃ prayatyadhvare | indram̐ samīke vanino havāmaha indraṃ dhanasya sātaye",
           "translation": "We call on Indra for worship; Indra at the progressing sacrifice; Indra in battle, we the singers call, and Indra for the winning of wealth.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "देव-यज्ञ के लिए हम इन्द्र को बुलाते हैं, यज्ञ आरम्भ होने पर इन्द्र को, युद्ध में भक्त जन इन्द्र को, और धन की प्राप्ति के लिए भी इन्द्र को ही बुलाते हैं।"
         },
         {
           "number": 250,
           "sanskrit": "इमा उ त्वा पुरूवसो गिरो वर्धन्तु या मम । पावकवर्णाः शुचयो विपश्चितोऽभि स्तोमैरनूषत",
           "transliteration": "imā u tvā purūvaso giro vardhantu yā mama | pāvakavarṇāḥ śucayo vipaścito'bhi stomairanūṣata",
           "translation": "May these songs of mine strengthen you, O rich in wealth; the pure, fire-colored sages have sung to you with hymns.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे बहुत धन वाले इन्द्र! मेरी ये वाणियाँ आपको बढ़ाएँ; अग्नि के समान वर्ण वाले, पवित्र, ज्ञानी (स्तोताओं) ने स्तोत्रों से आपकी स्तुति की है।"
         },
         {
           "number": 251,
           "sanskrit": "उदु त्ये मधुमत्तमा गिर स्तोमास ईरते । सत्राजितो धनसा अक्षितोतयो वाजयन्तो रथा इव",
           "transliteration": "udu tye madhumattamā gira stomāsa īrate | satrājito dhanasā akṣitotayo vājayanto rathā iva",
           "translation": "These sweetest songs and hymns of praise rise up — they are victory-winning, wealth-giving, unfailing helpers, striving like chariots.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "ये अत्यंत मधुर वाणियाँ और स्तोत्र ऊपर उठ रहे हैं, जैसे सदा विजयी, धन दिलाने वाले, अक्षय रक्षा वाले और अन्न-बल चाहने वाले रथ (आगे बढ़ते हैं)।"
         },
         {
           "number": 252,
           "sanskrit": "यथा गौरो अपा कृतं तृष्यन्नेत्यवेरिणम् । आपित्वे नः प्रपित्वे तूयमा गहि कण्वेषु सु सचा पिब",
           "transliteration": "yathā gauro apā kṛtaṃ tṛṣyannetyaveriṇam | āpitve naḥ prapitve tūyamā gahi kaṇveṣu su sacā piba",
           "translation": "As a thirsty wild buffalo goes to the prepared water, so come swiftly in our kinship and our approach; drink well among the Kanvas.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जैसे प्यासा गौर मृग जल से भरे तालाब की ओर जाता है, वैसे ही (हे इन्द्र!) मित्रता में, साँझ के समय शीघ्र आइए और कण्वों के साथ भली-भाँति (सोम) पीजिए।"
         },
         {
           "number": 253,
           "sanskrit": "शग्ध्यू३षु शचीपत इन्द्र विश्वाभिरूतिभिः । भगं न हि त्वा यशसं वसुविदमनु शूर चरामसि",
           "transliteration": "śagdhyū3ṣu śacīpata indra viśvābhirūtibhiḥ | bhagaṃ na hi tvā yaśasaṃ vasuvidamanu śūra carāmasi",
           "translation": "Be able, lord of power, Indra, with all your helps; for we follow you, O hero, as fortune, glorious, finder of wealth.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे शक्ति के स्वामी इन्द्र! अपनी सब रक्षाओं के साथ (हमें) भली-भाँति सामर्थ्य दीजिए; हे शूर! आप भग के समान यशस्वी और धन प्राप्त कराने वाले हैं, हम आपका ही अनुसरण करते हैं।"
         },
         {
           "number": 254,
           "sanskrit": "या इन्द्र भुज आभरः स्वर्वाँ असुरेभ्यः । स्तोतारमिन्मघवन्नस्य वर्धय ये च त्वे वृक्तबर्हिषः",
           "transliteration": "yā indra bhuja ābharaḥ svarvām̐ asurebhyaḥ | stotāraminmaghavannasya vardhaya ye ca tve vṛktabarhiṣaḥ",
           "translation": "The arms, Indra, that you brought from the Asuras, winning the light — increase, bounteous one, this singer and those who have spread the grass for you.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे स्वर्ग के स्वामी इन्द्र! जो भोग आप असुरों से (छीनकर) लाए, हे मघवन्! उनसे अपने स्तोता को बढ़ाइए, और उन्हें भी जिन्होंने आपके लिए कुश बिछाया है।"
         },
         {
           "number": 255,
           "sanskrit": "प्र मित्राय प्रार्यम्णे सचथ्यमृतावसो । वरूथ्ये३ वरुणे छन्द्यं वचः स्तोत्रँ राजसु गायत",
           "transliteration": "pra mitrāya prāryamṇe sacathyamṛtāvaso | varūthye3 varuṇe chandyaṃ vacaḥ stotram̐ rājasu gāyata",
           "translation": "Sing forth a praise-song, fitting, to Mitra and Aryaman, O keepers of truth; sing the hymn to Varuna, the protector, among the kings.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे ऋत-धन वाले (स्तोताओ)! मित्र के लिए, अर्यमा के लिए साथ मिलकर (स्तुति) करो; रक्षा करने वाले वरुण के लिए छन्द-बद्ध वचन, और इन राजाओं के लिए स्तोत्र गाओ।"
         },
         {
           "number": 256,
           "sanskrit": "अभि त्वा पूर्वपीतय इन्द्र स्तोमेभिरायवः । समीचीनास ऋभवः समस्वरन्रुद्रा गृणन्त पूर्व्यम्",
           "transliteration": "abhi tvā pūrvapītaya indra stomebhirāyavaḥ | samīcīnāsa ṛbhavaḥ samasvaranrudrā gṛṇanta pūrvyam",
           "translation": "The Ayus, with hymns, for your first drinking, O Indra; the Ribhus joined in one voice; the Rudras praised the ancient one.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! सबसे पहले सोम पीने के लिए मनुष्यों ने स्तोत्रों से आपकी स्तुति की; एक मन वाले ऋभुओं ने साथ मिलकर गाया और रुद्रों (मरुतों) ने प्राचीन (इन्द्र) की प्रशंसा की।"
         },
         {
           "number": 257,
           "sanskrit": "प्र व इन्द्राय बृहते मरुतो ब्रह्मार्चत । वृत्रँ हनति वृत्रहा शतक्रतुर्वज्रेण शतपर्वणा",
           "transliteration": "pra va indrāya bṛhate maruto brahmārcata | vṛtram̐ hanati vṛtrahā śatakraturvajreṇa śataparvaṇā",
           "translation": "O Maruts, offer the prayer for your great Indra; the Vritra-slayer, hundred-powered, slays Vritra with the hundred-jointed thunderbolt.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे मरुतो! महान् इन्द्र के लिए स्तुति-मन्त्र गाओ; सौ कर्मों वाले वृत्रहन्ता इन्द्र सौ गाँठों वाले वज्र से वृत्र का वध करते हैं।"
         },
         {
           "number": 258,
           "sanskrit": "बृहदिन्द्राय गायत मरुतो वृत्रहन्तमम् । येन ज्योतिरजनयन्नृतावृधो देवं देवाय जागृवि",
           "transliteration": "bṛhadindrāya gāyata maruto vṛtrahantamam | yena jyotirajanayannṛtāvṛdho devaṃ devāya jāgṛvi",
           "translation": "Sing the great song to Indra, O Maruts, the best slayer of Vritra, by which the truth-strengtheners brought forth light — a wakeful god for the god.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे मरुतो! इन्द्र के लिए वह बृहत् (साम) गाओ, जो वृत्र का सबसे बड़ा नाशक है, जिससे ऋत को बढ़ाने वाले (देवों) ने देव (इन्द्र) के लिए जागने वाली दिव्य ज्योति उत्पन्न की।"
         },
         {
           "number": 259,
           "sanskrit": "इन्द्र क्रतुं न आ भर पिता पुत्रेभ्यो यथा । शिक्षा णो अस्मिन्पुरुहूत यामनि जीवा ज्योतिरशीमहि",
           "transliteration": "indra kratuṃ na ā bhara pitā putrebhyo yathā | śikṣā ṇo asminpuruhūta yāmani jīvā jyotiraśīmahi",
           "translation": "O Indra, bring us wisdom, as a father to his sons; teach us in this course, O much-invoked, that living we may attain the light.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! जैसे पिता पुत्रों को देता है, वैसे ही हमें कर्म-बुद्धि दीजिए; हे अनेकों द्वारा बुलाए गए! इस यात्रा में हमें शिक्षा दीजिए, ताकि हम जीवित रहकर ज्योति प्राप्त करें।"
         },
         {
           "number": 260,
           "sanskrit": "मा न इन्द्र परा वृणग्भवा नः सधमाद्ये । त्वं न ऊती त्वमिन्न आप्यम् मा न इन्द्र परा वृणक्",
           "transliteration": "mā na indra parā vṛṇagbhavā naḥ sadhamādye | tvaṃ na ūtī tvaminna āpyam mā na indra parā vṛṇak",
           "translation": "Indra, do not abandon us; be with us in the shared feast; you are our help, you our kinship; Indra, do not forsake us.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! हमें मत त्यागिए, हमारे साथ आनन्द-भोज में रहिए; आप ही हमारी रक्षा हैं, आप ही हमारे बन्धु हैं; हे इन्द्र! हमें मत त्यागिए।"
         },
         {
           "number": 261,
           "sanskrit": "वयं घ त्वा सुतावन्त आपो न वृक्तबर्हिषः । पवित्रस्य प्रस्रवणेषु वृत्रहन्परि स्तोतार आसते",
           "transliteration": "vayaṃ gha tvā sutāvanta āpo na vṛktabarhiṣaḥ | pavitrasya prasravaṇeṣu vṛtrahanpari stotāra āsate",
           "translation": "We who have pressed the soma for you, Vritra-slayer, and spread the grass, sit around the streams of the filter, as the waters.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे वृत्रहन्ता! सोम लिए हुए, कुश बिछाए हुए हम स्तोता छलनी से बहती धाराओं के पास, जल के समान, आपके चारों ओर बैठे हैं।"
         },
         {
           "number": 262,
           "sanskrit": "यदिन्द्र नाहुषीष्वा ओजो नृम्णं च कृष्टिषु । यद्वा पञ्च क्षितीनां द्युम्नमा भर सत्रा विश्वानि पौँस्या",
           "transliteration": "yadindra nāhuṣīṣvā ojo nṛmṇaṃ ca kṛṣṭiṣu | yadvā pañca kṣitīnāṃ dyumnamā bhara satrā viśvāni paum̐syā",
           "translation": "Indra, the strength and manly power that you have among the Nahusha peoples, or among the five tribes — bring that splendor, and all manly powers together.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! नहुष की प्रजाओं में और सब मनुष्यों में जो ओज और पराक्रम है, अथवा पाँचों जनों का जो तेज है, वह सब बल एक साथ हमारे लिए ले आइए।"
         },
         {
           "number": 263,
           "sanskrit": "सत्यमित्था वृषेदसि वृषजूतिर्नोऽविता । वृषा ह्युग्र शृण्विषे परावति वृषो अर्वावति श्रुतः",
           "transliteration": "satyamitthā vṛṣedasi vṛṣajūtirno'vitā | vṛṣā hyugra śṛṇviṣe parāvati vṛṣo arvāvati śrutaḥ",
           "translation": "Truly, thus you are a bull; our helper is urged on by bulls; you, fierce one, are heard far away; the bull is renowned near and far.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "सचमुच आप ऐसे ही वर्षणशील हैं; वर्षणशील वेग वाले आप हमारे रक्षक हैं; हे उग्र! आप दूर भी वर्षणशील सुने जाते हैं और पास भी वर्षणशील प्रसिद्ध हैं।"
         },
         {
           "number": 264,
           "sanskrit": "यच्छक्रासि परावति यदर्वावति वृत्रहन् । अतस्त्वा गीर्भिर्द्युगदिन्द्र केशिभिः सुतावाँ आ विवासति",
           "transliteration": "yacchakrāsi parāvati yadarvāvati vṛtrahan | atastvā gīrbhirdyugadindra keśibhiḥ sutāvām̐ ā vivāsati",
           "translation": "Whether, mighty one, you are far away, or nearby, Vritra-slayer, from there the pressed-soma giver, with his bay horses, honors you with songs.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे शक्र, हे वृत्रहन्ता इन्द्र! चाहे आप दूर हों या पास, वहीं से सोम-यज्ञ करने वाला (यजमान) आपके अयाल वाले घोड़ों के साथ, स्वर्ग तक पहुँचने वाली वाणियों से आपकी उपासना करता है।"
         },
         {
           "number": 265,
           "sanskrit": "अभि वो वीरमन्धसो मदेषु गाय गिरा महा विचेतसम् । इन्द्रं नाम श्रुत्यँ शाकिनं वचो यथा",
           "transliteration": "abhi vo vīramandhaso madeṣu gāya girā mahā vicetasam | indraṃ nāma śrutyam̐ śākinaṃ vaco yathā",
           "translation": "In the delights of the drink, sing with song for yourselves the great, wise hero Indra, the powerful, of famed name, in words.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "(हे स्तोता!) सोम के आनन्द में उस वीर, विशेष ज्ञानी इन्द्र के लिए महान् वाणी से गाओ, जिसका नाम सुनने योग्य है और जो वचन के अनुरूप शक्तिशाली है।"
         },
         {
           "number": 266,
           "sanskrit": "इन्द्र त्रिधातु शरणं त्रिवरूथँ स्वस्तये । छर्दिर्यच्छ मघवद्भ्यश्च मह्यं च यावया दिद्युमेभ्यः",
           "transliteration": "indra tridhātu śaraṇaṃ trivarūtham̐ svastaye | chardiryaccha maghavadbhyaśca mahyaṃ ca yāvayā didyumebhyaḥ",
           "translation": "Indra, grant a threefold refuge, threefold shelter, for welfare; give protection to the bountiful and to me; drive away from these the shining enemies.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! कल्याण के लिए तीन धातुओं वाला, तीन रक्षा-कवचों वाला आश्रय (घर) धनी यजमानों को और मुझे दीजिए; इनसे (शत्रु के) चमकते अस्त्र को दूर रखिए।"
         },
         {
           "number": 267,
           "sanskrit": "श्रायन्त इव सूर्यं विश्वेदिन्द्रस्य भक्षत । वसूनि जातो जनिमान्योजसा प्रति भागं न दीधिमः",
           "transliteration": "śrāyanta iva sūryaṃ viśvedindrasya bhakṣata | vasūni jāto janimānyojasā prati bhāgaṃ na dīdhimaḥ",
           "translation": "They seek the sun as if resting; enjoy all that belongs to Indra; born, the born wins wealth by might; we shine to claim our share.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जैसे सूर्य का आश्रय लेते हैं, वैसे ही इन्द्र के सब (धन) का भाग लो; जन्म लेते ही उन्होंने अपने ओज से जो धन और प्रजाएँ (दीं), उनमें हम अपने भाग का ध्यान करते हैं।"
         },
         {
           "number": 268,
           "sanskrit": "न सीमदेव आप तदिषं दीर्घायो मर्त्यः । एतग्वा चिद्या एतशो युयोजत इन्द्रो हरी युयोजते",
           "transliteration": "na sīmadeva āpa tadiṣaṃ dīrghāyo martyaḥ | etagvā cidyā etaśo yuyojata indro harī yuyojate",
           "translation": "No mortal of long life, not divine, attains that food; even Etasha yoked, Indra yokes his bay horses.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे दीर्घायु (इन्द्र)! देवों से विमुख मनुष्य वह अन्न प्राप्त नहीं करता; जो एतश (घोड़ा) चितकबरे घोड़ों को जोतता है, (उसी प्रकार) इन्द्र अपने दो हरि घोड़े जोतते हैं।"
         },
         {
           "number": 269,
           "sanskrit": "आ नो विश्वासु हव्यमिन्द्रँ समत्सु भूषत । उप ब्रह्माणि सवनानि वृत्रहन्परमज्या ऋचीषम",
           "transliteration": "ā no viśvāsu havyamindram̐ samatsu bhūṣata | upa brahmāṇi savanāni vṛtrahanparamajyā ṛcīṣama",
           "translation": "Honor Indra, to be called in all battles; come to our prayers and soothing offerings, Vritra-slayer, with highest verses.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे (स्तोताओ)! सब युद्धों में पुकारने योग्य इन्द्र को हमारे लिए अलंकृत करो; हे वृत्रहन्ता, परम बलवान्, सोम के तलछट को भी स्वीकार करने वाले इन्द्र! हमारे स्तोत्रों और सोम-यज्ञों के पास आइए।"
         },
         {
           "number": 270,
           "sanskrit": "तवेदिन्द्रावमं वसु त्वं पुष्यसि मध्यमम् । सत्रा विश्वस्य परमस्य राजसि न किष्ट्वा गोषु वृण्वते",
           "transliteration": "tavedindrāvamaṃ vasu tvaṃ puṣyasi madhyamam | satrā viśvasya paramasya rājasi na kiṣṭvā goṣu vṛṇvate",
           "translation": "Yours alone, Indra, is the lowest wealth; you nourish the middle; you rule completely over all, the highest too; none hinders you among the cattle.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! निचला धन आपका ही है, मध्यम धन को भी आप ही पोषित करते हैं, और सारे परम धन पर भी आप ही शासन करते हैं; गौओं (की प्राप्ति) में आपको कोई रोक नहीं सकता।"
         },
         {
           "number": 271,
           "sanskrit": "क्वेयथ क्वेदसि पुरुत्रा चिद्धि ते मनः । अलर्षि युध्म खजकृत्पुरन्दर प्र गायत्रा अगासिषुः",
           "transliteration": "kveyatha kvedasi purutrā ciddhi te manaḥ | alarṣi yudhma khajakṛtpurandara pra gāyatrā agāsiṣuḥ",
           "translation": "Where do you go, where are you? Your mind is in many places. O warrior, fort-destroyer, the Gayatri songs have been sung.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "आप कहाँ गए? आप कहाँ हैं? आपका मन बहुत स्थानों में रहता है; हे योद्धा, युद्ध करने वाले, नगरों के भेदक! (आइए), गायत्र-गायकों ने गीत गाए हैं।"
         },
         {
           "number": 272,
           "sanskrit": "वयमेनमिदा ह्योपीपेमेह वज्रिणम् । तस्मा उ अद्य सवने सुतं भरा नूनं भूषत श्रुते",
           "transliteration": "vayamenamidā hyopīpemeha vajriṇam | tasmā u adya savane sutaṃ bharā nūnaṃ bhūṣata śrute",
           "translation": "We have indeed fed this thunderbolt-bearer here; today at the pressing bring the soma for him; honor now the famed one.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हमने इस वज्रधारी को कल यहाँ भरपूर (सोम) पिलाया था; आज के सोम-यज्ञ में भी उसके लिए सोम अर्पित करो; अब उस प्रसिद्ध (इन्द्र) को अलंकृत करो।"
         },
         {
           "number": 273,
           "sanskrit": "यो राजा चर्षणीनां याता रथेभिरध्रिगुः । विश्वासां तरुता पृतनानां ज्येष्ठं यो वृत्रहा गृणे",
           "transliteration": "yo rājā carṣaṇīnāṃ yātā rathebhiradhriguḥ | viśvāsāṃ tarutā pṛtanānāṃ jyeṣṭhaṃ yo vṛtrahā gṛṇe",
           "translation": "The king of the peoples, who goes in chariots, irresistible, conqueror of all armies, the foremost Vritra-slayer — I praise him.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जो मनुष्यों के राजा हैं, रथों से चलने वाले और अदम्य हैं, सब सेनाओं को पार करने वाले, सबसे ज्येष्ठ और वृत्र का वध करने वाले हैं, उनकी मैं स्तुति करता हूँ।"
         },
         {
           "number": 274,
           "sanskrit": "यत इन्द्र भयामहे ततो नो अभयं कृधि । मघवञ्छग्धि तव तन्न ऊतये वि द्विषो वि मृधो जहि",
           "transliteration": "yata indra bhayāmahe tato no abhayaṃ kṛdhi | maghavañchagdhi tava tanna ūtaye vi dviṣo vi mṛdho jahi",
           "translation": "From whatever we fear, Indra, make us safe from that; bounteous one, help us for our protection; drive away foes and enemies.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! जिससे हम डरते हैं, उससे हमें अभय कीजिए; हे मघवन्! अपनी रक्षा से हमें समर्थ बनाइए; द्वेषियों और हिंसकों को मार भगाइए।"
         },
         {
           "number": 275,
           "sanskrit": "वास्तोष्पते ध्रुवा स्थूणाँ सत्रँ सोम्यानाम् । द्रप्सः पुरां भेत्ता शश्वतीनामिन्द्रो मुनीनाँ सखा",
           "transliteration": "vāstoṣpate dhruvā sthūṇām̐ satram̐ somyānām | drapsaḥ purāṃ bhettā śaśvatīnāmindro munīnām̐ sakhā",
           "translation": "O lord of the dwelling, firm pillar, assembly of the soma-drinkers; the drop, breaker of the eternal forts, Indra, friend of sages.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे वास्तु के स्वामी (इन्द्र)! (हमारे घर का) खम्भा दृढ़ हो, सोम-यज्ञ करने वालों का (रक्षा-)कवच बने; सोम-बिन्दु (पीने वाले) इन्द्र अनगिनत नगरों के भेदक और मुनियों के सखा हैं।"
         },
         {
           "number": 276,
           "sanskrit": "बण्महाँ असि सूर्य बडादित्य महाँ असि । महस्ते सतो महिमा पनिष्टम मह्ना देव महाँ असि",
           "transliteration": "baṇmahām̐ asi sūrya baḍāditya mahām̐ asi | mahaste sato mahimā paniṣṭama mahnā deva mahām̐ asi",
           "translation": "Indeed you are great, O Sun; indeed, O Aditya, you are great; the greatness of you who exist is most to be praised; by might, O god, you are great.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे सूर्य! सचमुच आप महान् हैं; हे आदित्य! सचमुच आप महान् हैं; आप महान् हैं, इसलिए आपकी महिमा की प्रशंसा होती है; हे देव! अपनी महिमा से आप महान् हैं।"
         },
         {
           "number": 277,
           "sanskrit": "अश्वी रथी सुरूप इद्गोमाँ यदिन्द्र ते सखा । श्वात्रभाजा वयसा सचते सदा चन्द्रैर्याति सभामुप",
           "transliteration": "aśvī rathī surūpa idgomām̐ yadindra te sakhā | śvātrabhājā vayasā sacate sadā candrairyāti sabhāmupa",
           "translation": "The friend of yours, Indra, who has a horse, a chariot, a fair form and cattle, is always accompanied with vigor and wealth and goes to the assembly with shining gifts.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! जो आपका सखा होता है, वह घोड़ों, रथ और गौओं से सम्पन्न और सुन्दर रूप वाला होता है; वह सदा बलदायक अन्न से युक्त रहता है और सुवर्ण के साथ सभा में जाता है।"
         },
         {
           "number": 278,
           "sanskrit": "यद्द्याव इन्द्र ते शतँ शतं भूमीरुत स्युः । न त्वा वज्रिन्त्सहस्रँ सूर्या अनु न जातमष्ट रोदसी",
           "transliteration": "yaddyāva indra te śatam̐ śataṃ bhūmīruta syuḥ | na tvā vajrintsahasram̐ sūryā anu na jātamaṣṭa rodasī",
           "translation": "Though a hundred heavens and a hundred earths were yours, Indra, a thousand suns would not equal you, O thunderbolt-bearer; the two worlds do not encompass you at birth.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे वज्रधारी इन्द्र! यदि सौ द्युलोक हों और सौ पृथ्वियाँ भी हों, तो भी हजार सूर्य आपकी बराबरी न कर सकें; जन्म लेते ही आपको द्युलोक और पृथ्वी भी न समा सके।"
         },
         {
           "number": 279,
           "sanskrit": "यदिन्द्र प्रागपागुदग्न्यग्वा हूयसे नृभिः । सिमा पुरू नृषूतो अस्यानवेऽसि प्रशर्ध तुर्वशे",
           "transliteration": "yadindra prāgapāgudagnyagvā hūyase nṛbhiḥ | simā purū nṛṣūto asyānave'si praśardha turvaśe",
           "translation": "Indra, when you are called by men from east, west, north and west, from many places — you are the mighty protector of Anu, Turvasha, praised for strength.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! चाहे मनुष्य आपको पूर्व, पश्चिम, उत्तर या दक्षिण में बुलाएँ, हे प्रबल! आप अनु के वंशजों और तुर्वश के यहाँ भी अनेक मनुष्यों द्वारा प्रेरित होते हैं।"
         },
         {
           "number": 280,
           "sanskrit": "कस्तमिन्द्र त्वा वसवा मर्त्यो दधर्षति । श्रद्धा हि ते मघवन्पार्ये दिवि वाजी वाजँ सिषासति",
           "transliteration": "kastamindra tvā vasavā martyo dadharṣati | śraddhā hi te maghavanpārye divi vājī vājam̐ siṣāsati",
           "translation": "What mortal, O Indra, dares to withstand you, Vasu? For faith in you, bounteous one, in the farther heaven, the strong man wins strength.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! आप जैसे धन वाले (देव) के रहते कौन मनुष्य (आपके भक्त को) दबा सकता है? हे मघवन्! आप पर श्रद्धा रखने वाला बलवान् (भक्त) निर्णायक दिन में अन्न-बल प्राप्त करना चाहता है।"
         },
         {
           "number": 281,
           "sanskrit": "इन्द्राग्नी अपादियं पूर्वागात्पद्वतीभ्यः । हित्वा शिरो जिह्वया रारपच्चरत्त्रिँशत्पदा न्यक्रमीत्",
           "transliteration": "indrāgnī apādiyaṃ pūrvāgātpadvatībhyaḥ | hitvā śiro jihvayā rārapaccarattrim̐śatpadā nyakramīt",
           "translation": "Indra and Agni: this footless one came first of the footed; leaving her head, she chattered with her tongue, and the thirty-footed one stepped on.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र और अग्नि! यह बिना पैरों वाली (उषा) पैरों वाली (प्रजाओं) से पहले आ गई है; बिना सिर के भी जीभ से (प्राणियों को) बुलवाती हुई, यह तीस पगों में (आकाश को) पार कर गई।"
         },
         {
           "number": 282,
           "sanskrit": "इन्द्र नेदीय एदिहि मितमेधाभिरूतिभिः । आ शं तम शं तमाभिरभिष्टिभिरा स्वापे स्वापिभिः",
           "transliteration": "indra nedīya edihi mitamedhābhirūtibhiḥ | ā śaṃ tama śaṃ tamābhirabhiṣṭibhirā svāpe svāpibhiḥ",
           "translation": "Indra, come very near with your helps of measured wisdom; come with the most auspicious, with blessings, with good friends.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! अपनी नपी-तुली बुद्धि वाली रक्षाओं के साथ हमारे और पास आइए; हे सबसे सुखदायी! अपनी सबसे सुखदायी सहायताओं के साथ, हे उत्तम बन्धु! अपने उत्तम बन्धुओं के साथ आइए।"
         },
         {
           "number": 283,
           "sanskrit": "इत ऊती वो अजरं प्रहेतारमप्रहितम् । आशुं जेतारँ हेतारँ रथीतममतूर्तं तुग्रियावृधम्",
           "transliteration": "ita ūtī vo ajaraṃ prahetāramaprahitam | āśuṃ jetāram̐ hetāram̐ rathītamamatūrtaṃ tugriyāvṛdham",
           "translation": "From here your help, unaging, the sender, the unsent; swift, victorious, the chariot-warrior, unconquered, who strengthens Tugrya.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "(हे स्तोताओ!) अपनी रक्षा के लिए इस अजर, (शत्रुओं को) भगाने वाले, स्वयं न भगाए जाने वाले, शीघ्रगामी, विजयी, प्रेरक, सबसे श्रेष्ठ रथी, अजेय और तुग्र के पुत्र को बढ़ाने वाले (इन्द्र) को (यहाँ बुलाओ)।"
         },
         {
           "number": 284,
           "sanskrit": "मो षु त्वा वाघतश्च नारे अस्मन्नि रीरमन् । आरात्ताद्वा सधमादं न आ गहीह वा सन्नुप श्रुधि",
           "transliteration": "mo ṣu tvā vāghataśca nāre asmanni rīraman | ārāttādvā sadhamādaṃ na ā gahīha vā sannupa śrudhi",
           "translation": "Let not the ritual priests keep you from us far away; come to our shared feast from near or far, and listen here.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! दूसरे यजमान भी आपको हमसे दूर न रोक लें; दूर होने पर भी हमारे आनन्द-भोज में आइए, या यहीं रहकर हमें सुनिए।"
         },
         {
           "number": 285,
           "sanskrit": "सुनोत सोमपाव्ने सोममिन्द्राय वज्रिणे । पचता पक्तीरवसे कृणुध्वमित्पृणन्नित्पृणते मयः",
           "transliteration": "sunota somapāvne somamindrāya vajriṇe | pacatā paktīravase kṛṇudhvamitpṛṇannitpṛṇate mayaḥ",
           "translation": "Press soma for the soma-drinker, Indra the thunderbolt-bearer; cook the cakes for his help; the giver gives joy to the giver.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "सोम पीने वाले वज्रधारी इन्द्र के लिए सोम निचोड़ो; रक्षा के लिए पकवान पकाओ; (ऐसा) करो, क्योंकि देने वाले को (इन्द्र) सुख देते हैं।"
         },
         {
           "number": 286,
           "sanskrit": "यः सत्राहा विचर्षणिरिन्द्रं तँ हूमहे वयम् । सहस्रमन्यो तुविनृम्ण सत्पते भवा समत्सु नो वृधे",
           "transliteration": "yaḥ satrāhā vicarṣaṇirindraṃ tam̐ hūmahe vayam | sahasramanyo tuvinṛmṇa satpate bhavā samatsu no vṛdhe",
           "translation": "We call on Indra, who is a conqueror in battle and all-seeing, of a thousand moods, of much strength, lord of the good; be present in battles to help us grow.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जो सदा (शत्रुओं को) मारने वाले और सर्वद्रष्टा हैं, उन इन्द्र को हम बुलाते हैं; हे हजार प्रकार के उत्साह वाले, बहुत पराक्रमी, सज्जनों के रक्षक! युद्धों में हमारी वृद्धि के लिए रहिए।"
         },
         {
           "number": 287,
           "sanskrit": "शचीभिर्नः शचीवसू दिवानक्तं दिशस्यतम् । मा वाँ रातिरुप दसत्कदा च नास्मद्रातिः कदा च न",
           "transliteration": "śacībhirnaḥ śacīvasū divānaktaṃ diśasyatam | mā vām̐ rātirupa dasatkadā ca nāsmadrātiḥ kadā ca na",
           "translation": "O you of power and wealth, with your powers show us the way by day and night; may your gift never fail, nor ours to you.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे शक्ति रूपी धन वाले (अश्विनीकुमारो)! अपनी शक्तियों से दिन-रात हमें (धन) दीजिए; आपका दान कभी क्षीण न हो, हमसे आपका दान कभी अलग न हो।"
         },
         {
           "number": 288,
           "sanskrit": "यदा कदा च मीढुषे स्तोता जरेत मर्त्यः । आदिद्वन्देत वरुणं विपा गिरा धर्त्तारं विव्रतानाम्",
           "transliteration": "yadā kadā ca mīḍhuṣe stotā jareta martyaḥ | ādidvandeta varuṇaṃ vipā girā dharttāraṃ vivratānām",
           "translation": "Whenever the mortal praiser grows old before the generous one, let him then worship Varuna, upholder of the sacred laws, with a wise song.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जब कभी भी मनुष्य स्तोता वर्षा करने वाले (वरुण) की स्तुति करे, तब वह विविध व्रतों के धारण करने वाले वरुण की ज्ञानमयी वाणी से वन्दना करे।"
         },
         {
           "number": 289,
           "sanskrit": "पाहि गा अन्धसो मद इन्द्राय मेध्यातिथे । यः सम्मिश्लो हर्योर्यो हिरण्यय इन्द्रो वज्री हिरण्ययः",
           "transliteration": "pāhi gā andhaso mada indrāya medhyātithe | yaḥ sammiślo haryoryo hiraṇyaya indro vajrī hiraṇyayaḥ",
           "translation": "Protect our cattle in the exhilaration of the drink, for Indra, O Medhyatithi — who is mingled with the two bay horses, who is golden, Indra the thunderbolt-bearer, golden.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे मेध्यातिथि! इन्द्र के आनन्द के लिए सोम-रस के पान का (पात्र) भरो; वे इन्द्र दोनों हरि घोड़ों के साथ रहने वाले, सुनहरे और सुनहरे वज्र वाले हैं।"
         },
         {
           "number": 290,
           "sanskrit": "उभयँ शृणवच्च न इन्द्रो अर्वागिदं वचः । सत्राच्या मघवान्त्सोमपीतये धिया शविष्ठ आ गमत्",
           "transliteration": "ubhayam̐ śṛṇavacca na indro arvāgidaṃ vacaḥ | satrācyā maghavāntsomapītaye dhiyā śaviṣṭha ā gamat",
           "translation": "Let Indra hear both of ours, this word of ours here; the strongest, bounteous one comes with thought, together, to drink the soma.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "इन्द्र हमारे दोनों प्रकार के वचन (स्तुति और प्रार्थना) सुनें; सबसे बलवान् मघवा सोम-पान के लिए साथ चलने वाली बुद्धि के साथ हमारी ओर आएँ।"
         },
         {
           "number": 291,
           "sanskrit": "महे च न त्वाद्रिवः परा शुल्काय दीयसे । न सहस्राय नायुताये वज्रिवो न शताय शतामघ",
           "transliteration": "mahe ca na tvādrivaḥ parā śulkāya dīyase | na sahasrāya nāyutāye vajrivo na śatāya śatāmagha",
           "translation": "O stone-bearer, you are not given away for a great price; not for a thousand, nor ten thousand, nor a hundred, O lord of a hundred.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे वज्रधारी, सौ प्रकार के धन वाले इन्द्र! किसी बड़े मूल्य के लिए भी आपको दूसरों को नहीं सौंपा जाता, न हजार के लिए, न दस हजार के लिए, न सौ के लिए।"
         },
         {
           "number": 292,
           "sanskrit": "वस्याँ इन्द्रासि मे पितुरुत भ्रातुरभुञ्जतः । माता च मे छदयथः समा वसो वसुत्वनाय राधसे",
           "transliteration": "vasyām̐ indrāsi me pituruta bhrāturabhuñjataḥ | mātā ca me chadayathaḥ samā vaso vasutvanāya rādhase",
           "translation": "Indra, you are better to me than a father and a brother who does not share; you and my mother both shelter me, O Vasu, for wealth and bounty.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! आप मेरे (कंजूस) पिता और भोग न देने वाले भाई से भी अधिक उत्तम हैं; हे वसु! आप और मेरी माता धन-प्राप्ति और समृद्धि के लिए समान रूप से (मुझे) प्रसन्न करते हैं।"
         },
         {
           "number": 293,
@@ -5042,7 +5102,8 @@
           "sanskrit": "अभि त्वा शूर नोनुमोऽदुग्धा इव धेनवः । ईशानमस्य जगतः स्वर्दृशमीशानमिन्द्र तस्थुषः",
           "transliteration": "abhi tvā śūra nonumo'dugdhā iva dhenavaḥ | īśānamasya jagataḥ svardṛśamīśānamindra tasthuṣaḥ",
           "translation": "We cry to you, O hero, like unmilked cows — you who rule this world, who see the sun, who rule what stands, Indra.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे शूर इन्द्र! जैसे बिना दुही गौएँ (बछड़े के लिए) रँभाती हैं, वैसे ही हम आपकी स्तुति करते हैं; आप इस चलते हुए जगत् के स्वामी हैं, स्वर्ग के द्रष्टा हैं, और स्थावर जगत् के भी स्वामी हैं।"
         },
         {
           "number": 681,
@@ -5078,7 +5139,8 @@
           "sanskrit": "तं वो दस्ममृतीषहं वसोर्मन्दानमन्धसः । अभि वत्सं न स्वसरेषु धेनव इन्द्रं गीर्भिर्नवामहे",
           "transliteration": "taṃ vo dasmamṛtīṣahaṃ vasormandānamandhasaḥ | abhi vatsaṃ na svasareṣu dhenava indraṃ gīrbhirnavāmahe",
           "translation": "Him, your wondrous victor over foes, rejoicing in the soma-drink of the Vasu — with songs we praise Indra anew, as cows their calf in their stalls.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हम उस दर्शनीय, शत्रुओं को दबाने वाले, उत्तम सोम-रस से आनन्दित होने वाले इन्द्र की वाणियों से स्तुति करते हैं, जैसे गौएँ अपने बाड़ों में बछड़े की ओर रँभाती हैं।"
         },
         {
           "number": 686,
@@ -5092,7 +5154,8 @@
           "sanskrit": "तरोभिर्वो विदद्वसुमिन्द्रँ सबाध ऊतये । बृहद्गायन्तः सुतसोमे अध्वरे हुवे भरं न कारिणम्",
           "transliteration": "tarobhirvo vidadvasumindram̐ sabādha ūtaye | bṛhadgāyantaḥ sutasome adhvare huve bharaṃ na kāriṇam",
           "translation": "With strengths I invoke Indra, finder of wealth, together with our fellows for help, at the soma-pressing sacrifice, singing loudly, as one calls a worker for his burden.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "कष्ट से घिरा हुआ मैं अपनी रक्षा के लिए, सोम वाले यज्ञ में ऊँचे स्वर से गाते हुए, अपने वेग से धन पाने वाले इन्द्र का ऐसे आह्वान करता हूँ, जैसे (लोग) पालन करने वाले कर्मठ (स्वामी) को बुलाते हैं।"
         },
         {
           "number": 688,
@@ -5969,7 +6032,8 @@
           "sanskrit": "अभि प्र वः सुराधसमिन्द्रमर्च यथा विदे । यो जरितृभ्यो मघवा पुरूवसुः सहस्रेणेव शिक्षति",
           "transliteration": "abhi pra vaḥ surādhasamindramarca yathā vide | yo jaritṛbhyo maghavā purūvasuḥ sahasreṇeva śikṣati",
           "translation": "Praise Indra, bounteous, as one who knows, who gives to singers, rich in wealth, giving as if by thousands.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "(हे स्तोताओ!) उत्तम धन वाले इन्द्र की ऐसी अर्चना करो, जैसी वे जानते हैं; वे बहुत धन वाले मघवा स्तुति करने वालों को मानो हजारों का दान देते हैं।"
         },
         {
           "number": 812,
@@ -6340,7 +6404,8 @@
           "sanskrit": "वयं घ त्वा सुतावन्त आपो न वृक्तबर्हिषः । पवित्रस्य प्रस्रवणेषु वृत्रहन्परि स्तोतार आसते",
           "transliteration": "vayaṃ gha tvā sutāvanta āpo na vṛktabarhiṣaḥ | pavitrasya prasravaṇeṣu vṛtrahanpari stotāra āsate",
           "translation": "We who have pressed the soma for you, Vritra-slayer, and spread the grass, sit around the streams of the filter, as the waters.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे वृत्रहन्ता! सोम लिए हुए, कुश बिछाए हुए हम स्तोता छलनी से बहती धाराओं के पास, जल के समान, आपके चारों ओर बैठे हैं।"
         },
         {
           "number": 865,
@@ -6361,7 +6426,8 @@
           "sanskrit": "तरणिरित्सिषासति वाजं पुरन्ध्या युजा । आ व इन्द्रं पुरुहूतं नमे गिरा नेमिं तष्टेव सुद्रुवम्",
           "transliteration": "taraṇiritsiṣāsati vājaṃ purandhyā yujā | ā va indraṃ puruhūtaṃ name girā nemiṃ taṣṭeva sudruvam",
           "translation": "The swift one desires strength with his yoked fullness; with song I bow to Indra, invoked by many, as a carpenter to a well-running wheel-rim.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "वेगवान् (उपासक) ही बुद्धि को साथी बनाकर अन्न-बल प्राप्त करना चाहता है; जैसे बढ़ई अच्छी लकड़ी की नेमि को झुकाता है, वैसे ही मैं अनेकों द्वारा बुलाए गए इन्द्र को अपनी वाणी से तुम्हारी ओर झुकाता हूँ।"
         },
         {
           "number": 868,
@@ -6826,7 +6892,8 @@
           "sanskrit": "यो राजा चर्षणीनां याता रथेभिरध्रिगुः । विश्वासां तरुता पृतनानां ज्येष्ठं यो वृत्रहा गृणे",
           "transliteration": "yo rājā carṣaṇīnāṃ yātā rathebhiradhriguḥ | viśvāsāṃ tarutā pṛtanānāṃ jyeṣṭhaṃ yo vṛtrahā gṛṇe",
           "translation": "The king of the peoples, who goes in chariots, irresistible, conqueror of all armies, the foremost Vritra-slayer — I praise him.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जो मनुष्यों के राजा हैं, रथों से चलने वाले और अदम्य हैं, सब सेनाओं को पार करने वाले, सबसे ज्येष्ठ और वृत्र का वध करने वाले हैं, उनकी मैं स्तुति करता हूँ।"
         },
         {
           "number": 934,
@@ -8920,7 +8987,8 @@
           "sanskrit": "उभयँ शृणवच्च न इन्द्रो अर्वागिदं वचः । सत्राच्या मघवान्त्सोमपीतये धिया शविष्ठ आ गमत्",
           "transliteration": "ubhayam̐ śṛṇavacca na indro arvāgidaṃ vacaḥ | satrācyā maghavāntsomapītaye dhiyā śaviṣṭha ā gamat",
           "translation": "Let Indra hear both of ours, this word of ours here; the strongest, bounteous one comes with thought, together, to drink the soma.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "इन्द्र हमारे दोनों प्रकार के वचन (स्तुति और प्रार्थना) सुनें; सबसे बलवान् मघवा सोम-पान के लिए साथ चलने वाली बुद्धि के साथ हमारी ओर आएँ।"
         },
         {
           "number": 1234,
@@ -9522,7 +9590,8 @@
           "sanskrit": "श्रायन्त इव सूर्यं विश्वेदिन्द्रस्य भक्षत । वसूनि जातो जनिमान्योजसा प्रति भागं न दीधिमः",
           "transliteration": "śrāyanta iva sūryaṃ viśvedindrasya bhakṣata | vasūni jāto janimānyojasā prati bhāgaṃ na dīdhimaḥ",
           "translation": "They seek the sun as if resting; enjoy all that belongs to Indra; born, the born wins wealth by might; we shine to claim our share.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जैसे सूर्य का आश्रय लेते हैं, वैसे ही इन्द्र के सब (धन) का भाग लो; जन्म लेते ही उन्होंने अपने ओज से जो धन और प्रजाएँ (दीं), उनमें हम अपने भाग का ध्यान करते हैं।"
         },
         {
           "number": 1320,
@@ -9810,7 +9879,8 @@
           "sanskrit": "मा चिदन्यद्वि शँसत सखायो मा रिषण्यत । इन्द्रमित्स्तोता वृषणँ सचा सुते मुहुरुक्था च शँसत",
           "transliteration": "mā cidanyadvi śam̐sata sakhāyo mā riṣaṇyata | indramitstotā vṛṣaṇam̐ sacā sute muhurukthā ca śam̐sata",
           "translation": "Friends, praise no other; do not wish harm. Praise Indra the bull together at the pressing, and recite the hymns again and again.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे मित्रो! किसी दूसरे की स्तुति मत करो, (यों) हानि मत उठाओ; सोम निकलने पर सब मिलकर वर्षणशील इन्द्र की ही स्तुति करो और बार-बार स्तोत्र बोलो।"
         },
         {
           "number": 1361,
@@ -10028,7 +10098,8 @@
           "sanskrit": "आ त्वा सहस्रमा शतं युक्ता रथे हिरण्यये । ब्रह्मयुजो हरय इन्द्र केशिनो वहन्तु सोमपीतये",
           "transliteration": "ā tvā sahasramā śataṃ yuktā rathe hiraṇyaye | brahmayujo haraya indra keśino vahantu somapītaye",
           "translation": "May a thousand, a hundred, yoked to your golden chariot, your prayer-yoked, long-maned bay horses carry you, Indra, to drink the soma.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! सोने के रथ में जुते हुए, मन्त्र से जुड़ने वाले, अयाल वाले हजार और सौ हरि घोड़े आपको सोम-पान के लिए यहाँ ले आएँ।"
         },
         {
           "number": 1392,
@@ -10168,7 +10239,8 @@
           "sanskrit": "त्वमिन्द्र यशा अस्यृजीषी शवसस्पतिः । त्वं वृत्राणि हँस्यप्रतीन्येक इत्पुर्वनुत्तश्चर्षणीधृतिः",
           "transliteration": "tvamindra yaśā asyṛjīṣī śavasaspatiḥ | tvaṃ vṛtrāṇi ham̐syapratīnyeka itpurvanuttaścarṣaṇīdhṛtiḥ",
           "translation": "You, Indra, are glorious, the receiver of the pressed soma, lord of strength; you alone slay the unopposed Vritras, the supporter of peoples, urged on by many.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! आप यशस्वी, सोम के तलछट को भी स्वीकार करने वाले और बल के स्वामी हैं; आप अकेले ही अजेय वृत्रों का वध करते हैं; आप किसी से न हटाए जाने वाले और मनुष्यों के धारक हैं।"
         },
         {
           "number": 1412,
@@ -10239,7 +10311,8 @@
           "sanskrit": "पिबा सुतस्य रसिनो मत्स्वा न इन्द्र गोमतः । आपिर्नो बोधि सधमाद्ये वृधे३ऽस्माँ अवन्तु ते धियः",
           "transliteration": "pibā sutasya rasino matsvā na indra gomataḥ | āpirno bodhi sadhamādye vṛdhe3'smām̐ avantu te dhiyaḥ",
           "translation": "Drink the flavored pressed soma, Indra, and rejoice for us, rich in cattle; be our kinsman in the shared feast; may your thoughts protect us.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! इस रसीले, दूध मिले निचोड़े हुए सोम को पीजिए और हमें आनन्दित कीजिए; साथ आनन्द मनाने में हमारी वृद्धि के लिए बन्धु बनिए; आपकी कृपा-बुद्धियाँ हमारी रक्षा करें।"
         },
         {
           "number": 1422,
@@ -10736,7 +10809,8 @@
           "sanskrit": "आ नो विश्वासु हव्यमिन्द्रँ समत्सु भूषत । उप ब्रह्माणि सवनानि वृत्रहन्परमज्या ऋचीषम",
           "transliteration": "ā no viśvāsu havyamindram̐ samatsu bhūṣata | upa brahmāṇi savanāni vṛtrahanparamajyā ṛcīṣama",
           "translation": "Honor Indra, to be called in all battles; come to our prayers and soothing offerings, Vritra-slayer, with highest verses.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे (स्तोताओ)! सब युद्धों में पुकारने योग्य इन्द्र को हमारे लिए अलंकृत करो; हे वृत्रहन्ता, परम बलवान्, सोम के तलछट को भी स्वीकार करने वाले इन्द्र! हमारे स्तोत्रों और सोम-यज्ञों के पास आइए।"
         },
         {
           "number": 1493,
@@ -11310,7 +11384,8 @@
           "sanskrit": "अभि त्वा पूर्वपीतय इन्द्र स्तोमेभिरायवः । समीचीनास ऋभवः समस्वरन्रुद्रा गृणन्त पूर्व्यम्",
           "transliteration": "abhi tvā pūrvapītaya indra stomebhirāyavaḥ | samīcīnāsa ṛbhavaḥ samasvaranrudrā gṛṇanta pūrvyam",
           "translation": "The Ayus, with hymns, for your first drinking, O Indra; the Ribhus joined in one voice; the Rudras praised the ancient one.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! सबसे पहले सोम पीने के लिए मनुष्यों ने स्तोत्रों से आपकी स्तुति की; एक मन वाले ऋभुओं ने साथ मिलकर गाया और रुद्रों (मरुतों) ने प्राचीन (इन्द्र) की प्रशंसा की।"
         },
         {
           "number": 1574,
@@ -11409,7 +11484,8 @@
           "sanskrit": "इन्द्रमिद्देवतातय इन्द्रं प्रयत्यध्वरे । इन्द्रँ समीके वनिनो हवामह इन्द्रं धनस्य सातये",
           "transliteration": "indramiddevatātaya indraṃ prayatyadhvare | indram̐ samīke vanino havāmaha indraṃ dhanasya sātaye",
           "translation": "We call on Indra for worship; Indra at the progressing sacrifice; Indra in battle, we the singers call, and Indra for the winning of wealth.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "देव-यज्ञ के लिए हम इन्द्र को बुलाते हैं, यज्ञ आरम्भ होने पर इन्द्र को, युद्ध में भक्त जन इन्द्र को, और धन की प्राप्ति के लिए भी इन्द्र को ही बुलाते हैं।"
         },
         {
           "number": 1588,
@@ -11551,7 +11627,8 @@
           "sanskrit": "इमा उ त्वा पुरूवसो गिरो वर्धन्तु या मम । पावकवर्णाः शुचयो विपश्चितोऽभि स्तोमैरनूषत",
           "transliteration": "imā u tvā purūvaso giro vardhantu yā mama | pāvakavarṇāḥ śucayo vipaścito'bhi stomairanūṣata",
           "translation": "May these songs of mine strengthen you, O rich in wealth; the pure, fire-colored sages have sung to you with hymns.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे बहुत धन वाले इन्द्र! मेरी ये वाणियाँ आपको बढ़ाएँ; अग्नि के समान वर्ण वाले, पवित्र, ज्ञानी (स्तोताओं) ने स्तोत्रों से आपकी स्तुति की है।"
         },
         {
           "number": 1608,
@@ -12340,7 +12417,8 @@
           "sanskrit": "आ मन्द्रैरिन्द्र हरिभिर्याहि मयूररोमभिः । मा त्वा के चिन्नि येमुरिन्न पाशिनोऽति धन्वेव ताँ इहि",
           "transliteration": "ā mandrairindra haribhiryāhi mayūraromabhiḥ | mā tvā ke cinni yemurinna pāśino'ti dhanveva tām̐ ihi",
           "translation": "Come, Indra, with your joyful bay horses, with peacock-feathered coats; let none, though they bind you, hold you back; pass beyond them like an archer.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! मोर-पंख जैसे रोमों वाले आनन्ददायी हरि घोड़ों के साथ पधारिए; कोई आपको (मार्ग में) रोक न ले, जैसे बहेलिए पक्षी को रोकते हैं; उन्हें मरुभूमि की तरह पार करके यहाँ आइए।"
         },
         {
           "number": 1719,
@@ -12361,7 +12439,8 @@
           "sanskrit": "यथा गौरो अपा कृतं तृष्यन्नेत्यवेरिणम् । आपित्वे नः प्रपित्वे तूयमा गहि कण्वेषु सु सचा पिब",
           "transliteration": "yathā gauro apā kṛtaṃ tṛṣyannetyaveriṇam | āpitve naḥ prapitve tūyamā gahi kaṇveṣu su sacā piba",
           "translation": "As a thirsty wild buffalo goes to the prepared water, so come swiftly in our kinship and our approach; drink well among the Kanvas.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जैसे प्यासा गौर मृग जल से भरे तालाब की ओर जाता है, वैसे ही (हे इन्द्र!) मित्रता में, साँझ के समय शीघ्र आइए और कण्वों के साथ भली-भाँति (सोम) पीजिए।"
         },
         {
           "number": 1722,
