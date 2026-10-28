@@ -146,6 +146,11 @@ async function translateBatch(texts: string[]): Promise<string[]> {
 }
 
 async function main() {
+  // Withheld 2026-10-27: the machine Hindi had frequent errors. It is kept in
+  // data/pending/samaveda-hindi-machine.json; new Hindi is translated from the Sanskrit instead.
+  if (!process.argv.includes("--allow-machine-hindi")) {
+    throw new Error("Sama Veda machine Hindi is withheld (see data/pending/samaveda-hindi-machine.json). Pass --allow-machine-hindi to run anyway.");
+  }
   console.log("=== Seeding Sama Veda Hindi Translations ===");
   if (!existsSync(CACHE_DIR)) mkdirSync(CACHE_DIR, { recursive: true });
 

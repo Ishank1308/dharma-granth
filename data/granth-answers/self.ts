@@ -14,7 +14,7 @@ export const selfAnswers: GranthAnswer[] = [
     verses: [
       gita(18, 47, 'अपने स्वभाव से नियत कर्म, कम गुणों वाला भी, दूसरे के धर्म से श्रेष्ठ है।', 'Work set by your own nature, even imperfect, is better than another’s.'),
       gita(18, 41, 'चारों प्रकार के कर्म स्वभाव से उत्पन्न गुणों के अनुसार बँटे हैं।', 'Kinds of work are divided by the qualities born of one’s nature.'),
-      gita(3, 5, 'कोई भी क्षण भर भी कर्म किए बिना नहीं रहता; कर्म ही दिशा दिखाता है।', 'No one stays without action even for a moment; action itself shows the way.'),
+      gita(3, 5, 'कोई भी क्षण भर भी कर्म किए बिना नहीं रहता; प्रकृति के गुण सबसे कर्म करवाते हैं।', 'No one stays without action even for a moment; the qualities of nature make everyone act.'),
     ],
     practiceHi: 'आज तीन सूचियाँ बनाएँ: मुझे क्या करना अच्छा लगता है, मैं किसमें अच्छा हूँ, और लोगों को किस बात की आवश्यकता है। जो बात तीनों में आए, उस पर इस महीने एक छोटा प्रयोग करें।',
     practiceEn: 'Today, make three lists: what I enjoy, what I’m good at, and what people need. Whatever appears in all three, try a small experiment with it this month.',
