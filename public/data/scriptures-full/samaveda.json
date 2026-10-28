@@ -4712,385 +4712,440 @@
           "sanskrit": "इन्द्र ज्येष्ठं न आ भर ओजिष्ठं पुपुरि श्रवः । यद्दिधृक्षेम वज्रहस्त रोदसी ओभे सुशिप्र पप्राः",
           "transliteration": "indra jyeṣṭhaṃ na ā bhara ojiṣṭhaṃ pupuri śravaḥ | yaddidhṛkṣema vajrahasta rodasī obhe suśipra paprāḥ",
           "translation": "Bring us, Indra, the eldest, the mightiest, abundant fame, that we may hold, O thunderbolt-handed, you who have filled both worlds, O fair-jawed.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! हमारे लिए सबसे श्रेष्ठ, सबसे ओजस्वी और भरपूर यश लाइए, जिसे हम धारण कर सकें; हे वज्रहस्त, सुन्दर शिरस्त्राण वाले! आपने द्युलोक और पृथ्वी दोनों को भर दिया है।"
         },
         {
           "number": 587,
           "sanskrit": "इन्द्रो राजा जगतश्चर्षणीनामधिक्षमा विश्वरूपं यदस्य । ततो ददाति दाशुषे वसूनि चोदद्राध उपस्तुतं चिदर्वाक्",
           "transliteration": "indro rājā jagataścarṣaṇīnāmadhikṣamā viśvarūpaṃ yadasya | tato dadāti dāśuṣe vasūni codadrādha upastutaṃ cidarvāk",
           "translation": "Indra is king of the world and the peoples, on the earth whose form is of all shapes; from it he gives treasures to the giver and urges bounty even to the near praised.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "इन्द्र जगत् के और मनुष्यों के राजा हैं; पृथ्वी पर जो कुछ विविध रूप है, वह इन्हीं का है; वहाँ से वे दानी को धन देते हैं; स्तुति किए जाने पर वे धन को हमारी ओर प्रेरित करें।"
         },
         {
           "number": 588,
           "sanskrit": "यस्येदमा रजोयुजस्तुजे जने वनँ स्वः । इन्द्रस्य रन्त्यं बृहत्",
           "transliteration": "yasyedamā rajoyujastuje jane vanam̐ svaḥ | indrasya rantyaṃ bṛhat",
           "translation": "Of whom these dust-yoked ones are the delight to the toiling people, the forest, the sun; the great, pleasing one of Indra.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जिन लोकों को जोड़ने वाले इन्द्र का यह स्वर्ग जैसा सुख, (शत्रुओं को) दबाने वाले जन में (प्रसिद्ध) है, उन इन्द्र का (दान) महान् और रमणीय है।"
         },
         {
           "number": 589,
           "sanskrit": "उदुत्तमं वरुण पाशमस्मदवाधमं वि मध्यमँ श्रथाय । अथादित्य व्रते वयं तवानागसो अदितये स्याम",
           "transliteration": "uduttamaṃ varuṇa pāśamasmadavādhamaṃ vi madhyamam̐ śrathāya | athāditya vrate vayaṃ tavānāgaso aditaye syāma",
           "translation": "Loosen from us the highest bond, Varuna, the lowest below, and the middle; then, O Aditya, in your law may we be sinless toward Aditi.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे वरुण! हमसे ऊपर वाला पाश ऊपर हटा दीजिए, नीचे वाला नीचे, और बीच वाला ढीला कर दीजिए; तब, हे आदित्य! आपके व्रत में रहते हुए हम अदिति के लिए निष्पाप हो जाएँ।"
         },
         {
           "number": 590,
           "sanskrit": "त्वया वयं पवमानेन सोम भरे कृतं वि चिनुयाम शश्वत् । तन्नो मित्रो वरुणो मामहन्तामदितिः सिन्धुः पृथिवी उत द्यौः",
           "transliteration": "tvayā vayaṃ pavamānena soma bhare kṛtaṃ vi cinuyāma śaśvat | tanno mitro varuṇo māmahantāmaditiḥ sindhuḥ pṛthivī uta dyauḥ",
           "translation": "With you, flowing Soma, may we always choose what is done in battle; may Mitra, Varuna, Aditi, the river, earth and heaven honor it.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे सोम! पवमान आपके साथ (रहकर) हम संग्राम में (शत्रु के) किए हुए (धन) को सदा बटोरें; मित्र, वरुण, अदिति, सिन्धु, पृथ्वी और द्युलोक हमारी उस (कामना) को महत्त्व दें।"
         },
         {
           "number": 591,
           "sanskrit": "इमं वृषणं कृणुतैकमिन्माम्",
           "transliteration": "imaṃ vṛṣaṇaṃ kṛṇutaikaminmām",
           "translation": "Make this bull the one for me.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "मुझे ही इस (सबमें) एक वर्षणशील (श्रेष्ठ) बनाओ।"
         },
         {
           "number": 592,
           "sanskrit": "स न इन्द्राय यज्यवे वरुणाय मरुद्भ्यः । वरिवोवित्परिस्रव",
           "transliteration": "sa na indrāya yajyave varuṇāya marudbhyaḥ | varivovitparisrava",
           "translation": "May you, finder of wealth, flow around for us, for worshipful Indra, for Varuna, for the Maruts.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे सोम! धन का मार्ग जानने वाले आप हमारे लिए, पूज्य इन्द्र के लिए, वरुण के लिए और मरुतों के लिए चारों ओर बहिए।"
         },
         {
           "number": 593,
           "sanskrit": "एना विश्वान्यर्य आ द्युम्नानि मानुषाणाम् । सिषासन्तो वनामहे",
           "transliteration": "enā viśvānyarya ā dyumnāni mānuṣāṇām | siṣāsanto vanāmahe",
           "translation": "By this, in the lord, we win all the splendors of men, desiring to win them.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे स्वामी! इस (सोम) से मनुष्यों के सब तेजस्वी धनों को पाने की इच्छा करते हुए हम (उन्हें) जीतें।"
         },
         {
           "number": 594,
           "sanskrit": "अहमस्मि प्रथमजा ऋतस्य पूर्वं देवेभ्यो अमृतस्य नाम । यो मा ददाति स इदेवमावदहमन्नमन्नमदन्तमद्मि",
           "transliteration": "ahamasmi prathamajā ṛtasya pūrvaṃ devebhyo amṛtasya nāma | yo mā dadāti sa idevamāvadahamannamannamadantamadmi",
           "translation": "I am the first-born of truth, the name of immortality, before the gods; whoever gives me, he indeed helps me; I eat the eater of food.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "मैं ऋत का प्रथम जन्मा हूँ, देवताओं से भी पहले अमृत का केन्द्र (नाभि) हूँ; जो मुझे (दूसरों को) देता है, वही (मेरी) इस प्रकार रक्षा करता है; मैं अन्न हूँ, (अकेले) अन्न खाने वाले को मैं (अन्न ही) खा जाता हूँ।"
         },
         {
           "number": 595,
           "sanskrit": "त्वमेतदधारयः कृष्णासु रोहिणीषु च । परुष्णीषु रुशत्पयः",
           "transliteration": "tvametadadhārayaḥ kṛṣṇāsu rohiṇīṣu ca | paruṣṇīṣu ruśatpayaḥ",
           "translation": "You held this in the black and red and gray cows — the shining milk.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "(हे इन्द्र!) आपने काली, लाल और चितकबरी गौओं में यह उज्ज्वल दूध धारण किया।"
         },
         {
           "number": 596,
           "sanskrit": "अरूरुचदुषसः पृश्निरग्रिय उक्षा मिमेति भुवनेषु वाजयुः । मायाविनो ममिरे अस्य मायया नृचक्षसः पितरो गर्भमादधुः",
           "transliteration": "arūrucaduṣasaḥ pṛśniragriya ukṣā mimeti bhuvaneṣu vājayuḥ | māyāvino mamire asya māyayā nṛcakṣasaḥ pitaro garbhamādadhuḥ",
           "translation": "The foremost dappled one made the dawns shine; the bull measures out in the worlds, seeking strength; the magicians measured by his magic; the fathers, seeing men, placed the embryo.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "चितकबरे, अग्रणी वृषभ (सूर्य) ने उषाओं को चमकाया; अन्न-बल की कामना करता हुआ वह लोकों में गर्जता है; मायावी (देवों) ने इसकी माया से (लोक) नापे; मनुष्यों के द्रष्टा पितरों ने (इसमें) गर्भ (बीज) स्थापित किया।"
         },
         {
           "number": 597,
           "sanskrit": "इन्द्र इद्धर्योः सचा सम्मिश्ल आ वचोयुजा । इन्द्रो वज्री हिरण्ययः",
           "transliteration": "indra iddharyoḥ sacā sammiśla ā vacoyujā | indro vajrī hiraṇyayaḥ",
           "translation": "Indra alone is united with the two bay horses, bound by speech; Indra the thunderbolt-bearer, golden.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "इन्द्र ही वचन से जुड़ने वाले दो हरि घोड़ों के साथ रहते हैं; इन्द्र वज्रधारी और सुनहरे हैं।"
         },
         {
           "number": 598,
           "sanskrit": "इन्द्र वाजेषु नोऽव सहस्रप्रधनेषु च । उग्र उग्राभिरूतिभिः",
           "transliteration": "indra vājeṣu no'va sahasrapradhaneṣu ca | ugra ugrābhirūtibhiḥ",
           "translation": "Protect us, Indra, in contests and in thousandfold battles, O fierce one, with fierce helps.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे उग्र इन्द्र! अपनी उग्र रक्षाओं से संग्रामों में और हजारों धन वाले युद्धों में हमारी रक्षा कीजिए।"
         },
         {
           "number": 599,
           "sanskrit": "प्रथश्च यस्य सप्रथश्च नामानुष्टुभस्य हविषो हविर्यत् । धातुर्द्युतानात्सवितुश्च विष्णो रथन्तरमा जभारा वसिष्ठः",
           "transliteration": "prathaśca yasya saprathaśca nāmānuṣṭubhasya haviṣo haviryat | dhāturdyutānātsavituśca viṣṇo rathantaramā jabhārā vasiṣṭhaḥ",
           "translation": "Whose name is Prathas and Saprathas; the oblation of the anushtubh offering; from Dhatar's brightness and from Savitar and Vishnu, Vasishtha brought the Rathantara.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "प्रथ और सप्रथ, जिस अनुष्टुभ् हवि के नाम हैं, जो हवियों की भी हवि है, उस रथन्तर (साम) को वसिष्ठ ने धाता से, तेजस्वी सविता से और विष्णु से (लाकर) प्राप्त किया।"
         },
         {
           "number": 600,
           "sanskrit": "नियुत्वान्वायवा गह्ययँ शुक्रो अयामि ते । गन्तासि सुन्वतो गृहम्",
           "transliteration": "niyutvānvāyavā gahyayam̐ śukro ayāmi te | gantāsi sunvato gṛham",
           "translation": "O Vayu with your team, come to the soma-offering; I have brought the bright one for you; you will go to the house of the presser.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे घोड़ों वाले वायु! आइए, यह उज्ज्वल (सोम) आपके लिए अर्पित है; आप सोम निचोड़ने वाले के घर जाने वाले हैं।"
         },
         {
           "number": 601,
           "sanskrit": "यज्जायथा अपूर्व्य मघवन्वृत्रहत्याय । तत्पृथिवीमप्रथयस्तदस्तभ्ना उतो दिवम्",
           "transliteration": "yajjāyathā apūrvya maghavanvṛtrahatyāya | tatpṛthivīmaprathayastadastabhnā uto divam",
           "translation": "When you were born, unprecedented, bounteous, for the slaying of Vritra, then you spread the earth and also propped up heaven.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे अपूर्व मघवन्! जब आप वृत्र-वध के लिए उत्पन्न हुए, तब आपने पृथ्वी को फैलाया और द्युलोक को भी थामा।"
         },
         {
           "number": 602,
           "sanskrit": "मयि वर्चो अथो यशोऽथो यज्ञस्य यत्पयः । परमेष्ठी प्रजापतिर्दिवि द्यामिव दृँहतु",
           "transliteration": "mayi varco atho yaśo'tho yajñasya yatpayaḥ | parameṣṭhī prajāpatirdivi dyāmiva dṛm̐hatu",
           "translation": "In me splendor, and fame, and the milk of the sacrifice; may Parameshthi Prajapati make firm in heaven, like the sky.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "परमेष्ठी प्रजापति मुझमें तेज, यश और यज्ञ का जो रस है, उसे ऐसे दृढ़ करें, जैसे उन्होंने द्युलोक में आकाश को (स्थिर किया)।"
         },
         {
           "number": 603,
           "sanskrit": "सं ते पयाँसि समु यन्तु वाजाः सं वृष्ण्यान्यभिमातिषाहः । आप्यायमानो अमृताय सोम दिवि श्रवाँस्युत्तमानि धिष्व",
           "transliteration": "saṃ te payām̐si samu yantu vājāḥ saṃ vṛṣṇyānyabhimātiṣāhaḥ | āpyāyamāno amṛtāya soma divi śravām̐syuttamāni dhiṣva",
           "translation": "May your milks and strengths come together, and your manly powers that overcome rivals; swelling, O Soma, for immortality, hold the highest fames in heaven.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे सोम! आपके रस, आपके अन्न-बल और शत्रु को दबाने वाले आपके पराक्रम (एक साथ) मिलें; अमृतत्व के लिए बढ़ते हुए आप द्युलोक में उत्तम यश धारण कीजिए।"
         },
         {
           "number": 604,
           "sanskrit": "त्वमिमा ओषधीः सोम विश्वास्त्वमपो अजनयस्त्वं गाः । त्वमातनोरुर्वा३न्तरिक्षं त्वं ज्योतिषा वि तमो ववर्थ",
           "transliteration": "tvamimā oṣadhīḥ soma viśvāstvamapo ajanayastvaṃ gāḥ | tvamātanorurvā3ntarikṣaṃ tvaṃ jyotiṣā vi tamo vavartha",
           "translation": "You, Soma, brought forth all these plants, you the waters, you the cows; you spread the wide air; you with light drove away the darkness.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे सोम! आपने ये सब ओषधियाँ उत्पन्न कीं, आपने जल और आपने गौएँ उत्पन्न कीं; आपने विशाल अंतरिक्ष को फैलाया और आपने ज्योति से अंधकार को हटा दिया।"
         },
         {
           "number": 605,
           "sanskrit": "अग्निमीडे पुरोहितं यज्ञस्य देवमृत्विजम् । होतारं रत्नधातमम्",
           "transliteration": "agnimīḍe purohitaṃ yajñasya devamṛtvijam | hotāraṃ ratnadhātamam",
           "translation": "I praise Agni, the household priest, the god, the priest of the sacrifice, the invoker, the best bestower of jewels.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "मैं अग्नि की स्तुति करता हूँ, जो यज्ञ के पुरोहित, दिव्य ऋत्विज, होता और रत्नों के सबसे बड़े धारक हैं।"
         },
         {
           "number": 606,
           "sanskrit": "ते मन्वत प्रथमं नाम गोनां त्रिः सप्त परमं नाम जनान् । ता जानतीरभ्यनूषत क्षा आविर्भुवन्नरुणीर्यशसा गावः",
           "transliteration": "te manvata prathamaṃ nāma gonāṃ triḥ sapta paramaṃ nāma janān | tā jānatīrabhyanūṣata kṣā āvirbhuvannaruṇīryaśasā gāvaḥ",
           "translation": "They thought of the first name of the cows, the highest name of the people, thrice seven; knowing them, the lands praised; the red cows appeared with glory.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "उन्होंने गौओं का प्रथम नाम जाना, माता के इक्कीस परम नाम (जाने); उन्हें जानती हुई (उषाओं) ने स्तुति की; यश के साथ लाल गौएँ (किरणें) प्रकट हुईं।"
         },
         {
           "number": 607,
           "sanskrit": "समन्या यन्त्युपयन्त्यन्याः समानमूर्वं नद्यस्पृणन्ति । तमू शुचिँ शुचयो दीदिवाँसमपान्नपातमुप यन्त्यापः",
           "transliteration": "samanyā yantyupayantyanyāḥ samānamūrvaṃ nadyaspṛṇanti | tamū śucim̐ śucayo dīdivām̐samapānnapātamupa yantyāpaḥ",
           "translation": "Some come together, some approach; the rivers fill the same wide space; to that bright, shining one, the son of waters, the waters come.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "कुछ (जल) साथ मिलकर जाते हैं, कुछ पास आते हैं; नदियाँ एक ही कुण्ड (समुद्र) को भरती हैं; उस पवित्र, दीप्तिमान्, जलों के पौत्र (अग्नि) के पास पवित्र जल जाते हैं।"
         },
         {
           "number": 608,
           "sanskrit": "आ प्रागाद्भद्रा युवतिरह्नः केतून्त्समीर्त्सति । अभूद्भद्रा निवेशनी विश्वस्य जगतो रात्री",
           "transliteration": "ā prāgādbhadrā yuvatirahnaḥ ketūntsamīrtsati | abhūdbhadrā niveśanī viśvasya jagato rātrī",
           "translation": "The auspicious young woman has come forth, she seeks to raise the banners of the day; she has become the auspicious settler, night of the whole world.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "कल्याणी युवती (रात्रि) आ गई है, वह दिन के चिह्नों को समेटना चाहती है; सारे जगत् को विश्राम देने वाली रात्रि कल्याणी हुई है।"
         },
         {
           "number": 609,
           "sanskrit": "प्रक्षस्य वृष्णो अरुषस्य नू महः प्र नो वचो विदथा जातवेदसे । वैश्वानराय मतिर्नव्यसे शुचिः सोम इव पवते चारुरग्नये",
           "transliteration": "prakṣasya vṛṣṇo aruṣasya nū mahaḥ pra no vaco vidathā jātavedase | vaiśvānarāya matirnavyase śuciḥ soma iva pavate cāruragnaye",
           "translation": "Now to the great, strong, ruddy one, to Jatavedas, our word goes at the ritual; a new, pure thought for Vaishvanara flows like Soma, lovely, for Agni.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हमारा वचन यज्ञों में उस पोषक, वर्षणशील, लाल (अग्नि) की महिमा के लिए जातवेद तक पहुँचे; सबसे नये वैश्वानर अग्नि के लिए हमारी पवित्र, सुन्दर बुद्धि सोम के समान बहती है।"
         },
         {
           "number": 610,
           "sanskrit": "विश्वे देवा मम शृण्वन्तु यज्ञमुभे रोदसी अपां नपाच्च मन्म । मा वो वचाँसि परिचक्ष्याणि वोचँ सुम्नेष्विद्वो अन्तमा मदेम",
           "transliteration": "viśve devā mama śṛṇvantu yajñamubhe rodasī apāṃ napācca manma | mā vo vacām̐si paricakṣyāṇi vocam̐ sumneṣvidvo antamā madema",
           "translation": "May all the gods hear my sacrifice, both heaven and earth, and the son of waters, my thought; let me not speak words of yours that are to be refused; may we rejoice in your nearest favors.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "सब देवता मेरा यज्ञ सुनें, द्युलोक और पृथ्वी दोनों और जलों के पौत्र (अग्नि) मेरी स्तुति सुनें; मैं तुम्हारे लिए निन्दा-योग्य वचन न कहूँ; तुम्हारे सबसे निकट होकर हम तुम्हारे सुखों में आनन्दित हों।"
         },
         {
           "number": 611,
           "sanskrit": "यशो मा द्यावापृथिवी यशो मेन्द्रबृहस्पती । यशो भगस्य विन्दतु यशो मा प्रतिमुच्यताम् । यशस्व्या३स्याः सँ सदोऽहं प्रवदिता स्याम्",
           "transliteration": "yaśo mā dyāvāpṛthivī yaśo mendrabṛhaspatī | yaśo bhagasya vindatu yaśo mā pratimucyatām | yaśasvyā3syāḥ sam̐ sado'haṃ pravaditā syām",
           "translation": "May heaven and earth give me glory; glory be mine from Indra and Brihaspati; may I find the glory of Bhaga; may my glory not be released; may I be a glorious speaker in this assembly.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "द्युलोक और पृथ्वी मुझे यश दें, इन्द्र और बृहस्पति मुझे यश दें, भग का यश मुझे प्राप्त हो, यश मुझसे कभी अलग न हो; इस यशस्वी सभा का मैं (श्रेष्ठ) वक्ता बनूँ।"
         },
         {
           "number": 612,
           "sanskrit": "इन्द्रस्य नु वीर्याणि प्रवोचं यानि चकार प्रथमानि वज्री । अहन्नहिमन्वपस्ततर्द प्र वक्षणा अभिनत्पर्वतानाम्",
           "transliteration": "indrasya nu vīryāṇi pravocaṃ yāni cakāra prathamāni vajrī | ahannahimanvapastatarda pra vakṣaṇā abhinatparvatānām",
           "translation": "Now I shall proclaim the heroic deeds of Indra, which the thunderbolt-bearer did first: he slew the serpent, released the waters, and split the flanks of the mountains.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "अब मैं इन्द्र के उन पराक्रमों का वर्णन करता हूँ, जो वज्रधारी ने सबसे पहले किए: उन्होंने अहि को मारा, जलों का मार्ग खोला और पर्वतों की नदियों (के अवरोध) को तोड़ दिया।"
         },
         {
           "number": 613,
           "sanskrit": "अग्निरस्मि जन्मना जातवेदा घृतं मे चक्षुरमृतं म आसन् । त्रिधातुरर्को रजसो विमानोऽजस्रं ज्योतिर्हविरस्मि सर्वम्",
           "transliteration": "agnirasmi janmanā jātavedā ghṛtaṃ me cakṣuramṛtaṃ ma āsan | tridhāturarko rajaso vimāno'jasraṃ jyotirhavirasmi sarvam",
           "translation": "I am Agni, Jatavedas by birth; ghee is my eye, immortality in my mouth; threefold light, measure of the space, unceasing light, I am the whole offering.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "मैं अग्नि हूँ, जन्म से ही जातवेद हूँ; घी मेरी आँख है, मेरे मुख में अमृत है; मैं तीन धातुओं वाला अर्क (प्रकाश), अंतरिक्ष को नापने वाला, अविनाशी ज्योति हूँ; मैं सम्पूर्ण हवि हूँ।"
         },
         {
           "number": 614,
           "sanskrit": "पात्यग्निर्विपो अग्रं पदं वेः पाति यह्वश्चरणँ सूर्यस्य । पाति नाभा सप्तशीर्षाणमग्निः",
           "transliteration": "pātyagnirvipo agraṃ padaṃ veḥ pāti yahvaścaraṇam̐ sūryasya | pāti nābhā saptaśīrṣāṇamagniḥ",
           "translation": "Agni protects the first station of the sage; the great one protects the course of the sun; Agni protects the seven-headed one at the navel.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "अग्नि (गति वाले सूर्य-)पक्षी के ऊँचे पद की रक्षा करते हैं; महान् (अग्नि) सूर्य के मार्ग की रक्षा करते हैं; अग्नि (यज्ञ की) नाभि में सात सिरों वाले (स्तोम) की रक्षा करते हैं।"
         },
         {
           "number": 615,
           "sanskrit": "भ्राजन्त्यग्ने समिधान दीदिवो जिह्वा चरत्यन्तरासनि । स त्वं नो अग्ने पयसा वसुविद्रयिं वर्चो दृशेऽदाः",
           "transliteration": "bhrājantyagne samidhāna dīdivo jihvā caratyantarāsani | sa tvaṃ no agne payasā vasuvidrayiṃ varco dṛśe'dāḥ",
           "translation": "They shine, Agni, kindled, brilliant; the tongue moves within the mouth; you, Agni, finder of wealth, have given us with milk wealth and splendor to see.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे प्रज्वलित, दीप्तिमान् अग्नि! आपकी ज्वालाएँ चमकती हैं, आपकी जीभ मुख के भीतर चलती है; हे धन प्राप्त कराने वाले अग्नि! आप हमें दूध के साथ धन और देखने के लिए तेज दीजिए।"
         },
         {
           "number": 616,
           "sanskrit": "वसन्त इन्नु रन्त्यो ग्रीष्म इन्नु रन्त्यः । वर्षाण्यनु शरदो हेमन्तः शिशिर इन्नु रन्त्यः",
           "transliteration": "vasanta innu rantyo grīṣma innu rantyaḥ | varṣāṇyanu śarado hemantaḥ śiśira innu rantyaḥ",
           "translation": "Spring is a delight; summer is a delight; the rains, then the autumns; winter and the cold season are a delight.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "वसन्त सचमुच रमणीय है, ग्रीष्म सचमुच रमणीय है; वर्षा और उसके बाद शरद्, हेमन्त और शिशिर भी सचमुच रमणीय हैं।"
         },
         {
           "number": 617,
           "sanskrit": "सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् । स भूमिँ सर्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम्",
           "transliteration": "sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt | sa bhūmim̐ sarvato vṛtvātyatiṣṭhaddaśāṅgulam",
           "translation": "The Person has a thousand heads, a thousand eyes, a thousand feet; he pervaded the earth on all sides and stood beyond it by ten fingers.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "पुरुष हजारों सिरों वाला, हजारों आँखों वाला और हजारों पैरों वाला है; वह पृथ्वी को सब ओर से घेरकर भी दस अंगुल आगे (परे) स्थित है।"
         },
         {
           "number": 618,
           "sanskrit": "त्रिपादूर्ध्व उदैत्पुरुषः पदोऽस्येहाभवत्पुनः । तथा विष्वङ् व्यक्रामदशनानशने अभि",
           "transliteration": "tripādūrdhva udaitpuruṣaḥ pado'syehābhavatpunaḥ | tathā viṣvaṅ vyakrāmadaśanānaśane abhi",
           "translation": "Three quarters rose up, the Person; one quarter of him remained here again; thereby he strode out in all directions, to what eats and what does not eat.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "पुरुष (अपने) तीन पादों से ऊपर उठा; उसका एक पाद यहाँ बार-बार (प्रकट) हुआ; उससे वह खाने वाले और न खाने वाले (चेतन और जड़) सबकी ओर सब दिशाओं में फैल गया।"
         },
         {
           "number": 619,
           "sanskrit": "पुरुष एवेदँ सर्वं यद्भूतं यच्च भाव्यम् । पादोऽस्य सर्वा भूतानि त्रिपादस्यामृतं दिवि",
           "transliteration": "puruṣa evedam̐ sarvaṃ yadbhūtaṃ yacca bhāvyam | pādo'sya sarvā bhūtāni tripādasyāmṛtaṃ divi",
           "translation": "The Person alone is all this, what has been and what will be; all beings are a quarter of him; three quarters of immortality are in heaven.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जो कुछ हो चुका है और जो होने वाला है, यह सब पुरुष ही है; सब प्राणी इसका एक पाद हैं, इसके तीन पाद द्युलोक में अमृत हैं।"
         },
         {
           "number": 620,
           "sanskrit": "तावानस्य महिमा ततो ज्यायाँश्च पूरुषः । उतामृतत्वस्येशानो यदन्नेनातिरोहति",
           "transliteration": "tāvānasya mahimā tato jyāyām̐śca pūruṣaḥ | utāmṛtatvasyeśāno yadannenātirohati",
           "translation": "So great is his greatness, and the Person is greater than that; he is also lord of immortality, which rises beyond through food.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "इतनी इसकी महिमा है, और पुरुष इससे भी बड़ा है; वह अमृतत्व का भी स्वामी है, जो अन्न से (जगत् रूप में) ऊपर बढ़ता है।"
         },
         {
           "number": 621,
           "sanskrit": "ततो विराडजायत विराजो अधि पूरुषः । स जातो अत्यरिच्यत पश्चाद्भूमिमथो पुरः",
           "transliteration": "tato virāḍajāyata virājo adhi pūruṣaḥ | sa jāto atyaricyata paścādbhūmimatho puraḥ",
           "translation": "From him Viraj was born, and from Viraj the Person; born, he extended beyond the earth, behind and before.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "उससे विराट् उत्पन्न हुआ, और विराट् से (फिर) पुरुष; उत्पन्न होकर वह पृथ्वी के आगे और पीछे (सब ओर) फैल गया।"
         },
         {
           "number": 622,
           "sanskrit": "मन्ये वाँ द्यावापृथिवी सुभोजसौ ये अप्रथेथाममितमभि योजनम् । द्यावापृथिवी भवतँ स्योने ते नो मुञ्चतमँहसः",
           "transliteration": "manye vām̐ dyāvāpṛthivī subhojasau ye aprathethāmamitamabhi yojanam | dyāvāpṛthivī bhavatam̐ syone te no muñcatamam̐hasaḥ",
           "translation": "I think of you, heaven and earth, good nourishers, who spread immeasurably, a league beyond; heaven and earth, be kind and free us from sin.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे द्यावापृथिवी! मैं आप दोनों को उत्तम भोजन देने वाली मानता हूँ, जो असीम विस्तार तक फैली हैं; हे द्यावापृथिवी! हमारे लिए सुखदायी बनिए और हमें पाप से मुक्त कीजिए।"
         },
         {
           "number": 623,
           "sanskrit": "हरी त इन्द्र श्मश्रूण्युतो ते हरितौ हरि । तं त्वा स्तुवन्ति कवयः पुरुषासो वनर्गवः",
           "transliteration": "harī ta indra śmaśrūṇyuto te haritau hari | taṃ tvā stuvanti kavayaḥ puruṣāso vanargavaḥ",
           "translation": "Your two bay horses, Indra, and your beard are tawny; the seers praise you, the men, forest-dwellers.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! आपके दोनों घोड़े सुनहरे हैं, आपकी दाढ़ी-मूँछ भी सुनहरी है; वन में चरने वाले (पशुओं) वाले मनुष्य, कवि, ऐसे आपकी स्तुति करते हैं।"
         },
         {
           "number": 624,
           "sanskrit": "यद्वर्चो हिरण्यस्य यद्वा वर्चो गवामुत । सत्यस्य ब्रह्मणो वर्चस्तेन मा सँ सृजामसि",
           "transliteration": "yadvarco hiraṇyasya yadvā varco gavāmuta | satyasya brahmaṇo varcastena mā sam̐ sṛjāmasi",
           "translation": "By whatever radiance of gold, or radiance of cows, by the radiance of truth and prayer, with that we unite ourselves.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "सोने का जो तेज है, गौओं का जो तेज है, सत्य और ब्रह्म (वेद) का जो तेज है, उससे हम (अपने को) युक्त करते हैं।"
         },
         {
           "number": 625,
           "sanskrit": "सहस्तन्न इन्द्र दद्ध्योज ईशे ह्यस्य महतो विरप्शिन् । क्रतुं न नृम्णँ स्थविरं च वाजं वृत्रेषु शत्रून्त्सुहना कृधी नः",
           "transliteration": "sahastanna indra daddhyoja īśe hyasya mahato virapśin | kratuṃ na nṛmṇam̐ sthaviraṃ ca vājaṃ vṛtreṣu śatrūntsuhanā kṛdhī naḥ",
           "translation": "Indra, grant us that force; you indeed rule over this great one, O praised one; grant us power, manly strength, durable and strengthening, and easy slaying of foes among the Vritras.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे इन्द्र! हमें वह सहनशक्ति और ओज दीजिए, क्योंकि आप इस महान् (बल) के स्वामी हैं, हे विशाल स्वर वाले! कर्म-बुद्धि के समान पराक्रम और स्थिर अन्न-बल दीजिए; संग्रामों में हमारे शत्रुओं को सरलता से मारे जाने योग्य बनाइए।"
         },
         {
           "number": 626,
           "sanskrit": "सहर्षभाः सहवत्सा उदेत विश्वा रूपाणी बिभ्रतीर्द्व्यूद्नीः । उरुः पृथुरयं वो अस्तु लोक इमा आपः सुप्रपाणा इह स्त",
           "transliteration": "saharṣabhāḥ sahavatsā udeta viśvā rūpāṇī bibhratīrdvyūdnīḥ | uruḥ pṛthurayaṃ vo astu loka imā āpaḥ suprapāṇā iha sta",
           "translation": "Come, with bulls and calves, bearing all forms, the two-milking ones; may this wide, broad place be yours; may these waters be good for drinking here.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "(हे गौओ!) वृषभों और बछड़ों के साथ, सब रूप धारण करती हुई, दोनों ओर थन वाली तुम ऊपर (बाहर) आओ; यह विस्तृत और विशाल लोक तुम्हारा हो; ये जल पीने में सुखद हों, यहीं रहो।"
         },
         {
           "number": 627,
           "sanskrit": "अग्न आयूँषि पवस आसुवोर्जमिषं च नः । आरे बाधस्व दुच्छुनाम्",
           "transliteration": "agna āyūm̐ṣi pavasa āsuvorjamiṣaṃ ca naḥ | āre bādhasva ducchunām",
           "translation": "O Agni, you purify our lives; bring us energy and food; drive far away evil dogs.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे अग्नि! आप आयु को पवित्र करते हैं; हमें बल और अन्न दीजिए; दुर्भाग्य को दूर रोकिए।"
         },
         {
           "number": 628,
           "sanskrit": "विभ्राङ्बृहत्पिबतु सोम्यं मध्वायुर्दधद्यज्ञपतावविह्रुतम् । वातजूतो यो अभिरक्षति त्मना प्रजाः पिपर्ति बहुधा वि राजति",
           "transliteration": "vibhrāṅbṛhatpibatu somyaṃ madhvāyurdadhadyajñapatāvavihrutam | vātajūto yo abhirakṣati tmanā prajāḥ piparti bahudhā vi rājati",
           "translation": "May the shining, great one drink the honeyed soma, giving unharmed life to the lord of the sacrifice; urged by the wind, he guards by himself, nourishes offspring, and shines in many ways.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "चमकता हुआ, महान् (सूर्य) यज्ञपति में अखण्ड आयु धारण करता हुआ सोम का मधु पिए; वायु से प्रेरित जो स्वयं (प्रजाओं की) रक्षा करता है, वह प्रजाओं को पालता है और अनेक प्रकार से चमकता है।"
         },
         {
           "number": 629,
           "sanskrit": "चित्रं देवानामुदगादनीकं चक्षुर्मित्रस्य वरुणस्याग्नेः । आप्रा द्यावापृथिवी अन्तरिक्षँ सूर्य आत्मा जगतस्तस्थुषश्च",
           "transliteration": "citraṃ devānāmudagādanīkaṃ cakṣurmitrasya varuṇasyāgneḥ | āprā dyāvāpṛthivī antarikṣam̐ sūrya ātmā jagatastasthuṣaśca",
           "translation": "The wondrous face of the gods has risen, the eye of Mitra, Varuna and Agni; the Sun, the soul of what moves and what stands, has filled heaven, earth and air.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "देवताओं का अद्भुत मुख (सूर्य) उदित हुआ है, जो मित्र, वरुण और अग्नि की आँख है; उसने द्युलोक, पृथ्वी और अंतरिक्ष को भर दिया है; सूर्य जंगम और स्थावर (जगत्) का आत्मा है।"
         },
         {
           "number": 630,
           "sanskrit": "आयं गौः पृश्निरक्रमीदसदन्मातरं पुरः । पितरं च प्रयन्त्स्वः",
           "transliteration": "āyaṃ gauḥ pṛśnirakramīdasadanmātaraṃ puraḥ | pitaraṃ ca prayantsvaḥ",
           "translation": "This dappled bull has come, he sat before his mother, and the father, going to heaven.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "यह चितकबरा बैल (सूर्य) आगे बढ़ा है, आगे माता (पृथ्वी) के पास बैठा है, और पिता स्वर्ग की ओर जा रहा है।"
         },
         {
           "number": 631,
           "sanskrit": "अन्तश्चरति रोचनास्य प्राणादपानती । व्यख्यन्महिषो दिवम्",
           "transliteration": "antaścarati rocanāsya prāṇādapānatī | vyakhyanmahiṣo divam",
           "translation": "Within moves its light, breathing out from breath; the great one has lit up the sky.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "प्राण से अपान की ओर (साँस लेती हुई) इसकी कांति (लोकों के) भीतर विचरती है; महान् (सूर्य) ने द्युलोक को प्रकाशित किया है।"
         },
         {
           "number": 632,
           "sanskrit": "त्रिँषद्धाम वि राजति वाक्पतङ्गाय धीयते । प्रति वस्तोरह द्युभिः",
           "transliteration": "trim̐ṣaddhāma vi rājati vākpataṅgāya dhīyate | prati vastoraha dyubhiḥ",
           "translation": "The thirty-seat abode shines; speech is set for the bird; in front of the dwelling by days.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "वह तीस धामों पर शासन करता है; पंख वाले (सूर्य) के लिए वाणी (स्तुति) अर्पित की जाती है, प्रतिदिन प्रातः किरणों के साथ।"
         },
         {
           "number": 633,
           "sanskrit": "अप त्ये तायवो यथा नक्षत्रा यन्त्यक्तुभिः । सूराय विश्वचक्षसे",
           "transliteration": "apa tye tāyavo yathā nakṣatrā yantyaktubhiḥ | sūrāya viśvacakṣase",
           "translation": "Like thieves the stars go away with the nights, before the all-seeing Sun.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जैसे चोर (भाग जाते हैं), वैसे ही ये नक्षत्र रातों के साथ, सबको देखने वाले सूर्य के (आने पर) चले जाते हैं।"
         },
         {
           "number": 634,
           "sanskrit": "अदृश्रन्नस्य केतवो वि रश्मयो जनाँ अनु । भ्राजन्तो अग्नयो यथा",
           "transliteration": "adṛśrannasya ketavo vi raśmayo janām̐ anu | bhrājanto agnayo yathā",
           "translation": "His banners have been seen, his rays spread over the people, shining like fires.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "इसके चिह्न, इसकी किरणें जलती हुई अग्नियों के समान लोगों पर दिखाई दीं।"
         },
         {
           "number": 635,
           "sanskrit": "तरणिर्विश्वदर्शतो ज्योतिष्कृदसि सूर्य । विश्वमाभासि रोचनम्",
           "transliteration": "taraṇirviśvadarśato jyotiṣkṛdasi sūrya | viśvamābhāsi rocanam",
           "translation": "You are swift, seen by all, the light-maker, O Sun; you illuminate the whole bright sky.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे सूर्य! आप (अंधकार को) पार करने वाले, सबके दर्शनीय और ज्योति के रचयिता हैं; आप सारे चमकते (लोक) को प्रकाशित करते हैं।"
         },
         {
           "number": 636,
           "sanskrit": "प्रत्यङ् देवानां विशः प्रत्यङ्ङुदेषि मानुषान् । प्रत्यङ् विश्वँ स्वर्दृशे",
           "transliteration": "pratyaṅ devānāṃ viśaḥ pratyaṅṅudeṣi mānuṣān | pratyaṅ viśvam̐ svardṛśe",
           "translation": "You rise facing the clans of the gods, facing men, facing all, to be seen in heaven.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "(हे सूर्य!) आप देवताओं की प्रजाओं के सामने, मनुष्यों के सामने उदित होते हैं, और सबके सामने, ताकि वे स्वर्ग (प्रकाश) देख सकें।"
         },
         {
           "number": 637,
           "sanskrit": "येना पावक चक्षसा भुरण्यन्तं जनाँ अनु । त्वं वरुण पश्यसि",
           "transliteration": "yenā pāvaka cakṣasā bhuraṇyantaṃ janām̐ anu | tvaṃ varuṇa paśyasi",
           "translation": "By the eye, O purifier, by which you look on the people, bearing them, you, Varuna, behold.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे पवित्र करने वाले वरुण! जिस दृष्टि से आप (कर्म में) व्यस्त (मनुष्य) को लोगों के बीच देखते हैं, (उसी से हमें देखिए)।"
         },
         {
           "number": 638,
           "sanskrit": "उद्द्यामेषि रजः पृथ्वहा मिमानो अक्तुभिः । पश्यञ्जन्मानि सूर्य",
           "transliteration": "uddyāmeṣi rajaḥ pṛthvahā mimāno aktubhiḥ | paśyañjanmāni sūrya",
           "translation": "You go up to heaven, measuring the broad space with days, beholding creatures, O Sun.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे सूर्य! आप रातों से दिनों को नापते हुए, प्राणियों को देखते हुए, द्युलोक और विस्तृत अंतरिक्ष को पार करते हैं।"
         },
         {
           "number": 639,
           "sanskrit": "अयुक्त सप्त शुन्ध्युवः सूरो रथस्य नप्त्र्यः । ताभिर्याति स्वयुक्तिभिः",
           "transliteration": "ayukta sapta śundhyuvaḥ sūro rathasya naptryaḥ | tābhiryāti svayuktibhiḥ",
           "translation": "The Sun yoked seven bright mares of the chariot; with them he goes, yoked by themselves.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "सूर्य ने रथ की सात पवित्र पुत्रियों (घोड़ियों) को जोता है; उन अपने आप जुड़ने वालियों के साथ वह जाता है।"
         },
         {
           "number": 640,
           "sanskrit": "सप्त त्वा हरितो रथे वहन्ति देव सूर्य । शोचिष्केशं विचक्षण",
           "transliteration": "sapta tvā harito rathe vahanti deva sūrya | śociṣkeśaṃ vicakṣaṇa",
           "translation": "Seven bay horses carry you on your chariot, god Sun, the all-seeing with flame-hair.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे सर्वद्रष्टा सूर्यदेव! सात हरित (घोड़े) रथ में तेजस्वी केशों वाले आपको वहन करते हैं।"
         }
       ]
     },
@@ -5104,70 +5159,80 @@
           "sanskrit": "विदा मघवन् विदा गातुमनुशँसिषो दिशः । शिक्षा शचीनां पते पूर्वीणां पुरूवसो",
           "transliteration": "vidā maghavan vidā gātumanuśam̐siṣo diśaḥ | śikṣā śacīnāṃ pate pūrvīṇāṃ purūvaso",
           "translation": "Know, bounteous one, know the way; you have praised the directions; teach, lord of powers, O rich in wealth, the ancient ones.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे मघवन्! (धन का) मार्ग जानिए, जानिए; दिशाओं (के धनों) का वर्णन कीजिए; हे शक्तियों के स्वामी, बहुत धन वाले! (हमें) अनेक (धनों) का दान दीजिए।"
         },
         {
           "number": 642,
           "sanskrit": "आभिष्ट्वमभिष्टिभिः स्वाऽ३र्न्नाँशुः । प्रचेतन प्रचेतयेन्द्र द्युम्नाय न इषे",
           "transliteration": "ābhiṣṭvamabhiṣṭibhiḥ svā'3rnnām̐śuḥ | pracetana pracetayendra dyumnāya na iṣe",
           "translation": "You with your helps, as the shining drop of heaven; O wise one, awaken us for splendor and food, Indra.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे प्रबुद्ध करने वाले इन्द्र! अपनी सहायताओं के साथ, सूर्य की किरण के समान, हमें तेज और अन्न के लिए जागरूक कीजिए।"
         },
         {
           "number": 643,
           "sanskrit": "एवा हि शक्रो राये वाजाय वज्रिवः । शविष्ठ वज्रिन्नृञ्जसे मँहिष्ठ वज्रिन्नृञ्जस । आ याहि पिब मत्स्व",
           "transliteration": "evā hi śakro rāye vājāya vajrivaḥ | śaviṣṭha vajrinnṛñjase mam̐hiṣṭha vajrinnṛñjasa | ā yāhi piba matsva",
           "translation": "So indeed, powerful one, for wealth and strength, thunderbolt-bearer; strongest, thunderbolt-bearer, you shine; greatest, thunderbolt-bearer, you shine; come, drink, rejoice.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे वज्रधारी! शक्र (इन्द्र) सचमुच ऐसे ही धन और बल के लिए (हैं); हे सबसे बलवान्, सबसे उदार वज्रधारी! आप (हमें) सँवारते हैं; आइए, (सोम) पीजिए और आनन्दित होइए।"
         },
         {
           "number": 644,
           "sanskrit": "विदा राये सुवीर्यं भवो वाजानां पतिर्वशाँ अनु । मँहिष्ठ वज्रिन्नृञ्जसे यः शविष्ठः शूराणाम्",
           "transliteration": "vidā rāye suvīryaṃ bhavo vājānāṃ patirvaśām̐ anu | mam̐hiṣṭha vajrinnṛñjase yaḥ śaviṣṭhaḥ śūrāṇām",
           "translation": "Know, for wealth, heroic strength; be lord of strengths according to your will; greatest, thunderbolt-bearer, you shine, who are the strongest of heroes.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "(हे इन्द्र!) धन के लिए उत्तम पराक्रम प्राप्त कराइए; आप इच्छा के अनुसार अन्न-बलों के स्वामी बनें; हे सबसे उदार वज्रधारी, जो शूरों में सबसे बलवान् हैं! आप (हमें) सँवारते हैं।"
         },
         {
           "number": 645,
           "sanskrit": "यो मँहिष्ठो मघोनाम्ँशुर्न्न शोचिः । चिकित्वो अभि नो नयेन्द्रो विदे तमु स्तुहि",
           "transliteration": "yo mam̐hiṣṭho maghonāmm̐śurnna śociḥ | cikitvo abhi no nayendro vide tamu stuhi",
           "translation": "You who are the greatest of the bounteous, shining like a ray; O knowing one, lead us; Indra is to be known; praise him.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "जो मघवाओं में सबसे उदार हैं, (सूर्य की) किरण के समान जिनका तेज है, हे ज्ञानी! हमें (उनके पास) ले चलिए; जो इन्द्र जाने जाते हैं, उन्हीं की स्तुति करो।"
         },
         {
           "number": 646,
           "sanskrit": "ईशे हि शक्रस्तमूतये हवामहे जेतारमपराजितम् । स नः स्वर्षदति द्विषः क्रतुश्छन्द ऋतं बृहत्",
           "transliteration": "īśe hi śakrastamūtaye havāmahe jetāramaparājitam | sa naḥ svarṣadati dviṣaḥ kratuśchanda ṛtaṃ bṛhat",
           "translation": "For the powerful rules; we call on him for help, the victor unconquered; may he bring us heaven beyond hatred, the skill, the meter, the great truth.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "शक्र (इन्द्र) स्वामी हैं; हम रक्षा के लिए उन विजयी, अपराजित (इन्द्र) को बुलाते हैं; वे हमें द्वेषियों से पार ले जाएँ; वे (ही) कर्म, छन्द, ऋत और बृहत् (साम) हैं।"
         },
         {
           "number": 647,
           "sanskrit": "इन्द्रं धनस्य सातये हवामहे जेतारमपराजितम् । स नः स्वर्षदति द्विषः स नः स्वर्षदति द्विषः",
           "transliteration": "indraṃ dhanasya sātaye havāmahe jetāramaparājitam | sa naḥ svarṣadati dviṣaḥ sa naḥ svarṣadati dviṣaḥ",
           "translation": "We call on Indra for the winning of wealth, the victor unconquered; may he bring us heaven beyond hatred; may he bring us heaven beyond hatred.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "धन की प्राप्ति के लिए हम उन विजयी, अपराजित इन्द्र को बुलाते हैं; वे हमें द्वेषियों से पार ले जाएँ, वे हमें द्वेषियों से पार ले जाएँ।"
         },
         {
           "number": 648,
           "sanskrit": "पूर्वस्य यत्ते अद्रिवोँऽशुर्मदाय । सुम्न आ धेहि नो वसो पूर्तिः शविष्ठ शस्यते । वशी हि शक्रो नूनं तन्नव्यँ संन्यसे",
           "transliteration": "pūrvasya yatte adrivom̐'śurmadāya | sumna ā dhehi no vaso pūrtiḥ śaviṣṭha śasyate | vaśī hi śakro nūnaṃ tannavyam̐ saṃnyase",
           "translation": "Of your ancient one, O stone-bearer, the shining ray for exhilaration; place us in favor, O Vasu; O strongest, fullness is praised; the powerful alone now takes up that new.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे वज्रधारी! आपके आनन्द के लिए जो पहला सोम-डंठल है, हे वसु! (उससे) हमें सुख में स्थापित कीजिए; हे सबसे बलवान्! (आपकी) पूर्णता की प्रशंसा होती है; शक्र सचमुच (सबको) वश में रखने वाले हैं; अब वह नया (स्तोत्र) आपको अर्पित है।"
         },
         {
           "number": 649,
           "sanskrit": "प्रभो जनस्य वृत्रहन्त्समर्येषु ब्रवावहै । शूरो यो गोषु गच्छति सखा सुशेवो अद्वयुः",
           "transliteration": "prabho janasya vṛtrahantsamaryeṣu bravāvahai | śūro yo goṣu gacchati sakhā suśevo advayuḥ",
           "translation": "O lord of the people, Vritra-slayer, we two shall speak in battles; the hero who goes among the cattle, a friend, a good comforter, not two-faced.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे जन के स्वामी, वृत्रहन्ता! संग्रामों में हम दोनों (एक-दूसरे से) बात करें; जो शूर गौओं (की प्राप्ति) में जाते हैं, वे सुखदायी और एक मन वाले सखा हैं।"
         },
         {
           "number": 650,
           "sanskrit": "एवाह्योऽ३ऽ३ऽ३वा । एवा ह्यग्ने । एवाहीन्द्र । एवा हि पूषन् । एवा हि देवाः ॐ एवाहि देवाः",
           "transliteration": "evāhyo'3'3'3vā | evā hyagne | evāhīndra | evā hi pūṣan | evā hi devāḥ oṃ evāhi devāḥ",
           "translation": "So indeed, O Agni; so indeed, Indra; so indeed, Pushan; so indeed, the gods. Om, so indeed, the gods.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "ऐसा ही हो! हे अग्नि, ऐसा ही हो! हे इन्द्र, ऐसा ही हो! हे पूषन्, ऐसा ही हो! हे देवो, ऐसा ही हो! ॐ, हे देवो, ऐसा ही हो!"
         }
       ]
     },
@@ -5354,7 +5419,8 @@
           "sanskrit": "एना विश्वान्यर्य आ द्युम्नानि मानुषाणाम् । सिषासन्तो वनामहे",
           "transliteration": "enā viśvānyarya ā dyumnāni mānuṣāṇām | siṣāsanto vanāmahe",
           "translation": "By this, in the lord, we win all the splendors of men, desiring to win them.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे स्वामी! इस (सोम) से मनुष्यों के सब तेजस्वी धनों को पाने की इच्छा करते हुए हम (उन्हें) जीतें।"
         },
         {
           "number": 675,
@@ -6246,14 +6312,16 @@
           "sanskrit": "इन्द्र इद्धर्योः सचा सम्मिश्ल आ वचोयुजा । इन्द्रो वज्री हिरण्ययः",
           "transliteration": "indra iddharyoḥ sacā sammiśla ā vacoyujā | indro vajrī hiraṇyayaḥ",
           "translation": "Indra alone is united with the two bay horses, bound by speech; Indra the thunderbolt-bearer, golden.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "इन्द्र ही वचन से जुड़ने वाले दो हरि घोड़ों के साथ रहते हैं; इन्द्र वज्रधारी और सुनहरे हैं।"
         },
         {
           "number": 798,
           "sanskrit": "इन्द्र वाजेषु नोऽव सहस्रप्रधनेषु च । उग्र उग्राभिरूतिभिः",
           "transliteration": "indra vājeṣu no'va sahasrapradhaneṣu ca | ugra ugrābhirūtibhiḥ",
           "translation": "Protect us, Indra, in contests and in thousandfold battles, O fierce one, with fierce helps.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे उग्र इन्द्र! अपनी उग्र रक्षाओं से संग्रामों में और हजारों धन वाले युद्धों में हमारी रक्षा कीजिए।"
         },
         {
           "number": 799,
@@ -10370,14 +10438,16 @@
           "sanskrit": "आयं गौः पृश्निरक्रमीदसदन्मातरं पुरः । पितरं च प्रयन्त्स्वः",
           "transliteration": "āyaṃ gauḥ pṛśnirakramīdasadanmātaraṃ puraḥ | pitaraṃ ca prayantsvaḥ",
           "translation": "This dappled bull has come, he sat before his mother, and the father, going to heaven.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "यह चितकबरा बैल (सूर्य) आगे बढ़ा है, आगे माता (पृथ्वी) के पास बैठा है, और पिता स्वर्ग की ओर जा रहा है।"
         },
         {
           "number": 1377,
           "sanskrit": "अन्तश्चरति रोचनास्य प्राणादपानती । व्यख्यन्महिषो दिवम्",
           "transliteration": "antaścarati rocanāsya prāṇādapānatī | vyakhyanmahiṣo divam",
           "translation": "Within moves its light, breathing out from breath; the great one has lit up the sky.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "प्राण से अपान की ओर (साँस लेती हुई) इसकी कांति (लोकों के) भीतर विचरती है; महान् (सूर्य) ने द्युलोक को प्रकाशित किया है।"
         },
         {
           "number": 1378,
@@ -10753,7 +10823,8 @@
           "sanskrit": "यज्जायथा अपूर्व्य मघवन्वृत्रहत्याय । तत्पृथिवीमप्रथयस्तदस्तभ्ना उतो दिवम्",
           "transliteration": "yajjāyathā apūrvya maghavanvṛtrahatyāya | tatpṛthivīmaprathayastadastabhnā uto divam",
           "translation": "When you were born, unprecedented, bounteous, for the slaying of Vritra, then you spread the earth and also propped up heaven.",
-          "translationSource": "ai"
+          "translationSource": "ai",
+          "hindi": "हे अपूर्व मघवन्! जब आप वृत्र-वध के लिए उत्पन्न हुए, तब आपने पृथ्वी को फैलाया और द्युलोक को भी थामा।"
         },
         {
           "number": 1430,
