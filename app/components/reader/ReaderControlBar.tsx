@@ -10,6 +10,7 @@
 
 import { BookOpen, Compass, GraduationCap, Microscope } from 'lucide-react';
 import type { PerspectiveMode, ReaderModeTier, ReaderSettings } from '@/lib/useReaderSettings';
+import { triggerTactileFeedback } from '@/lib/haptics';
 
 const MODES: Array<{ id: ReaderModeTier; hi: string; en: string; hint: string }> = [
   { id: 'quick', hi: 'त्वरित', en: 'Quick', hint: 'सार व व्यावहारिक प्रयोग' },
@@ -26,8 +27,10 @@ const PERSPECTIVES: Array<{ id: PerspectiveMode; hi: string; en: string; hint: s
 ];
 
 const segment = (active: boolean) =>
-  `focus-ring inline-flex min-h-[40px] flex-1 items-center justify-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold transition sm:flex-none ${
-    active ? 'bg-saffron-600 text-white shadow-sm' : 'text-dharma-muted hover:bg-dharma-bg/80 hover:text-dharma-text'
+  `focus-ring inline-flex min-h-[36px] sm:min-h-[38px] flex-1 items-center justify-center gap-1.5 rounded-pill px-3 py-1.5 text-xs transition-all duration-fast select-none sm:flex-none ${
+    active
+      ? 'bg-surface-elevated text-label-primary font-semibold shadow-xs ring-1 ring-black/5 dark:ring-white/10 scale-[1.01]'
+      : 'text-label-secondary font-medium hover:text-label-primary hover:bg-fill-quaternary/60 active:scale-[0.98]'
   }`;
 
 export function ReaderControlBar({
@@ -44,65 +47,74 @@ export function ReaderControlBar({
   return (
     <section
       aria-label="Reading controls · पठन नियंत्रण"
-      className="rounded-2xl border border-dharma-border bg-dharma-card/70 p-2 shadow-sm"
+      className="rounded-card border border-separator/80 bg-surface-raised/95 backdrop-blur-md p-2.5 sm:p-3 shadow-xs transition-colors"
     >
-      <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
-        <div role="group" aria-label="Reading depth · पठन गहराई" className="flex items-center gap-1">
-          <span lang="hi" className="hidden shrink-0 px-1.5 font-devanagari text-[11px] font-bold text-saffron-800 dark:text-saffron-300 sm:inline">
+      <div className="flex flex-col gap-2.5 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-1 items-center gap-2">
+          <span lang="hi" className="hidden shrink-0 font-devanagari text-caption-2 font-semibold uppercase tracking-wider text-label-secondary sm:inline pl-1">
             गहराई
           </span>
-          {MODES.map((m) => (
-            <button
-              key={m.id}
-              type="button"
-              aria-pressed={m.id === mode.id}
-              title={`${m.en} · ${m.hint}`}
-              onClick={() => onChange('readerMode', m.id)}
-              className={segment(m.id === mode.id)}
-            >
-              <span lang="hi" className="font-devanagari">{m.hi}</span>
-              <span className="hidden opacity-75 md:inline">{m.en}</span>
-            </button>
-          ))}
+          <div role="group" aria-label="Reading depth · पठन गहराई" className="flex flex-1 items-center gap-1 rounded-pill bg-fill-tertiary p-1 border border-separator/40">
+            {MODES.map((m) => (
+              <button
+                key={m.id}
+                type="button"
+                aria-pressed={m.id === mode.id}
+                title={`${m.en} · ${m.hint}`}
+                onClick={() => {
+                  triggerTactileFeedback('selection', 'softTap');
+                  onChange('readerMode', m.id);
+                }}
+                className={segment(m.id === mode.id)}
+              >
+                <span lang="hi" className="font-devanagari">{m.hi}</span>
+                <span className="hidden text-[10px] uppercase tracking-wider opacity-75 md:inline">{m.en}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         {showPerspective && (
-          <div
-            role="group"
-            aria-label="Reading perspective · अध्ययन दृष्टि"
-            className="flex items-center gap-1 border-t border-dharma-border/60 pt-2 lg:border-l lg:border-t-0 lg:pl-2 lg:pt-0"
-          >
-            <span lang="hi" className="hidden shrink-0 px-1.5 font-devanagari text-[11px] font-bold text-saffron-800 dark:text-saffron-300 sm:inline">
+          <div className="flex flex-1 items-center gap-2 border-t border-separator/40 pt-2 lg:border-l lg:border-t-0 lg:pl-3 lg:pt-0">
+            <span lang="hi" className="hidden shrink-0 font-devanagari text-caption-2 font-semibold uppercase tracking-wider text-label-secondary sm:inline pl-1">
               दृष्टि
             </span>
-            {PERSPECTIVES.map((p) => (
-              <button
-                key={p.id}
-                type="button"
-                aria-pressed={p.id === perspective.id}
-                aria-label={`${p.en} · ${p.hi}`}
-                title={`${p.en} · ${p.hint}`}
-                onClick={() => onChange('perspective', p.id)}
-                className={segment(p.id === perspective.id)}
-              >
-                <p.Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                <span lang="hi" className="font-devanagari">{p.hi}</span>
-              </button>
-            ))}
+            <div role="group" aria-label="Reading perspective · अध्ययन दृष्टि" className="flex flex-1 items-center gap-1 rounded-pill bg-fill-tertiary p-1 border border-separator/40">
+              {PERSPECTIVES.map((p) => (
+                <button
+                  key={p.id}
+                  type="button"
+                  aria-pressed={p.id === perspective.id}
+                  aria-label={`${p.en} · ${p.hi}`}
+                  title={`${p.en} · ${p.hint}`}
+                  onClick={() => {
+                    triggerTactileFeedback('selection', 'softTap');
+                    onChange('perspective', p.id);
+                  }}
+                  className={segment(p.id === perspective.id)}
+                >
+                  <p.Icon className={`h-3.5 w-3.5 shrink-0 ${p.id === perspective.id ? 'text-accent' : 'opacity-70'}`} aria-hidden="true" />
+                  <span lang="hi" className="font-devanagari">{p.hi}</span>
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>
 
       {/* One line for what the current pair means */}
-      <p lang="hi" className="mt-1.5 px-1.5 font-devanagari text-[11px] leading-snug text-dharma-muted">
-        {mode.hi}: {mode.hint}
-        {showPerspective && (
-          <>
-            {' · '}
-            {perspective.hi}: {perspective.hint}
-          </>
-        )}
-      </p>
+      <div className="mt-2.5 flex items-center gap-2 rounded-xl bg-fill-quaternary/40 px-3 py-1.5 text-caption-1 text-label-secondary border border-separator/20">
+        <span className="h-1.5 w-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
+        <p lang="hi" className="font-devanagari leading-snug">
+          <span className="font-semibold text-label-primary">{mode.hi}:</span> {mode.hint}
+          {showPerspective && (
+            <>
+              <span className="mx-1.5 opacity-40">|</span>
+              <span className="font-semibold text-label-primary">{perspective.hi}:</span> {perspective.hint}
+            </>
+          )}
+        </p>
+      </div>
     </section>
   );
 }
