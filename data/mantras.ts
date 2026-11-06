@@ -403,3 +403,4 @@ export const SACRED_MANTRAS: SacredMantra[] = [
 export function getMantraBySlug(slug: string): SacredMantra | undefined {
   return SACRED_MANTRAS.find((m) => m.slug === slug || m.id === slug);
 }
+

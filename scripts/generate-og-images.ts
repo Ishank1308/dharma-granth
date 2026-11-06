@@ -257,9 +257,12 @@ async function renderOne(meta: ScriptureMeta, fonts: SatoriFont[]): Promise<void
     height: HEIGHT,
     fonts,
   });
-  const png = new Resvg(svg, { fitTo: { mode: "width", value: WIDTH } }).render().asPng();
-  writeFileSync(resolve(OUT_DIR, `${meta.id}.png`), png);
-  await sharp(png)
+  const rawPng = new Resvg(svg, { fitTo: { mode: "width", value: WIDTH } }).render().asPng();
+  const optPng = await sharp(rawPng)
+    .png({ quality: 85, compressionLevel: 9, palette: true })
+    .toBuffer();
+  writeFileSync(resolve(OUT_DIR, `${meta.id}.png`), optPng);
+  await sharp(rawPng)
     .resize({ width: THUMB_WIDTH })
     .webp({ quality: 75, effort: 6 })
     .toFile(resolve(THUMB_DIR, `${meta.id}.webp`));
@@ -402,6 +405,13 @@ async function renderSvg(tree: unknown, width: number, height: number, fonts: Sa
 
 function svgToPng(svg: string, width: number): Buffer {
   return new Resvg(svg, { fitTo: { mode: "width", value: width } }).render().asPng();
+}
+
+async function svgToOptimizedPng(svg: string, width: number): Promise<Buffer> {
+  const rawPng = new Resvg(svg, { fitTo: { mode: "width", value: width } }).render().asPng();
+  return sharp(rawPng)
+    .png({ quality: 85, compressionLevel: 9, palette: true })
+    .toBuffer();
 }
 
 type VerseStamps = { rev: string; files: Record<string, string> };
@@ -566,7 +576,7 @@ async function renderBrandAssets(fonts: SatoriFont[]): Promise<void> {
   const emblem = loadEmblem();
 
   const ogSvg = await renderSvg(defaultOgTemplate(emblem), WIDTH, HEIGHT, fonts);
-  writeFileSync(resolve(ROOT, "public/og-default.png"), svgToPng(ogSvg, WIDTH));
+  writeFileSync(resolve(ROOT, "public/og-default.png"), await svgToOptimizedPng(ogSvg, WIDTH));
   console.log("  ✓ og-default.png");
 
   // Satori emits glyphs as paths, so the SVG favicon needs no font at runtime.
@@ -587,7 +597,7 @@ async function renderBrandAssets(fonts: SatoriFont[]): Promise<void> {
   for (const icon of pngIcons) {
     const tree = icon.emblem ? emblemIconTemplate(emblem, icon.size, icon) : iconTemplate(icon.size, icon);
     const svg = await renderSvg(tree, icon.size, icon.size, fonts);
-    writeFileSync(resolve(ICON_DIR, icon.file), svgToPng(svg, icon.size));
+    writeFileSync(resolve(ICON_DIR, icon.file), await svgToOptimizedPng(svg, icon.size));
     console.log(`  ✓ icons/${icon.file}`);
   }
 }

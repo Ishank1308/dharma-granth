@@ -44,6 +44,7 @@
     "seed:gretil": "tsx scripts/seed-gretil.ts",
     "seed:all": "npm run seed:gita && npm run seed:ramayana && npm run seed:ramcharitmanas && npm run seed:vedas && npm run seed:upanishads && npm run seed:mahabharata && npm run seed:puranas && npm run seed:missing && npm run seed:gretil",
     "og:build": "tsx scripts/generate-og-images.ts",
+    "optimize:images": "node scripts/optimize-images.mjs",
     "og:verses": "tsx scripts/generate-og-images.ts --verses",
     "logo:build": "node scripts/build-logo.mjs",
     "report:quality": "tsx scripts/quality-report.ts",

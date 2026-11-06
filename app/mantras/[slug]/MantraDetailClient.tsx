@@ -104,3 +104,4 @@ export function MantraDetailClient({ mantra, pageUrl }: { mantra: SacredMantra; 
     </section>
   );
 }
+

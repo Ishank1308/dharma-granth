@@ -157,3 +157,4 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
     </div>
   );
 }
+
