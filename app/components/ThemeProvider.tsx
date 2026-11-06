@@ -34,6 +34,54 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
+/** Where the reader last pressed, so a theme change can grow out of the control they used. */
+let lastPress: { x: number; y: number } | null = null;
+if (typeof window !== 'undefined') {
+  window.addEventListener(
+    'pointerdown',
+    (e) => {
+      lastPress = { x: e.clientX, y: e.clientY };
+    },
+    { capture: true, passive: true },
+  );
+}
+
+type ViewTransitionDocument = Document & {
+  startViewTransition?: (update: () => void) => { finished: Promise<void> };
+};
+
+/**
+ * Applies a theme to <html>. Where the browser has view transitions (and motion is welcome), the new
+ * theme grows as a circle from the last press (app/motion.css, section 8); otherwise it switches at once.
+ */
+function paintTheme(eff: string) {
+  const root = document.documentElement;
+  if (root.getAttribute('data-theme') === eff) return;
+  const doc = document as ViewTransitionDocument;
+  const calm =
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    root.dataset.lowPower === 'true' ||
+    root.dataset.liteMode === 'true';
+  if (!doc.startViewTransition || calm) {
+    root.setAttribute('data-theme', eff);
+    return;
+  }
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const { x, y } = lastPress ?? { x: w / 2, y: 0 };
+  root.style.setProperty('--vt-x', `${Math.round(x)}px`);
+  root.style.setProperty('--vt-y', `${Math.round(y)}px`);
+  root.style.setProperty('--vt-r', `${Math.ceil(Math.hypot(Math.max(x, w - x), Math.max(y, h - y)))}px`);
+  root.setAttribute('data-theme-vt', '');
+  try {
+    const transition = doc.startViewTransition(() => root.setAttribute('data-theme', eff));
+    transition.finished.finally(() => root.removeAttribute('data-theme-vt'));
+  } catch {
+    root.removeAttribute('data-theme-vt');
+    root.setAttribute('data-theme', eff);
+  }
+}
+
 /**
  * Reads the persisted theme from localStorage and applies it to the
  * <html> element. The pre-hydration <script> in layout.tsx already
@@ -79,7 +127,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setThemeState(t);
     const eff = t === 'auto' ? getCircadianTheme() : t;
     setEffectiveTheme(eff);
-    document.documentElement.setAttribute('data-theme', eff);
+    paintTheme(eff);
     try {
       window.localStorage.setItem(STORAGE_KEY, t);
     } catch {

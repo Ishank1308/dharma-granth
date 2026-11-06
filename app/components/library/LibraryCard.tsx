@@ -159,6 +159,7 @@ export function LibraryCard({
   return (
     <article
       aria-labelledby={headingId}
+      data-tilt
       style={{ '--book': CATEGORY_COLOURS[item.category] ?? CATEGORY_COLOURS.other } as CSSProperties}
       className="home-book group relative flex h-full flex-col overflow-hidden rounded-[22px] bg-dharma-card p-5 pl-7 shadow-[0_2px_6px_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)] sm:p-6 sm:pl-8"
     >

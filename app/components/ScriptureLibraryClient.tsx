@@ -431,7 +431,7 @@ export function ScriptureLibraryClient({
                 <NoResults query={filters.q.trim()} onClear={() => setQuery('')} />
               )
             ) : (
-              <ul className={`grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'}`}>
+              <ul className={`reveal-grid grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'}`}>
                 {results.map((item) => (
                   <li key={item.id} className="min-w-0">
                     <LibraryCard
