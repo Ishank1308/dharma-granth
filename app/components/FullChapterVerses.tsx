@@ -58,7 +58,6 @@ import {
   markChapterCompleteInReadingPlan,
 } from '@/lib/reading-plan-sync';
 import { saveChapterVersesToDB, getCachedChapterVersesFromDB } from '@/lib/db/granth-indexeddb';
-import { isHindiWithheld, isUnproofreadShown } from '@/lib/ocr-hindi-review';
 import type { SvadhyayaTab } from '@/app/components/reader/SvadhyayaSplitDrawer';
 const SvadhyayaSplitDrawer = dynamic(() => import('@/app/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
 import { SpatialShloka, type BhashyaSource, type ReaderMode } from './liquid/SpatialShloka';
@@ -309,9 +308,13 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   useEffect(() => {
     if (state.kind !== 'loading') return;
     let cancelled = false;
+    // The Hindi review list is about 450 KB, so it loads only when a cached chapter is found,
+    // instead of riding in every chapter page's bundle.
     getCachedChapterVersesFromDB(scriptureId, chapterId)
-      .then((cached) => {
-        if (!cancelled && cached && cached.length > 0) {
+      .then(async (cached) => {
+        if (!cached || cached.length === 0) return;
+        const { isHindiWithheld, isUnproofreadShown } = await import('@/lib/ocr-hindi-review');
+        if (!cancelled) {
           setState({
             kind: 'ready',
             verses: cached.map((c) => ({

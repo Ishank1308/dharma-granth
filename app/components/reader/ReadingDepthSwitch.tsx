@@ -18,7 +18,7 @@ export function ReadingDepthSwitch({ className = '' }: { className?: string }) {
             aria-checked={on}
             title={d.hint}
             onClick={() => setDepth(d.id)}
-            className={`inline-flex min-h-[40px] items-center gap-1.5 rounded-[10px] px-3 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 sm:min-h-[32px] ${
+            className={`inline-flex min-h-[40px] items-center gap-1.5 rounded-track px-3 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 sm:min-h-[32px] ${
               on ? 'bg-saffron-600 text-white shadow-sm' : 'text-dharma-text hover:bg-saffron-50 dark:hover:bg-saffron-950/30'
             }`}
           >

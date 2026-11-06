@@ -169,13 +169,13 @@ function Layer({
   // Apple-style layer heading: a small label naming what kind of text this is (source or interpretation), then the title.
   const head = (
     <>
-      <span className={`min-w-0 flex-1 ${kind === 'source' ? 'text-center' : ''}`}>
+      <span className="min-w-0 flex-1">
         <span className="block text-xs font-semibold text-dharma-muted">
           <span lang="hi" className="font-devanagari">{k.chipHi}</span>
           <span aria-hidden="true"> · </span>
           <span>{k.chip}</span>
         </span>
-        <span className={`mt-0.5 block font-sans font-semibold tracking-[-0.02em] text-dharma-text ${kind === 'source' ? 'sr-only' : 'text-[17px] sm:text-[19px]'}`}>
+        <span className={`mt-0.5 block font-sans font-semibold tracking-[-0.02em] text-dharma-text ${kind === 'source' ? 'sr-only' : 'text-body sm:text-[19px]'}`}>
           <span id={`${id}-title`}>{title}</span>{' '}
           {titleHi && (
             <span lang="hi" className="ml-1 font-devanagari text-[0.95rem] font-normal text-dharma-muted">
@@ -189,7 +189,11 @@ function Layer({
   );
 
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className={`relative rounded-[18px] ${kind === 'source' ? '' : 'bg-dharma-card'}`}>
+    <section
+      id={id}
+      aria-labelledby={`${id}-title`}
+      className={`relative rounded-card ${kind === 'source' ? 'verse-card single-verse px-3 py-4 sm:px-6 sm:py-6' : 'bg-dharma-card'}`}
+    >
       {collapsible ? (
         <details ref={ref} open className="group">
           <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center gap-3 rounded-[18px] px-4 py-3 sm:px-6 [&::-webkit-details-marker]:hidden">
@@ -200,8 +204,8 @@ function Layer({
         </details>
       ) : (
         <>
-          <div className="flex items-center gap-3 px-4 pt-4 sm:px-6">{head}</div>
-          <div className="px-4 pb-5 pt-3 sm:px-6">{children}</div>
+          <div className="flex items-center justify-between gap-3 px-3 pt-2 sm:px-4">{head}</div>
+          <div className={kind === 'source' ? 'pt-1' : 'px-4 pb-5 pt-3 sm:px-6'}>{children}</div>
         </>
       )}
     </section>
@@ -215,7 +219,7 @@ export { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 const dash = (s: string) => s.replace(/[\s|।॥0-9.]+$/, '');
 
 const aidToggle =
-  'focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-3.5 py-1 text-[13px] text-dharma-text transition hover:bg-dharma-text/[0.1] aria-expanded:bg-dharma-saffron/15 aria-expanded:text-dharma-saffron';
+  'focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-3.5 py-1 text-footnote text-dharma-text transition hover:bg-dharma-text/[0.1] aria-expanded:bg-dharma-saffron/15 aria-expanded:text-dharma-saffron';
 
 /* ── The layers: root shloka, then the अर्थ → व्याख्या → विज्ञान tree ── */
 
@@ -318,7 +322,17 @@ export function ReaderLayers({
       )}
 
       {/* 1 · Original Sanskrit: scripture comes first on the page; editorial lines follow it. */}
-      <Layer id="layer-sanskrit" kind="source" title="Original Sanskrit" titleHi="मूल संस्कृत">
+      <Layer
+        id="layer-sanskrit"
+        kind="source"
+        title="Original Sanskrit"
+        titleHi="मूल संस्कृत"
+        badge={
+          <span className="verse-ref font-serif text-sm font-semibold tabular-nums">
+            {formatVerseRef(scriptureId, chapterId, verse.number)}
+          </span>
+        }
+      >
         {lines.length > 0 ? (
           <>
           <p id="sanskrit-text" lang="sa" className={`verse-folio rounded-2xl px-4 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-8 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
@@ -327,7 +341,7 @@ export function ReaderLayers({
                 <PadaLine line={line} />
               </span>
             ))}
-            <span aria-hidden="true" className="verse-mark mt-2 block text-[0.6em] text-dharma-saffron">
+            <span aria-hidden="true" className="verse-mark mt-2 block text-base font-semibold">
               ॥ {verseMarkNumber(verse.number)} ॥
             </span>
           </p>

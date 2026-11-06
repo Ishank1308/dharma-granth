@@ -16,7 +16,7 @@ export function HeroSearchButton() {
     <button
       type="button"
       onClick={() => openGlobalSearch()}
-      className="mx-auto mt-10 flex h-[52px] w-full max-w-[560px] items-center gap-3 rounded-[14px] border border-dharma-text/10 bg-dharma-card px-[18px] text-left text-[17px] text-dharma-muted shadow-[0_2px_6px_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)] transition hover:border-dharma-text/20"
+      className="mx-auto mt-10 flex h-[52px] w-full max-w-[560px] items-center gap-3 rounded-group border border-dharma-text/10 bg-dharma-card px-[18px] text-left text-body text-dharma-muted shadow-raised lift-hover hover:border-dharma-text/20"
       aria-label="Search scriptures: a verse, word or question"
     >
       <Search className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />

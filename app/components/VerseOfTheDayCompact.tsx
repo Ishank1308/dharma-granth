@@ -81,7 +81,7 @@ export function VerseOfTheDayCompact() {
       aria-labelledby="votd-heading"
       className="relative border-b border-dharma-border bg-gradient-to-b from-dharma-bg via-dharma-card/30 to-dharma-bg py-12 sm:py-16"
     >
-      <div className="mx-auto max-w-4xl px-5 sm:px-6">
+      <div className="mx-auto max-w-4xl px-gutter">
         {/* Section Header */}
         <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div>

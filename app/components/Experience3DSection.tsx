@@ -90,7 +90,7 @@ export function Experience3DSection({ gitaCountLabel }: { gitaCountLabel: string
       aria-labelledby="experience-3d-heading"
       className="relative overflow-hidden border-b border-dharma-border bg-gradient-to-b from-dharma-card/60 via-amber-500/5 to-dharma-bg py-16 sm:py-24"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+      <div className="mx-auto max-w-6xl px-gutter">
         {/* Section Header */}
         <div className="mb-10 text-center">
           <div className="flex flex-wrap items-center justify-center gap-3">

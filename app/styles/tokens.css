@@ -1,0 +1,224 @@
+/* ── Design tokens ─────────────────────────────────────────────────────────
+   One source for the site's visual language, in Apple's idiom: a type scale with
+   named roles, a 4-point spacing grid, a small set of corner radii, surfaces and
+   translucent materials per theme, elevation, and motion.
+
+   Loaded first (app/layout.tsx), before globals.css, components.css and motion.css.
+   Tailwind exposes the same tokens (tailwind.config.ts): text-title-1, rounded-card,
+   shadow-raised, ease-spring, duration-base and so on. docs/design-system.md has the
+   whole list and when to use each.
+
+   Theme colours themselves (--dharma-*) stay in globals.css; everything here is
+   derived from them, so a token works in Usha, Sandhyā, Bhojpatra and Rātri alike. */
+
+:root {
+    /* Absolute endpoints for contrast-safe overlays and scripture covers. */
+    --color-absolute-white: #fff;
+    --color-absolute-black: #000;
+    --scripture-accent-fallback: var(--dharma-saffron);
+    --scripture-foil-fallback: #e0b65a;
+    --scripture-pill-foreground: var(--color-absolute-white);
+
+    /* 1. Type ───────────────────────────────────────────────────────────
+       Roles follow Apple's text styles. Sizes above body are fluid: the phone size at
+       375px, the desktop size from about 1200px. Tracking tightens as size grows, and
+       Devanagari is never tracked (see the rule at the end of this file). */
+    --text-caption: 0.75rem;                                   /* 12 */
+    --text-footnote: 0.8125rem;                                /* 13 */
+    --text-subhead: 0.9375rem;                                 /* 15 */
+    --text-callout: 1rem;                                      /* 16 */
+    --text-body: 1.0625rem;                                    /* 17 */
+    --text-title-3: clamp(1.1875rem, 1.05rem + 0.45vw, 1.3125rem);  /* 19 → 21 */
+    --text-title-2: clamp(1.375rem, 1.1rem + 0.9vw, 1.75rem);       /* 22 → 28 */
+    --text-title-1: clamp(1.625rem, 1.15rem + 1.6vw, 2.5rem);       /* 26 → 40 */
+    --text-large-title: clamp(2.125rem, 1.6rem + 1.75vw, 3rem);     /* 34 → 48 */
+    --text-display: clamp(2.75rem, 1.4rem + 5vw, 5rem);             /* 44 → 80 */
+
+    --leading-tight: 1.08;
+    --leading-snug: 1.2;
+    --leading-normal: 1.47;
+    --leading-relaxed: 1.65;
+    /* Devanagari needs room above and below for mātrās and conjuncts. */
+    --leading-devanagari: 1.8;
+
+    --tracking-display: -0.035em;
+    --tracking-title: -0.028em;
+    --tracking-headline: -0.022em;
+    --tracking-body: -0.01em;
+
+    /* 2. Spacing ────────────────────────────────────────────────────────
+       A 4-point grid. Tailwind's own scale already is one (p-4 = 16px), so these are
+       for plain CSS and for the page rhythm. */
+    --space-1: 0.25rem;   /* 4 */
+    --space-2: 0.5rem;    /* 8 */
+    --space-3: 0.75rem;   /* 12 */
+    --space-4: 1rem;      /* 16 */
+    --space-5: 1.25rem;   /* 20 */
+    --space-6: 1.5rem;    /* 24 */
+    --space-8: 2rem;      /* 32 */
+    --space-10: 2.5rem;   /* 40 */
+    --space-12: 3rem;     /* 48 */
+    --space-16: 4rem;     /* 64 */
+    --space-20: 5rem;     /* 80 */
+    --space-24: 6rem;     /* 96 */
+    /* Page rhythm: the side gutter, the gap between sections, and the content widths. */
+    --space-gutter: clamp(1.25rem, 0.9rem + 1.5vw, 1.5rem);
+    --space-section: clamp(3.5rem, 2rem + 6vw, 6rem);
+    --width-content: 980px;
+    --width-reading: var(--dharma-reading-max, 760px);
+    --width-text: 680px;
+    /* Smallest comfortable touch target. */
+    --tap-target: 44px;
+
+    /* 3. Corner radii ───────────────────────────────────────────────────
+       Named by what they round, so nested shapes stay concentric (an inner radius is
+       the outer one minus the padding between them). */
+    --radius-chip: 6px;      /* tags, small badges */
+    --radius-control: 8px;   /* segmented buttons, small icon tiles */
+    --radius-track: 10px;    /* the segmented control's track */
+    --radius-field: 12px;    /* text fields, search */
+    --radius-group: 14px;    /* grouped lists */
+    --radius-card: 22px;     /* cards */
+    --radius-panel: 28px;    /* hero cards, large panels */
+    --radius-pill: 9999px;   /* buttons, capsules */
+
+    /* 5. Motion ─────────────────────────────────────────────────────────
+       Durations from a tap response to a slow scene change, and the curves to use.
+       Reduced motion shortens every duration to almost nothing (end of this file). */
+    --duration-instant: 120ms;
+    --duration-fast: 180ms;
+    --duration-standard: 280ms;
+    --duration-base: 420ms;
+    --duration-deliberate: 600ms;
+    --duration-slow: 900ms;
+
+    --ease-standard: cubic-bezier(0.25, 0.1, 0.25, 1);  /* the system default */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);          /* things arriving */
+    --ease-in: cubic-bezier(0.55, 0, 1, 0.45);          /* things leaving */
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);      /* things moving across */
+    --motion-spring: cubic-bezier(0.22, 1, 0.36, 1);    /* settles; a real spring below */
+    --motion-out: var(--ease-out);
+
+    /* Stagger: the beat between siblings in a time-based entrance, and the scroll
+       distance between them in a scroll-linked cascade. */
+    --stagger-time: 90ms;
+    --stagger-distance: 40px;
+
+    /* Older names, kept so existing rules read the same. Prefer the names above. */
+    --motion-instant: var(--duration-instant);
+    --motion-fast: var(--duration-fast);
+    --motion-standard: 380ms;
+    --motion-base: var(--duration-base);
+    --motion-deliberate: var(--duration-deliberate);
+    --motion-slow: var(--duration-slow);
+    --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-gentle: var(--ease-out);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@supports (transition-timing-function: linear(0, 1)) {
+    :root {
+        /* A soft spring: about 2% overshoot, settled by 60% of the duration. */
+        --motion-spring: linear(
+            0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.721 25.3%, 0.849 31.5%,
+            0.937 38.1%, 0.968 41.8%, 0.991 45.7%, 1.006 50.1%, 1.015 55%, 1.017 63.9%,
+            1.001 85.9%, 1
+        );
+    }
+}
+
+/* 4. Surfaces, materials and elevation ──────────────────────────────────
+   Labels, fills and separators are mixed from the theme's own ink, so they sit right
+   on any canvas. Materials are the canvas made translucent, for bars and sheets that
+   float over content. Light themes lift cards with soft shadows; Rātri lifts them with
+   a lighter surface instead, as Apple's dark mode does. */
+:root,
+:root[data-theme='day'] {
+    --label-primary: var(--dharma-text);
+    --label-secondary: var(--dharma-text-secondary);
+    --label-tertiary: var(--dharma-muted);
+    --label-quaternary: color-mix(in srgb, var(--dharma-muted) 60%, transparent);
+
+    --surface-canvas: var(--dharma-bg);
+    --surface-raised: var(--dharma-card);
+    --surface-elevated: var(--dharma-card);
+    --surface-sunken: var(--dharma-panel-muted);
+
+    --fill-primary: color-mix(in srgb, var(--dharma-text) 12%, transparent);
+    --fill-secondary: color-mix(in srgb, var(--dharma-text) 9%, transparent);
+    --fill-tertiary: color-mix(in srgb, var(--dharma-text) 6%, transparent);
+    --fill-quaternary: color-mix(in srgb, var(--dharma-text) 4%, transparent);
+
+    --separator: color-mix(in srgb, var(--dharma-text) 10%, transparent);
+    --separator-strong: var(--dharma-border);
+
+    --tint: var(--dharma-saffron);
+    --on-tint: var(--dharma-bg);
+    --tint-fill: color-mix(in srgb, var(--dharma-saffron) 12%, transparent);
+    --focus-ring: 0 0 0 4px color-mix(in srgb, var(--dharma-saffron) 28%, transparent);
+
+    --material-ultrathin: color-mix(in srgb, var(--dharma-bg) 55%, transparent);
+    --material-thin: color-mix(in srgb, var(--dharma-bg) 68%, transparent);
+    --material-regular: color-mix(in srgb, var(--dharma-bg) 78%, transparent);
+    --material-thick: color-mix(in srgb, var(--dharma-bg) 90%, transparent);
+    --material-filter: saturate(180%) blur(20px);
+
+    /* Shadow colour: neutral on Usha, warm on the paper themes (below). */
+    --shadow-ink: 0, 0, 0;
+    --shadow-hairline: 0 1px 2px rgba(var(--shadow-ink), 0.04);
+    --shadow-raised: 0 2px 6px rgba(var(--shadow-ink), 0.04), 0 12px 40px rgba(var(--shadow-ink), 0.06);
+    --shadow-lifted: 0 4px 10px rgba(var(--shadow-ink), 0.05), 0 22px 50px -16px rgba(var(--shadow-ink), 0.22);
+    --shadow-overlay: 0 10px 30px rgba(var(--shadow-ink), 0.12), 0 40px 90px -20px rgba(var(--shadow-ink), 0.3);
+    --shadow-control: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
+    /* The selected segment of a segmented control. */
+    --surface-segment: var(--dharma-card);
+}
+
+:root[data-theme='sunset'] {
+    --shadow-ink: 92, 46, 14;
+}
+
+:root[data-theme='paper'] {
+    --shadow-ink: 74, 52, 28;
+}
+
+:root[data-theme='night'],
+:root[data-theme='dark'] {
+    --surface-elevated: var(--dharma-card-soft);
+    --fill-primary: color-mix(in srgb, var(--dharma-text) 18%, transparent);
+    --fill-secondary: color-mix(in srgb, var(--dharma-text) 14%, transparent);
+    --fill-tertiary: color-mix(in srgb, var(--dharma-text) 10%, transparent);
+    --fill-quaternary: color-mix(in srgb, var(--dharma-text) 7%, transparent);
+    --separator: color-mix(in srgb, var(--dharma-text) 14%, transparent);
+    --on-tint: #000;
+    --tint-fill: color-mix(in srgb, var(--dharma-saffron) 18%, transparent);
+    --shadow-hairline: none;
+    --shadow-raised: none;
+    --shadow-lifted: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 22px 50px -16px rgba(0, 0, 0, 0.8);
+    --shadow-overlay: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 90px -20px rgba(0, 0, 0, 0.9);
+    --shadow-control: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --surface-segment: #636366;
+}
+
+/* Reduced motion: every token duration collapses, so anything built on the tokens
+   stops moving without its own media query. Looping and scroll-linked effects are
+   also switched off one by one in motion.css. */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --duration-instant: 1ms;
+        --duration-fast: 1ms;
+        --duration-standard: 1ms;
+        --duration-base: 1ms;
+        --duration-deliberate: 1ms;
+        --duration-slow: 1ms;
+        --motion-standard: 1ms;
+        --stagger-time: 0ms;
+    }
+}
+
+/* Devanagari is never letter-spaced: tracking pulls conjuncts and mātrās apart. Zero
+   specificity, so an explicit tracking class on the element itself still wins, but a
+   Hindi or Sanskrit span inside a tightly tracked English heading no longer inherits it. */
+:where([lang='hi'], [lang='sa'], [lang='mr'], [lang='ne'], .font-devanagari, .font-sanskrit) {
+    letter-spacing: normal;
+}
