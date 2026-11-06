@@ -30,7 +30,7 @@ import { ShareChips } from '@/app/components/ShareChips';
 import { InteractiveVisualLayer } from '@/app/components/visuals/InteractiveVisualLayer';
 
 interface PageProps {
-  params: Promise<{ id: string }> | { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function generateStaticParams() {

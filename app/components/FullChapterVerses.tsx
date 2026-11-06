@@ -529,17 +529,18 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       const prevVisibility = el.style.contentVisibility;
       el.style.contentVisibility = 'visible';
       const alignVerse = () => {
-        if (el.isConnected) {
-          el.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
-        }
+        // Re-query: the rich card can replace the plain verse node before this runs.
+        const target = el.isConnected ? el : document.getElementById(`verse-${verseNum}`);
+        target?.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
       };
       requestAnimationFrame(() => requestAnimationFrame(alignVerse));
 
       if (preserveLayout) {
         // Long chapters expand skipped cards as they enter the viewport. Correct once after that layout settles.
         window.setTimeout(() => {
-          if (!el.isConnected) return;
-          const rect = el.getBoundingClientRect();
+          const current = el.isConnected ? el : document.getElementById(`verse-${verseNum}`);
+          if (!current) return;
+          const rect = current.getBoundingClientRect();
           if (rect.bottom <= 0 || rect.top >= window.innerHeight) alignVerse();
         }, 500);
       } else {

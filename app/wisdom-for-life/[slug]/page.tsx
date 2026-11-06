@@ -18,11 +18,12 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Metadata {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const topic = getWisdomTopic(params.slug);
   if (!topic) {
     return {
@@ -54,11 +55,12 @@ export function generateMetadata({
   };
 }
 
-export default function WisdomTopicPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function WisdomTopicPage(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+) {
+  const params = await props.params;
   const topic = getWisdomTopic(params.slug);
   if (!topic) {
     notFound();
