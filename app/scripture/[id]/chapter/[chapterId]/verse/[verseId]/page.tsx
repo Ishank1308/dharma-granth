@@ -300,8 +300,10 @@ export default async function VersePage(props: PageProps) {
   const questions = [
     hindi && { '@type': 'Question', name: `${ref} का हिन्दी अर्थ क्या है?`, acceptedAnswer: { '@type': 'Answer', text: hindi } },
     words && hindi && { '@type': 'Question', name: `${words} श्लोक का अर्थ क्या है?`, acceptedAnswer: { '@type': 'Answer', text: hindi } },
+    hindi && { '@type': 'Question', name: `${ref} Meaning in Hindi`, acceptedAnswer: { '@type': 'Answer', text: `${ref} का हिन्दी अर्थ: ${hindi}` } },
     latin && (hindi || english) && { '@type': 'Question', name: `What is the meaning of ${latin}?`, acceptedAnswer: { '@type': 'Answer', text: `${hindi ? `${hindi}\n\n` : ''}${english || ''}`.trim() } },
     english && { '@type': 'Question', name: `What is the meaning of ${ref}?`, acceptedAnswer: { '@type': 'Answer', text: english } },
+    english && { '@type': 'Question', name: `${ref} Translation in English`, acceptedAnswer: { '@type': 'Answer', text: `${ref} English translation: ${english}` } },
   ].filter(Boolean);
 
   const jsonLd = {
@@ -311,12 +313,24 @@ export default async function VersePage(props: PageProps) {
         '@type': 'Article',
         '@id': `${pageUrl}#article`,
         headline: `${ref} — Meaning in Hindi & English (हिंदी अर्थ)`,
+        description: clipDescription(hindi ? `${ref}: ${hindi}` : english ? `${ref}: ${english}` : ref),
+        abstract: hindi || english,
+        text: [cleanVerseField(verse.sanskrit), verse.transliteration, verse.hindi, verse.translation].filter(Boolean).join('\n\n'),
         inLanguage: ['sa', 'hi', 'en'],
         isAccessibleForFree: true,
         genre: 'Scriptural study',
         ...(modified ? { dateModified: modified } : {}),
         url: pageUrl,
         mainEntityOfPage: pageUrl,
+        publisher: {
+          '@type': 'Organization',
+          name: 'Dharma Granth',
+          url: siteUrl,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${siteUrl}/icon-512.png`,
+          },
+        },
         isPartOf: {
           '@type': 'Book',
           name: meta.title,
