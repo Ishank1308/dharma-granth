@@ -89,6 +89,11 @@ minus the padding between them.
 | `--color-absolute-white` / `--color-absolute-black` | Fixed endpoints for color mixing, never direct component colors |
 | `--scripture-accent-fallback`, `--scripture-foil-fallback`, `--scripture-pill-foreground` | Semantic fallbacks and text color for scripture cover treatments |
 
+Tailwind names the same colours: `text-label-primary` … `text-label-quaternary`,
+`bg-fill-primary` … `bg-fill-quaternary`, `border-separator`, `border-separator-strong`,
+`bg-surface-canvas` / `-raised` / `-elevated` / `-sunken`, `text-tint`, `bg-tint-fill` and
+`text-on-tint`.
+
 Materials are the canvas made translucent, for anything that floats over content:
 `.material-ultrathin`, `.material-thin`, `.material-regular` (the header and tab bar) and
 `.material-thick`. Without `backdrop-filter` they fall back to the solid canvas.

@@ -19,6 +19,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Semantic colours from app/styles/tokens.css, so text-label-secondary, bg-fill-tertiary,
+        // border-separator and text-tint follow the theme without a dark: variant.
+        label: {
+          primary: 'var(--label-primary)',
+          secondary: 'var(--label-secondary)',
+          tertiary: 'var(--label-tertiary)',
+          quaternary: 'var(--label-quaternary)',
+        },
+        fill: {
+          primary: 'var(--fill-primary)',
+          secondary: 'var(--fill-secondary)',
+          tertiary: 'var(--fill-tertiary)',
+          quaternary: 'var(--fill-quaternary)',
+        },
+        separator: {
+          DEFAULT: 'var(--separator)',
+          strong: 'var(--separator-strong)',
+        },
+        surface: {
+          canvas: 'var(--surface-canvas)',
+          raised: 'var(--surface-raised)',
+          elevated: 'var(--surface-elevated)',
+          sunken: 'var(--surface-sunken)',
+        },
+        tint: {
+          DEFAULT: 'var(--tint)',
+          fill: 'var(--tint-fill)',
+        },
+        'on-tint': 'var(--on-tint)',
         saffron: {
           50: '#fff8f0',
           100: '#ffefd6',
