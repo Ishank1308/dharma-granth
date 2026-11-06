@@ -1,78 +1,34 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, type CSSProperties } from 'react';
 import Link from 'next/link';
 import { learningPaths, type LearningPath, type LearningFormat } from '@/data/learning-paths';
 import { useStudyProgress } from '@/lib/useStudyProgress';
-import { ManuscriptDivider, PalmLeafBorder } from '@/app/components/ManuscriptDivider';
 import { CalmProgress } from '@/app/components/CalmProgress';
 import { SadhanaPortability } from '@/app/components/SadhanaPortability';
 import { BackupRestore } from '@/app/components/BackupRestore';
-import { FadeUp } from '@/app/components/motion/primitives';
 import { JsonLd } from '@/app/components/JsonLd';
 import { courseListLd, pageLd } from '@/lib/jsonld';
 import {
-  BookOpen,
-  Brain,
-  Clock,
-  Sparkles,
-  Trophy,
-  ArrowRight,
-  CheckCircle2,
-  Circle,
-  Award,
-  Layers,
   ChevronDown,
   ChevronUp,
-  Search,
-  Filter,
+  CheckCircle2,
+  Clock,
   Compass,
-  GraduationCap,
-  Sparkle,
-  Library,
   Flame,
+  GraduationCap,
+  Library,
+  Search,
+  Sparkle,
 } from 'lucide-react';
 
-// Format icon & badge helper
-function FormatBadge({ format }: { format: LearningFormat | 'slides' }) {
-  switch (format) {
-    case 'flashcards':
-      return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-serif bg-amber-50 dark:bg-stone-800 text-amber-900 dark:text-amber-200 border border-amber-200/60 dark:border-stone-700">
-          <BookOpen className="w-3 h-3 text-amber-600" />
-          <span>Flashcards</span>
-        </span>
-      );
-    case 'slides':
-      return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-serif bg-orange-50 dark:bg-stone-800 text-orange-900 dark:text-orange-200 border border-orange-200/60 dark:border-stone-700">
-          <Sparkles className="w-3 h-3 text-orange-600" />
-          <span>Slides</span>
-        </span>
-      );
-    case 'mindmap':
-      return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-serif bg-emerald-50 dark:bg-stone-800 text-emerald-900 dark:text-emerald-200 border border-emerald-200/60 dark:border-stone-700">
-          <Layers className="w-3 h-3 text-emerald-600" />
-          <span>Mind Map</span>
-        </span>
-      );
-    case 'timeline':
-      return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-serif bg-indigo-50 dark:bg-stone-800 text-indigo-900 dark:text-indigo-200 border border-indigo-200/60 dark:border-stone-700">
-          <Clock className="w-3 h-3 text-indigo-600" />
-          <span>Timeline</span>
-        </span>
-      );
-    case 'quizzes':
-      return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-serif bg-rose-50 dark:bg-stone-800 text-rose-900 dark:text-rose-200 border border-rose-200/60 dark:border-stone-700">
-          <Trophy className="w-3 h-3 text-rose-600" />
-          <span>Quiz</span>
-        </span>
-      );
-  }
-}
+const FORMAT_NAMES: Record<string, string> = {
+  flashcards: 'flashcards',
+  slides: 'slides',
+  mindmap: 'mind map',
+  timeline: 'timeline',
+  quizzes: 'quiz',
+};
 
 // Course list for search engines. Lives here, not in learn/layout.tsx, because
 // the layout also wraps every /learn/* sub-page. Each course's full Course data
@@ -129,246 +85,141 @@ export default function LearnPage() {
     return learningPaths.reduce((acc, c) => acc + c.lessons.length, 0);
   }, []);
 
+  const PORTALS = [
+    { href: '/learn/start/', en: 'Find your starting point', hi: 'आरम्भ', sub: 'Five short questions, one calm first step', Icon: Sparkle, chip: '#c2410c' },
+    { href: '/learn/journeys/', en: 'Guided journeys', hi: 'स्वाध्याय यात्राएँ', sub: 'Daily lessons with a reflection', Icon: Flame, chip: '#b45309' },
+    { href: '/wisdom-pathways/', en: 'Wisdom pathways', hi: 'ज्ञान मार्ग', sub: 'Begin from fear, anger, grief or purpose', Icon: Compass, chip: '#15803d' },
+    { href: '/learn/plans/', en: 'Reading plans', hi: 'स्वाध्याय योजना', sub: 'Day-by-day schedules and study orders', Icon: Clock, chip: '#1f4e8c' },
+    { href: '/learn/faq/', en: 'Scripture FAQs', hi: 'जिज्ञासा समाधान', sub: 'Canon, schools of thought and ethics', Icon: GraduationCap, chip: '#6b3fa0' },
+    { href: '/sources/', en: 'Sources and editions', hi: 'स्रोत पारदर्शिता', sub: 'Critical editions, recensions and method', Icon: Library, chip: '#57534e' },
+  ];
+
+  const PILLARS = [
+    { sa: 'श्रवण', iast: 'Śravaṇa', en: 'Hear and read', text: 'Come to the text with full attention, and read the verse itself before any explanation.' },
+    { sa: 'मनन', iast: 'Manana', en: 'Reflect', text: 'Turn it over with reason. Flashcards, mind maps and questions clear the doubts that remain.' },
+    { sa: 'निदिध्यासन', iast: 'Nididhyāsana', en: 'Live with it', text: 'Let what is understood settle into the day, until it shows in how you act.' },
+  ];
+
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24 selection:bg-saffron-200 selection:text-saffron-900">
+    <main className="apple-scope min-h-screen bg-dharma-bg pb-24 text-dharma-text">
       <JsonLd data={LEARN_JSON_LD} />
-      {/* ── Scholarly Hero Banner ────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-stone-900 via-stone-900/95 to-dharma-bg text-stone-100 pt-12 pb-16 border-b border-saffron-900/40">
-        <PalmLeafBorder className="absolute top-0 inset-x-0 opacity-40" />
+      <header className="mx-auto max-w-[980px] px-5 pb-2 pt-10 sm:px-6 sm:pt-16">
+        <p className="text-[13px] font-semibold text-dharma-saffron">
+          <span>Learn</span> <span aria-hidden="true">·</span>{' '}
+          <span lang="sa">स्वाध्यायान्मा प्रमदः</span>
+        </p>
+        <h1 className="mt-2 text-[34px] font-semibold leading-[1.08] tracking-[-0.03em] text-dharma-text sm:text-5xl">
+          <span>Study the scriptures</span>{' '}
+          <span lang="hi" className="mt-1 block font-devanagari text-2xl font-normal tracking-normal text-dharma-muted sm:text-[30px]">
+            शास्त्र स्वाध्याय
+          </span>
+        </h1>
+        <p className="mt-4 max-w-2xl text-[17px] leading-relaxed text-dharma-muted">
+          Guided paths through the Vedas, Upanishads, Gita and the epics, with flashcards, mind maps, timelines and short
+          questions. Go at your own pace; your progress stays on this device.
+        </p>
+        <p className="mt-3 text-[15px] text-dharma-muted">
+          <span>
+            {learningPaths.length} paths · {totalLessons} lessons
+            {totalCompletedLessons > 0 ? ` · ${totalCompletedLessons} read` : ''}
+          </span>
+          <span aria-hidden="true"> · </span>
+          <Link href="/learn/academy/" className="text-dharma-saffron hover:underline">
+            <span>Course levels</span> <span lang="hi" className="font-devanagari">धर्म अकादमी</span>{' '}
+            <span aria-hidden="true">›</span>
+          </Link>
+        </p>
+      </header>
 
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <FadeUp>
-            <div className="flex items-center gap-2 mb-3 text-saffron-400 text-xs md:text-sm font-serif uppercase tracking-widest font-semibold">
-              <Sparkles className="w-4 h-4" />
-              <span><span lang="sa">स्वाध्यायान्मा प्रमदः</span> — Never Neglect Sacred Study</span>
-            </div>
-
-            <h1 className="text-3xl md:text-5xl font-serif font-bold tracking-tight text-white mb-3">
-              Dharma Granth Learning Hub
-            </h1>
-
-            <p
-              lang="sa"
-              className="font-devanagari text-lg md:text-xl text-saffron-300 font-semibold mb-3 tracking-wide"
-            >
-              शास्त्र स्वाध्याय एवं ज्ञान पीठ
-            </p>
-
-            <p className="text-base md:text-lg text-stone-300/90 font-serif max-w-2xl leading-relaxed mb-3">
-              Structured study of Hindu scriptures organized into guided learning paths.
-              Delve into primary texts with interactive flashcards, illuminated slides, concept mind maps, chronological timelines, and knowledge checks.
-            </p>
-            <p className="mb-6 text-sm">
-              <Link href="/learn/academy" className="font-semibold text-saffron-300 underline underline-offset-2">
-                धर्म अकादमी · course levels
-              </Link>
-            </p>
-
-            {/* Calm, Meditative Overview Strip */}
-            <div className="inline-flex flex-wrap items-center gap-4 md:gap-8 p-3 px-5 rounded-2xl bg-stone-950/70 border border-saffron-500/30 text-xs md:text-sm font-serif">
-              <div className="flex items-center gap-2">
-                <Compass className="w-4 h-4 text-saffron-400" />
-                <span className="text-stone-300">8 Guided Pathways</span>
-              </div>
-              <div className="hidden sm:block text-stone-600">•</div>
-              <div className="flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-saffron-400" />
-                <span className="text-stone-300">
-                  {totalCompletedLessons} of {totalLessons} Lessons Contemplated
+      {/* ── Where to begin: one hub for starting points, journeys, plans and courses ── */}
+      <section aria-labelledby="learn-start-heading" className="mx-auto max-w-[980px] px-5 pt-10 sm:px-6">
+        <h2 id="learn-start-heading" className="sr-only">Where to begin</h2>
+        <ul className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+          {PORTALS.map(({ href, en, hi, sub, Icon, chip }) => (
+            <li key={href}>
+              <Link href={href} className="apple-card flex h-full flex-col items-start gap-2 p-4 transition hover:-translate-y-0.5 sm:flex-row sm:gap-3 sm:p-5">
+                <span className="apple-tint-chip mt-0.5" style={{ '--chip': chip } as CSSProperties} aria-hidden="true">
+                  <Icon className="h-4 w-4" />
                 </span>
-              </div>
-              <div className="hidden sm:block text-stone-600">•</div>
-              <div className="flex items-center gap-2">
-                <GraduationCap className="w-4 h-4 text-saffron-400" />
-                <span className="text-saffron-300 font-semibold">
-                  5 Classical Learning Formats
+                <span className="min-w-0">
+                  <span className="block text-[15px] font-semibold leading-snug tracking-[-0.02em] text-dharma-text sm:text-[17px]">{en}</span>{' '}
+                  <span lang="hi" className="block font-devanagari text-[13px] text-dharma-muted">{hi}</span>{' '}
+                  <span className="mt-1 hidden text-[14px] leading-snug text-dharma-muted sm:block">{sub}</span>
                 </span>
-              </div>
-            </div>
-
-            {/* Quick Portals Strip: /learn/ is the one hub for starting points, journeys, plans and courses */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              <Link
-                href="/learn/start/"
-                className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
-              >
-                <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
-                  <Sparkle className="w-4 h-4" />
-                  <span>आरम्भ</span>
-                </div>
-                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
-                  Find Your Starting Point →
-                </h2>
-                <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
-                  Five short questions, a calm first step
-                </p>
               </Link>
-              <Link
-                href="/learn/journeys/"
-                className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
-              >
-                <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
-                  <Flame className="w-4 h-4" />
-                  <span>स्वाध्याय यात्राएँ</span>
-                </div>
-                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
-                  Guided Journeys →
-                </h2>
-                <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
-                  Daily lessons with reflection and progress
-                </p>
-              </Link>
-              <Link
-                href="/wisdom-pathways/"
-                className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
-              >
-                <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
-                  <Compass className="w-4 h-4" />
-                  <span>ज्ञान मार्ग</span>
-                </div>
-                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
-                  Wisdom Pathways →
-                </h2>
-                <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
-                  Begin from fear, anger, grief or purpose
-                </p>
-              </Link>
-              <Link
-                href="/learn/plans/"
-                className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
-              >
-                <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
-                  <Clock className="w-4 h-4" />
-                  <span>स्वाध्याय योजना</span>
-                </div>
-                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
-                  Reading Plans →
-                </h2>
-                <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
-                  Day-by-day schedules, study orders, guided readings
-                </p>
-              </Link>
-              <Link
-                href="/learn/faq"
-                className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
-              >
-                <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
-                  <GraduationCap className="w-4 h-4" />
-                  <span>जिज्ञासा समाधान</span>
-                </div>
-                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
-                  Scripture FAQs →
-                </h2>
-                <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
-                  Canon, ethics, philosophical schools & clarity
-                </p>
-              </Link>
-              <Link
-                href="/sources"
-                className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
-              >
-                <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
-                  <Library className="w-4 h-4" />
-                  <span>स्रोत पारदर्शिता</span>
-                </div>
-                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
-                  Source Library →
-                </h2>
-                <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
-                  Critical editions, recensions, and methodology
-                </p>
-              </Link>
-            </div>
-          </FadeUp>
-        </div>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      {/* ── Filters & Controls Bar ───────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 py-8">
-        <div className="bg-dharma-card rounded-2xl border border-dharma-border p-5 shadow-xs space-y-4">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            {/* Difficulty Tabs */}
-            <div className="flex flex-wrap gap-2">
+      {/* ── Guided Learning Pathways (also the target of the /learn/pathways/ 301) ── */}
+      <section id="courses" aria-labelledby="courses-heading" className="mx-auto max-w-[980px] scroll-mt-24 px-5 pt-16 sm:px-6">
+        <div className="mb-5">
+          <h2 id="courses-heading" className="text-[24px] font-semibold tracking-[-0.025em] text-dharma-text sm:text-[32px]">
+            <span>Learning paths</span>{' '}
+            <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">अध्ययन मार्ग</span>
+          </h2>
+          <p className="mt-1 text-[15px] text-dharma-muted">Step-by-step paths for steady, lifelong study.</p>
+        </div>
+
+        {/* Filters: a segmented control, a filled search field and quiet format pills */}
+        <div className="mb-6 flex flex-col gap-3">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div className="apple-segmented self-start" role="group" aria-label="Level">
               {[
-                { id: 'all', label: 'All Pathways (सभी मार्ग)', count: learningPaths.length },
-                { id: 'beginner', label: 'Beginner (प्रारम्भिक)', count: 3 },
-                { id: 'intermediate', label: 'Intermediate (मध्यम)', count: 3 },
-                { id: 'advanced', label: 'Advanced (उन्नत)', count: 2 },
+                { id: 'all', en: 'All', hi: 'सभी' },
+                { id: 'beginner', en: 'Beginner', hi: 'प्रारम्भिक' },
+                { id: 'intermediate', en: 'Intermediate', hi: 'मध्यम' },
+                { id: 'advanced', en: 'Advanced', hi: 'उन्नत' },
               ].map((tab) => (
                 <button
                   key={tab.id}
                   type="button"
+                  aria-pressed={selectedDifficulty === tab.id}
                   onClick={() => setSelectedDifficulty(tab.id as typeof selectedDifficulty)}
-                  className={`min-h-[44px] px-3.5 py-1.5 rounded-xl text-xs font-serif font-bold transition-all ${
-                    selectedDifficulty === tab.id
-                      ? 'bg-saffron-700 text-white shadow-xs'
-                      : 'bg-dharma-card-soft text-dharma-text hover:bg-saffron-50 dark:hover:bg-stone-800 border border-dharma-border/60'
-                  }`}
                 >
-                  {tab.label}
+                  <span>{tab.en}</span> <span lang="hi" className="sr-only">{tab.hi}</span>
                 </button>
               ))}
             </div>
-
-            {/* Search Input */}
-            <div className="relative min-w-[220px]">
-              <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-dharma-muted" />
+            <div className="relative md:w-72">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-dharma-muted" aria-hidden="true" />
               <input
-                type="text"
+                type="search"
                 aria-label="Search scripture or concept"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search scripture or concept..."
-                className="w-full pl-8 pr-3 py-1.5 rounded-xl text-xs font-serif bg-dharma-bg border border-dharma-border text-dharma-text focus:outline-hidden focus:ring-1 focus:ring-saffron-500"
+                placeholder="Search"
+                className="apple-field !pl-9"
               />
             </div>
           </div>
-
-          {/* Secondary Format Filters */}
-          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-dharma-border/40 text-xs">
-            <span className="text-dharma-muted font-serif flex items-center gap-1 mr-1">
-              <Filter className="w-3 h-3 text-saffron-600" />
-              Filter by Format:
-            </span>
+          <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Format">
             {[
-              { id: 'all', icon: null, text: 'All Formats' },
-              { id: 'flashcards', icon: '📇', text: 'Flashcards' },
-              { id: 'mindmap', icon: '🕸️', text: 'Mind Map' },
-              { id: 'timeline', icon: '⏳', text: 'Timeline' },
-              { id: 'quizzes', icon: '🎯', text: 'Quizzes' },
+              { id: 'all', text: 'All formats' },
+              { id: 'flashcards', text: 'Flashcards' },
+              { id: 'mindmap', text: 'Mind maps' },
+              { id: 'timeline', text: 'Timelines' },
+              { id: 'quizzes', text: 'Quizzes' },
             ].map((fmt) => (
               <button
                 key={fmt.id}
                 type="button"
+                aria-pressed={selectedFormat === fmt.id}
                 onClick={() => setSelectedFormat(fmt.id)}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-serif transition ${
+                className={`min-h-9 rounded-full px-3.5 text-[13px] transition ${
                   selectedFormat === fmt.id
-                    ? 'bg-amber-100 dark:bg-stone-800 text-saffron-800 dark:text-saffron-300 font-bold border border-saffron-300'
-                    : 'text-dharma-muted hover:text-dharma-text hover:bg-dharma-bg'
+                    ? 'bg-dharma-text text-dharma-bg'
+                    : 'bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
                 }`}
               >
-                {fmt.icon && <span aria-hidden="true" className="mr-1">{fmt.icon}</span>}
                 {fmt.text}
               </button>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* ── Guided Learning Pathways Grid (also the target of the /learn/pathways/ 301) ── */}
-      <section id="courses" className="max-w-6xl mx-auto px-6 scroll-mt-24">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-2xl font-serif font-bold text-dharma-text">
-              Curated Scripture Pathways ({filteredCourses.length})
-            </h2>
-            <p className="text-xs text-dharma-muted font-serif">
-              Step-by-step pathways designed for steady, lifelong contemplation.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {filteredCourses.map((course) => {
             const pathwayProgress = progress.getPathwayProgress(course.id);
             const completedCount = pathwayProgress?.completedSteps?.length ?? 0;
@@ -376,155 +227,72 @@ export default function LearnPage() {
             const pct = Math.min(Math.round((completedCount / totalCount) * 100), 100);
             const isFinished = pct === 100;
             const isExpanded = expandedCourseId === course.id;
+            const level = { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' }[course.difficulty] ?? course.difficulty;
 
             return (
-              <article
-                key={course.id}
-                className="rounded-2xl border border-dharma-border bg-dharma-card hover:border-saffron-400 hover:shadow-md transition-all flex flex-col justify-between overflow-hidden"
-              >
-                <div className="p-6">
-                  {/* Top Header */}
-                  <div className="flex items-start justify-between gap-3 mb-2">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-stone-800/80 border border-saffron-200 dark:border-stone-700 flex items-center justify-center text-2xl shadow-xs">
-                        {course.icon}
-                      </div>
-                      <div>
-                        <span
-                          lang="sa"
-                          className="font-devanagari text-xs text-saffron-600 dark:text-saffron-400 font-semibold block"
-                        >
-                          {course.titleSanskrit}
-                        </span>
-                        <h3 className="font-serif font-bold text-lg text-dharma-text leading-tight">
-                          {course.title}
-                        </h3>
-                      </div>
+              <article key={course.id} className="apple-card flex flex-col overflow-hidden">
+                <div className="flex-1 p-5 sm:p-6">
+                  <div className="flex items-start gap-3">
+                    <span aria-hidden="true" className="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-dharma-text/[0.05] text-2xl">
+                      {course.icon}
+                    </span>
+                    <div className="min-w-0">
+                      <span lang="sa" className="block text-[15px] leading-snug text-dharma-saffron">{course.titleSanskrit}</span>
+                      <h3 className="text-[19px] font-semibold leading-tight tracking-[-0.02em] text-dharma-text">{course.title}</h3>
                     </div>
-
                     {isFinished && (
-                      <span className="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300">
-                        <Award className="w-3 h-3" />
-                        Complete
+                      <span className="ml-auto inline-flex shrink-0 items-center gap-1 text-[13px] text-emerald-700 dark:text-emerald-400">
+                        <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Complete
                       </span>
                     )}
                   </div>
 
-                  {/* Learning Objective (Prominently Shown) */}
-                  <div className="my-3 p-3.5 rounded-xl bg-amber-50/50 dark:bg-stone-900/50 border border-amber-200/50 dark:border-stone-800">
-                    <span className="text-[10px] font-serif font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300 block mb-1">
-                      Learning Objective (अध्ययन लक्ष्य)
-                    </span>
-                    <p className="text-xs md:text-sm text-dharma-text font-serif leading-relaxed line-clamp-3">
-                      {course.learningObjective}
-                    </p>
-                  </div>
+                  <p className="mt-3 line-clamp-3 text-[15px] leading-relaxed text-dharma-text-secondary">{course.learningObjective}</p>
 
-                  {/* Course Metadata Stats */}
-                  <div className="grid grid-cols-3 gap-2 py-2 border-y border-dharma-border/50 text-xs font-serif mb-4">
-                    <div>
-                      <span className="text-[10px] text-dharma-muted block">Difficulty: </span>
-                      <span
-                        className={`font-semibold ${
-                          course.difficulty === 'beginner'
-                            ? 'text-emerald-700 dark:text-emerald-400'
-                            : course.difficulty === 'intermediate'
-                            ? 'text-amber-700 dark:text-amber-400'
-                            : 'text-rose-700 dark:text-rose-400'
-                        }`}
-                      >
-                        {course.difficultySanskrit}
-                      </span>
+                  <p className="mt-3 text-[13px] text-dharma-muted">
+                    <span>{level}</span>
+                    <span aria-hidden="true"> · </span>
+                    <span>{course.lessons.length} lessons</span>
+                    <span aria-hidden="true"> · </span>
+                    <span>{course.estimatedTime}</span>
+                    <span aria-hidden="true"> · </span>
+                    <span>{course.includedFormats.map((f) => FORMAT_NAMES[f] ?? f).join(', ')}</span>
+                  </p>
+
+                  {completedCount > 0 && (
+                    <div className="mt-4">
+                      <CalmProgress completed={completedCount} total={totalCount} variant="linear" showPercentage={true} label="Your progress" />
                     </div>
+                  )}
 
-                    <div>
-                      <span className="text-[10px] text-dharma-muted block">Lessons: </span>
-                      <span className="text-dharma-text font-semibold">
-                        {course.lessons.length} lessons
-                      </span>
-                    </div>
-
-                    <div>
-                      <span className="text-[10px] text-dharma-muted block">Study Time: </span>
-                      <span className="text-dharma-text font-semibold flex items-center gap-1">
-                        <Clock className="w-3 h-3 text-saffron-600" />
-                        {course.estimatedTime}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Included Formats Badges */}
-                  <div className="mb-4">
-                    <span className="text-[10px] font-serif uppercase tracking-wider text-dharma-muted block mb-1.5">
-                      Included Learning Formats:
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {course.includedFormats.map((fmt) => (
-                        <FormatBadge key={fmt} format={fmt} />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Calm Progress Indicator */}
-                  <div className="mb-2">
-                    <CalmProgress
-                      completed={completedCount}
-                      total={totalCount}
-                      variant="linear"
-                      showPercentage={true}
-                      label="Your Progress"
-                    />
-                  </div>
-
-                  {/* Quick Lesson Preview Drawer Accordion */}
                   {isExpanded && (
-                    <div className="mt-4 pt-3 border-t border-dharma-border/60 space-y-2">
-                      <span className="text-[11px] font-serif font-bold text-dharma-muted block">
-                        Lesson Breakdown:
-                      </span>
+                    <ol className="apple-group mt-4 bg-dharma-text/[0.04]">
                       {course.lessons.map((lesson) => (
-                        <div
-                          key={lesson.id}
-                          className="flex items-center justify-between text-xs font-serif p-2 rounded-lg bg-dharma-card-soft"
-                        >
-                          <div className="flex items-center gap-2">
-                            <span className="text-saffron-600 font-bold">{lesson.order}.</span>
+                        <li key={lesson.id} className="flex items-center justify-between gap-3 px-4 py-2.5 text-[14px]">
+                          <span className="min-w-0">
+                            <span className="mr-2 tabular-nums text-dharma-muted">{lesson.order}</span>
                             <span className="text-dharma-text">{lesson.title}</span>
-                          </div>
-                          <span className="text-dharma-muted">{lesson.estimatedMinutes}m</span>
-                        </div>
+                          </span>
+                          <span className="shrink-0 tabular-nums text-dharma-muted">{lesson.estimatedMinutes} min</span>
+                        </li>
                       ))}
-                    </div>
+                    </ol>
                   )}
                 </div>
 
-                {/* Footer with Continue Button & Preview Toggle */}
-                <div className="px-6 py-3.5 bg-dharma-card-soft/60 border-t border-dharma-border flex items-center justify-between gap-3">
+                <div className="flex items-center justify-between gap-3 border-t border-dharma-text/10 px-5 py-3 sm:px-6">
                   <button
                     type="button"
+                    aria-expanded={isExpanded}
                     onClick={() => setExpandedCourseId(isExpanded ? null : course.id)}
-                    className="text-xs font-serif text-dharma-muted hover:text-saffron-700 flex items-center gap-1"
+                    className="inline-flex min-h-11 items-center gap-1 text-[15px] text-dharma-saffron"
                   >
-                    <span>{isExpanded ? 'Hide Lessons' : 'View Lessons'}</span>
-                    {isExpanded ? (
-                      <ChevronUp className="w-3.5 h-3.5" />
-                    ) : (
-                      <ChevronDown className="w-3.5 h-3.5" />
-                    )}
+                    <span>{isExpanded ? 'Hide lessons' : 'Show lessons'}</span>
+                    {isExpanded ? <ChevronUp className="h-4 w-4" aria-hidden="true" /> : <ChevronDown className="h-4 w-4" aria-hidden="true" />}
                   </button>
-
-                  <Link
-                    href={`/learn/${course.id}`}
-                    className="tap-target inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-serif font-bold bg-saffron-700 text-white hover:bg-saffron-800 transition shadow-xs"
-                  >
-                    <span>
-                      {completedCount === 0
-                        ? 'Begin Journey'
-                        : isFinished
-                        ? 'Review Course'
-                        : 'Continue Study'}
-                    </span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                  <Link href={`/learn/${course.id}`} className="apple-pill tap-target">
+                    <span>{completedCount === 0 ? 'Begin' : isFinished ? 'Review' : 'Continue'}</span>
+                    <span className="sr-only"> {course.title}</span>
                   </Link>
                 </div>
               </article>
@@ -533,8 +301,8 @@ export default function LearnPage() {
         </div>
 
         {filteredCourses.length === 0 && (
-          <div className="text-center py-16 bg-dharma-card rounded-2xl border border-dharma-border">
-            <p className="font-serif text-dharma-muted">No pathways found matching your filters.</p>
+          <div className="apple-card py-14 text-center">
+            <p className="text-dharma-muted">No paths match these filters.</p>
             <button
               type="button"
               onClick={() => {
@@ -542,72 +310,38 @@ export default function LearnPage() {
                 setSelectedFormat('all');
                 setSearchQuery('');
               }}
-              className="mt-3 text-xs font-serif font-bold text-saffron-700 underline"
+              className="mt-2 min-h-11 text-[15px] text-dharma-saffron"
             >
-              Reset all filters
+              Clear filters
             </button>
           </div>
         )}
       </section>
 
-      <ManuscriptDivider label="Classical Study Methodology" labelSanskrit="स्वाध्याय त्रिपदी" ornament="shree" />
-
-      {/* ── Classical Contemplative Study Guide ───────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6">
-        <div className="rounded-2xl border border-saffron-300/70 bg-gradient-to-b from-amber-50/80 via-orange-50/30 to-amber-50/20 dark:from-stone-900/80 dark:to-stone-950/80 p-8 shadow-xs">
-          <div className="max-w-2xl mb-6">
-            <span className="text-xs font-serif font-bold uppercase tracking-widest text-saffron-800 dark:text-saffron-300 block mb-1">
-              Sacred Learning Principles
-            </span>
-            <h3 className="text-2xl font-serif font-bold text-dharma-text mb-2">
-              The Three Pillars of Indian Svādhyāya
-            </h3>
-            <p className="text-xs md:text-sm text-dharma-muted font-serif leading-relaxed">
-              Unlike modern corporate metrics, classical scripture study measures progress not in certificates, but in inner serenity, clarity of intellect, and selfless duty.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-5 rounded-xl bg-white/80 dark:bg-stone-800/80 border border-saffron-200 dark:border-stone-700">
-              <span className="font-devanagari text-lg text-saffron-700 dark:text-saffron-300 font-bold block mb-1">
-                1. श्रवण (Śravaṇa)
-              </span>
-              <h4 className="font-serif font-bold text-sm text-dharma-text mb-1">
-                Receptive Hearing & Reading
-              </h4>
-              <p className="text-xs text-dharma-muted font-serif leading-relaxed">
-                Approaching the text with reverence and full attention, listening to the authentic verses and words of the Rishis.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-xl bg-white/80 dark:bg-stone-800/80 border border-saffron-200 dark:border-stone-700">
-              <span className="font-devanagari text-lg text-saffron-700 dark:text-saffron-300 font-bold block mb-1">
-                2. मनन (Manana)
-              </span>
-              <h4 className="font-serif font-bold text-sm text-dharma-text mb-1">
-                Reflective Pondering & Analysis
-              </h4>
-              <p className="text-xs text-dharma-muted font-serif leading-relaxed">
-                Clearing doubts through intellectual inquiry, testing the concepts with reason, mind maps, and flashcard recall.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-xl bg-white/80 dark:bg-stone-800/80 border border-saffron-200 dark:border-stone-700">
-              <span className="font-devanagari text-lg text-saffron-700 dark:text-saffron-300 font-bold block mb-1">
-                3. निदिध्यासन (Nididhyāsana)
-              </span>
-              <h4 className="font-serif font-bold text-sm text-dharma-text mb-1">
-                Deep Meditative Assimilation
-              </h4>
-              <p className="text-xs text-dharma-muted font-serif leading-relaxed">
-                Absorbing the realized truth into daily consciousness until your actions naturally radiate peace and equanimity.
-              </p>
-            </div>
-          </div>
-        </div>
+      {/* ── The three steps of svādhyāya ── */}
+      <section aria-labelledby="pillars-heading" className="mx-auto max-w-[980px] px-5 pt-20 sm:px-6">
+        <h2 id="pillars-heading" className="text-[24px] font-semibold tracking-[-0.025em] text-dharma-text sm:text-[32px]">
+          <span>How to study</span>{' '}
+          <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">स्वाध्याय त्रिपदी</span>
+        </h2>
+        <p className="mt-1 max-w-2xl text-[15px] text-dharma-muted">
+          Progress here is measured in clarity and calm, not certificates.
+        </p>
+        <ol className="mt-8 grid gap-8 md:grid-cols-3">
+          {PILLARS.map((p, i) => (
+            <li key={p.iast}>
+              <p className="text-[13px] tabular-nums text-dharma-muted">{i + 1}</p>
+              <p lang="sa" className="mt-1 text-[30px] leading-tight text-dharma-text">{p.sa}</p>
+              <h3 className="mt-1 text-[17px] font-semibold tracking-[-0.02em] text-dharma-text">
+                <span>{p.en}</span> <span className="font-normal text-dharma-muted">· {p.iast}</span>
+              </h3>
+              <p className="mt-1 text-[15px] leading-relaxed text-dharma-muted">{p.text}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
-      <div className="max-w-6xl mx-auto px-6 pb-16">
+      <div className="mx-auto max-w-[980px] space-y-4 px-5 pb-8 pt-16 sm:px-6">
         <SadhanaPortability />
         <BackupRestore />
       </div>
