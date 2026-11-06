@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { PadaLine } from '@/app/components/PadaLine';
 import { useEffect, useState } from 'react';
 import { getTodayWisdom, type DailyWisdomItem } from '@/data/daily-wisdom-engine';
 import { readHref } from '@/lib/verse-paths';
@@ -28,8 +29,12 @@ export function TodayVerseCard() {
       {item ? (
         <>
           {/* The whole shloka, line breaks as published; never shortened. */}
-          <p lang="sa" className="shloka-text mx-auto mt-6 max-w-[680px] whitespace-pre-line text-2xl leading-[1.7] text-dharma-text sm:text-[34px]">
-            {item.sanskrit.trim()}
+          <p lang="sa" className="shloka-text mx-auto mt-6 max-w-[680px] text-2xl leading-[1.7] text-dharma-text sm:text-[34px]">
+            {item.sanskrit.trim().split(/\r?\n/).map((line, i) => (
+              <span key={i} className="block">
+                <PadaLine line={line} />
+              </span>
+            ))}
           </p>
           {item.hindi && (
             <p lang="hi" className="mx-auto mt-6 max-w-[620px] font-devanagari text-lg leading-[1.8] text-dharma-text/85 sm:text-xl">

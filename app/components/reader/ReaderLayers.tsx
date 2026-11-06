@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, type ReactNode } from 'react';
+import { PadaLine } from '@/app/components/PadaLine';
 import {
   Atom,
   BookOpen,
@@ -323,7 +324,7 @@ export function ReaderLayers({
           <p id="sanskrit-text" lang="sa" className={`verse-folio rounded-2xl px-4 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-8 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
             {lines.map((line, i) => (
               <span key={i} className="block">
-                {line}
+                <PadaLine line={line} />
               </span>
             ))}
             <span aria-hidden="true" className="verse-mark mt-2 block text-[0.6em] text-dharma-saffron">

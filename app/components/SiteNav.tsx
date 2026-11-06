@@ -643,7 +643,7 @@ export function SiteNav({
                 >
                   <span className="inline-flex items-baseline gap-1">
                     <span>{item.label}</span>{' '}
-                    <span lang="hi" className="hidden text-[11px] font-devanagari text-dharma-muted xl:inline">
+                    <span lang="hi" className="hidden text-[12.5px] font-devanagari text-dharma-muted xl:inline">
                       {item.labelHi}
                     </span>{' '}
                   </span>
@@ -666,7 +666,7 @@ export function SiteNav({
                   aria-haspopup="true"
                 >
                   <span>Explore</span>{' '}
-                  <span lang="hi" className="hidden font-devanagari text-[11px] text-dharma-muted xl:inline">
+                  <span lang="hi" className="hidden font-devanagari text-[12.5px] text-dharma-muted xl:inline">
                     अन्वेषण
                   </span>
                   <ChevronDown
