@@ -2859,33 +2859,10 @@ svg.lucide {
     padding-inline: clamp(1.25rem, 5vw, 3rem);
 }
 
-/* Vedas and sūtras: a palm-leaf folio. A flat strip with rounded ends, two binding holes, and the
-   vertical margin rules scribes drew beside them. */
-[data-material='palm-leaf'] .verse-folio {
-    border-radius: 44px / 50%;
-    --pl-rule: color-mix(in srgb, var(--v2) 12%, transparent);
-    --pl-margin: clamp(2.6rem, 8vw, 3.6rem);
-    background-image:
-        linear-gradient(90deg, transparent calc(var(--pl-margin) - 1px), var(--pl-rule) calc(var(--pl-margin) - 1px), var(--pl-rule) var(--pl-margin), transparent var(--pl-margin)),
-        linear-gradient(270deg, transparent calc(var(--pl-margin) - 1px), var(--pl-rule) calc(var(--pl-margin) - 1px), var(--pl-rule) var(--pl-margin), transparent var(--pl-margin)),
-        repeating-linear-gradient(92deg, transparent 0 11px, color-mix(in srgb, #8a6a3c 2%, transparent) 11px 12px),
-        linear-gradient(180deg, color-mix(in srgb, #d6b16e 5%, transparent), color-mix(in srgb, #b98d45 3%, transparent));
-    padding-inline: calc(var(--pl-margin) + clamp(0.75rem, 3vw, 1.5rem));
+[data-material] .verse-folio::before,
+[data-material] .verse-folio::after {
+    display: none;
 }
-[data-material='palm-leaf'] .verse-folio::before,
-[data-material='palm-leaf'] .verse-folio::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 9px;
-    height: 9px;
-    margin-top: -4.5px;
-    border-radius: 50%;
-    background: var(--dharma-bg);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--v-edge);
-}
-[data-material='palm-leaf'] .verse-folio::before { left: clamp(0.9rem, 3vw, 1.6rem); }
-[data-material='palm-leaf'] .verse-folio::after { right: clamp(0.9rem, 3vw, 1.6rem); }
 
 /* Upanishads: bhojpatra, birch bark, warm with fine horizontal fibres. */
 [data-material='bark'] .verse-folio {
@@ -3002,16 +2979,12 @@ svg.lucide {
     border-color: transparent;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.06);
 }
-[data-material]:not([data-material='palm-leaf']) .verse-folio {
+[data-material] .verse-folio {
     background-image: none;
     background-color: transparent;
     border-color: transparent;
     box-shadow: none;
     animation: none;
-}
-[data-material='palm-leaf'] .verse-folio {
-    background-color: transparent;
-    border-color: color-mix(in srgb, var(--v2) 14%, transparent);
 }
 
 /* Letter-spacing pulls Devanagari conjuncts and vowel signs apart ("का ल द र्श न"), so Devanagari
