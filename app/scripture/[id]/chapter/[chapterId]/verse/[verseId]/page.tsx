@@ -472,61 +472,80 @@ export default function VersePage({ params }: PageProps) {
           reading. Server HTML only.
         */}
         <VerseAnswers scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} />
-        <SourceStudyNotes
-          scriptureId={meta.id}
-          scriptureTitle={meta.title}
-          scriptureTitleSanskrit={meta.titleSanskrit}
-          verseRef={ref}
-          sourceHost={repoLabel(source.repo)}
-          hindiIsAi={verse.hindiSource === 'ai'}
-          englishIsAi={verse.translationSource === 'ai'}
-          commentaryIsAi={Boolean(comment?.ai)}
-          translationReview={translationReview ? `Reviewed ${translationReview.date}` : 'Not yet reviewed'}
-        />
-        <RelatedWisdomDiscovery
-          scriptureId={meta.id}
-          chapterId={chapterId}
-          verseId={params.verseId}
-          concepts={tagged.concepts}
-          relatedVerses={tagged.relatedVerses}
-          relatedQuestions={tagged.relatedQuestions}
-          questions={tagged.questions}
-          lifeSituations={tagged.lifeSituations}
-          relatedScriptures={tagged.relatedScriptures}
-          relatedPathways={tagged.relatedPathways}
-          relatedSages={tagged.relatedSages}
-        />
-        <RelatedWisdom knowledge={knowledge} />
-        {pedagogical && (
-          <UnderstandPanel
-            data={pedagogical}
-            extras={getUnderstandingExtras(meta.id, chapterId, params.verseId)}
-            refKey={`${meta.id}:${chapterId}:${params.verseId}`}
-            reference={ref}
-            translation={verse.translation}
-            translationIsAi={verse.translationSource === 'ai'}
-            previousHref={prevHref}
-            nextHref={nextHref}
-            pageUrl={pageUrl}
+        {/*
+          Study more: everything past the verse, its meaning, vyakhya and modern
+          context sits in one native disclosure, so the page reads verse first
+          and stays short. The content is still in the exported HTML for crawlers,
+          and links to anchors inside (#understand-h, #verse-graph) open it.
+        */}
+        <details id="study-more" className="study-more group mt-8 rounded-3xl border border-dharma-border bg-dharma-card/40">
+          <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-3 rounded-3xl px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
+            <span>
+              <span className="block text-base font-semibold text-dharma-text">
+                <span>Study more</span> <span lang="hi" className="font-devanagari font-normal text-dharma-muted">गहन अध्ययन</span>
+              </span>
+              <span className="mt-0.5 block text-sm text-dharma-muted">Lesson, examples, diagrams, related verses and source notes</span>
+            </span>
+            <span aria-hidden="true" className="text-xl text-dharma-muted transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <div className="px-3 pb-5 sm:px-5">
+          {pedagogical && (
+            <UnderstandPanel
+              data={pedagogical}
+              extras={getUnderstandingExtras(meta.id, chapterId, params.verseId)}
+              refKey={`${meta.id}:${chapterId}:${params.verseId}`}
+              reference={ref}
+              translation={verse.translation}
+              translationIsAi={verse.translationSource === 'ai'}
+              previousHref={prevHref}
+              nextHref={nextHref}
+              pageUrl={pageUrl}
+            />
+          )}
+          <ModernScenarios scriptureId={meta.id} chapter={chapterId} verse={params.verseId} />
+          <VerseDiagrams scriptureId={meta.id} chapter={chapterId} verse={params.verseId} />
+          <RelatedTeachings scriptureId={meta.id} chapterId={chapterId} verseNumber={params.verseId} />
+          <RelatedWisdomDiscovery
+            scriptureId={meta.id}
+            chapterId={chapterId}
+            verseId={params.verseId}
+            concepts={tagged.concepts}
+            relatedVerses={tagged.relatedVerses}
+            relatedQuestions={tagged.relatedQuestions}
+            questions={tagged.questions}
+            lifeSituations={tagged.lifeSituations}
+            relatedScriptures={tagged.relatedScriptures}
+            relatedPathways={tagged.relatedPathways}
+            relatedSages={tagged.relatedSages}
           />
-        )}
-        <VerseDiagrams scriptureId={meta.id} chapter={chapterId} verse={params.verseId} />
-        <ModernScenarios scriptureId={meta.id} chapter={chapterId} verse={params.verseId} />
+          <RelatedWisdom knowledge={knowledge} />
+          <VerseGraphNetwork
+            scriptureId={meta.id}
+            chapterId={chapterId}
+            verseId={params.verseId}
+            currentVerse={{
+              number: verse.number,
+              sanskrit: verse.sanskrit,
+              transliteration: verse.transliteration,
+              hindi: verse.hindi,
+              translation: verse.translation,
+              explanation,
+            }}
+          />
+          <SourceStudyNotes
+            scriptureId={meta.id}
+            scriptureTitle={meta.title}
+            scriptureTitleSanskrit={meta.titleSanskrit}
+            verseRef={ref}
+            sourceHost={repoLabel(source.repo)}
+            hindiIsAi={verse.hindiSource === 'ai'}
+            englishIsAi={verse.translationSource === 'ai'}
+            commentaryIsAi={Boolean(comment?.ai)}
+            translationReview={translationReview ? `Reviewed ${translationReview.date}` : 'Not yet reviewed'}
+          />
+          </div>
+        </details>
         {!pedagogical && !explanation && <ReviewRequiredNotice className="mt-8" />}
-        <VerseGraphNetwork
-          scriptureId={meta.id}
-          chapterId={chapterId}
-          verseId={params.verseId}
-          currentVerse={{
-            number: verse.number,
-            sanskrit: verse.sanskrit,
-            transliteration: verse.transliteration,
-            hindi: verse.hindi,
-            translation: verse.translation,
-            explanation,
-          }}
-        />
-        <RelatedTeachings scriptureId={meta.id} chapterId={chapterId} verseNumber={params.verseId} />
         <NextTeachings candidates={nextCandidates} verseId={String(params.verseId)} />
         <VerseCompletion
           reference={ref}

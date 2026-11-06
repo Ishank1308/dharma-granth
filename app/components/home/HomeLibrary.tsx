@@ -26,6 +26,8 @@ function chapters(id: string, word: string): string | undefined {
 export function HomeLibrary() {
   const all = getAllScriptures();
   const count = (c: ScriptureCategory) => all.filter((s) => s.category === c).length;
+  // The library page adds the Ashtavakra Gita, which has its own reader outside the seeded catalogue.
+  const libraryTotal = all.length + (all.some((s) => s.id === 'ashtavakra') ? 0 : 1);
 
   const books: Book[] = [
     { href: '/scripture/bhagavadgita/', titleSa: 'भगवद्गीता', titleEn: 'Bhagavad Gita', tradition: 'Smṛti', facts: '18 chapters · 700 verses', colour: '#c2410c' },
@@ -46,7 +48,7 @@ export function HomeLibrary() {
           </span>
         </h2>
         <Link href="/scriptures/" className="text-[17px] text-dharma-saffron hover:underline">
-          See all {all.length} <span aria-hidden="true">›</span>
+          See all {libraryTotal} <span aria-hidden="true">›</span>
         </Link>
       </div>
       <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
