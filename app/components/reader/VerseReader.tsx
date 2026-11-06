@@ -392,15 +392,20 @@ export function VerseReader(props: VerseReaderProps) {
         rel={dir}
         onClick={() => triggerTactileFeedback('selection', 'click')}
         aria-label={crosses != null ? `${hiLabel}, श्लोक ${crosses}.${target.number}` : `${text} verse, ${target.number}`}
-        className={`focus-ring inline-flex items-center gap-2 rounded-full bg-dharma-text/[0.06] text-dharma-text transition hover:bg-dharma-text/[0.1] ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
+        className={`focus-ring inline-flex items-center gap-2.5 rounded-pill border border-separator/60 bg-fill-quaternary text-label-primary transition duration-fast hover:border-separator-strong hover:bg-fill-tertiary active:scale-97 ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
       >
-        <Icon className="h-4 w-4 shrink-0 text-dharma-saffron" aria-hidden="true" />
+        <Icon className="h-4 w-4 shrink-0 text-tint" aria-hidden="true" />
         <span className="leading-tight">
-          <span className="block text-[11px] font-medium text-dharma-text-secondary">
+          <span className="block text-caption font-medium text-label-secondary">
             <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null ? ` · ${text}` : ''}
           </span>{' '}
-          <span lang="hi" className="font-devanagari text-sm">{verseLine}</span>
+          <span lang="hi" className="font-devanagari text-subhead font-semibold">{verseLine}</span>
         </span>
+        {size === 'row' && (
+          <kbd className="hidden rounded-chip border border-separator px-1.5 py-0.5 font-mono text-[10px] text-label-tertiary uppercase lg:inline-flex" aria-hidden="true">
+            {dir === 'prev' ? '←' : '→'}
+          </kbd>
+        )}
       </Link>
     );
   };
@@ -554,10 +559,10 @@ export function VerseReader(props: VerseReaderProps) {
               type="button"
               onClick={() => setDialog('verses')}
               aria-haspopup="dialog"
-              className="focus-ring inline-flex min-h-[52px] flex-col items-center justify-center rounded-xl px-4 text-center transition hover:bg-dharma-card"
+              className="focus-ring inline-flex min-h-[52px] flex-col items-center justify-center rounded-control px-4 text-center transition duration-fast hover:bg-fill-quaternary active:scale-97"
             >
-              <span className="inline-flex items-center gap-1 text-footnote text-dharma-muted">
-                Verse {index + 1} of {total} · jump to verse <ChevronDown className="h-3 w-3" aria-hidden="true" />
+              <span className="inline-flex items-center gap-1.5 text-footnote text-label-secondary">
+                Verse {index + 1} of {total} · jump to verse <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
             </button>
             {navLink(next, 'next', 'row')}
@@ -782,10 +787,10 @@ export function VerseReader(props: VerseReaderProps) {
                 setCarouselOpen(true);
               }}
               aria-haspopup="dialog"
-              className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-xl px-2 text-center transition active:scale-95"
+              className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-control px-2 text-center transition active:scale-97"
             >
-              <span lang="hi" className="font-devanagari text-sm font-bold text-dharma-text">श्लोक {toAsciiDigits(verse.number)}</span>
-              <span className="text-[11px] text-dharma-saffron">{index + 1} / {total} · माला खोलें</span>
+              <span lang="hi" className="font-devanagari text-subhead font-bold text-label-primary">श्लोक {toAsciiDigits(verse.number)}</span>
+              <span className="text-caption text-tint">{index + 1} / {total} · माला खोलें</span>
             </button>
             {navLink(next, 'next', 'bar')}
           </div>

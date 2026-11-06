@@ -480,15 +480,15 @@ export default async function VersePage(props: PageProps) {
           and stays short. The content is still in the exported HTML for crawlers,
           and links to anchors inside (#understand-h, #verse-graph) open it.
         */}
-        <details id="study-more" className="study-more group mt-8 rounded-3xl border border-dharma-border bg-dharma-card/40">
-          <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-3 rounded-3xl px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
+        <details id="study-more" className="study-more apple-card group mt-8 overflow-hidden">
+          <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 transition hover:bg-fill-quaternary sm:px-6 [&::-webkit-details-marker]:hidden">
             <span>
-              <span className="block text-base font-semibold text-dharma-text">
-                <span>Study more</span> <span lang="hi" className="font-devanagari font-normal text-dharma-muted">गहन अध्ययन</span>
+              <span className="block text-body font-semibold text-label-primary">
+                <span>Study more</span> <span lang="hi" className="font-devanagari font-normal text-label-secondary">गहन अध्ययन</span>
               </span>
-              <span className="mt-0.5 block text-sm text-dharma-muted">Lesson, examples, diagrams, related verses and source notes</span>
+              <span className="mt-0.5 block text-subhead text-label-secondary">Lesson, examples, diagrams, related verses and source notes</span>
             </span>
-            <span aria-hidden="true" className="text-xl text-dharma-muted transition-transform group-open:rotate-45">+</span>
+            <span aria-hidden="true" className="apple-chevron text-xl transition-transform duration-standard ease-standard group-open:rotate-90">›</span>
           </summary>
           <div className="px-3 pb-5 sm:px-5">
           {pedagogical && (

@@ -40,7 +40,7 @@ export function ContinueReading() {
       <h2 id="continue-reading-heading" className="sr-only">
         <span lang="hi">पढ़ना जारी रखें</span> · <span>Continue reading</span>
       </h2>
-      <article className="relative flex items-center gap-4 rounded-card bg-dharma-card px-5 py-5 shadow-raised sm:gap-5 sm:px-7">
+      <article className="apple-card relative flex items-center gap-4 px-5 py-5 sm:gap-5 sm:px-7">
         <div
           role="progressbar"
           aria-valuemin={0}
@@ -48,30 +48,36 @@ export function ContinueReading() {
           aria-valuenow={latest.chapterId}
           aria-label={`अध्याय ${latest.chapterId} / ${total}`}
           className="grid h-[52px] w-[52px] shrink-0 place-items-center rounded-full"
-          style={{ background: `conic-gradient(var(--dharma-saffron) ${percent}%, color-mix(in srgb, var(--dharma-text) 10%, transparent) 0)` }}
+          style={{ background: `conic-gradient(var(--tint, var(--dharma-saffron)) ${percent}%, var(--fill-secondary) 0)` }}
         >
-          <span className="grid h-[42px] w-[42px] place-items-center rounded-full bg-dharma-card text-xs font-semibold tabular-nums text-dharma-text">
+          <span
+            className="grid h-[42px] w-[42px] place-items-center rounded-full text-xs font-semibold tabular-nums text-label-primary"
+            style={{ backgroundColor: 'var(--surface-raised)' }}
+          >
             {latest.chapterId}
           </span>
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-footnote text-dharma-muted">
+          <p className="text-footnote text-label-secondary">
             <span>Continue reading</span> <span aria-hidden="true">·</span>{' '}
             <span lang="hi" className="font-devanagari">पढ़ना जारी रखें</span> <span aria-hidden="true">·</span>{' '}
             <span lang="hi" className="font-devanagari">{timeAgo(latest.readAt)}</span>
           </p>
-          <p className="mt-0.5 truncate text-body font-semibold tracking-[-0.02em] text-dharma-text sm:text-[19px]">
+          <p className="mt-0.5 truncate text-body font-semibold tracking-[-0.02em] text-label-primary sm:text-title-3">
             {latest.scriptureTitle} · {latest.chapterTitle}
           </p>
         </div>
-        <Link href={resumeHref(latest)} className="hidden shrink-0 text-body text-dharma-saffron hover:underline sm:inline">
-          {latest.verseId ? `Resume at verse ${latest.verseId}` : 'Resume'} <span aria-hidden="true">›</span>
+        <Link
+          href={resumeHref(latest)}
+          className="apple-pill apple-pill-tinted hidden shrink-0 sm:inline-flex"
+        >
+          {latest.verseId ? `Verse ${latest.verseId} ›` : 'Resume ›'}
         </Link>
         <Link href={resumeHref(latest)} className="absolute inset-0 rounded-card sm:hidden" aria-label={`Resume ${latest.chapterTitle}`} />
         <button
           type="button"
           onClick={() => forgetScripture(latest.scriptureId)}
-          className="apple-icon-button relative h-9 w-9 shrink-0 text-dharma-muted"
+          className="apple-icon-button relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-label-tertiary transition hover:bg-fill-quaternary hover:text-label-primary"
           aria-label={`${latest.scriptureTitle} को इतिहास से हटाएँ (Remove from history)`}
         >
           <X className="h-4 w-4" aria-hidden="true" />
@@ -80,19 +86,19 @@ export function ContinueReading() {
 
       {others.length > 0 && (
         <ul
-          className="overflow-hidden rounded-group bg-dharma-card"
+          className="apple-group shadow-raised"
           aria-label="अन्य हाल के ग्रंथ (Other recent texts)"
         >
           {others.slice(0, 3).map((v) => (
-            <li key={v.scriptureId} className="border-b border-dharma-text/10 last:border-0">
-              <Link href={resumeHref(v)} className="flex items-center justify-between gap-3 px-5 py-3.5 transition hover:bg-dharma-text/[0.03]">
-                <span className="min-w-0">
-                  <span className="block truncate text-body text-dharma-text">{v.scriptureTitle}</span>
-                  <span className="block truncate text-footnote text-dharma-muted">
+            <li key={v.scriptureId}>
+              <Link href={resumeHref(v)} className="apple-row">
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-body font-medium text-label-primary">{v.scriptureTitle}</span>
+                  <span className="block truncate text-footnote text-label-secondary">
                     अध्याय {v.chapterId} · {v.chapterTitle}
                   </span>
                 </span>
-                <span aria-hidden="true" className="text-xl text-dharma-muted/60">›</span>
+                <span aria-hidden="true" className="apple-chevron">›</span>
               </Link>
             </li>
           ))}
