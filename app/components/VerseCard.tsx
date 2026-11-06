@@ -178,6 +178,8 @@ interface Props {
   onToggleSpatial?: () => void;
   /** Dedicated verse page, linked from the card so the URL survives hydration. */
   versePageHref?: string;
+  /** The reader asked for this verse's study (tapped its number in the chapter): open it, full study included. */
+  studyRequested?: boolean;
   /** Whether this verse is currently being recited */
   isReciting?: boolean;
   /** Callback to trigger recitation of this verse */
@@ -304,6 +306,7 @@ export function VerseCard({
   spatialFocused = false,
   onToggleSpatial,
   versePageHref,
+  studyRequested = false,
   isReciting,
   onPlayRecitation,
   insight,
@@ -978,9 +981,10 @@ export function VerseCard({
 
             {hasStudyContent && (
               <VerseStudyDisclosure
-                key={`${depth}:${layers.commentary}`}
+                key={`${depth}:${layers.commentary}:${studyRequested ? 1 : 0}`}
                 depth={depth}
-                defaultOpen={depth !== 'read' && layers.commentary}
+                defaultOpen={studyRequested || (depth !== 'read' && layers.commentary)}
+                loadFullStudy={studyRequested}
                 canDeepen={Boolean(v.wordMeaning || science || v.keywords?.length)}
                 versePageHref={versePageHref}
               >

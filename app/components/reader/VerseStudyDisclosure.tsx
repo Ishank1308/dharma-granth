@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useRef, useState, type ReactNode } from 'react';
-import { ChevronDown, ChevronUp, Layers } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronUp, Layers } from 'lucide-react';
 import type { ReadingDepth } from '@/lib/reading-depth';
 import { VersePageExtras } from '@/app/components/reader/VersePageExtras';
 
@@ -13,15 +13,21 @@ export function VerseStudyDisclosure({
   canDeepen = false,
   defaultOpen,
   versePageHref,
+  loadFullStudy = false,
   children,
 }: {
   depth: ReadingDepth;
   canDeepen?: boolean;
   defaultOpen?: boolean;
   versePageHref?: string;
+  /** Load the verse page's full study as soon as the panel is open (the reader asked for this verse). */
+  loadFullStudy?: boolean;
   children: (depth: StudyDepth) => ReactNode;
 }) {
   const [open, setOpen] = useState(defaultOpen ?? (depth !== 'read'));
+  // The full study is a fetch of the verse page, so it loads when the reader opens this panel or asks for it,
+  // never for every panel a reading depth opens by default as the chapter scrolls by.
+  const [fullStudy, setFullStudy] = useState(loadFullStudy);
   const [studyDepth, setStudyDepth] = useState<StudyDepth>(depth === 'understand' ? 'understand' : 'study');
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelId = useId();
@@ -42,7 +48,10 @@ export function VerseStudyDisclosure({
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => {
+          if (!open) setFullStudy(true);
+          setOpen((value) => !value);
+        }}
         className="flex min-h-11 items-center gap-1.5 rounded-full px-2 py-2 text-left text-xs font-medium text-dharma-muted transition-colors hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
       >
         <span id={titleId}>
@@ -68,7 +77,19 @@ export function VerseStudyDisclosure({
           )}
 
           {children(studyDepth)}
-          {versePageHref && <VersePageExtras href={versePageHref} />}
+          {versePageHref && fullStudy && <VersePageExtras href={versePageHref} />}
+          {versePageHref && !fullStudy && (
+            <div className="mt-5 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setFullStudy(true)}
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-dharma-border/70 px-3.5 py-2 text-xs font-semibold text-saffron-800 transition-colors hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 dark:text-saffron-300"
+              >
+                <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+                <span><span lang="hi" className="font-devanagari">पूर्ण अध्ययन यहीं देखें</span> · <span lang="en">Show the full study here</span></span>
+              </button>
+            </div>
+          )}
 
           <div className="mt-5 flex justify-center border-t border-dharma-border/50 pt-3">
             <button

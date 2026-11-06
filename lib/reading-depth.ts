@@ -19,7 +19,16 @@ export const READING_DEPTHS: { id: ReadingDepth; en: string; hi: string; hint: s
 
 const KEY = 'dharma.readingDepth';
 const EVENT = 'dharma-reading-depth';
-export const DEFAULT_DEPTH: ReadingDepth = 'read';
+/**
+ * A reader who has not chosen sees each verse with its explanation, inside the chapter, so nobody has to
+ * leave the adhyay to find the व्याख्या. "Read" stays one tap away for scripture and translation only.
+ */
+export const DEFAULT_DEPTH: ReadingDepth = 'understand';
+/**
+ * The server render (and the first client render, which must match it) uses "read": the explanations open
+ * after hydration, so the exported chapter HTML, repeated across thousands of chapter pages, does not grow.
+ */
+const SERVER_DEPTH: ReadingDepth = 'read';
 
 function readStored(): ReadingDepth {
   try {
@@ -32,7 +41,7 @@ function readStored(): ReadingDepth {
 
 /** Current reading depth, shared by every component on the page and across tabs. */
 export function useReadingDepth(): [ReadingDepth, (d: ReadingDepth) => void] {
-  const [depth, setDepthState] = useState<ReadingDepth>(DEFAULT_DEPTH);
+  const [depth, setDepthState] = useState<ReadingDepth>(SERVER_DEPTH);
 
   useEffect(() => {
     setDepthState(readStored());
