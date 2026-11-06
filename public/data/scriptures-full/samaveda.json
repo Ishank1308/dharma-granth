@@ -8,7 +8,7 @@
     "license": "Sanskrit mula - sanskritdocuments.org volunteer edition; review reuse terms before redistribution.",
     "fetchedAt": "2026-09-30T09:50:47.274Z"
   },
-  "totalVerses": 1873,
+  "totalVerses": 1875,
   "totalChapters": 4,
   "chapters": [
     {
@@ -8321,12 +8321,20 @@
           "hindi": "उज्ज्वल, बलवान् और शीघ्रगामी सोम गौओं, घोड़ों और वीरों की कामना से आगे छोड़े गए हैं।"
         },
         {
-          "number": 1036,
-          "sanskrit": "शुम्भमानो ऋतायुभिर्मृज्यमाना गभस्त्योः । ते विश्वा दाशुषे वसु सोमा दिव्यानि पार्थिवा । पवन्तामान्तरिक्ष्या",
-          "transliteration": "śumbhamāno ṛtāyubhirmṛjyamānā gabhastyoḥ | te viśvā dāśuṣe vasu somā divyāni pārthivā | pavantāmāntarikṣyā",
-          "translation": "Adorned by the truth-lovers, cleansed by the hands, those somas bring the giver all the divine and earthly wealth; let those of the air flow.",
+          "number": 1035,
+          "sanskrit": "शुम्भमाना ऋतायुभिर्मृज्यमाना गभस्त्योः । पवन्ते वारे अव्यये",
+          "transliteration": "śumbhamānā ṛtāyubhirmṛjyamānā gabhastyoḥ | pavante vāre avyaye",
+          "translation": "Adorned by the truth-seekers, cleansed in the hands, they flow through the sheep's-wool filter.",
           "translationSource": "ai",
-          "hindi": "ऋत चाहने वालों द्वारा सजाए जाते हुए, हाथों से शुद्ध किए जाते हुए वे सोम दानी (यजमान) के लिए सारे दिव्य, पार्थिव और अन्तरिक्ष के धन बहाएँ।"
+          "hindi": "ऋत चाहने वालों द्वारा सजाए जाते हुए, हाथों से शुद्ध किए जाते हुए (सोम) ऊनी छन्नी पर बहते हैं।"
+        },
+        {
+          "number": 1036,
+          "sanskrit": "ते विश्वा दाशुषे वसु सोमा दिव्यानि पार्थिवा । पवन्तामान्तरिक्ष्या",
+          "transliteration": "te viśvā dāśuṣe vasu somā divyāni pārthivā | pavantāmāntarikṣyā",
+          "translation": "May those somas bring the giver all wealth, of heaven, of earth and of the air.",
+          "translationSource": "ai",
+          "hindi": "वे सोम दानी (यजमान) के लिए सारे दिव्य, पार्थिव और अन्तरिक्ष के धन बहाएँ।"
         },
         {
           "number": 1037,
@@ -9721,12 +9729,20 @@
           "hindi": "हे सोम! इस आनन्द के साथ चारों ओर बहिए, जिसके आनन्द में (इन्द्र ने) निन्यानवे (नगरों) को नष्ट किया।"
         },
         {
-          "number": 1212,
-          "sanskrit": "पुरः सद्य इत्थाधिये दिवोदासाय शम्बरम् । अध त्यं तुर्वशं यदुम् ॥ १२१च्ल्स्दिर् परि नो अश्वमश्वविद्गोमदिन्दो हिरण्यवत् । क्षरा सहस्रिणीरिषः",
-          "transliteration": "puraḥ sadya itthādhiye divodāsāya śambaram | adha tyaṃ turvaśaṃ yadum || 121clsdir pari no aśvamaśvavidgomadindo hiraṇyavat | kṣarā sahasriṇīriṣaḥ",
-          "translation": "Then at once he broke the forts for Divodasa, Shambara — and then that Turvasha, Yadu. [Next:] Flow around us, O drop, wealth of horses, cattle and gold; stream a thousandfold nourishments.",
+          "number": 1211,
+          "sanskrit": "पुरः सद्य इत्थाधिये दिवोदासाय शम्बरम् । अध त्यं तुर्वशं यदुम्",
+          "transliteration": "puraḥ sadya itthādhiye divodāsāya śambaram | adha tyaṃ turvaśaṃ yadum",
+          "translation": "At once, for Divodasa of true intent, you broke Shambara, and then that Turvasha and Yadu.",
           "translationSource": "ai",
-          "hindi": "(हे सोम!) आपने तुरन्त ही सच्ची बुद्धि वाले दिवोदास के लिए शम्बर (के किलों) को, और फिर उस तुर्वश और यदु को (वश में किया)। ॥ हे घोड़े प्राप्त कराने वाले इन्दु! हमारे लिए घोड़ों, गौओं और सोने से युक्त (धन) और हजारों अन्न बहाइए।"
+          "hindi": "(हे सोम!) आपने तुरन्त ही सच्ची बुद्धि वाले दिवोदास के लिए शम्बर (के किलों) को, और फिर उस तुर्वश और यदु को (वश में किया)।"
+        },
+        {
+          "number": 1212,
+          "sanskrit": "परि नो अश्वमश्वविद्गोमदिन्दो हिरण्यवत् । क्षरा सहस्रिणीरिषः",
+          "transliteration": "pari no aśvamaśvavidgomadindo hiraṇyavat | kṣarā sahasriṇīriṣaḥ",
+          "translation": "Flow around us, O drop, finder of horses, with wealth of horses, cattle and gold; stream a thousandfold nourishments.",
+          "translationSource": "ai",
+          "hindi": "हे घोड़े प्राप्त कराने वाले इन्दु! हमारे लिए घोड़ों, गौओं और सोने से युक्त (धन) और हजारों अन्न बहाइए।"
         },
         {
           "number": 1213,
