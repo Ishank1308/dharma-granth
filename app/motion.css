@@ -20,33 +20,26 @@
    5. Calls to action (sheen, lift, chevron nudge)
    6. Header elevation on scroll
    7. Verse of the day: lines settle one by one
-   8. Theme change: a circular view transition from the tap point (ThemeProvider.tsx) */
+   8. Theme change: a circular view transition from the tap point (ThemeProvider.tsx)
+   9. Section headings: the accent rule grows in
+   10. Wisdom band: a slow marquee of mahāvākyas
+   11. Sheen and link nudge for any button or link list */
 
-/* 1. Tokens ─────────────────────────────────────────────────────────── */
-:root {
-    --motion-spring: cubic-bezier(0.22, 1, 0.36, 1);
-    --motion-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --motion-fast: 180ms;
-    --motion-base: 420ms;
-    --motion-slow: 900ms;
-}
-@supports (transition-timing-function: linear(0, 1)) {
-    :root {
-        /* A soft spring: about 2% overshoot, settled by 60% of the duration. */
-        --motion-spring: linear(
-            0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.721 25.3%, 0.849 31.5%,
-            0.937 38.1%, 0.968 41.8%, 0.991 45.7%, 1.006 50.1%, 1.015 55%, 1.017 63.9%,
-            1.001 85.9%, 1
-        );
-    }
-}
+/* 1. Tokens ───────────────────────────────────────────────────────────
+   Durations, curves (--motion-spring, --motion-out) and stagger steps live in
+   app/styles/tokens.css with the rest of the design system. */
 
 /* 2. Scroll reveals ────────────────────────────────────────────────────
    An element rises out of a slight 3D tilt as it enters the viewport, on its own view
    timeline. Elements already on screen at load are past their range, so the first
    screen never starts hidden; without scroll timelines everything is simply visible.
    Put .reveal on a wrapper, never on an element that also takes [data-tilt] (the
-   animation's fill would hold its transform). */
+   animation's fill would hold its transform).
+
+   .reveal-grid cascades its children: each one starts --reveal-i steps of
+   --stagger-distance later than the first, so a row arrives as a wave. The index runs
+   0 to 3 along a row and repeats, so later rows are not held back; set --reveal-i
+   inline to override it. */
 @keyframes reveal-3d {
     from {
         opacity: 0;
@@ -66,12 +59,18 @@
             animation-timeline: view();
             animation-range: entry 0px entry 260px;
         }
-        /* Neighbours in a grid start a beat apart, so a row arrives as a ripple rather than a block. */
-        .reveal-grid > :nth-child(2n) {
-            animation-range: entry 40px entry 300px;
+        .reveal-grid > * {
+            animation-range:
+                entry calc(var(--reveal-i, 0) * var(--stagger-distance))
+                entry calc(260px + var(--reveal-i, 0) * var(--stagger-distance));
         }
     }
 }
+
+/* Cascade index along a row (0, 1, 2, 3, then again). */
+.reveal-grid > :nth-child(4n + 2) { --reveal-i: 1; }
+.reveal-grid > :nth-child(4n + 3) { --reveal-i: 2; }
+.reveal-grid > :nth-child(4n + 4) { --reveal-i: 3; }
 
 /* 3. Home hero ─────────────────────────────────────────────────────────
    Entrance: each line comes into focus in turn (blur + rise). Opacity never starts at 0,
@@ -307,12 +306,18 @@
 }
 
 /* 5. Calls to action ───────────────────────────────────────────────── */
-.cta-primary {
+.cta-primary,
+.btn-sheen,
+.apple-pill {
     position: relative;
     overflow: hidden;
     isolation: isolate;
 }
-.cta-primary::after {
+/* The sheen: a soft band of light that sweeps across a filled button on hover.
+   .cta-primary also lifts; .btn-sheen and .apple-pill only shine. */
+.cta-primary::after,
+.btn-sheen::after,
+.apple-pill::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -335,9 +340,11 @@
         transform: translate3d(0, -2px, 0);
         box-shadow: 0 12px 32px -12px color-mix(in srgb, var(--dharma-saffron) 70%, transparent);
     }
-    .cta-primary:hover::after {
+    .cta-primary:hover::after,
+    .btn-sheen:hover::after,
+    .apple-pill:hover::after {
         transform: translateX(120%);
-        transition: transform 0.9s var(--motion-out);
+        transition: transform var(--duration-slow) var(--motion-out);
     }
     .cta-primary:active {
         scale: 0.97;
@@ -476,6 +483,111 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
     }
 }
 
+/* 9. Section headings ─────────────────────────────────────────────────
+   The accent rule under a SectionTitle draws itself from the left as its heading
+   enters the viewport. Headings on the first screen are past the range at load, so
+   their rule is already drawn. */
+@keyframes rule-grow {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .section-rule {
+            transform-origin: left center;
+            animation: rule-grow linear both;
+            animation-timeline: view();
+            animation-range: entry 0px entry 160px;
+        }
+    }
+}
+
+/* 10. Wisdom band ──────────────────────────────────────────────────────
+   WisdomTicker.tsx renders the list twice; the track slides by exactly one copy and
+   loops. The edges fade into the canvas. It pauses under the pointer or keyboard
+   focus, and with reduced motion or a quiet mode it is a still, wrapped list. */
+.ticker {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.ticker-track {
+    display: flex;
+    width: max-content;
+}
+.ticker-group {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-12);
+    padding: var(--space-4) var(--space-6);
+    white-space: nowrap;
+}
+@keyframes ticker-scroll {
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .ticker-track {
+        animation: ticker-scroll 120s linear infinite;
+    }
+    .ticker:hover .ticker-track,
+    .ticker:focus-within .ticker-track {
+        animation-play-state: paused;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ticker {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+    .ticker-track {
+        width: auto;
+    }
+    .ticker-group {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: var(--space-3);
+        white-space: normal;
+    }
+    .ticker-group + .ticker-group {
+        display: none;
+    }
+}
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .ticker {
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .ticker-track {
+    animation: none;
+    width: auto;
+}
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .ticker-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: var(--space-3);
+    white-space: normal;
+}
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .ticker-group + .ticker-group {
+    display: none;
+}
+
+/* 11. Link nudge ───────────────────────────────────────────────────────
+   Links in a list (the footer) step a little to the right under the pointer. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .link-lift {
+        display: inline-block;
+        transition:
+            transform var(--duration-standard) var(--motion-spring),
+            color var(--duration-fast) var(--ease-standard);
+    }
+    .link-lift:hover {
+        transform: translate3d(3px, 0, 0);
+    }
+}
+
 /* Quiet modes ─────────────────────────────────────────────────────────── */
 :root[data-low-power='true'] .hero-halo-ring,
 :root[data-data-saver='true'] .hero-halo-ring,
@@ -490,14 +602,17 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
     transform: none;
 }
 @media print {
-    .hero-halo {
+    .hero-halo,
+    .ticker {
         display: none;
     }
     .reveal,
     .reveal-grid > *,
     .hero-rise > *,
     .hero-stage > .hero-content,
-    .verse-line {
+    .verse-line,
+    .verse-settle,
+    .section-rule {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
