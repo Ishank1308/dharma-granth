@@ -93,6 +93,7 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/ask', pageDate('/ask', 'data/wisdom-for-life.ts')),
     entry('/daily', pageDate('/daily')),
     entry('/daily-verse', pageDate('/daily-verse', 'data/wisdom-for-life.ts')),
+    entry('/embed/verse-of-the-day', pageDate('/embed/verse-of-the-day', 'lib/daily-verse.ts')),
     entry('/methodology', pageDate('/methodology')),
     entry('/sources', pageDate('/sources')),
     entry('/contribute', pageDate('/contribute')),

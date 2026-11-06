@@ -1610,6 +1610,31 @@ html:has(.reader-root) [aria-label^='सस्वर पाठ'] {
   display: none !important;
 }
 
+/* ── Embed mode (app/embed sets <html data-embed>) ─────────────────
+   Clean iframe presentation: hides header, footer, companion dock, navigation and overlays. */
+html[data-embed] nav,
+html[data-embed] footer,
+html[data-embed] aside,
+html[data-embed] .skip-link,
+html[data-embed] #main-content,
+html:has(.embed-card-root) nav,
+html:has(.embed-card-root) footer,
+html:has(.embed-card-root) aside,
+html:has(.embed-card-root) .skip-link,
+html:has(.embed-card-root) #main-content {
+  padding-bottom: 0 !important;
+}
+html[data-embed] nav[aria-label='Primary navigation'],
+html[data-embed] nav[aria-label='Mobile quick navigation'],
+html[data-embed] aside[aria-label='Interactive Companion'],
+html[data-embed] [aria-label^='सस्वर पाठ'],
+html:has(.embed-card-root) nav[aria-label='Primary navigation'],
+html:has(.embed-card-root) nav[aria-label='Mobile quick navigation'],
+html:has(.embed-card-root) aside[aria-label='Interactive Companion'],
+html:has(.embed-card-root) [aria-label^='सस्वर पाठ'] {
+  display: none !important;
+}
+
 /* Full chapter reading keeps the site navigation and in-page controls visible,
    while removing the global floating docks that sit on top of verse text. */
 body:has(main[data-chapter-reading]) [data-hide-during-chapter-reading] {
