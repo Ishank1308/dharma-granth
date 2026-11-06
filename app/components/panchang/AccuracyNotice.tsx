@@ -17,25 +17,25 @@ export function AccuracyNotice({
   return (
     <section
       aria-labelledby="panchang-accuracy-heading"
-      className={`rounded-2xl border border-amber-500/25 bg-amber-500/5 p-4 sm:p-5 dark:border-amber-500/20 dark:bg-amber-950/20 ${className}`}
+      className={`apple-group p-4 sm:p-5 ${className}`}
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
-          <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-500/15 text-amber-700 dark:text-amber-300">
-            <Info className="h-5 w-5" aria-hidden="true" />
+          <div className="apple-tint-chip mt-0.5" style={{ background: '#b45309' }}>
+            <Info className="h-4 w-4" aria-hidden="true" />
           </div>
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
+              <span className="text-[13px] text-dharma-muted">
                 शैक्षणिक पंचांग · Educational Calendar Notice
               </span>
-              <span className="rounded-full bg-amber-500/20 px-2 py-0.5 text-[10px] font-semibold text-amber-900 dark:text-amber-200">
+              <span className="rounded-full bg-dharma-text/[0.06] px-2 py-0.5 text-[11px] text-dharma-text-secondary">
                 Non-Ritual Study Standard
               </span>
             </div>
             <h2
               id="panchang-accuracy-heading"
-              className="mt-0.5 font-serif text-base font-bold text-dharma-text sm:text-lg"
+              className="mt-0.5 text-[17px] font-semibold tracking-[-0.02em] text-dharma-text"
             >
               Why Panchang timings vary across locations and traditions
             </h2>
@@ -53,7 +53,7 @@ export function AccuracyNotice({
             onClick={() => setIsExpanded((prev) => !prev)}
             aria-expanded={isExpanded}
             aria-controls="accuracy-factors-content"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-dharma-border bg-dharma-card px-3 py-1.5 text-xs font-semibold text-dharma-text shadow-sm hover:border-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition"
+            className="inline-flex min-h-11 items-center gap-1.5 text-[15px] text-dharma-saffron"
           >
             <span>{isExpanded ? 'Hide Details' : 'View 5 Factors'}</span>
             {isExpanded ? (
