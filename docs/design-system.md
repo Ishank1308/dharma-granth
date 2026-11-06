@@ -108,7 +108,7 @@ All in `components.css`, all token-only:
 - `.apple-tint-chip` (set `--chip` for its colour)
 - `.apple-stat` (tabular figures for numbers)
 - `.apple-scope` on a page wrapper quiets older components inside it
-- The chapter reader's verse card (`.verse-card.book-verse` and its exported form `.verse-card.vt`) is styled here too: one card per verse, the shloka largest, meanings under a hairline, the verse number as a tinted capsule. The markup in `VerseCard.tsx` and `VerseText` is unchanged, and both forms get the same box so hydration does not shift the page.
+- The chapter reader's verse card (`.verse-card.book-verse` and its exported form `.verse-card.vt`) is styled here too: one card per verse in the scripture's own cover colours (`--v1..3`, `--foil` from `lib/scripture-vibes.ts`), with a gradient edge, a luminous shloka panel, a filled verse capsule and a gilt ॥ mark. Cards rise in and a band of light crosses the shloka as you scroll (view timelines; still under reduced motion and the quiet modes). The markup in `VerseCard.tsx` and `VerseText` is unchanged, and both forms share one box so hydration does not shift the page.
 
 React pieces:
 
@@ -155,6 +155,6 @@ Rules:
 3. **Reduced motion is respected everywhere.** Every token duration collapses to 1ms, and each
    looping or scroll-linked effect has its own `prefers-reduced-motion` guard. The lite,
    low-power and data-saver modes turn off loops and tilt too.
-4. **Reading pages stay still.** Verse and chapter pages get only the shared chrome.
+4. **Reading pages stay calm.** Chapter and verse pages get the shared chrome and the verse card's scroll-linked arrival and light, nothing that loops.
 5. **No new animation libraries** for page chrome. The JS budget is already over, so effects
    are CSS first; `CountUp` is one observer and a `requestAnimationFrame` loop.

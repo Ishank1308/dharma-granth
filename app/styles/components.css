@@ -235,7 +235,7 @@ a.apple-row:active,
    a hairline, and the verse number is a small tinted capsule. Styled from here so the
    markup in VerseCard.tsx (rich) and VerseText (the exported, pre-hydration form,
    classes .vt-*) stays as it is; both get the same box and sizes, so the swap at
-   hydration does not move the page. Reading pages stay still: no hover motion. */
+   hydration does not move the page. Colour and motion follow below. */
 .verse-card.book-verse,
 .verse-card.vt {
     --verse-sa-size: clamp(1.1875rem, 1.05rem + 0.6vw, 1.4375rem);   /* 19 → 23 */
@@ -246,13 +246,6 @@ a.apple-row:active,
     background-color: var(--surface-raised);
     box-shadow: var(--shadow-raised);
     overflow: visible;
-}
-:root[data-theme='night'] .verse-card.book-verse,
-:root[data-theme='night'] .verse-card.vt,
-:root[data-theme='dark'] .verse-card.book-verse,
-:root[data-theme='dark'] .verse-card.vt {
-    /* Rātri: no shadow, so a faint hairline marks the card's edge on true black. */
-    box-shadow: inset 0 0 0 1px var(--separator);
 }
 .verse-card.book-verse:hover,
 .verse-card.vt:hover {
@@ -369,4 +362,184 @@ a.apple-row:active,
 .verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']):hover {
     background-color: var(--fill-tertiary);
     color: var(--label-primary);
+}
+
+/* Verse card colour ─────────────────────────────────────────────────────
+   Each scripture carries its own cover colours (lib/scripture-vibes.ts sets --v1..3
+   and --foil on the page). The card wears them: an edge that shades from the main
+   colour to the accent and the gold, a luminous wash behind the shloka, a filled
+   verse capsule and a gilt ॥ mark. Pages without a palette fall back to saffron. */
+.verse-card.book-verse,
+.verse-card.vt {
+    --vc-main: var(--v2, var(--dharma-saffron));
+    --vc-accent: var(--v3, #f59e0b);
+    --vc-gold: var(--foil, #e0b65a);
+    --vc-edge-a: 55%;
+    --vc-wash-a: 20%;
+    border: 1.5px solid transparent;
+    background:
+        linear-gradient(var(--surface-raised), var(--surface-raised)) padding-box,
+        linear-gradient(
+                135deg,
+                color-mix(in srgb, var(--vc-main) var(--vc-edge-a), transparent),
+                color-mix(in srgb, var(--vc-accent) calc(var(--vc-edge-a) * 0.7), transparent) 55%,
+                color-mix(in srgb, var(--vc-gold) var(--vc-edge-a), transparent)
+            )
+            border-box;
+    box-shadow:
+        var(--shadow-raised),
+        0 18px 44px -26px color-mix(in srgb, var(--vc-main) 45%, transparent);
+}
+:root[data-theme='night'] :is(.verse-card.book-verse, .verse-card.vt),
+:root[data-theme='dark'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --vc-main: color-mix(in srgb, var(--v2, var(--dharma-saffron)) 55%, #fff);
+    --vc-accent: color-mix(in srgb, var(--v3, #f59e0b) 70%, #fff);
+    --vc-edge-a: 50%;
+    --vc-wash-a: 24%;
+    box-shadow: 0 24px 60px -30px color-mix(in srgb, var(--vc-main) 40%, transparent);
+}
+
+/* The shloka's panel: light pooled at the top in the accent, over a faint wash of
+   the main colour. Palm-leaf scriptures keep their leaf. */
+.verse-card.book-verse .verse-folio,
+.verse-card.vt .vt-leaf {
+    position: relative;
+    margin-top: var(--space-2);
+    border-radius: calc(var(--radius-card) - 6px);
+    padding-inline: clamp(var(--space-2), -0.4rem + 3vw, var(--space-8));
+    isolation: isolate;
+    overflow: hidden;
+}
+:is(.verse-card.book-verse .verse-folio, .verse-card.vt .vt-leaf):not([data-material='palm-leaf'] *) {
+    border: 0;
+    background:
+        radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--vc-accent) var(--vc-wash-a), transparent), transparent 70%),
+        linear-gradient(180deg, color-mix(in srgb, var(--vc-main) calc(var(--vc-wash-a) * 0.7), transparent), transparent 85%);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--vc-gold) 35%, transparent);
+}
+/* A soft band of light drifts across the panel as the verse passes through the
+   viewport: scroll-linked, so it lives while you read and costs nothing at rest. */
+:is(.verse-card.book-verse .verse-folio, .verse-card.vt .vt-leaf):not([data-material='palm-leaf'] *)::after {
+    content: '';
+    position: absolute;
+    inset: -20% -40%;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+        100deg,
+        transparent 35%,
+        color-mix(in srgb, var(--vc-gold) 16%, transparent) 50%,
+        transparent 65%
+    );
+    transform: translate3d(-30%, 0, 0);
+    opacity: 0;
+}
+@keyframes verse-light {
+    from {
+        transform: translate3d(-35%, 0, 0);
+        opacity: 0;
+    }
+    40%,
+    60% {
+        opacity: 1;
+    }
+    to {
+        transform: translate3d(35%, 0, 0);
+        opacity: 0;
+    }
+}
+
+/* The verse number: a filled capsule in the scripture's colours. */
+.verse-card .verse-ref,
+.verse-card .vt-title a {
+    background-image: linear-gradient(135deg, var(--vc-main), color-mix(in srgb, var(--vc-main) 55%, var(--vc-accent)));
+    color: #fff;
+    box-shadow: 0 4px 12px -6px color-mix(in srgb, var(--vc-main) 70%, transparent);
+}
+:root[data-theme='night'] :is(.verse-card .verse-ref, .verse-card .vt-title a),
+:root[data-theme='dark'] :is(.verse-card .verse-ref, .verse-card .vt-title a) {
+    background-image: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--v2, var(--dharma-saffron)) 80%, #000),
+        color-mix(in srgb, var(--v3, #f59e0b) 60%, #000)
+    );
+}
+/* The ॥ n ॥ mark in gilt. */
+.verse-card .verse-mark,
+.verse-card .vt-sa > .vt-num {
+    color: color-mix(in srgb, var(--vc-gold) 65%, var(--vc-main));
+    opacity: 1;
+}
+:root[data-theme='night'] :is(.verse-card .verse-mark, .verse-card .vt-sa > .vt-num),
+:root[data-theme='dark'] :is(.verse-card .verse-mark, .verse-card .vt-sa > .vt-num) {
+    color: var(--vc-gold);
+}
+/* The meanings' hairline picks up the colours too. */
+.verse-card.book-verse .sacred-flow-wrap,
+.verse-card.vt .vt-leaf + .vt-block {
+    border-top: 0;
+    background:
+        linear-gradient(90deg, transparent, color-mix(in srgb, var(--vc-main) 30%, transparent), color-mix(in srgb, var(--vc-gold) 35%, transparent), transparent)
+        top / 100% 1px no-repeat;
+}
+/* "Verse study" in the scripture's colour. */
+.verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']) {
+    background-color: color-mix(in srgb, var(--vc-main) 9%, transparent);
+    color: color-mix(in srgb, var(--vc-main) 80%, var(--label-primary));
+}
+.verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']):hover {
+    background-color: color-mix(in srgb, var(--vc-main) 15%, transparent);
+    color: color-mix(in srgb, var(--vc-main) 90%, var(--label-primary));
+}
+:root[data-theme='night'] .verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']),
+:root[data-theme='dark'] .verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']) {
+    color: var(--vc-main);
+}
+
+/* Life: cards rise into place as they scroll in, the light drifts across the shloka,
+   and under a mouse the card glows in its colour. Cards on the first screen are
+   already placed; reduced motion and the quiet modes keep everything still. */
+@keyframes verse-arrive {
+    from {
+        opacity: 0.4;
+        transform: translate3d(0, 28px, 0) scale(0.985);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+            :is(.verse-card.book-verse, .verse-card.vt):not(.spatial-focused > *) {
+            animation: verse-arrive linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 55%;
+        }
+        :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+            :is(.verse-card.book-verse .verse-folio, .verse-card.vt .vt-leaf):not([data-material='palm-leaf'] *)::after {
+            animation: verse-light linear both;
+            animation-timeline: view();
+            animation-range: entry 40% exit 60%;
+        }
+    }
+    @media (hover: hover) and (pointer: fine) {
+        .verse-card.book-verse,
+        .verse-card.vt {
+            transition: box-shadow var(--duration-base) var(--ease-out);
+        }
+        .verse-card.book-verse:hover,
+        .verse-card.vt:hover {
+            box-shadow:
+                var(--shadow-raised),
+                0 26px 60px -24px color-mix(in srgb, var(--vc-main) 55%, transparent),
+                0 0 0 1px color-mix(in srgb, var(--vc-accent) 25%, transparent);
+        }
+    }
+}
+@media print {
+    .verse-card.book-verse,
+    .verse-card.vt {
+        background: none;
+        box-shadow: none;
+        border-color: #ccc;
+        animation: none !important;
+    }
 }
