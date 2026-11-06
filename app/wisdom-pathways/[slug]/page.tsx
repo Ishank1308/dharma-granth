@@ -9,7 +9,8 @@ export function generateStaticParams() {
   return wisdomPathways.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const pathway = getPathway(params.slug);
   if (!pathway) return { title: 'Pathway Not Found' };
   const description = `${pathway.questionEn} ${pathway.introduction.en}`.slice(0, 155);
@@ -21,7 +22,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function WisdomPathwayPage({ params }: { params: { slug: string } }) {
+export default async function WisdomPathwayPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const pathway = getPathway(params.slug);
   if (!pathway) notFound();
   const verses = resolvePathwayVerses(pathway);

@@ -21,7 +21,8 @@ export function generateStaticParams() {
   return characters.map((c) => ({ id: c.id }));
 }
 
-export function generateMetadata({ params }: { params: { id: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const character = getCharacter(params.id);
   if (!character) return { title: 'Character Not Found' };
 
@@ -38,7 +39,8 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
   };
 }
 
-export default function CharacterPage({ params }: { params: { id: string } }) {
+export default async function CharacterPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const character = getCharacter(params.id);
   if (!character) notFound();
 

@@ -45,7 +45,7 @@ import type { VerseLink, VerseQuestionLink } from '@/data/types';
  */
 
 interface PageProps {
-  params: { id: string; chapterId: string; verseId: string };
+  params: Promise<{ id: string; chapterId: string; verseId: string }>;
 }
 
 interface SeedVerse {
@@ -140,7 +140,8 @@ export function generateStaticParams() {
   return verseStaticParams();
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const meta = getScriptureMeta(params.id);
   const chapterId = parseInt(params.chapterId, 10);
   const found = meta && Number.isFinite(chapterId) ? findVerse(params.id, chapterId, params.verseId) : null;
@@ -204,7 +205,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function VersePage({ params }: PageProps) {
+export default async function VersePage(props: PageProps) {
+  const params = await props.params;
   const meta = getScriptureMeta(params.id);
   if (!meta) return notFound();
 

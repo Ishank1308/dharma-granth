@@ -25,14 +25,15 @@ import {
 import { ShareCardButton } from '@/app/components/understand/ShareCard';
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export function generateStaticParams() {
   return festivals.map((f) => ({ id: f.id }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const festival = festivals.find((f) => f.id === params.id);
   if (!festival) return { title: 'उत्सव नहीं मिला (Festival Not Found)' };
 
@@ -75,7 +76,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function FestivalDetailPage({ params }: PageProps) {
+export default async function FestivalDetailPage(props: PageProps) {
+  const params = await props.params;
   const festival = festivals.find((f) => f.id === params.id);
   if (!festival) notFound();
 

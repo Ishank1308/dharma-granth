@@ -13,7 +13,8 @@ export function generateStaticParams() {
   );
 }
 
-export function generateMetadata({ params }: { params: { chapter: string; verse: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ chapter: string; verse: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const v = getVerse(Number(params.chapter), Number(params.verse));
   if (!v) return {};
   const title = `अष्टावक्र गीता ${v.verseNumber}: ${v.oneLineSummaryHindi}`.slice(0, 110);
@@ -31,7 +32,8 @@ export function generateMetadata({ params }: { params: { chapter: string; verse:
   };
 }
 
-export default function VersePage({ params }: { params: { chapter: string; verse: string } }) {
+export default async function VersePage(props: { params: Promise<{ chapter: string; verse: string }> }) {
+  const params = await props.params;
   const c = Number(params.chapter);
   const n = Number(params.verse);
   const v = getVerse(c, n);

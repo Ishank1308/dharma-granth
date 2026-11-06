@@ -16,7 +16,7 @@ import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-cha
 import { getLibraryFacts } from '@/lib/library-server';
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export function generateStaticParams() {
@@ -24,7 +24,8 @@ export function generateStaticParams() {
   return getAllScriptures().map(s => ({ id: s.id }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const meta = getScriptureMeta(params.id);
   if (!meta) return {};
 
@@ -82,7 +83,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function ScripturePage({ params }: PageProps) {
+export default async function ScripturePage(props: PageProps) {
+  const params = await props.params;
   const meta = getScriptureMeta(params.id);
   if (!meta) return notFound();
 

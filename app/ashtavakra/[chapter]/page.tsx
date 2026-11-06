@@ -11,7 +11,8 @@ export function generateStaticParams() {
   return publishedChapterNumbers().map((n) => ({ chapter: String(n) }));
 }
 
-export function generateMetadata({ params }: { params: { chapter: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ chapter: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const n = Number(params.chapter);
   const d = getChapterData(n);
   const m = getChapterMeta(n);
@@ -23,7 +24,8 @@ export function generateMetadata({ params }: { params: { chapter: string } }): M
   };
 }
 
-export default function ChapterPage({ params }: { params: { chapter: string } }) {
+export default async function ChapterPage(props: { params: Promise<{ chapter: string }> }) {
+  const params = await props.params;
   const n = Number(params.chapter);
   const d = getChapterData(n);
   const m = getChapterMeta(n);

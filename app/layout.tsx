@@ -5,25 +5,15 @@ import { DEFAULT_THEME, FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
-import dynamic from "next/dynamic";
 import { TactileLayer } from "@/app/components/TactileLayer";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
 
-const PranaCapsule = dynamic(
-  () => retryImport(() => import("@/components/ui/PranaCapsule").then((m) => m.PranaCapsule)),
-  { ssr: false }
-);
-
-const MananaSelectionBar = dynamic(
-  () => retryImport(() => import("@/app/components/reader/MananaSelectionBar").then((m) => m.MananaSelectionBar)),
-  { ssr: false }
-);
+import { MananaSelectionBar, PranaCapsule } from "@/app/components/ClientOverlays";
 // Fonts: @font-face rules for /fonts live in globals.css (one source per weight, 400/600/700).
 import "./globals.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
-import { retryImport } from "@/lib/retry-import";
 import { StoragePersistenceRequest } from "@/app/components/StoragePersistenceRequest";
 
 /**

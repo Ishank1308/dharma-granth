@@ -18,7 +18,8 @@ export function generateStaticParams() {
   return knowledgeHubs.map((hub) => ({ slug: hub.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const hub = getKnowledgeHub(params.slug);
   const concept = hub ? getWisdomConcept(hub.conceptSlug) : undefined;
   if (!hub || !concept) return { title: 'Knowledge Hub Not Found' };
@@ -39,7 +40,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 
 const h2 = 'font-serif text-xl font-bold text-dharma-text';
 
-export default function KnowledgeHubPage({ params }: { params: { slug: string } }) {
+export default async function KnowledgeHubPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const hub = getKnowledgeHub(params.slug);
   if (!hub) return notFound();
   const concept = getWisdomConcept(hub.conceptSlug);

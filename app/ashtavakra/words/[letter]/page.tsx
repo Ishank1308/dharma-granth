@@ -5,14 +5,15 @@ import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { verseHref } from '@/lib/ashtavakra';
 
 interface PageProps {
-  params: { letter: string };
+  params: Promise<{ letter: string }>;
 }
 
 export function generateStaticParams() {
   return buildWordIndex().groups.map((group) => ({ letter: group.letter }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const letter = decodeURIComponent(params.letter);
   const group = buildWordIndex().groups.find((item) => item.letter === letter);
   const words = group?.words ?? [];
@@ -30,7 +31,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function WordLetterPage({ params }: PageProps) {
+export default async function WordLetterPage(props: PageProps) {
+  const params = await props.params;
   const letter = decodeURIComponent(params.letter);
   const group = buildWordIndex().groups.find((item) => item.letter === letter);
   if (!group) notFound();
