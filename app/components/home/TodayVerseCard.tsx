@@ -5,6 +5,9 @@ import { PadaLine } from '@/app/components/PadaLine';
 import { useEffect, useState, type CSSProperties } from 'react';
 import { getTodayWisdom, type DailyWisdomItem } from '@/data/daily-wisdom-engine';
 import { readHref } from '@/lib/verse-paths';
+import { scriptureCatalog } from '@/data/scripture-meta';
+import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
+import { cleanVerseField, verseLines } from '@/lib/verse-format';
 
 /**
  * Today's verse as one quiet card: the whole shloka, its Hindi and English, and a link to read it in place.
@@ -17,28 +20,51 @@ export function TodayVerseCard() {
     setItem(getTodayWisdom());
   }, []);
 
-  const lines = item ? item.sanskrit.trim().split(/\r?\n/) : [];
+  const meta = item ? scriptureCatalog.find((s) => s.id === item.scriptureId) : undefined;
+  const vibe = item ? scriptureVibe(item.scriptureId, meta?.category ?? 'other') : undefined;
+  const attrs = vibe ? vibeAttrs(vibe) : undefined;
+  const lines = item ? verseLines(cleanVerseField(item.sanskrit)) : [];
 
   return (
     <section
       aria-labelledby="today-verse-heading"
-      className="reveal rounded-panel bg-dharma-card px-6 py-12 text-center shadow-raised sm:px-12 sm:py-16"
+      className="reveal verse-card today-verse rounded-panel px-6 py-10 text-center shadow-raised sm:px-12 sm:py-14"
+      data-scripture-id={item?.scriptureId}
+      data-material={attrs?.['data-material']}
+      style={attrs?.style}
     >
-      <h2 id="today-verse-heading" className="text-sm font-semibold tracking-normal text-dharma-saffron">
-        <span>Verse of the day</span> <span aria-hidden="true">·</span>{' '}
-        <span lang="hi" className="font-devanagari">आज का श्लोक</span>
-      </h2>
+      <div className="flex flex-wrap items-center justify-between gap-3 text-left">
+        <h2 id="today-verse-heading" className="text-sm font-semibold tracking-normal text-dharma-saffron">
+          <span>Verse of the day</span> <span aria-hidden="true">·</span>{' '}
+          <span lang="hi" className="font-devanagari">आज का श्लोक</span>
+        </h2>
+        {item && (
+          <Link
+            href={readHref(item.scriptureId, item.chapterId, item.verseId)}
+            className="verse-ref text-xs font-semibold tabular-nums"
+            aria-label={`${item.scriptureTitle} ${item.chapterId}.${item.verseId}`}
+          >
+            <span>{item.scriptureTitle}</span>{' '}
+            <span>{item.chapterId}.{item.verseId}</span>
+          </Link>
+        )}
+      </div>
       {item ? (
         <>
           {/* The whole shloka, line breaks as published; never shortened. Each published line is its own block
               so the lines can settle one after another (app/motion.css, .verse-line). */}
-          <p lang="sa" className="shloka-text mx-auto mt-6 max-w-[680px] text-2xl leading-[1.7] text-dharma-text sm:text-[34px]">
-            {lines.map((line, i) => (
-              <span key={i} className="verse-line" style={{ '--i': i } as CSSProperties}>
-                {line ? <PadaLine line={line} /> : '\u00a0'}
-              </span>
-            ))}
-          </p>
+          <div className="verse-folio mx-auto mt-6 max-w-[720px] py-6 text-center">
+            <p lang="sa" className="shloka-text text-2xl leading-[1.7] text-dharma-text sm:text-[34px]">
+              {lines.map((line, i) => (
+                <span key={i} className="verse-line block" style={{ '--i': i } as CSSProperties}>
+                  {line ? <PadaLine line={line} /> : '\u00a0'}
+                </span>
+              ))}
+            </p>
+            <span aria-hidden="true" className="verse-mark mt-3 block text-base font-semibold">
+              ॥ {item.chapterId}.{item.verseId} ॥
+            </span>
+          </div>
           {item.hindi && (
             <p
               lang="hi"
@@ -56,15 +82,14 @@ export function TodayVerseCard() {
               {item.translation}
             </p>
           )}
-          <p className="verse-settle mt-6 text-sm text-dharma-muted" style={{ '--i': lines.length + 3 } as CSSProperties}>
-            <span>
-              {item.scriptureTitle} {item.chapterId}.{item.verseId}
-            </span>
-            <span aria-hidden="true"> · </span>
-            <Link href={readHref(item.scriptureId, item.chapterId, item.verseId)} className="chevron-nudge text-dharma-saffron hover:underline">
-              Read in context <span aria-hidden="true">›</span>
+          <div className="verse-settle mt-6 text-center" style={{ '--i': lines.length + 3 } as CSSProperties}>
+            <Link
+              href={readHref(item.scriptureId, item.chapterId, item.verseId)}
+              className="chevron-nudge inline-flex items-center gap-1.5 text-sm font-semibold text-dharma-saffron hover:underline"
+            >
+              <span>Read in context</span> <span aria-hidden="true">›</span>
             </Link>
-          </p>
+          </div>
         </>
       ) : (
         <div aria-hidden="true" className="min-h-[260px]" />

@@ -9,7 +9,7 @@ import {
   useReducedMotion,
   useSpring,
   useTransform,
-} from 'motion/react';
+} from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { FOLLOW_SPRING, SPRING } from './motion';
 

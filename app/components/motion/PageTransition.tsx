@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 /**
  * Per-route fade-in wrapper plus a brief shimmer sweep across the
@@ -25,13 +25,18 @@ import { useEffect, useRef, type ReactNode } from 'react';
  * - Respects prefers-reduced-motion: re-keys but no animation runs.
  */
 export function PageTransition({ children }: { children: ReactNode }) {
-  const reduce = useReducedMotion();
+  const prefersReducedMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  // Keep the server and first client render identical; the preference is
+  // available only in the browser and can otherwise change the wrapper tree.
+  const reduce = mounted && Boolean(prefersReducedMotion);
   const pathname = usePathname();
   // No fade on the first load: its `initial` is server-rendered, so the
   // whole page would sit at opacity 0 until hydration. Client-side
   // navigations (JS already running) still fade in.
   const firstLoad = useRef(true);
   useEffect(() => {
+    setMounted(true);
     firstLoad.current = false;
   }, []);
 
@@ -54,7 +59,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
         <motion.div
           key={`shimmer-${pathname}`}
           aria-hidden
-          className="pointer-events-none fixed top-0 left-0 right-0 z-[60] h-[3px] overflow-hidden"
+          className="pointer-events-none fixed top-0 left-0 right-0 z-[60] h-[3px] overflow-hidden motion-reduce:hidden"
           initial={{ opacity: 1 }}
           animate={{ opacity: [1, 1, 0] }}
           transition={{ duration: 1, times: [0, 0.7, 1] }}

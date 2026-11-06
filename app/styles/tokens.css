@@ -12,6 +12,13 @@
    derived from them, so a token works in Usha, Sandhyā, Bhojpatra and Rātri alike. */
 
 :root {
+    /* Absolute endpoints for contrast-safe overlays and scripture covers. */
+    --color-absolute-white: #fff;
+    --color-absolute-black: #000;
+    --scripture-accent-fallback: var(--dharma-saffron);
+    --scripture-foil-fallback: #e0b65a;
+    --scripture-pill-foreground: var(--color-absolute-white);
+
     /* 1. Type ───────────────────────────────────────────────────────────
        Roles follow Apple's text styles. Sizes above body are fluid: the phone size at
        375px, the desktop size from about 1200px. Tracking tightens as size grows, and

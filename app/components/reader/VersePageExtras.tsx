@@ -33,6 +33,8 @@ export function VersePageExtras({ href }: { href: string }) {
         const parts: string[] = [];
         const answers = doc.querySelector('section[aria-labelledby="verse-answers"]');
         const study = doc.querySelector('#study-more > div');
+        // The answers also live inside Study more on the verse page; extract them once.
+        if (answers && study?.contains(answers)) answers.remove();
         study?.querySelectorAll(DROP.join(',')).forEach((el) => el.remove());
         // ids from the verse page could clash with the chapter's own: prefix them and the references to them.
         const prefix = `vx-${href.replace(/[^a-z0-9]+/gi, '-')}-`;

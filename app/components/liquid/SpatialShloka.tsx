@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useState, type MouseEvent, type ReactNode } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { parseWordMeanings } from '@/lib/word-gloss';
 import { SPRING } from './motion';
 

@@ -169,7 +169,7 @@ function Layer({
   // Apple-style layer heading: a small label naming what kind of text this is (source or interpretation), then the title.
   const head = (
     <>
-      <span className={`min-w-0 flex-1 ${kind === 'source' ? 'text-center' : ''}`}>
+      <span className="min-w-0 flex-1">
         <span className="block text-xs font-semibold text-dharma-muted">
           <span lang="hi" className="font-devanagari">{k.chipHi}</span>
           <span aria-hidden="true"> · </span>
@@ -189,7 +189,11 @@ function Layer({
   );
 
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className={`relative rounded-[18px] ${kind === 'source' ? '' : 'bg-dharma-card'}`}>
+    <section
+      id={id}
+      aria-labelledby={`${id}-title`}
+      className={`relative rounded-card ${kind === 'source' ? 'verse-card single-verse px-3 py-4 sm:px-6 sm:py-6' : 'bg-dharma-card'}`}
+    >
       {collapsible ? (
         <details ref={ref} open className="group">
           <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center gap-3 rounded-[18px] px-4 py-3 sm:px-6 [&::-webkit-details-marker]:hidden">
@@ -200,8 +204,8 @@ function Layer({
         </details>
       ) : (
         <>
-          <div className="flex items-center gap-3 px-4 pt-4 sm:px-6">{head}</div>
-          <div className="px-4 pb-5 pt-3 sm:px-6">{children}</div>
+          <div className="flex items-center justify-between gap-3 px-3 pt-2 sm:px-4">{head}</div>
+          <div className={kind === 'source' ? 'pt-1' : 'px-4 pb-5 pt-3 sm:px-6'}>{children}</div>
         </>
       )}
     </section>
@@ -283,7 +287,8 @@ export function ReaderLayers({
   // the explanation, the English commentary and the traditional bhashya together;
   // Modern Context carries the lesson and the research note; Reflection carries
   // only the चिंतन प्रश्न. Gates are unchanged from the old Vigyan branch.
-  const hasVyakhya = settings.showCommentary && (Boolean(verse.explanation) || Boolean(verse.commentary) || showTradition);
+  const showMarma = Boolean(insight?.marma && settings.showCommentary && !settings.liteMode);
+  const hasVyakhya = settings.showCommentary && (Boolean(verse.explanation) || Boolean(verse.commentary) || showTradition || showMarma);
   const modernParsed = verse.reflection ? parseModernContext(verse.reflection) : null;
   const showModernLesson = Boolean(!settings.liteMode && verse.reflection && modernParsed
     && (!modernParsed.hasStructuredFormat || modernParsed.contextText || modernParsed.applicationText));
@@ -318,7 +323,17 @@ export function ReaderLayers({
       )}
 
       {/* 1 · Original Sanskrit: scripture comes first on the page; editorial lines follow it. */}
-      <Layer id="layer-sanskrit" kind="source" title="Original Sanskrit" titleHi="मूल संस्कृत">
+      <Layer
+        id="layer-sanskrit"
+        kind="source"
+        title="Original Sanskrit"
+        titleHi="मूल संस्कृत"
+        badge={
+          <span className="verse-ref font-serif text-sm font-semibold tabular-nums">
+            {formatVerseRef(scriptureId, chapterId, verse.number)}
+          </span>
+        }
+      >
         {lines.length > 0 ? (
           <>
           <p id="sanskrit-text" lang="sa" className={`verse-folio rounded-2xl px-4 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-8 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
@@ -327,7 +342,7 @@ export function ReaderLayers({
                 <PadaLine line={line} />
               </span>
             ))}
-            <span aria-hidden="true" className="verse-mark mt-2 block text-[0.6em] text-dharma-saffron">
+            <span aria-hidden="true" className="verse-mark mt-2 block text-base font-semibold">
               ॥ {verseMarkNumber(verse.number)} ॥
             </span>
           </p>
@@ -383,22 +398,6 @@ export function ReaderLayers({
           </div>
         )}
       </Layer>
-
-      {/* मर्म: the reviewed one-line core shift, when this verse has one. It sits after the
-          Sanskrit so the reader meets scripture before any editorial line. */}
-      {insight?.marma && settings.showCommentary && !settings.liteMode && (
-        <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
-          <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
-            <span lang="hi">मर्म</span>
-            <span aria-hidden="true">·</span>
-            <span lang="en">The Core Shift</span>
-            <span className="normal-case tracking-normal text-dharma-muted">· Editorial, not scripture</span>
-          </figcaption>
-          <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text sm:text-xl">
-            {insight.marma}
-          </blockquote>
-        </figure>
-      )}
 
       {/* Word by word: a reading aid for the shloka, kept apart from the व्याख्या and
           hidden by default. In the HTML either way, so crawlers and no-JS readers get it. */}
@@ -589,10 +588,23 @@ export function ReaderLayers({
             labelHi: SACRED_SECTION_LABEL.vyakhya.hi,
             labelEn: SACRED_SECTION_LABEL.vyakhya.en,
             icon: Lightbulb,
-            hint: 'श्लोक का सरल हिन्दी विवेचन',
+            hint: 'श्लोक का विवेचन',
             defaultOpen: true,
             content: (
               <div className="space-y-4">
+                {showMarma && insight?.marma && (
+                  <figure data-testid="reader-marma" className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
+                    <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
+                      <span lang="hi">मर्म</span>
+                      <span aria-hidden="true">·</span>
+                      <span lang="en">The Core Shift</span>
+                      <span className="normal-case tracking-normal text-dharma-muted">· Editorial, not scripture</span>
+                    </figcaption>
+                    <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text sm:text-xl">
+                      {insight.marma}
+                    </blockquote>
+                  </figure>
+                )}
                 {verse.explanation && (
                   <Layer
                     id="layer-explanation"

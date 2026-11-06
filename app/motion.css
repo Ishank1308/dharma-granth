@@ -544,6 +544,7 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
         mask-image: none;
     }
     .ticker-track {
+        animation: none;
         width: auto;
     }
     .ticker-group {
