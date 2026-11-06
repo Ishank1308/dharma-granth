@@ -336,9 +336,9 @@ export const scriptureCatalog: ScriptureMeta[] = [
     titleIast: "Sāmaveda Saṁhitā",
     category: "veda",
     description:
-      "The Veda of melodies and chants (Kauthuma recension): the Pūrvārcika and Uttarārcika with the Āraṇyaka and Mahānāmnī verses, 1,873 mantras in all, most of them drawn from the Rig Veda and set for singing. Krishna says in the Gita, 'Among the Vedas, I am the Sama Veda.' The Sanskrit is complete. The English and Hindi are machine translations, labelled AI on each verse, except for a few opening verses.",
+      "The Veda of melodies and chants (Kauthuma recension): the Pūrvārcika and Uttarārcika with the Āraṇyaka and Mahānāmnī verses, 1,875 mantras in all, most of them drawn from the Rig Veda and set for singing. Krishna says in the Gita, 'Among the Vedas, I am the Sama Veda.' The Sanskrit is complete, and every verse has a Hindi meaning written from the Sanskrit. The English is a machine translation, labelled AI on each verse, except for a few opening verses.",
     totalChapters: 4,
-    totalVerses: 1873,
+    totalVerses: 1875,
     tags: ["Veda","Music","Chants","Udgitha","SacredSound","Agni","Soma","Indra"],
     hasData: true,
   },
