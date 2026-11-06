@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BookOpen, ExternalLink, Flame, Heart, MessageSquare, ShieldCheck } from 'lucide-react';
+import { BookOpen, Flame, Heart, ShieldCheck } from 'lucide-react';
 import { PerformanceToggle } from './PerformanceToggle';
 import { TRANSPARENCY_LINE } from '@/lib/editorial-terminology';
 
@@ -121,10 +121,10 @@ export function SiteFooter() {
               <Link href="/daily-verse" className="transition hover:text-saffron-700">
                 दैनिक श्लोक (Daily Verse for WhatsApp)
               </Link>
-              <Link href="/learn/paths" className="transition hover:text-saffron-700">
-                स्वाध्याय मार्ग (Guided Paths)
+              <Link href="/learn/journeys/" className="transition hover:text-saffron-700">
+                स्वाध्याय यात्राएँ (Guided Journeys)
               </Link>
-              <Link href="/learn/plans" className="transition hover:text-saffron-700">
+              <Link href="/learn/plans/" className="transition hover:text-saffron-700">
                 पठन योजनाएँ (Reading Plans)
               </Link>
               <Link href="/learn/faq" className="transition hover:text-saffron-700">
@@ -143,19 +143,6 @@ export function SiteFooter() {
                 व्यय और पारदर्शिता (How It Is Funded)
               </Link>
             </nav>
-
-            <div className="pt-2">
-              <a
-                href="https://github.com/Ishank567/dharma-granth/issues"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-dharma-border bg-dharma-panel px-3 py-2 text-xs font-semibold text-dharma-text transition hover:border-saffron-400 hover:text-saffron-700"
-              >
-                <MessageSquare className="h-3.5 w-3.5 text-saffron-600" aria-hidden="true" />
-                <span>Report a Correction / त्रुटि सुधार</span>
-                <ExternalLink className="h-3 w-3 opacity-60" aria-hidden="true" />
-              </a>
-            </div>
           </div>
         </div>
 
@@ -189,15 +176,6 @@ export function SiteFooter() {
               <Heart className="h-3.5 w-3.5 text-saffron-600 fill-saffron-500/20" aria-hidden="true" />
               <span>सहयोग (Contribute)</span>
             </Link>
-            <a
-              href="https://github.com/Ishank567/dharma-granth"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 font-semibold text-saffron-700 hover:underline"
-            >
-              Open Source
-              <ExternalLink className="h-3 w-3" aria-hidden="true" />
-            </a>
           </div>
         </div>
       </div>

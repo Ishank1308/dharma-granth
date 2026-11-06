@@ -143,9 +143,9 @@ export function PracticeDashboard() {
           <FadeUp>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-amber-200 mb-2">
               <Sparkles className="w-4 h-4 text-amber-300" />
-              <span>साधना · Daily Practice Sanctuary</span>
+              <span><span lang="hi">साधना</span> · Daily Practice Sanctuary</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-3 tracking-tight">
+            <h1 lang="hi" className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-3 tracking-tight">
               शांत मन, पवित्र अभ्यास
             </h1>
             <p className="text-base sm:text-lg opacity-90 max-w-2xl font-normal leading-relaxed text-amber-100/90">
@@ -198,7 +198,7 @@ export function PracticeDashboard() {
               <div className="mb-4">
                 <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-dharma-muted">
                   <Settings2 className="w-3.5 h-3.5 text-saffron-600" />
-                  <span>Choose what appears here · यहाँ दिखने वाले साधन चुनें</span>
+                  <span>Choose what appears here · <span lang="hi">यहाँ दिखने वाले साधन चुनें</span></span>
                 </p>
                 <p className="mt-1 text-xs leading-relaxed text-dharma-muted">
                   Start with a verse and reflection. Add or hide any tool; your choices stay on this device.
@@ -228,7 +228,7 @@ export function PracticeDashboard() {
                             }`}
                           >
                             <span lang="hi" className="font-devanagari">{tool.label}</span>
-                            <span className="ml-1 opacity-80">· {tool.sub}</span>
+                            <span className="ml-1">· {tool.sub}</span>
                           </button>
                         );
                       })}
@@ -237,6 +237,9 @@ export function PracticeDashboard() {
                 ))}
               </div>
             </section>
+
+            {/* Parent heading for the tool cards' h3s. */}
+            <h2 className="sr-only">साधन · Practice tools</h2>
 
             {/* Daily verse — full width */}
             {on('verse') && <DailyVerse />}

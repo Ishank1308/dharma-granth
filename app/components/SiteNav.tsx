@@ -93,8 +93,7 @@ const desktopDiscoveryItems = [
   { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask' },
   { label: 'श्लोक संबंध जाल', description: 'Verse Relationship Network — गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network' },
   { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — 12 क्रमिक साधना पथ', href: '/learn/journeys/' },
-  { label: 'स्वाध्याय मार्ग', description: 'Guided Reading Paths — विषयवार अध्ययन', href: '/learn/paths' },
-  { label: 'पठन योजनाएँ', description: 'Reading Plans — 18 दिवसीय गीता आदि', href: '/learn/plans' },
+  { label: 'पठन योजनाएँ', description: 'Reading Plans — 18 दिवसीय गीता, पढ़ने के क्रम व विषयवार स्वाध्याय', href: '/learn/plans/' },
   { label: 'जिज्ञासा समाधान', description: 'Scripture FAQs — श्रुति-स्मृति व नीति', href: '/learn/faq' },
   { label: 'स्रोत पारदर्शिता', description: 'Source Library — मूल पांडुलिपियाँ व संस्करण', href: '/sources' },
   { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — उद्वेग, भय, क्रोध व धर्मसंकट का समाधान', href: '/wisdom-for-life/' },
@@ -115,12 +114,12 @@ const desktopPersonalItems = [
   { label: 'मेरा डैशबोर्ड', href: '/practice/dashboard/' },
   { label: 'यात्रा आरम्भ करें', href: '/learn/start/' },
   { label: 'पठन यात्राएँ', href: '/learn/journeys/' },
-  { label: 'स्वाध्याय योजनाएँ', href: '/learn/plans' },
+  { label: 'स्वाध्याय योजनाएँ', href: '/learn/plans/' },
   { label: 'कथा-दर्शन', href: '/story' },
   { label: 'अध्ययन-पटल', href: '/practice/desk/' },
   { label: 'बुकमार्क व नोट्स', href: '/practice/bookmarks/' },
   { label: 'संग्रह', href: '/collections' },
-  { label: 'अध्ययन पथ', href: '/learn/pathways' },
+  { label: 'अध्ययन पथ', href: '/learn/#courses' },
   { label: 'ऐच्छिक सहयोग', href: '/contribute' },
 ];
 
@@ -154,11 +153,7 @@ function SoundscapeNavButton({ className = '' }: { className?: string }) {
     <button
       type="button"
       onClick={handleToggle}
-      className={`relative flex items-center justify-center rounded-xl border transition active:scale-95 ${
-        isPlaying
-          ? 'border-amber-400 bg-amber-500/15 text-amber-600 dark:text-amber-400 shadow-sm'
-          : 'border-dharma-border/80 bg-dharma-bg/90 text-dharma-muted hover:border-saffron-400 hover:text-dharma-text'
-      } ${className}`}
+      className={`apple-icon-button relative ${isPlaying ? 'text-dharma-saffron' : ''} ${className}`}
       aria-label={isPlaying ? 'पवित्र ध्वनि बंद करें' : 'पवित्र ध्वनि चालू करें'}
       title={isPlaying ? 'पवित्र ध्वनि: चालू (Tap to pause)' : 'पवित्र ध्वनि: 432Hz तन्पूरा व ॐ ध्यान'}
     >
@@ -197,6 +192,7 @@ export function SiteNav({
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [discoverOpen, setDiscoverOpen] = useState(false);
+  const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchMounted, setSearchMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -204,11 +200,13 @@ export function SiteNav({
   const [bookmarkCount, setBookmarkCount] = useState<number>(0);
   const [activeStreak, setActiveStreak] = useState<number>(0);
 
-  const { theme, setTheme, cycleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const { preference, setPreference } = useLanguagePreference();
 
   const discoverRef = useRef<HTMLDivElement>(null);
   const discoverButtonRef = useRef<HTMLButtonElement>(null);
+  const themeMenuRef = useRef<HTMLDivElement>(null);
+  const themeButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
   const drawerCloseBtnRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -227,6 +225,7 @@ export function SiteNav({
       if (href === '/scriptures') {
         return (
           pathname === '/scriptures' ||
+          pathname === '/scriptures/' ||
           (pathname.startsWith('/scripture/') && !pathname.startsWith('/scripture/bhagavadgita'))
         );
       }
@@ -328,6 +327,28 @@ export function SiteNav({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [discoverOpen]);
 
+  // The theme menu closes on Escape (focus back to its button) or a tap outside it
+  useEffect(() => {
+    if (!themeMenuOpen) return;
+    function handleKey(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setThemeMenuOpen(false);
+      themeButtonRef.current?.focus();
+    }
+    function handlePointerDown(event: MouseEvent | TouchEvent) {
+      if (!themeMenuRef.current?.contains(event.target as Node)) setThemeMenuOpen(false);
+    }
+    document.addEventListener('keydown', handleKey);
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('touchstart', handlePointerDown);
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('touchstart', handlePointerDown);
+    };
+  }, [themeMenuOpen]);
+
   // Outside click to close desktop discovery
   useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
@@ -417,9 +438,11 @@ export function SiteNav({
     menuButtonRef.current?.focus();
   };
 
-  const handleThemeCycle = () => {
+  const handlePickTheme = (next: Theme) => {
     triggerTactileFeedback('medium', 'softTap');
-    cycleTheme();
+    setTheme(next);
+    setThemeMenuOpen(false);
+    themeButtonRef.current?.focus();
   };
 
   const handleOpenSearchModal = () => {
@@ -567,11 +590,11 @@ export function SiteNav({
         data-site-header="true"
         data-library-verse-count={libraryVerses}
         data-theme-options={THEME_IDS.join(',')}
-        className="sticky top-0 z-40 border-b border-dharma-border/80 bg-dharma-card/95 backdrop-blur-xl shadow-[0_4px_24px_rgba(45,42,38,0.05)] transition-colors duration-200"
+        className="apple-bar sticky top-0 z-40 border-b transition-colors duration-200"
         aria-label="Primary navigation"
       >
         <div className="mx-auto max-w-7xl px-3 sm:px-6 2xl:max-w-[1760px]">
-          <div className="flex h-14 sm:h-16 lg:h-[72px] items-center justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
+          <div className="flex h-[52px] items-center justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
             {/* Logo */}
             <Link
               href="/"
@@ -579,10 +602,12 @@ export function SiteNav({
               aria-label="Dharma Granth Home"
             >
               <motion.span
-                className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 overflow-hidden rounded-full bg-[#fdf6ea] shadow-sm ring-1 ring-saffron-500/30 transition group-hover:ring-saffron-500/70"
+                className="flex h-8 w-8 shrink-0 overflow-hidden rounded-full bg-[#fdf6ea] ring-1 ring-dharma-border"
                 whileHover={reduce ? undefined : { scale: 1.05 }}
                 whileTap={reduce ? undefined : { scale: 0.95 }}
                 aria-hidden="true"
+                // whileTap makes motion add tabIndex=0; the link around it is the focus target.
+                tabIndex={-1}
               >
                 <Image
                   src="/logo-mark.webp"
@@ -593,15 +618,15 @@ export function SiteNav({
                   className="h-full w-full object-cover"
                 />
               </motion.span>
-              <div className="flex flex-col">
-                <span className="whitespace-nowrap font-serif text-sm min-[400px]:text-base sm:text-xl font-bold tracking-tight text-dharma-text transition group-hover:text-saffron-700">
+              <div className="flex items-baseline gap-2">
+                <span className="whitespace-nowrap text-[17px] font-semibold tracking-[-0.022em] text-dharma-text">
                   Dharma Granth
-                </span>
-                <span className="hidden font-devanagari text-[10px] text-dharma-muted -mt-0.5 sm:block">
-                  धर्म ग्रंथ · ज्ञान अमृत
+                </span>{' '}
+                <span lang="hi" className="hidden font-devanagari text-[13px] text-dharma-muted sm:inline">
+                  धर्म ग्रंथ
                 </span>
               </div>
-            </Link>
+            </Link>{' '}
 
             {/* Desktop Primary Navigation */}
             <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex">
@@ -609,24 +634,18 @@ export function SiteNav({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative whitespace-nowrap rounded-xl px-1.5 xl:px-3 py-2 text-[13px] xl:text-sm font-semibold transition-colors duration-200 ${
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  className={`relative whitespace-nowrap px-2 xl:px-3 py-2 text-[13px] transition-colors duration-200 ${
                     isActive(item.href)
-                      ? 'text-saffron-700 font-bold'
-                      : 'text-dharma-text hover:bg-saffron-50/50 hover:text-saffron-700'
+                      ? 'text-dharma-saffron'
+                      : 'text-dharma-text/80 hover:text-dharma-text'
                   }`}
                 >
-                  {isActive(item.href) && (
-                    <motion.span
-                      layoutId="desktop-nav-active"
-                      className="absolute inset-0 rounded-xl border border-saffron-200 bg-gradient-to-r from-saffron-50 to-amber-50 shadow-sm dark:border-saffron-800 dark:bg-saffron-950/40"
-                      transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                    />
-                  )}
-                  <span className="relative z-10 inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-baseline gap-1">
                     <span>{item.label}</span>{' '}
-                    <span lang="hi" className="hidden text-[11px] font-devanagari opacity-75 font-normal 2xl:inline">
+                    <span lang="hi" className="hidden text-[11px] font-devanagari text-dharma-muted xl:inline">
                       {item.labelHi}
-                    </span>
+                    </span>{' '}
                   </span>
                 </Link>
               ))}
@@ -637,21 +656,21 @@ export function SiteNav({
                   ref={discoverButtonRef}
                   type="button"
                   onClick={() => setDiscoverOpen((open) => !open)}
-                  className={`flex items-center gap-1 rounded-xl px-1.5 xl:px-3 py-2 text-[13px] xl:text-sm font-semibold transition-colors ${
+                  className={`flex items-center gap-1 px-2 xl:px-3 py-2 text-[13px] transition-colors ${
                     discoveryIsActive || discoverOpen
-                      ? 'bg-saffron-50 text-saffron-700 dark:bg-saffron-950/40'
-                      : 'text-dharma-text hover:bg-saffron-50/50 hover:text-saffron-700'
+                      ? 'text-dharma-saffron'
+                      : 'text-dharma-text/80 hover:text-dharma-text'
                   }`}
                   aria-expanded={discoverOpen}
                   aria-controls="desktop-discovery-menu"
                   aria-haspopup="true"
                 >
                   <span>Explore</span>{' '}
-                  <span lang="hi" className="hidden font-devanagari text-[11px] font-normal opacity-75 2xl:inline">
+                  <span lang="hi" className="hidden font-devanagari text-[11px] text-dharma-muted xl:inline">
                     अन्वेषण
                   </span>
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform ${discoverOpen ? 'rotate-180' : ''}`}
+                    className={`h-3.5 w-3.5 transition-transform ${discoverOpen ? 'rotate-180' : ''}`}
                     aria-hidden="true"
                   />
                 </button>
@@ -723,16 +742,15 @@ export function SiteNav({
                 onClick={handleOpenSearchModal}
                 onPointerEnter={() => void loadSearchModal()}
                 onFocus={() => void loadSearchModal()}
-                className="hidden lg:flex items-center gap-2 rounded-xl border border-dharma-border/80 bg-dharma-bg/80 px-3 py-2 text-xs font-semibold text-dharma-muted transition hover:border-saffron-400 hover:text-dharma-text focus:outline-none focus:ring-2 focus:ring-saffron-500/20"
+                className="apple-icon-button hidden lg:flex h-9 gap-2 px-2.5 text-[13px] text-dharma-muted"
                 aria-label="खोजें (Search)"
                 aria-keyshortcuts="Control+K Meta+K /"
               >
-                <Search className="h-3.5 w-3.5 text-saffron-600" />
-                <span className="hidden xl:inline">खोजें...</span>
-                <kbd className="hidden xl:inline rounded border border-dharma-border bg-dharma-card px-1.5 py-0.5 font-mono text-[10px] text-dharma-muted">
+                <Search className="h-4 w-4 text-dharma-text" aria-hidden="true" />
+                <kbd className="kbd-hint hidden xl:inline rounded-md bg-dharma-text/[0.07] px-1.5 py-0.5 font-sans text-[11px] text-dharma-text-secondary">
                   {shortcutLabel}
                 </kbd>
-              </button>
+              </button>{' '}
 
               {/* Desktop Language Toggle */}
               <LanguageToggle className="hidden lg:inline-flex" />
@@ -748,12 +766,11 @@ export function SiteNav({
                 <SoundscapeNavButton className="h-9 w-9" />
               </div>
 
-              {/* Desktop CTA */}
+              {/* Desktop CTA */}{' '}
               <Link
                 href="/scripture/bhagavadgita"
-                className="hidden min-[1800px]:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-4 py-2 text-sm font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-saffron-500/30"
+                className="hidden min-[1800px]:inline-flex items-center rounded-full bg-dharma-saffron px-3.5 py-1.5 text-[13px] text-dharma-bg transition hover:opacity-90"
               >
-                <Flame className="h-4 w-4" aria-hidden="true" />
                 पठन आरम्भ करें
               </Link>
 
@@ -764,22 +781,26 @@ export function SiteNav({
                 onClick={handleOpenSearchModal}
                 onPointerEnter={() => void loadSearchModal()}
                 onFocus={() => void loadSearchModal()}
-                className="lg:hidden flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-dharma-border/80 bg-dharma-bg/90 text-dharma-muted transition active:scale-95 hover:border-saffron-400 hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                className="apple-icon-button lg:hidden h-11 w-11 min-h-[44px] min-w-[44px]"
                 aria-label="खोजें (Search)"
                 title="खोजें (Search)"
               >
-                <Search className="h-5 w-5 text-saffron-600" aria-hidden="true" />
+                <Search className="h-5 w-5" aria-hidden="true" />
               </button>
 
               {/* 1.5. Mobile Sacred Soundscape Button */}
               <SoundscapeNavButton className="max-[359px]:hidden lg:hidden h-11 w-11 min-h-[44px] min-w-[44px]" />
 
-              {/* 2. Theme Button */}
+              {/* 2. Theme Button: opens a menu of the named themes (cycling through five unnamed states confused readers) */}
+              <div ref={themeMenuRef} className="relative min-[1800px]:hidden">
               <button
+                ref={themeButtonRef}
                 type="button"
-                onClick={handleThemeCycle}
-                className="min-[1800px]:hidden flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-dharma-border/80 bg-dharma-bg/90 text-dharma-text transition active:scale-95 hover:border-saffron-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
-                aria-label={`थीम बदलें (${THEME_NAMES[theme].name})`}
+                onClick={() => setThemeMenuOpen((open) => !open)}
+                aria-haspopup="menu"
+                aria-expanded={themeMenuOpen}
+                className="apple-icon-button h-11 w-11 min-h-[44px] min-w-[44px] lg:h-9 lg:w-9 lg:min-h-0 lg:min-w-0"
+                aria-label={`थीम बदलें · Theme: ${THEME_NAMES[theme].name}`}
                 title={`थीम: ${THEME_NAMES[theme].name} · ${THEME_NAMES[theme].hi}`}
               >
                 {/* initial={false}: server-rendered visible; only later theme changes animate. */}
@@ -790,22 +811,50 @@ export function SiteNav({
                     animate={{ scale: 1, opacity: 1, rotate: 0 }}
                     exit={{ scale: 0.7, opacity: 0, rotate: 20 }}
                     transition={{ duration: reduce ? 0 : 0.16 }}
-                    className="flex items-center justify-center text-saffron-600 dark:text-amber-400"
+                    className="flex items-center justify-center"
                   >
                     <ThemeIcon className="h-5 w-5" aria-hidden="true" />
                   </motion.span>
                 </AnimatePresence>
               </button>
+              {themeMenuOpen && (
+                <div
+                  role="menu"
+                  aria-label="Theme · थीम"
+                  className="absolute right-0 top-full z-50 mt-2 w-56 rounded-xl border border-dharma-border bg-dharma-card p-1 shadow-xl"
+                >
+                  {THEME_IDS.map((id) => {
+                    const Icon = THEME_ICONS[id] || Sun;
+                    const active = id === theme;
+                    return (
+                      <button
+                        key={id}
+                        type="button"
+                        role="menuitemradio"
+                        aria-checked={active}
+                        onClick={() => handlePickTheme(id)}
+                        title={THEME_NAMES[id].description}
+                        className={`flex min-h-11 w-full items-center gap-2.5 rounded-lg px-3 text-left text-sm font-semibold transition ${
+                          active ? 'bg-saffron-500/15 text-dharma-text' : 'text-dharma-muted hover:bg-saffron-500/10 hover:text-dharma-text'
+                        }`}
+                      >
+                        <Icon className="h-4 w-4 shrink-0 text-saffron-600 dark:text-amber-400" aria-hidden="true" />
+                        <span>{THEME_NAMES[id].name}</span>{' '}
+                        <span lang="hi" className="ml-auto font-devanagari font-normal text-dharma-muted">{THEME_NAMES[id].hi}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+              </div>
 
               {/* 3. Menu Button */}
               <button
                 ref={menuButtonRef}
                 type="button"
                 onClick={handleToggleDrawer}
-                className={`lg:hidden flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 ${
-                  drawerOpen
-                    ? 'border-saffron-500 bg-saffron-500/10 text-saffron-700 dark:text-saffron-300'
-                    : 'border-dharma-border/80 bg-dharma-bg/90 text-dharma-text hover:border-saffron-400'
+                className={`apple-icon-button lg:hidden h-11 w-11 min-h-[44px] min-w-[44px] ${
+                  drawerOpen ? 'text-dharma-saffron' : ''
                 }`}
                 aria-label={drawerOpen ? 'नेविगेशन मेनू बंद करें' : 'नेविगेशन मेनू खोलें'}
                 aria-expanded={drawerOpen}
@@ -824,7 +873,7 @@ export function SiteNav({
         {/* Scroll Progress Indicator Bar */}
         <motion.div
           aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-gradient-to-r from-saffron-500 via-amber-400 to-emerald-400"
+          className="absolute inset-x-0 bottom-0 h-px origin-left bg-dharma-saffron/70"
           style={{ scaleX: reduce ? scrollYProgress : progress }}
         />
       </nav>
@@ -906,7 +955,7 @@ export function SiteNav({
                     <Search className="h-4 w-4 text-saffron-600" aria-hidden="true" />
                     <span className="font-devanagari text-sm">ग्रंथ, श्लोक या विषय खोजें...</span>
                   </div>
-                  <kbd className="rounded border border-dharma-border bg-dharma-card px-2 py-0.5 font-mono text-[10px] text-dharma-muted">
+                  <kbd className="kbd-hint rounded border border-dharma-border bg-dharma-card px-2 py-0.5 font-mono text-[10px] text-dharma-muted">
                     {shortcutLabel}
                   </kbd>
                 </button>
@@ -1141,7 +1190,7 @@ export function SiteNav({
       {/* Strictly limited to the 5 requested items: Home, Search, Library, Sadhana, Saved */}
       <nav
         aria-label="Mobile quick navigation"
-        className="fixed bottom-0 inset-x-0 z-30 lg:hidden border-t border-dharma-border/80 bg-dharma-card/95 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.06)]"
+        className="apple-bar fixed bottom-0 inset-x-0 z-30 lg:hidden border-t"
         style={{
           paddingBottom: 'env(safe-area-inset-bottom, 0px)',
         }}
@@ -1154,18 +1203,12 @@ export function SiteNav({
             aria-current={isActive('/') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
               isActive('/')
-                ? 'text-saffron-700 dark:text-saffron-400 font-bold'
+                ? 'text-dharma-saffron'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            {isActive('/') && (
-              <span
-                aria-hidden="true"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500 animate-in fade-in duration-150"
-              />
-            )}
             <Home className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Home</span>
+            <span className="text-xs tracking-tight">Home</span>
           </Link>
 
           {/* 2. Search Button */}
@@ -1175,8 +1218,8 @@ export function SiteNav({
             className="group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 text-dharma-muted transition active:scale-95 hover:text-dharma-text"
             aria-label="खोजें (Search)"
           >
-            <Search className="h-5 w-5 text-saffron-600" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Search</span>
+            <Search className="h-5 w-5" aria-hidden="true" />
+            <span className="text-xs tracking-tight">Search</span>
           </button>
 
           {/* 3. Library */}
@@ -1186,18 +1229,12 @@ export function SiteNav({
             aria-current={isActive('/scriptures') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
               isActive('/scriptures')
-                ? 'text-saffron-700 dark:text-saffron-400 font-bold'
+                ? 'text-dharma-saffron'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            {isActive('/scriptures') && (
-              <span
-                aria-hidden="true"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500 animate-in fade-in duration-150"
-              />
-            )}
             <BookOpen className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Library</span>
+            <span className="text-xs tracking-tight">Library</span>
           </Link>
 
           {/* 4. Sadhana */}
@@ -1207,18 +1244,12 @@ export function SiteNav({
             aria-current={isActive('/practice') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
               isActive('/practice')
-                ? 'text-saffron-700 dark:text-saffron-400 font-bold'
+                ? 'text-dharma-saffron'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            {isActive('/practice') && (
-              <span
-                aria-hidden="true"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500 animate-in fade-in duration-150"
-              />
-            )}
             <Sparkles className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Sadhana</span>
+            <span className="text-xs tracking-tight">Sadhana</span>
           </Link>
 
           {/* 5. Saved Verses */}
@@ -1228,25 +1259,19 @@ export function SiteNav({
             aria-current={isActive('/practice/bookmarks/') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
               isActive('/practice/bookmarks/')
-                ? 'text-saffron-700 dark:text-saffron-400 font-bold'
+                ? 'text-dharma-saffron'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            {isActive('/practice/bookmarks/') && (
-              <span
-                aria-hidden="true"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500 animate-in fade-in duration-150"
-              />
-            )}
             <div className="relative">
               <Bookmark className="h-5 w-5" aria-hidden="true" />
               {bookmarkCount > 0 && (
-                <span className="absolute -top-1 -right-2 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-saffron-600 px-1 text-[9px] font-bold text-white shadow-xs">
+                <span className="absolute -top-1 -right-2 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-dharma-saffron px-1 text-[9px] font-semibold text-dharma-bg">
                   {bookmarkCount > 9 ? '9+' : bookmarkCount}
                 </span>
               )}
             </div>
-            <span className="text-[10px] tracking-tight">Saved</span>
+            <span className="text-xs tracking-tight">Saved</span>
           </Link>
         </div>
       </nav>

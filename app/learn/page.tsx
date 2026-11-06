@@ -140,7 +140,7 @@ export default function LearnPage() {
           <FadeUp>
             <div className="flex items-center gap-2 mb-3 text-saffron-400 text-xs md:text-sm font-serif uppercase tracking-widest font-semibold">
               <Sparkles className="w-4 h-4" />
-              <span>स्वाध्यायान्मा प्रमदः — Never Neglect Sacred Study</span>
+              <span><span lang="sa">स्वाध्यायान्मा प्रमदः</span> — Never Neglect Sacred Study</span>
             </div>
 
             <h1 className="text-3xl md:text-5xl font-serif font-bold tracking-tight text-white mb-3">
@@ -186,7 +186,7 @@ export default function LearnPage() {
               </div>
             </div>
 
-            {/* Quick Portals Strip: /learn/ is the one hub for starting points, journeys, paths and plans */}
+            {/* Quick Portals Strip: /learn/ is the one hub for starting points, journeys, plans and courses */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               <Link
                 href="/learn/start/"
@@ -196,9 +196,9 @@ export default function LearnPage() {
                   <Sparkle className="w-4 h-4" />
                   <span>आरम्भ</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
                   Find Your Starting Point →
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
                   Five short questions, a calm first step
                 </p>
@@ -211,41 +211,41 @@ export default function LearnPage() {
                   <Flame className="w-4 h-4" />
                   <span>स्वाध्याय यात्राएँ</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
                   Guided Journeys →
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
                   Daily lessons with reflection and progress
                 </p>
               </Link>
               <Link
-                href="/learn/paths"
+                href="/wisdom-pathways/"
                 className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
               >
                 <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
                   <Compass className="w-4 h-4" />
-                  <span>स्वाध्याय मार्ग</span>
+                  <span>ज्ञान मार्ग</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
-                  Guided Reading Paths →
-                </h3>
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                  Wisdom Pathways →
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
-                  Life questions, philosophy, and decision dilemmas
+                  Begin from fear, anger, grief or purpose
                 </p>
               </Link>
               <Link
-                href="/learn/plans"
+                href="/learn/plans/"
                 className="group p-4 rounded-xl bg-stone-950/80 border border-saffron-500/30 hover:border-saffron-400 transition"
               >
                 <div className="flex items-center gap-2 text-saffron-400 font-serif text-xs font-semibold">
                   <Clock className="w-4 h-4" />
                   <span>स्वाध्याय योजना</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
                   Reading Plans →
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
-                  18-day Gita & 7-day foundation calm schedules
+                  Day-by-day schedules, study orders, guided readings
                 </p>
               </Link>
               <Link
@@ -256,9 +256,9 @@ export default function LearnPage() {
                   <GraduationCap className="w-4 h-4" />
                   <span>जिज्ञासा समाधान</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
                   Scripture FAQs →
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
                   Canon, ethics, philosophical schools & clarity
                 </p>
@@ -271,9 +271,9 @@ export default function LearnPage() {
                   <Library className="w-4 h-4" />
                   <span>स्रोत पारदर्शिता</span>
                 </div>
-                <h3 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
+                <h2 className="mt-1 font-serif text-sm font-bold text-white group-hover:text-saffron-300 transition">
                   Source Library →
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[11px] text-stone-400 font-serif">
                   Critical editions, recensions, and methodology
                 </p>
@@ -355,8 +355,8 @@ export default function LearnPage() {
         </div>
       </section>
 
-      {/* ── Guided Learning Pathways Grid ────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6">
+      {/* ── Guided Learning Pathways Grid (also the target of the /learn/pathways/ 301) ── */}
+      <section id="courses" className="max-w-6xl mx-auto px-6 scroll-mt-24">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-serif font-bold text-dharma-text">
@@ -515,7 +515,7 @@ export default function LearnPage() {
 
                   <Link
                     href={`/learn/${course.id}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-serif font-bold bg-saffron-700 text-white hover:bg-saffron-800 transition shadow-xs"
+                    className="tap-target inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-serif font-bold bg-saffron-700 text-white hover:bg-saffron-800 transition shadow-xs"
                   >
                     <span>
                       {completedCount === 0

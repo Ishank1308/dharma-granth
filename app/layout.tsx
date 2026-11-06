@@ -1,13 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { SiteNav } from "@/app/components/SiteNav";
 import { getSiteShellData } from "@/lib/site-shell-data";
-import { FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
+import { DEFAULT_THEME, FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 import dynamic from "next/dynamic";
 import { TactileLayer } from "@/app/components/TactileLayer";
-import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
 
@@ -20,17 +19,7 @@ const MananaSelectionBar = dynamic(
   () => retryImport(() => import("@/app/components/reader/MananaSelectionBar").then((m) => m.MananaSelectionBar)),
   { ssr: false }
 );
-// Font subsetting: Bundling only required weights (400, 600, 700) and critical
-// styles; unused weights (300, 500, 300-italic, 700-italic) are omitted to reduce bundle size.
-import "@fontsource/inter/latin-400.css";
-import "@fontsource/inter/latin-600.css";
-import "@fontsource/inter/latin-700.css";
-import "@fontsource/merriweather/latin-400.css";
-import "@fontsource/merriweather/latin-700.css";
-import "@fontsource/merriweather/latin-400-italic.css";
-import "@fontsource/noto-sans-devanagari/devanagari-400.css";
-import "@fontsource/noto-sans-devanagari/devanagari-600.css";
-import "@fontsource/noto-sans-devanagari/devanagari-700.css";
+// Fonts: @font-face rules for /fonts live in globals.css (one source per weight, 400/600/700).
 import "./globals.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
@@ -55,6 +44,8 @@ const THEME_INIT_SCRIPT = `
       var m = d.getHours() * 60 + d.getMinutes();
       var eff = (m >= 300 && m < 390) || (m >= 1005 && m < 1140) ? 'sunset' : (m >= 390 && m < 1005 ? 'day' : 'night');
       document.documentElement.setAttribute('data-theme', eff);
+    } else {
+      document.documentElement.setAttribute('data-theme', ${JSON.stringify(DEFAULT_THEME)});
     }
   } catch (e) {}
   // The home-page splash plays once per browser session; later page loads
@@ -156,8 +147,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#c2410c" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1412" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f5f7" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -207,7 +198,7 @@ export default function RootLayout({
   const shell = getSiteShellData();
 
   return (
-    <html lang="hi" suppressHydrationWarning>
+    <html lang="hi" data-theme={DEFAULT_THEME} suppressHydrationWarning>
       <head>
         <meta name="dharma-library-verse-count" content={String(shell.libraryVerses)} />
         <meta name="dharma-theme-options" content={THEME_IDS.join(',')} />
@@ -229,7 +220,7 @@ export default function RootLayout({
         />
         <link
           rel="preload"
-          href="/fonts/merriweather-400.woff2"
+          href="/fonts/newsreader-400.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
@@ -251,7 +242,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-dharma-bg text-dharma-text antialiased">
         <ThemeProvider>
-          <SpatialLightCursor />
           <a href="#main-content" className="skip-link" lang="en">
             Skip to main content
           </a>

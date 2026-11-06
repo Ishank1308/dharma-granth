@@ -13,7 +13,7 @@ export interface Crumb {
  */
 export function Breadcrumbs({ items, className = '' }: { items: Crumb[]; className?: string }) {
   return (
-    <nav aria-label="Breadcrumb" className={`border-b border-dharma-border bg-dharma-bg ${className}`}>
+    <nav aria-label="Breadcrumb" className={`border-b border-dharma-border/60 ${className}`}>
       <ol className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-1 gap-y-0 px-5 py-1 text-xs text-dharma-muted sm:px-6 sm:text-sm">
         {items.map((item, i) => {
           const last = i === items.length - 1;
@@ -23,7 +23,7 @@ export function Breadcrumbs({ items, className = '' }: { items: Crumb[]; classNa
               {item.href && !last ? (
                 <Link
                   href={item.href}
-                  className="inline-flex min-h-[44px] max-w-[14rem] items-center truncate rounded font-medium hover:text-saffron-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 dark:hover:text-saffron-300"
+                  className="inline-flex min-h-[44px] min-w-11 max-w-[14rem] items-center truncate rounded font-medium hover:text-saffron-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 dark:hover:text-saffron-300"
                 >
                   {item.label}
                 </Link>

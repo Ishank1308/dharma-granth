@@ -6,7 +6,6 @@ import {
   Check,
   Copy,
   Download,
-  ExternalLink,
   Heart,
   Info,
   QrCode,
@@ -270,7 +269,7 @@ export function ContributeClient() {
                     <span className="font-devanagari text-lg font-bold">
                       {tier.labelHi}
                     </span>
-                    <span className="text-[10px] text-dharma-muted leading-tight mt-0.5 truncate max-w-full">
+                    <span className="text-[10px] text-dharma-text-secondary leading-tight mt-0.5 truncate max-w-full">
                       {tier.meaningHi}
                     </span>
                   </button>
@@ -497,25 +496,6 @@ export function ContributeClient() {
             </div>
           </div>
 
-          {/* Direct Support Contact note */}
-          <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card p-5 text-xs text-dharma-muted space-y-2">
-            <div className="flex items-center gap-1.5 font-bold text-dharma-text">
-              <Info className="h-4 w-4 text-saffron-600" aria-hidden="true" />
-              <span>सहयोग उपरांत पुष्टि व संपर्क</span>
-            </div>
-            <p className="leading-relaxed">
-              सहयोग के पश्चात यदि आप कोई सुझाव, संशोधन या प्रतिक्रिया साझा करना चाहते हैं, तो आप GitHub Issues अथवा संपर्क पते पर लिख सकते हैं।
-            </p>
-            <a
-              href="https://github.com/Ishank567/dharma-granth/issues"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 font-semibold text-saffron-700 dark:text-saffron-400 hover:underline pt-1"
-            >
-              GitHub पर संपर्क करें (Connect on GitHub)
-              <ExternalLink className="h-3 w-3" aria-hidden="true" />
-            </a>
-          </div>
         </div>
       </div>
 

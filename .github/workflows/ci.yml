@@ -1,7 +1,11 @@
 name: CI
 
-# Pull requests only: pushes to master are built (with the same checks) by
-# deploy-cloudflare.yml.
+# Pull requests only: pushes to master are deployed by deploy-cloudflare.yml,
+# which reuses this workflow's export when the merged tree is the one tested.
+#
+#   checks ──────────────────────────────┐
+#   build ──┬── browser tests (4 shards) ─┴── Validate static export
+#           └── preview deploy (pr-N.dharma-granth.pages.dev)
 on:
   pull_request:
     branches: ["master"]
@@ -10,31 +14,38 @@ on:
 permissions:
   contents: read
 
+# A new push to the same pull request cancels the run it replaces.
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 env:
   NEXT_TELEMETRY_DISABLED: 1
   # Custom domain (dharmagranth.dev) serves from the root — no repo base path.
   NEXT_PUBLIC_BASE_PATH: ""
   NEXT_PUBLIC_SITE_URL: https://dharmagranth.dev
+  # Same Node as deploy-cloudflare.yml: this export can go live as built.
+  NODE_VERSION: "22"
+  CLOUDFLARE_PROJECT: dharma-granth
 
 jobs:
-  validate:
-    name: Validate static export
+  checks:
+    name: Lint, type check and sitemap tests
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # data/scriptures/mahabharata.ts is in LFS; tsc reads it.
           lfs: true
           # Full history: the sitemap's lastmod dates come from git log.
-          # Keep the full checkout: combining a partial clone with lfs: true
-          # makes Git LFS fail to scan the tree on the Actions runner.
           fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: ${{ env.NODE_VERSION }}
           cache: npm
 
       - name: Install dependencies
@@ -66,6 +77,46 @@ jobs:
 
       - name: Sitemap tests
         run: npm run test:sitemap
+
+  build:
+    name: Build static export
+    runs-on: ubuntu-latest
+    outputs:
+      tree: ${{ steps.tree.outputs.tree }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          # Full history: the sitemap's lastmod dates come from git log.
+          # Keep the full checkout: combining a partial clone with lfs: true
+          # makes Git LFS fail to scan the tree on the Actions runner.
+          fetch-depth: 0
+
+      # Removing preinstalled toolchains takes ~3.5 minutes, so only when the
+      # runner is short of room for the ~3.6 GB export (and Chromium).
+      - name: Free runner disk space if low
+        run: |
+          avail=$(df --output=avail -BG / | tail -1 | tr -dc 0-9)
+          echo "Free disk: ${avail} GB"
+          if [ "$avail" -lt 12 ]; then sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL; fi
+
+      # The tree of the tested merge commit. When master's next commit has the
+      # same tree, deploy-cloudflare.yml deploys this export instead of
+      # building again.
+      - name: Record source tree
+        id: tree
+        run: echo "tree=$(git rev-parse 'HEAD^{tree}')" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
 
       # Same cache as deploy-cloudflare.yml. Saved before the export so a
       # later check failure does not discard the images.
@@ -101,11 +152,80 @@ jobs:
             nextjs-${{ runner.os }}-${{ hashFiles('package-lock.json', 'next.config.js') }}-
             nextjs-${{ runner.os }}-
 
+      # Lint and tsc run in the checks job; CI=true makes next build skip its
+      # own pass (next.config.js).
       - name: Build static export
         # postbuild runs the export checks, prune and Cloudflare size limits.
         run: npm run build
         env:
           NODE_OPTIONS: "--max-old-space-size=6144"
+
+      # One compressed file uploads and downloads far faster than the
+      # export's ~20,000 loose files.
+      - name: Pack export
+        run: |
+          tar --exclude=dist/cache -cf - dist | zstd -T0 -3 -q -o dist.tar.zst
+          ls -lh dist.tar.zst
+
+      # For the browser test shards and the preview deploy in this run.
+      - name: Share export with this run
+        uses: actions/cache/save@v4
+        with:
+          path: dist.tar.zst
+          key: dist-export-${{ github.run_id }}
+
+      # For deploy-cloudflare.yml after the merge. Best effort: when the upload
+      # fails (for example, the artifact storage quota is used up), master
+      # simply builds again as before.
+      - name: Keep export for the master deploy
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-tree-${{ steps.tree.outputs.tree }}
+          path: dist.tar.zst
+          compression-level: 0
+          retention-days: 3
+
+  e2e:
+    name: Browser tests (${{ matrix.shard }}/4)
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Removing preinstalled toolchains takes ~3.5 minutes, so only when the
+      # runner is short of room for the ~3.6 GB export (and Chromium).
+      - name: Free runner disk space if low
+        run: |
+          avail=$(df --output=avail -BG / | tail -1 | tr -dc 0-9)
+          echo "Free disk: ${avail} GB"
+          if [ "$avail" -lt 12 ]; then sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL; fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Restore export
+        uses: actions/cache/restore@v4
+        with:
+          path: dist.tar.zst
+          key: dist-export-${{ github.run_id }}
+          fail-on-cache-miss: true
+
+      - name: Unpack export
+        run: zstd -d -q -c dist.tar.zst | tar -xf - && rm dist.tar.zst
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4
@@ -116,5 +236,94 @@ jobs:
       - name: Install Chromium for the browser test
         run: npx playwright install --with-deps chromium
 
+      # --fully-parallel spreads single tests, not whole files, across shards.
       - name: Browser smoke test
-        run: npm run test:e2e
+        run: npm run test:e2e -- --shard=${{ matrix.shard }}/4 --fully-parallel
+
+  preview:
+    name: Preview deploy
+    needs: build
+    # Fork pull requests get no secrets.
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+    env:
+      HAS_CLOUDFLARE_SECRETS: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
+
+    steps:
+      # functions/ is deployed with the export.
+      - name: Checkout
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        uses: actions/checkout@v4
+
+      - name: Restore export
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: dist.tar.zst
+          key: dist-export-${{ github.run_id }}
+          fail-on-cache-miss: true
+
+      - name: Unpack export
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        run: zstd -d -q -c dist.tar.zst | tar -xf - && rm dist.tar.zst
+
+      # A non-production branch: Cloudflare serves it at
+      # pr-N.dharma-granth.pages.dev with X-Robots-Tag: noindex. Files it
+      # uploads are not uploaded again when the merge goes live.
+      - name: Deploy preview to Cloudflare Pages
+        id: deploy
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.151.2"
+          command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=pr-${{ github.event.pull_request.number }} --commit-hash=${{ github.event.pull_request.head.sha }} --commit-dirty=true
+
+      - name: Link preview on the pull request
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        uses: actions/github-script@v7
+        env:
+          ALIAS_URL: ${{ steps.deploy.outputs.pages-deployment-alias-url }}
+          DEPLOY_URL: ${{ steps.deploy.outputs.deployment-url }}
+        with:
+          script: |
+            const marker = '<!-- cloudflare-preview -->';
+            const url = process.env.ALIAS_URL || process.env.DEPLOY_URL;
+            const sha = context.payload.pull_request.head.sha.slice(0, 7);
+            const body = [
+              marker,
+              `**Preview:** ${url}`,
+              '',
+              `Built from ${sha}. This deploy: ${process.env.DEPLOY_URL}`,
+            ].join('\n');
+            core.summary.addRaw(`Preview: ${url}`).write();
+            const { owner, repo } = context.repo;
+            const issue_number = context.payload.pull_request.number;
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number });
+            const mine = comments.find((c) => c.body?.startsWith(marker));
+            if (mine) await github.rest.issues.updateComment({ owner, repo, comment_id: mine.id, body });
+            else await github.rest.issues.createComment({ owner, repo, issue_number, body });
+
+      - name: Note missing secrets
+        if: env.HAS_CLOUDFLARE_SECRETS != 'true'
+        run: echo "::notice::No preview deploy — CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID are not available to this workflow."
+
+  # Keeps the check name branch protection already knows; passes only when
+  # every check above passed.
+  validate:
+    name: Validate static export
+    needs: [checks, build, e2e]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: All checks passed
+        run: |
+          echo "checks=${{ needs.checks.result }} build=${{ needs.build.result }} e2e=${{ needs.e2e.result }}"
+          test "${{ needs.checks.result }}" = success
+          test "${{ needs.build.result }}" = success
+          test "${{ needs.e2e.result }}" = success

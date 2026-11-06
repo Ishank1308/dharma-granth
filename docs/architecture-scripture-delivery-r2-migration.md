@@ -133,6 +133,6 @@ graph TD
 
 ## 6. Safety & Rollback Criteria
 
-- **No Public URL Changes**: URLs remain strictly `https://dharmagranth.in/scripture/:id/chapter/:chapterId/`.
+- **No Public URL Changes**: URLs remain strictly `https://dharmagranth.dev/scripture/:id/chapter/:chapterId/`.
 - **No Canonical Text Changes**: Sanskrit Unicode, dandas, and meanings remain bit-for-bit identical.
 - **Rollback Mechanism**: If edge rendering encounters an error, the function immediately proxies to the static fallback or restores `generateStaticParams`.

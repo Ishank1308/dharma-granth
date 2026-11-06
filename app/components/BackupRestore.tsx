@@ -79,11 +79,11 @@ export function BackupRestore() {
       <fieldset className="mt-4 grid gap-2 sm:grid-cols-2">
         <legend className="mb-2 text-sm font-semibold text-dharma-text">Import behavior · आयात विकल्प</legend>
         <label htmlFor={`${groupId}-merge`} className="flex cursor-pointer items-start gap-2 rounded-xl border border-dharma-border p-3 text-sm">
-          <input id={`${groupId}-merge`} type="radio" name={`${groupId}-mode`} value="merge" checked={mode === 'merge'} onChange={() => setMode('merge')} className="mt-1 accent-orange-700" />
+          <input id={`${groupId}-merge`} type="radio" name={`${groupId}-mode`} value="merge" checked={mode === 'merge'} onChange={() => setMode('merge')} className="mt-0.5 h-5 w-5 shrink-0 accent-orange-700" />
           Merge · मिलाएँ — Keep other local entries; imported values replace matching keys.
         </label>
         <label htmlFor={`${groupId}-replace`} className="flex cursor-pointer items-start gap-2 rounded-xl border border-dharma-border p-3 text-sm">
-          <input id={`${groupId}-replace`} type="radio" name={`${groupId}-mode`} value="replace" checked={mode === 'replace'} onChange={() => setMode('replace')} className="mt-1 accent-orange-700" />
+          <input id={`${groupId}-replace`} type="radio" name={`${groupId}-mode`} value="replace" checked={mode === 'replace'} onChange={() => setMode('replace')} className="mt-0.5 h-5 w-5 shrink-0 accent-orange-700" />
           Replace · बदलें — Remove all current Dharma Granth data before importing.
         </label>
       </fieldset>

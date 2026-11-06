@@ -40,7 +40,7 @@ export const STUDY_PLAYLISTS: StudyPlaylist[] = [
     links: [
       { titleHi: 'योग', titleEn: 'Yoga', href: '/concepts/yoga' },
       { titleHi: 'एकाग्रता और ध्यान', titleEn: 'Concentration', href: '/wisdom-for-life/concentration' },
-      { titleHi: 'ध्यान की दिशा', titleEn: 'Meditation order', href: '/learn/paths/#plan-meditation-journey' },
+      { titleHi: 'ध्यान की दिशा', titleEn: 'Meditation order', href: '/learn/plans/#plan-meditation-journey' },
     ],
   },
   {

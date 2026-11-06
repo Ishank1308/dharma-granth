@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getAllScriptures, getScriptureChapters } from '@/data/scriptures';
-import { readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
+import { readSeededChapterNumbers, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { lastChanged, scriptureLastChanged } from '@/lib/content-dates';
 import { verseStaticParams } from '@/lib/verse-pages';
 import { verseMeaningById } from '@/lib/verse-meaning';
@@ -15,6 +15,8 @@ import { graphPageIds } from '@/data/knowledge-graph';
 import { learningPaths } from '@/data/learning-paths';
 import { READING_JOURNEYS, isJourneyIndexable } from '@/data/reading-journeys';
 import { festivals } from '@/data/festivals';
+import { GRANTH_ANSWERS } from '@/data/granth-answers';
+import { getChapterSummaryCollection } from '@/data/chapter-summaries';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
 
@@ -58,15 +60,11 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/', pageDate('/')),
     entry('/scriptures', pageDate('/scriptures', 'data/scripture-meta.ts')),
     entry('/learn', pageDate('/learn')),
-    entry('/learn/pathways', pageDate('/learn/pathways', 'data/pathways.ts')),
     entry('/learn/faq', pageDate('/learn/faq', 'data/scripture-faqs.ts')),
-    entry('/learn/paths', pageDate('/learn/paths', 'data/guided-reading-paths.ts')),
-    entry('/learn/plans', pageDate('/learn/plans', 'data/reading-plans.ts')),
+    // /learn/paths/, /learn/pathways/ and /pathways/ 301 to /learn/plans/, /learn/ and /wisdom-pathways/.
+    entry('/learn/plans', pageDate('/learn/plans', 'data/reading-plans.ts', 'data/study-plans.ts', 'data/guided-reading-paths.ts')),
     entry('/wisdom-for-life', pageDate('/wisdom-for-life', 'data/wisdom-for-life.ts')),
-    entry('/wisdom-pathways', pageDate('/wisdom-pathways', 'data/wisdom-pathways.ts')),
-    // Named pathway entrances (/pathways/[slug]) are non-canonical aliases
-    // of /wisdom-pathways/[pathway]/, so only the index is listed.
-    entry('/pathways', pageDate('/pathways', 'data/wisdom-pathway-starters.ts', 'data/wisdom-pathways.ts')),
+    entry('/wisdom-pathways', pageDate('/wisdom-pathways', 'data/wisdom-pathways.ts', 'data/wisdom-pathway-starters.ts')),
     // /topics/ and /guidance/ 301 to /wisdom-for-life/ (public/_redirects).
     entry('/concepts', pageDate('/concepts')),
     entry('/characters', pageDate('/characters', 'data/characters.ts')),
@@ -106,6 +104,8 @@ function pagesSection(): MetadataRoute.Sitemap {
   // 2. Individual Entity Pages
   const wisdomDate = lastChanged('data/wisdom-for-life.ts', 'app/wisdom-for-life/[slug]/page.tsx');
   const wisdomRoutes = wisdomTopics.map((w) => entry(`/wisdom-for-life/${w.slug}`, wisdomDate));
+  const askDate = lastChanged('data/granth-answers', 'app/ask/[slug]/page.tsx');
+  const askRoutes = GRANTH_ANSWERS.map((a) => entry(`/ask/${a.slug}`, askDate));
   const pathwayDate = lastChanged('data/wisdom-pathways.ts', 'app/wisdom-pathways/[slug]/page.tsx');
   const pathwayRoutes = wisdomPathways.map((p) => entry(`/wisdom-pathways/${p.slug}`, pathwayDate));
   const hubDate = lastChanged('data/knowledge-hubs.ts', 'data/wisdom-concepts.ts', 'app/knowledge/[slug]/page.tsx');
@@ -141,7 +141,7 @@ function pagesSection(): MetadataRoute.Sitemap {
   const festivalDate = lastChanged('data/festivals.ts', 'app/festivals/[id]/page.tsx');
   const festivalRoutes = festivals.map((f) => entry(`/festivals/${f.id}`, festivalDate));
 
-  return [...staticRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
+  return [...staticRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
 }
 
 /** Scripture landing pages and chapter pages (all seeded + curated chapters), dated by when the scripture's text or commentary last changed. */
@@ -151,13 +151,17 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
   for (const meta of getAllScriptures()) {
     const date = scriptureLastChanged(meta.id);
     scriptures.push(entry(`/scripture/${meta.id}`, date));
-    if (meta.id === 'bhagavadgita') {
-      scriptures.push(entry('/scripture/bhagavadgita/summary', lastChanged('app/scripture/[id]/summary/page.tsx', 'data/gita-chapter-summaries.ts')));
+    const summaries = getChapterSummaryCollection(meta.id);
+    if (summaries) {
+      scriptures.push(entry(`/scripture/${meta.id}/summary`, lastChanged('app/scripture/[id]/summary/page.tsx', summaries.source)));
     }
 
     const chapterSet = new Set<number>(readSeededChapterNumbers(meta.id));
     for (const ch of getScriptureChapters(meta.id)) chapterSet.add(ch.id);
+    // A seeded chapter published without verses (its text is being added, scripts/lib/filler-chapters.ts) is noindex.
+    const emptySeeded = new Set(readSeededChapterPreviews(meta.id).filter((c) => c.verseCount === 0).map((c) => c.id));
     for (const chId of Array.from(chapterSet).sort((a, b) => a - b)) {
+      if (emptySeeded.has(chId)) continue;
       chapters.push(entry(`/scripture/${meta.id}/chapter/${chId}`, date));
       // Parts 2…N of chapters too large for one page (lib/chapter-parts).
       for (const part of chapterParts(meta.id, chId)?.slice(1) ?? []) {

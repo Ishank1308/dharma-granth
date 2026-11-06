@@ -99,6 +99,19 @@ for (const t of wisdomTopics) {
     if (!headOk || !run.includes(tail)) {
       fail(at, `${v.referenceDisplay}: quoted Sanskrit does not match library ch. ${loc.chapter} v. ${loc.verse}`);
     }
+    // A cited range must be quoted whole (CLAUDE.md rule 4): one closing ॥ per verse, and where the range
+    // numbers are library verses, the quote must run to the end of the last one.
+    const range = String(v.verseNumber).match(/(\d+)\s*[–-]\s*(\d+)$/);
+    if (range) {
+      const count = Number(range[2]) - Number(range[1]) + 1;
+      const closings = (v.sanskritDevanagari.replace(/॥\s*[०-९\d]+\s*॥/g, '॥').match(/॥/g) ?? []).length;
+      if (closings < count) fail(at, `${v.referenceDisplay}: cites ${count} verses but quotes ${closings} complete verse(s)`);
+      const last = chapter.verses[index + count - 1];
+      if (range[1] === loc.verse && last?.sanskrit) {
+        const lastTail = letters(last.sanskrit).slice(-24);
+        if (!quoted.includes(lastTail)) fail(at, `${v.referenceDisplay}: quote stops before the end of verse ${last.number}`);
+      }
+    }
   }
 
   // Links must land somewhere real.

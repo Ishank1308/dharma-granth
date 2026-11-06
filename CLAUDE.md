@@ -1,4 +1,4 @@
-# dharmagranth.in: project rules
+# dharmagranth.dev: project rules
 
 Bilingual (Sanskrit / Hindi / English) scripture library. Next.js app router, static export (`dist/`). Code lives in `app/` and `lib/`, not `src/`.
 

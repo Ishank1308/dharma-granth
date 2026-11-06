@@ -24,7 +24,7 @@ const PAGES = [
   '/learn/',
   '/learn/start/',
   '/learn/journeys/',
-  '/learn/pathways/',
+  '/learn/plans/',
   '/collections/',
   '/practice/bookmarks/',
   '/timelines/',

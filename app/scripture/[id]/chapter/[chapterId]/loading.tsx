@@ -1,98 +1,39 @@
-'use client';
-
-import { motion } from 'framer-motion';
-
 /**
- * Loading skeleton for the scripture chapter route.
- *
- * Mirrors the layout of the real chapter page: a saffron hero block
- * with a pulsing OM, then three placeholder verse cards. The pulse
- * uses a slow opacity wave rather than a left-to-right shimmer — fits
- * the meditative tone of the page better.
+ * Loading state for a chapter, shaped like the page it becomes: a centred
+ * title, a hairline, then verses on the page. While it waits, a single
+ * Rāt-rānī blossom breathes where the scripture's emblem will draw in.
+ * Pure CSS (no client JavaScript), so it shows the instant a chapter is asked for.
  */
 export default function ChapterLoading() {
   return (
-    <main className="min-h-screen bg-dharma-bg">
-      {/* Hero placeholder */}
-      <div className="relative bg-gradient-to-br from-saffron-900 via-saffron-700 to-orange-600 text-white py-16 overflow-hidden">
-        {/* Slowly-rotating, pulsing OM placeholder */}
-        <motion.div lang="sa"
-          aria-hidden
-          className="pointer-events-none absolute inset-0 flex items-center justify-center text-white/10 text-[14rem] font-devanagari select-none"
-          animate={{ opacity: [0.06, 0.16, 0.06], scale: [0.95, 1.02, 0.95] }}
-          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          ॐ
-        </motion.div>
-
-        <div className="relative max-w-4xl mx-auto px-6 space-y-4">
-          <SkeletonBar w="w-32" h="h-4" />
-          <div className="flex items-start gap-5 pt-4">
-            <SkeletonBar w="w-16" h="h-16" rounded="rounded-2xl" />
-            <div className="flex-1 space-y-3">
-              <SkeletonBar w="w-40" h="h-3" />
-              <SkeletonBar w="w-3/4" h="h-8" />
-              <SkeletonBar w="w-1/3" h="h-6" />
-            </div>
-          </div>
-          <div className="pt-2 space-y-2">
-            <SkeletonBar w="w-full" h="h-3" />
-            <SkeletonBar w="w-5/6" h="h-3" />
-          </div>
-        </div>
-      </div>
-
-      {/* Verse card placeholders */}
-      <div className="max-w-4xl mx-auto px-6 py-12 space-y-10">
+    <main data-chapter-reading className="min-h-screen bg-dharma-bg" aria-busy="true" aria-label="अध्याय खुल रहा है · Opening the chapter">
+      <header className="mx-auto max-w-2xl px-4 pb-10 pt-10 text-center sm:pt-14">
+        <svg viewBox="-24 -24 48 48" className="loading-blossom mx-auto h-10 w-10" aria-hidden="true">
+          {[0, 72, 144, 216, 288].map((a) => (
+            <path key={a} transform={`rotate(${a})`} d="M0 0C4-5 4.5-12 0-17C-4.5-12-4-5 0 0Z" />
+          ))}
+        </svg>
+        <div className="skeleton-line mx-auto mt-6 h-3 w-28" />
+        <div className="skeleton-line mx-auto mt-4 h-8 w-64 max-w-full" />
+        <div className="skeleton-line mx-auto mt-3 h-5 w-40" />
+        <div className="liquid-rule mx-auto mt-6 w-24" />
+      </header>
+      <div className="mx-auto max-w-3xl space-y-12 px-4 sm:px-6">
         {[0, 1, 2].map((i) => (
-          <motion.article
-            key={i}
-            className="rounded-2xl border border-dharma-border bg-white overflow-hidden shadow-sm"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.12, duration: 0.4, ease: 'easeOut' }}
-          >
-            <div className="bg-gradient-to-r from-saffron-50 via-amber-50 to-rose-50 px-6 py-4 border-b border-dharma-border flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <SkeletonBar w="w-9" h="h-9" rounded="rounded-full" />
-                <div className="space-y-1.5">
-                  <SkeletonBar w="w-14" h="h-2" />
-                  <SkeletonBar w="w-20" h="h-3" />
-                </div>
-              </div>
-              <SkeletonBar w="w-9" h="h-9" rounded="rounded-full" />
+          <div key={i} className="border-b border-dharma-border/50 pb-10" style={{ animationDelay: `${i * 120}ms` }}>
+            <div className="skeleton-line h-3 w-10" />
+            <div className="mx-auto mt-6 max-w-md space-y-3">
+              <div className="skeleton-line mx-auto h-4 w-full" />
+              <div className="skeleton-line mx-auto h-4 w-5/6" />
             </div>
-            <div className="p-6 md:p-7 space-y-4">
-              {[0, 1, 2, 3].map((j) => (
-                <div key={j} className="space-y-2">
-                  <SkeletonBar w="w-24" h="h-2.5" />
-                  <SkeletonBar w="w-full" h="h-3" />
-                  <SkeletonBar w="w-11/12" h="h-3" />
-                  <SkeletonBar w="w-5/6" h="h-3" />
-                </div>
-              ))}
+            <div className="mt-8 space-y-2.5">
+              <div className="skeleton-line h-3 w-full" />
+              <div className="skeleton-line h-3 w-11/12" />
+              <div className="skeleton-line h-3 w-2/3" />
             </div>
-          </motion.article>
+          </div>
         ))}
       </div>
     </main>
-  );
-}
-
-function SkeletonBar({
-  w,
-  h,
-  rounded = 'rounded',
-}: {
-  w: string;
-  h: string;
-  rounded?: string;
-}) {
-  return (
-    <motion.div
-      className={`${w} ${h} ${rounded} bg-stone-200/70`}
-      animate={{ opacity: [0.5, 0.85, 0.5] }}
-      transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-    />
   );
 }

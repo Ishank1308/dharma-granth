@@ -1,18 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import {
   BookOpen,
   ScrollText,
   FileCheck2,
   History,
   AlertCircle,
-  Flag,
   ExternalLink,
   ChevronDown,
   ChevronUp,
-  X,
-  Send,
   Layers,
   Scale,
   Sparkles,
@@ -25,8 +21,6 @@ import {
   type ScriptureSourceMeta,
   type SourceCorrectionEntry,
 } from '@/data/sources-registry';
-import { triggerHaptic } from '@/lib/haptics';
-import { ISSUES_REPO } from '@/lib/reader-actions';
 
 export interface SourcesAndInterpretationProps {
   scriptureId: string;
@@ -44,8 +38,6 @@ export function SourcesAndInterpretation({
   scriptureId,
   scriptureTitle,
   scriptureTitleSanskrit,
-  chapterId,
-  verseId,
   editionOverride,
   sourceUrlOverride,
   className = '',
@@ -58,19 +50,6 @@ export function SourcesAndInterpretation({
 
   // A variant note only when one is recorded for this text (not the registry's default line).
   const variantNote = SCRIPTURE_SOURCES[scriptureId]?.alternativeReadingNote;
-
-  // Report correction modal state
-  const [reportModalOpen, setReportModalOpen] = useState(false);
-  const [reportCategory, setReportCategory] = useState<'typo' | 'numbering' | 'sandhi' | 'attribution'>('typo');
-  const [reportDetails, setReportDetails] = useState('');
-
-  const identifier = verseId
-    ? `${scriptureTitle} ${chapterId ? `Ch. ${chapterId}, ` : ''}Verse ${verseId}`
-    : chapterId
-      ? `${scriptureTitle} — Chapter ${chapterId}`
-      : scriptureTitle;
-
-  const issueHref = `${ISSUES_REPO}/issues/new?title=${encodeURIComponent(`Text issue: ${identifier} — ${reportCategory}`)}&body=${encodeURIComponent(`**Reference:** ${identifier}\n**Type:** ${reportCategory}\n\n**What is wrong, and what should it be?**\n${reportDetails.trim() || '(please describe)'}`)}`;
 
   const labelKeys: ContentLabelKey[] = [
     'mula',
@@ -102,15 +81,6 @@ export function SourcesAndInterpretation({
             धर्म ग्रंथ पर मूल शास्त्र, पारंपरिक भाष्य और आधुनिक व्याख्या को पूर्णतः पृथक रखा जाता है ताकि पाठक को किसी भी व्याख्या के शास्त्र होने का भ्रम न हो।
           </p>
         </div>
-
-        <button
-          type="button"
-          onClick={() => setReportModalOpen(true)}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-saffron-300 dark:border-saffron-800 bg-saffron-50/70 dark:bg-saffron-950/30 text-xs font-semibold text-saffron-800 dark:text-saffron-300 hover:bg-saffron-100 transition shrink-0 self-start sm:self-center"
-        >
-          <Flag className="w-3.5 h-3.5" />
-          <span>त्रुटि रिपोर्ट करें · Report error</span>
-        </button>
       </div>
 
       {/* ── 1. Content Labels: 6 Epistemic Tiers Guide ──
@@ -196,93 +166,6 @@ export function SourcesAndInterpretation({
               <FileCheck2 className="w-4 h-4 text-emerald-600 shrink-0 mt-1" aria-hidden="true" />
             </div>
           ))}
-        </div>
-      )}
-
-      {/* ── 3. Report Correction Accessible Modal ── */}
-      {reportModalOpen && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="report-modal-title"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs"
-        >
-          <div className="relative w-full max-w-lg rounded-2xl border border-dharma-border bg-dharma-card p-5 sm:p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-dharma-border pb-3">
-              <div className="flex items-center gap-2">
-                <Flag className="w-4 h-4 text-saffron-600" />
-                <h3 id="report-modal-title" className="text-base font-bold text-dharma-text font-serif">
-                  पाठ्य अशुद्धि रिपोर्ट करें · Report Textual Correction
-                </h3>
-              </div>
-              <button
-                type="button"
-                onClick={() => setReportModalOpen(false)}
-                className="p-1 rounded-lg text-dharma-muted hover:text-dharma-text"
-                aria-label="Close dialog"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            <p className="text-xs text-dharma-muted">
-              संदर्भ: <strong className="text-dharma-text">{identifier}</strong>
-            </p>
-
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-3.5 text-xs">
-              <p className="text-dharma-muted">
-                This opens a prefilled issue on GitHub. Nothing is sent until you press “Create issue” there, and this site stores nothing.
-              </p>
-              <div>
-                <label htmlFor="correction-category-select" className="font-semibold text-dharma-text block mb-1">
-                  अशुद्धि का प्रकार (Category):
-                </label>
-                <select
-                  id="correction-category-select"
-                  value={reportCategory}
-                  onChange={(e) => setReportCategory(e.target.value as typeof reportCategory)}
-                  className="w-full px-3 py-2 rounded-xl border border-dharma-border bg-dharma-panel-muted text-dharma-text font-medium outline-none focus:border-saffron-500"
-                >
-                  <option value="typo">वर्तनी अथवा मात्रा अशुद्धि (Spelling / Diacritic typo)</option>
-                  <option value="numbering">श्लोक संख्या अथवा अध्याय क्रम (Verse numbering error)</option>
-                  <option value="sandhi">संधि विच्छेद अथवा पदच्छेद त्रुटि (Sandhi / Pada-split error)</option>
-                  <option value="attribution">भाष्य अथवा आचार्य संदर्भ त्रुटि (Commentary attribution error)</option>
-                </select>
-              </div>
-              <div>
-                <label htmlFor="correction-details-textarea" className="font-semibold text-dharma-text block mb-1">
-                  विवरण एवं शुद्ध पाठ (Details & Suggested Correction):
-                </label>
-                <textarea
-                  id="correction-details-textarea"
-                  rows={4}
-                  value={reportDetails}
-                  onChange={(e) => setReportDetails(e.target.value)}
-                  placeholder="कृपया बताएं कि कौन सा शब्द अशुद्ध है और किस प्रामाणिक संस्करण के अनुसार क्या होना चाहिए..."
-                  className="w-full px-3 py-2 rounded-xl border border-dharma-border bg-dharma-panel-muted text-dharma-text font-devanagari outline-none focus:border-saffron-500"
-                />
-              </div>
-              <div className="flex justify-end gap-2 pt-2 border-t border-dharma-border">
-                <button
-                  type="button"
-                  onClick={() => setReportModalOpen(false)}
-                  className="min-h-[44px] px-4 py-2 rounded-xl border border-dharma-border text-dharma-muted hover:text-dharma-text"
-                >
-                  रद्द करें · Cancel
-                </button>
-                <a
-                  href={issueHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setReportModalOpen(false)}
-                  className="inline-flex min-h-[44px] items-center gap-1.5 px-4 py-2 rounded-xl bg-saffron-600 text-white font-bold hover:bg-saffron-700 transition"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>Open GitHub issue</span>
-                </a>
-              </div>
-            </form>
-          </div>
         </div>
       )}
     </section>

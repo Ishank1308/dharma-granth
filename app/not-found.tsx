@@ -18,7 +18,7 @@ export default function NotFound() {
           ॐ
         </div>
         <p className="text-xs uppercase tracking-[0.3em] text-saffron-700 font-semibold mb-3">
-          पृष्ठ नहीं मिला · Page Not Found
+          <span lang="hi">पृष्ठ नहीं मिला</span> · Page Not Found
         </p>
         <h1 className="text-4xl md:text-5xl font-serif font-bold text-dharma-text mb-4">
           यह पथ ग्रंथालय में उपलब्ध नहीं है
@@ -37,14 +37,14 @@ export default function NotFound() {
             मुख्य पृष्ठ · Home
           </a>
           <a
-            href="/scriptures"
+            href="/scriptures/"
             className="inline-flex items-center gap-2 bg-dharma-card border border-dharma-border text-dharma-text px-5 py-3 rounded-full font-semibold hover:bg-dharma-bg transition"
           >
             <Search className="w-4 h-4" />
             ग्रंथालय · Browse the Library
           </a>
           <a
-            href="/scripture/bhagavadgita"
+            href="/scripture/bhagavadgita/"
             className="inline-flex items-center gap-2 bg-dharma-card border border-dharma-border text-dharma-text px-5 py-3 rounded-full font-semibold hover:bg-dharma-bg transition"
           >
             <BookOpen className="w-4 h-4" />

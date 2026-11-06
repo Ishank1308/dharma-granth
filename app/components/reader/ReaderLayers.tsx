@@ -14,7 +14,7 @@ import {
   Search,
   Volume2,
 } from 'lucide-react';
-import { cleanVerseField, toAsciiDigits, verseLines } from '@/lib/verse-format';
+import { cleanVerseField, meaningState, MEANING_COPY, verseLines, verseMarkNumber, formatVerseRef } from '@/lib/verse-format';
 import { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 import { ExplainLine } from '@/app/components/study/ExplainLine';
 import { CompareViews } from '@/app/components/study/CompareViews';
@@ -127,19 +127,6 @@ const KINDS: Record<Kind, { chip: string; chipHi: string; frame: string; chipCls
   },
 };
 
-/** Quiet corner brackets for the source verse only. Decorative: hidden from assistive tech and by the "hide decorative" setting. */
-function CornerMarks() {
-  const c = 'absolute h-3 w-3 border-amber-700/50 dark:border-amber-400/40';
-  return (
-    <span aria-hidden="true" data-decor="">
-      <span className={`${c} left-2 top-2 border-l-2 border-t-2 rounded-tl-md`} />
-      <span className={`${c} right-2 top-2 border-r-2 border-t-2 rounded-tr-md`} />
-      <span className={`${c} bottom-2 left-2 border-b-2 border-l-2 rounded-bl-md`} />
-      <span className={`${c} bottom-2 right-2 border-b-2 border-r-2 rounded-br-md`} />
-    </span>
-  );
-}
-
 function AiBadge({ children, title }: { children: ReactNode; title?: string }) {
   return (
     <span title={title} className="inline-flex items-center gap-1 rounded-full border border-violet-500/40 bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-950 dark:border-violet-400/40 dark:bg-violet-900/40 dark:text-violet-100">
@@ -178,25 +165,19 @@ function Layer({
     if (collapsible && ref.current && window.matchMedia('(max-width: 639px)').matches) ref.current.open = false;
   }, [collapsible]);
 
+  // Apple-style layer heading: a small label naming what kind of text this is (source or interpretation), then the title.
   const head = (
     <>
-      <span aria-hidden="true" className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border ${k.chipCls}`}>
-        <k.Icon className="h-4 w-4" />
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className={`inline-flex flex-wrap items-center gap-x-2 rounded-full border px-2.5 py-0.5 text-xs font-bold ${k.chipCls}`}>
-          <span lang="hi" className="font-devanagari text-[0.8125rem] leading-snug">
-            {k.chipHi}
-          </span>
-          <span aria-hidden="true" className="opacity-50">
-            ·
-          </span>
+      <span className={`min-w-0 flex-1 ${kind === 'source' ? 'text-center' : ''}`}>
+        <span className="block text-xs font-semibold text-dharma-muted">
+          <span lang="hi" className="font-devanagari">{k.chipHi}</span>
+          <span aria-hidden="true"> · </span>
           <span>{k.chip}</span>
         </span>
-        <span className="mt-1 block font-serif text-base font-bold text-dharma-text sm:text-lg">
-          <span id={`${id}-title`}>{title}</span>
+        <span className={`mt-0.5 block font-sans font-semibold tracking-[-0.02em] text-dharma-text ${kind === 'source' ? 'sr-only' : 'text-[17px] sm:text-[19px]'}`}>
+          <span id={`${id}-title`}>{title}</span>{' '}
           {titleHi && (
-            <span lang="hi" className="ml-2 font-devanagari text-[0.95rem] font-normal text-dharma-muted">
+            <span lang="hi" className="ml-1 font-devanagari text-[0.95rem] font-normal text-dharma-muted">
               {titleHi}
             </span>
           )}
@@ -207,11 +188,10 @@ function Layer({
   );
 
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className={`relative rounded-2xl shadow-sm ${k.frame}`}>
-      {kind === 'source' && <CornerMarks />}
+    <section id={id} aria-labelledby={`${id}-title`} className={`relative rounded-[18px] ${kind === 'source' ? '' : 'bg-dharma-card'}`}>
       {collapsible ? (
         <details ref={ref} open className="group">
-          <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center gap-3 rounded-2xl px-4 py-3 sm:px-6 [&::-webkit-details-marker]:hidden">
+          <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center gap-3 rounded-[18px] px-4 py-3 sm:px-6 [&::-webkit-details-marker]:hidden">
             {head}
             <ChevronDown className="h-5 w-5 shrink-0 text-dharma-muted transition group-open:rotate-180" aria-hidden="true" />
           </summary>
@@ -234,7 +214,7 @@ export { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 const dash = (s: string) => s.replace(/[\s|।॥0-9.]+$/, '');
 
 const aidToggle =
-  'focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full border border-amber-700/25 px-3 py-1 text-xs font-semibold text-dharma-muted transition hover:border-saffron-400 hover:text-dharma-text aria-expanded:border-saffron-500 aria-expanded:text-dharma-text';
+  'focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-3.5 py-1 text-[13px] text-dharma-text transition hover:bg-dharma-text/[0.1] aria-expanded:bg-dharma-saffron/15 aria-expanded:text-dharma-saffron';
 
 /* ── The layers: root shloka, then the अर्थ → व्याख्या → विज्ञान tree ── */
 
@@ -244,7 +224,6 @@ export function ReaderLayers({
   chapterId,
   provenance: p,
   settings,
-  onReport,
   onUpdateSetting,
   insight,
   sourceStatus,
@@ -254,7 +233,6 @@ export function ReaderLayers({
   chapterId: number;
   provenance: ReaderProvenance;
   settings: ReaderSettings;
-  onReport: () => void;
   onUpdateSetting?: <K extends keyof ReaderSettings>(key: K, value: ReaderSettings[K]) => void;
   /** Reviewed मर्म line and जीवन प्रसंग chips, when this verse has them. */
   insight?: VerseInsight;
@@ -290,8 +268,10 @@ export function ReaderLayers({
     settings.showEnglish &&
     (settings.preferredLanguage === 'all' || settings.preferredLanguage === 'english' || isDeep);
 
-  const hasArth =
-    Boolean(showHindiTrans && (verse.hindi || verse.hindiSeeVerse != null)) || Boolean(showEnglishTrans && verse.translation);
+  // The अर्थ branch is on every verse; a meaning not written yet says so in its place.
+  const meaningNow = meaningState(verse);
+  const hasArth = showHindiTrans || showEnglishTrans;
+  const bothPending = showHindiTrans && showEnglishTrans && meaningNow.hi === 'pending' && meaningNow.en === 'pending';
   const hasPadas = Boolean(settings.showCommentary && !isQuick && !settings.liteMode && verse.wordMeaning);
   const [showPadas, setShowPadas] = useState(false);
   // Traditional commentary appears only once a reviewed commentary exists for this verse;
@@ -340,25 +320,25 @@ export function ReaderLayers({
       <Layer id="layer-sanskrit" kind="source" title="Original Sanskrit" titleHi="मूल संस्कृत">
         {lines.length > 0 ? (
           <>
-          <p id="sanskrit-text" lang="sa" className={`text-center font-devanagari font-semibold text-dharma-text ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
+          <p id="sanskrit-text" lang="sa" className={`verse-folio rounded-2xl px-4 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-8 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
             {lines.map((line, i) => (
               <span key={i} className="block">
                 {line}
               </span>
             ))}
-            <span aria-hidden="true" className="mt-2 block text-[0.6em] font-bold text-amber-800 dark:text-amber-300">
-              ॥ {toAsciiDigits(chapterId)}.{toAsciiDigits(verse.number)} ॥
+            <span aria-hidden="true" className="verse-mark mt-2 block text-[0.6em] text-dharma-saffron">
+              ॥ {verseMarkNumber(verse.number)} ॥
             </span>
           </p>
           {!settings.liteMode && (
-            <ExplainLine scriptureId={scriptureId} chapterId={chapterId} verseNumber={verse.number} lines={lines} scopeId="sanskrit-text" verseLabel={`${chapterId}.${verse.number}`} fullTranslation={cleanVerseField(verse.translation)} />
+            <ExplainLine scriptureId={scriptureId} chapterId={chapterId} verseNumber={verse.number} lines={lines} scopeId="sanskrit-text" verseLabel={formatVerseRef(scriptureId, chapterId, verse.number)} fullTranslation={cleanVerseField(verse.translation)} />
           )}
           </>
         ) : (
           <p className="text-center text-sm text-dharma-muted">The Sanskrit text is not available for this verse.</p>
         )}
         {!isQuick && (verse.transliteration || hasPadas) && (
-          <div className="mt-4 border-t border-amber-700/15 pt-3">
+          <div className="mt-4 pt-1">
             {/* Reading aids for the shloka: folded until the reader asks for them. */}
             <div className="flex flex-wrap items-center justify-center gap-2">
               {verse.transliteration && (
@@ -529,21 +509,32 @@ export function ReaderLayers({
             defaultOpen: true,
             content: (
               <div className="space-y-4">
-                {showHindiTrans && !verse.hindi && verse.hindiSeeVerse != null && (
-                  // The edition translates this verse together with earlier ones; the passage lives there.
+                {bothPending && (
+                  <p className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm italic text-dharma-muted">
+                    <span lang="hi" className="font-devanagari">{MEANING_COPY.bothPendingHi}</span>
+                    {' · '}
+                    <span lang="en">{MEANING_COPY.bothPendingEn}</span>
+                  </p>
+                )}
+                {showHindiTrans && !bothPending && meaningNow.hi === 'with' && (
+                  // The edition translates this verse together with others; the passage lives on the first of them.
                   <p lang="hi" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 font-devanagari text-sm text-dharma-muted">
-                    इस श्लोक का हिन्दी अर्थ श्लोक {toAsciiDigits(String(verse.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
                     <a href={`../${verse.hindiSeeVerse}/`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
-                      श्लोक {toAsciiDigits(String(verse.hindiSeeVerse))} देखें →
+                      {MEANING_COPY.hiWith(verse.hindiSeeVerse!)}
                     </a>
                   </p>
                 )}
-                {showHindiTrans && verse.hindi && (
+                {showHindiTrans && !bothPending && (meaningNow.hi === 'pending' || meaningNow.hi === 'review') && (
+                  <p lang="hi" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 font-devanagari text-sm italic text-dharma-muted">
+                    {meaningNow.hi === 'review' ? MEANING_COPY.hiReview : MEANING_COPY.hiPending}
+                  </p>
+                )}
+                {showHindiTrans && meaningNow.hi === 'text' && (
                   <Layer
                     id="layer-hindi"
                     kind="translation"
                     title={verse.hindiRange ? `Hindi Translation · verses ${verse.hindiRange.replace('-', '–')}` : 'Literal Hindi Translation'}
-                    titleHi={verse.hindiRange ? `श्लोक ${toAsciiDigits(verse.hindiRange.replace('-', '–'))} का अनुवाद` : 'मूल हिन्दी अनुवाद (अक्षरशः)'}
+                    titleHi={verse.hindiRange ? MEANING_COPY.hiRange(verse.hindiRange) : 'मूल हिन्दी अनुवाद (अक्षरशः)'}
                     badge={
                       <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
                         मूलानुवाद · Literal
@@ -558,24 +549,36 @@ export function ReaderLayers({
                     </p>
                   </Layer>
                 )}
-                {showEnglishTrans && verse.translation && (
+                {showEnglishTrans && meaningNow.en === 'text' && (
                   <Layer
                     id="layer-english"
                     kind="translation"
-                    title="Literal English Translation"
+                    title={verse.translationRange ? MEANING_COPY.enRange(verse.translationRange) : 'Literal English Translation'}
                     badge={
                       <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
                         Literal Text
                       </span>
                     }
                   >
-                    <p lang="en" className={`font-serif text-dharma-text ${tSize} ${latinLeading}`}>
+                    <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
                       {cleanVerseField(verse.translation)}
                     </p>
                     <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
                       Direct literal rendering preserving Sanskrit philosophical terminology.
                     </p>
                   </Layer>
+                )}
+                {showEnglishTrans && !bothPending && meaningNow.en === 'with' && (
+                  <p lang="en" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm text-dharma-muted">
+                    <a href={`../${verse.translationSeeVerse}/`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                      {MEANING_COPY.enWith(verse.translationSeeVerse!)}
+                    </a>
+                  </p>
+                )}
+                {showEnglishTrans && !bothPending && meaningNow.en === 'pending' && (
+                  <p lang="en" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm italic text-dharma-muted">
+                    {MEANING_COPY.enPending}
+                  </p>
                 )}
               </div>
             ),
@@ -779,12 +782,6 @@ export function ReaderLayers({
             </div>
           )}
         </dl>
-        <p className="mt-3 flex flex-wrap items-center gap-x-2 text-sm text-dharma-muted">
-          Found a mistake?{' '}
-          <button type="button" onClick={onReport} className="focus-ring inline-flex min-h-[44px] items-center rounded font-semibold text-saffron-800 underline underline-offset-4 dark:text-saffron-300">
-            Report a textual error
-          </button>
-        </p>
       </Layer>
 
       {/* Sanskrit Word Explorer Modal/Drawer */}

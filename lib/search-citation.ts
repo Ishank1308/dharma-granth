@@ -1,11 +1,11 @@
 // Direct citation jump. Runs before the verse index is fetched.
 // A hit is returned only when that verse is in the published library.
-// Rigveda 1.1.1 is not in the curated selection (mandala 1, verse 1 is a different hymn),
-// so that query opens the mandala and says the rik is not in the selection.
+// Rigveda references (rv 1.164.46) open the mandala at that verse: the library numbers its verses sukta.rik.
 
-import { versePageHref } from '@/lib/verse-paths';
+import { chapterVerseHref, versePageHref } from '@/lib/verse-paths';
 import { CITATION_SCHEMES, type CitationScheme } from '@/lib/citation-schemes';
 import { CITATION_MAP, type CitationChapterEntry } from '@/lib/citation-map.generated';
+import RIGVEDA_COUNTS from '@/data/rigveda-hymn-verses.json';
 
 export interface DirectCitation {
   scriptureId: string;
@@ -22,9 +22,6 @@ const GITA_VERSES = [47, 72, 43, 42, 29, 47, 30, 28, 34, 42, 55, 20, 35, 27, 20,
 
 /** Katha library chapters are the six vallis, in traditional order. */
 const KATHA_VALLI_VERSES = [29, 25, 17, 15, 15, 18];
-
-/** Rigveda mandalas present as chapters. Counts are the curated selection, not the full Veda. */
-const RIGVEDA_MANDALAS = 10;
 
 function clean(raw: string): string {
   return raw
@@ -80,12 +77,13 @@ function kathaLibrary(chapter: number, verse: number): DirectCitation | null {
 }
 
 function rigveda(mandala: number, sukta: number, rik: number): DirectCitation | null {
-  if (mandala < 1 || mandala > RIGVEDA_MANDALAS || sukta < 1 || rik < 1) return null;
+  const verses = RIGVEDA_COUNTS.mandalas[mandala - 1]?.[sukta - 1];
+  if (!verses || rik < 1 || rik > verses || (mandala === 8 && sukta === 67)) return null;
   return {
     scriptureId: 'rigveda',
     title: `Rigveda ${mandala}.${sukta}.${rik}`,
-    subtitle: `This rik is not numbered in the library selection. Mandala ${mandala} is a short selection, not the full maṇḍala.`,
-    href: `/scripture/rigveda/chapter/${mandala}`,
+    subtitle: `ऋग्वेद · मण्डल ${mandala}, सूक्त ${sukta}, ऋचा ${rik}`,
+    href: chapterVerseHref('rigveda', mandala, `${sukta}.${rik}`),
     matchReason: 'Exact reference',
   };
 }
@@ -105,7 +103,7 @@ function ashtavakra(chapter: number, verse: number): DirectCitation | null {
 
 /**
  * `bg 2.47`, `gita 6.16`, `katha 1.3.3`, `rv 1.1.1`, `av 1.1`.
- * Returns null when the reference is not a published verse (or, for the Rigveda, not a real mandala).
+ * Returns null when the reference is not a published verse.
  */
 export function parseDirectCitation(raw: string): DirectCitation | null {
   const q = clean(raw);

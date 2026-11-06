@@ -234,7 +234,7 @@ export function PranaCapsule() {
         }
         transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
         // Keep it above the reader's one-thumb controls on chapter pages, and above the mobile nav elsewhere.
-        className={`fixed ${isChapterReader ? 'bottom-[calc(10rem+env(safe-area-inset-bottom))]' : 'bottom-[calc(4.25rem+env(safe-area-inset-bottom))]'} lg:bottom-5 inset-x-0 z-50 pointer-events-none flex flex-col items-center px-2 ${compactIdleCapsule ? 'max-sm:items-start max-sm:px-0 max-sm:pl-3 max-sm:pr-0' : ''}`}
+        className={`fixed ${isChapterReader ? 'bottom-[calc(10rem+env(safe-area-inset-bottom))]' : 'bottom-[calc(4.25rem+env(safe-area-inset-bottom))]'} lg:bottom-5 inset-x-0 z-50 pointer-events-none flex flex-col ${compactIdleCapsule ? 'items-end pr-4 sm:pr-6' : 'items-center px-2'}`}
         aria-label="Prāṇa Sūtra Active Island"
         data-hide-during-chapter-reading
         aria-hidden={!shouldShowIsland}
@@ -535,7 +535,7 @@ export function PranaCapsule() {
               animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
               exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className={`pointer-events-auto group inline-flex h-11 items-center gap-2.5 rounded-full border border-amber-500/40 bg-stone-950/95 px-4 text-amber-50 shadow-2xl backdrop-blur-xl ring-1 ring-amber-400/20 hover:border-amber-400 transition ${compactIdleCapsule ? 'max-sm:w-11 max-sm:justify-center max-sm:gap-0 max-sm:px-0' : ''}`}
+              className={`pointer-events-auto group inline-flex h-11 items-center gap-2.5 rounded-full transition ${compactIdleCapsule ? 'apple-bar w-11 justify-center gap-0 border px-0 text-dharma-text shadow-[0_6px_20px_rgba(0,0,0,0.12)]' : 'border border-amber-500/40 bg-stone-950/95 px-4 text-amber-50 shadow-2xl backdrop-blur-xl ring-1 ring-amber-400/20 hover:border-amber-400'}`}
             >
               {/* Left Indicator Icon */}
               {mode === 'toast' ? (
@@ -556,11 +556,11 @@ export function PranaCapsule() {
                   <Timer className="w-3.5 h-3.5" />
                 </span>
               ) : (
-                <span className="text-amber-400 font-serif font-bold text-sm">ॐ</span>
+                <span className={`font-serif font-bold text-sm ${compactIdleCapsule ? 'text-dharma-saffron' : 'text-amber-400'}`}>ॐ</span>
               )}
 
               {/* Compact Center Content */}
-              <div className={`${compactIdleCapsule ? 'hidden sm:block ' : ''}max-w-[240px] sm:max-w-[300px] truncate text-left text-xs font-medium`}>
+              <div className={`${compactIdleCapsule ? 'hidden ' : ''}max-w-[240px] sm:max-w-[300px] truncate text-left text-xs font-medium`}>
                 {mode === 'toast' && capsuleState.toast ? (
                   <span className="text-emerald-200 font-semibold">{capsuleState.toast.message}</span>
                 ) : mode === 'sabda-peek' && capsuleState.sabdaPeek ? (
@@ -593,13 +593,13 @@ export function PranaCapsule() {
                   </span>
                 ) : (
                   <span className="text-stone-300">
-                    धर्म ग्रन्थ <span className="text-amber-400/80">· Ctrl+K खोजें</span>
+                    धर्म ग्रन्थ <span className="kbd-hint text-amber-400/80">· Ctrl+K खोजें</span>
                   </span>
                 )}
               </div>
 
               {/* Expand Hint Indicator */}
-              <ChevronUp className={`${compactIdleCapsule ? 'hidden sm:block ' : ''}w-3.5 h-3.5 text-amber-400/70 group-hover:text-amber-200 transition`} />
+              <ChevronUp className={`${compactIdleCapsule ? 'hidden ' : ''}w-3.5 h-3.5 text-amber-400/70 group-hover:text-amber-200 transition`} />
             </motion.button>
           )}
         </AnimatePresence>

@@ -10,14 +10,17 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-commentary/quality";
-import { findTemplateFields } from "./lib/template-text";
+import { collapsePassages, findMeaningTemplates, findTemplateFields, isSanskritCopy, type PassageVerse } from "./lib/template-text";
+import { exemptFields, hideUnalignedMeanings } from "./lib/meaning-alignment";
+import { FOOTNOTE_SCRIPTURES, stripPrintedFootnote } from "./lib/printed-footnotes";
+import { fillerChapters } from "./lib/filler-chapters";
 import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
-import { isHindiSourceReviewRequired } from "../lib/ocr-hindi-review";
+import { isHindiSourceReviewRequired, isReviewKept, isUnproofreadShown } from "../lib/ocr-hindi-review";
 
 const PILOT = loadPilotOverlay();
 
 /** Bump when shard output logic changes (stubs, templates, echo rules, manifest shape). */
-const SHARD_REV = "2";
+const SHARD_REV = "7";
 
 interface ShardStamp {
   rev: string;
@@ -70,6 +73,9 @@ const isMeaningStub = (t: unknown) => typeof t === "string" && t.length < 90 && 
 
 /** Verse fields that carry explanation, not scripture or translation. */
 const EDITORIAL_FIELDS = ["explanation", "commentary", "science", "lifeLesson"] as const;
+
+/** Verse fields that carry a translation or word gloss of this one verse. */
+const MEANING_FIELDS = ["translation", "hindi", "wordMeaning"] as const;
 
 const SRC = path.resolve("public/data/scriptures-full");
 const DRY = process.argv.includes("--dry-run");
@@ -140,6 +146,34 @@ function main(): void {
       }
     }
 
+    // Printed footnotes filed in front of a verse (scripts/lib/printed-footnotes.ts): publish the verse alone.
+    if (FOOTNOTE_SCRIPTURES.has(id)) {
+      let stripped = 0;
+      for (const ch of book.chapters ?? []) {
+        for (const v of (ch.verses ?? []) as Record<string, unknown>[]) {
+          if (typeof v.sanskrit !== "string") continue;
+          const clean = stripPrintedFootnote(v.sanskrit, typeof v.transliteration === "string" ? v.transliteration : undefined);
+          if (!clean) continue;
+          v.sanskrit = clean.sanskrit;
+          if (clean.transliteration !== undefined) v.transliteration = clean.transliteration;
+          stripped++;
+        }
+      }
+      if (stripped) console.log(`  ${id}: published ${stripped} verse(s) without the printed footnotes filed in front of them`);
+    }
+
+    // Filler chapters (scripts/lib/filler-chapters.ts): publish them empty, so the reader shows "text being added".
+    {
+      const filler = fillerChapters(id, book.chapters ?? []);
+      let verses = 0;
+      for (const ch of book.chapters ?? []) {
+        if (!filler.has(Number(ch.number))) continue;
+        verses += ch.verses?.length ?? 0;
+        ch.verses = [];
+      }
+      if (filler.size) console.log(`  ${id}: ${filler.size} filler chapter(s) published without their ${verses} hand-picked verse(s)`);
+    }
+
     // Hide text that is the same template on many different verses; the source file is not touched.
     {
       const items = (book.chapters ?? []).flatMap((ch) =>
@@ -160,6 +194,20 @@ function main(): void {
       }
     }
 
+    // Hide Hindi and English that belong to other verses (OCR laid over the Sanskrit in reading order), and the
+    // notes generated from them. Pilot verses are left to the pilot step below, and verses in the Hindi review registry
+    // to the step after it (it withholds their Hindi and keeps their English); the build check exempts both the same way.
+    {
+      const pilotVerses = new Set(PILOT.filter((p) => p.scriptureId === id).map((p) => `${p.chapter}:${p.verse}`));
+      const hidden = hideUnalignedMeanings(book, {
+        keepVerse: (chapter, verse, field) => pilotVerses.has(`${chapter}:${verse}`) || isReviewKept(id, chapter, verse, field),
+        skipFields: exemptFields(id),
+      });
+      if (hidden.translation || hidden.hindi || hidden.notes) {
+        console.log(`  ${id}: hid ${hidden.translation} English, ${hidden.hindi} Hindi and ${hidden.notes} note field(s) not aligned to their verse`);
+      }
+    }
+
     // Editorial pilot: apply the reviewed-for-structure Artha and clear the superseded explanation fields.
     for (const p of PILOT.filter((x) => x.scriptureId === id)) {
       const ch = (book.chapters ?? []).find((c) => c.number === p.chapter);
@@ -176,9 +224,44 @@ function main(): void {
         if (typeof verse.hindi !== "string" || !verse.hindi.trim()) {
           throw new Error(`Hindi source-review entry has no source text: ${id}:${ch.number}:${String(verse.number)}`);
         }
+        // Refilled Hindi from a printed edition can be shown, labelled, before it is proofread (showRefillUnproofread).
+        if (isUnproofreadShown(id, ch.number, String(verse.number))) {
+          verse.hindiUnproofread = true;
+          continue;
+        }
         delete verse.hindi;
         verse.hindiReviewRequired = true;
       }
+    }
+
+    // Every verse shows the same parts in the same order, so a part that is not about this verse is left out and
+    // the reader shows its "not yet translated" line instead: translations and glosses that are templates or
+    // misplaced headers, then one passage translation copied onto each of its verses is shown once.
+    {
+      const items = (book.chapters ?? []).flatMap((ch) =>
+        ((ch.verses ?? []) as Record<string, unknown>[]).map((v, i) => ({
+          key: `${ch.number}:${i}`,
+          sanskrit: String(v.sanskrit ?? ""),
+          fields: Object.fromEntries(MEANING_FIELDS.map((f) => [f, typeof v[f] === "string" ? (v[f] as string) : undefined])),
+        })),
+      );
+      const hidden = findMeaningTemplates(items);
+      let collapsed = 0;
+      let copies = 0;
+      for (const ch of book.chapters ?? []) {
+        const verses = (ch.verses ?? []) as PassageVerse[];
+        verses.forEach((v, i) => {
+          for (const f of MEANING_FIELDS) if (hidden.has(`${ch.number}:${i}|${f}`)) delete v[f];
+          if (typeof v.hindi === "string" && isSanskritCopy(v.hindi, v.sanskrit)) {
+            delete v.hindi;
+            copies++;
+          }
+        });
+        collapsed += collapsePassages(verses, "hindi") + collapsePassages(verses, "translation");
+      }
+      if (hidden.size > 0) console.log(`  ${id}: hid ${hidden.size} template or misplaced translation field(s)`);
+      if (copies > 0) console.log(`  ${id}: hid ${copies} "Hindi" field(s) that repeat the Sanskrit`);
+      if (collapsed > 0) console.log(`  ${id}: ${collapsed} verse(s) point to their passage translation`);
     }
 
     if (!DRY) fs.mkdirSync(outDir, { recursive: true });

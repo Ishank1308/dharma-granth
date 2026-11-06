@@ -146,7 +146,7 @@ export function JourneysClient() {
               >
                 <Icon className="h-4 w-4" />
                 <span>{cat.label}</span>
-                <span className={active ? 'text-white/80' : 'text-dharma-muted font-devanagari text-2xs'}>
+                <span className={active ? 'font-normal text-white' : 'text-dharma-muted font-devanagari text-2xs'}>
                   · {cat.labelHi}
                 </span>
               </button>

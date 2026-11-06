@@ -75,7 +75,7 @@ export function VerseCompletion({
           {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
           {saved ? 'Saved' : 'Save for later'}
         </button>
-        <Link href="/learn/pathways" className={plain}>Add to a reading plan</Link>
+        <Link href="/learn/plans/" className={plain}>Add to a reading plan</Link>
       </div>
       <p role="status" aria-live="polite" className="mt-2 min-h-[1.25rem] text-sm text-dharma-muted">{note}</p>
     </section>

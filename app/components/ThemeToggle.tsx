@@ -69,6 +69,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
                 {ICONS[option]}
               </motion.span>
             </AnimatePresence>
+            {' '}
             <span className="relative hidden min-[2200px]:inline">{THEME_NAMES[option].name}</span>
           </button>
         );

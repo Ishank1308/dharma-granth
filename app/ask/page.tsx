@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AskDharmaClient } from '@/app/components/AskDharmaClient';
+import { ANSWER_THEMES, GRANTH_ANSWERS, granthAnswersByTheme } from '@/data/granth-answers';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Sparkles, Compass, Shield, BookOpen, Sun, ArrowLeft } from 'lucide-react';
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     absolute: 'धर्म सहायक — पुस्तकालय से जीवन के प्रश्न | Dharma Granth',
   },
   description:
-    'Questions about anxiety, anger, duty, and Karma Yoga, answered with verses and notes already published in the Dharma Granth library. No generated commentary.',
+    'Ask about worry, anger, grief, duty or God in your own words. Fifty answer pages give a one-line answer, verses from the Gita and Upanishads, a story and one step for today.',
   keywords: [
     'Dharma guide',
     'Bhagavad Gita on anxiety',
@@ -99,6 +100,9 @@ const faqJsonLd = {
   ],
 };
 
+// Only what the matcher needs goes to the browser; the answer pages are static.
+const questionBank = GRANTH_ANSWERS.map(({ slug, questionHi, questionEn, sarHi, terms }) => ({ slug, questionHi, questionEn, sarHi, terms }));
+
 export default function AskDharmaPage() {
   return (
     <main className="min-h-screen bg-dharma-bg pb-24">
@@ -132,7 +136,7 @@ export default function AskDharmaPage() {
             </h1>
 
             <p className="text-base sm:text-lg text-amber-100/90 leading-relaxed font-devanagari">
-              चिंता, क्रोध, धर्म या कर्मयोग पूछें। उत्तर उन्हीं श्लोकों और विषय-पृष्ठों से आता है जो पुस्तकालय में पहले से लिखे हैं। नई टीका नहीं लिखी जाती।
+              अपने शब्दों में पूछें: चिंता, क्रोध, दुःख, कर्तव्य या ईश्वर। उत्तर‑पृष्ठ के श्लोक और अर्थ पुस्तकालय से हैं; सार, दृष्टान्त और अभ्यास सम्पादकीय टिप्पणियाँ हैं।
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-amber-200/80">
@@ -152,7 +156,38 @@ export default function AskDharmaPage() {
 
       {/* Main Interactive Interface */}
       <section className="relative mx-auto max-w-5xl px-5 sm:px-6 -mt-6 sm:-mt-8 z-10">
-        <AskDharmaClient />
+        <AskDharmaClient questionBank={questionBank} />
+      </section>
+
+      <section className="mx-auto mt-12 max-w-5xl px-5 sm:px-6" aria-labelledby="granth-questions">
+        <h2 id="granth-questions" className="font-serif text-2xl font-bold sm:text-3xl">
+          <span lang="hi" className="font-devanagari">ग्रन्थ से पूछिए</span>{' '}
+          <span className="text-lg font-semibold text-dharma-muted">Ask the scriptures</span>
+        </h2>
+        <p className="mt-2 text-sm text-dharma-muted">
+          <span lang="hi">{GRANTH_ANSWERS.length} प्रश्न, हर एक का उत्तर कई ग्रन्थों के श्लोकों, एक दृष्टान्त और आज के एक अभ्यास के साथ।</span>{' '}
+          <span>{GRANTH_ANSWERS.length} questions, each answered with verses from several texts, a story and one step for today.</span>
+        </p>
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          {ANSWER_THEMES.map((theme) => (
+            <div key={theme.id} className="rounded-3xl border border-dharma-border bg-dharma-card p-5">
+              <h3 className="font-serif text-lg font-bold">
+                <span lang="hi" className="font-devanagari">{theme.titleHi}</span>{' '}
+                <span className="text-sm font-semibold text-dharma-muted">{theme.titleEn}</span>
+              </h3>
+              <ul className="mt-3 grid gap-1">
+                {granthAnswersByTheme(theme.id).map((a) => (
+                  <li key={a.slug}>
+                    <Link href={`/ask/${a.slug}/`} className="block min-h-11 rounded-xl px-2 py-2 hover:bg-dharma-bg">
+                      <span lang="hi" className="block font-devanagari font-semibold">{a.questionHi}</span>
+                      <span className="block text-xs text-dharma-muted">{a.questionEn}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </section>
     </main>
   );

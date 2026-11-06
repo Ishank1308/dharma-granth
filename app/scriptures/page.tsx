@@ -5,7 +5,6 @@ import { categories } from '@/data/scripture-meta';
 import type { LibraryItem } from '@/lib/library';
 import { getAllScriptures, getLibraryCounts } from '@/data/scriptures';
 import { getLibraryFacts } from '@/lib/library-server';
-import { FadeUp } from '@/app/components/motion/primitives';
 import { ScriptureLibraryClient } from '@/app/components/ScriptureLibraryClient';
 import { publishedTotals } from '@/lib/ashtavakra';
 
@@ -75,30 +74,19 @@ export default function ScripturesPage() {
 
   return (
     <main className="min-h-screen bg-dharma-bg">
-      {/* Inspora-inspired Archival Gallery Header */}
-      <div className="border-b border-dharma-border/80 bg-dharma-card/60 backdrop-blur-sm py-12 sm:py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <FadeUp>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="size-2 rounded-full bg-saffron-600 animate-status-pulse" />
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
-                The Sacred Archive
-              </span>
-            </div>
-            <h1 className="text-3xl font-serif font-bold text-dharma-text sm:text-5xl tracking-tight">
-              Scripture Library
-              <span lang="hi" className="ml-3 block font-devanagari text-2xl font-semibold leading-relaxed text-dharma-muted sm:inline sm:text-4xl">
-                ग्रंथालय
-              </span>
-            </h1>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <p className="mt-3 text-base text-dharma-muted sm:text-lg max-w-2xl leading-relaxed">
-              Vedas, Upanishads, Itihasas and Puranas in one place. Search by name or topic, filter by tradition, length or language, then open any text to read it verse by verse.
-            </p>
-          </FadeUp>
-        </div>
-      </div>
+      <header className="mx-auto max-w-7xl px-5 pb-2 pt-10 sm:px-6 sm:pt-14">
+        <p className="text-[13px] text-dharma-muted">Library</p>
+        <h1 className="mt-2 text-[34px] font-semibold leading-[1.08] tracking-[-0.03em] text-dharma-text sm:text-5xl">
+          <span>Scriptures</span>{' '}
+          <span lang="hi" className="block font-devanagari text-2xl font-normal tracking-normal text-dharma-muted sm:mt-1">
+            ग्रंथालय
+          </span>
+        </h1>
+        <p className="mt-4 max-w-2xl text-[17px] leading-relaxed text-dharma-muted">
+          Vedas, Upanishads, Itihasas and Puranas in one place. Search by name or topic, filter by tradition, length or
+          language, then open any text to read it verse by verse.
+        </p>
+      </header>
 
       <ScriptureLibraryClient scriptures={scriptures} categories={categories} loadError={loadError} />
     </main>

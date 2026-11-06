@@ -95,5 +95,7 @@ export interface ScriptureMeta {
   tags: string[];
   hasData: boolean;
   isCurated?: boolean;
+  /** The library holds only a selection of this book's verses, not its whole text ("चयनित श्लोक"). */
+  selectedVerses?: boolean;
   canonicalTotalVerses?: number;
 }

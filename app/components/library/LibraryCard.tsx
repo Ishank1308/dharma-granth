@@ -1,9 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import { ArrowRight, Bookmark, BookOpen, ListChecks, FileClock } from 'lucide-react';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { Bookmark, BookOpen, ListChecks, FileClock } from 'lucide-react';
+import type { CSSProperties, ReactNode } from 'react';
 import {
   LANGUAGES,
   isBeginnerFriendly,
@@ -62,12 +61,12 @@ function LanguageChips({ item }: { item: LibraryItem }) {
           <li
             key={l.id}
             aria-label={coverageText}
-            className="rounded-md border border-dharma-border bg-dharma-bg px-2 py-0.5 text-xs font-medium text-dharma-text"
+            className="rounded-md bg-dharma-text/[0.06] px-2 py-0.5 text-xs text-dharma-text"
             lang={l.id === 'en' ? 'en' : l.id}
             title={coverageText}
           >
             <span className={l.id === 'en' ? '' : 'font-devanagari'}>{l.native}</span>
-            {percentLabel !== undefined && <span className="ml-1 text-[10px] text-dharma-muted">{percentLabel}</span>}
+            {percentLabel !== undefined && <span className="ml-1 text-[10px] text-dharma-text-secondary">{percentLabel}</span>}
           </li>
         );
       })}
@@ -110,86 +109,20 @@ const GITA_PRESS_COVER_TITLES: Readonly<Record<string, string>> = {
   vinayapatrika: 'Vinaya Patrika',
 };
 
-const Realistic3DGranth = dynamic(
-  () => import('@/app/components/motion/Realistic3DGranth').then((mod) => mod.Realistic3DGranth),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex h-80 w-64 items-center justify-center rounded-2xl border border-amber-400/30 bg-stone-900 text-sm text-amber-100 sm:w-72">
-        Opening book preview…
-      </div>
-    ),
-  },
-);
-
-function LibraryBookPreview({ item, categoryLabel }: { item: LibraryItem; categoryLabel: string }) {
-  const previewRef = useRef<HTMLDivElement>(null);
-  const [nearViewport, setNearViewport] = useState(false);
-  const countLabel = item.totalVerses > 0
-    ? `${formatNumber(item.totalChapters)} Chapters · ${formatNumber(item.totalVerses)} Verses`
-    : 'ग्रंथ सूची';
-  const englishTitle = GITA_PRESS_COVER_TITLES[item.id] ?? item.title;
-  const subTitle = item.author ? `Attributed to ${item.author}` : categoryLabel;
-
-  useEffect(() => {
-    const element = previewRef.current;
-    if (!element) return;
-    if (typeof IntersectionObserver === 'undefined') {
-      setNearViewport(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        setNearViewport(true);
-        observer.disconnect();
-      },
-      { rootMargin: '360px 0px' },
-    );
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={previewRef} className="mt-3 flex min-h-[24rem] items-center justify-center overflow-visible">
-      {nearViewport ? (
-        <Realistic3DGranth
-          compact
-          title={item.titleSanskrit || item.title}
-          englishTitle={englishTitle}
-          subTitle={subTitle}
-          verseCount={countLabel}
-        />
-      ) : (
-        <div className="[perspective:1200px]" aria-hidden="true">
-          <div
-            className="relative h-[22.5rem] w-[15rem] rounded-r-2xl rounded-l-md border border-amber-400/35 bg-gradient-to-br from-[#7c2d12] via-[#451a03] to-[#1c0a00] p-4 shadow-[inset_4px_0_10px_rgba(0,0,0,0.8),12px_16px_40px_rgba(0,0,0,0.6)]"
-            style={{ transform: 'rotateY(-7deg)', transformStyle: 'preserve-3d' }}
-          >
-            <span className="pointer-events-none absolute inset-2 rounded-xl border border-amber-400/40" />
-            <span className="pointer-events-none absolute inset-3 rounded-lg border border-amber-300/20" />
-            <span className="absolute inset-y-0 left-0 w-5 rounded-l-md border-r border-amber-400/20 bg-gradient-to-r from-[#1c0a00] via-[#7c2d12] to-[#451a03]" />
-            <span className="absolute -right-2 top-2 bottom-2 w-2 bg-[repeating-linear-gradient(0deg,#fef3c7_0px,#d97706_1px,#fef3c7_2px)]" />
-            <span className="absolute -top-1 left-16 h-24 w-4 bg-gradient-to-b from-amber-500 to-orange-700 shadow-lg [clip-path:polygon(0_0,100%_0,100%_90%,50%_100%,0_90%)]" />
-            <div className="relative z-10 flex h-full flex-col justify-between py-2 pl-3 text-center text-amber-100">
-              <div className="flex items-center justify-between gap-2 text-xs font-bold text-amber-200">
-                <span className="rounded-full border border-amber-400/30 bg-black/35 px-2 py-1 font-devanagari">पवित्र ग्रंथ</span>
-                <span lang="sa" className="font-devanagari text-2xl">ॐ</span>
-              </div>
-              <div className="space-y-2">
-                <p lang="sa" className="font-devanagari text-xl font-extrabold leading-relaxed text-amber-200">{item.titleSanskrit || item.title}</p>
-                <p lang="en" className="font-serif text-sm font-bold leading-tight">{englishTitle}</p>
-                <p className="font-serif text-xs italic text-amber-200/85">{subTitle}</p>
-              </div>
-              <p className="text-[10px] font-bold text-amber-200/90">{countLabel}</p>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+// Spine colour per tradition, shared with the home page's book tiles (lifted on dark themes by .home-book).
+const CATEGORY_COLOURS: Readonly<Record<string, string>> = {
+  veda: '#2f6f5e',
+  upanishad: '#8a6a3c',
+  vedanta: '#4f46e5',
+  sutra: '#a16207',
+  shakta: '#be123c',
+  purana: '#6b3fa0',
+  itihasa: '#1f4e8c',
+  smriti: '#7e22ce',
+  tantra: '#9d174d',
+  stotra: '#c2410c',
+  other: '#047857',
+};
 
 export function LibraryCard({
   item,
@@ -214,34 +147,50 @@ export function LibraryCard({
   if (item.facts.hindiCommentary) commentary.push('Hindi verse-by-verse commentary');
   if (item.explanation) commentary.push('Book overview (English & Hindi)');
   const readingHref = item.id === 'ashtavakra' ? '/ashtavakra/' : `/scripture/${item.id}`;
+  const englishTitle = GITA_PRESS_COVER_TITLES[item.id] ?? item.title;
+  // A partial text says how much of the traditional whole the library holds.
+  const ofAbout = item.canonicalTotalVerses != null && item.canonicalTotalVerses > item.totalVerses
+    ? ` of about ${formatNumber(item.canonicalTotalVerses)}`
+    : '';
+  const countLabel = item.totalVerses > 0
+    ? `${formatNumber(item.totalChapters)} chapters · ${formatNumber(item.totalVerses)}${ofAbout} verses`
+    : 'Catalogue entry';
 
   return (
     <article
       aria-labelledby={headingId}
-      className="group flex h-full flex-col rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-sm transition hover:border-saffron-300 hover:shadow-md sm:p-6"
+      style={{ '--book': CATEGORY_COLOURS[item.category] ?? CATEGORY_COLOURS.other } as CSSProperties}
+      className="home-book group relative flex h-full flex-col overflow-hidden rounded-[22px] bg-dharma-card p-5 pl-7 shadow-[0_2px_6px_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)] sm:p-6 sm:pl-8"
     >
+      <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-[color:var(--book-ink)]" />
       <header className="flex items-start justify-between gap-3">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-saffron-800 dark:text-saffron-300">{categoryLabel}</p>
+        <p className="text-xs text-dharma-muted">{categoryLabel}</p>
         <button
           type="button"
           onClick={() => onToggleSave(item.id)}
           aria-pressed={saved}
           aria-label={saved ? `Remove ${item.title} from saved` : `Save ${item.title}`}
-          className={`focus-ring -mr-2 -mt-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition ${
-            saved ? 'text-saffron-700 dark:text-saffron-300' : 'text-dharma-muted hover:text-saffron-700'
-          }`}
+          className={`apple-icon-button -mr-2 -mt-2 h-11 w-11 shrink-0 ${saved ? 'text-dharma-saffron' : 'text-dharma-muted'}`}
         >
           <Bookmark className="h-5 w-5" fill={saved ? 'currentColor' : 'none'} aria-hidden="true" />
         </button>
       </header>
 
-      <h3 id={headingId} className="sr-only">
-        <span lang="sa" className="font-devanagari">{item.titleSanskrit}</span>
-        <span lang="en">{item.title}</span>
-        {detailed && item.titleIast && <span className="mt-0.5 block font-serif text-sm italic text-dharma-muted">{item.titleIast}</span>}
+      <h3 id={headingId} className="mt-1">
+        {item.titleSanskrit && (
+          <span lang="sa" className="shloka-text block text-[28px] leading-tight text-[color:var(--book-ink)] sm:text-[34px]">
+            {item.titleSanskrit}
+          </span>
+        )}{' '}
+        <span lang="en" className="mt-2 block text-[19px] font-semibold tracking-[-0.02em] text-dharma-text">
+          {englishTitle}
+        </span>
+        {detailed && item.titleIast && <span className="mt-0.5 block font-serif text-sm font-normal italic text-dharma-muted">{item.titleIast}</span>}
       </h3>
-
-      <LibraryBookPreview item={item} categoryLabel={categoryLabel} />
+      <p className="mt-1 text-[13px] text-dharma-muted">
+        {item.author ? <span>Attributed to {item.author} · </span> : null}
+        {countLabel}
+      </p>
 
       <p className={`mt-3 text-sm leading-relaxed text-dharma-muted ${detailed ? '' : 'line-clamp-3'}`}>
         {detailed ? item.description : summaryOf(item.description)}
@@ -273,14 +222,13 @@ export function LibraryCard({
         </dl>
       )}
 
-      <div className="mt-auto flex flex-wrap items-center gap-2 pt-5">
+      <div className="mt-auto flex flex-wrap items-center gap-2 pt-4">
         <Link
           href={readingHref}
           aria-label={`Start reading ${item.title}`}
-          className="focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-full bg-saffron-700 px-5 text-sm font-semibold text-white transition hover:bg-saffron-800 group-hover:shadow-md"
+          className="inline-flex min-h-[44px] items-center text-[17px] text-dharma-saffron hover:underline"
         >
-          Start reading
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          Start reading <span aria-hidden="true">&nbsp;›</span>
         </Link>
       </div>
     </article>

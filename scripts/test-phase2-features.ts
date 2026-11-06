@@ -26,9 +26,10 @@ assert.equal(parseDirectCitation('katha 1.3.3')?.href, '/scripture/katha/chapter
 
 const rig = parseDirectCitation('rv 1.1.1');
 assert.ok(rig);
-assert.equal(rig.href, '/scripture/rigveda/chapter/1');
-assert.equal(rig.href.includes('/verse/'), false);
-assert.match(rig.subtitle, /not numbered/);
+assert.equal(rig.href, '/scripture/rigveda/chapter/1/#verse-1.1');
+assert.equal(parseDirectCitation('rv 1.164.46')?.href, '/scripture/rigveda/chapter/1/#verse-164.46');
+assert.equal(parseDirectCitation('rv 1.192.1'), null);
+assert.equal(parseDirectCitation('rv 8.67.1'), null);
 
 const root = path.join(process.cwd(), 'public', 'data', 'scriptures-full');
 function hasVerse(id: string, chapter: number, verse: string) {
@@ -40,11 +41,13 @@ function hasVerse(id: string, chapter: number, verse: string) {
 assert.equal(hasVerse('bhagavadgita', 2, '47'), true);
 assert.equal(hasVerse('bhagavadgita', 6, '16'), true);
 assert.equal(hasVerse('katha', 3, '3'), true);
+assert.equal(hasVerse('rigveda', 1, '1.1'), true);
+assert.equal(hasVerse('rigveda', 1, '164.46'), true);
 
 const top = searchIndex('bg 2.47').results[0];
 assert.equal(top?.href, '/scripture/bhagavadgita/chapter/2/verse/47');
 assert.equal(searchIndex('katha 1.3.3').results[0]?.href, '/scripture/katha/chapter/3/verse/3');
-assert.equal(searchIndex('rv 1.1.1').results[0]?.href, '/scripture/rigveda/chapter/1');
+assert.equal(searchIndex('rv 1.1.1').results[0]?.href, '/scripture/rigveda/chapter/1/#verse-1.1');
 
 class Mem implements Storage {
   private map = new Map<string, string>();

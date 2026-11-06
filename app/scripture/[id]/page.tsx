@@ -3,8 +3,11 @@ import { resolve } from 'node:path';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import type { CSSProperties } from 'react';
+import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
+import { Motif } from '@/app/components/vibe/Motif';
+import { ScriptureBook } from '@/app/components/vibe/ScriptureBook';
 import { ScriptureContents } from '@/app/components/ScriptureContents';
-import { ChapterHero } from '@/app/components/motion/ChapterHero';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { getScripture, getScriptureMeta, getAllScriptures } from '@/data/scriptures';
 import { ChevronRight } from 'lucide-react';
@@ -108,6 +111,9 @@ export default function ScripturePage({ params }: PageProps) {
     (a, b) => a.id - b.id,
   );
   const publishedChapterCount = chapterPreviews.length;
+  const heldChapters = chapterPreviews.filter((chapter) => chapter.verseCount > 0).length;
+  const heldVerses = chapterPreviews.reduce((sum, chapter) => sum + chapter.verseCount, 0);
+  const partialOf = meta.canonicalTotalVerses && meta.canonicalTotalVerses > heldVerses ? meta.canonicalTotalVerses : undefined;
   const languageFacts = getLibraryFacts(meta.id).languages;
   const inLanguage = [
     languageFacts.sa ? 'sa' : null,
@@ -159,8 +165,10 @@ export default function ScripturePage({ params }: PageProps) {
     ],
   };
 
+  const vibe = scriptureVibe(meta.id, meta.category);
+
   return (
-    <main className="min-h-screen bg-dharma-bg">
+    <main className="min-h-screen bg-dharma-bg" data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)}>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -171,8 +179,12 @@ export default function ScripturePage({ params }: PageProps) {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <ChapterHero className="border-b border-dharma-border bg-dharma-card py-5 text-dharma-text sm:py-7">
-        <div className="relative mx-auto max-w-5xl px-6">
+      {/* The scripture opens like a book, in its own colours and emblem (lib/scripture-vibes). */}
+      <section className="scripture-vibe-hero relative isolate overflow-hidden border-b border-dharma-border/60 py-6 text-dharma-text sm:py-10" style={{ '--cover-1': vibe.cover[0], '--cover-2': vibe.cover[1], '--cover-3': vibe.cover[2] } as CSSProperties}>
+        <Motif id={vibe.motif} className="pointer-events-none absolute -right-10 -top-10 -z-10 h-[420px] w-[420px] text-[color:var(--cover-2)] opacity-[0.07]" />
+        <div className="relative mx-auto grid max-w-5xl items-center gap-8 px-6 lg:grid-cols-[1fr_auto]">
+        {/* Title and description first; on phones the book illustration follows them. */}
+        <div>
           <FadeUp>
             <nav aria-label="Breadcrumb" className="mb-3">
               <ol className="flex flex-wrap items-center gap-1.5 text-sm text-dharma-muted">
@@ -209,11 +221,33 @@ export default function ScripturePage({ params }: PageProps) {
             </div>
           </FadeUp>
           <FadeUp delay={0.15}>
-            <p className="mt-3 max-w-2xl text-base leading-7 text-dharma-muted line-clamp-2">{meta.description}</p>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-dharma-muted">{meta.description}</p>
             {meta.author && <p className="mt-2 text-sm font-semibold text-dharma-muted">Attributed to {meta.author}</p>}
+            {meta.selectedVerses && heldVerses > 0 && (
+              <p className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-saffron-300 bg-saffron-50 px-3 py-1 text-xs font-bold text-saffron-800 dark:bg-saffron-500/10 dark:text-saffron-200">
+                <span lang="hi" className="font-devanagari">चयनित श्लोक</span> <span aria-hidden="true">·</span>{' '}
+                <span lang="en">Selected verses, not the full text</span>
+              </p>
+            )}
+            {heldVerses > 0 && (
+              // What the library holds, and, for a partial text, of how much.
+              <p className="mt-2 text-sm text-dharma-muted">
+                <span lang="hi" className="font-devanagari">
+                  पुस्तकालय में {heldChapters.toLocaleString('en-IN')} अध्याय, {heldVerses.toLocaleString('en-IN')} श्लोक
+                  {partialOf ? ` (लगभग ${partialOf.toLocaleString('en-IN')} में से)` : ''}
+                </span>{' '}
+                <span aria-hidden="true">·</span>{' '}
+                <span lang="en">
+                  {heldChapters.toLocaleString('en-IN')} chapters, {heldVerses.toLocaleString('en-IN')}
+                  {partialOf ? ` of about ${partialOf.toLocaleString('en-IN')}` : ''} verses in the library
+                </span>
+              </p>
+            )}
           </FadeUp>
         </div>
-      </ChapterHero>
+        <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} className="mx-auto" />
+        </div>
+      </section>
 
       <div className="mx-auto max-w-5xl px-6 pb-10 pt-5 sm:pt-7">
         <ScriptureContents

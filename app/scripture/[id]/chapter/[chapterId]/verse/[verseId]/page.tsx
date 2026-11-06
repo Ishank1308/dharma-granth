@@ -1,3 +1,4 @@
+import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { clipDescription } from '@/lib/meta-text';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -10,6 +11,7 @@ import { ModernScenarios } from '@/app/components/study/ModernScenarios';
 import { ReviewRequiredNotice } from '@/app/components/study/ReviewRequiredNotice';
 import { CONNECTIONS, verseKey } from '@/data/study-content';
 import { RelatedWisdom } from '@/app/components/RelatedWisdom';
+import { VerseAnswers } from '@/app/components/VerseAnswers';
 import { RelatedWisdomDiscovery } from '@/components/wisdom/RelatedWisdomDiscovery';
 import { VerseReader } from '@/app/components/reader/VerseReader';
 import { getVerseInsight } from '@/lib/verse-insights';
@@ -20,7 +22,7 @@ import { verseStaticParams } from '@/lib/verse-pages';
 import { commentaryFor, verseMeaningSummary } from '@/lib/verse-meaning';
 import { verseOgPath, versePageHref, verseSlug } from '@/lib/verse-paths';
 import { scriptureLastChanged } from '@/lib/content-dates';
-import { cleanVerseField, splitVyakhyaCommentary, verseLines } from '@/lib/verse-format';
+import { cleanVerseField, splitVyakhyaCommentary, verseLines, formatVerseRef, withPassageMeaning } from '@/lib/verse-format';
 import { resolveVerseKnowledge } from '@/lib/knowledge-graph';
 import { TrustBadges } from '@/app/components/TrustBadges';
 import { SourceStudyNotes } from '@/app/components/SourceStudyNotes';
@@ -55,7 +57,10 @@ interface SeedVerse {
   hindiRange?: string;
   /** This verse's Hindi is stored on that verse (the first of its range). */
   hindiSeeVerse?: number | string;
+  hindiReviewRequired?: boolean;
   translation?: string;
+  translationRange?: string;
+  translationSeeVerse?: number | string;
   explanation?: string;
   commentary?: string;
   science?: string;
@@ -98,7 +103,7 @@ function findVerse(scriptureId: string, chapterId: number, verseId: string) {
     return slug === verseId || slug === decoded || String(verse.number).trim() === decoded;
   });
   if (index < 0) return null;
-  return { seeded, verses, index, verse: verses[index] };
+  return { seeded, verses, index, verse: withPassageMeaning(verses, verses[index]) };
 }
 
 function plain(text: string | undefined, max: number): string {
@@ -141,7 +146,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const found = meta && Number.isFinite(chapterId) ? findVerse(params.id, chapterId, params.verseId) : null;
   if (!meta || !found) return {};
 
-  const ref = `${meta.title} ${chapterId}.${params.verseId}`;
+  const ref = `${meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
   const words = opening(found.verse.sanskrit);
   // The title names only the meanings the page really has; a page with none says so and is kept out of the index
   // (and out of the sitemap, see lib/sitemap-sections.ts) until a meaning is written.
@@ -150,7 +155,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   // Search engines show about 60 characters: lead with the reference and what the page offers.
   const title = `${ref} ${promise}${words ? ` | ${words}` : ''}`;
   // Hindi reference stays in the keywords ("श्रीमद्भगवद्गीता 2.47 का हिंदी अर्थ").
-  const refHi = `${meta.titleSanskrit ?? meta.title} ${chapterId}.${params.verseId}`;
+  const refHi = `${meta.titleSanskrit ?? meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
   const cleanSanskrit = cleanVerseField(found.verse.sanskrit).replace(/\s+/g, ' ').trim();
   // Hindi meaning leads the snippet (Hindi searchers are the main audience); English when no Hindi is published.
   const cleanTranslation = (has.hindi ? found.verse.hindi! : found.verse.translation || '').replace(/\s+/g, ' ').trim();
@@ -210,8 +215,11 @@ export default function VersePage({ params }: PageProps) {
   if (!found) return notFound();
 
   const { seeded, verses, index, verse } = found;
-  let prev = index > 0 ? verses[index - 1] : undefined;
-  let next = index < verses.length - 1 ? verses[index + 1] : undefined;
+  // The nearest verses that have a page (in the Ramcharitmanas only some do, lib/verse-paths.ts).
+  const before = verses.slice(0, index).reverse().find((v) => versePageHref(meta.id, chapterId, v.number));
+  const after = verses.slice(index + 1).find((v) => versePageHref(meta.id, chapterId, v.number));
+  let prev = before;
+  let next = after;
   let prevHref = prev ? versePageHref(meta.id, chapterId, prev.number) : undefined;
   let nextHref = next ? versePageHref(meta.id, chapterId, next.number) : undefined;
   let nextChapterId = chapterId;
@@ -221,9 +229,9 @@ export default function VersePage({ params }: PageProps) {
     const seededNeighbor = loadChapter(meta.id, neighborId);
     const list = seededNeighbor?.chapter.verses as SeedVerse[] | undefined;
     if (!list || list.length === 0) return undefined;
-    const verseEdge = which === 'first' ? list[0] : list[list.length - 1];
-    const href = versePageHref(meta.id, neighborId, verseEdge.number);
-    if (!href) return undefined;
+    const verseEdge = (which === 'first' ? list : [...list].reverse()).find((v) => versePageHref(meta.id, neighborId, v.number));
+    const href = verseEdge && versePageHref(meta.id, neighborId, verseEdge.number);
+    if (!verseEdge || !href) return undefined;
     return { verse: verseEdge, href };
   };
   if (!nextHref || !prevHref) {
@@ -261,7 +269,7 @@ export default function VersePage({ params }: PageProps) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   const verseHref = versePageHref(meta.id, chapterId, params.verseId) ?? '';
   const pageUrl = `${siteUrl}${verseHref.endsWith('/') ? verseHref : `${verseHref}/`}`;
-  const ref = `${meta.title} ${chapterId}.${params.verseId}`;
+  const ref = `${meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
   const hindi = plain(verse.hindi, 600);
   const english = plain(verse.translation, 600);
   const modified = scriptureLastChanged(meta.id)?.toISOString();
@@ -339,7 +347,7 @@ export default function VersePage({ params }: PageProps) {
     nextCandidates.push({
       id: `next:${meta.id}:${nextChapterId}:${next.number}`,
       kind: 'next',
-      title: `Continue with ${meta.title} ${nextChapterId}.${next.number}`,
+      title: `Continue with ${meta.title} ${formatVerseRef(meta.id, nextChapterId, next.number)}`,
       href: nextHref,
       reason: crosses ? 'It is the first verse of the next chapter.' : linked ? linked.reason : 'It is the next verse in the same chapter.',
       basis: `You are reading ${ref}.`,
@@ -374,6 +382,8 @@ export default function VersePage({ params }: PageProps) {
 
   return (
     <>
+      {/* The scripture's palette and folio material for everything on the page (display: contents, no box). */}
+      <div className="contents" data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(scriptureVibe(meta.id, meta.category))}>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -417,7 +427,10 @@ export default function VersePage({ params }: PageProps) {
           hindi: verse.hindi,
           hindiRange: verse.hindiRange,
           hindiSeeVerse: verse.hindiSeeVerse,
+          hindiReviewRequired: verse.hindiReviewRequired,
           translation: verse.translation,
+          translationRange: verse.translationRange,
+          translationSeeVerse: verse.translationSeeVerse,
           explanation,
           reflection: lesson,
           research: science,
@@ -458,6 +471,7 @@ export default function VersePage({ params }: PageProps) {
           (layer-reflection inside ReaderLayers above) without interrupting
           reading. Server HTML only.
         */}
+        <VerseAnswers scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} />
         <SourceStudyNotes
           scriptureId={meta.id}
           scriptureTitle={meta.title}
@@ -522,6 +536,7 @@ export default function VersePage({ params }: PageProps) {
           chapterHref={chapterHref}
         />
       </VerseReader>
+      </div>
     </>
   );
 }

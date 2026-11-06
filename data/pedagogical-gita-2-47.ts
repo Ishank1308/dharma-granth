@@ -234,11 +234,11 @@ export const GITA_2_47_PEDAGOGICAL: PedagogicalVerseData = {
   // 8. TRY THIS TODAY (< 15 mins)
   tryThisToday: {
     title: 'The 15-Minute Uncluttered Focus Sprint',
-    titleHi: '१५ मिनट का एकाग्र कर्म-अभ्यास',
+    titleHi: '15 मिनट का एकाग्र कर्म-अभ्यास',
     instructionEn:
       'Pick one important pending task today (studying one difficult topic, writing an important email, or drafting a plan). Put your phone on "Do Not Disturb" for exactly 15 minutes. Commit to doing the task with complete care, with zero checking of notifications, views, or thoughts of external approval.',
     instructionHi:
-      'आज अपनी टू-डू लिस्ट में से कोई एक महत्वपूर्ण काम चुनें (जैसे किसी कठिन विषय के दो पन्ने पढ़ना या कोई जरूरी काम निपटाना)। ठीक १५ मिनट के लिए फोन को साइलेंट करें और पूरी निष्ठा से केवल उस काम में डूब जाएं — बिना यह सोचे कि लोग क्या कहेंगे या इसका क्या नतीजा निकलेगा।',
+      'आज अपनी टू-डू लिस्ट में से कोई एक महत्वपूर्ण काम चुनें (जैसे किसी कठिन विषय के दो पन्ने पढ़ना या कोई जरूरी काम निपटाना)। ठीक 15 मिनट के लिए फोन को साइलेंट करें और पूरी निष्ठा से केवल उस काम में डूब जाएं — बिना यह सोचे कि लोग क्या कहेंगे या इसका क्या नतीजा निकलेगा।',
     duration: '< 15 minutes',
   },
 
@@ -282,8 +282,8 @@ export const GITA_2_47_PEDAGOGICAL: PedagogicalVerseData = {
   // 11. SOURCE TRANSPARENCY
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय २, श्लोक ४७ (Chapter 2, Verse 47)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २६ (Mahābhārata, Bhīṣma Parva 26.47)',
+    reference: 'अध्याय 2, श्लोक 47 (Chapter 2, Verse 47)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 26 (Mahābhārata, Bhīṣma Parva 26.47)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',

@@ -98,6 +98,25 @@ Once `dharmagranth.dev` serves from Cloudflare:
 2. In Google Search Console, add `dharmagranth.dev` as a Domain property and submit `https://dharmagranth.dev/sitemap.xml`.
 3. Delete `.github/workflows/deploy.yml` (already manual-only).
 
+## From pull request to live site
+
+- **CI on a pull request** (`ci.yml`) runs lint, type check and sitemap tests
+  in one job while another builds the export. The browser tests then run in
+  four parallel shards, and the same export is deployed as a preview at
+  `https://pr-<number>.dharma-granth.pages.dev` (linked in a comment on the
+  pull request; Cloudflare marks previews `noindex`). The required check
+  **Validate static export** passes only when lint, build and every shard pass.
+- **Merging** pushes to `master`. When the merged tree is exactly the one the
+  pull request's last passing CI run built, `deploy-cloudflare.yml` downloads
+  that export (kept three days as an Actions artifact) and deploys it without
+  building again. Files the preview already uploaded are not sent again. If
+  master moved in between, CI failed, or the artifact is gone, the deploy
+  builds and checks the export itself, as it always did.
+- **Auto-merge**: enable it under **Settings → General → Pull Requests →
+  Allow auto-merge**, and make **Validate static export** a required check on
+  `master` (**Settings → Branches**). A pull request set to auto-merge then
+  merges, and goes live, as soon as CI passes.
+
 ## Optional
 
 - **Web Analytics:** Workers & Pages → `dharma-granth` → Metrics → enable

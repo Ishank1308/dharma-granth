@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { REVEAL_SEQUENCE } from '@/app/components/motion/primitives';
 import {
@@ -26,13 +26,12 @@ import Link from 'next/link';
 import type { ScriptureCategory } from '@/data/types';
 import type { VerseHighlight } from '@/lib/useStudyProgress';
 import { resolveKeywordTarget } from '@/lib/keyword-links';
-import { toAsciiDigits, verseLines } from '@/lib/verse-format';
+import { isLongPassage, meaningState, MEANING_COPY, verseLines, verseMarkNumber, formatVerseRef } from '@/lib/verse-format';
 import { shareVerseUrl } from '@/lib/verse-paths';
 import { parseWordMeanings } from '@/lib/word-gloss';
 import { SITE_URL } from '@/lib/jsonld';
 import { ShareVerseButton } from './ShareVerseButton';
 import { GlossaryText } from './GlossaryTooltip';
-import { getVerseGraphicClass, getVerseGraphicStyle } from './verse-background';
 import { ContentLabelBadge } from './ContentLabels';
 import { ModernContextBody, ReflectionBody, parseModernContext } from './ModernContextBlock';
 import { ConnectedFlow, SacredSection } from '@/app/components/reader/SacredReadingFlow';
@@ -48,6 +47,8 @@ import type { ReadingDepth } from '@/lib/reading-depth';
 import { ActionMenu } from '@/app/components/primitives/ActionMenu';
 import { Collapsible } from '@/app/components/primitives/Collapsible';
 import { VerseStudyDisclosure } from '@/app/components/reader/VerseStudyDisclosure';
+import { MeaningPendingNote } from '@/app/components/MeaningPending';
+import type { NearbyMeaning } from '@/lib/verse-has-meaning';
 import dynamic from 'next/dynamic';
 import { useEverTrue } from '@/lib/use-ever-true';
 
@@ -63,9 +64,15 @@ export interface VerseCardData {
   transliteration?: string;
   translation?: string;
   translationSource?: 'ai';
+  /** This verse's English covers a range ("1.1-1.63", a whole hymn) translated together in the edition. */
+  translationRange?: string;
+  /** The English for this verse is stored on that verse (the first of its range). */
+  translationSeeVerse?: number | string;
   hindi?: string;
   hindiSource?: 'ai';
   hindiReviewRequired?: boolean;
+  /** Hindi from a printed edition, published before it was proofread (lib/ocr-hindi-review.ts). */
+  hindiUnproofread?: boolean;
   /** This verse's Hindi covers a range ("15-17") translated together in the edition. */
   hindiRange?: string;
   /** The Hindi for this verse is stored on that verse (the first of its range). */
@@ -119,7 +126,7 @@ const VIJNANA_CATEGORIES: Record<string, string> = {
 function DraftBadge({ lang }: { lang: 'hi' | 'en' }) {
   return (
     <span
-      className="inline-flex items-center gap-1 rounded-full border border-violet-200 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-300"
+      className="inline-flex items-center gap-1 text-[11px] font-medium text-violet-700/80 dark:text-violet-300/80"
       title="AI-सहायता से तैयार संपादकीय प्रारूप; किसी विद्वान ने अभी इसकी समीक्षा नहीं की · AI-assisted editorial draft; not yet reviewed by a person"
     >
       {lang === 'hi' ? 'संपादकीय प्रारूप · समीक्षा बाकी' : 'Editor draft · review pending'}
@@ -166,6 +173,9 @@ interface Props {
   onHighlight: (color: HighlightColor) => void;
   /** Opens full-screen focus contemplation mode on this verse */
   onOpenFocus?: () => void;
+  /** Spatial focus (liquid/SpatialShloka): the verse number lifts or lowers this verse. */
+  spatialFocused?: boolean;
+  onToggleSpatial?: () => void;
   /** Dedicated verse page, linked from the card so the URL survives hydration. */
   versePageHref?: string;
   /** Whether this verse is currently being recited */
@@ -178,6 +188,8 @@ interface Props {
   onOpenSvadhyaya?: (tab: 'concept' | 'parallel' | 'manana', data?: unknown) => void;
   /** Whether this verse is active during recitation or jump */
   isActive?: boolean;
+  /** For a verse without a meaning: the nearest verses in this chapter that have one. */
+  meaningNearby?: NearbyMeaning;
 }
 
 type HighlightColor = VerseHighlight['color'];
@@ -216,14 +228,52 @@ function isMostlyDevanagari(text: string | undefined): boolean {
 /** Quiet verse reference that stays legible without competing with the shloka. */
 function VerseReference({ label }: { label: string }) {
   return (
-    <span className="inline-flex h-11 min-w-11 shrink-0 items-center justify-center rounded-xl border border-saffron-200/80 bg-saffron-50/80 px-2 font-serif text-sm font-semibold tabular-nums text-saffron-800 dark:border-saffron-800/60 dark:bg-saffron-950/35 dark:text-saffron-200">
+    <span className="verse-ref font-serif text-sm font-semibold tabular-nums text-saffron-800 dark:text-saffron-300">
       {label}
     </span>
   );
 }
 
+/** One translation; a passage covering several verses carries its label, and a long one is folded under it. */
+function PassageText({ lang, label, long, className, children }: { lang: 'hi' | 'en'; label?: string; long: boolean; className: string; children: ReactNode }) {
+  const labelClass = `text-xs text-dharma-muted ${lang === 'hi' ? 'font-devanagari' : ''}`;
+  if (label && long) {
+    return (
+      <details>
+        <summary lang={lang} className={`cursor-pointer ${labelClass} font-medium`}>
+          {label}
+        </summary>
+        <p lang={lang} className={`mt-2 whitespace-pre-line ${className}`}>
+          {children}
+        </p>
+      </details>
+    );
+  }
+  return (
+    <>
+      {label && (
+        <p lang={lang} className={`mb-1 ${labelClass}`}>
+          {label}
+        </p>
+      )}
+      <p lang={lang} className={className}>
+        {children}
+      </p>
+    </>
+  );
+}
+
+/** A meaning not written yet in one language, said quietly in the slot it will fill. */
+function PendingMeaning({ lang, children }: { lang: 'hi' | 'en'; children: ReactNode }) {
+  return (
+    <p lang={lang} className={`text-sm italic text-dharma-muted ${lang === 'hi' ? 'font-devanagari' : ''}`}>
+      {children}
+    </p>
+  );
+}
+
 const iconButton =
-  'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card text-dharma-muted transition-colors duration-200 hover:border-saffron-300 hover:bg-saffron-50/60 hover:text-saffron-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 dark:hover:bg-saffron-950/40 dark:focus-visible:ring-offset-dharma-card';
+  'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-transparent text-dharma-muted/80 transition-colors duration-200 hover:bg-dharma-card-soft hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500';
 
 export function VerseCard({
   depth = 'study',
@@ -251,12 +301,15 @@ export function VerseCard({
   highlight,
   onHighlight,
   onOpenFocus,
+  spatialFocused = false,
+  onToggleSpatial,
   versePageHref,
   isReciting,
   onPlayRecitation,
   insight,
   onOpenSvadhyaya,
   isActive,
+  meaningNearby,
 }: Props) {
   const reduce = useReducedMotion();
 
@@ -420,18 +473,17 @@ export function VerseCard({
   const hasExplanation = Boolean(vyakhya || commentary);
   const scienceIsHi = meaning.scienceIsHi || isMostlyDevanagari(science);
   const lessonIsHi = meaning.lessonIsHi || isMostlyDevanagari(lesson);
-  const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null || v.hindiReviewRequired) && layers.hindi);
-  const showEnglish = Boolean(v.translation && layers.english);
+  // The अर्थ slot is always there for each language the reader shows; a meaning not written yet says so.
+  const state = meaningState(v);
+  const showHindi = layers.hindi;
+  const showEnglish = layers.english;
+  const bothPending = showHindi && showEnglish && state.hi === 'pending' && state.en === 'pending';
 
   const modernParsed = useMemo(() => (lesson ? parseModernContext(lesson) : null), [lesson]);
   const showArth = showHindi || showEnglish;
   const hasStudyContent = Boolean(
     v.wordMeaning || hasExplanation || science || lesson || literaryMeta.isCurated
     || insight?.marma || insight?.situations.length || v.keywords?.length || relatedTeachings?.length,
-  );
-  const hasMeaning = Boolean(
-    v.hindi || v.translation || v.hindiSeeVerse != null || v.hindiReviewRequired
-    || hasExplanation || science || lesson || literaryMeta.isCurated || insight?.marma,
   );
 
   // The shloka, transliteration and meanings reveal in that order through CSS (.reveal-seq / data-reveal in
@@ -441,78 +493,43 @@ export function VerseCard({
   return (
     <article
       id={`verse-${v.number}`}
-      className={`verse-card ${REVEAL_SEQUENCE} group relative scroll-mt-24 rounded-[28px] border bg-dharma-card transition-all duration-300 ${
+      className={`verse-card book-verse ${REVEAL_SEQUENCE} group relative scroll-mt-24 transition-all duration-300 ${
         isReciting
-          ? 'border-amber-400/80 ring-2 ring-amber-400/60 shadow-xl shadow-amber-500/15'
+          ? 'book-verse-ringed bg-amber-500/5 ring-2 ring-amber-400/50'
           : highlight
-          ? `${HIGHLIGHTS[highlight].ring} border-dharma-border`
-          : chantingMode
-          ? 'ring-2 ring-saffron-500/25 border-dharma-border'
-          : 'border-dharma-border'
-      } ${getVerseGraphicClass(category)}`}
+          ? `book-verse-ringed ${HIGHLIGHTS[highlight].ring}`
+          : ''
+      }`}
       style={{
-        ...getVerseGraphicStyle({ category, verseId: v.number }),
         contentVisibility: isActive || isReciting ? 'visible' : 'auto',
         containIntrinsicSize: 'auto 420px',
       }}
       aria-label={`श्लोक ${verseLabel}${isReciting ? ' · श्लोक उच्चारण चालू' : ''}${highlight ? ` · ${HIGHLIGHTS[highlight].label} हाइलाइट` : ''}`}
     >
-      <div className="relative p-4 sm:p-5 md:p-7">
+      <div className="relative px-1 py-2 sm:px-2">
         {/* ── Header ─────────────────────────────────────────── */}
-        <header className="mb-3 sm:mb-5 flex flex-wrap items-center gap-x-3 gap-y-3">
-          {onOpenFocus ? (
+        <header className="mb-2 flex items-center gap-3">
+          {onToggleSpatial || onOpenFocus ? (
             <button
               type="button"
-              onClick={onOpenFocus}
-              className="group/hdr flex items-center gap-3 rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dharma-card"
-              title="एकाग्रता मोड में पढ़ें (Focus Mode)"
+              onClick={onToggleSpatial ?? onOpenFocus}
+              aria-pressed={onToggleSpatial ? spatialFocused : undefined}
+              className="group/hdr flex min-h-11 min-w-11 items-center gap-3 rounded-lg px-1 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dharma-card"
+              title={onToggleSpatial ? (spatialFocused ? 'श्लोक नीचे रखें · Lower this verse' : 'श्लोक उठाएँ · Lift this verse into focus') : 'एकाग्रता मोड में पढ़ें (Focus Mode)'}
             >
-              <VerseReference label={toAsciiDigits(verseLabel)} />
-              <div className="shrink-0 whitespace-nowrap">
-                <p className="text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
-                  अध्याय {toAsciiDigits(chapterId)} · Chapter {toAsciiDigits(chapterId)}
-                </p>
-                <p className="font-serif text-base font-bold text-dharma-text group-hover/hdr:text-saffron-700 transition-colors">
-                  श्लोक · Verse
-                </p>
-              </div>
+              <span className="sr-only">श्लोक</span>
+              <VerseReference label={formatVerseRef(scriptureId, chapterId, verseLabel)} />
             </button>
           ) : (
-            <div className="flex items-center gap-3">
-              <VerseReference label={toAsciiDigits(verseLabel)} />
-              <div className="shrink-0 whitespace-nowrap">
-                <p className="text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
-                  अध्याय {toAsciiDigits(chapterId)} · Chapter {toAsciiDigits(chapterId)}
-                </p>
-                <p className="font-serif text-base font-bold text-dharma-text">श्लोक · Verse</p>
-              </div>
+            <div className="flex min-h-11 items-center gap-3 px-1">
+              <span className="sr-only">श्लोक</span>
+              <VerseReference label={formatVerseRef(scriptureId, chapterId, verseLabel)} />
             </div>
-          )}
-
-          {/* Inline Sandhi-Viccheda (Compound Split) Toggle Pill */}
-          {hasSplitData && (
-            <button
-              type="button"
-              onClick={() => {
-                setIsSandhiSplit(!isSandhiSplit);
-                setHoveredWordIndex(null);
-              }}
-              aria-pressed={isSandhiSplit}
-              title="संधि-विच्छेद (Split Compound Words)"
-              className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold transition border lg:min-h-0 lg:py-1 ${
-                isSandhiSplit
-                  ? 'border-saffron-500 bg-saffron-100/90 text-saffron-900 shadow-2xs dark:bg-saffron-950/60 dark:text-saffron-200 dark:border-saffron-700'
-                  : 'border-dharma-border/80 bg-dharma-card/80 text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
-              }`}
-            >
-              <ScrollText className="h-3.5 w-3.5 text-saffron-600 dark:text-saffron-400" />
-              <span>संधि-विच्छेद · Split Words</span>
-            </button>
           )}
 
           {/* Streamlined, calm toolbar: 3 essential icons + ActionMenu overflow. Never wraps awkwardly on mobile. */}
           <div
-            className="ml-auto flex shrink-0 items-center gap-1.5"
+            className="ml-auto flex shrink-0 items-center gap-0.5 transition-opacity duration-200 [@media(hover:hover)]:opacity-40 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-within:opacity-100"
             role="group"
             aria-label="श्लोक विकल्प (Verse actions)"
           >
@@ -551,7 +568,7 @@ export function VerseCard({
             </button>
 
             {/* Share */}
-            <span className="shrink-0 [&>button]:h-11 [&>button]:w-11">
+            <span className="shrink-0 [&>button]:h-11 [&>button]:w-11 [&>button]:border-transparent [&>button]:bg-transparent [&>button]:shadow-none [&>button]:backdrop-blur-none [&>button]:text-dharma-muted/80 [&>button:hover]:bg-dharma-card-soft [&>button:hover]:text-dharma-text">
               <ShareVerseButton
                 scriptureTitle={scriptureTitle}
                 chapterTitle={chapterTitle}
@@ -684,21 +701,9 @@ export function VerseCard({
 
         {/* ── The canonical verse remains the visual center of the card. ── */}
         {lines.length > 0 && (
-          <div className={`verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8 transition-colors ${
+          <div className={`verse-folio relative rounded-2xl px-2 py-4 text-center md:px-8 md:py-6 transition-colors ${
             isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
           }`}>
-            <div className="mb-3.5 flex flex-wrap items-center justify-center gap-2">
-              <ContentLabelBadge kind="mula" />
-              {chandas && (
-                <span
-                  className="inline-flex items-center gap-1 rounded-full border border-amber-300/60 bg-amber-50/80 px-2.5 py-0.5 text-[11px] font-semibold text-amber-900 shadow-2xs dark:border-amber-700/40 dark:bg-amber-950/40 dark:text-amber-200"
-                  title={`${chandas.descriptionHi} · ${chandas.description} (${chandas.syllables} वर्ण)`}
-                >
-                  <span className="font-serif text-amber-700 dark:text-amber-400 font-bold">छन्दः</span>
-                  <span>{chandas.name} · {chandas.nameEn}</span>
-                </span>
-              )}
-            </div>
             {isSandhiSplit && hasSplitData ? (
               <div data-reveal="1" className="mx-auto my-2 max-w-2xl text-center">
                 <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-amber-300/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-amber-950/30">
@@ -751,8 +756,12 @@ export function VerseCard({
                     </span>
                   );
                 })}
-                <span aria-hidden="true" className="mt-2 block font-bold text-saffron-700 dark:text-amber-300">
-                  ॥ {toAsciiDigits(verseLabel)} ॥
+                <span
+                  aria-hidden="true"
+                  className="verse-mark mt-2 block text-base font-semibold text-saffron-700/90 dark:text-amber-300/90"
+                  title={chandas ? `छन्दः ${chandas.name} · ${chandas.nameEn} (${chandas.syllables} वर्ण)` : undefined}
+                >
+                  ॥ {verseMarkNumber(verseLabel)} ॥
                 </span>
               </p>
             )}
@@ -820,7 +829,7 @@ export function VerseCard({
                     </button>
                   )}
                   <span
-                    className={`hidden text-[11px] text-dharma-muted sm:inline ${note ? '' : 'ml-auto'}`}
+                    className={`kbd-hint hidden text-[11px] text-dharma-muted sm:inline ${note ? '' : 'ml-auto'}`}
                     aria-hidden="true"
                   >
                     Ctrl + Enter
@@ -842,87 +851,130 @@ export function VerseCard({
 
         {!chantingMode && (
           <div className="sacred-flow-wrap mt-5" data-reveal="3">
-            {/* Dialogue context for the verse above; renders nothing without dialogue data. */}
-            <SamvadaStrip scriptureId={scriptureId} chapterId={chapterId} verseNumber={v.number} />
-
             {/* ── Arth: the literal meaning, always first after the verse ── */}
             {showArth && (
-              <SacredSection id={`verse-${v.number}-arth`} section="arth">
-              <div className="overflow-hidden rounded-2xl border border-dharma-border/70 bg-dharma-card-soft/40 divide-y divide-dharma-border/70">
+              <section id={`verse-${v.number}-arth`} aria-label={`अर्थ · Meaning, ${formatVerseRef(scriptureId, chapterId, verseLabel)}`}>
+              <div className="space-y-4">
+                {bothPending ? (
+                  <div className="flex flex-col gap-3">
+                    {/* No meaning in either language: why, the transliteration when that layer is off, and the nearest verses with one. */}
+                    <MeaningPendingNote
+                      chapterId={chapterId}
+                      transliteration={!layers.translit ? v.transliteration : undefined}
+                      nearby={meaningNearby}
+                    />
+                    {!chantingMode && (
+                      <button
+                        type="button"
+                        onClick={onContribute}
+                        className="inline-flex min-h-[44px] items-center gap-1 self-start text-xs font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300"
+                      >
+                        <Edit3 className="h-3.5 w-3.5" aria-hidden="true" />
+                        <span lang="hi" className="font-devanagari">अर्थ सुझाएँ</span>
+                        <span lang="en">Suggest one</span>
+                      </button>
+                    )}
+                  </div>
+                ) : (
+                <>
                 {showHindi && (
-                  <div className={`p-4 sm:p-5 transition-colors duration-200 ${
+                  <div className={`-mx-2 rounded-xl px-2 py-1 transition-colors duration-200 ${
                     isReciting && activeTranslationLang === 'hi'
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''
                   }`}>
-                    <div className="mb-2 flex items-center justify-between gap-2">
-                      <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                        {v.hindiReviewRequired
-                          ? 'हिन्दी अर्थ · स्रोत सत्यापनाधीन'
-                          : v.hindiRange
-                          ? `श्लोक ${toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिंदी अनुवाद · Hindi Translation`
-                          : 'हिंदी अनुवाद · Hindi Translation'}
+                    {state.hi === 'text' && v.hindiUnproofread && (
+                      <p className="mb-1 text-xs text-dharma-muted">
+                        <span lang="hi" className="font-devanagari">{MEANING_COPY.hiUnproofread}</span>{' '}
+                        <span aria-hidden="true">·</span> <span lang="en">From the printed edition, not yet proofread</span>
                       </p>
-                      {!v.hindiReviewRequired && <ContentLabelBadge kind="literal" />}
-                    </div>
-                    {!v.hindi && v.hindiSeeVerse != null && (
+                    )}
+                    {state.hi === 'text' && (
+                      <PassageText
+                        lang="hi"
+                        label={v.hindiRange ? MEANING_COPY.hiRange(v.hindiRange) : undefined}
+                        long={Boolean(v.hindiRange) && isLongPassage(v.hindi)}
+                        className={`font-devanagari ${translationFontSizeClass} text-dharma-text`}
+                      >
+                        <GlossaryText text={v.hindi!} />
+                        {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
+                          <span className="ml-2 align-middle"><DraftBadge lang="hi" /></span>
+                        )}
+                        {v.hindiSource === 'ai' && (
+                          <span
+                            className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
+                            title="संस्कृत से मशीन-अनुवादित; विद्वत् अनुवाद नहीं"
+                          >
+                            AI अनुवाद
+                          </span>
+                        )}
+                      </PassageText>
+                    )}
+                    {state.hi === 'review' && (
                       <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-muted">
-                        इस श्लोक का अर्थ श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
+                        {MEANING_COPY.hiReview}
+                      </p>
+                    )}
+                    {state.hi === 'with' && (
+                      <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-muted">
                         <a href={`#verse-${v.hindiSeeVerse}`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
-                          देखें श्लोक {toAsciiDigits(String(v.hindiSeeVerse))} ↑
+                          {MEANING_COPY.hiWith(v.hindiSeeVerse!)}
                         </a>
                       </p>
                     )}
-                    <p lang="hi" className={`font-devanagari ${translationFontSizeClass} text-dharma-text`}>
-                      {v.hindiReviewRequired
-                        ? 'हिन्दी अर्थ स्रोत-संस्करण से सत्यापनाधीन है।'
-                        : v.hindi && <GlossaryText text={v.hindi} />}
-                      {!v.hindiReviewRequired && meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
-                        <span className="ml-2 align-middle"><DraftBadge lang="hi" /></span>
-                      )}
-                      {!v.hindiReviewRequired && v.hindiSource === 'ai' && (
-                        <span
-                          className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
-                          title="संस्कृत से मशीन-अनुवादित; विद्वत् अनुवाद नहीं"
-                        >
-                          AI अनुवाद
-                        </span>
-                      )}
-                    </p>
+                    {state.hi === 'pending' && (
+                      <PendingMeaning lang="hi">{MEANING_COPY.hiPending}</PendingMeaning>
+                    )}
                   </div>
                 )}
 
                 {showEnglish && (
-                  <div className={`p-4 sm:p-5 transition-colors duration-200 ${
+                  <div className={`-mx-2 rounded-xl px-2 py-1 transition-colors duration-200 ${
                     isReciting && activeTranslationLang === 'en'
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''
                   }`}>
-                    <div className="mb-2 flex items-center justify-between gap-2">
-                      <p lang="en" className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                        English Translation
+                    {state.en === 'text' && (
+                      <PassageText
+                        lang="en"
+                        label={v.translationRange ? MEANING_COPY.enRange(v.translationRange) : undefined}
+                        long={Boolean(v.translationRange) && isLongPassage(v.translation)}
+                        className={`font-serif ${translationFontSizeClass} text-dharma-text`}
+                      >
+                        {v.translation}
+                        {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
+                          <span className="ml-2 align-middle"><DraftBadge lang="en" /></span>
+                        )}
+                        {v.translationSource === 'ai' && (
+                          <span
+                            className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
+                            title={STUDY_TRANSLATION_SHORT.detail}
+                          >
+                            {STUDY_TRANSLATION_SHORT.en}
+                          </span>
+                        )}
+                      </PassageText>
+                    )}
+                    {state.en === 'with' && (
+                      <p lang="en" className="text-sm leading-relaxed text-dharma-muted">
+                        <a href={`#verse-${v.translationSeeVerse}`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                          {MEANING_COPY.enWith(v.translationSeeVerse!)}
+                        </a>
                       </p>
-                      <ContentLabelBadge kind="literal" />
-                    </div>
-                    <p lang="en" className={`font-serif ${translationFontSizeClass} text-dharma-text`}>
-                      {v.translation}
-                      {meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
-                        <span className="ml-2 align-middle"><DraftBadge lang="en" /></span>
-                      )}
-                      {v.translationSource === 'ai' && (
-                        <span
-                          className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
-                          title={STUDY_TRANSLATION_SHORT.detail}
-                        >
-                          {STUDY_TRANSLATION_SHORT.en}
-                        </span>
-                      )}
-                    </p>
+                    )}
+                    {state.en === 'pending' && (
+                      <PendingMeaning lang="en">{MEANING_COPY.enPending}</PendingMeaning>
+                    )}
                   </div>
                 )}
+                </>
+                )}
               </div>
-              </SacredSection>
+              </section>
             )}
+
+            {/* Dialogue context for the verse above; renders nothing without dialogue data. */}
+            <SamvadaStrip scriptureId={scriptureId} chapterId={chapterId} verseNumber={v.number} />
 
             {hasStudyContent && (
               <VerseStudyDisclosure
@@ -1111,11 +1163,11 @@ export function VerseCard({
                             {meaning.editorial ? (
                               <span className="flex flex-wrap items-center gap-1.5">
                                 {VIJNANA_CATEGORIES[meaning.editorial.vijnanaCategory] && (
-                                  <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold text-indigo-700 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-300">
+                                  <span data-content-label="vijnana" className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold text-indigo-700 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-300">
                                     {VIJNANA_CATEGORIES[meaning.editorial.vijnanaCategory]}
                                   </span>
                                 )}
-                                <span className="rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-2 py-0.5 text-[10px] font-semibold text-dharma-muted">
+                                <span data-content-label="editorial" className="rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-2 py-0.5 text-[10px] font-semibold text-dharma-muted">
                                   संपादकीय अवलोकन · Editorial observation
                                 </span>
                                 <DraftBadge lang="hi" />
@@ -1309,18 +1361,6 @@ export function VerseCard({
               </VerseStudyDisclosure>
             )}
 
-            {!hasMeaning && (
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-dashed border-dharma-border bg-dharma-bg/60 p-4">
-                <p className="text-sm text-dharma-muted">इस श्लोक का अर्थ अभी जोड़ा जाना बाकी है।</p>
-                <button
-                  type="button"
-                  onClick={onContribute}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-saffron-300 bg-saffron-50 px-3 py-1.5 text-xs font-bold text-saffron-800 transition hover:bg-saffron-100 dark:bg-saffron-500/10 dark:text-saffron-200"
-                >
-                  <Edit3 className="h-3.5 w-3.5" aria-hidden="true" /> पहला अर्थ जोड़ें
-                </button>
-              </div>
-            )}
 
           </div>
         )}

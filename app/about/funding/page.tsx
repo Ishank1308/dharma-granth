@@ -99,14 +99,6 @@ export default function FundingPage() {
               <span aria-hidden="true" className="mx-1.5">·</span>
               <span lang="en">Contribute</span>
             </Link>
-            <a
-              href="https://github.com/Ishank567/dharma-granth"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-11 items-center rounded-full border border-dharma-border px-5 py-2.5 text-sm font-semibold text-dharma-text transition hover:border-saffron-400"
-            >
-              Source code
-            </a>
             <Link
               href="/sources/"
               className="inline-flex min-h-11 items-center rounded-full border border-dharma-border px-5 py-2.5 text-sm font-semibold text-dharma-text transition hover:border-saffron-400"

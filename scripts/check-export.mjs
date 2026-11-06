@@ -33,7 +33,7 @@ const KEY_PAGES = [
   '/scripture/bhagavadgita/',
   '/scripture/bhagavadgita/chapter/2/',
   '/learn/',
-  '/learn/pathways/',
+  '/learn/plans/',
   '/practice/',
   '/learn/start/',
   '/learn/journeys/',
@@ -177,6 +177,9 @@ for (const route of KEY_PAGES) {
     ['Cloudflare', cloudflareRules, /^\/start-here\s+\/learn\/start\//m],
     ['Cloudflare', cloudflareRules, /^\/sadhana\/?\s+\/practice\//m],
     ['Cloudflare', cloudflareRules, /^\/topics\s+\/wisdom-for-life\//m],
+    ['Cloudflare', cloudflareRules, /^\/learn\/paths\/\s+\/learn\/plans\/\s+301/m],
+    ['Cloudflare', cloudflareRules, /^\/learn\/pathways\/\s+\/learn\/#courses\s+301/m],
+    ['Cloudflare', cloudflareRules, /^\/pathways\/\s+\/wisdom-pathways\/\s+301/m],
     ['Netlify', netlifyRules, /from\s*=\s*"\/start-here"[\s\S]*?to\s*=\s*"\/learn\/start\/"/],
     ['Netlify', netlifyRules, /from\s*=\s*"\/sadhana"[\s\S]*?to\s*=\s*"\/practice\/"/],
     ['Netlify', netlifyRules, /from\s*=\s*"\/topics"[\s\S]*?to\s*=\s*"\/wisdom-for-life\/"/],
@@ -208,6 +211,11 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
   const listSrc = /VERSE_PAGE_SCRIPTURE_IDS\s*=\s*\[([^\]]*)\]/.exec(idsSrc)?.[1] ?? '';
   const ids = [...listSrc.matchAll(/'([^']+)'/g)].map((m) => m[1]);
   if (ids.length === 0) fail('verse pages', 'could not read VERSE_PAGE_SCRIPTURE_IDS from lib/verse-paths.ts');
+  // Scriptures with only some verse pages (lib/verse-page-subset.generated.ts) expect only those.
+  const subsetSrc = readFileSync(join(ROOT, 'lib/verse-page-subset.generated.ts'), 'utf8');
+  const subsetJson = /VERSE_PAGE_SUBSET[^=]*=\s*(\{[\s\S]*\});/.exec(subsetSrc)?.[1];
+  if (!subsetJson) fail('verse pages', 'could not read VERSE_PAGE_SUBSET from lib/verse-page-subset.generated.ts');
+  const subsets = new Map(Object.entries(JSON.parse(subsetJson ?? '{}')).map(([id, keys]) => [id, new Set(keys)]));
   let expected = 0;
   let missing = 0;
   let sample = '';
@@ -218,6 +226,7 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
     for (const chapter of book.chapters ?? []) {
       for (const verse of chapter.verses ?? []) {
         if (!/^[0-9A-Za-z]+(?:[.\-][0-9A-Za-z]+)*$/.test(String(verse.number))) continue;
+        if (subsets.has(id) && !subsets.get(id).has(`${chapter.number}:${verse.number}`)) continue;
         expected++;
         const html = pageHtml(`/scripture/${id}/chapter/${chapter.number}/verse/${verse.number}/`);
         // The FAQ structured data is built from the verse's Hindi / English meaning, so a verse
@@ -239,13 +248,18 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
   else verseScripts = `${expected} verse pages across ${ids.length} scriptures`;
 }
 
-// ── 4. Pathways ship their course content, not just a shell ──
+// ── 4. Plans ship their content, not just a shell ──
+// (/learn/paths/ was merged into /learn/plans/; its study orders and guided
+// readings must still be in the exported HTML for crawlers.)
 {
-  const html = pageHtml('/learn/pathways/') ?? '';
-  const steps = (html.match(/id="pathway-steps-/g) ?? []).length;
-  const stepTitles = (html.match(/<h4\b/g) ?? []).length;
-  if (steps === 0 || stepTitles === 0) {
-    fail('/learn/pathways/', `pathway steps missing from the exported HTML (${steps} panels, ${stepTitles} step titles)`);
+  const html = pageHtml('/learn/plans/') ?? '';
+  const sections = ['reading-plans', 'study-orders', 'guided-readings'].filter((id) => !html.includes(`id="${id}"`));
+  const verseTitles = (html.match(/<h5\b/g) ?? []).length;
+  if (sections.length > 0 || verseTitles === 0) {
+    fail('/learn/plans/', `plan content missing from the exported HTML (sections missing: ${sections.join(', ') || 'none'}, ${verseTitles} guided verse titles)`);
+  }
+  if (!(pageHtml('/learn/') ?? '').includes('id="courses"')) {
+    fail('/learn/', 'course grid (#courses, target of the /learn/pathways/ 301) is missing');
   }
 }
 
@@ -269,6 +283,12 @@ for (const file of readdirSync(SOURCE).filter((f) => f.endsWith('.json'))) {
     fail(id, `source JSON unreadable: ${err.message}`);
     continue;
   }
+  // Publishing can leave a chapter's verses out on purpose (filler chapters, scripts/lib/filler-chapters.ts): the page
+  // must carry what the published manifest lists, which is the source count everywhere else.
+  const manifestPath = join(SOURCE, id, 'manifest.json');
+  const published = existsSync(manifestPath)
+    ? new Map(JSON.parse(readFileSync(manifestPath, 'utf8')).chapters.map((c) => [String(c.number), c.verseCount]))
+    : new Map();
   for (const chapter of source.chapters ?? []) {
     chaptersChecked++;
     const ref = `${id} ch${chapter.number}`;
@@ -277,7 +297,7 @@ for (const file of readdirSync(SOURCE).filter((f) => f.endsWith('.json'))) {
       fail(ref, 'chapter page was not exported');
       continue;
     }
-    const want = chapter.verses?.length ?? 0;
+    const want = published.get(String(chapter.number)) ?? chapter.verses?.length ?? 0;
     const html = readFileSync(pagePath, 'utf8');
     const cards = (h) => new Set(h.match(/<article[^>]*\bid="verse-[^"]+"/g) ?? []).size;
     let got = cards(html);

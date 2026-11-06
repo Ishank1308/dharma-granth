@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
-import { ISSUES_REPO } from '@/lib/reader-actions';
 import { getRealVerseCount } from '@/data/scriptures';
 import { formatCount } from '@/lib/holdings-label';
 
@@ -115,12 +114,8 @@ export default function MethodologyPage() {
 
         <h2 id="corrections" className={h2}>7. Corrections</h2>
         <p className={p}>
-          Every verse page has a “Report correction” button. It opens a prefilled issue on{' '}
-          <a href={`${ISSUES_REPO}/issues`} className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          . Nothing is sent until you press “Create issue” there, and this site stores nothing about you. Fixes are made in the project
-          repository, whose public history is the record of what changed and when. There is no separate correction log on the site yet.
+          There is no public channel for reporting corrections yet; one will be listed on the Contact page once it is set up. Fixes are
+          made in the project repository. There is no separate correction log on the site yet.
         </p>
 
         <h2 id="rights" className={h2}>8. Rights information</h2>
