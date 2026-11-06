@@ -117,11 +117,11 @@ export function DailyVerse() {
             {/* Top Bar: Badge, Date & Audio Controls */}
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <span className="text-[13px] font-semibold text-dharma-saffron">
+                <span className="text-footnote font-semibold text-dharma-saffron">
                   <span>Verse of the day</span> <span aria-hidden="true">·</span>{' '}
                   <span lang="hi" className="font-devanagari">दैनिक श्लोक</span>
                 </span>
-                <span className="hidden text-[13px] text-dharma-muted sm:inline" suppressHydrationWarning>
+                <span className="hidden text-footnote text-dharma-muted sm:inline" suppressHydrationWarning>
                   {dateStr}
                 </span>
               </div>
@@ -192,7 +192,7 @@ export function DailyVerse() {
               <p className="text-body leading-relaxed text-dharma-text sm:text-[19px]">
                 {wisdom.translation}
               </p>
-              <p lang="hi" className="font-devanagari text-[16px] leading-relaxed text-dharma-text-secondary">
+              <p lang="hi" className="font-devanagari text-callout leading-relaxed text-dharma-text-secondary">
                 {wisdom.hindi}
               </p>
             </div>
@@ -201,7 +201,7 @@ export function DailyVerse() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
               {/* Life Application */}
               <div className="space-y-1 rounded-group bg-dharma-text/[0.04] p-4">
-                <p className="flex items-center gap-1 text-[13px] font-semibold text-dharma-text">
+                <p className="flex items-center gap-1 text-footnote font-semibold text-dharma-text">
                   <Compass className="w-3 h-3" />
                   <span>जीवन में प्रयोग · Practical Application</span>
                 </p>
@@ -212,7 +212,7 @@ export function DailyVerse() {
 
               {/* Reflection Prompt */}
               <div className="space-y-1 rounded-group bg-dharma-text/[0.04] p-4">
-                <p className="flex items-center gap-1 text-[13px] font-semibold text-dharma-text">
+                <p className="flex items-center gap-1 text-footnote font-semibold text-dharma-text">
                   <Target className="w-3 h-3" />
                   <span>आज का आत्म-चिंतन · Reflection Prompt</span>
                 </p>
@@ -225,13 +225,13 @@ export function DailyVerse() {
             {/* Daily Sadhana Challenge Strip */}
             <div className="flex flex-col justify-between gap-3 rounded-group bg-dharma-text/[0.04] p-4 sm:flex-row sm:items-center">
               <div className="space-y-0.5">
-                <span className="text-[13px] font-semibold text-dharma-text">
+                <span className="text-footnote font-semibold text-dharma-text">
                   <span>One step today</span> <span lang="hi" className="font-devanagari font-normal text-dharma-muted">आज का संकल्प</span>
                 </span>
                 <p lang="hi" className="font-devanagari text-[14px] text-dharma-text">
                   {toAsciiDigits(wisdom.dailyChallengeHi)}
                 </p>
-                <p className="text-[13px] text-dharma-text-secondary">
+                <p className="text-footnote text-dharma-text-secondary">
                   {toAsciiDigits(wisdom.dailyChallenge)}
                 </p>
               </div>
@@ -255,7 +255,7 @@ export function DailyVerse() {
 
             {/* Bottom Citation & Actions */}
             <div className="flex flex-wrap items-center justify-between gap-4 border-t border-dharma-text/10 pt-4">
-              <span className="text-[13px] text-dharma-muted">
+              <span className="text-footnote text-dharma-muted">
                 {wisdom.scriptureTitle} ({wisdom.scriptureTitleSanskrit}) • Chapter {wisdom.chapterId} • Verse {wisdom.verseId}
               </span>
 
@@ -334,7 +334,7 @@ function DailyNote({ id }: { id: string }) {
             /* this browser blocked storage */
           }
         }}
-        className="mt-1 w-full rounded-[12px] border-0 bg-dharma-text/[0.06] p-3 text-[15px] text-dharma-text"
+        className="mt-1 w-full rounded-field border-0 bg-dharma-text/[0.06] p-3 text-subhead text-dharma-text"
       />
       <span lang="hi" className="mt-1 block text-xs text-dharma-text-secondary">यह टिप्पणी इसी ब्राउज़र में रहती है।</span>
     </label>

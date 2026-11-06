@@ -26,7 +26,7 @@ export function AccuracyNotice({
           </div>
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[13px] text-dharma-muted">
+              <span className="text-footnote text-dharma-muted">
                 शैक्षणिक पंचांग · Educational Calendar Notice
               </span>
               <span className="rounded-full bg-dharma-text/[0.06] px-2 py-0.5 text-[11px] text-dharma-text-secondary">
@@ -53,7 +53,7 @@ export function AccuracyNotice({
             onClick={() => setIsExpanded((prev) => !prev)}
             aria-expanded={isExpanded}
             aria-controls="accuracy-factors-content"
-            className="inline-flex min-h-11 items-center gap-1.5 text-[15px] text-dharma-saffron"
+            className="inline-flex min-h-11 items-center gap-1.5 text-subhead text-dharma-saffron"
           >
             <span>{isExpanded ? 'Hide Details' : 'View 5 Factors'}</span>
             {isExpanded ? (

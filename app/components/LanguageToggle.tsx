@@ -49,7 +49,7 @@ export function LanguageToggle({ className = '' }: { className?: string }) {
         aria-haspopup="listbox"
         aria-label={`भाषा प्राथमिकता: ${currentOption.label}`}
         title={`भाषा प्राथमिकता: ${currentOption.label}`}
-        className="apple-icon-button h-9 gap-1.5 px-2.5 text-[13px]"
+        className="apple-icon-button h-9 gap-1.5 px-2.5 text-footnote"
       >
         <Globe className="h-4 w-4" aria-hidden="true" />
         <span className="max-w-[70px] truncate sm:max-w-none">

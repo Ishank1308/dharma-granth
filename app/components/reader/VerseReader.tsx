@@ -126,7 +126,7 @@ const iconBtn =
   'focus-ring apple-icon-button h-11 w-11 shrink-0';
 
 const actionBtn =
-  'focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-dharma-text/[0.06] px-4 text-[15px] text-dharma-text transition hover:bg-dharma-text/[0.1] disabled:cursor-not-allowed disabled:opacity-50';
+  'focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-dharma-text/[0.06] px-4 text-subhead text-dharma-text transition hover:bg-dharma-text/[0.1] disabled:cursor-not-allowed disabled:opacity-50';
 
 export function VerseReader(props: VerseReaderProps) {
   const {
@@ -556,7 +556,7 @@ export function VerseReader(props: VerseReaderProps) {
               aria-haspopup="dialog"
               className="focus-ring inline-flex min-h-[52px] flex-col items-center justify-center rounded-xl px-4 text-center transition hover:bg-dharma-card"
             >
-              <span className="inline-flex items-center gap-1 text-[13px] text-dharma-muted">
+              <span className="inline-flex items-center gap-1 text-footnote text-dharma-muted">
                 Verse {index + 1} of {total} · jump to verse <ChevronDown className="h-3 w-3" aria-hidden="true" />
               </span>
             </button>
@@ -565,7 +565,7 @@ export function VerseReader(props: VerseReaderProps) {
 
           <header className="mb-8 text-center">
             <p className="text-sm font-semibold text-dharma-saffron">{chapterTitle}</p>
-            <h1 className="mt-1 text-[30px] font-semibold leading-tight tracking-[-0.03em] text-dharma-text sm:text-[40px]">{label}</h1>
+            <h1 className="mt-1 text-title-1 font-semibold text-dharma-text">{label}</h1>
           </header>
 
           {settings.focusMode && (
@@ -713,7 +713,7 @@ export function VerseReader(props: VerseReaderProps) {
           )}
 
           {/* A deliberate stopping point: the reader may continue, note, or simply stop. */}
-          <section aria-labelledby="verse-pause-h" data-focus-hide className="mt-8 rounded-[18px] bg-dharma-card p-5 text-[15px]">
+          <section aria-labelledby="verse-pause-h" data-focus-hide className="mt-8 rounded-[18px] bg-dharma-card p-5 text-subhead">
             <h2 id="verse-pause-h" className="text-base font-semibold text-dharma-text">
               <span>Pause here</span> <span lang="hi" className="font-devanagari text-dharma-muted">विराम</span>
             </h2>

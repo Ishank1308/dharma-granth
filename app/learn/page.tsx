@@ -2,6 +2,7 @@
 
 import { useState, useMemo, type CSSProperties } from 'react';
 import Link from 'next/link';
+import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { learningPaths, type LearningPath, type LearningFormat } from '@/data/learning-paths';
 import { useStudyProgress } from '@/lib/useStudyProgress';
 import { CalmProgress } from '@/app/components/CalmProgress';
@@ -103,22 +104,20 @@ export default function LearnPage() {
   return (
     <main className="apple-scope min-h-screen bg-dharma-bg pb-24 text-dharma-text">
       <JsonLd data={LEARN_JSON_LD} />
-      <header className="mx-auto max-w-content px-5 pb-2 pt-10 sm:px-6 sm:pt-16">
-        <p className="text-[13px] font-semibold text-dharma-saffron">
-          <span>Learn</span> <span aria-hidden="true">·</span>{' '}
-          <span lang="sa">स्वाध्यायान्मा प्रमदः</span>
-        </p>
-        <h1 className="mt-2 text-[34px] font-semibold leading-[1.08] tracking-[-0.03em] text-dharma-text sm:text-5xl">
-          <span>Study the scriptures</span>{' '}
-          <span lang="hi" className="mt-1 block font-devanagari text-2xl font-normal tracking-normal text-dharma-muted sm:text-[30px]">
-            शास्त्र स्वाध्याय
-          </span>
-        </h1>
-        <p className="mt-4 max-w-2xl text-body leading-relaxed text-dharma-muted">
-          Guided paths through the Vedas, Upanishads, Gita and the epics, with flashcards, mind maps, timelines and short
-          questions. Go at your own pace; your progress stays on this device.
-        </p>
-        <p className="mt-3 text-[15px] text-dharma-muted">
+      <PageHeader
+        eyebrow="Learn"
+        eyebrowHi="स्वाध्यायान्मा प्रमदः"
+        eyebrowLang="sa"
+        title="Study the scriptures"
+        titleHi="शास्त्र स्वाध्याय"
+        lead={
+          <p>
+            Guided paths through the Vedas, Upanishads, Gita and the epics, with flashcards, mind maps, timelines and short
+            questions. Go at your own pace; your progress stays on this device.
+          </p>
+        }
+      >
+        <p className="mt-3 text-subhead text-dharma-muted">
           <span>
             {learningPaths.length} paths · {totalLessons} lessons
             {totalCompletedLessons > 0 ? ` · ${totalCompletedLessons} read` : ''}
@@ -129,10 +128,10 @@ export default function LearnPage() {
             <span aria-hidden="true">›</span>
           </Link>
         </p>
-      </header>
+      </PageHeader>
 
       {/* ── Where to begin: one hub for starting points, journeys, plans and courses ── */}
-      <section aria-labelledby="learn-start-heading" className="mx-auto max-w-content px-5 pt-10 sm:px-6">
+      <section aria-labelledby="learn-start-heading" className="mx-auto max-w-content px-gutter pt-10">
         <h2 id="learn-start-heading" className="sr-only">Where to begin</h2>
         <ul className="grid grid-cols-2 gap-3 lg:grid-cols-3">
           {PORTALS.map(({ href, en, hi, sub, Icon, chip }) => (
@@ -142,8 +141,8 @@ export default function LearnPage() {
                   <Icon className="h-4 w-4" />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-[15px] font-semibold leading-snug tracking-[-0.02em] text-dharma-text sm:text-body">{en}</span>{' '}
-                  <span lang="hi" className="block font-devanagari text-[13px] text-dharma-muted">{hi}</span>{' '}
+                  <span className="block text-subhead font-semibold leading-snug tracking-[-0.02em] text-dharma-text sm:text-body">{en}</span>{' '}
+                  <span lang="hi" className="block font-devanagari text-footnote text-dharma-muted">{hi}</span>{' '}
                   <span className="mt-1 hidden text-[14px] leading-snug text-dharma-muted sm:block">{sub}</span>
                 </span>
               </Link>
@@ -153,14 +152,13 @@ export default function LearnPage() {
       </section>
 
       {/* ── Guided Learning Pathways (also the target of the /learn/pathways/ 301) ── */}
-      <section id="courses" aria-labelledby="courses-heading" className="mx-auto max-w-content scroll-mt-24 px-5 pt-16 sm:px-6">
-        <div className="mb-5">
-          <h2 id="courses-heading" className="text-[24px] font-semibold tracking-[-0.025em] text-dharma-text sm:text-[32px]">
-            <span>Learning paths</span>{' '}
-            <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">अध्ययन मार्ग</span>
-          </h2>
-          <p className="mt-1 text-[15px] text-dharma-muted">Step-by-step paths for steady, lifelong study.</p>
-        </div>
+      <section id="courses" aria-labelledby="courses-heading" className="mx-auto max-w-content scroll-mt-24 px-gutter pt-16">
+        <SectionTitle
+          id="courses-heading"
+          title="Learning paths"
+          titleHi="अध्ययन मार्ग"
+          sub="Step-by-step paths for steady, lifelong study."
+        />
 
         {/* Filters: a segmented control, a filled search field and quiet format pills */}
         <div className="mb-6 flex flex-col gap-3">
@@ -207,7 +205,7 @@ export default function LearnPage() {
                 type="button"
                 aria-pressed={selectedFormat === fmt.id}
                 onClick={() => setSelectedFormat(fmt.id)}
-                className={`min-h-9 rounded-full px-3.5 text-[13px] transition ${
+                className={`min-h-9 rounded-full px-3.5 text-footnote transition ${
                   selectedFormat === fmt.id
                     ? 'bg-dharma-text text-dharma-bg'
                     : 'bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
@@ -233,23 +231,23 @@ export default function LearnPage() {
               <article key={course.id} className="apple-card flex flex-col overflow-hidden">
                 <div className="flex-1 p-5 sm:p-6">
                   <div className="flex items-start gap-3">
-                    <span aria-hidden="true" className="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-dharma-text/[0.05] text-2xl">
+                    <span aria-hidden="true" className="grid h-11 w-11 shrink-0 place-items-center rounded-field bg-dharma-text/[0.05] text-2xl">
                       {course.icon}
                     </span>
                     <div className="min-w-0">
-                      <span lang="sa" className="block text-[15px] leading-snug text-dharma-saffron">{course.titleSanskrit}</span>
-                      <h3 className="text-[19px] font-semibold leading-tight tracking-[-0.02em] text-dharma-text">{course.title}</h3>
+                      <span lang="sa" className="block text-subhead leading-snug text-dharma-saffron">{course.titleSanskrit}</span>
+                      <h3 className="text-title-3 font-semibold leading-tight text-dharma-text">{course.title}</h3>
                     </div>
                     {isFinished && (
-                      <span className="ml-auto inline-flex shrink-0 items-center gap-1 text-[13px] text-emerald-700 dark:text-emerald-400">
+                      <span className="ml-auto inline-flex shrink-0 items-center gap-1 text-footnote text-emerald-700 dark:text-emerald-400">
                         <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Complete
                       </span>
                     )}
                   </div>
 
-                  <p className="mt-3 line-clamp-3 text-[15px] leading-relaxed text-dharma-text-secondary">{course.learningObjective}</p>
+                  <p className="mt-3 line-clamp-3 text-subhead leading-relaxed text-dharma-text-secondary">{course.learningObjective}</p>
 
-                  <p className="mt-3 text-[13px] text-dharma-muted">
+                  <p className="mt-3 text-footnote text-dharma-muted">
                     <span>{level}</span>
                     <span aria-hidden="true"> · </span>
                     <span>{course.lessons.length} lessons</span>
@@ -285,7 +283,7 @@ export default function LearnPage() {
                     type="button"
                     aria-expanded={isExpanded}
                     onClick={() => setExpandedCourseId(isExpanded ? null : course.id)}
-                    className="inline-flex min-h-11 items-center gap-1 text-[15px] text-dharma-saffron"
+                    className="inline-flex min-h-11 items-center gap-1 text-subhead text-dharma-saffron"
                   >
                     <span>{isExpanded ? 'Hide lessons' : 'Show lessons'}</span>
                     {isExpanded ? <ChevronUp className="h-4 w-4" aria-hidden="true" /> : <ChevronDown className="h-4 w-4" aria-hidden="true" />}
@@ -310,7 +308,7 @@ export default function LearnPage() {
                 setSelectedFormat('all');
                 setSearchQuery('');
               }}
-              className="mt-2 min-h-11 text-[15px] text-dharma-saffron"
+              className="mt-2 min-h-11 text-subhead text-dharma-saffron"
             >
               Clear filters
             </button>
@@ -319,29 +317,28 @@ export default function LearnPage() {
       </section>
 
       {/* ── The three steps of svādhyāya ── */}
-      <section aria-labelledby="pillars-heading" className="mx-auto max-w-content px-5 pt-20 sm:px-6">
-        <h2 id="pillars-heading" className="text-[24px] font-semibold tracking-[-0.025em] text-dharma-text sm:text-[32px]">
-          <span>How to study</span>{' '}
-          <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">स्वाध्याय त्रिपदी</span>
-        </h2>
-        <p className="mt-1 max-w-2xl text-[15px] text-dharma-muted">
-          Progress here is measured in clarity and calm, not certificates.
-        </p>
+      <section aria-labelledby="pillars-heading" className="mx-auto max-w-content px-gutter pt-20">
+        <SectionTitle
+          id="pillars-heading"
+          title="How to study"
+          titleHi="स्वाध्याय त्रिपदी"
+          sub="Progress here is measured in clarity and calm, not certificates."
+        />
         <ol className="mt-8 grid gap-8 md:grid-cols-3">
           {PILLARS.map((p, i) => (
             <li key={p.iast}>
-              <p className="text-[13px] tabular-nums text-dharma-muted">{i + 1}</p>
+              <p className="text-footnote tabular-nums text-dharma-muted">{i + 1}</p>
               <p lang="sa" className="mt-1 text-[30px] leading-tight text-dharma-text">{p.sa}</p>
               <h3 className="mt-1 text-body font-semibold tracking-[-0.02em] text-dharma-text">
                 <span>{p.en}</span> <span className="font-normal text-dharma-muted">· {p.iast}</span>
               </h3>
-              <p className="mt-1 text-[15px] leading-relaxed text-dharma-muted">{p.text}</p>
+              <p className="mt-1 text-subhead leading-relaxed text-dharma-muted">{p.text}</p>
             </li>
           ))}
         </ol>
       </section>
 
-      <div className="mx-auto max-w-content space-y-4 px-5 pb-8 pt-16 sm:px-6">
+      <div className="mx-auto max-w-content space-y-4 px-gutter pb-8 pt-16">
         <SadhanaPortability />
         <BackupRestore />
       </div>

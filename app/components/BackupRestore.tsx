@@ -65,7 +65,7 @@ export function BackupRestore() {
 
   return (
     <section aria-labelledby="backup-heading" className="apple-card mt-6 p-5 sm:p-6">
-      <h2 id="backup-heading" className="text-[19px] font-semibold tracking-[-0.02em] text-dharma-text">
+      <h2 id="backup-heading" className="text-title-3 font-semibold text-dharma-text">
         बैकअप और पुनर्स्थापन · Backup &amp; Restore
       </h2>
       <p className="mt-1 text-sm text-dharma-muted">
@@ -78,11 +78,11 @@ export function BackupRestore() {
 
       <fieldset className="mt-4 grid gap-2 sm:grid-cols-2">
         <legend className="mb-2 text-sm font-semibold text-dharma-text">Import behavior · आयात विकल्प</legend>
-        <label htmlFor={`${groupId}-merge`} className="flex cursor-pointer items-start gap-2 rounded-[12px] bg-dharma-text/[0.04] p-3 text-sm">
+        <label htmlFor={`${groupId}-merge`} className="flex cursor-pointer items-start gap-2 rounded-field bg-dharma-text/[0.04] p-3 text-sm">
           <input id={`${groupId}-merge`} type="radio" name={`${groupId}-mode`} value="merge" checked={mode === 'merge'} onChange={() => setMode('merge')} className="mt-0.5 h-5 w-5 shrink-0 accent-orange-700" />
           Merge · मिलाएँ — Keep other local entries; imported values replace matching keys.
         </label>
-        <label htmlFor={`${groupId}-replace`} className="flex cursor-pointer items-start gap-2 rounded-[12px] bg-dharma-text/[0.04] p-3 text-sm">
+        <label htmlFor={`${groupId}-replace`} className="flex cursor-pointer items-start gap-2 rounded-field bg-dharma-text/[0.04] p-3 text-sm">
           <input id={`${groupId}-replace`} type="radio" name={`${groupId}-mode`} value="replace" checked={mode === 'replace'} onChange={() => setMode('replace')} className="mt-0.5 h-5 w-5 shrink-0 accent-orange-700" />
           Replace · बदलें — Remove all current Dharma Granth data before importing.
         </label>
@@ -92,7 +92,7 @@ export function BackupRestore() {
         <button type="button" onClick={download} className="apple-pill">
           <Download className="h-4 w-4" aria-hidden="true" /> Export JSON
         </button>
-        <button type="button" onClick={() => fileInput.current?.click()} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-dharma-text/[0.06] px-5 text-[15px] text-dharma-text hover:bg-dharma-text/[0.1]">
+        <button type="button" onClick={() => fileInput.current?.click()} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-dharma-text/[0.06] px-5 text-subhead text-dharma-text hover:bg-dharma-text/[0.1]">
           <Upload className="h-4 w-4" aria-hidden="true" /> Import JSON
         </button>
         <input ref={fileInput} type="file" accept="application/json,.json" className="hidden" onChange={(event) => void upload(event.target.files?.[0])} />

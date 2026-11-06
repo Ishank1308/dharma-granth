@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { PanchangCalendar } from '@/app/components/PanchangCalendar';
 import { PanchangCosmos } from '@/app/components/cosmos/PanchangCosmos';
+import { SectionTitle } from '@/app/components/apple/PageHeader';
 
 const WHY = [
   {
@@ -40,19 +41,19 @@ export default function PanchangPage() {
       <PanchangCosmos />
 
       {/* ─── MAIN CALENDAR INTERFACE ──────────────────────────────────────── */}
-      <section className="relative mx-auto max-w-6xl px-5 sm:px-6 -mt-6 sm:-mt-8 pb-16 z-10">
+      <section className="relative mx-auto max-w-6xl px-gutter -mt-6 sm:-mt-8 pb-16 z-10">
         <PanchangCalendar />
 
         {/* ─── WHY THE FIVE LIMBS ─────────────────────────────────────────── */}
         <section aria-labelledby="panchang-why" className="mt-20">
-          <p className="text-[13px] font-semibold text-dharma-saffron">
-            <span>The Vedic view of time</span> <span aria-hidden="true">·</span>{' '}
-            <span lang="hi" className="font-devanagari">पञ्चाङ्ग तत्त्व दर्शन</span>
-          </p>
-          <h2 id="panchang-why" className="mt-2 text-[28px] font-semibold leading-tight tracking-[-0.03em] text-dharma-text sm:text-[40px]">
-            Why learn the five limbs of time
-          </h2>
-          <p className="mt-3 max-w-2xl text-body leading-relaxed text-dharma-muted">
+          <SectionTitle
+            id="panchang-why"
+            size="title-1"
+            eyebrow="The Vedic view of time"
+            eyebrowHi="पञ्चाङ्ग तत्त्व दर्शन"
+            title="Why learn the five limbs of time"
+          />
+          <p className="max-w-text text-body leading-relaxed text-dharma-muted">
             In Vedic thought time (<em>Kāla</em>) is a rhythm, not a ticker: the play between the Sun (vitality,{' '}
             <em>Prāṇa</em>) and the Moon (reflective mind, <em>Manas</em>).
           </p>
@@ -60,9 +61,9 @@ export default function PanchangPage() {
           <ol className="mt-10 grid gap-8 md:grid-cols-3">
             {WHY.map((w, i) => (
               <li key={w.title}>
-                <p className="text-[13px] tabular-nums text-dharma-muted">{i + 1}</p>
-                <h3 className="mt-1 text-[19px] font-semibold tracking-[-0.02em] text-dharma-text">{w.title}</h3>
-                <p className="mt-1.5 text-[15px] leading-relaxed text-dharma-muted">{w.text}</p>
+                <p className="text-footnote tabular-nums text-dharma-muted">{i + 1}</p>
+                <h3 className="mt-1 text-title-3 font-semibold text-dharma-text">{w.title}</h3>
+                <p className="mt-1.5 text-subhead leading-relaxed text-dharma-muted">{w.text}</p>
               </li>
             ))}
           </ol>
@@ -70,18 +71,15 @@ export default function PanchangPage() {
 
         {/* ─── QUESTIONS ───────────────────────────────────────────────────── */}
         <section aria-labelledby="panchang-faq" className="mt-20">
-          <h2 id="panchang-faq" className="text-[24px] font-semibold tracking-[-0.025em] text-dharma-text sm:text-[32px]">
-            <span>Questions</span>{' '}
-            <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">जिज्ञासा</span>
-          </h2>
-          <div className="apple-group mt-5">
+          <SectionTitle id="panchang-faq" title="Questions" titleHi="जिज्ञासा" />
+          <div className="apple-group">
             {FAQ.map((f) => (
               <details key={f.q} className="apple-row group block !py-0 [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex min-h-[52px] cursor-pointer items-center justify-between gap-3 text-[16px] text-dharma-text">
+                <summary className="flex min-h-[52px] cursor-pointer items-center justify-between gap-3 text-callout text-dharma-text">
                   <span>{f.q}</span>
                   <span aria-hidden="true" className="apple-chevron transition group-open:rotate-90">›</span>
                 </summary>
-                <p className="pb-4 text-[15px] leading-relaxed text-dharma-muted">{f.a}</p>
+                <p className="pb-4 text-subhead leading-relaxed text-dharma-muted">{f.a}</p>
               </details>
             ))}
           </div>

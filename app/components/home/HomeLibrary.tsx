@@ -69,7 +69,7 @@ export function HomeLibrary() {
                 {book.titleSa}
               </span>
               <span data-depth="4">
-                <span className="block text-[17px] font-semibold tracking-[-0.02em] text-dharma-text sm:text-[21px]">{book.titleEn}</span>
+                <span className="block text-body font-semibold tracking-[-0.02em] text-dharma-text sm:text-[21px]">{book.titleEn}</span>
                 {book.facts && <span className="mt-1 block text-sm text-dharma-muted">{book.facts}</span>}
               </span>
             </Link>

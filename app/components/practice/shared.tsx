@@ -97,8 +97,8 @@ export function ToolCard({
           {icon}
         </div>
         <div className="min-w-0">
-          <h3 className="text-[19px] font-semibold leading-tight tracking-[-0.02em] text-dharma-text">{title}</h3>
-          <p lang="hi" className="font-devanagari text-[13px] text-dharma-muted">{titleHindi}</p>
+          <h3 className="text-title-3 font-semibold leading-tight text-dharma-text">{title}</h3>
+          <p lang="hi" className="font-devanagari text-footnote text-dharma-muted">{titleHindi}</p>
         </div>
       </div>
       <div className="flex-1">{children}</div>

@@ -74,7 +74,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
           </button>
         </div>
 
-        <label htmlFor="ask-dharma-q" className="text-[15px] font-semibold" lang="hi">
+        <label htmlFor="ask-dharma-q" className="text-subhead font-semibold" lang="hi">
           {activeTab === 'muse' ? 'दार्शनिक जिज्ञासा अथवा परिस्थिति' : 'अपना प्रश्न लिखें'}
         </label>
         <div className="flex flex-col gap-3 sm:flex-row">
@@ -128,7 +128,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             />
           ) : (
             <div className="space-y-6 py-4 text-center">
-              <div className="inline-flex items-center gap-2 text-[13px] font-semibold text-dharma-saffron">
+              <div className="inline-flex items-center gap-2 text-footnote font-semibold text-dharma-saffron">
                 <Sparkles className="h-4 w-4" aria-hidden="true" />
                 <span>{STUDY_HELPER_NAME} · {STUDY_HELPER_NAME_HI}</span>
               </div>
@@ -149,7 +149,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             href={`/ask/${matches[0].entry.slug}/`}
             className="apple-card grid gap-2 p-5 transition hover:-translate-y-0.5 sm:p-7"
           >
-            <span id="granth-matches" className="text-[13px] font-semibold text-dharma-saffron">
+            <span id="granth-matches" className="text-footnote font-semibold text-dharma-saffron">
               <span lang="hi">आपका उत्तर</span> <span>Your answer</span>
             </span>
             <span lang="hi" className="font-devanagari text-2xl font-semibold">{matches[0].entry.questionHi}</span>
@@ -176,7 +176,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
       )}
 
       {activeTab === 'library' && matches && matches.length === 0 && !answer && (
-        <p className="apple-card p-5 text-[15px] text-dharma-text-secondary">
+        <p className="apple-card p-5 text-subhead text-dharma-text-secondary">
           <span lang="hi">इस प्रश्न का उत्तर‑पृष्ठ अभी नहीं बना। नीचे की सूची में मिलता‑जुलता प्रश्न देखें।</span>{' '}
           <span>No answer page for this yet. Look for a close question in the list below.</span>
         </p>

@@ -1073,7 +1073,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                               {showSubtitle && <p className="mt-0.5 text-xs text-dharma-muted">{item.subtitle}</p>}
 
                               {item.translationExcerpt && item.translationExcerpt !== matched && (
-                                <p className="mt-2.5 rounded-lg border border-dharma-border/50 bg-dharma-bg/60 p-2.5 text-[13px] leading-relaxed text-dharma-text/90">
+                                <p className="mt-2.5 rounded-lg border border-dharma-border/50 bg-dharma-bg/60 p-2.5 text-footnote leading-relaxed text-dharma-text/90">
                                   <span className="mr-1.5 font-semibold text-dharma-muted">Translation:</span>
                                   <span lang={isDevanagariText(item.translationExcerpt) ? 'hi' : 'en'} className={isDevanagariText(item.translationExcerpt) ? 'font-devanagari leading-[1.8]' : ''}>
                                     <Highlighted text={item.translationExcerpt} query={trimmed} />
@@ -1085,7 +1085,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                               )}
 
                               {item.group === 'verse' && item.commentaryExcerpt && item.matchedField === 'explanation' && (
-                                <p className="mt-2 rounded-lg border border-sky-600/25 bg-sky-500/5 p-2.5 text-[13px] leading-relaxed text-dharma-text/90">
+                                <p className="mt-2 rounded-lg border border-sky-600/25 bg-sky-500/5 p-2.5 text-footnote leading-relaxed text-dharma-text/90">
                                   <span className="mr-1.5 font-semibold text-sky-900 dark:text-sky-200">Explanation:</span>
                                   <Highlighted text={item.commentaryExcerpt} query={trimmed} />
                                   {item.aiDrafted && (

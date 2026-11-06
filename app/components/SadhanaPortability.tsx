@@ -132,9 +132,9 @@ export function SadhanaPortability() {
           <span className="apple-tint-chip" aria-hidden="true">
             <KeyRound className="h-4 w-4" />
           </span>
-          <h2 id="sadhana-portability-heading" className="text-[19px] font-semibold tracking-[-0.02em] text-dharma-text">
+          <h2 id="sadhana-portability-heading" className="text-title-3 font-semibold text-dharma-text">
             <span>Move to another device</span>{' '}
-            <span lang="hi" className="font-devanagari text-[15px] font-normal text-dharma-muted">साधना स्थानान्तरण</span>
+            <span lang="hi" className="font-devanagari text-subhead font-normal text-dharma-muted">साधना स्थानान्तरण</span>
           </h2>
         </div>
         <p className="text-xs text-dharma-muted leading-relaxed">
@@ -145,7 +145,7 @@ export function SadhanaPortability() {
 
       {/* ── Section 1: Compressed Sync Code ── */}
       <div className="space-y-3 rounded-group bg-dharma-text/[0.04] p-4">
-        <h3 className="text-[15px] font-semibold text-dharma-text">
+        <h3 className="text-subhead font-semibold text-dharma-text">
           <span>Sync code</span> <span lang="hi" className="font-devanagari font-normal text-dharma-muted">सिंक कोड</span>
         </h3>
         <p className="text-[11px] text-dharma-muted">
@@ -168,7 +168,7 @@ export function SadhanaPortability() {
             <button
               type="button"
               onClick={handleCopySyncCode}
-              className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-5 text-[15px] text-dharma-text hover:bg-dharma-text/[0.1]"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-5 text-subhead text-dharma-text hover:bg-dharma-text/[0.1]"
             >
               {copiedCode ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
               <span>{copiedCode ? 'कॉपी हो गया!' : 'कोड कॉपी करें'}</span>
@@ -177,7 +177,7 @@ export function SadhanaPortability() {
         </div>
 
         {syncCode && (
-          <div className="rounded-[12px] bg-dharma-card p-2.5">
+          <div className="rounded-field bg-dharma-card p-2.5">
             <input
               type="text"
               readOnly
@@ -196,13 +196,13 @@ export function SadhanaPortability() {
             onChange={(e) => setInputSyncCode(e.target.value)}
             placeholder="यहाँ सिंक कोड पेस्ट करें (DG-SYNC-v1-...)"
             aria-label="Paste Sync String to Restore"
-            className="apple-field min-w-[200px] flex-1 !bg-dharma-card font-mono !text-[13px]"
+            className="apple-field min-w-[200px] flex-1 !bg-dharma-card font-mono !text-footnote"
           />
           <button
             type="button"
             onClick={handleRestoreFromSyncCode}
             disabled={!inputSyncCode.trim() || restoringCode}
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-5 text-[15px] text-dharma-text hover:bg-dharma-text/[0.1] disabled:opacity-40"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-5 text-subhead text-dharma-text hover:bg-dharma-text/[0.1] disabled:opacity-40"
           >
             {restoringCode ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <Upload className="h-3.5 w-3.5" />}
             <span>कोड से पुनर्स्थापित करें</span>
@@ -225,7 +225,7 @@ export function SadhanaPortability() {
           <button
             type="button"
             onClick={() => fileInput.current?.click()}
-            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-dharma-text/[0.06] px-5 text-[15px] text-dharma-text hover:bg-dharma-text/[0.1]"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-dharma-text/[0.06] px-5 text-subhead text-dharma-text hover:bg-dharma-text/[0.1]"
           >
             <Upload className="h-4 w-4" aria-hidden />
             <span>फ़ाइल से Restore करें (.dharma / .json)</span>
@@ -243,7 +243,7 @@ export function SadhanaPortability() {
       </div>
 
       {message && (
-        <p role="status" className="rounded-[12px] bg-dharma-text/[0.04] p-3 text-[13px] text-dharma-text">
+        <p role="status" className="rounded-field bg-dharma-text/[0.04] p-3 text-footnote text-dharma-text">
           {message}
         </p>
       )}

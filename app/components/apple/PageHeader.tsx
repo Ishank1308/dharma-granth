@@ -8,15 +8,19 @@ import type { ReactNode } from 'react';
 export function PageHeader({
   eyebrow,
   eyebrowHi,
+  eyebrowLang = 'hi',
   title,
   titleHi,
   titleLang = 'hi',
   lead,
   children,
   id,
+  width = 'content',
 }: {
   eyebrow: string;
   eyebrowHi?: string;
+  /** `sa` when the eyebrow's second part is a Sanskrit phrase. */
+  eyebrowLang?: 'hi' | 'sa';
   title: ReactNode;
   titleHi?: string;
   /** `sa` when the second line is a Sanskrit phrase rather than Hindi. */
@@ -24,10 +28,12 @@ export function PageHeader({
   lead?: ReactNode;
   children?: ReactNode;
   id?: string;
+  /** `wide` lines the header up with a full-width grid below it (the library). */
+  width?: 'content' | 'wide';
 }) {
   return (
-    <header className="mx-auto max-w-content px-gutter pb-2 pt-10 sm:pt-16">
-      <Eyebrow text={eyebrow} hi={eyebrowHi} />
+    <header className={`mx-auto ${width === 'wide' ? 'max-w-7xl' : 'max-w-content'} px-gutter pb-2 pt-10 sm:pt-16`}>
+      <Eyebrow text={eyebrow} hi={eyebrowHi} lang={eyebrowLang} />
       <h1 id={id} className="mt-2 text-large-title font-semibold text-dharma-text">
         <span>{title}</span>
         {titleHi && (
@@ -49,7 +55,17 @@ export function PageHeader({
 }
 
 /** The small tinted line above a title: English, then its Hindi as a separate element. */
-export function Eyebrow({ text, hi, className = '' }: { text: string; hi?: string; className?: string }) {
+export function Eyebrow({
+  text,
+  hi,
+  lang = 'hi',
+  className = '',
+}: {
+  text: string;
+  hi?: string;
+  lang?: 'hi' | 'sa';
+  className?: string;
+}) {
   return (
     <p className={`text-footnote font-semibold text-dharma-saffron ${className}`}>
       <span>{text}</span>
@@ -57,7 +73,7 @@ export function Eyebrow({ text, hi, className = '' }: { text: string; hi?: strin
         <>
           {' '}
           <span aria-hidden="true">·</span>{' '}
-          <span lang="hi" className="font-devanagari">
+          <span lang={lang} className={lang === 'sa' ? 'font-sanskrit' : 'font-devanagari'}>
             {hi}
           </span>
         </>

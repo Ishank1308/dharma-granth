@@ -103,7 +103,7 @@ export function GranthCard3D({ card }: { card: GranthCardData }) {
           onPointerEnter={() => tilt && glareOpacity.set(1)}
           onPointerLeave={onLeave}
           style={{ ...style, transformStyle: tilt ? 'preserve-3d' : undefined }}
-          className="granth-card group relative flex h-full flex-col justify-between overflow-hidden rounded-[28px] border p-5 sm:p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--dharma-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-dharma-bg"
+          className="granth-card group relative flex h-full flex-col justify-between overflow-hidden rounded-panel border p-5 sm:p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--dharma-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-dharma-bg"
         >
           {tilt && (
             <motion.span aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 rounded-[inherit]" style={{ background: glare, opacity: glareOpacity }} />

@@ -86,7 +86,7 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
       </span>
       <span className="min-w-0 flex-1">
         <span className="flex flex-wrap items-baseline gap-x-2">
-          <span lang="hi" className="font-devanagari text-[15px] font-bold text-dharma-text">
+          <span lang="hi" className="font-devanagari text-subhead font-bold text-dharma-text">
             {branch.labelHi}
           </span>
           <span lang="en" className="text-[11px] font-semibold uppercase tracking-wider text-dharma-muted">

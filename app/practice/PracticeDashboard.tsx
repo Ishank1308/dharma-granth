@@ -4,6 +4,7 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { retryImport } from '@/lib/retry-import';
 import Link from 'next/link';
+import { PageHeader } from '@/app/components/apple/PageHeader';
 import { Lock, Trash2, Bookmark, NotebookPen, LayoutDashboard, BarChart3, HardDriveDownload, BellRing } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((module) => module.DailyVerse)));
@@ -136,28 +137,25 @@ export function PracticeDashboard() {
 
   return (
     <main className="apple-scope min-h-screen bg-dharma-bg pb-16 text-dharma-text">
-      <header className="mx-auto max-w-content px-5 pb-2 pt-10 sm:px-6 sm:pt-16">
-        <p className="text-[13px] font-semibold text-dharma-saffron">
-          <span>Sadhana</span> <span aria-hidden="true">·</span>{' '}
-          <span lang="hi" className="font-devanagari">साधना</span>
-        </p>
-        <h1 className="mt-2 text-[34px] font-semibold leading-[1.08] tracking-[-0.03em] text-dharma-text sm:text-5xl">
-          <span>Daily practice</span>{' '}
-          <span lang="hi" className="mt-1 block font-devanagari text-2xl font-normal tracking-normal text-dharma-muted sm:text-[30px]">
-            शान्त मन, पवित्र अभ्यास
-          </span>
-        </h1>
-        <p className="mt-4 max-w-2xl text-body leading-relaxed text-dharma-muted">
-          <span>A verse, a reflection, japa and a quiet timer. Pick the tools you want; there are no scores and no streaks.</span>{' '}
-          <span lang="hi" className="font-devanagari">दैनिक श्लोक, चिन्तन, जप और ध्यान, बिना किसी गिनती या होड़ के।</span>
-        </p>
-        <p className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-dharma-muted">
+      <PageHeader
+        eyebrow="Sadhana"
+        eyebrowHi="साधना"
+        title="Daily practice"
+        titleHi="शान्त मन, पवित्र अभ्यास"
+        lead={
+          <p>
+            <span>A verse, a reflection, japa and a quiet timer. Pick the tools you want; there are no scores and no streaks.</span>{' '}
+            <span lang="hi" className="font-devanagari">दैनिक श्लोक, चिन्तन, जप और ध्यान, बिना किसी गिनती या होड़ के।</span>
+          </p>
+        }
+      >
+        <p className="mt-3 inline-flex items-center gap-1.5 text-footnote text-dharma-muted">
           <Lock className="h-3.5 w-3.5" aria-hidden="true" />
           <span>Everything stays on this device. No account.</span>
         </p>
-      </header>
+      </PageHeader>
 
-      <div className="mx-auto max-w-content space-y-10 px-5 pt-8 sm:px-6">
+      <div className="mx-auto max-w-content space-y-10 px-gutter pt-8">
         {/* My space: everything personal lives under /practice/ (saved verses, desk, journal, progress, offline). */}
         <nav aria-label="My space" className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {MY_SPACE.map(({ href, hi, en, Icon }) => (
@@ -170,8 +168,8 @@ export function PracticeDashboard() {
                 <Icon className="h-4 w-4" />
               </span>
               <span className="min-w-0 leading-tight">
-                <span className="block text-[15px] font-semibold tracking-[-0.01em] text-dharma-text">{en}</span>{' '}
-                <span lang="hi" className="block font-devanagari text-[13px] text-dharma-muted">{hi}</span>
+                <span className="block text-subhead font-semibold tracking-[-0.01em] text-dharma-text">{en}</span>{' '}
+                <span lang="hi" className="block font-devanagari text-footnote text-dharma-muted">{hi}</span>
               </span>
             </Link>
           ))}
@@ -195,18 +193,18 @@ export function PracticeDashboard() {
           <>
             {/* Tool picker */}
             <section aria-labelledby="practice-tools-heading">
-              <h2 id="practice-tools-heading" className="text-[24px] font-semibold tracking-[-0.025em] text-dharma-text sm:text-[28px]">
+              <h2 id="practice-tools-heading" className="text-title-2 font-semibold text-dharma-text">
                 <span>Your tools</span>{' '}
                 <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">साधन</span>
               </h2>
-              <p className="mt-1 text-[15px] text-dharma-muted">
+              <p className="mt-1 text-subhead text-dharma-muted">
                 <span>Tap to show or hide a tool. Your choice stays on this device.</span>{' '}
                 <span lang="hi" className="font-devanagari">साधन जोड़ें या छिपाएँ।</span>
               </p>
               <div className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2">
                 {TOOL_GROUPS.map((group) => (
                   <fieldset key={group.id} className="min-w-0">
-                    <legend className="mb-2 text-[13px] text-dharma-muted">
+                    <legend className="mb-2 text-footnote text-dharma-muted">
                       <span>{group.title}</span> <span lang="hi" className="font-devanagari">· {group.titleHi}</span>
                     </legend>
                     <div className="flex flex-wrap gap-2">
@@ -286,7 +284,7 @@ export function PracticeDashboard() {
           </div>
         </div>
 
-        <p className="pb-4 text-center text-[13px] text-dharma-muted">
+        <p className="pb-4 text-center text-footnote text-dharma-muted">
           <span lang="hi" className="font-devanagari">साधना आत्मा का एकान्त है।</span>{' '}
           <span>Practice notes stay on this device; clearing browser data can erase them.</span>
         </p>

@@ -126,11 +126,11 @@ export default function AskDharmaPage() {
         }
       />
 
-      <section className="mx-auto mt-8 max-w-content px-5 sm:px-6">
+      <section className="mx-auto mt-8 max-w-content px-gutter">
         <AskDharmaClient questionBank={questionBank} />
       </section>
 
-      <section className="mx-auto mt-16 max-w-content px-5 sm:px-6" aria-labelledby="granth-questions">
+      <section className="mx-auto mt-16 max-w-content px-gutter" aria-labelledby="granth-questions">
         <SectionTitle
           id="granth-questions"
           title="Questions people ask"
@@ -145,8 +145,8 @@ export default function AskDharmaPage() {
         <div className="grid gap-x-6 gap-y-8 md:grid-cols-2">
           {ANSWER_THEMES.map((theme) => (
             <div key={theme.id}>
-              <h3 className="mb-2 px-1 text-[13px] text-dharma-muted">
-                <span lang="hi" className="font-devanagari text-[15px] font-semibold text-dharma-text">{theme.titleHi}</span>{' '}
+              <h3 className="mb-2 px-1 text-footnote text-dharma-muted">
+                <span lang="hi" className="font-devanagari text-subhead font-semibold text-dharma-text">{theme.titleHi}</span>{' '}
                 <span>{theme.titleEn}</span>
               </h3>
               <ul className="apple-group">
@@ -154,8 +154,8 @@ export default function AskDharmaPage() {
                   <li key={a.slug}>
                     <Link href={`/ask/${a.slug}/`} className="apple-row">
                       <span className="min-w-0">
-                        <span lang="hi" className="block font-devanagari text-[16px] leading-snug text-dharma-text">{a.questionHi}</span>{' '}
-                        <span className="block text-[13px] leading-snug text-dharma-muted">{a.questionEn}</span>
+                        <span lang="hi" className="block font-devanagari text-callout leading-snug text-dharma-text">{a.questionHi}</span>{' '}
+                        <span className="block text-footnote leading-snug text-dharma-muted">{a.questionEn}</span>
                       </span>
                       <span aria-hidden="true" className="apple-chevron">›</span>
                     </Link>

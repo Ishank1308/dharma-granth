@@ -126,7 +126,7 @@ export function PrivacyLockBanner({
     <div className="space-y-4">
       {/* 1. Backup Reminder Notice (Gentle, dismissible) */}
       {showBackupReminder && (
-        <div className="apple-group flex flex-col items-start justify-between gap-3 p-4 text-[13px] sm:flex-row sm:items-center">
+        <div className="apple-group flex flex-col items-start justify-between gap-3 p-4 text-footnote sm:flex-row sm:items-center">
           <div className="flex items-start gap-2.5">
             <HardDrive className="mt-0.5 h-4 w-4 shrink-0 text-dharma-saffron" />
             <div>
@@ -142,7 +142,7 @@ export function PrivacyLockBanner({
             <button
               type="button"
               onClick={handleQuickBackup}
-              className="apple-pill !min-h-9 !px-4 !text-[13px]"
+              className="apple-pill !min-h-9 !px-4 !text-footnote"
             >
               <Download className="w-3.5 h-3.5" /> बैकअप लें · Export
             </button>
@@ -167,7 +167,7 @@ export function PrivacyLockBanner({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-[15px] font-semibold text-dharma-text">
+                <h2 className="text-subhead font-semibold text-dharma-text">
                   स्थानीय साधना डेटा · Practice data stays local
                 </h2>
                 <button

@@ -273,7 +273,7 @@ export function ScriptureLibraryClient({
 
   if (loadError || items.length === 0) {
     return (
-      <div className="mx-auto max-w-3xl px-5 py-12 sm:px-6">
+      <div className="mx-auto max-w-3xl px-gutter py-12">
         <LoadFailure onRetry={() => window.location.reload()} />
       </div>
     );
@@ -288,7 +288,7 @@ export function ScriptureLibraryClient({
       type="button"
       onClick={() => setViewMode(mode)}
       aria-pressed={viewMode === mode}
-      className={`focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-[7px] px-3 text-[13px] transition sm:min-h-[32px] ${
+      className={`focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-[7px] px-3 text-footnote transition sm:min-h-[32px] ${
         viewMode === mode ? 'bg-dharma-card font-semibold text-dharma-text shadow-[0_1px_3px_rgba(0,0,0,0.12)]' : 'text-dharma-muted hover:text-dharma-text'
       }`}
     >
@@ -299,7 +299,7 @@ export function ScriptureLibraryClient({
   );
 
   return (
-    <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6">
+    <div className="mx-auto max-w-7xl px-gutter pb-20">
       {online === false && (
         <div className="pt-5">
           <OfflineBanner />
@@ -319,14 +319,14 @@ export function ScriptureLibraryClient({
               value={filters.q}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search title, Sanskrit name, author, topic…"
-              className="min-h-[44px] w-full rounded-[12px] border-0 bg-dharma-text/[0.06] py-2.5 pl-11 pr-4 text-body text-dharma-text outline-none transition placeholder:text-dharma-muted focus:ring-2 focus:ring-dharma-saffron/40"
+              className="min-h-[44px] w-full rounded-field border-0 bg-dharma-text/[0.06] py-2.5 pl-11 pr-4 text-body text-dharma-text outline-none transition placeholder:text-dharma-muted focus:ring-2 focus:ring-dharma-saffron/40"
             />
           </label>
           <button
             type="button"
             onClick={() => setSheetOpen(true)}
             aria-haspopup="dialog"
-            className="focus-ring relative inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-[12px] bg-dharma-text/[0.06] px-4 text-[15px] text-dharma-text transition lg:hidden"
+            className="focus-ring relative inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-field bg-dharma-text/[0.06] px-4 text-subhead text-dharma-text transition lg:hidden"
           >
             <SlidersHorizontal className="h-4 w-4" aria-hidden="true" />
             Filters
@@ -347,7 +347,7 @@ export function ScriptureLibraryClient({
                 Filters <span lang="hi" className="ml-1 font-devanagari text-sm font-normal text-dharma-muted">फ़िल्टर</span>
               </h2>
               {activeCount > 0 && (
-                <button type="button" onClick={clearFilters} className="focus-ring min-h-[36px] rounded px-2 text-[13px] text-dharma-saffron hover:underline">
+                <button type="button" onClick={clearFilters} className="focus-ring min-h-[36px] rounded px-2 text-footnote text-dharma-saffron hover:underline">
                   Clear all
                 </button>
               )}
@@ -369,7 +369,7 @@ export function ScriptureLibraryClient({
               )}
             </p>
             <div className="flex min-w-0 max-w-full flex-wrap items-center gap-2">
-              <label className="inline-flex min-h-[36px] min-w-0 items-center gap-2 rounded-[9px] bg-dharma-text/[0.06] pl-3 text-[13px] text-dharma-muted">
+              <label className="inline-flex min-h-[36px] min-w-0 items-center gap-2 rounded-[9px] bg-dharma-text/[0.06] pl-3 text-footnote text-dharma-muted">
                 Sort
                 <select
                   value={sortMode}

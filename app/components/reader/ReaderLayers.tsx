@@ -175,7 +175,7 @@ function Layer({
           <span aria-hidden="true"> · </span>
           <span>{k.chip}</span>
         </span>
-        <span className={`mt-0.5 block font-sans font-semibold tracking-[-0.02em] text-dharma-text ${kind === 'source' ? 'sr-only' : 'text-[17px] sm:text-[19px]'}`}>
+        <span className={`mt-0.5 block font-sans font-semibold tracking-[-0.02em] text-dharma-text ${kind === 'source' ? 'sr-only' : 'text-body sm:text-[19px]'}`}>
           <span id={`${id}-title`}>{title}</span>{' '}
           {titleHi && (
             <span lang="hi" className="ml-1 font-devanagari text-[0.95rem] font-normal text-dharma-muted">
@@ -219,7 +219,7 @@ export { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 const dash = (s: string) => s.replace(/[\s|।॥0-9.]+$/, '');
 
 const aidToggle =
-  'focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-3.5 py-1 text-[13px] text-dharma-text transition hover:bg-dharma-text/[0.1] aria-expanded:bg-dharma-saffron/15 aria-expanded:text-dharma-saffron';
+  'focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-3.5 py-1 text-footnote text-dharma-text transition hover:bg-dharma-text/[0.1] aria-expanded:bg-dharma-saffron/15 aria-expanded:text-dharma-saffron';
 
 /* ── The layers: root shloka, then the अर्थ → व्याख्या → विज्ञान tree ── */
 

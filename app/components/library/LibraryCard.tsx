@@ -183,12 +183,12 @@ export function LibraryCard({
             {item.titleSanskrit}
           </span>
         )}{' '}
-        <span lang="en" className="mt-2 block text-[19px] font-semibold tracking-[-0.02em] text-dharma-text">
+        <span lang="en" className="mt-2 block text-title-3 font-semibold text-dharma-text">
           {englishTitle}
         </span>
         {detailed && item.titleIast && <span className="mt-0.5 block font-serif text-sm font-normal italic text-dharma-muted">{item.titleIast}</span>}
       </h3>
-      <p className="mt-1 text-[13px] text-dharma-muted">
+      <p className="mt-1 text-footnote text-dharma-muted">
         {item.author ? <span>Attributed to {item.author} · </span> : null}
         {countLabel}
       </p>

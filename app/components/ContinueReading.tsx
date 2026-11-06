@@ -55,7 +55,7 @@ export function ContinueReading() {
           </span>
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-[13px] text-dharma-muted">
+          <p className="text-footnote text-dharma-muted">
             <span>Continue reading</span> <span aria-hidden="true">·</span>{' '}
             <span lang="hi" className="font-devanagari">पढ़ना जारी रखें</span> <span aria-hidden="true">·</span>{' '}
             <span lang="hi" className="font-devanagari">{timeAgo(latest.readAt)}</span>
@@ -88,7 +88,7 @@ export function ContinueReading() {
               <Link href={resumeHref(v)} className="flex items-center justify-between gap-3 px-5 py-3.5 transition hover:bg-dharma-text/[0.03]">
                 <span className="min-w-0">
                   <span className="block truncate text-body text-dharma-text">{v.scriptureTitle}</span>
-                  <span className="block truncate text-[13px] text-dharma-muted">
+                  <span className="block truncate text-footnote text-dharma-muted">
                     अध्याय {v.chapterId} · {v.chapterTitle}
                   </span>
                 </span>

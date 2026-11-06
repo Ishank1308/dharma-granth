@@ -71,7 +71,7 @@ export function SpatialShloka({
             }
       }
       transition={SPRING}
-      className={`relative origin-center rounded-[28px] ${dimmed ? 'cursor-pointer' : ''} ${
+      className={`relative origin-center rounded-panel ${dimmed ? 'cursor-pointer' : ''} ${
         focused ? 'liquid-glass spatial-focused z-10 px-3 py-3 sm:px-5 sm:py-4' : ''
       }`}
     >
@@ -121,7 +121,7 @@ function AnvayaGrid({ wordMeaning }: { wordMeaning?: string }) {
             transition={{ ...SPRING, delay: Math.min(i * 0.025, 0.4) }}
             className="anvaya-pill rounded-2xl border px-3 py-2"
           >
-            <span className="block font-serif text-[15px] italic text-dharma-text">{w.pada}</span>
+            <span className="block font-serif text-subhead italic text-dharma-text">{w.pada}</span>
             <span className="block text-xs text-dharma-muted">{w.meaning}</span>
           </motion.li>
         ))}
@@ -180,7 +180,7 @@ function BhashyaSwitcher({ sources }: { sources: BhashyaSource[] }) {
           )}
           <p
             lang={current.lang}
-            className={`whitespace-pre-line leading-[1.85] text-dharma-text ${current.lang === 'hi' ? 'font-devanagari text-base' : 'font-serif text-[17px]'}`}
+            className={`whitespace-pre-line leading-[1.85] text-dharma-text ${current.lang === 'hi' ? 'font-devanagari text-base' : 'font-serif text-body'}`}
           >
             {current.text}
           </p>

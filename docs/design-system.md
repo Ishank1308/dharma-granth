@@ -123,7 +123,9 @@ On phones, keep previous and next verse controls reachable and clearly labeled. 
 
 React pieces:
 
-- `PageHeader`: eyebrow, large title, Hindi line, lead. Server component.
+- `PageHeader`: eyebrow, large title, Hindi line, lead. Server component. Every primary page uses
+  it (library, Learn, Sadhana, Ask). `width="wide"` lines it up with a full-width grid, and
+  `eyebrowLang="sa"` marks a Sanskrit phrase in the eyebrow.
 - `SectionTitle`: optional eyebrow, title and Hindi line, sub line, trailing link, and the
   accent rule that draws itself in. Use it for every section heading.
 - `CountUp` (`app/components/motion/CountUp.tsx`): a number that counts up once when it scrolls

@@ -221,7 +221,7 @@ export function PanchangCalendar() {
               <MapPin className="h-3.5 w-3.5 text-saffron-600 group-hover:scale-110 transition-transform" />
               <span className="font-medium text-dharma-text-secondary">स्थान:</span>
               <span className="font-bold">{location.name}</span>
-              <span className="ml-1 text-[12px] text-dharma-saffron underline underline-offset-2">
+              <span className="ml-1 text-caption text-dharma-saffron underline underline-offset-2">
                 बदलें (Change)
               </span>
             </button>

@@ -622,7 +622,7 @@ export function SiteNav({
                 <span className="whitespace-nowrap text-body font-semibold tracking-[-0.022em] text-dharma-text">
                   Dharma Granth
                 </span>{' '}
-                <span lang="hi" className="hidden font-devanagari text-[13px] text-dharma-muted sm:inline">
+                <span lang="hi" className="hidden font-devanagari text-footnote text-dharma-muted sm:inline">
                   धर्म ग्रंथ
                 </span>
               </div>
@@ -635,7 +635,7 @@ export function SiteNav({
                   key={item.href}
                   href={item.href}
                   aria-current={isActive(item.href) ? 'page' : undefined}
-                  className={`relative whitespace-nowrap px-2 xl:px-3 py-2 text-[13px] transition-colors duration-200 ${
+                  className={`relative whitespace-nowrap px-2 xl:px-3 py-2 text-footnote transition-colors duration-200 ${
                     isActive(item.href)
                       ? 'text-dharma-saffron'
                       : 'text-dharma-text/80 hover:text-dharma-text'
@@ -656,7 +656,7 @@ export function SiteNav({
                   ref={discoverButtonRef}
                   type="button"
                   onClick={() => setDiscoverOpen((open) => !open)}
-                  className={`flex items-center gap-1 px-2 xl:px-3 py-2 text-[13px] transition-colors ${
+                  className={`flex items-center gap-1 px-2 xl:px-3 py-2 text-footnote transition-colors ${
                     discoveryIsActive || discoverOpen
                       ? 'text-dharma-saffron'
                       : 'text-dharma-text/80 hover:text-dharma-text'
@@ -742,7 +742,7 @@ export function SiteNav({
                 onClick={handleOpenSearchModal}
                 onPointerEnter={() => void loadSearchModal()}
                 onFocus={() => void loadSearchModal()}
-                className="apple-icon-button hidden lg:flex h-9 gap-2 px-2.5 text-[13px] text-dharma-muted"
+                className="apple-icon-button hidden lg:flex h-9 gap-2 px-2.5 text-footnote text-dharma-muted"
                 aria-label="खोजें (Search)"
                 aria-keyshortcuts="Control+K Meta+K /"
               >
@@ -769,7 +769,7 @@ export function SiteNav({
               {/* Desktop CTA */}{' '}
               <Link
                 href="/scripture/bhagavadgita"
-                className="hidden min-[1800px]:inline-flex items-center rounded-full bg-dharma-saffron px-3.5 py-1.5 text-[13px] text-dharma-bg transition hover:opacity-90"
+                className="hidden min-[1800px]:inline-flex items-center rounded-full bg-dharma-saffron px-3.5 py-1.5 text-footnote text-dharma-bg transition hover:opacity-90"
               >
                 पठन आरम्भ करें
               </Link>
