@@ -59,4 +59,10 @@ assert.equal(gayatri?.item.href, '/mantras/gayatri-mantra/');
 const ekadashi = searchCoreIndex('ekadashi').find(({ item }) => item.href === '/panchang/ekadashi/');
 assert.ok(ekadashi, 'searching ekadashi should direct to /panchang/ekadashi/');
 
+const chalisa = searchCoreIndex('chalisa').find(({ item }) => item.href === '/mantras/hanuman-chalisa/');
+assert.ok(chalisa, 'searching chalisa should find hanuman chalisa');
+
+const aditya = searchCoreIndex('aditya').find(({ item }) => item.href === '/mantras/aditya-hridaya-stotra/');
+assert.ok(aditya, 'searching aditya should find aditya hridaya stotra');
+
 console.log('search query checks passed');
