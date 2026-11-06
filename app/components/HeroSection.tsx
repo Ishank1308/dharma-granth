@@ -207,6 +207,30 @@ export function HeroSection() {
       {/* Subtle sacred mandala watermark */}
       <div className="pointer-events-none absolute inset-0 opacity-10 mandala-bg" aria-hidden="true" />
 
+      {/* 3. Subtle Floating Prāna Motes / Spiritual Embers */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        {[
+          { top: '20%', left: '15%', delay: '0s', size: '4px' },
+          { top: '35%', left: '82%', delay: '2.5s', size: '5px' },
+          { top: '65%', left: '22%', delay: '4.5s', size: '3px' },
+          { top: '50%', left: '72%', delay: '1.2s', size: '4px' },
+          { top: '78%', left: '88%', delay: '3.3s', size: '3px' },
+          { top: '15%', left: '58%', delay: '5.2s', size: '5px' },
+        ].map((mote, i) => (
+          <span
+            key={i}
+            className="prana-particle absolute rounded-full bg-amber-300/60 shadow-[0_0_8px_#f59e0b]"
+            style={{
+              top: mote.top,
+              left: mote.left,
+              width: mote.size,
+              height: mote.size,
+              animation: `floatPranaMote 7s infinite ease-in-out ${mote.delay}`,
+            }}
+          />
+        ))}
+      </div>
+
       <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pb-14 pt-8 sm:px-8 sm:pb-20 sm:pt-16 text-center">
         {/* Purpose Badge */}
         <div className="mb-3 inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-amber-300/30 bg-black/25 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-200 backdrop-blur-md shadow-sm">
@@ -350,21 +374,21 @@ export function HeroSection() {
               return (
                 <motion.div
                   key={p.id}
-                  whileHover={reduce ? undefined : { y: -4, scale: 1.02 }}
+                  whileHover={reduce ? undefined : { y: -5, scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 24 }}
                   className="rounded-2xl"
                 >
                   <Link
                     href={p.href!}
                     onClick={() => triggerTactileFeedback('light', 'softTap')}
-                    className="group relative flex h-full flex-col justify-between rounded-2xl border border-white/20 bg-black/30 p-3.5 text-left backdrop-blur-md transition-all hover:border-amber-300/80 hover:bg-white/15 hover:shadow-[0_8px_24px_rgba(251,191,36,0.22)] shadow-sm"
+                    className="group relative flex h-full flex-col justify-between rounded-2xl border border-white/20 bg-black/35 p-3.5 text-left backdrop-blur-md transition-all hover:border-amber-300 hover:bg-white/15 hover:shadow-[0_12px_28px_rgba(251,191,36,0.25)] shadow-sm"
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-amber-200 group-hover:bg-amber-400/25 transition">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-amber-200 group-hover:scale-110 group-hover:bg-amber-400/30 group-hover:text-amber-100 transition-all">
                         <Icon className="h-4 w-4" />
                       </span>
-                      <span lang="sa" className="font-devanagari text-[10px] font-semibold text-amber-200/80">
+                      <span lang="sa" className="font-devanagari text-[10px] font-semibold text-amber-200/90">
                         {p.sanskrit}
                       </span>
                     </div>
@@ -372,7 +396,7 @@ export function HeroSection() {
                       <p className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-200 transition-colors">
                         {p.labelEn}
                       </p>
-                      <p lang="hi" className="font-devanagari text-[11px] text-amber-100/80 mt-0.5">
+                      <p lang="hi" className="font-devanagari text-[11px] text-amber-100/90 mt-0.5">
                         {p.labelHi}
                       </p>
                     </div>

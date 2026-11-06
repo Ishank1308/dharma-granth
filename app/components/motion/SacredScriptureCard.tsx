@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, type PointerEvent, type ReactNode } from 'react';
+import { useRef, type PointerEvent } from 'react';
 import Link from 'next/link';
 import {
   motion,
@@ -9,7 +9,7 @@ import {
   useTransform,
   useReducedMotion,
 } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Sparkles } from 'lucide-react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 export interface SacredScriptureCardProps {
@@ -44,12 +44,12 @@ export function SacredScriptureCard({
   const normX = useMotionValue(0);
   const normY = useMotionValue(0);
 
-  const spring = { stiffness: 260, damping: 24, mass: 0.6 };
+  const spring = { stiffness: 280, damping: 24, mass: 0.5 };
   const smoothX = useSpring(normX, spring);
   const smoothY = useSpring(normY, spring);
 
-  const rotateX = useTransform(smoothY, [-0.5, 0.5], [8, -8]);
-  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-10, 10]);
+  const rotateX = useTransform(smoothY, [-0.5, 0.5], [10, -10]);
+  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-12, 12]);
 
   // Specular golden reflection
   const glareX = useTransform(smoothX, [-0.5, 0.5], ['0%', '100%']);
@@ -57,7 +57,7 @@ export function SacredScriptureCard({
   const glareBackground = useTransform(
     [glareX, glareY],
     ([x, y]) =>
-      `radial-gradient(circle 320px at ${x} ${y}, rgba(251, 191, 36, 0.16) 0%, rgba(245, 158, 11, 0.04) 40%, transparent 70%)`
+      `radial-gradient(circle 340px at ${x} ${y}, rgba(251, 191, 36, 0.22) 0%, rgba(245, 158, 11, 0.06) 40%, transparent 70%)`
   );
 
   const handlePointerMove = (e: PointerEvent<HTMLDivElement>) => {
@@ -79,7 +79,7 @@ export function SacredScriptureCard({
       ref={cardRef}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className={`relative perspective-[1200px] select-none ${className}`}
+      className={`relative perspective-[1400px] select-none ${className}`}
     >
       <Link href={href} className="block outline-none focus-visible:ring-4 focus-visible:ring-amber-400/40 rounded-2xl">
         <motion.div
@@ -96,12 +96,13 @@ export function SacredScriptureCard({
             reduce
               ? undefined
               : {
-                  scale: 1.02,
+                  scale: 1.025,
                   y: -6,
                 }
           }
+          whileTap={{ scale: 0.98 }}
           onClick={() => triggerTactileFeedback('selection', 'softTap')}
-          className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border/80 bg-gradient-to-br from-dharma-card via-dharma-card to-dharma-card-soft/60 p-6 shadow-sm transition-shadow duration-300 hover:border-amber-400/80 hover:shadow-[0_16px_36px_rgba(245,158,11,0.14)] dark:hover:border-amber-500/60 dark:hover:shadow-[0_16px_36px_rgba(0,0,0,0.45)]"
+          className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border/80 bg-gradient-to-br from-dharma-card via-dharma-card to-dharma-card-soft/60 p-6 shadow-sm transition-all duration-300 hover:border-amber-400/80 hover:shadow-[0_20px_45px_rgba(245,158,11,0.18)] dark:hover:border-amber-500/60 dark:hover:shadow-[0_20px_45px_rgba(0,0,0,0.6)]"
         >
           {/* Dynamic Specular Golden Light Overlay */}
           <motion.div
@@ -110,35 +111,51 @@ export function SacredScriptureCard({
             style={{ background: glareBackground }}
           />
 
-          {/* Gilded Calligraphic Sanskrit Watermark */}
+          {/* Golden Corner Trim Accents */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-2 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="absolute top-0 left-0 size-2 border-t-2 border-l-2 border-amber-400/70" />
+            <span className="absolute top-0 right-0 size-2 border-t-2 border-r-2 border-amber-400/70" />
+            <span className="absolute bottom-0 left-0 size-2 border-b-2 border-l-2 border-amber-400/70" />
+            <span className="absolute bottom-0 right-0 size-2 border-b-2 border-r-2 border-amber-400/70" />
+          </div>
+
+          {/* Gilded Calligraphic Sanskrit Watermark with Parallax Depth */}
           {watermarkSa && (
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -bottom-6 -right-4 z-0 select-none font-devanagari text-8xl font-black text-amber-500/[0.04] transition-transform duration-500 group-hover:scale-110 group-hover:text-amber-500/[0.08] dark:text-amber-300/[0.03] dark:group-hover:text-amber-300/[0.07]"
+              style={reduce ? undefined : { transform: 'translateZ(-15px)' }}
+              className="pointer-events-none absolute -bottom-6 -right-4 z-0 select-none font-devanagari text-8xl font-black text-amber-500/[0.04] transition-all duration-500 group-hover:scale-110 group-hover:text-amber-500/[0.09] dark:text-amber-300/[0.03] dark:group-hover:text-amber-300/[0.08]"
             >
               {watermarkSa}
             </div>
           )}
 
           {/* Top Row: Category Pill & Chevron */}
-          <div className="relative z-10 mb-4 flex items-center justify-between">
+          <div
+            className="relative z-10 mb-4 flex items-center justify-between"
+            style={reduce ? undefined : { transform: 'translateZ(15px)' }}
+          >
             <span
-              className={`rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider border shadow-xs ${
+              className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider border shadow-xs ${
                 isSeparateReading
                   ? 'border-saffron-500/30 bg-saffron-500/10 text-saffron-800 dark:text-saffron-200'
                   : 'border-amber-500/25 bg-amber-500/10 text-saffron-700 dark:text-saffron-400'
               }`}
             >
-              {category}
+              <Sparkles className="h-3 w-3 text-saffron-600 dark:text-amber-400" />
+              <span>{category}</span>
             </span>
             <span className="flex size-7 items-center justify-center rounded-full bg-dharma-border/40 text-dharma-muted transition-all duration-300 group-hover:translate-x-1 group-hover:bg-saffron-600 group-hover:text-white shadow-xs">
               <ChevronRight className="h-4 w-4" aria-hidden="true" />
             </span>
           </div>
 
-          {/* Middle: Titles and Description */}
-          <div className="relative z-10">
-            <h3 className="font-serif text-xl font-bold text-dharma-text transition-colors duration-200 group-hover:text-saffron-700 dark:group-hover:text-amber-300">
+          {/* Middle: Titles and Description with 3D Depth */}
+          <div
+            className="relative z-10"
+            style={reduce ? undefined : { transform: 'translateZ(20px)' }}
+          >
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text transition-colors duration-200 group-hover:text-saffron-700 dark:group-hover:text-amber-300 drop-shadow-xs">
               {titleEn}
             </h3>
             <p lang="sa" className="mt-1 font-devanagari text-sm font-semibold text-saffron-800 dark:text-saffron-300">
@@ -157,7 +174,7 @@ export function SacredScriptureCard({
                 {languages.map((l) => (
                   <li
                     key={l.id}
-                    className="inline-flex items-center gap-1 rounded-md border border-dharma-border/80 bg-dharma-panel-muted/70 px-2 py-0.5"
+                    className="inline-flex items-center gap-1 rounded-md border border-dharma-border/80 bg-dharma-panel-muted/70 px-2 py-0.5 transition-colors group-hover:border-amber-400/40"
                   >
                     <span>{l.label}</span>
                     {l.percent !== undefined && (
@@ -169,8 +186,11 @@ export function SacredScriptureCard({
             )}
           </div>
 
-          {/* Bottom Bar: Stats and CTA */}
-          <div className="relative z-10 mt-6 flex items-center justify-between border-t border-dharma-border/60 pt-4 text-xs font-semibold text-dharma-muted">
+          {/* Bottom Bar: Stats and CTA with Floating Depth */}
+          <div
+            className="relative z-10 mt-6 flex items-center justify-between border-t border-dharma-border/60 pt-4 text-xs font-semibold text-dharma-muted"
+            style={reduce ? undefined : { transform: 'translateZ(12px)' }}
+          >
             <span className="text-[11px] sm:text-xs text-dharma-muted/90">{holdingLabel}</span>
             <span className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-saffron-700 to-amber-700 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all duration-200 group-hover:from-saffron-800 group-hover:to-amber-800 group-hover:shadow-md">
               <span>अध्ययन आरम्भ</span>

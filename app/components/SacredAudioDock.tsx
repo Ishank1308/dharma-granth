@@ -200,12 +200,17 @@ export function SacredAudioDock() {
               <div
                 className={`relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-all ${
                   soundState.isPlaying
-                    ? 'bg-gradient-to-br from-amber-500 to-amber-700 text-stone-950 shadow-md shadow-amber-500/25'
+                    ? 'bg-gradient-to-br from-amber-400 via-saffron-500 to-amber-600 text-stone-950 shadow-md shadow-amber-500/30'
                     : 'bg-stone-800 text-amber-400'
                 }`}
               >
                 {soundState.isPlaying ? (
-                  <Radio className="h-5 w-5 animate-pulse" />
+                  <span className="flex items-end gap-0.5 h-4 px-1" aria-hidden="true">
+                    <span className="w-1 bg-stone-950 rounded-full animate-[pulse_0.7s_ease-in-out_infinite] h-full" />
+                    <span className="w-1 bg-stone-950 rounded-full animate-[pulse_1.0s_ease-in-out_infinite] h-2/3" />
+                    <span className="w-1 bg-stone-950 rounded-full animate-[pulse_0.8s_ease-in-out_infinite] h-4/5" />
+                    <span className="w-1 bg-stone-950 rounded-full animate-[pulse_1.2s_ease-in-out_infinite] h-1/2" />
+                  </span>
                 ) : (
                   <span className="font-serif text-lg font-bold">ॐ</span>
                 )}

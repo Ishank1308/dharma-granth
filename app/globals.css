@@ -2049,6 +2049,23 @@ body::after {
     }
 }
 
+@keyframes floatPranaMote {
+    0% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.7;
+    }
+    80% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-80px) translateX(15px);
+        opacity: 0;
+    }
+}
+
 .gilded-shimmer-badge {
     background: linear-gradient(90deg, rgba(251, 191, 36, 0.15) 0%, rgba(253, 224, 71, 0.35) 50%, rgba(251, 191, 36, 0.15) 100%);
     background-size: 200% 100%;
@@ -2065,6 +2082,14 @@ body::after {
 
 .backface-hidden {
     backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gilded-shimmer-badge,
+    .sacred-prana-glow,
+    .prana-particle {
+        animation: none !important;
+    }
 }
 
 
