@@ -18,7 +18,7 @@ export interface FestivalDate {
 }
 
 export const FESTIVAL_DATES: FestivalDate[] = [
-  { name: 'Guru Purnima', nameHindi: 'गुरु पूर्णिमा', date: '2026-07-29', note: 'Honouring the guru — reading Vyasa and one\'s own teachers.' },
+  { name: 'Guru Purnima', nameHindi: 'गुरु पूर्णिमा', date: '2026-07-29', note: 'Honouring the guru — reading Vyasa and one\'s own teachers.', festivalId: 'guru-purnima' },
   { name: 'Nag Panchami', nameHindi: 'नाग पंचमी', date: '2026-08-17' },
   { name: 'Raksha Bandhan', nameHindi: 'रक्षा बंधन', date: '2026-08-28' },
   { name: 'Krishna Janmashtami', nameHindi: 'कृष्ण जन्माष्टमी', date: '2026-09-04', note: 'A day for the Bhagavad Gita and Bhagavata Purana.', festivalId: 'janmashtami' },
@@ -32,7 +32,7 @@ export const FESTIVAL_DATES: FestivalDate[] = [
   { name: 'Govardhan Puja', nameHindi: 'गोवर्धन पूजा', date: '2026-11-10' },
   { name: 'Bhai Dooj', nameHindi: 'भाई दूज', date: '2026-11-11' },
   { name: 'Kartik Purnima / Dev Deepawali', nameHindi: 'कार्तिक पूर्णिमा', date: '2026-11-24' },
-  { name: 'Gita Jayanti', nameHindi: 'गीता जयंती', date: '2026-12-20', note: 'The day the Bhagavad Gita was spoken — a day to read it.' },
+  { name: 'Gita Jayanti', nameHindi: 'गीता जयंती', date: '2026-12-20', note: 'The day the Bhagavad Gita was spoken — a day to read it.', festivalId: 'gita-jayanti' },
   { name: 'Makar Sankranti', nameHindi: 'मकर संक्रांति', date: '2027-01-15' },
   { name: 'Vasant Panchami', nameHindi: 'वसंत पंचमी', date: '2027-02-11', note: 'Saraswati Puja — auspicious for beginning study.' },
   { name: 'Maha Shivaratri', nameHindi: 'महा शिवरात्रि', date: '2027-03-06', note: 'Night vigil and japa of Shiva.', festivalId: 'mahashivratri' },
@@ -41,7 +41,7 @@ export const FESTIVAL_DATES: FestivalDate[] = [
   { name: 'Hanuman Jayanti', nameHindi: 'हनुमान जयंती', date: '2027-04-21' },
   { name: 'Akshaya Tritiya', nameHindi: 'अक्षय तृतीया', date: '2027-05-09' },
   { name: 'Jagannath Ratha Yatra', nameHindi: 'जगन्नाथ रथयात्रा', date: '2027-07-05' },
-  { name: 'Guru Purnima', nameHindi: 'गुरु पूर्णिमा', date: '2027-07-18' },
+  { name: 'Guru Purnima', nameHindi: 'गुरु पूर्णिमा', date: '2027-07-18', festivalId: 'guru-purnima' },
   { name: 'Raksha Bandhan', nameHindi: 'रक्षा बंधन', date: '2027-08-17' },
   { name: 'Krishna Janmashtami', nameHindi: 'कृष्ण जन्माष्टमी', date: '2027-08-25', note: 'A day for the Bhagavad Gita and Bhagavata Purana.', festivalId: 'janmashtami' },
   { name: 'Ganesh Chaturthi', nameHindi: 'गणेश चतुर्थी', date: '2027-09-04' },
@@ -52,7 +52,7 @@ export const FESTIVAL_DATES: FestivalDate[] = [
   { name: 'Diwali', nameHindi: 'दीपावली', date: '2027-10-29', festivalId: 'diwali' },
   { name: 'Govardhan Puja', nameHindi: 'गोवर्धन पूजा', date: '2027-10-30' },
   { name: 'Bhai Dooj', nameHindi: 'भाई दूज', date: '2027-10-31' },
-  { name: 'Gita Jayanti', nameHindi: 'गीता जयंती', date: '2027-12-09', note: 'A day to read the Bhagavad Gita.' },
+  { name: 'Gita Jayanti', nameHindi: 'गीता जयंती', date: '2027-12-09', note: 'A day to read the Bhagavad Gita.', festivalId: 'gita-jayanti' },
   // 2027–2030 additions are major dates from the linked Indian/Hindu calendar
   // references at the end of this list. Observance dates can vary by region,
   // sunrise rule, and tradition; the UI explicitly asks readers to confirm locally.
@@ -63,7 +63,7 @@ export const FESTIVAL_DATES: FestivalDate[] = [
   { name: 'Rama Navami', nameHindi: 'राम नवमी', date: '2028-04-03', note: 'Smarta observance; regional dates may differ.' },
   { name: 'Akshaya Tritiya', nameHindi: 'अक्षय तृतीया', date: '2028-04-27' },
   { name: 'Jagannath Ratha Yatra', nameHindi: 'जगन्नाथ रथयात्रा', date: '2028-06-24' },
-  { name: 'Guru Purnima', nameHindi: 'गुरु पूर्णिमा', date: '2028-07-06', note: 'Honouring the guru — reading Vyasa and one’s own teachers.' },
+  { name: 'Guru Purnima', nameHindi: 'गुरु पूर्णिमा', date: '2028-07-06', note: 'Honouring the guru — reading Vyasa and one’s own teachers.', festivalId: 'guru-purnima' },
   { name: 'Raksha Bandhan', nameHindi: 'रक्षा बंधन', date: '2028-08-05' },
   { name: 'Krishna Janmashtami', nameHindi: 'कृष्ण जन्माष्टमी', date: '2028-08-13', note: 'A day for the Bhagavad Gita and Bhagavata Purana.', festivalId: 'janmashtami' },
   { name: 'Ganesh Chaturthi', nameHindi: 'गणेश चतुर्थी', date: '2028-08-23' },
