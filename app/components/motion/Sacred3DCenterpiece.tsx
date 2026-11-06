@@ -274,7 +274,7 @@ export function Sacred3DCenterpiece() {
             <div
               className={`relative ${
                 isOpen ? 'w-[19rem] sm:w-[25rem]' : 'w-[16rem] sm:w-[17.5rem]'
-              } h-[23rem] sm:h-[25rem] rounded-r-2xl rounded-l-md shadow-2xl transition-all duration-700`}
+              } max-w-[calc(100vw-2.5rem)] h-[23rem] sm:h-[25rem] rounded-r-2xl rounded-l-md shadow-2xl transition-all duration-700`}
               style={{
                 transformStyle: 'preserve-3d',
                 background: 'linear-gradient(135deg, #7c2d12 0%, #451a03 50%, #1c0a00 100%)',
@@ -489,7 +489,7 @@ export function Sacred3DCenterpiece() {
 
             {/* Horizontal Palm Leaf Stack */}
             <div
-              className="relative w-[19rem] sm:w-[28rem] rounded-2xl border border-amber-600/40 p-4 sm:p-6 shadow-2xl backdrop-blur-md"
+              className="relative w-[19rem] sm:w-[28rem] max-w-[calc(100vw-2.5rem)] rounded-2xl border border-amber-600/40 p-4 sm:p-6 shadow-2xl backdrop-blur-md"
               style={{
                 transformStyle: 'preserve-3d',
                 background: 'linear-gradient(180deg, #f7ecd2 0%, #ecd9b3 100%)',
