@@ -1102,7 +1102,7 @@ export function VerseCard({
                                   )}
                                 </div>
                               </div>
-                              <p lang="hi" className="font-devanagari text-sm leading-loose text-dharma-text md:text-base">
+                              <p lang="hi" className="font-devanagari text-base leading-loose text-dharma-text">
                                 {vyakhya}
                               </p>
                             </div>
@@ -1114,7 +1114,7 @@ export function VerseCard({
                                 <p className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">Commentary &amp; Explanation</p>
                                 <ContentLabelBadge kind="explanation" />
                               </div>
-                              <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text md:text-base">{commentary}</p>
+                              <p lang="en" className="font-serif text-base leading-relaxed text-dharma-text">{commentary}</p>
                             </div>
                           )}
 

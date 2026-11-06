@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useRef, useState, type ReactNode } from 'react';
-import { BookOpen, ChevronDown, ChevronUp, Layers } from 'lucide-react';
+import { ChevronDown, ChevronUp, Layers } from 'lucide-react';
 import type { ReadingDepth } from '@/lib/reading-depth';
 import { VersePageExtras } from '@/app/components/reader/VersePageExtras';
 
@@ -63,29 +63,21 @@ export function VerseStudyDisclosure({
 
       {open && (
         <div id={panelId} role="region" aria-labelledby={titleId} className="verse-study-panel liquid-reveal pt-3">
-          {studyDepth === 'understand' && canDeepen && (
-            <div className="mb-4 flex justify-end">
-              <button
-                type="button"
-                onClick={() => setStudyDepth('study')}
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-dharma-border/70 px-3.5 py-2 text-xs font-semibold text-saffron-800 transition-colors hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 dark:text-saffron-300"
-              >
-                <Layers className="h-3.5 w-3.5" aria-hidden="true" />
-                <span><span lang="hi">विस्तृत अध्ययन</span> · <span lang="en">Show full study</span></span>
-              </button>
-            </div>
-          )}
-
           {children(studyDepth)}
           {versePageHref && fullStudy && <VersePageExtras href={versePageHref} />}
-          {versePageHref && !fullStudy && (
+          {/* One "more" control under the explanation: it adds the word meanings and notes (study depth)
+              and the verse page's own study, here in the chapter. */}
+          {((versePageHref && !fullStudy) || (canDeepen && studyDepth === 'understand')) && (
             <div className="mt-5 flex justify-center">
               <button
                 type="button"
-                onClick={() => setFullStudy(true)}
+                onClick={() => {
+                  setStudyDepth('study');
+                  setFullStudy(true);
+                }}
                 className="inline-flex min-h-11 items-center gap-2 rounded-full border border-dharma-border/70 px-3.5 py-2 text-xs font-semibold text-saffron-800 transition-colors hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 dark:text-saffron-300"
               >
-                <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+                <Layers className="h-3.5 w-3.5" aria-hidden="true" />
                 <span><span lang="hi" className="font-devanagari">पूर्ण अध्ययन यहीं देखें</span> · <span lang="en">Show the full study here</span></span>
               </button>
             </div>
