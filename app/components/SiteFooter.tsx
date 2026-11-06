@@ -2,27 +2,33 @@ import Link from 'next/link';
 import { BookOpen, ExternalLink, Flame, Heart, MessageSquare, ShieldCheck } from 'lucide-react';
 import { PerformanceToggle } from './PerformanceToggle';
 import { TRANSPARENCY_LINE } from '@/lib/editorial-terminology';
+import { FadeUpOnView } from './motion/primitives';
+import { StaggerGroup, StaggerReveal } from './motion/ScrollReveal';
+import { WisdomTicker } from './motion/WisdomTicker';
 
 export function SiteFooter() {
   return (
     <footer className="border-t border-dharma-border bg-dharma-card text-dharma-text" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">Footer</h2>
       
+      <WisdomTicker />
+
       {/* Sacred Shanti Mantra Header */}
       <div className="border-b border-dharma-border/60 bg-dharma-card-soft py-10">
-        <div className="mx-auto max-w-6xl px-5 text-center sm:px-6">
+        <FadeUpOnView className="mx-auto max-w-6xl px-5 text-center sm:px-6">
           <p lang="sa" className="font-devanagari text-xl font-bold leading-relaxed text-saffron-800 dark:text-saffron-300 sm:text-2xl">
             ॐ सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ।<br className="hidden sm:inline" /> सर्वे भद्राणि पश्यन्तु मा कश्चिद्दुःखभाग्भवेत् ॥
           </p>
           <p className="mt-3 text-xs italic text-dharma-muted">
             May all sentient beings be happy; may all be healthy; may all see good; may no one suffer sorrow. — Brihadaranyaka Upanishad
           </p>
-        </div>
+        </FadeUpOnView>
       </div>
 
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 lg:py-16">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <StaggerGroup className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Col 1: Identity & Ethos */}
+          <StaggerReveal index={0}>
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-saffron-600 text-white font-devanagari font-bold text-lg shadow-sm">
@@ -41,7 +47,10 @@ export function SiteFooter() {
             </div>
           </div>
 
+          </StaggerReveal>
+
           {/* Col 2: Textual Sources & Editions */}
+          <StaggerReveal index={1}>
           <div className="space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
               Textual Sources & Editions
@@ -62,7 +71,10 @@ export function SiteFooter() {
             </ul>
           </div>
 
+          </StaggerReveal>
+
           {/* Col 3: Methodology & Editorial Integrity */}
+          <StaggerReveal index={2}>
           <div className="space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
               Methodology & Ethics
@@ -90,56 +102,59 @@ export function SiteFooter() {
             </ul>
           </div>
 
+          </StaggerReveal>
+
           {/* Col 4: Quick Navigation & Corrections */}
+          <StaggerReveal index={3}>
           <div className="space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
               Navigation & Corrections
             </h3>
             {/* 44px rows on touch screens; the desktop list keeps its tight spacing. */}
             <nav className="flex flex-col text-sm text-dharma-muted [&>a]:py-3 sm:space-y-2 sm:[&>a]:py-0">
-              <Link href="/scriptures" className="transition hover:text-saffron-700">
+              <Link href="/scriptures" className="link-lift transition hover:text-saffron-700">
                 ग्रंथालय (Scripture Library)
               </Link>
-              <Link href="/scripture/bhagavadgita" className="transition hover:text-saffron-700">
+              <Link href="/scripture/bhagavadgita" className="link-lift transition hover:text-saffron-700">
                 श्रीमद्भगवद्गीता (Bhagavad Gita)
               </Link>
-              <Link href="/practice" className="transition hover:text-saffron-700">
+              <Link href="/practice" className="link-lift transition hover:text-saffron-700">
                 दैनिक साधना (Daily Sadhana)
               </Link>
-              <Link href="/panchang" className="transition hover:text-saffron-700">
+              <Link href="/panchang" className="link-lift transition hover:text-saffron-700">
                 वैदिक पंचांग (Vedic Panchang)
               </Link>
-              <Link href="/festivals" className="transition hover:text-saffron-700">
+              <Link href="/festivals" className="link-lift transition hover:text-saffron-700">
                 उत्सव ज्ञान केंद्र (Festivals)
               </Link>
               <Link href="/wisdom-for-life/" className="transition hover:text-saffron-700 font-medium text-saffron-700 dark:text-saffron-300">
                 शास्त्रीय मार्गदर्शन (Life Guidance)
               </Link>
-              <Link href="/wisdom-for-life" className="transition hover:text-saffron-700">
+              <Link href="/wisdom-for-life" className="link-lift transition hover:text-saffron-700">
                 जीवन स्थितियाँ (Life Situations)
               </Link>
-              <Link href="/daily-verse" className="transition hover:text-saffron-700">
+              <Link href="/daily-verse" className="link-lift transition hover:text-saffron-700">
                 दैनिक श्लोक (Daily Verse for WhatsApp)
               </Link>
-              <Link href="/learn/paths" className="transition hover:text-saffron-700">
+              <Link href="/learn/paths" className="link-lift transition hover:text-saffron-700">
                 स्वाध्याय मार्ग (Guided Paths)
               </Link>
-              <Link href="/learn/plans" className="transition hover:text-saffron-700">
+              <Link href="/learn/plans" className="link-lift transition hover:text-saffron-700">
                 पठन योजनाएँ (Reading Plans)
               </Link>
-              <Link href="/learn/faq" className="transition hover:text-saffron-700">
+              <Link href="/learn/faq" className="link-lift transition hover:text-saffron-700">
                 जिज्ञासा समाधान (Scripture FAQs)
               </Link>
-              <Link href="/sources" className="transition hover:text-saffron-700">
+              <Link href="/sources" className="link-lift transition hover:text-saffron-700">
                 स्रोत पारदर्शिता (Sources & Editions)
               </Link>
-              <Link href="/learn" className="transition hover:text-saffron-700">
+              <Link href="/learn" className="link-lift transition hover:text-saffron-700">
                 अध्ययन केंद्र (Learning Hub)
               </Link>
               <Link href="/contribute" className="transition hover:text-saffron-700 font-medium text-saffron-700 dark:text-saffron-400">
                 ऐच्छिक सहयोग (Contribute & Support)
               </Link>
-              <Link href="/about/funding/" className="transition hover:text-saffron-700">
+              <Link href="/about/funding/" className="link-lift transition hover:text-saffron-700">
                 व्यय और पारदर्शिता (How It Is Funded)
               </Link>
             </nav>
@@ -157,7 +172,8 @@ export function SiteFooter() {
               </a>
             </div>
           </div>
-        </div>
+          </StaggerReveal>
+        </StaggerGroup>
 
         {/* Performance Mode & Data-Saver Controls */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-dharma-border/60 pt-6">

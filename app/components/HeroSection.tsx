@@ -21,6 +21,9 @@ import {
 import { motion, useReducedMotion } from 'framer-motion';
 import { openGlobalSearch } from '@/lib/search-events';
 import { FadeUp } from '@/app/components/motion/primitives';
+import { MagneticButton } from '@/app/components/motion/MagneticButton';
+import { Parallax } from '@/app/components/motion/Parallax';
+import { StaggerGroup, StaggerReveal } from '@/app/components/motion/ScrollReveal';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { Sacred3DCenterpiece } from '@/app/components/motion/Sacred3DCenterpiece';
 
@@ -204,17 +207,21 @@ export function HeroSection() {
         <div className="absolute bottom-2 right-2 size-2 border-b-2 border-r-2 border-amber-300/40" />
       </div>
 
-      {/* Subtle sacred mandala watermark */}
-      <div className="pointer-events-none absolute inset-0 opacity-10 mandala-bg" aria-hidden="true" />
+      {/* Subtle sacred mandala watermark, drifting gently with scroll */}
+      <Parallax range={64} className="pointer-events-none absolute inset-0 opacity-10">
+        <div className="absolute inset-0 mandala-bg" aria-hidden="true" />
+      </Parallax>
 
       <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pb-14 pt-8 sm:px-8 sm:pb-20 sm:pt-16 text-center">
         {/* Purpose Badge */}
-        <div className="mb-3 inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-amber-300/30 bg-black/25 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-200 backdrop-blur-md shadow-sm">
-          <Sparkles className="h-3.5 w-3.5 text-amber-300" aria-hidden="true" />
-          <span>सनातन ज्ञान कोश</span>
-          <span className="text-amber-300/50">·</span>
-          <span>Timeless Digital Sanctuary</span>
-        </div>
+        <FadeUp>
+          <div className="mb-3 inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-amber-300/30 bg-black/25 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-200 backdrop-blur-md shadow-sm">
+            <Sparkles className="h-3.5 w-3.5 text-amber-300" aria-hidden="true" />
+            <span>सनातन ज्ञान कोश</span>
+            <span className="text-amber-300/50">·</span>
+            <span>Timeless Digital Sanctuary</span>
+          </div>
+        </FadeUp>
 
         {/* Hero Title */}
         <FadeUp>
@@ -264,7 +271,7 @@ export function HeroSection() {
               type="submit"
               aria-label="Search"
               onClick={() => triggerTactileFeedback('light', 'softTap')}
-              className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-saffron-700 to-amber-700 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:from-saffron-800 hover:to-amber-800 active:scale-95 sm:px-6"
+              className="btn-sheen inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-saffron-700 to-amber-700 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:from-saffron-800 hover:to-amber-800 active:scale-95 sm:px-6"
             >
               <span className="hidden sm:inline">Search</span>
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -276,14 +283,12 @@ export function HeroSection() {
             quick-search chips, extra buttons and the guide link were removed as clutter (2026-10-25). */}
         <FadeUp delay={0.24}>
         <div className="mt-6 flex flex-col items-center justify-center gap-2.5 sm:mt-8 sm:flex-row sm:gap-3">
-          <Link
-            href="/scripture/bhagavadgita"
-            onClick={() => triggerTactileFeedback('medium', 'softTap')}
-            className="inline-flex min-h-[48px] w-full max-w-md items-center justify-center gap-2.5 rounded-full bg-white px-5 py-3 text-sm font-bold text-stone-950 shadow-xl transition hover:bg-amber-50 active:scale-98 sm:w-auto sm:px-7"
-          >
-            <BookOpen className="h-4 w-4 text-saffron-700" aria-hidden="true" />
-            <span>Start with the Bhagavad Gita</span>
-          </Link>
+          <MagneticButton href="/scripture/bhagavadgita" strength={14} tilt={6} depth={24} className="w-full max-w-md sm:w-auto">
+            <span className="btn-sheen inline-flex min-h-[48px] w-full items-center justify-center gap-2.5 rounded-full bg-white px-5 py-3 text-sm font-bold text-stone-950 shadow-xl transition hover:bg-amber-50 active:scale-98 sm:w-auto sm:px-7">
+              <BookOpen className="h-4 w-4 text-saffron-700" aria-hidden="true" />
+              <span>Start with the Bhagavad Gita</span>
+            </span>
+          </MagneticButton>
         </div>
         </FadeUp>
 
@@ -308,20 +313,20 @@ export function HeroSection() {
             </span>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-2.5 sm:gap-3">
-            {GEN_Z_PATHWAYS.map((p) => {
+          <StaggerGroup className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-2.5 sm:gap-3">
+            {GEN_Z_PATHWAYS.map((p, i) => {
               const Icon = p.icon;
               if (p.isSurprise) {
                 return (
+                  <StaggerReveal key={p.id} index={i} className="col-span-2 sm:col-span-1">
                   <motion.button
-                    key={p.id}
                     type="button"
                     onClick={handleSurpriseVerse}
                     disabled={surpriseLoading}
                     whileHover={reduce ? undefined : { y: -4, scale: 1.02 }}
                     whileTap={{ scale: 0.97 }}
                     transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                    className="group relative flex flex-col justify-between rounded-2xl border border-amber-300/50 bg-gradient-to-br from-amber-500/25 to-saffron-600/35 p-3.5 text-left backdrop-blur-md transition-shadow hover:border-amber-300 hover:shadow-[0_8px_24px_rgba(251,191,36,0.3)] shadow-sm cursor-pointer col-span-2 sm:col-span-1"
+                    className="group relative flex flex-col justify-between rounded-2xl border border-amber-300/50 bg-gradient-to-br from-amber-500/25 to-saffron-600/35 p-3.5 text-left backdrop-blur-md transition-shadow hover:border-amber-300 hover:shadow-[0_8px_24px_rgba(251,191,36,0.3)] shadow-sm cursor-pointer"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-400/25 text-amber-200 group-hover:scale-110 transition-transform">
@@ -344,16 +349,16 @@ export function HeroSection() {
                       </p>
                     </div>
                   </motion.button>
+                  </StaggerReveal>
                 );
               }
 
               return (
+                <StaggerReveal key={p.id} index={i} className="rounded-2xl">
                 <motion.div
-                  key={p.id}
                   whileHover={reduce ? undefined : { y: -4, scale: 1.02 }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                  className="rounded-2xl"
                 >
                   <Link
                     href={p.href!}
@@ -378,9 +383,10 @@ export function HeroSection() {
                     </div>
                   </Link>
                 </motion.div>
+                </StaggerReveal>
               );
             })}
-          </div>
+          </StaggerGroup>
         </div>
       </div>
 

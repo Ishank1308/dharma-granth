@@ -11,6 +11,9 @@ import { getLibraryFacts } from '@/lib/library-server';
 import { catalogueNote, formatCount as formatHolding } from '@/lib/holdings-label';
 import { publishedTotals } from '@/lib/ashtavakra';
 import { SacredScriptureCard } from '@/app/components/motion/SacredScriptureCard';
+import { SectionHeading } from '@/app/components/motion/SectionHeading';
+import { CountUp } from '@/app/components/motion/CountUp';
+import { StaggerGroup, StaggerReveal } from '@/app/components/motion/ScrollReveal';
 
 function formatCount(value: number): string {
   return new Intl.NumberFormat('en-IN').format(value);
@@ -47,54 +50,50 @@ export function FeaturedScripturesSection() {
       className="relative border-b border-dharma-border bg-gradient-to-b from-dharma-bg via-dharma-card/20 to-dharma-bg py-16 sm:py-24"
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        {/* Section Header */}
-        <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <div className="mb-2.5 flex items-center gap-2">
-              <span className="size-2 rounded-full bg-saffron-600 animate-pulse ring-4 ring-saffron-500/20" />
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
-                प्रमुख ग्रंथ · Curated Archive
-              </p>
-            </div>
-            <h2
-              id="featured-scriptures-heading"
-              className="font-serif text-3xl font-bold text-dharma-text sm:text-4xl"
+        <SectionHeading
+          id="featured-scriptures-heading"
+          kickerSa="प्रमुख ग्रंथ"
+          kickerEn="Curated Archive"
+          title="Featured Scriptures"
+          titleClassName="font-serif text-3xl font-bold text-dharma-text sm:text-4xl"
+          description="Explore timeless wisdom preserved in original Sanskrit, accompanied by authentic Hindi meaning and dignified English study notes."
+          aside={
+            <Link
+              href="/scriptures/?explained=1"
+              className="group inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-xs font-bold text-dharma-text transition hover:border-amber-400/80 hover:text-saffron-700 hover:shadow-md shadow-xs"
             >
-              Featured Scriptures
-            </h2>
-            <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-dharma-muted">
-              Explore timeless wisdom preserved in original Sanskrit, accompanied by authentic Hindi meaning and dignified English study notes.
-            </p>
-          </div>
-
-          <Link
-            href="/scriptures/?explained=1"
-            className="group inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-xs font-bold text-dharma-text transition hover:border-amber-400/80 hover:text-saffron-700 hover:shadow-md shadow-xs"
-          >
-            <span>View Full Library</span>
-            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-          </Link>
-        </div>
+              <span>View Full Library</span>
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </Link>
+          }
+        />
 
         {/* Library Stats Row */}
-        <dl className="mb-10 flex flex-wrap gap-x-8 gap-y-2.5 rounded-2xl border border-dharma-border/80 bg-dharma-card/50 px-6 py-4 text-xs backdrop-blur-xs">
+        <dl data-testid="library-stats" className="mb-10 flex flex-wrap gap-x-8 gap-y-2.5 rounded-2xl border border-dharma-border/80 bg-dharma-card/50 px-6 py-4 text-xs backdrop-blur-xs">
           <div className="flex items-baseline gap-2">
             <dt className="text-dharma-muted">Texts with verses:</dt>
-            <dd className="font-bold text-dharma-text">{formatCount(archiveScriptures)}</dd>
+            <dd className="font-bold text-dharma-text">
+              <CountUp value={archiveScriptures} />
+            </dd>
           </div>
           <div className="flex items-baseline gap-2">
             <dt className="text-dharma-muted">Chapters in the library:</dt>
-            <dd className="font-bold text-dharma-text">{formatCount(archiveChapters)}</dd>
+            <dd className="font-bold text-dharma-text">
+              <CountUp value={archiveChapters} />
+            </dd>
           </div>
           <div className="flex items-baseline gap-2">
             <dt className="text-dharma-muted">Verses in the library:</dt>
-            <dd className="font-bold text-dharma-text">{formatCount(archiveVerses)}</dd>
+            <dd className="font-bold text-dharma-text">
+              <CountUp value={archiveVerses} />
+            </dd>
           </div>
         </dl>
 
         {/* Six 3D Interactive Manuscript Cards Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <StaggerGroup className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* 1. Ashtavakra Gita */}
+          <StaggerReveal index={0}>
           <SacredScriptureCard
             href="/ashtavakra/"
             titleEn="Ashtavakra Gita"
@@ -105,6 +104,7 @@ export function FeaturedScripturesSection() {
             watermarkSa="अष्टावक्र"
             isSeparateReading
           />
+          </StaggerReveal>
 
           {/* 2-6. Featured Core Scriptures */}
           {displayTexts.map((scripture, index) => {
@@ -140,8 +140,8 @@ export function FeaturedScripturesSection() {
             }`;
 
             return (
+              <StaggerReveal key={scripture.id} index={index + 1} className={index >= 3 ? 'hidden sm:block' : undefined}>
               <SacredScriptureCard
-                key={scripture.id}
                 href={`/scripture/${scripture.id}/`}
                 titleEn={scripture.title}
                 titleSa={scripture.titleSanskrit || scripture.title}
@@ -150,11 +150,11 @@ export function FeaturedScripturesSection() {
                 holdingLabel={holdingText}
                 watermarkSa={SCRIPTURE_WATERMARKS[scripture.id] || scripture.titleSanskrit}
                 languages={languages}
-                className={index >= 3 ? 'hidden sm:block' : ''}
               />
+              </StaggerReveal>
             );
           })}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

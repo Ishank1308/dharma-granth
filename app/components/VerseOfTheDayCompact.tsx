@@ -21,6 +21,8 @@ import { usePerformanceMode } from '@/lib/performance-mode';
 import { SITE_URL } from '@/lib/jsonld';
 import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 import { SacredShareModal } from '@/app/components/share/SacredShareModal';
+import { SectionHeading } from '@/app/components/motion/SectionHeading';
+import { StaggerGroup, StaggerReveal } from '@/app/components/motion/ScrollReveal';
 
 export function VerseOfTheDayCompact() {
   const reduce = useReducedMotion();
@@ -85,27 +87,21 @@ export function VerseOfTheDayCompact() {
       className="relative border-b border-dharma-border bg-gradient-to-b from-dharma-bg via-dharma-card/30 to-dharma-bg py-12 sm:py-16"
     >
       <div className="mx-auto max-w-4xl px-5 sm:px-6">
-        {/* Section Header */}
-        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="size-2 rounded-full bg-saffron-600 animate-pulse" />
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
-                <span lang="hi" className="font-devanagari">दैनिक श्लोक व मनन</span> · Verse of the Day
-              </p>
-            </div>
-            <h2 id="votd-heading" className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text mt-1">
-              Contemplative Verse for Today
-            </h2>
-          </div>
-
-          {date && (
-            <span className="inline-flex items-center gap-1.5 self-start sm:self-auto rounded-full border border-dharma-border/80 bg-dharma-card px-3.5 py-1 text-xs font-semibold text-dharma-muted shadow-xs">
-              <Compass className="h-3 w-3 text-saffron-600" />
-              <span>{date}</span>
-            </span>
-          )}
-        </div>
+        <SectionHeading
+          id="votd-heading"
+          kickerSa="दैनिक श्लोक व मनन"
+          kickerEn="Verse of the Day"
+          kickerLang="hi"
+          title="Contemplative Verse for Today"
+          aside={
+            date ? (
+              <span className="inline-flex items-center gap-1.5 self-start sm:self-auto rounded-full border border-dharma-border/80 bg-dharma-card px-3.5 py-1 text-xs font-semibold text-dharma-muted shadow-xs">
+                <Compass className="h-3 w-3 text-saffron-600" />
+                <span>{date}</span>
+              </span>
+            ) : undefined
+          }
+        />
 
         {/* 2.5D Layered Verse Card */}
         {item ? (
@@ -248,9 +244,10 @@ export function VerseOfTheDayCompact() {
                 </div>
 
                 {/* ── Layer 3: The 3 Canonical Pillars (Bento Trinity) ── */}
-                <div className={`grid grid-cols-1 ${langTab === 'bilingual' ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-3.5 pt-1`}>
+                <StaggerGroup className={`grid grid-cols-1 ${langTab === 'bilingual' ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-3.5 pt-1`}>
                   {/* Pillar 1: Bhavartha (Shown in bilingual or hindi) */}
                   {(langTab === 'bilingual' || langTab === 'hindi') && item.hindi && (
+                    <StaggerReveal index={0}>
                     <div className="apple-pillar apple-pillar-bhavartha rounded-2xl p-4 transition-all">
                       <div className="flex items-center gap-1.5 mb-2">
                         <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
@@ -262,10 +259,12 @@ export function VerseOfTheDayCompact() {
                         {item.hindi}
                       </p>
                     </div>
+                    </StaggerReveal>
                   )}
 
                   {/* Pillar 2: Vyakhya / Translation (Shown in bilingual or english) */}
                   {(langTab === 'bilingual' || langTab === 'english') && item.translation && (
+                    <StaggerReveal index={1}>
                     <div className="apple-pillar apple-pillar-vyakhya rounded-2xl p-4 transition-all">
                       <div className="flex items-center gap-1.5 mb-2">
                         <span className="h-2 w-2 rounded-full bg-saffron-500" />
@@ -277,10 +276,12 @@ export function VerseOfTheDayCompact() {
                         “{item.translation}”
                       </p>
                     </div>
+                    </StaggerReveal>
                   )}
 
                   {/* Pillar 3: Modern Context */}
                   {(item.practicalTeaching || item.practicalTeachingHi) && (
+                    <StaggerReveal index={2}>
                     <div className="apple-pillar apple-pillar-modern rounded-2xl p-4 transition-all">
                       <div className="flex items-center gap-1.5 mb-2">
                         <span className="h-2 w-2 rounded-full bg-emerald-500" />
@@ -294,8 +295,9 @@ export function VerseOfTheDayCompact() {
                           : (item.practicalTeachingHi || item.practicalTeaching)}
                       </p>
                     </div>
+                    </StaggerReveal>
                   )}
-                </div>
+                </StaggerGroup>
 
                 {/* ── Layer 4: Samsung One UI Ergonomic Action Bar ── */}
                 <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-dharma-border/60">
@@ -305,7 +307,7 @@ export function VerseOfTheDayCompact() {
                       triggerTactileFeedback('medium', 'softTap');
                       setIsShareOpen(true);
                     }}
-                    className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-700 px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-saffron-700/25 transition hover:scale-102 hover:shadow-lg active:scale-95"
+                    className="btn-sheen inline-flex min-h-11 items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-700 px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-saffron-700/25 transition hover:scale-102 hover:shadow-lg active:scale-95"
                   >
                     <Sparkles className="h-4 w-4" />
                     <span>Create Sacred Card (Share 9:16 / 1:1)</span>

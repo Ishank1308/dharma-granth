@@ -4,6 +4,7 @@ import { getSiteShellData } from "@/lib/site-shell-data";
 import { FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
+import { SmoothScroll } from "@/app/components/motion/SmoothScroll";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 import { TactileLayer } from "@/app/components/TactileLayer";
 import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
@@ -241,6 +242,7 @@ export default function RootLayout({
       <body className="font-sans bg-dharma-bg text-dharma-text antialiased">
         <ThemeProvider>
           <SpatialLightCursor />
+          <SmoothScroll />
           <a href="#main-content" className="skip-link" lang="en">
             Skip to main content
           </a>

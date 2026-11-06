@@ -2067,4 +2067,152 @@ body::after {
     backface-visibility: hidden;
 }
 
+/* ── World-class motion system (motion/ScrollReveal, SectionHeading,
+   WisdomTicker, btn-sheen, link-lift) ──────────────────────────────
+   Same contract as .reveal-seq above: scroll-linked CSS only, so server
+   HTML is never hidden, unsupported browsers show everything, and
+   prefers-reduced-motion disables it all. */
+
+/* Cascade: each .reveal-stagger-item rises on its own view timeline, offset
+   by --reveal-i (0–11) so a grid entering together settles as a wave. Items
+   already past their range at load (first screen) render final. */
+@keyframes stagger-rise {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .reveal-stagger-item {
+            animation: stagger-rise var(--ease-out-quint) both;
+            animation-timeline: view();
+            animation-range: entry calc(var(--reveal-i, 0) * 28px) entry calc(220px + var(--reveal-i, 0) * 28px);
+        }
+    }
+}
+
+/* Section rule: grows left→right as its heading scrolls into view. */
+@keyframes rule-grow {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .rule-grow {
+            transform-origin: left center;
+            animation: rule-grow var(--ease-out-quint) both;
+            animation-timeline: view();
+            animation-range: entry 0px entry 180px;
+        }
+    }
+}
+
+/* Wisdom ticker: a slow seamless loop (two identical groups, the track
+   shifts exactly one group width). Pauses on hover/focus; a calm static
+   wrapped list under reduced motion. */
+.ticker {
+    overflow: hidden;
+}
+.ticker-track {
+    display: flex;
+    width: max-content;
+}
+.ticker-group {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 0.65rem 1.5rem;
+    white-space: nowrap;
+}
+.ticker-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+}
+.ticker-sep {
+    color: var(--dharma-saffron);
+    font-size: 0.7rem;
+}
+.ticker-gloss {
+    font-style: italic;
+    color: var(--dharma-muted);
+}
+.ticker-cite {
+    font-size: 0.72rem;
+    font-weight: 700;
+    /* text-secondary at full opacity: muted at 0.8 failed 4.5:1 in light themes (a11y). */
+    color: var(--dharma-text-secondary);
+}
+@keyframes ticker-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .ticker-track {
+        animation: ticker-scroll 90s linear infinite;
+    }
+    .ticker:hover .ticker-track,
+    .ticker:focus-within .ticker-track {
+        animation-play-state: paused;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+        width: auto;
+        flex-wrap: wrap;
+    }
+    .ticker-group + .ticker-group {
+        display: none;
+    }
+    .ticker-group {
+        flex-wrap: wrap;
+        white-space: normal;
+    }
+}
+
+/* Primary-button sheen: a soft light band sweeping across on hover. */
+.btn-sheen {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+.btn-sheen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.35) 50%, transparent 60%);
+    transform: translateX(-120%);
+    transition: transform 0.7s var(--ease-out-quint);
+    pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .btn-sheen:hover::after {
+        transform: translateX(120%);
+    }
+}
+
+/* Footer/nav link micro-interaction: settles right with the colour wash. */
+@media (prefers-reduced-motion: no-preference) {
+    .link-lift {
+        transition: transform 0.3s var(--ease-out-quint), color 0.2s ease;
+    }
+    .link-lift:hover {
+        transform: translateX(4px);
+    }
+}
+
 
