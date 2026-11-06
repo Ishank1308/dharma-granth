@@ -1,0 +1,786 @@
+{
+  "note": "Hindi and English meanings written fresh from the Sanskrit sutras for this site. No modern translation was copied. Applied by scripts/apply-written-meanings.ts.",
+  "keyFormat": "pada:sutra",
+  "meanings": {
+    "1:1": {
+      "hindi": "अब योग का अनुशासन (क्रमबद्ध उपदेश) आरम्भ होता है।",
+      "translation": "Now begins the teaching of yoga, set out in order."
+    },
+    "1:2": {
+      "hindi": "चित्त की वृत्तियों का निरोध (रुक जाना) ही योग है।",
+      "translation": "Yoga is the stilling of the movements of the mind."
+    },
+    "1:3": {
+      "hindi": "तब (निरोध होने पर) द्रष्टा अपने स्वरूप में स्थित हो जाता है।",
+      "translation": "Then the seer abides in its own true nature."
+    },
+    "1:4": {
+      "hindi": "अन्य समय में द्रष्टा वृत्तियों के समान रूप वाला प्रतीत होता है।",
+      "translation": "At other times the seer seems to take the form of the mind's movements."
+    },
+    "1:5": {
+      "hindi": "वृत्तियाँ पाँच प्रकार की हैं; वे क्लेश देने वाली भी होती हैं और क्लेश न देने वाली भी।",
+      "translation": "The movements of the mind are of five kinds, some painful and some not."
+    },
+    "1:6": {
+      "hindi": "(वे पाँच हैं) प्रमाण, विपर्यय, विकल्प, निद्रा और स्मृति।",
+      "translation": "They are valid knowing, error, imagination, sleep and memory."
+    },
+    "1:7": {
+      "hindi": "प्रत्यक्ष, अनुमान और आगम (विश्वसनीय शब्द) — ये तीन प्रमाण हैं।",
+      "translation": "Direct perception, inference and reliable testimony are the means of valid knowing."
+    },
+    "1:8": {
+      "hindi": "विपर्यय मिथ्या ज्ञान है, जो वस्तु के वास्तविक रूप पर आधारित नहीं होता।",
+      "translation": "Error is false knowledge, not based on the real form of the thing."
+    },
+    "1:9": {
+      "hindi": "विकल्प वह वृत्ति है जो केवल शब्द के ज्ञान के पीछे चलती है, पर जिसके पीछे कोई वास्तविक वस्तु नहीं होती।",
+      "translation": "Imagination follows from words alone, with no real object behind it."
+    },
+    "1:10": {
+      "hindi": "अभाव की प्रतीति पर टिकी हुई वृत्ति निद्रा है।",
+      "translation": "Sleep is the movement of mind that rests on the experience of absence."
+    },
+    "1:11": {
+      "hindi": "अनुभव किए हुए विषय का (मन से) न खोना स्मृति है।",
+      "translation": "Memory is the not-losing of an object once experienced."
+    },
+    "1:12": {
+      "hindi": "अभ्यास और वैराग्य से इन वृत्तियों का निरोध होता है।",
+      "translation": "These movements are stilled by practice and by non-attachment."
+    },
+    "1:13": {
+      "hindi": "उनमें (चित्त की) स्थिरता के लिए किया गया प्रयत्न अभ्यास है।",
+      "translation": "Of these, practice is the effort to remain steady."
+    },
+    "1:14": {
+      "hindi": "वह अभ्यास लम्बे समय तक, बिना अन्तराल के और श्रद्धा-आदर के साथ किया जाए, तो दृढ़ भूमि वाला हो जाता है।",
+      "translation": "That practice becomes firmly grounded when kept up for a long time, without a break, and with devotion."
+    },
+    "1:15": {
+      "hindi": "देखे हुए और (शास्त्र में) सुने हुए विषयों की तृष्णा से मुक्त पुरुष की जो वशीकार नाम की अवस्था है, वह वैराग्य है।",
+      "translation": "Non-attachment is the mastery of one who no longer thirsts for objects, whether seen or heard of in scripture."
+    },
+    "1:16": {
+      "hindi": "पुरुष (आत्मा) के ज्ञान से गुणों के प्रति भी तृष्णा न रहना, वह पर (उच्चतम) वैराग्य है।",
+      "translation": "The highest non-attachment is freedom from craving even for the gunas, born of knowing the Self."
+    },
+    "1:17": {
+      "hindi": "वितर्क, विचार, आनन्द और अस्मिता के रूप से युक्त होने के कारण वह सम्प्रज्ञात समाधि है।",
+      "translation": "Samadhi with awareness of an object (samprajnata) is accompanied by reasoning, reflection, bliss and the sense of 'I am'."
+    },
+    "1:18": {
+      "hindi": "दूसरी (असम्प्रज्ञात समाधि) वृत्तियों के विराम के अभ्यास से होती है, जिसमें केवल संस्कार शेष रहते हैं।",
+      "translation": "The other samadhi follows practice of the ceasing of all thought; in it only latent impressions remain."
+    },
+    "1:19": {
+      "hindi": "विदेहों और प्रकृतिलयों की (यह अवस्था) भव-प्रत्यय, अर्थात् जन्म के कारण होती है।",
+      "translation": "For the bodiless ones and those merged in nature, this state arises from birth itself."
+    },
+    "1:20": {
+      "hindi": "दूसरों की (यह समाधि) श्रद्धा, वीर्य, स्मृति, समाधि और प्रज्ञा के क्रम से प्राप्त होती है।",
+      "translation": "For others it comes through faith, energy, mindfulness, concentration and insight."
+    },
+    "1:21": {
+      "hindi": "जिनका संवेग (लगन) तीव्र है, उनके लिए यह समीप है।",
+      "translation": "It is near for those whose eagerness is intense."
+    },
+    "1:22": {
+      "hindi": "मृदु, मध्य और अधिमात्र (उत्तम) होने से उनमें भी भेद होता है।",
+      "translation": "Even among them there is a difference, as their effort is mild, middling or intense."
+    },
+    "1:23": {
+      "hindi": "अथवा ईश्वर-प्रणिधान (ईश्वर के प्रति पूर्ण समर्पण) से भी (समाधि प्राप्त होती है)।",
+      "translation": "Or samadhi is reached by complete surrender to Ishvara."
+    },
+    "1:24": {
+      "hindi": "क्लेश, कर्म, कर्मफल और वासनाओं से अछूता पुरुष-विशेष ईश्वर है।",
+      "translation": "Ishvara is a special Purusha, untouched by afflictions, actions, their fruits and their latent traces."
+    },
+    "1:25": {
+      "hindi": "उनमें सर्वज्ञता का बीज निरतिशय (सबसे बढ़कर) है।",
+      "translation": "In Ishvara the seed of all-knowing is unsurpassed."
+    },
+    "1:26": {
+      "hindi": "काल से सीमित न होने के कारण आप पूर्व के गुरुओं के भी गुरु हैं।",
+      "translation": "Not limited by time, Ishvara is the teacher even of the earliest teachers."
+    },
+    "1:27": {
+      "hindi": "उनका वाचक (नाम) प्रणव (ॐ) है।",
+      "translation": "The word that expresses Ishvara is the pranava, Om."
+    },
+    "1:28": {
+      "hindi": "उसका जप और उसके अर्थ की भावना (करनी चाहिए)।",
+      "translation": "Repeat it, and dwell on its meaning."
+    },
+    "1:29": {
+      "hindi": "उससे अन्तरात्मा का ज्ञान भी होता है और विघ्नों का अभाव भी।",
+      "translation": "From this comes knowledge of the inner Self, and the obstacles fall away."
+    },
+    "1:30": {
+      "hindi": "रोग, अकर्मण्यता, संशय, प्रमाद, आलस्य, विषय-आसक्ति, भ्रान्त दर्शन, (योग की) भूमि न मिलना और मिली हुई भूमि पर न टिकना — ये चित्त के विक्षेप हैं, यही विघ्न हैं।",
+      "translation": "Illness, dullness, doubt, carelessness, sloth, craving, wrong view, failing to reach a stage, and failing to hold it: these distractions of the mind are the obstacles."
+    },
+    "1:31": {
+      "hindi": "दुःख, मन की उदासी, अंगों का काँपना और (अनियमित) श्वास-प्रश्वास — ये विक्षेपों के साथ होते हैं।",
+      "translation": "Sorrow, dejection, trembling of the limbs and uneven breathing come along with these distractions."
+    },
+    "1:32": {
+      "hindi": "उन्हें दूर करने के लिए एक तत्त्व का अभ्यास (करना चाहिए)।",
+      "translation": "To counter them, practise focus on a single principle."
+    },
+    "1:33": {
+      "hindi": "सुखी, दुःखी, पुण्यात्मा और पापी के प्रति क्रमशः मैत्री, करुणा, मुदिता (प्रसन्नता) और उपेक्षा की भावना से चित्त निर्मल और प्रसन्न होता है।",
+      "translation": "The mind becomes clear and calm by cultivating friendliness toward the happy, compassion toward the suffering, gladness toward the virtuous, and equanimity toward the wrongdoer."
+    },
+    "1:34": {
+      "hindi": "अथवा प्राण को बाहर छोड़ने और रोकने से (चित्त स्थिर होता है)।",
+      "translation": "Or by breathing out and holding the breath."
+    },
+    "1:35": {
+      "hindi": "अथवा (किसी सूक्ष्म) विषय से युक्त प्रवृत्ति उत्पन्न होकर मन की स्थिरता को बाँध देती है।",
+      "translation": "Or a heightened sense-experience, once it arises, binds the mind to steadiness."
+    },
+    "1:36": {
+      "hindi": "अथवा शोकरहित, ज्योतिर्मय (प्रवृत्ति से भी चित्त स्थिर होता है)।",
+      "translation": "Or a sorrowless, luminous inner state."
+    },
+    "1:37": {
+      "hindi": "अथवा राग से रहित (महापुरुषों के) चित्त को विषय बनाने से।",
+      "translation": "Or a mind that takes as its object one who is free from desire."
+    },
+    "1:38": {
+      "hindi": "अथवा स्वप्न और निद्रा के ज्ञान का आलम्बन लेने से।",
+      "translation": "Or by resting on what is known in dream and deep sleep."
+    },
+    "1:39": {
+      "hindi": "अथवा जो अभिमत (प्रिय) हो, उसके ध्यान से।",
+      "translation": "Or by meditating on whatever one finds dear."
+    },
+    "1:40": {
+      "hindi": "(ऐसे योगी का) वश परमाणु से लेकर परम महान् तक फैल जाता है।",
+      "translation": "The yogi's mastery then reaches from the smallest atom to the greatest magnitude."
+    },
+    "1:41": {
+      "hindi": "जिसकी वृत्तियाँ क्षीण हो गई हैं, उस चित्त का निर्मल मणि के समान ग्रहीता, ग्रहण और ग्राह्य में स्थित होकर उन्हीं के रंग में रंग जाना समापत्ति है।",
+      "translation": "When the mind's movements have faded, it is like a clear crystal: resting on knower, knowing or known, it takes on that very colour. This is samapatti."
+    },
+    "1:42": {
+      "hindi": "उनमें शब्द, अर्थ और ज्ञान के विकल्पों से मिली हुई समापत्ति सवितर्का है।",
+      "translation": "Of these, samapatti mixed with the notions of word, meaning and idea is called savitarka."
+    },
+    "1:43": {
+      "hindi": "स्मृति के शुद्ध हो जाने पर, मानो अपने रूप से शून्य, केवल अर्थ को प्रकाशित करने वाली (समापत्ति) निर्वितर्का है।",
+      "translation": "When memory is purified, the mind seems empty of itself and only the object shines. This is nirvitarka."
+    },
+    "1:44": {
+      "hindi": "इसी से सूक्ष्म विषय वाली सविचारा और निर्विचारा समापत्ति की भी व्याख्या हो गई।",
+      "translation": "In the same way, savichara and nirvichara, which have subtle objects, are explained."
+    },
+    "1:45": {
+      "hindi": "सूक्ष्म विषयों की सीमा अलिंग (मूल प्रकृति) तक है।",
+      "translation": "Subtle objects extend as far as unmanifest nature."
+    },
+    "1:46": {
+      "hindi": "ये ही (चारों) सबीज समाधि हैं।",
+      "translation": "These are all samadhi with a seed."
+    },
+    "1:47": {
+      "hindi": "निर्विचार में निपुणता आने पर अध्यात्म-प्रसाद (आत्मा की निर्मलता) प्राप्त होता है।",
+      "translation": "With mastery of nirvichara comes clarity of the inner self."
+    },
+    "1:48": {
+      "hindi": "वहाँ प्रज्ञा ऋतम्भरा (सत्य को धारण करने वाली) होती है।",
+      "translation": "There insight is filled with truth."
+    },
+    "1:49": {
+      "hindi": "यह प्रज्ञा सुने हुए और अनुमान से प्राप्त ज्ञान से भिन्न विषय वाली है, क्योंकि यह विशेष अर्थ को जानती है।",
+      "translation": "This insight differs from knowledge gained by hearing or inference, because it grasps the particular."
+    },
+    "1:50": {
+      "hindi": "उससे उत्पन्न संस्कार अन्य संस्कारों को रोक देता है।",
+      "translation": "The impression born of it blocks all other impressions."
+    },
+    "1:51": {
+      "hindi": "उसका भी निरोध हो जाने पर, सबका निरोध होने से निर्बीज समाधि होती है।",
+      "translation": "When even that is stilled, everything is stilled, and samadhi without seed is reached."
+    },
+    "2:1": {
+      "hindi": "तप, स्वाध्याय और ईश्वर-प्रणिधान — यह क्रियायोग है।",
+      "translation": "Discipline, self-study and surrender to Ishvara make up the yoga of action."
+    },
+    "2:2": {
+      "hindi": "(क्रियायोग) समाधि की भावना के लिए और क्लेशों को क्षीण करने के लिए है।",
+      "translation": "It is practised to bring about samadhi and to weaken the afflictions."
+    },
+    "2:3": {
+      "hindi": "अविद्या, अस्मिता, राग, द्वेष और अभिनिवेश — ये पाँच क्लेश हैं।",
+      "translation": "The afflictions are ignorance, ego-sense, attachment, aversion and clinging to life."
+    },
+    "2:4": {
+      "hindi": "शेष क्लेश, चाहे वे सोए हों, क्षीण हों, दबे हों या उभरे हुए हों, उन सबकी भूमि अविद्या है।",
+      "translation": "Ignorance is the field for the others, whether they lie dormant, weakened, interrupted or fully active."
+    },
+    "2:5": {
+      "hindi": "अनित्य को नित्य, अशुद्ध को शुद्ध, दुःख को सुख और अनात्मा को आत्मा समझना अविद्या है।",
+      "translation": "Ignorance is taking the impermanent for permanent, the impure for pure, sorrow for joy, and what is not the Self for the Self."
+    },
+    "2:6": {
+      "hindi": "द्रष्टा की शक्ति और देखने के साधन (बुद्धि) को एक समझ लेना अस्मिता है।",
+      "translation": "Ego-sense is mistaking the power of seeing and the instrument of seeing as one."
+    },
+    "2:7": {
+      "hindi": "सुख के पीछे लगी रहने वाली (वृत्ति) राग है।",
+      "translation": "Attachment is what follows pleasure."
+    },
+    "2:8": {
+      "hindi": "दुःख के पीछे लगी रहने वाली (वृत्ति) द्वेष है।",
+      "translation": "Aversion is what follows pain."
+    },
+    "2:9": {
+      "hindi": "अपने स्वभाव से बहने वाला, विद्वानों में भी वैसा ही जमा हुआ (जीवन का मोह) अभिनिवेश है।",
+      "translation": "Clinging to life flows by its own nature and is rooted even in the wise."
+    },
+    "2:10": {
+      "hindi": "सूक्ष्म (हो चुके) क्लेश प्रतिप्रसव से, अर्थात् चित्त के अपने कारण में लीन होने से, नष्ट होते हैं।",
+      "translation": "In their subtle form, the afflictions are removed by tracing them back to their source."
+    },
+    "2:11": {
+      "hindi": "उनकी (स्थूल) वृत्तियाँ ध्यान से दूर होती हैं।",
+      "translation": "Their active forms are removed by meditation."
+    },
+    "2:12": {
+      "hindi": "कर्मों का संचय क्लेशों से उत्पन्न होता है और वह इस जन्म में तथा आगे के जन्मों में भोगा जाता है।",
+      "translation": "The store of karma is rooted in the afflictions and is experienced in this life or in lives to come."
+    },
+    "2:13": {
+      "hindi": "मूल (क्लेश) रहते हुए उसका फल जाति (जन्म), आयु और भोग के रूप में मिलता है।",
+      "translation": "While the root remains, it ripens as birth, length of life and experience."
+    },
+    "2:14": {
+      "hindi": "पुण्य और पाप के कारण उनके फल आनन्द और सन्ताप होते हैं।",
+      "translation": "These bring joy or pain, according to whether their cause was merit or demerit."
+    },
+    "2:15": {
+      "hindi": "परिणाम, ताप और संस्कार के दुःखों से तथा गुणों की वृत्तियों के आपसी विरोध से विवेकी के लिए सब कुछ दुःख ही है।",
+      "translation": "To the discerning, all is sorrow, because of change, anxiety and old impressions, and because the gunas are always at odds."
+    },
+    "2:16": {
+      "hindi": "जो दुःख अभी आया नहीं, वह त्यागने योग्य है।",
+      "translation": "The sorrow yet to come is what can be avoided."
+    },
+    "2:17": {
+      "hindi": "द्रष्टा और दृश्य का संयोग ही त्याज्य (दुःख) का कारण है।",
+      "translation": "The cause of that sorrow is the joining of the seer and the seen."
+    },
+    "2:18": {
+      "hindi": "प्रकाश, क्रिया और स्थिति जिसका स्वभाव है, जो भूतों और इन्द्रियों के रूप में है और जो भोग तथा मुक्ति के लिए है, वह दृश्य है।",
+      "translation": "The seen has the nature of light, activity and inertia; it consists of the elements and the senses, and exists for experience and for liberation."
+    },
+    "2:19": {
+      "hindi": "विशेष, अविशेष, लिंगमात्र और अलिंग — ये गुणों के पर्व (स्तर) हैं।",
+      "translation": "The levels of the gunas are the specific, the non-specific, the merely marked, and the unmarked."
+    },
+    "2:20": {
+      "hindi": "द्रष्टा केवल देखने की शक्ति है; शुद्ध होने पर भी वह बुद्धि के ज्ञान के अनुसार देखता है।",
+      "translation": "The seer is pure seeing alone; though pure, it sees through the ideas of the mind."
+    },
+    "2:21": {
+      "hindi": "दृश्य का स्वरूप उस (द्रष्टा) के प्रयोजन के लिए ही है।",
+      "translation": "The very being of the seen is for the seer's sake."
+    },
+    "2:22": {
+      "hindi": "जिसका प्रयोजन पूरा हो चुका, उसके लिए नष्ट होकर भी (दृश्य) अन्य सबके लिए साधारण होने से नष्ट नहीं होता।",
+      "translation": "For one whose purpose is fulfilled it ceases, yet it does not cease, since it is shared by all others."
+    },
+    "2:23": {
+      "hindi": "स्व (दृश्य) और स्वामी (द्रष्टा) की शक्तियों के स्वरूप की उपलब्धि का कारण संयोग है।",
+      "translation": "Their joining is what lets the powers of the owned and the owner each be known."
+    },
+    "2:24": {
+      "hindi": "उस (संयोग) का कारण अविद्या है।",
+      "translation": "Its cause is ignorance."
+    },
+    "2:25": {
+      "hindi": "उसके अभाव से संयोग का अभाव होता है; यही हान (त्याग) है, यही द्रष्टा का कैवल्य है।",
+      "translation": "When ignorance is gone, the joining ends. That ending is release, the seer's freedom (kaivalya)."
+    },
+    "2:26": {
+      "hindi": "अविचल विवेक-ख्याति (भेद का स्पष्ट ज्ञान) त्याग का उपाय है।",
+      "translation": "Unwavering discernment is the means of release."
+    },
+    "2:27": {
+      "hindi": "उस (विवेकी) की प्रज्ञा सात प्रकार की अन्तिम भूमियों वाली होती है।",
+      "translation": "For such a one, insight rises in seven final stages."
+    },
+    "2:28": {
+      "hindi": "योग के अंगों के अनुष्ठान से अशुद्धि का क्षय होने पर विवेक-ख्याति तक ज्ञान का प्रकाश बढ़ता जाता है।",
+      "translation": "By practising the limbs of yoga, impurity wanes and the light of knowledge grows until discernment dawns."
+    },
+    "2:29": {
+      "hindi": "यम, नियम, आसन, प्राणायाम, प्रत्याहार, धारणा, ध्यान और समाधि — ये (योग के) आठ अंग हैं।",
+      "translation": "Restraint, observance, posture, breath control, withdrawal of the senses, concentration, meditation and samadhi are the eight limbs."
+    },
+    "2:30": {
+      "hindi": "अहिंसा, सत्य, अस्तेय (चोरी न करना), ब्रह्मचर्य और अपरिग्रह (संग्रह न करना) — ये यम हैं।",
+      "translation": "The restraints are non-violence, truthfulness, non-stealing, continence and non-possessiveness."
+    },
+    "2:31": {
+      "hindi": "जाति, देश, काल और समय (परिस्थिति) से न बँधे हुए, सब भूमियों में पालन किए जाने वाले ये यम महाव्रत हैं।",
+      "translation": "Kept in every situation, unbounded by birth, place, time or circumstance, they are the great vow."
+    },
+    "2:32": {
+      "hindi": "शौच, सन्तोष, तप, स्वाध्याय और ईश्वर-प्रणिधान — ये नियम हैं।",
+      "translation": "The observances are purity, contentment, discipline, self-study and surrender to Ishvara."
+    },
+    "2:33": {
+      "hindi": "वितर्कों (अनुचित विचारों) से बाधा होने पर उनके विरोधी भाव का चिन्तन करना चाहिए।",
+      "translation": "When troubled by harmful thoughts, cultivate their opposite."
+    },
+    "2:34": {
+      "hindi": "हिंसा आदि वितर्क — स्वयं किए, कराए या अनुमोदित; लोभ, क्रोध या मोह से उत्पन्न; मृदु, मध्य या तीव्र — सब अनन्त दुःख और अज्ञान का फल देते हैं, ऐसा चिन्तन ही प्रतिपक्ष-भावना है।",
+      "translation": "Harmful thoughts such as violence, whether done, caused or approved, born of greed, anger or delusion, mild, middling or intense, bear endless fruit of sorrow and ignorance. Reflecting on this is cultivating the opposite."
+    },
+    "2:35": {
+      "hindi": "अहिंसा में दृढ़ स्थिति होने पर उसके समीप (प्राणी) वैर त्याग देते हैं।",
+      "translation": "When non-violence is firmly established, hostility falls away in that person's presence."
+    },
+    "2:36": {
+      "hindi": "सत्य में दृढ़ स्थिति होने पर कर्म और उसका फल उसकी वाणी पर आश्रित हो जाते हैं।",
+      "translation": "When truthfulness is established, actions and their fruits follow from one's word."
+    },
+    "2:37": {
+      "hindi": "अस्तेय में दृढ़ स्थिति होने पर सब रत्न उसके पास उपस्थित होते हैं।",
+      "translation": "When non-stealing is established, all treasures come near."
+    },
+    "2:38": {
+      "hindi": "ब्रह्मचर्य में दृढ़ स्थिति होने पर वीर्य (सामर्थ्य) का लाभ होता है।",
+      "translation": "When continence is established, vigour is gained."
+    },
+    "2:39": {
+      "hindi": "अपरिग्रह में स्थिरता आने पर जन्म के 'कैसे' (कारण और क्रम) का ज्ञान होता है।",
+      "translation": "When non-possessiveness is steady, one understands the how and why of birth."
+    },
+    "2:40": {
+      "hindi": "शौच से अपने अंगों के प्रति अनासक्ति और दूसरों के (शरीर के) संसर्ग की इच्छा का अभाव होता है।",
+      "translation": "From purity comes detachment from one's own body and no longing for contact with others' bodies."
+    },
+    "2:41": {
+      "hindi": "और (शौच से) सत्त्व की शुद्धि, मन की प्रसन्नता, एकाग्रता, इन्द्रियों पर विजय और आत्म-दर्शन की योग्यता भी आती है।",
+      "translation": "It also brings purity of mind, cheerfulness, one-pointedness, mastery of the senses and fitness to see the Self."
+    },
+    "2:42": {
+      "hindi": "सन्तोष से उत्तम सुख का लाभ होता है।",
+      "translation": "From contentment comes unsurpassed happiness."
+    },
+    "2:43": {
+      "hindi": "तप से अशुद्धि का क्षय होकर शरीर और इन्द्रियों की सिद्धि होती है।",
+      "translation": "Through discipline, impurities are destroyed and body and senses are perfected."
+    },
+    "2:44": {
+      "hindi": "स्वाध्याय से इष्ट देवता का सान्निध्य प्राप्त होता है।",
+      "translation": "Through self-study comes communion with one's chosen deity."
+    },
+    "2:45": {
+      "hindi": "ईश्वर-प्रणिधान से समाधि की सिद्धि होती है।",
+      "translation": "Through surrender to Ishvara, samadhi is perfected."
+    },
+    "2:46": {
+      "hindi": "स्थिर और सुखद (बैठने की स्थिति) आसन है।",
+      "translation": "Posture should be steady and comfortable."
+    },
+    "2:47": {
+      "hindi": "प्रयत्न की शिथिलता और अनन्त में मन लगाने से (आसन सिद्ध होता है)।",
+      "translation": "It is mastered by relaxing effort and resting the mind in the infinite."
+    },
+    "2:48": {
+      "hindi": "उससे द्वन्द्वों (सर्दी-गर्मी आदि) का आघात नहीं होता।",
+      "translation": "Then one is no longer struck by the pairs of opposites."
+    },
+    "2:49": {
+      "hindi": "आसन सिद्ध होने पर श्वास और प्रश्वास की गति का विच्छेद (नियमन) प्राणायाम है।",
+      "translation": "With posture mastered, breath control is the regulation of the flow of inhalation and exhalation."
+    },
+    "2:50": {
+      "hindi": "बाह्य, आभ्यन्तर और स्तम्भ वृत्ति वाला वह (प्राणायाम) देश, काल और संख्या से मापा जाकर दीर्घ और सूक्ष्म होता है।",
+      "translation": "It is outward, inward or held still; measured by place, time and count, it becomes long and subtle."
+    },
+    "2:51": {
+      "hindi": "बाह्य और आभ्यन्तर विषयों को पार करने वाला चौथा (प्राणायाम) है।",
+      "translation": "The fourth goes beyond both outer and inner."
+    },
+    "2:52": {
+      "hindi": "उससे प्रकाश का आवरण क्षीण होता है।",
+      "translation": "Then the veil over the inner light thins away."
+    },
+    "2:53": {
+      "hindi": "और मन धारणाओं के योग्य हो जाता है।",
+      "translation": "And the mind becomes fit for concentration."
+    },
+    "2:54": {
+      "hindi": "अपने विषयों से हटकर इन्द्रियों का मानो चित्त के स्वरूप का अनुसरण करना प्रत्याहार है।",
+      "translation": "Withdrawal of the senses is when they turn from their objects and seem to follow the mind's own nature."
+    },
+    "2:55": {
+      "hindi": "उससे इन्द्रियों पर परम वश प्राप्त होता है।",
+      "translation": "From this comes complete mastery of the senses."
+    },
+    "3:1": {
+      "hindi": "चित्त को किसी एक स्थान पर बाँधना धारणा है।",
+      "translation": "Concentration is binding the mind to one place."
+    },
+    "3:2": {
+      "hindi": "वहाँ (उस स्थान पर) ज्ञान की एकतानता (अविच्छिन्न धारा) ध्यान है।",
+      "translation": "Meditation is the unbroken flow of awareness toward that place."
+    },
+    "3:3": {
+      "hindi": "वही (ध्यान) जब केवल अर्थ (ध्येय) को प्रकाशित करे और मानो अपने स्वरूप से शून्य हो जाए, तब समाधि है।",
+      "translation": "When only the object shines, and the mind seems empty of itself, that is samadhi."
+    },
+    "3:4": {
+      "hindi": "तीनों का एक ही विषय में होना संयम है।",
+      "translation": "The three together on one object are called samyama."
+    },
+    "3:5": {
+      "hindi": "उस (संयम) पर विजय से प्रज्ञा का प्रकाश होता है।",
+      "translation": "By mastering it, the light of insight dawns."
+    },
+    "3:6": {
+      "hindi": "उसका प्रयोग (योग की) भूमियों में क्रम से किया जाता है।",
+      "translation": "It is applied stage by stage."
+    },
+    "3:7": {
+      "hindi": "पहले के (अंगों) की तुलना में ये तीन अन्तरंग हैं।",
+      "translation": "These three are inner limbs compared with the ones before."
+    },
+    "3:8": {
+      "hindi": "वे भी निर्बीज (समाधि) के लिए बहिरंग हैं।",
+      "translation": "Yet even they are outer limbs for samadhi without seed."
+    },
+    "3:9": {
+      "hindi": "व्युत्थान (बहिर्मुखता) के संस्कार का दबना और निरोध के संस्कार का प्रकट होना, निरोध के क्षण में चित्त का उससे जुड़ना, यह निरोध-परिणाम है।",
+      "translation": "When outgoing impressions subside and impressions of stillness arise, and the mind joins that moment of stillness, this is the transformation of stillness."
+    },
+    "3:10": {
+      "hindi": "संस्कार से उसका प्रवाह शान्त होता है।",
+      "translation": "Through repeated impression, its flow becomes calm."
+    },
+    "3:11": {
+      "hindi": "सब विषयों की ओर जाने की वृत्ति का क्षय और एकाग्रता का उदय चित्त का समाधि-परिणाम है।",
+      "translation": "The fading of scattered attention and the rise of one-pointedness is the transformation of samadhi."
+    },
+    "3:12": {
+      "hindi": "फिर शान्त हुई और उदित हुई प्रतीतियाँ समान हों, यह चित्त का एकाग्रता-परिणाम है।",
+      "translation": "When the idea that fades and the idea that arises are the same, that is the transformation of one-pointedness."
+    },
+    "3:13": {
+      "hindi": "इसी से भूतों और इन्द्रियों में धर्म, लक्षण और अवस्था के परिणामों की भी व्याख्या हो गई।",
+      "translation": "In the same way, change of quality, of time and of condition in elements and senses is explained."
+    },
+    "3:14": {
+      "hindi": "शान्त (बीते), उदित (वर्तमान) और अव्यपदेश्य (भविष्य के) धर्मों में अनुगत रहने वाला धर्मी है।",
+      "translation": "The substance is what runs through all its qualities, past, present and yet to come."
+    },
+    "3:15": {
+      "hindi": "क्रम का भेद ही परिणाम के भेद का कारण है।",
+      "translation": "A difference in sequence is the cause of a difference in change."
+    },
+    "3:16": {
+      "hindi": "तीनों परिणामों पर संयम से भूत और भविष्य का ज्ञान होता है।",
+      "translation": "By samyama on the three changes comes knowledge of past and future."
+    },
+    "3:17": {
+      "hindi": "शब्द, अर्थ और ज्ञान एक-दूसरे पर आरोपित होने से मिल जाते हैं; उनके विभाग पर संयम से सब प्राणियों की वाणी का ज्ञान होता है।",
+      "translation": "Word, meaning and idea overlap and blend; by samyama on their distinction comes understanding of the sounds of all beings."
+    },
+    "3:18": {
+      "hindi": "संस्कारों का साक्षात्कार करने से पूर्व जन्म का ज्ञान होता है।",
+      "translation": "By directly perceiving one's impressions comes knowledge of past births."
+    },
+    "3:19": {
+      "hindi": "(दूसरे की) प्रतीति पर संयम से दूसरे के चित्त का ज्ञान होता है।",
+      "translation": "By samyama on another's ideas comes knowledge of that mind."
+    },
+    "3:20": {
+      "hindi": "पर उसका आलम्बन (विषय) ज्ञात नहीं होता, क्योंकि वह संयम का विषय नहीं बना।",
+      "translation": "But not the object that mind rests on, since that was not the object of samyama."
+    },
+    "3:21": {
+      "hindi": "शरीर के रूप पर संयम से, उसकी ग्राह्य शक्ति रुक जाने और नेत्र के प्रकाश से सम्बन्ध न रहने पर अन्तर्धान (अदृश्य होना) होता है।",
+      "translation": "By samyama on the form of the body, its power to be seen is held back; with no contact with the light of the eye, one becomes invisible."
+    },
+    "3:22": {
+      "hindi": "कर्म सोपक्रम (शीघ्र फल देने वाला) और निरुपक्रम (देर से फल देने वाला) होता है; उस पर संयम से, या अरिष्टों (अशुभ लक्षणों) से, मृत्यु का ज्ञान होता है।",
+      "translation": "Karma is either quick or slow to ripen; by samyama on it, or through omens, comes knowledge of the time of death."
+    },
+    "3:23": {
+      "hindi": "मैत्री आदि पर (संयम से) उनके बल प्राप्त होते हैं।",
+      "translation": "By samyama on friendliness and the like, their strengths are gained."
+    },
+    "3:24": {
+      "hindi": "बलों पर (संयम से) हाथी आदि का बल प्राप्त होता है।",
+      "translation": "By samyama on strength, the strength of an elephant and the like."
+    },
+    "3:25": {
+      "hindi": "(ज्योतिष्मती) प्रवृत्ति के प्रकाश को डालने से सूक्ष्म, छिपे हुए और दूर स्थित (वस्तुओं) का ज्ञान होता है।",
+      "translation": "By directing the inner light, one knows what is subtle, hidden or far away."
+    },
+    "3:26": {
+      "hindi": "सूर्य पर संयम से लोकों का ज्ञान होता है।",
+      "translation": "By samyama on the sun comes knowledge of the worlds."
+    },
+    "3:27": {
+      "hindi": "चन्द्रमा पर (संयम से) तारों की व्यवस्था का ज्ञान होता है।",
+      "translation": "On the moon, knowledge of the arrangement of the stars."
+    },
+    "3:28": {
+      "hindi": "ध्रुव पर (संयम से) उनकी गति का ज्ञान होता है।",
+      "translation": "On the pole star, knowledge of their motion."
+    },
+    "3:29": {
+      "hindi": "नाभिचक्र पर (संयम से) शरीर की रचना का ज्ञान होता है।",
+      "translation": "On the navel centre, knowledge of the body's structure."
+    },
+    "3:30": {
+      "hindi": "कण्ठ-कूप पर (संयम से) भूख और प्यास की निवृत्ति होती है।",
+      "translation": "On the hollow of the throat, hunger and thirst cease."
+    },
+    "3:31": {
+      "hindi": "कूर्म नाड़ी पर (संयम से) स्थिरता आती है।",
+      "translation": "On the tortoise channel, steadiness."
+    },
+    "3:32": {
+      "hindi": "मूर्धा की ज्योति पर (संयम से) सिद्धों के दर्शन होते हैं।",
+      "translation": "On the light at the crown of the head, vision of the perfected ones."
+    },
+    "3:33": {
+      "hindi": "अथवा प्रातिभ (अन्तःस्फुरित ज्ञान) से सब कुछ (जाना जाता है)।",
+      "translation": "Or through intuitive insight, everything is known."
+    },
+    "3:34": {
+      "hindi": "हृदय पर (संयम से) चित्त का ज्ञान होता है।",
+      "translation": "On the heart, understanding of the mind."
+    },
+    "3:35": {
+      "hindi": "सत्त्व (बुद्धि) और पुरुष अत्यन्त भिन्न हैं; उनकी प्रतीतियों को एक मान लेना भोग है, क्योंकि (बुद्धि) दूसरे के लिए है; स्वार्थ (पुरुष के लिए जो है उस) पर संयम से पुरुष का ज्ञान होता है।",
+      "translation": "Experience comes from failing to tell apart the mind and the Self, which are wholly distinct; the mind exists for another. By samyama on what exists for itself comes knowledge of the Self."
+    },
+    "3:36": {
+      "hindi": "उससे प्रातिभ (अन्तर्ज्ञान), दिव्य श्रवण, स्पर्श, दर्शन, स्वाद और गन्ध की शक्तियाँ उत्पन्न होती हैं।",
+      "translation": "From that arise intuition and divine hearing, touch, sight, taste and smell."
+    },
+    "3:37": {
+      "hindi": "ये समाधि में विघ्न हैं, व्युत्थान (बाहरी अवस्था) में सिद्धियाँ हैं।",
+      "translation": "These are obstacles to samadhi, though they seem powers to the outgoing mind."
+    },
+    "3:38": {
+      "hindi": "बन्धन के कारण के शिथिल होने और चित्त की गति के ज्ञान से दूसरे शरीर में प्रवेश होता है।",
+      "translation": "When the cause of bondage loosens and the mind's pathways are known, the mind can enter another body."
+    },
+    "3:39": {
+      "hindi": "उदान (प्राण) पर विजय से जल, कीचड़, काँटे आदि का स्पर्श नहीं होता और ऊर्ध्व गति (उत्क्रान्ति) होती है।",
+      "translation": "By mastering the upward breath (udana), one is untouched by water, mud, thorns and the like, and rises upward at death."
+    },
+    "3:40": {
+      "hindi": "समान (प्राण) पर विजय से (शरीर में) तेज प्रकट होता है।",
+      "translation": "By mastering the equalising breath (samana), the body glows."
+    },
+    "3:41": {
+      "hindi": "कान और आकाश के सम्बन्ध पर संयम से दिव्य श्रवण-शक्ति होती है।",
+      "translation": "By samyama on the link between ear and space comes divine hearing."
+    },
+    "3:42": {
+      "hindi": "शरीर और आकाश के सम्बन्ध पर संयम से तथा हल्की रुई के समान भावना से आकाश में गमन होता है।",
+      "translation": "By samyama on the link between body and space, and by dwelling on the lightness of cotton, one moves through space."
+    },
+    "3:43": {
+      "hindi": "शरीर के बाहर अकल्पित वृत्ति महाविदेहा है; उससे प्रकाश का आवरण क्षीण होता है।",
+      "translation": "A movement of mind outside the body, not imagined but real, is the great bodiless state; from it the veil over the light is destroyed."
+    },
+    "3:44": {
+      "hindi": "(भूतों के) स्थूल, स्वरूप, सूक्ष्म, अन्वय और अर्थवत्त्व पर संयम से भूतों पर विजय होती है।",
+      "translation": "By samyama on the gross form, essence, subtle form, interrelation and purpose of the elements comes mastery over them."
+    },
+    "3:45": {
+      "hindi": "उससे अणिमा आदि (सिद्धियों) का प्रकट होना, शरीर की सम्पदा और उसके धर्मों का बाधित न होना होता है।",
+      "translation": "From that arise the powers such as becoming minute, perfection of the body, and freedom from the elements' hindrance."
+    },
+    "3:46": {
+      "hindi": "रूप, लावण्य, बल और वज्र के समान दृढ़ता — यह शरीर की सम्पदा है।",
+      "translation": "Perfection of the body is beauty, grace, strength and diamond-like firmness."
+    },
+    "3:47": {
+      "hindi": "(इन्द्रियों के) ग्रहण, स्वरूप, अस्मिता, अन्वय और अर्थवत्त्व पर संयम से इन्द्रियों पर विजय होती है।",
+      "translation": "By samyama on the senses' power of grasping, their nature, ego-sense, interrelation and purpose comes mastery of the senses."
+    },
+    "3:48": {
+      "hindi": "उससे मन के समान वेग, शरीर के बिना (इन्द्रियों का) कार्य और प्रधान (प्रकृति) पर विजय होती है।",
+      "translation": "From that comes speed like the mind's, perception without the sense organs, and mastery over primal nature."
+    },
+    "3:49": {
+      "hindi": "सत्त्व और पुरुष की भिन्नता के ज्ञान मात्र में स्थित (योगी) को सब भावों का अधिष्ठातृत्व और सर्वज्ञता प्राप्त होती है।",
+      "translation": "One who rests only in knowing the difference between mind and Self gains sovereignty over all states and knowledge of all."
+    },
+    "3:50": {
+      "hindi": "उसके प्रति भी वैराग्य होने से दोषों के बीज का क्षय होकर कैवल्य होता है।",
+      "translation": "Through non-attachment even to that, the seeds of bondage are destroyed and freedom follows."
+    },
+    "3:51": {
+      "hindi": "स्थान वाले (देवताओं) के निमन्त्रण पर आसक्ति और गर्व नहीं करना चाहिए, क्योंकि फिर से अनिष्ट का प्रसंग हो सकता है।",
+      "translation": "When invited by celestial beings, one should feel neither attachment nor pride, for that would invite harm again."
+    },
+    "3:52": {
+      "hindi": "क्षण और उसके क्रम पर संयम से विवेकज ज्ञान होता है।",
+      "translation": "By samyama on the moment and its sequence comes knowledge born of discernment."
+    },
+    "3:53": {
+      "hindi": "जाति, लक्षण और देश से भेद न जान पड़ने वाली दो समान वस्तुओं का भेद भी उससे जाना जाता है।",
+      "translation": "From it one can tell apart two similar things that cannot be distinguished by kind, mark or place."
+    },
+    "3:54": {
+      "hindi": "तारने वाला, सब विषयों को सब प्रकार से एक साथ जानने वाला, बिना क्रम का ज्ञान ही विवेकज ज्ञान है।",
+      "translation": "Knowledge born of discernment is liberating; it knows all things in all their aspects at once, without sequence."
+    },
+    "3:55": {
+      "hindi": "सत्त्व और पुरुष की शुद्धि समान हो जाने पर कैवल्य होता है।",
+      "translation": "When the mind becomes as pure as the Self, there is freedom."
+    },
+    "4:1": {
+      "hindi": "सिद्धियाँ जन्म, औषधि, मन्त्र, तप और समाधि से उत्पन्न होती हैं।",
+      "translation": "Powers come from birth, herbs, mantra, discipline or samadhi."
+    },
+    "4:2": {
+      "hindi": "एक जाति से दूसरी जाति में परिणाम प्रकृति के भर जाने (प्रवाह) से होता है।",
+      "translation": "Change into another kind of being comes from the inflow of nature."
+    },
+    "4:3": {
+      "hindi": "निमित्त (कर्म) प्रकृतियों को प्रेरित नहीं करता, वह तो किसान के समान केवल बाधा हटाता है।",
+      "translation": "Actions do not drive nature; they only remove the obstacle, as a farmer opens a channel for water."
+    },
+    "4:4": {
+      "hindi": "निर्माण-चित्त केवल अस्मिता से बनते हैं।",
+      "translation": "Created minds arise from ego-sense alone."
+    },
+    "4:5": {
+      "hindi": "प्रवृत्तियों के भिन्न होने पर भी अनेक (चित्तों) को चलाने वाला एक ही चित्त है।",
+      "translation": "Though their activities differ, one mind directs the many."
+    },
+    "4:6": {
+      "hindi": "उनमें ध्यान से उत्पन्न चित्त वासनाओं से रहित होता है।",
+      "translation": "Of these, the mind born of meditation leaves no latent traces."
+    },
+    "4:7": {
+      "hindi": "योगी के कर्म न शुक्ल (पुण्य) होते हैं न कृष्ण (पाप); दूसरों के कर्म तीन प्रकार के होते हैं।",
+      "translation": "A yogi's action is neither white nor black; for others it is of three kinds."
+    },
+    "4:8": {
+      "hindi": "उनसे केवल उन्हीं वासनाओं का प्रकटीकरण होता है जो उनके फल के अनुकूल हों।",
+      "translation": "From these, only those latent tendencies appear that suit the ripening of that karma."
+    },
+    "4:9": {
+      "hindi": "जाति, देश और काल से अन्तर होने पर भी (वासनाओं में) निरन्तरता रहती है, क्योंकि स्मृति और संस्कार एक रूप हैं।",
+      "translation": "Though separated by birth, place and time, the tendencies continue unbroken, since memory and impression are of one form."
+    },
+    "4:10": {
+      "hindi": "और आशीः (जीने की इच्छा) के नित्य होने से वे अनादि हैं।",
+      "translation": "And they have no beginning, since the will to live is eternal."
+    },
+    "4:11": {
+      "hindi": "हेतु, फल, आश्रय और आलम्बन से बँधी होने के कारण, इनके अभाव से उन (वासनाओं) का अभाव हो जाता है।",
+      "translation": "They are held together by cause, effect, basis and object; when these are gone, they are gone."
+    },
+    "4:12": {
+      "hindi": "भूत और भविष्य अपने स्वरूप में विद्यमान हैं, क्योंकि धर्मों में केवल मार्ग (काल) का भेद है।",
+      "translation": "Past and future exist in their own form; the qualities differ only in their path through time."
+    },
+    "4:13": {
+      "hindi": "वे (धर्म) प्रकट या सूक्ष्म होते हैं और गुणों के ही रूप हैं।",
+      "translation": "They are manifest or subtle, and are of the nature of the gunas."
+    },
+    "4:14": {
+      "hindi": "परिणाम के एक होने से वस्तु का तत्त्व (एकता) है।",
+      "translation": "A thing's reality lies in the unity of its change."
+    },
+    "4:15": {
+      "hindi": "वस्तु एक होने पर भी चित्त भिन्न होने से दोनों के मार्ग अलग हैं।",
+      "translation": "The object is one, but because minds differ, their ways of seeing differ."
+    },
+    "4:16": {
+      "hindi": "वस्तु एक चित्त के अधीन नहीं है; यदि ऐसा होता, तो उस चित्त के न जानने पर वस्तु का क्या होता?",
+      "translation": "Nor does an object depend on one mind; if it did, what would become of it when that mind did not perceive it?"
+    },
+    "4:17": {
+      "hindi": "चित्त को वस्तु के उपराग (रंग) की अपेक्षा होने से वस्तु ज्ञात या अज्ञात होती है।",
+      "translation": "An object is known or unknown depending on whether it colours the mind."
+    },
+    "4:18": {
+      "hindi": "चित्त की वृत्तियाँ उनके स्वामी पुरुष को सदा ज्ञात रहती हैं, क्योंकि पुरुष अपरिणामी है।",
+      "translation": "The movements of the mind are always known to their master, the Self, because the Self does not change."
+    },
+    "4:19": {
+      "hindi": "वह (चित्त) स्वयं-प्रकाश नहीं है, क्योंकि वह दृश्य है।",
+      "translation": "The mind is not self-luminous, since it is itself seen."
+    },
+    "4:20": {
+      "hindi": "और एक ही समय में दोनों (चित्त और विषय) का निश्चय नहीं हो सकता।",
+      "translation": "Nor can it know both itself and its object at the same moment."
+    },
+    "4:21": {
+      "hindi": "यदि एक चित्त को दूसरा चित्त देखे, तो बुद्धि की बुद्धि का अन्तहीन क्रम और स्मृतियों का मिश्रण होगा।",
+      "translation": "If one mind were seen by another, there would be an endless chain of minds and a confusion of memories."
+    },
+    "4:22": {
+      "hindi": "अपरिवर्तनशील चेतना जब (बुद्धि के) आकार को प्राप्त करती है, तब अपनी बुद्धि का ज्ञान होता है।",
+      "translation": "Consciousness does not move, yet when the mind takes its form, the mind knows itself."
+    },
+    "4:23": {
+      "hindi": "द्रष्टा और दृश्य दोनों से रंगा हुआ चित्त सब कुछ जानने वाला होता है।",
+      "translation": "The mind, coloured by both seer and seen, can know all things."
+    },
+    "4:24": {
+      "hindi": "असंख्य वासनाओं से चित्रित होने पर भी वह (चित्त) दूसरे (पुरुष) के लिए है, क्योंकि वह मिलकर कार्य करता है।",
+      "translation": "Though patterned with countless tendencies, the mind exists for another, because it works only in combination."
+    },
+    "4:25": {
+      "hindi": "विशेष (भेद) देखने वाले की आत्म-भाव की भावना निवृत्त हो जाती है।",
+      "translation": "For one who sees the distinction, the urge to dwell on the sense of self comes to an end."
+    },
+    "4:26": {
+      "hindi": "तब चित्त विवेक की ओर झुका हुआ और कैवल्य की ओर बहने वाला होता है।",
+      "translation": "Then the mind inclines toward discernment and flows toward freedom."
+    },
+    "4:27": {
+      "hindi": "उसके अन्तरालों में संस्कारों से दूसरी प्रतीतियाँ उठती हैं।",
+      "translation": "In its gaps, other ideas arise from old impressions."
+    },
+    "4:28": {
+      "hindi": "इनका त्याग क्लेशों के समान ही बताया गया है।",
+      "translation": "They are removed in the same way as the afflictions."
+    },
+    "4:29": {
+      "hindi": "प्रसंख्यान (उच्च ज्ञान) में भी जो निष्काम रहे, उसे सब प्रकार से विवेक-ख्याति होने पर धर्ममेघ समाधि प्राप्त होती है।",
+      "translation": "For one who seeks nothing even from the highest knowledge, discernment becomes complete, and the samadhi called the cloud of dharma arises."
+    },
+    "4:30": {
+      "hindi": "उससे क्लेशों और कर्मों की निवृत्ति होती है।",
+      "translation": "From that, afflictions and karma come to an end."
+    },
+    "4:31": {
+      "hindi": "तब सब आवरणों और मलों से रहित ज्ञान के अनन्त होने से जानने योग्य थोड़ा रह जाता है।",
+      "translation": "Then, with all veils and impurities removed, knowledge is infinite and what remains to be known is small."
+    },
+    "4:32": {
+      "hindi": "उससे कृतार्थ हुए गुणों के परिणाम का क्रम समाप्त हो जाता है।",
+      "translation": "Then the gunas, their purpose fulfilled, end their sequence of change."
+    },
+    "4:33": {
+      "hindi": "क्षणों से जुड़ा हुआ, परिणाम के अन्त में ग्रहण किया जाने वाला क्रम है।",
+      "translation": "Sequence is the series of moments, grasped only at the end of a change."
+    },
+    "4:34": {
+      "hindi": "पुरुषार्थ से रहित गुणों का अपने कारण में लीन हो जाना कैवल्य है, अथवा चेतना-शक्ति का अपने स्वरूप में प्रतिष्ठित होना (कैवल्य है)।",
+      "translation": "Freedom is the gunas, empty of purpose for the Self, returning to their source; or it is the power of consciousness resting in its own nature."
+    }
+  }
+}
