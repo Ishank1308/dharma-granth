@@ -39,10 +39,10 @@ export function VersePageExtras({ href }: { href: string }) {
         for (const root of [answers, study]) {
           if (!root) continue;
           root.querySelectorAll('[id]').forEach((el) => el.setAttribute('id', prefix + el.id));
-          [root, ...root.querySelectorAll('[aria-labelledby],[aria-describedby],[aria-controls]')].forEach((el) => {
+          [root, ...Array.from(root.querySelectorAll('[aria-labelledby],[aria-describedby],[aria-controls]'))].forEach((el) => {
             for (const attr of ['aria-labelledby', 'aria-describedby', 'aria-controls']) {
               const value = el.getAttribute(attr);
-              if (value) el.setAttribute(attr, value.split(/\s+/).map((id) => prefix + id).join(' '));
+              if (value) el.setAttribute(attr, value.split(/\s+/).map((id: string) => prefix + id).join(' '));
             }
           });
         }
