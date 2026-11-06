@@ -35,7 +35,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           # data/scriptures/mahabharata.ts is in LFS; tsc reads it.
           lfs: true
@@ -43,7 +43,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
@@ -56,7 +56,7 @@ jobs:
 
       - name: Restore TypeScript buildinfo
         id: tsbuildinfo
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: tsconfig.tsbuildinfo
           key: tsbuildinfo-${{ github.sha }}
@@ -70,7 +70,7 @@ jobs:
 
       - name: Save TypeScript buildinfo
         if: steps.tsbuildinfo.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v5
+        uses: actions/cache/save@v6
         with:
           path: tsconfig.tsbuildinfo
           key: tsbuildinfo-${{ github.sha }}
@@ -87,7 +87,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           lfs: true
           # Full history: the sitemap's lastmod dates come from git log.
@@ -111,7 +111,7 @@ jobs:
         run: echo "tree=$(git rev-parse 'HEAD^{tree}')" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
@@ -128,7 +128,7 @@ jobs:
       # later check failure does not discard the images.
       - name: Restore verse share images
         id: og-verse
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: public/og/verse
           key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json') }}
@@ -144,13 +144,13 @@ jobs:
 
       - name: Save verse share images
         if: steps.og-verse.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v5
+        uses: actions/cache/save@v6
         with:
           path: public/og/verse
           key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json') }}
 
       - name: Cache Next.js build
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: dist/cache
           key: nextjs-${{ runner.os }}-${{ hashFiles('package-lock.json', 'next.config.js') }}-${{ hashFiles('app/**/*.ts', 'app/**/*.tsx', 'lib/**/*.ts', 'lib/**/*.tsx', 'data/**/*.ts') }}
@@ -175,7 +175,7 @@ jobs:
 
       # For the browser test shards and the preview deploy in this run.
       - name: Share export with this run
-        uses: actions/cache/save@v5
+        uses: actions/cache/save@v6
         with:
           path: dist.tar.zst
           key: dist-export-${{ github.run_id }}
@@ -186,7 +186,7 @@ jobs:
       - name: Keep export for the master deploy
         if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         continue-on-error: true
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: dist-tree-${{ steps.tree.outputs.tree }}
           path: dist.tar.zst
@@ -209,7 +209,7 @@ jobs:
     steps:
       # The tests need only these files; the export comes from the build job.
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           sparse-checkout: |
             /tests/
@@ -226,7 +226,7 @@ jobs:
         run: command -v zstd >/dev/null || (apt-get update -qq && apt-get install -y -qq zstd)
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -239,7 +239,7 @@ jobs:
           npm install --no-audit --no-fund $deps
 
       - name: Restore export
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: dist.tar.zst
           key: dist-export-${{ github.run_id }}
@@ -269,11 +269,11 @@ jobs:
       # functions/ is deployed with the export.
       - name: Checkout
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Restore export
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: dist.tar.zst
           key: dist-export-${{ github.run_id }}
@@ -315,7 +315,7 @@ jobs:
 
       - name: Link preview on the pull request
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         env:
           ALIAS_URL: ${{ steps.deploy.outputs.pages-deployment-alias-url || steps.deploy-retry.outputs.pages-deployment-alias-url }}
           DEPLOY_URL: ${{ steps.deploy.outputs.deployment-url || steps.deploy-retry.outputs.deployment-url }}
