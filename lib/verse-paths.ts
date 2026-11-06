@@ -32,7 +32,8 @@ export function hasVersePages(scriptureId: string): boolean {
   return (VERSE_PAGE_SCRIPTURE_IDS as readonly string[]).includes(scriptureId);
 }
 
-// The Ramcharitmanas is too long for a page per verse: only the verses in lib/verse-page-subset.generated.ts get one.
+// The Ramcharitmanas and the Ramayana are too long for a page per verse: only the verses in
+// lib/verse-page-subset.generated.ts get one.
 const SUBSET = new Map(Object.entries(VERSE_PAGE_SUBSET).map(([id, keys]) => [id, new Set(keys)]));
 
 /** Whether this verse has its own page (its scripture has verse pages, and the verse is in its subset if it has one). */

@@ -1,15 +1,15 @@
 /**
  * Writes lib/verse-page-subset.generated.ts: for scriptures too long for a page per verse, the verses that get one.
  *
- * The Ramcharitmanas has about 6,200 chaupais, dohas and chhands. A page (and share image) for each would take the
- * static export past Cloudflare Pages' 20,000-file limit, so only a verse with a Hindi or English meaning gets a
- * page; the rest are read on their kanda's chapter pages. Run by `npm run search:core`, before the search index,
+ * The Ramcharitmanas has about 6,200 chaupais, dohas and chhands, the Valmiki Ramayana about 23,600 ślokas. A page
+ * (and share image) for each would take the static export past Cloudflare Pages' 20,000-file limit, so only a verse
+ * with a Hindi or English meaning gets a page; the rest are read on their kanda's chapter pages. Run by `npm run search:core`, before the search index,
  * which links to verse pages.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 
-const MEANING_ONLY = ['ramcharitmanas'];
+const MEANING_ONLY = ['ramcharitmanas', 'ramayana'];
 
 const root = process.cwd();
 const out: Record<string, string[]> = {};
