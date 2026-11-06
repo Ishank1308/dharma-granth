@@ -228,3 +228,145 @@ a.apple-row:active,
     background-color: var(--surface-raised);
     box-shadow: var(--shadow-raised);
 }
+
+/* Verse card (chapter reader) ─────────────────────────────────────────────
+   Each verse sits on its own card, as in Apple Books' highlights or a grouped list:
+   the shloka is the largest thing on it, the Hindi and English meanings follow under
+   a hairline, and the verse number is a small tinted capsule. Styled from here so the
+   markup in VerseCard.tsx (rich) and VerseText (the exported, pre-hydration form,
+   classes .vt-*) stays as it is; both get the same box and sizes, so the swap at
+   hydration does not move the page. Reading pages stay still: no hover motion. */
+.verse-card.book-verse,
+.verse-card.vt {
+    --verse-sa-size: clamp(1.1875rem, 1.05rem + 0.6vw, 1.4375rem);   /* 19 → 23 */
+    --verse-pad: clamp(var(--space-4), 0.6rem + 2.4vw, var(--space-8));
+    padding: var(--space-3) var(--verse-pad) var(--verse-pad);
+    border: 0;
+    border-radius: var(--radius-card);
+    background-color: var(--surface-raised);
+    box-shadow: var(--shadow-raised);
+    overflow: visible;
+}
+:root[data-theme='night'] .verse-card.book-verse,
+:root[data-theme='night'] .verse-card.vt,
+:root[data-theme='dark'] .verse-card.book-verse,
+:root[data-theme='dark'] .verse-card.vt {
+    /* Rātri: no shadow, so a faint hairline marks the card's edge on true black. */
+    box-shadow: inset 0 0 0 1px var(--separator);
+}
+.verse-card.book-verse:hover,
+.verse-card.vt:hover {
+    box-shadow: var(--shadow-raised);
+}
+[data-reader-size='large'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-size: clamp(1.375rem, 1.2rem + 0.7vw, 1.625rem);
+}
+[data-reader-size='xl'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-size: clamp(1.5rem, 1.3rem + 0.9vw, 1.875rem);
+}
+/* Reciting or highlighted: the ring follows the card's corners. */
+.verse-card.book-verse.book-verse-ringed {
+    border-radius: var(--radius-card);
+}
+/* Lifted into spatial focus, the glass is already the card. */
+.spatial-focused > .verse-card.book-verse,
+.spatial-focused > .verse-card.vt {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* The verse number: a tinted capsule in the scripture's own ink. */
+.verse-card .verse-ref,
+.verse-card .vt-title a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 0.625rem;
+    border-radius: var(--radius-pill);
+    background-color: color-mix(in srgb, currentColor 11%, transparent);
+    font-family: var(--font-sans);
+    font-size: var(--text-footnote);
+    font-weight: 600;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+/* The plain verse's link keeps its 44px tap target around the capsule. */
+.verse-card .vt-title a {
+    min-width: 0;
+    margin-block: 8px;
+}
+.verse-card .vt-head {
+    margin-bottom: 0;
+}
+
+/* The shloka: the largest text on the card, set in the book face. */
+.verse-card.book-verse .verse-folio > p[lang='sa'],
+.verse-card.vt .vt-sa {
+    font-family: var(--font-sanskrit);
+    font-size: var(--verse-sa-size);
+    line-height: 1.8;
+    color: var(--label-primary);
+}
+/* Lines of a shloka sit close, as printed; the gap between pādas is the line height. */
+.verse-card.book-verse .verse-folio > p[lang='sa'] > span,
+.verse-card.vt .vt-sa > span {
+    padding-block: 0.125rem;
+}
+.verse-card.book-verse .verse-folio,
+.verse-card.vt .vt-leaf {
+    padding-block: var(--space-4) var(--space-5);
+}
+.verse-card .verse-mark,
+.verse-card .vt-sa > .vt-num {
+    margin-top: var(--space-2);
+    font-size: var(--text-subhead);
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+/* Meanings: under a hairline, Hindi at full ink, English a step quieter. */
+.verse-card.book-verse .sacred-flow-wrap,
+.verse-card.vt .vt-leaf + .vt-block {
+    margin-top: 0;
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--separator);
+}
+.verse-card.book-verse section[id$='-arth'] p[lang='hi'],
+.verse-card.vt .vt-hi {
+    font-size: var(--text-body);
+    line-height: 1.9;
+    color: var(--label-primary);
+}
+.verse-card.book-verse section[id$='-arth'] p[lang='en'],
+.verse-card.vt .vt-en {
+    font-size: var(--text-body);
+    line-height: 1.75;
+    color: var(--label-secondary);
+}
+@media (min-width: 768px) {
+    .verse-card.book-verse section[id$='-arth'] p[lang='hi'],
+    .verse-card.vt .vt-hi {
+        font-size: 1.125rem;
+    }
+    .verse-card.book-verse section[id$='-arth'] p[lang='en'],
+    .verse-card.vt .vt-en {
+        font-size: 1.125rem;
+    }
+}
+
+/* The draft label stays (it is honest), but in a neutral voice rather than violet. */
+.verse-card [title^='AI-सहायता'] {
+    color: var(--label-tertiary);
+}
+
+/* "Verse study": a quiet tinted capsule, so the way into the व्याख्या is easy to see. */
+.verse-card [aria-expanded][aria-controls]:has(> [lang='hi'] + [lang='en']),
+.verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']) {
+    padding-inline: 0.875rem;
+    background-color: var(--fill-quaternary);
+    color: var(--label-secondary);
+}
+.verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']):hover {
+    background-color: var(--fill-tertiary);
+    color: var(--label-primary);
+}

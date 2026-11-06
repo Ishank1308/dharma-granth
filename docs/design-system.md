@@ -108,6 +108,7 @@ All in `components.css`, all token-only:
 - `.apple-tint-chip` (set `--chip` for its colour)
 - `.apple-stat` (tabular figures for numbers)
 - `.apple-scope` on a page wrapper quiets older components inside it
+- The chapter reader's verse card (`.verse-card.book-verse` and its exported form `.verse-card.vt`) is styled here too: one card per verse, the shloka largest, meanings under a hairline, the verse number as a tinted capsule. The markup in `VerseCard.tsx` and `VerseText` is unchanged, and both forms get the same box so hydration does not shift the page.
 
 React pieces:
 
