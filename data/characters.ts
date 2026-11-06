@@ -675,6 +675,354 @@ export const characters: Character[] = [
       { tradition: 'Advaita response', view: 'Ramanuja\'s Vishishtadvaita is a useful stepping stone but ultimately incomplete — the final truth is pure non-duality.' },
     ],
   },
+  {
+    id: 'nachiketa',
+    name: 'Nachiketa',
+    sanskrit: 'नचिकेता',
+    category: 'guru-shishya',
+    icon: '🔥',
+    gradient: 'from-amber-500 to-orange-600',
+    shortDesc: 'The youthful seeker of truth in the Katha Upanishad who rejected worldly wealth to learn the secret of immortality from Yama.',
+    biography: 'Nachiketa is the central seeker in the Katha Upanishad, son of Sage Vajashravas. When his father performed the Vishvajit sacrifice and gave away frail, dry cows in insincere charity, Nachiketa inquired where his father would give him. Angered, his father said, "Unto Death (Yama) I give thee." Nachiketa went to the realm of Yama and waited three days without food or water. Pleased by his patience, Yama granted him three boons. For his third boon, Nachiketa asked for the supreme mystery of what happens to the Self beyond physical death. Refusing Yama’s offers of vast kingdoms, long life, and heavenly pleasures, Nachiketa insisted upon spiritual knowledge (Shreyas over Preyas), receiving the definitive teaching on the nature of Atman.',
+    relations: [
+      { name: 'Vajashravas', relation: 'Father' },
+      { name: 'Yama', relation: 'Guru / Teacher of the Self' },
+    ],
+    events: [
+      { title: 'The Insincere Sacrifice', description: 'Questioned his father’s gift of unproductive cows, upholding truth.' },
+      { title: 'Three Days at Death’s Door', description: 'Waited fasting at the threshold of Yama’s abode until the Lord of Death returned.' },
+      { title: 'Rejection of Preyas', description: 'Spurned worldly temptations of kingdoms, gold, and maidens in favor of eternal knowledge.' },
+      { title: 'Awakening to Atman', description: 'Received the chariot analogy and the revelation of the immortal Atman within the cave of the heart.' },
+    ],
+    dialogues: [
+      { speaker: 'Nachiketa', context: 'Rejecting worldly pleasures to Yama', text: 'Transient are these worldly enjoyments, O Death! They wear away the vigor of all the senses. Keep your horses, dancing, and song for yourself; teach me that secret which transcends death.', reference: 'Katha Upanishad 1.1.26' },
+    ],
+    dilemmas: [
+      { title: 'Shreyas vs. Preyas', description: 'Choosing between the pleasant (preyas) that satisfies worldly ego versus the good (shreyas) that leads to liberation.', resolution: 'Nachiketa firmly chooses shreyas, demonstrating that true spiritual discernment (viveka) requires renouncing sensory lures.' },
+    ],
+    verses: [
+      { sanskrit: 'अन्यच्छ्रेयोऽन्यदुतैव प्रेयस्ते उभे नानार्थे पुरुषं सिनीतः । तयोः श्रेय आददानस्य साधु भवति हीयतेऽर्थाद्य उ प्रेयो वृणीते ॥', transliteration: 'anyacchreyo\'nyadutaiva preyaste ubhe nānārthe puruṣaṃ sinītaḥ | tayoḥ śreya ādadānasya sādhu bhavati hīyate\'rthādya u preyo vr̥ṇīte ||', translation: 'The good (shreyas) is one thing; the pleasant (preyas) is another. Both bind humans to different ends. Well is it with the one who embraces the good; but the one who chooses the pleasant misses the true purpose of life.', reference: 'Katha Upanishad 1.2.1' },
+    ],
+    interpretations: [
+      { tradition: 'Advaita Vedanta', view: 'Nachiketa is the archetypal qualified spiritual aspirant (adhikari), endowed with discrimination (viveka), dispassion (vairagya), and deep longing for liberation (mumukshutva).' },
+      { tradition: 'Katha Upanishad Svadhyaya', view: 'He shows that youth and humble status are no barrier to spiritual maturity when dedication to truth is unshakeable.' },
+    ],
+  },
+  {
+    id: 'janaka',
+    name: 'King Janaka',
+    sanskrit: 'जनक',
+    category: 'rishi',
+    icon: '👑',
+    gradient: 'from-amber-600 to-yellow-600',
+    shortDesc: 'The Videha monarch of Mithila, father of Sita, and exemplar of Karma Yoga who attained enlightenment while ruling an empire.',
+    biography: 'Rajarshi Janaka (Siradhvaja Janaka) was the legendary king of Mithila (Videha), known throughout ancient India as the supreme ideal of a philosopher-king who achieved Brahma-Jnana while fulfilling all royal duties. In the Ramayana, he found Sita while plowing the sacred sacrificial ground and raised her with boundless love. In the Brihadaranyaka Upanishad, his court was the greatest assembly of sages in the world, where he engaged in profound dialogues with Sage Yajnavalkya. In the Ashtavakra Gita, King Janaka is the disciple who realizes instantaneous enlightenment upon receiving the teachings of Sage Ashtavakra. In the Bhagavad Gita (3.20), Lord Krishna cites Janaka as the foremost historical example of perfection attained through selfless action (Karma Yoga).',
+    relations: [
+      { name: 'Sita', relation: 'Daughter' },
+      { name: 'Ashtavakra', relation: 'Guru' },
+      { name: 'Yajnavalkya', relation: 'Spiritual guide and preceptor' },
+      { name: 'Sunayana', relation: 'Queen Consort' },
+    ],
+    events: [
+      { title: 'Discovery of Sita', description: 'Discovered infant Sita while furrowing the sacred sacrificial field in Mithila.' },
+      { title: 'Upanishadic Assemblies', description: 'Convened the great theological debate in the Brihadaranyaka Upanishad, awarding 1,000 cattle with gold-tipped horns.' },
+      { title: 'Awakening with Ashtavakra', description: 'Attained supreme liberation through the radical direct non-dual inquiry of the Ashtavakra Gita.' },
+      { title: 'Ruling without Attachment', description: 'Governed the kingdom of Mithila with complete inner detachment (Videha state).' },
+    ],
+    dialogues: [
+      { speaker: 'Janaka', context: 'Exclaiming his realization to Sage Ashtavakra', text: 'Aho! I am spotless, tranquil, pure Consciousness, beyond nature. All this time I have been duped by illusion!', reference: 'Ashtavakra Gita 2.1' },
+    ],
+    dilemmas: [
+      { title: 'King vs. Ascetic', description: 'Whether spiritual enlightenment requires abandoning the throne and taking monastic vows in the forest.', resolution: 'Janaka proved that true renunciation is inner freedom from ego and possession (tyaga), not the abandonment of righteous duty (lokasangraha).' },
+    ],
+    verses: [
+      { sanskrit: 'कर्मणैव हि संसिद्धिमास्थिता जनकादयः । लोकसंग्रहमेवापि संपश्यन्कर्तुमर्हसि ॥', transliteration: 'karmaṇaiva hi saṃsiddhimāsthitā janakādayaḥ | lokasaṃgrahamevāpi saṃpaśyankartumarhasi ||', translation: 'By selfless action alone did Janaka and others attain perfection. You should perform work also with a view to the maintenance of the world order (lokasangraha).', reference: 'Bhagavad Gita 3.20' },
+    ],
+    interpretations: [
+      { tradition: 'Bhagavad Gita / Karma Yoga', view: 'Janaka is the gold standard of living in the world without being of the world — carrying out extensive governance while remaining untouched by greed or sorrow.' },
+      { tradition: 'Advaita Vedanta', view: 'Janaka illustrates Jivanmukti (liberation while living in the body) in the Videha state of pure witnessing consciousness.' },
+    ],
+  },
+  {
+    id: 'vidura',
+    name: 'Vidura',
+    sanskrit: 'विदुर',
+    category: 'mahabharata',
+    icon: '📜',
+    gradient: 'from-amber-600 to-orange-700',
+    shortDesc: 'Prime counselor of the Kuru dynasty, avatar of Dharma, and speaker of the timeless ethical treatise Vidura Niti.',
+    biography: 'Vidura was the wise and fearless prime minister of Hastinapura, born to Sage Vyasa and a maidservant of Queen Ambika. Revered in tradition as an incarnation of Dharma (Yama) cursed by Sage Mandavya, Vidura possessed unmatched knowledge of ethics, statecraft, and human nature. In the Mahabharata, he repeatedly warned King Dhritarashtra against Duryodhana’s adharmic plots, saving the Pandavas from the burning lac palace (Lakshagriha) through a coded warning to Yudhishthira. During the sleepless night preceding the Kurukshetra war, his profound moral counsel to Dhritarashtra formed the renowned "Vidura Niti". Before the war, Krishna refused Duryodhana’s lavish feast and instead ate simple greens at Vidura’s humble cottage, honoring his pure devotion.',
+    relations: [
+      { name: 'Vyasa', relation: 'Father' },
+      { name: 'Dhritarashtra', relation: 'Half-brother' },
+      { name: 'Pandu', relation: 'Half-brother' },
+      { name: 'Krishna', relation: 'Devotional Lord' },
+    ],
+    events: [
+      { title: 'Saving the Pandavas at Lakshagriha', description: 'Dispatched a trusted miner and warned Yudhishthira in Mleccha dialect to escape the burning palace.' },
+      { title: 'Speaking the Vidura Niti', description: 'Delivered an 8-chapter discourse on governance, moral duty, and inner peace to restless Dhritarashtra.' },
+      { title: 'Krishna’s Visit', description: 'Welcomed Sri Krishna with simple spinach (saag), demonstrating that God values pure love over wealth.' },
+      { title: 'Final Renunciation', description: 'Departed into the forest for austere meditation, merging his consciousness with Yudhishthira at life’s end.' },
+    ],
+    dialogues: [
+      { speaker: 'Vidura', context: 'Advising Dhritarashtra on wisdom and character', text: 'He who does not rejoice in praise, nor is aggrieved by insult, who remains calm like a lake on a windless day — that man is called wise (Pandita).', reference: 'Vidura Niti / Mahabharata Udyoga Parva 33.19' },
+    ],
+    dilemmas: [
+      { title: 'Duty of Counsel vs. Futility of Advice', description: 'Knowing that Dhritarashtra’s blind attachment to his sons would lead to cataclysm, whether to keep speaking uncomfortable truths.', resolution: 'Vidura performed his duty without compromise, speaking fearlessly regardless of whether his counsel was heeded or rejected.' },
+    ],
+    verses: [
+      { sanskrit: 'न हृष्यत्यात्मसम्माने नावमानेन तप्यते । गाङ्गो ह्रद इवाक्षोभ्यो यः स पण्डित उच्यते ॥', transliteration: 'na hr̥ṣyatyātmasammāne nāvamānena tapyate | gāṅgo hrada ivākṣobhyo yaḥ sa paṇḍita ucyate ||', translation: 'He who is neither elated by praise nor grieved by disgrace, and remains undisturbed like a sacred lake, is truly called a wise person.', reference: 'Mahabharata Udyoga Parva 33.19 (Vidura Niti)' },
+    ],
+    interpretations: [
+      { tradition: 'Mahabharata Ethics', view: 'Vidura represents the voice of righteous conscience that speaks truth to power without fear, malice, or self-interest.' },
+      { tradition: 'Bhakti Tradition', view: 'Vidura embodies humility and genuine devotion, celebrated in Vaishnava literature as "Vidura Neeti" and "Vidura Ka Saag".' },
+    ],
+  },
+  {
+    id: 'ganesha',
+    name: 'Ganesha',
+    sanskrit: 'गणेश',
+    category: 'deity',
+    icon: '🐘',
+    gradient: 'from-orange-500 to-amber-600',
+    shortDesc: 'The elephant-headed divinity of wisdom, intellect, and beginnings; the remover of obstacles (Vighnaharta).',
+    biography: 'Bhagavan Ganesha, also known as Ganapati, Vinayaka, and Vighnaharta, is the first-worshipped (Prathama Pujya) deity in Sanatana Dharma. Son of Shiva and Parvati, Ganesha represents the cosmic intellect (Mahat-Tattva), discrimination (Buddhi), and auspiciousness (Mangalam). In the Ganapati Atharvashirsha Upanishad, He is revealed as the supreme Reality underlying the Muladhara chakra, transcending the gunas and time. Tradition records that Sage Vyasa selected Ganesha as the divine scribe to write down the massive epic Mahabharata, with the condition that Vyasa must never stop reciting and Ganesha must understand every verse before committing it to writing.',
+    relations: [
+      { name: 'Shiva', relation: 'Father' },
+      { name: 'Parvati', relation: 'Mother' },
+      { name: 'Kartikeya (Murugan)', relation: 'Brother' },
+      { name: 'Vyasa', relation: 'Epic co-creator / Scribe' },
+    ],
+    events: [
+      { title: 'Prathama Pujya Status', description: 'Awarded the boon of being worshipped first in all auspicious endeavors after circumambulating His divine parents.' },
+      { title: 'Writing the Mahabharata', description: 'Transcribed the 100,000 verses of the Mahabharata without pause using His broken tusk as a pen.' },
+      { title: 'Overcoming Vighna', description: 'Installed as the master of obstacles, removing stumbling blocks for the righteous and restraining the arrogant.' },
+    ],
+    dialogues: [
+      { speaker: 'Ganesha', context: 'Accepting the condition to scribe the Mahabharata from Vyasa', text: 'I shall be your scribe, but my pen must not stop for a single instant while you compose.', reference: 'Mahabharata Adi Parva 1.77' },
+    ],
+    dilemmas: [
+      { title: 'Cosmic Race vs. Filial Reverence', description: 'When challenged to circumnavigate the universe in a race with Kartikeya, how to accomplish the feat with His gentle vehicle.', resolution: 'Ganesha walked around Shiva and Parvati, proclaiming that parents contain the entire cosmos within them, winning the contest through supreme wisdom.' },
+    ],
+    verses: [
+      { sanskrit: 'वक्रतुण्ड महाकाय सूर्यकोटिसमप्रभ । निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥', transliteration: 'vakratuṇḍa mahākāya sūryakoṭisamaprabha | nirvighnaṃ kuru me deva sarvakāryeṣu sarvadā ||', translation: 'O Lord with the curved trunk and immense form, whose radiance equals millions of suns: dispel all obstacles from my endeavors, now and forever.', reference: 'Traditional Ganapati Dhyana' },
+    ],
+    interpretations: [
+      { tradition: 'Ganapatya & Vedic', view: 'The elephant head signifies cosmic intellect (Brihaspati), the large ears denote deep listening (Shravana), and the single tusk represents non-dual focus.' },
+      { tradition: 'Kundalini Yoga', view: 'Ganesha resides at the Muladhara chakra, anchoring the spiritual seeker before the upward ascent of consciousness.' },
+    ],
+  },
+  {
+    id: 'durga',
+    name: 'Devi Durga',
+    sanskrit: 'दुर्गा',
+    category: 'deity',
+    icon: '🦁',
+    gradient: 'from-rose-600 to-red-700',
+    shortDesc: 'The supreme protective Shakti who upholds cosmic order (Dharma) and vanquishes demonic forces of ignorance (Mahishasura).',
+    biography: 'Devi Durga is the quintessential warrior aspect of the Divine Mother (Mahadevi / Adi Parashakti). Described extensively in the Devi Mahatmya (Durga Saptashati) of the Markandeya Purana, She manifested from the combined radiant energy (Tejas) of all the gods to vanquish the shape-shifting demon Mahishasura, whom no mortal man or god could defeat. Riding a lion and bearing the sacred weapons of all deities, Durga symbolizes invincible spiritual power, moral rectitude, and fierce compassion that destroys ignorance, arrogance, and sorrow to protect Her children.',
+    relations: [
+      { name: 'Shiva', relation: 'Divine Consort' },
+      { name: 'Ganesha', relation: 'Son' },
+      { name: 'Kartikeya', relation: 'Son' },
+      { name: 'Lakshmi', relation: 'Divine aspect / daughter' },
+      { name: 'Saraswati', relation: 'Divine aspect / daughter' },
+    ],
+    events: [
+      { title: 'Manifestation from Cosmic Tejas', description: 'Emergence from the unified luminous wrath of Brahma, Vishnu, Shiva, and the Devas.' },
+      { title: 'Vanquishing Mahishasura', description: 'Defeated the buffalo demon of delusion and ignorance, restoring cosmic balance.' },
+      { title: 'Destruction of Shumbha and Nishumbha', description: 'Eradicated the demonic forces of possessiveness and ego as recorded in the Devi Mahatmya.' },
+    ],
+    dialogues: [
+      { speaker: 'Devi Durga', context: 'Assuring the gods of Her perpetual protection in the Devi Mahatmya', text: 'Whenever darkness and demonic forces rise to torment the righteous, I shall manifest to re-establish Dharma.', reference: 'Devi Mahatmya 11.54' },
+    ],
+    dilemmas: [
+      { title: 'Ferocity vs. Motherly Grace', description: 'How fierce destructive power against evil harmonizes with the gentle nurturing of creation.', resolution: 'Durga demonstrates that true love must be fiercely protective of goodness; destroying the demon of ignorance is an act of ultimate compassion for the soul.' },
+    ],
+    verses: [
+      { sanskrit: 'सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके । शरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते ॥', transliteration: 'sarvamaṅgalamāṅgalye śive sarvārthasādhike | śaraṇye tryambake gauri nārāyaṇi namo\'stu te ||', translation: 'Salutations to You, O Narayani, the auspiciousness of all that is auspicious, the fulfiller of all righteous aims, the refuge, the three-eyed Gauri!', reference: 'Devi Mahatmya / Markandeya Purana 11.10' },
+    ],
+    interpretations: [
+      { tradition: 'Shakta Tradition', view: 'Durga is not merely a consort, but the Supreme Absolute Reality (Brahman in dynamic form) from whom all gods derive their power.' },
+      { tradition: 'Psychological Allegory', view: 'Her battle with Mahishasura symbolizes the seeker’s inner warfare against base animalistic instincts, lethargy, and ego.' },
+    ],
+  },
+  {
+    id: 'saraswati',
+    name: 'Saraswati',
+    sanskrit: 'सरस्वती',
+    category: 'deity',
+    icon: '🪷',
+    gradient: 'from-amber-400 to-yellow-500',
+    shortDesc: 'The goddess of wisdom, learning, arts, music, and divine speech (Vak); embodiment of spotless purity.',
+    biography: 'Devi Saraswati is the goddess of knowledge (Vidya), intellect (Buddhi), music (Sangita), and eloquence (Vak). Revered since the earliest Vedic hymns of the Rigveda, She was initially celebrated as the mighty sacred river of inspiration and illumination before embodying the personification of creative intelligence. Clothed in spotless white garments, seated on a white lotus, and holding the veena, the sacred book (Veda), and the rosary (japa mala), Saraswati represents the pristine clarity of the contemplative mind detached from worldly glitter.',
+    relations: [
+      { name: 'Brahma', relation: 'Consort and creative counterpart' },
+      { name: 'Vedic Rishis', relation: 'Inspirer of sacred mantras' },
+    ],
+    events: [
+      { title: 'Vedic Revelation of Vak', description: 'Celebrated in the Rigvedic Devi Sukta (10.125) as the cosmic speech that upholds the universe.' },
+      { title: 'Gift of the Veena and Letters', description: 'Endowed humanity with grammar, alphabets (Devanagari), and melodic frequencies of sacred music.' },
+    ],
+    dialogues: [
+      { speaker: 'Saraswati', context: 'Revealing the nature of speech in the Rigveda', text: 'I am the Queen of the universe, the gatherer of treasures, the first of those worthy of worship; the gods have established me in many places.', reference: 'Rigveda 10.125.3 (Devi Sukta)' },
+    ],
+    dilemmas: [
+      { title: 'Knowledge vs. Worldly Wealth', description: 'The choice between acquiring commercial wealth or dedicating life to the sacred pursuit of wisdom and truth.', resolution: 'Saraswati shows that inner illumination and truth (Vidya) are imperishable, outlasting all transient fortunes.' },
+    ],
+    verses: [
+      { sanskrit: 'या कुन्देन्दुतुषारहारधवला या शुभ्रवस्त्रावृता या वीणावरदण्डमण्डितकरा या श्वेतपद्मासना । सा मां पातु सरस्वती भगवती निःशेषजाड्यापहा ॥', transliteration: 'yā kundendutuṣārahāradhavalā yā śubhravastrāvr̥tā yā vīṇāvaradaṇḍamaṇḍitakarā yā śvetapadmāsanā | sā māṃ pātu sarasvatī bhagavatī niḥśeṣajāḍyāpahā ||', translation: 'May Goddess Saraswati, fair like the jasmine, the moon, and the snow garland, adorned in spotless white attire, holding the sacred veena, seated upon a white lotus — may She completely dispel all mental lethargy and ignorance!', reference: 'Traditional Saraswati Stotram' },
+    ],
+    interpretations: [
+      { tradition: 'Vedic & Upanishadic', view: 'Saraswati is Vak (the divine Logos) through which the unmanifest Brahman expresses itself into cosmic manifestation.' },
+      { tradition: 'Classical Education', view: 'Her iconography of white attire and swan (Hamsa) emphasizes intellectual purity, viveka (discerning milk from water), and selfless devotion to learning.' },
+    ],
+  },
+  {
+    id: 'lakshmi',
+    name: 'Lakshmi',
+    sanskrit: 'लक्ष्मी',
+    category: 'deity',
+    icon: '🌸',
+    gradient: 'from-rose-500 to-pink-600',
+    shortDesc: 'The goddess of spiritual abundance, dignity, auspiciousness, and compassion; consort of Lord Vishnu.',
+    biography: 'Devi Lakshmi (also known as Sri, Padma, and Kamala) is the divine mother of spiritual light, cosmic harmony, and wholesome abundance. Described in the Rigvedic Sri Suktam and the Puranas, She emerged from the churning of the cosmic ocean of milk (Samudra Manthana) and chose Lord Vishnu as Her eternal consort. Standing upon an open pink lotus and bearing lotuses in Her hands while showering golden blessings, Lakshmi represents the dynamic grace that sustains life, families, righteous governance, and virtuous society.',
+    relations: [
+      { name: 'Vishnu', relation: 'Consort and eternal counterpart' },
+      { name: 'Kama', relation: 'Son' },
+      { name: 'Kardama & Ananda', relation: 'Sons in Vedic Sukta tradition' },
+    ],
+    events: [
+      { title: 'Emergence from Samudra Manthana', description: 'Arose from the cosmic churning of the milk ocean, bringing divine auspiciousness to creation.' },
+      { title: 'Incarnation with Avatars', description: 'Descended as Sita with Rama and Rukmini/Radha with Krishna to uphold Dharma.' },
+      { title: 'Showering Gold for Adi Shankara', description: 'Bestowed the miraculous shower of golden amlas in response to Shankara’s Kanakadhara hymn.' },
+    ],
+    dialogues: [
+      { speaker: 'Lakshmi', context: 'Describing where She resides in the Mahabharata', text: 'I dwell in those who speak truthfully, who are disciplined and gentle, who revere teachers and guests, and who avoid malice and despair.', reference: 'Mahabharata Shanti Parva' },
+    ],
+    dilemmas: [
+      { title: 'Sri (Auspiciousness) vs. Material Greed', description: 'Distinguishing between righteous prosperity used for dharma versus greedy hoarding that leads to moral decay.', resolution: 'Lakshmi departs from those who succumb to arrogance, residing permanently only where Vishnu (righteousness and truth) is revered.' },
+    ],
+    verses: [
+      { sanskrit: 'ॐ महालक्ष्मै च विद्महे विष्णुपत्न्यै च धीमहि । तन्नो लक्ष्मीः प्रचोदयात् ॥', transliteration: 'oṃ mahālakṣmai ca vidmahe viṣṇupatnyai ca dhīmahi | tanno lakṣmīḥ pracodayāt ||', translation: 'May we know the Supreme Goddess Mahalakshmi; we meditate upon the consort of Sri Vishnu; may that Divine Mother inspire and illuminate our minds.', reference: 'Lakshmi Gayatri' },
+    ],
+    interpretations: [
+      { tradition: 'Vaishnava Tradition (Sri Sampradaya)', view: 'Lakshmi is the divine Mediatrix (Purushakara) whose unconditional maternal compassion softens divine justice and grants salvation to all surrendered souls.' },
+      { tradition: 'Dharmic Economics', view: 'She represents noble wealth earned through honest labor (shrama) and utilized for the welfare of society and nature.' },
+    ],
+  },
+  {
+    id: 'draupadi',
+    name: 'Draupadi',
+    sanskrit: 'द्रौपदी',
+    category: 'mahabharata',
+    icon: '🔥',
+    gradient: 'from-rose-700 to-purple-800',
+    shortDesc: 'The fire-born princess of Panchala, queen of the Pandavas, and embodiment of unyielding moral dignity and justice.',
+    biography: 'Draupadi (also known as Yajnaseni, Panchali, and Krishnaa) is the heroine of the Mahabharata, born from the sacrificial altar of King Drupada along with her brother Dhrishtadyumna. Wedded to the five Pandavas after Arjuna pierced the rotating fish target at her svayamvara, Draupadi became the empress of Indraprastha. Following Yudhishthira’s loss in the rigged dice game, she was dragged into the Kuru court by Dushasana. When the Kuru elders remained paralyzed by technicalities, Draupadi fearlessly interrogated the court on the nature of law and righteousness. When all human recourse failed, she surrendered completely to Sri Krishna, who miraculously provided inexhaustible garments (vastraharan). She endured 12 years of forest exile and 1 year of concealment in Matsya, standing as a towering pillar of dignity, resilience, and unshakeable commitment to justice.',
+    relations: [
+      { name: 'Yudhishthira', relation: 'Husband' },
+      { name: 'Arjuna', relation: 'Husband' },
+      { name: 'Bhima', relation: 'Husband' },
+      { name: 'Nakula', relation: 'Husband' },
+      { name: 'Sahadeva', relation: 'Husband' },
+      { name: 'Krishna', relation: 'Sakha (Divine Friend and Protector)' },
+      { name: 'Drupada', relation: 'Father' },
+    ],
+    events: [
+      { title: 'Birth from the Sacrificial Flame', description: 'Emerged fully grown from the yajna fire of King Drupada as Yajnaseni.' },
+      { title: 'The Assembly Hall Trial', description: 'Challenged the silence of Bhishma, Drona, and Dhritarashtra when dragged into the royal court.' },
+      { title: 'Krishna’s Miracle (Vastraharana)', description: 'Invoked Sri Krishna in utter surrender, receiving infinite robes that saved her modesty.' },
+      { title: 'Forest Exile Resilience', description: 'Supported the Pandavas through 13 years of hardship while running the hermitage kitchen with the Akshaya Patra.' },
+    ],
+    dialogues: [
+      { speaker: 'Draupadi', context: 'Questioning the Kuru assembly on dharma during her humiliation', text: 'Did the King Yudhishthira lose himself first, or did he wager me? If he lost himself first, by what right could he wager me? Speak, elders of the Kuru race!', reference: 'Mahabharata Sabha Parva 67.4' },
+    ],
+    dilemmas: [
+      { title: 'Patience vs. Righteous Outrage', description: 'Enduring immense injustice and betrayal while waiting for the wheel of dharma to turn.', resolution: 'Draupadi refused to accept humiliation as fate, holding the Kuru court accountable until ultimate justice was re-established.' },
+    ],
+    verses: [
+      { sanskrit: 'शङ्खचक्रगदापाणे द्वारकानिलयाच्युत । गोविन्द पुण्डरीकाक्ष रक्ष मां शरणागताम् ॥', transliteration: 'śaṅkhacakragadāpāṇe dvārakānilayācyuta | govinda puṇḍarīkākṣa rakṣa māṃ śaraṇāgatām ||', translation: 'O bearer of the conch, discus, and mace! O dweller of Dwaraka, infallible Lord! O Govinda, lotus-eyed protector, save me who has taken sole refuge in You!', reference: 'Mahabharata Sabha Parva (Draupadi Sharanagati)' },
+    ],
+    interpretations: [
+      { tradition: 'Classical Mahabharata', view: 'Draupadi is one of the five Pancha Kanyas whose invocation dispels moral confusion. She represents intelligence, unyielding dignity, and fierce moral conscience.' },
+      { tradition: 'Bhakti Perspective', view: 'Her surrender in the Kuru court represents the soul’s absolute surrender (sharanagati) when all worldly reliances dissolve.' },
+    ],
+  },
+  {
+    id: 'lakshmana',
+    name: 'Lakshmana',
+    sanskrit: 'लक्ष्मण',
+    category: 'ramayana',
+    icon: '🏹',
+    gradient: 'from-amber-500 to-orange-600',
+    shortDesc: 'The devoted brother of Lord Rama, avatar of Shesha Naga, and paragon of selfless service and warrior valor.',
+    biography: 'Lakshmana (Saumitri) was the son of King Dasharatha and Queen Sumitra, twin brother of Shatrughna, and the inseparable companion of Lord Sri Rama. Considered an incarnation of Adi Shesha (the thousand-headed serpent supporting cosmic balance), Lakshmana’s entire life was an unbroken vow of service to Rama. When Rama was exiled for 14 years, Lakshmana renounced all royal comforts to accompany Rama and Sita into the forest, serving as their tireless protector. In the Lanka war, Lakshmana slew Indrajit (Meghanada), who could only be vanquished by a warrior who had conquered sleep and upheld strict brahmacharya. His intense protective devotion to Rama remains the benchmark of selfless brotherhood in world literature.',
+    relations: [
+      { name: 'Rama', relation: 'Brother and worshipped Lord' },
+      { name: 'Sita', relation: 'Sister-in-law and motherly figure' },
+      { name: 'Sumitra', relation: 'Mother' },
+      { name: 'Dasharatha', relation: 'Father' },
+      { name: 'Urmila', relation: 'Wife' },
+      { name: 'Shatrughna', relation: 'Twin brother' },
+    ],
+    events: [
+      { title: 'Voluntary 14-Year Exile', description: 'Insisted on accompanying Rama and Sita into the forest, serving as their guardian.' },
+      { title: 'Guarding Rama and Sita in Dandaka', description: 'Built cottages at Chitrakuta and Panchavati, staying awake night after night to protect them.' },
+      { title: 'Vanquishing Indrajit', description: 'Slain the invincible sorcerer-warrior Meghanada through supreme mastery of senses and weapons.' },
+      { title: 'Final Solitary Departure', description: 'Sacrificed his life to uphold a royal promise of privacy between Rama and Kala (Time).' },
+    ],
+    dialogues: [
+      { speaker: 'Lakshmana', context: 'Declaring his devotion to Rama before exile', text: 'I do not desire heaven, nor immortality, nor the sovereignty of all the worlds without You, O Rama! Where You walk, that forest is my kingdom.', reference: 'Valmiki Ramayana Ayodhya Kanda 31.5' },
+    ],
+    dilemmas: [
+      { title: 'Duty to Brother vs. Duty to King’s Decree', description: 'When the messenger of Kala threatened to curse the entire kingdom if interrupted, whether Lakshmana should break Rama’s private conference to deliver Durvasa’s message.', resolution: 'Lakshmana chose to sacrifice his own life by interrupting the conference rather than allow the kingdom of Ayodhya to suffer a sage’s wrath.' },
+    ],
+    verses: [
+      { sanskrit: 'न जानन्ति नरा लोके भ्रातृस्नेहं त्वया समम् । लक्ष्मणस्य हि धर्मज्ञ रामपादपरायणः ॥', transliteration: 'na jānanti narā loke bhrātṛsnehaṃ tvayā samam | lakṣmaṇasya hi dharmajña rāmapādaparāyaṇaḥ ||', translation: 'Nowhere in all the worlds is there brotherly love comparable to Lakshmana’s, who is established in righteousness and devoted solely to the lotus feet of Rama.', reference: 'Valmiki Ramayana Yuddha Kanda' },
+    ],
+    interpretations: [
+      { tradition: 'Valmiki Ramayana', view: 'Lakshmana represents the active, fiery, and uncompromising defense of Dharma that complements Rama’s gentle patience.' },
+      { tradition: 'Vaishnava Theology', view: 'He is the archetype of the ideal servant of God (Kainkarya), teaching that the highest joy is unconditional selfless service.' },
+    ],
+  },
+  {
+    id: 'prahlada',
+    name: 'Bhakta Prahlada',
+    sanskrit: 'प्रह्लाद',
+    category: 'purana',
+    icon: '✨',
+    gradient: 'from-amber-400 to-orange-500',
+    shortDesc: 'The boy devotee of Vishnu whose steadfast faith in God’s omnipresence led to the Narasimha avatar.',
+    biography: 'Prahlada was the saintly prince born to the tyrannical demon king Hiranyakashipu and Queen Kayadhu. Educated in the womb by Sage Narada in the hermitage, Prahlada grew up with boundless, innate devotion to Lord Narayana. When his father demanded that all subjects worship him alone as God, Prahlada gently but firmly proclaimed that the supreme Lord is the only true source of all power. Subjected to horrific torture — thrown into fires, trampling elephants, poison, and falling from cliffs — Prahlada remained completely unharmed, absorbed in chanting Narayana’s name. When Hiranyakashipu struck a palace pillar demanding if God was present inside stone, Lord Vishnu burst forth as the half-man, half-lion Narasimha to protect His child devotee and destroy the tyrant. Prahlada later ruled with divine wisdom and compassion.',
+    relations: [
+      { name: 'Hiranyakashipu', relation: 'Father' },
+      { name: 'Kayadhu', relation: 'Mother' },
+      { name: 'Narada', relation: 'Guru' },
+      { name: 'Narasimha (Vishnu)', relation: 'Beloved Lord and Protector' },
+      { name: 'Virochana', relation: 'Son' },
+      { name: 'Mahabali', relation: 'Grandson' },
+    ],
+    events: [
+      { title: 'Spiritual Teaching in the Womb', description: 'Absorbed the wisdom of the Bhagavata Dharma from Sage Narada before birth.' },
+      { title: 'Undaunted under Persecution', description: 'Survived poison, fire, weapons, and wild beasts through unbroken remembrance of God.' },
+      { title: 'The Pillar of Faith', description: 'Affirmed that God dwells even within the stone pillar, prompting the descent of Lord Narasimha.' },
+      { title: 'Prayer for His Father’s Soul', description: 'Asked Lord Narasimha for the liberation and forgiveness of his tyrannical father.' },
+    ],
+    dialogues: [
+      { speaker: 'Prahlada', context: 'Instructing his fellow demon classmates in the Bhagavata Purana', text: 'In this human birth, one should practice the Bhagavata Dharma from early childhood. Rare indeed is this human body, and although transient, it affords the means to attain the Supreme.', reference: 'Bhagavata Purana 7.6.1' },
+    ],
+    dilemmas: [
+      { title: 'Filial Obedience vs. Divine Truth', description: 'Whether to obey an earthly father who demands that one renounce God and commit adharma.', resolution: 'Prahlada taught that loyalty to the Divine and to truth supersedes all earthly mandates, yet he never harbored hatred toward his father.' },
+    ],
+    verses: [
+      { sanskrit: 'कौमार आचरेत्प्राज्ञो धर्मान्भागवतानिह । दुर्लभं मानुषं जन्म तदप्यध्रुवमर्थदम् ॥', transliteration: 'kaumāra ācaretprājño dharmānbhāgavatāniha | durlabhaṃ mānuṣaṃ janma tadapyadhruvamarthadam ||', translation: 'A wise person should practice the divine path of devotion from early childhood itself. For the human birth is exceedingly rare, and though fleeting, it alone yields the supreme fruit of life.', reference: 'Bhagavata Purana 7.6.1' },
+    ],
+    interpretations: [
+      { tradition: 'Bhagavata Purana', view: 'Prahlada is one of the twelve Mahajanas (great teachers of Dharma), embodying Shravana (listening) and Smarana (unbroken remembrance).' },
+      { tradition: 'Theological Philosophy', view: 'His story demonstrates that God is not absent from any atom of existence, and divine grace unfailingly protects selfless faith.' },
+    ],
+  },
 ];
 
 export function getCharacter(id: string): Character | undefined {

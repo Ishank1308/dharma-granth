@@ -68,4 +68,10 @@ assert.ok(aditya, 'searching aditya should find aditya hridaya stotra');
 const rohini = searchCoreIndex('rohini').find(({ item }) => item.href === '/panchang/nakshatras/rohini/');
 assert.ok(rohini, 'searching rohini should direct to /panchang/nakshatras/rohini/');
 
+const nachiketa = searchCoreIndex('nachiketa').find(({ item }) => item.href === '/characters/nachiketa/');
+assert.ok(nachiketa, 'searching nachiketa should direct to /characters/nachiketa/');
+
+const vidura = searchCoreIndex('vidura').find(({ item }) => item.href === '/characters/vidura/');
+assert.ok(vidura, 'searching vidura should direct to /characters/vidura/');
+
 console.log('search query checks passed');
