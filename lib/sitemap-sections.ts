@@ -17,6 +17,7 @@ import { READING_JOURNEYS, isJourneyIndexable } from '@/data/reading-journeys';
 import { festivals } from '@/data/festivals';
 import { GRANTH_ANSWERS } from '@/data/granth-answers';
 import { getChapterSummaryCollection } from '@/data/chapter-summaries';
+import { SACRED_MANTRAS } from '@/data/mantras';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
 
@@ -94,6 +95,7 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/daily', pageDate('/daily')),
     entry('/daily-verse', pageDate('/daily-verse', 'data/wisdom-for-life.ts')),
     entry('/embed/verse-of-the-day', pageDate('/embed/verse-of-the-day', 'lib/daily-verse.ts')),
+    entry('/mantras', pageDate('/mantras', 'data/mantras.ts')),
     entry('/methodology', pageDate('/methodology')),
     entry('/sources', pageDate('/sources')),
     entry('/contribute', pageDate('/contribute')),
@@ -146,7 +148,10 @@ function pagesSection(): MetadataRoute.Sitemap {
   const festivalDate = lastChanged('data/festivals.ts', 'app/festivals/[id]/page.tsx');
   const festivalRoutes = festivals.map((f) => entry(`/festivals/${f.id}`, festivalDate));
 
-  return [...staticRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
+  const mantraDate = lastChanged('data/mantras.ts', 'app/mantras/[slug]/page.tsx');
+  const mantraRoutes = SACRED_MANTRAS.map((m) => entry(`/mantras/${m.slug}`, mantraDate));
+
+  return [...staticRoutes, ...mantraRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
 }
 
 /** Scripture landing pages and chapter pages (all seeded + curated chapters), dated by when the scripture's text or commentary last changed. */

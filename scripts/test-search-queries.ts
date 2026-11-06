@@ -49,4 +49,14 @@ assert.equal(chapter247?.href, '/scripture/bhagavatapurana/chapter/247/');
 assert.equal(chapter247?.reference, 'Bhagavata Purana · Ch. 247');
 assert.equal(normalizePhonetic('तत्त्वमसि'), normalizePhonetic('tattvamasi'), 'तत्त्वमसि = tattvamasi');
 assert.equal(normalizePhonetic('कर्म'), normalizePhonetic('karma'), 'कर्म = karma');
+
+const liveCore = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/search/core-index.json'), 'utf8'));
+loadCoreIndex(liveCore);
+const gayatri = searchCoreIndex('gayatri').find(({ item }) => item.href.includes('/mantras/'));
+assert.ok(gayatri, 'searching gayatri should find gayatri mantra');
+assert.equal(gayatri?.item.href, '/mantras/gayatri-mantra/');
+
+const ekadashi = searchCoreIndex('ekadashi').find(({ item }) => item.href === '/panchang/ekadashi/');
+assert.ok(ekadashi, 'searching ekadashi should direct to /panchang/ekadashi/');
+
 console.log('search query checks passed');

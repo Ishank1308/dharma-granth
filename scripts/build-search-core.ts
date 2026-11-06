@@ -13,6 +13,10 @@ import { CHAPTERS } from '../data/ashtavakra/chapters-meta';
 import { wisdomVerseHref, libraryLocation } from '../lib/wisdom-links';
 import { versePageHref } from '../lib/verse-paths';
 import { NAKSHATRA_DATA, TITHI_DATA } from '../lib/panchang';
+import { SACRED_MANTRAS } from '../data/mantras';
+import { getAllConceptDetails } from '../data/concept-details';
+import { characters } from '../data/characters';
+import { festivals } from '../data/festivals';
 import type { CoreChapter, CoreIndexFile, CoreTerm, CoreVerse, SearchShardFile, ShardVerse } from '../lib/search-core';
 
 const root = process.cwd();
@@ -67,12 +71,39 @@ const pathways: CoreIndexFile['pathways'] = learningPaths.map((p) => [p.id, p.ti
 const topics: CoreIndexFile['topics'] = wisdomTopics.map((t) => [t.slug, t.titleEn, t.titleHi]);
 const terms: CoreTerm[] = [];
 const seenTerm = new Set<string>();
-function addTerm(id: string, title: string, hindi: string) {
+function addTerm(id: string, title: string, hindi: string, href?: string) {
   const key = title.trim().toLowerCase();
   if (!key || seenTerm.has(key)) return;
   seenTerm.add(key);
-  terms.push([id, title, hindi]);
+  terms.push(href ? [id, title, hindi, href] : [id, title, hindi]);
 }
+
+// Panchang observances & dates
+addTerm('panchang-ekadashi', 'Ekadashi', 'एकादशी व्रत', '/panchang/ekadashi/');
+addTerm('panchang-pradosh', 'Pradosh Vrat', 'प्रदोष व्रत', '/panchang/pradosh/');
+addTerm('panchang-purnima', 'Purnima', 'पूर्णिमा व्रत व स्नान', '/panchang/purnima/');
+addTerm('panchang-amavasya', 'Amavasya', 'अमावस्या व श्राद्ध', '/panchang/amavasya/');
+
+// Classical Mantras & Suktas
+for (const m of SACRED_MANTRAS) {
+  addTerm(`mantra-${m.slug}`, m.title, m.titleHi, `/mantras/${m.slug}/`);
+}
+
+// Core Philosophical Concepts
+for (const c of getAllConceptDetails()) {
+  addTerm(`concept-${c.id}`, c.label, c.sanskrit, `/concepts/${c.id}/`);
+}
+
+// Characters & Personalities
+for (const ch of characters) {
+  addTerm(`character-${ch.id}`, ch.name, ch.sanskrit, `/characters/${ch.id}/`);
+}
+
+// Festivals
+for (const f of festivals) {
+  addTerm(`festival-${f.id}`, f.name, f.sanskrit, `/festivals/${f.id}/`);
+}
+
 for (const tithi of Object.values(TITHI_DATA)) addTerm(`tithi-${tithi.paksha}-${tithi.number}`, tithi.name, tithi.nameHi);
 for (const star of NAKSHATRA_DATA) addTerm(`nakshatra-${star.index}`, star.name, star.nameHi);
 
