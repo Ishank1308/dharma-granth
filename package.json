@@ -58,6 +58,7 @@
     "test:festival-dates": "tsx scripts/test-festival-dates.ts",
     "test:search-normalizer": "tsx scripts/test-search-normalizer.ts",
     "test:search-queries": "tsx scripts/test-search-queries.ts",
+    "test:search-typeahead": "tsx scripts/test-search-typeahead.ts",
     "ocr:scan": "tsx scripts/ocr-granth-pipeline.ts",
     "ocr:validate": "tsx scripts/validate-ocr-output.ts",
     "ocr:import": "tsx scripts/ocr-import.ts",

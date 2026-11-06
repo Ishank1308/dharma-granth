@@ -58,6 +58,7 @@ import {
 import { triggerPranaToast } from '@/lib/prana-capsule-store';
 import { executeSearchWithWorker } from '@/lib/workers/search-worker-client';
 import { useConnectivity } from '@/lib/useConnectivity';
+import { getTypeaheadSuggestion, type TypeaheadMatch } from '@/lib/search-typeahead';
 
 export type { SearchResultItem } from '@/lib/search';
 
@@ -370,6 +371,9 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
   const trimmed = deferredQuery.trim();
   const isStale = query !== deferredQuery;
 
+  // Real-time typeahead and direct citation prediction
+  const typeaheadSuggestion = useMemo(() => getTypeaheadSuggestion(query), [query]);
+
   const isActionQuery = trimmed.startsWith('>');
   const actionFilter = isActionQuery ? trimmed.slice(1).trim().toLowerCase() : '';
   const matchingActions = useMemo(() => {
@@ -525,6 +529,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
         return;
       }
       if (e.key !== 'Tab') return;
+      // If typing in search box with an active typeahead completion, let input handle Tab
+      if (
+        document.activeElement === inputRef.current &&
+        typeaheadSuggestion?.completion &&
+        typeaheadSuggestion.completion !== query
+      ) {
+        return;
+      }
       const focusable = Array.from(
         win.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'),
       ).filter((el) => el.offsetParent !== null);
@@ -545,9 +557,21 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
     return () => document.removeEventListener('keydown', onKey);
   }, [isOpen, onClose]);
 
-  const onInputKeyDown = (e: React.KeyboardEvent) => {
+  const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     // Enter and arrows while a Hindi/Devanagari IME is composing pick a candidate; they must not navigate.
     if (e.nativeEvent.isComposing || e.keyCode === 229) return;
+
+    // Tab key or RightArrow at end of input completes the typeahead suggestion
+    if (
+      (e.key === 'Tab' || (e.key === 'ArrowRight' && inputRef.current?.selectionStart === query.length)) &&
+      typeaheadSuggestion?.completion &&
+      typeaheadSuggestion.completion !== query
+    ) {
+      e.preventDefault();
+      setQuery(typeaheadSuggestion.completion);
+      return;
+    }
+
     if (e.key === 'ArrowDown') {
       if (isActionQuery && matchingActions.length > 0) {
         e.preventDefault();
@@ -579,6 +603,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
         e.preventDefault();
         const action = matchingActions[selectedIndex % matchingActions.length] || matchingActions[0];
         action.run(onClose, router, cycleTheme);
+        return;
+      }
+      // Instant Direct Jump: If directHref exists and user hasn't actively navigated down the search results
+      if (typeaheadSuggestion?.directHref && (selectedIndex === 0 || display.length === 0)) {
+        e.preventDefault();
+        remember(query);
+        onClose();
+        router.push(typeaheadSuggestion.directHref);
         return;
       }
       if (display[selectedIndex]) {
@@ -646,28 +678,45 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             className="liquid-glass relative z-10 flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-panel shadow-2xl"
           >
             {/* Search box */}
-            <div className="flex items-center border-b border-separator px-4 py-3 sm:px-6">
+            <div className="relative flex items-center border-b border-separator px-4 py-3 sm:px-6">
               <Search className={`mr-3.5 h-5 w-5 shrink-0 ${isStale ? 'animate-pulse text-amber-500' : 'text-tint'}`} aria-hidden="true" />
-              <input
-                ref={inputRef}
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={onInputKeyDown}
-                placeholder="Search Gita 2.47, कर्म, fear, or type > for actions…"
-                aria-label="Search scriptures, verses, topics and practices"
-                aria-describedby={statusId}
-                className="min-h-[44px] min-w-0 flex-1 bg-transparent text-title-3 font-normal text-label-primary outline-none placeholder:text-label-tertiary sm:text-title-2"
-                role="combobox"
-                aria-expanded={display.length > 0}
-                aria-autocomplete="list"
-                aria-controls={listboxId}
-                aria-activedescendant={display.length > 0 ? `search-item-${selectedIndex}` : undefined}
-                autoComplete="off"
-                autoCapitalize="off"
-                spellCheck={false}
-                enterKeyHint="search"
-              />
+              
+              <div className="relative flex min-h-[44px] min-w-0 flex-1 items-center">
+                {/* Ghost text overlay for real-time typeahead */}
+                {typeaheadSuggestion?.suffix ? (
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 flex items-center overflow-hidden text-title-3 font-normal sm:text-title-2 select-none"
+                  >
+                    <span className="invisible whitespace-pre">{query}</span>
+                    <span className="text-label-tertiary/60 whitespace-pre">{typeaheadSuggestion.suffix}</span>
+                    <span className="ml-2.5 hidden sm:inline-flex items-center gap-1 rounded border border-separator/80 bg-fill-quaternary px-1.5 py-0.5 text-[10px] font-mono font-medium text-label-secondary shadow-2xs">
+                      Tab ⇥
+                    </span>
+                  </div>
+                ) : null}
+
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={onInputKeyDown}
+                  placeholder="Search Gita 2.47, कर्म, fear, or type > for actions…"
+                  aria-label="Search scriptures, verses, topics and practices"
+                  aria-describedby={statusId}
+                  className="relative z-1 min-h-[44px] w-full bg-transparent text-title-3 font-normal text-label-primary outline-none placeholder:text-label-tertiary sm:text-title-2"
+                  role="combobox"
+                  aria-expanded={display.length > 0}
+                  aria-autocomplete="list"
+                  aria-controls={listboxId}
+                  aria-activedescendant={display.length > 0 ? `search-item-${selectedIndex}` : undefined}
+                  autoComplete="off"
+                  autoCapitalize="off"
+                  spellCheck={false}
+                  enterKeyHint="search"
+                />
+              </div>
               <div className="ml-2 flex shrink-0 items-center gap-2">
                 {isOnline === false && (
                   <span className="inline-flex items-center gap-1 rounded-pill border border-amber-600/30 bg-amber-500/10 px-2.5 py-0.5 text-caption font-medium text-amber-900 dark:text-amber-200">
@@ -793,6 +842,46 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             <div id={statusId} role="status" aria-live="polite" className="sr-only">
               {announcement}
             </div>
+
+            {/* Direct Jump Hero Banner */}
+            {typeaheadSuggestion?.directHref && (
+              <div className="border-b border-separator/80 bg-gradient-to-r from-saffron-500/15 via-amber-500/8 to-transparent px-4 py-2.5 sm:px-6">
+                <button
+                  type="button"
+                  onClick={() => {
+                    remember(query);
+                    onClose();
+                    router.push(typeaheadSuggestion.directHref!);
+                  }}
+                  className="group flex w-full items-center justify-between gap-3 text-left focus:outline-none cursor-pointer"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-saffron-500/20 text-sm shadow-2xs">
+                      {typeaheadSuggestion.badge || '⚡'}
+                    </span>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                          त्वरित प्रवेश · Instant Jump
+                        </span>
+                        <span className="rounded-full bg-saffron-100 dark:bg-saffron-900/50 px-1.5 py-0.2 text-[10px] font-semibold text-saffron-800 dark:text-saffron-300">
+                          {typeaheadSuggestion.category}
+                        </span>
+                      </div>
+                      <p className="truncate text-xs sm:text-sm font-semibold text-label-primary group-hover:text-saffron-700 dark:group-hover:text-saffron-300 transition">
+                        {typeaheadSuggestion.label}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-1.5 text-xs font-semibold text-saffron-700 dark:text-saffron-400">
+                    <span className="hidden sm:inline">सीधे पढ़ें</span>
+                    <kbd className="rounded border border-saffron-500/40 bg-saffron-500/10 px-1.5 py-0.5 font-mono text-[11px] shadow-2xs">
+                      Enter ↵
+                    </kbd>
+                  </div>
+                </button>
+              </div>
+            )}
 
             {/* Body */}
             <div className="min-h-0 flex-1 overflow-y-auto p-3 sm:p-5">
