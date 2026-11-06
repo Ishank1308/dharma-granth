@@ -17,7 +17,8 @@ export async function generateMetadata(props: { params: Promise<{ chapter: strin
   const params = await props.params;
   const v = getVerse(Number(params.chapter), Number(params.verse));
   if (!v) return {};
-  const title = `अष्टावक्र गीता ${v.verseNumber}: ${v.oneLineSummaryHindi}`.slice(0, 110);
+  const firstWord = (v.sanskrit || '').split(/[|।\n]/)[0].trim().slice(0, 20);
+  const title = `अष्टावक्र गीता ${v.verseNumber}${firstWord ? ` (${firstWord})` : ''} — श्लोक व अर्थ`;
   const canonical = `/ashtavakra/${params.chapter}/${params.verse}/`;
   const description = clipDescription(`${v.sanskrit} — ${v.literalHindiMeaning || v.oneLineSummaryHindi}`);
   return {

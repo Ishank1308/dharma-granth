@@ -130,9 +130,10 @@ function openingLatin(transliteration: string | undefined): string {
 }
 
 /** The verse's opening words, as people type them into search. */
-function opening(sanskrit: string | undefined): string {
+function opening(sanskrit: string | undefined, max = 24): string {
   const first = verseLines(cleanVerseField(sanskrit))[0] ?? '';
-  return plain(first, 40);
+  const phrase = first.split(/[|।]/)[0]?.trim() ?? '';
+  return plain(phrase, max);
 }
 
 export function generateStaticParams() {
@@ -147,13 +148,25 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   if (!meta || !found) return {};
 
   const ref = `${meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
-  const words = opening(found.verse.sanskrit);
+  const words = opening(found.verse.sanskrit, 22);
   // The title names only the meanings the page really has; a page with none says so and is kept out of the index
   // (and out of the sitemap, see lib/sitemap-sections.ts) until a meaning is written.
   const has = verseMeaningSummary(meta.id, chapterId, found.verse);
-  const promise = has.hindi && has.english ? 'Meaning in Hindi & English' : has.hindi ? 'Meaning in Hindi' : has.english ? 'Meaning in English' : has.explanation ? 'Explanation' : 'Original Text';
-  // Search engines show about 60 characters: lead with the reference and what the page offers.
-  const title = `${ref} ${promise}${words ? ` | ${words}` : ''}`;
+  const promise = has.hindi && has.english
+    ? 'Hindi & English Meaning'
+    : has.hindi
+    ? 'Hindi Meaning'
+    : has.english
+    ? 'English Meaning'
+    : has.explanation
+    ? 'Explanation'
+    : 'Original Shloka';
+
+  // Front-load reference and Sanskrit shloka so mobile search results display them without truncation:
+  // e.g. "Bhagavad Gita 2.47 (कर्मण्येवाधिकारस्ते) — Hindi Meaning"
+  const title = words
+    ? `${ref} (${words}) — ${promise}`
+    : `${ref} — ${promise}`;
   // Hindi reference stays in the keywords ("श्रीमद्भगवद्गीता 2.47 का हिंदी अर्थ").
   const refHi = `${meta.titleSanskrit ?? meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
   const cleanSanskrit = cleanVerseField(found.verse.sanskrit).replace(/\s+/g, ' ').trim();
@@ -175,15 +188,21 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     keywords: [
       ref,
       `${ref} meaning in hindi`,
-      `${ref} meaning in english`,
       `${ref} in hindi`,
+      `${ref} shlok`,
+      `${ref} hindi arth`,
+      `${ref} meaning in english`,
       `${ref} translation`,
       words,
-      latin && `${latin} meaning`,
+      words && `${words} अर्थ`,
+      latin && `${latin} meaning in hindi`,
+      latin && `${latin} shloka`,
       `${refHi} अर्थ`,
       `${refHi} हिंदी अर्थ`,
       meta.titleSanskrit,
       'श्लोक अर्थ',
+      'पदच्छेद',
+      'अन्वय',
       'traditional commentary',
     ].filter(
       (k): k is string => Boolean(k),
@@ -275,8 +294,13 @@ export default async function VersePage(props: PageProps) {
   const english = plain(verse.translation, 600);
   const modified = scriptureLastChanged(meta.id)?.toISOString();
 
+  const words = opening(verse.sanskrit, 22);
+  const latin = openingLatin(verse.transliteration);
+
   const questions = [
     hindi && { '@type': 'Question', name: `${ref} का हिन्दी अर्थ क्या है?`, acceptedAnswer: { '@type': 'Answer', text: hindi } },
+    words && hindi && { '@type': 'Question', name: `${words} श्लोक का अर्थ क्या है?`, acceptedAnswer: { '@type': 'Answer', text: hindi } },
+    latin && (hindi || english) && { '@type': 'Question', name: `What is the meaning of ${latin}?`, acceptedAnswer: { '@type': 'Answer', text: `${hindi ? `${hindi}\n\n` : ''}${english || ''}`.trim() } },
     english && { '@type': 'Question', name: `What is the meaning of ${ref}?`, acceptedAnswer: { '@type': 'Answer', text: english } },
   ].filter(Boolean);
 

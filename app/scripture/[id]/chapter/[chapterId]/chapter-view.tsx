@@ -145,9 +145,9 @@ export function chapterMetadata(params: ChapterParams, partNumber = 1): Metadata
   // Split chapters: each part names its place and verse range.
   const partLabel = part && parts ? ` — भाग ${part.part}/${parts.length} (श्लोक ${partRange(part)})` : '';
   const title =
-    Array.from(`${hindiPart}${englishPart}${partLabel}`).length <= 75
-      ? `${hindiPart}${englishPart}${partLabel} | हिंदी अर्थ · English Meaning`
-      : `${hindiPart}${partLabel} (${meta.title}) | हिंदी अर्थ · English Meaning`;
+    Array.from(`${hindiPart}${englishPart}${partLabel}`).length <= 48
+      ? `${hindiPart}${englishPart}${partLabel} — हिंदी अर्थ`
+      : `${hindiPart}${partLabel} — हिंदी अर्थ`;
   const firstVerse = readSeededChapter(meta.id, chapterId)?.chapter.verses[part?.start ?? 0] as
     | { hindi?: string; translation?: string }
     | undefined;
