@@ -207,8 +207,18 @@ jobs:
         shard: [1, 2, 3, 4]
 
     steps:
+      # The tests need only these files; the export comes from the build job.
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            /tests/
+            /scripts/serve-dist.mjs
+            /playwright.config.ts
+            /package.json
+            /package-lock.json
+          sparse-checkout-cone-mode: false
+          filter: blob:none
 
       # The cache actions compress with zstd only when it is installed, and a
       # cache saved with zstd on the host misses when restored without it.
@@ -219,10 +229,14 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      # The tests import only these two packages, so install them at the
+      # lockfile's versions (~5 s) instead of the site's 550 (~1 min).
+      - name: Install Playwright packages
+        run: |
+          deps=$(node -e "const p=require('./package-lock.json').packages;console.log(['@playwright/test','@axe-core/playwright'].map((n)=>n+'@'+p['node_modules/'+n].version).join(' '))")
+          rm package-lock.json && echo '{"private":true}' > package.json
+          npm install --no-audit --no-fund $deps
 
       - name: Restore export
         uses: actions/cache/restore@v5
@@ -236,7 +250,7 @@ jobs:
 
       # --fully-parallel spreads single tests, not whole files, across shards.
       - name: Browser smoke test
-        run: npm run test:e2e -- --shard=${{ matrix.shard }}/4 --fully-parallel
+        run: npx playwright test --shard=${{ matrix.shard }}/4 --fully-parallel
 
   preview:
     name: Preview deploy
