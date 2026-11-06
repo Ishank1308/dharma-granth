@@ -1,0 +1,230 @@
+/* ── Components ───────────────────────────────────────────────────────────
+   The shared pieces every page builds with, made only of tokens (tokens.css), so
+   they read the same in all four themes. Loaded after globals.css, before motion.css.
+
+   - .material-*       translucent bars and sheets
+   - .apple-card       the one card surface
+   - .apple-group/row  grouped lists (Settings style), rows at least 44px tall
+   - .apple-segmented  segmented control
+   - .apple-field      filled text field
+   - .apple-pill       the filled primary button (with the sheen from motion.css)
+   - .apple-tint-chip  a small coloured icon tile
+   - .apple-scope      quiets older components placed inside a redesigned page
+   docs/design-system.md shows each in use. */
+
+/* Materials ──────────────────────────────────────────────────────────────
+   The canvas made translucent, with the content behind it blurred and its colour lifted.
+   Without backdrop-filter the material falls back to the solid canvas. */
+.material-ultrathin,
+.material-thin,
+.material-regular,
+.material-thick {
+    -webkit-backdrop-filter: var(--material-filter);
+    backdrop-filter: var(--material-filter);
+}
+.material-ultrathin { background-color: var(--material-ultrathin); }
+.material-thin { background-color: var(--material-thin); }
+.material-regular { background-color: var(--material-regular); }
+.material-thick { background-color: var(--material-thick); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .material-ultrathin,
+    .material-thin,
+    .material-regular,
+    .material-thick {
+        background-color: var(--surface-canvas);
+    }
+}
+@media print {
+    .material-ultrathin,
+    .material-thin,
+    .material-regular,
+    .material-thick {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+}
+
+/* Cards ──────────────────────────────────────────────────────────────── */
+.apple-card {
+    border-radius: var(--radius-card);
+    background-color: var(--surface-raised);
+    box-shadow: var(--shadow-raised);
+}
+/* A card that can be pressed: it rises under the pointer and gives under a tap. */
+.apple-card-link {
+    display: block;
+    transition:
+        transform var(--duration-base) var(--motion-spring),
+        box-shadow var(--duration-standard) var(--ease-out);
+}
+@media (hover: hover) {
+    .apple-card-link:hover {
+        transform: translate3d(0, -2px, 0);
+        box-shadow: var(--shadow-lifted);
+    }
+}
+.apple-card-link:active {
+    scale: 0.985;
+}
+.apple-card-link:focus-visible {
+    box-shadow: var(--focus-ring), var(--shadow-raised);
+}
+
+/* Grouped lists ─────────────────────────────────────────────────────── */
+.apple-group {
+    overflow: hidden;
+    border-radius: var(--radius-group);
+    background-color: var(--surface-raised);
+}
+.apple-group > li + li,
+.apple-group > * + .apple-row {
+    border-top: 1px solid var(--separator);
+}
+.apple-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    min-height: var(--tap-target);
+    padding: var(--space-3) 1.125rem;
+    transition: background-color var(--duration-fast) var(--ease-standard);
+}
+a.apple-row:hover,
+.apple-group a.apple-row:hover {
+    background-color: var(--fill-quaternary);
+}
+a.apple-row:active,
+.apple-group a.apple-row:active {
+    background-color: var(--fill-tertiary);
+}
+.apple-chevron {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--label-quaternary);
+}
+
+/* Segmented control ──────────────────────────────────────────────────── */
+.apple-segmented {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    padding: 2px;
+    border-radius: var(--radius-track);
+    background-color: var(--fill-tertiary);
+}
+.apple-segmented > button {
+    min-height: 36px;
+    padding: 0 0.875rem;
+    border-radius: var(--radius-control);
+    font-size: var(--text-footnote);
+    color: var(--label-primary);
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        box-shadow var(--duration-fast) var(--ease-standard);
+}
+.apple-segmented > button[aria-pressed='true'] {
+    background-color: var(--surface-segment);
+    font-weight: 600;
+    box-shadow: var(--shadow-control);
+}
+
+/* Text field ──────────────────────────────────────────────────────────── */
+.apple-field {
+    width: 100%;
+    min-height: var(--tap-target);
+    border-radius: var(--radius-field);
+    border: 0;
+    padding: 0 0.875rem;
+    font-size: var(--text-body);
+    color: var(--label-primary);
+    background-color: var(--fill-tertiary);
+    transition: box-shadow var(--duration-fast) var(--ease-standard);
+}
+.apple-field::placeholder {
+    color: var(--label-tertiary);
+}
+.apple-field:focus {
+    outline: 2px solid var(--tint);
+    outline-offset: 0;
+}
+
+/* Primary button ─────────────────────────────────────────────────────── */
+.apple-pill {
+    display: inline-flex;
+    min-height: var(--tap-target);
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    border-radius: var(--radius-pill);
+    padding: 0 1.25rem;
+    font-size: var(--text-subhead);
+    background-color: var(--tint);
+    color: var(--on-tint);
+    transition:
+        opacity var(--duration-fast) var(--ease-standard),
+        transform var(--duration-base) var(--motion-spring);
+}
+.apple-pill:hover {
+    opacity: 0.92;
+}
+.apple-pill:active {
+    scale: 0.97;
+}
+/* The quiet sibling of the filled button: tinted text on a faint tint. */
+.apple-pill-tinted {
+    background-color: var(--tint-fill);
+    color: var(--tint);
+}
+
+/* Icon tile ──────────────────────────────────────────────────────────── */
+.apple-tint-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-control);
+    color: #fff;
+    background-color: var(--chip, var(--tint));
+}
+
+/* Section heading accent ─────────────────────────────────────────────────
+   The short tinted rule under a SectionTitle (app/components/apple/PageHeader.tsx).
+   It grows in from the left as the heading scrolls into view (motion.css). */
+.section-rule {
+    display: block;
+    width: 2.5rem;
+    height: 2px;
+    margin-top: var(--space-3);
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--tint), color-mix(in srgb, var(--tint) 0%, transparent));
+}
+
+/* Stats ──────────────────────────────────────────────────────────────── */
+.apple-stat {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+}
+
+/* Older components inside a redesigned page ─────────────────────────────
+   Inner tool cards drop the book serif and the shouting labels, so the long tail of
+   components reads in the same voice without rewriting each one. */
+.apple-scope .font-serif:not([lang='sa']):not(.shloka-text) {
+    font-family: var(--font-sans);
+    letter-spacing: var(--tracking-body);
+}
+.apple-scope .uppercase.tracking-widest,
+.apple-scope .uppercase.tracking-wider,
+.apple-scope .uppercase.tracking-wide {
+    text-transform: none;
+    letter-spacing: normal;
+}
+.apple-scope .verse-card {
+    border: 0;
+    border-radius: var(--radius-card);
+    background-image: none;
+    background-color: var(--surface-raised);
+    box-shadow: var(--shadow-raised);
+}

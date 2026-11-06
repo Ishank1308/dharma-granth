@@ -12,7 +12,10 @@ import { OfflineIndicator } from "@/app/components/OfflineIndicator";
 
 import { MananaSelectionBar, PranaCapsule } from "@/app/components/ClientOverlays";
 // Fonts: @font-face rules for /fonts live in globals.css (one source per weight, 400/600/700).
+// Design system: tokens first, then the base styles, the shared components and motion (docs/design-system.md).
+import "./styles/tokens.css";
 import "./globals.css";
+import "./styles/components.css";
 // The motion system (reveals, tilt, hero halo, theme transition) sits over the base styles.
 import "./motion.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";

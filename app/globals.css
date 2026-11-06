@@ -116,14 +116,7 @@
     --font-noto-devanagari: 'Noto Sans Devanagari', 'Noto-Devanagari-Fallback', sans-serif;
     --font-sanskrit: 'Tiro Devanagari Sanskrit', 'Noto Serif Devanagari', var(--font-noto-devanagari);
 
-    /* Shared Motion Tokens (Phase 6) */
-    --motion-instant: 120ms;
-    --motion-fast: 220ms;
-    --motion-standard: 380ms;
-    --motion-deliberate: 600ms;
-    --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
-    --ease-gentle: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* Motion tokens live in app/styles/tokens.css with the rest of the design system. */
 }
 
 /* Theme variables. The default (no data-theme attribute) is "day". */
@@ -2964,11 +2957,12 @@ svg.lucide {
    one on the bottom on phones, hairline separators and a single tint
    (--dharma-saffron). Page layouts adopt the rest page by page. */
 @layer components {
+    /* The bar is the regular material (app/styles/tokens.css). */
     .apple-bar {
-        background-color: color-mix(in srgb, var(--dharma-bg) 78%, transparent);
-        -webkit-backdrop-filter: saturate(180%) blur(20px);
-        backdrop-filter: saturate(180%) blur(20px);
-        border-color: color-mix(in srgb, var(--dharma-text) 10%, transparent);
+        background-color: var(--material-regular);
+        -webkit-backdrop-filter: var(--material-filter);
+        backdrop-filter: var(--material-filter);
+        border-color: var(--separator);
     }
     @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
         .apple-bar { background-color: var(--dharma-bg); }
@@ -3042,138 +3036,4 @@ svg.lucide {
 .verse-folio[lang='sa'],
 .shloka-text {
     font-weight: 400;
-}
-
-/* ── Apple layer: inner pages (Learn, Sadhana, Ask, Panchang) ──────────
-   Shared pieces so the inner pages read like home and the library:
-   one card surface, grouped lists, segmented controls and filled fields. */
-.apple-card {
-    border-radius: 22px;
-    background-color: var(--dharma-card);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.06);
-}
-:root[data-theme='night'] .apple-card,
-:root[data-theme='dark'] .apple-card {
-    box-shadow: none;
-}
-.apple-group {
-    overflow: hidden;
-    border-radius: 14px;
-    background-color: var(--dharma-card);
-}
-.apple-group > li + li,
-.apple-group > * + .apple-row {
-    border-top: 1px solid color-mix(in srgb, var(--dharma-text) 10%, transparent);
-}
-.apple-row {
-    display: flex;
-    align-items: center;
-    gap: 0.875rem;
-    min-height: 44px;
-    padding: 0.75rem 1.125rem;
-    transition: background-color 0.2s ease;
-}
-a.apple-row:hover,
-.apple-group a.apple-row:hover {
-    background-color: color-mix(in srgb, var(--dharma-text) 4%, transparent);
-}
-.apple-chevron {
-    margin-left: auto;
-    flex-shrink: 0;
-    font-size: 1.25rem;
-    line-height: 1;
-    color: color-mix(in srgb, var(--dharma-muted) 60%, transparent);
-}
-.apple-segmented {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 2px;
-    padding: 2px;
-    border-radius: 10px;
-    background-color: color-mix(in srgb, var(--dharma-text) 7%, transparent);
-}
-.apple-segmented > button {
-    min-height: 36px;
-    padding: 0 0.875rem;
-    border-radius: 8px;
-    font-size: 13px;
-    color: var(--dharma-text);
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-}
-.apple-segmented > button[aria-pressed='true'] {
-    background-color: var(--dharma-card);
-    font-weight: 600;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
-}
-:root[data-theme='night'] .apple-segmented > button[aria-pressed='true'],
-:root[data-theme='dark'] .apple-segmented > button[aria-pressed='true'] {
-    background-color: #636366;
-}
-.apple-field {
-    width: 100%;
-    min-height: 44px;
-    border-radius: 12px;
-    border: 0;
-    padding: 0 0.875rem;
-    font-size: 17px;
-    color: var(--dharma-text);
-    background-color: color-mix(in srgb, var(--dharma-text) 6%, transparent);
-}
-.apple-field::placeholder {
-    color: var(--dharma-muted);
-}
-.apple-field:focus {
-    outline: 2px solid var(--dharma-saffron);
-    outline-offset: 0;
-}
-.apple-pill {
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-    justify-content: center;
-    gap: 0.375rem;
-    border-radius: 9999px;
-    padding: 0 1.25rem;
-    font-size: 15px;
-    background-color: var(--dharma-saffron);
-    color: var(--dharma-bg);
-    transition: opacity 0.2s ease;
-}
-.apple-pill:hover {
-    opacity: 0.9;
-}
-.apple-tint-chip {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    color: #fff;
-    background-color: var(--chip, var(--dharma-saffron));
-}
-
-/* Inside a redesigned page, older tool cards drop the book serif and the shouting labels,
-   so the long tail of components reads in the same voice without rewriting each one. */
-.apple-scope .font-serif:not([lang='sa']):not(.shloka-text) {
-    font-family: var(--font-sans);
-    letter-spacing: -0.01em;
-}
-.apple-scope .uppercase.tracking-widest,
-.apple-scope .uppercase.tracking-wider,
-.apple-scope .uppercase.tracking-wide {
-    text-transform: none;
-    letter-spacing: normal;
-}
-.apple-scope .verse-card {
-    border: 0;
-    border-radius: 22px;
-    background-image: none;
-    background-color: var(--dharma-card);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.06);
-}
-:root[data-theme='night'] .apple-scope .verse-card,
-:root[data-theme='dark'] .apple-scope .verse-card {
-    box-shadow: none;
 }
