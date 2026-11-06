@@ -1,0 +1,1158 @@
+{
+ "note": "Harivamsha, Vishnu Parva: Hindi put back on verses that had none, matched by Sanskrit content and the printed numbering. The Hindi is the printed Gita Press translation with mechanical clean-up only; where the edition groups verses, the paragraph is shown once on the first verse (hindiRange) and the others point to it (hindiSeeVerse). Every entry is in data/ocr-hindi-review.json under this queue and is withheld until proofread against the printed page.",
+ "source": {
+  "edition": "Gita Press Gorakhpur, श्रीमहाभारत खिलभाग हरिवंशपुराण (सरल हिन्दी अनुवादसहित)",
+  "text": "Two readings of the local scan \"Harivansh Puran - Gita Press.pdf\" (1,422 pages): (1) Tesseract 5.4 OCR (hin model) of each column, cut at the printed column rule; (2) Tesseract 5.4 OCR of the whole page body with its own layout analysis. \"page\" is a PDF page index."
+ },
+ "guards": [
+  "Sanskrit 3-gram Jaccard >= 0.6 and >= 0.15 above the next printed verse",
+  "printed adhyaya (between two consecutive colophons of the parva, Sanskrit and Hindi colophons of one adhyaya counted once) agrees with the verse",
+  "printed Sanskrit verse number agrees with the verse",
+  "the Hindi paragraph is printed beside it, closes with its own \"॥ n ॥\", its printed number covers the verse, and the paragraph before it ends exactly on the verse before (no half verses)",
+  "a range covers at most 5 verses, every one passes the Sanskrit and number guards, and they are consecutive in the library",
+  "the library verse holds a single printed verse",
+  "no line of the paragraph was dropped or left unclassified as unreadable, and it does not open with a stray letter",
+  "the whole-page reading has every line of the paragraph, unbroken, with the same first two and last two words, and >= 0.85 word agreement with the column reading",
+  "no page number, running head, colophon or heading left after mechanical clean-up (ASCII digits, page specks, avagraha and visarga glyphs)",
+  "a single: the Hindi shares at least 2 more word stems with its own verse than with any verse 1-3 places away; a range: at least 3 stems and 2 more than the neighbouring range of the same length",
+  "only verses that had no Hindi are filled; a range is skipped if any verse in it already had Hindi"
+ ],
+ "counts": {
+  "lackingHindiBefore": 1021,
+  "filled": 115,
+  "singles": 84,
+  "ranges": 14,
+  "versesInRanges": 31
+ },
+ "verses": {
+  "75:6": {
+   "ref": "2.20.6",
+   "page": 354,
+   "pdfPage": 355,
+   "suspect": [
+    "्दित"
+   ],
+   "sanskritScore": 0.873,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "75:15": {
+   "ref": "2.20.15",
+   "page": 355,
+   "pdfPage": 356,
+   "suspect": [
+    "रजनीको"
+   ],
+   "sanskritScore": 0.814,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "75:22": {
+   "ref": "2.20.22",
+   "page": 356,
+   "pdfPage": 357,
+   "suspect": [
+    "चरिन्नोंको",
+    "गोपकिशोरियाँ",
+    "पुकारती"
+   ],
+   "sanskritScore": 0.841,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "75:24": {
+   "ref": "2.20.24",
+   "page": 356,
+   "pdfPage": 357,
+   "suspect": [
+    "गोपाज़नाएँ",
+    "रात्रिकि",
+    "ढूँढ़ती",
+    "श्रीकृष्णविषयक"
+   ],
+   "sanskritScore": 0.739,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "87:35": {
+   "ref": "2.32.35",
+   "page": 424,
+   "pdfPage": 425,
+   "suspect": [
+    "फलकाी"
+   ],
+   "sanskritScore": 0.873,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "87:38": {
+   "ref": "2.32.38",
+   "page": 424,
+   "pdfPage": 425,
+   "suspect": [
+    "क्षत्रियधर्मपरायण"
+   ],
+   "sanskritScore": 0.909,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "87:45": {
+   "ref": "2.32.45",
+   "page": 425,
+   "pdfPage": 426,
+   "suspect": [
+    "निमित्तकारण",
+    "निमित्तोंका"
+   ],
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "90:48": {
+   "ref": "2.35.48",
+   "page": 436,
+   "pdfPage": 437,
+   "suspect": [
+    "चेदिरिज",
+    "मोरचा",
+    "संँभालेंगे"
+   ],
+   "sanskritScore": 0.702,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "90:53": {
+   "ref": "2.35.53",
+   "page": 436,
+   "pdfPage": 437,
+   "suspect": [
+    "प्रहारकुशल",
+    "देवासुरसंग्रामके"
+   ],
+   "sanskritScore": 0.832,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "90:102": {
+   "ref": "2.35.102",
+   "page": 440,
+   "pdfPage": 441,
+   "suspect": [
+    "वृष्णियोंके"
+   ],
+   "sanskritScore": 0.867,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "90:106": {
+   "ref": "2.35.106",
+   "page": 440,
+   "pdfPage": 441,
+   "suspect": [
+    "अवगाह",
+    "कड्ठ",
+    "वामभागपर"
+   ],
+   "sanskritScore": 0.652,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "100:7": {
+   "ref": "2.45.7",
+   "page": 492,
+   "pdfPage": 493,
+   "suspect": [
+    "आशीर्वादयुक्त"
+   ],
+   "sanskritScore": 0.917,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "100:8": {
+   "ref": "2.45.8",
+   "page": 492,
+   "pdfPage": 493,
+   "suspect": [],
+   "sanskritScore": 0.882,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "100:9": {
+   "ref": "2.45.9",
+   "page": 492,
+   "pdfPage": 493,
+   "suspect": [
+    "उदासचित्त"
+   ],
+   "sanskritScore": 0.887,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "100:13": {
+   "ref": "2.45.13",
+   "page": 492,
+   "pdfPage": 493,
+   "suspect": [
+    "मज़लमय",
+    "अध्वयुक्त"
+   ],
+   "sanskritScore": 0.905,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "105:3": {
+   "ref": "2.50.3",
+   "page": 512,
+   "pdfPage": 513,
+   "suspect": [],
+   "sanskritScore": 0.852,
+   "ownStems": 5,
+   "neighbourStems": 1
+  },
+  "105:11": {
+   "ref": "2.50.11",
+   "page": 513,
+   "pdfPage": 514,
+   "suspect": [
+    "कोषसे"
+   ],
+   "sanskritScore": 0.804,
+   "ownStems": 6,
+   "neighbourStems": 0
+  },
+  "105:12": {
+   "ref": "2.50.12",
+   "page": 513,
+   "pdfPage": 514,
+   "suspect": [],
+   "sanskritScore": 0.912,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "105:14": {
+   "ref": "2.50.14",
+   "page": 513,
+   "pdfPage": 514,
+   "suspect": [],
+   "sanskritScore": 0.914,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "105:24": {
+   "ref": "2.50.24",
+   "page": 514,
+   "pdfPage": 515,
+   "suspect": [
+    "कैशिकने",
+    "देवदूतके",
+    "आदेशपत्रको"
+   ],
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "105:41": {
+   "ref": "2.50.41",
+   "page": 515,
+   "pdfPage": 516,
+   "suspect": [],
+   "sanskritScore": 0.719,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "105:42": {
+   "ref": "2.50.42",
+   "page": 515,
+   "pdfPage": 516,
+   "suspect": [
+    "राजेन्द्रोंने"
+   ],
+   "sanskritScore": 0.633,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "105:43": {
+   "ref": "2.50.43",
+   "page": 515,
+   "pdfPage": 516,
+   "suspect": [],
+   "sanskritScore": 0.907,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "105:50": {
+   "ref": "2.50.50",
+   "page": 516,
+   "pdfPage": 517,
+   "suspect": [
+    "राजेन्द्रपदपर"
+   ],
+   "sanskritScore": 0.893,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "105:90": {
+   "ref": "2.50.90",
+   "page": 519,
+   "pdfPage": 520,
+   "suspect": [],
+   "sanskritScore": 0.829,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "133:4": {
+   "ref": "2.78.4",
+   "page": 660,
+   "pdfPage": 661,
+   "suspect": [
+    "अखण्डितरूपसे"
+   ],
+   "sanskritScore": 0.914,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "133:5": {
+   "ref": "2.78.5",
+   "page": 660,
+   "pdfPage": 661,
+   "suspect": [],
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "133:7": {
+   "ref": "2.78.7",
+   "page": 660,
+   "pdfPage": 661,
+   "suspect": [
+    "सतियोंके"
+   ],
+   "sanskritScore": 0.825,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "133:10": {
+   "ref": "2.78.10",
+   "page": 660,
+   "pdfPage": 661,
+   "suspect": [],
+   "sanskritScore": 0.718,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "133:12": {
+   "ref": "2.78.12",
+   "page": 661,
+   "pdfPage": 662,
+   "suspect": [
+    "सत्यपरायणा"
+   ],
+   "sanskritScore": 0.803,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "133:13": {
+   "ref": "2.78.13",
+   "page": 661,
+   "pdfPage": 662,
+   "suspect": [
+    "सढूति"
+   ],
+   "sanskritScore": 0.926,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "133:18": {
+   "ref": "2.78.18",
+   "page": 661,
+   "pdfPage": 662,
+   "suspect": [],
+   "sanskritScore": 0.629,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "133:27": {
+   "ref": "2.78.27",
+   "page": 662,
+   "pdfPage": 663,
+   "suspect": [
+    "तृणोंकी"
+   ],
+   "sanskritScore": 0.906,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "133:32": {
+   "ref": "2.78.32",
+   "page": 662,
+   "pdfPage": 663,
+   "suspect": [
+    "गदहोंसे"
+   ],
+   "sanskritScore": 0.78,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "144:18": {
+   "ref": "2.89.18",
+   "page": 712,
+   "pdfPage": 713,
+   "suspect": [
+    "नरलोकके",
+    "समुद्रयात्रके",
+    "सुन्दराज्री",
+    "अलापने"
+   ],
+   "sanskritScore": 0.675,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "144:23": {
+   "ref": "2.89.23",
+   "page": 713,
+   "pdfPage": 714,
+   "suspect": [
+    "शिरोमणियोंके",
+    "कलापसे"
+   ],
+   "sanskritScore": 0.936,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "144:25": {
+   "ref": "2.89.25",
+   "page": 713,
+   "pdfPage": 714,
+   "suspect": [
+    "रेवतराजकुमारी"
+   ],
+   "sanskritScore": 0.899,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "144:28": {
+   "ref": "2.89.28",
+   "page": 714,
+   "pdfPage": 715,
+   "suspect": [
+    "नरदेवकुमार",
+    "युवतियोंने"
+   ],
+   "sanskritScore": 1,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "144:30": {
+   "ref": "2.89.30",
+   "page": 714,
+   "pdfPage": 715,
+   "suspect": [],
+   "sanskritScore": 0.854,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "144:40": {
+   "ref": "2.89.40",
+   "page": 715,
+   "pdfPage": 716,
+   "suspect": [
+    "रेवतराजकुमारी"
+   ],
+   "sanskritScore": 0.93,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "144:41": {
+   "ref": "2.89.41",
+   "page": 715,
+   "pdfPage": 716,
+   "suspect": [
+    "कूदनेके",
+    "क्रीड़ामें",
+    "अभिरत",
+    "आंखें"
+   ],
+   "sanskritScore": 0.862,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "144:42": {
+   "ref": "2.89.42",
+   "page": 715,
+   "pdfPage": 716,
+   "suspect": [
+    "बलरामपुत्र",
+    "क्रीड़ामें",
+    "अभिरत",
+    "कण्ठदेश"
+   ],
+   "sanskritScore": 0.824,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "144:45": {
+   "ref": "2.89.45",
+   "page": 716,
+   "pdfPage": 717,
+   "suspect": [
+    "अप्सराँ",
+    "आकाशगड्ाके",
+    "जलैंदर्दर"
+   ],
+   "sanskritScore": 0.756,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "144:52": {
+   "ref": "2.89.52",
+   "page": 717,
+   "pdfPage": 718,
+   "suspect": [
+    "जलवाद्यके"
+   ],
+   "sanskritScore": 0.692,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "144:53": {
+   "ref": "2.89.53",
+   "page": 717,
+   "pdfPage": 718,
+   "suspect": [
+    "संकेतोंको",
+    "जलयुद्धके",
+    "वारवनिताएँ"
+   ],
+   "sanskritScore": 0.764,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "144:54": {
+   "ref": "2.89.54",
+   "page": 717,
+   "pdfPage": 718,
+   "suspect": [
+    "जलक्रीडाके"
+   ],
+   "sanskritScore": 0.899,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "144:59": {
+   "ref": "2.89.59",
+   "page": 718,
+   "pdfPage": 719,
+   "suspect": [
+    "पाकशालाध्यक्षके",
+    "मृगनामक",
+    "कम्दविशेषके",
+    "व्यज्जन"
+   ],
+   "sanskritScore": 0.869,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "144:62": {
+   "ref": "2.89.62",
+   "page": 718,
+   "pdfPage": 719,
+   "suspect": [
+    "कट्वाड्ट",
+    "शूलहर",
+    "सेंके",
+    "बड़हरके",
+    "सुरासव",
+    "याददवोंने",
+    "प्रियतमाओंसे"
+   ],
+   "sanskritScore": 0.787,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "144:63": {
+   "ref": "2.89.63",
+   "page": 718,
+   "pdfPage": 719,
+   "suspect": [
+    "किलाद"
+   ],
+   "sanskritScore": 0.644,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "144:86": {
+   "ref": "2.89.86",
+   "page": 721,
+   "pdfPage": 722,
+   "suspect": [
+    "महत्त्तकी"
+   ],
+   "sanskritScore": 0.702,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "162:2": {
+   "ref": "2.107.2",
+   "page": 799,
+   "pdfPage": 800,
+   "suspect": [],
+   "sanskritScore": 0.719,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "162:3": {
+   "ref": "2.107.3",
+   "page": 799,
+   "pdfPage": 800,
+   "suspect": [
+    "गीधोंके",
+    "मँडराने"
+   ],
+   "sanskritScore": 0.885,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "162:5": {
+   "ref": "2.107.5",
+   "page": 799,
+   "pdfPage": 800,
+   "suspect": [
+    "शड्भरकी"
+   ],
+   "sanskritScore": 0.789,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "162:10": {
+   "ref": "2.107.10",
+   "page": 799,
+   "pdfPage": 800,
+   "suspect": [
+    "विनाशकारिणी",
+    "घण्टाओंकी"
+   ],
+   "sanskritScore": 0.906,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "162:30": {
+   "ref": "2.107.30",
+   "page": 801,
+   "pdfPage": 802,
+   "suspect": [
+    "हर्षविभोर"
+   ],
+   "sanskritScore": 0.688,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "164:5": {
+   "ref": "2.109.5",
+   "page": 805,
+   "pdfPage": 806,
+   "suspect": [],
+   "sanskritScore": 0.771,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "164:13": {
+   "ref": "2.109.13",
+   "page": 806,
+   "pdfPage": 807,
+   "suspect": [
+    "वसुदेवता"
+   ],
+   "sanskritScore": 0.821,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "174:5": {
+   "ref": "2.119.5",
+   "page": 851,
+   "pdfPage": 852,
+   "suspect": [],
+   "sanskritScore": 0.731,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "174:14": {
+   "ref": "2.119.14",
+   "page": 852,
+   "pdfPage": 853,
+   "suspect": [
+    "पौत्रशोकसे"
+   ],
+   "sanskritScore": 0.769,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "174:17": {
+   "ref": "2.119.17",
+   "page": 852,
+   "pdfPage": 853,
+   "suspect": [],
+   "sanskritScore": 0.918,
+   "ownStems": 4,
+   "neighbourStems": 2
+  },
+  "174:18": {
+   "ref": "2.119.18",
+   "page": 852,
+   "pdfPage": 853,
+   "suspect": [
+    "मनोरगे"
+   ],
+   "sanskritScore": 0.667,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "174:19": {
+   "ref": "2.119.19",
+   "page": 852,
+   "pdfPage": 853,
+   "suspect": [],
+   "sanskritScore": 0.879,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "174:20": {
+   "ref": "2.119.20",
+   "page": 852,
+   "pdfPage": 853,
+   "suspect": [],
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "174:28": {
+   "ref": "2.119.28",
+   "page": 853,
+   "pdfPage": 854,
+   "suspect": [
+    "समतालमें"
+   ],
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "174:29": {
+   "ref": "2.119.29",
+   "page": 853,
+   "pdfPage": 854,
+   "suspect": [],
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "174:31": {
+   "ref": "2.119.31",
+   "page": 853,
+   "pdfPage": 854,
+   "suspect": [],
+   "sanskritScore": 0.806,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "174:47": {
+   "ref": "2.119.47",
+   "page": 854,
+   "pdfPage": 855,
+   "suspect": [],
+   "sanskritScore": 0.917,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "174:53": {
+   "ref": "2.119.53",
+   "page": 855,
+   "pdfPage": 856,
+   "suspect": [],
+   "sanskritScore": 0.794,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "174:55": {
+   "ref": "2.119.55",
+   "page": 855,
+   "pdfPage": 856,
+   "suspect": [
+    "वेगशालिनी"
+   ],
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "174:56": {
+   "ref": "2.119.56",
+   "page": 855,
+   "pdfPage": 856,
+   "suspect": [
+    "अनिरुद्धकों"
+   ],
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "174:60": {
+   "ref": "2.119.60",
+   "page": 855,
+   "pdfPage": 856,
+   "suspect": [
+    "चित्रलेखासे"
+   ],
+   "sanskritScore": 1,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "174:62": {
+   "ref": "2.119.62",
+   "page": 855,
+   "pdfPage": 856,
+   "suspect": [],
+   "sanskritScore": 0.81,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "174:69": {
+   "ref": "2.119.69",
+   "page": 856,
+   "pdfPage": 857,
+   "suspect": [],
+   "sanskritScore": 1,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "174:88": {
+   "ref": "2.119.88",
+   "page": 857,
+   "pdfPage": 858,
+   "suspect": [],
+   "sanskritScore": 0.864,
+   "ownStems": 3,
+   "neighbourStems": 0
+  },
+  "174:96": {
+   "ref": "2.119.96",
+   "page": 858,
+   "pdfPage": 859,
+   "suspect": [],
+   "sanskritScore": 0.631,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "174:105": {
+   "ref": "2.119.105",
+   "page": 858,
+   "pdfPage": 859,
+   "suspect": [
+    "परिघकी"
+   ],
+   "sanskritScore": 1,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "174:121": {
+   "ref": "2.119.121",
+   "page": 860,
+   "pdfPage": 861,
+   "suspect": [
+    "परिघोंद्वारा"
+   ],
+   "sanskritScore": 0.609,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "174:140": {
+   "ref": "2.119.140",
+   "page": 861,
+   "pdfPage": 862,
+   "suspect": [],
+   "sanskritScore": 0.635,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "174:151": {
+   "ref": "2.119.151",
+   "page": 862,
+   "pdfPage": 863,
+   "suspect": [
+    "अनिस्द्ध",
+    "हाथीकों"
+   ],
+   "sanskritScore": 0.825,
+   "ownStems": 2,
+   "neighbourStems": 0
+  },
+  "174:158": {
+   "ref": "2.119.158",
+   "page": 863,
+   "pdfPage": 864,
+   "suspect": [
+    "युद्धमार्गके",
+    "तोमरों"
+   ],
+   "sanskritScore": 0.797,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "174:164": {
+   "ref": "2.119.164",
+   "page": 863,
+   "pdfPage": 864,
+   "suspect": [
+    "ध्वजदण्डका"
+   ],
+   "sanskritScore": 0.818,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "174:166": {
+   "ref": "2.119.166",
+   "page": 863,
+   "pdfPage": 864,
+   "suspect": [],
+   "sanskritScore": 0.919,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "174:187": {
+   "ref": "2.119.187",
+   "page": 865,
+   "pdfPage": 866,
+   "suspect": [
+    "वधावस्थाको"
+   ],
+   "sanskritScore": 0.912,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "174:188": {
+   "ref": "2.119.188",
+   "page": 865,
+   "pdfPage": 866,
+   "suspect": [],
+   "sanskritScore": 0.909,
+   "ownStems": 2,
+   "neighbourStems": 0
+  }
+ },
+ "ranges": {
+  "63:8-9": {
+   "ref": "2.8.8-9",
+   "verses": [
+    "8",
+    "9"
+   ],
+   "page": 302,
+   "pdfPage": 303,
+   "suspect": [],
+   "minSanskritScore": 0.797,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "87:7-8": {
+   "ref": "2.32.7-8",
+   "verses": [
+    "7",
+    "8"
+   ],
+   "page": 422,
+   "pdfPage": 423,
+   "suspect": [
+    "उद्देजनीय",
+    "उद्बेगमें"
+   ],
+   "minSanskritScore": 0.774,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "87:36-37": {
+   "ref": "2.32.36-37",
+   "verses": [
+    "36",
+    "37"
+   ],
+   "page": 424,
+   "pdfPage": 425,
+   "suspect": [
+    "नीतिसम्पन्",
+    "महेन्द्रतुल्य"
+   ],
+   "minSanskritScore": 0.82,
+   "ownStems": 4,
+   "neighbourStems": 0
+  },
+  "90:36-37": {
+   "ref": "2.35.36-37",
+   "verses": [
+    "36",
+    "37"
+   ],
+   "page": 435,
+   "pdfPage": 436,
+   "suspect": [
+    "ग्वालों",
+    "रूँध"
+   ],
+   "minSanskritScore": 0.721,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "105:26-27": {
+   "ref": "2.50.26-27",
+   "verses": [
+    "26",
+    "27"
+   ],
+   "page": 514,
+   "pdfPage": 515,
+   "suspect": [
+    "क्रथने"
+   ],
+   "minSanskritScore": 0.846,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "105:28-30": {
+   "ref": "2.50.28-30",
+   "verses": [
+    "28",
+    "29",
+    "30"
+   ],
+   "page": 514,
+   "pdfPage": 515,
+   "suspect": [
+    "राजेन्द्रके"
+   ],
+   "minSanskritScore": 0.825,
+   "ownStems": 9,
+   "neighbourStems": 2
+  },
+  "105:37-40": {
+   "ref": "2.50.37-40",
+   "verses": [
+    "37",
+    "38",
+    "39",
+    "40"
+   ],
+   "page": 515,
+   "pdfPage": 516,
+   "suspect": [
+    "नहलानेके"
+   ],
+   "minSanskritScore": 0.686,
+   "ownStems": 5,
+   "neighbourStems": 3
+  },
+  "105:60-61": {
+   "ref": "2.50.60-61",
+   "verses": [
+    "60",
+    "61"
+   ],
+   "page": 517,
+   "pdfPage": 518,
+   "suspect": [
+    "भीष्मकको"
+   ],
+   "minSanskritScore": 0.803,
+   "ownStems": 3,
+   "neighbourStems": 1
+  },
+  "105:65-66": {
+   "ref": "2.50.65-66",
+   "verses": [
+    "65",
+    "66"
+   ],
+   "page": 517,
+   "pdfPage": 518,
+   "suspect": [],
+   "minSanskritScore": 0.797,
+   "ownStems": 7,
+   "neighbourStems": 2
+  },
+  "164:15-16": {
+   "ref": "2.109.15-16",
+   "verses": [
+    "15",
+    "16"
+   ],
+   "page": 806,
+   "pdfPage": 807,
+   "suspect": [
+    "वैर्दू्यपर्वत",
+    "सह्म",
+    "दर्दुर",
+    "क्रौज्र"
+   ],
+   "minSanskritScore": 0.767,
+   "ownStems": 8,
+   "neighbourStems": 0
+  },
+  "164:42-43": {
+   "ref": "2.109.42-43",
+   "verses": [
+    "42",
+    "43"
+   ],
+   "page": 807,
+   "pdfPage": 808,
+   "suspect": [
+    "सूकरतीर्थ",
+    "श्वेतद्वीप",
+    "यज्ञोंकें",
+    "वैकुण्ठकेदार",
+    "सूकरोद्भेदनतीर्थ",
+    "शापमोचनतीर्थ"
+   ],
+   "minSanskritScore": 0.778,
+   "ownStems": 8,
+   "neighbourStems": 1
+  },
+  "174:9-10": {
+   "ref": "2.119.9-10",
+   "verses": [
+    "9",
+    "10"
+   ],
+   "page": 851,
+   "pdfPage": 852,
+   "suspect": [],
+   "minSanskritScore": 0.833,
+   "ownStems": 5,
+   "neighbourStems": 2
+  },
+  "174:48-49": {
+   "ref": "2.119.48-49",
+   "verses": [
+    "48",
+    "49"
+   ],
+   "page": 854,
+   "pdfPage": 855,
+   "suspect": [
+    "चित्रलेखाकी",
+    "संयोगसुख"
+   ],
+   "minSanskritScore": 0.736,
+   "ownStems": 4,
+   "neighbourStems": 1
+  },
+  "174:162-163": {
+   "ref": "2.119.162-163",
+   "verses": [
+    "162",
+    "163"
+   ],
+   "page": 863,
+   "pdfPage": 864,
+   "suspect": [],
+   "minSanskritScore": 0.895,
+   "ownStems": 3,
+   "neighbourStems": 1
+  }
+ }
+}
