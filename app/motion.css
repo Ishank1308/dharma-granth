@@ -589,6 +589,171 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
     }
 }
 
+/* 12. Site chrome ──────────────────────────────────────────────────────
+   The header, its menus, the drawer, the banners and the page change, in CSS instead of a motion
+   library, so no page carries one just for its chrome. Each piece animates in when it mounts and
+   out while it carries data-closing (usePresence.ts keeps it mounted for the exit). Durations
+   are tokens, so reduced motion collapses them; the block at the end also stops them outright. */
+@keyframes chrome-pop-in {
+    from { opacity: 0; transform: translate3d(0, -6px, 0) scale(0.97); }
+}
+@keyframes chrome-pop-out {
+    to { opacity: 0; transform: translate3d(0, -4px, 0) scale(0.97); }
+}
+@keyframes chrome-fade-in {
+    from { opacity: 0; }
+}
+@keyframes chrome-fade-out {
+    to { opacity: 0; }
+}
+@keyframes chrome-sheet-in {
+    from { transform: translate3d(100%, 0, 0); }
+}
+@keyframes chrome-sheet-out {
+    to { transform: translate3d(100%, 0, 0); }
+}
+@keyframes chrome-rise-in {
+    from { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.98); }
+}
+@keyframes chrome-rise-out {
+    to { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.98); }
+}
+@keyframes chrome-icon-in {
+    from { opacity: 0; transform: scale(0.7) rotate(-20deg); }
+}
+.chrome-pop {
+    transform-origin: top right;
+    animation: chrome-pop-in var(--duration-fast) var(--ease-out) backwards;
+}
+.chrome-pop[data-closing] {
+    pointer-events: none;
+    animation: chrome-pop-out var(--duration-instant) var(--ease-in) forwards;
+}
+.chrome-fade {
+    animation: chrome-fade-in var(--duration-standard) var(--ease-out) backwards;
+}
+.chrome-fade[data-closing] {
+    pointer-events: none;
+    animation: chrome-fade-out var(--duration-fast) var(--ease-in) forwards;
+}
+.chrome-sheet {
+    animation: chrome-sheet-in var(--duration-base) var(--motion-spring) backwards;
+}
+.chrome-sheet[data-closing] {
+    pointer-events: none;
+    animation: chrome-sheet-out var(--duration-fast) var(--ease-in) forwards;
+}
+.chrome-rise {
+    animation: chrome-rise-in var(--duration-standard) var(--motion-spring) backwards;
+}
+.chrome-rise[data-closing] {
+    pointer-events: none;
+    animation: chrome-rise-out var(--duration-fast) var(--ease-in) forwards;
+}
+/* An icon that swaps (the theme button): only after a change, never on first paint. */
+.chrome-icon-swap {
+    animation: chrome-icon-in var(--duration-fast) var(--ease-out) backwards;
+}
+/* The logo gives a little under the pointer and the press. */
+.chrome-press {
+    transition: transform var(--duration-standard) var(--motion-spring);
+}
+@media (hover: hover) {
+    .chrome-press:hover { transform: scale(1.05); }
+}
+.chrome-press:active { transform: scale(0.95); }
+
+/* Reading progress: a hairline under the header that fills as the page scrolls, on the page's own
+   scroll timeline. It follows the reader's own scrolling, so it stays under reduced motion; a
+   browser without scroll timelines simply leaves it out. */
+.nav-progress {
+    display: none;
+}
+@supports (animation-timeline: scroll()) {
+    .nav-progress {
+        display: block;
+        transform: scaleX(0);
+        transform-origin: left center;
+        animation: nav-progress linear both;
+        animation-timeline: scroll(root block);
+    }
+}
+@keyframes nav-progress {
+    to { transform: scaleX(1); }
+}
+
+/* Page change: a short shimmer runs across the top, and the new page settles out of a soft blur.
+   Chapter to chapter, a leaf turns away on its spine instead. Never on the first load, which is
+   the exported HTML at rest. The fill mode is `backwards`, so the filter is gone once it ends and
+   never becomes a containing block for the page's fixed bars. */
+@keyframes page-shimmer-fade {
+    0%, 70% { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes page-shimmer-run {
+    from { transform: translate3d(-100%, 0, 0); }
+    to { transform: translate3d(400%, 0, 0); }
+}
+@keyframes page-settle {
+    from { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.985); filter: blur(8px); }
+}
+@keyframes page-turn-forward {
+    from { opacity: 0; transform: translate3d(24px, 0, 0); }
+}
+@keyframes page-turn-back {
+    from { opacity: 0; transform: translate3d(-24px, 0, 0); }
+}
+@keyframes page-leaf-forward {
+    to { opacity: 0; transform: rotateY(-115deg); }
+}
+@keyframes page-leaf-back {
+    to { opacity: 0; transform: rotateY(115deg); }
+}
+.page-shimmer {
+    animation: page-shimmer-fade 1s linear forwards;
+}
+.page-shimmer > span {
+    animation: page-shimmer-run 0.8s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+.page-settle {
+    animation: page-settle var(--duration-deliberate) var(--ease-out) backwards;
+}
+.page-turn-forward {
+    animation: page-turn-forward var(--duration-base) var(--motion-spring) backwards;
+}
+.page-turn-back {
+    animation: page-turn-back var(--duration-base) var(--motion-spring) backwards;
+}
+.page-leaf.is-forward {
+    animation: page-leaf-forward var(--duration-slow) var(--ease-in-out) forwards;
+}
+.page-leaf.is-back {
+    animation: page-leaf-back var(--duration-slow) var(--ease-in-out) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chrome-pop,
+    .chrome-fade,
+    .chrome-sheet,
+    .chrome-rise,
+    .chrome-icon-swap,
+    .page-settle,
+    .page-turn-forward,
+    .page-turn-back {
+        animation: none;
+    }
+    .chrome-press,
+    .chrome-press:hover,
+    .chrome-press:active {
+        transition: none;
+        transform: none;
+    }
+    .page-shimmer,
+    .page-leaf {
+        display: none;
+    }
+}
+
 /* Quiet modes ─────────────────────────────────────────────────────────── */
 :root[data-low-power='true'] .hero-halo-ring,
 :root[data-data-saver='true'] .hero-halo-ring,
