@@ -110,14 +110,14 @@ All in `components.css`, built from named tokens and the scripture cover variabl
 - `.apple-tint-chip` (set `--chip` for its colour)
 - `.apple-stat` (tabular figures for numbers)
 - `.apple-scope` on a page wrapper quiets older components inside it
-- The chapter reader's verse card (`.verse-card.book-verse` and its exported form `.verse-card.vt`) is styled here too: one card per verse in the scripture's own cover colours (`--v1..3`, `--foil` from `lib/scripture-vibes.ts`), with a gradient edge, a luminous shloka panel, a filled verse capsule and a gilt ॥ mark. Chapter and verse reading cards remain still as the reader scrolls. The markup in `VerseCard.tsx` and `VerseText` is unchanged, and both forms share one box so hydration does not shift the page.
+- The chapter reader's verse card (`.verse-card.book-verse` and its exported form `.verse-card.vt`) is styled here too: one card per verse in the scripture's own cover colours (`--v1..3`, `--foil` from `lib/scripture-vibes.ts`), with a gradient edge, a luminous shloka panel, a filled verse capsule and a gilt ॥ mark. Cards rise in and a band of light crosses the shloka as you scroll (view timelines; still under reduced motion and the quiet modes). The markup in `VerseCard.tsx` and `VerseText` is unchanged, and both forms share one box so hydration does not shift the page.
 
 Use `/design-system-preview/` to review the reader card in all four themes and across the five cover materials, including larger Sanskrit text and a keyboard-operable study disclosure. The preview is noindex and does not appear in site navigation.
 `tests/design-system.spec.ts` checks the white verse-pill label against every category palette and the scripture-specific Gita and epic palettes in all four themes.
 
 ### Reader contract
 
-Present the original Sanskrit first, followed by अर्थ and व्याख्या. The reviewed मर्म belongs with the editorial explanation after अर्थ. Label commentary or traditional explanation clearly when it exists; do not present a repeated translation as commentary. Modern context and reflection follow the explanation when available. Preserve the distinction between scripture, sourced commentary, and editorial material. The shared section order and labels live in `lib/sacred-reading-order.ts`.
+Present the original Sanskrit first, followed by अर्थ and व्याख्या. The reviewed मर्म sits right after the Sanskrit, labelled as editorial, not scripture. Label commentary or traditional explanation clearly when it exists; do not present a repeated translation as commentary. Modern context and reflection follow the explanation when available. Preserve the distinction between scripture, sourced commentary, and editorial material. The shared section order and labels live in `lib/sacred-reading-order.ts`.
 
 On phones, keep previous and next verse controls reachable and clearly labeled. Reader controls use at least a 44px touch area, a visible keyboard focus state, and a clear selected state. Keep the verse and meaning readable before offering secondary actions.
 
@@ -166,6 +166,6 @@ Rules:
 3. **Reduced motion is respected everywhere.** Every token duration collapses to 1ms, and each
    looping or scroll-linked effect has its own `prefers-reduced-motion` guard. The lite,
    low-power and data-saver modes turn off loops and tilt too.
-4. **Reading pages stay calm.** Chapter and verse cards do not move or fade as the reader scrolls.
+4. **Reading pages stay calm.** Chapter and verse pages get the shared chrome and the verse card's scroll-linked arrival and light, nothing that loops.
 5. **No new animation libraries** for page chrome. The JS budget is already over, so effects
    are CSS first; `CountUp` is one observer and a `requestAnimationFrame` loop.

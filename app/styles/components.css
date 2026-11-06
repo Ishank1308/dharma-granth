@@ -521,7 +521,9 @@ a.apple-row:active,
     color: var(--vc-main);
 }
 
-/* The home verse can settle into view; chapter and verse reading stays still. */
+/* Life: cards rise into place as they scroll in, the light drifts across the shloka,
+   and under a mouse the card glows in its colour. Cards on the first screen are
+   already placed; reduced motion and the quiet modes keep everything still. */
 @keyframes verse-arrive {
     from {
         opacity: 0.4;
@@ -531,13 +533,14 @@ a.apple-row:active,
 @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: view()) {
         :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
-            .verse-card.today-verse:not(.spatial-focused > *) {
+            :is(.verse-card.book-verse, .verse-card.vt, .verse-card.today-verse, .verse-card.single-verse):not(.spatial-focused > *) {
             animation: verse-arrive linear both;
             animation-timeline: view();
             animation-range: entry 0% entry 55%;
         }
         :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
-            .verse-card.today-verse .verse-folio:not([data-material='palm-leaf'] *)::after {
+            :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse) .verse-folio:not([data-material='palm-leaf'] *)::after,
+            .verse-card.vt .vt-leaf:not([data-material='palm-leaf'] *)::after {
             animation: verse-light linear both;
             animation-timeline: view();
             animation-range: entry 40% exit 60%;

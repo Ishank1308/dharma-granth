@@ -287,8 +287,7 @@ export function ReaderLayers({
   // the explanation, the English commentary and the traditional bhashya together;
   // Modern Context carries the lesson and the research note; Reflection carries
   // only the चिंतन प्रश्न. Gates are unchanged from the old Vigyan branch.
-  const showMarma = Boolean(insight?.marma && settings.showCommentary && !settings.liteMode);
-  const hasVyakhya = settings.showCommentary && (Boolean(verse.explanation) || Boolean(verse.commentary) || showTradition || showMarma);
+  const hasVyakhya = settings.showCommentary && (Boolean(verse.explanation) || Boolean(verse.commentary) || showTradition);
   const modernParsed = verse.reflection ? parseModernContext(verse.reflection) : null;
   const showModernLesson = Boolean(!settings.liteMode && verse.reflection && modernParsed
     && (!modernParsed.hasStructuredFormat || modernParsed.contextText || modernParsed.applicationText));
@@ -398,6 +397,22 @@ export function ReaderLayers({
           </div>
         )}
       </Layer>
+
+      {/* मर्म: the reviewed one-line core shift, when this verse has one. It sits after the
+          Sanskrit so the reader meets scripture before any editorial line. */}
+      {insight?.marma && settings.showCommentary && !settings.liteMode && (
+        <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
+          <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
+            <span lang="hi">मर्म</span>
+            <span aria-hidden="true">·</span>
+            <span lang="en">The Core Shift</span>
+            <span className="normal-case tracking-normal text-dharma-muted">· Editorial, not scripture</span>
+          </figcaption>
+          <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text sm:text-xl">
+            {insight.marma}
+          </blockquote>
+        </figure>
+      )}
 
       {/* Word by word: a reading aid for the shloka, kept apart from the व्याख्या and
           hidden by default. In the HTML either way, so crawlers and no-JS readers get it. */}
@@ -588,23 +603,10 @@ export function ReaderLayers({
             labelHi: SACRED_SECTION_LABEL.vyakhya.hi,
             labelEn: SACRED_SECTION_LABEL.vyakhya.en,
             icon: Lightbulb,
-            hint: 'श्लोक का विवेचन',
+            hint: 'श्लोक का सरल हिन्दी विवेचन',
             defaultOpen: true,
             content: (
               <div className="space-y-4">
-                {showMarma && insight?.marma && (
-                  <figure data-testid="reader-marma" className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
-                    <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
-                      <span lang="hi">मर्म</span>
-                      <span aria-hidden="true">·</span>
-                      <span lang="en">The Core Shift</span>
-                      <span className="normal-case tracking-normal text-dharma-muted">· Editorial, not scripture</span>
-                    </figcaption>
-                    <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text sm:text-xl">
-                      {insight.marma}
-                    </blockquote>
-                  </figure>
-                )}
                 {verse.explanation && (
                   <Layer
                     id="layer-explanation"

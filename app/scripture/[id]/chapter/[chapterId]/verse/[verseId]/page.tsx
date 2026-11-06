@@ -473,6 +473,7 @@ export default async function VersePage(props: PageProps) {
           (layer-reflection inside ReaderLayers above) without interrupting
           reading. Server HTML only.
         */}
+        <VerseAnswers scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} />
         {/*
           Study more: everything past the verse, its meaning, vyakhya and modern
           context sits in one native disclosure, so the page reads verse first
@@ -485,12 +486,11 @@ export default async function VersePage(props: PageProps) {
               <span className="block text-base font-semibold text-dharma-text">
                 <span>Study more</span> <span lang="hi" className="font-devanagari font-normal text-dharma-muted">गहन अध्ययन</span>
               </span>
-              <span className="mt-0.5 block text-sm text-dharma-muted">Questions, lessons, examples, related verses and source notes</span>
+              <span className="mt-0.5 block text-sm text-dharma-muted">Lesson, examples, diagrams, related verses and source notes</span>
             </span>
             <span aria-hidden="true" className="text-xl text-dharma-muted transition-transform group-open:rotate-45">+</span>
           </summary>
           <div className="px-3 pb-5 sm:px-5">
-          <VerseAnswers scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} />
           {pedagogical && (
             <UnderstandPanel
               data={pedagogical}
