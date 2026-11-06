@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Wifi, WifiOff } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { usePresence } from '@/app/components/motion/usePresence';
 import { useConnectivity } from '@/lib/useConnectivity';
 
 export function OfflineIndicator() {
@@ -20,18 +20,18 @@ export function OfflineIndicator() {
   }, [isOnline]);
 
   const isOffline = isOnline === false;
+  const offline = usePresence(isOffline);
+  const online = usePresence(showReconnected);
 
   return (
-    <AnimatePresence>
-      {isOffline && (
-        <motion.div
+    <>
+      {offline.mounted && (
+        <div
           key="offline-indicator"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 50, opacity: 0 }}
+          data-closing={offline.closing || undefined}
           role="status"
           aria-live="polite"
-          className="fixed bottom-20 left-1/2 z-40 -translate-x-1/2 rounded-full border border-amber-500/40 bg-stone-900/95 px-4 py-2 text-xs font-semibold text-amber-200 shadow-xl backdrop-blur-md dark:bg-stone-950/95 sm:bottom-6"
+          className="chrome-rise fixed inset-x-0 bottom-20 z-40 mx-auto w-fit rounded-full border border-amber-500/40 bg-stone-900/95 px-4 py-2 text-xs font-semibold text-amber-200 shadow-xl backdrop-blur-md dark:bg-stone-950/95 sm:bottom-6"
         >
           <div className="flex items-center gap-2">
             <WifiOff className="h-3.5 w-3.5 text-amber-400" aria-hidden="true" />
@@ -40,18 +40,16 @@ export function OfflineIndicator() {
               (Offline Mode)
             </span>
           </div>
-        </motion.div>
+        </div>
       )}
 
-      {showReconnected && (
-        <motion.div
+      {online.mounted && (
+        <div
           key="online-indicator"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 50, opacity: 0 }}
+          data-closing={online.closing || undefined}
           role="status"
           aria-live="polite"
-          className="fixed bottom-20 left-1/2 z-40 -translate-x-1/2 rounded-full border border-emerald-500/40 bg-stone-900/95 px-4 py-2 text-xs font-semibold text-emerald-300 shadow-xl backdrop-blur-md dark:bg-stone-950/95 sm:bottom-6"
+          className="chrome-rise fixed inset-x-0 bottom-20 z-40 mx-auto w-fit rounded-full border border-emerald-500/40 bg-stone-900/95 px-4 py-2 text-xs font-semibold text-emerald-300 shadow-xl backdrop-blur-md dark:bg-stone-950/95 sm:bottom-6"
         >
           <div className="flex items-center gap-2">
             <Wifi className="h-3.5 w-3.5 text-emerald-400" aria-hidden="true" />
@@ -60,8 +58,8 @@ export function OfflineIndicator() {
               (Connected)
             </span>
           </div>
-        </motion.div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

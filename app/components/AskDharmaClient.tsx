@@ -53,7 +53,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
   return (
     <div className="grid gap-8">
       <form
-        className="grid gap-4 rounded-3xl border border-dharma-border bg-dharma-card p-5 shadow-lg sm:p-7"
+        className="apple-card grid gap-4 p-5 sm:p-7"
         onSubmit={(event) => {
           event.preventDefault();
           if (activeTab === 'muse') {
@@ -63,68 +63,35 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
           }
         }}
       >
-        {/* Mode Selector Tabs */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-dharma-border pb-4">
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setActiveTab('library')}
-              className={`rounded-2xl px-4 py-2 text-xs font-bold transition ${
-                activeTab === 'library'
-                  ? 'bg-dharma-maroon text-white shadow-md'
-                  : 'border border-dharma-border bg-dharma-bg/60 text-dharma-text-secondary hover:text-dharma-text'
-              }`}
-            >
-              📚 पुस्तकालय संग्रह (Canonical)
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('muse')}
-              className={`flex items-center gap-1.5 rounded-2xl px-4 py-2 text-xs font-bold transition ${
-                activeTab === 'muse'
-                  ? 'bg-gradient-to-r from-amber-500 to-amber-400 text-stone-950 shadow-md font-bold'
-                  : 'border border-dharma-border bg-dharma-bg/60 text-dharma-text-secondary hover:text-amber-600'
-              }`}
-            >
-              <Sparkles className="h-3.5 w-3.5 text-amber-500" />
-              <span>✨ {STUDY_HELPER_NAME} ({STUDY_HELPER_NAME_HI})</span>
-            </button>
-          </div>
-          <span className="text-2xs text-dharma-text-secondary font-mono">
-            {activeTab === 'muse' ? STUDY_HELPER_NAME : 'Offline Verified Verses'}
-          </span>
+        {/* Mode selector: a segmented control */}
+        <div className="apple-segmented justify-self-start" role="group" aria-label="Where to look">
+          <button type="button" aria-pressed={activeTab === 'library'} onClick={() => setActiveTab('library')}>
+            <span>Library</span> <span lang="hi" className="font-devanagari">पुस्तकालय</span>
+          </button>
+          <button type="button" aria-pressed={activeTab === 'muse'} onClick={() => setActiveTab('muse')} className="inline-flex items-center gap-1.5">
+            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>{STUDY_HELPER_NAME}</span> <span lang="hi" className="font-devanagari">{STUDY_HELPER_NAME_HI}</span>
+          </button>
         </div>
 
-        <label htmlFor="ask-dharma-q" className="font-semibold text-base" lang="hi">
-          {activeTab === 'muse' ? 'दार्शनिक जिज्ञासा अथवा परिस्थिति' : 'पुस्तकालय में खोजें'}
+        <label htmlFor="ask-dharma-q" className="text-subhead font-semibold" lang="hi">
+          {activeTab === 'muse' ? 'दार्शनिक जिज्ञासा अथवा परिस्थिति' : 'अपना प्रश्न लिखें'}
         </label>
-        <input
-          id="ask-dharma-q"
-          value={queryInput}
-          onChange={(event) => setQueryInput(event.target.value)}
-          placeholder={
-            activeTab === 'muse'
-              ? 'पूछें: अति-चिंतन, भविष्य का भय, कार्यक्षेत्र में बर्नआउट, स्वधर्म की पहचान...'
-              : 'उदाहरण: क्रोध कैसे संभालें?'
-          }
-          lang="hi"
-          className="min-h-12 w-full rounded-2xl border border-dharma-border bg-dharma-bg px-4 text-base text-dharma-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dharma-maroon"
-        />
-
-        <div className="flex flex-wrap gap-2.5">
-          <button
-            type="submit"
-            className="min-h-11 rounded-2xl bg-dharma-maroon px-5 font-semibold text-white shadow-sm hover:opacity-95 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dharma-maroon text-sm"
-          >
-            पुस्तकालय में देखें
-          </button>
-          <button
-            type="button"
-            onClick={() => askMuse()}
-            className="flex items-center gap-2 min-h-11 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-400 px-5 font-bold text-stone-950 shadow-md hover:brightness-105 active:scale-95 transition text-sm"
-          >
-            <Sparkles className="h-4 w-4" />
-            <span>Ask the study helper</span>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <input
+            id="ask-dharma-q"
+            value={queryInput}
+            onChange={(event) => setQueryInput(event.target.value)}
+            placeholder={
+              activeTab === 'muse'
+                ? 'पूछें: अति-चिंतन, भविष्य का भय, कार्यक्षेत्र में बर्नआउट, स्वधर्म की पहचान...'
+                : 'उदाहरण: क्रोध कैसे संभालें?'
+            }
+            lang="hi"
+            className="apple-field"
+          />
+          <button type="submit" className="apple-pill shrink-0">
+            {activeTab === 'muse' ? <span>Ask the study helper</span> : <span lang="hi">उत्तर देखें</span>}
           </button>
         </div>
 
@@ -140,7 +107,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
                   ask(example.hi);
                 }
               }}
-              className="min-h-10 rounded-full border border-dharma-border bg-dharma-bg/40 px-3.5 text-left text-xs font-semibold hover:border-amber-500/50 hover:bg-amber-500/5 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dharma-maroon"
+              className="min-h-10 rounded-full bg-dharma-text/[0.06] px-3.5 text-left text-[14px] text-dharma-text transition hover:bg-dharma-text/[0.1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dharma-saffron"
             >
               <span lang="hi">{example.hi}</span>
             </button>
@@ -150,7 +117,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
 
       {/* Muse Spark View */}
       {activeTab === 'muse' && (
-        <div className="rounded-3xl border border-dharma-border bg-dharma-card p-5 sm:p-8 shadow-lg">
+        <div className="apple-card p-5 sm:p-8">
           {museResponse || museLoading || museError ? (
             <MuseAgentResponseView
               query={queryInput}
@@ -161,11 +128,11 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             />
           ) : (
             <div className="space-y-6 py-4 text-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
-                <Sparkles className="h-4 w-4 text-amber-500" />
+              <div className="inline-flex items-center gap-2 text-footnote font-semibold text-dharma-saffron">
+                <Sparkles className="h-4 w-4" aria-hidden="true" />
                 <span>{STUDY_HELPER_NAME} · {STUDY_HELPER_NAME_HI}</span>
               </div>
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
+              <h3 className="text-2xl font-semibold tracking-[-0.02em] text-dharma-text sm:text-3xl">
                 जीवन के जटिल द्वंद्वों पर गहन दार्शनिक चिंतन
               </h3>
               <p className="max-w-2xl mx-auto text-sm sm:text-base text-dharma-text-secondary leading-relaxed font-devanagari">
@@ -180,15 +147,15 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
         <section className="grid gap-4" aria-labelledby="granth-matches">
           <Link
             href={`/ask/${matches[0].entry.slug}/`}
-            className="grid gap-2 rounded-3xl border-2 border-saffron-500/50 bg-dharma-card p-5 shadow-lg hover:border-saffron-500 sm:p-7"
+            className="apple-card grid gap-2 p-5 transition hover:-translate-y-0.5 sm:p-7"
           >
-            <span id="granth-matches" className="text-xs font-bold uppercase tracking-widest text-saffron-700">
+            <span id="granth-matches" className="text-footnote font-semibold text-dharma-saffron">
               <span lang="hi">आपका उत्तर</span> <span>Your answer</span>
             </span>
-            <span lang="hi" className="font-serif font-devanagari text-2xl font-bold">{matches[0].entry.questionHi}</span>
+            <span lang="hi" className="font-devanagari text-2xl font-semibold">{matches[0].entry.questionHi}</span>
             <span className="text-dharma-text-secondary">{matches[0].entry.questionEn}</span>
             <span lang="hi" className="font-devanagari text-lg leading-relaxed">{matches[0].entry.sarHi}</span>
-            <span className="mt-1 inline-flex items-center gap-1.5 font-semibold text-saffron-700">
+            <span className="mt-1 inline-flex items-center gap-1.5 text-dharma-saffron">
               <span lang="hi">पूरा उत्तर पढ़ें</span> <span>Read the answer</span> <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </span>
           </Link>
@@ -198,7 +165,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
               {matches.slice(1, 3).map(({ entry }, i) => (
                 <span key={entry.slug}>
                   {i > 0 && ' · '}
-                  <Link href={`/ask/${entry.slug}/`} lang="hi" className="font-devanagari font-semibold text-saffron-700 underline underline-offset-2">
+                  <Link href={`/ask/${entry.slug}/`} lang="hi" className="font-devanagari text-dharma-saffron hover:underline">
                     {entry.questionHi}
                   </Link>
                 </span>
@@ -209,17 +176,17 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
       )}
 
       {activeTab === 'library' && matches && matches.length === 0 && !answer && (
-        <p className="rounded-3xl border border-dharma-border bg-dharma-card p-5 text-sm text-dharma-text-secondary">
+        <p className="apple-card p-5 text-subhead text-dharma-text-secondary">
           <span lang="hi">इस प्रश्न का उत्तर‑पृष्ठ अभी नहीं बना। नीचे की सूची में मिलता‑जुलता प्रश्न देखें।</span>{' '}
           <span>No answer page for this yet. Look for a close question in the list below.</span>
         </p>
       )}
 
       {answer && !(matches && matches.length > 0) && (
-        <article className="grid gap-6 rounded-3xl border border-dharma-border bg-dharma-card p-5 sm:p-8" lang="hi">
+        <article className="apple-card grid gap-6 p-5 sm:p-8" lang="hi">
           <header className="grid gap-2">
             <p className="text-sm text-dharma-text-secondary">{asked}</p>
-            <h2 className="font-serif text-2xl font-bold sm:text-3xl">{answer.titleHi}</h2>
+            <h2 className="text-2xl font-semibold sm:text-3xl">{answer.titleHi}</h2>
             {answer.titleEn !== answer.titleHi && <p className="text-dharma-text-secondary">{answer.titleEn}</p>}
             <p className="flex items-start gap-2 text-sm text-dharma-text-secondary">
               <Shield className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
@@ -231,13 +198,13 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             <section className="grid gap-4">
               <h3 className="flex items-center gap-2 font-bold"><BookOpen className="h-4 w-4" aria-hidden="true" /> संबंधित श्लोक</h3>
               {answer.verses.map((verse) => (
-                <div key={verse.href + verse.refEn} className="grid gap-2 rounded-2xl border border-dharma-border p-4">
+                <div key={verse.href + verse.refEn} className="grid gap-2 rounded-group bg-dharma-text/[0.04] p-4">
                   <p className="text-sm font-semibold">{verse.refHi}</p>
                   <p lang="sa" className="whitespace-pre-line text-lg leading-relaxed">{verse.sanskrit}</p>
                   <p>{verse.hindi}</p>
                   <p className="text-sm text-dharma-text-secondary" lang="en">{verse.english}</p>
                   {verse.noteHi && <p className="text-sm">{verse.noteHi}</p>}
-                  <Link href={verse.href} className="inline-flex min-h-11 items-center font-semibold text-dharma-maroon underline underline-offset-4">
+                  <Link href={verse.href} className="inline-flex min-h-11 items-center font-semibold text-dharma-saffron hover:underline">
                     श्लोक पृष्ठ खोलें
                   </Link>
                 </div>
@@ -275,7 +242,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
               <ul className="mt-1 grid gap-1">
                 {answer.related.map((link) => (
                   <li key={link.href + link.labelEn}>
-                    <Link href={link.href} className="inline-flex min-h-11 items-center font-semibold text-dharma-maroon underline underline-offset-4">
+                    <Link href={link.href} className="inline-flex min-h-11 items-center font-semibold text-dharma-saffron hover:underline">
                       {link.labelHi}
                     </Link>
                   </li>
@@ -284,15 +251,15 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             </section>
           )}
           {/* Consult Muse Spark CTA */}
-          <div className="rounded-2xl border border-amber-500/30 bg-gradient-to-r from-amber-500/15 via-dharma-bg/60 to-transparent p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+          <div className="flex flex-col items-start justify-between gap-4 rounded-group bg-dharma-text/[0.04] p-5 sm:flex-row sm:items-center">
             <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-400 text-stone-950 shadow-md">
+              <span className="apple-tint-chip h-10 w-10" aria-hidden="true">
                 <Sparkles className="h-5 w-5" />
               </span>
               <div>
                 <h4 className="font-bold text-sm text-dharma-text flex items-center gap-2">
                   इस विषय पर गहन व्यक्तिगत चिंतन चाहिए?
-                  <span className="text-3xs font-mono uppercase bg-amber-500/20 text-amber-600 dark:text-amber-300 border border-amber-500/30 px-1.5 py-0.5 rounded">
+                  <span className="rounded-full bg-dharma-text/[0.08] px-2 py-0.5 text-[11px] font-normal text-dharma-muted">
                     AI helper
                   </span>
                 </h4>
@@ -304,7 +271,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             <button
               type="button"
               onClick={() => askMuse(queryInput || answer.titleHi)}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 px-4 py-2.5 text-xs font-bold text-stone-950 shadow-md hover:brightness-105 active:scale-95 transition shrink-0"
+              className="apple-pill shrink-0"
             >
               <Sparkles className="h-3.5 w-3.5" />
               <span>Ask the study helper</span>

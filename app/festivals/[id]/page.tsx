@@ -165,7 +165,7 @@ export default async function FestivalDetailPage(props: PageProps) {
         <div className="absolute inset-0 mandala-bg opacity-15 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-dharma-bg via-transparent to-transparent pointer-events-none" />
 
-        <div className="relative mx-auto max-w-5xl px-5 sm:px-6">
+        <div className="relative mx-auto max-w-5xl px-gutter">
           <Link
             href="/festivals/"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white text-xs sm:text-sm font-semibold mb-6 transition"
@@ -232,7 +232,7 @@ export default async function FestivalDetailPage(props: PageProps) {
       </section>
 
       {/* Main Content Layout */}
-      <section className="relative mx-auto max-w-5xl px-5 sm:px-6 -mt-6 sm:-mt-8 space-y-8 z-10">
+      <section className="relative mx-auto max-w-5xl px-gutter -mt-6 sm:-mt-8 space-y-8 z-10">
         {/* 1. Meaning & Core Philosophy */}
         <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 shadow-sm space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">

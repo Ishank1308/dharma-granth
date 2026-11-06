@@ -309,7 +309,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   const shareSummary = (chapter.summary ?? '').replace(/\s+/g, ' ').trim();
   const shareLines = [shareSummary.length > 180 ? `${shareSummary.slice(0, 179).trimEnd()}…` : shareSummary];
   const quietAction =
-    'inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-4 text-[13px] text-dharma-text transition hover:bg-dharma-text/[0.1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dharma-saffron';
+    'inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-4 text-footnote text-dharma-text transition hover:bg-dharma-text/[0.1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dharma-saffron';
 
   const vibe = scriptureVibe(meta.id, meta.category);
 
@@ -370,7 +370,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             </>
           )}
         </p>
-        <h1 className="mt-2 text-[34px] font-semibold leading-[1.08] tracking-[-0.03em] text-dharma-text sm:text-5xl">{chapter.title}</h1>
+        <h1 className="mt-2 text-large-title font-semibold text-dharma-text">{chapter.title}</h1>
         {chapter.titleSanskrit && (
           <p lang="sa" className="mt-2 font-devanagari text-xl text-dharma-muted sm:text-2xl">{chapter.titleSanskrit}</p>
         )}
@@ -386,7 +386,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
               totalVerses={chapter.verseCount}
             />
           ) : (
-            <span lang="hi" className="text-[13px] text-dharma-muted">श्लोक पाठ अभी प्रकाशित नहीं है</span>
+            <span lang="hi" className="text-footnote text-dharma-muted">श्लोक पाठ अभी प्रकाशित नहीं है</span>
           )}
           <ShareButton title={`${shareHeading} · Dharma Granth`} text={shareLines[0]} url={shareUrl} className={quietAction}>
             Share
@@ -398,7 +398,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         <div className="relative">
         {(!part || part.part === 1) && hasChapterContext && (
           <details className="group mb-8">
-            <summary className="flex min-h-[44px] w-fit cursor-pointer list-none items-center gap-1.5 rounded-full text-[15px] text-dharma-saffron transition hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 [&::-webkit-details-marker]:hidden">
+            <summary className="flex min-h-[44px] w-fit cursor-pointer list-none items-center gap-1.5 rounded-full text-subhead text-dharma-saffron transition hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 [&::-webkit-details-marker]:hidden">
               <span>About this chapter <span lang="hi" className="font-devanagari">· अध्याय परिचय</span></span>
               <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" aria-hidden="true" />
             </summary>

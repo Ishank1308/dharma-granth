@@ -302,7 +302,7 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
       {/* ── Sources and verification: provenance footer, quiet by design ── */}
       <section aria-labelledby={`${id}-sources`} className="sacred-section rounded-2xl border border-dharma-border/70 bg-dharma-card/60 p-4 sm:p-5">
         <h3 id={`${id}-sources`} className="mb-2.5 flex flex-wrap items-baseline gap-x-2">
-          <span lang="hi" className="font-devanagari text-[15px] font-bold text-dharma-text">स्रोत और सत्यापन</span>
+          <span lang="hi" className="font-devanagari text-subhead font-bold text-dharma-text">स्रोत और सत्यापन</span>
           <span lang="en" className="text-[11px] font-semibold uppercase tracking-[0.14em] text-dharma-muted">Sources</span>
         </h3>
         <p className="flex flex-wrap items-center gap-2">
