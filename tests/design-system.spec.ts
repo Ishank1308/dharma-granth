@@ -37,7 +37,7 @@ for (const theme of THEMES) {
 test('home stats and sayings are in the exported HTML', async ({ request }) => {
   const html = await (await request.get('/')).text();
   // The library's numbers ship at their true values, not at zero.
-  const stats = html.match(/<dd[^>]*>.*?<\/dd>/gs) ?? [];
+  const stats = html.match(/<dd[^>]*>[\s\S]*?<\/dd>/g) ?? [];
   expect(stats.length).toBeGreaterThanOrEqual(4);
   expect(stats[0]).not.toMatch(/>0</);
   // The wisdom band: every saying is linked, and the loop's second copy is hidden.
