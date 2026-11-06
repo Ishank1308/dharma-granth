@@ -340,12 +340,45 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
     ],
   };
 
+  const chapterFaq = [
+    chapter.summary && {
+      '@type': 'Question',
+      name: `${meta.title} अध्याय ${chapter.id}${chapter.title ? ` (${chapter.title})` : ''} का मुख्य विषय क्या है?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: chapter.summary,
+      },
+    },
+    chapter.verseCount > 0 && {
+      '@type': 'Question',
+      name: `How many verses are in ${meta.title} Chapter ${chapter.id}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `There are ${chapter.verseCount} verses in ${meta.title} Chapter ${chapter.id}${chapter.title ? ` (${chapter.title})` : ''}.`,
+      },
+    },
+    chapter.summary && {
+      '@type': 'Question',
+      name: `What is the summary of ${meta.title} Chapter ${chapter.id}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: chapter.summary,
+      },
+    },
+  ].filter(Boolean);
+
+  const faqJsonLd = chapterFaq.length > 0 ? {
+    '@type': 'FAQPage',
+    '@id': `${shareUrl}#faq`,
+    mainEntity: chapterFaq,
+  } : undefined;
+
   return (
     <main data-chapter-reading data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} className="min-h-screen bg-dharma-bg">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(chapterJsonLd, breadcrumbJsonLd)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(chapterJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : []))) }}
       />
       {/* A book's chapter opening, as an Apple large title: the chapter, its Sanskrit name and two quiet actions,
           nothing else between the reader and the first verse. The summary lives in "About this chapter" below. */}
