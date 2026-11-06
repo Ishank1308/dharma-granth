@@ -137,10 +137,15 @@ export const metadata: Metadata = {
   },
   // Google Search Console ownership proof for https://dharmagranth.dev/
   // (URL-prefix property). Env var overrides for other environments.
+  // Two tokens: the original one, and the one for the Google account that
+  // owns the dharmagranth.in property (needed for Change of address).
   verification: {
-    google:
-      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
-      "YWMSMR_2e_0e1w2nqm5_sMRIgnkVNgF-6IRNRRdyYS4",
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      : [
+          "YWMSMR_2e_0e1w2nqm5_sMRIgnkVNgF-6IRNRRdyYS4",
+          "t9brLjsi00E56cVIRni03_3yypFjqsJ5NRA0WQBLhRk",
+        ],
   },
   category: "religion",
 };
