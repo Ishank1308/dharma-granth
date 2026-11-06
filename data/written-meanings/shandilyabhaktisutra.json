@@ -1,0 +1,398 @@
+{
+  "note": "Hindi and English meanings written fresh from the Sanskrit sutras for this site, for the sutras that had none. No modern translation was copied. Applied by scripts/apply-written-meanings.ts.",
+  "keyFormat": "chapter:sutra",
+  "meanings": {
+    "1:3": {
+      "hindi": "क्योंकि (शास्त्र) उनमें स्थित पुरुष के लिए अमृतत्व (मोक्ष) का उपदेश देते हैं।",
+      "translation": "For scripture teaches that one established in the Lord attains immortality."
+    },
+    "1:4": {
+      "hindi": "यदि कहो कि (अमृतत्व का साधन) ज्ञान है, तो ऐसा नहीं; क्योंकि (ईश्वर से) द्वेष करने वाले को भी ज्ञान होता है, पर वह उनमें स्थित नहीं होता।",
+      "translation": "If you say knowledge is the means, no: even one who hates the Lord may know about the Lord, yet is not established in the Lord."
+    },
+    "1:5": {
+      "hindi": "और उस (भक्ति) से (ज्ञान का) क्षय भी (देखा जाता है)।",
+      "translation": "And knowledge itself fades away once bhakti takes its place."
+    },
+    "1:6": {
+      "hindi": "द्वेष के विपरीत भाव होने से और (श्रुति के) 'रस' शब्द से (यह सिद्ध है कि भक्ति) राग (अनुराग) है।",
+      "translation": "Bhakti is love, since it is the opposite of hatred and since scripture calls the Lord 'rasa', sweetness itself."
+    },
+    "1:7": {
+      "hindi": "वह क्रिया नहीं है, क्योंकि ज्ञान के समान उसे किसी प्रयत्न की अपेक्षा नहीं है।",
+      "translation": "It is not an action, for like knowledge it does not depend on effort."
+    },
+    "1:8": {
+      "hindi": "इसी कारण उसका फल अनन्त है।",
+      "translation": "That is why its fruit is endless."
+    },
+    "1:9": {
+      "hindi": "उससे युक्त (भक्त) के लिए 'प्रपत्ति' (शरणागति) शब्द आता है, इसलिए भी (भक्ति) ज्ञान नहीं है, जैसे दूसरे (किसी की) शरण में जाना ज्ञान नहीं होता।",
+      "translation": "Scripture speaks of the devotee as one who takes refuge, so bhakti is not mere knowledge, just as taking refuge in anyone else is not knowledge."
+    },
+    "1:10": {
+      "hindi": "वह (भक्ति) मुख्य है, क्योंकि दूसरे (साधन) उसकी अपेक्षा रखते हैं।",
+      "translation": "Bhakti is primary, because the other means depend on it."
+    },
+    "1:11": {
+      "hindi": "और प्रकरण (प्रसंग) से भी (यही सिद्ध है)।",
+      "translation": "The context of the scriptures shows the same."
+    },
+    "1:12": {
+      "hindi": "यदि कहो कि (भक्ति) दर्शन (ज्ञान) का फल है, तो ऐसा नहीं, क्योंकि उस (ज्ञान) से (भक्ति में) व्यवधान आता है।",
+      "translation": "If you say bhakti is merely the result of knowing, no: knowledge stands in between as a separate stage."
+    },
+    "1:13": {
+      "hindi": "और (ऐसा) देखा भी गया है।",
+      "translation": "And this is seen in experience."
+    },
+    "1:14": {
+      "hindi": "इसी कारण, उस (ज्ञान) के अभाव में भी, व्रज की गोपियों को (भक्ति से ही मुक्ति मिली)।",
+      "translation": "That is why the cowherd women of Vraja attained it without that knowledge."
+    },
+    "1:15": {
+      "hindi": "यदि कहो कि 'भक्ति से (भगवान को) जानता है' (ऐसा गीता में कहा है), तो ऐसा नहीं; वहाँ ज्ञान भक्ति का सहायक मात्र है।",
+      "translation": "If you say 'by bhakti one knows the Lord', that does not make bhakti knowledge; knowledge there only serves bhakti."
+    },
+    "1:16": {
+      "hindi": "और यह पहले भी कहा जा चुका है।",
+      "translation": "And this has already been said."
+    },
+    "1:17": {
+      "hindi": "इसी से (ज्ञान और भक्ति में) विकल्प (कि दोनों में से कोई भी चलेगा) का भी खण्डन हो गया।",
+      "translation": "This also answers the view that either one would do."
+    },
+    "1:18": {
+      "hindi": "(भक्ति शब्द का प्रयोग) दूसरे (देवताओं के प्रति) भी साहचर्य से होता है, (जैसे) देव-भक्ति।",
+      "translation": "The word bhakti is used for other deities too, by association."
+    },
+    "1:19": {
+      "hindi": "योग तो दोनों (ज्ञान और भक्ति) के लिए अपेक्षित है, प्रयाज (यज्ञ के सहायक कर्म) के समान।",
+      "translation": "Yoga supports both knowledge and bhakti, as preliminary rites support the main sacrifice."
+    },
+    "1:20": {
+      "hindi": "गौणी (साधन-रूप) भक्ति से समाधि की सिद्धि होती है।",
+      "translation": "Through secondary bhakti, samadhi is reached."
+    },
+    "1:21": {
+      "hindi": "यदि कहो कि राग होने के कारण यह त्याज्य है, तो नहीं; क्योंकि इसका आश्रय सर्वोत्तम (ईश्वर) है, जैसे सत्संग।",
+      "translation": "If you say it should be given up because it is attachment, no: its object is the highest, as with the company of the holy."
+    },
+    "1:22": {
+      "hindi": "कर्मी, ज्ञानी और योगी से उस (भक्त) की श्रेष्ठता है, क्योंकि (गीता में) 'अधिक' शब्द आया है।",
+      "translation": "The devotee stands above the man of action, the man of knowledge and the yogi, for scripture uses the word 'higher'."
+    },
+    "1:23": {
+      "hindi": "प्रश्न और निरूपण (गीता में अर्जुन के प्रश्न और भगवान के उत्तर) से भी इसकी श्रेष्ठता सिद्ध होती है।",
+      "translation": "Its greatness is proved by the question asked and the answer given."
+    },
+    "1:24": {
+      "hindi": "(भक्ति) श्रद्धा नहीं है, क्योंकि श्रद्धा तो (सब कर्मों में) साधारण है।",
+      "translation": "Bhakti is not mere faith, for faith is common to all practices."
+    },
+    "1:25": {
+      "hindi": "और श्रद्धा पर (भक्ति को) टिकाने से और तत्त्व पर टिकाने से (तर्क की) अनवस्था होगी।",
+      "translation": "If bhakti were faith, there would be an endless regress, both in faith and in its object."
+    },
+    "1:26": {
+      "hindi": "ब्रह्मकाण्ड (उपनिषद्) भी भक्ति में (लगाने के लिए) है, उसकी आज्ञा देने के लिए, क्योंकि (दोनों का विषय) समान है।",
+      "translation": "The Upanishadic part of the Veda also leads to bhakti, since both share the same object."
+    },
+    "2:27": {
+      "hindi": "चित्त के पूर्णतः शुद्ध होने तक बुद्धि (ज्ञान) के हेतु प्रवृत्ति (साधना) होनी चाहिए, जैसे (धान को) तब तक कूटा जाता है (जब तक भूसी न निकल जाए)।",
+      "translation": "Practice aimed at understanding should continue until the mind is fully purified, as grain is pounded until the husk is gone."
+    },
+    "2:28": {
+      "hindi": "और उसके अंगों की (साधना भी तब तक होनी चाहिए)।",
+      "translation": "And so too with its supporting practices."
+    },
+    "2:29": {
+      "hindi": "कश्यप के मत में वह (भक्ति) ईश्वर के ऐश्वर्य (प्रभुता) में लगी है, क्योंकि ईश्वर (जीव से) परे हैं।",
+      "translation": "Kashyapa holds that bhakti is directed to the Lord's majesty, since the Lord is beyond the soul."
+    },
+    "2:30": {
+      "hindi": "बादरायण के मत में वह एकमात्र आत्मा में लगी है।",
+      "translation": "Badarayana holds that it is directed to the one Self."
+    },
+    "2:31": {
+      "hindi": "शाण्डिल्य के मत में वह दोनों (ऐश्वर्य और आत्मा) में लगी है, शब्द (शास्त्र) और युक्ति दोनों से।",
+      "translation": "Shandilya holds that it is directed to both, on the strength of scripture and reason."
+    },
+    "2:32": {
+      "hindi": "यदि कहो कि (दोनों में) भेद होने से यह असिद्ध है, तो नहीं; पहचान के समान (एक ही में) विशेषता होती है।",
+      "translation": "If you say this cannot be, since the two differ, no: one thing can have distinct aspects, as in recognising a person."
+    },
+    "2:33": {
+      "hindi": "और परम (ईश्वर) क्लेशों से युक्त नहीं हो सकते, क्योंकि (उनमें) अनन्त विशेषता है।",
+      "translation": "The Supreme cannot be touched by affliction, being distinct in infinite ways."
+    },
+    "2:34": {
+      "hindi": "यदि कहो कि ऐश्वर्य भी वैसा ही (क्लेशयुक्त) है, तो नहीं; क्योंकि वह (उनका) स्वभाव है।",
+      "translation": "If you say majesty too would bring affliction, no: it is the Lord's own nature."
+    },
+    "2:35": {
+      "hindi": "परम ऐश्वर्य का निषेध नहीं है, क्योंकि वह उन्हीं का भाव है; दूसरों का ऐसा नहीं।",
+      "translation": "Supreme majesty is not denied to the Lord, for it belongs to the Lord's being; it is not so for others."
+    },
+    "2:36": {
+      "hindi": "यदि कहो कि सब मिथ्या होने पर (भक्ति) किस पर होगी, तो ऐसा नहीं, क्योंकि बुद्धि (चेतना) अनन्त है।",
+      "translation": "If you ask what bhakti rests on if all is unreal, no: consciousness is infinite."
+    },
+    "2:37": {
+      "hindi": "(वह परम तत्त्व) प्रकृति के बीच रहकर भी विकार से रहित है, क्योंकि वह चित्-सत्ता रूप से सबमें अनुगत है।",
+      "translation": "Though present within nature, the Supreme does not change, for it runs through all as pure conscious being."
+    },
+    "2:38": {
+      "hindi": "उनमें (सबकी) प्रतिष्ठा है, जैसे घर की पीठ (आधार) पर।",
+      "translation": "All rests on the Lord, as a house rests on its foundation."
+    },
+    "2:39": {
+      "hindi": "परस्पर अपेक्षा से दोनों (चेतन और जड़) हैं।",
+      "translation": "Both conscious and unconscious exist in relation to each other."
+    },
+    "2:40": {
+      "hindi": "चेतन और अचेतन के अतिरिक्त कोई तीसरा नहीं है।",
+      "translation": "There is no third beyond the conscious and the unconscious."
+    },
+    "2:41": {
+      "hindi": "और मुक्ति में भी (यही भेद रहता है), सम्पराय (परलोक) के कारण।",
+      "translation": "This holds even in liberation, as the teaching on the hereafter shows."
+    },
+    "2:42": {
+      "hindi": "शक्ति होने से (जगत्) मिथ्या नहीं जाना जाना चाहिए।",
+      "translation": "Being the Lord's power, the world should not be known as false."
+    },
+    "2:43": {
+      "hindi": "और उस (भक्ति) की शुद्धि (परिपक्वता) लक्षणों से जानी जाती है, जैसे लोक में (प्रेम लक्षणों से जाना जाता है)।",
+      "translation": "Its purity can be known from its signs, as love is known in the world."
+    },
+    "2:44": {
+      "hindi": "सम्मान, बहुमान, प्रीति, विरह, अन्य (विषयों) में अरुचि, (भगवान की) महिमा का गान, उनके लिए प्राण धारण करना, उन्हीं को आश्रय मानना, 'मैं उनका हूँ' यह भाव, सबमें उन्हीं की भावना, और (किसी से) प्रतिकूलता न रखना आदि (भक्ति के लक्षण हैं), जैसा स्मृतियों में बहुत मिलता है।",
+      "translation": "Its signs are reverence, high regard, joy, pain of separation, loss of interest in other things, singing the Lord's glory, living for the Lord, taking the Lord as one's only home, feeling 'I am the Lord's', seeing the Lord in all, and ill will toward none, as the smritis say again and again."
+    },
+    "2:45": {
+      "hindi": "पर द्वेष आदि ऐसे (भक्ति के लक्षण) नहीं हैं।",
+      "translation": "But hatred and the like are not such signs."
+    },
+    "2:46": {
+      "hindi": "वाक्य-शेष (प्रसंग के शेष भाग) से (सिद्ध है कि) अवतारों में भी वह (भक्ति उचित) है।",
+      "translation": "The remaining words of the passage show that bhakti applies to the Lord's incarnations too."
+    },
+    "2:47": {
+      "hindi": "और 'अजन्म' शब्द से (सिद्ध है कि) जो (भगवान के) जन्म और कर्म (के रहस्य) को जानता है (वह मुक्त होता है)।",
+      "translation": "Since the Lord is called unborn, one who truly knows the Lord's birth and deeds is freed."
+    },
+    "2:48": {
+      "hindi": "और वह (जन्म) दिव्य है, क्योंकि वह केवल अपनी शक्ति से प्रकट होता है।",
+      "translation": "That birth is divine, for it arises from the Lord's own power alone."
+    },
+    "2:49": {
+      "hindi": "उनका मुख्य (कारण) तो करुणा ही है।",
+      "translation": "Its chief cause is compassion."
+    },
+    "2:50": {
+      "hindi": "विभूतियों में (भक्ति मुख्य) नहीं है, क्योंकि वे प्राणी हैं।",
+      "translation": "Bhakti is not owed in the same way to the Lord's glories in the world, since they are living beings."
+    },
+    "2:51": {
+      "hindi": "और (गीता में) द्यूत और राजसेवा (की भक्ति) का निषेध (होने) से भी।",
+      "translation": "And because devotion to gambling or to serving kings is not intended."
+    },
+    "2:52": {
+      "hindi": "यदि कहो कि वासुदेव (के प्रति भक्ति) में भी (यही बात है), तो नहीं; क्योंकि (उनका मानव रूप) आकार मात्र है।",
+      "translation": "If you say the same holds for Vasudeva, no: Krishna's human form is only an outer shape."
+    },
+    "2:53": {
+      "hindi": "और (उनके परम रूप की) पहचान से भी।",
+      "translation": "And because the Lord was recognised as the Supreme."
+    },
+    "2:54": {
+      "hindi": "वृष्णियों में श्रेष्ठता के कारण (वासुदेव) वही (परमात्मा) हैं।",
+      "translation": "Being foremost among the Vrishnis, Krishna is that Supreme One."
+    },
+    "2:55": {
+      "hindi": "और इसी प्रकार प्रसिद्ध (अन्य अवतारों) में भी।",
+      "translation": "The same holds for the other well-known incarnations."
+    },
+    "2:56": {
+      "hindi": "भक्ति से भजन (के वर्णन) का उपसंहार होने से गौणी (भक्ति) परा (भक्ति) का हेतु है।",
+      "translation": "Since the teaching on worship ends in bhakti, secondary bhakti leads to supreme bhakti."
+    },
+    "2:57": {
+      "hindi": "और दूसरे (कर्मों) का राग (प्रेम) के लिए किए जाने, कीर्तन और साहचर्य से (भी यह सिद्ध होता है)।",
+      "translation": "The same is shown by other acts done out of love, by singing the Lord's names, and by their association with bhakti."
+    },
+    "2:58": {
+      "hindi": "शेष (कर्म) बीच में आते हैं, और उपासना आदि में, क्योंकि वे (उसी) काण्ड के हैं।",
+      "translation": "The other practices come in between, and in worship and the like, as parts of the same section."
+    },
+    "2:59": {
+      "hindi": "उन (गौण भक्तियों) से पवित्रता आती है, क्योंकि (शास्त्र) ऐसा आरम्भ करते हैं।",
+      "translation": "These secondary forms bring purity, as the scriptures begin by saying."
+    },
+    "2:60": {
+      "hindi": "कुछ आचार्य मानते हैं कि उनमें प्रधान (भगवान) से योग होने के कारण फल अधिक है।",
+      "translation": "Some say their fruit is greater, because they connect one with the Lord."
+    },
+    "2:61": {
+      "hindi": "जैमिनि के मत में नाम (जप) से ही (वह फल) सम्भव है।",
+      "translation": "Jaimini holds that this is possible through the Name alone."
+    },
+    "2:62": {
+      "hindi": "यहाँ अंगों के प्रयोग समय के अनुसार सम्भव हैं, जैसे गृहस्थी आदि (के कार्य)।",
+      "translation": "The supporting practices are done as time allows, as with household duties."
+    },
+    "2:63": {
+      "hindi": "ईश्वर को प्रसन्न करने वाला एक भी (साधन) बलवान् है।",
+      "translation": "Even one practice that pleases the Lord is powerful."
+    },
+    "2:64": {
+      "hindi": "अर्पण का मुख (प्रधान फल) बन्धन से मुक्ति है।",
+      "translation": "The chief fruit of offering is freedom from bondage."
+    },
+    "2:65": {
+      "hindi": "ध्यान का नियम तो (इसलिए है कि) उसकी सरलता देखी गई है।",
+      "translation": "A rule of meditation is given because it is seen to be easy."
+    },
+    "2:66": {
+      "hindi": "पूजा में 'यजि' (यज्ञ) शब्द का प्रयोग उन्हीं के लिए है, दूसरों के लिए ऐसा नहीं।",
+      "translation": "The word for sacrifice, used of worship, refers to the Lord alone, not to others."
+    },
+    "2:67": {
+      "hindi": "पादोदक (भगवान का चरणामृत) ही ग्रहण करने योग्य है, क्योंकि (दूसरे जल की) व्याप्ति नहीं।",
+      "translation": "Water that has bathed the Lord's feet is to be taken, for no other water carries that holiness."
+    },
+    "2:68": {
+      "hindi": "स्वयं (भगवान को) अर्पित (प्रसाद) ग्रहण करने योग्य है, क्योंकि (उसमें) कोई भेद नहीं।",
+      "translation": "What one has offered oneself is to be received as the Lord's gift, for there is no difference."
+    },
+    "2:69": {
+      "hindi": "अपराधों में (प्रायश्चित्त की) व्यवस्था निमित्त और गुणों की अपेक्षा के बिना (भक्ति से) होती है।",
+      "translation": "Faults are set right through bhakti, without regard to their cause or kind."
+    },
+    "2:70": {
+      "hindi": "पत्र आदि का दान (पर्याप्त है); अन्यथा (उसमें) विशेषता होती।",
+      "translation": "Offering a leaf or the like is enough; otherwise one would think the offering itself mattered."
+    },
+    "2:71": {
+      "hindi": "पुण्य से उत्पन्न होने और दूसरों का हेतु होने से (भक्ति के) कर्मों में (यह) श्रेष्ठ है।",
+      "translation": "Among actions these are the best, for they arise from merit and lead on to the highest."
+    },
+    "2:72": {
+      "hindi": "गौणी (भक्ति) का तीन प्रकार होना अन्य (के साथ) स्तुति के लिए है; (यह) साहचर्य है।",
+      "translation": "The threefold division of secondary bhakti is in praise of it, by association with the others."
+    },
+    "2:73": {
+      "hindi": "बाहरी और भीतरी, दोनों (भक्ति) में होते हैं, जैसे अवेष्टि सव (यज्ञ) में।",
+      "translation": "Both outer and inner practices belong to it, as in the Aveshti rite."
+    },
+    "2:74": {
+      "hindi": "पीड़ा (पाप) की स्थिति में स्मरण, कीर्तन और कथा आदि प्रायश्चित्त रूप हैं।",
+      "translation": "In distress, remembrance, singing and listening to sacred stories act as atonement."
+    },
+    "2:75": {
+      "hindi": "यदि कहो कि बहुत से (लोग) इनका पालन नहीं कर पाते, तो (शास्त्र) मृत्यु तक (इन्हें करने) का उपसंहार करते हैं, महापुरुषों में भी।",
+      "translation": "If you say many cannot keep these up, scripture says to continue them until death, even for the great."
+    },
+    "2:76": {
+      "hindi": "भक्त के अधिकार में थोड़ा (साधन) भी बड़े (पापों) को नष्ट करने वाला है, क्योंकि उससे दूसरे सब (पाप) नष्ट होते हैं।",
+      "translation": "For one fit for bhakti, even a little practice destroys great sins, since all others fall away with it."
+    },
+    "2:77": {
+      "hindi": "उस (भक्ति) का स्थान होने से (भक्त) किसी दूसरे धर्म पर आश्रित नहीं, जैसे खलिहान में (अन्न की) बाली।",
+      "translation": "Being bhakti's own ground, the devotee needs no other dharma, like an ear of grain on the threshing floor."
+    },
+    "2:78": {
+      "hindi": "अनिन्द्य (निन्दा से रहित) योनि वाले सबको (भक्ति का) अधिकार है, परम्परा से, सामान्य (धर्म) के समान।",
+      "translation": "All, down to the lowliest born, are fit for bhakti, by tradition, as with the common duties of all."
+    },
+    "2:79": {
+      "hindi": "इसी कारण अपरिपक्व भाव वाले भी उनके लोक (को प्राप्त होते हैं)।",
+      "translation": "That is why even those whose love is not yet ripe reach the Lord's world."
+    },
+    "2:80": {
+      "hindi": "पर (मुक्ति) क्रम से एक ही गति से (प्राप्त होती है), ऐसा युक्ति से (सिद्ध) है।",
+      "translation": "But liberation comes step by step along a single path, as reason shows."
+    },
+    "2:81": {
+      "hindi": "और उत्क्रान्ति (शरीर छोड़ने के प्रसंग की) स्मृति के वाक्य-शेष से भी।",
+      "translation": "And from the closing words of the smriti on departure from the body."
+    },
+    "2:82": {
+      "hindi": "महापापियों के लिए (भक्ति) पीड़ा (पश्चात्ताप) की अवस्था में (फल देती है)।",
+      "translation": "For great sinners, it bears fruit when they feel deep remorse."
+    },
+    "2:83": {
+      "hindi": "वह (भक्ति) एकान्त भाव है, क्योंकि गीता के अर्थ में इसकी पहचान होती है।",
+      "translation": "This bhakti is single-minded devotion, as the meaning of the Gita shows."
+    },
+    "2:84": {
+      "hindi": "परा (भक्ति) को ही (भगवान ने) सबके लिए (लक्ष्य) बनाकर ऐसा कहा है।",
+      "translation": "The Lord made supreme bhakti the goal for all, for so the Lord has said."
+    },
+    "3:85": {
+      "hindi": "भजन करने योग्य (भगवान) के साथ यह (जगत्) अद्वितीय (एक) है, क्योंकि यह समस्त (जगत्) उन्हीं का स्वरूप है।",
+      "translation": "This world is not separate from the One to be worshipped, for all of it is of the Lord's own nature."
+    },
+    "3:86": {
+      "hindi": "उनकी शक्ति माया है, क्योंकि (वह) जड़ (वस्तुओं) में सामान्य है।",
+      "translation": "The Lord's power is maya, common to all that is inert."
+    },
+    "3:87": {
+      "hindi": "क्योंकि (वह) व्याप्य (वस्तुओं) में व्यापक है।",
+      "translation": "For it pervades all that is pervaded."
+    },
+    "3:88": {
+      "hindi": "(जगत् की उत्पत्ति) प्राणियों की बुद्धि से नहीं है, क्योंकि (यह) असम्भव है।",
+      "translation": "The world does not arise from the minds of living beings, for that is impossible."
+    },
+    "3:89": {
+      "hindi": "(भगवान) ऊँचे-नीचे (सब जगत्) को रचकर श्रुतियों को भी पिता के समान रचते हैं।",
+      "translation": "Having made the high and the low, the Lord also gives the scriptures, like a father guiding a child."
+    },
+    "3:90": {
+      "hindi": "यदि कहो कि मिला-जुला उपदेश होने से (भक्ति प्रधान) नहीं, तो ऐसा नहीं, क्योंकि (दूसरा) अल्प है।",
+      "translation": "If you say the teaching is mixed, so bhakti is not chief, no: the other part is small."
+    },
+    "3:91": {
+      "hindi": "बादरायण के मत में फल इन्हीं (ईश्वर) से है, क्योंकि (ऐसा) देखा गया है।",
+      "translation": "Badarayana holds that the fruit of action comes from the Lord, for so it is seen."
+    },
+    "3:92": {
+      "hindi": "उलटे क्रम से (जगत् का) लय भी उसी प्रकार देखा गया है।",
+      "translation": "Dissolution too is seen to happen in reverse order, from the Lord."
+    },
+    "3:93": {
+      "hindi": "उनकी एकता (है); अनेकता और एकता (केवल) उपाधि के योग और उसके हटने से है, सूर्य के समान।",
+      "translation": "The soul and the Lord are one; many and one only appear through limiting conditions and their removal, as with the sun reflected in many waters."
+    },
+    "3:94": {
+      "hindi": "यदि कहो कि (जीव ईश्वर से) पृथक् है, तो नहीं; क्योंकि प्रकाशों का (मूल) से कोई अलग सम्बन्ध नहीं।",
+      "translation": "If you say the soul is separate, no: rays of light have no being apart from their source."
+    },
+    "3:95": {
+      "hindi": "(ईश्वर) विकारी नहीं हैं; करणों (इन्द्रियों और मन) के विकार से (विकार प्रतीत होता है)।",
+      "translation": "The Lord does not change; change belongs only to the instruments of body and mind."
+    },
+    "3:96": {
+      "hindi": "अनन्य भक्ति से उन्हीं में बुद्धि लगती है, और बुद्धि के लय से (भगवान की) पूर्ण प्राप्ति होती है।",
+      "translation": "Through single-minded bhakti the mind rests in the Lord, and when the mind dissolves, the Lord is fully attained."
+    },
+    "3:97": {
+      "hindi": "(भक्तों की) आयु लम्बी होती है; दूसरों की हानि होती है, क्योंकि उनका (कोई स्थिर) आश्रय नहीं।",
+      "translation": "Devotees live long in spirit; others decline, having no lasting refuge."
+    },
+    "3:98": {
+      "hindi": "इनका संसार (बन्धन) अभक्ति से है, अज्ञान से नहीं, क्योंकि (केवल अज्ञान) कारण सिद्ध नहीं होता।",
+      "translation": "Bondage to rebirth comes from lack of bhakti, not from ignorance alone, for ignorance alone is not proved to be its cause."
+    },
+    "3:99": {
+      "hindi": "इनके तीन नेत्र हैं: शब्द, अनुमान और प्रत्यक्ष, रुद्र के समान।",
+      "translation": "Devotees have three eyes, as Rudra does: scripture, inference and perception."
+    },
+    "3:100": {
+      "hindi": "प्रकट और लुप्त होना (आदि) विकार हैं, जो कर्म और फल के संयोग से होते हैं।",
+      "translation": "Appearing and disappearing are changes that come from the meeting of action and its fruit."
+    }
+  }
+}

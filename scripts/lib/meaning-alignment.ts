@@ -122,14 +122,14 @@ export interface AlignmentOptions {
  * Books whose meanings were checked by eye and are aligned, but which the word test cannot measure (2026-10-26 audit).
  * Their Sanskrit runs whole sentences together without spaces (Maitri, Chandogya, Mundaka), or their English is a
  * close Vedic translation with few proper names (Griffith's Yajurveda), so a verse shares no stem with its own meaning.
- * The Yoga Sutra's English is written one sutra at a time from the Sanskrit (data/written-meanings/) and names almost
+ * The Yoga Sutra and Bhakti Sutra English is written one sutra at a time from the Sanskrit (data/written-meanings/) and names almost
  * no one, so the name test has nothing to measure.
  * Two only trip the repeat test: the Samaveda repeats a mantra with variant spelling under the same Hindi, and the
  * Durga Saptashati's printed Hindi spans groups of verses (its 27 repeated lines are listed for editorial review).
  */
 export const ALIGNMENT_EXEMPT: Record<Field, ReadonlySet<string>> = {
   hindi: new Set(['maitri', 'chandogya', 'mundaka', 'samaveda', 'durgasaptashati']),
-  translation: new Set(['maitri', 'chandogya', 'mundaka', 'yajurveda', 'yogasutra']),
+  translation: new Set(['maitri', 'chandogya', 'mundaka', 'yajurveda', 'yogasutra', 'naradabhaktisutra', 'shandilyabhaktisutra']),
 };
 
 /** The fields `scriptureId` is exempt from, for AlignmentOptions.skipFields. */

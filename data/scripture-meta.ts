@@ -583,7 +583,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     titleIast: "Nārada Bhakti Sūtra",
     category: "sutra",
     description:
-      "84 sutras by sage Narada — the most systematic philosophical treatise on bhakti in the Sanskrit tradition. Defines bhakti as para-prema (supreme love), enumerates eleven forms of the highest devotion, and culminates in the declaration that bhakti requires no external proof: it is self-luminous and self-evident. The gopis of Vraja are the supreme exemplars.",
+      "84 sutras by sage Narada — the most systematic philosophical treatise on bhakti in the Sanskrit tradition. Defines bhakti as para-prema (supreme love), enumerates eleven forms of the highest devotion, and culminates in the declaration that bhakti requires no external proof: it is self-luminous and self-evident. The gopis of Vraja are the supreme exemplars. Every sutra has a Hindi and an English meaning written from the Sanskrit.",
     totalChapters: 1,
     totalVerses: 84,
     isCurated: true,
@@ -597,7 +597,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     titleIast: "Śāṇḍilya Bhakti Sūtra",
     category: "sutra",
     description:
-      "100 sutras by sage Shandilya — the philosophical companion to the Narada Bhakti Sutras. Defines bhakti as para-anurakti Ishvare (supreme attachment to Ishvara). Examines the relationship between bhakti, jnana, and karma; diagnoses obstacles to bhakti (wrong company, attachment to unworthy objects); and prescribes the complete practice: arpaṇa (offering all actions) and smarana (continuous remembrance).",
+      "100 sutras by sage Shandilya — the philosophical companion to the Narada Bhakti Sutras. Defines bhakti as para-anurakti Ishvare (supreme attachment to Ishvara). Examines the relationship between bhakti, jnana, and karma; diagnoses obstacles to bhakti (wrong company, attachment to unworthy objects); and prescribes the complete practice: arpaṇa (offering all actions) and smarana (continuous remembrance). Every sutra has a Hindi and an English meaning written from the Sanskrit.",
     totalChapters: 3,
     totalVerses: 100,
     isCurated: true,
