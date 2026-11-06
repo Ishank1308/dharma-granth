@@ -9,7 +9,6 @@ import {
   Check,
   Compass,
   Copy,
-  Download,
   FileText,
   Highlighter,
   Lock,
@@ -165,51 +164,6 @@ export default function BookmarksAndAnnotationsPage() {
     }
   };
 
-  const exportAllDataJson = () => {
-    const exportBundle = {
-      version: '1.0',
-      exportedAt: new Date().toISOString(),
-      privacy: 'Stored client-side on local device. Not uploaded to any server.',
-      bookmarks,
-      highlights,
-      notes,
-    };
-    const dataStr = JSON.stringify(exportBundle, null, 2);
-    const dataBlob = new Blob([dataStr], { type: 'application/json' });
-    const url = URL.createObjectURL(dataBlob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `dharma-granth-private-sanctuary-${new Date().toISOString().slice(0, 10)}.json`;
-    link.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const exportAllDataMarkdown = () => {
-    let md = `# Dharma Granth · Private Sanctuary Export\n\n`;
-    md += `*Exported on: ${new Date().toLocaleDateString(undefined, { numberingSystem: 'latn' })}*\n\n`;
-    md += `## 1. Bookmarked Verses (${bookmarks.length})\n\n`;
-    bookmarks.forEach((b) => {
-      md += `### ${b.scriptureTitle} — Chapter ${b.chapterId ?? ''}, Verse ${b.verseId}\n`;
-      md += `\`\`\`sanskrit\n${b.sanskrit}\n\`\`\`\n`;
-      if (b.hindi) md += `**हिन्दी:** ${b.hindi}\n\n`;
-      if (b.translation) md += `**English:** ${b.translation}\n\n`;
-    });
-
-    md += `## 2. Private Notes & Reflections (${notes.length})\n\n`;
-    notes.forEach((n) => {
-      md += `### ${n.scriptureId.toUpperCase()} Ch ${n.chapterId} Verse ${n.verseId}\n`;
-      md += `> ${n.text}\n\n*Updated: ${new Date(n.updatedAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}*\n\n`;
-    });
-
-    const blob = new Blob([md], { type: 'text/markdown' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `dharma-granth-notes-${new Date().toISOString().slice(0, 10)}.md`;
-    link.click();
-    URL.revokeObjectURL(url);
-  };
-
   const filteredBookmarks = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     if (!q) return bookmarks;
@@ -226,43 +180,22 @@ export default function BookmarksAndAnnotationsPage() {
   return (
     <main className="min-h-screen py-12 px-4 sm:px-6 max-w-7xl mx-auto">
       {/* Sanctuary Header */}
-      <header className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <header className="mb-8">
         <div>
           <div className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-saffron-500/15 text-saffron-800 dark:text-saffron-300">
+            <span className="flex h-7 w-7 items-center justify-center rounded-control bg-tint-fill text-tint">
               <Lock className="h-4 w-4" />
             </span>
-            <span className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
+            <span className="text-footnote font-semibold uppercase tracking-wider text-tint">
               Personal Sanctuary · व्यक्तिगत स्वाध्याय
             </span>
           </div>
-          <h1 className="mt-1 text-3xl sm:text-4xl font-serif font-bold text-dharma-text tracking-tight">
+          <h1 className="mt-1 text-title-1 sm:text-large-title font-bold text-label-primary tracking-tight">
             Saved Verses, Highlights & Notes
           </h1>
-          <p className="mt-2 text-xs sm:text-sm text-dharma-muted max-w-2xl leading-relaxed">
+          <p className="mt-2 text-subhead text-label-secondary max-w-2xl leading-relaxed">
             Your private, client-side repository of scripture reflections. All data is saved strictly to this device&rsquo;s LocalStorage and is never uploaded without explicit consent.
           </p>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-2 shrink-0">
-          <button
-            type="button"
-            onClick={exportAllDataJson}
-            className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3.5 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition shadow-2xs"
-            title="Download JSON bundle"
-          >
-            <Download className="h-3.5 w-3.5" />
-            <span>Export JSON</span>
-          </button>
-          <button
-            type="button"
-            onClick={exportAllDataMarkdown}
-            className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3.5 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition shadow-2xs"
-            title="Download Markdown summary"
-          >
-            <FileText className="h-3.5 w-3.5" />
-            <span>Export Markdown</span>
-          </button>
         </div>
       </header>
 
@@ -684,47 +617,20 @@ export default function BookmarksAndAnnotationsPage() {
       {/* Tab 4: Privacy & Data Sovereign Hub */}
       {activeTab === 'privacy' && (
         <section aria-label="Privacy guarantee" className="max-w-3xl mx-auto space-y-6">
-          <div className="rounded-3xl border border-emerald-500/30 bg-emerald-50/40 dark:border-emerald-500/20 dark:bg-emerald-950/20 p-6 sm:p-8">
+          <div className="rounded-card border border-emerald-500/30 bg-emerald-50/40 dark:border-emerald-500/20 dark:bg-emerald-950/20 p-6 sm:p-8">
             <div className="flex items-center gap-2 text-emerald-900 dark:text-emerald-200">
               <ShieldCheck className="h-6 w-6 text-emerald-600" />
-              <h2 className="font-serif text-2xl font-bold">100% Client-Side Privacy Guarantee</h2>
+              <h2 className="text-title-2 font-bold">100% Client-Side Privacy Guarantee</h2>
             </div>
-            <p className="mt-3 text-sm leading-relaxed text-dharma-text">
+            <p className="mt-3 text-body leading-relaxed text-label-primary">
               Dharma Granth respects the sacredness of your inner contemplative life. Your highlights, annotations, reading plans, and bookmarks are stored strictly within your browser&rsquo;s LocalStorage.
             </p>
-            <ul className="mt-4 space-y-2 text-xs sm:text-sm text-dharma-text/90 list-disc list-inside">
+            <ul className="mt-4 space-y-2 text-footnote text-label-secondary list-disc list-inside">
               <li><strong>Zero Cloud Sync:</strong> No personal reflections are ever transmitted to any remote database.</li>
               <li><strong>Zero AI Scraping:</strong> Your notes are never ingested by language models or advertising algorithms.</li>
-              <li><strong>Full Data Sovereignty:</strong> You can download and backup all your data at any time via JSON or Markdown export.</li>
+              <li><strong>Full Data Sovereignty:</strong> Your data remains stored completely on your local device.</li>
               <li><strong>Offline Capable:</strong> Your personal sanctuary works completely offline without internet connectivity.</li>
             </ul>
-          </div>
-
-          <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6 flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <h3 className="font-serif text-base font-bold text-dharma-text">Data Export & Backup</h3>
-              <p className="mt-1 text-xs text-dharma-muted">
-                Save an archival copy of your {bookmarks.length} bookmarks, {highlights.length} highlights, and {notes.length} notes.
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={exportAllDataJson}
-                className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-xl bg-saffron-600 px-4 py-2 text-xs font-semibold text-white hover:bg-saffron-700 transition"
-              >
-                <Download className="h-3.5 w-3.5" />
-                <span>Download JSON</span>
-              </button>
-              <button
-                type="button"
-                onClick={exportAllDataMarkdown}
-                className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-4 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 transition"
-              >
-                <FileText className="h-3.5 w-3.5" />
-                <span>Download Markdown</span>
-              </button>
-            </div>
           </div>
         </section>
       )}
