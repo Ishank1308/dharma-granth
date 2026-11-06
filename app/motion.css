@@ -390,6 +390,38 @@
     }
 }
 
+/* The phone tab bar: the tab that becomes current lifts its icon with a small spring, and a
+   dot grows beneath it. An animation runs whenever its selector starts to match, so this plays
+   on each navigation with no script. */
+@keyframes tab-pop {
+    0% { transform: scale(1); }
+    35% { transform: scale(0.82) translate3d(0, 1px, 0); }
+    100% { transform: none; }
+}
+@keyframes tab-dot {
+    from { transform: translateX(-50%) scale(0); opacity: 0; }
+}
+nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background: currentColor;
+    transform: translateX(-50%);
+}
+@media (prefers-reduced-motion: no-preference) {
+    nav[aria-label='Mobile quick navigation'] [aria-current='page'] > svg,
+    nav[aria-label='Mobile quick navigation'] [aria-current='page'] > div > svg {
+        animation: tab-pop 0.6s var(--motion-spring);
+    }
+    nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
+        animation: tab-dot 0.5s var(--motion-spring) 0.1s both;
+    }
+}
+
 /* 7. Verse of the day ──────────────────────────────────────────────────
    The verse is chosen on the reader's device, so it appears after mount; its lines
    then settle one after another, like ink drying. Every line is always rendered whole. */
