@@ -1,0 +1,1414 @@
+{
+  "scripture": "vinayapatrika",
+  "source": "Gita Press Gorakhpur (Decrypted EPUB)",
+  "epub_code": "0105",
+  "epub_title": "Vinay-Patrika With Simple Meaning (Devotional Hindi Poetry)",
+  "date": "2026-11-06",
+  "statistics": {
+    "total_book_chapters": 279,
+    "total_book_verses": 1483,
+    "single_verses_updated": 1483,
+    "range_pointers_set": 0,
+    "missing_hindi_filled": 1482,
+    "existing_hindi_replaced": 1,
+    "explanations_filled": 1483,
+    "skipped_no_match": 0
+  },
+  "chapter_breakdown": {
+    "1": {
+      "title": "पद १",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "2": {
+      "title": "पद २",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "3": {
+      "title": "पद ३",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "4": {
+      "title": "पद ४",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "5": {
+      "title": "पद ५",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "6": {
+      "title": "पद ६",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "7": {
+      "title": "पद ७",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "8": {
+      "title": "पद ८",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "9": {
+      "title": "पद ९",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "10": {
+      "title": "पद १०",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "11": {
+      "title": "पद ११",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "12": {
+      "title": "पद १२",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "13": {
+      "title": "पद १३",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "14": {
+      "title": "पद १४",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "15": {
+      "title": "पद १५",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "16": {
+      "title": "पद १६",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "17": {
+      "title": "पद १७",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "18": {
+      "title": "पद १८",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "19": {
+      "title": "पद १९",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "20": {
+      "title": "पद २०",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "21": {
+      "title": "पद २१",
+      "verses_total": 2,
+      "verses_refilled": 2
+    },
+    "22": {
+      "title": "पद २२",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "23": {
+      "title": "पद २३",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "24": {
+      "title": "पद २४",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "25": {
+      "title": "पद २५",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "26": {
+      "title": "पद २६",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "27": {
+      "title": "पद २७",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "28": {
+      "title": "पद २८",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "29": {
+      "title": "पद २९",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "30": {
+      "title": "पद ३०",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "31": {
+      "title": "पद ३१",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "32": {
+      "title": "पद ३२",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "33": {
+      "title": "पद ३३",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "34": {
+      "title": "पद ३४",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "35": {
+      "title": "पद ३५",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "36": {
+      "title": "पद ३६",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "37": {
+      "title": "पद ३७",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "38": {
+      "title": "पद ३८",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "39": {
+      "title": "पद ३९",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "40": {
+      "title": "पद ४०",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "41": {
+      "title": "पद ४१",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "42": {
+      "title": "पद ४२",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "43": {
+      "title": "पद ४३",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "44": {
+      "title": "पद ४४",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "45": {
+      "title": "पद ४५",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "46": {
+      "title": "पद ४६",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "47": {
+      "title": "पद ४७",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "48": {
+      "title": "पद ४८",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "49": {
+      "title": "पद ४९",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "50": {
+      "title": "पद ५०",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "51": {
+      "title": "पद ५१",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "52": {
+      "title": "पद ५२",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "53": {
+      "title": "पद ५३",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "54": {
+      "title": "पद ५४",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "55": {
+      "title": "पद ५५",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "56": {
+      "title": "पद ५६",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "57": {
+      "title": "पद ५७",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "58": {
+      "title": "पद ५८",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "59": {
+      "title": "पद ५९",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "60": {
+      "title": "पद ६०",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "61": {
+      "title": "पद ६१",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "62": {
+      "title": "पद ६२",
+      "verses_total": 13,
+      "verses_refilled": 13
+    },
+    "63": {
+      "title": "पद ६३",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "64": {
+      "title": "पद ६४",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "65": {
+      "title": "पद ६५",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "66": {
+      "title": "पद ६६",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "67": {
+      "title": "पद ६७",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "68": {
+      "title": "पद ६८",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "69": {
+      "title": "पद ६९",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "70": {
+      "title": "पद ७०",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "71": {
+      "title": "पद ७१",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "72": {
+      "title": "पद ७२",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "73": {
+      "title": "पद ७३",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "74": {
+      "title": "पद ७४",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "75": {
+      "title": "पद ७५",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "76": {
+      "title": "पद ७६",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "77": {
+      "title": "पद ७७",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "78": {
+      "title": "पद ७८",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "79": {
+      "title": "पद ७९",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "80": {
+      "title": "पद ८०",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "81": {
+      "title": "पद ८१",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "82": {
+      "title": "पद ८२",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "83": {
+      "title": "पद ८३",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "84": {
+      "title": "पद ८४",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "85": {
+      "title": "पद ८५",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "86": {
+      "title": "पद ८६",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "87": {
+      "title": "पद ८७",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "88": {
+      "title": "पद ८८",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "89": {
+      "title": "पद ८९",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "90": {
+      "title": "पद ९०",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "91": {
+      "title": "पद ९१",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "92": {
+      "title": "पद ९२",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "93": {
+      "title": "पद ९३",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "94": {
+      "title": "पद ९४",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "95": {
+      "title": "पद ९५",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "96": {
+      "title": "पद ९६",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "97": {
+      "title": "पद ९७",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "98": {
+      "title": "पद ९८",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "99": {
+      "title": "पद ९९",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "100": {
+      "title": "पद १००",
+      "verses_total": 10,
+      "verses_refilled": 10
+    },
+    "101": {
+      "title": "पद १०१",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "102": {
+      "title": "पद १०२",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "103": {
+      "title": "पद १०३",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "104": {
+      "title": "पद १०४",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "105": {
+      "title": "पद १०५",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "106": {
+      "title": "पद १०६",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "107": {
+      "title": "पद १०७",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "108": {
+      "title": "पद १०८",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "109": {
+      "title": "पद १०९",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "110": {
+      "title": "पद ११०",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "111": {
+      "title": "पद १११",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "112": {
+      "title": "पद ११२",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "113": {
+      "title": "पद ११३",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "114": {
+      "title": "पद ११४",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "115": {
+      "title": "पद ११५",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "116": {
+      "title": "पद ११६",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "117": {
+      "title": "पद ११७",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "118": {
+      "title": "पद ११८",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "119": {
+      "title": "पद ११९",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "120": {
+      "title": "पद १२०",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "121": {
+      "title": "पद १२१",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "122": {
+      "title": "पद १२२",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "123": {
+      "title": "पद १२३",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "124": {
+      "title": "पद १२४",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "125": {
+      "title": "पद १२५",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "126": {
+      "title": "पद १२६",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "127": {
+      "title": "पद १२७",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "128": {
+      "title": "पद १२८",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "129": {
+      "title": "पद १२९",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "130": {
+      "title": "पद १३०",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "131": {
+      "title": "पद १३१",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "132": {
+      "title": "पद १३२",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "133": {
+      "title": "पद १३३",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "134": {
+      "title": "पद १३४",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "135": {
+      "title": "पद १३५",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "136": {
+      "title": "पद १३६",
+      "verses_total": 12,
+      "verses_refilled": 12
+    },
+    "137": {
+      "title": "पद १३७",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "138": {
+      "title": "पद १३८",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "139": {
+      "title": "पद १३९",
+      "verses_total": 12,
+      "verses_refilled": 12
+    },
+    "140": {
+      "title": "पद १४०",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "141": {
+      "title": "पद १४१",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "142": {
+      "title": "पद १४२",
+      "verses_total": 11,
+      "verses_refilled": 11
+    },
+    "143": {
+      "title": "पद १४३",
+      "verses_total": 8,
+      "verses_refilled": 8
+    },
+    "144": {
+      "title": "पद १४४",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "145": {
+      "title": "पद १४५",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "146": {
+      "title": "पद १४६",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "147": {
+      "title": "पद १४७",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "148": {
+      "title": "पद १४८",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "149": {
+      "title": "पद १४९",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "150": {
+      "title": "पद १५०",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "151": {
+      "title": "पद १५१",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "152": {
+      "title": "पद १५२",
+      "verses_total": 13,
+      "verses_refilled": 13
+    },
+    "153": {
+      "title": "पद १५३",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "154": {
+      "title": "पद १५४",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "155": {
+      "title": "पद १५५",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "156": {
+      "title": "पद १५६",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "157": {
+      "title": "पद १५७",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "158": {
+      "title": "पद १५८",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "159": {
+      "title": "पद १५९",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "160": {
+      "title": "पद १६०",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "161": {
+      "title": "पद १६१",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "162": {
+      "title": "पद १६२",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "163": {
+      "title": "पद १६३",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "164": {
+      "title": "पद १६४",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "165": {
+      "title": "पद १६५",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "166": {
+      "title": "पद १६६",
+      "verses_total": 10,
+      "verses_refilled": 10
+    },
+    "167": {
+      "title": "पद १६७",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "168": {
+      "title": "पद १६८",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "169": {
+      "title": "पद १६९",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "170": {
+      "title": "पद १७०",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "171": {
+      "title": "पद १७१",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "172": {
+      "title": "पद १७२",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "173": {
+      "title": "पद १७३",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "174": {
+      "title": "पद १७४",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "175": {
+      "title": "पद १७५",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "176": {
+      "title": "पद १७६",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "177": {
+      "title": "पद १७७",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "178": {
+      "title": "पद १७८",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "179": {
+      "title": "पद १७९",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "180": {
+      "title": "पद १८०",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "181": {
+      "title": "पद १८१",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "182": {
+      "title": "पद १८२",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "183": {
+      "title": "पद १८३",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "184": {
+      "title": "पद १८४",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "185": {
+      "title": "पद १८५",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "186": {
+      "title": "पद १८६",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "187": {
+      "title": "पद १८७",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "188": {
+      "title": "पद १८८",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "189": {
+      "title": "पद १८९",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "190": {
+      "title": "पद १९०",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "191": {
+      "title": "पद १९१",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "192": {
+      "title": "पद १९२",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "193": {
+      "title": "पद १९३",
+      "verses_total": 9,
+      "verses_refilled": 9
+    },
+    "194": {
+      "title": "पद १९४",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "195": {
+      "title": "पद १९५",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "196": {
+      "title": "पद १९६",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "197": {
+      "title": "पद १९७",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "198": {
+      "title": "पद १९८",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "199": {
+      "title": "पद १९९",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "200": {
+      "title": "पद २००",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "201": {
+      "title": "पद २०१",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "202": {
+      "title": "पद २०२",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "203": {
+      "title": "पद २०३",
+      "verses_total": 20,
+      "verses_refilled": 20
+    },
+    "204": {
+      "title": "पद २०४",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "205": {
+      "title": "पद २०५",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "206": {
+      "title": "पद २०६",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "207": {
+      "title": "पद २०७",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "208": {
+      "title": "पद २०८",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "209": {
+      "title": "पद २०९",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "210": {
+      "title": "पद २१०",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "211": {
+      "title": "पद २११",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "212": {
+      "title": "पद २१२",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "213": {
+      "title": "पद २१३",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "214": {
+      "title": "पद २१४",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "215": {
+      "title": "पद २१५",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "216": {
+      "title": "पद २१६",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "217": {
+      "title": "पद २१७",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "218": {
+      "title": "पद २१८",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "219": {
+      "title": "पद २१९",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "220": {
+      "title": "पद २२०",
+      "verses_total": 11,
+      "verses_refilled": 11
+    },
+    "221": {
+      "title": "पद २२१",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "222": {
+      "title": "पद २२२",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "223": {
+      "title": "पद २२३",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "224": {
+      "title": "पद २२४",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "225": {
+      "title": "पद २२५",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "226": {
+      "title": "पद २२६",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "227": {
+      "title": "पद २२७",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "228": {
+      "title": "पद २२८",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "229": {
+      "title": "पद २२९",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "230": {
+      "title": "पद २३०",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "231": {
+      "title": "पद २३१",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "232": {
+      "title": "पद २३२",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "233": {
+      "title": "पद २३३",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "234": {
+      "title": "पद २३४",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "235": {
+      "title": "पद २३५",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "236": {
+      "title": "पद २३६",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "237": {
+      "title": "पद २३७",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "238": {
+      "title": "पद २३८",
+      "verses_total": 2,
+      "verses_refilled": 2
+    },
+    "239": {
+      "title": "पद २३९",
+      "verses_total": 7,
+      "verses_refilled": 7
+    },
+    "240": {
+      "title": "पद २४०",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "241": {
+      "title": "पद २४१",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "242": {
+      "title": "पद २४२",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "243": {
+      "title": "पद २४३",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "244": {
+      "title": "पद २४४",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "245": {
+      "title": "पद २४५",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "246": {
+      "title": "पद २४६",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "247": {
+      "title": "पद २४७",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "248": {
+      "title": "पद २४८",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "249": {
+      "title": "पद २४९",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "250": {
+      "title": "पद २५०",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "251": {
+      "title": "पद २५१",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "252": {
+      "title": "पद २५२",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "253": {
+      "title": "पद २५३",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "254": {
+      "title": "पद २५४",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "255": {
+      "title": "पद २५५",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "256": {
+      "title": "पद २५६",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "257": {
+      "title": "पद २५७",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "258": {
+      "title": "पद २५८",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "259": {
+      "title": "पद २५९",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "260": {
+      "title": "पद २६०",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "261": {
+      "title": "पद २६१",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "262": {
+      "title": "पद २६२",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "263": {
+      "title": "पद २६३",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "264": {
+      "title": "पद २६४",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "265": {
+      "title": "पद २६५",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "266": {
+      "title": "पद २६६",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "267": {
+      "title": "पद २६७",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "268": {
+      "title": "पद २६८",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "269": {
+      "title": "पद २६९",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "270": {
+      "title": "पद २७०",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "271": {
+      "title": "पद २७१",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "272": {
+      "title": "पद २७२",
+      "verses_total": 5,
+      "verses_refilled": 5
+    },
+    "273": {
+      "title": "पद २७३",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "274": {
+      "title": "पद २७४",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "275": {
+      "title": "पद २७५",
+      "verses_total": 4,
+      "verses_refilled": 4
+    },
+    "276": {
+      "title": "पद २७६",
+      "verses_total": 6,
+      "verses_refilled": 6
+    },
+    "277": {
+      "title": "पद २७७",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "278": {
+      "title": "पद २७८",
+      "verses_total": 3,
+      "verses_refilled": 3
+    },
+    "279": {
+      "title": "पद २७९",
+      "verses_total": 3,
+      "verses_refilled": 3
+    }
+  }
+}

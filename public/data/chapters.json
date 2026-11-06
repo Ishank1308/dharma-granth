@@ -2085,61 +2085,61 @@
       "id": 1,
       "title": "Mandala 1",
       "titleSanskrit": "मण्डल 1",
-      "verseCount": 2
+      "verseCount": 1993
     },
     {
       "id": 2,
       "title": "Mandala 2",
       "titleSanskrit": "मण्डल 2",
-      "verseCount": 6
+      "verseCount": 428
     },
     {
       "id": 3,
       "title": "Mandala 3",
       "titleSanskrit": "मण्डल 3",
-      "verseCount": 7
+      "verseCount": 615
     },
     {
       "id": 4,
       "title": "Mandala 4",
       "titleSanskrit": "मण्डल 4",
-      "verseCount": 6
+      "verseCount": 589
     },
     {
       "id": 5,
       "title": "Mandala 5",
       "titleSanskrit": "मण्डल 5",
-      "verseCount": 6
+      "verseCount": 727
     },
     {
       "id": 6,
       "title": "Mandala 6",
       "titleSanskrit": "मण्डल 6",
-      "verseCount": 8
+      "verseCount": 765
     },
     {
       "id": 7,
       "title": "Mandala 7",
       "titleSanskrit": "मण्डल 7",
-      "verseCount": 6
+      "verseCount": 833
     },
     {
       "id": 8,
       "title": "Mandala 8",
       "titleSanskrit": "मण्डल 8",
-      "verseCount": 8
+      "verseCount": 1690
     },
     {
       "id": 9,
       "title": "Mandala 9",
       "titleSanskrit": "मण्डल 9",
-      "verseCount": 9
+      "verseCount": 1097
     },
     {
       "id": 10,
       "title": "Mandala 10",
       "titleSanskrit": "मण्डल 10",
-      "verseCount": 9
+      "verseCount": 1752
     }
   ],
   "yajurveda": [
@@ -2537,43 +2537,43 @@
       "id": 1,
       "title": "Bala Kanda",
       "titleSanskrit": "बालकाण्ड",
-      "verseCount": 12
+      "verseCount": 2173
     },
     {
       "id": 2,
       "title": "Ayodhya Kanda",
       "titleSanskrit": "अयोध्याकाण्ड",
-      "verseCount": 10
+      "verseCount": 4307
     },
     {
       "id": 3,
       "title": "Aranya Kanda",
       "titleSanskrit": "अरण्यकाण्ड",
-      "verseCount": 11
+      "verseCount": 2447
     },
     {
       "id": 4,
       "title": "Kishkindha Kanda",
       "titleSanskrit": "किष्किन्धाकाण्ड",
-      "verseCount": 13
+      "verseCount": 2369
     },
     {
       "id": 5,
       "title": "Sundara Kanda",
       "titleSanskrit": "सुन्दरकाण्ड",
-      "verseCount": 13
+      "verseCount": 2810
     },
     {
       "id": 6,
       "title": "Yuddha Kanda",
       "titleSanskrit": "युद्धकाण्ड",
-      "verseCount": 13
+      "verseCount": 5173
     },
     {
       "id": 7,
       "title": "Uttara Kanda",
       "titleSanskrit": "उत्तरकाण्ड",
-      "verseCount": 10
+      "verseCount": 3463
     }
   ],
   "mahabharata": [

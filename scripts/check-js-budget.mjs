@@ -3,8 +3,11 @@
  * page loads up front, read from the exported HTML itself. `nomodule` scripts (legacy polyfills)
  * are not counted, because modern browsers skip them.
  *
- *   node scripts/check-js-budget.mjs            report only (runs after every build)
- *   node scripts/check-js-budget.mjs --strict   exit 1 when a page is over budget
+ *   node scripts/check-js-budget.mjs            exit 1 when a page grows past its ceiling (runs after every build)
+ *   node scripts/check-js-budget.mjs --strict   also exit 1 when a page is over its budget
+ *
+ * `ceiling` is a ratchet: measured size on 2026-10-25 plus about 5 KB of slack. When a page
+ * gets smaller, lower its ceiling to the new size; never raise it to let a page grow.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,12 +17,12 @@ const root = process.cwd();
 const dist = path.resolve(root, process.env.NEXT_DIST_DIR || 'dist');
 const strict = process.argv.includes('--strict');
 
-/** Budgets in KB gzip. Reading pages carry the audit's 150 KB target. */
+/** Budgets and ceilings in KB gzip. Reading pages carry the audit's 150 KB target. */
 const PAGES = [
-  { path: '/scripture/bhagavadgita/chapter/2/', budget: 150, label: 'chapter (reading)' },
-  { path: '/scripture/bhagavadgita/chapter/2/verse/47/', budget: 150, label: 'verse (reading)' },
-  { path: '/', budget: 200, label: 'home' },
-  { path: '/wisdom-for-life/anger/', budget: 180, label: 'topic hub' },
+  { path: '/scripture/bhagavadgita/chapter/2/', budget: 150, ceiling: 365, label: 'chapter (reading)' },
+  { path: '/scripture/bhagavadgita/chapter/2/verse/47/', budget: 150, ceiling: 368, label: 'verse (reading)' },
+  { path: '/', budget: 200, ceiling: 352, label: 'home' },
+  { path: '/wisdom-for-life/anger/', budget: 180, ceiling: 247, label: 'topic hub' },
 ];
 
 if (!fs.existsSync(dist)) {
@@ -38,6 +41,7 @@ function gzipKb(src) {
 }
 
 let over = 0;
+let grew = 0;
 let measured = 0;
 for (const page of PAGES) {
   const html = path.join(dist, page.path, 'index.html');
@@ -51,16 +55,22 @@ for (const page of PAGES) {
   const missing = srcs.filter((s) => Number.isNaN(gzipKb(s)));
   const total = srcs.reduce((sum, s) => sum + (gzipKb(s) || 0), 0);
   const ok = total <= page.budget;
+  const held = total <= page.ceiling;
   if (!ok) over++;
+  if (!held) grew++;
+  const mark = ok ? '✓' : held ? '·' : '✗';
+  const note = held ? '' : `  GREW past ceiling ${page.ceiling} KB`;
   console.log(
-    `  ${ok ? '✓' : '✗'}  ${page.label.padEnd(18)} ${total.toFixed(0).padStart(4)} KB / ${page.budget} KB  (${srcs.length} scripts${missing.length ? `, ${missing.length} not found` : ''})`,
+    `  ${mark}  ${page.label.padEnd(18)} ${total.toFixed(0).padStart(4)} KB / ${page.budget} KB  (${srcs.length} scripts${missing.length ? `, ${missing.length} not found` : ''})${note}`,
   );
 }
 console.log(
   measured === 0
     ? 'check-js-budget: no exported pages to measure'
-    : over
-      ? `check-js-budget: ${over} of ${measured} page(s) over budget`
-      : `check-js-budget: all ${measured} pages within budget`,
+    : grew
+      ? `check-js-budget: ${grew} page(s) grew past their ceiling — cut the new JS or explain why in review`
+      : over
+        ? `check-js-budget: ${over} of ${measured} page(s) over budget, none above its ceiling`
+        : `check-js-budget: all ${measured} pages within budget`,
 );
-process.exit(strict && over ? 1 : 0);
+process.exit(grew || (strict && over) ? 1 : 0);

@@ -55,3 +55,25 @@ export function verseMeaningById(scriptureId: string, chapterId: number, verseId
   const verse = chapterCache.get(key)?.find((v) => String(v.number) === verseId);
   return verse ? verseMeaningSummary(scriptureId, chapterId, verse) : null;
 }
+
+const chapterMeaningCache = new Map<string, boolean>();
+
+/**
+ * False only when the seeded chapter exists and none of its verses has a Hindi
+ * or English meaning or an explanation. Such a chapter is noindex and left out
+ * of the sitemap until a meaning is written. Not cached with the verses: the
+ * sitemap asks this for every chapter of every scripture.
+ */
+export function chapterHasMeaning(scriptureId: string, chapterId: number): boolean {
+  const key = `${scriptureId}:${chapterId}`;
+  const known = chapterMeaningCache.get(key);
+  if (known !== undefined) return known;
+  const verses = readSeededChapter(scriptureId, chapterId)?.chapter.verses as VerseLike[] | undefined;
+  const has = !verses?.length || verses.some((v) => verseMeaningSummary(scriptureId, chapterId, v).any);
+  chapterMeaningCache.set(key, has);
+  return has;
+}
+
+/** Shown above a chapter that has only the original text so far. */
+export const ORIGINAL_ONLY_NOTICE_HI = 'मूल पाठ — इस अध्याय का हिन्दी/अंग्रेज़ी अर्थ अभी उपलब्ध नहीं है; शीघ्र जोड़ा जाएगा।';
+export const ORIGINAL_ONLY_NOTICE_EN = 'Original text only: a Hindi or English meaning for this chapter has not been added yet.';

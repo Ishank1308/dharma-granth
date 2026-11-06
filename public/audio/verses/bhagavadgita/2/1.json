@@ -1,0 +1,46 @@
+{
+  "verseNumber": 1,
+  "durationMs": 7059,
+  "words": [
+    {
+      "word": "सञ्जय",
+      "startTimeMs": 0,
+      "endTimeMs": 453
+    },
+    {
+      "word": "उवाच",
+      "startTimeMs": 534,
+      "endTimeMs": 894
+    },
+    {
+      "word": "तं",
+      "startTimeMs": 975,
+      "endTimeMs": 1219
+    },
+    {
+      "word": "तथा",
+      "startTimeMs": 1335,
+      "endTimeMs": 1649
+    },
+    {
+      "word": "कृपयाऽविष्टमश्रुपूर्णाकुलेक्षणम्",
+      "startTimeMs": 1707,
+      "endTimeMs": 3750
+    },
+    {
+      "word": "विषीदन्तमिदं",
+      "startTimeMs": 4110,
+      "endTimeMs": 5108
+    },
+    {
+      "word": "वाक्यमुवाच",
+      "startTimeMs": 5155,
+      "endTimeMs": 5921
+    },
+    {
+      "word": "मधुसूदनः",
+      "startTimeMs": 6014,
+      "endTimeMs": 6745
+    }
+  ]
+}

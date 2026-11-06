@@ -1,4 +1,21 @@
 /** @type {import('next').NextConfig} */
+const { PHASE_PRODUCTION_BUILD } = require('next/constants');
+
+// Next inlines every NEXT_PUBLIC_* value into client JavaScript, so a secret
+// set under that prefix ships to every visitor. Refuse to build with one.
+const SECRET_NAME = /(KEY|TOKEN|SECRET|PASSWORD)/;
+function assertNoPublicSecrets() {
+  const leaked = Object.keys(process.env).filter(
+    (name) => name.startsWith('NEXT_PUBLIC_') && SECRET_NAME.test(name) && process.env[name],
+  );
+  if (leaked.length > 0) {
+    throw new Error(
+      `Refusing to build: ${leaked.join(', ')} would be inlined into the public bundle. ` +
+        'Remove it from .env.local / the environment; server-side scripts read the unprefixed name.',
+    );
+  }
+}
+
 // Base path for subdirectory deploys (e.g. GitHub Pages project sites served
 // from /<repo>). Set via NEXT_PUBLIC_BASE_PATH in CI; empty for root/local.
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -22,10 +39,14 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    // Tree-shake barrel imports (lucide-react icons) per-module so page
-    // bundles only carry the icons they render.
-    optimizePackageImports: ['lucide-react'],
+    // Tree-shake barrel imports per-module so page
+    // bundles only carry the components and icons they render.
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
 };
 
-module.exports = nextConfig;
+module.exports = (phase) => {
+  // `next lint` loads the config in the build phase too; it bundles nothing.
+  if (phase === PHASE_PRODUCTION_BUILD && !process.argv.includes('lint')) assertNoPublicSecrets();
+  return nextConfig;
+};

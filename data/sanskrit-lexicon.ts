@@ -68,9 +68,9 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
       }
     ],
     relatedVerses: [
-      { scriptureId: 'bhagavadgita', chapter: 2, verse: 47, snippet: 'कर्मण्येवाधिकारस्ते...' },
-      { scriptureId: 'bhagavadgita', chapter: 3, verse: 8, snippet: 'नियतं कुरु कर्म त्वं...' },
-      { scriptureId: 'bhagavadgita', chapter: 4, verse: 18, snippet: 'कर्मण्यकर्म यः पश्येत्...' }
+      { scriptureId: 'bhagavadgita', chapter: 2, verse: 47, snippet: 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि' },
+      { scriptureId: 'bhagavadgita', chapter: 3, verse: 8, snippet: 'नियतं कुरु कर्म त्वं कर्म ज्यायो ह्यकर्मणः। शरीरयात्रापि च ते न प्रसिद्ध्येदकर्मणः' },
+      { scriptureId: 'bhagavadgita', chapter: 4, verse: 18, snippet: 'कर्मण्यकर्म यः पश्येदकर्मणि च कर्म यः। स बुद्धिमान् मनुष्येषु स युक्तः कृत्स्नकर्मकृत्' }
     ],
     conceptId: 'karma',
     reviewStatus: 'approved',
@@ -98,8 +98,8 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
       }
     ],
     relatedVerses: [
-      { scriptureId: 'bhagavadgita', chapter: 2, verse: 47, snippet: 'कर्मण्येवाधिकारस्ते...' },
-      { scriptureId: 'bhagavadgita', chapter: 18, verse: 47, snippet: 'श्रेयान्स्वधर्मो विगुणः...' }
+      { scriptureId: 'bhagavadgita', chapter: 2, verse: 47, snippet: 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि' },
+      { scriptureId: 'bhagavadgita', chapter: 18, verse: 47, snippet: 'श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्। स्वभावनियतं कर्म कुर्वन्नाप्नोति किल्बिषम्' }
     ],
     conceptId: 'dharma',
     reviewStatus: 'approved',
@@ -127,9 +127,9 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
       }
     ],
     relatedVerses: [
-      { scriptureId: 'bhagavadgita', chapter: 2, verse: 47, snippet: 'मा फलेषु कदाचन...' },
-      { scriptureId: 'bhagavadgita', chapter: 2, verse: 51, snippet: 'कर्मजं बुद्धियुक्ता हि फलं त्यक्त्वा...' },
-      { scriptureId: 'bhagavadgita', chapter: 5, verse: 12, snippet: 'युक्तः कर्मफलं त्यक्त्वा शान्तिमाप्नोति...' }
+      { scriptureId: 'bhagavadgita', chapter: 2, verse: 47, snippet: 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि' },
+      { scriptureId: 'bhagavadgita', chapter: 2, verse: 51, snippet: 'कर्मजं बुद्धियुक्ता हि फलं त्यक्त्वा मनीषिणः। जन्मबन्धविनिर्मुक्ताः पदं गच्छन्त्यनामयम्' },
+      { scriptureId: 'bhagavadgita', chapter: 5, verse: 12, snippet: 'युक्तः कर्मफलं त्यक्त्वा शान्तिमाप्नोति नैष्ठिकीम्। अयुक्तः कामकारेण फले सक्तो निबध्यते' }
     ],
     conceptId: 'karma',
     reviewStatus: 'approved',
@@ -157,9 +157,9 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
       }
     ],
     relatedVerses: [
-      { scriptureId: 'bhagavadgita', chapter: 2, verse: 47, snippet: 'मा ते सङ्गोऽस्त्वकर्मणि...' },
-      { scriptureId: 'bhagavadgita', chapter: 3, verse: 4, snippet: 'न कर्मणामनारम्भान्नैष्कर्म्यं पुरुषोऽश्नुते...' },
-      { scriptureId: 'bhagavadgita', chapter: 4, verse: 17, snippet: 'कर्मणो ह्यपि बोद्धव्यं बोद्धव्यं च विकर्मणः...' }
+      { scriptureId: 'bhagavadgita', chapter: 2, verse: 47, snippet: 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि' },
+      { scriptureId: 'bhagavadgita', chapter: 3, verse: 4, snippet: 'न कर्मणामनारम्भान्नैष्कर्म्यं पुरुषोऽश्नुते। न च संन्यसनादेव सिद्धिं समधिगच्छति' },
+      { scriptureId: 'bhagavadgita', chapter: 4, verse: 17, snippet: 'कर्मणो ह्यपि बोद्धव्यं बोद्धव्यं च विकर्मणः। अकर्मणश्च बोद्धव्यं गहना कर्मणो गतिः' }
     ],
     conceptId: 'karma',
     reviewStatus: 'approved',
@@ -187,9 +187,9 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
       }
     ],
     relatedVerses: [
-      { scriptureId: 'bhagavadgita', chapter: 1, verse: 1, snippet: 'धर्मक्षेत्रे कुरुक्षेत्रे...' },
-      { scriptureId: 'bhagavadgita', chapter: 4, verse: 7, snippet: 'यदा यदा हि धर्मस्य ग्लानिर्भवति भारत...' },
-      { scriptureId: 'bhagavadgita', chapter: 18, verse: 66, snippet: 'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज...' }
+      { scriptureId: 'bhagavadgita', chapter: 1, verse: 1, snippet: 'धृतराष्ट्र उवाच धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः। मामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय' },
+      { scriptureId: 'bhagavadgita', chapter: 4, verse: 7, snippet: 'यदा यदा हि धर्मस्य ग्लानिर्भवति भारत। अभ्युत्थानमधर्मस्य तदाऽऽत्मानं सृजाम्यहम्' },
+      { scriptureId: 'bhagavadgita', chapter: 18, verse: 66, snippet: 'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज। अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः' }
     ],
     conceptId: 'dharma',
     reviewStatus: 'approved',
@@ -217,9 +217,9 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
       }
     ],
     relatedVerses: [
-      { scriptureId: 'bhagavadgita', chapter: 2, verse: 48, snippet: 'योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय...' },
-      { scriptureId: 'bhagavadgita', chapter: 2, verse: 50, snippet: 'योगः कर्मसु कौशलम्...' },
-      { scriptureId: 'bhagavadgita', chapter: 6, verse: 5, snippet: 'उद्धरेदात्मनात्मानं नात्मानमवसादयेत्...' }
+      { scriptureId: 'bhagavadgita', chapter: 2, verse: 48, snippet: 'योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय। सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते' },
+      { scriptureId: 'bhagavadgita', chapter: 2, verse: 50, snippet: 'बुद्धियुक्तो जहातीह उभे सुकृतदुष्कृते। तस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम्' },
+      { scriptureId: 'bhagavadgita', chapter: 6, verse: 5, snippet: 'उद्धरेदात्मनाऽऽत्मानं नात्मानमवसादयेत्। आत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः' }
     ],
     conceptId: 'yoga',
     reviewStatus: 'approved',
@@ -247,8 +247,8 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
       }
     ],
     relatedVerses: [
-      { scriptureId: 'bhagavadgita', chapter: 2, verse: 20, snippet: 'न जायते म्रियते वा कदाचिन्...' },
-      { scriptureId: 'bhagavadgita', chapter: 2, verse: 22, snippet: 'वासांसि जीर्णानि यथा विहाय...' }
+      { scriptureId: 'bhagavadgita', chapter: 2, verse: 20, snippet: 'न जायते म्रियते वा कदाचि न्नायं भूत्वा भविता वा न भूयः। अजो नित्यः शाश्वतोऽयं पुराणो न हन्यते हन्यमाने शरीरे' },
+      { scriptureId: 'bhagavadgita', chapter: 2, verse: 22, snippet: 'वासांसि जीर्णानि यथा विहाय नवानि गृह्णाति नरोऽपराणि। तथा शरीराणि विहाय जीर्णा न्यन्यानि संयाति नवानि देही' }
     ],
     conceptId: 'atman',
     reviewStatus: 'approved',
@@ -276,8 +276,8 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
       }
     ],
     relatedVerses: [
-      { scriptureId: 'bhagavadgita', chapter: 5, verse: 28, snippet: 'यतेन्द्रियमनोबुद्धिर्मुनिर्मोक्षपरायणः...' },
-      { scriptureId: 'bhagavadgita', chapter: 18, verse: 66, snippet: 'अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः...' }
+      { scriptureId: 'bhagavadgita', chapter: 5, verse: 28, snippet: 'यतेन्द्रियमनोबुद्धिर्मुनिर्मोक्षपरायणः। विगतेच्छाभयक्रोधो यः सदा मुक्त एव सः' },
+      { scriptureId: 'bhagavadgita', chapter: 18, verse: 66, snippet: 'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज। अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः' }
     ],
     conceptId: 'moksha',
     reviewStatus: 'approved',
@@ -305,8 +305,8 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
       }
     ],
     relatedVerses: [
-      { scriptureId: 'bhagavadgita', chapter: 2, verse: 54, snippet: 'स्थितप्रज्ञस्य का भाषा समाधिस्थस्य केशव...' },
-      { scriptureId: 'bhagavadgita', chapter: 2, verse: 56, snippet: 'दुःखेष्वनुद्विग्नमनाः सुखेषु विगतस्पृहः...' }
+      { scriptureId: 'bhagavadgita', chapter: 2, verse: 54, snippet: 'अर्जुन उवाच स्थितप्रज्ञस्य का भाषा समाधिस्थस्य केशव। स्थितधीः किं प्रभाषेत किमासीत व्रजेत किम्' },
+      { scriptureId: 'bhagavadgita', chapter: 2, verse: 56, snippet: 'दुःखेष्वनुद्विग्नमनाः सुखेषु विगतस्पृहः। वीतरागभयक्रोधः स्थितधीर्मुनिरुच्यते' }
     ],
     conceptId: 'psychology',
     reviewStatus: 'approved',
@@ -342,13 +342,17 @@ export function findLexiconEntry(query: string): SanskritLexiconEntry | null {
   for (const entry of Object.values(SANSKRIT_LEXICON)) {
     if (entry.id === q) return entry;
 
+    // Partial matches only for words of four letters or more: a short word such as
+    // mā ("not") or na would otherwise match inside ātman, jñāna and others.
+    const partial = Array.from(q).length >= 4;
+
     // Check Devanagari normalized
     const devNormalized = normalizeSanskritQuery(entry.termDevanagari);
-    if (devNormalized.includes(q) || q.includes(devNormalized)) return entry;
+    if (partial && (devNormalized.includes(q) || q.includes(devNormalized))) return entry;
 
     // Check IAST
     const iastNormalized = normalizeSanskritQuery(entry.termIast);
-    if (iastNormalized.includes(q) || q.includes(iastNormalized)) return entry;
+    if (partial && (iastNormalized.includes(q) || q.includes(iastNormalized))) return entry;
 
     // Specific mapping checks for inflected forms
     if (q === 'कर्मणि' || q === 'karmani' || q === 'karmaṇi') {

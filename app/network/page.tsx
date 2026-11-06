@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { VerseNetworkClient } from './VerseNetworkClient';
 import { NetworkHero } from './NetworkHero';
+import { SITE_URL } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Interactive Verse Relationship Engine & Knowledge Graph · Dharma Granth',
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     title: 'Interactive Verse Relationship Engine · Dharma Granth',
     description:
       'Explore interconnected canonical verses across the Bhagavad Gita, Upanishads, Vedas, and Epics in an interactive visual network.',
-    url: 'https://dharmagranth.dev/network/',
+    url: `${SITE_URL}/network/`,
   },
   alternates: { canonical: '/network/' },
 };

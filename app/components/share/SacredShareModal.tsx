@@ -19,7 +19,7 @@ import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } 
 
 export type ShareFormat = 'story' | 'post' | 'landscape';
 export type ShareTheme = 'swarna' | 'midnight' | 'ashram' | 'himalaya';
-export type ContentMode = 'full' | 'bilingual' | 'hindi' | 'quote';
+export type ContentMode = 'three-pillars' | 'full' | 'bilingual' | 'hindi' | 'quote';
 
 export interface SacredShareData {
   title: string;
@@ -28,6 +28,8 @@ export interface SacredShareData {
   transliteration?: string;
   translation: string;
   hindi?: string;
+  vyakhya?: string;
+  modernContext?: string;
   quote?: string;
   url: string;
 }
@@ -180,9 +182,11 @@ export function SacredShareModal({ isOpen, onClose, data }: Props) {
     '',
     data.sanskrit ? data.sanskrit.trim() : '',
     '',
-    data.hindi ? `✨ *भावार्थ (Hindi):* ${data.hindi}` : '',
-    data.translation ? `📖 *Meaning (English):* ${data.translation}` : '',
-    data.quote ? `💡 *सूत्र:* ${data.quote}` : '',
+    data.hindi ? `✨ *भावार्थ (Bhavartha):* ${data.hindi}` : '',
+    data.vyakhya ? `📜 *व्याख्या (Vyakhya):* ${data.vyakhya}` : '',
+    data.modernContext ? `⚡ *आधुनिक संदर्भ (Modern Context):* ${data.modernContext}` : '',
+    !data.vyakhya && data.translation ? `📖 *Meaning (English):* ${data.translation}` : '',
+    data.quote ? `💡 *सूत्र (Key Verse):* ${data.quote}` : '',
     '',
     `🔗 *पूरा पाठ एवं अध्ययन:* ${data.url}`,
     '— *Dharma Granth* (dharmagranth.dev)',
@@ -393,6 +397,18 @@ export function SacredShareModal({ isOpen, onClose, data }: Props) {
               <div className="flex items-center gap-1 flex-wrap">
                 <button
                   type="button"
+                  onClick={() => setContentMode('three-pillars')}
+                  className={`inline-flex items-center gap-1 rounded-lg px-2.5 py-0.5 text-2xs font-semibold transition ${
+                    contentMode === 'three-pillars'
+                      ? 'bg-saffron-600 text-white font-bold shadow-2xs'
+                      : 'text-dharma-muted hover:text-dharma-text'
+                  }`}
+                >
+                  <Sparkles className="h-2.5 w-2.5" />
+                  <span>3 Pillars (भावार्थ · व्याख्या · संदर्भ)</span>
+                </button>
+                <button
+                  type="button"
                   onClick={() => setContentMode('full')}
                   className={`rounded-lg px-2 py-0.5 text-2xs font-semibold transition ${
                     contentMode === 'full'
@@ -565,8 +581,14 @@ export function SacredShareModal({ isOpen, onClose, data }: Props) {
                       <p
                         style={{
                           margin: 0,
-                          fontSize: format === 'story' ? 22 : format === 'post' ? 20 : 19,
-                          lineHeight: format === 'story' ? '38px' : '34px',
+                          fontSize:
+                            contentMode === 'three-pillars'
+                              ? (format === 'story' ? 20 : format === 'post' ? 15.5 : 15)
+                              : (format === 'story' ? 22 : format === 'post' ? 20 : 19),
+                          lineHeight:
+                            contentMode === 'three-pillars'
+                              ? (format === 'story' ? '32px' : format === 'post' ? '24px' : '23px')
+                              : (format === 'story' ? '38px' : '34px'),
                           fontWeight: 700,
                           whiteSpace: 'pre-line',
                           color: currentTheme.sanskritColor,
@@ -602,49 +624,170 @@ export function SacredShareModal({ isOpen, onClose, data }: Props) {
                     />
 
                     {/* Translations according to ContentMode */}
-                    {(contentMode === 'full' || contentMode === 'hindi') && data.hindi && (
-                      <p
+                    {contentMode === 'three-pillars' ? (
+                      <div
                         style={{
-                          margin: 0,
-                          fontSize: format === 'story' ? 14 : 12.5,
-                          lineHeight: format === 'story' ? '24px' : '20px',
-                          fontWeight: 600,
-                          color: currentTheme.textColor,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: format === 'story' ? 10 : 6,
+                          width: '100%',
+                          textAlign: 'left',
+                          marginTop: 4,
                         }}
                       >
-                        {data.hindi}
-                      </p>
-                    )}
+                        {data.hindi && (
+                          <div
+                            style={{
+                              background: currentTheme.pillBg,
+                              borderRadius: 14,
+                              padding: format === 'story' ? '8px 12px' : '6px 10px',
+                              border: `1px solid ${currentTheme.omBorder}`,
+                            }}
+                          >
+                            <span
+                              style={{
+                                display: 'block',
+                                fontSize: 9,
+                                fontWeight: 800,
+                                letterSpacing: 1.5,
+                                textTransform: 'uppercase',
+                                color: currentTheme.accentColor,
+                                marginBottom: 2,
+                              }}
+                            >
+                              ॥ भावार्थ · Bhavartha ॥
+                            </span>
+                            <p
+                              style={{
+                                margin: 0,
+                                fontSize: format === 'story' ? 12 : 11,
+                                lineHeight: format === 'story' ? '18px' : '15px',
+                                fontWeight: 600,
+                                color: currentTheme.textColor,
+                              }}
+                            >
+                              {data.hindi}
+                            </p>
+                          </div>
+                        )}
+                        {(data.vyakhya || data.translation) && (
+                          <div
+                            style={{
+                              background: currentTheme.pillBg,
+                              borderRadius: 14,
+                              padding: format === 'story' ? '8px 12px' : '6px 10px',
+                              border: `1px solid ${currentTheme.omBorder}`,
+                            }}
+                          >
+                            <span
+                              style={{
+                                display: 'block',
+                                fontSize: 9,
+                                fontWeight: 800,
+                                letterSpacing: 1.5,
+                                textTransform: 'uppercase',
+                                color: currentTheme.accentColor,
+                                marginBottom: 2,
+                              }}
+                            >
+                              ॥ व्याख्या · Exposition ॥
+                            </span>
+                            <p
+                              style={{
+                                margin: 0,
+                                fontSize: format === 'story' ? 11.5 : 10.5,
+                                lineHeight: format === 'story' ? '17px' : '15px',
+                                color: currentTheme.textColor,
+                                opacity: 0.95,
+                              }}
+                            >
+                              {data.vyakhya || data.translation}
+                            </p>
+                          </div>
+                        )}
+                        {(data.modernContext || data.quote) && (
+                          <div
+                            style={{
+                              background: currentTheme.pillBg,
+                              borderRadius: 14,
+                              padding: format === 'story' ? '8px 12px' : '6px 10px',
+                              border: `1px solid ${currentTheme.omBorder}`,
+                            }}
+                          >
+                            <span
+                              style={{
+                                display: 'block',
+                                fontSize: 9,
+                                fontWeight: 800,
+                                letterSpacing: 1.5,
+                                textTransform: 'uppercase',
+                                color: currentTheme.accentColor,
+                                marginBottom: 2,
+                              }}
+                            >
+                              ॥ आधुनिक संदर्भ · Modern Context ॥
+                            </span>
+                            <p
+                              style={{
+                                margin: 0,
+                                fontSize: format === 'story' ? 11.5 : 10.5,
+                                lineHeight: format === 'story' ? '17px' : '15px',
+                                color: currentTheme.textColor,
+                                opacity: 0.95,
+                              }}
+                            >
+                              {data.modernContext || data.quote}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <>
+                        {(contentMode === 'full' || contentMode === 'hindi') && data.hindi && (
+                          <p
+                            style={{
+                              margin: 0,
+                              fontSize: format === 'story' ? 14 : 12.5,
+                              lineHeight: format === 'story' ? '24px' : '20px',
+                              fontWeight: 600,
+                              color: currentTheme.textColor,
+                            }}
+                          >
+                            {data.hindi}
+                          </p>
+                        )}
 
-                    {(contentMode === 'full' || contentMode === 'bilingual') && data.translation && (
-                      <p
-                        style={{
-                          margin: contentMode === 'full' ? '8px 0 0' : 0,
-                          fontSize: format === 'story' ? 13 : 12,
-                          lineHeight: format === 'story' ? '22px' : '19px',
-                          fontFamily: 'serif',
-                          color: currentTheme.textColor,
-                          opacity: 0.9,
-                        }}
-                      >
-                        “{data.translation}”
-                      </p>
-                    )}
+                        {(contentMode === 'full' || contentMode === 'bilingual') && data.translation && (
+                          <p
+                            style={{
+                              margin: contentMode === 'full' ? '8px 0 0' : 0,
+                              fontSize: format === 'story' ? 13 : 12,
+                              lineHeight: format === 'story' ? '22px' : '19px',
+                              fontFamily: 'serif',
+                              color: currentTheme.textColor,
+                              opacity: 0.9,
+                            }}
+                          >
+                            “{data.translation}”
+                          </p>
+                        )}
 
-                    {contentMode === 'quote' && data.quote && (
-                      <p
-                        style={{
-                          margin: 0,
-                          fontSize: format === 'story' ? 18 : 16,
-                          lineHeight: format === 'story' ? '30px' : '26px',
-                          fontFamily: 'serif',
-                          fontStyle: 'italic',
-                          color: currentTheme.sanskritColor,
-                          fontWeight: 600,
-                        }}
-                      >
-                        “{data.quote}”
-                      </p>
+                        {contentMode === 'quote' && data.quote && (
+                          <p
+                            style={{
+                              margin: 0,
+                              fontSize: format === 'story' ? 18 : 16,
+                              lineHeight: format === 'story' ? '30px' : '26px',
+                              fontFamily: 'serif',
+                              fontStyle: 'italic',
+                              color: currentTheme.sanskritColor,
+                              fontWeight: 600,
+                            }}
+                          >
+                            “{data.quote}”
+                          </p>
+                        )}
+                      </>
                     )}
                   </div>
 

@@ -9,6 +9,10 @@
  * sources, or generated via the /api/interpret endpoint.
  *
  * Run: npm run seed:vedas
+ *      npm run seed:vedas -- --only rigveda [--previous <old rigveda.json>] [--realign data/realign/<table>.json]
+ *
+ * The Rig Veda keeps the meanings already published for it (scripts/lib/realign-meanings.ts);
+ * `--previous` defaults to the current output file.
  */
 import {
   FullChapter,
@@ -18,8 +22,20 @@ import {
   log,
   writeScripture,
 } from "./lib/scripture-schema";
+import {
+  carryOverMeanings,
+  iastFromDevanagari,
+  readPreviousScripture,
+  readRealignment,
+  uniqueVerseNumbers,
+} from "./lib/realign-meanings";
 
 const BASE = "https://raw.githubusercontent.com/bhavykhatri/DharmicData/master";
+
+function arg(name: string): string | undefined {
+  const i = process.argv.indexOf(name);
+  return i >= 0 ? process.argv[i + 1] : undefined;
+}
 
 interface VedaSpec {
   id: string;
@@ -71,6 +87,73 @@ function splitMantras(text: string, sukta: number | string): FullVerse[] {
   return verses;
 }
 
+const SVARA = /[॒॑]/;
+
+/**
+ * A Rig Veda sukta as DharmicData prints it: a header paragraph without svara
+ * marks (mantra count, ṛṣi, devatā, chandas), then each mantra with its halves
+ * in separate paragraphs, ending in a marker. Markers are mostly ॥N॥, but some
+ * are broken (॥४॥३ for 43 in 1.164) or carry a second count (॥३॥६॥ in the
+ * Parāśara suktas 1.65–1.70). Mantras are numbered in order. Where the header
+ * counts more mantras than the text separates (a missing marker merges two),
+ * the printed numbers are used instead if they end on the header's count, so
+ * the mantras after the merge keep their places. Visarga printed as ":" after
+ * a svara mark becomes "ः"; the svara marks are kept.
+ */
+function splitRigvedaSukta(
+  text: string,
+  sukta: number,
+): { verses: FullVerse[]; declared?: number; problems: string[] } {
+  const paragraphs = text
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  let declared: number | undefined;
+  if (paragraphs.length > 0 && !SVARA.test(paragraphs[0])) {
+    const header = paragraphs.shift() ?? "";
+    const count = /^\(?\s*([०-९0-9]+)\s*\)?/.exec(header);
+    if (count) declared = devanagariNumber(count[1]);
+  }
+  const body = paragraphs.join("\n");
+  const marker = /॥\s*([०-९0-9]+)((?:\s*॥?\s*[०-९0-9]+)*)\s*॥*/g;
+
+  const mantras: Array<{ text: string; printed?: number }> = [];
+  const push = (raw: string, printed?: number) => {
+    const text = raw.replace(/:/g, "ः").replace(/\s+/g, " ").trim();
+    if (text) mantras.push({ text, printed });
+  };
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = marker.exec(body)) !== null) {
+    push(body.slice(lastIndex, match.index), devanagariNumber(match[1]));
+    lastIndex = match.index + match[0].length;
+  }
+  // The last mantra of 2.11 has no marker; a mandala's closing colophon ("इति … समाप्तम्") is not a mantra.
+  const tail = body.slice(lastIndex).trim();
+  if (SVARA.test(tail)) push(tail);
+
+  const problems: string[] = [];
+  let numbers = mantras.map((_, i) => i + 1);
+  if (declared !== undefined && declared !== mantras.length) {
+    let previous = 0;
+    const printed = mantras.map((m) => (previous = m.printed !== undefined && m.printed > previous ? m.printed : previous + 1));
+    if (printed[printed.length - 1] === declared) {
+      numbers = printed;
+      printed.forEach((n, i) => {
+        const before = i > 0 ? printed[i - 1] : 0;
+        if (n > before + 1) problems.push(`mantra ${before + 1}${n - 1 > before + 1 ? `–${n - 1}` : ""} has no marker of its own (merged into the one before)`);
+      });
+    } else {
+      problems.push(`header counts ${declared} mantras, the text separates ${mantras.length}`);
+    }
+  }
+  return {
+    verses: mantras.map((m, i) => ({ number: `${sukta}.${numbers[i]}`, sanskrit: `${m.text} ॥` })),
+    declared,
+    problems,
+  };
+}
+
 const VEDAS: VedaSpec[] = [
   {
     id: "rigveda",
@@ -94,7 +177,71 @@ const VEDAS: VedaSpec[] = [
   },
 ];
 
+async function processRigveda(spec: VedaSpec): Promise<void> {
+  const outputPath = `public/data/scriptures-full/${spec.id}.json`;
+  const previousPath = arg("--previous") ?? outputPath;
+  const realignPath = arg("--realign");
+  const previous = readPreviousScripture(previousPath);
+  const realign = realignPath ? readRealignment(realignPath, spec.id) : undefined;
+
+  log(`Fetching ${spec.title} from DharmicData...`);
+  const chapters: FullChapter[] = [];
+  let totalVerses = 0;
+
+  for (let n = 1; n <= spec.count; n++) {
+    // A missing mandala must fail the run, not ship a shorter text.
+    const raw = await fetchJson<Array<{ sukta?: number | string; text?: string }>>(
+      `${BASE}/${spec.repoFolder}/${spec.filePattern(n)}`,
+    );
+    const verses: FullVerse[] = [];
+    const problems: string[] = [];
+    raw.forEach((item, i) => {
+      const sukta = Number(item.sukta) || i + 1;
+      const parsed = splitRigvedaSukta(item.text ?? "", sukta);
+      verses.push(...parsed.verses);
+      problems.push(...parsed.problems.map((p) => `${n}.${sukta}: ${p}`));
+    });
+    for (const verse of verses) verse.transliteration = iastFromDevanagari(verse.sanskrit ?? "");
+    const renamed = uniqueVerseNumbers(verses);
+
+    chapters.push({
+      number: n,
+      title: `${spec.unit} ${n}`,
+      titleSanskrit: `${spec.unitSanskrit} ${n}`,
+      verses,
+    });
+    totalVerses += verses.length;
+    log(`  ${spec.unit} ${n}: ${raw.length} suktas, ${verses.length} mantras${renamed ? ` (${renamed} repeated numbers suffixed)` : ""}`);
+    for (const p of problems) log(`    source: ${p}`);
+  }
+
+  if (previous) {
+    const { carried, dropped } = carryOverMeanings(previous.chapters, chapters, realign);
+    log(`Meanings carried over from ${previousPath}: ${carried.length}`);
+    for (const line of dropped) log(`  not carried: ${line}`);
+  }
+
+  const scripture: FullScripture = {
+    id: spec.id,
+    title: spec.title,
+    titleSanskrit: spec.titleSanskrit,
+    category: "veda",
+    source: {
+      repo: "https://github.com/bhavykhatri/DharmicData",
+      license: "Sanskrit mula text - public domain. Verify any translations separately.",
+      fetchedAt: new Date().toISOString(),
+    },
+    totalVerses,
+    totalChapters: chapters.length,
+    chapters,
+  };
+
+  const outPath = writeScripture(scripture);
+  log(`Wrote ${totalVerses} ${spec.title} mantras -> ${outPath}`);
+}
+
 async function processVeda(spec: VedaSpec): Promise<void> {
+  if (spec.id === "rigveda") return processRigveda(spec);
   log(`Fetching ${spec.title} from DharmicData...`);
   const chapters: FullChapter[] = [];
   let totalVerses = 0;
@@ -248,9 +395,12 @@ async function processYajurveda(): Promise<void> {
 }
 
 async function main(): Promise<void> {
+  const only = arg("--only");
   for (const spec of VEDAS) {
+    if (only && spec.id !== only) continue;
     await processVeda(spec);
   }
+  if (only) return;
   await processYajurveda();
   log("Note: Sama Veda is not yet in this seeder.");
   log("Most of its mantras are Rig Veda verses set to chant patterns; needs a dedicated source like Aitareya Aranyaka or VedaWeb to seed properly.");

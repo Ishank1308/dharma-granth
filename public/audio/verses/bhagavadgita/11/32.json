@@ -1,0 +1,76 @@
+{
+  "verseNumber": 32,
+  "durationMs": 13653,
+  "words": [
+    {
+      "word": "श्री",
+      "startTimeMs": 0,
+      "endTimeMs": 302
+    },
+    {
+      "word": "भगवानुवाच",
+      "startTimeMs": 360,
+      "endTimeMs": 1103
+    },
+    {
+      "word": "कालोऽस्मि",
+      "startTimeMs": 1173,
+      "endTimeMs": 1834
+    },
+    {
+      "word": "लोकक्षयकृत्प्रवृद्धो",
+      "startTimeMs": 2078,
+      "endTimeMs": 3680
+    },
+    {
+      "word": "लोकान्समाहर्तुमिह",
+      "startTimeMs": 3959,
+      "endTimeMs": 5283
+    },
+    {
+      "word": "प्रवृत्तः",
+      "startTimeMs": 5375,
+      "endTimeMs": 6037
+    },
+    {
+      "word": "ऋतेऽपि",
+      "startTimeMs": 6664,
+      "endTimeMs": 7198
+    },
+    {
+      "word": "त्वां",
+      "startTimeMs": 7245,
+      "endTimeMs": 7581
+    },
+    {
+      "word": "न",
+      "startTimeMs": 7628,
+      "endTimeMs": 7697
+    },
+    {
+      "word": "भविष्यन्ति",
+      "startTimeMs": 7767,
+      "endTimeMs": 8359
+    },
+    {
+      "word": "सर्वे",
+      "startTimeMs": 8429,
+      "endTimeMs": 8824
+    },
+    {
+      "word": "येऽवस्थिताः",
+      "startTimeMs": 9149,
+      "endTimeMs": 9938
+    },
+    {
+      "word": "प्रत्यनीकेषु",
+      "startTimeMs": 9996,
+      "endTimeMs": 11041
+    },
+    {
+      "word": "योधाः",
+      "startTimeMs": 11192,
+      "endTimeMs": 11749
+    }
+  ]
+}

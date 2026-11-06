@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { ArrowRight, BookOpen, Filter, MessageSquare, Volume2, X } from 'lucide-react';
 import { GITA_SPEAKERS, getGitaDialogueTurn, type GitaSpeakerId } from '@/data/gita-dialogue';
 import { cleanVerseField, toAsciiDigits } from '@/lib/verse-format';
+import { readHref } from '@/lib/verse-paths';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 
 interface VerseItem {
   number: number | string;
@@ -139,13 +140,13 @@ export function ConversationModeView({
                   <span className="rounded-full bg-dharma-card border border-dharma-border px-2.5 py-0.5 text-xs font-bold text-dharma-muted">
                     श्लोक {chapterId}.{vNum}
                   </span>
-                  <Link
-                    href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${vNum}`}
+                  <VerseHrefLink
+                    href={readHref(scriptureId, chapterId, vNum)}
                     className="focus-ring inline-flex min-h-[32px] items-center gap-1 rounded-lg border border-dharma-border bg-dharma-card px-2.5 py-1 text-xs font-semibold text-saffron-800 dark:text-saffron-300 hover:border-saffron-500 transition"
                   >
                     <span>Full Study</span>
                     <ArrowRight className="h-3 w-3" />
-                  </Link>
+                  </VerseHrefLink>
                 </div>
               </div>
 

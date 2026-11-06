@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { JsonLd } from '@/app/components/JsonLd';
-import { pageLd, articleLd, definedTermLd } from '@/lib/jsonld';
+import { pageLd, articleLd, definedTermLd, SITE_URL } from '@/lib/jsonld';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
@@ -33,7 +33,7 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
       images: [DEFAULT_OG_IMAGE],
       title: `${term.term} (${term.sanskrit}) — Dharma Granth Dictionary`,
       description: term.shortDef,
-      url: `https://dharmagranth.dev/dictionary/${term.id}/`,
+      url: `${SITE_URL}/dictionary/${term.id}/`,
     },
   };
 }

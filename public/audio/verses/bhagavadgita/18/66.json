@@ -1,0 +1,56 @@
+{
+  "verseNumber": 66,
+  "durationMs": 7245,
+  "words": [
+    {
+      "word": "सर्वधर्मान्परित्यज्य",
+      "startTimeMs": 0,
+      "endTimeMs": 1428
+    },
+    {
+      "word": "मामेकं",
+      "startTimeMs": 1498,
+      "endTimeMs": 2032
+    },
+    {
+      "word": "शरणं",
+      "startTimeMs": 2101,
+      "endTimeMs": 2531
+    },
+    {
+      "word": "व्रज",
+      "startTimeMs": 2589,
+      "endTimeMs": 2856
+    },
+    {
+      "word": "अहं",
+      "startTimeMs": 2972,
+      "endTimeMs": 3297
+    },
+    {
+      "word": "त्वा",
+      "startTimeMs": 3379,
+      "endTimeMs": 3715
+    },
+    {
+      "word": "सर्वपापेभ्यो",
+      "startTimeMs": 4098,
+      "endTimeMs": 5062
+    },
+    {
+      "word": "मोक्षयिष्यामि",
+      "startTimeMs": 5120,
+      "endTimeMs": 6072
+    },
+    {
+      "word": "मा",
+      "startTimeMs": 6118,
+      "endTimeMs": 6327
+    },
+    {
+      "word": "शुचः",
+      "startTimeMs": 6409,
+      "endTimeMs": 6954
+    }
+  ]
+}

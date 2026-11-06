@@ -1327,6 +1327,129 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
       'Bhagavad Gita Chapter 15',
     ],
   },
+
+  lokasamgraha: {
+    id: 'lokasamgraha',
+    label: 'Lokasamgraha',
+    sanskrit: 'लोकसंग्रह',
+    transliteration: 'lokasaṅgraha',
+    category: 'practice',
+    colorGradient: 'from-amber-600 via-saffron-700 to-emerald-950',
+    simpleDefinition: {
+      en: 'The universal welfare, upliftment, holding together, and protection of all beings—the supreme compassionate duty that drives enlightened seers and saints to act selflessly in the world.',
+      hi: 'समस्त प्राणियों का कल्याण, समाज का संधारण, संरक्षण और आत्मिक उत्थान—वह निष्काम पावन कर्तव्य जिसके लिए आत्मज्ञानी सन्त, ऋषि और महापुरुष लोक-कल्याण और विश्व-व्यवस्था की रक्षा हेतु निरंतर कर्म करते हैं।',
+    },
+    derivation: {
+      root: 'लोक् (lok) + सम् (sam) + ग्रह् (grah)',
+      rootMeaning: 'To see / perceive (loka = all beings/world) + hold together completely (samgraha)',
+      rootMeaningHi: 'लोक (समस्त प्राणी व संसार) का सम्यक् संग्रह (धारण, पोषण व कल्याण)',
+      etymologyEn: 'Formed from "loka" (the living world/society) + prefix "sam" (thoroughly, harmoniously) + verbal root "grah" (to hold, support, gather). In Paninian grammar: "Lokānāṁ saṅgrahaḥ lokasaṅgrahaḥ" — that which holds human society together in righteousness, preventing moral fragmentation and despair.',
+      etymologyHi: 'संस्कृत में "लोकानां संग्रहः लोकसंग्रहः" — अर्थात् संसार के जीवों को सन्मार्ग पर स्थिर रखना, समाज को पतन और अव्यवस्था से बचाना और सबका कल्याण साधन करना ही लोकसंग्रह है।',
+    },
+    contextualMeanings: [
+      {
+        context: 'Exemplary Moral Leadership (श्रेष्ठ पुरुष का आदर्श)',
+        contextHi: 'श्रेष्ठ पुरुष का आदर्श आचरण',
+        meaningEn: 'The enlightened leader acts with unswerving dedication, not for personal profit, but to set a living standard that inspires and elevates society (Gita 3.21).',
+        meaningHi: 'ज्ञानी महापुरुष स्वयं किसी स्वार्थ के बिना भी समाज के मार्गदर्शन और आदर्श स्थापित करने के लिए श्रेष्ठ कर्म करते हैं (गीता ३.२१)।',
+      },
+      {
+        context: 'Universal Compassion in Action (सर्वभूतहित)',
+        contextHi: 'प्राणिमात्र का कल्याण (सर्वभूतहिते रताः)',
+        meaningEn: 'Active benevolence seeing the same divine Self residing in all creatures (Atmavat Sarvabhuteshu), translating spiritual realization into loving service.',
+        meaningHi: 'सब प्राणियों में एक ही परमात्मा को देखकर (आत्मवत् सर्वभूतेषु) उनकी सेवा और भलाई में निरंतर संलग्न रहना।',
+      },
+      {
+        context: 'Cosmic Stewardship & Reciprocity (यज्ञ-चक्र संधारण)',
+        contextHi: 'सृष्टि-चक्र का पोषण',
+        meaningEn: 'Sustaining the cosmic wheel of mutual nourishment, giving back selflessly to nature and community more than one consumes.',
+        meaningHi: 'प्रकृति और समाज से जो कुछ मिला है, उससे अधिक निःस्वार्थ भाव से लौटाकर सृष्टि-संतुलन को बनाए रखना।',
+      },
+      {
+        context: 'Refusal of Escapism (अकर्मण्यता व पलायन का निषेध)',
+        contextHi: 'पलायनवाद का त्याग',
+        meaningEn: 'True renunciation is the surrender of ego and selfishness, never the abandonment of moral and social duty.',
+        meaningHi: 'सच्चा संन्यास अहंकार और वासना का त्याग है, समाज और कर्तव्य से भागना नहीं।',
+      },
+    ],
+    verses: [
+      {
+        sanskrit: 'कर्मणैव हि संसिद्धिमास्थिता जनकादयः ।\nलोकसंग्रहमेवापि संपश्यन्कर्तुमर्हसि ॥',
+        transliteration: 'karmaṇaiva hi saṁsiddhim āsthitā janakādayaḥ |\nlokasaṅgraham evāpi sampaśyan kartum arhasi ||',
+        translationEn: 'King Janaka and other illuminated seers attained perfection through selfless action alone. Therefore, even with a view to the holding together and welfare of the world, you should perform action.',
+        translationHi: 'राजा जनक जैसे ज्ञानी महापुरुष भी निष्काम कर्म के द्वारा ही परम सिद्धि को प्राप्त हुए। इसलिए लोकसंग्रह (संसार के कल्याण व व्यवस्था) को देखते हुए भी तुम्हें कर्म करना ही योग्य है।',
+        reference: 'Bhagavad Gita 3.20',
+        referenceHi: 'भगवद्गीता ३.२०',
+        href: '/scripture/bhagavadgita/chapter/3/verse/20',
+      },
+      {
+        sanskrit: 'सक्ताः कर्मण्यविद्वांसो यथा कुर्वन्ति भारत ।\nकुर्याद्विद्वांस्तथासक्तश्चिकीर्षुर्लोकसंग्रहम् ॥',
+        transliteration: 'saktāḥ karmaṇy avidvāṁso yathā kurvanti bhārata |\nkuryād vidvāṁs tathāsaktaś cikīrṣur lokasaṅgraham ||',
+        translationEn: 'As the unenlightened act attached to the fruits of action, O Bharata, so should the enlightened act without attachment, desiring the guidance and welfare of humanity (Lokasamgraha).',
+        translationHi: 'हे भारत! अज्ञानी मनुष्य जिस प्रकार फल में आसक्त होकर कर्म करते हैं, ज्ञानी पुरुष को आसक्तिरहित होकर लोकसंग्रह (संसार के कल्याण) की इच्छा से वैसे ही कर्म करना चाहिए।',
+        reference: 'Bhagavad Gita 3.25',
+        referenceHi: 'भगवद्गीता ३.२५',
+        href: '/scripture/bhagavadgita/chapter/3/verse/25',
+      },
+      {
+        sanskrit: 'लभन्ते ब्रह्मनिर्वाणमृषयः क्षीणकल्मषाः ।\nछिन्नद्वैधा यतात्मानः सर्वभूतहिते रताः ॥',
+        transliteration: 'labhante brahma-nirvāṇam ṛṣayaḥ kṣīṇa-kalmaṣāḥ |\nchinna-dvaidhā yatātmānaḥ sarva-bhūta-hite ratāḥ ||',
+        translationEn: 'Those holy seers whose sins are cleansed, whose doubts are resolved, whose minds are disciplined, and who rejoice in the welfare of all beings, attain eternal liberation in Brahman.',
+        translationHi: 'जिनके सब संशय कट चुके हैं, जिनका मन संयमित है और जो सब प्राणियों के हित में रत रहते हैं (सर्वभूतहिते रताः), वे निष्पाप ऋषि ब्रह्मनिर्वाण (परम मोक्ष) को प्राप्त होते हैं।',
+        reference: 'Bhagavad Gita 5.25',
+        referenceHi: 'भगवद्गीता ५.२५',
+        href: '/scripture/bhagavadgita/chapter/5/verse/25',
+      },
+    ],
+    traditions: [
+      {
+        tradition: 'Advaita Vedanta (Adi Shankara)',
+        traditionHi: 'अद्वैत वेदान्त (आदि शंकराचार्य)',
+        viewEn: 'In his Gita Bhashya (3.20), Shankara explains that even for the Knower of Brahman who has no personal desires remaining, engagement in action is necessary for Lokasamgraha—to safeguard society from moral dissolution.',
+        viewHi: 'शांकर भाष्य में स्पष्ट किया गया है कि आत्मज्ञानी को अपने लिए कुछ नहीं चाहिए, फिर भी वह समाज को सन्मार्ग पर रखने और अव्यवस्था रोकने के लिए लोकसंग्रह हेतु कर्म करता है।',
+      },
+      {
+        tradition: 'Vishishtadvaita (Ramanujacharya)',
+        traditionHi: 'विशिष्टाद्वैत (रामानुजाचार्य)',
+        viewEn: 'Since all beings constitute the divine body of Narayana (Sarira-Sariri Bhava), Lokasamgraha is the direct loving worship (Kainkarya) of the Divine immanent in society.',
+        viewHi: 'समस्त संसार भगवान का दिव्य शरीर है; अतः समाज और प्राणिमात्र की निःस्वार्थ सेवा (लोकसंग्रह) भगवान नारायण की साक्षात् पूजा है।',
+      },
+      {
+        tradition: 'Sant Parampara (Tulsidas, Jnaneshwar, Tukaram)',
+        traditionHi: 'सन्त-परम्परा (तुलसीदास, ज्ञानेश्वर, तुकाराम)',
+        viewEn: 'The saints lived Lokasamgraha: Tulsidas declared "Parahita sarisa dharama nahi bhai" (no dharma equals serving others). They renounced privilege to bring sacred wisdom to the common people.',
+        viewHi: 'सन्तों ने लोकसंग्रह को जिया—"परहित सरिस धरम नहिं भाई।" उन्होंने आम जन के कल्याण हेतु जनभाषा में अमृत ज्ञान बांटा और सामाजिक समरसता स्थापित की।',
+      },
+      {
+        tradition: 'Modern Dharmic Renaissance (Vivekananda & Tilak)',
+        traditionHi: 'आधुनिक नवजागरण (विवेकानन्द व तिलक)',
+        viewEn: 'Bal Gangadhar Tilak established Lokasamgraha as the master-key of Gita Rahasya, while Swami Vivekananda synthesized it as "Atmano mokshartham jagaddhitaya cha" (for one\'s own liberation and the welfare of the world).',
+        viewHi: 'लोकमान्य तिलक ने "गीता रहस्य" में लोकसंग्रह को गीता का मूल रहस्य सिद्ध किया, और स्वामी विवेकानन्द ने इसे "आत्मनो मोक्षार्थं जगद्धिताय च" का आदर्श बनाया।',
+      },
+    ],
+    misunderstandings: [
+      {
+        myth: 'Spirituality means abandoning society, ignoring public welfare, and meditating in isolation.',
+        mythHi: 'अध्यात्म का अर्थ समाज और परिवार को छोड़कर जंगल में भाग जाना और दुनिया से उदासीन हो जाना है।',
+        correction: 'Hindu saints never taught passive escapism. The supreme mark of spiritual illumination in Sanatana Dharma is Lokasamgraha—acting with fearless, selfless love to uplift and sustain humanity.',
+        correctionHi: 'सनातन धर्म में पलायनवाद का कोई स्थान नहीं है। आत्मज्ञान की वास्तविक परिणति लोकसंग्रह (समाज का कल्याण और निःस्वार्थ सेवा) में ही होती है।',
+      },
+      {
+        myth: 'Lokasamgraha is just modern corporate philanthropy or political social work.',
+        mythHi: 'लोकसंग्रह केवल भौतिक समाज-सेवा या राजनीतिक गतिविधि है।',
+        correction: 'Unlike superficial philanthropy driven by ego or PR, Lokasamgraha is sacred work rooted in recognizing the non-dual Self in all beings, performed without personal craving.',
+        correctionHi: 'लोकसंग्रह केवल भौतिक सहायता नहीं, अपितु सबमें एक ही आत्म-तत्त्व को देखकर अहंकाररहित होकर की गई पावन सेवा है।',
+      },
+    ],
+    relatedConceptIds: ['dharma', 'karma', 'yajna', 'ahimsa', 'moksha', 'vedanta'],
+    sources: [
+      'Bhagavad Gita 3.20, 3.25, 5.25, 12.4',
+      'Mahabharata Shanti Parva (Rajadharma & Apaddharma)',
+      'Gita Rahasya by Bal Gangadhar Tilak',
+      'Complete Works of Swami Vivekananda',
+      'Ramcharitmanas by Goswami Tulsidas',
+    ],
+  },
 };
 
 export function getConceptDetail(id: string): ConceptDetail | undefined {

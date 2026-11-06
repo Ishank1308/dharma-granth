@@ -4,7 +4,14 @@
  * Source: https://github.com/bhavykhatri/DharmicData (community-maintained Sanskrit corpus)
  * Output: public/data/scriptures-full/ramayana.json
  *
- * Run: npm run seed:ramayana
+ * One chapter per kanda; verse numbers are "sarga.shloka". The meanings already
+ * published for the Ramayana are carried over (scripts/lib/realign-meanings.ts):
+ *
+ *   npm run seed:ramayana
+ *   npm run seed:ramayana -- --previous <old ramayana.json> --realign data/realign/<table>.json
+ *
+ * `--previous` defaults to the current output file, so a plain re-run keeps the
+ * meanings where they are. Give `--realign` only when the numbering changes.
  */
 import {
   FullChapter,
@@ -14,8 +21,16 @@ import {
   log,
   writeScripture,
 } from "./lib/scripture-schema";
+import {
+  carryOverMeanings,
+  iastFromDevanagari,
+  readPreviousScripture,
+  readRealignment,
+  uniqueVerseNumbers,
+} from "./lib/realign-meanings";
 
 const BASE = "https://raw.githubusercontent.com/bhavykhatri/DharmicData/master/ValmikiRamayana";
+const OUTPUT = "public/data/scriptures-full/ramayana.json";
 
 const KANDAS: { file: string; number: number; title: string; titleSanskrit: string }[] = [
   { file: "1_balakanda.json", number: 1, title: "Bala Kanda", titleSanskrit: "बालकाण्ड" },
@@ -27,10 +42,11 @@ const KANDAS: { file: string; number: number; title: string; titleSanskrit: stri
   { file: "7_uttarakanda.json", number: 7, title: "Uttara Kanda", titleSanskrit: "उत्तरकाण्ड" },
 ];
 
-// Source schema (verified against DharmicData/ValmikiRamayana on 2026-05-15):
+// Source schema (verified against DharmicData/ValmikiRamayana on 2026-10-25):
 //   { kaanda: string, sarg: number, shloka: number, text: string }
-// `text` holds the Sanskrit mūla verse. There is no Hindi/English translation
-// field in this corpus — translations need a separate source or AI generation.
+// `text` holds the Sanskrit mūla verse, ending in a reference marker such as
+// "॥१-१-२॥" (kanda-sarga-shloka). There is no Hindi/English translation field
+// in this corpus — translations need a separate source.
 interface RawVerse {
   kaanda?: string;
   sarg?: number;
@@ -38,34 +54,53 @@ interface RawVerse {
   text?: string;
 }
 
+function arg(name: string): string | undefined {
+  const i = process.argv.indexOf(name);
+  return i >= 0 ? process.argv[i + 1] : undefined;
+}
+
+/**
+ * Drops the trailing "॥१-१-२॥" / "।। ६.६५.३५ ।।" reference and ends the shloka with "॥".
+ * Visarga typed as ":" (much of the Ayodhya Kanda) becomes "ः".
+ */
+function cleanShloka(text: string): string {
+  const body = text
+    .replace(/([ऀ-ॿ]):/g, "$1ः")
+    .replace(/।।/g, "॥")
+    .replace(/\s*[।॥|]+\s*[०-९0-9]+(?:\s*[-.]\s*[०-९0-9]+)*\s*[।॥|]*\s*$/, "")
+    .replace(/[\s।॥|]+$/, "")
+    .replace(/।(?=\S)/g, "। ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return body ? `${body} ॥` : "";
+}
+
 async function main(): Promise<void> {
+  const previousPath = arg("--previous") ?? OUTPUT;
+  const realignPath = arg("--realign");
+  const previous = readPreviousScripture(previousPath);
+  const realign = realignPath ? readRealignment(realignPath, "ramayana") : undefined;
+
   log("Fetching Valmiki Ramayana from DharmicData...");
 
   const chapters: FullChapter[] = [];
   let totalVerses = 0;
 
   for (const k of KANDAS) {
-    const url = `${BASE}/${k.file}`;
-    let raw: RawVerse[];
-    try {
-      raw = await fetchJson<RawVerse[]>(url);
-    } catch (err) {
-      log(`Warning: failed to fetch ${k.file} (${(err as Error).message}) — skipping`);
-      continue;
-    }
+    const raw = await fetchJson<RawVerse[]>(`${BASE}/${k.file}`);
 
     const verses: FullVerse[] = raw.map((v, i) => {
-      // Compose a verse identifier as "sarga.shloka" so all verses within a
-      // kanda stay unique even though shloka counts reset each sarga.
-      const ref =
-        typeof v.sarg === "number" && typeof v.shloka === "number"
-          ? `${v.sarg}.${v.shloka}`
-          : i + 1;
+      const sanskrit = typeof v.text === "string" ? cleanShloka(v.text) : "";
       return {
-        number: ref,
-        sanskrit: typeof v.text === "string" ? v.text.trim() : undefined,
+        // "sarga.shloka" keeps verses unique within a kanda even though shloka counts reset each sarga.
+        number:
+          typeof v.sarg === "number" && typeof v.shloka === "number" ? `${v.sarg}.${v.shloka}` : i + 1,
+        sanskrit,
+        transliteration: sanskrit ? iastFromDevanagari(sanskrit) : "",
       };
     });
+    // The source repeats some sarga.shloka pairs (e.g. verses of Aranya 24 filed under sarga 34).
+    const renamed = uniqueVerseNumbers(verses);
 
     chapters.push({
       number: k.number,
@@ -74,7 +109,13 @@ async function main(): Promise<void> {
       verses,
     });
     totalVerses += verses.length;
-    log(`  ${k.title}: ${verses.length} verses`);
+    log(`  ${k.title}: ${verses.length} verses${renamed ? ` (${renamed} repeated numbers suffixed)` : ""}`);
+  }
+
+  if (previous) {
+    const { carried, dropped } = carryOverMeanings(previous.chapters, chapters, realign);
+    log(`Meanings carried over from ${previousPath}: ${carried.length}`);
+    for (const line of dropped) log(`  not carried: ${line}`);
   }
 
   const scripture: FullScripture = {

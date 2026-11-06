@@ -271,7 +271,7 @@ export function MobileFocusMode({
 
   // Resolve commentary
   const canonicalKey = canonicalVerseId(chapterId, currentVerse.number);
-  const comment = commentary?.[`${chapterId}:${Number(canonicalKey)}`];
+  const comment = commentary?.[`${chapterId}:${Number(canonicalKey)}`] ?? commentary?.[`${chapterId}:${currentVerse.number}`];
   const explanation = comment?.explanation ?? currentVerse.explanation ?? currentVerse.commentary;
   const science = comment?.science ?? currentVerse.science;
   const lesson = comment?.lifeLesson ?? currentVerse.lifeLesson;

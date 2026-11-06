@@ -18,6 +18,7 @@ import type { ReviewStatus } from '@/data/study-content';
 import type { JourneyLesson, ReadingJourney } from '@/data/reading-journeys';
 import { cleanVerseField, verseLines } from '@/lib/verse-format';
 import { useJourneyProgress } from '../JourneyProgress';
+import { SITE_URL } from '@/lib/jsonld';
 
 const REVIEW_LABEL_HI: Record<ReviewStatus, string> = {
   draft: 'संपादकीय प्रारूप · समीक्षा शेष',
@@ -42,7 +43,7 @@ export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; l
   const [copied, setCopied] = useState(false);
 
   const shareText = encodeURIComponent(
-    `🕉️ *${journey.title} (${journey.titleHi})*\n${journey.objective}\n\n📖 Read with me on Dharma Granth:\nhttps://dharmagranth.dev/learn/journeys/${journey.id}/`
+    `🕉️ *${journey.title} (${journey.titleHi})*\n${journey.objective}\n\n📖 Read with me on Dharma Granth:\n${SITE_URL}/learn/journeys/${journey.id}/`
   );
 
   return (

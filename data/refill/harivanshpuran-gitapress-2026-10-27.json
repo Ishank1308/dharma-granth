@@ -1,0 +1,87 @@
+{
+  "note": "Harivamsha Purana: Clean Hindi translations extracted from official decrypted Gita Press EPUB (Book Code 38: Mahabharat – Khilbhag Shri Harivansh Puran, sānwāda). Replaces corrupted OCR junk and fills missing verses. Zero Sanskrit, transliteration, or verse numbering changed.",
+  "edition": "Gita Press Gorakhpur, हरिवंशपुराण (सानुवाद), book code 38",
+  "date": "2026-10-27",
+  "stats": {
+    "total_book_chapters": 318,
+    "total_book_verses": 16005,
+    "single_verses_updated": 12483,
+    "range_pointers_set": 3330,
+    "corrupt_ocr_replaced": 10981,
+    "missing_hindi_filled": 1452,
+    "high_confidence_sanskrit_matches": 15578,
+    "skipped_no_epub_match": 146
+  },
+  "sample_verses": {
+    "1:1": {
+      "parva": 1,
+      "adhyaya": 1,
+      "verse": 1,
+      "sanskritJaccard": 0.036,
+      "range": null
+    },
+    "1:2": {
+      "parva": 1,
+      "adhyaya": 1,
+      "verse": 2,
+      "sanskritJaccard": 0.951,
+      "range": null
+    },
+    "1:3": {
+      "parva": 1,
+      "adhyaya": 1,
+      "verse": 3,
+      "sanskritJaccard": 0.926,
+      "range": null
+    },
+    "1:4": {
+      "parva": 1,
+      "adhyaya": 1,
+      "verse": 4,
+      "sanskritJaccard": 1.0,
+      "range": null
+    },
+    "1:5": {
+      "parva": 1,
+      "adhyaya": 1,
+      "verse": 5,
+      "sanskritJaccard": 1.0,
+      "range": null
+    },
+    "1:6": {
+      "parva": 1,
+      "adhyaya": 1,
+      "verse": 6,
+      "sanskritJaccard": 1.0,
+      "range": null
+    },
+    "1:7": {
+      "parva": 1,
+      "adhyaya": 1,
+      "verse": 7,
+      "sanskritJaccard": 0.906,
+      "range": null
+    },
+    "1:8": {
+      "parva": 1,
+      "adhyaya": 1,
+      "verse": 8,
+      "sanskritJaccard": 1.0,
+      "range": null
+    },
+    "1:9": {
+      "parva": 1,
+      "adhyaya": 1,
+      "verse": 9,
+      "sanskritJaccard": 1.0,
+      "range": "9-12"
+    },
+    "1:10": {
+      "parva": 1,
+      "adhyaya": 1,
+      "verse": 10,
+      "sanskritJaccard": 1.0,
+      "range": "9-12"
+    }
+  }
+}

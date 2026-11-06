@@ -17,6 +17,16 @@
  * all page transitions in Dharma Granth.
  */
 
+import {
+  getVerseAudioUrl,
+  hasRecordedVerseAudio,
+  loadVerseTimingTrack,
+  getOfflineVerseAudioUrl,
+  revokeOfflineVerseAudioUrl,
+  prefetchVerseAudio,
+} from './verse-audio';
+import { getSadhanaPlaylist } from './sadhana-playlist';
+
 export type SoundscapeTrackId = 'tanpura' | 'om' | 'flute' | 'temple_bell' | 'recitation';
 
 export interface SoundscapeTrackMeta {
@@ -81,6 +91,15 @@ export interface SoundscapeState {
   currentVerseReference?: string;
   currentVerseHindi?: string;
   currentVerseEnglish?: string;
+  currentScriptureId?: string;
+  currentChapterId?: number | string;
+  currentVerseNumber?: number | string;
+  audioSource?: 'neural' | 'speech' | 'none';
+  audioPlaybackRate?: number;
+  playlistId?: string;
+  playlistIndex?: number;
+  playlistTotal?: number;
+  playlistTitle?: string;
 }
 
 type SoundscapeListener = (state: SoundscapeState) => void;
@@ -100,6 +119,8 @@ let sleepTimerHandle: ReturnType<typeof setTimeout> | null = null;
 let sleepFadeHandle: ReturnType<typeof setTimeout> | null = null;
 let speechUtteranceQueue: SpeechSynthesisUtterance[] = [];
 let isSpeakingVerse = false;
+let activeRecitationAudio: HTMLAudioElement | null = null;
+let recitationTimingRaf: number | null = null;
 const listeners = new Set<SoundscapeListener>();
 
 let state: SoundscapeState = {
@@ -176,10 +197,23 @@ function updateMediaSession() {
       stopSoundscape();
     });
     navigator.mediaSession.setActionHandler('previoustrack', () => {
-      window.dispatchEvent(new CustomEvent('dharma:verse-prev'));
+      if (state.playlistId && state.playlistIndex != null && state.playlistIndex > 0) {
+        playSadhanaPlaylist(state.playlistId, state.playlistIndex - 1);
+      } else {
+        window.dispatchEvent(new CustomEvent('dharma:verse-prev'));
+      }
     });
     navigator.mediaSession.setActionHandler('nexttrack', () => {
-      window.dispatchEvent(new CustomEvent('dharma:verse-next'));
+      if (
+        state.playlistId &&
+        state.playlistIndex != null &&
+        state.playlistTotal != null &&
+        state.playlistIndex + 1 < state.playlistTotal
+      ) {
+        playSadhanaPlaylist(state.playlistId, state.playlistIndex + 1);
+      } else {
+        window.dispatchEvent(new CustomEvent('dharma:verse-next'));
+      }
     });
   } catch {}
 }
@@ -330,6 +364,19 @@ function startPeriodicBowlTimer(seconds: number) {
 }
 
 function startSynthesizer(trackId: SoundscapeTrackId, vol: number) {
+  if (state.activeTrack !== 'recitation') {
+    if (activeRecitationAudio) {
+      try {
+        activeRecitationAudio.pause();
+        activeRecitationAudio.currentTime = 0;
+      } catch {}
+      activeRecitationAudio = null;
+    }
+    if (recitationTimingRaf !== null) {
+      cancelAnimationFrame(recitationTimingRaf);
+      recitationTimingRaf = null;
+    }
+  }
   stopSynthesizer();
   const ctx = getAudioContext();
   if (!ctx) return;
@@ -432,6 +479,138 @@ export function speakSanskritTerm(word: string, rate: number = 0.85) {
  * Speak Sanskrit Verse chunked by dandas (। / ॥) to avoid Chrome 15s pause bug,
  * with cadence mode support for bilingual audiobook playback (Sanskrit + Hindi / English)
  */
+
+async function playRecordedVerseAudio(
+  url: string,
+  onFinish: () => void,
+  onSanskritDone: () => void,
+  onFallback: () => void
+) {
+  if (typeof window === 'undefined') return;
+  if (activeRecitationAudio) {
+    try {
+      activeRecitationAudio.pause();
+      activeRecitationAudio.currentTime = 0;
+    } catch {}
+    activeRecitationAudio = null;
+  }
+  if (recitationTimingRaf !== null) {
+    cancelAnimationFrame(recitationTimingRaf);
+    recitationTimingRaf = null;
+  }
+
+  try {
+    let playSrc = url;
+    let localBlobUrl: string | null = null;
+
+    if (state.currentScriptureId && state.currentChapterId != null && state.currentVerseNumber != null) {
+      const cachedBlob = await getOfflineVerseAudioUrl(
+        state.currentScriptureId,
+        state.currentChapterId,
+        state.currentVerseNumber
+      );
+      if (cachedBlob) {
+        playSrc = cachedBlob;
+        localBlobUrl = cachedBlob;
+      } else {
+        // Cache in background for offline use
+        prefetchVerseAudio(
+          state.currentScriptureId,
+          state.currentChapterId,
+          state.currentVerseNumber
+        ).catch(() => {});
+      }
+    }
+
+    const audio = new Audio(playSrc);
+    activeRecitationAudio = audio;
+    audio.volume = state.isMuted ? 0 : state.volume;
+    if (state.audioPlaybackRate) {
+      audio.playbackRate = state.audioPlaybackRate;
+    }
+
+    let timingWords: { word: string; startTimeMs: number; endTimeMs: number }[] = [];
+    let lastDispatchedWordIndex = -1;
+
+    if (state.currentScriptureId && state.currentChapterId != null && state.currentVerseNumber != null) {
+      loadVerseTimingTrack(state.currentScriptureId, state.currentChapterId, state.currentVerseNumber)
+        .then((track) => {
+          if (track && track.words) {
+            timingWords = track.words;
+          }
+        })
+        .catch(() => {});
+    }
+
+    audio.onplay = () => {
+      window.dispatchEvent(
+        new CustomEvent('dharma:recitation-chunk', {
+          detail: {
+            chunkIndex: 0,
+            totalChunks: 1,
+            isTranslation: false,
+            reference: state.currentVerseReference,
+            audioSource: 'neural',
+          },
+        })
+      );
+
+      const tick = () => {
+        if (!isSpeakingVerse || !activeRecitationAudio || activeRecitationAudio.paused) return;
+        const currentMs = activeRecitationAudio.currentTime * 1000;
+        if (timingWords.length > 0) {
+          const idx = timingWords.findIndex(
+            (w) => currentMs >= w.startTimeMs && currentMs <= w.endTimeMs
+          );
+          if (idx !== -1 && idx !== lastDispatchedWordIndex) {
+            lastDispatchedWordIndex = idx;
+            window.dispatchEvent(
+              new CustomEvent('dharma:recitation-word', {
+                detail: {
+                  chunkIndex: 0,
+                  wordIndex: idx,
+                  word: timingWords[idx].word,
+                  reference: state.currentVerseReference,
+                },
+              })
+            );
+          }
+        }
+        recitationTimingRaf = requestAnimationFrame(tick);
+      };
+      recitationTimingRaf = requestAnimationFrame(tick);
+    };
+
+    audio.onended = () => {
+      if (recitationTimingRaf !== null) {
+        cancelAnimationFrame(recitationTimingRaf);
+        recitationTimingRaf = null;
+      }
+      if (localBlobUrl) {
+        revokeOfflineVerseAudioUrl(localBlobUrl);
+      }
+      onSanskritDone();
+    };
+
+    audio.onerror = () => {
+      if (recitationTimingRaf !== null) {
+        cancelAnimationFrame(recitationTimingRaf);
+        recitationTimingRaf = null;
+      }
+      if (localBlobUrl) {
+        revokeOfflineVerseAudioUrl(localBlobUrl);
+      }
+      onFallback();
+    };
+
+    audio.play().catch(() => {
+      onFallback();
+    });
+  } catch {
+    onFallback();
+  }
+}
+
 function speakCurrentVerse(text?: string) {
   if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
@@ -461,8 +640,26 @@ function speakCurrentVerse(text?: string) {
 
   const finishRecitation = () => {
     isSpeakingVerse = false;
-    if (!state.continuousParayana) {
-      state.isPlaying = false;
+    const playlistId = state.playlistId;
+    const playlistIndex = state.playlistIndex;
+    const playlistTotal = state.playlistTotal;
+
+    if (playlistId && playlistIndex != null && playlistTotal != null) {
+      if (playlistIndex + 1 < playlistTotal) {
+        setTimeout(() => {
+          if (!state.isPlaying || state.playlistId !== playlistId) return;
+          playSadhanaPlaylist(playlistId, playlistIndex + 1);
+        }, 1800);
+      } else {
+        state.playlistId = undefined;
+        state.playlistIndex = undefined;
+        state.playlistTotal = undefined;
+        state.playlistTitle = undefined;
+        state.isPlaying = false;
+        stopSynthesizer();
+        strikeTempleBell(1);
+        notify();
+      }
     }
     notify();
     if (typeof window !== 'undefined') {
@@ -546,53 +743,71 @@ function speakCurrentVerse(text?: string) {
     finishRecitation();
   };
 
-  chunks.forEach((chunk, index) => {
-    const utt = new SpeechSynthesisUtterance(chunk);
-    utt.lang = 'hi-IN';
-    utt.rate = 0.82; // Serene recitation cadence
-    utt.pitch = 0.95;
-    if (sanskritVoice) utt.voice = sanskritVoice;
+  const speakSynthesisChunks = () => {
+    chunks.forEach((chunk, index) => {
+      const utt = new SpeechSynthesisUtterance(chunk);
+      utt.lang = 'hi-IN';
+      utt.rate = (state.audioPlaybackRate || 1.0) * 0.82; // Serene recitation cadence
+      utt.pitch = 0.95;
+      if (sanskritVoice) utt.voice = sanskritVoice;
 
-    utt.onstart = () => {
-      if (typeof window !== 'undefined') {
-        window.dispatchEvent(
-          new CustomEvent('dharma:recitation-chunk', {
-            detail: {
-              chunkIndex: index,
-              totalChunks: chunks.length,
-              isTranslation: false,
-              reference: state.currentVerseReference,
-            },
-          })
-        );
+      utt.onstart = () => {
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(
+            new CustomEvent('dharma:recitation-chunk', {
+              detail: {
+                chunkIndex: index,
+                totalChunks: chunks.length,
+                isTranslation: false,
+                reference: state.currentVerseReference,
+                audioSource: 'speech',
+              },
+            })
+          );
+        }
+      };
+
+      utt.onboundary = (e: SpeechSynthesisEvent) => {
+        if (typeof window !== 'undefined' && e.name === 'word') {
+          window.dispatchEvent(
+            new CustomEvent('dharma:recitation-word', {
+              detail: {
+                chunkIndex: index,
+                charIndex: e.charIndex,
+                charLength: e.charLength || 0,
+                reference: state.currentVerseReference,
+              },
+            })
+          );
+        }
+      };
+
+      if (index === chunks.length - 1) {
+        utt.onend = handleSanskritDone;
+        utt.onerror = finishRecitation;
       }
-    };
 
-    utt.onboundary = (e: SpeechSynthesisEvent) => {
-      if (typeof window !== 'undefined' && e.name === 'word') {
-        window.dispatchEvent(
-          new CustomEvent('dharma:recitation-word', {
-            detail: {
-              chunkIndex: index,
-              charIndex: e.charIndex,
-              charLength: e.charLength || 0,
-              reference: state.currentVerseReference,
-            },
-          })
-        );
-      }
-    };
+      speechUtteranceQueue.push(utt);
+    });
 
-    if (index === chunks.length - 1) {
-      utt.onend = handleSanskritDone;
-      utt.onerror = finishRecitation;
-    }
+    speechUtteranceQueue.forEach((u) => window.speechSynthesis.speak(u));
+  };
 
-    speechUtteranceQueue.push(utt);
-  });
+  if (hasRecordedVerseAudio(state.currentScriptureId, state.currentChapterId, state.currentVerseNumber)) {
+    const audioUrl = getVerseAudioUrl(state.currentScriptureId!, state.currentChapterId!, state.currentVerseNumber!);
+    state.audioSource = 'neural';
+    notify();
+    playRecordedVerseAudio(audioUrl, finishRecitation, handleSanskritDone, () => {
+      state.audioSource = 'speech';
+      notify();
+      speakSynthesisChunks();
+    });
+    return;
+  }
 
-  // Speak first chunk; chaining happens naturally in SpeechSynthesis queue
-  speechUtteranceQueue.forEach((u) => window.speechSynthesis.speak(u));
+  state.audioSource = 'speech';
+  notify();
+  speakSynthesisChunks();
 }
 
 // Public API
@@ -621,7 +836,19 @@ export function startSoundscape(track?: SoundscapeTrackId) {
   }
 
   if (targetTrack === 'recitation') {
-    stopSynthesizer();
+    if (activeRecitationAudio) {
+      try {
+        activeRecitationAudio.pause();
+        activeRecitationAudio.currentTime = 0;
+      } catch {}
+      activeRecitationAudio = null;
+    }
+    if (recitationTimingRaf !== null) {
+      cancelAnimationFrame(recitationTimingRaf);
+      recitationTimingRaf = null;
+    }
+    // Start serene background Tanpura acoustic drone (classical Sa-Pa harmonics) beneath recitation
+    startSynthesizer('tanpura', (state.isMuted ? 0 : state.volume) * 0.45);
     if (state.currentVerseSanskrit) {
       speakCurrentVerse(state.currentVerseSanskrit);
     }
@@ -648,6 +875,17 @@ export function stopSoundscape() {
     } catch {}
   }
 
+  if (activeRecitationAudio) {
+    try {
+      activeRecitationAudio.pause();
+      activeRecitationAudio.currentTime = 0;
+    } catch {}
+    activeRecitationAudio = null;
+  }
+  if (recitationTimingRaf !== null) {
+    cancelAnimationFrame(recitationTimingRaf);
+    recitationTimingRaf = null;
+  }
   stopSynthesizer();
   if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
     window.speechSynthesis.cancel();
@@ -686,7 +924,18 @@ export function setSoundscapeTrack(track: SoundscapeTrackId) {
 
   if (state.isPlaying) {
     if (track === 'recitation') {
-      stopSynthesizer();
+      if (activeRecitationAudio) {
+    try {
+      activeRecitationAudio.pause();
+      activeRecitationAudio.currentTime = 0;
+    } catch {}
+    activeRecitationAudio = null;
+  }
+  if (recitationTimingRaf !== null) {
+    cancelAnimationFrame(recitationTimingRaf);
+    recitationTimingRaf = null;
+  }
+  stopSynthesizer();
       if (state.currentVerseSanskrit) speakCurrentVerse(state.currentVerseSanskrit);
     } else {
       if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
@@ -701,6 +950,9 @@ export function setSoundscapeTrack(track: SoundscapeTrackId) {
 export function setSoundscapeVolume(vol: number) {
   const clamped = Math.max(0, Math.min(1, vol));
   state.volume = clamped;
+  if (activeRecitationAudio) {
+    activeRecitationAudio.volume = state.isMuted ? 0 : clamped;
+  }
   if (typeof window !== 'undefined') {
     try {
       localStorage.setItem(STORAGE_VOLUME, String(clamped));
@@ -718,6 +970,9 @@ export function setSoundscapeVolume(vol: number) {
 
 export function toggleSoundscapeMute() {
   state.isMuted = !state.isMuted;
+  if (activeRecitationAudio) {
+    activeRecitationAudio.volume = state.isMuted ? 0 : state.volume;
+  }
   if (masterGain && audioCtx && state.isPlaying) {
     try {
       const now = audioCtx.currentTime;
@@ -812,14 +1067,28 @@ export function setCurrentVerseContext(
   sanskrit?: string,
   reference?: string,
   hindi?: string,
-  english?: string
+  english?: string,
+  scriptureId?: string,
+  chapterId?: number | string,
+  verseNumber?: number | string
 ) {
   state.currentVerseSanskrit = sanskrit;
   state.currentVerseReference = reference;
   state.currentVerseHindi = hindi;
   state.currentVerseEnglish = english;
+  state.currentScriptureId = scriptureId;
+  state.currentChapterId = chapterId;
+  state.currentVerseNumber = verseNumber;
   if (state.isPlaying && state.activeTrack === 'recitation' && sanskrit) {
     speakCurrentVerse(sanskrit);
+  }
+  notify();
+}
+
+export function setRecitationSpeed(speed: number) {
+  state.audioPlaybackRate = speed;
+  if (activeRecitationAudio) {
+    activeRecitationAudio.playbackRate = speed;
   }
   notify();
 }
@@ -829,7 +1098,18 @@ export function setCurrentVerseContext(
  */
 export function startMeditationDrone(mode: 'tanpura' | 'om' | 'flute' | 'silent') {
   if (mode === 'silent') {
-    stopSynthesizer();
+    if (activeRecitationAudio) {
+    try {
+      activeRecitationAudio.pause();
+      activeRecitationAudio.currentTime = 0;
+    } catch {}
+    activeRecitationAudio = null;
+  }
+  if (recitationTimingRaf !== null) {
+    cancelAnimationFrame(recitationTimingRaf);
+    recitationTimingRaf = null;
+  }
+  stopSynthesizer();
     return;
   }
   startSynthesizer(mode, state.isMuted ? 0 : state.volume);
@@ -843,10 +1123,69 @@ export function stopMeditationDrone() {
       masterGain.gain.cancelScheduledValues(now);
       masterGain.gain.linearRampToValueAtTime(0.0001, now + 1.2);
       setTimeout(() => {
-        stopSynthesizer();
+        if (activeRecitationAudio) {
+    try {
+      activeRecitationAudio.pause();
+      activeRecitationAudio.currentTime = 0;
+    } catch {}
+    activeRecitationAudio = null;
+  }
+  if (recitationTimingRaf !== null) {
+    cancelAnimationFrame(recitationTimingRaf);
+    recitationTimingRaf = null;
+  }
+  stopSynthesizer();
       }, 1300);
       return;
     } catch {}
   }
+  if (activeRecitationAudio) {
+    try {
+      activeRecitationAudio.pause();
+      activeRecitationAudio.currentTime = 0;
+    } catch {}
+    activeRecitationAudio = null;
+  }
+  if (recitationTimingRaf !== null) {
+    cancelAnimationFrame(recitationTimingRaf);
+    recitationTimingRaf = null;
+  }
   stopSynthesizer();
+}
+
+/**
+ * Play a curated multi-scripture Sadhana Playlist with continuous auto-advance
+ */
+export function playSadhanaPlaylist(playlistId: string, startIndex: number = 0) {
+  const playlist = getSadhanaPlaylist(playlistId);
+  if (!playlist || playlist.items.length === 0) return;
+
+  const idx = Math.max(0, Math.min(playlist.items.length - 1, startIndex));
+  const item = playlist.items[idx];
+
+  state.playlistId = playlistId;
+  state.playlistIndex = idx;
+  state.playlistTotal = playlist.items.length;
+  state.playlistTitle = playlist.hindiTitle;
+  state.continuousParayana = true;
+
+  setCurrentVerseContext(
+    item.sanskrit,
+    item.referenceHindi || item.reference,
+    item.hindi,
+    item.english,
+    item.scriptureId,
+    item.chapterId,
+    item.verseNumber
+  );
+
+  startSoundscape('recitation');
+}
+
+export function stopSadhanaPlaylist() {
+  state.playlistId = undefined;
+  state.playlistIndex = undefined;
+  state.playlistTotal = undefined;
+  state.playlistTitle = undefined;
+  stopSoundscape();
 }

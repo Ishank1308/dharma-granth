@@ -2,6 +2,19 @@
   "extends": ["next/core-web-vitals", "plugin:jsx-a11y/recommended"],
   "rules": {
     "jsx-a11y/no-autofocus": "warn",
-    "jsx-a11y/no-noninteractive-tabindex": ["error", { "roles": ["tabpanel", "group"] }]
-  }
+    "jsx-a11y/no-noninteractive-tabindex": ["error", { "roles": ["tabpanel", "group"] }],
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "TemplateElement[value.raw=/[^a-z]verse\\u002f$/]",
+        "message": "Build verse links with readHref() or chapterVerseHref() from lib/verse-paths.ts. A hand-built /verse/${n} URL misses the trailing slash for dotted ids and 404s for scriptures without verse pages."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["lib/verse-paths.ts"],
+      "rules": { "no-restricted-syntax": "off" }
+    }
+  ]
 }

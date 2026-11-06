@@ -1,0 +1,36 @@
+{
+  "verseNumber": 2,
+  "durationMs": 6687,
+  "words": [
+    {
+      "word": "सर्वं",
+      "startTimeMs": 0,
+      "endTimeMs": 464
+    },
+    {
+      "word": "ह्येतद्",
+      "startTimeMs": 511,
+      "endTimeMs": 906
+    },
+    {
+      "word": "ब्रह्मायमात्मा",
+      "startTimeMs": 940,
+      "endTimeMs": 2009
+    },
+    {
+      "word": "ब्रह्म",
+      "startTimeMs": 2218,
+      "endTimeMs": 2531
+    },
+    {
+      "word": "सोऽयमात्मा",
+      "startTimeMs": 2682,
+      "endTimeMs": 3518
+    },
+    {
+      "word": "चतुष्पात्",
+      "startTimeMs": 3634,
+      "endTimeMs": 4435
+    }
+  ]
+}

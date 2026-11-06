@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect, useRef, useState, type PointerEvent } from 'react';
 import {
   ArrowRight,
@@ -19,13 +18,17 @@ import { readHref } from '@/lib/verse-paths';
 import { formatIstLong } from '@/lib/ist';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { usePerformanceMode } from '@/lib/performance-mode';
+import { SITE_URL } from '@/lib/jsonld';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
+import { SacredShareModal } from '@/app/components/share/SacredShareModal';
 
 export function VerseOfTheDayCompact() {
   const reduce = useReducedMotion();
   const { isLiteMode } = usePerformanceMode();
-  const [item, setItem] = useState<DailyWisdomItem | null>(null);
-  const [date, setDate] = useState('');
+  const [item, setItem] = useState<DailyWisdomItem | null>(() => getTodayWisdom());
+  const [date, setDate] = useState(() => formatIstLong());
   const [copied, setCopied] = useState(false);
+  const [isShareOpen, setIsShareOpen] = useState(false);
   const [langTab, setLangTab] = useState<'bilingual' | 'hindi' | 'english'>('bilingual');
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -67,7 +70,7 @@ export function VerseOfTheDayCompact() {
 
   const handleCopy = async () => {
     if (!item) return;
-    const shareText = `${item.sanskrit}\n\n${item.hindi || item.translation}\n— ${item.scriptureTitle} ${item.chapterId}.${item.verseId}\nhttps://dharmagranth.dev${readHref(item.scriptureId, item.chapterId, item.verseId)}`;
+    const shareText = `${item.sanskrit}\n\n${item.hindi || item.translation}\n— ${item.scriptureTitle} ${item.chapterId}.${item.verseId}\n${SITE_URL}${readHref(item.scriptureId, item.chapterId, item.verseId)}`;
     try {
       await navigator.clipboard.writeText(shareText);
       setCopied(true);
@@ -132,6 +135,15 @@ export function VerseOfTheDayCompact() {
               }
               className="group relative overflow-hidden rounded-3xl border border-amber-200/90 bg-dharma-card p-6 sm:p-8 shadow-sm transition-all duration-300 hover:border-amber-400/80 hover:shadow-xl dark:border-amber-900/50"
             >
+              {/* Dynamic Ambient Prana Glow */}
+              <div className="pointer-events-none absolute -inset-1 rounded-[2rem] bg-gradient-to-r from-amber-500/15 via-saffron-500/10 to-amber-600/15 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Traditional Pothi Gilded Corner Filigree */}
+              <div className="pointer-events-none absolute top-3 left-3 size-3.5 border-t-2 border-l-2 border-amber-400/40 rounded-tl-sm" />
+              <div className="pointer-events-none absolute top-3 right-3 size-3.5 border-t-2 border-r-2 border-amber-400/40 rounded-tr-sm" />
+              <div className="pointer-events-none absolute bottom-3 left-3 size-3.5 border-b-2 border-l-2 border-amber-400/40 rounded-bl-sm" />
+              <div className="pointer-events-none absolute bottom-3 right-3 size-3.5 border-b-2 border-r-2 border-amber-400/40 rounded-br-sm" />
+
               {/* Dynamic Light Specular Glare */}
               {!reduce && !isLiteMode && (
                 <motion.div
@@ -153,7 +165,7 @@ export function VerseOfTheDayCompact() {
                 {/* ── Layer 1: Context, Sourcing & Language Controls ── */}
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-dharma-border/60 pb-4">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="rounded-full bg-amber-500/10 px-3 py-1 text-xs font-bold text-saffron-800 dark:text-saffron-200 border border-amber-500/20">
+                    <span className="rounded-full bg-amber-500/10 px-3 py-1 text-xs font-bold text-saffron-800 dark:text-saffron-200 border border-amber-500/20 shadow-xs">
                       {item.scriptureTitle} {item.chapterId}.{item.verseId}
                     </span>
                     <span lang="sa" className="font-devanagari text-xs font-semibold text-dharma-muted">
@@ -168,40 +180,34 @@ export function VerseOfTheDayCompact() {
 
                   {/* Actions & Language View Switcher */}
                   <div className="flex items-center gap-1.5">
-                    <div className="flex rounded-lg bg-dharma-bg p-0.5 border border-dharma-border text-xs">
-                      <button
-                        type="button"
-                        onClick={() => setLangTab('bilingual')}
-                        className={`min-h-11 px-2.5 py-0.5 rounded-md font-semibold transition sm:min-h-0 ${
-                          langTab === 'bilingual'
-                            ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 shadow-xs'
-                            : 'text-dharma-muted hover:text-dharma-text'
-                        }`}
-                      >
-                        Bilingual
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setLangTab('hindi')}
-                        className={`min-h-11 px-2.5 py-0.5 rounded-md font-semibold transition sm:min-h-0 ${
-                          langTab === 'hindi'
-                            ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 shadow-xs'
-                            : 'text-dharma-muted hover:text-dharma-text'
-                        }`}
-                      >
-                        हिन्दी
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setLangTab('english')}
-                        className={`min-h-11 px-2.5 py-0.5 rounded-md font-semibold transition sm:min-h-0 ${
-                          langTab === 'english'
-                            ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 shadow-xs'
-                            : 'text-dharma-muted hover:text-dharma-text'
-                        }`}
-                      >
-                        English
-                      </button>
+                    <div className="relative flex rounded-lg bg-dharma-bg p-0.5 border border-dharma-border text-xs">
+                      {(['bilingual', 'hindi', 'english'] as const).map((tab) => {
+                        const isActive = langTab === tab;
+                        return (
+                          <button
+                            key={tab}
+                            type="button"
+                            onClick={() => {
+                              setLangTab(tab);
+                              triggerTactileFeedback('selection', 'softTap');
+                            }}
+                            className={`relative z-10 min-h-11 px-2.5 py-1 rounded-md font-semibold transition sm:min-h-0 ${
+                              isActive
+                                ? 'text-saffron-700 dark:text-saffron-300 font-bold'
+                                : 'text-dharma-muted hover:text-dharma-text'
+                            }`}
+                          >
+                            {tab === 'bilingual' ? 'Bilingual' : tab === 'hindi' ? 'हिन्दी' : 'English'}
+                            {isActive && (
+                              <motion.div
+                                layoutId="votd-tab-active"
+                                className="absolute inset-0 rounded-md bg-dharma-card shadow-xs -z-10"
+                                transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                              />
+                            )}
+                          </button>
+                        );
+                      })}
                     </div>
 
                     <button
@@ -220,8 +226,10 @@ export function VerseOfTheDayCompact() {
                   </div>
                 </div>
 
-                {/* ── Layer 2: Canonical Sanskrit Text ── */}
-                <div className="pl-3 sm:pl-4">
+                {/* ── Layer 2: Canonical Sanskrit Text (Apple Pranic Breathing Leaf) ── */}
+                <div className="verse-leaf apple-pranic-leaf relative rounded-2xl px-5 py-6 text-center md:px-8 md:py-7">
+                  <span aria-hidden="true" className="verse-leaf-ornament left-3 top-2">❁</span>
+                  <span aria-hidden="true" className="verse-leaf-ornament right-3 top-2">❁</span>
                   <blockquote
                     lang="sa"
                     className="whitespace-pre-line font-devanagari text-2xl sm:text-3xl lg:text-4xl font-bold leading-relaxed sm:leading-loose text-dharma-text tracking-wide"
@@ -234,54 +242,94 @@ export function VerseOfTheDayCompact() {
                       {item.transliteration}
                     </p>
                   )}
-                </div>
-
-                {/* ── Layer 3: Translation ── */}
-                <div className="pl-3 sm:pl-4 space-y-2 border-l-2 border-amber-300/40 dark:border-amber-700/50">
-                  {(langTab === 'bilingual' || langTab === 'hindi') && item.hindi && (
-                    <p lang="hi" className="font-devanagari text-sm sm:text-base font-medium leading-relaxed text-dharma-text">
-                      <span className="font-bold text-saffron-800 dark:text-saffron-300">भावार्थ: </span>
-                      {item.hindi}
-                    </p>
-                  )}
-                  {(langTab === 'bilingual' || langTab === 'english') && item.translation && (
-                    <p className="text-sm sm:text-base font-normal leading-relaxed text-dharma-text">
-                      <span className="font-semibold text-dharma-muted">Translation: </span>
-                      {item.translation}
-                    </p>
-                  )}
-                </div>
-
-                {/* ── Layer 4: Modern Reflection / Practical Life Application ── */}
-                {(item.practicalTeaching || item.practicalTeachingHi) && (
-                  <div className="rounded-2xl border border-amber-300/60 bg-amber-500/5 p-4 sm:p-5 dark:border-amber-900/60">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <Feather className="h-4 w-4 text-saffron-700 dark:text-saffron-400" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">
-                        दैनिक मनन · Practical Reflection
-                      </span>
-                    </div>
-                    <p className="text-xs sm:text-sm leading-relaxed text-dharma-text">
-                      {item.practicalTeachingHi || item.practicalTeaching}
-                    </p>
-                  </div>
-                )}
-
-                {/* ── Layer 5: Read Full Explanation & Sourcing ── */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-                  <span className="inline-flex items-center gap-1.5 text-xs text-dharma-muted">
-                    <Sparkles className="h-3.5 w-3.5 text-amber-500" />
-                    <span>शास्त्रीय संदर्भ सहित · With canonical context</span>
+                  <span aria-hidden="true" className="mt-2 block font-bold text-saffron-700 dark:text-amber-300 text-sm">
+                    ॥ {item.chapterId}.{item.verseId} ॥
                   </span>
+                </div>
 
-                  <Link
-                    href={readHref(item.scriptureId, item.chapterId, item.verseId)}
-                    onClick={() => triggerTactileFeedback('medium', 'softTap')}
-                    className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-gradient-to-r from-saffron-600 to-amber-600 px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700 hover:shadow-lg active:scale-98"
+                {/* ── Layer 3: The 3 Canonical Pillars (Bento Trinity) ── */}
+                <div className={`grid grid-cols-1 ${langTab === 'bilingual' ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-3.5 pt-1`}>
+                  {/* Pillar 1: Bhavartha (Shown in bilingual or hindi) */}
+                  {(langTab === 'bilingual' || langTab === 'hindi') && item.hindi && (
+                    <div className="apple-pillar apple-pillar-bhavartha rounded-2xl p-4 transition-all">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
+                        <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-800 dark:text-amber-300">
+                          ॥ भावार्थ · Essence ॥
+                        </span>
+                      </div>
+                      <p lang="hi" className="font-devanagari text-xs sm:text-sm font-medium leading-relaxed text-dharma-text">
+                        {item.hindi}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Pillar 2: Vyakhya / Translation (Shown in bilingual or english) */}
+                  {(langTab === 'bilingual' || langTab === 'english') && item.translation && (
+                    <div className="apple-pillar apple-pillar-vyakhya rounded-2xl p-4 transition-all">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <span className="h-2 w-2 rounded-full bg-saffron-500" />
+                        <span className="text-[11px] font-extrabold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">
+                          ॥ व्याख्या · Translation ॥
+                        </span>
+                      </div>
+                      <p className="text-xs sm:text-sm leading-relaxed text-dharma-text font-serif italic opacity-95">
+                        “{item.translation}”
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Pillar 3: Modern Context */}
+                  {(item.practicalTeaching || item.practicalTeachingHi) && (
+                    <div className="apple-pillar apple-pillar-modern rounded-2xl p-4 transition-all">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                        <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
+                          ॥ आधुनिक संदर्भ · Action ॥
+                        </span>
+                      </div>
+                      <p className="text-xs sm:text-sm leading-relaxed text-dharma-text">
+                        {langTab === 'english'
+                          ? (item.practicalTeaching || item.practicalTeachingHi)
+                          : (item.practicalTeachingHi || item.practicalTeaching)}
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* ── Layer 4: Samsung One UI Ergonomic Action Bar ── */}
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-dharma-border/60">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      triggerTactileFeedback('medium', 'softTap');
+                      setIsShareOpen(true);
+                    }}
+                    className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-700 px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-saffron-700/25 transition hover:scale-102 hover:shadow-lg active:scale-95"
                   >
-                    <span>Read Full Explanation & Commentary</span>
-                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                  </Link>
+                    <Sparkles className="h-4 w-4" />
+                    <span>Create Sacred Card (Share 9:16 / 1:1)</span>
+                  </button>
+
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <button
+                      type="button"
+                      onClick={handleCopy}
+                      className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card px-4 py-2 text-xs font-semibold text-dharma-muted hover:border-saffron-300 hover:text-dharma-text transition"
+                    >
+                      {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
+                      <span>{copied ? 'Copied!' : 'Copy'}</span>
+                    </button>
+
+                    <VerseHrefLink
+                      href={readHref(item.scriptureId, item.chapterId, item.verseId)}
+                      onClick={() => triggerTactileFeedback('medium', 'softTap')}
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full border border-amber-300/80 bg-amber-500/10 dark:bg-amber-950/30 px-5 py-2 text-xs font-bold text-saffron-800 dark:text-saffron-200 hover:bg-amber-500/20 transition"
+                    >
+                      <span>Full Commentary</span>
+                      <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </VerseHrefLink>
+                  </div>
                 </div>
               </div>
             </motion.article>
@@ -293,6 +341,26 @@ export function VerseOfTheDayCompact() {
           />
         )}
       </div>
+
+      {/* Sacred Share Studio Modal for Content Creation */}
+      {item && (
+        <SacredShareModal
+          isOpen={isShareOpen}
+          onClose={() => setIsShareOpen(false)}
+          data={{
+            title: item.scriptureTitle,
+            reference: `${item.scriptureTitle} ${item.chapterId}.${item.verseId}`,
+            sanskrit: item.sanskrit,
+            transliteration: item.transliteration,
+            translation: item.translation,
+            hindi: item.hindi,
+            vyakhya: item.translation,
+            modernContext: item.practicalTeachingHi || item.practicalTeaching,
+            quote: item.practicalTeaching,
+            url: typeof window !== 'undefined' ? `${window.location.origin}${readHref(item.scriptureId, item.chapterId, item.verseId)}` : `${SITE_URL}${readHref(item.scriptureId, item.chapterId, item.verseId)}`,
+          }}
+        />
+      )}
     </section>
   );
 }

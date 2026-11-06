@@ -18,7 +18,7 @@ import {
   normalizeForSearch,
   normalizeTransliteration,
 } from '@/lib/normalize-search';
-import { phoneticIndex } from '@/lib/searchNormalizer';
+import { phoneticIndex } from '@/lib/normalize-search';
 import { parseDirectCitation } from '@/lib/search-citation';
 import { searchCoreIndex } from '@/lib/search-core';
 import { versePageHref } from '@/lib/verse-paths';

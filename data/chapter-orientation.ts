@@ -220,7 +220,7 @@ export const chapterOrientations: ChapterOrientation[] = [
       { label: 'Equanimity', labelHi: 'समत्व', verse: 48, range: '2.48' },
       { label: 'Disciplined intelligence', labelHi: 'स्थिरबुद्धि', verse: 54, range: '2.54 to 2.72' },
     ],
-    chapterConclusion: 'Chapter 2 serves as the master blueprint of the entire Gita. It synthesizes intellectual discrimination (Sankhya), selfless dedication (Karma Yoga), and psychological stability (Sthitaprajna) into a single, cohesive way of living.',
+    chapterConclusion: 'Chapter 2 serves as the master blueprint of the entire Gita. It synthesizes intellectual discrimination (Sankhya), selfless dedication (Karma Yoga), and psychological stability (Sthitaprajna) into a single, cohesive way of living—revealing that inner peace directly empowers outer duty and universal welfare (Lokasamgraha).',
     mapNodes: [
       {
         id: 'bg2-stage1',
@@ -313,7 +313,9 @@ export const chapterOrientations: ChapterOrientation[] = [
     importantVerses: [
       { verse: 9, note: 'Action performed as an offering (Yajna) frees rather than binds.' },
       { verse: 19, note: 'Constantly perform obligatory work without attachment to attain the highest.' },
+      { verse: 20, note: 'Janaka and ancient seers attained perfection through action alone; act for the welfare and cohesion of the world (Lokasamgraha).' },
       { verse: 21, note: 'Whatever an exemplary leader does, the world follows.' },
+      { verse: 25, note: 'As the unenlightened act with selfish attachment, the wise should act without attachment, devoted to universal welfare (Lokasamgraha).' },
       { verse: 30, note: 'Surrendering all actions to the Divine, free from longing and egoism.' },
       { verse: 35, note: 'Better is one’s own duty (Svadharma) imperfectly done than another’s done well.' },
       { verse: 37, note: 'It is desire and anger, born of Rajas, that are the all-devouring enemies.' }
@@ -334,7 +336,7 @@ export const chapterOrientations: ChapterOrientation[] = [
       'Arjuna asks what compels human beings toward moral transgression, and Krishna reveals selfish desire and anger.',
       'Chapter 4 continues with the ancient lineage of this wisdom and the sacred fire of knowledge.'
     ]),
-    chapterConclusion: 'Chapter 3 establishes that liberation is achieved not by avoiding responsibility, but by sanctifying work through selfless intention and overcoming the instinctive drag of desire.',
+    chapterConclusion: 'Chapter 3 establishes that liberation is achieved not by avoiding responsibility or escapism, but by sanctifying work through selfless intention and dedicated service for the welfare and moral order of humanity (Lokasamgraha), overcoming the instinctive drag of desire.',
     mapNodes: [
       {
         id: 'bg3-stage1',

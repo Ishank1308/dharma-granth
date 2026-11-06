@@ -89,10 +89,11 @@ function auditEntry(key: string, entry: any): AuditIssue[] {
   const issues: AuditIssue[] = [];
   if (!entry) return issues;
 
+  const bhav = entry.bhavartha || '';
   const exp = entry.explanation || '';
   const life = entry.lifeLesson || '';
   const sci = entry.science || '';
-  const combined = `${exp} ${life} ${sci}`;
+  const combined = `${bhav} ${exp} ${life} ${sci}`;
 
   // 1. Devanagari numerals
   const devDigits = combined.match(/[०-९]/g);
@@ -173,6 +174,13 @@ function auditFile(filePath: string, doFix: boolean): FileReport {
 
     if (doFix && item) {
       let entryChanged = false;
+      if (typeof item.bhavartha === 'string') {
+        const res = cleanText(item.bhavartha);
+        if (res.changed) {
+          item.bhavartha = res.text;
+          entryChanged = true;
+        }
+      }
       if (typeof item.explanation === 'string') {
         const res = cleanText(item.explanation);
         if (res.changed) {

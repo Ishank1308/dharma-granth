@@ -1,0 +1,36 @@
+{
+  "verseNumber": 63,
+  "durationMs": 7523,
+  "words": [
+    {
+      "word": "क्रोधाद्भवति",
+      "startTimeMs": 0,
+      "endTimeMs": 917
+    },
+    {
+      "word": "संमोहः",
+      "startTimeMs": 987,
+      "endTimeMs": 1498
+    },
+    {
+      "word": "संमोहात्स्मृतिविभ्रमः",
+      "startTimeMs": 1614,
+      "endTimeMs": 3193
+    },
+    {
+      "word": "स्मृतिभ्रंशाद्",
+      "startTimeMs": 3634,
+      "endTimeMs": 4644
+    },
+    {
+      "word": "बुद्धिनाशो",
+      "startTimeMs": 4702,
+      "endTimeMs": 5445
+    },
+    {
+      "word": "बुद्धिनाशात्प्रणश्यति",
+      "startTimeMs": 5654,
+      "endTimeMs": 7221
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "verseNumber": 1,
+  "durationMs": 13468,
+  "words": [
+    {
+      "word": "अन्यच्छ्रेयोऽन्यदुतैव",
+      "startTimeMs": 0,
+      "endTimeMs": 1347
+    },
+    {
+      "word": "प्रेयस्ते",
+      "startTimeMs": 1463,
+      "endTimeMs": 2078
+    },
+    {
+      "word": "उभे",
+      "startTimeMs": 2322,
+      "endTimeMs": 2577
+    },
+    {
+      "word": "नानार्थे",
+      "startTimeMs": 2635,
+      "endTimeMs": 3158
+    },
+    {
+      "word": "पुरुषं",
+      "startTimeMs": 3228,
+      "endTimeMs": 3657
+    },
+    {
+      "word": "सिनीतः",
+      "startTimeMs": 3704,
+      "endTimeMs": 4249
+    },
+    {
+      "word": "तयोः",
+      "startTimeMs": 4748,
+      "endTimeMs": 5166
+    },
+    {
+      "word": "श्रेय",
+      "startTimeMs": 5248,
+      "endTimeMs": 5596
+    },
+    {
+      "word": "आददानस्य",
+      "startTimeMs": 5712,
+      "endTimeMs": 6687
+    },
+    {
+      "word": "साधु",
+      "startTimeMs": 6931,
+      "endTimeMs": 7372
+    },
+    {
+      "word": "भवति",
+      "startTimeMs": 7430,
+      "endTimeMs": 7814
+    },
+    {
+      "word": "हीयतेऽर्थाद्य",
+      "startTimeMs": 7860,
+      "endTimeMs": 8951
+    },
+    {
+      "word": "उ",
+      "startTimeMs": 9195,
+      "endTimeMs": 9311
+    },
+    {
+      "word": "प्रेयो",
+      "startTimeMs": 9381,
+      "endTimeMs": 9729
+    },
+    {
+      "word": "वृणीते",
+      "startTimeMs": 9776,
+      "endTimeMs": 10368
+    }
+  ]
+}

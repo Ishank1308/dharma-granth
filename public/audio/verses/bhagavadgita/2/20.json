@@ -1,0 +1,101 @@
+{
+  "verseNumber": 20,
+  "durationMs": 10867,
+  "words": [
+    {
+      "word": "न",
+      "startTimeMs": 0,
+      "endTimeMs": 151
+    },
+    {
+      "word": "जायते",
+      "startTimeMs": 221,
+      "endTimeMs": 580
+    },
+    {
+      "word": "म्रियते",
+      "startTimeMs": 650,
+      "endTimeMs": 1184
+    },
+    {
+      "word": "वा",
+      "startTimeMs": 1428,
+      "endTimeMs": 1660
+    },
+    {
+      "word": "कदाचि",
+      "startTimeMs": 1707,
+      "endTimeMs": 2183
+    },
+    {
+      "word": "न्नायं",
+      "startTimeMs": 2252,
+      "endTimeMs": 2647
+    },
+    {
+      "word": "भूत्वा",
+      "startTimeMs": 2694,
+      "endTimeMs": 3123
+    },
+    {
+      "word": "भविता",
+      "startTimeMs": 3204,
+      "endTimeMs": 3704
+    },
+    {
+      "word": "वा",
+      "startTimeMs": 4029,
+      "endTimeMs": 4226
+    },
+    {
+      "word": "न",
+      "startTimeMs": 4284,
+      "endTimeMs": 4354
+    },
+    {
+      "word": "भूयः",
+      "startTimeMs": 4423,
+      "endTimeMs": 4853
+    },
+    {
+      "word": "अजो",
+      "startTimeMs": 5317,
+      "endTimeMs": 5619
+    },
+    {
+      "word": "नित्यः",
+      "startTimeMs": 5677,
+      "endTimeMs": 6084
+    },
+    {
+      "word": "शाश्वतोऽयं",
+      "startTimeMs": 6235,
+      "endTimeMs": 7036
+    },
+    {
+      "word": "पुराणो",
+      "startTimeMs": 7094,
+      "endTimeMs": 7605
+    },
+    {
+      "word": "न",
+      "startTimeMs": 7883,
+      "endTimeMs": 7999
+    },
+    {
+      "word": "हन्यते",
+      "startTimeMs": 8069,
+      "endTimeMs": 8591
+    },
+    {
+      "word": "हन्यमाने",
+      "startTimeMs": 8649,
+      "endTimeMs": 9265
+    },
+    {
+      "word": "शरीरे",
+      "startTimeMs": 9358,
+      "endTimeMs": 9834
+    }
+  ]
+}

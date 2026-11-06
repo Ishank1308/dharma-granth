@@ -11,13 +11,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-commentary/quality";
 import { findTemplateFields } from "./lib/template-text";
+import { hideUnalignedMeanings } from "./lib/meaning-alignment";
 import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
 import { isHindiSourceReviewRequired } from "../lib/ocr-hindi-review";
 
 const PILOT = loadPilotOverlay();
 
 /** Bump when shard output logic changes (stubs, templates, echo rules, manifest shape). */
-const SHARD_REV = "2";
+const SHARD_REV = "5";
 
 interface ShardStamp {
   rev: string;
@@ -157,6 +158,19 @@ function main(): void {
           });
         }
         console.log(`  ${id}: hid ${hidden.size} template explanation field(s)`);
+      }
+    }
+
+    // Hide Hindi and English that belong to other verses (OCR laid over the Sanskrit in reading order), and the
+    // notes generated from them. Pilot verses are left to the pilot step below, and verses in the Hindi review registry
+    // to the step after it (it withholds their Hindi and keeps their English); the build check exempts both the same way.
+    {
+      const pilotVerses = new Set(PILOT.filter((p) => p.scriptureId === id).map((p) => `${p.chapter}:${p.verse}`));
+      const hidden = hideUnalignedMeanings(book, {
+        keepVerse: (chapter, verse) => pilotVerses.has(`${chapter}:${verse}`) || isHindiSourceReviewRequired(id, chapter, verse),
+      });
+      if (hidden.translation || hidden.hindi || hidden.notes) {
+        console.log(`  ${id}: hid ${hidden.translation} English, ${hidden.hindi} Hindi and ${hidden.notes} note field(s) not aligned to their verse`);
       }
     }
 

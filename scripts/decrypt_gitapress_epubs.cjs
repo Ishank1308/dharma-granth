@@ -121,10 +121,20 @@ async function main() {
   const targetCodes = process.argv.slice(2);
   console.log('Target codes filter:', targetCodes.length ? targetCodes : 'ALL priority scriptures');
 
-  // Load cookies
-  const cookieData = JSON.parse(fs.readFileSync('scripts/decrypted_session_cookies.json', 'utf8'));
-  const rawToken = cookieData['__Secure-next-auth.session-token'];
-  const token = rawToken.slice(rawToken.indexOf('eyJ'));
+  // Load session token from either raw token file or cookie json
+  let token = '';
+  if (fs.existsSync('scripts/gitapress_session_token.txt')) {
+    token = fs.readFileSync('scripts/gitapress_session_token.txt', 'utf8').trim();
+  } else if (fs.existsSync('scripts/decrypted_session_cookies.json')) {
+    const cookieData = JSON.parse(fs.readFileSync('scripts/decrypted_session_cookies.json', 'utf8'));
+    const rawToken = cookieData['__Secure-next-auth.session-token'] || cookieData['next-auth.session-token'];
+    token = rawToken ? rawToken.slice(rawToken.indexOf('eyJ')) : '';
+  }
+
+  if (!token) {
+    console.error('Error: No session token found in scripts/gitapress_session_token.txt or scripts/decrypted_session_cookies.json');
+    process.exit(1);
+  }
 
   // Get bearer session
   const sRes = await fetch('https://gitapress.org/api/auth/session', {
@@ -132,7 +142,11 @@ async function main() {
   });
   const sData = await sRes.json();
   const bearer = sData.token;
-  console.log(`Authenticated as: ${sData.user?.email}`);
+  if (!bearer) {
+    console.error('Error: Session expired or invalid. Please re-login on gitapress.org.');
+    process.exit(1);
+  }
+  console.log(`Authenticated as: ${sData.user?.email || 'Authenticated User'}`);
 
   // Generate 4096-bit RSA key pair
   console.log('Generating RSA-OAEP 4096-bit key pair...');
@@ -153,17 +167,29 @@ async function main() {
   const cat = JSON.parse(fs.readFileSync('data/sources-local/gitapress_ebooks_catalog.json', 'utf8'));
   const allBooks = [...cat.freeBooks, ...cat.ebooks];
 
-  // Default priority codes if none specified
-  const priorityCodes = targetCodes.length > 0 ? targetCodes : ['133', '385', '73', '70', '71', '65', '135', '26', '27', '38', '48', '61', '107', '108', '136', '1737'];
+  // Select target books
+  const isAll = targetCodes.length === 1 && targetCodes[0].toLowerCase() === 'all';
+  const priorityCodes = ['133', '385', '73', '70', '71', '65', '135', '26', '27', '38', '48', '61', '107', '108', '136', '75', '76', '80', '517', '557', '1897', '1898', '1930'];
+  const codesToProcess = isAll ? null : (targetCodes.length > 0 ? targetCodes : priorityCodes);
 
   const selectedBooks = [];
   const seen = new Set();
-  for (const code of priorityCodes) {
-    const found = allBooks.filter(b => String(b.code) === String(code));
-    for (const f of found) {
-      if (!seen.has(f.code)) {
-        seen.add(f.code);
-        selectedBooks.push(f);
+  if (isAll) {
+    for (const b of allBooks) {
+      const code = String(b.code || '');
+      if (code && !seen.has(code)) {
+        seen.add(code);
+        selectedBooks.push(b);
+      }
+    }
+  } else {
+    for (const code of codesToProcess) {
+      const found = allBooks.filter(b => String(b.code) === String(code));
+      for (const f of found) {
+        if (!seen.has(f.code)) {
+          seen.add(f.code);
+          selectedBooks.push(f);
+        }
       }
     }
   }

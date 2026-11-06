@@ -315,9 +315,9 @@ export const scriptureCatalog: ScriptureMeta[] = [
     description:
       "The oldest scripture of humanity — 10,552 hymns across 10 Mandalas. Opens with RV 1.1.1 (Agni Suktam — the very first word of the oldest text in human history is 'agni'). Contains: Gayatri Mantra (3.62.10), Nasadiya Sukta (10.129 — the most scientifically honest creation hymn in ancient literature), Purusha Sukta, Ekam Sat (1.164.46 — truth is one, the wise call it by many names). Mandala 2: Rita (cosmic order as both physical and moral law). Mandala 4: Vamadeva's non-dual declaration 'aham manurabhaваṃ' (4.26.1) — the paradigm case in the Aitareya Upanishad. Mandala 5: Ushas (Dawn as renewal archetype; circadian wisdom), Maruts (bala-satya-kratu as the triad of resilience). Mandala 6: Bharadvaja's dhi (illumined vision as the product of inner sacrifice), Purandara (destroyer of inner limitations). Mandala 7: Vasishtha's Varuna hymns (7.86 — guilt without a clear object; the oldest psychology of conscience; release the pāśa). Mandala 8: Kanva's sakha hymns (the divine as friend), RV 8.48 (apāma somam amṛtā abhūma). Mandala 9: Soma Pavamana (purification uncovers, does not add; the drop already contains the abundance of immortality). Mandala 10: Nasadiya Sukta + Purusha Sukta.",
     totalChapters: 10,
-    totalVerses: 29,
-    isCurated: true,
-    canonicalTotalVerses: 10600,
+    // Full DharmicData text (2026-10-25); the source separates 10,489 of the 10,552 mantras.
+    totalVerses: 10489,
+    canonicalTotalVerses: 10552,
     tags: ["Veda","Hymns","Gayatri","NasadiyaSukta","AgniSuktam","Rita","EkamSat","VarunaHymns","SomaMandala","PurushaSukta","NonDual","Ushas","Maruts","Dhi","Sakhi"],
     hasData: true,
   },
@@ -372,8 +372,8 @@ export const scriptureCatalog: ScriptureMeta[] = [
       "The Valmiki Ramayana — Adi Kavya, the first poem (~24,000 shlokas, 7 Kandas). Born from shoka (grief) becoming shloka (verse). Complete Gita Press edition (~6191 pages). Each Kanda is a study in a facet of dharmic life: Bala (ideal character), Ayodhya (equanimity and servant leadership — Bharata's sandals), Aranya (dharma's reciprocity, Jatayu's sacrifice), Kishkindha (alliance, Tara's lament on moral complexity), Sundara (single-pointed purpose; Sita's inner sovereignty), Yuddha (war as duty; learn from your enemy — Ravana's dying teaching), Uttara (the tragedy of public vs private dharma).",
     author: "Valmiki",
     totalChapters: 7,
-    totalVerses: 25,
-    isCurated: true,
+    // Full DharmicData text (2026-10-25): 22,742 shlokas.
+    totalVerses: 22742,
     canonicalTotalVerses: 24000,
     tags: ["Epic","Rama","Sita","Dharma","Hanuman","Valmiki","AdiKavya","Itihasa"],
     hasData: true,

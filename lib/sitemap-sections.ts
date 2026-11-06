@@ -3,7 +3,7 @@ import { getAllScriptures, getScriptureChapters } from '@/data/scriptures';
 import { readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
 import { lastChanged, scriptureLastChanged } from '@/lib/content-dates';
 import { verseStaticParams } from '@/lib/verse-pages';
-import { verseMeaningById } from '@/lib/verse-meaning';
+import { chapterHasMeaning, verseMeaningById } from '@/lib/verse-meaning';
 import { chapterPartHref, chapterParts } from '@/lib/chapter-parts';
 import { wisdomTopics } from '@/data/wisdom-for-life';
 import { wisdomPathways } from '@/data/wisdom-pathways';
@@ -17,6 +17,7 @@ import { READING_JOURNEYS, isJourneyIndexable } from '@/data/reading-journeys';
 import { festivals } from '@/data/festivals';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
+import { readHref } from '@/lib/verse-paths';
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev').replace(/\/+$/, '');
 
@@ -158,6 +159,8 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
     const chapterSet = new Set<number>(readSeededChapterNumbers(meta.id));
     for (const ch of getScriptureChapters(meta.id)) chapterSet.add(ch.id);
     for (const chId of Array.from(chapterSet).sort((a, b) => a - b)) {
+      // Original-text-only chapters are noindex (chapter page); keep them out of the sitemap too.
+      if (!chapterHasMeaning(meta.id, chId)) continue;
       chapters.push(entry(`/scripture/${meta.id}/chapter/${chId}`, date));
       // Parts 2…N of chapters too large for one page (lib/chapter-parts).
       for (const part of chapterParts(meta.id, chId)?.slice(1) ?? []) {
@@ -173,7 +176,7 @@ function versesSection(): MetadataRoute.Sitemap {
   // A verse page with no meaning or explanation yet is noindex (see the verse page); keep it out of the sitemap too.
   const scriptureVerses = verseStaticParams()
     .filter((p) => verseMeaningById(p.id, Number(p.chapterId), p.verseId)?.any)
-    .map((p) => entry(`/scripture/${p.id}/chapter/${p.chapterId}/verse/${p.verseId}`, scriptureLastChanged(p.id)));
+    .map((p) => entry(readHref(p.id, Number(p.chapterId), p.verseId), scriptureLastChanged(p.id)));
   // Ashtavakra Gita has its own verse pages (/ashtavakra/<chapter>/<verse>/).
   const ashtavakraDate = lastChanged('app/ashtavakra/[chapter]/[verse]/page.tsx');
   const ashtavakraVerses = publishedChapterNumbers().flatMap((c) =>

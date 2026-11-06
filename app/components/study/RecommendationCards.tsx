@@ -6,6 +6,7 @@ import { readRecentChapters } from '@/lib/reading-history';
 import { READING_JOURNEYS } from '@/data/reading-journeys';
 import { CONNECTIONS, verseKey } from '@/data/study-content';
 import { readRecPrefs, writeRecPrefs, type RecPrefs } from '@/lib/recommendation-prefs';
+import { readHref } from '@/lib/verse-paths';
 
 const JOURNEYS_KEY = 'dharma.journeys.v1';
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -51,9 +52,9 @@ export function RecommendationCards() {
             const i = list.findIndex((v) => String(v.number) === String(last.verseId));
             const nxt = i >= 0 ? list[i + 1] : undefined;
             if (nxt) {
-              nextHref = `/scripture/${last.scriptureId}/chapter/${last.chapterId}/verse/${nxt.number}`;
+              nextHref = readHref(last.scriptureId, last.chapterId, nxt.number);
               nextLabel = `Continue with ${last.scriptureTitle} ${last.chapterId}.${nxt.number}`;
-              const linked = CONNECTIONS[verseKey(last.scriptureId, last.chapterId, last.verseId)]?.find((c) => c.href === nextHref);
+              const linked = CONNECTIONS[verseKey(last.scriptureId, last.chapterId, last.verseId)]?.find((c) => c.href?.replace(/\/$/, '') === nextHref.replace(/\/$/, ''));
               reason = linked ? linked.reason : 'It is the next verse in the same chapter.';
             }
           } catch { /* fall back to the chapter link */ }

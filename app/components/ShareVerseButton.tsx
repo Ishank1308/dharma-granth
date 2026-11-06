@@ -11,6 +11,7 @@ const PatrikaShareStudioModal = dynamic(
   { ssr: false },
 );
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { SITE_URL } from '@/lib/jsonld';
 
 interface Props {
   scriptureTitle: string;
@@ -51,7 +52,7 @@ export function ShareVerseButton(props: Props) {
     verseUrl ||
     (typeof window !== 'undefined'
       ? window.location.href.split('#')[0]
-      : 'https://dharmagranth.dev');
+      : SITE_URL);
 
   const handleOpen = () => {
     triggerTactileFeedback('selection', 'softTap');

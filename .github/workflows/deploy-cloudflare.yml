@@ -7,7 +7,7 @@ name: Deploy Cloudflare Pages
 
 on:
   push:
-    branches: ["master", "fix/audit-cloudflare-search"]
+    branches: ["master"]
   workflow_dispatch:
 
 permissions:
@@ -122,6 +122,21 @@ jobs:
         run: npm run build
         env:
           NODE_OPTIONS: "--max-old-space-size=6144"
+
+      # The same browser tests ci.yml runs on pull requests (smoke, keyboard,
+      # axe a11y) against dist/ with _headers applied. A direct push to master
+      # skips ci.yml, so they run here, before anything is uploaded.
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Chromium for the browser test
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser tests before deploy
+        run: npm run test:e2e
 
       - name: Deploy to Cloudflare Pages
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'

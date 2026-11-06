@@ -14,7 +14,7 @@ import {
   normalizeDevanagari,
   normalizeForSearch,
 } from '@/lib/normalize-search';
-import { phoneticIndex } from '@/lib/searchNormalizer';
+import { phoneticIndex } from '@/lib/normalize-search';
 
 /** [scriptureIndex, chapter, verseSlug, sanskrit, transliteration, hindi, english, explanation, flags] */
 export type VerseRow = [number, number, string, string, string, string, string, string, number];

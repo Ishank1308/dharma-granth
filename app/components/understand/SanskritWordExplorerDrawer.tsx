@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { AlertCircle, ArrowRight, BookOpen, CheckCircle, ExternalLink, HelpCircle, Layers, Sparkles } from 'lucide-react';
 import { ReaderDialog } from '@/app/components/reader/ReaderDialog';
 import type { SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
+import { readHref } from '@/lib/verse-paths';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 
 interface Props {
   entry: SanskritLexiconEntry | null;
@@ -104,14 +106,14 @@ export function SanskritWordExplorerDrawer({ entry, isOpen, onClose }: Props) {
                   <span className="font-devanagari text-xs text-dharma-text">
                     {v.snippet}
                   </span>
-                  <Link
-                    href={`/scripture/${v.scriptureId}/chapter/${v.chapter}/verse/${v.verse}`}
+                  <VerseHrefLink
+                    href={readHref(v.scriptureId, v.chapter, v.verse)}
                     onClick={onClose}
                     className="focus-ring inline-flex min-h-[36px] items-center gap-1 rounded-lg border border-saffron-500/40 bg-saffron-50 dark:bg-saffron-950/30 px-2.5 py-1 text-xs font-bold text-saffron-800 dark:text-saffron-300 hover:border-saffron-600 transition"
                   >
                     <span>श्लोक {v.chapter}.{v.verse}</span>
                     <ArrowRight className="h-3 w-3" />
-                  </Link>
+                  </VerseHrefLink>
                 </li>
               ))}
             </ul>

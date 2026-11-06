@@ -1,0 +1,66 @@
+{
+  "verseNumber": 1,
+  "durationMs": 8963,
+  "words": [
+    {
+      "word": "ईशा",
+      "startTimeMs": 0,
+      "endTimeMs": 337
+    },
+    {
+      "word": "वास्यमिदं",
+      "startTimeMs": 395,
+      "endTimeMs": 1091
+    },
+    {
+      "word": "सर्वं",
+      "startTimeMs": 1149,
+      "endTimeMs": 1567
+    },
+    {
+      "word": "यत्किञ्च",
+      "startTimeMs": 1846,
+      "endTimeMs": 2334
+    },
+    {
+      "word": "जगत्यां",
+      "startTimeMs": 2450,
+      "endTimeMs": 3019
+    },
+    {
+      "word": "जगत्",
+      "startTimeMs": 3077,
+      "endTimeMs": 3541
+    },
+    {
+      "word": "तेन",
+      "startTimeMs": 4156,
+      "endTimeMs": 4412
+    },
+    {
+      "word": "त्यक्तेन",
+      "startTimeMs": 4505,
+      "endTimeMs": 4957
+    },
+    {
+      "word": "भुञ्जीथा",
+      "startTimeMs": 5050,
+      "endTimeMs": 5724
+    },
+    {
+      "word": "मा",
+      "startTimeMs": 5968,
+      "endTimeMs": 6200
+    },
+    {
+      "word": "गृधः",
+      "startTimeMs": 6258,
+      "endTimeMs": 6676
+    },
+    {
+      "word": "कस्यस्विद्धनम्",
+      "startTimeMs": 6792,
+      "endTimeMs": 7744
+    }
+  ]
+}

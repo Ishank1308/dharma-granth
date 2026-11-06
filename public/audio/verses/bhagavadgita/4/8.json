@@ -1,0 +1,51 @@
+{
+  "verseNumber": 8,
+  "durationMs": 6594,
+  "words": [
+    {
+      "word": "परित्राणाय",
+      "startTimeMs": 0,
+      "endTimeMs": 789
+    },
+    {
+      "word": "साधूनां",
+      "startTimeMs": 882,
+      "endTimeMs": 1486
+    },
+    {
+      "word": "विनाशाय",
+      "startTimeMs": 1544,
+      "endTimeMs": 2113
+    },
+    {
+      "word": "च",
+      "startTimeMs": 2194,
+      "endTimeMs": 2252
+    },
+    {
+      "word": "दुष्कृताम्",
+      "startTimeMs": 2334,
+      "endTimeMs": 3030
+    },
+    {
+      "word": "धर्मसंस्थापनार्थाय",
+      "startTimeMs": 3541,
+      "endTimeMs": 4934
+    },
+    {
+      "word": "संभवामि",
+      "startTimeMs": 5016,
+      "endTimeMs": 5619
+    },
+    {
+      "word": "युगे",
+      "startTimeMs": 5642,
+      "endTimeMs": 5898
+    },
+    {
+      "word": "युगे",
+      "startTimeMs": 5956,
+      "endTimeMs": 6293
+    }
+  ]
+}

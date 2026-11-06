@@ -38,6 +38,8 @@ import { ModernContextBody, ReflectionBody, parseModernContext } from './ModernC
 import { ConnectedFlow, SacredSection } from '@/app/components/reader/SacredReadingFlow';
 import { detectChandas } from '@/lib/chandas-detector';
 import { speakSanskritTerm } from '@/lib/sacred-soundscape';
+import { hasRecordedVerseAudio } from '@/lib/verse-audio';
+import { RecitationHighlightedLine } from './reader/RecitationHighlightedLine';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { showSabdaPeek } from '@/lib/prana-capsule-store';
 import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';
@@ -52,7 +54,7 @@ import { useEverTrue } from '@/lib/use-ever-true';
 
 // Loaded the first time it opens, so the dialog stays out of the page's first-load JS.
 const StoryDeckModal = dynamic(() => import('@/app/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
-const CitationModal = dynamic(() => import('@/components/study/CitationModal').then((m) => m.CitationModal), { ssr: false });
+const CitationModal = dynamic(() => import('@/app/components/study/CitationModal').then((m) => m.CitationModal), { ssr: false });
 import { saveAnnotation, deleteAnnotation } from '@/lib/study/storage';
 import type { Connection } from '@/data/study-content';
 
@@ -80,6 +82,7 @@ export interface VerseCardData {
 export interface VerseMeaning {
   /** AI-drafted and editor-approved (not hand-written); labelled per lib/ai-labels. */
   isAi?: boolean;
+  bhavartha?: string;
   explanation?: string;
   explanationIsHi: boolean;
   /** Hindi व्याख्या and English commentary are kept separate when both exist. */
@@ -217,8 +220,8 @@ function VerseMedallion({ label }: { label: string }) {
   const gradId = useId();
   const petals = Array.from({ length: 8 }, (_, i) => i * 45);
   return (
-    <span className="relative inline-flex h-12 w-12 shrink-0 items-center justify-center">
-      <svg viewBox="0 0 48 48" className="absolute inset-0 h-full w-full drop-shadow-sm" aria-hidden="true">
+    <span className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center">
+      <svg viewBox="0 0 48 48" className="absolute inset-0 h-full w-full" aria-hidden="true">
         <defs>
           <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#fbbf24" />
@@ -234,7 +237,7 @@ function VerseMedallion({ label }: { label: string }) {
             rx="5"
             ry="8.5"
             fill={`url(#${gradId})`}
-            opacity="0.28"
+            opacity="0.25"
             transform={`rotate(${deg} 24 24)`}
           />
         ))}
@@ -247,7 +250,7 @@ function VerseMedallion({ label }: { label: string }) {
 }
 
 const iconButton =
-  'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card/80 text-dharma-muted backdrop-blur transition hover:border-saffron-300 hover:text-saffron-700 lg:h-9 lg:w-9';
+  'inline-flex h-10 w-10 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full border border-stone-200/80 bg-stone-100/90 text-dharma-muted shadow-2xs transition-all duration-150 active:scale-90 hover:scale-105 hover:border-saffron-400 hover:bg-white hover:text-saffron-700 dark:border-stone-800/80 dark:bg-stone-850 dark:hover:bg-stone-800 dark:hover:text-saffron-300';
 
 export function VerseCard({
   depth = 'study',
@@ -283,6 +286,10 @@ export function VerseCard({
   isActive,
 }: Props) {
   const reduce = useReducedMotion();
+  const hasStudio = useMemo(
+    () => hasRecordedVerseAudio(scriptureId, chapterId, v.number),
+    [scriptureId, chapterId, v.number]
+  );
 
   // ── Highlight colour picker ──
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -347,6 +354,7 @@ export function VerseCard({
   const [activeLineIndex, setActiveLineIndex] = useState<number | null>(null);
   const [activeTranslationLang, setActiveTranslationLang] = useState<'hi' | 'en' | null>(null);
   const [activeWordIndex, setActiveWordIndex] = useState<number | null>(null);
+  const [activeRecitingWord, setActiveRecitingWord] = useState<string | null>(null);
 
   const [activeWordBoundary, setActiveWordBoundary] = useState<{ chunkIndex: number; charIndex: number; length: number } | null>(null);
 
@@ -355,6 +363,7 @@ export function VerseCard({
       setActiveLineIndex(null);
       setActiveTranslationLang(null);
       setActiveWordBoundary(null);
+      setActiveRecitingWord(null);
       return;
     }
 
@@ -376,6 +385,9 @@ export function VerseCard({
 
     const handleWord = (e: Event) => {
       const detail = (e as CustomEvent).detail;
+      if (detail?.word) {
+        setActiveRecitingWord(detail.word);
+      }
       if (typeof detail?.chunkIndex === 'number' && typeof detail?.charIndex === 'number') {
         setActiveWordBoundary({
           chunkIndex: detail.chunkIndex,
@@ -444,7 +456,7 @@ export function VerseCard({
   const hasExplanation = Boolean(vyakhya || commentary);
   const scienceIsHi = meaning.scienceIsHi || isMostlyDevanagari(science);
   const lessonIsHi = meaning.lessonIsHi || isMostlyDevanagari(lesson);
-  const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null || v.hindiReviewRequired) && layers.hindi);
+  const showHindi = Boolean((v.hindi || v.hindiSeeVerse != null || v.hindiReviewRequired || meaning.bhavartha) && layers.hindi);
   const showEnglish = Boolean(v.translation && layers.english);
 
   // Sacred reading order (lib/sacred-reading-order): every layer renders in one
@@ -460,15 +472,12 @@ export function VerseCard({
       && (!modernParsed.hasStructuredFormat || modernParsed.contextText || modernParsed.applicationText),
   );
   const showModern = showScience || showLessonModern;
+  // The मर्म / core-shift line is not shown on any verse (2026-10-25).
   const showReflection = Boolean(
-    (layers.commentary && depth !== 'read' && modernParsed?.hasStructuredFormat && modernParsed.reflectionQuestion)
-    || (depth !== 'read' && (literaryMeta.isCurated || insight?.marma)),
+    layers.commentary && depth !== 'read' && modernParsed?.hasStructuredFormat && modernParsed.reflectionQuestion,
   );
-  const showRelated = Boolean(
-    (relatedTeachings && relatedTeachings.length > 0)
-    || (insight && insight.situations.length > 0 && depth !== 'read')
-    || (depth === 'study' && v.keywords && v.keywords.length > 0),
-  );
+  // जीवन प्रसंग closes pillar 3; the keywords and related-teachings block were removed as clutter.
+  const showSituations = Boolean(insight && insight.situations.length > 0 && depth !== 'read');
   const hasMeaning = showArth || showVyakhya || showModern || showReflection;
 
   // The shloka, transliteration and meanings reveal in that order through CSS (.reveal-seq / data-reveal in
@@ -478,14 +487,14 @@ export function VerseCard({
   return (
     <article
       id={`verse-${v.number}`}
-      className={`verse-card ${REVEAL_SEQUENCE} group relative scroll-mt-24 rounded-[28px] border bg-dharma-card transition-all duration-300 ${
+      className={`verse-card ${REVEAL_SEQUENCE} group relative scroll-mt-24 rounded-[28px] border bg-white dark:bg-[#161514] transition-all duration-300 ${
         isReciting
-          ? 'border-amber-400/80 ring-2 ring-amber-400/60 shadow-xl shadow-amber-500/15'
+          ? 'border-amber-400/90 ring-2 ring-amber-400/60 shadow-xl shadow-amber-500/15'
           : highlight
-          ? `${HIGHLIGHTS[highlight].ring} border-dharma-border`
+          ? `${HIGHLIGHTS[highlight].ring} border-stone-200/90 dark:border-stone-800/80`
           : chantingMode
-          ? 'ring-2 ring-saffron-500/25 border-dharma-border'
-          : 'border-dharma-border'
+          ? 'ring-2 ring-saffron-500/30 border-stone-200/90 dark:border-stone-800/80'
+          : 'border-stone-200/90 dark:border-stone-800/80 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_28px_-4px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.06)]'
       } ${getVerseGraphicClass(category)}`}
       style={{
         ...getVerseGraphicStyle({ category, verseId: v.number }),
@@ -526,27 +535,6 @@ export function VerseCard({
             </div>
           )}
 
-          {/* Inline Sandhi-Viccheda (Compound Split) Toggle Pill */}
-          {hasSplitData && (
-            <button
-              type="button"
-              onClick={() => {
-                setIsSandhiSplit(!isSandhiSplit);
-                setHoveredWordIndex(null);
-              }}
-              aria-pressed={isSandhiSplit}
-              title="संधि-विच्छेद (Split Compound Words)"
-              className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold transition border lg:min-h-0 lg:py-1 ${
-                isSandhiSplit
-                  ? 'border-saffron-500 bg-saffron-100/90 text-saffron-900 shadow-2xs dark:bg-saffron-950/60 dark:text-saffron-200 dark:border-saffron-700'
-                  : 'border-dharma-border/80 bg-dharma-card/80 text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
-              }`}
-            >
-              <ScrollText className="h-3.5 w-3.5 text-saffron-600 dark:text-saffron-400" />
-              <span>संधि-विच्छेद · Split Words</span>
-            </button>
-          )}
-
           {/* Streamlined, calm toolbar: 3 essential icons + ActionMenu overflow. Never wraps awkwardly on mobile. */}
           <div
             className="ml-auto flex shrink-0 items-center gap-1.5"
@@ -558,15 +546,34 @@ export function VerseCard({
               <button
                 type="button"
                 onClick={onPlayRecitation}
-                className={`${iconButton} ${isReciting ? '!border-amber-400 !bg-amber-500/20 !text-amber-700 dark:!text-amber-300 ring-2 ring-amber-400/50' : ''}`}
+                className={`${iconButton} relative ${isReciting ? '!border-amber-400 !bg-amber-500/20 !text-amber-700 dark:!text-amber-300 ring-2 ring-amber-400/50' : ''}`}
                 aria-pressed={isReciting}
-                aria-label={isReciting ? 'श्लोक उच्चारण रोकें (Pause recitation)' : 'श्लोक उच्चारण सुनें (Listen to verse recitation)'}
-                title={isReciting ? 'श्लोक उच्चारण रोकें' : 'श्लोक उच्चारण सुनें'}
+                aria-label={
+                  isReciting
+                    ? 'श्लोक उच्चारण रोकें (Pause recitation)'
+                    : hasStudio
+                      ? 'स्टूडियो पाठ सुनें (Listen to studio recitation)'
+                      : 'श्लोक उच्चारण सुनें (Listen to verse recitation)'
+                }
+                title={
+                  isReciting
+                    ? 'श्लोक उच्चारण रोकें'
+                    : hasStudio
+                      ? 'स्टूडियो पाठ सुनें (उच्च गुणवत्ता · ElevenLabs)'
+                      : 'श्लोक उच्चारण सुनें'
+                }
               >
                 {isReciting ? (
                   <Volume2 className="h-4 w-4 text-amber-600 dark:text-amber-400 animate-pulse" />
                 ) : (
                   <Volume2 className="h-4 w-4" />
+                )}
+                {hasStudio && !isReciting && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-amber-500 ring-1 ring-white dark:ring-stone-900"
+                    title="Studio"
+                  />
                 )}
               </button>
             )}
@@ -597,7 +604,6 @@ export function VerseCard({
                 transliteration={v.transliteration}
                 hindi={v.hindi}
                 translation={v.translation}
-                coreShift={literaryMeta.isCurated ? literaryMeta.coreShiftHi || literaryMeta.coreShiftEn : undefined}
                 verseUrl={shareVerseUrl(SITE_URL, scriptureId, chapterId, v.number)}
               />
             </span>
@@ -721,7 +727,7 @@ export function VerseCard({
 
         {/* ── Sanskrit on a manuscript leaf: scripture first; मर्म and the verse-page link follow it ── */}
         {lines.length > 0 && (
-          <div className={`verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8 transition-colors ${
+          <div className={`verse-leaf apple-pranic-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8 transition-colors ${
             isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
           }`}>
             <span aria-hidden="true" className="verse-leaf-ornament left-3 top-2">❁</span>
@@ -786,7 +792,11 @@ export function VerseCard({
                           : ''
                       }`}
                     >
-                      <GlossaryText text={line} />
+                      {isReciting && activeRecitingWord ? (
+                        <RecitationHighlightedLine line={line} activeWord={activeRecitingWord} />
+                      ) : (
+                        <GlossaryText text={line} />
+                      )}
                     </span>
                   );
                 })}
@@ -965,19 +975,25 @@ export function VerseCard({
               <SacredSection id={`verse-${v.number}-arth`} section="arth">
               <div className="space-y-3.5">
                 {showHindi && (
-                  <div className={`rounded-2xl border p-4.5 sm:p-5 shadow-2xs transition-all duration-300 ${
+                  <div className={`apple-pillar apple-pillar-bhavartha p-5 sm:p-6 shadow-2xs ${
                     isReciting && activeTranslationLang === 'hi'
-                      ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
-                      : 'border-dharma-border/70 bg-dharma-card-soft/70'
+                      ? '!border-amber-400 !bg-amber-500/20 ring-2 ring-amber-400/50 shadow-md'
+                      : ''
                   }`}>
-                    <div className="mb-2 flex items-center justify-between gap-2">
-                      <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                        {v.hindiReviewRequired
-                          ? 'हिन्दी अर्थ · स्रोत सत्यापनाधीन'
-                          : v.hindiRange
-                          ? `श्लोक ${toAsciiDigits(v.hindiRange.replace('-', '–'))} का हिंदी अनुवाद · Hindi Translation`
-                          : 'हिंदी अनुवाद · Hindi Translation'}
-                      </p>
+                    <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30">
+                          <span className="h-1.5 w-1.5 rounded-full bg-amber-600 dark:bg-amber-400 animate-pulse" />
+                          अनुवाद · Translation
+                        </span>
+                        <p lang="hi" className="text-xs font-semibold text-dharma-muted">
+                          {v.hindiReviewRequired
+                            ? 'स्रोत सत्यापनाधीन'
+                            : v.hindiRange
+                            ? `श्लोक ${toAsciiDigits(v.hindiRange.replace('-', '–'))}`
+                            : 'सरल अर्थ'}
+                        </p>
+                      </div>
                       {!v.hindiReviewRequired && <ContentLabelBadge kind="literal" />}
                     </div>
                     {!v.hindi && v.hindiSeeVerse != null && (
@@ -990,8 +1006,8 @@ export function VerseCard({
                     )}
                     <p lang="hi" className={`font-devanagari ${translationFontSizeClass} text-dharma-text`}>
                       {v.hindiReviewRequired
-                        ? 'हिन्दी अर्थ स्रोत-संस्करण से सत्यापनाधीन है।'
-                        : v.hindi && <GlossaryText text={v.hindi} />}
+                        ? 'हिन्दी भावार्थ स्रोत-संस्करण से सत्यापनाधीन है।'
+                        : (v.hindi || meaning.bhavartha) && <GlossaryText text={v.hindi || meaning.bhavartha || ''} />}
                       {!v.hindiReviewRequired && meaning.editorial && meaning.editorial.arthaDecision !== 'preserve-existing' && (
                         <span className="ml-2 align-middle"><DraftBadge lang="hi" /></span>
                       )}
@@ -1008,12 +1024,12 @@ export function VerseCard({
                 )}
 
                 {showEnglish && (
-                  <div className={`rounded-2xl border p-4.5 sm:p-5 shadow-2xs transition-all duration-300 ${
+                  <div className={`rounded-[22px] border p-5 sm:p-6 shadow-2xs transition-all duration-300 ${
                     isReciting && activeTranslationLang === 'en'
-                      ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40'
-                      : 'border-dharma-border/70 bg-dharma-card/70'
+                      ? 'border-amber-400 bg-amber-500/15 ring-2 ring-amber-400/40 shadow-sm'
+                      : 'border-stone-200/80 bg-stone-50/50 dark:border-stone-800/80 dark:bg-stone-900/40'
                   }`}>
-                    <div className="mb-2 flex items-center justify-between gap-2">
+                    <div className="mb-2.5 flex items-center justify-between gap-2">
                       <p lang="en" className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
                         English Translation
                       </p>
@@ -1040,15 +1056,19 @@ export function VerseCard({
             )}
 
             {/* ── Vyakhya → Modern Context → Reflection: one connected flow ── */}
-            {(showVyakhya || showModern || showReflection) && (
+            {(showVyakhya || showModern || showReflection || showSituations) && (
               <ConnectedFlow label="व्याख्या से आधुनिक जीवन तक · From explanation to modern life">
               {showVyakhya && (
               <SacredSection id={`verse-${v.number}-vyakhya`} section="vyakhya">
               <div className="space-y-4">
                 {/* Vyakhya: What does this teaching mean? */}
                 {vyakhya && (
-                  <div className="rounded-2xl border border-amber-200/70 bg-amber-50/40 p-4.5 sm:p-5 shadow-2xs dark:border-amber-900/40 dark:bg-amber-950/20">
-                    <div className="mb-2.5 flex flex-wrap items-center justify-end gap-1.5">
+                  <div className="apple-pillar apple-pillar-vyakhya p-5 sm:p-6 shadow-2xs">
+                    <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider bg-orange-500/20 text-orange-900 dark:text-orange-200 border border-orange-500/30">
+                        <span className="h-1.5 w-1.5 rounded-full bg-orange-600 dark:bg-orange-400" />
+                        ॥ व्याख्या · Vyakhya ॥
+                      </span>
                       <div className="flex flex-wrap items-center gap-1.5">
                         <ContentLabelBadge kind="explanation" />
                         {meaning.editorial && <DraftBadge lang="hi" />}
@@ -1066,7 +1086,8 @@ export function VerseCard({
                   </div>
                 )}
 
-                {commentary && (
+                {/* The English note shows only when there is no Hindi व्याख्या, so pillar 2 is never doubled or empty. */}
+                {commentary && !vyakhya && (
                   <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4.5 sm:p-5 shadow-2xs">
                     <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
                       <p className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">Commentary &amp; Explanation</p>
@@ -1114,15 +1135,16 @@ export function VerseCard({
               )}
 
               {/* ── Modern Context: how the teaching appears in life today ── */}
-              {showModern && (
+              {(showModern || showSituations) && (
               <SacredSection id={`verse-${v.number}-modern`} section="modern">
               <div className="space-y-4">
                 {showScience && science && (
-                  <div className="rounded-2xl border border-dharma-border bg-dharma-card-soft p-4 sm:p-5 shadow-2xs">
-                    <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                      <p className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                        {meaning.editorial ? 'विवेकपूर्ण आधुनिक परिप्रेक्ष्य · Responsible Modern Perspective' : 'आधुनिक परिप्रेक्ष्य · Modern perspective'}
-                      </p>
+                  <div className="apple-pillar apple-pillar-modern p-5 sm:p-6 shadow-2xs">
+                    <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider bg-emerald-500/20 text-emerald-900 dark:text-emerald-200 border border-emerald-500/30">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
+                        ॥ आधुनिक संदर्भ · Modern Context ॥
+                      </span>
                   {meaning.editorial ? (
                     <span className="flex flex-wrap items-center gap-1.5">
                       {VIJNANA_CATEGORIES[meaning.editorial.vijnanaCategory] && (
@@ -1168,76 +1190,8 @@ export function VerseCard({
                     />
                   </div>
                 )}
-              </div>
-              </SacredSection>
-              )}
-
-              {/* ── Reflection: one question to sit with, then the core shift ── */}
-              {showReflection && (
-              <SacredSection id={`verse-${v.number}-reflection`} section="reflection">
-                {layers.commentary && depth !== 'read' && modernParsed?.hasStructuredFormat && modernParsed.reflectionQuestion && (
-                  <ReflectionBody
-                    question={modernParsed.reflectionQuestion}
-                    lang={lessonIsHi ? 'hi' : 'en'}
-                  />
-                )}
-            {literaryMeta.isCurated && depth !== 'read' ? (
-              <div className="rounded-2xl border border-dharma-border bg-dharma-card-soft p-4 sm:p-5 shadow-2xs">
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-                  <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-amber-800 dark:text-amber-300">
-                    <Sparkles className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" aria-hidden="true" />
-                    मर्म · In One Breath
-                  </p>
-                  <div className="flex flex-wrap items-center gap-1.5">
-                    {literaryMeta.situationalMoments.map((m) => (
-                      <span
-                        key={m.id}
-                        title={m.descriptionEn}
-                        className="inline-flex items-center gap-1 rounded-full border border-amber-300/70 bg-white/80 px-2.5 py-0.5 text-[11px] font-medium text-amber-950 dark:border-amber-800/60 dark:bg-amber-900/40 dark:text-amber-200"
-                      >
-                        <span>{m.emoji}</span>
-                        <span>{m.labelHi}</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <p className="font-serif italic text-base sm:text-lg font-bold leading-relaxed text-amber-950 dark:text-amber-100">
-                  &ldquo;{literaryMeta.coreShiftHi}&rdquo;
-                </p>
-                {literaryMeta.coreShiftEn && (
-                  <p className="font-serif text-xs sm:text-sm text-amber-900/85 dark:text-amber-300/80 mt-1.5 font-normal">
-                    {literaryMeta.coreShiftEn}
-                  </p>
-                )}
-                <p className="mt-2.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">
-                  {literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}
-                </p>
-              </div>
-            ) : (
-              insight?.marma && depth !== 'read' && (
-                <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
-                  <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
-                    <span lang="hi">मर्म</span>
-                    <span aria-hidden="true">·</span>
-                    <span lang="en">The Core Shift</span>
-                    <ContentLabelBadge kind="reflection" />
-                  </figcaption>
-                  <blockquote lang="en" className="font-serif text-base sm:text-lg font-semibold leading-snug text-dharma-text">
-                    {insight.marma}
-                  </blockquote>
-                </figure>
-              )
-            )}
-              </SacredSection>
-              )}
-              </ConnectedFlow>
-            )}
-
-            {/* ── Related Wisdom: approved links, life situations, keywords ── */}
-            {showRelated && (
-            <SacredSection id={`verse-${v.number}-related`} section="related">
             {/* Life situations */}
-            {insight && insight.situations.length > 0 && depth !== 'read' && (
+            {showSituations && insight && (
               <div className="flex flex-wrap items-center gap-1.5">
                 <span lang="hi" className="mr-1 text-[11px] font-semibold text-dharma-muted">जीवन प्रसंग:</span>
                 {insight.situations.map((s) => (
@@ -1253,70 +1207,24 @@ export function VerseCard({
                 ))}
               </div>
             )}
-
-            {/* Keywords */}
-            {depth === 'study' && v.keywords && v.keywords.length > 0 && (
-              <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-[11px] font-medium text-dharma-muted/80 mr-1">संबंधित:</span>
-                {v.keywords.map((k) => {
-                  const target = resolveKeywordTarget(k);
-                  return (
-                    <Link
-                      key={k}
-                      href={target.href}
-                      onClick={(e) => {
-                        if (onOpenSvadhyaya) {
-                          e.preventDefault();
-                          onOpenSvadhyaya('concept', k.replace(/^#+/, '').toLowerCase());
-                        }
-                      }}
-                      title={target.tooltip}
-                      className="inline-flex items-center gap-1 rounded-full border border-saffron-200/80 bg-saffron-50/70 px-2.5 py-0.5 text-[11px] font-semibold text-saffron-800 transition-all hover:border-saffron-400 hover:bg-saffron-100 hover:text-saffron-900 hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0 dark:border-saffron-400/25 dark:bg-saffron-500/10 dark:text-saffron-200 dark:hover:bg-saffron-500/20"
-                    >
-                      <span>#{k.replace(/^#+/, '')}</span>
-                    </Link>
-                  );
-                })}
               </div>
+              </SacredSection>
+              )}
+
+              {/* ── Reflection: one question to sit with, then the core shift ── */}
+              {showReflection && (
+              <SacredSection id={`verse-${v.number}-reflection`} section="reflection">
+                {layers.commentary && depth !== 'read' && modernParsed?.hasStructuredFormat && modernParsed.reflectionQuestion && (
+                  <ReflectionBody
+                    question={modernParsed.reflectionQuestion}
+                    lang={lessonIsHi ? 'hi' : 'en'}
+                  />
+                )}
+              </SacredSection>
+              )}
+              </ConnectedFlow>
             )}
 
-            {relatedTeachings && relatedTeachings.length > 0 && (
-              <details className="rounded-2xl border border-dharma-border/70 bg-dharma-card/50">
-                <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-4 py-2 text-sm font-semibold text-dharma-text outline-none transition-colors hover:bg-dharma-card focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 focus-visible:ring-offset-dharma-bg [&::-webkit-details-marker]:hidden">
-                  <span><span lang="hi" className="font-devanagari">संबंधित उपदेश</span> · Related teachings</span>
-                  <span className="shrink-0 text-xs font-medium text-dharma-muted">{Math.min(relatedTeachings.length, 3)} links</span>
-                </summary>
-                <div className="space-y-3 border-t border-dharma-border/60 p-4">
-                  <p className="text-xs leading-relaxed text-dharma-muted">
-                    Editorial links for study. A link does not claim that two passages teach exactly the same thing.
-                  </p>
-                  <ul className="space-y-3">
-                    {relatedTeachings.slice(0, 3).map((connection) => (
-                      <li key={`${connection.scriptureTitle}-${connection.reference}`} className="rounded-xl border border-dharma-border/60 bg-dharma-card/70 p-3">
-                        <p className="text-[11px] font-bold uppercase tracking-wide text-dharma-muted">
-                          {CONNECTION_KIND_LABEL[connection.kind]}
-                        </p>
-                        <p className="mt-1 font-semibold text-dharma-text">
-                          {connection.href ? (
-                            <Link href={connection.href} className="inline-flex min-h-[44px] items-center text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
-                              {connection.scriptureTitle} {connection.reference} <span className="ml-1" aria-hidden="true">→</span>
-                            </Link>
-                          ) : (
-                            <>{connection.scriptureTitle} {connection.reference}</>
-                          )}
-                        </p>
-                        <p className="text-sm leading-relaxed text-dharma-text">{connection.summary}</p>
-                        <p className="mt-1 text-xs leading-relaxed text-dharma-muted">
-                          <span className="font-semibold">Why linked:</span> {connection.reason}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </details>
-            )}
-            </SacredSection>
-            )}
 
             {!hasMeaning && (
               <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-dashed border-dharma-border bg-dharma-bg/60 p-4">

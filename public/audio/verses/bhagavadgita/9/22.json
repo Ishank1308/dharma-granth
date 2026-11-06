@@ -1,0 +1,51 @@
+{
+  "verseNumber": 22,
+  "durationMs": 8638,
+  "words": [
+    {
+      "word": "अनन्याश्चिन्तयन्तो",
+      "startTimeMs": 0,
+      "endTimeMs": 1335
+    },
+    {
+      "word": "मां",
+      "startTimeMs": 1405,
+      "endTimeMs": 1753
+    },
+    {
+      "word": "ये",
+      "startTimeMs": 1927,
+      "endTimeMs": 2090
+    },
+    {
+      "word": "जनाः",
+      "startTimeMs": 2159,
+      "endTimeMs": 2496
+    },
+    {
+      "word": "पर्युपासते",
+      "startTimeMs": 2566,
+      "endTimeMs": 3483
+    },
+    {
+      "word": "तेषां",
+      "startTimeMs": 3843,
+      "endTimeMs": 4319
+    },
+    {
+      "word": "नित्याभियुक्तानां",
+      "startTimeMs": 4365,
+      "endTimeMs": 5538
+    },
+    {
+      "word": "योगक्षेमं",
+      "startTimeMs": 5747,
+      "endTimeMs": 6641
+    },
+    {
+      "word": "वहाम्यहम्",
+      "startTimeMs": 6850,
+      "endTimeMs": 7628
+    }
+  ]
+}

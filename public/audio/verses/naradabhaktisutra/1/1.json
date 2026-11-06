@@ -1,0 +1,21 @@
+{
+  "verseNumber": 1,
+  "durationMs": 2229,
+  "words": [
+    {
+      "word": "अथातो",
+      "startTimeMs": 0,
+      "endTimeMs": 464
+    },
+    {
+      "word": "भक्तिं",
+      "startTimeMs": 522,
+      "endTimeMs": 906
+    },
+    {
+      "word": "व्याख्यास्यामः",
+      "startTimeMs": 940,
+      "endTimeMs": 1834
+    }
+  ]
+}

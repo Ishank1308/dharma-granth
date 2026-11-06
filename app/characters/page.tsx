@@ -3,6 +3,7 @@ import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { CharacterMap } from '@/app/components/CharacterMap';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { characters } from '@/data/characters';
+import { SITE_URL } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'पात्र एवं संबंध मानचित्र (Character Knowledge Graph)',
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     title: 'पात्र एवं संबंध मानचित्र (Character Knowledge Graph) — Dharma Granth',
     description:
       'महाभारत, रामायण, पुराण, गुरु-शिष्य परंपरा और देवताओं के पात्रों के अंतरसंबंधों का अन्वेषण करें।',
-    url: 'https://dharmagranth.dev/characters',
+    url: `${SITE_URL}/characters/`,
   },
 };
 

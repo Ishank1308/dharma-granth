@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
-import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import {
   Compass,
@@ -20,6 +19,8 @@ import {
 import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
 import { NetworkHero } from './NetworkHero';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { readHref } from '@/lib/verse-paths';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 
 interface SeedVerse {
   key: string;
@@ -264,13 +265,13 @@ export function VerseNetworkClient() {
               {selectedSeed.scriptureTitle} {selectedSeed.chapterId}.{selectedSeed.verseId}: {selectedSeed.theme}
             </h2>
           </div>
-          <Link
-            href={`/scripture/${selectedSeed.scriptureId}/chapter/${selectedSeed.chapterId}/verse/${selectedSeed.verseId}/`}
+          <VerseHrefLink
+            href={readHref(selectedSeed.scriptureId, selectedSeed.chapterId, selectedSeed.verseId)}
             className="inline-flex items-center gap-1.5 self-start sm:self-center rounded-xl bg-saffron-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-saffron-700 transition"
           >
             <span>Read Full Chapter Verse</span>
             <ExternalLink className="h-3.5 w-3.5" />
-          </Link>
+          </VerseHrefLink>
         </div>
 
         <blockquote className="border-l-4 border-saffron-500 pl-4 py-1 space-y-2">

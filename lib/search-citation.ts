@@ -3,7 +3,7 @@
 // Rigveda 1.1.1 is not in the curated selection (mandala 1, verse 1 is a different hymn),
 // so that query opens the mandala and says the rik is not in the selection.
 
-import { versePageHref } from '@/lib/verse-paths';
+import { chapterVerseHref, versePageHref } from '@/lib/verse-paths';
 import { CITATION_SCHEMES, type CitationScheme } from '@/lib/citation-schemes';
 import { CITATION_MAP, type CitationChapterEntry } from '@/lib/citation-map.generated';
 
@@ -81,11 +81,12 @@ function kathaLibrary(chapter: number, verse: number): DirectCitation | null {
 
 function rigveda(mandala: number, sukta: number, rik: number): DirectCitation | null {
   if (mandala < 1 || mandala > RIGVEDA_MANDALAS || sukta < 1 || rik < 1) return null;
+  // The library carries the full Rig Veda: one chapter per mandala, mantras numbered "sukta.mantra".
   return {
     scriptureId: 'rigveda',
     title: `Rigveda ${mandala}.${sukta}.${rik}`,
-    subtitle: `This rik is not numbered in the library selection. Mandala ${mandala} is a short selection, not the full maṇḍala.`,
-    href: `/scripture/rigveda/chapter/${mandala}`,
+    subtitle: `ऋग्वेद · मण्डल ${mandala}, सूक्त ${sukta}, मन्त्र ${rik}`,
+    href: chapterVerseHref('rigveda', mandala, `${sukta}.${rik}`),
     matchReason: 'Exact reference',
   };
 }

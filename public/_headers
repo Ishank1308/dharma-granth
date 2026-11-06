@@ -29,6 +29,16 @@
 /search/*
   ! Cache-Control
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+# Scripture, commentary and index JSON also change only on deploy.
+/data/*
+  ! Cache-Control
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+/search-index/*
+  ! Cache-Control
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+/chapter-index.json
+  ! Cache-Control
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
 
 # The service worker must always be revalidated so updates reach users.
 /sw.js

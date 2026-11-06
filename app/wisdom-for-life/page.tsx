@@ -5,6 +5,7 @@ import { WisdomClient } from './WisdomClient';
 import Link from 'next/link';
 import { SEARCH_INTENTS } from '@/data/search-intent';
 import { Compass, BookOpen, Heart, Sparkles } from 'lucide-react';
+import { SITE_URL } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Wisdom for Life — जीवन के लिए शास्त्रीय मार्गदर्शन',
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     title: 'Wisdom for Life — जीवन के लिए शास्त्रीय मार्गदर्शन — Dharma Granth',
     description:
       'Life questions opened through verses already in the library, without requiring a scripture name first.',
-    url: 'https://dharmagranth.dev/wisdom-for-life',
+    url: `${SITE_URL}/wisdom-for-life/`,
   },
 };
 

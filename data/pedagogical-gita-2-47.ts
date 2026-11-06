@@ -129,16 +129,16 @@ export const GITA_2_47_PEDAGOGICAL: PedagogicalVerseData = {
   epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
 
   // 1. IN ONE LINE (<= 20 words)
-  inOneLineEn: 'Focus completely on your actions, not your anxiety about the result.',
-  inOneLineHi: 'तुम्हारा अधिकार केवल कर्म करने में है, परिणाम की चिंता में नहीं।',
+  inOneLineEn: 'Your part is the action itself; its fruit is not yours to claim.',
+  inOneLineHi: 'आपका अधिकार केवल कर्म पर है, उसके फल पर नहीं।',
 
   // 2. SIMPLE MEANING
   simpleMeaningEn:
-    'You are responsible for your efforts, decisions, and commitment, but you cannot dictate the final outcome. Results depend on countless external factors beyond any single person’s will. When you obsess over the outcome, you scatter your mental energy and invite anxiety. When you pour yourself into honest action, you find calm focus and mastery.',
+    'Bhagavan Sri Krishna tells Arjuna that his rightful sphere is the action itself, never its fruit. Results arise from many causes that no single person commands. A mind that clings to the outcome grows anxious; a mind given wholly to the work at hand grows calm and steady. Yet giving up action is no answer either.',
 
   // 3. SIMPLE HINDI MEANING
   simpleMeaningHi:
-    'आपका पूरा अधिकार केवल अपनी मेहनत, नीयत और कर्म पर है, उसके नतीजे पर नहीं। नतीजा कई बाहरी परिस्थितियों पर निर्भर करता है जो आपके वश में नहीं हैं। जब आप परिणाम की चिंता छोड़कर काम में तल्लीन हो जाते हैं, तो मन शांत और एकाग्र रहता है। कर्म से भागना भी कोई समाधान नहीं है।',
+    'भगवान श्रीकृष्ण अर्जुन से कहते हैं कि मनुष्य का अधिकार केवल कर्म पर है, उसके फल पर कभी नहीं। फल अनेक कारणों से उत्पन्न होता है, जो किसी एक व्यक्ति के वश में नहीं होते। जब मन परिणाम की चिंता छोड़कर कर्म में एकाग्र होता है, तब वह शान्त और स्थिर रहता है। परन्तु कर्म का त्याग भी इसका उत्तर नहीं है।',
 
   // 4. KEY WORDS
   keyWords: [
@@ -146,105 +146,105 @@ export const GITA_2_47_PEDAGOGICAL: PedagogicalVerseData = {
       pada: 'कर्मणि (Karmaṇi)',
       iast: 'karmaṇi',
       root: 'धातु: कृ (करना, यत्न करना)',
-      functionalMeaning: 'In action, duty, and honest effort — your active sphere of influence.',
-      functionalMeaningHi: 'आपके कर्तव्य और पुरुषार्थ में — जो आपके वश में है।',
+      functionalMeaning: 'In action: duty and honest effort, the part that is within your power.',
+      functionalMeaningHi: 'आपके कर्तव्य और पुरुषार्थ में, जो आपके वश में है।',
     },
     {
       pada: 'अधिकारः (Adhikāraḥ)',
       iast: 'adhikāraḥ',
       root: 'अधि + कृ (कार्यक्षेत्र, अधिकार)',
-      functionalMeaning: 'Sovereignty, jurisdiction, rightful responsibility — not an entitlement to claim rewards, but your domain of agency.',
-      functionalMeaningHi: 'कार्यक्षेत्र, ज़िम्मेदारी और सामर्थ्य — पुरस्कार मांगने का दावा नहीं, बल्कि कर्म करने का अधिकार।',
+      functionalMeaning: 'Rightful sphere: your share of responsibility, not a claim on any reward.',
+      functionalMeaningHi: 'कार्यक्षेत्र, उत्तरदायित्व और सामर्थ्य; पुरस्कार माँगने का दावा नहीं, अपितु कर्म करने का अधिकार।',
     },
     {
       pada: 'मा फलेषु (Mā Phaleṣu)',
       iast: 'mā phaleṣu',
       root: 'मा (कदापि नहीं) + फलेषु (परिणामों में)',
-      functionalMeaning: 'Never in the fruits — you control the cultivation and seeding, but cannot guarantee the harvest.',
-      functionalMeaningHi: 'परिणाम या फल पर कभी नहीं — बीज बोना आपके हाथ में है, फल पर आपका एकाधिकार नहीं।',
+      functionalMeaning: 'Never in the fruits: one can sow the seed with care, but the harvest is not in one’s hands.',
+      functionalMeaningHi: 'फल पर कभी नहीं; बीज बोना आपके हाथ में है, फसल आपके अधीन नहीं।',
     },
     {
       pada: 'अकर्मणि (Akarmaṇi)',
       iast: 'akarmaṇi',
       root: 'अ (अभाव) + कर्मणि (कर्म न करना)',
-      functionalMeaning: 'In inaction, giving up, or apathy — a warning against cynicism and escapism.',
-      functionalMeaningHi: 'निष्क्रियता, आलस्य या पलायन में — कर्म छोड़ देने में तुम्हारी आसक्ति न हो।',
+      functionalMeaning: 'In inaction: a caution against giving up, indifference and escape.',
+      functionalMeaningHi: 'निष्क्रियता, आलस्य या पलायन में; कर्म छोड़ देने में भी आसक्ति न हो।',
     },
   ],
 
   // 5. WHY IT MATTERS TODAY
   whyItMattersToday: [
     {
-      title: 'Exam & Interview Pressure',
+      title: 'Exams and interviews',
       titleHi: 'परीक्षा व नौकरी का तनाव',
-      text: 'You can prepare with genuine dedication for an exam or interview, but you cannot control the reviewer’s mood, grading curve, or competitor pool. Focusing on preparation removes paralyzing dread.',
+      text: 'You can prepare for an exam or interview with full dedication, yet the paper, the examiner and the other candidates are beyond your control. Giving yourself to the preparation frees the mind from fear.',
     },
     {
-      title: 'Career & Creative Projects',
-      titleHi: 'करियर व रचनात्मक कार्य',
-      text: 'Posting artwork, writing software, or launching a startup requires immense energy. You control craftsmanship; algorithms and public reception are outside your hands. Focusing on craft preserves stamina.',
+      title: 'Work and creative projects',
+      titleHi: 'आजीविका व रचनात्मक कार्य',
+      text: 'Making art, writing software or building a venture asks for great effort. The quality of the work is yours to give; how it is received is not. Attention on the work keeps your strength steady.',
     },
     {
-      title: 'Social Comparison & Validation',
-      titleHi: 'तुलना और सोशल मीडिया',
-      text: 'Measuring self-worth by likes, views, or peer milestones surrenders your peace to strangers. Dedication to the work itself preserves inner dignity and freedom.',
+      title: 'Comparison and approval',
+      titleHi: 'तुलना और दूसरों की स्वीकृति',
+      text: 'Measuring your worth by likes, views or the milestones of others hands your peace to strangers. Devotion to the work itself keeps your dignity and freedom intact.',
     },
     {
-      title: 'Fear of Failure & Procrastination',
-      titleHi: 'असफलता का भय व टालमटोल',
-      text: 'Procrastination is often perfectionism paralyzed by the fear of poor feedback. Detaching from the outcome frees you to take courageous, honest action today.',
+      title: 'Fear of failure and putting things off',
+      titleHi: 'असफलता का भय और कर्म को टालना',
+      text: 'Putting work off is often the fear of judgement in disguise. When the mind lets go of the outcome, it is free to act honestly today.',
     },
   ],
 
   // 6. A RELATABLE MODERN EXAMPLE (Explicitly labeled)
   modernExample: {
-    context: 'Preparing for a Decisive University Exam or Job Interview',
+    context: 'Preparing for an important exam or interview',
     contextHi: 'प्रतियोगी परीक्षा या नौकरी के साक्षात्कार की तैयारी',
     scenarioEn:
-      'Imagine preparing for an important university entrance exam or client presentation. You control how thoroughly you revise, how well you rest, and how honestly you respond during the test. However, the difficulty curve of the exam, unpredictable shifts in the job market, or how evaluators mark papers remain completely outside your personal control. If your mind is consumed by asking "What if I fail? What will relatives say?" while studying, you absorb far less knowledge. If you immerse yourself purely in understanding each topic with full care, your mind stays calm, sharp, and confident.',
+      'Imagine preparing for an important entrance exam or interview. How thoroughly you revise, how well you rest and how honestly you answer are in your hands. How hard the paper is, how the job market moves and how the examiners mark are not. If the mind keeps asking "What if I fail? What will people say?" while you study, little is learned. If you give yourself to understanding each topic with full care, the mind stays calm, clear and steady.',
     scenarioHi:
-      'मान लीजिए आप किसी बड़ी प्रतियोगी परीक्षा या नौकरी के इंटरव्यू की तैयारी कर रहे हैं। आप कितनी लगन से पढ़ते हैं, कितना अभ्यास करते हैं और परीक्षा हॉल में कितनी एकाग्रता रखते हैं — यह पूरी तरह आपके हाथ में है। लेकिन प्रश्नपत्र का कठिन स्तर, परीक्षकों का मूड या कट-ऑफ क्या रहेगा — यह आपके वश में नहीं है। यदि पढ़ते समय मन में यही चलता रहे कि "अगर चयन नहीं हुआ तो क्या होगा?", तो आपकी तैयारी कमजोर हो जाती है। जब आप परिणाम का डर छोड़कर केवल आज के अध्याय को समझने में डूब जाते हैं, तो मन शांत और प्रदर्शन सर्वोत्तम होता है।',
+      'मान लीजिए आप किसी महत्त्वपूर्ण प्रतियोगी परीक्षा या नौकरी के साक्षात्कार की तैयारी कर रहे हैं। आप कितनी लगन से पढ़ते हैं, कितना अभ्यास करते हैं और परीक्षा-कक्ष में कितनी एकाग्रता रखते हैं, यह पूर्णतः आपके हाथ में है। परन्तु प्रश्नपत्र कितना कठिन होगा, परीक्षक किस मनोदशा में होंगे या चयन-सीमा क्या रहेगी, यह आपके वश में नहीं है। यदि पढ़ते समय मन में यही चलता रहे कि "यदि चयन नहीं हुआ तो क्या होगा?", तो तैयारी दुर्बल हो जाती है। जब आप परिणाम का भय छोड़कर केवल आज के अध्याय को समझने में तल्लीन होते हैं, तब मन शान्त रहता है और प्रयास अपने श्रेष्ठ रूप में होता है।',
     disclaimer: 'समसामयिक संपादकीय उदाहरण · प्राचीन शास्त्र का मूल भाग नहीं (Editorial Modern Illustration · Not Scripture)',
   },
 
   // 7. WHAT IT DOES NOT MEAN
   whatItDoesNotMean: [
     {
-      title: 'It does NOT mean: "Do not set goals or plan ahead"',
+      title: 'It does not mean: "Do not set goals or plan ahead"',
       titleHi: 'यह लक्ष्य न बनाने या योजना न बनाने की बात नहीं है',
-      text: 'Having clear objectives is sensible and necessary. The verse cautions against psychological obsession (āsakti) that turns goals into sources of paralyzing anxiety.',
+      text: 'Clear aims are sensible and necessary. The verse cautions against attachment (āsakti), which turns an aim into a source of fear.',
     },
     {
-      title: 'It does NOT mean: "Become passive or fatalistic"',
+      title: 'It does not mean: "Become passive or fatalistic"',
       titleHi: 'यह भाग्यवादी बनने या हाथ पर हाथ धरकर बैठने की बात नहीं है',
-      text: 'The second half explicitly commands: mā te saṅgo\'stvakarmaṇi — never succumb to laziness, despair, or giving up on duty.',
+      text: 'The second half says plainly: mā te saṅgo ’stv akarmaṇi, let there be no attachment to inaction. Laziness, despair and abandoning one’s duty are not the way.',
     },
     {
-      title: 'It does NOT mean: "Tolerate unfairness or injustice"',
-      titleHi: 'यह अन्याय सहने या उदासीन रहने का उपदेश नहीं है',
-      text: 'Krishna is speaking on a battlefield, urging Arjuna to stand up and courageously fulfill his duty for dharma, not retreat into escapism.',
+      title: 'It does not mean: "Withdraw from the world"',
+      titleHi: 'यह संसार से विमुख होने का उपदेश नहीं है',
+      text: 'Bhagavan Sri Krishna speaks these words on a battlefield, calling Arjuna to rise and do his duty, not to withdraw from it.',
     },
     {
-      title: 'It does NOT mean: "Outcomes are unimportant"',
+      title: 'It does not mean: "Outcomes are unimportant"',
       titleHi: 'यह नहीं कि परिणाम का कोई महत्व नहीं है',
-      text: 'Results will happen naturally in accordance with cause and effect. But worrying about them does not improve them; doing your best action does.',
+      text: 'Results still matter, and they follow their causes. Anxiety about them does not improve them; wholehearted action does.',
     },
   ],
 
   // 8. TRY THIS TODAY (< 15 mins)
   tryThisToday: {
-    title: 'The 15-Minute Uncluttered Focus Sprint',
+    title: 'Fifteen minutes of wholehearted work',
     titleHi: '१५ मिनट का एकाग्र कर्म-अभ्यास',
     instructionEn:
-      'Pick one important pending task today (studying one difficult topic, writing an important email, or drafting a plan). Put your phone on "Do Not Disturb" for exactly 15 minutes. Commit to doing the task with complete care, with zero checking of notifications, views, or thoughts of external approval.',
+      'Choose one important task for today, such as studying a difficult topic, writing an important letter or preparing a plan. For fifteen minutes, set your phone aside and give the task your complete care, without checking messages and without thinking about how it will be received.',
     instructionHi:
-      'आज अपनी टू-डू लिस्ट में से कोई एक महत्वपूर्ण काम चुनें (जैसे किसी कठिन विषय के दो पन्ने पढ़ना या कोई जरूरी काम निपटाना)। ठीक १५ मिनट के लिए फोन को साइलेंट करें और पूरी निष्ठा से केवल उस काम में डूब जाएं — बिना यह सोचे कि लोग क्या कहेंगे या इसका क्या नतीजा निकलेगा।',
-    duration: '< 15 minutes',
+      'आज के अपने कार्यों में से कोई एक महत्त्वपूर्ण कार्य चुनें, जैसे किसी कठिन विषय के दो पृष्ठ पढ़ना या कोई आवश्यक कार्य पूर्ण करना। पंद्रह मिनट के लिए फ़ोन को अलग रख दें और पूरी निष्ठा से केवल उसी कार्य में तल्लीन रहें, यह सोचे बिना कि लोग क्या कहेंगे या इसका परिणाम क्या होगा।',
+    duration: '15 minutes',
   },
 
   // 9. THINK ABOUT IT (Reflection Question)
   reflectionQuestion: {
-    en: 'Which upcoming result or validation are you trying too hard to control right now, and what would happen if you directed all that energy purely into your immediate next action?',
+    en: 'Which result or approval are you trying hardest to control right now, and what would change if you gave that same energy to your very next action?',
     hi: 'वर्तमान में आप किस परिणाम या दूसरों की स्वीकृति को आवश्यकता से अधिक नियंत्रित करने का प्रयास कर रहे हैं, और यदि आप वही सारी मानसिक ऊर्जा केवल अपने अगले कर्तव्य में लगा दें तो क्या होगा?',
   },
 

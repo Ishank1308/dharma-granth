@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { LayoutGrid, LayoutList, Search, SlidersHorizontal, X } from 'lucide-react';
+import { ChevronDown, LayoutGrid, LayoutList, Search, SlidersHorizontal, X } from 'lucide-react';
 import type { ScriptureCategory } from '@/data/types';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { triggerTactileFeedback } from '@/lib/haptics';
@@ -36,6 +36,14 @@ type CategoryOption = { id: ScriptureCategory; label: string; description: strin
 
 /** A library entry as the page passes it; `facts` may be missing if measuring the data files failed. */
 type IncomingItem = Omit<LibraryItem, 'facts'> & { facts?: LibraryItem['facts'] };
+
+/** The Grantha Mandala (CLAUDE.md §6): the library's rings, used when browsing without a search or filter. */
+const MANDALA_GROUPS: Array<{ id: string; hi: string; en: string; note: string; categories: string[] }> = [
+  { id: 'shruti', hi: 'श्रुति', en: 'Śruti', note: 'Vedas and Upanishads', categories: ['veda', 'upanishad'] },
+  { id: 'smriti', hi: 'स्मृति', en: 'Smṛti', note: 'Itihasa (with the Gita), Smritis and Puranas', categories: ['itihasa', 'smriti', 'purana'] },
+  { id: 'darshana', hi: 'दर्शन', en: 'Darśana', note: 'Vedanta texts and Sutras', categories: ['vedanta', 'sutra'] },
+  { id: 'other', hi: 'स्तोत्र, तन्त्र व अन्य', en: 'Stotra, Tantra & more', note: 'Hymns, Shakta and Tantra texts, and others', categories: ['stotra', 'shakta', 'tantra', 'other'] },
+];
 
 const SAVED_KEY = 'dharma.saved_scriptures';
 const NO_SAVED: string[] = [];
@@ -428,6 +436,43 @@ export function ScriptureLibraryClient({
               ) : (
                 <NoResults query={filters.q.trim()} onClear={() => setQuery('')} />
               )
+            ) : activeCount === 0 && !filters.q.trim() ? (
+              /* Browsing with no search or filter: the Grantha Mandala, one folded group per ring
+                 (CLAUDE.md §6). Cards stay in the HTML inside <details>, so crawlers still see every text. */
+              <div className="space-y-3">
+                {MANDALA_GROUPS.map((group) => {
+                  const inGroup = results.filter((item) => group.categories.includes(item.category as string));
+                  if (inGroup.length === 0) return null;
+                  return (
+                    <details key={group.id} className="group rounded-2xl border border-dharma-border bg-dharma-card">
+                      <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-4 py-3 sm:px-5 [&::-webkit-details-marker]:hidden">
+                        <span className="min-w-0">
+                          <span lang="hi" className="font-devanagari text-lg font-bold text-dharma-text">{group.hi}</span>{' '}
+                          <span className="text-sm text-dharma-muted">· {group.en}</span>
+                          <span className="mt-0.5 block text-xs text-dharma-muted">{group.note}</span>
+                        </span>
+                        <span className="flex shrink-0 items-center gap-2 text-sm font-semibold text-dharma-muted">
+                          {inGroup.length}
+                          <ChevronDown className="h-4 w-4 transition group-open:rotate-180" aria-hidden="true" />
+                        </span>
+                      </summary>
+                      <ul className={`grid gap-4 px-4 pb-4 sm:px-5 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 2xl:grid-cols-3'}`}>
+                        {inGroup.map((item) => (
+                          <li key={item.id} className="min-w-0">
+                            <LibraryCard
+                              item={item}
+                              categoryLabel={categories.find((c) => c.id === item.category)?.label ?? item.category}
+                              view={viewMode}
+                              saved={saved.indexOf(item.id) !== -1}
+                              onToggleSave={toggleSave}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  );
+                })}
+              </div>
             ) : (
               <ul className={`grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 2xl:grid-cols-3'}`}>
                 {results.map((item) => (

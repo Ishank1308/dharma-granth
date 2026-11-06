@@ -128,7 +128,7 @@ export function SvadhyayaSplitDrawer({
   useEffect(() => {
     if (concordance.length === 0 && !loadingConcordance) {
       setLoadingConcordance(true);
-      fetch('/data/concordance-index.json')
+      fetch(`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/data/concordance-index.json`)
         .then((res) => (res.ok ? res.json() : []))
         .then((data: ConceptConcordanceEntry[]) => {
           setConcordance(data);

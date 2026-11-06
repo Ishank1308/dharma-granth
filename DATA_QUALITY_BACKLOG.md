@@ -12,6 +12,7 @@ the older 316,102 figure was not a count of these files). Coverage:
 | **P4** — invented "filler" verses in ~40 scriptures | ✅ **Done** — removed from JSON, curated `.ts` and Hindi commentary; `scripts/check-filler.ts` (part of `npm run check`) blocks them and caps principal-Upanishad counts; the curated merge no longer appends curated-only chapters to a real seed |
 | **P5** — Upanishads rebuilt from source | ✅ **Done** for Kaivalya, Jabala, Shvetashvatara (113), Tejobindu, Niralamba, Maitri, Mahanarayana, Muktika (`scripts/rebuild-upanishads.ts`); Brahma Sutra, Vivekachudamani, Samaveda re-seeded in full. **Open:** Taittiriya (accented source), Kaushitaki, Amritabindu (no source found) |
 | **P6** — newly rebuilt texts have no translation/Hindi | ✅ **Done** — 100% complete for tejobindu, mahanarayana, maitri, muktika, samaveda, brahmasutra, vivekchudamani, shvetashvatara |
+| **P7** — Hindi and English that belong to other verses | ⚠️ **Hidden at publish, not fixed** (2026-10-25) — see P7 below. About 172,500 Hindi and 100,800 English meanings, plus 353,000 notes built from them, are left out of the chapter shards; source JSON untouched; `scripts/check-meaning-alignment.ts` (part of `npm run check`) blocks them |
 
 Earlier status (2026-09-29), kept for the items below:
 
@@ -23,6 +24,61 @@ Earlier status (2026-09-29), kept for the items below:
 | **P1b** — missing Hindi (bulk corpus) | ⚠️ **Open** — 53/65 complete; worst: shivpurana, brahmapuran, brahmandpuran, skandapuran, manusmriti (35%), durgasaptashati (2%) (`npx tsx scripts/_hindi-coverage-report.ts`) |
 | **P3** — durgasaptashati misalignment | ✅ **Done** — structural `chapter.id` + `verse.id` merge (16/16 aligned) |
 | **P2b** — mangled mixed-script headers | ✅ **Done** — parser fix + `fix-mixed-script-verses.ts` (0 mixed-script verses remain) |
+
+## P7 — Hindi and English that belong to other verses ⚠️ HIDDEN AT PUBLISH (2026-10-25)
+
+Most Puranas, the Mahabharata and several other texts were filled from OCR of a printed translation laid over
+the Sanskrit in reading order. The printed book does not break where the Sanskrit edition does, so the meanings
+drift onto other verses. Examples: Shiva Purana 21.26 (ganas striking heads) showed Upamanyu asking his mother for
+milk; one Hindi line, "शिवको मेरा नमस्कार है", was the Hindi of 3,372 different verses; Mahabharata 22.35 showed a
+Sanskrit half-line from another verse as its "Hindi". The explanation and research notes were then generated as
+"<that Hindi>। <one of ~10 stock sentences>", so they drifted too.
+
+**How it is measured** (`scripts/lib/meaning-alignment.ts`). A Hindi meaning shares words with its own Sanskrit,
+and an English one carries its proper names. Per chapter we compare how often a meaning shares a word with its own
+verse against a verse half a chapter away. Aligned text scores far above the baseline (Gita Hindi 89% vs 12%,
+Harivamsha Hindi 87% vs 8%); drifted text scores at the baseline (Shiva Purana Hindi 2% vs 1%, Mahabharata 6% vs
+3%). English made for one verse at a time (`translationSource: "ai"`) is verse-aligned and is kept.
+
+**What publishing now does** (`scripts/shard-scriptures-full.ts`, SHARD_REV 3): leaves out every meaning in a
+chapter that fails the test, every Hindi or English value repeated on 3+ verses with different Sanskrit, every
+note ending in a stock sentence, and the notes generated from a removed meaning. The source JSON keeps all of it.
+Pages left without a meaning show the मूल पाठ notice and drop out of the sitemap through `chapterHasMeaning()`.
+
+| | Hidden | Main texts |
+|---|--:|---|
+| Hindi | ~172,500 | Mahabharata (all), Shiva, Brahma, Brahmanda, Naradiya, Garuda, Agni, Matsya, Vayu, Linga, Vamana, Vishnu, Kurma, Markandeya, Narasimha, Skanda; Atharvaveda, Yajurveda, Manusmriti, Chandogya |
+| English (non-"ai") | ~100,800 | Garuda, Matsya, Vayu, Linga, Kurma, Atharvaveda, Brahmanda, Naradiya, Vamana, Brahma, Agni, Shiva, Markandeya, Vishnu, Mahabharata (Ganguli part), Skanda, Narasimha, Harivamsha |
+| Notes | ~353,000 | everywhere the stock sentences were used, including the Gita, Katha, Ramayana and Rigveda |
+
+Kept as aligned: Gita, Upanishads with curated meanings, Durga Saptashati (27 repeated Hindi lines removed),
+Harivamsha Hindi, Samaveda, Vivekachudamani, the Max Müller, Bühler and Griffith (Yajurveda) English, and all
+"ai" English.
+
+**Open:** bring meanings back only from verse-aligned sources, a text at a time. Re-running the seeders' prose
+mapping will not pass `check-meaning-alignment`.
+
+**Ramayana and Rig Veda rebuilt from the full text (2026-10-25).** Both had shrunk to 82 and 67 entries
+(25 and 28 distinct ślokas, repeated under new numbers) when commit 3a17ed9a rewrote every full JSON from the
+curated TS data; nothing had decided that. They are now the full DharmicData text again:
+
+- `ramayana.json`: 7 kandas, 22,742 shlokas numbered `sarga.shloka`. The source repeats 61 sarga.shloka pairs
+  (Aranya 34, Kishkindha 10); the second copies are suffixed `b` (`34.1b`).
+- `rigveda.json`: 10 mandalas, 10,489 mantras numbered `sukta.mantra`, svara marks kept. The source separates
+  10,489 of the 10,552 mantras: a missing marker merges two mantras in 1.100, 1.136, 1.139, 2.35, 3.32 and 7.56
+  (their later mantras keep their printed numbers), and 1.66, 1.67, 3.39, 4.7, 7.17, 8.29, 9.109 and 10.172 hold
+  fewer mantras than their headers count. (The 10,499 recorded earlier came from the old parser, which also
+  dropped the first half of each sukta's first mantra and repeated numbers at broken markers such as ॥४॥३ in
+  1.164.)
+- The published meanings were carried only where the quoted Sanskrit is that verse: 5 Ramayana and 9 Rig Veda
+  verses. The rest were quotations from other texts (Katha, Mundaka, Brihadaranyaka, the Gita, later stotras) or
+  garbled; each decision is in `data/realign/ramayana-rigveda-2026-10-25.json`, and their commentary is kept
+  verbatim in `….orphans.json` for review. Ramayana 3.37.13 (रामो विग्रहवान् धर्मः) needs a new translation: the
+  old one translated a variant reading.
+- Ramayana verse pages exist only for verses with a meaning (`PARTIAL_VERSE_PAGE_SCRIPTURE_IDS`,
+  `lib/verse-page-subsets.json`); the 80 old verse URLs that lost their page are 301s in `public/_redirects`.
+
+---
 
 ## TL;DR
 
@@ -119,7 +175,10 @@ removed, brihadaranyaka ×4, manusmriti ×2, yogarasayanam ×5. Verify:
 
 ---
 
-## P1 — Missing English translations ✅ DONE (2026-06-21)
+## P1 — Missing English translations ⚠️ REOPENED (2026-10-25)
+
+> **Correction 2026-10-25:** "100%" below meant *filled*, not *correct*. Most of the prose-mapped English
+> belongs to other verses; see P7. Real coverage is the verse-aligned English only.
 
 All **65** `scriptures-full` JSON files now have **100% English translation
 coverage** (316k+ verses). Seeded via public-domain sources (GRETIL, Tagare,
@@ -153,7 +212,7 @@ Largest gaps:
 | `bhagavatapurana` | 14,103 |
 | `brahmapuran` | 13,796 |
 | `brahmandpuran` | 13,745 |
-| `rigveda` | 10,499 |
+| `rigveda` | 10,489 |
 | `skandapuran` | 6,724 |
 
 _Only `bhagavadgita` (701) and `nityakarmakriya` (16) have full translation + Hindi; `durgasaptashati` ~3%._
@@ -186,7 +245,7 @@ Future re-seeds via `npm run seed:missing` inherit this automatically.
 | `brahmandpuran` | 13,496 | devanagari | 100 | 100 | 0 |
 | `garudpurana` | 11,877 | devanagari | 0 | 100 | 0 |
 | `agnipuran` | 11,043 | devanagari | 100 | 100 | 0 |
-| `rigveda` | 10,499 | devanagari | 0 | 0 | 0 |
+| `rigveda` | 10,489 | devanagari | 0 | 0 | 0 |
 | `matsyapuran` | 8,330 | devanagari | 100 | 100 | 0 |
 | `vayupuran` | 7,641 | devanagari | 100 | 100 | 0 |
 | `lingapuran` | 6,726 | devanagari | 100 | 100 | 0 |
@@ -282,5 +341,6 @@ Closing these gaps needs a **verse-aligned** source, not more passage-level text
 
 The remaining 15 chapters were inspected: Ramayana ch1–7 are curated 13–16-verse selections per kanda
 (numbers like `1, 1.2, 3, 4, 1.6 … 2.10, 1.14` are selection order, not a sort bug) and Manusmriti ch1 is a
-sparse selection (`1, 1.2, 3, 4, 1.15, 1.20, 1.25`). Their order is intentional — leave them. The
+sparse selection (`1, 1.2, 3, 4, 1.15, 1.20, 1.25`). Their order is intentional — leave them. (Since the
+2026-10-25 rebuild the Ramayana is the full text in source order, so its seven entries above no longer apply.) The
 bhagavatapurana/devibhagavat/mahabharata/shivpurana/brahmasutra entries are 2–7 verses each and are left as is.

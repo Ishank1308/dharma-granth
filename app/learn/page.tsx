@@ -6,8 +6,6 @@ import { learningPaths, type LearningPath, type LearningFormat } from '@/data/le
 import { useStudyProgress } from '@/lib/useStudyProgress';
 import { ManuscriptDivider, PalmLeafBorder } from '@/app/components/ManuscriptDivider';
 import { CalmProgress } from '@/app/components/CalmProgress';
-import { SadhanaPortability } from '@/app/components/SadhanaPortability';
-import { BackupRestore } from '@/app/components/BackupRestore';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { JsonLd } from '@/app/components/JsonLd';
 import { courseListLd, pageLd } from '@/lib/jsonld';
@@ -607,10 +605,13 @@ export default function LearnPage() {
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-6 pb-16">
-        <SadhanaPortability />
-        <BackupRestore />
-      </div>
+      {/* Backup and sync panels live on /practice/ only: its JSON backup covers learning progress too. */}
+      <p className="max-w-6xl mx-auto px-6 pb-16 text-sm text-dharma-muted">
+        <span lang="hi" className="font-devanagari">आपकी अध्ययन प्रगति इसी ब्राउज़र में रहती है।</span>{' '}
+        <Link href="/practice/#backup-heading"className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+          बैकअप लें · Back up
+        </Link>
+      </p>
     </main>
   );
 }

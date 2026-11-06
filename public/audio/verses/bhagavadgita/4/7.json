@@ -1,0 +1,51 @@
+{
+  "verseNumber": 7,
+  "durationMs": 6177,
+  "words": [
+    {
+      "word": "यदा",
+      "startTimeMs": 0,
+      "endTimeMs": 325
+    },
+    {
+      "word": "यदा",
+      "startTimeMs": 383,
+      "endTimeMs": 615
+    },
+    {
+      "word": "हि",
+      "startTimeMs": 685,
+      "endTimeMs": 778
+    },
+    {
+      "word": "धर्मस्य",
+      "startTimeMs": 836,
+      "endTimeMs": 1265
+    },
+    {
+      "word": "ग्लानिर्भवति",
+      "startTimeMs": 1324,
+      "endTimeMs": 2032
+    },
+    {
+      "word": "भारत",
+      "startTimeMs": 2078,
+      "endTimeMs": 2438
+    },
+    {
+      "word": "अभ्युत्थानमधर्मस्य",
+      "startTimeMs": 2995,
+      "endTimeMs": 4284
+    },
+    {
+      "word": "तदाऽऽत्मानं",
+      "startTimeMs": 4354,
+      "endTimeMs": 5097
+    },
+    {
+      "word": "सृजाम्यहम्",
+      "startTimeMs": 5155,
+      "endTimeMs": 5909
+    }
+  ]
+}

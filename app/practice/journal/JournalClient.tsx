@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import Link from 'next/link';
 import {
   PenLine,
   Search,
@@ -28,8 +27,10 @@ import {
 import { createJournalBackup, parseJournalBackup, type JournalRestoreMode } from '@/lib/study/journal-backup';
 import { runStudyDataMigration } from '@/lib/study/migration';
 import type { JournalEntry, JournalMood } from '@/lib/study/types';
-import { JournalEditorModal } from '@/components/study/JournalEditorModal';
+import { JournalEditorModal } from '@/app/components/study/JournalEditorModal';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { readHref } from '@/lib/verse-paths';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 
 const MOOD_FILTERS: Array<{ id: JournalMood | 'all'; labelEn: string; labelHi: string; emoji: string }> = [
   { id: 'all', labelEn: 'All Moods', labelHi: 'सभी', emoji: '✨' },
@@ -474,14 +475,14 @@ export function JournalClient() {
                         <span>संलग्न श्लोक:</span>
                       </span>
                       {entry.linkedReferences.map((ref, idx) => (
-                        <Link
+                        <VerseHrefLink
                           key={idx}
-                          href={`/scripture/${ref.scriptureId}/chapter/${ref.chapterId}/verse/${ref.verseId}`}
+                          href={readHref(ref.scriptureId, ref.chapterId, ref.verseId)}
                           className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-saffron-500/10 border border-saffron-500/20 text-xs font-semibold text-saffron-900 dark:text-saffron-200 hover:bg-saffron-500/20 transition"
                         >
                           <span>{ref.canonicalReference}</span>
                           <ArrowRight className="w-3 h-3" />
-                        </Link>
+                        </VerseHrefLink>
                       ))}
                     </div>
                   )}

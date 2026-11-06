@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, type ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useRef, type ReactNode } from 'react';
 import {
   Atom,
   BookOpen,
@@ -16,7 +16,6 @@ import {
 } from 'lucide-react';
 import { cleanVerseField, toAsciiDigits, verseLines } from '@/lib/verse-format';
 import { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
-import { ExplainLine } from '@/app/components/study/ExplainLine';
 import { CompareViews } from '@/app/components/study/CompareViews';
 import { CommentaryCompare } from '@/app/components/study/CommentaryCompare';
 import { COMMENTARIES, verseKey } from '@/data/study-content';
@@ -28,9 +27,10 @@ import type { ReaderProvenance, ReaderVerseText } from '@/lib/reader-actions';
 import type { ReaderSettings } from '@/lib/useReaderSettings';
 import type { VerseInsight } from '@/lib/verse-insights';
 import { EDITORIAL_DRAFT_LABEL } from '@/lib/editorial-terminology';
-import { VerseTreeStructure, type VerseTreeBranch } from '@/app/components/reader/VerseTreeStructure';
 import { ModernContextBody, ReflectionBody, parseModernContext } from '@/app/components/ModernContextBlock';
-import { SACRED_SECTION_LABEL } from '@/lib/sacred-reading-order';
+import { getVerseStudy, type StudyGroup } from '@/data/verse-study';
+import { PalmLeaf, Rubricated, StudyVyakhya, markPhrases, termMarks } from '@/app/components/reader/PalmLeaf';
+import { VersePillar, VersePillars } from '@/app/components/reader/VersePillar';
 import Link from 'next/link';
 
 /* ── Type scale: full class strings so Tailwind keeps them ──────────── */
@@ -149,10 +149,15 @@ function AiBadge({ children, title }: { children: ReactNode; title?: string }) {
   );
 }
 
+/** True inside a VersePillar: the pillar is the card, so its layers drop their own frame. */
+const InPillar = createContext(false);
+
 /**
  * One layer of the page. `collapsible` layers are native <details>: open in
  * the server HTML (so every reader and crawler gets the text), then closed on
  * phones after mount so a long verse page stays scannable.
+ * Inside a pillar a layer keeps its label chip and badge but loses its border,
+ * background, shadow and icon tile; a hairline separates it from the layer above.
  */
 function Layer({
   id,
@@ -161,6 +166,7 @@ function Layer({
   titleHi,
   badge,
   collapsible = false,
+  className = '',
   children,
 }: {
   id: string;
@@ -169,10 +175,13 @@ function Layer({
   titleHi?: string;
   badge?: ReactNode;
   collapsible?: boolean;
+  className?: string;
   children: ReactNode;
 }) {
   const k = KINDS[kind];
   const ref = useRef<HTMLDetailsElement>(null);
+  const bare = useContext(InPillar);
+  const pad = bare ? '' : 'px-4 sm:px-6';
 
   useEffect(() => {
     if (collapsible && ref.current && window.matchMedia('(max-width: 639px)').matches) ref.current.open = false;
@@ -180,9 +189,11 @@ function Layer({
 
   const head = (
     <>
-      <span aria-hidden="true" className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border ${k.chipCls}`}>
-        <k.Icon className="h-4 w-4" />
-      </span>
+      {!bare && (
+        <span aria-hidden="true" className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border ${k.chipCls}`}>
+          <k.Icon className="h-4 w-4" />
+        </span>
+      )}
       <span className="min-w-0 flex-1">
         <span className={`inline-flex flex-wrap items-center gap-x-2 rounded-full border px-2.5 py-0.5 text-xs font-bold ${k.chipCls}`}>
           <span lang="hi" className="font-devanagari text-[0.8125rem] leading-snug">
@@ -207,20 +218,24 @@ function Layer({
   );
 
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className={`relative rounded-2xl shadow-sm ${k.frame}`}>
+    <section
+      id={id}
+      aria-labelledby={`${id}-title`}
+      className={bare ? `relative border-t border-dharma-border/60 pt-4 first:border-t-0 first:pt-0 ${className}` : `relative rounded-2xl shadow-sm ${k.frame} ${className}`}
+    >
       {kind === 'source' && <CornerMarks />}
       {collapsible ? (
         <details ref={ref} open className="group">
-          <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center gap-3 rounded-2xl px-4 py-3 sm:px-6 [&::-webkit-details-marker]:hidden">
+          <summary className={`focus-ring flex min-h-[48px] cursor-pointer list-none items-center gap-3 rounded-2xl ${bare ? 'py-1' : 'px-4 py-3 sm:px-6'} [&::-webkit-details-marker]:hidden`}>
             {head}
             <ChevronDown className="h-5 w-5 shrink-0 text-dharma-muted transition group-open:rotate-180" aria-hidden="true" />
           </summary>
-          <div className="px-4 pb-5 sm:px-6">{children}</div>
+          <div className={`${pad} ${bare ? 'pb-1 pt-2' : 'pb-5'}`}>{children}</div>
         </details>
       ) : (
         <>
-          <div className="flex items-center gap-3 px-4 pt-4 sm:px-6">{head}</div>
-          <div className="px-4 pb-5 pt-3 sm:px-6">{children}</div>
+          <div className={`flex items-center gap-3 ${pad} ${bare ? '' : 'pt-4'}`}>{head}</div>
+          <div className={`${pad} ${bare ? 'pt-2.5' : 'pb-5 pt-3'}`}>{children}</div>
         </>
       )}
     </section>
@@ -237,6 +252,46 @@ const aidToggle =
   'focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full border border-amber-700/25 px-3 py-1 text-xs font-semibold text-dharma-muted transition hover:border-saffron-400 hover:text-dharma-text aria-expanded:border-saffron-500 aria-expanded:text-dharma-text';
 
 /* ── The layers: root shloka, then the अर्थ → व्याख्या → विज्ञान tree ── */
+
+function RecitationHighlightedLine({
+  line,
+  activeWord,
+}: {
+  line: string;
+  activeWord?: string | null;
+}) {
+  if (!activeWord) return <>{line}</>;
+
+  const cleanActive = activeWord.replace(/[।॥\s]/g, '');
+  if (!cleanActive) return <>{line}</>;
+
+  const tokens = line.split(/(\s+|[।॥])/);
+
+  return (
+    <>
+      {tokens.map((token, idx) => {
+        const cleanToken = token.replace(/[।॥\s]/g, '');
+        const isMatch =
+          cleanToken.length > 0 &&
+          (cleanToken === cleanActive ||
+            cleanActive.includes(cleanToken) ||
+            cleanToken.includes(cleanActive));
+
+        if (isMatch) {
+          return (
+            <span
+              key={idx}
+              className="inline-block rounded-md bg-amber-500/25 px-1 py-0.5 text-amber-900 dark:text-amber-100 ring-1 ring-amber-400/70 shadow-xs transition-all duration-150 font-bold scale-[1.02]"
+            >
+              {token}
+            </span>
+          );
+        }
+        return <span key={idx}>{token}</span>;
+      })}
+    </>
+  );
+}
 
 export function ReaderLayers({
   scriptureId,
@@ -261,6 +316,41 @@ export function ReaderLayers({
   /** Status chips rendered by the page (TrustBadges), placed at the top of the Sources card. */
   sourceStatus?: ReactNode;
 }) {
+  const [activeRecitationWord, setActiveRecitationWord] = useState<string | null>(null);
+  const [isRecitingThisVerse, setIsRecitingThisVerse] = useState(false);
+
+  useEffect(() => {
+    const handleWord = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail?.word) {
+        setActiveRecitationWord(detail.word);
+        setIsRecitingThisVerse(true);
+      }
+    };
+    const handleChunk = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail?.chunkIndex !== null && detail?.chunkIndex !== undefined) {
+        setIsRecitingThisVerse(true);
+      } else {
+        setIsRecitingThisVerse(false);
+        setActiveRecitationWord(null);
+      }
+    };
+    const handleEnd = () => {
+      setIsRecitingThisVerse(false);
+      setActiveRecitationWord(null);
+    };
+
+    window.addEventListener('dharma:recitation-word', handleWord);
+    window.addEventListener('dharma:recitation-chunk', handleChunk);
+    window.addEventListener('dharma:recitation-ended', handleEnd);
+    return () => {
+      window.removeEventListener('dharma:recitation-word', handleWord);
+      window.removeEventListener('dharma:recitation-chunk', handleChunk);
+      window.removeEventListener('dharma:recitation-ended', handleEnd);
+    };
+  }, []);
+
   const [activeLexiconEntry, setActiveLexiconEntry] = useState<SanskritLexiconEntry | null>(null);
   const [selectedWordGloss, setSelectedWordGloss] = useState<{
     pada: string;
@@ -271,6 +361,9 @@ export function ReaderLayers({
   const sanskrit = cleanVerseField(verse.sanskrit);
   const lines = sanskrit ? verseLines(sanskrit) : [];
   const glosses = parseWordMeanings(verse.wordMeaning);
+  // Palm-leaf prototype: only verses with study markup (data/verse-study) change.
+  const study = getVerseStudy(scriptureId, chapterId, verse.number);
+  const [studyGroup, setStudyGroup] = useState<StudyGroup | null>(null);
   const devLeading = DEVANAGARI_LEADING[settings.lineSpacing];
   const latinLeading = LATIN_LEADING[settings.lineSpacing];
   const tSize = TRANSLATION_SIZE[settings.translationSize];
@@ -307,6 +400,7 @@ export function ReaderLayers({
   const showModernLesson = Boolean(!settings.liteMode && verse.reflection && modernParsed
     && (!modernParsed.hasStructuredFormat || modernParsed.contextText || modernParsed.applicationText));
   const hasModern = settings.showCommentary && (showModernLesson || Boolean(!isQuick && !settings.liteMode && verse.research));
+  const showSituations = Boolean(insight && insight.situations.length > 0 && settings.showCommentary && !settings.liteMode);
   const hasReflection = Boolean(settings.showCommentary && !settings.liteMode && modernParsed?.hasStructuredFormat && modernParsed.reflectionQuestion);
 
   const handleInspectPada = (pada: string) => {
@@ -317,7 +411,7 @@ export function ReaderLayers({
   };
 
   return (
-    <article id={`verse-${verse.number}`} className="space-y-5" aria-label={`Verse ${verse.number}`}>
+    <article id={`verse-${verse.number}`} className="space-y-5" aria-label={`Verse ${verse.number}`} data-study-active={studyGroup ?? undefined}>
       {/* Reading depth and perspective live in the reader's control row (ReaderControlBar). */}
       {settings.liteMode && (
         <div className="flex items-center justify-between rounded-xl border border-dharma-border/60 bg-dharma-card/50 px-3.5 py-2 text-xs text-dharma-muted">
@@ -337,21 +431,36 @@ export function ReaderLayers({
       )}
 
       {/* 1 · Original Sanskrit: scripture comes first on the page; editorial lines follow it. */}
-      <Layer id="layer-sanskrit" kind="source" title="Original Sanskrit" titleHi="मूल संस्कृत">
+      <Layer id="layer-sanskrit" kind="source" title="Original Sanskrit" titleHi="मूल संस्कृत" className={`apple-pranic-leaf transition-all duration-300 ${isRecitingThisVerse ? 'ring-2 ring-amber-500/50 shadow-md shadow-amber-500/10' : ''}`}>
         {lines.length > 0 ? (
           <>
+          {study ? (
+            <PalmLeaf>
+              <p id="sanskrit-text" lang="sa" className={`text-center font-manuscript ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
+                {lines.map((line, i) => (
+                  <span key={i} className="block">
+                    <Rubricated text={line} />
+                  </span>
+                ))}
+                <span aria-hidden="true" className="rubric mt-2 block text-[0.6em]">
+                  ॥ {toAsciiDigits(chapterId)}.{toAsciiDigits(verse.number)} ॥
+                </span>
+              </p>
+            </PalmLeaf>
+          ) : (
           <p id="sanskrit-text" lang="sa" className={`text-center font-devanagari font-semibold text-dharma-text ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
             {lines.map((line, i) => (
               <span key={i} className="block">
-                {line}
+                <RecitationHighlightedLine
+                  line={line}
+                  activeWord={isRecitingThisVerse ? activeRecitationWord : null}
+                />
               </span>
             ))}
             <span aria-hidden="true" className="mt-2 block text-[0.6em] font-bold text-amber-800 dark:text-amber-300">
               ॥ {toAsciiDigits(chapterId)}.{toAsciiDigits(verse.number)} ॥
             </span>
           </p>
-          {!settings.liteMode && (
-            <ExplainLine scriptureId={scriptureId} chapterId={chapterId} verseNumber={verse.number} lines={lines} scopeId="sanskrit-text" verseLabel={`${chapterId}.${verse.number}`} fullTranslation={cleanVerseField(verse.translation)} />
           )}
           </>
         ) : (
@@ -403,22 +512,59 @@ export function ReaderLayers({
         )}
       </Layer>
 
-      {/* मर्म: the reviewed one-line core shift, when this verse has one. It sits after the
-          Sanskrit so the reader meets scripture before any editorial line. */}
-      {insight?.marma && settings.showCommentary && !settings.liteMode && (
-        <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
-          <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
-            <span lang="hi">मर्म</span>
-            <span aria-hidden="true">·</span>
-            <span lang="en">The Core Shift</span>
-            <span className="normal-case tracking-normal text-dharma-muted">· Editorial, not scripture</span>
-          </figcaption>
-          <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text sm:text-xl">
-            {insight.marma}
-          </blockquote>
-        </figure>
-      )}
 
+
+
+
+      {/* 2 · The three pillars (CLAUDE.md §4), in reading order भावार्थ → व्याख्या → आधुनिक संदर्भ.
+          Pillar 1 holds the printed translation (still labelled अनुवाद, never rewritten). The मर्म
+          "core shift" line is not shown on verse pages. A pillar with nothing to show is left out. */}
+      {(hasArth || hasVyakhya || hasPadas || hasModern || hasReflection || showSituations) && (
+        <InPillar.Provider value>
+        <VersePillars>
+          {hasArth && (
+            <VersePillar kind="bhavartha" hint="श्लोक का अर्थ: मूल अनुवाद">
+              {(
+              <div className="space-y-4">
+                {showHindiTrans && !verse.hindi && verse.hindiSeeVerse != null && (
+                  // The edition translates this verse together with earlier ones; the passage lives there.
+                  <p lang="hi" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 font-devanagari text-sm text-dharma-muted">
+                    इस श्लोक का हिन्दी अर्थ श्लोक {toAsciiDigits(String(verse.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
+                    <a href={`../${verse.hindiSeeVerse}/`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                      श्लोक {toAsciiDigits(String(verse.hindiSeeVerse))} देखें →
+                    </a>
+                  </p>
+                )}
+                {showHindiTrans && verse.hindi && (
+                  <Layer
+                    id="layer-hindi"
+                    kind="translation"
+                    title={verse.hindiRange ? `Hindi translation · verses ${verse.hindiRange.replace('-', '–')}` : 'Hindi translation'}
+                    titleHi={verse.hindiRange ? `श्लोक ${toAsciiDigits(verse.hindiRange.replace('-', '–'))} का अनुवाद` : 'हिन्दी अनुवाद'}
+                  >
+                    <p lang="hi" className={`whitespace-pre-line font-devanagari text-dharma-text ${tSize} ${devLeading}`}>
+                      {study ? markPhrases(cleanVerseField(verse.hindi), termMarks(study.translationTerms)) : cleanVerseField(verse.hindi)}
+                    </p>
+                  </Layer>
+                )}
+                {showEnglishTrans && verse.translation && (
+                  <Layer
+                    id="layer-english"
+                    kind="translation"
+                    title="English translation"
+                    titleHi="अंग्रेज़ी अनुवाद"
+                  >
+                    <p lang="en" className={`font-serif text-dharma-text ${tSize} ${latinLeading}`}>
+                      {cleanVerseField(verse.translation)}
+                    </p>
+                  </Layer>
+                )}
+              </div>
+              )}
+            </VersePillar>
+          )}
+          {(hasVyakhya || hasPadas) && (
+            <VersePillar kind="vyakhya" hint="श्लोक का पदच्छेद और दार्शनिक विवेचन">
       {/* Word by word: a reading aid for the shloka, kept apart from the व्याख्या and
           hidden by default. In the HTML either way, so crawlers and no-JS readers get it. */}
       {hasPadas && (
@@ -426,19 +572,20 @@ export function ReaderLayers({
         <Layer
           id="layer-padas"
           kind="aid"
-          title="Word by word (पदच्छेद व अन्वय)"
+          title="Word by word"
           titleHi="पदच्छेद"
         >
-          <div className="mb-2.5 flex items-center justify-between text-xs text-dharma-muted">
-            <span>पदों पर क्लिक या टैप करें — विस्तृत अर्थ, व्याकरण एवं उच्चारण (Hear word at 0.85x):</span>
-          </div>
+          <p className="mb-2.5 text-xs text-dharma-muted">
+            <span lang="hi" className="font-devanagari">किसी पद को स्पर्श करें: उसका अर्थ, व्याकरण और उच्चारण खुलेगा।</span>{' '}
+            <span>Tap a word for its meaning, grammar and pronunciation.</span>
+          </p>
           {glosses.length > 1 ? (
             <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
               {glosses.map((g, i) => {
                 const lexiconMatch = findLexiconEntry(g.pada);
                 const displayTerm = lexiconMatch?.termDevanagari || g.pada;
                 return (
-                  <li key={i} className="list-none">
+                  <li key={i} className="list-none" data-study-group={study?.padaGroups[g.pada]}>
                     {/* The card is a plain container: the word is the button, and its ::after stretches over the
                         whole card, so a click anywhere still opens the gloss. Pronounce and धातु sit above it
                         (relative z-10) instead of being nested inside an interactive element. */}
@@ -512,105 +659,38 @@ export function ReaderLayers({
         </Layer>
         </div>
       )}
-
-
-      {/* 2–9 · The knowledge tree in sacred reading order (lib/sacred-reading-order):
-          अर्थ → व्याख्या → आधुनिक संदर्भ → चिंतन. Native <details> branches, so
-          every layer stays in the server HTML. */}
-      <VerseTreeStructure
-        persistent
-        branches={(
-          [
-          hasArth && {
-            id: 'arth',
-            labelHi: SACRED_SECTION_LABEL.arth.hi,
-            labelEn: SACRED_SECTION_LABEL.arth.en,
-            icon: ScrollText,
-            defaultOpen: true,
-            content: (
-              <div className="space-y-4">
-                {showHindiTrans && !verse.hindi && verse.hindiSeeVerse != null && (
-                  // The edition translates this verse together with earlier ones; the passage lives there.
-                  <p lang="hi" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 font-devanagari text-sm text-dharma-muted">
-                    इस श्लोक का हिन्दी अर्थ श्लोक {toAsciiDigits(String(verse.hindiSeeVerse))} के साथ संयुक्त रूप से दिया गया है।{' '}
-                    <a href={`../${verse.hindiSeeVerse}/`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
-                      श्लोक {toAsciiDigits(String(verse.hindiSeeVerse))} देखें →
-                    </a>
-                  </p>
-                )}
-                {showHindiTrans && verse.hindi && (
-                  <Layer
-                    id="layer-hindi"
-                    kind="translation"
-                    title={verse.hindiRange ? `Hindi Translation · verses ${verse.hindiRange.replace('-', '–')}` : 'Literal Hindi Translation'}
-                    titleHi={verse.hindiRange ? `श्लोक ${toAsciiDigits(verse.hindiRange.replace('-', '–'))} का अनुवाद` : 'मूल हिन्दी अनुवाद (अक्षरशः)'}
-                    badge={
-                      <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                        मूलानुवाद · Literal
-                      </span>
-                    }
-                  >
-                    <p lang="hi" className={`whitespace-pre-line font-devanagari text-dharma-text ${tSize} ${devLeading}`}>
-                      {cleanVerseField(verse.hindi)}
-                    </p>
-                    <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
-                      अक्षरशः अनुवाद — मूल संस्कृत श्लोक के प्रत्येक पद का प्रत्यक्ष अर्थ।
-                    </p>
-                  </Layer>
-                )}
-                {showEnglishTrans && verse.translation && (
-                  <Layer
-                    id="layer-english"
-                    kind="translation"
-                    title="Literal English Translation"
-                    badge={
-                      <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                        Literal Text
-                      </span>
-                    }
-                  >
-                    <p lang="en" className={`font-serif text-dharma-text ${tSize} ${latinLeading}`}>
-                      {cleanVerseField(verse.translation)}
-                    </p>
-                    <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
-                      Direct literal rendering preserving Sanskrit philosophical terminology.
-                    </p>
-                  </Layer>
-                )}
-              </div>
-            ),
-          },
-          hasVyakhya && {
-            id: 'vyakhya',
-            labelHi: SACRED_SECTION_LABEL.vyakhya.hi,
-            labelEn: SACRED_SECTION_LABEL.vyakhya.en,
-            icon: Lightbulb,
-            hint: 'श्लोक का सरल हिन्दी विवेचन',
-            defaultOpen: true,
-            content: (
+              {hasVyakhya && (
               <div className="space-y-4">
                 {verse.explanation && (
                   <Layer
                     id="layer-explanation"
                     kind="editorial"
-                    title={isQuick ? 'Key Message' : 'Vyakhya (व्याख्या)'}
+                    title={isQuick ? 'Key message' : 'Explanation'}
                     titleHi={isQuick ? 'मुख्य संदेश' : 'व्याख्या'}
                     badge={p.explanationIsAi ? <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</AiBadge> : undefined}
                     collapsible={false}
                   >
+                    {study && !isQuick ? (
+                      <StudyVyakhya
+                        text={verse.explanation}
+                        study={study}
+                        className={`whitespace-pre-line text-dharma-text ${tSize} ${devLeading} font-devanagari`}
+                      />
+                    ) : (
                     <p
                       lang={/[ऀ-ॿ]/.test(verse.explanation ?? '') ? 'hi' : 'en'}
                       className={`whitespace-pre-line text-dharma-text ${tSize} ${/[ऀ-ॿ]/.test(verse.explanation ?? '') ? `${devLeading} font-devanagari` : `${latinLeading} font-serif`}`}
                     >
                       {verse.explanation}
                     </p>
+                    )}
                   </Layer>
                 )}
                 {verse.commentary && (
                   <Layer
                     id="layer-commentary"
                     kind="editorial"
-                    title="Commentary & Explanation"
+                    title="Commentary"
                     collapsible={false}
                   >
                     <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
@@ -622,38 +702,36 @@ export function ReaderLayers({
                   <Layer
                     id="layer-tradition"
                     kind="tradition"
-                    title="Traditional Commentary (परम्परागत भाष्य)"
+                    title="Traditional commentary"
                     titleHi="परम्परागत भाष्य"
                     collapsible={!isTraditional && perspective !== 'researcher'}
                   >
                     <div className="rounded-xl border border-stone-300 bg-stone-50/70 dark:border-stone-700 dark:bg-stone-900/40 p-3.5 mb-3 text-xs text-stone-700 dark:text-stone-300">
-                      <p className="font-semibold text-stone-900 dark:text-stone-200">Pluralistic Tradition Neutrality (सम्प्रदाय-तटस्थता):</p>
+                      <p className="font-semibold text-stone-900 dark:text-stone-200">
+                        <span lang="hi" className="font-devanagari">सम्प्रदाय-तटस्थता</span> · Every tradition with respect
+                      </p>
                       <p className="mt-1 leading-relaxed">
-                        Classical commentaries represent distinct philosophical darshanas (Advaita, Vishishtadvaita, Dvaita). Dharma Granth presents multiple traditional viewpoints without declaring any single tradition as universal or exclusive.
+                        The classical commentaries speak from different schools, such as Advaita, Vishishtadvaita and Dvaita. They are set side by side here, and no one school is presented as the only true reading.
                       </p>
                     </div>
                     <CommentaryCompare scriptureId={scriptureId} chapterId={chapterId} verse={verse} />
                   </Layer>
                 )}
               </div>
-            ),
-          },
-          hasModern && {
-            id: 'modern',
-            labelHi: SACRED_SECTION_LABEL.modern.hi,
-            labelEn: SACRED_SECTION_LABEL.modern.en,
-            icon: Compass,
-            hint: 'आज के जीवन में प्रयोग',
-            defaultOpen: true,
-            content: (
+              )}
+            </VersePillar>
+          )}
+          {(hasModern || (hasReflection && modernParsed?.reflectionQuestion) || showSituations) && (
+            <VersePillar kind="modern" hint="आज के जीवन में प्रयोग">
+              {hasModern && (
               <div className="space-y-4">
                 {/* Modern reflection and research stay separate frames, never mixed into the commentary */}
                 {showModernLesson && verse.reflection && modernParsed && (
                   <Layer
                     id="layer-modern"
                     kind="reflection"
-                    title={isQuick ? "Practical Action & Takeaway" : "Modern Context & Application"}
-                    titleHi={isQuick ? "दैनिक आचरण" : "आधुनिक संदर्भ"}
+                    title={isQuick ? 'In daily practice' : 'Living the teaching today'}
+                    titleHi={isQuick ? 'दैनिक आचरण' : 'आज के जीवन में'}
                     badge={aiCommentary}
                     collapsible={perspective === 'researcher'}
                   >
@@ -665,7 +743,7 @@ export function ReaderLayers({
                   </Layer>
                 )}
                 {!isQuick && !settings.liteMode && verse.research && (
-                  <Layer id="layer-research" kind="research" title="Comparative Research Note" titleHi="शोध टिप्पणी" badge={p.researchIsAi ? <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</AiBadge> : aiCommentary} collapsible={perspective !== 'researcher'}>
+                  <Layer id="layer-research" kind="research" title="A modern parallel" titleHi="शोध टिप्पणी" badge={p.researchIsAi ? <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</AiBadge> : aiCommentary} collapsible={perspective !== 'researcher'}>
                     <p
                       lang={/[ऀ-ॿ]/.test(verse.research) ? 'hi' : 'en'}
                       className={`whitespace-pre-line text-dharma-text ${tSize} ${/[ऀ-ॿ]/.test(verse.research) ? devLeading : latinLeading} ${/[ऀ-ॿ]/.test(verse.research) ? 'font-devanagari' : 'font-serif'}`}
@@ -679,16 +757,8 @@ export function ReaderLayers({
                   </Layer>
                 )}
               </div>
-            ),
-          },
-          hasReflection && modernParsed?.reflectionQuestion && {
-            id: 'reflection',
-            labelHi: SACRED_SECTION_LABEL.reflection.hi,
-            labelEn: SACRED_SECTION_LABEL.reflection.en,
-            icon: Sparkles,
-            hint: 'चिंतन प्रश्न',
-            defaultOpen: true,
-            content: (
+              )}
+              {hasReflection && modernParsed?.reflectionQuestion && (
               <Layer
                 id="layer-reflection"
                 kind="reflection"
@@ -703,12 +773,7 @@ export function ReaderLayers({
                   className={`${tSize} ${verse.reflection && /[ऀ-ॿ]/.test(verse.reflection) ? devLeading : latinLeading}`}
                 />
               </Layer>
-            ),
-          },
-          ] as Array<VerseTreeBranch | false>
-        ).filter((b): b is VerseTreeBranch => Boolean(b))}
-      />
-
+              )}
       {insight && insight.situations.length > 0 && settings.showCommentary && !settings.liteMode && (
         <nav aria-label="जीवन प्रसंग · Life situations" className="flex flex-wrap items-center gap-1.5">
           <span lang="hi" className="mr-1 font-devanagari text-xs font-semibold text-dharma-muted">जीवन प्रसंग:</span>
@@ -725,6 +790,12 @@ export function ReaderLayers({
           ))}
         </nav>
       )}
+            </VersePillar>
+          )}
+        </VersePillars>
+        </InPillar.Provider>
+      )}
+
 
       {isDeep && settings.showCommentary && !settings.liteMode && (
         <CompareViews scriptureId={scriptureId} chapterId={chapterId} verse={verse} provenance={p} />

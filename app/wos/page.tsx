@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { WisdomOperatingSystem } from '@/app/components/wos/WisdomOperatingSystem';
+import { SITE_URL } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Wisdom Operating System (WOS) — प्रज्ञा व्यवस्था — Dharma Granth',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     title: 'Wisdom Operating System (WOS) — Dharma Granth',
     description:
       'Transform scripture into reflection, reflection into understanding, and understanding into action with question-first inquiry, emotional resonance, and mindful contemplation.',
-    url: 'https://dharmagranth.dev/wos',
+    url: `${SITE_URL}/wos/`,
   },
 };
 

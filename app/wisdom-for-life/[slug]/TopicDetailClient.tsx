@@ -8,7 +8,6 @@ import {
   BookOpen,
   Copy,
   Check,
-  Download,
   MessageCircle,
   Compass,
   ExternalLink,
@@ -20,9 +19,7 @@ import {
   Sparkles,
   Tag,
   Scroll,
-  MessageSquareQuote,
   CheckCircle2,
-  Zap,
 } from 'lucide-react';
 import {
   type WisdomTopic,
@@ -34,13 +31,14 @@ import { TopicIllustration } from '../TopicIllustrations';
 import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
 import { ShareVerseButton } from '@/app/components/ShareVerseButton';
 import { ShareChips } from '@/app/components/ShareChips';
-import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import { whatsappShareUrl } from '@/lib/whatsapp';
+import { VersePillar, VersePillars } from '@/app/components/reader/VersePillar';
 import dynamic from 'next/dynamic';
 
 // Loaded when a verse's story deck is first opened, so it stays out of the page's first-load JS.
 const StoryDeckModal = dynamic(() => import('@/app/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
 import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
+import { SITE_URL } from '@/lib/jsonld';
 
 export function TopicDetailClient({
   topic,
@@ -58,10 +56,9 @@ export function TopicDetailClient({
 }) {
   const [copiedVerseId, setCopiedVerseId] = useState<string | null>(null);
   const [activeStoryVerse, setActiveStoryVerse] = useState<ScriptureReference | null>(null);
-  const [imageNote, setImageNote] = useState('');
 
   const handleCopyVerse = (verse: ScriptureReference) => {
-    const textToCopy = `${verse.referenceDisplay}\n\n${verse.sanskritDevanagari}\n\n${verse.sanskritTransliteration}\n\n[Hindi]: ${verse.literalTranslationHi}\n\n[English]: ${verse.literalTranslationEn}\n\n— Via Dharma Granth (https://dharmagranth.dev/wisdom-for-life/${topic.slug})`;
+    const textToCopy = `${verse.referenceDisplay}\n\n${verse.sanskritDevanagari}\n\n${verse.sanskritTransliteration}\n\n[Hindi]: ${verse.literalTranslationHi}\n\n[English]: ${verse.literalTranslationEn}\n\n— Via Dharma Granth (${SITE_URL}/wisdom-for-life/${topic.slug})`;
     navigator.clipboard.writeText(textToCopy).then(() => {
       setCopiedVerseId(verse.id);
       setTimeout(() => setCopiedVerseId(null), 2500);
@@ -72,23 +69,9 @@ export function TopicDetailClient({
     const href = whatsappShareUrl({
       heading: verse.referenceDisplay,
       body: [verse.sanskritDevanagari, verse.literalTranslationHi || verse.literalTranslationEn],
-      url: `https://dharmagranth.dev/wisdom-for-life/${topic.slug}#verse-${verse.id}`,
+      url: `${SITE_URL}/wisdom-for-life/${topic.slug}/#verse-${verse.id}`,
     });
     window.open(href, '_blank', 'noopener,noreferrer');
-  };
-
-  const handleDownloadVerse = async (verse: ScriptureReference) => {
-    try {
-      await downloadVerseCardPng({
-        reference: verse.referenceDisplay,
-        sanskrit: verse.sanskritDevanagari,
-        translation: verse.literalTranslationHi || verse.literalTranslationEn,
-        fileName: `dharmagranth-${verse.id}.png`,
-      });
-      setImageNote('');
-    } catch {
-      setImageNote('छवि नहीं बन सकी।');
-    }
   };
 
   return (
@@ -287,17 +270,6 @@ export function TopicDetailClient({
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
-                      onClick={() => setActiveStoryVerse(verse)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-amber-300/80 bg-amber-50/80 text-xs font-bold text-amber-900 hover:bg-amber-100 transition shadow-2xs dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200"
-                      aria-label={`60-सेकंड सार ${verse.referenceDisplay}`}
-                      title="60-सेकंड सार (5-Card Visual Story Deck)"
-                    >
-                      <Zap className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                      <span>60-सेकंड सार</span>
-                    </button>
-
-                    <button
-                      type="button"
                       onClick={() => handleCopyVerse(verse)}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-dharma-border bg-dharma-card text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:text-saffron-700 transition"
                       aria-label={`Copy verse ${verse.referenceDisplay}`}
@@ -325,16 +297,6 @@ export function TopicDetailClient({
                       <span>WhatsApp Share</span>
                     </button>
 
-                    <button
-                      type="button"
-                      onClick={() => handleDownloadVerse(verse)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-dharma-border bg-dharma-card text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:text-saffron-800 transition"
-                      aria-label={`Download Image ${verse.referenceDisplay}`}
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>Download Image</span>
-                    </button>
-
                     <ShareVerseButton
                       scriptureTitle={verse.scriptureName}
                       chapterTitle={`अध्याय ${verse.chapterNumber}`}
@@ -343,9 +305,8 @@ export function TopicDetailClient({
                       transliteration={verse.sanskritTransliteration}
                       hindi={verse.literalTranslationHi}
                       translation={verse.literalTranslationEn}
-                      coreShift={literaryMeta.isCurated ? literaryMeta.coreShiftHi || literaryMeta.coreShiftEn : undefined}
                       compact
-                      verseUrl={`https://dharmagranth.dev/wisdom-for-life/${topic.slug}#verse-${verse.id}`}
+                      verseUrl={`${SITE_URL}/wisdom-for-life/${topic.slug}/#verse-${verse.id}`}
                     />
 
                     <Link
@@ -356,7 +317,6 @@ export function TopicDetailClient({
                       <ExternalLink className="w-3 h-3" />
                     </Link>
                   </div>
-                  {imageNote ? <p role="status" className="mt-2 text-xs text-rose-800">{imageNote}</p> : null}
                 </div>
 
                 <div className="p-6 sm:p-8 space-y-6">
@@ -376,23 +336,24 @@ export function TopicDetailClient({
                     </p>
                   </div>
 
-                  {/* 4. Literal Translations (Hindi & English) */}
-                  <div className="grid md:grid-cols-2 gap-6 pt-2">
-                    <div className="rounded-2xl border border-dharma-border/80 bg-dharma-bg/40 p-5">
-                      <h4 lang="hi" className="text-xs font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-2 font-devanagari flex items-center gap-1.5">
-                        <MessageSquareQuote className="w-3.5 h-3.5" />
-                        हिंदी अनुवाद एवं भावार्थ
-                      </h4>
+                  {/* The three pillars, as on every verse (CLAUDE.md §4). Topic verses carry no per-verse
+                      modern-life text (the topic's own reflections section does), so pillar 3 is left out. */}
+                  <VersePillars>
+                  <VersePillar kind="bhavartha" idPrefix={`verse-${verse.id}-`} hint="श्लोक का अर्थ: अनुवाद">
+                  <div className="grid gap-5 md:grid-cols-2">
+                    <div>
+                      <p className="mb-1.5 inline-flex items-center gap-1.5 rounded-full border border-saffron-600/30 bg-saffron-500/10 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
+                        <span lang="hi" className="font-devanagari">अनुवाद</span> · Hindi
+                      </p>
                       <p lang="hi" className="font-devanagari text-sm sm:text-base text-dharma-text leading-loose">
                         {verse.literalTranslationHi}
                       </p>
                     </div>
 
-                    <div className="rounded-2xl border border-dharma-border/80 bg-dharma-bg/40 p-5">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400 mb-2 flex items-center gap-1.5">
-                        <MessageSquareQuote className="w-3.5 h-3.5" />
-                        English translation
-                      </h4>
+                    <div>
+                      <p className="mb-1.5 inline-flex items-center gap-1.5 rounded-full border border-saffron-600/30 bg-saffron-500/10 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
+                        <span lang="hi" className="font-devanagari">अनुवाद</span> · English
+                      </p>
                       <p className="text-sm sm:text-base text-dharma-text leading-relaxed">
                         {verse.literalTranslationEn}
                       </p>
@@ -406,15 +367,14 @@ export function TopicDetailClient({
                     </Link>
                     .
                   </p>
+                  </VersePillar>
 
-                  {/* 5. Traditional Context & Classical Commentary */}
-                  <div className="rounded-2xl border border-dharma-border bg-dharma-card/80 p-5 space-y-3">
-                    <div className="flex items-center gap-2">
-                      <Scroll className="w-4 h-4 text-saffron-600" />
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-dharma-text">
-                        Traditional context (पारंपरिक संदर्भ)
-                      </h4>
-                    </div>
+                  <VersePillar kind="vyakhya" idPrefix={`verse-${verse.id}-`} hint="प्रसंग और सही समझ">
+                  {/* Traditional context */}
+                  <div className="space-y-3">
+                    <p className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                      <span lang="hi" className="font-devanagari normal-case tracking-normal">पारंपरिक संदर्भ</span> · Traditional context
+                    </p>
 
                     <div className="grid sm:grid-cols-3 gap-3 text-xs border-b border-dharma-border pb-3">
                       <div>
@@ -446,41 +406,6 @@ export function TopicDetailClient({
                       </div>
                     )}
                   </div>
-
-                  {/* ── The Core Shift (मर्म · In One Breath) ── */}
-                  {literaryMeta.isCurated && (
-                    <>
-                  <div className="rounded-2xl border border-amber-200/90 bg-gradient-to-r from-amber-50/95 via-orange-50/70 to-amber-50/95 p-5 dark:border-amber-900/50 dark:from-amber-950/40 dark:via-orange-950/20 dark:to-amber-950/40 shadow-2xs">
-                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                      <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-amber-800 dark:text-amber-300">
-                        <Sparkles className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" aria-hidden="true" />
-                        मर्म · In One Breath
-                      </p>
-                      <div className="flex flex-wrap items-center gap-1.5">
-                        {literaryMeta.situationalMoments.map((m) => (
-                          <span
-                            key={m.id}
-                            title={m.descriptionEn}
-                            className="inline-flex items-center gap-1 rounded-full border border-amber-300/70 bg-white/80 px-2.5 py-0.5 text-[11px] font-medium text-amber-950 dark:border-amber-800/60 dark:bg-amber-900/40 dark:text-amber-200"
-                          >
-                            <span>{m.emoji}</span>
-                            <span>{m.labelHi}</span>
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <p className="font-serif italic text-base sm:text-lg font-bold leading-relaxed text-amber-950 dark:text-amber-100">
-                      &ldquo;{literaryMeta.coreShiftHi}&rdquo;
-                    </p>
-                    {literaryMeta.coreShiftEn && (
-                      <p className="font-serif text-xs sm:text-sm text-amber-900/85 dark:text-amber-300/80 mt-1.5 font-normal">
-                        {literaryMeta.coreShiftEn}
-                      </p>
-                    )}
-                  </div>
-                    <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">{literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}</p>
-                    </>
-                  )}
 
                   {/* ── What This Verse Does NOT Mean (भ्रम निवारण) ── */}
                   {literaryMeta.isCurated && (
@@ -515,6 +440,8 @@ export function TopicDetailClient({
                     <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-wider text-dharma-muted">{literaryMeta.editorialLabel} · {literaryMeta.editorialStatus}</p>
                     </>
                   )}
+                  </VersePillar>
+                  </VersePillars>
                 </div>
               </article>
             );
@@ -880,7 +807,7 @@ export function TopicDetailClient({
               activeStoryVerse.verseNumber,
             ),
             chapterHref: activeStoryVerse.readerHref,
-            verseHref: `https://dharmagranth.dev/wisdom-for-life/${topic.slug}#verse-${activeStoryVerse.id}`,
+            verseHref: `${SITE_URL}/wisdom-for-life/${topic.slug}/#verse-${activeStoryVerse.id}`,
           }}
         />
       )}

@@ -23,6 +23,7 @@ import {
 } from '@/lib/verse-collections';
 import { verseCount } from '@/lib/format';
 import { track } from '@/lib/analytics';
+import { readHref } from '@/lib/verse-paths';
 
 const NOTES_KEY = 'dharma.notes';
 const MAX_BYTES = 2 * 1024 * 1024;
@@ -87,7 +88,7 @@ export function SavedCollections({ onChange, onQueue }: { onChange: () => void; 
   if (!state) return <p role="status" className="text-sm text-dharma-muted">Loading your saved verses…</p>;
   const current = state.collections.find((c) => c.id === active);
   const count = (id: string) => saved.filter((v) => collectionOf(state, v) === id).length;
-  const href = (v: SavedVerse) => `/scripture/${v.scriptureId}/chapter/${v.chapterId ?? 1}/verse/${v.verseId}`;
+  const href = (v: SavedVerse) => readHref(v.scriptureId, v.chapterId ?? 1, v.verseId);
 
   const remove = (v: SavedVerse) => {
     const next = saved.filter((b) => verseKey(b) !== verseKey(v));

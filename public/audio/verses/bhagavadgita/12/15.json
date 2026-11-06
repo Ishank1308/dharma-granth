@@ -1,0 +1,61 @@
+{
+  "verseNumber": 15,
+  "durationMs": 8963,
+  "words": [
+    {
+      "word": "यस्मान्नोद्विजते",
+      "startTimeMs": 0,
+      "endTimeMs": 1265
+    },
+    {
+      "word": "लोको",
+      "startTimeMs": 1591,
+      "endTimeMs": 1950
+    },
+    {
+      "word": "लोकान्नोद्विजते",
+      "startTimeMs": 2020,
+      "endTimeMs": 3077
+    },
+    {
+      "word": "च",
+      "startTimeMs": 3204,
+      "endTimeMs": 3274
+    },
+    {
+      "word": "यः",
+      "startTimeMs": 3425,
+      "endTimeMs": 3692
+    },
+    {
+      "word": "हर्षामर्षभयोद्वेगैर्मुक्तो",
+      "startTimeMs": 3843,
+      "endTimeMs": 6177
+    },
+    {
+      "word": "यः",
+      "startTimeMs": 6420,
+      "endTimeMs": 6594
+    },
+    {
+      "word": "स",
+      "startTimeMs": 6676,
+      "endTimeMs": 6792
+    },
+    {
+      "word": "च",
+      "startTimeMs": 6943,
+      "endTimeMs": 6989
+    },
+    {
+      "word": "मे",
+      "startTimeMs": 7140,
+      "endTimeMs": 7256
+    },
+    {
+      "word": "प्रियः",
+      "startTimeMs": 7303,
+      "endTimeMs": 7686
+    }
+  ]
+}

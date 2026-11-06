@@ -1,6 +1,6 @@
 /** normalizePhonetic: Devanagari, IAST and casual Hinglish forms of the same word share one key. */
 import assert from 'node:assert/strict';
-import { normalizePhonetic } from '../lib/searchNormalizer';
+import { normalizePhonetic } from '../lib/normalize-search';
 import { parseDirectCitation } from '../lib/search-citation';
 import { parseIntent } from '../lib/search-intent';
 

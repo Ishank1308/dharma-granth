@@ -8,8 +8,11 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ChapterHero } from '@/app/components/motion/ChapterHero';
 import { FullChapterVerses } from '@/app/components/FullChapterVerses';
-import { ChapterOrientation } from '@/app/components/ChapterOrientation';
-import { ChapterSummaryBox } from '@/app/components/ChapterSummaryBox';
+import dynamic from 'next/dynamic';
+const ChapterOrientationDrawer = dynamic(
+  () => import('@/app/components/reader/ChapterOrientationDrawer').then((m) => m.ChapterOrientationDrawer),
+  { ssr: false },
+);
 import { getGitaChapterSummary } from '@/data/gita-chapter-summaries';
 import { getChapterOrientation } from '@/data/chapter-orientation';
 import { ChapterKeyboardNav } from '@/app/components/ChapterKeyboardNav';
@@ -351,9 +354,10 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           {chapter.verseCount > 0 && (
             <a
               href={firstVerseAnchor}
-              className="mt-5 hidden min-h-[48px] items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-bold text-saffron-900 shadow-sm transition hover:bg-amber-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-saffron-800 sm:inline-flex"
+              className="mt-4 inline-flex min-h-[44px] sm:min-h-[48px] items-center gap-2 rounded-full bg-white px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-bold text-saffron-900 shadow-md transition hover:bg-amber-50 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-saffron-800"
             >
-              Begin reading <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <span>श्लोक पठन शुरू करें · Begin Reading</span>
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
           )}
           <div className="mt-2 flex flex-wrap items-center gap-2 sm:mt-5 sm:gap-3">
@@ -399,16 +403,14 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       <div className="relative mx-auto w-full max-w-4xl px-4 py-5 pb-[calc(9rem+env(safe-area-inset-bottom))] sm:px-6 md:py-7 md:pb-7">
         <div className="relative">
         {(!part || part.part === 1) && hasChapterContext && (
-          <details className="group mb-5 overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card">
-            <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-3 px-5 py-3 text-sm font-semibold text-dharma-text transition hover:bg-dharma-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-saffron-500 [&::-webkit-details-marker]:hidden">
-              <span>About this chapter <span lang="hi" className="font-devanagari font-normal text-dharma-muted">· अध्याय परिचय</span></span>
-              <ChevronDown className="h-5 w-5 shrink-0 text-dharma-muted transition-transform group-open:rotate-180" aria-hidden="true" />
-            </summary>
-            <div className="border-t border-dharma-border px-4 pb-1 pt-5 sm:px-5">
-              {chapterSummary && <ChapterSummaryBox summary={chapterSummary} allHref={`/scripture/${meta.id}/summary`} />}
-              <ChapterOrientation scriptureId={meta.id} chapterId={chapter.id} verseCount={chapter.verseCount} />
-            </div>
-          </details>
+          <ChapterOrientationDrawer
+            scriptureId={meta.id}
+            chapterId={chapter.id}
+            verseCount={chapter.verseCount}
+            chapterSummary={chapterSummary}
+            firstVerseAnchor={firstVerseAnchor}
+            allSummariesHref={`/scripture/${meta.id}/summary`}
+          />
         )}
         {part && parts && (
           <>

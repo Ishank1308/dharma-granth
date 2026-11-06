@@ -1,0 +1,76 @@
+{
+  "verseNumber": 2,
+  "durationMs": 14303,
+  "words": [
+    {
+      "word": "श्रेयश्च",
+      "startTimeMs": 0,
+      "endTimeMs": 650
+    },
+    {
+      "word": "प्रेयश्च",
+      "startTimeMs": 766,
+      "endTimeMs": 1254
+    },
+    {
+      "word": "मनुष्यमेतस्तौ",
+      "startTimeMs": 1370,
+      "endTimeMs": 2403
+    },
+    {
+      "word": "सम्परीत्य",
+      "startTimeMs": 3100,
+      "endTimeMs": 3738
+    },
+    {
+      "word": "विविनक्ति",
+      "startTimeMs": 3796,
+      "endTimeMs": 4481
+    },
+    {
+      "word": "धीरः",
+      "startTimeMs": 4598,
+      "endTimeMs": 5062
+    },
+    {
+      "word": "श्रेयो",
+      "startTimeMs": 5712,
+      "endTimeMs": 6177
+    },
+    {
+      "word": "हि",
+      "startTimeMs": 6235,
+      "endTimeMs": 6339
+    },
+    {
+      "word": "धीरोऽभि",
+      "startTimeMs": 6397,
+      "endTimeMs": 6908
+    },
+    {
+      "word": "प्रेयसो",
+      "startTimeMs": 6978,
+      "endTimeMs": 7535
+    },
+    {
+      "word": "वृणीते",
+      "startTimeMs": 7918,
+      "endTimeMs": 8417
+    },
+    {
+      "word": "प्रेयो",
+      "startTimeMs": 8487,
+      "endTimeMs": 8812
+    },
+    {
+      "word": "मन्दो",
+      "startTimeMs": 8870,
+      "endTimeMs": 9300
+    },
+    {
+      "word": "योगक्षेमाद्वृणीते",
+      "startTimeMs": 9683,
+      "endTimeMs": 11088
+    }
+  ]
+}

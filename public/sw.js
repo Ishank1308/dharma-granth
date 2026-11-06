@@ -5,12 +5,14 @@
 //   • icons, fonts     stale-while-revalidate
 //   • scripture JSON   network-first for files you have opened (capped)
 // Everything else (analytics) goes straight to the network.
-const VERSION = 'dg-v5';
+const VERSION = 'dg-v6';
 const PAGES = `${VERSION}-pages`;
 const ASSETS = `${VERSION}-assets`;
 const SCRIPTURE = `${VERSION}-scripture`;
 // Scriptures the reader chose to save (lib/offline-scriptures.ts). Kept across versions; only the reader removes them.
 const OFFLINE = 'dharma-offline-scriptures-v1';
+// Neural & Sanskrit verse recitation audio cache (lib/verse-audio.ts). Preserved across updates.
+const AUDIO_CACHE = 'dharma-audio-cache-v1';
 const MAX_PAGES = 120;
 const MAX_SCRIPTURE = 40;
 // A chapter page with comprehensive word-by-word padas and multiple commentaries
@@ -23,7 +25,11 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
       const keys = await caches.keys();
-      await Promise.all(keys.filter((k) => !k.startsWith(VERSION) && k !== OFFLINE).map((k) => caches.delete(k)));
+      await Promise.all(
+        keys
+          .filter((k) => !k.startsWith(VERSION) && k !== OFFLINE && k !== AUDIO_CACHE)
+          .map((k) => caches.delete(k))
+      );
       await self.clients.claim();
     })(),
   );
@@ -141,6 +147,27 @@ self.addEventListener('fetch', (event) => {
         } catch {
           const cached = (await caches.match(req, { cacheName: SCRIPTURE })) || (await caches.match(req, { cacheName: OFFLINE }));
           if (cached) return cached;
+          return new Response('', { status: 503 });
+        }
+      })(),
+    );
+    return;
+  }
+
+  // Sacred verse audio & timing tracks (offline parayana & high-fidelity recitation)
+  if (/\/audio\/verses\//.test(url.pathname)) {
+    event.respondWith(
+      (async () => {
+        const audioCache = await caches.open(AUDIO_CACHE);
+        const cached = await audioCache.match(req);
+        if (cached) return cached;
+        try {
+          const res = await fetch(req);
+          if (res.ok) {
+            audioCache.put(req, res.clone());
+          }
+          return res;
+        } catch {
           return new Response('', { status: 503 });
         }
       })(),

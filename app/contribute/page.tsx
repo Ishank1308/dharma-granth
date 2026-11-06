@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { ContributeClient } from './ContributeClient';
 import { SiteFooter } from '@/app/components/SiteFooter';
+import { SITE_URL } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'ऐच्छिक सहयोग व सेवा · Voluntary Contribution',
@@ -27,14 +28,14 @@ const contributeJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: 'ऐच्छिक सहयोग व सेवा · Voluntary Contribution — Dharma Granth',
-  url: 'https://dharmagranth.dev/contribute/',
+  url: `${SITE_URL}/contribute/`,
   description:
     'Voluntary, zero-commission, direct UPI and verified QR contribution system for sustaining Dharma Granth free and ad-free scripture library.',
   inLanguage: ['hi', 'sa', 'en'],
   publisher: {
     '@type': 'Organization',
     name: 'Dharma Granth',
-    url: 'https://dharmagranth.dev/',
+    url: `${SITE_URL}/`,
   },
 };
 

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { AskDharmaClient } from '@/app/components/AskDharmaClient';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Sparkles, Compass, Shield, BookOpen, Sun, ArrowLeft } from 'lucide-react';
+import { SITE_URL } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     title: 'धर्म सहायक — पुस्तकालय से जीवन के प्रश्न | Dharma Granth',
     description:
       'Questions about anxiety, anger, duty, and Karma Yoga, answered from verses already in the library.',
-    url: 'https://dharmagranth.dev/ask/',
+    url: `${SITE_URL}/ask/`,
     images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
   },
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
+const siteUrl = SITE_URL;
 
 const faqJsonLd = {
   '@context': 'https://schema.org',

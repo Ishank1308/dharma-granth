@@ -1,0 +1,46 @@
+{
+  "verseNumber": 47,
+  "durationMs": 6873,
+  "words": [
+    {
+      "word": "कर्मण्येवाधिकारस्ते",
+      "startTimeMs": 0,
+      "endTimeMs": 1474
+    },
+    {
+      "word": "मा",
+      "startTimeMs": 1718,
+      "endTimeMs": 1950
+    },
+    {
+      "word": "फलेषु",
+      "startTimeMs": 2009,
+      "endTimeMs": 2415
+    },
+    {
+      "word": "कदाचन",
+      "startTimeMs": 2473,
+      "endTimeMs": 3042
+    },
+    {
+      "word": "मा",
+      "startTimeMs": 3541,
+      "endTimeMs": 3808
+    },
+    {
+      "word": "कर्मफलहेतुर्भूर्मा",
+      "startTimeMs": 3866,
+      "endTimeMs": 5283
+    },
+    {
+      "word": "ते",
+      "startTimeMs": 5341,
+      "endTimeMs": 5480
+    },
+    {
+      "word": "सङ्गोऽस्त्वकर्मणि",
+      "startTimeMs": 5550,
+      "endTimeMs": 6594
+    }
+  ]
+}

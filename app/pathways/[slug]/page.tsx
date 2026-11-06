@@ -11,6 +11,7 @@ import {
   resolveStarterStages,
   topicsForStarter,
 } from '@/lib/wisdom-pathways';
+import { SITE_URL } from '@/lib/jsonld';
 
 export function generateStaticParams() {
   return mappedStarterPathways().map((s) => ({ slug: s.slug }));
@@ -29,7 +30,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     openGraph: {
       title: `${starter.questionEn} — Dharma Granth`,
       description,
-      url: `https://dharmagranth.dev/pathways/${starter.slug}/`,
+      url: `${SITE_URL}/pathways/${starter.slug}/`,
     },
   };
 }

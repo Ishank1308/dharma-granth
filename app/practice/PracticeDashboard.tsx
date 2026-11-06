@@ -8,6 +8,7 @@ import { Lock, Settings2, Trash2, ShieldCheck, Heart, Sparkles, Bookmark, Notebo
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { FadeUp } from '@/app/components/motion/primitives';
 const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((module) => module.DailyVerse)));
+const SadhanaPlaylistStrip = dynamic(() => retryImport(() => import('@/app/components/SadhanaPlaylistStrip').then((module) => module.SadhanaPlaylistStrip)));
 const DailyReflection = dynamic(() => retryImport(() => import('@/app/components/practice/DailyReflection').then((module) => module.DailyReflection)));
 const ReadingPlan = dynamic(() => retryImport(() => import('@/app/components/practice/ReadingPlan').then((module) => module.ReadingPlan)));
 const JapaMala = dynamic(() => retryImport(() => import('@/app/components/practice/JapaMala').then((module) => module.JapaMala)));
@@ -34,6 +35,7 @@ const SadhanaPortability = dynamic(() => retryImport(() => import('@/app/compone
 
 const TOOLS = [
   { id: 'verse', label: 'दैनिक श्लोक', sub: 'Daily verse' },
+  { id: 'sadhana_chanting', label: 'नित्य संकलन', sub: 'Sadhana Chanting' },
   { id: 'reflection', label: 'दैनिक चिंतन', sub: 'Daily reflection' },
   { id: 'reading', label: 'पठन योजना', sub: 'Reading plan' },
   { id: 'japa', label: 'जप माला', sub: 'Japa counter' },
@@ -50,6 +52,7 @@ type ToolId = (typeof TOOLS)[number]['id'];
 
 const DEFAULT_ENABLED: Record<ToolId, boolean> = {
   verse: true,
+  sadhana_chanting: true,
   reflection: true,
   reading: true,
   japa: false,
@@ -68,7 +71,7 @@ const TOOL_GROUPS: Array<{
   titleHi: string;
   toolIds: ToolId[];
 }> = [
-  { id: 'read', title: 'Read', titleHi: 'पठन', toolIds: ['verse', 'reading'] },
+  { id: 'read', title: 'Read', titleHi: 'पठन', toolIds: ['verse', 'sadhana_chanting', 'reading'] },
   { id: 'pause', title: 'Pause', titleHi: 'विराम', toolIds: ['meditation', 'pranayama', 'japa'] },
   { id: 'reflect', title: 'Reflect', titleHi: 'मनन', toolIds: ['reflection', 'gratitude', 'sankalpa'] },
   { id: 'organize', title: 'Keep in view', titleHi: 'स्मरण', toolIds: ['festivals', 'routine', 'history'] },
@@ -240,6 +243,9 @@ export function PracticeDashboard() {
 
             {/* Daily verse — full width */}
             {on('verse') && <DailyVerse />}
+
+            {/* Curated Sadhana Chanting Journeys */}
+            {on('sadhana_chanting') && <SadhanaPlaylistStrip />}
 
             {/* Tool grid */}
             <div className="grid md:grid-cols-2 gap-6 items-stretch">

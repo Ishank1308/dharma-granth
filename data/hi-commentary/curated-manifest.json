@@ -3245,103 +3245,23 @@
       "science": true,
       "lifeLesson": true
     },
-    "ramayana:1:1": {
+    "ramayana:1:1.2": {
       "science": true,
       "lifeLesson": true
     },
-    "ramayana:1:2": {
+    "ramayana:1:2.15": {
       "science": true,
       "lifeLesson": true
     },
-    "ramayana:1:3": {
+    "ramayana:1:1.8": {
       "science": true,
       "lifeLesson": true
     },
-    "ramayana:1:4": {
+    "ramayana:4:1.121": {
       "science": true,
       "lifeLesson": true
     },
-    "ramayana:2:20": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:2:21": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:2:22": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:2:112": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:3:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:3:2": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:3:14": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:4:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:4:2": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:4:24": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:5:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:5:2": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:5:22": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:6:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:6:2": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:6:111": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:7:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:7:2": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:7:8": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:7:9": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "ramayana:7:10": {
+    "ramayana:5:1.1": {
       "science": true,
       "lifeLesson": true
     },
@@ -3597,119 +3517,27 @@
       "science": true,
       "lifeLesson": true
     },
-    "rigveda:1:0": {
+    "rigveda:1:164.46": {
       "science": true,
       "lifeLesson": true
     },
-    "rigveda:1:1": {
+    "rigveda:1:189.1": {
       "science": true,
       "lifeLesson": true
     },
-    "rigveda:1:2": {
+    "rigveda:3:62.10": {
       "science": true,
       "lifeLesson": true
     },
-    "rigveda:2:1": {
+    "rigveda:10:129.1": {
       "science": true,
       "lifeLesson": true
     },
-    "rigveda:2:12": {
+    "rigveda:10:129.6": {
       "science": true,
       "lifeLesson": true
     },
-    "rigveda:3:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:3:62": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:4:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:4:17": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:5:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:5:18": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:6:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:6:47": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:7:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:7:8": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:7:89": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:8:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:8:48": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:9:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:9:83": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:10:1": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:10:2": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:10:3": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:10:190": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:10:196": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:10:197": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:10:198": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:10:199": {
-      "science": true,
-      "lifeLesson": true
-    },
-    "rigveda:10:200": {
+    "rigveda:1:1.1": {
       "science": true,
       "lifeLesson": true
     },

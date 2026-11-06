@@ -1,0 +1,71 @@
+{
+  "verseNumber": "129.1",
+  "durationMs": 10728,
+  "words": [
+    {
+      "word": "नासदासीन्नो",
+      "startTimeMs": 0,
+      "endTimeMs": 1022
+    },
+    {
+      "word": "सदासीत्तदानीं",
+      "startTimeMs": 1080,
+      "endTimeMs": 2287
+    },
+    {
+      "word": "नासीद्रजो",
+      "startTimeMs": 2496,
+      "endTimeMs": 3332
+    },
+    {
+      "word": "नो",
+      "startTimeMs": 3402,
+      "endTimeMs": 3506
+    },
+    {
+      "word": "व्योमा",
+      "startTimeMs": 3564,
+      "endTimeMs": 3936
+    },
+    {
+      "word": "परो",
+      "startTimeMs": 4005,
+      "endTimeMs": 4249
+    },
+    {
+      "word": "यत्",
+      "startTimeMs": 4342,
+      "endTimeMs": 4656
+    },
+    {
+      "word": "किमावरीवः",
+      "startTimeMs": 5341,
+      "endTimeMs": 6118
+    },
+    {
+      "word": "कुह",
+      "startTimeMs": 6211,
+      "endTimeMs": 6444
+    },
+    {
+      "word": "कस्य",
+      "startTimeMs": 6560,
+      "endTimeMs": 6908
+    },
+    {
+      "word": "शर्मन्नम्भः",
+      "startTimeMs": 7024,
+      "endTimeMs": 7767
+    },
+    {
+      "word": "किमासीद्गहनं",
+      "startTimeMs": 7976,
+      "endTimeMs": 9172
+    },
+    {
+      "word": "गभीरम्",
+      "startTimeMs": 9253,
+      "endTimeMs": 9752
+    }
+  ]
+}

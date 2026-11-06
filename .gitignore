@@ -99,3 +99,12 @@ data/sources-local/gitapress_official_epubs/
 
 # Workspace-local tsx/node temp dir (sandbox TMPDIR workaround)
 .tmp-tsx/
+
+# Generated commentary analysis
+hi-analysis.json
+
+# Local extraction tokens and secrets (DO NOT COMMIT)
+scripts/*_session_token.txt
+scripts/*cookies*.json
+scripts/take-*.mjs
+

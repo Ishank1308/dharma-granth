@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 import { BookmarkPlus, Check } from 'lucide-react';
 import { BOOKMARKS_KEY, readBookmarks, type SavedVerse } from '@/lib/reader-actions';
 import { parseSharePath, verseKey, type SharedList } from '@/lib/verse-collections';
@@ -137,9 +138,9 @@ export function SharedListClient({ titles }: { titles: Record<string, string> })
             {lines.map((l) => (
               <li key={verseKey(l.ref)} className="rounded-2xl border border-dharma-border bg-dharma-card p-4">
                 {l.found ? (
-                  <Link href={l.href} className="font-serif text-base font-bold text-dharma-text hover:text-saffron-700">
+                  <VerseHrefLink href={l.href} className="font-serif text-base font-bold text-dharma-text hover:text-saffron-700">
                     {l.title}
-                  </Link>
+                  </VerseHrefLink>
                 ) : (
                   <span className="font-serif text-base font-bold text-dharma-muted">{l.title}</span>
                 )}

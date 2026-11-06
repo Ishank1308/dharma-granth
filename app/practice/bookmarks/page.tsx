@@ -20,7 +20,7 @@ import {
   X,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { readHref } from '@/lib/verse-paths';
+import { chapterVerseHref, readHref } from '@/lib/verse-paths';
 import { migrateLegacyBookmarks } from '@/lib/reader-actions';
 import { SavedScriptures } from '@/app/components/SavedScriptures';
 import {
@@ -613,7 +613,7 @@ export default function BookmarksAndAnnotationsPage() {
                         {new Date(hl.createdAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}
                       </span>
                       <Link
-                        href={`/scripture/${hl.scriptureId}/chapter/${hl.chapterId}/verse/${hl.verseId}`}
+                        href={chapterVerseHref(hl.scriptureId, hl.chapterId, hl.verseId)}
                         className="font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2 hover:text-saffron-900"
                       >
                         Read Verse
@@ -668,7 +668,7 @@ export default function BookmarksAndAnnotationsPage() {
                   <div className="mt-4 pt-2 border-t border-dharma-border/60 flex items-center justify-between text-xs text-dharma-muted">
                     <span>Updated {new Date(note.updatedAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}</span>
                     <Link
-                      href={`/scripture/${note.scriptureId}/chapter/${note.chapterId}/verse/${note.verseId}`}
+                      href={chapterVerseHref(note.scriptureId, note.chapterId, note.verseId)}
                       className="font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2"
                     >
                       Open in Scripture

@@ -23,6 +23,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { ShareCardButton } from '@/app/components/understand/ShareCard';
+import { SITE_URL } from '@/lib/jsonld';
 
 interface PageProps {
   params: { id: string };
@@ -63,7 +64,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
       alternateLocale: ['en_US'],
       title: `${title} | Dharma Granth`,
       description,
-      url: `https://dharmagranth.dev${canonical}`,
+      url: `${SITE_URL}${canonical}`,
       images: [DEFAULT_OG_IMAGE],
     },
     twitter: {
@@ -79,7 +80,7 @@ export default function FestivalDetailPage({ params }: PageProps) {
   const festival = festivals.find((f) => f.id === params.id);
   if (!festival) notFound();
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
+  const siteUrl = SITE_URL;
   const pageUrl = `${siteUrl}/festivals/${festival.id}/`;
 
   const faqItems = [

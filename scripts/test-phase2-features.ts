@@ -5,7 +5,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { phoneticIndex } from '../lib/searchNormalizer';
+import { phoneticIndex } from '../lib/normalize-search';
 import { parseDirectCitation } from '../lib/search-citation';
 import { createSadhanaBackup, restoreSadhanaBackup, SADHANA_FORMAT } from '../lib/sadhana-backup';
 import { searchIndex } from '../lib/search';
@@ -26,9 +26,10 @@ assert.equal(parseDirectCitation('katha 1.3.3')?.href, '/scripture/katha/chapter
 
 const rig = parseDirectCitation('rv 1.1.1');
 assert.ok(rig);
-assert.equal(rig.href, '/scripture/rigveda/chapter/1');
+// The full Rig Veda has no verse pages: the citation opens the mandala at the mantra.
+assert.equal(rig.href, '/scripture/rigveda/chapter/1/#verse-1.1');
 assert.equal(rig.href.includes('/verse/'), false);
-assert.match(rig.subtitle, /not numbered/);
+assert.match(rig.subtitle, /सूक्त 1, मन्त्र 1/);
 
 const root = path.join(process.cwd(), 'public', 'data', 'scriptures-full');
 function hasVerse(id: string, chapter: number, verse: string) {
@@ -40,11 +41,12 @@ function hasVerse(id: string, chapter: number, verse: string) {
 assert.equal(hasVerse('bhagavadgita', 2, '47'), true);
 assert.equal(hasVerse('bhagavadgita', 6, '16'), true);
 assert.equal(hasVerse('katha', 3, '3'), true);
+assert.equal(hasVerse('rigveda', 1, '1.1'), true);
 
 const top = searchIndex('bg 2.47').results[0];
 assert.equal(top?.href, '/scripture/bhagavadgita/chapter/2/verse/47');
 assert.equal(searchIndex('katha 1.3.3').results[0]?.href, '/scripture/katha/chapter/3/verse/3');
-assert.equal(searchIndex('rv 1.1.1').results[0]?.href, '/scripture/rigveda/chapter/1');
+assert.equal(searchIndex('rv 1.1.1').results[0]?.href, '/scripture/rigveda/chapter/1/#verse-1.1');
 
 class Mem implements Storage {
   private map = new Map<string, string>();

@@ -1,7 +1,7 @@
 /** Phase 6: the citation and phonetic queries the search box must resolve. */
 import assert from 'node:assert/strict';
 import { parseDirectCitation } from '../lib/search-citation';
-import { normalizePhonetic } from '../lib/searchNormalizer';
+import { normalizePhonetic } from '../lib/normalize-search';
 
 const GITA_247 = '/scripture/bhagavadgita/chapter/2/verse/47/';
 for (const q of ['Gita 2.47', 'Bhagavad Gita 2.47', 'bg 2.47', 'गीता २.४७', 'गीता 2.47']) {

@@ -160,7 +160,7 @@ function SoundscapeNavButton({ className = '' }: { className?: string }) {
           : 'border-dharma-border/80 bg-dharma-bg/90 text-dharma-muted hover:border-saffron-400 hover:text-dharma-text'
       } ${className}`}
       aria-label={isPlaying ? 'पवित्र ध्वनि बंद करें' : 'पवित्र ध्वनि चालू करें'}
-      title={isPlaying ? 'पवित्र ध्वनि: चालू (Tap to pause)' : 'पवित्र ध्वनि: 432Hz तन्पूरा व ॐ ध्यान'}
+      title={isPlaying ? 'पवित्र ध्वनि: चालू (Tap to pause)' : 'पवित्र ध्वनि: तानपूरा (432Hz) व ॐ ध्यान'}
     >
       {isPlaying ? (
         shouldReduceMotion ? (
@@ -485,14 +485,6 @@ export function SiteNav({
       icon: Sparkles,
     },
     {
-      id: 'soundscape',
-      label: 'पवित्र ध्वनि (नादानुसन्धान)',
-      labelEn: 'Sacred Soundscape',
-      description: '432Hz वैदिक तन्पूरा, ॐ ध्यान व ध्यान घंटा',
-      href: '/practice',
-      icon: Radio,
-    },
-    {
       id: 'wisdom-for-life',
       label: 'जीवन मार्गदर्शन',
       labelEn: 'Wisdom for Life',
@@ -743,11 +735,6 @@ export function SiteNav({
                 <ThemeToggle />
               </div>
 
-              {/* Desktop Sacred Soundscape Button */}
-              <div className="hidden lg:inline-block">
-                <SoundscapeNavButton className="h-9 w-9" />
-              </div>
-
               {/* Desktop CTA */}
               <Link
                 href="/scripture/bhagavadgita"
@@ -770,9 +757,6 @@ export function SiteNav({
               >
                 <Search className="h-5 w-5 text-saffron-600" aria-hidden="true" />
               </button>
-
-              {/* 1.5. Mobile Sacred Soundscape Button */}
-              <SoundscapeNavButton className="max-[359px]:hidden lg:hidden h-11 w-11 min-h-[44px] min-w-[44px]" />
 
               {/* 2. Theme Button */}
               <button
@@ -911,6 +895,15 @@ export function SiteNav({
                   </kbd>
                 </button>
 
+                {/* Sacred soundscape: kept out of the header so it stays uncluttered. */}
+                <div className="flex min-h-[48px] items-center justify-between rounded-xl border border-dharma-border bg-dharma-bg px-3.5 py-1.5">
+                  <span className="text-sm text-dharma-text">
+                    <span lang="hi" className="font-devanagari font-semibold">पवित्र ध्वनि</span>
+                    <span className="ml-1.5 text-xs text-dharma-muted">· तानपूरा (432Hz) व ॐ</span>
+                  </span>
+                  <SoundscapeNavButton className="h-11 w-11 min-h-[44px] min-w-[44px]" />
+                </div>
+
                 {/* ── Main Navigation Sections ─────────────────────────── */}
                 <section aria-labelledby="drawer-nav-heading">
                   <div className="flex items-center justify-between mb-2 px-1">
@@ -921,7 +914,7 @@ export function SiteNav({
                       मुख्य अनुभाग · Navigation
                     </h3>
                     <span className="text-[10px] text-dharma-muted font-devanagari">
-                      10 पावन विभाग
+                      {drawerSections.length} पावन विभाग
                     </span>
                   </div>
 

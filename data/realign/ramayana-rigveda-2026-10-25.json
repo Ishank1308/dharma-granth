@@ -1,0 +1,686 @@
+{
+  "note": "Reviewed realignment of the meanings published for the Ramayana and Rig Veda when both were rebuilt from the full DharmicData text (2026-10-25). Keys are old positions \"chapter:number\" in the 82-entry Ramayana and 67-entry Rig Veda files; values are the verse's new position, or null when the quoted Sanskrit is not that verse of this text. A meaning is carried only where the quoted Sanskrit is the same verse (sandhi or spelling aside) or one literal half of it. Repeats of one verse all map to it; the first keeps its meaning. Used by scripts/seed-ramayana.ts and scripts/seed-vedas.ts (--realign), by scripts/realign-verse-keys.ts, and for the 301s in public/_redirects.",
+  "scriptures": {
+    "ramayana": {
+      "entries": {
+        "1:1": "1:1.2",
+        "1:1.2": null,
+        "1:3": "1:2.15",
+        "1:4": "1:1.8",
+        "3:1.4": "1:1.8",
+        "4:1.4": "1:1.8",
+        "5:1.4": "1:1.8",
+        "6:1.4": "1:1.8",
+        "1:1.8": null,
+        "2:1.8": null,
+        "3:1.8": null,
+        "4:1.8": null,
+        "5:1.8": null,
+        "6:1.8": null,
+        "7:8": null,
+        "1:1.9": null,
+        "2:1.9": null,
+        "3:1.9": null,
+        "4:1.9": null,
+        "5:1.9": null,
+        "6:1.9": null,
+        "7:9": null,
+        "1:2.10": null,
+        "2:2.10": null,
+        "3:2.10": null,
+        "4:2.10": null,
+        "5:2.10": null,
+        "6:2.10": null,
+        "7:1.10": null,
+        "1:1.14": null,
+        "2:1.14": null,
+        "3:1.3": null,
+        "4:1.14": null,
+        "5:1.14": null,
+        "6:1.14": null,
+        "7:2.14": null,
+        "1:1.20": null,
+        "2:1.1": null,
+        "3:1.20": null,
+        "4:1.20": null,
+        "5:1.20": null,
+        "6:2.20": null,
+        "7:1.20": null,
+        "1:1.21": null,
+        "2:1.2": null,
+        "3:1.21": null,
+        "4:1.21": null,
+        "5:1.21": null,
+        "6:2.21": null,
+        "7:1.21": null,
+        "1:1.22": null,
+        "2:1.3": null,
+        "3:1.22": null,
+        "4:1.22": null,
+        "6:2.22": null,
+        "7:1.22": null,
+        "1:1.24": null,
+        "2:1.24": null,
+        "3:2.24": null,
+        "4:1.3": null,
+        "5:1.24": null,
+        "6:2.24": null,
+        "7:1.24": null,
+        "2:1.4": null,
+        "4:1.112": null,
+        "5:1.112": null,
+        "6:59.112": null,
+        "2:12.111": null,
+        "4:1.111": null,
+        "5:1.111": null,
+        "6:1.3": null,
+        "3:1": null,
+        "3:1.2": null,
+        "4:1": null,
+        "4:1.2": "4:1.121",
+        "5:1": "5:1.1",
+        "5:1.2": null,
+        "5:1.3": null,
+        "6:1": null,
+        "6:1.2": null,
+        "7:1": null,
+        "7:1.2": null
+      },
+      "groups": [
+        {
+          "old": [
+            "1:1"
+          ],
+          "to": "1:1.2",
+          "why": "same verse (Bala 1.2)",
+          "quoted": "को न्वस्मिन् साम्प्रतं लोके गुणवान् कश्च वीर्यवान् । धर्मज्ञश्च कृतज्ञ"
+        },
+        {
+          "old": [
+            "1:1.2"
+          ],
+          "to": null,
+          "why": "variant wording of Aranya 37.13 (satyasandha / maghavan for satya-parākrama / vāsava); the meaning translates the variant — needs a new translation of 37.13",
+          "quoted": "रामो विग्रहवान् धर्मः साधुश्च सत्यसन्धश्च । राजा सर्वस्य लोकस्य देवाना"
+        },
+        {
+          "old": [
+            "1:3"
+          ],
+          "to": "1:2.15",
+          "why": "same verse (Bala 2.15, mā niṣāda)",
+          "quoted": "मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीः समाः । यत्क्रौञ्चमिथुनादेकमवधीः क"
+        },
+        {
+          "old": [
+            "1:4",
+            "3:1.4",
+            "4:1.4",
+            "5:1.4",
+            "6:1.4"
+          ],
+          "to": "1:1.8",
+          "why": "same verse (Bala 1.8)",
+          "quoted": "इक्ष्वाकुवंशप्रभवो रामो नाम जनैः श्रुतः । नियतात्मा महावीर्यो द्युतिमा"
+        },
+        {
+          "old": [
+            "1:1.8",
+            "2:1.8",
+            "3:1.8",
+            "4:1.8",
+            "5:1.8",
+            "6:1.8",
+            "7:8"
+          ],
+          "to": null,
+          "why": "not in Valmiki (a later stotra verse)",
+          "quoted": "रामो विग्रहवान् धर्मः सर्वस्य जगतो गतिः । रामो राजा सर्वदेवानां रामो व"
+        },
+        {
+          "old": [
+            "1:1.9",
+            "2:1.9",
+            "3:1.9",
+            "4:1.9",
+            "5:1.9",
+            "6:1.9",
+            "7:9"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "जनकीनन्दनो देवो जनकीजनकः स्वयम् । जनकीकुलकमल्पो वा जनकीकुलदीप्तिमान् ॥"
+        },
+        {
+          "old": [
+            "1:2.10",
+            "2:2.10",
+            "3:2.10",
+            "4:2.10",
+            "5:2.10",
+            "6:2.10",
+            "7:1.10"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "प्रणवो धन्वो विराटो रामो राजीवलोचनः । पार्थिवो विश्वकर्मा च श्रीरामः प"
+        },
+        {
+          "old": [
+            "1:1.14",
+            "2:1.14",
+            "3:1.3",
+            "4:1.14",
+            "5:1.14",
+            "6:1.14",
+            "7:2.14"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "अहं तु गृध्रराजस्य जटायोः परमं प्रियम् । करिष्ये सलिलं तस्य दहिष्यामि "
+        },
+        {
+          "old": [
+            "1:1.20",
+            "2:1.1",
+            "3:1.20",
+            "4:1.20",
+            "5:1.20",
+            "6:2.20",
+            "7:1.20"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "न दैवमभिशंसामि पुरुषार्थमुपाश्रये । यद्भवन्ति महाभागाः स्वयमेव क्रियाप"
+        },
+        {
+          "old": [
+            "1:1.21",
+            "2:1.2",
+            "3:1.21",
+            "4:1.21",
+            "5:1.21",
+            "6:2.21",
+            "7:1.21"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "न त्वं शोचितुमर्हसि । आत्मा हि लोके सर्वत्र वर्तते न विनश्यति ॥"
+        },
+        {
+          "old": [
+            "1:1.22",
+            "2:1.3",
+            "3:1.22",
+            "4:1.22",
+            "6:2.22",
+            "7:1.22"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "न त्वं शोचितुमर्हसि प्रियाया वियोगतः । कामक्रोधौ वशे कृत्वा कुलं रक्ष "
+        },
+        {
+          "old": [
+            "1:1.24",
+            "2:1.24",
+            "3:2.24",
+            "4:1.3",
+            "5:1.24",
+            "6:2.24",
+            "7:1.24"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "न स कामी न च क्रोधी न मत्सरी न च मानवान् । न मिथ्यावादी बभूव वाली वानर"
+        },
+        {
+          "old": [
+            "2:1.4",
+            "4:1.112",
+            "5:1.112",
+            "6:59.112"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "पादुके च समासाद्य भरतः स्वयमेव हि । शिरसा धारयामास प्रणम्य सविनीतवत् ॥"
+        },
+        {
+          "old": [
+            "2:12.111",
+            "4:1.111",
+            "5:1.111",
+            "6:1.3"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "नीतिं शास्त्रविधिं चैव शत्रोरपि गृहाण हि । उपदेशं हि कर्तव्यो यस्यासौ "
+        },
+        {
+          "old": [
+            "3:1"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "धर्मो रक्षति रक्षितः । धर्म एव हतो हन्ति धर्मो रक्षति रक्षितः ॥"
+        },
+        {
+          "old": [
+            "3:1.2"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "सत्यमेव जयते नानृतं सत्येन पन्था विततो देवयानः ॥"
+        },
+        {
+          "old": [
+            "4:1"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "मित्रत्वमिच्छामि भवद्भिर्द्वयोरपि । इमाः शूरस्य मित्रस्य भुजा रामेण सा"
+        },
+        {
+          "old": [
+            "4:1.2"
+          ],
+          "to": "4:1.121",
+          "why": "same verse (Kishkindha 1.121), sandhi-split in the source",
+          "quoted": "उत्साहो बलवानार्य नास्त्युत्साहात्परं बलम् । सोत्साहस्य च लोकेऽस्मिन् "
+        },
+        {
+          "old": [
+            "5:1"
+          ],
+          "to": "5:1.1",
+          "why": "same verse (Sundara 1.1)",
+          "quoted": "ततो रावणनीतायाः सीतायाः शत्रुकर्शनः । इयेष पदमन्वेष्टुं चारणाचरिते पथि"
+        },
+        {
+          "old": [
+            "5:1.2"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "मनसा चिन्तितं कार्यं वाचा नैव प्रकाशयेत् । मन्त्रेण रक्षयेत् कार्यं कृ"
+        },
+        {
+          "old": [
+            "5:1.3"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "न मां दशरथः शक्तः सोढुमन्यः पुमान् इह । मां सीतां रावणो जेतुं न शक्यः "
+        },
+        {
+          "old": [
+            "6:1"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "न परस्वमादद्यान्न कुर्यादप्रियं परम् । परस्त्रीणां च गमनं न च हिंस्याद"
+        },
+        {
+          "old": [
+            "6:1.2"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः । सर्वे भद्राणि पश्यन्तु मा क"
+        },
+        {
+          "old": [
+            "7:1"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "लोकापवादो बलवान्मतोमे लोको हि नो भर्तृषु लोकवादे । भर्ता मम स्नेहमयो व"
+        },
+        {
+          "old": [
+            "7:1.2"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "आत्मानं रथिनं विद्धि शरीरं रथमेव च । बुद्धिं तु सारथिं विद्धि मनः प्रग"
+        }
+      ]
+    },
+    "rigveda": {
+      "entries": {
+        "1:1": null,
+        "1:1.2": "1:164.46",
+        "2:1": "1:189.1",
+        "2:1.2": null,
+        "3:1.12": null,
+        "4:1.12": null,
+        "5:1.12": null,
+        "6:1.12": null,
+        "7:1.12": null,
+        "8:1.12": null,
+        "9:61.12": null,
+        "2:1.3": "10:90.1",
+        "3:1.3": "10:90.1",
+        "4:1.3": "10:90.1",
+        "5:1.3": "10:90.1",
+        "6:1.3": "10:90.1",
+        "8:1.3": "10:90.1",
+        "9:1.3": "10:90.1",
+        "10:1.3": "10:90.1",
+        "2:1.8": null,
+        "3:1.8": null,
+        "4:1.8": null,
+        "5:1.8": null,
+        "6:1.8": null,
+        "7:1.2": null,
+        "8:1.8": null,
+        "9:1.8": null,
+        "2:11.17": null,
+        "3:1.17": null,
+        "4:1.2": null,
+        "5:41.17": null,
+        "6:15.17": null,
+        "7:1.17": null,
+        "8:1.17": null,
+        "9:61.17": null,
+        "2:11.18": null,
+        "3:1.18": null,
+        "4:1.18": null,
+        "5:1.2": null,
+        "6:15.18": null,
+        "7:1.18": null,
+        "8:1.18": null,
+        "9:61.18": null,
+        "3:1": "3:62.10",
+        "3:1.2": "8:58.2",
+        "4:1": null,
+        "5:1": null,
+        "6:1": null,
+        "6:1.2": null,
+        "8:6.47": null,
+        "9:86.47": null,
+        "6:16.48": "8:48.3",
+        "8:1.2": "8:48.3",
+        "9:86.48": "8:48.3",
+        "7:1": null,
+        "7:1.3": null,
+        "8:1": null,
+        "9:1": null,
+        "9:1.2": null,
+        "10:1": "10:129.1",
+        "10:1.2": "10:129.6",
+        "10:1.4": null,
+        "10:196": null,
+        "10:197": "1:1.1",
+        "10:198": null,
+        "10:199": null,
+        "10:200": null
+      },
+      "groups": [
+        {
+          "old": [
+            "1:1"
+          ],
+          "to": null,
+          "why": "Bṛhadāraṇyaka Upaniṣad 1.3.28, not the Rig Veda",
+          "quoted": "असतो मा सद्गमय । तमसो मा ज्योतिर्गमय । मृत्योर्मामृतं गमय । ॐ शान्तिः "
+        },
+        {
+          "old": [
+            "1:1.2"
+          ],
+          "to": "1:164.46",
+          "why": "the quoted second half of RV 1.164.46; the meaning covers that half",
+          "quoted": "एकं सद्विप्रा बहुधा वदन्ति अग्निं यमं मातरिश्वानमाहुः ॥"
+        },
+        {
+          "old": [
+            "2:1"
+          ],
+          "to": "1:189.1",
+          "why": "same mantra (RV 1.189.1)",
+          "quoted": "अग्ने नय सुपथा राये अस्मान् विश्वानि देव वयुनानि विद्वान् । युयोध्यस्म"
+        },
+        {
+          "old": [
+            "2:1.2",
+            "3:1.12",
+            "4:1.12",
+            "5:1.12",
+            "6:1.12",
+            "7:1.12",
+            "8:1.12",
+            "9:61.12"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "ऋतस्य पन्था न दभाय किं चन वृजिना ह्यस्य नश्यन्ति जन्तवः । ऋतेन दीर्घमन"
+        },
+        {
+          "old": [
+            "2:1.3",
+            "3:1.3",
+            "4:1.3",
+            "5:1.3",
+            "6:1.3",
+            "8:1.3",
+            "9:1.3",
+            "10:1.3"
+          ],
+          "to": "10:90.1",
+          "why": "same mantra (RV 10.90.1, Puruṣa Sūkta)",
+          "quoted": "सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् । स भूमिं विश्वतो वृत्वात्यतिष"
+        },
+        {
+          "old": [
+            "2:1.8",
+            "3:1.8",
+            "4:1.8",
+            "5:1.8",
+            "6:1.8",
+            "7:1.2",
+            "8:1.8",
+            "9:1.8"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "विमुचेन्यसि वरुण पाशान् यैरबद्धो असि जातवेदः । यद्धि ते विश्वमनुमत्यम्"
+        },
+        {
+          "old": [
+            "2:11.17",
+            "3:1.17",
+            "4:1.2",
+            "5:41.17",
+            "6:15.17",
+            "7:1.17",
+            "8:1.17",
+            "9:61.17"
+          ],
+          "to": null,
+          "why": "first half is RV 6.47.18c-d, the rest is not in that mantra",
+          "quoted": "इन्द्रो मायाभिः पुरुरूप ईयते युक्ता ह्यस्य हरयः शता दश । आयं शक्र इत्य"
+        },
+        {
+          "old": [
+            "2:11.18",
+            "3:1.18",
+            "4:1.18",
+            "5:1.2",
+            "6:15.18",
+            "7:1.18",
+            "8:1.18",
+            "9:61.18"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "मरुतो यद्ध वो बलं यच्च सत्यमुत क्रतुः । तेन मा पातनाधसः ॥"
+        },
+        {
+          "old": [
+            "3:1"
+          ],
+          "to": "3:62.10",
+          "why": "same mantra (RV 3.62.10, Gāyatrī)",
+          "quoted": "तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि । धियो यो नः प्रचोदयात् ॥"
+        },
+        {
+          "old": [
+            "3:1.2"
+          ],
+          "to": "8:58.2",
+          "why": "same mantra (RV 8.58.2)",
+          "quoted": "एक एव अग्निर्बहुधा समिद्धः एकः सूर्यो विश्वमनु प्रभूतः । एकैवोषाः सर्व"
+        },
+        {
+          "old": [
+            "4:1"
+          ],
+          "to": null,
+          "why": "opening of RV 4.26.1, the rest differs from the mantra",
+          "quoted": "अहं मनुरभवं सूर्यश्चाहमहं ककुहः ऋषिरस्मि विप्रः । अहमिन्द्रो नॄन्नमसा "
+        },
+        {
+          "old": [
+            "5:1"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "उषो देव्यमर्त्ये बृहद्वयो दधे । ज्योतिर्यच्छ चक्षसे ॥"
+        },
+        {
+          "old": [
+            "6:1"
+          ],
+          "to": null,
+          "why": "a composite of two mantras' lines",
+          "quoted": "त्वामग्ने यजमाना अनु द्यून् विश्वा धियो अदधुः पुत्रमापेः । स नो मित्रो"
+        },
+        {
+          "old": [
+            "6:1.2",
+            "8:6.47",
+            "9:86.47"
+          ],
+          "to": null,
+          "why": "opening of RV 7.32.26, the rest differs",
+          "quoted": "इन्द्र क्रतुं न आ भर पितान आ भर । वसो पुरन्दर श्रुधी हवम् ॥"
+        },
+        {
+          "old": [
+            "6:16.48",
+            "8:1.2",
+            "9:86.48"
+          ],
+          "to": "8:48.3",
+          "why": "same mantra (RV 8.48.3)",
+          "quoted": "अपाम सोमममृता अभूमागन्म ज्योतिरविदाम देवान् । किं नूनमस्मान्कृणवदरातिः"
+        },
+        {
+          "old": [
+            "7:1"
+          ],
+          "to": null,
+          "why": "first half is RV 7.86.4a-b (variant), the second half differs",
+          "quoted": "किं त आगः वरुण ज्येष्ठमास यो स्तोतारं जिघांससि सखायम् । प्र तन्म इन्द्"
+        },
+        {
+          "old": [
+            "7:1.3"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "मा नो वधीः वरुण मा नो हिंसीर्मा तं वधीर्यो नः प्रियः । क्षयं न इन्द्र "
+        },
+        {
+          "old": [
+            "8:1"
+          ],
+          "to": null,
+          "why": "not found in the source text (no verse of this text has this Sanskrit)",
+          "quoted": "इन्द्र सखायं मा त्यक्तमस्मान् । स हि नः सखा प्रथमः ॥"
+        },
+        {
+          "old": [
+            "9:1"
+          ],
+          "to": null,
+          "why": "a composite (RV 1.50.4 line with a Soma line)",
+          "quoted": "पवमानः सोमो अद्य नो देवेभ्यः पाहि । तरणिर्विश्वदर्शतो ज्योतिष्कृदसि सो"
+        },
+        {
+          "old": [
+            "9:1.2"
+          ],
+          "to": null,
+          "why": "first half is RV 1.24.3a, the rest differs",
+          "quoted": "अभि त्वा देव सवितरीशानं वार्याणां सोम राजन्नमृतस्य भूरेः । इन्दुमिन्द्"
+        },
+        {
+          "old": [
+            "10:1"
+          ],
+          "to": "10:129.1",
+          "why": "same mantra (RV 10.129.1, Nāsadīya)",
+          "quoted": "नासदासीन्नो सदासीत्तदानीं नासीद्रजो नो व्योमा परो यत् । किमावरीवः कुह "
+        },
+        {
+          "old": [
+            "10:1.2"
+          ],
+          "to": "10:129.6",
+          "why": "same mantra (RV 10.129.6)",
+          "quoted": "को अद्धा वेद क इह प्र वोचत् कुत आजाता कुत इयं विसृष्टिः । अर्वाग्देवा "
+        },
+        {
+          "old": [
+            "10:1.4"
+          ],
+          "to": null,
+          "why": "Muṇḍaka Upaniṣad 1.1.8, not the Rig Veda",
+          "quoted": "तपसा चीयते ब्रह्म ततो अन्नमभिजायते । अन्नात्प्राणो जायते मनः सत्यं च ज"
+        },
+        {
+          "old": [
+            "10:196"
+          ],
+          "to": null,
+          "why": "garbled: 1.164.46c-d plus lines not in the mantra (its meaning is carried from the other entry)",
+          "quoted": "एकं सत् विप्रा बहुधा वदन्ति । अग्निं यमं मातरिश्वानमाहुः । दिव्यं देवा"
+        },
+        {
+          "old": [
+            "10:197"
+          ],
+          "to": "1:1.1",
+          "why": "same mantra (RV 1.1.1)",
+          "quoted": "अग्निमीळे पुरोहितं यज्ञस्य देवमृत्विजम् । होतारं रत्नधातमम् ॥"
+        },
+        {
+          "old": [
+            "10:198"
+          ],
+          "to": null,
+          "why": "a garbled form of Bṛhadāraṇyaka 1.3.28, not the Rig Veda",
+          "quoted": "असतो मा सद्गमय तसो मा द्विर्मा यो रदस्ति नियोऽस्तु नः । येन देवाः सयमन"
+        },
+        {
+          "old": [
+            "10:199"
+          ],
+          "to": null,
+          "why": "Bhagavad Gītā 4.39, not the Rig Veda",
+          "quoted": "श्रद्धावान् लभते ज्ञानम् अश्रद्धान् न लभते । ज्ञानात् यथा योगः सिद्धिः"
+        },
+        {
+          "old": [
+            "10:200"
+          ],
+          "to": null,
+          "why": "first half is RV 1.164.50a-b / 10.90.16a-b, the second half differs",
+          "quoted": "यज्ञेन यज्ञमयजन्त देवाः । तानि धर्माणि प्रथमान्यासन् । ते नो अदित्यान्"
+        }
+      ]
+    }
+  }
+}

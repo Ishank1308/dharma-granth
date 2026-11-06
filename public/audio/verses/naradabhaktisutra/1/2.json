@@ -1,0 +1,21 @@
+{
+  "verseNumber": 2,
+  "durationMs": 2043,
+  "words": [
+    {
+      "word": "सा",
+      "startTimeMs": 0,
+      "endTimeMs": 244
+    },
+    {
+      "word": "त्वस्मिन्",
+      "startTimeMs": 290,
+      "endTimeMs": 731
+    },
+    {
+      "word": "परमप्रेमरूपा",
+      "startTimeMs": 778,
+      "endTimeMs": 1718
+    }
+  ]
+}

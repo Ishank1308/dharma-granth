@@ -46,11 +46,15 @@ const POINTS: { title: string; body: string }[] = [
     body: 'Verses connect to scriptures, commentators, acharyas, and saints — rishis, bhakti masters, and Vedantic teachers — so you can see whose shoulders each teaching stands on.',
   },
   {
-    title: '6. Review is recorded, not claimed',
+    title: '6. Grounded in Lokasamgraha (लोकसंग्रह)',
+    body: 'Hindu saints and rishis were driven by the core vision of Lokasamgraha — the welfare, preservation, and spiritual elevation of all beings. Our study aids present sacred wisdom not as dry intellectualism or passive withdrawal from life, but as an empowering call to selfless service, moral leadership, and universal compassion (sarvabhūtahite ratāḥ).',
+  },
+  {
+    title: '7. Review is recorded, not claimed',
     body: 'This site shows no “verified” or “reviewed” badges, because no systematic human review is recorded yet. When a named reviewer checks a text, the review will be recorded with name and date — and only then will a badge appear.',
   },
   {
-    title: '7. Corrections are welcome',
+    title: '8. Corrections are welcome',
     body: 'Every verse page has a way to report an error. Fixes are made in the open project repository, whose history is the record of what changed and when.',
   },
 ];

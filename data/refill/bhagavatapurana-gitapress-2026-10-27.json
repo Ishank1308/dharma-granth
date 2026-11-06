@@ -1,0 +1,77 @@
+{
+  "note": "Shrimad Bhagavata Mahapurana: Clean Hindi translations extracted from official decrypted Gita Press EPUBs (Book Codes 26 & 27: Shrimad Bhagavat Mahapuran Part 1 & 2). Replaces missing/noisy verses. Zero Sanskrit, transliteration, or verse numbering changed.",
+  "edition": "Gita Press Gorakhpur, श्रीमद्भागवतमहापुराण (सचित्र, सरल हिन्दी-व्याख्यासहित), book codes 26 & 27",
+  "date": "2026-10-27",
+  "stats": {
+    "total_book_chapters": 335,
+    "total_book_verses": 14408,
+    "single_verses_updated": 12107,
+    "range_pointers_set": 799,
+    "missing_hindi_filled": 12101,
+    "existing_hindi_replaced": 6,
+    "high_confidence_sanskrit_matches": 6685,
+    "skipped_no_match": 1224
+  },
+  "sample_verses": {
+    "1:1": {
+      "chapter": 1,
+      "verse": 1,
+      "sanskritJaccard": 0.811,
+      "range": null
+    },
+    "1:2": {
+      "chapter": 1,
+      "verse": 2,
+      "sanskritJaccard": 1.0,
+      "range": null
+    },
+    "1:3": {
+      "chapter": 1,
+      "verse": 3,
+      "sanskritJaccard": 1.0,
+      "range": null
+    },
+    "1:4": {
+      "chapter": 1,
+      "verse": 4,
+      "sanskritJaccard": 1.0,
+      "range": null
+    },
+    "1:5": {
+      "chapter": 1,
+      "verse": 5,
+      "sanskritJaccard": 1.0,
+      "range": null
+    },
+    "1:6": {
+      "chapter": 1,
+      "verse": 6,
+      "sanskritJaccard": 1.0,
+      "range": null
+    },
+    "1:7": {
+      "chapter": 1,
+      "verse": 7,
+      "sanskritJaccard": 1.0,
+      "range": "7-8"
+    },
+    "1:8": {
+      "chapter": 1,
+      "verse": 8,
+      "sanskritJaccard": 1.0,
+      "range": "7-8"
+    },
+    "1:9": {
+      "chapter": 1,
+      "verse": 9,
+      "sanskritJaccard": 1.0,
+      "range": null
+    },
+    "1:10": {
+      "chapter": 1,
+      "verse": 10,
+      "sanskritJaccard": 1.0,
+      "range": null
+    }
+  }
+}

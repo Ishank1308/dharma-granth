@@ -772,3 +772,19 @@ PWA and reminders: reminders already existed as calendar (.ics) events the reade
 Dropped by decision (2026-10-23): per-verse recorded audio.
 
 Not started: the 20k demand-driven verse set, community source sheets, extra UI languages, a MiniSearch index, and the monthly funding ledger.
+
+### Export file count (2026-10-25)
+
+`scripts/prune-export.mjs` now deletes each verse page's `index.txt` (the RSC payload) after the build: 2,471 files, taking the last measured export (19,493 files) to about 17,000. The HTML is untouched, so crawlers and first loads are unchanged. Without the payload, a client-side navigation to a verse page becomes a full page load (Next 14.2 `fetch-server-response.js` calls `doMpaNavigation` on a non-OK response). `VerseHrefLink` now renders every verse-page link as a plain `<a>`, so it never prefetches the missing file.
+
+Still `next/link` to verse pages (each costs one 404 prefetch, then works): `app/components/VerseCard.tsx` (the "detailed analysis" link), `app/components/reader/ChapterOrientationDrawer.tsx` (2) and `app/components/wos/WisdomOperatingSystem.tsx` (3). They were left alone because they are another tool's uncommitted work; switch them to `VerseHrefLink`.
+
+Not yet measured on a full build: run `npm run build` with no other Next process alive and confirm the prune line and the new total.
+
+### Demand-driven verse pages (2026-10-25)
+
+With the verse `index.txt` files pruned, a verse page costs two files (HTML and share image). Added to `VERSE_PAGE_SCRIPTURE_IDS`: the Narada Bhakti Sutras (84) and the Vivekachudamani (580), both complete with printed Hindi and English and a published व्याख्या, so every new page is indexable. Verse pages: 2,471 → 3,135. Estimated export: about 17,000 + 1,330 = 18,330 files, under the 18,500 warning (still to be confirmed by a full build).
+
+Considered and left out: the Yoga Sutras (only 3 of 195 sutras carry a meaning, so the pages would be noindexed until meanings are added), the Brahma Sutras (564 complete verses; would pass the warning line) and the Vidura Niti (14 of 594 with meaning).
+
+Costs: the search dialog's verse index grows from 732 KB to 975 KB gzip, loaded when search is first opened. Observed, not changed: verse share images show the first half-verse only (`scripts/generate-og-images.ts`), which sits uneasily with the rule against cutting a shloka.

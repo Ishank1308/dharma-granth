@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 import { useRouter } from 'next/navigation';
 import { MotionConfig } from 'framer-motion';
 import {
@@ -12,33 +13,27 @@ import {
   BookmarkCheck,
   ChevronDown,
   Copy,
-  Code2,
-  Download,
   Flag,
   Focus,
   MessageCircle,
   Maximize2,
   Minimize2,
   Network,
-  PenLine,
   Share2,
   SlidersHorizontal,
   StickyNote,
+  Volume2,
   X,
 } from 'lucide-react';
-import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
 import { useTheme } from '@/app/components/ThemeProvider';
 import { toAsciiDigits } from '@/lib/verse-format';
 import { whatsappShareUrl } from '@/lib/whatsapp';
-import { downloadVerseCardPng } from '@/lib/verse-card-png';
-import { EmbedVerseDialog } from '@/app/components/EmbedVerseDialog';
 import { useStudyProgress } from '@/lib/useStudyProgress';
 import { useReaderSettings } from '@/lib/useReaderSettings';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import {
   REPORT_KINDS,
   buildCopyText,
-  buildDownloadMarkdown,
   buildIssueUrl,
   isBookmarked,
   toggleBookmark,
@@ -52,12 +47,13 @@ import { ReaderDialog } from './ReaderDialog';
 import { ReaderSettingsPanel } from './ReaderSettingsPanel';
 import { ReaderLayers } from './ReaderLayers';
 import type { VerseInsight } from '@/lib/verse-insights';
-import { SacredShareModal, type SacredShareData } from '@/app/components/share/SacredShareModal';
+import type { SacredShareData } from '@/app/components/share/SacredShareModal';
 import { useSwipeGesture } from '@/lib/useSwipeGesture';
 import { MobileSwipeIndicator } from './MobileSwipeIndicator';
 import { MobileReadingProgress } from './MobileReadingProgress';
 import { MobileVerseCarousel } from './MobileVerseCarousel';
-import { setCurrentVerseContext, getSoundscapeState, stopSoundscape } from '@/lib/sacred-soundscape';
+import { setCurrentVerseContext, getSoundscapeState, startSoundscape, stopSoundscape, subscribeSoundscape, type SoundscapeState } from '@/lib/sacred-soundscape';
+import { hasRecordedVerseAudio, prefetchVerseAudio } from '@/lib/verse-audio';
 import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
 import { logActivity } from '@/lib/activity-log';
@@ -65,7 +61,19 @@ import { isHistoryPaused } from '@/lib/reading-history';
 import type { PersonalStudyReference } from '@/lib/study/types';
 
 const JournalEditorModal = dynamic(
-  () => import('@/components/study/JournalEditorModal').then((module) => module.JournalEditorModal),
+  () => import('@/app/components/study/JournalEditorModal').then((module) => module.JournalEditorModal),
+  { ssr: false },
+);
+const VerseGraphNetwork = dynamic(
+  () => import('@/app/components/study/VerseGraphNetwork').then((m) => m.VerseGraphNetwork),
+  { ssr: false },
+);
+const EmbedVerseDialog = dynamic(
+  () => import('@/app/components/EmbedVerseDialog').then((m) => m.EmbedVerseDialog),
+  { ssr: false },
+);
+const SacredShareModal = dynamic(
+  () => import('@/app/components/share/SacredShareModal').then((m) => m.SacredShareModal),
   { ssr: false },
 );
 
@@ -169,10 +177,55 @@ export function VerseReader(props: VerseReaderProps) {
   const [saved, setSaved] = useState(false);
   useEffect(() => setSaved(isBookmarked(ref, verse)), [ref, verse]);
 
+  /* ── Audio Recitation State ── */
+  const [isPlayingRecitation, setIsPlayingRecitation] = useState(false);
+  const [recitationSource, setRecitationSource] = useState<'neural' | 'speech' | 'none'>('none');
+  const hasStudio = useMemo(
+    () => hasRecordedVerseAudio(scriptureId, chapterId, verse.number),
+    [scriptureId, chapterId, verse.number]
+  );
+
+  useEffect(() => {
+    const unsub = subscribeSoundscape((st: SoundscapeState) => {
+      setIsPlayingRecitation(st.isPlaying && st.activeTrack === 'recitation');
+      setRecitationSource(st.audioSource || 'none');
+    });
+    return unsub;
+  }, []);
+
+  const toggleRecitation = useCallback(() => {
+    triggerTactileFeedback('selection', 'softTap');
+    if (isPlayingRecitation) {
+      stopSoundscape();
+    } else {
+      setCurrentVerseContext(
+        verse.sanskrit,
+        `${scriptureTitle} ${chapterId}.${verse.number}`,
+        verse.hindi,
+        verse.translation,
+        scriptureId,
+        chapterId,
+        verse.number
+      );
+      startSoundscape('recitation');
+      if (next?.number) {
+        prefetchVerseAudio(scriptureId, chapterId, next.number).catch(() => {});
+      }
+    }
+  }, [isPlayingRecitation, verse.sanskrit, verse.hindi, verse.translation, scriptureTitle, chapterId, verse.number, scriptureId, next?.number]);
+
   /* ── Sync Active Verse Context to Sacred Soundscape Engine ── */
   useEffect(() => {
-    setCurrentVerseContext(verse.sanskrit, `${scriptureTitle} ${chapterId}.${verse.number}`);
-  }, [verse.sanskrit, scriptureTitle, chapterId, verse.number]);
+    setCurrentVerseContext(
+      verse.sanskrit,
+      `${scriptureTitle} ${chapterId}.${verse.number}`,
+      verse.hindi,
+      verse.translation,
+      scriptureId,
+      chapterId,
+      verse.number
+    );
+  }, [verse.sanskrit, scriptureTitle, chapterId, verse.number, verse.hindi, verse.translation, scriptureId]);
 
   /* ── MediaSession Lock-Screen Controls & Continuous Pārāyaṇa ── */
   useEffect(() => {
@@ -272,31 +325,6 @@ export function VerseReader(props: VerseReaderProps) {
     body: [(verse.sanskrit ?? '').trim(), (verse.hindi ?? verse.translation ?? '').trim()],
     url: pageUrl,
   });
-  const onDownloadImage = async () => {
-    try {
-      await downloadVerseCardPng({
-        reference: `${label}`,
-        sanskrit: verse.sanskrit,
-        translation: verse.hindi || verse.translation,
-        fileName: `dharmagranth-${scriptureId}-${chapterId}-${verse.number}.png`,
-      });
-      say('Image downloaded');
-    } catch {
-      say('Could not draw the image');
-    }
-  };
-  const onDownload = () => {
-    const blob = new Blob([buildDownloadMarkdown(ref, verse, provenance)], { type: 'text/markdown;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${scriptureId}-${chapterId}-${verse.number}.md`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 10_000);
-    say('Verse downloaded');
-  };
 
   /* ── Private note (same store as the rest of the app) ── */
   const noteText = getNote(scriptureId, chapterId, String(verse.number))?.text ?? '';
@@ -377,7 +405,7 @@ export function VerseReader(props: VerseReaderProps) {
         : `अध्याय ${toAsciiDigits(crosses)}, श्लोक ${toAsciiDigits(target.number)}`)
       : `श्लोक ${toAsciiDigits(target.number)}`;
     return (
-      <Link
+      <VerseHrefLink
         href={target.href}
         rel={dir}
         onClick={() => triggerTactileFeedback('selection', 'click')}
@@ -391,7 +419,7 @@ export function VerseReader(props: VerseReaderProps) {
           </span>
           <span lang="hi" className="font-devanagari text-sm">{verseLine}</span>
         </span>
-      </Link>
+      </VerseHrefLink>
     );
   };
 
@@ -449,6 +477,19 @@ export function VerseReader(props: VerseReaderProps) {
               </div>
             </div>
 
+            {verse.sanskrit && (
+              <button
+                type="button"
+                data-focus-hide
+                onClick={toggleRecitation}
+                aria-pressed={isPlayingRecitation}
+                aria-label={isPlayingRecitation ? 'श्लोक पाठ रोकें · Pause recitation' : 'श्लोक पाठ सुनें · Listen to shloka'}
+                title={isPlayingRecitation ? 'श्लोक पाठ रोकें · Pause' : 'श्लोक पाठ सुनें · Listen'}
+                className={`${iconBtn} ${isPlayingRecitation ? '!border-amber-400 !bg-amber-500/20 !text-amber-800 dark:!text-amber-200 ring-2 ring-amber-400/40' : ''}`}
+              >
+                <Volume2 className={`h-4 w-4 ${isPlayingRecitation ? 'text-amber-600 dark:text-amber-400 animate-pulse' : ''}`} />
+              </button>
+            )}
             <button type="button" data-focus-hide onClick={onBookmark} aria-pressed={saved} aria-label={saved ? 'Remove bookmark' : 'Bookmark this verse'} className={`${iconBtn} ${saved ? '!border-saffron-600 !text-saffron-800 dark:!text-saffron-300' : ''}`}>
               {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
             </button>
@@ -507,14 +548,14 @@ export function VerseReader(props: VerseReaderProps) {
                 const current = String(v.number) === String(verse.number);
                 return (
                   <li key={String(v.number)}>
-                    <Link
+                    <VerseHrefLink
                       href={v.href}
                       aria-current={current ? 'true' : undefined}
                       aria-label={`Verse ${v.number}`}
                       className={`focus-ring flex h-11 items-center justify-center rounded-lg border text-xs font-semibold transition ${current ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-500'}`}
                     >
                       {v.number}
-                    </Link>
+                    </VerseHrefLink>
                   </li>
                 );
               })}
@@ -584,27 +625,37 @@ export function VerseReader(props: VerseReaderProps) {
           )}
 
 
-          {/* Actions */}
-          {/* One swipeable row on phones keeps the verse near the top; it wraps from sm up. */}
+          {/* Actions: only the four a reader reaches for. Report and reader settings live in the
+              desktop sidebar and the Sources card; the rest were removed as distractions. */}
           <div role="toolbar" aria-label="Verse actions" data-focus-hide className="-mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
+            {verse.sanskrit && (
+              <button
+                type="button"
+                onClick={toggleRecitation}
+                aria-pressed={isPlayingRecitation}
+                className={`${actionBtn} ${
+                  isPlayingRecitation
+                    ? '!border-amber-400 !bg-amber-500/20 !text-amber-800 dark:!text-amber-200 ring-2 ring-amber-400/40'
+                    : ''
+                }`}
+                title={isPlayingRecitation ? 'श्लोक पाठ रोकें · Pause' : 'श्लोक पाठ सुनें · Listen to Shloka'}
+              >
+                <Volume2 className={`h-4 w-4 ${isPlayingRecitation ? 'text-amber-600 dark:text-amber-400 animate-pulse' : ''}`} />
+                <span>{isPlayingRecitation ? 'Pause' : 'Listen'}</span>
+                {(recitationSource === 'neural' || (!isPlayingRecitation && hasStudio)) && (
+                  <span className="ml-1 rounded bg-amber-500/25 px-1.5 py-0.5 text-[10px] font-bold text-amber-900 dark:text-amber-200">
+                    Studio
+                  </span>
+                )}
+              </button>
+            )}
             <button type="button" onClick={onBookmark} aria-pressed={saved} className={actionBtn}>
               {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
               {saved ? 'Saved' : 'Save'}
             </button>
-            <button type="button" onClick={openNote} className={actionBtn}>
-              <StickyNote className="h-4 w-4" aria-hidden="true" />
-              {noteText ? 'Edit note' : 'Note'}
-              {noteText && <span className="h-1.5 w-1.5 rounded-full bg-saffron-600" aria-label="has a note" />}
-            </button>
-            <button type="button" onClick={() => setJournalOpen(true)} className={actionBtn}>
-              <PenLine className="h-4 w-4" aria-hidden="true" /> Reflect privately
-            </button>
             <button type="button" onClick={onCopy} className={actionBtn}>
               <Copy className="h-4 w-4" aria-hidden="true" /> Copy
             </button>
-            <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" /> Open context
-            </Link>
             <button
               type="button"
               onClick={onShare}
@@ -623,30 +674,6 @@ export function VerseReader(props: VerseReaderProps) {
             >
               <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
             </a>
-            <button
-              type="button"
-              onClick={() => {
-                triggerTactileFeedback('selection', 'click');
-                setShowNetworkModal(true);
-              }}
-              className={actionBtn}
-              aria-label="Open verse relationship network"
-            >
-              <Network className="h-4 w-4 text-purple-600 dark:text-purple-400" aria-hidden="true" />
-              <span>श्लोक संबंध (Network)</span>
-            </button>
-            <button type="button" onClick={onDownloadImage} className={actionBtn} aria-label="Download Image">
-              <Download className="h-4 w-4" aria-hidden="true" /> Download Image
-            </button>
-            <button type="button" onClick={() => setDialog('embed')} aria-haspopup="dialog" className={actionBtn}>
-              <Code2 className="h-4 w-4" aria-hidden="true" /> Embed
-            </button>
-            <button type="button" onClick={onDownload} className={actionBtn}>
-              <Download className="h-4 w-4" aria-hidden="true" /> Download
-            </button>
-            <button type="button" onClick={() => setDialog('report')} className={actionBtn}>
-              <Flag className="h-4 w-4" aria-hidden="true" /> Report error
-            </button>
           </div>
 
           {/* 3 · Reading level and perspective now live in the Aa sheet (ReaderSettingsPanel). */}
@@ -666,7 +693,12 @@ export function VerseReader(props: VerseReaderProps) {
 
           {noteText && (
             <section aria-label="Your private note" className="mt-5 rounded-2xl border border-dashed border-dharma-border bg-dharma-card/60 p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-dharma-muted">Your note · private to this device</p>
+              <div className="mb-1 flex items-center justify-between gap-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-dharma-muted">Your note · private to this device</p>
+                <button type="button" onClick={openNote} className="focus-ring inline-flex min-h-[44px] items-center rounded-lg px-2 text-xs font-semibold text-saffron-800 hover:underline dark:text-saffron-300">
+                  Edit
+                </button>
+              </div>
               <p className="whitespace-pre-line text-sm text-dharma-text">{noteText}</p>
             </section>
           )}
@@ -794,14 +826,14 @@ export function VerseReader(props: VerseReaderProps) {
           <ul className="grid grid-cols-5 gap-2 sm:grid-cols-6" aria-label="Verses in this chapter">
             {visibleVerses.map((v) => (
               <li key={String(v.number)}>
-                <Link
+                <VerseHrefLink
                   href={v.href}
                   onClick={() => { close(); setPick(''); }}
                   aria-current={String(v.number) === String(verse.number) ? 'true' : undefined}
                   className={`focus-ring flex h-12 items-center justify-center rounded-xl border text-sm font-semibold transition ${String(v.number) === String(verse.number) ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-bg text-dharma-text hover:border-saffron-500'}`}
                 >
                   {v.number}
-                </Link>
+                </VerseHrefLink>
               </li>
             ))}
           </ul>

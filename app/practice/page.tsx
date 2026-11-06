@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { PracticeDashboard } from './PracticeDashboard';
+import { SITE_URL } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'साधना — Daily Practice',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     title: 'साधना — Daily Practice — Dharma Granth',
     description:
       'A private daily practice dashboard: daily verse, reflection prompts, reading plans, japa counter, meditation timer, and journals.',
-    url: 'https://dharmagranth.dev/practice',
+    url: `${SITE_URL}/practice/`,
   },
 };
 

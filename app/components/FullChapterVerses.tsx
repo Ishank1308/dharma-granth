@@ -66,6 +66,8 @@ import { isHindiSourceReviewRequired } from '@/lib/ocr-hindi-review';
 import type { SvadhyayaTab } from '@/app/components/reader/SvadhyayaSplitDrawer';
 const SvadhyayaSplitDrawer = dynamic(() => import('@/app/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
 import { MobileOneThumbControlBar } from './reader/MobileOneThumbControlBar';
+import { hasRecordedVerseAudio, prefetchVerseAudio } from '@/lib/verse-audio';
+const StickyVerseNavigator = dynamic(() => import('./reader/StickyVerseNavigator').then((m) => m.StickyVerseNavigator), { ssr: false });
 import {
   saveReadingPosition,
   recordReadingHistory,
@@ -508,6 +510,13 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     behavior: ScrollBehavior = 'smooth',
     preserveLayout = false
   ) => {
+    // Immediate active verse index synchronization for sticky navigator
+    if (state.kind === 'ready') {
+      const targetIdx = state.verses.findIndex((v) => String(v.number) === String(verseNum));
+      if (targetIdx !== -1) {
+        setActiveVerseIndex(targetIdx);
+      }
+    }
     // The target becomes a full card; the plain verse it replaces has the same id, so the jump still lands.
     setRichVerses((prev) => withRich(prev, [verseNum]));
     const el = document.getElementById(`verse-${verseNum}`);
@@ -553,12 +562,24 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         targetVerse.sanskrit,
         `${scriptureTitle ?? scriptureId} ${chapterTitle ?? `अध्याय ${chapterId}`}, श्लोक ${targetVerse.number}`,
         targetVerse.hindi,
-        targetVerse.translation
+        targetVerse.translation,
+        scriptureId,
+        chapterId,
+        targetVerse.number
       );
       startSoundscape('recitation');
       triggerTactileFeedback('selection', 'softTap');
+
+      // Pre-buffer next verse audio and timing track for gapless continuous parayana
+      if (state.kind === 'ready' && state.verses.length > 0) {
+        const curIdx = state.verses.findIndex((v) => String(v.number) === String(targetVerse.number));
+        if (curIdx !== -1 && curIdx + 1 < state.verses.length) {
+          const nextV = state.verses[curIdx + 1];
+          prefetchVerseAudio(scriptureId, chapterId, nextV.number).catch(() => {});
+        }
+      }
     },
-    [scriptureTitle, scriptureId, chapterTitle, chapterId]
+    [scriptureTitle, scriptureId, chapterTitle, chapterId, state]
   );
 
   const togglePlayVerse = (targetVerse: FullVerse) => {
@@ -691,8 +712,13 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         const near: string[] = [];
         for (const e of entries) {
           if (!e.isIntersecting) continue;
-          const at = order.indexOf((e.target as HTMLElement).dataset.plainVerse ?? '');
-          if (at !== -1) near.push(...order.slice(Math.max(0, at - 2), at + 4));
+          const target = e.target as HTMLElement;
+          const verseNum = target.dataset.plainVerse;
+          io.unobserve(target);
+          if (verseNum) {
+            const at = order.indexOf(verseNum);
+            if (at !== -1) near.push(...order.slice(Math.max(0, at - 2), at + 4));
+          }
         }
         if (near.length > 0) setRichVerses((prev) => withRich(prev, near));
       },
@@ -700,7 +726,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     );
     plain.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [hydrated, filteredVerses, richVerses]);
+  }, [hydrated, filteredVerses]);
 
   // Handle continuous recitation (अध्याय पारायण), media keys, and external triggers
   useEffect(() => {
@@ -1090,18 +1116,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 </button>
               )}
 
-              <button
-                type="button"
-                onClick={() => setToolsOpen((o) => !o)}
-                className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-3 py-1.5 text-xs font-semibold text-dharma-text sm:hidden"
-                aria-expanded={toolsOpen}
-                aria-controls="chapter-reader-tools"
-              >
-                <SlidersHorizontal className="h-3.5 w-3.5 text-saffron-600" />
-                <span>विकल्प</span>
-                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${toolsOpen ? 'rotate-180' : ''}`} />
-              </button>
-
               {/* On sm+ this wrapper dissolves (sm:contents) so the desktop row is unchanged. */}
               <div
                 id="chapter-reader-tools"
@@ -1279,6 +1293,17 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           </div>
         </div>
 
+        {/* Sticky Verse Navigator for instant, one-tap verse navigation */}
+        {state.kind === 'ready' && state.verses.length > 1 && (
+          <div className="mb-6 -mx-4 sm:-mx-6">
+            <StickyVerseNavigator
+              verses={state.verses}
+              activeVerseIndex={activeVerseIndex}
+              onSelectVerse={(vNum) => scrollToVerse(vNum)}
+            />
+          </div>
+        )}
+
         {isConversationMode && scriptureId === 'bhagavadgita' ? (
           <ConversationModeView
             scriptureId={scriptureId}
@@ -1322,7 +1347,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               // directly both on SSR and client to completely eliminate the 2.816 CLS hydration swap.
               const verseKey = canonicalVerseId(chapterId, v.number);
               const verseIdNum = Number(verseKey);
-              const comment = state.commentary?.[`${chapterId}:${verseIdNum}`];
+              // Same lookup as lib/verse-meaning commentaryFor: the short key, then the exact
+              // "chapter:number" (Ramayana "1:2.15", Rig Veda "3:62.10").
+              const comment = state.commentary?.[`${chapterId}:${verseIdNum}`] ?? state.commentary?.[`${chapterId}:${v.number}`];
               const explanationHi = comment?.explanation;
               const scienceHi = comment?.science;
               const lifeLessonHi = comment?.lifeLesson;
@@ -1349,6 +1376,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     meaning={{
                       isAi: Boolean(comment?.ai || comment?.explanationAi),
                       editorial: comment?.editorial,
+                      bhavartha: (comment as any)?.bhavartha,
                       explanation,
                       explanationIsHi,
                       vyakhya,
@@ -1494,6 +1522,20 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           currentVerseNumber={state.verses[activeVerseIndex]?.number ?? 1}
           totalVerses={state.verses.length}
           currentVerseSanskrit={state.verses[activeVerseIndex]?.sanskrit}
+          isPlayingAudio={
+            activeRecitingVerse !== null &&
+            String(activeRecitingVerse) === String(state.verses[activeVerseIndex]?.number)
+          }
+          hasStudioAudio={
+            Boolean(state.verses[activeVerseIndex]?.number) &&
+            hasRecordedVerseAudio(scriptureId, chapterId, state.verses[activeVerseIndex]?.number)
+          }
+          onToggleAudio={() => {
+            const currentVerse = state.verses[activeVerseIndex];
+            if (currentVerse) {
+              togglePlayVerse(currentVerse);
+            }
+          }}
           onOpenFocus={() => {
             setFocusVerseIndex(activeVerseIndex);
             setFocusModeOpen(true);

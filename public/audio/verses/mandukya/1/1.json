@@ -1,0 +1,61 @@
+{
+  "verseNumber": 1,
+  "durationMs": 11889,
+  "words": [
+    {
+      "word": "ॐ",
+      "startTimeMs": 0,
+      "endTimeMs": 464
+    },
+    {
+      "word": "इत्येतदक्षरमिदं",
+      "startTimeMs": 557,
+      "endTimeMs": 1811
+    },
+    {
+      "word": "सर्वं",
+      "startTimeMs": 2055,
+      "endTimeMs": 2485
+    },
+    {
+      "word": "तस्योपव्याख्यानं",
+      "startTimeMs": 2543,
+      "endTimeMs": 3855
+    },
+    {
+      "word": "भूतं",
+      "startTimeMs": 4063,
+      "endTimeMs": 4528
+    },
+    {
+      "word": "भवद्भविष्यदिति",
+      "startTimeMs": 4563,
+      "endTimeMs": 5677
+    },
+    {
+      "word": "सर्वमोङ्कार",
+      "startTimeMs": 5886,
+      "endTimeMs": 6827
+    },
+    {
+      "word": "एव",
+      "startTimeMs": 6954,
+      "endTimeMs": 7245
+    },
+    {
+      "word": "यच्चान्यत्त्रिकालातीतं",
+      "startTimeMs": 7964,
+      "endTimeMs": 9590
+    },
+    {
+      "word": "तदप्योङ्कार",
+      "startTimeMs": 9764,
+      "endTimeMs": 10612
+    },
+    {
+      "word": "एव",
+      "startTimeMs": 10739,
+      "endTimeMs": 11064
+    }
+  ]
+}

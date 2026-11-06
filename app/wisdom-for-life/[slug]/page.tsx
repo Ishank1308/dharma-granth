@@ -4,13 +4,14 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { JsonLd } from '@/app/components/JsonLd';
-import { pageLd, articleLd, definedTermLd } from '@/lib/jsonld';
+import { pageLd, articleLd, definedTermLd, SITE_URL } from '@/lib/jsonld';
 import {
   wisdomTopics,
   getWisdomTopic,
 } from '@/data/wisdom-for-life';
 import { TopicDetailClient } from './TopicDetailClient';
 import { searchHeading } from '@/data/search-intent';
+import { conceptPageHref } from '@/lib/concept-pages';
 
 export function generateStaticParams() {
   return wisdomTopics.map((topic) => ({
@@ -49,7 +50,7 @@ export function generateMetadata({
       images: [DEFAULT_OG_IMAGE],
       title: `${title} — Dharma Granth`,
       description,
-      url: `https://dharmagranth.dev/wisdom-for-life/${topic.slug}/`,
+      url: `${SITE_URL}/wisdom-for-life/${topic.slug}/`,
     },
   };
 }
@@ -134,7 +135,11 @@ export default function WisdomTopicPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
       />
       <TopicDetailClient
-        topic={topic}
+        topic={{
+          ...topic,
+          // Link a related concept to its page only when it has one.
+          relatedConcepts: topic.relatedConcepts.map((c) => ({ ...c, href: c.href.startsWith('/concepts') ? conceptPageHref(c.id) : c.href })),
+        }}
         libraryFacts={libraryFacts}
         prevTopic={prevTopic}
         nextTopic={nextTopic}

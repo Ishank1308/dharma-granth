@@ -8,10 +8,11 @@ import {
 } from '@/data/concept-details';
 import { graphPageIds } from '@/data/knowledge-graph';
 import { buildGraphPage } from '@/lib/knowledge-graph';
+import { hasConceptPage } from '@/lib/concept-pages';
 import { GraphConceptPage, GraphConceptSections } from '../GraphConceptPage';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { JsonLd } from '@/app/components/JsonLd';
-import { pageLd, articleLd, definedTermLd } from '@/lib/jsonld';
+import { pageLd, articleLd, definedTermLd, SITE_URL } from '@/lib/jsonld';
 import { ShareCardButton } from '@/app/components/understand/ShareCard';
 import {
   ArrowLeft,
@@ -54,7 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       openGraph: {
         title: `${title} — Dharma Granth`,
         description,
-        url: `https://dharmagranth.dev/concepts/${graph.id}/`,
+        url: `${SITE_URL}/concepts/${graph.id}/`,
         images: [DEFAULT_OG_IMAGE],
       },
     };
@@ -70,7 +71,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: `${title} — Dharma Granth`,
       description,
-      url: `https://dharmagranth.dev/concepts/${concept.id}/`,
+      url: `${SITE_URL}/concepts/${concept.id}/`,
       images: [DEFAULT_OG_IMAGE],
     },
   };
@@ -172,7 +173,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
             <ShareCardButton
               reference={concept.label}
               concept={{ term: concept.sanskrit, transliteration: concept.transliteration, definition: concept.simpleDefinition.en }}
-              url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev'}/concepts/${concept.id}`}
+              url={`${SITE_URL}/concepts/${concept.id}/`}
             />
             <ShareChips
               title={`${concept.label} (${concept.sanskrit})`}
@@ -471,13 +472,13 @@ export default async function ConceptDetailPage({ params }: PageProps) {
         </section>
 
         {/* ── Section 6: Related Concepts (संबंधित अवधारणाएँ) ──────────────── */}
-        {concept.relatedConceptIds.length > 0 && (
+        {concept.relatedConceptIds.some(hasConceptPage) && (
           <section aria-labelledby="related-heading" className="space-y-4">
             <h2 id="related-heading" className="text-xl font-serif font-bold text-dharma-text">
               संबंधित अन्य अवधारणाएँ (Related Concepts)
             </h2>
             <div className="flex flex-wrap gap-2.5">
-              {concept.relatedConceptIds.map((relId) => {
+              {concept.relatedConceptIds.filter(hasConceptPage).map((relId) => {
                 const relConcept = getConceptDetail(relId);
                 return (
                   <Link

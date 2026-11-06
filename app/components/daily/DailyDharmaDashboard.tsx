@@ -18,6 +18,8 @@ import {
 } from 'lucide-react';
 import { readRecentChapters, type ChapterVisit } from '@/lib/reading-history';
 import { SAMPLE_DAILY_JOURNEYS } from '@/data/daily-dharma-data';
+import { readHref } from '@/lib/verse-paths';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 
 interface DashboardPrefs {
   isHistoryPaused: boolean;
@@ -220,15 +222,13 @@ export function DailyDharmaDashboard() {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-dharma-border/60 flex flex-wrap items-center gap-3">
-                  <Link
-                    href={`/scripture/${recentChapter.scriptureId}/chapter/${recentChapter.chapterId}${
-                      recentChapter.verseId ? `/verse/${recentChapter.verseId}` : ''
-                    }`}
+                  <VerseHrefLink
+                    href={readHref(recentChapter.scriptureId, recentChapter.chapterId, recentChapter.verseId)}
                     className="focus-ring inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-saffron-600 hover:bg-saffron-700 text-white font-semibold text-sm transition-colors shadow-2xs"
                   >
                     Resume Reading
                     <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  </VerseHrefLink>
 
                   <Link
                     href={`/scripture/${recentChapter.scriptureId}`}

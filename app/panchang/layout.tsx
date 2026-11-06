@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
+import { SITE_URL } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'पञ्चाङ्ग · आज का पंचांग व दैनिक काल दर्शन (Vedic Panchang)',
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     title: 'पञ्चाङ्ग · आज का पंचांग व दैनिक काल दर्शन (Vedic Panchang) — Dharma Granth',
     description:
       'दैनिक पञ्चाङ्ग: तिथि, पक्ष, नक्षत्र, योग, करण, ऋतु, सूर्योदय और सूर्यास्त समय। A clear, authentic educational Panchang for daily contemplation and study.',
-    url: 'https://dharmagranth.dev/panchang/',
+    url: `${SITE_URL}/panchang/`,
   },
 };
 

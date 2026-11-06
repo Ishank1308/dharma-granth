@@ -50,6 +50,9 @@ import {
 } from '@/lib/sacred-audio';
 import { recordSadhanaActivity, useSadhanaStreak } from '@/lib/sadhana-streak';
 import { SacredShareModal } from '@/app/components/share/SacredShareModal';
+import { readHref, shareVerseUrl } from '@/lib/verse-paths';
+import { SITE_URL } from '@/lib/jsonld';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 
 type UnderstandingLevel = 'quick' | 'simple' | 'deep';
 
@@ -198,7 +201,7 @@ export function DailyDharmaJourneySession({
   };
 
   const handleCopyCitation = () => {
-    const textToCopy = `${session.referenceDisplayEn} (${session.referenceDisplayHi})\n\n${session.sanskritDevanagari}\n\n${session.sanskritTransliteration}\n\n[Literal English]: ${session.literalTranslationEn}\n\n[Hindi]: ${session.literalTranslationHi}\n\n— Via Dharma Granth (https://dharmagranth.dev/scripture/${session.scriptureId}/chapter/${session.chapterNumber}/verse/${session.verseNumber})`;
+    const textToCopy = `${session.referenceDisplayEn} (${session.referenceDisplayHi})\n\n${session.sanskritDevanagari}\n\n${session.sanskritTransliteration}\n\n[Literal English]: ${session.literalTranslationEn}\n\n[Hindi]: ${session.literalTranslationHi}\n\n— Via Dharma Granth (${shareVerseUrl(SITE_URL, session.scriptureId, session.chapterNumber, session.verseNumber)})`;
 
     navigator.clipboard.writeText(textToCopy).then(() => {
       setCopiedCitation(true);
@@ -492,14 +495,14 @@ export function DailyDharmaJourneySession({
               {copiedCitation ? 'Copied' : 'Copy'}
             </button>
 
-            <Link
-              href={`/scripture/${session.scriptureId}/chapter/${session.chapterNumber}/verse/${session.verseNumber}`}
+            <VerseHrefLink
+              href={readHref(session.scriptureId, session.chapterNumber, session.verseNumber)}
               className="focus-ring inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white dark:bg-[#262019] border border-[#DDD3C1] dark:border-[#42372A] hover:border-saffron-500 text-stone-700 dark:text-stone-300 transition-all text-xs"
               title="Read complete chapter in reader"
             >
               <BookOpen className="w-3.5 h-3.5 text-stone-500" />
               Full Context
-            </Link>
+            </VerseHrefLink>
           </div>
         </div>
       </section>
@@ -1069,13 +1072,13 @@ export function DailyDharmaJourneySession({
             Finish for Today
           </button>
 
-          <Link
-            href={`/scripture/${session.scriptureId}/chapter/${session.chapterNumber}/verse/${Number(session.verseNumber) + 1}`}
+          <VerseHrefLink
+            href={readHref(session.scriptureId, session.chapterNumber, Number(session.verseNumber) + 1)}
             className="focus-ring inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-400 font-semibold text-dharma-text transition-colors"
           >
             Continue to Next Teaching
             <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+          </VerseHrefLink>
 
           <button
             type="button"
@@ -1113,10 +1116,12 @@ export function DailyDharmaJourneySession({
           translation: session.simpleMeaningEn || session.literalTranslationEn,
           hindi: session.simpleMeaningHi || session.literalTranslationHi,
           quote: session.thirtySecondCard?.teaching,
-          url:
-            typeof window !== 'undefined'
-              ? `${window.location.origin}/scripture/${session.scriptureId}/chapter/${session.chapterNumber}/verse/${session.verseNumber}`
-              : `https://dharmagranth.dev/scripture/${session.scriptureId}/chapter/${session.chapterNumber}/verse/${session.verseNumber}`,
+          url: shareVerseUrl(
+            typeof window !== 'undefined' ? window.location.origin : SITE_URL,
+            session.scriptureId,
+            session.chapterNumber,
+            session.verseNumber,
+          ),
         }}
       />
     </article>

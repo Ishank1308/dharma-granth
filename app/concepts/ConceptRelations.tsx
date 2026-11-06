@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { CONCEPT_DETAILS } from '@/data/concept-details';
 import { RELATION_LABEL, relationsFor } from '@/data/concept-relations';
 import { REVIEW_LABEL } from '@/data/study-content';
+import { readHref } from '@/lib/verse-paths';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 
 /** The relationships of one concept as a list, each with its type, the supporting verse and its review status. */
 export function ConceptRelations({ conceptId }: { conceptId: string }) {
@@ -23,7 +25,7 @@ export function ConceptRelations({ conceptId }: { conceptId: string }) {
               </p>
               <p className="text-dharma-muted">{r.note}</p>
               <p className="mt-1 text-dharma-muted">
-                Source: <Link href={`/scripture/${r.evidence.scriptureId}/chapter/${r.evidence.chapter}/verse/${r.evidence.verse}`} className="inline-flex min-h-[44px] items-center text-saffron-800 underline underline-offset-2 dark:text-saffron-300">Bhagavad Gita {r.evidence.chapter}.{r.evidence.verse}</Link> · {REVIEW_LABEL[r.review]}
+                Source: <VerseHrefLink href={readHref(r.evidence.scriptureId, r.evidence.chapter, r.evidence.verse)} className="inline-flex min-h-[44px] items-center text-saffron-800 underline underline-offset-2 dark:text-saffron-300">Bhagavad Gita {r.evidence.chapter}.{r.evidence.verse}</VerseHrefLink> · {REVIEW_LABEL[r.review]}
               </p>
             </li>
           );

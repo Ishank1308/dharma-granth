@@ -1,7 +1,7 @@
 // Tier-1 search index (/search/core-index.json) and one lazy scripture shard.
 // The browser fetches these. They are not part of the first-load bundle.
 
-import { phoneticIndex } from '@/lib/searchNormalizer';
+import { phoneticIndex } from '@/lib/normalize-search';
 import { citationScriptureHint } from '@/lib/search-citation';
 import type { SearchResultItem } from '@/lib/search-types';
 

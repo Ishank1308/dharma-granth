@@ -13,6 +13,7 @@ import {
   topicsForConcept,
   versesForWisdomConcept,
 } from '@/lib/wisdom-discovery/links';
+import { SITE_URL } from '@/lib/jsonld';
 
 export function generateStaticParams() {
   return knowledgeHubs.map((hub) => ({ slug: hub.slug }));
@@ -32,7 +33,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       images: [DEFAULT_OG_IMAGE],
       title: `${title} — Dharma Granth`,
       description,
-      url: `https://dharmagranth.dev/knowledge/${hub.slug}/`,
+      url: `${SITE_URL}/knowledge/${hub.slug}/`,
     },
   };
 }
@@ -241,7 +242,7 @@ export default function KnowledgeHubPage({ params }: { params: { slug: string } 
           '@type': 'Article',
           headline: `${concept.labelEn} (${concept.labelHi}) — Knowledge Hub`,
           inLanguage: ['en', 'hi', 'sa'],
-          url: `https://dharmagranth.dev/knowledge/${hub.slug}/`,
+          url: `${SITE_URL}/knowledge/${hub.slug}/`,
         }}
       />
     </main>

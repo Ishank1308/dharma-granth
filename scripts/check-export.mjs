@@ -208,6 +208,10 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
   const listSrc = /VERSE_PAGE_SCRIPTURE_IDS\s*=\s*\[([^\]]*)\]/.exec(idsSrc)?.[1] ?? '';
   const ids = [...listSrc.matchAll(/'([^']+)'/g)].map((m) => m[1]);
   if (ids.length === 0) fail('verse pages', 'could not read VERSE_PAGE_SCRIPTURE_IDS from lib/verse-paths.ts');
+  // Scriptures with pages only for the verses listed in lib/verse-page-subsets.json (hasVersePage).
+  const partialSrc = /PARTIAL_VERSE_PAGE_SCRIPTURE_IDS\s*=\s*\[([^\]]*)\]/.exec(idsSrc)?.[1] ?? '';
+  const partial = new Set([...partialSrc.matchAll(/'([^']+)'/g)].map((m) => m[1]));
+  const subsets = JSON.parse(readFileSync(join(ROOT, 'lib/verse-page-subsets.json'), 'utf8'));
   let expected = 0;
   let missing = 0;
   let sample = '';
@@ -218,6 +222,7 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
     for (const chapter of book.chapters ?? []) {
       for (const verse of chapter.verses ?? []) {
         if (!/^[0-9A-Za-z]+(?:[.\-][0-9A-Za-z]+)*$/.test(String(verse.number))) continue;
+        if (partial.has(id) && !(subsets[id] ?? []).includes(`${chapter.number}:${verse.number}`)) continue;
         expected++;
         const html = pageHtml(`/scripture/${id}/chapter/${chapter.number}/verse/${verse.number}/`);
         // The FAQ structured data is built from the verse's Hindi / English meaning, so a verse

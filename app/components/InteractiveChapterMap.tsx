@@ -4,7 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Compass, HelpCircle, Key, Layers, ListOrdered, MapPin } from 'lucide-react';
 import type { ChapterMapNode } from '@/data/chapter-orientation';
-import { CONCEPT_DETAILS } from '@/data/concept-details';
+import { hasConceptPage } from '@/lib/concept-pages';
+import { readHref } from '@/lib/verse-paths';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 
 interface Props {
   scriptureId: string;
@@ -129,13 +131,13 @@ export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterCo
 
               {/* Direct Verse Jump Actions */}
               <div className="flex items-center gap-1.5">
-                <Link
-                  href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${activeNode.startVerse}`}
+                <VerseHrefLink
+                  href={readHref(scriptureId, chapterId, activeNode.startVerse)}
                   className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-xl bg-saffron-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-2xs hover:bg-saffron-700 transition"
                 >
                   <span>Read Stage Verses</span>
                   <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                </VerseHrefLink>
               </div>
             </div>
 
@@ -163,8 +165,8 @@ export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterCo
                 </dt>
                 <dd className="mt-2 flex flex-wrap gap-1.5">
                   {activeNode.concepts.map((concept) => {
-                    const detail = CONCEPT_DETAILS[concept.toLowerCase()];
-                    return detail ? (
+                    const exists = hasConceptPage(concept.toLowerCase());
+                    return exists ? (
                       <Link
                         key={concept}
                         href={`/concepts/${concept.toLowerCase()}`}
@@ -192,14 +194,14 @@ export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterCo
                   Pivotal Verses:
                 </span>
                 {activeNode.keyVerses.map((v) => (
-                  <Link
+                  <VerseHrefLink
                     key={v}
-                    href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${v}`}
+                    href={readHref(scriptureId, chapterId, v)}
                     className="focus-ring inline-flex min-h-[32px] items-center gap-1 rounded-lg border border-amber-600/30 bg-amber-500/10 px-2.5 py-0.5 font-bold text-amber-900 dark:text-amber-200 hover:border-amber-600 transition"
                   >
                     <span>श्लोक {chapterId}.{v}</span>
                     <ArrowRight className="h-3 w-3" />
-                  </Link>
+                  </VerseHrefLink>
                 ))}
               </div>
             )}
@@ -241,13 +243,13 @@ export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterCo
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   <span className="text-xs font-semibold text-dharma-muted">Key Verses:</span>
                   {node.keyVerses.map((v) => (
-                    <Link
+                    <VerseHrefLink
                       key={v}
-                      href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${v}`}
+                      href={readHref(scriptureId, chapterId, v)}
                       className="inline-flex min-h-[32px] items-center gap-1 rounded-md border border-dharma-border bg-dharma-card px-2 py-0.5 text-xs font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2"
                     >
                       {chapterId}.{v}
-                    </Link>
+                    </VerseHrefLink>
                   ))}
                 </div>
               </li>

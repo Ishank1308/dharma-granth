@@ -25,6 +25,8 @@ export interface PilotUnit {
   observation: string;
   source?: 'ashtavakra';
   forceReviewOnly?: boolean;
+  /** Set when an editor chose other published text for this verse; the record is kept but not overlaid. */
+  supersededBy?: string;
 }
 
 /** Fields that no editorial step may change. */

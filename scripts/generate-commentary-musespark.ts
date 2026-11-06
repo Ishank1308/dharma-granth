@@ -36,8 +36,9 @@ function loadEnvLocal() {
 loadEnvLocal();
 
 interface QueuedCommentary {
+  bhavartha?: string;
   explanation: string;
-  science: string;
+  science?: string;
   lifeLesson: string;
   confidence: 'high' | 'medium' | 'low';
   reviewNote: string;
@@ -150,11 +151,12 @@ async function main() {
       });
 
       queue[key] = {
+        bhavartha: draft.bhavartha,
         explanation: draft.explanation,
-        science: draft.science,
+        science: draft.science || '',
         lifeLesson: draft.lifeLesson,
         confidence: 'high',
-        reviewNote: 'Generated via Muse Spark 1.3 Contributor (accessible dignified Hindi standard)',
+        reviewNote: 'Generated via Muse Spark 1.3 Contributor (भावार्थ, व्याख्या, आधुनिक संदर्भ)',
         status: 'pending',
         model: 'muse-spark-1.3-contributor',
         generatedAt: new Date().toISOString(),

@@ -273,32 +273,6 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
         </SacredSection>
       </ConnectedFlow>
 
-      {/* ── Related Wisdom ── */}
-      <SacredSection id={`${id}-related`} section="related">
-        <ul className="flex flex-wrap gap-2" aria-label="विषय">
-          {v.themes.map((t) => (
-            <li key={t} className="rounded-full border border-dharma-border/70 bg-dharma-bg/70 px-3 py-1 text-xs font-medium text-dharma-text">
-              {t}
-            </li>
-          ))}
-        </ul>
-        {v.relatedVerses.length > 0 && (
-          <div>
-            <p lang="hi" className="mb-2 text-[11px] leading-relaxed text-dharma-muted">ये उसी अष्टावक्र गीता के भीतर के संपादकीय संबंध हैं।</p>
-            <ul className="grid gap-2" aria-label="संबंधित श्लोक">
-              {v.relatedVerses.map((r) => (
-                <li key={r.id} className="text-sm text-dharma-text">
-                  <Link href={verseHref(r.id)} className="font-bold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
-                    श्लोक {r.id}
-                  </Link>
-                  <span lang="hi">: {r.reason}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </SacredSection>
-
       {/* ── Sources and verification: provenance footer, quiet by design ── */}
       <section aria-labelledby={`${id}-sources`} className="sacred-section rounded-2xl border border-dharma-border/70 bg-dharma-card/60 p-4 sm:p-5">
         <h3 id={`${id}-sources`} className="mb-2.5 flex flex-wrap items-baseline gap-x-2">

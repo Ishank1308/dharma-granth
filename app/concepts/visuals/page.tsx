@@ -4,7 +4,7 @@ import { Sparkles, Compass, Eye, ArrowLeft, Layers } from 'lucide-react';
 import { VisualExplorerClient } from './VisualExplorerClient';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { JsonLd } from '@/app/components/JsonLd';
-import { pageLd, articleLd } from '@/lib/jsonld';
+import { pageLd, articleLd, SITE_URL } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'दृश्य ज्ञान दर्शन — 10 वैदिक अवधारणाओं के इंटरैक्टिव आरेख | Dharma Granth',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: 'दृश्य ज्ञान दर्शन — 10 वैदिक अवधारणाओं के इंटरैक्टिव आरेख | Dharma Granth',
     description:
       'Explore interactive sacred geometry, flowcharts, knowledge maps, and stages for the 10 foundational concepts of Hindu philosophy.',
-    url: 'https://dharmagranth.dev/concepts/visuals/',
+    url: `${SITE_URL}/concepts/visuals/`,
     images: [DEFAULT_OG_IMAGE],
   },
   twitter: {

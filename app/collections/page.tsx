@@ -9,6 +9,7 @@ import { FadeUp, FadeUpOnView, Stagger, StaggerItem } from '@/app/components/mot
 import { chapterVerseHref, readHref } from '@/lib/verse-paths';
 import { verseCount } from '@/lib/format';
 import { STUDY_PLAYLISTS } from '@/data/study-playlists';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 
 export default function CollectionsPage() {
   const reduce = useReducedMotion();
@@ -289,14 +290,14 @@ export default function CollectionsPage() {
                                       </p>
                                     </div>
                                     <div className="flex items-center gap-2 flex-shrink-0">
-                                      <Link
+                                      <VerseHrefLink
                                         href={readHref(ref.scriptureId, ref.chapterId, ref.verseId)}
                                         className="inline-flex items-center gap-1 text-xs font-semibold text-saffron-700 hover:text-saffron-800 transition"
                                       >
                                         <BookOpen className="w-3 h-3" />
                                         Open
                                         <ArrowRight className="w-3 h-3" />
-                                      </Link>
+                                      </VerseHrefLink>
                                       <button
                                         onClick={() => removeFromCollection(col.id, ref.scriptureId, ref.verseId)}
                                         className="p-1 rounded-md text-dharma-muted hover:bg-rose-500/10 hover:text-rose-600 transition"

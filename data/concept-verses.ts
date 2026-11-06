@@ -82,12 +82,12 @@ export const conceptVerses: Record<string, ConceptVerse[]> = {
     },
     {
       scriptureId: 'bhagavadgita',
-      chapterId: 8,
-      verseId: 3,
-      sanskrit: 'कर्म ब्रह्मोत्भवं विद्धि ब्रह्माक्षरसमुद्भवम्',
-      transliteration: 'karma brahmotbhavaṃ viddhi brahmākṣarasamudbhavam',
+      chapterId: 3,
+      verseId: 15,
+      sanskrit: 'कर्म ब्रह्मोद्भवं विद्धि ब्रह्माक्षरसमुद्भवम्',
+      transliteration: 'karma brahmodbhavaṃ viddhi brahmākṣarasamudbhavam',
       translation: 'Know that action arises from Brahman, and Brahman arises from the Imperishable.',
-      reference: 'Bhagavad Gita 8.3',
+      reference: 'Bhagavad Gita 3.15',
     },
   ],
   dharma: [

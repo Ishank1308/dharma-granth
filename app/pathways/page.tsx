@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { STARTER_PATHWAYS } from '@/data/wisdom-pathway-starters';
 import { pathwayDiscovery, questionsForStarter, topicsForStarter } from '@/lib/wisdom-pathways';
-import { StarterCard } from '@/components/pathways/StarterCard';
+import { StarterCard } from '@/app/components/pathways/StarterCard';
 import { JsonLd } from '@/app/components/JsonLd';
 
 export const metadata: Metadata = {

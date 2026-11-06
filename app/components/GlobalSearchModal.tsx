@@ -174,14 +174,14 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
   {
     id: 'tanpura',
     command: '> tanpura',
-    title: 'Play Vedic Tanpura Drone (432Hz)',
-    titleHi: 'वैदिक तन्पूरा नाद प्रारंभ करें (432Hz)',
+    title: 'Play Tanpura Drone (432Hz)',
+    titleHi: 'तानपूरा नाद आरम्भ करें (432Hz)',
     subtitle: 'Procedural 432Hz Tanpura Drone · Web Audio',
     icon: '🎶',
     run: (onClose) => {
       setSoundscapeTrack('tanpura');
       if (!getSoundscapeState().isPlaying) toggleSoundscape();
-      triggerPranaToast({ message: 'वैदिक तन्पूरा सक्रिय (432Hz) · Tanpura Drone Playing', icon: '🎶' });
+      triggerPranaToast({ message: 'तानपूरा सक्रिय (432Hz) · Tanpura Drone Playing', icon: '🎶' });
       onClose();
     },
   },

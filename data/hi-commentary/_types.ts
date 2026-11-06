@@ -1,6 +1,24 @@
 export interface HiCommentaryEntry {
+  /**
+   * भावार्थ: Direct, authentic Hindi meaning of the verse (Gita Press standard).
+   * Supplies the primary Hindi sense when not already present on the verse.
+   */
+  bhavartha?: string;
+  /**
+   * व्याख्या: In-depth spiritual, philosophical, and context-rich exposition
+   * grounded in Lokasamgraha and saintly perspectives.
+   */
   explanation?: string;
+  /**
+   * Optional/legacy field; modern context is primarily structured in lifeLesson.
+   */
   science?: string;
+  /**
+   * आधुनिक संदर्भ: Structured modern relevance with:
+   * ### आधुनिक संदर्भ (Contemporary Relevance)
+   * ### आज के जीवन में प्रयोग (3 Actionable Protocols)
+   * ### चिंतन प्रश्न (1 Contemplation Question)
+   */
   lifeLesson?: string;
   /**
    * Drafted by AI (scripts/generate-verse-commentary.ts) and approved by a

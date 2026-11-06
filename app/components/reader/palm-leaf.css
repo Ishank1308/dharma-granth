@@ -1,0 +1,154 @@
+/* Palm-leaf (ताडपत्र) reader prototype: the shloka on a leaf, study colours in the layers below.
+   Loaded only by the components that use it, so other pages never fetch the manuscript font. */
+
+@font-face {
+    font-family: 'Tiro Devanagari Sanskrit';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/tiro-devanagari-sanskrit-400.woff2') format('woff2');
+    unicode-range: U+0900-097F, U+1CD0-1CF4, U+1CF7-1CF9, U+200C-200D, U+20A8, U+20B9, U+20F0, U+25CC, U+A830-A839, U+A8E0-A8FF;
+}
+
+:root,
+:root[data-theme='day'] {
+    --leaf-surface: #f7ecd2;
+    --leaf-edge: #c9a46a;
+    --leaf-fibre: rgba(150, 105, 40, 0.11);
+    --leaf-ink: #2a1a0c;
+    --leaf-rubric: #9b1c1c;
+    --study-highlight: #fde68a;
+    --study-highlight-text: #3b2604;
+    --study-action-bg: #fdebc8;
+    --study-action-fg: #7a3d07;
+    --study-fruit-bg: #fbdcd0;
+    --study-fruit-fg: #7a2410;
+    --study-claim-bg: #d5efe4;
+    --study-claim-fg: #0b5040;
+}
+:root[data-theme='sunset'] {
+    --leaf-surface: #f6e0bd;
+    --leaf-edge: #c98f4e;
+    --leaf-fibre: rgba(160, 90, 30, 0.12);
+    --leaf-ink: #2b170a;
+    --leaf-rubric: #9b1c1c;
+    --study-highlight: #fcd98a;
+}
+:root[data-theme='paper'] {
+    --leaf-surface: #efe3c8;
+    --leaf-edge: #b89a6a;
+    --leaf-fibre: rgba(120, 90, 45, 0.11);
+    --leaf-ink: #261a0e;
+    --leaf-rubric: #8f1d1d;
+}
+:root[data-theme='night'] {
+    --leaf-surface: #2a2118;
+    --leaf-edge: #6b5232;
+    --leaf-fibre: rgba(240, 210, 160, 0.06);
+    --leaf-ink: #f1e4c8;
+    --leaf-rubric: #f19a8a;
+    --study-highlight: #6b4e12;
+    --study-highlight-text: #fff3d0;
+    --study-action-bg: #4a3210;
+    --study-action-fg: #fde3b0;
+    --study-fruit-bg: #4d2418;
+    --study-fruit-fg: #fbd2c2;
+    --study-claim-bg: #12392f;
+    --study-claim-fg: #c7efe0;
+}
+
+.font-manuscript {
+    font-family: 'Tiro Devanagari Sanskrit', var(--font-noto-devanagari), serif;
+    font-weight: 400;
+}
+
+/* ── The leaf ─────────────────────────────────────────────────────── */
+
+.palm-leaf {
+    position: relative;
+    padding: 1.25rem 2.5rem 1.1rem;
+    border: 1px solid var(--leaf-edge);
+    border-radius: 2.75rem / 1.1rem;
+    background-color: var(--leaf-surface);
+    background-image: repeating-linear-gradient(0deg, transparent 0 9px, var(--leaf-fibre) 9px 10px);
+    color: var(--leaf-ink);
+}
+@media (min-width: 640px) {
+    .palm-leaf { padding: 1.5rem 4.25rem 1.3rem; }
+}
+/* The two cord holes sit in the side margins, never over the text. */
+.palm-leaf__hole {
+    position: absolute;
+    top: 50%;
+    width: 0.65rem;
+    height: 0.65rem;
+    margin-top: -0.325rem;
+    border: 1px solid var(--leaf-edge);
+    border-radius: 9999px;
+    background: var(--dharma-bg);
+}
+.palm-leaf__hole--start { left: 0.9rem; }
+.palm-leaf__hole--end { right: 0.9rem; }
+@media (min-width: 640px) {
+    .palm-leaf__hole--start { left: 1.6rem; }
+    .palm-leaf__hole--end { right: 1.6rem; }
+}
+.palm-leaf__mangala {
+    margin-bottom: 0.35rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--leaf-rubric);
+}
+/* Scribes wrote daṇḍas and verse numbers in red ink. */
+.rubric { color: var(--leaf-rubric); }
+
+/* ── Study colours (layers below the leaf) ────────────────────────── */
+
+mark.study-highlight {
+    padding: 0 0.2em;
+    border-radius: 0.2em;
+    background: var(--study-highlight);
+    color: var(--study-highlight-text);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+[data-study-group] {
+    border-radius: 0.2em;
+    text-decoration: underline dotted;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.3em;
+}
+[data-study-group='action'] { text-decoration-color: var(--study-action-fg); }
+[data-study-group='fruit'] { text-decoration-color: var(--study-fruit-fg); }
+[data-study-group='claim'] { text-decoration-color: var(--study-claim-fg); }
+
+/* Word cards carry a coloured edge instead of an underline. */
+li[data-study-group] { text-decoration: none; }
+li[data-study-group] > div { border-left-width: 3px; }
+li[data-study-group='action'] > div { border-left-color: var(--study-action-fg); }
+li[data-study-group='fruit'] > div { border-left-color: var(--study-fruit-fg); }
+li[data-study-group='claim'] > div { border-left-color: var(--study-claim-fg); }
+
+[data-study-active='action'] [data-study-group='action'],
+.study-swatch--action { background: var(--study-action-bg); color: var(--study-action-fg); }
+[data-study-active='fruit'] [data-study-group='fruit'],
+.study-swatch--fruit { background: var(--study-fruit-bg); color: var(--study-fruit-fg); }
+[data-study-active='claim'] [data-study-group='claim'],
+.study-swatch--claim { background: var(--study-claim-bg); color: var(--study-claim-fg); }
+
+/* On word cards the tint goes on the card itself, which has its own background. */
+[data-study-active] li[data-study-group] { background: none; }
+[data-study-active='action'] li[data-study-group='action'] > div { background: var(--study-action-bg); }
+[data-study-active='fruit'] li[data-study-group='fruit'] > div { background: var(--study-fruit-bg); }
+[data-study-active='claim'] li[data-study-group='claim'] > div { background: var(--study-claim-bg); }
+
+@media (prefers-reduced-motion: no-preference) {
+    [data-study-group] { transition: background-color 160ms ease; }
+}
+
+.study-reading {
+    border: 1px solid color-mix(in srgb, var(--study-fruit-fg) 30%, transparent);
+    background: var(--study-fruit-bg);
+    color: var(--study-fruit-fg);
+}

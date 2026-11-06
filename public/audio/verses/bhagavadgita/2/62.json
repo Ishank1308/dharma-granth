@@ -1,0 +1,41 @@
+{
+  "verseNumber": 62,
+  "durationMs": 6548,
+  "words": [
+    {
+      "word": "ध्यायतो",
+      "startTimeMs": 0,
+      "endTimeMs": 499
+    },
+    {
+      "word": "विषयान्पुंसः",
+      "startTimeMs": 557,
+      "endTimeMs": 1451
+    },
+    {
+      "word": "सङ्गस्तेषूपजायते",
+      "startTimeMs": 1498,
+      "endTimeMs": 2891
+    },
+    {
+      "word": "सङ्गात्",
+      "startTimeMs": 3111,
+      "endTimeMs": 3599
+    },
+    {
+      "word": "संजायते",
+      "startTimeMs": 3634,
+      "endTimeMs": 4214
+    },
+    {
+      "word": "कामः",
+      "startTimeMs": 4284,
+      "endTimeMs": 4609
+    },
+    {
+      "word": "कामात्क्रोधोऽभिजायते",
+      "startTimeMs": 4644,
+      "endTimeMs": 6223
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import Link from 'next/link';
+import { VerseHrefLink } from './VerseHrefLink';
 import { cleanVerseField, toAsciiDigits, verseLines } from '@/lib/verse-format';
 
 interface Props {
@@ -50,7 +50,7 @@ export function VerseText({ verse: v, chapterId, href, actions }: Props) {
         <div>
           <p className="vt-ch">अध्याय {toAsciiDigits(chapterId)}</p>
           <h3 className="vt-title">
-            {href ? <Link href={href}>{title}</Link> : title}
+            {href ? <VerseHrefLink href={href}>{title}</VerseHrefLink> : title}
           </h3>
         </div>
         {actions ?? <div aria-hidden="true" className="vt-toolbar" />}

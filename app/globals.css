@@ -1650,7 +1650,6 @@ body:has(main[data-chapter-reading]) [data-hide-during-chapter-reading] {
   background-size: 16px 16px;
 }
 
-:root[data-theme='dark'] .manuscript-surface,
 :root[data-theme='night'] .manuscript-surface {
   background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
 }
@@ -1665,7 +1664,6 @@ body:has(main[data-chapter-reading]) [data-hide-during-chapter-reading] {
   overflow: hidden;
 }
 
-:root[data-theme='dark'] .editorial-bento-card,
 :root[data-theme='night'] .editorial-bento-card {
   border-color: rgba(41, 37, 36, 0.8);
 }
@@ -1680,7 +1678,6 @@ body:has(main[data-chapter-reading]) [data-hide-during-chapter-reading] {
   border: 1px solid rgba(214, 211, 209, 0.7);
 }
 
-:root[data-theme='dark'] .hairline-warm-border,
 :root[data-theme='night'] .hairline-warm-border {
   border: 1px solid rgba(41, 37, 36, 0.8);
 }
@@ -1914,3 +1911,160 @@ body::after {
         border-left-color: #999;
     }
 }
+
+/* ============================================================================
+   APPLE-GRADE SACRED VERSE CARD DESIGN SYSTEM
+   Smooth, fluid physics, squircle geometry, inner lamp-light highlight & pranic breath
+   ============================================================================ */
+
+@keyframes pranic-breath-glow {
+    0%, 100% {
+        box-shadow:
+            inset 0 1px 2px 0 rgba(255, 255, 255, 0.6),
+            0 4px 20px -4px rgba(217, 119, 6, 0.12),
+            0 1px 3px 0 rgba(0, 0, 0, 0.04);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow:
+            inset 0 1px 2px 0 rgba(255, 255, 255, 0.9),
+            0 8px 30px -4px rgba(217, 119, 6, 0.22),
+            0 2px 6px 0 rgba(217, 119, 6, 0.08);
+        transform: scale(1.002);
+    }
+}
+
+:root[data-theme='night'] .apple-pranic-leaf,
+.dark .apple-pranic-leaf {
+    animation: pranic-breath-glow-dark 5s ease-in-out infinite;
+}
+
+@keyframes pranic-breath-glow-dark {
+    0%, 100% {
+        box-shadow:
+            inset 0 1px 1px 0 rgba(251, 191, 36, 0.2),
+            0 6px 24px -4px rgba(0, 0, 0, 0.6);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow:
+            inset 0 1px 2px 0 rgba(251, 191, 36, 0.35),
+            0 10px 36px -4px rgba(251, 191, 36, 0.15);
+        transform: scale(1.002);
+    }
+}
+
+.apple-pranic-leaf {
+    animation: pranic-breath-glow 5s ease-in-out infinite;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .apple-pranic-leaf {
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+/* Apple-grade glassmorphic pillar containers with ghee-lamp inner rim */
+.apple-pillar {
+    border-radius: 22px;
+    backdrop-filter: blur(20px) saturate(180%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease;
+}
+
+.apple-pillar:hover {
+    transform: translateY(-1.5px);
+}
+
+.apple-pillar-bhavartha {
+    background: linear-gradient(135deg, rgba(254, 243, 199, 0.45) 0%, rgba(255, 255, 255, 0.85) 60%, rgba(254, 243, 199, 0.25) 100%);
+    border: 1px solid rgba(217, 119, 6, 0.22);
+    box-shadow:
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
+        0 4px 16px -4px rgba(217, 119, 6, 0.08);
+}
+
+:root[data-theme='night'] .apple-pillar-bhavartha,
+.dark .apple-pillar-bhavartha {
+    background: linear-gradient(135deg, rgba(45, 30, 15, 0.55) 0%, rgba(26, 24, 22, 0.8) 60%, rgba(35, 26, 16, 0.4) 100%);
+    border-color: rgba(251, 191, 36, 0.18);
+    box-shadow:
+        inset 0 1px 1px 0 rgba(251, 191, 36, 0.12),
+        0 6px 20px -4px rgba(0, 0, 0, 0.4);
+}
+
+.apple-pillar-vyakhya {
+    background: linear-gradient(135deg, rgba(255, 237, 213, 0.4) 0%, rgba(255, 255, 255, 0.85) 60%, rgba(254, 243, 199, 0.2) 100%);
+    border: 1px solid rgba(180, 83, 9, 0.2);
+    box-shadow:
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
+        0 4px 16px -4px rgba(180, 83, 9, 0.08);
+}
+
+:root[data-theme='night'] .apple-pillar-vyakhya,
+.dark .apple-pillar-vyakhya {
+    background: linear-gradient(135deg, rgba(40, 28, 20, 0.55) 0%, rgba(26, 24, 22, 0.8) 60%, rgba(30, 24, 20, 0.4) 100%);
+    border-color: rgba(245, 158, 11, 0.18);
+    box-shadow:
+        inset 0 1px 1px 0 rgba(245, 158, 11, 0.12),
+        0 6px 20px -4px rgba(0, 0, 0, 0.4);
+}
+
+.apple-pillar-modern {
+    background: linear-gradient(135deg, rgba(240, 253, 244, 0.5) 0%, rgba(255, 255, 255, 0.85) 60%, rgba(254, 243, 199, 0.25) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    box-shadow:
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
+        0 4px 16px -4px rgba(16, 185, 129, 0.08);
+}
+
+:root[data-theme='night'] .apple-pillar-modern,
+.dark .apple-pillar-modern {
+    background: linear-gradient(135deg, rgba(16, 36, 28, 0.55) 0%, rgba(26, 24, 22, 0.8) 60%, rgba(20, 32, 28, 0.4) 100%);
+    border-color: rgba(52, 211, 153, 0.2);
+    box-shadow:
+        inset 0 1px 1px 0 rgba(52, 211, 153, 0.12),
+        0 6px 20px -4px rgba(0, 0, 0, 0.4);
+}
+
+/* ── World-Class Sacred 3D & Kinetic Motion Tokens ───────────── */
+@keyframes sacredPranaPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.35;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 0.65;
+    }
+}
+
+@keyframes goldFoilGlint {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.gilded-shimmer-badge {
+    background: linear-gradient(90deg, rgba(251, 191, 36, 0.15) 0%, rgba(253, 224, 71, 0.35) 50%, rgba(251, 191, 36, 0.15) 100%);
+    background-size: 200% 100%;
+    animation: goldFoilGlint 6s infinite ease-in-out;
+}
+
+.sacred-prana-glow {
+    animation: sacredPranaPulse 8s infinite ease-in-out;
+}
+
+.preserve-3d {
+    transform-style: preserve-3d;
+}
+
+.backface-hidden {
+    backface-visibility: hidden;
+}
+
+

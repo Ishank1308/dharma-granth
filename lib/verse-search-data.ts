@@ -1,12 +1,12 @@
 import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
 import { readChapterCommentary, readSeededChapter, readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
 import { cleanVerseField } from '@/lib/verse-format';
-import { VERSE_PAGE_SCRIPTURE_IDS, verseSlug } from '@/lib/verse-paths';
+import { hasVersePage, VERSE_PAGE_SCRIPTURE_IDS, verseSlug } from '@/lib/verse-paths';
 import type { VerseIndexFile, VerseRow } from '@/lib/search-verse-index';
 
 /**
  * Build-time verse index for global search. It covers exactly the verses that
- * have their own page (see VERSE_PAGE_SCRIPTURE_IDS), so every hit opens a page
+ * have their own page (see hasVersePage in lib/verse-paths), so every hit opens a page
  * that exists, and every excerpt is the library's text: nothing is written by
  * hand here. Server-only; the browser loads the result from /search-index/verses.json.
  */
@@ -50,7 +50,7 @@ export function buildVerseIndex(): VerseIndexFile {
       const seen = new Set<string>();
       for (const verse of seeded.chapter.verses as SeedVerse[]) {
         const slug = verseSlug(verse.number);
-        if (!slug || seen.has(slug)) continue;
+        if (!slug || seen.has(slug) || !hasVersePage(id, chapterId, slug)) continue;
         seen.add(slug);
 
         const comment = commentary?.[`${chapterId}:${slug}`] ?? commentary?.[`${chapterId}:${Number(slug)}`];

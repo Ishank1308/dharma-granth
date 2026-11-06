@@ -30,8 +30,8 @@ export const SACRED_SECTION_LABEL: Record<
   { hi: string; en: string }
 > = {
   verse: { hi: 'श्लोक', en: 'Verse' },
-  arth: { hi: 'अर्थ', en: 'Arth' },
-  vyakhya: { hi: 'व्याख्या', en: 'Vyakhya' },
+  arth: { hi: 'अर्थ', en: 'Meaning' },
+  vyakhya: { hi: 'व्याख्या', en: 'Explanation' },
   modern: { hi: 'आधुनिक संदर्भ', en: 'Modern Context' },
   reflection: { hi: 'चिंतन', en: 'Reflection' },
   related: { hi: 'संबंधित ज्ञान', en: 'Related Wisdom' },

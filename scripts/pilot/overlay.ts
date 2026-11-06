@@ -50,7 +50,7 @@ export function loadPilotOverlay(): PilotOverlayItem[] {
     const record = JSON.parse(fs.readFileSync(path.join(recordsDir, f), 'utf8')) as PilotRecord;
     const unit = set.units.find((u) => u.id === record.unitId);
     // Only units in the published scripture data are overlaid; Ashtavakra lives in its own pipeline.
-    if (!unit || unit.source || !clear.has(unit.id) || record.reviewStatus !== 'review-required') continue;
+    if (!unit || unit.source || unit.supersededBy || !clear.has(unit.id) || record.reviewStatus !== 'review-required') continue;
     const verseKey = Number(canonicalVerseId(unit.chapter, unit.verse));
     items.push({
       scriptureId: unit.scriptureId,

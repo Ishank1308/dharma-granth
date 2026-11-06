@@ -12,7 +12,7 @@ import { topics } from '../data/topics';
 import { scriptureCatalog, categories } from '../data/scripture-meta';
 import { getRealVerseCount, getAllScriptures } from '../data/scriptures';
 import { formatCount, formatCountDevanagari } from '../lib/holdings-label';
-import { normalizePhonetic } from '../lib/searchNormalizer';
+import { normalizePhonetic } from '../lib/normalize-search';
 import { parseDirectCitation } from '../lib/search-citation';
 import { parseIntent } from '../lib/search-intent';
 
@@ -70,17 +70,17 @@ console.log(`  ✓ All ${topicCount} verses in topics end in terminal dandas: VE
 console.log('\n[2/4] Auditing Catalog Reconciliation & Holdings Counts...');
 
 // Verify catalog length
-assert.equal(scriptureCatalog.length, 65, `Catalog must contain exactly 65 scriptures (found ${scriptureCatalog.length})`);
-console.log(`  ✓ Scripture catalog length = 65: VERIFIED`);
+assert.equal(scriptureCatalog.length, 66, `Catalog must contain exactly 66 scriptures (found ${scriptureCatalog.length})`);
+console.log(`  ✓ Scripture catalog length = 66: VERIFIED`);
 
-// Verify category pill sum matches 65
+// Verify category pill sum matches 66
 let categorySum = 0;
 for (const cat of categories) {
   const count = scriptureCatalog.filter((s) => s.category === cat.id).length;
   categorySum += count;
 }
-assert.equal(categorySum, 65, `Sum of categories must equal 65 (found ${categorySum})`);
-console.log(`  ✓ All 8 category pills sum to 65 scriptures: VERIFIED`);
+assert.equal(categorySum, 66, `Sum of categories must equal 66 (found ${categorySum})`);
+console.log(`  ✓ All 8 category pills sum to 66 scriptures: VERIFIED`);
 
 // Verify real verse count
 const holdingsVerseCount = getRealVerseCount();
@@ -96,13 +96,13 @@ for (const s of scriptureCatalog) {
   assert.ok(!descriptions.has(s.description), `Duplicate description found for ${s.id}`);
   descriptions.add(s.description);
 }
-console.log(`  ✓ 65 unique, substantial descriptions: VERIFIED`);
+console.log(`  ✓ ${scriptureCatalog.length} unique, substantial descriptions: VERIFIED`);
 
 // ── 3. Trilingual Search Normalizer & Citation Jump Parser ──────────
 console.log('\n[3/4] Auditing Search Normalizer & Citation Parser...');
 
 // Direct citations
-const gitaTarget = '/scripture/bhagavadgita/chapter/2/verse/47';
+const gitaTarget = '/scripture/bhagavadgita/chapter/2/verse/47/';
 const citationsToTest = [
   'Gita 2.47',
   'Bhagavad Gita 2.47',
@@ -119,7 +119,7 @@ console.log(`  ✓ Gita 2.47 citations in English and Devanagari numerals: VERIF
 
 const kathaCitation = parseDirectCitation('katha 1.3.3');
 assert.ok(kathaCitation, 'katha 1.3.3 should resolve');
-assert.equal(kathaCitation.href, '/scripture/katha/chapter/3/verse/3');
+assert.equal(kathaCitation.href, '/scripture/katha/chapter/3/verse/3/');
 console.log(`  ✓ Katha Upanishad citation jump: VERIFIED`);
 
 const rvCitation = parseDirectCitation('rv 1.1.1');
@@ -185,11 +185,13 @@ assert.ok(redirectsContent.includes('/topics/'), 'Topics 301 redirects required'
 assert.ok(redirectsContent.includes('/wisdom-for-life/'), 'Target wisdom-for-life path required');
 console.log(`  ✓ public/_redirects 301 consolidation: VERIFIED`);
 
-const robotsPath = resolve('public/robots.txt');
-assert.ok(existsSync(robotsPath), 'public/robots.txt must exist');
-const robotsContent = readFileSync(robotsPath, 'utf-8');
+const robotsTsPath = resolve('app/robots.ts');
+const robotsStaticPath = resolve('public/robots.txt');
+const robotsExists = existsSync(robotsTsPath) || existsSync(robotsStaticPath);
+assert.ok(robotsExists, 'app/robots.ts or public/robots.txt must exist');
+const robotsContent = existsSync(robotsTsPath) ? readFileSync(robotsTsPath, 'utf-8') : readFileSync(robotsStaticPath, 'utf-8');
 assert.ok(robotsContent.includes('sitemap.xml'), 'Sitemap directive required');
-console.log(`  ✓ public/robots.txt sitemap reference: VERIFIED`);
+console.log(`  ✓ Robots configuration sitemap reference: VERIFIED`);
 
 const notFoundPath = resolve('public/404.html');
 assert.ok(existsSync(notFoundPath), 'public/404.html must exist');

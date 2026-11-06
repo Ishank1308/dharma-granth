@@ -68,3 +68,10 @@ export const STUDY_HELPER_CAUTION =
   'Answers are generated and may err; verify against the verses.';
 export const STUDY_HELPER_CAUTION_HI =
   'उत्तर स्वतः तैयार होते हैं और त्रुटिपूर्ण हो सकते हैं; श्लोकों से जाँच करें।';
+
+/** Core philosophical orientation of Hindu saints and commentators across the library. */
+export const LOKASAMGRAHA_ETHOS =
+  'All commentaries, modern reflections, and study aids in Dharma Granth are guided by the saintly vision of Lokasamgraha (लोकसंग्रह) — the active preservation of moral order, universal compassion, and the welfare of all beings (सर्वभूतहिते रताः).';
+export const LOKASAMGRAHA_ETHOS_HI =
+  'धर्म ग्रंथ के समस्त भाष्य, आधुनिक संदर्भ और अध्ययन सामग्री हमारे ऋषियों, आचार्यों व सन्तों के "लोकसंग्रह" (समस्त प्राणियों का कल्याण, सामाजिक समरसता और निष्काम लोकसेवा) के मूल दृष्टिकोण से प्रेरित हैं।';
+

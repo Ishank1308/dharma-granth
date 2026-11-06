@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import { VerseHrefLink } from '@/app/components/VerseHrefLink';
 import { Bookmark, BookmarkCheck } from 'lucide-react';
 import { READING_JOURNEYS } from '@/data/reading-journeys';
 import { readRecPrefs, writeRecPrefs, type RecPrefs } from '@/lib/recommendation-prefs';
@@ -113,11 +113,11 @@ export function NextTeachings({ candidates, verseId }: { candidates: NextCandida
             <li key={c.id} className="rounded-xl border border-dharma-border bg-dharma-bg p-3 text-sm">
               <p lang="hi" className="font-devanagari text-xs font-semibold text-dharma-muted">{KIND_HI[c.kind]}</p>
               <p className="font-semibold">
-                <Link href={c.href} className="text-saffron-800 underline underline-offset-2 dark:text-saffron-300">{c.title}</Link>
+                <VerseHrefLink href={c.href} className="text-saffron-800 underline underline-offset-2 dark:text-saffron-300">{c.title}</VerseHrefLink>
               </p>
               <p className="mt-1 text-dharma-muted"><span className="font-semibold text-dharma-text">Reason:</span> {c.reason}</p>
               <div className="mt-2 flex flex-wrap gap-2">
-                <Link href={c.href} className={`${btn} inline-flex items-center`}>Continue</Link>
+                <VerseHrefLink href={c.href} className={`${btn} inline-flex items-center`}>Continue</VerseHrefLink>
                 {c.save && (
                   <button type="button" onClick={() => save(c)} aria-pressed={savedIds.includes(c.id)} className={`${btn} inline-flex items-center gap-1`}>
                     {savedIds.includes(c.id) ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}

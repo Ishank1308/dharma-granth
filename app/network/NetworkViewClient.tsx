@@ -93,8 +93,8 @@ export function NetworkViewClient() {
   // Load data for 2D list fallback
   useEffect(() => {
     Promise.all([
-      fetch('/data/concordance-index.json').then((r) => (r.ok ? r.json() : [])),
-      fetch('/data/samvada-dialogues.json').then((r) => (r.ok ? r.json() : [])),
+      fetch(`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/data/concordance-index.json`).then((r) => (r.ok ? r.json() : [])),
+      fetch(`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/data/samvada-dialogues.json`).then((r) => (r.ok ? r.json() : [])),
     ])
       .then(([concordance, dialogues]) => {
         setConcordanceList(concordance);

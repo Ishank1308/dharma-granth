@@ -87,23 +87,64 @@ function checkVerseIds(scripture: Scripture): void {
   }
 }
 
+/**
+ * Verses that have Sanskrit only, as [no translation or Hindi, no explanation],
+ * measured 2026-10-25. A ratchet like KNOWN_CROSS_CHAPTER_DUPLICATES: a count
+ * above its baseline is an error that lists the new gaps; a lower count asks
+ * for the baseline to be lowered. Lower an entry when meanings are added;
+ * never raise one. A newly added Sanskrit-only text needs its own entry.
+ */
+const KNOWN_MEANING_GAPS: Record<string, [noMeaning: number, noExplanation: number]> = {
+  bhagavatapurana: [2300, 2300],
+  brahmandpuran: [2, 2],
+  brahmapuran: [2, 2],
+  devibhagavat: [9271, 9271],
+  harivanshpuran: [3243, 3243],
+  kaushitaki: [49, 49],
+  kurmapuran: [1, 1],
+  markandeypuran: [6, 6],
+  naradapuran: [5, 5],
+  // Full DharmicData text since 2026-10-25; only the verses with a carried-over meaning have one.
+  ramayana: [22737, 22737],
+  rigveda: [10480, 10480],
+  shivasamhita: [644, 644],
+  tejobindu: [1, 1],
+  vamanpuran: [36, 36],
+  yajurveda: [1, 1],
+};
+
 function checkRequiredFields(scripture: Scripture): void {
+  const noMeaning: string[] = [];
+  const noExplanation: string[] = [];
   for (const chapter of scripture.chapters) {
     for (const verse of chapter.verses) {
       if (!verse.sanskrit || !verse.sanskrit.trim()) {
         error(scripture.id, `ch ${chapter.id} verse ${verse.id}: missing sanskrit`);
       }
-      if (!verse.translation && !verse.hindi) {
-        warn(
-          scripture.id,
-          `ch ${chapter.id} verse ${verse.id}: neither translation nor hindi present`,
-        );
-      }
-      if (!verse.explanation || !verse.explanation.trim()) {
-        warn(scripture.id, `ch ${chapter.id} verse ${verse.id}: empty explanation`);
-      }
+      if (!verse.translation && !verse.hindi) noMeaning.push(`${chapter.id}.${verse.id}`);
+      if (!verse.explanation || !verse.explanation.trim()) noExplanation.push(`${chapter.id}.${verse.id}`);
     }
   }
+
+  const [allowedMeaning, allowedExplanation] = KNOWN_MEANING_GAPS[scripture.id] ?? [0, 0];
+  const sample = (list: string[]) =>
+    list.slice(-5).join(", ") + (list.length > 5 ? ` … (${list.length} in all)` : "");
+  const ratchet = (what: string, list: string[], allowed: number, slot: 0 | 1) => {
+    if (list.length > allowed) {
+      error(
+        scripture.id,
+        `${list.length} verse(s) with ${what} (baseline ${allowed}) — new gaps, e.g. ${sample(list)}`,
+      );
+    } else if (list.length < allowed) {
+      warn(
+        scripture.id,
+        `verses with ${what} dropped to ${list.length} (baseline ${allowed}) — ` +
+          `lower KNOWN_MEANING_GAPS.${scripture.id}[${slot}] in scripts/check-data.ts`,
+      );
+    }
+  };
+  ratchet("neither translation nor hindi", noMeaning, allowedMeaning, 0);
+  ratchet("an empty explanation", noExplanation, allowedExplanation, 1);
 }
 
 function checkCatalogAlignment(): void {
@@ -166,7 +207,7 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   brahmandpuran: 5,
   brahmapuran: 4,
   brihadaranyaka: 5, // genuine repeats in the source (e.g. the Maitreyi dialogue in II.4 and IV.5) after the 2026-10 rebuild
-  chandogya: 26,
+  chandogya: 10,
   devibhagavat: 3,
   garudpurana: 9,
   harivanshpuran: 24, // genealogical lists in the Harivamsa repeat whole shlokas in two adhyayas (e.g. 26.11 = 27.2)
@@ -180,9 +221,9 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   matsyapuran: 27,
   naradapuran: 50,
   narasimhapuran: 13,
-  ramayana: 57,
-  ramcharitmanas: 21,
-  rigveda: 39,
+  ramayana: 3, // full text since 2026-10-25 (the 82-entry selection repeated its 25 verses)
+  ramcharitmanas: 0,
+  rigveda: 27, // full text since 2026-10-25: refrains and mantras the Samhita itself repeats across mandalas
   samaveda: 194, // the Uttarārcika repeats many Pūrvārcika mantras in the source (full 1,873-mantra text)
   shandilyabhaktisutra: 0,
   shivpurana: 36,

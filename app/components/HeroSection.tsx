@@ -20,15 +20,13 @@ import {
 } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { openGlobalSearch } from '@/lib/search-events';
-import { DharmaCopilotModal } from '@/app/components/copilot/DharmaCopilotModal';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { Sacred3DCenterpiece } from '@/app/components/motion/Sacred3DCenterpiece';
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 /** Quick search pills for rapid access */
-const QUICK_SEARCHES = ['Gita 2.47', 'कर्म', 'fear', 'Tat Tvam Asi'];
-
 /**
  * 9 Curated Gen Z Entry Points: Dignified, contemporary, and grounded in canonical topics.
  */
@@ -100,12 +98,12 @@ const GEN_Z_PATHWAYS: GenZPathway[] = [
     icon: BookOpen,
   },
   {
-    id: 'two-min',
-    labelEn: '2-Minute reading',
-    labelHi: '2 मिनट स्वाध्याय',
-    sanskrit: 'नित्य श्लोक',
+    id: 'creator-studio',
+    labelEn: 'Create & Share 9:16',
+    labelHi: 'श्लोक चित्र बनाएं (9:16 व 1:1)',
+    sanskrit: 'लोकसंग्रहः',
     href: '/daily-verse',
-    icon: Clock,
+    icon: Sparkles,
   },
   {
     id: 'surprise',
@@ -143,7 +141,6 @@ export function HeroSection() {
   const router = useRouter();
   const reduce = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
-  const [copilotOpen, setCopilotOpen] = useState(false);
   const [surpriseLoading, setSurpriseLoading] = useState(false);
 
   // Subtle interactive light tracking across hero
@@ -275,29 +272,10 @@ export function HeroSection() {
           </form>
         </FadeUp>
 
-        {/* Quick Search Chips */}
+        {/* One primary CTA. The share-card studio lives on the verse of the day below (CLAUDE.md §6);
+            quick-search chips, extra buttons and the guide link were removed as clutter (2026-10-25). */}
         <FadeUp delay={0.24}>
-        <div className="mx-auto mt-3 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-xs">
-          <span className="text-amber-100 text-xs font-medium mr-1">Quick searches:</span>
-          {QUICK_SEARCHES.map((q) => (
-            <button
-              key={q}
-              type="button"
-              onClick={() => {
-                triggerTactileFeedback('light', 'softTap');
-                openGlobalSearch(q);
-              }}
-              className="inline-flex min-h-11 items-center rounded-full border border-white/20 bg-black/20 px-3.5 py-1 text-xs font-medium text-amber-100 transition hover:border-amber-300 hover:bg-white/15"
-            >
-              {q}
-            </button>
-          ))}
-        </div>
-        </FadeUp>
-
-        {/* Primary & Secondary CTAs */}
-        <FadeUp delay={0.32}>
-        <div className="mt-6 flex flex-col items-center justify-center gap-2.5 sm:mt-8 sm:flex-row sm:gap-3.5">
+        <div className="mt-6 flex flex-col items-center justify-center gap-2.5 sm:mt-8 sm:flex-row sm:gap-3">
           <Link
             href="/scripture/bhagavadgita"
             onClick={() => triggerTactileFeedback('medium', 'softTap')}
@@ -306,33 +284,16 @@ export function HeroSection() {
             <BookOpen className="h-4 w-4 text-saffron-700" aria-hidden="true" />
             <span>Start with the Bhagavad Gita</span>
           </Link>
-          <Link
-            href="/scriptures"
-            onClick={() => triggerTactileFeedback('light', 'softTap')}
-            className="inline-flex min-h-[48px] w-full max-w-md items-center justify-center gap-2 rounded-full border border-white/30 bg-black/25 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 active:scale-98 sm:w-auto sm:px-6"
-          >
-            <span>Browse All Scriptures</span>
-          </Link>
         </div>
         </FadeUp>
 
-        {/* Guide Prompt Link */}
-        <div className="mt-3 text-sm text-amber-100/80 sm:mt-4">
-          <button
-            type="button"
-            onClick={() => {
-              triggerTactileFeedback('light', 'softTap');
-              setCopilotOpen(true);
-            }}
-            className="inline-flex min-h-11 items-center gap-1.5 underline decoration-amber-300/40 underline-offset-4 hover:decoration-amber-200 hover:text-white transition"
-          >
-            <Sparkles className="h-4 w-4 text-amber-300" aria-hidden="true" />
-            <span>Not sure where to begin? Ask the Dharma Guide</span>
-          </button>
-        </div>
+        {/* ── Interactive 3D Sacred Folio Centerpiece ──────────────────── */}
+        <FadeUp delay={0.32}>
+          <Sacred3DCenterpiece />
+        </FadeUp>
 
         {/* ── Gen Z Direct Discovery Pathways ────────────────────────── */}
-        <div className="mt-12 pt-10 border-t border-amber-300/20 text-left">
+        <div className="mt-8 pt-8 border-t border-amber-300/20 text-left">
           <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-300">
@@ -352,20 +313,56 @@ export function HeroSection() {
               const Icon = p.icon;
               if (p.isSurprise) {
                 return (
-                  <button
+                  <motion.button
                     key={p.id}
                     type="button"
                     onClick={handleSurpriseVerse}
                     disabled={surpriseLoading}
-                    className="group relative flex flex-col justify-between rounded-2xl border border-amber-300/40 bg-gradient-to-br from-amber-500/20 to-saffron-600/30 p-3.5 text-left backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-amber-300 hover:bg-amber-500/30 active:scale-98 shadow-sm cursor-pointer col-span-2 sm:col-span-1"
+                    whileHover={reduce ? undefined : { y: -4, scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                    className="group relative flex flex-col justify-between rounded-2xl border border-amber-300/50 bg-gradient-to-br from-amber-500/25 to-saffron-600/35 p-3.5 text-left backdrop-blur-md transition-shadow hover:border-amber-300 hover:shadow-[0_8px_24px_rgba(251,191,36,0.3)] shadow-sm cursor-pointer col-span-2 sm:col-span-1"
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-400/20 text-amber-200 group-hover:scale-110 transition-transform">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-400/25 text-amber-200 group-hover:scale-110 transition-transform">
                         {surpriseLoading ? (
                           <Loader2 className="h-4 w-4 animate-spin text-amber-300" />
                         ) : (
                           <Icon className="h-4 w-4 text-amber-300" />
                         )}
+                      </span>
+                      <span lang="sa" className="font-devanagari text-[10px] font-semibold text-amber-200/90">
+                        {p.sanskrit}
+                      </span>
+                    </div>
+                    <div>
+                      <p className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-200 transition-colors">
+                        {p.labelEn}
+                      </p>
+                      <p lang="hi" className="font-devanagari text-[11px] text-amber-200/80 mt-0.5">
+                        {p.labelHi}
+                      </p>
+                    </div>
+                  </motion.button>
+                );
+              }
+
+              return (
+                <motion.div
+                  key={p.id}
+                  whileHover={reduce ? undefined : { y: -4, scale: 1.02 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                  className="rounded-2xl"
+                >
+                  <Link
+                    href={p.href!}
+                    onClick={() => triggerTactileFeedback('light', 'softTap')}
+                    className="group relative flex h-full flex-col justify-between rounded-2xl border border-white/20 bg-black/30 p-3.5 text-left backdrop-blur-md transition-all hover:border-amber-300/80 hover:bg-white/15 hover:shadow-[0_8px_24px_rgba(251,191,36,0.22)] shadow-sm"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-amber-200 group-hover:bg-amber-400/25 transition">
+                        <Icon className="h-4 w-4" />
                       </span>
                       <span lang="sa" className="font-devanagari text-[10px] font-semibold text-amber-200/80">
                         {p.sanskrit}
@@ -375,45 +372,18 @@ export function HeroSection() {
                       <p className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-200 transition-colors">
                         {p.labelEn}
                       </p>
-                      <p lang="hi" className="font-devanagari text-[11px] text-amber-200/75 mt-0.5">
+                      <p lang="hi" className="font-devanagari text-[11px] text-amber-100/80 mt-0.5">
                         {p.labelHi}
                       </p>
                     </div>
-                  </button>
-                );
-              }
-
-              return (
-                <Link
-                  key={p.id}
-                  href={p.href!}
-                  onClick={() => triggerTactileFeedback('light', 'softTap')}
-                  className="group relative flex flex-col justify-between rounded-2xl border border-white/15 bg-black/20 p-3.5 text-left backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-amber-300/70 hover:bg-white/10 active:scale-98 shadow-sm"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-amber-200 group-hover:bg-amber-400/20 transition">
-                      <Icon className="h-4 w-4" />
-                    </span>
-                    <span lang="sa" className="font-devanagari text-[10px] font-semibold text-amber-200/70">
-                      {p.sanskrit}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-200 transition-colors">
-                      {p.labelEn}
-                    </p>
-                    <p lang="hi" className="font-devanagari text-[11px] text-amber-100/70 mt-0.5">
-                      {p.labelHi}
-                    </p>
-                  </div>
-                </Link>
+                  </Link>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </div>
 
-      <DharmaCopilotModal isOpen={copilotOpen} onClose={() => setCopilotOpen(false)} initialQuery="" />
     </section>
   );
 }

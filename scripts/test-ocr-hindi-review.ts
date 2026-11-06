@@ -54,9 +54,14 @@ for (const { scriptureId, chapter, verse } of review.entries) {
   assert.equal(published.translation, source.translation, `English translation is unchanged: ${key}`);
 }
 
-const control = shardCache.get('agnipuran:18')?.chapter.verses
-  .find((candidate) => String(candidate.number) === '15');
-assert.ok(control?.hindi, 'an adjacent Hindi meaning remains available');
-assert.equal(control.hindiReviewRequired, undefined, 'the adjacent verse is not quarantined');
+// The control comes from an aligned chapter: chapters whose Hindi drifted are hidden by scripts/lib/meaning-alignment.ts.
+assert.ok(!keys.has('lingapuran:4:5'), 'the control verse is not in the review queue');
+const controlShard = JSON.parse(fs.readFileSync(
+  path.join(root, 'public/data/scriptures-full', 'lingapuran', 'ch-4.json'), 'utf8',
+)) as Shard;
+const control = controlShard.chapter.verses
+  .find((candidate) => String(candidate.number) === '5');
+assert.ok(control?.hindi, 'an unflagged verse keeps its Hindi meaning');
+assert.equal(control.hindiReviewRequired, undefined, 'the unflagged verse is not quarantined');
 
 console.log(`OCR Hindi source-review gate passed: ${keys.size} meanings withheld; original source and canonical fields preserved.`);

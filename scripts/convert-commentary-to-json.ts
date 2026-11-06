@@ -119,7 +119,7 @@ async function main(): Promise<void> {
         const next: HiCommentaryFragment[string] = { ...prev };
         if (explanation && !prev.explanation) next.explanation = explanation;
         if (science && !prev.science) next.science = science;
-        if (next.explanation || next.science || next.lifeLesson) curated[key] = next;
+        if (next.explanation || next.science || next.lifeLesson || next.bhavartha) curated[key] = next;
       }
     }
 

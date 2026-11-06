@@ -14,5 +14,5 @@ This workspace has full integration with Meta's **Muse Spark 1.3 Contributor** m
 ### Core Standards:
 - **Default Model**: `muse-spark-1.3-contributor` (also supports `muse-spark-1.3`).
 - **Reasoning Effort**: Defaults to `max` with a 32,000 token budget to allow deep contemplation without token truncation.
-- **Hindi Register**: Simple, accessible, and dignified Hindi that any regular reader can understand. Common Hindi words are fine; only Urdu/Persian vocabulary is blocked. Address the reader as 'आप'.
+- **Language Register**: Default is standard, clear, dignified English (or matches inquiry prompt). For Hindi commentary or queries: dignified accessible Hindi (common words fine; Urdu/Persian blocked; 'आप' honorific).
 - **Numerals**: ASCII 0-9 only, zero Devanagari numerals.

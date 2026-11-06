@@ -27,6 +27,9 @@ export interface MobileOneThumbControlBarProps {
     commentary: boolean;
   };
   onToggleLayer: (layer: 'translit' | 'hindi' | 'english' | 'commentary') => void;
+  isPlayingAudio?: boolean;
+  onToggleAudio?: () => void;
+  hasStudioAudio?: boolean;
 }
 
 export function MobileOneThumbControlBar({
@@ -38,11 +41,19 @@ export function MobileOneThumbControlBar({
   onOpenFocus,
   activeLayers,
   onToggleLayer,
+  isPlayingAudio: controlledIsPlayingAudio,
+  onToggleAudio,
+  hasStudioAudio = false,
 }: MobileOneThumbControlBarProps) {
   const [depth, setDepth] = useReadingDepth();
   const [isVisible, setIsVisible] = useState(true);
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [internalIsPlayingAudio, setInternalIsPlayingAudio] = useState(false);
   const [showSettingsMenu, setShowSettingsMenu] = useState(false);
+
+  const isAudioActive =
+    typeof controlledIsPlayingAudio === 'boolean'
+      ? controlledIsPlayingAudio
+      : internalIsPlayingAudio;
 
   const lastScrollY = useRef(0);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -67,7 +78,7 @@ export function MobileOneThumbControlBar({
       // Let readers reach the controls during a pause, then tuck them away again.
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
       scrollTimeout.current = setTimeout(() => {
-        if (!isPlayingAudio && !showSettingsMenu) {
+        if (!isAudioActive && !showSettingsMenu) {
           setIsVisible(false);
         }
       }, 1800);
@@ -78,28 +89,32 @@ export function MobileOneThumbControlBar({
       window.removeEventListener('scroll', handleScroll);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
-  }, [isPlayingAudio, showSettingsMenu]);
+  }, [isAudioActive, showSettingsMenu]);
 
   const handleToggleAudio = () => {
     triggerTactileFeedback('medium', 'softTap');
-    if (isPlayingAudio || isSpeakingSanskrit()) {
+    if (onToggleAudio) {
+      onToggleAudio();
+      return;
+    }
+    if (internalIsPlayingAudio || isSpeakingSanskrit()) {
       stopSanskritSpeech();
-      setIsPlayingAudio(false);
+      setInternalIsPlayingAudio(false);
     } else {
       if (!currentVerseSanskrit) return;
       const success = speakSanskritShloka(
         currentVerseSanskrit,
         0.82,
-        () => setIsPlayingAudio(false),
-        () => setIsPlayingAudio(false)
+        () => setInternalIsPlayingAudio(false),
+        () => setInternalIsPlayingAudio(false)
       );
       if (success) {
-        setIsPlayingAudio(true);
+        setInternalIsPlayingAudio(true);
       }
     }
   };
 
-  const shouldShowControls = isVisible || isPlayingAudio || showSettingsMenu;
+  const shouldShowControls = isVisible || isAudioActive || showSettingsMenu;
 
   return (
     <div
@@ -224,27 +239,33 @@ export function MobileOneThumbControlBar({
           <ChevronLeft className="h-5 w-5" />
         </button>
 
-        {/* Audio Recitation Button (>=44px) */}
+        {/* Shloka Recitation (पारायण) Button (>=44px touch target) */}
         <button
           type="button"
           onClick={handleToggleAudio}
-          aria-label={isPlayingAudio ? 'उच्चारण रोकें (Stop audio)' : 'पारायण / उच्चारण सुनें (Play shloka audio)'}
-          className={`min-h-[44px] min-w-0 flex-1 flex items-center justify-center gap-1.5 px-2 rounded-xl text-xs font-bold transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 ${
-            isPlayingAudio
-              ? 'bg-saffron-600 text-white shadow-md animate-pulse'
-              : 'bg-saffron-50 text-saffron-800 border border-saffron-200/80 dark:bg-saffron-950/40 dark:text-saffron-300'
+          aria-label={isAudioActive ? 'श्लोक पाठ रोकें (Pause recitation)' : 'श्लोक पाठ सुनें (Listen to recitation)'}
+          title={isAudioActive ? 'रोकें · Pause' : (hasStudioAudio ? 'स्टूडियो पाठ सुनें' : 'पाठ सुनें · Listen')}
+          className={`min-h-[44px] px-3 flex-1 flex items-center justify-center gap-1.5 rounded-xl text-xs font-semibold transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 ${
+            isAudioActive
+              ? 'bg-amber-600 text-white animate-pulse shadow-2xs'
+              : 'text-dharma-text hover:bg-dharma-bg'
           }`}
         >
-          {isPlayingAudio ? (
-            <>
-              <Square className="h-4 w-4 fill-white" />
-              <span>विराम</span>
-            </>
+          {isAudioActive ? (
+            <Square className="h-4 w-4 fill-current text-white" />
           ) : (
-            <>
-              <Volume2 className="h-4 w-4 text-saffron-600 dark:text-saffron-400" />
-              <span className="truncate">पारायण</span>
-            </>
+            <Volume2 className="h-4 w-4 text-saffron-600" />
+          )}
+          <span className="text-[11px] font-medium">
+            {isAudioActive ? 'रोकें' : 'पाठ'}
+          </span>
+          {hasStudioAudio && (
+            <span
+              className="text-[9px] font-extrabold uppercase px-1 py-0.5 rounded bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30"
+              title="Studio ElevenLabs Quality"
+            >
+              Studio
+            </span>
           )}
         </button>
 

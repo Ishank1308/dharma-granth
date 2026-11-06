@@ -4,6 +4,7 @@ import { getPathway, wisdomPathways } from '@/data/wisdom-pathways';
 import { resolvePathwayVerses, relatedPathways } from '@/lib/wisdom-pathways';
 import { JsonLd } from '@/app/components/JsonLd';
 import { PathwayDetailClient } from './PathwayDetailClient';
+import { SITE_URL } from '@/lib/jsonld';
 
 export function generateStaticParams() {
   return wisdomPathways.map((p) => ({ slug: p.slug }));
@@ -17,7 +18,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     title: `${pathway.titleEn} — ${pathway.titleHi}`,
     description,
     alternates: { canonical: `/wisdom-pathways/${pathway.slug}/` },
-    openGraph: { title: `${pathway.titleEn} — Dharma Granth`, description, url: `https://dharmagranth.dev/wisdom-pathways/${pathway.slug}/` },
+    openGraph: { title: `${pathway.titleEn} — Dharma Granth`, description, url: `${SITE_URL}/wisdom-pathways/${pathway.slug}/` },
   };
 }
 

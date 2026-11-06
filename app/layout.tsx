@@ -5,21 +5,12 @@ import { FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
-import dynamic from "next/dynamic";
 import { TactileLayer } from "@/app/components/TactileLayer";
 import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
+import { SacredAudioDock } from "@/app/components/SacredAudioDock";
 
-const PranaCapsule = dynamic(
-  () => retryImport(() => import("@/components/ui/PranaCapsule").then((m) => m.PranaCapsule)),
-  { ssr: false }
-);
-
-const MananaSelectionBar = dynamic(
-  () => retryImport(() => import("@/app/components/reader/MananaSelectionBar").then((m) => m.MananaSelectionBar)),
-  { ssr: false }
-);
 // Font subsetting: Bundling only required weights (400, 600, 700) and critical
 // styles; unused weights (300, 500, 300-italic, 700-italic) are omitted to reduce bundle size.
 import "@fontsource/inter/latin-400.css";
@@ -33,8 +24,6 @@ import "@fontsource/noto-sans-devanagari/devanagari-600.css";
 import "@fontsource/noto-sans-devanagari/devanagari-700.css";
 import "./globals.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
-import { PwaInstallBanner } from "./components/PwaInstallBanner";
-import { retryImport } from "@/lib/retry-import";
 import { StoragePersistenceRequest } from "@/app/components/StoragePersistenceRequest";
 
 /**
@@ -267,17 +256,13 @@ export default function RootLayout({
               <PageTransition>{children}</PageTransition>
             </ErrorBoundary>
           </div>
-          <ErrorBoundary name="Prāṇa Capsule">
-            <PranaCapsule />
-          </ErrorBoundary>
-          <ErrorBoundary name="Manana Selection">
-            <MananaSelectionBar />
-          </ErrorBoundary>
+          {/* No floating capsule, selection popup or install banner: the site keeps zero
+              digital clutter (CLAUDE.md §1). */}
           <TactileLayer />
           <OfflineIndicator />
+          <SacredAudioDock />
           <ServiceWorkerRegister />
           <StoragePersistenceRequest />
-          <PwaInstallBanner />
         </ThemeProvider>
       </body>
     </html>

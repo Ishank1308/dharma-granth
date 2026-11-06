@@ -2,17 +2,18 @@
 
 /**
  * Knowledge tree for a verse: the shloka is the root, and its study layers
- * hang off it as a chain of branches, each growing out of the one before:
+ * follow it in sacred reading order along one rail:
  *
  *   श्लोक (root, rendered by the card above)
- *     └─ अर्थ  (open by default)
- *          └─ व्याख्या
- *               └─ आधुनिक संदर्भ
- *                    └─ चिंतन
+ *     ├─ अर्थ  (open by default)
+ *     ├─ व्याख्या
+ *     ├─ आधुनिक संदर्भ
+ *     └─ चिंतन
  *
  * Every node header stays visible so the reader can see how deep the verse
- * goes; a node's body unfolds on demand. Children are nested inside their
- * parent's rail, so the connecting lines read as one continuous branch.
+ * goes; a node's body unfolds on demand. All nodes share one level, so the
+ * text never drifts right: on phones an open body takes the full width and the
+ * rail resumes at the next node; from `sm` up the rail runs beside the body.
  * Colours come from the theme tokens (dharma-*, saffron/amber with dark
  * variants), so the tree follows Day, Sunset, Paper and Dark alike.
  *
@@ -56,15 +57,16 @@ export function VerseTreeStructure({
     <div className="verse-tree mt-5" role="group" aria-label={label}>
       {/* Stem from the shloka down to the first node */}
       <div aria-hidden="true" className="ml-[15px] h-4 w-0.5 rounded-full bg-amber-500/40 dark:bg-amber-400/30" />
-      <TreeNode branches={branches} persistent={persistent} />
+      {branches.map((branch, i) => (
+        <TreeNode key={branch.id} branch={branch} last={i === branches.length - 1} persistent={persistent} />
+      ))}
     </div>
   );
 }
 
 const RAIL = 'rounded-full bg-amber-500/30 dark:bg-amber-400/25';
 
-function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persistent: boolean }) {
-  const [branch, ...rest] = branches;
+function TreeNode({ branch, last, persistent }: { branch: VerseTreeBranch; last: boolean; persistent: boolean }) {
   const reduce = useReducedMotion();
   const id = useId();
   const [open, setOpen] = useState(Boolean(branch.defaultOpen));
@@ -103,10 +105,10 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
   );
   const headerCls =
     'group/node relative flex min-h-[44px] w-full items-center gap-3 rounded-2xl py-1.5 pr-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500/60';
-  // Twig: short connector from the rail into the content
+  // Twig: short connector from the rail into the content (sm and up, where the body sits beside the rail)
   const body = (
-    <div className="relative pb-3 pl-11">
-      <span aria-hidden="true" className={`absolute left-[16px] top-5 h-0.5 w-5 ${RAIL}`} />
+    <div className="relative pb-4 pt-1 sm:pl-11">
+      <span aria-hidden="true" className={`absolute left-[16px] top-5 hidden h-0.5 w-5 sm:block ${RAIL}`} />
       {branch.content}
     </div>
   );
@@ -114,11 +116,12 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
   return (
     <div className="relative">
       <div className="relative">
-        {/* Rail: from this node's circle down to where the next layer branches off */}
-        {(open || rest.length > 0) && (
+        {/* Rail: from this node's circle down to the next node. On phones an open body
+            spans the full width, so the rail stops at the header and resumes below. */}
+        {(open || !last) && (
           <span
             aria-hidden="true"
-            className={`absolute bottom-0 left-[15px] top-[22px] w-0.5 ${RAIL}`}
+            className={`absolute bottom-0 left-[15px] top-[22px] w-0.5 ${RAIL} ${open ? 'hidden sm:block' : ''}`}
           />
         )}
         {persistent ? (
@@ -157,18 +160,6 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
           </>
         )}
       </div>
-
-      {rest.length > 0 && (
-        // The next layer grows out of this one: indented a step, joined by an elbow
-        // from this node's rail (x = 15px) to the child's circle (y = 22px).
-        <div className="relative ml-7">
-          <span
-            aria-hidden="true"
-            className="absolute -left-[13px] top-0 h-[23px] w-[13px] rounded-bl-xl border-b-2 border-l-2 border-amber-500/30 dark:border-amber-400/25"
-          />
-          <TreeNode branches={rest} persistent={persistent} />
-        </div>
-      )}
     </div>
   );
 }

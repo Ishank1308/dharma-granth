@@ -1,0 +1,1074 @@
+{
+  "scripture": "matsyapuran",
+  "source": "Gita Press Gorakhpur (Decrypted EPUB)",
+  "epub_code": "0557",
+  "epub_title": "Matasyamahapuran (Hindi)",
+  "date": "2026-11-06",
+  "statistics": {
+    "total_book_chapters": 176,
+    "total_book_verses": 8330,
+    "single_verses_updated": 1220,
+    "range_pointers_set": 7060,
+    "missing_hindi_filled": 0,
+    "existing_hindi_replaced": 1220,
+    "skipped_no_match": 50
+  },
+  "chapter_breakdown": {
+    "1": {
+      "title": "Adhyaya 1",
+      "verses_total": 7,
+      "verses_refilled": 2,
+      "range_pointers": 5
+    },
+    "2": {
+      "title": "Adhyaya 2",
+      "verses_total": 7,
+      "verses_refilled": 2,
+      "range_pointers": 5
+    },
+    "3": {
+      "title": "Adhyaya 3",
+      "verses_total": 7,
+      "verses_refilled": 2,
+      "range_pointers": 5
+    },
+    "4": {
+      "title": "Adhyaya 4",
+      "verses_total": 6,
+      "verses_refilled": 1,
+      "range_pointers": 5
+    },
+    "5": {
+      "title": "Adhyaya 5",
+      "verses_total": 7,
+      "verses_refilled": 3,
+      "range_pointers": 4
+    },
+    "6": {
+      "title": "Adhyaya 6",
+      "verses_total": 7,
+      "verses_refilled": 2,
+      "range_pointers": 5
+    },
+    "7": {
+      "title": "Adhyaya 7",
+      "verses_total": 65,
+      "verses_refilled": 9,
+      "range_pointers": 56
+    },
+    "8": {
+      "title": "Adhyaya 8",
+      "verses_total": 12,
+      "verses_refilled": 4,
+      "range_pointers": 8
+    },
+    "9": {
+      "title": "Adhyaya 9",
+      "verses_total": 38,
+      "verses_refilled": 6,
+      "range_pointers": 32
+    },
+    "10": {
+      "title": "Adhyaya 10",
+      "verses_total": 35,
+      "verses_refilled": 5,
+      "range_pointers": 30
+    },
+    "11": {
+      "title": "Adhyaya 11",
+      "verses_total": 66,
+      "verses_refilled": 6,
+      "range_pointers": 60
+    },
+    "12": {
+      "title": "Adhyaya 12",
+      "verses_total": 57,
+      "verses_refilled": 5,
+      "range_pointers": 52
+    },
+    "13": {
+      "title": "Adhyaya 13",
+      "verses_total": 63,
+      "verses_refilled": 8,
+      "range_pointers": 55
+    },
+    "14": {
+      "title": "Adhyaya 14",
+      "verses_total": 21,
+      "verses_refilled": 3,
+      "range_pointers": 18
+    },
+    "15": {
+      "title": "Adhyaya 15",
+      "verses_total": 43,
+      "verses_refilled": 4,
+      "range_pointers": 39
+    },
+    "16": {
+      "title": "Adhyaya 16",
+      "verses_total": 58,
+      "verses_refilled": 7,
+      "range_pointers": 51
+    },
+    "17": {
+      "title": "Adhyaya 17",
+      "verses_total": 71,
+      "verses_refilled": 7,
+      "range_pointers": 64
+    },
+    "18": {
+      "title": "Adhyaya 18",
+      "verses_total": 29,
+      "verses_refilled": 4,
+      "range_pointers": 25
+    },
+    "19": {
+      "title": "Adhyaya 19",
+      "verses_total": 12,
+      "verses_refilled": 2,
+      "range_pointers": 10
+    },
+    "20": {
+      "title": "Adhyaya 20",
+      "verses_total": 38,
+      "verses_refilled": 6,
+      "range_pointers": 32
+    },
+    "21": {
+      "title": "Adhyaya 21",
+      "verses_total": 41,
+      "verses_refilled": 8,
+      "range_pointers": 33
+    },
+    "22": {
+      "title": "Adhyaya 22",
+      "verses_total": 93,
+      "verses_refilled": 10,
+      "range_pointers": 83
+    },
+    "23": {
+      "title": "Adhyaya 23",
+      "verses_total": 47,
+      "verses_refilled": 7,
+      "range_pointers": 40
+    },
+    "24": {
+      "title": "Adhyaya 24",
+      "verses_total": 71,
+      "verses_refilled": 8,
+      "range_pointers": 63
+    },
+    "25": {
+      "title": "Adhyaya 25",
+      "verses_total": 66,
+      "verses_refilled": 21,
+      "range_pointers": 45
+    },
+    "26": {
+      "title": "Adhyaya 26",
+      "verses_total": 24,
+      "verses_refilled": 9,
+      "range_pointers": 15
+    },
+    "27": {
+      "title": "Adhyaya 27",
+      "verses_total": 36,
+      "verses_refilled": 10,
+      "range_pointers": 26
+    },
+    "28": {
+      "title": "Adhyaya 28",
+      "verses_total": 13,
+      "verses_refilled": 2,
+      "range_pointers": 11
+    },
+    "29": {
+      "title": "Adhyaya 29",
+      "verses_total": 28,
+      "verses_refilled": 19,
+      "range_pointers": 9
+    },
+    "30": {
+      "title": "Adhyaya 30",
+      "verses_total": 37,
+      "verses_refilled": 24,
+      "range_pointers": 13
+    },
+    "31": {
+      "title": "Adhyaya 31",
+      "verses_total": 27,
+      "verses_refilled": 10,
+      "range_pointers": 17
+    },
+    "32": {
+      "title": "Adhyaya 32",
+      "verses_total": 41,
+      "verses_refilled": 19,
+      "range_pointers": 22
+    },
+    "33": {
+      "title": "Adhyaya 33",
+      "verses_total": 31,
+      "verses_refilled": 15,
+      "range_pointers": 15
+    },
+    "34": {
+      "title": "Adhyaya 34",
+      "verses_total": 31,
+      "verses_refilled": 5,
+      "range_pointers": 26
+    },
+    "35": {
+      "title": "Adhyaya 35",
+      "verses_total": 17,
+      "verses_refilled": 3,
+      "range_pointers": 14
+    },
+    "36": {
+      "title": "Adhyaya 36",
+      "verses_total": 13,
+      "verses_refilled": 3,
+      "range_pointers": 10
+    },
+    "37": {
+      "title": "Adhyaya 37",
+      "verses_total": 13,
+      "verses_refilled": 7,
+      "range_pointers": 6
+    },
+    "38": {
+      "title": "Adhyaya 38",
+      "verses_total": 22,
+      "verses_refilled": 6,
+      "range_pointers": 16
+    },
+    "39": {
+      "title": "Adhyaya 39",
+      "verses_total": 28,
+      "verses_refilled": 14,
+      "range_pointers": 14
+    },
+    "40": {
+      "title": "Adhyaya 40",
+      "verses_total": 17,
+      "verses_refilled": 6,
+      "range_pointers": 11
+    },
+    "41": {
+      "title": "Adhyaya 41",
+      "verses_total": 18,
+      "verses_refilled": 12,
+      "range_pointers": 6
+    },
+    "42": {
+      "title": "Adhyaya 42",
+      "verses_total": 29,
+      "verses_refilled": 21,
+      "range_pointers": 8
+    },
+    "43": {
+      "title": "Adhyaya 43",
+      "verses_total": 52,
+      "verses_refilled": 7,
+      "range_pointers": 45
+    },
+    "44": {
+      "title": "Adhyaya 44",
+      "verses_total": 85,
+      "verses_refilled": 15,
+      "range_pointers": 70
+    },
+    "45": {
+      "title": "Adhyaya 45",
+      "verses_total": 34,
+      "verses_refilled": 3,
+      "range_pointers": 31
+    },
+    "46": {
+      "title": "Adhyaya 46",
+      "verses_total": 29,
+      "verses_refilled": 3,
+      "range_pointers": 26
+    },
+    "47": {
+      "title": "Adhyaya 47",
+      "verses_total": 263,
+      "verses_refilled": 36,
+      "range_pointers": 227
+    },
+    "48": {
+      "title": "Adhyaya 48",
+      "verses_total": 108,
+      "verses_refilled": 9,
+      "range_pointers": 99
+    },
+    "49": {
+      "title": "Adhyaya 49",
+      "verses_total": 79,
+      "verses_refilled": 10,
+      "range_pointers": 69
+    },
+    "50": {
+      "title": "Adhyaya 50",
+      "verses_total": 89,
+      "verses_refilled": 11,
+      "range_pointers": 78
+    },
+    "51": {
+      "title": "Adhyaya 51",
+      "verses_total": 47,
+      "verses_refilled": 5,
+      "range_pointers": 42
+    },
+    "52": {
+      "title": "Adhyaya 52",
+      "verses_total": 26,
+      "verses_refilled": 5,
+      "range_pointers": 21
+    },
+    "53": {
+      "title": "Adhyaya 53",
+      "verses_total": 74,
+      "verses_refilled": 10,
+      "range_pointers": 63
+    },
+    "54": {
+      "title": "Adhyaya 54",
+      "verses_total": 31,
+      "verses_refilled": 5,
+      "range_pointers": 26
+    },
+    "55": {
+      "title": "Adhyaya 55",
+      "verses_total": 33,
+      "verses_refilled": 5,
+      "range_pointers": 28
+    },
+    "56": {
+      "title": "Adhyaya 56",
+      "verses_total": 11,
+      "verses_refilled": 1,
+      "range_pointers": 10
+    },
+    "57": {
+      "title": "Adhyaya 57",
+      "verses_total": 28,
+      "verses_refilled": 5,
+      "range_pointers": 23
+    },
+    "58": {
+      "title": "Adhyaya 58",
+      "verses_total": 56,
+      "verses_refilled": 8,
+      "range_pointers": 48
+    },
+    "59": {
+      "title": "Adhyaya 59",
+      "verses_total": 20,
+      "verses_refilled": 3,
+      "range_pointers": 16
+    },
+    "60": {
+      "title": "Adhyaya 60",
+      "verses_total": 49,
+      "verses_refilled": 7,
+      "range_pointers": 42
+    },
+    "61": {
+      "title": "Adhyaya 61",
+      "verses_total": 57,
+      "verses_refilled": 12,
+      "range_pointers": 42
+    },
+    "62": {
+      "title": "Adhyaya 62",
+      "verses_total": 39,
+      "verses_refilled": 6,
+      "range_pointers": 33
+    },
+    "63": {
+      "title": "Adhyaya 63",
+      "verses_total": 29,
+      "verses_refilled": 3,
+      "range_pointers": 26
+    },
+    "64": {
+      "title": "Adhyaya 64",
+      "verses_total": 28,
+      "verses_refilled": 3,
+      "range_pointers": 25
+    },
+    "65": {
+      "title": "Adhyaya 65",
+      "verses_total": 7,
+      "verses_refilled": 1,
+      "range_pointers": 6
+    },
+    "66": {
+      "title": "Adhyaya 66",
+      "verses_total": 19,
+      "verses_refilled": 3,
+      "range_pointers": 15
+    },
+    "67": {
+      "title": "Adhyaya 67",
+      "verses_total": 25,
+      "verses_refilled": 4,
+      "range_pointers": 21
+    },
+    "68": {
+      "title": "Adhyaya 68",
+      "verses_total": 42,
+      "verses_refilled": 6,
+      "range_pointers": 36
+    },
+    "69": {
+      "title": "Adhyaya 69",
+      "verses_total": 65,
+      "verses_refilled": 11,
+      "range_pointers": 54
+    },
+    "70": {
+      "title": "Adhyaya 70",
+      "verses_total": 64,
+      "verses_refilled": 9,
+      "range_pointers": 55
+    },
+    "71": {
+      "title": "Adhyaya 71",
+      "verses_total": 20,
+      "verses_refilled": 4,
+      "range_pointers": 15
+    },
+    "72": {
+      "title": "Adhyaya 72",
+      "verses_total": 45,
+      "verses_refilled": 10,
+      "range_pointers": 35
+    },
+    "73": {
+      "title": "Adhyaya 73",
+      "verses_total": 11,
+      "verses_refilled": 2,
+      "range_pointers": 9
+    },
+    "74": {
+      "title": "Adhyaya 74",
+      "verses_total": 20,
+      "verses_refilled": 4,
+      "range_pointers": 16
+    },
+    "75": {
+      "title": "Adhyaya 75",
+      "verses_total": 13,
+      "verses_refilled": 2,
+      "range_pointers": 11
+    },
+    "76": {
+      "title": "Adhyaya 76",
+      "verses_total": 13,
+      "verses_refilled": 2,
+      "range_pointers": 11
+    },
+    "77": {
+      "title": "Adhyaya 77",
+      "verses_total": 17,
+      "verses_refilled": 2,
+      "range_pointers": 15
+    },
+    "78": {
+      "title": "Adhyaya 78",
+      "verses_total": 11,
+      "verses_refilled": 1,
+      "range_pointers": 10
+    },
+    "79": {
+      "title": "Adhyaya 79",
+      "verses_total": 15,
+      "verses_refilled": 2,
+      "range_pointers": 13
+    },
+    "80": {
+      "title": "Adhyaya 80",
+      "verses_total": 14,
+      "verses_refilled": 2,
+      "range_pointers": 12
+    },
+    "81": {
+      "title": "Adhyaya 81",
+      "verses_total": 28,
+      "verses_refilled": 4,
+      "range_pointers": 24
+    },
+    "82": {
+      "title": "Adhyaya 82",
+      "verses_total": 31,
+      "verses_refilled": 4,
+      "range_pointers": 27
+    },
+    "83": {
+      "title": "Adhyaya 83",
+      "verses_total": 45,
+      "verses_refilled": 5,
+      "range_pointers": 40
+    },
+    "84": {
+      "title": "Adhyaya 84",
+      "verses_total": 9,
+      "verses_refilled": 1,
+      "range_pointers": 8
+    },
+    "85": {
+      "title": "Adhyaya 85",
+      "verses_total": 9,
+      "verses_refilled": 1,
+      "range_pointers": 8
+    },
+    "86": {
+      "title": "Adhyaya 86",
+      "verses_total": 6,
+      "verses_refilled": 1,
+      "range_pointers": 5
+    },
+    "87": {
+      "title": "Adhyaya 87",
+      "verses_total": 7,
+      "verses_refilled": 1,
+      "range_pointers": 6
+    },
+    "88": {
+      "title": "Adhyaya 88",
+      "verses_total": 5,
+      "verses_refilled": 1,
+      "range_pointers": 4
+    },
+    "89": {
+      "title": "Adhyaya 89",
+      "verses_total": 10,
+      "verses_refilled": 1,
+      "range_pointers": 9
+    },
+    "90": {
+      "title": "Adhyaya 90",
+      "verses_total": 11,
+      "verses_refilled": 1,
+      "range_pointers": 10
+    },
+    "91": {
+      "title": "Adhyaya 91",
+      "verses_total": 10,
+      "verses_refilled": 1,
+      "range_pointers": 9
+    },
+    "92": {
+      "title": "Adhyaya 92",
+      "verses_total": 35,
+      "verses_refilled": 6,
+      "range_pointers": 29
+    },
+    "93": {
+      "title": "Adhyaya 93",
+      "verses_total": 161,
+      "verses_refilled": 18,
+      "range_pointers": 143
+    },
+    "94": {
+      "title": "Adhyaya 94",
+      "verses_total": 9,
+      "verses_refilled": 1,
+      "range_pointers": 8
+    },
+    "95": {
+      "title": "Adhyaya 95",
+      "verses_total": 38,
+      "verses_refilled": 5,
+      "range_pointers": 30
+    },
+    "96": {
+      "title": "Adhyaya 96",
+      "verses_total": 25,
+      "verses_refilled": 3,
+      "range_pointers": 22
+    },
+    "97": {
+      "title": "Adhyaya 97",
+      "verses_total": 20,
+      "verses_refilled": 3,
+      "range_pointers": 17
+    },
+    "98": {
+      "title": "Adhyaya 98",
+      "verses_total": 15,
+      "verses_refilled": 2,
+      "range_pointers": 13
+    },
+    "99": {
+      "title": "Adhyaya 99",
+      "verses_total": 21,
+      "verses_refilled": 2,
+      "range_pointers": 19
+    },
+    "100": {
+      "title": "Adhyaya 100",
+      "verses_total": 37,
+      "verses_refilled": 7,
+      "range_pointers": 30
+    },
+    "101": {
+      "title": "Adhyaya 101",
+      "verses_total": 85,
+      "verses_refilled": 9,
+      "range_pointers": 76
+    },
+    "102": {
+      "title": "Adhyaya 102",
+      "verses_total": 31,
+      "verses_refilled": 4,
+      "range_pointers": 27
+    },
+    "103": {
+      "title": "Adhyaya 103",
+      "verses_total": 25,
+      "verses_refilled": 8,
+      "range_pointers": 17
+    },
+    "104": {
+      "title": "Adhyaya 104",
+      "verses_total": 20,
+      "verses_refilled": 3,
+      "range_pointers": 17
+    },
+    "105": {
+      "title": "Adhyaya 105",
+      "verses_total": 22,
+      "verses_refilled": 3,
+      "range_pointers": 19
+    },
+    "106": {
+      "title": "Adhyaya 106",
+      "verses_total": 58,
+      "verses_refilled": 7,
+      "range_pointers": 49
+    },
+    "107": {
+      "title": "Adhyaya 107",
+      "verses_total": 21,
+      "verses_refilled": 2,
+      "range_pointers": 19
+    },
+    "108": {
+      "title": "Adhyaya 108",
+      "verses_total": 34,
+      "verses_refilled": 10,
+      "range_pointers": 24
+    },
+    "109": {
+      "title": "Adhyaya 109",
+      "verses_total": 25,
+      "verses_refilled": 6,
+      "range_pointers": 19
+    },
+    "110": {
+      "title": "Adhyaya 110",
+      "verses_total": 20,
+      "verses_refilled": 2,
+      "range_pointers": 17
+    },
+    "111": {
+      "title": "Adhyaya 111",
+      "verses_total": 14,
+      "verses_refilled": 4,
+      "range_pointers": 10
+    },
+    "112": {
+      "title": "Adhyaya 112",
+      "verses_total": 22,
+      "verses_refilled": 4,
+      "range_pointers": 18
+    },
+    "113": {
+      "title": "Adhyaya 113",
+      "verses_total": 79,
+      "verses_refilled": 12,
+      "range_pointers": 67
+    },
+    "114": {
+      "title": "Adhyaya 114",
+      "verses_total": 86,
+      "verses_refilled": 11,
+      "range_pointers": 75
+    },
+    "115": {
+      "title": "Adhyaya 115",
+      "verses_total": 21,
+      "verses_refilled": 4,
+      "range_pointers": 15
+    },
+    "116": {
+      "title": "Adhyaya 116",
+      "verses_total": 25,
+      "verses_refilled": 2,
+      "range_pointers": 23
+    },
+    "117": {
+      "title": "Adhyaya 117",
+      "verses_total": 21,
+      "verses_refilled": 2,
+      "range_pointers": 19
+    },
+    "118": {
+      "title": "Adhyaya 118",
+      "verses_total": 74,
+      "verses_refilled": 7,
+      "range_pointers": 67
+    },
+    "119": {
+      "title": "Adhyaya 119",
+      "verses_total": 45,
+      "verses_refilled": 5,
+      "range_pointers": 40
+    },
+    "120": {
+      "title": "Adhyaya 120",
+      "verses_total": 48,
+      "verses_refilled": 4,
+      "range_pointers": 44
+    },
+    "121": {
+      "title": "Adhyaya 121",
+      "verses_total": 82,
+      "verses_refilled": 8,
+      "range_pointers": 74
+    },
+    "122": {
+      "title": "Adhyaya 122",
+      "verses_total": 104,
+      "verses_refilled": 10,
+      "range_pointers": 94
+    },
+    "123": {
+      "title": "Adhyaya 123",
+      "verses_total": 64,
+      "verses_refilled": 6,
+      "range_pointers": 58
+    },
+    "124": {
+      "title": "Adhyaya 124",
+      "verses_total": 113,
+      "verses_refilled": 11,
+      "range_pointers": 102
+    },
+    "125": {
+      "title": "Adhyaya 125",
+      "verses_total": 58,
+      "verses_refilled": 7,
+      "range_pointers": 51
+    },
+    "126": {
+      "title": "Adhyaya 126",
+      "verses_total": 73,
+      "verses_refilled": 6,
+      "range_pointers": 66
+    },
+    "127": {
+      "title": "Adhyaya 127",
+      "verses_total": 28,
+      "verses_refilled": 3,
+      "range_pointers": 25
+    },
+    "128": {
+      "title": "Adhyaya 128",
+      "verses_total": 84,
+      "verses_refilled": 10,
+      "range_pointers": 74
+    },
+    "129": {
+      "title": "Adhyaya 129",
+      "verses_total": 36,
+      "verses_refilled": 5,
+      "range_pointers": 31
+    },
+    "130": {
+      "title": "Adhyaya 130",
+      "verses_total": 28,
+      "verses_refilled": 3,
+      "range_pointers": 25
+    },
+    "131": {
+      "title": "Adhyaya 131",
+      "verses_total": 50,
+      "verses_refilled": 4,
+      "range_pointers": 46
+    },
+    "132": {
+      "title": "Adhyaya 132",
+      "verses_total": 28,
+      "verses_refilled": 3,
+      "range_pointers": 25
+    },
+    "133": {
+      "title": "Adhyaya 133",
+      "verses_total": 70,
+      "verses_refilled": 5,
+      "range_pointers": 65
+    },
+    "134": {
+      "title": "Adhyaya 134",
+      "verses_total": 33,
+      "verses_refilled": 4,
+      "range_pointers": 29
+    },
+    "135": {
+      "title": "Adhyaya 135",
+      "verses_total": 83,
+      "verses_refilled": 7,
+      "range_pointers": 76
+    },
+    "136": {
+      "title": "Adhyaya 136",
+      "verses_total": 68,
+      "verses_refilled": 6,
+      "range_pointers": 62
+    },
+    "137": {
+      "title": "Adhyaya 137",
+      "verses_total": 36,
+      "verses_refilled": 3,
+      "range_pointers": 33
+    },
+    "138": {
+      "title": "Adhyaya 138",
+      "verses_total": 57,
+      "verses_refilled": 5,
+      "range_pointers": 52
+    },
+    "139": {
+      "title": "Adhyaya 139",
+      "verses_total": 47,
+      "verses_refilled": 4,
+      "range_pointers": 43
+    },
+    "140": {
+      "title": "Adhyaya 140",
+      "verses_total": 87,
+      "verses_refilled": 10,
+      "range_pointers": 77
+    },
+    "141": {
+      "title": "Adhyaya 141",
+      "verses_total": 85,
+      "verses_refilled": 8,
+      "range_pointers": 77
+    },
+    "142": {
+      "title": "Adhyaya 142",
+      "verses_total": 77,
+      "verses_refilled": 8,
+      "range_pointers": 69
+    },
+    "143": {
+      "title": "Adhyaya 143",
+      "verses_total": 42,
+      "verses_refilled": 6,
+      "range_pointers": 36
+    },
+    "144": {
+      "title": "Adhyaya 144",
+      "verses_total": 108,
+      "verses_refilled": 11,
+      "range_pointers": 96
+    },
+    "145": {
+      "title": "Adhyaya 145",
+      "verses_total": 117,
+      "verses_refilled": 12,
+      "range_pointers": 105
+    },
+    "146": {
+      "title": "Adhyaya 146",
+      "verses_total": 77,
+      "verses_refilled": 13,
+      "range_pointers": 64
+    },
+    "147": {
+      "title": "Adhyaya 147",
+      "verses_total": 29,
+      "verses_refilled": 4,
+      "range_pointers": 25
+    },
+    "148": {
+      "title": "Adhyaya 148",
+      "verses_total": 102,
+      "verses_refilled": 13,
+      "range_pointers": 88
+    },
+    "149": {
+      "title": "Adhyaya 149",
+      "verses_total": 16,
+      "verses_refilled": 2,
+      "range_pointers": 14
+    },
+    "150": {
+      "title": "Adhyaya 150",
+      "verses_total": 242,
+      "verses_refilled": 27,
+      "range_pointers": 215
+    },
+    "151": {
+      "title": "Adhyaya 151",
+      "verses_total": 36,
+      "verses_refilled": 4,
+      "range_pointers": 32
+    },
+    "152": {
+      "title": "Adhyaya 152",
+      "verses_total": 36,
+      "verses_refilled": 5,
+      "range_pointers": 31
+    },
+    "153": {
+      "title": "Adhyaya 153",
+      "verses_total": 219,
+      "verses_refilled": 28,
+      "range_pointers": 191
+    },
+    "154": {
+      "title": "Adhyaya 154",
+      "verses_total": 588,
+      "verses_refilled": 88,
+      "range_pointers": 495
+    },
+    "155": {
+      "title": "Adhyaya 155",
+      "verses_total": 34,
+      "verses_refilled": 5,
+      "range_pointers": 29
+    },
+    "156": {
+      "title": "Adhyaya 156",
+      "verses_total": 39,
+      "verses_refilled": 6,
+      "range_pointers": 33
+    },
+    "157": {
+      "title": "Adhyaya 157",
+      "verses_total": 24,
+      "verses_refilled": 4,
+      "range_pointers": 20
+    },
+    "158": {
+      "title": "Adhyaya 158",
+      "verses_total": 50,
+      "verses_refilled": 7,
+      "range_pointers": 29
+    },
+    "159": {
+      "title": "Adhyaya 159",
+      "verses_total": 43,
+      "verses_refilled": 7,
+      "range_pointers": 36
+    },
+    "160": {
+      "title": "Adhyaya 160",
+      "verses_total": 33,
+      "verses_refilled": 5,
+      "range_pointers": 28
+    },
+    "161": {
+      "title": "Adhyaya 161",
+      "verses_total": 89,
+      "verses_refilled": 13,
+      "range_pointers": 76
+    },
+    "162": {
+      "title": "Adhyaya 162",
+      "verses_total": 38,
+      "verses_refilled": 5,
+      "range_pointers": 33
+    },
+    "163": {
+      "title": "Adhyaya 163",
+      "verses_total": 107,
+      "verses_refilled": 11,
+      "range_pointers": 96
+    },
+    "164": {
+      "title": "Adhyaya 164",
+      "verses_total": 28,
+      "verses_refilled": 5,
+      "range_pointers": 23
+    },
+    "165": {
+      "title": "Adhyaya 165",
+      "verses_total": 24,
+      "verses_refilled": 3,
+      "range_pointers": 21
+    },
+    "166": {
+      "title": "Adhyaya 166",
+      "verses_total": 24,
+      "verses_refilled": 3,
+      "range_pointers": 21
+    },
+    "167": {
+      "title": "Adhyaya 167",
+      "verses_total": 67,
+      "verses_refilled": 10,
+      "range_pointers": 57
+    },
+    "168": {
+      "title": "Adhyaya 168",
+      "verses_total": 16,
+      "verses_refilled": 2,
+      "range_pointers": 14
+    },
+    "169": {
+      "title": "Adhyaya 169",
+      "verses_total": 18,
+      "verses_refilled": 2,
+      "range_pointers": 16
+    },
+    "170": {
+      "title": "Adhyaya 170",
+      "verses_total": 30,
+      "verses_refilled": 8,
+      "range_pointers": 22
+    },
+    "171": {
+      "title": "Adhyaya 171",
+      "verses_total": 71,
+      "verses_refilled": 8,
+      "range_pointers": 63
+    },
+    "172": {
+      "title": "Adhyaya 172",
+      "verses_total": 51,
+      "verses_refilled": 5,
+      "range_pointers": 36
+    },
+    "173": {
+      "title": "Adhyaya 173",
+      "verses_total": 32,
+      "verses_refilled": 4,
+      "range_pointers": 28
+    },
+    "174": {
+      "title": "Adhyaya 174",
+      "verses_total": 52,
+      "verses_refilled": 6,
+      "range_pointers": 44
+    },
+    "175": {
+      "title": "Adhyaya 175",
+      "verses_total": 75,
+      "verses_refilled": 9,
+      "range_pointers": 66
+    },
+    "176": {
+      "title": "Adhyaya 176",
+      "verses_total": 14,
+      "verses_refilled": 2,
+      "range_pointers": 12
+    }
+  }
+}

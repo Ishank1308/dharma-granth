@@ -50,7 +50,7 @@ export default function MethodologyPage() {
               ['sources', 'Source texts'],
               ['translations', 'Translations'],
               ['commentary', 'Commentary and attribution'],
-              ['modern', 'Modern explanations'],
+              ['modern', 'Modern explanations & Lokasamgraha'],
               ['ai', 'AI assistance'],
               ['review', 'Human review'],
               ['corrections', 'Corrections'],
@@ -92,11 +92,17 @@ export default function MethodologyPage() {
           have not yet been checked against the original works. Commentary that was produced with AI assistance is labelled as such.
         </p>
 
-        <h2 id="modern" className={h2}>4. Modern explanations</h2>
+        <h2 id="modern" className={h2}>4. Modern explanations & the Lokasamgraha ethos</h2>
         <p className={p}>
           Simple meanings, “why it matters today”, modern examples, misunderstanding notes, teaching flows and reflection questions are editorial.
-          They were written for this site to help new readers, and they are labelled “not scripture” wherever they appear. They are drafts
-          awaiting scholarly review. They make no promises about outcomes and are not medical or psychological advice.
+          They were written for this site to help modern readers understand the living spirit of the scriptures. Crucially, they are guided by the
+          core perspective of <strong>Lokasamgraha (लोकसंग्रह)</strong> — the universal welfare and protection of all beings that motivated Hindu saints,
+          acharyas, and rishis across millennia. They frame spiritual realization not as cold detachment or passive withdrawal, but as selfless service
+          and moral courage (<em>sarvabhūtahite ratāḥ</em>).
+        </p>
+        <p className={p}>
+          They are labelled “not scripture” wherever they appear, and represent drafts awaiting scholarly review. They make no promises about outcomes
+          and are not medical or psychological advice.
         </p>
 
         <h2 id="ai" className={h2}>5. AI assistance</h2>

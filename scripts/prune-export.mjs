@@ -55,6 +55,31 @@ if (existsSync(DATA)) {
   }
 }
 
+// Verse pages ship without their RSC payload (index.txt), halving their file
+// cost. The payload only serves client-side navigation; when it is missing,
+// Next 14 falls back to a full page load (fetch-server-response.js:
+// doMpaNavigation on a non-OK response), and VerseHrefLink already links verse
+// pages as plain <a>. The HTML, which crawlers and readers get, is untouched.
+let verseRsc = 0;
+const SCRIPTURE = join(DIST, 'scripture');
+if (existsSync(SCRIPTURE)) {
+  for (const id of readdirSync(SCRIPTURE)) {
+    const chapters = join(SCRIPTURE, id, 'chapter');
+    if (!existsSync(chapters)) continue;
+    for (const chapter of readdirSync(chapters)) {
+      const verses = join(chapters, chapter, 'verse');
+      if (!existsSync(verses) || !statSync(verses).isDirectory()) continue;
+      for (const verse of readdirSync(verses)) {
+        const txt = join(verses, verse, 'index.txt');
+        if (!existsSync(txt)) continue;
+        freed += remove(txt);
+        verseRsc++;
+      }
+    }
+  }
+}
+if (verseRsc > 0) console.log(`  pruned ${verseRsc} verse-page index.txt (RSC payload; links to verse pages load the HTML)`);
+
 // Archives in public/ (e.g. pinterest/katha/katha-pinterest-jpg.zip, 26 MB)
 // are working bundles no page links to; one exceeds the 25 MiB file limit.
 (function dropArchives(dir) {
@@ -71,6 +96,8 @@ if (existsSync(DATA)) {
 // Cloudflare Pages limits (free plan): 20,000 files per deployment and
 // 25 MiB per file. Fail the build here rather than at upload.
 const MAX_FILES = 20_000;
+// Warn well before the hard limit, so the next feature author sees it coming.
+const WARN_FILES = 18_500;
 const MAX_FILE_BYTES = 25 * 1024 * 1024;
 let files = 0;
 let total = 0;
@@ -110,6 +137,11 @@ if (process.env.GITHUB_STEP_SUMMARY) {
   } catch {}
 }
 let ok = true;
+if (files > WARN_FILES && files <= MAX_FILES) {
+  const msg = `${files} files — only ${MAX_FILES - files} left before Cloudflare Pages' ${MAX_FILES}-file limit.`;
+  console.warn(`! ${msg}`);
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=Export file count::${msg}`);
+}
 if (files > MAX_FILES) {
   console.error(`✗ ${files} files — Cloudflare Pages allows ${MAX_FILES} per deployment.`);
   ok = false;

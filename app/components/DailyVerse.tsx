@@ -20,16 +20,21 @@ import { MagneticButton } from '@/app/components/motion/MagneticButton';
 import { getTodayWisdom, type DailyWisdomItem } from '@/data/daily-wisdom-engine';
 import { toAsciiDigits } from '@/lib/verse-format';
 import {
-  speakSanskritShloka,
-  stopSanskritSpeech,
-  isSpeakingSanskrit,
   startTanpuraDrone,
   stopTanpuraDrone,
-  isTanpuraActive,
 } from '@/lib/sacred-audio';
+import {
+  startSoundscape,
+  stopSoundscape,
+  subscribeSoundscape,
+  setCurrentVerseContext,
+  type SoundscapeState,
+} from '@/lib/sacred-soundscape';
+import { hasRecordedVerseAudio } from '@/lib/verse-audio';
 import { recordSadhanaActivity, useSadhanaStreak } from '@/lib/sadhana-streak';
 import { istDate } from '@/lib/ist';
 import { SacredShareModal } from '@/app/components/share/SacredShareModal';
+import { SITE_URL } from '@/lib/jsonld';
 
 export function DailyVerse() {
   const [wisdom, setWisdom] = useState<DailyWisdomItem | null>(null);
@@ -59,27 +64,40 @@ export function DailyVerse() {
       }
     } catch {}
 
+    const unsub = subscribeSoundscape((st: SoundscapeState) => {
+      setIsPlayingAudio(st.isPlaying && st.activeTrack === 'recitation');
+    });
+
     return () => {
-      stopSanskritSpeech();
+      unsub();
+      stopSoundscape();
       stopTanpuraDrone();
     };
   }, []);
+
+  const hasStudioAudio = wisdom
+    ? hasRecordedVerseAudio(wisdom.scriptureId, wisdom.chapterId, wisdom.verseId)
+    : false;
 
   if (!wisdom) return null;
 
   function toggleAudio() {
     if (!wisdom) return;
     if (isPlayingAudio) {
-      stopSanskritSpeech();
+      stopSoundscape();
       setIsPlayingAudio(false);
     } else {
-      setIsPlayingAudio(true);
-      speakSanskritShloka(
+      setCurrentVerseContext(
         wisdom.sanskrit,
-        0.85,
-        () => setIsPlayingAudio(false),
-        () => setIsPlayingAudio(false)
+        `${wisdom.scriptureTitle} ${wisdom.chapterId}.${wisdom.verseId}`,
+        wisdom.hindi,
+        wisdom.translation,
+        wisdom.scriptureId,
+        wisdom.chapterId,
+        wisdom.verseId
       );
+      startSoundscape('recitation');
+      setIsPlayingAudio(true);
     }
   }
 
@@ -131,6 +149,14 @@ export function DailyVerse() {
 
               {/* Audio Controls */}
               <div className="flex items-center gap-2">
+                {hasStudioAudio && (
+                  <span
+                    className="hidden xs:inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-[10px] font-bold text-amber-700 dark:text-amber-300 uppercase tracking-wider"
+                    title="ElevenLabs उच्च गुणवत्ता ध्वनि · Studio Neural Recitation"
+                  >
+                    Studio
+                  </span>
+                )}
                 <button
                   type="button"
                   onClick={toggleAudio}
@@ -139,7 +165,7 @@ export function DailyVerse() {
                       ? 'bg-amber-600 text-white animate-pulse'
                       : 'border border-saffron-300 bg-white/80 dark:bg-stone-800 text-saffron-800 dark:text-saffron-200 hover:bg-saffron-50'
                   }`}
-                  title="Listen to Sanskrit Recitation"
+                  title={hasStudioAudio ? 'Listen to Studio Recitation with 432Hz Tanpura drone' : 'Listen to Sanskrit Recitation with Tanpura drone'}
                 >
                   {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-saffron-600" />}
                   <span>{isPlayingAudio ? 'रोकें · Pause' : 'सुनें · Listen'}</span>
@@ -171,68 +197,109 @@ export function DailyVerse() {
               </div>
             </div>
 
-            {/* Sacred Sanskrit Shloka */}
-            <div className="space-y-2">
+            {/* Sacred Sanskrit Shloka on Apple Pranic Leaf */}
+            <div className="verse-leaf apple-pranic-leaf relative rounded-2xl px-5 py-6 sm:px-8 sm:py-7 text-center">
+              <span aria-hidden="true" className="verse-leaf-ornament left-3 top-2">❁</span>
+              <span aria-hidden="true" className="verse-leaf-ornament right-3 top-2">❁</span>
               <p
                 lang="sa"
-                className="font-devanagari text-2xl sm:text-3xl md:text-4xl text-saffron-900 dark:text-saffron-100 font-bold leading-relaxed sm:leading-[1.8] drop-shadow-sm whitespace-pre-line"
+                className="font-devanagari text-2xl sm:text-3xl md:text-4xl text-saffron-900 dark:text-saffron-100 font-bold leading-relaxed sm:leading-[1.8] drop-shadow-xs whitespace-pre-line"
               >
                 {wisdom.sanskrit}
               </p>
 
-              <p className="text-xs sm:text-sm text-saffron-700/80 dark:text-saffron-300/80 font-serif italic whitespace-pre-line">
+              <p className="mt-3 text-xs sm:text-sm text-saffron-700/80 dark:text-saffron-300/80 font-serif italic whitespace-pre-line border-t border-amber-600/15 pt-3">
                 {wisdom.transliteration}
               </p>
             </div>
 
-            <div className="w-16 h-0.5 bg-gradient-to-r from-saffron-500 to-transparent" />
-
-            {/* Translations */}
-            <div className="space-y-1.5">
-              <p className="text-base sm:text-lg text-dharma-text font-serif leading-relaxed">
-                {wisdom.translation}
-              </p>
-              <p lang="hi" className="text-xs sm:text-sm text-rose-900 dark:text-rose-300 font-devanagari font-medium leading-relaxed">
-                {wisdom.hindi}
-              </p>
-            </div>
-
-            {/* Practical Wisdom & Reflection */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
-              {/* Life Application */}
-              <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-3.5 space-y-1">
-                <p className="text-2xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 flex items-center gap-1">
-                  <Compass className="w-3 h-3" />
-                  <span>जीवन में प्रयोग · Practical Application</span>
-                </p>
-                <p className="text-xs text-dharma-text leading-relaxed">
-                  {toAsciiDigits(wisdom.practicalTeaching)}
-                </p>
+            {/* ── 3 CANONICAL PILLARS: भावार्थ → व्याख्या → आधुनिक संदर्भ ── */}
+            <div className="space-y-3.5 pt-1">
+              {/* स्तम्भ १ : भावार्थ (Bhavartha) */}
+              <div className="apple-pillar apple-pillar-bhavartha p-4.5 sm:p-5 shadow-2xs">
+                <div className="mb-2.5 flex items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30">
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-600 dark:bg-amber-400 animate-pulse" />
+                    ॥ स्तम्भ १ : भावार्थ · Meaning ॥
+                  </span>
+                </div>
+                <div className="space-y-1.5">
+                  <p lang="hi" className="font-devanagari text-sm sm:text-base text-dharma-text font-medium leading-relaxed">
+                    {wisdom.hindi}
+                  </p>
+                  <p className="font-serif text-xs sm:text-sm text-dharma-muted leading-relaxed">
+                    {wisdom.translation}
+                  </p>
+                </div>
               </div>
 
-              {/* Reflection Prompt */}
-              <div className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-3.5 space-y-1">
-                <p className="text-2xs font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300 flex items-center gap-1">
-                  <Target className="w-3 h-3" />
-                  <span>आज का आत्म-चिंतन · Reflection Prompt</span>
-                </p>
-                <p className="text-xs text-dharma-text leading-relaxed">
-                  {toAsciiDigits(wisdom.reflectionPrompt)}
-                </p>
+              {/* स्तम्भ २ : व्याख्या (Vyakhya) */}
+              <div className="apple-pillar apple-pillar-vyakhya p-4.5 sm:p-5 shadow-2xs">
+                <div className="mb-2.5 flex items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider bg-orange-500/20 text-orange-900 dark:text-orange-200 border border-orange-500/30">
+                    <span className="h-1.5 w-1.5 rounded-full bg-orange-600 dark:bg-orange-400" />
+                    ॥ स्तम्भ २ : व्याख्या · Exposition ॥
+                  </span>
+                </div>
+                <div className="space-y-1.5">
+                  <p lang="hi" className="font-devanagari text-xs sm:text-sm text-dharma-text leading-relaxed">
+                    {toAsciiDigits(wisdom.practicalTeachingHi)}
+                  </p>
+                  <p className="font-serif text-xs sm:text-sm text-dharma-muted leading-relaxed">
+                    {toAsciiDigits(wisdom.practicalTeaching)}
+                  </p>
+                </div>
+              </div>
+
+              {/* स्तम्भ ३ : आधुनिक संदर्भ (Modern Context) */}
+              <div className="apple-pillar apple-pillar-modern p-4.5 sm:p-5 shadow-2xs">
+                <div className="mb-2.5 flex items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider bg-emerald-500/20 text-emerald-900 dark:text-emerald-200 border border-emerald-500/30">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
+                    ॥ स्तम्भ ३ : आधुनिक संदर्भ · Modern Context ॥
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+                  {/* दैनिक जीवन सूत्र */}
+                  <div className="rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-3 space-y-1">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 flex items-center gap-1">
+                      <Target className="w-3 h-3" />
+                      <span>दैनिक संकल्प · Daily Life Protocol</span>
+                    </p>
+                    <p lang="hi" className="font-devanagari text-xs text-dharma-text leading-relaxed font-medium">
+                      {toAsciiDigits(wisdom.dailyChallengeHi)}
+                    </p>
+                    <p className="text-2xs text-dharma-muted">
+                      {toAsciiDigits(wisdom.dailyChallenge)}
+                    </p>
+                  </div>
+
+                  {/* आत्म-चिंतन प्रश्न */}
+                  <div className="rounded-xl border border-sky-500/25 bg-sky-500/5 p-3 space-y-1">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300 flex items-center gap-1">
+                      <Compass className="w-3 h-3" />
+                      <span>आत्म-चिंतन · Introspective Question</span>
+                    </p>
+                    <p lang="hi" className="font-devanagari text-xs text-dharma-text leading-relaxed font-medium">
+                      {toAsciiDigits(wisdom.reflectionPromptHi)}
+                    </p>
+                    <p className="text-2xs text-dharma-muted">
+                      {toAsciiDigits(wisdom.reflectionPrompt)}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Daily Sadhana Challenge Strip */}
+            {/* Daily Sadhana Action Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-3.5">
               <div className="space-y-0.5">
                 <span className="text-2xs font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
-                  🎯 आज का साधना संकल्प (Daily Challenge)
+                  🎯 आज का साधना संकल्प (Sadhana Practice)
                 </span>
-                <p lang="hi" className="font-devanagari text-xs font-medium text-dharma-text">
-                  {toAsciiDigits(wisdom.dailyChallengeHi)}
-                </p>
-                <p className="text-xs text-dharma-text-secondary">
-                  {toAsciiDigits(wisdom.dailyChallenge)}
+                <p className="text-xs text-dharma-text">
+                  Complete today&apos;s contemplation and anchor your mindfulness.
                 </p>
               </div>
 
@@ -295,8 +362,10 @@ export function DailyVerse() {
           transliteration: wisdom.transliteration,
           translation: wisdom.translation,
           hindi: wisdom.hindi,
+          vyakhya: wisdom.translation,
+          modernContext: wisdom.practicalTeachingHi || wisdom.practicalTeaching,
           quote: wisdom.practicalTeaching,
-          url: typeof window !== 'undefined' ? `${window.location.origin}${wisdom.href}` : `https://dharmagranth.dev${wisdom.href}`,
+          url: typeof window !== 'undefined' ? `${window.location.origin}${wisdom.href}` : `${SITE_URL}${wisdom.href}`,
         }}
       />
     </>

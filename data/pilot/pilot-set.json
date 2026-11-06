@@ -4,6 +4,7 @@
   "units": [
     {
       "id": "gita-2-47",
+      "supersededBy": "Editor's decision, 2026-10-25: show the stored Gita Press Hindi translation and the approved व्याख्या from docs/vyakhya-guide.md (data/ai-commentary/bhagavadgita.json) instead of this record.",
       "group": "A",
       "scriptureId": "bhagavadgita",
       "chapter": 2,
