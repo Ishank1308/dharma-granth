@@ -1,5 +1,5 @@
 /**
- * Scholarly & Social Citation Engine for Dharma Granth (dharmagranth.in)
+ * Scholarly & Social Citation Engine for Dharma Granth (dharmagranth.dev)
  * 
  * Supports standard academic styles (APA 7th, Chicago 17th, MLA 9th)
  * alongside Markdown and formatted Social / WhatsApp sharing.
