@@ -227,6 +227,12 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Dharma Granth — Daily Sacred Verse &amp; Wisdom"
+          href="/feed.xml"
+        />
+        <link
           rel="preload"
           href="/logo-splash.webp"
           as="image"
