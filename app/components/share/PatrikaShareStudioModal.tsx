@@ -14,6 +14,7 @@ import {
   Loader2,
   Palette,
   CheckSquare,
+  MessageCircle,
 } from 'lucide-react';
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
 import { triggerTactileFeedback } from '@/lib/haptics';
@@ -560,24 +561,35 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
                 </p>
               ) : null}
 
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-3 gap-2">
+                <a
+                  href={`https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2.5 rounded-xl border border-emerald-600/40 bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 text-xs font-semibold transition"
+                  title="WhatsApp पर साझा करें"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">WhatsApp</span>
+                </a>
+
                 <button
                   type="button"
                   onClick={triggerShare}
                   disabled={busy}
-                  className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl border border-stone-700 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold transition"
+                  className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2.5 rounded-xl border border-stone-700 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold transition"
                 >
-                  <Share2 className="w-3.5 h-3.5" />
-                  <span>शेयर करें</span>
+                  <Share2 className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">शेयर</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={copyText}
-                  className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl border border-stone-700 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold transition"
+                  className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2.5 rounded-xl border border-stone-700 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold transition"
                 >
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{copied ? 'कॉपी हुआ!' : 'टेक्स्ट कॉपी'}</span>
+                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> : <Copy className="w-3.5 h-3.5 shrink-0" />}
+                  <span className="truncate">{copied ? 'कॉपी!' : 'कॉपी'}</span>
                 </button>
               </div>
             </div>
