@@ -82,7 +82,7 @@ export default function ScripturesPage() {
             ग्रंथालय
           </span>
         </h1>
-        <p className="mt-4 max-w-2xl text-[17px] leading-relaxed text-dharma-muted">
+        <p className="mt-4 max-w-2xl text-body leading-relaxed text-dharma-muted">
           Vedas, Upanishads, Itihasas and Puranas in one place. Search by name or topic, filter by tradition, length or
           language, then open any text to read it verse by verse.
         </p>

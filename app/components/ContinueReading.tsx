@@ -40,7 +40,7 @@ export function ContinueReading() {
       <h2 id="continue-reading-heading" className="sr-only">
         <span lang="hi">पढ़ना जारी रखें</span> · <span>Continue reading</span>
       </h2>
-      <article className="relative flex items-center gap-4 rounded-[22px] bg-dharma-card px-5 py-5 shadow-[0_2px_6px_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)] sm:gap-5 sm:px-7">
+      <article className="relative flex items-center gap-4 rounded-card bg-dharma-card px-5 py-5 shadow-raised sm:gap-5 sm:px-7">
         <div
           role="progressbar"
           aria-valuemin={0}
@@ -60,14 +60,14 @@ export function ContinueReading() {
             <span lang="hi" className="font-devanagari">पढ़ना जारी रखें</span> <span aria-hidden="true">·</span>{' '}
             <span lang="hi" className="font-devanagari">{timeAgo(latest.readAt)}</span>
           </p>
-          <p className="mt-0.5 truncate text-[17px] font-semibold tracking-[-0.02em] text-dharma-text sm:text-[19px]">
+          <p className="mt-0.5 truncate text-body font-semibold tracking-[-0.02em] text-dharma-text sm:text-[19px]">
             {latest.scriptureTitle} · {latest.chapterTitle}
           </p>
         </div>
-        <Link href={resumeHref(latest)} className="hidden shrink-0 text-[17px] text-dharma-saffron hover:underline sm:inline">
+        <Link href={resumeHref(latest)} className="hidden shrink-0 text-body text-dharma-saffron hover:underline sm:inline">
           {latest.verseId ? `Resume at verse ${latest.verseId}` : 'Resume'} <span aria-hidden="true">›</span>
         </Link>
-        <Link href={resumeHref(latest)} className="absolute inset-0 rounded-[22px] sm:hidden" aria-label={`Resume ${latest.chapterTitle}`} />
+        <Link href={resumeHref(latest)} className="absolute inset-0 rounded-card sm:hidden" aria-label={`Resume ${latest.chapterTitle}`} />
         <button
           type="button"
           onClick={() => forgetScripture(latest.scriptureId)}
@@ -80,14 +80,14 @@ export function ContinueReading() {
 
       {others.length > 0 && (
         <ul
-          className="overflow-hidden rounded-[14px] bg-dharma-card"
+          className="overflow-hidden rounded-group bg-dharma-card"
           aria-label="अन्य हाल के ग्रंथ (Other recent texts)"
         >
           {others.slice(0, 3).map((v) => (
             <li key={v.scriptureId} className="border-b border-dharma-text/10 last:border-0">
               <Link href={resumeHref(v)} className="flex items-center justify-between gap-3 px-5 py-3.5 transition hover:bg-dharma-text/[0.03]">
                 <span className="min-w-0">
-                  <span className="block truncate text-[17px] text-dharma-text">{v.scriptureTitle}</span>
+                  <span className="block truncate text-body text-dharma-text">{v.scriptureTitle}</span>
                   <span className="block truncate text-[13px] text-dharma-muted">
                     अध्याय {v.chapterId} · {v.chapterTitle}
                   </span>

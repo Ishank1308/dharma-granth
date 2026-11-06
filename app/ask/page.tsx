@@ -126,11 +126,11 @@ export default function AskDharmaPage() {
         }
       />
 
-      <section className="mx-auto mt-8 max-w-[980px] px-5 sm:px-6">
+      <section className="mx-auto mt-8 max-w-content px-5 sm:px-6">
         <AskDharmaClient questionBank={questionBank} />
       </section>
 
-      <section className="mx-auto mt-16 max-w-[980px] px-5 sm:px-6" aria-labelledby="granth-questions">
+      <section className="mx-auto mt-16 max-w-content px-5 sm:px-6" aria-labelledby="granth-questions">
         <SectionTitle
           id="granth-questions"
           title="Questions people ask"

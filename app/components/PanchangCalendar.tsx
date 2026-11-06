@@ -506,7 +506,7 @@ export function PanchangCalendar() {
           </div>
 
           {/* Spiritual Focus Pill */}
-          <div className="rounded-[14px] bg-dharma-text/[0.04] p-3.5 max-w-sm">
+          <div className="rounded-group bg-dharma-text/[0.04] p-3.5 max-w-sm">
             <div className="flex items-center gap-1.5 text-xs font-bold text-dharma-text">
               <Sparkles className="h-3.5 w-3.5 text-saffron-600" />
               <span>साधना संकेत · Day Focus</span>
@@ -756,7 +756,7 @@ export function PanchangCalendar() {
         {panchang.solarTimes.isReliable ? (
           <div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div className="rounded-[14px] bg-dharma-text/[0.04] p-4">
+              <div className="rounded-group bg-dharma-text/[0.04] p-4">
                 <div className="flex items-center gap-1.5 text-xs text-amber-800 dark:text-amber-300 font-semibold">
                   <Sun className="h-4 w-4 text-amber-500" />
                   <span>सूर्योदय · Sunrise</span>
@@ -769,7 +769,7 @@ export function PanchangCalendar() {
                 </p>
               </div>
 
-              <div className="rounded-[14px] bg-dharma-text/[0.04] p-4">
+              <div className="rounded-group bg-dharma-text/[0.04] p-4">
                 <div className="flex items-center gap-1.5 text-xs text-orange-700 dark:text-orange-300 font-semibold">
                   <Sunset className="h-4 w-4 text-orange-500" />
                   <span>सूर्यास्त · Sunset</span>
@@ -782,7 +782,7 @@ export function PanchangCalendar() {
                 </p>
               </div>
 
-              <div className="rounded-[14px] bg-dharma-text/[0.04] p-4">
+              <div className="rounded-group bg-dharma-text/[0.04] p-4">
                 <div className="flex items-center gap-1.5 text-xs text-indigo-700 dark:text-indigo-300 font-semibold">
                   <Clock className="h-4 w-4 text-indigo-500" />
                   <span>दिन मान · Day Length</span>
@@ -795,7 +795,7 @@ export function PanchangCalendar() {
                 </p>
               </div>
 
-              <div className="rounded-[14px] bg-dharma-text/[0.04] p-4">
+              <div className="rounded-group bg-dharma-text/[0.04] p-4">
                 <div className="flex items-center gap-1.5 text-xs text-purple-700 dark:text-purple-300 font-semibold">
                   <Compass className="h-4 w-4 text-purple-500" />
                   <span>मध्याह्न · Solar Noon</span>
@@ -817,7 +817,7 @@ export function PanchangCalendar() {
           </div>
         ) : (
           /* Graceful Unavailable State */
-          <div className="rounded-[14px] bg-dharma-text/[0.04] p-5 text-center sm:text-left sm:flex sm:items-center sm:justify-between gap-4">
+          <div className="rounded-group bg-dharma-text/[0.04] p-5 text-center sm:text-left sm:flex sm:items-center sm:justify-between gap-4">
             <div className="flex items-start gap-3.5">
               <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/20 text-amber-700 dark:text-amber-300">
                 <AlertTriangle className="h-5 w-5" />
@@ -867,7 +867,7 @@ export function PanchangCalendar() {
           </span>
         </div>
 
-        <div className="rounded-[14px] bg-dharma-text/[0.04] p-5 sm:p-6 space-y-4">
+        <div className="rounded-group bg-dharma-text/[0.04] p-5 sm:p-6 space-y-4">
           <div>
             <p lang="sa" className="text-xl leading-relaxed text-dharma-text sm:text-2xl">
               {panchang.studySuggestion.sanskrit}
@@ -942,7 +942,7 @@ export function PanchangCalendar() {
           {panchang.upcomingFestivalsPreview.map((fest) => (
             <div
               key={fest.id}
-              className="flex flex-col justify-between rounded-[14px] bg-dharma-text/[0.04] p-4 transition"
+              className="flex flex-col justify-between rounded-group bg-dharma-text/[0.04] p-4 transition"
             >
               <div>
                 <span className="rounded bg-dharma-card px-2 py-0.5 text-[10px] font-bold text-saffron-700 dark:text-saffron-400">

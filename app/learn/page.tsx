@@ -103,7 +103,7 @@ export default function LearnPage() {
   return (
     <main className="apple-scope min-h-screen bg-dharma-bg pb-24 text-dharma-text">
       <JsonLd data={LEARN_JSON_LD} />
-      <header className="mx-auto max-w-[980px] px-5 pb-2 pt-10 sm:px-6 sm:pt-16">
+      <header className="mx-auto max-w-content px-5 pb-2 pt-10 sm:px-6 sm:pt-16">
         <p className="text-[13px] font-semibold text-dharma-saffron">
           <span>Learn</span> <span aria-hidden="true">·</span>{' '}
           <span lang="sa">स्वाध्यायान्मा प्रमदः</span>
@@ -114,7 +114,7 @@ export default function LearnPage() {
             शास्त्र स्वाध्याय
           </span>
         </h1>
-        <p className="mt-4 max-w-2xl text-[17px] leading-relaxed text-dharma-muted">
+        <p className="mt-4 max-w-2xl text-body leading-relaxed text-dharma-muted">
           Guided paths through the Vedas, Upanishads, Gita and the epics, with flashcards, mind maps, timelines and short
           questions. Go at your own pace; your progress stays on this device.
         </p>
@@ -132,7 +132,7 @@ export default function LearnPage() {
       </header>
 
       {/* ── Where to begin: one hub for starting points, journeys, plans and courses ── */}
-      <section aria-labelledby="learn-start-heading" className="mx-auto max-w-[980px] px-5 pt-10 sm:px-6">
+      <section aria-labelledby="learn-start-heading" className="mx-auto max-w-content px-5 pt-10 sm:px-6">
         <h2 id="learn-start-heading" className="sr-only">Where to begin</h2>
         <ul className="grid grid-cols-2 gap-3 lg:grid-cols-3">
           {PORTALS.map(({ href, en, hi, sub, Icon, chip }) => (
@@ -142,7 +142,7 @@ export default function LearnPage() {
                   <Icon className="h-4 w-4" />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-[15px] font-semibold leading-snug tracking-[-0.02em] text-dharma-text sm:text-[17px]">{en}</span>{' '}
+                  <span className="block text-[15px] font-semibold leading-snug tracking-[-0.02em] text-dharma-text sm:text-body">{en}</span>{' '}
                   <span lang="hi" className="block font-devanagari text-[13px] text-dharma-muted">{hi}</span>{' '}
                   <span className="mt-1 hidden text-[14px] leading-snug text-dharma-muted sm:block">{sub}</span>
                 </span>
@@ -153,7 +153,7 @@ export default function LearnPage() {
       </section>
 
       {/* ── Guided Learning Pathways (also the target of the /learn/pathways/ 301) ── */}
-      <section id="courses" aria-labelledby="courses-heading" className="mx-auto max-w-[980px] scroll-mt-24 px-5 pt-16 sm:px-6">
+      <section id="courses" aria-labelledby="courses-heading" className="mx-auto max-w-content scroll-mt-24 px-5 pt-16 sm:px-6">
         <div className="mb-5">
           <h2 id="courses-heading" className="text-[24px] font-semibold tracking-[-0.025em] text-dharma-text sm:text-[32px]">
             <span>Learning paths</span>{' '}
@@ -319,7 +319,7 @@ export default function LearnPage() {
       </section>
 
       {/* ── The three steps of svādhyāya ── */}
-      <section aria-labelledby="pillars-heading" className="mx-auto max-w-[980px] px-5 pt-20 sm:px-6">
+      <section aria-labelledby="pillars-heading" className="mx-auto max-w-content px-5 pt-20 sm:px-6">
         <h2 id="pillars-heading" className="text-[24px] font-semibold tracking-[-0.025em] text-dharma-text sm:text-[32px]">
           <span>How to study</span>{' '}
           <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">स्वाध्याय त्रिपदी</span>
@@ -332,7 +332,7 @@ export default function LearnPage() {
             <li key={p.iast}>
               <p className="text-[13px] tabular-nums text-dharma-muted">{i + 1}</p>
               <p lang="sa" className="mt-1 text-[30px] leading-tight text-dharma-text">{p.sa}</p>
-              <h3 className="mt-1 text-[17px] font-semibold tracking-[-0.02em] text-dharma-text">
+              <h3 className="mt-1 text-body font-semibold tracking-[-0.02em] text-dharma-text">
                 <span>{p.en}</span> <span className="font-normal text-dharma-muted">· {p.iast}</span>
               </h3>
               <p className="mt-1 text-[15px] leading-relaxed text-dharma-muted">{p.text}</p>
@@ -341,7 +341,7 @@ export default function LearnPage() {
         </ol>
       </section>
 
-      <div className="mx-auto max-w-[980px] space-y-4 px-5 pb-8 pt-16 sm:px-6">
+      <div className="mx-auto max-w-content space-y-4 px-5 pb-8 pt-16 sm:px-6">
         <SadhanaPortability />
         <BackupRestore />
       </div>

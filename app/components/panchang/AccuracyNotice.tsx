@@ -35,7 +35,7 @@ export function AccuracyNotice({
             </div>
             <h2
               id="panchang-accuracy-heading"
-              className="mt-0.5 text-[17px] font-semibold tracking-[-0.02em] text-dharma-text"
+              className="mt-0.5 text-body font-semibold tracking-[-0.02em] text-dharma-text"
             >
               Why Panchang timings vary across locations and traditions
             </h2>

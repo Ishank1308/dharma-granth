@@ -24,7 +24,7 @@ export function HomeHero() {
         <h1
           id="hero-title"
           style={step(1)}
-          className="mt-3 text-[44px] font-semibold leading-[1.05] tracking-[-0.035em] text-dharma-text sm:text-7xl md:text-[80px]"
+          className="mt-3 text-display font-semibold text-dharma-text"
         >
           Every verse.
           <br />
@@ -33,18 +33,18 @@ export function HomeHero() {
         <p lang="hi" style={step(2)} className="mt-2 font-devanagari text-2xl font-semibold text-dharma-muted sm:text-[34px] sm:leading-tight">
           हर श्लोक, सम्पूर्ण।
         </p>
-        <p style={step(3)} className="mx-auto mt-6 max-w-[640px] text-[17px] leading-[1.45] text-dharma-muted sm:text-[21px]">
+        <p style={step(3)} className="mx-auto mt-6 max-w-[640px] text-body leading-[1.45] text-dharma-muted sm:text-[21px]">
           The Vedas, Upanishads, Gita, Itihāsas and Purāṇas in Sanskrit, with Hindi and English where the published text
           gives them. Free, quiet, and without ads.
         </p>
         <div style={step(4)} className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-7">
           <Link
             href="/scripture/bhagavadgita/"
-            className="cta-primary inline-flex min-h-[44px] items-center rounded-full bg-dharma-saffron px-6 text-[17px] text-dharma-bg hover:opacity-95"
+            className="cta-primary inline-flex min-h-[44px] items-center rounded-full bg-dharma-saffron px-6 text-body text-dharma-bg hover:opacity-95"
           >
             Begin the Bhagavad Gita
           </Link>
-          <Link href="/scriptures/" className="chevron-nudge inline-flex min-h-[44px] items-center text-[17px] text-dharma-saffron hover:underline">
+          <Link href="/scriptures/" className="chevron-nudge inline-flex min-h-[44px] items-center text-body text-dharma-saffron hover:underline">
             Browse the library <span aria-hidden="true">&nbsp;›</span>
           </Link>
         </div>

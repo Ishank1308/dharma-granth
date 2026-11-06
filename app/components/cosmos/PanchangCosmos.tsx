@@ -92,7 +92,7 @@ export function PanchangCosmos() {
             <span lang="sa" className="block !leading-[1.25] text-[#f3e3b3]">पञ्चाङ्ग</span>{' '}
             <span className="mt-1 block text-[28px] text-[#ece8f5] sm:text-[40px]">The five limbs of time</span>
           </h1>
-          <p className="mt-5 max-w-md text-[17px] leading-relaxed text-[#c9c3e0]">
+          <p className="mt-5 max-w-md text-body leading-relaxed text-[#c9c3e0]">
             <span lang="sa" className="font-sanskrit">पञ्च</span> five + <span lang="sa" className="font-sanskrit">अङ्ग</span> limbs: the
             five measures by which the old astronomers read a day, from the moon’s place among the stars and its distance from the sun.
           </p>

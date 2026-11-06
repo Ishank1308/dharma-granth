@@ -319,7 +319,7 @@ export function ScriptureLibraryClient({
               value={filters.q}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search title, Sanskrit name, author, topic…"
-              className="min-h-[44px] w-full rounded-[12px] border-0 bg-dharma-text/[0.06] py-2.5 pl-11 pr-4 text-[17px] text-dharma-text outline-none transition placeholder:text-dharma-muted focus:ring-2 focus:ring-dharma-saffron/40"
+              className="min-h-[44px] w-full rounded-[12px] border-0 bg-dharma-text/[0.06] py-2.5 pl-11 pr-4 text-body text-dharma-text outline-none transition placeholder:text-dharma-muted focus:ring-2 focus:ring-dharma-saffron/40"
             />
           </label>
           <button
@@ -343,7 +343,7 @@ export function ScriptureLibraryClient({
         <aside aria-label="Filters" className="hidden lg:block">
           <div className="sticky top-[136px] max-h-[calc(100dvh-160px)] overflow-y-auto rounded-[18px] bg-dharma-card p-3">
             <div className="flex items-center justify-between px-2 pb-2">
-              <h2 className="text-[17px] font-semibold text-dharma-text">
+              <h2 className="text-body font-semibold text-dharma-text">
                 Filters <span lang="hi" className="ml-1 font-devanagari text-sm font-normal text-dharma-muted">फ़िल्टर</span>
               </h2>
               {activeCount > 0 && (

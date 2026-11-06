@@ -144,7 +144,7 @@ export function SadhanaPortability() {
       </div>
 
       {/* ── Section 1: Compressed Sync Code ── */}
-      <div className="space-y-3 rounded-[14px] bg-dharma-text/[0.04] p-4">
+      <div className="space-y-3 rounded-group bg-dharma-text/[0.04] p-4">
         <h3 className="text-[15px] font-semibold text-dharma-text">
           <span>Sync code</span> <span lang="hi" className="font-devanagari font-normal text-dharma-muted">सिंक कोड</span>
         </h3>

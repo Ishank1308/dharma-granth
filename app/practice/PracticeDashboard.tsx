@@ -136,7 +136,7 @@ export function PracticeDashboard() {
 
   return (
     <main className="apple-scope min-h-screen bg-dharma-bg pb-16 text-dharma-text">
-      <header className="mx-auto max-w-[980px] px-5 pb-2 pt-10 sm:px-6 sm:pt-16">
+      <header className="mx-auto max-w-content px-5 pb-2 pt-10 sm:px-6 sm:pt-16">
         <p className="text-[13px] font-semibold text-dharma-saffron">
           <span>Sadhana</span> <span aria-hidden="true">·</span>{' '}
           <span lang="hi" className="font-devanagari">साधना</span>
@@ -147,7 +147,7 @@ export function PracticeDashboard() {
             शान्त मन, पवित्र अभ्यास
           </span>
         </h1>
-        <p className="mt-4 max-w-2xl text-[17px] leading-relaxed text-dharma-muted">
+        <p className="mt-4 max-w-2xl text-body leading-relaxed text-dharma-muted">
           <span>A verse, a reflection, japa and a quiet timer. Pick the tools you want; there are no scores and no streaks.</span>{' '}
           <span lang="hi" className="font-devanagari">दैनिक श्लोक, चिन्तन, जप और ध्यान, बिना किसी गिनती या होड़ के।</span>
         </p>
@@ -157,7 +157,7 @@ export function PracticeDashboard() {
         </p>
       </header>
 
-      <div className="mx-auto max-w-[980px] space-y-10 px-5 pt-8 sm:px-6">
+      <div className="mx-auto max-w-content space-y-10 px-5 pt-8 sm:px-6">
         {/* My space: everything personal lives under /practice/ (saved verses, desk, journal, progress, offline). */}
         <nav aria-label="My space" className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {MY_SPACE.map(({ href, hi, en, Icon }) => (

@@ -198,7 +198,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             <section className="grid gap-4">
               <h3 className="flex items-center gap-2 font-bold"><BookOpen className="h-4 w-4" aria-hidden="true" /> संबंधित श्लोक</h3>
               {answer.verses.map((verse) => (
-                <div key={verse.href + verse.refEn} className="grid gap-2 rounded-[14px] bg-dharma-text/[0.04] p-4">
+                <div key={verse.href + verse.refEn} className="grid gap-2 rounded-group bg-dharma-text/[0.04] p-4">
                   <p className="text-sm font-semibold">{verse.refHi}</p>
                   <p lang="sa" className="whitespace-pre-line text-lg leading-relaxed">{verse.sanskrit}</p>
                   <p>{verse.hindi}</p>
@@ -251,7 +251,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             </section>
           )}
           {/* Consult Muse Spark CTA */}
-          <div className="flex flex-col items-start justify-between gap-4 rounded-[14px] bg-dharma-text/[0.04] p-5 sm:flex-row sm:items-center">
+          <div className="flex flex-col items-start justify-between gap-4 rounded-group bg-dharma-text/[0.04] p-5 sm:flex-row sm:items-center">
             <div className="flex items-center gap-3">
               <span className="apple-tint-chip h-10 w-10" aria-hidden="true">
                 <Sparkles className="h-5 w-5" />

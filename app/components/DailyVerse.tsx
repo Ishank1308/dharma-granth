@@ -189,7 +189,7 @@ export function DailyVerse() {
 
             {/* Translations */}
             <div className="space-y-1.5">
-              <p className="text-[17px] leading-relaxed text-dharma-text sm:text-[19px]">
+              <p className="text-body leading-relaxed text-dharma-text sm:text-[19px]">
                 {wisdom.translation}
               </p>
               <p lang="hi" className="font-devanagari text-[16px] leading-relaxed text-dharma-text-secondary">
@@ -200,7 +200,7 @@ export function DailyVerse() {
             {/* Practical Wisdom & Reflection */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
               {/* Life Application */}
-              <div className="space-y-1 rounded-[14px] bg-dharma-text/[0.04] p-4">
+              <div className="space-y-1 rounded-group bg-dharma-text/[0.04] p-4">
                 <p className="flex items-center gap-1 text-[13px] font-semibold text-dharma-text">
                   <Compass className="w-3 h-3" />
                   <span>जीवन में प्रयोग · Practical Application</span>
@@ -211,7 +211,7 @@ export function DailyVerse() {
               </div>
 
               {/* Reflection Prompt */}
-              <div className="space-y-1 rounded-[14px] bg-dharma-text/[0.04] p-4">
+              <div className="space-y-1 rounded-group bg-dharma-text/[0.04] p-4">
                 <p className="flex items-center gap-1 text-[13px] font-semibold text-dharma-text">
                   <Target className="w-3 h-3" />
                   <span>आज का आत्म-चिंतन · Reflection Prompt</span>
@@ -223,7 +223,7 @@ export function DailyVerse() {
             </div>
 
             {/* Daily Sadhana Challenge Strip */}
-            <div className="flex flex-col justify-between gap-3 rounded-[14px] bg-dharma-text/[0.04] p-4 sm:flex-row sm:items-center">
+            <div className="flex flex-col justify-between gap-3 rounded-group bg-dharma-text/[0.04] p-4 sm:flex-row sm:items-center">
               <div className="space-y-0.5">
                 <span className="text-[13px] font-semibold text-dharma-text">
                   <span>One step today</span> <span lang="hi" className="font-devanagari font-normal text-dharma-muted">आज का संकल्प</span>

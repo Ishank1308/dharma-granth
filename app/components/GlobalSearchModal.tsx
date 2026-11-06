@@ -644,7 +644,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             exit={{ opacity: 0, scale: 0.98, y: -8 }}
             transition={reduce ? { duration: 0 } : PALETTE_SPRING}
             ref={windowRef}
-            className="liquid-glass command-palette relative z-10 flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-[28px]"
+            className="liquid-glass command-palette relative z-10 flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-panel"
           >
             {/* Search box */}
             <div className="flex items-center border-b border-dharma-border/80 px-4 py-3 sm:px-6">

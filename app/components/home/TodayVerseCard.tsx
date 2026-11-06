@@ -22,7 +22,7 @@ export function TodayVerseCard() {
   return (
     <section
       aria-labelledby="today-verse-heading"
-      className="reveal rounded-[28px] bg-dharma-card px-6 py-12 text-center shadow-[0_2px_6px_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)] sm:px-12 sm:py-16"
+      className="reveal rounded-panel bg-dharma-card px-6 py-12 text-center shadow-raised sm:px-12 sm:py-16"
     >
       <h2 id="today-verse-heading" className="text-sm font-semibold tracking-normal text-dharma-saffron">
         <span>Verse of the day</span> <span aria-hidden="true">·</span>{' '}

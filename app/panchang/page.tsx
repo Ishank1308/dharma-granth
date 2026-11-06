@@ -52,7 +52,7 @@ export default function PanchangPage() {
           <h2 id="panchang-why" className="mt-2 text-[28px] font-semibold leading-tight tracking-[-0.03em] text-dharma-text sm:text-[40px]">
             Why learn the five limbs of time
           </h2>
-          <p className="mt-3 max-w-2xl text-[17px] leading-relaxed text-dharma-muted">
+          <p className="mt-3 max-w-2xl text-body leading-relaxed text-dharma-muted">
             In Vedic thought time (<em>Kāla</em>) is a rhythm, not a ticker: the play between the Sun (vitality,{' '}
             <em>Prāṇa</em>) and the Moon (reflective mind, <em>Manas</em>).
           </p>
@@ -86,7 +86,7 @@ export default function PanchangPage() {
             ))}
           </div>
 
-          <p className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-[17px]">
+          <p className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-body">
             <Link href="/festivals/" className="inline-flex min-h-11 items-center text-dharma-saffron hover:underline">
               <span>Festivals</span>&nbsp;<span lang="hi" className="font-devanagari">उत्सव</span>&nbsp;<span aria-hidden="true">›</span>
             </Link>

@@ -619,7 +619,7 @@ export function SiteNav({
                 />
               </motion.span>
               <div className="flex items-baseline gap-2">
-                <span className="whitespace-nowrap text-[17px] font-semibold tracking-[-0.022em] text-dharma-text">
+                <span className="whitespace-nowrap text-body font-semibold tracking-[-0.022em] text-dharma-text">
                   Dharma Granth
                 </span>{' '}
                 <span lang="hi" className="hidden font-devanagari text-[13px] text-dharma-muted sm:inline">
