@@ -446,6 +446,9 @@ a.apple-row:active,
 :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse) .verse-folio::after,
 .verse-card.vt .vt-leaf::after {
     content: '';
+    /* globals.css hides the old palm-leaf binding holes with `[data-material] .verse-folio::after
+       { display: none }`; the light band reuses ::after, so it has to show itself again. */
+    display: block;
     position: absolute;
     inset: -20% -40%;
     z-index: -1;
