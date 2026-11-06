@@ -5,24 +5,25 @@ import { PadaLine } from '@/app/components/PadaLine';
 import { useEffect, useState, type CSSProperties } from 'react';
 import { getTodayWisdom, type DailyWisdomItem } from '@/data/daily-wisdom-engine';
 import { readHref } from '@/lib/verse-paths';
-import { scriptureCatalog } from '@/data/scripture-meta';
-import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
+import type { vibeAttrs } from '@/lib/scripture-vibes';
 import { cleanVerseField, verseLines } from '@/lib/verse-format';
 
 /**
  * Today's verse as one quiet card: the whole shloka, its Hindi and English, and a link to read it in place.
  * The pick depends on the reader's date, so it fills in after mount; the card keeps its height meanwhile.
  */
-export function TodayVerseCard() {
+/** Cover colours for each scripture the daily pool can pick, worked out on the server (see HomeTodayVerse)
+ * so the browser never loads the whole scripture catalogue to colour one card. */
+export type TodayVerseVibes = Record<string, ReturnType<typeof vibeAttrs>>;
+
+export function TodayVerseCard({ vibes = {} }: { vibes?: TodayVerseVibes }) {
   const [item, setItem] = useState<DailyWisdomItem | null>(null);
 
   useEffect(() => {
     setItem(getTodayWisdom());
   }, []);
 
-  const meta = item ? scriptureCatalog.find((s) => s.id === item.scriptureId) : undefined;
-  const vibe = item ? scriptureVibe(item.scriptureId, meta?.category ?? 'other') : undefined;
-  const attrs = vibe ? vibeAttrs(vibe) : undefined;
+  const attrs = item ? vibes[item.scriptureId] : undefined;
   const lines = item ? verseLines(cleanVerseField(item.sanskrit)) : [];
 
   return (
