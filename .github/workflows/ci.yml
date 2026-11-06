@@ -217,6 +217,11 @@ jobs:
             /playwright.config.ts
             /package.json
             /package-lock.json
+            # Specs import site code through the "@/" alias (tests/design-system.spec.ts uses
+            # lib/scripture-vibes), which needs tsconfig.json for the alias and the imported files.
+            /tsconfig.json
+            /lib/scripture-vibes.ts
+            /data/types.ts
           sparse-checkout-cone-mode: false
           filter: blob:none
 
