@@ -504,6 +504,9 @@ export interface NakshatraMeta {
   symbol: string;
   explanation: string;
   studyTheme: string;
+  rashiSpan?: string;
+  rashiSpanHi?: string;
+  vedicCitation?: string;
 }
 
 export const NAKSHATRA_DATA: NakshatraMeta[] = [
@@ -805,6 +808,15 @@ export const NAKSHATRA_DATA: NakshatraMeta[] = [
     studyTheme: 'Universal prayer for the peace of all creatures: "Sarve Bhavantu Sukhinah".',
   },
 ];
+
+export function nakshatraSlug(name: string): string {
+  return name.toLowerCase().replace(/\s+/g, '-');
+}
+
+export function getNakshatraBySlug(slug: string): NakshatraMeta | undefined {
+  const clean = slug.toLowerCase().trim();
+  return NAKSHATRA_DATA.find((n) => nakshatraSlug(n.name) === clean);
+}
 
 export interface YogaMeta {
   index: number;

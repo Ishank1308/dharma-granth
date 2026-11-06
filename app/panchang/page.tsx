@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { PanchangCalendar } from '@/app/components/PanchangCalendar';
 import { PanchangCosmos } from '@/app/components/cosmos/PanchangCosmos';
 import { SectionTitle } from '@/app/components/apple/PageHeader';
+import { Star, ArrowRight } from 'lucide-react';
 
 const WHY = [
   {
@@ -63,7 +64,7 @@ export default function PanchangPage() {
                 href: '/panchang/ekadashi/',
                 title: 'एकादशी व्रत (Ekadashi)',
                 titleEn: '11th Lunar Day',
-                desc: 'पद्म पुराण अनुसार मन व इंद्रिय शुद्धि — २०२६–२०२८ की समस्त तिथियाँ व पारण समय।',
+                desc: 'पद्म पुराण अनुसार मन व इंद्रिय शुद्धि — 2026–2028 की समस्त तिथियाँ व पारण समय।',
                 icon: '🌿',
                 badge: 'हरि-वासर',
               },
@@ -119,6 +120,29 @@ export default function PanchangPage() {
                 </div>
               </Link>
             ))}
+          </div>
+
+          {/* 27 Nakshatras Master Directory Banner */}
+          <div className="mt-6 rounded-2xl border border-dharma-border bg-gradient-to-r from-indigo-950/20 via-saffron-950/15 to-transparent p-5 sm:p-6 flex flex-wrap items-center justify-between gap-4">
+            <div className="space-y-1">
+              <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                <Star className="w-3.5 h-3.5" />
+                <span>वैदिक नक्षत्र कोश · 27 Asterisms</span>
+              </span>
+              <h3 className="font-serif text-lg sm:text-xl font-bold text-dharma-text">
+                27 Vedic Nakshatras (सप्तविंशति नक्षत्र)
+              </h3>
+              <p className="text-xs sm:text-sm text-dharma-muted max-w-xl">
+                Explore all 27 lunar mansions from Ashwini to Revati — presiding Vedic deities, Nakshatra Sukta citations, and contemplation themes.
+              </p>
+            </div>
+            <Link
+              href="/panchang/nakshatras/"
+              className="inline-flex items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-4 py-2.5 text-xs sm:text-sm font-semibold transition"
+            >
+              <span>Explore All 27 Nakshatras</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </section>
 

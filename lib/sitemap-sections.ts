@@ -18,6 +18,7 @@ import { festivals } from '@/data/festivals';
 import { GRANTH_ANSWERS } from '@/data/granth-answers';
 import { getChapterSummaryCollection } from '@/data/chapter-summaries';
 import { SACRED_MANTRAS } from '@/data/mantras';
+import { NAKSHATRA_DATA, nakshatraSlug } from '@/lib/panchang';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
 
@@ -76,6 +77,7 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/panchang/pradosh', pageDate('/panchang/pradosh')),
     entry('/panchang/purnima', pageDate('/panchang/purnima')),
     entry('/panchang/amavasya', pageDate('/panchang/amavasya')),
+    entry('/panchang/nakshatras', pageDate('/panchang/nakshatras', 'lib/panchang.ts')),
     entry('/timelines', pageDate('/timelines')),
     entry('/rituals', pageDate('/rituals')),
     entry('/dictionary', pageDate('/dictionary', 'data/dictionary.ts')),
@@ -151,7 +153,10 @@ function pagesSection(): MetadataRoute.Sitemap {
   const mantraDate = lastChanged('data/mantras.ts', 'app/mantras/[slug]/page.tsx');
   const mantraRoutes = SACRED_MANTRAS.map((m) => entry(`/mantras/${m.slug}`, mantraDate));
 
-  return [...staticRoutes, ...mantraRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
+  const nakshatraDate = lastChanged('lib/panchang.ts', 'app/panchang/nakshatras/[slug]/page.tsx');
+  const nakshatraRoutes = NAKSHATRA_DATA.map((n) => entry(`/panchang/nakshatras/${nakshatraSlug(n.name)}`, nakshatraDate));
+
+  return [...staticRoutes, ...mantraRoutes, ...nakshatraRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
 }
 
 /** Scripture landing pages and chapter pages (all seeded + curated chapters), dated by when the scripture's text or commentary last changed. */

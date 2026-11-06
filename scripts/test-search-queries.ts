@@ -65,4 +65,7 @@ assert.ok(chalisa, 'searching chalisa should find hanuman chalisa');
 const aditya = searchCoreIndex('aditya').find(({ item }) => item.href === '/mantras/aditya-hridaya-stotra/');
 assert.ok(aditya, 'searching aditya should find aditya hridaya stotra');
 
+const rohini = searchCoreIndex('rohini').find(({ item }) => item.href === '/panchang/nakshatras/rohini/');
+assert.ok(rohini, 'searching rohini should direct to /panchang/nakshatras/rohini/');
+
 console.log('search query checks passed');

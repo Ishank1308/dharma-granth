@@ -12,7 +12,7 @@ import { wisdomTopics } from '../data/wisdom-for-life';
 import { CHAPTERS } from '../data/ashtavakra/chapters-meta';
 import { wisdomVerseHref, libraryLocation } from '../lib/wisdom-links';
 import { versePageHref } from '../lib/verse-paths';
-import { NAKSHATRA_DATA, TITHI_DATA } from '../lib/panchang';
+import { NAKSHATRA_DATA, TITHI_DATA, nakshatraSlug } from '../lib/panchang';
 import { SACRED_MANTRAS } from '../data/mantras';
 import { getAllConceptDetails } from '../data/concept-details';
 import { characters } from '../data/characters';
@@ -105,7 +105,7 @@ for (const f of festivals) {
 }
 
 for (const tithi of Object.values(TITHI_DATA)) addTerm(`tithi-${tithi.paksha}-${tithi.number}`, tithi.name, tithi.nameHi);
-for (const star of NAKSHATRA_DATA) addTerm(`nakshatra-${star.index}`, star.name, star.nameHi);
+for (const star of NAKSHATRA_DATA) addTerm(`nakshatra-${star.index}`, star.name, star.nameHi, `/panchang/nakshatras/${nakshatraSlug(star.name)}/`);
 
 const verses: CoreVerse[] = [];
 const seenVerse = new Set<string>();
