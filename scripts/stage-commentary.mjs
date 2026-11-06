@@ -37,7 +37,11 @@ for (const file of files) {
 
   const sanskrit = new Map();
   for (const ch of book.chapters ?? []) {
-    for (const v of ch.verses ?? []) sanskrit.set(`${Number(ch.number)}:${Number(v.number)}`, v.sanskrit);
+    for (const v of ch.verses ?? []) {
+      sanskrit.set(`${Number(ch.number)}:${Number(v.number)}`, v.sanskrit);
+      // Full-number keys ("1:56.33"), used where short keys collide (lib/verse-commentary-key.ts).
+      sanskrit.set(`${Number(ch.number)}:${String(v.number).trim()}`, v.sanskrit);
+    }
   }
 
   const now = new Date().toISOString();

@@ -57,6 +57,8 @@ Every व्याख्या has three movements, in one flowing piece of abou
    }
    ```
 
+   Keys are `chapter:verse`. Where several verses of a chapter would share that short key (the Mahabharata prints `adhyaya.verse` inside each parva, so 1.1, 2.1 and 3.1 of parva 1 all shorten to `1:1`; Ramcharitmanas, Brahma Sutra, Rig and Atharva Veda are similar), the reader finds a verse only by its full number, such as `1:56.33` or `1:1.1.10` (see `lib/verse-commentary-key.ts`). Writing the full number always works. `node scripts/check-commentary-keys.ts` fails if an entry would show on more than one verse.
+
 2. Check it. This must print `sentences to fix 0`:
 
    ```bash

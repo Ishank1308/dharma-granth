@@ -3,7 +3,7 @@
  * its "meaning not yet added" state. Shared by the chapter page (to count those verses once, at the top) and the
  * chapter reader (to link each one to the nearest verses that do have a meaning).
  */
-import { canonicalVerseId } from './canonical-verse-id';
+import { lookupVerseCommentary } from './verse-commentary-key';
 import { splitVyakhyaCommentary } from './verse-format';
 
 export interface MeaningFields {
@@ -36,9 +36,18 @@ export function verseHasMeaning(v: MeaningFields, c?: CommentaryFields): boolean
   );
 }
 
-/** The published commentary entry of a verse ("2:47"; "3:28" for "1.3.28"), as the chapter reader looks it up. */
-export function commentaryOf<T>(all: Record<string, T> | undefined, chapterId: number, verse: number | string): T | undefined {
-  return all?.[`${chapterId}:${Number(canonicalVerseId(chapterId, verse))}`];
+/**
+ * The published commentary entry of a verse ("2:47"; "3:28" for "1.3.28"), as the chapter reader looks it up.
+ * `shared` = `sharedShortKeys` over the chapter's verses, so verses whose short key collides are found only by
+ * their full number (lib/verse-commentary-key.ts).
+ */
+export function commentaryOf<T>(
+  all: Record<string, T> | undefined,
+  chapterId: number,
+  verse: number | string,
+  shared?: ReadonlySet<string>,
+): T | undefined {
+  return lookupVerseCommentary(all, chapterId, verse, shared);
 }
 
 export interface NearbyMeaning {

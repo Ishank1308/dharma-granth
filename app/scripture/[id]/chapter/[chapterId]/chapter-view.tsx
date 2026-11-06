@@ -36,6 +36,7 @@ import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPa
 import { CONNECTIONS, type Connection } from '@/data/study-content';
 import { MeaningPendingNotice } from '@/app/components/MeaningPending';
 import { commentaryOf, verseHasMeaning } from '@/lib/verse-has-meaning';
+import { sharedShortKeys, shortVerseKey } from '@/lib/verse-commentary-key';
 
 export interface ChapterParams {
   id: string;
@@ -244,6 +245,8 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   const seeded = readSeededChapter(meta.id, chapterId);
   const allVerses = (seeded?.chapter.verses ?? []) as InitialChapter['verses'];
   const pageVerses = part ? allVerses.slice(part.start, part.end) : allVerses;
+  // Worked out over the whole chapter, so a part page still knows which verse numbers collide.
+  const sharedKeys = sharedShortKeys(chapterId, allVerses.map((v) => v.number));
   const initialChapter: InitialChapter | undefined =
     seeded &&
     pageVerses.length > 0 &&
@@ -252,6 +255,8 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           verses: pageVerses,
           commentary: readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId),
           source: seeded.source as InitialChapter['source'],
+          // Only the keys this page's verses use, to keep the page small.
+          sharedKeys: [...new Set(pageVerses.map((v) => shortVerseKey(chapterId, v.number)))].filter((k) => sharedKeys.has(k)),
           insights: getChapterInsights(
             meta.id,
             chapterId,
@@ -264,7 +269,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
 
   // Verses on this page whose meaning is not published yet (see MeaningPending): counted once, in the HTML.
   const pageCommentary = initialChapter?.commentary ?? readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId);
-  const pageHasMeaning = pageVerses.map((v) => verseHasMeaning(v, commentaryOf(pageCommentary, chapterId, v.number)));
+  const pageHasMeaning = pageVerses.map((v) => verseHasMeaning(v, commentaryOf(pageCommentary, chapterId, v.number, sharedKeys)));
   const pendingCount = pageHasMeaning.filter((h) => !h).length;
   const pendingSummary = (chapterSummary?.summaryHi || (seeded ? chapter.summary : undefined) || '').trim() || undefined;
   const pageWithMeaning = pageVerses.filter((_, i) => pageHasMeaning[i]).slice(0, 6).map((v) => String(v.number));

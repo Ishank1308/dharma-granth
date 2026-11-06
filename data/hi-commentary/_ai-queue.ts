@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { HiCommentaryFragment } from "./_types";
-import { canonicalVerseId } from "../../lib/canonical-verse-id";
+import { sharedShortKeys, verseCommentaryKeys } from "../../lib/verse-commentary-key";
 
 /** Review queue written by scripts/generate-verse-commentary.ts. */
 export const AI_QUEUE_DIR = path.resolve("data/ai-commentary");
@@ -28,10 +28,13 @@ function currentSanskrit(scriptureId: string): Map<string, string> {
     chapters?: Array<{ number: number | string; verses?: Array<{ number: number | string; sanskrit?: string }> }>;
   };
   for (const ch of book.chapters ?? []) {
-    for (const v of ch.verses ?? []) {
-      // Same key the reader and publish:commentary use (lib/verse-meaning verseCommentaryKey), so
-      // dotted numbers like "2.1.1" in reader chapter 7 key as "7:1", not "7:NaN".
-      out.set(`${Number(ch.number)}:${Number(canonicalVerseId(Number(ch.number), v.number))}`, norm(v.sanskrit));
+    const chapterId = Number(ch.number);
+    const verses = ch.verses ?? [];
+    const shared = sharedShortKeys(chapterId, verses.map((v) => v.number));
+    for (const v of verses) {
+      // Same keys the reader tries (lib/verse-commentary-key.ts): dotted numbers like "2.1.1" in reader
+      // chapter 7 key as "7:1", and verses whose short key collides only by their full number ("1:56.33").
+      for (const key of verseCommentaryKeys(chapterId, v.number, shared)) out.set(key, norm(v.sanskrit));
     }
   }
   return out;

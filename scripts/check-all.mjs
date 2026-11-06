@@ -26,6 +26,7 @@ const CHECKS = [
   'scripts/check-commentary-quality.ts',
   'scripts/check-published-scriptures.ts',
   'scripts/check-meaning-alignment.ts',
+  'scripts/check-commentary-keys.ts',
   'scripts/check-printed-footnotes.ts',
   'scripts/check-filler-chapters.ts',
   'scripts/check-catalogue-counts.ts',

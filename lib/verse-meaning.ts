@@ -6,7 +6,7 @@
  * so boilerplate that publishing hides does not count as meaning.
  */
 import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
-import { canonicalVerseId } from './canonical-verse-id';
+import { lookupVerseCommentary, sharedShortKeys, verseCommentaryKeys } from './verse-commentary-key';
 import { readChapterCommentary, readSeededChapter } from './read-seeded-chapters';
 import { withPassageMeaning } from './verse-format';
 
@@ -28,15 +28,28 @@ export interface VerseMeaningSummary {
   any: boolean;
 }
 
-/** The key the published commentary uses, the same one the chapter reader looks up ("2:47", "3:28" for "1.3.28"). */
-export function verseCommentaryKey(chapterId: number, verseNumber: number | string): string {
-  return `${chapterId}:${Number(canonicalVerseId(chapterId, verseNumber))}`;
+const sharedCache = new Map<string, Set<string>>();
+
+/** Short keys that several verses of the chapter share (see lib/verse-commentary-key.ts), read once per chapter. */
+function chapterSharedKeys(scriptureId: string, chapterId: number): Set<string> {
+  const key = `${scriptureId}:${chapterId}`;
+  let shared = sharedCache.get(key);
+  if (!shared) {
+    const verses = (readSeededChapter(scriptureId, chapterId)?.chapter.verses as VerseLike[] | undefined) ?? [];
+    shared = sharedShortKeys(chapterId, verses.flatMap((v) => (v.number === undefined ? [] : [v.number])));
+    sharedCache.set(key, shared);
+  }
+  return shared;
+}
+
+/** The key the published commentary uses for this verse, the same one the chapter reader looks up ("2:47", "3:28" for "1.3.28"). */
+export function verseCommentaryKey(scriptureId: string, chapterId: number, verseNumber: number | string): string {
+  return verseCommentaryKeys(chapterId, verseNumber, chapterSharedKeys(scriptureId, chapterId))[0];
 }
 
 export function commentaryFor(scriptureId: string, chapterId: number, verseNumber: number | string): HiCommentaryEntry | undefined {
   const all = readChapterCommentary<HiCommentaryEntry>(scriptureId, chapterId);
-  if (!all) return undefined;
-  return all[verseCommentaryKey(chapterId, verseNumber)] ?? all[`${chapterId}:${verseNumber}`];
+  return lookupVerseCommentary(all, chapterId, verseNumber, chapterSharedKeys(scriptureId, chapterId));
 }
 
 const real = (s: unknown) => typeof s === 'string' && s.replace(/\s+/g, ' ').trim().length > 20;
