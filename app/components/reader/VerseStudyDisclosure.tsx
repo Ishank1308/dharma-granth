@@ -3,6 +3,7 @@
 import { useId, useRef, useState, type ReactNode } from 'react';
 import { ChevronDown, ChevronUp, Layers } from 'lucide-react';
 import type { ReadingDepth } from '@/lib/reading-depth';
+import { VersePageExtras } from '@/app/components/reader/VersePageExtras';
 
 type StudyDepth = Exclude<ReadingDepth, 'read'>;
 
@@ -11,11 +12,13 @@ export function VerseStudyDisclosure({
   depth,
   canDeepen = false,
   defaultOpen,
+  versePageHref,
   children,
 }: {
   depth: ReadingDepth;
   canDeepen?: boolean;
   defaultOpen?: boolean;
+  versePageHref?: string;
   children: (depth: StudyDepth) => ReactNode;
 }) {
   const [open, setOpen] = useState(defaultOpen ?? (depth !== 'read'));
@@ -65,6 +68,7 @@ export function VerseStudyDisclosure({
           )}
 
           {children(studyDepth)}
+          {versePageHref && <VersePageExtras href={versePageHref} />}
 
           <div className="mt-5 flex justify-center border-t border-dharma-border/50 pt-3">
             <button
