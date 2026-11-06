@@ -44,6 +44,84 @@ export default function PanchangPage() {
       <section className="relative mx-auto max-w-6xl px-gutter -mt-6 sm:-mt-8 pb-16 z-10">
         <PanchangCalendar />
 
+        {/* ─── SACRED LUNAR OBSERVANCES & VRATAS ──────────────────────────── */}
+        <section aria-labelledby="panchang-vratas" className="mt-16">
+          <SectionTitle
+            id="panchang-vratas"
+            size="title-2"
+            eyebrow="Tithi & Vrata Observances"
+            eyebrowHi="पवित्र तिथियाँ व व्रत"
+            title="Sacred Lunar Observances"
+          />
+          <p className="max-w-text text-body leading-relaxed text-dharma-muted">
+            Classical scriptural guidelines, authentic astronomical dates, and spiritual contemplation for key lunar days.
+          </p>
+
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              {
+                href: '/panchang/ekadashi/',
+                title: 'एकादशी व्रत (Ekadashi)',
+                titleEn: '11th Lunar Day',
+                desc: 'पद्म पुराण अनुसार मन व इंद्रिय शुद्धि — २०२६–२०२८ की समस्त तिथियाँ व पारण समय।',
+                icon: '🌿',
+                badge: 'हरि-वासर',
+              },
+              {
+                href: '/panchang/pradosh/',
+                title: 'प्रदोष व्रत (Pradosh Vrat)',
+                titleEn: '13th Twilight Japa',
+                desc: 'त्रयोदशी तिथि पर शिव-पूजा — सोम, भौम व शनि प्रदोष के शुभ मुहूर्त व महात्म्य।',
+                icon: '🔱',
+                badge: 'शिव सायुज्य',
+              },
+              {
+                href: '/panchang/purnima/',
+                title: 'पूर्णिमा तिथियाँ (Purnima)',
+                titleEn: 'Full Moon Calendar',
+                desc: 'सत्यनारायण व्रत, शरद व कार्तिक पूर्णिमा, व्यास पूजा एवं चंद्र दर्शन की तिथियाँ।',
+                icon: '🌕',
+                badge: 'पूर्ण चंद्र',
+              },
+              {
+                href: '/panchang/amavasya/',
+                title: 'अमावस्या तिथियाँ (Amavasya)',
+                titleEn: 'New Moon Calendar',
+                desc: 'पितृ तर्पण, मौनी व सोमवती अमावस्या, और अंतर्मुखी आत्म-चिंतन का विधान।',
+                icon: '🌑',
+                badge: 'पितृ कार्य',
+              },
+            ].map((v) => (
+              <Link
+                key={v.href}
+                href={v.href}
+                className="group flex flex-col justify-between rounded-2xl border border-dharma-border bg-dharma-card p-5 transition-all hover:border-saffron-400 hover:shadow-md hover:-translate-y-0.5"
+              >
+                <div>
+                  <div className="flex items-center justify-between text-2xs mb-3">
+                    <span className="text-xl">{v.icon}</span>
+                    <span className="rounded-full bg-saffron-100/80 px-2 py-0.5 font-bold text-saffron-800 dark:bg-saffron-900/40 dark:text-saffron-300">
+                      {v.badge}
+                    </span>
+                  </div>
+                  <h3 className="font-serif font-bold text-base text-dharma-text group-hover:text-saffron-700 transition">
+                    {v.title}
+                  </h3>
+                  <p className="text-2xs text-saffron-700 dark:text-saffron-400 font-semibold mb-1.5">
+                    {v.titleEn}
+                  </p>
+                  <p className="text-xs text-dharma-muted leading-relaxed">
+                    {v.desc}
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center justify-end text-xs font-semibold text-saffron-700 group-hover:translate-x-1 transition-transform">
+                  तिथियाँ देखें &rarr;
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* ─── WHY THE FIVE LIMBS ─────────────────────────────────────────── */}
         <section aria-labelledby="panchang-why" className="mt-20">
           <SectionTitle
