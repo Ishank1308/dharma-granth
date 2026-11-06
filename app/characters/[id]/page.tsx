@@ -14,7 +14,8 @@ import {
   GitBranch,
 } from 'lucide-react';
 import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
-import { characters, getCharacter, type Character } from '@/data/characters';
+import { characters, getCharacter, characterCategories, type Character } from '@/data/characters';
+import { clipDescription } from '@/lib/meta-text';
 import { ShareChips } from '@/app/components/ShareChips';
 
 export function generateStaticParams() {
@@ -26,16 +27,34 @@ export async function generateMetadata(props: { params: Promise<{ id: string }> 
   const character = getCharacter(params.id);
   if (!character) return { title: 'Character Not Found' };
 
+  const catMeta = characterCategories.find((c) => c.key === character.category);
+  const catLabel = catMeta ? catMeta.label : 'Scriptures';
+  const title = `${character.name} (${character.sanskrit}) — Story & Role in ${catLabel}`;
+  const description = clipDescription(`${character.name} (${character.sanskrit}): ${character.shortDesc}`);
+  const keywords = [
+    character.name,
+    character.sanskrit,
+    `${character.name} in ${catLabel}`,
+    `${character.name} story`,
+    `${character.name} character sketch`,
+    `${character.name} life history`,
+    'hindu scriptures characters',
+    'dharma granth',
+  ];
+
   return {
-    title: `${character.name}`,
-    description: character.shortDesc,
+    title,
+    description,
+    keywords,
     alternates: { canonical: `/characters/${character.id}/` },
     openGraph: {
+      type: 'profile',
       images: [DEFAULT_OG_IMAGE],
-      title: `${character.name} (${character.sanskrit}) — Dharma Granth`,
-      description: character.shortDesc,
+      title: `${title} — Dharma Granth`,
+      description,
       url: `https://dharmagranth.dev/characters/${character.id}/`,
     },
+    twitter: { card: 'summary_large_image', title, description, images: [DEFAULT_OG_IMAGE.url] },
   };
 }
 
@@ -47,6 +66,39 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
   const relatedCharacters = characters
     .filter((c) => c.id !== character.id && c.category === character.category)
     .slice(0, 3);
+
+  const questions = [
+    {
+      '@type': 'Question',
+      name: `Who was ${character.name} (${character.sanskrit}) in Hindu scriptures?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: character.shortDesc,
+      },
+    },
+    character.dilemmas && character.dilemmas.length > 0 && {
+      '@type': 'Question',
+      name: `What moral dilemma did ${character.name} face and how was it resolved?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `${character.dilemmas[0].title}: ${character.dilemmas[0].description} Resolution: ${character.dilemmas[0].resolution}`,
+      },
+    },
+    character.events && character.events.length > 0 && {
+      '@type': 'Question',
+      name: `What was a key scriptural event involving ${character.name}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `${character.events[0].title}: ${character.events[0].description}`,
+      },
+    },
+  ].filter(Boolean);
+
+  const jsonLdFaq = questions.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: questions,
+  } : null;
 
   return (
     <main className="min-h-screen bg-dharma-bg">
@@ -63,6 +115,13 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
           }),
         )}
       />
+      {jsonLdFaq && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+        />
+      )}
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className={`relative bg-gradient-to-br ${character.gradient} text-white py-16 overflow-hidden`}>
         <div className="absolute inset-0 mandala-bg opacity-10" />
