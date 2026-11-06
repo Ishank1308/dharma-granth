@@ -45,24 +45,27 @@ export function HomeLibrary() {
             ग्रन्थालय
           </span>
         </h2>
-        <Link href="/scriptures/" className="text-[17px] text-dharma-saffron hover:underline">
+        <Link href="/scriptures/" className="chevron-nudge text-[17px] text-dharma-saffron hover:underline">
           See all {all.length} <span aria-hidden="true">›</span>
         </Link>
       </div>
-      <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
+      {/* Tiles rise in as a wave (.reveal-grid) and lean toward the pointer with a light on them (data-tilt);
+          the Devanagari title floats a little above the card (data-depth). Styles in app/motion.css. */}
+      <ul className="reveal-grid grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
         {books.map((book) => (
           <li key={book.href}>
             <Link
               href={book.href}
+              data-tilt
               style={{ '--book': book.colour } as CSSProperties}
-              className="home-book group relative flex h-full min-h-[170px] flex-col justify-between overflow-hidden rounded-[22px] bg-dharma-card p-[18px] pl-6 shadow-[0_2px_6px_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 sm:min-h-[230px] sm:rounded-[28px] sm:p-7 sm:pl-8"
+              className="home-book group relative flex h-full min-h-[170px] flex-col justify-between overflow-hidden rounded-[22px] bg-dharma-card p-[18px] pl-6 shadow-[0_2px_6px_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)] sm:min-h-[230px] sm:rounded-[28px] sm:p-7 sm:pl-8"
             >
               <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-[color:var(--book-ink)]" />
               <span className="absolute right-6 top-6 hidden text-xs text-dharma-muted sm:block">{book.tradition}</span>
-              <span lang="sa" className="shloka-text text-[28px] leading-tight text-[color:var(--book-ink)] sm:text-[40px]">
+              <span lang="sa" data-depth="8" className="shloka-text text-[28px] leading-tight text-[color:var(--book-ink)] sm:text-[40px]">
                 {book.titleSa}
               </span>
-              <span>
+              <span data-depth="4">
                 <span className="block text-[17px] font-semibold tracking-[-0.02em] text-dharma-text sm:text-[21px]">{book.titleEn}</span>
                 {book.facts && <span className="mt-1 block text-sm text-dharma-muted">{book.facts}</span>}
               </span>

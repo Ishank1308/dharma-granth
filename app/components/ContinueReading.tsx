@@ -36,7 +36,7 @@ export function ContinueReading() {
   const percent = Math.round((latest.chapterId / total) * 100);
 
   return (
-    <section aria-labelledby="continue-reading-heading" className="flex flex-col gap-3">
+    <section aria-labelledby="continue-reading-heading" className="reveal flex flex-col gap-3">
       <h2 id="continue-reading-heading" className="sr-only">
         <span lang="hi">पढ़ना जारी रखें</span> · <span>Continue reading</span>
       </h2>

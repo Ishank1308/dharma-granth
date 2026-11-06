@@ -7,6 +7,7 @@ import { PageTransition } from "@/app/components/motion/PageTransition";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 import dynamic from "next/dynamic";
 import { TactileLayer } from "@/app/components/TactileLayer";
+import { MotionLayer } from "@/app/components/motion/MotionLayer";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
 
@@ -21,6 +22,8 @@ const MananaSelectionBar = dynamic(
 );
 // Fonts: @font-face rules for /fonts live in globals.css (one source per weight, 400/600/700).
 import "./globals.css";
+// The motion system (reveals, tilt, hero halo, theme transition) sits over the base styles.
+import "./motion.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
 import { retryImport } from "@/lib/retry-import";
@@ -269,6 +272,7 @@ export default function RootLayout({
             <MananaSelectionBar />
           </ErrorBoundary>
           <TactileLayer />
+          <MotionLayer />
           <OfflineIndicator />
           <ServiceWorkerRegister />
           <StoragePersistenceRequest />
