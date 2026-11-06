@@ -42,7 +42,7 @@ jobs:
     steps:
       - name: Find the export CI built for this tree
         id: prebuilt
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const { owner, repo } = context.repo;
@@ -67,11 +67,11 @@ jobs:
 
       - name: Checkout (prebuilt export)
         if: steps.prebuilt.outputs.run-id != ''
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Checkout
         if: steps.prebuilt.outputs.run-id == ''
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           lfs: true
           # Full history: the sitemap's lastmod dates come from git log.
@@ -80,7 +80,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "22"
           cache: npm
@@ -95,7 +95,7 @@ jobs:
       - name: Restore TypeScript buildinfo
         if: steps.prebuilt.outputs.run-id == ''
         id: tsbuildinfo
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: tsconfig.tsbuildinfo
           key: tsbuildinfo-${{ github.sha }}
@@ -110,7 +110,7 @@ jobs:
 
       - name: Save TypeScript buildinfo
         if: steps.prebuilt.outputs.run-id == '' && steps.tsbuildinfo.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: tsconfig.tsbuildinfo
           key: tsbuildinfo-${{ github.sha }}
@@ -126,7 +126,7 @@ jobs:
       - name: Restore verse share images
         if: steps.prebuilt.outputs.run-id == ''
         id: og-verse
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: public/og/verse
           key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json') }}
@@ -144,7 +144,7 @@ jobs:
 
       - name: Save verse share images
         if: steps.prebuilt.outputs.run-id == '' && steps.og-verse.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: public/og/verse
           key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json') }}
@@ -153,7 +153,7 @@ jobs:
       # Static pages are still generated.
       - name: Cache Next.js build
         if: steps.prebuilt.outputs.run-id == ''
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: dist/cache
           key: nextjs-${{ runner.os }}-${{ hashFiles('package-lock.json', 'next.config.js') }}-${{ hashFiles('app/**/*.ts', 'app/**/*.tsx', 'lib/**/*.ts', 'lib/**/*.tsx', 'data/**/*.ts') }}
@@ -171,7 +171,7 @@ jobs:
 
       - name: Download the CI export
         if: steps.prebuilt.outputs.run-id != ''
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: ${{ steps.prebuilt.outputs.name }}
           run-id: ${{ steps.prebuilt.outputs.run-id }}
@@ -182,13 +182,31 @@ jobs:
         run: zstd -d -q -c dist.tar.zst | tar -xf - && rm dist.tar.zst
 
       - name: Deploy to Cloudflare Pages
+        id: deploy
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        continue-on-error: true
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           # Pin the current Wrangler 4 uploader so deploy behaviour is
           # reproducible and benefits from the latest Pages upload fixes.
+          wranglerVersion: "4.151.2"
+          command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=master --commit-dirty=true
+
+      # Cloudflare sometimes answers "Failed to publish your Function: Unknown
+      # internal error" (it kept PR #62 off the live site on 2026-11-06).
+      # Uploaded files are kept, so a second try takes under a minute.
+      - name: Wait before retrying the deploy
+        if: steps.deploy.outcome == 'failure'
+        run: sleep 30
+
+      - name: Retry deploy to Cloudflare Pages
+        if: steps.deploy.outcome == 'failure'
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: "4.151.2"
           command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=master --commit-dirty=true
 
@@ -231,7 +249,7 @@ jobs:
       - name: Delete the used CI export
         if: env.HAS_CLOUDFLARE_SECRETS == 'true' && steps.prebuilt.outputs.artifact-id != ''
         continue-on-error: true
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           ARTIFACT_ID: ${{ steps.prebuilt.outputs.artifact-id }}
         with:
