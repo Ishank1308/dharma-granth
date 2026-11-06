@@ -424,8 +424,8 @@ export const scriptureCatalog: ScriptureMeta[] = [
     category: "purana",
     description:
       "The supreme Shaiva Mahapurana — 24,000 verses across 7 Samhitas. Vidyeshvara Samhita: Shiva as Sadashiva (the auspicious ground of dissolution-as-renewal); one God, many names. Kailasha Samhita: Panchakshara Namah Shivaya — five syllables, five elements, complete ecology of devotion. Rudra Samhita: Nataraja's five cosmic actions — srishti, sthiti, samhara, tirodhana, anugraha. Uma Samhita: Ardhanarishvara — Shakti is the capacity of Shiva; without her, 'the god cannot even stir' (Soundarya Lahari 1); brain lateralisation and integration. Koti Rudra Samhita: the 12 jyotirlingas from Somnath to Kedarnath — infinite column of light without beginning or end; dvadasha jyotirlinga stotram for dawn and dusk. Vayaviya Samhita: 'Shivo bhutva shivam yajet' — worship Shiva having become Shiva; the cave of the heart (guhā); liberation as recognition, not attainment.",
-    totalChapters: 5,
-    totalVerses: 12954,
+    totalChapters: 7,
+    totalVerses: 15576,
     canonicalTotalVerses: 24000,
     tags: ["Purana","Shiva","Panchakshara","Jyotirlinga","Nataraja","Ardhanarishvara","ShivaShakti","NonDual","ShaivaTattva","SacredGeography","Mahapurana","ShivoBhutva"],
     hasData: true,

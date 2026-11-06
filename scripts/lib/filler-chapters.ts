@@ -36,8 +36,13 @@ export function fillerChapters(scriptureId: string, chapters: Chapter[]): Set<nu
   }
   const shares = (c: Chapter) => verses(c).some((v) => (where.get(letters(v.sanskrit))?.size ?? 0) > 1);
 
-  for (const c of chapters) {
+  for (let i = 0; i < chapters.length; i++) {
+    const c = chapters[i];
     const n = verses(c).length;
+    // A full chapter does not end the run when the next one is filler again (Shiva Purana 1 and 5 hold their real
+    // text, between placeholder khandas).
+    const next = chapters[i + 1];
+    if (n >= SHORT && next && verses(next).length > 0 && verses(next).length < SHORT && shares(next)) continue;
     if (n === 0 || n >= SHORT) break;
     if (shares(c)) out.add(Number(c.number));
   }

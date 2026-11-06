@@ -138,6 +138,7 @@
     "seed:garudapurana-hindi": "tsx scripts/seed-garudapurana-hindi.ts",
     "seed:shivapurana-translations": "tsx scripts/seed-shivapurana-translations.ts",
     "seed:shivapurana-hindi": "tsx scripts/seed-shivapurana-hindi.ts",
+    "seed:shivapurana-vishvasa": "node scripts/seed-shivapurana-vishvasa.mjs",
     "seed:brahmapurana-translations": "tsx scripts/seed-brahmapurana-translations.ts",
     "seed:brahmapurana-hindi": "tsx scripts/seed-brahmapurana-hindi.ts",
     "seed:brahmandapurana-translations": "tsx scripts/seed-brahmandapurana-translations.ts",
