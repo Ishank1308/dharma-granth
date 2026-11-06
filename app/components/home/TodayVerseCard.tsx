@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { PadaLine } from '@/app/components/PadaLine';
 import { useEffect, useState, type CSSProperties } from 'react';
 import { getTodayWisdom, type DailyWisdomItem } from '@/data/daily-wisdom-engine';
 import { readHref } from '@/lib/verse-paths';
@@ -30,11 +31,11 @@ export function TodayVerseCard() {
       {item ? (
         <>
           {/* The whole shloka, line breaks as published; never shortened. Each published line is its own block
-              so the lines can settle one after another (app/motion.css, .verse-line). */}
-          <p lang="sa" className="shloka-text mx-auto mt-6 max-w-[680px] whitespace-pre-line text-2xl leading-[1.7] text-dharma-text sm:text-[34px]">
+              (wrapping at the pada, never inside one) so the lines can settle one after another (app/motion.css). */}
+          <p lang="sa" className="shloka-text mx-auto mt-6 max-w-[680px] text-2xl leading-[1.7] text-dharma-text sm:text-[34px]">
             {lines.map((line, i) => (
               <span key={i} className="verse-line" style={{ '--i': i } as CSSProperties}>
-                {line || '\u00a0'}
+                {line ? <PadaLine line={line} /> : '\u00a0'}
               </span>
             ))}
           </p>

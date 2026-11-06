@@ -982,6 +982,7 @@ export function VerseCard({
                 depth={depth}
                 defaultOpen={depth !== 'read' && layers.commentary}
                 canDeepen={Boolean(v.wordMeaning || science || v.keywords?.length)}
+                versePageHref={versePageHref}
               >
                 {(studyDepth) => {
                   const showVyakhya = Boolean(hasExplanation || literaryMeta.isCurated);
