@@ -152,7 +152,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   // Hindi reference stays in the keywords ("श्रीमद्भगवद्गीता 2.47 का हिंदी अर्थ").
   const refHi = `${meta.titleSanskrit ?? meta.title} ${chapterId}.${params.verseId}`;
   const cleanSanskrit = cleanVerseField(found.verse.sanskrit).replace(/\s+/g, ' ').trim();
-  const cleanTranslation = (found.verse.translation || found.verse.hindi || '').replace(/\s+/g, ' ').trim();
+  // Hindi meaning leads the snippet (Hindi searchers are the main audience); English when no Hindi is published.
+  const cleanTranslation = (has.hindi ? found.verse.hindi! : found.verse.translation || '').replace(/\s+/g, ' ').trim();
   const description = clipDescription(
     cleanSanskrit && cleanTranslation
       ? `${ref}: ${cleanSanskrit} — ${cleanTranslation}`
