@@ -28,6 +28,7 @@ import {
   StickyNote,
   Sun,
   X,
+  MoreHorizontal,
 } from 'lucide-react';
 import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
 import { THEMES, THEME_NAMES, useTheme } from '@/app/components/ThemeProvider';
@@ -250,6 +251,8 @@ export function VerseReader(props: VerseReaderProps) {
   /* ── Mobile Verse Carousel Drawer ── */
   const [carouselOpen, setCarouselOpen] = useState(false);
 
+  /* Less common verse actions, folded under "More". */
+  const [moreActions, setMoreActions] = useState(false);
   /* ── Interactive Verse Relationship Network Modal ── */
   const [showNetworkModal, setShowNetworkModal] = useState(false);
 
@@ -632,15 +635,9 @@ export function VerseReader(props: VerseReaderProps) {
               {noteText ? 'Edit note' : 'Note'}
               {noteText && <span className="h-1.5 w-1.5 rounded-full bg-saffron-600" aria-label="has a note" />}
             </button>
-            <button type="button" onClick={() => setJournalOpen(true)} className={actionBtn}>
-              <PenLine className="h-4 w-4" aria-hidden="true" /> Reflect privately
-            </button>
             <button type="button" onClick={onCopy} className={actionBtn}>
               <Copy className="h-4 w-4" aria-hidden="true" /> Copy
             </button>
-            <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" /> Open context
-            </Link>
             <button
               type="button"
               onClick={onShare}
@@ -659,6 +656,32 @@ export function VerseReader(props: VerseReaderProps) {
             >
               <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
             </a>
+            <button
+              type="button"
+              onClick={() => setMoreActions((v) => !v)}
+              aria-expanded={moreActions}
+              aria-controls="verse-more-actions"
+              className={actionBtn}
+            >
+              <MoreHorizontal className="h-4 w-4" aria-hidden="true" />
+              {moreActions ? 'Less' : 'More'}
+            </button>
+          </div>
+          {/* Less common actions: one tap away, so the row under the verse stays short. */}
+          <div
+            id="verse-more-actions"
+            role="toolbar"
+            aria-label="More verse actions"
+            hidden={!moreActions}
+            data-focus-hide
+            className={`mt-2 flex-wrap gap-2 ${moreActions ? 'flex' : 'hidden'}`}
+          >
+            <button type="button" onClick={() => setJournalOpen(true)} className={actionBtn}>
+              <PenLine className="h-4 w-4" aria-hidden="true" /> Reflect privately
+            </button>
+            <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
+              <ArrowRight className="h-4 w-4" aria-hidden="true" /> Open context
+            </Link>
             <button
               type="button"
               onClick={() => {
