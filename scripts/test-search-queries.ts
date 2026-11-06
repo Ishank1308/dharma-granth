@@ -74,4 +74,7 @@ assert.ok(nachiketa, 'searching nachiketa should direct to /characters/nachiketa
 const vidura = searchCoreIndex('vidura').find(({ item }) => item.href === '/characters/vidura/');
 assert.ok(vidura, 'searching vidura should direct to /characters/vidura/');
 
+const chaturthi = searchCoreIndex('chaturthi').find(({ item }) => item.href === '/panchang/tithis/chaturthi/');
+assert.ok(chaturthi, 'searching chaturthi should direct to /panchang/tithis/chaturthi/');
+
 console.log('search query checks passed');

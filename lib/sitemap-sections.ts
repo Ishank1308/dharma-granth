@@ -18,7 +18,7 @@ import { festivals } from '@/data/festivals';
 import { GRANTH_ANSWERS } from '@/data/granth-answers';
 import { getChapterSummaryCollection } from '@/data/chapter-summaries';
 import { SACRED_MANTRAS } from '@/data/mantras';
-import { NAKSHATRA_DATA, nakshatraSlug } from '@/lib/panchang';
+import { NAKSHATRA_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES } from '@/lib/panchang';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
 
@@ -78,6 +78,7 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/panchang/purnima', pageDate('/panchang/purnima')),
     entry('/panchang/amavasya', pageDate('/panchang/amavasya')),
     entry('/panchang/nakshatras', pageDate('/panchang/nakshatras', 'lib/panchang.ts')),
+    entry('/panchang/tithis', pageDate('/panchang/tithis', 'lib/panchang.ts')),
     entry('/timelines', pageDate('/timelines')),
     entry('/rituals', pageDate('/rituals')),
     entry('/dictionary', pageDate('/dictionary', 'data/dictionary.ts')),
@@ -156,7 +157,10 @@ function pagesSection(): MetadataRoute.Sitemap {
   const nakshatraDate = lastChanged('lib/panchang.ts', 'app/panchang/nakshatras/[slug]/page.tsx');
   const nakshatraRoutes = NAKSHATRA_DATA.map((n) => entry(`/panchang/nakshatras/${nakshatraSlug(n.name)}`, nakshatraDate));
 
-  return [...staticRoutes, ...mantraRoutes, ...nakshatraRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
+  const tithiDate = lastChanged('lib/panchang.ts', 'app/panchang/tithis/[slug]/page.tsx');
+  const tithiRoutes = UNIQUE_TITHI_ARCHETYPES.map((t) => entry(`/panchang/tithis/${t.slug}`, tithiDate));
+
+  return [...staticRoutes, ...mantraRoutes, ...nakshatraRoutes, ...tithiRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
 }
 
 /** Scripture landing pages and chapter pages (all seeded + curated chapters), dated by when the scripture's text or commentary last changed. */

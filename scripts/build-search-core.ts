@@ -12,7 +12,7 @@ import { wisdomTopics } from '../data/wisdom-for-life';
 import { CHAPTERS } from '../data/ashtavakra/chapters-meta';
 import { wisdomVerseHref, libraryLocation } from '../lib/wisdom-links';
 import { versePageHref } from '../lib/verse-paths';
-import { NAKSHATRA_DATA, TITHI_DATA, nakshatraSlug } from '../lib/panchang';
+import { NAKSHATRA_DATA, TITHI_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES } from '../lib/panchang';
 import { SACRED_MANTRAS } from '../data/mantras';
 import { getAllConceptDetails } from '../data/concept-details';
 import { characters } from '../data/characters';
@@ -102,6 +102,10 @@ for (const ch of characters) {
 // Festivals
 for (const f of festivals) {
   addTerm(`festival-${f.id}`, f.name, f.sanskrit, `/festivals/${f.id}/`);
+}
+
+for (const t of UNIQUE_TITHI_ARCHETYPES) {
+  addTerm(`tithi-${t.slug}`, `${t.name}`, `${t.nameHi}`, `/panchang/tithis/${t.slug}/`);
 }
 
 for (const tithi of Object.values(TITHI_DATA)) addTerm(`tithi-${tithi.paksha}-${tithi.number}`, tithi.name, tithi.nameHi);
