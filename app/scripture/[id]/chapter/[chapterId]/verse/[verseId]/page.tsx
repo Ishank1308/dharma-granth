@@ -25,7 +25,6 @@ import { scriptureLastChanged } from '@/lib/content-dates';
 import { cleanVerseField, splitVyakhyaCommentary, verseLines, formatVerseRef, withPassageMeaning } from '@/lib/verse-format';
 import { resolveVerseKnowledge } from '@/lib/knowledge-graph';
 import { TrustBadges } from '@/app/components/TrustBadges';
-import { SourceStudyNotes } from '@/app/components/SourceStudyNotes';
 import { UnderstandPanel } from '@/app/components/understand/UnderstandPanel';
 import { VerseCompletion } from '@/app/components/understand/VerseCompletion';
 import { getUnderstandingExtras } from '@/data/understanding';
@@ -468,7 +467,7 @@ export default async function VersePage(props: PageProps) {
         insight={getVerseInsight(meta.id, chapterId, params.verseId)}
       >
         {/*
-          Source & Study Notes, then Related Wisdom discovery (lib/wisdom-discovery):
+          Related Wisdom discovery (lib/wisdom-discovery):
           children of VerseReader, so they render AFTER the Modern Context layer
           (layer-reflection inside ReaderLayers above) without interrupting
           reading. Server HTML only.
@@ -486,7 +485,7 @@ export default async function VersePage(props: PageProps) {
               <span className="block text-body font-semibold text-label-primary">
                 <span>Study more</span> <span lang="hi" className="font-devanagari font-normal text-label-secondary">गहन अध्ययन</span>
               </span>
-              <span className="mt-0.5 block text-subhead text-label-secondary">Lesson, examples, diagrams, related verses and source notes</span>
+              <span className="mt-0.5 block text-subhead text-label-secondary">Lesson, examples, diagrams and related verses</span>
             </span>
             <span aria-hidden="true" className="apple-chevron text-xl transition-transform duration-standard ease-standard group-open:rotate-90">›</span>
           </summary>
@@ -533,17 +532,6 @@ export default async function VersePage(props: PageProps) {
               translation: verse.translation,
               explanation,
             }}
-          />
-          <SourceStudyNotes
-            scriptureId={meta.id}
-            scriptureTitle={meta.title}
-            scriptureTitleSanskrit={meta.titleSanskrit}
-            verseRef={ref}
-            sourceHost={repoLabel(source.repo)}
-            hindiIsAi={verse.hindiSource === 'ai'}
-            englishIsAi={verse.translationSource === 'ai'}
-            commentaryIsAi={Boolean(comment?.ai)}
-            translationReview={translationReview ? `Reviewed ${translationReview.date}` : 'Not yet reviewed'}
           />
           </div>
         </details>

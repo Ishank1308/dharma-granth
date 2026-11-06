@@ -8,6 +8,7 @@ const DROP = [
   'section[aria-labelledby="rt-h"]', // related teachings: already in the chapter card
   'section[aria-label^="संबंधित ज्ञान"]', // related wisdom: already in the chapter card
   '#verse-graph', // the network graph draws itself on the verse page only
+  'section[aria-labelledby="source-study-notes"]', // source & study notes removed per user preference
   '[role="tablist"]', // tab switches need the verse page's script; the default tab's text stays
   'button', // every other control on the verse page is wired there, not here
 ];
