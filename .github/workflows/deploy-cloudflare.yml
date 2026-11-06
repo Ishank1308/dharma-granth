@@ -65,9 +65,24 @@ jobs:
             }
             core.info(`No passed CI export for tree ${commit.tree.sha}; building here.`);
 
+      # The export is already built: check out only what the deploy and the
+      # checks after it read (Pages Functions and three dependency-free
+      # scripts), not the ~550 MB tree. Saves about a minute, plus npm ci.
+      # No package.json on purpose: wrangler-action would then install the
+      # site's 550 packages along with Wrangler.
       - name: Checkout (prebuilt export)
         if: steps.prebuilt.outputs.run-id != ''
         uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            /functions/
+            /lib/
+            /tsconfig.json
+            /scripts/smoke-test-dist.mjs
+            /scripts/verify-rsc-canary.mjs
+            /scripts/seo/
+          sparse-checkout-cone-mode: false
+          filter: blob:none
 
       - name: Checkout
         if: steps.prebuilt.outputs.run-id == ''
@@ -83,9 +98,11 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: "22"
-          cache: npm
+          # No lockfile in the prebuilt checkout.
+          cache: ${{ steps.prebuilt.outputs.run-id == '' && 'npm' || '' }}
 
       - name: Install dependencies
+        if: steps.prebuilt.outputs.run-id == ''
         run: npm ci
 
       - name: Lint
@@ -223,7 +240,7 @@ jobs:
       # Lightweight post-deploy smoke test of dist/
       # Verifies HTTP 200, valid HTML content, and zero Error Boundary text across core routes
       - name: Post-deploy health smoke test
-        run: npm run test:smoke
+        run: node scripts/smoke-test-dist.mjs
 
       # Compare the deployed Flight payload with the exact dist artifact from
       # this run. This catches stale or mismatched RSC files before any R2
@@ -234,7 +251,7 @@ jobs:
         # Keep exact byte comparison on every attempt and fail after five minutes.
         run: |
           for attempt in {1..16}; do
-            if npm run verify:rsc-canary -- --local dist/scripture/bhagavadgita/chapter/2/index.txt --url https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/index.txt; then
+            if node scripts/verify-rsc-canary.mjs --local dist/scripture/bhagavadgita/chapter/2/index.txt --url https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/index.txt; then
               exit 0
             fi
             if [ "$attempt" -eq 16 ]; then
