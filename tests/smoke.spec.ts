@@ -149,3 +149,24 @@ test('dashboard backup exports bookmarks and restores them', async ({ page }) =>
     .poll(() => page.evaluate(() => localStorage.getItem('dharma.bookmarkedVerses')))
     .toBe('["x"]');
 });
+
+test('sacred mantras reveal detailed explanation inline without redirecting', async ({ page }) => {
+  await page.goto('/mantras/');
+  const card = page.locator('article#gayatri-mantra');
+  await expect(card).toBeVisible();
+  await expect(card.locator('a[href^="/mantras/"]')).toHaveCount(0);
+
+  const toggle = card.getByRole('button', { name: /पदच्छेद व विस्तृत व्याख्या देखें/ });
+  await toggle.click();
+
+  expect(new URL(page.url()).pathname).toBe('/mantras/');
+  const detail = card.locator('#mantra-detail-gayatri-mantra');
+  await expect(detail).toBeVisible();
+  await expect(detail.getByText('पदच्छेद, अन्वय एवं शब्दार्थ')).toBeVisible();
+  await expect(detail.getByText('दार्शनिक रहस्य एवं साधना-महत्त्व')).toBeVisible();
+  await expect(detail.getByText('जिज्ञासा समाधान')).toBeVisible();
+
+  await detail.getByRole('button', { name: /Close detailed explanation/ }).click();
+  await expect(detail).toBeHidden();
+  expect(new URL(page.url()).pathname).toBe('/mantras/');
+});
