@@ -562,7 +562,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, query, typeaheadSuggestion?.completion]);
 
   const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     // Enter and arrows while a Hindi/Devanagari IME is composing pick a candidate; they must not navigate.

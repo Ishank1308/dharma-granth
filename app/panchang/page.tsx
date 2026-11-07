@@ -153,7 +153,7 @@ export default function PanchangPage() {
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Moon className="w-3.5 h-3.5" />
-                  <span>१. तिथि · 16 Lunar Days</span>
+                  <span>1. तिथि · 16 Lunar Days</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
                   16 Tithis (पंच-तिथि वर्ग)
@@ -178,7 +178,7 @@ export default function PanchangPage() {
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Clock className="w-3.5 h-3.5" />
-                  <span>२. वार · 7 Weekdays</span>
+                  <span>2. वार · 7 Weekdays</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
                   7 Varas (सप्त वासर)
@@ -203,10 +203,10 @@ export default function PanchangPage() {
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Star className="w-3.5 h-3.5" />
-                  <span>३. नक्षत्र · 27 Asterisms</span>
+                  <span>3. नक्षत्र · 27 Asterisms</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
-                  27 Nakshatras (२७ नक्षत्र)
+                  27 Nakshatras (27 नक्षत्र)
                 </h3>
                 <p className="text-xs text-dharma-muted">
                   From Ashwini to Revati — presiding Vedic deities, Sukta citations, and contemplation.
@@ -228,10 +228,10 @@ export default function PanchangPage() {
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Sun className="w-3.5 h-3.5" />
-                  <span>४. योग · 27 Nitya Yogas</span>
+                  <span>4. योग · 27 Nitya Yogas</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
-                  27 Yogas (२७ नित्य योग)
+                  27 Yogas (27 नित्य योग)
                 </h3>
                 <p className="text-xs text-dharma-muted">
                   Additive solar-lunar arcs (Vishkambha to Vaidhriti) — auspicious and reflective states.
@@ -253,10 +253,10 @@ export default function PanchangPage() {
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Layers className="w-3.5 h-3.5" />
-                  <span>५. करण · 11 Half-Tithis</span>
+                  <span>5. करण · 11 Half-Tithis</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
-                  11 Karanas (११ करण)
+                  11 Karanas (11 करण)
                 </h3>
                 <p className="text-xs text-dharma-muted">
                   7 Movable (Chara) &amp; 4 Fixed (Sthira) half-tithis, including the rules of Vishti (Bhadra).

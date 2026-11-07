@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   GITA_CHAPTERS,
   calculateStreak,
+  activateSankalpa,
   getTodayAssignment,
   fulfillTodayAssignment,
   toggleChapterInCycle,
@@ -106,11 +107,68 @@ test('toggleChapterInCycle toggles chapters and calculates progress', () => {
   assert.equal(state.totalChaptersRead, 0);
 });
 
-test('getTraditionalSankalpaInvocation produces authentic Sanskrit and Hindi invocation', () => {
+test('getTraditionalSankalpaInvocation produces authentic Sanskrit and Hindi invocation without duplicate adya', () => {
   const invocation = getTraditionalSankalpaInvocation('शनि', 'त्रयोदशी', 'श्रीमद्भगवद्गीता द्वादश अध्याय');
   assert.ok(invocation.sanskrit.includes('ॐ तत्सत्'));
   assert.ok(invocation.sanskrit.includes('शनि वासरे'));
   assert.ok(invocation.sanskrit.includes('त्रयोदशी'));
   assert.ok(invocation.hindi.includes('भगवान् श्रीकृष्ण के प्रीत्यर्थ'));
   assert.ok(invocation.english.includes('Om Tat Sat'));
+
+  // Regression: passing 'अद्य' or 'शनिवार' never duplicates 'अद्य अद्य' or 'वार वासरे'
+  const fallbackInvocation = getTraditionalSankalpaInvocation('अद्य', 'पावन तिथौ', 'भक्तियोग');
+  assert.ok(!fallbackInvocation.sanskrit.includes('अद्य अद्य'));
+  assert.ok(fallbackInvocation.sanskrit.includes('अद्य शुभ वासरे'));
+
+  const fullVaraInvocation = getTraditionalSankalpaInvocation('शनिवार', 'शुक्ल सप्तमी तिथौ', 'भक्तियोग');
+  assert.ok(fullVaraInvocation.sanskrit.includes('अद्य शनि वासरे'));
+  assert.ok(fullVaraInvocation.hindi.includes('आज शनिवार के पावन दिवस पर'));
+});
+
+test('activateSankalpa preserves completedDates, bestStreak, totalChaptersRead, and cyclesCompleted on mode switch', () => {
+  const priorState: GitaSankalpaState = {
+    ...getDefaultSankalpaState(),
+    isActive: false,
+    mode: '18-days',
+    completedDates: ['2026-11-05', '2026-11-06'],
+    bestStreak: 5,
+    totalChaptersRead: 22,
+    cyclesCompleted: 1,
+    cycleChapters: [1, 2, 3, 4],
+  };
+
+  const restarted = activateSankalpa(priorState, 'daily-chapter', 15, '2026-11-07');
+  assert.equal(restarted.isActive, true);
+  assert.equal(restarted.mode, 'daily-chapter');
+  assert.equal(restarted.targetChapter, 15);
+  assert.deepEqual(restarted.completedDates, ['2026-11-05', '2026-11-06']);
+  assert.equal(restarted.currentStreak, 2); // completed yesterday -> streak stays alive today
+  assert.equal(restarted.bestStreak, 5);
+  assert.equal(restarted.totalChaptersRead, 22);
+  assert.equal(restarted.cyclesCompleted, 1);
+  assert.equal(restarted.currentCycle, 2);
+  assert.deepEqual(restarted.cycleChapters, []);
+});
+
+test('weekly-parayana resolves exact calendar weekday via UTC without negative-offset shift', () => {
+  const state: GitaSankalpaState = {
+    ...getDefaultSankalpaState(),
+    isActive: true,
+    mode: 'weekly-parayana',
+  };
+  // 2026-11-02 is Monday -> chapters 1, 2, 3
+  const monAssign = getTodayAssignment(state, '2026-11-02');
+  assert.deepEqual(
+    monAssign.chapters.map((c) => c.number),
+    [1, 2, 3],
+  );
+  assert.equal(monAssign.dayIndexInCycle, 1);
+
+  // 2026-11-07 is Saturday -> chapters 16, 17, 18
+  const satAssign = getTodayAssignment(state, '2026-11-07');
+  assert.deepEqual(
+    satAssign.chapters.map((c) => c.number),
+    [16, 17, 18],
+  );
+  assert.equal(satAssign.dayIndexInCycle, 6);
 });

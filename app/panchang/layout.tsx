@@ -62,7 +62,7 @@ const PANCHANG_JSON_LD = {
           name: 'पञ्चाङ्ग के पाँच अंग क्या हैं (What are the five limbs of Panchang)?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'पञ्चाङ्ग के पाँच अंग हैं: (१) तिथि (Lunar Day), (२) वार (Solar Day), (३) नक्षत्र (Lunar Mansion), (४) योग (Soli-Lunar Angle), और (५) करण (Half-Tithi)।',
+            text: 'पञ्चाङ्ग के पाँच अंग हैं: (1) तिथि (Lunar Day), (2) वार (Solar Day), (3) नक्षत्र (Lunar Mansion), (4) योग (Soli-Lunar Angle), और (5) करण (Half-Tithi)।',
           },
         },
         {

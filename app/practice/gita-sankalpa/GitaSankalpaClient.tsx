@@ -27,12 +27,14 @@ import {
   type SankalpaMode,
   loadSankalpaState,
   saveSankalpaState,
+  activateSankalpa,
   getTodayISODate,
   getTodayAssignment,
   fulfillTodayAssignment,
   toggleChapterInCycle,
   getTraditionalSankalpaInvocation,
 } from '@/lib/gita-sankalpa';
+import { calculateEducationalPanchang, PRESET_LOCATIONS } from '@/lib/panchang';
 import { triggerHaptic } from '@/lib/haptics';
 import {
   formatBytes,
@@ -49,6 +51,11 @@ export function GitaSankalpaClient() {
   const [selectedMode, setSelectedMode] = useState<SankalpaMode>('18-days');
   const [targetChapter, setTargetChapter] = useState(12); // default Ch 12 Bhakti Yoga
   const [celebrate, setCelebrate] = useState(false);
+  const [confirmingReset, setConfirmingReset] = useState(false);
+  const [liveKala, setLiveKala] = useState<{ varaHi: string; tithiHi: string }>({
+    varaHi: 'शुभ वार',
+    tithiHi: 'पावन तिथौ',
+  });
 
   // Offline Gita caching state
   const [offlineEntry, setOfflineEntry] = useState<OfflineEntry | null>(null);
@@ -59,7 +66,15 @@ export function GitaSankalpaClient() {
   const todayStr = useMemo(() => getTodayISODate(), []);
 
   useEffect(() => {
-    setState(loadSankalpaState());
+    const loaded = loadSankalpaState();
+    setState(loaded);
+    setSelectedMode(loaded.mode);
+    setTargetChapter(loaded.targetChapter);
+    const p = calculateEducationalPanchang(new Date(), PRESET_LOCATIONS[0]);
+    setLiveKala({
+      varaHi: p.dayOfWeekHi,
+      tithiHi: `${p.paksha.nameHi} ${p.tithi.nameHi} तिथौ`,
+    });
     setCanOffline(offlineSupported());
     const refreshOffline = () => {
       setOfflineEntry(readManifest()['bhagavadgita'] ?? null);
@@ -82,19 +97,9 @@ export function GitaSankalpaClient() {
 
   const handleStartSankalpa = () => {
     triggerHaptic('medium');
-    const nextState: GitaSankalpaState = {
-      ...state,
-      isActive: true,
-      mode: selectedMode,
-      targetChapter,
-      startDate: todayStr,
-      currentCycle: 1,
-      cycleChapters: [],
-      completedDates: [],
-      currentStreak: 0,
-    };
+    const nextState = activateSankalpa(state, selectedMode, targetChapter, todayStr);
     setState(nextState);
-    saveSankalpaState(nextState);
+    setConfirmingReset(false);
   };
 
   const handleMarkFulfilled = () => {
@@ -111,10 +116,7 @@ export function GitaSankalpaClient() {
     setState(nextState);
   };
 
-  const handleResetSankalpa = () => {
-    if (!window.confirm('क्या आप संकल्प को पुनः आरम्भ (Reset) करना चाहते हैं? Your completed history will be kept, but the current cycle will restart.')) {
-      return;
-    }
+  const handleConfirmResetSankalpa = () => {
     triggerHaptic('medium');
     const nextState: GitaSankalpaState = {
       ...state,
@@ -123,6 +125,7 @@ export function GitaSankalpaClient() {
     };
     setState(nextState);
     saveSankalpaState(nextState);
+    setConfirmingReset(false);
   };
 
   const handleSaveGitaOffline = async () => {
@@ -145,7 +148,43 @@ export function GitaSankalpaClient() {
     }
   };
 
-  const invocation = getTraditionalSankalpaInvocation('अद्य', 'पावन तिथौ', activeChapter.nameHi);
+  const invocation = getTraditionalSankalpaInvocation(liveKala.varaHi, liveKala.tithiHi, activeChapter.nameHi);
+
+  const renderMalaCard = (ch: GitaChapterMeta) => {
+    const done = state.cycleChapters.includes(ch.number);
+    return (
+      <div
+        key={ch.number}
+        className={`flex flex-col justify-between rounded-2xl border transition ${
+          done
+            ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200'
+            : 'border-dharma-border bg-dharma-panel/60 text-dharma-text hover:border-saffron-400/50'
+        }`}
+      >
+        <button
+          type="button"
+          onClick={() => handleToggleChapter(ch.number)}
+          aria-pressed={done}
+          aria-label={`अध्याय ${ch.number} ${ch.nameHi} — ${done ? 'पूर्ण चिह्नित' : 'पूर्ण चिह्नित करें'}`}
+          className="flex flex-col items-center justify-center p-3 pb-2 text-center w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 rounded-t-2xl"
+        >
+          <span className="text-xs font-bold">Adhyaya {ch.number}</span>
+          <span className="font-devanagari text-xs truncate max-w-full mt-0.5">{ch.nameHi}</span>
+          {done ? (
+            <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-1" />
+          ) : (
+            <Circle className="h-4 w-4 text-dharma-muted mt-1" />
+          )}
+        </button>
+        <Link
+          href={`/scripture/bhagavadgita/chapter/${ch.number}/`}
+          className="border-t border-dharma-border/50 py-1.5 px-2 text-center text-[11px] font-semibold text-saffron-700 dark:text-saffron-300 hover:bg-saffron-500/10 transition rounded-b-2xl"
+        >
+          पाठ करें →
+        </Link>
+      </div>
+    );
+  };
 
   // Group chapters by Shatka
   const karmaChapters = GITA_CHAPTERS.slice(0, 6);
@@ -488,25 +527,7 @@ export function GitaSankalpaClient() {
                 </span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
-                {karmaChapters.map((ch) => {
-                  const done = state.cycleChapters.includes(ch.number);
-                  return (
-                    <button
-                      key={ch.number}
-                      type="button"
-                      onClick={() => handleToggleChapter(ch.number)}
-                      className={`flex flex-col items-center justify-center p-3 rounded-2xl border text-center transition ${
-                        done
-                          ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200'
-                          : 'border-dharma-border bg-dharma-panel/60 text-dharma-text hover:border-saffron-400/50'
-                      }`}
-                    >
-                      <span className="text-xs font-bold">Adhyaya {ch.number}</span>
-                      <span className="font-devanagari text-xs truncate max-w-full mt-0.5">{ch.nameHi}</span>
-                      {done ? <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-1" /> : <Circle className="h-4 w-4 text-dharma-muted mt-1" />}
-                    </button>
-                  );
-                })}
+                {karmaChapters.map(renderMalaCard)}
               </div>
             </div>
 
@@ -518,25 +539,7 @@ export function GitaSankalpaClient() {
                 </span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
-                {bhaktiChapters.map((ch) => {
-                  const done = state.cycleChapters.includes(ch.number);
-                  return (
-                    <button
-                      key={ch.number}
-                      type="button"
-                      onClick={() => handleToggleChapter(ch.number)}
-                      className={`flex flex-col items-center justify-center p-3 rounded-2xl border text-center transition ${
-                        done
-                          ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200'
-                          : 'border-dharma-border bg-dharma-panel/60 text-dharma-text hover:border-saffron-400/50'
-                      }`}
-                    >
-                      <span className="text-xs font-bold">Adhyaya {ch.number}</span>
-                      <span className="font-devanagari text-xs truncate max-w-full mt-0.5">{ch.nameHi}</span>
-                      {done ? <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-1" /> : <Circle className="h-4 w-4 text-dharma-muted mt-1" />}
-                    </button>
-                  );
-                })}
+                {bhaktiChapters.map(renderMalaCard)}
               </div>
             </div>
 
@@ -548,25 +551,7 @@ export function GitaSankalpaClient() {
                 </span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
-                {jnanaChapters.map((ch) => {
-                  const done = state.cycleChapters.includes(ch.number);
-                  return (
-                    <button
-                      key={ch.number}
-                      type="button"
-                      onClick={() => handleToggleChapter(ch.number)}
-                      className={`flex flex-col items-center justify-center p-3 rounded-2xl border text-center transition ${
-                        done
-                          ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200'
-                          : 'border-dharma-border bg-dharma-panel/60 text-dharma-text hover:border-saffron-400/50'
-                      }`}
-                    >
-                      <span className="text-xs font-bold">Adhyaya {ch.number}</span>
-                      <span className="font-devanagari text-xs truncate max-w-full mt-0.5">{ch.nameHi}</span>
-                      {done ? <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-1" /> : <Circle className="h-4 w-4 text-dharma-muted mt-1" />}
-                    </button>
-                  );
-                })}
+                {jnanaChapters.map(renderMalaCard)}
               </div>
             </div>
           </section>
@@ -627,23 +612,51 @@ export function GitaSankalpaClient() {
           </section>
 
           {/* 5. Reset & Cycle Statistics */}
-          <section className="rounded-3xl border border-dharma-border bg-dharma-card p-6 flex flex-wrap items-center justify-between gap-4 text-xs text-dharma-muted">
-            <div className="flex flex-wrap items-center gap-4">
-              <span>आरम्भ तिथि: <strong className="text-dharma-text">{state.startDate}</strong></span>
-              <span>•</span>
-              <span>कुल पूर्ण अध्याय: <strong className="text-dharma-text">{state.totalChaptersRead}</strong></span>
-              <span>•</span>
-              <span>पूर्ण चक्र: <strong className="text-dharma-text">{state.cyclesCompleted}</strong></span>
+          <section className="rounded-3xl border border-dharma-border bg-dharma-card p-6 space-y-3 text-xs text-dharma-muted">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-4">
+                <span>आरम्भ तिथि: <strong className="text-dharma-text">{state.startDate}</strong></span>
+                <span>•</span>
+                <span>कुल पूर्ण अध्याय: <strong className="text-dharma-text">{state.totalChaptersRead}</strong></span>
+                <span>•</span>
+                <span>पूर्ण चक्र: <strong className="text-dharma-text">{state.cyclesCompleted}</strong></span>
+              </div>
+
+              {!confirmingReset && (
+                <button
+                  type="button"
+                  onClick={() => setConfirmingReset(true)}
+                  className="inline-flex items-center gap-1.5 text-dharma-muted hover:text-rose-600 transition font-medium"
+                >
+                  <RotateCcw className="h-3.5 w-3.5" />
+                  <span>नया संकल्प चुनें (Change / Reset)</span>
+                </button>
+              )}
             </div>
 
-            <button
-              type="button"
-              onClick={handleResetSankalpa}
-              className="inline-flex items-center gap-1.5 text-dharma-muted hover:text-rose-600 transition font-medium"
-            >
-              <RotateCcw className="h-3.5 w-3.5" />
-              <span>नया संकल्प चुनें (Reset)</span>
-            </button>
+            {confirmingReset && (
+              <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-500/30 bg-amber-500/10 p-3.5 text-dharma-text">
+                <span>
+                  क्या आप वर्तमान चक्र को बदलकर नया संकल्प चुनना चाहते हैं? (आपका पूर्ण इतिहास और अखंड शृंखला सुरक्षित रहेगी।)
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleConfirmResetSankalpa}
+                    className="rounded-xl bg-saffron-600 hover:bg-saffron-700 px-3 py-1.5 font-semibold text-white transition"
+                  >
+                    हाँ, नया संकल्प चुनें
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setConfirmingReset(false)}
+                    className="rounded-xl border border-dharma-border bg-dharma-card hover:bg-dharma-panel px-3 py-1.5 font-medium text-dharma-text transition"
+                  >
+                    रद्द करें
+                  </button>
+                </div>
+              </div>
+            )}
           </section>
         </div>
       )}

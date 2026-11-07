@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   Sparkles,
@@ -38,6 +38,8 @@ import {
   VARA_DATA,
   getAllKaranas,
   YOGA_DATA,
+  calculateEducationalPanchang,
+  PRESET_LOCATIONS,
 } from '@/lib/panchang';
 
 interface MuhurtaClientProps {
@@ -69,6 +71,7 @@ interface MuhurtaClientProps {
 }
 
 export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
+  const [livePanchang, setLivePanchang] = useState(initialPanchang);
   const [activeTab, setActiveTab] = useState<'today' | 'simulator' | 'principles' | 'faqs'>('today');
   const [expandedEndeavorId, setExpandedEndeavorId] = useState<string | null>(null);
 
@@ -80,17 +83,48 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
   const [simYoga, setSimYoga] = useState<string>(initialPanchang.yogaName);
   const [simEndeavorId, setSimEndeavorId] = useState<string>('vidya-arambha');
 
-  const todayRahu = getStandardRahuKalam(initialPanchang.dayOfWeekIndex);
+  // Refresh ephemeris on client mount so static export never freezes Today's Matrix on build day
+  useEffect(() => {
+    const p = calculateEducationalPanchang(new Date(), PRESET_LOCATIONS[0]);
+    const fresh = {
+      isoDate: p.isoDate,
+      dayOfWeekIndex: p.date.getDay(),
+      dayOfWeek: p.dayOfWeek,
+      dayOfWeekHi: p.dayOfWeekHi,
+      tithiNumber: p.tithi.number,
+      tithiName: p.tithi.name,
+      tithiNameHi: p.tithi.nameHi,
+      paksha: p.paksha.name,
+      pakshaHi: p.paksha.nameHi,
+      nakshatraIndex: p.nakshatra.index,
+      nakshatraName: p.nakshatra.name,
+      nakshatraNameHi: p.nakshatra.nameHi,
+      karanaName: p.karana.name,
+      karanaNameHi: p.karana.nameHi,
+      yogaIndex: p.yoga.index,
+      yogaName: p.yoga.name,
+      yogaNameHi: p.yoga.nameHi,
+      solarTimes: p.solarTimes,
+    };
+    setLivePanchang(fresh);
+    setSimTithi(fresh.tithiNumber);
+    setSimVara(fresh.dayOfWeekIndex);
+    setSimNakshatra(fresh.nakshatraIndex);
+    setSimKarana(fresh.karanaName);
+    setSimYoga(fresh.yogaName);
+  }, []);
+
+  const todayRahu = getStandardRahuKalam(livePanchang.dayOfWeekIndex);
 
   // Evaluate today's endeavors
   const todayEvaluations: MuhurtaEvaluation[] = MUHURTA_ENDEAVORS.map((end) =>
     evaluateEndeavorMuhurta(
       end,
-      initialPanchang.tithiNumber,
-      initialPanchang.dayOfWeekIndex,
-      initialPanchang.nakshatraIndex,
-      initialPanchang.karanaName,
-      initialPanchang.yogaName
+      livePanchang.tithiNumber,
+      livePanchang.dayOfWeekIndex,
+      livePanchang.nakshatraIndex,
+      livePanchang.karanaName,
+      livePanchang.yogaName
     )
   );
 
@@ -138,9 +172,11 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
   return (
     <div className="space-y-8">
       {/* Navigation Tabs */}
-      <div className="flex flex-wrap gap-2 border-b border-dharma-border pb-3">
+      <div role="tablist" aria-label="Muhurta Matrix Sections" className="flex flex-wrap gap-2 border-b border-dharma-border pb-3">
         <button
           type="button"
+          role="tab"
+          aria-selected={activeTab === 'today'}
           onClick={() => setActiveTab('today')}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all ${
             activeTab === 'today'
@@ -154,6 +190,8 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
 
         <button
           type="button"
+          role="tab"
+          aria-selected={activeTab === 'simulator'}
           onClick={() => setActiveTab('simulator')}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all ${
             activeTab === 'simulator'
@@ -167,6 +205,8 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
 
         <button
           type="button"
+          role="tab"
+          aria-selected={activeTab === 'principles'}
           onClick={() => setActiveTab('principles')}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all ${
             activeTab === 'principles'
@@ -180,6 +220,8 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
 
         <button
           type="button"
+          role="tab"
+          aria-selected={activeTab === 'faqs'}
           onClick={() => setActiveTab('faqs')}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all ${
             activeTab === 'faqs'
@@ -203,13 +245,13 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                   वर्तमान पञ्चाङ्ग आधार · Live Educational Ephemeris
                 </p>
                 <h2 className="text-xl md:text-2xl font-serif font-bold text-dharma-text mt-0.5">
-                  {initialPanchang.dayOfWeekHi} ({initialPanchang.dayOfWeek}) · {initialPanchang.isoDate}
+                  {livePanchang.dayOfWeekHi} ({livePanchang.dayOfWeek}) · {livePanchang.isoDate}
                 </h2>
               </div>
               <div className="flex items-center gap-3 text-xs bg-dharma-bg px-3.5 py-2 rounded-xl border border-dharma-border">
                 <Sun className="w-4 h-4 text-amber-500" />
                 <span className="text-dharma-text">
-                  सूर्योदय: <strong>{initialPanchang.solarTimes.sunrise}</strong> · सूर्यास्त: <strong>{initialPanchang.solarTimes.sunset}</strong>
+                  सूर्योदय: <strong>{livePanchang.solarTimes.sunrise}</strong> · सूर्यास्त: <strong>{livePanchang.solarTimes.sunset}</strong>
                 </span>
               </div>
             </div>
@@ -217,32 +259,32 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-4 text-center">
               <div className="p-2.5 rounded-xl bg-dharma-bg/60 border border-dharma-border/40">
                 <span className="text-[11px] text-dharma-muted uppercase block">तिथि (Tithi)</span>
-                <span className="font-semibold text-sm text-dharma-text block">{initialPanchang.tithiNameHi}</span>
-                <span className="text-[11px] text-dharma-muted">{initialPanchang.pakshaHi}</span>
+                <span className="font-semibold text-sm text-dharma-text block">{livePanchang.tithiNameHi}</span>
+                <span className="text-[11px] text-dharma-muted">{livePanchang.pakshaHi}</span>
               </div>
 
               <div className="p-2.5 rounded-xl bg-dharma-bg/60 border border-dharma-border/40">
                 <span className="text-[11px] text-dharma-muted uppercase block">वार (Vara)</span>
-                <span className="font-semibold text-sm text-dharma-text block">{initialPanchang.dayOfWeekHi}</span>
-                <span className="text-[11px] text-dharma-muted">{initialPanchang.dayOfWeek}</span>
+                <span className="font-semibold text-sm text-dharma-text block">{livePanchang.dayOfWeekHi}</span>
+                <span className="text-[11px] text-dharma-muted">{livePanchang.dayOfWeek}</span>
               </div>
 
               <div className="p-2.5 rounded-xl bg-dharma-bg/60 border border-dharma-border/40">
                 <span className="text-[11px] text-dharma-muted uppercase block">नक्षत्र (Nakshatra)</span>
-                <span className="font-semibold text-sm text-dharma-text block">{initialPanchang.nakshatraNameHi}</span>
-                <span className="text-[11px] text-dharma-muted">{initialPanchang.nakshatraName}</span>
+                <span className="font-semibold text-sm text-dharma-text block">{livePanchang.nakshatraNameHi}</span>
+                <span className="text-[11px] text-dharma-muted">{livePanchang.nakshatraName}</span>
               </div>
 
               <div className="p-2.5 rounded-xl bg-dharma-bg/60 border border-dharma-border/40">
                 <span className="text-[11px] text-dharma-muted uppercase block">करण (Karana)</span>
-                <span className="font-semibold text-sm text-dharma-text block">{initialPanchang.karanaNameHi}</span>
-                <span className="text-[11px] text-dharma-muted">{initialPanchang.karanaName}</span>
+                <span className="font-semibold text-sm text-dharma-text block">{livePanchang.karanaNameHi}</span>
+                <span className="text-[11px] text-dharma-muted">{livePanchang.karanaName}</span>
               </div>
 
               <div className="p-2.5 rounded-xl bg-dharma-bg/60 border border-dharma-border/40 col-span-2 sm:col-span-1">
                 <span className="text-[11px] text-dharma-muted uppercase block">योग (Yoga)</span>
-                <span className="font-semibold text-sm text-dharma-text block">{initialPanchang.yogaNameHi}</span>
-                <span className="text-[11px] text-dharma-muted">{initialPanchang.yogaName}</span>
+                <span className="font-semibold text-sm text-dharma-text block">{livePanchang.yogaNameHi}</span>
+                <span className="text-[11px] text-dharma-muted">{livePanchang.yogaName}</span>
               </div>
             </div>
           </div>
@@ -253,7 +295,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
               <ShieldAlert className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
               <div>
                 <h3 className="font-semibold text-sm text-rose-900 dark:text-rose-300">
-                  राहुकाल सतर्कता ({initialPanchang.dayOfWeekHi}): {todayRahu.window}
+                  राहुकाल सतर्कता ({livePanchang.dayOfWeekHi}): {todayRahu.window}
                 </h3>
                 <p className="text-xs text-rose-800/80 dark:text-rose-400/80 mt-1 leading-relaxed">
                   दिन का यह अष्टम अंश अप्रत्याशित विक्षेपों के लिए संवेदनशील है। नए अनुबंध, गृहप्रवेश अथवा मांगलिक यात्रा इस 90-मिनट कालखण्ड में आरम्भ न करें।
@@ -430,8 +472,8 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
               </div>
             </div>
 
-            {/* Panchang Sliders / Selectors */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-xl bg-dharma-bg/60 border border-dharma-border mb-6">
+            {/* Panchang Sliders / Selectors (All 5 Limbs) */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 p-4 rounded-xl bg-dharma-bg/60 border border-dharma-border mb-6">
               {/* Tithi Selector */}
               <div>
                 <label htmlFor="muhurta-tithi" className="block text-xs font-semibold text-dharma-text mb-1">
@@ -511,6 +553,25 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                   {getAllKaranas().map((k) => (
                     <option key={k.key} value={k.key}>
                       {k.nameHi} ({k.name} {k.key === 'Vishti' ? '· भद्रा' : ''})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Yoga Selector */}
+              <div>
+                <label htmlFor="muhurta-yoga" className="block text-xs font-semibold text-dharma-text mb-1">
+                  6. योग (Yoga: 1-27)
+                </label>
+                <select
+                  id="muhurta-yoga"
+                  value={simYoga}
+                  onChange={(e) => setSimYoga(e.target.value)}
+                  className="w-full text-xs p-2.5 rounded-lg border border-dharma-border bg-dharma-card text-dharma-text focus:outline-none focus:border-saffron-500"
+                >
+                  {YOGA_DATA.map((y) => (
+                    <option key={y.slug} value={y.name}>
+                      {y.index + 1}. {y.nameHi} ({y.name})
                     </option>
                   ))}
                 </select>

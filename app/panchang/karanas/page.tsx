@@ -197,7 +197,7 @@ export default function KaranasPage() {
               Part 1 · The Recurring Cycle
             </div>
             <h2 className="text-2xl font-bold text-dharma-text">
-              7 Chara (Movable) Karanas (७ चर करण)
+              7 Chara (Movable) Karanas (7 चर करण)
             </h2>
             <p className="text-sm text-dharma-muted font-sans mt-1">
               These 7 Karanas repeat in continuous succession 8 times across the 30 lunar days (7 × 8 = 56 half-tithis).
@@ -255,7 +255,7 @@ export default function KaranasPage() {
               Part 2 · The Dark Phase Anchors
             </div>
             <h2 className="text-2xl font-bold text-dharma-text">
-              4 Sthira (Fixed) Karanas (४ स्थिर करण)
+              4 Sthira (Fixed) Karanas (4 स्थिर करण)
             </h2>
             <p className="text-sm text-dharma-muted font-sans mt-1">
               These 4 Karanas occur exactly once per lunar month, bridging Krishna Chaturdashi, Amavasya, and Shukla Pratipada.

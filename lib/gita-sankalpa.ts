@@ -382,8 +382,8 @@ export function getTodayAssignment(
   if (state.mode === 'weekly-parayana') {
     // 3 chapters per day:
     // Mon: 1-3, Tue: 4-6, Wed: 7-9, Thu: 10-12, Fri: 13-15, Sat: 16-18, Sun: contemplation/review
-    const dateObj = new Date(todayStr);
-    const dayOfWeek = dateObj.getDay(); // 0 is Sunday, 1 is Monday ...
+    const [y, m, d] = todayStr.split('-').map(Number);
+    const dayOfWeek = new Date(Date.UTC(y, m - 1, d)).getUTCDay(); // 0 is Sunday, 1 is Monday ...
     let startCh = 1;
     if (dayOfWeek === 1) startCh = 1;
     else if (dayOfWeek === 2) startCh = 4;
@@ -509,10 +509,36 @@ export function toggleChapterInCycle(
 }
 
 /**
+ * Starts or switches a Sankalpa mode while preserving completed reading history,
+ * best streak, total chapters read, and completed cycles.
+ */
+export function activateSankalpa(
+  state: GitaSankalpaState,
+  mode: SankalpaMode,
+  targetChapter: number,
+  todayStr: string = getTodayISODate(),
+): GitaSankalpaState {
+  const streaks = calculateStreak(state.completedDates, todayStr);
+  const nextState: GitaSankalpaState = {
+    ...state,
+    isActive: true,
+    mode,
+    targetChapter,
+    startDate: todayStr,
+    currentCycle: Math.max(1, state.cyclesCompleted + 1),
+    cycleChapters: [],
+    currentStreak: streaks.currentStreak,
+    bestStreak: Math.max(state.bestStreak, streaks.bestStreak),
+  };
+  saveSankalpaState(nextState);
+  return nextState;
+}
+
+/**
  * Generates traditional Vedic & Puranic Sankalpa invocation text.
  */
 export function getTraditionalSankalpaInvocation(
-  varaLabelHi: string = 'अद्य',
+  varaLabelHi: string = 'शुभ वार',
   tithiLabelHi: string = 'पावन तिथौ',
   chapterNameHi: string = 'श्रीमद्भगवद्गीता',
 ): {
@@ -520,21 +546,24 @@ export function getTraditionalSankalpaInvocation(
   hindi: string;
   english: string;
 } {
+  const normalizedVara = !varaLabelHi || varaLabelHi.trim() === 'अद्य' ? 'शुभ वार' : varaLabelHi.trim();
+  const sanskritVaraStem = normalizedVara.replace(/\s*वार$/, '').trim() || 'शुभ';
+
   return {
     sanskrit: `ॐ तत्सत्। श्रीपरमात्मने नमः।
-अद्य ${varaLabelHi} वासरे, ${tithiLabelHi},
+अद्य ${sanskritVaraStem} वासरे, ${tithiLabelHi},
 मम कायिक-वाचिक-मानसिक पाप-निवारणार्थं,
 अन्तःकरण-शुद्धि-पूर्वकं, ज्ञान-वैराग्य-भक्ति-सिद्धये,
 भगवान् श्रीकृष्ण-प्रीत्यर्थं,
 ${chapterNameHi} नित्य-स्वाध्याय-पारायण-संकल्पम् अहम् करिष्ये॥`,
     hindi: `ॐ तत्सत्। परमपिता परमात्मा को प्रणाम।
-आज ${varaLabelHi} के पावन दिवस पर, ${tithiLabelHi} में,
+आज ${normalizedVara} के पावन दिवस पर, ${tithiLabelHi} में,
 मेरे मन, वाणी और शरीर से हुए दोषों की निवृत्ति,
 हृदय की शुद्धि, तथा ज्ञान, वैराग्य और भक्ति की प्राप्ति के लिए,
 भगवान् श्रीकृष्ण के प्रीत्यर्थ,
-मैं ${chapterNameHi} के नित्य स्वाध्याय एवं पारायण का पावन संकल्प करता/करती हूँ।`,
+मैं ${chapterNameHi} के नित्य स्वाध्याय एवं पारायण का पावन संकल्प लेता/लेती हूँ।`,
     english: `Om Tat Sat. Salutations to the Supreme Self.
-On this sacred day (${varaLabelHi}), amidst ${tithiLabelHi},
+On this sacred day (${normalizedVara}), amidst ${tithiLabelHi},
 for the purification of speech, mind, and action,
 for the attainment of discernment, detachment, and supreme devotion,
 and for the pleasure of Bhagavan Sri Krishna,

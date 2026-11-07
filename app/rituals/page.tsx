@@ -47,7 +47,7 @@ export default function RitualsPage() {
                 श्रावणी उपाकर्म एवं यज्ञोपवीत संस्कार विधान (Upakarma Guide)
               </h2>
               <p className="text-xs sm:text-sm text-dharma-muted max-w-2xl leading-relaxed">
-                कामोऽकार्षीत् प्रायश्चित्त जप (108 आवर्तन), ब्रह्म-यज्ञ, नूतन जनेऊ धारण-विसर्जन मन्त्र और ९ तन्तुओं का रहस्य।
+                कामोऽकार्षीत् प्रायश्चित्त जप (108 आवर्तन), ब्रह्म-यज्ञ, नूतन जनेऊ धारण-विसर्जन मन्त्र और 9 तन्तुओं का रहस्य।
               </p>
             </div>
             <div className="shrink-0 flex items-center gap-2 text-xs font-bold text-saffron-700 dark:text-saffron-400 group-hover:translate-x-1 transition-transform">

@@ -38,7 +38,7 @@ export const CONTRIBUTION_TIERS: ContributionTier[] = [
   {
     id: 't-51',
     amount: 51,
-    labelHi: '₹५१',
+    labelHi: '₹51',
     labelEn: '₹51',
     meaningHi: 'सद्भावना व आशीर्वाद',
     meaningEn: 'Token of Goodwill & Blessings',
@@ -46,7 +46,7 @@ export const CONTRIBUTION_TIERS: ContributionTier[] = [
   {
     id: 't-108',
     amount: 108,
-    labelHi: '₹१०८',
+    labelHi: '₹108',
     labelEn: '₹108',
     meaningHi: 'शुभ संकल्प व ग्रंथ सेवा',
     meaningEn: 'Auspicious Study & Scripture Care',
@@ -55,7 +55,7 @@ export const CONTRIBUTION_TIERS: ContributionTier[] = [
   {
     id: 't-251',
     amount: 251,
-    labelHi: '₹२५१',
+    labelHi: '₹251',
     labelEn: '₹251',
     meaningHi: 'विद्या दान व संरक्षण',
     meaningEn: 'Manuscript & Commentary Preservation',
@@ -63,7 +63,7 @@ export const CONTRIBUTION_TIERS: ContributionTier[] = [
   {
     id: 't-501',
     amount: 501,
-    labelHi: '₹५०१',
+    labelHi: '₹501',
     labelEn: '₹501',
     meaningHi: 'ज्ञान संवर्धन व सर्वर सेवा',
     meaningEn: 'High-speed Ad-free Infrastructure',
@@ -71,7 +71,7 @@ export const CONTRIBUTION_TIERS: ContributionTier[] = [
   {
     id: 't-1008',
     amount: 1008,
-    labelHi: '₹१,००८',
+    labelHi: '₹1,008',
     labelEn: '₹1,008',
     meaningHi: 'महासहयोग व डिजिटल धर्म-प्रचार',
     meaningEn: 'Patron of Open Digital Dharma',
@@ -170,7 +170,7 @@ export interface ContributionPillar {
 export const CONTRIBUTION_PILLARS: ContributionPillar[] = [
   {
     icon: 'ShieldCheck',
-    titleHi: '१००% विज्ञापन-मुक्त व पवित्र पठन',
+    titleHi: '100% विज्ञापन-मुक्त व पवित्र पठन',
     titleEn: '100% Ad-Free Reading Sanctuary',
     descriptionHi:
       'कोई व्यावसायिक विज्ञापन, ट्रैकिंग या पॉपअप नहीं। पाठक का मन केवल पवित्र श्लोकों और शांत अध्ययन में लीन रहता है।',
@@ -226,7 +226,7 @@ export const CONTRIBUTION_FAQS: ContributionFaq[] = [
     questionHi: 'मेरा सहयोग सीधे कहाँ पहुँचता है?',
     questionEn: 'Where does my contribution go?',
     answerHi:
-      'यह १००% प्रत्यक्ष NPCI UPI द्वारा आधिकारिक खाते में जाता है। इसमें किसी तीसरे पक्ष या पेमेंट गेटवे का कोई कमीशन या कटौती नहीं होती।',
+      'यह 100% प्रत्यक्ष NPCI UPI द्वारा आधिकारिक खाते में जाता है। इसमें किसी तीसरे पक्ष या पेमेंट गेटवे का कोई कमीशन या कटौती नहीं होती।',
     answerEn:
       '100% of your contribution reaches directly via NPCI UPI with zero gateway fees, zero transaction cuts, and zero middlemen.',
   },
