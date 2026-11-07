@@ -16,12 +16,22 @@ export function HeroSearchButton() {
     <button
       type="button"
       onClick={() => openGlobalSearch()}
-      className="mx-auto mt-10 flex h-[52px] w-full max-w-[560px] items-center gap-3 rounded-group border border-dharma-text/10 bg-dharma-card px-[18px] text-left text-body text-dharma-muted shadow-raised lift-hover hover:border-dharma-text/20"
-      aria-label="Search scriptures: a verse, word or question"
+      className="focus-ring mx-auto mt-8 flex h-[54px] min-h-[44px] w-full max-w-[580px] items-center gap-3 rounded-2xl border border-dharma-border/80 bg-dharma-card/90 px-4 text-left text-body text-dharma-muted shadow-raised backdrop-blur-md lift-hover hover:border-dharma-saffron/40 hover:text-dharma-text sm:px-5"
+      aria-label="Search scriptures: a verse, word or question / श्लोक या प्रश्न खोजें"
     >
-      <Search className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
-      <span className="min-w-0 flex-1 truncate">Search a verse, word or question</span>
-      <kbd className="kbd-hint shrink-0 rounded-md bg-dharma-text/[0.07] px-1.5 py-0.5 font-sans text-xs text-dharma-text-secondary">{shortcut}</kbd>
+      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-dharma-saffron/10 text-dharma-saffron">
+        <Search className="h-4 w-4 shrink-0" aria-hidden="true" />
+      </div>
+      <div className="min-w-0 flex-1 truncate">
+        <span lang="hi" className="font-devanagari text-sm font-medium text-dharma-text">
+          श्लोक, शब्द या जीवन-प्रश्न खोजें
+        </span>
+        <span className="mx-1.5 hidden text-dharma-border sm:inline" aria-hidden="true">|</span>
+        <span className="hidden text-xs text-dharma-muted sm:inline">
+          Search verse or question
+        </span>
+      </div>
+      <kbd className="kbd-hint shrink-0 rounded-md border border-dharma-border bg-dharma-bg/60 px-2 py-0.5 font-sans text-xs text-dharma-text-secondary">{shortcut}</kbd>
     </button>
   );
 }

@@ -757,9 +757,15 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
 /* Quiet modes ─────────────────────────────────────────────────────────── */
 :root[data-low-power='true'] .hero-halo-ring,
 :root[data-data-saver='true'] .hero-halo-ring,
-:root[data-lite-mode='true'] .hero-halo-ring {
-    animation: none;
-    will-change: auto;
+:root[data-lite-mode='true'] .hero-halo-ring,
+:root[data-low-power='true'] .prana-blob,
+:root[data-data-saver='true'] .prana-blob,
+:root[data-lite-mode='true'] .prana-blob,
+:root[data-low-power='true'] .prana-wave-stream,
+:root[data-data-saver='true'] .prana-wave-stream,
+:root[data-lite-mode='true'] .prana-wave-stream {
+    animation: none !important;
+    will-change: auto !important;
 }
 :root[data-low-power='true'] [data-tilt],
 :root[data-data-saver='true'] [data-tilt],
@@ -769,8 +775,9 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
 }
 @media print {
     .hero-halo,
-    .ticker {
-        display: none;
+    .ticker,
+    .prana-fluid-stage {
+        display: none !important;
     }
     .reveal,
     .reveal-grid > *,
@@ -783,5 +790,123 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
         opacity: 1 !important;
         transform: none !important;
         filter: none !important;
+    }
+}
+
+/* ── 12. Dynamic Fluid Sanctuary Background (Prana Fluid Canvas) ───────
+   Organic morphing fluid mesh and subtle undulating river currents.
+   Compositor-only transforms and border-radius morphing with hardware acceleration. */
+.prana-fluid-stage {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    contain: layout paint;
+}
+
+.prana-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: var(--prana-opacity, 0.22);
+    will-change: transform, border-radius;
+    transform-origin: center center;
+}
+
+:root[data-theme='sunset'] .prana-blob {
+    --prana-opacity: 0.28;
+    filter: blur(90px);
+}
+
+:root[data-theme='night'] .prana-blob,
+:root[data-theme='dark'] .prana-blob {
+    --prana-opacity: 0.25;
+    filter: blur(95px);
+    mix-blend-mode: screen;
+}
+
+:root[data-theme='paper'] .prana-blob {
+    --prana-opacity: 0.18;
+    filter: blur(85px);
+}
+
+@keyframes fluid-morph-1 {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    }
+    33% {
+        transform: translate3d(4vw, -3vh, 0) scale(1.12) rotate(120deg);
+        border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    }
+    66% {
+        transform: translate3d(-3vw, 4vh, 0) scale(0.92) rotate(240deg);
+        border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(1) rotate(360deg);
+        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    }
+}
+
+@keyframes fluid-morph-2 {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1.05) rotate(0deg);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    33% {
+        transform: translate3d(-4vw, 4vh, 0) scale(0.95) rotate(-120deg);
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    66% {
+        transform: translate3d(3vw, -2vh, 0) scale(1.1) rotate(-240deg);
+        border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(1.05) rotate(-360deg);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+}
+
+@keyframes fluid-morph-3 {
+    0% {
+        transform: translate3d(0, 0, 0) scale(0.98) rotate(0deg);
+        border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
+    }
+    50% {
+        transform: translate3d(3vw, 3vh, 0) scale(1.08) rotate(180deg);
+        border-radius: 65% 35% 55% 45% / 45% 55% 35% 65%;
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(0.98) rotate(360deg);
+        border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
+    }
+}
+
+@keyframes fluid-wave-drift {
+    0% {
+        transform: translate3d(-6%, 0, 0);
+    }
+    50% {
+        transform: translate3d(2%, -12px, 0);
+    }
+    100% {
+        transform: translate3d(-6%, 0, 0);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .prana-blob-1 {
+        animation: fluid-morph-1 26s ease-in-out infinite;
+    }
+    .prana-blob-2 {
+        animation: fluid-morph-2 32s ease-in-out infinite;
+    }
+    .prana-blob-3 {
+        animation: fluid-morph-3 22s ease-in-out infinite;
+    }
+    .prana-wave-stream {
+        animation: fluid-wave-drift 20s ease-in-out infinite;
     }
 }
