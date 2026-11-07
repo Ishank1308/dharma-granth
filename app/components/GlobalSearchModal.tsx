@@ -97,7 +97,7 @@ export function parseVerseShortcut(rawQuery: string): DirectVerseShortcut | null
 
     const href = scriptureId === 'ashtavakra'
       ? `/ashtavakra/${chapter}#verse-${verse}`
-      : `/scripture/bhagavadgita/${chapter}#verse-${verse}`;
+      : `/scripture/bhagavadgita/chapter/${chapter}/verse/${verse}/`;
 
     return {
       scriptureId,
@@ -956,7 +956,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                   aria-label={`Direct Verse Navigation to ${verseShortcut.scriptureTitle} Chapter ${verseShortcut.chapter} Verse ${verseShortcut.verse}`}
                 >
                   <div className="flex items-center gap-3 min-w-0">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-saffron-500 text-white shadow-sm font-bold text-sm">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-saffron-700 text-white shadow-sm font-bold text-sm">
                       {verseShortcut.chapter}.{verseShortcut.verse}
                     </span>
                     <div className="min-w-0">
