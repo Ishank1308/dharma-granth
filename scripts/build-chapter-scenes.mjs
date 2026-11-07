@@ -494,6 +494,52 @@ function walker(x, y, s, { bow = false, sari = false, opacity = 1 } = {}) {
   write('setu', 800, 50, body);
 }
 
+// ── Kaṭha Upaniṣad and Durgā Saptaśatī ───────────────────────────────────────
+
+// Naciketā seated at Yama's door, three nights waiting (Kaṭha 1.1.9).
+{
+  let body = '<rect x="120" y="22" width="12" height="126"/><rect x="216" y="22" width="12" height="126"/>';
+  body += '<path d="M108,24 L240,24 L232,10 L116,10 Z"/><path d="M150,10 C160,-2 188,-2 198,10 Z" fill-opacity="0.8"/>';
+  body += '<rect x="132" y="30" width="84" height="118" fill-opacity="0.35"/>';
+  body += '<path d="M132,30 L172,40 L172,148 L132,148 Z" fill-opacity="0.6"/>';
+  // The boy, seated, facing the door.
+  body += '<circle cx="72" cy="112" r="7"/><path d="M64,120 C66,116 78,116 80,120 L84,138 C76,136 64,136 58,138 Z"/><path d="M50,146 C54,134 90,134 94,146 Z"/>';
+  body += '<rect x="20" y="146" width="240" height="4" rx="2" fill-opacity="0.7"/>';
+  write('yama-door', 260, 150, body);
+}
+
+// Viṣṇu's serpent bed on the causal ocean, a lotus rising (Saptaśatī 1.49–1.67).
+{
+  let body = '';
+  for (const [cx, rx, ry, o] of [[150, 110, 16, 0.55], [150, 92, 13, 0.8], [150, 74, 10, 1]]) body += `<ellipse cx="${cx}" cy="${132 - (110 - rx) * 0.35}" rx="${rx}" ry="${ry}" fill-opacity="${o}"/>`;
+  // Hood of many heads.
+  for (let i = -3; i <= 3; i++) {
+    const a = (i * Math.PI) / 9;
+    const x = 238 + Math.sin(a) * 26;
+    const y = 74 - Math.cos(a) * 26;
+    body += `<path d="M238,118 Q${r1(238 + Math.sin(a) * 10)},${r1(96 - Math.cos(a) * 6)} ${r1(x)},${r1(y)}" stroke="#000" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+    body += `<ellipse cx="${r1(x)}" cy="${r1(y)}" rx="6" ry="4.5" transform="rotate(${Math.round(i * 20)} ${r1(x)} ${r1(y)})"/>`;
+  }
+  // Lotus on a stalk from the navel, Brahmā's seat.
+  body += '<path d="M146,112 C140,80 130,56 118,40" stroke="#000" stroke-width="2" fill="none" stroke-opacity="0.8"/>';
+  body += '<path transform="translate(118 40) scale(0.9)" d="M0,0 C-14,-2 -22,-12 -24,-22 C-14,-18 -8,-12 -6,-6 C-8,-18 -4,-30 0,-36 C4,-30 8,-18 6,-6 C8,-12 14,-18 24,-22 C22,-12 14,-2 0,0 Z"/>';
+  write('shesha', 280, 150, body);
+}
+
+// The Devī's triśūla, blazing (Saptaśatī 2.19 and throughout).
+{
+  let body = '<rect x="97" y="40" width="6" height="110"/>';
+  body += '<path d="M100,4 C106,18 108,30 104,46 L96,46 C92,30 94,18 100,4 Z"/>';
+  body += '<path d="M72,20 C72,36 80,48 96,50 L96,44 C86,42 80,34 80,22 Z"/><path d="M128,20 C128,36 120,48 104,50 L104,44 C114,42 120,34 120,22 Z"/>';
+  body += '<path d="M66,22 L74,8 L82,22 Z M118,22 L126,8 L134,22 Z"/>';
+  body += '<rect x="90" y="52" width="20" height="5" rx="2"/><path d="M104,58 C116,62 118,72 110,78 C114,70 108,66 104,66 Z" fill-opacity="0.7"/>';
+  for (let i = 0; i < 18; i++) {
+    const t = (i * Math.PI * 2) / 18;
+    body += `<path fill-opacity="0.35" d="M100,30 L${r1(100 + 62 * Math.cos(t - 0.04))},${r1(30 + 62 * Math.sin(t - 0.04))} L${r1(100 + 62 * Math.cos(t + 0.04))},${r1(30 + 62 * Math.sin(t + 0.04))} Z"/>`;
+  }
+  write('trishula', 200, 190, `<g transform="translate(0 38)">${body}</g>`);
+}
+
 // Faint copies of a band, to stand behind a scene's subject (masks are one colour, so depth is alpha).
 for (const [from, to, o] of [['forest', 'forest-far', 0.4], ['city', 'city-far', 0.45]]) {
   const src = readFileSync(join(OUT, `${from}.svg`), 'utf8');

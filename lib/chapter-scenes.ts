@@ -33,7 +33,19 @@ export type SceneId =
   | 'kishkindha'
   | 'sundara'
   | 'yuddha'
-  | 'uttara';
+  | 'uttara'
+  | 'yama-door'
+  | 'shreya-preya'
+  | 'ratha'
+  | 'inner-flame'
+  | 'jyoti'
+  | 'cosmic-ocean'
+  | 'devi-battle'
+  | 'devi-victory'
+  | 'devi-stuti'
+  | 'devi-himalaya'
+  | 'kali'
+  | 'sky-battle';
 
 export interface SceneInfo {
   /** What the reader sees, in English and Hindi. */
@@ -66,6 +78,18 @@ export const SCENES: Record<SceneId, SceneInfo> = {
   sundara: { en: 'Hanuman leaping the ocean towards Lanka', hi: 'समुद्र लाँघकर लंका की ओर हनुमान' },
   yuddha: { en: 'The bridge of stones across the sea to Lanka', hi: 'समुद्र पर लंका तक पत्थरों का सेतु' },
   uttara: { en: 'Ayodhya rejoicing at the return, petals falling', hi: 'लौटने के उत्सव में अयोध्या, झरते पुष्प' },
+  'yama-door': { en: 'Nachiketa waiting three nights at Yama’s door', hi: 'यम के द्वार पर तीन रात प्रतीक्षा करते नचिकेता' },
+  'shreya-preya': { en: 'Two paths: the good and the pleasant', hi: 'दो मार्ग: श्रेय और प्रेय' },
+  ratha: { en: 'The chariot of the body, the senses its horses', hi: 'शरीर रूपी रथ, इन्द्रियाँ उसके घोड़े' },
+  'inner-flame': { en: 'The inner self, a smokeless flame', hi: 'अंतरात्मा, धूमरहित ज्योति' },
+  jyoti: { en: 'All this shines by His light alone', hi: 'उसी के प्रकाश से यह सब प्रकाशित है' },
+  'cosmic-ocean': { en: 'Vishnu asleep on Shesha in the cosmic ocean', hi: 'एकार्णव में शेषशायी विष्णु' },
+  'devi-battle': { en: 'The Devi’s trident over the field of battle', hi: 'रणभूमि पर देवी का त्रिशूल' },
+  'devi-victory': { en: 'The trident blazing on the mountain', hi: 'पर्वत पर दीप्त त्रिशूल' },
+  'devi-stuti': { en: 'The gods’ hymn, petals falling in radiance', hi: 'देवताओं की स्तुति, प्रकाश में झरते पुष्प' },
+  'devi-himalaya': { en: 'The gods praying to the Devi on the Himalaya', hi: 'हिमालय पर देवताओं की देवी-स्तुति' },
+  kali: { en: 'Kali springing from storm-dark clouds', hi: 'घने काले मेघों से प्रकट काली' },
+  'sky-battle': { en: 'The last battle fought in the sky', hi: 'आकाश में अंतिम युद्ध' },
 };
 
 /** Scripture id → chapter number → scene. Chapters not listed get no scene. */
@@ -99,6 +123,31 @@ const CHAPTER_SCENES: Record<string, Record<number, SceneId>> = {
     5: 'sundara', // Sundara: Hanumān's leap to Laṅkā (5.1)
     6: 'yuddha', // Yuddha: the setu (6.22) and the war
     7: 'uttara', // Uttara: Rāma's reign in Ayodhyā
+  },
+  // Kaṭha Upaniṣad: chapter = vallī (1–3 in adhyāya 1, 4–6 in adhyāya 2).
+  katha: {
+    1: 'yama-door', // 1.1.9: three nights at Yama's house
+    2: 'shreya-preya', // 1.2.1–2: śreyas and preyas
+    3: 'ratha', // 1.3.3–4: ātmānaṁ rathinaṁ viddhi
+    4: 'inner-flame', // 2.1.12–13: aṅguṣṭha-mātraḥ puruṣaḥ, jyotir ivādhūmakaḥ
+    5: 'jyoti', // 2.2.15: tasya bhāsā sarvam idaṁ vibhāti
+    6: 'ashvattha', // 2.3.1: ūrdhva-mūlo 'vāk-śākha eṣo 'śvatthaḥ
+  },
+  // Durgā Saptaśatī: chapter = adhyāya.
+  durgasaptashati: {
+    1: 'cosmic-ocean', // 1.49–1.67: Madhu and Kaiṭabha, Viṣṇu in yoga-nidrā
+    2: 'devi-battle', // 2: Mahiṣāsura's army destroyed
+    3: 'devi-victory', // 3: Mahiṣāsura slain
+    4: 'devi-stuti', // 4: Śakrādi stuti
+    5: 'devi-himalaya', // 5.7–5.8: the gods go to Himālaya; yā devī sarvabhūteṣu
+    6: 'devi-battle', // 6: Dhūmralocana
+    7: 'kali', // 7.5–7.6: Kālī springs from the Devī's brow
+    8: 'devi-battle', // 8: Raktabīja
+    9: 'devi-battle', // 9: Niśumbha
+    10: 'sky-battle', // 10.24–10.26: the fight in the sky with Śumbha
+    11: 'devi-stuti', // 11: Nārāyaṇī stuti
+    12: 'offering', // 12: the fruits of reading and worship
+    13: 'diyas', // 13: Suratha and Samādhi worship on the riverbank
   },
 };
 

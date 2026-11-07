@@ -51,10 +51,32 @@ the Sanskrit panel of every verse card, on the chapter page and on each verse pa
 
 Text over the scene band measured at least 7.3:1 in all four themes.
 
-## Proposed next
+## Kaṭha Upaniṣad (live; chapter = vallī)
 
-- **Kaṭha Upaniṣad:** Naciketā at Yama's door, the fire altar (yajna) and the chariot image of 1.3.3–4 (chariot).
-- **Durgā Saptaśatī:** Madhu-Kaiṭabha on the cosmic ocean (waves, stars), Mahiṣāsura's battle (armies), Śumbha-Niśumbha
-  (mountains, radiance).
+| Vallī | Scene | Grounding |
+|---|---|---|
+| 1.1 | Naciketā seated at Yama's door, stars turning | 1.1.9 |
+| 1.2 | Two paths under sun and moon: śreyas and preyas | 1.2.1–2 |
+| 1.3 | The chariot on the open road | 1.3.3–4 |
+| 2.1 | The yogī and the smokeless flame | 2.1.12–13 |
+| 2.2 | A radiance by which all shines | 2.2.15 |
+| 2.3 | The inverted aśvattha | 2.3.1 |
+
+## Durgā Saptaśatī (live; chapter = adhyāya)
+
+| Adhyāya | Scene |
+|---|---|
+| 1 | Viṣṇu on Śeṣa in the single ocean, Brahmā's lotus |
+| 2, 6, 8, 9 | The triśūla over the asura host |
+| 3 | The triśūla blazing on the mountain, sparks rising |
+| 4, 11 | The gods' hymn: radiance, petals falling |
+| 5 | The Himālaya (5.7–8, yā devī sarvabhūteṣu) |
+| 7 | Kālī from storm clouds |
+| 10 | The duel in the sky |
+| 12 | Offering (phala-stuti) |
+| 13 | Lamps on the river (Suratha and Samādhi's worship) |
+
+## Next candidates
+
 - **Vedas, Purāṇas and long texts:** one scene per kāṇḍa/skandha or per book, chosen from the shared library,
   rather than one per sūkta.
