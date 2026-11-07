@@ -422,21 +422,11 @@ export function MeditationTimer() {
               lit={running}
               onPull={running ? handlePause : handleStart}
               label={running ? 'Pull the cord to pause the meditation' : 'Pull the cord to light the diya and begin'}
+              still={isReducedMotion}
             />
-            {/* Gentle breath pulse glow during meditation */}
+            {/* The flame's warmth breathing slowly on the space round the lamp (CSS loop, sadhana-objects.css) */}
             {running && !isReducedMotion && (
-              <motion.div
-                animate={{
-                  scale: [1, 1.15, 1],
-                  opacity: [0.15, 0.35, 0.15],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="absolute w-44 h-44 rounded-full bg-indigo-400/20 pointer-events-none blur-xl"
-              />
+              <div aria-hidden="true" className="diya-room-glow absolute w-44 h-44 rounded-full pointer-events-none blur-xl" />
             )}
 
             <span className="text-5xl md:text-6xl font-bold tabular-nums text-dharma-text tracking-tight relative z-10">

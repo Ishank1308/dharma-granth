@@ -1,0 +1,380 @@
+/*
+ * Sadhana objects: the rudraksha mala (JapaMala, Rudraksha.tsx) and the clay diya (DiyaPullCord).
+ *
+ * Everything here is decoration on top of markup that already reads and works without it. Every loop and every
+ * scroll-linked effect runs only under prefers-reduced-motion: no-preference and outside the quiet modes
+ * (low-power, data-saver, lite); without scroll-driven animation support the strand simply stays still.
+ */
+
+/* ── Rudraksha mala ───────────────────────────────────────────────────── */
+
+/* The strand box is the subject of a view timeline; the sway and each bead's twist read it by name. */
+.mala-strand {
+    view-timeline: --mala block;
+}
+
+.mala-sway {
+    transform-origin: 0 0;
+}
+
+.rudraksha-roll {
+    transform-origin: 50% 50%;
+}
+
+.rudraksha-sumeru {
+    filter: drop-shadow(0 0 7px rgb(224 122 95 / 0.38));
+}
+
+.mala-tassel {
+    transform-origin: 50% 0;
+}
+
+/* The strand hangs from the thumb and swings a little, settling, as it passes through the viewport. */
+@keyframes mala-sway {
+    0% {
+        rotate: -4deg;
+    }
+    22% {
+        rotate: 3.2deg;
+    }
+    44% {
+        rotate: -2.2deg;
+    }
+    66% {
+        rotate: 1.4deg;
+    }
+    84% {
+        rotate: -0.6deg;
+    }
+    100% {
+        rotate: 0deg;
+    }
+}
+
+/* Beads twist on the thread by their own amount (--roll), some one way, some the other. */
+@keyframes rudraksha-roll {
+    0% {
+        rotate: calc(var(--roll, 6deg) * -1);
+    }
+    35% {
+        rotate: var(--roll, 6deg);
+    }
+    70% {
+        rotate: calc(var(--roll, 6deg) * -0.45);
+    }
+    100% {
+        rotate: calc(var(--roll, 6deg) * 0.2);
+    }
+}
+
+@keyframes mala-tassel {
+    0%,
+    100% {
+        rotate: -2.5deg;
+    }
+    50% {
+        rotate: 2.5deg;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']) .mala-sway {
+            animation: mala-sway linear both;
+            animation-timeline: --mala;
+            animation-range: cover 0% cover 100%;
+        }
+
+        :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']) .rudraksha-roll {
+            animation: rudraksha-roll linear both;
+            animation-timeline: --mala;
+            animation-range: cover 0% cover 100%;
+        }
+    }
+
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']) .mala-tassel {
+        animation: mala-tassel 5.2s var(--ease-in-out) infinite;
+    }
+}
+
+/* ── Clay diya ────────────────────────────────────────────────────────── */
+
+.diya {
+    --diya-halo: rgb(255 170 60 / 0.42);
+    --diya-halo-edge: rgb(255 120 40 / 0.1);
+    --diya-halo-blend: normal;
+}
+
+:root:is([data-theme='night'], [data-theme='dark']) .diya {
+    --diya-halo: rgb(255 168 64 / 0.5);
+    --diya-halo-edge: rgb(255 110 30 / 0.16);
+    --diya-halo-blend: screen;
+}
+
+/* On a dark card the unlit clay keeps a faint edge of light so its shape still reads. */
+:root:is([data-theme='night'], [data-theme='dark']) .diya > svg {
+    filter: drop-shadow(0 0 0.6px rgb(255 214 180 / 0.35));
+}
+
+/* Warm light around the flame (at 85% across, 22% down the lamp box), spilling well past the lamp. */
+.diya-halo {
+    left: calc(85% - 110px);
+    top: calc(22% - 110px);
+    width: 220px;
+    height: 220px;
+    border-radius: 9999px;
+    background: radial-gradient(circle, var(--diya-halo) 0%, var(--diya-halo-edge) 38%, transparent 68%);
+    mix-blend-mode: var(--diya-halo-blend);
+    opacity: 0.9;
+}
+
+.diya-flame-sway,
+.diya-flame-outer,
+.diya-flame-mid,
+.diya-flame-core {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+}
+
+/* Embers rise from the flame's tip, now and then; they are invisible unless their animation runs. */
+.diya-embers {
+    left: 85%;
+    top: 6%;
+    width: 0;
+    height: 0;
+}
+
+.diya-embers > span {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    width: 2px;
+    height: 2px;
+    border-radius: 9999px;
+    background: #ffd27a;
+    box-shadow: 0 0 4px 1px rgb(255 140 40 / 0.85);
+    opacity: 0;
+}
+
+.diya-embers > span:nth-child(1) {
+    --dx: -5px;
+}
+.diya-embers > span:nth-child(2) {
+    --dx: 6px;
+}
+.diya-embers > span:nth-child(3) {
+    --dx: -2px;
+}
+
+@keyframes diya-flicker-outer {
+    0%,
+    100% {
+        transform: scale(1, 1) skewX(0deg);
+    }
+    9% {
+        transform: scale(0.96, 1.05) skewX(-3deg);
+    }
+    21% {
+        transform: scale(1.03, 0.95) skewX(2deg);
+    }
+    34% {
+        transform: scale(0.98, 1.08) skewX(-1deg);
+    }
+    47% {
+        transform: scale(1.02, 0.97) skewX(3deg);
+    }
+    63% {
+        transform: scale(0.95, 1.03) skewX(-2deg);
+    }
+    78% {
+        transform: scale(1.04, 1.06) skewX(1deg);
+    }
+    91% {
+        transform: scale(0.99, 0.96) skewX(-1.5deg);
+    }
+}
+
+@keyframes diya-flicker-mid {
+    0%,
+    100% {
+        transform: scale(1, 1) skewX(0deg);
+    }
+    13% {
+        transform: scale(0.97, 1.06) skewX(2deg);
+    }
+    29% {
+        transform: scale(1.02, 0.94) skewX(-2.5deg);
+    }
+    52% {
+        transform: scale(0.98, 1.04) skewX(1deg);
+    }
+    68% {
+        transform: scale(1.03, 0.98) skewX(-1deg);
+    }
+    86% {
+        transform: scale(0.96, 1.07) skewX(2deg);
+    }
+}
+
+@keyframes diya-flicker-core {
+    0%,
+    100% {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+    17% {
+        transform: scale(0.94, 1.08);
+        opacity: 0.9;
+    }
+    41% {
+        transform: scale(1.04, 0.95);
+        opacity: 1;
+    }
+    73% {
+        transform: scale(0.97, 1.04);
+        opacity: 0.86;
+    }
+}
+
+@keyframes diya-flame-sway {
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+    27% {
+        transform: rotate(-2.6deg);
+    }
+    58% {
+        transform: rotate(1.8deg);
+    }
+    81% {
+        transform: rotate(-0.8deg);
+    }
+}
+
+@keyframes diya-breathe {
+    0%,
+    100% {
+        transform: scale(0.92);
+        opacity: 0.72;
+    }
+    38% {
+        transform: scale(1.06);
+        opacity: 1;
+    }
+    61% {
+        transform: scale(0.99);
+        opacity: 0.86;
+    }
+    80% {
+        transform: scale(1.03);
+        opacity: 0.95;
+    }
+}
+
+@keyframes diya-glint {
+    0%,
+    100% {
+        opacity: 0.85;
+    }
+    23% {
+        opacity: 0.55;
+    }
+    46% {
+        opacity: 0.95;
+    }
+    71% {
+        opacity: 0.62;
+    }
+}
+
+@keyframes diya-ember {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(1);
+    }
+    2% {
+        opacity: 1;
+    }
+    13% {
+        opacity: 0.75;
+        transform: translate(var(--dx), -34px) scale(0.75);
+    }
+    19% {
+        opacity: 0;
+        transform: translate(calc(var(--dx) * 1.5), -54px) scale(0.4);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--dx) * 1.5), -54px) scale(0.4);
+    }
+}
+
+/* The meditation timer's room light: the flame's warmth breathing slowly onto the space round the lamp. */
+@keyframes diya-room {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.16;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.34;
+    }
+}
+
+.diya-room-glow {
+    opacity: 0.22;
+    background: radial-gradient(circle, rgb(251 191 36 / 0.55), rgb(234 88 12 / 0.18) 55%, transparent 72%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']) .diya-lit:not(.diya-still) {
+        .diya-flame-outer {
+            animation: diya-flicker-outer 3.1s ease-in-out infinite;
+        }
+        .diya-flame-mid {
+            animation: diya-flicker-mid 1.9s ease-in-out infinite;
+        }
+        .diya-flame-core {
+            animation: diya-flicker-core 1.3s ease-in-out infinite;
+        }
+        .diya-flame-sway {
+            animation: diya-flame-sway 6.7s ease-in-out infinite;
+        }
+        .diya-halo {
+            animation: diya-breathe 5.6s ease-in-out infinite;
+        }
+        .diya-glint,
+        .diya-warmth {
+            animation: diya-glint 2.3s ease-in-out infinite;
+        }
+        .diya-embers > span:nth-child(1) {
+            animation: diya-ember 9s ease-out 2s infinite;
+        }
+        .diya-embers > span:nth-child(2) {
+            animation: diya-ember 13s ease-out 6.5s infinite;
+        }
+        .diya-embers > span:nth-child(3) {
+            animation: diya-ember 17s ease-out 11s infinite;
+        }
+    }
+
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']) .diya-room-glow {
+        animation: diya-room 8s ease-in-out infinite;
+    }
+}
+
+/* The quiet modes also shorten every animation globally (globals.css); be explicit for these loops. */
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'])
+    :is(.mala-sway, .rudraksha-roll, .mala-tassel, .diya-halo, .diya-room-glow, .diya-embers > span, .diya-glint, .diya-warmth, .diya-flame-sway, .diya-flame-outer, .diya-flame-mid, .diya-flame-core) {
+    animation: none !important;
+}
+
+@media (forced-colors: active) {
+    .diya-halo,
+    .diya-embers,
+    .diya-room-glow {
+        display: none;
+    }
+}
