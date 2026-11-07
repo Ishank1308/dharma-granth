@@ -10,17 +10,17 @@ export const metadata: Metadata = {
   description:
     'शास्त्रीय पञ्चाङ्ग शुद्धि एवं मुहूर्त निर्णय मैट्रिक्स — विद्यारम्भ, गृहप्रवेश, यात्रा, व्रत संकल्प, नवीन कार्य एवं औषध सेवन के लिए तिथि, वार, नक्षत्र, करण एवं योग की प्रामाणिक अनुकूलता।',
   alternates: {
-    canonical: 'https://dharmagranth.in/panchang/muhurta/',
+    canonical: 'https://dharmagranth.dev/panchang/muhurta/',
   },
   openGraph: {
     title: 'मुहूर्त निर्णय तालिका · Vedic Muhurta Decision Matrix',
     description:
       'शास्त्रीय पञ्चाङ्ग शुद्धि — विद्यारम्भ, गृहप्रवेश, यात्रा, व्यापार एवं साधना के लिए प्रामाणिक मुहूर्त विश्लेषण।',
-    url: 'https://dharmagranth.in/panchang/muhurta/',
+    url: 'https://dharmagranth.dev/panchang/muhurta/',
     siteName: 'Dharma Granth',
     images: [
       {
-        url: 'https://dharmagranth.in/og/muhurta.png',
+        url: 'https://dharmagranth.dev/og/muhurta.png',
         width: 1200,
         height: 630,
         alt: 'Vedic Muhurta Decision Matrix',
@@ -44,19 +44,19 @@ export default function MuhurtaPage() {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://dharmagranth.in/',
+            item: 'https://dharmagranth.dev/',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Panchang',
-            item: 'https://dharmagranth.in/panchang/',
+            item: 'https://dharmagranth.dev/panchang/',
           },
           {
             '@type': 'ListItem',
             position: 3,
             name: 'Muhurta Decision Matrix',
-            item: 'https://dharmagranth.in/panchang/muhurta/',
+            item: 'https://dharmagranth.dev/panchang/muhurta/',
           },
         ],
       },
