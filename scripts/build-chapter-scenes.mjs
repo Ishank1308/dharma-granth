@@ -11,7 +11,7 @@
  * Usage: node scripts/build-chapter-scenes.mjs
  * Output: app/styles/scenes/*.svg (committed; rerun after changing a drawing).
  */
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -345,6 +345,159 @@ write('river', 800, 60, '<path fill-opacity="0.35" d="M0,18 C200,10 400,26 600,1
     body += `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill-opacity="${o}"/>`;
   }
   write('ashvattha', 280, 160, body);
+}
+
+// ── Vālmīki Rāmāyaṇa ─────────────────────────────────────────────────────────
+
+/** A tree: trunk plus a rounded or pointed crown, standing on y. */
+function tree(x, y, h, kind, opacity = 1) {
+  const trunk = `<rect x="${r1(x - h * 0.03)}" y="${r1(y - h * 0.45)}" width="${r1(h * 0.06)}" height="${r1(h * 0.45)}" fill-opacity="${opacity}"/>`;
+  if (kind === 'palm') {
+    let fronds = '';
+    for (const a of [-70, -35, 0, 35, 70, -110, 110]) {
+      const t = ((a - 90) * Math.PI) / 180;
+      const ex = x + Math.cos(t) * h * 0.32;
+      const ey = y - h + Math.sin(t) * h * 0.22 + h * 0.08;
+      fronds += `<path fill-opacity="${opacity}" d="M${r1(x)},${r1(y - h)} Q${r1((x + ex) / 2)},${r1(y - h - h * 0.12)} ${r1(ex)},${r1(ey + h * 0.12)} Q${r1((x + ex) / 2)},${r1(y - h - h * 0.04)} ${r1(x)},${r1(y - h + 2)} Z"/>`;
+    }
+    return `<path fill-opacity="${opacity}" d="M${r1(x - h * 0.025)},${y} Q${r1(x + h * 0.06)},${r1(y - h / 2)} ${r1(x)},${r1(y - h)} L${r1(x + h * 0.02)},${r1(y - h)} Q${r1(x + h * 0.09)},${r1(y - h / 2)} ${r1(x + h * 0.025)},${y} Z"/>${fronds}`;
+  }
+  if (kind === 'pine') {
+    return trunk + `<path fill-opacity="${opacity}" d="M${x},${r1(y - h)} L${r1(x + h * 0.22)},${r1(y - h * 0.3)} L${r1(x - h * 0.22)},${r1(y - h * 0.3)} Z"/>`;
+  }
+  return trunk
+    + `<ellipse cx="${x}" cy="${r1(y - h * 0.62)}" rx="${r1(h * 0.3)}" ry="${r1(h * 0.26)}" fill-opacity="${opacity}"/>`
+    + `<ellipse cx="${r1(x - h * 0.18)}" cy="${r1(y - h * 0.5)}" rx="${r1(h * 0.18)}" ry="${r1(h * 0.15)}" fill-opacity="${opacity}"/>`
+    + `<ellipse cx="${r1(x + h * 0.18)}" cy="${r1(y - h * 0.5)}" rx="${r1(h * 0.18)}" ry="${r1(h * 0.15)}" fill-opacity="${opacity}"/>`;
+}
+
+// A forest edge (repeat-x): far trees faint, near trees full.
+{
+  const rand = rng(211);
+  let body = ridge(800, 160, 140, [[4, 2, 0.2], [2, 5, 1]], 0.8);
+  for (let x = 20; x < 790; x += 34 + rand() * 20) body += tree(r1(x), 142, 60 + rand() * 30, ['round', 'pine', 'round'][Math.floor(rand() * 3)], 0.4);
+  for (let x = 40; x < 770; x += 70 + rand() * 50) body += tree(r1(x), 150, 80 + rand() * 40, ['round', 'palm', 'round', 'pine'][Math.floor(rand() * 4)], 0.9);
+  write('forest', 800, 160, body);
+}
+
+// Ayodhyā on the Sarayū (repeat-x): walls, palace domes, temple śikharas, flags.
+{
+  const rand = rng(223);
+  let body = '<rect y="128" width="800" height="16" fill-opacity="0.9"/>';
+  for (let x = 6; x < 800; x += 24) body += `<rect x="${x}" y="122" width="12" height="8" fill-opacity="0.9"/>`;
+  for (let x = 30; x < 780; x += 60 + rand() * 40) {
+    const kind = rand();
+    const w = 30 + rand() * 24;
+    if (kind < 0.4) {
+      // Śikhara: a curved spire with an āmalaka and a flag.
+      const h = 60 + rand() * 30;
+      body += `<path d="M${r1(x - w / 2)},128 C${r1(x - w / 2)},${r1(128 - h * 0.6)} ${r1(x - w * 0.12)},${r1(128 - h * 0.9)} ${r1(x)},${r1(128 - h)} C${r1(x + w * 0.12)},${r1(128 - h * 0.9)} ${r1(x + w / 2)},${r1(128 - h * 0.6)} ${r1(x + w / 2)},128 Z"/>`;
+      body += `<ellipse cx="${r1(x)}" cy="${r1(128 - h - 3)}" rx="5" ry="3"/>`;
+      body += `<rect x="${r1(x - 0.6)}" y="${r1(128 - h - 26)}" width="1.2" height="24"/><path d="M${r1(x + 0.6)},${r1(128 - h - 26)} L${r1(x + 14)},${r1(128 - h - 21)} L${r1(x + 0.6)},${r1(128 - h - 16)} Z"/>`;
+    } else if (kind < 0.75) {
+      // Palace: a block with a dome and two chhatris.
+      const h = 30 + rand() * 18;
+      body += `<rect x="${r1(x - w / 2)}" y="${r1(128 - h)}" width="${r1(w)}" height="${r1(h)}" fill-opacity="0.85"/>`;
+      body += `<path d="M${r1(x - w * 0.3)},${r1(128 - h)} C${r1(x - w * 0.3)},${r1(128 - h - w * 0.5)} ${r1(x + w * 0.3)},${r1(128 - h - w * 0.5)} ${r1(x + w * 0.3)},${r1(128 - h)} Z"/>`;
+      body += `<rect x="${r1(x - 0.6)}" y="${r1(128 - h - w * 0.5)}" width="1.2" height="8"/>`;
+      for (const s of [-1, 1]) body += `<path d="M${r1(x + s * w * 0.5 - 5)},${r1(128 - h)} C${r1(x + s * w * 0.5 - 5)},${r1(128 - h - 9)} ${r1(x + s * w * 0.5 + 5)},${r1(128 - h - 9)} ${r1(x + s * w * 0.5 + 5)},${r1(128 - h)} Z"/>`;
+      for (let wx = x - w / 2 + 5; wx < x + w / 2 - 4; wx += 8) body += `<rect x="${r1(wx)}" y="${r1(128 - h + 8)}" width="3" height="6" fill="#fff" fill-opacity="0"/>`;
+    } else {
+      body += tree(r1(x), 128, 46 + rand() * 16, 'palm', 0.75);
+    }
+  }
+  write('city', 800, 144, body);
+}
+
+// Waves (repeat-x): crests rolling on open sea.
+{
+  let body = '';
+  for (const [y, amp, k, o, ph] of [[16, 5, 10, 0.45, 0], [30, 6, 8, 0.7, 1.4], [44, 7, 6, 0.95, 2.6]]) {
+    const pts = [];
+    for (let x = 0; x <= 800; x += 4) pts.push(`${x},${r1(y + amp * Math.sin((2 * Math.PI * k * x) / 800 + ph) - amp * 0.6 * Math.abs(Math.sin((2 * Math.PI * k * x) / 1600 + ph)))}`);
+    body += `<path fill-opacity="${o}" d="M0,70 L${pts.join(' L')} L800,70 Z"/>`;
+  }
+  write('waves', 800, 70, body);
+}
+
+/** A standing figure facing right, walking; `bow` adds a strung bow on the back. */
+function walker(x, y, s, { bow = false, sari = false, opacity = 1 } = {}) {
+  let d = `<g transform="translate(${x} ${y}) scale(${s})" fill-opacity="${opacity}">`;
+  d += '<circle cx="0" cy="-46" r="5"/>';
+  d += sari
+    ? '<path d="M-5,-40 L5,-40 L9,-14 L12,0 L-8,0 L-6,-14 Z"/><path d="M-5,-40 C-10,-36 -12,-26 -10,-18 L-6,-20 Z" fill-opacity="0.7"/>'
+    : '<path d="M-4,-40 L5,-40 L6,-22 L2,-22 Z M-4,-40 L-3,-22 L2,-22 Z"/><path d="M-1,-22 L-6,0 L-3,0 L1,-16 L5,0 L8,0 L4,-22 Z"/>';
+  d += '<path d="M4,-38 L10,-26 L8,-25 L2,-34 Z"/>';
+  if (bow) d += '<path fill="none" stroke="#000" stroke-width="1.4" d="M-6,-58 C-16,-44 -16,-24 -6,-10"/><line x1="-6" y1="-58" x2="-6" y2="-10" stroke="#000" stroke-width="0.5"/><path d="M-1,-40 L-5,-58 L-3,-58 L1,-41 Z" fill-opacity="0.8"/>';
+  return d + '</g>';
+}
+
+// Into exile (Ayodhyā Kāṇḍa): Rāma, Sītā and Lakṣmaṇa on the road to the forest.
+{
+  let body = '<path fill-opacity="0.5" d="M0,150 C60,146 120,140 180,138 L280,138 C230,142 140,148 110,150 Z"/>';
+  body += walker(190, 138, 0.82, { bow: true, opacity: 0.95 });
+  body += walker(170, 138, 0.72, { sari: true, opacity: 0.85 });
+  body += walker(146, 139, 0.8, { bow: true, opacity: 0.75 });
+  write('exile', 280, 150, body);
+}
+
+// The parṇaśālā at Pañcavaṭī with the golden deer at the edge of the clearing (Araṇya Kāṇḍa).
+{
+  let body = '<ellipse cx="150" cy="148" rx="140" ry="6" fill-opacity="0.7"/>';
+  // Leaf hut: thatched roof, posts, doorway.
+  body += '<path d="M40,96 C70,70 120,70 150,96 L142,98 L48,98 Z"/>';
+  body += '<path d="M54,98 L136,98 L136,146 L54,146 Z" fill-opacity="0.7"/><path d="M84,146 L84,116 C84,108 106,108 106,116 L106,146 Z" fill-opacity="0.5"/>';
+  for (let x = 46; x < 146; x += 7) body += `<line x1="${x}" y1="${r1(96 - 18 * Math.sin(((x - 40) / 110) * Math.PI))}" x2="${x - 3}" y2="100" stroke="#000" stroke-opacity="0.5" stroke-width="1"/>`;
+  // The deer, looking back.
+  body += '<g transform="translate(232 146)"><path d="M-22,-18 C-24,-26 -16,-30 -4,-30 L10,-30 C14,-32 16,-38 18,-44 L22,-48 L26,-44 L30,-42 L24,-38 C22,-34 20,-28 16,-24 L14,-18 L15,0 L12,0 L10,-16 L-4,-16 L-8,0 L-11,0 L-10,-16 C-14,-16 -18,-14 -18,0 L-21,0 Z"/>'
+    + '<path fill="none" stroke="#000" stroke-width="1.4" d="M21,-47 L18,-58 L14,-62 M18,-58 L22,-63 M24,-45 L28,-56 L26,-61 M28,-56 L32,-58"/>'
+    + '<g fill="#000" fill-opacity="0.35"><circle cx="-12" cy="-24" r="1.6"/><circle cx="-4" cy="-26" r="1.6"/><circle cx="4" cy="-23" r="1.6"/><circle cx="-8" cy="-19" r="1.4"/></g></g>';
+  write('hermitage', 280, 150, body);
+}
+
+// Laṅkā across the sea (Sundara Kāṇḍa): the golden fortress on Trikūṭa.
+{
+  let body = '<path fill-opacity="0.6" d="M0,150 C20,120 50,96 90,90 C120,70 160,64 200,84 C230,96 250,120 270,150 Z"/>';
+  for (const [x, w, h] of [[96, 16, 38], [118, 22, 58], [140, 18, 70], [162, 22, 54], [184, 14, 36]]) {
+    body += `<rect x="${x - w / 2}" y="${90 - h + 20}" width="${w}" height="${h}"/>`;
+    body += `<path d="M${x - w / 2 - 2},${90 - h + 20} C${x - w / 2},${90 - h + 6} ${x + w / 2},${90 - h + 6} ${x + w / 2 + 2},${90 - h + 20} Z"/>`;
+    body += `<rect x="${x - 0.6}" y="${90 - h - 2}" width="1.2" height="10"/>`;
+  }
+  body += '<rect x="84" y="100" width="112" height="10" fill-opacity="0.9"/>';
+  for (let x = 86; x < 196; x += 8) body += `<rect x="${x}" y="95" width="4" height="6" fill-opacity="0.9"/>`;
+  write('lanka', 270, 150, body);
+}
+
+// Hanumān's leap over the ocean (Sundara Kāṇḍa 1).
+{
+  const body = '<g transform="translate(70 60) rotate(-14)">'
+    + '<circle cx="34" cy="-6" r="7"/>'
+    + '<path d="M26,0 C18,-2 2,0 -10,4 C-18,6 -26,8 -34,6 L-34,10 C-24,12 -14,12 -6,10 L-20,24 L-16,26 L0,12 C8,10 16,8 24,6 Z"/>'
+    + '<path d="M28,-2 L52,-14 L53,-11 L30,2 Z"/>'
+    + '<path d="M50,-16 L56,-22 L60,-18 L54,-12 Z"/>'
+    + '<path d="M-6,8 L-30,24 L-27,27 L-2,12 Z"/>'
+    + '<path fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round" d="M-30,6 C-46,2 -56,-10 -52,-22 C-50,-28 -44,-30 -40,-26"/>'
+    + '</g>'
+    + '<path fill-opacity="0.35" d="M0,98 C40,86 70,80 110,82" stroke="#000" stroke-opacity="0.3" fill="none" stroke-width="1" stroke-dasharray="3 5"/>';
+  write('leap', 140, 110, body);
+}
+
+// The setu: stones laid across the sea (Yuddha Kāṇḍa, repeat-x).
+{
+  const rand = rng(239);
+  let body = '<rect y="22" width="800" height="6" fill-opacity="0.9"/>';
+  for (let x = 2; x < 800; x += 14 + Math.round(rand() * 6)) {
+    const w = 10 + rand() * 8;
+    body += `<rect x="${r1(x)}" y="${r1(12 + rand() * 4)}" width="${r1(w)}" height="${r1(10 + rand() * 4)}" rx="3" fill-opacity="${r1(0.7 + rand() * 0.3)}"/>`;
+  }
+  for (let x = 30; x < 800; x += 100) body += `<rect x="${x}" y="26" width="8" height="24" fill-opacity="0.6"/>`;
+  write('setu', 800, 50, body);
+}
+
+// Faint copies of a band, to stand behind a scene's subject (masks are one colour, so depth is alpha).
+for (const [from, to, o] of [['forest', 'forest-far', 0.4], ['city', 'city-far', 0.45]]) {
+  const src = readFileSync(join(OUT, `${from}.svg`), 'utf8');
+  writeFileSync(join(OUT, `${to}.svg`), src.replace(/(<svg[^>]*>)/, `$1<g opacity="${o}">`).replace('</svg>', '</g></svg>'));
 }
 
 console.log(`Wrote chapter scene layers to ${OUT}`);
