@@ -180,7 +180,7 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   matsyapuran: 27,
   naradapuran: 50,
   narasimhapuran: 13,
-  ramayana: 57,
+  ramayana: 7,
   ramcharitmanas: 0,
   rigveda: 27, // whole verses the Saṃhitā repeats across mandalas (1.23.21–23 recur as 10.9.7–9)
   samaveda: 194, // the Uttarārcika repeats many Pūrvārcika mantras in the source (full 1,873-mantra text)
