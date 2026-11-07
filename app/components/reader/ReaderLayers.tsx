@@ -677,6 +677,7 @@ export function ReaderLayers({
                       parsed={modernParsed}
                       lang={/[ऀ-ॿ]/.test(verse.reflection) ? 'hi' : 'en'}
                       className={`${tSize} ${/[ऀ-ॿ]/.test(verse.reflection) ? devLeading : latinLeading}`}
+                      hideContextHeading={!isQuick}
                     />
                   </Layer>
                 )}

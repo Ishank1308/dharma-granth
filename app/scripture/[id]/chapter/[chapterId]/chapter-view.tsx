@@ -413,7 +413,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       />
       {/* A book's chapter opening, as an Apple large title: the chapter, its Sanskrit name and two quiet actions,
           nothing else between the reader and the first verse. The summary lives in "About this chapter" below. */}
-      <header className="mx-auto max-w-3xl px-4 pb-6 pt-8 sm:px-6 sm:pb-8 sm:pt-12">
+      <header className="mx-auto max-w-3xl px-4 pb-4 pt-5 sm:px-6 sm:pb-8 sm:pt-12">
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href={`/scripture/${meta.id}`}
@@ -433,11 +433,11 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             </span>
           )}
         </div>
-        <h1 className="mt-3 text-title-1 sm:text-large-title font-bold tracking-tight text-label-primary">{chapter.title}</h1>
+        <h1 className="mt-2.5 text-title-1 sm:mt-3 sm:text-large-title font-bold tracking-tight text-label-primary">{chapter.title}</h1>
         {chapter.titleSanskrit && (
-          <p lang="sa" className="mt-2 font-devanagari text-title-3 sm:text-title-2 font-medium text-label-secondary">{chapter.titleSanskrit}</p>
+          <p lang="sa" className="mt-1 font-devanagari text-title-3 sm:mt-2 sm:text-title-2 font-medium text-label-secondary">{chapter.titleSanskrit}</p>
         )}
-        <div className="mt-6 flex flex-wrap items-center gap-2.5">
+        <div className="mt-4 flex flex-wrap items-center gap-2 sm:mt-6 sm:gap-2.5">
           {chapter.verseCount > 0 ? (
             <ChapterAudioHeroAction
               className={quietAction}
@@ -460,15 +460,15 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       <div className="relative mx-auto w-full max-w-3xl px-4 pb-[calc(11rem+env(safe-area-inset-bottom))] sm:px-6 lg:pb-32">
         <div className="relative">
         {(!part || part.part === 1) && hasChapterContext && (
-          <details className="apple-card group mb-8 overflow-hidden rounded-card border border-separator/80 bg-surface-raised/80 shadow-xs">
-            <summary className="focus-ring flex min-h-[52px] cursor-pointer list-none items-center justify-between gap-3 px-5 py-3.5 transition hover:bg-fill-quaternary [&::-webkit-details-marker]:hidden">
+          <details className="apple-card group mb-5 overflow-hidden sm:mb-8 rounded-card border border-separator/80 bg-surface-raised/80 shadow-xs">
+            <summary className="focus-ring flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 sm:min-h-[52px] sm:px-5 sm:py-3.5 transition hover:bg-fill-quaternary [&::-webkit-details-marker]:hidden">
               <span className="flex items-center gap-2">
                 <span className="text-subhead font-semibold text-label-primary">About this chapter</span>
                 <span lang="hi" className="font-devanagari text-caption-1 font-normal text-label-secondary">· अध्याय परिचय</span>
               </span>
               <span aria-hidden="true" className="apple-chevron text-lg transition-transform duration-standard ease-standard group-open:rotate-90">›</span>
             </summary>
-            <div className="border-t border-separator/60 p-5 space-y-5">
+            <div className="border-t border-separator/60 p-4 space-y-5 sm:p-5">
               {chapterSummary && summaryCollection && (
                 <ChapterSummaryBox
                   summary={chapterSummary}

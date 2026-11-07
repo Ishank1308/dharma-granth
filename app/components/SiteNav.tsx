@@ -945,7 +945,7 @@ export function SiteNav({
                     </span>
                   </div>
 
-                  <div className="space-y-1">
+                  <div className="space-y-0.5 sm:space-y-1">
                     {drawerSections.map((item) => {
                       const hasMoreSpecificMatch = drawerSections.some(
                         (other) =>
@@ -963,7 +963,7 @@ export function SiteNav({
                           href={item.href}
                           onClick={handleCloseDrawer}
                           aria-current={active ? 'page' : undefined}
-                          className={`group relative flex min-h-[48px] items-center justify-between rounded-xl px-3 py-2.5 transition active:scale-[0.98] ${
+                          className={`group relative flex min-h-[48px] items-center justify-between rounded-xl px-2.5 py-1.5 transition active:scale-[0.98] sm:px-3 sm:py-2.5 ${
                             active
                               ? 'border border-saffron-300 bg-saffron-50 font-bold text-saffron-900 shadow-sm dark:border-saffron-700/60 dark:bg-saffron-950/40 dark:text-saffron-300'
                               : 'border border-transparent text-dharma-text hover:border-dharma-border hover:bg-dharma-bg'
@@ -972,7 +972,7 @@ export function SiteNav({
                           <div className="flex items-center gap-3 min-w-0">
                             {/* Icon with active glow */}
                             <span
-                              className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition ${
+                              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition sm:h-9 sm:w-9 ${
                                 active
                                   ? 'bg-gradient-to-br from-saffron-500 to-amber-600 text-white shadow-sm'
                                   : 'bg-dharma-bg border border-dharma-border/80 text-dharma-muted group-hover:text-saffron-600'
@@ -995,9 +995,11 @@ export function SiteNav({
                           </div>
 
                           <div className="flex items-center gap-2 shrink-0 ml-2">
+                            {/* On phones the badge repeats the line under the label and squeezes it;
+                                only the practice streak, which says something new, stays. */}
                             {item.badge && (
                               <span
-                                className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                                className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${item.badgeType === 'streak' ? '' : 'hidden sm:inline'} ${
                                   item.badgeType === 'streak'
                                     ? 'bg-amber-100 text-amber-950 border border-amber-800/40 dark:bg-amber-950 dark:text-amber-100 dark:border-amber-700/50'
                                     : item.badgeType === 'count'
