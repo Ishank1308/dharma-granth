@@ -111,7 +111,12 @@ async function main(): Promise<void> {
     const restPath = path.join(SRC, `${name}-rest.json`);
     if (fs.existsSync(restPath)) {
       const rest = JSON.parse(fs.readFileSync(restPath, "utf8")) as HiCommentaryFragment;
-      for (const [key, entry] of Object.entries(rest)) {
+      for (const [restKey, entry] of Object.entries(rest)) {
+        // "1:1.9" and "1:9" name the same verse. If the short key already holds the व्याख्या, merge into it:
+        // an exact "1:1.9" entry would win the reader's lookup and hide that व्याख्या.
+        const dotted = /^(\d+):(\d+)\.(\d+)$/.exec(restKey);
+        const shortKey = dotted && dotted[1] === dotted[2] ? `${dotted[1]}:${Number(dotted[3])}` : undefined;
+        const key = shortKey && curated[shortKey] && !curated[restKey] ? shortKey : restKey;
         const explanation = entry.explanation?.trim();
         const science = entry.science?.trim();
         const lifeLesson = entry.lifeLesson?.trim();
