@@ -14,6 +14,7 @@ import {
 import { CircleDot, Eye, RotateCcw, Smartphone, Undo2, Volume2, VolumeX } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { ToolCard, localISODate } from './shared';
+import { RudrakshaBead, RudrakshaDefs, SilkTassel } from './Rudraksha';
 
 /*
  * A physical japa mala: a strand of rudraksha beads on a curved thread. Roll the next bead down with the thumb
@@ -55,6 +56,8 @@ const COMMIT_SHARE = 0.45;
 const FLICK = 380;
 const BEAD_SPRING = { type: 'spring', stiffness: 520, damping: 30, mass: 0.7 } as const;
 const BPM_SAMPLES = 5;
+/** Id prefix for the strand's shared SVG gradients and bark filters. */
+const MALA_DEFS = 'japa-mala';
 
 /** Horizontal sweep of the strand: a gentle C-curve, the thumb rest at its apex. */
 const curveX = (t: number) => 64 * (1 - Math.cos(t * 0.27));
@@ -138,6 +141,9 @@ function vibrate(pattern: number | number[]) {
 
 // ── Beads ────────────────────────────────────────────────────────────────────
 
+/** Tilt of the thread at `t`, degrees: each bead turns so its grooves run along the strand. */
+const tiltAt = (t: number) => (Math.atan((64 * 0.27 * Math.sin(t * 0.27)) / STEP) * 180) / Math.PI;
+
 /** One bead on the thread; its place follows `pos` (the strand's position, in beads). */
 function Bead({ index, pos }: { index: number; pos: MotionValue<number> }) {
   const sumeru = index === SUMERU;
@@ -146,39 +152,26 @@ function Bead({ index, pos }: { index: number; pos: MotionValue<number> }) {
   const t = useTransform(pos, (p) => index - p);
   const x = useTransform(t, (v) => curveX(v) - size / 2);
   const y = useTransform(t, (v) => -v * STEP - size / 2);
+  const rotate = useTransform(t, tiltAt);
   const scale = useTransform(t, (v) => Math.max(0.62, (Math.abs(v) < 0.5 ? 1.14 : 1.06) - Math.abs(v) * 0.05));
   const opacity = useTransform(t, (v) => Math.max(0, Math.min(1, 1 - (Math.abs(v) - 3.6) * 0.42)));
+  // Each bead twists a little on the thread as the page scrolls (CSS, see .rudraksha-roll); alternate
+  // directions and amplitudes so the strand never moves as one rigid piece.
+  const roll = ((index * 37) % 9) - 4 || 3;
 
   return (
     <motion.div
       aria-hidden="true"
       className="absolute left-0 top-0"
-      style={{ x, y, scale, opacity, width: size, height: size }}
+      style={{ x, y, rotate, scale, opacity, width: size, height: size }}
     >
-      <div
-        className="h-full w-full rounded-full"
-        style={{
-          background: sumeru
-            ? 'radial-gradient(circle at 34% 30%, #f5ebe0 0%, #e0a27a 22%, #c86d44 52%, #6e2f17 100%)'
-            : 'repeating-conic-gradient(from 8deg, rgba(0,0,0,0.22) 0deg 3deg, transparent 3deg 36deg), radial-gradient(circle at 34% 30%, #b97a4d 0%, #7a3f1f 40%, #4a2312 72%, #24110a 100%)',
-          boxShadow: sumeru
-            ? '0 0 18px rgba(224,122,95,0.45), inset -3px -4px 8px rgba(0,0,0,0.45), inset 2px 2px 5px rgba(255,236,214,0.35)'
-            : 'inset -3px -4px 7px rgba(0,0,0,0.55), inset 2px 2px 4px rgba(255,214,170,0.22), 0 3px 6px rgba(0,0,0,0.45)',
-        }}
-      />
+      <div className="rudraksha-roll h-full w-full" style={{ ['--roll' as string]: `${roll * 2.5}deg` }}>
+        <RudrakshaBead defs={MALA_DEFS} index={index} size={size} className={sumeru ? 'rudraksha-sumeru' : undefined} />
+      </div>
       {sumeru && (
-        // The tassel falls from the guru bead away from the strand (the Sumeru is its last bead).
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 rotate-180">
-          <div className="mx-auto h-2 w-3 rounded-b-sm bg-[#c86d44]" />
-          <div
-            className="mx-auto h-12 w-6 rounded-b-[45%]"
-            style={{
-              background:
-                'repeating-linear-gradient(90deg, #e07a5f 0 2px, #c86d44 2px 4px), linear-gradient(#c86d44, #8a3a1f)',
-              maskImage: 'linear-gradient(to bottom, black 70%, transparent)',
-              WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent)',
-            }}
-          />
+        // The silk tassel rises from the guru bead away from the strand (the Sumeru is its last bead).
+        <div className="absolute bottom-[86%] left-1/2 -ml-[13px] rotate-180">
+          <SilkTassel id={`${MALA_DEFS}-tassel`} className="mala-tassel block" />
         </div>
       )}
     </motion.div>
@@ -435,7 +428,7 @@ export function JapaMala() {
 
   return (
     <ToolCard icon={<CircleDot className="h-5 w-5 text-saffron-600" />} title="108-Bead Rudraksha Mala" titleHindi="जप साधना" accent="saffron">
-      <div className="overflow-hidden rounded-3xl bg-[#12100e] p-4 text-[#f5ebe0] shadow-inner sm:p-6">
+      <div className="overflow-clip rounded-3xl bg-[#12100e] p-4 text-[#f5ebe0] shadow-inner sm:p-6">
         {/* Preferences */}
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap items-center gap-2">
@@ -498,7 +491,7 @@ export function JapaMala() {
             onPanStart={onPanStart}
             onPan={onPan}
             onPanEnd={onPanEnd}
-            className="relative mx-auto h-[340px] w-full max-w-[260px] cursor-grab touch-none select-none overflow-hidden rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#e07a5f] active:cursor-grabbing"
+            className="mala-strand relative mx-auto h-[340px] w-full max-w-[260px] cursor-grab touch-none select-none overflow-hidden rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#e07a5f] active:cursor-grabbing"
           >
             {/* Ambient warmth and the completion bloom */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_42%_62%,rgba(200,109,68,0.16),transparent_62%)]" />
@@ -510,12 +503,19 @@ export function JapaMala() {
               />
             )}
             {/* The thumb rest sits at 62% of the zone's height, the strand's apex. */}
+            <RudrakshaDefs id={MALA_DEFS} />
+            {/* Pivot of the scroll sway (.mala-sway): the thumb rest, as if the strand hung from the thumb. */}
             <div
-              className="absolute left-[30%] top-[62%] transition-opacity duration-300"
+              className="mala-sway absolute left-[30%] top-[62%] transition-opacity duration-300"
               style={{ opacity: turning ? 0.35 : 1 }}
             >
+              {/* A twisted red cotton thread: a dark core, a lighter spiral ply and a thin catch of light. */}
               <svg aria-hidden="true" className="pointer-events-none absolute left-0 top-0 overflow-visible" width="1" height="1">
-                <path d={THREAD_PATH} fill="none" stroke="#c86d44" strokeOpacity="0.45" strokeWidth="1.5" />
+                <g fill="none" strokeLinecap="round">
+                  <path d={THREAD_PATH} stroke="#3e0b09" strokeWidth="2.6" />
+                  <path d={THREAD_PATH} stroke="#9b2a22" strokeWidth="2.2" strokeDasharray="1.4 2.1" strokeOpacity="0.55" />
+                  <path d={THREAD_PATH} stroke="#f0a088" strokeWidth="0.6" strokeOpacity="0.28" transform="translate(-0.6 0)" />
+                </g>
               </svg>
               <div aria-hidden="true" className="pointer-events-none absolute -left-[22px] -top-[22px] h-11 w-11 rounded-full border border-[#e07a5f]/45" />
               {beads.map((i) => (

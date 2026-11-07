@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { RudrakshaBead, RudrakshaDefs } from './practice/Rudraksha';
 import {
   ArrowRight,
   BookOpen,
@@ -212,14 +213,22 @@ export function SadhanaPreviewSection() {
               </h3>
 
               <div className="my-3 flex items-center justify-center gap-3">
-                <button
-                  type="button"
-                  onClick={handleJapaIncrement}
-                  aria-label="Increment Japa bead"
-                  className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-saffron-600 to-amber-600 text-white font-serif text-lg font-bold shadow-md hover:from-saffron-700 hover:to-amber-700 transition active:scale-95 cursor-pointer"
-                >
-                  {japaCount}
-                </button>
+                {/* A rudraksha on its red thread: the count sits on the seed, which twists a little as you scroll. */}
+                <div className="mala-strand relative flex h-[72px] w-14 items-center justify-center">
+                  <span aria-hidden="true" className="absolute inset-y-0 left-1/2 w-[2px] -translate-x-1/2 rounded-full bg-[repeating-linear-gradient(180deg,#5e1410_0_2px,#c2412f_2px_4px)]" />
+                  <RudrakshaDefs id="home-mala" />
+                  <button
+                    type="button"
+                    onClick={handleJapaIncrement}
+                    aria-label="Increment Japa bead"
+                    className="relative flex h-14 w-14 cursor-pointer items-center justify-center rounded-full font-serif text-lg font-bold text-[#fff4e6] transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2"
+                  >
+                    <span className="rudraksha-roll absolute inset-0" style={{ ['--roll' as string]: '9deg' }}>
+                      <RudrakshaBead defs="home-mala" index={japaCount} size={56} />
+                    </span>
+                    <span className="relative [text-shadow:0_1px_2px_rgb(0_0_0/0.85),0_0_6px_rgb(0_0_0/0.6)]">{japaCount}</span>
+                  </button>
+                </div>
                 <div className="text-left">
                   <p className="text-xs font-bold text-dharma-text">
                     / {JAPA_TARGET} beads
