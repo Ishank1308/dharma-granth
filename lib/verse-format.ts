@@ -38,6 +38,65 @@ export function verseLines(sanskrit: string): string[] {
   return lines.length ? lines : [cleaned];
 }
 
+/**
+ * Detects traditional Sanskrit dialogue speaker attributions like "श्रीभगवानुवाच",
+ * "अर्जुन उवाच", "सञ्जय उवाच", "धृतराष्ट्र उवाच", "ऋषय ऊचुः", "ब्रह्मोवाच".
+ */
+export function isSpeakerLine(line: string): boolean {
+  const stripped = line.replace(/[|।॥:;—–-]+$/, '').trim();
+  if (!stripped || stripped.length > 22) return false;
+  if (/[|।॥]/.test(stripped)) return false;
+  const words = stripped.split(/\s+/);
+  const maxWords = words[0] === 'श्री' ? 3 : 2;
+  if (words.length > maxWords) return false;
+  if (/^(?:स|सा|तम्|तं|तत|ततः|तस्मै|तेन|अथ|अथैनं|एवम्|इति|पुनर्)(?:\s|$)/u.test(stripped)) return false;
+  if (/(?:प्रत्युवाच|होवाच)$/u.test(stripped)) return false;
+  return /(?:^|\s)उवाच$|(?:नुवाच|दुवाच|युवाच|ोवाच)$|(?:^|\s)ऊचुः$/u.test(stripped);
+}
+
+/**
+ * Extracts speaker attribution from explicit field or line 0 of Sanskrit verse.
+ */
+export function extractVerseSpeaker(
+  explicitSpeaker: string | undefined,
+  lines: readonly string[],
+): { speaker?: string; verseLines: string[]; hasSpeakerInText: boolean } {
+  if (explicitSpeaker && explicitSpeaker.trim()) {
+    return {
+      speaker: explicitSpeaker.trim(),
+      verseLines: [...lines],
+      hasSpeakerInText: false,
+    };
+  }
+  if (lines.length >= 2 && isSpeakerLine(lines[0])) {
+    return {
+      speaker: lines[0].replace(/[|।॥:;—–-]+$/, '').trim(),
+      verseLines: lines.slice(1),
+      hasSpeakerInText: true,
+    };
+  }
+  return {
+    speaker: undefined,
+    verseLines: [...lines],
+    hasSpeakerInText: false,
+  };
+}
+
+/**
+ * Cleans transliteration, dropping the speaker header if line 0 carried one.
+ */
+export function cleanTransliteration(translit: string | undefined, hasSpeakerInText = false): string {
+  if (!translit) return '';
+  const cleaned = translit.replace(/[\s|।॥0-9.]+$/, '').trim();
+  if (hasSpeakerInText) {
+    const parts = cleaned.split(/\n+/);
+    if (parts.length >= 2 && /(?:uv[aā]ch?a|ūch?u[hḥ])$/i.test(parts[0].trim())) {
+      return parts.slice(1).join('\n').trim();
+    }
+  }
+  return cleaned;
+}
+
 /** More Devanagari than Latin letters means the block should be set as Hindi. */
 export function isMostlyDevanagari(text: string | undefined): boolean {
   if (!text) return false;

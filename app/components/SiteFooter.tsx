@@ -20,18 +20,18 @@ const COLUMNS: Array<{ en: string; hi: string; links: FooterLink[] }> = [
     links: [
       { href: '/scriptures/', en: 'Library', hi: 'ग्रन्थालय' },
       { href: '/scripture/bhagavadgita/', en: 'Bhagavad Gita', hi: 'भगवद्गीता' },
+      { href: '/ashtavakra/', en: 'Ashtavakra Gita', hi: 'अष्टावक्र गीता' },
       { href: '/daily-verse/', en: 'Daily verse', hi: 'दैनिक श्लोक' },
-      { href: '/ask/', en: 'Ask the scriptures', hi: 'ग्रन्थ से पूछिए' },
     ],
   },
   {
-    en: 'Learn',
-    hi: 'स्वाध्याय',
+    en: 'Wisdom',
+    hi: 'ज्ञान व मार्गदर्शन',
     links: [
-      { href: '/learn/', en: 'Learning paths', hi: 'अध्ययन मार्ग' },
-      { href: '/learn/journeys/', en: 'Guided journeys', hi: 'स्वाध्याय यात्राएँ' },
-      { href: '/learn/plans/', en: 'Reading plans', hi: 'पठन योजनाएँ' },
-      { href: '/learn/faq/', en: 'Scripture FAQs', hi: 'जिज्ञासा समाधान' },
+      { href: '/wisdom-for-life/', en: 'Life guidance', hi: 'जीवन मार्गदर्शन' },
+      { href: '/wisdom-pathways/', en: 'Wisdom pathways', hi: 'ज्ञान मार्ग' },
+      { href: '/concepts/', en: 'Core concepts', hi: 'अवधारणाएँ' },
+      { href: '/mantras/', en: 'Sacred mantras', hi: 'वैदिक मन्त्र' },
     ],
   },
   {
@@ -41,7 +41,7 @@ const COLUMNS: Array<{ en: string; hi: string; links: FooterLink[] }> = [
       { href: '/practice/', en: 'Daily practice', hi: 'दैनिक साधना' },
       { href: '/panchang/', en: 'Panchang', hi: 'पञ्चाङ्ग' },
       { href: '/festivals/', en: 'Festivals', hi: 'उत्सव' },
-      { href: '/wisdom-for-life/', en: 'Life guidance', hi: 'जीवन मार्गदर्शन' },
+      { href: '/ask/', en: 'Ask the scriptures', hi: 'ग्रन्थ से पूछिए' },
     ],
   },
   {

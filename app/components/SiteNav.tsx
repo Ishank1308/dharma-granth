@@ -77,25 +77,50 @@ const desktopPrimaryItems = [
   { label: 'Panchang', labelHi: 'पंचांग', href: '/panchang/' },
 ];
 
-const desktopDiscoveryItems = [
-  { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra/' },
-  { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask/' },
-  { label: 'श्लोक संबंध जाल', description: 'Verse Relationship Network — गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network/' },
-  { label: 'स्रोत पारदर्शिता', description: 'Source Library — मूल पांडुलिपियाँ व संस्करण', href: '/sources/' },
-  { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — उद्वेग, भय, क्रोध व धर्मसंकट का समाधान', href: '/wisdom-for-life/' },
-  { label: 'वैदिक मन्त्र व शान्ति पाठ', description: 'Sacred Mantras & Suktas — पदच्छेद, शब्दार्थ व भावार्थ', href: '/mantras/' },
-  { label: 'ज्ञान मार्ग', description: 'Wisdom Pathways — भाव, प्रश्न व संत से शास्त्र तक', href: '/wisdom-pathways/' },
-  { label: 'दैनिक श्लोक', description: 'Daily Verse — आज का श्लोक WhatsApp पर भेजें', href: '/daily-verse/' },
-  { label: 'वैदिक मुहूर्त निर्णय', description: 'Muhurta Matrix — पंचांग शुद्धि, ताराबल व चन्द्रबल', href: '/panchang/muhurta/' },
-  { label: 'अवधारणाएँ', description: 'मुख्य दार्शनिक विचार', href: '/concepts/' },
-  { label: 'गीता संकल्प साधना', description: '18-दिवसीय व 365-दिवसीय गीता पारायण', href: '/practice/gita-sankalpa/' },
-  { label: 'पात्र', description: 'कथाओं के प्रमुख चरित्र', href: '/characters/' },
-  { label: 'स्थान', description: 'पवित्र और ऐतिहासिक स्थल', href: '/locations/' },
-  { label: 'कालखंड', description: 'समयरेखा और परंपरा', href: '/timelines/' },
-  { label: 'उत्सव', description: 'पर्व और उनका अर्थ', href: '/festivals/' },
-  { label: 'अनुष्ठान', description: 'विधियाँ और परंपराएँ', href: '/rituals/' },
-  { label: 'सहयोग व सेवा', description: 'Voluntary Support — प्रत्यक्ष UPI व QR द्वारा धर्म ग्रंथ का संवर्धन', href: '/contribute/' },
+interface DiscoveryGroup {
+  name: string;
+  items: Array<{
+    label: string;
+    description: string;
+    href: string;
+  }>;
+}
+
+const discoveryGroups: DiscoveryGroup[] = [
+  {
+    name: 'पठन व संवाद · Scripture & Dialogue',
+    items: [
+      { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra/' },
+      { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask/' },
+      { label: 'दैनिक श्लोक', description: 'Daily Verse — आज का श्लोक WhatsApp पर भेजें', href: '/daily-verse/' },
+      { label: 'श्लोक संबंध जाल', description: 'Verse Relationship Network — गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network/' },
+      { label: 'गीता संकल्प साधना', description: '18-दिवसीय व 365-दिवसीय गीता पारायण', href: '/practice/gita-sankalpa/' },
+    ],
+  },
+  {
+    name: 'जीवन, मुहूर्त व मन्त्र · Life, Muhurta & Mantras',
+    items: [
+      { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'उद्वेग, भय, क्रोध व धर्मसंकट का शास्त्रीय समाधान', href: '/wisdom-for-life/' },
+      { label: 'वैदिक मुहूर्त निर्णय', description: 'पंचांग शुद्धि, ताराबल व चन्द्रबल', href: '/panchang/muhurta/' },
+      { label: 'वैदिक मन्त्र व शान्ति पाठ', description: 'Sacred Mantras — पदच्छेद, शब्दार्थ व भावार्थ', href: '/mantras/' },
+      { label: 'ज्ञान मार्ग', description: 'Wisdom Pathways — भाव, प्रश्न व संत से शास्त्र तक', href: '/wisdom-pathways/' },
+      { label: 'अनुष्ठान व विधियाँ', description: 'वैदिक विधियाँ और नित्य परंपराएँ', href: '/rituals/' },
+    ],
+  },
+  {
+    name: 'दर्शन, इतिहास व स्रोत · Heritage & Sources',
+    items: [
+      { label: 'अवधारणाएँ', description: 'मुख्य दार्शनिक विचार व तत्व ज्ञान', href: '/concepts/' },
+      { label: 'उत्सव व पर्व', description: 'प्रमुख पर्व और उनका शास्त्रीय अर्थ', href: '/festivals/' },
+      { label: 'पात्र व समयरेखा', description: 'कथाओं के प्रमुख चरित्र व कालखंड', href: '/characters/' },
+      { label: 'स्थान व तीर्थ', description: 'पवित्र और ऐतिहासिक तीर्थ स्थल', href: '/locations/' },
+      { label: 'स्रोत पारदर्शिता', description: 'मूल पांडुलिपियाँ व संदर्भ ग्रंथ सूची', href: '/sources/' },
+      { label: 'सहयोग व सेवा', description: 'प्रत्यक्ष UPI व QR द्वारा धर्म ग्रंथ का संवर्धन', href: '/contribute/' },
+    ],
+  },
 ];
+
+const desktopDiscoveryItems = discoveryGroups.flatMap((group) => group.items);
 
 const desktopPersonalItems = [
   { label: 'दैनिक साधना', href: '/practice/' },
@@ -614,41 +639,55 @@ export function SiteNav({
                     <div
                       id="desktop-discovery-menu"
                       data-closing={discoverMenu.closing || undefined}
-                      className="chrome-pop absolute right-0 top-[calc(100%+0.75rem)] w-[34rem] max-w-[calc(100vw-2rem)] max-h-[calc(100dvh-4.5rem)] overflow-y-auto rounded-2xl border border-dharma-border bg-dharma-card p-3 shadow-2xl z-50"
+                      className="chrome-pop absolute right-0 top-[calc(100%+0.75rem)] w-[46rem] max-w-[calc(100vw-2rem)] max-h-[calc(100dvh-4.5rem)] overflow-y-auto rounded-2xl border border-dharma-border bg-dharma-card p-4 shadow-2xl z-50 divide-y divide-dharma-border/60"
                     >
-                      <p className="px-3 pb-2 pt-1 text-xs font-bold uppercase tracking-[0.16em] text-dharma-muted">
-                        ज्ञान संसार
-                      </p>
-                      <div className="grid grid-cols-2 gap-1">
-                        {desktopDiscoveryItems.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className={`rounded-xl px-3 py-2.5 transition-colors ${
-                              isActive(item.href)
-                                ? 'bg-saffron-50 text-saffron-800 dark:bg-saffron-950/40'
-                                : 'hover:bg-dharma-bg'
-                            }`}
-                          >
-                            <span className="block text-sm font-bold text-dharma-text">
-                              {item.label}
-                            </span>{' '}
-                            <span className="mt-0.5 block text-xs text-dharma-muted">
-                              {item.description}
-                            </span>
-                          </Link>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 pb-3">
+                        {discoveryGroups.map((group) => (
+                          <div key={group.name} className="space-y-1">
+                            <p className="px-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300">
+                              {group.name}
+                            </p>
+                            <div className="space-y-0.5">
+                              {group.items.map((item) => (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  className={`block rounded-lg px-2.5 py-1.5 transition-colors ${
+                                    isActive(item.href)
+                                      ? 'bg-saffron-50 text-saffron-800 dark:bg-saffron-950/40 dark:text-saffron-300'
+                                      : 'hover:bg-dharma-bg'
+                                  }`}
+                                >
+                                  <span className="block text-xs font-bold text-dharma-text">
+                                    {item.label}
+                                  </span>
+                                  <span className="mt-0.5 block text-[11px] text-dharma-muted line-clamp-1">
+                                    {item.description}
+                                  </span>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
                         ))}
                       </div>
-                      <div className="mt-2 flex flex-wrap gap-1.5 border-t border-dharma-border px-2 pt-3">
-                        {desktopPersonalItems.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="inline-flex min-h-[36px] items-center rounded-lg px-2.5 py-1.5 text-xs font-semibold text-dharma-muted transition hover:bg-dharma-bg hover:text-saffron-700 dark:hover:text-saffron-300"
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
+                      <div className="pt-2.5 flex flex-wrap items-center justify-between gap-1.5 px-1">
+                        <div className="flex flex-wrap gap-1.5">
+                          {desktopPersonalItems.map((item) => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              className="inline-flex min-h-[32px] items-center rounded-lg px-2.5 py-1 text-xs font-semibold text-dharma-muted transition hover:bg-dharma-bg hover:text-saffron-700 dark:hover:text-saffron-300"
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                        <Link
+                          href="/about/funding/"
+                          className="text-[11px] font-medium text-dharma-muted hover:text-dharma-text underline-offset-2 hover:underline"
+                        >
+                          वित्तीय पारदर्शिता
+                        </Link>
                       </div>
                     </div>
                   )}
@@ -1066,22 +1105,31 @@ export function SiteNav({
                     id="drawer-discover-heading"
                     className="mb-2 px-1 text-[11px] font-bold uppercase tracking-wider text-dharma-muted"
                   >
-                    अन्वेषण व ज्ञान विषय
+                    अन्वेषण व ज्ञान विषय · Explore
                   </h3>
-                  <div className="flex flex-wrap gap-1.5">
-                    {desktopDiscoveryItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={handleCloseDrawer}
-                        className={`inline-flex min-h-[44px] items-center rounded-xl border px-3 py-2 text-xs font-semibold transition active:scale-95 ${
-                          isActive(item.href)
-                            ? 'border-saffron-400 bg-saffron-500/10 text-saffron-700 dark:text-saffron-300'
-                            : 'border-dharma-border/80 bg-dharma-bg text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
+                  <div className="space-y-3">
+                    {discoveryGroups.map((group) => (
+                      <div key={group.name} className="space-y-1.5">
+                        <p className="text-[10.5px] font-semibold text-saffron-700 dark:text-saffron-300 uppercase tracking-wider px-1">
+                          {group.name}
+                        </p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {group.items.map((item) => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              onClick={handleCloseDrawer}
+                              className={`inline-flex min-h-[40px] items-center rounded-xl border px-3 py-1.5 text-xs font-semibold transition active:scale-95 ${
+                                isActive(item.href)
+                                  ? 'border-saffron-400 bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 font-bold'
+                                  : 'border-dharma-border/80 bg-dharma-bg text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
+                              }`}
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </section>

@@ -25,7 +25,7 @@ import Link from 'next/link';
 import type { ScriptureCategory } from '@/data/types';
 import type { VerseHighlight } from '@/lib/useStudyProgress';
 import { resolveKeywordTarget } from '@/lib/keyword-links';
-import { isLongPassage, meaningState, MEANING_COPY, verseLines, verseMarkNumber, formatVerseRef } from '@/lib/verse-format';
+import { isLongPassage, meaningState, MEANING_COPY, verseLines, verseMarkNumber, formatVerseRef, extractVerseSpeaker, cleanTransliteration } from '@/lib/verse-format';
 import { shareVerseUrl } from '@/lib/verse-paths';
 import { parseWordMeanings } from '@/lib/word-gloss';
 import { SITE_URL } from '@/lib/jsonld';
@@ -328,8 +328,16 @@ export function VerseCard({
     };
   }, [pickerOpen]);
 
-  const lines = useMemo(() => (v.sanskrit ? verseLines(v.sanskrit) : []), [v.sanskrit]);
+  const rawLines = useMemo(() => (v.sanskrit ? verseLines(v.sanskrit) : []), [v.sanskrit]);
+  const { speaker, verseLines: lines, hasSpeakerInText } = useMemo(
+    () => extractVerseSpeaker(v.speaker, rawLines),
+    [v.speaker, rawLines]
+  );
   const chandas = useMemo(() => detectChandas(v.sanskrit), [v.sanskrit]);
+  const transliterationText = useMemo(
+    () => cleanTransliteration(v.transliteration, hasSpeakerInText),
+    [v.transliteration, hasSpeakerInText]
+  );
 
   // Recitation line-by-line / translation live highlighting
   const [activeLineIndex, setActiveLineIndex] = useState<number | null>(null);
@@ -664,6 +672,21 @@ export function VerseCard({
           <div className={`verse-folio relative rounded-2xl px-2 py-4 text-center md:px-8 md:py-6 transition-colors ${
             isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
           }`}>
+            {speaker && (
+              <div className="mb-3.5 flex justify-center">
+                <span
+                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-0.5 text-xs font-semibold tracking-wide transition-all ${
+                    isReciting && activeLineIndex === 0 && hasSpeakerInText
+                      ? 'bg-amber-500/20 text-amber-900 dark:text-amber-200 ring-1 ring-amber-400/50'
+                      : 'bg-amber-100/70 text-amber-900/90 dark:bg-amber-950/40 dark:text-amber-200/90 border border-amber-300/40 dark:border-amber-800/30'
+                  }`}
+                >
+                  <span className="text-[10px] opacity-75 font-serif" aria-hidden="true">✦</span>
+                  <span className="font-devanagari">{speaker}</span>
+                  <span className="text-[10px] opacity-75 font-serif" aria-hidden="true">✦</span>
+                </span>
+              </div>
+            )}
             {isSandhiSplit && hasSplitData ? (
               <div data-reveal="1" className="mx-auto my-2 max-w-2xl text-center">
                 <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-amber-300/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-amber-950/30">
@@ -702,7 +725,8 @@ export function VerseCard({
             ) : (
               <p data-reveal="1" lang="sa" className={`font-devanagari ${sanskritFontSizeClass} text-dharma-text`}>
                 {lines.map((line, i) => {
-                  const isLineActive = isReciting && activeLineIndex === i;
+                  const recitationLineIdx = hasSpeakerInText ? i + 1 : i;
+                  const isLineActive = isReciting && activeLineIndex === recitationLineIdx;
                   return (
                     <span
                       key={i}
@@ -725,14 +749,14 @@ export function VerseCard({
                 </span>
               </p>
             )}
-            {v.transliteration && layers.translit && (
+            {transliterationText && layers.translit && (
               <p
                 data-reveal="2"
                 lang="sa-Latn"
                 className="mx-auto mt-4 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-4 text-sm italic leading-relaxed text-dharma-muted md:text-[15px]"
               >
                 {/* The ॥ N ॥ above already closes the verse; drop the source's trailing "||". */}
-                {v.transliteration.replace(/[\s|।॥0-9.]+$/, '')}
+                {transliterationText}
               </p>
             )}
           </div>
@@ -772,6 +796,11 @@ export function VerseCard({
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''
                   }`}>
+                    {showEnglish && state.hi === 'text' && !v.hindiRange && (
+                      <p className="mb-1 text-[11px] font-semibold tracking-wide text-saffron-800/80 dark:text-saffron-300/80 font-devanagari">
+                        भावार्थ · Hindi
+                      </p>
+                    )}
                     {state.hi === 'text' && v.hindiUnproofread && (
                       <p className="mb-1 text-xs text-dharma-muted">
                         <span lang="hi" className="font-devanagari">{MEANING_COPY.hiUnproofread}</span>{' '}
@@ -819,10 +848,17 @@ export function VerseCard({
 
                 {showEnglish && (
                   <div className={`-mx-2 rounded-xl px-2 py-1 transition-colors duration-200 ${
+                    showHindi ? 'mt-2 pt-2 border-t border-dharma-border/30' : ''
+                  } ${
                     isReciting && activeTranslationLang === 'en'
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''
                   }`}>
+                    {showHindi && state.en === 'text' && !v.translationRange && (
+                      <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-saffron-800/80 dark:text-saffron-300/80 font-serif">
+                        Translation · English
+                      </p>
+                    )}
                     {state.en === 'text' && (
                       <PassageText
                         lang="en"
