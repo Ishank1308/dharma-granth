@@ -27,7 +27,7 @@ const PERSPECTIVES: Array<{ id: PerspectiveMode; hi: string; en: string; hint: s
 ];
 
 const segment = (active: boolean) =>
-  `focus-ring inline-flex min-h-[36px] sm:min-h-[38px] flex-1 items-center justify-center gap-1.5 rounded-pill px-3 py-1.5 text-xs transition-all duration-fast select-none sm:flex-none ${
+  `focus-ring inline-flex min-h-[44px] sm:min-h-[38px] flex-1 items-center justify-center gap-1 sm:gap-1.5 rounded-pill px-2 sm:px-3 py-1.5 text-xs transition-all duration-fast select-none sm:flex-none ${
     active
       ? 'bg-surface-elevated text-label-primary font-semibold shadow-xs ring-1 ring-black/5 dark:ring-white/10 scale-[1.01]'
       : 'text-label-secondary font-medium hover:text-label-primary hover:bg-fill-quaternary/60 active:scale-[0.98]'

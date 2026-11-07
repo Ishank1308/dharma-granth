@@ -219,7 +219,7 @@ export { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 const dash = (s: string) => s.replace(/[\s|।॥0-9.]+$/, '');
 
 const aidToggle =
-  'focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-3.5 py-1 text-footnote text-dharma-text transition hover:bg-dharma-text/[0.1] aria-expanded:bg-dharma-saffron/15 aria-expanded:text-dharma-saffron';
+  'focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-full border border-separator/60 bg-dharma-text/[0.06] px-4 py-2 text-footnote font-medium text-dharma-text transition hover:bg-dharma-text/[0.1] active:scale-[0.98] aria-expanded:border-dharma-saffron/40 aria-expanded:bg-dharma-saffron/15 aria-expanded:text-dharma-saffron';
 
 /* ── The layers: root shloka, then the अर्थ → व्याख्या → विज्ञान tree ── */
 
@@ -401,7 +401,7 @@ export function ReaderLayers({
       {/* मर्म: the reviewed one-line core shift, when this verse has one. It sits after the
           Sanskrit so the reader meets scripture before any editorial line. */}
       {insight?.marma && settings.showCommentary && !settings.liteMode && (
-        <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
+        <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400" data-testid="reader-marma">
           <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
             <span lang="hi">मर्म</span>
             <span aria-hidden="true">·</span>

@@ -1,6 +1,6 @@
 # Muktika chapter 2: commentary review
 
-Review scope: the 78 entries that were `pending` in `data/ai-commentary/muktika.json` at the time of review, compared with the current chapter 2 source in `public/data/scriptures-full/muktika.json` and the requested Hindi व्याख्या specification. Four were subsequently replaced and approved at the user's direction; their original entries are preserved in `docs/review/muktika-02-originals.json`. The other 74 remain pending.
+Review scope: the 78 entries that were `pending` in `data/ai-commentary/muktika.json` at the time of review, compared with the current chapter 2 source in `public/data/scriptures-full/muktika.json` and the requested Hindi व्याख्या specification. Four were subsequently replaced and approved at the user's direction; their original entries are preserved in `docs/review/muktika-02-originals.json`. Revisions for 2:2 and 2:3 have also been approved; the other 72 remain pending.
 
 ## Findings across the pending drafts
 
@@ -30,10 +30,12 @@ The following observations come from reading verses 2:1–10, 2:24–25, 2:34, 2
 3. Recheck revised entries for the full requested register, 200–280 words, paragraph structure and respectful address. Approve only after editorial and source review; retain uncertainty in `reviewNote`.
 4. Independently review the already approved 2:33 and 2:80 source notes. Their medium-confidence notes call for source verification even though the staging command marked them approved and publication included them locally.
 
-The repository does not currently contain `scripts/check-commentary-keys.ts`; a general replacement must account for scripture-specific numbering. A targeted check previously confirmed that the published 2:33 and 2:80 keys and Sanskrit snapshots match the current Muktika source.
+At the time of this review, `scripts/check-commentary-keys.ts` was absent. It has since been added with support for the reader's canonical and raw-number keys. A targeted check previously confirmed that the published 2:33 and 2:80 keys and Sanskrit snapshots match the current Muktika source.
 
 ## Follow-up: source comparison and proposed revisions
 
 The [Sanskrit Documents transcription of the Muktika Upanishad](https://sanskritdocuments.org/doc_upanishhat/muktika.html) presents 2:33 and 2:34 separately and reproduces the difficult phrases in 2:24, 2:50 and 2:56 as they appear in the current local Sanskrit. This establishes agreement with that transcription, not the independence or accuracy of its textual source. It does not establish a correct grammatical interpretation or validate a conjectured emendation. A reliable printed source and a Sanskrit specialist remain necessary for the uncertain readings.
 
-Replacements for 2:24, 2:34, 2:50 and 2:56 are in `docs/review/muktika-02-revisions.json`. The user approved their publication; they were staged and published locally. The original queue entries and their snapshots are preserved in `docs/review/muktika-02-originals.json`. The replacements retain medium-confidence source notes, and the wording avoids presenting uncertain interpretations as settled. The chapter's other 74 pending entries still require individual editorial review and revision.
+Replacements for 2:24, 2:34, 2:50 and 2:56 are in `docs/review/muktika-02-revisions.json`. The user approved their publication; they were staged and published locally. The original queue entries and their snapshots are preserved in `docs/review/muktika-02-originals.json`. The replacements retain medium-confidence source notes, and the wording avoids presenting uncertain interpretations as settled. After the approval of 2:2 and 2:3, the chapter's other 72 pending entries still require individual editorial review and revision.
+
+The revised explanations for 2:2 and 2:3 are saved in `data/ai-commentary/staged/review-next/muktika-02.json`. The user reviewed and approved them for local publication. Their original queue entries are preserved in `data/ai-commentary/history/muktika/`; the prior unreviewed life lessons remain in each replacement's `unreviewedFields` and are not published.

@@ -337,8 +337,8 @@ export function VerseReader(props: VerseReaderProps) {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       const el = e.target as HTMLElement | null;
       if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT' || el.isContentEditable)) return;
-      if (e.key === 'ArrowLeft' && prev) router.push(prev.href);
-      if (e.key === 'ArrowRight' && next) router.push(next.href);
+      if ((e.key === 'ArrowLeft' || e.key === 'h' || e.key === 'k') && prev) router.push(prev.href);
+      if ((e.key === 'ArrowRight' || e.key === 'l' || e.key === 'j') && next) router.push(next.href);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -376,9 +376,9 @@ export function VerseReader(props: VerseReaderProps) {
     const hi = dir === 'prev' ? 'पिछला' : 'अगला';
     const base =
       size === 'bar'
-        ? 'min-h-[48px] px-3'
-        : 'min-h-[52px] px-4';
-    if (!target) return <span className={size === 'bar' ? 'w-[88px]' : 'w-40'} aria-hidden="true" />;
+        ? 'min-h-[48px] px-2.5 sm:px-3 gap-1.5 sm:gap-2.5'
+        : 'min-h-[52px] px-4 gap-2.5';
+    if (!target) return <span className={size === 'bar' ? 'w-16 shrink-0' : 'w-40'} aria-hidden="true" />;
     const crosses = otherChapter(target.href);
     const hiLabel = crosses != null ? (dir === 'prev' ? 'पिछला अध्याय' : 'अगला अध्याय') : hi;
     const verseLine = crosses != null
@@ -392,12 +392,12 @@ export function VerseReader(props: VerseReaderProps) {
         rel={dir}
         onClick={() => triggerTactileFeedback('selection', 'click')}
         aria-label={crosses != null ? `${hiLabel}, श्लोक ${crosses}.${target.number}` : `${text} verse, ${target.number}`}
-        className={`focus-ring inline-flex items-center gap-2.5 rounded-pill border border-separator/60 bg-fill-quaternary text-label-primary transition duration-fast hover:border-separator-strong hover:bg-fill-tertiary active:scale-97 ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
+        className={`focus-ring inline-flex items-center rounded-pill border border-separator/60 bg-fill-quaternary text-label-primary transition duration-fast hover:border-separator-strong hover:bg-fill-tertiary active:scale-97 ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
       >
         <Icon className="h-4 w-4 shrink-0 text-tint" aria-hidden="true" />
         <span className="leading-tight">
           <span className="block text-caption font-medium text-label-secondary">
-            <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null ? ` · ${text}` : ''}
+            <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null && size !== 'bar' ? ` · ${text}` : ''}
           </span>{' '}
           <span lang="hi" className="font-devanagari text-subhead font-semibold">{verseLine}</span>
         </span>
@@ -778,7 +778,7 @@ export function VerseReader(props: VerseReaderProps) {
 
         {/* Mobile: sticky bottom verse navigation (the page has matching bottom padding, so it never covers the verse) */}
         <nav aria-label="Verse navigation" className="apple-bar fixed inset-x-0 bottom-0 z-40 border-t sm:hidden">
-          <div className="flex items-center justify-between gap-2 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2">
+          <div className="flex items-center justify-between gap-1.5 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 sm:gap-2 sm:px-3">
             {navLink(prev, 'prev', 'bar')}
             <button
               type="button"
@@ -787,10 +787,10 @@ export function VerseReader(props: VerseReaderProps) {
                 setCarouselOpen(true);
               }}
               aria-haspopup="dialog"
-              className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-control px-2 text-center transition active:scale-97"
+              className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-control px-1 text-center transition active:scale-97 sm:px-2"
             >
-              <span lang="hi" className="font-devanagari text-subhead font-bold text-label-primary">श्लोक {toAsciiDigits(verse.number)}</span>
-              <span className="text-caption text-tint">{index + 1} / {total} · माला खोलें</span>
+              <span lang="hi" className="truncate max-w-full font-devanagari text-subhead font-bold text-label-primary">श्लोक {toAsciiDigits(verse.number)}</span>
+              <span className="truncate max-w-full text-caption text-tint">{index + 1} / {total} · माला</span>
             </button>
             {navLink(next, 'next', 'bar')}
           </div>

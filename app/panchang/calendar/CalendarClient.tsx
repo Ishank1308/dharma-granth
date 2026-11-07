@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Calendar as CalendarIcon,
@@ -29,6 +29,7 @@ import {
 } from '@/lib/panchang';
 import { FESTIVAL_DATES, type FestivalDate } from '@/data/festival-dates';
 import { useLocalStorage } from '@/lib/useLocalStorage';
+import { triggerTactileFeedback } from '@/lib/haptics';
 
 export type CalendarFilter = 'all' | 'ekadashi' | 'pradosha' | 'purnima-amavasya' | 'festivals';
 
@@ -121,6 +122,49 @@ export function CalendarClient() {
     PRESET_LOCATIONS[0],
   );
 
+  const [urlParamsChecked, setUrlParamsChecked] = useState(false);
+
+  // Sync state from URL query parameters on mount (?year=2026&month=11&date=2026-11-08)
+  useEffect(() => {
+    if (urlParamsChecked) return;
+    setUrlParamsChecked(true);
+    try {
+      const sp = new URLSearchParams(window.location.search);
+      const rawDate = sp.get('date');
+      const mDate = rawDate && /^(\d{4})-(\d{2})-(\d{2})$/.exec(rawDate);
+      if (mDate) {
+        const y = Number(mDate[1]);
+        const m = Number(mDate[2]) - 1;
+        if (y >= 2026 && y <= 2028 && m >= 0 && m <= 11) {
+          setYear(y);
+          setMonth(m);
+          setSelectedDateIso(rawDate);
+          return;
+        }
+      }
+      const rawYear = Number(sp.get('year'));
+      const rawMonth = Number(sp.get('month'));
+      if (rawYear >= 2026 && rawYear <= 2028) setYear(rawYear);
+      if (rawMonth >= 1 && rawMonth <= 12) setMonth(rawMonth - 1);
+    } catch {
+      // Ignore in non-browser env
+    }
+  }, [urlParamsChecked]);
+
+  // Keep address bar in sync with selected month/year/date
+  useEffect(() => {
+    if (!urlParamsChecked) return;
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('year', String(year));
+      url.searchParams.set('month', String(month + 1));
+      if (selectedDateIso) url.searchParams.set('date', selectedDateIso);
+      window.history.replaceState(null, '', url.toString());
+    } catch {
+      // Ignore
+    }
+  }, [year, month, selectedDateIso, urlParamsChecked]);
+
   // Group festivals by ISO date
   const festivalsMap = useMemo(() => {
     const map = new Map<string, FestivalDate[]>();
@@ -191,6 +235,7 @@ export function CalendarClient() {
 
   // Navigate months
   const handlePrevMonth = () => {
+    triggerTactileFeedback('selection', 'softTap');
     if (month === 0) {
       if (year > 2026) {
         setYear(year - 1);
@@ -204,6 +249,7 @@ export function CalendarClient() {
   };
 
   const handleNextMonth = () => {
+    triggerTactileFeedback('selection', 'softTap');
     if (month === 11) {
       if (year < 2028) {
         setYear(year + 1);
@@ -217,6 +263,7 @@ export function CalendarClient() {
   };
 
   const handleJumpToday = () => {
+    triggerTactileFeedback('selection', 'softTap');
     const now = new Date();
     const curYear = now.getFullYear();
     const curMonth = now.getMonth();
@@ -226,6 +273,50 @@ export function CalendarClient() {
     setMonth(curMonth);
     setSelectedDateIso(`${validYear}-${String(curMonth + 1).padStart(2, '0')}-${String(curDay).padStart(2, '0')}`);
   };
+
+  // Keyboard arrow navigation between days
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const el = e.target as HTMLElement | null;
+      if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT')) return;
+
+      const curDayIndex = monthDays.findIndex((d) => d.dateIso === selectedDateIso);
+      if (curDayIndex === -1) return;
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        if (curDayIndex > 0) {
+          triggerTactileFeedback('selection', 'softTap');
+          setSelectedDateIso(monthDays[curDayIndex - 1].dateIso);
+        } else {
+          handlePrevMonth();
+        }
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        if (curDayIndex < monthDays.length - 1) {
+          triggerTactileFeedback('selection', 'softTap');
+          setSelectedDateIso(monthDays[curDayIndex + 1].dateIso);
+        } else {
+          handleNextMonth();
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (curDayIndex >= 7) {
+          triggerTactileFeedback('selection', 'softTap');
+          setSelectedDateIso(monthDays[curDayIndex - 7].dateIso);
+        }
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (curDayIndex + 7 < monthDays.length) {
+          triggerTactileFeedback('selection', 'softTap');
+          setSelectedDateIso(monthDays[curDayIndex + 7].dateIso);
+        }
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [monthDays, selectedDateIso]);
 
   const isDayMatchingFilter = (day: ComputedDay) => {
     if (activeFilter === 'all') return true;
@@ -249,10 +340,11 @@ export function CalendarClient() {
                 <button
                   key={y}
                   onClick={() => {
+                    triggerTactileFeedback('selection', 'softTap');
                     setYear(y);
                     setSelectedDateIso(`${y}-${String(month + 1).padStart(2, '0')}-01`);
                   }}
-                  className={`rounded-lg px-3 py-1.5 text-footnote font-semibold transition-all ${
+                  className={`rounded-lg min-h-[44px] px-3.5 py-2 text-footnote font-semibold transition-all ${
                     year === y
                       ? 'bg-dharma-saffron text-white shadow-sm'
                       : 'text-dharma-muted hover:text-dharma-text'
@@ -264,16 +356,16 @@ export function CalendarClient() {
             </div>
 
             {/* Prev / Next Month */}
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1.5">
               <button
                 onClick={handlePrevMonth}
                 disabled={year === 2026 && month === 0}
                 aria-label="Previous Month"
-                className="flex h-9 w-9 items-center justify-center rounded-xl border border-dharma-border bg-dharma-card text-dharma-text hover:bg-dharma-bg disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                className="flex h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-xl border border-dharma-border bg-dharma-card text-dharma-text hover:bg-dharma-bg disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
-                <ChevronLeft className="h-4 w-4" />
+                <ChevronLeft className="h-5 w-5" />
               </button>
-              <div className="min-w-[140px] text-center">
+              <div className="min-w-[120px] text-center">
                 <span className="text-body font-semibold text-dharma-text block">
                   {MONTH_NAMES[month].hi} {year}
                 </span>
@@ -285,22 +377,22 @@ export function CalendarClient() {
                 onClick={handleNextMonth}
                 disabled={year === 2028 && month === 11}
                 aria-label="Next Month"
-                className="flex h-9 w-9 items-center justify-center rounded-xl border border-dharma-border bg-dharma-card text-dharma-text hover:bg-dharma-bg disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                className="flex h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-xl border border-dharma-border bg-dharma-card text-dharma-text hover:bg-dharma-bg disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-5 w-5" />
               </button>
             </div>
 
             <button
               onClick={handleJumpToday}
-              className="rounded-xl border border-dharma-border bg-dharma-card px-3 py-1.5 text-footnote font-medium text-dharma-text hover:bg-dharma-bg transition-colors"
+              className="rounded-xl min-h-[44px] border border-dharma-border bg-dharma-card px-3.5 py-2 text-footnote font-medium text-dharma-text hover:bg-dharma-bg transition-colors"
             >
               आज (Today)
             </button>
           </div>
 
           {/* Location picker */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 max-w-full">
             <MapPin className="h-4 w-4 text-dharma-saffron flex-shrink-0" />
             <span className="text-footnote text-dharma-muted hidden sm:inline">स्थान (Location):</span>
             <select
@@ -309,7 +401,8 @@ export function CalendarClient() {
                 const found = PRESET_LOCATIONS.find((loc) => loc.id === e.target.value);
                 if (found) setLocation(found);
               }}
-              className="rounded-xl border border-dharma-border bg-dharma-bg px-3 py-1.5 text-footnote font-medium text-dharma-text focus:outline-none focus:ring-2 focus:ring-dharma-saffron"
+              style={{ maxWidth: '200px' }}
+              className="rounded-xl min-h-[44px] w-48 truncate border border-dharma-border bg-dharma-bg px-3 py-2 text-footnote font-medium text-dharma-text focus:outline-none focus:ring-2 focus:ring-dharma-saffron sm:w-auto"
             >
               {PRESET_LOCATIONS.map((loc) => (
                 <option key={loc.id} value={loc.id}>
@@ -336,8 +429,11 @@ export function CalendarClient() {
           ].map((item) => (
             <button
               key={item.id}
-              onClick={() => setActiveFilter(item.id as CalendarFilter)}
-              className={`rounded-full px-3 py-1 text-caption-1 font-medium transition-all flex items-center gap-1.5 ${
+              onClick={() => {
+                triggerTactileFeedback('selection', 'softTap');
+                setActiveFilter(item.id as CalendarFilter);
+              }}
+              className={`rounded-full min-h-[44px] px-3.5 py-2 text-caption-1 font-medium transition-all flex items-center gap-1.5 ${
                 activeFilter === item.id
                   ? 'bg-dharma-saffron text-white shadow-sm'
                   : 'bg-dharma-bg border border-dharma-border text-dharma-muted hover:text-dharma-text hover:border-dharma-border-strong'
@@ -351,19 +447,26 @@ export function CalendarClient() {
       </div>
 
       {/* ─── CALENDAR GRID ─────────────────────────────────────────────────── */}
-      <div className="rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-sm">
-        {/* Weekday Headers */}
-        <div className="grid grid-cols-7 border-b border-dharma-border bg-dharma-bg/60 text-center">
-          {WEEKDAYS.map((wd, i) => (
-            <div key={wd.shortEn} className={`py-2.5 px-1 sm:px-2 ${i === 0 ? 'text-rose-600 dark:text-rose-400' : 'text-dharma-text'}`}>
-              <div className="text-caption-1 font-semibold">{wd.shortHi}</div>
-              <div className="text-[10px] text-dharma-muted uppercase tracking-wider hidden sm:block">{wd.shortEn}</div>
-            </div>
-          ))}
-        </div>
+      <div className="rounded-2xl border border-dharma-border bg-dharma-card overflow-x-auto shadow-sm">
+        <div className="min-w-[500px] sm:min-w-0">
+          {/* Weekday Headers */}
+          <div
+            className="grid grid-cols-7 border-b border-dharma-border bg-dharma-bg/60 text-center"
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))' }}
+          >
+            {WEEKDAYS.map((wd, i) => (
+              <div key={wd.shortEn} className={`py-2.5 px-1 sm:px-2 ${i === 0 ? 'text-rose-600 dark:text-rose-400' : 'text-dharma-text'}`}>
+                <div className="text-caption-1 font-semibold">{wd.shortHi}</div>
+                <div className="text-[10px] text-dharma-muted uppercase tracking-wider hidden sm:block">{wd.shortEn}</div>
+              </div>
+            ))}
+          </div>
 
-        {/* Calendar Days */}
-        <div className="grid grid-cols-7 auto-rows-fr divide-x divide-y divide-dharma-border/60 bg-dharma-border/30">
+          {/* Calendar Days */}
+          <div
+            className="grid grid-cols-7 auto-rows-fr divide-x divide-y divide-dharma-border/60 bg-dharma-border/30"
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))' }}
+          >
           {/* Empty cells before month starts */}
           {Array.from({ length: firstDayWeekday }).map((_, i) => (
             <div key={`blank-${i}`} className="bg-dharma-bg/30 min-h-[92px] sm:min-h-[110px]" />
@@ -377,7 +480,12 @@ export function CalendarClient() {
             return (
               <button
                 key={day.dateIso}
-                onClick={() => setSelectedDateIso(day.dateIso)}
+                onClick={() => {
+                  triggerTactileFeedback('selection', 'softTap');
+                  setSelectedDateIso(day.dateIso);
+                }}
+                aria-pressed={isSelected}
+                aria-label={`${day.dayNumber} ${MONTH_NAMES[month].hi}, ${day.panchang.tithi.nameHi}, ${day.panchang.nakshatra.nameHi}`}
                 className={`relative flex flex-col justify-between p-1.5 sm:p-2.5 text-left transition-all min-h-[92px] sm:min-h-[110px] ${
                   isSelected
                     ? 'bg-saffron-50/70 dark:bg-saffron-950/30 ring-2 ring-inset ring-dharma-saffron z-10'
@@ -444,6 +552,7 @@ export function CalendarClient() {
             );
           })}
         </div>
+        </div>
       </div>
 
       {/* ─── DAY INSPECTOR PANEL ───────────────────────────────────────────── */}
@@ -468,8 +577,8 @@ export function CalendarClient() {
 
             <div className="flex items-center gap-2">
               <Link
-                href="/panchang/"
-                className="inline-flex items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-3.5 py-2 text-footnote font-semibold text-dharma-text hover:border-dharma-saffron hover:text-dharma-saffron transition-all"
+                href={`/panchang/?date=${selectedDay.dateIso}`}
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-4 py-2 text-footnote font-semibold text-dharma-text hover:border-dharma-saffron hover:text-dharma-saffron transition-all"
               >
                 <span>दैनिक पंचांग खोलें</span>
                 <ArrowRight className="h-3.5 w-3.5" />

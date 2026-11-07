@@ -321,8 +321,8 @@ export function PanchangCalendar() {
           </div>
         </div>
 
-        {/* View Switcher: Day View vs Week View */}
-        <div className="flex items-center justify-between border-t border-dharma-text/10 pt-4">
+        {/* View Switcher: Day View vs Week View vs Month Calendar */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-dharma-text/10 pt-4">
           <div className="apple-segmented">
             <button
               type="button"
@@ -331,7 +331,7 @@ export function PanchangCalendar() {
               className="flex items-center gap-2"
             >
               <Calendar className="h-3.5 w-3.5 text-saffron-600" />
-              <span>Day View (दैनिक दर्शन)</span>
+              <span>Day View (दैनिक)</span>
             </button>
             <button
               type="button"
@@ -340,8 +340,15 @@ export function PanchangCalendar() {
               className="flex items-center gap-2"
             >
               <CalendarDays className="h-3.5 w-3.5 text-indigo-500" />
-              <span>Week View (साप्ताहिक प्रवाह)</span>
+              <span>Week View (साप्ताहिक)</span>
             </button>
+            <Link
+              href={panchang ? `/panchang/calendar/?year=${panchang.isoDate.split('-')[0]}&month=${Number(panchang.isoDate.split('-')[1])}&date=${panchang.isoDate}` : '/panchang/calendar/'}
+              className="flex items-center gap-2 text-dharma-text hover:text-dharma-saffron transition-colors"
+            >
+              <Moon className="h-3.5 w-3.5 text-amber-500" />
+              <span>Month Calendar (मासिक)</span>
+            </Link>
           </div>
 
           <div className="hidden sm:flex items-center gap-2 text-xs text-dharma-muted">
