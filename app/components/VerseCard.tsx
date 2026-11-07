@@ -562,13 +562,18 @@ export function VerseCard({
                           onHighlight(c);
                           setPickerOpen(false);
                         }}
-                        className={`h-7 w-7 rounded-full ${HIGHLIGHTS[c].swatch} transition hover:scale-110 ${
-                          highlight === c ? 'ring-2 ring-offset-2 ring-offset-dharma-card ring-dharma-text/60' : ''
-                        }`}
+                        className="flex h-9 w-9 items-center justify-center rounded-full transition hover:scale-110"
                         aria-pressed={highlight === c}
                         aria-label={`${HIGHLIGHTS[c].label}${highlight === c ? ' (हटाने के लिए दबाएँ)' : ''}`}
                         title={HIGHLIGHTS[c].label}
-                      />
+                      >
+                        <span
+                          aria-hidden="true"
+                          className={`h-6 w-6 rounded-full ${HIGHLIGHTS[c].swatch} ${
+                            highlight === c ? 'ring-2 ring-offset-2 ring-offset-dharma-card ring-dharma-text/60' : ''
+                          }`}
+                        />
+                      </button>
                     ))}
                     {highlight && (
                       <button
@@ -577,11 +582,13 @@ export function VerseCard({
                           onHighlight(highlight);
                           setPickerOpen(false);
                         }}
-                        className="flex h-7 w-7 items-center justify-center rounded-full border border-dharma-border text-dharma-muted hover:text-dharma-text"
+                        className="flex h-9 w-9 items-center justify-center rounded-full text-dharma-muted hover:text-dharma-text"
                         aria-label="हाइलाइट हटाएँ (Remove highlight)"
                         title="हटाएँ"
                       >
-                        <X className="h-3.5 w-3.5" />
+                        <span className="flex h-6 w-6 items-center justify-center rounded-full border border-dharma-border">
+                          <X className="h-3.5 w-3.5" />
+                        </span>
                       </button>
                     )}
                   </motion.div>
