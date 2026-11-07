@@ -134,11 +134,11 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
                   {v.padaccheda}
                 </p>
               )}
-              <dl className="grid gap-2 sm:grid-cols-2">
+              <dl className="grid gap-1.5 sm:grid-cols-2">
                 {v.wordMeanings.map((w) => (
-                  <div key={w.sanskrit} className="rounded-xl border border-dharma-border/70 bg-dharma-bg/60 p-2.5 text-sm">
-                    <dt lang="sa" className="font-devanagari font-bold text-dharma-text">{w.sanskrit}</dt>
-                    <dd lang="hi" className="mt-0.5 font-devanagari text-xs text-dharma-muted">{w.hindi}</dd>
+                  <div key={w.sanskrit} className="rounded-lg border border-dharma-border/70 bg-dharma-bg/60 p-2 text-xs">
+                    <dt lang="sa" className="font-devanagari font-semibold text-dharma-text">{w.sanskrit}</dt>
+                    <dd lang="hi" className="mt-0.5 font-devanagari text-[11px] text-dharma-muted">{w.hindi}</dd>
                   </div>
                 ))}
               </dl>

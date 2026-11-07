@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { SiteNav } from "@/app/components/SiteNav";
+import { SiteFooter } from "@/app/components/SiteFooter";
 import { getSiteShellData } from "@/lib/site-shell-data";
 import { DEFAULT_THEME, FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
@@ -227,6 +228,12 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Dharma Granth — Daily Sacred Verse &amp; Wisdom"
+          href="/feed.xml"
+        />
+        <link
           rel="preload"
           href="/logo-splash.webp"
           as="image"
@@ -257,6 +264,7 @@ export default function RootLayout({
             <ErrorBoundary name="Main Content">
               <PageTransition>{children}</PageTransition>
             </ErrorBoundary>
+            <SiteFooter />
           </div>
           <ErrorBoundary name="Prāṇa Capsule">
             <PranaCapsule />

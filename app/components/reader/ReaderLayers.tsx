@@ -219,7 +219,7 @@ export { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 const dash = (s: string) => s.replace(/[\s|।॥0-9.]+$/, '');
 
 const aidToggle =
-  'focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-3.5 py-1 text-footnote text-dharma-text transition hover:bg-dharma-text/[0.1] aria-expanded:bg-dharma-saffron/15 aria-expanded:text-dharma-saffron';
+  'focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-full border border-separator/60 bg-dharma-text/[0.06] px-4 py-2 text-footnote font-medium text-dharma-text transition hover:bg-dharma-text/[0.1] active:scale-[0.98] aria-expanded:border-dharma-saffron/40 aria-expanded:bg-dharma-saffron/15 aria-expanded:text-dharma-saffron';
 
 /* ── The layers: root shloka, then the अर्थ → व्याख्या → विज्ञान tree ── */
 
@@ -283,11 +283,12 @@ export function ReaderLayers({
   // until then the layer would just repeat the text above around an "add commentary" notice.
   const hasCommentary = (COMMENTARIES[verseKey(scriptureId, chapterId, verse.number)]?.length ?? 0) > 0;
   const showTradition = settings.showCommentary && !isQuick && !settings.liteMode && hasCommentary;
+  const showMarma = Boolean(insight?.marma && settings.showCommentary && !settings.liteMode);
   // Sacred reading order (lib/sacred-reading-order): one Vyakhya branch carries
-  // the explanation, the English commentary and the traditional bhashya together;
+  // the core shift (marma), the explanation, the English commentary and the traditional bhashya together;
   // Modern Context carries the lesson and the research note; Reflection carries
   // only the चिंतन प्रश्न. Gates are unchanged from the old Vigyan branch.
-  const hasVyakhya = settings.showCommentary && (Boolean(verse.explanation) || Boolean(verse.commentary) || showTradition);
+  const hasVyakhya = settings.showCommentary && (showMarma || Boolean(verse.explanation) || Boolean(verse.commentary) || showTradition);
   const modernParsed = verse.reflection ? parseModernContext(verse.reflection) : null;
   const showModernLesson = Boolean(!settings.liteMode && verse.reflection && modernParsed
     && (!modernParsed.hasStructuredFormat || modernParsed.contextText || modernParsed.applicationText));
@@ -397,22 +398,6 @@ export function ReaderLayers({
           </div>
         )}
       </Layer>
-
-      {/* मर्म: the reviewed one-line core shift, when this verse has one. It sits after the
-          Sanskrit so the reader meets scripture before any editorial line. */}
-      {insight?.marma && settings.showCommentary && !settings.liteMode && (
-        <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400">
-          <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
-            <span lang="hi">मर्म</span>
-            <span aria-hidden="true">·</span>
-            <span lang="en">The Core Shift</span>
-            <span className="normal-case tracking-normal text-dharma-muted">· Editorial, not scripture</span>
-          </figcaption>
-          <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text sm:text-xl">
-            {insight.marma}
-          </blockquote>
-        </figure>
-      )}
 
       {/* Word by word: a reading aid for the shloka, kept apart from the व्याख्या and
           hidden by default. In the HTML either way, so crawlers and no-JS readers get it. */}
@@ -607,6 +592,19 @@ export function ReaderLayers({
             defaultOpen: true,
             content: (
               <div className="space-y-4">
+                {showMarma && insight?.marma && (
+                  <figure className="border-l-4 border-saffron-500 pl-4 dark:border-saffron-400" data-testid="reader-marma">
+                    <figcaption className="mb-1 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-saffron-800 dark:text-saffron-300">
+                      <span lang="hi">मर्म</span>
+                      <span aria-hidden="true">·</span>
+                      <span lang="en">The Core Shift</span>
+                      <span className="normal-case tracking-normal text-dharma-muted">· Editorial, not scripture</span>
+                    </figcaption>
+                    <blockquote lang="en" className="font-serif text-lg font-semibold leading-snug text-dharma-text sm:text-xl">
+                      {insight.marma}
+                    </blockquote>
+                  </figure>
+                )}
                 {verse.explanation && (
                   <Layer
                     id="layer-explanation"

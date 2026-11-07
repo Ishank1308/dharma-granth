@@ -20,24 +20,19 @@ import {
   Maximize2,
   Menu,
   Minimize2,
-  Network,
-  PenLine,
   Search,
   Share2,
   SlidersHorizontal,
-  StickyNote,
   Sun,
   X,
   MoreHorizontal,
 } from 'lucide-react';
-import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
 import { THEMES, THEME_NAMES, useTheme } from '@/app/components/ThemeProvider';
 import { openGlobalSearch } from '@/lib/search-events';
 import { formatVerseRef, toAsciiDigits } from '@/lib/verse-format';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import { EmbedVerseDialog } from '@/app/components/EmbedVerseDialog';
-import { useStudyProgress } from '@/lib/useStudyProgress';
 import { useReaderSettings } from '@/lib/useReaderSettings';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import {
@@ -64,12 +59,6 @@ import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
 import { logActivity } from '@/lib/activity-log';
 import { isHistoryPaused } from '@/lib/reading-history';
-import type { PersonalStudyReference } from '@/lib/study/types';
-
-const JournalEditorModal = dynamic(
-  () => import('@/components/study/JournalEditorModal').then((module) => module.JournalEditorModal),
-  { ssr: false },
-);
 
 export interface ReaderChapter {
   id: number;
@@ -137,22 +126,12 @@ export function VerseReader(props: VerseReaderProps) {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const { settings, update, reset, reducedMotion } = useReaderSettings();
-  const { getNote, setNote } = useStudyProgress();
 
   const ref: ReaderRef = useMemo(
     () => ({ scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, url: pageUrl }),
     [scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, pageUrl],
   );
   const label = verseReference(ref, verse);
-  const journalReference: PersonalStudyReference = useMemo(() => ({
-    scriptureId,
-    scriptureTitle,
-    chapterId,
-    verseId: verse.number,
-    canonicalReference: label,
-    sanskritSnippet: (verse.sanskrit ?? '').slice(0, 2_000),
-    translationSnippet: (verse.hindi ?? verse.translation ?? '').slice(0, 2_000),
-  }), [scriptureId, scriptureTitle, chapterId, verse.number, verse.sanskrit, verse.hindi, verse.translation, label]);
 
   /* Reader mode: the site nav and companion dock step aside (see globals.css). The reader's own
      header keeps a way out: back to the chapter, the site menu and the theme. */
@@ -162,8 +141,7 @@ export function VerseReader(props: VerseReaderProps) {
   }, []);
 
   /* ── Dialog state ── */
-  const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'note' | 'embed' | 'site'>(null);
-  const [journalOpen, setJournalOpen] = useState(false);
+  const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'embed' | 'site'>(null);
   const close = useCallback(() => setDialog(null), []);
 
   /* ── Toast ── */
@@ -253,8 +231,6 @@ export function VerseReader(props: VerseReaderProps) {
 
   /* Less common verse actions, folded under "More". */
   const [moreActions, setMoreActions] = useState(false);
-  /* ── Interactive Verse Relationship Network Modal ── */
-  const [showNetworkModal, setShowNetworkModal] = useState(false);
 
   /* ── Mobile Touch Swipe Gesture Engine ── */
   const { gestureState, handlers } = useSwipeGesture({
@@ -313,19 +289,6 @@ export function VerseReader(props: VerseReaderProps) {
     say('Verse downloaded');
   };
 
-  /* ── Private note (same store as the rest of the app) ── */
-  const noteText = getNote(scriptureId, chapterId, String(verse.number))?.text ?? '';
-  const [draft, setDraft] = useState('');
-  const openNote = () => {
-    setDraft(noteText);
-    setDialog('note');
-  };
-  const saveNote = () => {
-    setNote(scriptureId, chapterId, String(verse.number), draft.trim());
-    close();
-    say(draft.trim() ? 'Note saved on this device' : 'Note removed');
-  };
-
   /* ── Verse picker ── */
   const [pick, setPick] = useState('');
   const visibleVerses = pick.trim() ? verses.filter((v) => String(v.number).startsWith(pick.trim())) : verses;
@@ -337,8 +300,8 @@ export function VerseReader(props: VerseReaderProps) {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       const el = e.target as HTMLElement | null;
       if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT' || el.isContentEditable)) return;
-      if (e.key === 'ArrowLeft' && prev) router.push(prev.href);
-      if (e.key === 'ArrowRight' && next) router.push(next.href);
+      if ((e.key === 'ArrowLeft' || e.key === 'h' || e.key === 'k') && prev) router.push(prev.href);
+      if ((e.key === 'ArrowRight' || e.key === 'l' || e.key === 'j') && next) router.push(next.href);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -376,9 +339,9 @@ export function VerseReader(props: VerseReaderProps) {
     const hi = dir === 'prev' ? 'पिछला' : 'अगला';
     const base =
       size === 'bar'
-        ? 'min-h-[48px] px-3'
-        : 'min-h-[52px] px-4';
-    if (!target) return <span className={size === 'bar' ? 'w-[88px]' : 'w-40'} aria-hidden="true" />;
+        ? 'min-h-[48px] px-2.5 sm:px-3 gap-1.5 sm:gap-2.5'
+        : 'min-h-[52px] px-4 gap-2.5';
+    if (!target) return <span className={size === 'bar' ? 'w-16 shrink-0' : 'w-40'} aria-hidden="true" />;
     const crosses = otherChapter(target.href);
     const hiLabel = crosses != null ? (dir === 'prev' ? 'पिछला अध्याय' : 'अगला अध्याय') : hi;
     const verseLine = crosses != null
@@ -392,12 +355,12 @@ export function VerseReader(props: VerseReaderProps) {
         rel={dir}
         onClick={() => triggerTactileFeedback('selection', 'click')}
         aria-label={crosses != null ? `${hiLabel}, श्लोक ${crosses}.${target.number}` : `${text} verse, ${target.number}`}
-        className={`focus-ring inline-flex items-center gap-2.5 rounded-pill border border-separator/60 bg-fill-quaternary text-label-primary transition duration-fast hover:border-separator-strong hover:bg-fill-tertiary active:scale-97 ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
+        className={`focus-ring inline-flex items-center rounded-pill border border-separator/60 bg-fill-quaternary text-label-primary transition duration-fast hover:border-separator-strong hover:bg-fill-tertiary active:scale-97 ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
       >
         <Icon className="h-4 w-4 shrink-0 text-tint" aria-hidden="true" />
         <span className="leading-tight">
           <span className="block text-caption font-medium text-label-secondary">
-            <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null ? ` · ${text}` : ''}
+            <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null && size !== 'bar' ? ` · ${text}` : ''}
           </span>{' '}
           <span lang="hi" className="font-devanagari text-subhead font-semibold">{verseLine}</span>
         </span>
@@ -635,11 +598,6 @@ export function VerseReader(props: VerseReaderProps) {
               {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
               {saved ? 'Saved' : 'Save'}
             </button>
-            <button type="button" onClick={openNote} className={actionBtn}>
-              <StickyNote className="h-4 w-4" aria-hidden="true" />
-              {noteText ? 'Edit note' : 'Note'}
-              {noteText && <span className="h-1.5 w-1.5 rounded-full bg-saffron-600" aria-label="has a note" />}
-            </button>
             <button type="button" onClick={onCopy} className={actionBtn}>
               <Copy className="h-4 w-4" aria-hidden="true" /> Copy
             </button>
@@ -681,24 +639,9 @@ export function VerseReader(props: VerseReaderProps) {
             data-focus-hide
             className={`mt-2 flex-wrap gap-2 ${moreActions ? 'flex' : 'hidden'}`}
           >
-            <button type="button" onClick={() => setJournalOpen(true)} className={actionBtn}>
-              <PenLine className="h-4 w-4" aria-hidden="true" /> Reflect privately
-            </button>
             <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
               <ArrowRight className="h-4 w-4" aria-hidden="true" /> Open context
             </Link>
-            <button
-              type="button"
-              onClick={() => {
-                triggerTactileFeedback('selection', 'click');
-                setShowNetworkModal(true);
-              }}
-              className={actionBtn}
-              aria-label="Open verse relationship network"
-            >
-              <Network className="h-4 w-4 text-purple-600 dark:text-purple-400" aria-hidden="true" />
-              <span>श्लोक संबंध (Network)</span>
-            </button>
             <button type="button" onClick={onDownloadImage} className={actionBtn} aria-label="Download Image">
               <Download className="h-4 w-4" aria-hidden="true" /> Download Image
             </button>
@@ -710,13 +653,6 @@ export function VerseReader(props: VerseReaderProps) {
             </button>
           </div>
 
-          {noteText && (
-            <section aria-label="Your private note" className="mt-5 rounded-2xl border border-dashed border-dharma-border bg-dharma-card/60 p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-dharma-muted">Your note · private to this device</p>
-              <p className="whitespace-pre-line text-sm text-dharma-text">{noteText}</p>
-            </section>
-          )}
-
           {/* A deliberate stopping point: the reader may continue, note, or simply stop. */}
           <section aria-labelledby="verse-pause-h" data-focus-hide className="mt-8 rounded-[18px] bg-dharma-card p-5 text-subhead">
             <h2 id="verse-pause-h" className="text-base font-semibold text-dharma-text">
@@ -724,9 +660,6 @@ export function VerseReader(props: VerseReaderProps) {
             </h2>
             <p className="mt-1 text-dharma-text-secondary">You can stop at this verse. Your place in this chapter is kept on this device, so Continue reading brings you back here.</p>
             <div className="mt-3 flex flex-wrap gap-2">
-              <button type="button" onClick={openNote} className={actionBtn}>
-                <StickyNote className="h-4 w-4" aria-hidden="true" /> {noteText ? 'Edit your note' : 'Save a note'}
-              </button>
               {next && (
                 <Link href={next.href} rel="next" className={actionBtn}>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" /> Next verse
@@ -747,8 +680,6 @@ export function VerseReader(props: VerseReaderProps) {
           <ul className="mt-2 space-y-0.5 text-sm">
             {[
               ['layer-sanskrit', 'Original verse'],
-              ['understand-h', '12-Layer Understanding'],
-              ['verse-graph', 'Verse Network & Graph'],
               ['layer-tradition', 'Traditional commentary'],
               ['layer-sources', 'Sources'],
             ].map(([id, text]) => (
@@ -778,7 +709,7 @@ export function VerseReader(props: VerseReaderProps) {
 
         {/* Mobile: sticky bottom verse navigation (the page has matching bottom padding, so it never covers the verse) */}
         <nav aria-label="Verse navigation" className="apple-bar fixed inset-x-0 bottom-0 z-40 border-t sm:hidden">
-          <div className="flex items-center justify-between gap-2 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2">
+          <div className="flex items-center justify-between gap-1.5 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 sm:gap-2 sm:px-3">
             {navLink(prev, 'prev', 'bar')}
             <button
               type="button"
@@ -787,10 +718,10 @@ export function VerseReader(props: VerseReaderProps) {
                 setCarouselOpen(true);
               }}
               aria-haspopup="dialog"
-              className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-control px-2 text-center transition active:scale-97"
+              className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-control px-1 text-center transition active:scale-97 sm:px-2"
             >
-              <span lang="hi" className="font-devanagari text-subhead font-bold text-label-primary">श्लोक {toAsciiDigits(verse.number)}</span>
-              <span className="text-caption text-tint">{index + 1} / {total} · माला खोलें</span>
+              <span lang="hi" className="truncate max-w-full font-devanagari text-subhead font-bold text-label-primary">श्लोक {toAsciiDigits(verse.number)}</span>
+              <span className="truncate max-w-full text-caption text-tint">{index + 1} / {total} · माला</span>
             </button>
             {navLink(next, 'next', 'bar')}
           </div>
@@ -922,32 +853,6 @@ export function VerseReader(props: VerseReaderProps) {
           {visibleVerses.length === 0 && <p className="mt-3 text-sm text-dharma-muted">No verse starts with “{pick}”.</p>}
         </ReaderDialog>
 
-        <ReaderDialog
-          open={dialog === 'note'}
-          onClose={close}
-          title="Private note"
-          titleHi="निजी टिप्पणी"
-          icon={<StickyNote className="h-5 w-5 text-saffron-700" aria-hidden="true" />}
-          footer={
-            <div className="flex justify-end gap-2">
-              <button type="button" onClick={close} className="focus-ring min-h-[44px] rounded-xl px-4 text-sm font-semibold text-dharma-muted hover:text-dharma-text">Cancel</button>
-              <button type="button" onClick={saveNote} className="focus-ring min-h-[44px] rounded-xl bg-saffron-700 px-5 text-sm font-semibold text-white hover:bg-saffron-800">Save note</button>
-            </div>
-          }
-        >
-          <label htmlFor="reader-note" className="mb-2 block text-sm text-dharma-muted">
-            About {label}. Saved only in this browser; clear the text and save to remove it.
-          </label>
-          <textarea
-            id="reader-note"
-            value={draft}
-            maxLength={2000}
-            rows={7}
-            onChange={(e) => setDraft(e.target.value)}
-            className="w-full resize-y rounded-xl border border-dharma-border bg-dharma-bg p-3 text-base text-dharma-text outline-none focus:border-saffron-600 focus:ring-2 focus:ring-saffron-600/25"
-          />
-        </ReaderDialog>
-
         <EmbedVerseDialog
           open={dialog === 'embed'}
           onClose={close}
@@ -959,48 +864,12 @@ export function VerseReader(props: VerseReaderProps) {
           onNotice={say}
         />
 
-        {/* Interactive Verse Relationship Modal */}
-        {showNetworkModal && (
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label="Verse Relationship Network Modal"
-            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
-          >
-            <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl border border-dharma-border bg-dharma-card p-4 sm:p-8 shadow-2xl">
-              <button
-                type="button"
-                onClick={() => setShowNetworkModal(false)}
-                className="absolute right-4 top-4 rounded-full p-2 text-dharma-muted hover:bg-dharma-panel hover:text-dharma-text transition"
-                aria-label="Close relationship graph"
-              >
-                <X className="h-5 w-5" />
-              </button>
-              <VerseGraphNetwork
-                scriptureId={scriptureId}
-                chapterId={chapterId}
-                verseId={verse.number}
-                currentVerse={verse}
-              />
-            </div>
-          </div>
-        )}
-
         {/* Sacred Share Card Modal (9:16 Story / 1:1 Post / WhatsApp Card) */}
         <SacredShareModal
           isOpen={showShareModal}
           onClose={() => setShowShareModal(false)}
           data={shareData}
         />
-
-        {journalOpen && (
-          <JournalEditorModal
-            isOpen
-            onClose={() => setJournalOpen(false)}
-            linkedReference={journalReference}
-            onSaved={() => say('Private reflection saved on this device')}
-          />
-        )}
 
         {/* Mobile Tactile Verse Carousel Drawer */}
         <MobileVerseCarousel

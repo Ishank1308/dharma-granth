@@ -67,6 +67,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelHi: 'शोक और वियोग',
     searchTerms: ['bereavement', 'heartbreak', 'loss', 'शोक', 'वियोग'],
     quickPick: true,
+    seo: {
+      titleHi: 'शोक और वियोग',
+      gitaTitle: 'What the Bhagavad Gita says about grief and loss',
+      libraryTitle: 'Study passages on grief and loss',
+    },
   },
   {
     slug: 'duty-and-decision-making',
@@ -75,6 +80,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelHi: 'कठिन निर्णय',
     searchTerms: ['choices', 'duty', 'dilemma', 'कर्तव्य', 'द्वंद्व'],
     quickPick: true,
+    seo: {
+      titleHi: 'कठिन निर्णय और कर्तव्य-संकट',
+      gitaTitle: 'What the Bhagavad Gita says about duty and tough decisions',
+      libraryTitle: 'Study passages on duty and decision-making',
+    },
   },
   {
     slug: 'discipline',
@@ -122,6 +132,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelHi: 'पारिवारिक दायित्व',
     searchTerms: ['family', 'caregiving', 'परिवार', 'गृहस्थ'],
     quickPick: true,
+    seo: {
+      titleHi: 'पारिवारिक दायित्व और गृहस्थ धर्म',
+      gitaTitle: 'What the Bhagavad Gita says about family duties',
+      libraryTitle: 'Study passages on family responsibilities and Grihastha dharma',
+    },
   },
   {
     slug: 'relationships',
@@ -130,6 +145,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelHi: 'संबंध और अपनत्व',
     searchTerms: ['conflict', 'communication', 'loneliness', 'belonging', 'connection', 'सम्बन्ध', 'संवाद', 'अपनत्व'],
     quickPick: true,
+    seo: {
+      titleHi: 'संबंध, सहानुभूति और अपनत्व',
+      gitaTitle: 'What the Bhagavad Gita says about relationships',
+      libraryTitle: 'Study passages on relationships, empathy and harmony',
+    },
   },
   {
     slug: 'devotion',
@@ -138,6 +158,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelHi: 'श्रद्धा और भक्ति के प्रश्न',
     searchTerms: ['spiritual dryness', 'faith', 'भक्ति', 'श्रद्धा'],
     quickPick: true,
+    seo: {
+      titleHi: 'श्रद्धा और भक्ति के प्रश्न',
+      gitaTitle: 'What the Bhagavad Gita says about devotion and surrender',
+      libraryTitle: 'Study passages on devotion, faith and surrender',
+    },
   },
   {
     slug: 'self-knowledge',
@@ -146,6 +171,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelHi: 'मैं कौन हूँ? आत्मज्ञान',
     searchTerms: ['identity', 'self', 'आत्मस्वरूप', 'पहचान'],
     quickPick: true,
+    seo: {
+      titleHi: 'आत्मज्ञान और आत्मस्वरूप',
+      gitaTitle: 'What the Bhagavad Gita says about self-knowledge',
+      libraryTitle: 'Study passages on self-knowledge and the true Self',
+    },
   },
   {
     slug: 'meaning-of-life',
@@ -166,6 +196,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelEn: 'Failure and setbacks',
     labelHi: 'असफलता और बाधाएँ',
     searchTerms: ['setback', 'disappointment', 'असफलता', 'विघ्न'],
+    seo: {
+      titleHi: 'असफलता और बाधाएँ',
+      gitaTitle: 'What the Bhagavad Gita says about handling failure and setbacks',
+      libraryTitle: 'Study passages on overcoming failure and disappointment',
+    },
   },
   {
     slug: 'skill-in-work',
@@ -173,6 +208,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelEn: 'Skill in action',
     labelHi: 'कर्म-कौशल',
     searchTerms: ['work', 'productivity', 'action', 'कर्म में कुशलता'],
+    seo: {
+      titleHi: 'कर्म-कौशल (योगः कर्मसु कौशलम्)',
+      gitaTitle: 'What the Bhagavad Gita says about skill in action and work',
+      libraryTitle: 'Study passages on skill in action and selfless work',
+    },
   },
   {
     slug: 'success',
@@ -192,6 +232,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelEn: 'Attachment and care',
     labelHi: 'आसक्ति और अनुराग',
     searchTerms: ['attachment', 'clinging', 'आसक्ति', 'मोह'],
+    seo: {
+      titleHi: 'आसक्ति और मोह',
+      gitaTitle: 'What the Bhagavad Gita says about attachment and desire',
+      libraryTitle: 'Study passages on attachment, desire and possessiveness',
+    },
   },
   {
     slug: 'detachment',
@@ -199,6 +244,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelEn: 'Non-attachment',
     labelHi: 'अनासक्ति',
     searchTerms: ['detachment', 'letting go', 'वैराग्य', 'अनासक्ति'],
+    seo: {
+      titleHi: 'अनासक्ति और वैराग्य',
+      gitaTitle: 'What the Bhagavad Gita says about non-attachment and freedom',
+      libraryTitle: 'Study passages on non-attachment and mental freedom',
+    },
   },
   {
     slug: 'death',
@@ -206,6 +256,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelEn: 'Life, death, and the Self',
     labelHi: 'जीवन, मृत्यु और आत्मा',
     searchTerms: ['mortality', 'death', 'मृत्यु', 'आत्मा'],
+    seo: {
+      titleHi: 'जीवन, मृत्यु और अमर आत्मा',
+      gitaTitle: 'What the Bhagavad Gita says about death and the eternal soul',
+      libraryTitle: 'Study passages on death, transition and the immortal Self',
+    },
   },
   {
     slug: 'contentment',
@@ -213,6 +268,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelEn: 'Contentment and gratitude',
     labelHi: 'संतोष और कृतज्ञता',
     searchTerms: ['gratitude', 'satisfaction', 'संतोष', 'कृतज्ञता'],
+    seo: {
+      titleHi: 'संतोष और कृतज्ञता',
+      gitaTitle: 'What the Bhagavad Gita says about contentment and gratitude',
+      libraryTitle: 'Study passages on contentment, peace and inner joy',
+    },
   },
   {
     slug: 'self-control',
@@ -220,6 +280,11 @@ export const LIFE_DISCOVERY_INTENTS: readonly LifeDiscoveryIntent[] = [
     labelEn: 'Self-control',
     labelHi: 'आत्मसंयम',
     searchTerms: ['self regulation', 'restraint', 'आत्मसंयम', 'संयम'],
+    seo: {
+      titleHi: 'आत्मसंयम और इंद्रिय-निग्रह',
+      gitaTitle: 'What the Bhagavad Gita says about self-control and mastery',
+      libraryTitle: 'Study passages on self-control and sensory discipline',
+    },
   },
 ] as const;
 

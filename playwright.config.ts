@@ -9,6 +9,8 @@ const PORT = process.env.PORT || '4180';
 
 export default defineConfig({
   testDir: 'tests',
+  // Browser specs only: *.test.* files are node:test unit tests (npm run test:*).
+  testMatch: '**/*.spec.ts',
   timeout: 60_000,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? 'github' : 'list',

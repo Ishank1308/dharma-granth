@@ -166,7 +166,7 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   brahmandpuran: 5,
   brahmapuran: 4,
   brihadaranyaka: 5, // genuine repeats in the source (e.g. the Maitreyi dialogue in II.4 and IV.5) after the 2026-10 rebuild
-  chandogya: 26,
+  chandogya: 10,
   devibhagavat: 3,
   garudpurana: 9,
   harivanshpuran: 24, // genealogical lists in the Harivamsa repeat whole shlokas in two adhyayas (e.g. 26.11 = 27.2)
@@ -180,12 +180,12 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   matsyapuran: 27,
   naradapuran: 50,
   narasimhapuran: 13,
-  ramayana: 57,
+  ramayana: 7,
   ramcharitmanas: 0,
   rigveda: 27, // whole verses the Saṃhitā repeats across mandalas (1.23.21–23 recur as 10.9.7–9)
   samaveda: 194, // the Uttarārcika repeats many Pūrvārcika mantras in the source (full 1,873-mantra text)
   shandilyabhaktisutra: 0,
-  shivpurana: 36,
+  shivpurana: 31,
   skandapuran: 16,
   taittiriya: 0,
   vamanpuran: 4,

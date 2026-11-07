@@ -4,6 +4,7 @@ import { useId, type ReactNode } from 'react';
 import { RotateCcw, SlidersHorizontal } from 'lucide-react';
 import { THEME_NAMES, type Theme } from '@/app/components/ThemeProvider';
 import type { ContrastPref, LineSpacing, NumberFormatPref, ReaderLanguagePref, ReaderSettings, ReadingWidth, SizeStep } from '@/lib/useReaderSettings';
+import { triggerTactileFeedback } from '@/lib/haptics';
 import { ReaderControlBar } from './ReaderControlBar';
 import { ReaderDialog } from './ReaderDialog';
 
@@ -32,9 +33,9 @@ function Segmented<T extends string>({
   const name = useId();
   return (
     <fieldset>
-      <legend className="mb-2 text-sm font-semibold text-dharma-text">
+      <legend className="mb-2 text-subhead font-semibold text-label-primary">
         {legend}
-        <span lang="hi" className="ml-2 font-devanagari text-[0.85rem] font-normal text-dharma-muted">
+        <span lang="hi" className="ml-2 font-devanagari text-footnote font-normal text-label-secondary">
           {legendHi}
         </span>
       </legend>
@@ -46,12 +47,15 @@ function Segmented<T extends string>({
               name={name}
               value={o.id}
               checked={value === o.id}
-              onChange={() => onChange(o.id)}
+              onChange={() => {
+                triggerTactileFeedback('selection', 'softTap');
+                onChange(o.id);
+              }}
               className="peer sr-only"
             />
-            <span className="flex min-h-[44px] flex-col items-center justify-center rounded-xl border border-dharma-border bg-dharma-bg px-2 py-1.5 text-center text-sm font-semibold text-dharma-text transition peer-checked:border-saffron-700 peer-checked:bg-saffron-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-saffron-500 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-dharma-card hover:border-saffron-400">
-              {o.label}
-              {o.hint && <span className="text-[11px] font-normal opacity-80">{o.hint}</span>}
+            <span className="flex min-h-[44px] flex-col items-center justify-center rounded-xl border border-separator/80 bg-surface-raised px-2.5 py-1.5 text-center text-subhead font-semibold text-label-secondary transition-all peer-checked:border-separator peer-checked:bg-surface-elevated peer-checked:text-label-primary peer-checked:shadow-xs peer-checked:ring-1 peer-checked:ring-accent/40 peer-focus-visible:ring-2 peer-focus-visible:ring-accent peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background hover:bg-fill-quaternary hover:text-label-primary">
+              <span>{o.label}</span>
+              {o.hint && <span className="text-caption-2 font-normal text-label-tertiary">{o.hint}</span>}
             </span>
           </label>
         ))}
@@ -72,12 +76,20 @@ function Toggle({
   onChange: (v: boolean) => void;
 }) {
   return (
-    <label className="flex min-h-[48px] cursor-pointer items-center justify-between gap-4 rounded-xl px-1 py-1.5">
+    <label className="flex min-h-[48px] cursor-pointer items-center justify-between gap-4 rounded-xl px-2.5 py-1.5 transition-colors hover:bg-fill-quaternary/50">
       <span className="min-w-0">
-        <span className="block text-sm font-medium text-dharma-text">{label}</span>
-        {hint && <span className="block text-xs text-dharma-muted">{hint}</span>}
+        <span className="block text-subhead font-medium text-label-primary">{label}</span>
+        {hint && <span className="block text-caption-1 text-label-secondary">{hint}</span>}
       </span>
-      <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} className="h-5 w-5 shrink-0 rounded accent-saffron-700" />
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => {
+          triggerTactileFeedback('selection', 'softTap');
+          onChange(e.target.checked);
+        }}
+        className="h-5 w-5 shrink-0 rounded accent-accent"
+      />
     </label>
   );
 }
@@ -167,26 +179,29 @@ export function ReaderSettingsPanel({
       footer={
         <button
           type="button"
-          onClick={reset}
-          className="focus-ring inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl border border-dharma-border text-sm font-semibold text-dharma-muted transition hover:text-dharma-text"
+          onClick={() => {
+            triggerTactileFeedback('selection', 'softTap');
+            reset();
+          }}
+          className="focus-ring inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-pill border border-separator/80 bg-surface-raised text-subhead font-semibold text-label-secondary transition hover:bg-fill-quaternary hover:text-label-primary shadow-xs"
         >
           <RotateCcw className="h-4 w-4" aria-hidden="true" /> Reset to defaults
         </button>
       }
     >
       <div className="space-y-6">
-        <div aria-hidden="true" className="rounded-2xl border border-dharma-border bg-dharma-bg p-4 text-center">
-          <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-dharma-muted">Preview</p>
-          <p lang="sa" className={`font-devanagari text-dharma-text ${PREVIEW_SIZE[settings.sanskritSize]} ${PREVIEW_LEADING[settings.lineSpacing]}`}>
+        <div aria-hidden="true" className="rounded-card border border-separator/80 bg-surface-raised p-4 text-center shadow-xs">
+          <p className="mb-1 text-caption-2 font-semibold uppercase tracking-wider text-label-tertiary">Preview · पूर्वावलोकन</p>
+          <p lang="sa" className={`font-devanagari text-label-primary ${PREVIEW_SIZE[settings.sanskritSize]} ${PREVIEW_LEADING[settings.lineSpacing]}`}>
             कर्मण्येवाधिकारस्ते<br />मा फलेषु कदाचन ।
           </p>
         </div>
 
         {scope === 'verse' && (
           <fieldset>
-            <legend className="mb-2 text-sm font-semibold text-dharma-text">
+            <legend className="mb-2 text-subhead font-semibold text-label-primary">
               Reading level
-              <span lang="hi" className="ml-2 font-devanagari text-[0.85rem] font-normal text-dharma-muted">
+              <span lang="hi" className="ml-2 font-devanagari text-footnote font-normal text-label-secondary">
                 पठन स्तर व दृष्टि
               </span>
             </legend>
@@ -195,21 +210,30 @@ export function ReaderSettingsPanel({
         )}
 
         <fieldset>
-          <legend className="mb-2 text-sm font-semibold text-dharma-text">
+          <legend className="mb-2 text-subhead font-semibold text-label-primary">
             Theme
-            <span lang="hi" className="ml-2 font-devanagari text-[0.85rem] font-normal text-dharma-muted">
+            <span lang="hi" className="ml-2 font-devanagari text-footnote font-normal text-label-secondary">
               रंग
             </span>
           </legend>
           <div className="grid grid-cols-2 gap-2">
             {THEMES.map((t) => (
               <label key={t.id} aria-label={`${t.label} theme`} className="relative cursor-pointer">
-                <input type="radio" name={themeName} checked={theme === t.id} onChange={() => setTheme(t.id)} className="peer sr-only" />
-                <span className="flex min-h-[52px] items-center gap-3 rounded-xl border border-dharma-border bg-dharma-bg px-3 text-sm font-semibold text-dharma-text transition peer-checked:border-saffron-700 peer-checked:ring-2 peer-checked:ring-saffron-600/40 peer-focus-visible:ring-2 peer-focus-visible:ring-saffron-500 hover:border-saffron-400">
+                <input
+                  type="radio"
+                  name={themeName}
+                  checked={theme === t.id}
+                  onChange={() => {
+                    triggerTactileFeedback('selection', 'softTap');
+                    setTheme(t.id);
+                  }}
+                  className="peer sr-only"
+                />
+                <span className="flex min-h-[52px] items-center gap-3 rounded-xl border border-separator/80 bg-surface-raised px-3 text-subhead font-semibold text-label-secondary transition-all peer-checked:border-separator peer-checked:bg-surface-elevated peer-checked:text-label-primary peer-checked:shadow-xs peer-checked:ring-1 peer-checked:ring-accent/40 peer-focus-visible:ring-2 peer-focus-visible:ring-accent hover:bg-fill-quaternary hover:text-label-primary">
                   <span aria-hidden="true" className="h-7 w-7 shrink-0 rounded-full border shadow-inner" style={{ backgroundColor: t.swatch, borderColor: t.ring }} />
                   <span>
                     {t.label}
-                    <span lang="hi" className="block font-devanagari text-[11px] font-normal text-dharma-muted">
+                    <span lang="hi" className="block font-devanagari text-caption-2 font-normal text-label-tertiary">
                       {t.hi}
                     </span>
                   </span>
@@ -227,8 +251,8 @@ export function ReaderSettingsPanel({
         {scope === 'verse' && <Segmented legend="Reading width" legendHi="पठन चौड़ाई" value={settings.readingWidth} options={WIDTHS} onChange={(v) => update('readingWidth', v)} columns="grid-cols-3" />}
         {scope === 'verse' && <Segmented legend="Contrast" legendHi="विरोधाभास" value={settings.contrast} options={CONTRASTS} onChange={(v) => update('contrast', v)} columns="grid-cols-2" />}
 
-        <fieldset className="rounded-2xl border border-dharma-border bg-dharma-bg/60 p-3">
-          <legend className="px-1 text-sm font-semibold text-dharma-text">{scope === 'chapter' ? 'Show reading layers' : 'Show elements'}</legend>
+        <fieldset className="rounded-card border border-separator/80 bg-surface-raised/80 p-3 shadow-2xs">
+          <legend className="px-1 text-subhead font-semibold text-label-primary">{scope === 'chapter' ? 'Show reading layers' : 'Show elements'}</legend>
           <Toggle label="Roman transliteration" hint="IAST" checked={settings.showTransliteration} onChange={(v) => update('showTransliteration', v)} />
           <Toggle label={<>Hindi translation <span lang="hi" className="font-devanagari">हिन्दी</span></>} checked={settings.showHindi} onChange={(v) => update('showHindi', v)} />
           <Toggle label="English translation" checked={settings.showEnglish} onChange={(v) => update('showEnglish', v)} />

@@ -192,7 +192,7 @@ export const FLAGSHIP_LITERARY_MAP: Record<string, Omit<VerseEditorialLayer, 'is
       breakdownHi: 'स्वयं को नीचे गिरने से बचाना और ऊपर उठाना। आपकी चेतना ही आपका उत्तोलक है।',
     },
     microPracticeEn: 'Identify one promise you broke to yourself this week. Do not shame yourself; simply fulfill a tiny 5-minute version of it right now.',
-    microPracticeHi: 'इस सप्ताह अपने आप से किया गया कोई एक छोटा वादा स्मरण करें और बिना आत्म-ग्लानि के उसे अभी ५ मिनट में पूरा करें।',
+    microPracticeHi: 'इस सप्ताह अपने आप से किया गया कोई एक छोटा वादा स्मरण करें और बिना आत्म-ग्लानि के उसे अभी 5 मिनट में पूरा करें।',
   },
 
   // Isha Upanishad 1 (Isha Vasyam Idam Sarvam)

@@ -2537,43 +2537,43 @@
       "id": 1,
       "title": "Bala Kanda",
       "titleSanskrit": "बालकाण्ड",
-      "verseCount": 12
+      "verseCount": 2270
     },
     {
       "id": 2,
       "title": "Ayodhya Kanda",
       "titleSanskrit": "अयोध्याकाण्ड",
-      "verseCount": 10
+      "verseCount": 4304
     },
     {
       "id": 3,
       "title": "Aranya Kanda",
       "titleSanskrit": "अरण्यकाण्ड",
-      "verseCount": 11
+      "verseCount": 2447
     },
     {
       "id": 4,
       "title": "Kishkindha Kanda",
       "titleSanskrit": "किष्किन्धाकाण्ड",
-      "verseCount": 13
+      "verseCount": 2462
     },
     {
       "id": 5,
       "title": "Sundara Kanda",
       "titleSanskrit": "सुन्दरकाण्ड",
-      "verseCount": 13
+      "verseCount": 2865
     },
     {
       "id": 6,
       "title": "Yuddha Kanda",
       "titleSanskrit": "युद्धकाण्ड",
-      "verseCount": 13
+      "verseCount": 5788
     },
     {
       "id": 7,
       "title": "Uttara Kanda",
       "titleSanskrit": "उत्तरकाण्ड",
-      "verseCount": 10
+      "verseCount": 3459
     }
   ],
   "mahabharata": [
@@ -3370,36 +3370,36 @@
       "id": 1,
       "title": "Vidyeshvara Samhita",
       "titleSanskrit": "विद्येश्वर संहिता",
-      "verseCount": 0
+      "verseCount": 1542
     },
     {
       "id": 2,
       "title": "Rudra Samhita — Srishti Khanda",
-      "titleSanskrit": "कैलाश संहिता — पञ्चाक्षर",
+      "titleSanskrit": "रुद्र संहिता — सृष्टि खण्ड",
       "verseCount": 0
     },
     {
       "id": 3,
       "title": "Rudra Samhita — Sati Khanda",
-      "titleSanskrit": "रुद्र संहिता — तांडव",
+      "titleSanskrit": "रुद्र संहिता — सती खण्ड",
       "verseCount": 0
     },
     {
       "id": 4,
       "title": "Rudra Samhita — Parvati Khanda",
-      "titleSanskrit": "उमा संहिता — अर्धनारीश्वर",
+      "titleSanskrit": "रुद्र संहिता — पार्वती खण्ड",
       "verseCount": 0
     },
     {
       "id": 5,
       "title": "Rudra Samhita — Kumara Khanda",
-      "titleSanskrit": "कोटिरुद्र संहिता — द्वादश ज्योतिर्लिङ्ग",
-      "verseCount": 0
+      "titleSanskrit": "रुद्र संहिता — कुमार खण्ड",
+      "verseCount": 1080
     },
     {
       "id": 6,
       "title": "Rudra Samhita — Yuddha Khanda",
-      "titleSanskrit": "वायवीय संहिता — शिवतत्त्व",
+      "titleSanskrit": "रुद्र संहिता — युद्ध खण्ड",
       "verseCount": 0
     },
     {

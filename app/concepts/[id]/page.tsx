@@ -45,34 +45,69 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const graph = buildGraphPage(resolved.id);
   if (!concept) {
     if (!graph) return { title: 'अवधारणा नहीं मिली (Concept Not Found)' };
-    const title = `${graph.label} (${graph.sanskrit}) — शास्त्रीय अर्थ व दर्शन`;
-    const description = clipDescription(graph.overviewEn || graph.overviewHi);
+    const title = `${graph.label} (${graph.sanskrit}) Meaning in Hindi & English — शास्त्रीय दर्शन`;
+    const description = clipDescription(
+      [graph.overviewHi, graph.overviewEn].filter(Boolean).join(' — ') || graph.label,
+    );
+    const keywords = [
+      graph.label,
+      graph.sanskrit,
+      `${graph.label} meaning in hindi`,
+      `${graph.label} in hinduism`,
+      `${graph.sanskrit} का अर्थ`,
+      'dharma granth',
+    ];
     return {
       title,
       description,
+      keywords,
       alternates: { canonical: `/concepts/${graph.id}/` },
       openGraph: {
+        type: 'article',
+        locale: 'hi_IN',
+        alternateLocale: ['en_US'],
         title: `${title} — Dharma Granth`,
         description,
         url: `https://dharmagranth.dev/concepts/${graph.id}/`,
         images: [DEFAULT_OG_IMAGE],
       },
+      twitter: { card: 'summary_large_image', title, description, images: [DEFAULT_OG_IMAGE.url] },
     };
   }
 
-  const title = `${concept.label} (${concept.sanskrit}) — शास्त्रीय अर्थ व दर्शन`;
-  const description = clipDescription(concept.simpleDefinition.en);
+  const title = `${concept.label} (${concept.sanskrit}) Meaning in Hindi & English — शास्त्रीय अर्थ`;
+  const description = clipDescription(
+    `${concept.sanskrit} (${concept.label}): ${concept.simpleDefinition.hi} ${concept.simpleDefinition.en}`,
+  );
+  const keywords = [
+    concept.label,
+    concept.sanskrit,
+    `${concept.label} meaning in hindi`,
+    `${concept.label} in hindi`,
+    `${concept.sanskrit} का अर्थ`,
+    `what is ${concept.label}`,
+    `${concept.label} in hinduism`,
+    `${concept.label} definition`,
+    `${concept.label} etymology`,
+    'hindu philosophy',
+    'dharma granth',
+  ];
 
   return {
     title,
     description,
+    keywords,
     alternates: { canonical: `/concepts/${concept.id}/` },
     openGraph: {
+      type: 'article',
+      locale: 'hi_IN',
+      alternateLocale: ['en_US'],
       title: `${title} — Dharma Granth`,
       description,
       url: `https://dharmagranth.dev/concepts/${concept.id}/`,
       images: [DEFAULT_OG_IMAGE],
     },
+    twitter: { card: 'summary_large_image', title, description, images: [DEFAULT_OG_IMAGE.url] },
   };
 }
 
@@ -96,6 +131,47 @@ export default async function ConceptDetailPage({ params }: PageProps) {
 
   const cat = categoryLabels[concept.category] || { en: 'Philosophy', hi: 'दर्शन' };
 
+  const faqQuestions = [
+    {
+      '@type': 'Question',
+      name: `What is ${concept.label} (${concept.sanskrit}) in Hindu philosophy?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: concept.simpleDefinition.en,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: `${concept.sanskrit} (${concept.label}) का वास्तविक शास्त्रीय अर्थ क्या है?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: concept.simpleDefinition.hi,
+      },
+    },
+    concept.derivation && {
+      '@type': 'Question',
+      name: `What is the Sanskrit etymology and root of the word ${concept.label}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Root: ${concept.derivation.root} (${concept.derivation.rootMeaning} / ${concept.derivation.rootMeaningHi}). ${concept.derivation.etymologyEn || concept.derivation.etymologyHi}`,
+      },
+    },
+    concept.misunderstandings?.length > 0 && {
+      '@type': 'Question',
+      name: `What is a common misconception about ${concept.label}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Misconception: ${concept.misunderstandings[0].myth}\nClassical Clarification: ${concept.misunderstandings[0].correction}`,
+      },
+    },
+  ].filter(Boolean);
+
+  const jsonLdFaq = faqQuestions.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqQuestions,
+  } : null;
+
   return (
     <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <JsonLd
@@ -114,6 +190,13 @@ export default async function ConceptDetailPage({ params }: PageProps) {
           }),
         )}
       />
+      {jsonLdFaq && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+        />
+      )}
       {/* ── Breadcrumb & Navigation Header ─────────────────────────────────── */}
       <header className="border-b border-dharma-border bg-dharma-card/60 backdrop-blur-md sticky top-16 z-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between text-xs sm:text-sm text-dharma-muted">

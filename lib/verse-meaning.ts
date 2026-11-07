@@ -7,6 +7,7 @@
  */
 import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
 import { canonicalVerseId } from './canonical-verse-id';
+import { commentaryAmbiguities, lookupCommentary, type CommentaryAmbiguities } from './commentary-lookup';
 import { readChapterCommentary, readSeededChapter } from './read-seeded-chapters';
 import { withPassageMeaning } from './verse-format';
 
@@ -28,15 +29,25 @@ export interface VerseMeaningSummary {
   any: boolean;
 }
 
-/** The key the published commentary uses, the same one the chapter reader looks up ("2:47", "3:28" for "1.3.28"). */
+/** Legacy normalized key; use commentaryFor for collision-aware selection. */
 export function verseCommentaryKey(chapterId: number, verseNumber: number | string): string {
   return `${chapterId}:${Number(canonicalVerseId(chapterId, verseNumber))}`;
 }
 
+const commentaryAmbiguityCache = new Map<string, CommentaryAmbiguities>();
 export function commentaryFor(scriptureId: string, chapterId: number, verseNumber: number | string): HiCommentaryEntry | undefined {
   const all = readChapterCommentary<HiCommentaryEntry>(scriptureId, chapterId);
   if (!all) return undefined;
-  return all[verseCommentaryKey(chapterId, verseNumber)] ?? all[`${chapterId}:${verseNumber}`];
+  const cacheKey = `${scriptureId}:${chapterId}`;
+  let ambiguity = commentaryAmbiguityCache.get(cacheKey);
+  if (!ambiguity) {
+    const chapter = readSeededChapter(scriptureId, chapterId);
+    if (chapter) {
+      ambiguity = commentaryAmbiguities(chapterId, (chapter.chapter.verses as Array<{ number: number | string }>).map(v => v.number));
+      commentaryAmbiguityCache.set(cacheKey, ambiguity);
+    }
+  }
+  return lookupCommentary(all, chapterId, verseNumber, ambiguity);
 }
 
 const real = (s: unknown) => typeof s === 'string' && s.replace(/\s+/g, ' ').trim().length > 20;

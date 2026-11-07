@@ -1,82 +1,51 @@
-/**
- * Move a staged chapter of व्याख्या drafts into the AI commentary queue as
- * approved (see docs/vyakhya-guide.md). One staged file per chapter, so several
- * tools can draft in parallel:
- *
- *   node scripts/stage-commentary.mjs data/ai-commentary/staged/bhagavadgita-04.json [--force]
- *
- * For each verse it records the current Sanskrit (so a later text repair marks
- * the entry stale), flags verses whose published व्याख्या is hand-written so the
- * draft replaces it, and refuses to overwrite an already approved entry unless
- * --force is passed. Then run `npm run publish:commentary`.
- */
+/** Stage one chapter as pending. Replacements remain separate until approval. */
 import fs from "node:fs";
 import path from "node:path";
+import { randomUUID } from "node:crypto";
+import { sourceVerses, uniqueSource } from "./lib/commentary-source.mjs";
 
 const args = process.argv.slice(2);
-const force = args.includes("--force");
-const files = args.filter((a) => !a.startsWith("--"));
-if (!files.length) {
-  console.error("usage: node scripts/stage-commentary.mjs <data/ai-commentary/staged/<scripture>-<chapter>.json> [--force]");
+const flags = args.filter(a => a.startsWith("--"));
+const files = args.filter(a => !a.startsWith("--"));
+if (files.length !== 1 || flags.some(f => f !== "--replace")) {
+  console.error("usage: node scripts/stage-commentary.mjs <scripture-chapter.json> [--replace]");
   process.exit(2);
 }
-
-const readJson = (p, fallback) => (fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : fallback);
-
-for (const file of files) {
-  const m = path.basename(file, ".json").match(/^(.+)-\d+$/);
-  if (!m) throw new Error(`${file}: name it <scripture>-<chapter>.json, e.g. bhagavadgita-04.json`);
-  const scriptureId = m[1];
-
-  const drafts = readJson(file, {});
-  const book = readJson(path.resolve("public/data/scriptures-full", `${scriptureId}.json`), null);
-  if (!book) throw new Error(`${scriptureId}: no public/data/scriptures-full/${scriptureId}.json`);
-  const published = readJson(path.resolve("public/data/hi-commentary", `${scriptureId}.json`), {});
-  const queuePath = path.resolve("data/ai-commentary", `${scriptureId}.json`);
-  const queue = readJson(queuePath, {});
-
-  const sanskrit = new Map();
-  for (const ch of book.chapters ?? []) {
-    for (const v of ch.verses ?? []) sanskrit.set(`${Number(ch.number)}:${Number(v.number)}`, v.sanskrit);
+const match = path.basename(files[0], ".json").match(/^([a-z0-9-]+)-(\d+)$/);
+if (!match) throw new Error("Name the file <scripture>-<chapter>.json");
+const [, id, chapter] = match;
+const read = p => JSON.parse(fs.readFileSync(p, "utf8"));
+const drafts = read(files[0]);
+if (!drafts || Array.isArray(drafts) || typeof drafts !== "object" || !Object.keys(drafts).length) throw new Error("Draft file must contain verse entries");
+const queuePath = path.resolve("data/ai-commentary", `${id}.json`);
+const originalQueue = fs.existsSync(queuePath) ? fs.readFileSync(queuePath, "utf8") : null;
+const queue = originalQueue === null ? {} : JSON.parse(originalQueue);
+const source = sourceVerses(id);
+const replacement = flags.includes("--replace");
+const prepared = {};
+for (const [key, draft] of Object.entries(drafts)) {
+  if (!key.startsWith(`${Number(chapter)}:`)) throw new Error(`${key}: outside chapter ${chapter}`);
+  if (!draft || typeof draft.explanation !== "string" || !draft.explanation.trim()) throw new Error(`${key}: empty explanation`);
+  if (draft.confidence && !["high", "medium", "low"].includes(draft.confidence)) throw new Error(`${key}: invalid confidence`);
+  if (draft.reviewNote != null && typeof draft.reviewNote !== "string") throw new Error(`${key}: reviewNote must be text`);
+  if (queue[key]) {
+    if (!replacement) throw new Error(`${key}: entry already exists; use --replace to propose a replacement`);
+  } else if (replacement) {
+    throw new Error(`${key}: --replace requires an existing entry; stage new entries separately`);
   }
-
-  const now = new Date().toISOString();
-  let staged = 0;
-  let replaced = 0;
-  for (const [key, d] of Object.entries(drafts)) {
-    if (!sanskrit.has(key)) throw new Error(`${scriptureId} ${key}: no such verse in the published book`);
-    if (!d.explanation?.trim()) throw new Error(`${scriptureId} ${key}: empty explanation`);
-    if (queue[key]?.status === "approved" && !force) {
-      throw new Error(`${scriptureId} ${key}: already approved in the queue; pass --force to replace it`);
-    }
-    const pub = published[key];
-    // A published व्याख्या that is not a fully AI entry is hand-written (or a draft that already replaced one).
-    const replacesHandWritten = Boolean(pub?.explanation && !pub.ai);
-    queue[key] = {
-      explanation: d.explanation.trim(),
-      science: "",
-      lifeLesson: "",
-      confidence: d.confidence ?? "high",
-      reviewNote: d.reviewNote ?? "",
-      status: "approved",
-      model: d.model ?? "claude-opus-5-5",
-      generatedAt: now,
-      sanskrit: sanskrit.get(key),
-      ...(replacesHandWritten ? { replacesHandWritten: true } : {}),
-    };
-    staged++;
-    if (replacesHandWritten) replaced++;
-  }
-
-  const order = (k) => k.split(":").map(Number);
-  const sorted = Object.fromEntries(
-    Object.entries(queue).sort(([a], [b]) => {
-      const [x, y] = order(a);
-      const [p, q] = order(b);
-      return x - p || y - q;
-    }),
-  );
-  fs.mkdirSync(path.dirname(queuePath), { recursive: true });
-  fs.writeFileSync(queuePath, JSON.stringify(sorted, null, 2) + "\n");
-  console.log(`${path.basename(file)}: ${staged} approved into ${path.relative(process.cwd(), queuePath)} (${replaced} replace hand-written व्याख्या)`);
+  prepared[key] = { explanation: draft.explanation.trim(), science: "", lifeLesson: "", confidence: draft.confidence ?? "high", reviewNote: draft.reviewNote ?? "", status: "pending", model: draft.model ?? "unknown", generatedAt: new Date().toISOString(), sanskrit: uniqueSource(source, key), ...(replacement ? { replacesQueueSnapshot: queue[key] } : {}) };
 }
+const currentQueue = fs.existsSync(queuePath) ? fs.readFileSync(queuePath, "utf8") : null;
+if (currentQueue !== originalQueue) throw new Error("Queue changed during staging; retry after reviewing current entries");
+const outputPath = replacement ? path.resolve("data/ai-commentary/proposals", `${id}.json`) : queuePath;
+const originalOutput = replacement && fs.existsSync(outputPath) ? fs.readFileSync(outputPath, "utf8") : replacement ? null : originalQueue;
+const output = replacement ? (originalOutput === null ? {} : JSON.parse(originalOutput)) : queue;
+for (const key of Object.keys(prepared)) if (replacement && output[key]) throw new Error(`${key}: a replacement proposal already exists`);
+Object.assign(output, prepared);
+fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+const currentOutput = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, "utf8") : null;
+if (currentOutput !== originalOutput) throw new Error("Output changed during staging; retry after reviewing current entries");
+const tmp = `${outputPath}.${randomUUID()}.tmp`;
+try { fs.writeFileSync(tmp, JSON.stringify(output, null, 2) + "\n", { flag: "wx" }); fs.renameSync(tmp, outputPath); }
+finally { if (fs.existsSync(tmp)) fs.unlinkSync(tmp); }
+console.log(`${id}: ${Object.keys(prepared).length} ${replacement ? "replacement proposals" : "pending entries"} staged; approve explicitly before publishing`);

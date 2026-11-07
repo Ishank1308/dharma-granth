@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState, startTransition } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, startTransition, type MouseEvent as ReactMouseEvent } from 'react';
 import {
   BookOpen,
   Flame,
@@ -18,6 +18,7 @@ import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
 import { canonicalVerseId } from '@/lib/canonical-verse-id';
 import { versePageHref } from '@/lib/verse-paths';
 import { commentaryOf, nearestWithMeaning, verseHasMeaning, type NearbyMeaning } from '@/lib/verse-has-meaning';
+import { commentaryAmbiguities, type CommentaryAmbiguities } from '@/lib/commentary-lookup';
 import { normalizeForSearch, normalizeTransliteration } from '@/lib/normalize-search';
 import { splitVyakhyaCommentary, toAsciiDigits, toDevanagari } from '@/lib/verse-format';
 import { useStudyProgress, type VerseRef } from '@/lib/useStudyProgress';
@@ -138,6 +139,7 @@ interface Props {
 export interface InitialChapter {
   verses: FullVerse[];
   commentary?: HiCommentaryFragment;
+  commentaryAmbiguity?: { normalized: string[]; raw: string[] };
   source?: FullScripture['source'];
   /** मर्म and जीवन प्रसंग for the verses that have them (lib/verse-insights). */
   insights?: Record<string, VerseInsight>;
@@ -146,7 +148,7 @@ export interface InitialChapter {
 type State =
   | { kind: 'idle' }
   | { kind: 'loading' }
-  | { kind: 'ready'; verses: FullVerse[]; commentary?: HiCommentaryFragment; source?: FullScripture['source'] }
+  | { kind: 'ready'; verses: FullVerse[]; commentary?: HiCommentaryFragment; commentaryAmbiguity?: CommentaryAmbiguities; source?: FullScripture['source'] }
   | { kind: 'empty' }
   | { kind: 'error'; message: string };
 
@@ -178,6 +180,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           (v) => !curatedVerseSet.has(canonicalVerseId(chapterId, v.number)),
         ),
         commentary: initialChapter.commentary,
+        commentaryAmbiguity: initialChapter.commentaryAmbiguity
+          ? { normalized: new Set(initialChapter.commentaryAmbiguity.normalized), raw: new Set(initialChapter.commentaryAmbiguity.raw) }
+          : commentaryAmbiguities(chapterId, initialChapter.verses.map(v => v.number)),
         source: initialChapter.source,
       };
     }
@@ -194,6 +199,24 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   // Long chapters: the first RICH_BATCH verses hydrate as full cards; the rest stay as the plain
   // VerseText the server rendered (same id and text) and upgrade as they near the viewport.
   const [richVerses, setRichVerses] = useState<Set<string>>(() => new Set());
+  // Verses whose number the reader tapped: their card opens with the full study, here in the chapter.
+  const [studyRequested, setStudyRequested] = useState<Set<string>>(() => new Set());
+
+  /**
+   * A plain verse's number links to its verse page, so crawlers and readers without JavaScript can reach it.
+   * Once the chapter is interactive, a tap on it opens that verse's explanation in place instead of leaving
+   * the adhyay. A new-tab click (Ctrl/Cmd, Shift, middle button) still opens the verse page.
+   */
+  const openPlainVerseInPlace = (e: ReactMouseEvent<HTMLDivElement>) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const link = (e.target as Element).closest?.('[data-plain-verse] h3 a');
+    const verseNum = link?.closest<HTMLElement>('[data-plain-verse]')?.dataset.plainVerse;
+    if (!verseNum) return;
+    e.preventDefault();
+    e.stopPropagation();
+    setStudyRequested((prev) => withRich(prev, [verseNum]));
+    setRichVerses((prev) => withRich(prev, [verseNum]));
+  };
 
   const [chantingMode, setChantingMode] = useState(false);
   const [readingDepth] = useReadingDepth();
@@ -675,7 +698,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     if (state.kind !== 'ready') return new Map<string, NearbyMeaning>();
     return nearestWithMeaning(
       state.verses.map((v) => String(v.number)),
-      state.verses.map((v) => verseHasMeaning(v, commentaryOf(state.commentary, chapterId, v.number))),
+      state.verses.map((v) => verseHasMeaning(v, commentaryOf(state.commentary, chapterId, v.number, state.commentaryAmbiguity))),
     );
   }, [state, chapterId]);
 
@@ -889,7 +912,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         const commentary: HiCommentaryFragment | undefined = commentaryRes.ok
           ? await commentaryRes.json()
           : undefined;
-        setState({ kind: 'ready', verses: extras, commentary, source });
+        setState({ kind: 'ready', verses: extras, commentary, commentaryAmbiguity: commentaryAmbiguities(chapterId, chapter.verses.map(v => v.number)), source });
       } catch (err) {
         if (controller.signal.aborted) return;
         setState({ kind: 'error', message: (err as Error).message });
@@ -1027,7 +1050,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
 
   /** The commentaries this verse actually carries, for the Bhāṣya switcher. Absent ones are not listed. */
   const bhashyaFor = (v: FullVerse): BhashyaSource[] => {
-    const comment = state.commentary?.[`${chapterId}:${Number(canonicalVerseId(chapterId, v.number))}`];
+    const comment = commentaryOf(state.commentary, chapterId, v.number, state.commentaryAmbiguity);
     const { vyakhya, commentary } = splitVyakhyaCommentary([comment?.explanation, v.explanation, v.commentary], v.wordMeaning);
     const isHi = (t: string) => (t.match(/[\u0900-\u097F]/g)?.length ?? 0) > (t.match(/[A-Za-z]/g)?.length ?? 0);
     const draft = Boolean(comment?.ai || comment?.explanationAi || comment?.editorial);
@@ -1079,22 +1102,63 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     );
   }
 
+  const viewportVerseIdx = currentViewportVerse !== null
+    ? state.verses.findIndex((v) => String(v.number) === String(currentViewportVerse))
+    : -1;
+  const chapterScrollPct = state.verses.length > 0 && viewportVerseIdx >= 0
+    ? Math.min(100, Math.round(((viewportVerseIdx + 1) / state.verses.length) * 100))
+    : 0;
+
   return (
     <>
       <section>
-        {/* One quiet line above the text, like a book's running head: the verse count, type settings (Aa)
-            and everything else folded behind "Options". Listening starts from the chapter title above. */}
-        <div className="mb-6 border-b border-dharma-border/60 pb-3">
-          <div className="flex items-center justify-between gap-3">
+        {/* One quiet sticky running head above the text: active shloka progress, 1-tap verse jump,
+            type settings (Aa), and everything else folded behind "Options". */}
+        <div className="sticky top-[52px] z-30 -mx-2 mb-6 border-b border-dharma-border/60 bg-dharma-bg/92 px-2 pb-2.5 pt-2 backdrop-blur-md">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="text-xs text-dharma-muted">
               <span className="sr-only">पूर्ण अध्याय पाठ · </span>
-              {filterQuery.trim() ? `${filteredVerses.length} / ${state.verses.length}` : state.verses.length} श्लोक
+              {filterQuery.trim() ? (
+                `${filteredVerses.length} / ${state.verses.length} श्लोक`
+              ) : viewportVerseIdx >= 0 && currentViewportVerse !== null ? (
+                <span>
+                  <span className="font-semibold text-dharma-text">श्लोक {toAsciiDigits(currentViewportVerse)}</span>
+                  <span> / {state.verses.length}</span>
+                </span>
+              ) : (
+                `${state.verses.length} श्लोक`
+              )}
               {parayanaActive && activeRecitingVerse !== null && (
                 <span className="ml-2 text-amber-700 dark:text-amber-300">· पारायण {toAsciiDigits(activeRecitingVerse)}</span>
               )}
             </p>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              {state.verses.length > 5 && (
+                <label className="liquid-pill inline-flex min-h-[40px] items-center rounded-full px-2.5 text-xs font-medium text-dharma-muted hover:text-dharma-text">
+                  <span className="sr-only">श्लोक पर जाएं</span>
+                  <select
+                    onChange={(e) => {
+                      if (e.target.value) {
+                        scrollToVerse(e.target.value);
+                        e.target.value = '';
+                      }
+                    }}
+                    defaultValue=""
+                    aria-label="श्लोक पर सीधे जाएं (Jump to verse)"
+                    className="cursor-pointer rounded bg-transparent py-1 pr-1 text-xs font-semibold text-dharma-text outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                  >
+                    <option value="" disabled className="bg-dharma-card text-dharma-text">
+                      श्लोक पर जाएं ▾
+                    </option>
+                    {state.verses.map((v) => (
+                      <option key={String(v.number)} value={String(v.number)} className="bg-dharma-card text-dharma-text">
+                        श्लोक {toAsciiDigits(v.number)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              )}
               <button
                 type="button"
                 onClick={() => setReaderSettingsOpen(true)}
@@ -1109,16 +1173,25 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               <button
                 type="button"
                 onClick={() => setToolsOpen((o) => !o)}
-                className="liquid-pill inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full px-3.5 text-xs font-medium text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                className="liquid-pill inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full px-3 sm:px-3.5 text-xs font-medium text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                 aria-expanded={toolsOpen}
                 aria-controls="chapter-reader-tools"
               >
                 <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
-                <span><span lang="hi">विकल्प</span> · Options</span>
+                <span><span lang="hi">विकल्प</span><span className="hidden sm:inline"> · Options</span></span>
                 <ChevronDown className={`h-3.5 w-3.5 transition-transform ${toolsOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
               </button>
             </div>
           </div>
+
+          {chapterScrollPct > 0 && (
+            <div aria-hidden="true" className="mt-2 h-[2px] w-full overflow-hidden rounded-full bg-dharma-border/40">
+              <div
+                className="h-full rounded-full bg-dharma-saffron transition-[width] duration-200"
+                style={{ width: `${chapterScrollPct}%` }}
+              />
+            </div>
+          )}
 
           <div
             id="chapter-reader-tools"
@@ -1294,7 +1367,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
             onExitConversationMode={() => setIsConversationMode(false)}
           />
         ) : (
-          <div className="space-y-8">
+          <div className="space-y-8" onClickCapture={hydrated ? openPlainVerseInPlace : undefined}>
             {filteredVerses.length === 0 ? (
             <div className="rounded-xl border border-dashed border-dharma-border bg-dharma-card p-8 text-center text-sm text-dharma-muted">
               <p className="font-semibold text-dharma-text mb-1">&lsquo;{filterQuery}&rsquo; के लिए कोई श्लोक नहीं मिला</p>
@@ -1336,9 +1409,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
 
               // Otherwise (initial RICH_BATCH verses and scrolled verses): render full VerseCard
               // directly both on SSR and client to completely eliminate the 2.816 CLS hydration swap.
-              const verseKey = canonicalVerseId(chapterId, v.number);
-              const verseIdNum = Number(verseKey);
-              const comment = state.commentary?.[`${chapterId}:${verseIdNum}`];
+              const comment = commentaryOf(state.commentary, chapterId, v.number, state.commentaryAmbiguity);
               const explanationHi = comment?.explanation;
               const scienceHi = comment?.science;
               const lifeLessonHi = comment?.lifeLesson;
@@ -1416,8 +1487,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                       })
                     }
                     inCollectionCount={getCollectionCount(v.number)}
-                    note={getNote(scriptureId, chapterId, v.number)?.text}
-                    onSaveNote={(text) => setNote(scriptureId, chapterId, v.number, text)}
                     highlight={getHighlight(scriptureId, chapterId, v.number)?.color}
                     onHighlight={(color) => toggleHighlight(scriptureId, chapterId, v.number, color)}
                     insight={initialChapter?.insights?.[String(v.number)]}
@@ -1426,6 +1495,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                       setFocusModeOpen(true);
                     }}
                     versePageHref={versePageHref(scriptureId, chapterId, v.number)}
+                    studyRequested={studyRequested.has(String(v.number))}
                     isReciting={String(activeRecitingVerse) === String(v.number)}
                     onPlayRecitation={() => togglePlayVerse(v)}
                     onOpenSvadhyaya={handleOpenSvadhyaya}
@@ -1548,6 +1618,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         chapterId={chapterId}
         category={category}
         commentary={state.commentary}
+        commentaryAmbiguity={state.commentaryAmbiguity}
         bookmarkedMap={bookmarkedMap}
         onToggleBookmark={(v) => toggleBookmark(v as FullVerse)}
         onVerseChange={(verseNum) => scrollToVerse(verseNum)}

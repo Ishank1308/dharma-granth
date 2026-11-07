@@ -1,11 +1,11 @@
-import { DAILY_WISDOM_REGISTRY } from '@/data/daily-wisdom-engine';
+import { DAILY_WISDOM_REGISTRY, getTodayWisdom } from '@/data/daily-wisdom-engine';
 import { scriptureCatalog } from '@/data/scripture-meta';
 import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { TodayVerseCard, type TodayVerseVibes } from './TodayVerseCard';
 
 /**
  * Server half of the home verse card: the cover colours of the few scriptures the daily pool draws
- * from, passed down as plain props. The card itself picks the verse on the reader's device.
+ * from, plus an SSR seed verse so initial HTML never flashes an empty shell before hydration.
  */
 export function HomeTodayVerse() {
   const vibes: TodayVerseVibes = {};
@@ -13,5 +13,5 @@ export function HomeTodayVerse() {
     const meta = scriptureCatalog.find((s) => s.id === id);
     vibes[id] = vibeAttrs(scriptureVibe(id, meta?.category ?? 'other'));
   }
-  return <TodayVerseCard vibes={vibes} />;
+  return <TodayVerseCard vibes={vibes} initialItem={getTodayWisdom()} />;
 }

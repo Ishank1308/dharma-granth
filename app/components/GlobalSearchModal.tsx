@@ -58,6 +58,12 @@ import {
 import { triggerPranaToast } from '@/lib/prana-capsule-store';
 import { executeSearchWithWorker } from '@/lib/workers/search-worker-client';
 import { useConnectivity } from '@/lib/useConnectivity';
+import {
+  getTypeaheadSuggestion,
+  getTypeaheadSuggestions,
+  getTrilingualEquivalent,
+  type TypeaheadMatch,
+} from '@/lib/search-typeahead';
 
 export type { SearchResultItem } from '@/lib/search';
 
@@ -370,6 +376,11 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
   const trimmed = deferredQuery.trim();
   const isStale = query !== deferredQuery;
 
+  // Real-time typeahead, direct citation, trilingual vocabulary and quick-pick predictions
+  const typeaheadSuggestion = useMemo(() => getTypeaheadSuggestion(query), [query]);
+  const quickPickSuggestions = useMemo(() => getTypeaheadSuggestions(query, 4), [query]);
+  const trilingualHint = useMemo(() => getTrilingualEquivalent(query), [query]);
+
   const isActionQuery = trimmed.startsWith('>');
   const actionFilter = isActionQuery ? trimmed.slice(1).trim().toLowerCase() : '';
   const matchingActions = useMemo(() => {
@@ -525,6 +536,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
         return;
       }
       if (e.key !== 'Tab') return;
+      // If typing in search box with an active typeahead completion, let input handle Tab
+      if (
+        document.activeElement === inputRef.current &&
+        typeaheadSuggestion?.completion &&
+        typeaheadSuggestion.completion !== query
+      ) {
+        return;
+      }
       const focusable = Array.from(
         win.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'),
       ).filter((el) => el.offsetParent !== null);
@@ -543,11 +562,23 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, query, typeaheadSuggestion?.completion]);
 
-  const onInputKeyDown = (e: React.KeyboardEvent) => {
+  const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     // Enter and arrows while a Hindi/Devanagari IME is composing pick a candidate; they must not navigate.
     if (e.nativeEvent.isComposing || e.keyCode === 229) return;
+
+    // Tab key or RightArrow at end of input completes the typeahead suggestion
+    if (
+      (e.key === 'Tab' || (e.key === 'ArrowRight' && inputRef.current?.selectionStart === query.length)) &&
+      typeaheadSuggestion?.completion &&
+      typeaheadSuggestion.completion !== query
+    ) {
+      e.preventDefault();
+      setQuery(typeaheadSuggestion.completion);
+      return;
+    }
+
     if (e.key === 'ArrowDown') {
       if (isActionQuery && matchingActions.length > 0) {
         e.preventDefault();
@@ -579,6 +610,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
         e.preventDefault();
         const action = matchingActions[selectedIndex % matchingActions.length] || matchingActions[0];
         action.run(onClose, router, cycleTheme);
+        return;
+      }
+      // Instant Direct Jump: If directHref exists and user hasn't actively navigated down the search results
+      if (typeaheadSuggestion?.directHref && (selectedIndex === 0 || display.length === 0)) {
+        e.preventDefault();
+        remember(query);
+        onClose();
+        router.push(typeaheadSuggestion.directHref);
         return;
       }
       if (display[selectedIndex]) {
@@ -646,28 +685,45 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             className="liquid-glass relative z-10 flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-panel shadow-2xl"
           >
             {/* Search box */}
-            <div className="flex items-center border-b border-separator px-4 py-3 sm:px-6">
+            <div className="relative flex items-center border-b border-separator px-4 py-3 sm:px-6">
               <Search className={`mr-3.5 h-5 w-5 shrink-0 ${isStale ? 'animate-pulse text-amber-500' : 'text-tint'}`} aria-hidden="true" />
-              <input
-                ref={inputRef}
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={onInputKeyDown}
-                placeholder="Search Gita 2.47, कर्म, fear, or type > for actions…"
-                aria-label="Search scriptures, verses, topics and practices"
-                aria-describedby={statusId}
-                className="min-h-[44px] min-w-0 flex-1 bg-transparent text-title-3 font-normal text-label-primary outline-none placeholder:text-label-tertiary sm:text-title-2"
-                role="combobox"
-                aria-expanded={display.length > 0}
-                aria-autocomplete="list"
-                aria-controls={listboxId}
-                aria-activedescendant={display.length > 0 ? `search-item-${selectedIndex}` : undefined}
-                autoComplete="off"
-                autoCapitalize="off"
-                spellCheck={false}
-                enterKeyHint="search"
-              />
+              
+              <div className="relative flex min-h-[44px] min-w-0 flex-1 items-center">
+                {/* Ghost text overlay for real-time typeahead */}
+                {typeaheadSuggestion?.suffix ? (
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 flex items-center overflow-hidden text-title-3 font-normal sm:text-title-2 select-none"
+                  >
+                    <span className="invisible whitespace-pre">{query}</span>
+                    <span className="text-label-tertiary/60 whitespace-pre">{typeaheadSuggestion.suffix}</span>
+                    <span className="ml-2.5 hidden sm:inline-flex items-center gap-1 rounded border border-separator/80 bg-fill-quaternary px-1.5 py-0.5 text-[10px] font-mono font-medium text-label-secondary shadow-2xs">
+                      Tab ⇥
+                    </span>
+                  </div>
+                ) : null}
+
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={onInputKeyDown}
+                  placeholder="Search Gita 2.47, कर्म, fear, or type > for actions…"
+                  aria-label="Search scriptures, verses, topics and practices"
+                  aria-describedby={statusId}
+                  className="relative z-1 min-h-[44px] w-full bg-transparent text-title-3 font-normal text-label-primary outline-none placeholder:text-label-tertiary sm:text-title-2"
+                  role="combobox"
+                  aria-expanded={display.length > 0}
+                  aria-autocomplete="list"
+                  aria-controls={listboxId}
+                  aria-activedescendant={display.length > 0 ? `search-item-${selectedIndex}` : undefined}
+                  autoComplete="off"
+                  autoCapitalize="off"
+                  spellCheck={false}
+                  enterKeyHint="search"
+                />
+              </div>
               <div className="ml-2 flex shrink-0 items-center gap-2">
                 {isOnline === false && (
                   <span className="inline-flex items-center gap-1 rounded-pill border border-amber-600/30 bg-amber-500/10 px-2.5 py-0.5 text-caption font-medium text-amber-900 dark:text-amber-200">
@@ -676,26 +732,46 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                   </span>
                 )}
                 {query ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setQuery('');
-                      inputRef.current?.focus();
-                    }}
-                    className="focus-ring flex h-8 w-8 items-center justify-center rounded-control text-label-tertiary hover:bg-fill-quaternary hover:text-label-primary transition"
-                    aria-label="Clear search"
-                  >
-                    <X className="h-4 w-4" aria-hidden="true" />
-                  </button>
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setQuery('');
+                        inputRef.current?.focus();
+                      }}
+                      className="focus-ring flex h-9 w-9 items-center justify-center rounded-control text-label-tertiary hover:bg-fill-quaternary hover:text-label-primary transition"
+                      aria-label="Clear search"
+                    >
+                      <X className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={onClose}
+                      className="focus-ring inline-flex min-h-[44px] items-center rounded-control px-2.5 text-footnote font-semibold text-tint hover:bg-fill-quaternary transition sm:hidden"
+                      aria-label="Close search"
+                    >
+                      बन्द करें
+                    </button>
+                  </>
                 ) : (
-                  <button
-                    type="button"
-                    onClick={onClose}
-                    className="focus-ring hidden min-h-[32px] rounded-control border border-separator bg-fill-quaternary px-2 text-caption font-mono font-medium text-label-secondary hover:text-label-primary hover:bg-fill-tertiary transition sm:inline-block"
-                    aria-label="Close search"
-                  >
-                    ESC
-                  </button>
+                  <>
+                    <button
+                      type="button"
+                      onClick={onClose}
+                      className="focus-ring inline-flex min-h-[44px] items-center rounded-control px-2.5 text-footnote font-semibold text-tint hover:bg-fill-quaternary transition sm:hidden"
+                      aria-label="Close search"
+                    >
+                      बन्द करें
+                    </button>
+                    <button
+                      type="button"
+                      onClick={onClose}
+                      className="focus-ring hidden min-h-[32px] rounded-control border border-separator bg-fill-quaternary px-2 text-caption font-mono font-medium text-label-secondary hover:text-label-primary hover:bg-fill-tertiary transition sm:inline-block"
+                      aria-label="Close search"
+                    >
+                      ESC
+                    </button>
+                  </>
                 )}
               </div>
             </div>
@@ -793,6 +869,89 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             <div id={statusId} role="status" aria-live="polite" className="sr-only">
               {announcement}
             </div>
+
+            {/* Trilingual Alignment Vocabulary Hint */}
+            {trilingualHint && (
+              <div className="flex items-center gap-2 border-b border-separator/60 bg-tint-fill/25 px-4 py-2 sm:px-6 text-footnote text-label-secondary">
+                <span className="font-semibold text-label-primary font-devanagari text-subhead">{trilingualHint.devanagari}</span>
+                <span className="text-label-tertiary">·</span>
+                <span className="italic font-serif text-label-secondary">{trilingualHint.iast}</span>
+                <span className="text-label-tertiary hidden sm:inline">—</span>
+                <span className="text-label-tertiary truncate hidden sm:inline">{trilingualHint.english}</span>
+                {trilingualHint.meaning && (
+                  <span className="ml-auto hidden md:inline text-[11px] text-label-tertiary italic truncate max-w-xs">
+                    {trilingualHint.meaning}
+                  </span>
+                )}
+              </div>
+            )}
+
+            {/* Direct Jump Hero Banner */}
+            {typeaheadSuggestion?.directHref && (
+              <div className="border-b border-separator/80 bg-gradient-to-r from-saffron-500/15 via-amber-500/8 to-transparent px-4 py-2.5 sm:px-6">
+                <button
+                  type="button"
+                  onClick={() => {
+                    remember(query);
+                    onClose();
+                    router.push(typeaheadSuggestion.directHref!);
+                  }}
+                  className="group flex min-h-[44px] w-full items-center justify-between gap-3 text-left focus:outline-none cursor-pointer active:scale-[0.99] transition-transform"
+                  aria-label={`Instant Jump to ${typeaheadSuggestion.label}`}
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-saffron-500/20 text-base shadow-2xs">
+                      {typeaheadSuggestion.badge || '⚡'}
+                    </span>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                          त्वरित प्रवेश · Instant Jump
+                        </span>
+                        <span className="rounded-full bg-saffron-100 dark:bg-saffron-900/50 px-2 py-0.5 text-[10px] font-semibold text-saffron-800 dark:text-saffron-300">
+                          {typeaheadSuggestion.category}
+                        </span>
+                      </div>
+                      <p className="truncate text-xs sm:text-sm font-semibold text-label-primary group-hover:text-saffron-700 dark:group-hover:text-saffron-300 transition">
+                        {typeaheadSuggestion.label}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-1.5 text-xs font-semibold text-saffron-700 dark:text-saffron-400">
+                    <span className="hidden sm:inline">सीधे पढ़ें</span>
+                    <kbd className="rounded border border-saffron-500/40 bg-saffron-500/10 px-2 py-1 font-mono text-[11px] shadow-2xs">
+                      Enter ↵
+                    </kbd>
+                  </div>
+                </button>
+              </div>
+            )}
+
+            {/* Quick-Pick Suggestions Horizontal Pill Row */}
+            {quickPickSuggestions.length > 1 && !isActionQuery && (
+              <div className="flex items-center gap-2 overflow-x-auto no-scrollbar border-b border-separator/60 bg-surface-canvas/60 px-4 py-2 sm:px-6">
+                <span className="text-[11px] font-medium text-label-tertiary shrink-0 mr-0.5">सुझाव · Quick:</span>
+                {quickPickSuggestions.map((item, idx) => (
+                  <button
+                    key={`${item.directHref || item.completion}-${idx}`}
+                    type="button"
+                    onClick={() => {
+                      if (item.directHref) {
+                        remember(query);
+                        onClose();
+                        router.push(item.directHref);
+                      } else {
+                        setQuery(item.completion);
+                      }
+                    }}
+                    className="inline-flex min-h-[36px] sm:min-h-[32px] shrink-0 items-center gap-1.5 rounded-chip border border-separator/80 bg-surface-raised px-3 py-1.5 text-caption font-medium text-label-secondary hover:border-tint hover:text-label-primary active:scale-[0.97] transition-all cursor-pointer shadow-2xs"
+                  >
+                    <span className="text-xs">{item.badge || '✨'}</span>
+                    <span className="max-w-[160px] truncate">{item.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
 
             {/* Body */}
             <div className="min-h-0 flex-1 overflow-y-auto p-3 sm:p-5">
@@ -986,16 +1145,16 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                   </ul>
                   <div className="mt-6 flex flex-wrap justify-center gap-3">
                     <Link
-                      href={`/scriptures?q=${encodeURIComponent(trimmed)}`}
+                      href={`/scriptures/?q=${encodeURIComponent(trimmed)}`}
                       onClick={onClose}
-                      className="apple-pill min-h-[40px] px-5"
+                      className="apple-pill min-h-[44px] px-5"
                     >
                       Browse the library <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </Link>
                     <Link
-                      href="/wisdom-for-life"
+                      href="/wisdom-for-life/"
                       onClick={onClose}
-                      className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-5 text-subhead font-medium text-label-primary hover:bg-fill-quaternary transition"
+                      className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-5 text-subhead font-medium text-label-primary hover:bg-fill-quaternary transition"
                     >
                       Wisdom for Life topics
                     </Link>

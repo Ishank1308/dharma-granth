@@ -109,9 +109,17 @@ Once `dharmagranth.dev` serves from Cloudflare:
 - **Merging** pushes to `master`. When the merged tree is exactly the one the
   pull request's last passing CI run built, `deploy-cloudflare.yml` downloads
   that export (kept three days as an Actions artifact) and deploys it without
-  building again. Files the preview already uploaded are not sent again. If
+  building again. It checks out only `functions/`, `lib/` and the three
+  post-deploy scripts and skips `npm ci`, so this path takes about two
+  minutes. Files the preview already uploaded are not sent again. If
   master moved in between, CI failed, or the artifact is gone, the deploy
   builds and checks the export itself, as it always did.
+- **Build ID**: `next build` runs with a fixed placeholder ID, and
+  `scripts/stabilize-build-id.mjs` (first postbuild step) replaces it with a
+  hash of `_next/static`. Two builds of the same code give byte-identical
+  pages, so Cloudflare uploads only pages whose content changed instead of
+  all ~15,500 that carry the ID. Any change to browser code still gives a new
+  ID, so Next's reload on a version mismatch keeps working.
 - **Auto-merge**: enable it under **Settings → General → Pull Requests →
   Allow auto-merge**, and make **Validate static export** a required check on
   `master` (**Settings → Branches**). A pull request set to auto-merge then

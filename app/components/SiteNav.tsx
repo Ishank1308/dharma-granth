@@ -74,33 +74,34 @@ const THEME_ICONS: Record<Theme, typeof Sun> = {
 
 const desktopPrimaryItems = [
   { label: 'Home', labelHi: 'मुख', href: '/' },
-  { label: 'Scriptures', labelHi: 'ग्रंथालय', href: '/scriptures' },
-  { label: 'Bhagavad Gita', labelHi: 'गीता', href: '/scripture/bhagavadgita' },
-  { label: 'Learn', labelHi: 'सीखें', href: '/learn' },
-  { label: 'Sadhana', labelHi: 'साधना', href: '/practice' },
-  { label: 'Panchang', labelHi: 'पंचांग', href: '/panchang' },
+  { label: 'Scriptures', labelHi: 'ग्रंथालय', href: '/scriptures/' },
+  { label: 'Bhagavad Gita', labelHi: 'गीता', href: '/scripture/bhagavadgita/' },
+  { label: 'Learn', labelHi: 'सीखें', href: '/learn/' },
+  { label: 'Sadhana', labelHi: 'साधना', href: '/practice/' },
+  { label: 'Panchang', labelHi: 'पंचांग', href: '/panchang/' },
 ];
 
 const desktopDiscoveryItems = [
-  { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra' },
-  { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask' },
-  { label: 'श्लोक संबंध जाल', description: 'Verse Relationship Network — गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network' },
+  { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra/' },
+  { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask/' },
+  { label: 'श्लोक संबंध जाल', description: 'Verse Relationship Network — गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network/' },
   { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — 12 क्रमिक साधना पथ', href: '/learn/journeys/' },
   { label: 'पठन योजनाएँ', description: 'Reading Plans — 18 दिवसीय गीता, पढ़ने के क्रम व विषयवार स्वाध्याय', href: '/learn/plans/' },
-  { label: 'जिज्ञासा समाधान', description: 'Scripture FAQs — श्रुति-स्मृति व नीति', href: '/learn/faq' },
-  { label: 'स्रोत पारदर्शिता', description: 'Source Library — मूल पांडुलिपियाँ व संस्करण', href: '/sources' },
+  { label: 'जिज्ञासा समाधान', description: 'Scripture FAQs — श्रुति-स्मृति व नीति', href: '/learn/faq/' },
+  { label: 'स्रोत पारदर्शिता', description: 'Source Library — मूल पांडुलिपियाँ व संस्करण', href: '/sources/' },
   { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — उद्वेग, भय, क्रोध व धर्मसंकट का समाधान', href: '/wisdom-for-life/' },
+  { label: 'वैदिक मन्त्र व शान्ति पाठ', description: 'Sacred Mantras & Suktas — पदच्छेद, शब्दार्थ व भावार्थ', href: '/mantras/' },
   { label: 'ज्ञान मार्ग', description: 'Wisdom Pathways — भाव, प्रश्न व संत से शास्त्र तक', href: '/wisdom-pathways/' },
-  { label: 'दैनिक श्लोक', description: 'Daily Verse — आज का श्लोक WhatsApp पर भेजें', href: '/daily-verse' },
-  { label: 'पंचांग', description: 'दैनिक वैदिक काल व ऋतु', href: '/panchang' },
-  { label: 'अवधारणाएँ', description: 'मुख्य दार्शनिक विचार', href: '/concepts' },
-  { label: 'विषय', description: 'जीवन और साधना के विषय', href: '/wisdom-for-life' },
-  { label: 'पात्र', description: 'कथाओं के प्रमुख चरित्र', href: '/characters' },
-  { label: 'स्थान', description: 'पवित्र और ऐतिहासिक स्थल', href: '/locations' },
-  { label: 'कालखंड', description: 'समयरेखा और परंपरा', href: '/timelines' },
-  { label: 'उत्सव', description: 'पर्व और उनका अर्थ', href: '/festivals' },
-  { label: 'अनुष्ठान', description: 'विधियाँ और परंपराएँ', href: '/rituals' },
-  { label: 'सहयोग व सेवा', description: 'Voluntary Support — प्रत्यक्ष UPI व QR द्वारा धर्म ग्रंथ का संवर्धन', href: '/contribute' },
+  { label: 'दैनिक श्लोक', description: 'Daily Verse — आज का श्लोक WhatsApp पर भेजें', href: '/daily-verse/' },
+  { label: 'वैदिक मुहूर्त निर्णय', description: 'Muhurta Matrix — पंचांग शुद्धि, ताराबल व चन्द्रबल', href: '/panchang/muhurta/' },
+  { label: 'अवधारणाएँ', description: 'मुख्य दार्शनिक विचार', href: '/concepts/' },
+  { label: 'गीता संकल्प साधना', description: '18-दिवसीय व 365-दिवसीय गीता पारायण', href: '/practice/gita-sankalpa/' },
+  { label: 'पात्र', description: 'कथाओं के प्रमुख चरित्र', href: '/characters/' },
+  { label: 'स्थान', description: 'पवित्र और ऐतिहासिक स्थल', href: '/locations/' },
+  { label: 'कालखंड', description: 'समयरेखा और परंपरा', href: '/timelines/' },
+  { label: 'उत्सव', description: 'पर्व और उनका अर्थ', href: '/festivals/' },
+  { label: 'अनुष्ठान', description: 'विधियाँ और परंपराएँ', href: '/rituals/' },
+  { label: 'सहयोग व सेवा', description: 'Voluntary Support — प्रत्यक्ष UPI व QR द्वारा धर्म ग्रंथ का संवर्धन', href: '/contribute/' },
 ];
 
 const desktopPersonalItems = [
@@ -108,12 +109,12 @@ const desktopPersonalItems = [
   { label: 'यात्रा आरम्भ करें', href: '/learn/start/' },
   { label: 'पठन यात्राएँ', href: '/learn/journeys/' },
   { label: 'स्वाध्याय योजनाएँ', href: '/learn/plans/' },
-  { label: 'कथा-दर्शन', href: '/story' },
+  { label: 'कथा-दर्शन', href: '/story/' },
   { label: 'अध्ययन-पटल', href: '/practice/desk/' },
   { label: 'बुकमार्क व नोट्स', href: '/practice/bookmarks/' },
-  { label: 'संग्रह', href: '/collections' },
+  { label: 'संग्रह', href: '/collections/' },
   { label: 'अध्ययन पथ', href: '/learn/#courses' },
-  { label: 'ऐच्छिक सहयोग', href: '/contribute' },
+  { label: 'ऐच्छिक सहयोग', href: '/contribute/' },
 ];
 
 interface DrawerItem {
@@ -209,15 +210,17 @@ export function SiteNav({
 
   const isActive = useCallback(
     (href: string): boolean => {
-      if (href === '/') return pathname === '/';
-      if (href === '/scriptures') {
+      const cleanHref = href.split('#')[0] || '/';
+      const base = cleanHref === '/' ? '/' : cleanHref.replace(/\/+$/, '');
+      const path = !pathname || pathname === '/' ? '/' : pathname.replace(/\/+$/, '');
+      if (base === '/') return path === '/';
+      if (base === '/scriptures') {
         return (
-          pathname === '/scriptures' ||
-          pathname === '/scriptures/' ||
-          (pathname.startsWith('/scripture/') && !pathname.startsWith('/scripture/bhagavadgita'))
+          path === '/scriptures' ||
+          (path.startsWith('/scripture/') && !path.startsWith('/scripture/bhagavadgita'))
         );
       }
-      return pathname.startsWith(href);
+      return path === base || path.startsWith(`${base}/`);
     },
     [pathname],
   );
@@ -455,7 +458,7 @@ export function SiteNav({
       label: 'सम्पूर्ण ग्रंथालय',
       labelEn: 'Scripture Library',
       description: `पुस्तकालय में ${formatCount(libraryVerses)} श्लोक`,
-      href: '/scriptures',
+      href: '/scriptures/',
       icon: BookOpen,
       badge: formatCount(libraryVerses),
       badgeType: 'accent',
@@ -465,7 +468,7 @@ export function SiteNav({
       label: 'श्रीमद्भगवद्गीता',
       labelEn: 'Bhagavad Gita',
       description: `${formatCount(gitaChapters)} अध्याय · ${formatCount(gitaVerses)} श्लोक`,
-      href: '/scripture/bhagavadgita',
+      href: '/scripture/bhagavadgita/',
       icon: Flame,
       badge: `${formatCount(gitaVerses)} श्लोक`,
       badgeType: 'accent',
@@ -475,7 +478,7 @@ export function SiteNav({
       label: 'अष्टावक्र गीता',
       labelEn: 'Ashtavakra Gita',
       description: `${formatCount(ashtavakraChapters)} प्रकरण · ${formatCount(ashtavakraVerses)} श्लोक`,
-      href: '/ashtavakra',
+      href: '/ashtavakra/',
       icon: BookOpen,
       badge: `${formatCount(ashtavakraVerses)} श्लोक`,
       badgeType: 'accent',
@@ -485,31 +488,43 @@ export function SiteNav({
       label: 'स्वाध्याय व सीखें',
       labelEn: 'Learn',
       description: 'अध्ययन पथ, प्रश्नोत्तरी व दर्शन',
-      href: '/learn',
+      href: '/learn/',
       icon: GraduationCap,
     },
     {
       id: 'sadhana',
       label: 'दैनिक साधना',
       labelEn: 'Sadhana',
-      description: 'जप माला, ध्यान, संकल्प व चिंतन',
-      href: '/practice',
+      description: 'जप माला, ध्यान, नादानुसन्धान व चिंतन',
+      href: '/practice/',
       icon: Sparkles,
     },
     {
-      id: 'soundscape',
-      label: 'पवित्र ध्वनि (नादानुसन्धान)',
-      labelEn: 'Sacred Soundscape',
-      description: '432Hz वैदिक तन्पूरा, ॐ ध्यान व ध्यान घंटा',
-      href: '/practice',
-      icon: Radio,
+      id: 'gita-sankalpa',
+      label: 'गीता संकल्प साधना',
+      labelEn: 'Gita Sankalpa',
+      description: '18-दिवसीय व 365-दिवसीय गीता पारायण',
+      href: '/practice/gita-sankalpa/',
+      icon: Flame,
+      badge: 'संकल्प',
+      badgeType: 'accent',
+    },
+    {
+      id: 'mantras',
+      label: 'वैदिक मन्त्र व शान्ति पाठ',
+      labelEn: 'Sacred Mantras',
+      description: 'गायत्री, महामृत्युंजय व उपनिषद् शान्ति पाठ',
+      href: '/mantras/',
+      icon: Sparkles,
+      badge: 'मन्त्र कोश',
+      badgeType: 'accent',
     },
     {
       id: 'wisdom-for-life',
       label: 'जीवन मार्गदर्शन',
       labelEn: 'Wisdom for Life',
       description: '12 जीवन-विषय · उद्वेग, भय, कर्तव्य व आत्मज्ञान',
-      href: '/wisdom-for-life',
+      href: '/wisdom-for-life/',
       icon: Compass,
       badge: 'जीवन-विषय',
       badgeType: 'accent',
@@ -519,7 +534,7 @@ export function SiteNav({
       label: 'धर्म सहायक',
       labelEn: 'Scripture guide',
       description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न',
-      href: '/ask',
+      href: '/ask/',
       icon: BookOpen,
       badge: 'श्लोक से',
       badgeType: 'accent',
@@ -529,7 +544,7 @@ export function SiteNav({
       label: 'वैदिक पंचांग',
       labelEn: 'Panchang',
       description: 'तिथि, पक्ष, नक्षत्र, योग व ऋतु',
-      href: '/panchang',
+      href: '/panchang/',
       icon: Calendar,
     },
     {
@@ -537,7 +552,7 @@ export function SiteNav({
       label: 'उत्सव ज्ञान केंद्र',
       labelEn: 'Festivals',
       description: 'प्रमुख पर्व, व्रत व शास्त्रीय परंपरा',
-      href: '/festivals',
+      href: '/festivals/',
       icon: Star,
     },
     {
@@ -565,7 +580,7 @@ export function SiteNav({
       label: 'ऐच्छिक सहयोग',
       labelEn: 'Support',
       description: 'प्रत्यक्ष UPI व QR द्वारा ग्रंथालय सेवा',
-      href: '/contribute',
+      href: '/contribute/',
       icon: Heart,
     },
   ];
@@ -664,7 +679,7 @@ export function SiteNav({
                     <div
                       id="desktop-discovery-menu"
                       data-closing={discoverMenu.closing || undefined}
-                      className="chrome-pop absolute right-0 top-[calc(100%+0.75rem)] w-[34rem] rounded-2xl border border-dharma-border bg-dharma-card p-3 shadow-2xl z-50"
+                      className="chrome-pop absolute right-0 top-[calc(100%+0.75rem)] w-[34rem] max-w-[calc(100vw-2rem)] max-h-[calc(100dvh-4.5rem)] overflow-y-auto rounded-2xl border border-dharma-border bg-dharma-card p-3 shadow-2xl z-50"
                     >
                       <p className="px-3 pb-2 pt-1 text-xs font-bold uppercase tracking-[0.16em] text-dharma-muted">
                         ज्ञान संसार
@@ -682,19 +697,19 @@ export function SiteNav({
                           >
                             <span className="block text-sm font-bold text-dharma-text">
                               {item.label}
-                            </span>
+                            </span>{' '}
                             <span className="mt-0.5 block text-xs text-dharma-muted">
                               {item.description}
                             </span>
                           </Link>
                         ))}
                       </div>
-                      <div className="mt-2 flex gap-2 border-t border-dharma-border px-2 pt-3">
+                      <div className="mt-2 flex flex-wrap gap-1.5 border-t border-dharma-border px-2 pt-3">
                         {desktopPersonalItems.map((item) => (
                           <Link
                             key={item.href}
                             href={item.href}
-                            className="rounded-lg px-3 py-2 text-xs font-semibold text-dharma-muted transition hover:bg-dharma-bg hover:text-saffron-700"
+                            className="inline-flex min-h-[36px] items-center rounded-lg px-2.5 py-1.5 text-xs font-semibold text-dharma-muted transition hover:bg-dharma-bg hover:text-saffron-700 dark:hover:text-saffron-300"
                           >
                             {item.label}
                           </Link>
@@ -748,7 +763,7 @@ export function SiteNav({
 
               {/* Desktop CTA */}{' '}
               <Link
-                href="/scripture/bhagavadgita"
+                href="/scripture/bhagavadgita/"
                 className="hidden min-[1800px]:inline-flex items-center rounded-full bg-dharma-saffron px-3.5 py-1.5 text-footnote text-dharma-bg transition hover:opacity-90"
               >
                 पठन आरम्भ करें
@@ -779,7 +794,7 @@ export function SiteNav({
                 onClick={() => setThemeMenuOpen((open) => !open)}
                 aria-haspopup="menu"
                 aria-expanded={themeMenuOpen}
-                className="apple-icon-button h-11 w-11 min-h-[44px] min-w-[44px] lg:h-9 lg:w-9 lg:min-h-0 lg:min-w-0"
+                className="apple-icon-button h-11 w-11 min-h-[44px] min-w-[44px] lg:h-9 lg:w-auto lg:min-h-0 lg:min-w-0 lg:px-2.5 lg:gap-1.5"
                 aria-label={`थीम बदलें · Theme: ${THEME_NAMES[theme].name}`}
                 title={`थीम: ${THEME_NAMES[theme].name} · ${THEME_NAMES[theme].hi}`}
               >
@@ -787,7 +802,10 @@ export function SiteNav({
                   key={theme}
                   className={`flex items-center justify-center ${themeTouched ? 'chrome-icon-swap' : ''}`}
                 >
-                  <ThemeIcon className="h-5 w-5" aria-hidden="true" />
+                  <ThemeIcon className="h-5 w-5 lg:h-4 lg:w-4" aria-hidden="true" />
+                </span>{' '}
+                <span lang="hi" className="hidden xl:inline font-devanagari text-xs font-medium text-dharma-text-secondary">
+                  {THEME_NAMES[theme].hi}
                 </span>
               </button>
               {themeMenuOpen && (
@@ -928,13 +946,20 @@ export function SiteNav({
                       मुख्य अनुभाग · Navigation
                     </h3>
                     <span className="text-[10px] text-dharma-muted font-devanagari">
-                      10 पावन विभाग
+                      {drawerSections.length} पावन विभाग
                     </span>
                   </div>
 
                   <div className="space-y-1">
                     {drawerSections.map((item) => {
-                      const active = isActive(item.href);
+                      const hasMoreSpecificMatch = drawerSections.some(
+                        (other) =>
+                          other.id !== item.id &&
+                          other.href.length > item.href.length &&
+                          other.href.startsWith(item.href) &&
+                          isActive(other.href),
+                      );
+                      const active = isActive(item.href) && !hasMoreSpecificMatch;
                       const Icon = item.icon;
 
                       return (
@@ -1182,11 +1207,11 @@ export function SiteNav({
 
           {/* 3. Library */}
           <Link
-            href="/scriptures"
+            href="/scriptures/"
             onClick={() => setTimeout(() => triggerTactileFeedback('light', 'softTap'), 0)}
-            aria-current={isActive('/scriptures') ? 'page' : undefined}
+            aria-current={isActive('/scriptures/') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
-              isActive('/scriptures')
+              isActive('/scriptures/')
                 ? 'text-dharma-saffron'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
@@ -1197,11 +1222,11 @@ export function SiteNav({
 
           {/* 4. Sadhana */}
           <Link
-            href="/practice"
+            href="/practice/"
             onClick={() => setTimeout(() => triggerTactileFeedback('light', 'softTap'), 0)}
-            aria-current={isActive('/practice') ? 'page' : undefined}
+            aria-current={isActive('/practice/') && !isActive('/practice/bookmarks/') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
-              isActive('/practice')
+              isActive('/practice/') && !isActive('/practice/bookmarks/')
                 ? 'text-dharma-saffron'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
