@@ -18,7 +18,7 @@ import { festivals } from '@/data/festivals';
 import { GRANTH_ANSWERS } from '@/data/granth-answers';
 import { getChapterSummaryCollection } from '@/data/chapter-summaries';
 import { SACRED_MANTRAS } from '@/data/mantras';
-import { NAKSHATRA_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES } from '@/lib/panchang';
+import { NAKSHATRA_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES, YOGA_DATA, getAllKaranas } from '@/lib/panchang';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
 
@@ -79,6 +79,8 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/panchang/amavasya', pageDate('/panchang/amavasya')),
     entry('/panchang/nakshatras', pageDate('/panchang/nakshatras', 'lib/panchang.ts')),
     entry('/panchang/tithis', pageDate('/panchang/tithis', 'lib/panchang.ts')),
+    entry('/panchang/yogas', pageDate('/panchang/yogas', 'lib/panchang.ts')),
+    entry('/panchang/karanas', pageDate('/panchang/karanas', 'lib/panchang.ts')),
     entry('/timelines', pageDate('/timelines')),
     entry('/rituals', pageDate('/rituals')),
     entry('/dictionary', pageDate('/dictionary', 'data/dictionary.ts')),
@@ -160,7 +162,13 @@ function pagesSection(): MetadataRoute.Sitemap {
   const tithiDate = lastChanged('lib/panchang.ts', 'app/panchang/tithis/[slug]/page.tsx');
   const tithiRoutes = UNIQUE_TITHI_ARCHETYPES.map((t) => entry(`/panchang/tithis/${t.slug}`, tithiDate));
 
-  return [...staticRoutes, ...mantraRoutes, ...nakshatraRoutes, ...tithiRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
+  const yogaDate = lastChanged('lib/panchang.ts', 'app/panchang/yogas/[slug]/page.tsx');
+  const yogaRoutes = YOGA_DATA.map((y) => entry(`/panchang/yogas/${y.slug}`, yogaDate));
+
+  const karanaDate = lastChanged('lib/panchang.ts', 'app/panchang/karanas/[slug]/page.tsx');
+  const karanaRoutes = getAllKaranas().map((k) => entry(`/panchang/karanas/${k.slug}`, karanaDate));
+
+  return [...staticRoutes, ...mantraRoutes, ...nakshatraRoutes, ...tithiRoutes, ...yogaRoutes, ...karanaRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
 }
 
 /** Scripture landing pages and chapter pages (all seeded + curated chapters), dated by when the scripture's text or commentary last changed. */

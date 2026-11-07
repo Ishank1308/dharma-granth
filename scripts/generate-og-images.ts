@@ -32,7 +32,7 @@ import { readSeededChapter } from "../lib/read-seeded-chapters";
 import { withPassageMeaning } from "../lib/verse-format";
 import { VERSE_PAGE_SCRIPTURE_IDS, verseSlug, verseStaticParams } from "../lib/verse-pages";
 import { SACRED_MANTRAS, type SacredMantra } from "../data/mantras";
-import { NAKSHATRA_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES, type UniqueTithi } from "../lib/panchang";
+import { NAKSHATRA_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES, type UniqueTithi, YOGA_DATA, type YogaMeta, getAllKaranas, type KaranaMeta } from "../lib/panchang";
 
 const ROOT = resolve(__dirname, "..");
 const OUT_DIR = resolve(ROOT, "public/og");
@@ -618,6 +618,236 @@ function tithiOgTemplate(t: UniqueTithi) {
   };
 }
 
+function yogaOgTemplate(y: YogaMeta) {
+  return {
+    type: "div",
+    props: {
+      style: {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "60px 76px",
+        background: "linear-gradient(135deg, #022c22 0%, #064e3b 45%, #059669 100%)",
+        color: "white",
+        fontFamily: "Noto Sans",
+      },
+      children: [
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 20,
+                    opacity: 0.85,
+                    letterSpacing: 6,
+                    textTransform: "uppercase",
+                    marginBottom: 22,
+                  },
+                  children: `Dharma Granth · 27 Nitya Yogas (${y.index + 1}/27)`,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 66,
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    maxWidth: 1050,
+                  },
+                  children: `${y.name} Yoga`,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 42,
+                    marginTop: 18,
+                    opacity: 0.95,
+                    fontFamily: "Noto Sans Devanagari",
+                  },
+                  children: `${y.nameHi} (${y.natureHi})`,
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 23,
+                    opacity: 0.9,
+                    lineHeight: 1.4,
+                    maxWidth: 1040,
+                    marginBottom: 22,
+                  },
+                  children: shortDescription(y.explanation, 170),
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    borderTop: "1px solid rgba(255,255,255,0.2)",
+                    paddingTop: 16,
+                  },
+                  children: [
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85 },
+                        children: `Deity: ${y.deity}`,
+                      },
+                    },
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85 },
+                        children: `Arc: ${y.arc}`,
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  };
+}
+
+function karanaOgTemplate(k: KaranaMeta) {
+  return {
+    type: "div",
+    props: {
+      style: {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "60px 76px",
+        background: "linear-gradient(135deg, #4c0519 0%, #881337 45%, #be123c 100%)",
+        color: "white",
+        fontFamily: "Noto Sans",
+      },
+      children: [
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 20,
+                    opacity: 0.85,
+                    letterSpacing: 6,
+                    textTransform: "uppercase",
+                    marginBottom: 22,
+                  },
+                  children: "Dharma Granth · 11 Vedic Karanas",
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 66,
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    maxWidth: 1050,
+                  },
+                  children: `${k.name} Karana`,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 42,
+                    marginTop: 18,
+                    opacity: 0.95,
+                    fontFamily: "Noto Sans Devanagari",
+                  },
+                  children: `${k.nameHi} (${k.natureHi})`,
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 23,
+                    opacity: 0.9,
+                    lineHeight: 1.4,
+                    maxWidth: 1040,
+                    marginBottom: 22,
+                  },
+                  children: shortDescription(k.explanation, 170),
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    borderTop: "1px solid rgba(255,255,255,0.2)",
+                    paddingTop: 16,
+                  },
+                  children: [
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85 },
+                        children: `Deity: ${k.deity}`,
+                      },
+                    },
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85 },
+                        children: "6° Half-Tithi",
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  };
+}
+
 function hubOgTemplate(title: string, subtitleHi: string, description: string, tag: string, gradient: string) {
   return {
     type: "div",
@@ -750,6 +980,28 @@ async function renderTithis(fonts: SatoriFont[]): Promise<void> {
   console.log(`  ✓ ${UNIQUE_TITHI_ARCHETYPES.length} tithi OG images in public/og/tithi/`);
 }
 
+async function renderYogas(fonts: SatoriFont[]): Promise<void> {
+  const yogaDir = resolve(OUT_DIR, "yoga");
+  mkdirSync(yogaDir, { recursive: true });
+  for (const y of YOGA_DATA) {
+    const svg = await renderSvg(yogaOgTemplate(y), WIDTH, HEIGHT, fonts);
+    const optPng = await svgToOptimizedPng(svg, WIDTH);
+    writeFileSync(resolve(yogaDir, `${y.slug}.png`), optPng);
+  }
+  console.log(`  ✓ ${YOGA_DATA.length} yoga OG images in public/og/yoga/`);
+}
+
+async function renderKaranas(fonts: SatoriFont[]): Promise<void> {
+  const karanaDir = resolve(OUT_DIR, "karana");
+  mkdirSync(karanaDir, { recursive: true });
+  for (const k of getAllKaranas()) {
+    const svg = await renderSvg(karanaOgTemplate(k), WIDTH, HEIGHT, fonts);
+    const optPng = await svgToOptimizedPng(svg, WIDTH);
+    writeFileSync(resolve(karanaDir, `${k.slug}.png`), optPng);
+  }
+  console.log(`  ✓ ${getAllKaranas().length} karana OG images in public/og/karana/`);
+}
+
 async function renderHubCards(fonts: SatoriFont[]): Promise<void> {
   const hubs = [
     {
@@ -775,6 +1027,22 @@ async function renderHubCards(fonts: SatoriFont[]): Promise<void> {
       desc: "The classical 16 lunar phases of the Vedic calendar, categorized across the 5 harmonic Pancha Tithi classes: Nanda, Bhadra, Jaya, Rikta, and Poorna.",
       tag: "Vedic Calendar",
       gradient: "linear-gradient(135deg, #18181b 0%, #27272a 45%, #78350f 100%)",
+    },
+    {
+      file: "yogas.png",
+      title: "The 27 Nitya Yogas",
+      subtitleHi: "27 नित्य योग",
+      desc: "The 27 additive solar-lunar arcs of Vedic astronomy from Vishkambha to Vaidhriti, with presiding deities and svadhyaya contemplation.",
+      tag: "Vedic Astronomy",
+      gradient: "linear-gradient(135deg, #022c22 0%, #064e3b 45%, #059669 100%)",
+    },
+    {
+      file: "karanas.png",
+      title: "The 11 Vedic Karanas",
+      subtitleHi: "11 करण व भद्रा विचार",
+      desc: "Micro-division of the lunar month into 6° half-tithis — 7 movable (Chara) and 4 fixed (Sthira) archetypes, including Bhadra guidelines.",
+      tag: "Vedic Calendar",
+      gradient: "linear-gradient(135deg, #4c0519 0%, #881337 45%, #be123c 100%)",
     },
     {
       file: "panchang.png",
@@ -1137,10 +1405,12 @@ async function main(): Promise<void> {
     return;
   }
   if (process.argv.includes("--sections-only")) {
-    console.log(`[og] rendering section OG images (mantras, nakshatras, tithis, hubs)...`);
+    console.log(`[og] rendering section OG images (mantras, nakshatras, tithis, yogas, karanas, hubs)...`);
     await renderMantras(fonts);
     await renderNakshatras(fonts);
     await renderTithis(fonts);
+    await renderYogas(fonts);
+    await renderKaranas(fonts);
     await renderHubCards(fonts);
     console.log(`[og] section OG images done.`);
     return;
@@ -1152,10 +1422,12 @@ async function main(): Promise<void> {
       await renderOne(meta, fonts);
       process.stdout.write(`  ✓ ${meta.id}\n`);
     }
-    console.log(`[og] rendering section OG images (mantras, nakshatras, tithis, hubs)...`);
+    console.log(`[og] rendering section OG images (mantras, nakshatras, tithis, yogas, karanas, hubs)...`);
     await renderMantras(fonts);
     await renderNakshatras(fonts);
     await renderTithis(fonts);
+    await renderYogas(fonts);
+    await renderKaranas(fonts);
     await renderHubCards(fonts);
   }
   console.log(`[og] rendering brand assets`);
