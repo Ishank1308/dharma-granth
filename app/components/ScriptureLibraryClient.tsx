@@ -372,7 +372,7 @@ export function ScriptureLibraryClient({
                 }}
                 className={`inline-flex shrink-0 items-center rounded-full px-3 py-1 text-xs font-semibold transition active:scale-95 ${
                   isActive
-                    ? 'bg-saffron-500 text-white shadow-xs font-bold'
+                    ? 'bg-saffron-700 text-white shadow-xs font-bold'
                     : 'bg-dharma-text/[0.06] text-dharma-muted hover:bg-dharma-text/[0.1] hover:text-dharma-text'
                 }`}
               >
