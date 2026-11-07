@@ -32,7 +32,7 @@
     "test:life-discovery": "tsx scripts/test-life-discovery.ts",
     "test:journey-wellbeing": "tsx scripts/test-journey-wellbeing.ts",
     "seed:gita": "tsx scripts/seed-bhagavadgita.ts",
-    "seed:ramayana": "tsx scripts/seed-ramayana.ts",
+    "seed:ramayana": "node scripts/seed-ramayana.mjs",
     "seed:ramcharitmanas": "tsx scripts/seed-ramcharitmanas.ts",
     "seed:vedas": "node scripts/seed-rigveda.mjs && node scripts/seed-atharvaveda.mjs && node scripts/seed-yajurveda.mjs",
     "seed:rigveda": "node scripts/seed-rigveda.mjs",
