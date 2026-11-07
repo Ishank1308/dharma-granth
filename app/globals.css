@@ -1538,9 +1538,12 @@
     }
 }
 @media (prefers-reduced-motion: reduce) {
-    /* The global rule collapses durations; just shorten the hold. */
+    /* No splash at all. With the global 0.01ms durations Chromium leaves the
+       fade-out short of its last frame, so the splash stayed `visibility: visible`
+       at opacity ~0: an invisible full-screen layer that ate every tap on the
+       home page (iOS/Android "Reduce motion" turns this on). */
     .splash {
-        animation-delay: 0.8s;
+        display: none;
     }
 }
 /* Streak flame: an irregular flicker (scale + tilt), bottom-anchored. */
