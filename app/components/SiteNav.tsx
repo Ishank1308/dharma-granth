@@ -98,10 +98,10 @@ const desktopDiscoveryItems = [
 ];
 
 const desktopPersonalItems = [
-  { label: 'मेरा डैशबोर्ड', href: '/practice/dashboard/' },
+  { label: 'दैनिक साधना', href: '/practice/' },
+  { label: 'सुरक्षित श्लोक', href: '/practice/bookmarks/' },
+  { label: 'स्वाध्याय डायरी', href: '/practice/journal/' },
   { label: 'कथा-दर्शन', href: '/story/' },
-  { label: 'अध्ययन-पटल', href: '/practice/desk/' },
-  { label: 'बुकमार्क व नोट्स', href: '/practice/bookmarks/' },
   { label: 'संग्रह', href: '/collections/' },
   { label: 'ऐच्छिक सहयोग', href: '/contribute/' },
 ];
@@ -440,19 +440,9 @@ export function SiteNav({
       id: 'sadhana',
       label: 'दैनिक साधना',
       labelEn: 'Sadhana',
-      description: 'जप माला, ध्यान, नादानुसन्धान व चिंतन',
+      description: '108 जप माला, ध्यान साधना, प्राणायाम व चिन्तन',
       href: '/practice/',
       icon: Sparkles,
-    },
-    {
-      id: 'gita-sankalpa',
-      label: 'गीता संकल्प साधना',
-      labelEn: 'Gita Sankalpa',
-      description: '18-दिवसीय व 365-दिवसीय गीता पारायण',
-      href: '/practice/gita-sankalpa/',
-      icon: Flame,
-      badge: 'संकल्प',
-      badgeType: 'accent',
     },
     {
       id: 'mantras',
