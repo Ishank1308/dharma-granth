@@ -9,17 +9,17 @@ export const metadata: Metadata = {
   description:
     'ऋग्वेदीय एवं यजुर्वेदीय श्रावणी उपाकर्म (आवनि अवित्तम) की प्रामाणिक वैदिक विधि — कामोऽकार्षीत् प्रायश्चित्त जप, ब्रह्म-यज्ञ, नूतन यज्ञोपवीत धारण एवं विसर्जन मन्त्र, नौ तन्तुओं का रहस्य और वेद-आरम्भ।',
   alternates: {
-    canonical: 'https://dharmagranth.in/rituals/upakarma/',
+    canonical: 'https://dharmagranth.dev/rituals/upakarma/',
   },
   openGraph: {
     title: 'उपाकर्म एवं यज्ञोपवीत संस्कार विधान · Vedic Upakarma Guide',
     description:
       'श्रावणी उपाकर्म एवं यज्ञोपवीत धारण-विसर्जन विधि — मन्त्र, अर्थ, १०८ जप एवं ९ तन्तुओं का आध्यात्मिक रहस्य।',
-    url: 'https://dharmagranth.in/rituals/upakarma/',
+    url: 'https://dharmagranth.dev/rituals/upakarma/',
     siteName: 'Dharma Granth',
     images: [
       {
-        url: 'https://dharmagranth.in/og/upakarma.png',
+        url: 'https://dharmagranth.dev/og/upakarma.png',
         width: 1200,
         height: 630,
         alt: 'Vedic Upakarma & Yajnopavita Sanskara Guide',
@@ -41,19 +41,19 @@ export default function UpakarmaPage() {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://dharmagranth.in/',
+            item: 'https://dharmagranth.dev/',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Rituals & Sanskaras',
-            item: 'https://dharmagranth.in/rituals/',
+            item: 'https://dharmagranth.dev/rituals/',
           },
           {
             '@type': 'ListItem',
             position: 3,
             name: 'Upakarma & Yajnopavita',
-            item: 'https://dharmagranth.in/rituals/upakarma/',
+            item: 'https://dharmagranth.dev/rituals/upakarma/',
           },
         ],
       },
