@@ -89,4 +89,10 @@ assert.ok(vyatipata, 'searching vyatipata should direct to /panchang/yogas/vyati
 const vishti = searchCoreIndex('vishti').find(({ item }) => item.href === '/panchang/karanas/vishti/');
 assert.ok(vishti, 'searching vishti should direct to /panchang/karanas/vishti/');
 
+const argala = searchCoreIndex('argala').find(({ item }) => item.href === '/mantras/argala-stotram/');
+assert.ok(argala, 'searching argala should direct to /mantras/argala-stotram/');
+
+const kavacham = searchCoreIndex('kavacham').find(({ item }) => item.href === '/mantras/devi-kavacham/');
+assert.ok(kavacham, 'searching kavacham should find devi-kavacham');
+
 console.log('search query checks passed');

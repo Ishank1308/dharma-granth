@@ -1123,6 +1123,250 @@ turata ṣaḍānana āpa paṭhāyau | lavanimeṣa maha~ māri girāyau ||
       },
     ],
   },
+  {
+    id: 'argala-stotram',
+    slug: 'argala-stotram',
+    title: 'Argala Stotram',
+    titleHi: 'अर्गलास्तोत्रम्',
+    sanskrit: `ॐ जयन्ती मङ्गला काली भद्रकाली कपालिनी ।
+दुर्गा क्षमा शिवा धात्री स्वाहा स्वधा नमोऽस्तु ते ॥ १ ॥
+जय त्वं देवि चामुण्डे जय भूतार्तिहारिणि ।
+जय सर्वगते देवि कालरात्रि नमोऽस्तु ते ॥ २ ॥
+मधुकैटभविध्वंसि विधातृवरदे नमः ।
+रूपं देहि जयं देहि यशो देहि द्विषो जहि ॥ ३ ॥
+महिषासुरनिर्णशि भक्तानां सुखदे नमः ।
+रूपं देहि जयं देहि यशो देहि द्विषो जहि ॥ ४ ॥
+रक्तबीजवधे देवि चण्डमुण्डविनाशिनि ।
+रूपं देहि जयं देहि यशो देहि द्विषो जहि ॥ ५ ॥`,
+    transliteration: `oṃ jayantī maṅgalā kālī bhadrakālī kapālinī |
+durgā kṣamā śivā dhātrī svāhā svadhā namo'stu te || 1 ||
+jaya tvaṃ devi cāmuṇḍe jaya bhūtārtihāriṇi |
+jaya sarvagate devi kālarātri namo'stu te || 2 ||
+madhukaiṭabhavidhvaṃsi vidhātṛvarade namaḥ |
+rūpaṃ dehi jayaṃ dehi yaśo dehi dviṣo jahi || 3 ||
+mahiṣāsuranirṇaśi bhaktānāṃ sukhade namaḥ |
+rūpaṃ dehi jayaṃ dehi yaśo dehi dviṣo jahi || 4 ||
+raktabījavadhe devi caṇḍamuṇḍavināśini |
+rūpaṃ dehi jayaṃ dehi yaśo dehi dviṣo jahi || 5 ||`,
+    category: 'stotra',
+    categoryLabel: 'Devi Mahatmya Anga',
+    categoryLabelHi: 'सप्तशती अङ्ग स्तोत्र',
+    rishi: 'मार्कण्डेय ऋषि (Rishi Markandeya)',
+    devata: 'भगवती महालक्ष्मी / चण्डिका (Mahalakshmi / Chandika)',
+    chhandas: 'अनुष्टुप् (Anushtup)',
+    source: 'Markandeya Purana / Durga Saptashati',
+    sourceCoordinates: 'Durga Saptashati Anga, Argala Stotram 1-5',
+    sourceHref: '/scripture/durgasaptashati/',
+    wordMeanings: [
+      { sanskrit: 'जयन्ती', iast: 'jayantī', hindi: 'सर्वोत्कृष्ट विजयशालिनी', english: 'The Supremely Victorious' },
+      { sanskrit: 'मङ्गला', iast: 'maṅgalā', hindi: 'मोक्ष और परम कल्याण प्रदान करने वाली', english: 'Giver of Auspicious Liberation' },
+      { sanskrit: 'काली', iast: 'kālī', hindi: 'सम्पूर्ण प्रपंच को विलीन करने वाली', english: 'Who dissolves all cosmic illusion' },
+      { sanskrit: 'भद्रकाली', iast: 'bhadrakālī', hindi: 'भक्तों को भद्र (कल्याण) देने वाली', english: 'Gracious protector of devotees' },
+      { sanskrit: 'कपालिनी', iast: 'kapālinī', hindi: 'हाथ में मुण्डमाला व खप्पर धारण करने वाली', english: 'Bearer of the sacred skull' },
+      { sanskrit: 'दुर्गा क्षमा शिवा धात्री', iast: 'durgā kṣamā śivā dhātrī', hindi: 'दुर्गम संकटों को हरने वाली, क्षमाशीला, परम मंगलमयी और विश्व का पोषण करने वाली', english: 'Dispeller of distress, Forgiving, Auspicious, and Sustainer' },
+      { sanskrit: 'स्वाहा स्वधा', iast: 'svāhā svadhā', hindi: 'देवयज्ञ (स्वाहा) व पितृयज्ञ (स्वधा) स्वरूपा', english: 'Embodiment of divine (Svaha) and ancestral (Svadha) oblations' },
+      { sanskrit: 'रूपं देहि जयं देहि', iast: 'rūpaṃ dehi jayaṃ dehi', hindi: 'मुझे आत्मस्वरूप का ज्ञान दीजिए, काम-क्रोधादि पर विजय दीजिए', english: 'Grant me spiritual radiance, grant me victory over inner enemies' },
+      { sanskrit: 'यशो देहि द्विषो जहि', iast: 'yaśo dehi dviṣo jahi', hindi: 'मुझे दिव्य सुयश दीजिए और काम-क्रोध रूपी आंतरिक शत्रुओं का नाश कीजिए', english: 'Grant me righteous glory, and conquer my negative afflictions' },
+    ],
+    hindiMeaning: 'हे जयन्ती, मङ्गला, काली, भद्रकाली, कपालिनी, दुर्गा, क्षमा, शिवा, धात्री, स्वाहा और स्वधा—इन ग्यारह नामों से प्रसिद्ध जगदम्बिके! आपको सादर नमस्कार है। हे देवि चामुण्डे! आपकी जय हो। हे समस्त प्राणियों की पीड़ा हरने वाली! आपकी जय हो। हे सर्वव्यापी देवि! हे कालरात्रि! आपको मेरा प्रणाम है। हे मधु और कैटभ का संहार करने वाली तथा ब्रह्मा जी को वरदान देने वाली भगवती! आप मुझे आत्म-ज्ञानरूपी रूप दीजिए, विजय दीजिए, सुयश दीजिए और मेरे आंतरिक शत्रुओं (काम, क्रोध, लोभ, मोह) का संहार कीजिए।',
+    englishMeaning: 'Salutations unto You, O Goddess, celebrated by eleven sacred names: Jayanti (The Victorious), Mangala (Auspicious Liberator), Kali (Cosmic Dissolver), Bhadrakali (Benevolent Mother), Kapalini, Durga (Reliever of Perils), Kshama (Forgiveness Incarnate), Shiva (Auspiciousness), Dhatri (Cosmic Sustainer), Svaha (Oblation to Gods), and Svadha (Oblation to Ancestors). Victory unto You, O Chamunda! Victory unto You who dispels the affliction of all beings! O all-pervading Goddess Kalaratri, salutations to You. Slayer of Madhu and Kaitabha, Bestower of boons to Brahma: bestow upon us spiritual radiance, bestow inner victory, bestow divine honor, and eradicate our inner adversaries (ego, anger, and delusion).',
+    significance: 'The Argala Stotram is an indispensable preliminary hymn to the Durga Saptashati. \'Argala\' literally means a \'bolt\' or \'latch\' that bars a doorway. Chanting the Argala unlocks the protective spiritual bolts of the heart and mind, dissolving subconscious resistance so that the sublime teachings of the Devi Mahatmya can take root. The refrain \'Rupam dehi, Jayam dehi\' is a prayer not for mere outward vanity, but for the true spiritual form (Svarupa) and triumph over the senses.',
+    significanceHi: 'अर्गला का शाब्दिक अर्थ है \'कुंडी\' या \'अवरोधक छड़\'। जिस प्रकार द्वार पर लगी अर्गला को हटाए बिना भवन में प्रवेश संभव नहीं होता, उसी प्रकार अर्गला स्तोत्र के पाठ से साधक के अंतःकरण के संशय, भय और अज्ञान के ताले खुलते हैं। \'रूपं देहि जयं देहि\' प्रार्थना में रूप का अर्थ भौतिक सौंदर्य नहीं, अपितु आत्मस्वरूप का साक्षात्कार तथा जय का अर्थ अंतःशत्रुओं पर विजय है।',
+    faqs: [
+      {
+        question: 'What does "Argala" mean in the context of the Durga Saptashati?',
+        answer: '‘Argala’ means a wooden or iron bolt that locks a gate. The Argala Stotram removes the spiritual bolts and inner blockages hindering the fruit of scripture recitation.',
+      },
+      {
+        question: 'What does the refrain "Rupam Dehi, Jayam Dehi, Yasho Dehi, Dvisho Jahi" mean?',
+        answer: 'It is a prayer to Mother Durga for four spiritual boons: divine spiritual beauty and self-knowledge (Rupa), victory over ego and passions (Jaya), unblemished spiritual glory (Yasha), and the destruction of negative mental vices (Dvisha).',
+      },
+    ],
+  },
+  {
+    id: 'devi-kavacham',
+    slug: 'devi-kavacham',
+    title: 'Devi Kavacham (Chandi Kavach)',
+    titleHi: 'देवीकवचम् (चण्डी कवच)',
+    sanskrit: `यद्गुह्यं परमं लोके सर्वरक्षाकरं नृणाम् ।
+यन्न कस्यचिदाख्यातं तन्मे ब्रूहि पितामह ॥ १ ॥
+ब्रह्मोवाच ।
+अस्ति गुह्यतमं विप्र सर्वभूतोपकारकम् ।
+देव्यास्तु कवचं पुण्यं तच्छृणुष्व महामुने ॥ २ ॥
+प्रथमं शैलपुत्री च द्वितीयं ब्रह्मचारिणी ।
+तृतीयं चन्द्रघण्टेति कूष्माण्डेति चतुर्थकम् ॥ ३ ॥
+पञ्चमं स्कन्दमातेति षष्ठं कात्यायनीति च ।
+सप्तमं कालरात्रीति महागौरीति चाष्टमम् ॥ ४ ॥
+नवमं सिद्धिदात्री च नवदुर्गाः प्रकीर्तिताः ।
+उक्तान्येतानि नामानि ब्रह्मणैव महात्मना ॥ ५ ॥`,
+    transliteration: `yadguhyaṃ paramaṃ loke sarvarakṣākaraṃ nṛṇām |
+yanna kasyacidākhyātaṃ tanme brūhi pitāmaha || 1 ||
+brahmovāca |
+asti guhyatamaṃ vipra sarvabhūtopakārakam |
+devyāstu kavacaṃ puṇyaṃ tacchṛṇuṣva mahāmune || 2 ||
+prathamaṃ śailaputrī ca dvitīyaṃ brahmacāriṇī |
+tṛtīyaṃ candraghaṇṭeti kūṣmāṇḍeti caturthakam || 3 ||
+pañcamaṃ skandamāteti ṣaṣṭhaṃ kātyāyanīti ca |
+saptamaṃ kālarātrīti mahāgaurīti cāṣṭamam || 4 ||
+navamaṃ siddhidātrī ca navadurgāḥ prakīrtitāḥ |
+uktānyetāni nāmāni brahmaṇaiva mahātmanā || 5 ||`,
+    category: 'stotra',
+    categoryLabel: 'Devi Mahatmya Anga',
+    categoryLabelHi: 'सप्तशती अङ्ग स्तोत्र',
+    rishi: 'ब्रह्मा जी (Lord Brahma to Sage Markandeya)',
+    devata: 'नवदुर्गा / चण्डिका (The Nine Durgas / Chandika)',
+    chhandas: 'अनुष्टुप् (Anushtup)',
+    source: 'Varaha Purana / Durga Saptashati Tradition',
+    sourceCoordinates: 'Durga Saptashati Anga, Devi Kavacham 1-5',
+    sourceHref: '/scripture/durgasaptashati/',
+    wordMeanings: [
+      { sanskrit: 'यद्गुह्यं परमं लोके', iast: 'yadguhyaṃ paramaṃ loke', hindi: 'जो संसार में परम गोपनीय है', english: 'That which is supremely hidden in the world' },
+      { sanskrit: 'सर्वरक्षाकरं नृणाम्', iast: 'sarvarakṣākaraṃ nṛṇām', hindi: 'और मनुष्यों की सब प्रकार से रक्षा करने वाला है', english: 'And protects human beings from every affliction' },
+      { sanskrit: 'तच्छृणुष्व महामुने', iast: 'tacchṛṇuṣva mahāmune', hindi: 'हे महामुने! उस पावन कवच को आप श्रवण करें', english: 'O great sage, listen attentively to that holy armor' },
+      { sanskrit: 'प्रथमं शैलपुत्री', iast: 'prathamaṃ śailaputrī', hindi: 'प्रथम रूप शैलपुत्री है', english: 'The first manifestation is Shailaputri' },
+      { sanskrit: 'द्वितीयं ब्रह्मचारिणी', iast: 'dvitīyaṃ brahmacāriṇī', hindi: 'द्वितीय रूप ब्रह्मचारिणी है', english: 'The second is Brahmacharini' },
+      { sanskrit: 'तृतीयं चन्द्रघण्टा', iast: 'tṛtīyaṃ candraghaṇṭā', hindi: 'तृतीय रूप चन्द्रघण्टा है', english: 'The third is Chandraghanta' },
+      { sanskrit: 'कूष्माण्डेति चतुर्थकम्', iast: 'kūṣmāṇḍeti caturthakam', hindi: 'चतुर्थ रूप कूष्माण्डा है', english: 'The fourth is Kushmanda' },
+      { sanskrit: 'पञ्चमं स्कन्दमाता', iast: 'pañcamaṃ skandamātā', hindi: 'पाँचवाँ रूप स्कन्दमाता है', english: 'The fifth is Skandamata' },
+      { sanskrit: 'षष्ठं कात्यायनी', iast: 'ṣaṣṭhaṃ kātyāyanī', hindi: 'छठा रूप कात्यायनी है', english: 'The sixth is Katyayani' },
+      { sanskrit: 'सप्तमं कालरात्रि', iast: 'saptamaṃ kālarātri', hindi: 'सातवाँ रूप कालरात्रि है', english: 'The seventh is Kalaratri' },
+      { sanskrit: 'अष्टमं महागौरी', iast: 'aṣṭamaṃ mahāgaurī', hindi: 'आठवाँ रूप महागौरी है', english: 'The eighth is Mahagauri' },
+      { sanskrit: 'नवमं सिद्धिदात्री', iast: 'navamaṃ siddhidātrī', hindi: 'नवां रूप सिद्धिदात्री है', english: 'The ninth is Siddhidatri' },
+      { sanskrit: 'नवदुर्गाः प्रकीर्तिताः', iast: 'navadurgāḥ prakīrtitāḥ', hindi: 'ये नवदुर्गा के नाम से विख्यात हैं', english: 'These are celebrated as the Nine Forms of Durga' },
+    ],
+    hindiMeaning: 'मार्कण्डेय जी ने पूछा: हे पितामह! जो साधन इस संसार में परम गोपनीय हो और मनुष्यों की सब संकटों से रक्षा करने वाला हो, वह मुझे बताइए। ब्रह्मा जी ने कहा: हे विप्र! समस्त प्राणियों का उपकार करने वाला देवी का परम पवित्र कवच अत्यंत गोपनीय है, उसे आप ध्यानपूर्वक सुनें। महामना ब्रह्मा जी ने भगवती दुर्गा के नौ पावन रूपों का वर्णन किया है—प्रथम शैलपुत्री, द्वितीय ब्रह्मचारिणी, तृतीय चन्द्रघण्टा, चतुर्थ कूष्माण्डा, पंचम स्कन्दमाता, षष्ठ कात्यायनी, सप्तम कालरात्रि, अष्टम महागौरी तथा नवम सिद्धिदात्री। ये नवदुर्गा नाम से जगत् में विख्यात हैं।',
+    englishMeaning: 'Sage Markandeya asked: O Grandfather Brahma! Graciously reveal to me that which is supremely secret in this universe, yet bestows complete protection against all perils upon human beings. Lord Brahma said: O venerable sage, there exists a supremely sacred Armor (Kavacham) of the Divine Mother that confers boundless protection on all beings. Hear it with devotion. The great Lord Brahma has proclaimed the nine resplendent forms of Goddess Durga: First Shailaputri, second Brahmacharini, third Chandraghanta, fourth Kushmanda, fifth Skandamata, sixth Katyayani, seventh Kalaratri, eighth Mahagauri, and ninth Siddhidatri. These are celebrated as the sacred Nava Durga.',
+    significance: 'The Devi Kavacham (also known as the Chandi Kavach) is an esoteric armor forming the premier preparatory limb of the Durga Saptashati. It systematically invokes different aspects of the Divine Mother to guard every organ, limb, cognitive faculty, and subtle energy channel against physical harm, psychic vulnerability, and fear. The recitation of the nine names of Nava Durga establishes harmonious mental stillness.',
+    significanceHi: 'देवीकवचम् दुर्गासप्तशती का प्रथम एवं सर्वाधिक प्रभावशाली रक्षा-कवच है। इसमें साधक के सिर, नेत्र, जिह्वा, हृदय, नाभि से लेकर समस्त प्राणों और इंद्रियों की रक्षा हेतु जगदम्बा के विविध स्वरूपों का आह्वान किया जाता है। नवदुर्गा के नौ नामों का स्मरण जीवन में स्थिरता, तेज, और निर्भयता का संचार करता है।',
+    faqs: [
+      {
+        question: 'What are the Nine Forms of Durga (Navadurga) enumerated in the Devi Kavacham?',
+        answer: 'They are: 1. Shailaputri, 2. Brahmacharini, 3. Chandraghanta, 4. Kushmanda, 5. Skandamata, 6. Katyayani, 7. Kalaratri, 8. Mahagauri, and 9. Siddhidatri.',
+      },
+      {
+        question: 'Why is the Kavacham recited before reading the Durga Saptashati?',
+        answer: 'Just as a warrior puts on armor before entering battle, a spiritual seeker recites the Kavacham to establish an impenetrable mental shield of divine consciousness before undertaking powerful scriptural recitation.',
+      },
+    ],
+  },
+  {
+    id: 'keelaka-stotram',
+    slug: 'keelaka-stotram',
+    title: 'Keelaka Stotram',
+    titleHi: 'कीलकस्तोत्रम्',
+    sanskrit: `ॐ विशुद्धज्ञानदेहाय त्रिवेदीदिव्यचक्षुषे ।
+श्रेयःप्राप्तिनिमित्ताय नमः सोमार्धधारिणे ॥ १ ॥
+सर्वमेतद्विजानीयान्मन्त्राणामभिकीलकम् ।
+सोऽपि क्षेममवाप्नोति स्तुत्यं जप्यमनन्यधीः ॥ २ ॥
+सिद्ध्यन्त्युच्चाटनादीनि वस्तूनि सकलान्यपि ।
+एतेन स्तुवतां देवीं स्तोत्रमात्रेण सिद्ध्यति ॥ ३ ॥
+न मन्त्रो नौषधं तत्र न किञ्चिदपि विद्यते ।
+विना जप्येन सिद्ध्येत सर्वमुच्चाटनादिकम् ॥ ४ ॥
+जनेन च समायुक्तं सर्वतो भगवद्वचः ।
+गोपनीयं प्रयत्नेन प्रकाशं जननान्वितम् ॥ ५ ॥`,
+    transliteration: `oṃ viśuddhajnānadehāya trivedīdivyacakṣuṣe |
+śreyaḥprāptinimittāya namaḥ somārdhadhāriṇe || 1 ||
+sarvametadvijānīyānmantrāṇāmabhikīlakam |
+so'pi kṣemamavāpnoti stutyaṃ japyam ananyadhīḥ || 2 ||
+siddhyantyuccāṭanādīni vastūni sakalānyapi |
+etena stuvatāṃ devīṃ stotramātreṇa siddhyati || 3 ||
+na mantro nauṣadhaṃ tatra na kiñcidapi vidyate |
+vinā japyena siddhyeta sarvamuccāṭanādikam || 4 ||
+janena ca samāyuktaṃ sarvato bhagavadvacaḥ |
+gopanīyaṃ prayatnena prakāśaṃ jananānvitam || 5 ||`,
+    category: 'stotra',
+    categoryLabel: 'Devi Mahatmya Anga',
+    categoryLabelHi: 'सप्तशती अङ्ग स्तोत्र',
+    rishi: 'ऋषि मार्कण्डेय (Rishi Markandeya)',
+    devata: 'महासरस्वती / चण्डिका (Mahasaraswati / Chandika)',
+    chhandas: 'अनुष्टुप् (Anushtup)',
+    source: 'Markandeya Purana / Durga Saptashati Tradition',
+    sourceCoordinates: 'Durga Saptashati Anga, Keelaka Stotram 1-5',
+    sourceHref: '/scripture/durgasaptashati/',
+    wordMeanings: [
+      { sanskrit: 'विशुद्धज्ञानदेहाय', iast: 'viśuddhajnānadehāya', hindi: 'विशुद्ध ज्ञान ही जिनका दिव्य शरीर है', english: 'Whose divine form is pure knowledge' },
+      { sanskrit: 'त्रिवेदीदिव्यचक्षुषे', iast: 'trivedīdivyacakṣuṣe', hindi: 'तीनों वेद ही जिनके दिव्य नेत्र हैं', english: 'Whose divine eyes are the three Vedas' },
+      { sanskrit: 'श्रेयःप्राप्तिनिमित्ताय', iast: 'śreyaḥprāptinimittāya', hindi: 'जो परम कल्याण (मोक्ष) की प्राप्ति के मूल हेतु हैं', english: 'The cause of attaining supreme spiritual beatitude' },
+      { sanskrit: 'सोमार्धधारिणे नमः', iast: 'somārdhadhāriṇe namaḥ', hindi: 'मस्तक पर अर्धचन्द्र धारण करने वाले भगवान् शिव को नमस्कार है', english: 'Salutations to Lord Shiva who bears the crescent moon' },
+      { sanskrit: 'मन्त्राणामभिकीलकम्', iast: 'mantrāṇāmabhikīlakam', hindi: 'सम्पूर्ण मन्त्रों के कीलक (गोपनीय बीज) को', english: 'The profound spiritual pin (Keelaka) of all mantras' },
+      { sanskrit: 'स्तोत्रमात्रेण सिद्ध्यति', iast: 'stotramātreṇa siddhyati', hindi: 'केवल इस स्तोत्र के पाठ से ही सब सिद्ध हो जाता है', english: 'Everything is attained through the pure recitation of this hymn' },
+    ],
+    hindiMeaning: 'विशुद्ध ज्ञान ही जिनका दिव्य शरीर है, तीनों वेद (ऋग्, यजुः, साम) ही जिनके दिव्य नेत्र हैं, जो मोक्ष और परम कल्याण की प्राप्ति के एकमात्र कारण हैं तथा जो मस्तक पर अर्धचन्द्र धारण करते हैं—उन भगवान् शिव को सादर नमस्कार है। इस स्तोत्र को मन्त्रों का कीलक (कील / गुप्त कुञ्जी) जानना चाहिए। जो साधक अनन्य चित्त होकर इस सप्तशती का पाठ करता है, वह परम कल्याण को प्राप्त होता है। उसे किसी अन्य साधन, तंत्र या औषधि की आवश्यकता नहीं रहती; केवल भगवती के इस पावन स्तोत्र के निष्काम पाठ से ही आत्म-सिद्धि और समस्त विघ्नों की शांति हो जाती है।',
+    englishMeaning: 'Salutations to Lord Shiva, whose embodiment is pure transcendental knowledge, whose divine eyes are the three sacred Vedas, who is the sole cause of attaining supreme spiritual beatitude (Shreyas), and who wears the graceful crescent moon upon His crown. One should understand this hymn as the Keelaka (the esoteric pin or master-key) of all sacred mantras. Whoever recites the praise of the Goddess with single-minded devotion attains supreme well-being. For that seeker, no complex rites or external devices are needed; through this pure recitation alone, spiritual mastery and the cessation of obstacles are attained.',
+    significance: 'The Keelaka Stotram is the third foundational Anga of the Durga Saptashati. \'Keelaka\' signifies a wedge, pin, or lock. In scriptural lore, Lord Shiva sealed the tremendous energy of the Chandi mantras so that they would not be misused for selfish harm. The Keelaka Stotram is the sacred code that \'unpins\' (nishkilana) this seal for the righteous, sincere practitioner, unlocking the boundless compassionate grace of the Divine Mother.',
+    significanceHi: 'कीलक का अर्थ है \'कील\' या \'खूंटा\'। भगवान् शिव ने चण्डी मन्त्रों के अपार तेज को कीलित (गोपित) कर दिया था ताकि कोई स्वार्थी वृत्ति से इसका दुरुपयोग न कर सके। कीलक स्तोत्र का पाठ निष्काम साधक के लिए उस कील को हटाकर मन्त्र की आध्यात्मिक चेतना को जाग्रत करता है, जिससे पाठ का पूर्ण फल प्राप्त होता है।',
+    faqs: [
+      {
+        question: 'What does "Keelaka" mean in the Durga Saptashati?',
+        answer: '‘Keelaka’ means the spiritual pin or lock. It unlocks the sealed divine power of the Chandi recitation for righteous, devotional seekers.',
+      },
+      {
+        question: 'To whom is the opening verse of the Keelaka Stotram addressed?',
+        answer: 'It is addressed to Lord Shiva (Chandrashekhara), who embodies pure transcendent knowledge and whose eyes are the three Vedas.',
+      },
+    ],
+  },
+  {
+    id: 'tantroktam-ratri-suktam',
+    slug: 'tantroktam-ratri-suktam',
+    title: 'Tantroktam Ratri Suktam',
+    titleHi: 'तन्त्रोक्तं रात्रिसूक्तम्',
+    sanskrit: `ॐ विश्वेश्वरीं जगद्धात्रीं स्थितिसंहारकारिणीम् ।
+निद्रां भगवतीं विष्णोरतुलां तेजसः प्रभुः ॥ १ ॥
+ब्रह्मोवाच ।
+त्वं स्वाहा त्वं स्वधा त्वं हि वषट्कारः स्वरात्मिका ।
+सुधा त्वमक्षरे नित्ये त्रिधा मात्रात्मिका स्थिता ॥ २ ॥
+अर्धमात्रा स्थिता नित्या यानुच्चार्या विशेषतः ।
+त्वमेव सन्ध्या सावित्री त्वं देवि जननी परा ॥ ३ ॥
+त्वयैतद्धार्यते विश्वं त्वयैतत्सृज्यते जगत् ।
+त्वयैतत्पाल्यते देवि त्वमत्स्यन्ते च सर्वदा ॥ ४ ॥
+विमर्शिनी महाविद्या महामाया महामेधा महास्मृतिः ।
+महामोहरूपा च भवती महादेवी महेश्वरी ॥ ५ ॥`,
+    transliteration: `oṃ viśveśvarīṃ jagaddhātrīṃ sthitisaṃhārakāriṇīm |
+nidrāṃ bhagavatīṃ viṣṇoratulāṃ tejasaḥ prabhuḥ || 1 ||
+brahmovāca |
+tvaṃ svāhā tvaṃ svadhā tvaṃ hi vaṣaṭkāraḥ svarātmikā |
+sudhā tvamakṣare nitye tridhā mātrātmikā sthitā || 2 ||
+ardhamātrā sthitā nityā yānuccāryā viśeṣataḥ |
+tvameva sandhyā sāvitrī tvaṃ devi jananī parā || 3 ||
+tvayaitaddhāryate viśvaṃ tvayaitatsṛjyate jagat |
+tvayaitatpālyate devi tvamatsyante ca sarvadā || 4 ||
+vimarśinī mahāvidyā mahāmāyā mahāmedhā mahāsmṛtiḥ |
+mahāmoharūpā ca bhavatī mahādevī maheśvarī || 5 ||`,
+    category: 'vedic',
+    categoryLabel: 'Devi Mahatmya Sukta',
+    categoryLabelHi: 'रात्रिसूक्त पाठ',
+    rishi: 'ब्रह्मा जी (Lord Brahma in Brahmanda)',
+    devata: 'महामाया / योगनिद्रा (Yoganidra / Mahamaya)',
+    chhandas: 'अनुष्टुप् (Anushtup)',
+    source: 'Markandeya Purana / Devi Mahatmya Chapter 1',
+    sourceCoordinates: 'Durga Saptashati, Chapter 1, Brahma Stuti 72-76',
+    sourceHref: '/scripture/durgasaptashati/chapter/1/',
+    wordMeanings: [
+      { sanskrit: 'विश्वेश्वरीं जगद्धात्रीं', iast: 'viśveśvarīṃ jagaddhātrīm', hindi: 'सम्पूर्ण विश्व की अधीश्वरी तथा जगत् को धारण करने वाली', english: 'Sovereign Queen and Sustainer of the Cosmos' },
+      { sanskrit: 'स्थितिसंहारकारिणीम्', iast: 'sthitisaṃhārakāriṇīm', hindi: 'सृष्टि की स्थिति और प्रलय करने वाली', english: 'Cause of preservation and dissolution' },
+      { sanskrit: 'निद्रां भगवतीं विष्णोः', iast: 'nidrāṃ bhagavatīṃ viṣṇoḥ', hindi: 'भगवान् विष्णु की योगनिद्रा स्वरूपा भगवती', english: 'Goddess Yoganidra of Lord Vishnu' },
+      { sanskrit: 'त्वं स्वाहा त्वं स्वधा', iast: 'tvaṃ svāhā tvaṃ svadhā', hindi: 'आप ही स्वाहा हैं, आप ही स्वधा हैं', english: 'You alone are Svaha and Svadha' },
+      { sanskrit: 'वषट्कारः स्वरात्मिका', iast: 'vaṣaṭkāraḥ svarātmikā', hindi: 'आप ही वषट्कार और स्वरों की आत्मा हैं', english: 'You are Vashatkara and the soul of all sound' },
+      { sanskrit: 'त्रिधा मात्रात्मिका स्थिता', iast: 'tridhā mātrātmikā sthitā', hindi: 'आप ही प्रणव (ॐ) की तीन मात्राओं (अ, उ, म्) रूप में स्थित हैं', english: 'You abide as the three measures of Pranava (A, U, M)' },
+      { sanskrit: 'अर्धमात्रा स्थिता नित्या', iast: 'ardhamātrā sthitā nityā', hindi: 'आप ही अनिर्वचनीय नित्य अर्धमात्रा (नाद-बिन्दु) हैं', english: 'You are the eternal transcendent half-measure (Ardhamatra)' },
+      { sanskrit: 'महाविद्या महामाया', iast: 'mahāvidyā mahāmāyā', hindi: 'आप ही परम विद्या, महामाया और महान् स्मृति हैं', english: 'You are Supreme Wisdom, Mahamaya, and Cosmic Memory' },
+    ],
+    hindiMeaning: 'ब्रह्मा जी ने योगनिद्रा की स्तुति करते हुए कहा: हे विश्वेश्वरी! आप ही जगत् को धारण करने वाली, स्थिति और संहार करने वाली पराशक्ति हैं। आप ही स्वाहा, स्वधा और वषट्कार हैं। आप ही ओंकार (ॐ) की तीन मात्राएँ (अकार, उकार, मकार) और परम नित्य, अनिर्वचनीय अर्धमात्रा हैं। आप ही सन्ध्या, सावित्री और परम जननी हैं। आप ही इस सम्पूर्ण चराचर जगत् को धारण करती हैं, रचती हैं, इसका पालन करती हैं और अंत में सबको अपने भीतर समेट लेती हैं। हे महादेवी! आप ही महाविद्या, महामाया, महामेधा और महेश्वरी हैं।',
+    englishMeaning: 'Lord Brahma prayed to Goddess Yoganidra: You are the sovereign Ruler of the universe, the Mother who sustains all creation, and the primordial cause of cosmic subsistence and dissolution. You are Svaha, You are Svadha, and You are the sacred utterance Vashatkara. In the imperishable Pranava (Om), You abide as the three syllables (A, U, M) and as the transcendent, unutterable half-measure (Ardhamatra). You are the sacred twilight contemplation (Sandhya), You are Savitri, and You are the supreme Mother. By You alone is this cosmos upheld, by You is it created, by You is it nurtured, and by You is it drawn back at the close of time. You are Mahavidya, Mahamaya, supreme memory, and the sovereign Goddess Maheshvari.',
+    significance: 'The Tantroktam Ratri Suktam is the mystical invocation uttered by Lord Brahma when the universe was inundated in the causal ocean (Pralaya) and the demons Madhu and Kaitabha arose to slay Him. Brahma praised Mahamaya (Yoganidra) to release Her gentle slumber over Lord Vishnu so that the Preserver could awake and establish cosmic dharma. It illuminates how even the cosmic architects depend entirely upon Divine Consciousness.',
+    significanceHi: 'तन्त्रोक्तं रात्रिसूक्तम् प्रलयकाल में ब्रह्मा जी द्वारा भगवान् विष्णु के नेत्रों में स्थित योगनिद्रा की स्तुति है। जब मधु और कैटभ नामक असुरों ने ब्रह्मा जी पर आक्रमण किया, तब ब्रह्मा जी ने इस स्तुति द्वारा महामाया को प्रसन्न कर भगवान् विष्णु को जाग्रत करने की प्रार्थना की थी। यह स्तोत्र चित्त के अज्ञान और तमस को दूर कर अंतरात्मा को जाग्रत करने वाला सिद्ध स्तोत्र है।',
+    faqs: [
+      {
+        question: 'What is the scriptural origin of the Tantroktam Ratri Suktam?',
+        answer: 'It originates from the First Chapter of the Devi Mahatmya (Durga Saptashati) in the Markandeya Purana, where Lord Brahma praises Goddess Yoganidra.',
+      },
+      {
+        question: 'How does Tantroktam Ratri Suktam differ from the Rigvedic Ratri Suktam?',
+        answer: 'The Rigvedic Ratri Suktam (Rigveda 10.127) is the ancient Vedic hymn to the cosmic Night (Ratri). The Tantroktam Ratri Suktam is Brahma\'s profound hymn to Yoganidra/Mahamaya from the Puranic tradition. Both are traditionally recited in the Chandi Path.',
+      },
+    ],
+  },
 ];
 
 export function getMantraBySlug(slug: string): SacredMantra | undefined {
