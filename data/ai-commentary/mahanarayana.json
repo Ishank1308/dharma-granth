@@ -5,7 +5,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.887Z",
     "sanskrit": "अम्भस्यपारे भुवनस्य मध्ये नाकस्य पृष्ठे महतो महीयान् । शुक्रेण ज्योतीँषि समनुप्रविष्टः प्रजापतिश्चरति गर्भे अन्तः"
@@ -16,7 +16,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "यस्मिन्निदँ सं च वि चैति सर्वं यस्मिन् देवा अधि विश्वे निषेदुः । तदेव भूतं तदु भव्यमा इदं तदक्षरे परमे व्योमन्"
@@ -27,7 +27,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "येनावृतं खं च दिवं मही च येनादित्यस्तपति तेजसा भ्राजसा च । यमन्तः समुद्रे कवयो वयन्ति यदक्षरे परमे प्रजाः"
@@ -38,7 +38,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "यतः प्रसूता जगतः प्रसूती तोयेन जीवान् व्यचसर्ज भूम्याम् । यदोषधीभिः पुरुषान् पशूँश्च विवेश भूतानि चराचराणि"
@@ -49,7 +49,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "अतः परं नान्यदणीयसँ हि परात्परं यन्महतो महान्तम् । यदेकमव्यक्तमनन्तरूपं विश्वं पुराणं तमसः परस्तात्"
@@ -60,7 +60,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "तदेवर्तं तदु सत्यमाहुस्तदेव ब्रह्म परमं कवीनाम् । इष्टापूर्तं बहुधा जातं जायमानं विश्वं बिभर्ति भुवनस्य नाभिः"
@@ -71,7 +71,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "तदेवाग्निस्तद्वायुस्तत्सूर्यस्तदु चन्द्रमाः । तदेव शुक्रममृतं तद्ब्रह्म तदापः स प्रजापतिः"
@@ -82,7 +82,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "सर्वे निमेषा जज्ञिरे विद्युतः पुरुषादधि । कला मुहूर्ताः काष्ठाश्चाहोरात्राश्च सर्वशः"
@@ -93,7 +93,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "The second half ('sa āpaḥ pradudhe ubhe ime') is obscure; the 'two waters' reading as celestial and terrestrial waters is a common interpretation, offered tentatively.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "अर्धमासा मासा ऋतवः संवत्सरश्च कल्पन्ताम् । स आपः प्रदुधे उभे इमे अन्तरिक्षमथो सुवः"
@@ -104,7 +104,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "नैनमूर्ध्वं न तिर्यञ्चं न मध्ये परिजग्रभत् । न तस्येशे कश्चन तस्य नाम महद्यशः"
@@ -115,7 +115,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "न संदृशे तिष्ठति रूपमस्य न चक्षुषा पश्यति कश्चनैनम् । हृदा मनीशा मनसाभिक्लृप्तो य एनं विदुरमृतास्ते भवन्ति"
@@ -126,7 +126,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Composite verse holding the Uttara-Nārāyaṇa anuvāka (six mantras) and the first Hiraṇyagarbha mantra; the explanation covers all parts. 'brāhmaṇa' in mantras 4–5 is read as 'knower of Brahman' (as the context of 'rucaṃ brāhmam' suggests), not as a birth-caste claim; reviewer may confirm.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "परमात्म- हिरण्यगर्भ- सूक्त अद्भ्यः सम्भूतो हिरण्यगर्भ इत्यष्टौ ॥ अद्भ्य सम्भूतः पृथिव्यौ रसाच्च विश्वकर्मणः समवर्तताधि । तस्य त्वष्टा विदधद्रूपमेति तत्पुरुषस्य विश्वमाजानमग्रे । १। वेदाहमेतं पुरुषं महान्तं आदित्यवर्णं तमसः परस्तात् । तमेवं विद्वानभृत इह भवति नान्यःपन्थाविद्यतेऽयनाय । २। प्रजापतिश्चरति गर्भे अन्तः अजायमानो बहुथा विजायते । तस्य धीराः परिजानन्ति योनिम् मरीचीनां पदमिच्छन्ति वेधसः । ३। यो देवेभ्य आतपति यो देवानां पुरोहितः । पूर्वो यो देवेभ्यो जातः नमो रुचाय ब्राह्मये । ४। रुचं ब्राह्मं जनयन्तः देवा अग्रे तदब्रुवन् । यस्त्वैवं ब्राह्मणो विद्यात् तस्य देवा असन् वशे । ५। ह्रीश्च ते लक्ष्मीश्च पत्न्यौ अहोरात्रे पार्श्वे नक्षत्राणि रूपम् । अश्विनौ व्यात्तम् इष्टं मनिषाण अमुं मनिषाण सर्वं मनिषाण । ६। इति उत्तरनारायणानुवाकः । हिरण्यगर्भः समवर्तताग्रे भूतस्य जातः पतिरेक आसीत् । स दाधार पृथिवीं द्यामुतेमां कस्मै देवाय हविषा विधेम"
@@ -137,7 +137,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "यः प्राणतो निमिषतो महित्वैक इद्राजा जगतो बभूव । य ईशे अस्य द्विपदश्चतुष्पदः कस्मै देवाय हविषा विधेम"
@@ -148,7 +148,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Hiraṇyagarbha-sūkta (ṚV 10.121) mantra; refrain 'kasmai devāya haviṣā vidhema'.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "य आत्मदा बलंदा यस्य विश्व उपासते प्रशिषं यस्य देवाः । यस्य छायामृतं यस्य मृत्युः कस्मै देवाय हविषा विधेम"
@@ -159,7 +159,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Hiraṇyagarbha-sūkta (ṚV 10.121) mantra; refrain 'kasmai devāya haviṣā vidhema'. 'Rasā' is variously read as a river or the mythic world-encircling river; given neutrally.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "यस्येमे हिमवन्तो महित्वा यस्य समुद्रँ रसया सहाहुः । यस्येमाः प्रदिशो यस्य बाहू कस्मै देवाय हविषा विधेम"
@@ -170,7 +170,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Hiraṇyagarbha-sūkta (ṚV 10.121) mantra; refrain 'kasmai devāya haviṣā vidhema'. 'krandasī' (two crying/roaring hosts) taken as heaven and earth per the printed Hindi.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "यं क्रन्दसी अवसा तस्तभाने अस्यैक्षेतां मनसा रेजमाने । यत्राधि सूर उदितौ व्येति कस्मै देवाय हविषा विधेम"
@@ -181,7 +181,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Hiraṇyagarbha-sūkta (ṚV 10.121) mantra; refrain 'kasmai devāya haviṣā vidhema'.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "येन द्यौरुग्रा पृथिवी च दृढे येन सुवः स्तभितं येन नाकः । यो अन्तरिक्षे रजसो विमानः कस्मै देवाय हविषा विधेम"
@@ -192,7 +192,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Hiraṇyagarbha-sūkta (ṚV 10.121) mantra; refrain 'kasmai devāya haviṣā vidhema'. 'asu' read as life-breath, as in the printed Hindi.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "आपो ह यन्महतीर्विश्वमायं दक्षं दधाना जनयन्तीरग्निम् । ततो देवानां निरवर्ततासुरेकः कस्मै देवाय हविषा विधेम"
@@ -203,7 +203,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Hiraṇyagarbha-sūkta (ṚV 10.121) mantra; refrain 'kasmai devāya haviṣā vidhema'. This edition reads 'janayantīr agnim' where the ṚV has 'yajñam'; the explanation follows this edition.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "यश्चिदापो महिना पर्यपश्यद्दक्षं दधाना जनयन्तीरग्निम् । यो देवेश्वधि देव एक कस्मै देवाय हविषा विधेम"
@@ -214,7 +214,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "एष हि देवः प्रदिशोऽनु सर्वाः पूर्वो हि जातः स उ गर्भे अन्तः । स विजायमानः स जनिष्यमाणः प्रत्यङ्मुखास्तिष्ठति विश्वतोमुखः"
@@ -225,7 +225,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Sanskrit here reads 'saṃ bāhubhyāṃ namati'; the standard ṚV/Śvetāśvatara text has 'dhamati' (blows, as a smith). The explanation quotes this edition's 'namati', notes the common 'dhamati' and uses its smith image; reviewer may check.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "विश्वतश्चक्षुरुत विश्वतो मुखो विश्वतो हस्त उत विश्वतस्पात् । सं बाहुभ्यां नमति सं पतत्रैर्द्यावापृथिवी जनयन् देव एकः"
@@ -236,7 +236,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "वेनस्तत् पश्यन् विश्वा भुवनानि विद्वान् यत्र विश्वं भवत्येकनीडम् । यस्मिन्निदँसं च वि चैकँस ओतः प्रोतश्च विभुः प्रजासु"
@@ -247,7 +247,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "The three hidden 'padas' have several traditional readings (three states, three syllables of Om, three steps of Viṣṇu), given neutrally. Last line in this edition reads 'savituḥ pitā sat'; the explanation quotes this edition and mentions the common 'sa pituḥ pitāsat'.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "प्र तद्वोचे अमृतं नु विद्वान् गन्धर्वो नाम निहितं गुहासु । त्रीणि पदा निहिता गुहासु यस्तद्वेद सवितुः पिता सत्"
@@ -258,7 +258,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "स नो बन्धुर्जनिता स विधाता धामानि वेद भुवनानि विश्वा । यत्र देवा अमृतमानशानास्तृतीये धामान्यभ्यैरयन्त"
@@ -269,7 +269,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "Subject of 'yanti' (they go around) is unstated; read here as seers or gods in search of the Supreme. Reviewer may confirm.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "परि द्यावापृथिवी यन्ति सद्यः परि लोकान् परि दिशः परि सुवः । ऋतस्य तन्तुं विततं विचृत्य तदपश्यत् तदभवत् प्रजासु"
@@ -280,7 +280,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "परीत्य लोकान् परीत्य भूतानि परीत्य सर्वाः प्रदिशो दिशश्च । प्रजापतिः प्रथमजा ऋतस्यात्मनात्मानमभिसम्बभूव"
@@ -291,7 +291,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "सदसस्पतिमद्भुतं प्रियमिन्द्रस्य काम्यम् । सनिं मेधामयासिषम्"
@@ -302,7 +302,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "उद्दीप्यस्व जातवेदोऽपघ्नन्निऋतिं मम । पशूँश्च मह्यममावह जीवनं च दिशो दिश"
@@ -313,7 +313,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "'abibhrad' and 'paripātaya' are obscure in this edition's text; readings given are tentative.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "मा नो हिँसीज्जातवेदो गामश्वं पुरुषं जगत् । अबिभ्रदग्न आगहि श्रिया मा परिपातय"
@@ -324,7 +324,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "पुरुषस्य विद्महे सहस्राक्षस्य महादेवस्य धीमहि । तन्नो रुद्रः प्रचोदयात्"
@@ -335,7 +335,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "गायत्र्याः । तत्पुरुषाय विद्महे महादेवाय धीमहि । तन्नो रुद्रः प्रचोदयात्"
@@ -346,7 +346,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "तत्पुरुषाय विद्महे वक्रतुण्डाय धीमहि । तन्नो दन्तिः प्रचोदयात्"
@@ -357,7 +357,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "'cakratuṇḍa' is obscure and varies across editions; the explanation says so and does not invent a meaning.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "तत्पुरुषाय विद्महे चक्रतुण्डाय धीमहि । तन्नो नन्दिः प्रचोदयात्"
@@ -368,7 +368,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "तत्पुरुषाय विद्महे महासेनाय धीमहि । तन्नः षण्मुखः प्रचोदयात्"
@@ -379,7 +379,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "तत्पुरुषाय विद्महे सुवर्णपक्षाय धीमहि । तन्नो गरुडः प्रचोदयात्"
@@ -390,7 +390,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Ends in neuter 'brahma'; some editions read masculine 'brahmā'. The explanation notes the neuter reading as printed.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "वेदात्मनाय विद्महे हिरण्यगर्भाय धीमहि । तन्नो ब्रह्म प्रचोदयात्"
@@ -401,7 +401,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "नारायणाय विद्महे वासुदेवाय धीमहि । तन्नो विष्णुः प्रचोदयात्"
@@ -412,7 +412,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "वज्रनखाय विद्महे तीक्ष्णदँष्ट्राय धीमहि । तन्नो नारसिँहः प्रचोदयात्"
@@ -423,7 +423,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "भास्कराय विद्महे महद्द्युतिकराय धीमहि । तन्नो आदित्य्यः प्रचोदयात्"
@@ -434,7 +434,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "'lālīla' is obscure; the explanation follows the printed 'playful one' tentatively and says the word is uncertain.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "वैश्वानरय विद्महे लालीलाय धीमहि । तन्नो अग्निः प्रचोदयात्"
@@ -445,7 +445,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "Grammatical forms in this edition ('kātyāyanāya', 'kanyākumāri', 'durgiḥ') are irregular; the explanation reads them as names of the Goddess, as the printed translation does.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "कात्यायनाय विद्महे कन्याकुमारि धीमहि । तन्नो दुर्गिः प्रचोदयात्"
@@ -456,7 +456,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Composite verse: Gāyatrīs of Brahmā, Bhānu, Vaiśvānara, Bhagavatī (Mahādurgā), Gaurī and the Serpent, then the Dūrvā verse. All parts are covered.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "चतुर्मुखाय विद्महे कमण्डलुधराय धीमहि । तन्नो ब्रह्मा प्रचोदयात् ॥ आदित्याय विद्महे सहस्रकिरणाय धीमहि । तन्नो भानुः प्रचोदयात् ॥ पावकाय विद्महे सप्तजिह्वाय धीमहि । तन्नो वैश्वानरः प्रचोदयात् ॥ महाशूलिन्यै विद्महे महादुर्गायै धीमहि । तन्नो भगवती प्रचोदयात् ॥ सुभगायै विद्महे कमलमालिन्यै धीमहि । तन्नो गौरी प्रचोदयात् ॥ नवकुलाय विद्महे विषदन्ताय धीमहि । तन्नः सर्पः प्रचोदयात् ॥] सहस्रपरमा देवी शतमूला शताङ्कुरा । सर्वँहरतु मे पापं दूर्वा दुःस्वप्ननाशिनी"
@@ -467,7 +467,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "काण्डात् काण्डात् प्ररोहन्ती परुषः परुषः परि । एवा नो दूर्वे प्रतनु सहस्रेण शतेन च"
@@ -478,7 +478,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'iṣṭakā' (brick) reflects the agnicayana altar context; the address to Dūrvā as 'goddess brick' follows the printed translation.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "या शतेन प्रतनोषि सहस्रेण विरोहसि । तस्यास्ते देवीष्टके विधेम हविषा वयम्"
@@ -489,7 +489,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "अश्वक्रान्ते रथक्रान्ते विष्णुक्रान्ते वसुन्धरा । शिरसा धारयिष्यामि रक्षस्व मां पदे पदे"
@@ -500,7 +500,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'kṛṣṇena śatabāhunā' (dark, hundred-armed) describes Varāha; given as in the printed translation.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "भूमिर्धेनुर्धरणी लोकधारिणी । उद्धृतासि वराहेण कृष्णेन शतबाहुना"
@@ -511,7 +511,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "मृत्तिके हन पापं यन्मया दुष्कृतं कृतम् । मृत्तिके ब्रह्मदत्तासि काश्यपेनाभिमन्त्रिता । मृत्तिके देहि मे पुष्टिं त्वयि सर्वं प्रतिष्ठितम्"
@@ -522,7 +522,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "मृत्तिके प्रतिष्ठिते सर्वं तन्मे निर्णुद मृत्तिके । त्वया हतेन पापेन गच्छामि परमां गतिम्"
@@ -533,7 +533,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'Drive away foes' is read inwardly as well (hostility and violence within); the explanation does not license harm to any person.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "यत इन्द्र भयामहे ततो नो अभयं कृधि । मघवञ्छग्धि तव तन्न ऊतये विद्विषो विमृधो जहि"
@@ -544,7 +544,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "स्वस्तिदा विशस्पतिर्वृत्रहा विमृधो वशी । वृषेन्द्रः पुर एतु नः स्वस्तिदा अभयङ्करः"
@@ -555,7 +555,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "स्वस्ति न इन्द्रो वृद्धश्रवाः स्वस्ति नः पूषा विश्ववेदाः । स्वस्ति नस्तार्क्ष्यो अरिष्टनेमिः स्वस्ति नो बृहस्पतिर्दधातु"
@@ -566,7 +566,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "Many words here (tṛpalaprabharman, śarumān, ṛjīṣin, atasā) are archaic and disputed; the printed English is itself uncertain. Readings given are tentative.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "आपान्तमन्युस्तृपलप्रभर्मा धुनिः शिमीवाञ्छरुमाँऋजीषी । सोमो विश्वान्यतसावनानि नार्वागिन्द्रं प्रतिमानानि देभुः"
@@ -577,7 +577,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "ब्रह्मजज्ञानं प्रथमं पुरस्ताद्वि सीमतः सुरुचो वेन आवः । स बुध्निया उपमा अस्य विष्ठाः सतश्च योनिमसतश्च विवः"
@@ -588,7 +588,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Edition prints 'bhavān nṛkṣarā'; the standard ṚV text reads 'bhavā 'nṛkṣarā'. The explanation follows the standard reading (thornless), which the printed translation also implies.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "स्योना पृथिवि भवान् नृक्षरा निवेशनी । यच्छा नः शर्म सप्रथाः"
@@ -599,7 +599,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "गन्धद्वारां दुराधर्षां नित्यपुष्टां करीषिणीम् । ईश्वरीँ सर्वभूतानां तामिहोपह्वये श्रियम्"
@@ -610,7 +610,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Composite: Śrī/Alakṣmī line, the Brāhmaṇa-style statement on the gods' conquest by metres, and the Indra ṣoḍaśin line. All parts covered.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "श्रीर्मे भजतु अलक्ष्मीर्मे नश्यतु । विष्णुमुखा वै देवाश्छन्दोभिरिमाॅंल्लोकाननपजय्यमभ्यजयन् । महाँ इन्द्रो वज्रबाहुः षोडशी शर्म यच्छतु"
@@ -621,7 +621,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Verse asks harm for 'one who hates us'. The explanation reads it as removal of hostility and sin, and states that it does not license wishing harm on any person.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "स्वस्ति नो मघवा करोतु । हन्तु पाप्मानं योऽस्मान् द्वेष्टि"
@@ -632,7 +632,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "Verse asks harm for 'one who hates us'. The explanation reads it as removal of hostility and sin, and states that it does not license wishing harm on any person. The second half is obscure; 'yajñaśamala' and 'kusīda' readings are tentative.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "सोमानँ स्वरणं कृणुहि ब्रह्मणस्पते कक्षीवन्तं य औशिजम् । शरीरं यज्ञशमलं कुसीदं तस्मिन्त्सीदतु योऽस्मान् द्वेष्टि"
@@ -643,7 +643,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Edition reads 'caraṇaṃ'; some texts read 'yena'. Explanation follows the printed text.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "चरणं पवित्रं विततं पुराणं येन पूतस्तरति दुष्कृतानि । तेन पवित्रेण शुद्धेन पूता अति पाप्मानमरातिं तरेम"
@@ -654,7 +654,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'Slay the foes' is read as the removal of fear and hostility, with fearlessness as the goal; the explanation does not license harm to any person.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "सजोषा इन्द्र सगणो मरुद्भिः सोमं पिब वृत्रहञ्छूर विद्वान् । जहि शत्रूँरप मृधो नुदस्वाथाभयं कृणुहि विश्वतो नः"
@@ -665,7 +665,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Verse wishes plants and waters to be unfriendly to 'him who hates us and whom we hate'. The explanation states it does not license wishing harm on anyone and reads the line toward the removal of hatred.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "सुमित्रा न आप ओषधयः सन्तु । दुर्मित्रास्तस्मै भूयासुर्योऽस्मान् द्वेष्टि यं च वयं द्विष्मः"
@@ -676,7 +676,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Composite of three ṚV 10.9 mantras (āpo hi ṣṭhā); all three are covered.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "आपो हि ष्ठा मयोभुवस्ता न ऊर्जे दधातन । महे रणाय चक्षसे । यो वः शिवतमो रसस्तस्य भाजयतेऽह नः । उशतीरिव मातरः । तस्मा अरं गमाम वो यस्य क्षयाय जिन्वथ । आपो जनयथा च नः"
@@ -687,7 +687,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'asādhu' and 'pāpa' (the wicked, sinners) are about unjustly earned food and gifts, not about any community; explanation frames it ethically.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "हिरण्यशृङ्गं वरुणं प्रपद्ये तीर्थ मे देहि याचितः । यन्मया भुक्तमसाधूनां पापेभ्यश्च प्रतिग्रहः"
@@ -698,7 +698,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "यन्मे मनसा वाचा कर्मणा वा दुष्कृतं कृतम् । तन्न इन्द्रो वरुणो बृहस्पतिः सविता च पुनन्तु पुनः पुनः"
@@ -709,7 +709,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "नमोऽग्नयेऽप्सुमते नम इन्द्राय नमो वरुणाय नमो वारुण्यै नमोऽद्भ्यः"
@@ -720,7 +720,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "यदपां क्रूरं यदमेध्यं यदशान्तं तदपगच्छतात्"
@@ -731,7 +731,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "अत्याशनादतीपानाद् यच्च उग्रात् प्रतिग्रहात् । तन्मे वरुणो राजा पाणिना ह्यवमर्शतु"
@@ -742,7 +742,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "सोऽहमपापो विरजो निर्मुक्तो मुक्तकिल्बिषः । नाकस्य पृष्ठमारुह्य गच्छेद्ब्रह्मसलोकताम्"
@@ -753,7 +753,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "यश्चाप्सु वरुणः स पुनात्वघमर्षणः"
@@ -764,7 +764,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "River identifications (Śutudrī=Sutlej, Paruṣṇī=Ravi, Asiknī=Chenab, Vitastā=Jhelum) are the standard ones; Marudvṛdhā, Ārjīkīyā and Suṣomā are less certain and are not identified.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "इमं मे गङ्गे यमुने सरस्वति शुतुद्रि स्तोमँ सचता परुष्णिया । असिक्निय मरुद्वृधे वितस्तयार्जीकीये शृणुह्या सुषोमया"
@@ -775,7 +775,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "ऋतं च सत्यं चाभीद्धात्तपसोऽध्यजायत । ततो रात्रिरजायत ततः समुद्रो अर्णवः"
@@ -786,7 +786,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "समुद्रादर्णवादधि संवत्सरो अजायत । अहोरात्राणि विदधद्विश्वस्य मिषतो वशी"
@@ -797,7 +797,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "सूर्याचन्द्रमसौ धाता यथापूर्वमकल्पयत् । दिवं च पृथिवीं चान्तरिक्षमथो सुवः"
@@ -808,7 +808,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "Composite of several purificatory mantras; all parts are covered. 'mṛtyor hiraṇmayam' is obscure; read as the golden world beyond death, tentatively.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "यत्पृथिव्याँ रजः स्वमान्तरिक्षे विरोदसी । इमाँस्तदापो वरुणः पुनात्वघमर्षणः ॥ पुनन्तु वसवः पुनातु वरुणः पुनात्वघमर्षणः । एष भूतस्य मध्ये भुवनस्य गोप्ता ॥ एष पुण्यकृतां लोकानेष मृत्योर्हिरण्मयम् । द्यावापृथिव्योर्हिरण्मयँ सँश्रितँ सुवः । स नः सुवः सँशिशाधि"
@@ -819,7 +819,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "आर्द्रं ज्वलतिज्योतिरहमस्मि । ज्योतिर्ज्वलति ब्रह्माहमस्मि । योऽहमस्मि ब्रह्माहमस्मि । अहमस्मि ब्रह्माहमस्मि । अहमेवाहं मां जुहोमि स्वाहा"
@@ -830,7 +830,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Lists grave sins (thief, embryo-killer, violator of teacher's bed). The explanation states the mantra does not erase accountability for serious wrongs and frames it as inner purification alongside real amends.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "अकार्यवकीर्णी स्तेनो भ्रूणहा गुरुतल्पगः । वरुणोऽपामघमर्षणस्तस्मात् पापात् प्रमुच्यते"
@@ -841,7 +841,7 @@
     "lifeLesson": "",
     "confidence": "low",
     "reviewNote": "Text in this edition is fragmentary ('rajobhūmis tva māṃ rodayasva pravadanti dhīrāḥ') and the meaning uncertain; the explanation follows the printed translation tentatively and says the reading is unsure.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "रजोभूमिस्त्व माँ रोदयस्व प्रवदन्ति धीराः"
@@ -852,7 +852,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "ṚV 9.97.40 Soma mantra; 'samudra' read as the Soma flow, and 'vidharman' readings vary.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:45:52.888Z",
     "sanskrit": "आक्रान्त्समुद्रः प्रथमे विधर्मञ्जनयन्प्रजा भुवनस्य राजा । वृषा पवित्रे अधि सानो अव्ये बृहत्सोमो वावृधे सुवान इन्दुः"
@@ -863,7 +863,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'arātīyato nidahāti vedaḥ' (burns the wealth of the hostile) is read as the burning away of hostility; the explanation does not license harm to any person.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.210Z",
     "sanskrit": "जातवेदसे सुनवाम सोममरातीयतो निदहाति वेदः । स नः पर्षदति दुर्गाणि विश्वा नावेव सिन्धुं दुरितात्यग्निः"
@@ -874,7 +874,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'vairocanī' read as 'related to Virocana (the radiant)'; the printed translation says 'daughter of Virochana'. Both noted neutrally.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.211Z",
     "sanskrit": "दुर्गा सूक्तम् । तामग्निवर्णां तपसा ज्वलन्तीं वैरोचनीं कर्मफलेषु जुष्टाम् । दुर्गां देवीँ शरणमहं प्रपद्ये सुतरसि तरसे नमः"
@@ -885,7 +885,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.211Z",
     "sanskrit": "अग्ने त्वं पारया नव्यो अस्मान् स्वस्तिभिरति दुर्गाणि विश्वा । पूश्च पृथ्वी बहुला न उर्वी भवा तोकाय तनयाय शंयोः"
@@ -896,7 +896,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.211Z",
     "sanskrit": "विश्वानि नो दुर्गहा जातवेदः सिन्धुं न नावा दुरितातिपर्षि । अग्ने अत्रिवन्मनसा गृणानोऽस्माकं बोध्यविता तनूनाम्"
@@ -907,7 +907,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "'kṣāmad' is disputed (forgiving / over the earth); both readings mentioned.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.211Z",
     "sanskrit": "पृतनाजितँ सहमानमुग्रमग्निँ हुवेम परमात्सधस्थात् । स नः पर्षदति दुर्गाणि विश्वा क्षामद्देवो अति दुरितात्यग्निः"
@@ -918,7 +918,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.211Z",
     "sanskrit": "प्रत्नोषि कमीड्यो अध्वरेषु सनाच्च होता नव्यश्च सत्सि । स्वां चाग्ने तनुवं पिप्रयस्वास्मभ्यं च सौभगमायजस्व"
@@ -929,7 +929,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "First half ('gobhir juṣṭam ayujo niṣiktam') is obscure; readings tentative, as the printed translation is too.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.211Z",
     "sanskrit": "गोभिर्जुष्टमयुजो निषिक्तं तवेन्द्र विष्णोरनुसंचरेम । नाकस्य पृष्ठमभि संवसानो वैष्णवीं लोक इह मादयन्ताम्"
@@ -940,7 +940,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.314Z",
     "sanskrit": "भूरन्नमग्नये पृथिव्यै स्वाहा भुवोऽन्नं वायवेऽन्तरिक्षाय स्वाहा सुवरन्नमादित्याय दिवे स्वाहा भूर्भुवस्सुवरन्नं चन्द्रमसे दिग्भ्यः स्वाहा नमो देवेभ्यः स्वधा पितृभ्यो भूर्भुवः सुवरन्नमोम्"
@@ -951,7 +951,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.413Z",
     "sanskrit": "भूरग्नये पृथिव्यै स्वाहा भुवो वायवेऽन्तरिक्षाय स्वाहा सुवरादित्याय दिवे स्वाहा भूर्भुवस्सुवश्चन्द्रमसे दिग्भ्यः स्वाहा नमो देवेभ्यः स्वधा पितृभ्यो भूर्भुवःसुवरग्न ओम्"
@@ -962,7 +962,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.515Z",
     "sanskrit": "भूरग्नये च पृथिव्यै च महुते च स्वाहा भुवो वायवे चान्तरिक्षाय च महते च स्वाहा सुवरादित्याय च दिवे च महते च स्वाहा भूर्भुवस्सुवश्चन्द्रमसे च नक्षत्रेभ्यश्च दिग्भ्यश्च महते च स्वाहा नमो देवेभ्यः स्वधा पितृभ्यो भूर्भुवः सुवर्महरोम्"
@@ -973,7 +973,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.625Z",
     "sanskrit": "पाहि नो अग्न एनसे स्वाहा पाहि नो विश्ववेदसे स्वाहा यज्ञं पाहि विभावसो स्वाहा सर्वं पाहि शतक्रतो स्वाहा"
@@ -984,7 +984,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "'With one, second, third' — the noun is unstated; reading as verses/hymns follows 'gīrbhiś catasṛbhiḥ'. The four levels of speech (parā etc.) is offered as a later traditional interpretation, not as the text's own claim.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.726Z",
     "sanskrit": "पाहि नो अग्न एकया पाह्युत द्वितीयया पाह्यूर्ज तृतीयया पाहि गीर्भिश्चतसृभिर्वसो स्वाहा"
@@ -995,7 +995,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "This edition's 'satāṃśikyaḥ' looks corrupt and is not explained; the hymn is read as praise of Om, as in the Taittirīya Upaniṣad parallel (1.4).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.818Z",
     "sanskrit": "यश्छन्दसामृषभो विश्वरूपश्छन्दोभ्यश्चन्दाँस्याविवेश । सताँशिक्यः प्रोवाचोपनिषदिन्द्रो ज्येष्ठ इन्द्रियाय ऋषिभ्यो नमो देवेभ्यः स्वधा पितृभ्यो भूर्भुवस्सुवश्छन्द ओम्"
@@ -1006,7 +1006,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Edition prints 'mā cyoḍhaṃ'; standard form 'mā cyoḍhvam'. Explanation uses the standard form.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:09.931Z",
     "sanskrit": "नमो ब्रह्मणे धारणं मे अस्त्वनिराकरणं धारयिता भूयासं कर्णयोः श्रुतं मा च्योढं ममामुष्य ओम्"
@@ -1017,7 +1017,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:10.036Z",
     "sanskrit": "ऋतं तपः सत्यं तपः श्रुतं तपः शान्तं तपो दमस्तपः शमस्तपो दानं तपो यज्ञं तपो भूर्भुवः सुवर्ब्रह्मैतदुपास्वैतत्तपः"
@@ -1028,7 +1028,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "Edition prints 'amṛtād ātmānaṃ jugupset' ('guard oneself from the immortal'), which looks like a corruption of the standard 'anṛtād' (from untruth). The explanation follows 'anṛtād'; reviewer should confirm. The sword-edge clause is also garbled in this edition.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:49:10.133Z",
     "sanskrit": "यथा वृक्षस्य सम्पुष्पितस्य दूराद्गन्धो वात्येवं पुण्यस्य कर्मणो दूराद्गन्धो वाति यथासिधारां कर्तेऽवहितमवक्रामे यद्युवे युवे हवा विह्वयिष्यामि कर्तं पतिष्यामीत्येवममृतादात्मानं जुगुप्सेत्"
@@ -1039,7 +1039,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'dhātuḥ prasādāt' has two traditional readings (grace of the Creator / serenity of the senses, 'dhātuprasādāt'); both are given.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.889Z",
     "sanskrit": "अणोरणीयान् महतो महीयानात्मा गुहायां निहितोऽस्य जन्तोः । तमक्रतुं पश्यति वीतशोको धातुः प्रसादान्महिमानमीशम्"
@@ -1050,7 +1050,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "The 'seven breaths' are traditionally the seven openings of the head (Śaṅkara on Muṇḍaka 2.1.8); offered as the traditional reading.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "सप्त प्राणाः प्रभवन्ति तस्मात् सप्तार्चिषः समिधः सप्त जिह्वाः । सप्त इमे लोका येषु चरन्ति प्राणा गुहाशयान्निहिताः सप्त सप्त"
@@ -1061,7 +1061,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Edition prints 'bhūtas tiṣṭhaty'; Muṇḍaka reads 'bhūtais tiṣṭhaty'. The explanation quotes this edition and follows 'bhūtaiḥ' (with the elements).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "अतः समुद्रा गिरयश्च सर्वेऽस्मात्स्यन्दन्ते सिन्धवः सर्वरूपाः । अतश्च विश्वा ओषधयो रसाश्च येनैष भूतस्तिष्ठत्यन्तरात्मा"
@@ -1072,7 +1072,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "ṚV 9.96.6 Soma mantra; the list of 'best of each class' is explained without forcing a symbolic meaning on each item.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "ब्रह्मा देवानां पदवीः कवीनामृषिर्विप्राणां महिषो मृगाणाम् । श्येनो गृध्राणाँस्वधितिर्वनानाँसोमः पवित्रमत्येति रेभन्"
@@ -1083,7 +1083,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "The 'unborn female' is Prakṛti (three guṇas), and the two 'unborn males' are the bound and the freed soul; it is not a statement about women.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "अजामेकां लोहितशुक्लकृष्णां बह्वीं प्रजां जनयन्तीँ सरूपाम् । अजो ह्येको जुषमाणोऽनुशेते जहात्येनां भुक्तभोगामजोऽन्यः"
@@ -1094,7 +1094,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "हंसः शुचिषद्वसुरन्तरिक्षसद्धोता वेदिषदतिथिर्दुरोणसत् । नृषद्वरसदृतसद्व्योमसदब्जा गोजा ऋतजा अद्रिजा ऋतं बृहत्"
@@ -1105,7 +1105,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Composite of three mantras (Prajāpati ṣoḍaśin; Savitṛ 'vidhartāram'; ghee 'ghṛtaṃ mimikṣire'); all three covered. Edition's 'yasmāj jātā na parā naiva kiṃcanāsa' is quoted as printed.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "यस्माज्जाता न परा नैव किंचनास य आविवेश भुवनानि विश्वा । प्रजापतिः प्रजया संविदानस्त्रीणि ज्योतीँषि सचते स षोडशी ॥ ६ क॥ विधर्तारँ हवामहे वसोः कुविद्वनाति नः । सवितारं नृचक्षसम् ॥ ६ ख॥ घृतं मिमिक्षिरे घृतमस्य योनिर्घृते श्रितो घृतमुवस्य धाम । अनुष्वधमावह मादयस्व स्वाहाकृतं वृषभ वक्षि हव्यम्"
@@ -1116,7 +1116,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "ṚV 4.58.1; the 'secret name of ghee' has many traditional readings (speech, Om); presented as such.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "समुद्रादूर्मिर्मधुमाँ उदारदुपाँशुना सममृतत्वमानट् । घृतस्य नाम गुह्यं यदस्ति जिह्वा देवानाममृतस्य नाभिः"
@@ -1127,7 +1127,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "ṚV 4.58.2; 'brahmā' here is the overseeing priest. The four-horned bull is explained in the next verse.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "वयं नाम प्रब्रवामा घृतेनास्मिन् यज्ञे धारयामा नमोभिः । उप ब्रह्मा शृणवच्छस्यमान चतुःशृङ्गोऽवमीद्गौर एतत्"
@@ -1138,7 +1138,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "ṚV 4.58.3; gives the two best-known traditional readings (sacrifice per Yāska/Sāyaṇa; speech/grammar per Patañjali's Mahābhāṣya) in summary, without direct quotation.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "चत्वारि शृङ्गा त्रयो अस्य पादा द्वेशीर्षे सप्त हस्तासो अस्य । त्रिधा बद्धो वृषभो रोरवीति महो देवो मर्त्याँ आविवेश"
@@ -1149,7 +1149,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "ṚV 4.58.4; the Paṇi legend summarised; the three hidden portions are read tentatively.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "त्रिधा हितं पणिभिर्गुह्यमानं गवि देवासो घृतमन्वविन्दन् । इन्द्र एकँ सूर्य एकं जजान वेनादेकँ स्वधया निष्टतक्षुः"
@@ -1160,7 +1160,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Edition reads 'paśyata' and 'śubhayā smṛtyā'; Śvetāśvatara has 'janayāmāsa pūrvam' / 'buddhyā śubhayā'. The explanation follows this edition and mentions the variant.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "यो देवानां प्रथमं पुरस्ताद्विश्वाधिको रुद्रो महर्षिः । हिरण्यगर्भं पश्यत जायमानँ स नो देवः शुभयास्मृत्या संयुनक्तु"
@@ -1171,7 +1171,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "यस्मात्परं नापरमस्ति किञ्चित् यस्मान्नाणीयो न ज्यायोऽस्ति कश्चित् । वृक्ष इव स्तब्धो दिवि तिष्ठत्येकस्तेनेदं पूर्णं पुरुषेण सर्वम्"
@@ -1182,7 +1182,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Renunciation is explained as inner relinquishment of possessiveness as well as formal saṃnyāsa; the explanation does not disparage household life, work or family.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "न कर्मणा न प्रजया धनेन त्यागेनैके अमृतत्वमानशुः । परेण नाकं निहितं गुहायां बिभ्राजते यद्यतयो विशन्ति"
@@ -1193,7 +1193,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'parāntakāle' read as krama-mukti (release at the end of the cosmic cycle), the common traditional reading.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "वेदान्तविज्ञानविनिश्चितार्थाः संन्यासयोगाद्यतयः शुद्धसत्त्वाः । ते ब्रह्मलोके तु परान्तकाले परामृताः परिमुच्यन्ति सर्वे"
@@ -1204,7 +1204,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Edition text reads 'dahraṃ vipāpaṃ parame 'śmabhūta' (garbled); the explanation quotes it and gives the standard 'dahraṃ vipāpmaṃ varaveśmabhūtam' as the reading followed.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "दह्रं विपापं परमेऽश्मभूत यत् पुण्डरीकं पुरमध्यसँस्थम् । तत्रापि दहरं गगनं विशोकं तस्मिन् यदन्तस्तदुपासितव्यम्"
@@ -1215,7 +1215,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.891Z",
     "sanskrit": "यो वेदादौ स्वरः प्रोक्तो वेदान्ते च प्रतिष्ठितः । तस्य प्रकृतिलीनस्य यः परः स महेश्वरः"
@@ -1226,7 +1226,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the Nārāyaṇa-sūkta (anuvāka 13).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.997Z",
     "sanskrit": "सहस्रशीर्षं देवं विश्वाक्षं विश्वशम्भुवम् । विश्वं नारायणं देवमक्षरं परमं प्रभुम्"
@@ -1237,7 +1237,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the Nārāyaṇa-sūkta (anuvāka 13).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.997Z",
     "sanskrit": "विश्वतः परमं नित्यं विश्वं नारायणँ हरिम् । विश्वमेवेदं पुरुषस्तद्विश्वमुपजीवति"
@@ -1248,7 +1248,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the Nārāyaṇa-sūkta (anuvāka 13). Notes that Śiva and Nārāyaṇa appear here as names of one reality; avoids sectarian claims.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.997Z",
     "sanskrit": "पतिं विश्वस्यात्मेश्वरँ शाश्वतँ शिवमच्युतम् । नारायणं महाज्ञेयं विश्वात्मानं परायणम्"
@@ -1259,7 +1259,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the Nārāyaṇa-sūkta (anuvāka 13).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.997Z",
     "sanskrit": "नारायणः परं ब्रह्म तत्त्वं नारायणः परः । नारायणः परो ज्योतिरात्मा नारायणः परः"
@@ -1270,7 +1270,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the Nārāyaṇa-sūkta (anuvāka 13).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.997Z",
     "sanskrit": "अनन्तमव्ययं कविँ समुद्रेऽन्तं विश्वशम्भुवम् । पद्मकोशप्रतीकाशँ हृदयं चाप्यधोमुखम्"
@@ -1281,7 +1281,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the Nārāyaṇa-sūkta (anuvāka 13).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.997Z",
     "sanskrit": "अधो निष्ट्या वितस्त्यान्ते नाभ्यामुपरि तिष्ठति । हृदयं तद्विजानीयाद्विश्वस्यायतनं महत्"
@@ -1292,7 +1292,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the Nārāyaṇa-sūkta (anuvāka 13).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.997Z",
     "sanskrit": "सन्ततँ सिराभिस्तु लम्बत्याकोशसन्निभम् । तस्यान्ते सुषिरँ सूक्ष्मं तस्मिन्त्सर्वं प्रतिष्ठितम्"
@@ -1303,7 +1303,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the Nārāyaṇa-sūkta (anuvāka 13).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.997Z",
     "sanskrit": "तस्य मध्ये महानग्निर्विश्वार्चिर्विश्वतोमुखः । सोऽग्रभुग्विभजन्तिष्ठन्नाहारमजरः कविः"
@@ -1314,7 +1314,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the Nārāyaṇa-sūkta (anuvāka 13).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.997Z",
     "sanskrit": "तिर्यगूर्ध्वमधःशायी रश्मयस्तस्य सन्तताः । सन्तापयति स्वं देहमापादतलमस्तकम् । तस्य मध्ये वह्निशिखा अणीयोर्ध्वा व्यवस्थिता"
@@ -1325,7 +1325,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the Nārāyaṇa-sūkta (anuvāka 13).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.997Z",
     "sanskrit": "नीलतोयदमध्यस्था विद्युल्लेखेव भास्वरा । नीवारशूक्वत्तन्वी पीता भास्वत्यणूपम"
@@ -1336,7 +1336,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the Nārāyaṇa-sūkta (anuvāka 13).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T05:53:49.997Z",
     "sanskrit": "तस्याः शिखाया मध्ये परमात्मा व्यवस्थितः । स ब्रह्म स शिवः स हरिः सेन्द्रः सोऽक्षरः परमः स्वराट्"
@@ -1347,7 +1347,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:27.640Z",
     "sanskrit": "आदित्यो वा एष एतन्मण्डलं तपति तत्र ता ऋचस्तदृचा मण्डलँ स ऋचां लोकोऽथ य एष एतस्मिन्मण्डलेऽर्चिर्दीप्यते तानि सामानि स साम्नां लोकोऽथ य एष एतस्मिन्मण्डलेऽर्चिषि पुरुषस्तानि यजूँषि स यजुषा मण्डलँ स यजुषां लोकः सैषा त्रय्येव विद्या तपति य एषोऽन्तरादित्ये हिरण्मयः पुरुषः"
@@ -1358,7 +1358,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:27.779Z",
     "sanskrit": "आदित्यो वै तेज ओजो बलं यशश्चक्षुः श्रोत्रमात्मा मनो मन्युर्मनुर्मृत्युः सत्यो मित्रो वायुराकाशः प्राणो लोकपालः कः किं कं तत्सत्यमन्नममृतो जीवो विश्वः कतमः स्वयम्भु ब्रह्मैतदमृत एष पुरुष एष भूतानामधिपतिर्ब्रह्मणः सायुज्यँ सलोकतामाप्नोत्येतासामेव देवतानाँ सायुज्यँ सार्ष्टिताँ समानलोकतामाप्नोति य एवं वेदेत्युपनिषत्"
@@ -1369,7 +1369,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:27.779Z",
     "sanskrit": "घृणिः सूर्य आदित्योमर्चयन्ति तपः सत्यं मधु क्षरन्ति तद्ब्रह्म तदाप आपो ज्योती रसोऽमृतं ब्रह्म भूर्भुवः सुवरोम्"
@@ -1380,7 +1380,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'liṅga' is explained in its root sense of sign or emblem, the standard Śaiva reading; the obscure closing line ('pāṇimantram') is read tentatively.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:27.884Z",
     "sanskrit": "निधनपतये नमः । निधनपतान्तिकाय नमः । ऊर्ध्वाय नमः । ऊर्ध्वलिङ्गाय नमः । हिरण्याय नमः । हिरण्यलिङ्गाय नमः । सुवर्णाय नमः । सुवर्णलिङ्गाय नमः । दिव्याय नमः । दिव्यलिङ्गाय नमः । भवाय नमः। भवलिङ्गाय नमः । शर्वाय नमः । शर्वलिङ्गाय नमः । शिवाय नमः । शिवलिङ्गाय नमः । ज्वलाय नमः । ज्वललिङ्गाय नमः । आत्माय नमः । आत्मलिङ्गाय नमः । परमाय नमः । परमलिङ्गाय नमः । एतत्सोमस्य सूर्यस्य सर्वलिङ्गँ स्थापयति पाणिमन्त्रं पवित्रम्"
@@ -1391,7 +1391,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Edition prints 'bhavasva'; the common text reads 'bhajasva'. The explanation follows 'bhajasva' and gives two traditional readings of 'nātibhave'.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:27.987Z",
     "sanskrit": "सद्योजातं प्रपद्यामि सद्योजाताय वै नमो नमः । भवे भवे नातिभवे भवस्व माम् । भवोद्भवाय नमः"
@@ -1402,7 +1402,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Edition prints 'balavikaraṇāya' and 'balapramathāya'; explanation follows the common forms. Some terms (kalavikaraṇa) have varying traditional glosses.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:28.093Z",
     "sanskrit": "वामदेवाय नमो ज्येष्ठाय नमः श्रेष्ठाय नमो रुद्राय नमः कालाय नमः कलविकरणाय नमो बलविकरणाय नमो बलाय नमो बलप्रमथाय नमः सर्वभूतदमनाय नमो मनोन्मनाय नमः"
@@ -1413,7 +1413,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:28.199Z",
     "sanskrit": "अघोरेभ्योऽथ घोरेभ्यो घोरघोरतरेभ्यः । सर्वतः शर्व सर्वेभ्यो नमस्ते अस्तु रुद्ररूपेभ्यः"
@@ -1424,7 +1424,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "The mapping of the five faces to five acts (creation, sustenance, dissolution, concealment, grace) is a later Śaiva tradition, presented as such.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:28.299Z",
     "sanskrit": "तत्पुरुषाय विद्महे महादेवाय धीमहि । तन्नो रुद्रः प्रचोदयात्"
@@ -1435,7 +1435,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:28.412Z",
     "sanskrit": "ईशानः सर्वविद्यानामीश्वरः सर्वभूतानां ब्रह्माधिपतिर्ब्रह्मणोऽधिपतिर्ब्रह्मा शिवो मे अस्तु सदाशिवोम्"
@@ -1446,7 +1446,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'paśu/pāśa/pati' is the Śaiva Siddhānta reading, presented as a traditional interpretation.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:28.525Z",
     "sanskrit": "नमो हिरण्यबाहवे हिरण्यवर्णाय हिरण्यरूपाय हिरण्यपतये। अम्बिकापतय उमापतये पशुपतये नमो नमः"
@@ -1457,7 +1457,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'ūrdhvaretas' is explained as the yogic turning of vital energy upward (Śiva as ascetic), without prescribing practices; 'kṛṣṇapiṅgala' readings (Ardhanārīśvara, Hari-Hara) are given as traditional interpretations.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:28.631Z",
     "sanskrit": "ऋतँ सत्यं परं ब्रह्म पुरुषं कृष्णपिङ्गलम् । ऊर्ध्वरेतं विरूपाक्षं विश्वरूपाय वै नमो नमः"
@@ -1468,7 +1468,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:28.730Z",
     "sanskrit": "सर्वो वै रुद्रस्तस्मै रुद्राय नमो अस्तु । पुरुषो वै रुद्रः सन्महो नमो नमः । विश्वं भूतं भुवनं चित्रं बहुधा जातं जायमानं च यत् । सर्वो ह्येष रुद्रस्तस्मै रुद्राय नमो अस्तु"
@@ -1479,7 +1479,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:28.830Z",
     "sanskrit": "कद्रुद्राय प्रचेतसे मीढुष्टमाय तव्यसे । वोचेम शंतमँ हृदे । सर्वोह्येष रुद्रस्तस्मै रुद्राय नमो अस्तु"
@@ -1490,7 +1490,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "Ritual (Brāhmaṇa) statement about the Vaikaṅkata ladle; the explanation gives the ritual sense and a modest general reading.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:28.938Z",
     "sanskrit": "यस्य वैकङ्कत्यग्निहोत्रहवणी भवति प्रत्येवास्याहुतयस्तिष्ठत्यथो प्रतिष्ठित्यै"
@@ -1501,7 +1501,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Fierce Agni hymn against 'rakṣas' (ṚV 4.4). The explanation reads the demons as forces of harm and inner darkness and states the verse does not license violence against any person.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:29.050Z",
     "sanskrit": "कृणुष्व पाज इति पञ्च । कृणुष्व पाजः प्रसितिं न पृथ्वीं याहि राजेवामवाॅं इभेन । तृष्वीमनु प्रसितिं द्रूणानोऽस्तासि विध्य रक्षसस्तपिष्ठैः"
@@ -1512,7 +1512,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Fierce Agni hymn against 'rakṣas' (ṚV 4.4). The explanation reads the demons as forces of harm and inner darkness and states the verse does not license violence against any person.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:29.050Z",
     "sanskrit": "तव भ्रमास आशुया पतन्त्यनु स्पृश धृशता शोशुचानः । तपूंष्यग्ने जुह्वा पतङ्गानसन्दितो वि सृज विश्वगुल्काः"
@@ -1523,7 +1523,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Fierce Agni hymn against 'rakṣas' (ṚV 4.4). The explanation reads the demons as forces of harm and inner darkness and states the verse does not license violence against any person.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:29.050Z",
     "sanskrit": "प्रति स्पशो विसृज तूर्णितमो भवा पायुर्विशी अस्या अदब्धः । यो नो दूरे अघशं सो यो अन्त्यग्ने माकिष्टे व्यथिरादधर्षीत"
@@ -1534,7 +1534,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Fierce Agni hymn against 'rakṣas' (ṚV 4.4). The explanation reads the demons as forces of harm and inner darkness and states the verse does not license violence against any person.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:29.050Z",
     "sanskrit": "उदग्ने तिष्ठ प्रत्या तनुष्व न्यमित्रांॅ ओषतात्तिग्महेते । यो नो अरातिं समिधान चक्रे नीचातं धक्ष्यतसं न शुष्कम्"
@@ -1545,7 +1545,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Fierce Agni hymn against 'rakṣas' (ṚV 4.4). The explanation reads the demons as forces of harm and inner darkness and states the verse does not license violence against any person. 'jāmim ajāmim' (kin and non-kin) is explicitly not read as licence to harm relatives; it is read as impartial recognition of fault, including one's own.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:29.050Z",
     "sanskrit": "ऊर्ध्वो भव प्रतिं विद्याध्यस्मदाविष्कृणुष्व दैव्यान्यग्ने । अवस्थिरा तनुहि यातुजूनां जामिमजामिं प्रमृणीहि शत्रून्"
@@ -1556,7 +1556,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:29.177Z",
     "sanskrit": "अदितिर्देवा गन्धर्वा मनुष्याः पितरोऽसुरास्तेषाँ सर्वभूतानां माता मेदिनी महती मही सावित्री गायत्री जगत्युर्वी पृथ्वी बहुला विश्वा भूता कतमा काया सा सत्येत्यमृतेति वासिष्ठः"
@@ -1567,7 +1567,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:43:29.287Z",
     "sanskrit": "आपो वा इदँ सर्वं विश्वा भूतान्यापः प्राणा वा आपः पशव आपोऽन्नमापोऽमृतमापः सम्राडापो विराडापः स्वराडापश्छन्दाँस्यापो ज्योतीँष्यापो यजूँष्यापः सत्यमापः सर्वा देवता आपो भूर्भुवः सुवराप ओम्"
@@ -1578,7 +1578,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:07.963Z",
     "sanskrit": "आपः पुनन्तु पृथिवीं पृथिवी पूता पुनातु माम् । पुनन्तु ब्रह्मणस्पतिर्ब्रह्मपूता पुनातु माम्"
@@ -1589,7 +1589,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'asatāṃ pratigraha' (gifts from the wicked) is about unjustly gained wealth, not about any community.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:07.965Z",
     "sanskrit": "यदुच्छिष्टमभोज्यं यद्वा दुश्चरितं मम । सर्वं पुनन्तु मामापोऽसतां च प्रतिग्रहँ स्वाहा"
@@ -1600,7 +1600,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Edition prints 'avalimpatu'; the explanation quotes it and follows the common 'avalumpatu' (efface).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.071Z",
     "sanskrit": "अग्निश्च मा मन्युश्च मन्युपतयश्च मन्युकृतेभ्यः । पापेभ्यो रक्षन्ताम् । यदह्ना पापमकार्षम् । मनसा वाचा हस्ताभ्याम् । पद्भ्यामुदरेण शिश्ना । अहस्तदवलिम्पतु । यत्किञ्च दुरितं मयि । इदमहं माममृतयोनी । सत्ये ज्योतिषि जुहोमि स्वाहा"
@@ -1611,7 +1611,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Evening counterpart of 31:1; same textual notes ('avalumpatu').",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.186Z",
     "sanskrit": "सूर्यश्च मा मन्युश्च मन्युपतयश्च मन्युकृतेभ्यः । पापेभ्यो रक्षन्ताम् । यद्रात्रिया पापमकार्षम् । मनसा वाचा हस्ताभ्याम् । पद्भ्यामुदरेण शिश्ना । रात्रिस्तदवलुम्पतु । यत्किञ्च दुरितं मयि । इदमहं माममृतयोनी । सूर्ये ज्योतिषि स्वाहा"
@@ -1622,7 +1622,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.303Z",
     "sanskrit": "ओमित्येकाक्षरं ब्रह्म । अग्निर्देवता ब्रह्म इत्यार्षम् । गायत्रं छन्दं परमात्मं सरूपम् । सायुज्यं विनियोगम्"
@@ -1633,7 +1633,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.415Z",
     "sanskrit": "आयातु वरदा देवी अक्षरं ब्रह्म संमितम् । गायत्री छन्दसां मातेदं ब्रह्म जुषस्व नः"
@@ -1644,7 +1644,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Praise that sins are released by the twilight worship is read as arthavāda; the explanation says it does not erase responsibility for deliberate wrongs. 'sarvavarṇe' means 'of all colours' (red/white/dark forms), not caste.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.415Z",
     "sanskrit": "यदह्नात्कुरुते पापं तदह्नात्प्रतिमुच्यते । यद्रात्रियात्कुरुते पापं तद्रात्रियात्प्रतिमुच्यते । सर्ववर्णे महादेवि सन्ध्याविद्ये सरस्वति"
@@ -1655,7 +1655,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'upanayane viniyogaḥ' states the traditional use; the explanation describes it without endorsing restrictions on who may recite. Some anatomical terms (ṣaṭkukṣi, pañcaśīrṣa) have varying traditional glosses and are not over-explained.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.528Z",
     "sanskrit": "ओजोऽसि सहोऽसि बलमसि भ्राजोऽसि देवानां धामनामासि विश्वमसि विश्वायुअः सर्वमसि सर्वायुरभिभूरों गायत्रीमावाहयामि सावित्रीमावाहयामि सरस्वतीमावाहयामि छन्दर्हीनावाहयामि श्रियमावाहयामि गायत्रिया गायत्री छन्दो विश्वामित्र ऋषिः सविता देवताग्निर्मुखं ब्रह्मा शिरो विष्णुहृदयँ रुद्रः शिखा पृथिवी योनिः प्राणापानव्यानोदानस्माना सप्राणा श्वेतवर्णा सांख्यायनसगोत्रा गायत्री चतुर्विंशत्यक्षरा त्रिपदा ष्ट्कुक्षिः पञ्चशीर्षोपनयने विनियोगः"
@@ -1666,7 +1666,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.529Z",
     "sanskrit": "ॐ भूः । ॐ भुवः । ओँसुवः । ॐ महः । ॐ जनः । ॐ तपः । ओँ सत्यम् । ॐ तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि । धियो यो नः प्रचोदयात् । ओमापो ज्योती रसोऽमृतं ब्रह्म भूर्भुवः सुवरोम्"
@@ -1677,7 +1677,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'brāhmaṇebhyo 'bhyanujñātā' is read as 'permitted by the worshippers'; the explanation states it is not a claim of birth-based privilege.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.631Z",
     "sanskrit": "उत्तमे शिखरे देवि जाते भूम्यां पर्वतमूर्धनि । ब्राह्मणेभ्योऽभ्यनुज्ञाता गच्छ देवि यथासुखम्"
@@ -1688,7 +1688,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'dvija' is explained as inner second birth and the explanation says it does not support birth-based distinction. Edition reads 'pavane dvijātā' / 'prajātuṃ'; the explanation quotes it and follows the common 'pāvanī dvijānām' / 'prayātuṃ' for the sense.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.631Z",
     "sanskrit": "स्तुतो मया वरदा वेदमाता प्रचोदयन्ती पवने द्विजाता । आयुः पृथिव्यां द्रविणं ब्रह्मवर्चसं मह्यं दत्वा प्रजातुं ब्रह्मलोकम्"
@@ -1699,7 +1699,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "'na prabhā vāty akṣaram' is obscure; the explanation offers a tentative sense.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.736Z",
     "sanskrit": "घृणिः सूर्य आदित्यो न प्रभा वात्यक्षरम् । मधु क्षरन्ति तद्रसम् । सत्यं वै तद्रसमापो ज्योती रसोऽमृतं ब्रह्म भूर्भुवः सुवरोम्"
@@ -1710,7 +1710,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "First part of the Trisuparṇa; some phrases ('vatso 'bhi so aham', 'duruṣṣaha') are obscure and read tentatively.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.842Z",
     "sanskrit": "ब्रह्ममेतु माम् । मधुमेतु माम् । ब्रह्ममेव मधुमेतु माम् । यास्ते सोम प्रजा वत्सोऽभि सो अहम् । दुःष्वप्नहन् दुरुष्षह । यास्ते सोम प्राणाँस्ताञ्जुहोमि"
@@ -1721,7 +1721,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Trisuparṇa phalaśruti: says reciters 'destroy' grave sins and that the text be given to a brāhmaṇa. The explanation reads the praise as arthavāda, says recitation does not erase accountability for real harm, and does not endorse birth-based privilege.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.842Z",
     "sanskrit": "त्रिसुपर्णमयाचितं ब्राह्मणाय दद्यात् । ब्रह्महत्यां वा एते घ्नन्ति । ये ब्राह्मणास्त्रिसुपर्णं पठन्ति । ते सोमं प्राप्नुवन्ति । आ सहस्रात् पङ्क्तिं पुनन्ति । ॐ"
@@ -1732,7 +1732,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.970Z",
     "sanskrit": "ब्रह्म मेधया । मधु मेधया । ब्रह्ममेव मधुमेधया"
@@ -1743,7 +1743,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.970Z",
     "sanskrit": "अद्यानो देव सवितः प्रजावत्सावीः सौभगम् । परा दुःष्वप्नियँ सुव"
@@ -1754,7 +1754,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Edition prints 'tan mama āsuva'; the explanation quotes it and notes the common 'tan na āsuva'.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.970Z",
     "sanskrit": "विश्वानि देव सवितर्दुरितानि परासुव । यद्भद्रं तन्मम आसुव"
@@ -1765,7 +1765,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.970Z",
     "sanskrit": "मधुवाता ऋतायते मधुक्षरन्ति सिन्धवः । माध्वीर्नः सन्त्वोषधीः"
@@ -1776,7 +1776,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.971Z",
     "sanskrit": "मधु नक्तमुतोषसि मधुमत्पार्थिवँ रजः । मधुद्यौरस्तु नः पिता"
@@ -1787,7 +1787,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.971Z",
     "sanskrit": "मधुमान्नो वनस्पतिर्मधुमाँ अस्तु सूर्यः । माध्वीर्गावो भवन्तु नः"
@@ -1798,7 +1798,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Trisuparṇa phalaśruti: says reciters 'destroy' grave sins and that the text be given to a brāhmaṇa. The explanation reads the praise as arthavāda, says recitation does not erase accountability for real harm, and does not endorse birth-based privilege.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:08.971Z",
     "sanskrit": "य इमं त्रिसुपर्णमयाचितं ब्राह्मणाय दद्यात् । भ्रूणहत्यां वा एते घ्नन्ति । ये ब्राह्मणास्त्रिसुपर्णं पठन्ति । ते सोमं प्राप्नुवन्ति । आ सहस्रात्पङ्क्तिं पुनन्ति । ॐ"
@@ -1809,7 +1809,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "'medhavā' is an unusual form with variant readings; the explanation says so and does not over-interpret.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.095Z",
     "sanskrit": "ब्रह्म मेधवा । मधु मेधवा । ब्रह्ममेव मधु मेधवा"
@@ -1820,7 +1820,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Repeats 12:4 (ṚV 9.96.6) within the third Trisuparṇa section; explained from a complementary angle.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.095Z",
     "sanskrit": "ब्रह्मा देवानां पदवीः कवीनामृषिर्विप्राणां महिषो मृगाणाम् । श्येनो गृद्धाणाँ स्वधितिर्वनानाँ सोमः पवित्रमत्येति रेभत्"
@@ -1831,7 +1831,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Repeats 12:6 within the Trisuparṇa; the 'haṃsa' breath (so 'ham) is a later yogic interpretation, presented as such.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.095Z",
     "sanskrit": "हँसः शुचिषद्वसुरन्तरिक्षसद्धोता वेदिषदतिथिर्दुरोणसत् । नृषद्वरसदृतसद्व्योमसदब्जा गोजा ऋतजा अद्रिजा ऋतं बृहत्"
@@ -1842,7 +1842,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "ṚV 4.58.8-type ghee verse; 'ṛce tvā' is read as a ritual dedication formula. Readings tentative.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.095Z",
     "sanskrit": "ऋचे त्वा ऋचे त्वा समित्स्रवन्ति सरितो न धेनाः । अन्तर्हृदा मनसा पूयमानाः । घृतस्य धारा अभिचाकशीमि"
@@ -1853,7 +1853,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "The golden reed and honey-making bird are richly symbolic; the reading of the bird as the Self and the 'seven bay ones' as senses/breaths is offered tentatively.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.095Z",
     "sanskrit": "हिरण्ययो वेतसो मध्य आसाम् । तस्मिन्त्सुपर्णो मधुकृत् कुलायी भजन्नास्ते मधु देवताभ्यः । तस्यासते हरयः सप्त तीरे स्वधां दुहाना अमृतस्य धाराम्"
@@ -1864,7 +1864,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Trisuparṇa phalaśruti: says reciters 'destroy' grave sins and that the text be given to a brāhmaṇa. The explanation reads the praise as arthavāda, says recitation does not erase accountability for real harm, and does not endorse birth-based privilege.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.095Z",
     "sanskrit": "य इदं त्रिसुपर्णमयाचितं ब्राह्मणाय दद्यात् । वीरहत्यां वा एते घ्नन्ति । ये ब्राह्मणास्त्रिसुपर्णं पठन्ति । ते सोमं प्राप्नुवन्ति । आसहस्रात् पङ्क्तिं पुनन्ति । ॐ"
@@ -1875,7 +1875,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Medhā-sūkta (prayer for retentive insight).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.218Z",
     "sanskrit": "मेधादेवी जुषमाणा न आगाद्विश्वाची भद्रा सुमनस्यमाना । त्वया जुष्टा जुषमाणा दुरुक्तान्बृहद्वदेम विदथे सुवीराः"
@@ -1886,7 +1886,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Medhā-sūkta (prayer for retentive insight). 'brahmā gataśrīḥ' is read as the creator or a knower of Brahman; the printed translation's 'a Brahmin' is explained as one devoted to learning, not a birth claim.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.219Z",
     "sanskrit": "त्वया जुष्ट ऋषिर्भवति देवि त्वया ब्रह्मागतश्रीरुत त्वया । त्वया जुष्टश्चित्रं विन्दते वसु सा नो जुषस्व द्रविणेन मेधे"
@@ -1897,7 +1897,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Medhā-sūkta (prayer for retentive insight).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.349Z",
     "sanskrit": "मेधां म इन्द्रो ददातु मेअधां देवी सरस्वती । मेधां मे अश्विनावुभावाधत्तां पुष्करस्रजौ"
@@ -1908,7 +1908,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Medhā-sūkta (prayer for retentive insight).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.350Z",
     "sanskrit": "अप्सरासु च या मेधा गन्धर्वेषु च यन्मनः । दैवी मेधा सरस्वती स मां मेधा सुरभिर्जुषताँ स्वाहा"
@@ -1919,7 +1919,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Medhā-sūkta (prayer for retentive insight).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.466Z",
     "sanskrit": "आ मां मेधा सुरभिर्विश्वरूपा हिरण्यवर्णा जगती जगम्या । ऊर्जस्वती पयसा पिन्वमाना सा मां मेधा सुप्रतीका जुषताम्"
@@ -1930,7 +1930,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Medhā-sūkta (prayer for retentive insight).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.573Z",
     "sanskrit": "मयि मेधां मयि प्रजां मय्यग्निस्तेजो दधातु । मयि मेधां मयि प्रजां मयीन्द्र इन्द्रियं दधातु । मयि मेधां मयि प्रजां मयि सूर्यो भ्राजो दधातु"
@@ -1941,7 +1941,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'parṇaṃ vanaspater ivābhi naḥ śīyatām' is obscure; the printed translation applies the falling leaf to wealth. The explanation keeps that sense and adds a gentle reading about death, which a reviewer may trim.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:49:09.677Z",
     "sanskrit": "अपैतु मृत्युरमृतं न आगन्वैवस्वतो नो अभयं कृणोतु । पर्णं वनस्पतेरिवाभि नः शीयताँरयिः सचतां नः शचीपतिः"
@@ -1952,7 +1952,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the mṛtyu-prayers (anuvākas 46-58), for long life and freedom from untimely death.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:50.072Z",
     "sanskrit": "परं मृत्यो अनुपरेहि पन्थां यस्ते स्व इतरो देवयानात् । चक्षुष्मते शृण्वते ते ब्रवीमि मा नः प्रजाँ रीरिषो मोत वीरान्"
@@ -1963,7 +1963,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the mṛtyu-prayers (anuvākas 46-58), for long life and freedom from untimely death.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:50.178Z",
     "sanskrit": "वातं प्राणं मनसान्वारभामहे प्रजापतिं यो भुवनस्य गोपाः । स नो मृत्योस्त्रायतां पात्वँहसो ज्योग्जीवा जराम शीमहि"
@@ -1974,7 +1974,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "Part of the mṛtyu-prayers (anuvākas 46-58), for long life and freedom from untimely death. First half ('amutrabhūyād adha yad yamasya') is obscure; reading tentative.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:50.304Z",
     "sanskrit": "अमुत्रभूयादध यद्यमस्य बृहस्पते अभिशस्तेरमुञ्चः । प्रत्यौहतामश्विना मृत्युमस्मद्देवानामग्ने भिषजा शचीभिः"
@@ -1985,7 +1985,7 @@
     "lifeLesson": "",
     "confidence": "low",
     "reviewNote": "Text and sense of the second half are uncertain ('brahmasarūpam anu medam āgād'); the explanation stays tentative. Reviewer may consider shortening.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:50.434Z",
     "sanskrit": "हरिँ हरन्तमनुयन्ति देवा विश्वस्येशानं वृषभं मतीनाम् । ब्रह्मसरूपमनु मेदमागादयनं मा विवधीर्विक्रमस्व"
@@ -1996,7 +1996,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the mṛtyu-prayers (anuvākas 46-58), for long life and freedom from untimely death.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:50.552Z",
     "sanskrit": "शल्कैरग्निमिन्धान उभौ लोकौ सनेमहम् । उभयोर्लोकयोरृध्वाति मृत्युं तराम्यहम्"
@@ -2007,7 +2007,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the mṛtyu-prayers (anuvākas 46-58), for long life and freedom from untimely death.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:50.666Z",
     "sanskrit": "मा छिदो मृत्यो मा वधीर्मा मे बलं विवृहो मा प्रमोषीः । प्रजां मा मे रीरिष आयुरुग्र नृचक्षसं त्वा हविषा विधेम"
@@ -2018,7 +2018,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the mṛtyu-prayers (anuvākas 46-58), for long life and freedom from untimely death.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:50.772Z",
     "sanskrit": "मा नो महान्तमुत मा नो अर्भकं मा न उक्षन्तमुत मा न उक्षितम् । मा नो वधीः पितरं मोत मातरं प्रिया मा नस्तनुवो रुद्र रीरिषः"
@@ -2029,7 +2029,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the mṛtyu-prayers (anuvākas 46-58), for long life and freedom from untimely death.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:50.892Z",
     "sanskrit": "मा नस्तोके तनये मा न आयुषि मा नो गोषु मा नो अश्वेषु रीरिषः । वीरान्मा नो रुद्र भामितो वधीर्हविष्मन्तो नमसा विधेम ते"
@@ -2040,7 +2040,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:51.015Z",
     "sanskrit": "प्रजापते न त्वदेतान्यन्यो विश्वा जातानि परि ता बभूव । यत्कामस्ते जुहुमस्तन्नो अस्तु वयँ स्याम पतयो रयीणाम्"
@@ -2051,7 +2051,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Repeats 1:50 within the mṛtyu-prayer sequence; explained from that context.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:51.124Z",
     "sanskrit": "स्वस्तिदा विशस्पतिर्वृत्रहा विमृधो वशी । वृषेन्द्रः पुर एतु नः स्वस्तिदा अभयङ्करः"
@@ -2062,7 +2062,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the mṛtyu-prayers (anuvākas 46-58), for long life and freedom from untimely death. 'māyā' is taken in its Vedic sense of wondrous power, not illusion. Edition prints 'sahasram ayu'; explanation follows 'sahasram ayutam'.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:51.245Z",
     "sanskrit": "ये ते सहस्रमयु पाशा मृत्यो मर्त्याय हन्तवे । तान् यज्ञस्य मायया सर्वानवयजामहे"
@@ -2073,7 +2073,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the mṛtyu-prayers (anuvākas 46-58), for long life and freedom from untimely death.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:51.367Z",
     "sanskrit": "मृत्यवे स्वाहा मृत्यवे स्वाहा"
@@ -2084,7 +2084,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'anyakṛta' (sin done by others) is read as harm one shares in or is affected by; the explanation does not claim one can expiate others' wrongs for them.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:51.493Z",
     "sanskrit": "देवकृतस्यैनसोऽवयजनमसि स्वाहा । मनुष्यकृतस्यैनसोऽवयजनमसि स्वाहा । पितृकृतस्यैसोऽवयजनमसि स्वाहा । आत्मकृतस्यैनसोऽवयजनमसि स्वाहा । अन्यकृतस्यैनसोऽवयजनमसि स्वाहा । अस्मत्कृतस्यैनसोऽवयजनमसि स्वाहा । यद्दिवा च नक्तं चैनश्चकृम तस्यावयजनमसि स्वाहा । यत्स्वपन्तश्च जाग्रतश्चैनश्चकृम तस्यावयजनमसि स्वाहा । यत्सुषुप्तश्च जाग्रतश्चैनश्चकृम तस्यावयजनमसि स्वाहा । यद्विद्वाँसश्चाविद्वाँसश्चैनश्चकृम तस्यावयजनमसि स्वाहा । एनस एनसोऽवयजनमसि स्वाहा"
@@ -2095,7 +2095,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Verse asks the Vasus to place one's sin on a hostile person. The explanation states one cannot transfer responsibility to another and that it does not license wishing harm; it reads the line toward the dissolution of hostility.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:51.620Z",
     "sanskrit": "यद्वो देवाश्चकृम जिह्वयां गुरु मनसो वा प्रयुती देवहेडनम् । अरावा यो नो अभि दुच्छुनायते तस्मिन् तदेनो वसवो निधेतन स्वाहा"
@@ -2106,7 +2106,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'kāmo 'kārṣīt... nāhaṃ kartā' could be misread as disowning responsibility. The explanation presents it as witness-practice that loosens desire, and states it is not an excuse to evade the consequences of one's acts.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:51.743Z",
     "sanskrit": "कामोऽकार्षीन्नमो नमः । कामोऽकार्शीत्कामः करोति नाहं करोमि कामः कर्ता नाहं कर्ता कामः कारयिता नाहं कारयिता एष ते काम कामाय स्वाहा"
@@ -2117,7 +2117,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "As for 61:1: presented as witness-practice toward anger, not as an excuse to disown one's acts.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:51:51.872Z",
     "sanskrit": "मन्युरकार्षीन्नमो नमः । मन्युरकार्षीन्मन्युः करोति नाहं करोमि मन्युः कर्ता नाहं कर्ता मन्युः कारयिता नाहं कारयिता एष ते मन्यो मन्यवे स्वाहा"
@@ -2128,7 +2128,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "'gandhāra' is obscure; the explanation says so.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:55:05.902Z",
     "sanskrit": "तिलाञ्जुहोमि सरसान् सपिष्टान् गन्धार मम चित्ते रमन्तु स्वाहा"
@@ -2139,7 +2139,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:55:05.903Z",
     "sanskrit": "गावो हिरण्यं धनमन्नपानँ सर्वेषाँ श्रियै स्वाहा"
@@ -2150,7 +2150,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'brāhmaṇyam' and 'bahuputratām' (Brahminhood, many sons) are explained as brahmic splendour of learning/conduct and the welfare of offspring; the explanation states it is not a birth-status claim and does not prefer sons over daughters.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:55:05.903Z",
     "sanskrit": "श्रियं च लक्ष्मीं च पुष्टिं च कीर्तिं चानृण्यताम् । ब्राह्मण्यं बहुपुत्रताम् । श्रद्धामेधे प्रजाः संददातु स्वाहा"
@@ -2161,7 +2161,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:55:06.014Z",
     "sanskrit": "तिलाः कृष्णास्तिलाः श्वेतास्तिलाः सौम्या वशानुगाः । तिलाः पुनन्तु मे पापं यत्किञ्चिद् दुरितं मयि स्वाहा"
@@ -2172,7 +2172,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Lists grave sins; the explanation states plainly that the sesame offering does not erase accountability for serious wrongs and reads it as acknowledgement and inner purification alongside real amends.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:55:06.014Z",
     "sanskrit": "चोरस्यान्नं नवश्राद्धं ब्रह्महा गुरुतल्पगः । गोस्तेयँ सुरापानं भ्रूणहत्या तिला शान्तिँ शमयन्तु स्वाहा"
@@ -2183,7 +2183,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "As 63:3: 'brahmaṇyam' and 'bahuputratām' explained without birth-status or son-preference.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:55:06.014Z",
     "sanskrit": "श्रीश्च लक्ष्मीश्च पुष्टीश्च कीर्तिं चानृण्यताम् । ब्रह्मण्यं बहुपुत्रताम् । श्रद्धामेधे प्रज्ञा तु जातवेदः संददातु स्वाहा"
@@ -2194,7 +2194,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the purification formulas (anuvākas 65-66) with the refrain 'jyotir ahaṃ virajā vipāpmā bhūyāsam'.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:55:06.126Z",
     "sanskrit": "प्राणापानव्यानोदानसमाना मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2205,7 +2205,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the purification formulas (anuvākas 65-66) with the refrain 'jyotir ahaṃ virajā vipāpmā bhūyāsam'.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:55:06.126Z",
     "sanskrit": "वाङ्मनश्चक्षुःश्रोत्रजिह्वाघ्राणरेतोबुद्ध्याकूतिःसङ्कल्पा मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2216,7 +2216,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the purification formulas (anuvākas 65-66) with the refrain 'jyotir ahaṃ virajā vipāpmā bhūyāsam'.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:55:06.126Z",
     "sanskrit": "त्वक्चर्ममांसरुधिरमेदोमज्जास्नायवोऽस्थीनि मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2227,7 +2227,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Part of the purification formulas (anuvākas 65-66) with the refrain 'jyotir ahaṃ virajā vipāpmā bhūyāsam'.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:55:06.126Z",
     "sanskrit": "शिरःपाणिपादपार्श्वपृष्ठोरूधरजङ्घाशिश्नोपस्थपायव् ओ मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2238,7 +2238,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "Part of the purification formulas (anuvākas 65-66) with the refrain 'jyotir ahaṃ virajā vipāpmā bhūyāsam'. The addressee and some forms ('lohitākṣi', 'dadāpayitā') are uncertain; reading tentative.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:55:06.126Z",
     "sanskrit": "उत्तिष्ठ पुरुष हरित पिङ्गल लोहिताक्षि देहि देहि ददापयिता मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2249,7 +2249,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Opens the virajā-homa series (anuvāka 66), used in saṃnyāsa initiation.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.834Z",
     "sanskrit": "पृथिव्यप्तेजोवायुराकाशा मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2260,7 +2260,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.836Z",
     "sanskrit": "शब्दस्पर्शरूपरसगन्धा मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2271,7 +2271,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.836Z",
     "sanskrit": "मनोवाक्कायकर्माणि मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2282,7 +2282,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "The edition's text here lacks 'me śudhyantām' (likely a lacuna); the explanation reads it by analogy with the series and says so.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.836Z",
     "sanskrit": "अव्यक्तभावैरहङ्कारैर्- ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2293,7 +2293,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.836Z",
     "sanskrit": "आत्मा मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2304,7 +2304,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.836Z",
     "sanskrit": "अन्तरात्मा मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2315,7 +2315,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.836Z",
     "sanskrit": "परमात्मा मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2326,7 +2326,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "'viviṭṭi', 'ṛgvidhāna', 'kaṣotka' are obscure; the explanation leaves them as names.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.836Z",
     "sanskrit": "क्षुधे स्वाहा । क्षुत्पिपासाय स्वाहा । विविट्यै स्वाहा । ऋग्विधानाय स्वाहा । कषोत्काय स्वाहा । ॐ स्वाहा"
@@ -2337,7 +2337,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.836Z",
     "sanskrit": "क्षुत्पिपासामलं ज्येष्ठामललक्ष्मीर्नाशयाम्यहम् । अभूतिमसमृद्धिं च सर्वान्निर्णुद मे पाप्मानँ स्वाहा"
@@ -2348,7 +2348,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.836Z",
     "sanskrit": "अन्नमयप्राणमयमनोमयविज्ञानमयमानन्दमयमात्मा मे शुध्यन्तां ज्योतिरहं विरजा विपाप्मा भूयासँ स्वाहा"
@@ -2359,7 +2359,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "The 'adharmāya svāhā' oblation is read as appeasement, not endorsement; the explanation says so.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.962Z",
     "sanskrit": "अग्नये स्वाहा । विश्वेभ्यो देवेभ्यः स्वाहा । ध्रुवाय भूमाय स्वाहा । ध्रुवक्षितये स्वाहा । अच्युतक्षितये स्वाहा । अग्नये स्विष्टकृते स्वाहा ॥ धर्माय स्वाहा । अधर्माय स्वाहा । अद्भ्यः स्वाहा । ओषधिवनस्पतिभ्यः स्वाहा । रक्षोदेवजनेभ्यः स्वाहा । गृह्याभ्यः स्वाहा । अवसानेभ्यः स्वाहा । अवसानपतिभ्यः स्वाहा । सर्वभूतेभ्यः स्वाहा । कामाय स्वाहा । अन्तरिक्षाय स्वाहा । यदेजति जगति यच्च चेष्टति नाम्नो भागोऽयं नाम्ने स्वाहा । पृथिव्यै स्वाहा । अन्तरिक्षाय स्वाहा । दिवे स्वाहा । सूर्याय स्वाहा । चन्द्रमसे स्वाहा । नक्षत्रेभ्यः स्वाहा । इन्द्राय स्वाहा । बृहस्पतये स्वाहा । प्रजापतये स्वाहा । ब्रह्मणे स्वाहा । स्वधा पितृभ्यः स्वाहा । नमो रुद्राय पशुपतये स्वाहा । देवेभ्यः स्वाहा । पितृभ्यः स्वधास्तु । भूतेभ्यो नमः । मनुष्येभ्यो हन्ता । प्रजापतये स्वाहा । परमेष्ठिने स्वाहा"
@@ -2370,7 +2370,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.962Z",
     "sanskrit": "यथा कूपः शतधारः सहस्रधारो अक्षितः । एवा मे अस्तु धान्यँ सहस्रधारमक्षितम् ॥ धनधान्यै स्वाहा"
@@ -2381,7 +2381,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:58.962Z",
     "sanskrit": "ये भूताः प्रचरन्ति दिवानक्तं बलिमिच्छन्तो वितुदस्य प्रेष्याः । तेभ्यो बलिं पुष्टिकामो हरामि मयि पुष्टिं पुष्टिपतिर्दधातु स्वाहा"
@@ -2392,7 +2392,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "The edition prints 'tadvāyuaḥ' (typo for tad vāyuḥ) and 'tatpuror namaḥ'; the explanation follows the translation.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:59.107Z",
     "sanskrit": "ॐ तद्ब्रह्म । ॐ तद्वायुअः । ॐ तदात्मा । ॐ तत्सत्यम् । ॐ तत्सर्वम् । ॐ तत्पुरोर्नमः"
@@ -2403,7 +2403,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:59.107Z",
     "sanskrit": "ॐ अन्तश्वरति भूतेषु गुहायां विश्वमूर्तिषु । त्वं यज्ञस्त्वं वषट्कारस्त्वमिन्द्रस्त्वँ रुद्रस्त्वं विष्णुस्त्वं ब्रह्म त्वं प्रजापतिः । त्वं तदाप आपो ज्योती रसोऽमृतं ब्रह्म भूर्भुवः सुवरोम्"
@@ -2414,7 +2414,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:59.240Z",
     "sanskrit": "श्रद्धायां प्राणे निविष्टोऽमृतं जुहोमि । श्रद्धायामपाने निविष्टोऽमृतं जुहोमि । श्रद्धायां व्याने निविष्टोऽमृतं जुहोमि । श्रद्धायामुदाने निविष्टोऽमृतं जुहोमि । श्रद्धायाँ समाने निविष्टोऽमृतं जुहोमि । ब्रह्मणि म आत्मामृतत्वाय"
@@ -2425,7 +2425,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:59.241Z",
     "sanskrit": "अमृतोपस्तरणमसि"
@@ -2436,7 +2436,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "The edition reads 'śivo mā viśāpradāhāya' (viśa + apradāhāya); the explanation follows that split.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:59.241Z",
     "sanskrit": "श्रद्धायां प्राणे निविष्टोऽमृतं जुहोमि । शिवो मा विशाप्रदाहाय । प्राणाय स्वाहा ॥ श्रद्धायामपाने निविष्टोऽमृतं जुहोमि । शिवो मा विशाप्रदाहाय । अपानाय स्वाहा ॥ श्रद्धायां व्याने निविष्टोऽमृतं जुहोमि । शिवो मा विशाप्रदाहाय । व्यानाय स्वाहा ॥ श्रद्धायामुदाने निविष्टोऽमृतं जुहोमि । शिवो मा विशाप्रदाहाय । उदानाय स्वाहा ॥ श्रद्धायाँ समाने निविष्टोऽमृतं जुहोमि । शिवो मा विशाप्रदाहाय । समानाय स्वाहा ॥ ब्रह्मणि म आत्मामृतत्वाय"
@@ -2447,7 +2447,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T09:58:59.241Z",
     "sanskrit": "अमृतापिधानमसि"
@@ -2458,7 +2458,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:03.412Z",
     "sanskrit": "अङ्गुष्ठमात्रः पुरुषोऽङ्गुष्ठं च समाश्रितः । ईशः सर्वस्य जगतः प्रभुः प्रीणातु विश्वभुक्"
@@ -2469,7 +2469,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:03.558Z",
     "sanskrit": "वाङ् म आसन् । नसोः प्राणः । अक्ष्योश्चक्षुः । कर्णयोः श्रोत्रम् । बाहुवोर्बलम् । उरुवोरोजः । अरिष्टा विश्वान्यङ्गानि तनूः । तनुवा मे सह नमस्ते अस्तु मा मा हिँसीः"
@@ -2480,7 +2480,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:03.703Z",
     "sanskrit": "वयः सुपर्णा उपसेदुरिन्द्रं प्रियमेधा ऋषयो नाधमानाः । अप ध्वान्तमूर्णुहि पूर्धि चक्षुर्मुमुग्ध्यस्मान्निधयेव बद्धान्"
@@ -2491,7 +2491,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "'tenānnenāpyāyasva' is read as addressed to Rudra; some commentators read it as addressed to the self or the prāṇa-knot.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:03.854Z",
     "sanskrit": "प्राणानां ग्रन्थिरसि रुद्रो मा विशान्तकः । तेनान्नेनाप्यायस्व"
@@ -2502,7 +2502,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "The edition reads 'mṛtyur me pāhi'; a common variant is 'mṛtyor mā pāhi'. Both are mentioned.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:03.986Z",
     "sanskrit": "नमो रुद्राय विष्णवे मृत्युर्मे पाहि"
@@ -2513,7 +2513,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.123Z",
     "sanskrit": "त्वमग्ने द्युभिस्त्वमाशुशुक्षणिस्त्वमद्भ्यस्त्वमश्मनस्परि । त्वं वनेभ्यस्त्वमोषधीभ्यस्त्वं नृणां नृपते जायसे शुचिः"
@@ -2524,7 +2524,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'brahmavarcasa' is explained as splendour from learning and discipline, not from birth.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.260Z",
     "sanskrit": "शिवेन मे संतिष्ठस्व स्योनेन मे संतिष्ठस्व ब्रह्मवर्चसेन मे संतिष्ठस्व यज्ञस्यर्द्धिमनुसंतिष्ठस्वोप ते यज्ञ नम उप ते नम उप ते नमः"
@@ -2535,7 +2535,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "सत्यं परं परँ सत्यँ सत्येन न सुवर्गाल्लोकाच्च्यवन्ते कदाचन सताँ हि सत्यं तस्मात्सत्ये रमन्ते"
@@ -2546,7 +2546,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Fasting is praised; the explanation adds that it must not harm health and cites Gītā 6.16.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "तप इति तपो नानशनात्परं यद्धि परं तपस्तद् दुर्धर्षं तद् दुराधष तस्मात्तपसि रमन्ते"
@@ -2557,7 +2557,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "दम इति नियतं ब्रह्मचारिणस्तस्माद्दमे रमन्ते"
@@ -2568,7 +2568,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "The edition prints 'munastamāc chame' (corrupt for munayas tasmāc chame); the explanation says so.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "शम इत्यरण्ये मुनस्तमाच्छमे रमन्ते"
@@ -2579,7 +2579,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "दानमिति सर्वाणि भूतानि प्रशँसन्ति दानान्नातिदुष्करं तस्माद्दाने रमन्ते"
@@ -2590,7 +2590,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "धर्म इति धर्मेण सर्वमिदं परिगृहीतं धर्मान्नातिदुश्चरं तस्माद्धर्मे रमन्ते"
@@ -2601,7 +2601,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Procreation is presented as one valued path among many; the explanation says it does not pressure anyone into parenthood or prefer sons.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "प्रजन इति भूयाँसस्तस्मात् भूयिष्ठाः प्रजायन्ते तस्मात् भूयिष्ठाः प्रजनने रमन्ते"
@@ -2612,7 +2612,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "अग्नय इत्याह तस्मादग्नय आधातव्याः"
@@ -2623,7 +2623,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "अग्निहोत्रमित्याह तस्मादग्निहोत्रे रमन्ते"
@@ -2634,7 +2634,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "यज्ञ इति यज्ञेन हि देवा दिवं गतास्तस्माद्यज्ञे रमन्ते"
@@ -2645,7 +2645,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "मानसमिति विद्वाँसस्तस्माद्विद्वाँस एव मानसे रमन्ते"
@@ -2656,7 +2656,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:02:04.399Z",
     "sanskrit": "न्यास इति ब्रह्मा ब्रह्मा हि परः परो हि ब्रह्मा तानि वा एतान्यवराणि तपाँसि न्यास एवात्यरेचयत् य एवं वेदेत्युपनिषत्"
@@ -2667,7 +2667,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.452Z",
     "sanskrit": "प्राजापत्यो हारुणिः सुपर्णेयः प्रजापतिं पितरमुपससार किं भगवन्तः परमं वदन्तीति तस्मै प्रोवाच"
@@ -2678,7 +2678,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.453Z",
     "sanskrit": "सत्येन वायुरावाति सत्येनादित्यो रोचते दिवि सत्यं वाचः प्रतिष्ठा सत्ये सर्वं प्रतिष्ठितं तस्मात्सत्यं परमं वदन्ति"
@@ -2689,7 +2689,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'tapasā sapatnān praṇudāma' (drive away rivals) is read as overcoming inner enemies and steadiness before opposition; not a license for hostility.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "तपसा देवा देवतामग्र आयन् तपसार्षयः सुवरन्वविन्दन् तपसा सपत्नान्प्रणुदामारातीस्तपसि सर्वं प्रतिष्ठितं तस्मात्तपः परमं वदन्ति"
@@ -2700,7 +2700,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "दमेन दान्ताः किल्बिषमवधून्वन्ति दमेन ब्रह्मचारिणः सुवरगच्छन् दमो भूतानां दुराधर्षं दमे सर्वं प्रतिष्ठितं तस्माद्दमः परमं वदन्ति"
@@ -2711,7 +2711,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "शमेन शान्ताः शिवमाचरन्ति शमेन नाकं मुनयोऽन्वविन्दन् शमो भूतानां दुराधर्षं शमे सर्वं प्रतिष्ठितं तस्माच्छमः परमं वदन्ति"
@@ -2722,7 +2722,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "दानं यज्ञानां वरूथं दक्षिणा लोके दातारँ सर्वभूतान्युपजीवन्ति दानेनारातीरपानुदन्त दानेन द्विषन्तो मित्रा भवन्ति दाने सर्वं प्रतिष्ठितं तस्माद्दानं परमं वदन्ति"
@@ -2733,7 +2733,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "धर्मो विश्वस्य जगतः प्रतिष्ठा लोके धर्मिष्ठ प्रजा उपसर्पन्ति धर्मेण पापमपनुदति धर्मे सर्वं प्रतिष्ठितं तस्माद्धर्मं परमं वदन्ति"
@@ -2744,7 +2744,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Procreation and pitṛ-ṛṇa: the explanation adds no son-preference, no compulsion, and that teachers and guardians also carry the thread.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "प्रजननं वै प्रतिष्ठा लोके साधु प्रजायास्तन्तुं तन्वानः पितृणामनुणो भवति तदेव तस्यानृणं तस्मात् प्रजननं परमं वदन्ति"
@@ -2755,7 +2755,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "The edition and translation run the correspondences together; the explanation gives the traditional grouping (gārhapatya-ṛk-pṛthivī-rathantara, etc.).",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "अग्नयो वै त्रयी विद्या देवयानः पन्था गार्हपत्य ऋक् पृथिवी रथन्तरमन्वाहार्यपचनः यजुरन्तरिक्षं वामदेव्यमाहवनीयः साम सुवर्गो लोको बृहत्तस्मादग्नीन् परमं वदन्ति"
@@ -2766,7 +2766,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "अग्निहोत्रँ सायं प्रातर्गृहाणां निष्कृतिः स्विष्टँ सुहुतं यज्ञक्रतूनां प्रायणँ सुवर्गस्य लोकस्य ज्योतिस्तस्मादग्निहोत्रं परमं वदन्ति"
@@ -2777,7 +2777,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'yajñenāsurān apānudanta' is read in the Upaniṣadic inner sense (devas/asuras as good and bad tendencies), not as sanction against any human group.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "यज्ञ इति यज्ञो हि देवानां यज्ञेन हि देवा दिवं गता यज्ञेनासुरानपानुदन्त यज्ञेन द्विषन्तो मित्रा भवन्ति यज्ञे सर्वं प्रतिष्ठितं तस्माद्यज्ञं परमं वदन्ति"
@@ -2788,7 +2788,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "मानसं वै प्राजापत्यं पवित्रं मानसेन मनसा साधु पश्यति ऋषयः प्रजा असृजन्त मानसे सर्वं प्रतिष्ठितं तस्मान्मानसं परमं वदन्ति"
@@ -2799,7 +2799,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "'brahmāṇaṃ' in the edition is unclear; the explanation follows the translation and says so.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "न्यास इत्याहुर्मनीषिणो ब्रह्माणं ब्रह्मा विश्वः कतमः स्वयम्भूः प्रजापतिः संवत्सर इति"
@@ -2810,7 +2810,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "संवत्सरोऽसावादित्यो य एष आदित्ये पुरुषः स परमेष्ठी ब्रह्मात्मा"
@@ -2821,7 +2821,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "याभिरादित्यस्तपति रश्मिभिस्ताभिः पर्जन्यो वर्षति पर्जन्येनौषधिवनस्पतयः प्रजायन्त ओषधिवनस्पतिभिरन्नं भवत्यन्नेन प्राणाः प्राणैर्बलं बलेन तपस्तपसा श्रद्धा श्रद्धया मेधा मेधया मनीषा मनीषया मनो मनसा शान्तिः शान्त्या चित्तं चित्तेन स्मृतिः स्मृत्या स्मारँ स्मारेण विज्ञानं विज्ञानेनात्मानं वेदयति तस्मादन्नं ददन्सर्वाण्येतानि ददात्यन्नात्प्राणा भवन्ति भूतानां प्राणैर्मनो मनसश्च विज्ञानं विज्ञानादानन्दो ब्रह्म योनिः"
@@ -2832,7 +2832,7 @@
     "lifeLesson": "",
     "confidence": "medium",
     "reviewNote": "Several words ('jijñāsaklṛpta', 'pahasvān') look corrupt in the edition; the explanation follows the translation and says so.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "स वा एष पुरुषः पञ्चधा पञ्चात्मा येन सर्वमिदं प्रोतं पृथिवी चान्तरिक्षं च द्यौश्च दिशश्चावान्तरदिशाश्च स वै सर्वमिदं जगत्स सभूतँ स भव्यं जिज्ञासक्लृप्त ऋतजा रयिष्ठाः श्रद्धा सत्यो पहस्वान्तमसोपरिष्टात् । ज्ञात्वा तमेवं मनसा हृदा च भूयो न मृत्युमुपयाहि विद्वान् । तस्मान्न्यासमेषां तपसामतिरिक्तमाहुः"
@@ -2843,7 +2843,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "'tejodās tvam asy agneḥ' etc. are read as 'giver of Agni's radiance', following the usual sense; the edition's translation splits them slightly differently.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "वसुरण्वो विभूरसि प्राणे त्वमसि सन्धाता ब्रह्मन् त्वमसि विश्वसृत्तेजोदास्त्वमस्यग्नेरसि वर्चोदास्त्वमसि सूर्यस्य द्युम्नोदास्त्वमसि चन्द्रमस उपयामगृहीतोऽसि ब्रह्मणे त्वा महसे"
@@ -2854,7 +2854,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.454Z",
     "sanskrit": "ओमित्यात्मानं युञ्जीत । एतद्वै महोपनिषदं देवानां गुह्यम् । य एवं वेद ब्रह्मणो महिमानमाप्नोति तस्माद्ब्रह्मणो महिमानमित्युपनिषत्"
@@ -2865,7 +2865,7 @@
     "lifeLesson": "",
     "confidence": "high",
     "reviewNote": "Closing anuvāka: 'manyuḥ paśuḥ' and 'śamitā' are read as inner sacrifice of anger, not animal sacrifice; 'brāhmaṇo vidvān' is read as knower of Brahman, not birth status. Uttarāyaṇa/dakṣiṇāyana phala reported, not endorsed as literal.",
-    "status": "pending",
+    "status": "approved",
     "model": "claude",
     "generatedAt": "2026-11-07T10:05:05.591Z",
     "sanskrit": "तस्यैवं विदुषो यज्ञस्यात्मा यजमानः श्रद्धा पत्नी शरीरमिध्ममुरो वेदिर्लोमानि बर्हिर्वेदः शिखा हृदयं यूपः काम आज्यं मन्युः पशुस्तपो।आग्निर्दमः शमयिता दानं दक्षिणा वाग्घोता प्राण उद्गाता चक्षुरध्वर्युर्मनो ब्रह्मा श्रोत्रमग्नीत् यावद्ध्रियते सा दीक्षा यदश्नाति तद्धविर्यत्पिबति तदस्य सोमपानं यद्रमते तदुपसदो यत्सञ्चरत्युपविशत्युत्तिष्ठते च स प्रवर्ग्यो यन्मुखं तदाहवनीयो या व्याहृतिरहुतिर्यदस्य विज्ञान तज्जुहोति यत्सायं प्रातरत्ति तत्समिधं यत्प्रातर्मध्यन्दिनँ सायं च तानि सवनानि ये अहोरात्रे ते दर्शपूर्णमासौ येऽर्धमासाश्च मासाश्च ते चातुर्मास्यानि य ऋतवस्ते पशुबन्धा ये संवत्सराश्च परिवत्सराश्च तेऽहर्गणाः सर्ववेदसं वा एतत्सत्रं यन्मरणं तदवभृथ एतद्वै जरामर्यमग्निहोत्रँसत्रं य एवं विद्वानुदगयने प्रमीयते देवानामेव महिमानं गत्वादित्यस्य सायुज्यं गच्छत्यथ यो दक्षिणे प्रमीयते पितृणामेव महिमानं गत्वा चन्द्रमसः सायुज्यं गच्छत्येतौ वै सूर्याचन्द्रमसोर्महिमानौ ब्राह्मणो विद्वानभिजयति तस्माद् ब्रह्मणो महिमानमित्युपनिषत्"
