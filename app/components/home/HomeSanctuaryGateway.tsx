@@ -96,7 +96,7 @@ export function HomeSanctuaryGateway() {
           <div className="mt-5 flex flex-wrap gap-2 pt-3 border-t border-dharma-border/60">
             <Link
               href="/panchang/"
-              className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90"
+              className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-dharma-bg transition-opacity hover:opacity-90"
             >
               <span lang="hi" className="font-devanagari">दैनिक पंचांग</span>
               <span aria-hidden="true">›</span>
@@ -143,7 +143,7 @@ export function HomeSanctuaryGateway() {
           <div className="mt-5 flex flex-wrap gap-2 pt-3 border-t border-dharma-border/60">
             <Link
               href="/wisdom-pathways/"
-              className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90"
+              className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-dharma-bg transition-opacity hover:opacity-90"
             >
               <span lang="hi" className="font-devanagari">ज्ञान मार्ग चुनें</span>
               <span aria-hidden="true">›</span>
@@ -190,7 +190,7 @@ export function HomeSanctuaryGateway() {
           <div className="mt-5 flex flex-wrap gap-2 pt-3 border-t border-dharma-border/60">
             <Link
               href="/mantras/"
-              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-saffron/40 bg-dharma-saffron/10 px-4 py-2 text-xs font-semibold text-dharma-saffron transition-colors hover:bg-dharma-saffron/15"
+              className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-dharma-bg transition-opacity hover:opacity-90"
             >
               <span lang="hi" className="font-devanagari">मन्त्र संग्रह खोलें</span>
               <span aria-hidden="true">›</span>
@@ -231,7 +231,7 @@ export function HomeSanctuaryGateway() {
           <div className="mt-5 flex flex-wrap gap-2 pt-3 border-t border-dharma-border/60">
             <Link
               href="/practice/"
-              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-saffron/40 bg-dharma-saffron/10 px-4 py-2 text-xs font-semibold text-dharma-saffron transition-colors hover:bg-dharma-saffron/15"
+              className="inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-dharma-bg transition-opacity hover:opacity-90"
             >
               <span lang="hi" className="font-devanagari">साधना कक्ष</span>
               <span aria-hidden="true">›</span>

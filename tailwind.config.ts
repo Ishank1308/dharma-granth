@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss';
-S
 // Theme colours are CSS variables holding hex values, which Tailwind cannot
 // split into channels, so opacity modifiers (`bg-dharma-card/95`) were silently
 // dropped. color-mix lets `<alpha-value>` apply to any variable colour.
