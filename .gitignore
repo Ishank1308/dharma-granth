@@ -99,3 +99,7 @@ data/sources-local/gitapress_official_epubs/
 
 # Workspace-local tsx/node temp dir (sandbox TMPDIR workaround)
 .tmp-tsx/
+
+# Extraction tokens and cookies
+scripts/*session_token*
+scripts/*cookies*

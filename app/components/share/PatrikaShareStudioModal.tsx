@@ -14,6 +14,8 @@ import {
   Loader2,
   Palette,
   CheckSquare,
+  MessageCircle,
+  Send,
 } from 'lucide-react';
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
 import { triggerTactileFeedback } from '@/lib/haptics';
@@ -129,6 +131,17 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
   ]
     .filter(Boolean)
     .join('\n');
+
+  const tweetText = [
+    `🕉️ ${data.scriptureTitle} ${data.reference ? `· ${data.reference}` : ''}`,
+    data.sanskrit ? data.sanskrit.slice(0, 120).trim() : '',
+    data.hindi ? data.hindi.slice(0, 100).trim() : '',
+  ]
+    .filter(Boolean)
+    .join('\n\n');
+
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(data.url)}`;
+  const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(data.url)}&text=${encodeURIComponent(whatsappMessage)}`;
 
   async function copyText() {
     try {
@@ -560,24 +573,50 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
                 </p>
               ) : null}
 
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  type="button"
-                  onClick={triggerShare}
-                  disabled={busy}
-                  className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl border border-stone-700 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold transition"
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <a
+                  href={`https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2.5 rounded-xl border border-emerald-600/40 bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 text-xs font-semibold transition"
+                  title="WhatsApp पर साझा करें"
                 >
-                  <Share2 className="w-3.5 h-3.5" />
-                  <span>शेयर करें</span>
-                </button>
+                  <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">WhatsApp</span>
+                </a>
+
+                <a
+                  href={twitterUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2.5 rounded-xl border border-stone-700 bg-stone-900 hover:bg-stone-800 text-stone-200 text-xs font-semibold transition"
+                  title="X (Twitter) पर साझा करें"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                  <span className="truncate">X</span>
+                </a>
+
+                <a
+                  href={telegramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2.5 rounded-xl border border-sky-600/40 bg-sky-950/40 hover:bg-sky-900/50 text-sky-300 text-xs font-semibold transition"
+                  title="Telegram पर साझा करें"
+                >
+                  <Send className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">Telegram</span>
+                </a>
 
                 <button
                   type="button"
                   onClick={copyText}
-                  className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl border border-stone-700 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold transition"
+                  className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2.5 rounded-xl border border-stone-700 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold transition cursor-pointer"
+                  title="श्लोक व लिंक कॉपी करें"
                 >
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span>{copied ? 'कॉपी हुआ!' : 'टेक्स्ट कॉपी'}</span>
+                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> : <Copy className="w-3.5 h-3.5 shrink-0" />}
+                  <span className="truncate">{copied ? 'कॉपी!' : 'कॉपी'}</span>
                 </button>
               </div>
             </div>

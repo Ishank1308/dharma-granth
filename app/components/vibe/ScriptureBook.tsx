@@ -37,7 +37,7 @@ export function ScriptureBook({
             <Motif id={vibe.motif} className="h-9 w-9 text-[color:var(--cover-2)] opacity-70" />
             {vibe.epigraph ? (
               <figure className="mt-3">
-                <blockquote lang="sa" className="shloka-text text-[15px] text-[#3b2a1a] sm:text-base">
+                <blockquote lang="sa" className="shloka-text text-subhead text-[#3b2a1a] sm:text-base">
                   {vibe.epigraph.sa}
                 </blockquote>
                 <figcaption lang="hi" className="mt-2 font-devanagari text-[11px] text-[#7a6248]">

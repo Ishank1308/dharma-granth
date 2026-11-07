@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { Check, Copy, MessageCircle } from 'lucide-react';
+import { Check, Copy, MessageCircle, Code2 } from 'lucide-react';
 import { SITE_URL } from '@/lib/jsonld';
 import { channelMessage, channelUrl, dailyVersePool, dayNumber, verseForDay, type DailyVerse } from '@/lib/daily-verse';
 
@@ -126,6 +126,44 @@ export function DailyVerseFeed() {
           className="mt-1 w-full resize-y rounded-xl border border-dharma-border bg-dharma-bg p-3 text-sm leading-relaxed text-dharma-text"
         />
       </article>
+
+      <section aria-labelledby="embed-heading" className="rounded-3xl border border-dharma-border bg-dharma-card p-6 shadow-sm sm:p-8">
+        <div className="flex items-center gap-2">
+          <Code2 className="h-5 w-5 text-saffron-600" />
+          <h2 id="embed-heading" className="font-serif text-xl font-bold">
+            Embed on your website · अपनी वेबसाइट पर जोड़ें
+          </h2>
+        </div>
+        <p className="mt-2 text-sm text-dharma-muted">
+          Add today&apos;s sacred verse widget to your blog, temple, or community website. It automatically updates daily with the shloka, Hindi meaning, and English translation.
+        </p>
+
+        <div className="mt-5 space-y-4">
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                1. Responsive iframe (Recommended)
+              </span>
+              <CopyButton text={`<iframe src="${SITE_URL}/embed/verse-of-the-day/" width="100%" height="340" style="border:none;border-radius:16px;box-shadow:0 4px 20px -2px rgba(0,0,0,0.06);" loading="lazy" title="Daily Sacred Verse"></iframe>`} label="Copy iframe code" />
+            </div>
+            <pre className="overflow-x-auto rounded-xl border border-dharma-border bg-dharma-bg p-3 text-xs font-mono text-dharma-muted">
+              {`<iframe src="${SITE_URL}/embed/verse-of-the-day/" width="100%" height="340" style="border:none;border-radius:16px;" loading="lazy"></iframe>`}
+            </pre>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                2. Lightweight Script (Drop-in)
+              </span>
+              <CopyButton text={`<div id="dharma-verse-widget"></div>\n<script src="${SITE_URL}/embed.js" async></script>`} label="Copy script code" />
+            </div>
+            <pre className="overflow-x-auto rounded-xl border border-dharma-border bg-dharma-bg p-3 text-xs font-mono text-dharma-muted">
+              {`<div id="dharma-verse-widget"></div>\n<script src="${SITE_URL}/embed.js" async></script>`}
+            </pre>
+          </div>
+        </div>
+      </section>
 
       <section aria-labelledby="upcoming-heading">
         <h2 id="upcoming-heading" className="font-serif text-xl font-bold">

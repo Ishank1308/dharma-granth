@@ -134,11 +134,11 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
                   {v.padaccheda}
                 </p>
               )}
-              <dl className="grid gap-2 sm:grid-cols-2">
+              <dl className="grid gap-1.5 sm:grid-cols-2">
                 {v.wordMeanings.map((w) => (
-                  <div key={w.sanskrit} className="rounded-xl border border-dharma-border/70 bg-dharma-bg/60 p-2.5 text-sm">
-                    <dt lang="sa" className="font-devanagari font-bold text-dharma-text">{w.sanskrit}</dt>
-                    <dd lang="hi" className="mt-0.5 font-devanagari text-xs text-dharma-muted">{w.hindi}</dd>
+                  <div key={w.sanskrit} className="rounded-lg border border-dharma-border/70 bg-dharma-bg/60 p-2 text-xs">
+                    <dt lang="sa" className="font-devanagari font-semibold text-dharma-text">{w.sanskrit}</dt>
+                    <dd lang="hi" className="mt-0.5 font-devanagari text-[11px] text-dharma-muted">{w.hindi}</dd>
                   </div>
                 ))}
               </dl>
@@ -302,7 +302,7 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
       {/* ── Sources and verification: provenance footer, quiet by design ── */}
       <section aria-labelledby={`${id}-sources`} className="sacred-section rounded-2xl border border-dharma-border/70 bg-dharma-card/60 p-4 sm:p-5">
         <h3 id={`${id}-sources`} className="mb-2.5 flex flex-wrap items-baseline gap-x-2">
-          <span lang="hi" className="font-devanagari text-[15px] font-bold text-dharma-text">स्रोत और सत्यापन</span>
+          <span lang="hi" className="font-devanagari text-subhead font-bold text-dharma-text">स्रोत और सत्यापन</span>
           <span lang="en" className="text-[11px] font-semibold uppercase tracking-[0.14em] text-dharma-muted">Sources</span>
         </h3>
         <p className="flex flex-wrap items-center gap-2">

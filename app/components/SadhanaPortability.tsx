@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { Check, Copy, Download, KeyRound, RefreshCw, Sparkles, Upload } from 'lucide-react';
+import { Check, Copy, Download, KeyRound, RefreshCw, Upload } from 'lucide-react';
 import {
   generateSadhanaSyncString,
   restoreSadhanaFromSyncString,
@@ -125,15 +125,16 @@ export function SadhanaPortability() {
   return (
     <section
       aria-labelledby="sadhana-portability-heading"
-      className="mt-10 rounded-3xl border border-saffron-200 bg-white/80 p-6 dark:border-saffron-900/40 dark:bg-dharma-card/60 backdrop-blur shadow-sm space-y-6"
+      className="apple-card mt-10 space-y-6 p-5 sm:p-6"
     >
       <div>
         <div className="flex items-center gap-2 mb-1">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-saffron-100 text-saffron-700 dark:bg-saffron-950/60 dark:text-saffron-300">
+          <span className="apple-tint-chip" aria-hidden="true">
             <KeyRound className="h-4 w-4" />
           </span>
-          <h2 id="sadhana-portability-heading" className="font-serif text-lg font-bold text-dharma-text">
-            साधना पोर्टेबिलिटी एवं शून्य-सर्वर सिंक (Zero-Server Sadhana Sync)
+          <h2 id="sadhana-portability-heading" className="text-title-3 font-semibold text-dharma-text">
+            <span>Move to another device</span>{' '}
+            <span lang="hi" className="font-devanagari text-subhead font-normal text-dharma-muted">साधना स्थानान्तरण</span>
           </h2>
         </div>
         <p className="text-xs text-dharma-muted leading-relaxed">
@@ -143,10 +144,9 @@ export function SadhanaPortability() {
       </div>
 
       {/* ── Section 1: Compressed Sync Code ── */}
-      <div className="rounded-2xl border border-amber-200/80 bg-amber-50/50 p-4 dark:border-amber-900/40 dark:bg-amber-950/20 space-y-3">
-        <h3 className="text-xs font-bold text-amber-900 dark:text-amber-200 flex items-center gap-1.5">
-          <Sparkles className="h-3.5 w-3.5 text-amber-600" />
-          साधना सिंक स्ट्रिंग (Compressed Sync Code)
+      <div className="space-y-3 rounded-group bg-dharma-text/[0.04] p-4">
+        <h3 className="text-subhead font-semibold text-dharma-text">
+          <span>Sync code</span> <span lang="hi" className="font-devanagari font-normal text-dharma-muted">सिंक कोड</span>
         </h3>
         <p className="text-[11px] text-dharma-muted">
           यह कोड आपके अध्ययन व साधना डेटा को GZIP संपीड़न द्वारा छोटा करता है। यह कूटबद्ध नहीं है; जिसे भी कोड मिलेगा, वह इसे पढ़ सकेगा।
@@ -158,7 +158,7 @@ export function SadhanaPortability() {
             type="button"
             onClick={handleGenerateSyncCode}
             disabled={generatingCode}
-            className="inline-flex min-h-[40px] items-center gap-1.5 rounded-xl bg-saffron-600 px-3.5 py-1.5 text-xs font-bold text-white hover:bg-saffron-700 transition active:scale-95 disabled:opacity-50"
+            className="apple-pill disabled:opacity-50"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${generatingCode ? 'animate-spin' : ''}`} />
             <span>सिंक कोड जनरेट करें</span>
@@ -168,7 +168,7 @@ export function SadhanaPortability() {
             <button
               type="button"
               onClick={handleCopySyncCode}
-              className="inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border border-saffron-300 bg-dharma-card px-3.5 py-1.5 text-xs font-bold text-saffron-800 hover:bg-saffron-50 transition active:scale-95 dark:border-saffron-700 dark:text-saffron-200"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-5 text-subhead text-dharma-text hover:bg-dharma-text/[0.1]"
             >
               {copiedCode ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
               <span>{copiedCode ? 'कॉपी हो गया!' : 'कोड कॉपी करें'}</span>
@@ -177,7 +177,7 @@ export function SadhanaPortability() {
         </div>
 
         {syncCode && (
-          <div className="rounded-xl border border-saffron-200 bg-dharma-card p-2.5 dark:border-saffron-900/40">
+          <div className="rounded-field bg-dharma-card p-2.5">
             <input
               type="text"
               readOnly
@@ -189,20 +189,20 @@ export function SadhanaPortability() {
         )}
 
         {/* Input Sync Code to Restore */}
-        <div className="pt-2 border-t border-amber-200/60 dark:border-amber-900/30 flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 border-t border-dharma-text/10 pt-3">
           <input
             type="text"
             value={inputSyncCode}
             onChange={(e) => setInputSyncCode(e.target.value)}
             placeholder="यहाँ सिंक कोड पेस्ट करें (DG-SYNC-v1-...)"
             aria-label="Paste Sync String to Restore"
-            className="flex-1 min-w-[200px] rounded-xl border border-dharma-border bg-dharma-bg px-3 py-1.5 text-xs font-mono text-dharma-text outline-none focus:border-saffron-400"
+            className="apple-field min-w-[200px] flex-1 !bg-dharma-card font-mono !text-footnote"
           />
           <button
             type="button"
             onClick={handleRestoreFromSyncCode}
             disabled={!inputSyncCode.trim() || restoringCode}
-            className="inline-flex min-h-[38px] items-center gap-1.5 rounded-xl border border-saffron-300 bg-saffron-50 px-3.5 py-1.5 text-xs font-bold text-saffron-800 hover:bg-saffron-100 transition active:scale-95 disabled:opacity-40 dark:bg-saffron-950/40 dark:text-saffron-200 dark:border-saffron-700"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-5 text-subhead text-dharma-text hover:bg-dharma-text/[0.1] disabled:opacity-40"
           >
             {restoringCode ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <Upload className="h-3.5 w-3.5" />}
             <span>कोड से पुनर्स्थापित करें</span>
@@ -216,7 +216,7 @@ export function SadhanaPortability() {
           <button
             type="button"
             onClick={downloadDharmaBackup}
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-saffron-700 px-4 py-2 text-xs font-bold text-white hover:bg-saffron-800 transition active:scale-95 shadow-2xs"
+            className="apple-pill"
           >
             <Download className="h-4 w-4" aria-hidden />
             <span>.dharma बैकअप डाउनलोड</span>
@@ -225,7 +225,7 @@ export function SadhanaPortability() {
           <button
             type="button"
             onClick={() => fileInput.current?.click()}
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-saffron-300 dark:border-saffron-700 px-4 py-2 text-xs font-bold text-saffron-800 dark:text-saffron-200 hover:bg-saffron-50 dark:hover:bg-saffron-950/40 transition active:scale-95"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-dharma-text/[0.06] px-5 text-subhead text-dharma-text hover:bg-dharma-text/[0.1]"
           >
             <Upload className="h-4 w-4" aria-hidden />
             <span>फ़ाइल से Restore करें (.dharma / .json)</span>
@@ -243,7 +243,7 @@ export function SadhanaPortability() {
       </div>
 
       {message && (
-        <p role="status" className="text-xs font-medium text-saffron-900 dark:text-saffron-200 bg-saffron-50 dark:bg-saffron-950/40 p-2.5 rounded-xl border border-saffron-200 dark:border-saffron-900/40">
+        <p role="status" className="rounded-field bg-dharma-text/[0.04] p-3 text-footnote text-dharma-text">
           {message}
         </p>
       )}

@@ -1,0 +1,596 @@
+/* ── Components ───────────────────────────────────────────────────────────
+   The shared pieces every page builds with, made only of tokens (tokens.css), so
+   they read the same in all four themes. Loaded after globals.css, before motion.css.
+
+   - .material-*       translucent bars and sheets
+   - .apple-card       the one card surface
+   - .apple-group/row  grouped lists (Settings style), rows at least 44px tall
+   - .apple-segmented  segmented control
+   - .apple-field      filled text field
+   - .apple-pill       the filled primary button (with the sheen from motion.css)
+   - .apple-tint-chip  a small coloured icon tile
+   - .apple-scope      quiets older components placed inside a redesigned page
+   docs/design-system.md shows each in use. */
+
+/* Materials ──────────────────────────────────────────────────────────────
+   The canvas made translucent, with the content behind it blurred and its colour lifted.
+   Without backdrop-filter the material falls back to the solid canvas. */
+.material-ultrathin,
+.material-thin,
+.material-regular,
+.material-thick {
+    -webkit-backdrop-filter: var(--material-filter);
+    backdrop-filter: var(--material-filter);
+}
+.material-ultrathin { background-color: var(--material-ultrathin); }
+.material-thin { background-color: var(--material-thin); }
+.material-regular { background-color: var(--material-regular); }
+.material-thick { background-color: var(--material-thick); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .material-ultrathin,
+    .material-thin,
+    .material-regular,
+    .material-thick {
+        background-color: var(--surface-canvas);
+    }
+}
+@media print {
+    .material-ultrathin,
+    .material-thin,
+    .material-regular,
+    .material-thick {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+}
+
+/* Cards ──────────────────────────────────────────────────────────────── */
+.apple-card {
+    border-radius: var(--radius-card);
+    background-color: var(--surface-raised);
+    box-shadow: var(--shadow-raised);
+}
+/* A card that can be pressed: it rises under the pointer and gives under a tap. */
+.apple-card-link {
+    display: block;
+    transition:
+        transform var(--duration-base) var(--motion-spring),
+        box-shadow var(--duration-standard) var(--ease-out);
+}
+@media (hover: hover) {
+    .apple-card-link:hover {
+        transform: translate3d(0, -2px, 0);
+        box-shadow: var(--shadow-lifted);
+    }
+}
+.apple-card-link:active {
+    scale: 0.985;
+}
+.apple-card-link:focus-visible {
+    box-shadow: var(--focus-ring), var(--shadow-raised);
+}
+
+/* Grouped lists ─────────────────────────────────────────────────────── */
+.apple-group {
+    overflow: hidden;
+    border-radius: var(--radius-group);
+    background-color: var(--surface-raised);
+}
+.apple-group > li + li,
+.apple-group > * + .apple-row {
+    border-top: 1px solid var(--separator);
+}
+.apple-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    min-height: var(--tap-target);
+    padding: var(--space-3) 1.125rem;
+    transition: background-color var(--duration-fast) var(--ease-standard);
+}
+a.apple-row:hover,
+.apple-group a.apple-row:hover {
+    background-color: var(--fill-quaternary);
+}
+a.apple-row:active,
+.apple-group a.apple-row:active {
+    background-color: var(--fill-tertiary);
+}
+.apple-chevron {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--label-quaternary);
+}
+
+/* Segmented control ──────────────────────────────────────────────────── */
+.apple-segmented {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    padding: 2px;
+    border-radius: var(--radius-track);
+    background-color: var(--fill-tertiary);
+}
+.apple-segmented > button {
+    min-height: 36px;
+    padding: 0 0.875rem;
+    border-radius: var(--radius-control);
+    font-size: var(--text-footnote);
+    color: var(--label-primary);
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        box-shadow var(--duration-fast) var(--ease-standard);
+}
+.apple-segmented > button[aria-pressed='true'] {
+    background-color: var(--surface-segment);
+    font-weight: 600;
+    box-shadow: var(--shadow-control);
+}
+
+/* Text field ──────────────────────────────────────────────────────────── */
+.apple-field {
+    width: 100%;
+    min-height: var(--tap-target);
+    border-radius: var(--radius-field);
+    border: 0;
+    padding: 0 0.875rem;
+    font-size: var(--text-body);
+    color: var(--label-primary);
+    background-color: var(--fill-tertiary);
+    transition: box-shadow var(--duration-fast) var(--ease-standard);
+}
+.apple-field::placeholder {
+    color: var(--label-tertiary);
+}
+.apple-field:focus {
+    outline: 2px solid var(--tint);
+    outline-offset: 0;
+}
+
+/* Primary button ─────────────────────────────────────────────────────── */
+.apple-pill {
+    display: inline-flex;
+    min-height: var(--tap-target);
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    border-radius: var(--radius-pill);
+    padding: 0 1.25rem;
+    font-size: var(--text-subhead);
+    background-color: var(--tint);
+    color: var(--on-tint);
+    transition:
+        opacity var(--duration-fast) var(--ease-standard),
+        transform var(--duration-base) var(--motion-spring);
+}
+.apple-pill:hover {
+    opacity: 0.92;
+}
+.apple-pill:active {
+    scale: 0.97;
+}
+/* The quiet sibling of the filled button: tinted text on a faint tint. */
+.apple-pill-tinted {
+    background-color: var(--tint-fill);
+    color: var(--tint);
+}
+
+/* Icon tile ──────────────────────────────────────────────────────────── */
+.apple-tint-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-control);
+    color: #fff;
+    background-color: var(--chip, var(--tint));
+}
+
+/* Section heading accent ─────────────────────────────────────────────────
+   The short tinted rule under a SectionTitle (app/components/apple/PageHeader.tsx).
+   It grows in from the left as the heading scrolls into view (motion.css). */
+.section-rule {
+    display: block;
+    width: 2.5rem;
+    height: 2px;
+    margin-top: var(--space-3);
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--tint), color-mix(in srgb, var(--tint) 0%, transparent));
+}
+
+/* Stats ──────────────────────────────────────────────────────────────── */
+.apple-stat {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+}
+
+/* Older components inside a redesigned page ─────────────────────────────
+   Inner tool cards drop the book serif and the shouting labels, so the long tail of
+   components reads in the same voice without rewriting each one. */
+.apple-scope .font-serif:not([lang='sa']):not(.shloka-text) {
+    font-family: var(--font-sans);
+    letter-spacing: var(--tracking-body);
+}
+.apple-scope .uppercase.tracking-widest,
+.apple-scope .uppercase.tracking-wider,
+.apple-scope .uppercase.tracking-wide {
+    text-transform: none;
+    letter-spacing: normal;
+}
+.apple-scope .verse-card {
+    border: 0;
+    border-radius: var(--radius-card);
+    background-image: none;
+    background-color: var(--surface-raised);
+    box-shadow: var(--shadow-raised);
+}
+
+/* Verse card (chapter reader) ─────────────────────────────────────────────
+   Each verse sits on its own card, as in Apple Books' highlights or a grouped list:
+   the shloka is the largest thing on it, the Hindi and English meanings follow under
+   a hairline, and the verse number is a small tinted capsule. Styled from here so the
+   markup in VerseCard.tsx (rich) and VerseText (the exported, pre-hydration form,
+   classes .vt-*) stays as it is; both get the same box and sizes, so the swap at
+   hydration does not move the page. Colour and motion follow below. */
+.verse-card.book-verse,
+.verse-card.vt {
+    --verse-sa-size: clamp(1.1875rem, 1.05rem + 0.6vw, 1.4375rem);   /* 19 → 23 */
+    --verse-pad: clamp(var(--space-4), 0.6rem + 2.4vw, var(--space-8));
+    padding: var(--space-3) var(--verse-pad) var(--verse-pad);
+    border: 0;
+    border-radius: var(--radius-card);
+    background-color: var(--surface-raised);
+    box-shadow: var(--shadow-raised);
+    overflow: visible;
+}
+.verse-card.book-verse:hover,
+.verse-card.vt:hover {
+    box-shadow: var(--shadow-raised);
+}
+[data-reader-size='large'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-size: clamp(1.375rem, 1.2rem + 0.7vw, 1.625rem);
+}
+[data-reader-size='xl'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-size: clamp(1.5rem, 1.3rem + 0.9vw, 1.875rem);
+}
+/* Reciting or highlighted: the ring follows the card's corners. */
+.verse-card.book-verse.book-verse-ringed {
+    border-radius: var(--radius-card);
+}
+/* Lifted into spatial focus, the glass is already the card. */
+.spatial-focused > .verse-card.book-verse,
+.spatial-focused > .verse-card.vt {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* The verse number: a tinted capsule in the scripture's own ink. */
+.verse-card .verse-ref,
+.verse-card .vt-title a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 0.625rem;
+    border-radius: var(--radius-pill);
+    background-color: color-mix(in srgb, currentColor 11%, transparent);
+    font-family: var(--font-sans);
+    font-size: var(--text-footnote);
+    font-weight: 600;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+/* The plain verse's link keeps its 44px tap target around the capsule. */
+.verse-card .vt-title a {
+    min-width: 0;
+    margin-block: 8px;
+}
+.verse-card .vt-head {
+    margin-bottom: 0;
+}
+
+/* The shloka: the largest text on the card, set in the book face. */
+.verse-card.book-verse .verse-folio > p[lang='sa'],
+.verse-card.vt .vt-sa {
+    font-family: var(--font-sanskrit);
+    font-size: var(--verse-sa-size);
+    line-height: 1.8;
+    color: var(--label-primary);
+}
+/* Lines of a shloka sit close, as printed; the gap between pādas is the line height. */
+.verse-card.book-verse .verse-folio > p[lang='sa'] > span,
+.verse-card.vt .vt-sa > span {
+    padding-block: 0.125rem;
+}
+.verse-card.book-verse .verse-folio,
+.verse-card.vt .vt-leaf {
+    padding-block: var(--space-4) var(--space-5);
+}
+.verse-card .verse-mark,
+.verse-card .vt-sa > .vt-num {
+    margin-top: var(--space-2);
+    font-size: var(--text-subhead);
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+/* Meanings: under a hairline, Hindi at full ink, English a step quieter. */
+.verse-card.book-verse .sacred-flow-wrap,
+.verse-card.vt .vt-leaf + .vt-block {
+    margin-top: 0;
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--separator);
+}
+.verse-card.book-verse section[id$='-arth'] p[lang='hi'],
+.verse-card.vt .vt-hi {
+    font-size: var(--text-body);
+    line-height: 1.9;
+    color: var(--label-primary);
+}
+.verse-card.book-verse section[id$='-arth'] p[lang='en'],
+.verse-card.vt .vt-en {
+    font-size: var(--text-body);
+    line-height: 1.75;
+    color: var(--label-secondary);
+}
+@media (min-width: 768px) {
+    .verse-card.book-verse section[id$='-arth'] p[lang='hi'],
+    .verse-card.vt .vt-hi {
+        font-size: 1.125rem;
+    }
+    .verse-card.book-verse section[id$='-arth'] p[lang='en'],
+    .verse-card.vt .vt-en {
+        font-size: 1.125rem;
+    }
+}
+
+/* The draft label stays (it is honest), but in a neutral voice rather than violet. */
+.verse-card [title^='AI-सहायता'] {
+    color: var(--label-tertiary);
+}
+
+/* "Verse study": a quiet tinted capsule, so the way into the व्याख्या is easy to see. */
+.verse-card [aria-expanded][aria-controls]:has(> [lang='hi'] + [lang='en']),
+.verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']) {
+    padding-inline: 0.875rem;
+    background-color: var(--fill-quaternary);
+    color: var(--label-secondary);
+}
+.verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']):hover {
+    background-color: var(--fill-tertiary);
+    color: var(--label-primary);
+}
+
+/* Verse card colour ─────────────────────────────────────────────────────
+   Each scripture carries its own cover colours (lib/scripture-vibes.ts sets --v1..3
+   and --foil on the page). The card wears them: an edge that shades from the main
+   colour to the accent and the gold, a luminous wash behind the shloka, a filled
+   verse capsule and a gilt ॥ mark. Pages without a palette fall back to saffron. */
+.verse-card.book-verse,
+.verse-card.vt,
+.verse-card.today-verse,
+.verse-card.single-verse {
+    --vc-main: var(--v2, var(--dharma-saffron));
+    --vc-accent: var(--v3, var(--scripture-accent-fallback));
+    --vc-gold: var(--foil, var(--scripture-foil-fallback));
+    --vc-pill-accent-share: 30%;
+    --vc-night-main-share: 80%;
+    --vc-night-accent-share: 60%;
+    --vc-edge-a: 55%;
+    --vc-wash-a: 20%;
+    border: 1.5px solid transparent;
+    background:
+        linear-gradient(var(--surface-raised), var(--surface-raised)) padding-box,
+        linear-gradient(
+                135deg,
+                color-mix(in srgb, var(--vc-main) var(--vc-edge-a), transparent),
+                color-mix(in srgb, var(--vc-accent) calc(var(--vc-edge-a) * 0.7), transparent) 55%,
+                color-mix(in srgb, var(--vc-gold) var(--vc-edge-a), transparent)
+            )
+            border-box;
+    box-shadow:
+        var(--shadow-raised),
+        0 18px 44px -26px color-mix(in srgb, var(--vc-main) 45%, transparent);
+}
+:root[data-theme='night'] :is(.verse-card.book-verse, .verse-card.vt, .verse-card.today-verse, .verse-card.single-verse),
+:root[data-theme='dark'] :is(.verse-card.book-verse, .verse-card.vt, .verse-card.today-verse, .verse-card.single-verse) {
+    --vc-main: color-mix(in srgb, var(--v2, var(--dharma-saffron)) 55%, var(--color-absolute-white));
+    --vc-accent: color-mix(in srgb, var(--v3, var(--scripture-accent-fallback)) 70%, var(--color-absolute-white));
+    --vc-edge-a: 50%;
+    --vc-wash-a: 24%;
+    box-shadow: 0 24px 60px -30px color-mix(in srgb, var(--vc-main) 40%, transparent);
+}
+
+/* The shloka's panel: light pooled at the top in the accent, over a faint wash of
+   the main colour. Palm-leaf scriptures keep their leaf. */
+:is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse) .verse-folio,
+.verse-card.vt .vt-leaf {
+    position: relative;
+    margin-top: var(--space-2);
+    border-radius: calc(var(--radius-card) - 6px);
+    padding-inline: clamp(var(--space-2), -0.4rem + 3vw, var(--space-8));
+    isolation: isolate;
+    overflow: hidden;
+}
+:is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse) .verse-folio,
+.verse-card.vt .vt-leaf {
+    border: 0;
+    background:
+        var(--verse-material-layer, none),
+        radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--vc-accent) var(--vc-wash-a), transparent), transparent 70%),
+        linear-gradient(180deg, color-mix(in srgb, var(--vc-main) calc(var(--vc-wash-a) * 0.7), transparent), transparent 85%);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--vc-gold) 35%, transparent);
+}
+/* Keep a quiet trace of each cover material under the shared color wash.
+   These variables work whether data-material is on the page wrapper or the card. */
+[data-material='palm-leaf'] {
+    --verse-material-layer:
+        repeating-linear-gradient(180deg, color-mix(in srgb, var(--foil) 5%, transparent) 0 1px, transparent 1px 6px);
+}
+[data-material='bark'] {
+    --verse-material-layer: repeating-linear-gradient(178deg, transparent 0 7px, color-mix(in srgb, var(--foil) 6%, transparent) 7px 8px, transparent 8px 19px);
+}
+[data-material='silk'] {
+    --verse-material-layer: linear-gradient(115deg, transparent 30%, color-mix(in srgb, var(--foil) 9%, transparent) 48%, transparent 62%);
+}
+[data-material='cloth'] {
+    --verse-material-layer:
+        repeating-linear-gradient(45deg, color-mix(in srgb, var(--v2) 4%, transparent) 0 1px, transparent 1px 5px),
+        repeating-linear-gradient(-45deg, color-mix(in srgb, var(--v2) 4%, transparent) 0 1px, transparent 1px 5px);
+}
+/* A soft band of light drifts across the panel as the verse passes through the
+   viewport: scroll-linked, so it lives while you read and costs nothing at rest. */
+:is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse) .verse-folio::after,
+.verse-card.vt .vt-leaf::after {
+    content: '';
+    /* globals.css hides the old palm-leaf binding holes with `[data-material] .verse-folio::after
+       { display: none }`; the light band reuses ::after, so it has to show itself again. */
+    display: block;
+    position: absolute;
+    inset: -20% -40%;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+        100deg,
+        transparent 35%,
+        color-mix(in srgb, var(--vc-gold) 16%, transparent) 50%,
+        transparent 65%
+    );
+    transform: translate3d(-30%, 0, 0);
+    opacity: 0;
+}
+@keyframes verse-light {
+    from {
+        transform: translate3d(-35%, 0, 0);
+        opacity: 0;
+    }
+    40%,
+    60% {
+        opacity: 1;
+    }
+    to {
+        transform: translate3d(35%, 0, 0);
+        opacity: 0;
+    }
+}
+
+/* The verse number: a filled capsule in the scripture's colours. */
+.verse-card .verse-ref,
+.verse-card .vt-title a {
+    background-image: linear-gradient(
+        135deg,
+        var(--vc-main),
+        color-mix(in srgb, var(--vc-main) calc(100% - var(--vc-pill-accent-share)), var(--vc-accent) var(--vc-pill-accent-share))
+    );
+    color: var(--scripture-pill-foreground);
+    box-shadow: 0 4px 12px -6px color-mix(in srgb, var(--vc-main) 70%, transparent);
+}
+:root[data-theme='night'] :is(.verse-card .verse-ref, .verse-card .vt-title a),
+:root[data-theme='dark'] :is(.verse-card .verse-ref, .verse-card .vt-title a) {
+    background-image: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--v2, var(--dharma-saffron)) var(--vc-night-main-share), var(--color-absolute-black) calc(100% - var(--vc-night-main-share))),
+        color-mix(in srgb, var(--v3, var(--scripture-accent-fallback)) var(--vc-night-accent-share), var(--color-absolute-black) calc(100% - var(--vc-night-accent-share)))
+    );
+}
+/* The ॥ n ॥ mark in gilt. */
+.verse-card .verse-mark,
+.verse-card .vt-sa > .vt-num {
+    color: color-mix(in srgb, var(--vc-gold) 65%, var(--vc-main));
+    opacity: 1;
+}
+:root[data-theme='night'] :is(.verse-card .verse-mark, .verse-card .vt-sa > .vt-num),
+:root[data-theme='dark'] :is(.verse-card .verse-mark, .verse-card .vt-sa > .vt-num) {
+    color: var(--vc-gold);
+}
+/* The meanings' hairline picks up the colours too. */
+.verse-card.book-verse .sacred-flow-wrap,
+.verse-card.vt .vt-leaf + .vt-block {
+    border-top: 0;
+    background:
+        linear-gradient(90deg, transparent, color-mix(in srgb, var(--vc-main) 30%, transparent), color-mix(in srgb, var(--vc-gold) 35%, transparent), transparent)
+        top / 100% 1px no-repeat;
+}
+/* "Verse study" in the scripture's colour. */
+.verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']) {
+    background-color: color-mix(in srgb, var(--vc-main) 9%, transparent);
+    color: color-mix(in srgb, var(--vc-main) 80%, var(--label-primary));
+}
+.verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']):hover {
+    background-color: color-mix(in srgb, var(--vc-main) 15%, transparent);
+    color: color-mix(in srgb, var(--vc-main) 90%, var(--label-primary));
+}
+:root[data-theme='night'] .verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']),
+:root[data-theme='dark'] .verse-card [aria-expanded][aria-controls]:has(> span > [lang='hi']) {
+    color: var(--vc-main);
+}
+
+/* Life: cards rise into place as they scroll in, the light drifts across the shloka,
+   and under a mouse the card glows in its colour. Cards on the first screen are
+   already placed; reduced motion and the quiet modes keep everything still. */
+@keyframes verse-arrive {
+    from {
+        opacity: 0.4;
+        transform: translate3d(0, 28px, 0) scale(0.985);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+            :is(.verse-card.book-verse, .verse-card.vt, .verse-card.today-verse, .verse-card.single-verse):not(.spatial-focused > *) {
+            animation: verse-arrive linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 55%;
+        }
+        :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+            :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse) .verse-folio::after,
+            .verse-card.vt .vt-leaf::after {
+            animation: verse-light linear both;
+            animation-timeline: view();
+            animation-range: entry 40% exit 60%;
+        }
+    }
+    @media (hover: hover) and (pointer: fine) {
+        .verse-card.book-verse,
+        .verse-card.vt,
+        .verse-card.today-verse,
+        .verse-card.single-verse {
+            transition: box-shadow var(--duration-base) var(--ease-out);
+        }
+        .verse-card.book-verse:hover,
+        .verse-card.vt:hover,
+        .verse-card.today-verse:hover,
+        .verse-card.single-verse:hover {
+            box-shadow:
+                var(--shadow-raised),
+                0 26px 60px -24px color-mix(in srgb, var(--vc-main) 55%, transparent),
+                0 0 0 1px color-mix(in srgb, var(--vc-accent) 25%, transparent);
+        }
+    }
+}
+@media (forced-colors: active) {
+    :is(.verse-card.book-verse, .verse-card.vt, .verse-card.today-verse, .verse-card.single-verse) {
+        border: 1px solid CanvasText;
+        box-shadow: none;
+    }
+    .verse-card :is(.verse-ref, .vt-title a) {
+        background: Canvas;
+        color: CanvasText;
+        border: 1px solid CanvasText;
+        box-shadow: none;
+    }
+}
+@media print {
+    .verse-card.book-verse,
+    .verse-card.vt,
+    .verse-card.today-verse,
+    .verse-card.single-verse {
+        background: none;
+        box-shadow: none;
+        border-color: #ccc;
+        animation: none !important;
+    }
+}

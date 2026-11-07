@@ -114,11 +114,14 @@ async function main(): Promise<void> {
       for (const [key, entry] of Object.entries(rest)) {
         const explanation = entry.explanation?.trim();
         const science = entry.science?.trim();
+        const lifeLesson = entry.lifeLesson?.trim();
         if (science && isBoilerplateField(science)) continue;
         const prev = curated[key] ?? {};
         const next: HiCommentaryFragment[string] = { ...prev };
         if (explanation && !prev.explanation) next.explanation = explanation;
         if (science && !prev.science) next.science = science;
+        // A hand-written modern-context note (### आधुनिक संदर्भ) fills a verse that has none; unlabelled.
+        if (lifeLesson && !prev.lifeLesson?.includes("### आधुनिक संदर्भ")) next.lifeLesson = lifeLesson;
         if (next.explanation || next.science || next.lifeLesson) curated[key] = next;
       }
     }

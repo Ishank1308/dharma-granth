@@ -18,7 +18,7 @@ import {
 import Link from 'next/link';
 import type { ScriptureCategory } from '@/data/types';
 import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
-import { canonicalVerseId } from '@/lib/canonical-verse-id';
+import { lookupCommentary, type CommentaryAmbiguities } from '@/lib/commentary-lookup';
 import { resolveKeywordTarget } from '@/lib/keyword-links';
 import { isTanpuraPlaying, toggleTanpura, subscribeTanpura } from '@/lib/tanpura-audio';
 import {
@@ -59,6 +59,7 @@ interface MobileFocusModeProps {
   chapterId: number;
   category: ScriptureCategory;
   commentary?: HiCommentaryFragment;
+  commentaryAmbiguity?: CommentaryAmbiguities;
   bookmarkedMap: Record<string, boolean>;
   onToggleBookmark: (verse: FocusVerse) => void;
   onVerseChange?: (verseNumber: number | string) => void;
@@ -105,6 +106,7 @@ export function MobileFocusMode({
   chapterId,
   category,
   commentary,
+  commentaryAmbiguity,
   bookmarkedMap,
   onToggleBookmark,
   onVerseChange,
@@ -270,8 +272,7 @@ export function MobileFocusMode({
   const isBookmarked = Boolean(bookmarkedMap[verseLabel]);
 
   // Resolve commentary
-  const canonicalKey = canonicalVerseId(chapterId, currentVerse.number);
-  const comment = commentary?.[`${chapterId}:${Number(canonicalKey)}`];
+  const comment = lookupCommentary(commentary, chapterId, currentVerse.number, commentaryAmbiguity);
   const explanation = comment?.explanation ?? currentVerse.explanation ?? currentVerse.commentary;
   const science = comment?.science ?? currentVerse.science;
   const lesson = comment?.lifeLesson ?? currentVerse.lifeLesson;

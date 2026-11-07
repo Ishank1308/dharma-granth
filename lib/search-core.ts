@@ -3,7 +3,7 @@
 
 import { phoneticIndex } from '@/lib/searchNormalizer';
 import { citationScriptureHint } from '@/lib/search-citation';
-import type { SearchResultItem } from '@/lib/search-types';
+import type { SearchResultItem, SearchResultGroup } from '@/lib/search-types';
 
 /** [id, title, sanskrit, href] */
 export type CoreScripture = [string, string, string, string];
@@ -13,8 +13,8 @@ export type CoreChapter = [string, number, string, string];
 export type CorePathway = [string, string, string];
 /** [slug, title, hindi] */
 export type CoreTopic = [string, string, string];
-/** [id, title, hindi] — tithi and nakshatra names already published in the panchang. */
-export type CoreTerm = [string, string, string];
+/** [id, title, hindi, href?] — panchang, mantras, concepts, characters, festivals. */
+export type CoreTerm = [string, string, string] | [string, string, string, string];
 /** [id, library chapter, verse, label, href] */
 export type CoreVerse = [string, number, string, string, string];
 
@@ -151,20 +151,48 @@ function ensurePrepared(): Prepared[] {
       actionLabel: 'Explore topic →',
     }, phoneticIndex(`${title} ${hindi} ${slug}`)));
   }
-  for (const [id, title, hindi] of core.terms ?? []) {
+  for (const [id, title, hindi, href] of core.terms ?? []) {
+    const isMantra = href?.startsWith('/mantras');
+    const isConcept = href?.startsWith('/concepts');
+    const isCharacter = href?.startsWith('/characters');
+    const isFestival = href?.startsWith('/festivals');
+
+    let group: SearchResultGroup = 'practice';
+    let gLabel = 'पंचांग · Panchang';
+    let actLabel = 'Open panchang →';
+    let langLabel = 'Sanskrit & Hindi';
+
+    if (isMantra) {
+      group = 'verse';
+      gLabel = 'मन्त्र · Sacred Mantra';
+      actLabel = 'Read mantra & meaning →';
+    } else if (isConcept) {
+      group = 'concept';
+      gLabel = 'अवधारणा · Philosophical Concept';
+      actLabel = 'Explore concept →';
+    } else if (isCharacter) {
+      group = 'learning';
+      gLabel = 'चरित्र · Scriptural Character';
+      actLabel = 'Explore character →';
+    } else if (isFestival) {
+      group = 'practice';
+      gLabel = 'पर्व · Festival & Observance';
+      actLabel = 'View festival →';
+    }
+
     next.push(row({
       id: `core-term-${id}`,
       title,
       subtitle: hindi,
-      group: 'practice',
-      groupLabel: 'पंचांग · Panchang',
-      category: 'practice',
-      categoryLabel: 'पंचांग · Panchang',
-      href: '/panchang/',
+      group,
+      groupLabel: gLabel,
+      category: group as any,
+      categoryLabel: gLabel,
+      href: href || '/panchang/',
       matchingText: `${title} ${hindi}`,
-      matchReason: 'Matches a panchang term',
-      languageLabel: 'Sanskrit & Hindi',
-      actionLabel: 'Open panchang →',
+      matchReason: `Matches ${title}`,
+      languageLabel: langLabel,
+      actionLabel: actLabel,
     }, phoneticIndex(`${title} ${hindi} ${id}`)));
   }
   for (const [id, chapter, verse, label, href] of core.verses) {

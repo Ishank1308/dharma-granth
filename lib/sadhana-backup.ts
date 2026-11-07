@@ -26,6 +26,7 @@ const SHAPE: Record<string, Shape> = {
   'dharma.practice.reflections': 'object',
   'dharma.practice.gratitude': 'object',
   'dharma.practice.sankalpa': 'array',
+  'dharma.gita.sankalpa.v1': 'object',
   'dharma.pathways': 'array',
   'dharma.quizzes': 'array',
   'dharma.streak': 'object',

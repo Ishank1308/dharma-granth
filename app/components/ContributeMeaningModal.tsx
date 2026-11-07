@@ -241,7 +241,7 @@ export function ContributeMeaningModal({
                     </button>
                   )}
                 </div>
-                <pre className="max-h-40 overflow-auto rounded-xl border border-dharma-border bg-[#0f0c09] p-3 text-[12px] leading-relaxed text-emerald-300 font-mono">
+                <pre className="max-h-40 overflow-auto rounded-xl border border-dharma-border bg-[#0f0c09] p-3 text-caption leading-relaxed text-emerald-300 font-mono">
 {hasAnyInput ? buildFragmentSnippet() : `  '${fragmentKey}': {\n    explanation: \`...\`,\n    // science, lifeLesson optional\n  },`}
                 </pre>
                 <p className="mt-1 text-[10px] text-dharma-muted">Suggested file: <code className="font-mono">data/hi-commentary/{suggestedFile}</code></p>

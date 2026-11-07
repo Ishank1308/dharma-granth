@@ -49,4 +49,89 @@ assert.equal(chapter247?.href, '/scripture/bhagavatapurana/chapter/247/');
 assert.equal(chapter247?.reference, 'Bhagavata Purana · Ch. 247');
 assert.equal(normalizePhonetic('तत्त्वमसि'), normalizePhonetic('tattvamasi'), 'तत्त्वमसि = tattvamasi');
 assert.equal(normalizePhonetic('कर्म'), normalizePhonetic('karma'), 'कर्म = karma');
+
+const liveCore = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/search/core-index.json'), 'utf8'));
+loadCoreIndex(liveCore);
+const gayatri = searchCoreIndex('gayatri').find(({ item }) => item.href.includes('/mantras/'));
+assert.ok(gayatri, 'searching gayatri should find gayatri mantra');
+assert.equal(gayatri?.item.href, '/mantras/gayatri-mantra/');
+
+const ekadashi = searchCoreIndex('ekadashi').find(({ item }) => item.href === '/panchang/ekadashi/');
+assert.ok(ekadashi, 'searching ekadashi should direct to /panchang/ekadashi/');
+
+const chalisa = searchCoreIndex('chalisa').find(({ item }) => item.href === '/mantras/hanuman-chalisa/');
+assert.ok(chalisa, 'searching chalisa should find hanuman chalisa');
+
+const aditya = searchCoreIndex('aditya').find(({ item }) => item.href === '/mantras/aditya-hridaya-stotra/');
+assert.ok(aditya, 'searching aditya should find aditya hridaya stotra');
+
+const rohini = searchCoreIndex('rohini').find(({ item }) => item.href === '/panchang/nakshatras/rohini/');
+assert.ok(rohini, 'searching rohini should direct to /panchang/nakshatras/rohini/');
+
+const nachiketa = searchCoreIndex('nachiketa').find(({ item }) => item.href === '/characters/nachiketa/');
+assert.ok(nachiketa, 'searching nachiketa should direct to /characters/nachiketa/');
+
+const vidura = searchCoreIndex('vidura').find(({ item }) => item.href === '/characters/vidura/');
+assert.ok(vidura, 'searching vidura should direct to /characters/vidura/');
+
+const chaturthi = searchCoreIndex('chaturthi').find(({ item }) => item.href === '/panchang/tithis/chaturthi/');
+assert.ok(chaturthi, 'searching chaturthi should direct to /panchang/tithis/chaturthi/');
+
+const atharvashirsha = searchCoreIndex('atharvashirsha').find(({ item }) => item.href === '/mantras/ganapati-atharvashirsha/');
+assert.ok(atharvashirsha, 'searching atharvashirsha should find ganapati atharvashirsha');
+
+const bajrang = searchCoreIndex('bajrang').find(({ item }) => item.href === '/mantras/bajrang-baan/');
+assert.ok(bajrang, 'searching bajrang should find bajrang baan');
+
+const vyatipata = searchCoreIndex('vyatipata').find(({ item }) => item.href === '/panchang/yogas/vyatipata/');
+assert.ok(vyatipata, 'searching vyatipata should direct to /panchang/yogas/vyatipata/');
+
+const vishti = searchCoreIndex('vishti').find(({ item }) => item.href === '/panchang/karanas/vishti/');
+assert.ok(vishti, 'searching vishti should direct to /panchang/karanas/vishti/');
+
+const argala = searchCoreIndex('argala').find(({ item }) => item.href === '/mantras/argala-stotram/');
+assert.ok(argala, 'searching argala should direct to /mantras/argala-stotram/');
+
+const kavacham = searchCoreIndex('kavacham').find(({ item }) => item.href === '/mantras/devi-kavacham/');
+assert.ok(kavacham, 'searching kavacham should find devi-kavacham');
+
+const calendar = searchCoreIndex('festival calendar').find(({ item }) => item.href === '/panchang/calendar/');
+assert.ok(calendar, 'searching festival calendar should direct to /panchang/calendar/');
+
+const somavara = searchCoreIndex('somavara').find(({ item }) => item.href === '/panchang/varas/somavara/');
+assert.ok(somavara, 'searching somavara should direct to /panchang/varas/somavara/');
+
+const shanivara = searchCoreIndex('shanivara').find(({ item }) => item.href === '/panchang/varas/shanivara/');
+assert.ok(shanivara, 'searching shanivara should direct to /panchang/varas/shanivara/');
+
+const navagraha = searchCoreIndex('navagraha').find(({ item }) => item.href === '/mantras/navagraha-stotram/');
+assert.ok(navagraha, 'searching navagraha should find navagraha-stotram');
+
+const gitaJourney = searchCoreIndex('gita journey').find(({ item }) => item.href === '/learn/journeys/gita/');
+assert.ok(gitaJourney, 'searching gita journey should direct to /learn/journeys/gita/');
+
+const dakshinamurthy = searchCoreIndex('dakshinamurthy').find(({ item }) => item.href === '/mantras/dakshinamurthy-stotram/');
+assert.ok(dakshinamurthy, 'searching dakshinamurthy should find dakshinamurthy-stotram');
+
+const mahimna = searchCoreIndex('mahimna').find(({ item }) => item.href === '/mantras/shiva-mahimna-stotram/');
+assert.ok(mahimna, 'searching mahimna should find shiva-mahimna-stotram');
+
+const solarVratas = searchCoreIndex('solar vratas').find(({ item }) => item.href === '/panchang/solar-vratas/');
+assert.ok(solarVratas, 'searching solar vratas should direct to /panchang/solar-vratas/');
+
+const chhathPuja = searchCoreIndex('chhath').find(({ item }) => item.href.includes('/panchang/solar-vratas/'));
+assert.ok(chhathPuja, 'searching chhath should direct to /panchang/solar-vratas/#chhath-puja');
+
+const lalita = searchCoreIndex('lalita sahasranama').find(({ item }) => item.href === '/mantras/lalita-sahasranama/');
+assert.ok(lalita, 'searching lalita sahasranama should find lalita-sahasranama');
+
+const muhurta = searchCoreIndex('muhurta').find(({ item }) => item.href === '/panchang/muhurta/');
+assert.ok(muhurta, 'searching muhurta should direct to /panchang/muhurta/');
+
+const upakarma = searchCoreIndex('upakarma').find(({ item }) => item.href === '/rituals/upakarma/');
+assert.ok(upakarma, 'searching upakarma should direct to /rituals/upakarma/');
+
+const avani = searchCoreIndex('avani avittam').find(({ item }) => item.href.includes('/rituals/upakarma/'));
+assert.ok(avani, 'searching avani avittam should direct to /rituals/upakarma/#regional');
+
 console.log('search query checks passed');
