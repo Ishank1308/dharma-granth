@@ -1146,7 +1146,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     }}
                     defaultValue=""
                     aria-label="श्लोक पर सीधे जाएं (Jump to verse)"
-                    className="cursor-pointer bg-transparent py-1 pr-1 text-xs font-semibold text-dharma-text outline-none"
+                    className="cursor-pointer rounded bg-transparent py-1 pr-1 text-xs font-semibold text-dharma-text outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                   >
                     <option value="" disabled className="bg-dharma-card text-dharma-text">
                       श्लोक पर जाएं ▾
