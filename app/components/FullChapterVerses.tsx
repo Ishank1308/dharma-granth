@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState, startTransition } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, startTransition, type MouseEvent as ReactMouseEvent } from 'react';
 import {
   BookOpen,
   Flame,
@@ -199,6 +199,24 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   // Long chapters: the first RICH_BATCH verses hydrate as full cards; the rest stay as the plain
   // VerseText the server rendered (same id and text) and upgrade as they near the viewport.
   const [richVerses, setRichVerses] = useState<Set<string>>(() => new Set());
+  // Verses whose number the reader tapped: their card opens with the full study, here in the chapter.
+  const [studyRequested, setStudyRequested] = useState<Set<string>>(() => new Set());
+
+  /**
+   * A plain verse's number links to its verse page, so crawlers and readers without JavaScript can reach it.
+   * Once the chapter is interactive, a tap on it opens that verse's explanation in place instead of leaving
+   * the adhyay. A new-tab click (Ctrl/Cmd, Shift, middle button) still opens the verse page.
+   */
+  const openPlainVerseInPlace = (e: ReactMouseEvent<HTMLDivElement>) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const link = (e.target as Element).closest?.('[data-plain-verse] h3 a');
+    const verseNum = link?.closest<HTMLElement>('[data-plain-verse]')?.dataset.plainVerse;
+    if (!verseNum) return;
+    e.preventDefault();
+    e.stopPropagation();
+    setStudyRequested((prev) => withRich(prev, [verseNum]));
+    setRichVerses((prev) => withRich(prev, [verseNum]));
+  };
 
   const [chantingMode, setChantingMode] = useState(false);
   const [readingDepth] = useReadingDepth();
@@ -1299,7 +1317,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
             onExitConversationMode={() => setIsConversationMode(false)}
           />
         ) : (
-          <div className="space-y-8">
+          <div className="space-y-8" onClickCapture={hydrated ? openPlainVerseInPlace : undefined}>
             {filteredVerses.length === 0 ? (
             <div className="rounded-xl border border-dashed border-dharma-border bg-dharma-card p-8 text-center text-sm text-dharma-muted">
               <p className="font-semibold text-dharma-text mb-1">&lsquo;{filterQuery}&rsquo; के लिए कोई श्लोक नहीं मिला</p>
@@ -1427,6 +1445,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                       setFocusModeOpen(true);
                     }}
                     versePageHref={versePageHref(scriptureId, chapterId, v.number)}
+                    studyRequested={studyRequested.has(String(v.number))}
                     isReciting={String(activeRecitingVerse) === String(v.number)}
                     onPlayRecitation={() => togglePlayVerse(v)}
                     onOpenSvadhyaya={handleOpenSvadhyaya}
