@@ -8,6 +8,10 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const skipBuildChecks = process.env.CI === 'true';
 
 const nextConfig = {
+  // A fixed placeholder that scripts/stabilize-build-id.mjs (postbuild)
+  // replaces with a hash of the browser code. Next's random default changed
+  // every page on every build, so Cloudflare re-uploaded ~15,500 files.
+  generateBuildId: async () => 'dgbuildidplaceholder',
   output: 'export',
   // NEXT_DIST_DIR lets a second dev server run beside another one without both rewriting dist/.
   distDir: process.env.NEXT_DIST_DIR || 'dist',
