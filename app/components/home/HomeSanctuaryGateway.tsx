@@ -221,10 +221,10 @@ export function HomeSanctuaryGateway() {
               <span aria-hidden="true">›</span>
             </Link>
             <Link
-              href="/jyotirlinga/"
+              href="/locations/"
               className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border bg-dharma-bg px-3.5 py-2 text-xs font-medium text-dharma-text transition-colors hover:border-dharma-saffron/50 hover:text-dharma-saffron"
             >
-              <span lang="hi" className="font-devanagari">12 ज्योतिर्लिंग दर्शन</span>
+              <span lang="hi" className="font-devanagari">पवित्र स्थान</span>
             </Link>
           </div>
         </article>
