@@ -182,7 +182,7 @@ export function LibraryCard({
       aria-labelledby={headingId}
       data-tilt
       style={{ '--book': CATEGORY_COLOURS[item.category] ?? CATEGORY_COLOURS.other } as CSSProperties}
-      className="home-book group relative flex h-full flex-col overflow-hidden rounded-card bg-dharma-card p-5 pl-7 shadow-raised sm:p-6 sm:pl-8"
+      className="home-book card-sacred sheen-sweep group relative flex h-full flex-col overflow-hidden rounded-card bg-dharma-card p-5 pl-7 shadow-raised sm:p-6 sm:pl-8"
     >
       <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-[color:var(--book-ink)]" />
       <header className="flex items-start justify-between gap-3">

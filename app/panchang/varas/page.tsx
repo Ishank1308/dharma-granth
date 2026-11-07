@@ -183,10 +183,10 @@ export default function VarasDirectoryPage() {
                 <Link
                   key={vara.slug}
                   href={`/panchang/varas/${vara.slug}/`}
-                  className={`group rounded-2xl border p-6 flex flex-col justify-between transition-all hover:-translate-y-0.5 ${
+                  className={`group card-sacred sheen-sweep rounded-2xl border p-6 flex flex-col justify-between ${
                     isToday
-                      ? 'border-saffron-500 bg-saffron-500/[0.04] shadow-md ring-2 ring-saffron-500/50'
-                      : 'border-dharma-border bg-dharma-card hover:border-dharma-saffron hover:shadow-lg'
+                      ? 'border-saffron-500 bg-saffron-500/[0.04] shadow-md ring-2 ring-saffron-500/50 animate-prana-pulse'
+                      : 'border-dharma-border bg-dharma-card hover:border-dharma-saffron'
                   }`}
                 >
                   <div>

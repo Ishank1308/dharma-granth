@@ -204,7 +204,7 @@ export default function TithisHubPage() {
             return (
               <article
                 key={t.slug}
-                className="group relative rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs transition-all hover:border-saffron-500/50 hover:shadow-md flex flex-col justify-between"
+                className="group card-sacred sheen-sweep relative rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs hover:border-saffron-500/50 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 border-b border-dharma-border/60 pb-3 mb-3">

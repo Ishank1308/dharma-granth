@@ -136,8 +136,8 @@
     --dharma-hero-start: #7c2d12;
     --dharma-hero-mid: #c2410c;
     --dharma-hero-end: #f97316;
-    --bg-glow-1: transparent;
-    --bg-glow-2: transparent;
+    --bg-glow-1: rgba(249, 115, 22, 0.04);
+    --bg-glow-2: rgba(217, 119, 6, 0.03);
     --dharma-gold: #c69234;
     --dharma-gold-border: #e6ce9d;
     --dharma-saffron: #c2410c;
@@ -174,8 +174,8 @@
     --dharma-hero-start: #6f1d1b;
     --dharma-hero-mid: #b45309;
     --dharma-hero-end: #e11d48;
-    --bg-glow-1: transparent;
-    --bg-glow-2: transparent;
+    --bg-glow-1: rgba(249, 115, 22, 0.08);
+    --bg-glow-2: rgba(225, 29, 72, 0.05);
     --dharma-gold: #d97706;
     --dharma-gold-border: #f4c284;
     --dharma-saffron: #c2410c;
@@ -213,9 +213,9 @@
     --dharma-hero-start: #0f0e0d;
     --dharma-hero-mid: #3a2418;
     --dharma-hero-end: #7c2d12;
-    --bg-glow-1: transparent;
+    --bg-glow-1: rgba(249, 115, 22, 0.05);
     /* Rātri: obsidian with copper light (was a cool teal glow and bright yellow gold). */
-    --bg-glow-2: transparent;
+    --bg-glow-2: rgba(99, 102, 241, 0.05);
     --dharma-gold: #e5c158;
     --dharma-gold-border: #5a4a24;
     --dharma-saffron: #ff9f0a;
@@ -252,8 +252,8 @@
     --dharma-hero-start: #5a3723;
     --dharma-hero-mid: #9a5327;
     --dharma-hero-end: #c46d32;
-    --bg-glow-1: transparent;
-    --bg-glow-2: transparent;
+    --bg-glow-1: rgba(217, 119, 6, 0.06);
+    --bg-glow-2: rgba(180, 83, 9, 0.04);
     --dharma-gold: #b45309;
     --dharma-gold-border: #d4a373;
     --dharma-saffron: #9c4a0a;
@@ -431,6 +431,107 @@
     .verse-section .section-label {
         margin-bottom: 0.65rem;
         letter-spacing: 0.08em;
+    }
+
+    /* ── Sacred Living Polish (Option A) ───────────────────────── */
+    .card-sacred {
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.28s ease;
+        will-change: transform;
+    }
+    .card-sacred:hover {
+        transform: translateY(-3px);
+        box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.5) inset,
+            0 12px 26px -6px rgba(194, 65, 12, 0.14),
+            0 4px 12px rgba(45, 42, 38, 0.04);
+    }
+    :root[data-theme='night'] .card-sacred:hover,
+    :root[data-theme='dark'] .card-sacred:hover {
+        box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.08) inset,
+            0 14px 32px -6px rgba(249, 115, 22, 0.16),
+            0 4px 16px rgba(0, 0, 0, 0.32);
+    }
+    :root[data-theme='sunset'] .card-sacred:hover {
+        box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.5) inset,
+            0 14px 32px -6px rgba(225, 29, 72, 0.16),
+            0 4px 14px rgba(45, 42, 38, 0.06);
+    }
+    :root[data-theme='paper'] .card-sacred:hover {
+        box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.6) inset,
+            0 12px 28px -6px rgba(180, 83, 9, 0.16),
+            0 4px 12px rgba(45, 42, 38, 0.05);
+    }
+    .card-sacred:active {
+        transform: translateY(-1px) scale(0.995);
+    }
+
+    .sheen-sweep {
+        position: relative;
+        overflow: hidden;
+    }
+    .sheen-sweep::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -120%;
+        width: 70%;
+        height: 200%;
+        background: linear-gradient(
+            115deg,
+            transparent 20%,
+            rgba(255, 255, 255, 0.08) 45%,
+            rgba(255, 255, 255, 0.22) 50%,
+            rgba(255, 255, 255, 0.08) 55%,
+            transparent 80%
+        );
+        transform: rotate(25deg);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+    .sheen-sweep:hover::after {
+        opacity: 1;
+        animation: shine-sweep-anim 0.85s ease-out forwards;
+    }
+
+    /* Ambient radiant glows for page headers & diaphragms */
+    .diya-ambient {
+        background: radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.14) 0%, rgba(217, 119, 6, 0.05) 50%, transparent 75%);
+    }
+    .aura-header {
+        background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.14) 0%, rgba(217, 119, 6, 0.05) 50%, transparent 75%);
+    }
+    :root[data-theme='night'] .aura-header,
+    :root[data-theme='dark'] .aura-header {
+        background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.10) 0%, rgba(99, 102, 241, 0.07) 50%, transparent 75%);
+    }
+    :root[data-theme='sunset'] .aura-header {
+        background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.16) 0%, rgba(225, 29, 72, 0.08) 50%, transparent 75%);
+    }
+    :root[data-theme='paper'] .aura-header {
+        background: radial-gradient(ellipse at center, rgba(217, 119, 6, 0.14) 0%, rgba(180, 83, 9, 0.05) 50%, transparent 75%);
+    }
+
+    /* Sacred Color Accents: Gold, Saffron, Emerald, Indigo, Vermilion */
+    .sacred-glow-gold {
+        box-shadow: 0 0 24px -4px rgba(217, 119, 6, 0.22), 0 4px 14px rgba(217, 119, 6, 0.08);
+    }
+    .sacred-glow-saffron {
+        box-shadow: 0 0 24px -4px rgba(249, 115, 22, 0.24), 0 4px 14px rgba(249, 115, 22, 0.1);
+    }
+    .sacred-glow-emerald {
+        box-shadow: 0 0 24px -4px rgba(16, 185, 129, 0.22), 0 4px 14px rgba(16, 185, 129, 0.08);
+    }
+    .sacred-glow-indigo {
+        box-shadow: 0 0 24px -4px rgba(99, 102, 241, 0.22), 0 4px 14px rgba(99, 102, 241, 0.08);
+    }
+    .sacred-glow-vermilion {
+        box-shadow: 0 0 24px -4px rgba(225, 29, 72, 0.22), 0 4px 14px rgba(225, 29, 72, 0.08);
     }
     .verse-graphic-card {
         --verse-graphic-tint: rgba(249, 115, 22, 0.16);
@@ -1160,6 +1261,30 @@
     .fade-up-in {
         animation: none;
     }
+    .animate-prana-pulse {
+        animation: none;
+    }
+    .card-sacred,
+    .card-sacred:hover,
+    .card-sacred:active {
+        transform: none !important;
+        transition: none !important;
+    }
+    .sheen-sweep::after {
+        display: none !important;
+    }
+}
+
+@keyframes prana-pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.42), 0 4px 14px rgba(249, 115, 22, 0.14);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(249, 115, 22, 0), 0 8px 24px rgba(249, 115, 22, 0.26);
+    }
+}
+.animate-prana-pulse {
+    animation: prana-pulse-glow 3.2s ease-in-out infinite;
 }
 
 /* ── Static verse (<VerseText>) ─────────────────────────────────────
