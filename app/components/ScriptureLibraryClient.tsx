@@ -337,6 +337,50 @@ export function ScriptureLibraryClient({
             )}
           </button>
         </div>
+
+        {/* Quick Category & Tradition Pills */}
+        <div className="mx-auto mt-2.5 flex max-w-7xl items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
+          {[
+            { id: 'all', label: `सभी ${items.length}` },
+            { id: 'vedanta', label: 'वेदान्त व गीता', matchCat: ['vedanta', 'gita'] },
+            { id: 'upanishad', label: 'उपनिषद्', matchCat: ['upanishad'] },
+            { id: 'veda', label: 'वेद', matchCat: ['veda'] },
+            { id: 'itihasa', label: 'इतिहास', matchCat: ['itihasa'] },
+            { id: 'purana', label: 'पुराण', matchCat: ['purana'] },
+          ].map((pill) => {
+            const isAll = pill.id === 'all';
+            const isActive = isAll
+              ? filters.category.length === 0
+              : pill.matchCat?.some((c) => filters.category.includes(c));
+
+            return (
+              <button
+                key={pill.id}
+                type="button"
+                onClick={() => {
+                  triggerTactileFeedback('light', 'softTap');
+                  if (isAll) {
+                    setFilters((f) => ({ ...f, category: [] }));
+                  } else {
+                    setFilters((f) => ({
+                      ...f,
+                      category: isActive
+                        ? f.category.filter((c) => !pill.matchCat?.includes(c))
+                        : [...new Set([...f.category, ...(pill.matchCat || [])])],
+                    }));
+                  }
+                }}
+                className={`inline-flex shrink-0 items-center rounded-full px-3 py-1 text-xs font-semibold transition active:scale-95 ${
+                  isActive
+                    ? 'bg-saffron-500 text-white shadow-xs font-bold'
+                    : 'bg-dharma-text/[0.06] text-dharma-muted hover:bg-dharma-text/[0.1] hover:text-dharma-text'
+                }`}
+              >
+                {pill.label}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div className="pt-6 lg:grid lg:grid-cols-[17.5rem_minmax(0,1fr)] lg:gap-10">

@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { NAKSHATRA_DATA, nakshatraSlug } from '@/lib/panchang';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { Sparkles, Compass, Moon, Sun, ArrowRight, BookOpen, Star, Calendar } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -108,7 +109,6 @@ export default function NakshatrasHubPage() {
     <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
       />
 
@@ -118,6 +118,8 @@ export default function NakshatrasHubPage() {
           { label: '27 Nakshatras' },
         ]}
       />
+
+      <PanchangLimbSwitcher activeLimb="nakshatras" />
 
       {/* Hero Header */}
       <section className="relative overflow-hidden bg-gradient-to-b from-indigo-950/20 via-saffron-950/10 to-transparent pt-10 pb-12 border-b border-dharma-border">

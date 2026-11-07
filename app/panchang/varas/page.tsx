@@ -5,6 +5,7 @@ import { VARA_DATA, type VaraMeta } from '@/lib/panchang';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { JsonLd } from '@/app/components/JsonLd';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import {
   Sun,
   Moon,
@@ -126,7 +127,18 @@ const JSON_LD = {
   ],
 };
 
+function getTodayIstDayIndex(): number {
+  try {
+    const istString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+    return new Date(istString).getDay();
+  } catch {
+    return new Date().getDay();
+  }
+}
+
 export default function VarasDirectoryPage() {
+  const todayDayIndex = getTodayIstDayIndex();
+
   return (
     <main className="apple-scope min-h-screen bg-dharma-bg">
       <JsonLd data={JSON_LD} />
@@ -150,6 +162,8 @@ export default function VarasDirectoryPage() {
         width="wide"
       />
 
+      <PanchangLimbSwitcher activeLimb="varas" />
+
       <section className="mx-auto max-w-7xl px-gutter pt-8 pb-16 space-y-16">
         {/* ─── 7 VARAS MASTER GRID ────────────────────────────────────────── */}
         <div>
@@ -162,22 +176,43 @@ export default function VarasDirectoryPage() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {VARA_DATA.map((vara) => (
-              <Link
-                key={vara.slug}
-                href={`/panchang/varas/${vara.slug}/`}
-                className="group rounded-2xl border border-dharma-border bg-dharma-card p-6 flex flex-col justify-between hover:border-dharma-saffron hover:shadow-lg transition-all hover:-translate-y-0.5"
-              >
-                <div>
-                  {/* Top Bar: Index & Planetary Lord */}
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-dharma-saffron/10 text-dharma-saffron font-bold text-footnote">
-                      {vara.index + 1}
-                    </span>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-dharma-bg border border-dharma-border px-3 py-1 text-caption-1 font-semibold text-dharma-text">
-                      {vara.grahaLordHi}
-                    </span>
-                  </div>
+            {VARA_DATA.map((vara) => {
+              const isToday = vara.index === todayDayIndex;
+
+              return (
+                <Link
+                  key={vara.slug}
+                  href={`/panchang/varas/${vara.slug}/`}
+                  className={`group rounded-2xl border p-6 flex flex-col justify-between transition-all hover:-translate-y-0.5 ${
+                    isToday
+                      ? 'border-saffron-500 bg-saffron-500/[0.04] shadow-md ring-2 ring-saffron-500/50'
+                      : 'border-dharma-border bg-dharma-card hover:border-dharma-saffron hover:shadow-lg'
+                  }`}
+                >
+                  <div>
+                    {/* Top Bar: Index & Planetary Lord & Active Today Badge */}
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={`inline-flex items-center justify-center h-8 w-8 rounded-full font-bold text-footnote ${
+                            isToday
+                              ? 'bg-saffron-500 text-white shadow-xs'
+                              : 'bg-dharma-saffron/10 text-dharma-saffron'
+                          }`}
+                        >
+                          {vara.index + 1}
+                        </span>
+                        {isToday && (
+                          <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
+                            <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
+                            आज का वार · Active Today
+                          </span>
+                        )}
+                      </div>
+                      <span className="inline-flex items-center gap-1 rounded-full bg-dharma-bg border border-dharma-border px-3 py-1 text-caption-1 font-semibold text-dharma-text">
+                        {vara.grahaLordHi}
+                      </span>
+                    </div>
 
                   {/* Name & Title */}
                   <div className="mt-4">
@@ -224,7 +259,8 @@ export default function VarasDirectoryPage() {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </Link>
-            ))}
+            );
+          })}
           </div>
         </div>
 
