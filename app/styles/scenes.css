@@ -1,0 +1,246 @@
+/* ── Chapter scenes behind the shloka (lib/chapter-scenes.ts) ───────────────
+   The page wrapper carries data-scene; every Sanskrit panel inside it gets a
+   faint, moving picture of the chapter's setting on its ::before (the ::after
+   is the light band in components.css).
+
+   A scene is a stack of one-colour SVG masks from ./scenes/ (drawn by
+   scripts/build-chapter-scenes.mjs) over a gradient in the card's own colours,
+   so the same drawing reads in Day, Sunset, Paper and Night. Motion is the
+   masks drifting: each layer moves a whole number of its tiles per loop, so the
+   loop never jumps, and nearer layers travel further than far ones.
+
+   Each scene sets:
+     --scene-mask      mask layers, first on top
+     --scene-size      one size per layer (px, so tiles loop exactly)
+     --scene-repeat    one repeat per layer
+     --scene-from/-to  each layer's position at the start and end of the loop
+     --scene-duration  the loop
+   The picture stays below the text (z-index -1 inside the panel's isolated
+   stacking context) and faint (--scene-alpha), and holds still under reduced
+   motion and the quiet modes. */
+
+[data-scene] {
+    --scene-alpha: 0.3;
+    --scene-low: color-mix(in srgb, var(--vc-main, #9a3412) 70%, var(--label-primary, #1c1917));
+    --scene-high: color-mix(in srgb, var(--vc-gold, #c8962e) 75%, var(--vc-main, #9a3412));
+    --scene-duration: 120s;
+}
+:root[data-theme='sunset'] [data-scene] {
+    --scene-alpha: 0.32;
+}
+:root[data-theme='paper'] [data-scene] {
+    --scene-alpha: 0.26;
+    --scene-low: color-mix(in srgb, var(--vc-main, #9a3412) 45%, var(--label-primary, #1c1917));
+}
+:root[data-theme='night'] [data-scene],
+:root[data-theme='dark'] [data-scene] {
+    --scene-alpha: 0.34;
+    --scene-low: color-mix(in srgb, var(--vc-main, #9a3412) 55%, var(--vc-gold, #c8962e));
+    --scene-high: var(--vc-gold, #c8962e);
+}
+
+[data-scene] .verse-folio::before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to top, var(--scene-low), var(--scene-high) 75%);
+    opacity: var(--scene-alpha);
+    -webkit-mask-image: var(--scene-mask);
+    mask-image: var(--scene-mask);
+    -webkit-mask-size: var(--scene-size);
+    mask-size: var(--scene-size);
+    -webkit-mask-repeat: var(--scene-repeat);
+    mask-repeat: var(--scene-repeat);
+    -webkit-mask-position: var(--scene-from);
+    mask-position: var(--scene-from);
+}
+
+@keyframes scene-drift {
+    from {
+        -webkit-mask-position: var(--scene-from);
+        mask-position: var(--scene-from);
+    }
+    to {
+        -webkit-mask-position: var(--scene-to);
+        mask-position: var(--scene-to);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+        [data-scene] .verse-folio::before {
+        animation: scene-drift var(--scene-duration) linear infinite;
+    }
+}
+
+@media (forced-colors: active), print {
+    [data-scene] .verse-folio::before {
+        display: none;
+    }
+}
+
+/* ── Bhagavad Gita ─────────────────────────────────────────────────────── */
+
+/* 1: the two armies on the field, banners passing, dust in the air, birds over the line. */
+[data-scene='kurukshetra'] {
+    --scene-duration: 160s;
+    --scene-mask: url('./scenes/dust.svg'), url('./scenes/birds.svg'), url('./scenes/armies.svg'), url('./scenes/hills.svg');
+    --scene-size: 260px 260px, 640px 90px, 800px 150px, 800px 160px;
+    --scene-repeat: repeat, repeat-x, repeat-x, repeat-x;
+    --scene-from: 0 0, 0 8%, 0 100%, 0 100%;
+    --scene-to: -1040px 0, -1920px 8%, -1600px 100%, -800px 100%;
+}
+
+/* 2: the chariot halted between the armies; only the dust and the clouds move. */
+[data-scene='chariot'] {
+    --scene-duration: 160s;
+    --scene-mask: url('./scenes/dust.svg'), url('./scenes/clouds.svg'), url('./scenes/chariot.svg'), url('./scenes/armies.svg'), url('./scenes/hills.svg');
+    --scene-size: 260px 260px, 720px 120px, 270px 160px, 800px 150px, 800px 160px;
+    --scene-repeat: repeat, repeat-x, no-repeat, repeat-x, repeat-x;
+    --scene-from: 0 0, 0 6%, 88% 100%, 0 100%, 0 100%;
+    --scene-to: -1040px 0, -720px 6%, 88% 100%, 0 100%, 0 100%;
+}
+
+/* 3 and 17: the altar fire, sparks rising. */
+[data-scene='yajna'] {
+    --scene-duration: 60s;
+    --scene-mask: url('./scenes/sparks.svg'), url('./scenes/yajna.svg'), url('./scenes/hills.svg');
+    --scene-size: 220px 220px, 220px 160px, 800px 160px;
+    --scene-repeat: repeat, no-repeat, repeat-x;
+    --scene-from: 0 0, 88% 100%, 0 100%;
+    --scene-to: 0 -660px, 88% 100%, 0 100%;
+}
+
+/* 4: the sun on the horizon, clouds and birds crossing it. */
+[data-scene='sunrise'] {
+    --scene-mask: url('./scenes/clouds.svg'), url('./scenes/birds.svg'), url('./scenes/sun.svg'), url('./scenes/hills.svg');
+    --scene-size: 720px 120px, 640px 90px, 260px 160px, 800px 160px;
+    --scene-repeat: repeat-x, repeat-x, no-repeat, repeat-x;
+    --scene-from: 0 8%, 0 24%, 84% 100%, 0 100%;
+    --scene-to: -720px 8%, -1280px 24%, 84% 100%, 0 100%;
+}
+
+/* 5: lotus leaves drifting on water, the surface glinting. */
+[data-scene='lotus'] {
+    --scene-mask: url('./scenes/clouds.svg'), url('./scenes/ripples.svg'), url('./scenes/lotus.svg');
+    --scene-size: 720px 120px, 400px 60px, 800px 160px;
+    --scene-repeat: repeat-x, repeat-x, repeat-x;
+    --scene-from: 0 8%, 0 100%, 0 100%;
+    --scene-to: -720px 8%, -1200px 100%, -800px 100%;
+}
+
+/* 6: the yogi among the mountains, the lamp still, mist passing. */
+[data-scene='dhyana'] {
+    --scene-duration: 140s;
+    --scene-mask: url('./scenes/clouds.svg'), url('./scenes/yogi.svg'), url('./scenes/mountains.svg');
+    --scene-size: 720px 120px, 220px 150px, 800px 170px;
+    --scene-repeat: repeat-x, no-repeat, repeat-x;
+    --scene-from: 0 30%, 86% 100%, 0 100%;
+    --scene-to: -720px 30%, 86% 100%, 0 100%;
+}
+
+/* 7: pearls on one thread, under the stars. */
+[data-scene='pearls'] {
+    --scene-mask: url('./scenes/stars.svg'), url('./scenes/pearls.svg'), url('./scenes/hills.svg');
+    --scene-size: 280px 280px, 800px 120px, 800px 160px;
+    --scene-repeat: repeat, repeat-x, repeat-x;
+    --scene-from: 0 0, 0 34%, 0 100%;
+    --scene-to: -560px 0, -800px 34%, 0 100%;
+}
+
+/* 8: sun and moon over the two paths, the stars turning. */
+[data-scene='two-paths'] {
+    --scene-mask: url('./scenes/stars.svg'), url('./scenes/sun-moon.svg'), url('./scenes/hills.svg');
+    --scene-size: 280px 280px, 300px 160px, 800px 160px;
+    --scene-repeat: repeat, no-repeat, repeat-x;
+    --scene-from: 0 0, 86% 88%, 0 100%;
+    --scene-to: -560px 0, 86% 88%, 0 100%;
+}
+
+/* 9: leaf, flower, fruit and water, petals falling. */
+[data-scene='offering'] {
+    --scene-duration: 80s;
+    --scene-mask: url('./scenes/petals.svg'), url('./scenes/offering.svg'), url('./scenes/hills.svg');
+    --scene-size: 240px 240px, 260px 160px, 800px 160px;
+    --scene-repeat: repeat, no-repeat, repeat-x;
+    --scene-from: 0 0, 88% 100%, 0 100%;
+    --scene-to: 240px 960px, 88% 100%, 0 100%;
+}
+
+/* 10: the Himalaya with the Ganga flowing at its feet. */
+[data-scene='himalaya'] {
+    --scene-mask: url('./scenes/clouds.svg'), url('./scenes/birds.svg'), url('./scenes/ripples.svg'), url('./scenes/river.svg'), url('./scenes/mountains.svg');
+    --scene-size: 720px 120px, 640px 90px, 400px 60px, 800px 60px, 800px 170px;
+    --scene-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
+    --scene-from: 0 10%, 0 26%, 0 100%, 0 100%, 0 calc(100% - 24px);
+    --scene-to: -720px 10%, -1280px 26%, -1600px 100%, 0 100%, 0 calc(100% - 24px);
+}
+
+/* 11: a radiance of a thousand suns, the stars streaming past. */
+[data-scene='vishvarupa'] {
+    --scene-mask: url('./scenes/stars.svg'), url('./scenes/radiance.svg');
+    --scene-size: 280px 280px, 360px 360px;
+    --scene-repeat: repeat, no-repeat;
+    --scene-from: 0 0, 50% 125%;
+    --scene-to: -560px 560px, 50% 125%;
+}
+
+/* 12: lamps floating down the river, petals falling. */
+[data-scene='diyas'] {
+    --scene-mask: url('./scenes/petals.svg'), url('./scenes/ripples.svg'), url('./scenes/diyas.svg');
+    --scene-size: 240px 240px, 400px 60px, 800px 160px;
+    --scene-repeat: repeat, repeat-x, repeat-x;
+    --scene-from: 0 0, 0 100%, 0 100%;
+    --scene-to: 240px 960px, -1200px 100%, -800px 100%;
+}
+
+/* 13: a ripe field, clouds and birds over it. */
+[data-scene='field'] {
+    --scene-mask: url('./scenes/clouds.svg'), url('./scenes/birds.svg'), url('./scenes/field.svg');
+    --scene-size: 720px 120px, 640px 90px, 800px 160px;
+    --scene-repeat: repeat-x, repeat-x, repeat-x;
+    --scene-from: 0 8%, 0 22%, 0 100%;
+    --scene-to: -720px 8%, -1280px 22%, 0 100%;
+}
+
+/* 14: the three guṇas, braided and flowing. */
+[data-scene='gunas'] {
+    --scene-duration: 90s;
+    --scene-mask: url('./scenes/dust.svg'), url('./scenes/gunas.svg'), url('./scenes/hills.svg');
+    --scene-size: 260px 260px, 800px 160px, 800px 160px;
+    --scene-repeat: repeat, repeat-x, repeat-x;
+    --scene-from: 0 0, 0 70%, 0 100%;
+    --scene-to: -520px 0, -1600px 70%, 0 100%;
+}
+
+/* 15: the inverted aśvattha, its leaves drifting down. */
+[data-scene='ashvattha'] {
+    --scene-duration: 90s;
+    --scene-mask: url('./scenes/leaves.svg'), url('./scenes/ashvattha.svg'), url('./scenes/hills.svg');
+    --scene-size: 260px 260px, 280px 160px, 800px 160px;
+    --scene-repeat: repeat, no-repeat, repeat-x;
+    --scene-from: 0 0, 88% 100%, 0 100%;
+    --scene-to: -260px 780px, 88% 100%, 0 100%;
+}
+
+/* 16: dawn breaking through storm clouds, two banks of cloud at two speeds. */
+[data-scene='dawn-storm'] {
+    --scene-mask: url('./scenes/clouds.svg'), url('./scenes/clouds.svg'), url('./scenes/sun.svg'), url('./scenes/mountains.svg');
+    --scene-size: 720px 120px, 1080px 180px, 260px 160px, 800px 170px;
+    --scene-repeat: repeat-x, repeat-x, no-repeat, repeat-x;
+    --scene-from: 0 4%, 0 30%, 84% 100%, 0 100%;
+    --scene-to: -1440px 4%, -1080px 30%, 84% 100%, 0 100%;
+}
+
+/* 18: the chariot at sunrise. */
+[data-scene='vijaya'] {
+    --scene-duration: 160s;
+    --scene-mask: url('./scenes/dust.svg'), url('./scenes/chariot.svg'), url('./scenes/sun.svg'), url('./scenes/hills.svg');
+    --scene-size: 260px 260px, 270px 160px, 260px 160px, 800px 160px;
+    --scene-repeat: repeat, no-repeat, no-repeat, repeat-x;
+    --scene-from: 0 0, 92% 100%, 62% 100%, 0 100%;
+    --scene-to: -1040px 0, 92% 100%, 62% 100%, 0 100%;
+}

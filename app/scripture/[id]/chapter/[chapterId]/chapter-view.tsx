@@ -30,6 +30,7 @@ import { ShareButton } from '@/app/components/ShareButton';
 import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
 import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction';
 import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
+import { sceneAttrs } from '@/lib/chapter-scenes';
 import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPart } from '@/lib/chapter-parts';
@@ -404,7 +405,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   } : undefined;
 
   return (
-    <main data-chapter-reading data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} className="min-h-screen bg-dharma-bg">
+    <main data-chapter-reading data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} {...sceneAttrs(meta.id, chapter.id)} className="min-h-screen bg-dharma-bg">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
