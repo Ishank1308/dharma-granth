@@ -46,6 +46,7 @@ export function PanchangLimbSwitcher({ activeLimb }: { activeLimb?: PanchangLimb
                 href={limb.href}
                 onClick={() => triggerTactileFeedback('light', 'softTap')}
                 aria-current={isActive ? 'page' : undefined}
+                data-limb={limb.id}
                 className={`group inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition active:scale-95 ${
                   isActive
                     ? 'border border-saffron-500/60 bg-saffron-500/15 text-saffron-800 dark:text-saffron-200 shadow-xs'
@@ -59,7 +60,7 @@ export function PanchangLimbSwitcher({ activeLimb }: { activeLimb?: PanchangLimb
                   aria-hidden="true"
                 />
                 <span className="font-devanagari">{limb.labelHi}</span>
-                <span className="text-[10px] font-normal opacity-70">({limb.count})</span>
+                <span className="text-[10px] font-normal">({limb.count})</span>
               </Link>
             );
           })}

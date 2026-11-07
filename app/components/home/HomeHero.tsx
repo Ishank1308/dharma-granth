@@ -33,7 +33,7 @@ export function HomeHero() {
         >
           Every verse.
           <br />
-          Complete.
+          <span className="ink-dawn ink-dawn-full">Complete.</span>
         </h1>
         <p lang="hi" style={step(2)} className="mt-2 font-devanagari text-2xl font-semibold text-dharma-muted sm:text-[34px] sm:leading-tight">
           हर श्लोक, सम्पूर्ण।

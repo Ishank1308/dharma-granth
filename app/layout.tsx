@@ -21,6 +21,8 @@ import "./styles/components.css";
 import "./motion.css";
 // Chapter scenes behind the shloka (lib/chapter-scenes.ts); only pages with data-scene use them.
 import "./styles/scenes.css";
+// Colour and life (the sacred spectrum on cards, buttons, titles and the page aurora) goes last.
+import "./styles/colour.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
 import { StoragePersistenceRequest } from "@/app/components/StoragePersistenceRequest";

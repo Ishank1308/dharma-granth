@@ -90,7 +90,8 @@ export default function PanchangLayout({ children }: { children: React.ReactNode
   return (
     <>
       <JsonLd data={PANCHANG_JSON_LD} />
-      {children}
+      {/* panchang-scope (display: contents) lets colour.css give Panchang and each limb its own hue. */}
+      <div className="panchang-scope">{children}</div>
     </>
   );
 }

@@ -12,6 +12,7 @@ from the same tokens, so it reads the same in all four themes (Usha, Sandhyā, B
 | `app/globals.css` | Fonts, the four theme palettes (`--dharma-*`), base styles and older component rules. |
 | `app/styles/components.css` | Shared components built only from tokens (`.apple-*`, `.material-*`). |
 | `app/motion.css` | The motion system: reveals, cascades, hero, tilt, sheen, ticker, theme transition. |
+| `app/styles/colour.css` | Colour and life: the page aurora, dawn titles, coloured cards and icon tiles, gradient buttons, spectrum rules. Loaded last. |
 | `tailwind.config.ts` | Tailwind names for the same tokens. |
 | `app/components/apple/PageHeader.tsx` | `PageHeader`, `SectionTitle` and `Eyebrow`. |
 
@@ -101,6 +102,61 @@ Materials are the canvas made translucent, for anything that floats over content
 Elevation (`shadow-hairline`, `shadow-raised`, `shadow-lifted`, `shadow-overlay`) is a soft
 neutral shadow on Usha, a warm one on Sandhyā and Bhojpatra, and none on Rātri, where a card
 is lifted by a lighter surface instead, as in Apple's dark mode.
+
+## Colour: the sacred spectrum
+
+Beyond the one saffron tint, every page draws colour from seven hues in `tokens.css`, deep on
+the light themes and luminous on Rātri:
+
+| Token | Hue |
+| --- | --- |
+| `--hue-saffron` | agni, the tint's own family |
+| `--hue-vermilion` | sindūr |
+| `--hue-gold` | svarṇa |
+| `--hue-lotus` | padma |
+| `--hue-indigo` | nīla |
+| `--hue-peacock` | mayūra |
+| `--hue-tulsi` | tulsī |
+
+Mixed from them: `--gradient-dawn` (saffron to vermilion to lotus, for titles and highlights),
+`--gradient-spectrum` (all seven, for rules, progress and hairlines) and `--gradient-action`
+(the filled button). `--tone-wash`, `--tone-edge`, `--tone-glow` and `--tone-aurora` set how
+strongly colour shows in each theme, so a component never needs four copies.
+
+`app/styles/colour.css` applies them to the existing hooks, so pages need no changes:
+
+- **Aurora**: a fixed layer of soft colour pools behind every page that drifts on a 48s loop.
+  Page wrappers with `bg-dharma-bg` let it show (the body paints the same colour). On chapter
+  and verse pages it sinks to a whisper and holds still.
+- **Titles**: `.ink-dawn` sets English display text in dawn ink (PageHeader titles, the hero's
+  "Complete."). Never on Devanagari. `.eyebrow-capsule` turns a PageHeader eyebrow into a tinted
+  capsule led by a breathing dot.
+- **Cards**: every `.apple-card` carries `--card-hue`: the `--chip` colour set on the card, or
+  else the next spectrum hue in turn, so a grid reads as a garland. The hue shows as a lit top
+  edge, a corner wash and, on a link card, a glow under the pointer. Set `--chip` on the card,
+  not on its icon tile, so both share it.
+- **Icon tiles** (`.apple-tint-chip`) are lit from above and lean in on a spring when their card
+  is hovered.
+- **Actions**: `.apple-pill`, `.cta-primary` and any `a`/`button` with `bg-dharma-saffron` wear
+  `--gradient-action` with a tinted glow.
+- **Header and rules**: the current nav link has a dawn underline, the scroll-progress hairline
+  and `.section-rule` are the spectrum, the footer opens with a spectrum hairline.
+- **Library books** (`.home-book`) get a wash, spine and glow in the scripture's own colour.
+- **Verse cards** come alive under the hand: the gradient edge turns round the card
+  (`--vc-angle`, a registered property), the verse capsule lifts and glows and the gilt ॥ mark
+  warms. Each study layer has its own hue, in reading order: अर्थ peacock, व्याख्या saffron,
+  आधुनिक संदर्भ indigo, चिंतन lotus, संबंधित ज्ञान tulsī. On the verse page the knowledge tree
+  (`data-branch` on each node) colours its rail, nodes, elbows and panels; an open node is a lit
+  jewel. On the chapter card each `SacredSection` (`data-section`) is led by a jewel in its hue
+  and the joining rail shades through them. Nothing on a reading page loops: every effect
+  follows the pointer, the scroll or a tap.
+- **Panchang** (`.panchang-scope`, `.panchang-limb[data-limb]` from the route layouts): each limb of
+  time has its own pair of hues (`--limb`, `--limb-2`): तिथि indigo, वार saffron, नक्षत्र peacock,
+  योग lotus, करण tulsī, मुहूर्त gold. The hero carries a slow kāla-chakra, cards and switcher pills
+  take the limb's colour, and today's limb cards on `/panchang/` each wear their sub-page's hue.
+
+Reduced motion, the lite, low-power and data-saver modes stop every loop; forced colours and
+print drop the aurora and washes.
 
 ## Components
 

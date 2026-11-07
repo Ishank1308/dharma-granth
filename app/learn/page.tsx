@@ -136,8 +136,8 @@ export default function LearnPage() {
         <ul className="grid grid-cols-2 gap-3 lg:grid-cols-3">
           {PORTALS.map(({ href, en, hi, sub, Icon, chip }) => (
             <li key={href}>
-              <Link href={href} className="apple-card flex h-full flex-col items-start gap-2 p-4 transition hover:-translate-y-0.5 sm:flex-row sm:gap-3 sm:p-5">
-                <span className="apple-tint-chip mt-0.5" style={{ '--chip': chip } as CSSProperties} aria-hidden="true">
+              <Link href={href} style={{ '--chip': chip } as CSSProperties} className="apple-card flex h-full flex-col items-start gap-2 p-4 sm:flex-row sm:gap-3 sm:p-5">
+                <span className="apple-tint-chip mt-0.5" aria-hidden="true">
                   <Icon className="h-4 w-4" />
                 </span>
                 <span className="min-w-0">
