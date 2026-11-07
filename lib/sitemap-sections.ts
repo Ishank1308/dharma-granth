@@ -3,7 +3,7 @@ import { getAllScriptures, getScriptureChapters } from '@/data/scriptures';
 import { readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
 import { lastChanged, scriptureLastChanged } from '@/lib/content-dates';
 import { verseStaticParams } from '@/lib/verse-pages';
-import { chapterHasMeaning, verseMeaningById } from '@/lib/verse-meaning';
+import { chapterPartHasMeaning, verseMeaningById } from '@/lib/verse-meaning';
 import { chapterPartHref, chapterParts } from '@/lib/chapter-parts';
 import { wisdomTopics } from '@/data/wisdom-for-life';
 import { wisdomPathways } from '@/data/wisdom-pathways';
@@ -159,12 +159,11 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
     const chapterSet = new Set<number>(readSeededChapterNumbers(meta.id));
     for (const ch of getScriptureChapters(meta.id)) chapterSet.add(ch.id);
     for (const chId of Array.from(chapterSet).sort((a, b) => a - b)) {
-      // Original-text-only chapters are noindex (chapter page); keep them out of the sitemap too.
-      if (!chapterHasMeaning(meta.id, chId)) continue;
-      chapters.push(entry(`/scripture/${meta.id}/chapter/${chId}`, date));
+      // Original-text-only chapter pages and parts are noindex; keep them out of the sitemap too.
+      if (chapterPartHasMeaning(meta.id, chId, 1)) chapters.push(entry(`/scripture/${meta.id}/chapter/${chId}`, date));
       // Parts 2…N of chapters too large for one page (lib/chapter-parts).
       for (const part of chapterParts(meta.id, chId)?.slice(1) ?? []) {
-        chapters.push(entry(chapterPartHref(meta.id, chId, part.part), date));
+        if (chapterPartHasMeaning(meta.id, chId, part.part)) chapters.push(entry(chapterPartHref(meta.id, chId, part.part), date));
       }
     }
   }

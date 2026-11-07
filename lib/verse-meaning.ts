@@ -7,6 +7,7 @@
  */
 import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
 import { canonicalVerseId } from './canonical-verse-id';
+import { chapterParts } from './chapter-parts';
 import { readChapterCommentary, readSeededChapter } from './read-seeded-chapters';
 
 export interface VerseLike {
@@ -72,6 +73,26 @@ export function chapterHasMeaning(scriptureId: string, chapterId: number): boole
   const has = !verses?.length || verses.some((v) => verseMeaningSummary(scriptureId, chapterId, v).any);
   chapterMeaningCache.set(key, has);
   return has;
+}
+
+const chapterPartMeaningCache = new Map<string, boolean[]>();
+
+/** Whether a rendered chapter part contains any Hindi or English meaning or explanation. */
+export function chapterPartHasMeaning(scriptureId: string, chapterId: number, partNumber: number): boolean {
+  if (!Number.isInteger(partNumber) || partNumber < 1) return false;
+  const key = `${scriptureId}:${chapterId}`;
+  let meanings = chapterPartMeaningCache.get(key);
+  if (!meanings) {
+    const verses = readSeededChapter(scriptureId, chapterId)?.chapter.verses as VerseLike[] | undefined;
+    const parts = chapterParts(scriptureId, chapterId);
+    meanings = !verses?.length
+      ? [true]
+      : parts
+        ? parts.map((part) => verses.slice(part.start, part.end).some((verse) => verseMeaningSummary(scriptureId, chapterId, verse).any))
+        : [verses.some((verse) => verseMeaningSummary(scriptureId, chapterId, verse).any)];
+    chapterPartMeaningCache.set(key, meanings);
+  }
+  return meanings[partNumber - 1] ?? false;
 }
 
 /** Shown above a chapter that has only the original text so far. */

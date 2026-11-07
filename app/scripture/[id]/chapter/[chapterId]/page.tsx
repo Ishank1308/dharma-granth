@@ -4,7 +4,7 @@ import { readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
 import { ChapterView, chapterMetadata, type ChapterParams } from './chapter-view';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { getScriptureMeta } from '@/data/scriptures';
-import { chapterHasMeaning } from '@/lib/verse-meaning';
+import { chapterPartHasMeaning } from '@/lib/verse-meaning';
 import { OriginalOnlyNotice } from './original-only-notice';
 
 interface PageProps {
@@ -42,7 +42,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: PageProps): Metadata {
   const metadata = chapterMetadata(params, 1);
   // Original text only: kept out of the index (and the sitemap) until a meaning is written.
-  return chapterHasMeaning(params.id, parseInt(params.chapterId, 10))
+  return chapterPartHasMeaning(params.id, parseInt(params.chapterId, 10), 1)
     ? metadata
     : { ...metadata, robots: { index: false, follow: true } };
 }
@@ -64,7 +64,7 @@ export default function ChapterPage({ params }: PageProps) {
           ]}
         />
       ) : null}
-      {chapterHasMeaning(params.id, chapterNumber) ? null : <OriginalOnlyNotice />}
+      {chapterPartHasMeaning(params.id, chapterNumber, 1) ? null : <OriginalOnlyNotice />}
       <ChapterView params={params} part={1} />
     </>
   );

@@ -1,5 +1,6 @@
 /** Run: npm run test:sitemap */
 import assert from 'node:assert/strict';
+import { chapterPartHasMeaning } from '../lib/verse-meaning';
 import {
   MAX_URLS_PER_SITEMAP,
   SITE_URL,
@@ -58,6 +59,13 @@ assert.ok(pages.includes(`${SITE_URL}/methodology/`), '/methodology/ missing');
 assert.ok(sitemapSection('scriptures').some((e) => e.url === `${SITE_URL}/scripture/bhagavadgita/`));
 assert.ok(sitemapSection('chapters').some((e) => e.url === `${SITE_URL}/scripture/bhagavadgita/chapter/2/`));
 assert.ok(sitemapSection('verses').some((e) => e.url === `${SITE_URL}/scripture/bhagavadgita/chapter/2/verse/47/`));
+assert.equal(chapterPartHasMeaning('rigveda', 1, 1), true);
+assert.equal(chapterPartHasMeaning('rigveda', 1, 2), false);
+assert.equal(chapterPartHasMeaning('rigveda', 1, 6), true);
+const chapterUrls = sitemapSection('chapters').map((e) => e.url);
+assert.ok(chapterUrls.includes(`${SITE_URL}/scripture/rigveda/chapter/1/`));
+assert.ok(!chapterUrls.includes(`${SITE_URL}/scripture/rigveda/chapter/1/part/2/`));
+assert.ok(chapterUrls.includes(`${SITE_URL}/scripture/rigveda/chapter/1/part/6/`));
 
 assert.ok(sitemapSection('verses').some((e) => e.url === `${SITE_URL}/ashtavakra/2/14/`), 'Ashtavakra verse pages missing');
 
