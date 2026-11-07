@@ -149,7 +149,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
           }`}
         >
           <Calendar className="w-4 h-4" />
-          <span>आज का मुहूर्त विश्लेषण (Today's Matrix)</span>
+          <span>आज का मुहूर्त विश्लेषण (Today&apos;s Matrix)</span>
         </button>
 
         <button
@@ -408,10 +408,10 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
 
             {/* Target Activity Selection */}
             <div className="mb-6">
-              <label className="block text-xs font-semibold text-dharma-text uppercase tracking-wider mb-2">
+              <p id="muhurta-endeavor-label" className="block text-xs font-semibold text-dharma-text uppercase tracking-wider mb-2">
                 1. अभीष्ट कार्य चुनें (Select Target Endeavor)
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+              </p>
+              <div role="group" aria-labelledby="muhurta-endeavor-label" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
                 {MUHURTA_ENDEAVORS.map((end) => (
                   <button
                     type="button"
@@ -434,10 +434,11 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-xl bg-dharma-bg/60 border border-dharma-border mb-6">
               {/* Tithi Selector */}
               <div>
-                <label className="block text-xs font-semibold text-dharma-text mb-1">
+                <label htmlFor="muhurta-tithi" className="block text-xs font-semibold text-dharma-text mb-1">
                   2. तिथि (Tithi: 1-30)
                 </label>
                 <select
+                  id="muhurta-tithi"
                   value={simTithi}
                   onChange={(e) => setSimTithi(Number(e.target.value))}
                   className="w-full text-xs p-2.5 rounded-lg border border-dharma-border bg-dharma-card text-dharma-text focus:outline-none focus:border-saffron-500"
@@ -457,10 +458,11 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
 
               {/* Weekday Selector */}
               <div>
-                <label className="block text-xs font-semibold text-dharma-text mb-1">
+                <label htmlFor="muhurta-weekday" className="block text-xs font-semibold text-dharma-text mb-1">
                   3. वार (Weekday)
                 </label>
                 <select
+                  id="muhurta-weekday"
                   value={simVara}
                   onChange={(e) => setSimVara(Number(e.target.value))}
                   className="w-full text-xs p-2.5 rounded-lg border border-dharma-border bg-dharma-card text-dharma-text focus:outline-none focus:border-saffron-500"
@@ -475,10 +477,11 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
 
               {/* Nakshatra Selector */}
               <div>
-                <label className="block text-xs font-semibold text-dharma-text mb-1">
+                <label htmlFor="muhurta-nakshatra" className="block text-xs font-semibold text-dharma-text mb-1">
                   4. नक्षत्र (Nakshatra: 1-27)
                 </label>
                 <select
+                  id="muhurta-nakshatra"
                   value={simNakshatra}
                   onChange={(e) => setSimNakshatra(Number(e.target.value))}
                   className="w-full text-xs p-2.5 rounded-lg border border-dharma-border bg-dharma-card text-dharma-text focus:outline-none focus:border-saffron-500"
@@ -496,10 +499,11 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
 
               {/* Karana Selector */}
               <div>
-                <label className="block text-xs font-semibold text-dharma-text mb-1">
+                <label htmlFor="muhurta-karana" className="block text-xs font-semibold text-dharma-text mb-1">
                   5. करण (Karana)
                 </label>
                 <select
+                  id="muhurta-karana"
                   value={simKarana}
                   onChange={(e) => setSimKarana(e.target.value)}
                   className="w-full text-xs p-2.5 rounded-lg border border-dharma-border bg-dharma-card text-dharma-text focus:outline-none focus:border-saffron-500"
