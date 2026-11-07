@@ -37,13 +37,24 @@ the Sanskrit panel of every verse card, on the chapter page and on each verse pa
 | 17 | Yajña fire | 17.11–17.13 |
 | 18 | The chariot at sunrise | 18.78 |
 
-## Proposed next (needs new layers marked *)
+## Vālmīki Rāmāyaṇa (live; chapter = kāṇḍa)
 
-- **Vālmīki Rāmāyaṇa:** Bāla, Sarayū and Ayodhyā's towers*; Ayodhyā, the road into exile*; Araṇya, forest
-  hermitage with the golden deer*; Kiṣkindhā, Ṛṣyamūka hills (mountains); Sundara, the ocean leap to Laṅkā*;
-  Yuddha, the bridge and battle (armies + ocean*); Uttara, the coronation (diyas, petals).
+| Kāṇḍa | Scene |
+|---|---|
+| 1 Bāla | Ayodhyā's spires and palaces on the Sarayū |
+| 2 Ayodhyā | Rāma, Sītā and Lakṣmaṇa walking into exile, forest behind |
+| 3 Araṇya | The leaf hut at Pañcavaṭī and the golden deer, leaves drifting |
+| 4 Kiṣkindhā | Forested hills over Lake Pampā |
+| 5 Sundara | Hanumān in mid-leap over the sea, Laṅkā ahead |
+| 6 Yuddha | The setu across the sea to Laṅkā, dust of the army |
+| 7 Uttara | Ayodhyā at peace, petals falling |
+
+Text over the scene band measured at least 7.3:1 in all four themes.
+
+## Proposed next
+
 - **Kaṭha Upaniṣad:** Naciketā at Yama's door, the fire altar (yajna) and the chariot image of 1.3.3–4 (chariot).
-- **Durgā Saptaśatī:** Madhu-Kaiṭabha on the cosmic ocean*, Mahiṣāsura's battle (armies), Śumbha-Niśumbha
+- **Durgā Saptaśatī:** Madhu-Kaiṭabha on the cosmic ocean (waves, stars), Mahiṣāsura's battle (armies), Śumbha-Niśumbha
   (mountains, radiance).
 - **Vedas, Purāṇas and long texts:** one scene per kāṇḍa/skandha or per book, chosen from the shared library,
   rather than one per sūkta.

@@ -26,7 +26,14 @@ export type SceneId =
   | 'gunas'
   | 'ashvattha'
   | 'dawn-storm'
-  | 'vijaya';
+  | 'vijaya'
+  | 'ayodhya'
+  | 'exile'
+  | 'aranya'
+  | 'kishkindha'
+  | 'sundara'
+  | 'yuddha'
+  | 'uttara';
 
 export interface SceneInfo {
   /** What the reader sees, in English and Hindi. */
@@ -52,6 +59,13 @@ export const SCENES: Record<SceneId, SceneInfo> = {
   ashvattha: { en: 'The aśvattha tree, roots above and branches below', hi: 'ऊपर जड़ और नीचे शाखाओं वाला अश्वत्थ' },
   'dawn-storm': { en: 'Dawn breaking through storm clouds', hi: 'घने बादलों को चीरता प्रभात' },
   vijaya: { en: 'The chariot at sunrise, where Krishna and Arjuna stand', hi: 'जहाँ श्रीकृष्ण और अर्जुन हैं, वहाँ उगता सूर्य' },
+  ayodhya: { en: 'Ayodhya on the banks of the Sarayu', hi: 'सरयू के तट पर अयोध्या' },
+  exile: { en: 'Rama, Sita and Lakshmana on the road to the forest', hi: 'वन की राह पर राम, सीता और लक्ष्मण' },
+  aranya: { en: 'The leaf hut at Panchavati and the golden deer', hi: 'पंचवटी की पर्णशाला और स्वर्णमृग' },
+  kishkindha: { en: 'The hills of Kishkindha above Lake Pampa', hi: 'पंपा सरोवर के ऊपर किष्किन्धा के पर्वत' },
+  sundara: { en: 'Hanuman leaping the ocean towards Lanka', hi: 'समुद्र लाँघकर लंका की ओर हनुमान' },
+  yuddha: { en: 'The bridge of stones across the sea to Lanka', hi: 'समुद्र पर लंका तक पत्थरों का सेतु' },
+  uttara: { en: 'Ayodhya rejoicing at the return, petals falling', hi: 'लौटने के उत्सव में अयोध्या, झरते पुष्प' },
 };
 
 /** Scripture id → chapter number → scene. Chapters not listed get no scene. */
@@ -75,6 +89,16 @@ const CHAPTER_SCENES: Record<string, Record<number, SceneId>> = {
     16: 'dawn-storm', // 16.1–16.6: the divine and the demonic natures
     17: 'yajna', // 17.11–17.13: the three kinds of yajña
     18: 'vijaya', // 18.78: yatra yogeśvaraḥ kṛṣṇo yatra pārtho dhanur-dharaḥ
+  },
+  // Vālmīki Rāmāyaṇa: chapter = kāṇḍa.
+  ramayana: {
+    1: 'ayodhya', // Bāla: Ayodhyā described (1.5), Rāma's birth and youth
+    2: 'exile', // Ayodhyā: the departure into exile
+    3: 'aranya', // Araṇya: Pañcavaṭī, Mārīca as the golden deer
+    4: 'kishkindha', // Kiṣkindhā: Pampā, Ṛṣyamūka, the alliance with Sugrīva
+    5: 'sundara', // Sundara: Hanumān's leap to Laṅkā (5.1)
+    6: 'yuddha', // Yuddha: the setu (6.22) and the war
+    7: 'uttara', // Uttara: Rāma's reign in Ayodhyā
   },
 };
 

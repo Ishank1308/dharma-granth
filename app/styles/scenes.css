@@ -244,3 +244,70 @@
     --scene-from: 0 0, 92% 100%, 62% 100%, 0 100%;
     --scene-to: -1040px 0, 92% 100%, 62% 100%, 0 100%;
 }
+
+/* ── Vālmīki Rāmāyaṇa (chapter = kāṇḍa) ─────────────────────────────────── */
+
+/* Bāla: Ayodhyā's spires and palaces on the Sarayū, the river glinting. */
+[data-scene='ayodhya'] {
+    --scene-mask: url('./scenes/clouds.svg'), url('./scenes/birds.svg'), url('./scenes/ripples.svg'), url('./scenes/river.svg'), url('./scenes/city.svg');
+    --scene-size: 720px 120px, 640px 90px, 400px 60px, 800px 60px, 560px 101px;
+    --scene-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
+    --scene-from: 0 8%, 0 22%, 0 100%, 0 100%, 0 calc(100% - 18px);
+    --scene-to: -720px 8%, -1280px 22%, -1200px 100%, 0 100%, 0 calc(100% - 18px);
+}
+
+/* Ayodhyā: the three walking into exile, clouds passing over. */
+[data-scene='exile'] {
+    --scene-mask: url('./scenes/leaves.svg'), url('./scenes/clouds.svg'), url('./scenes/exile.svg'), url('./scenes/forest-far.svg');
+    --scene-size: 260px 260px, 720px 120px, 240px 129px, 560px 112px;
+    --scene-repeat: repeat, repeat-x, no-repeat, repeat-x;
+    --scene-from: 0 0, 0 8%, 86% 100%, 0 100%;
+    --scene-to: -260px 780px, -720px 8%, 86% 100%, -560px 100%;
+}
+
+/* Araṇya: the leaf hut and the golden deer, the forest behind, leaves drifting. */
+[data-scene='aranya'] {
+    --scene-mask: url('./scenes/leaves.svg'), url('./scenes/birds.svg'), url('./scenes/hermitage.svg'), url('./scenes/forest-far.svg');
+    --scene-size: 260px 260px, 640px 90px, 240px 129px, 560px 112px;
+    --scene-repeat: repeat, repeat-x, no-repeat, repeat-x;
+    --scene-from: 0 0, 0 14%, 90% 100%, 0 100%;
+    --scene-to: -260px 780px, -1280px 14%, 90% 100%, 0 100%;
+}
+
+/* Kiṣkindhā: forested hills over Lake Pampā. */
+[data-scene='kishkindha'] {
+    --scene-mask: url('./scenes/clouds.svg'), url('./scenes/birds.svg'), url('./scenes/ripples.svg'), url('./scenes/forest-far.svg'), url('./scenes/mountains.svg');
+    --scene-size: 720px 120px, 640px 90px, 400px 60px, 560px 112px, 800px 170px;
+    --scene-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
+    --scene-from: 0 8%, 0 22%, 0 100%, 0 calc(100% - 10px), 0 calc(100% - 30px);
+    --scene-to: -720px 8%, -1280px 22%, -1200px 100%, 0 calc(100% - 10px), 0 calc(100% - 30px);
+}
+
+/* Sundara: Hanumān in mid-leap, the sea rolling, Laṅkā on its hill ahead. */
+[data-scene='sundara'] {
+    --scene-mask: url('./scenes/clouds.svg'), url('./scenes/leap.svg'), url('./scenes/waves.svg'), url('./scenes/lanka.svg');
+    --scene-size: 720px 120px, 140px 110px, 800px 70px, 200px 111px;
+    --scene-repeat: repeat-x, no-repeat, repeat-x, no-repeat;
+    --scene-from: 0 6%, 18% 30%, 0 100%, 96% calc(100% - 20px);
+    --scene-to: -1440px 6%, 18% 30%, -1600px 100%, 96% calc(100% - 20px);
+}
+
+/* Yuddha: the setu across the sea, dust of the army, Laṅkā at its end. */
+[data-scene='yuddha'] {
+    --scene-duration: 160s;
+    --scene-mask: url('./scenes/dust.svg'), url('./scenes/setu.svg'), url('./scenes/waves.svg'), url('./scenes/lanka.svg');
+    --scene-size: 260px 260px, 800px 50px, 800px 70px, 200px 111px;
+    --scene-repeat: repeat, repeat-x, repeat-x, no-repeat;
+    --scene-from: 0 0, 0 calc(100% - 34px), 0 100%, 98% calc(100% - 24px);
+    --scene-to: -1040px 0, -800px calc(100% - 34px), -1600px 100%, 98% calc(100% - 24px);
+}
+
+/* Uttara: Ayodhyā at peace, petals falling over the city. */
+[data-scene='uttara'] {
+    --scene-duration: 80s;
+    --scene-mask: url('./scenes/petals.svg'), url('./scenes/clouds.svg'), url('./scenes/city.svg');
+    --scene-size: 240px 240px, 720px 120px, 560px 101px;
+    --scene-repeat: repeat, repeat-x, repeat-x;
+    --scene-from: 0 0, 0 8%, 0 100%;
+    --scene-to: 240px 960px, -720px 8%, 0 100%;
+}
