@@ -142,6 +142,14 @@ strongly colour shows in each theme, so a component never needs four copies.
 - **Header and rules**: the current nav link has a dawn underline, the scroll-progress hairline
   and `.section-rule` are the spectrum, the footer opens with a spectrum hairline.
 - **Library books** (`.home-book`) get a wash, spine and glow in the scripture's own colour.
+- **Verse cards** come alive under the hand: the gradient edge turns round the card
+  (`--vc-angle`, a registered property), the verse capsule lifts and glows and the gilt ॥ mark
+  warms. Each study layer has its own hue, in reading order: अर्थ peacock, व्याख्या saffron,
+  आधुनिक संदर्भ indigo, चिंतन lotus, संबंधित ज्ञान tulsī. On the verse page the knowledge tree
+  (`data-branch` on each node) colours its rail, nodes, elbows and panels; an open node is a lit
+  jewel. On the chapter card each `SacredSection` (`data-section`) is led by a jewel in its hue
+  and the joining rail shades through them. Nothing on a reading page loops: every effect
+  follows the pointer, the scroll or a tap.
 
 Reduced motion, the lite, low-power and data-saver modes stop every loop; forced colours and
 print drop the aurora and washes.

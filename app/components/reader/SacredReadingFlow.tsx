@@ -22,7 +22,7 @@ export function SacredSection({
 }) {
   const label = SACRED_SECTION_LABEL[section];
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className="sacred-section">
+    <section id={id} aria-labelledby={`${id}-title`} data-section={section} className="sacred-section">
       <div className="mb-2.5 flex flex-wrap items-center gap-x-2 gap-y-1.5">
         <h3 id={`${id}-title`} className="flex min-w-0 flex-wrap items-baseline gap-x-2">
           <span lang="hi" className="font-devanagari text-subhead font-bold text-dharma-text">

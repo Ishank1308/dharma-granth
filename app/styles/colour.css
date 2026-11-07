@@ -13,7 +13,8 @@
    6. Actions: filled buttons in the dawn gradient, with a glow
    7. Controls: segmented control, fields, selection, scrollbars
    8. Library books: a wash and glow in the scripture's own colour
-   9. Quiet modes, reduced motion, print and forced colours
+   9. Verse cards: a turning edge, a lifting capsule, a hue per study layer
+   10. Quiet modes, reduced motion, print and forced colours
 
    Rules (docs/design-system.md): the exported HTML is the readable state, only transform
    and opacity loop, and reading pages (chapter and verse) keep a still aurora and nothing
@@ -392,7 +393,184 @@ a.apple-card:focus-visible {
     }
 }
 
-/* 9. Quiet modes, reduced motion, print and forced colours ─────────────── */
+/* 9. Verse cards ─────────────────────────────────────────────────────────
+   The verse card already wears its scripture's colours (components.css). Here it comes
+   alive under the hand: the gradient edge turns round the card, the verse capsule lifts
+   and glows, and the gilt mark warms. Reading pages loop nothing: every effect here
+   follows the pointer, the scroll or a tap. */
+@property --vc-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 135deg;
+}
+:is(.verse-card.book-verse, .verse-card.vt, .verse-card.today-verse, .verse-card.single-verse) {
+    --vc-angle: 135deg;
+    background:
+        linear-gradient(var(--surface-raised), var(--surface-raised)) padding-box,
+        linear-gradient(
+                var(--vc-angle),
+                color-mix(in srgb, var(--vc-main) var(--vc-edge-a), transparent),
+                color-mix(in srgb, var(--vc-accent) calc(var(--vc-edge-a) * 0.7), transparent) 55%,
+                color-mix(in srgb, var(--vc-gold) var(--vc-edge-a), transparent)
+            )
+            border-box;
+}
+.verse-card .verse-ref,
+.verse-card .vt-title a,
+.verse-card .verse-mark,
+.verse-card .vt-sa > .vt-num {
+    transition:
+        transform var(--duration-base) var(--motion-spring),
+        box-shadow var(--duration-standard) var(--ease-out),
+        color var(--duration-standard) var(--ease-out);
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+    :is(.verse-card.book-verse, .verse-card.vt, .verse-card.today-verse, .verse-card.single-verse) {
+        transition:
+            --vc-angle var(--duration-slow) var(--ease-in-out),
+            box-shadow var(--duration-base) var(--ease-out);
+    }
+    :is(.verse-card.book-verse, .verse-card.vt, .verse-card.today-verse, .verse-card.single-verse):hover {
+        --vc-angle: 315deg;
+        --vc-edge-a: 80%;
+    }
+    .verse-card:hover :is(.verse-ref, .vt-title a) {
+        transform: translate3d(0, -1px, 0) scale(1.06);
+        box-shadow:
+            0 0 0 4px color-mix(in srgb, var(--vc-main) 14%, transparent),
+            0 8px 18px -6px color-mix(in srgb, var(--vc-main) 75%, transparent);
+    }
+    .verse-card:hover :is(.verse-mark, .vt-sa > .vt-num) {
+        transform: scale(1.08);
+        color: var(--vc-gold);
+    }
+}
+
+/* The study layers: each its own hue, in reading order. अर्थ is peacock (clear water),
+   व्याख्या saffron (the fire of understanding), आधुनिक संदर्भ indigo, चिंतन lotus and
+   संबंधित ज्ञान tulsī. The verse page's knowledge tree colours its rail, nodes, elbows and
+   panels; the chapter card colours its section headings and the rail that joins them. */
+.verse-tree,
+.sacred-flow-wrap,
+.sacred-section {
+    --branch: var(--hue-saffron);
+    --on-branch: var(--color-absolute-white);
+}
+:root:is([data-theme='night'], [data-theme='dark']) :is(.verse-tree, .sacred-flow-wrap) {
+    --on-branch: #1c1917;
+}
+:is([data-branch='arth'], .sacred-section[data-section='arth']) { --branch: var(--hue-peacock); }
+:is([data-branch='vyakhya'], .sacred-section[data-section='vyakhya']) { --branch: var(--hue-saffron); }
+:is([data-branch='modern'], .sacred-section[data-section='modern']) { --branch: var(--hue-indigo); }
+:is([data-branch='reflection'], .sacred-section[data-section='reflection']) { --branch: var(--hue-lotus); }
+:is([data-branch='related'], .sacred-section[data-section='related']) { --branch: var(--hue-tulsi); }
+
+/* Knowledge tree (verse pages). The stem leaves the shloka in its gold. */
+.verse-tree > div[aria-hidden='true']:first-child {
+    width: 3px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--vc-gold, var(--hue-gold)) 80%, transparent), color-mix(in srgb, var(--hue-peacock) 70%, transparent));
+}
+/* Each node's rail runs down in its colour and fades toward the next. */
+.verse-tree [data-branch] > div > span[aria-hidden='true'] {
+    width: 3px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--branch) 70%, transparent), color-mix(in srgb, var(--branch) 18%, transparent));
+}
+.verse-tree [data-branch] > div > details > div > span[aria-hidden='true'],
+.verse-tree [data-branch] > div > div > div > span[aria-hidden='true'] {
+    background-color: color-mix(in srgb, var(--branch) 45%, transparent);
+}
+.verse-tree [data-branch] > .ml-7 > span[aria-hidden='true'] {
+    border-color: color-mix(in srgb, var(--branch) 45%, transparent);
+}
+/* The node: a ring in its colour while folded, a lit jewel while open. */
+.verse-tree [data-branch] > div > details > summary > span:first-child,
+.verse-tree [data-branch] > div > button > span:first-child {
+    border-color: color-mix(in srgb, var(--branch) 60%, transparent);
+    background-color: color-mix(in srgb, var(--branch) 10%, var(--surface-raised));
+    color: var(--branch);
+    transition:
+        transform var(--duration-base) var(--motion-spring),
+        background-color var(--duration-fast) var(--ease-standard),
+        box-shadow var(--duration-standard) var(--ease-out);
+}
+.verse-tree [data-branch] > div > details[open] > summary > span:first-child,
+.verse-tree [data-branch] > div > button[aria-expanded='true'] > span:first-child {
+    border-color: transparent;
+    background-color: var(--branch);
+    background-image: linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--branch) 72%, var(--color-absolute-white)),
+        var(--branch) 55%,
+        color-mix(in srgb, var(--branch) 80%, var(--color-absolute-black))
+    );
+    color: var(--on-branch);
+    box-shadow:
+        0 0 0 4px color-mix(in srgb, var(--branch) 16%, transparent),
+        0 6px 16px -6px color-mix(in srgb, var(--branch) 80%, transparent);
+}
+@media (hover: hover) {
+    .verse-tree [data-branch] > div > details > summary:hover > span:first-child,
+    .verse-tree [data-branch] > div > button:hover > span:first-child {
+        transform: scale(1.1) rotate(-6deg);
+    }
+}
+/* Small English layer names: deepened toward the ink on light themes so they keep AA
+   contrast, the hue at full strength on Rātri. */
+.verse-tree [data-branch] > div > details > summary span[lang='en'],
+.verse-tree [data-branch] > div > button span[lang='en'],
+.sacred-section > div:first-child > h3 > span[lang='en'] {
+    color: color-mix(in srgb, var(--branch) 58%, var(--label-primary));
+}
+:root:is([data-theme='night'], [data-theme='dark']) :is(
+        .verse-tree [data-branch] > div > details > summary span[lang='en'],
+        .verse-tree [data-branch] > div > button span[lang='en'],
+        .sacred-section > div:first-child > h3 > span[lang='en']
+    ) {
+    color: color-mix(in srgb, var(--branch) 85%, var(--label-secondary));
+}
+/* A layer that opens settles into place. Transform only, so nothing is hidden. */
+@keyframes branch-open {
+    from { transform: translate3d(0, -8px, 0); }
+}
+.verse-tree [data-branch] > div > details[open] > div {
+    animation: branch-open var(--duration-base) var(--motion-spring);
+}
+/* Panels inside a layer pick up its colour: a lit top edge and a wash in the corner. */
+.verse-tree .rounded-card.bg-dharma-card {
+    background-image: radial-gradient(120% 70% at 0% 0%, color-mix(in srgb, var(--branch) var(--tone-wash), transparent), transparent 60%);
+    box-shadow:
+        var(--shadow-raised),
+        inset 0 2px 0 color-mix(in srgb, var(--branch) 55%, transparent),
+        inset 0 0 0 1px color-mix(in srgb, var(--branch) 14%, transparent);
+}
+
+/* Chapter card: each section heading is led by a jewel in its colour, its English name
+   takes the colour, and the rail joining व्याख्या → आधुनिक संदर्भ → चिंतन shades through
+   their three hues. */
+.sacred-section > div:first-child > h3 {
+    align-items: center;
+}
+.sacred-section > div:first-child > h3::before {
+    content: '';
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-pill);
+    background-image: linear-gradient(145deg, color-mix(in srgb, var(--branch) 65%, var(--color-absolute-white)), var(--branch));
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--branch) 18%, transparent);
+}
+.sacred-flow {
+    border-left: 3px solid transparent;
+    border-image: linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--hue-saffron) 60%, transparent),
+            color-mix(in srgb, var(--hue-indigo) 50%, transparent) 55%,
+            color-mix(in srgb, var(--hue-lotus) 50%, transparent)
+        )
+        1;
+}
+
+/* 10. Quiet modes, reduced motion, print and forced colours ────────────── */
 :root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) body::before,
 :root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .aura-header {
     animation: none;
@@ -401,7 +579,9 @@ a.apple-card:focus-visible {
     a.apple-card:hover,
     .apple-card-link:hover,
     :is(a, .apple-card-link):hover .apple-tint-chip,
-    :is(.apple-pill, .cta-primary, :is(a, button).bg-dharma-saffron):hover {
+    :is(.apple-pill, .cta-primary, :is(a, button).bg-dharma-saffron):hover,
+    .verse-tree [data-branch] > div > details > summary:hover > span:first-child,
+    .verse-tree [data-branch] > div > button:hover > span:first-child {
         transform: none;
     }
 }

@@ -112,7 +112,8 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
   );
 
   return (
-    <div className="relative">
+    // data-branch names the layer so colour.css can give each its own hue.
+    <div className="relative" data-branch={branch.id}>
       <div className="relative">
         {/* Rail: from this node's circle down to where the next layer branches off */}
         {(open || rest.length > 0) && (
