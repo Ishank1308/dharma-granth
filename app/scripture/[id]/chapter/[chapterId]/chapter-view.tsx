@@ -31,6 +31,7 @@ import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
 import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction';
 import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { sceneAttrs } from '@/lib/chapter-scenes';
+import { chapterPainting } from '@/lib/chapter-paintings';
 import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPart } from '@/lib/chapter-parts';
@@ -338,6 +339,8 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
     'focus-ring inline-flex min-h-[38px] items-center gap-2 rounded-pill border border-separator/80 bg-surface-raised px-4 text-subhead font-medium text-label-primary transition hover:bg-fill-quaternary active:scale-[0.98] shadow-xs';
 
   const vibe = scriptureVibe(meta.id, meta.category);
+  // A full-colour moving picture for chapters without a hand-drawn scene (lib/chapter-paintings.ts).
+  const painting = chapterPainting(meta.id, chapter.id);
 
   const chapterJsonLd = {
     '@context': 'https://schema.org',
@@ -405,7 +408,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   } : undefined;
 
   return (
-    <main data-chapter-reading data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} {...sceneAttrs(meta.id, chapter.id)} className="min-h-screen bg-dharma-bg">
+    <main data-chapter-reading data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} {...sceneAttrs(meta.id, chapter.id)} data-painting={painting} className="min-h-screen bg-dharma-bg">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -414,6 +417,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       {/* A book's chapter opening, as an Apple large title: the chapter, its Sanskrit name and two quiet actions,
           nothing else between the reader and the first verse. The summary lives in "About this chapter" below. */}
       <header className="mx-auto max-w-3xl px-4 pb-4 pt-5 sm:px-6 sm:pb-8 sm:pt-12">
+        {painting && <div className="chapter-painting" aria-hidden="true" />}
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href={`/scripture/${meta.id}`}
