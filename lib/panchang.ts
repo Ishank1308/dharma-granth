@@ -1827,6 +1827,7 @@ export const VARA_DATA: VaraMeta[] = [
     recommendedStotras: [
       { title: 'Aditya Hridaya Stotra (आदित्य हृदय स्तोत्रम्)', href: '/mantras/aditya-hridaya-stotra/' },
       { title: 'Gayatri Mantra (गायत्री मन्त्र)', href: '/mantras/gayatri-mantra/' },
+      { title: 'Navagraha Stotram (नवग्रह स्तोत्रम्)', href: '/mantras/navagraha-stotram/' },
       { title: 'Surya Ashtakam (सूर्याष्टकम्)' },
     ],
     spiritualFocus: 'Atma-bala (soul vitality), overcoming spiritual indolence, selfless leadership, and meditation on the inner spiritual light.',
@@ -2025,6 +2026,7 @@ export const VARA_DATA: VaraMeta[] = [
     recommendedStotras: [
       { title: 'Hanuman Chalisa (हनुमान चालीसा)', href: '/mantras/hanuman-chalisa/' },
       { title: 'Bajrang Baan (बजरंग बाण)', href: '/mantras/bajrang-baan/' },
+      { title: 'Navagraha Stotram (नवग्रह स्तोत्रम्)', href: '/mantras/navagraha-stotram/' },
       { title: 'Maha Mrityunjaya Mantra (महामृत्युंजय मन्त्र)', href: '/mantras/mahamrityunjaya/' },
       { title: 'Dasharatha Shani Stotra (दशरथकृत शनि स्तोत्र)' },
     ],

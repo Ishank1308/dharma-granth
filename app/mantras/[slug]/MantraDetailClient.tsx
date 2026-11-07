@@ -36,11 +36,11 @@ export function MantraDetailClient({ mantra, pageUrl }: { mantra: SacredMantra; 
       <div className="rounded-2xl bg-amber-50/70 dark:bg-amber-950/25 border border-amber-300/40 dark:border-amber-800/40 p-6 sm:p-8 text-center shadow-xs">
         <p
           lang="sa"
-          className="font-devanagari text-2xl sm:text-3xl md:text-4xl font-bold leading-[2.1] text-amber-950 dark:text-amber-100 selection:bg-saffron-500/30"
+          className="font-devanagari text-2xl sm:text-3xl md:text-4xl font-bold leading-[2.1] text-amber-950 dark:text-amber-100 selection:bg-saffron-500/30 whitespace-pre-line"
         >
           {mantra.sanskrit}
         </p>
-        <p className="mt-4 font-serif text-sm sm:text-base italic text-dharma-muted">
+        <p className="mt-4 font-serif text-sm sm:text-base italic text-dharma-muted whitespace-pre-line">
           {mantra.transliteration}
         </p>
       </div>

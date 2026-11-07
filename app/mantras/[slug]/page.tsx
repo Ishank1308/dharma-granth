@@ -7,6 +7,7 @@ import { clipDescription } from '@/lib/meta-text';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { Copy, MessageCircle, ArrowLeft, ArrowRight, BookOpen, Sparkles, Check, ExternalLink } from 'lucide-react';
 import { MantraDetailClient } from './MantraDetailClient';
+import { NavagrahaMandalam } from '../NavagrahaMandalam';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -236,6 +237,9 @@ export default async function MantraDetailPage({ params }: PageProps) {
             </table>
           </div>
         </section>
+
+        {/* Dedicated Navagraha Mandalam breakdown for Navagraha Stotram */}
+        {mantra.slug === 'navagraha-stotram' && <NavagrahaMandalam />}
 
         {/* Spiritual Significance & Contemplation */}
         <section aria-labelledby="significance-heading" className="my-10 rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 space-y-4">

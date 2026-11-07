@@ -1367,6 +1367,209 @@ mahāmoharūpā ca bhavatī mahādevī maheśvarī || 5 ||`,
       },
     ],
   },
+  {
+    id: 'navagraha-stotram',
+    slug: 'navagraha-stotram',
+    title: 'Navagraha Stotram',
+    titleHi: 'नवग्रह स्तोत्रम्',
+    sanskrit: `ॐ सूर्यादि-नवग्रह-स्तोत्रम्
+
+॥ अथ सूर्य ध्यानम् ॥
+जपाकुसुमसंकाशं काश्यपेयं महाद्युतिम् ।
+तमोऽरिं सर्वपापघ्नं प्रणतोऽस्मि दिवाकरम् ॥ 1 ॥
+
+॥ अथ चन्द्र ध्यानम् ॥
+दधिशङ्खतुषाराभं क्षीरोदार्णवसम्भवम् ।
+नमामि शशिनं सोमं शम्भोर्मुकुटभूषणम् ॥ 2 ॥
+
+॥ अथ मङ्गल ध्यानम् ॥
+धरणीगर्भसम्भूतं विद्युत्कान्तिसमप्रभम् ।
+कुमारं शक्तिहस्तं च मङ्गलं प्रणमाम्यहम् ॥ 3 ॥
+
+॥ अथ बुध ध्यानम् ॥
+प्रियङ्गुकलिकाश्यामं रूपेणाप्रतिमं बुधम् ।
+सौम्यं सौम्यगुणोपेतं तं बुधं प्रणमाम्यहम् ॥ 4 ॥
+
+॥ अथ गुरु ध्यानम् ॥
+देवानां च ऋषीणां च गुरुं काञ्चनसंनिभम् ।
+बुद्धिभूतं त्रिलोकेशं तं नमामि बृहस्पतिम् ॥ 5 ॥
+
+॥ अथ शुक्र ध्यानम् ॥
+हिमकुन्दमृणालाभं दैत्यानां परमं गुरुम् ।
+सर्वशास्त्रप्रवक्तारं भार्गवं प्रणमाम्यहम् ॥ 6 ॥
+
+॥ अथ शनि ध्यानम् ॥
+नीलाञ्जनसमाभासं रविपुत्रं यमाग्रजम् ।
+छायामार्तण्डसम्भूतं तं नमामि शनैश्चरम् ॥ 7 ॥
+
+॥ अथ राहु ध्यानम् ॥
+अर्धकायं महावीर्यं चन्द्रादित्यविमर्दनम् ।
+सिंहिकागर्भसम्भूतं तं राहुं प्रणमाम्यहम् ॥ 8 ॥
+
+॥ अथ केतु ध्यानम् ॥
+पलाशपुष्पसंकाशं तारकाग्रहमस्तकम् ।
+रौद्रं रौद्रात्मकं घोरं तं केतुं प्रणमाम्यहम् ॥ 9 ॥
+
+॥ अथ फलश्रुति ॥
+इति व्यासमुखोद्गीतं यः पठेत् सुसमाहितः ।
+दिवा वा यदि वा रात्रौ विघ्नशान्तिर्भविष्यति ॥ 10 ॥
+नरनारीनृपाणां च भवेद् दुःस्वप्ननाशनम् ।
+ऐश्वर्यमतुलं तेषामारोग्यं पुष्टिवर्धनम् ॥ 11 ॥`,
+    transliteration: `oṃ sūryādi-navagraha-stotram
+
+|| atha sūrya dhyānam ||
+japākusumasaṃkāśaṃ kāśyapeyaṃ mahādyutim |
+tamo'riṃ sarvapāpaghnaṃ praṇato'smi divākaram || 1 ||
+
+|| atha candra dhyānam ||
+dadhiśaṅkhatuṣārābhaṃ kṣīrodārṇavasambhavam |
+namāmi śaśinaṃ somaṃ śambhormukuṭabhūṣaṇam || 2 ||
+
+|| atha maṅgala dhyānam ||
+dharaṇīgarbhasambhūtaṃ vidyutkāntisamaprabham |
+kumāraṃ śaktihastaṃ ca maṅgalaṃ praṇamāmyaham || 3 ||
+
+|| atha budha dhyānam ||
+priyaṅgukalikāśyāmaṃ rūpeṇāpratimaṃ budham |
+saumyaṃ saumyaguṇopetaṃ taṃ budhaṃ praṇamāmyaham || 4 ||
+
+|| atha guru dhyānam ||
+devānāṃ ca ṛṣīṇāṃ ca guruṃ kāñcanasaṃnibham |
+buddhibhūtaṃ trilokeśaṃ taṃ namāmi bṛhaspatim || 5 ||
+
+|| atha śukra dhyānam ||
+himakundamṛṇālābhaṃ daityānāṃ paramaṃ gurum |
+sarvaśāstrapravaktāraṃ bhārgavaṃ praṇamāmyaham || 6 ||
+
+|| atha śani dhyānam ||
+nīlāñjanasamābhāsaṃ raviputraṃ yamāgrajam |
+chāyāmārtaṇḍasambhūtaṃ taṃ namāmi śanaiścaram || 7 ||
+
+|| atha rāhu dhyānam ||
+ardhakāyaṃ mahāvīryaṃ candrādityavimardanam |
+siṃhikāgarbhasambhūtaṃ taṃ rāhuṃ praṇamāmyaham || 8 ||
+
+|| atha ketu dhyānam ||
+palāśapuṣpasaṃkāśaṃ tārakāgrahamastakam |
+raudraṃ raudrātmakaṃ ghoraṃ taṃ ketuṃ praṇamāmyaham || 9 ||
+
+|| atha phalaśruti ||
+iti vyāsamukhodgītaṃ yaḥ paṭhet susamāhitaḥ |
+divā vā yadi vā rātrau vighnaśāntirbhaviṣyati || 10 ||
+naranārīnṛpāṇāṃ ca bhaved duḥsvapnanāśanam |
+aiśvaryamatulaṃ teṣāmārogyaṃ puṣṭivardhanam || 11 ||`,
+    category: 'stotra',
+    categoryLabel: 'Navagraha Stotra',
+    categoryLabelHi: 'नवग्रह स्तोत्र पाठ',
+    rishi: 'महर्षि वेदव्यास (Maharshi Veda Vyasa)',
+    devata: 'नवग्रह मण्डल (Nine Celestial Regents)',
+    chhandas: 'अनुष्टुप् (Anushtup)',
+    source: 'Brahmanda Purana / Navagraha Smriti',
+    sourceCoordinates: 'Maharshi Veda Vyasa Virachitam Navagraha Stotram, Shlokas 1–11',
+    sourceHref: '/panchang/varas/',
+    wordMeanings: [
+      {
+        sanskrit: 'जपाकुसुमसंकाशं काश्यपेयम्',
+        iast: 'japākusumasaṃkāśaṃ kāśyapeyam',
+        hindi: 'जपा (गुड़हल) के पुष्प के समान लाल कान्ति वाले, महर्षि कश्यप के पुत्र सूर्यदेव',
+        english: 'Resplendent like the red hibiscus flower, born of Sage Kashyapa',
+      },
+      {
+        sanskrit: 'तमोऽरिं सर्वपापघ्नं दिवाकरम्',
+        iast: 'tamo\'riṃ sarvapāpaghnaṃ divākaram',
+        hindi: 'अन्धकार के शत्रु, समस्त पापों का नाश करने वाले तथा दिन को रचने वाले सूर्यदेव',
+        english: 'The vanquisher of darkness, destroyer of all sins, the creator of daylight',
+      },
+      {
+        sanskrit: 'दधिशङ्खतुषाराभं क्षीरोदार्णवसम्भवम्',
+        iast: 'dadhiśaṅkhatuṣārābhaṃ kṣīrodārṇavasambhavam',
+        hindi: 'दही, शंख और हिम के समान शीतल श्वेत आभा वाले तथा क्षीरसागर मंथन से प्रकट चन्द्रमा',
+        english: 'Possessing the serene white hue of curd, conch, and snow, born from the Ocean of Milk',
+      },
+      {
+        sanskrit: 'शशिनं सोमं शम्भोर्मुकुटभूषणम्',
+        iast: 'śaśinaṃ somaṃ śambhormukuṭabhūṣaṇam',
+        hindi: 'चन्द्रमा सोमदेव, जो भगवान् सदाशिव के मस्तक का पावन मुकुट-आभूषण हैं',
+        english: 'Soma (the Moon), who shines as the crest jewel upon Lord Shiva\'s crown',
+      },
+      {
+        sanskrit: 'धरणीगर्भसम्भूतं विद्युत्कान्तिसमप्रभम्',
+        iast: 'dharaṇīgarbhasambhūtaṃ vidyutkāntisamaprabham',
+        hindi: 'पृथ्वी माता के गर्भ से प्रकट, तड़ित् (बिजली) के समान चमकीले तेज वाले मङ्गल देव',
+        english: 'Born from the womb of Mother Earth, radiating brilliance like lightning flashes',
+      },
+      {
+        sanskrit: 'कुमारं शक्तिहस्तं च मङ्गलम्',
+        iast: 'kumāraṃ śaktihastaṃ ca maṅgalam',
+        hindi: 'सदा तेजस्वी युवा स्वरूप और हाथ में ‘शक्ति’ आयुध धारण करने वाले मङ्गल ग्रह',
+        english: 'Youthful and valiant, bearing the divine lance (Shakti) in his hand',
+      },
+      {
+        sanskrit: 'प्रियङ्गुकलिकाश्यामं सौम्यगुणोपेतम्',
+        iast: 'priyaṅgukalikāśyāmaṃ saumyaguṇopetam',
+        hindi: 'प्रियंगु की कली के समान श्यामल-हरित कान्ति वाले तथा शान्त व कल्याणकारी गुणों से युक्त बुधदेव',
+        english: 'Having the dark emerald glow of priyangu buds, endowed with gentle and benign qualities',
+      },
+      {
+        sanskrit: 'देवानां च ऋषीणां च गुरुं बुद्धिभूतम्',
+        iast: 'devānāṃ ca ṛṣīṇāṃ ca guruṃ buddhibhūtam',
+        hindi: 'समस्त देवताओं एवं महर्षियों के परम गुरु, साक्षात् बुद्धि एवं विवेक के स्वरूप बृहस्पति',
+        english: 'The preceptor of deities and sages, the personification of supreme wisdom and intellect',
+      },
+      {
+        sanskrit: 'हिमकुन्दमृणालाभं सर्वशास्त्रप्रवक्तारम्',
+        iast: 'himakundamṛṇālābhaṃ sarvaśāstrapravaktāram',
+        hindi: 'बर्फ, कुन्द पुष्प और कमल-नाल जैसे धवल कान्ति वाले, समस्त शास्त्रों के अद्वितीय वक्ता शुक्राचार्य',
+        english: 'Radiant like snow, white kunda blossoms, and lotus fibres, the master expositor of all sacred lores',
+      },
+      {
+        sanskrit: 'नीलाञ्जनसमाभासं छायामार्तण्डसम्भूतम्',
+        iast: 'nīlāñjanasamābhāsaṃ chāyāmārtaṇḍasambhūtam',
+        hindi: 'नीले काजल के समान कान्ति वाले, सूर्यदेव और माता छाया के पुत्र शनैश्चर',
+        english: 'Luminous like dark blue collyrium, born of Surya and Mother Chhaya, Lord Saturn',
+      },
+      {
+        sanskrit: 'अर्धकायं चन्द्रादित्यविमर्दनम्',
+        iast: 'ardhakāyaṃ candrādityavimardanam',
+        hindi: 'आधे शरीर वाले, अपनी छाया शक्ति से सूर्य और चन्द्रमा का ग्रहण करने वाले राहु',
+        english: 'Possessing half a body of vast strength, the shadow force capable of subduing Sun and Moon',
+      },
+      {
+        sanskrit: 'पलाशपुष्पसंकाशं तारकाग्रहमस्तकम्',
+        iast: 'palāśapuṣpasaṃkāśaṃ tārakāgrahamastakam',
+        hindi: 'पलाश के लाल पुष्प जैसी आभा वाले, नक्षत्रों और ग्रहों के ध्वज-शिरोमणि केतु',
+        english: 'Resplendent like red palasha blossoms, the fiery crest-point of celestial bodies',
+      },
+      {
+        sanskrit: 'व्यासमुखोद्गीतं विघ्नशान्तिर्भविष्यति',
+        iast: 'vyāsamukhodgītaṃ vighnaśāntirbhaviṣyati',
+        hindi: 'महर्षि वेदव्यास के मुख से उद्भूत इस स्तोत्र का पाठ करने से समस्त विघ्नों की शान्ति होती है',
+        english: 'Sung by Maharshi Vyasa; reciting it pacifies all obstacles and brings boundless health and vitality',
+      },
+    ],
+    hindiMeaning: 'महर्षि वेदव्यास द्वारा विरचित नवग्रह स्तोत्र में नौ आकाशीय ग्रहों की पावन स्तुति की गई है: 1. गुड़हल के पुष्प जैसे लाल, महर्षि कश्यप के पुत्र, अन्धकार के शत्रु और समस्त पापों का नाश करने वाले सूर्यदेव को मैं प्रणाम करता हूँ। 2. दही, शंख और हिम के समान धवल, क्षीरसागर मंथन से प्रकट और भगवान् शिव के मस्तक के आभूषण चन्द्रमा को मेरा नमन। 3. पृथ्वी माता के गर्भ से उत्पन्न, बिजली जैसी प्रभा वाले और शक्ति-अस्त्र धारी मङ्गल को मैं प्रणाम करता हूँ। 4. प्रियंगु की कली जैसे श्यामल-हरित, अनुपम सौन्दर्य वाले और सौम्य गुणों से युक्त बुधदेव को मेरा नमन। 5. देवताओं और ऋषियों के गुरु, स्वर्ण-कान्ति वाले और बुद्धि-स्वरूप बृहस्पति को मैं प्रणाम करता हूँ। 6. बर्फ और कुन्द पुष्प के समान श्वेत, समस्त शास्त्रों के ज्ञाता भृगु-पुत्र शुक्राचार्य को मेरा प्रणाम। 7. नीले काजल जैसी कान्ति वाले, सूर्य-पुत्र और यमराज के ज्येष्ठ भ्राता शनिदेव को मेरा नमन। 8. आधे शरीर वाले, महापराक्रमी और सिंहिका-पुत्र राहु को मेरा प्रणाम। 9. पलाश-पुष्प जैसे और नक्षत्रों में शिरोमणि केतु को मैं प्रणाम करता हूँ। जो मनुष्य एकाग्रचित्त होकर व्यास जी के इस स्तोत्र का पाठ करता है, उसके दिन-रात के सभी विघ्न शान्त हो जाते हैं, दुःस्वप्न दूर होते हैं और अतुल ऐश्वर्य, आरोग्य व पुष्टि प्राप्त होती है।',
+    englishMeaning: 'Composed by Maharshi Veda Vyasa, the Navagraha Stotram is the sacred cosmic salutation to the nine planetary regents: 1. To Surya: Resplendent as the red hibiscus flower, born of Sage Kashyapa, vanquisher of darkness, and remover of all sins, I bow to the creator of daylight. 2. To Chandra: Luminous like curd, conch, and snow, born from the churning of the Ocean of Milk, and adorning Lord Shiva\'s crest, I bow to the Moon. 3. To Mangala: Born from the womb of Mother Earth, shining with the brilliance of lightning, youthful and holding the divine lance, I bow to Mars. 4. To Budha: Dark-hued like the priyangu blossom, of peerless form, gentle and endowed with serene virtues, I bow to Mercury. 5. To Brihaspati: Preceptor of gods and sages, golden in radiance, the embodiment of wisdom, ruler of the three worlds, I bow to Jupiter. 6. To Shukra: Pure white like snow, kunda blossoms, and lotus stalks, spiritual guide of the Daityas, master of all sacred sciences, I bow to Bhrigu\'s son. 7. To Shani: Radiant like dark blue collyrium, son of Surya and Chhaya, elder brother of Yama, I bow to the slow-moving Saturn. 8. To Rahu: Of half-body yet immense valor, capable of subduing the Sun and Moon, born of Simhika, I bow to Rahu. 9. To Ketu: Reddish like palasha flowers, crest of the starry host, fierce and potent, I bow to Ketu. Whoever recites this hymn composed by Vyasa with a focused mind, by day or by night, will find all obstacles pacified, nightmares dispelled, and will attain matchless abundance, health, and vitality.',
+    significance: 'The Navagraha Stotram is the quintessential Vedic hymn for cosmic harmony and planetary peace (Graha Shanti). According to Vedic wisdom, the nine celestial bodies are not arbitrary physical masses but cosmic functionaries (Karmaphala-datri devatas) reflecting a seeker\'s own accumulated karma. By reciting these nine verses composed by Maharshi Vyasa, a practitioner transforms discordant planetary vibrations into spiritual grace—awakening Surya\'s vitality, Chandra\'s emotional equanimity, Mangala\'s righteous courage, Budha\'s discernment, Brihaspati\'s higher wisdom, Shukra\'s refinement, Shani\'s profound endurance, Rahu\'s unconventional insight, and Ketu\'s transcendent detachment.',
+    significanceHi: 'नवग्रह स्तोत्र सनातन परम्परा का सर्वाधिक प्रमाणिक और प्रभावशाली ग्रह-शान्ति पाठ है। महर्षि वेदव्यास ने महाभारत और पुराणों की रचना के पश्चात् जीवात्मा के प्रारब्ध कर्मों और आकाशीय शक्तियों के सन्तुलन हेतु यह स्तोत्र प्रकट किया। वैदिक ज्योतिष में नौ ग्रह वास्तव में मनुष्य के संचित और क्रियमाण कर्मों के फलप्रदाता आकाशीय दूत हैं। जब कोई साधक इस स्तोत्र का पाठ करता है, तो ग्रहों के प्रतिकूल प्रभाव शान्त होते हैं तथा उनके सात्त्विक गुणों (जैसे सूर्य का आत्मबल, चन्द्र की मानसिक शान्ति, मङ्गल का धैर्य, बुध का विवेक, गुरु का ज्ञान, शुक्र का सौन्दर्य, शनि का अनुशासन, राहु की अन्वेषण शक्ति और केतु का वैराग्य) का जीवन में उदय होता है।',
+    faqs: [
+      {
+        question: 'Who composed the Navagraha Stotram and what is its scriptural context?',
+        answer: 'The Navagraha Stotram was composed by Maharshi Veda Vyasa, the compiler of the Vedas and author of the Mahabharata and Puranas, as a universal prayer for cosmic peace and planetary harmony.',
+      },
+      {
+        question: 'What are the best times and methods for reciting the Navagraha Stotram?',
+        answer: 'It is ideally chanted during Brahma Muhurta, at sunrise (Surya Udaya), or during evening twilight (Sandhya). It can be recited daily for general well-being, or on specific weekdays corresponding to individual planets for targeted Graha Shanti.',
+      },
+      {
+        question: 'How does the Navagraha Stotram relate to the Panchanga and 7 Varas?',
+        answer: 'The seven primary planetary regents govern the seven days of the Vedic week (Ravivara to Shanivara), while Rahu and Ketu govern the north and south lunar nodes that mark eclipses. Reciting this hymn harmonizes the five limbs of Panchanga with the seeker\'s daily spiritual journey.',
+      },
+      {
+        question: 'Can this stotra be recited without an astrological horoscope (kundali)?',
+        answer: 'Yes. Maharshi Vyasa composed this stotra with universal goodwill (Sarva-hita). Reciting it with reverence benefits every individual, providing peace of mind, dispelling nightmares, and shielding against negative atmospheric and psychological influences.',
+      },
+    ],
+  },
 ];
 
 export function getMantraBySlug(slug: string): SacredMantra | undefined {

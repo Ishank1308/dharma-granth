@@ -104,4 +104,7 @@ assert.ok(somavara, 'searching somavara should direct to /panchang/varas/somavar
 const shanivara = searchCoreIndex('shanivara').find(({ item }) => item.href === '/panchang/varas/shanivara/');
 assert.ok(shanivara, 'searching shanivara should direct to /panchang/varas/shanivara/');
 
+const navagraha = searchCoreIndex('navagraha').find(({ item }) => item.href === '/mantras/navagraha-stotram/');
+assert.ok(navagraha, 'searching navagraha should find navagraha-stotram');
+
 console.log('search query checks passed');
