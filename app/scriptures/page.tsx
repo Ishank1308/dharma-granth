@@ -144,24 +144,25 @@ export default function ScripturesPage() {
               <Link
                 key={item.id}
                 href={item.href}
-                className="group flex flex-col justify-between rounded-xl border border-dharma-border bg-dharma-card/90 p-4 transition-all hover:border-saffron-400 hover:shadow-md hover:-translate-y-0.5"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-card border border-dharma-border bg-dharma-card p-5 pl-7 shadow-xs transition-all hover:border-saffron-400 hover:shadow-raised hover:-translate-y-0.5"
               >
+                <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-saffron-500 rounded-l-card" />
                 <div>
                   <div className="flex items-center justify-between text-2xs mb-2">
-                    <span className="rounded-full bg-saffron-100 px-2 py-0.5 font-bold text-saffron-800 dark:bg-saffron-900/40 dark:text-saffron-300">
+                    <span className="rounded-full bg-saffron-500/15 border border-saffron-500/30 px-2 py-0.5 font-bold text-saffron-800 dark:text-saffron-300">
                       {item.badge}
                     </span>
-                    <span className="text-dharma-muted font-medium">{item.tag}</span>
+                    <span className="text-dharma-muted font-medium text-[11px]">{item.tag}</span>
                   </div>
-                  <h3 className="text-sm font-serif font-bold text-dharma-text group-hover:text-saffron-700 transition">
+                  <h3 className="font-serif text-title-3 font-semibold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-400 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-xs text-dharma-muted line-clamp-2 leading-relaxed">
+                  <p className="mt-1.5 text-xs text-dharma-muted line-clamp-2 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
-                <div className="mt-3 flex items-center justify-end text-xs font-semibold text-saffron-700 group-hover:translate-x-1 transition-transform">
-                  पढ़ें &rarr;
+                <div className="mt-4 flex items-center justify-end text-xs font-semibold text-saffron-700 dark:text-saffron-400 group-hover:translate-x-1 transition-transform">
+                  पढ़ें <span aria-hidden="true">&nbsp;›</span>
                 </div>
               </Link>
             ))}

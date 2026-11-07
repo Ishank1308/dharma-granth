@@ -17,15 +17,22 @@ import {
   Flame,
   Globe,
   Heart,
+  HelpCircle,
+  History,
   Home,
+  Layers,
+  MapPin,
   Menu,
   Moon,
   Search,
   Settings2,
+  Share2,
   Sparkles,
   Star,
   Sun,
   Sunset,
+  Users,
+  FileText,
   X,
 } from 'lucide-react';
 import { usePresence } from '@/app/components/motion/usePresence';
@@ -79,43 +86,53 @@ const desktopPrimaryItems = [
 
 interface DiscoveryGroup {
   name: string;
+  nameEn: string;
+  icon: typeof Compass;
   items: Array<{
     label: string;
     description: string;
     href: string;
+    icon: typeof BookOpen;
   }>;
 }
 
 const discoveryGroups: DiscoveryGroup[] = [
   {
-    name: 'पठन व संवाद · Scripture & Dialogue',
+    name: 'स्वाध्याय व मार्गदर्शन',
+    nameEn: 'Study & Guidance',
+    icon: Compass,
     items: [
-      { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra/' },
-      { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask/' },
-      { label: 'दैनिक श्लोक', description: 'Daily Verse — आज का श्लोक WhatsApp पर भेजें', href: '/daily-verse/' },
-      { label: 'श्लोक संबंध जाल', description: 'Verse Relationship Network — गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network/' },
-      { label: 'गीता संकल्प साधना', description: '18-दिवसीय व 365-दिवसीय गीता पारायण', href: '/practice/gita-sankalpa/' },
+      { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत व सरल व्याख्या', href: '/ashtavakra/', icon: Flame },
+      { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'उद्वेग, भय व क्रोध का शास्त्रीय समाधान', href: '/wisdom-for-life/', icon: Compass },
+      { label: 'ज्ञान मार्ग', description: 'भाव, प्रश्न व संत से शास्त्र तक', href: '/wisdom-pathways/', icon: Sparkles },
+      { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask/', icon: HelpCircle },
+      { label: 'दैनिक श्लोक', description: 'आज का श्लोक WhatsApp पर साझा करें', href: '/daily-verse/', icon: Sun },
+      { label: 'गीता संकल्प साधना', description: '18-दिवसीय व 365-दिवसीय गीता पारायण', href: '/practice/gita-sankalpa/', icon: Clock },
     ],
   },
   {
-    name: 'जीवन, मुहूर्त व मन्त्र · Life, Muhurta & Mantras',
+    name: 'वैदिक संदर्भ',
+    nameEn: 'Vedic Reference',
+    icon: Layers,
     items: [
-      { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'उद्वेग, भय, क्रोध व धर्मसंकट का शास्त्रीय समाधान', href: '/wisdom-for-life/' },
-      { label: 'वैदिक मुहूर्त निर्णय', description: 'पंचांग शुद्धि, ताराबल व चन्द्रबल', href: '/panchang/muhurta/' },
-      { label: 'वैदिक मन्त्र व शान्ति पाठ', description: 'Sacred Mantras — पदच्छेद, शब्दार्थ व भावार्थ', href: '/mantras/' },
-      { label: 'ज्ञान मार्ग', description: 'Wisdom Pathways — भाव, प्रश्न व संत से शास्त्र तक', href: '/wisdom-pathways/' },
-      { label: 'अनुष्ठान व विधियाँ', description: 'वैदिक विधियाँ और नित्य परंपराएँ', href: '/rituals/' },
+      { label: 'वैदिक मन्त्र व शान्ति पाठ', description: 'Sacred Mantras — पदच्छेद, शब्दार्थ व भावार्थ', href: '/mantras/', icon: Sparkles },
+      { label: 'श्लोक संबंध जाल', description: 'गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network/', icon: Share2 },
+      { label: 'अवधारणाएँ', description: 'मुख्य दार्शनिक विचार व तत्व ज्ञान', href: '/concepts/', icon: FileText },
+      { label: 'पात्र', description: 'कथाओं के प्रमुख चरित्र', href: '/characters/', icon: Users },
+      { label: 'स्थान व तीर्थ', description: 'पवित्र और ऐतिहासिक तीर्थ स्थल', href: '/locations/', icon: MapPin },
+      { label: 'कालखंड', description: 'समयरेखा और वैदिक परंपरा', href: '/timelines/', icon: History },
+      { label: 'स्रोत पारदर्शिता', description: 'मूल पांडुलिपियाँ व संदर्भ ग्रंथ सूची', href: '/sources/', icon: BookOpen },
     ],
   },
   {
-    name: 'दर्शन, इतिहास व स्रोत · Heritage & Sources',
+    name: 'पंचांग व पर्व',
+    nameEn: 'Panchang & Festivals',
+    icon: Calendar,
     items: [
-      { label: 'अवधारणाएँ', description: 'मुख्य दार्शनिक विचार व तत्व ज्ञान', href: '/concepts/' },
-      { label: 'उत्सव व पर्व', description: 'प्रमुख पर्व और उनका शास्त्रीय अर्थ', href: '/festivals/' },
-      { label: 'पात्र व समयरेखा', description: 'कथाओं के प्रमुख चरित्र व कालखंड', href: '/characters/' },
-      { label: 'स्थान व तीर्थ', description: 'पवित्र और ऐतिहासिक तीर्थ स्थल', href: '/locations/' },
-      { label: 'स्रोत पारदर्शिता', description: 'मूल पांडुलिपियाँ व संदर्भ ग्रंथ सूची', href: '/sources/' },
-      { label: 'सहयोग व सेवा', description: 'प्रत्यक्ष UPI व QR द्वारा धर्म ग्रंथ का संवर्धन', href: '/contribute/' },
+      { label: 'वैदिक मुहूर्त निर्णय', description: 'पंचांग शुद्धि, ताराबल व चन्द्रबल', href: '/panchang/muhurta/', icon: Clock },
+      { label: 'उत्सव ज्ञान केंद्र', description: 'प्रमुख पर्व और उनका शास्त्रीय अर्थ', href: '/festivals/', icon: Star },
+      { label: 'अनुष्ठान व विधियाँ', description: 'वैदिक विधियाँ और नित्य परंपराएँ', href: '/rituals/', icon: Flame },
+      { label: 'सहयोग व सेवा', description: 'प्रत्यक्ष UPI व QR द्वारा धर्म ग्रंथ का संवर्धन', href: '/contribute/', icon: Heart },
     ],
   },
 ];
@@ -642,33 +659,45 @@ export function SiteNav({
                       className="chrome-pop absolute right-0 top-[calc(100%+0.75rem)] w-[46rem] max-w-[calc(100vw-2rem)] max-h-[calc(100dvh-4.5rem)] overflow-y-auto rounded-2xl border border-dharma-border bg-dharma-card p-4 shadow-2xl z-50 divide-y divide-dharma-border/60"
                     >
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 pb-3">
-                        {discoveryGroups.map((group) => (
-                          <div key={group.name} className="space-y-1">
-                            <p className="px-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300">
-                              {group.name}
-                            </p>
-                            <div className="space-y-0.5">
-                              {group.items.map((item) => (
-                                <Link
-                                  key={item.href}
-                                  href={item.href}
-                                  className={`block rounded-lg px-2.5 py-1.5 transition-colors ${
-                                    isActive(item.href)
-                                      ? 'bg-saffron-50 text-saffron-800 dark:bg-saffron-950/40 dark:text-saffron-300'
-                                      : 'hover:bg-dharma-bg'
-                                  }`}
-                                >
-                                  <span className="block text-xs font-bold text-dharma-text">
-                                    {item.label}
-                                  </span>
-                                  <span className="mt-0.5 block text-[11px] text-dharma-muted line-clamp-1">
-                                    {item.description}
-                                  </span>
-                                </Link>
-                              ))}
+                        {discoveryGroups.map((group) => {
+                          const GroupIcon = group.icon;
+                          return (
+                            <div key={group.name} className="space-y-1.5">
+                              <div className="flex items-center gap-1.5 px-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300">
+                                <GroupIcon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                                <span>{group.name}</span>
+                              </div>
+                              <div className="space-y-0.5">
+                                {group.items.map((item) => {
+                                  const ItemIcon = item.icon;
+                                  return (
+                                    <Link
+                                      key={item.href}
+                                      href={item.href}
+                                      className={`group flex items-start gap-2.5 rounded-lg px-2.5 py-1.5 transition-colors ${
+                                        isActive(item.href)
+                                          ? 'bg-saffron-50 text-saffron-800 dark:bg-saffron-950/40 dark:text-saffron-300'
+                                          : 'hover:bg-dharma-bg'
+                                      }`}
+                                    >
+                                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center text-dharma-muted group-hover:text-saffron-600">
+                                        <ItemIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                                      </span>
+                                      <div className="min-w-0 flex-1">
+                                        <span className="block text-xs font-bold text-dharma-text">
+                                          {item.label}
+                                        </span>
+                                        <span className="mt-0.5 block text-[11px] text-dharma-muted line-clamp-1">
+                                          {item.description}
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  );
+                                })}
+                              </div>
                             </div>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                       <div className="pt-2.5 flex flex-wrap items-center justify-between gap-1.5 px-1">
                         <div className="flex flex-wrap gap-1.5">
@@ -1099,40 +1128,56 @@ export function SiteNav({
                   </div>
                 </section>
 
-                {/* Discovery Quick Links */}
-                <section aria-labelledby="drawer-discover-heading" className="pt-2">
-                  <h3
-                    id="drawer-discover-heading"
-                    className="mb-2 px-1 text-[11px] font-bold uppercase tracking-wider text-dharma-muted"
-                  >
-                    अन्वेषण व ज्ञान विषय · Explore
-                  </h3>
-                  <div className="space-y-3">
-                    {discoveryGroups.map((group) => (
-                      <div key={group.name} className="space-y-1.5">
-                        <p className="text-[10.5px] font-semibold text-saffron-700 dark:text-saffron-300 uppercase tracking-wider px-1">
-                          {group.name}
-                        </p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {group.items.map((item) => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              onClick={handleCloseDrawer}
-                              className={`inline-flex min-h-[40px] items-center rounded-xl border px-3 py-1.5 text-xs font-semibold transition active:scale-95 ${
-                                isActive(item.href)
-                                  ? 'border-saffron-400 bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 font-bold'
-                                  : 'border-dharma-border/80 bg-dharma-bg text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
-                              }`}
-                            >
-                              {item.label}
-                            </Link>
-                          ))}
-                        </div>
+                {/* De-duplicated Reference Links */}
+                {(() => {
+                  const drawerHrefs = new Set(drawerSections.map((s) => s.href));
+                  const groupsWithUniqueItems = discoveryGroups
+                    .map((group) => ({
+                      ...group,
+                      items: group.items.filter((item) => !drawerHrefs.has(item.href)),
+                    }))
+                    .filter((group) => group.items.length > 0);
+
+                  return (
+                    <section aria-labelledby="drawer-discover-heading" className="pt-2">
+                      <h3
+                        id="drawer-discover-heading"
+                        className="mb-2 px-1 text-[11px] font-bold uppercase tracking-wider text-dharma-muted"
+                      >
+                        अतिरिक्त संदर्भ व साधन · More Reference
+                      </h3>
+                      <div className="space-y-3">
+                        {groupsWithUniqueItems.map((group) => {
+                          const GroupIcon = group.icon;
+                          return (
+                            <div key={group.name} className="space-y-1.5">
+                              <div className="flex items-center gap-1.5 px-1 text-[10.5px] font-semibold text-saffron-700 dark:text-saffron-300 uppercase tracking-wider">
+                                <GroupIcon className="h-3 w-3" aria-hidden="true" />
+                                <span>{group.name}</span>
+                              </div>
+                              <div className="flex flex-wrap gap-1.5">
+                                {group.items.map((item) => (
+                                  <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    onClick={handleCloseDrawer}
+                                    className={`inline-flex min-h-[38px] items-center rounded-xl border px-3 py-1.5 text-xs font-semibold transition active:scale-95 ${
+                                      isActive(item.href)
+                                        ? 'border-saffron-400 bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 font-bold'
+                                        : 'border-dharma-border/80 bg-dharma-bg text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
+                                    }`}
+                                  >
+                                    {item.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
-                    ))}
-                  </div>
-                </section>
+                    </section>
+                  );
+                })()}
 
                 <div className="pt-3 text-center border-t border-dharma-border/60">
                   <p className="font-devanagari text-xs text-dharma-muted">

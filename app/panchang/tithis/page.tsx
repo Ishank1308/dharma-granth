@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { UNIQUE_TITHI_ARCHETYPES } from '@/lib/panchang';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { Moon, Sun, ArrowRight, BookOpen, Sparkles, Calendar, Layers, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -116,7 +117,6 @@ export default function TithisHubPage() {
     <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
       />
 
@@ -126,6 +126,8 @@ export default function TithisHubPage() {
           { label: '16 Vedic Tithis' },
         ]}
       />
+
+      <PanchangLimbSwitcher activeLimb="tithis" />
 
       {/* Hero Header */}
       <section className="relative overflow-hidden bg-gradient-to-b from-amber-950/20 via-saffron-950/10 to-transparent pt-10 pb-12 border-b border-dharma-border">

@@ -62,7 +62,7 @@ export function SiteFooter() {
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-content px-5 pb-10 pt-8 text-xs leading-relaxed sm:px-6">
+      <div className="mx-auto max-w-content px-5 pb-24 pt-8 text-xs leading-relaxed sm:px-6 lg:pb-10">
         <p className="border-b border-dharma-text/10 pb-5">
           <span lang="sa" className="text-subhead text-dharma-text">
             सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ।

@@ -49,15 +49,68 @@ import { reviewStatusForHref } from '@/lib/review-badges';
 import { EDITORIAL_DRAFT_LABEL, STUDY_TRANSLATION_SHORT } from '@/lib/editorial-terminology';
 import { REVIEW_RECORDS } from '@/data/review-records';
 import { useTheme } from '@/app/components/ThemeProvider';
-import {
-  setSoundscapeTrack,
-  toggleSoundscape,
-  strikeTempleBell,
-  getSoundscapeState,
-} from '@/lib/sacred-soundscape';
 import { triggerPranaToast } from '@/lib/prana-capsule-store';
 import { executeSearchWithWorker } from '@/lib/workers/search-worker-client';
 import { useConnectivity } from '@/lib/useConnectivity';
+
+export interface DirectVerseShortcut {
+  scriptureId: string;
+  scriptureTitle: string;
+  scriptureTitleHi: string;
+  chapter: number;
+  verse: number;
+  href: string;
+}
+
+export function parseVerseShortcut(rawQuery: string): DirectVerseShortcut | null {
+  const q = rawQuery.trim();
+  if (!q) return null;
+
+  const normalizeDevanagariDigits = (str: string) =>
+    str.replace(/[०-९]/g, (d) => String('०१२३४५६७८९'.indexOf(d)));
+
+  const clean = normalizeDevanagariDigits(q.toLowerCase());
+
+  let scriptureId = 'bhagavadgita';
+  let scriptureTitle = 'Bhagavad Gita';
+  let scriptureTitleHi = 'श्रीमद्भगवद्गीता';
+
+  if (clean.includes('ashtavakra') || clean.includes('अष्टावक्र')) {
+    scriptureId = 'ashtavakra';
+    scriptureTitle = 'Ashtavakra Gita';
+    scriptureTitleHi = 'अष्टावक्र गीता';
+  }
+
+  // Match: (optional scripture prefix) (optional ch/chapter/अध्याय) <chapter> (separator) (optional v/verse/श्लोक) <verse>
+  const match = clean.match(/(?:(?:gita|bg|bhagavad\s*gita|गीता|ashtavakra|अष्टावक्र)\s*)?(?:(?:chapter|ch|अध्याय)\s*)?(\d{1,3})(?:[\s.:/-]|(?:verse|v|श्लोक)\s*)+(\d{1,3})/i);
+
+  if (match) {
+    const chapter = parseInt(match[1], 10);
+    const verse = parseInt(match[2], 10);
+
+    if (scriptureId === 'bhagavadgita' && (chapter < 1 || chapter > 18 || verse < 1 || verse > 80)) {
+      return null;
+    }
+    if (scriptureId === 'ashtavakra' && (chapter < 1 || chapter > 20 || verse < 1 || verse > 100)) {
+      return null;
+    }
+
+    const href = scriptureId === 'ashtavakra'
+      ? `/ashtavakra/${chapter}#verse-${verse}`
+      : `/scripture/bhagavadgita/${chapter}#verse-${verse}`;
+
+    return {
+      scriptureId,
+      scriptureTitle,
+      scriptureTitleHi,
+      chapter,
+      verse,
+      href,
+    };
+  }
+
+  return null;
+}
 import {
   getTypeaheadSuggestion,
   getTypeaheadSuggestions,
@@ -179,43 +232,38 @@ export interface SacredActionItem {
 
 export const SACRED_ACTIONS: SacredActionItem[] = [
   {
-    id: 'tanpura',
-    command: '> tanpura',
-    title: 'Play Vedic Tanpura Drone (432Hz)',
-    titleHi: 'वैदिक तन्पूरा नाद प्रारंभ करें (432Hz)',
-    subtitle: 'Procedural 432Hz Tanpura Drone · Web Audio',
-    icon: '🎶',
-    run: (onClose) => {
-      setSoundscapeTrack('tanpura');
-      if (!getSoundscapeState().isPlaying) toggleSoundscape();
-      triggerPranaToast({ message: 'वैदिक तन्पूरा सक्रिय (432Hz) · Tanpura Drone Playing', icon: '🎶' });
+    id: 'gita',
+    command: '> gita',
+    title: 'Open Bhagavad Gita (श्रीमद्भगवद्गीता)',
+    titleHi: 'श्रीमद्भगवद्गीता खोलें',
+    subtitle: '18 Chapters · 700 Verses with Hindi & English',
+    icon: '📖',
+    run: (onClose, router) => {
+      router.push('/scripture/bhagavadgita/');
       onClose();
     },
   },
   {
-    id: 'om',
-    command: '> om',
-    title: 'Play Om Resonance (108Hz)',
-    titleHi: 'प्रणव ॐ नाद प्रारंभ करें (108Hz)',
-    subtitle: 'Deep Contemplative 108Hz Soundscape',
-    icon: '🕉️',
-    run: (onClose) => {
-      setSoundscapeTrack('om');
-      if (!getSoundscapeState().isPlaying) toggleSoundscape();
-      triggerPranaToast({ message: 'प्रणव ॐ नाद सक्रिय (108Hz) · Om Resonance Playing', icon: '🕉️' });
+    id: 'panchang',
+    command: '> panchang',
+    title: 'Open Today\'s Vedic Panchang (पंचांग)',
+    titleHi: 'आज का वैदिक पंचांग खोलें',
+    subtitle: 'Tithi, Vara, Nakshatra, Yoga, Karana & Shubh Muhurta',
+    icon: '📅',
+    run: (onClose, router) => {
+      router.push('/panchang/');
       onClose();
     },
   },
   {
-    id: 'bell',
-    command: '> bell',
-    title: 'Ring Mindfulness Singing Bowl Now (बजाएँ)',
-    titleHi: 'शांति घंटा नाद · Pause & Breathe',
-    subtitle: 'Mindfulness Singing Bowl Soundscape',
-    icon: '🔔',
-    run: (onClose) => {
-      strikeTempleBell(1);
-      triggerPranaToast({ message: 'शांति एवं सजगता · Pause & Breathe 🔔', icon: '🔔' });
+    id: 'sadhana',
+    command: '> sadhana',
+    title: 'Open Daily Sadhana (दैनिक साधना)',
+    titleHi: 'दैनिक साधना खोलें',
+    subtitle: '108 Japa Counter, Meditation Timer & Journal',
+    icon: '✨',
+    run: (onClose, router) => {
+      router.push('/practice/');
       onClose();
     },
   },
@@ -380,6 +428,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
   const typeaheadSuggestion = useMemo(() => getTypeaheadSuggestion(query), [query]);
   const quickPickSuggestions = useMemo(() => getTypeaheadSuggestions(query, 4), [query]);
   const trilingualHint = useMemo(() => getTrilingualEquivalent(query), [query]);
+  const verseShortcut = useMemo(() => parseVerseShortcut(query), [query]);
 
   const isActionQuery = trimmed.startsWith('>');
   const actionFilter = isActionQuery ? trimmed.slice(1).trim().toLowerCase() : '';
@@ -610,6 +659,13 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
         e.preventDefault();
         const action = matchingActions[selectedIndex % matchingActions.length] || matchingActions[0];
         action.run(onClose, router, cycleTheme);
+        return;
+      }
+      if (verseShortcut) {
+        e.preventDefault();
+        remember(query);
+        onClose();
+        router.push(verseShortcut.href);
         return;
       }
       // Instant Direct Jump: If directHref exists and user hasn't actively navigated down the search results
@@ -883,6 +939,47 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                     {trilingualHint.meaning}
                   </span>
                 )}
+              </div>
+            )}
+
+            {/* Pinned Direct Verse Shortcut Banner */}
+            {verseShortcut && (
+              <div className="border-b border-saffron-500/40 bg-gradient-to-r from-saffron-500/20 via-amber-500/10 to-transparent px-4 py-3 sm:px-6">
+                <button
+                  type="button"
+                  onClick={() => {
+                    remember(query);
+                    onClose();
+                    router.push(verseShortcut.href);
+                  }}
+                  className="group flex min-h-[48px] w-full items-center justify-between gap-3 text-left focus:outline-none cursor-pointer active:scale-[0.99] transition-transform"
+                  aria-label={`Direct Verse Navigation to ${verseShortcut.scriptureTitle} Chapter ${verseShortcut.chapter} Verse ${verseShortcut.verse}`}
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-saffron-500 text-white shadow-sm font-bold text-sm">
+                      {verseShortcut.chapter}.{verseShortcut.verse}
+                    </span>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300">
+                          त्वरित श्लोक दर्शन · Direct Verse Jump
+                        </span>
+                      </div>
+                      <p className="truncate text-sm sm:text-base font-bold text-label-primary group-hover:text-saffron-700 dark:group-hover:text-saffron-300 transition">
+                        {verseShortcut.scriptureTitleHi} · अध्याय {verseShortcut.chapter}, श्लोक {verseShortcut.verse}
+                      </p>
+                      <p className="truncate text-xs text-label-secondary">
+                        {verseShortcut.scriptureTitle} · Chapter {verseShortcut.chapter}, Verse {verseShortcut.verse}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-2 text-xs font-semibold text-saffron-700 dark:text-saffron-300">
+                    <span className="hidden sm:inline">श्लोक खोलें</span>
+                    <kbd className="rounded-lg border border-saffron-500/50 bg-saffron-500/15 px-2.5 py-1 font-mono text-xs shadow-xs text-saffron-800 dark:text-saffron-200">
+                      Enter ↵
+                    </kbd>
+                  </div>
+                </button>
               </div>
             )}
 

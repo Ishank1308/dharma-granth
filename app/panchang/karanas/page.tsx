@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getAllKaranas, karanaSlug } from '@/lib/panchang';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { Sparkles, Moon, Sun, ArrowRight, BookOpen, Layers, ShieldCheck, Compass, HelpCircle, AlertCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -126,6 +127,10 @@ export default function KaranasPage() {
             { label: '11 Karanas' },
           ]}
         />
+
+        <div className="mt-4 mb-2">
+          <PanchangLimbSwitcher activeLimb="karanas" />
+        </div>
 
         {/* Hero Header */}
         <header className="mt-8 text-center max-w-3xl mx-auto">

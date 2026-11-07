@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Bookmark, BookOpen, ListChecks, FileClock } from 'lucide-react';
 import type { CSSProperties, ReactNode } from 'react';
@@ -156,6 +157,26 @@ export function LibraryCard({
     ? `${formatNumber(item.totalChapters)} chapters · ${formatNumber(item.totalVerses)}${ofAbout} verses`
     : 'Catalogue entry';
 
+  const [progressPercent, setProgressPercent] = useState<number | null>(null);
+  const [visitedChapter, setVisitedChapter] = useState<number | null>(null);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem('dharma.recentChapters');
+      if (!raw) return;
+      const visits = JSON.parse(raw);
+      if (!Array.isArray(visits)) return;
+      const match = visits.find((v: { scriptureId?: string }) => v?.scriptureId === item.id);
+      if (match && typeof match.chapterId === 'number' && item.totalChapters > 0) {
+        setVisitedChapter(match.chapterId);
+        const pct = Math.min(100, Math.round((match.chapterId / item.totalChapters) * 100));
+        setProgressPercent(pct);
+      }
+    } catch {
+      // ignore storage errors
+    }
+  }, [item.id, item.totalChapters]);
+
   return (
     <article
       aria-labelledby={headingId}
@@ -221,6 +242,25 @@ export function LibraryCard({
           <Detail label="Available commentary">{commentary.length > 0 ? commentary.join('; ') : missing}</Detail>
           <Detail label="Last updated">{updated ?? missing}</Detail>
         </dl>
+      )}
+
+      {progressPercent !== null && progressPercent > 0 && (
+        <div className="mt-3 pt-2.5 border-t border-dharma-border/60">
+          <div className="flex items-center justify-between text-[11px] text-dharma-muted mb-1">
+            <span className="font-devanagari font-medium text-dharma-text/90">
+              पठन प्रगति · अध्याय {visitedChapter} / {item.totalChapters}
+            </span>
+            <span className="font-semibold text-saffron-700 dark:text-saffron-400">
+              {progressPercent}%
+            </span>
+          </div>
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-dharma-text/[0.08]">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-amber-500 to-saffron-600 transition-all duration-300"
+              style={{ width: `${Math.max(6, progressPercent)}%` }}
+            />
+          </div>
+        </div>
       )}
 
       <div className="mt-auto flex flex-wrap items-center gap-2 pt-4">
