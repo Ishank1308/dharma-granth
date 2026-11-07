@@ -19,6 +19,8 @@ import "./globals.css";
 import "./styles/components.css";
 // The motion system (reveals, tilt, hero halo, theme transition) sits over the base styles.
 import "./motion.css";
+// Chapter scenes behind the shloka (lib/chapter-scenes.ts); only pages with data-scene use them.
+import "./styles/scenes.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
 import { StoragePersistenceRequest } from "@/app/components/StoragePersistenceRequest";
