@@ -1,65 +1,48 @@
 'use client';
 
-import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { retryImport } from '@/lib/retry-import';
 import Link from 'next/link';
 import { PageHeader } from '@/app/components/apple/PageHeader';
-import { Lock, Trash2, Bookmark, NotebookPen, LayoutDashboard, BarChart3, HardDriveDownload, BellRing, ScrollText } from 'lucide-react';
+import { Lock, Trash2, Bookmark, NotebookPen, ScrollText } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
-const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((module) => module.DailyVerse)));
-const DailyReflection = dynamic(() => retryImport(() => import('@/app/components/practice/DailyReflection').then((module) => module.DailyReflection)));
-const ReadingPlan = dynamic(() => retryImport(() => import('@/app/components/practice/ReadingPlan').then((module) => module.ReadingPlan)));
-const JapaMala = dynamic(() => retryImport(() => import('@/app/components/practice/JapaMala').then((module) => module.JapaMala)));
-const MeditationTimer = dynamic(() => retryImport(() => import('@/app/components/practice/MeditationTimer').then((module) => module.MeditationTimer)));
-const PranayamaPacer = dynamic(() => retryImport(() => import('@/app/components/practice/PranayamaPacer').then((module) => module.PranayamaPacer)));
-const FestivalReminder = dynamic(() => retryImport(() => import('@/app/components/practice/FestivalReminder').then((module) => module.FestivalReminder)));
-const SankalpaJournal = dynamic(() => retryImport(() => import('@/app/components/practice/SankalpaJournal').then((module) => module.SankalpaJournal)));
-const GratitudeJournal = dynamic(() => retryImport(() => import('@/app/components/practice/GratitudeJournal').then((module) => module.GratitudeJournal)));
-const RoutineBuilder = dynamic(() => retryImport(() => import('@/app/components/practice/RoutineBuilder').then((module) => module.RoutineBuilder)));
-const PracticeHistory = dynamic(() => retryImport(() => import('@/app/components/practice/PracticeHistory').then((module) => module.PracticeHistory)));
-const PrivacyLockBanner = dynamic(() => retryImport(() => import('@/app/components/practice/PrivacyLockBanner').then((module) => module.PrivacyLockBanner)));
-const BackupRestore = dynamic(() => retryImport(() => import('@/app/components/BackupRestore').then((module) => module.BackupRestore)));
-const SadhanaPortability = dynamic(() => retryImport(() => import('@/app/components/SadhanaPortability').then((module) => module.SadhanaPortability)));
+
+const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((m) => m.DailyVerse)));
+const DailyReflection = dynamic(() => retryImport(() => import('@/app/components/practice/DailyReflection').then((m) => m.DailyReflection)));
+const ReadingPlan = dynamic(() => retryImport(() => import('@/app/components/practice/ReadingPlan').then((m) => m.ReadingPlan)));
+const JapaMala = dynamic(() => retryImport(() => import('@/app/components/practice/JapaMala').then((m) => m.JapaMala)));
+const MeditationTimer = dynamic(() => retryImport(() => import('@/app/components/practice/MeditationTimer').then((m) => m.MeditationTimer)));
+const PranayamaPacer = dynamic(() => retryImport(() => import('@/app/components/practice/PranayamaPacer').then((m) => m.PranayamaPacer)));
+const PrivacyLockBanner = dynamic(() => retryImport(() => import('@/app/components/practice/PrivacyLockBanner').then((m) => m.PrivacyLockBanner)));
+const BackupRestore = dynamic(() => retryImport(() => import('@/app/components/BackupRestore').then((m) => m.BackupRestore)));
 
 /**
- * The redesigned daily practice (sādhanā) dashboard.
- *
- * Design commitments, deliberately:
- * - Peaceful, private daily spiritual practice sanctuary.
- * - Zero commercial, competitive, or productivity feel.
- * - Every tool is optional — users pick which ones appear, stored locally.
- * - Practice notes stay in local storage with optional local PIN protection.
+ * Streamlined, calm daily spiritual practice (साधना) sanctuary:
+ * - Pure 108 Japa Mala counter with bead feedback
+ * - Quiet meditation timer
+ * - Rhythmic pranayama breath pacer
+ * - Daily contemplation & scripture reflection
+ * - Private, local-first on this device with zero tracking
  */
 
 const TOOLS = [
-  { id: 'verse', label: 'दैनिक श्लोक', sub: 'Daily verse' },
-  { id: 'reflection', label: 'दैनिक चिंतन', sub: 'Daily reflection' },
-  { id: 'reading', label: 'पठन योजना', sub: 'Reading plan' },
-  { id: 'japa', label: 'जप माला', sub: 'Japa counter' },
+  { id: 'japa', label: 'जप माला', sub: '108 Japa counter' },
   { id: 'meditation', label: 'ध्यान साधना', sub: 'Meditation timer' },
   { id: 'pranayama', label: 'प्राणायाम', sub: 'Breath pacer' },
-  { id: 'festivals', label: 'उत्सव स्मरण', sub: 'Festival reminders' },
-  { id: 'gratitude', label: 'कृतज्ञता', sub: 'Gratitude journal' },
-  { id: 'sankalpa', label: 'संकल्प', sub: 'Saṅkalpa journal' },
-  { id: 'routine', label: 'मेरा क्रम', sub: 'My routine' },
-  { id: 'history', label: 'साधना इतिहास', sub: 'Practice history' },
+  { id: 'reflection', label: 'दैनिक चिन्तन', sub: 'Daily reflection' },
+  { id: 'reading', label: 'पठन योजना', sub: 'Reading plan' },
+  { id: 'verse', label: 'दैनिक श्लोक', sub: 'Daily verse' },
 ] as const;
 
 type ToolId = (typeof TOOLS)[number]['id'];
 
 const DEFAULT_ENABLED: Record<ToolId, boolean> = {
-  verse: true,
+  japa: true,
+  meditation: true,
+  pranayama: true,
   reflection: true,
-  reading: true,
-  japa: false,
-  meditation: false,
-  pranayama: false,
-  festivals: false,
-  gratitude: false,
-  sankalpa: false,
-  routine: false,
-  history: false,
+  reading: false,
+  verse: false,
 };
 
 const TOOL_GROUPS: Array<{
@@ -68,20 +51,14 @@ const TOOL_GROUPS: Array<{
   titleHi: string;
   toolIds: ToolId[];
 }> = [
-  { id: 'read', title: 'Read', titleHi: 'पठन', toolIds: ['verse', 'reading'] },
-  { id: 'pause', title: 'Pause', titleHi: 'विराम', toolIds: ['meditation', 'pranayama', 'japa'] },
-  { id: 'reflect', title: 'Reflect', titleHi: 'मनन', toolIds: ['reflection', 'gratitude', 'sankalpa'] },
-  { id: 'organize', title: 'Keep in view', titleHi: 'स्मरण', toolIds: ['festivals', 'routine', 'history'] },
+  { id: 'dhyana', title: 'Japa & Meditation', titleHi: 'जप, ध्यान व प्राण', toolIds: ['japa', 'meditation', 'pranayama'] },
+  { id: 'svadhyaya', title: 'Svadhyaya & Contemplation', titleHi: 'स्वाध्याय व चिन्तन', toolIds: ['reflection', 'reading', 'verse'] },
 ];
 
 const MY_SPACE = [
   { href: '/practice/gita-sankalpa/', hi: 'गीता संकल्प', en: 'Gita Sankalpa', Icon: ScrollText },
   { href: '/practice/bookmarks/', hi: 'सुरक्षित श्लोक', en: 'Saved verses', Icon: Bookmark },
-  { href: '/practice/desk/', hi: 'अध्ययन-पटल', en: 'Study desk', Icon: LayoutDashboard },
   { href: '/practice/journal/', hi: 'स्वाध्याय डायरी', en: 'Journal', Icon: NotebookPen },
-  { href: '/practice/dashboard/', hi: 'पठन प्रगति', en: 'Reading progress', Icon: BarChart3 },
-  { href: '/practice/saved/', hi: 'ऑफ़लाइन ग्रंथ', en: 'Offline texts', Icon: HardDriveDownload },
-  { href: '/practice/desk/#reminders-h', hi: 'स्मरण', en: 'Calendar reminders', Icon: BellRing },
 ];
 
 export function PracticeDashboard() {
@@ -101,7 +78,7 @@ export function PracticeDashboard() {
   function handleDeleteAllData() {
     if (
       window.confirm(
-        'क्या आप साधना का सारा निजी डेटा (जप, ध्यान, संकल्प, डायरी, इतिहास) हटाना चाहते हैं?\n\nAre you sure you want to delete all local Sadhana data from this browser? This action cannot be undone.',
+        'क्या आप साधना का सारा निजी डेटा (जप, ध्यान, संकल्प, डायरी) हटाना चाहते हैं?\n\nAre you sure you want to delete all local Sadhana data from this browser? This action cannot be undone.',
       )
     ) {
       const keysToDelete = [
@@ -114,17 +91,13 @@ export function PracticeDashboard() {
         'dharma.practice.pranayama',
         'dharma.practice.pranayama.vibration',
         'dharma.practice.reflections',
-        'dharma.practice.gratitude',
         'dharma.practice.sankalpa',
-        'dharma.practice.routine',
-        'dharma.practice.routine.done',
         'dharma.practice.pin',
         'dharma.practice.is_locked',
         'dharma.practice.last_backup',
         'dharma.japa.count',
         'dharma.japa.malas',
         'dharma.sankalpa',
-        'dharma.gratitude',
         'dharma.reflection',
       ];
       keysToDelete.forEach((key) => {
@@ -145,8 +118,8 @@ export function PracticeDashboard() {
         titleHi="शान्त मन, पवित्र अभ्यास"
         lead={
           <p>
-            <span>A verse, a reflection, japa and a quiet timer. Pick the tools you want; there are no scores and no streaks.</span>{' '}
-            <span lang="hi" className="font-devanagari">दैनिक श्लोक, चिन्तन, जप और ध्यान, बिना किसी गिनती या होड़ के।</span>
+            <span>108-bead japa counter, quiet meditation, sacred pranayama, and scripture reflection. Private on your device.</span>{' '}
+            <span lang="hi" className="font-devanagari">108 मनका जप, शान्त ध्यान, प्राणायाम व दैनिक चिन्तन। पूर्णतः निजी व विज्ञापन-रहित।</span>
           </p>
         }
       >
@@ -157,13 +130,13 @@ export function PracticeDashboard() {
       </PageHeader>
 
       <div className="mx-auto max-w-content space-y-10 px-gutter pt-8">
-        {/* My space: everything personal lives under /practice/ (saved verses, desk, journal, progress, offline). */}
-        <nav aria-label="My space" className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {/* Focused personal spaces: Gita Sankalpa, Saved Verses, and Journal */}
+        <nav aria-label="Personal practice spaces" className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           {MY_SPACE.map(({ href, hi, en, Icon }) => (
             <Link
               key={href}
               href={href}
-              className="apple-card flex min-h-[64px] items-center gap-3 px-4 py-3 transition hover:-translate-y-0.5"
+              className="apple-card flex min-h-[60px] items-center gap-3 px-4 py-3 transition hover:-translate-y-0.5"
             >
               <span className="apple-tint-chip" aria-hidden="true">
                 <Icon className="h-4 w-4" />
@@ -192,15 +165,15 @@ export function PracticeDashboard() {
           </div>
         ) : (
           <>
-            {/* Tool picker */}
+            {/* Streamlined Tool Picker */}
             <section aria-labelledby="practice-tools-heading">
               <h2 id="practice-tools-heading" className="text-title-2 font-semibold text-dharma-text">
-                <span>Your tools</span>{' '}
-                <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">साधन</span>
+                <span>Core practices</span>{' '}
+                <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">दैनिक साधन</span>
               </h2>
               <p className="mt-1 text-subhead text-dharma-muted">
-                <span>Tap to show or hide a tool. Your choice stays on this device.</span>{' '}
-                <span lang="hi" className="font-devanagari">साधन जोड़ें या छिपाएँ।</span>
+                <span>Choose which practices to keep active. Stays on this device.</span>{' '}
+                <span lang="hi" className="font-devanagari">आवश्यकतानुसार साधन सक्रिय करें।</span>
               </p>
               <div className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2">
                 {TOOL_GROUPS.map((group) => (
@@ -220,7 +193,7 @@ export function PracticeDashboard() {
                             aria-pressed={on(tool.id)}
                             className={`practice-tool-chip inline-flex min-h-11 items-center gap-1.5 rounded-full px-4 text-[14px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dharma-saffron focus-visible:ring-offset-2 ${
                               on(tool.id)
-                                ? 'practice-tool-chip-on bg-dharma-saffron text-dharma-bg'
+                                ? 'practice-tool-chip-on bg-dharma-saffron text-dharma-bg font-medium shadow-xs'
                                 : 'bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
                             }`}
                           >
@@ -240,21 +213,16 @@ export function PracticeDashboard() {
             {/* Parent heading for the tool cards' h3s. */}
             <h2 className="sr-only">साधन · Practice tools</h2>
 
-            {/* Daily verse — full width */}
+            {/* Daily verse (if enabled) */}
             {on('verse') && <DailyVerse />}
 
-            {/* Tool grid */}
+            {/* Core Practice Grid: Japa, Meditation, Pranayama, Reflection, Reading */}
             <div className="grid items-stretch gap-5 md:grid-cols-2">
-              {on('reflection') && <DailyReflection />}
               {on('japa') && <JapaMala />}
               {on('meditation') && <MeditationTimer />}
               {on('pranayama') && <PranayamaPacer />}
+              {on('reflection') && <DailyReflection />}
               {on('reading') && <ReadingPlan />}
-              {on('festivals') && <FestivalReminder />}
-              {on('gratitude') && <GratitudeJournal />}
-              {on('sankalpa') && <SankalpaJournal />}
-              {on('routine') && <RoutineBuilder />}
-              {on('history') && <PracticeHistory />}
             </div>
           </>
         )}
@@ -262,16 +230,6 @@ export function PracticeDashboard() {
         {/* Private Backup, Restore & Clear Controls */}
         <div className="space-y-4 border-t border-dharma-text/10 pt-8">
           <BackupRestore />
-          <details className="apple-group px-4">
-            <summary className="flex min-h-12 cursor-pointer items-center font-semibold text-sm text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
-              वैकल्पिक उपकरण-स्थानांतरण · Alternate compressed transfer options
-            </summary>
-            <p className="pb-2 text-xs leading-relaxed text-dharma-muted">
-              The alternate sync code and .dharma file are compressed, not encrypted. Keep them private; use the JSON backup above for the standard export and restore flow.
-              <span lang="hi" className="ml-1 font-devanagari">वैकल्पिक सिंक कोड और .dharma फ़ाइल संपीड़ित हैं, कूटबद्ध नहीं। इन्हें निजी रखें; सामान्य बैकअप के लिए ऊपर दिया JSON विकल्प उपयोग करें।</span>
-            </p>
-            <div className="pb-4"><SadhanaPortability /></div>
-          </details>
           <div className="flex justify-end pt-2">
             <button
               type="button"

@@ -11,7 +11,7 @@ import { MotionLayer } from "@/app/components/motion/MotionLayer";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
 
-import { MananaSelectionBar, PranaCapsule } from "@/app/components/ClientOverlays";
+import { MananaSelectionBar } from "@/app/components/ClientOverlays";
 // Fonts: @font-face rules for /fonts live in globals.css (one source per weight, 400/600/700).
 // Design system: tokens first, then the base styles, the shared components and motion (docs/design-system.md).
 import "./styles/tokens.css";
@@ -260,15 +260,12 @@ export default function RootLayout({
             ashtavakraChapters={shell.ashtavakra.chapters}
             ashtavakraVerses={shell.ashtavakra.verses}
           />
-          <div id="main-content" tabIndex={-1} className="outline-none pb-16 lg:pb-0">
+          <div id="main-content" tabIndex={-1} className="outline-none">
             <ErrorBoundary name="Main Content">
               <PageTransition>{children}</PageTransition>
             </ErrorBoundary>
             <SiteFooter />
           </div>
-          <ErrorBoundary name="Prāṇa Capsule">
-            <PranaCapsule />
-          </ErrorBoundary>
           <ErrorBoundary name="Manana Selection">
             <MananaSelectionBar />
           </ErrorBoundary>
