@@ -1828,6 +1828,7 @@ export const VARA_DATA: VaraMeta[] = [
       { title: 'Aditya Hridaya Stotra (आदित्य हृदय स्तोत्रम्)', href: '/mantras/aditya-hridaya-stotra/' },
       { title: 'Gayatri Mantra (गायत्री मन्त्र)', href: '/mantras/gayatri-mantra/' },
       { title: 'Navagraha Stotram (नवग्रह स्तोत्रम्)', href: '/mantras/navagraha-stotram/' },
+      { title: 'Solar Vratas & Arghya Vidhi (सौर व्रत एवं अर्घ्य विधान)', href: '/panchang/solar-vratas/' },
       { title: 'Surya Ashtakam (सूर्याष्टकम्)' },
     ],
     spiritualFocus: 'Atma-bala (soul vitality), overcoming spiritual indolence, selfless leadership, and meditation on the inner spiritual light.',
@@ -1859,6 +1860,7 @@ export const VARA_DATA: VaraMeta[] = [
     sacredFasts: ['Somvar Vrat (सोलह सोमवार व्रत)', 'Shravan Somvar', 'Somavati Amavasya', 'Pradosha Vrat'],
     recommendedStotras: [
       { title: 'Shiva Tandava Stotram (शिवताण्डवस्तोत्रम्)', href: '/mantras/shiva-tandava/' },
+      { title: 'Shiva Mahimna Stotram (शिवमहिम्नः स्तोत्रम्)', href: '/mantras/shiva-mahimna-stotram/' },
       { title: 'Shiva Panchakshara Stotram (शिवपञ्चाक्षरस्तोत्रम्)', href: '/mantras/shiva-panchakshara-stotram/' },
       { title: 'Lingashtakam (लिङ्गाष्टकम्)', href: '/mantras/lingashtakam/' },
       { title: 'Shiv Chalisa (शिव चालीसा)', href: '/mantras/shiv-chalisa/' },
@@ -1959,7 +1961,7 @@ export const VARA_DATA: VaraMeta[] = [
     recommendedStotras: [
       { title: 'Purusha Sukta (पुरुषसूक्तम्)', href: '/mantras/purusha-sukta/' },
       { title: 'Achyutashtakam (अच्युताष्टकम्)', href: '/mantras/achyutashtakam/' },
-      { title: 'Dakshinamurti Stotram (दक्षिणामूर्ति स्तोत्रम्)' },
+      { title: 'Dakshinamurti Stotram (दक्षिणामूर्ति स्तोत्रम्)', href: '/mantras/dakshinamurthy-stotram/' },
       { title: 'Guru Paduka Stotram (गुरु पादुका स्तोत्रम्)' },
     ],
     spiritualFocus: 'Guru-kripa (preceptor grace), expansion of philosophical wisdom, generosity, and contemplation of the Supreme Self.',

@@ -163,10 +163,6 @@ interface Props {
   onContribute: () => void;
   onAddToCollection?: () => void;
   inCollectionCount?: number;
-  /** The reader's own note on this verse, if any. */
-  note?: string;
-  /** Saves the note; an empty string deletes it. */
-  onSaveNote: (text: string) => void;
   highlight?: HighlightColor;
   /** Same colour again removes the highlight (useStudyProgress toggle semantics). */
   onHighlight: (color: HighlightColor) => void;
@@ -295,8 +291,6 @@ export function VerseCard({
   onContribute,
   onAddToCollection,
   inCollectionCount,
-  note,
-  onSaveNote,
   highlight,
   onHighlight,
   onOpenFocus,

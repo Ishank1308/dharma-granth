@@ -126,6 +126,9 @@ for (const star of NAKSHATRA_DATA) addTerm(`nakshatra-${star.index}`, star.name,
 
 addTerm('gita-journey', 'Gita Journey · Dilemma Compass', 'गीता यात्रा 18 अध्याय', '/learn/journeys/gita/');
 addTerm('learn-journeys', 'Guided Learning Journeys', 'स्वाध्याय यात्राएँ', '/learn/journeys/');
+addTerm('solar-vratas', 'Solar Vratas & Arghya Vidhi', 'सौर व्रत एवं अर्घ्य विधान', '/panchang/solar-vratas/');
+addTerm('chhath-puja', 'Chhath Puja Mahavrata', 'छठ पूजा विधि', '/panchang/solar-vratas/#chhath-puja');
+addTerm('ratha-saptami', 'Ratha Saptami Surya Jayanti', 'रथ सप्तमी', '/panchang/solar-vratas/#ratha-saptami');
 
 const verses: CoreVerse[] = [];
 const seenVerse = new Set<string>();

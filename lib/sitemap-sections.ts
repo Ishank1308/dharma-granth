@@ -83,6 +83,7 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/panchang/karanas', pageDate('/panchang/karanas', 'lib/panchang.ts')),
     entry('/panchang/varas', pageDate('/panchang/varas', 'lib/panchang.ts')),
     entry('/panchang/calendar', pageDate('/panchang/calendar', 'lib/panchang.ts', 'data/festival-dates.ts')),
+    entry('/panchang/solar-vratas', pageDate('/panchang/solar-vratas', 'data/solar-vratas-data.ts', 'lib/panchang.ts')),
     entry('/timelines', pageDate('/timelines')),
     entry('/rituals', pageDate('/rituals')),
     entry('/dictionary', pageDate('/dictionary', 'data/dictionary.ts')),

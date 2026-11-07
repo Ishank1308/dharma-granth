@@ -1194,6 +1194,14 @@ async function renderHubCards(fonts: SatoriFont[]): Promise<void> {
       tag: "Dilemma Compass",
       gradient: "linear-gradient(135deg, #1e1b4b 0%, #4338ca 45%, #b45309 100%)",
     },
+    {
+      file: "solar-vratas.png",
+      title: "Sacred Solar Vratas & Arghya",
+      subtitleHi: "प्रमुख सौर व्रत एवं अर्घ्य विधान",
+      desc: "Complete guide to Chhath Puja, Ratha Saptami, Makar Sankranti, and Bhanu Saptami with Vedic mantras and astronomical timings.",
+      tag: "Solar Liturgy",
+      gradient: "linear-gradient(135deg, #7c2d12 0%, #c2410c 45%, #f59e0b 100%)",
+    },
   ];
   for (const h of hubs) {
     const svg = await renderSvg(hubOgTemplate(h.title, h.subtitleHi, h.desc, h.tag, h.gradient), WIDTH, HEIGHT, fonts);

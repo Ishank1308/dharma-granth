@@ -457,14 +457,6 @@ export default async function VersePage(props: PageProps) {
           chapterHref={chapterHref}
         />
       </VerseReader>
-        <VerseCompletion
-          reference={ref}
-          readerRef={{ scriptureId: meta.id, scriptureTitle: meta.title, scriptureTitleSanskrit: meta.titleSanskrit, chapterId, chapterTitle: chapterName, url: pageUrl }}
-          verse={{ number: verse.number, sanskrit: verse.sanskrit, transliteration: verse.transliteration, hindi: verse.hindi, translation: verse.translation }}
-          nextHref={nextHref}
-          chapterHref={chapterHref}
-        />
-      </VerseReader>
       </div>
     </>
   );

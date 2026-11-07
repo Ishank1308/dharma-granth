@@ -273,6 +273,36 @@ export default function PanchangPage() {
               </div>
             </div>
           </div>
+
+          {/* ─── SOLAR VRATAS & SAURAMANA FEATURE CARD ─────────────────────── */}
+          <div className="mt-8 rounded-3xl border border-amber-500/40 bg-gradient-to-br from-amber-500/15 via-orange-500/10 to-transparent p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xs">
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/20 px-3 py-0.5 text-xs font-bold text-amber-900 dark:text-amber-200">
+                  <Sun className="w-3.5 h-3.5" />
+                  <span>Sauramana Liturgy · सौर व्रत एवं अर्घ्य विधान</span>
+                </span>
+                <span className="text-xs text-dharma-muted">
+                  Chhath Puja · Ratha Saptami · Makar Sankranti · Bhanu Saptami
+                </span>
+              </div>
+              <h3 className="font-serif text-2xl font-bold text-dharma-text">
+                Sacred Solar Vratas &amp; Arghya Vidhi
+              </h3>
+              <p className="text-xs sm:text-sm text-dharma-muted max-w-2xl leading-relaxed">
+                Explore liturgical guides, Vedic Arghya mantras, and astronomical coordinates for the Sun-god’s greatest festivals, including the four-day Chhath Puja sequence.
+              </p>
+            </div>
+            <div className="shrink-0 self-start md:self-center">
+              <Link
+                href="/panchang/solar-vratas/"
+                className="inline-flex items-center gap-2 rounded-2xl bg-saffron-600 hover:bg-saffron-700 text-white px-5 py-3 text-sm font-bold transition shadow-xs"
+              >
+                <span>Explore Solar Vratas</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
         </section>
 
         {/* ─── WHY THE FIVE LIMBS ─────────────────────────────────────────── */}
@@ -318,6 +348,9 @@ export default function PanchangPage() {
           <p className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-body">
             <Link href="/festivals/" className="inline-flex min-h-11 items-center text-dharma-saffron hover:underline">
               <span>Festivals</span>&nbsp;<span lang="hi" className="font-devanagari">उत्सव</span>&nbsp;<span aria-hidden="true">›</span>
+            </Link>
+            <Link href="/panchang/solar-vratas/" className="inline-flex min-h-11 items-center text-dharma-saffron hover:underline">
+              <span>Solar Vratas</span>&nbsp;<span lang="hi" className="font-devanagari">सौर व्रत</span>&nbsp;<span aria-hidden="true">›</span>
             </Link>
             <Link href="/practice/" className="inline-flex min-h-11 items-center text-dharma-saffron hover:underline">
               <span>Daily practice</span>&nbsp;<span lang="hi" className="font-devanagari">साधना</span>&nbsp;<span aria-hidden="true">›</span>

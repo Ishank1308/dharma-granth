@@ -110,4 +110,16 @@ assert.ok(navagraha, 'searching navagraha should find navagraha-stotram');
 const gitaJourney = searchCoreIndex('gita journey').find(({ item }) => item.href === '/learn/journeys/gita/');
 assert.ok(gitaJourney, 'searching gita journey should direct to /learn/journeys/gita/');
 
+const dakshinamurthy = searchCoreIndex('dakshinamurthy').find(({ item }) => item.href === '/mantras/dakshinamurthy-stotram/');
+assert.ok(dakshinamurthy, 'searching dakshinamurthy should find dakshinamurthy-stotram');
+
+const mahimna = searchCoreIndex('mahimna').find(({ item }) => item.href === '/mantras/shiva-mahimna-stotram/');
+assert.ok(mahimna, 'searching mahimna should find shiva-mahimna-stotram');
+
+const solarVratas = searchCoreIndex('solar vratas').find(({ item }) => item.href === '/panchang/solar-vratas/');
+assert.ok(solarVratas, 'searching solar vratas should direct to /panchang/solar-vratas/');
+
+const chhathPuja = searchCoreIndex('chhath').find(({ item }) => item.href.includes('/panchang/solar-vratas/'));
+assert.ok(chhathPuja, 'searching chhath should direct to /panchang/solar-vratas/#chhath-puja');
+
 console.log('search query checks passed');

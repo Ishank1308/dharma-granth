@@ -20,8 +20,6 @@ import {
   Maximize2,
   Menu,
   Minimize2,
-  Network,
-  PenLine,
   Search,
   Share2,
   SlidersHorizontal,
@@ -233,8 +231,6 @@ export function VerseReader(props: VerseReaderProps) {
 
   /* Less common verse actions, folded under "More". */
   const [moreActions, setMoreActions] = useState(false);
-  /* ── Interactive Verse Relationship Network Modal ── */
-  const [showNetworkModal, setShowNetworkModal] = useState(false);
 
   /* ── Mobile Touch Swipe Gesture Engine ── */
   const { gestureState, handlers } = useSwipeGesture({
@@ -643,24 +639,9 @@ export function VerseReader(props: VerseReaderProps) {
             data-focus-hide
             className={`mt-2 flex-wrap gap-2 ${moreActions ? 'flex' : 'hidden'}`}
           >
-            <button type="button" onClick={() => setJournalOpen(true)} className={actionBtn}>
-              <PenLine className="h-4 w-4" aria-hidden="true" /> Reflect privately
-            </button>
             <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
               <ArrowRight className="h-4 w-4" aria-hidden="true" /> Open context
             </Link>
-            <button
-              type="button"
-              onClick={() => {
-                triggerTactileFeedback('selection', 'click');
-                setShowNetworkModal(true);
-              }}
-              className={actionBtn}
-              aria-label="Open verse relationship network"
-            >
-              <Network className="h-4 w-4 text-purple-600 dark:text-purple-400" aria-hidden="true" />
-              <span>श्लोक संबंध (Network)</span>
-            </button>
             <button type="button" onClick={onDownloadImage} className={actionBtn} aria-label="Download Image">
               <Download className="h-4 w-4" aria-hidden="true" /> Download Image
             </button>
@@ -671,13 +652,6 @@ export function VerseReader(props: VerseReaderProps) {
               <Download className="h-4 w-4" aria-hidden="true" /> Download
             </button>
           </div>
-
-          {noteText && (
-            <section aria-label="Your private note" className="mt-5 rounded-2xl border border-dashed border-dharma-border bg-dharma-card/60 p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-dharma-muted">Your note · private to this device</p>
-              <p className="whitespace-pre-line text-sm text-dharma-text">{noteText}</p>
-            </section>
-          )}
 
           {/* A deliberate stopping point: the reader may continue, note, or simply stop. */}
           <section aria-labelledby="verse-pause-h" data-focus-hide className="mt-8 rounded-[18px] bg-dharma-card p-5 text-subhead">
@@ -890,48 +864,12 @@ export function VerseReader(props: VerseReaderProps) {
           onNotice={say}
         />
 
-        {/* Interactive Verse Relationship Modal */}
-        {showNetworkModal && (
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label="Verse Relationship Network Modal"
-            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
-          >
-            <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl border border-dharma-border bg-dharma-card p-4 sm:p-8 shadow-2xl">
-              <button
-                type="button"
-                onClick={() => setShowNetworkModal(false)}
-                className="absolute right-4 top-4 rounded-full p-2 text-dharma-muted hover:bg-dharma-panel hover:text-dharma-text transition"
-                aria-label="Close relationship graph"
-              >
-                <X className="h-5 w-5" />
-              </button>
-              <VerseGraphNetwork
-                scriptureId={scriptureId}
-                chapterId={chapterId}
-                verseId={verse.number}
-                currentVerse={verse}
-              />
-            </div>
-          </div>
-        )}
-
         {/* Sacred Share Card Modal (9:16 Story / 1:1 Post / WhatsApp Card) */}
         <SacredShareModal
           isOpen={showShareModal}
           onClose={() => setShowShareModal(false)}
           data={shareData}
         />
-
-        {journalOpen && (
-          <JournalEditorModal
-            isOpen
-            onClose={() => setJournalOpen(false)}
-            linkedReference={journalReference}
-            onSaved={() => say('Private reflection saved on this device')}
-          />
-        )}
 
         {/* Mobile Tactile Verse Carousel Drawer */}
         <MobileVerseCarousel

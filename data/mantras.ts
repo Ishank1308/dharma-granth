@@ -1570,6 +1570,348 @@ aiśvaryamatulaṃ teṣāmārogyaṃ puṣṭivardhanam || 11 ||`,
       },
     ],
   },
+  {
+    id: 'dakshinamurthy-stotram',
+    slug: 'dakshinamurthy-stotram',
+    title: 'Dakshinamurthy Stotram',
+    titleHi: 'दक्षिणामूर्ति स्तोत्रम्',
+    sanskrit: `॥ ध्यानम् ॥
+ॐ मौनव्याख्याप्रकटितपरब्रह्मतत्त्वं युवानं
+वर्षिष्ठांतेवसद्दृषिगणैरावृतं ब्रह्मनिष्ठैः ।
+आचार्येन्द्रं करकलितचिन्मुद्रमानन्दमूर्तिं
+स्वात्मारामं मुदितवदनं दक्षिणामूर्तिमीडे ॥
+
+॥ मूल स्तोत्रम् ॥
+विश्वं दर्पणदृश्यमाननगरीतुल्यं निजान्तर्गतं
+पश्यन्नात्मनि मायया बहिरिवोद्भूतं यथा निद्रया ।
+यः साक्षात्कुरुते प्रबोधसमये स्वात्मानमेवाद्वयं
+तस्मै श्रीगुरुमूर्तये नम इदं श्रीदक्षिणामूर्तये ॥ 1 ॥
+
+बीजस्यान्तरिवाङ्कुरो जगदिदं प्राङ्निर्विकल्पं पुनः
+मायाकल्पितदेशकालकलनावैचित्र्यचित्रीकृतम् ।
+मायावीव विजृम्भयत्यपि महायोगीव यः स्वेच्छया
+तस्मै श्रीगुरुमूर्तये नम इदं श्रीदक्षिणामूर्तये ॥ 2 ॥
+
+यस्यैव स्फुरणं सदात्मकमसत्कल्पार्थकं भासते
+साक्षात्तत्त्वमसीति वेदवचसा यो बोधयत्याश्रितान् ।
+यत्साक्षात्करणाद्भवेन्न पुनरावृत्तिर्भवाम्भोनिधौ
+तस्मै श्रीगुरुमूर्तये नम इदं श्रीदक्षिणामूर्तये ॥ 3 ॥
+
+नानाछिद्रघटोदरस्थितमहादीपप्रभाभास्वरं
+ज्ञानं यस्य तु चक्षुरादिकरणद्वारा बहिः स्पन्दते ।
+जानामीति यमेव भान्तमनुभात्येतत्समस्तं जगत्
+तस्मै श्रीगुरुमूर्तये नम इदं श्रीदक्षिणामूर्तये ॥ 4 ॥
+
+देहं प्राणमपीन्द्रियाण्यपि चलां बुद्धिं च शून्यं विदुः
+स्त्रीबालान्धजडोपमास्त्वहमिति भ्रान्ता भृशं वादिनः ।
+मायाशक्तिविलासकल्पितमहाव्यामोहसंहारिणे
+तस्मै श्रीगुरुमूर्तये नम इदं श्रीदक्षिणामूर्तये ॥ 5 ॥
+
+राहुग्रस्तदिवाकरेन्दुसदृशो मायासमाच्छादनात्
+सन्मात्रः करणोपसंहरणतो योऽभूत्सुषुप्तः पुमान् ।
+प्रागस्वाप्समिति प्रबोधसमये यः प्रत्यभिज्ञायते
+तस्मै श्रीगुरुमूर्तये नम इदं श्रीदक्षिणामूर्तये ॥ 6 ॥
+
+बाल्यादिष्वपि जाग्रदादिषु तथा सर्वास्ववस्थास्वपि
+व्यावृत्तास्वनुवर्तमानमहमित्यन्तः स्फुरन्तं सदा ।
+स्वात्मानं प्रकटीकरोति भजतां यो मुद्रया भद्रया
+तस्मै श्रीगुरुमूर्तये नम इदं श्रीदक्षिणामूर्तये ॥ 7 ॥
+
+विश्वं पश्यति कार्यकारणतया स्वस्वामिसम्बन्धतः
+शिष्याचार्यतया तथैव पितृपुत्राद्यात्मना भेदतः ।
+स्वप्ने जाग्रति वा य एष पुरुषो मायापरिभ्रामितः
+तस्मै श्रीगुरुमूर्तये नम इदं श्रीदक्षिणामूर्तये ॥ 8 ॥
+
+भूरम्भांस्यनलोऽनिलोऽम्बरमहर्नाथो हिमांशुः पुमान्
+इत्याभाति चराचरात्मकमिदं यस्यैव मूर्त्यष्टकम् ।
+नान्यत्किञ्चन विद्यते विमृशतां यस्मात्परस्माद्विभोः
+तस्मै श्रीगुरुमूर्तये नम इदं श्रीदक्षिणामूर्तये ॥ 9 ॥
+
+सर्वात्मत्वमिति स्फुटीकृतमिदं यस्मादमूष्मिन् स्तवे
+तेनास्य श्रवणात्तदर्थमननाद्ध्यानाच्च सङ्कीर्तनात् ।
+सर्वात्मत्वमहाविभूतिसहितं स्यादीश्वरत्वं स्वतः
+सिद्ध्येत्तत्पुनरष्टधा परिणतं चैश्वर्यमव्याहतम् ॥ 10 ॥`,
+    transliteration: `|| dhyānam ||
+oṃ maunavyākhyāprakaṭitaparabrahmatattvaṃ yuvānaṃ
+varṣiṣṭhāṃtevasaddṛṣigaṇairāvṛtaṃ brahmaniṣṭhaiḥ |
+ācāryendraṃ karakalitacinmudramānandamūrtiṃ
+svātmārāmaṃ muditavadanaṃ dakṣiṇāmūrtimīḍe ||
+
+|| mūla stotram ||
+viśvaṃ darpaṇadṛśyamānanagarītulyaṃ nijāntargataṃ
+paśyannātmani māyayā bahirivodbhūtaṃ yathā nidrayā |
+yaḥ sākṣātkurute prabodhasamaye svātmānamevādvayaṃ
+tasmai śrīgurumūrtaye nama idaṃ śrīdakṣiṇāmūrtaye || 1 ||
+
+bījasyāntarivāṅkuro jagadidaṃ prāṅnirvikalpaṃ punaḥ
+māyākalpitadeśakālakalanāvaicitryacitrīkṛtam |
+māyāvīva vijṛmbhayatyapi mahāyogīva yaḥ svecchayā
+tasmai śrīgurumūrtaye nama idaṃ śrīdakṣiṇāmūrtaye || 2 ||
+
+yasyaiva sphuraṇaṃ sadātmakamasatkalpārthakaṃ bhāsate
+sākṣāttattvamasīti vedavacasā yo bodhayatyāśritān |
+yatsākṣātkaraṇādbhavenna punarāvṛttirbhavāmbhonidhau
+tasmai śrīgurumūrtaye nama idaṃ śrīdakṣiṇāmūrtaye || 3 ||
+
+nānāchidraghaṭodarasthitamahādīpaprabhābhāsvaraṃ
+jñānaṃ yasya tu cakṣurādikaraṇadvārā bahiḥ spandate |
+jānāmīti yameva bhāntamanubhātyetatsamastaṃ jagat
+tasmai śrīgurumūrtaye nama idaṃ śrīdakṣiṇāmūrtaye || 4 ||
+
+dehaṃ prāṇamapīndriyāṇyapi calāṃ buddhiṃ ca śūnyaṃ viduḥ
+strībālāndhajaḍopamāstvahamiti bhrāntā bhṛśaṃ vādinaḥ |
+māyāśaktivilāsakalpitamahāvyāmohasaṃhāriṇe
+tasmai śrīgurumūrtaye nama idaṃ śrīdakṣiṇāmūrtaye || 5 ||
+
+rāhugrastadivākarendusadṛśo māyāsamācchādanāt
+sanmātraḥ karaṇopasaṃharaṇato yo'bhūtsuṣuptaḥ pumān |
+prāgasvāpsamiti prabodhasamaye yaḥ pratyabhijñāyate
+tasmai śrīgurumūrtaye nama idaṃ śrīdakṣiṇāmūrtaye || 6 ||
+
+bālyādiṣvapi jāgradādiṣu tathā sarvāsvavasthāsvapi
+vyāvṛttāsvanuvartamānamahamityantaḥ sphurantaṃ sadā |
+svātmānaṃ prakaṭīkaroti bhajatāṃ yo mudrayā bhadrayā
+tasmai śrīgurumūrtaye nama idaṃ śrīdakṣiṇāmūrtaye || 7 ||
+
+viśvaṃ paśyati kāryakāraṇatayā svasvāmisambandhataḥ
+śiṣyācāryatayā tathaiva pitṛputrādyātmanā bhedataḥ |
+svapne jāgrati vā ya eṣa puruṣo māyāparibhrāmitaḥ
+tasmai śrīgurumūrtaye nama idaṃ śrīdakṣiṇāmūrtaye || 8 ||
+
+bhūrambhāṃsyanalo'nilo'mbaramaharnātho himāṃśuḥ pumān
+ityābhāti carācarātmakamidaṃ yasyaiva mūrtyaṣṭakam |
+nānyatkiñcana vidyate vimṛśatāṃ yasmātparasmādvibhoḥ
+tasmai śrīgurumūrtaye nama idaṃ śrīdakṣiṇāmūrtaye || 9 ||
+
+sarvātmatvamiti sphuṭīkṛtamidaṃ yasmādamūṣmin stave
+tenāsya śravaṇāttadarthamananāddhyānācca saṅkīrtanāt |
+sarvātmatvamahāvibhūtisahitaṃ syādīśvaratvaṃ svataḥ
+siddhyettatpunaraṣṭadhā pariṇataṃ caiśvaryamavyāhatam || 10 ||`,
+    category: 'stotra',
+    categoryLabel: 'Advaita Vedanta Hymn',
+    categoryLabelHi: 'अद्वैत वेदान्त स्तोत्र',
+    rishi: 'जगद्गुरु आदि शङ्कराचार्य (Adi Shankaracharya)',
+    devata: 'भगवान् दक्षिणामूर्ति (Lord Dakshinamurti / Shiva)',
+    chhandas: 'शार्दूलविक्रीडित (Shardulavikridita)',
+    source: 'Adi Shankara Stotravali / Advaita Vedanta Tradition',
+    sourceCoordinates: 'Dakshinamurti Stotram, Shlokas 1–10 with Dhyana Shloka',
+    sourceHref: '/panchang/varas/guruvara/',
+    wordMeanings: [
+      {
+        sanskrit: 'विश्वं दर्पणदृश्यमाननगरीतुल्यं निजान्तर्गतम्',
+        iast: 'viśvaṃ darpaṇadṛśyamānanagarītulyaṃ nijāntargatam',
+        hindi: 'यह सम्पूर्ण जगत् दर्पण में दिखने वाले प्रतिबिम्बित नगर के समान अपने ही भीतर स्थित है',
+        english: 'This entire universe is within oneself, like a city seen reflected within a mirror',
+      },
+      {
+        sanskrit: 'पश्यन्नात्मनि मायया बहिरिवोद्भूतं यथा निद्रया',
+        iast: 'paśyannātmani māyayā bahirivodbhūtaṃ yathā nidrayā',
+        hindi: 'जो स्वप्न के समान माया के प्रभाव से अपने ही भीतर स्थित जगत् को बाहर प्रकट देखता है',
+        english: 'Perceiving through Maya as if existing externally, just as dream objects appear outside',
+      },
+      {
+        sanskrit: 'यः साक्षात्कुरुते प्रबोधसमये स्वात्मानमेवाद्वयम्',
+        iast: 'yaḥ sākṣātkurute prabodhasamaye svātmānamevādvayam',
+        hindi: 'जो आत्म-जागृति के क्षण में स्वयं को ही अद्वितीय, एकरस आत्मा के रूप में साक्षात् करता है',
+        english: 'Who upon awakening directly realizes the Self alone as the non-dual reality',
+      },
+      {
+        sanskrit: 'तस्मै श्रीगुरुमूर्तये नम इदं श्रीदक्षिणामूर्तये',
+        iast: 'tasmai śrīgurumūrtaye nama idaṃ śrīdakṣiṇāmūrtaye',
+        hindi: 'उन गुरु-स्वरूप भगवान् दक्षिणामूर्ति को मेरा यह पावन नमन है',
+        english: 'Salutations unto Him, Lord Dakshinamurti, who embodies the supreme Guru',
+      },
+      {
+        sanskrit: 'बीजस्यान्तरिवाङ्कुरो जगदिदं प्राङ्निर्विकल्पं पुनः',
+        iast: 'bījasyāntarivāṅkuro jagadidaṃ prāṅnirvikalpaṃ punaḥ',
+        hindi: 'सृष्टि से पूर्व बीज में छिपे अंकुर की तरह यह जगत् अव्यक्त था, जो पुनः विविध रूप में प्रकट हुआ',
+        english: 'Like a sprout hidden within a seed, this world was unmanifest before creation',
+      },
+      {
+        sanskrit: 'साक्षात्तत्त्वमसीति वेदवचसा यो बोधयत्याश्रितान्',
+        iast: 'sākṣāttattvamasīti vedavacasā yo bodhayatyāśritān',
+        hindi: 'जो शरणागत शिष्यों को ‘तत्त्वमसि’ (तुम वही ब्रह्म हो) इस महावाक्य द्वारा जाग्रत करते हैं',
+        english: 'Who awakens sincere disciples through the Vedic Mahavakya: "Tat Tvam Asi" (That Thou Art)',
+      },
+      {
+        sanskrit: 'नानाछिद्रघटोदरस्थितमहादीपप्रभाभास्वरम्',
+        iast: 'nānāchidraghaṭodarasthitamahādīpaprabhābhāsvaram',
+        hindi: 'छिद्रों वाले घड़े में रखे विशाल दीपक के प्रकाश की तरह जिसकी चेतना इन्द्रियों से बाहर निकलती है',
+        english: 'Like the radiance of a blazing lamp inside a pot with many holes, shining outward through senses',
+      },
+      {
+        sanskrit: 'जानामीति यमेव भान्तमनुभात्येतत्समस्तं जगत्',
+        iast: 'jānāmīti yameva bhāntamanubhātyetatsamastaṃ jagat',
+        hindi: 'जिस स्वयंप्रकाश चैतन्य के प्रकाशित होने पर ही यह सम्पूर्ण जगत् प्रकाशित होता है',
+        english: 'By whose luminous presence alone this entire universe is illuminated with knowledge',
+      },
+      {
+        sanskrit: 'स्वात्मानं प्रकटीकरोति भजतां यो मुद्रया भद्रया',
+        iast: 'svātmānaṃ prakaṭīkaroti bhajatāṃ yo mudrayā bhadrayā',
+        hindi: 'जो चिन्मुद्रा (ज्ञानमुद्रा) द्वारा शरणागत भक्तों को आत्म-साक्षात्कार कराते हैं',
+        english: 'Who reveals the inner Self to sincere seekers through the auspicious gesture of Cinmudra',
+      },
+    ],
+    hindiMeaning: 'जगद्गुरु आदि शङ्कराचार्य विरचित दक्षिणामूर्ति स्तोत्र अद्वैत वेदान्त का सर्वोच्च स्तोत्र है: 1. जैसे दर्पण में दिखाई देने वाला नगर दर्पण के भीतर ही होता है, वैसे ही यह सम्पूर्ण जगत् आत्मा के भीतर ही स्थित है; किन्तु अज्ञानरूपी माया के कारण यह बाहर प्रतीत होता है। आत्म-ज्ञान होने पर जो अपने अद्वितीय आत्म-स्वरूप का ही साक्षात्कार करते हैं, उन गुरु-स्वरूप भगवान् दक्षिणामूर्ति को मेरा प्रणाम। 2. जैसे बीज के भीतर अंकुर छिपा रहता है, वैसे ही सृष्टि से पूर्व यह जगत् निर्विकल्प रूप में था; जिसे मायावी या महायोगी की भाँति जो अपनी इच्छा से देश-काल के वैचित्र्य में प्रकट करते हैं, उन दक्षिणामूर्ति को नमन। 3. जिनका सत्य स्वरूप ही असत्य जगत् को प्रकाशित करता है और जो ‘तत्त्वमसि’ महावाक्य द्वारा शिष्यों को आत्म-बोध कराते हैं, उन गुरु दक्षिणामूर्ति को प्रणाम। 4. छिद्रों वाले घट में स्थित दीपक के समान जिनका ज्ञान नेत्र आदि इन्द्रियों द्वारा बाहर फैलता है और जिनके प्रकाश से ही सारा संसार प्रकाशित होता है, उन्हें नमन। 5. जो देह, प्राण, इन्द्रिय और बुद्धि को ही आत्मा मानने वाले भ्रान्त वादियों के भ्रम का नाश करते हैं, उन्हें नमन। 6. सुषुप्ति में सब इन्द्रियों के लीन होने पर भी जो शुद्ध सत्ता रूप से विद्यमान रहते हैं और जागने पर ‘मैं सुख से सोया’ इस रूप में पहचाने जाते हैं, उन्हें नमन। 7. बाल्यावस्था, युवावस्था, जाग्रत्, स्वप्न और सुषुप्ति में जो निरन्तर ‘मैं’ रूप से साक्षी बनकर चमकते हैं और चिन्मुद्रा द्वारा आत्मज्ञान कराते हैं, उन्हें नमन। 8. जो संसार को कार्य-कारण, गुरु-शिष्य, पिता-पुत्र के भेद में देखते हैं, वे माया से मोहित हैं; उस अद्वैत स्वरूप दक्षिणामूर्ति को नमन। 9. पृथ्वी, जल, अग्नि, वायु, आकाश, सूर्य, चन्द्रमा और जीवात्मा—ये आठों मूर्तियाँ जिनका ही स्वरूप हैं, उन सर्वव्यापी दक्षिणामूर्ति को प्रणाम। 10. इस स्तोत्र के श्रवण, मनन और ध्यान से साधक को सर्वात्म-भाव और साक्षात् ईश्वरत्व की प्राप्ति होती है।',
+    englishMeaning: 'Composed by Jagadguru Adi Shankaracharya, the Dakshinamurti Stotram is the pinnacle hymn of Advaita Vedanta philosophy: 1. Just as a city seen inside a mirror seems to be outside, so this entire universe exists within the Atman, yet appears external through the power of Maya, like a dream. Unto Him who upon awakening directly realizes the non-dual Self alone, to that sacred Teacher Lord Dakshinamurti, I offer my salutations. 2. Like a sprout latent within a seed before sprouting, this universe was unmanifest prior to creation, and then projected into diverse space, time, and causation by the Lord like a master magician or yogi; unto Him, salutations. 3. Unto Him whose radiant existence alone lends reality to the unreal world, and who instructs seekers through the Vedic Mahavakya "Tat Tvam Asi" (That Thou Art), freeing them from the ocean of rebirth. 4. Unto Him whose awareness shines through the senses like a bright lamp within a perforated pot, and by whose light alone the entire universe shines. 5. Unto Him who dispels the delusion of those who mistakenly identify the Self with the physical body, prana, senses, or fleeting intellect. 6. Unto Him who remains as pure presence even in deep dreamless sleep when all senses are withdrawn, and is recognized upon waking as "I slept peacefully." 7. Unto Him who shines unceasingly as the witness "I" through childhood, youth, waking, dreaming, and deep sleep, revealing the Self through the auspicious gesture of Cinmudra. 8. Unto Him who dissolves the illusion of duality (cause and effect, master and servant, teacher and pupil). 9. Unto Him whose eightfold cosmic embodiment encompasses earth, water, fire, air, space, sun, moon, and the conscious individual. 10. By hearing, contemplating, and meditating on this hymn that unveils universal oneness (Sarvatmatva), the seeker attains the supreme divine nature and unhindered spiritual sovereignty.',
+    significance: 'The Dakshinamurti Stotram is revered as the ultimate philosophical compendium of Advaita Vedanta in just ten verses. Lord Shiva as Dakshinamurti faces the South (the direction of death and mortality), bestowing immortality through profound silence (Mauna-vyakhya) and the sacred Cinmudra (the index finger touching the thumb, symbolizing the individual soul recognizing its non-dual identity with Brahman). It addresses the four classic Vedantic analogies: the mirror reflection (Darpana), the latent seed (Bija), the light through a perforated pot (Ghata-dipa), and the eclipse (Rahu-grasta).',
+    significanceHi: 'दक्षिणामूर्ति स्तोत्र सम्पूर्ण अद्वैत वेदान्त का दस श्लोकों में संकलित महा-ग्रन्थ माना जाता है। भगवान् शिव जब दक्षिणामूर्ति रूप में विराजमान होते हैं, तो वे दक्षिण दिशा (मृत्यु व यम की दिशा) की ओर मुख करके बैठते हैं और मृत्युंजय आत्मज्ञान प्रदान करते हैं। वे मौन व्याख्यान द्वारा शिष्यों के सभी संशयों को समूल नष्ट कर देते हैं। उनके हाथ की चिन्मुद्रा तर्जनी (जीवात्मा) और अङ्गुष्ठ (परमात्मा) के मिलन का प्रतीक है, जो यह प्रकट करती है कि जीव और ब्रह्म में तात्विक रूप से कोई भेद नहीं है।',
+    faqs: [
+      {
+        question: 'What is the theological significance of the name "Dakshinamurti"?',
+        answer: 'Dakshinamurti literally means "the Form facing South". In Vedic tradition, South is the direction of Yama (death). By facing south, Lord Shiva reveals the immortal knowledge that transcends physical mortality. It also means the deity of supreme gracious benevolence (Dakshina = capable, gracious, and south-facing).',
+      },
+      {
+        question: 'What is the meaning of the Chinmudra (चिन्मुद्रा) shown by Lord Dakshinamurti?',
+        answer: 'Cinmudra is formed by joining the tip of the index finger (symbolizing the individual ego/Jivatman) to the tip of the thumb (symbolizing Supreme Consciousness/Paramatman), while the remaining three fingers stay extended (symbolizing the three gunas or bodies: physical, subtle, and causal). It signifies the transcendent union of the soul with Brahman.',
+      },
+      {
+        question: 'How does Dakshinamurti Stotram relate to Guruvara (Thursday) and Brihaspati?',
+        answer: 'Lord Dakshinamurti is revered as the Primordial Jagadguru (Adi Guru) of all sages, including Sanaka, Sanandana, Sanatana, and Sanatsujata. Reciting this stotra on Guruvara (Thursday) invokes preceptor grace and clears mental fog.',
+      },
+    ],
+  },
+  {
+    id: 'shiva-mahimna-stotram',
+    slug: 'shiva-mahimna-stotram',
+    title: 'Shiva Mahimna Stotram',
+    titleHi: 'शिवमहिम्नः स्तोत्रम्',
+    sanskrit: `महिम्नः पारं ते परमविदुषो यद्यसदृशी
+स्तुतिर्ब्रह्मादीनामपि तदवसन्नास्त्वयि गिरः ।
+अथाऽवाच्यः सर्वः स्वमतिपरिणामावधि गृणन्
+ममाप्येष स्तोत्रे हर निरपवादः परिकरः ॥ 1 ॥
+
+अतीतं पन्थानं तव च महिमा वाङ्मनसयोः
+अतद्व्यावृत्त्या यं चकितमभिधत्ते श्रुतिरपि ।
+स कस्य स्तोतव्यः कतिविधगुणः कस्य विषयः
+पदे त्वर्वाचीने पतति न मनः कस्य न वचः ॥ 2 ॥
+
+त्रयी साङ्ख्यं योगः पशुपतिमतं वैष्णवमिति
+प्रभिन्ने प्रस्थाने परमिदमदः पथ्यमिति च ।
+रुचीनां वैचित्र्यादृजुकुटिलनानापथजुषां
+नृणामेको गम्यस्त्वमसि पयसामर्णव इव ॥ 3 ॥
+
+महोक्षः खट्वाङ्गं परशुरजिनं भस्म फणिनः
+कपालं चेतीयत्तव वरद तन्त्रोपकरणम् ।
+सुरास्तां तामृद्धिं दधति तु भवद्भ्रूप्रणिहितां
+न हि स्वात्मारामं विषयमृगतृष्णा भ्रमयति ॥ 4 ॥
+
+असितगिरिसमं स्यात् कज्जलं सिन्धुपात्रे
+सुरतरुवरशाखा लेखनी पत्रमुर्वी ।
+लिखति यदि गृहीत्वा शारदा सर्वकालं
+तदपि तव गुणानामीश पारं न याति ॥ 5 ॥
+
+असुरसुरमुनीन्द्रैरर्चितस्येन्दुमौलेर्-
+ग्रथितगुणमहिम्नो निर्गुणस्येश्वरस्य ।
+सकलगणवरिष्ठः पुष्पदन्ताभिधानो
+रुचिरमलघुवृत्तैः स्तोत्रमेतच्चकार ॥ 6 ॥`,
+    transliteration: `mahimnaḥ pāraṃ te paramaviduṣo yadyasadṛśī
+stutirbrahmādīnāmapi tadavasannāstvayi giraḥ |
+athā'vācyaḥ sarvaḥ svamatipariṇāmāvadhi gṛṇan
+mamāpyeṣa stotre hara nirapavādaḥ parikaraḥ || 1 ||
+
+atītaṃ panthānaṃ tava ca mahimā vāṅmanasayoḥ
+atadvyāvṛttyā yaṃ cakitamabhidhatte śrutirapi |
+sa kasya stotavyaḥ katividhaguṇaḥ kasya viṣayaḥ
+pade tvarvīcīne patati na manaḥ kasya na vacaḥ || 2 ||
+
+trayī sāṅkhyaṃ yogaḥ paśupatimataṃ vaiṣṇavamiti
+prabhinne prasthāne paramidamadaḥ pathyamiti ca |
+rucīnāṃ vaicitryādṛjukuṭilanānāpathajuṣāṃ
+nṛṇāmeko gamyastvamasi payasāmarnava iva || 3 ||
+
+mahokṣaḥ khaṭvāṅgaṃ paraśurajinaṃ bhasma phaṇinaḥ
+kapālaṃ cetīyattava varada tantropakaraṇam |
+surāstāṃ tāmṛddhiṃ dadhati tu bhavadbhrūpraṇihitāṃ
+na hi svātmārāmaṃ viṣayamṛgatṛṣṇā bhramayati || 4 ||
+
+asitagirisamaṃ syāt kajjalaṃ sindhupātre
+surataruvaraśākhā lekhanī patramurvī |
+likhati yadi gṛhītvā śāradā sarvakālaṃ
+tadapi tava guṇānāmīśa pāraṃ na yāti || 5 ||
+
+asurasuramunīndrairarcitasyendumEuler-
+grathitaguṇamahimno nirguṇasyeśvarasya |
+sakalagaṇavariṣṭhaḥ puṣpadantābhidhāno
+ruciramalaghuvṛttaiḥ stotrametaccakāra || 6 ||`,
+    category: 'stotra',
+    categoryLabel: 'Shaiva Devotional Hymn',
+    categoryLabelHi: 'शिवमहिम्नः स्तोत्र पाठ',
+    rishi: 'गन्धर्वराज पुष्पदन्त (Gandharvaraja Pushpadanta)',
+    devata: 'भगवान् सदाशिव (Lord Shiva)',
+    chhandas: 'शिखरिणी (Shikharini)',
+    source: 'Shaiva Smriti Tradition',
+    sourceCoordinates: 'Shiva Mahimna Stotram, Verses 1–6 (Pushpadanta Virachitam)',
+    sourceHref: '/panchang/varas/somavara/',
+    wordMeanings: [
+      {
+        sanskrit: 'महिम्नः पारं ते परमविदुषः',
+        iast: 'mahimnaḥ pāraṃ te paramaviduṣaḥ',
+        hindi: 'आपकी महिमा के पार को न जानने वाले अज्ञानी के लिए',
+        english: 'For one who does not know the outer shore or limit of Your infinite glory',
+      },
+      {
+        sanskrit: 'स्तुतिर्ब्रह्मादीनामपि तदवसन्नास्त्वयि गिरः',
+        iast: 'stutirbrahmādīnāmapi tadavasannāstvayi giraḥ',
+        hindi: 'ब्रह्मा आदि देवताओं की वाणी भी आपकी स्तुति करने में असमर्थ होकर थक जाती है',
+        english: 'Even the sublime utterances of Brahma and the gods fall exhausted in praising You',
+      },
+      {
+        sanskrit: 'नृणामेको गम्यस्त्वमसि पयसामर्णव इव',
+        iast: 'nṛṇāmeko gamyastvamasi payasāmarnava iva',
+        hindi: 'जैसे सभी नदियाँ अंततः समुद्र में ही मिलती हैं, वैसे ही सभी मार्गों के मनुष्यों के एकमात्र प्राप्य आप ही हैं',
+        english: 'As all rivers ultimately merge into the one vast ocean, You alone are the final destination of all humans',
+      },
+      {
+        sanskrit: 'त्रयी साङ्ख्यं योगः पशुपतिमतं वैष्णवमिति',
+        iast: 'trayī sāṅkhyaṃ yogaḥ paśupatimataṃ vaiṣṇavamiti',
+        hindi: 'वेद, सांख्य, योग, पाशुपत और वैष्णव—ये भिन्न-भिन्न प्रस्थान और मत हैं',
+        english: 'The three Vedas, Sankhya, Yoga, Pashupata, and Vaishnava doctrines represent diverse pathways',
+      },
+      {
+        sanskrit: 'न हि स्वात्मारामं विषयमृगतृष्णा भ्रमयति',
+        iast: 'na hi svātmārāmaṃ viṣayamṛgatṛṣṇā bhramayati',
+        hindi: 'जो अपने आत्म-स्वरूप में ही सन्तुष्ट (स्वात्माराम) हैं, उन्हें सांसारिक विषयों की मृगतृष्णा कभी विचलित नहीं कर सकती',
+        english: 'For one who delights solely in the inner Self, the mirage of worldly pleasures can never tempt or delude',
+      },
+      {
+        sanskrit: 'असितगिरिसमं स्यात् कज्जलं सिन्धुपात्रे',
+        iast: 'asitagirisamaṃ syāt kajjalaṃ sindhupātre',
+        hindi: 'यदि काले पर्वत के समान काजल को समुद्र रूपी दवात में घोल लिया जाए',
+        english: 'If ink as vast as a black mountain were dissolved in the ocean-sized inkpot',
+      },
+      {
+        sanskrit: 'लिखति यदि गृहीत्वा शारदा सर्वकालम्',
+        iast: 'likhati yadi gṛhītvā śāradā sarvakālam',
+        hindi: 'और कल्पवृक्ष की शाखा की लेखनी बनाकर स्वयं सरस्वती देवी अनन्तकाल तक लिखें',
+        english: 'And Mother Saraswati Herself were to write continuously using the celestial branch as pen',
+      },
+      {
+        sanskrit: 'तदपि तव गुणानामीश पारं न याति',
+        iast: 'tadapi tava guṇānāmīśa pāraṃ na yāti',
+        hindi: 'तथापि हे ईश्वर! आपके दिव्य गुणों का पार कभी नहीं पाया जा सकता',
+        english: 'Even then, O Supreme Lord, the infinite shore of Your divine attributes could never be exhausted',
+      },
+    ],
+    hindiMeaning: 'गन्धर्वराज पुष्पदन्त द्वारा विरचित शिवमहिम्नः स्तोत्र भगवान् शिव की स्तुति का मुकुटमणि है: 1. हे हर! यदि आपकी असीम महिमा को पूर्णतः न जानकर स्तुति करना अनुचित है, तो ब्रह्मा आदि देवताओं की वाणी भी आपके वर्णन में असमर्थ है। जब सभी अपनी-अपनी बुद्धि की सीमा के अनुसार ही आपकी स्तुति करते हैं, तो मेरा यह स्तोत्र-प्रयास भी सर्वथा निर्दोष है। 2. आपकी महिमा मन और वाणी की पहुँच से परे है; वेद भी जिसका वर्णन करने में चकित होकर केवल ‘नेति-नेति’ कहते हैं, उसकी स्तुति कौन कर सकता है? किन्तु आपके सगुण रूप पर किसका मन और वाणी आकर्षित नहीं होते! 3. वेदत्रयी, सांख्य, योग, पाशुपत और वैष्णव—रुचियों के भेद से लोग सीधे या टेढ़े अलग-अलग मार्गों पर चलते हैं; किन्तु जैसे सीधी और टेढ़ी बहने वाली सभी नदियाँ अंत में समुद्र में ही मिलती हैं, वैसे ही सभी मनुष्यों के एकमात्र प्राप्य आप ही हैं। 4. बैल, खट्वांग, कुल्हाड़ी, मृगचर्म, भस्म, सर्प और नर-कपाल—हे वरदाता! आपके पास बाह्य रूप में केवल इतनी ही सामग्री है; फिर भी आपके भ्रूभंग मात्र से देवता समस्त ऐश्वर्य पाते हैं। वास्तव में जो अपने आत्म-स्वरूप में रमण करते हैं, उन्हें सांसारिक विषयों की मृगतृष्णा कभी मोहित नहीं कर सकती। 5. यदि काले पर्वत के बराबर काजल को समुद्र रूपी दवात में घोल लिया जाए, कल्पवृक्ष की शाखा की कलम हो, सम्पूर्ण पृथ्वी कागज हो और स्वयं सरस्वती देवी अनन्तकाल तक लिखें, तब भी हे ईश्वर! आपके गुणों का पार नहीं पाया जा सकता। 6. असुर, देवता और मुनिजनों द्वारा पूजित चन्द्रमौलि भगवान् शिव की इस स्तुति की रचना गन्धर्वराज पुष्पदन्त ने की है।',
+    englishMeaning: 'Composed by Gandharvaraja Pushpadanta, the Shiva Mahimna Stotram is among the greatest devotional hymns of the Shaiva tradition: 1. O Hara! If praising You without fully knowing Your infinite greatness is improper, then even the words of Brahma and all celestial sages are inadequate. But if everyone praises You according to the limit of their own understanding, then my humble undertaking in this hymn is blameless. 2. Your glory transcends mind and speech; even the sacred Vedas fall awestruck, speaking only through negation (Neti Neti). Who can comprehend all Your virtues? Yet when You manifest, whose heart and voice are not drawn toward You? 3. The three Vedas, Sankhya, Yoga, the Shaiva system, and Vaishnavism—owing to diverse inclinations, people choose varied pathways, straight or winding; yet You alone are the final goal of all humanity, just as the ocean is the destination of all rivers. 4. An old bull, a staff, an axe, a tiger-skin, holy ash, serpents, and a skull—this is Your humble external paraphernalia, O Bestower of boons! Yet by the mere knitting of Your brows, the gods attain immense prosperity. Indeed, the mirage of sensory pleasure can never tempt one who delights solely in the inner Self. 5. If a mass of black ink as vast as the Himalayas were poured into the cosmic ocean as an inkpot, with the branch of the Parijata tree as pen and the vast earth as paper, and if Mother Saraswati Herself were to write continuously throughout eternity, even then, O Lord, She could never reach the end of Your boundless attributes. 6. Thus did Pushpadanta, chief of the Gandharvas, compose this hymn in melodious metres to Lord Shiva, who is worshipped by gods and sages alike.',
+    significance: 'The Shiva Mahimna Stotram is renowned for resolving inter-faith and sectarian conflict through Verse 3 ("Ruceenam vaicitryad... payasam arnava iva"), demonstrating that all genuine spiritual doctrines (Vedic, Sankhya, Yoga, Shaiva, Vaishnava) converge upon the same non-dual Truth, just as all rivers inevitably reach the sea. This verse was famously cited by Swami Vivekananda at the 1893 Parliament of Religions in Chicago to express the universal tolerance of Sanatana Dharma.',
+    significanceHi: 'शिवमहिम्नः स्तोत्र का श्लोक 3 (रुचीनां वैचित्र्यादृजुकुटिलनानापथजुषां...) सनातन धर्म की विश्व-बन्धुत्व और सर्वपंथ-समादर की भावना का अमर प्रतीक है। स्वामी विवेकानन्द ने 1893 में शिकागो की विश्व धर्म संसद में अपने ऐतिहासिक भाषण में इसी श्लोक को उद्धृत कर संसार को समझाया था कि जैसे सभी नदियाँ अंत में एक ही महासागर में मिलती हैं, वैसे ही सभी उपासना पद्धतियाँ उसी एक परब्रह्म तक पहुँचती हैं।',
+    faqs: [
+      {
+        question: 'Who composed the Shiva Mahimna Stotram and what is the story behind it?',
+        answer: 'It was composed by Gandharvaraja Pushpadanta. Legend recounts that after accidentally stepping on sacred Bilva leaves while invisible in King Chitraratha’s garden, he lost his power of flight. In deep remorse, he praised Lord Shiva with this sublime hymn, whereupon his divine powers and Shiva\'s grace were fully restored.',
+      },
+      {
+        question: 'Which famous verse from Shiva Mahimna Stotram did Swami Vivekananda quote in Chicago?',
+        answer: 'Swami Vivekananda quoted Verse 3: "Ruceenam vaicitryad rju-kutila-nana-patha-jusam, nrnam eko gamyas tvam asi payasam arnava iva" ("As the different streams having their sources in different places all mingle their water in the sea, so, O Lord, the different paths which men take through different tendencies, various though they appear, crooked or straight, all lead to Thee").',
+      },
+      {
+        question: 'On what days is reciting the Shiva Mahimna Stotram especially recommended?',
+        answer: 'It is traditionally recited on Somavara (Mondays), Pradosha Vratam, Maha Shivaratri, and throughout the holy month of Shravana.',
+      },
+    ],
+  },
 ];
 
 export function getMantraBySlug(slug: string): SacredMantra | undefined {
