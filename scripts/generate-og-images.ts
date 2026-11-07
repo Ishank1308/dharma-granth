@@ -32,7 +32,7 @@ import { readSeededChapter } from "../lib/read-seeded-chapters";
 import { withPassageMeaning } from "../lib/verse-format";
 import { VERSE_PAGE_SCRIPTURE_IDS, verseSlug, verseStaticParams } from "../lib/verse-pages";
 import { SACRED_MANTRAS, type SacredMantra } from "../data/mantras";
-import { NAKSHATRA_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES, type UniqueTithi, YOGA_DATA, type YogaMeta, getAllKaranas, type KaranaMeta } from "../lib/panchang";
+import { NAKSHATRA_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES, type UniqueTithi, YOGA_DATA, type YogaMeta, getAllKaranas, type KaranaMeta, VARA_DATA, type VaraMeta } from "../lib/panchang";
 
 const ROOT = resolve(__dirname, "..");
 const OUT_DIR = resolve(ROOT, "public/og");
@@ -848,6 +848,121 @@ function karanaOgTemplate(k: KaranaMeta) {
   };
 }
 
+function varaOgTemplate(v: VaraMeta) {
+  return {
+    type: "div",
+    props: {
+      style: {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "60px 76px",
+        background: "linear-gradient(135deg, #451a03 0%, #7c2d12 45%, #ea580c 100%)",
+        color: "white",
+        fontFamily: "Noto Sans",
+      },
+      children: [
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 20,
+                    opacity: 0.85,
+                    letterSpacing: 6,
+                    textTransform: "uppercase",
+                    marginBottom: 22,
+                  },
+                  children: `Dharma Granth · 7 Vedic Varas · Day ${v.index + 1}`,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 66,
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    maxWidth: 1050,
+                  },
+                  children: `${v.name} (${v.nameHi})`,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 38,
+                    marginTop: 18,
+                    opacity: 0.95,
+                    fontFamily: "Noto Sans Devanagari",
+                  },
+                  children: `${v.grahaLordHi} · ${v.natureHi}`,
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 23,
+                    opacity: 0.9,
+                    lineHeight: 1.4,
+                    maxWidth: 1040,
+                    marginBottom: 22,
+                  },
+                  children: shortDescription(v.explanation, 170),
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    borderTop: "1px solid rgba(255,255,255,0.2)",
+                    paddingTop: 16,
+                  },
+                  children: [
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85 },
+                        children: `Lord: ${v.grahaLord} · Element: ${v.element}`,
+                      },
+                    },
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85 },
+                        children: `Gemstone: ${v.gemstone}`,
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  };
+}
+
 function hubOgTemplate(title: string, subtitleHi: string, description: string, tag: string, gradient: string) {
   return {
     type: "div",
@@ -1002,6 +1117,17 @@ async function renderKaranas(fonts: SatoriFont[]): Promise<void> {
   console.log(`  ✓ ${getAllKaranas().length} karana OG images in public/og/karana/`);
 }
 
+async function renderVaras(fonts: SatoriFont[]): Promise<void> {
+  const varaDir = resolve(OUT_DIR, "vara");
+  mkdirSync(varaDir, { recursive: true });
+  for (const v of VARA_DATA) {
+    const svg = await renderSvg(varaOgTemplate(v), WIDTH, HEIGHT, fonts);
+    const optPng = await svgToOptimizedPng(svg, WIDTH);
+    writeFileSync(resolve(varaDir, `${v.slug}.png`), optPng);
+  }
+  console.log(`  ✓ ${VARA_DATA.length} vara OG images in public/og/vara/`);
+}
+
 async function renderHubCards(fonts: SatoriFont[]): Promise<void> {
   const hubs = [
     {
@@ -1027,6 +1153,14 @@ async function renderHubCards(fonts: SatoriFont[]): Promise<void> {
       desc: "The classical 16 lunar phases of the Vedic calendar, categorized across the 5 harmonic Pancha Tithi classes: Nanda, Bhadra, Jaya, Rikta, and Poorna.",
       tag: "Vedic Calendar",
       gradient: "linear-gradient(135deg, #18181b 0%, #27272a 45%, #78350f 100%)",
+    },
+    {
+      file: "varas.png",
+      title: "The 7 Vedic Varas",
+      subtitleHi: "सप्त वासर (7 वार)",
+      desc: "The seven planetary weekdays of the Vedic calendar from Ravivara to Shanivara, with presiding Graha lords, elements, and fasts.",
+      tag: "Vedic Calendar",
+      gradient: "linear-gradient(135deg, #451a03 0%, #7c2d12 45%, #ea580c 100%)",
     },
     {
       file: "yogas.png",
@@ -1405,12 +1539,13 @@ async function main(): Promise<void> {
     return;
   }
   if (process.argv.includes("--sections-only")) {
-    console.log(`[og] rendering section OG images (mantras, nakshatras, tithis, yogas, karanas, hubs)...`);
+    console.log(`[og] rendering section OG images (mantras, nakshatras, tithis, yogas, karanas, varas, hubs)...`);
     await renderMantras(fonts);
     await renderNakshatras(fonts);
     await renderTithis(fonts);
     await renderYogas(fonts);
     await renderKaranas(fonts);
+    await renderVaras(fonts);
     await renderHubCards(fonts);
     console.log(`[og] section OG images done.`);
     return;
@@ -1422,12 +1557,13 @@ async function main(): Promise<void> {
       await renderOne(meta, fonts);
       process.stdout.write(`  ✓ ${meta.id}\n`);
     }
-    console.log(`[og] rendering section OG images (mantras, nakshatras, tithis, yogas, karanas, hubs)...`);
+    console.log(`[og] rendering section OG images (mantras, nakshatras, tithis, yogas, karanas, varas, hubs)...`);
     await renderMantras(fonts);
     await renderNakshatras(fonts);
     await renderTithis(fonts);
     await renderYogas(fonts);
     await renderKaranas(fonts);
+    await renderVaras(fonts);
     await renderHubCards(fonts);
   }
   console.log(`[og] rendering brand assets`);

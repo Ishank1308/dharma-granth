@@ -12,7 +12,7 @@ import { wisdomTopics } from '../data/wisdom-for-life';
 import { CHAPTERS } from '../data/ashtavakra/chapters-meta';
 import { wisdomVerseHref, libraryLocation } from '../lib/wisdom-links';
 import { versePageHref } from '../lib/verse-paths';
-import { NAKSHATRA_DATA, TITHI_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES, YOGA_DATA, getAllKaranas } from '../lib/panchang';
+import { NAKSHATRA_DATA, TITHI_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES, YOGA_DATA, getAllKaranas, VARA_DATA } from '../lib/panchang';
 import { SACRED_MANTRAS } from '../data/mantras';
 import { getAllConceptDetails } from '../data/concept-details';
 import { characters } from '../data/characters';
@@ -115,6 +115,10 @@ for (const y of YOGA_DATA) {
 
 for (const k of getAllKaranas()) {
   addTerm(`karana-${k.slug}`, `${k.name} Karana`, `${k.nameHi} करण`, `/panchang/karanas/${k.slug}/`);
+}
+
+for (const v of VARA_DATA) {
+  addTerm(`vara-${v.slug}`, `${v.name}`, `${v.nameHi}`, `/panchang/varas/${v.slug}/`);
 }
 
 for (const tithi of Object.values(TITHI_DATA)) addTerm(`tithi-${tithi.paksha}-${tithi.number}`, tithi.name, tithi.nameHi);

@@ -1770,6 +1770,287 @@ export function getAllKaranas(): KaranaMeta[] {
   return Object.values(KARANA_DATA);
 }
 
+export interface VaraMeta {
+  index: number;
+  slug: string;
+  name: string;
+  nameHi: string;
+  transliteration: string;
+  synonyms: string[];
+  grahaLord: string;
+  grahaLordHi: string;
+  element: string;
+  elementHi: string;
+  guna: 'Sattva' | 'Rajas' | 'Tamas';
+  gunaHi: string;
+  deity: string;
+  deityHi: string;
+  nature: string;
+  natureHi: string;
+  gemstone: string;
+  gemstoneHi: string;
+  metal: string;
+  metalHi: string;
+  color: string;
+  colorHi: string;
+  sacredFasts: string[];
+  recommendedStotras: { title: string; href?: string }[];
+  spiritualFocus: string;
+  explanation: string;
+}
+
+export const VARA_DATA: VaraMeta[] = [
+  {
+    index: 0,
+    slug: 'ravivara',
+    name: 'Ravivara',
+    nameHi: 'रविवार',
+    transliteration: 'Ravivāra',
+    synonyms: ['भानुवासर', 'आदित्यवार', 'सूर्यवार', 'अर्कवासर'],
+    grahaLord: 'Surya (Sun)',
+    grahaLordHi: 'सूर्यदेव (आदित्य)',
+    element: 'Tejas (Fire / Light)',
+    elementHi: 'तेजस् (प्रकाश व ऊर्जा)',
+    guna: 'Sattva',
+    gunaHi: 'सत्त्व',
+    deity: 'Surya Narayana / Agni / Shiva',
+    deityHi: 'सूर्यनारायण / अग्निदेव',
+    nature: 'Fixed & Majestic (स्थिर व तेजस्वी)',
+    natureHi: 'स्थिर व तेजस्वी',
+    gemstone: 'Ruby (माणिक्य)',
+    gemstoneHi: 'माणिक्य (Ruby)',
+    metal: 'Copper (तांबा)',
+    metalHi: 'तांबा (ताम्र)',
+    color: 'Saffron / Crimson Orange',
+    colorHi: 'केसरिया व गहरा नारंगी',
+    sacredFasts: ['Ravivar Vrat (रविवार व्रत)', 'Chhath Puja', 'Ratha Saptami', 'Bhanu Saptami'],
+    recommendedStotras: [
+      { title: 'Aditya Hridaya Stotra (आदित्य हृदय स्तोत्रम्)', href: '/mantras/aditya-hridaya-stotra/' },
+      { title: 'Gayatri Mantra (गायत्री मन्त्र)', href: '/mantras/gayatri-mantra/' },
+      { title: 'Surya Ashtakam (सूर्याष्टकम्)' },
+    ],
+    spiritualFocus: 'Atma-bala (soul vitality), overcoming spiritual indolence, selfless leadership, and meditation on the inner spiritual light.',
+    explanation: 'First day of the Vedic planetary week. Governed by Surya, the cosmic soul (Atmakaraka) and visible embodiment of the Divine. Associated with vitality, righteous authority, spiritual illumination, and health. Ideal for Gayatri japa, Surya namaskar, and cultivating truthful resolve.',
+  },
+  {
+    index: 1,
+    slug: 'somavara',
+    name: 'Somavara',
+    nameHi: 'सोमवार',
+    transliteration: 'Somavāra',
+    synonyms: ['इन्दुवासर', 'चन्द्रवार', 'शशिवासर', 'निशेशवासर'],
+    grahaLord: 'Chandra / Soma (Moon)',
+    grahaLordHi: 'चन्द्रदेव (सोम)',
+    element: 'Jala (Water / Fluid Harmony)',
+    elementHi: 'जल (शीतलता व भाव-प्रवाह)',
+    guna: 'Sattva',
+    gunaHi: 'सत्त्व',
+    deity: 'Shiva / Parvati / Soma',
+    deityHi: 'भगवान् शिव व माता पार्वती',
+    nature: 'Movable & Gentle (चर व सौम्य)',
+    natureHi: 'चर व सौम्य',
+    gemstone: 'Pearl / Moonstone (मोती)',
+    gemstoneHi: 'मोती (Pearl)',
+    metal: 'Silver (रजत / चाँदी)',
+    metalHi: 'चाँदी (रजत)',
+    color: 'Milky White / Pearl Cream',
+    colorHi: 'श्वेत व दुग्ध-धवल',
+    sacredFasts: ['Somvar Vrat (सोलह सोमवार व्रत)', 'Shravan Somvar', 'Somavati Amavasya', 'Pradosha Vrat'],
+    recommendedStotras: [
+      { title: 'Shiva Tandava Stotram (शिवताण्डवस्तोत्रम्)', href: '/mantras/shiva-tandava/' },
+      { title: 'Shiva Panchakshara Stotram (शिवपञ्चाक्षरस्तोत्रम्)', href: '/mantras/shiva-panchakshara-stotram/' },
+      { title: 'Lingashtakam (लिङ्गाष्टकम्)', href: '/mantras/lingashtakam/' },
+      { title: 'Shiv Chalisa (शिव चालीसा)', href: '/mantras/shiv-chalisa/' },
+    ],
+    spiritualFocus: 'Chitta-shuddhi (emotional purification), mental serenity, devotion to Shiva, and cooling of agitated senses.',
+    explanation: 'Second day of the Vedic planetary week. Governed by Chandra, the cosmic reflector of consciousness (Manaskaraka). Rules over the mind, emotions, maternal compassion, and life-giving waters. Revered across India as the sacred day of Mahadeva Shiva, who holds the crescent moon in His locks.',
+  },
+  {
+    index: 2,
+    slug: 'mangalavara',
+    name: 'Mangalavara',
+    nameHi: 'मंगलवार',
+    transliteration: 'Maṅgalavāra',
+    synonyms: ['भौमवासर', 'अङ्गारकवार', 'कुजवासर', 'लोहिताङ्गवासर'],
+    grahaLord: 'Mangala / Angaraka (Mars)',
+    grahaLordHi: 'मंगलदेव (भौम / अंगारक)',
+    element: 'Agni (Transformative Fire)',
+    elementHi: 'अग्नि (ऊर्जा व पराक्रम)',
+    guna: 'Tamas',
+    gunaHi: 'तमस् (अग्नि-संयमी)',
+    deity: 'Hanuman / Kartikeya (Skanda) / Narasimha',
+    deityHi: 'श्री हनुमान जी / भगवान् कार्तिकेय',
+    nature: 'Fiery & Dynamic (उग्र व पराक्रमी)',
+    natureHi: 'उग्र व पराक्रमी',
+    gemstone: 'Red Coral (मूंगा / प्रवाल)',
+    gemstoneHi: 'मूंगा (Red Coral)',
+    metal: 'Copper & Brass (ताम्र)',
+    metalHi: 'तांबा व पीतल',
+    color: 'Vermilion / Crimson Red',
+    colorHi: 'सिंदूरी व गहरा लाल',
+    sacredFasts: ['Mangalwar Vrat (मंगलवार व्रत)', 'Bhauma Pradosha', 'Angaraka Chaturthi', 'Hanuman Jayanti'],
+    recommendedStotras: [
+      { title: 'Hanuman Chalisa (हनुमान चालीसा)', href: '/mantras/hanuman-chalisa/' },
+      { title: 'Bajrang Baan (बजरंग बाण)', href: '/mantras/bajrang-baan/' },
+      { title: 'Sankat Mochan Hanuman Ashtak (संकटमोचन हनुमानाष्टक)', href: '/mantras/sankat-mochan-hanuman-ashtak/' },
+      { title: 'Rina Mochana Mangala Stotram (ऋणमोचन मङ्गल स्तोत्रम्)' },
+    ],
+    spiritualFocus: 'Directing raw passion into selfless courage, conquering fear, defending dharma, and destroying inner weakness.',
+    explanation: 'Third day of the Vedic planetary week. Governed by Mangala (Angaraka), the divine son of Earth and lord of courage, discipline, physical stamina, and willpower. Deeply sacred for the adoration of Sri Hanuman and Lord Skanda to transform anger into righteous vitality.',
+  },
+  {
+    index: 3,
+    slug: 'budhavara',
+    name: 'Budhavara',
+    nameHi: 'बुधवार',
+    transliteration: 'Budhavāra',
+    synonyms: ['सौम्यवासर', 'ज्ञवासर', 'बुधवासर', 'रौहिणेयवासर'],
+    grahaLord: 'Budha (Mercury)',
+    grahaLordHi: 'बुधदेव',
+    element: 'Prithvi (Earth / Intellectual Grounding)',
+    elementHi: 'पृथ्वी (स्थिर प्रज्ञा व यथार्थ)',
+    guna: 'Rajas',
+    gunaHi: 'रजस्',
+    deity: 'Vishnu / Saraswati / Ganesha',
+    deityHi: 'भगवान् विष्णु व माता सरस्वती',
+    nature: 'Intellectual & Adaptable (मिश्र व बौद्धिक)',
+    natureHi: 'मिश्र व बौद्धिक',
+    gemstone: 'Emerald (पन्ना)',
+    gemstoneHi: 'पन्ना (Emerald)',
+    metal: 'Bronze (कांस्य)',
+    metalHi: 'कांसा (कांस्य)',
+    color: 'Emerald Green',
+    colorHi: 'हरा (मरकत वर्ण)',
+    sacredFasts: ['Budhavar Vrat (बुधवार व्रत)', 'Budhashtami Vrat', 'Saraswati Pujan'],
+    recommendedStotras: [
+      { title: 'Ganapati Atharvashirsha (गणपति अथर्वशीर्ष)', href: '/mantras/ganapati-atharvashirsha/' },
+      { title: 'Achyutashtakam (अच्युताष्टकम्)', href: '/mantras/achyutashtakam/' },
+      { title: 'Madhurashtakam (मधुराष्टकम्)', href: '/mantras/madhurashtakam/' },
+      { title: 'Budha Kavacham (बुध कवचम्)' },
+    ],
+    spiritualFocus: 'Viveka (sharp discrimination), measured and truthful speech, logical clarity, and studying sacred Sanskrit texts.',
+    explanation: 'Fourth day of the Vedic planetary week. Governed by Budha, the celestial deity of intellect (Buddhi), communication, scholarship, mathematics, and commercial integrity. Ideal day for commencing philosophical study, writing, analytical thinking, and seeking the blessings of Lord Ganesha and Sri Hari Vishnu.',
+  },
+  {
+    index: 4,
+    slug: 'guruvara',
+    name: 'Guruvara',
+    nameHi: 'गुरुवार',
+    transliteration: 'Guruwāra',
+    synonyms: ['बृहस्पतिवासर', 'आङ्गिरसवासर', 'जीववासर', 'आर्यवासर'],
+    grahaLord: 'Brihaspati / Guru (Jupiter)',
+    grahaLordHi: 'देवगुरु बृहस्पति',
+    element: 'Akasha (Ether / Expansive Consciousness)',
+    elementHi: 'आकाश (विशाल चेतना)',
+    guna: 'Sattva',
+    gunaHi: 'सत्त्व',
+    deity: 'Brihaspati / Brahma / Dakshinamurti / Dattatreya',
+    deityHi: 'देवगुरु बृहस्पति / भगवान् दक्षिणामूर्ति',
+    nature: 'Noble & Expansive (शुभ व ज्ञानप्रद)',
+    natureHi: 'शुभ व ज्ञानप्रद',
+    gemstone: 'Yellow Sapphire (पुखराज)',
+    gemstoneHi: 'पुखराज (Yellow Sapphire)',
+    metal: 'Gold (स्वर्ण)',
+    metalHi: 'स्वर्ण (सोना)',
+    color: 'Yellow / Golden',
+    colorHi: 'पीला व स्वर्णिम',
+    sacredFasts: ['Guruvar Vrat (गुरुवार व्रत)', 'Brihaspativar Vrat', 'Guru Purnima', 'Dattatreya Jayanti'],
+    recommendedStotras: [
+      { title: 'Purusha Sukta (पुरुषसूक्तम्)', href: '/mantras/purusha-sukta/' },
+      { title: 'Achyutashtakam (अच्युताष्टकम्)', href: '/mantras/achyutashtakam/' },
+      { title: 'Dakshinamurti Stotram (दक्षिणामूर्ति स्तोत्रम्)' },
+      { title: 'Guru Paduka Stotram (गुरु पादुका स्तोत्रम्)' },
+    ],
+    spiritualFocus: 'Guru-kripa (preceptor grace), expansion of philosophical wisdom, generosity, and contemplation of the Supreme Self.',
+    explanation: 'Fifth day of the Vedic planetary week. Governed by Devaguru Brihaspati, the master of sacred speech and divine wisdom. Highly auspicious for spiritual initiation, reading the Upanishads and Gita, honoring spiritual teachers, and engaging in charitable service.',
+  },
+  {
+    index: 5,
+    slug: 'shukravara',
+    name: 'Shukravara',
+    nameHi: 'शुक्रवार',
+    transliteration: 'Śukravāra',
+    synonyms: ['भृगुवासर', 'काव्यवासर', 'दैत्यगुरुवार', 'असुरगुरुवार'],
+    grahaLord: 'Shukra (Venus)',
+    grahaLordHi: 'शुक्राचार्य (भृगुपुत्र)',
+    element: 'Jala (Refined Creative Waters)',
+    elementHi: 'जल (सौंदर्य व कला)',
+    guna: 'Rajas',
+    gunaHi: 'रजस् (कलात्मक)',
+    deity: 'Lakshmi / Durga / Saraswati (Maha-Devi)',
+    deityHi: 'माता महालक्ष्मी व भगवती दुर्गा',
+    nature: 'Graceful & Auspicious (मृदु व कल्याणकारी)',
+    natureHi: 'मृदु व कल्याणकारी',
+    gemstone: 'Diamond / White Zircon (हीरा)',
+    gemstoneHi: 'हीरा (Diamond)',
+    metal: 'Silver / White Gold (रजत)',
+    metalHi: 'चाँदी (रजत)',
+    color: 'Silvery White / Rose Pink',
+    colorHi: 'श्वेत व गुलाबी',
+    sacredFasts: ['Vaibhav Lakshmi Vrat (वैभव लक्ष्मी व्रत)', 'Santoshi Mata Vrat', 'Shukravar Vrat', 'Navratri Shukravar'],
+    recommendedStotras: [
+      { title: 'Shri Suktam (श्रीसूक्तम्)', href: '/mantras/shri-suktam/' },
+      { title: 'Kanakadhara Stotram (कनकधारा स्तोत्रम्)', href: '/mantras/kanakadhara-stotram/' },
+      { title: 'Mahishasura Mardini Stotram (महिषासुरमर्दिनीस्तोत्रम्)', href: '/mantras/mahishasura-mardini-stotram/' },
+      { title: 'Devi Kavacham (देवीकवचम्)', href: '/mantras/devi-kavacham/' },
+      { title: 'Argala Stotram (अर्गलास्तोत्रम्)', href: '/mantras/argala-stotram/' },
+    ],
+    spiritualFocus: 'Devotion to the Divine Mother, aesthetic refinement, spiritual purity (Shaucha), and sublimating sensory desires into divine love.',
+    explanation: 'Sixth day of the Vedic planetary week. Governed by Shukracharya (son of Bhrigu), master of fine arts, poetry, rejuvenating wisdom (Sanjivani), and devotion. The primary day across traditions for venerating Sri Maha Lakshmi and Devi Durga for spiritual and material grace.',
+  },
+  {
+    index: 6,
+    slug: 'shanivara',
+    name: 'Shanivara',
+    nameHi: 'शनिवार',
+    transliteration: 'Śanivāra',
+    synonyms: ['मन्दवासर', 'सौरिवासर', 'छायापुत्रवार', 'पङ्गुवासर'],
+    grahaLord: 'Shani (Saturn)',
+    grahaLordHi: 'शनैश्चर (सूर्यपुत्र शनिदेव)',
+    element: 'Vayu (Air & Wind / Detachment)',
+    elementHi: 'वायु (तितिक्षा व वैराग्य)',
+    guna: 'Tamas',
+    gunaHi: 'तमस् (तपस्या-योग्य)',
+    deity: 'Yama / Shiva (Bhairava) / Hanuman',
+    deityHi: 'शनिदेव / भगवान् भैरव / श्री हनुमान जी',
+    nature: 'Austerity & Detachment (मन्द व वैराग्यप्रद)',
+    natureHi: 'मन्द व वैराग्यप्रद',
+    gemstone: 'Blue Sapphire (नीलम)',
+    gemstoneHi: 'नीलम (Blue Sapphire)',
+    metal: 'Iron (लोहा)',
+    metalHi: 'लोहा (लौह)',
+    color: 'Deep Blue / Charcoal Black',
+    colorHi: 'नीला व गहरा श्याम',
+    sacredFasts: ['Shanivar Vrat (शनिवार व्रत)', 'Shani Pradosha', 'Shani Jayanti', 'Shani Amavasya'],
+    recommendedStotras: [
+      { title: 'Hanuman Chalisa (हनुमान चालीसा)', href: '/mantras/hanuman-chalisa/' },
+      { title: 'Bajrang Baan (बजरंग बाण)', href: '/mantras/bajrang-baan/' },
+      { title: 'Maha Mrityunjaya Mantra (महामृत्युंजय मन्त्र)', href: '/mantras/mahamrityunjaya/' },
+      { title: 'Dasharatha Shani Stotra (दशरथकृत शनि स्तोत्र)' },
+    ],
+    spiritualFocus: 'Dhairya (patience), enduring austerity (Tapas), selfless service to the weak, non-attachment, and recognizing the justice of Karma.',
+    explanation: 'Seventh day of the Vedic planetary week. Governed by Shani (son of Surya and Chhaya), the celestial dispenser of karmic consequences (Karmaphala-data). Represents discipline, patience, humility, and the quiet wisdom that emerges through facing life\'s difficulties with equanimity.',
+  },
+];
+
+export function varaSlug(name: string): string {
+  return name.toLowerCase().replace(/\s*\(.*?\)\s*/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+export function getVaraBySlug(slug: string): VaraMeta | undefined {
+  const clean = slug.toLowerCase().trim();
+  return VARA_DATA.find((v) => v.slug === clean || varaSlug(v.name) === clean);
+}
+
+export function getVaraByIndex(index: number): VaraMeta {
+  const norm = ((index % 7) + 7) % 7;
+  return VARA_DATA[norm];
+}
+
+export function getAllVaras(): VaraMeta[] {
+  return VARA_DATA;
+}
+
 export interface RituMeta {
   name: string;
   nameHi: string;
@@ -1929,6 +2210,7 @@ export interface PanchangDayData {
   fullDateHindi: string;
   dayOfWeek: string;
   dayOfWeekHi: string;
+  vara: VaraMeta;
   location: LocationConfig;
   tithi: {
     number: number;
@@ -2395,6 +2677,7 @@ export function calculateEducationalPanchang(
     fullDateHindi,
     dayOfWeek,
     dayOfWeekHi,
+    vara: getVaraByIndex(date.getDay()),
     location,
     tithi: {
       number: tithiNumber,

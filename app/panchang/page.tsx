@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { PanchangCalendar } from '@/app/components/PanchangCalendar';
 import { PanchangCosmos } from '@/app/components/cosmos/PanchangCosmos';
 import { SectionTitle } from '@/app/components/apple/PageHeader';
-import { Star, ArrowRight, Moon, Sun, Layers, Calendar } from 'lucide-react';
+import { Star, ArrowRight, Moon, Sun, Layers, Calendar, Clock } from 'lucide-react';
 
 const WHY = [
   {
@@ -147,44 +147,19 @@ export default function PanchangPage() {
             ))}
           </div>
 
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* 27 Nakshatras Master Directory Banner */}
-            <div className="rounded-2xl border border-dharma-border bg-gradient-to-br from-indigo-950/20 via-saffron-950/15 to-transparent p-5 flex flex-col justify-between gap-4">
-              <div className="space-y-1">
-                <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                  <Star className="w-3.5 h-3.5" />
-                  <span>नक्षत्र कोश · 27 Asterisms</span>
-                </span>
-                <h3 className="font-serif text-lg font-bold text-dharma-text">
-                  27 Nakshatras (नक्षत्र)
-                </h3>
-                <p className="text-xs text-dharma-muted">
-                  From Ashwini to Revati — presiding Vedic deities, Nakshatra Sukta citations, and contemplation themes.
-                </p>
-              </div>
-              <div>
-                <Link
-                  href="/panchang/nakshatras/"
-                  className="inline-flex items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
-                >
-                  <span>Explore Nakshatras</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* 16 Tithis Master Directory Banner */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            {/* 1. 16 Tithis Master Directory Banner */}
             <div className="rounded-2xl border border-dharma-border bg-gradient-to-br from-amber-950/20 via-saffron-950/15 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Moon className="w-3.5 h-3.5" />
-                  <span>तिथि कोश · 16 Lunar Days</span>
+                  <span>१. तिथि · 16 Lunar Days</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
                   16 Tithis (पंच-तिथि वर्ग)
                 </h3>
                 <p className="text-xs text-dharma-muted">
-                  Pratipada to Purnima &amp; Amavasya — Nanda, Bhadra, Jaya, Rikta, and Poorna harmonic classes.
+                  Pratipada to Purnima &amp; Amavasya — Nanda, Bhadra, Jaya, Rikta, and Poorna classes.
                 </p>
               </div>
               <div>
@@ -198,18 +173,68 @@ export default function PanchangPage() {
               </div>
             </div>
 
-            {/* 27 Nitya Yogas Master Directory Banner */}
+            {/* 2. 7 Varas Master Directory Banner */}
+            <div className="rounded-2xl border border-dharma-border bg-gradient-to-br from-orange-950/20 via-saffron-950/15 to-transparent p-5 flex flex-col justify-between gap-4">
+              <div className="space-y-1">
+                <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>२. वार · 7 Weekdays</span>
+                </span>
+                <h3 className="font-serif text-lg font-bold text-dharma-text">
+                  7 Varas (सप्त वासर)
+                </h3>
+                <p className="text-xs text-dharma-muted">
+                  Ravivara to Shanivara — presiding Graha lords, Hora cycles, elements, and sacred fasts.
+                </p>
+              </div>
+              <div>
+                <Link
+                  href="/panchang/varas/"
+                  className="inline-flex items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
+                >
+                  <span>Explore Varas</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* 3. 27 Nakshatras Master Directory Banner */}
+            <div className="rounded-2xl border border-dharma-border bg-gradient-to-br from-indigo-950/20 via-saffron-950/15 to-transparent p-5 flex flex-col justify-between gap-4">
+              <div className="space-y-1">
+                <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                  <Star className="w-3.5 h-3.5" />
+                  <span>३. नक्षत्र · 27 Asterisms</span>
+                </span>
+                <h3 className="font-serif text-lg font-bold text-dharma-text">
+                  27 Nakshatras (२७ नक्षत्र)
+                </h3>
+                <p className="text-xs text-dharma-muted">
+                  From Ashwini to Revati — presiding Vedic deities, Sukta citations, and contemplation.
+                </p>
+              </div>
+              <div>
+                <Link
+                  href="/panchang/nakshatras/"
+                  className="inline-flex items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
+                >
+                  <span>Explore Nakshatras</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* 4. 27 Nitya Yogas Master Directory Banner */}
             <div className="rounded-2xl border border-dharma-border bg-gradient-to-br from-emerald-950/20 via-saffron-950/15 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Sun className="w-3.5 h-3.5" />
-                  <span>योग कोश · 27 Nitya Yogas</span>
+                  <span>४. योग · 27 Nitya Yogas</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
                   27 Yogas (२७ नित्य योग)
                 </h3>
                 <p className="text-xs text-dharma-muted">
-                  Additive solar-lunar arcs (Vishkambha to Vaidhriti) — auspicious, reflective, and tapas classifications.
+                  Additive solar-lunar arcs (Vishkambha to Vaidhriti) — auspicious and reflective states.
                 </p>
               </div>
               <div>
@@ -223,18 +248,18 @@ export default function PanchangPage() {
               </div>
             </div>
 
-            {/* 11 Karanas Master Directory Banner */}
+            {/* 5. 11 Karanas Master Directory Banner */}
             <div className="rounded-2xl border border-dharma-border bg-gradient-to-br from-rose-950/20 via-saffron-950/15 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Layers className="w-3.5 h-3.5" />
-                  <span>करण कोश · 11 Half-Tithis</span>
+                  <span>५. करण · 11 Half-Tithis</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
-                  11 Karanas (११ करण व भद्रा)
+                  11 Karanas (११ करण)
                 </h3>
                 <p className="text-xs text-dharma-muted">
-                  7 Movable (Chara) &amp; 4 Fixed (Sthira) half-tithis, including the scriptural rules of Vishti (Bhadra).
+                  7 Movable (Chara) &amp; 4 Fixed (Sthira) half-tithis, including the rules of Vishti (Bhadra).
                 </p>
               </div>
               <div>
