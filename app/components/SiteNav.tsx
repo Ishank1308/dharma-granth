@@ -16,12 +16,10 @@ import {
   Compass,
   Flame,
   Globe,
-  GraduationCap,
   Heart,
   Home,
   Menu,
   Moon,
-  Radio,
   Search,
   Settings2,
   Sparkles,
@@ -33,7 +31,6 @@ import {
 import { usePresence } from '@/app/components/motion/usePresence';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
-import { subscribeSoundscape, toggleSoundscape } from '@/lib/sacred-soundscape';
 import { THEMES, THEME_NAMES, useTheme, type Theme } from './ThemeProvider';
 import {
   useLanguagePreference,
@@ -76,7 +73,6 @@ const desktopPrimaryItems = [
   { label: 'Home', labelHi: 'मुख', href: '/' },
   { label: 'Scriptures', labelHi: 'ग्रंथालय', href: '/scriptures/' },
   { label: 'Bhagavad Gita', labelHi: 'गीता', href: '/scripture/bhagavadgita/' },
-  { label: 'Learn', labelHi: 'सीखें', href: '/learn/' },
   { label: 'Sadhana', labelHi: 'साधना', href: '/practice/' },
   { label: 'Panchang', labelHi: 'पंचांग', href: '/panchang/' },
 ];
@@ -85,9 +81,6 @@ const desktopDiscoveryItems = [
   { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra/' },
   { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask/' },
   { label: 'श्लोक संबंध जाल', description: 'Verse Relationship Network — गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network/' },
-  { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — 12 क्रमिक साधना पथ', href: '/learn/journeys/' },
-  { label: 'पठन योजनाएँ', description: 'Reading Plans — 18 दिवसीय गीता, पढ़ने के क्रम व विषयवार स्वाध्याय', href: '/learn/plans/' },
-  { label: 'जिज्ञासा समाधान', description: 'Scripture FAQs — श्रुति-स्मृति व नीति', href: '/learn/faq/' },
   { label: 'स्रोत पारदर्शिता', description: 'Source Library — मूल पांडुलिपियाँ व संस्करण', href: '/sources/' },
   { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — उद्वेग, भय, क्रोध व धर्मसंकट का समाधान', href: '/wisdom-for-life/' },
   { label: 'वैदिक मन्त्र व शान्ति पाठ', description: 'Sacred Mantras & Suktas — पदच्छेद, शब्दार्थ व भावार्थ', href: '/mantras/' },
@@ -106,14 +99,10 @@ const desktopDiscoveryItems = [
 
 const desktopPersonalItems = [
   { label: 'मेरा डैशबोर्ड', href: '/practice/dashboard/' },
-  { label: 'यात्रा आरम्भ करें', href: '/learn/start/' },
-  { label: 'पठन यात्राएँ', href: '/learn/journeys/' },
-  { label: 'स्वाध्याय योजनाएँ', href: '/learn/plans/' },
   { label: 'कथा-दर्शन', href: '/story/' },
   { label: 'अध्ययन-पटल', href: '/practice/desk/' },
   { label: 'बुकमार्क व नोट्स', href: '/practice/bookmarks/' },
   { label: 'संग्रह', href: '/collections/' },
-  { label: 'अध्ययन पथ', href: '/learn/#courses' },
   { label: 'ऐच्छिक सहयोग', href: '/contribute/' },
 ];
 
@@ -128,43 +117,7 @@ interface DrawerItem {
   badgeType?: 'streak' | 'count' | 'accent';
 }
 
-function SoundscapeNavButton({ className = '' }: { className?: string }) {
-  const [isPlaying, setIsPlaying] = useState(false);
 
-  useEffect(() => {
-    return subscribeSoundscape((st) => {
-      setIsPlaying(st.isPlaying);
-    });
-  }, []);
-
-  const handleToggle = () => {
-    triggerTactileFeedback('selection', 'softTap');
-    toggleSoundscape();
-  };
-
-  return (
-    <button
-      type="button"
-      onClick={handleToggle}
-      className={`apple-icon-button relative ${isPlaying ? 'text-dharma-saffron' : ''} ${className}`}
-      aria-label={isPlaying ? 'पवित्र ध्वनि बंद करें' : 'पवित्र ध्वनि चालू करें'}
-      title={isPlaying ? 'पवित्र ध्वनि: चालू (Tap to pause)' : 'पवित्र ध्वनि: 432Hz तन्पूरा व ॐ ध्यान'}
-    >
-      {isPlaying ? (
-        <>
-          <span className="hidden h-2.5 w-2.5 rounded-full bg-amber-500 ring-2 ring-amber-400/40 motion-reduce:inline-block" />
-          <span className="flex items-center gap-0.5 px-0.5 motion-reduce:hidden">
-            <span className="inline-block h-3 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none" />
-            <span className="inline-block h-4 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none [animation-delay:150ms]" />
-            <span className="inline-block h-2.5 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none [animation-delay:300ms]" />
-          </span>
-        </>
-      ) : (
-        <Radio className="h-4 w-4" aria-hidden="true" />
-      )}
-    </button>
-  );
-}
 
 export function SiteNav({
   libraryVerses,
@@ -484,14 +437,6 @@ export function SiteNav({
       badgeType: 'accent',
     },
     {
-      id: 'learn',
-      label: 'स्वाध्याय व सीखें',
-      labelEn: 'Learn',
-      description: 'अध्ययन पथ, प्रश्नोत्तरी व दर्शन',
-      href: '/learn/',
-      icon: GraduationCap,
-    },
-    {
       id: 'sadhana',
       label: 'दैनिक साधना',
       labelEn: 'Sadhana',
@@ -756,11 +701,6 @@ export function SiteNav({
                 <ThemeToggle />
               </div>
 
-              {/* Desktop Sacred Soundscape Button */}
-              <div className="hidden lg:inline-block">
-                <SoundscapeNavButton className="h-9 w-9" />
-              </div>
-
               {/* Desktop CTA */}{' '}
               <Link
                 href="/scripture/bhagavadgita/"
@@ -782,9 +722,6 @@ export function SiteNav({
               >
                 <Search className="h-5 w-5" aria-hidden="true" />
               </button>
-
-              {/* 1.5. Mobile Sacred Soundscape Button */}
-              <SoundscapeNavButton className="max-[359px]:hidden lg:hidden h-11 w-11 min-h-[44px] min-w-[44px]" />
 
               {/* 2. Theme Button: opens a menu of the named themes (cycling through five unnamed states confused readers) */}
               <div ref={themeMenuRef} className="relative min-[1800px]:hidden">
