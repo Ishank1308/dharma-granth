@@ -2,6 +2,8 @@ import Link from 'next/link';
 import type { CSSProperties } from 'react';
 import { getAllScriptures, getScriptureMeta } from '@/data/scriptures';
 import type { ScriptureCategory } from '@/data/types';
+import { SectionTitle } from '@/app/components/apple/PageHeader';
+import { getLibraryStats } from '@/lib/library-stats';
 
 interface Book {
   href: string;
@@ -26,8 +28,7 @@ function chapters(id: string, word: string): string | undefined {
 export function HomeLibrary() {
   const all = getAllScriptures();
   const count = (c: ScriptureCategory) => all.filter((s) => s.category === c).length;
-  // The library page adds the Ashtavakra Gita, which has its own reader outside the seeded catalogue.
-  const libraryTotal = all.length + (all.some((s) => s.id === 'ashtavakra') ? 0 : 1);
+  const libraryTotal = getLibraryStats().texts;
 
   const books: Book[] = [
     { href: '/scripture/bhagavadgita/', titleSa: 'भगवद्गीता', titleEn: 'Bhagavad Gita', tradition: 'Smṛti', facts: '18 chapters · 700 verses', colour: '#c2410c' },
@@ -39,33 +40,36 @@ export function HomeLibrary() {
   ];
 
   return (
-    <section aria-labelledby="home-library-heading" className="mx-auto max-w-[980px] px-5 pb-20 pt-16 sm:pt-20">
-      <div className="mb-5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-        <h2 id="home-library-heading" className="text-[28px] font-semibold tracking-[-0.03em] text-dharma-text sm:text-[40px]">
-          <span>The library</span>{' '}
-          <span lang="hi" className="ml-1 font-devanagari text-lg font-normal tracking-normal text-dharma-muted sm:text-[22px]">
-            ग्रन्थालय
-          </span>
-        </h2>
-        <Link href="/scriptures/" className="text-[17px] text-dharma-saffron hover:underline">
-          See all {libraryTotal} <span aria-hidden="true">›</span>
-        </Link>
-      </div>
-      <ul className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
+    <section aria-labelledby="home-library-heading" className="mx-auto max-w-content px-5 pb-20 pt-section">
+      <SectionTitle
+        id="home-library-heading"
+        size="title-1"
+        title="The library"
+        titleHi="ग्रन्थालय"
+        action={
+          <Link href="/scriptures/" className="chevron-nudge text-body text-dharma-saffron hover:underline">
+            See all {libraryTotal} <span aria-hidden="true">›</span>
+          </Link>
+        }
+      />
+      {/* Tiles rise in as a wave (.reveal-grid) and lean toward the pointer with a light on them (data-tilt);
+          the Devanagari title floats a little above the card (data-depth). Styles in app/motion.css. */}
+      <ul className="reveal-grid grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
         {books.map((book) => (
           <li key={book.href}>
             <Link
               href={book.href}
+              data-tilt
               style={{ '--book': book.colour } as CSSProperties}
-              className="home-book group relative flex h-full min-h-[170px] flex-col justify-between overflow-hidden rounded-[22px] bg-dharma-card p-[18px] pl-6 shadow-[0_2px_6px_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 sm:min-h-[230px] sm:rounded-[28px] sm:p-7 sm:pl-8"
+              className="home-book group relative flex h-full min-h-[170px] flex-col justify-between overflow-hidden rounded-card bg-dharma-card p-[18px] pl-6 shadow-raised sm:min-h-[230px] sm:rounded-panel sm:p-7 sm:pl-8"
             >
               <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-[color:var(--book-ink)]" />
               <span className="absolute right-6 top-6 hidden text-xs text-dharma-muted sm:block">{book.tradition}</span>
-              <span lang="sa" className="shloka-text text-[28px] leading-tight text-[color:var(--book-ink)] sm:text-[40px]">
+              <span lang="sa" data-depth="8" className="shloka-text text-[28px] leading-tight text-[color:var(--book-ink)] sm:text-[40px]">
                 {book.titleSa}
               </span>
-              <span>
-                <span className="block text-[17px] font-semibold tracking-[-0.02em] text-dharma-text sm:text-[21px]">{book.titleEn}</span>
+              <span data-depth="4">
+                <span className="block text-body font-semibold tracking-[-0.02em] text-dharma-text sm:text-[21px]">{book.titleEn}</span>
                 {book.facts && <span className="mt-1 block text-sm text-dharma-muted">{book.facts}</span>}
               </span>
             </Link>

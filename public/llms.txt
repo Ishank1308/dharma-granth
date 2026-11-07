@@ -6,14 +6,19 @@
 
 - Canonical site: https://dharmagranth.dev/
 - Sitemap: https://dharmagranth.dev/sitemap.xml
+- Complete LLM reference index: https://dharmagranth.dev/llms-full.txt
 - How this site works: https://dharmagranth.dev/how-dharma-granth-works/
 - Sources & methodology: https://dharmagranth.dev/sources/ and https://dharmagranth.dev/methodology/
 
 ## Entry points for answer retrieval
 
-- Scripture library: https://dharmagranth.dev/scripture/
+- Scripture library: https://dharmagranth.dev/scriptures/
 - Knowledge hubs (dharma, karma, fear, anger, mind, discipline, attachment, detachment, bhakti, wisdom): https://dharmagranth.dev/knowledge/
-- Wisdom pathways (guided explorations): https://dharmagranth.dev/pathways/
+- Wisdom pathways (guided explorations): https://dharmagranth.dev/wisdom-pathways/
+- Wisdom for life (topical scriptural guidance): https://dharmagranth.dev/wisdom-for-life/
+- Scripture & Tradition FAQs: https://dharmagranth.dev/learn/faq/
+- Vedic Panchang & Calendar: https://dharmagranth.dev/panchang/
+- Hindu Festivals & Observances: https://dharmagranth.dev/festivals/
 - Ask with library verses: https://dharmagranth.dev/ask/
 
 ## Citation guidance

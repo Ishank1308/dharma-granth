@@ -116,14 +116,7 @@
     --font-noto-devanagari: 'Noto Sans Devanagari', 'Noto-Devanagari-Fallback', sans-serif;
     --font-sanskrit: 'Tiro Devanagari Sanskrit', 'Noto Serif Devanagari', var(--font-noto-devanagari);
 
-    /* Shared Motion Tokens (Phase 6) */
-    --motion-instant: 120ms;
-    --motion-fast: 220ms;
-    --motion-standard: 380ms;
-    --motion-deliberate: 600ms;
-    --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
-    --ease-gentle: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* Motion tokens live in app/styles/tokens.css with the rest of the design system. */
 }
 
 /* Theme variables. The default (no data-theme attribute) is "day". */
@@ -827,13 +820,11 @@
         background-color: rgba(249, 115, 22, 0.35);
     }
 
-    /* Practice dashboard tool-picker chips: selected state is a light saffron
-     * pill in day/sunset; in night theme use the translucent ember treatment
-     * shared with .chip so it sits on the dark canvas instead of glowing. */
+    /* Practice dashboard tool-picker chips: the selected chip is a filled tint pill,
+     * amber with black text on the dark canvas. */
     :root[data-theme='night'] .practice-tool-chip-on {
-        background-color: rgba(249, 115, 22, 0.16);
-        border-color: rgba(249, 115, 22, 0.32);
-        color: #fed7aa;
+        background-color: var(--dharma-saffron);
+        color: #000;
     }
 
     :root[data-theme='sunset'] .section-sanskrit,
@@ -1616,6 +1607,31 @@ html:has(.reader-root) nav[aria-label='Primary navigation'],
 html:has(.reader-root) nav[aria-label='Mobile quick navigation'],
 html:has(.reader-root) aside[aria-label='Interactive Companion'],
 html:has(.reader-root) [aria-label^='सस्वर पाठ'] {
+  display: none !important;
+}
+
+/* ── Embed mode (app/embed sets <html data-embed>) ─────────────────
+   Clean iframe presentation: hides header, footer, companion dock, navigation and overlays. */
+html[data-embed] nav,
+html[data-embed] footer,
+html[data-embed] aside,
+html[data-embed] .skip-link,
+html[data-embed] #main-content,
+html:has(.embed-card-root) nav,
+html:has(.embed-card-root) footer,
+html:has(.embed-card-root) aside,
+html:has(.embed-card-root) .skip-link,
+html:has(.embed-card-root) #main-content {
+  padding-bottom: 0 !important;
+}
+html[data-embed] nav[aria-label='Primary navigation'],
+html[data-embed] nav[aria-label='Mobile quick navigation'],
+html[data-embed] aside[aria-label='Interactive Companion'],
+html[data-embed] [aria-label^='सस्वर पाठ'],
+html:has(.embed-card-root) nav[aria-label='Primary navigation'],
+html:has(.embed-card-root) nav[aria-label='Mobile quick navigation'],
+html:has(.embed-card-root) aside[aria-label='Interactive Companion'],
+html:has(.embed-card-root) [aria-label^='सस्वर पाठ'] {
   display: none !important;
 }
 
@@ -2868,33 +2884,10 @@ svg.lucide {
     padding-inline: clamp(1.25rem, 5vw, 3rem);
 }
 
-/* Vedas and sūtras: a palm-leaf folio. A flat strip with rounded ends, two binding holes, and the
-   vertical margin rules scribes drew beside them. */
-[data-material='palm-leaf'] .verse-folio {
-    border-radius: 44px / 50%;
-    --pl-rule: color-mix(in srgb, var(--v2) 12%, transparent);
-    --pl-margin: clamp(2.6rem, 8vw, 3.6rem);
-    background-image:
-        linear-gradient(90deg, transparent calc(var(--pl-margin) - 1px), var(--pl-rule) calc(var(--pl-margin) - 1px), var(--pl-rule) var(--pl-margin), transparent var(--pl-margin)),
-        linear-gradient(270deg, transparent calc(var(--pl-margin) - 1px), var(--pl-rule) calc(var(--pl-margin) - 1px), var(--pl-rule) var(--pl-margin), transparent var(--pl-margin)),
-        repeating-linear-gradient(92deg, transparent 0 11px, color-mix(in srgb, #8a6a3c 2%, transparent) 11px 12px),
-        linear-gradient(180deg, color-mix(in srgb, #d6b16e 5%, transparent), color-mix(in srgb, #b98d45 3%, transparent));
-    padding-inline: calc(var(--pl-margin) + clamp(0.75rem, 3vw, 1.5rem));
+[data-material] .verse-folio::before,
+[data-material] .verse-folio::after {
+    display: none;
 }
-[data-material='palm-leaf'] .verse-folio::before,
-[data-material='palm-leaf'] .verse-folio::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 9px;
-    height: 9px;
-    margin-top: -4.5px;
-    border-radius: 50%;
-    background: var(--dharma-bg);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--v-edge);
-}
-[data-material='palm-leaf'] .verse-folio::before { left: clamp(0.9rem, 3vw, 1.6rem); }
-[data-material='palm-leaf'] .verse-folio::after { right: clamp(0.9rem, 3vw, 1.6rem); }
 
 /* Upanishads: bhojpatra, birch bark, warm with fine horizontal fibres. */
 [data-material='bark'] .verse-folio {
@@ -2966,11 +2959,12 @@ svg.lucide {
    one on the bottom on phones, hairline separators and a single tint
    (--dharma-saffron). Page layouts adopt the rest page by page. */
 @layer components {
+    /* The bar is the regular material (app/styles/tokens.css). */
     .apple-bar {
-        background-color: color-mix(in srgb, var(--dharma-bg) 78%, transparent);
-        -webkit-backdrop-filter: saturate(180%) blur(20px);
-        backdrop-filter: saturate(180%) blur(20px);
-        border-color: color-mix(in srgb, var(--dharma-text) 10%, transparent);
+        background-color: var(--material-regular);
+        -webkit-backdrop-filter: var(--material-filter);
+        backdrop-filter: var(--material-filter);
+        border-color: var(--separator);
     }
     @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
         .apple-bar { background-color: var(--dharma-bg); }
@@ -3010,16 +3004,12 @@ svg.lucide {
     border-color: transparent;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.06);
 }
-[data-material]:not([data-material='palm-leaf']) .verse-folio {
+[data-material] .verse-folio {
     background-image: none;
     background-color: transparent;
     border-color: transparent;
     box-shadow: none;
     animation: none;
-}
-[data-material='palm-leaf'] .verse-folio {
-    background-color: transparent;
-    border-color: color-mix(in srgb, var(--v2) 14%, transparent);
 }
 
 /* Letter-spacing pulls Devanagari conjuncts and vowel signs apart ("का ल द र्श न"), so Devanagari
@@ -3030,4 +3020,18 @@ svg.lucide {
 .font-devanagari,
 .font-sanskrit {
     letter-spacing: normal;
+}
+
+/* Serif Devanagari for the mūla text. Tiro Devanagari Sanskrit ships one weight (400), so a
+   `font-semibold` on a shloka used to make the browser smear a fake bold that read like sans.
+   No synthesis: every shloka is set in the book face at its true weight, on every page. */
+[lang='sa'],
+.shloka-text,
+.vt-sa {
+    font-synthesis: none;
+}
+#sanskrit-text,
+.verse-folio[lang='sa'],
+.shloka-text {
+    font-weight: 400;
 }

@@ -119,7 +119,7 @@ export const VerseRow = React.forwardRef<HTMLElement, VerseRowProps>(function Ve
       </p>
 
       {/* Synchronized word grid (IAST, timed) */}
-      <p className="mt-2 font-serif text-[13px] italic leading-loose text-dharma-muted sm:text-sm" aria-label="Transliteration with word timing">
+      <p className="mt-2 font-serif text-footnote italic leading-loose text-dharma-muted sm:text-sm" aria-label="Transliteration with word timing">
         {words.length === 0 ? (
           <span>{verse.transliteration}</span>
         ) : (

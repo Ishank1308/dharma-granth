@@ -18,11 +18,12 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Metadata {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const topic = getWisdomTopic(params.slug);
   if (!topic) {
     return {
@@ -41,24 +42,47 @@ export function generateMetadata({
       .join(' — '),
   );
 
+  const keywords = [
+    heading?.en,
+    heading?.hi,
+    topic.titleEn,
+    topic.titleHi,
+    `Bhagavad Gita ${topic.titleEn}`,
+    `Gita on ${topic.titleEn}`,
+    `${topic.titleHi} पर गीता श्लोक`,
+    'hindu philosophy life guidance',
+    'dharma granth',
+  ].filter((k): k is string => Boolean(k));
+
   return {
     title,
     description,
+    keywords,
     alternates: { canonical: `/wisdom-for-life/${topic.slug}/` },
     openGraph: {
+      type: 'article',
+      locale: 'en_US',
+      alternateLocale: ['hi_IN'],
       images: [DEFAULT_OG_IMAGE],
       title: `${title} — Dharma Granth`,
       description,
       url: `https://dharmagranth.dev/wisdom-for-life/${topic.slug}/`,
     },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [DEFAULT_OG_IMAGE],
+    },
   };
 }
 
-export default function WisdomTopicPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function WisdomTopicPage(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+) {
+  const params = await props.params;
   const topic = getWisdomTopic(params.slug);
   if (!topic) {
     notFound();
@@ -91,6 +115,14 @@ export default function WisdomTopicPage({
         acceptedAnswer: {
           '@type': 'Answer',
           text: topic.compassionateIntro.bodyEn || topic.shortDescEn,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `${topic.titleHi} पर भगवद्गीता और उपनिषदों का क्या संदेश है?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: topic.compassionateIntro.bodyHi || topic.shortDescHi,
         },
       },
       {

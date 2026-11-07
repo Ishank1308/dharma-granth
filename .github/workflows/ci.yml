@@ -214,6 +214,9 @@ jobs:
           sparse-checkout: |
             /tests/
             /scripts/serve-dist.mjs
+            /tsconfig.json
+            /lib/scripture-vibes.ts
+            /data/types.ts
             /playwright.config.ts
             /package.json
             /package-lock.json

@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { getScriptureMeta } from '@/data/scriptures';
 
 interface PageProps {
-  params: ChapterParams;
+  params: Promise<ChapterParams>;
 }
 
 export function generateStaticParams() {
@@ -37,12 +37,14 @@ export function generateStaticParams() {
   return params;
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   return chapterMetadata(params, 1);
 }
 
 /** The chapter (or, for chapters split into parts, its first part). */
-export default function ChapterPage({ params }: PageProps) {
+export default async function ChapterPage(props: PageProps) {
+  const params = await props.params;
   const meta = getScriptureMeta(params.id);
   const chapterNumber = parseInt(params.chapterId, 10);
   const indexed = getScriptureChapters(params.id).find((c) => c.id === chapterNumber);

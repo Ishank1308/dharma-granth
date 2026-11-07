@@ -867,7 +867,7 @@ ${verse.science || '—'}
           <article
             id="sacred-sanskrit"
             aria-label="मूल संस्कृत श्लोक"
-            className="relative overflow-hidden rounded-[28px] border-2 border-amber-600/30 bg-gradient-to-b from-[#fffbf4] via-[#fefaf0] to-[#fbf4e4] p-6 shadow-md transition-all dark:border-amber-500/20 dark:from-[#171410] dark:via-[#191512] dark:to-[#14120e] sm:p-10"
+            className="relative overflow-hidden rounded-panel border-2 border-amber-600/30 bg-gradient-to-b from-[#fffbf4] via-[#fefaf0] to-[#fbf4e4] p-6 shadow-md transition-all dark:border-amber-500/20 dark:from-[#171410] dark:via-[#191512] dark:to-[#14120e] sm:p-10"
           >
             <div
               aria-hidden="true"

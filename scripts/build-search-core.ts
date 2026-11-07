@@ -12,7 +12,11 @@ import { wisdomTopics } from '../data/wisdom-for-life';
 import { CHAPTERS } from '../data/ashtavakra/chapters-meta';
 import { wisdomVerseHref, libraryLocation } from '../lib/wisdom-links';
 import { versePageHref } from '../lib/verse-paths';
-import { NAKSHATRA_DATA, TITHI_DATA } from '../lib/panchang';
+import { NAKSHATRA_DATA, TITHI_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES, YOGA_DATA, getAllKaranas, VARA_DATA } from '../lib/panchang';
+import { SACRED_MANTRAS } from '../data/mantras';
+import { getAllConceptDetails } from '../data/concept-details';
+import { characters } from '../data/characters';
+import { festivals } from '../data/festivals';
 import type { CoreChapter, CoreIndexFile, CoreTerm, CoreVerse, SearchShardFile, ShardVerse } from '../lib/search-core';
 
 const root = process.cwd();
@@ -67,14 +71,69 @@ const pathways: CoreIndexFile['pathways'] = learningPaths.map((p) => [p.id, p.ti
 const topics: CoreIndexFile['topics'] = wisdomTopics.map((t) => [t.slug, t.titleEn, t.titleHi]);
 const terms: CoreTerm[] = [];
 const seenTerm = new Set<string>();
-function addTerm(id: string, title: string, hindi: string) {
+function addTerm(id: string, title: string, hindi: string, href?: string) {
   const key = title.trim().toLowerCase();
   if (!key || seenTerm.has(key)) return;
   seenTerm.add(key);
-  terms.push([id, title, hindi]);
+  terms.push(href ? [id, title, hindi, href] : [id, title, hindi]);
 }
+
+// Panchang observances & dates
+addTerm('panchang-ekadashi', 'Ekadashi', 'एकादशी व्रत', '/panchang/ekadashi/');
+addTerm('panchang-pradosh', 'Pradosh Vrat', 'प्रदोष व्रत', '/panchang/pradosh/');
+addTerm('panchang-purnima', 'Purnima', 'पूर्णिमा व्रत व स्नान', '/panchang/purnima/');
+addTerm('panchang-amavasya', 'Amavasya', 'अमावस्या व श्राद्ध', '/panchang/amavasya/');
+addTerm('panchang-calendar', 'Festival Calendar', 'मासिक पर्व व व्रत कैलेंडर', '/panchang/calendar/');
+
+// Classical Mantras & Suktas
+for (const m of SACRED_MANTRAS) {
+  addTerm(`mantra-${m.slug}`, m.title, m.titleHi, `/mantras/${m.slug}/`);
+}
+
+// Core Philosophical Concepts
+for (const c of getAllConceptDetails()) {
+  addTerm(`concept-${c.id}`, c.label, c.sanskrit, `/concepts/${c.id}/`);
+}
+
+// Characters & Personalities
+for (const ch of characters) {
+  addTerm(`character-${ch.id}`, ch.name, ch.sanskrit, `/characters/${ch.id}/`);
+}
+
+// Festivals
+for (const f of festivals) {
+  addTerm(`festival-${f.id}`, f.name, f.sanskrit, `/festivals/${f.id}/`);
+}
+
+for (const t of UNIQUE_TITHI_ARCHETYPES) {
+  addTerm(`tithi-${t.slug}`, `${t.name}`, `${t.nameHi}`, `/panchang/tithis/${t.slug}/`);
+}
+
+for (const y of YOGA_DATA) {
+  addTerm(`yoga-${y.slug}`, `${y.name} Yoga`, `${y.nameHi} योग`, `/panchang/yogas/${y.slug}/`);
+}
+
+for (const k of getAllKaranas()) {
+  addTerm(`karana-${k.slug}`, `${k.name} Karana`, `${k.nameHi} करण`, `/panchang/karanas/${k.slug}/`);
+}
+
+for (const v of VARA_DATA) {
+  addTerm(`vara-${v.slug}`, `${v.name}`, `${v.nameHi}`, `/panchang/varas/${v.slug}/`);
+}
+
 for (const tithi of Object.values(TITHI_DATA)) addTerm(`tithi-${tithi.paksha}-${tithi.number}`, tithi.name, tithi.nameHi);
-for (const star of NAKSHATRA_DATA) addTerm(`nakshatra-${star.index}`, star.name, star.nameHi);
+for (const star of NAKSHATRA_DATA) addTerm(`nakshatra-${star.index}`, star.name, star.nameHi, `/panchang/nakshatras/${nakshatraSlug(star.name)}/`);
+
+addTerm('gita-journey', 'Gita Journey · Dilemma Compass', 'गीता यात्रा 18 अध्याय', '/learn/journeys/gita/');
+addTerm('gita-sankalpa', 'Gita Daily Sankalpa & Parayana', 'गीता नित्य स्वाध्याय एवं संकल्प', '/practice/gita-sankalpa/');
+addTerm('learn-journeys', 'Guided Learning Journeys', 'स्वाध्याय यात्राएँ', '/learn/journeys/');
+addTerm('solar-vratas', 'Solar Vratas & Arghya Vidhi', 'सौर व्रत एवं अर्घ्य विधान', '/panchang/solar-vratas/');
+addTerm('chhath-puja', 'Chhath Puja Mahavrata', 'छठ पूजा विधि', '/panchang/solar-vratas/#chhath-puja');
+addTerm('ratha-saptami', 'Ratha Saptami Surya Jayanti', 'रथ सप्तमी', '/panchang/solar-vratas/#ratha-saptami');
+addTerm('panchang-muhurta', 'Muhurta Decision Matrix', 'मुहूर्त निर्णय तालिका', '/panchang/muhurta/');
+addTerm('panchang-bhadra', 'Vishti Bhadra Karana Rules', 'भद्रा काल निर्णय', '/panchang/muhurta/#simulator');
+addTerm('ritual-upakarma', 'Upakarma & Yajnopavita Sanskara', 'श्रावणी उपाकर्म एवं जनेऊ विधान', '/rituals/upakarma/');
+addTerm('avani-avittam', 'Avani Avittam & Gayatri Japam', 'आवनि अवित्तम', '/rituals/upakarma/#regional');
 
 const verses: CoreVerse[] = [];
 const seenVerse = new Set<string>();

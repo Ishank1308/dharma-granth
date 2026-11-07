@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { AskDharmaClient } from '@/app/components/AskDharmaClient';
 import { ANSWER_THEMES, GRANTH_ANSWERS, granthAnswersByTheme } from '@/data/granth-answers';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
-import { Sparkles, Compass, Shield, BookOpen, Sun, ArrowLeft } from 'lucide-react';
+import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 
 export const metadata: Metadata = {
   title: {
@@ -111,76 +111,53 @@ export default function AskDharmaPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* Hero Header */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-amber-950 via-saffron-950 to-stone-900 text-white py-14 sm:py-20">
-        <div className="absolute inset-0 mandala-bg opacity-15 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dharma-bg via-transparent to-transparent pointer-events-none" />
+      <PageHeader
+        eyebrow="Ask"
+        eyebrowHi="धर्म सहायक"
+        title="Ask the scriptures"
+        titleHi="जीवन के प्रश्न, शास्त्रों के प्रकाश में"
+        lead={
+          <>
+            <span lang="hi" className="font-devanagari">
+              अपने शब्दों में पूछें: चिन्ता, क्रोध, दुःख, कर्तव्य या ईश्वर। उत्तर-पृष्ठ के श्लोक और अर्थ पुस्तकालय से हैं; सार, दृष्टान्त और अभ्यास सम्पादकीय टिप्पणियाँ हैं।
+            </span>{' '}
+            <span>Ask in your own words. The verses come from the library; the summary, story and practice are editorial notes.</span>
+          </>
+        }
+      />
 
-        <div className="relative mx-auto max-w-5xl px-5 sm:px-6">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-white/80 hover:text-white text-xs sm:text-sm font-semibold mb-6 transition"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            <span>मुखपृष्ठ (Home)</span>
-          </Link>
-
-          <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-amber-200 backdrop-blur-sm">
-              <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-              <span>धर्म सहायक · पुस्तकालय से</span>
-            </div>
-
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
-              जीवन के प्रश्नों का समाधान — शास्त्रों के पावन प्रकाश में
-            </h1>
-
-            <p className="text-base sm:text-lg text-amber-100/90 leading-relaxed font-devanagari">
-              अपने शब्दों में पूछें: चिंता, क्रोध, दुःख, कर्तव्य या ईश्वर। उत्तर‑पृष्ठ के श्लोक और अर्थ पुस्तकालय से हैं; सार, दृष्टान्त और अभ्यास सम्पादकीय टिप्पणियाँ हैं।
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-amber-200/80">
-              <span className="flex items-center gap-1.5">
-                <BookOpen className="h-4 w-4 text-amber-400" /> 100% शास्त्र-आधारित
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Shield className="h-4 w-4 text-amber-400" /> निष्पक्ष व प्रामाणिक
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Compass className="h-4 w-4 text-amber-400" /> आधुनिक जीवन में उपयोगी
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Interactive Interface */}
-      <section className="relative mx-auto max-w-5xl px-5 sm:px-6 -mt-6 sm:-mt-8 z-10">
+      <section className="mx-auto mt-8 max-w-content px-gutter">
         <AskDharmaClient questionBank={questionBank} />
       </section>
 
-      <section className="mx-auto mt-12 max-w-5xl px-5 sm:px-6" aria-labelledby="granth-questions">
-        <h2 id="granth-questions" className="font-serif text-2xl font-bold sm:text-3xl">
-          <span lang="hi" className="font-devanagari">ग्रन्थ से पूछिए</span>{' '}
-          <span className="text-lg font-semibold text-dharma-muted">Ask the scriptures</span>
-        </h2>
-        <p className="mt-2 text-sm text-dharma-muted">
-          <span lang="hi">{GRANTH_ANSWERS.length} प्रश्न, हर एक का उत्तर कई ग्रन्थों के श्लोकों, एक दृष्टान्त और आज के एक अभ्यास के साथ।</span>{' '}
-          <span>{GRANTH_ANSWERS.length} questions, each answered with verses from several texts, a story and one step for today.</span>
-        </p>
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
+      <section className="mx-auto mt-16 max-w-content px-gutter" aria-labelledby="granth-questions">
+        <SectionTitle
+          id="granth-questions"
+          title="Questions people ask"
+          titleHi="ग्रन्थ से पूछिए"
+          sub={
+            <>
+              <span>{GRANTH_ANSWERS.length} questions, each answered with verses from several texts, a story and one step for today.</span>{' '}
+              <span lang="hi" className="font-devanagari">{GRANTH_ANSWERS.length} प्रश्न, श्लोक, दृष्टान्त और आज के एक अभ्यास के साथ।</span>
+            </>
+          }
+        />
+        <div className="grid gap-x-6 gap-y-8 md:grid-cols-2">
           {ANSWER_THEMES.map((theme) => (
-            <div key={theme.id} className="rounded-3xl border border-dharma-border bg-dharma-card p-5">
-              <h3 className="font-serif text-lg font-bold">
-                <span lang="hi" className="font-devanagari">{theme.titleHi}</span>{' '}
-                <span className="text-sm font-semibold text-dharma-muted">{theme.titleEn}</span>
+            <div key={theme.id}>
+              <h3 className="mb-2 px-1 text-footnote text-dharma-muted">
+                <span lang="hi" className="font-devanagari text-subhead font-semibold text-dharma-text">{theme.titleHi}</span>{' '}
+                <span>{theme.titleEn}</span>
               </h3>
-              <ul className="mt-3 grid gap-1">
+              <ul className="apple-group">
                 {granthAnswersByTheme(theme.id).map((a) => (
                   <li key={a.slug}>
-                    <Link href={`/ask/${a.slug}/`} className="block min-h-11 rounded-xl px-2 py-2 hover:bg-dharma-bg">
-                      <span lang="hi" className="block font-devanagari font-semibold">{a.questionHi}</span>
-                      <span className="block text-xs text-dharma-muted">{a.questionEn}</span>
+                    <Link href={`/ask/${a.slug}/`} className="apple-row">
+                      <span className="min-w-0">
+                        <span lang="hi" className="block font-devanagari text-callout leading-snug text-dharma-text">{a.questionHi}</span>{' '}
+                        <span className="block text-footnote leading-snug text-dharma-muted">{a.questionEn}</span>
+                      </span>
+                      <span aria-hidden="true" className="apple-chevron">›</span>
                     </Link>
                   </li>
                 ))}

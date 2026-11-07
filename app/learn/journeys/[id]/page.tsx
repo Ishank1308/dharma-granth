@@ -9,7 +9,7 @@ import { readHref } from '@/lib/verse-paths';
 import { JourneyClient, type LessonView } from './JourneyClient';
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export function generateStaticParams() {
@@ -22,7 +22,8 @@ function journeyDescription(objective: string, minutesPerLesson: number): string
   return clipDescription(`${objective} About ${minutesPerLesson} minutes a lesson, with context, explanation and reflection.`);
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const j = getJourney(params.id);
   return j
     ? {
@@ -34,7 +35,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
     : { title: 'Journey not found' };
 }
 
-export default function JourneyPage({ params }: PageProps) {
+export default async function JourneyPage(props: PageProps) {
+  const params = await props.params;
   const journey = getJourney(params.id);
   if (!journey) notFound();
 

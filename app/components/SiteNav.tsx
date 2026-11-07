@@ -30,14 +30,7 @@ import {
   Sunset,
   X,
 } from 'lucide-react';
-import {
-  AnimatePresence,
-  motion,
-  useReducedMotion,
-  LayoutGroup,
-  useScroll,
-  useSpring,
-} from 'framer-motion';
+import { usePresence } from '@/app/components/motion/usePresence';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
 import { subscribeSoundscape, toggleSoundscape } from '@/lib/sacred-soundscape';
@@ -97,6 +90,7 @@ const desktopDiscoveryItems = [
   { label: 'जिज्ञासा समाधान', description: 'Scripture FAQs — श्रुति-स्मृति व नीति', href: '/learn/faq' },
   { label: 'स्रोत पारदर्शिता', description: 'Source Library — मूल पांडुलिपियाँ व संस्करण', href: '/sources' },
   { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — उद्वेग, भय, क्रोध व धर्मसंकट का समाधान', href: '/wisdom-for-life/' },
+  { label: 'वैदिक मन्त्र व शान्ति पाठ', description: 'Sacred Mantras & Suktas — पदच्छेद, शब्दार्थ व भावार्थ', href: '/mantras/' },
   { label: 'ज्ञान मार्ग', description: 'Wisdom Pathways — भाव, प्रश्न व संत से शास्त्र तक', href: '/wisdom-pathways/' },
   { label: 'दैनिक श्लोक', description: 'Daily Verse — आज का श्लोक WhatsApp पर भेजें', href: '/daily-verse' },
   { label: 'पंचांग', description: 'दैनिक वैदिक काल व ऋतु', href: '/panchang' },
@@ -136,7 +130,6 @@ interface DrawerItem {
 
 function SoundscapeNavButton({ className = '' }: { className?: string }) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     return subscribeSoundscape((st) => {
@@ -158,15 +151,14 @@ function SoundscapeNavButton({ className = '' }: { className?: string }) {
       title={isPlaying ? 'पवित्र ध्वनि: चालू (Tap to pause)' : 'पवित्र ध्वनि: 432Hz तन्पूरा व ॐ ध्यान'}
     >
       {isPlaying ? (
-        shouldReduceMotion ? (
-          <span className="h-2.5 w-2.5 rounded-full bg-amber-500 ring-2 ring-amber-400/40" />
-        ) : (
-          <span className="flex items-center gap-0.5 px-0.5">
+        <>
+          <span className="hidden h-2.5 w-2.5 rounded-full bg-amber-500 ring-2 ring-amber-400/40 motion-reduce:inline-block" />
+          <span className="flex items-center gap-0.5 px-0.5 motion-reduce:hidden">
             <span className="inline-block h-3 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none" />
             <span className="inline-block h-4 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none [animation-delay:150ms]" />
             <span className="inline-block h-2.5 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none [animation-delay:300ms]" />
           </span>
-        )
+        </>
       ) : (
         <Radio className="h-4 w-4" aria-hidden="true" />
       )}
@@ -211,13 +203,10 @@ export function SiteNav({
   const drawerCloseBtnRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll();
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 140,
-    damping: 28,
-    mass: 0.6,
-  });
+  const discoverMenu = usePresence(discoverOpen, 140);
+  const drawer = usePresence(drawerOpen, 200);
+  // The theme icon swaps with a little turn, but only after the reader changes it, never on first paint.
+  const [themeTouched, setThemeTouched] = useState(false);
 
   const isActive = useCallback(
     (href: string): boolean => {
@@ -441,6 +430,7 @@ export function SiteNav({
   const handlePickTheme = (next: Theme) => {
     triggerTactileFeedback('medium', 'softTap');
     setTheme(next);
+    setThemeTouched(true);
     setThemeMenuOpen(false);
     themeButtonRef.current?.focus();
   };
@@ -514,6 +504,16 @@ export function SiteNav({
       description: '432Hz वैदिक तन्पूरा, ॐ ध्यान व ध्यान घंटा',
       href: '/practice',
       icon: Radio,
+    },
+    {
+      id: 'mantras',
+      label: 'वैदिक मन्त्र व शान्ति पाठ',
+      labelEn: 'Sacred Mantras',
+      description: 'गायत्री, महामृत्युंजय व उपनिषद् शान्ति पाठ',
+      href: '/mantras/',
+      icon: Sparkles,
+      badge: 'मन्त्र कोश',
+      badgeType: 'accent',
     },
     {
       id: 'wisdom-for-life',
@@ -601,13 +601,9 @@ export function SiteNav({
               className="group flex min-h-[44px] min-w-[44px] shrink-0 items-center gap-1.5 rounded-xl pr-0 sm:gap-2.5 sm:pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500/40"
               aria-label="Dharma Granth Home"
             >
-              <motion.span
-                className="flex h-8 w-8 shrink-0 overflow-hidden rounded-full bg-[#fdf6ea] ring-1 ring-dharma-border"
-                whileHover={reduce ? undefined : { scale: 1.05 }}
-                whileTap={reduce ? undefined : { scale: 0.95 }}
+              <span
+                className="chrome-press flex h-8 w-8 shrink-0 overflow-hidden rounded-full bg-[#fdf6ea] ring-1 ring-dharma-border"
                 aria-hidden="true"
-                // whileTap makes motion add tabIndex=0; the link around it is the focus target.
-                tabIndex={-1}
               >
                 <Image
                   src="/logo-mark.webp"
@@ -617,12 +613,12 @@ export function SiteNav({
                   priority
                   className="h-full w-full object-cover"
                 />
-              </motion.span>
+              </span>
               <div className="flex items-baseline gap-2">
-                <span className="whitespace-nowrap text-[17px] font-semibold tracking-[-0.022em] text-dharma-text">
+                <span className="whitespace-nowrap text-body font-semibold tracking-[-0.022em] text-dharma-text">
                   Dharma Granth
                 </span>{' '}
-                <span lang="hi" className="hidden font-devanagari text-[13px] text-dharma-muted sm:inline">
+                <span lang="hi" className="hidden font-devanagari text-footnote text-dharma-muted sm:inline">
                   धर्म ग्रंथ
                 </span>
               </div>
@@ -635,7 +631,7 @@ export function SiteNav({
                   key={item.href}
                   href={item.href}
                   aria-current={isActive(item.href) ? 'page' : undefined}
-                  className={`relative whitespace-nowrap px-2 xl:px-3 py-2 text-[13px] transition-colors duration-200 ${
+                  className={`relative whitespace-nowrap px-2 xl:px-3 py-2 text-footnote transition-colors duration-200 ${
                     isActive(item.href)
                       ? 'text-dharma-saffron'
                       : 'text-dharma-text/80 hover:text-dharma-text'
@@ -656,7 +652,7 @@ export function SiteNav({
                   ref={discoverButtonRef}
                   type="button"
                   onClick={() => setDiscoverOpen((open) => !open)}
-                  className={`flex items-center gap-1 px-2 xl:px-3 py-2 text-[13px] transition-colors ${
+                  className={`flex items-center gap-1 px-2 xl:px-3 py-2 text-footnote transition-colors ${
                     discoveryIsActive || discoverOpen
                       ? 'text-dharma-saffron'
                       : 'text-dharma-text/80 hover:text-dharma-text'
@@ -675,15 +671,11 @@ export function SiteNav({
                   />
                 </button>
 
-                <AnimatePresence>
-                  {discoverOpen && (
-                    <motion.div
+                {discoverMenu.mounted && (
+                    <div
                       id="desktop-discovery-menu"
-                      initial={{ opacity: 0, y: -8, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -6, scale: 0.98 }}
-                      transition={{ duration: reduce ? 0 : 0.16 }}
-                      className="absolute right-0 top-[calc(100%+0.75rem)] w-[34rem] rounded-2xl border border-dharma-border bg-dharma-card p-3 shadow-2xl z-50"
+                      data-closing={discoverMenu.closing || undefined}
+                      className="chrome-pop absolute right-0 top-[calc(100%+0.75rem)] w-[34rem] rounded-2xl border border-dharma-border bg-dharma-card p-3 shadow-2xl z-50"
                     >
                       <p className="px-3 pb-2 pt-1 text-xs font-bold uppercase tracking-[0.16em] text-dharma-muted">
                         ज्ञान संसार
@@ -719,9 +711,8 @@ export function SiteNav({
                           </Link>
                         ))}
                       </div>
-                    </motion.div>
+                    </div>
                   )}
-                </AnimatePresence>
               </div>
             </div>
 
@@ -742,7 +733,7 @@ export function SiteNav({
                 onClick={handleOpenSearchModal}
                 onPointerEnter={() => void loadSearchModal()}
                 onFocus={() => void loadSearchModal()}
-                className="apple-icon-button hidden lg:flex h-9 gap-2 px-2.5 text-[13px] text-dharma-muted"
+                className="apple-icon-button hidden lg:flex h-9 gap-2 px-2.5 text-footnote text-dharma-muted"
                 aria-label="खोजें (Search)"
                 aria-keyshortcuts="Control+K Meta+K /"
               >
@@ -769,7 +760,7 @@ export function SiteNav({
               {/* Desktop CTA */}{' '}
               <Link
                 href="/scripture/bhagavadgita"
-                className="hidden min-[1800px]:inline-flex items-center rounded-full bg-dharma-saffron px-3.5 py-1.5 text-[13px] text-dharma-bg transition hover:opacity-90"
+                className="hidden min-[1800px]:inline-flex items-center rounded-full bg-dharma-saffron px-3.5 py-1.5 text-footnote text-dharma-bg transition hover:opacity-90"
               >
                 पठन आरम्भ करें
               </Link>
@@ -803,19 +794,12 @@ export function SiteNav({
                 aria-label={`थीम बदलें · Theme: ${THEME_NAMES[theme].name}`}
                 title={`थीम: ${THEME_NAMES[theme].name} · ${THEME_NAMES[theme].hi}`}
               >
-                {/* initial={false}: server-rendered visible; only later theme changes animate. */}
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.span
-                    key={theme}
-                    initial={{ scale: 0.7, opacity: 0, rotate: -20 }}
-                    animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                    exit={{ scale: 0.7, opacity: 0, rotate: 20 }}
-                    transition={{ duration: reduce ? 0 : 0.16 }}
-                    className="flex items-center justify-center"
-                  >
-                    <ThemeIcon className="h-5 w-5" aria-hidden="true" />
-                  </motion.span>
-                </AnimatePresence>
+                <span
+                  key={theme}
+                  className={`flex items-center justify-center ${themeTouched ? 'chrome-icon-swap' : ''}`}
+                >
+                  <ThemeIcon className="h-5 w-5" aria-hidden="true" />
+                </span>
               </button>
               {themeMenuOpen && (
                 <div
@@ -871,44 +855,29 @@ export function SiteNav({
         </div>
 
         {/* Scroll Progress Indicator Bar */}
-        <motion.div
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-px origin-left bg-dharma-saffron/70"
-          style={{ scaleX: reduce ? scrollYProgress : progress }}
-        />
+        <div aria-hidden="true" className="nav-progress absolute inset-x-0 bottom-0 h-px bg-dharma-saffron/70" />
       </nav>
 
       {/* ── Accessible Navigation Drawer ─────────────────────────────────── */}
-      <AnimatePresence>
-        {drawerOpen && (
+      {drawer.mounted && (
           <div className="lg:hidden">
             {/* Backdrop Overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: reduce ? 0 : 0.2 }}
+            <div
+              data-closing={drawer.closing || undefined}
               onClick={handleCloseDrawer}
-              className="fixed inset-0 z-[60] bg-stone-950/65 backdrop-blur-sm"
+              className="chrome-fade fixed inset-0 z-[60] bg-stone-950/65 backdrop-blur-sm"
               aria-hidden="true"
             />
 
             {/* Slide-out Drawer Panel */}
-            <motion.div
+            <div
               ref={drawerRef}
               id="mobile-navigation-drawer"
               role="dialog"
               aria-modal="true"
               aria-label="नेविगेशन दराज (Navigation Drawer)"
-              initial={reduce ? { opacity: 0 } : { x: '100%' }}
-              animate={reduce ? { opacity: 1 } : { x: 0 }}
-              exit={reduce ? { opacity: 0 } : { x: '100%' }}
-              transition={
-                reduce
-                  ? { duration: 0 }
-                  : { type: 'spring', damping: 30, stiffness: 320, mass: 0.8 }
-              }
-              className="fixed inset-y-0 right-0 z-[70] flex w-full max-w-[360px] sm:max-w-md flex-col border-l border-dharma-border bg-dharma-card shadow-2xl"
+              data-closing={drawer.closing || undefined}
+              className="chrome-sheet fixed inset-y-0 right-0 z-[70] flex w-full max-w-[360px] sm:max-w-md flex-col border-l border-dharma-border bg-dharma-card shadow-2xl"
               style={{
                 paddingTop: 'max(0.75rem, env(safe-area-inset-top, 0.75rem))',
                 paddingBottom: 'max(1rem, env(safe-area-inset-bottom, 1rem))',
@@ -1116,6 +1085,7 @@ export function SiteNav({
                             aria-checked={isSelected}
                             onClick={() => {
                               setTheme(opt);
+                              setThemeTouched(true);
                               triggerTactileFeedback('light', 'softTap');
                             }}
                             className={`flex min-h-[44px] items-center gap-2 rounded-xl px-2.5 py-2 transition active:scale-95 ${
@@ -1181,10 +1151,9 @@ export function SiteNav({
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         )}
-      </AnimatePresence>
 
       {/* ── Mobile Bottom Navigation Bar (Thumb Usability) ────────────────── */}
       {/* Strictly limited to the 5 requested items: Home, Search, Library, Sadhana, Saved */}

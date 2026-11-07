@@ -15,7 +15,8 @@ export function generateStaticParams() {
   return GRANTH_ANSWERS.map((a) => ({ slug: a.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const a = getGranthAnswer(params.slug);
   if (!a) return {};
   const title = `${a.questionHi} · ${a.questionEn}`;
@@ -80,7 +81,8 @@ function VerseCard({ group }: { group: AnswerVerseGroup }) {
   );
 }
 
-export default function GranthAnswerPage({ params }: { params: { slug: string } }) {
+export default async function GranthAnswerPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const answer = getGranthAnswer(params.slug);
   if (!answer) notFound();
   const path = pathFor(answer.slug);

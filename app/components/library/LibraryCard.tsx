@@ -159,8 +159,9 @@ export function LibraryCard({
   return (
     <article
       aria-labelledby={headingId}
+      data-tilt
       style={{ '--book': CATEGORY_COLOURS[item.category] ?? CATEGORY_COLOURS.other } as CSSProperties}
-      className="home-book group relative flex h-full flex-col overflow-hidden rounded-[22px] bg-dharma-card p-5 pl-7 shadow-[0_2px_6px_rgba(0,0,0,0.04),0_12px_40px_rgba(0,0,0,0.06)] sm:p-6 sm:pl-8"
+      className="home-book group relative flex h-full flex-col overflow-hidden rounded-card bg-dharma-card p-5 pl-7 shadow-raised sm:p-6 sm:pl-8"
     >
       <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-[color:var(--book-ink)]" />
       <header className="flex items-start justify-between gap-3">
@@ -182,12 +183,12 @@ export function LibraryCard({
             {item.titleSanskrit}
           </span>
         )}{' '}
-        <span lang="en" className="mt-2 block text-[19px] font-semibold tracking-[-0.02em] text-dharma-text">
+        <span lang="en" className="mt-2 block text-title-3 font-semibold text-dharma-text">
           {englishTitle}
         </span>
         {detailed && item.titleIast && <span className="mt-0.5 block font-serif text-sm font-normal italic text-dharma-muted">{item.titleIast}</span>}
       </h3>
-      <p className="mt-1 text-[13px] text-dharma-muted">
+      <p className="mt-1 text-footnote text-dharma-muted">
         {item.author ? <span>Attributed to {item.author} · </span> : null}
         {countLabel}
       </p>
@@ -226,7 +227,7 @@ export function LibraryCard({
         <Link
           href={readingHref}
           aria-label={`Start reading ${item.title}`}
-          className="inline-flex min-h-[44px] items-center text-[17px] text-dharma-saffron hover:underline"
+          className="inline-flex min-h-[44px] items-center text-body text-dharma-saffron hover:underline"
         >
           Start reading <span aria-hidden="true">&nbsp;›</span>
         </Link>
