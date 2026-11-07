@@ -247,6 +247,14 @@ a.apple-row:active,
     box-shadow: var(--shadow-raised);
     overflow: visible;
 }
+/* Phones (up to 480px): a 12px inner edge instead of 16–18px, so the shloka, the meanings
+   and the व्याख्या get the width back without the card losing its frame. */
+@media (max-width: 480px) {
+    .verse-card.book-verse,
+    .verse-card.vt {
+        --verse-pad: var(--space-3);
+    }
+}
 .verse-card.book-verse:hover,
 .verse-card.vt:hover {
     box-shadow: var(--shadow-raised);

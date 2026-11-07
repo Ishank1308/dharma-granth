@@ -15,15 +15,15 @@ const step = (i: number) => ({ '--i': i }) as CSSProperties;
  */
 export function HomeHero() {
   return (
-    <section aria-labelledby="hero-title" className="hero-stage overflow-x-clip px-5 pb-12 pt-16 text-center sm:pb-16 sm:pt-24">
+    <section aria-labelledby="hero-title" className="hero-stage overflow-x-clip px-4 pb-10 pt-10 text-center sm:px-5 sm:pb-16 sm:pt-24">
       <HeroHalo />
       <div className="hero-content hero-rise mx-auto max-w-4xl">
         {/* Sacred Trust Eyebrow Pill */}
-        <div style={step(0)} className="inline-flex items-center gap-2 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/10 px-4 py-1.5 text-xs font-semibold text-dharma-saffron shadow-xs backdrop-blur-xs">
-          <span aria-hidden="true">ॐ</span>
-          <span>Hindu Scriptures, Whole</span>
-          <span aria-hidden="true" className="opacity-60">·</span>
-          <span lang="hi" className="font-devanagari">सनातन ग्रन्थ कोश (67 ग्रन्थ · 1,32,000+ श्लोक)</span>
+        {/* On a phone the two phrases sit on two whole lines instead of breaking word by word. */}
+        <div style={step(0)} className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 rounded-2xl border border-dharma-saffron/30 bg-dharma-saffron/10 px-4 py-1.5 text-xs font-semibold text-dharma-saffron shadow-xs backdrop-blur-xs sm:rounded-full">
+          <span className="whitespace-nowrap"><span aria-hidden="true">ॐ</span> <span>Hindu Scriptures, Whole</span></span>
+          <span aria-hidden="true" className="hidden opacity-60 sm:inline">·</span>
+          <span lang="hi" className="whitespace-nowrap font-devanagari">सनातन ग्रन्थ कोश (67 ग्रन्थ · 1,32,000+ श्लोक)</span>
         </div>
 
         <h1
@@ -38,13 +38,13 @@ export function HomeHero() {
         <p lang="hi" style={step(2)} className="mt-2 font-devanagari text-2xl font-semibold text-dharma-muted sm:text-[34px] sm:leading-tight">
           हर श्लोक, सम्पूर्ण।
         </p>
-        <p style={step(3)} className="mx-auto mt-6 max-w-[640px] text-body leading-[1.45] text-dharma-muted sm:text-[21px]">
+        <p style={step(3)} className="mx-auto mt-4 max-w-[640px] sm:mt-6 text-body leading-[1.45] text-dharma-muted sm:text-[21px]">
           The Vedas, Upanishads, Gita, Itihāsas and Purāṇas in Sanskrit, with Hindi and English where the published text
           gives them. Free, quiet, and without ads.
         </p>
 
         {/* Primary Call to Actions */}
-        <div style={step(4)} className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-7">
+        <div style={step(4)} className="mt-6 flex flex-col items-center justify-center gap-2 sm:mt-8 sm:flex-row sm:gap-7">
           <Link
             href="/scripture/bhagavadgita/"
             className="cta-primary inline-flex min-h-[44px] items-center rounded-full bg-dharma-saffron px-6 text-body font-medium text-dharma-bg shadow-sm transition-transform hover:opacity-95 hover:scale-[1.02] active:scale-[0.98]"

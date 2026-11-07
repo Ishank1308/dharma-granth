@@ -70,6 +70,51 @@ export function parseModernContext(text: string): ParsedModernContext {
   };
 }
 
+/** `**bold**` inside a line becomes <strong>; everything else stays plain text. */
+function renderInline(line: string): React.ReactNode[] {
+  return line.split(/(\*\*[^*]+\*\*)/g).filter(Boolean).map((part, i) =>
+    part.startsWith('**') && part.endsWith('**') && part.length > 4 ? (
+      <strong key={i} className="font-semibold text-dharma-text">{part.slice(2, -2)}</strong>
+    ) : (
+      <React.Fragment key={i}>{part}</React.Fragment>
+    ),
+  );
+}
+
+/**
+ * The commentary is written in light Markdown: "- " bullets and **bold** lead-ins.
+ * Bullets become a real list and the asterisks go, so a phone shows the three
+ * steps as steps instead of "- **विषाद को पहचानें**:".
+ */
+function LightMarkdown({ text, className = '' }: { text: string; className?: string }) {
+  const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+  const isBullet = (l: string) => /^[-•*]\s+/.test(l);
+  if (!lines.some(isBullet) && !text.includes('**')) {
+    return <div className={`whitespace-pre-line ${className}`}>{text}</div>;
+  }
+  const blocks: React.ReactNode[] = [];
+  let items: string[] = [];
+  const flush = () => {
+    if (items.length === 0) return;
+    blocks.push(
+      <ul key={`ul-${blocks.length}`} className="list-disc space-y-1.5 pl-4 marker:text-dharma-muted">
+        {items.map((it, i) => <li key={i}>{renderInline(it)}</li>)}
+      </ul>,
+    );
+    items = [];
+  };
+  for (const line of lines) {
+    if (isBullet(line)) {
+      items.push(line.replace(/^[-•*]\s+/, ''));
+    } else {
+      flush();
+      blocks.push(<p key={`p-${blocks.length}`}>{renderInline(line)}</p>);
+    }
+  }
+  flush();
+  return <div className={`space-y-2 ${className}`}>{blocks}</div>;
+}
+
 /**
  * Modern Context alone (context + application, or the raw text when the lesson
  * is unstructured). Rendered inside the Modern Context step of the sacred
@@ -79,10 +124,13 @@ export function ModernContextBody({
   parsed,
   lang = 'hi',
   className = '',
+  hideContextHeading = false,
 }: {
   parsed: ParsedModernContext;
   lang?: string;
   className?: string;
+  /** The caller's own heading already says आधुनिक संदर्भ; don't print it twice. */
+  hideContextHeading?: boolean;
 }) {
   if (!parsed.hasStructuredFormat) {
     return (
@@ -100,12 +148,15 @@ export function ModernContextBody({
       {/* 1. आधुनिक संदर्भ (Deep Modern Context) */}
       {parsed.contextText && (
         <section aria-label="आधुनिक संदर्भ" className="space-y-2">
-          <p className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
-            आधुनिक संदर्भ · Modern Context
-          </p>
-          <div className="whitespace-pre-line text-sm md:text-base leading-relaxed sm:leading-loose text-dharma-text/95">
-            {parsed.contextText}
-          </div>
+          {!hideContextHeading && (
+            <p className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
+              आधुनिक संदर्भ · Modern Context
+            </p>
+          )}
+          <LightMarkdown
+            text={parsed.contextText}
+            className="text-sm md:text-base leading-relaxed sm:leading-loose text-dharma-text/95"
+          />
         </section>
       )}
 
@@ -113,14 +164,15 @@ export function ModernContextBody({
       {parsed.applicationText && (
         <section
           aria-label="आज के जीवन में प्रयोग"
-          className="rounded-xl border border-dharma-border bg-dharma-card-soft p-4 sm:p-5"
+          className="rounded-xl border border-dharma-border bg-dharma-card-soft p-3 sm:p-5"
         >
           <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
             आज के जीवन में प्रयोग · Practical Application
           </p>
-          <div className="whitespace-pre-line text-sm md:text-base leading-relaxed text-dharma-text/95 font-medium">
-            {parsed.applicationText}
-          </div>
+          <LightMarkdown
+            text={parsed.applicationText}
+            className="text-sm md:text-base leading-relaxed text-dharma-text/95"
+          />
         </section>
       )}
     </div>
