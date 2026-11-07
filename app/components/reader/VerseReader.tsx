@@ -2,56 +2,59 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { MotionConfig } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
+  BookOpen,
   Bookmark,
   BookmarkCheck,
   ChevronDown,
   Copy,
   Code2,
   Download,
-  Flag,
   Focus,
   MessageCircle,
   Maximize2,
+  Menu,
   Minimize2,
+  Search,
   Share2,
   SlidersHorizontal,
-  StickyNote,
+  Sun,
+  X,
+  MoreHorizontal,
 } from 'lucide-react';
-import { useTheme } from '@/app/components/ThemeProvider';
-import { toDevanagari } from '@/lib/verse-format';
+import { THEMES, THEME_NAMES, useTheme } from '@/app/components/ThemeProvider';
+import { openGlobalSearch } from '@/lib/search-events';
+import { formatVerseRef, toAsciiDigits } from '@/lib/verse-format';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import { EmbedVerseDialog } from '@/app/components/EmbedVerseDialog';
-import { useStudyProgress } from '@/lib/useStudyProgress';
 import { useReaderSettings } from '@/lib/useReaderSettings';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import {
-  REPORT_KINDS,
   buildCopyText,
   buildDownloadMarkdown,
-  buildIssueUrl,
   isBookmarked,
   toggleBookmark,
   verseReference,
   type ReaderProvenance,
   type ReaderRef,
   type ReaderVerseText,
-  type ReportKind,
 } from '@/lib/reader-actions';
 import { ReaderDialog } from './ReaderDialog';
 import { ReaderSettingsPanel } from './ReaderSettingsPanel';
 import { ReaderLayers } from './ReaderLayers';
+import type { VerseInsight } from '@/lib/verse-insights';
 import { SacredShareModal, type SacredShareData } from '@/app/components/share/SacredShareModal';
 import { useSwipeGesture } from '@/lib/useSwipeGesture';
 import { MobileSwipeIndicator } from './MobileSwipeIndicator';
 import { MobileReadingProgress } from './MobileReadingProgress';
 import { MobileVerseCarousel } from './MobileVerseCarousel';
-import { MobileAudioPill } from './MobileAudioPill';
+import { setCurrentVerseContext, getSoundscapeState, stopSoundscape } from '@/lib/sacred-soundscape';
 import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
 import { logActivity } from '@/lib/activity-log';
@@ -88,28 +91,41 @@ export interface VerseReaderProps {
   provenance: ReaderProvenance;
   prev?: ReaderVerseLink;
   next?: ReaderVerseLink;
+  /** Reviewed मर्म line and जीवन प्रसंग chips for this verse (lib/verse-insights). */
+  insight?: VerseInsight;
+  /** Status chips (server-rendered TrustBadges), shown at the top of the Sources card. */
+  sourceStatus?: ReactNode;
   /** Related concepts, topics and cross-references, rendered under the layers. */
   children?: ReactNode;
 }
 
 const WIDTH = { narrow: 'max-w-xl', standard: 'max-w-3xl', wide: 'max-w-5xl' } as const;
 
+/** The site's primary routes, for the reader's own menu (reader mode hides the site header). */
+const SITE_LINKS = [
+  { href: '/', en: 'Home', hi: 'मुख' },
+  { href: '/scriptures/', en: 'Scripture Library', hi: 'ग्रंथालय' },
+  { href: '/scripture/bhagavadgita/', en: 'Bhagavad Gita', hi: 'गीता' },
+  { href: '/learn/', en: 'Learn', hi: 'अध्ययन' },
+  { href: '/practice/', en: 'Practice', hi: 'साधना' },
+  { href: '/panchang/', en: 'Panchang', hi: 'पंचांग' },
+] as const;
+
 const iconBtn =
-  'focus-ring inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-dharma-border bg-dharma-card/80 text-dharma-muted transition hover:border-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300';
+  'focus-ring apple-icon-button h-11 w-11 shrink-0';
 
 const actionBtn =
-  'focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-2 whitespace-nowrap rounded-xl border border-dharma-border bg-dharma-card px-3.5 text-sm font-semibold text-dharma-text transition hover:border-saffron-400 hover:text-saffron-800 disabled:cursor-not-allowed disabled:opacity-50 dark:hover:text-saffron-300';
+  'focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-dharma-text/[0.06] px-4 text-subhead text-dharma-text transition hover:bg-dharma-text/[0.1] disabled:cursor-not-allowed disabled:opacity-50';
 
 export function VerseReader(props: VerseReaderProps) {
   const {
-    scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, scriptureHref, chapterHref,
-    pageUrl, chapters, verses, index, verse, provenance, prev, next, children,
+    scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, chapterHref,
+    pageUrl, chapters, verses, index, verse, provenance, prev, next, children, insight, sourceStatus,
   } = props;
 
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const { settings, update, reset, reducedMotion } = useReaderSettings();
-  const { getNote, setNote } = useStudyProgress();
 
   const ref: ReaderRef = useMemo(
     () => ({ scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, url: pageUrl }),
@@ -117,14 +133,15 @@ export function VerseReader(props: VerseReaderProps) {
   );
   const label = verseReference(ref, verse);
 
-  /* Reader mode: the site navand companion dock step aside (see globals.css). */
+  /* Reader mode: the site nav and companion dock step aside (see globals.css). The reader's own
+     header keeps a way out: back to the chapter, the site menu and the theme. */
   useEffect(() => {
     document.documentElement.setAttribute('data-reader', '');
     return () => document.documentElement.removeAttribute('data-reader');
   }, []);
 
   /* ── Dialog state ── */
-  const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'note' | 'report' | 'embed'>(null);
+  const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'embed' | 'site'>(null);
   const close = useCallback(() => setDialog(null), []);
 
   /* ── Toast ── */
@@ -142,6 +159,45 @@ export function VerseReader(props: VerseReaderProps) {
   /* ── Bookmark ── */
   const [saved, setSaved] = useState(false);
   useEffect(() => setSaved(isBookmarked(ref, verse)), [ref, verse]);
+
+  /* ── Sync Active Verse Context to Sacred Soundscape Engine ── */
+  useEffect(() => {
+    setCurrentVerseContext(verse.sanskrit, `${scriptureTitle} ${formatVerseRef(scriptureId, chapterId, verse.number)}`);
+  }, [verse.sanskrit, scriptureId, scriptureTitle, chapterId, verse.number]);
+
+  /* ── MediaSession Lock-Screen Controls & Continuous Pārāyaṇa ── */
+  useEffect(() => {
+    const handlePrev = () => {
+      if (prev?.href) router.push(prev.href);
+    };
+    const handleNext = () => {
+      if (next?.href) router.push(next.href);
+    };
+    const handleRecitationEnded = () => {
+      const state = getSoundscapeState();
+      if (state.continuousParayana) {
+        if (next?.href) {
+          say('निरंतर पाठ: अगला श्लोक (2.5s)...');
+          const timer = setTimeout(() => {
+            router.push(next.href);
+          }, 2500);
+          return () => clearTimeout(timer);
+        } else {
+          stopSoundscape();
+          say('अध्याय सम्पूर्ण · Chapter Recitation Complete');
+        }
+      }
+    };
+
+    window.addEventListener('dharma:verse-prev', handlePrev);
+    window.addEventListener('dharma:verse-next', handleNext);
+    window.addEventListener('dharma:recitation-ended', handleRecitationEnded);
+    return () => {
+      window.removeEventListener('dharma:verse-prev', handlePrev);
+      window.removeEventListener('dharma:verse-next', handleNext);
+      window.removeEventListener('dharma:recitation-ended', handleRecitationEnded);
+    };
+  }, [prev, next, router, say]);
   const onBookmark = () => {
     const state = toggleBookmark(ref, verse);
     if (state === null) return say('Could not save: browser storage is unavailable.');
@@ -172,6 +228,9 @@ export function VerseReader(props: VerseReaderProps) {
 
   /* ── Mobile Verse Carousel Drawer ── */
   const [carouselOpen, setCarouselOpen] = useState(false);
+
+  /* Less common verse actions, folded under "More". */
+  const [moreActions, setMoreActions] = useState(false);
 
   /* ── Mobile Touch Swipe Gesture Engine ── */
   const { gestureState, handlers } = useSwipeGesture({
@@ -230,24 +289,6 @@ export function VerseReader(props: VerseReaderProps) {
     say('Verse downloaded');
   };
 
-  /* ── Private note (same store as the rest of the app) ── */
-  const noteText = getNote(scriptureId, chapterId, String(verse.number))?.text ?? '';
-  const [draft, setDraft] = useState('');
-  const openNote = () => {
-    setDraft(noteText);
-    setDialog('note');
-  };
-  const saveNote = () => {
-    setNote(scriptureId, chapterId, String(verse.number), draft.trim());
-    close();
-    say(draft.trim() ? 'Note saved on this device' : 'Note removed');
-  };
-
-  /* ── Report ── */
-  const [kind, setKind] = useState<ReportKind>('sanskrit');
-  const [details, setDetails] = useState('');
-  const issueUrl = buildIssueUrl(ref, verse, kind, details);
-
   /* ── Verse picker ── */
   const [pick, setPick] = useState('');
   const visibleVerses = pick.trim() ? verses.filter((v) => String(v.number).startsWith(pick.trim())) : verses;
@@ -259,8 +300,8 @@ export function VerseReader(props: VerseReaderProps) {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       const el = e.target as HTMLElement | null;
       if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT' || el.isContentEditable)) return;
-      if (e.key === 'ArrowLeft' && prev) router.push(prev.href);
-      if (e.key === 'ArrowRight' && next) router.push(next.href);
+      if ((e.key === 'ArrowLeft' || e.key === 'h' || e.key === 'k') && prev) router.push(prev.href);
+      if ((e.key === 'ArrowRight' || e.key === 'l' || e.key === 'j') && next) router.push(next.href);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -298,31 +339,36 @@ export function VerseReader(props: VerseReaderProps) {
     const hi = dir === 'prev' ? 'पिछला' : 'अगला';
     const base =
       size === 'bar'
-        ? 'min-h-[48px] px-3'
-        : 'min-h-[52px] px-4';
-    if (!target) return <span className={size === 'bar' ? 'w-[88px]' : 'w-40'} aria-hidden="true" />;
+        ? 'min-h-[48px] px-2.5 sm:px-3 gap-1.5 sm:gap-2.5'
+        : 'min-h-[52px] px-4 gap-2.5';
+    if (!target) return <span className={size === 'bar' ? 'w-16 shrink-0' : 'w-40'} aria-hidden="true" />;
     const crosses = otherChapter(target.href);
     const hiLabel = crosses != null ? (dir === 'prev' ? 'पिछला अध्याय' : 'अगला अध्याय') : hi;
     const verseLine = crosses != null
       ? (size === 'bar'
-        ? `${toDevanagari(crosses)}.${toDevanagari(target.number)}`
-        : `अध्याय ${toDevanagari(crosses)}, श्लोक ${toDevanagari(target.number)}`)
-      : `श्लोक ${toDevanagari(target.number)}`;
+        ? `${toAsciiDigits(crosses)}.${toAsciiDigits(target.number)}`
+        : `अध्याय ${toAsciiDigits(crosses)}, श्लोक ${toAsciiDigits(target.number)}`)
+      : `श्लोक ${toAsciiDigits(target.number)}`;
     return (
       <Link
         href={target.href}
         rel={dir}
         onClick={() => triggerTactileFeedback('selection', 'click')}
         aria-label={crosses != null ? `${hiLabel}, श्लोक ${crosses}.${target.number}` : `${text} verse, ${target.number}`}
-        className={`focus-ring inline-flex items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card font-semibold text-dharma-text transition hover:border-saffron-400 ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
+        className={`focus-ring inline-flex items-center rounded-pill border border-separator/60 bg-fill-quaternary text-label-primary transition duration-fast hover:border-separator-strong hover:bg-fill-tertiary active:scale-97 ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
       >
-        <Icon className="h-4 w-4 shrink-0 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />
+        <Icon className="h-4 w-4 shrink-0 text-tint" aria-hidden="true" />
         <span className="leading-tight">
-          <span className="block text-[11px] font-medium text-dharma-muted">
-            <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null ? ` · ${text}` : ''}
-          </span>
-          <span lang="hi" className="font-devanagari text-sm">{verseLine}</span>
+          <span className="block text-caption font-medium text-label-secondary">
+            <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null && size !== 'bar' ? ` · ${text}` : ''}
+          </span>{' '}
+          <span lang="hi" className="font-devanagari text-subhead font-semibold">{verseLine}</span>
         </span>
+        {size === 'row' && (
+          <kbd className="hidden rounded-chip border border-separator px-1.5 py-0.5 font-mono text-[10px] text-label-tertiary uppercase lg:inline-flex" aria-hidden="true">
+            {dir === 'prev' ? '←' : '→'}
+          </kbd>
+        )}
       </Link>
     );
   };
@@ -349,9 +395,9 @@ export function VerseReader(props: VerseReaderProps) {
           .reader-root[data-hide-decor] h3 svg,.reader-root[data-hide-decor] [data-decor]{display:none}
         `}</style>
         {/* 1 · Sticky reader header */}
-        <header className="sticky top-0 z-40 border-b border-dharma-border/80 bg-dharma-bg/95 backdrop-blur">
-          <div className="mx-auto flex h-14 max-w-5xl items-center gap-2 px-3 sm:h-16 sm:gap-3 sm:px-6">
-            <Link href={scriptureHref} aria-label={`Back to ${scriptureTitle}`} className={iconBtn}>
+        <header className="apple-bar sticky top-0 z-40 border-b">
+          <div className="mx-auto flex h-[52px] max-w-5xl items-center gap-1 px-2 sm:gap-2 sm:px-6">
+            <Link href={chapterHref} aria-label={`Back to chapter ${chapterId}`} title={`Chapter ${chapterId}`} className={iconBtn}>
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
 
@@ -376,12 +422,12 @@ export function VerseReader(props: VerseReaderProps) {
               <p className="text-right text-xs font-medium text-dharma-muted">
                 Verse {index + 1} of {total}
               </p>
-              <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-dharma-border/70" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent} aria-label="Progress through this chapter">
-                <div className="h-full rounded-full bg-saffron-600" style={{ width: `${percent}%` }} />
+              <div className="mt-1 h-1 overflow-hidden rounded-full bg-dharma-text/10" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent} aria-label="Progress through this chapter">
+                <div className="h-full rounded-full bg-dharma-saffron" style={{ width: `${percent}%` }} />
               </div>
             </div>
 
-            <button type="button" data-focus-hide onClick={onBookmark} aria-pressed={saved} aria-label={saved ? 'Remove bookmark' : 'Bookmark this verse'} className={`${iconBtn} ${saved ? '!border-saffron-600 !text-saffron-800 dark:!text-saffron-300' : ''}`}>
+            <button type="button" data-focus-hide onClick={onBookmark} aria-pressed={saved} aria-label={saved ? 'Remove bookmark' : 'Bookmark this verse'} className={`${iconBtn} ${saved ? '!text-dharma-saffron' : ''}`}>
               {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
             </button>
             <button
@@ -390,19 +436,36 @@ export function VerseReader(props: VerseReaderProps) {
               aria-pressed={settings.liteMode}
               aria-label={settings.liteMode ? 'Exit reading lite mode' : 'Reading Lite Mode (विशुद्ध पाठ)'}
               title={settings.liteMode ? 'Exit reading lite mode' : 'Reading Lite Mode (विशुद्ध पाठ)'}
-              className={`${iconBtn} ${settings.liteMode ? '!border-saffron-600 !text-saffron-800 dark:!text-saffron-300' : ''}`}
+              className={`${iconBtn} max-sm:!hidden ${settings.liteMode ? '!text-dharma-saffron' : ''}`}
             >
               <span className="font-serif text-[11px] font-bold">LITE</span>
             </button>
-            <button type="button" onClick={() => update('focusMode', !settings.focusMode)} aria-pressed={settings.focusMode} aria-label={settings.focusMode ? 'Exit focus mode' : 'Enter focus mode'} className={`${iconBtn} ${settings.focusMode ? '!border-saffron-600 !text-saffron-800 dark:!text-saffron-300' : ''}`}>
+            <button type="button" onClick={() => update('focusMode', !settings.focusMode)} aria-pressed={settings.focusMode} aria-label={settings.focusMode ? 'Exit focus mode' : 'Enter focus mode'} className={`${iconBtn} ${settings.focusMode ? '!text-dharma-saffron' : ''}`}>
               <Focus className="h-4 w-4" aria-hidden="true" />
             </button>
-            <button type="button" onClick={() => setDialog('settings')} aria-haspopup="dialog" aria-label="Reader settings" className={iconBtn}>
-              <SlidersHorizontal className="h-4 w-4" aria-hidden="true" />
+            {/* The one "Aa" sheet: reading level, perspective, type, theme and layers. */}
+            <button type="button" onClick={() => setDialog('settings')} aria-haspopup="dialog" aria-label="Reader settings · पठन व्यवस्था" title="पठन व्यवस्था · Reader settings" className={iconBtn}>
+              <span aria-hidden="true" className="font-serif text-sm font-bold">Aa</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const next = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+                setTheme(next);
+                say(`थीम · Theme: ${THEME_NAMES[next].name}`);
+              }}
+              aria-label={`Theme: ${THEME_NAMES[theme].name}. Change theme`}
+              title={`थीम: ${THEME_NAMES[theme].hi} · ${THEME_NAMES[theme].name}`}
+              className={`${iconBtn} max-sm:!hidden`}
+            >
+              <Sun className="h-4 w-4" aria-hidden="true" />
+            </button>
+            <button type="button" onClick={() => setDialog('site')} aria-haspopup="dialog" aria-label="Site menu · मेनू" title="मेनू · Site menu" className={iconBtn}>
+              <Menu className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
-          <div className="h-0.5 bg-dharma-border/50 sm:hidden" aria-hidden="true">
-            <div className="h-full bg-saffron-600" style={{ width: `${percent}%` }} />
+          <div className="h-px bg-transparent sm:hidden" aria-hidden="true">
+            <div className="h-full bg-dharma-saffron" style={{ width: `${percent}%` }} />
           </div>
         </header>
 
@@ -428,10 +491,7 @@ export function VerseReader(props: VerseReaderProps) {
           <button type="button" onClick={() => setDialog('chapters')} aria-haspopup="dialog" className="focus-ring mt-0.5 min-h-[44px] w-full rounded-lg text-left text-sm text-dharma-muted hover:text-saffron-800 dark:hover:text-saffron-300">
             Chapter {chapterId}: {chapterTitle} <ChevronDown className="inline h-3.5 w-3.5" aria-hidden="true" />
           </button>
-          <p className="mt-2 text-xs font-medium text-dharma-muted">Verse {index + 1} of {total}</p>
-          <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-dharma-border/70" aria-hidden="true">
-            <div className="h-full rounded-full bg-saffron-600" style={{ width: `${percent}%` }} />
-          </div>
+          {/* Progress is shown once, in the sticky header; this grid marks the current verse. */}
           <nav aria-label="Verses in this chapter" className="mt-4">
             <ul className="grid grid-cols-5 gap-1.5">
               {verses.map((v) => {
@@ -442,7 +502,7 @@ export function VerseReader(props: VerseReaderProps) {
                       href={v.href}
                       aria-current={current ? 'true' : undefined}
                       aria-label={`Verse ${v.number}`}
-                      className={`focus-ring flex h-11 items-center justify-center rounded-lg border text-xs font-semibold transition ${current ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-500'}`}
+                      className={`focus-ring flex h-11 items-center justify-center rounded-lg border text-xs font-semibold transition ${current ? 'border-transparent bg-dharma-saffron text-dharma-bg' : 'border-transparent bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'}`}
                     >
                       {v.number}
                     </Link>
@@ -453,7 +513,8 @@ export function VerseReader(props: VerseReaderProps) {
           </nav>
         </aside>
 
-        <main className={`min-w-0 flex-1 px-4 pb-32 pt-6 sm:pb-20 sm:pt-8 xl:px-0 ${WIDTH[settings.readingWidth]}`}>
+        {/* data-chapter-reading hides the global floating docks (globals.css), so nothing sits on the verse text. */}
+        <main data-chapter-reading className={`min-w-0 flex-1 px-4 pb-32 pt-6 sm:pb-20 sm:pt-8 xl:px-0 ${WIDTH[settings.readingWidth]}`}>
           {/* 2 · Verse navigation (desktop; phones get the sticky bar below) */}
           <nav aria-label="Verse navigation" className="mb-6 hidden items-center justify-between gap-3 sm:flex">
             {navLink(prev, 'prev', 'row')}
@@ -461,17 +522,19 @@ export function VerseReader(props: VerseReaderProps) {
               type="button"
               onClick={() => setDialog('verses')}
               aria-haspopup="dialog"
-              className="focus-ring inline-flex min-h-[52px] flex-col items-center justify-center rounded-xl px-4 text-center transition hover:bg-dharma-card"
+              className="focus-ring inline-flex min-h-[52px] flex-col items-center justify-center rounded-control px-4 text-center transition duration-fast hover:bg-fill-quaternary active:scale-97"
             >
-              <span className="font-serif text-lg font-bold text-dharma-text">{label}</span>
-              <span className="inline-flex items-center gap-1 text-xs text-dharma-muted">
-                Verse {index + 1} of {total} · jump to verse <ChevronDown className="h-3 w-3" aria-hidden="true" />
+              <span className="inline-flex items-center gap-1.5 text-footnote text-label-secondary">
+                Verse {index + 1} of {total} · jump to verse <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
             </button>
             {navLink(next, 'next', 'row')}
           </nav>
 
-          <h1 className="sr-only">{label}</h1>
+          <header className="mb-8 text-center">
+            <p className="text-sm font-semibold text-dharma-saffron">{chapterTitle}</p>
+            <h1 className="mt-1 text-title-1 font-semibold text-dharma-text">{label}</h1>
+          </header>
 
           {settings.focusMode && (
             <div role="region" aria-label="Focus mode controls" className="mb-6 flex flex-wrap items-center gap-2 rounded-2xl border border-dharma-border bg-dharma-card/80 p-2 text-xs">
@@ -514,31 +577,37 @@ export function VerseReader(props: VerseReaderProps) {
           )}
 
 
-          {/* Actions */}
-          {/* One swipeable row on phones keeps the verse near the top; it wraps from sm up. */}
-          <div role="toolbar" aria-label="Verse actions" data-focus-hide className="-mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
+          {/* 3 · Reading level and perspective now live in the Aa sheet (ReaderSettingsPanel). */}
+
+          {/* 4 · The layers */}
+          <ReaderLayers
+            scriptureId={scriptureId}
+            verse={verse}
+            chapterId={chapterId}
+            provenance={provenance}
+            settings={settings}
+            onUpdateSetting={update}
+            insight={insight}
+            sourceStatus={sourceStatus}
+          />
+
+          {/* Actions come after the verse and its layers, so the shloka is the first thing read. */}
+          {/* One swipeable row on phones; it wraps from sm up. */}
+          <div role="toolbar" aria-label="Verse actions" data-focus-hide className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
             <button type="button" onClick={onBookmark} aria-pressed={saved} className={actionBtn}>
               {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
               {saved ? 'Saved' : 'Save'}
             </button>
-            <button type="button" onClick={openNote} className={actionBtn}>
-              <StickyNote className="h-4 w-4" aria-hidden="true" />
-              {noteText ? 'Edit note' : 'Note'}
-              {noteText && <span className="h-1.5 w-1.5 rounded-full bg-saffron-600" aria-label="has a note" />}
-            </button>
             <button type="button" onClick={onCopy} className={actionBtn}>
               <Copy className="h-4 w-4" aria-hidden="true" /> Copy
             </button>
-            <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" /> Open context
-            </Link>
             <button
               type="button"
               onClick={onShare}
-              className={`${actionBtn} border-saffron-500/50 bg-saffron-500/10 font-bold text-saffron-900 dark:text-saffron-200`}
+              className={`${actionBtn} !bg-dharma-saffron/15 text-dharma-saffron`}
               aria-label="Generate sacred verse card for WhatsApp / Instagram"
             >
-              <Share2 className="h-4 w-4 text-saffron-600 dark:text-saffron-400" aria-hidden="true" />
+              <Share2 className="h-4 w-4" aria-hidden="true" />
               <span>Share Card</span>
             </button>
             <a
@@ -550,6 +619,29 @@ export function VerseReader(props: VerseReaderProps) {
             >
               <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
             </a>
+            <button
+              type="button"
+              onClick={() => setMoreActions((v) => !v)}
+              aria-expanded={moreActions}
+              aria-controls="verse-more-actions"
+              className={actionBtn}
+            >
+              <MoreHorizontal className="h-4 w-4" aria-hidden="true" />
+              {moreActions ? 'Less' : 'More'}
+            </button>
+          </div>
+          {/* Less common actions: one tap away, so the row under the verse stays short. */}
+          <div
+            id="verse-more-actions"
+            role="toolbar"
+            aria-label="More verse actions"
+            hidden={!moreActions}
+            data-focus-hide
+            className={`mt-2 flex-wrap gap-2 ${moreActions ? 'flex' : 'hidden'}`}
+          >
+            <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
+              <ArrowRight className="h-4 w-4" aria-hidden="true" /> Open context
+            </Link>
             <button type="button" onClick={onDownloadImage} className={actionBtn} aria-label="Download Image">
               <Download className="h-4 w-4" aria-hidden="true" /> Download Image
             </button>
@@ -559,91 +651,25 @@ export function VerseReader(props: VerseReaderProps) {
             <button type="button" onClick={onDownload} className={actionBtn}>
               <Download className="h-4 w-4" aria-hidden="true" /> Download
             </button>
-            <button type="button" onClick={() => setDialog('report')} className={actionBtn}>
-              <Flag className="h-4 w-4" aria-hidden="true" /> Report error
-            </button>
           </div>
 
-          {/* 3 · Reader Mode Bar: [Quick] [Simple] [Deep] [Traditional] */}
-          <div
-            role="tablist"
-            aria-label="Reading depth: Quick, Simple, Deep or Traditional"
-            className="mb-6 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-dharma-border bg-dharma-card/70 p-2 shadow-sm"
-          >
-            <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
-              {(
-                [
-                  { id: 'quick', en: 'Quick', hi: 'जिज्ञासु', hint: '1-min core takeaway' },
-                  { id: 'simple', en: 'Simple', hi: 'सरल', hint: 'Clear meaning & life example' },
-                  { id: 'deep', en: 'Deep', hi: 'गहन', hint: 'Full padas, commentary & sources' },
-                  { id: 'traditional', en: 'Traditional', hi: 'शास्त्रीय', hint: 'Mūla, padachheda, anvaya & traditional bhashya' },
-                ] as const
-              ).map((m) => {
-                const active = settings.readerMode === m.id;
-                return (
-                  <button
-                    key={m.id}
-                    type="button"
-                    role="tab"
-                    id={`mode-${m.id}`}
-                    aria-selected={active}
-                    aria-controls="mode-panel"
-                    tabIndex={active ? 0 : -1}
-                    onKeyDown={(e) => {
-                      const ids = ['quick', 'simple', 'deep', 'traditional'] as const;
-                      const i = ids.indexOf(settings.readerMode as (typeof ids)[number]);
-                      const n = e.key === 'ArrowRight' ? (i + 1) % 4 : e.key === 'ArrowLeft' ? (i + 3) % 4 : -1;
-                      if (n < 0) return;
-                      e.preventDefault();
-                      e.stopPropagation();
-                      update('readerMode', ids[n]);
-                      setTimeout(() => document.getElementById(`mode-${ids[n]}`)?.focus(), 0);
-                    }}
-                    onClick={() => {
-                      triggerTactileFeedback('light', 'softTap');
-                      update('readerMode', m.id);
-                      track('mode_selected', { mode: m.id });
-                    }}
-                    className={`focus-ring flex-1 sm:flex-none min-h-[44px] px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
-                      active
-                        ? 'bg-saffron-600 text-white shadow-sm'
-                        : 'text-dharma-muted hover:text-dharma-text hover:bg-dharma-bg/80'
-                    }`}
-                  >
-                    <span className="flex items-center justify-center gap-1.5">
-                      <span lang="hi" className="font-devanagari">{m.hi}</span>
-                      <span className="opacity-60">·</span>
-                      <span>{m.en}</span>
-                    </span>
-                  </button>
-                );
-              })}
+          {/* A deliberate stopping point: the reader may continue, note, or simply stop. */}
+          <section aria-labelledby="verse-pause-h" data-focus-hide className="mt-8 rounded-[18px] bg-dharma-card p-5 text-subhead">
+            <h2 id="verse-pause-h" className="text-base font-semibold text-dharma-text">
+              <span>Pause here</span> <span lang="hi" className="font-devanagari text-dharma-muted">विराम</span>
+            </h2>
+            <p className="mt-1 text-dharma-text-secondary">You can stop at this verse. Your place in this chapter is kept on this device, so Continue reading brings you back here.</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {next && (
+                <Link href={next.href} rel="next" className={actionBtn}>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" /> Next verse
+                </Link>
+              )}
+              <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
+                <BookOpen className="h-4 w-4" aria-hidden="true" /> Back to the chapter
+              </Link>
             </div>
-            <span className="hidden sm:inline-block text-xs text-dharma-muted pr-3">
-              {settings.readerMode === 'quick' && 'त्वरित बोध · सार व व्यावहारिक प्रयोग'}
-              {settings.readerMode === 'simple' && 'सुबोध व्याख्या · जीवन में प्रासंगिकता'}
-              {settings.readerMode === 'deep' && 'गहन अध्ययन · पदच्छेद, भाष्य व संदर्भ'}
-              {settings.readerMode === 'traditional' && 'शास्त्रीय अध्ययन · मूल श्लोक, पदच्छेद, अन्वय व प्रामाणिक भाष्य'}
-            </span>
-          </div>
-
-          {/* 4 · The layers */}
-          <ReaderLayers
-            scriptureId={scriptureId}
-            verse={verse}
-            chapterId={chapterId}
-            provenance={provenance}
-            settings={settings}
-            onReport={() => setDialog('report')}
-            onUpdateSetting={update}
-          />
-
-          {noteText && (
-            <section aria-label="Your private note" className="mt-5 rounded-2xl border border-dashed border-dharma-border bg-dharma-card/60 p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-dharma-muted">Your note · private to this device</p>
-              <p className="whitespace-pre-line text-sm text-dharma-text">{noteText}</p>
-            </section>
-          )}
+          </section>
 
           <div data-focus-hide>{children}</div>
         </main>
@@ -654,8 +680,6 @@ export function VerseReader(props: VerseReaderProps) {
           <ul className="mt-2 space-y-0.5 text-sm">
             {[
               ['layer-sanskrit', 'Original verse'],
-              ['understand-h', '12-Layer Understanding'],
-              ['verse-graph', 'Verse Network & Graph'],
               ['layer-tradition', 'Traditional commentary'],
               ['layer-sources', 'Sources'],
             ].map(([id, text]) => (
@@ -672,23 +696,20 @@ export function VerseReader(props: VerseReaderProps) {
             <button
               type="button"
               onClick={onShare}
-              className={`${actionBtn} border-saffron-500/40 bg-saffron-500/10 text-saffron-900 dark:text-saffron-200`}
+              className={`${actionBtn} !bg-dharma-saffron/15 text-dharma-saffron`}
             >
-              <Share2 className="h-4 w-4 text-saffron-600 dark:text-saffron-400" aria-hidden="true" /> Share Card (9:16)
+              <Share2 className="h-4 w-4" aria-hidden="true" /> Share Card (9:16)
             </button>
             <button type="button" onClick={() => setDialog('settings')} aria-haspopup="dialog" className={actionBtn}>
               <SlidersHorizontal className="h-4 w-4" aria-hidden="true" /> Reader settings
-            </button>
-            <button type="button" onClick={() => setDialog('report')} className={actionBtn}>
-              <Flag className="h-4 w-4" aria-hidden="true" /> Report correction
             </button>
           </div>
         </aside>
         </div>
 
         {/* Mobile: sticky bottom verse navigation (the page has matching bottom padding, so it never covers the verse) */}
-        <nav aria-label="Verse navigation" className="fixed inset-x-0 bottom-0 z-40 border-t border-dharma-border/80 bg-dharma-bg/95 backdrop-blur sm:hidden">
-          <div className="flex items-center justify-between gap-2 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2">
+        <nav aria-label="Verse navigation" className="apple-bar fixed inset-x-0 bottom-0 z-40 border-t sm:hidden">
+          <div className="flex items-center justify-between gap-1.5 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 sm:gap-2 sm:px-3">
             {navLink(prev, 'prev', 'bar')}
             <button
               type="button"
@@ -697,10 +718,10 @@ export function VerseReader(props: VerseReaderProps) {
                 setCarouselOpen(true);
               }}
               aria-haspopup="dialog"
-              className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-xl px-2 text-center transition active:scale-95"
+              className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-control px-1 text-center transition active:scale-97 sm:px-2"
             >
-              <span lang="hi" className="font-devanagari text-sm font-bold text-dharma-text">श्लोक {toDevanagari(verse.number)}</span>
-              <span className="text-[11px] font-medium text-saffron-700 dark:text-saffron-400">{index + 1} / {total} · माला खोलें</span>
+              <span lang="hi" className="truncate max-w-full font-devanagari text-subhead font-bold text-label-primary">श्लोक {toAsciiDigits(verse.number)}</span>
+              <span className="truncate max-w-full text-caption text-tint">{index + 1} / {total} · माला</span>
             </button>
             {navLink(next, 'next', 'bar')}
           </div>
@@ -711,7 +732,68 @@ export function VerseReader(props: VerseReaderProps) {
         </div>
 
         {/* Dialogs */}
-        <ReaderSettingsPanel open={dialog === 'settings'} onClose={close} settings={settings} update={update} reset={reset} reducedMotion={reducedMotion} theme={theme} setTheme={setTheme} />
+        <ReaderSettingsPanel
+          open={dialog === 'settings'}
+          onClose={close}
+          settings={settings}
+          update={(key, value) => {
+            update(key, value);
+            if (key === 'readerMode') {
+              triggerTactileFeedback('light', 'softTap');
+              track('mode_selected', { mode: value });
+            }
+          }}
+          reset={reset} reducedMotion={reducedMotion} theme={theme} setTheme={setTheme} />
+
+        <ReaderDialog open={dialog === 'site'} onClose={close} title="Menu" titleHi="मेनू" variant="modal">
+          <nav aria-label="Site pages">
+            <ul className="space-y-1">
+              {SITE_LINKS.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} onClick={close} className="focus-ring flex min-h-[48px] items-center gap-2 rounded-xl px-3 text-sm font-semibold text-dharma-text hover:bg-dharma-bg">
+                    <span>{l.en}</span>{' '}
+                    <span lang="hi" className="font-devanagari font-normal text-dharma-muted">{l.hi}</span>
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    close();
+                    openGlobalSearch();
+                  }}
+                  className="focus-ring flex min-h-[48px] w-full items-center gap-2 rounded-xl px-3 text-left text-sm font-semibold text-dharma-text hover:bg-dharma-bg"
+                >
+                  <Search className="h-4 w-4 text-saffron-700" aria-hidden="true" />
+                  <span>Search</span>{' '}
+                  <span lang="hi" className="font-devanagari font-normal text-dharma-muted">खोजें</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+          <div role="radiogroup" aria-label="Theme" className="mt-5 border-t border-dharma-border pt-4">
+            <p className="mb-2 px-1 text-sm font-semibold text-dharma-muted">
+              Theme <span lang="hi" className="font-devanagari font-normal">थीम</span>
+            </p>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+              {THEMES.map((t) => (
+                <button
+                  key={t}
+                  type="button"
+                  role="radio"
+                  aria-checked={theme === t}
+                  onClick={() => setTheme(t)}
+                  title={THEME_NAMES[t].description}
+                  className={`focus-ring min-h-[48px] rounded-xl border px-3 text-sm font-semibold transition ${theme === t ? 'border-saffron-600 bg-saffron-500/10 text-dharma-text' : 'border-dharma-border text-dharma-muted hover:border-saffron-400'}`}
+                >
+                  <span>{THEME_NAMES[t].name}</span>{' '}
+                  <span lang="hi" className="font-devanagari font-normal">{THEME_NAMES[t].hi}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </ReaderDialog>
 
         <ReaderDialog open={dialog === 'chapters'} onClose={close} title="Chapters" titleHi="अध्याय" variant="modal">
           <ul className="space-y-1">
@@ -771,32 +853,6 @@ export function VerseReader(props: VerseReaderProps) {
           {visibleVerses.length === 0 && <p className="mt-3 text-sm text-dharma-muted">No verse starts with “{pick}”.</p>}
         </ReaderDialog>
 
-        <ReaderDialog
-          open={dialog === 'note'}
-          onClose={close}
-          title="Private note"
-          titleHi="निजी टिप्पणी"
-          icon={<StickyNote className="h-5 w-5 text-saffron-700" aria-hidden="true" />}
-          footer={
-            <div className="flex justify-end gap-2">
-              <button type="button" onClick={close} className="focus-ring min-h-[44px] rounded-xl px-4 text-sm font-semibold text-dharma-muted hover:text-dharma-text">Cancel</button>
-              <button type="button" onClick={saveNote} className="focus-ring min-h-[44px] rounded-xl bg-saffron-700 px-5 text-sm font-semibold text-white hover:bg-saffron-800">Save note</button>
-            </div>
-          }
-        >
-          <label htmlFor="reader-note" className="mb-2 block text-sm text-dharma-muted">
-            About {label}. Saved only in this browser; clear the text and save to remove it.
-          </label>
-          <textarea
-            id="reader-note"
-            value={draft}
-            maxLength={2000}
-            rows={7}
-            onChange={(e) => setDraft(e.target.value)}
-            className="w-full resize-y rounded-xl border border-dharma-border bg-dharma-bg p-3 text-base text-dharma-text outline-none focus:border-saffron-600 focus:ring-2 focus:ring-saffron-600/25"
-          />
-        </ReaderDialog>
-
         <EmbedVerseDialog
           open={dialog === 'embed'}
           onClose={close}
@@ -807,23 +863,6 @@ export function VerseReader(props: VerseReaderProps) {
           english={verse.translation}
           onNotice={say}
         />
-
-        <ReaderDialog open={dialog === 'report'} onClose={close} title="Report a textual error" titleHi="पाठ-त्रुटि" icon={<Flag className="h-5 w-5 text-rose-700" aria-hidden="true" />}>
-          <p className="mb-4 text-sm text-dharma-muted">
-            Describe what is wrong in {label}. This opens a prefilled issue on GitHub; nothing is sent until you press “Create issue” there, and this site stores nothing.
-          </p>
-          <label htmlFor="reader-report-kind" className="mb-1 block text-sm font-semibold text-dharma-text">What kind of error?</label>
-          <select id="reader-report-kind" value={kind} onChange={(e) => setKind(e.target.value as ReportKind)} className="mb-4 min-h-[48px] w-full rounded-xl border border-dharma-border bg-dharma-bg px-3 text-base text-dharma-text">
-            {REPORT_KINDS.map((k) => (
-              <option key={k.id} value={k.id}>{k.label}</option>
-            ))}
-          </select>
-          <label htmlFor="reader-report-details" className="mb-1 block text-sm font-semibold text-dharma-text">What is wrong, and what should it be?</label>
-          <textarea id="reader-report-details" value={details} rows={5} onChange={(e) => setDetails(e.target.value)} className="mb-4 w-full resize-y rounded-xl border border-dharma-border bg-dharma-bg p-3 text-base text-dharma-text outline-none focus:border-saffron-600 focus:ring-2 focus:ring-saffron-600/25" />
-          <a href={issueUrl} target="_blank" rel="noopener noreferrer" onClick={close} className="focus-ring inline-flex min-h-[48px] w-full items-center justify-center rounded-xl bg-saffron-700 px-5 text-sm font-semibold text-white hover:bg-saffron-800">
-            Open prefilled GitHub issue
-          </a>
-        </ReaderDialog>
 
         {/* Sacred Share Card Modal (9:16 Story / 1:1 Post / WhatsApp Card) */}
         <SacredShareModal
@@ -841,8 +880,7 @@ export function VerseReader(props: VerseReaderProps) {
           chapterTitle={`अध्याय ${chapterId}: ${chapterTitle}`}
           scriptureTitle={scriptureTitle}
         />
-
-        <MobileAudioPill />
+        {/* No floating Tanpura button here: on phones it sat over the verse text. Tanpura stays in focus mode. */}
       </div>
     </MotionConfig>
   );

@@ -9,16 +9,9 @@
  * reviewer has read the entry against the text.
  */
 
-import type { ReviewState } from './chapter-orientation';
+import type { ChapterSummary } from './chapter-summaries';
 
-export interface GitaChapterSummary {
-  chapter: number;
-  summaryHi: string;
-  summaryEn: string;
-  review: ReviewState;
-  reviewer?: string;
-  reviewDate?: string;
-}
+export type GitaChapterSummary = ChapterSummary;
 
 export const gitaChapterSummaries: GitaChapterSummary[] = [
   {

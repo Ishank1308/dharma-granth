@@ -85,9 +85,46 @@ export function recordChapterVisit(visit: Omit<ChapterVisit, 'readAt' | 'verseId
     ].slice(0, MAX_VISITS);
     window.localStorage.setItem(KEY, JSON.stringify(next));
     window.dispatchEvent(new Event(CHANGE_EVENT));
+    logReadingDay(visit.scriptureId, visit.chapterId);
   } catch {
     // Storage unavailable (private mode, quota): history is a nicety.
   }
+}
+
+/* ── Reading days: which chapters were opened on which local date, for the yearly summary ── */
+
+const DAYS_KEY = 'dharma.readingDays.v1';
+const MAX_DAYS = 400;
+
+/** Local calendar date, YYYY-MM-DD. */
+const today = (): string => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+};
+
+/** Date → chapters opened that day ("bhagavadgita:2"). Stays in this browser. */
+export function readReadingDays(): Record<string, string[]> {
+  try {
+    const parsed: unknown = JSON.parse(window.localStorage.getItem(DAYS_KEY) ?? '{}');
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
+    const out: Record<string, string[]> = {};
+    for (const [day, list] of Object.entries(parsed as Record<string, unknown>)) {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(day) && Array.isArray(list)) out[day] = list.filter((x): x is string => typeof x === 'string');
+    }
+    return out;
+  } catch {
+    return {};
+  }
+}
+
+function logReadingDay(scriptureId: string, chapterId: number): void {
+  const days = readReadingDays();
+  const day = today();
+  const key = `${scriptureId}:${chapterId}`;
+  if (days[day]?.includes(key)) return;
+  days[day] = [...(days[day] ?? []), key];
+  const kept = Object.keys(days).sort().slice(-MAX_DAYS);
+  window.localStorage.setItem(DAYS_KEY, JSON.stringify(Object.fromEntries(kept.map((d) => [d, days[d]]))));
 }
 
 /** Record the verse on screen for this chapter's history entry (if it exists). */
@@ -120,6 +157,7 @@ export function clearHistory(): number {
   try {
     const n = readRecentChapters().length;
     window.localStorage.removeItem(KEY);
+    window.localStorage.removeItem(DAYS_KEY);
     window.dispatchEvent(new Event(CHANGE_EVENT));
     return n;
   } catch {

@@ -17,9 +17,11 @@ import {
   Flame,
   Globe,
   GraduationCap,
+  Heart,
   Home,
   Menu,
   Moon,
+  Radio,
   Search,
   Settings2,
   Sparkles,
@@ -28,30 +30,28 @@ import {
   Sunset,
   X,
 } from 'lucide-react';
-import {
-  AnimatePresence,
-  motion,
-  useReducedMotion,
-  LayoutGroup,
-  useScroll,
-  useSpring,
-} from 'framer-motion';
+import { usePresence } from '@/app/components/motion/usePresence';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
-import { THEMES, useTheme, type Theme } from './ThemeProvider';
+import { subscribeSoundscape, toggleSoundscape } from '@/lib/sacred-soundscape';
+import { THEMES, THEME_NAMES, useTheme, type Theme } from './ThemeProvider';
 import {
   useLanguagePreference,
   type LanguagePreference,
   LANGUAGE_OPTIONS,
 } from '@/lib/useLanguagePreference';
 import { triggerTactileFeedback } from '@/lib/haptics';
-import { formatCountDevanagari } from '@/lib/holdings-label';
+import { THEME_IDS } from '@/lib/site-theme';
 import { readActiveStreak } from '@/lib/reading-history';
-import logoMark from '@/public/logo-mark.webp';
 import { OPEN_SEARCH_EVENT, type OpenSearchDetail } from '@/lib/search-events';
 
 // Lazy-load the heavy search modal to avoid bundling search index in the critical path
-const loadSearchModal = () => import('./GlobalSearchModal');
+const loadSearchModal = () =>
+  import('./GlobalSearchModal').then((m) => {
+    // Hover/focus warms the index JSON before first open; the modal dedupes repeats.
+    m.warmSearchIndexes();
+    return m;
+  });
 const GlobalSearchModal = dynamic(
   () => loadSearchModal().then((m) => m.GlobalSearchModal),
   { ssr: false },
@@ -64,25 +64,13 @@ function isTypingTarget(target: EventTarget | null): boolean {
 }
 
 const THEME_ICONS: Record<Theme, typeof Sun> = {
+  auto: Sparkles,
   day: Sun,
   sunset: Sunset,
   paper: BookOpen,
   night: Moon,
 };
 
-const THEME_LABELS: Record<Theme, string> = {
-  day: 'Day · दिन',
-  sunset: 'Sunset · संध्या',
-  paper: 'Paper · पाण्डुलिपि',
-  night: 'Dark · रात्रि',
-};
-
-const THEME_DESCRIPTIONS: Record<Theme, string> = {
-  day: 'Warm paper reading mode',
-  sunset: 'Soft amber evening mode',
-  paper: 'Antique manuscript parchment',
-  night: 'Low-glare dark reading mode',
-};
 
 const desktopPrimaryItems = [
   { label: 'Home', labelHi: 'मुख', href: '/' },
@@ -96,33 +84,37 @@ const desktopPrimaryItems = [
 const desktopDiscoveryItems = [
   { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या', href: '/ashtavakra' },
   { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask' },
-  { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — १२ क्रमिक साधना पथ', href: '/journeys' },
-  { label: 'स्वाध्याय मार्ग', description: 'Guided Reading Paths — विषयवार अध्ययन', href: '/learn/paths' },
-  { label: 'पठन योजनाएँ', description: 'Reading Plans — १८ दिवसीय गीता आदि', href: '/learn/plans' },
+  { label: 'श्लोक संबंध जाल', description: 'Verse Relationship Network — गीता, उपनिषद् व वेद की कड़ियाँ', href: '/network' },
+  { label: 'स्वाध्याय यात्राएँ', description: 'Guided Learning Journeys — 12 क्रमिक साधना पथ', href: '/learn/journeys/' },
+  { label: 'पठन योजनाएँ', description: 'Reading Plans — 18 दिवसीय गीता, पढ़ने के क्रम व विषयवार स्वाध्याय', href: '/learn/plans/' },
   { label: 'जिज्ञासा समाधान', description: 'Scripture FAQs — श्रुति-स्मृति व नीति', href: '/learn/faq' },
   { label: 'स्रोत पारदर्शिता', description: 'Source Library — मूल पांडुलिपियाँ व संस्करण', href: '/sources' },
-  { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — तनाव, भय, क्रोध व धर्मसंकट का समाधान', href: '/guidance' },
+  { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'Dharmic Guidance — उद्वेग, भय, क्रोध व धर्मसंकट का समाधान', href: '/wisdom-for-life/' },
+  { label: 'वैदिक मन्त्र व शान्ति पाठ', description: 'Sacred Mantras & Suktas — पदच्छेद, शब्दार्थ व भावार्थ', href: '/mantras/' },
+  { label: 'ज्ञान मार्ग', description: 'Wisdom Pathways — भाव, प्रश्न व संत से शास्त्र तक', href: '/wisdom-pathways/' },
   { label: 'दैनिक श्लोक', description: 'Daily Verse — आज का श्लोक WhatsApp पर भेजें', href: '/daily-verse' },
   { label: 'पंचांग', description: 'दैनिक वैदिक काल व ऋतु', href: '/panchang' },
   { label: 'अवधारणाएँ', description: 'मुख्य दार्शनिक विचार', href: '/concepts' },
-  { label: 'विषय', description: 'जीवन और साधना के विषय', href: '/topics' },
+  { label: 'विषय', description: 'जीवन और साधना के विषय', href: '/wisdom-for-life' },
   { label: 'पात्र', description: 'कथाओं के प्रमुख चरित्र', href: '/characters' },
   { label: 'स्थान', description: 'पवित्र और ऐतिहासिक स्थल', href: '/locations' },
   { label: 'कालखंड', description: 'समयरेखा और परंपरा', href: '/timelines' },
   { label: 'उत्सव', description: 'पर्व और उनका अर्थ', href: '/festivals' },
   { label: 'अनुष्ठान', description: 'विधियाँ और परंपराएँ', href: '/rituals' },
+  { label: 'सहयोग व सेवा', description: 'Voluntary Support — प्रत्यक्ष UPI व QR द्वारा धर्म ग्रंथ का संवर्धन', href: '/contribute' },
 ];
 
 const desktopPersonalItems = [
-  { label: 'मेरा डैशबोर्ड', href: '/dashboard' },
-  { label: 'यात्रा शुरू करें', href: '/start' },
-  { label: 'पठन यात्राएँ', href: '/journeys' },
-  { label: 'स्वाध्याय योजनाएँ', href: '/learn/plans' },
+  { label: 'मेरा डैशबोर्ड', href: '/practice/dashboard/' },
+  { label: 'यात्रा आरम्भ करें', href: '/learn/start/' },
+  { label: 'पठन यात्राएँ', href: '/learn/journeys/' },
+  { label: 'स्वाध्याय योजनाएँ', href: '/learn/plans/' },
   { label: 'कथा-दर्शन', href: '/story' },
-  { label: 'अध्ययन-पटल', href: '/desk' },
-  { label: 'बुकमार्क व नोट्स', href: '/bookmarks' },
+  { label: 'अध्ययन-पटल', href: '/practice/desk/' },
+  { label: 'बुकमार्क व नोट्स', href: '/practice/bookmarks/' },
   { label: 'संग्रह', href: '/collections' },
-  { label: 'अध्ययन पथ', href: '/learn/pathways' },
+  { label: 'अध्ययन पथ', href: '/learn/#courses' },
+  { label: 'ऐच्छिक सहयोग', href: '/contribute' },
 ];
 
 interface DrawerItem {
@@ -134,6 +126,44 @@ interface DrawerItem {
   icon: typeof Home;
   badge?: string;
   badgeType?: 'streak' | 'count' | 'accent';
+}
+
+function SoundscapeNavButton({ className = '' }: { className?: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    return subscribeSoundscape((st) => {
+      setIsPlaying(st.isPlaying);
+    });
+  }, []);
+
+  const handleToggle = () => {
+    triggerTactileFeedback('selection', 'softTap');
+    toggleSoundscape();
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handleToggle}
+      className={`apple-icon-button relative ${isPlaying ? 'text-dharma-saffron' : ''} ${className}`}
+      aria-label={isPlaying ? 'पवित्र ध्वनि बंद करें' : 'पवित्र ध्वनि चालू करें'}
+      title={isPlaying ? 'पवित्र ध्वनि: चालू (Tap to pause)' : 'पवित्र ध्वनि: 432Hz तन्पूरा व ॐ ध्यान'}
+    >
+      {isPlaying ? (
+        <>
+          <span className="hidden h-2.5 w-2.5 rounded-full bg-amber-500 ring-2 ring-amber-400/40 motion-reduce:inline-block" />
+          <span className="flex items-center gap-0.5 px-0.5 motion-reduce:hidden">
+            <span className="inline-block h-3 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none" />
+            <span className="inline-block h-4 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none [animation-delay:150ms]" />
+            <span className="inline-block h-2.5 w-0.5 rounded-full bg-amber-500 animate-pulse motion-reduce:animate-none [animation-delay:300ms]" />
+          </span>
+        </>
+      ) : (
+        <Radio className="h-4 w-4" aria-hidden="true" />
+      )}
+    </button>
+  );
 }
 
 export function SiteNav({
@@ -150,9 +180,11 @@ export function SiteNav({
   ashtavakraChapters: number;
   ashtavakraVerses: number;
 }) {
+  const formatCount = (value: number) => new Intl.NumberFormat('en-IN').format(value);
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [discoverOpen, setDiscoverOpen] = useState(false);
+  const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchMounted, setSearchMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -160,21 +192,21 @@ export function SiteNav({
   const [bookmarkCount, setBookmarkCount] = useState<number>(0);
   const [activeStreak, setActiveStreak] = useState<number>(0);
 
-  const { theme, setTheme, cycleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const { preference, setPreference } = useLanguagePreference();
 
   const discoverRef = useRef<HTMLDivElement>(null);
+  const discoverButtonRef = useRef<HTMLButtonElement>(null);
+  const themeMenuRef = useRef<HTMLDivElement>(null);
+  const themeButtonRef = useRef<HTMLButtonElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
   const drawerCloseBtnRef = useRef<HTMLButtonElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll();
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 140,
-    damping: 28,
-    mass: 0.6,
-  });
+  const discoverMenu = usePresence(discoverOpen, 140);
+  const drawer = usePresence(drawerOpen, 200);
+  // The theme icon swaps with a little turn, but only after the reader changes it, never on first paint.
+  const [themeTouched, setThemeTouched] = useState(false);
 
   const isActive = useCallback(
     (href: string): boolean => {
@@ -182,6 +214,7 @@ export function SiteNav({
       if (href === '/scriptures') {
         return (
           pathname === '/scriptures' ||
+          pathname === '/scriptures/' ||
           (pathname.startsWith('/scripture/') && !pathname.startsWith('/scripture/bhagavadgita'))
         );
       }
@@ -269,6 +302,41 @@ export function SiteNav({
     setDrawerOpen(false);
     setDiscoverOpen(false);
   }, [pathname]);
+
+  // Escape closes the desktop discovery menu and returns focus to its button
+  useEffect(() => {
+    if (!discoverOpen) return;
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setDiscoverOpen(false);
+      discoverButtonRef.current?.focus();
+    }
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [discoverOpen]);
+
+  // The theme menu closes on Escape (focus back to its button) or a tap outside it
+  useEffect(() => {
+    if (!themeMenuOpen) return;
+    function handleKey(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setThemeMenuOpen(false);
+      themeButtonRef.current?.focus();
+    }
+    function handlePointerDown(event: MouseEvent | TouchEvent) {
+      if (!themeMenuRef.current?.contains(event.target as Node)) setThemeMenuOpen(false);
+    }
+    document.addEventListener('keydown', handleKey);
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('touchstart', handlePointerDown);
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('touchstart', handlePointerDown);
+    };
+  }, [themeMenuOpen]);
 
   // Outside click to close desktop discovery
   useEffect(() => {
@@ -359,9 +427,12 @@ export function SiteNav({
     menuButtonRef.current?.focus();
   };
 
-  const handleThemeCycle = () => {
+  const handlePickTheme = (next: Theme) => {
     triggerTactileFeedback('medium', 'softTap');
-    cycleTheme();
+    setTheme(next);
+    setThemeTouched(true);
+    setThemeMenuOpen(false);
+    themeButtonRef.current?.focus();
   };
 
   const handleOpenSearchModal = () => {
@@ -384,30 +455,30 @@ export function SiteNav({
       id: 'library',
       label: 'सम्पूर्ण ग्रंथालय',
       labelEn: 'Scripture Library',
-      description: `पुस्तकालय में ${formatCountDevanagari(libraryVerses)} श्लोक`,
+      description: `पुस्तकालय में ${formatCount(libraryVerses)} श्लोक`,
       href: '/scriptures',
       icon: BookOpen,
-      badge: formatCountDevanagari(libraryVerses),
+      badge: formatCount(libraryVerses),
       badgeType: 'accent',
     },
     {
       id: 'gita',
       label: 'श्रीमद्भगवद्गीता',
       labelEn: 'Bhagavad Gita',
-      description: `${formatCountDevanagari(gitaChapters)} अध्याय · ${formatCountDevanagari(gitaVerses)} श्लोक`,
+      description: `${formatCount(gitaChapters)} अध्याय · ${formatCount(gitaVerses)} श्लोक`,
       href: '/scripture/bhagavadgita',
       icon: Flame,
-      badge: `${formatCountDevanagari(gitaVerses)} श्लोक`,
+      badge: `${formatCount(gitaVerses)} श्लोक`,
       badgeType: 'accent',
     },
     {
       id: 'ashtavakra',
       label: 'अष्टावक्र गीता',
       labelEn: 'Ashtavakra Gita',
-      description: `${formatCountDevanagari(ashtavakraChapters)} प्रकरण · ${formatCountDevanagari(ashtavakraVerses)} श्लोक`,
+      description: `${formatCount(ashtavakraChapters)} प्रकरण · ${formatCount(ashtavakraVerses)} श्लोक`,
       href: '/ashtavakra',
       icon: BookOpen,
-      badge: `${formatCountDevanagari(ashtavakraVerses)} श्लोक`,
+      badge: `${formatCount(ashtavakraVerses)} श्लोक`,
       badgeType: 'accent',
     },
     {
@@ -427,10 +498,28 @@ export function SiteNav({
       icon: Sparkles,
     },
     {
+      id: 'soundscape',
+      label: 'पवित्र ध्वनि (नादानुसन्धान)',
+      labelEn: 'Sacred Soundscape',
+      description: '432Hz वैदिक तन्पूरा, ॐ ध्यान व ध्यान घंटा',
+      href: '/practice',
+      icon: Radio,
+    },
+    {
+      id: 'mantras',
+      label: 'वैदिक मन्त्र व शान्ति पाठ',
+      labelEn: 'Sacred Mantras',
+      description: 'गायत्री, महामृत्युंजय व उपनिषद् शान्ति पाठ',
+      href: '/mantras/',
+      icon: Sparkles,
+      badge: 'मन्त्र कोश',
+      badgeType: 'accent',
+    },
+    {
       id: 'wisdom-for-life',
       label: 'जीवन मार्गदर्शन',
       labelEn: 'Wisdom for Life',
-      description: '१२ जीवन-विषय · तनाव, भय, कर्तव्य व आत्मज्ञान',
+      description: '12 जीवन-विषय · उद्वेग, भय, कर्तव्य व आत्मज्ञान',
       href: '/wisdom-for-life',
       icon: Compass,
       badge: 'जीवन-विषय',
@@ -467,7 +556,7 @@ export function SiteNav({
       label: 'सहेजे गए श्लोक',
       labelEn: 'Saved verses',
       description: 'निजी संग्रह व पसंदीदा श्लोक',
-      href: '/bookmarks',
+      href: '/practice/bookmarks/',
       icon: Bookmark,
       badge: bookmarkCount > 0 ? `${bookmarkCount}` : undefined,
       badgeType: 'count',
@@ -477,10 +566,18 @@ export function SiteNav({
       label: 'अध्ययन इतिहास',
       labelEn: 'Reading history',
       description: 'पठन प्रगति व अभ्यास डैशबोर्ड',
-      href: '/dashboard',
+      href: '/practice/dashboard/',
       icon: Clock,
       badge: activeStreak > 0 ? `🔥 ${activeStreak} दिन` : undefined,
       badgeType: 'streak',
+    },
+    {
+      id: 'contribute',
+      label: 'ऐच्छिक सहयोग',
+      labelEn: 'Support',
+      description: 'प्रत्यक्ष UPI व QR द्वारा ग्रंथालय सेवा',
+      href: '/contribute',
+      icon: Heart,
     },
   ];
 
@@ -490,41 +587,42 @@ export function SiteNav({
     <>
       {/* ── Compact Sticky Header ────────────────────────────────────────── */}
       <nav
-        className="sticky top-0 z-40 border-b border-dharma-border/80 bg-dharma-card/95 backdrop-blur-xl shadow-[0_4px_24px_rgba(45,42,38,0.05)] transition-colors duration-200"
+        data-site-header="true"
+        data-library-verse-count={libraryVerses}
+        data-theme-options={THEME_IDS.join(',')}
+        className="apple-bar sticky top-0 z-40 border-b transition-colors duration-200"
         aria-label="Primary navigation"
       >
         <div className="mx-auto max-w-7xl px-3 sm:px-6 2xl:max-w-[1760px]">
-          <div className="flex h-14 sm:h-16 lg:h-[72px] items-center justify-between gap-2 sm:gap-4 lg:gap-1 xl:gap-4">
+          <div className="flex h-[52px] items-center justify-between gap-1 sm:gap-4 lg:gap-1 xl:gap-4">
             {/* Logo */}
             <Link
               href="/"
-              className="group flex min-h-[44px] min-w-[44px] shrink-0 items-center gap-2.5 rounded-xl pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500/40"
+              className="group flex min-h-[44px] min-w-[44px] shrink-0 items-center gap-1.5 rounded-xl pr-0 sm:gap-2.5 sm:pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500/40"
               aria-label="Dharma Granth Home"
             >
-              <motion.span
-                className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 overflow-hidden rounded-full bg-[#fdf6ea] shadow-sm ring-1 ring-saffron-500/30 transition group-hover:ring-saffron-500/70"
-                whileHover={reduce ? undefined : { scale: 1.05 }}
-                whileTap={reduce ? undefined : { scale: 0.95 }}
+              <span
+                className="chrome-press flex h-8 w-8 shrink-0 overflow-hidden rounded-full bg-[#fdf6ea] ring-1 ring-dharma-border"
                 aria-hidden="true"
               >
                 <Image
-                  src={logoMark}
+                  src="/logo-mark.webp"
                   alt=""
                   width={40}
                   height={40}
                   priority
                   className="h-full w-full object-cover"
                 />
-              </motion.span>
-              <div className="flex flex-col">
-                <span className="font-serif text-base sm:text-xl font-bold tracking-tight text-dharma-text transition group-hover:text-saffron-700">
+              </span>
+              <div className="flex items-baseline gap-2">
+                <span className="whitespace-nowrap text-body font-semibold tracking-[-0.022em] text-dharma-text">
                   Dharma Granth
-                </span>
-                <span className="hidden font-devanagari text-[10px] text-dharma-muted -mt-0.5 sm:block">
-                  धर्म ग्रंथ · ज्ञान अमृत
+                </span>{' '}
+                <span lang="hi" className="hidden font-devanagari text-footnote text-dharma-muted sm:inline">
+                  धर्म ग्रंथ
                 </span>
               </div>
-            </Link>
+            </Link>{' '}
 
             {/* Desktop Primary Navigation */}
             <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex">
@@ -532,24 +630,18 @@ export function SiteNav({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative whitespace-nowrap rounded-xl px-1.5 xl:px-3 py-2 text-[13px] xl:text-sm font-semibold transition-colors duration-200 ${
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  className={`relative whitespace-nowrap px-2 xl:px-3 py-2 text-footnote transition-colors duration-200 ${
                     isActive(item.href)
-                      ? 'text-saffron-700 font-bold'
-                      : 'text-dharma-text hover:bg-saffron-50/50 hover:text-saffron-700'
+                      ? 'text-dharma-saffron'
+                      : 'text-dharma-text/80 hover:text-dharma-text'
                   }`}
                 >
-                  {isActive(item.href) && (
-                    <motion.span
-                      layoutId="desktop-nav-active"
-                      className="absolute inset-0 rounded-xl border border-saffron-200 bg-gradient-to-r from-saffron-50 to-amber-50 shadow-sm dark:border-saffron-800 dark:bg-saffron-950/40"
-                      transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                    />
-                  )}
-                  <span className="relative z-10 inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-baseline gap-1">
                     <span>{item.label}</span>{' '}
-                    <span lang="hi" className="hidden text-[11px] font-devanagari opacity-75 font-normal 2xl:inline">
+                    <span lang="hi" className="hidden text-[12.5px] font-devanagari text-dharma-muted xl:inline">
                       {item.labelHi}
-                    </span>
+                    </span>{' '}
                   </span>
                 </Link>
               ))}
@@ -557,32 +649,33 @@ export function SiteNav({
               {/* Desktop Discovery Dropdown */}
               <div className="relative" ref={discoverRef}>
                 <button
+                  ref={discoverButtonRef}
                   type="button"
                   onClick={() => setDiscoverOpen((open) => !open)}
-                  className={`flex items-center gap-1 rounded-xl px-1.5 xl:px-3 py-2 text-[13px] xl:text-sm font-semibold transition-colors ${
+                  className={`flex items-center gap-1 px-2 xl:px-3 py-2 text-footnote transition-colors ${
                     discoveryIsActive || discoverOpen
-                      ? 'bg-saffron-50 text-saffron-700 dark:bg-saffron-950/40'
-                      : 'text-dharma-text hover:bg-saffron-50/50 hover:text-saffron-700'
+                      ? 'text-dharma-saffron'
+                      : 'text-dharma-text/80 hover:text-dharma-text'
                   }`}
                   aria-expanded={discoverOpen}
                   aria-controls="desktop-discovery-menu"
+                  aria-haspopup="true"
                 >
-                  अन्वेषण
+                  <span>Explore</span>{' '}
+                  <span lang="hi" className="hidden font-devanagari text-[12.5px] text-dharma-muted xl:inline">
+                    अन्वेषण
+                  </span>
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform ${discoverOpen ? 'rotate-180' : ''}`}
+                    className={`h-3.5 w-3.5 transition-transform ${discoverOpen ? 'rotate-180' : ''}`}
                     aria-hidden="true"
                   />
                 </button>
 
-                <AnimatePresence>
-                  {discoverOpen && (
-                    <motion.div
+                {discoverMenu.mounted && (
+                    <div
                       id="desktop-discovery-menu"
-                      initial={{ opacity: 0, y: -8, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -6, scale: 0.98 }}
-                      transition={{ duration: reduce ? 0 : 0.16 }}
-                      className="absolute right-0 top-[calc(100%+0.75rem)] w-[34rem] rounded-2xl border border-dharma-border bg-dharma-card p-3 shadow-2xl z-50"
+                      data-closing={discoverMenu.closing || undefined}
+                      className="chrome-pop absolute right-0 top-[calc(100%+0.75rem)] w-[34rem] rounded-2xl border border-dharma-border bg-dharma-card p-3 shadow-2xl z-50"
                     >
                       <p className="px-3 pb-2 pt-1 text-xs font-bold uppercase tracking-[0.16em] text-dharma-muted">
                         ज्ञान संसार
@@ -618,21 +711,20 @@ export function SiteNav({
                           </Link>
                         ))}
                       </div>
-                    </motion.div>
+                    </div>
                   )}
-                </AnimatePresence>
               </div>
             </div>
 
             {/* Header Right Cluster */}
-            <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+            <div className="flex shrink-0 items-center gap-1 sm:gap-2">
               {/* Desktop Live Status Indicator */}
               <div
                 className="hidden items-center gap-2 pr-1 text-xs text-dharma-muted min-[2200px]:flex"
                 aria-hidden="true"
               >
                 <span className="size-1.5 rounded-full bg-saffron-600 animate-status-pulse" />
-                <span className="tracking-tight">{formatCountDevanagari(libraryVerses)} श्लोक पुस्तकालय में</span>
+                <span className="tracking-tight">{formatCount(libraryVerses)} श्लोक पुस्तकालय में</span>
               </div>
 
               {/* Desktop Search Button */}
@@ -641,32 +733,36 @@ export function SiteNav({
                 onClick={handleOpenSearchModal}
                 onPointerEnter={() => void loadSearchModal()}
                 onFocus={() => void loadSearchModal()}
-                className="hidden lg:flex items-center gap-2 rounded-xl border border-dharma-border/80 bg-dharma-bg/80 px-3 py-2 text-xs font-semibold text-dharma-muted transition hover:border-saffron-400 hover:text-dharma-text focus:outline-none focus:ring-2 focus:ring-saffron-500/20"
+                className="apple-icon-button hidden lg:flex h-9 gap-2 px-2.5 text-footnote text-dharma-muted"
                 aria-label="खोजें (Search)"
                 aria-keyshortcuts="Control+K Meta+K /"
               >
-                <Search className="h-3.5 w-3.5 text-saffron-600" />
-                <span className="hidden xl:inline">खोजें...</span>
-                <kbd className="hidden xl:inline rounded border border-dharma-border bg-dharma-card px-1.5 py-0.5 font-mono text-[10px] text-dharma-muted">
+                <Search className="h-4 w-4 text-dharma-text" aria-hidden="true" />
+                <kbd className="kbd-hint hidden xl:inline rounded-md bg-dharma-text/[0.07] px-1.5 py-0.5 font-sans text-[11px] text-dharma-text-secondary">
                   {shortcutLabel}
                 </kbd>
-              </button>
+              </button>{' '}
 
               {/* Desktop Language Toggle */}
               <LanguageToggle className="hidden lg:inline-flex" />
 
-              {/* Desktop Segmented Theme Toggle */}
-              <div className="hidden lg:inline-block">
+              {/* Desktop Segmented Theme Toggle: only where the bar has room for it
+                  beside the full nav; below that the single cycle button (2. Theme Button) stands in. */}
+              <div className="hidden min-[1800px]:inline-block">
                 <ThemeToggle />
               </div>
 
-              {/* Desktop CTA */}
+              {/* Desktop Sacred Soundscape Button */}
+              <div className="hidden lg:inline-block">
+                <SoundscapeNavButton className="h-9 w-9" />
+              </div>
+
+              {/* Desktop CTA */}{' '}
               <Link
                 href="/scripture/bhagavadgita"
-                className="hidden 2xl:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-4 py-2 text-sm font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-saffron-500/30"
+                className="hidden min-[1800px]:inline-flex items-center rounded-full bg-dharma-saffron px-3.5 py-1.5 text-footnote text-dharma-bg transition hover:opacity-90"
               >
-                <Flame className="h-4 w-4" aria-hidden="true" />
-                पढ़ना शुरू करें
+                पठन आरम्भ करें
               </Link>
 
               {/* ── Mobile Compact Controls (≥ 44px Touch Targets) ─────── */}
@@ -676,44 +772,73 @@ export function SiteNav({
                 onClick={handleOpenSearchModal}
                 onPointerEnter={() => void loadSearchModal()}
                 onFocus={() => void loadSearchModal()}
-                className="lg:hidden flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-dharma-border/80 bg-dharma-bg/90 text-dharma-muted transition active:scale-95 hover:border-saffron-400 hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                className="apple-icon-button lg:hidden h-11 w-11 min-h-[44px] min-w-[44px]"
                 aria-label="खोजें (Search)"
                 title="खोजें (Search)"
               >
-                <Search className="h-5 w-5 text-saffron-600" aria-hidden="true" />
+                <Search className="h-5 w-5" aria-hidden="true" />
               </button>
 
-              {/* 2. Theme Button */}
+              {/* 1.5. Mobile Sacred Soundscape Button */}
+              <SoundscapeNavButton className="max-[359px]:hidden lg:hidden h-11 w-11 min-h-[44px] min-w-[44px]" />
+
+              {/* 2. Theme Button: opens a menu of the named themes (cycling through five unnamed states confused readers) */}
+              <div ref={themeMenuRef} className="relative min-[1800px]:hidden">
               <button
+                ref={themeButtonRef}
                 type="button"
-                onClick={handleThemeCycle}
-                className="lg:hidden flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-dharma-border/80 bg-dharma-bg/90 text-dharma-text transition active:scale-95 hover:border-saffron-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
-                aria-label={`थीम बदलें (${THEME_LABELS[theme]})`}
-                title={`थीम: ${THEME_LABELS[theme]}`}
+                onClick={() => setThemeMenuOpen((open) => !open)}
+                aria-haspopup="menu"
+                aria-expanded={themeMenuOpen}
+                className="apple-icon-button h-11 w-11 min-h-[44px] min-w-[44px] lg:h-9 lg:w-9 lg:min-h-0 lg:min-w-0"
+                aria-label={`थीम बदलें · Theme: ${THEME_NAMES[theme].name}`}
+                title={`थीम: ${THEME_NAMES[theme].name} · ${THEME_NAMES[theme].hi}`}
               >
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={theme}
-                    initial={{ scale: 0.7, opacity: 0, rotate: -20 }}
-                    animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                    exit={{ scale: 0.7, opacity: 0, rotate: 20 }}
-                    transition={{ duration: reduce ? 0 : 0.16 }}
-                    className="flex items-center justify-center text-saffron-600 dark:text-amber-400"
-                  >
-                    <ThemeIcon className="h-5 w-5" aria-hidden="true" />
-                  </motion.span>
-                </AnimatePresence>
+                <span
+                  key={theme}
+                  className={`flex items-center justify-center ${themeTouched ? 'chrome-icon-swap' : ''}`}
+                >
+                  <ThemeIcon className="h-5 w-5" aria-hidden="true" />
+                </span>
               </button>
+              {themeMenuOpen && (
+                <div
+                  role="menu"
+                  aria-label="Theme · थीम"
+                  className="absolute right-0 top-full z-50 mt-2 w-56 rounded-xl border border-dharma-border bg-dharma-card p-1 shadow-xl"
+                >
+                  {THEME_IDS.map((id) => {
+                    const Icon = THEME_ICONS[id] || Sun;
+                    const active = id === theme;
+                    return (
+                      <button
+                        key={id}
+                        type="button"
+                        role="menuitemradio"
+                        aria-checked={active}
+                        onClick={() => handlePickTheme(id)}
+                        title={THEME_NAMES[id].description}
+                        className={`flex min-h-11 w-full items-center gap-2.5 rounded-lg px-3 text-left text-sm font-semibold transition ${
+                          active ? 'bg-saffron-500/15 text-dharma-text' : 'text-dharma-muted hover:bg-saffron-500/10 hover:text-dharma-text'
+                        }`}
+                      >
+                        <Icon className="h-4 w-4 shrink-0 text-saffron-600 dark:text-amber-400" aria-hidden="true" />
+                        <span>{THEME_NAMES[id].name}</span>{' '}
+                        <span lang="hi" className="ml-auto font-devanagari font-normal text-dharma-muted">{THEME_NAMES[id].hi}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+              </div>
 
               {/* 3. Menu Button */}
               <button
                 ref={menuButtonRef}
                 type="button"
                 onClick={handleToggleDrawer}
-                className={`lg:hidden flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 ${
-                  drawerOpen
-                    ? 'border-saffron-500 bg-saffron-500/10 text-saffron-700 dark:text-saffron-300'
-                    : 'border-dharma-border/80 bg-dharma-bg/90 text-dharma-text hover:border-saffron-400'
+                className={`apple-icon-button lg:hidden h-11 w-11 min-h-[44px] min-w-[44px] ${
+                  drawerOpen ? 'text-dharma-saffron' : ''
                 }`}
                 aria-label={drawerOpen ? 'नेविगेशन मेनू बंद करें' : 'नेविगेशन मेनू खोलें'}
                 aria-expanded={drawerOpen}
@@ -730,44 +855,29 @@ export function SiteNav({
         </div>
 
         {/* Scroll Progress Indicator Bar */}
-        <motion.div
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-gradient-to-r from-saffron-500 via-amber-400 to-emerald-400"
-          style={{ scaleX: reduce ? scrollYProgress : progress }}
-        />
+        <div aria-hidden="true" className="nav-progress absolute inset-x-0 bottom-0 h-px bg-dharma-saffron/70" />
       </nav>
 
       {/* ── Accessible Navigation Drawer ─────────────────────────────────── */}
-      <AnimatePresence>
-        {drawerOpen && (
+      {drawer.mounted && (
           <div className="lg:hidden">
             {/* Backdrop Overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: reduce ? 0 : 0.2 }}
+            <div
+              data-closing={drawer.closing || undefined}
               onClick={handleCloseDrawer}
-              className="fixed inset-0 z-[60] bg-stone-950/65 backdrop-blur-sm"
+              className="chrome-fade fixed inset-0 z-[60] bg-stone-950/65 backdrop-blur-sm"
               aria-hidden="true"
             />
 
             {/* Slide-out Drawer Panel */}
-            <motion.div
+            <div
               ref={drawerRef}
               id="mobile-navigation-drawer"
               role="dialog"
               aria-modal="true"
               aria-label="नेविगेशन दराज (Navigation Drawer)"
-              initial={reduce ? { opacity: 0 } : { x: '100%' }}
-              animate={reduce ? { opacity: 1 } : { x: 0 }}
-              exit={reduce ? { opacity: 0 } : { x: '100%' }}
-              transition={
-                reduce
-                  ? { duration: 0 }
-                  : { type: 'spring', damping: 30, stiffness: 320, mass: 0.8 }
-              }
-              className="fixed inset-y-0 right-0 z-[70] flex w-full max-w-[360px] sm:max-w-md flex-col border-l border-dharma-border bg-dharma-card shadow-2xl"
+              data-closing={drawer.closing || undefined}
+              className="chrome-sheet fixed inset-y-0 right-0 z-[70] flex w-full max-w-[360px] sm:max-w-md flex-col border-l border-dharma-border bg-dharma-card shadow-2xl"
               style={{
                 paddingTop: 'max(0.75rem, env(safe-area-inset-top, 0.75rem))',
                 paddingBottom: 'max(1rem, env(safe-area-inset-bottom, 1rem))',
@@ -777,7 +887,7 @@ export function SiteNav({
               <div className="flex items-center justify-between border-b border-dharma-border/80 px-4 py-3 sm:px-6">
                 <div className="flex items-center gap-2.5">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#fdf6ea] shadow-sm ring-1 ring-saffron-500/30">
-                    <Image src={logoMark} alt="" width={36} height={36} className="h-full w-full object-cover" />
+                    <Image src="/logo-mark.webp" alt="" width={36} height={36} className="h-full w-full object-cover" />
                   </span>
                   <div>
                     <h2 className="font-serif text-base font-bold text-dharma-text leading-tight">
@@ -814,7 +924,7 @@ export function SiteNav({
                     <Search className="h-4 w-4 text-saffron-600" aria-hidden="true" />
                     <span className="font-devanagari text-sm">ग्रंथ, श्लोक या विषय खोजें...</span>
                   </div>
-                  <kbd className="rounded border border-dharma-border bg-dharma-card px-2 py-0.5 font-mono text-[10px] text-dharma-muted">
+                  <kbd className="kbd-hint rounded border border-dharma-border bg-dharma-card px-2 py-0.5 font-mono text-[10px] text-dharma-muted">
                     {shortcutLabel}
                   </kbd>
                 </button>
@@ -829,7 +939,7 @@ export function SiteNav({
                       मुख्य अनुभाग · Navigation
                     </h3>
                     <span className="text-[10px] text-dharma-muted font-devanagari">
-                      १० पावन विभाग
+                      10 पावन विभाग
                     </span>
                   </div>
 
@@ -975,6 +1085,7 @@ export function SiteNav({
                             aria-checked={isSelected}
                             onClick={() => {
                               setTheme(opt);
+                              setThemeTouched(true);
                               triggerTactileFeedback('light', 'softTap');
                             }}
                             className={`flex min-h-[44px] items-center gap-2 rounded-xl px-2.5 py-2 transition active:scale-95 ${
@@ -982,7 +1093,7 @@ export function SiteNav({
                                 ? 'border border-saffron-500/60 bg-saffron-500/20 text-saffron-800 dark:text-saffron-200 font-bold shadow-xs'
                                 : 'border border-dharma-border/80 bg-dharma-card text-dharma-text hover:border-saffron-300'
                             }`}
-                            title={THEME_DESCRIPTIONS[opt]}
+                            title={THEME_NAMES[opt].description}
                           >
                             <span
                               className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${
@@ -995,10 +1106,10 @@ export function SiteNav({
                             </span>
                             <div className="flex flex-col text-left min-w-0">
                               <span className="text-xs font-semibold truncate leading-none">
-                                {THEME_LABELS[opt].split('·')[0].trim()}
+                                {THEME_NAMES[opt].name}
                               </span>
-                              <span className="text-[10px] text-dharma-muted truncate leading-tight mt-0.5">
-                                {THEME_LABELS[opt].split('·')[1]?.trim()}
+                              <span lang="hi" className="text-[10px] text-dharma-muted truncate leading-tight mt-0.5">
+                                {THEME_NAMES[opt].hi}
                               </span>
                             </div>
                           </button>
@@ -1040,16 +1151,15 @@ export function SiteNav({
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         )}
-      </AnimatePresence>
 
       {/* ── Mobile Bottom Navigation Bar (Thumb Usability) ────────────────── */}
       {/* Strictly limited to the 5 requested items: Home, Search, Library, Sadhana, Saved */}
       <nav
         aria-label="Mobile quick navigation"
-        className="fixed bottom-0 inset-x-0 z-30 lg:hidden border-t border-dharma-border/80 bg-dharma-card/95 backdrop-blur-xl shadow-[0_-4px_20px_rgba(0,0,0,0.06)]"
+        className="apple-bar fixed bottom-0 inset-x-0 z-30 lg:hidden border-t"
         style={{
           paddingBottom: 'env(safe-area-inset-bottom, 0px)',
         }}
@@ -1058,23 +1168,16 @@ export function SiteNav({
           {/* 1. Home */}
           <Link
             href="/"
-            onClick={() => triggerTactileFeedback('light', 'softTap')}
+            onClick={() => setTimeout(() => triggerTactileFeedback('light', 'softTap'), 0)}
             aria-current={isActive('/') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
               isActive('/')
-                ? 'text-saffron-700 dark:text-saffron-400 font-bold'
+                ? 'text-dharma-saffron'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            {isActive('/') && (
-              <motion.span
-                layoutId="mobile-bottom-active-indicator"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500"
-                transition={{ type: 'spring', stiffness: 420, damping: 30 }}
-              />
-            )}
             <Home className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Home</span>
+            <span className="text-xs tracking-tight">Home</span>
           </Link>
 
           {/* 2. Search Button */}
@@ -1084,81 +1187,60 @@ export function SiteNav({
             className="group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 text-dharma-muted transition active:scale-95 hover:text-dharma-text"
             aria-label="खोजें (Search)"
           >
-            <Search className="h-5 w-5 text-saffron-600" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Search</span>
+            <Search className="h-5 w-5" aria-hidden="true" />
+            <span className="text-xs tracking-tight">Search</span>
           </button>
 
           {/* 3. Library */}
           <Link
             href="/scriptures"
-            onClick={() => triggerTactileFeedback('light', 'softTap')}
+            onClick={() => setTimeout(() => triggerTactileFeedback('light', 'softTap'), 0)}
             aria-current={isActive('/scriptures') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
               isActive('/scriptures')
-                ? 'text-saffron-700 dark:text-saffron-400 font-bold'
+                ? 'text-dharma-saffron'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            {isActive('/scriptures') && (
-              <motion.span
-                layoutId="mobile-bottom-active-indicator"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500"
-                transition={{ type: 'spring', stiffness: 420, damping: 30 }}
-              />
-            )}
             <BookOpen className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Library</span>
+            <span className="text-xs tracking-tight">Library</span>
           </Link>
 
           {/* 4. Sadhana */}
           <Link
             href="/practice"
-            onClick={() => triggerTactileFeedback('light', 'softTap')}
+            onClick={() => setTimeout(() => triggerTactileFeedback('light', 'softTap'), 0)}
             aria-current={isActive('/practice') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
               isActive('/practice')
-                ? 'text-saffron-700 dark:text-saffron-400 font-bold'
+                ? 'text-dharma-saffron'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            {isActive('/practice') && (
-              <motion.span
-                layoutId="mobile-bottom-active-indicator"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500"
-                transition={{ type: 'spring', stiffness: 420, damping: 30 }}
-              />
-            )}
             <Sparkles className="h-5 w-5" aria-hidden="true" />
-            <span className="text-[10px] tracking-tight">Sadhana</span>
+            <span className="text-xs tracking-tight">Sadhana</span>
           </Link>
 
           {/* 5. Saved Verses */}
           <Link
-            href="/bookmarks"
-            onClick={() => triggerTactileFeedback('light', 'softTap')}
-            aria-current={isActive('/bookmarks') ? 'page' : undefined}
+            href="/practice/bookmarks/"
+            onClick={() => setTimeout(() => triggerTactileFeedback('light', 'softTap'), 0)}
+            aria-current={isActive('/practice/bookmarks/') ? 'page' : undefined}
             className={`group relative flex min-h-[44px] flex-col items-center justify-center gap-0.5 transition active:scale-95 ${
-              isActive('/bookmarks')
-                ? 'text-saffron-700 dark:text-saffron-400 font-bold'
+              isActive('/practice/bookmarks/')
+                ? 'text-dharma-saffron'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            {isActive('/bookmarks') && (
-              <motion.span
-                layoutId="mobile-bottom-active-indicator"
-                className="absolute top-0.5 h-1 w-6 rounded-full bg-saffron-500"
-                transition={{ type: 'spring', stiffness: 420, damping: 30 }}
-              />
-            )}
             <div className="relative">
               <Bookmark className="h-5 w-5" aria-hidden="true" />
               {bookmarkCount > 0 && (
-                <span className="absolute -top-1 -right-2 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-saffron-600 px-1 text-[9px] font-bold text-white shadow-xs">
+                <span className="absolute -top-1 -right-2 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-dharma-saffron px-1 text-[9px] font-semibold text-dharma-bg">
                   {bookmarkCount > 9 ? '9+' : bookmarkCount}
                 </span>
               )}
             </div>
-            <span className="text-[10px] tracking-tight">Saved</span>
+            <span className="text-xs tracking-tight">Saved</span>
           </Link>
         </div>
       </nav>

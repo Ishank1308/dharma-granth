@@ -20,6 +20,8 @@ import {
 import { READING_PLANS, type ReadingPlan, type ReadingPlanDay } from '@/data/reading-plans';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { ShareLinkButtons } from '@/app/components/ShareLinkButtons';
+import { StudyPlans } from './StudyPlans';
+import { GuidedReadings } from './GuidedReadings';
 
 const STORAGE_KEY = 'dharma.readingPlans.v1';
 
@@ -121,12 +123,28 @@ export default function ReadingPlansPage() {
             Scripture Reading Plans
           </h1>
           <p className="mt-1 font-devanagari text-xl text-dharma-muted">
-            दबाव-मुक्त, शांत एवं संरचित अध्ययन समय-सारिणी
+            सहज, शांत एवं संरचित अध्ययन समय-सारिणी
           </p>
 
           <p className="mt-3 text-sm sm:text-base leading-relaxed text-dharma-muted max-w-2xl">
             Gentle, structured reading schedules crafted for thoughtful reflection. Take as much time as you need. There are no streaks to lose and zero penalties for missed days.
           </p>
+
+          {/* /learn/paths/ was merged into this page; these jump links keep its two sections easy to find. */}
+          <nav aria-label="Kinds of plans on this page" className="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
+            <a href="#reading-plans" className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3.5 py-2 text-dharma-text hover:border-saffron-400">
+              <span lang="hi" className="font-devanagari font-normal">दैनिक योजनाएँ</span>
+              <span>· Day-by-day plans</span>
+            </a>
+            <a href="#study-orders" className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3.5 py-2 text-dharma-text hover:border-saffron-400">
+              <span lang="hi" className="font-devanagari font-normal">पढ़ने के क्रम</span>
+              <span>· Study orders</span>
+            </a>
+            <a href="#guided-readings" className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3.5 py-2 text-dharma-text hover:border-saffron-400">
+              <span lang="hi" className="font-devanagari font-normal">निर्देशित स्वाध्याय</span>
+              <span>· Guided readings</span>
+            </a>
+          </nav>
 
           {/* Privacy & Non-punitive ethos note */}
           <div className="mt-5 inline-flex items-center gap-2 rounded-xl border border-emerald-600/30 bg-emerald-50/50 dark:bg-emerald-950/20 px-3.5 py-2 text-xs text-emerald-950 dark:text-emerald-200">
@@ -141,7 +159,7 @@ export default function ReadingPlansPage() {
       {/* ── Main Content Area ─────────────────────────────────── */}
       <div className="mx-auto max-w-5xl px-5 sm:px-8 py-8 space-y-8">
         {/* Plan Selector Tabs */}
-        <section aria-label="Available reading plans">
+        <section id="reading-plans" aria-label="Available reading plans" className="scroll-mt-24">
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {READING_PLANS.map((plan) => {
               const isActive = plan.id === activePlanId;
@@ -256,6 +274,7 @@ export default function ReadingPlansPage() {
               aria-valuemin={0}
               aria-valuemax={100}
               aria-valuenow={completionPercent}
+              aria-label={`${activePlan.title} progress`}
               className="mt-2 h-2.5 w-full overflow-hidden rounded-full bg-dharma-border/70"
             >
               <div
@@ -347,7 +366,7 @@ export default function ReadingPlansPage() {
 
                       <p className="mt-1 text-xs text-dharma-muted leading-relaxed">
                         {day.focusTheme}
-                        <span lang="hi" className="block sm:inline sm:ml-1 font-devanagari text-dharma-muted/80">
+                        <span lang="hi" className="block sm:inline sm:ml-1 font-devanagari text-dharma-muted">
                           ({day.focusThemeHi})
                         </span>
                       </p>
@@ -371,21 +390,25 @@ export default function ReadingPlansPage() {
           </ol>
         </section>
 
+        <StudyPlans />
+
+        <GuidedReadings />
+
         {/* Cross-navigation links */}
         <section
           aria-label="Related scripture resources"
           className="grid grid-cols-1 gap-4 pt-4 sm:grid-cols-3"
         >
           <Link
-            href="/learn/paths"
+            href="/learn/journeys/"
             className="group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-saffron-400 hover:shadow-sm transition"
           >
             <Compass className="h-5 w-5 text-saffron-700 dark:text-saffron-300" />
             <h4 className="mt-2 font-serif text-base font-bold text-dharma-text group-hover:text-saffron-800 dark:group-hover:text-saffron-300">
-              Guided Reading Paths
+              Guided Journeys
             </h4>
             <p className="mt-1 text-xs text-dharma-muted">
-              Explore curated sequences across life questions, philosophy, and decision dilemmas.
+              Short themed journeys through verses, with context and reflection questions.
             </p>
           </Link>
 
@@ -403,7 +426,7 @@ export default function ReadingPlansPage() {
           </Link>
 
           <Link
-            href="/bookmarks"
+            href="/practice/bookmarks/"
             className="group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-saffron-400 hover:shadow-sm transition"
           >
             <BookOpen className="h-5 w-5 text-saffron-700 dark:text-saffron-300" />

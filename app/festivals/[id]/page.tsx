@@ -25,16 +25,17 @@ import {
 import { ShareCardButton } from '@/app/components/understand/ShareCard';
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export function generateStaticParams() {
   return festivals.map((f) => ({ id: f.id }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const festival = festivals.find((f) => f.id === params.id);
-  if (!festival) return { title: 'उत्सव नहीं मिला (Festival Not Found) — Dharma Granth' };
+  if (!festival) return { title: 'उत्सव नहीं मिला (Festival Not Found)' };
 
   const title = `${festival.name} (${festival.sanskrit}) — अर्थ, कथा, शास्त्रीय स्रोत व पूजा विधि`;
   const description = `${festival.shortDesc} ${festival.meaning}`.slice(0, 160);
@@ -63,7 +64,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
       alternateLocale: ['en_US'],
       title: `${title} | Dharma Granth`,
       description,
-      url: `https://dharmagranth.in${canonical}`,
+      url: `https://dharmagranth.dev${canonical}`,
       images: [DEFAULT_OG_IMAGE],
     },
     twitter: {
@@ -75,11 +76,12 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function FestivalDetailPage({ params }: PageProps) {
+export default async function FestivalDetailPage(props: PageProps) {
+  const params = await props.params;
   const festival = festivals.find((f) => f.id === params.id);
   if (!festival) notFound();
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   const pageUrl = `${siteUrl}/festivals/${festival.id}/`;
 
   const faqItems = [
@@ -163,7 +165,7 @@ export default function FestivalDetailPage({ params }: PageProps) {
         <div className="absolute inset-0 mandala-bg opacity-15 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-dharma-bg via-transparent to-transparent pointer-events-none" />
 
-        <div className="relative mx-auto max-w-5xl px-5 sm:px-6">
+        <div className="relative mx-auto max-w-5xl px-gutter">
           <Link
             href="/festivals/"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white text-xs sm:text-sm font-semibold mb-6 transition"
@@ -230,7 +232,7 @@ export default function FestivalDetailPage({ params }: PageProps) {
       </section>
 
       {/* Main Content Layout */}
-      <section className="relative mx-auto max-w-5xl px-5 sm:px-6 -mt-6 sm:-mt-8 space-y-8 z-10">
+      <section className="relative mx-auto max-w-5xl px-gutter -mt-6 sm:-mt-8 space-y-8 z-10">
         {/* 1. Meaning & Core Philosophy */}
         <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 shadow-sm space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">

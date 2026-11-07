@@ -1,0 +1,25 @@
+{
+  "unitId": "gita-18-66",
+  "reference": "Bhagavad Gita 18.66",
+  "artha": "सब धर्मों को छोड़कर केवल मेरी शरण में आ जाओ। मैं तुम्हें सब पापों से मुक्त कर दूँगा; शोक मत करो।",
+  "arthaEn": "Abandoning all dharmas, take refuge in Me alone. I will free you from all sins; do not grieve.",
+  "arthaDecision": "revise-existing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "यह श्लोक गीता के उपदेश के समापन-भाग में आता है। इससे ठीक पहले कृष्ण मन्मना भव और मद्भक्त होने की बात कहते हैं; इसके बाद अगले श्लोक में इस उपदेश के अधिकारी की चर्चा है। यहाँ सबसे कठिन शब्द धर्म है, जिसका अर्थ कर्तव्य, विधि-निषेध या साधन-मार्ग लिया जा सकता है, और परित्यज्य का अर्थ सर्वथा छोड़ना भी हो सकता है और उन पर निर्भरता छोड़ना भी। इसी कारण परंपरा में इस श्लोक पर मतभेद है: कुछ व्याख्याएँ इसे कर्मों के कर्तापन और फल के त्याग के साथ ज्ञान-निष्ठा की ओर पढ़ती हैं, और कुछ इसे अनेक साधनों की चिंता छोड़कर शरणागति की ओर। यहाँ किसी एक मत को स्थापित नहीं किया जा रहा। मा शुचः का अर्थ है शोक मत करो; यह वही शोक है जिससे अध्याय 1 में अर्जुन घिरा था, इसलिए यह वाक्य पूरे ग्रंथ को उसके आरंभ से जोड़ देता है।",
+  "vijnana": "",
+  "vijnanaCategory": "",
+  "evidenceLevel": "none",
+  "lifeLesson": "जब अपराध-बोध या डर किसी आवश्यक काम को रोक रहा हो, तब अपनी श्रद्धा के आधार के सामने उसे निष्कपट भाव से कहो। फिर वही अगला उचित कदम उठाओ जो तुम्हारे हाथ में है।",
+  "confidence": "medium",
+  "reviewNote": "The Sanskrit is clear but the verse is interpreted differently by different schools. The Vyakhya describes the two broad directions in general terms and does not attribute them to any named commentator, because no commentary text is stored in the repository; these descriptions come from general knowledge and must be checked against primary commentaries by a reviewer from each tradition. The stored word-gloss renders 'sucah' as 'do not fear'; the word means 'grieve'. Vijnana is left empty on purpose: surrender is devotional and theological, and a psychological parallel would flatten it.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged.",
+    "artha": "Editor rendering from the Sanskrit. The stored translation was read as a check and is not reproduced.",
+    "vyakhya": "Original composition.",
+    "vijnana": "None written: devotional and theological content.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}

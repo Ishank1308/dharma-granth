@@ -34,31 +34,31 @@ export const START_PATHS: Record<string, StartPath> = {
   gita: {
     id: 'gita', title: 'Bhagavad Gita for Beginners', titleHi: 'गीता: आरंभिक पाठ',
     summary: 'Six short verses that introduce the Gita’s main ideas, in order.', minutes: 'About 6 minutes a reading',
-    href: '/journeys/gita-for-beginners',
+    href: '/learn/journeys/gita-for-beginners',
     steps: [{ label: 'Chapter 2 orientation', href: '/scripture/bhagavadgita/chapter/2' }, { label: 'Read Gita 2.47 in Simple mode', href: '/scripture/bhagavadgita/chapter/2/verse/47' }],
   },
   upanishads: {
     id: 'upanishads', title: 'Introduction to the Upanishads', titleHi: 'उपनिषद् परिचय',
     summary: 'Five well-known verses from four Upanishads.', minutes: 'About 7 minutes a reading',
-    href: '/journeys/introduction-to-the-upanishads',
+    href: '/learn/journeys/introduction-to-the-upanishads',
     steps: [{ label: 'Concept: Atman', href: '/concepts/atman' }, { label: 'Concept: Brahman', href: '/concepts/brahman' }],
   },
   daily: {
     id: 'daily', title: 'Five-Minute Daily Wisdom', titleHi: 'पाँच मिनट का दैनिक चिंतन',
     summary: 'One verse and one reflection, in a few quiet minutes.', minutes: '5 minutes',
     href: '/practice',
-    steps: [{ label: 'Daily verse and reflection', href: '/practice' }, { label: 'Seven Days of Focus', href: '/journeys/seven-days-of-focus' }],
+    steps: [{ label: 'Daily verse and reflection', href: '/practice' }, { label: 'Seven Days of Focus', href: '/learn/journeys/seven-days-of-focus' }],
   },
   karma: {
     id: 'karma', title: 'Understanding Karma Yoga', titleHi: 'कर्मयोग को समझें',
     summary: 'Six verses on acting without being ruled by results.', minutes: 'About 8 minutes a reading',
-    href: '/journeys/understanding-karma-yoga',
+    href: '/learn/journeys/understanding-karma-yoga',
     steps: [{ label: 'Concept: Karma', href: '/concepts/karma' }, { label: 'Wisdom for Life: Duty and decision-making', href: '/wisdom-for-life/duty-and-decision-making' }],
   },
   bhakti: {
     id: 'bhakti', title: 'Introduction to Bhakti', titleHi: 'भक्ति परिचय',
     summary: 'Five verses in which the Gita speaks about devotion.', minutes: 'About 7 minutes a reading',
-    href: '/journeys/introduction-to-bhakti',
+    href: '/learn/journeys/introduction-to-bhakti',
     steps: [{ label: 'Bhakti traditions course', href: '/learn/bhakti-traditions' }, { label: 'Wisdom for Life: Devotion', href: '/wisdom-for-life/devotion' }],
   },
   sanskrit: {

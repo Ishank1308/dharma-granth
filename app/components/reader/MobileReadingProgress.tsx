@@ -1,7 +1,7 @@
 'use client';
 
-import { useMemo } from 'react';
-import { toDevanagari } from '@/lib/verse-format';
+import React from 'react';
+import { toAsciiDigits } from '@/lib/verse-format';
 
 interface MobileReadingProgressProps {
   currentVerseNumber: number | string;
@@ -16,42 +16,48 @@ export function MobileReadingProgress({
   currentIndex,
   chapterTitle,
 }: MobileReadingProgressProps) {
-  const percent = useMemo(() => {
-    if (totalVerses <= 0) return 0;
-    return Math.min(100, Math.round(((currentIndex + 1) / totalVerses) * 100));
-  }, [currentIndex, totalVerses]);
+  const validPosition = Number.isInteger(totalVerses) && totalVerses > 0
+    && Number.isInteger(currentIndex) && currentIndex >= 0 && currentIndex < totalVerses;
+  const position = validPosition ? currentIndex + 1 : undefined;
+  const percent = position === undefined ? undefined : Math.round((position / totalVerses) * 100);
+  const verseLabel = toAsciiDigits(currentVerseNumber);
 
   return (
     <div
-      className="relative z-30 border-b border-dharma-border/60 bg-dharma-card/60 backdrop-blur-sm sm:hidden"
-      role="group"
+      className="sticky top-[52px] z-30 border-b border-separator/40 bg-surface-canvas/95 backdrop-blur-md sm:hidden"
+      role="region"
       aria-label="अध्याय पठन प्रगति"
     >
-      <div className="flex items-center justify-between px-3.5 py-1 text-[11px] font-medium text-dharma-muted">
-        <span className="truncate max-w-[60%]">
-          {chapterTitle ? <span className="font-devanagari">{chapterTitle}</span> : 'प्रगति'}
+      <div className="flex items-center justify-between gap-2 px-3.5 py-1 text-xs font-medium text-dharma-muted">
+        <span className="min-w-0 flex-1 truncate">
+          {chapterTitle ? <span lang="hi" className="font-devanagari">{chapterTitle}</span> : 'प्रगति'}
         </span>
-        <span className="flex items-center gap-1.5 font-mono text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
-          <span className="font-devanagari">श्लोक {toDevanagari(currentVerseNumber)}</span>
-          <span className="opacity-40">/</span>
-          <span className="font-devanagari">{toDevanagari(totalVerses)}</span>
-          <span className="rounded-md bg-saffron-500/10 px-1 py-0.2 text-[10px] font-bold text-saffron-700 dark:text-saffron-400">
-            {percent}%
-          </span>
+        <span aria-hidden="true" className="flex shrink-0 items-center gap-1.5 text-xs font-semibold tabular-nums text-dharma-text">
+          <span lang="hi" className="font-devanagari">श्लोक {verseLabel}</span>
+          {position !== undefined && percent !== undefined && (
+            <>
+              <span className="opacity-40">·</span>
+              <span lang="hi" className="font-devanagari">क्रम {position} / {totalVerses}</span>
+              <span className="rounded-md border border-dharma-border px-1 text-xs font-semibold">{percent}%</span>
+            </>
+          )}
         </span>
       </div>
 
       <div
-        className="h-1 w-full overflow-hidden bg-dharma-border/40"
+        className="h-0.5 w-full overflow-hidden bg-dharma-text/10"
         role="progressbar"
         aria-valuenow={percent}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label={`अध्याय पठन प्रगति: ${percent}%`}
+        aria-label="अध्याय पठन प्रगति · Chapter reading progress"
+        aria-valuetext={position === undefined || percent === undefined
+          ? 'प्रगति उपलब्ध नहीं · Progress unavailable'
+          : `श्लोक ${verseLabel}, क्रम ${position} / ${totalVerses}, ${percent}% · Verse ${verseLabel}, position ${position} of ${totalVerses}`}
       >
         <div
-          className="h-full bg-gradient-to-r from-amber-600 via-saffron-500 to-amber-500 transition-all duration-300 ease-out"
-          style={{ width: `${percent}%` }}
+          className="h-full origin-left bg-dharma-saffron transition-transform duration-300 ease-out motion-reduce:transition-none"
+          style={{ transform: `scaleX(${(percent ?? 0) / 100})` }}
         />
       </div>
     </div>

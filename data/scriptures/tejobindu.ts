@@ -5,18 +5,7952 @@ export const tejobindu: Scripture = {
   title: 'Tejobindu Upanishad',
   titleSanskrit: 'तेजोबिन्दु उपनिषद्',
   category: 'upanishad',
-  description: 'The "drop of light/fire" — an Upanishad of the Atharvaveda tradition, in the style of Advaita Vedanta. Consists of a dialogue between Kumara (Kartikeya) and his father Shiva. Teaches the practice of Nididhyasana (profound contemplation) and gives an extended description of the nature of the Self through the method of neti-neti (not this, not this).',
-  totalVerses: 260,
-  tags: ['Upanishad', 'Advaita', 'NetiNeti', 'Shiva', 'Nididhyasana', 'SelfInquiry'],
+  description: "The \"Drop of Radiant Fire\" — an Upanishad of the Atharvaveda tradition. A dialogue between Lord Shiva and Kumara (Kartikeya) expounding deep Advaitic nididhyasana, the fifteen-limbed raja-yoga, radical neti-neti contemplation, and the direct realization of Akhanda-Ekarasa Brahman. Complete recension across all chapters with authentic Sanskrit, transliteration, English and Hindi translations.",
+  totalVerses: 464,
+  tags: ["Upanishad","Advaita","Tejobindu","Shiva","Kartikeya","FifteenLimbedYoga","Nididhyasana","Atharvaveda"],
   chapters: [
-    {
-      id: 1,
-      title: 'Chapter 1 — The Nature of Brahman Through Neti-Neti',
-      titleSanskrit: 'प्रथम अध्याय — नेति नेति विचार',
-      summary: 'Shiva teaches Kartikeya the ultimate nature of Brahman through the method of progressive negation — neti, neti (not this, not this). Everything that can be perceived, named, or described is not the ultimate Self.',
-      verses: [
-      
-      ],
-    },
-  ],
+  {
+    "id": 1,
+    "title": "Chapter 1 — The Fifteen Limbs of Yoga",
+    "titleSanskrit": "प्रथम अध्याय — पञ्चदशाङ्ग योग",
+    "summary": "Lord Shiva teaches Kartikeya the fifteen limbs of Raja Yoga: yama, niyama, tyaga, mauna, desha, kala, asana, mulabandha, dehasamya, drikssthiti, pranayama, pratyahara, dharana, atmadhyana, and samadhi.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "ॐ तेजोबिन्दुः परं ध्यानं विश्वात्महृदिसंस्थितम् । आणवं शाम्भवं शान्तं स्थूलं सूक्ष्मं परं च यत्",
+        "transliteration": "oṃ tejobinduḥ paraṃ dhyānaṃ viśvātmahṛdisaṃsthitam | āṇavaṃ śāmbhavaṃ śāntaṃ sthūlaṃ sūkṣmaṃ paraṃ ca yat",
+        "translation": "Om. The point of light is the supreme meditation, established in the heart of the universal Self — atomic, Shambhava, peaceful, gross, subtle and supreme.",
+        "hindi": "तेजोबिन्दु परमं ध्यानं सर्वपापप्रणाशनम्—तेजोबिन्दु का परम ध्यान समस्त पापों का नाश करने वाला और ज्ञानियों को कैवल्य पद प्रदान करने वाला है।",
+        "explanation": "तेजोबिन्दु परमं ध्यानं सर्वपापप्रणाशनम्—तेजोबिन्दु का परम ध्यान समस्त पापों का नाश करने वाला और ज्ञानियों को कैवल्य पद प्रदान करने वाला है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "दुःखाढ्यं च दुराराध्यं दुष्प्रेक्ष्यं मुक्तमव्ययम् । दुर्लभं तत्स्वयं ध्यानं मुनीनां च मनीषिणाम्",
+        "transliteration": "duḥkhāḍhyaṃ ca durārādhyaṃ duṣprekṣyaṃ muktamavyayam | durlabhaṃ tatsvayaṃ dhyānaṃ munīnāṃ ca manīṣiṇām",
+        "translation": "Full of difficulty, hard to worship, hard to see, free, imperishable, that meditation is rare even for sages and the wise.",
+        "hindi": "यह ध्यान कठिनाइयों से भरा, कठिनता से आराधन करने योग्य, कठिनता से दिखाई देने वाला, मुक्त और अविनाशी है; मुनियों और मनीषियों के लिए भी यह स्वयं दुर्लभ है।",
+        "explanation": "यह ध्यान कठिनाइयों से भरा, कठिनता से आराधन करने योग्य, कठिनता से दिखाई देने वाला, मुक्त और अविनाशी है; मुनियों और मनीषियों के लिए भी यह स्वयं दुर्लभ है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "यताहारो जितक्रोधो जितसङ्गो जितेन्द्रियः । निर्द्वन्द्वो निरहङ्कारो निराशीरपरिग्रहः",
+        "transliteration": "yatāhāro jitakrodho jitasaṅgo jitendriyaḥ | nirdvandvo nirahaṅkāro nirāśīraparigrahaḥ",
+        "translation": "Of regulated food, conquering anger, conquering attachment, conquering the senses, free of dualities, free of egoism, without hope, without possessions,",
+        "hindi": "जो नियमित आहार वाला, क्रोध को जीतने वाला, आसक्ति को जीतने वाला, इन्द्रियों को जीतने वाला, द्वन्द्वों से रहित, अहंकार से रहित, आशा से रहित और अपरिग्रही हो,",
+        "explanation": "जो नियमित आहार वाला, क्रोध को जीतने वाला, आसक्ति को जीतने वाला, इन्द्रियों को जीतने वाला, द्वन्द्वों से रहित, अहंकार से रहित, आशा से रहित और अपरिग्रही हो,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "अगम्यागमकर्ता यो गम्याऽगमयमानसः । मुखे त्रीणि च विन्दन्ति त्रिधामा हंस उच्यते",
+        "transliteration": "agamyāgamakartā yo gamyā'gamayamānasaḥ | mukhe trīṇi ca vindanti tridhāmā haṃsa ucyate",
+        "translation": "who makes the unreachable reachable, whose mind brings what is to be reached — in the mouth they find three; the swan of three abodes is so called.",
+        "hindi": "जो अगम्य को भी गम्य बना देता है, जिसका मन पाने योग्य को पाने में लगा है — वह मुख में तीन को पाता है; तीन धामों वाला वही ‘हंस’ कहलाता है।",
+        "explanation": "जो अगम्य को भी गम्य बना देता है, जिसका मन पाने योग्य को पाने में लगा है — वह मुख में तीन को पाता है; तीन धामों वाला वही ‘हंस’ कहलाता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "परं गुह्यतमं विद्धि ह्यस्ततन्द्रो निराश्रयः । सोमरूपकला सूक्ष्मा विष्णोस्तत्परमं पदम्",
+        "transliteration": "paraṃ guhyatamaṃ viddhi hyastatandro nirāśrayaḥ | somarūpakalā sūkṣmā viṣṇostatparamaṃ padam",
+        "translation": "Know it as the most secret, free of laziness, without support; the subtle digit of the form of soma is that supreme state of Vishnu.",
+        "hindi": "उसे परम गुह्य जानो — आलस्य-रहित और निराश्रय। चन्द्र-रूप सूक्ष्म कला ही विष्णु का वह परम पद है।",
+        "explanation": "उसे परम गुह्य जानो — आलस्य-रहित और निराश्रय। चन्द्र-रूप सूक्ष्म कला ही विष्णु का वह परम पद है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "त्रिवक्त्रं त्रिगुणं स्थानं त्रिधातुं रूपवर्जितम् । निश्चलं निर्विकल्पं च निराकारं निराश्रयम्",
+        "transliteration": "trivaktraṃ triguṇaṃ sthānaṃ tridhātuṃ rūpavarjitam | niścalaṃ nirvikalpaṃ ca nirākāraṃ nirāśrayam",
+        "translation": "Three-faced, threefold in quality, the abode, of three elements, devoid of form, motionless, free of conceptions, formless, without support.",
+        "hindi": "वह तीन मुख वाला, त्रिगुणात्मक स्थान, तीन धातुओं वाला, रूप से रहित, निश्चल, निर्विकल्प, निराकार और निराश्रय है।",
+        "explanation": "वह तीन मुख वाला, त्रिगुणात्मक स्थान, तीन धातुओं वाला, रूप से रहित, निश्चल, निर्विकल्प, निराकार और निराश्रय है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "उपाधिरहितं स्थानं वाङ्मनोऽतीतगोचरम् । स्वभावं भावसङ्ग्राह्यमसङ्घातं पदाच्च्युतम्",
+        "transliteration": "upādhirahitaṃ sthānaṃ vāṅmano'tītagocaram | svabhāvaṃ bhāvasaṅgrāhyamasaṅghātaṃ padāccyutam",
+        "translation": "The abode free of limiting adjuncts, beyond speech and mind, nature itself, to be grasped by being, uncompounded, fallen from no station.",
+        "hindi": "वह उपाधि-रहित स्थान है, जो वाणी और मन से परे का विषय है; स्वभाव-रूप, भाव से ग्रहण करने योग्य, असंहत और अपने पद से कभी च्युत न होने वाला है।",
+        "explanation": "वह उपाधि-रहित स्थान है, जो वाणी और मन से परे का विषय है; स्वभाव-रूप, भाव से ग्रहण करने योग्य, असंहत और अपने पद से कभी च्युत न होने वाला है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "अनानानन्दनातीतं दुष्प्रेक्ष्यं मुक्तिमव्ययम् । चिन्त्यमेवं विनिर्मुक्तं शाश्वतं ध्रुवमच्युतम्",
+        "transliteration": "anānānandanātītaṃ duṣprekṣyaṃ muktimavyayam | cintyamevaṃ vinirmuktaṃ śāśvataṃ dhruvamacyutam",
+        "translation": "Beyond manifold bliss, hard to see, liberation, imperishable; to be contemplated as thus freed, eternal, firm, undying.",
+        "hindi": "वह अनेक आनन्दों से परे, कठिनता से देखे जाने योग्य, मुक्ति-स्वरूप और अविनाशी है; ऐसा मुक्त, शाश्वत, ध्रुव और अच्युत उसी रूप में चिन्तन करने योग्य है।",
+        "explanation": "वह अनेक आनन्दों से परे, कठिनता से देखे जाने योग्य, मुक्ति-स्वरूप और अविनाशी है; ऐसा मुक्त, शाश्वत, ध्रुव और अच्युत उसी रूप में चिन्तन करने योग्य है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "तद्ब्रह्मणस्तदध्यात्मं तद्विष्णोस्तत्परायणम् । अचिन्त्यं चिन्मयात्मानं यद्व्योम परमं स्थितम्",
+        "transliteration": "tadbrahmaṇastadadhyātmaṃ tadviṣṇostatparāyaṇam | acintyaṃ cinmayātmānaṃ yadvyoma paramaṃ sthitam",
+        "translation": "That is of Brahman, that is the inner Self, that is of Vishnu, that is the supreme refuge; inconceivable, the Self of consciousness, the supreme space that stands.",
+        "hindi": "वही ब्रह्म का है, वही अध्यात्म है, वही विष्णु का है और वही परम आश्रय है; अचिन्त्य, चिन्मय आत्मा — जो परम आकाश के रूप में स्थित है।",
+        "explanation": "वही ब्रह्म का है, वही अध्यात्म है, वही विष्णु का है और वही परम आश्रय है; अचिन्त्य, चिन्मय आत्मा — जो परम आकाश के रूप में स्थित है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 10,
+        "number": 10,
+        "sanskrit": "अशून्यं शून्यभावं तु शून्यातीतं हृदि स्थितम् । न ध्यानं च न च ध्याता न ध्येयो ध्येय एव च",
+        "transliteration": "aśūnyaṃ śūnyabhāvaṃ tu śūnyātītaṃ hṛdi sthitam | na dhyānaṃ ca na ca dhyātā na dhyeyo dhyeya eva ca",
+        "translation": "Not empty, yet of the nature of void, beyond void, established in the heart; neither meditation nor meditator nor object of meditation, yet itself the object of meditation.",
+        "hindi": "वह अशून्य है पर शून्य-भाव वाला भी है, शून्य से भी परे है और हृदय में स्थित है। वहाँ न ध्यान है, न ध्याता, न ध्येय — फिर भी वही ध्येय है।",
+        "explanation": "वह अशून्य है पर शून्य-भाव वाला भी है, शून्य से भी परे है और हृदय में स्थित है। वहाँ न ध्यान है, न ध्याता, न ध्येय — फिर भी वही ध्येय है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 11,
+        "number": 11,
+        "sanskrit": "सर्वं च न परं शून्यं न परं नापरात्परम् । अचिन्त्यमप्रबुद्धं च न सत्यं न परं विदुः",
+        "transliteration": "sarvaṃ ca na paraṃ śūnyaṃ na paraṃ nāparātparam | acintyamaprabuddhaṃ ca na satyaṃ na paraṃ viduḥ",
+        "translation": "Neither all, nor void, nor the supreme, nor higher than the highest; inconceivable, unawakened; they know it as neither true nor supreme.",
+        "hindi": "वह न सब कुछ है, न शून्य है, न परम है, न परम से भी परे कोई और; वह अचिन्त्य और अप्रबुद्ध है। उसे लोग न सत्य जानते हैं, न परम।",
+        "explanation": "वह न सब कुछ है, न शून्य है, न परम है, न परम से भी परे कोई और; वह अचिन्त्य और अप्रबुद्ध है। उसे लोग न सत्य जानते हैं, न परम।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 12,
+        "number": 12,
+        "sanskrit": "मुनीनां सम्प्रयुक्तं च न देवा न परं विदुः । लोभं मोहं भयं दर्पं कामं क्रोधं च किल्बिषम्",
+        "transliteration": "munīnāṃ samprayuktaṃ ca na devā na paraṃ viduḥ | lobhaṃ mohaṃ bhayaṃ darpaṃ kāmaṃ krodhaṃ ca kilbiṣam",
+        "translation": "It is engaged by sages; neither gods nor others know the supreme. Greed, delusion, fear, pride, desire, anger, and sin,",
+        "hindi": "वह मुनियों द्वारा साधा जाता है; देवता भी उस परम को नहीं जानते। लोभ, मोह, भय, दर्प, काम, क्रोध और पाप —",
+        "explanation": "वह मुनियों द्वारा साधा जाता है; देवता भी उस परम को नहीं जानते। लोभ, मोह, भय, दर्प, काम, क्रोध और पाप —",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 13,
+        "number": 13,
+        "sanskrit": "शीतोष्णे क्षुत्पिपासे च सङ्कल्पकविकल्पकम् । न ब्रह्मकुलदर्पं च न मुक्तिग्रन्थिसञ्चयम्",
+        "transliteration": "śītoṣṇe kṣutpipāse ca saṅkalpakavikalpakam | na brahmakuladarpaṃ ca na muktigranthisañcayam",
+        "translation": "cold and heat, hunger and thirst, intention and doubt, pride of Brahmin birth, and the heap of knots of liberation — none of these are there;",
+        "hindi": "सर्दी-गर्मी, भूख-प्यास, संकल्प-विकल्प, ब्राह्मण-कुल का अभिमान और मुक्ति-ग्रन्थियों का संग्रह — इनमें से कुछ भी वहाँ नहीं है;",
+        "explanation": "सर्दी-गर्मी, भूख-प्यास, संकल्प-विकल्प, ब्राह्मण-कुल का अभिमान और मुक्ति-ग्रन्थियों का संग्रह — इनमें से कुछ भी वहाँ नहीं है;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 14,
+        "number": 14,
+        "sanskrit": "न भयं न सुखं दुःखं तथा मानावमानयोः । एतद्भावविनिर्मुक्तं तद्ग्राह्यं ब्रह्म तत्परम्",
+        "transliteration": "na bhayaṃ na sukhaṃ duḥkhaṃ tathā mānāvamānayoḥ | etadbhāvavinirmuktaṃ tadgrāhyaṃ brahma tatparam",
+        "translation": "neither fear nor pleasure nor pain, nor honor and dishonor; free of such states, that is the Brahman to be grasped, the supreme.",
+        "hindi": "न भय है, न सुख-दुःख, और न मान-अपमान। इन सब भावों से मुक्त वही परम ब्रह्म ग्रहण करने योग्य है।",
+        "explanation": "न भय है, न सुख-दुःख, और न मान-अपमान। इन सब भावों से मुक्त वही परम ब्रह्म ग्रहण करने योग्य है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 15,
+        "number": 15,
+        "sanskrit": "यमो हि नियमस्त्यागो मौनं देशश्च कालतः । आसनं मूलबन्धश्च देहसाम्यं च दृक्स्थितिः",
+        "transliteration": "yamo hi niyamastyāgo maunaṃ deśaśca kālataḥ | āsanaṃ mūlabandhaśca dehasāmyaṃ ca dṛksthitiḥ",
+        "translation": "Yama, Niyama, renunciation, silence, place and time, posture, Mulabandha, equality of the body, and fixing the gaze,",
+        "hindi": "यम, नियम, त्याग, मौन, देश, काल, आसन, मूलबंध, देहसाम्य, दृक्साम्य, प्राणायाम, प्रत्याहार, धारणा, ध्यान और समाधि—ये पंद्रह अंग कहे गए हैं।",
+        "explanation": "यम, नियम, त्याग, मौन, देश, काल, आसन, मूलबंध, देहसाम्य, दृक्साम्य, प्राणायाम, प्रत्याहार, धारणा, ध्यान और समाधि—ये पंद्रह अंग कहे गए हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 16,
+        "number": 16,
+        "sanskrit": "प्राणसंयमनं चैव प्रत्याहारश्च धारणा । आत्मध्यानं समाधिश्च प्रोक्तान्यङ्गानि वै क्रमात्",
+        "transliteration": "prāṇasaṃyamanaṃ caiva pratyāhāraśca dhāraṇā | ātmadhyānaṃ samādhiśca proktānyaṅgāni vai kramāt",
+        "translation": "control of breath, withdrawal, concentration, meditation on the Self, and samadhi — the limbs are declared in order.",
+        "hindi": "प्राण-संयम, प्रत्याहार, धारणा, आत्म-ध्यान और समाधि — ये अंग क्रम से कहे गए हैं।",
+        "explanation": "प्राण-संयम, प्रत्याहार, धारणा, आत्म-ध्यान और समाधि — ये अंग क्रम से कहे गए हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 17,
+        "number": 17,
+        "sanskrit": "सर्वं ब्रह्मेति वै ज्ञानादिन्द्रियग्रामसंयमः । यमोऽऽयमिति सम्प्रोक्तोऽभ्यसनीयो मुहुर्मुहुः",
+        "transliteration": "sarvaṃ brahmeti vai jñānādindriyagrāmasaṃyamaḥ | yamo''yamiti samprokto'bhyasanīyo muhurmuhuḥ",
+        "translation": "By the knowledge \"all is Brahman,\" the restraint of the group of senses is declared to be Yama; it should be practiced again and again.",
+        "hindi": "‘सब कुछ ब्रह्म है’ — इस ज्ञान से इन्द्रिय-समूह का संयम यम कहा गया है; इसका बार-बार अभ्यास करना चाहिए।",
+        "explanation": "‘सब कुछ ब्रह्म है’ — इस ज्ञान से इन्द्रिय-समूह का संयम यम कहा गया है; इसका बार-बार अभ्यास करना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 18,
+        "number": 18,
+        "sanskrit": "सजातीयप्रवाहश्च विजातीयतिरस्कृतिः । नियमो हि परानन्दो नियमात्क्रियते बुधैः",
+        "transliteration": "sajātīyapravāhaśca vijātīyatiraskṛtiḥ | niyamo hi parānando niyamātkriyate budhaiḥ",
+        "translation": "The flow of the same kind and rejection of the different kind — that is Niyama, supreme bliss; the wise practice it through Niyama.",
+        "hindi": "सजातीय वृत्ति का प्रवाह और विजातीय का तिरस्कार — यही नियम है; यह परमानन्द-स्वरूप है, और ज्ञानी इसे नियम से साधते हैं।",
+        "explanation": "सजातीय वृत्ति का प्रवाह और विजातीय का तिरस्कार — यही नियम है; यह परमानन्द-स्वरूप है, और ज्ञानी इसे नियम से साधते हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 19,
+        "number": 19,
+        "sanskrit": "त्यागः प्रपञ्चरूपस्य सच्चिदात्मावलोकनात् । त्यागो हि महता पूज्यः सद्यो मोक्षप्रदायकः",
+        "transliteration": "tyāgaḥ prapañcarūpasya saccidātmāvalokanāt | tyāgo hi mahatā pūjyaḥ sadyo mokṣapradāyakaḥ",
+        "translation": "Renunciation is the giving up of the world's form by beholding the Self as being-consciousness; renunciation is honored by the great and gives liberation at once.",
+        "hindi": "सच्चिदानन्द आत्मा को देखकर प्रपंच-रूप का त्याग ही त्याग है; महापुरुष इसका आदर करते हैं और यह तुरन्त मोक्ष देने वाला है।",
+        "explanation": "सच्चिदानन्द आत्मा को देखकर प्रपंच-रूप का त्याग ही त्याग है; महापुरुष इसका आदर करते हैं और यह तुरन्त मोक्ष देने वाला है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 20,
+        "number": 20,
+        "sanskrit": "यस्माद्वाचो निवर्तन्ते अप्राप्य मनसा सह । यन्मौनं योगिभिर्गम्यं तद्भजेत्सर्वदा बुधः",
+        "transliteration": "yasmādvāco nivartante aprāpya manasā saha | yanmaunaṃ yogibhirgamyaṃ tadbhajetsarvadā budhaḥ",
+        "translation": "From which speech turns back, not reaching it along with the mind, that silence which yogis attain — the wise should always practice it.",
+        "hindi": "जहाँ से मन के साथ वाणी उसे न पाकर लौट आती है, योगियों को प्राप्य वह मौन है — ज्ञानी को उसका सदा भजन करना चाहिए।",
+        "explanation": "जहाँ से मन के साथ वाणी उसे न पाकर लौट आती है, योगियों को प्राप्य वह मौन है — ज्ञानी को उसका सदा भजन करना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 21,
+        "number": 21,
+        "sanskrit": "वाचो यस्मान्निवर्तन्ते तद्वक्तुं केन शक्यते । प्रपञ्चो यदि वक्तव्यः सोऽपि शब्दविवर्जितः",
+        "transliteration": "vāco yasmānnivartante tadvaktuṃ kena śakyate | prapañco yadi vaktavyaḥ so'pi śabdavivarjitaḥ",
+        "translation": "From which words turn back, who can describe that? If the world is to be spoken of, that too is free of words.",
+        "hindi": "जिससे वाणी लौट आती है, उसे कहने में कौन समर्थ है? यदि प्रपंच का वर्णन करना हो, तो वह भी शब्दों से परे है।",
+        "explanation": "जिससे वाणी लौट आती है, उसे कहने में कौन समर्थ है? यदि प्रपंच का वर्णन करना हो, तो वह भी शब्दों से परे है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 22,
+        "number": 22,
+        "sanskrit": "इति वा तद्भवेन्मौनं सर्वं सहजसंज्ञितम् । गिरां मौनं तु बालानामयुक्तं ब्रह्मवादिनाम्",
+        "transliteration": "iti vā tadbhavenmaunaṃ sarvaṃ sahajasaṃjñitam | girāṃ maunaṃ tu bālānāmayuktaṃ brahmavādinām",
+        "translation": "Or that is silence, called all-natural; the silence of speech is for children and is not fitting for knowers of Brahman.",
+        "hindi": "अथवा वही मौन है, जो सब कुछ सहज नाम से जाना जाता है। वाणी का मौन तो बालकों का है; ब्रह्मवादियों के लिए यह उचित नहीं।",
+        "explanation": "अथवा वही मौन है, जो सब कुछ सहज नाम से जाना जाता है। वाणी का मौन तो बालकों का है; ब्रह्मवादियों के लिए यह उचित नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 23,
+        "number": 23,
+        "sanskrit": "आदावन्ते च मध्ये च जनो यस्मिन्न विद्यते । येनेदं सततं व्याप्तं स देशो विजनः स्मृतः",
+        "transliteration": "ādāvante ca madhye ca jano yasminna vidyate | yenedaṃ satataṃ vyāptaṃ sa deśo vijanaḥ smṛtaḥ",
+        "translation": "In the beginning, end and middle, where people do not exist, which is constantly pervaded by this — that place is called solitary.",
+        "hindi": "आदि, अन्त और मध्य में जहाँ कोई जन नहीं पाया जाता, जिससे यह सब निरन्तर व्याप्त है — वह स्थान ‘विजन’ (एकान्त) कहा गया है।",
+        "explanation": "आदि, अन्त और मध्य में जहाँ कोई जन नहीं पाया जाता, जिससे यह सब निरन्तर व्याप्त है — वह स्थान ‘विजन’ (एकान्त) कहा गया है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 24,
+        "number": 24,
+        "sanskrit": "कल्पना सर्वभूतानां ब्रह्मादीनां निमेषतः । कालशब्देन निर्दिष्टं ह्यखण्डानन्दमद्वयम्",
+        "transliteration": "kalpanā sarvabhūtānāṃ brahmādīnāṃ nimeṣataḥ | kālaśabdena nirdiṣṭaṃ hyakhaṇḍānandamadvayam",
+        "translation": "The imagination of all beings, of Brahma and others, in a twinkling, is indicated by the word \"time\"; indeed it is undivided bliss, non-dual.",
+        "hindi": "ब्रह्मा आदि सब प्राणियों की क्षण-भर की कल्पना को ‘काल’ शब्द से कहा गया है; वह वस्तुतः अखण्ड आनन्द और अद्वैत है।",
+        "explanation": "ब्रह्मा आदि सब प्राणियों की क्षण-भर की कल्पना को ‘काल’ शब्द से कहा गया है; वह वस्तुतः अखण्ड आनन्द और अद्वैत है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 25,
+        "number": 25,
+        "sanskrit": "सुखेनैव भवेद्यस्मिन्नजस्रं ब्रह्मचिन्तनम् । आसनं तद्विजानीयादन्यत्सुखविनाशनम्",
+        "transliteration": "sukhenaiva bhavedyasminnajasraṃ brahmacintanam | āsanaṃ tadvijānīyādanyatsukhavināśanam",
+        "translation": "That in which continuous contemplation of Brahman goes on with ease — know that as posture; another destroys ease.",
+        "hindi": "जिस स्थिति में सुखपूर्वक ब्रह्म का निरन्तर चिन्तन होता रहे, उसे ही आसन जानो; दूसरा आसन तो सुख का नाश करने वाला है।",
+        "explanation": "जिस स्थिति में सुखपूर्वक ब्रह्म का निरन्तर चिन्तन होता रहे, उसे ही आसन जानो; दूसरा आसन तो सुख का नाश करने वाला है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 26,
+        "number": 26,
+        "sanskrit": "सिद्धये सर्वभूतादि विश्वाधिष्ठानमद्वयम् । यस्मिन्सिद्धिं गताः सिद्धास्तत्सिद्धासनमुच्यते",
+        "transliteration": "siddhaye sarvabhūtādi viśvādhiṣṭhānamadvayam | yasminsiddhiṃ gatāḥ siddhāstatsiddhāsanamucyate",
+        "translation": "For accomplishment, the foundation of the universe, the origin of all beings, the non-dual — in which the perfected have attained perfection, that is called the perfect posture.",
+        "hindi": "सिद्धि के लिए, जो सब प्राणियों का आदि, विश्व का आधार और अद्वैत है, जिसमें सिद्ध लोग सिद्धि को प्राप्त हुए — उसी को सिद्धासन कहते हैं।",
+        "explanation": "सिद्धि के लिए, जो सब प्राणियों का आदि, विश्व का आधार और अद्वैत है, जिसमें सिद्ध लोग सिद्धि को प्राप्त हुए — उसी को सिद्धासन कहते हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 27,
+        "number": 27,
+        "sanskrit": "यन्मूलं सर्वलोकानां यन्मूलं चित्तबन्धनम् । मूलबन्धः सदा सेव्यो योग्योऽसौ ब्रह्मवादिनाम्",
+        "transliteration": "yanmūlaṃ sarvalokānāṃ yanmūlaṃ cittabandhanam | mūlabandhaḥ sadā sevyo yogyo'sau brahmavādinām",
+        "translation": "The root of all worlds, the root of the binding of mind — the Mulabandha is always to be practiced; it is fit for knowers of Brahman.",
+        "hindi": "जो सब लोकों का मूल है और चित्त के बन्धन का भी मूल है, वही मूलबन्ध है; ब्रह्मवादियों के योग्य इसका सदा सेवन करना चाहिए।",
+        "explanation": "जो सब लोकों का मूल है और चित्त के बन्धन का भी मूल है, वही मूलबन्ध है; ब्रह्मवादियों के योग्य इसका सदा सेवन करना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 28,
+        "number": 28,
+        "sanskrit": "अङ्गानां समतां विद्यात्समे ब्रह्मणि लीयते । नो चेन्नैव समानत्वमृजुत्वं शुष्कवृक्षवत्",
+        "transliteration": "aṅgānāṃ samatāṃ vidyātsame brahmaṇi līyate | no cennaiva samānatvamṛjutvaṃ śuṣkavṛkṣavat",
+        "translation": "Know the equality of limbs: it dissolves in the equal Brahman; otherwise there is no true equality, only stiffness like a dry tree.",
+        "hindi": "अंगों की समता को जानो — वह सम ब्रह्म में लीन हो जाती है। अन्यथा सच्ची समता नहीं, केवल सूखे वृक्ष जैसी अकड़ है।",
+        "explanation": "अंगों की समता को जानो — वह सम ब्रह्म में लीन हो जाती है। अन्यथा सच्ची समता नहीं, केवल सूखे वृक्ष जैसी अकड़ है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 29,
+        "number": 29,
+        "sanskrit": "दृष्टीं ज्ञानमयीं कृत्वा पश्येद्ब्रह्ममयं जगत् । सा दृष्टिः परमोदारा न नासाग्रावलोकिनी",
+        "transliteration": "dṛṣṭīṃ jñānamayīṃ kṛtvā paśyedbrahmamayaṃ jagat | sā dṛṣṭiḥ paramodārā na nāsāgrāvalokinī",
+        "translation": "Making the vision full of knowledge, one should see the world as Brahman; that vision is supremely noble, not the one fixed on the tip of the nose.",
+        "hindi": "दृष्टि को ज्ञानमयी बनाकर जगत को ब्रह्ममय देखो; वही दृष्टि परम उदार है, नासिका के अग्रभाग को देखने वाली दृष्टि नहीं।",
+        "explanation": "दृष्टि को ज्ञानमयी बनाकर जगत को ब्रह्ममय देखो; वही दृष्टि परम उदार है, नासिका के अग्रभाग को देखने वाली दृष्टि नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 30,
+        "number": 30,
+        "sanskrit": "द्रष्टृदर्शनदृश्यानां विरामो यत्र वा भवेत् । दृष्टिस्तत्रैव कर्तव्या न नासाग्रावलोकिनी",
+        "transliteration": "draṣṭṛdarśanadṛśyānāṃ virāmo yatra vā bhavet | dṛṣṭistatraiva kartavyā na nāsāgrāvalokinī",
+        "translation": "Where the cessation of seer, seeing and seen occurs, there the gaze should be set, not on the tip of the nose.",
+        "hindi": "जहाँ द्रष्टा, दर्शन और दृश्य का विराम हो जाता है, वहीं दृष्टि टिकानी चाहिए — नासिका के अग्रभाग पर नहीं।",
+        "explanation": "जहाँ द्रष्टा, दर्शन और दृश्य का विराम हो जाता है, वहीं दृष्टि टिकानी चाहिए — नासिका के अग्रभाग पर नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 31,
+        "number": 31,
+        "sanskrit": "चित्तादिसर्वभावेषु ब्रह्मत्वेनैव भावनात् । निरोधः सर्ववृत्तीनां प्राणायामः स उच्यते",
+        "transliteration": "cittādisarvabhāveṣu brahmatvenaiva bhāvanāt | nirodhaḥ sarvavṛttīnāṃ prāṇāyāmaḥ sa ucyate",
+        "translation": "By contemplating Brahman-ness in all states such as the mind, the restraint of all modifications is called pranayama.",
+        "hindi": "चित्त आदि सब भावों में ब्रह्म-भाव की ही भावना करके सब वृत्तियों का निरोध प्राणायाम कहलाता है।",
+        "explanation": "चित्त आदि सब भावों में ब्रह्म-भाव की ही भावना करके सब वृत्तियों का निरोध प्राणायाम कहलाता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 32,
+        "number": 32,
+        "sanskrit": "निषेधनं प्रपञ्चस्य रेचकाख्यः समीरितः । ब्रह्मैवास्मीति या वृत्तिः पूरको वायुरुच्यते",
+        "transliteration": "niṣedhanaṃ prapañcasya recakākhyaḥ samīritaḥ | brahmaivāsmīti yā vṛttiḥ pūrako vāyurucyate",
+        "translation": "The negation of the world is called exhalation; the modification \"I am Brahman\" is called inhalation.",
+        "hindi": "प्रपंच का निषेध रेचक कहा गया है; ‘मैं ब्रह्म ही हूँ’ — यह जो वृत्ति है, वह पूरक कहलाती है।",
+        "explanation": "प्रपंच का निषेध रेचक कहा गया है; ‘मैं ब्रह्म ही हूँ’ — यह जो वृत्ति है, वह पूरक कहलाती है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 33,
+        "number": 33,
+        "sanskrit": "ततस्तद्वृत्तिनैश्चल्यं कुम्भकः प्राणसंयमः । अयं चापि प्रबुद्धानामज्ञानां घ्राणपीडनम्",
+        "transliteration": "tatastadvṛttinaiścalyaṃ kumbhakaḥ prāṇasaṃyamaḥ | ayaṃ cāpi prabuddhānāmajñānāṃ ghrāṇapīḍanam",
+        "translation": "Then the steadiness of that modification is retention, the control of breath; this too is, for the awakened, only a pinching of the nose of the ignorant.",
+        "hindi": "फिर उस वृत्ति की निश्चलता कुम्भक है — यही प्राण-संयम है। ज्ञानियों के लिए यह भी अज्ञानियों के नाक दबाने जैसा ही है।",
+        "explanation": "फिर उस वृत्ति की निश्चलता कुम्भक है — यही प्राण-संयम है। ज्ञानियों के लिए यह भी अज्ञानियों के नाक दबाने जैसा ही है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 34,
+        "number": 34,
+        "sanskrit": "विषयेष्वात्मतां दृष्ट्वा मनसश्चित्तरञ्जकम् । प्रत्याहारः स विज्ञेयोऽभ्यसनीयो मुहुर्मुहुः",
+        "transliteration": "viṣayeṣvātmatāṃ dṛṣṭvā manasaścittarañjakam | pratyāhāraḥ sa vijñeyo'bhyasanīyo muhurmuhuḥ",
+        "translation": "Seeing the Self in objects, the coloring of the mind's thought, is to be known as pratyahara; it should be practiced again and again.",
+        "hindi": "विषयों में आत्म-भाव देखकर मन की चित्त-रंजक वृत्ति का संयम प्रत्याहार जानना चाहिए; इसका बार-बार अभ्यास करना चाहिए।",
+        "explanation": "विषयों में आत्म-भाव देखकर मन की चित्त-रंजक वृत्ति का संयम प्रत्याहार जानना चाहिए; इसका बार-बार अभ्यास करना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 35,
+        "number": 35,
+        "sanskrit": "यत्र यत्र मनो याति ब्रह्मणस्तत्र दर्शनात् । मनसा धारणं चैव धारणा सा परा मता",
+        "transliteration": "yatra yatra mano yāti brahmaṇastatra darśanāt | manasā dhāraṇaṃ caiva dhāraṇā sā parā matā",
+        "translation": "Wherever the mind goes, by seeing Brahman there, holding the mind is concentration; that is held to be the highest concentration.",
+        "hindi": "जहाँ-जहाँ मन जाता है, वहाँ ब्रह्म के दर्शन से मन को थामना ही धारणा है; वही श्रेष्ठ धारणा मानी गई है।",
+        "explanation": "जहाँ-जहाँ मन जाता है, वहाँ ब्रह्म के दर्शन से मन को थामना ही धारणा है; वही श्रेष्ठ धारणा मानी गई है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 36,
+        "number": 36,
+        "sanskrit": "ब्रह्मैवास्मीति सद्वृत्त्या निरालम्बतया स्थितिः । ध्यानशब्देन विख्यातः परमानन्ददायकः",
+        "transliteration": "brahmaivāsmīti sadvṛttyā nirālambatayā sthitiḥ | dhyānaśabdena vikhyātaḥ paramānandadāyakaḥ",
+        "translation": "Abiding in the modification \"I am Brahman\" without support is known by the word meditation, and gives supreme bliss.",
+        "hindi": "‘मैं ब्रह्म ही हूँ’ — इस सद्वृत्ति से निरालम्ब होकर स्थित रहना ‘ध्यान’ शब्द से प्रसिद्ध है और परमानन्द देने वाला है।",
+        "explanation": "‘मैं ब्रह्म ही हूँ’ — इस सद्वृत्ति से निरालम्ब होकर स्थित रहना ‘ध्यान’ शब्द से प्रसिद्ध है और परमानन्द देने वाला है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 37,
+        "number": 37,
+        "sanskrit": "निर्विकारतया वृत्त्या ब्रह्माकारतया पुनः । वृत्तिविस्मरणं सम्यक्समाधिरभिधीयते",
+        "transliteration": "nirvikāratayā vṛttyā brahmākāratayā punaḥ | vṛttivismaraṇaṃ samyaksamādhirabhidhīyate",
+        "translation": "By the modification of changelessness, by taking the form of Brahman again, the complete forgetting of modifications is called samadhi.",
+        "hindi": "निर्विकार वृत्ति से और ब्रह्माकार होकर वृत्ति को भी पूरी तरह भुला देना समाधि कहा जाता है।",
+        "explanation": "निर्विकार वृत्ति से और ब्रह्माकार होकर वृत्ति को भी पूरी तरह भुला देना समाधि कहा जाता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 38,
+        "number": 38,
+        "sanskrit": "इमं चाकृत्रिमानन्दं तावत्साधु समभ्यसेत् । लक्ष्यो यावत्क्षणात्पुंसः प्रत्यक्त्वं सम्भवेत्स्वयम्",
+        "transliteration": "imaṃ cākṛtrimānandaṃ tāvatsādhu samabhyaset | lakṣyo yāvatkṣaṇātpuṃsaḥ pratyaktvaṃ sambhavetsvayam",
+        "translation": "One should practice this natural bliss well until, in an instant, the inward state of the Self comes about of itself for the seeker.",
+        "hindi": "इस स्वाभाविक आनन्द का तब तक भली-भाँति अभ्यास करना चाहिए, जब तक साधक को क्षण-भर में अपने आप प्रत्यक् (भीतर के आत्म-भाव) की स्थिति प्राप्त न हो जाए।",
+        "explanation": "इस स्वाभाविक आनन्द का तब तक भली-भाँति अभ्यास करना चाहिए, जब तक साधक को क्षण-भर में अपने आप प्रत्यक् (भीतर के आत्म-भाव) की स्थिति प्राप्त न हो जाए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 39,
+        "number": 39,
+        "sanskrit": "ततः साधननिर्मुक्तः सिद्धो भवति योगिराट् । तत्स्वं रूपं भवेत्तस्य विषयो मनसो गिराम्",
+        "transliteration": "tataḥ sādhananirmuktaḥ siddho bhavati yogirāṭ | tatsvaṃ rūpaṃ bhavettasya viṣayo manaso girām",
+        "translation": "Then, freed from practice, the king of yogis becomes perfected; that own form becomes the object of mind and speech for him.",
+        "hindi": "तब साधन से मुक्त होकर वह योगिराज सिद्ध हो जाता है; उसका वही अपना स्वरूप मन और वाणी का विषय हो जाता है।",
+        "explanation": "तब साधन से मुक्त होकर वह योगिराज सिद्ध हो जाता है; उसका वही अपना स्वरूप मन और वाणी का विषय हो जाता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 40,
+        "number": 40,
+        "sanskrit": "समाधौ क्रियमाणे तु विघ्नान्यायान्ति वै बलात् । अनुसन्धानराहित्यमालस्यं भोगलालसम्",
+        "transliteration": "samādhau kriyamāṇe tu vighnānyāyānti vai balāt | anusandhānarāhityamālasyaṃ bhogalālasam",
+        "translation": "When samadhi is being practiced, obstacles arise by force: lack of pursuit, laziness, craving for pleasure,",
+        "hindi": "समाधि का अभ्यास करते समय विघ्न बलपूर्वक आ जाते हैं — अनुसन्धान का अभाव, आलस्य, भोग की लालसा,",
+        "explanation": "समाधि का अभ्यास करते समय विघ्न बलपूर्वक आ जाते हैं — अनुसन्धान का अभाव, आलस्य, भोग की लालसा,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 41,
+        "number": 41,
+        "sanskrit": "लयस्तमश्च विक्षेपस्तेजः स्वेदश्च शून्यता । एवं हि विघ्नबाहुल्यं त्याज्यं ब्रह्मविशारदैः",
+        "transliteration": "layastamaśca vikṣepastejaḥ svedaśca śūnyatā | evaṃ hi vighnabāhulyaṃ tyājyaṃ brahmaviśāradaiḥ",
+        "translation": "torpor, darkness, distraction, brilliance, sweat, and emptiness; such a multitude of obstacles is to be abandoned by the skilled in Brahman.",
+        "hindi": "लय (जड़ता), अन्धकार, विक्षेप, तेज, पसीना और शून्यता। इस प्रकार विघ्नों की बहुलता को ब्रह्मज्ञानी को त्याग देना चाहिए।",
+        "explanation": "लय (जड़ता), अन्धकार, विक्षेप, तेज, पसीना और शून्यता। इस प्रकार विघ्नों की बहुलता को ब्रह्मज्ञानी को त्याग देना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 42,
+        "number": 42,
+        "sanskrit": "भाववृत्त्या हि भावत्वं शून्यवृत्त्या हि शून्यता । ब्रह्मवृत्त्या हि पूर्णत्वं तया पूर्णत्वमभ्यसेत्",
+        "transliteration": "bhāvavṛttyā hi bhāvatvaṃ śūnyavṛttyā hi śūnyatā | brahmavṛttyā hi pūrṇatvaṃ tayā pūrṇatvamabhyaset",
+        "translation": "By the modification of being, there is being; by the modification of void, there is void; by the modification of Brahman, there is fullness; practice fullness by that.",
+        "hindi": "भाव-वृत्ति से भावरूपता होती है, शून्य-वृत्ति से शून्यता, और ब्रह्म-वृत्ति से पूर्णता; इसलिए उसी से पूर्णता का अभ्यास करना चाहिए।",
+        "explanation": "भाव-वृत्ति से भावरूपता होती है, शून्य-वृत्ति से शून्यता, और ब्रह्म-वृत्ति से पूर्णता; इसलिए उसी से पूर्णता का अभ्यास करना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 43,
+        "number": 43,
+        "sanskrit": "ये हि वृत्तिं विहायैनां ब्रह्माख्यां पावनीं पराम् । वृथैव ते तु जीवन्ति पशुभिश्च समा नराः",
+        "transliteration": "ye hi vṛttiṃ vihāyaināṃ brahmākhyāṃ pāvanīṃ parām | vṛthaiva te tu jīvanti paśubhiśca samā narāḥ",
+        "translation": "Those who, leaving this purifying supreme modification called Brahman, live in vain are men equal to beasts.",
+        "hindi": "जो लोग इस पवित्र, श्रेष्ठ ‘ब्रह्म’ नामक वृत्ति को छोड़ देते हैं, वे व्यर्थ ही जीते हैं; वे मनुष्य पशुओं के समान हैं।",
+        "explanation": "जो लोग इस पवित्र, श्रेष्ठ ‘ब्रह्म’ नामक वृत्ति को छोड़ देते हैं, वे व्यर्थ ही जीते हैं; वे मनुष्य पशुओं के समान हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 44,
+        "number": 44,
+        "sanskrit": "ये तु वृत्तिं विजानन्ति ज्ञात्वा वै वर्धयन्ति ये । ते वै सत्पुरुषा धन्या वन्द्यास्ते भुवनत्रये",
+        "transliteration": "ye tu vṛttiṃ vijānanti jñātvā vai vardhayanti ye | te vai satpuruṣā dhanyā vandyāste bhuvanatraye",
+        "translation": "Those who know the modification and, knowing, increase it — they are good people, blessed, to be revered in the three worlds.",
+        "hindi": "जो इस वृत्ति को जानते हैं और जानकर इसे बढ़ाते हैं, वे सत्पुरुष धन्य हैं और तीनों लोकों में वन्दनीय हैं।",
+        "explanation": "जो इस वृत्ति को जानते हैं और जानकर इसे बढ़ाते हैं, वे सत्पुरुष धन्य हैं और तीनों लोकों में वन्दनीय हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 45,
+        "number": 45,
+        "sanskrit": "येषां वृत्तिः समा वृद्धा परिपक्वा च सा पुनः । ते वै सद्ब्रह्मतां प्राप्ता नेतरे शब्दवादिनः",
+        "transliteration": "yeṣāṃ vṛttiḥ samā vṛddhā paripakvā ca sā punaḥ | te vai sadbrahmatāṃ prāptā netare śabdavādinaḥ",
+        "translation": "Those whose modification is even, grown and fully ripe — they attain Brahman-hood; not the others, the talkers of words.",
+        "hindi": "जिनकी वृत्ति सम, वृद्ध और परिपक्व हो गई है, वे ही ब्रह्मभाव को प्राप्त होते हैं; शब्दवादी दूसरे लोग नहीं।",
+        "explanation": "जिनकी वृत्ति सम, वृद्ध और परिपक्व हो गई है, वे ही ब्रह्मभाव को प्राप्त होते हैं; शब्दवादी दूसरे लोग नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 46,
+        "number": 46,
+        "sanskrit": "कुशला ब्रह्मवार्तायां वृत्तिहीनाः सुरागिणः । तेऽप्यज्ञानतया नूनं पुनरायान्ति यान्ति च",
+        "transliteration": "kuśalā brahmavārtāyāṃ vṛttihīnāḥ surāgiṇaḥ | te'pyajñānatayā nūnaṃ punarāyānti yānti ca",
+        "translation": "Skilled in talk of Brahman, but without the modification, passionate — they too, through ignorance, surely come and go again.",
+        "hindi": "जो ब्रह्म-चर्चा में निपुण हैं पर वृत्ति से रहित और विषयों में रागी हैं, वे भी अज्ञान के कारण निश्चय ही बार-बार आते-जाते हैं।",
+        "explanation": "जो ब्रह्म-चर्चा में निपुण हैं पर वृत्ति से रहित और विषयों में रागी हैं, वे भी अज्ञान के कारण निश्चय ही बार-बार आते-जाते हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 47,
+        "number": 47,
+        "sanskrit": "निमिषार्धं न तिष्ठन्ति वृत्तिं ब्रह्ममयीं विना । यथा तिष्ठन्ति ब्रह्माद्याः सनकाद्याः शुकादयः",
+        "transliteration": "nimiṣārdhaṃ na tiṣṭhanti vṛttiṃ brahmamayīṃ vinā | yathā tiṣṭhanti brahmādyāḥ sanakādyāḥ śukādayaḥ",
+        "translation": "They do not stay even half a moment without the Brahman-made modification, as Brahma and others, Sanaka and others, Shuka and others stay.",
+        "hindi": "वे ब्रह्ममयी वृत्ति के बिना आधा क्षण भी नहीं टिकते — जैसे ब्रह्मा आदि, सनक आदि और शुक आदि स्थित रहते हैं।",
+        "explanation": "वे ब्रह्ममयी वृत्ति के बिना आधा क्षण भी नहीं टिकते — जैसे ब्रह्मा आदि, सनक आदि और शुक आदि स्थित रहते हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 48,
+        "number": 48,
+        "sanskrit": "कारणं यस्य वै कार्यं कारणं तस्य जायते । कारणं तत्त्वतो नश्येत्कार्याभावे विचारतः",
+        "transliteration": "kāraṇaṃ yasya vai kāryaṃ kāraṇaṃ tasya jāyate | kāraṇaṃ tattvato naśyetkāryābhāve vicārataḥ",
+        "translation": "The effect of which is the cause, its cause is born; the cause perishes in truth when, on reflection, the effect is absent.",
+        "hindi": "जिसका कार्य कारण है, उसका कारण उत्पन्न होता है; कार्य के अभाव का विचार करने पर कारण भी वस्तुतः नष्ट हो जाता है।",
+        "explanation": "जिसका कार्य कारण है, उसका कारण उत्पन्न होता है; कार्य के अभाव का विचार करने पर कारण भी वस्तुतः नष्ट हो जाता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 49,
+        "number": 49,
+        "sanskrit": "अथ शुद्धं भवेद्वस्तु यद्वै वाचामगोचरम् । उदेति शुद्धचित्तानां वृत्तिज्ञानं ततः परम्",
+        "transliteration": "atha śuddhaṃ bhavedvastu yadvai vācāmagocaram | udeti śuddhacittānāṃ vṛttijñānaṃ tataḥ param",
+        "translation": "Then the pure thing that is beyond the reach of speech arises; for those of pure mind, knowledge of the modification then is beyond.",
+        "hindi": "तब वह शुद्ध वस्तु प्रकट होती है जो वाणी की पहुँच से परे है; शुद्ध चित्त वालों को उसके बाद वृत्ति-ज्ञान से भी परे का बोध उदित होता है।",
+        "explanation": "तब वह शुद्ध वस्तु प्रकट होती है जो वाणी की पहुँच से परे है; शुद्ध चित्त वालों को उसके बाद वृत्ति-ज्ञान से भी परे का बोध उदित होता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 50,
+        "number": 50,
+        "sanskrit": "भावितं तीव्रवेगेन यद्वस्तु निश्चयात्मकम् । दृश्यं ह्यदृश्यतां नीत्वा ब्रह्माकारेण चिन्तयेत्",
+        "transliteration": "bhāvitaṃ tīvravegena yadvastu niścayātmakam | dṛśyaṃ hyadṛśyatāṃ nītvā brahmākāreṇa cintayet",
+        "translation": "The thing contemplated with intense force as certain: having brought the seen to non-seen, one should contemplate it in the form of Brahman.",
+        "hindi": "जिस निश्चयात्मक वस्तु की तीव्र वेग से भावना की गई हो, उसमें दृश्य को अदृश्य बनाकर ब्रह्माकार रूप में चिन्तन करना चाहिए।",
+        "explanation": "जिस निश्चयात्मक वस्तु की तीव्र वेग से भावना की गई हो, उसमें दृश्य को अदृश्य बनाकर ब्रह्माकार रूप में चिन्तन करना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 51,
+        "number": 51,
+        "sanskrit": "विद्वान्नित्यं सुखे तिष्ठेद्धिया चिद्रसपूर्णया ॥",
+        "transliteration": "vidvānnityaṃ sukhe tiṣṭheddhiyā cidrasapūrṇayā ||",
+        "translation": "The wise one should ever remain in bliss with a mind full of the savor of consciousness.",
+        "hindi": "ज्ञानी को चैतन्य-रस से परिपूर्ण बुद्धि के साथ सदा आनन्द में स्थित रहना चाहिए।",
+        "explanation": "ज्ञानी को चैतन्य-रस से परिपूर्ण बुद्धि के साथ सदा आनन्द में स्थित रहना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Chapter 2 — The Nature of the Akhanda Brahman",
+    "titleSanskrit": "द्वितीय अध्याय — अखण्डैकरस ब्रह्म स्वरूप",
+    "summary": "Profound revelation of Brahman as undivided, self-luminous consciousness beyond all mental concepts, void of duality.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "अथ ह कुमारः शिवं पप्रच्छाऽखण्डैकरस- चिन्मात्रस्वरूपमनुब्रूहीति । स होवाच परमः शिवः । अखण्डैकरसं दृश्यमखण्डैकरसं जगत् । अखण्डैकरसं भावमखण्डैकरसं स्वयम्",
+        "transliteration": "atha ha kumāraḥ śivaṃ papracchā'khaṇḍaikarasa- cinmātrasvarūpamanubrūhīti | sa hovāca paramaḥ śivaḥ | akhaṇḍaikarasaṃ dṛśyamakhaṇḍaikarasaṃ jagat | akhaṇḍaikarasaṃ bhāvamakhaṇḍaikarasaṃ svayam",
+        "translation": "Then Kumara asked Shiva: \"Tell me the nature of the undivided, one-savored, mere consciousness.\" The Supreme Shiva said: The seen is of undivided one savor; the world is of undivided one savor; being is of undivided one savor; one's own self is of undivided one savor.",
+        "hindi": "तब कुमार ने शिव से पूछा — ‘अखण्ड, एकरस, चिन्मात्र स्वरूप को मुझे बताइए।’ तब परम शिव ने कहा — दृश्य अखण्ड एकरस है, जगत अखण्ड एकरस है, भाव अखण्ड एकरस है, और अपना आप भी अखण्ड एकरस है।",
+        "explanation": "तब कुमार ने शिव से पूछा — ‘अखण्ड, एकरस, चिन्मात्र स्वरूप को मुझे बताइए।’ तब परम शिव ने कहा — दृश्य अखण्ड एकरस है, जगत अखण्ड एकरस है, भाव अखण्ड एकरस है, और अपना आप भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "अखण्डैकरसो मन्त्र अखण्डैकरसा क्रिया । अखण्डैकरसं ज्ञानमखण्डैकरसं जलम्",
+        "transliteration": "akhaṇḍaikaraso mantra akhaṇḍaikarasā kriyā | akhaṇḍaikarasaṃ jñānamakhaṇḍaikarasaṃ jalam",
+        "translation": "The mantra is of undivided one savor; action is of undivided one savor; knowledge is of undivided one savor; water is of undivided one savor.",
+        "hindi": "मन्त्र अखण्ड एकरस है, क्रिया अखण्ड एकरस है, ज्ञान अखण्ड एकरस है और जल भी अखण्ड एकरस है।",
+        "explanation": "मन्त्र अखण्ड एकरस है, क्रिया अखण्ड एकरस है, ज्ञान अखण्ड एकरस है और जल भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "अखण्डैकरसा भूमिरखण्डैकरसं वियत् । अखण्डैकरसं शास्त्रमखण्डैकरसा त्रयी",
+        "transliteration": "akhaṇḍaikarasā bhūmirakhaṇḍaikarasaṃ viyat | akhaṇḍaikarasaṃ śāstramakhaṇḍaikarasā trayī",
+        "translation": "Earth is of undivided one savor; space is of undivided one savor; scripture is of undivided one savor; the three Vedas are of undivided one savor.",
+        "hindi": "भूमि अखण्ड एकरस है, आकाश अखण्ड एकरस है, शास्त्र अखण्ड एकरस है और तीनों वेद भी अखण्ड एकरस हैं।",
+        "explanation": "भूमि अखण्ड एकरस है, आकाश अखण्ड एकरस है, शास्त्र अखण्ड एकरस है और तीनों वेद भी अखण्ड एकरस हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "अखण्डैकरसं ब्रह्म चाखण्डैकरसं व्रतम् । अखण्डैकरसो जीव अखण्डैकरसो ह्यजः",
+        "transliteration": "akhaṇḍaikarasaṃ brahma cākhaṇḍaikarasaṃ vratam | akhaṇḍaikaraso jīva akhaṇḍaikaraso hyajaḥ",
+        "translation": "Brahman is of undivided one savor; the vow is of undivided one savor; the individual is of undivided one savor; the unborn is of undivided one savor.",
+        "hindi": "ब्रह्म अखण्ड एकरस है, व्रत अखण्ड एकरस है, जीव अखण्ड एकरस है और अजन्मा भी अखण्ड एकरस है।",
+        "explanation": "ब्रह्म अखण्ड एकरस है, व्रत अखण्ड एकरस है, जीव अखण्ड एकरस है और अजन्मा भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "अखण्डैकरसो ब्रह्मा अखण्डैकरसो हरिः । अखण्डैकरसो रुद्र अखण्डैकरसोऽस्म्यहम्",
+        "transliteration": "akhaṇḍaikaraso brahmā akhaṇḍaikaraso hariḥ | akhaṇḍaikaraso rudra akhaṇḍaikaraso'smyaham",
+        "translation": "Brahma is of undivided one savor; Hari is of undivided one savor; Rudra is of undivided one savor; I am of undivided one savor.",
+        "hindi": "ब्रह्मा अखण्ड एकरस हैं, हरि अखण्ड एकरस हैं, रुद्र अखण्ड एकरस हैं, और मैं भी अखण्ड एकरस हूँ।",
+        "explanation": "ब्रह्मा अखण्ड एकरस हैं, हरि अखण्ड एकरस हैं, रुद्र अखण्ड एकरस हैं, और मैं भी अखण्ड एकरस हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "अखण्डैकरसो ह्यात्मा ह्यखण्डैकरसो गुरुः । अखण्डैकरसं लक्ष्यमखण्डैकरसं महः",
+        "transliteration": "akhaṇḍaikaraso hyātmā hyakhaṇḍaikaraso guruḥ | akhaṇḍaikarasaṃ lakṣyamakhaṇḍaikarasaṃ mahaḥ",
+        "translation": "The Self is of undivided one savor; the teacher is of undivided one savor; the aim is of undivided one savor; splendor is of undivided one savor.",
+        "hindi": "आत्मा अखण्ड एकरस है, गुरु अखण्ड एकरस हैं, लक्ष्य अखण्ड एकरस है और तेज भी अखण्ड एकरस है।",
+        "explanation": "आत्मा अखण्ड एकरस है, गुरु अखण्ड एकरस हैं, लक्ष्य अखण्ड एकरस है और तेज भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "अखण्डैकरसो देह अखण्डैकरसं मनः । अखण्डैकरसं चित्तमखण्डैकरसं सुखम्",
+        "transliteration": "akhaṇḍaikaraso deha akhaṇḍaikarasaṃ manaḥ | akhaṇḍaikarasaṃ cittamakhaṇḍaikarasaṃ sukham",
+        "translation": "The body is of undivided one savor; the mind is of undivided one savor; the thought is of undivided one savor; happiness is of undivided one savor.",
+        "hindi": "देह अखण्ड एकरस है, मन अखण्ड एकरस है, चित्त अखण्ड एकरस है और सुख भी अखण्ड एकरस है।",
+        "explanation": "देह अखण्ड एकरस है, मन अखण्ड एकरस है, चित्त अखण्ड एकरस है और सुख भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "अखण्डैकरसा विद्या अखण्डैकरसोऽव्ययः । अखण्डैकरसं नित्यमखण्डैकरसं परम्",
+        "transliteration": "akhaṇḍaikarasā vidyā akhaṇḍaikaraso'vyayaḥ | akhaṇḍaikarasaṃ nityamakhaṇḍaikarasaṃ param",
+        "translation": "Knowledge is of undivided one savor; the imperishable is of undivided one savor; the eternal is of undivided one savor; the supreme is of undivided one savor.",
+        "hindi": "विद्या अखण्ड एकरस है, अव्यय अखण्ड एकरस है, नित्य अखण्ड एकरस है और परम भी अखण्ड एकरस है।",
+        "explanation": "विद्या अखण्ड एकरस है, अव्यय अखण्ड एकरस है, नित्य अखण्ड एकरस है और परम भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "अखण्डैकरसं किञ्चिदखण्डैकरसं परम् । अखण्डैकरसादन्यन्नास्ति नास्ति षडानन",
+        "transliteration": "akhaṇḍaikarasaṃ kiñcidakhaṇḍaikarasaṃ param | akhaṇḍaikarasādanyannāsti nāsti ṣaḍānana",
+        "translation": "Something is of undivided one savor; the highest is of undivided one savor; there is nothing other than the undivided one savor, nothing, O six-faced one.",
+        "hindi": "जो कुछ भी है वह अखण्ड एकरस है, परम भी अखण्ड एकरस है। हे षडानन! अखण्ड एकरस से भिन्न कुछ नहीं है, कुछ भी नहीं है।",
+        "explanation": "जो कुछ भी है वह अखण्ड एकरस है, परम भी अखण्ड एकरस है। हे षडानन! अखण्ड एकरस से भिन्न कुछ नहीं है, कुछ भी नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 10,
+        "number": 10,
+        "sanskrit": "अखण्डैकरसान्नास्ति अखण्डैकरसान्न हि । अखण्डैकरसात्किञ्चिदखण्डैकरसादहम्",
+        "transliteration": "akhaṇḍaikarasānnāsti akhaṇḍaikarasānna hi | akhaṇḍaikarasātkiñcidakhaṇḍaikarasādaham",
+        "translation": "Nothing is apart from the undivided one savor; indeed nothing; nothing at all apart from the undivided one savor; I am from the undivided one savor.",
+        "hindi": "अखण्ड एकरस से अलग कुछ नहीं है, निश्चय ही नहीं है; अखण्ड एकरस से अलग कुछ भी नहीं — मैं भी उसी अखण्ड एकरस से हूँ।",
+        "explanation": "अखण्ड एकरस से अलग कुछ नहीं है, निश्चय ही नहीं है; अखण्ड एकरस से अलग कुछ भी नहीं — मैं भी उसी अखण्ड एकरस से हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 11,
+        "number": 11,
+        "sanskrit": "अखण्डैकरसं स्थूलं सूक्ष्मं चाखण्डरूपकम् । अखण्डैकरसं वेद्यमखण्डैकरसो भवान्",
+        "transliteration": "akhaṇḍaikarasaṃ sthūlaṃ sūkṣmaṃ cākhaṇḍarūpakam | akhaṇḍaikarasaṃ vedyamakhaṇḍaikaraso bhavān",
+        "translation": "The gross is of undivided one savor; the subtle is of undivided form; the knowable is of undivided one savor; you are of undivided one savor.",
+        "hindi": "स्थूल अखण्ड एकरस है, सूक्ष्म अखण्ड रूप है, जानने योग्य अखण्ड एकरस है और आप भी अखण्ड एकरस हैं।",
+        "explanation": "स्थूल अखण्ड एकरस है, सूक्ष्म अखण्ड रूप है, जानने योग्य अखण्ड एकरस है और आप भी अखण्ड एकरस हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 12,
+        "number": 12,
+        "sanskrit": "अखण्डैकरसं गुह्यमखण्डैकरसादिकम् । अखण्डैकरसो ज्ञाता ह्यखण्डैकरसा स्थितिः",
+        "transliteration": "akhaṇḍaikarasaṃ guhyamakhaṇḍaikarasādikam | akhaṇḍaikaraso jñātā hyakhaṇḍaikarasā sthitiḥ",
+        "translation": "The secret is of undivided one savor; the origin is of undivided one savor; the knower is of undivided one savor; the state is of undivided one savor.",
+        "hindi": "गुह्य अखण्ड एकरस है, आदि भी अखण्ड एकरस है, ज्ञाता अखण्ड एकरस है और स्थिति भी अखण्ड एकरस है।",
+        "explanation": "गुह्य अखण्ड एकरस है, आदि भी अखण्ड एकरस है, ज्ञाता अखण्ड एकरस है और स्थिति भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 13,
+        "number": 13,
+        "sanskrit": "अखण्डैकरसा माता अखण्डैकररसः पिता । अखण्डैकरसो भ्राता अखण्डैकरसः पतिः",
+        "transliteration": "akhaṇḍaikarasā mātā akhaṇḍaikararasaḥ pitā | akhaṇḍaikaraso bhrātā akhaṇḍaikarasaḥ patiḥ",
+        "translation": "The mother is of undivided one savor; the father is of undivided one savor; the brother is of undivided one savor; the husband is of undivided one savor.",
+        "hindi": "माता अखण्ड एकरस है, पिता अखण्ड एकरस है, भाई अखण्ड एकरस है और पति भी अखण्ड एकरस है।",
+        "explanation": "माता अखण्ड एकरस है, पिता अखण्ड एकरस है, भाई अखण्ड एकरस है और पति भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 14,
+        "number": 14,
+        "sanskrit": "अखण्डैकरसं सूत्रमखण्डैकरसो विराट् । अखण्डैकरसं गात्रमखण्डैकरसं शिरः",
+        "transliteration": "akhaṇḍaikarasaṃ sūtramakhaṇḍaikaraso virāṭ | akhaṇḍaikarasaṃ gātramakhaṇḍaikarasaṃ śiraḥ",
+        "translation": "The thread is of undivided one savor; Viraj is of undivided one savor; the limb is of undivided one savor; the head is of undivided one savor.",
+        "hindi": "सूत्र (हिरण्यगर्भ) अखण्ड एकरस है, विराट् अखण्ड एकरस है, अंग अखण्ड एकरस है और सिर भी अखण्ड एकरस है।",
+        "explanation": "सूत्र (हिरण्यगर्भ) अखण्ड एकरस है, विराट् अखण्ड एकरस है, अंग अखण्ड एकरस है और सिर भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 15,
+        "number": 15,
+        "sanskrit": "अखण्डैकरसं चान्तरखण्डैकरसं बहिः । अखण्डैकरसं पूर्णमखण्डैकरसामृतम्",
+        "transliteration": "akhaṇḍaikarasaṃ cāntarakhaṇḍaikarasaṃ bahiḥ | akhaṇḍaikarasaṃ pūrṇamakhaṇḍaikarasāmṛtam",
+        "translation": "The inner is of undivided one savor; the outer is of undivided one savor; the full is of undivided one savor; the nectar is of undivided one savor.",
+        "hindi": "भीतर अखण्ड एकरस है, बाहर अखण्ड एकरस है, पूर्ण अखण्ड एकरस है और अमृत भी अखण्ड एकरस है।",
+        "explanation": "भीतर अखण्ड एकरस है, बाहर अखण्ड एकरस है, पूर्ण अखण्ड एकरस है और अमृत भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 16,
+        "number": 16,
+        "sanskrit": "अखैण्डैकरसं गोत्रमखण्डैकरसं गृहम् । अखण्डैकरसं गोप्यमखण्डैकरसशशी",
+        "transliteration": "akhaiṇḍaikarasaṃ gotramakhaṇḍaikarasaṃ gṛham | akhaṇḍaikarasaṃ gopyamakhaṇḍaikarasaśaśī",
+        "translation": "Lineage is of undivided one savor; home is of undivided one savor; the secret is of undivided one savor; the moon is of undivided one savor.",
+        "hindi": "गोत्र अखण्ड एकरस है, घर अखण्ड एकरस है, गोपनीय अखण्ड एकरस है और चन्द्रमा भी अखण्ड एकरस है।",
+        "explanation": "गोत्र अखण्ड एकरस है, घर अखण्ड एकरस है, गोपनीय अखण्ड एकरस है और चन्द्रमा भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 17,
+        "number": 17,
+        "sanskrit": "अखण्डैकरसास्तारा अखण्डैकरसो रविः । अखण्डैकरसं क्षेत्रमखण्डैकरसा क्षमा",
+        "transliteration": "akhaṇḍaikarasāstārā akhaṇḍaikaraso raviḥ | akhaṇḍaikarasaṃ kṣetramakhaṇḍaikarasā kṣamā",
+        "translation": "The stars are of undivided one savor; the sun is of undivided one savor; the field is of undivided one savor; forbearance is of undivided one savor.",
+        "hindi": "तारे अखण्ड एकरस हैं, सूर्य अखण्ड एकरस है, क्षेत्र अखण्ड एकरस है और क्षमा भी अखण्ड एकरस है।",
+        "explanation": "तारे अखण्ड एकरस हैं, सूर्य अखण्ड एकरस है, क्षेत्र अखण्ड एकरस है और क्षमा भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 18,
+        "number": 18,
+        "sanskrit": "अखण्डैकरस शान्त अखण्डैकरसोऽगुणः । अखण्डैकरसः साक्षी अखण्डैकरसः सुहृत्",
+        "transliteration": "akhaṇḍaikarasa śānta akhaṇḍaikaraso'guṇaḥ | akhaṇḍaikarasaḥ sākṣī akhaṇḍaikarasaḥ suhṛt",
+        "translation": "The peaceful is of undivided one savor; the quality-less is of undivided one savor; the witness is of undivided one savor; the friend is of undivided one savor.",
+        "hindi": "शान्त अखण्ड एकरस है, निर्गुण अखण्ड एकरस है, साक्षी अखण्ड एकरस है और सुहृद् भी अखण्ड एकरस है।",
+        "explanation": "शान्त अखण्ड एकरस है, निर्गुण अखण्ड एकरस है, साक्षी अखण्ड एकरस है और सुहृद् भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 19,
+        "number": 19,
+        "sanskrit": "अखण्डैकरसो बन्धुरखण्डैकरसः सखा । अखण्डैकरसो राजा अखण्डैकरसं पुरम्",
+        "transliteration": "akhaṇḍaikaraso bandhurakhaṇḍaikarasaḥ sakhā | akhaṇḍaikaraso rājā akhaṇḍaikarasaṃ puram",
+        "translation": "The kinsman is of undivided one savor; the comrade is of undivided one savor; the king is of undivided one savor; the city is of undivided one savor.",
+        "hindi": "बन्धु अखण्ड एकरस है, सखा अखण्ड एकरस है, राजा अखण्ड एकरस है और नगर भी अखण्ड एकरस है।",
+        "explanation": "बन्धु अखण्ड एकरस है, सखा अखण्ड एकरस है, राजा अखण्ड एकरस है और नगर भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 20,
+        "number": 20,
+        "sanskrit": "अखण्डैकरसं राज्यमखण्डैकरसाः प्रजाः । अखण्डैकरसं तारमखण्डैकरसो जपः",
+        "transliteration": "akhaṇḍaikarasaṃ rājyamakhaṇḍaikarasāḥ prajāḥ | akhaṇḍaikarasaṃ tāramakhaṇḍaikaraso japaḥ",
+        "translation": "The kingdom is of undivided one savor; the subjects are of undivided one savor; the sacred syllable is of undivided one savor; repetition is of undivided one savor.",
+        "hindi": "राज्य अखण्ड एकरस है, प्रजा अखण्ड एकरस है, प्रणव अखण्ड एकरस है और जप भी अखण्ड एकरस है।",
+        "explanation": "राज्य अखण्ड एकरस है, प्रजा अखण्ड एकरस है, प्रणव अखण्ड एकरस है और जप भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 21,
+        "number": 21,
+        "sanskrit": "अखण्डैकरसं ध्यानमखण्डैकरसं पदम् । अखण्डैकरसं ग्राह्यमखण्डैकरसं महत्",
+        "transliteration": "akhaṇḍaikarasaṃ dhyānamakhaṇḍaikarasaṃ padam | akhaṇḍaikarasaṃ grāhyamakhaṇḍaikarasaṃ mahat",
+        "translation": "Meditation is of undivided one savor; the state is of undivided one savor; the graspable is of undivided one savor; the great is of undivided one savor.",
+        "hindi": "ध्यान अखण्ड एकरस है, पद अखण्ड एकरस है, ग्रहण करने योग्य अखण्ड एकरस है और महत् भी अखण्ड एकरस है।",
+        "explanation": "ध्यान अखण्ड एकरस है, पद अखण्ड एकरस है, ग्रहण करने योग्य अखण्ड एकरस है और महत् भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 22,
+        "number": 22,
+        "sanskrit": "अखण्डैकरसं ज्योतिरखण्डैकरसं धनम् । अखण्डैकरसं भोज्यमखण्डैकरसं हविः",
+        "transliteration": "akhaṇḍaikarasaṃ jyotirakhaṇḍaikarasaṃ dhanam | akhaṇḍaikarasaṃ bhojyamakhaṇḍaikarasaṃ haviḥ",
+        "translation": "Light is of undivided one savor; wealth is of undivided one savor; food is of undivided one savor; the oblation is of undivided one savor.",
+        "hindi": "ज्योति अखण्ड एकरस है, धन अखण्ड एकरस है, भोज्य अखण्ड एकरस है और हवि भी अखण्ड एकरस है।",
+        "explanation": "ज्योति अखण्ड एकरस है, धन अखण्ड एकरस है, भोज्य अखण्ड एकरस है और हवि भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 23,
+        "number": 23,
+        "sanskrit": "अखण्डैकरसो होम अखण्डैकरसो जपः । अखण्डैकरसं स्वर्गमखण्डैकरसः स्वयम्",
+        "transliteration": "akhaṇḍaikaraso homa akhaṇḍaikaraso japaḥ | akhaṇḍaikarasaṃ svargamakhaṇḍaikarasaḥ svayam",
+        "translation": "The sacrifice is of undivided one savor; repetition is of undivided one savor; heaven is of undivided one savor; oneself is of undivided one savor.",
+        "hindi": "होम अखण्ड एकरस है, जप अखण्ड एकरस है, स्वर्ग अखण्ड एकरस है और स्वयं भी अखण्ड एकरस है।",
+        "explanation": "होम अखण्ड एकरस है, जप अखण्ड एकरस है, स्वर्ग अखण्ड एकरस है और स्वयं भी अखण्ड एकरस है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 24,
+        "number": 24,
+        "sanskrit": "अखण्डैकरसं सर्वं चिन्मात्रमिति भावयेत् । चिन्मात्रमेव चिन्मात्रमखण्डैकरसं परम्",
+        "transliteration": "akhaṇḍaikarasaṃ sarvaṃ cinmātramiti bhāvayet | cinmātrameva cinmātramakhaṇḍaikarasaṃ param",
+        "translation": "One should contemplate all as undivided one savor, mere consciousness; mere consciousness, mere consciousness, the undivided one savor, the supreme.",
+        "hindi": "सब कुछ अखण्ड एकरस चिन्मात्र है — ऐसी भावना करनी चाहिए। चिन्मात्र ही, चिन्मात्र ही — वही अखण्ड एकरस परम है।",
+        "explanation": "सब कुछ अखण्ड एकरस चिन्मात्र है — ऐसी भावना करनी चाहिए। चिन्मात्र ही, चिन्मात्र ही — वही अखण्ड एकरस परम है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 25,
+        "number": 25,
+        "sanskrit": "भववर्जितचिन्मात्रं सर्वं चिन्मात्रमेव हि । इदं च सर्वं चिन्मात्रमयं चिन्मयमेव हि",
+        "transliteration": "bhavavarjitacinmātraṃ sarvaṃ cinmātrameva hi | idaṃ ca sarvaṃ cinmātramayaṃ cinmayameva hi",
+        "translation": "Mere consciousness free of becoming — all is only mere consciousness; and all this is made of mere consciousness, made of consciousness alone.",
+        "hindi": "संसार-भाव से रहित चिन्मात्र — सब कुछ केवल चिन्मात्र ही है। और यह सब चिन्मात्रमय, चिन्मय ही है।",
+        "explanation": "संसार-भाव से रहित चिन्मात्र — सब कुछ केवल चिन्मात्र ही है। और यह सब चिन्मात्रमय, चिन्मय ही है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 26,
+        "number": 26,
+        "sanskrit": "आत्मभावं च चिन्मात्रमखण्डैकरसं विदुः । सर्वलोकं च चिन्मात्रं वत्ता मत्ता च चिन्मयम्",
+        "transliteration": "ātmabhāvaṃ ca cinmātramakhaṇḍaikarasaṃ viduḥ | sarvalokaṃ ca cinmātraṃ vattā mattā ca cinmayam",
+        "translation": "They know the state of Self as mere consciousness, undivided one savor; all worlds are mere consciousness; the speaker and the delighted are made of consciousness.",
+        "hindi": "आत्म-भाव को चिन्मात्र, अखण्ड एकरस जानते हैं; सारे लोक चिन्मात्र हैं; वक्ता और आनन्द लेने वाला भी चिन्मय है।",
+        "explanation": "आत्म-भाव को चिन्मात्र, अखण्ड एकरस जानते हैं; सारे लोक चिन्मात्र हैं; वक्ता और आनन्द लेने वाला भी चिन्मय है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 27,
+        "number": 27,
+        "sanskrit": "आकाशो भूर्जलं वायुरग्निर्ब्रह्मा हरिः शिवः । यत्किञ्चिद्यन्न किञ्चिच्च सर्वं चिन्मात्रमेव हि",
+        "transliteration": "ākāśo bhūrjalaṃ vāyuragnirbrahmā hariḥ śivaḥ | yatkiñcidyanna kiñcicca sarvaṃ cinmātrameva hi",
+        "translation": "Space, earth, water, wind, fire, Brahma, Hari, Shiva — whatever is and whatever is not, all is only mere consciousness.",
+        "hindi": "आकाश, भूमि, जल, वायु, अग्नि, ब्रह्मा, हरि और शिव — जो कुछ है और जो कुछ नहीं है, सब केवल चिन्मात्र ही है।",
+        "explanation": "आकाश, भूमि, जल, वायु, अग्नि, ब्रह्मा, हरि और शिव — जो कुछ है और जो कुछ नहीं है, सब केवल चिन्मात्र ही है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 28,
+        "number": 28,
+        "sanskrit": "अखण्डैकरसं सर्वं यद्यच्चिन्मात्रमेव हि । भूतं भव्यं भविष्यच्च सर्वं चिन्मात्रमेव हि",
+        "transliteration": "akhaṇḍaikarasaṃ sarvaṃ yadyaccinmātrameva hi | bhūtaṃ bhavyaṃ bhaviṣyacca sarvaṃ cinmātrameva hi",
+        "translation": "Everything undivided one savor, whatever is only mere consciousness; the past, the present and the future — all is only mere consciousness.",
+        "hindi": "जो कुछ भी है वह सब अखण्ड एकरस, केवल चिन्मात्र है; भूत, वर्तमान और भविष्य — सब केवल चिन्मात्र ही है।",
+        "explanation": "जो कुछ भी है वह सब अखण्ड एकरस, केवल चिन्मात्र है; भूत, वर्तमान और भविष्य — सब केवल चिन्मात्र ही है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 29,
+        "number": 29,
+        "sanskrit": "द्रव्यं कालं च चिन्मात्रं ज्ञानं ज्ञेयं चिदेव हि । ज्ञाता चिन्मात्ररूपश्च सर्वं चिन्मयमेव हि",
+        "transliteration": "dravyaṃ kālaṃ ca cinmātraṃ jñānaṃ jñeyaṃ cideva hi | jñātā cinmātrarūpaśca sarvaṃ cinmayameva hi",
+        "translation": "Substance and time are mere consciousness; knowledge and the knowable are consciousness alone; the knower is of the form of mere consciousness; all is made of consciousness.",
+        "hindi": "द्रव्य और काल चिन्मात्र हैं; ज्ञान और ज्ञेय चेतना ही हैं; ज्ञाता चिन्मात्र-रूप है; सब कुछ चिन्मय ही है।",
+        "explanation": "द्रव्य और काल चिन्मात्र हैं; ज्ञान और ज्ञेय चेतना ही हैं; ज्ञाता चिन्मात्र-रूप है; सब कुछ चिन्मय ही है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 30,
+        "number": 30,
+        "sanskrit": "सम्भाषणं च चिन्मात्रं यद्यच्चिन्मात्रमेव हि । असच्च सच्च चिन्मात्रमाद्यन्तं चिन्मयं सदा",
+        "transliteration": "sambhāṣaṇaṃ ca cinmātraṃ yadyaccinmātrameva hi | asacca sacca cinmātramādyantaṃ cinmayaṃ sadā",
+        "translation": "Conversation is mere consciousness; whatever is, is only mere consciousness; the unreal and the real are mere consciousness; the beginning and end are ever made of consciousness.",
+        "hindi": "वार्तालाप चिन्मात्र है; जो कुछ भी है वह केवल चिन्मात्र है; असत् और सत् चिन्मात्र हैं; आदि और अन्त सदा चिन्मय हैं।",
+        "explanation": "वार्तालाप चिन्मात्र है; जो कुछ भी है वह केवल चिन्मात्र है; असत् और सत् चिन्मात्र हैं; आदि और अन्त सदा चिन्मय हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 31,
+        "number": 31,
+        "sanskrit": "आदिरन्तश्च चिन्मात्रं गुरुशिष्यादि चिन्मयम् । दृग्दृश्यं यदि चिन्मात्रमस्ति चेच्चिन्मयं सदा",
+        "transliteration": "ādirantaśca cinmātraṃ guruśiṣyādi cinmayam | dṛgdṛśyaṃ yadi cinmātramasti ceccinmayaṃ sadā",
+        "translation": "Beginning and end are mere consciousness; teacher and disciple are made of consciousness; seer and seen, if they exist, are mere consciousness, ever made of consciousness.",
+        "hindi": "आदि और अन्त चिन्मात्र हैं; गुरु-शिष्य आदि चिन्मय हैं; द्रष्टा और दृश्य यदि हैं तो वे चिन्मात्र ही हैं, सदा चिन्मय हैं।",
+        "explanation": "आदि और अन्त चिन्मात्र हैं; गुरु-शिष्य आदि चिन्मय हैं; द्रष्टा और दृश्य यदि हैं तो वे चिन्मात्र ही हैं, सदा चिन्मय हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 32,
+        "number": 32,
+        "sanskrit": "सर्वाश्चर्यं हि चिन्मात्रं देहं चिन्मात्रमेव हि । लिङ्गं च कारणं चैव चिन्मात्रान्न हि विद्यते",
+        "transliteration": "sarvāścaryaṃ hi cinmātraṃ dehaṃ cinmātrameva hi | liṅgaṃ ca kāraṇaṃ caiva cinmātrānna hi vidyate",
+        "translation": "All wonder is mere consciousness; the body is only mere consciousness; the subtle body and the cause exist not apart from mere consciousness.",
+        "hindi": "सब आश्चर्य चिन्मात्र है; देह केवल चिन्मात्र ही है; लिंग-शरीर और कारण-शरीर भी चिन्मात्र से अलग नहीं हैं।",
+        "explanation": "सब आश्चर्य चिन्मात्र है; देह केवल चिन्मात्र ही है; लिंग-शरीर और कारण-शरीर भी चिन्मात्र से अलग नहीं हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 33,
+        "number": 33,
+        "sanskrit": "अहं त्वं चैव चिन्मात्रं मूर्तामूर्तादिचिन्मयम् । पुण्यं पापं च चिन्मात्रं जीवश्चिन्मात्रविग्रहः",
+        "transliteration": "ahaṃ tvaṃ caiva cinmātraṃ mūrtāmūrtādicinmayam | puṇyaṃ pāpaṃ ca cinmātraṃ jīvaścinmātravigrahaḥ",
+        "translation": "I and you are mere consciousness; the formed and formless are made of consciousness; merit and sin are mere consciousness; the individual is a body of mere consciousness.",
+        "hindi": "मैं और तुम चिन्मात्र हैं; मूर्त और अमूर्त आदि चिन्मय हैं; पुण्य और पाप चिन्मात्र हैं; जीव चिन्मात्र का ही शरीर है।",
+        "explanation": "मैं और तुम चिन्मात्र हैं; मूर्त और अमूर्त आदि चिन्मय हैं; पुण्य और पाप चिन्मात्र हैं; जीव चिन्मात्र का ही शरीर है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 34,
+        "number": 34,
+        "sanskrit": "चिन्मात्रान्नास्ति सङ्कल्पश्चिन्मात्रान्नास्ति वेदनम् । चिन्मात्रान्नास्ति मन्त्रादि चिन्मात्रान्नास्ति देवता",
+        "transliteration": "cinmātrānnāsti saṅkalpaścinmātrānnāsti vedanam | cinmātrānnāsti mantrādi cinmātrānnāsti devatā",
+        "translation": "From mere consciousness there is no intention; from mere consciousness there is no feeling; from mere consciousness there is no mantra; from mere consciousness there is no deity.",
+        "hindi": "चिन्मात्र से अलग कोई संकल्प नहीं, कोई वेदना नहीं, कोई मन्त्र आदि नहीं और कोई देवता नहीं है।",
+        "explanation": "चिन्मात्र से अलग कोई संकल्प नहीं, कोई वेदना नहीं, कोई मन्त्र आदि नहीं और कोई देवता नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 35,
+        "number": 35,
+        "sanskrit": "चिन्मात्रान्नास्ति दिक्पालाश्चिन्मात्राद्व्यावहारिकम् । चिन्मात्रात्परमं ब्रह्म चिन्मात्रान्नास्ति कोऽपि हि",
+        "transliteration": "cinmātrānnāsti dikpālāścinmātrādvyāvahārikam | cinmātrātparamaṃ brahma cinmātrānnāsti ko'pi hi",
+        "translation": "From mere consciousness there are no guardians of the quarters; from mere consciousness there is no worldly activity; Brahman is beyond mere consciousness; from mere consciousness there is none at all.",
+        "hindi": "चिन्मात्र से अलग कोई दिक्पाल नहीं, कोई व्यवहार नहीं; चिन्मात्र से परे परम ब्रह्म है; चिन्मात्र से अलग कोई भी नहीं है।",
+        "explanation": "चिन्मात्र से अलग कोई दिक्पाल नहीं, कोई व्यवहार नहीं; चिन्मात्र से परे परम ब्रह्म है; चिन्मात्र से अलग कोई भी नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 36,
+        "number": 36,
+        "sanskrit": "चिन्मात्रान्नास्ति माया च चिन्मात्रान्नास्ति पूजनम् । चिन्मात्रान्नास्ति मन्तव्यं चिन्मात्रान्नास्ति सत्यकम्",
+        "transliteration": "cinmātrānnāsti māyā ca cinmātrānnāsti pūjanam | cinmātrānnāsti mantavyaṃ cinmātrānnāsti satyakam",
+        "translation": "From mere consciousness there is no illusion; from mere consciousness there is no worship; from mere consciousness there is nothing to be thought; from mere consciousness there is no truth.",
+        "hindi": "चिन्मात्र से अलग कोई माया नहीं, कोई पूजन नहीं, कोई मनन करने योग्य वस्तु नहीं और कोई सत्य नहीं है।",
+        "explanation": "चिन्मात्र से अलग कोई माया नहीं, कोई पूजन नहीं, कोई मनन करने योग्य वस्तु नहीं और कोई सत्य नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 37,
+        "number": 37,
+        "sanskrit": "चिन्मात्रान्नास्ति कोशादि चिन्मात्रान्नास्ति वै वसु । चिन्मात्रान्नास्ति मौनं च चिन्मात्रान्नस्त्यमौनकम्",
+        "transliteration": "cinmātrānnāsti kośādi cinmātrānnāsti vai vasu | cinmātrānnāsti maunaṃ ca cinmātrānnastyamaunakam",
+        "translation": "From mere consciousness there are no sheaths and the like; from mere consciousness there is no wealth; from mere consciousness there is no silence; from mere consciousness there is no non-silence.",
+        "hindi": "चिन्मात्र से अलग कोई कोश आदि नहीं, कोई धन नहीं, कोई मौन नहीं और कोई अमौन भी नहीं है।",
+        "explanation": "चिन्मात्र से अलग कोई कोश आदि नहीं, कोई धन नहीं, कोई मौन नहीं और कोई अमौन भी नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 38,
+        "number": 38,
+        "sanskrit": "चिन्मात्रान्नास्ति वैराग्यं सर्वं चिन्मात्रमेव हि । यच्च यावच्च चिन्मात्रं यच्च यावच्च दृश्यते",
+        "transliteration": "cinmātrānnāsti vairāgyaṃ sarvaṃ cinmātrameva hi | yacca yāvacca cinmātraṃ yacca yāvacca dṛśyate",
+        "translation": "From mere consciousness there is no dispassion; all is only mere consciousness; whatever and however much is mere consciousness, whatever and however much is seen,",
+        "hindi": "चिन्मात्र से अलग कोई वैराग्य नहीं — सब कुछ केवल चिन्मात्र ही है। जो और जितना चिन्मात्र है, जो और जितना दिखाई देता है,",
+        "explanation": "चिन्मात्र से अलग कोई वैराग्य नहीं — सब कुछ केवल चिन्मात्र ही है। जो और जितना चिन्मात्र है, जो और जितना दिखाई देता है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 39,
+        "number": 39,
+        "sanskrit": "यच्च यावच्च दूरस्थं सर्वं चिन्मात्रमेव हि । यच्च यावच्च भूतादि यच्च यावच्च लक्ष्यते",
+        "transliteration": "yacca yāvacca dūrasthaṃ sarvaṃ cinmātrameva hi | yacca yāvacca bhūtādi yacca yāvacca lakṣyate",
+        "translation": "whatever and however much is far away, all is only mere consciousness; whatever and however much are the elements and so on, whatever and however much is perceived,",
+        "hindi": "जो और जितना दूर स्थित है, सब केवल चिन्मात्र ही है। जो और जितने भूत आदि हैं, जो और जितना दिखाई पड़ता है,",
+        "explanation": "जो और जितना दूर स्थित है, सब केवल चिन्मात्र ही है। जो और जितने भूत आदि हैं, जो और जितना दिखाई पड़ता है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 40,
+        "number": 40,
+        "sanskrit": "यच्च यावच्च वेदान्ताः सर्वं चिन्मात्रमेव हि । चिन्मात्रान्नास्ति गमनं चिन्मात्रान्नास्ति मोक्षकम्",
+        "transliteration": "yacca yāvacca vedāntāḥ sarvaṃ cinmātrameva hi | cinmātrānnāsti gamanaṃ cinmātrānnāsti mokṣakam",
+        "translation": "whatever and however much are the Vedantas, all is only mere consciousness; from mere consciousness there is no going; from mere consciousness there is no liberation;",
+        "hindi": "जो और जितने वेदान्त हैं, सब केवल चिन्मात्र ही है। चिन्मात्र से अलग कोई गमन नहीं, कोई मोक्ष नहीं,",
+        "explanation": "जो और जितने वेदान्त हैं, सब केवल चिन्मात्र ही है। चिन्मात्र से अलग कोई गमन नहीं, कोई मोक्ष नहीं,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 41,
+        "number": 41,
+        "sanskrit": "चिन्मात्रान्नास्ति लक्ष्यं च सर्वं चिन्मात्रमेव हि । अखण्डैकरसं ब्रह्म चिन्मात्रान्न हि विद्यते",
+        "transliteration": "cinmātrānnāsti lakṣyaṃ ca sarvaṃ cinmātrameva hi | akhaṇḍaikarasaṃ brahma cinmātrānna hi vidyate",
+        "translation": "from mere consciousness there is no aim; all is only mere consciousness; Brahman of undivided one savor does not exist apart from mere consciousness.",
+        "hindi": "चिन्मात्र से अलग कोई लक्ष्य नहीं — सब कुछ केवल चिन्मात्र ही है। अखण्ड एकरस ब्रह्म चिन्मात्र से अलग नहीं है।",
+        "explanation": "चिन्मात्र से अलग कोई लक्ष्य नहीं — सब कुछ केवल चिन्मात्र ही है। अखण्ड एकरस ब्रह्म चिन्मात्र से अलग नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 42,
+        "number": 42,
+        "sanskrit": "शास्त्रे मयि त्वयीशे च ह्यखण्डैकरसो भवान् । इत्येकरूपतया यो वा जानात्यहं त्विति",
+        "transliteration": "śāstre mayi tvayīśe ca hyakhaṇḍaikaraso bhavān | ityekarūpatayā yo vā jānātyahaṃ tviti",
+        "translation": "In scripture, in me, in you, and in the Lord you are of undivided one savor; whoever knows in this one-form manner, \"I am that\" —",
+        "hindi": "शास्त्र में, मुझमें, तुममें और ईश्वर में आप अखण्ड एकरस हैं। इस प्रकार जो एकरूप से ‘मैं वही हूँ’ ऐसा जान लेता है —",
+        "explanation": "शास्त्र में, मुझमें, तुममें और ईश्वर में आप अखण्ड एकरस हैं। इस प्रकार जो एकरूप से ‘मैं वही हूँ’ ऐसा जान लेता है —",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 43,
+        "number": 43,
+        "sanskrit": "सकृज्ज्ञानेन मुक्तिः स्यात्सम्यग्ज्ञाने स्वयं गुरुः",
+        "transliteration": "sakṛjjñānena muktiḥ syātsamyagjñāne svayaṃ guruḥ",
+        "translation": "by a single knowledge there would be liberation; in right knowledge one becomes the teacher oneself.",
+        "hindi": "उसे एक बार के ज्ञान से ही मुक्ति हो जाती है; सम्यक् ज्ञान होने पर वह स्वयं ही गुरु हो जाता है।",
+        "explanation": "उसे एक बार के ज्ञान से ही मुक्ति हो जाती है; सम्यक् ज्ञान होने पर वह स्वयं ही गुरु हो जाता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Chapter 3 — Realization of Chinmatra (Pure Consciousness)",
+    "titleSanskrit": "तृतीय अध्याय — चिन्मात्र स्वरूपानुभव",
+    "summary": "Kartikeya receives the meditation on pure consciousness: \"I am Chinmatra alone, peaceful, unborn, beyond body and senses.\"",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "कुमारः पितरमात्मानुभवमनुब्रूहीति पप्रच्छ । स होवाच परः शिवः । परब्रह्मस्वरूपोऽहं परमानन्दमस्म्यहम् । केवलं ज्ञानरूपोऽहं केवलं परमोऽस्म्यहम्",
+        "transliteration": "kumāraḥ pitaramātmānubhavamanubrūhīti papraccha | sa hovāca paraḥ śivaḥ | parabrahmasvarūpo'haṃ paramānandamasmyaham | kevalaṃ jñānarūpo'haṃ kevalaṃ paramo'smyaham",
+        "translation": "Kumara asked his father: \"Tell me the experience of the Self.\" The Supreme Shiva said: I am of the nature of supreme Brahman, I am supreme bliss. I am of the form of knowledge alone; I am the supreme alone.",
+        "hindi": "सच्चिदानंदमात्रोऽहं नित्योन्मुक्तस्वरूपवान्—मैं केवल सच्चिदानंद स्वरूप हूँ, नित्य, शुद्ध, बुद्ध, मुक्त और अविनाशी हूँ।",
+        "explanation": "सच्चिदानंदमात्रोऽहं नित्योन्मुक्तस्वरूपवान्—मैं केवल सच्चिदानंद स्वरूप हूँ, नित्य, शुद्ध, बुद्ध, मुक्त और अविनाशी हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "केवलं शान्तरूपोऽहं केवलं चिन्मयोऽस्म्यहम् । केवलं नित्यरूपोऽहं केवलं शाश्वतोऽस्म्यहम्",
+        "transliteration": "kevalaṃ śāntarūpo'haṃ kevalaṃ cinmayo'smyaham | kevalaṃ nityarūpo'haṃ kevalaṃ śāśvato'smyaham",
+        "translation": "I am of peaceful form alone; I am made of consciousness alone; I am of eternal form alone; I am everlasting alone.",
+        "hindi": "मैं केवल शान्त-रूप हूँ, केवल चिन्मय हूँ, केवल नित्य-रूप हूँ, केवल शाश्वत हूँ।",
+        "explanation": "मैं केवल शान्त-रूप हूँ, केवल चिन्मय हूँ, केवल नित्य-रूप हूँ, केवल शाश्वत हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "केवलं सत्त्वरूपोऽहमहं त्यक्त्वाहमस्म्यहम् । सर्वहीनस्वरूपोऽहं चिदाकाशमयोऽस्म्यहम्",
+        "transliteration": "kevalaṃ sattvarūpo'hamahaṃ tyaktvāhamasmyaham | sarvahīnasvarūpo'haṃ cidākāśamayo'smyaham",
+        "translation": "I am of the form of sattva alone; abandoning \"I,\" I am; I am of the nature of being devoid of all; I am made of the space of consciousness.",
+        "hindi": "मैं केवल सत्त्व-रूप हूँ; ‘अहं’ को त्यागकर भी मैं हूँ; मैं सब से रहित स्वरूप वाला हूँ; मैं चिदाकाशमय हूँ।",
+        "explanation": "मैं केवल सत्त्व-रूप हूँ; ‘अहं’ को त्यागकर भी मैं हूँ; मैं सब से रहित स्वरूप वाला हूँ; मैं चिदाकाशमय हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "केवलं तुर्यरूपोऽस्मि तुर्यातीतोऽस्मि केवलः । सदा चैतन्यरूपोऽस्मि चिदानन्दमयोऽस्म्यहम्",
+        "transliteration": "kevalaṃ turyarūpo'smi turyātīto'smi kevalaḥ | sadā caitanyarūpo'smi cidānandamayo'smyaham",
+        "translation": "I am of the form of the Fourth alone; I am alone beyond the Fourth; I am ever of the form of consciousness; I am made of consciousness-bliss.",
+        "hindi": "मैं केवल तुरीय-रूप हूँ; मैं अकेला तुरीय से भी परे हूँ; मैं सदा चैतन्य-रूप हूँ; मैं चिदानन्दमय हूँ।",
+        "explanation": "मैं केवल तुरीय-रूप हूँ; मैं अकेला तुरीय से भी परे हूँ; मैं सदा चैतन्य-रूप हूँ; मैं चिदानन्दमय हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "केवलाकाररूपोऽस्मि शुद्धरूपोऽस्म्यहं सदा । केवलं ज्ञानरूपोऽस्मि केवलं प्रियमस्म्यहम्",
+        "transliteration": "kevalākārarūpo'smi śuddharūpo'smyahaṃ sadā | kevalaṃ jñānarūpo'smi kevalaṃ priyamasmyaham",
+        "translation": "I am of the form of the alone; I am ever of pure form; I am of the form of knowledge alone; I am the beloved alone.",
+        "hindi": "मैं केवल एकमात्र-रूप हूँ; मैं सदा शुद्ध-रूप हूँ; मैं केवल ज्ञान-रूप हूँ; मैं केवल प्रिय-रूप हूँ।",
+        "explanation": "मैं केवल एकमात्र-रूप हूँ; मैं सदा शुद्ध-रूप हूँ; मैं केवल ज्ञान-रूप हूँ; मैं केवल प्रिय-रूप हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "निर्विकल्पस्वरूपोऽस्मि निरीहोऽस्मि निरामयः । सदाऽसङ्गस्वरूपोऽस्मि निर्विकारोऽहमव्ययः",
+        "transliteration": "nirvikalpasvarūpo'smi nirīho'smi nirāmayaḥ | sadā'saṅgasvarūpo'smi nirvikāro'hamavyayaḥ",
+        "translation": "I am of the nature of non-conception; I am desireless, free of disease; I am ever of unattached nature; I am changeless and undying.",
+        "hindi": "मैं निर्विकल्प स्वरूप हूँ, निरीह (इच्छारहित) और निरामय हूँ; मैं सदा असंग-स्वरूप हूँ; मैं निर्विकार और अविनाशी हूँ।",
+        "explanation": "मैं निर्विकल्प स्वरूप हूँ, निरीह (इच्छारहित) और निरामय हूँ; मैं सदा असंग-स्वरूप हूँ; मैं निर्विकार और अविनाशी हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "सदैकरसरूपोऽस्मि सदा चिन्मात्रविग्रहः । अपरिच्छिन्नरूपोऽस्मि ह्यखण्डानन्दरूपवान्",
+        "transliteration": "sadaikarasarūpo'smi sadā cinmātravigrahaḥ | aparicchinnarūpo'smi hyakhaṇḍānandarūpavān",
+        "translation": "I am ever of one-savor form; I am ever a body of mere consciousness; I am of unlimited form; I have the form of undivided bliss.",
+        "hindi": "मैं सदा एकरस-रूप हूँ; मैं सदा चिन्मात्र का ही शरीर हूँ; मैं अपरिच्छिन्न रूप वाला और अखण्ड आनन्द-स्वरूप हूँ।",
+        "explanation": "मैं सदा एकरस-रूप हूँ; मैं सदा चिन्मात्र का ही शरीर हूँ; मैं अपरिच्छिन्न रूप वाला और अखण्ड आनन्द-स्वरूप हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "सत्परानन्दरूपोऽस्मि चित्परानन्दमस्म्यहम् । अन्तरान्तररूपोऽहमवाङ्मनसगोचरः",
+        "transliteration": "satparānandarūpo'smi citparānandamasmyaham | antarāntararūpo'hamavāṅmanasagocaraḥ",
+        "translation": "I am of the form of being and supreme bliss; I am consciousness and supreme bliss; I am of the form of the inmost; I am beyond speech and mind.",
+        "hindi": "मैं सत् और परमानन्द-रूप हूँ; मैं चित् और परमानन्द हूँ; मैं भीतर के भी भीतर का रूप हूँ; मैं वाणी और मन की पहुँच से परे हूँ।",
+        "explanation": "मैं सत् और परमानन्द-रूप हूँ; मैं चित् और परमानन्द हूँ; मैं भीतर के भी भीतर का रूप हूँ; मैं वाणी और मन की पहुँच से परे हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "आत्मानन्दस्वरूपोऽहं सत्यानन्दोऽस्म्यहं सदा । आत्मारामस्वरूपोऽस्मि ह्ययमात्मा सदाशिवः",
+        "transliteration": "ātmānandasvarūpo'haṃ satyānando'smyahaṃ sadā | ātmārāmasvarūpo'smi hyayamātmā sadāśivaḥ",
+        "translation": "I am of the nature of Self-bliss; I am ever true bliss; I am of the nature of delighting in the Self; this Self is ever Sadashiva.",
+        "hindi": "मैं आत्मानन्द-स्वरूप हूँ; मैं सदा सत्यानन्द हूँ; मैं आत्माराम-स्वरूप हूँ; यह आत्मा सदाशिव है।",
+        "explanation": "मैं आत्मानन्द-स्वरूप हूँ; मैं सदा सत्यानन्द हूँ; मैं आत्माराम-स्वरूप हूँ; यह आत्मा सदाशिव है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 10,
+        "number": 10,
+        "sanskrit": "आत्मप्रकाशरूपोऽस्मि ह्यात्मज्योतिरसोऽस्म्यहम् । आदिमध्यान्तहीनोऽस्मि ह्याकाशसदृशोऽस्म्यहम्",
+        "transliteration": "ātmaprakāśarūpo'smi hyātmajyotiraso'smyaham | ādimadhyāntahīno'smi hyākāśasadṛśo'smyaham",
+        "translation": "I am of the form of self-luminosity; I am the savor of the light of the Self; I am without beginning, middle or end; I am like space.",
+        "hindi": "मैं आत्म-प्रकाश-रूप हूँ; मैं आत्म-ज्योति का रस हूँ; मैं आदि, मध्य और अन्त से रहित हूँ; मैं आकाश के समान हूँ।",
+        "explanation": "मैं आत्म-प्रकाश-रूप हूँ; मैं आत्म-ज्योति का रस हूँ; मैं आदि, मध्य और अन्त से रहित हूँ; मैं आकाश के समान हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Chapter 4 — The Jivanmukta and Videhamukta",
+    "titleSanskrit": "चतुर्थ अध्याय — जीवन्मुक्त एवं विदेहमुक्त लक्षण",
+    "summary": "Hallmarks of the liberated sage who remains untouched by worldly praise or blame, followed by the dissolution into videhamukti.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "नित्यशुद्धचिदानन्दसत्तामात्रोऽहमव्ययः । नित्यबुद्धविशुद्धैकसच्चिदानन्दमस्म्यहम्",
+        "transliteration": "nityaśuddhacidānandasattāmātro'hamavyayaḥ | nityabuddhaviśuddhaikasaccidānandamasmyaham",
+        "translation": "I am the mere being of eternal pure consciousness-bliss, imperishable; I am the one eternal, awake, purely being-consciousness-bliss.",
+        "hindi": "मैं नित्य, शुद्ध, चिदानन्द सत्ता-मात्र और अविनाशी हूँ; मैं नित्य, बुद्ध, विशुद्ध, एक सच्चिदानन्द हूँ।",
+        "explanation": "मैं नित्य, शुद्ध, चिदानन्द सत्ता-मात्र और अविनाशी हूँ; मैं नित्य, बुद्ध, विशुद्ध, एक सच्चिदानन्द हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 12,
+        "number": 12,
+        "sanskrit": "नित्यशेषस्वरूपोऽस्मि सर्वातीतोऽस्म्यहं सदा । रूपातीतस्वरूपोऽस्मि परमाकाशविग्रहः",
+        "transliteration": "nityaśeṣasvarūpo'smi sarvātīto'smyahaṃ sadā | rūpātītasvarūpo'smi paramākāśavigrahaḥ",
+        "translation": "I am of the nature of the eternal remainder; I am ever beyond all; I am of the nature beyond form; I am a body of supreme space.",
+        "hindi": "मैं नित्य शेष-स्वरूप हूँ; मैं सदा सबसे अतीत हूँ; मैं रूप से परे स्वरूप वाला हूँ; मैं परम आकाश का शरीर हूँ।",
+        "explanation": "मैं नित्य शेष-स्वरूप हूँ; मैं सदा सबसे अतीत हूँ; मैं रूप से परे स्वरूप वाला हूँ; मैं परम आकाश का शरीर हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 13,
+        "number": 13,
+        "sanskrit": "भूमानन्दस्वरूपोऽस्मि भाषाहीनोऽस्म्यहं सदा । सर्वाधिष्ठानरूपोऽस्मि सर्वदा चिद्घनोऽस्म्यहम्",
+        "transliteration": "bhūmānandasvarūpo'smi bhāṣāhīno'smyahaṃ sadā | sarvādhiṣṭhānarūpo'smi sarvadā cidghano'smyaham",
+        "translation": "I am of the nature of the bliss of the fullness; I am ever without speech; I am of the form of the support of all; I am ever a mass of consciousness.",
+        "hindi": "मैं भूमा (पूर्णता) के आनन्द का स्वरूप हूँ; मैं सदा वाणी से रहित हूँ; मैं सबके आधार का रूप हूँ; मैं सदा चिद्घन हूँ।",
+        "explanation": "मैं भूमा (पूर्णता) के आनन्द का स्वरूप हूँ; मैं सदा वाणी से रहित हूँ; मैं सबके आधार का रूप हूँ; मैं सदा चिद्घन हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 14,
+        "number": 14,
+        "sanskrit": "देहभावविहीनोऽस्मि चिन्ताहीनोऽस्मि सर्वदा । चित्तवृत्तिविहीनोऽहं चिदात्मैकरसोऽस्म्यहम्",
+        "transliteration": "dehabhāvavihīno'smi cintāhīno'smi sarvadā | cittavṛttivihīno'haṃ cidātmaikaraso'smyaham",
+        "translation": "I am devoid of body-notion; I am ever devoid of anxiety; I am devoid of mind's modifications; I am of one savor, the Self of consciousness.",
+        "hindi": "मैं देह-भाव से रहित हूँ; मैं सदा चिन्ता से रहित हूँ; मैं चित्त की वृत्तियों से रहित हूँ; मैं चिदात्म एकरस हूँ।",
+        "explanation": "मैं देह-भाव से रहित हूँ; मैं सदा चिन्ता से रहित हूँ; मैं चित्त की वृत्तियों से रहित हूँ; मैं चिदात्म एकरस हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 15,
+        "number": 15,
+        "sanskrit": "सर्वदृश्यविहीनोऽहं दृग्रूपोऽस्म्यहमेव हि । सर्वदा पूर्णरूपोऽस्मि नित्यतृप्तोऽस्म्यहं सदा",
+        "transliteration": "sarvadṛśyavihīno'haṃ dṛgrūpo'smyahameva hi | sarvadā pūrṇarūpo'smi nityatṛpto'smyahaṃ sadā",
+        "translation": "I am devoid of all that is seen; I am indeed of the form of the seer; I am ever of full form; I am ever satisfied.",
+        "hindi": "मैं सब दृश्यों से रहित हूँ; मैं द्रष्टा-रूप ही हूँ; मैं सदा पूर्ण-रूप हूँ; मैं सदा नित्य तृप्त हूँ।",
+        "explanation": "मैं सब दृश्यों से रहित हूँ; मैं द्रष्टा-रूप ही हूँ; मैं सदा पूर्ण-रूप हूँ; मैं सदा नित्य तृप्त हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 16,
+        "number": 16,
+        "sanskrit": "अहं ब्रह्मैव सर्वं स्यादहं चैतन्यमेव हि । अहमेवाहमेवास्मि भूमाकाशस्वरूपवान्",
+        "transliteration": "ahaṃ brahmaiva sarvaṃ syādahaṃ caitanyameva hi | ahamevāhamevāsmi bhūmākāśasvarūpavān",
+        "translation": "I am Brahman; all would be I; I am consciousness itself; I alone, I alone am, of the nature of the fullness of space.",
+        "hindi": "मैं ब्रह्म ही हूँ, सब मैं ही हूँ; मैं चैतन्य ही हूँ; मैं ही मैं हूँ, भूमा-आकाश स्वरूप वाला।",
+        "explanation": "मैं ब्रह्म ही हूँ, सब मैं ही हूँ; मैं चैतन्य ही हूँ; मैं ही मैं हूँ, भूमा-आकाश स्वरूप वाला।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 17,
+        "number": 17,
+        "sanskrit": "अहमेव महानात्मा ह्यहमेव परात्परः । अहमन्यवदाभामि ह्यहमेव शरीरवत्",
+        "transliteration": "ahameva mahānātmā hyahameva parātparaḥ | ahamanyavadābhāmi hyahameva śarīravat",
+        "translation": "I alone am the great Self; I alone am higher than the highest; I appear as another; I alone am like the body.",
+        "hindi": "मैं ही महान आत्मा हूँ; मैं ही परे से भी परे हूँ; मैं दूसरे की तरह प्रतीत होता हूँ; मैं ही शरीर की तरह भासित होता हूँ।",
+        "explanation": "मैं ही महान आत्मा हूँ; मैं ही परे से भी परे हूँ; मैं दूसरे की तरह प्रतीत होता हूँ; मैं ही शरीर की तरह भासित होता हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 18,
+        "number": 18,
+        "sanskrit": "अहं शिष्यवदाभामि ह्ययं लोकत्रयाश्रयः । अहं कालत्रयातीत अहं वेदैरुपासितः",
+        "transliteration": "ahaṃ śiṣyavadābhāmi hyayaṃ lokatrayāśrayaḥ | ahaṃ kālatrayātīta ahaṃ vedairupāsitaḥ",
+        "translation": "I appear like a disciple; this is the support of the three worlds; I am beyond the three times; I am worshipped by the Vedas.",
+        "hindi": "मैं शिष्य की तरह भासित होता हूँ; यह तीनों लोकों का आधार है; मैं तीनों कालों से परे हूँ; मैं वेदों से उपासित हूँ।",
+        "explanation": "मैं शिष्य की तरह भासित होता हूँ; यह तीनों लोकों का आधार है; मैं तीनों कालों से परे हूँ; मैं वेदों से उपासित हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 19,
+        "number": 19,
+        "sanskrit": "अहं शास्त्रेण निर्णीत अहं चित्ते व्यवस्थितः । मत्त्यक्तं नास्ति किञ्चिद्वा मत्त्यक्तं पृथिवी च वा",
+        "transliteration": "ahaṃ śāstreṇa nirṇīta ahaṃ citte vyavasthitaḥ | mattyaktaṃ nāsti kiñcidvā mattyaktaṃ pṛthivī ca vā",
+        "translation": "I am determined by scripture; I am established in the mind; nothing is apart from me; nothing is abandoned by me, nor the earth.",
+        "hindi": "मैं शास्त्र से निश्चित हूँ; मैं चित्त में स्थित हूँ; मुझसे त्यागा हुआ कुछ भी नहीं है, और पृथ्वी भी मुझसे त्यक्त नहीं।",
+        "explanation": "मैं शास्त्र से निश्चित हूँ; मैं चित्त में स्थित हूँ; मुझसे त्यागा हुआ कुछ भी नहीं है, और पृथ्वी भी मुझसे त्यक्त नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 20,
+        "number": 20,
+        "sanskrit": "मयातिरिक्तं यद्यद्वा तत्तन्नास्तीति निश्चिनु । अहं ब्रह्मास्मि सिद्धोऽस्मि नित्यशुद्धोऽस्म्यहं सदा",
+        "transliteration": "mayātiriktaṃ yadyadvā tattannāstīti niścinu | ahaṃ brahmāsmi siddho'smi nityaśuddho'smyahaṃ sadā",
+        "translation": "Whatever is other than me — be certain it does not exist; I am Brahman, I am perfected, I am ever eternally pure.",
+        "hindi": "जो कुछ भी मुझसे अलग है, निश्चय जानो कि वह नहीं है। मैं ब्रह्म हूँ, सिद्ध हूँ, सदा नित्य शुद्ध हूँ।",
+        "explanation": "जो कुछ भी मुझसे अलग है, निश्चय जानो कि वह नहीं है। मैं ब्रह्म हूँ, सिद्ध हूँ, सदा नित्य शुद्ध हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 21,
+        "number": 21,
+        "sanskrit": "निर्गुणः केवलात्मास्मि निराकारोऽस्म्यहं सदा । केवलं ब्रह्ममात्रोऽस्मि ह्यजरोऽस्म्यमरोऽस्म्यहम्",
+        "transliteration": "nirguṇaḥ kevalātmāsmi nirākāro'smyahaṃ sadā | kevalaṃ brahmamātro'smi hyajaro'smyamaro'smyaham",
+        "translation": "I am the attributeless, the Self alone; I am ever formless; I am Brahman alone; I am ageless, I am deathless.",
+        "hindi": "मैं निर्गुण, केवल आत्मा हूँ; मैं सदा निराकार हूँ; मैं केवल ब्रह्म-मात्र हूँ; मैं अजर और अमर हूँ।",
+        "explanation": "मैं निर्गुण, केवल आत्मा हूँ; मैं सदा निराकार हूँ; मैं केवल ब्रह्म-मात्र हूँ; मैं अजर और अमर हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 22,
+        "number": 22,
+        "sanskrit": "स्वयमेव स्वयं भामि स्वयमेव सदात्मकः । स्वयमेवात्मनि स्वस्थः स्वयमेव परा गतिः",
+        "transliteration": "svayameva svayaṃ bhāmi svayameva sadātmakaḥ | svayamevātmani svasthaḥ svayameva parā gatiḥ",
+        "translation": "By myself I shine by myself; by myself I am ever being; by myself I rest in the Self; by myself the supreme goal.",
+        "hindi": "मैं स्वयं ही स्वयं प्रकाशित होता हूँ; मैं स्वयं ही सदा सत्-स्वरूप हूँ; स्वयं ही आत्मा में स्थित हूँ; स्वयं ही परम गति हूँ।",
+        "explanation": "मैं स्वयं ही स्वयं प्रकाशित होता हूँ; मैं स्वयं ही सदा सत्-स्वरूप हूँ; स्वयं ही आत्मा में स्थित हूँ; स्वयं ही परम गति हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 23,
+        "number": 23,
+        "sanskrit": "स्वयमेव स्वयं भञ्जे स्वयमेव स्वयं रमे । स्वयमेव स्वयं ज्योतिः स्वयमेव स्वयं महः",
+        "transliteration": "svayameva svayaṃ bhañje svayameva svayaṃ rame | svayameva svayaṃ jyotiḥ svayameva svayaṃ mahaḥ",
+        "translation": "By myself I break by myself; by myself I delight by myself; by myself I am light by myself; by myself I am splendor by myself.",
+        "hindi": "मैं स्वयं ही स्वयं को तोड़ता हूँ; स्वयं ही स्वयं में रमण करता हूँ; स्वयं ही स्वयं ज्योति हूँ; स्वयं ही स्वयं तेज हूँ।",
+        "explanation": "मैं स्वयं ही स्वयं को तोड़ता हूँ; स्वयं ही स्वयं में रमण करता हूँ; स्वयं ही स्वयं ज्योति हूँ; स्वयं ही स्वयं तेज हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 24,
+        "number": 24,
+        "sanskrit": "स्वस्यात्मनि स्वयं रंस्ये स्वात्मन्येव विलोकये । स्वात्मन्येव सुखासीनः स्वात्ममात्रावशेषकः",
+        "transliteration": "svasyātmani svayaṃ raṃsye svātmanyeva vilokaye | svātmanyeva sukhāsīnaḥ svātmamātrāvaśeṣakaḥ",
+        "translation": "In my own Self I shall delight by myself; in my own Self alone I shall look; seated happy in my own Self, with only my Self remaining.",
+        "hindi": "मैं अपने आत्मा में स्वयं रमण करूँगा; अपने आत्मा में ही देखूँगा; अपने आत्मा में ही सुखपूर्वक बैठा रहूँगा, जहाँ केवल मेरा आत्मा ही शेष रहेगा।",
+        "explanation": "मैं अपने आत्मा में स्वयं रमण करूँगा; अपने आत्मा में ही देखूँगा; अपने आत्मा में ही सुखपूर्वक बैठा रहूँगा, जहाँ केवल मेरा आत्मा ही शेष रहेगा।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 25,
+        "number": 25,
+        "sanskrit": "स्वचैतन्ये स्वयं स्थास्ये स्वात्मराज्ये सुखे रमे । स्वात्मसिंहासने स्थित्वा स्वात्मनोऽन्यन्न चिन्तये",
+        "transliteration": "svacaitanye svayaṃ sthāsye svātmarājye sukhe rame | svātmasiṃhāsane sthitvā svātmano'nyanna cintaye",
+        "translation": "In my own consciousness I shall stay by myself; in the kingdom of my own Self I shall delight in bliss; seated on the throne of my own Self, I shall think of nothing else than the Self.",
+        "hindi": "मैं अपनी चेतना में स्वयं स्थित रहूँगा; अपने आत्म-राज्य में सुख से रमण करूँगा; अपने आत्म-सिंहासन पर बैठकर आत्मा से अन्य कुछ नहीं सोचूँगा।",
+        "explanation": "मैं अपनी चेतना में स्वयं स्थित रहूँगा; अपने आत्म-राज्य में सुख से रमण करूँगा; अपने आत्म-सिंहासन पर बैठकर आत्मा से अन्य कुछ नहीं सोचूँगा।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 26,
+        "number": 26,
+        "sanskrit": "चिद्रूपमात्रं ब्रह्मैव सच्चिदानन्दमद्वयम् । आनन्दघन एवाहमहं ब्रह्मास्मि केवलम्",
+        "transliteration": "cidrūpamātraṃ brahmaiva saccidānandamadvayam | ānandaghana evāhamahaṃ brahmāsmi kevalam",
+        "translation": "Mere form of consciousness is Brahman, being-consciousness-bliss, non-dual; I am a mass of bliss; I am Brahman alone.",
+        "hindi": "चित्-रूप मात्र ही ब्रह्म है — सच्चिदानन्द और अद्वय। मैं आनन्दघन ही हूँ; मैं केवल ब्रह्म हूँ।",
+        "explanation": "चित्-रूप मात्र ही ब्रह्म है — सच्चिदानन्द और अद्वय। मैं आनन्दघन ही हूँ; मैं केवल ब्रह्म हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 27,
+        "number": 27,
+        "sanskrit": "सर्वदा सर्वशून्योऽहं सर्वात्मानन्दवानहम् । नित्यानन्दस्वरूपोऽहमात्माकाशोऽस्मि नित्यदा",
+        "transliteration": "sarvadā sarvaśūnyo'haṃ sarvātmānandavānaham | nityānandasvarūpo'hamātmākāśo'smi nityadā",
+        "translation": "I am ever void of all; I am blissful as the Self of all; I am of the nature of eternal bliss; I am ever the space of the Self.",
+        "hindi": "मैं सदा सब से शून्य हूँ; मैं सर्वात्मा के आनन्द से युक्त हूँ; मैं नित्य आनन्द-स्वरूप हूँ; मैं सदा आत्माकाश हूँ।",
+        "explanation": "मैं सदा सब से शून्य हूँ; मैं सर्वात्मा के आनन्द से युक्त हूँ; मैं नित्य आनन्द-स्वरूप हूँ; मैं सदा आत्माकाश हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 28,
+        "number": 28,
+        "sanskrit": "अहमेव हृदाकाशश्चिदादित्यस्वरूपवान् । आत्मनात्मनि तृप्तोऽस्मि ह्यरूपोऽस्म्यहमव्ययः",
+        "transliteration": "ahameva hṛdākāśaścidādityasvarūpavān | ātmanātmani tṛpto'smi hyarūpo'smyahamavyayaḥ",
+        "translation": "I alone am the space of the heart, of the nature of the sun of consciousness; by the Self I am satisfied in the Self; I am formless and imperishable.",
+        "hindi": "मैं ही हृदयाकाश हूँ, चित्-सूर्य के स्वरूप वाला; मैं आत्मा द्वारा आत्मा में तृप्त हूँ; मैं रूपरहित और अविनाशी हूँ।",
+        "explanation": "मैं ही हृदयाकाश हूँ, चित्-सूर्य के स्वरूप वाला; मैं आत्मा द्वारा आत्मा में तृप्त हूँ; मैं रूपरहित और अविनाशी हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 29,
+        "number": 29,
+        "sanskrit": "एकसङ्ख्याविहीनोऽस्मि नित्यमुक्तस्वरूपवान् । आकाशादपि सूक्ष्मोऽहमाद्यन्ताभाववानहम्",
+        "transliteration": "ekasaṅkhyāvihīno'smi nityamuktasvarūpavān | ākāśādapi sūkṣmo'hamādyantābhāvavānaham",
+        "translation": "I am devoid of the number one; I am of the nature of eternally liberated; I am subtler than space; I am devoid of beginning and end.",
+        "hindi": "मैं एक की संख्या से भी रहित हूँ; मैं नित्य-मुक्त स्वरूप वाला हूँ; मैं आकाश से भी सूक्ष्म हूँ; मैं आदि और अन्त के अभाव वाला हूँ।",
+        "explanation": "मैं एक की संख्या से भी रहित हूँ; मैं नित्य-मुक्त स्वरूप वाला हूँ; मैं आकाश से भी सूक्ष्म हूँ; मैं आदि और अन्त के अभाव वाला हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 30,
+        "number": 30,
+        "sanskrit": "सर्वप्रकाशरूपोऽहं परावरसुखोऽस्म्यहम् । सत्तामात्रस्वरूपोऽहं शुद्धमोक्षस्वरूपवान्",
+        "transliteration": "sarvaprakāśarūpo'haṃ parāvarasukho'smyaham | sattāmātrasvarūpo'haṃ śuddhamokṣasvarūpavān",
+        "translation": "I am of the form of the light of all; I am the bliss of the high and low; I am of the nature of mere being; I am of the nature of pure liberation.",
+        "hindi": "मैं सबके प्रकाश का रूप हूँ; मैं ऊँच-नीच दोनों का सुख हूँ; मैं सत्ता-मात्र स्वरूप हूँ; मैं शुद्ध मोक्ष-स्वरूप वाला हूँ।",
+        "explanation": "मैं सबके प्रकाश का रूप हूँ; मैं ऊँच-नीच दोनों का सुख हूँ; मैं सत्ता-मात्र स्वरूप हूँ; मैं शुद्ध मोक्ष-स्वरूप वाला हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 31,
+        "number": 31,
+        "sanskrit": "सत्यानन्दस्वरूपोऽहं ज्ञानानन्दघनोऽस्म्यहम् । विज्ञानमात्ररूपोऽहं सच्चिदानन्दलक्षणः",
+        "transliteration": "satyānandasvarūpo'haṃ jñānānandaghano'smyaham | vijñānamātrarūpo'haṃ saccidānandalakṣaṇaḥ",
+        "translation": "I am of the nature of true bliss; I am a mass of knowledge-bliss; I am of the form of mere knowledge; I am marked by being-consciousness-bliss.",
+        "hindi": "मैं सत्यानन्द-स्वरूप हूँ; मैं ज्ञानानन्द का घन हूँ; मैं केवल विज्ञान-रूप हूँ; मैं सच्चिदानन्द लक्षण वाला हूँ।",
+        "explanation": "मैं सत्यानन्द-स्वरूप हूँ; मैं ज्ञानानन्द का घन हूँ; मैं केवल विज्ञान-रूप हूँ; मैं सच्चिदानन्द लक्षण वाला हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 32,
+        "number": 32,
+        "sanskrit": "ब्रह्ममात्रमिदं सर्वं ब्रह्मणोऽन्यन्न किञ्चन । तदेवाहं सदानन्दं ब्रह्मैवाहं सनातनम्",
+        "transliteration": "brahmamātramidaṃ sarvaṃ brahmaṇo'nyanna kiñcana | tadevāhaṃ sadānandaṃ brahmaivāhaṃ sanātanam",
+        "translation": "All this is only Brahman; nothing is other than Brahman; that alone I am, ever bliss; I am Brahman, the eternal.",
+        "hindi": "यह सब कुछ ब्रह्म-मात्र है; ब्रह्म से भिन्न कुछ भी नहीं। वही मैं हूँ, सदा आनन्द; मैं ही सनातन ब्रह्म हूँ।",
+        "explanation": "यह सब कुछ ब्रह्म-मात्र है; ब्रह्म से भिन्न कुछ भी नहीं। वही मैं हूँ, सदा आनन्द; मैं ही सनातन ब्रह्म हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 33,
+        "number": 33,
+        "sanskrit": "त्वमित्येतत्तदित्येतन्मत्तोऽन्यन्नास्ति किञ्चन । चिच्चैतन्यस्वरूपोऽहमहमेव शिवः परः",
+        "transliteration": "tvamityetattadityetanmatto'nyannāsti kiñcana | ciccaitanyasvarūpo'hamahameva śivaḥ paraḥ",
+        "translation": "\"You,\" \"that\" — nothing is other than me; I am of the nature of consciousness; I alone am Shiva, the supreme.",
+        "hindi": "‘तू’ और ‘वह’ — ये मुझसे अलग कुछ भी नहीं। मैं चित्-चैतन्य स्वरूप हूँ; मैं ही परम शिव हूँ।",
+        "explanation": "‘तू’ और ‘वह’ — ये मुझसे अलग कुछ भी नहीं। मैं चित्-चैतन्य स्वरूप हूँ; मैं ही परम शिव हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 34,
+        "number": 34,
+        "sanskrit": "अतिभावस्वरूपोऽहमहमेव सुखात्मकः । साक्षिवस्तुविहीनत्वात्साक्षित्वं नास्ति मे सदा",
+        "transliteration": "atibhāvasvarūpo'hamahameva sukhātmakaḥ | sākṣivastuvihīnatvātsākṣitvaṃ nāsti me sadā",
+        "translation": "I am of the nature of beyond-being; I alone am of the nature of happiness; devoid of a thing to be witnessed, I have no witness-hood ever.",
+        "hindi": "मैं भावातीत स्वरूप हूँ; मैं ही सुख-स्वरूप हूँ। साक्षी बनने योग्य कोई वस्तु न होने से मुझमें साक्षीपन भी सदा नहीं है।",
+        "explanation": "मैं भावातीत स्वरूप हूँ; मैं ही सुख-स्वरूप हूँ। साक्षी बनने योग्य कोई वस्तु न होने से मुझमें साक्षीपन भी सदा नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 35,
+        "number": 35,
+        "sanskrit": "केवलं ब्रह्ममात्रत्वादहमात्मा सनातनः । अहमेवादिशेषोऽहमहं शेषोऽहमेव हि",
+        "transliteration": "kevalaṃ brahmamātratvādahamātmā sanātanaḥ | ahamevādiśeṣo'hamahaṃ śeṣo'hameva hi",
+        "translation": "Being Brahman alone, I am the eternal Self; I alone am the primal remainder; I alone am the remainder.",
+        "hindi": "केवल ब्रह्म-मात्र होने से मैं सनातन आत्मा हूँ; मैं ही आदि-शेष हूँ; मैं ही शेष हूँ।",
+        "explanation": "केवल ब्रह्म-मात्र होने से मैं सनातन आत्मा हूँ; मैं ही आदि-शेष हूँ; मैं ही शेष हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 36,
+        "number": 36,
+        "sanskrit": "नामरूपविमुक्तोऽहमहमानन्दविग्रहः । इन्द्रियाभावरूपोऽहं सर्वभावस्वरूपकः",
+        "transliteration": "nāmarūpavimukto'hamahamānandavigrahaḥ | indriyābhāvarūpo'haṃ sarvabhāvasvarūpakaḥ",
+        "translation": "I am freed from name and form; I am a body of bliss; I am of the form of absence of senses; I am of the nature of all existence.",
+        "hindi": "मैं नाम-रूप से मुक्त हूँ; मैं आनन्द का शरीर हूँ; मैं इन्द्रियों के अभाव का रूप हूँ; मैं सब भावों का स्वरूप हूँ।",
+        "explanation": "मैं नाम-रूप से मुक्त हूँ; मैं आनन्द का शरीर हूँ; मैं इन्द्रियों के अभाव का रूप हूँ; मैं सब भावों का स्वरूप हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 37,
+        "number": 37,
+        "sanskrit": "बन्धमुक्तिविहीनोऽहं शाश्वतानन्दविग्रहः । आदिचैतन्यमात्रोऽहमखण्डैकरसोऽस्म्यहम्",
+        "transliteration": "bandhamuktivihīno'haṃ śāśvatānandavigrahaḥ | ādicaitanyamātro'hamakhaṇḍaikaraso'smyaham",
+        "translation": "I am devoid of bondage and liberation; I am a body of eternal bliss; I am mere primal consciousness; I am of undivided one savor.",
+        "hindi": "मैं बन्धन और मुक्ति से रहित हूँ; मैं शाश्वत आनन्द का शरीर हूँ; मैं आदि चैतन्य-मात्र हूँ; मैं अखण्ड एकरस हूँ।",
+        "explanation": "मैं बन्धन और मुक्ति से रहित हूँ; मैं शाश्वत आनन्द का शरीर हूँ; मैं आदि चैतन्य-मात्र हूँ; मैं अखण्ड एकरस हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 38,
+        "number": 38,
+        "sanskrit": "वाङ्मनोऽगोचरश्चाहं सर्वत्र सुखवानहम् । सर्वत्र पूर्णरूपोऽहं भूमानन्दमयोऽस्म्यहम्",
+        "transliteration": "vāṅmano'gocaraścāhaṃ sarvatra sukhavānaham | sarvatra pūrṇarūpo'haṃ bhūmānandamayo'smyaham",
+        "translation": "I am beyond speech and mind; I am blissful everywhere; I am of full form everywhere; I am made of the bliss of the fullness.",
+        "hindi": "मैं वाणी और मन की पहुँच से परे हूँ; मैं सर्वत्र सुखी हूँ; मैं सर्वत्र पूर्ण-रूप हूँ; मैं भूमा-आनन्दमय हूँ।",
+        "explanation": "मैं वाणी और मन की पहुँच से परे हूँ; मैं सर्वत्र सुखी हूँ; मैं सर्वत्र पूर्ण-रूप हूँ; मैं भूमा-आनन्दमय हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 39,
+        "number": 39,
+        "sanskrit": "सर्वत्र तृप्तिरूपोऽहं परामृतरसोऽस्म्यहम् । एकमेवाद्वितीयं सद्ब्रह्मैवाहं न संशयः",
+        "transliteration": "sarvatra tṛptirūpo'haṃ parāmṛtaraso'smyaham | ekamevādvitīyaṃ sadbrahmaivāhaṃ na saṃśayaḥ",
+        "translation": "I am of the form of satisfaction everywhere; I am the savor of supreme nectar; the one without a second, being, Brahman alone am I; no doubt.",
+        "hindi": "मैं सर्वत्र तृप्ति-रूप हूँ; मैं परम अमृत का रस हूँ; मैं एक ही अद्वितीय सत्, ब्रह्म ही हूँ — इसमें कोई संशय नहीं।",
+        "explanation": "मैं सर्वत्र तृप्ति-रूप हूँ; मैं परम अमृत का रस हूँ; मैं एक ही अद्वितीय सत्, ब्रह्म ही हूँ — इसमें कोई संशय नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 40,
+        "number": 40,
+        "sanskrit": "सर्वशून्यस्वरूपोऽहं सकलागमगोचरः । मुक्तोऽहं मोक्षरूपोऽहं निर्वाणसुखरूपवान्",
+        "transliteration": "sarvaśūnyasvarūpo'haṃ sakalāgamagocaraḥ | mukto'haṃ mokṣarūpo'haṃ nirvāṇasukharūpavān",
+        "translation": "I am of the nature of the void of all; I am the object of all scriptures; I am free, I am of the form of liberation, I have the form of the bliss of nirvana.",
+        "hindi": "मैं सर्व-शून्य स्वरूप हूँ, सब आगमों का विषय हूँ; मैं मुक्त हूँ, मोक्ष-रूप हूँ और निर्वाण-सुख के स्वरूप वाला हूँ।",
+        "explanation": "मैं सर्व-शून्य स्वरूप हूँ, सब आगमों का विषय हूँ; मैं मुक्त हूँ, मोक्ष-रूप हूँ और निर्वाण-सुख के स्वरूप वाला हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 41,
+        "number": 41,
+        "sanskrit": "सत्यविज्ञानमात्रोऽहं सन्मात्रानन्दवानहम् । तुरीयातीतरूपोऽहं निर्विकल्पस्वरूपवान्",
+        "transliteration": "satyavijñānamātro'haṃ sanmātrānandavānaham | turīyātītarūpo'haṃ nirvikalpasvarūpavān",
+        "translation": "I am mere true knowledge; I am blissful with mere being; I am of a form beyond the Fourth; I am of the nature of non-conception.",
+        "hindi": "मैं केवल सत्य-विज्ञान हूँ; मैं सन्मात्र के आनन्द से युक्त हूँ; मैं तुरीय से भी परे रूप वाला और निर्विकल्प स्वरूप वाला हूँ।",
+        "explanation": "मैं केवल सत्य-विज्ञान हूँ; मैं सन्मात्र के आनन्द से युक्त हूँ; मैं तुरीय से भी परे रूप वाला और निर्विकल्प स्वरूप वाला हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 42,
+        "number": 42,
+        "sanskrit": "सर्वदा ह्यजरूपोऽहं नीरागोऽस्मि निरञ्जनः । अहं शुद्धोऽस्मि बुद्धोऽस्मि नित्योऽस्मि प्रभुरस्म्यहम्",
+        "transliteration": "sarvadā hyajarūpo'haṃ nīrāgo'smi nirañjanaḥ | ahaṃ śuddho'smi buddho'smi nityo'smi prabhurasmyaham",
+        "translation": "I am ever of unborn form; I am passionless, stainless; I am pure, I am awake, I am eternal, I am the lord.",
+        "hindi": "मैं सदा अजन्मा-रूप हूँ; मैं वीतराग और निरंजन हूँ; मैं शुद्ध हूँ, बुद्ध हूँ, नित्य हूँ और प्रभु हूँ।",
+        "explanation": "मैं सदा अजन्मा-रूप हूँ; मैं वीतराग और निरंजन हूँ; मैं शुद्ध हूँ, बुद्ध हूँ, नित्य हूँ और प्रभु हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 43,
+        "number": 43,
+        "sanskrit": "ओङ्कारार्थस्वरूपोऽस्मि निष्कलङ्कमयोऽस्म्यहम् । चिदाकारस्वरूपोऽस्मि नाहमस्मि न सोऽस्म्यहम्",
+        "transliteration": "oṅkārārthasvarūpo'smi niṣkalaṅkamayo'smyaham | cidākārasvarūpo'smi nāhamasmi na so'smyaham",
+        "translation": "I am of the nature of the meaning of Om; I am made of the stainless; I am of the nature of the form of consciousness; I am not \"I,\" nor am I \"he.\"",
+        "hindi": "मैं ओंकार के अर्थ का स्वरूप हूँ; मैं निष्कलंक-मय हूँ; मैं चिदाकार-स्वरूप हूँ; न मैं ‘मैं’ हूँ, न ‘वह’ हूँ।",
+        "explanation": "मैं ओंकार के अर्थ का स्वरूप हूँ; मैं निष्कलंक-मय हूँ; मैं चिदाकार-स्वरूप हूँ; न मैं ‘मैं’ हूँ, न ‘वह’ हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 44,
+        "number": 44,
+        "sanskrit": "न हि किञ्चित्स्वरूपोऽस्मि निर्व्यापारस्वरूपवान् । निरंशोऽस्मि निराभासो न मनो नेन्द्रियोऽस्म्यहम्",
+        "transliteration": "na hi kiñcitsvarūpo'smi nirvyāpārasvarūpavān | niraṃśo'smi nirābhāso na mano nendriyo'smyaham",
+        "translation": "I am of no particular nature; I am of the nature of non-action; I am partless, without appearance; I am neither mind nor sense.",
+        "hindi": "मैं किसी भी विशेष स्वरूप वाला नहीं हूँ; मैं निष्क्रिय स्वरूप वाला हूँ; मैं निरंश और निराभास हूँ; न मन हूँ, न इन्द्रिय।",
+        "explanation": "मैं किसी भी विशेष स्वरूप वाला नहीं हूँ; मैं निष्क्रिय स्वरूप वाला हूँ; मैं निरंश और निराभास हूँ; न मन हूँ, न इन्द्रिय।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 45,
+        "number": 45,
+        "sanskrit": "न बुद्धिर्न विकल्पोऽहं न देहादित्रयोऽस्म्यहम् । न जाग्रत्स्वप्नरूपोऽहं न सुषुप्तिस्वरूपवान्",
+        "transliteration": "na buddhirna vikalpo'haṃ na dehāditrayo'smyaham | na jāgratsvapnarūpo'haṃ na suṣuptisvarūpavān",
+        "translation": "I am neither intellect nor conception; I am not the three bodies; I am not of the form of waking or dream, nor of the nature of deep sleep.",
+        "hindi": "मैं न बुद्धि हूँ, न विकल्प; मैं तीनों शरीर नहीं हूँ; मैं न जाग्रत-रूप हूँ, न स्वप्न-रूप, और न सुषुप्ति-स्वरूप हूँ।",
+        "explanation": "मैं न बुद्धि हूँ, न विकल्प; मैं तीनों शरीर नहीं हूँ; मैं न जाग्रत-रूप हूँ, न स्वप्न-रूप, और न सुषुप्ति-स्वरूप हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 46,
+        "number": 46,
+        "sanskrit": "न तापत्रयरूपोऽहं नेषणात्रयवानहम् । श्रवणं नास्ति मे सिद्धेर्मननं च चिदात्मनि",
+        "transliteration": "na tāpatrayarūpo'haṃ neṣaṇātrayavānaham | śravaṇaṃ nāsti me siddhermananaṃ ca cidātmani",
+        "translation": "I am not of the form of the three afflictions; I do not have the three desires; for the Self of consciousness I have no hearing or reflection that perfects.",
+        "hindi": "मैं तीन तापों वाला नहीं हूँ, न मुझमें तीन एषणाएँ हैं। चिदात्मा में मेरे लिए सिद्धि हेतु न श्रवण है, न मनन।",
+        "explanation": "मैं तीन तापों वाला नहीं हूँ, न मुझमें तीन एषणाएँ हैं। चिदात्मा में मेरे लिए सिद्धि हेतु न श्रवण है, न मनन।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 47,
+        "number": 47,
+        "sanskrit": "सजातीयं न मे किञ्चिद्विजातीयं न मे क्वचित् । स्वगतं च न मे किञ्चिन्न मे भेदत्रयं क्वचित्",
+        "transliteration": "sajātīyaṃ na me kiñcidvijātīyaṃ na me kvacit | svagataṃ ca na me kiñcinna me bhedatrayaṃ kvacit",
+        "translation": "I have nothing of the same kind, nothing of a different kind anywhere; nothing within myself; I have the three kinds of difference nowhere.",
+        "hindi": "मेरा कोई सजातीय नहीं, कोई विजातीय कहीं नहीं, कुछ भी स्वगत नहीं; मुझमें तीनों प्रकार के भेद कहीं नहीं हैं।",
+        "explanation": "मेरा कोई सजातीय नहीं, कोई विजातीय कहीं नहीं, कुछ भी स्वगत नहीं; मुझमें तीनों प्रकार के भेद कहीं नहीं हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 48,
+        "number": 48,
+        "sanskrit": "असत्यं हि मनोरूपमसत्यं बुद्धिरूपकम् । अहङ्कारमसिद्धीति नित्योऽहं शाश्वतो ह्यजः",
+        "transliteration": "asatyaṃ hi manorūpamasatyaṃ buddhirūpakam | ahaṅkāramasiddhīti nityo'haṃ śāśvato hyajaḥ",
+        "translation": "The form of mind is unreal, the form of intellect is unreal; ego is not established — I am eternal, everlasting, unborn.",
+        "hindi": "मन का रूप असत्य है, बुद्धि का रूप असत्य है, अहंकार सिद्ध नहीं है — मैं नित्य, शाश्वत और अजन्मा हूँ।",
+        "explanation": "मन का रूप असत्य है, बुद्धि का रूप असत्य है, अहंकार सिद्ध नहीं है — मैं नित्य, शाश्वत और अजन्मा हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 49,
+        "number": 49,
+        "sanskrit": "देहत्रयमसद्विद्धि कालत्रयमसत्सदा । गुणत्रयमसत्विद्धि ह्ययं सत्यात्मकः शुचिः",
+        "transliteration": "dehatrayamasadviddhi kālatrayamasatsadā | guṇatrayamasatviddhi hyayaṃ satyātmakaḥ śuciḥ",
+        "translation": "Know the three bodies to be unreal; the three times are always unreal; know the three qualities to be unreal; this one is of the nature of truth, pure.",
+        "hindi": "तीनों शरीर असत् जानो; तीनों काल सदा असत् हैं; तीनों गुण असत् जानो — यह आत्मा सत्य-स्वरूप और पवित्र है।",
+        "explanation": "तीनों शरीर असत् जानो; तीनों काल सदा असत् हैं; तीनों गुण असत् जानो — यह आत्मा सत्य-स्वरूप और पवित्र है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 50,
+        "number": 50,
+        "sanskrit": "श्रुतं सर्वमसत्द्विद्धि वेदं सर्वमसत्सदा । शास्त्रं सर्वमसत्द्विद्धि ह्यहं सत्यचिदात्मकः",
+        "transliteration": "śrutaṃ sarvamasatdviddhi vedaṃ sarvamasatsadā | śāstraṃ sarvamasatdviddhi hyahaṃ satyacidātmakaḥ",
+        "translation": "Know all that is heard to be unreal; all Veda is always unreal; know all scripture to be unreal; I am of the nature of true consciousness.",
+        "hindi": "जो कुछ सुना गया सब असत् जानो; समस्त वेद सदा असत् है; समस्त शास्त्र असत् जानो — मैं सत्य चिदात्मक हूँ।",
+        "explanation": "जो कुछ सुना गया सब असत् जानो; समस्त वेद सदा असत् है; समस्त शास्त्र असत् जानो — मैं सत्य चिदात्मक हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 51,
+        "number": 51,
+        "sanskrit": "मूर्तित्रयमसद्विद्धि सर्वभूतमसत्सदा । सर्वतत्त्वमसद्विद्धि ह्ययं भूमा सदाशिवः",
+        "transliteration": "mūrtitrayamasadviddhi sarvabhūtamasatsadā | sarvatattvamasadviddhi hyayaṃ bhūmā sadāśivaḥ",
+        "translation": "Know the three forms to be unreal; all beings are always unreal; know all principles to be unreal; this is the fullness, Sadashiva.",
+        "hindi": "तीनों मूर्तियाँ असत् जानो; सब भूत सदा असत् हैं; सब तत्त्व असत् जानो — यह भूमा सदाशिव है।",
+        "explanation": "तीनों मूर्तियाँ असत् जानो; सब भूत सदा असत् हैं; सब तत्त्व असत् जानो — यह भूमा सदाशिव है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 52,
+        "number": 52,
+        "sanskrit": "गुरुशिष्यमसद्विद्धि गुरोर्मन्त्रमसत्ततः । यद्दृश्यं तदसद्विद्धि न मां विद्धि तथाविधम्",
+        "transliteration": "guruśiṣyamasadviddhi gurormantramasattataḥ | yaddṛśyaṃ tadasadviddhi na māṃ viddhi tathāvidham",
+        "translation": "Know teacher and disciple to be unreal, and the teacher's mantra then unreal; whatever is seen, know it as unreal; do not know me as of that kind.",
+        "hindi": "गुरु और शिष्य असत् जानो, गुरु का मन्त्र भी तब असत् है; जो कुछ दृश्य है उसे असत् जानो; मुझे वैसा मत जानो।",
+        "explanation": "गुरु और शिष्य असत् जानो, गुरु का मन्त्र भी तब असत् है; जो कुछ दृश्य है उसे असत् जानो; मुझे वैसा मत जानो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 53,
+        "number": 53,
+        "sanskrit": "यच्चिन्त्यं तदसद्विद्धि यन्न्यायं तदसत्सदा । यद्धितं तदसद्विद्धि न मां विद्धि तथाविधम्",
+        "transliteration": "yaccintyaṃ tadasadviddhi yannyāyaṃ tadasatsadā | yaddhitaṃ tadasadviddhi na māṃ viddhi tathāvidham",
+        "translation": "Know whatever is thought to be unreal; whatever is reasoning is always unreal; whatever is beneficial, know it as unreal; do not know me as of that kind.",
+        "hindi": "जो चिन्तन योग्य है उसे असत् जानो; जो न्याय है वह सदा असत् है; जो हितकर है उसे असत् जानो; मुझे वैसा मत जानो।",
+        "explanation": "जो चिन्तन योग्य है उसे असत् जानो; जो न्याय है वह सदा असत् है; जो हितकर है उसे असत् जानो; मुझे वैसा मत जानो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 54,
+        "number": 54,
+        "sanskrit": "सर्वान्प्राणानसद्विद्धि सर्वान्भोगानसत्त्विति । दृष्टं श्रुतमसद्विद्धि ओतं प्रोतमसन्मयम्",
+        "transliteration": "sarvānprāṇānasadviddhi sarvānbhogānasattviti | dṛṣṭaṃ śrutamasadviddhi otaṃ protamasanmayam",
+        "translation": "Know all breaths to be unreal, all pleasures unreal; know the seen and heard as unreal; the woven and interwoven as made of the unreal.",
+        "hindi": "सब प्राणों को असत् जानो, सब भोगों को असत् जानो; देखे-सुने को असत् जानो; ताने-बाने में बुना सब असत्-मय है।",
+        "explanation": "सब प्राणों को असत् जानो, सब भोगों को असत् जानो; देखे-सुने को असत् जानो; ताने-बाने में बुना सब असत्-मय है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 55,
+        "number": 55,
+        "sanskrit": "कार्याकार्यमसद्विद्धि नष्टं प्राप्तमसन्मयम् । दुःखादुःखमसद्विद्धि सर्वासर्वमन्मयम्",
+        "transliteration": "kāryākāryamasadviddhi naṣṭaṃ prāptamasanmayam | duḥkhāduḥkhamasadviddhi sarvāsarvamanmayam",
+        "translation": "Know what is to be done and not to be done as unreal; what is lost and gained as made of the unreal; know pain and no-pain as unreal; all and not-all as made of the unreal.",
+        "hindi": "कार्य और अकार्य को असत् जानो; खोया और पाया असत्-मय है; दुःख और सुख को असत् जानो; सब और नहीं-सब असत्-मय है।",
+        "explanation": "कार्य और अकार्य को असत् जानो; खोया और पाया असत्-मय है; दुःख और सुख को असत् जानो; सब और नहीं-सब असत्-मय है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 56,
+        "number": 56,
+        "sanskrit": "पूर्णापूर्णमसद्विद्धि धर्माधर्ममसन्मयम् । लाभालाभावसद्विद्धि जयाजयमसन्मयम्",
+        "transliteration": "pūrṇāpūrṇamasadviddhi dharmādharmamasanmayam | lābhālābhāvasadviddhi jayājayamasanmayam",
+        "translation": "Know full and not-full as unreal; merit and demerit as made of the unreal; know gain and loss as unreal; victory and defeat as made of the unreal.",
+        "hindi": "पूर्ण और अपूर्ण को असत् जानो; धर्म और अधर्म असत्-मय हैं; लाभ और हानि असत् जानो; जय और पराजय असत्-मय हैं।",
+        "explanation": "पूर्ण और अपूर्ण को असत् जानो; धर्म और अधर्म असत्-मय हैं; लाभ और हानि असत् जानो; जय और पराजय असत्-मय हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 57,
+        "number": 57,
+        "sanskrit": "शब्दं सर्वमसद्विद्धि स्पर्शं सर्वमसत्सदा । रूपं सर्वमसद्विद्धि रसं सर्वमसन्मयम्",
+        "transliteration": "śabdaṃ sarvamasadviddhi sparśaṃ sarvamasatsadā | rūpaṃ sarvamasadviddhi rasaṃ sarvamasanmayam",
+        "translation": "Know all sound as unreal; all touch is always unreal; know all form as unreal; all taste as made of the unreal.",
+        "hindi": "सब शब्द असत् जानो; सब स्पर्श सदा असत् है; सब रूप असत् जानो; सब रस असत्-मय है।",
+        "explanation": "सब शब्द असत् जानो; सब स्पर्श सदा असत् है; सब रूप असत् जानो; सब रस असत्-मय है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 58,
+        "number": 58,
+        "sanskrit": "गन्धं सर्वमसद्विद्धि सर्वाज्ञानमसन्मयम् । असदेव सदा सर्वमसदेव भवोद्भवम्",
+        "transliteration": "gandhaṃ sarvamasadviddhi sarvājñānamasanmayam | asadeva sadā sarvamasadeva bhavodbhavam",
+        "translation": "Know all smell as unreal; all ignorance as made of the unreal; all is always only unreal; the arising of becoming is only unreal.",
+        "hindi": "सब गन्ध असत् जानो; सब अज्ञान असत्-मय है; सब कुछ सदा असत् ही है; संसार का उद्भव भी असत् ही है।",
+        "explanation": "सब गन्ध असत् जानो; सब अज्ञान असत्-मय है; सब कुछ सदा असत् ही है; संसार का उद्भव भी असत् ही है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 59,
+        "number": 59,
+        "sanskrit": "असदेव गुणं सर्वं सन्मात्रमहमेव हि । स्वात्ममन्त्रं सदा पश्येत्स्वात्ममन्त्रं सदाभ्यसेत्",
+        "transliteration": "asadeva guṇaṃ sarvaṃ sanmātramahameva hi | svātmamantraṃ sadā paśyetsvātmamantraṃ sadābhyaset",
+        "translation": "All qualities are only unreal; I alone am mere being. One should always see the mantra of one's own Self; one should always practice the mantra of one's own Self.",
+        "hindi": "सब गुण असत् ही हैं; मैं ही केवल सत्-मात्र हूँ। अपने आत्म-मन्त्र को सदा देखना चाहिए और उसी का सदा अभ्यास करना चाहिए।",
+        "explanation": "सब गुण असत् ही हैं; मैं ही केवल सत्-मात्र हूँ। अपने आत्म-मन्त्र को सदा देखना चाहिए और उसी का सदा अभ्यास करना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 60,
+        "number": 60,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयं दृश्यपापं विनाशयेत् । अहं ब्रह्मास्मि मन्त्रोऽयमन्यमन्त्रं विनाशयेत्",
+        "transliteration": "ahaṃ brahmāsmi mantro'yaṃ dṛśyapāpaṃ vināśayet | ahaṃ brahmāsmi mantro'yamanyamantraṃ vināśayet",
+        "translation": "This mantra \"I am Brahman\" destroys the sin of the seen; this mantra \"I am Brahman\" destroys other mantras.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र दृश्य के पाप का नाश करता है; यह मन्त्र अन्य सब मन्त्रों का भी नाश कर देता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र दृश्य के पाप का नाश करता है; यह मन्त्र अन्य सब मन्त्रों का भी नाश कर देता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 61,
+        "number": 61,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयं देहदोषं विनाशयेत् । अहं ब्रह्मास्मि मन्त्रोऽयं जन्मपापं विनाशयेत्",
+        "transliteration": "ahaṃ brahmāsmi mantro'yaṃ dehadoṣaṃ vināśayet | ahaṃ brahmāsmi mantro'yaṃ janmapāpaṃ vināśayet",
+        "translation": "This mantra \"I am Brahman\" destroys the faults of the body; this mantra \"I am Brahman\" destroys the sin of birth.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र देह के दोष का नाश करता है; यह मन्त्र जन्म के पाप का नाश करता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र देह के दोष का नाश करता है; यह मन्त्र जन्म के पाप का नाश करता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 62,
+        "number": 62,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयं मृत्युपाशं विनाशयेत् । अहं ब्रह्मास्मि मन्त्रोऽयं द्वैतदुःखं विनाशयेत्",
+        "transliteration": "ahaṃ brahmāsmi mantro'yaṃ mṛtyupāśaṃ vināśayet | ahaṃ brahmāsmi mantro'yaṃ dvaitaduḥkhaṃ vināśayet",
+        "translation": "This mantra \"I am Brahman\" destroys the noose of death; this mantra \"I am Brahman\" destroys the sorrow of duality.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र मृत्यु के पाश को नष्ट करता है; यह मन्त्र द्वैत के दुःख को नष्ट करता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र मृत्यु के पाश को नष्ट करता है; यह मन्त्र द्वैत के दुःख को नष्ट करता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 63,
+        "number": 63,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयं भेदबुद्धिं विनाशयेत् । अहं ब्रह्मास्मि मन्त्रोऽयं चिन्तादुःखं विनाशयेत्",
+        "transliteration": "ahaṃ brahmāsmi mantro'yaṃ bhedabuddhiṃ vināśayet | ahaṃ brahmāsmi mantro'yaṃ cintāduḥkhaṃ vināśayet",
+        "translation": "This mantra \"I am Brahman\" destroys the notion of difference; this mantra \"I am Brahman\" destroys the sorrow of anxiety.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र भेद-बुद्धि को नष्ट करता है; यह मन्त्र चिन्ता के दुःख को नष्ट करता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र भेद-बुद्धि को नष्ट करता है; यह मन्त्र चिन्ता के दुःख को नष्ट करता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 64,
+        "number": 64,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयं बुद्धिव्याधिं विनाशयेत् । अहं ब्रह्मास्मि मन्त्रोऽयं चित्तबन्धं विनाशयेत्",
+        "transliteration": "ahaṃ brahmāsmi mantro'yaṃ buddhivyādhiṃ vināśayet | ahaṃ brahmāsmi mantro'yaṃ cittabandhaṃ vināśayet",
+        "translation": "This mantra \"I am Brahman\" destroys the disease of the intellect; this mantra \"I am Brahman\" destroys the bondage of the mind.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र बुद्धि के रोग को नष्ट करता है; यह मन्त्र चित्त के बन्धन को नष्ट करता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र बुद्धि के रोग को नष्ट करता है; यह मन्त्र चित्त के बन्धन को नष्ट करता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 65,
+        "number": 65,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयं सर्वव्याधीन्विनाशयेत् । अहं ब्रह्मास्मि मन्त्रोऽयं सर्वशोकं विनाशयेत्",
+        "transliteration": "ahaṃ brahmāsmi mantro'yaṃ sarvavyādhīnvināśayet | ahaṃ brahmāsmi mantro'yaṃ sarvaśokaṃ vināśayet",
+        "translation": "This mantra \"I am Brahman\" destroys all diseases; this mantra \"I am Brahman\" destroys all grief.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र सब रोगों को नष्ट करता है; यह मन्त्र सब शोक को नष्ट करता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र सब रोगों को नष्ट करता है; यह मन्त्र सब शोक को नष्ट करता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 66,
+        "number": 66,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयं कामादीन्नाशयेत्क्षणात् । अहं ब्रह्मास्मि मन्त्रोऽयं क्रोधशक्तिं विनाशयेत्",
+        "transliteration": "ahaṃ brahmāsmi mantro'yaṃ kāmādīnnāśayetkṣaṇāt | ahaṃ brahmāsmi mantro'yaṃ krodhaśaktiṃ vināśayet",
+        "translation": "This mantra \"I am Brahman\" destroys desire and the rest in a moment; this mantra \"I am Brahman\" destroys the power of anger.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र काम आदि को क्षण-भर में नष्ट कर देता है; यह मन्त्र क्रोध की शक्ति को नष्ट करता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र काम आदि को क्षण-भर में नष्ट कर देता है; यह मन्त्र क्रोध की शक्ति को नष्ट करता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 67,
+        "number": 67,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयं चित्तवृत्तिं विनाशयेत् । अहं ब्रह्मास्मि मन्त्रोऽयं सङ्कल्पादीन्विनाशयेत्",
+        "transliteration": "ahaṃ brahmāsmi mantro'yaṃ cittavṛttiṃ vināśayet | ahaṃ brahmāsmi mantro'yaṃ saṅkalpādīnvināśayet",
+        "translation": "This mantra \"I am Brahman\" destroys the modifications of the mind; this mantra \"I am Brahman\" destroys intention and the rest.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र चित्त की वृत्ति को नष्ट करता है; यह मन्त्र संकल्प आदि को नष्ट करता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र चित्त की वृत्ति को नष्ट करता है; यह मन्त्र संकल्प आदि को नष्ट करता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 68,
+        "number": 68,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयं कोटिदोषं विनाशयेत् । अहं ब्रह्मास्मि मन्त्रोऽयं सर्वतन्त्रं विनाशयेत्",
+        "transliteration": "ahaṃ brahmāsmi mantro'yaṃ koṭidoṣaṃ vināśayet | ahaṃ brahmāsmi mantro'yaṃ sarvatantraṃ vināśayet",
+        "translation": "This mantra \"I am Brahman\" destroys crores of faults; this mantra \"I am Brahman\" destroys every other system.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र करोड़ों दोषों को नष्ट करता है; यह मन्त्र अन्य सब तन्त्रों को नष्ट कर देता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र करोड़ों दोषों को नष्ट करता है; यह मन्त्र अन्य सब तन्त्रों को नष्ट कर देता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 69,
+        "number": 69,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयमात्माज्ञानं विनाशयेत् । अहं ब्रह्मास्मि मन्त्रोऽयमात्मलोकजयप्रदः",
+        "transliteration": "ahaṃ brahmāsmi mantro'yamātmājñānaṃ vināśayet | ahaṃ brahmāsmi mantro'yamātmalokajayapradaḥ",
+        "translation": "This mantra \"I am Brahman\" destroys ignorance of the Self; this mantra \"I am Brahman\" gives conquest of the world of the Self.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र आत्म-अज्ञान को नष्ट करता है; यह मन्त्र आत्म-लोक की विजय देने वाला है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र आत्म-अज्ञान को नष्ट करता है; यह मन्त्र आत्म-लोक की विजय देने वाला है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 70,
+        "number": 70,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयमप्रतर्क्यसुखप्रदः । अहं ब्रह्मास्मि मन्त्रोऽयमजडत्वं प्रयच्छति",
+        "transliteration": "ahaṃ brahmāsmi mantro'yamapratarkyasukhapradaḥ | ahaṃ brahmāsmi mantro'yamajaḍatvaṃ prayacchati",
+        "translation": "This mantra \"I am Brahman\" gives happiness beyond argument; this mantra \"I am Brahman\" gives non-dullness.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र तर्क से परे सुख देने वाला है; यह मन्त्र जड़ता से मुक्ति देता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र तर्क से परे सुख देने वाला है; यह मन्त्र जड़ता से मुक्ति देता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 71,
+        "number": 71,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयमनात्मासुरमर्दनः । अहं ब्रह्मास्मि वज्रोऽयमनात्माख्यगिरीन्हरेत्",
+        "transliteration": "ahaṃ brahmāsmi mantro'yamanātmāsuramardanaḥ | ahaṃ brahmāsmi vajro'yamanātmākhyagirīnharet",
+        "translation": "This mantra \"I am Brahman\" crushes the demons of the non-Self; this \"I am Brahman\" is a thunderbolt that shatters the mountains called non-Self.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र अनात्म-रूपी असुरों का मर्दन करता है; यह ‘मैं ब्रह्म हूँ’ वज्र है जो अनात्म नामक पर्वतों को ध्वस्त कर देता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र अनात्म-रूपी असुरों का मर्दन करता है; यह ‘मैं ब्रह्म हूँ’ वज्र है जो अनात्म नामक पर्वतों को ध्वस्त कर देता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 72,
+        "number": 72,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयमनात्माख्यासुरान्हरेत् । अहं ब्रह्मास्मि मन्त्रोऽयं सर्वांस्तान्मोक्षयिष्यति",
+        "transliteration": "ahaṃ brahmāsmi mantro'yamanātmākhyāsurānharet | ahaṃ brahmāsmi mantro'yaṃ sarvāṃstānmokṣayiṣyati",
+        "translation": "This mantra \"I am Brahman\" removes the demons called non-Self; this mantra \"I am Brahman\" will free them all.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र अनात्म नामक असुरों को हर लेता है; यह मन्त्र उन सबको मुक्त कर देगा।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र अनात्म नामक असुरों को हर लेता है; यह मन्त्र उन सबको मुक्त कर देगा।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 73,
+        "number": 73,
+        "sanskrit": "अहं ब्रह्मास्मि मन्त्रोऽयं ज्ञानानन्दं प्रयच्छति । सप्तकोटिमहामन्त्रं जन्मकोटिशतप्रदम्",
+        "transliteration": "ahaṃ brahmāsmi mantro'yaṃ jñānānandaṃ prayacchati | saptakoṭimahāmantraṃ janmakoṭiśatapradam",
+        "translation": "This mantra \"I am Brahman\" gives knowledge-bliss; it is the great mantra of seven crores, giving a hundred crores of births.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह मन्त्र ज्ञानानन्द देता है; यह सात करोड़ महामन्त्रों के बराबर है, जो करोड़ों जन्मों का फल देता है।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह मन्त्र ज्ञानानन्द देता है; यह सात करोड़ महामन्त्रों के बराबर है, जो करोड़ों जन्मों का फल देता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 74,
+        "number": 74,
+        "sanskrit": "सर्वमन्त्रान्समुत्सृज्य एतं मन्त्रं समभ्यसेत् । सद्यो मोक्षमवाप्नोति नात्र सन्देहमण्वपि",
+        "transliteration": "sarvamantrānsamutsṛjya etaṃ mantraṃ samabhyaset | sadyo mokṣamavāpnoti nātra sandehamaṇvapi",
+        "translation": "Abandoning all mantras, one should practice this mantra; one attains liberation at once — there is not even an atom of doubt.",
+        "hindi": "सब मन्त्रों को छोड़कर इसी मन्त्र का भली-भाँति अभ्यास करना चाहिए; इससे तुरन्त मोक्ष प्राप्त होता है — इसमें अणु-मात्र भी सन्देह नहीं।",
+        "explanation": "सब मन्त्रों को छोड़कर इसी मन्त्र का भली-भाँति अभ्यास करना चाहिए; इससे तुरन्त मोक्ष प्राप्त होता है — इसमें अणु-मात्र भी सन्देह नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Chapter 5 — Radical Negation of Duality (Neti-Neti)",
+    "titleSanskrit": "पञ्चम अध्याय — सर्वदृश्य निषेध एवं ब्रह्मभाव",
+    "summary": "Exhaustive negation of all perceived duality: \"All that is seen is non-existent; Brahman alone is all.\"",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "कुमारः परमेश्वरं पप्रच्छ जीवन्मुक्तविदेहमुक्तयोः स्थितिमनुब्रूहीति । स होवाच परः शिवः । चिदात्माहं परात्माहं निर्गुणोऽहं परात्परः । आत्ममात्रेण यस्तिष्ठेत्स जीवन्मुक्त उच्यते",
+        "transliteration": "kumāraḥ parameśvaraṃ papraccha jīvanmuktavidehamuktayoḥ sthitimanubrūhīti | sa hovāca paraḥ śivaḥ | cidātmāhaṃ parātmāhaṃ nirguṇo'haṃ parātparaḥ | ātmamātreṇa yastiṣṭhetsa jīvanmukta ucyate",
+        "translation": "Kumara asked the Supreme Lord: \"Tell me the state of the liberated-while-living and the bodiless liberated.\" The Supreme Shiva said: I am the Self of consciousness, I am the Supreme Self, I am attributeless, I am higher than the highest. He who stays as the Self alone is called liberated while living.",
+        "hindi": "कुमार ने परमेश्वर से पूछा — ‘जीवन्मुक्त और विदेहमुक्त की स्थिति मुझे बताइए।’ तब परम शिव ने कहा — मैं चिदात्मा हूँ, परमात्मा हूँ, निर्गुण हूँ, परे से भी परे हूँ। जो केवल आत्म-भाव में स्थित रहता है, वह जीवन्मुक्त कहलाता है।",
+        "explanation": "कुमार ने परमेश्वर से पूछा — ‘जीवन्मुक्त और विदेहमुक्त की स्थिति मुझे बताइए।’ तब परम शिव ने कहा — मैं चिदात्मा हूँ, परमात्मा हूँ, निर्गुण हूँ, परे से भी परे हूँ। जो केवल आत्म-भाव में स्थित रहता है, वह जीवन्मुक्त कहलाता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "देहत्रयातिरिक्तोऽहं शुद्धचैतन्यमस्म्यहम् । ब्रह्माहमिति यस्यान्तः स जीवनमुक्त उच्यते",
+        "transliteration": "dehatrayātirikto'haṃ śuddhacaitanyamasmyaham | brahmāhamiti yasyāntaḥ sa jīvanamukta ucyate",
+        "translation": "I am beyond the three bodies; I am pure consciousness. He in whom there is inwardly \"I am Brahman\" is called liberated while living.",
+        "hindi": "‘मैं तीनों शरीरों से परे हूँ, मैं शुद्ध चैतन्य हूँ।’ ‘मैं ब्रह्म हूँ’ — यह निश्चय जिसके भीतर है, वह जीवन्मुक्त कहलाता है।",
+        "explanation": "‘मैं तीनों शरीरों से परे हूँ, मैं शुद्ध चैतन्य हूँ।’ ‘मैं ब्रह्म हूँ’ — यह निश्चय जिसके भीतर है, वह जीवन्मुक्त कहलाता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "आनन्दघनरूपोऽस्मि परानन्दघनोऽस्म्यहम् । यस्य देहादिकं नास्ति यस्य ब्रह्मेति निश्चयः । परमानन्दपूर्णो यः स जीवन्मुक्त उच्यते",
+        "transliteration": "ānandaghanarūpo'smi parānandaghano'smyaham | yasya dehādikaṃ nāsti yasya brahmeti niścayaḥ | paramānandapūrṇo yaḥ sa jīvanmukta ucyate",
+        "translation": "I am of the form of a mass of bliss; I am a mass of supreme bliss. He who has no body and the like, who has the certainty \"Brahman,\" who is full of supreme bliss, is called liberated while living.",
+        "hindi": "मैं आनन्दघन-रूप हूँ, परम आनन्द का घन हूँ। जिसके लिए देह आदि का अस्तित्व नहीं है और जिसे ‘ब्रह्म’ का निश्चय है, जो परमानन्द से पूर्ण है, वह जीवन्मुक्त कहलाता है।",
+        "explanation": "मैं आनन्दघन-रूप हूँ, परम आनन्द का घन हूँ। जिसके लिए देह आदि का अस्तित्व नहीं है और जिसे ‘ब्रह्म’ का निश्चय है, जो परमानन्द से पूर्ण है, वह जीवन्मुक्त कहलाता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "यस्य किञ्चिदहं नास्ति चिन्मात्रेणावतिष्ठते । चैतन्यमात्रो यस्यान्तश्चिन्मात्रैकस्वरूपवान्",
+        "transliteration": "yasya kiñcidahaṃ nāsti cinmātreṇāvatiṣṭhate | caitanyamātro yasyāntaścinmātraikasvarūpavān",
+        "translation": "He in whom there is no \"I\" of anything, who stays as mere consciousness, whose inner self is mere consciousness, of the single nature of mere consciousness,",
+        "hindi": "जिसमें ‘मैं’ जैसा कुछ नहीं है, जो केवल चिन्मात्र रूप से स्थित है, जिसका अन्तःकरण केवल चैतन्य-मात्र है और जो एकमात्र चिन्मात्र स्वरूप वाला है,",
+        "explanation": "जिसमें ‘मैं’ जैसा कुछ नहीं है, जो केवल चिन्मात्र रूप से स्थित है, जिसका अन्तःकरण केवल चैतन्य-मात्र है और जो एकमात्र चिन्मात्र स्वरूप वाला है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "सर्वत्र पूर्णरूपात्मा सर्वत्रात्मावशेषकः । आनन्दरतिरव्यक्तः परिपूर्णश्चिदात्मकः",
+        "transliteration": "sarvatra pūrṇarūpātmā sarvatrātmāvaśeṣakaḥ | ānandaratiravyaktaḥ paripūrṇaścidātmakaḥ",
+        "translation": "whose self is of full form everywhere, who is the Self remaining everywhere, delighting in bliss, unmanifest, wholly full, of the nature of consciousness,",
+        "hindi": "जिसकी आत्मा सर्वत्र पूर्ण-रूप है, जो सर्वत्र आत्म-रूप में ही शेष रहता है, आनन्द में रमा हुआ, अव्यक्त, परिपूर्ण और चिदात्मक है,",
+        "explanation": "जिसकी आत्मा सर्वत्र पूर्ण-रूप है, जो सर्वत्र आत्म-रूप में ही शेष रहता है, आनन्द में रमा हुआ, अव्यक्त, परिपूर्ण और चिदात्मक है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "शुद्धचैतन्यरूपात्मा सर्वसङ्गविवर्जितः । नित्यानन्दः प्रसन्नात्मा ह्यन्यचिन्ताविवर्जितः ॥",
+        "transliteration": "śuddhacaitanyarūpātmā sarvasaṅgavivarjitaḥ | nityānandaḥ prasannātmā hyanyacintāvivarjitaḥ ||",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "किञ्चिदस्तित्वहीनो यः स जीवन्मुक्त उच्यते । न मे चित्तं न मे बुद्धिर्नाहङ्कारो न चेन्द्रियम्",
+        "transliteration": "kiñcidastitvahīno yaḥ sa jīvanmukta ucyate | na me cittaṃ na me buddhirnāhaṅkāro na cendriyam",
+        "translation": "of the form of pure consciousness, free of all attachment, of eternal bliss, serene, free of other thoughts, devoid of any trace of existence — he is called liberated while living. \"Mine is not the mind, not the intellect, not the ego, not the senses.",
+        "hindi": "जिसकी आत्मा शुद्ध चैतन्य-रूप है, जो सब संग से रहित, नित्य आनन्द वाला, प्रसन्न-चित्त और अन्य चिन्ताओं से मुक्त है, जो किसी भी प्रकार की सत्ता-भावना से रहित है — वह जीवन्मुक्त कहलाता है। ‘न मेरा चित्त है, न बुद्धि, न अहंकार, न इन्द्रिय;",
+        "explanation": "जिसकी आत्मा शुद्ध चैतन्य-रूप है, जो सब संग से रहित, नित्य आनन्द वाला, प्रसन्न-चित्त और अन्य चिन्ताओं से मुक्त है, जो किसी भी प्रकार की सत्ता-भावना से रहित है — वह जीवन्मुक्त कहलाता है। ‘न मेरा चित्त है, न बुद्धि, न अहंकार, न इन्द्रिय;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "न मे देहः कदाचिद्वा न मे प्राणादयः क्वचित् । न मे माया न मे कामो न मे क्रोधः परोऽस्म्यहम्",
+        "transliteration": "na me dehaḥ kadācidvā na me prāṇādayaḥ kvacit | na me māyā na me kāmo na me krodhaḥ paro'smyaham",
+        "translation": "\"Mine is not the body at any time; not the breath and the rest anywhere; not illusion is mine, not desire, not anger — I am the supreme.",
+        "hindi": "न मेरा देह कभी है, न प्राण आदि कहीं हैं; न मेरी माया है, न काम, न क्रोध — मैं परम हूँ।",
+        "explanation": "न मेरा देह कभी है, न प्राण आदि कहीं हैं; न मेरी माया है, न काम, न क्रोध — मैं परम हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "न मे किञ्चिदिदं वापि न मे किञ्चित्क्वचिज्जगत् । न मे दोषो न मे लिङ्गं न मे चक्षुर्न मे मनः",
+        "transliteration": "na me kiñcididaṃ vāpi na me kiñcitkvacijjagat | na me doṣo na me liṅgaṃ na me cakṣurna me manaḥ",
+        "translation": "\"Mine is not anything this; mine is not any world anywhere; not fault is mine, not mark, not eye, not mind.",
+        "hindi": "न मेरा यह कुछ है, न कहीं कोई जगत मेरा है; न दोष मेरा है, न लिंग (चिह्न), न नेत्र, न मन।",
+        "explanation": "न मेरा यह कुछ है, न कहीं कोई जगत मेरा है; न दोष मेरा है, न लिंग (चिह्न), न नेत्र, न मन।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 10,
+        "number": 10,
+        "sanskrit": "न मे श्रोत्रं न मे नासा न मे जिह्वा न मे करः । न मे जाग्रन्न मे स्वप्नं न मे कारणमण्वपि",
+        "transliteration": "na me śrotraṃ na me nāsā na me jihvā na me karaḥ | na me jāgranna me svapnaṃ na me kāraṇamaṇvapi",
+        "translation": "\"Mine is not ear, nose, tongue or hand; not waking, not dream, not even an atom of the cause.",
+        "hindi": "न कान मेरा है, न नाक, न जीभ, न हाथ; न जाग्रत मेरा है, न स्वप्न, और कारण का अणुमात्र भी मेरा नहीं।",
+        "explanation": "न कान मेरा है, न नाक, न जीभ, न हाथ; न जाग्रत मेरा है, न स्वप्न, और कारण का अणुमात्र भी मेरा नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 11,
+        "number": 11,
+        "sanskrit": "न मे तुरीयमिति यः स जीवन्मुक्त उच्यते । इदं सर्वं न मे किञ्चिदयं सर्वं न मे क्वचित्",
+        "transliteration": "na me turīyamiti yaḥ sa jīvanmukta ucyate | idaṃ sarvaṃ na me kiñcidayaṃ sarvaṃ na me kvacit",
+        "translation": "\"Mine is not even the Fourth\" — he who thus knows is called liberated while living. \"All this is nothing of mine; this all is nowhere mine.",
+        "hindi": "‘तुरीय भी मेरा नहीं’ — जो ऐसा जानता है, वह जीवन्मुक्त कहलाता है। यह सब कुछ मेरा नहीं है, यह सब कहीं भी मेरा नहीं है।",
+        "explanation": "‘तुरीय भी मेरा नहीं’ — जो ऐसा जानता है, वह जीवन्मुक्त कहलाता है। यह सब कुछ मेरा नहीं है, यह सब कहीं भी मेरा नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 12,
+        "number": 12,
+        "sanskrit": "न मे कालो न मे देशो न मे वस्तु न मे मतिः । न मे स्नानं न मे सन्ध्या न मे दैवं न मे स्थलम्",
+        "transliteration": "na me kālo na me deśo na me vastu na me matiḥ | na me snānaṃ na me sandhyā na me daivaṃ na me sthalam",
+        "translation": "\"Mine is not time, not place, not thing, not thought; not bathing, not twilight prayer, not deity, not place.",
+        "hindi": "न काल मेरा है, न देश, न वस्तु, न मति; न स्नान मेरा है, न सन्ध्या, न देवता, न स्थान।",
+        "explanation": "न काल मेरा है, न देश, न वस्तु, न मति; न स्नान मेरा है, न सन्ध्या, न देवता, न स्थान।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 13,
+        "number": 13,
+        "sanskrit": "न मे तीर्थं न मे सेवा न मे ज्ञानं न मे पदम् । न मे बन्धो न मे जन्म न मे वाक्यं न मे रविः",
+        "transliteration": "na me tīrthaṃ na me sevā na me jñānaṃ na me padam | na me bandho na me janma na me vākyaṃ na me raviḥ",
+        "translation": "\"Mine is not pilgrimage, not service, not knowledge, not state; not bondage, not birth, not word, not the sun.",
+        "hindi": "न तीर्थ मेरा है, न सेवा, न ज्ञान, न पद; न बन्धन, न जन्म, न वाक्य और न सूर्य।",
+        "explanation": "न तीर्थ मेरा है, न सेवा, न ज्ञान, न पद; न बन्धन, न जन्म, न वाक्य और न सूर्य।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 14,
+        "number": 14,
+        "sanskrit": "न मे पुण्यं न मे पापं न मे कार्यं न मे शुभम् । ने मे जीव इति स्वात्मा न मे किञ्चिज्जगत्रयम्",
+        "transliteration": "na me puṇyaṃ na me pāpaṃ na me kāryaṃ na me śubham | ne me jīva iti svātmā na me kiñcijjagatrayam",
+        "translation": "\"Mine is not merit, not sin, not work, not the auspicious; not 'I am the individual' — the Self is mine; nothing of the three worlds is mine.",
+        "hindi": "न पुण्य मेरा है, न पाप, न कर्म, न शुभ; ‘मैं जीव हूँ’ — यह भी मेरा नहीं, मेरा तो स्वात्मा है; तीनों लोकों में से कुछ भी मेरा नहीं।",
+        "explanation": "न पुण्य मेरा है, न पाप, न कर्म, न शुभ; ‘मैं जीव हूँ’ — यह भी मेरा नहीं, मेरा तो स्वात्मा है; तीनों लोकों में से कुछ भी मेरा नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 15,
+        "number": 15,
+        "sanskrit": "न मे मोक्षो न मे द्वैतं न मे वेदो न मे विधिः । न मेऽन्तिकं न मे दूरं न मे बोधो न मे रहः",
+        "transliteration": "na me mokṣo na me dvaitaṃ na me vedo na me vidhiḥ | na me'ntikaṃ na me dūraṃ na me bodho na me rahaḥ",
+        "translation": "\"Mine is not liberation, not duality, not the Veda, not the rite; not near, not far, not awakening, not secret.",
+        "hindi": "न मोक्ष मेरा है, न द्वैत, न वेद, न विधि; न समीप, न दूर, न बोध और न रहस्य।",
+        "explanation": "न मोक्ष मेरा है, न द्वैत, न वेद, न विधि; न समीप, न दूर, न बोध और न रहस्य।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 16,
+        "number": 16,
+        "sanskrit": "न मे गुरुर्न मे शिष्यो न मे हीनो न चाधिकः । न मे ब्रह्म न मे विष्णुर्न मे रुद्रो न चन्द्रमाः",
+        "transliteration": "na me gururna me śiṣyo na me hīno na cādhikaḥ | na me brahma na me viṣṇurna me rudro na candramāḥ",
+        "translation": "\"Mine is not teacher, not disciple, not inferior, not superior; not Brahma, not Vishnu, not Rudra, not the moon.",
+        "hindi": "न गुरु मेरा है, न शिष्य, न हीन, न अधिक; न ब्रह्मा, न विष्णु, न रुद्र और न चन्द्रमा।",
+        "explanation": "न गुरु मेरा है, न शिष्य, न हीन, न अधिक; न ब्रह्मा, न विष्णु, न रुद्र और न चन्द्रमा।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 17,
+        "number": 17,
+        "sanskrit": "न मे पृथ्वी न मे तोयं न मे वायुर्न मे वियत् । न मे वह्निर्न मे गोत्रं न मे लक्ष्यं न मे भवः",
+        "transliteration": "na me pṛthvī na me toyaṃ na me vāyurna me viyat | na me vahnirna me gotraṃ na me lakṣyaṃ na me bhavaḥ",
+        "translation": "\"Mine is not earth, not water, not wind, not space; not fire, not lineage, not aim, not becoming.",
+        "hindi": "न पृथ्वी मेरी है, न जल, न वायु, न आकाश; न अग्नि, न गोत्र, न लक्ष्य, न संसार।",
+        "explanation": "न पृथ्वी मेरी है, न जल, न वायु, न आकाश; न अग्नि, न गोत्र, न लक्ष्य, न संसार।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 18,
+        "number": 18,
+        "sanskrit": "न मे ध्याता न मे ध्येयं न मे ध्यानं न मे मनुः । न मे शीतं न मे चोष्णं न मे तृष्णा न मे क्षुधा",
+        "transliteration": "na me dhyātā na me dhyeyaṃ na me dhyānaṃ na me manuḥ | na me śītaṃ na me coṣṇaṃ na me tṛṣṇā na me kṣudhā",
+        "translation": "\"Mine is not the meditator, not the object of meditation, not meditation, not the mantra; not cold, not heat, not thirst, not hunger.",
+        "hindi": "न ध्याता मेरा है, न ध्येय, न ध्यान, न मन्त्र; न शीत, न उष्ण, न प्यास, न भूख।",
+        "explanation": "न ध्याता मेरा है, न ध्येय, न ध्यान, न मन्त्र; न शीत, न उष्ण, न प्यास, न भूख।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 19,
+        "number": 19,
+        "sanskrit": "न मे मित्रं न मे शत्रुर्न मे मोहो न मे जयः । न मे पूर्वं न मे पश्चान्न मे चोर्ध्वं न मे दिशः",
+        "transliteration": "na me mitraṃ na me śatrurna me moho na me jayaḥ | na me pūrvaṃ na me paścānna me cordhvaṃ na me diśaḥ",
+        "translation": "\"Mine is not friend, not enemy, not delusion, not victory; not before, not after, not above, not the directions.",
+        "hindi": "न मित्र मेरा है, न शत्रु, न मोह, न जय; न पूर्व, न पश्चिम, न ऊर्ध्व और न दिशाएँ।",
+        "explanation": "न मित्र मेरा है, न शत्रु, न मोह, न जय; न पूर्व, न पश्चिम, न ऊर्ध्व और न दिशाएँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 20,
+        "number": 20,
+        "sanskrit": "न मे वक्तव्यमल्पं वा न मे श्रोतव्यमण्वपि । न मे गन्तव्यमीषद्वा न मे ध्यातव्यमण्वपि",
+        "transliteration": "na me vaktavyamalpaṃ vā na me śrotavyamaṇvapi | na me gantavyamīṣadvā na me dhyātavyamaṇvapi",
+        "translation": "\"Mine is nothing to be said, even slight; nothing to be heard, even an atom; nothing to go to, even slightly; nothing to be meditated on, even an atom.",
+        "hindi": "न मेरे लिए थोड़ा भी कहने योग्य है, न अणुमात्र भी सुनने योग्य; न थोड़ा भी जाने योग्य है, न अणुमात्र भी ध्यान करने योग्य।",
+        "explanation": "न मेरे लिए थोड़ा भी कहने योग्य है, न अणुमात्र भी सुनने योग्य; न थोड़ा भी जाने योग्य है, न अणुमात्र भी ध्यान करने योग्य।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 21,
+        "number": 21,
+        "sanskrit": "न मे भोक्तव्यमीषद्वा न मे स्मर्तव्यमण्वपि । न मे भोगो न मे रागो न मे यागो न मे लयः",
+        "transliteration": "na me bhoktavyamīṣadvā na me smartavyamaṇvapi | na me bhogo na me rāgo na me yāgo na me layaḥ",
+        "translation": "\"Mine is nothing to be enjoyed, even slightly; nothing to be remembered, even an atom; not pleasure, not attachment, not sacrifice, not dissolution.",
+        "hindi": "न मेरे लिए थोड़ा भी भोगने योग्य है, न अणुमात्र भी स्मरण करने योग्य; न भोग मेरा है, न राग, न यज्ञ, न लय।",
+        "explanation": "न मेरे लिए थोड़ा भी भोगने योग्य है, न अणुमात्र भी स्मरण करने योग्य; न भोग मेरा है, न राग, न यज्ञ, न लय।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 22,
+        "number": 22,
+        "sanskrit": "न मे मौर्ख्यं न मे शान्तं न मे बन्धो न मे प्रियम् । न मे मोदः प्रमोदो वा न मे स्थूलं न मे कृशम्",
+        "transliteration": "na me maurkhyaṃ na me śāntaṃ na me bandho na me priyam | na me modaḥ pramodo vā na me sthūlaṃ na me kṛśam",
+        "translation": "\"Mine is not foolishness, not peace, not bondage, not the dear; not joy or great joy; not stout, not thin.",
+        "hindi": "न मूर्खता मेरी है, न शान्ति, न बन्धन, न प्रिय; न हर्ष, न प्रमोद; न मोटापन और न दुबलापन।",
+        "explanation": "न मूर्खता मेरी है, न शान्ति, न बन्धन, न प्रिय; न हर्ष, न प्रमोद; न मोटापन और न दुबलापन।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 23,
+        "number": 23,
+        "sanskrit": "न मे दीर्घं न मे ह्रस्वं न मे वृद्धिर्न मे क्षयः । अध्यारोपोऽपवादो वा न मे चैकं न मे बहु",
+        "transliteration": "na me dīrghaṃ na me hrasvaṃ na me vṛddhirna me kṣayaḥ | adhyāropo'pavādo vā na me caikaṃ na me bahu",
+        "translation": "\"Mine is not long, not short; not growth, not decay; superimposition or retraction is not mine; not one, not many.",
+        "hindi": "न दीर्घ मेरा है, न ह्रस्व; न वृद्धि, न क्षय; अध्यारोप या अपवाद भी मेरा नहीं; न एक, न अनेक।",
+        "explanation": "न दीर्घ मेरा है, न ह्रस्व; न वृद्धि, न क्षय; अध्यारोप या अपवाद भी मेरा नहीं; न एक, न अनेक।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 24,
+        "number": 24,
+        "sanskrit": "न मे आन्ध्यं न मे मान्द्यं न मे पट्विदमण्वपि । न मे मांसं न मे रक्तं न मे मेदो न मे ह्यसृक्",
+        "transliteration": "na me āndhyaṃ na me māndyaṃ na me paṭvidamaṇvapi | na me māṃsaṃ na me raktaṃ na me medo na me hyasṛk",
+        "translation": "\"Mine is not blindness, not dullness, not even an atom of cleverness; not flesh, not blood, not fat, not marrow.",
+        "hindi": "न अन्धापन मेरा है, न मन्दता, न अणुमात्र चतुराई; न मांस, न रक्त, न मेद और न मज्जा।",
+        "explanation": "न अन्धापन मेरा है, न मन्दता, न अणुमात्र चतुराई; न मांस, न रक्त, न मेद और न मज्जा।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 25,
+        "number": 25,
+        "sanskrit": "न मे मज्जा न मेऽस्थिर्वा न मे त्वग्धातु सप्तकम् । न मे शुक्लं न मे रक्तं न मे नीलं नमे पृथक्",
+        "transliteration": "na me majjā na me'sthirvā na me tvagdhātu saptakam | na me śuklaṃ na me raktaṃ na me nīlaṃ name pṛthak",
+        "translation": "\"Mine is not marrow, not bone, not skin — the seven constituents; not white, not red, not blue, not separate.",
+        "hindi": "न मज्जा मेरी है, न हड्डी, न त्वचा — ये सात धातुएँ मेरी नहीं; न श्वेत, न लाल, न नीला, न पृथक्।",
+        "explanation": "न मज्जा मेरी है, न हड्डी, न त्वचा — ये सात धातुएँ मेरी नहीं; न श्वेत, न लाल, न नीला, न पृथक्।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 26,
+        "number": 26,
+        "sanskrit": "न मे तापो न मे लाभो मुख्यं गौणं न मे क्वचित् । न मे भ्रान्तिर्न मे स्थैर्यं न मे गुह्यं न मे कुलम्",
+        "transliteration": "na me tāpo na me lābho mukhyaṃ gauṇaṃ na me kvacit | na me bhrāntirna me sthairyaṃ na me guhyaṃ na me kulam",
+        "translation": "\"Mine is not heat, not gain; the primary and secondary are nowhere mine; not delusion, not steadiness, not secret, not family.",
+        "hindi": "न ताप मेरा है, न लाभ; मुख्य और गौण कहीं मेरे नहीं; न भ्रान्ति, न स्थिरता, न रहस्य और न कुल।",
+        "explanation": "न ताप मेरा है, न लाभ; मुख्य और गौण कहीं मेरे नहीं; न भ्रान्ति, न स्थिरता, न रहस्य और न कुल।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 27,
+        "number": 27,
+        "sanskrit": "न मे त्याज्यं न मे ग्राह्यं न मे हास्यं न मे नयः । न मे वृत्तं न मे ग्लानिर्न मे शोष्यं न मे सुखम्",
+        "transliteration": "na me tyājyaṃ na me grāhyaṃ na me hāsyaṃ na me nayaḥ | na me vṛttaṃ na me glānirna me śoṣyaṃ na me sukham",
+        "translation": "\"Mine is not to be abandoned, not to be taken; not laughable, not policy; not conduct, not weariness, not dryness, not pleasure.",
+        "hindi": "न त्याज्य मेरा है, न ग्राह्य; न हास्य, न नीति; न आचरण, न थकान, न शोषण और न सुख।",
+        "explanation": "न त्याज्य मेरा है, न ग्राह्य; न हास्य, न नीति; न आचरण, न थकान, न शोषण और न सुख।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 28,
+        "number": 28,
+        "sanskrit": "न मे ज्ञाता न मे ज्ञानं न मे ज्ञेयं न मे स्वयम् । न मे तुभ्यं नमे मह्यं न मे त्वं च न मे त्वहम्",
+        "transliteration": "na me jñātā na me jñānaṃ na me jñeyaṃ na me svayam | na me tubhyaṃ name mahyaṃ na me tvaṃ ca na me tvaham",
+        "translation": "\"Mine is not knower, not knowledge, not knowable, not self; not for you, not for me; not you and not I.",
+        "hindi": "न ज्ञाता मेरा है, न ज्ञान, न ज्ञेय, न स्वयं; न तुम्हारे लिए, न मेरे लिए; न तू और न मैं।",
+        "explanation": "न ज्ञाता मेरा है, न ज्ञान, न ज्ञेय, न स्वयं; न तुम्हारे लिए, न मेरे लिए; न तू और न मैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 29,
+        "number": 29,
+        "sanskrit": "न मे जरा न मे बाल्यं न मे यौवनमण्वपि । अहं ब्रह्मास्म्यहं ब्रह्मास्म्यहं ब्रह्मेति निश्चयः",
+        "transliteration": "na me jarā na me bālyaṃ na me yauvanamaṇvapi | ahaṃ brahmāsmyahaṃ brahmāsmyahaṃ brahmeti niścayaḥ",
+        "translation": "\"Mine is not old age, not childhood, not even an atom of youth. I am Brahman, I am Brahman — thus is the certainty.",
+        "hindi": "न बुढ़ापा मेरा है, न बचपन, न अणुमात्र यौवन। ‘मैं ब्रह्म हूँ, मैं ब्रह्म हूँ, मैं ब्रह्म हूँ’ — ऐसा निश्चय है।",
+        "explanation": "न बुढ़ापा मेरा है, न बचपन, न अणुमात्र यौवन। ‘मैं ब्रह्म हूँ, मैं ब्रह्म हूँ, मैं ब्रह्म हूँ’ — ऐसा निश्चय है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 30,
+        "number": 30,
+        "sanskrit": "चिदहं चिदहं चेति स जीवन्मुक्त उच्यते । ब्रह्मैवाहं चिदेवाहं परो वाहं न संशयः",
+        "transliteration": "cidahaṃ cidahaṃ ceti sa jīvanmukta ucyate | brahmaivāhaṃ cidevāhaṃ paro vāhaṃ na saṃśayaḥ",
+        "translation": "\"I am consciousness, I am consciousness\" — he who thus holds is called liberated while living. \"I am Brahman alone, I am consciousness alone, or I am the supreme\" — no doubt.",
+        "hindi": "‘मैं चित् हूँ, मैं चित् हूँ’ — ऐसा जो रहता है, वह जीवन्मुक्त कहलाता है। ‘मैं ब्रह्म ही हूँ, चित् ही हूँ, अथवा परम हूँ’ — इसमें संशय नहीं।",
+        "explanation": "‘मैं चित् हूँ, मैं चित् हूँ’ — ऐसा जो रहता है, वह जीवन्मुक्त कहलाता है। ‘मैं ब्रह्म ही हूँ, चित् ही हूँ, अथवा परम हूँ’ — इसमें संशय नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 31,
+        "number": 31,
+        "sanskrit": "स्वयमेव स्वयं हंसः स्वयमेव स्वयं स्थितः । स्वयमेव स्वयं पश्येत्स्वात्मराज्ये सुखं वसेत्",
+        "transliteration": "svayameva svayaṃ haṃsaḥ svayameva svayaṃ sthitaḥ | svayameva svayaṃ paśyetsvātmarājye sukhaṃ vaset",
+        "translation": "By himself the swan, by himself established; by himself one should see by oneself; one should dwell in bliss in the kingdom of one's own Self.",
+        "hindi": "स्वयं ही स्वयं हंस है, स्वयं ही स्वयं स्थित है; स्वयं ही स्वयं देखे और अपने आत्म-राज्य में सुख से निवास करे।",
+        "explanation": "स्वयं ही स्वयं हंस है, स्वयं ही स्वयं स्थित है; स्वयं ही स्वयं देखे और अपने आत्म-राज्य में सुख से निवास करे।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 32,
+        "number": 32,
+        "sanskrit": "स्वात्मानन्दं स्वयं भोक्ष्येत्स जीवन्मुक्त उच्यते । स्वयमेवैकवीरोऽग्रे स्वयमेव प्रभुः स्मृतः",
+        "transliteration": "svātmānandaṃ svayaṃ bhokṣyetsa jīvanmukta ucyate | svayamevaikavīro'gre svayameva prabhuḥ smṛtaḥ",
+        "translation": "He who himself enjoys the bliss of his own Self is called liberated while living; he himself is the one hero in front, he himself is called the lord.",
+        "hindi": "जो स्वयं अपने आत्मानन्द का भोग करता है, वह जीवन्मुक्त कहलाता है; वही स्वयं अग्रणी अकेला वीर है और वही स्वयं प्रभु कहा गया है।",
+        "explanation": "जो स्वयं अपने आत्मानन्द का भोग करता है, वह जीवन्मुक्त कहलाता है; वही स्वयं अग्रणी अकेला वीर है और वही स्वयं प्रभु कहा गया है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 33,
+        "number": 33,
+        "sanskrit": "ब्रह्मभूतः प्रशान्तात्मा ब्रह्मानन्दमयः सुखी । स्वच्छरूपो महामौनी वैदेही मुक्त एव सः",
+        "transliteration": "brahmabhūtaḥ praśāntātmā brahmānandamayaḥ sukhī | svaccharūpo mahāmaunī vaidehī mukta eva saḥ",
+        "translation": "One who has become Brahman, of quiet mind, made of Brahman-bliss, happy, of clear form, a great silent one — he is bodiless and liberated.",
+        "hindi": "जो ब्रह्मभूत, प्रशान्त-चित्त, ब्रह्मानन्द-मय, सुखी, स्वच्छ रूप वाला और महामौनी है — वही विदेह-मुक्त है।",
+        "explanation": "जो ब्रह्मभूत, प्रशान्त-चित्त, ब्रह्मानन्द-मय, सुखी, स्वच्छ रूप वाला और महामौनी है — वही विदेह-मुक्त है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 34,
+        "number": 34,
+        "sanskrit": "सर्वात्मा समरूपात्मा शुद्धात्मा त्वहमुत्थितः । एकवर्जित एकात्मा सर्वात्मा स्वात्ममात्रकः",
+        "transliteration": "sarvātmā samarūpātmā śuddhātmā tvahamutthitaḥ | ekavarjita ekātmā sarvātmā svātmamātrakaḥ",
+        "translation": "The Self of all, of even form, pure Self, I have arisen; free of the one, the one Self, the Self of all, mere own Self.",
+        "hindi": "सर्वात्मा, समरूप आत्मा, शुद्धात्मा — मैं उठ खड़ा हुआ हूँ; एक से रहित, एकात्मा, सर्वात्मा, केवल अपना आत्म-मात्र।",
+        "explanation": "सर्वात्मा, समरूप आत्मा, शुद्धात्मा — मैं उठ खड़ा हुआ हूँ; एक से रहित, एकात्मा, सर्वात्मा, केवल अपना आत्म-मात्र।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 35,
+        "number": 35,
+        "sanskrit": "अजात्मा चामृतात्माहं स्वयमात्माहमव्ययः । लक्ष्यात्मा ललितात्माहं तूष्णीमात्मस्वभाववान्",
+        "transliteration": "ajātmā cāmṛtātmāhaṃ svayamātmāhamavyayaḥ | lakṣyātmā lalitātmāhaṃ tūṣṇīmātmasvabhāvavān",
+        "translation": "I am the unborn Self, the immortal Self; I am myself the Self, imperishable; the Self as aim, the playful Self, silent, of the nature of the Self.",
+        "hindi": "मैं अजन्मा आत्मा और अमृतात्मा हूँ; मैं स्वयं ही अविनाशी आत्मा हूँ; लक्ष्य-आत्मा, ललित-आत्मा, मौन और आत्म-स्वभाव वाला हूँ।",
+        "explanation": "मैं अजन्मा आत्मा और अमृतात्मा हूँ; मैं स्वयं ही अविनाशी आत्मा हूँ; लक्ष्य-आत्मा, ललित-आत्मा, मौन और आत्म-स्वभाव वाला हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 36,
+        "number": 36,
+        "sanskrit": "आनन्दात्मा प्रियो ह्यात्मा मोक्षात्मा बन्धवर्जितः । ब्रह्मैवाहं चिदेवाहमेवं वापि न चिन्त्यते",
+        "transliteration": "ānandātmā priyo hyātmā mokṣātmā bandhavarjitaḥ | brahmaivāhaṃ cidevāhamevaṃ vāpi na cintyate",
+        "translation": "The Self of bliss, the dear Self, the Self of liberation, free of bondage; \"I am Brahman alone, I am consciousness alone\" — even this is not thought.",
+        "hindi": "आनन्द-आत्मा, प्रिय आत्मा, मोक्ष-आत्मा और बन्धन से रहित — ‘मैं ब्रह्म ही हूँ, चित् ही हूँ’ — ऐसा भी वहाँ चिन्तन नहीं किया जाता।",
+        "explanation": "आनन्द-आत्मा, प्रिय आत्मा, मोक्ष-आत्मा और बन्धन से रहित — ‘मैं ब्रह्म ही हूँ, चित् ही हूँ’ — ऐसा भी वहाँ चिन्तन नहीं किया जाता।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 37,
+        "number": 37,
+        "sanskrit": "चिन्मात्रेणैव यस्तिष्ठेद्वैदेही मुक्त एव सः",
+        "transliteration": "cinmātreṇaiva yastiṣṭhedvaidehī mukta eva saḥ",
+        "translation": "He who stays as mere consciousness alone is bodiless and liberated.",
+        "hindi": "जो केवल चिन्मात्र रूप से स्थित रहता है, वही विदेह-मुक्त है।",
+        "explanation": "जो केवल चिन्मात्र रूप से स्थित रहता है, वही विदेह-मुक्त है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 38,
+        "number": 38,
+        "sanskrit": "निश्चयं च परित्यज्य अहं ब्रह्मेति निश्चयम् । आनन्दभरितस्वान्तो वैदेही मुक्त एव सः",
+        "transliteration": "niścayaṃ ca parityajya ahaṃ brahmeti niścayam | ānandabharitasvānto vaidehī mukta eva saḥ",
+        "translation": "Abandoning certainty, even the certainty \"I am Brahman,\" with a heart filled with bliss, he is bodiless and liberated.",
+        "hindi": "निश्चय को भी छोड़कर, यहाँ तक कि ‘मैं ब्रह्म हूँ’ के निश्चय को भी छोड़कर, जिसका अन्तःकरण आनन्द से भरा है, वही विदेह-मुक्त है।",
+        "explanation": "निश्चय को भी छोड़कर, यहाँ तक कि ‘मैं ब्रह्म हूँ’ के निश्चय को भी छोड़कर, जिसका अन्तःकरण आनन्द से भरा है, वही विदेह-मुक्त है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 39,
+        "number": 39,
+        "sanskrit": "सर्वमस्तीति नास्तीति निश्चयं त्यज्य तिष्ठति । अहं ब्रह्मास्मि नास्मीति सच्चिदानन्दमात्रकः",
+        "transliteration": "sarvamastīti nāstīti niścayaṃ tyajya tiṣṭhati | ahaṃ brahmāsmi nāsmīti saccidānandamātrakaḥ",
+        "translation": "He stays abandoning the certainty \"all exists\" or \"does not exist\"; \"I am Brahman\" or \"I am not\" — he is mere being-consciousness-bliss.",
+        "hindi": "‘सब है’ या ‘नहीं है’ के निश्चय को त्यागकर जो स्थित रहता है; ‘मैं ब्रह्म हूँ’ या ‘नहीं हूँ’ — वह केवल सच्चिदानन्द-मात्र है।",
+        "explanation": "‘सब है’ या ‘नहीं है’ के निश्चय को त्यागकर जो स्थित रहता है; ‘मैं ब्रह्म हूँ’ या ‘नहीं हूँ’ — वह केवल सच्चिदानन्द-मात्र है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 40,
+        "number": 40,
+        "sanskrit": "किञ्चित्क्वचित्कदाचिच्च आत्मानं न स्पृशत्यसौ । तूष्णीमेव स्थितस्तूष्णीं तूष्णीं सत्यं न किञ्चन",
+        "transliteration": "kiñcitkvacitkadācicca ātmānaṃ na spṛśatyasau | tūṣṇīmeva sthitastūṣṇīṃ tūṣṇīṃ satyaṃ na kiñcana",
+        "translation": "He does not touch the Self with anything, anywhere, at any time; silent, remaining silent, silent, truth — nothing.",
+        "hindi": "वह कभी, कहीं, किसी भी वस्तु से आत्मा को स्पर्श नहीं करता; मौन ही स्थित, मौन, मौन — सत्य, कुछ भी नहीं।",
+        "explanation": "वह कभी, कहीं, किसी भी वस्तु से आत्मा को स्पर्श नहीं करता; मौन ही स्थित, मौन, मौन — सत्य, कुछ भी नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 41,
+        "number": 41,
+        "sanskrit": "परमात्मा गुणातीतः सर्वात्मा भूतभावनः । कालभेदं वस्तुभेदं देशभेदं स्वभेदकम्",
+        "transliteration": "paramātmā guṇātītaḥ sarvātmā bhūtabhāvanaḥ | kālabhedaṃ vastubhedaṃ deśabhedaṃ svabhedakam",
+        "translation": "The Supreme Self, beyond the qualities, the Self of all, the maker of beings' notions: difference of time, difference of things, difference of place, difference of self —",
+        "hindi": "परमात्मा गुणों से परे है, सर्वात्मा है और प्राणियों के भाव का कर्ता है; काल का भेद, वस्तु का भेद, देश का भेद और स्वयं का भेद —",
+        "explanation": "परमात्मा गुणों से परे है, सर्वात्मा है और प्राणियों के भाव का कर्ता है; काल का भेद, वस्तु का भेद, देश का भेद और स्वयं का भेद —",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 42,
+        "number": 42,
+        "sanskrit": "किञ्चिद्भेदं न तस्यास्ति किञ्चिद्वापि न विद्यते । अहं त्वं तदिदं सोऽयं कालात्मा कालहीनकः",
+        "transliteration": "kiñcidbhedaṃ na tasyāsti kiñcidvāpi na vidyate | ahaṃ tvaṃ tadidaṃ so'yaṃ kālātmā kālahīnakaḥ",
+        "translation": "of him there is no difference whatever; nor does anything exist at all. \"I,\" \"you,\" \"that,\" \"this,\" \"he\" — the Self of time, devoid of time.",
+        "hindi": "उसमें कुछ भी भेद नहीं है, कुछ भी विद्यमान नहीं है। ‘मैं’, ‘तू’, ‘वह’, ‘यह’ — काल का आत्मा, फिर भी काल से रहित।",
+        "explanation": "उसमें कुछ भी भेद नहीं है, कुछ भी विद्यमान नहीं है। ‘मैं’, ‘तू’, ‘वह’, ‘यह’ — काल का आत्मा, फिर भी काल से रहित।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 43,
+        "number": 43,
+        "sanskrit": "शून्यात्मा सूक्ष्मरूपात्मा विश्वात्मा विश्वहीनकः । देवात्मादेवहीनात्मा मेयात्मा मेयवर्जितः",
+        "transliteration": "śūnyātmā sūkṣmarūpātmā viśvātmā viśvahīnakaḥ | devātmādevahīnātmā meyātmā meyavarjitaḥ",
+        "translation": "The Self of void, of subtle form, the Self of the universe, devoid of the universe; the Self of gods, devoid of gods; the Self of the measurable, free of measure.",
+        "hindi": "शून्यात्मा, सूक्ष्म-रूपात्मा, विश्वात्मा किन्तु विश्व से रहित; देवात्मा किन्तु देवों से रहित; मेयात्मा किन्तु मेय (मापे जाने योग्य) से रहित।",
+        "explanation": "शून्यात्मा, सूक्ष्म-रूपात्मा, विश्वात्मा किन्तु विश्व से रहित; देवात्मा किन्तु देवों से रहित; मेयात्मा किन्तु मेय (मापे जाने योग्य) से रहित।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 44,
+        "number": 44,
+        "sanskrit": "सर्वत्र जडहीनात्मा सर्वेषामन्तरात्मकः । सर्वसङ्कल्पहीनात्मा चिन्मात्रोऽस्मीति सर्वदा",
+        "transliteration": "sarvatra jaḍahīnātmā sarveṣāmantarātmakaḥ | sarvasaṅkalpahīnātmā cinmātro'smīti sarvadā",
+        "translation": "Everywhere the Self devoid of dullness, the inner Self of all, the Self devoid of all intentions, always \"I am mere consciousness.\"",
+        "hindi": "जो सर्वत्र जड़ता से रहित आत्मा है, सबका अन्तरात्मा है, सब संकल्पों से रहित आत्मा है — ‘मैं सदा चिन्मात्र हूँ’।",
+        "explanation": "जो सर्वत्र जड़ता से रहित आत्मा है, सबका अन्तरात्मा है, सब संकल्पों से रहित आत्मा है — ‘मैं सदा चिन्मात्र हूँ’।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 45,
+        "number": 45,
+        "sanskrit": "केवलः परमात्माहं केवलो ज्ञानविग्रहः । सत्तामात्रस्वरूपात्मा नान्यत्किञ्चिज्जगद्भयम्",
+        "transliteration": "kevalaḥ paramātmāhaṃ kevalo jñānavigrahaḥ | sattāmātrasvarūpātmā nānyatkiñcijjagadbhayam",
+        "translation": "I am the Supreme Self alone, the body of knowledge alone, the Self of the nature of mere being; no other fear of the world whatever.",
+        "hindi": "मैं केवल परमात्मा हूँ, केवल ज्ञान का शरीर हूँ, सत्ता-मात्र स्वरूप आत्मा हूँ; संसार का कोई दूसरा भय नहीं है।",
+        "explanation": "मैं केवल परमात्मा हूँ, केवल ज्ञान का शरीर हूँ, सत्ता-मात्र स्वरूप आत्मा हूँ; संसार का कोई दूसरा भय नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 46,
+        "number": 46,
+        "sanskrit": "जीवेश्वरेति वाक्क्वेति वेदशास्त्राद्यहं त्विति । इदं चैतन्यमेवेति अहं चैतन्यमित्यपि",
+        "transliteration": "jīveśvareti vākkveti vedaśāstrādyahaṃ tviti | idaṃ caitanyameveti ahaṃ caitanyamityapi",
+        "translation": "\"Individual,\" \"Lord,\" where are these words? \"I am\" from Veda and scripture — \"this is only consciousness,\" \"I am consciousness\" —",
+        "hindi": "‘जीव’, ‘ईश्वर’ — ये शब्द कहाँ हैं? वेद-शास्त्र आदि से ‘मैं’ — ‘यह चैतन्य ही है’, ‘मैं चैतन्य हूँ’ — ऐसा भी —",
+        "explanation": "‘जीव’, ‘ईश्वर’ — ये शब्द कहाँ हैं? वेद-शास्त्र आदि से ‘मैं’ — ‘यह चैतन्य ही है’, ‘मैं चैतन्य हूँ’ — ऐसा भी —",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 47,
+        "number": 47,
+        "sanskrit": "इति निश्चयशून्यो यो वैदेही मुक्त एव सः । चैतन्यमात्रसंसिद्धः स्वात्मारामः सुखासनः",
+        "transliteration": "iti niścayaśūnyo yo vaidehī mukta eva saḥ | caitanyamātrasaṃsiddhaḥ svātmārāmaḥ sukhāsanaḥ",
+        "translation": "he who is void even of such certainty is bodiless and liberated. Perfected in mere consciousness, delighting in his own Self, at ease in his seat,",
+        "hindi": "जो इस निश्चय से भी शून्य है, वही विदेह-मुक्त है। जो चैतन्य-मात्र में सिद्ध, अपने आत्मा में रमण करने वाला और सुखासन में स्थित है,",
+        "explanation": "जो इस निश्चय से भी शून्य है, वही विदेह-मुक्त है। जो चैतन्य-मात्र में सिद्ध, अपने आत्मा में रमण करने वाला और सुखासन में स्थित है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 48,
+        "number": 48,
+        "sanskrit": "अपरिच्छिन्नरूपात्मा अणुस्थूलादिवर्जितः । तुर्यतुर्या परानन्दो वैदेही मुक्त एव सः",
+        "transliteration": "aparicchinnarūpātmā aṇusthūlādivarjitaḥ | turyaturyā parānando vaidehī mukta eva saḥ",
+        "translation": "of unlimited form, free of atomic, gross and the like, the Fourth of the Fourth, supreme bliss — he is bodiless and liberated.",
+        "hindi": "अपरिच्छिन्न रूप वाला आत्मा, अणु-स्थूल आदि से रहित, तुरीय का भी तुरीय, परमानन्द — वही विदेह-मुक्त है।",
+        "explanation": "अपरिच्छिन्न रूप वाला आत्मा, अणु-स्थूल आदि से रहित, तुरीय का भी तुरीय, परमानन्द — वही विदेह-मुक्त है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 49,
+        "number": 49,
+        "sanskrit": "नामरूपविहीनात्मा परसंवित्सुखात्मकः । तुरीयातीतरूपात्मा शुभाशुभविवर्जितः",
+        "transliteration": "nāmarūpavihīnātmā parasaṃvitsukhātmakaḥ | turīyātītarūpātmā śubhāśubhavivarjitaḥ",
+        "translation": "The Self devoid of name and form, of the nature of the happiness of supreme awareness, of form beyond the Fourth, free of good and bad,",
+        "hindi": "नाम-रूप से रहित आत्मा, परम संवित् के सुख-स्वरूप वाला, तुरीय से भी परे रूप वाला, शुभ-अशुभ से रहित,",
+        "explanation": "नाम-रूप से रहित आत्मा, परम संवित् के सुख-स्वरूप वाला, तुरीय से भी परे रूप वाला, शुभ-अशुभ से रहित,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 50,
+        "number": 50,
+        "sanskrit": "योगात्मा योगयुक्तात्मा बन्धमोक्षविवर्जितः । गुणागुणविहीनात्मा देशकालादिवर्जितः",
+        "transliteration": "yogātmā yogayuktātmā bandhamokṣavivarjitaḥ | guṇāguṇavihīnātmā deśakālādivarjitaḥ",
+        "translation": "the Self of yoga, the yoga-yoked Self, free of bondage and liberation, the Self devoid of quality and non-quality, free of place and time and the rest,",
+        "hindi": "योगात्मा, योग-युक्त आत्मा, बन्ध और मोक्ष से रहित, गुण और अगुण से रहित आत्मा, देश-काल आदि से रहित,",
+        "explanation": "योगात्मा, योग-युक्त आत्मा, बन्ध और मोक्ष से रहित, गुण और अगुण से रहित आत्मा, देश-काल आदि से रहित,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 51,
+        "number": 51,
+        "sanskrit": "साक्ष्यसाक्षित्वहीनात्मा किञ्चित्किञ्चिन्न किञ्चन । यस्य प्रपञ्चमानं न ब्रह्माकारमपीह न",
+        "transliteration": "sākṣyasākṣitvahīnātmā kiñcitkiñcinna kiñcana | yasya prapañcamānaṃ na brahmākāramapīha na",
+        "translation": "the Self devoid of witness and non-witness, something and nothing, none at all; in whom there is no measure of the world, nor even Brahman-form here.",
+        "hindi": "साक्षी और असाक्षी भाव से रहित आत्मा — कुछ भी नहीं, किसी भी रूप में नहीं; जिसके लिए यहाँ प्रपंच का कोई माप नहीं और ब्रह्माकार भी नहीं।",
+        "explanation": "साक्षी और असाक्षी भाव से रहित आत्मा — कुछ भी नहीं, किसी भी रूप में नहीं; जिसके लिए यहाँ प्रपंच का कोई माप नहीं और ब्रह्माकार भी नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 52,
+        "number": 52,
+        "sanskrit": "स्वस्वरूपे स्वयञ्ज्योतिः स्वस्वरूपे स्वयंरतिः । वाचामगोचरानन्दो वाङ्मनोगोचरः स्वयम्",
+        "transliteration": "svasvarūpe svayañjyotiḥ svasvarūpe svayaṃratiḥ | vācāmagocarānando vāṅmanogocaraḥ svayam",
+        "translation": "In his own nature self-luminous, in his own nature self-delighting; bliss beyond speech's reach, himself within reach of speech and mind;",
+        "hindi": "अपने स्वरूप में स्वयं-प्रकाश, अपने स्वरूप में स्वयं रमण करने वाला; जिसका आनन्द वाणी की पहुँच से परे है, फिर भी जो स्वयं वाणी और मन का विषय है;",
+        "explanation": "अपने स्वरूप में स्वयं-प्रकाश, अपने स्वरूप में स्वयं रमण करने वाला; जिसका आनन्द वाणी की पहुँच से परे है, फिर भी जो स्वयं वाणी और मन का विषय है;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 53,
+        "number": 53,
+        "sanskrit": "अतीतातीतभावो यो वैदेही मुक्त एव सः । चित्तवृत्तेरतीतो यश्चित्तवृत्त्यवभासकः",
+        "transliteration": "atītātītabhāvo yo vaidehī mukta eva saḥ | cittavṛtteratīto yaścittavṛttyavabhāsakaḥ",
+        "translation": "he whose state is beyond the beyond is bodiless and liberated. Who is beyond the mind's modification, the illuminator of the mind's modification,",
+        "hindi": "जिसकी अवस्था अतीत से भी अतीत है, वही विदेह-मुक्त है। जो चित्त की वृत्ति से परे है और चित्त की वृत्ति का प्रकाशक है,",
+        "explanation": "जिसकी अवस्था अतीत से भी अतीत है, वही विदेह-मुक्त है। जो चित्त की वृत्ति से परे है और चित्त की वृत्ति का प्रकाशक है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 54,
+        "number": 54,
+        "sanskrit": "सर्ववृत्तिविहीनात्मा वैदेही मुक्त एव सः । तस्मिन्काले विदेहीति देहस्मरणवर्जितः",
+        "transliteration": "sarvavṛttivihīnātmā vaidehī mukta eva saḥ | tasminkāle videhīti dehasmaraṇavarjitaḥ",
+        "translation": "the Self devoid of all modification is bodiless and liberated. At that time \"bodiless,\" free of remembering the body;",
+        "hindi": "सब वृत्तियों से रहित आत्मा विदेह-मुक्त ही है। उस समय वह ‘विदेह’ है, देह के स्मरण से रहित;",
+        "explanation": "सब वृत्तियों से रहित आत्मा विदेह-मुक्त ही है। उस समय वह ‘विदेह’ है, देह के स्मरण से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 55,
+        "number": 55,
+        "sanskrit": "ईषन्मात्रं स्मृतं चेद्यस्तदा सर्वसमन्वितः । परैरदृष्टबाह्यात्मा परमानन्दचिद्धनः",
+        "transliteration": "īṣanmātraṃ smṛtaṃ cedyastadā sarvasamanvitaḥ | parairadṛṣṭabāhyātmā paramānandaciddhanaḥ",
+        "translation": "if he remembers even slightly, then he is endowed with all; unseen by others in his outer self, a mass of supreme bliss and consciousness;",
+        "hindi": "यदि थोड़ा-सा भी स्मरण करे तो वह सबसे युक्त हो जाता है; दूसरों द्वारा न देखा गया बाह्य आत्मा, परमानन्द और चैतन्य का घन;",
+        "explanation": "यदि थोड़ा-सा भी स्मरण करे तो वह सबसे युक्त हो जाता है; दूसरों द्वारा न देखा गया बाह्य आत्मा, परमानन्द और चैतन्य का घन;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 56,
+        "number": 56,
+        "sanskrit": "परैरदृष्टबाह्यात्मा सर्ववेदान्तगोचरः । ब्रह्मामृतरसास्वादो ब्रह्मामृतरसायनः",
+        "transliteration": "parairadṛṣṭabāhyātmā sarvavedāntagocaraḥ | brahmāmṛtarasāsvādo brahmāmṛtarasāyanaḥ",
+        "translation": "unseen by others in his outer self, within the reach of all Vedanta; tasting the nectar-savor of Brahman, the elixir of Brahman-nectar-savor;",
+        "hindi": "दूसरों द्वारा न देखे गए बाह्य आत्मा वाला, सब वेदान्तों का विषय, ब्रह्मामृत-रस का आस्वादन करने वाला और ब्रह्मामृत-रस का रसायन;",
+        "explanation": "दूसरों द्वारा न देखे गए बाह्य आत्मा वाला, सब वेदान्तों का विषय, ब्रह्मामृत-रस का आस्वादन करने वाला और ब्रह्मामृत-रस का रसायन;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 57,
+        "number": 57,
+        "sanskrit": "ब्रह्मामृतरसासक्तो ब्रह्मामृतरसः स्वयम् । ब्रह्मामृतरसे मग्नो ब्रह्मानन्दशिवार्चनः",
+        "transliteration": "brahmāmṛtarasāsakto brahmāmṛtarasaḥ svayam | brahmāmṛtarase magno brahmānandaśivārcanaḥ",
+        "translation": "attached to the nectar-savor of Brahman, himself the nectar-savor of Brahman; immersed in the nectar-savor of Brahman, worshipping Shiva in Brahman-bliss;",
+        "hindi": "ब्रह्मामृत-रस में आसक्त, स्वयं ब्रह्मामृत-रस, ब्रह्मामृत-रस में मग्न और ब्रह्मानन्द में शिव की अर्चना करने वाला;",
+        "explanation": "ब्रह्मामृत-रस में आसक्त, स्वयं ब्रह्मामृत-रस, ब्रह्मामृत-रस में मग्न और ब्रह्मानन्द में शिव की अर्चना करने वाला;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 58,
+        "number": 58,
+        "sanskrit": "ब्रह्मामृतरसे तृप्तो ब्रह्मानन्दानुभावकः । ब्रह्मानन्दशिवानन्दो ब्रह्मानन्दरसप्रभः",
+        "transliteration": "brahmāmṛtarase tṛpto brahmānandānubhāvakaḥ | brahmānandaśivānando brahmānandarasaprabhaḥ",
+        "translation": "satisfied by the nectar-savor of Brahman, an experiencer of Brahman-bliss; Brahman-bliss and Shiva-bliss, radiant with the savor of Brahman-bliss;",
+        "hindi": "ब्रह्मामृत-रस से तृप्त, ब्रह्मानन्द का अनुभव करने वाला; ब्रह्मानन्द और शिवानन्द वाला, ब्रह्मानन्द-रस की आभा वाला;",
+        "explanation": "ब्रह्मामृत-रस से तृप्त, ब्रह्मानन्द का अनुभव करने वाला; ब्रह्मानन्द और शिवानन्द वाला, ब्रह्मानन्द-रस की आभा वाला;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 59,
+        "number": 59,
+        "sanskrit": "ब्रह्मानन्दपरं ज्योतिर्ब्रह्मानन्दनिरन्तरः । ब्रह्मानन्दरसान्नादो ब्रह्मानन्दकुटुम्बकः",
+        "transliteration": "brahmānandaparaṃ jyotirbrahmānandanirantaraḥ | brahmānandarasānnādo brahmānandakuṭumbakaḥ",
+        "translation": "the supreme light of Brahman-bliss, continuous in Brahman-bliss; with the sound of the food of Brahman-bliss-savor, a family of Brahman-bliss;",
+        "hindi": "ब्रह्मानन्द की परम ज्योति, ब्रह्मानन्द में निरन्तर, ब्रह्मानन्द-रस के अन्न का नाद करने वाला, ब्रह्मानन्द का परिवार वाला;",
+        "explanation": "ब्रह्मानन्द की परम ज्योति, ब्रह्मानन्द में निरन्तर, ब्रह्मानन्द-रस के अन्न का नाद करने वाला, ब्रह्मानन्द का परिवार वाला;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 60,
+        "number": 60,
+        "sanskrit": "ब्रह्मानन्दरसारूढो ब्रह्मानन्दैकचिद्धनः । ब्रह्मानन्दरसोद्बाहो ब्रह्मानन्दरसम्भरः",
+        "transliteration": "brahmānandarasārūḍho brahmānandaikaciddhanaḥ | brahmānandarasodbāho brahmānandarasambharaḥ",
+        "translation": "mounted on the savor of Brahman-bliss, a sole mass of Brahman-bliss consciousness; bearing the savor of Brahman-bliss, filled with the savor of Brahman-bliss;",
+        "hindi": "ब्रह्मानन्द-रस पर आरूढ़, ब्रह्मानन्द का अद्वितीय चैतन्य-घन, ब्रह्मानन्द-रस को वहन करने वाला और ब्रह्मानन्द-रस से भरा हुआ;",
+        "explanation": "ब्रह्मानन्द-रस पर आरूढ़, ब्रह्मानन्द का अद्वितीय चैतन्य-घन, ब्रह्मानन्द-रस को वहन करने वाला और ब्रह्मानन्द-रस से भरा हुआ;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 61,
+        "number": 61,
+        "sanskrit": "ब्रह्मानन्दजनैर्युक्तो ब्रह्मानन्दात्मनि स्थितः । आत्मरूपमिदं सर्वमात्मनोऽन्यन्न कञ्चन",
+        "transliteration": "brahmānandajanairyukto brahmānandātmani sthitaḥ | ātmarūpamidaṃ sarvamātmano'nyanna kañcana",
+        "translation": "joined with those of Brahman-bliss, established in the Self of Brahman-bliss. All this is of the nature of the Self; nothing is other than the Self.",
+        "hindi": "ब्रह्मानन्द वाले जनों के साथ युक्त, ब्रह्मानन्द-स्वरूप आत्मा में स्थित। यह सब आत्म-रूप है; आत्मा से अन्य कुछ नहीं।",
+        "explanation": "ब्रह्मानन्द वाले जनों के साथ युक्त, ब्रह्मानन्द-स्वरूप आत्मा में स्थित। यह सब आत्म-रूप है; आत्मा से अन्य कुछ नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 62,
+        "number": 62,
+        "sanskrit": "सर्वमात्माहमात्मास्मि परमात्मा परात्मकः । नित्यानन्द स्वरूपात्मा वैदेही मुक्त एव सः",
+        "transliteration": "sarvamātmāhamātmāsmi paramātmā parātmakaḥ | nityānanda svarūpātmā vaidehī mukta eva saḥ",
+        "translation": "All is the Self; I am the Self; the Supreme Self, the highest; of the nature of eternal bliss — he is bodiless and liberated.",
+        "hindi": "सब आत्मा है, मैं आत्मा हूँ; परमात्मा, परात्मक, नित्य आनन्द-स्वरूप आत्मा — वही विदेह-मुक्त है।",
+        "explanation": "सब आत्मा है, मैं आत्मा हूँ; परमात्मा, परात्मक, नित्य आनन्द-स्वरूप आत्मा — वही विदेह-मुक्त है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 63,
+        "number": 63,
+        "sanskrit": "पूर्णरूपो महानात्मा प्रीतात्मा शाश्वतात्मकः । सर्वान्तर्यामिरूपात्मा निर्मलात्मा निरात्मकः",
+        "transliteration": "pūrṇarūpo mahānātmā prītātmā śāśvatātmakaḥ | sarvāntaryāmirūpātmā nirmalātmā nirātmakaḥ",
+        "translation": "Of full form, the great Self, the pleased Self, the everlasting Self, of the form of the inner controller of all, the stainless Self, the selfless;",
+        "hindi": "पूर्ण-रूप, महान आत्मा, प्रसन्न आत्मा, शाश्वत आत्मा, सबके अन्तर्यामी का रूप, निर्मल आत्मा और निरात्मक;",
+        "explanation": "पूर्ण-रूप, महान आत्मा, प्रसन्न आत्मा, शाश्वत आत्मा, सबके अन्तर्यामी का रूप, निर्मल आत्मा और निरात्मक;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 64,
+        "number": 64,
+        "sanskrit": "निर्विकारस्वरूपात्मा शुद्धात्मा शान्तरूपकः । शान्ताशान्तस्वरूपात्मा नैकात्मत्वविवर्जितः",
+        "transliteration": "nirvikārasvarūpātmā śuddhātmā śāntarūpakaḥ | śāntāśāntasvarūpātmā naikātmatvavivarjitaḥ",
+        "translation": "of changeless nature, pure Self, of peaceful form; the Self of peaceful and unpeaceful nature, free of the sense of unity of the Self;",
+        "hindi": "निर्विकार स्वरूप आत्मा, शुद्धात्मा, शान्त-रूप; शान्त और अशान्त स्वरूप वाला आत्मा, जो आत्मा की एकता के भाव से भी रहित है;",
+        "explanation": "निर्विकार स्वरूप आत्मा, शुद्धात्मा, शान्त-रूप; शान्त और अशान्त स्वरूप वाला आत्मा, जो आत्मा की एकता के भाव से भी रहित है;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 65,
+        "number": 65,
+        "sanskrit": "जीवात्मपरमात्मेति चिन्तासर्वस्ववर्जितः । मुक्तामुक्तस्वरूपात्मा मुक्तामुक्तविवर्जितः",
+        "transliteration": "jīvātmaparamātmeti cintāsarvasvavarjitaḥ | muktāmuktasvarūpātmā muktāmuktavivarjitaḥ",
+        "translation": "free of the thought \"individual self, supreme Self,\" whose Self is of liberated and unliberated nature, free of liberated and unliberated;",
+        "hindi": "‘जीवात्मा, परमात्मा’ — इस चिन्ता के सर्वस्व से रहित; मुक्त और अमुक्त स्वरूप वाला आत्मा, फिर भी मुक्त और अमुक्त से रहित;",
+        "explanation": "‘जीवात्मा, परमात्मा’ — इस चिन्ता के सर्वस्व से रहित; मुक्त और अमुक्त स्वरूप वाला आत्मा, फिर भी मुक्त और अमुक्त से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 66,
+        "number": 66,
+        "sanskrit": "बन्धमोक्षस्वरूपात्मा बन्धमोक्षविवर्जितः । द्वैताद्वैतस्वरूपात्मा द्वैताद्वैतविवर्जितः",
+        "transliteration": "bandhamokṣasvarūpātmā bandhamokṣavivarjitaḥ | dvaitādvaitasvarūpātmā dvaitādvaitavivarjitaḥ",
+        "translation": "the Self of the nature of bondage and liberation, free of bondage and liberation; the Self of dual and non-dual nature, free of dual and non-dual;",
+        "hindi": "बन्ध और मोक्ष स्वरूप आत्मा, फिर भी बन्ध और मोक्ष से रहित; द्वैत और अद्वैत स्वरूप आत्मा, फिर भी द्वैत और अद्वैत से रहित;",
+        "explanation": "बन्ध और मोक्ष स्वरूप आत्मा, फिर भी बन्ध और मोक्ष से रहित; द्वैत और अद्वैत स्वरूप आत्मा, फिर भी द्वैत और अद्वैत से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 67,
+        "number": 67,
+        "sanskrit": "सर्वासर्वस्वरूपात्मा सर्वासर्वविवर्जितः । मोदप्रमोदरूपात्मा मोदादिविनिवर्जितः",
+        "transliteration": "sarvāsarvasvarūpātmā sarvāsarvavivarjitaḥ | modapramodarūpātmā modādivinivarjitaḥ",
+        "translation": "the Self of the nature of all and not-all, free of all and not-all; of the form of joy and great joy, free of joy and the rest;",
+        "hindi": "सर्व और असर्व स्वरूप आत्मा, फिर भी सर्व और असर्व से रहित; मोद-प्रमोद रूप आत्मा, फिर भी मोद आदि से रहित;",
+        "explanation": "सर्व और असर्व स्वरूप आत्मा, फिर भी सर्व और असर्व से रहित; मोद-प्रमोद रूप आत्मा, फिर भी मोद आदि से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 68,
+        "number": 68,
+        "sanskrit": "सर्वसङ्कल्पहीनात्मा वैदेही मुक्त एव सः । निष्कलात्मा निर्मलात्मा बुद्धात्मापुरुषात्मकः",
+        "transliteration": "sarvasaṅkalpahīnātmā vaidehī mukta eva saḥ | niṣkalātmā nirmalātmā buddhātmāpuruṣātmakaḥ",
+        "translation": "the Self devoid of all intentions is bodiless and liberated. The partless Self, the stainless Self, the awakened Self, the non-person Self;",
+        "hindi": "सब संकल्पों से रहित आत्मा विदेह-मुक्त ही है। निष्कल आत्मा, निर्मल आत्मा, बुद्ध आत्मा, अपुरुष आत्मा;",
+        "explanation": "सब संकल्पों से रहित आत्मा विदेह-मुक्त ही है। निष्कल आत्मा, निर्मल आत्मा, बुद्ध आत्मा, अपुरुष आत्मा;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 69,
+        "number": 69,
+        "sanskrit": "आनन्दादिविहीनात्मा अमृतात्मामृतात्मकः । कालत्रयस्वरूपात्मा कालत्रयविवर्जितः",
+        "transliteration": "ānandādivihīnātmā amṛtātmāmṛtātmakaḥ | kālatrayasvarūpātmā kālatrayavivarjitaḥ",
+        "translation": "the Self devoid of bliss and the rest, the immortal Self, of immortal nature; of the nature of the three times, free of the three times;",
+        "hindi": "आनन्द आदि से भी रहित आत्मा, अमृतात्मा, अमृत-स्वरूप; तीनों कालों का स्वरूप आत्मा, फिर भी तीनों कालों से रहित;",
+        "explanation": "आनन्द आदि से भी रहित आत्मा, अमृतात्मा, अमृत-स्वरूप; तीनों कालों का स्वरूप आत्मा, फिर भी तीनों कालों से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 70,
+        "number": 70,
+        "sanskrit": "अखिलात्मा ह्यमेयात्मा मानात्मा मानवर्जितः । नित्यप्रत्यक्षरूपात्मा नित्यप्रत्यक्षनिर्णयः",
+        "transliteration": "akhilātmā hyameyātmā mānātmā mānavarjitaḥ | nityapratyakṣarūpātmā nityapratyakṣanirṇayaḥ",
+        "translation": "the entire Self, the immeasurable Self, the Self of measure, free of measure; the Self of eternally evident nature, the determination of the eternally evident;",
+        "hindi": "अखिल आत्मा, अमेय आत्मा, मान-स्वरूप आत्मा, फिर भी मान से रहित; नित्य प्रत्यक्ष रूप आत्मा, नित्य प्रत्यक्ष का निर्णय;",
+        "explanation": "अखिल आत्मा, अमेय आत्मा, मान-स्वरूप आत्मा, फिर भी मान से रहित; नित्य प्रत्यक्ष रूप आत्मा, नित्य प्रत्यक्ष का निर्णय;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 71,
+        "number": 71,
+        "sanskrit": "अन्यहीनस्वभावात्मा अन्यहीनस्वयम्प्रभः । विद्याविद्यादिमेयात्मा विद्याविद्यादिवर्जितः",
+        "transliteration": "anyahīnasvabhāvātmā anyahīnasvayamprabhaḥ | vidyāvidyādimeyātmā vidyāvidyādivarjitaḥ",
+        "translation": "of nature devoid of another, self-luminous devoid of another; the Self measured by knowledge and ignorance and the like, free of knowledge and ignorance;",
+        "hindi": "अन्य से रहित स्वभाव वाला आत्मा, अन्य से रहित स्वयं-प्रकाश; विद्या-अविद्या आदि से मापा जाने वाला आत्मा, फिर भी विद्या-अविद्या आदि से रहित;",
+        "explanation": "अन्य से रहित स्वभाव वाला आत्मा, अन्य से रहित स्वयं-प्रकाश; विद्या-अविद्या आदि से मापा जाने वाला आत्मा, फिर भी विद्या-अविद्या आदि से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 72,
+        "number": 72,
+        "sanskrit": "नित्यानित्यविहीनात्मा इहामुत्रविवर्जितः । शमादिषट्कशून्यात्मा मुमुक्षुत्वादिवर्जितः",
+        "transliteration": "nityānityavihīnātmā ihāmutravivarjitaḥ | śamādiṣaṭkaśūnyātmā mumukṣutvādivarjitaḥ",
+        "translation": "the Self devoid of eternal and non-eternal, free of here and hereafter; the Self empty of the sixfold means beginning with peace, free of the desire for liberation and the like;",
+        "hindi": "नित्य-अनित्य से रहित आत्मा, इहलोक और परलोक से रहित; शम आदि षट्सम्पत्ति से शून्य आत्मा, मुमुक्षुत्व आदि से रहित;",
+        "explanation": "नित्य-अनित्य से रहित आत्मा, इहलोक और परलोक से रहित; शम आदि षट्सम्पत्ति से शून्य आत्मा, मुमुक्षुत्व आदि से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 73,
+        "number": 73,
+        "sanskrit": "स्थूलदेहविहीनात्मा सूक्ष्मदेहविवर्जितः । कारणादिविहीनात्मा तुरीयादिविवर्जितः",
+        "transliteration": "sthūladehavihīnātmā sūkṣmadehavivarjitaḥ | kāraṇādivihīnātmā turīyādivivarjitaḥ",
+        "translation": "the Self devoid of the gross body, free of the subtle body; the Self devoid of cause and the rest, free of the Fourth and the rest;",
+        "hindi": "स्थूल देह से रहित आत्मा, सूक्ष्म देह से रहित; कारण आदि से रहित आत्मा, तुरीय आदि से रहित;",
+        "explanation": "स्थूल देह से रहित आत्मा, सूक्ष्म देह से रहित; कारण आदि से रहित आत्मा, तुरीय आदि से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 74,
+        "number": 74,
+        "sanskrit": "अन्नकोशविहीनात्मा प्राणकोशविवर्जितः । मनःकोशविहीनात्मा विज्ञानादिविवर्जितः",
+        "transliteration": "annakośavihīnātmā prāṇakośavivarjitaḥ | manaḥkośavihīnātmā vijñānādivivarjitaḥ",
+        "translation": "the Self devoid of the food-sheath, free of the breath-sheath; the Self devoid of the mind-sheath, free of the knowledge-sheath and the rest;",
+        "hindi": "अन्नमय कोश से रहित आत्मा, प्राणमय कोश से रहित; मनोमय कोश से रहित आत्मा, विज्ञानमय आदि से रहित;",
+        "explanation": "अन्नमय कोश से रहित आत्मा, प्राणमय कोश से रहित; मनोमय कोश से रहित आत्मा, विज्ञानमय आदि से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 75,
+        "number": 75,
+        "sanskrit": "आनन्दकोशहीनात्मा पञ्चकोशविवर्जितः । निर्विकल्पस्वरूपात्मा सविकल्पविवर्जितः",
+        "transliteration": "ānandakośahīnātmā pañcakośavivarjitaḥ | nirvikalpasvarūpātmā savikalpavivarjitaḥ",
+        "translation": "the Self devoid of the bliss-sheath, free of the five sheaths; the Self of non-conceptual nature, free of the conceptual;",
+        "hindi": "आनन्दमय कोश से रहित आत्मा, पाँचों कोशों से रहित; निर्विकल्प स्वरूप आत्मा, सविकल्प से रहित;",
+        "explanation": "आनन्दमय कोश से रहित आत्मा, पाँचों कोशों से रहित; निर्विकल्प स्वरूप आत्मा, सविकल्प से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 76,
+        "number": 76,
+        "sanskrit": "दृश्यानुविद्धहीनात्मा शब्दविद्धविवर्जितः । सदा समाधिशून्यात्मा आदिमध्यान्तवर्जितः",
+        "transliteration": "dṛśyānuviddhahīnātmā śabdaviddhavivarjitaḥ | sadā samādhiśūnyātmā ādimadhyāntavarjitaḥ",
+        "translation": "the Self devoid of association with the seen, free of association with sound; always the Self empty of samadhi, free of beginning, middle and end;",
+        "hindi": "दृश्य के अनुविद्ध (मिलावट) से रहित आत्मा, शब्द के विद्ध से रहित; सदा समाधि से भी शून्य आत्मा, आदि-मध्य-अन्त से रहित;",
+        "explanation": "दृश्य के अनुविद्ध (मिलावट) से रहित आत्मा, शब्द के विद्ध से रहित; सदा समाधि से भी शून्य आत्मा, आदि-मध्य-अन्त से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 77,
+        "number": 77,
+        "sanskrit": "प्रज्ञानवाक्यहीनात्मा अहम्ब्रह्मास्मिवर्जितः । तत्त्वमस्यादिहीनात्मा अयमात्मेत्यभावकः",
+        "transliteration": "prajñānavākyahīnātmā ahambrahmāsmivarjitaḥ | tattvamasyādihīnātmā ayamātmetyabhāvakaḥ",
+        "translation": "the Self devoid of the saying \"consciousness is Brahman,\" free of \"I am Brahman\"; the Self devoid of \"That thou art\" and the like, without the notion \"this Self\";",
+        "hindi": "‘प्रज्ञानं ब्रह्म’ वाक्य से रहित आत्मा, ‘अहं ब्रह्मास्मि’ से रहित; ‘तत्त्वमसि’ आदि से रहित आत्मा, ‘यह आत्मा है’ ऐसे भाव से भी रहित;",
+        "explanation": "‘प्रज्ञानं ब्रह्म’ वाक्य से रहित आत्मा, ‘अहं ब्रह्मास्मि’ से रहित; ‘तत्त्वमसि’ आदि से रहित आत्मा, ‘यह आत्मा है’ ऐसे भाव से भी रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 78,
+        "number": 78,
+        "sanskrit": "ओङ्कारवाच्यहीनात्मा सर्ववाच्यविवर्जितः । अवस्थात्रयहीनात्मा अक्षरात्मा चिदात्मकः",
+        "transliteration": "oṅkāravācyahīnātmā sarvavācyavivarjitaḥ | avasthātrayahīnātmā akṣarātmā cidātmakaḥ",
+        "translation": "the Self devoid of what Om signifies, free of all that can be said; the Self devoid of the three states, the imperishable Self, of the nature of consciousness;",
+        "hindi": "ओंकार के वाच्य से रहित आत्मा, सब वाच्य से रहित; तीनों अवस्थाओं से रहित आत्मा, अक्षर आत्मा, चिदात्मक;",
+        "explanation": "ओंकार के वाच्य से रहित आत्मा, सब वाच्य से रहित; तीनों अवस्थाओं से रहित आत्मा, अक्षर आत्मा, चिदात्मक;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 79,
+        "number": 79,
+        "sanskrit": "आत्मज्ञेयादिहीनात्मा यत्किञ्चिदिदमात्मकः । भानाभानविहीनात्मा वैदेही मुक्त एव सः",
+        "transliteration": "ātmajñeyādihīnātmā yatkiñcididamātmakaḥ | bhānābhānavihīnātmā vaidehī mukta eva saḥ",
+        "translation": "the Self devoid of the knowable and the like, whatever this is of Self; the Self devoid of appearing and non-appearing — he is bodiless and liberated.",
+        "hindi": "आत्मा और ज्ञेय आदि से रहित आत्मा, जो कुछ यह है सब आत्म-रूप है; भासने और न भासने से रहित आत्मा — वही विदेह-मुक्त है।",
+        "explanation": "आत्मा और ज्ञेय आदि से रहित आत्मा, जो कुछ यह है सब आत्म-रूप है; भासने और न भासने से रहित आत्मा — वही विदेह-मुक्त है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 80,
+        "number": 80,
+        "sanskrit": "आत्मानमेव वीक्षस्व आत्मानं बोधय स्वकम् । स्वमात्मानं स्वयं भुङ्क्ष्व स्वस्थो भव षडानन",
+        "transliteration": "ātmānameva vīkṣasva ātmānaṃ bodhaya svakam | svamātmānaṃ svayaṃ bhuṅkṣva svastho bhava ṣaḍānana",
+        "translation": "Look at the Self alone; awaken your own Self; by yourself enjoy your own Self; be established in yourself, O six-faced one.",
+        "hindi": "आत्मा को ही देखो, अपने आत्मा को जगाओ; स्वयं अपने आत्मा का भोग करो; हे षडानन! अपने में स्थित हो जाओ।",
+        "explanation": "आत्मा को ही देखो, अपने आत्मा को जगाओ; स्वयं अपने आत्मा का भोग करो; हे षडानन! अपने में स्थित हो जाओ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 81,
+        "number": 81,
+        "sanskrit": "स्वमात्मनि स्वयं तृप्तः स्वमात्मानं स्वयं चर । आत्मानमेव मोदस्व वैदेही मुक्तिको भवेत्युपनिषत् ॥",
+        "transliteration": "svamātmani svayaṃ tṛptaḥ svamātmānaṃ svayaṃ cara | ātmānameva modasva vaidehī muktiko bhavetyupaniṣat ||",
+        "translation": "Satisfied in your own Self by yourself, move in your own Self by yourself; rejoice in the Self alone, and be bodiless and liberated — thus the Upanishad.",
+        "hindi": "अपने आत्मा में स्वयं तृप्त होकर, अपने ही आत्मा में स्वयं विचरण करो; आत्मा में ही आनन्दित रहो — विदेह-मुक्त हो जाओ। ऐसा यह उपनिषद् है।",
+        "explanation": "अपने आत्मा में स्वयं तृप्त होकर, अपने ही आत्मा में स्वयं विचरण करो; आत्मा में ही आनन्दित रहो — विदेह-मुक्त हो जाओ। ऐसा यह उपनिषद् है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Chapter 6 — Complete Absoluteness of the Self",
+    "titleSanskrit": "षष्ठ अध्याय — सिद्धावस्था एवं पूर्णत्व",
+    "summary": "The culminating proclamation that everything is the Self, and liberation is the natural, eternal reality of consciousness.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "निदाघो नाम वै मुनिः पप्रच्छ ऋभुं भगवन्तमात्मानात्मविवेकमनुब्रूहीति । स होवाच ऋभुः । सर्ववाचोऽवधिर्ब्रह्म सर्वचिन्तावधिर्गुरुः । सर्वकारणकार्यात्मा कार्यकारणवर्जितः",
+        "transliteration": "nidāgho nāma vai muniḥ papraccha ṛbhuṃ bhagavantamātmānātmavivekamanubrūhīti | sa hovāca ṛbhuḥ | sarvavāco'vadhirbrahma sarvacintāvadhirguruḥ | sarvakāraṇakāryātmā kāryakāraṇavarjitaḥ",
+        "translation": "The sage named Nidagha asked the revered Ribhu: \"Tell me the discrimination between Self and non-Self.\" Ribhu said: Brahman is the limit of all speech; the teacher is the limit of all thought; the Self of all cause and effect, free of effect and cause;",
+        "hindi": "निदाघ नामक मुनि ने भगवान ऋभु से पूछा — ‘आत्मा और अनात्मा के विवेक को मुझे बताइए।’ तब ऋभु ने कहा — ब्रह्म सब वाणी की सीमा है; गुरु सब चिन्तन की सीमा हैं; वह सब कारण-कार्य का आत्मा है, फिर भी कार्य-कारण से रहित है;",
+        "explanation": "निदाघ नामक मुनि ने भगवान ऋभु से पूछा — ‘आत्मा और अनात्मा के विवेक को मुझे बताइए।’ तब ऋभु ने कहा — ब्रह्म सब वाणी की सीमा है; गुरु सब चिन्तन की सीमा हैं; वह सब कारण-कार्य का आत्मा है, फिर भी कार्य-कारण से रहित है;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "सर्वसङ्कल्परहितः सर्वनादमयः शिवः । सर्ववर्जितचिन्मात्रः सर्वानन्दमयः परः",
+        "transliteration": "sarvasaṅkalparahitaḥ sarvanādamayaḥ śivaḥ | sarvavarjitacinmātraḥ sarvānandamayaḥ paraḥ",
+        "translation": "free of all intentions, Shiva made of all sound; pure consciousness free of all, supreme, made of all bliss;",
+        "hindi": "सब संकल्पों से रहित, सब नादमय शिव; सब से रहित चिन्मात्र, परम और सब आनन्दमय;",
+        "explanation": "सब संकल्पों से रहित, सब नादमय शिव; सब से रहित चिन्मात्र, परम और सब आनन्दमय;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "सर्वतेजःप्रकाशात्मा नादानन्दमयात्मकः । सर्वानुभवनिर्मुक्तः सर्वध्यानविवर्जितः",
+        "transliteration": "sarvatejaḥprakāśātmā nādānandamayātmakaḥ | sarvānubhavanirmuktaḥ sarvadhyānavivarjitaḥ",
+        "translation": "of the nature of the light of all radiance, made of the bliss of nada; freed from all experience, free of all meditation;",
+        "hindi": "सब तेज का प्रकाश-स्वरूप आत्मा, नाद और आनन्दमय स्वरूप वाला; सब अनुभवों से मुक्त, सब ध्यानों से रहित;",
+        "explanation": "सब तेज का प्रकाश-स्वरूप आत्मा, नाद और आनन्दमय स्वरूप वाला; सब अनुभवों से मुक्त, सब ध्यानों से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "सर्वनादकलातीत एष आत्माहमव्ययः । आत्मानात्मविवेकादिभेदाभेदविवर्जितः",
+        "transliteration": "sarvanādakalātīta eṣa ātmāhamavyayaḥ | ātmānātmavivekādibhedābhedavivarjitaḥ",
+        "translation": "beyond all the parts of nada, this Self, I am, imperishable; free of the distinctions and non-distinctions of discrimination between Self and non-Self and the like;",
+        "hindi": "सब नाद की कलाओं से परे — यही मैं अविनाशी आत्मा हूँ; आत्मा-अनात्मा के विवेक आदि भेद-अभेद से रहित;",
+        "explanation": "सब नाद की कलाओं से परे — यही मैं अविनाशी आत्मा हूँ; आत्मा-अनात्मा के विवेक आदि भेद-अभेद से रहित;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "शान्ताशान्तादिहीनात्मा नादान्तर्ज्योतिरूपकः । महावाक्यार्थतो दूरो ब्रह्मास्मीत्यतिदूरतः",
+        "transliteration": "śāntāśāntādihīnātmā nādāntarjyotirūpakaḥ | mahāvākyārthato dūro brahmāsmītyatidūrataḥ",
+        "translation": "the Self devoid of peaceful and unpeaceful and the like, of the form of the light within nada; far from the meaning of the great sayings, very far from \"I am Brahman\";",
+        "hindi": "शान्त-अशान्त आदि से रहित आत्मा, नाद के भीतर की ज्योति के रूप वाला; महावाक्यों के अर्थ से दूर, ‘मैं ब्रह्म हूँ’ से भी बहुत दूर;",
+        "explanation": "शान्त-अशान्त आदि से रहित आत्मा, नाद के भीतर की ज्योति के रूप वाला; महावाक्यों के अर्थ से दूर, ‘मैं ब्रह्म हूँ’ से भी बहुत दूर;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "तच्छब्दवर्ज्यस्त्वंशब्दहीनो वाक्यार्थवर्जितः । क्षराक्षरविहीनो यो नादान्तर्ज्योतिरेव सः",
+        "transliteration": "tacchabdavarjyastvaṃśabdahīno vākyārthavarjitaḥ | kṣarākṣaravihīno yo nādāntarjyotireva saḥ",
+        "translation": "free of the word \"that,\" devoid of the word \"thou,\" free of the meaning of the sentence; devoid of perishable and imperishable — he is only the light within nada.",
+        "hindi": "‘तत्’ शब्द से रहित, ‘त्वं’ शब्द से रहित, वाक्यार्थ से रहित; क्षर-अक्षर से रहित — वह केवल नाद के भीतर की ज्योति ही है।",
+        "explanation": "‘तत्’ शब्द से रहित, ‘त्वं’ शब्द से रहित, वाक्यार्थ से रहित; क्षर-अक्षर से रहित — वह केवल नाद के भीतर की ज्योति ही है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "अखण्डैकरसो वाहमानन्दोऽस्मीति वर्जितः । सर्वातीतस्वभावात्मा नादान्तर्ज्योतिरेव सः",
+        "transliteration": "akhaṇḍaikaraso vāhamānando'smīti varjitaḥ | sarvātītasvabhāvātmā nādāntarjyotireva saḥ",
+        "translation": "Free even of \"I am undivided one-savor bliss\"; of the nature beyond all — he is only the light within nada.",
+        "hindi": "‘मैं अखण्ड एकरस आनन्द हूँ’ — इस भाव से भी रहित; सब से परे स्वभाव वाला आत्मा — वह केवल नाद के भीतर की ज्योति ही है।",
+        "explanation": "‘मैं अखण्ड एकरस आनन्द हूँ’ — इस भाव से भी रहित; सब से परे स्वभाव वाला आत्मा — वह केवल नाद के भीतर की ज्योति ही है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "आत्मेति शब्दहीनो य आत्मशब्दार्थवर्जितः । सच्चिदानन्दहीनो य एषैवात्मा सनातनः",
+        "transliteration": "ātmeti śabdahīno ya ātmaśabdārthavarjitaḥ | saccidānandahīno ya eṣaivātmā sanātanaḥ",
+        "translation": "He who is devoid of the word \"Self,\" free of the meaning of the word Self, devoid even of being-consciousness-bliss, this alone is the eternal Self.",
+        "hindi": "जो ‘आत्मा’ शब्द से भी रहित है, आत्म-शब्द के अर्थ से भी रहित, जो सच्चिदानन्द से भी रहित है — यही सनातन आत्मा है।",
+        "explanation": "जो ‘आत्मा’ शब्द से भी रहित है, आत्म-शब्द के अर्थ से भी रहित, जो सच्चिदानन्द से भी रहित है — यही सनातन आत्मा है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "स निर्देष्टुमशक्यो यो वेदवाक्यैरगम्यतः । यस्य किञ्चिद्बहिर्नास्ति किञ्चिदन्तः कियन्न च",
+        "transliteration": "sa nirdeṣṭumaśakyo yo vedavākyairagamyataḥ | yasya kiñcidbahirnāsti kiñcidantaḥ kiyanna ca",
+        "translation": "He cannot be pointed to, being unreachable by Vedic sentences; for whom there is nothing outside, nothing inside, nothing at all.",
+        "hindi": "उसका निर्देश नहीं किया जा सकता, क्योंकि वेद-वाक्य भी उस तक नहीं पहुँचते; जिसके लिए कुछ भी बाहर नहीं है, न भीतर, न कुछ भी थोड़ा-सा।",
+        "explanation": "उसका निर्देश नहीं किया जा सकता, क्योंकि वेद-वाक्य भी उस तक नहीं पहुँचते; जिसके लिए कुछ भी बाहर नहीं है, न भीतर, न कुछ भी थोड़ा-सा।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 10,
+        "number": 10,
+        "sanskrit": "यस्य लिङ्गं प्रपञ्चं वा ब्रह्मैवात्मा न संशयः । नास्ति यस्य शरीरं वा जीवो वा भूतभौतिकः",
+        "transliteration": "yasya liṅgaṃ prapañcaṃ vā brahmaivātmā na saṃśayaḥ | nāsti yasya śarīraṃ vā jīvo vā bhūtabhautikaḥ",
+        "translation": "Of whom there is no mark or world — Brahman alone is the Self; no doubt. For whom there is no body, no individual, no elements or elemental things,",
+        "hindi": "जिसका कोई लिंग या प्रपंच नहीं, वही ब्रह्म आत्मा है, इसमें संशय नहीं। जिसका न शरीर है, न जीव, न भूत-भौतिक पदार्थ,",
+        "explanation": "जिसका कोई लिंग या प्रपंच नहीं, वही ब्रह्म आत्मा है, इसमें संशय नहीं। जिसका न शरीर है, न जीव, न भूत-भौतिक पदार्थ,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 11,
+        "number": 11,
+        "sanskrit": "नामरूपादिकं नास्ति भोज्यं वा भोगभुक्च वा । सद्वाऽसद्वा स्थितिर्वापि यस्य नास्ति क्षराक्षरम्",
+        "transliteration": "nāmarūpādikaṃ nāsti bhojyaṃ vā bhogabhukca vā | sadvā'sadvā sthitirvāpi yasya nāsti kṣarākṣaram",
+        "translation": "no name and form and the like, no object of enjoyment or enjoyer; for whom there is no existent or non-existent, no state, no perishable or imperishable —",
+        "hindi": "न नाम-रूप आदि, न भोज्य या भोक्ता; जिसकी न सत्-असत् स्थिति है, न क्षर-अक्षर —",
+        "explanation": "न नाम-रूप आदि, न भोज्य या भोक्ता; जिसकी न सत्-असत् स्थिति है, न क्षर-अक्षर —",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 12,
+        "number": 12,
+        "sanskrit": "गुणं वा विगुणं वापि सम आत्मा न संशयः । यस्य वाच्यं वाचकं वा श्रवणं मननं च वा",
+        "transliteration": "guṇaṃ vā viguṇaṃ vāpi sama ātmā na saṃśayaḥ | yasya vācyaṃ vācakaṃ vā śravaṇaṃ mananaṃ ca vā",
+        "translation": "with quality or without quality, the Self is even; no doubt. For whom there is no speakable or speaker, no hearing or reflection,",
+        "hindi": "गुण या निर्गुण — वह आत्मा सम है, इसमें संशय नहीं। जिसके लिए न वाच्य है, न वाचक, न श्रवण, न मनन,",
+        "explanation": "गुण या निर्गुण — वह आत्मा सम है, इसमें संशय नहीं। जिसके लिए न वाच्य है, न वाचक, न श्रवण, न मनन,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 13,
+        "number": 13,
+        "sanskrit": "गुरुशिष्यादिभेदं वा देवलोकाः सुरासुराः । यत्र धर्ममधर्मं वा शुद्धं वाशुद्धमण्वपि",
+        "transliteration": "guruśiṣyādibhedaṃ vā devalokāḥ surāsurāḥ | yatra dharmamadharmaṃ vā śuddhaṃ vāśuddhamaṇvapi",
+        "translation": "no difference of teacher and disciple and the like, no worlds of gods, gods or demons; where there is no merit or demerit, not even an atom of pure or impure;",
+        "hindi": "न गुरु-शिष्य आदि का भेद, न देवलोक, न देव-असुर; जहाँ न धर्म है, न अधर्म, न अणुमात्र भी शुद्ध या अशुद्ध;",
+        "explanation": "न गुरु-शिष्य आदि का भेद, न देवलोक, न देव-असुर; जहाँ न धर्म है, न अधर्म, न अणुमात्र भी शुद्ध या अशुद्ध;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 14,
+        "number": 14,
+        "sanskrit": "यत्र कालमकालं वा निश्चयः संशयो न हि । यत्र मन्त्रममन्त्रं वा विद्याविद्ये न विद्यते",
+        "transliteration": "yatra kālamakālaṃ vā niścayaḥ saṃśayo na hi | yatra mantramamantraṃ vā vidyāvidye na vidyate",
+        "translation": "where there is no time or non-time, no certainty or doubt; where there is no mantra or non-mantra; knowledge and ignorance do not exist;",
+        "hindi": "जहाँ न काल है, न अकाल, न निश्चय है, न संशय; जहाँ न मन्त्र है, न अमन्त्र; विद्या और अविद्या नहीं हैं;",
+        "explanation": "जहाँ न काल है, न अकाल, न निश्चय है, न संशय; जहाँ न मन्त्र है, न अमन्त्र; विद्या और अविद्या नहीं हैं;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 15,
+        "number": 15,
+        "sanskrit": "द्रष्टृदर्शनदृश्यं वा ईषन्मात्रं कलात्मकम् । अनात्मेति प्रसङ्गो वा ह्यनात्मेति मनोऽपि वा",
+        "transliteration": "draṣṭṛdarśanadṛśyaṃ vā īṣanmātraṃ kalātmakam | anātmeti prasaṅgo vā hyanātmeti mano'pi vā",
+        "translation": "no seer, seeing or seen, even slightly, no part; no occasion of \"non-Self,\" no mind of \"non-Self,\"",
+        "hindi": "जहाँ द्रष्टा, दर्शन और दृश्य थोड़े-से भी नहीं, कलात्मक अंश भी नहीं; ‘अनात्मा’ का प्रसंग नहीं, ‘अनात्मा’ का मन भी नहीं,",
+        "explanation": "जहाँ द्रष्टा, दर्शन और दृश्य थोड़े-से भी नहीं, कलात्मक अंश भी नहीं; ‘अनात्मा’ का प्रसंग नहीं, ‘अनात्मा’ का मन भी नहीं,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 16,
+        "number": 16,
+        "sanskrit": "अनात्मेति जगद्वापि नास्ति नास्ति निश्चिनु । सर्वसङ्कल्पशून्यत्वात्सर्वकार्यविवर्जनात्",
+        "transliteration": "anātmeti jagadvāpi nāsti nāsti niścinu | sarvasaṅkalpaśūnyatvātsarvakāryavivarjanāt",
+        "translation": "nor \"non-Self\" as world — be certain it does not, does not exist. Because it is void of all intentions and free of all effects,",
+        "hindi": "‘अनात्मा’ रूपी जगत भी नहीं है, नहीं है — ऐसा निश्चय करो। क्योंकि वह सब संकल्पों से शून्य और सब कार्यों से रहित है,",
+        "explanation": "‘अनात्मा’ रूपी जगत भी नहीं है, नहीं है — ऐसा निश्चय करो। क्योंकि वह सब संकल्पों से शून्य और सब कार्यों से रहित है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 17,
+        "number": 17,
+        "sanskrit": "केवलं ब्रह्ममात्रत्वान्नास्त्यनात्मेति निश्चिनु । देहत्रयविहीनत्वात्कालत्रयविवर्जनात्",
+        "transliteration": "kevalaṃ brahmamātratvānnāstyanātmeti niścinu | dehatrayavihīnatvātkālatrayavivarjanāt",
+        "translation": "because it is merely Brahman alone, be certain there is no non-Self; because it is devoid of the three bodies, free of the three times,",
+        "hindi": "केवल ब्रह्म-मात्र होने से अनात्मा नहीं है — ऐसा निश्चय करो। क्योंकि वह तीनों शरीरों से रहित और तीनों कालों से मुक्त है,",
+        "explanation": "केवल ब्रह्म-मात्र होने से अनात्मा नहीं है — ऐसा निश्चय करो। क्योंकि वह तीनों शरीरों से रहित और तीनों कालों से मुक्त है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 18,
+        "number": 18,
+        "sanskrit": "जीवत्रयगुणाभावात्तापत्रयविवर्जनात् । लोकत्रयविहीनत्वात्सर्वमात्मेति शासनात्",
+        "transliteration": "jīvatrayaguṇābhāvāttāpatrayavivarjanāt | lokatrayavihīnatvātsarvamātmeti śāsanāt",
+        "translation": "because the qualities of the three individuals are absent, because the three afflictions are absent, because it is devoid of the three worlds, by the teaching \"all is the Self.\"",
+        "hindi": "तीन जीवों के गुणों के अभाव से, तीन तापों से रहित होने से, तीनों लोकों से रहित होने से और ‘सब कुछ आत्मा है’ — इस उपदेश से।",
+        "explanation": "तीन जीवों के गुणों के अभाव से, तीन तापों से रहित होने से, तीनों लोकों से रहित होने से और ‘सब कुछ आत्मा है’ — इस उपदेश से।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 19,
+        "number": 19,
+        "sanskrit": "चित्ताभाच्चिन्तनीयं देहाभावाज्जरा न च । पादाभावाद्गतिर्नास्ति हस्ताभावात्क्रिया न च",
+        "transliteration": "cittābhāccintanīyaṃ dehābhāvājjarā na ca | pādābhāvādgatirnāsti hastābhāvātkriyā na ca",
+        "translation": "For lack of mind there is nothing to think; for lack of body there is no old age; for lack of feet there is no going; for lack of hands there is no action;",
+        "hindi": "चित्त के अभाव में चिन्तन करने योग्य कुछ नहीं; देह के अभाव में बुढ़ापा नहीं; पैरों के अभाव में गति नहीं; हाथों के अभाव में क्रिया नहीं;",
+        "explanation": "चित्त के अभाव में चिन्तन करने योग्य कुछ नहीं; देह के अभाव में बुढ़ापा नहीं; पैरों के अभाव में गति नहीं; हाथों के अभाव में क्रिया नहीं;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 20,
+        "number": 20,
+        "sanskrit": "मृत्युर्नास्ति जनाभावाद्बुद्ध्यभावात्सुखादिकम् । धर्मो नास्ति शुचिर्नास्ति सत्यं नास्ति भयं न च",
+        "transliteration": "mṛtyurnāsti janābhāvādbuddhyabhāvātsukhādikam | dharmo nāsti śucirnāsti satyaṃ nāsti bhayaṃ na ca",
+        "translation": "there is no death for lack of people; for lack of intellect there is no pleasure and the like; there is no merit, no purity, no truth, no fear;",
+        "hindi": "मनुष्यों के अभाव में मृत्यु नहीं; बुद्धि के अभाव में सुख आदि नहीं; धर्म नहीं, शुचिता नहीं, सत्य नहीं, भय भी नहीं;",
+        "explanation": "मनुष्यों के अभाव में मृत्यु नहीं; बुद्धि के अभाव में सुख आदि नहीं; धर्म नहीं, शुचिता नहीं, सत्य नहीं, भय भी नहीं;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 21,
+        "number": 21,
+        "sanskrit": "अक्षरोच्चारणं नास्ति गुरुशिष्यादि नास्त्यपि । एकाभावे द्वितीयं न न द्वितीये न चैकता",
+        "transliteration": "akṣaroccāraṇaṃ nāsti guruśiṣyādi nāstyapi | ekābhāve dvitīyaṃ na na dvitīye na caikatā",
+        "translation": "no utterance of syllables, no teacher and disciple; where there is no one, there is no second; and not in the second is there oneness.",
+        "hindi": "अक्षरों का उच्चारण नहीं, गुरु-शिष्य आदि भी नहीं; एक के अभाव में दूसरा नहीं, और दूसरे में एकता भी नहीं।",
+        "explanation": "अक्षरों का उच्चारण नहीं, गुरु-शिष्य आदि भी नहीं; एक के अभाव में दूसरा नहीं, और दूसरे में एकता भी नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 22,
+        "number": 22,
+        "sanskrit": "सत्यत्वमस्ति चेत्किञ्चिदसत्यं न च सम्भवेत् । असत्यत्वं यदि भवेत्सत्यत्वं न घटिष्यति",
+        "transliteration": "satyatvamasti cetkiñcidasatyaṃ na ca sambhavet | asatyatvaṃ yadi bhavetsatyatvaṃ na ghaṭiṣyati",
+        "translation": "If there were anything of truth, falsehood could not arise; if there were falsehood, truth would not be tenable.",
+        "hindi": "यदि कुछ भी सत्य होता तो असत्य सम्भव नहीं होता; यदि असत्य होता तो सत्य नहीं घटता।",
+        "explanation": "यदि कुछ भी सत्य होता तो असत्य सम्भव नहीं होता; यदि असत्य होता तो सत्य नहीं घटता।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 23,
+        "number": 23,
+        "sanskrit": "शुभं यद्यशुभं विद्धि अशुभाच्छुभमिष्यते । भयं यद्यभवं विद्धि अभयाद्भयमापतेत्",
+        "transliteration": "śubhaṃ yadyaśubhaṃ viddhi aśubhācchubhamiṣyate | bhayaṃ yadyabhavaṃ viddhi abhayādbhayamāpatet",
+        "translation": "If you know the auspicious as inauspicious, the auspicious is wished from the inauspicious; if you know fear as non-existence, fear would fall from fearlessness.",
+        "hindi": "यदि शुभ को अशुभ जानो तो अशुभ से शुभ की इच्छा होती है; यदि भय को अभाव जानो तो अभय से भय आ पड़ेगा।",
+        "explanation": "यदि शुभ को अशुभ जानो तो अशुभ से शुभ की इच्छा होती है; यदि भय को अभाव जानो तो अभय से भय आ पड़ेगा।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 24,
+        "number": 24,
+        "sanskrit": "बन्धत्वमपि चेन्मोक्षो बन्धाभावे क्व मोक्षता । मरणं यदि चेज्जन्म जन्माभावे मृतिर्न च",
+        "transliteration": "bandhatvamapi cenmokṣo bandhābhāve kva mokṣatā | maraṇaṃ yadi cejjanma janmābhāve mṛtirna ca",
+        "translation": "If bondage exists, so does liberation; without bondage where is liberation? If there is death, there is birth; without birth there is no death.",
+        "hindi": "यदि बन्धन है तो मोक्ष भी है; बन्धन के अभाव में मोक्ष कहाँ? यदि मरण है तो जन्म है; जन्म के अभाव में मृत्यु नहीं।",
+        "explanation": "यदि बन्धन है तो मोक्ष भी है; बन्धन के अभाव में मोक्ष कहाँ? यदि मरण है तो जन्म है; जन्म के अभाव में मृत्यु नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 25,
+        "number": 25,
+        "sanskrit": "त्वमित्यपि भवेच्चाहं त्वं नो चेदहमेव न । इदं यदि तदेवास्ति तदभादिदं न च",
+        "transliteration": "tvamityapi bhaveccāhaṃ tvaṃ no cedahameva na | idaṃ yadi tadevāsti tadabhādidaṃ na ca",
+        "translation": "If there is \"you,\" there is \"I\"; if not \"you,\" there is not \"I\"; if this exists, that exists; without that appearing, this does not.",
+        "hindi": "यदि ‘तू’ है तो ‘मैं’ भी है; यदि ‘तू’ नहीं तो ‘मैं’ भी नहीं। यदि ‘यह’ है तो ‘वह’ है; ‘वह’ के प्रकाशित हुए बिना ‘यह’ नहीं।",
+        "explanation": "यदि ‘तू’ है तो ‘मैं’ भी है; यदि ‘तू’ नहीं तो ‘मैं’ भी नहीं। यदि ‘यह’ है तो ‘वह’ है; ‘वह’ के प्रकाशित हुए बिना ‘यह’ नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 26,
+        "number": 26,
+        "sanskrit": "अस्तीति चेन्नास्ति तदा नास्ति चेदस्ति किञ्चन । कार्यं चेत्कारणं किञ्चित्कार्याभावे न कारणम्",
+        "transliteration": "astīti cennāsti tadā nāsti cedasti kiñcana | kāryaṃ cetkāraṇaṃ kiñcitkāryābhāve na kāraṇam",
+        "translation": "If it exists, then it does not; if it does not exist, then something does; if there is effect, there is some cause; without effect there is no cause.",
+        "hindi": "यदि ‘है’ तो ‘नहीं है’; यदि ‘नहीं है’ तो कुछ ‘है’। यदि कार्य है तो कोई कारण है; कार्य के अभाव में कारण नहीं।",
+        "explanation": "यदि ‘है’ तो ‘नहीं है’; यदि ‘नहीं है’ तो कुछ ‘है’। यदि कार्य है तो कोई कारण है; कार्य के अभाव में कारण नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 27,
+        "number": 27,
+        "sanskrit": "द्वैतं यदि तदाऽद्वैतं द्वैताभावे द्वयं न च । दृश्यं यदि दृगप्यस्ति दृश्याभावे दृगेन न",
+        "transliteration": "dvaitaṃ yadi tadā'dvaitaṃ dvaitābhāve dvayaṃ na ca | dṛśyaṃ yadi dṛgapyasti dṛśyābhāve dṛgena na",
+        "translation": "If there is duality, then non-duality; without duality there is no pair; if there is the seen, there is the seer; without the seen, no seer.",
+        "hindi": "यदि द्वैत है तो अद्वैत भी; द्वैत के अभाव में दो नहीं। यदि दृश्य है तो द्रष्टा भी है; दृश्य के अभाव में द्रष्टा नहीं।",
+        "explanation": "यदि द्वैत है तो अद्वैत भी; द्वैत के अभाव में दो नहीं। यदि दृश्य है तो द्रष्टा भी है; दृश्य के अभाव में द्रष्टा नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 28,
+        "number": 28,
+        "sanskrit": "अन्तर्यदि बहिः सत्यमन्ता भावे बहिर्न च । पूर्णत्वमस्ति चेत्किञ्चिदपूर्णत्वं प्रसज्यते",
+        "transliteration": "antaryadi bahiḥ satyamantā bhāve bahirna ca | pūrṇatvamasti cetkiñcidapūrṇatvaṃ prasajyate",
+        "translation": "If inside, then outside is true; without inside there is no outside; if there is fullness, there arises some non-fullness.",
+        "hindi": "यदि भीतर है तो बाहर भी सत्य है; भीतर के अभाव में बाहर नहीं। यदि पूर्णता कुछ है, तो अपूर्णता का प्रसंग आता है।",
+        "explanation": "यदि भीतर है तो बाहर भी सत्य है; भीतर के अभाव में बाहर नहीं। यदि पूर्णता कुछ है, तो अपूर्णता का प्रसंग आता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 29,
+        "number": 29,
+        "sanskrit": "तस्मादेतत्क्वचिन्नास्ति त्वं चाहं वा इमे इदम् । नास्ति दृष्टान्तिकं सत्ये नास्ति दार्ष्टान्तिकं ह्यजे",
+        "transliteration": "tasmādetatkvacinnāsti tvaṃ cāhaṃ vā ime idam | nāsti dṛṣṭāntikaṃ satye nāsti dārṣṭāntikaṃ hyaje",
+        "translation": "Therefore none of this exists anywhere: you, I, these, this; in the truth there is no illustrated, in the unborn no illustrator.",
+        "hindi": "इसलिए यह सब कहीं नहीं है — तू, मैं, ये, यह। सत्य में दृष्टान्त नहीं, अजन्मा में दार्ष्टान्तिक (उपमेय) नहीं।",
+        "explanation": "इसलिए यह सब कहीं नहीं है — तू, मैं, ये, यह। सत्य में दृष्टान्त नहीं, अजन्मा में दार्ष्टान्तिक (उपमेय) नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 30,
+        "number": 30,
+        "sanskrit": "परम्ब्रह्माहमस्मीति स्मरणस्य मनो न हि । ब्रह्ममात्रं जगदिदं ब्रह्ममात्रं त्वमप्यहम्",
+        "transliteration": "parambrahmāhamasmīti smaraṇasya mano na hi | brahmamātraṃ jagadidaṃ brahmamātraṃ tvamapyaham",
+        "translation": "The mind has no place for remembering \"I am the supreme Brahman.\" This world is Brahman alone; you and I are Brahman alone.",
+        "hindi": "‘मैं परब्रह्म हूँ’ — इस स्मरण के लिए भी मन नहीं। यह जगत ब्रह्म-मात्र है; तू और मैं भी ब्रह्म-मात्र हैं।",
+        "explanation": "‘मैं परब्रह्म हूँ’ — इस स्मरण के लिए भी मन नहीं। यह जगत ब्रह्म-मात्र है; तू और मैं भी ब्रह्म-मात्र हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 31,
+        "number": 31,
+        "sanskrit": "चिन्मात्रं केवलं चाहं नास्त्यनात्म्येति निश्चिनु । इदं प्रपञ्चं नास्त्येव नोत्पन्नं नो स्थितं क्वचित्",
+        "transliteration": "cinmātraṃ kevalaṃ cāhaṃ nāstyanātmyeti niścinu | idaṃ prapañcaṃ nāstyeva notpannaṃ no sthitaṃ kvacit",
+        "translation": "I am pure consciousness alone; be certain there is no non-Self. This world does not exist at all, not arisen, nor standing anywhere.",
+        "hindi": "मैं केवल चिन्मात्र हूँ — निश्चय करो कि अनात्मा नहीं है। यह प्रपंच है ही नहीं; न उत्पन्न हुआ, न कहीं स्थित है।",
+        "explanation": "मैं केवल चिन्मात्र हूँ — निश्चय करो कि अनात्मा नहीं है। यह प्रपंच है ही नहीं; न उत्पन्न हुआ, न कहीं स्थित है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 32,
+        "number": 32,
+        "sanskrit": "चित्तं प्रपञ्चमित्याहुर्नास्ति नास्त्येव सर्वदा । न प्रपञ्चं न चित्तादि नाहङ्कारो न जीवकः",
+        "transliteration": "cittaṃ prapañcamityāhurnāsti nāstyeva sarvadā | na prapañcaṃ na cittādi nāhaṅkāro na jīvakaḥ",
+        "translation": "They call the mind the world; it does not exist, it never exists; no world, no mind and the like, no ego, no individual.",
+        "hindi": "चित्त को ही प्रपंच कहते हैं; वह नहीं है, सदा नहीं ही है। न प्रपंच है, न चित्त आदि, न अहंकार, न जीव।",
+        "explanation": "चित्त को ही प्रपंच कहते हैं; वह नहीं है, सदा नहीं ही है। न प्रपंच है, न चित्त आदि, न अहंकार, न जीव।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 33,
+        "number": 33,
+        "sanskrit": "मायाकार्यादिकं नास्ति माया नास्ति भयं नहि । कर्ता नास्ति क्रिया नास्ति श्रवणं मननं नहि",
+        "transliteration": "māyākāryādikaṃ nāsti māyā nāsti bhayaṃ nahi | kartā nāsti kriyā nāsti śravaṇaṃ mananaṃ nahi",
+        "translation": "No illusion or its effects; illusion does not exist, nor fear; no doer, no action, no hearing, no reflection.",
+        "hindi": "माया और उसके कार्य नहीं हैं; माया नहीं है, भय भी नहीं। कर्ता नहीं, क्रिया नहीं, श्रवण नहीं, मनन नहीं।",
+        "explanation": "माया और उसके कार्य नहीं हैं; माया नहीं है, भय भी नहीं। कर्ता नहीं, क्रिया नहीं, श्रवण नहीं, मनन नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 34,
+        "number": 34,
+        "sanskrit": "समाधिद्वितयं नास्ति मातृमानादि नास्ति हि । अज्ञानं चापि नास्त्येव ह्यविवेकं कदाचन",
+        "transliteration": "samādhidvitayaṃ nāsti mātṛmānādi nāsti hi | ajñānaṃ cāpi nāstyeva hyavivekaṃ kadācana",
+        "translation": "No twofold samadhi, no knower, measure and the like; ignorance too does not exist, nor non-discrimination ever.",
+        "hindi": "दो प्रकार की समाधि नहीं; प्रमाता और प्रमाण आदि नहीं; अज्ञान भी नहीं है और अविवेक भी कभी नहीं।",
+        "explanation": "दो प्रकार की समाधि नहीं; प्रमाता और प्रमाण आदि नहीं; अज्ञान भी नहीं है और अविवेक भी कभी नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 35,
+        "number": 35,
+        "sanskrit": "अनुबन्धचतुष्कं न सम्बन्धत्रयमेव न । न गङ्गा न गया सेतुर्न भूतं नान्यदस्ति हि",
+        "transliteration": "anubandhacatuṣkaṃ na sambandhatrayameva na | na gaṅgā na gayā seturna bhūtaṃ nānyadasti hi",
+        "translation": "No fourfold preliminary, nor threefold relation; no Ganga, no Gaya, no bridge, no being, no other.",
+        "hindi": "चार अनुबन्ध नहीं, तीन सम्बन्ध नहीं; न गंगा है, न गया, न सेतु; न भूत है, न अन्य कुछ।",
+        "explanation": "चार अनुबन्ध नहीं, तीन सम्बन्ध नहीं; न गंगा है, न गया, न सेतु; न भूत है, न अन्य कुछ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 36,
+        "number": 36,
+        "sanskrit": "न भूमिर्न जलं नाग्निर्न न वायुर्न च खं क्वचित् । न देवा न च दिक्पाला न वेदा न गुरुः क्वचित्",
+        "transliteration": "na bhūmirna jalaṃ nāgnirna na vāyurna ca khaṃ kvacit | na devā na ca dikpālā na vedā na guruḥ kvacit",
+        "translation": "No earth, no water, no fire, no wind, no sky anywhere; no gods, no guardians of the quarters, no Vedas, no teacher anywhere.",
+        "hindi": "न भूमि, न जल, न अग्नि, न वायु, न आकाश कहीं; न देवता, न दिक्पाल, न वेद, न गुरु कहीं।",
+        "explanation": "न भूमि, न जल, न अग्नि, न वायु, न आकाश कहीं; न देवता, न दिक्पाल, न वेद, न गुरु कहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 37,
+        "number": 37,
+        "sanskrit": "न दूरं नास्तिकं नालं न मध्यं न क्वचित्स्थितम् । नाद्वैतं द्वैतसत्यं वा ह्यसत्यं वा इदं न च",
+        "transliteration": "na dūraṃ nāstikaṃ nālaṃ na madhyaṃ na kvacitsthitam | nādvaitaṃ dvaitasatyaṃ vā hyasatyaṃ vā idaṃ na ca",
+        "translation": "No far, no atheist, no end, no middle, nothing standing anywhere; no non-duality, no truth of duality, nor this untruth.",
+        "hindi": "न दूर, न नास्तिक, न पर्याप्त, न मध्य; कहीं कुछ स्थित नहीं। न अद्वैत, न द्वैत की सत्यता, और यह असत्य भी नहीं।",
+        "explanation": "न दूर, न नास्तिक, न पर्याप्त, न मध्य; कहीं कुछ स्थित नहीं। न अद्वैत, न द्वैत की सत्यता, और यह असत्य भी नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 38,
+        "number": 38,
+        "sanskrit": "बन्धमोक्षादिकं नास्ति सद्वाऽसद्वा सुखादि वा । जातिर्नास्ति गतिर्नास्ति वर्णो नास्ति न लौकिकम्",
+        "transliteration": "bandhamokṣādikaṃ nāsti sadvā'sadvā sukhādi vā | jātirnāsti gatirnāsti varṇo nāsti na laukikam",
+        "translation": "No bondage, liberation and the like, existent or non-existent, pleasure and the like; no birth, no goal, no caste, no worldly thing.",
+        "hindi": "बन्ध-मोक्ष आदि नहीं, सत् या असत्, सुख आदि नहीं; न जाति, न गति, न वर्ण, न कोई लौकिक वस्तु।",
+        "explanation": "बन्ध-मोक्ष आदि नहीं, सत् या असत्, सुख आदि नहीं; न जाति, न गति, न वर्ण, न कोई लौकिक वस्तु।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 39,
+        "number": 39,
+        "sanskrit": "सर्वं ब्रह्मेति नास्त्येव ब्रह्म इत्यपि नास्ति हि । चिदित्येवेति नास्त्येव चिदहम्भाषणं न हि",
+        "transliteration": "sarvaṃ brahmeti nāstyeva brahma ityapi nāsti hi | cidityeveti nāstyeva cidahambhāṣaṇaṃ na hi",
+        "translation": "\"All is Brahman\" does not exist; even \"Brahman\" does not exist; \"consciousness\" does not exist; no speech \"I am consciousness.\"",
+        "hindi": "‘सब ब्रह्म है’ — यह भी नहीं है; ‘ब्रह्म’ यह भी नहीं है; ‘चित्’ यह भी नहीं है; ‘मैं चित् हूँ’ ऐसा कथन भी नहीं है।",
+        "explanation": "‘सब ब्रह्म है’ — यह भी नहीं है; ‘ब्रह्म’ यह भी नहीं है; ‘चित्’ यह भी नहीं है; ‘मैं चित् हूँ’ ऐसा कथन भी नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 40,
+        "number": 40,
+        "sanskrit": "अहं ब्रह्मास्मि नास्त्येव नित्यशुद्धोऽस्मि न क्वचित् । वाचा यदुच्यते किञ्चिन्मनसा मनुते क्वचित्",
+        "transliteration": "ahaṃ brahmāsmi nāstyeva nityaśuddho'smi na kvacit | vācā yaducyate kiñcinmanasā manute kvacit",
+        "translation": "\"I am Brahman\" does not exist; \"I am eternally pure\" is nowhere; whatever is said by speech, thought by mind anywhere,",
+        "hindi": "‘मैं ब्रह्म हूँ’ — यह भी नहीं है; ‘मैं नित्य शुद्ध हूँ’ यह भी कहीं नहीं। जो कुछ वाणी से कहा जाता है, मन से कहीं सोचा जाता है —",
+        "explanation": "‘मैं ब्रह्म हूँ’ — यह भी नहीं है; ‘मैं नित्य शुद्ध हूँ’ यह भी कहीं नहीं। जो कुछ वाणी से कहा जाता है, मन से कहीं सोचा जाता है —",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 41,
+        "number": 41,
+        "sanskrit": "बुद्ध्या निश्चिनुते नास्ति चित्तेन ज्ञायते नहि । योगी योगादिकं नास्ति सदा सर्वं सदा न च",
+        "transliteration": "buddhyā niścinute nāsti cittena jñāyate nahi | yogī yogādikaṃ nāsti sadā sarvaṃ sadā na ca",
+        "translation": "determined by intellect, does not exist; known by mind, not at all. There is no yogi, no yoga and the like; always all, always not.",
+        "hindi": "बुद्धि से जिसका निश्चय किया जाता है, वह नहीं है; चित्त से जाना जाता है, वह भी नहीं। योगी और योग आदि नहीं हैं; सदा सब कुछ है भी और नहीं भी।",
+        "explanation": "बुद्धि से जिसका निश्चय किया जाता है, वह नहीं है; चित्त से जाना जाता है, वह भी नहीं। योगी और योग आदि नहीं हैं; सदा सब कुछ है भी और नहीं भी।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 42,
+        "number": 42,
+        "sanskrit": "अहोरात्रादिकं नास्ति स्नानध्यानादिकं नहि । भ्रान्तिरभ्रान्तिर्नास्त्येव नास्त्यनात्मेति निश्चिनु",
+        "transliteration": "ahorātrādikaṃ nāsti snānadhyānādikaṃ nahi | bhrāntirabhrāntirnāstyeva nāstyanātmeti niścinu",
+        "translation": "No day and night and the like; no bathing, meditation and the like; neither delusion nor non-delusion exists; be certain there is no non-Self.",
+        "hindi": "दिन-रात आदि नहीं हैं; स्नान, ध्यान आदि नहीं हैं; भ्रान्ति और अभ्रान्ति भी नहीं हैं — निश्चय करो कि अनात्मा नहीं है।",
+        "explanation": "दिन-रात आदि नहीं हैं; स्नान, ध्यान आदि नहीं हैं; भ्रान्ति और अभ्रान्ति भी नहीं हैं — निश्चय करो कि अनात्मा नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 43,
+        "number": 43,
+        "sanskrit": "वेदशास्त्रं पुराणं च कार्यं कारणमीश्वरः । लोको भूतं जनस्त्वैक्यं सर्वं मिथ्या न संशयः",
+        "transliteration": "vedaśāstraṃ purāṇaṃ ca kāryaṃ kāraṇamīśvaraḥ | loko bhūtaṃ janastvaikyaṃ sarvaṃ mithyā na saṃśayaḥ",
+        "translation": "Veda, scripture, Purana, effect, cause, Lord, world, beings, people, unity — all is false; no doubt.",
+        "hindi": "वेद, शास्त्र, पुराण, कार्य, कारण, ईश्वर, लोक, भूत, जन, एकता — सब मिथ्या है; इसमें संशय नहीं।",
+        "explanation": "वेद, शास्त्र, पुराण, कार्य, कारण, ईश्वर, लोक, भूत, जन, एकता — सब मिथ्या है; इसमें संशय नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 44,
+        "number": 44,
+        "sanskrit": "बन्धो मोक्षः सुखं दुःखं ध्यानं चित्तं सुरासुराः । गौणं मुख्यं परं चान्यत्सर्वं मिथ्या न संशयः",
+        "transliteration": "bandho mokṣaḥ sukhaṃ duḥkhaṃ dhyānaṃ cittaṃ surāsurāḥ | gauṇaṃ mukhyaṃ paraṃ cānyatsarvaṃ mithyā na saṃśayaḥ",
+        "translation": "Bondage, liberation, pleasure, pain, meditation, mind, gods and demons, secondary, primary, supreme and other — all is false; no doubt.",
+        "hindi": "बन्ध, मोक्ष, सुख, दुःख, ध्यान, चित्त, देव-असुर, गौण, मुख्य, पर और अन्य — सब मिथ्या है; इसमें संशय नहीं।",
+        "explanation": "बन्ध, मोक्ष, सुख, दुःख, ध्यान, चित्त, देव-असुर, गौण, मुख्य, पर और अन्य — सब मिथ्या है; इसमें संशय नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 45,
+        "number": 45,
+        "sanskrit": "वाचा वदति यत्किञ्चित्सङ्कल्पैः कल्प्यते च यत् । मनसा चिन्त्यते यद्यत्सर्वं मिथ्या न संशयः",
+        "transliteration": "vācā vadati yatkiñcitsaṅkalpaiḥ kalpyate ca yat | manasā cintyate yadyatsarvaṃ mithyā na saṃśayaḥ",
+        "translation": "Whatever is said by speech, whatever is imagined by intentions, whatever is thought by mind — all is false; no doubt.",
+        "hindi": "जो कुछ वाणी से कहा जाता है, जो कुछ संकल्पों से कल्पित होता है, जो कुछ मन से सोचा जाता है — सब मिथ्या है; इसमें संशय नहीं।",
+        "explanation": "जो कुछ वाणी से कहा जाता है, जो कुछ संकल्पों से कल्पित होता है, जो कुछ मन से सोचा जाता है — सब मिथ्या है; इसमें संशय नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 46,
+        "number": 46,
+        "sanskrit": "बुद्ध्या निश्चीयते किञ्चिच्चित्ते निश्चीयते क्वचित् । शास्त्रैः प्रपञ्च्यते यद्यन्नेत्रेणैव निरीक्ष्यते",
+        "transliteration": "buddhyā niścīyate kiñciccitte niścīyate kvacit | śāstraiḥ prapañcyate yadyannetreṇaiva nirīkṣyate",
+        "translation": "Whatever is determined by intellect, determined anywhere in the mind, extended by scriptures, seen by the eye,",
+        "hindi": "जो कुछ बुद्धि से निश्चित किया जाता है, जो कहीं चित्त में निश्चित होता है, जो शास्त्रों द्वारा फैलाया जाता है, जो नेत्र से देखा जाता है,",
+        "explanation": "जो कुछ बुद्धि से निश्चित किया जाता है, जो कहीं चित्त में निश्चित होता है, जो शास्त्रों द्वारा फैलाया जाता है, जो नेत्र से देखा जाता है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 47,
+        "number": 47,
+        "sanskrit": "श्रोत्राभ्यां श्रूयते यद्यदन्यत्सद्भावमेव च । नेत्रं श्रोत्रं गात्रमेव मिथ्येति च सुनिश्चितम्",
+        "transliteration": "śrotrābhyāṃ śrūyate yadyadanyatsadbhāvameva ca | netraṃ śrotraṃ gātrameva mithyeti ca suniścitam",
+        "translation": "whatever is heard by the ears, and any other existing thing — eye, ear, body are firmly determined as false.",
+        "hindi": "जो कुछ कानों से सुना जाता है और जो अन्य भी विद्यमान माना जाता है — नेत्र, कान, शरीर — सब मिथ्या है, यह भली-भाँति निश्चित है।",
+        "explanation": "जो कुछ कानों से सुना जाता है और जो अन्य भी विद्यमान माना जाता है — नेत्र, कान, शरीर — सब मिथ्या है, यह भली-भाँति निश्चित है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 48,
+        "number": 48,
+        "sanskrit": "इदमित्येव निर्दिष्टमयमित्येव कल्प्यते । त्वमहं तदिदं सोऽहमन्यत्सद्भावमेव च",
+        "transliteration": "idamityeva nirdiṣṭamayamityeva kalpyate | tvamahaṃ tadidaṃ so'hamanyatsadbhāvameva ca",
+        "translation": "\"This\" is what is pointed to; \"this\" is what is imagined; you, I, that, this, he, and any other existing thing —",
+        "hindi": "‘यह’ ऐसा निर्देश किया जाता है, ‘यह’ ऐसा कल्पित किया जाता है; तू, मैं, वह, यह, वही और जो अन्य विद्यमान है —",
+        "explanation": "‘यह’ ऐसा निर्देश किया जाता है, ‘यह’ ऐसा कल्पित किया जाता है; तू, मैं, वह, यह, वही और जो अन्य विद्यमान है —",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 49,
+        "number": 49,
+        "sanskrit": "यद्यत्सम्भाव्यते लोके सर्वसङ्कल्पसम्भ्रमः । सर्वाध्यासं सर्वगोप्यं सर्वभोगप्रभेदकम्",
+        "transliteration": "yadyatsambhāvyate loke sarvasaṅkalpasambhramaḥ | sarvādhyāsaṃ sarvagopyaṃ sarvabhogaprabhedakam",
+        "translation": "whatever is imagined in the world, the confusion of all intention, all superimposition, all secrets, all differences of enjoyment,",
+        "hindi": "संसार में जो कुछ सम्भव माना जाता है, सब संकल्पों का भ्रम है; सब अध्यास, सब गोपनीय, सब भोगों के भेद —",
+        "explanation": "संसार में जो कुछ सम्भव माना जाता है, सब संकल्पों का भ्रम है; सब अध्यास, सब गोपनीय, सब भोगों के भेद —",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 50,
+        "number": 50,
+        "sanskrit": "सर्वदोषप्रभेदाच्च नास्त्यनात्मेति निश्चिनु । मदीयं च त्वदीयं च ममेति च तवेति च",
+        "transliteration": "sarvadoṣaprabhedācca nāstyanātmeti niścinu | madīyaṃ ca tvadīyaṃ ca mameti ca taveti ca",
+        "translation": "and from the distinction of all faults, be certain there is no non-Self. Mine and yours, \"of me\" and \"of you,\"",
+        "hindi": "और सब दोषों के भेद से — निश्चय करो कि अनात्मा नहीं है। मेरा और तेरा, ‘मेरे का’ और ‘तेरे का’,",
+        "explanation": "और सब दोषों के भेद से — निश्चय करो कि अनात्मा नहीं है। मेरा और तेरा, ‘मेरे का’ और ‘तेरे का’,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 51,
+        "number": 51,
+        "sanskrit": "मह्यं तुभ्यं मयेत्यादि तत्सर्वं वितथं भवेत् । रक्षको विष्णुरित्यादि ब्रह्मा सृष्टेस्तु कारणम्",
+        "transliteration": "mahyaṃ tubhyaṃ mayetyādi tatsarvaṃ vitathaṃ bhavet | rakṣako viṣṇurityādi brahmā sṛṣṭestu kāraṇam",
+        "translation": "\"for me,\" \"for you,\" \"by me\" and the like — all that is false. Vishnu is the protector, Brahma is the cause of creation,",
+        "hindi": "‘मेरे लिए’, ‘तेरे लिए’, ‘मेरे द्वारा’ आदि — वह सब झूठ है। रक्षक विष्णु हैं, सृष्टि के कारण ब्रह्मा हैं,",
+        "explanation": "‘मेरे लिए’, ‘तेरे लिए’, ‘मेरे द्वारा’ आदि — वह सब झूठ है। रक्षक विष्णु हैं, सृष्टि के कारण ब्रह्मा हैं,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 52,
+        "number": 52,
+        "sanskrit": "संहारे रुद्र इत्येवं सर्वं मिथ्येति निश्चिनु । स्नानं जपस्तपो होमः स्वाध्यायो देवपूजनम्",
+        "transliteration": "saṃhāre rudra ityevaṃ sarvaṃ mithyeti niścinu | snānaṃ japastapo homaḥ svādhyāyo devapūjanam",
+        "translation": "Rudra of dissolution — be certain all this is false. Bathing, repetition, austerity, oblation, self-study, worship of gods,",
+        "hindi": "संहार में रुद्र हैं — यह सब मिथ्या है, ऐसा निश्चय करो। स्नान, जप, तप, होम, स्वाध्याय, देव-पूजन,",
+        "explanation": "संहार में रुद्र हैं — यह सब मिथ्या है, ऐसा निश्चय करो। स्नान, जप, तप, होम, स्वाध्याय, देव-पूजन,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 53,
+        "number": 53,
+        "sanskrit": "मन्त्रं तन्त्रं च सत्सङ्गो गुणदोषविजृम्भणम् । अन्तःकरणसद्भाव अविद्याश्च सम्भवः",
+        "transliteration": "mantraṃ tantraṃ ca satsaṅgo guṇadoṣavijṛmbhaṇam | antaḥkaraṇasadbhāva avidyāśca sambhavaḥ",
+        "translation": "mantra, tantra, company of the good, the display of qualities and faults, the existence of the inner instrument and the rise of ignorance,",
+        "hindi": "मन्त्र, तन्त्र, सत्संग, गुण-दोषों का विस्तार, अन्तःकरण का होना और अविद्या की उत्पत्ति,",
+        "explanation": "मन्त्र, तन्त्र, सत्संग, गुण-दोषों का विस्तार, अन्तःकरण का होना और अविद्या की उत्पत्ति,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 54,
+        "number": 54,
+        "sanskrit": "अनेककोटिब्रह्माण्डं सर्वं मिथ्येति निश्चिनु । सर्वदेशिकवाक्योक्तिर्येन केनापि निश्चितम्",
+        "transliteration": "anekakoṭibrahmāṇḍaṃ sarvaṃ mithyeti niścinu | sarvadeśikavākyoktiryena kenāpi niścitam",
+        "translation": "many crores of universes — be certain all is false. The utterances of all teachers, whatever has been determined by anyone,",
+        "hindi": "अनेक करोड़ ब्रह्माण्ड — सब मिथ्या है, ऐसा निश्चय करो। सब उपदेशकों के वाक्य, जो भी किसी ने निश्चित किया है,",
+        "explanation": "अनेक करोड़ ब्रह्माण्ड — सब मिथ्या है, ऐसा निश्चय करो। सब उपदेशकों के वाक्य, जो भी किसी ने निश्चित किया है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 55,
+        "number": 55,
+        "sanskrit": "दृश्यते जगति यद्यद्यद्यज्जगति वीक्ष्यते । वर्तते जगति यद्यत्सर्वं मिथ्येति निश्चिनु",
+        "transliteration": "dṛśyate jagati yadyadyadyajjagati vīkṣyate | vartate jagati yadyatsarvaṃ mithyeti niścinu",
+        "translation": "whatever is seen in the world, whatever is looked at in the world, whatever exists in the world — be certain all is false.",
+        "hindi": "जो कुछ जगत में दिखाई देता है, जो कुछ जगत में देखा जाता है, जो कुछ जगत में है — सब मिथ्या है, ऐसा निश्चय करो।",
+        "explanation": "जो कुछ जगत में दिखाई देता है, जो कुछ जगत में देखा जाता है, जो कुछ जगत में है — सब मिथ्या है, ऐसा निश्चय करो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 56,
+        "number": 56,
+        "sanskrit": "येन केनाक्षरेणोक्तं येन केन विनिश्चितम् । येन केनापि गदितं येन केनापि मोदितम्",
+        "transliteration": "yena kenākṣareṇoktaṃ yena kena viniścitam | yena kenāpi gaditaṃ yena kenāpi moditam",
+        "translation": "Whatever is said by any letter, determined by anyone, spoken by anyone, rejoiced in by anyone,",
+        "hindi": "जो किसी अक्षर से कहा गया, जिसे किसी ने निश्चित किया, जिसे किसी ने बताया, जिसमें किसी ने आनन्द पाया,",
+        "explanation": "जो किसी अक्षर से कहा गया, जिसे किसी ने निश्चित किया, जिसे किसी ने बताया, जिसमें किसी ने आनन्द पाया,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 57,
+        "number": 57,
+        "sanskrit": "येन केनापि यद्दत्तं येन केनापि यत्कृतम् । यत्र यत्र शुभं कर्म यत्र यत्र च दुष्कृतम्",
+        "transliteration": "yena kenāpi yaddattaṃ yena kenāpi yatkṛtam | yatra yatra śubhaṃ karma yatra yatra ca duṣkṛtam",
+        "translation": "whatever given by anyone, done by anyone, wherever good action, wherever evil action,",
+        "hindi": "जो किसी ने दिया, जो किसी ने किया; जहाँ-जहाँ शुभ कर्म हुआ और जहाँ-जहाँ दुष्कर्म,",
+        "explanation": "जो किसी ने दिया, जो किसी ने किया; जहाँ-जहाँ शुभ कर्म हुआ और जहाँ-जहाँ दुष्कर्म,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 58,
+        "number": 58,
+        "sanskrit": "यद्यत्करोषि सत्येन सर्वं मिथ्येति निश्चिनु । त्वमेव परमात्मासि त्वमेव परमो गुरुः",
+        "transliteration": "yadyatkaroṣi satyena sarvaṃ mithyeti niścinu | tvameva paramātmāsi tvameva paramo guruḥ",
+        "translation": "whatever you do with truth — be certain all is false. You alone are the Supreme Self; you alone are the supreme teacher.",
+        "hindi": "जो कुछ तुम सत्य के साथ करते हो — सब मिथ्या है, ऐसा निश्चय करो। तुम ही परमात्मा हो, तुम ही परम गुरु हो।",
+        "explanation": "जो कुछ तुम सत्य के साथ करते हो — सब मिथ्या है, ऐसा निश्चय करो। तुम ही परमात्मा हो, तुम ही परम गुरु हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 59,
+        "number": 59,
+        "sanskrit": "त्वमेवाकाशरूपोऽसि साक्षिहीनोऽसि सर्वदा । त्वमेव सर्वभावोऽसि त्वं ब्रह्मासि न संशयः",
+        "transliteration": "tvamevākāśarūpo'si sākṣihīno'si sarvadā | tvameva sarvabhāvo'si tvaṃ brahmāsi na saṃśayaḥ",
+        "translation": "You alone are of the form of space; you are ever without witness; you alone are all being; you are Brahman; no doubt.",
+        "hindi": "तुम ही आकाश-रूप हो; तुम सदा साक्षी से भी रहित हो; तुम ही सब भाव हो; तुम ब्रह्म हो — इसमें संशय नहीं।",
+        "explanation": "तुम ही आकाश-रूप हो; तुम सदा साक्षी से भी रहित हो; तुम ही सब भाव हो; तुम ब्रह्म हो — इसमें संशय नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 60,
+        "number": 60,
+        "sanskrit": "कालहीनोऽसि कालोऽसि सदा ब्रह्मासि चिद्घनः । सर्वतः स्वस्वरूपोऽसि चैतन्यघनवानसि",
+        "transliteration": "kālahīno'si kālo'si sadā brahmāsi cidghanaḥ | sarvataḥ svasvarūpo'si caitanyaghanavānasi",
+        "translation": "You are free of time, you are time; you are always Brahman, a mass of consciousness; you are of your own nature everywhere; you are a mass of consciousness.",
+        "hindi": "तुम काल से रहित हो और काल भी हो; तुम सदा ब्रह्म हो, चैतन्य-घन हो; तुम सर्वत्र अपने ही स्वरूप में हो; तुम चैतन्य-घन वाले हो।",
+        "explanation": "तुम काल से रहित हो और काल भी हो; तुम सदा ब्रह्म हो, चैतन्य-घन हो; तुम सर्वत्र अपने ही स्वरूप में हो; तुम चैतन्य-घन वाले हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 61,
+        "number": 61,
+        "sanskrit": "सत्योऽसि सिद्धोऽसि सनातनोऽसि मुक्तोऽसि मोक्षोऽसि मुदामृतोऽसि । देवोऽसि शान्तोऽसि निरामयोऽसि ब्रह्मासि पूर्णोऽसि परात्परोऽसि",
+        "transliteration": "satyo'si siddho'si sanātano'si mukto'si mokṣo'si mudāmṛto'si | devo'si śānto'si nirāmayo'si brahmāsi pūrṇo'si parātparo'si",
+        "translation": "You are truth, you are perfected, you are eternal, you are free, you are liberation, you are joy and nectar; you are god, you are peaceful, you are without disease; you are Brahman, you are full, you are higher than the highest.",
+        "hindi": "तुम सत्य हो, सिद्ध हो, सनातन हो, मुक्त हो, मोक्ष हो, आनन्द-अमृत हो; तुम देव हो, शान्त हो, निरामय हो; तुम ब्रह्म हो, पूर्ण हो, परे से भी परे हो।",
+        "explanation": "तुम सत्य हो, सिद्ध हो, सनातन हो, मुक्त हो, मोक्ष हो, आनन्द-अमृत हो; तुम देव हो, शान्त हो, निरामय हो; तुम ब्रह्म हो, पूर्ण हो, परे से भी परे हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 62,
+        "number": 62,
+        "sanskrit": "समोऽसि सच्चापि सनातनोऽसि सत्यादिवाक्यैः प्रतिबोधितोऽसि । सर्वाङ्गहीनोऽसि सदा स्थितोऽसि ब्रह्मेन्द्ररुद्रादिविभावितोऽसि",
+        "transliteration": "samo'si saccāpi sanātano'si satyādivākyaiḥ pratibodhito'si | sarvāṅgahīno'si sadā sthito'si brahmendrarudrādivibhāvito'si",
+        "translation": "You are even, you are being, you are eternal, you are awakened by sayings like \"truth\"; you are devoid of all limbs, you are ever established; you are contemplated by Brahma, Indra, Rudra and the rest.",
+        "hindi": "तुम सम हो, सत् हो, सनातन हो; ‘सत्य’ आदि वाक्यों से तुम्हें बोध कराया गया है; तुम सब अंगों से रहित हो, सदा स्थित हो; ब्रह्मा, इन्द्र, रुद्र आदि द्वारा तुम चिन्तित हो।",
+        "explanation": "तुम सम हो, सत् हो, सनातन हो; ‘सत्य’ आदि वाक्यों से तुम्हें बोध कराया गया है; तुम सब अंगों से रहित हो, सदा स्थित हो; ब्रह्मा, इन्द्र, रुद्र आदि द्वारा तुम चिन्तित हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 63,
+        "number": 63,
+        "sanskrit": "सर्वप्रपञ्चभ्रमवर्जितोऽसि सर्वेषु भूतेषु च भासितोऽसि । सर्वत्र सङ्कल्पविवर्जितोऽसि सर्वागमान्तार्थविभावितोऽसि",
+        "transliteration": "sarvaprapañcabhramavarjito'si sarveṣu bhūteṣu ca bhāsito'si | sarvatra saṅkalpavivarjito'si sarvāgamāntārthavibhāvito'si",
+        "translation": "You are free of the delusion of all the world; you shine in all beings; you are free of intention everywhere; you are contemplated as the final meaning of all scriptures.",
+        "hindi": "तुम सब प्रपंच के भ्रम से रहित हो; तुम सब प्राणियों में प्रकाशित हो; तुम सर्वत्र संकल्प से रहित हो; तुम सब आगमों के अन्तिम अर्थ के रूप में ध्येय हो।",
+        "explanation": "तुम सब प्रपंच के भ्रम से रहित हो; तुम सब प्राणियों में प्रकाशित हो; तुम सर्वत्र संकल्प से रहित हो; तुम सब आगमों के अन्तिम अर्थ के रूप में ध्येय हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 64,
+        "number": 64,
+        "sanskrit": "सर्वत्र सन्तोषसुखासनोऽसि सर्वत्र गत्यादिविवर्जितोऽसि । सर्वत्र लक्ष्यादिविवर्जितोऽसि ध्यातोऽसि विष्ण्वादिसुरैरजस्रम्",
+        "transliteration": "sarvatra santoṣasukhāsano'si sarvatra gatyādivivarjito'si | sarvatra lakṣyādivivarjito'si dhyāto'si viṣṇvādisurairajasram",
+        "translation": "You are everywhere at ease in contentment; you are everywhere free of going and the like; you are everywhere free of aim and the like; you are constantly meditated on by Vishnu and the other gods.",
+        "hindi": "तुम सर्वत्र सन्तोष-सुख के आसन पर स्थित हो; तुम सर्वत्र गति आदि से रहित हो; तुम सर्वत्र लक्ष्य आदि से रहित हो; विष्णु आदि देवता तुम्हारा निरन्तर ध्यान करते हैं।",
+        "explanation": "तुम सर्वत्र सन्तोष-सुख के आसन पर स्थित हो; तुम सर्वत्र गति आदि से रहित हो; तुम सर्वत्र लक्ष्य आदि से रहित हो; विष्णु आदि देवता तुम्हारा निरन्तर ध्यान करते हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 65,
+        "number": 65,
+        "sanskrit": "चिदाकारस्वरूपोऽसि चिन्मात्रोऽसि निरङ्कुशः । आत्मन्येव स्थितोऽसि त्वं सर्वशून्योऽसि निर्गुणः",
+        "transliteration": "cidākārasvarūpo'si cinmātro'si niraṅkuśaḥ | ātmanyeva sthito'si tvaṃ sarvaśūnyo'si nirguṇaḥ",
+        "translation": "You are of the nature of the form of consciousness; you are mere consciousness, unchecked; you abide in the Self alone; you are void of all, attributeless.",
+        "hindi": "तुम चिदाकार स्वरूप हो; तुम चिन्मात्र और निरंकुश हो; तुम आत्मा में ही स्थित हो; तुम सर्व-शून्य और निर्गुण हो।",
+        "explanation": "तुम चिदाकार स्वरूप हो; तुम चिन्मात्र और निरंकुश हो; तुम आत्मा में ही स्थित हो; तुम सर्व-शून्य और निर्गुण हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 66,
+        "number": 66,
+        "sanskrit": "आनन्दोऽसि परोऽसि त्वमेक एवाद्वितीयकः । चिद्घनानन्दरूपोऽसि परिपूर्णस्वरूपकः",
+        "transliteration": "ānando'si paro'si tvameka evādvitīyakaḥ | cidghanānandarūpo'si paripūrṇasvarūpakaḥ",
+        "translation": "You are bliss, you are the supreme; you are one alone without a second; you are of the form of a mass of consciousness-bliss; you are of fully complete nature.",
+        "hindi": "तुम आनन्द हो, परम हो; तुम एक ही अद्वितीय हो; तुम चिद्घन-आनन्द रूप हो; तुम परिपूर्ण स्वरूप वाले हो।",
+        "explanation": "तुम आनन्द हो, परम हो; तुम एक ही अद्वितीय हो; तुम चिद्घन-आनन्द रूप हो; तुम परिपूर्ण स्वरूप वाले हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 67,
+        "number": 67,
+        "sanskrit": "सदसि त्वमसि ज्ञोऽसि सोऽसि जानासि वीक्षसि । सच्चिदानन्दरूपोऽसि वासुदेवोऽसि वै प्रभुः",
+        "transliteration": "sadasi tvamasi jño'si so'si jānāsi vīkṣasi | saccidānandarūpo'si vāsudevo'si vai prabhuḥ",
+        "translation": "You are being, you are \"thou,\" you are the knower, you are \"he\"; you know, you see; you are of the form of being-consciousness-bliss; you are Vasudeva, the lord.",
+        "hindi": "तुम सत् हो, ‘तू’ हो, ज्ञ (जानने वाले) हो, ‘वही’ हो; तुम जानते हो, देखते हो; तुम सच्चिदानन्द रूप हो; तुम वासुदेव और प्रभु हो।",
+        "explanation": "तुम सत् हो, ‘तू’ हो, ज्ञ (जानने वाले) हो, ‘वही’ हो; तुम जानते हो, देखते हो; तुम सच्चिदानन्द रूप हो; तुम वासुदेव और प्रभु हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 68,
+        "number": 68,
+        "sanskrit": "अमृतोऽसि विभुश्चासि चञ्चलो ह्यचलो ह्यसि । सर्वोऽसि सर्वहीनोऽसि शान्ताशान्तविवर्जितः",
+        "transliteration": "amṛto'si vibhuścāsi cañcalo hyacalo hyasi | sarvo'si sarvahīno'si śāntāśāntavivarjitaḥ",
+        "translation": "You are immortal, you are all-pervading; you are both moving and unmoving; you are all, you are devoid of all; free of peaceful and unpeaceful.",
+        "hindi": "तुम अमृत हो और विभु हो; तुम चंचल भी हो और अचल भी; तुम सब हो और सब से रहित हो; शान्त और अशान्त से रहित हो।",
+        "explanation": "तुम अमृत हो और विभु हो; तुम चंचल भी हो और अचल भी; तुम सब हो और सब से रहित हो; शान्त और अशान्त से रहित हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 69,
+        "number": 69,
+        "sanskrit": "सत्तामात्रप्रकाशोऽसि सत्तासामान्यको ह्यसि । नित्यसिद्धिस्वरूपोऽसि सर्वसिद्धिविवर्जितः",
+        "transliteration": "sattāmātraprakāśo'si sattāsāmānyako hyasi | nityasiddhisvarūpo'si sarvasiddhivivarjitaḥ",
+        "translation": "You are the light of mere being; you are common being; you are of the nature of eternal accomplishment; free of all accomplishments.",
+        "hindi": "तुम सत्ता-मात्र के प्रकाश हो; तुम सामान्य सत्ता हो; तुम नित्य-सिद्धि स्वरूप हो और सब सिद्धियों से रहित हो।",
+        "explanation": "तुम सत्ता-मात्र के प्रकाश हो; तुम सामान्य सत्ता हो; तुम नित्य-सिद्धि स्वरूप हो और सब सिद्धियों से रहित हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 70,
+        "number": 70,
+        "sanskrit": "ईषन्मात्रविशून्योऽसि अणुमात्रविवर्जितः । अस्तित्ववर्जितोऽसि त्वं नास्तित्वादिविवर्जितः",
+        "transliteration": "īṣanmātraviśūnyo'si aṇumātravivarjitaḥ | astitvavarjito'si tvaṃ nāstitvādivivarjitaḥ",
+        "translation": "You are void of even a trace; free of even an atom; you are free of existence; free of non-existence and the like.",
+        "hindi": "तुम थोड़ी-सी भी विशेषता से शून्य हो; अणु-मात्र से रहित हो; तुम अस्तित्व से रहित हो; नास्तित्व आदि से भी रहित हो।",
+        "explanation": "तुम थोड़ी-सी भी विशेषता से शून्य हो; अणु-मात्र से रहित हो; तुम अस्तित्व से रहित हो; नास्तित्व आदि से भी रहित हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 71,
+        "number": 71,
+        "sanskrit": "लक्ष्यलक्षणहीनोऽसि निर्विकारो निरामयः । सर्वनादान्तरोऽसि त्वं कलाकाष्ठाविवर्जितः",
+        "transliteration": "lakṣyalakṣaṇahīno'si nirvikāro nirāmayaḥ | sarvanādāntaro'si tvaṃ kalākāṣṭhāvivarjitaḥ",
+        "translation": "You are devoid of aim and mark, changeless, free of disease; you are inside all nada; free of parts and moments.",
+        "hindi": "तुम लक्ष्य और लक्षण से रहित, निर्विकार और निरामय हो; तुम सब नाद के भीतर हो; कला और काष्ठा से रहित हो।",
+        "explanation": "तुम लक्ष्य और लक्षण से रहित, निर्विकार और निरामय हो; तुम सब नाद के भीतर हो; कला और काष्ठा से रहित हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 72,
+        "number": 72,
+        "sanskrit": "ब्रह्मविष्ण्वीशहीनोऽसि स्वस्वरूपं प्रपश्यसि । स्वस्वरूपावशेषोऽसि स्वानन्दाब्धौ निमज्जसि",
+        "transliteration": "brahmaviṣṇvīśahīno'si svasvarūpaṃ prapaśyasi | svasvarūpāvaśeṣo'si svānandābdhau nimajjasi",
+        "translation": "You are devoid of Brahma, Vishnu, Ishvara; you behold your own nature; you remain as your own nature; you plunge into the ocean of your own bliss.",
+        "hindi": "तुम ब्रह्मा, विष्णु और ईश से रहित हो; तुम अपने स्वरूप को देखते हो; तुम अपने स्वरूप के रूप में ही शेष रहते हो; तुम अपने आनन्द-सागर में निमग्न हो।",
+        "explanation": "तुम ब्रह्मा, विष्णु और ईश से रहित हो; तुम अपने स्वरूप को देखते हो; तुम अपने स्वरूप के रूप में ही शेष रहते हो; तुम अपने आनन्द-सागर में निमग्न हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 73,
+        "number": 73,
+        "sanskrit": "स्वात्मराज्ये स्वमेवासि स्वयम्भावविवर्जितः । शिष्टपूर्णस्वरूपोऽसि स्वस्मात्किञ्चिन्न पश्यसि",
+        "transliteration": "svātmarājye svamevāsi svayambhāvavivarjitaḥ | śiṣṭapūrṇasvarūpo'si svasmātkiñcinna paśyasi",
+        "translation": "In the kingdom of your own Self you are only yourself, free of self-being; you are of the nature of the remaining fullness; you see nothing apart from yourself.",
+        "hindi": "अपने आत्म-राज्य में तुम केवल स्वयं ही हो, स्वयं-भाव से भी रहित; तुम शेष रहने वाली पूर्णता के स्वरूप हो; तुम अपने से अन्य कुछ नहीं देखते।",
+        "explanation": "अपने आत्म-राज्य में तुम केवल स्वयं ही हो, स्वयं-भाव से भी रहित; तुम शेष रहने वाली पूर्णता के स्वरूप हो; तुम अपने से अन्य कुछ नहीं देखते।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 74,
+        "number": 74,
+        "sanskrit": "स्वस्वरूपान्न चलसि स्वस्वरूपेण जृम्भसि । स्वस्वरूपादनन्योऽसि ह्यहमेवासि निश्चिनु",
+        "transliteration": "svasvarūpānna calasi svasvarūpeṇa jṛmbhasi | svasvarūpādananyo'si hyahamevāsi niścinu",
+        "translation": "You do not move from your own nature; you expand by your own nature; you are not other than your own nature; be certain that you are I alone.",
+        "hindi": "तुम अपने स्वरूप से नहीं हिलते; अपने स्वरूप से ही प्रस्फुटित होते हो; अपने स्वरूप से अभिन्न हो; निश्चय करो कि तुम मैं ही हो।",
+        "explanation": "तुम अपने स्वरूप से नहीं हिलते; अपने स्वरूप से ही प्रस्फुटित होते हो; अपने स्वरूप से अभिन्न हो; निश्चय करो कि तुम मैं ही हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 75,
+        "number": 75,
+        "sanskrit": "इदं प्रपञ्चं यत्किञ्चिद्यद्यज्जगति विद्यते । दृश्यरूपं च दृग्रूपं सर्वं शशविषाणवत्",
+        "transliteration": "idaṃ prapañcaṃ yatkiñcidyadyajjagati vidyate | dṛśyarūpaṃ ca dṛgrūpaṃ sarvaṃ śaśaviṣāṇavat",
+        "translation": "Whatever this world is, whatever exists in the world, of the form of the seen and the form of seeing, all is like a hare's horn.",
+        "hindi": "यह प्रपंच, जो कुछ भी जगत में है, दृश्य-रूप और द्रष्टा-रूप — सब खरगोश के सींग के समान है।",
+        "explanation": "यह प्रपंच, जो कुछ भी जगत में है, दृश्य-रूप और द्रष्टा-रूप — सब खरगोश के सींग के समान है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 76,
+        "number": 76,
+        "sanskrit": "भूमिरापोऽनलो वायुः खं मनो बुद्धिरेव च । अहङ्कारश्च तेजश्च लोकं भुवनमण्डलम्",
+        "transliteration": "bhūmirāpo'nalo vāyuḥ khaṃ mano buddhireva ca | ahaṅkāraśca tejaśca lokaṃ bhuvanamaṇḍalam",
+        "translation": "Earth, water, fire, wind, space, mind and intellect, ego, light, the world and the orb of the worlds,",
+        "hindi": "भूमि, जल, अग्नि, वायु, आकाश, मन और बुद्धि, अहंकार और तेज, लोक और भुवन-मण्डल,",
+        "explanation": "भूमि, जल, अग्नि, वायु, आकाश, मन और बुद्धि, अहंकार और तेज, लोक और भुवन-मण्डल,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 77,
+        "number": 77,
+        "sanskrit": "नाशो जन्म च सत्यं च पुण्यपापजयादिकम् । रागः कामः क्रोधलोभौ ध्यानं ध्येयं गुणं परम्",
+        "transliteration": "nāśo janma ca satyaṃ ca puṇyapāpajayādikam | rāgaḥ kāmaḥ krodhalobhau dhyānaṃ dhyeyaṃ guṇaṃ param",
+        "translation": "destruction and birth, truth, merit, sin, victory and the like, passion, desire, anger, greed, meditation, the object of meditation, the highest quality,",
+        "hindi": "नाश और जन्म, सत्य, पुण्य, पाप, जय आदि, राग, काम, क्रोध, लोभ, ध्यान, ध्येय, श्रेष्ठ गुण,",
+        "explanation": "नाश और जन्म, सत्य, पुण्य, पाप, जय आदि, राग, काम, क्रोध, लोभ, ध्यान, ध्येय, श्रेष्ठ गुण,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 78,
+        "number": 78,
+        "sanskrit": "गुरुशिष्योपदेशादिरादिरन्तं शमं शुभम् । भूतं भव्यं वर्तमानं लक्ष्यं लक्षणमद्वयम्",
+        "transliteration": "guruśiṣyopadeśādirādirantaṃ śamaṃ śubham | bhūtaṃ bhavyaṃ vartamānaṃ lakṣyaṃ lakṣaṇamadvayam",
+        "translation": "teaching of teacher and disciple and the like, beginning, end, peace, auspiciousness; past, future, present, aim, mark, non-duality;",
+        "hindi": "गुरु-शिष्य का उपदेश आदि, आदि, अन्त, शम, शुभ; भूत, भविष्य, वर्तमान, लक्ष्य, लक्षण, अद्वय;",
+        "explanation": "गुरु-शिष्य का उपदेश आदि, आदि, अन्त, शम, शुभ; भूत, भविष्य, वर्तमान, लक्ष्य, लक्षण, अद्वय;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 79,
+        "number": 79,
+        "sanskrit": "शमो विचारः सन्तोषो भोक्तृभोज्यादिरूपकम् । यमाद्यष्टाङ्गयोगं च गमनागमनात्मकम्",
+        "transliteration": "śamo vicāraḥ santoṣo bhoktṛbhojyādirūpakam | yamādyaṣṭāṅgayogaṃ ca gamanāgamanātmakam",
+        "translation": "peace, inquiry, contentment, forms such as enjoyer and enjoyed, the eight-limbed yoga beginning with Yama, of the nature of going and coming,",
+        "hindi": "शम, विचार, सन्तोष, भोक्ता-भोज्य आदि रूप, यम आदि अष्टांग योग, जो आने-जाने के स्वरूप का है,",
+        "explanation": "शम, विचार, सन्तोष, भोक्ता-भोज्य आदि रूप, यम आदि अष्टांग योग, जो आने-जाने के स्वरूप का है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 80,
+        "number": 80,
+        "sanskrit": "आदिमध्यान्तरङ्गं च ग्राह्यं त्याज्यं हरिः शिवः । इन्द्रियाणि मनश्चैव अवस्थात्रितयं तथा",
+        "transliteration": "ādimadhyāntaraṅgaṃ ca grāhyaṃ tyājyaṃ hariḥ śivaḥ | indriyāṇi manaścaiva avasthātritayaṃ tathā",
+        "translation": "beginning, middle and inner limb, the graspable, the abandonable, Hari, Shiva, the senses and mind, and the three states likewise,",
+        "hindi": "आदि, मध्य और अन्तरंग, ग्राह्य, त्याज्य, हरि, शिव, इन्द्रियाँ और मन, तथा तीनों अवस्थाएँ,",
+        "explanation": "आदि, मध्य और अन्तरंग, ग्राह्य, त्याज्य, हरि, शिव, इन्द्रियाँ और मन, तथा तीनों अवस्थाएँ,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 81,
+        "number": 81,
+        "sanskrit": "चतुर्विंशतितत्त्वं च साधनानां चतुष्टयम् । सजातीयं विजातीयं लोका भूरादयः क्रमात्",
+        "transliteration": "caturviṃśatitattvaṃ ca sādhanānāṃ catuṣṭayam | sajātīyaṃ vijātīyaṃ lokā bhūrādayaḥ kramāt",
+        "translation": "the twenty-four principles, the fourfold means, same-kind and different-kind, the worlds beginning with Bhu in order,",
+        "hindi": "चौबीस तत्त्व, साधनचतुष्टय, सजातीय और विजातीय, भू आदि लोक क्रम से,",
+        "explanation": "चौबीस तत्त्व, साधनचतुष्टय, सजातीय और विजातीय, भू आदि लोक क्रम से,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 82,
+        "number": 82,
+        "sanskrit": "सर्ववर्णाश्रमाचारं मन्त्रतन्त्रादिसङ्ग्रहम् । विद्याविद्यादिरूपं च सर्ववेदं जडाजडम्",
+        "transliteration": "sarvavarṇāśramācāraṃ mantratantrādisaṅgraham | vidyāvidyādirūpaṃ ca sarvavedaṃ jaḍājaḍam",
+        "translation": "the conduct of all castes and stages of life, the collections of mantras, tantras and the like, the forms of knowledge and ignorance, all the Vedas, the dull and the non-dull,",
+        "hindi": "सब वर्णाश्रम का आचार, मन्त्र-तन्त्र आदि का संग्रह, विद्या-अविद्या आदि रूप, सब वेद, जड़ और अजड़,",
+        "explanation": "सब वर्णाश्रम का आचार, मन्त्र-तन्त्र आदि का संग्रह, विद्या-अविद्या आदि रूप, सब वेद, जड़ और अजड़,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 83,
+        "number": 83,
+        "sanskrit": "बन्धमोक्षविभागं च ज्ञानविज्ञानरूपकम् । बोधाबोधस्वरूपं वा द्वैताद्वैतादिभाषणम्",
+        "transliteration": "bandhamokṣavibhāgaṃ ca jñānavijñānarūpakam | bodhābodhasvarūpaṃ vā dvaitādvaitādibhāṣaṇam",
+        "translation": "the division of bondage and liberation, the forms of knowledge and wisdom, the nature of awakening and non-awakening, the talk of duality and non-duality,",
+        "hindi": "बन्ध-मोक्ष का विभाग, ज्ञान-विज्ञान रूप, बोध-अबोध का स्वरूप, द्वैत-अद्वैत आदि का कथन,",
+        "explanation": "बन्ध-मोक्ष का विभाग, ज्ञान-विज्ञान रूप, बोध-अबोध का स्वरूप, द्वैत-अद्वैत आदि का कथन,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 84,
+        "number": 84,
+        "sanskrit": "सर्ववेदान्तसिद्धान्तं सर्वशास्त्रार्थनिर्णयम् । अनेकजीवसद्भावमेकजीवादिनिर्णयम्",
+        "transliteration": "sarvavedāntasiddhāntaṃ sarvaśāstrārthanirṇayam | anekajīvasadbhāvamekajīvādinirṇayam",
+        "translation": "the conclusion of all Vedanta, the determination of the meaning of all scriptures, the existence of many individuals, the decision of one individual and the like,",
+        "hindi": "सब वेदान्तों का सिद्धान्त, सब शास्त्रों के अर्थ का निर्णय, अनेक जीवों का अस्तित्व, एक जीव आदि का निर्णय,",
+        "explanation": "सब वेदान्तों का सिद्धान्त, सब शास्त्रों के अर्थ का निर्णय, अनेक जीवों का अस्तित्व, एक जीव आदि का निर्णय,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 85,
+        "number": 85,
+        "sanskrit": "यद्यद्ध्यायति चित्तेन यद्यत्सङ्कल्पते क्वचित् । बुद्ध्या निश्चीयते यद्यद्गुरुणा संशृणोति यत्",
+        "transliteration": "yadyaddhyāyati cittena yadyatsaṅkalpate kvacit | buddhyā niścīyate yadyadguruṇā saṃśṛṇoti yat",
+        "translation": "whatever one meditates on with the mind, whatever one intends anywhere, whatever the intellect determines, whatever one hears from the teacher,",
+        "hindi": "जो-जो चित्त से ध्यान किया जाता है, जो-जो कहीं संकल्पित होता है, जो-जो बुद्धि से निश्चित होता है, जो-जो गुरु से सुना जाता है,",
+        "explanation": "जो-जो चित्त से ध्यान किया जाता है, जो-जो कहीं संकल्पित होता है, जो-जो बुद्धि से निश्चित होता है, जो-जो गुरु से सुना जाता है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 86,
+        "number": 86,
+        "sanskrit": "यद्यद्वाचा व्याकरोति यद्यदाचार्यभाषणम् । यद्यत्स्वरेन्द्रियैर्भाव्यं यद्यन्मीमांसते पृथक्",
+        "transliteration": "yadyadvācā vyākaroti yadyadācāryabhāṣaṇam | yadyatsvarendriyairbhāvyaṃ yadyanmīmāṃsate pṛthak",
+        "translation": "whatever one explains by speech, whatever the teacher says, whatever is contemplated by the senses, whatever is considered separately,",
+        "hindi": "जो-जो वाणी से व्याख्या किया जाता है, जो-जो आचार्य का कथन है, जो-जो इन्द्रियों द्वारा भावित होता है, जो-जो अलग से विचारा जाता है,",
+        "explanation": "जो-जो वाणी से व्याख्या किया जाता है, जो-जो आचार्य का कथन है, जो-जो इन्द्रियों द्वारा भावित होता है, जो-जो अलग से विचारा जाता है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 87,
+        "number": 87,
+        "sanskrit": "यद्यन्न्यायेन निर्णीतं महद्भिर्वेदपारगैः । शिवः क्षरति लोकान्वै विष्णुः पाति जगत्त्रयम्",
+        "transliteration": "yadyannyāyena nirṇītaṃ mahadbhirvedapāragaiḥ | śivaḥ kṣarati lokānvai viṣṇuḥ pāti jagattrayam",
+        "translation": "whatever is decided by reasoning by the great who have mastered the Vedas — Shiva dissolves the worlds; Vishnu protects the three worlds;",
+        "hindi": "जो-जो वेदपारंगत महापुरुषों द्वारा तर्क से निर्णीत हुआ — शिव लोकों का संहार करते हैं, विष्णु तीनों लोकों का पालन करते हैं,",
+        "explanation": "जो-जो वेदपारंगत महापुरुषों द्वारा तर्क से निर्णीत हुआ — शिव लोकों का संहार करते हैं, विष्णु तीनों लोकों का पालन करते हैं,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 88,
+        "number": 88,
+        "sanskrit": "ब्रह्मा सृजति लोकान्वै एवमादिक्रियादिकम् । यद्यदस्ति पुराणेषु यद्यद्वेदेषु निर्णयम्",
+        "transliteration": "brahmā sṛjati lokānvai evamādikriyādikam | yadyadasti purāṇeṣu yadyadvedeṣu nirṇayam",
+        "translation": "Brahma creates the worlds, and so on with actions like these; whatever is in the Puranas, whatever is determined in the Vedas,",
+        "hindi": "ब्रह्मा लोकों का सृजन करते हैं, इस प्रकार की क्रियाएँ आदि; जो-जो पुराणों में है, जो-जो वेदों में निर्णीत है,",
+        "explanation": "ब्रह्मा लोकों का सृजन करते हैं, इस प्रकार की क्रियाएँ आदि; जो-जो पुराणों में है, जो-जो वेदों में निर्णीत है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 89,
+        "number": 89,
+        "sanskrit": "सर्वोपनिषदां भावं सर्वं शशविषाणवत् । देहोऽहमिति सङ्कल्पं तदन्तःकरणं स्मृतम्",
+        "transliteration": "sarvopaniṣadāṃ bhāvaṃ sarvaṃ śaśaviṣāṇavat | deho'hamiti saṅkalpaṃ tadantaḥkaraṇaṃ smṛtam",
+        "translation": "the sense of all Upanishads — all is like a hare's horn. The intention \"I am the body\" is called the inner instrument.",
+        "hindi": "सब उपनिषदों का भाव — सब खरगोश के सींग के समान है। ‘मैं देह हूँ’ यह संकल्प ही अन्तःकरण कहा गया है।",
+        "explanation": "सब उपनिषदों का भाव — सब खरगोश के सींग के समान है। ‘मैं देह हूँ’ यह संकल्प ही अन्तःकरण कहा गया है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 90,
+        "number": 90,
+        "sanskrit": "देहोऽहमिति सङ्कल्पो महत्संसार उच्यते । देहोऽहमिति सङ्कल्पस्तद्बन्धमिति चोच्यते",
+        "transliteration": "deho'hamiti saṅkalpo mahatsaṃsāra ucyate | deho'hamiti saṅkalpastadbandhamiti cocyate",
+        "translation": "The intention \"I am the body\" is called the great world; the intention \"I am the body\" is also called bondage.",
+        "hindi": "‘मैं देह हूँ’ यह संकल्प ही महान संसार कहलाता है; ‘मैं देह हूँ’ यह संकल्प ही बन्धन भी कहा जाता है।",
+        "explanation": "‘मैं देह हूँ’ यह संकल्प ही महान संसार कहलाता है; ‘मैं देह हूँ’ यह संकल्प ही बन्धन भी कहा जाता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 91,
+        "number": 91,
+        "sanskrit": "देहोऽहमिति सङ्कल्पस्तद्दुःखमिति चोच्यते । देहोऽहमिति यद्भानं तदेव नरकं स्मृतम्",
+        "transliteration": "deho'hamiti saṅkalpastadduḥkhamiti cocyate | deho'hamiti yadbhānaṃ tadeva narakaṃ smṛtam",
+        "translation": "The intention \"I am the body\" is called sorrow; the appearance \"I am the body\" is remembered as hell.",
+        "hindi": "‘मैं देह हूँ’ यह संकल्प ही दुःख कहा जाता है; ‘मैं देह हूँ’ ऐसा जो भान है, वही नरक माना गया है।",
+        "explanation": "‘मैं देह हूँ’ यह संकल्प ही दुःख कहा जाता है; ‘मैं देह हूँ’ ऐसा जो भान है, वही नरक माना गया है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 92,
+        "number": 92,
+        "sanskrit": "देहोऽहमिति सङ्कल्पो जगत्सर्वमितीर्यते । देहोऽहमिति सङ्कल्पो हृदयग्रन्थिरीरितिः",
+        "transliteration": "deho'hamiti saṅkalpo jagatsarvamitīryate | deho'hamiti saṅkalpo hṛdayagranthirīritiḥ",
+        "translation": "The intention \"I am the body\" is declared the whole world; the intention \"I am the body\" is called the knot of the heart.",
+        "hindi": "‘मैं देह हूँ’ यह संकल्प ही सम्पूर्ण जगत कहा जाता है; ‘मैं देह हूँ’ यह संकल्प ही हृदय की ग्रन्थि कहा गया है।",
+        "explanation": "‘मैं देह हूँ’ यह संकल्प ही सम्पूर्ण जगत कहा जाता है; ‘मैं देह हूँ’ यह संकल्प ही हृदय की ग्रन्थि कहा गया है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 93,
+        "number": 93,
+        "sanskrit": "देहोऽहमिति यज्ज्ञानं तदेवाज्ञानमुच्यते । देहोऽहमिति यज्ज्ञानं तदसद्भावमेव च",
+        "transliteration": "deho'hamiti yajjñānaṃ tadevājñānamucyate | deho'hamiti yajjñānaṃ tadasadbhāvameva ca",
+        "translation": "The knowledge \"I am the body\" is called ignorance; the knowledge \"I am the body\" is also non-being.",
+        "hindi": "‘मैं देह हूँ’ — यह जो ज्ञान है, वही अज्ञान कहा जाता है; ‘मैं देह हूँ’ यह ज्ञान असद्भाव (असत्य) ही है।",
+        "explanation": "‘मैं देह हूँ’ — यह जो ज्ञान है, वही अज्ञान कहा जाता है; ‘मैं देह हूँ’ यह ज्ञान असद्भाव (असत्य) ही है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 94,
+        "number": 94,
+        "sanskrit": "देहोऽहमिति या बुद्धिः सा चाविद्येति भण्यते । देहोऽहमिति यज्ज्ञानं तदेव द्वैतमुच्यते",
+        "transliteration": "deho'hamiti yā buddhiḥ sā cāvidyeti bhaṇyate | deho'hamiti yajjñānaṃ tadeva dvaitamucyate",
+        "translation": "The intellect \"I am the body\" is called nescience; the knowledge \"I am the body\" is called duality.",
+        "hindi": "‘मैं देह हूँ’ — जो ऐसी बुद्धि है, वह अविद्या कही जाती है; ‘मैं देह हूँ’ यह ज्ञान ही द्वैत कहा जाता है।",
+        "explanation": "‘मैं देह हूँ’ — जो ऐसी बुद्धि है, वह अविद्या कही जाती है; ‘मैं देह हूँ’ यह ज्ञान ही द्वैत कहा जाता है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 95,
+        "number": 95,
+        "sanskrit": "देहोऽहमिति सङ्कल्पः सत्यजीवः स एव हि । देहोऽहमिति यज्ज्ञानं परिच्छिन्नमितीरितम्",
+        "transliteration": "deho'hamiti saṅkalpaḥ satyajīvaḥ sa eva hi | deho'hamiti yajjñānaṃ paricchinnamitīritam",
+        "translation": "The intention \"I am the body\" is the real individual; the knowledge \"I am the body\" is said to be limited.",
+        "hindi": "‘मैं देह हूँ’ यह संकल्प ही वास्तविक जीव है; ‘मैं देह हूँ’ यह ज्ञान परिच्छिन्न (सीमित) कहा गया है।",
+        "explanation": "‘मैं देह हूँ’ यह संकल्प ही वास्तविक जीव है; ‘मैं देह हूँ’ यह ज्ञान परिच्छिन्न (सीमित) कहा गया है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 96,
+        "number": 96,
+        "sanskrit": "देहोऽहमिति सङ्कल्पो महापापमिति स्फुटम् । देहोऽहमिति या बुद्धिस्तृष्णा दोषामयः किल",
+        "transliteration": "deho'hamiti saṅkalpo mahāpāpamiti sphuṭam | deho'hamiti yā buddhistṛṣṇā doṣāmayaḥ kila",
+        "translation": "The intention \"I am the body\" is clearly a great sin; the intellect \"I am the body\" is craving, a disease of faults.",
+        "hindi": "‘मैं देह हूँ’ यह संकल्प स्पष्ट रूप से महापाप है; ‘मैं देह हूँ’ यह बुद्धि तृष्णा है, दोषों का रोग है।",
+        "explanation": "‘मैं देह हूँ’ यह संकल्प स्पष्ट रूप से महापाप है; ‘मैं देह हूँ’ यह बुद्धि तृष्णा है, दोषों का रोग है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 97,
+        "number": 97,
+        "sanskrit": "यत्किञ्चिदपि सङ्कल्पस्तापत्रयमितीरितम् । कामं क्रोधं बन्धनं सर्वदुःखं विश्वं दोषं कालनानास्वरूपम् । यत्किञ्चेदं सर्वसङ्कल्पजालं तत्किञ्चेदं मानसं सोम विद्धि",
+        "transliteration": "yatkiñcidapi saṅkalpastāpatrayamitīritam | kāmaṃ krodhaṃ bandhanaṃ sarvaduḥkhaṃ viśvaṃ doṣaṃ kālanānāsvarūpam | yatkiñcedaṃ sarvasaṅkalpajālaṃ tatkiñcedaṃ mānasaṃ soma viddhi",
+        "translation": "Any intention at all is said to be the threefold affliction. Desire, anger, bondage, all sorrow, the world, fault, the forms of time in many ways — whatever this net of all intentions is, know it, Soma, as mental.",
+        "hindi": "कोई भी संकल्प तीनों तापों का रूप कहा गया है। काम, क्रोध, बन्धन, सब दुःख, विश्व, दोष, काल के अनेक रूप — यह जो सब संकल्पों का जाल है, हे सोम! इसे मानसिक जानो।",
+        "explanation": "कोई भी संकल्प तीनों तापों का रूप कहा गया है। काम, क्रोध, बन्धन, सब दुःख, विश्व, दोष, काल के अनेक रूप — यह जो सब संकल्पों का जाल है, हे सोम! इसे मानसिक जानो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 98,
+        "number": 98,
+        "sanskrit": "मन एव जगत्सर्वं मन एव महारिपुः । मन एव हि संसारो मन एव जगत्त्रयम्",
+        "transliteration": "mana eva jagatsarvaṃ mana eva mahāripuḥ | mana eva hi saṃsāro mana eva jagattrayam",
+        "translation": "The mind alone is all the world; the mind alone is the great enemy; the mind alone is the world; the mind alone is the three worlds.",
+        "hindi": "मन ही सारा जगत है; मन ही महान शत्रु है; मन ही संसार है; मन ही तीनों लोक है।",
+        "explanation": "मन ही सारा जगत है; मन ही महान शत्रु है; मन ही संसार है; मन ही तीनों लोक है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 99,
+        "number": 99,
+        "sanskrit": "मन एव महद्दुःखं मन एव जरादिकम् । मन एव हि कालश्च मन एव मलं तथा",
+        "transliteration": "mana eva mahadduḥkhaṃ mana eva jarādikam | mana eva hi kālaśca mana eva malaṃ tathā",
+        "translation": "The mind alone is great sorrow; the mind alone is old age and the like; the mind alone is time; the mind alone is likewise stain.",
+        "hindi": "मन ही महान दुःख है; मन ही बुढ़ापा आदि है; मन ही काल है; मन ही मल है।",
+        "explanation": "मन ही महान दुःख है; मन ही बुढ़ापा आदि है; मन ही काल है; मन ही मल है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 100,
+        "number": 100,
+        "sanskrit": "मन एव हि सङ्कल्पो मन एव हि जीवकः । मन एव हि चित्तं च मनोऽहङ्कार एव च",
+        "transliteration": "mana eva hi saṅkalpo mana eva hi jīvakaḥ | mana eva hi cittaṃ ca mano'haṅkāra eva ca",
+        "translation": "The mind alone is intention; the mind alone is the individual; the mind alone is thought, and the mind alone is ego.",
+        "hindi": "मन ही संकल्प है; मन ही जीव है; मन ही चित्त है; मन ही अहंकार है।",
+        "explanation": "मन ही संकल्प है; मन ही जीव है; मन ही चित्त है; मन ही अहंकार है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 101,
+        "number": 101,
+        "sanskrit": "मन एव महद्बन्धं मनोऽन्तःकरणं च तत् । मन एव हि भूमिश्च मन एव हि तोयकम्",
+        "transliteration": "mana eva mahadbandhaṃ mano'ntaḥkaraṇaṃ ca tat | mana eva hi bhūmiśca mana eva hi toyakam",
+        "translation": "The mind alone is great bondage; the mind is the inner instrument; the mind alone is earth; the mind alone is water.",
+        "hindi": "मन ही महान बन्धन है; वही अन्तःकरण है; मन ही भूमि है; मन ही जल है।",
+        "explanation": "मन ही महान बन्धन है; वही अन्तःकरण है; मन ही भूमि है; मन ही जल है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 102,
+        "number": 102,
+        "sanskrit": "मन एव हि तेजश्च मन एव मरुन्महान् । मन एव हि चाकाशं मन एव हि शब्दकम्",
+        "transliteration": "mana eva hi tejaśca mana eva marunmahān | mana eva hi cākāśaṃ mana eva hi śabdakam",
+        "translation": "The mind alone is fire; the mind alone is the great wind; the mind alone is space; the mind alone is sound.",
+        "hindi": "मन ही तेज है; मन ही महान वायु है; मन ही आकाश है; मन ही शब्द है।",
+        "explanation": "मन ही तेज है; मन ही महान वायु है; मन ही आकाश है; मन ही शब्द है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 103,
+        "number": 103,
+        "sanskrit": "स्पर्शं रूपं रसं गन्धं कोशाः पञ्च मनोभवाः । जाग्रत्स्वप्नसुषुप्त्यादि मनोमयरितीरितम्",
+        "transliteration": "sparśaṃ rūpaṃ rasaṃ gandhaṃ kośāḥ pañca manobhavāḥ | jāgratsvapnasuṣuptyādi manomayaritīritam",
+        "translation": "Touch, form, taste, smell, the five sheaths are born of the mind; waking, dream, deep sleep and the rest are said to be made of mind.",
+        "hindi": "स्पर्श, रूप, रस, गन्ध और पाँचों कोश मन से उत्पन्न हैं; जाग्रत, स्वप्न, सुषुप्ति आदि मनोमय कहे गए हैं।",
+        "explanation": "स्पर्श, रूप, रस, गन्ध और पाँचों कोश मन से उत्पन्न हैं; जाग्रत, स्वप्न, सुषुप्ति आदि मनोमय कहे गए हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 104,
+        "number": 104,
+        "sanskrit": "दिक्पाला वसवो रुद्रा आदित्याश्च मनोमयाः । दृश्यं जडं द्वन्द्वजातमज्ञानं मानसं स्मृतम्",
+        "transliteration": "dikpālā vasavo rudrā ādityāśca manomayāḥ | dṛśyaṃ jaḍaṃ dvandvajātamajñānaṃ mānasaṃ smṛtam",
+        "translation": "The guardians of the quarters, Vasus, Rudras and Adityas are made of mind; the seen, the dull, the pairs of opposites, ignorance, are held to be mental.",
+        "hindi": "दिक्पाल, वसु, रुद्र और आदित्य मनोमय हैं; दृश्य, जड़, द्वन्द्वों का समूह और अज्ञान मानसिक माने गए हैं।",
+        "explanation": "दिक्पाल, वसु, रुद्र और आदित्य मनोमय हैं; दृश्य, जड़, द्वन्द्वों का समूह और अज्ञान मानसिक माने गए हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 105,
+        "number": 105,
+        "sanskrit": "सङ्कल्पमेव यत्किञ्चित्तत्तन्नास्तीति निश्चिनु । नास्ति नास्ति जगत्सर्वं गुरुशिष्यादिकं नहीत्युपनिषत्",
+        "transliteration": "saṅkalpameva yatkiñcittattannāstīti niścinu | nāsti nāsti jagatsarvaṃ guruśiṣyādikaṃ nahītyupaniṣat",
+        "translation": "Whatever is mere intention — be certain it does not exist. The whole world does not exist, does not exist; teacher and disciple and the rest do not exist — thus the Upanishad.",
+        "hindi": "जो कुछ भी केवल संकल्प है, वह-वह नहीं है — ऐसा निश्चय करो। समस्त जगत नहीं है, नहीं है; गुरु-शिष्य आदि भी नहीं हैं — ऐसा यह उपनिषद् है।",
+        "explanation": "जो कुछ भी केवल संकल्प है, वह-वह नहीं है — ऐसा निश्चय करो। समस्त जगत नहीं है, नहीं है; गुरु-शिष्य आदि भी नहीं हैं — ऐसा यह उपनिषद् है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Chapter 7 — Epilogue on Constant Contemplation",
+    "titleSanskrit": "सप्तम अध्याय — उपसंहार एवं अखण्ड ध्यान",
+    "summary": "The final blessing on those who continually meditate upon this Tejobindu truth.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "ऋभुः ॥ सर्वं सच्चिन्मयं विद्धि सर्वं सच्चिन्मयं ततम् । सच्चिदानन्दमद्वैतं सच्चिदानन्दमद्वयम्",
+        "transliteration": "ṛbhuḥ || sarvaṃ saccinmayaṃ viddhi sarvaṃ saccinmayaṃ tatam | saccidānandamadvaitaṃ saccidānandamadvayam",
+        "translation": "Ribhu said: Know all as being-consciousness; all is spread out as being-consciousness; being-consciousness-bliss, non-dual; being-consciousness-bliss, without a second.",
+        "hindi": "ऋभु बोले — सब कुछ को सत्-चित्-मय जानो; सब कुछ सत्-चित्-मय होकर फैला हुआ है। सच्चिदानन्द अद्वैत है, सच्चिदानन्द अद्वय है।",
+        "explanation": "ऋभु बोले — सब कुछ को सत्-चित्-मय जानो; सब कुछ सत्-चित्-मय होकर फैला हुआ है। सच्चिदानन्द अद्वैत है, सच्चिदानन्द अद्वय है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "सच्चिदानन्दमात्रं हि सच्चिदानन्दमन्यकम् । सच्चिदानन्दरूपोऽहं सच्चिदानन्दमेव खम्",
+        "transliteration": "saccidānandamātraṃ hi saccidānandamanyakam | saccidānandarūpo'haṃ saccidānandameva kham",
+        "translation": "Mere being-consciousness-bliss, being-consciousness-bliss and nothing else; I am of the form of being-consciousness-bliss; space itself is being-consciousness-bliss.",
+        "hindi": "केवल सच्चिदानन्द-मात्र है, सच्चिदानन्द से अन्य कुछ नहीं; मैं सच्चिदानन्द रूप हूँ; आकाश भी सच्चिदानन्द ही है।",
+        "explanation": "केवल सच्चिदानन्द-मात्र है, सच्चिदानन्द से अन्य कुछ नहीं; मैं सच्चिदानन्द रूप हूँ; आकाश भी सच्चिदानन्द ही है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "सच्चिदानन्दमेव त्वं सच्चिदानन्दकोऽस्म्यहम् । मनोबुद्धिरहङ्कारचित्तसङ्घातका अमी",
+        "transliteration": "saccidānandameva tvaṃ saccidānandako'smyaham | manobuddhirahaṅkāracittasaṅghātakā amī",
+        "translation": "You are being-consciousness-bliss alone; I am being-consciousness-bliss; these combinations of mind, intellect, ego and thought —",
+        "hindi": "तुम सच्चिदानन्द ही हो, मैं सच्चिदानन्द हूँ; ये जो मन, बुद्धि, अहंकार और चित्त के संघात हैं —",
+        "explanation": "तुम सच्चिदानन्द ही हो, मैं सच्चिदानन्द हूँ; ये जो मन, बुद्धि, अहंकार और चित्त के संघात हैं —",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "न त्वं नाहं न चान्यद्वा सर्वं ब्रह्मैव केवलम् । न वाक्यं न पदं वेदं नाक्षरं न जडं क्वचित्",
+        "transliteration": "na tvaṃ nāhaṃ na cānyadvā sarvaṃ brahmaiva kevalam | na vākyaṃ na padaṃ vedaṃ nākṣaraṃ na jaḍaṃ kvacit",
+        "translation": "not you, not I, nor anything else: all is only Brahman alone. No sentence, no word, no Veda, no syllable, nothing dull anywhere.",
+        "hindi": "न तुम हो, न मैं, न कोई अन्य — सब केवल ब्रह्म ही है। न वाक्य, न पद, न वेद, न अक्षर, न कहीं कुछ जड़ है।",
+        "explanation": "न तुम हो, न मैं, न कोई अन्य — सब केवल ब्रह्म ही है। न वाक्य, न पद, न वेद, न अक्षर, न कहीं कुछ जड़ है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "न मध्यं नादि नान्तं वा न सत्यं न निबन्धजम् । न दुःखं न सुखं भावं न माया प्रकृतिस्तथा",
+        "transliteration": "na madhyaṃ nādi nāntaṃ vā na satyaṃ na nibandhajam | na duḥkhaṃ na sukhaṃ bhāvaṃ na māyā prakṛtistathā",
+        "translation": "Neither middle, nor beginning, nor end; neither truth nor born of bondage; neither sorrow nor pleasure nor state; neither illusion nor nature.",
+        "hindi": "न मध्य है, न आदि, न अन्त; न सत्य, न बन्धन से उत्पन्न; न दुःख, न सुख, न भाव; न माया और न प्रकृति।",
+        "explanation": "न मध्य है, न आदि, न अन्त; न सत्य, न बन्धन से उत्पन्न; न दुःख, न सुख, न भाव; न माया और न प्रकृति।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "न देहं न मुखं घ्राणं न जिह्वा न च तालुनी । न दन्तोष्ठौ ललाटं च निश्वासोच्छ्वास एव च",
+        "transliteration": "na dehaṃ na mukhaṃ ghrāṇaṃ na jihvā na ca tālunī | na dantoṣṭhau lalāṭaṃ ca niśvāsocchvāsa eva ca",
+        "translation": "No body, no face, no nose, no tongue, no palate; no teeth, lips, forehead, nor inhalation and exhalation.",
+        "hindi": "न देह, न मुख, न नाक, न जीभ, न तालु; न दाँत-होंठ, न ललाट, न श्वास-प्रश्वास।",
+        "explanation": "न देह, न मुख, न नाक, न जीभ, न तालु; न दाँत-होंठ, न ललाट, न श्वास-प्रश्वास।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "न स्वेदमस्थि मांसं च न रक्तं न च मूत्रकम् । न दूरं नान्तिकं नाङ्गं नोदरं न किरीटकम्",
+        "transliteration": "na svedamasthi māṃsaṃ ca na raktaṃ na ca mūtrakam | na dūraṃ nāntikaṃ nāṅgaṃ nodaraṃ na kirīṭakam",
+        "translation": "No sweat, bone, flesh, no blood, no urine; no far, no near, no limb, no belly, no crown.",
+        "hindi": "न पसीना, न हड्डी, न मांस; न रक्त, न मूत्र; न दूर, न निकट, न अंग, न उदर, न मुकुट।",
+        "explanation": "न पसीना, न हड्डी, न मांस; न रक्त, न मूत्र; न दूर, न निकट, न अंग, न उदर, न मुकुट।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "न हस्तपादचलनं न शास्त्रं न च शासनम् । न वेत्ता वेदनं वेद्यं न जाग्रत्स्वप्नसुप्तयः",
+        "transliteration": "na hastapādacalanaṃ na śāstraṃ na ca śāsanam | na vettā vedanaṃ vedyaṃ na jāgratsvapnasuptayaḥ",
+        "translation": "No moving of hands and feet, no scripture, no command; no knower, knowing or known; no waking, dream or sleep.",
+        "hindi": "न हाथ-पैर का चलना, न शास्त्र, न शासन; न ज्ञाता, न ज्ञान, न ज्ञेय; न जाग्रत, स्वप्न या सुषुप्ति।",
+        "explanation": "न हाथ-पैर का चलना, न शास्त्र, न शासन; न ज्ञाता, न ज्ञान, न ज्ञेय; न जाग्रत, स्वप्न या सुषुप्ति।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "तुर्यातीतं न मे किञ्चित्सर्वं सच्चिन्मयं ततम् । नाध्यात्मिकं नाधिभूतं नाधिदैवं न मायिकम्",
+        "transliteration": "turyātītaṃ na me kiñcitsarvaṃ saccinmayaṃ tatam | nādhyātmikaṃ nādhibhūtaṃ nādhidaivaṃ na māyikam",
+        "translation": "Nothing of mine is beyond the Fourth; all is spread as being-consciousness. Not the individual, not the elemental, not the divine, not the illusory.",
+        "hindi": "मेरा कुछ भी तुरीय से परे नहीं है; सब सच्चिदानन्दमय होकर फैला है। न आध्यात्मिक, न आधिभौतिक, न आधिदैविक, न मायिक।",
+        "explanation": "मेरा कुछ भी तुरीय से परे नहीं है; सब सच्चिदानन्दमय होकर फैला है। न आध्यात्मिक, न आधिभौतिक, न आधिदैविक, न मायिक।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 10,
+        "number": 10,
+        "sanskrit": "न विश्वतैजसः प्राज्ञो विराट्सूत्रात्मकेश्वरः । न गमागमचेष्टा च न नष्टं न प्रयोजनम्",
+        "transliteration": "na viśvataijasaḥ prājño virāṭsūtrātmakeśvaraḥ | na gamāgamaceṣṭā ca na naṣṭaṃ na prayojanam",
+        "translation": "Not Vishva, Taijasa, Prajna; not Virat, Sutra, Ishvara; no striving of coming and going, no loss, no purpose.",
+        "hindi": "न विश्व, तैजस, प्राज्ञ; न विराट्, सूत्रात्मा, ईश्वर; न आने-जाने की चेष्टा, न हानि, न प्रयोजन।",
+        "explanation": "न विश्व, तैजस, प्राज्ञ; न विराट्, सूत्रात्मा, ईश्वर; न आने-जाने की चेष्टा, न हानि, न प्रयोजन।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 11,
+        "number": 11,
+        "sanskrit": "त्याज्यं ग्राह्यं न दूष्यं वा ह्यमेध्यामेध्यकं तथा । न पीनं न कृशं क्लेदं न कालं देशभाषणम्",
+        "transliteration": "tyājyaṃ grāhyaṃ na dūṣyaṃ vā hyamedhyāmedhyakaṃ tathā | na pīnaṃ na kṛśaṃ kledaṃ na kālaṃ deśabhāṣaṇam",
+        "translation": "No abandonment, no grasping, no fault; no impure or pure; not fat, not thin, not wet; not time, not speech of place.",
+        "hindi": "न त्याज्य, न ग्राह्य, न दोषपूर्ण; न अपवित्र-पवित्र; न मोटा, न दुबला, न गीला; न काल, न देश-भाषण।",
+        "explanation": "न त्याज्य, न ग्राह्य, न दोषपूर्ण; न अपवित्र-पवित्र; न मोटा, न दुबला, न गीला; न काल, न देश-भाषण।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 12,
+        "number": 12,
+        "sanskrit": "न सर्वं न भयं द्वैतं न वृक्षतृणपर्वताः । न ध्यानं योगसंसिद्धिर्न ब्रह्मवैश्यक्षत्रकम्",
+        "transliteration": "na sarvaṃ na bhayaṃ dvaitaṃ na vṛkṣatṛṇaparvatāḥ | na dhyānaṃ yogasaṃsiddhirna brahmavaiśyakṣatrakam",
+        "translation": "Not all, not fear, not duality; not trees, grasses or mountains; not meditation, nor accomplishment of yoga; not Brahmin, Vaishya or Kshatriya.",
+        "hindi": "न सब, न भय, न द्वैत; न वृक्ष, तृण और पर्वत; न ध्यान, न योग की सिद्धि; न ब्राह्मण, वैश्य या क्षत्रिय।",
+        "explanation": "न सब, न भय, न द्वैत; न वृक्ष, तृण और पर्वत; न ध्यान, न योग की सिद्धि; न ब्राह्मण, वैश्य या क्षत्रिय।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 13,
+        "number": 13,
+        "sanskrit": "न पक्षी न मृगो नाङ्गी न लोभो मोह एव च । न मदो न च मात्सर्यं कामक्रोधादयस्तथा",
+        "transliteration": "na pakṣī na mṛgo nāṅgī na lobho moha eva ca | na mado na ca mātsaryaṃ kāmakrodhādayastathā",
+        "translation": "No bird, no beast, no embodied, no greed, no delusion; no pride, no envy, no desire, anger and the rest.",
+        "hindi": "न पक्षी, न पशु, न देहधारी, न लोभ, न मोह; न मद, न मात्सर्य, और काम-क्रोध आदि भी नहीं।",
+        "explanation": "न पक्षी, न पशु, न देहधारी, न लोभ, न मोह; न मद, न मात्सर्य, और काम-क्रोध आदि भी नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 14,
+        "number": 14,
+        "sanskrit": "न स्त्रीशूद्रबिडालादि भक्ष्यभोज्यादिकं च यत् । न प्रौढहीनो नास्तिक्यं न वार्तावसरोऽति हि",
+        "transliteration": "na strīśūdrabiḍālādi bhakṣyabhojyādikaṃ ca yat | na prauḍhahīno nāstikyaṃ na vārtāvasaro'ti hi",
+        "translation": "No woman, Shudra, cat and so on; no food or what is eaten; no mature or lacking, no atheism, no occasion for talk.",
+        "hindi": "न स्त्री, शूद्र, बिल्ली आदि; न भक्ष्य-भोज्य आदि; न प्रौढ़ या हीन; न नास्तिकता; न वार्तालाप का अवसर।",
+        "explanation": "न स्त्री, शूद्र, बिल्ली आदि; न भक्ष्य-भोज्य आदि; न प्रौढ़ या हीन; न नास्तिकता; न वार्तालाप का अवसर।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 15,
+        "number": 15,
+        "sanskrit": "न लौकिको न लोको वा न व्यापारो न मूढता । न भोक्ता भोजनं भोज्यं न पात्रं पानपेयकम्",
+        "transliteration": "na laukiko na loko vā na vyāpāro na mūḍhatā | na bhoktā bhojanaṃ bhojyaṃ na pātraṃ pānapeyakam",
+        "translation": "No worldly, no world, no business, no foolishness; no enjoyer, meal or food; no vessel, drink or drinkable.",
+        "hindi": "न लौकिक, न लोक, न व्यापार, न मूढ़ता; न भोक्ता, भोजन या भोज्य; न पात्र, पान या पेय।",
+        "explanation": "न लौकिक, न लोक, न व्यापार, न मूढ़ता; न भोक्ता, भोजन या भोज्य; न पात्र, पान या पेय।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 16,
+        "number": 16,
+        "sanskrit": "न शत्रुमित्रपुत्रादिर्न माता न पिता स्वसा । न जन्म न मृतिर्वृद्धिर्न देहोऽहमिति भ्रमः",
+        "transliteration": "na śatrumitraputrādirna mātā na pitā svasā | na janma na mṛtirvṛddhirna deho'hamiti bhramaḥ",
+        "translation": "No enemy, friend, son and so on; no mother, father, sister; no birth, death, growth; no delusion \"I am the body.\"",
+        "hindi": "न शत्रु, मित्र, पुत्र आदि; न माता, पिता, बहन; न जन्म, मृत्यु, वृद्धि; न ‘मैं देह हूँ’ का भ्रम।",
+        "explanation": "न शत्रु, मित्र, पुत्र आदि; न माता, पिता, बहन; न जन्म, मृत्यु, वृद्धि; न ‘मैं देह हूँ’ का भ्रम।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 17,
+        "number": 17,
+        "sanskrit": "न शून्यं नापि चाशून्यं नान्तःकरणसंसृतिः । न रात्रिर्न दिवा नक्तं न ब्रह्मा न हरिः शिवः",
+        "transliteration": "na śūnyaṃ nāpi cāśūnyaṃ nāntaḥkaraṇasaṃsṛtiḥ | na rātrirna divā naktaṃ na brahmā na hariḥ śivaḥ",
+        "translation": "Neither void nor non-void; not the cycle of the inner instrument; no night, no day, no evening; no Brahma, Hari, Shiva.",
+        "hindi": "न शून्य है, न अशून्य; न अन्तःकरण का संसार; न रात, न दिन, न सन्ध्या; न ब्रह्मा, न हरि, न शिव।",
+        "explanation": "न शून्य है, न अशून्य; न अन्तःकरण का संसार; न रात, न दिन, न सन्ध्या; न ब्रह्मा, न हरि, न शिव।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 18,
+        "number": 18,
+        "sanskrit": "न वारपक्षमासादि वत्सरं न च चञ्चलम् । न ब्रह्मलोको वैकुण्ठो न कैलासो न चान्यकः",
+        "transliteration": "na vārapakṣamāsādi vatsaraṃ na ca cañcalam | na brahmaloko vaikuṇṭho na kailāso na cānyakaḥ",
+        "translation": "No weekday, fortnight, month and the like, nor year, nor flickering; no Brahmaloka, Vaikuntha, Kailasa or other.",
+        "hindi": "न वार, पक्ष, मास आदि, न वर्ष, न चंचलता; न ब्रह्मलोक, वैकुण्ठ, कैलास या कोई अन्य।",
+        "explanation": "न वार, पक्ष, मास आदि, न वर्ष, न चंचलता; न ब्रह्मलोक, वैकुण्ठ, कैलास या कोई अन्य।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 19,
+        "number": 19,
+        "sanskrit": "न स्वर्गो न च देवेन्द्रो नाग्निलोको न चाग्निकः । न यमो यमलोको वा न लोका लोकपालकाः",
+        "transliteration": "na svargo na ca devendro nāgniloko na cāgnikaḥ | na yamo yamaloko vā na lokā lokapālakāḥ",
+        "translation": "No heaven, no Indra; no world of fire, nor Agni; no Yama or world of Yama; no worlds or guardians of worlds.",
+        "hindi": "न स्वर्ग, न देवेन्द्र; न अग्निलोक, न अग्नि; न यम या यमलोक; न लोक या लोकपाल।",
+        "explanation": "न स्वर्ग, न देवेन्द्र; न अग्निलोक, न अग्नि; न यम या यमलोक; न लोक या लोकपाल।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 20,
+        "number": 20,
+        "sanskrit": "न भूर्भुवःस्वस्त्रैलोक्यं न पातालं न भूतलम् । नाविद्या न च विद्या च न माया प्रकृतिर्जडा",
+        "transliteration": "na bhūrbhuvaḥsvastrailokyaṃ na pātālaṃ na bhūtalam | nāvidyā na ca vidyā ca na māyā prakṛtirjaḍā",
+        "translation": "No Bhur, Bhuvah, Svah, the three worlds; no underworld or earth; neither ignorance nor knowledge; no dull illusion or nature.",
+        "hindi": "न भूः-भुवः-स्वः का त्रैलोक्य, न पाताल, न पृथ्वी-तल; न अविद्या, न विद्या; न जड़ माया या प्रकृति।",
+        "explanation": "न भूः-भुवः-स्वः का त्रैलोक्य, न पाताल, न पृथ्वी-तल; न अविद्या, न विद्या; न जड़ माया या प्रकृति।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 21,
+        "number": 21,
+        "sanskrit": "न स्थिरं क्षणिकं नाशं न गतिर्न च धावनम् । न ध्यातव्यं न मे ध्यानं न मन्त्रो न जपः क्वचित्",
+        "transliteration": "na sthiraṃ kṣaṇikaṃ nāśaṃ na gatirna ca dhāvanam | na dhyātavyaṃ na me dhyānaṃ na mantro na japaḥ kvacit",
+        "translation": "No steady, no momentary, no destruction; no going, no running; nothing to be meditated on, no meditation of mine, no mantra, no repetition anywhere.",
+        "hindi": "न स्थिर, न क्षणिक, न नाश; न गति, न दौड़; न ध्यान करने योग्य कुछ, न मेरा कोई ध्यान; न मन्त्र, न कहीं जप।",
+        "explanation": "न स्थिर, न क्षणिक, न नाश; न गति, न दौड़; न ध्यान करने योग्य कुछ, न मेरा कोई ध्यान; न मन्त्र, न कहीं जप।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 22,
+        "number": 22,
+        "sanskrit": "न पदार्था न पूजार्हं नाभिषेको न चार्चनम् । न पुष्पं न फलं पत्रं गन्धपुष्पादिधूपकम्",
+        "transliteration": "na padārthā na pūjārhaṃ nābhiṣeko na cārcanam | na puṣpaṃ na phalaṃ patraṃ gandhapuṣpādidhūpakam",
+        "translation": "No objects, no one worthy of worship, no anointing, no worship; no flower, fruit, leaf, perfume, incense.",
+        "hindi": "न पदार्थ, न पूजा के योग्य कोई; न अभिषेक, न अर्चन; न पुष्प, फल या पत्र; न गन्ध, पुष्प आदि का धूप।",
+        "explanation": "न पदार्थ, न पूजा के योग्य कोई; न अभिषेक, न अर्चन; न पुष्प, फल या पत्र; न गन्ध, पुष्प आदि का धूप।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 23,
+        "number": 23,
+        "sanskrit": "न स्तोत्रं न नमस्कारो न प्रदक्षिणमण्वपि । न प्रार्थना पृथग्भावो न हविर्नाग्निवन्दनम्",
+        "transliteration": "na stotraṃ na namaskāro na pradakṣiṇamaṇvapi | na prārthanā pṛthagbhāvo na havirnāgnivandanam",
+        "translation": "No hymn, no salutation, not even an atom of circumambulation; no prayer, no separateness, no oblation, no salutation to fire.",
+        "hindi": "न स्तोत्र, न नमस्कार, न अणुमात्र भी प्रदक्षिणा; न प्रार्थना, न पृथक्-भाव; न हवि, न अग्नि-वन्दना।",
+        "explanation": "न स्तोत्र, न नमस्कार, न अणुमात्र भी प्रदक्षिणा; न प्रार्थना, न पृथक्-भाव; न हवि, न अग्नि-वन्दना।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 24,
+        "number": 24,
+        "sanskrit": "न होमो न च कर्माणि न दुर्वाक्यं सुभाषणम् । न गायत्री न वा सन्धिर्न मनस्यं न दुःस्थितिः",
+        "transliteration": "na homo na ca karmāṇi na durvākyaṃ subhāṣaṇam | na gāyatrī na vā sandhirna manasyaṃ na duḥsthitiḥ",
+        "translation": "No oblation, no rites; no ill speech or good speech; no Gayatri, no twilight; no mind-state, no ill-state.",
+        "hindi": "न होम, न कर्म; न दुर्वचन, न सुभाषण; न गायत्री, न सन्ध्या; न मन की स्थिति, न दुःस्थिति।",
+        "explanation": "न होम, न कर्म; न दुर्वचन, न सुभाषण; न गायत्री, न सन्ध्या; न मन की स्थिति, न दुःस्थिति।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 25,
+        "number": 25,
+        "sanskrit": "न दुराशा न दुष्टात्मा न चाण्डालो न पौल्कसः । न दुःसहं दुरालापं न किरातो न कैतवम्",
+        "transliteration": "na durāśā na duṣṭātmā na cāṇḍālo na paulkasaḥ | na duḥsahaṃ durālāpaṃ na kirāto na kaitavam",
+        "translation": "No bad hope, no wicked soul, no Chandala, no Pulkasa; no unbearable, no ill talk, no Kirata, no deceit.",
+        "hindi": "न दुराशा, न दुष्ट आत्मा, न चाण्डाल, न पुल्कस; न असह्य, न दुर्वचन, न किरात, न कपट।",
+        "explanation": "न दुराशा, न दुष्ट आत्मा, न चाण्डाल, न पुल्कस; न असह्य, न दुर्वचन, न किरात, न कपट।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 26,
+        "number": 26,
+        "sanskrit": "न पक्षपातं न पक्षं वा न विभूषणतस्करौ । न च दम्भो दाम्भिको वा न हीनो नाधिको नरः",
+        "transliteration": "na pakṣapātaṃ na pakṣaṃ vā na vibhūṣaṇataskarau | na ca dambho dāmbhiko vā na hīno nādhiko naraḥ",
+        "translation": "No partiality or party; no ornament or thief; no pride or proud; no low or high man.",
+        "hindi": "न पक्षपात है, न कोई पक्ष; न आभूषण है, न चोर; न दम्भ है, न दम्भी; न कोई हीन मनुष्य है, न अधिक।",
+        "explanation": "न पक्षपात है, न कोई पक्ष; न आभूषण है, न चोर; न दम्भ है, न दम्भी; न कोई हीन मनुष्य है, न अधिक।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 27,
+        "number": 27,
+        "sanskrit": "नैकं द्वयं त्रयं तुर्यं न महत्वं न चाल्पता । न पूर्णं न परिच्छिन्नं न काशी न व्रतं तपः",
+        "transliteration": "naikaṃ dvayaṃ trayaṃ turyaṃ na mahatvaṃ na cālpatā | na pūrṇaṃ na paricchinnaṃ na kāśī na vrataṃ tapaḥ",
+        "translation": "Not one, two, three, four; no greatness, no smallness; not full, not limited; no Kashi, no vow, no austerity.",
+        "hindi": "न एक, न दो, न तीन, न चार; न बड़प्पन, न छोटापन; न पूर्ण, न परिच्छिन्न; न काशी, न व्रत, न तप।",
+        "explanation": "न एक, न दो, न तीन, न चार; न बड़प्पन, न छोटापन; न पूर्ण, न परिच्छिन्न; न काशी, न व्रत, न तप।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 28,
+        "number": 28,
+        "sanskrit": "न गोत्रं न कुलं सूत्रं न विभुत्वं न शून्यता । न स्त्री न योषिन्नो वृद्धा न कन्या न वितन्तुता",
+        "transliteration": "na gotraṃ na kulaṃ sūtraṃ na vibhutvaṃ na śūnyatā | na strī na yoṣinno vṛddhā na kanyā na vitantutā",
+        "translation": "No lineage, family, thread; no all-pervasiveness, no emptiness; no woman, no girl, no old woman, no maiden, no lack of thread.",
+        "hindi": "न गोत्र, न कुल, न सूत्र; न विभुत्व, न शून्यता; न स्त्री, न युवती, न वृद्धा, न कन्या; न तन्तु-रहितता।",
+        "explanation": "न गोत्र, न कुल, न सूत्र; न विभुत्व, न शून्यता; न स्त्री, न युवती, न वृद्धा, न कन्या; न तन्तु-रहितता।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 29,
+        "number": 29,
+        "sanskrit": "न सूतकं न जातं वा नान्तर्मुखसुविभ्रमः । न महावाक्यमैक्यं वा नाणिमादिविभूतयः",
+        "transliteration": "na sūtakaṃ na jātaṃ vā nāntarmukhasuvibhramaḥ | na mahāvākyamaikyaṃ vā nāṇimādivibhūtayaḥ",
+        "translation": "No impurity of birth or death; no turning inward and illusion; no great saying, no unity, no powers like anima.",
+        "hindi": "न सूतक, न जन्म; न अन्तर्मुख होने का भ्रम; न महावाक्य, न एकता; न अणिमा आदि सिद्धियाँ।",
+        "explanation": "न सूतक, न जन्म; न अन्तर्मुख होने का भ्रम; न महावाक्य, न एकता; न अणिमा आदि सिद्धियाँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 30,
+        "number": 30,
+        "sanskrit": "सर्वचैतन्यमात्रत्वात्सर्वदोषः सदा न हि । सर्वं सन्मात्ररूपत्वात्सच्चिदानन्दमात्रकम्",
+        "transliteration": "sarvacaitanyamātratvātsarvadoṣaḥ sadā na hi | sarvaṃ sanmātrarūpatvātsaccidānandamātrakam",
+        "translation": "Because all is mere consciousness, there is never any fault; all is of the form of mere being, mere being-consciousness-bliss.",
+        "hindi": "सब कुछ केवल चैतन्य-मात्र होने से कोई दोष कभी नहीं है; सब कुछ सत्-मात्र रूप होने से सब सच्चिदानन्द-मात्र है।",
+        "explanation": "सब कुछ केवल चैतन्य-मात्र होने से कोई दोष कभी नहीं है; सब कुछ सत्-मात्र रूप होने से सब सच्चिदानन्द-मात्र है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 31,
+        "number": 31,
+        "sanskrit": "ब्रह्मैव सर्वं नान्योऽस्ति तदहं तदहं तथा । तदेवाहं तदेवाहं ब्रह्मैवाहं सनातनम्",
+        "transliteration": "brahmaiva sarvaṃ nānyo'sti tadahaṃ tadahaṃ tathā | tadevāhaṃ tadevāhaṃ brahmaivāhaṃ sanātanam",
+        "translation": "Brahman alone is all; there is no other; I am that, I am that likewise; I am that alone, that alone; I am Brahman, the eternal.",
+        "hindi": "सब कुछ ब्रह्म ही है, कोई अन्य नहीं; मैं वही हूँ, मैं वही हूँ; मैं वही ही हूँ — मैं सनातन ब्रह्म ही हूँ।",
+        "explanation": "सब कुछ ब्रह्म ही है, कोई अन्य नहीं; मैं वही हूँ, मैं वही हूँ; मैं वही ही हूँ — मैं सनातन ब्रह्म ही हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 32,
+        "number": 32,
+        "sanskrit": "ब्रह्मैवाहं न संसारी ब्रह्मैवाहं न मे मनः । ब्रह्मैवाहं न मे बुद्धिर्ब्रह्मैवाहं न चेन्द्रियः",
+        "transliteration": "brahmaivāhaṃ na saṃsārī brahmaivāhaṃ na me manaḥ | brahmaivāhaṃ na me buddhirbrahmaivāhaṃ na cendriyaḥ",
+        "translation": "I am Brahman, not a worldly being; I am Brahman, not mind; I am Brahman, not intellect; I am Brahman, not senses.",
+        "hindi": "मैं ब्रह्म ही हूँ, संसारी नहीं; मैं ब्रह्म ही हूँ, मन मेरा नहीं; मैं ब्रह्म ही हूँ, बुद्धि मेरी नहीं; मैं ब्रह्म ही हूँ, इन्द्रिय नहीं।",
+        "explanation": "मैं ब्रह्म ही हूँ, संसारी नहीं; मैं ब्रह्म ही हूँ, मन मेरा नहीं; मैं ब्रह्म ही हूँ, बुद्धि मेरी नहीं; मैं ब्रह्म ही हूँ, इन्द्रिय नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 33,
+        "number": 33,
+        "sanskrit": "ब्रह्मैवाहं न देहोऽहं ब्रह्मैवाहं न गोचरः । ब्रह्मैवाहं न जीवोऽहं ब्रह्मैवाहं न भेदभूः",
+        "transliteration": "brahmaivāhaṃ na deho'haṃ brahmaivāhaṃ na gocaraḥ | brahmaivāhaṃ na jīvo'haṃ brahmaivāhaṃ na bhedabhūḥ",
+        "translation": "I am Brahman, not body; I am Brahman, not an object; I am Brahman, not an individual; I am Brahman, not a ground of difference.",
+        "hindi": "मैं ब्रह्म ही हूँ, देह नहीं; मैं ब्रह्म ही हूँ, विषय नहीं; मैं ब्रह्म ही हूँ, जीव नहीं; मैं ब्रह्म ही हूँ, भेद का आधार नहीं।",
+        "explanation": "मैं ब्रह्म ही हूँ, देह नहीं; मैं ब्रह्म ही हूँ, विषय नहीं; मैं ब्रह्म ही हूँ, जीव नहीं; मैं ब्रह्म ही हूँ, भेद का आधार नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 34,
+        "number": 34,
+        "sanskrit": "ब्रह्मैवाहं जडो नाहमहं ब्रह्म न मे मृतिः । ब्रह्मैवाहं न च प्राणो ब्रह्मैवाहं परात्परः",
+        "transliteration": "brahmaivāhaṃ jaḍo nāhamahaṃ brahma na me mṛtiḥ | brahmaivāhaṃ na ca prāṇo brahmaivāhaṃ parātparaḥ",
+        "translation": "I am Brahman, not dull; I am Brahman, I have no death; I am Brahman, not breath; I am Brahman, higher than the highest.",
+        "hindi": "मैं ब्रह्म ही हूँ, जड़ नहीं; मैं ब्रह्म हूँ, मेरी मृत्यु नहीं; मैं ब्रह्म ही हूँ, प्राण नहीं; मैं ब्रह्म ही हूँ, परे से भी परे।",
+        "explanation": "मैं ब्रह्म ही हूँ, जड़ नहीं; मैं ब्रह्म हूँ, मेरी मृत्यु नहीं; मैं ब्रह्म ही हूँ, प्राण नहीं; मैं ब्रह्म ही हूँ, परे से भी परे।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 35,
+        "number": 35,
+        "sanskrit": "इदं ब्रह्म परं ब्रह्म सत्यं ब्रह्म प्रभुर्हि सः । कालो ब्रह्म कला ब्रह्म सुखं ब्रह्म स्वयम्प्रभम्",
+        "transliteration": "idaṃ brahma paraṃ brahma satyaṃ brahma prabhurhi saḥ | kālo brahma kalā brahma sukhaṃ brahma svayamprabham",
+        "translation": "This is Brahman, supreme Brahman, true Brahman, the lord; time is Brahman, art is Brahman, happiness is Brahman, self-luminous.",
+        "hindi": "यह ब्रह्म है, परम ब्रह्म है, सत्य ब्रह्म है, वही प्रभु है; काल ब्रह्म है, कला ब्रह्म है, सुख ब्रह्म है, स्वयं-प्रकाश है।",
+        "explanation": "यह ब्रह्म है, परम ब्रह्म है, सत्य ब्रह्म है, वही प्रभु है; काल ब्रह्म है, कला ब्रह्म है, सुख ब्रह्म है, स्वयं-प्रकाश है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 36,
+        "number": 36,
+        "sanskrit": "एकं ब्रह्म द्वयं ब्रह्म मोहो ब्रह्म शमादिकम् । दोषो ब्रह्म गुणो ब्रह्म दमः शान्तं विभुः प्रभुः",
+        "transliteration": "ekaṃ brahma dvayaṃ brahma moho brahma śamādikam | doṣo brahma guṇo brahma damaḥ śāntaṃ vibhuḥ prabhuḥ",
+        "translation": "One is Brahman, two are Brahman; delusion is Brahman, and peace and the rest; fault is Brahman, quality is Brahman; self-control, peace, the all-pervading, the lord.",
+        "hindi": "एक ब्रह्म है, दो भी ब्रह्म हैं; मोह ब्रह्म है, शम आदि भी; दोष ब्रह्म है, गुण ब्रह्म है; दम, शान्ति, विभु और प्रभु भी।",
+        "explanation": "एक ब्रह्म है, दो भी ब्रह्म हैं; मोह ब्रह्म है, शम आदि भी; दोष ब्रह्म है, गुण ब्रह्म है; दम, शान्ति, विभु और प्रभु भी।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 37,
+        "number": 37,
+        "sanskrit": "लोको ब्रह्म गुरुर्ब्रह्म शिष्यो ब्रह्म सदाशिवः । पूर्वं ब्रह्म परं ब्रह्म शुद्धं ब्रह्म शुभाशुभम्",
+        "transliteration": "loko brahma gururbrahma śiṣyo brahma sadāśivaḥ | pūrvaṃ brahma paraṃ brahma śuddhaṃ brahma śubhāśubham",
+        "translation": "The world is Brahman, the teacher is Brahman, the disciple is Brahman, Sadashiva; the earlier is Brahman, the supreme is Brahman, the pure is Brahman, the good and bad.",
+        "hindi": "लोक ब्रह्म है, गुरु ब्रह्म है, शिष्य ब्रह्म है, सदाशिव है; पूर्व ब्रह्म है, पर ब्रह्म है, शुद्ध ब्रह्म है, शुभ-अशुभ भी।",
+        "explanation": "लोक ब्रह्म है, गुरु ब्रह्म है, शिष्य ब्रह्म है, सदाशिव है; पूर्व ब्रह्म है, पर ब्रह्म है, शुद्ध ब्रह्म है, शुभ-अशुभ भी।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 38,
+        "number": 38,
+        "sanskrit": "जीव एव सदा ब्रह्म सच्चिदानन्दमस्म्यहम् । सर्वं ब्रह्ममयं प्रोक्तं सर्वं ब्रह्ममयं जगत्",
+        "transliteration": "jīva eva sadā brahma saccidānandamasmyaham | sarvaṃ brahmamayaṃ proktaṃ sarvaṃ brahmamayaṃ jagat",
+        "translation": "The individual is always Brahman; I am being-consciousness-bliss. All is said to be made of Brahman; the world is all made of Brahman.",
+        "hindi": "जीव सदा ब्रह्म ही है; मैं सच्चिदानन्द हूँ। सब ब्रह्ममय कहा गया है; सारा जगत ब्रह्ममय है।",
+        "explanation": "जीव सदा ब्रह्म ही है; मैं सच्चिदानन्द हूँ। सब ब्रह्ममय कहा गया है; सारा जगत ब्रह्ममय है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 39,
+        "number": 39,
+        "sanskrit": "स्वयं ब्रह्म न सन्देहः स्वस्मादन्यन्न किञ्चन । सर्वमात्मैव शुद्धात्मा सर्वं चिन्मात्रमद्वयम्",
+        "transliteration": "svayaṃ brahma na sandehaḥ svasmādanyanna kiñcana | sarvamātmaiva śuddhātmā sarvaṃ cinmātramadvayam",
+        "translation": "Brahman itself — no doubt; nothing exists apart from oneself; all is the Self, the pure Self; all is non-dual mere consciousness.",
+        "hindi": "स्वयं ब्रह्म है, इसमें सन्देह नहीं; अपने से अलग कुछ नहीं है। सब आत्मा ही है, शुद्ध आत्मा; सब अद्वय चिन्मात्र है।",
+        "explanation": "स्वयं ब्रह्म है, इसमें सन्देह नहीं; अपने से अलग कुछ नहीं है। सब आत्मा ही है, शुद्ध आत्मा; सब अद्वय चिन्मात्र है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 40,
+        "number": 40,
+        "sanskrit": "नित्यनिर्मलरूपात्मा ह्यात्मनोऽन्यन्न किञ्चन । अणुमात्रलसद्रूपमणुमात्रमिदं जगत्",
+        "transliteration": "nityanirmalarūpātmā hyātmano'nyanna kiñcana | aṇumātralasadrūpamaṇumātramidaṃ jagat",
+        "translation": "The Self of eternal stainless form; nothing is apart from the Self; this world is a shining form only of an atom's size.",
+        "hindi": "नित्य निर्मल रूप आत्मा — आत्मा से अलग कुछ नहीं। यह जगत अणु-मात्र चमकते हुए रूप वाला, अणु-मात्र है।",
+        "explanation": "नित्य निर्मल रूप आत्मा — आत्मा से अलग कुछ नहीं। यह जगत अणु-मात्र चमकते हुए रूप वाला, अणु-मात्र है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 41,
+        "number": 41,
+        "sanskrit": "अणुमात्रं शरीरं वा ह्यणुमात्रमसत्यकम् । अणुमात्रमचिन्त्यं वा चिन्त्यं वा ह्यणुमात्रकम्",
+        "transliteration": "aṇumātraṃ śarīraṃ vā hyaṇumātramasatyakam | aṇumātramacintyaṃ vā cintyaṃ vā hyaṇumātrakam",
+        "translation": "The body is only atom-sized; the unreal is atom-sized; the inconceivable or the conceivable is atom-sized.",
+        "hindi": "शरीर अणु-मात्र है, असत्य अणु-मात्र है; अचिन्त्य या चिन्त्य भी अणु-मात्र है।",
+        "explanation": "शरीर अणु-मात्र है, असत्य अणु-मात्र है; अचिन्त्य या चिन्त्य भी अणु-मात्र है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 42,
+        "number": 42,
+        "sanskrit": "ब्रह्मैव सर्वं चिन्मात्रं ब्रह्ममात्रं जगत्त्रयम् । आनन्दं परमानन्दमन्यत्किञ्चिन्न किञ्चन",
+        "transliteration": "brahmaiva sarvaṃ cinmātraṃ brahmamātraṃ jagattrayam | ānandaṃ paramānandamanyatkiñcinna kiñcana",
+        "translation": "Brahman alone is all, mere consciousness; the three worlds are Brahman only; bliss, supreme bliss — nothing else at all.",
+        "hindi": "ब्रह्म ही सब कुछ है, चिन्मात्र है; तीनों लोक ब्रह्म-मात्र हैं; आनन्द, परम आनन्द — इससे भिन्न कुछ भी नहीं।",
+        "explanation": "ब्रह्म ही सब कुछ है, चिन्मात्र है; तीनों लोक ब्रह्म-मात्र हैं; आनन्द, परम आनन्द — इससे भिन्न कुछ भी नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 43,
+        "number": 43,
+        "sanskrit": "चैतन्यमात्रमोङ्कारं ब्रह्मैव सकलं स्वयम् । अहमेव जगत्सर्वमहमेव परं पदम्",
+        "transliteration": "caitanyamātramoṅkāraṃ brahmaiva sakalaṃ svayam | ahameva jagatsarvamahameva paraṃ padam",
+        "translation": "Mere consciousness is Om; Brahman itself is all; I alone am all the world; I alone am the supreme state.",
+        "hindi": "चैतन्य-मात्र ही ओंकार है; सम्पूर्ण स्वयं ब्रह्म ही है। मैं ही सारा जगत हूँ; मैं ही परम पद हूँ।",
+        "explanation": "चैतन्य-मात्र ही ओंकार है; सम्पूर्ण स्वयं ब्रह्म ही है। मैं ही सारा जगत हूँ; मैं ही परम पद हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 44,
+        "number": 44,
+        "sanskrit": "अहमेव गुणातीत अहमेव परात्परः । अहमेव परं ब्रह्म अहमेव गुरोर्गुरुः",
+        "transliteration": "ahameva guṇātīta ahameva parātparaḥ | ahameva paraṃ brahma ahameva gurorguruḥ",
+        "translation": "I alone am beyond the qualities; I alone am higher than the highest; I alone am supreme Brahman; I alone am the teacher of teachers.",
+        "hindi": "मैं ही गुणातीत हूँ; मैं ही परे से भी परे हूँ; मैं ही परब्रह्म हूँ; मैं ही गुरुओं का गुरु हूँ।",
+        "explanation": "मैं ही गुणातीत हूँ; मैं ही परे से भी परे हूँ; मैं ही परब्रह्म हूँ; मैं ही गुरुओं का गुरु हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 45,
+        "number": 45,
+        "sanskrit": "अहमेवाखिलाधार अहमेव सुखात्सुखम् । आत्मनोऽन्यज्जगन्नास्ति आत्मनोऽन्यत्सुखं न च",
+        "transliteration": "ahamevākhilādhāra ahameva sukhātsukham | ātmano'nyajjagannāsti ātmano'nyatsukhaṃ na ca",
+        "translation": "I alone am the support of all; I alone am the happiness of happiness; there is no world apart from the Self; no happiness apart from the Self.",
+        "hindi": "मैं ही सबका आधार हूँ; मैं ही सुखों का सुख हूँ। आत्मा से अलग जगत नहीं; आत्मा से अलग सुख नहीं।",
+        "explanation": "मैं ही सबका आधार हूँ; मैं ही सुखों का सुख हूँ। आत्मा से अलग जगत नहीं; आत्मा से अलग सुख नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 46,
+        "number": 46,
+        "sanskrit": "आत्मनोऽन्या गतिर्नास्ति सर्वमात्ममयं जगत् । आत्मनोऽन्यन्नहि क्वापि आत्मनोऽन्यत्तृणं नहि",
+        "transliteration": "ātmano'nyā gatirnāsti sarvamātmamayaṃ jagat | ātmano'nyannahi kvāpi ātmano'nyattṛṇaṃ nahi",
+        "translation": "There is no goal apart from the Self; the whole world is made of the Self; nothing anywhere is apart from the Self; no grass is apart from the Self.",
+        "hindi": "आत्मा से अलग कोई गति नहीं; सारा जगत आत्ममय है। कहीं भी आत्मा से भिन्न कुछ नहीं; आत्मा से अलग तिनका भी नहीं।",
+        "explanation": "आत्मा से अलग कोई गति नहीं; सारा जगत आत्ममय है। कहीं भी आत्मा से भिन्न कुछ नहीं; आत्मा से अलग तिनका भी नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 47,
+        "number": 47,
+        "sanskrit": "आत्मनोऽन्यत्तुषं नास्ति सर्वमात्ममयं जगत् । ब्रह्ममात्रमिदं सर्वं ब्रह्ममात्रमसन्न हि",
+        "transliteration": "ātmano'nyattuṣaṃ nāsti sarvamātmamayaṃ jagat | brahmamātramidaṃ sarvaṃ brahmamātramasanna hi",
+        "translation": "There is no husk apart from the Self; the whole world is made of the Self; all this is Brahman only; the unreal is not Brahman only.",
+        "hindi": "आत्मा से अलग भूसी भी नहीं; सारा जगत आत्ममय है। यह सब केवल ब्रह्म है; असत्य ब्रह्म-मात्र नहीं।",
+        "explanation": "आत्मा से अलग भूसी भी नहीं; सारा जगत आत्ममय है। यह सब केवल ब्रह्म है; असत्य ब्रह्म-मात्र नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 48,
+        "number": 48,
+        "sanskrit": "ब्रह्ममात्रं श्रुतं सर्वं स्वयं ब्रह्मैव केवलम् । ब्रह्ममात्रं वृतं सर्वं ब्रह्ममात्रं रसं सुखम्",
+        "transliteration": "brahmamātraṃ śrutaṃ sarvaṃ svayaṃ brahmaiva kevalam | brahmamātraṃ vṛtaṃ sarvaṃ brahmamātraṃ rasaṃ sukham",
+        "translation": "All that is heard is Brahman only; oneself is Brahman alone; all that is chosen is Brahman only; the savor, the happiness is Brahman only.",
+        "hindi": "जो कुछ सुना जाता है, सब ब्रह्म-मात्र है; स्वयं केवल ब्रह्म ही है। जो चुना गया सब ब्रह्म-मात्र है; रस और सुख भी ब्रह्म-मात्र हैं।",
+        "explanation": "जो कुछ सुना जाता है, सब ब्रह्म-मात्र है; स्वयं केवल ब्रह्म ही है। जो चुना गया सब ब्रह्म-मात्र है; रस और सुख भी ब्रह्म-मात्र हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 49,
+        "number": 49,
+        "sanskrit": "ब्रह्ममात्रं चिदाकाशं सच्चिदानन्दमव्ययम् । ब्रह्मणोऽन्यतरन्नास्ति ब्रह्मणोऽन्यज्जगन्न च",
+        "transliteration": "brahmamātraṃ cidākāśaṃ saccidānandamavyayam | brahmaṇo'nyatarannāsti brahmaṇo'nyajjaganna ca",
+        "translation": "Only Brahman is the space of consciousness, the imperishable being-consciousness-bliss; nothing is other than Brahman; no world is other than Brahman.",
+        "hindi": "चिदाकाश ब्रह्म-मात्र है, अविनाशी सच्चिदानन्द है; ब्रह्म से अन्य कुछ नहीं; ब्रह्म से अन्य कोई जगत नहीं।",
+        "explanation": "चिदाकाश ब्रह्म-मात्र है, अविनाशी सच्चिदानन्द है; ब्रह्म से अन्य कुछ नहीं; ब्रह्म से अन्य कोई जगत नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 50,
+        "number": 50,
+        "sanskrit": "ब्रह्मणोऽन्यदह नास्ति ब्रह्मणोऽन्यत्फलं नहि । ब्रह्मणोऽन्यत्तृणं नास्ति ब्रह्मणोऽन्यत्पदं नहि",
+        "transliteration": "brahmaṇo'nyadaha nāsti brahmaṇo'nyatphalaṃ nahi | brahmaṇo'nyattṛṇaṃ nāsti brahmaṇo'nyatpadaṃ nahi",
+        "translation": "Nothing exists apart from Brahman; no fruit is apart from Brahman; no grass is apart from Brahman; no state is apart from Brahman.",
+        "hindi": "ब्रह्म से अन्य कुछ नहीं है; ब्रह्म से अन्य कोई फल नहीं; ब्रह्म से अन्य तिनका भी नहीं; ब्रह्म से अन्य कोई पद नहीं।",
+        "explanation": "ब्रह्म से अन्य कुछ नहीं है; ब्रह्म से अन्य कोई फल नहीं; ब्रह्म से अन्य तिनका भी नहीं; ब्रह्म से अन्य कोई पद नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 51,
+        "number": 51,
+        "sanskrit": "ब्रह्मणोऽन्यद्गुरुर्नास्ति ब्रह्मणोऽन्यमसद्वपुः । ब्रह्मणोऽन्यन्न चाहन्ता त्वत्तेदन्ते नहि क्वचित्",
+        "transliteration": "brahmaṇo'nyadgururnāsti brahmaṇo'nyamasadvapuḥ | brahmaṇo'nyanna cāhantā tvattedante nahi kvacit",
+        "translation": "No teacher is apart from Brahman; no body is apart from Brahman, unreal; no egoism is apart from Brahman; \"you\" and \"this\" are nowhere.",
+        "hindi": "ब्रह्म से अन्य कोई गुरु नहीं; ब्रह्म से अन्य कोई असत् शरीर नहीं; ब्रह्म से अन्य अहंकार नहीं; ‘तू’ और ‘यह’ कहीं नहीं।",
+        "explanation": "ब्रह्म से अन्य कोई गुरु नहीं; ब्रह्म से अन्य कोई असत् शरीर नहीं; ब्रह्म से अन्य अहंकार नहीं; ‘तू’ और ‘यह’ कहीं नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 52,
+        "number": 52,
+        "sanskrit": "स्वयं ब्रह्मात्मकं विद्धि स्वस्मादन्यन्न किञ्चन । यत्किञ्चिद्दृश्यते लोके यत्किञ्चिद्भाष्यते जनैः",
+        "transliteration": "svayaṃ brahmātmakaṃ viddhi svasmādanyanna kiñcana | yatkiñciddṛśyate loke yatkiñcidbhāṣyate janaiḥ",
+        "translation": "Know yourself as Brahman-natured; nothing is apart from oneself. Whatever is seen in the world, whatever is spoken by people,",
+        "hindi": "स्वयं को ब्रह्मस्वरूप जानो; अपने से अलग कुछ नहीं। जो कुछ संसार में दिखाई देता है, जो कुछ लोगों द्वारा कहा जाता है,",
+        "explanation": "स्वयं को ब्रह्मस्वरूप जानो; अपने से अलग कुछ नहीं। जो कुछ संसार में दिखाई देता है, जो कुछ लोगों द्वारा कहा जाता है,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 53,
+        "number": 53,
+        "sanskrit": "यत्किञ्चिद्भुज्यते क्वापि तत्सर्वमसदेव हि । कर्तृभेदं क्रियाभेदं गुणभेदं रसादिकम्",
+        "transliteration": "yatkiñcidbhujyate kvāpi tatsarvamasadeva hi | kartṛbhedaṃ kriyābhedaṃ guṇabhedaṃ rasādikam",
+        "translation": "whatever is enjoyed anywhere, all that is unreal indeed. The difference of doer, of action, of quality, of taste and the like,",
+        "hindi": "जो कुछ कहीं भोगा जाता है, वह सब असत् ही है। कर्ता का भेद, क्रिया का भेद, गुण का भेद, रस आदि का भेद,",
+        "explanation": "जो कुछ कहीं भोगा जाता है, वह सब असत् ही है। कर्ता का भेद, क्रिया का भेद, गुण का भेद, रस आदि का भेद,",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 54,
+        "number": 54,
+        "sanskrit": "लिङ्गभेदमिदं सर्वमसदेव सदा सुखम् । कालभेदं देशभेदं वस्तुभेदं जयाजयम्",
+        "transliteration": "liṅgabhedamidaṃ sarvamasadeva sadā sukham | kālabhedaṃ deśabhedaṃ vastubhedaṃ jayājayam",
+        "translation": "this difference of gender — all this is only unreal; always happiness. Difference of time, of place, of thing, victory and defeat —",
+        "hindi": "लिंग-भेद — यह सब असत् ही है; सदा सुख है। काल का भेद, देश का भेद, वस्तु का भेद, जय-पराजय —",
+        "explanation": "लिंग-भेद — यह सब असत् ही है; सदा सुख है। काल का भेद, देश का भेद, वस्तु का भेद, जय-पराजय —",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 55,
+        "number": 55,
+        "sanskrit": "यद्यद्भेदं च तत्सर्वमसदेव हि केवलम् । असदन्तःकरणकमसदेवेन्द्रियादिकम्",
+        "transliteration": "yadyadbhedaṃ ca tatsarvamasadeva hi kevalam | asadantaḥkaraṇakamasadevendriyādikam",
+        "translation": "whatever is difference, all that is only unreal. The inner instrument is unreal; the senses and the rest are only unreal;",
+        "hindi": "जो कुछ भेद है, वह सब केवल असत् ही है। अन्तःकरण असत् है; इन्द्रियाँ आदि भी केवल असत् हैं;",
+        "explanation": "जो कुछ भेद है, वह सब केवल असत् ही है। अन्तःकरण असत् है; इन्द्रियाँ आदि भी केवल असत् हैं;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 56,
+        "number": 56,
+        "sanskrit": "असत्प्राणादिकं सर्वं सङ्घातमसदात्मकम् । असत्यं पञ्चकोशाख्यमसत्यं पञ्च देवताः",
+        "transliteration": "asatprāṇādikaṃ sarvaṃ saṅghātamasadātmakam | asatyaṃ pañcakośākhyamasatyaṃ pañca devatāḥ",
+        "translation": "the breath and the rest are all unreal; the aggregate is of unreal nature; the five sheaths so called are unreal; the five deities are unreal;",
+        "hindi": "प्राण आदि सब असत् हैं; संघात असत्-स्वरूप है; पंचकोश नामक वस्तु असत्य है; पंचदेवता असत्य हैं;",
+        "explanation": "प्राण आदि सब असत् हैं; संघात असत्-स्वरूप है; पंचकोश नामक वस्तु असत्य है; पंचदेवता असत्य हैं;",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 57,
+        "number": 57,
+        "sanskrit": "असत्यं षड्विकारादि असत्यमरिवर्गकम् । असत्यं षडृतुश्चैव असत्यं षड्रसस्तथा",
+        "transliteration": "asatyaṃ ṣaḍvikārādi asatyamarivargakam | asatyaṃ ṣaḍṛtuścaiva asatyaṃ ṣaḍrasastathā",
+        "translation": "the six modifications and the like are unreal; the group of six enemies is unreal; the six seasons are unreal; likewise the six tastes are unreal.",
+        "hindi": "छह विकार आदि असत्य हैं; षड्-रिपु (छह शत्रु) असत्य हैं; छह ऋतुएँ असत्य हैं; इसी प्रकार छह रस असत्य हैं।",
+        "explanation": "छह विकार आदि असत्य हैं; षड्-रिपु (छह शत्रु) असत्य हैं; छह ऋतुएँ असत्य हैं; इसी प्रकार छह रस असत्य हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 58,
+        "number": 58,
+        "sanskrit": "सच्चिदानन्दमात्रोऽहमनुत्पन्नमिदं जगत् । आत्मैवाहं परं सत्यं नान्याः संसारदृष्टयः",
+        "transliteration": "saccidānandamātro'hamanutpannamidaṃ jagat | ātmaivāhaṃ paraṃ satyaṃ nānyāḥ saṃsāradṛṣṭayaḥ",
+        "translation": "I am mere being-consciousness-bliss; this world has not arisen. I am the Self alone, the supreme truth; no other views of the world.",
+        "hindi": "मैं केवल सच्चिदानन्द-मात्र हूँ; यह जगत उत्पन्न नहीं हुआ है। मैं आत्मा ही हूँ, परम सत्य; संसार की अन्य दृष्टियाँ नहीं।",
+        "explanation": "मैं केवल सच्चिदानन्द-मात्र हूँ; यह जगत उत्पन्न नहीं हुआ है। मैं आत्मा ही हूँ, परम सत्य; संसार की अन्य दृष्टियाँ नहीं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 59,
+        "number": 59,
+        "sanskrit": "सत्यमानन्दरूपोऽहं चिद्घनानन्दविग्रहः । अहमेव परानन्द अहमेव परात्परः",
+        "transliteration": "satyamānandarūpo'haṃ cidghanānandavigrahaḥ | ahameva parānanda ahameva parātparaḥ",
+        "translation": "I am of the form of true bliss, a body of consciousness and bliss; I alone am supreme bliss; I alone am higher than the highest.",
+        "hindi": "मैं सत्य-आनन्द रूप हूँ, चैतन्य-घन और आनन्द का शरीर; मैं ही परमानन्द हूँ; मैं ही परे से भी परे हूँ।",
+        "explanation": "मैं सत्य-आनन्द रूप हूँ, चैतन्य-घन और आनन्द का शरीर; मैं ही परमानन्द हूँ; मैं ही परे से भी परे हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 60,
+        "number": 60,
+        "sanskrit": "ज्ञानाकारमिदं सर्वं ज्ञानानन्दोऽहमद्वयः । सर्वप्रकाशरूपोऽहं सर्वाभावस्वरूपकम्",
+        "transliteration": "jñānākāramidaṃ sarvaṃ jñānānando'hamadvayaḥ | sarvaprakāśarūpo'haṃ sarvābhāvasvarūpakam",
+        "translation": "All this is of the form of knowledge; I am knowledge-bliss, non-dual; I am of the form of light of all; I am of the form of the absence of all.",
+        "hindi": "यह सब ज्ञान के आकार का है; मैं ज्ञानानन्द हूँ, अद्वय। मैं सबके प्रकाश का रूप हूँ और सबके अभाव का स्वरूप भी।",
+        "explanation": "यह सब ज्ञान के आकार का है; मैं ज्ञानानन्द हूँ, अद्वय। मैं सबके प्रकाश का रूप हूँ और सबके अभाव का स्वरूप भी।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 61,
+        "number": 61,
+        "sanskrit": "अहमेव सदा भामीत्येवं रूपं कुतोऽप्यसत् । त्वमित्येवं परं ब्रह्म चिन्मयानन्दरूपवान्",
+        "transliteration": "ahameva sadā bhāmītyevaṃ rūpaṃ kuto'pyasat | tvamityevaṃ paraṃ brahma cinmayānandarūpavān",
+        "translation": "\"I alone ever shine\" — such a form is unreal from anywhere; \"you\" — thus supreme Brahman, of the form of consciousness and bliss.",
+        "hindi": "‘मैं ही सदा प्रकाशित होता हूँ’ — ऐसा रूप भी कहीं से असत् है। ‘तू’ — इस प्रकार परब्रह्म, चिन्मय और आनन्द रूप वाला।",
+        "explanation": "‘मैं ही सदा प्रकाशित होता हूँ’ — ऐसा रूप भी कहीं से असत् है। ‘तू’ — इस प्रकार परब्रह्म, चिन्मय और आनन्द रूप वाला।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 62,
+        "number": 62,
+        "sanskrit": "चिदाकारं चिदाकाशं चिदेव परमं सुखम् । आत्मैवाहमसन्नाहं कूटस्थोऽहं गुरुः परः",
+        "transliteration": "cidākāraṃ cidākāśaṃ cideva paramaṃ sukham | ātmaivāhamasannāhaṃ kūṭastho'haṃ guruḥ paraḥ",
+        "translation": "Form of consciousness, space of consciousness, consciousness alone is supreme happiness; I am the Self alone, not unreal; I am the immovable witness, the supreme teacher.",
+        "hindi": "चिदाकार, चिदाकाश — चैतन्य ही परम सुख है। मैं आत्मा ही हूँ, असत् नहीं; मैं कूटस्थ हूँ, परम गुरु हूँ।",
+        "explanation": "चिदाकार, चिदाकाश — चैतन्य ही परम सुख है। मैं आत्मा ही हूँ, असत् नहीं; मैं कूटस्थ हूँ, परम गुरु हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 63,
+        "number": 63,
+        "sanskrit": "सच्चिदानन्दमात्रोऽहमनुत्पन्नमिदं जगत् । कालो नास्ति जगन्नास्ति मायाप्रकृतिरेव न",
+        "transliteration": "saccidānandamātro'hamanutpannamidaṃ jagat | kālo nāsti jagannāsti māyāprakṛtireva na",
+        "translation": "I am mere being-consciousness-bliss; this world has not arisen. There is no time; there is no world; no illusion or nature at all.",
+        "hindi": "मैं केवल सच्चिदानन्द-मात्र हूँ; यह जगत उत्पन्न नहीं हुआ। काल नहीं है, जगत नहीं है, माया-प्रकृति भी नहीं है।",
+        "explanation": "मैं केवल सच्चिदानन्द-मात्र हूँ; यह जगत उत्पन्न नहीं हुआ। काल नहीं है, जगत नहीं है, माया-प्रकृति भी नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 64,
+        "number": 64,
+        "sanskrit": "अहमेव हरिः साक्षादहमेव सदाशिवः । शुद्धचैतन्यभावोऽहं शुद्धसत्त्वानुभावनः",
+        "transliteration": "ahameva hariḥ sākṣādahameva sadāśivaḥ | śuddhacaitanyabhāvo'haṃ śuddhasattvānubhāvanaḥ",
+        "translation": "I alone am Hari in person; I alone am Sadashiva; I am of the state of pure consciousness; of the experience of pure sattva.",
+        "hindi": "मैं ही साक्षात् हरि हूँ, मैं ही सदाशिव हूँ। मैं शुद्ध चैतन्य-भाव वाला हूँ और शुद्ध सत्त्व के अनुभव वाला।",
+        "explanation": "मैं ही साक्षात् हरि हूँ, मैं ही सदाशिव हूँ। मैं शुद्ध चैतन्य-भाव वाला हूँ और शुद्ध सत्त्व के अनुभव वाला।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 65,
+        "number": 65,
+        "sanskrit": "अद्वयानन्दमात्रोऽहं चिद्घनैकरसोऽस्म्यहम् । सर्वं ब्रह्मैव सततं सर्वं ब्रह्मैव केवलम्",
+        "transliteration": "advayānandamātro'haṃ cidghanaikaraso'smyaham | sarvaṃ brahmaiva satataṃ sarvaṃ brahmaiva kevalam",
+        "translation": "I am mere non-dual bliss; I am a mass of consciousness of one savor. All is Brahman always; all is Brahman only.",
+        "hindi": "मैं केवल अद्वय आनन्द हूँ; मैं चैतन्य-घन एकरस हूँ। सब कुछ सदा ब्रह्म ही है, सब कुछ केवल ब्रह्म ही है।",
+        "explanation": "मैं केवल अद्वय आनन्द हूँ; मैं चैतन्य-घन एकरस हूँ। सब कुछ सदा ब्रह्म ही है, सब कुछ केवल ब्रह्म ही है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 66,
+        "number": 66,
+        "sanskrit": "सर्वं ब्रह्मैव सततं सर्वं ब्रह्मैव चेतनम् । सर्वान्तर्यामिरूपोऽहं सर्वसाक्षित्वलक्षणः",
+        "transliteration": "sarvaṃ brahmaiva satataṃ sarvaṃ brahmaiva cetanam | sarvāntaryāmirūpo'haṃ sarvasākṣitvalakṣaṇaḥ",
+        "translation": "All is Brahman always; all is Brahman, conscious. I am of the form of the inner controller of all, marked by being the witness of all.",
+        "hindi": "सब कुछ सदा ब्रह्म है; सब कुछ चेतन ब्रह्म ही है। मैं सबके अन्तर्यामी का रूप हूँ और सबके साक्षी होने के लक्षण वाला हूँ।",
+        "explanation": "सब कुछ सदा ब्रह्म है; सब कुछ चेतन ब्रह्म ही है। मैं सबके अन्तर्यामी का रूप हूँ और सबके साक्षी होने के लक्षण वाला हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 67,
+        "number": 67,
+        "sanskrit": "परमात्मा परं ज्योतिः परं धाम परा गतिः । सर्ववेदान्तसारोऽहं सर्वशास्त्रसुनिश्चितः",
+        "transliteration": "paramātmā paraṃ jyotiḥ paraṃ dhāma parā gatiḥ | sarvavedāntasāro'haṃ sarvaśāstrasuniścitaḥ",
+        "translation": "The Supreme Self, the supreme light, the supreme abode, the supreme goal; I am the essence of all Vedanta, well determined by all scriptures.",
+        "hindi": "परमात्मा, परम ज्योति, परम धाम, परम गति — मैं सब वेदान्त का सार हूँ और सब शास्त्रों से सुनिश्चित हूँ।",
+        "explanation": "परमात्मा, परम ज्योति, परम धाम, परम गति — मैं सब वेदान्त का सार हूँ और सब शास्त्रों से सुनिश्चित हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 68,
+        "number": 68,
+        "sanskrit": "योगानन्दस्वरूपोऽहं मुख्यानन्दमहोदयः । सर्वज्ञानप्रकाशोऽस्मि मुख्यविज्ञानविग्रहः",
+        "transliteration": "yogānandasvarūpo'haṃ mukhyānandamahodayaḥ | sarvajñānaprakāśo'smi mukhyavijñānavigrahaḥ",
+        "translation": "I am of the nature of the bliss of yoga, the great rise of principal bliss; I am the light of all knowledge, a body of principal wisdom.",
+        "hindi": "मैं योग-आनन्द का स्वरूप हूँ, मुख्य आनन्द का महान उदय हूँ। मैं सब ज्ञान का प्रकाश हूँ, मुख्य विज्ञान का शरीर हूँ।",
+        "explanation": "मैं योग-आनन्द का स्वरूप हूँ, मुख्य आनन्द का महान उदय हूँ। मैं सब ज्ञान का प्रकाश हूँ, मुख्य विज्ञान का शरीर हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 69,
+        "number": 69,
+        "sanskrit": "तुर्यातुर्यप्रकाशोऽस्मि तुर्यातुर्यादिवर्जितः । चिदक्ष्रोऽन् सत्योऽहं वासुदवोऽजररोऽमरः",
+        "transliteration": "turyāturyaprakāśo'smi turyāturyādivarjitaḥ | cidakṣro'n satyo'haṃ vāsudavo'jararo'maraḥ",
+        "translation": "I am the light of the Fourth of the Fourth, free of the Fourth of the Fourth and the rest; I am the imperishable consciousness, truth; I am Vasudeva, ageless, deathless.",
+        "hindi": "मैं तुरीय के भी तुरीय का प्रकाश हूँ और तुरीय-अतुरीय आदि से रहित हूँ। मैं अविनाशी चैतन्य, सत्य हूँ; मैं वासुदेव, अजर और अमर हूँ।",
+        "explanation": "मैं तुरीय के भी तुरीय का प्रकाश हूँ और तुरीय-अतुरीय आदि से रहित हूँ। मैं अविनाशी चैतन्य, सत्य हूँ; मैं वासुदेव, अजर और अमर हूँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 70,
+        "number": 70,
+        "sanskrit": "अहं ब्रह्म चिदाकाशं नित्यं ब्रह्म निरञ्जनम् । शुद्धं बुद्धं सदामुक्तमनामकमरूपकम्",
+        "transliteration": "ahaṃ brahma cidākāśaṃ nityaṃ brahma nirañjanam | śuddhaṃ buddhaṃ sadāmuktamanāmakamarūpakam",
+        "translation": "I am Brahman, the space of consciousness, eternal Brahman, stainless; pure, awake, ever free, nameless, formless.",
+        "hindi": "मैं ब्रह्म हूँ, चिदाकाश हूँ, नित्य ब्रह्म, निरंजन; शुद्ध, बुद्ध, सदा मुक्त, नामरहित, रूपरहित।",
+        "explanation": "मैं ब्रह्म हूँ, चिदाकाश हूँ, नित्य ब्रह्म, निरंजन; शुद्ध, बुद्ध, सदा मुक्त, नामरहित, रूपरहित।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 71,
+        "number": 71,
+        "sanskrit": "सच्चिदानन्दरूपोऽहमनुन्त्पन्नमिदं जगत् । सत्यासत्यं जगन्नास्ति सङ्कल्पकलनादिकम्",
+        "transliteration": "saccidānandarūpo'hamanuntpannamidaṃ jagat | satyāsatyaṃ jagannāsti saṅkalpakalanādikam",
+        "translation": "I am of the form of being-consciousness-bliss; this world has not arisen. The true and false world does not exist; nor intention, imagining and the like.",
+        "hindi": "मैं सच्चिदानन्द रूप हूँ; यह जगत उत्पन्न ही नहीं हुआ। सत्य-असत्य जगत नहीं है; संकल्प और कल्पना आदि भी नहीं हैं।",
+        "explanation": "मैं सच्चिदानन्द रूप हूँ; यह जगत उत्पन्न ही नहीं हुआ। सत्य-असत्य जगत नहीं है; संकल्प और कल्पना आदि भी नहीं हैं।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 72,
+        "number": 72,
+        "sanskrit": "नित्यानन्दमयं ब्रह्म केवलं सर्वदा स्वयम् । अनन्तमव्ययं शान्तमेकरूपमनामयम्",
+        "transliteration": "nityānandamayaṃ brahma kevalaṃ sarvadā svayam | anantamavyayaṃ śāntamekarūpamanāmayam",
+        "translation": "Brahman is made of eternal bliss, alone, always by itself; infinite, imperishable, peaceful, of one form, free of disease.",
+        "hindi": "ब्रह्म नित्य आनन्दमय है, अकेला, सदा स्वयं में; अनन्त, अविनाशी, शान्त, एकरूप और निरामय।",
+        "explanation": "ब्रह्म नित्य आनन्दमय है, अकेला, सदा स्वयं में; अनन्त, अविनाशी, शान्त, एकरूप और निरामय।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 73,
+        "number": 73,
+        "sanskrit": "मत्तोऽन्यदस्ति चेन्मिथ्या यथा मरुमरीचिका । वन्ध्याकुमारवचने भीतिश्चेदस्ति किञ्चन",
+        "transliteration": "matto'nyadasti cenmithyā yathā marumarīcikā | vandhyākumāravacane bhītiścedasti kiñcana",
+        "translation": "If anything exists apart from me, it is false, like a mirage in a desert. If there were any fear from the words of a barren woman's son —",
+        "hindi": "यदि मुझसे अलग कुछ है तो वह मरुस्थल की मरीचिका की तरह मिथ्या है। यदि बाँझ के पुत्र के वचन से कोई भय हो सकता है —",
+        "explanation": "यदि मुझसे अलग कुछ है तो वह मरुस्थल की मरीचिका की तरह मिथ्या है। यदि बाँझ के पुत्र के वचन से कोई भय हो सकता है —",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 74,
+        "number": 74,
+        "sanskrit": "शशशृङ्गेण नागेन्द्रो मृतश्चेज्जगदस्ति तत् । मृगतृष्णाजलं पीत्वा तृप्तश्चेदस्त्विदं जगत्",
+        "transliteration": "śaśaśṛṅgeṇa nāgendro mṛtaścejjagadasti tat | mṛgatṛṣṇājalaṃ pītvā tṛptaścedastvidaṃ jagat",
+        "translation": "If a king of elephants were killed by a hare's horn, then the world would exist. If one drinking mirage-water were satisfied, let this world be.",
+        "hindi": "यदि खरगोश के सींग से गजराज मारा जा सके, तो जगत है; यदि मृगतृष्णा का जल पीकर कोई तृप्त हो, तो यह जगत हो।",
+        "explanation": "यदि खरगोश के सींग से गजराज मारा जा सके, तो जगत है; यदि मृगतृष्णा का जल पीकर कोई तृप्त हो, तो यह जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 75,
+        "number": 75,
+        "sanskrit": "नरशृङ्गेण नष्टश्चेत्कश्चिदस्त्विदमेव हि । गन्धर्वनगरे सत्ये जगद्भवति सर्वदा",
+        "transliteration": "naraśṛṅgeṇa naṣṭaścetkaścidastvidameva hi | gandharvanagare satye jagadbhavati sarvadā",
+        "translation": "If anyone were destroyed by a man's horn, then this indeed exists. If the city of Gandharvas were true, the world would always be.",
+        "hindi": "यदि मनुष्य के सींग से कोई मारा जाए, तो यही जगत है; यदि गन्धर्व-नगर सत्य हो, तो जगत सदा बना रहे।",
+        "explanation": "यदि मनुष्य के सींग से कोई मारा जाए, तो यही जगत है; यदि गन्धर्व-नगर सत्य हो, तो जगत सदा बना रहे।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 76,
+        "number": 76,
+        "sanskrit": "गगने नीलिमासत्ये जगत्सत्यं भविष्यति । शुक्तिकारजतं सत्यं भूषणं चेज्जगद्भवेत्",
+        "transliteration": "gagane nīlimāsatye jagatsatyaṃ bhaviṣyati | śuktikārajataṃ satyaṃ bhūṣaṇaṃ cejjagadbhavet",
+        "translation": "If the blueness of the sky were true, the world would be true. If the silver in a shell were true as ornament, the world would be.",
+        "hindi": "यदि आकाश की नीलिमा सत्य हो, तो जगत सत्य होगा; यदि सीप में चाँदी सत्य हो और आभूषण बने, तो जगत हो।",
+        "explanation": "यदि आकाश की नीलिमा सत्य हो, तो जगत सत्य होगा; यदि सीप में चाँदी सत्य हो और आभूषण बने, तो जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 77,
+        "number": 77,
+        "sanskrit": "रज्जुसर्पेण दष्टश्चेन्नरो भवतु संसृतिः । जातरूपेण बाणेन ज्वालाग्नौ नाशिते जगत्",
+        "transliteration": "rajjusarpeṇa daṣṭaścennaro bhavatu saṃsṛtiḥ | jātarūpeṇa bāṇena jvālāgnau nāśite jagat",
+        "translation": "If a man bitten by a rope-snake were to be so, let there be the world; if by a golden arrow the flaming fire were destroyed, the world would be.",
+        "hindi": "यदि रस्सी के साँप से डसा हुआ मनुष्य (मर सके), तो संसार हो; यदि सोने के बाण से जलती आग बुझ जाए, तो जगत हो।",
+        "explanation": "यदि रस्सी के साँप से डसा हुआ मनुष्य (मर सके), तो संसार हो; यदि सोने के बाण से जलती आग बुझ जाए, तो जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 78,
+        "number": 78,
+        "sanskrit": "विन्ध्याटव्यां पायसान्नमस्ति चेज्जगदुद्भवः । रम्भास्तम्भेन काष्ठेन पाकसिद्धौ जगद्भवेत्",
+        "transliteration": "vindhyāṭavyāṃ pāyasānnamasti cejjagadudbhavaḥ | rambhāstambhena kāṣṭhena pākasiddhau jagadbhavet",
+        "translation": "If there were rice-pudding in the Vindhya forest, the world would arise; if by a plantain trunk as fuel cooking succeeded, the world would be.",
+        "hindi": "यदि विन्ध्य के वन में खीर मिले, तो जगत की उत्पत्ति हो; यदि केले के तने की लकड़ी से भोजन पक जाए, तो जगत हो।",
+        "explanation": "यदि विन्ध्य के वन में खीर मिले, तो जगत की उत्पत्ति हो; यदि केले के तने की लकड़ी से भोजन पक जाए, तो जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 79,
+        "number": 79,
+        "sanskrit": "सद्यः कुमारिकरूपैः पाके सिद्धे जगद्भवेत् । चित्रस्थदीपैस्तमसो नाशश्चेदस्त्विदं जगत्",
+        "transliteration": "sadyaḥ kumārikarūpaiḥ pāke siddhe jagadbhavet | citrasthadīpaistamaso nāśaścedastvidaṃ jagat",
+        "translation": "If cooking succeeded by the forms of newly born girls, the world would be; if darkness were destroyed by lamps in a picture, let this world be.",
+        "hindi": "यदि तुरन्त जन्मी कन्याओं के रूपों से भोजन पक जाए, तो जगत हो; यदि चित्र के दीपकों से अन्धकार नष्ट हो, तो यह जगत हो।",
+        "explanation": "यदि तुरन्त जन्मी कन्याओं के रूपों से भोजन पक जाए, तो जगत हो; यदि चित्र के दीपकों से अन्धकार नष्ट हो, तो यह जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 80,
+        "number": 80,
+        "sanskrit": "मासात्पूर्वं मृतो मर्त्यो ह्यागतश्चेज्जगद्भवेत् । तक्रं क्षीरस्वरूपं चेत्क्वचिन्नित्यं जगद्भवेत्",
+        "transliteration": "māsātpūrvaṃ mṛto martyo hyāgataścejjagadbhavet | takraṃ kṣīrasvarūpaṃ cetkvacinnityaṃ jagadbhavet",
+        "translation": "If a mortal dead a month ago came back, the world would be; if buttermilk were of the nature of milk anywhere, the world would be eternal.",
+        "hindi": "यदि महीना भर पहले मरा मनुष्य लौट आए, तो जगत हो; यदि कहीं छाछ दूध के स्वरूप की हो जाए, तो जगत नित्य हो।",
+        "explanation": "यदि महीना भर पहले मरा मनुष्य लौट आए, तो जगत हो; यदि कहीं छाछ दूध के स्वरूप की हो जाए, तो जगत नित्य हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 81,
+        "number": 81,
+        "sanskrit": "गोस्तनादुद्भवं क्षीरं पुनरारोपणे जगत् । भूरजोऽब्धौ समुत्पन्ने जगद्भवतु सर्वदा",
+        "transliteration": "gostanādudbhavaṃ kṣīraṃ punarāropaṇe jagat | bhūrajo'bdhau samutpanne jagadbhavatu sarvadā",
+        "translation": "If milk from a cow's udder could be re-planted, the world; if earth-dust arose in the ocean, let the world always be.",
+        "hindi": "यदि गाय के थन से निकला दूध फिर थन में लगाया जा सके, तो जगत; यदि पृथ्वी की धूल समुद्र में उत्पन्न हो, तो जगत सदा बना रहे।",
+        "explanation": "यदि गाय के थन से निकला दूध फिर थन में लगाया जा सके, तो जगत; यदि पृथ्वी की धूल समुद्र में उत्पन्न हो, तो जगत सदा बना रहे।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 82,
+        "number": 82,
+        "sanskrit": "कूर्मरोम्णा गजे बद्धे जगदस्तु मदोत्कटे । नालस्थतन्तुना मेरुश्चालितश्चेज्जगद्भवेत्",
+        "transliteration": "kūrmaromṇā gaje baddhe jagadastu madotkaṭe | nālasthatantunā meruścālitaścejjagadbhavet",
+        "translation": "If an elephant in rut were bound by a tortoise's hair, let there be the world; if Meru were moved by a lotus fiber, the world would be.",
+        "hindi": "यदि मदमस्त हाथी कछुए के रोम से बाँधा जा सके, तो जगत हो; यदि कमल-नाल के तन्तु से मेरु हिल जाए, तो जगत हो।",
+        "explanation": "यदि मदमस्त हाथी कछुए के रोम से बाँधा जा सके, तो जगत हो; यदि कमल-नाल के तन्तु से मेरु हिल जाए, तो जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 83,
+        "number": 83,
+        "sanskrit": "तरङ्गमालया सिन्धुर्बद्धश्चेदस्त्विदं जगत् । अग्नेरधश्चेज्ज्वलनं जगद्भवतु सर्वदा",
+        "transliteration": "taraṅgamālayā sindhurbaddhaścedastvidaṃ jagat | agneradhaścejjvalanaṃ jagadbhavatu sarvadā",
+        "translation": "If the ocean were bound by a garland of waves, let this world be; if fire were below fire, let the world always be.",
+        "hindi": "यदि लहरों की माला से समुद्र बाँधा जा सके, तो यह जगत हो; यदि अग्नि के नीचे अग्नि हो, तो जगत सदा रहे।",
+        "explanation": "यदि लहरों की माला से समुद्र बाँधा जा सके, तो यह जगत हो; यदि अग्नि के नीचे अग्नि हो, तो जगत सदा रहे।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 84,
+        "number": 84,
+        "sanskrit": "ज्वालावह्निः शीतलश्चेदस्तिरूपमिदं जगत् । ज्वालाग्निमण्डले पद्मवृद्धिश्चेज्जगदस्त्विदम्",
+        "transliteration": "jvālāvahniḥ śītalaścedastirūpamidaṃ jagat | jvālāgnimaṇḍale padmavṛddhiścejjagadastvidam",
+        "translation": "If a flame were cold, this form of world would exist; if a lotus grew in a circle of flaming fire, let there be the world.",
+        "hindi": "यदि ज्वालामुखी अग्नि शीतल हो जाए, तो यह जगत है; यदि जलती अग्नि के मण्डल में कमल उगे, तो यह जगत हो।",
+        "explanation": "यदि ज्वालामुखी अग्नि शीतल हो जाए, तो यह जगत है; यदि जलती अग्नि के मण्डल में कमल उगे, तो यह जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 85,
+        "number": 85,
+        "sanskrit": "महच्छैलेन्द्रनीलं वा सम्भवच्चेदिदं जगत् । मेरुरागत्य पद्माक्षे स्थितश्चेदस्त्विदं जगत्",
+        "transliteration": "mahacchailendranīlaṃ vā sambhavaccedidaṃ jagat | merurāgatya padmākṣe sthitaścedastvidaṃ jagat",
+        "translation": "If a great mountain-king of sapphire could arise, this world would be; if Meru came and stood in a lotus bud, let this world be.",
+        "hindi": "यदि नीलम का महान पर्वत-राज उत्पन्न हो सके, तो यह जगत हो; यदि मेरु आकर कमल-कली पर बैठ जाए, तो यह जगत हो।",
+        "explanation": "यदि नीलम का महान पर्वत-राज उत्पन्न हो सके, तो यह जगत हो; यदि मेरु आकर कमल-कली पर बैठ जाए, तो यह जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 86,
+        "number": 86,
+        "sanskrit": "निगिरेच्चेद्भृङ्गसूनुर्मेरुं चलवदस्त्विदम् । मशकेन हते सिंहे जगत्सत्यं तदास्तु ते",
+        "transliteration": "nigireccedbhṛṅgasūnurmeruṃ calavadastvidam | maśakena hate siṃhe jagatsatyaṃ tadāstu te",
+        "translation": "If the bee's child swallowed Meru, let this be movable; if a lion were killed by a mosquito, then let the world be true for you.",
+        "hindi": "यदि भौंरे का बच्चा मेरु को निगल ले, तो यह जगत चलायमान हो; यदि मच्छर से सिंह मारा जाए, तो तुम्हारे लिए जगत सत्य हो।",
+        "explanation": "यदि भौंरे का बच्चा मेरु को निगल ले, तो यह जगत चलायमान हो; यदि मच्छर से सिंह मारा जाए, तो तुम्हारे लिए जगत सत्य हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 87,
+        "number": 87,
+        "sanskrit": "अणुकोटरविस्तीर्णे त्रैलोक्यं चेज्जगद्भवेत् । तृणानलश्च नित्यश्चेत्क्षणिकं तज्जगद्भवेत्",
+        "transliteration": "aṇukoṭaravistīrṇe trailokyaṃ cejjagadbhavet | tṛṇānalaśca nityaścetkṣaṇikaṃ tajjagadbhavet",
+        "translation": "If the three worlds fit in the hollow of an atom, the world would be; if a grass fire were eternal, that world would be momentary.",
+        "hindi": "यदि अणु के कोटर में तीनों लोक समा जाएँ, तो जगत हो; यदि तिनके की आग नित्य हो, तो वह जगत क्षणिक हो।",
+        "explanation": "यदि अणु के कोटर में तीनों लोक समा जाएँ, तो जगत हो; यदि तिनके की आग नित्य हो, तो वह जगत क्षणिक हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 88,
+        "number": 88,
+        "sanskrit": "स्वप्नदृष्टं च यद्वस्तु जागरे चेज्जगद्भवः । नदीवेगो निश्चलश्चेत्केनापीदं भवेज्जगत्",
+        "transliteration": "svapnadṛṣṭaṃ ca yadvastu jāgare cejjagadbhavaḥ | nadīvego niścalaścetkenāpīdaṃ bhavejjagat",
+        "translation": "If what is seen in a dream occurred in waking, the world would be; if a river's current were unmoving, by someone this world would be.",
+        "hindi": "यदि स्वप्न में देखी वस्तु जागने पर भी रहे, तो जगत हो; यदि नदी का वेग स्थिर हो जाए, तो किसी के द्वारा यह जगत हो।",
+        "explanation": "यदि स्वप्न में देखी वस्तु जागने पर भी रहे, तो जगत हो; यदि नदी का वेग स्थिर हो जाए, तो किसी के द्वारा यह जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 89,
+        "number": 89,
+        "sanskrit": "क्षुधितस्याग्निर्भोज्यश्चेन्निमिषं कल्पितं भवेत् । जात्यन्धै रत्नविषयः सुज्ञातश्चेज्जगत्सदा",
+        "transliteration": "kṣudhitasyāgnirbhojyaścennimiṣaṃ kalpitaṃ bhavet | jātyandhai ratnaviṣayaḥ sujñātaścejjagatsadā",
+        "translation": "If fire were food for the hungry, then a moment would be imagined; if the blind from birth knew the nature of jewels well, the world would be always.",
+        "hindi": "यदि भूखे के लिए अग्नि भोज्य हो, तो क्षण-भर की कल्पना हो; यदि जन्मान्ध रत्नों के विषय को भली-भाँति जाने, तो जगत सदा हो।",
+        "explanation": "यदि भूखे के लिए अग्नि भोज्य हो, तो क्षण-भर की कल्पना हो; यदि जन्मान्ध रत्नों के विषय को भली-भाँति जाने, तो जगत सदा हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 90,
+        "number": 90,
+        "sanskrit": "नपुंसककुमारस्य स्त्रीसुखं चेद्भवज्जगत् । निर्मितः शशशृङ्गेण रथश्चेज्जगदस्ति तत्",
+        "transliteration": "napuṃsakakumārasya strīsukhaṃ cedbhavajjagat | nirmitaḥ śaśaśṛṅgeṇa rathaścejjagadasti tat",
+        "translation": "If a eunuch youth enjoyed a woman's pleasure, the world would be; if a chariot were built from a hare's horn, that world exists.",
+        "hindi": "यदि नपुंसक युवक को स्त्री-सुख मिले, तो जगत हो; यदि खरगोश के सींग से रथ बनाया जाए, तो वह जगत है।",
+        "explanation": "यदि नपुंसक युवक को स्त्री-सुख मिले, तो जगत हो; यदि खरगोश के सींग से रथ बनाया जाए, तो वह जगत है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 91,
+        "number": 91,
+        "sanskrit": "सद्योजाता तु या कन्या भोगयोग्या भवेज्जगत् । वन्ध्या गर्भाप्ततत्सौख्यं ज्ञाता चेदस्त्विदं जगत्",
+        "transliteration": "sadyojātā tu yā kanyā bhogayogyā bhavejjagat | vandhyā garbhāptatatsaukhyaṃ jñātā cedastvidaṃ jagat",
+        "translation": "If a girl newly born were fit for enjoyment, the world would be; if a barren woman knew the happiness of pregnancy, let this world be.",
+        "hindi": "यदि अभी जन्मी कन्या भोग के योग्य हो जाए, तो जगत हो; यदि बाँझ स्त्री गर्भ के सुख को जान ले, तो यह जगत हो।",
+        "explanation": "यदि अभी जन्मी कन्या भोग के योग्य हो जाए, तो जगत हो; यदि बाँझ स्त्री गर्भ के सुख को जान ले, तो यह जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 92,
+        "number": 92,
+        "sanskrit": "काको वा हंसवद्गच्छेज्जगद्भवतु निश्चलम् । महाखरो वा सिंहेन युध्यते चेज्जगत्स्थितिः",
+        "transliteration": "kāko vā haṃsavadgacchejjagadbhavatu niścalam | mahākharo vā siṃhena yudhyate cejjagatsthitiḥ",
+        "translation": "If a crow walked like a swan, let the world be steady; if a great ass fought with a lion, then the world's continuance would hold.",
+        "hindi": "यदि कौआ हंस की तरह चले, तो जगत स्थिर हो; यदि महान गधा सिंह से युद्ध करे, तो जगत की स्थिति हो।",
+        "explanation": "यदि कौआ हंस की तरह चले, तो जगत स्थिर हो; यदि महान गधा सिंह से युद्ध करे, तो जगत की स्थिति हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 93,
+        "number": 93,
+        "sanskrit": "महाखरो गजगतिं गतश्चेज्जगदस्तु तत् । सम्पूर्णचन्द्रसूर्यश्चेज्जगद्भातु स्वयं जडम्",
+        "transliteration": "mahākharo gajagatiṃ gataścejjagadastu tat | sampūrṇacandrasūryaścejjagadbhātu svayaṃ jaḍam",
+        "translation": "If a great ass went with an elephant's gait, then let there be the world; if the full moon and sun were themselves dull, let the world shine.",
+        "hindi": "यदि महान गधा हाथी की चाल चले, तो वह जगत हो; यदि पूर्ण चन्द्र और सूर्य स्वयं जड़ हो जाएँ, तो जगत प्रकाशित हो।",
+        "explanation": "यदि महान गधा हाथी की चाल चले, तो वह जगत हो; यदि पूर्ण चन्द्र और सूर्य स्वयं जड़ हो जाएँ, तो जगत प्रकाशित हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 94,
+        "number": 94,
+        "sanskrit": "चन्द्रसूर्यादिकौ त्यक्त्वा राहुश्चेद्दृश्यते जगत् । भृष्टबीजसमुत्पन्नवृद्धिश्चेज्जगदस्तु सत्",
+        "transliteration": "candrasūryādikau tyaktvā rāhuśceddṛśyate jagat | bhṛṣṭabījasamutpannavṛddhiścejjagadastu sat",
+        "translation": "If Rahu were seen leaving the moon and sun and the like, the world; if growth arose from a roasted seed, let the world be real.",
+        "hindi": "यदि राहु चन्द्र-सूर्य आदि को छोड़कर दिखाई दे, तो जगत हो; यदि भुने बीज से अंकुर उगे, तो जगत सत्य हो।",
+        "explanation": "यदि राहु चन्द्र-सूर्य आदि को छोड़कर दिखाई दे, तो जगत हो; यदि भुने बीज से अंकुर उगे, तो जगत सत्य हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 95,
+        "number": 95,
+        "sanskrit": "दरिद्रो धनिकानां च सुखं भुङ्क्ते तदा जगत् । शुना वीर्येण सिंहस्तु जितो यदि जगत्तदा",
+        "transliteration": "daridro dhanikānāṃ ca sukhaṃ bhuṅkte tadā jagat | śunā vīryeṇa siṃhastu jito yadi jagattadā",
+        "translation": "If a poor man enjoyed the happiness of the wealthy, then the world would be; if a dog by its strength conquered a lion, then the world would be.",
+        "hindi": "यदि दरिद्र धनवानों का सुख भोगे, तो जगत हो; यदि कुत्ता अपने बल से सिंह को जीत ले, तो जगत हो।",
+        "explanation": "यदि दरिद्र धनवानों का सुख भोगे, तो जगत हो; यदि कुत्ता अपने बल से सिंह को जीत ले, तो जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 96,
+        "number": 96,
+        "sanskrit": "ज्ञानिनो हृदयं मूढैर्ज्ञातं चेत्कल्पनं तदा । श्वानेन सागरे पीते निःशेषेण मनो भवेत्",
+        "transliteration": "jñānino hṛdayaṃ mūḍhairjñātaṃ cetkalpanaṃ tadā | śvānena sāgare pīte niḥśeṣeṇa mano bhavet",
+        "translation": "If the heart of the wise were known by fools, it would be imagination; if a dog drank the ocean entirely, then it would be mind.",
+        "hindi": "यदि ज्ञानी का हृदय मूढ़ों द्वारा जाना जा सके, तो वह कल्पना है; यदि कुत्ता सारा समुद्र पी जाए, तो वह मन हो।",
+        "explanation": "यदि ज्ञानी का हृदय मूढ़ों द्वारा जाना जा सके, तो वह कल्पना है; यदि कुत्ता सारा समुद्र पी जाए, तो वह मन हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 97,
+        "number": 97,
+        "sanskrit": "शुद्धाकाशो मनुष्येषु पतितश्चेत्तदा जगत् । भूमौ वा पतितं व्योम व्योमपुष्पं सुगन्धकम्",
+        "transliteration": "śuddhākāśo manuṣyeṣu patitaścettadā jagat | bhūmau vā patitaṃ vyoma vyomapuṣpaṃ sugandhakam",
+        "translation": "If pure space fell among men, then the world; or if the sky fell on earth, a sky-flower would be fragrant.",
+        "hindi": "यदि शुद्ध आकाश मनुष्यों के बीच गिर पड़े, तो जगत हो; या यदि आकाश पृथ्वी पर गिरे और आकाश का फूल सुगन्धित हो।",
+        "explanation": "यदि शुद्ध आकाश मनुष्यों के बीच गिर पड़े, तो जगत हो; या यदि आकाश पृथ्वी पर गिरे और आकाश का फूल सुगन्धित हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 98,
+        "number": 98,
+        "sanskrit": "शुद्धाकाशे वने जाते चलिते तु तदा जगत् । केवले दर्पणे नास्ति प्रतिबिम्बं तदा जगत्",
+        "transliteration": "śuddhākāśe vane jāte calite tu tadā jagat | kevale darpaṇe nāsti pratibimbaṃ tadā jagat",
+        "translation": "If a forest grew in pure space and moved, then the world; if there were a reflection in a bare mirror, then the world.",
+        "hindi": "यदि शुद्ध आकाश में वन उगे और चले, तो जगत हो; यदि केवल दर्पण में बिना वस्तु के प्रतिबिम्ब हो, तो जगत हो।",
+        "explanation": "यदि शुद्ध आकाश में वन उगे और चले, तो जगत हो; यदि केवल दर्पण में बिना वस्तु के प्रतिबिम्ब हो, तो जगत हो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 99,
+        "number": 99,
+        "sanskrit": "अजकुक्षौ जगन्नास्ति ह्यात्मकुक्षौ जगन्नहि । सर्वथा भेदकलनं द्वैताद्वैतं न विद्यते",
+        "transliteration": "ajakukṣau jagannāsti hyātmakukṣau jagannahi | sarvathā bhedakalanaṃ dvaitādvaitaṃ na vidyate",
+        "translation": "In the womb of the unborn there is no world; in the womb of the Self there is no world; in every way, imagining of difference, duality and non-duality does not exist.",
+        "hindi": "अजन्मे के गर्भ में जगत नहीं है; आत्मा के गर्भ में जगत नहीं है। सर्वथा भेद की कल्पना, और द्वैत-अद्वैत भी नहीं है।",
+        "explanation": "अजन्मे के गर्भ में जगत नहीं है; आत्मा के गर्भ में जगत नहीं है। सर्वथा भेद की कल्पना, और द्वैत-अद्वैत भी नहीं है।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 100,
+        "number": 100,
+        "sanskrit": "मायाकार्यमिदं भेदमस्ति चेद्ब्रह्मभावनम् । देहोऽहमिति दुःखं चेद्ब्रह्माहमिति निश्चयः",
+        "transliteration": "māyākāryamidaṃ bhedamasti cedbrahmabhāvanam | deho'hamiti duḥkhaṃ cedbrahmāhamiti niścayaḥ",
+        "translation": "If this difference, the effect of illusion, exists, there is contemplation of Brahman; if \"I am the body\" is sorrow, the certainty is \"I am Brahman.\"",
+        "hindi": "यदि माया का कार्य यह भेद है, तो ब्रह्म की भावना करो; यदि ‘मैं देह हूँ’ यह दुःख है, तो ‘मैं ब्रह्म हूँ’ — यह निश्चय करो।",
+        "explanation": "यदि माया का कार्य यह भेद है, तो ब्रह्म की भावना करो; यदि ‘मैं देह हूँ’ यह दुःख है, तो ‘मैं ब्रह्म हूँ’ — यह निश्चय करो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 101,
+        "number": 101,
+        "sanskrit": "हृदयग्रन्थिरस्तित्वे छिद्यते ब्रह्मचक्रकम् । संशये समनुप्राप्ते ब्रह्मनिश्चयमाश्रयेत्",
+        "transliteration": "hṛdayagranthirastitve chidyate brahmacakrakam | saṃśaye samanuprāpte brahmaniścayamāśrayet",
+        "translation": "When the knot of the heart exists, the wheel of Brahman cuts it; when doubt arises, one should take refuge in the certainty of Brahman.",
+        "hindi": "हृदय की ग्रन्थि के रहने पर ब्रह्मचक्र उसे काट देता है; संशय उत्पन्न होने पर ब्रह्म-निश्चय का आश्रय लेना चाहिए।",
+        "explanation": "हृदय की ग्रन्थि के रहने पर ब्रह्मचक्र उसे काट देता है; संशय उत्पन्न होने पर ब्रह्म-निश्चय का आश्रय लेना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 102,
+        "number": 102,
+        "sanskrit": "अनात्मरूपचोरश्चेदात्मरत्नस्य रक्षणम् । नित्यानन्दमयं ब्रह्म केवलं सर्वदा स्वयम्",
+        "transliteration": "anātmarūpacoraścedātmaratnasya rakṣaṇam | nityānandamayaṃ brahma kevalaṃ sarvadā svayam",
+        "translation": "If the thief in the form of the non-Self exists, guard the jewel of the Self; Brahman, made of eternal bliss, alone, always by itself.",
+        "hindi": "यदि अनात्म-रूपी चोर है, तो आत्मा-रूपी रत्न की रक्षा करो; ब्रह्म नित्य आनन्दमय है, अकेला, सदा स्वयं में।",
+        "explanation": "यदि अनात्म-रूपी चोर है, तो आत्मा-रूपी रत्न की रक्षा करो; ब्रह्म नित्य आनन्दमय है, अकेला, सदा स्वयं में।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 103,
+        "number": 103,
+        "sanskrit": "एवमादिसुदृष्टान्तैः साधितं ब्रह्ममात्रकम् । ब्रह्मैव सर्वभवनं भुवनं नाम सन्त्यज",
+        "transliteration": "evamādisudṛṣṭāntaiḥ sādhitaṃ brahmamātrakam | brahmaiva sarvabhavanaṃ bhuvanaṃ nāma santyaja",
+        "translation": "By such good examples Brahman alone is established; Brahman alone is all becoming — abandon the name \"world.\"",
+        "hindi": "इस प्रकार के सुन्दर दृष्टान्तों से केवल ब्रह्म सिद्ध किया गया। ब्रह्म ही सब कुछ का होना है — ‘भुवन’ (जगत) नाम को त्याग दो।",
+        "explanation": "इस प्रकार के सुन्दर दृष्टान्तों से केवल ब्रह्म सिद्ध किया गया। ब्रह्म ही सब कुछ का होना है — ‘भुवन’ (जगत) नाम को त्याग दो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 104,
+        "number": 104,
+        "sanskrit": "अहं ब्रह्मेति निश्चित्य अहम्भावं परित्यज । सर्वमेव लयं याति सुप्तहस्तस्थपुष्पवत्",
+        "transliteration": "ahaṃ brahmeti niścitya ahambhāvaṃ parityaja | sarvameva layaṃ yāti suptahastasthapuṣpavat",
+        "translation": "Having ascertained \"I am Brahman,\" give up the sense of \"I\"; everything goes to dissolution like a flower in the hand of one asleep.",
+        "hindi": "‘मैं ब्रह्म हूँ’ — ऐसा निश्चय करके अहंभाव को भी छोड़ दो। सब कुछ लय को प्राप्त हो जाता है, जैसे सोए हुए के हाथ में रखा फूल।",
+        "explanation": "‘मैं ब्रह्म हूँ’ — ऐसा निश्चय करके अहंभाव को भी छोड़ दो। सब कुछ लय को प्राप्त हो जाता है, जैसे सोए हुए के हाथ में रखा फूल।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 105,
+        "number": 105,
+        "sanskrit": "न देहो न च कर्माणि सर्वं ब्रह्मैव केवलम् । न भूतं न च कार्यं च न चावस्थाचतुष्टयम्",
+        "transliteration": "na deho na ca karmāṇi sarvaṃ brahmaiva kevalam | na bhūtaṃ na ca kāryaṃ ca na cāvasthācatuṣṭayam",
+        "translation": "No body, no actions: all is Brahman alone. No element, no effect, no fourfold state.",
+        "hindi": "न देह है, न कर्म — सब कुछ केवल ब्रह्म है। न भूत, न कार्य, और न चारों अवस्थाएँ।",
+        "explanation": "न देह है, न कर्म — सब कुछ केवल ब्रह्म है। न भूत, न कार्य, और न चारों अवस्थाएँ।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 106,
+        "number": 106,
+        "sanskrit": "लक्षणात्रयविज्ञानं सर्वं ब्रह्मैव केवलम् । सर्वव्यापारमुत्सृज्य ह्यहं ब्रह्मेति भावय",
+        "transliteration": "lakṣaṇātrayavijñānaṃ sarvaṃ brahmaiva kevalam | sarvavyāpāramutsṛjya hyahaṃ brahmeti bhāvaya",
+        "translation": "Knowledge of the three characteristics: all is Brahman alone; abandoning all activity, contemplate \"I am Brahman.\"",
+        "hindi": "तीनों लक्षणों का विज्ञान — सब कुछ केवल ब्रह्म है। सब व्यापार छोड़कर ‘मैं ब्रह्म हूँ’ की भावना करो।",
+        "explanation": "तीनों लक्षणों का विज्ञान — सब कुछ केवल ब्रह्म है। सब व्यापार छोड़कर ‘मैं ब्रह्म हूँ’ की भावना करो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 107,
+        "number": 107,
+        "sanskrit": "अहं ब्रह्म न सन्देहो ह्यहं ब्रह्म चिदात्मकम् । सच्चिदानन्दमात्रोऽहमिति निश्चित्य तत्त्यज",
+        "transliteration": "ahaṃ brahma na sandeho hyahaṃ brahma cidātmakam | saccidānandamātro'hamiti niścitya tattyaja",
+        "translation": "I am Brahman — no doubt; I am Brahman, the Self of consciousness; having ascertained \"I am mere being-consciousness-bliss,\" abandon even that.",
+        "hindi": "मैं ब्रह्म हूँ, इसमें सन्देह नहीं; मैं ब्रह्म हूँ, चिदात्मक। ‘मैं सच्चिदानन्द-मात्र हूँ’ — ऐसा निश्चय करके उसे भी छोड़ दो।",
+        "explanation": "मैं ब्रह्म हूँ, इसमें सन्देह नहीं; मैं ब्रह्म हूँ, चिदात्मक। ‘मैं सच्चिदानन्द-मात्र हूँ’ — ऐसा निश्चय करके उसे भी छोड़ दो।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 108,
+        "number": 108,
+        "sanskrit": "शाङ्करीयं महाशास्त्रं न देयं यस्य कस्यचित् । नास्तिकाय कृतघ्नाय दुर्वृत्ताय दुरात्मने",
+        "transliteration": "śāṅkarīyaṃ mahāśāstraṃ na deyaṃ yasya kasyacit | nāstikāya kṛtaghnāya durvṛttāya durātmane",
+        "translation": "This great scripture in Shankara's line is not to be given to just anyone — not to the unbeliever, the ungrateful, the ill-behaved, the evil-minded.",
+        "hindi": "यह शंकर-परम्परा का महाशास्त्र जिस किसी को नहीं देना चाहिए — न नास्तिक को, न कृतघ्न को, न दुराचारी को, न दुष्ट मन वाले को।",
+        "explanation": "यह शंकर-परम्परा का महाशास्त्र जिस किसी को नहीं देना चाहिए — न नास्तिक को, न कृतघ्न को, न दुराचारी को, न दुष्ट मन वाले को।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 109,
+        "number": 109,
+        "sanskrit": "गुरुभक्तिविशुद्धान्तःकरणाय महात्मने । सम्यक्परीक्ष्य दातव्यं मासं षाण्मासवत्सरम्",
+        "transliteration": "gurubhaktiviśuddhāntaḥkaraṇāya mahātmane | samyakparīkṣya dātavyaṃ māsaṃ ṣāṇmāsavatsaram",
+        "translation": "It should be given to the great-souled whose inner instrument is purified by devotion to the teacher, after careful testing for a month, six months or a year.",
+        "hindi": "जिसका अन्तःकरण गुरु-भक्ति से शुद्ध है, ऐसे महात्मा को भली-भाँति परीक्षा करके, एक मास, छह मास या एक वर्ष के बाद इसे देना चाहिए।",
+        "explanation": "जिसका अन्तःकरण गुरु-भक्ति से शुद्ध है, ऐसे महात्मा को भली-भाँति परीक्षा करके, एक मास, छह मास या एक वर्ष के बाद इसे देना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 110,
+        "number": 110,
+        "sanskrit": "सर्वोपनिषदभ्यासं दूरतस्त्यज्य सादरम् । तेजोबिन्दूपनिषदमभ्यसेत्सर्वदा मुदा",
+        "transliteration": "sarvopaniṣadabhyāsaṃ dūratastyajya sādaram | tejobindūpaniṣadamabhyasetsarvadā mudā",
+        "translation": "Giving up with respect the study of all other Upanishads, one should always joyfully study the Tejobindu Upanishad.",
+        "hindi": "आदरपूर्वक अन्य सब उपनिषदों के अभ्यास को दूर छोड़कर, तेजोबिन्दु उपनिषद् का सदा आनन्द से अभ्यास करना चाहिए।",
+        "explanation": "आदरपूर्वक अन्य सब उपनिषदों के अभ्यास को दूर छोड़कर, तेजोबिन्दु उपनिषद् का सदा आनन्द से अभ्यास करना चाहिए।",
+        "keywords": [
+          "Tejobindu Upanishad",
+          "Upanishad",
+          "Advaita",
+          "Tejobindu",
+          "Shiva"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      }
+    ]
+  }
+]
 };

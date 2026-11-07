@@ -228,7 +228,7 @@ export function CircularProgressInfographic({ stats, className = '' }: CircularP
           >
             <Sparkles className="w-4 h-4" />
             <span className="text-sm font-semibold">
-              {stats.reduce((acc, s) => acc + s.value, 0).toLocaleString()} total achievements
+              {stats.reduce((acc, s) => acc + s.value, 0).toLocaleString(undefined, { numberingSystem: 'latn' })} total achievements
             </span>
           </motion.div>
         </div>

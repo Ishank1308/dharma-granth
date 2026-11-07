@@ -6,504 +6,625 @@ export const aitareya: Scripture = {
   titleSanskrit: 'ऐतरेयोपनिषद्',
   category: 'upanishad',
   description:
-    "Belongs to the Ṛg Veda (Aitareya Āraṇyaka, chapters 4–6). 33 mantras across 3 adhyāyas. Traces creation from the Self through the cosmic Person; the soul's threefold birth; and culminates in the mahāvākya 'prajñānaṃ brahma' — Consciousness is Brahman.",
+    "Belongs to the Ṛg Veda (Aitareya Āraṇyaka, chapters 4–6). 33 mantras across 3 adhyāyas (5 khaṇḍas). Complete canonical recension tracing creation from the Self through the cosmic Person; the devas' embodiment in man (sukṛtam); the creation and assimilation of food through Apāna; the threefold birth of the soul; and culminating in the supreme Mahāvākya 'Prajñānaṃ Brahma' — Consciousness is Brahman.",
   totalVerses: 33,
-  tags: ['Upanishad', 'Consciousness', 'Creation', 'Mahavakya', 'PrajnanamBrahma'],
+  tags: ['Upanishad', 'Consciousness', 'Creation', 'Mahavakya', 'PrajnanamBrahma', 'Rigveda', 'Vamadeva'],
   chapters: [
-    {
-      id: 1,
-      title: 'Adhyāya 1 · Khaṇḍa 1 — Creation of the Worlds',
-      titleSanskrit: 'प्रथम अध्याय · प्रथम खण्ड',
-      summary:
-        "4 mantras. In the beginning the Self alone existed. It thought: 'Let me create the worlds.' From it emerged the four cosmic regions — Ambhas (above heaven), Marīci (sky), Mara (earth), Āpaḥ (water beneath). Then it created the world-guardians (lokapālas).",
-      verses: [
-        {
-          id: 1,
-          sanskrit:
-            "ॐ आत्मा वा इदमेक एवाग्र आसीत् । नान्यत्किञ्चन मिषत् । स ईक्षत लोकान्नु सृजा इति ॥",
-          transliteration:
-            "oṃ ātmā vā idameka evāgra āsīt | nānyatkiñcana miṣat | sa īkṣata lokānnu sṛjā iti ||",
-          translation:
-            "OM. In the beginning the Self alone was here — nothing else whatsoever stirred. It thought: 'Let me create the worlds.'",
-          hindi:
-            'ॐ। प्रारम्भ में यह सब केवल आत्मा ही था; उसके अतिरिक्त और कुछ भी हलचल करने वाला नहीं था। उसने विचार किया — "मैं लोकों की सृष्टि करूँ।"',
-          explanation:
-            "The Upanishad opens with the most radical metaphysical claim: before anything else, there was only Self. Creation did not emerge from dead matter but from consciousness that *decided* to create. The first act of the Absolute was an act of cognition — 'sa īkṣata' (it thought).",
-          science:
-            "The 'participatory anthropic principle' (John Wheeler): observers are not merely passive — consciousness somehow participates in the structure of reality. The Upanishad places consciousness prior to matter — a position increasingly serious in foundations of physics (Penrose, Hoffman, Kastrup).",
-          lifeLesson:
-            "Your life too begins with a thought. The stories you tell yourself about who you are, what is possible — these 'creations of consciousness' shape your reality as surely as any physical force. What are you creating with yours today?",
-          keywords: ['Beginning', 'ConsciousnessFirst', 'Thought'],
-        },
-        {
-          id: 2,
-          sanskrit:
-            "स इमाँल्लोकानसृजत । अम्भो मरीचीर्मरमापः । अदोऽम्भः परेण दिवं द्यौः प्रतिष्ठाऽन्तरिक्षं मरीचयः । पृथिवी मरो या अधस्तात्ता आपः ॥",
-          transliteration:
-            "sa imāṃllokānasṛjata | ambho marīcīrmaramāpaḥ | ado'mbhaḥ pareṇa divaṃ dyauḥ pratiṣṭhā'ntarikṣaṃ marīcayaḥ | pṛthivī maro yā adhastāttā āpaḥ ||",
-          translation:
-            "He created these worlds: Ambhas (the waters above heaven), Marīci (light-rays of the sky), Mara (mortal earth), Āpaḥ (the waters beneath). Yonder is Ambhas beyond the sky; the sky is its support. The intermediate space is the Marīcis; the earth is Mara; what is below is Āpaḥ.",
-          hindi:
-            'उसने ये लोक रचे — अम्भस्, मरीचि, मर, और आपस्। ऊपर — द्यु से परे — अम्भस् है; उसका आधार द्यु है। अन्तरिक्ष ही मरीचियाँ हैं। पृथ्वी मर है। और जो नीचे है, वह आपस् है।',
-          explanation:
-            "Four cosmic regions are enumerated: waters-above-sky, sky-rays, mortal earth, waters-below. A vertical fourfold map of the cosmos. The names hint at function: ambhas = source of nourishment; mara = mortal-realm; etc.",
-          science:
-            "Pre-modern cosmologies typically employed a vertical layered model (heaven / atmosphere / earth / underworld). Modern cosmology has its own layered map (galactic, stellar, planetary). The structural impulse is shared.",
-          lifeLesson:
-            "Every map of reality has layers. Notice the layers you ignore — most people live almost entirely in 'mara' (the mortal middle) without ever attending to ambhas (the source-above) or āpaḥ (the depths-below).",
-          keywords: ['FourWorlds', 'Map', 'Layers'],
-        },
-        {
-          id: 3,
-          sanskrit:
-            "स ईक्षतेमे नु लोका लोकपालान्नु सृजा इति । सोऽद्भ्य एव पुरुषं समुद्धृत्यामूर्छयत् ॥",
-          transliteration:
-            "sa īkṣateme nu lokā lokapālānnu sṛjā iti | so'dbhya eva puruṣaṃ samuddhṛtyāmūrcchayat ||",
-          translation:
-            "He thought: 'Here are the worlds; let me now create the world-guardians.' From the waters he drew out a Person and shaped him.",
-          hindi:
-            'उसने विचार किया — "ये लोक हो गए; अब लोकपालों की सृष्टि करूँ।" फिर उसने जलों से ही एक पुरुष को निकालकर उसे आकार दिया।',
-          explanation:
-            "From the cosmic waters, the Self draws forth a Person (Puruṣa) — the primordial cosmic Man from whom the lokapālas (world-guardians/devas) will emerge. The image is precise: out of the formless waters, a form is 'drawn out and consolidated.'",
-          science:
-            "Self-organization from undifferentiated substrates: water-borne emergence of complex form (the origin-of-life problem) is biology's deepest open question. The Upanishad poeticizes the structural intuition.",
-          lifeLesson:
-            "Form emerges from formless. Your most powerful ideas often come not from busy thinking but from stillness. Honor the formless — it is the womb of every coherent form.",
-          keywords: ['Purusha', 'Waters', 'Drawing'],
-        },
-        {
-          id: 4,
-          sanskrit:
-            "तमभ्यतपत् । तस्याभितप्तस्य मुखं निरभिद्यत यथाण्डम् । मुखाद्वाग्वाचोऽग्निः । नासिके निरभिद्येतां नासिकाभ्यां प्राणः प्राणाद्वायुः । अक्षिणी निरभिद्येतामक्षीभ्यां चक्षुश्चक्षुष आदित्यः । कर्णौ निरभिद्येतां कर्णाभ्यां श्रोत्रं श्रोत्रादिशः । त्वङ्निरभिद्यत त्वचो लोमानि लोमभ्य ओषधिवनस्पतयः । हृदयं निरभिद्यत हृदयान्मनो मनसश्चन्द्रमाः । नाभिर्निरभिद्यत नाभ्या अपानोऽपानान्मृत्युः । शिश्नं निरभिद्यत शिश्नाद्रेतो रेतस आपः ॥",
-          transliteration:
-            "tamabhyatapat | tasyābhitaptasya mukhaṃ nirabhidyata yathāṇḍam | mukhādvāgvāco'gniḥ | nāsike nirabhidyetāṃ nāsikābhyāṃ prāṇaḥ prāṇādvāyuḥ | akṣiṇī nirabhidyetāmakṣībhyāṃ cakṣuścakṣuṣa ādityaḥ | karṇau nirabhidyetāṃ karṇābhyāṃ śrotraṃ śrotrādiśaḥ | tvaṅnirabhidyata tvaco lomāni lomabhya oṣadhivanaspatayaḥ | hṛdayaṃ nirabhidyata hṛdayānmano manasaścandramāḥ | nābhirnirabhidyata nābhyā apāno'pānānmṛtyuḥ | śiśnaṃ nirabhidyata śiśnādreto retasa āpaḥ ||",
-          translation:
-            "He heated him (with tapas). From him, heated, the mouth split open like an egg. From the mouth: speech; from speech: Agni. The nostrils split: from them, prāṇa; from prāṇa, Vāyu. The eyes split: from them, sight; from sight, the Sun. The ears split: from them, hearing; from hearing, the directions. The skin split: from it, hair; from hair, plants and trees. The heart split: from it, mind; from mind, the Moon. The navel split: from it, apāna; from apāna, Death. The generative organ split: from it, semen; from semen, the waters.",
-          hindi:
-            'उसने उसे (पुरुष को) तप द्वारा गरम किया। उससे — तप्त होने पर — मुख अण्डे की भाँति फटा। मुख से वाणी; वाणी से अग्नि। नासिकाएँ फटीं; उनसे प्राण; प्राण से वायु। नेत्र फटे; उनसे चक्षु; चक्षु से सूर्य। कान फटे; उनसे श्रोत्र; श्रोत्र से दिशाएँ। त्वचा फटी; उससे रोम; रोम से ओषधि-वनस्पति। हृदय फटा; उससे मन; मन से चन्द्रमा। नाभि फटी; उससे अपान; अपान से मृत्यु। शिश्न फटा; उससे रेत; रेत से जल।',
-          explanation:
-            "The cosmic Puruṣa's body becomes the source of all faculties and their corresponding cosmic powers: mouth → speech → Agni; eyes → sight → Sun; etc. The body-cosmos correspondence is established at the very moment of creation.",
-          science:
-            "Body-as-microcosm doctrines appear in many ancient traditions. Modern systems-thinking recognizes the same nesting: organism and ecosystem share structural patterns. The Upanishad sees the cosmos as the body of the Person.",
-          lifeLesson:
-            "Each of your faculties corresponds to a cosmic counterpart. When you see, you participate in the Sun's seeing. When you breathe, in the wind's breathing. The body is the cosmos in miniature; honor it accordingly.",
-          keywords: ['Tapas', 'Faculties', 'Correspondence'],
-        },
-      
-        {
-          id: 11,
-          sanskrit: 'ॐ वाङ् मे मनसि प्रतिष्ठिता । मनो मे वाचि प्रतिष्ठितम् । आविरावीर्म एधि ॥',
-          transliteration: 'oṃ vāṅ me manasi pratiṣṭhitā | mano me vāci pratiṣṭhitam | āvirāvīrma edhi ||',
-          translation: 'OM. May my speech be founded in mind; may my mind be founded in speech. O Self-Revealer, reveal yourself to me.',
-          hindi: 'ॐ। मेरी वाणी मन में प्रतिष्ठित हो; मेरा मन वाणी में प्रतिष्ठित हो। हे आविर्भूत होने वाले! मुझ पर प्रकट हो।',
-          explanation: 'A peace-mantra invocation. The seeker prays for speech and mind to be mutually grounded — neither running ahead of the other — and for the Self to reveal itself.',
-          keywords: [],
-        },
-        {
-          id: 12,
-          sanskrit: 'वेदस्य म आणीस्थः । श्रुतं मे मा प्रहासीः । अनेनाधीतेनाहोरात्रान् संदधाम्यृतं वदिष्यामि । सत्यं वदिष्यामि ॥',
-          transliteration: 'vedasya ma āṇīsthaḥ | śrutaṃ me mā prahāsīḥ | anenādhītenāhorātrān saṃdadhāmyṛtaṃ vadiṣyāmi | satyaṃ vadiṣyāmi ||',
-          translation: 'Be a hook for my Veda. May my learning not desert me. By this learning may I unite days and nights. I will speak ṛta (cosmic order); I will speak satya (truth).',
-          hindi: 'मेरे वेद-ज्ञान को बाँधे रखो। मेरी श्रुति मुझे न छोड़े। इस अधीत के द्वारा दिन-रात को संयुक्त करूँ। ऋत बोलूँगा; सत्य बोलूँगा।',
-          explanation: 'Prayer for retention of learning. \'Day-night uniting\' = continuous practice. Twofold commitment: ṛta (cosmic order) and satya (truthful speech). Both will be spoken.',
-          keywords: [],
-        },
-        {
-          id: 13,
-          sanskrit: 'तन्मामवतु । तद्वक्तारमवतु । अवतु माम् । अवतु वक्तारमवतु वक्तारम् ॥',
-          transliteration: 'tanmāmavatu | tadvaktāramavatu | avatu mām | avatu vaktāramavatu vaktāram ||',
-          translation: 'May That protect me; may That protect the speaker. May it protect me; may it protect the speaker, may it protect the speaker.',
-          hindi: 'वह मेरी रक्षा करे; वह वक्ता की रक्षा करे। मेरी रक्षा करे; वक्ता की रक्षा करे; वक्ता की रक्षा करे।',
-          explanation: 'Mutual protection. The teacher and student both stand under the same shelter. The doubled closing marker signals completion of the prayer.',
-          keywords: [],
-        },
-        {
-          id: 14,
-          sanskrit: 'ॐ शान्तिः शान्तिः शान्तिः ॥',
-          transliteration: 'oṃ śāntiḥ śāntiḥ śāntiḥ ||',
-          translation: 'OM. Peace, peace, peace.',
-          hindi: 'ॐ। शान्ति, शान्ति, शान्ति।',
-          explanation: 'The threefold peace — for ādhyātmika (personal), ādhibhautika (environmental), and ādhidaivika (cosmic) disturbances. Closing of adhyāya 1 of the standard recitation.',
-          keywords: [],
-        },],
-    },
-    {
-      id: 2,
-      title: 'Adhyāya 1 · Khaṇḍa 2 — The Devas Seek a Home',
-      titleSanskrit: 'प्रथम अध्याय · द्वितीय खण्ड',
-      summary:
-        "5 mantras. The world-guardians (devas), born from the cosmic Person, fall into the great ocean. Hungry and thirsty, they ask the Self for a home in which to settle and eat. The Self shapes a cow, then a horse — both rejected. Finally, a human form is offered, and the devas enter through their corresponding faculties.",
-      verses: [
-        {
-          id: 1,
-          sanskrit:
-            "ता एता देवताः सृष्टा अस्मिन्महत्यर्णवे प्रापतन् । तमशनापिपासाभ्यामन्ववार्जत् । ता एनमब्रुवन् । आयतनं नः प्रजानीहि यस्मिन् प्रतिष्ठिता अन्नमदामेति ॥",
-          transliteration:
-            "tā etā devatāḥ sṛṣṭā asminmahatyarṇave prāpatan | tamaśanāpipāsābhyāmanvavārjat | tā enamabruvan | āyatanaṃ naḥ prajānīhi yasmin pratiṣṭhitā annamadāmeti ||",
-          translation:
-            "These devas, thus created, fell into this great ocean. The Self afflicted him (the cosmic Person?) with hunger and thirst. They (the devas) said: 'Discover for us an abode in which, established, we may eat food.'",
-          hindi:
-            'इस प्रकार उत्पन्न ये देवता इस महान् अर्णव (समुद्र) में जा गिरे। उनको भूख और प्यास ने पीड़ित किया। उन्होंने उससे कहा — "हमारे लिये एक आयतन (निवास) खोजो — जिसमें प्रतिष्ठित होकर हम अन्न खा सकें।"',
-          explanation:
-            "The newly-created devas fall into the cosmic ocean — emerged but homeless. Hunger and thirst afflict them. They request: 'find us a body in which we can settle and eat.' The drama of the embodiment problem.",
-          science:
-            "Emergence-without-substrate: a novel pattern needs a substrate to stabilize. Without one, it dissipates. The Upanishad poetizes this in mythical form.",
-          lifeLesson:
-            "Powerful ideas and capacities need a body to live in — a structure, a practice, a routine. Without one, they 'fall into the ocean.' Build the container for what wants to live through you.",
-          keywords: ['Devas', 'Homeless', 'Embodiment'],
-        },
-        {
-          id: 2,
-          sanskrit:
-            "ताभ्यो गामानयत् । ता अब्रुवन्न वै नोऽयमलमिति । ताभ्योऽश्वमानयत् । ता अब्रुवन्न वै नोऽयमलमिति ॥",
-          transliteration:
-            "tābhyo gāmānayat | tā abruvanna vai no'yamalamiti | tābhyo'śvamānayat | tā abruvanna vai no'yamalamiti ||",
-          translation:
-            "He brought them a cow. They said: 'This is not enough for us.' He brought them a horse. They said: 'This is not enough for us.'",
-          hindi:
-            'उसने उनके लिये गाय लाया। वे बोले — "यह हमारे लिये अलम् (पर्याप्त) नहीं।" फिर घोड़ा लाया। वे बोले — "यह भी पर्याप्त नहीं।"',
-          explanation:
-            "Two animal forms are offered and refused. The cow and horse — exemplary creatures — cannot house all the gods. Something more is needed.",
-          science:
-            "Functional-requirements analysis: simpler structures cannot host more complex functions. The Upanishad recognizes the principle.",
-          lifeLesson:
-            "When a chosen form keeps falling short, do not blame the form — recognize that what you carry exceeds it. Larger gifts need larger containers.",
-          keywords: ['Rejection', 'Animals', 'Insufficient'],
-        },
-        {
-          id: 3,
-          sanskrit:
-            "ताभ्यः पुरुषमानयत् । ता अब्रुवन् सुकृतं बतेति । पुरुषो वाव सुकृतम् । ता अब्रवीद्यथायतनं प्रविशतेति ॥",
-          transliteration:
-            "tābhyaḥ puruṣamānayat | tā abruvan sukṛtaṃ bateti | puruṣo vāva sukṛtam | tā abravīdyathāyatanaṃ praviśateti ||",
-          translation:
-            "He brought them a Person. They said: 'Well done indeed!' The Person is indeed well-made. He said to them: 'Enter your respective abodes.'",
-          hindi:
-            'उसने उनके लिये पुरुष लाया। वे बोले — "अहो, यह सुकृत है!" पुरुष वस्तुतः सुकृत (अच्छी-तरह बनाया गया) है। उसने उनसे कहा — "अपने-अपने आयतन में प्रवेश करो।"',
-          explanation:
-            "The human form is recognized: 'sukṛtam' — well-made. The gods rejoice. The Self assigns each its station. The human body emerges as the unique vessel capable of housing the divine faculties.",
-          science:
-            "Anthropic uniqueness: among known forms, the human nervous system is uniquely capable of integrating self-modeling, language, and cosmic-scale modeling. The Upanishad's recognition is empirically grounded.",
-          lifeLesson:
-            "Your human body is not arbitrary. The form you wear is, structurally, the most capable form known. Treat it as a temple — gods reside in it.",
-          keywords: ['Human', 'Sukrtam', 'Recognition'],
-        },
-        {
-          id: 4,
-          sanskrit:
-            "अग्निर्वाग्भूत्वा मुखं प्राविशत् । वायुः प्राणो भूत्वा नासिके प्राविशत् । आदित्यश्चक्षुर्भूत्वाक्षिणी प्राविशत् । दिशः श्रोत्रं भूत्वा कर्णौ प्राविशन् । ओषधिवनस्पतयो लोमानि भूत्वा त्वचं प्राविशन् । चन्द्रमा मनो भूत्वा हृदयं प्राविशत् । मृत्युरपानो भूत्वा नाभिं प्राविशत् । आपो रेतो भूत्वा शिश्नं प्राविशन् ॥",
-          transliteration:
-            "agnirvāgbhūtvā mukhaṃ prāviśat | vāyuḥ prāṇo bhūtvā nāsike prāviśat | ādityaścakṣurbhūtvākṣiṇī prāviśat | diśaḥ śrotraṃ bhūtvā karṇau prāviśan | oṣadhivanaspatayo lomāni bhūtvā tvacaṃ prāviśan | candramā mano bhūtvā hṛdayaṃ prāviśat | mṛtyurapāno bhūtvā nābhiṃ prāviśat | āpo reto bhūtvā śiśnaṃ prāviśan ||",
-          translation:
-            "Agni became speech and entered the mouth. Vāyu became prāṇa and entered the nostrils. Āditya became sight and entered the eyes. The directions became hearing and entered the ears. Plants and trees became hair and entered the skin. The Moon became mind and entered the heart. Death became apāna and entered the navel. The waters became semen and entered the generative organ.",
-          hindi:
-            'अग्नि वाणी होकर मुख में प्रविष्ट हुई; वायु प्राण होकर नासिकाओं में; सूर्य चक्षु होकर नेत्रों में; दिशाएँ श्रोत्र होकर कानों में; ओषधि-वनस्पति रोम होकर त्वचा में; चन्द्र मन होकर हृदय में; मृत्यु अपान होकर नाभि में; जल रेत होकर शिश्न में।',
-          explanation:
-            "Each cosmic deity becomes a faculty and enters its corresponding bodily location. The same structure as Khaṇḍa 1, now in reverse: from cosmos back into the human form. The body is the universe folded inward.",
-          science:
-            "Macro/micro mapping: every macroscopic process has a microscopic counterpart in the organism. The Upanishad makes the mapping explicit deity by deity.",
-          lifeLesson:
-            "When you speak, Agni acts in you. When you see, the Sun sees through you. Every faculty is a cosmic guest. The dignity this confers is the foundation of self-respect.",
-          keywords: ['Entry', 'Faculties', 'Mapping'],
-        },
-        {
-          id: 5,
-          sanskrit:
-            "तमशनापिपासे अब्रूताम् । आवाभ्यामभिप्रजानीहीति । ते अब्रवीदेतास्वेव वां देवतास्वाभजाम्येतासु भागिन्यौ करोमीति । तस्माद्यस्यै कस्यै च देवतायै हविर्गृह्यते भागिन्यावेवास्यामशनापिपासे भवतः ॥",
-          transliteration:
-            "tamaśanāpipāse abrūtām | āvābhyāmabhiprajānīhīti | te abravīdetāsveva vāṃ devatāsvābhajāmyetāsu bhāginyau karomīti | tasmādyasyai kasyai ca devatāyai havirgṛhyate bhāginyāvevāsyāmaśanāpipāse bhavataḥ ||",
-          translation:
-            "Hunger and thirst said to him: 'Find a place for us too.' He said to them: 'I assign you a share in these very deities; I make you partners with them.' Therefore, whatever deity receives an oblation, hunger and thirst share in it.",
-          hindi:
-            'भूख और प्यास ने उससे कहा — "हम दोनों के लिये भी स्थान दे।" उसने कहा — "तुम्हें इन्हीं देवताओं में अंश दे रहा हूँ; तुम्हें इनके साथ भागी बना रहा हूँ।" इसीलिये जिस किसी देवता के लिये हवि लिया जाता है, उसमें भूख और प्यास भी भागी होते हैं।',
-          explanation:
-            "Hunger and thirst — primal drives — are not given their own organ but assigned as 'partners' to every deity. Hence every offering nourishes them indirectly. The drives pervade all faculties — a sharp psychological insight.",
-          science:
-            "Motivation research: hunger, thirst, and survival drives modulate every cognitive system. They are not localized to one circuit but pervasive. The Upanishad anticipates the systemic view.",
-          lifeLesson:
-            "Notice how hunger or thirst colors every faculty when they are strong. Manage these first before judging your emotional or cognitive state.",
-          keywords: ['Hunger', 'Thirst', 'Partnership'],
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: 'Adhyāya 1 · Khaṇḍa 3 — The Self Enters Through the Crown',
-      titleSanskrit: 'प्रथम अध्याय · तृतीय खण्ड',
-      summary:
-        "14 mantras. The Self reflects: how can these worlds and devas exist without me? Through which gate shall I enter? He splits the crown of the head and enters through that gate. He sees only himself — and exclaims: 'idam-adarśam' — 'this I have seen.' From this comes his name: Idandra — concealed as Indra.",
-      verses: [
-        {
-          id: 1,
-          sanskrit:
-            "स ईक्षत । कथं न्विदं मदृते स्यादिति । स ईक्षत कतरेण प्रपद्या इति । स ईक्षत यदि वाचाभिव्याहृतं यदि प्राणेनाभिप्राणितं यदि चक्षुषा दृष्टं यदि श्रोत्रेण श्रुतं यदि त्वचा स्पृष्टं यदि मनसा ध्यातं यदि अपानेनाभ्यपानितं यदि शिश्नेन विसृष्टमथ कोऽहमिति ॥",
-          transliteration:
-            "sa īkṣata | kathaṃ nvidaṃ madṛte syāditi | sa īkṣata katareṇa prapadyā iti | sa īkṣata yadi vācābhivyāhṛtaṃ yadi prāṇenābhiprāṇitaṃ yadi cakṣuṣā dṛṣṭaṃ yadi śrotreṇa śrutaṃ yadi tvacā spṛṣṭaṃ yadi manasā dhyātaṃ yadi apānenābhyapānitaṃ yadi śiśnena visṛṣṭamatha ko'hamiti ||",
-          translation:
-            "He reflected: 'How can this exist without me?' He reflected: 'Through which gate shall I enter?' He thought: 'If speaking is done by speech, breathing by prāṇa, seeing by the eye, hearing by the ear, touching by skin, thinking by mind, eliminating by apāna, generating by the organ — then who am I?'",
-          hindi:
-            'उसने विचार किया — "मेरे बिना यह कैसे रह सकता है?" विचार किया — "किस द्वार से प्रवेश करूँ?" विचार किया — "यदि वाणी से बोला जाता है, प्राण से साँस ली जाती है, नेत्र से देखा जाता है, कान से सुना जाता है, त्वचा से छुआ जाता है, मन से सोचा जाता है, अपान से त्याग होता है, शिश्न से उत्सर्जन होता है — तो फिर मैं कौन हूँ?"',
-          explanation:
-            "The most penetrating self-question ever posed. If every function is performed by some faculty, what is left to be 'I'? The Upanishad anticipates the modern question: is there anything left for the 'self' to do, or is 'self' just a label for the bundle of functions?",
-          science:
-            "Cognitive science: many philosophers argue that 'self' is a useful fiction — a model the brain runs over its own activity. Yet the experiential 'I' persists as a phenomenal datum. The Upanishad's question remains open in current consciousness research.",
-          lifeLesson:
-            "Ask the question seriously: if every action of mine is done by some faculty, who is the 'me' that owns them? The question, lived with, slowly reveals an answer that words cannot reach.",
-          keywords: ['Question', 'WhoAmI', 'Inquiry'],
-        },
-        {
-          id: 2,
-          sanskrit:
-            "स एतमेव सीमानं विदार्यैतया द्वारा प्रापद्यत । सैषा विदृतिर्नाम द्वास्तदेतन्नाण्डनम् । तस्य त्रय आवसथास्त्रयः स्वप्नाः । अयमावसथोऽयमावसथोऽयमावसथ इति ॥",
-          transliteration:
-            "sa etameva sīmānaṃ vidāryaitayā dvārā prāpadyata | saiṣā vidṛtirnāma dvāstadetannāṇḍanam | tasya traya āvasathāstrayaḥ svapnāḥ | ayamāvasatho'yamāvasatho'yamāvasatha iti ||",
-          translation:
-            "Having split this very crown (suture), he entered through that gate. This gate is named Vidṛti (the split); that is the place of joy. He has three dwellings, three dream-states: 'this is the dwelling, this is the dwelling, this is the dwelling.'",
-          hindi:
-            'उसने इसी मस्तक के सीमान्त को फाड़कर उसी द्वार से प्रवेश किया। उस द्वार का नाम विदृति है; और वही नन्दन (आनन्द-स्थान) है। उसके तीन आवास, तीन स्वप्न हैं — "यह आवास, यह आवास, यह आवास।"',
-          explanation:
-            "The Self enters through the crown — the brahma-randhra. The split is called 'vidṛti'; it is also 'nandana' — place of joy. Three dwellings = three states (waking, dream, deep sleep).",
-          science:
-            "Cranial-suture anatomy: the sagittal suture along the crown is a real seam in the skull. Yogic traditions identify this region (sahasrāra) as the highest energy-center. The Upanishad locates the entry-point precisely.",
-          lifeLesson:
-            "Spend a few breaths attending to the crown of the head. Imagine softening it as if it were a gateway. This practice is a doorway in many traditions, named in the Upanishad before yoga formalized it.",
-          keywords: ['Crown', 'Entry', 'ThreeDwellings'],
-        },
-        {
-          id: 3,
-          sanskrit:
-            "स जातो भूतान्यभिव्यैक्षत । किमिहान्यं वावदिषदिति । स एतमेव पुरुषं ब्रह्म ततममपश्यत् । इदमदर्शमिति ॥",
-          transliteration:
-            "sa jāto bhūtānyabhivyaikṣata | kimihānyaṃ vāvadiṣaditi | sa etameva puruṣaṃ brahma tatamamapaśyat | idamadarśamiti ||",
-          translation:
-            "Having been born, he saw all the beings. He thought: 'What other than this could one speak of?' He saw this very Person, Brahman, the all-pervading. He exclaimed: 'idam adarśam — this I have seen!'",
-          hindi:
-            'जन्म लेकर उसने सब प्राणियों को देखा। विचार किया — "इससे अतिरिक्त और किसकी चर्चा करूँ?" उसने इसी पुरुष को — सर्वव्यापक ब्रह्म को — देखा और कहा — "इदम् अदर्शम् — यह मैंने देख लिया!"',
-          explanation:
-            "The moment of recognition. The Self, embodied, looks and sees — and recognizes himself as the same Brahman pervading all. The exclamation 'idam adarśam' — 'this I have seen' — names the very moment of awakening.",
-          science:
-            "The 'aha' moment in cognition: a sudden gestalt-shift where what was unconnected becomes recognized as one. The Upanishad describes the supreme version of this shift.",
-          lifeLesson:
-            "Cultivate the 'idam adarśam' moments. The flash of seeing how everything connects — even briefly — is a glimpse of what the Upanishad calls Brahman.",
-          keywords: ['Seeing', 'Recognition', 'AhamBrahma'],
-        },
-        {
-          id: 4,
-          sanskrit:
-            "तस्मादिदन्द्रो नामेदन्द्रो ह वै नाम । तमिदन्द्रं सन्तमिन्द्र इत्याचक्षते परोक्षेण । परोक्षप्रिया इव हि देवाः परोक्षप्रिया इव हि देवाः ॥",
-          transliteration:
-            "tasmādidandro nāmedandro ha vai nāma | tamidandraṃ santamindra ityācakṣate parokṣeṇa | parokṣapriyā iva hi devāḥ parokṣapriyā iva hi devāḥ ||",
-          translation:
-            "Therefore his name is Idandra — Idandra indeed is his name. Being Idandra, they call him Indra in a concealed way. For the gods are fond of indirect names; the gods are fond of indirect names.",
-          hindi:
-            'इसलिये उसका नाम "इदन्द्र" है — इदन्द्र ही उसका नाम है। उस इदन्द्र को परोक्ष से "इन्द्र" कहते हैं — क्योंकि देव परोक्ष-प्रिय होते हैं; देव परोक्ष-प्रिय होते हैं।',
-          explanation:
-            "An etymological revelation: 'Indra' derives from 'idandra' — 'he who saw this.' The gods love concealed names, the verse playfully observes. The doubled closing marks the end of khaṇḍa 3 of adhyāya 1.",
-          science:
-            "Linguistic-etymology in sacred texts: the deeper meaning is often hidden in the apparent name. Modern hermeneutics recognizes this layer of concealment-revelation.",
-          lifeLesson:
-            "Look at the names you live by — your own, those of people close to you. Behind each is often a deeper meaning forgotten. Recovering it is part of recovering depth.",
-          keywords: ['Indra', 'Etymology', 'Closing'],
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: 'Adhyāya 2 — The Three Births of the Soul',
-      titleSanskrit: 'द्वितीय अध्याय',
-      summary:
-        "6 mantras. The classical statement of the threefold birth: through conception in the womb; through birth from the womb; and through rebirth after death. The seer Vāmadeva is cited as having known all this even while in the womb. He, becoming wise, rose upward upon leaving this body and became immortal.",
-      verses: [
-        {
-          id: 1,
-          sanskrit:
-            "पुरुषे ह वा अयमादितो गर्भो भवति । यदेतद्रेतस्तदेतत्सर्वेभ्योऽङ्गेभ्यस्तेजः सम्भूतम् । आत्मन्येवात्मानं बिभर्ति । तद्यथा स्त्रियां सिञ्चत्यथैनज्जनयति । तदस्य प्रथमं जन्म ॥",
-          transliteration:
-            "puruṣe ha vā ayamādito garbho bhavati | yadetadretastadetatsarvebhyo'ṅgebhyastejaḥ sambhūtam | ātmanyevātmānaṃ bibharti | tadyathā striyāṃ siñcatyathainajjanayati | tadasya prathamaṃ janma ||",
-          translation:
-            "In a man, this (Self) is first an embryo. The semen is the essence concentrated from all his limbs. He carries his own self in himself. When he pours it into a woman, he gives birth to it. This is its first birth.",
-          hindi:
-            'पुरुष में यह आत्मा सबसे पहले गर्भ बनता है। जो यह रेत है, वह सब अंगों से एकत्र तेज है। वह अपने ही आत्मा को अपने में धारण किये रहता है। जब वह स्त्री में सिञ्चन करता है, तब उसको उत्पन्न करता है। यह उसका प्रथम जन्म है।',
-          explanation:
-            "Restated for the second adhyāya. First birth = conception. The same Self that animates the father is concentrated into the seed and transferred. The repetition emphasizes the cosmic significance.",
-          science:
-            "Hereditary transmission: every cell of a parent carries genetic information; gametes concentrate this into a vehicle. The Upanishad's intuition of 'concentration from all limbs' is broadly accurate.",
-          lifeLesson:
-            "Honor the chain you are part of. You were drawn from a parent's essence; you may pass essence onward.",
-          keywords: ['FirstBirth', 'Concentration', 'Transfer'],
-        },
-        {
-          id: 2,
-          sanskrit:
-            "तत्स्त्रिया आत्मभूयं गच्छति यथा स्वमङ्गं तथा । तस्मादेनां न हिनस्ति । साऽस्यैतमात्मानमत्र गतं भावयति ॥",
-          transliteration:
-            "tatstriyā ātmabhūyaṃ gacchati yathā svamaṅgaṃ tathā | tasmādenāṃ na hinasti | sā'syaitamātmānamatra gataṃ bhāvayati ||",
-          translation:
-            "It becomes a self-portion in the woman, like one of her own limbs. Therefore it does not injure her. She nourishes this self of his that has gone into her.",
-          hindi:
-            'वह स्त्री के लिये आत्म-रूप हो जाता है — जैसे उसका अपना अंग। इसी कारण वह उसे पीड़ा नहीं देता। वह उसके इस आत्मा को — जो उसमें गया है — पोषित करती है।',
-          explanation:
-            "Reiteration of the maternal-fetal tolerance. Highlighted to embed the mother's role as central to the soul's first journey. She nourishes 'his self that has come into her.'",
-          science:
-            "Pregnancy biology: maternal investment is metabolically enormous. The fetus is nourished from the mother's own substance.",
-          lifeLesson:
-            "Recognize your mother (or those who mothered you) as having literally fed you with her own substance for months. Few debts are as primary.",
-          keywords: ['Mother', 'Nourisher', 'OwnLimb'],
-        },
-        {
-          id: 3,
-          sanskrit:
-            "सा भावयित्री भावयितव्या भवति । तं स्त्री गर्भं बिभर्ति । सोऽग्र एव कुमारं जन्मनोऽग्रेऽधिभावयति । स यत्कुमारं जन्मनोऽग्रेऽधिभावयत्यात्मानमेव तद्भावयत्येषां लोकानां सन्तत्या । एवं सन्तता हीमे लोकाः । तदस्य द्वितीयं जन्म ॥",
-          transliteration:
-            "sā bhāvayitrī bhāvayitavyā bhavati | taṃ strī garbhaṃ bibharti | so'gra eva kumāraṃ janmano'gre'dhibhāvayati | sa yatkumāraṃ janmano'gre'dhibhāvayatyātmānameva tadbhāvayatyeṣāṃ lokānāṃ santatyā | evaṃ santatā hīme lokāḥ | tadasya dvitīyaṃ janma ||",
-          translation:
-            "She, the nourisher, becomes one to be nourished. The woman carries the embryo. He nourishes the child even before its birth, and after birth. By nourishing the child both before and after, he nourishes himself, for the continuance of these worlds. Thus these worlds continue. This is his second birth.",
-          hindi:
-            'वह पालन करने वाली पालन के योग्य हो जाती है। स्त्री गर्भ को धारण करती है। वह जन्म से पहले और बाद में भी कुमार को पोषित करता है। ऐसा करते हुए वह अपने ही आत्मा को पोषित करता है — इन लोकों की सन्तति के लिये। ऐसे ही ये लोक चलते हैं। यह उसका द्वितीय जन्म है।',
-          explanation:
-            "Second birth: the actual birth from the womb, plus the nurturing that continues. Worlds continue because parents nourish themselves through nourishing offspring.",
-          science:
-            "Generational succession: cultural and biological continuity rests on the parent-child investment. Without it, neither cell-lines nor civilizations endure.",
-          lifeLesson:
-            "Whether or not you raise children, decide what 'next generation' you will invest in. Each generation is held up by the previous one's nourishing.",
-          keywords: ['SecondBirth', 'Continuation', 'Worlds'],
-        },
-        {
-          id: 4,
-          sanskrit:
-            "सोऽस्यायमात्मा पुण्येभ्यः कर्मभ्यः प्रतिधीयते । अथास्यायमितर आत्मा कृतकृत्यो वयोगतः प्रैति । स इतः प्रयन्नेव पुनर्जायते । तदस्य तृतीयं जन्म ॥",
-          transliteration:
-            "so'syāyamātmā puṇyebhyaḥ karmabhyaḥ pratidhīyate | athāsyāyamitara ātmā kṛtakṛtyo vayogataḥ praiti | sa itaḥ prayanneva punarjāyate | tadasya tṛtīyaṃ janma ||",
-          translation:
-            "This self of his is set in his place for the meritorious works. Then his other self, having done his duty and reached his age, departs. Departing from here, he is born again. This is his third birth.",
-          hindi:
-            'यह (पुत्र रूपी) उसका आत्मा पुण्य-कर्मों के लिये उसके स्थान पर स्थापित हो जाता है। फिर यह अन्य आत्मा (पिता) कृतकृत्य होकर, आयु को प्राप्त होकर, प्रयाण करता है। यहाँ से जाकर वह पुनः जन्म लेता है। यह उसका तृतीय जन्म है।',
-          explanation:
-            "Third birth = rebirth. The departing soul is born again. The doctrine of rebirth thus rests on the same continuity-of-self that grounded conception.",
-          science:
-            "Even apart from metaphysics, the pattern transmits — character, language, conduct continue through descendants. 'Rebirth' has biographical and biological readings.",
-          lifeLesson:
-            "Live as if your future descendants would meet you in their own characters. The way you live writes itself onto what comes after.",
-          keywords: ['ThirdBirth', 'Rebirth', 'Doctrine'],
-        },
-        {
-          id: 5,
-          sanskrit:
-            "तदुक्तमृषिणा । गर्भे नु सन्नन्वेषामवेदमहं देवानां जनिमानि विश्वा । शतं मा पुर आयसीररक्षन्नधः श्येनो जवसा निरदीयम् । इति । गर्भ एवैतच्छयानो वामदेव एवमुवाच ॥",
-          transliteration:
-            "taduktamṛṣiṇā | garbhe nu sannanveṣāmavedamahaṃ devānāṃ janimāni viśvā | śataṃ mā pura āyasīrarakṣannadhaḥ śyeno javasā niradīyam | iti | garbha evaitacchayāno vāmadeva evamuvāca ||",
-          translation:
-            "Hence the seer said: 'Still in the womb, I knew all the births of these gods. A hundred iron forts guarded me, but I, the hawk, escaped downward with speed.' Thus Vāmadeva, lying in the womb itself, spoke.",
-          hindi:
-            'इसलिये ऋषि ने कहा — "गर्भ में रहते हुए ही मैंने इन सब देवों के जन्मों को जान लिया। मुझे सौ लोह-पुरियाँ रोकती रहीं, परन्तु मैं श्येन (बाज) वेग से नीचे निकल आया।" वामदेव ने गर्भ में सोते हुए ही ऐसा कहा।',
-          explanation:
-            "Vāmadeva is the prototypical case of pre-birth realization. The verse is taken as evidence that knowledge of cosmic order is possible even before sensory development.",
-          science:
-            "Pre-birth cognition is debated; some traditions hold that subtle awareness pre-exists embodied perception. The Upanishad reports the contemplative claim.",
-          lifeLesson:
-            "Not all your wisdom arose from experience. Some seems to predate it. Honor that older knowing.",
-          keywords: ['Vamadeva', 'Womb', 'Knowing'],
-        },
-        {
-          id: 6,
-          sanskrit:
-            "स एवं विद्वानस्माच्छरीरभेदादूर्ध्व उत्क्रम्यामुष्मिन् स्वर्गे लोके सर्वान् कामानाप्त्वामृतः समभवत् समभवत् ॥",
-          transliteration:
-            "sa evaṃ vidvānasmāccharīrabhedādūrdhva utkramyāmuṣmin svarge loke sarvān kāmānāptvāmṛtaḥ samabhavat samabhavat ||",
-          translation:
-            "He, thus knowing, rising upward at the dissolution of this body, having attained all desires in yonder heavenly world, became immortal — became immortal.",
-          hindi:
-            'वह — इस प्रकार ज्ञानी — शरीर के विभेद पर ऊर्ध्व उत्क्रमण करके — उस स्वर्ग-लोक में सब कामनाएँ प्राप्त करके — अमर हो गया, अमर हो गया।',
-          explanation:
-            "Closing of adhyāya 2 with the doubled samabhavat. The threefold-birth doctrine concludes with attainment of immortality.",
-          science:
-            "Trajectory-stability: a clear cosmology that takes one through life and death produces measurable psychological stability in late life.",
-          lifeLesson:
-            "Hold a working theory of what happens after death. Whether it is literal or symbolic, the holding itself reduces anxiety.",
-          keywords: ['Departure', 'Immortal', 'Closing'],
-        },
-      ],
-    },
-    {
-      id: 5,
-      title: 'Adhyāya 3 — Prajñānaṃ Brahma',
-      titleSanskrit: 'तृतीय अध्याय',
-      summary:
-        "4 mantras. The climax of the Upanishad. The faculties are surveyed: vision, hearing, mind, speech — all rest on consciousness. Whatever is — all is led by consciousness; all is established in consciousness. Consciousness is Brahman. He who knows thus, departing from this world, rises upward and becomes immortal.",
-      verses: [
-        {
-          id: 1,
-          sanskrit:
-            "कोऽयमात्मेति वयमुपास्महे । कतरः स आत्मा । येन वा पश्यति येन वा शृणोति येन वा गन्धानाजिघ्रति येन वा वाचं व्याकरोति येन वा स्वादु चास्वादु च विजानाति ॥",
-          transliteration:
-            "ko'yamātmeti vayamupāsmahe | katarah sa ātmā | yena vā paśyati yena vā śṛṇoti yena vā gandhānājighrati yena vā vācaṃ vyākaroti yena vā svādu cāsvādu ca vijānāti ||",
-          translation:
-            "'Who is this self whom we worship? Which of these is the Self?' That by which one sees, that by which one hears, that by which one smells odors, that by which one articulates speech, that by which one distinguishes the sweet and the savorless.",
-          hindi:
-            '"हम जिसकी उपासना करते हैं — वह आत्मा कौन है? इनमें से कौन वह आत्मा है?" जिसके द्वारा मनुष्य देखता है, सुनता है, गन्ध सूँघता है, वाणी व्याकृत करता है, और स्वादु-अस्वादु का विवेक करता है।',
-          explanation:
-            "The question is posed: which is the Self? The answer is shown by enumeration: that which performs every cognitive function. The Self is functionally identified.",
-          science:
-            "Unified-experience research: every sensory modality is integrated into a single 'I-perspective.' The Upanishad points to this unifier and names it Self.",
-          lifeLesson:
-            "Across all your senses, one 'I' uses them. Locate that I once a day — not by thought, by direct noticing.",
-          keywords: ['Question', 'Faculties', 'Inquiry'],
-        },
-        {
-          id: 2,
-          sanskrit:
-            "यदेतद्धृदयं मनश्चैतत् । संज्ञानमाज्ञानं विज्ञानं प्रज्ञानं मेधा दृष्टिर्धृतिर्मतिर्मनीषा जूतिः स्मृतिः सङ्कल्पः क्रतुरसुः कामो वश इति । सर्वाण्येवैतानि प्रज्ञानस्य नामधेयानि भवन्ति ॥",
-          transliteration:
-            "yadetaddhṛdayaṃ manaścaitat | saṃjñānamājñānaṃ vijñānaṃ prajñānaṃ medhā dṛṣṭirdhṛtirmatirmanīṣā jūtiḥ smṛtiḥ saṅkalpaḥ kraturasuḥ kāmo vaśa iti | sarvāṇyevaitāni prajñānasya nāmadheyāni bhavanti ||",
-          translation:
-            "This is the heart and the mind: consciousness, awareness, discernment, deep knowledge, intelligence, vision, steadiness, judgment, deep insight, urge, memory, intention, planning, life-force, desire, control — all these are names of prajñāna (consciousness).",
-          hindi:
-            'यह जो हृदय है और मन है — संज्ञान, आज्ञान, विज्ञान, प्रज्ञान, मेधा, दृष्टि, धृति, मति, मनीषा, जूति, स्मृति, सङ्कल्प, क्रतु, असु, काम, वश — ये सब प्रज्ञान के ही नाम हैं।',
-          explanation:
-            "Sixteen names of consciousness, each capturing a different mode or capacity. The Upanishad collapses all mental categories into one source: prajñāna.",
-          science:
-            "Cognitive science distinguishes many specific functions (attention, memory, executive control). Yet all share access to the unified workspace of awareness. The Upanishad's collapse is functionally accurate.",
-          lifeLesson:
-            "Stop multiplying inner agents. Every faculty is consciousness in a particular dress. Address consciousness directly, and the faculties follow.",
-          keywords: ['SixteenNames', 'Consciousness', 'Unity'],
-        },
-        {
-          id: 3,
-          sanskrit:
-            "एष ब्रह्मैष इन्द्र एष प्रजापतिरेते सर्वे देवा इमानि च पञ्च महाभूतानि पृथिवी वायुराकाश आपो ज्योतींषीत्येतानीमानि च क्षुद्रमिश्राणीव बीजानीतराणि चेतराणि चाण्डजानि च जारुजानि च स्वेदजानि चोद्भिज्जानि चाश्वा गावः पुरुषा हस्तिनो यत् किञ्चेदं प्राणि जङ्गमं च पतत्रि च यच्च स्थावरम् । सर्वं तत्प्रज्ञानेत्रं प्रज्ञाने प्रतिष्ठितम् । प्रज्ञानेत्रो लोकः । प्रज्ञा प्रतिष्ठा । प्रज्ञानं ब्रह्म ॥",
-          transliteration:
-            "eṣa brahmaiṣa indra eṣa prajāpatirete sarve devā imāni ca pañca mahābhūtāni pṛthivī vāyurākāśa āpo jyotīṃṣītyetānīmāni ca kṣudramiśrāṇīva bījānītarāṇi cetarāṇi cāṇḍajāni ca jārujāni ca svedajāni codbhijjāni cāśvā gāvaḥ puruṣā hastino yat kiñcedaṃ prāṇi jaṅgamaṃ ca patatri ca yacca sthāvaram | sarvaṃ tatprajñānetraṃ prajñāne pratiṣṭhitam | prajñānetro lokaḥ | prajñā pratiṣṭhā | prajñānaṃ brahma ||",
-          translation:
-            "This is Brahman; this is Indra; this is Prajāpati; these are all the gods. These five great elements — earth, wind, space, water, light — these and the apparent minor mixtures, all seeds of various kinds: egg-born, womb-born, sweat-born, sprout-born; horses, cows, humans, elephants — whatever is breathing, whether moving on legs or wings, or stationary. All this is led by consciousness; all this is established in consciousness. Consciousness is the eye of the world. Consciousness is its foundation. Consciousness is Brahman.",
-          hindi:
-            'यही ब्रह्म, यही इन्द्र, यही प्रजापति, ये सब देव; ये पाँच महाभूत — पृथ्वी, वायु, आकाश, जल, ज्योति; और ये छोटे मिश्रित बीज; अण्डज, जारुज, स्वेदज, उद्भिज्; अश्व, गाय, मनुष्य, हाथी; जो भी प्राण-धारी जङ्गम और पतत्री है, और जो स्थावर है — यह सब प्रज्ञान-नेत्र है, प्रज्ञान में प्रतिष्ठित है। प्रज्ञान ही लोक का नेत्र है। प्रज्ञा ही प्रतिष्ठा है। प्रज्ञान ही ब्रह्म है।',
-          explanation:
-            "The supreme mahāvākya. Sweeping enumeration of cosmos (gods, elements, all life-forms) — all led by consciousness, established in consciousness. The verse closes with the immortal four words: prajñānaṃ brahma.",
-          science:
-            "Max Planck: 'I regard consciousness as fundamental. I regard matter as derivative from consciousness.' Bernard Kastrup (analytic idealism) and Donald Hoffman (interface theory) argue the same position empirically.",
-          lifeLesson:
-            "You are not a conscious being in an unconscious world. You are consciousness, temporarily appearing as a person. Let this sit with you in stillness.",
-          keywords: ['Mahavakya', 'PrajnanamBrahma', 'Climax'],
-        },
-        {
-          id: 4,
-          sanskrit:
-            "स एतेन प्रज्ञेनात्मनास्माल्लोकादुत्क्रम्यामुष्मिन् स्वर्गे लोके सर्वान् कामानाप्त्वामृतः समभवत् समभवत् ॥",
-          transliteration:
-            "sa etena prajñenātmanāsmāllokādutkramyāmuṣmin svarge loke sarvān kāmānāptvāmṛtaḥ samabhavat samabhavat ||",
-          translation:
-            "He, by this wise Self, rising upward from this world to yonder heavenly world, having attained all desires, became immortal — became immortal.",
-          hindi:
-            'वह — इस प्रज्ञ आत्मा द्वारा — इस लोक से ऊपर उठकर, उस स्वर्ग-लोक में सब कामनाएँ प्राप्त करके — अमर हो गया, अमर हो गया।',
-          explanation:
-            "Closing of the entire Upaniṣad with the doubled 'samabhavat.' By the prajñāna-self, one rises and attains immortality. Same closing structure as adhyāyas 1 and 2 — the threefold confirmation.",
-          science:
-            "Triple-recurrence: the same phrase closes each section, embedding the structural finality of the teaching.",
-          lifeLesson:
-            "Endings well marked help the next thing begin. Practice closing your days, your meetings, your projects with quiet, doubled gratitude. 'Done, done.'",
-          keywords: ['Final', 'Immortal', 'Closing'],
-        },
-      ],
-    },
-  ],
+  {
+    "id": 1,
+    "title": "Adhyāya 1 · Khaṇḍa 1 — Creation of the Worlds and the Cosmic Puruṣa",
+    "titleSanskrit": "प्रथम अध्याय · प्रथम खण्ड — लोक एवं पुरुष-सृष्टि",
+    "summary": "In the beginning the Self alone existed. It thought: 'Let me create the worlds.' From it emerged the four cosmic regions — Ambhas, Marīci, Mara, and Āpaḥ. Then it brought forth the cosmic Puruṣa.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "ॐ आत्मा वा इदमेक एवाग्र आसीत् । नान्यत्किञ्चन मिषत् । स ईक्षत लोकान्नु सृजा इति ॥",
+        "transliteration": "oṃ ātmā vā idameka evāgra āsīt | nānyatkiñcana miṣat | sa īkṣata lokānnu sṛjā iti ||",
+        "translation": "OM. In the beginning the Self alone was here — nothing else whatsoever stirred. It thought: 'Let me create the worlds.'",
+        "hindi": "ॐ। प्रारम्भ में यह सब केवल आत्मा ही था; उसके अतिरिक्त और कुछ भी हलचल करने वाला नहीं था। उसने विचार किया — \"मैं लोकों की सृष्टि करूँ।\"",
+        "explanation": "The Upanishad opens with the most radical metaphysical claim: before anything else, there was only Self. Creation did not emerge from dead matter but from consciousness that *decided* to create. The first act of the Absolute was an act of cognition — 'sa īkṣata' (it thought).",
+        "science": "ॐ। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
+        "lifeLesson": "Recognize that consciousness precedes manifestation. Cultivate awareness of what your thoughts create in your inner and outer world.",
+        "keywords": [
+          "Creation",
+          "CosmicPuruṣa",
+          "ConsciousnessFirst",
+          "Self"
+        ]
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "स इमाँल्लोकानसृजत । अम्भो मरीचीर्मरमापः । अदोऽम्भः परेण दिवं द्यौः प्रतिष्ठाऽन्तरिक्षं मरीचयः । पृथिवी मरो या अधस्तात्ता आपः ॥",
+        "transliteration": "sa imāṃllokānasṛjata | ambho marīcīrmaramāpaḥ | ado'mbhaḥ pareṇa divaṃ dyauḥ pratiṣṭhā'ntarikṣaṃ marīcayaḥ | pṛthivī maro yā adhastāttā āpaḥ ||",
+        "translation": "He created these worlds: Ambhas (the waters above heaven), Marīci (light-rays of the sky), Mara (mortal earth), Āpaḥ (the waters beneath). Yonder is Ambhas beyond the sky; the sky is its support. The intermediate space is the Marīcis; the earth is Mara; what is below is Āpaḥ.",
+        "hindi": "उसने ये लोक रचे — अम्भस्, मरीचि, मर, और आपस्। ऊपर — द्यु से परे — अम्भस् है; उसका आधार द्यु है। अन्तरिक्ष ही मरीचियाँ हैं। पृथ्वी मर है। और जो नीचे है, वह आपस् है।",
+        "explanation": "Four cosmic regions are enumerated: waters-above-sky, sky-rays, mortal earth, waters-below. A vertical fourfold map of the cosmos. The names hint at function: ambhas = source of nourishment; mara = mortal-realm; etc.",
+        "science": "उसने ये लोक रचे — अम्भस्, मरीचि, मर, और आपस्। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
+        "lifeLesson": "Recognize that consciousness precedes manifestation. Cultivate awareness of what your thoughts create in your inner and outer world.",
+        "keywords": [
+          "Creation",
+          "CosmicPuruṣa",
+          "ConsciousnessFirst",
+          "Self"
+        ]
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "स ईक्षतेमे नु लोका लोकपालान्नु सृजा इति । सोऽद्भ्य एव पुरुषं समुद्धृत्यामूर्छयत् ॥",
+        "transliteration": "sa īkṣateme nu lokā lokapālānnu sṛjā iti | so'dbhya eva puruṣaṃ samuddhṛtyāmūrcchayat ||",
+        "translation": "He thought: 'Here are the worlds; let me now create the world-guardians.' From the waters he drew out a Person and shaped him.",
+        "hindi": "उसने विचार किया — \"ये लोक हो गए; अब लोकपालों की सृष्टि करूँ।\" फिर उसने जलों से ही एक पुरुष को निकालकर उसे आकार दिया।",
+        "explanation": "From the cosmic waters, the Self draws forth a Person (Puruṣa) — the primordial cosmic Man from whom the lokapālas (world-guardians/devas) will emerge. The image is precise: out of the formless waters, a form is 'drawn out and consolidated.'",
+        "science": "उसने विचार किया — \"ये लोक हो गए; अब लोकपालों की सृष्टि करूँ। प्रकाश, जल और ताप एक ही प्राकृतिक चक्र के रूप हैं। यह पंक्ति उन रूपों को एक व्यवस्था के अंग की तरह पढ़ती है।",
+        "lifeLesson": "Recognize that consciousness precedes manifestation. Cultivate awareness of what your thoughts create in your inner and outer world.",
+        "keywords": [
+          "Creation",
+          "CosmicPuruṣa",
+          "ConsciousnessFirst",
+          "Self"
+        ]
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "तमभ्यतपत् । तस्याभितप्तस्य मुखं निरभिद्यत यथाण्डम् । मुखाद्वाग्वाचोऽग्निः । नासिके निरभिद्येतां नासिकाभ्यां प्राणः प्राणाद्वायुः । अक्षिणी निरभिद्येतामक्षीभ्यां चक्षुश्चक्षुष आदित्यः । कर्णौ निरभिद्येतां कर्णाभ्यां श्रोत्रं श्रोत्रादिशः । त्वङ्निरभिद्यत त्वचो लोमानि लोमभ्य ओषधिवनस्पतयः । हृदयं निरभिद्यत हृदयान्मनो मनसश्चन्द्रमाः । नाभिर्निरभिद्यत नाभ्या अपानोऽपानान्मृत्युः । शिश्नं निरभिद्यत शिश्नाद्रेतो रेतस आपः ॥",
+        "transliteration": "tamabhyatapat | tasyābhitaptasya mukhaṃ nirabhidyata yathāṇḍam | mukhādvāgvāco'gniḥ | nāsike nirabhidyetāṃ nāsikābhyāṃ prāṇaḥ prāṇādvāyuḥ | akṣiṇī nirabhidyetāmakṣībhyāṃ cakṣuścakṣuṣa ādityaḥ | karṇau nirabhidyetāṃ karṇābhyāṃ śrotraṃ śrotrādiśaḥ | tvaṅnirabhidyata tvaco lomāni lomabhya oṣadhivanaspatayaḥ | hṛdayaṃ nirabhidyata hṛdayānmano manasaścandramāḥ | nābhirnirabhidyata nābhyā apāno'pānānmṛtyuḥ | śiśnaṃ nirabhidyata śiśnādreto retasa āpaḥ ||",
+        "translation": "He heated him (with tapas). From him, heated, the mouth split open like an egg. From the mouth: speech; from speech: Agni. The nostrils split: from them, prāṇa; from prāṇa, Vāyu. The eyes split: from them, sight; from sight, the Sun. The ears split: from them, hearing; from hearing, the directions. The skin split: from it, hair; from hair, plants and trees. The heart split: from it, mind; from mind, the Moon. The navel split: from it, apāna; from apāna, Death. The generative organ split: from it, semen; from semen, the waters.",
+        "hindi": "उसने उसे (पुरुष को) तप द्वारा गरम किया। उससे — तप्त होने पर — मुख अण्डे की भाँति फटा। मुख से वाणी; वाणी से अग्नि। नासिकाएँ फटीं; उनसे प्राण; प्राण से वायु। नेत्र फटे; उनसे चक्षु; चक्षु से सूर्य। कान फटे; उनसे श्रोत्र; श्रोत्र से दिशाएँ। त्वचा फटी; उससे रोम; रोम से ओषधि-वनस्पति। हृदय फटा; उससे मन; मन से चन्द्रमा। नाभि फटी; उससे अपान; अपान से मृत्यु। शिश्न फटा; उससे रेत; रेत से जल।",
+        "explanation": "The cosmic Puruṣa's body becomes the source of all faculties and their corresponding cosmic powers: mouth → speech → Agni; eyes → sight → Sun; etc. The body-cosmos correspondence is established at the very moment of creation.",
+        "science": "उसने उसे (पुरुष को) तप द्वारा गरम किया। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
+        "lifeLesson": "Recognize that consciousness precedes manifestation. Cultivate awareness of what your thoughts create in your inner and outer world.",
+        "keywords": [
+          "Creation",
+          "CosmicPuruṣa",
+          "ConsciousnessFirst",
+          "Self"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Adhyāya 1 · Khaṇḍa 2 — The Devas Seek a Home in the Human Form",
+    "titleSanskrit": "प्रथम अध्याय · द्वितीय खण्ड — देवताओं का देह-प्रवेश",
+    "summary": "The devas, afflicted by hunger and thirst in the cosmic ocean, request a dwelling. After declining animal forms, they joyfully accept the human person (Sukṛtam) and enter its faculties.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "ता एता देवताः सृष्टा अस्मिन्महत्यर्णवे प्रापतन् । तमशनापिपासाभ्यामन्ववार्जत् । ता एनमब्रुवन् । आयतनं नः प्रजानीहि यस्मिन् प्रतिष्ठिता अन्नमदामेति ॥",
+        "transliteration": "tā etā devatāḥ sṛṣṭā asminmahatyarṇave prāpatan | tamaśanāpipāsābhyāmanvavārjat | tā enamabruvan | āyatanaṃ naḥ prajānīhi yasmin pratiṣṭhitā annamadāmeti ||",
+        "translation": "These devas, thus created, fell into this great ocean. The Self afflicted him (the cosmic Person?) with hunger and thirst. They (the devas) said: 'Discover for us an abode in which, established, we may eat food.'",
+        "hindi": "इस प्रकार उत्पन्न ये देवता इस महान् अर्णव (समुद्र) में जा गिरे। उनको भूख और प्यास ने पीड़ित किया। उन्होंने उससे कहा — \"हमारे लिये एक आयतन (निवास) खोजो — जिसमें प्रतिष्ठित होकर हम अन्न खा सकें।\"",
+        "explanation": "The newly-created devas fall into the cosmic ocean — emerged but homeless. Hunger and thirst afflict them. They request: 'find us a body in which we can settle and eat.' The drama of the embodiment problem.",
+        "science": "इस प्रकार उत्पन्न ये देवता इस महान् अर्णव (समुद्र) में जा गिरे। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
+        "lifeLesson": "The human body is recognized as 'sukṛtam' — well-made. Treat the body as a sacred temple housing divine faculties.",
+        "keywords": [
+          "Devas",
+          "Embodiment",
+          "HumanTemple",
+          "Sukritam"
+        ]
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "ताभ्यो गामानयत् । ता अब्रुवन्न वै नोऽयमलमिति । ताभ्योऽश्वमानयत् । ता अब्रुवन्न वै नोऽयमलमिति ॥",
+        "transliteration": "tābhyo gāmānayat | tā abruvanna vai no'yamalamiti | tābhyo'śvamānayat | tā abruvanna vai no'yamalamiti ||",
+        "translation": "He brought them a cow. They said: 'This is not enough for us.' He brought them a horse. They said: 'This is not enough for us.'",
+        "hindi": "उसने उनके लिये गाय लाया। वे बोले — \"यह हमारे लिये अलम् (पर्याप्त) नहीं।\" फिर घोड़ा लाया। वे बोले — \"यह भी पर्याप्त नहीं।\"",
+        "explanation": "Two animal forms are offered and refused. The cow and horse — exemplary creatures — cannot house all the gods. Something more is needed.",
+        "science": "उसने उनके लिये गाय लाया। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
+        "lifeLesson": "The human body is recognized as 'sukṛtam' — well-made. Treat the body as a sacred temple housing divine faculties.",
+        "keywords": [
+          "Devas",
+          "Embodiment",
+          "HumanTemple",
+          "Sukritam"
+        ]
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "ताभ्यः पुरुषमानयत् । ता अब्रुवन् सुकृतं बतेति । पुरुषो वाव सुकृतम् । ता अब्रवीद्यथायतनं प्रविशतेति ॥",
+        "transliteration": "tābhyaḥ puruṣamānayat | tā abruvan sukṛtaṃ bateti | puruṣo vāva sukṛtam | tā abravīdyathāyatanaṃ praviśateti ||",
+        "translation": "He brought them a Person. They said: 'Well done indeed!' The Person is indeed well-made. He said to them: 'Enter your respective abodes.'",
+        "hindi": "उसने उनके लिये पुरुष लाया। वे बोले — \"अहो, यह सुकृत है!\" पुरुष वस्तुतः सुकृत (अच्छी-तरह बनाया गया) है। उसने उनसे कहा — \"अपने-अपने आयतन में प्रवेश करो।\"",
+        "explanation": "The human form is recognized: 'sukṛtam' — well-made. The gods rejoice. The Self assigns each its station. The human body emerges as the unique vessel capable of housing the divine faculties.",
+        "science": "उसने उनके लिये पुरुष लाया। इसे किसी एक घटना का संयोग न मानकर एक नियम की तरह पढ़ना इस पंक्ति का बल है।",
+        "lifeLesson": "The human body is recognized as 'sukṛtam' — well-made. Treat the body as a sacred temple housing divine faculties.",
+        "keywords": [
+          "Devas",
+          "Embodiment",
+          "HumanTemple",
+          "Sukritam"
+        ]
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "अग्निर्वाग्भूत्वा मुखं प्राविशत् । वायुः प्राणो भूत्वा नासिके प्राविशत् । आदित्यश्चक्षुर्भूत्वाक्षिणी प्राविशत् । दिशः श्रोत्रं भूत्वा कर्णौ प्राविशन् । ओषधिवनस्पतयो लोमानि भूत्वा त्वचं प्राविशन् । चन्द्रमा मनो भूत्वा हृदयं प्राविशत् । मृत्युरपानो भूत्वा नाभिं प्राविशत् । आपो रेतो भूत्वा शिश्नं प्राविशन् ॥",
+        "transliteration": "agnirvāgbhūtvā mukhaṃ prāviśat | vāyuḥ prāṇo bhūtvā nāsike prāviśat | ādityaścakṣurbhūtvākṣiṇī prāviśat | diśaḥ śrotraṃ bhūtvā karṇau prāviśan | oṣadhivanaspatayo lomāni bhūtvā tvacaṃ prāviśan | candramā mano bhūtvā hṛdayaṃ prāviśat | mṛtyurapāno bhūtvā nābhiṃ prāviśat | āpo reto bhūtvā śiśnaṃ prāviśan ||",
+        "translation": "Agni became speech and entered the mouth. Vāyu became prāṇa and entered the nostrils. Āditya became sight and entered the eyes. The directions became hearing and entered the ears. Plants and trees became hair and entered the skin. The Moon became mind and entered the heart. Death became apāna and entered the navel. The waters became semen and entered the generative organ.",
+        "hindi": "अग्नि वाणी होकर मुख में प्रविष्ट हुई; वायु प्राण होकर नासिकाओं में; सूर्य चक्षु होकर नेत्रों में; दिशाएँ श्रोत्र होकर कानों में; ओषधि-वनस्पति रोम होकर त्वचा में; चन्द्र मन होकर हृदय में; मृत्यु अपान होकर नाभि में; जल रेत होकर शिश्न में।",
+        "explanation": "Each cosmic deity becomes a faculty and enters its corresponding bodily location. The same structure as Khaṇḍa 1, now in reverse: from cosmos back into the human form. The body is the universe folded inward.",
+        "science": "अग्नि वाणी होकर मुख में प्रविष्ट हुई; वायु प्राण होकर नासिकाओं में; सूर्य चक्षु होकर नेत्रों में; दिशाएँ श्रोत्र होकर कानों में; ओषधि-वनस्पति रोम होकर त्वचा…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
+        "lifeLesson": "The human body is recognized as 'sukṛtam' — well-made. Treat the body as a sacred temple housing divine faculties.",
+        "keywords": [
+          "Devas",
+          "Embodiment",
+          "HumanTemple",
+          "Sukritam"
+        ]
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "तमशनापिपासे अब्रूताम् । आवाभ्यामभिप्रजानीहीति । ते अब्रवीदेतास्वेव वां देवतास्वाभजाम्येतासु भागिन्यौ करोमीति । तस्माद्यस्यै कस्यै च देवतायै हविर्गृह्यते भागिन्यावेवास्यामशनापिपासे भवतः ॥",
+        "transliteration": "tamaśanāpipāse abrūtām | āvābhyāmabhiprajānīhīti | te abravīdetāsveva vāṃ devatāsvābhajāmyetāsu bhāginyau karomīti | tasmādyasyai kasyai ca devatāyai havirgṛhyate bhāginyāvevāsyāmaśanāpipāse bhavataḥ ||",
+        "translation": "Hunger and thirst said to him: 'Find a place for us too.' He said to them: 'I assign you a share in these very deities; I make you partners with them.' Therefore, whatever deity receives an oblation, hunger and thirst share in it.",
+        "hindi": "भूख और प्यास ने उससे कहा — \"हम दोनों के लिये भी स्थान दे।\" उसने कहा — \"तुम्हें इन्हीं देवताओं में अंश दे रहा हूँ; तुम्हें इनके साथ भागी बना रहा हूँ।\" इसीलिये जिस किसी देवता के लिये हवि लिया जाता है, उसमें भूख और प्यास भी भागी होते हैं।",
+        "explanation": "Hunger and thirst — primal drives — are not given their own organ but assigned as 'partners' to every deity. Hence every offering nourishes them indirectly. The drives pervade all faculties — a sharp psychological insight.",
+        "science": "भूख और प्यास ने उससे कहा — \"हम दोनों के लिये भी स्थान दे। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
+        "lifeLesson": "The human body is recognized as 'sukṛtam' — well-made. Treat the body as a sacred temple housing divine faculties.",
+        "keywords": [
+          "Devas",
+          "Embodiment",
+          "HumanTemple",
+          "Sukritam"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Adhyāya 1 · Khaṇḍa 3 — Creation of Food and the Entry of the Self",
+    "titleSanskrit": "प्रथम अध्याय · तृतीय खण्ड — अन्न-सृष्टि एवं आत्मा का प्रवेश",
+    "summary": "Food is created from heated waters. The senses try to grasp it in vain until Apāna catches it. The Self reflects 'Who am I without these?' and enters through the crown (Vidṛti), realizing 'Idam adarśam' (I have seen This).",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "स ईक्षतेमौ नु लोकाश्च लोकपालाश्चान्नमभ्य एभ्यः सृजा इति ॥ १ ॥",
+        "transliteration": "sa īkṣatemau nu lokāśca lokapālāścānnamabhya ebhyaḥ sṛjā iti || 1 ||",
+        "translation": "He reflected: 'Here are the worlds and the world-guardians. Let me now create food for them.'",
+        "hindi": "उसने विचार किया — 'ये लोक और लोकपाल तो बन गए; अब इनके लिये अन्न की सृष्टि करूँ।' ॥ १ ॥",
+        "explanation": "The cosmic drama moves from structure to nourishment. Having created the faculties and their presiding devas, the Self recognizes that embodiment requires sustenance. Creation without food cannot endure.",
+        "science": "Thermodynamics of living systems (Schrödinger, 'What is Life?'): living organisms maintain negative entropy only by continually importing free energy from the environment as food.",
+        "lifeLesson": "Every creative endeavor requires ongoing nourishment to survive. Ideation without execution and sustenance quickly dissipates.",
+        "keywords": [
+          "CreationOfFood",
+          "Nourishment",
+          "Entropy",
+          "Sustenance"
+        ]
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "सोऽपोऽभ्यतपत्ताभ्योऽभितप्ताभ्यो मूर्तिरजायत । या वै सा मूर्तिरजायतान्नं वै तत् ॥ २ ॥",
+        "transliteration": "so'po'bhyatapattābhyo'bhitaptābhyo mūrtirajāyata | yā vai sā mūrtirajāyatānnaṃ vai tat || 2 ||",
+        "translation": "He heated the waters with tapas. From the waters thus heated, a solid form arose. That form which was born is food indeed.",
+        "hindi": "उसने जलों पर तप (सङ्कल्प) किया। उस तप्त जल से एक मूर्ति (ठोस रूप) उत्पन्न हुई। जो वह मूर्ति उत्पन्न हुई, वही वस्तुतः अन्न है। ॥ २ ॥",
+        "explanation": "Food emerges from the union of energy (tapas/heat) and primal matter (water). Solid forms crystallize from energetic fluid substrates.",
+        "science": "Abiogenesis and prebiotic chemistry: hydrothermal vents and thermal gradients in ancient oceans generated the organic molecules and amino acids that formed primal food.",
+        "lifeLesson": "Crystallization requires focused heat (effort) applied to fluid ideas. Pressure and dedication turn fluid possibilities into concrete reality.",
+        "keywords": [
+          "Tapas",
+          "Crystallization",
+          "SolidForm",
+          "PrebioticChemistry"
+        ]
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "तदेतत्सृष्टं पराङत्यजिघांसत्तद्वाचाजिघृक्षत्तन्नाशक्नोद्वाचा ग्रहीतुम् । स यद्धैनद्वाचाग्रहैष्यदभिव्याहृत्य हैवान्नमत्रप्स्यत् ॥ ३ ॥",
+        "transliteration": "tadētatsṛṣṭaṃ parāṅatyajighāṃsattadvācājighṛkṣattannāśaknodvācā grahītum | sa yaddhainadvācāgrahaiṣyadabhivyāhṛtya haivānnamatrapsyat || 3 ||",
+        "translation": "That food, being created, tried to flee. He sought to grasp it with speech. He could not grasp it with speech. Had he grasped it with speech, merely by naming food one would be satisfied.",
+        "hindi": "वह उत्पन्न हुआ अन्न भागने लगा। उसने उसे वाणी से पकड़ना चाहा, पर वाणी से न पकड़ सका। यदि वाणी से पकड़ लेता, तो केवल अन्न का नाम लेने मात्र से मनुष्य तृप्त हो जाता। ॥ ३ ॥",
+        "explanation": "A profound psychological and physical truth: speaking about a thing is not experiencing or consuming it. Words represent reality, but speech cannot nourish the body.",
+        "science": "Semiotics and cognitive neuroscience: the linguistic representation of an object (signifier) does not possess the physical or biochemical properties of the object itself.",
+        "lifeLesson": "Don't confuse talking about goals with achieving them. Merely discussing wisdom, fitness, or projects does not provide the substance of doing them.",
+        "keywords": [
+          "SpeechVsReality",
+          "ActionOverWords",
+          "Semiotics",
+          "CognitiveBias"
+        ]
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "तत्प्राणेनाजिघृक्षत्तन्नाशक्नोत्प्राणेन ग्रहीतुम् । स यद्धैनत्प्राणेनाग्रहैष्यदभिप्राण्य हैवान्नमत्रप्स्यत् ॥ ४ ॥",
+        "transliteration": "tatprāṇenājighṛkṣattannāśaknotprāṇena grahītum | sa yaddhainatprāṇenāgrahaiṣyadabhiprāṇya haivānnamatrapsyat || 4 ||",
+        "translation": "He sought to grasp it with breath (olfaction). He could not grasp it with breath. Had he grasped it with breath, merely by smelling food one would be satisfied.",
+        "hindi": "उसने उसे प्राण (घ्राण-शक्ति) से पकड़ना चाहा, पर न पकड़ सका। यदि प्राण से पकड़ लेता, तो केवल अन्न को सूंघने मात्र से मनुष्य तृप्त हो जाता। ॥ ४ ॥",
+        "explanation": "Olfaction senses the chemical signature of nourishment and primes digestive enzymes, but smell alone cannot sustain cellular life.",
+        "science": "Cephalic phase response: olfactory stimulation triggers anticipatory salivary and gastric acid secretion, but cannot deliver caloric intake.",
+        "lifeLesson": "Proximity to excellence or inspiration can inspire you, but passive proximity is not genuine assimilation.",
+        "keywords": [
+          "Olfaction",
+          "CephalicResponse",
+          "Assimilation",
+          "DirectExperience"
+        ]
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "तच्चक्षुषाजिघृक्षत्तन्नाशक्नोच्चक्षुषा ग्रहीतुम् । स यद्धैनच्चक्षुषाग्रहैष्यद्दृष्ट्वा हैवान्नमत्रप्स्यत् ॥ ५ ॥",
+        "transliteration": "taccakṣuṣājighṛkṣattannāśaknoccakṣuṣā grahītum | sa yaddhainaccakṣuṣāgrahaiṣyaddṛṣṭvā haivānnamatrapsyat || 5 ||",
+        "translation": "He sought to grasp it with sight (the eye). He could not grasp it with sight. Had he grasped it with sight, merely by looking at food one would be satisfied.",
+        "hindi": "उसने उसे चक्षु (नेत्र) से पकड़ना चाहा, पर न पकड़ सका। यदि नेत्र से पकड़ लेता, तो केवल अन्न को देखने मात्र से मनुष्य तृप्त हो जाता। ॥ ५ ॥",
+        "explanation": "Visual appraisal gauges nutritional freshness, but visual photons carry no metabolic fuel to nourish living tissue.",
+        "science": "Visual processing in the occipital cortex decodes light frequencies, but metabolic sustenance requires chemical catabolism of macronutrients.",
+        "lifeLesson": "Consuming content visually (social feeds, tutorials) creates an illusion of competence without real mastery.",
+        "keywords": [
+          "VisualAppraisal",
+          "IllusionOfCompetence",
+          "Spectatorship",
+          "Substance"
+        ]
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "तच्छ्रोत्रेणाजिघृक्षत्तन्नाशक्नोच्छ्रोत्रेण ग्रहीतुम् । स यद्धैनच्छ्रोत्रेणाग्रहैष्यच्छ्रुत्वा हैवान्नमत्रप्स्यत् ॥ ६ ॥",
+        "transliteration": "tacchrotreṇājighṛkṣattannāśaknocchrotreṇa grahītum | sa yaddhainacchrotreṇāgrahaiṣyacchrutvā haivānnamatrapsyat || 6 ||",
+        "translation": "He sought to grasp it with hearing (the ear). He could not grasp it with hearing. Had he grasped it with hearing, merely by hearing of food one would be satisfied.",
+        "hindi": "उसने उसे श्रोत्र (कान) से पकड़ना चाहा, पर न पकड़ सका। यदि कान से पकड़ लेता, तो केवल अन्न की चर्चा सुनने मात्र से मनुष्य तृप्त हो जाता। ॥ ६ ॥",
+        "explanation": "Auditory perception receives sound waves and descriptions. Hearing about liberation is not liberation; direct digestion is required.",
+        "science": "Auditory cortex signals transduce mechanical air vibrations; they do not alter systemic blood glucose or cellular metabolism.",
+        "lifeLesson": "Listening to self-help podcasts or talks changes nothing until the principles are digested into daily conduct.",
+        "keywords": [
+          "AuditoryInput",
+          "ListeningVsDoing",
+          "DirectPractice",
+          "Integration"
+        ]
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "तत्त्वचाजिघृक्षत्तन्नाशक्नोत्त्वचा ग्रहीतुम् । स यद्धैनत्त्वचाग्रहैष्यत्स्पृष्ट्वा हैवान्नमत्रप्स्यत् ॥ ७ ॥",
+        "transliteration": "tattvacājighṛkṣattannāśaknottvacā grahītum | sa yaddhainattvacāgrahaiṣyatspṛṣṭvā haivānnamatrapsyat || 7 ||",
+        "translation": "He sought to grasp it with the skin (touch). He could not grasp it with the skin. Had he grasped it with the skin, merely by touching food one would be satisfied.",
+        "hindi": "उसने उसे त्वचा (स्पर्श) से पकड़ना चाहा, पर न पकड़ सका। यदि त्वचा से पकड़ लेता, तो केवल अन्न को छूने मात्र से मनुष्य तृप्त हो जाता। ॥ ७ ॥",
+        "explanation": "Tactile contact confirms the physical texture and presence of an object, yet surface contact cannot metabolize substance into vital energy.",
+        "science": "Somatosensory mechanoreceptors register pressure and temperature; transdermal nutrient absorption is negligible for bulk metabolic fuel.",
+        "lifeLesson": "Skimming the surface of relationships or disciplines gives superficial contact, not genuine fulfillment.",
+        "keywords": [
+          "Touch",
+          "SurfaceContact",
+          "Depth",
+          "Metabolism"
+        ]
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "तन्मनसाजिघृक्षत्तन्नाशक्नोन्मनसा ग्रहीतुम् । स यद्धैनन्मनसाग्रहैष्यद्ध्यात्वा हैवान्नमत्रप्स्यत् ॥ ८ ॥",
+        "transliteration": "tanmanasājighṛkṣattannāśaknonmanasā grahītum | sa yaddhainanmanasāgrahaiṣyaddhyātvā haivānnamatrapsyat || 8 ||",
+        "translation": "He sought to grasp it with the mind. He could not grasp it with the mind. Had he grasped it with the mind, merely by meditating on food one would be satisfied.",
+        "hindi": "उसने उसे मन से पकड़ना चाहा, पर न पकड़ सका। यदि मन से पकड़ लेता, तो केवल अन्न का ध्यान या चिन्तन करने मात्र से मनुष्य तृप्त हो जाता। ॥ ८ ॥",
+        "explanation": "Pure mental contemplation of nourishment does not nourish the physical frame. Thought must bridge into somatic action.",
+        "science": "Cognitive mental simulation activates motor and sensory networks, but produces no adenosine triphosphate (ATP) for cellular survival.",
+        "lifeLesson": "Overthinking is not execution. You cannot think your way into physical stamina or emotional peace without embodiment.",
+        "keywords": [
+          "MindVsAction",
+          "MentalSimulation",
+          "Embodiment",
+          "Execution"
+        ]
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "तच्छिश्नेनाजिघृक्षत्तन्नाशक्नोच्छिश्नेन ग्रहीतुम् । स यद्धैनच्छिश्नेनाग्रहैष्यद्विसृज्य हैवान्नमत्रप्स्यत् ॥ ९ ॥",
+        "transliteration": "tacchiśnenājighṛkṣattannāśaknocchiśnena grahītum | sa yaddhainacchiśnenāgrahaiṣyadvisṛjya haivānnamatrapsyat || 9 ||",
+        "translation": "He sought to grasp it with the generative organ. He could not grasp it with the generative organ. Had he grasped it so, merely by emission one would be satisfied.",
+        "hindi": "उसने उसे जननेन्द्रिय से पकड़ना चाहा, पर न पकड़ सका। यदि उससे पकड़ लेता, तो केवल विसर्जन मात्र से मनुष्य तृप्त हो जाता। ॥ ९ ॥",
+        "explanation": "The reproductive organ expends creative vitality for propagation; it cannot internalize nourishment for individual self-preservation.",
+        "science": "Reproductive biology governs gene transmission across generations, requiring massive energy expenditure rather than caloric assimilation.",
+        "lifeLesson": "Creative output drains energy unless balanced by continuous inward nourishment and restoration.",
+        "keywords": [
+          "Generation",
+          "Propagation",
+          "EnergyExpenditure",
+          "Restoration"
+        ]
+      },
+      {
+        "id": 10,
+        "number": 10,
+        "sanskrit": "तदपानेनाजिघृक्षत्तदावयत् । सैषोऽन्नस्य ग्रहो यदपानो ह्यन्नायुर्वा एष यदपानः ॥ १० ॥",
+        "transliteration": "tadapānenājighṛkṣattadāvayat | saiṣo'nnasya graho yadapāno hyannāyurvā eṣa yadapānaḥ || 10 ||",
+        "translation": "He sought to grasp it with Apāna (digestive vital breath). He caught it! This Apāna is the grasper of food; Apāna is that which lives on food.",
+        "hindi": "उसने उसे अपान-वायु (पाचक व आन्तरिक शक्ति) से पकड़ना चाहा; और उसने उसे पकड़ लिया! यह अपान ही अन्न का ग्रहणकर्ता है, और अपान ही अन्न से आयु प्राप्त करता है। ॥ १० ॥",
+        "explanation": "Apāna is the inward-drawing, assimilative bio-energy that digests food and sustains physical life. It represents true internalization: not merely perceiving, but metabolizing reality into being.",
+        "science": "Enteric nervous system and gastrointestinal assimilation: digestive motility, nutrient absorption across epithelial villi, and ATP synthesis constitute Apana.",
+        "lifeLesson": "To transform your life, you must metabolize experiences — digest lessons, absorb nutrition, and eliminate waste.",
+        "keywords": [
+          "Apana",
+          "Assimilation",
+          "Digestion",
+          "Metabolism",
+          "LifeEnergy"
+        ]
+      },
+      {
+        "id": 11,
+        "number": 11,
+        "sanskrit": "स ईक्षत । कथं न्विदं मदृते स्यादिति । स ईक्षत कतरेण प्रपद्या इति । स ईक्षत यदि वाचाभिव्याहृतं यदि प्राणेनाभिप्राणितं यदि चक्षुषा दृष्टं यदि श्रोत्रेण श्रुतं यदि त्वचा स्पृष्टं यदि मनसा ध्यातं यदि अपानेनाभ्यपानितं यदि शिश्नेन विसृष्टमथ कोऽहमिति ॥",
+        "transliteration": "sa īkṣata | kathaṃ nvidaṃ madṛte syāditi | sa īkṣata katareṇa prapadyā iti | sa īkṣata yadi vācābhivyāhṛtaṃ yadi prāṇenābhiprāṇitaṃ yadi cakṣuṣā dṛṣṭaṃ yadi śrotreṇa śrutaṃ yadi tvacā spṛṣṭaṃ yadi manasā dhyātaṃ yadi apānenābhyapānitaṃ yadi śiśnena visṛṣṭamatha ko'hamiti ||",
+        "translation": "He reflected: 'How can this exist without me?' He reflected: 'Through which gate shall I enter?' He thought: 'If speaking is done by speech, breathing by prāṇa, seeing by the eye, hearing by the ear, touching by skin, thinking by mind, eliminating by apāna, generating by the organ — then who am I?'",
+        "hindi": "उसने विचार किया — \"मेरे बिना यह कैसे रह सकता है?\" विचार किया — \"किस द्वार से प्रवेश करूँ?\" विचार किया — \"यदि वाणी से बोला जाता है, प्राण से साँस ली जाती है, नेत्र से देखा जाता है, कान से सुना जाता है, त्वचा से छुआ जाता है, मन से सोचा जाता है, अपान से त्याग होता है, शिश्न से उत्सर्जन होता है — तो फिर मैं कौन हूँ?\"",
+        "explanation": "The most penetrating self-question ever posed. If every function is performed by some faculty, what is left to be 'I'? The Upanishad anticipates the modern question: is there anything left for the 'self' to do, or is 'self' just a label for the bundle of functions?",
+        "science": "उसने विचार किया — \"मेरे बिना यह कैसे रह सकता है?\" विचार किया — \"किस द्वार से प्रवेश करूँ?\" विचार किया — \"यदि वाणी से बोला जाता है, प्राण से साँस ली जाती है,…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
+        "lifeLesson": "Ask the fundamental inquiry: When all senses function by their nature, who am I?",
+        "keywords": [
+          "SelfInquiry",
+          "WhoAmI",
+          "CrownEntry",
+          "Indra",
+          "IdamAdarsham"
+        ]
+      },
+      {
+        "id": 12,
+        "number": 12,
+        "sanskrit": "स एतमेव सीमानं विदार्यैतया द्वारा प्रापद्यत । सैषा विदृतिर्नाम द्वास्तदेतन्नाण्डनम् । तस्य त्रय आवसथास्त्रयः स्वप्नाः । अयमावसथोऽयमावसथोऽयमावसथ इति ॥",
+        "transliteration": "sa etameva sīmānaṃ vidāryaitayā dvārā prāpadyata | saiṣā vidṛtirnāma dvāstadetannāṇḍanam | tasya traya āvasathāstrayaḥ svapnāḥ | ayamāvasatho'yamāvasatho'yamāvasatha iti ||",
+        "translation": "Having split this very crown (suture), he entered through that gate. This gate is named Vidṛti (the split); that is the place of joy. He has three dwellings, three dream-states: 'this is the dwelling, this is the dwelling, this is the dwelling.'",
+        "hindi": "उसने इसी मस्तक के सीमान्त को फाड़कर उसी द्वार से प्रवेश किया। उस द्वार का नाम विदृति है; और वही नन्दन (आनन्द-स्थान) है। उसके तीन आवास, तीन स्वप्न हैं — \"यह आवास, यह आवास, यह आवास।\"",
+        "explanation": "The Self enters through the crown — the brahma-randhra. The split is called 'vidṛti'; it is also 'nandana' — place of joy. Three dwellings = three states (waking, dream, deep sleep).",
+        "science": "उसने इसी मस्तक के सीमान्त को फाड़कर उसी द्वार से प्रवेश किया। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
+        "lifeLesson": "Look closely at reality until you recognize: Idam adarsham — I have seen the One behind all appearances.",
+        "keywords": [
+          "SelfInquiry",
+          "WhoAmI",
+          "CrownEntry",
+          "Indra",
+          "IdamAdarsham"
+        ]
+      },
+      {
+        "id": 13,
+        "number": 13,
+        "sanskrit": "स जातो भूतान्यभिव्यैक्षत । किमिहान्यं वावदिषदिति । स एतमेव पुरुषं ब्रह्म ततममपश्यत् । इदमदर्शमिति ॥",
+        "transliteration": "sa jāto bhūtānyabhivyaikṣata | kimihānyaṃ vāvadiṣaditi | sa etameva puruṣaṃ brahma tatamamapaśyat | idamadarśamiti ||",
+        "translation": "Having been born, he saw all the beings. He thought: 'What other than this could one speak of?' He saw this very Person, Brahman, the all-pervading. He exclaimed: 'idam adarśam — this I have seen!'",
+        "hindi": "जन्म लेकर उसने सब प्राणियों को देखा। विचार किया — \"इससे अतिरिक्त और किसकी चर्चा करूँ?\" उसने इसी पुरुष को — सर्वव्यापक ब्रह्म को — देखा और कहा — \"इदम् अदर्शम् — यह मैंने देख लिया!\"",
+        "explanation": "The moment of recognition. The Self, embodied, looks and sees — and recognizes himself as the same Brahman pervading all. The exclamation 'idam adarśam' — 'this I have seen' — names the very moment of awakening.",
+        "science": "जन्म लेकर उसने सब प्राणियों को देखा। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
+        "lifeLesson": "Look closely at reality until you recognize: Idam adarsham — I have seen the One behind all appearances.",
+        "keywords": [
+          "SelfInquiry",
+          "WhoAmI",
+          "CrownEntry",
+          "Indra",
+          "IdamAdarsham"
+        ]
+      },
+      {
+        "id": 14,
+        "number": 14,
+        "sanskrit": "तस्मादिदन्द्रो नामेदन्द्रो ह वै नाम । तमिदन्द्रं सन्तमिन्द्र इत्याचक्षते परोक्षेण । परोक्षप्रिया इव हि देवाः परोक्षप्रिया इव हि देवाः ॥",
+        "transliteration": "tasmādidandro nāmedandro ha vai nāma | tamidandraṃ santamindra ityācakṣate parokṣeṇa | parokṣapriyā iva hi devāḥ parokṣapriyā iva hi devāḥ ||",
+        "translation": "Therefore his name is Idandra — Idandra indeed is his name. Being Idandra, they call him Indra in a concealed way. For the gods are fond of indirect names; the gods are fond of indirect names.",
+        "hindi": "इसलिये उसका नाम \"इदन्द्र\" है — इदन्द्र ही उसका नाम है। उस इदन्द्र को परोक्ष से \"इन्द्र\" कहते हैं — क्योंकि देव परोक्ष-प्रिय होते हैं; देव परोक्ष-प्रिय होते हैं।",
+        "explanation": "An etymological revelation: 'Indra' derives from 'idandra' — 'he who saw this.' The gods love concealed names, the verse playfully observes. The doubled closing marks the end of khaṇḍa 3 of adhyāya 1.",
+        "science": "इसलिये उसका नाम \"इदन्द्र\" है — इदन्द्र ही उसका नाम है। दोहराया हुआ स्वर श्वास और अवधान को एक लय में लाता है। यहाँ शब्द केवल सूचना नहीं, साधना का साधन है।",
+        "lifeLesson": "Look closely at reality until you recognize: Idam adarsham — I have seen the One behind all appearances.",
+        "keywords": [
+          "SelfInquiry",
+          "WhoAmI",
+          "CrownEntry",
+          "Indra",
+          "IdamAdarsham"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Adhyāya 2 — The Three Births of the Soul and Sage Vamadeva",
+    "titleSanskrit": "द्वितीय अध्याय — आत्मा के तीन जन्म एवं वामदेव-उपाख्यान",
+    "summary": "The soul's threefold birth: as embryo in the father, through birth from the mother, and departing at physical death. Sage Vamadeva awakens to immortality while still in the womb.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "पुरुषे ह वा अयमादितो गर्भो भवति । यदेतद्रेतस्तदेतत्सर्वेभ्योऽङ्गेभ्यस्तेजः सम्भूतम् । आत्मन्येवात्मानं बिभर्ति । तद्यथा स्त्रियां सिञ्चत्यथैनज्जनयति । तदस्य प्रथमं जन्म ॥",
+        "transliteration": "puruṣe ha vā ayamādito garbho bhavati | yadetadretastadetatsarvebhyo'ṅgebhyastejaḥ sambhūtam | ātmanyevātmānaṃ bibharti | tadyathā striyāṃ siñcatyathainajjanayati | tadasya prathamaṃ janma ||",
+        "translation": "In a man, this (Self) is first an embryo. The semen is the essence concentrated from all his limbs. He carries his own self in himself. When he pours it into a woman, he gives birth to it. This is its first birth.",
+        "hindi": "पुरुष में यह आत्मा सबसे पहले गर्भ बनता है। जो यह रेत है, वह सब अंगों से एकत्र तेज है। वह अपने ही आत्मा को अपने में धारण किये रहता है। जब वह स्त्री में सिञ्चन करता है, तब उसको उत्पन्न करता है। यह उसका प्रथम जन्म है।",
+        "explanation": "Restated for the second adhyāya. First birth = conception. The same Self that animates the father is concentrated into the seed and transferred. The repetition emphasizes the cosmic significance.",
+        "science": "पुरुष में यह आत्मा सबसे पहले गर्भ बनता है। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
+        "lifeLesson": "Understand the continuity of life across generations and rebirths. Align your actions with enduring spiritual purpose.",
+        "keywords": [
+          "ThreeBirths",
+          "Rebirth",
+          "SageVamadeva",
+          "Lineage",
+          "Continuity"
+        ]
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "तत्स्त्रिया आत्मभूयं गच्छति यथा स्वमङ्गं तथा । तस्मादेनां न हिनस्ति । साऽस्यैतमात्मानमत्र गतं भावयति ॥",
+        "transliteration": "tatstriyā ātmabhūyaṃ gacchati yathā svamaṅgaṃ tathā | tasmādenāṃ na hinasti | sā'syaitamātmānamatra gataṃ bhāvayati ||",
+        "translation": "It becomes a self-portion in the woman, like one of her own limbs. Therefore it does not injure her. She nourishes this self of his that has gone into her.",
+        "hindi": "वह स्त्री के लिये आत्म-रूप हो जाता है — जैसे उसका अपना अंग। इसी कारण वह उसे पीड़ा नहीं देता। वह उसके इस आत्मा को — जो उसमें गया है — पोषित करती है।",
+        "explanation": "Reiteration of the maternal-fetal tolerance. Highlighted to embed the mother's role as central to the soul's first journey. She nourishes 'his self that has come into her.'",
+        "science": "वह स्त्री के लिये आत्म-रूप हो जाता है — जैसे उसका अपना अंग। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
+        "lifeLesson": "Understand the continuity of life across generations and rebirths. Align your actions with enduring spiritual purpose.",
+        "keywords": [
+          "ThreeBirths",
+          "Rebirth",
+          "SageVamadeva",
+          "Lineage",
+          "Continuity"
+        ]
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "सा भावयित्री भावयितव्या भवति । तं स्त्री गर्भं बिभर्ति । सोऽग्र एव कुमारं जन्मनोऽग्रेऽधिभावयति । स यत्कुमारं जन्मनोऽग्रेऽधिभावयत्यात्मानमेव तद्भावयत्येषां लोकानां सन्तत्या । एवं सन्तता हीमे लोकाः । तदस्य द्वितीयं जन्म ॥",
+        "transliteration": "sā bhāvayitrī bhāvayitavyā bhavati | taṃ strī garbhaṃ bibharti | so'gra eva kumāraṃ janmano'gre'dhibhāvayati | sa yatkumāraṃ janmano'gre'dhibhāvayatyātmānameva tadbhāvayatyeṣāṃ lokānāṃ santatyā | evaṃ santatā hīme lokāḥ | tadasya dvitīyaṃ janma ||",
+        "translation": "She, the nourisher, becomes one to be nourished. The woman carries the embryo. He nourishes the child even before its birth, and after birth. By nourishing the child both before and after, he nourishes himself, for the continuance of these worlds. Thus these worlds continue. This is his second birth.",
+        "hindi": "वह पालन करने वाली पालन के योग्य हो जाती है। स्त्री गर्भ को धारण करती है। वह जन्म से पहले और बाद में भी कुमार को पोषित करता है। ऐसा करते हुए वह अपने ही आत्मा को पोषित करता है — इन लोकों की सन्तति के लिये। ऐसे ही ये लोक चलते हैं। यह उसका द्वितीय जन्म है।",
+        "explanation": "Second birth: the actual birth from the womb, plus the nurturing that continues. Worlds continue because parents nourish themselves through nourishing offspring.",
+        "science": "वह पालन करने वाली पालन के योग्य हो जाती है। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
+        "lifeLesson": "Understand the continuity of life across generations and rebirths. Align your actions with enduring spiritual purpose.",
+        "keywords": [
+          "ThreeBirths",
+          "Rebirth",
+          "SageVamadeva",
+          "Lineage",
+          "Continuity"
+        ]
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "सोऽस्यायमात्मा पुण्येभ्यः कर्मभ्यः प्रतिधीयते । अथास्यायमितर आत्मा कृतकृत्यो वयोगतः प्रैति । स इतः प्रयन्नेव पुनर्जायते । तदस्य तृतीयं जन्म ॥",
+        "transliteration": "so'syāyamātmā puṇyebhyaḥ karmabhyaḥ pratidhīyate | athāsyāyamitara ātmā kṛtakṛtyo vayogataḥ praiti | sa itaḥ prayanneva punarjāyate | tadasya tṛtīyaṃ janma ||",
+        "translation": "This self of his is set in his place for the meritorious works. Then his other self, having done his duty and reached his age, departs. Departing from here, he is born again. This is his third birth.",
+        "hindi": "यह (पुत्र रूपी) उसका आत्मा पुण्य-कर्मों के लिये उसके स्थान पर स्थापित हो जाता है। फिर यह अन्य आत्मा (पिता) कृतकृत्य होकर, आयु को प्राप्त होकर, प्रयाण करता है। यहाँ से जाकर वह पुनः जन्म लेता है। यह उसका तृतीय जन्म है।",
+        "explanation": "Third birth = rebirth. The departing soul is born again. The doctrine of rebirth thus rests on the same continuity-of-self that grounded conception.",
+        "science": "यह (पुत्र रूपी) उसका आत्मा पुण्य-कर्मों के लिये उसके स्थान पर स्थापित हो जाता है। देह के पदार्थ बदलते रहते हैं, पर जानने का बोध बना रहता है। यह पंक्ति उसी अंतर को कहती है।",
+        "lifeLesson": "Understand the continuity of life across generations and rebirths. Align your actions with enduring spiritual purpose.",
+        "keywords": [
+          "ThreeBirths",
+          "Rebirth",
+          "SageVamadeva",
+          "Lineage",
+          "Continuity"
+        ]
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "तदुक्तमृषिणा । गर्भे नु सन्नन्वेषामवेदमहं देवानां जनिमानि विश्वा । शतं मा पुर आयसीररक्षन्नधः श्येनो जवसा निरदीयम् । इति । गर्भ एवैतच्छयानो वामदेव एवमुवाच ॥",
+        "transliteration": "taduktamṛṣiṇā | garbhe nu sannanveṣāmavedamahaṃ devānāṃ janimāni viśvā | śataṃ mā pura āyasīrarakṣannadhaḥ śyeno javasā niradīyam | iti | garbha evaitacchayāno vāmadeva evamuvāca ||",
+        "translation": "Hence the seer said: 'Still in the womb, I knew all the births of these gods. A hundred iron forts guarded me, but I, the hawk, escaped downward with speed.' Thus Vāmadeva, lying in the womb itself, spoke.",
+        "hindi": "इसलिये ऋषि ने कहा — \"गर्भ में रहते हुए ही मैंने इन सब देवों के जन्मों को जान लिया। मुझे सौ लोह-पुरियाँ रोकती रहीं, परन्तु मैं श्येन (बाज) वेग से नीचे निकल आया।\" वामदेव ने गर्भ में सोते हुए ही ऐसा कहा।",
+        "explanation": "Vāmadeva is the prototypical case of pre-birth realization. The verse is taken as evidence that knowledge of cosmic order is possible even before sensory development.",
+        "science": "इसलिये ऋषि ने कहा — \"गर्भ में रहते हुए ही मैंने इन सब देवों के जन्मों को जान लिया। श्रद्धा और सुरक्षित लगाव तनाव-प्रतिक्रिया को घटाते हैं। यह पंक्ति उसी आश्रय को अपना विषय बनाती है।",
+        "lifeLesson": "Understand the continuity of life across generations and rebirths. Align your actions with enduring spiritual purpose.",
+        "keywords": [
+          "ThreeBirths",
+          "Rebirth",
+          "SageVamadeva",
+          "Lineage",
+          "Continuity"
+        ]
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "स एवं विद्वानस्माच्छरीरभेदादूर्ध्व उत्क्रम्यामुष्मिन् स्वर्गे लोके सर्वान् कामानाप्त्वामृतः समभवत् समभवत् ॥",
+        "transliteration": "sa evaṃ vidvānasmāccharīrabhedādūrdhva utkramyāmuṣmin svarge loke sarvān kāmānāptvāmṛtaḥ samabhavat samabhavat ||",
+        "translation": "He, thus knowing, rising upward at the dissolution of this body, having attained all desires in yonder heavenly world, became immortal — became immortal.",
+        "hindi": "वह — इस प्रकार ज्ञानी — शरीर के विभेद पर ऊर्ध्व उत्क्रमण करके — उस स्वर्ग-लोक में सब कामनाएँ प्राप्त करके — अमर हो गया, अमर हो गया।",
+        "explanation": "Closing of adhyāya 2 with the doubled samabhavat. The threefold-birth doctrine concludes with attainment of immortality.",
+        "science": "वह — इस प्रकार ज्ञानी — शरीर के विभेद पर ऊर्ध्व उत्क्रमण करके — उस स्वर्ग-लोक में सब कामनाएँ प्राप्त करके — अमर हो गया, अमर हो गया। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
+        "lifeLesson": "Understand the continuity of life across generations and rebirths. Align your actions with enduring spiritual purpose.",
+        "keywords": [
+          "ThreeBirths",
+          "Rebirth",
+          "SageVamadeva",
+          "Lineage",
+          "Continuity"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Adhyāya 3 — Prajñānaṃ Brahma (Consciousness is Brahman)",
+    "titleSanskrit": "तृतीय अध्याय — प्रज्ञानं ब्रह्म (महावाक्य)",
+    "summary": "The ultimate inquiry into the nature of the Self. All sensations, faculties, intellect, and cosmic powers are guided by Prajñāna (Consciousness). Culminates in the Rigvedic Mahāvākya: 'Prajñānaṃ Brahma'.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "कोऽयमात्मेति वयमुपास्महे । कतरः स आत्मा । येन वा पश्यति येन वा शृणोति येन वा गन्धानाजिघ्रति येन वा वाचं व्याकरोति येन वा स्वादु चास्वादु च विजानाति ॥",
+        "transliteration": "ko'yamātmeti vayamupāsmahe | katarah sa ātmā | yena vā paśyati yena vā śṛṇoti yena vā gandhānājighrati yena vā vācaṃ vyākaroti yena vā svādu cāsvādu ca vijānāti ||",
+        "translation": "'Who is this self whom we worship? Which of these is the Self?' That by which one sees, that by which one hears, that by which one smells odors, that by which one articulates speech, that by which one distinguishes the sweet and the savorless.",
+        "hindi": "\"हम जिसकी उपासना करते हैं — वह आत्मा कौन है? इनमें से कौन वह आत्मा है?\" जिसके द्वारा मनुष्य देखता है, सुनता है, गन्ध सूँघता है, वाणी व्याकृत करता है, और स्वादु-अस्वादु का विवेक करता है।",
+        "explanation": "The question is posed: which is the Self? The answer is shown by enumeration: that which performs every cognitive function. The Self is functionally identified.",
+        "science": "\"हम जिसकी उपासना करते हैं — वह आत्मा कौन है? इनमें से कौन वह आत्मा है?\" जिसके द्वारा मनुष्य देखता है, सुनता है, गन्ध सूँघता है, वाणी व्याकृत करता है, और स्वा…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
+        "lifeLesson": "Live from the supreme recognition: Prajñānaṃ Brahma. Consciousness is not a product of life; life is an expression of Consciousness.",
+        "keywords": [
+          "PrajnanamBrahma",
+          "Mahavakya",
+          "PureConsciousness",
+          "Immortality",
+          "Liberation"
+        ]
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "यदेतद्धृदयं मनश्चैतत् । संज्ञानमाज्ञानं विज्ञानं प्रज्ञानं मेधा दृष्टिर्धृतिर्मतिर्मनीषा जूतिः स्मृतिः सङ्कल्पः क्रतुरसुः कामो वश इति । सर्वाण्येवैतानि प्रज्ञानस्य नामधेयानि भवन्ति ॥",
+        "transliteration": "yadetaddhṛdayaṃ manaścaitat | saṃjñānamājñānaṃ vijñānaṃ prajñānaṃ medhā dṛṣṭirdhṛtirmatirmanīṣā jūtiḥ smṛtiḥ saṅkalpaḥ kraturasuḥ kāmo vaśa iti | sarvāṇyevaitāni prajñānasya nāmadheyāni bhavanti ||",
+        "translation": "This is the heart and the mind: consciousness, awareness, discernment, deep knowledge, intelligence, vision, steadiness, judgment, deep insight, urge, memory, intention, planning, life-force, desire, control — all these are names of prajñāna (consciousness).",
+        "hindi": "यह जो हृदय है और मन है — संज्ञान, आज्ञान, विज्ञान, प्रज्ञान, मेधा, दृष्टि, धृति, मति, मनीषा, जूति, स्मृति, सङ्कल्प, क्रतु, असु, काम, वश — ये सब प्रज्ञान के ही नाम हैं।",
+        "explanation": "Sixteen names of consciousness, each capturing a different mode or capacity. The Upanishad collapses all mental categories into one source: prajñāna.",
+        "science": "यह जो हृदय है और मन है — संज्ञान, आज्ञान, विज्ञान, प्रज्ञान, मेधा, दृष्टि, धृति, मति, मनीषा, जूति, स्मृति, सङ्कल्प, क्रतु, असु, काम, वश — ये सब प्रज्ञान के ह…। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
+        "lifeLesson": "Live from the supreme recognition: Prajñānaṃ Brahma. Consciousness is not a product of life; life is an expression of Consciousness.",
+        "keywords": [
+          "PrajnanamBrahma",
+          "Mahavakya",
+          "PureConsciousness",
+          "Immortality",
+          "Liberation"
+        ]
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "एष ब्रह्मैष इन्द्र एष प्रजापतिरेते सर्वे देवा इमानि च पञ्च महाभूतानि पृथिवी वायुराकाश आपो ज्योतींषीत्येतानीमानि च क्षुद्रमिश्राणीव बीजानीतराणि चेतराणि चाण्डजानि च जारुजानि च स्वेदजानि चोद्भिज्जानि चाश्वा गावः पुरुषा हस्तिनो यत् किञ्चेदं प्राणि जङ्गमं च पतत्रि च यच्च स्थावरम् । सर्वं तत्प्रज्ञानेत्रं प्रज्ञाने प्रतिष्ठितम् । प्रज्ञानेत्रो लोकः । प्रज्ञा प्रतिष्ठा । प्रज्ञानं ब्रह्म ॥",
+        "transliteration": "eṣa brahmaiṣa indra eṣa prajāpatirete sarve devā imāni ca pañca mahābhūtāni pṛthivī vāyurākāśa āpo jyotīṃṣītyetānīmāni ca kṣudramiśrāṇīva bījānītarāṇi cetarāṇi cāṇḍajāni ca jārujāni ca svedajāni codbhijjāni cāśvā gāvaḥ puruṣā hastino yat kiñcedaṃ prāṇi jaṅgamaṃ ca patatri ca yacca sthāvaram | sarvaṃ tatprajñānetraṃ prajñāne pratiṣṭhitam | prajñānetro lokaḥ | prajñā pratiṣṭhā | prajñānaṃ brahma ||",
+        "translation": "This is Brahman; this is Indra; this is Prajāpati; these are all the gods. These five great elements — earth, wind, space, water, light — these and the apparent minor mixtures, all seeds of various kinds: egg-born, womb-born, sweat-born, sprout-born; horses, cows, humans, elephants — whatever is breathing, whether moving on legs or wings, or stationary. All this is led by consciousness; all this is established in consciousness. Consciousness is the eye of the world. Consciousness is its foundation. Consciousness is Brahman.",
+        "hindi": "यही ब्रह्म, यही इन्द्र, यही प्रजापति, ये सब देव; ये पाँच महाभूत — पृथ्वी, वायु, आकाश, जल, ज्योति; और ये छोटे मिश्रित बीज; अण्डज, जारुज, स्वेदज, उद्भिज्; अश्व, गाय, मनुष्य, हाथी; जो भी प्राण-धारी जङ्गम और पतत्री है, और जो स्थावर है — यह सब प्रज्ञान-नेत्र है, प्रज्ञान में प्रतिष्ठित है। प्रज्ञान ही लोक का नेत्र है। प्रज्ञा ही प्रतिष्ठा है। प्रज्ञान ही ब्रह्म है।",
+        "explanation": "The supreme mahāvākya. Sweeping enumeration of cosmos (gods, elements, all life-forms) — all led by consciousness, established in consciousness. The verse closes with the immortal four words: prajñānaṃ brahma.",
+        "science": "यही ब्रह्म, यही इन्द्र, यही प्रजापति, ये सब देव; ये पाँच महाभूत — पृथ्वी, वायु, आकाश, जल, ज्योति; और ये छोटे मिश्रित बीज; अण्डज, जारुज, स्वेदज, उद्भिज्; अश्व…। धीमी श्वास वेगस तंत्रिका को सक्रिय कर भय-प्रतिक्रिया को शांत करती है। यह पंक्ति उसी श्वास और मन के संबंध को कहती है।",
+        "lifeLesson": "Live from the supreme recognition: Prajñānaṃ Brahma. Consciousness is not a product of life; life is an expression of Consciousness.",
+        "keywords": [
+          "PrajnanamBrahma",
+          "Mahavakya",
+          "PureConsciousness",
+          "Immortality",
+          "Liberation"
+        ]
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "स एतेन प्रज्ञेनात्मनास्माल्लोकादुत्क्रम्यामुष्मिन् स्वर्गे लोके सर्वान् कामानाप्त्वामृतः समभवत् समभवत् ॥",
+        "transliteration": "sa etena prajñenātmanāsmāllokādutkramyāmuṣmin svarge loke sarvān kāmānāptvāmṛtaḥ samabhavat samabhavat ||",
+        "translation": "He, by this wise Self, rising upward from this world to yonder heavenly world, having attained all desires, became immortal — became immortal.",
+        "hindi": "वह — इस प्रज्ञ आत्मा द्वारा — इस लोक से ऊपर उठकर, उस स्वर्ग-लोक में सब कामनाएँ प्राप्त करके — अमर हो गया, अमर हो गया।",
+        "explanation": "Closing of the entire Upaniṣad with the doubled 'samabhavat.' By the prajñāna-self, one rises and attains immortality. Same closing structure as adhyāyas 1 and 2 — the threefold confirmation.",
+        "science": "वह — इस प्रज्ञ आत्मा द्वारा — इस लोक से ऊपर उठकर, उस स्वर्ग-लोक में सब कामनाएँ प्राप्त करके — अमर हो गया, अमर हो गया। जो विषय बार-बार मन में आता है, वही अगली क्रिया की दिशा बनता है। यह पंक्ति उसी मानसिक चयन को अपना विषय बनाती है।",
+        "lifeLesson": "Live from the supreme recognition: Prajñānaṃ Brahma. Consciousness is not a product of life; life is an expression of Consciousness.",
+        "keywords": [
+          "PrajnanamBrahma",
+          "Mahavakya",
+          "PureConsciousness",
+          "Immortality",
+          "Liberation"
+        ]
+      }
+    ]
+  }
+]
 };

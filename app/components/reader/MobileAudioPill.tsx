@@ -62,6 +62,7 @@ export function MobileAudioPill() {
   return (
     <aside
       aria-label="तन्पूरा"
+      data-hide-during-chapter-reading
       className="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] left-3 z-30 md:bottom-5 md:left-5"
     >
       {/* Expanded Control Sheet */}
@@ -131,10 +132,10 @@ export function MobileAudioPill() {
           {/* Pitch Preset Selectors */}
           <div className="mt-3">
             <p className="text-[11px] text-dharma-muted mb-1.5">स्वर (Pitch Tuning)</p>
-            <div className="grid grid-cols-3 gap-1">
-              {(['C#', 'D', 'A#'] as TanpuraPitch[]).map((p) => {
+            <div className="grid grid-cols-4 gap-1">
+              {(['C#', 'D', 'A#', '432'] as TanpuraPitch[]).map((p) => {
                 const isSelected = pitch === p;
-                const label = p === 'C#' ? 'मध्यम C#' : p === 'D' ? 'उच्च D' : 'गंभीर A#';
+                const label = p === 'C#' ? 'मध्यम C#' : p === 'D' ? 'उच्च D' : p === 'A#' ? 'गंभीर A#' : '432 Hz';
                 return (
                   <button
                     key={p}

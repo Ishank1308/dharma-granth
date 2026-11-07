@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { X, ChevronLeft, ChevronRight, Search, Sparkles } from 'lucide-react';
-import { toDevanagari } from '@/lib/verse-format';
+import { toAsciiDigits } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 export interface CarouselVerseItem {
@@ -156,7 +156,7 @@ export function MobileVerseCarousel({
               onClick={() => handleSelectVerse(verses[0].href)}
               className="flex items-center gap-1 rounded-lg px-2 py-1 font-devanagari font-semibold text-saffron-700 hover:bg-saffron-500/10 dark:text-saffron-300"
             >
-              <ChevronLeft className="h-3 w-3" /> प्रथम श्लोक ({toDevanagari(verses[0].number)})
+              <ChevronLeft className="h-3 w-3" /> प्रथम श्लोक ({toAsciiDigits(verses[0].number)})
             </button>
           )}
           {verses[verses.length - 1] && (
@@ -165,7 +165,7 @@ export function MobileVerseCarousel({
               onClick={() => handleSelectVerse(verses[verses.length - 1].href)}
               className="flex items-center gap-1 rounded-lg px-2 py-1 font-devanagari font-semibold text-saffron-700 hover:bg-saffron-500/10 dark:text-saffron-300"
             >
-              अंतिम श्लोक ({toDevanagari(verses[verses.length - 1].number)}) <ChevronRight className="h-3 w-3" />
+              अंतिम श्लोक ({toAsciiDigits(verses[verses.length - 1].number)}) <ChevronRight className="h-3 w-3" />
             </button>
           )}
         </div>
@@ -198,7 +198,7 @@ export function MobileVerseCarousel({
                   }`}
                 >
                   <span className="font-devanagari text-xs font-bold leading-tight">
-                    {toDevanagari(v.number)}
+                    {toAsciiDigits(v.number)}
                   </span>
                   <span className={`text-[10px] font-mono leading-none ${isCurrent ? 'text-amber-100' : 'text-dharma-muted'}`}>
                     v{v.number}
@@ -234,7 +234,7 @@ export function MobileVerseCarousel({
                       : 'border-dharma-border/70 bg-dharma-bg text-dharma-text hover:border-saffron-400'
                   }`}
                 >
-                  <span className="font-devanagari">{toDevanagari(v.number)}</span>
+                  <span className="font-devanagari">{toAsciiDigits(v.number)}</span>
                 </button>
               );
             })}

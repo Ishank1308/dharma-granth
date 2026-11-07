@@ -6,6 +6,7 @@ import { readBookmarks } from '@/lib/reader-actions';
 import { READING_JOURNEYS } from '@/data/reading-journeys';
 import { cleanVerseField, verseLines } from '@/lib/verse-format';
 import { parseWordMeanings } from '@/lib/word-gloss';
+import { COMPARE_STUDY_TRANSLATION_SOURCE, STUDY_TRANSLATION_SHORT } from '@/lib/editorial-terminology';
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
@@ -160,13 +161,13 @@ export function PackClient() {
           <span role="status" className="text-sm text-dharma-muted">{busy ? 'Preparing…' : loaded.length === 0 ? 'Add at least one verse to see a preview.' : `${loaded.length} verse${loaded.length === 1 ? '' : 's'} ready.`}</span>
         </div>
         {error && <p role="alert" className="mt-2 text-sm text-rose-700 dark:text-rose-300">{error}</p>}
-        <p className="mt-2 text-sm text-dharma-muted"><Link href="/desk" className="underline underline-offset-2">Back to my study desk</Link></p>
+        <p className="mt-2 text-sm text-dharma-muted"><Link href="/practice/desk/" className="underline underline-offset-2">Back to my study desk</Link></p>
       </div>
 
       {loaded.length > 0 && (
         <article id="pack-print" aria-label="Study pack preview" className="mt-6 rounded-2xl border border-dharma-border bg-white p-6 text-black">
           <h2 className="font-serif text-2xl font-bold">{title}</h2>
-          <p className="text-sm text-neutral-600">Prepared from Dharma Granth · {new Date().toLocaleDateString()} · Editorial notes are labelled and are not scripture.</p>
+          <p className="text-sm text-neutral-600">Prepared from Dharma Granth · {new Date().toLocaleDateString(undefined, { numberingSystem: 'latn' })} · Editorial notes are labelled and are not scripture.</p>
 
           {loaded.map((l) => {
             const lesson = lessonFor(l.item);
@@ -178,8 +179,8 @@ export function PackClient() {
                   <p lang="sa" className="mt-2 font-devanagari text-xl leading-[2]">{verseLines(l.sanskrit).map((x, i) => <span key={i} className="block">{x}</span>)}</p>
                 )}
                 {opts.translit && l.transliteration && <p className="mt-1 italic">{l.transliteration.split('\n').map((x, i) => <span key={i} className="block">{x}</span>)}</p>}
-                {opts.hindi && l.hindi && <p lang="hi" className="mt-2 font-devanagari leading-[1.9]"><strong>हिन्दी{l.hindiAi ? ' (AI अनुवाद)' : ''}: </strong>{l.hindi}</p>}
-                {opts.english && l.english && <p lang="en" className="mt-2"><strong>English{l.englishAi ? ' (AI translation, not a scholarly edition)' : ''}: </strong>{l.english}</p>}
+                {opts.hindi && l.hindi && <p lang="hi" className="mt-2 font-devanagari leading-[1.9]"><strong>हिन्दी: </strong>{l.hindiAi ? <em>{STUDY_TRANSLATION_SHORT.hi} (AI-सहायता प्राप्त प्रारूप)। </em> : null}{l.hindi}</p>}
+                {opts.english && l.english && <p lang="en" className="mt-2"><strong>English: </strong>{l.englishAi ? <em>{COMPARE_STUDY_TRANSLATION_SOURCE}. </em> : null}{l.english}</p>}
                 {opts.explain && lesson && <p className="mt-2"><strong>Simple explanation (editorial, not scripture): </strong>{lesson.explanation}</p>}
                 {opts.explain && !lesson && <p className="mt-2 text-sm text-neutral-600">No reviewed simple explanation is available for this verse.</p>}
                 {opts.vocab && l.words.length > 1 && (
@@ -196,7 +197,7 @@ export function PackClient() {
             <footer className="mt-8 border-t border-neutral-300 pt-3 text-sm text-neutral-700">
               <p className="font-semibold">Sources</p>
               <ul className="ml-5 list-disc">{sourceList.map((s) => <li key={s}>Sanskrit text: {s}</li>)}</ul>
-              <p className="mt-1">Translations marked “AI” are machine translations. Editorial explanations and reflections are not part of the scripture. Dharma Granth · dharmagranth.in</p>
+              <p className="mt-1">Translations marked “AI” are machine translations. Editorial explanations and reflections are not part of the scripture. Dharma Granth · dharmagranth.dev</p>
             </footer>
           )}
         </article>

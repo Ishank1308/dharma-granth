@@ -1,4 +1,5 @@
 import { lifeProblemTopics } from './wisdom-life-problems';
+import { coreTeachingTopics } from './wisdom-core-teachings';
 
 export interface ScriptureReference {
   id: string;
@@ -222,10 +223,10 @@ export const wisdomTopics: WisdomTopic[] = [
       }
     ],
     traditionalContextOverview: {
-      titleEn: 'The Classical Vedantic View of Mental Agitation (Chitta-Vikshepa)',
-      titleHi: 'चित्त-विक्षेप पर शास्त्रीय वेदांतिक दृष्टिकोण',
-      bodyEn: 'In Patanjali Yoga Sutras (1.33) and the Gita, chronic worry is diagnosed as "chitta-vikshepa"—mental dispersion caused by attachment to outcome and identification with perishable roles. The remedy is two-fold: Abhyasa (steady grounding in practice) and Vairagya (healthy dispassion toward what cannot be controlled).',
-      bodyHi: 'योगसूत्र और गीता में चिंता को "चित्त-विक्षेप" कहा गया है—यानी मन का अपनी केंद्रस्थ शांति से भटक जाना। इसका शास्त्रीय समाधान दोहरे स्तंभों पर टिका है: अभ्यास (सतत प्रयास) और वैराग्य (जिस पर अपना वश नहीं है, उसके प्रति अनासक्ति)।',
+      titleEn: 'The Restless Mind in the Bhagavad Gita',
+      titleHi: 'भगवद्गीता में चंचल मन का प्रसंग',
+      bodyEn: 'The Gita describes the mind as restless without naming ordinary worry as a medical condition. In 6.26, Krishna teaches Arjuna to bring the wandering mind back; in 6.35, he acknowledges how difficult restraint can be and names practice (abhyāsa) and dispassion (vairāgya). This page places those teachings alongside selected passages for study. It does not diagnose chronic worry or promise treatment.',
+      bodyHi: 'गीता मन की चंचलता का वर्णन करती है, सामान्य चिंता को रोग का नाम नहीं देती। अध्याय ६ के श्लोक २६ में भटके हुए मन को पुनः आत्मा की ओर लाने का उपदेश है; श्लोक ३५ मन को वश में करना कठिन मानते हुए अभ्यास और वैराग्य का उल्लेख करता है। यहाँ इन उपदेशों को चयनित श्लोकों के साथ अध्ययन हेतु रखा गया है; यह किसी अवस्था का निदान या उपचार का आश्वासन नहीं है।',
       keyThemes: ['Chitta-Prasadana (Clarity of Mind)', 'Kripa & Sharanagati (Surrendering Outcome)', 'Sakshi Bhava (Witness Consciousness)'],
       keyThemesHi: ['चित्त-प्रसादन (मन की निर्मलता)', 'फलासक्ति-त्याग (परिणाम से अनासक्ति)', 'साक्षी भाव (तटस्थ अवलोकन)']
     },
@@ -251,7 +252,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'katha', title: 'Katha Upanishad', titleHi: 'कठोपनिषद्', titleSanskrit: 'कठोपनिषत्', description: 'Illuminates the chariot of the senses and the mastery of the mind.', descriptionHi: 'इंद्रिय रूपी घोड़ों और मन रूपी लगाम के नियंत्रण का दिव्य रूपक।', href: '/scripture/katha' }
     ],
     sources: [
-      { citation: 'Bhagavad Gita 2.66 and 6.26', textName: 'Bhagavad Gita', section: 'Chapter 2, Verse 66; Chapter 6, Verse 26' }
+      { citation: 'Bhagavad Gita 2.66, 6.26, and 6.35', textName: 'Bhagavad Gita', section: 'Chapter 2, Verse 66; Chapter 6, Verses 26 and 35' }
     ],
     contextualNote: {
       headlineEn: 'Important Contextual & Mental Health Note',
@@ -312,15 +313,15 @@ export const wisdomTopics: WisdomTopic[] = [
         readerHref: '/scripture/bhagavadgita/chapter/16/verse/1'
       },
       {
-        id: 'taittiriya-2-9-1',
+        id: 'taittiriya-2-4-1',
         scriptureId: 'taittiriya',
         scriptureName: 'Taittiriya Upanishad',
         scriptureNameHi: 'तैत्तिरीयोपनिषद्',
         chapterNumber: 2,
-        verseNumber: '9.1',
-        referenceDisplay: 'Taittiriya Upanishad 2.9.1',
-        libraryRef: { chapter: 2, verse: 9 },
-        referenceDisplayHi: 'तैत्तिरीयोपनिषद् २.९.१',
+        verseNumber: '4.1',
+        referenceDisplay: 'Taittiriya Upanishad 2.4.1',
+        libraryRef: { chapter: 2, verse: 4 },
+        referenceDisplayHi: 'तैत्तिरीयोपनिषद् २.४.१',
         sanskritDevanagari: 'आनन्दं ब्रह्मणो विद्वान् न बिभेति कदाचनेति ।',
         sanskritTransliteration: "ānandaṁ brahmaṇo vidvān na bibheti kadācaneti |",
         literalTranslationHi: 'ब्रह्म के आनन्द को जानने वाला विद्वान् कभी भयभीत नहीं होता।',
@@ -366,7 +367,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'taittiriya', title: 'Taittiriya Upanishad', titleHi: 'तैत्तिरीयोपनिषद्', titleSanskrit: 'तैत्तिरीयोपनिषत्', description: 'Reveals the supreme joy that obliterates all fear.', descriptionHi: 'आनंद के उस महासागर का वर्णन जो हर भय को मिटा देता है।', href: '/scripture/taittiriya' }
     ],
     sources: [
-      { citation: 'Taittiriya Upanishad Anandavalli', textName: 'Taittiriya Upanishad', section: 'Chapter 2, Section 9' }
+      { citation: 'Bhagavad Gita 16.1', textName: 'Bhagavad Gita', section: 'Chapter 16, Verse 1' },
+      { citation: 'Taittiriya Upanishad 2.4.1', textName: 'Taittiriya Upanishad', section: 'Anandavalli, Chapter 2, Section 4' }
     ],
     contextualNote: {
       headlineEn: 'Contextual Disclaimer Regarding Acute Trauma & Phobias',
@@ -428,14 +430,14 @@ export const wisdomTopics: WisdomTopic[] = [
         readerHref: '/scripture/bhagavadgita/chapter/2/verse/63'
       },
       {
-        id: 'vidura-7-58',
+        id: 'vidura-7-72',
         scriptureId: 'viduraniti',
         scriptureName: 'Vidura Niti',
         scriptureNameHi: 'विदुर नीति',
         chapterNumber: 7,
-        verseNumber: 58,
-        referenceDisplay: 'Vidura Niti 7.58',
-        referenceDisplayHi: 'विदुर नीति ७.५८',
+        verseNumber: 72,
+        referenceDisplay: 'Vidura Niti 7.72',
+        referenceDisplayHi: 'विदुर नीति ७.७२',
         sanskritDevanagari: 'अक्रोधेन जयेत्क्रोधमसाधुं साधुना जयेत् ।\nजयेत्कदर्यं दानेन जयेत्सत्येन चानृतम् ॥',
         sanskritTransliteration: "akrodhena jayetkrodhamasādhuṁ sādhunā jayet |\njayetkadaryaṁ dānena jayetsatyena cānṛtam ||",
         literalTranslationHi: 'क्रोध को अक्रोध (शांति) से जीतना चाहिए, दुष्ट को भलाई से जीतना चाहिए; कृपण को दान से जीतना चाहिए और असत्य को सत्य से जीतना चाहिए।',
@@ -481,7 +483,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'viduraniti', title: 'Vidura Niti', titleHi: 'विदुर नीति', titleSanskrit: 'विदुरनीतिः', description: 'Practical statesman wisdom on ruling one’s own tongue and temper.', descriptionHi: 'वाणी और चित्त के अनुशासन पर विदुर का व्यावहारिक उपदेश।', href: '/scripture/viduraniti' }
     ],
     sources: [
-      { citation: 'Vidura Niti (Prajāgara section of the Mahābhārata, Udyoga Parva)', textName: 'Vidura Niti', section: 'Library chapter 7, verse 58' }
+      { citation: 'Bhagavad Gita 2.62–63', textName: 'Bhagavad Gita', section: 'Chapter 2, Verses 62–63' },
+      { citation: 'Vidura Niti 7.72 (Prajāgara section of the Mahābhārata, Udyoga Parva)', textName: 'Vidura Niti', section: 'Traditional reference 7.72; library chapter 7, verse 58' }
     ],
     contextualNote: {
       headlineEn: 'Important Note Regarding Chronic Rage & Safety',
@@ -595,7 +598,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'katha', title: 'Katha Upanishad', titleHi: 'कठोपनिषद्', titleSanskrit: 'कठोपनिषत्', description: 'Nachiketa faces Death itself and learns the secret of immortality.', descriptionHi: 'नचिकेता और यमराज का अमर संवाद मृत्यु के रहस्य पर।', href: '/scripture/katha' }
     ],
     sources: [
-      { citation: 'Bhagavad Gita Chapter 2', textName: 'Bhagavad Gita', section: 'Verses 11 and 22' }
+      { citation: 'Bhagavad Gita 2.11 and 2.22', textName: 'Bhagavad Gita', section: 'Chapter 2, Verses 11 and 22' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Complicated Grief & Depression',
@@ -709,7 +712,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'viduraniti', title: 'Vidura Niti', titleHi: 'विदुर नीति', titleSanskrit: 'विदुरनीतिः', description: 'Pragmatic ethical guidelines for high-stakes decisions.', descriptionHi: 'जटिल परिस्थितियों में नीतिसंगत निर्णय के सुनहरे सूत्र।', href: '/scripture/viduraniti' }
     ],
     sources: [
-      { citation: 'Bhagavad Gita Chapters 2 and 3', textName: 'Bhagavad Gita', section: '2.47 and 3.35' }
+      { citation: 'Bhagavad Gita 2.47 and 3.35', textName: 'Bhagavad Gita', section: 'Chapters 2 and 3' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Legal & Professional Guidance',
@@ -825,7 +828,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'katha', title: 'Katha Upanishad', titleHi: 'कठोपनिषद्', titleSanskrit: 'कठोपनिषत्', description: 'The timeless allegory of the chariot and the horses of the senses.', descriptionHi: 'रथ, सारथि और घोड़ों का अमर मनोवैज्ञानिक रूपक।', href: '/scripture/katha' }
     ],
     sources: [
-      { citation: 'Katha Upanishad Chapter 1, Valli 3', textName: 'Katha Upanishad', section: '1.3.3–4' }
+      { citation: 'Bhagavad Gita 6.16–17', textName: 'Bhagavad Gita', section: 'Chapter 6, Verses 16–17' },
+      { citation: 'Katha Upanishad 1.3.3–4', textName: 'Katha Upanishad', section: 'Chapter 1, Valli 3' }
     ],
     contextualNote: {
       headlineEn: 'Important Note Regarding Eating & Compulsive Disorders',
@@ -940,6 +944,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'bhagavadgita', title: 'Bhagavad Gita', titleHi: 'भगवद्गीता', titleSanskrit: 'श्रीमद्भगवद्गीता', description: 'Chapter 6 details sitting posture, gaze, and mental stilling.', descriptionHi: 'आसन, दृष्टि और मन की शांति की संपूर्ण पद्धति।', href: '/scripture/bhagavadgita' }
     ],
     sources: [
+      { citation: 'Bhagavad Gita 2.41', textName: 'Bhagavad Gita', section: 'Chapter 2, Verse 41' },
       { citation: 'Mundaka Upanishad 2.2.4', textName: 'Mundaka Upanishad', section: 'Mundaka 2, Khanda 2' }
     ],
     contextualNote: {
@@ -1054,7 +1059,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'viduraniti', title: 'Vidura Niti', titleHi: 'विदुर नीति', titleSanskrit: 'विदुरनीतिः', description: 'Principles of wise statesmanship and guarding against sycophancy.', descriptionHi: 'सच्चे नेतृत्व और चापलूसों से बचने के विदुर के नियम।', href: '/scripture/viduraniti' }
     ],
     sources: [
-      { citation: 'Bhagavad Gita 3.20-21', textName: 'Bhagavad Gita', section: 'Chapter 3, Verses 20–21' }
+      { citation: 'Bhagavad Gita 3.20 and 3.21', textName: 'Bhagavad Gita', section: 'Chapter 3, Verses 20 and 21' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Corporate & Governance Compliance',
@@ -1097,10 +1102,10 @@ export const wisdomTopics: WisdomTopic[] = [
         scriptureName: 'Taittiriya Upanishad',
         scriptureNameHi: 'तैत्तिरीयोपनिषद्',
         chapterNumber: 1,
-        verseNumber: '11.1-2',
-        referenceDisplay: 'Taittiriya Upanishad 1.11.1–2',
+        verseNumber: '11.2',
+        referenceDisplay: 'Taittiriya Upanishad 1.11.2',
         libraryRef: { chapter: 1, verse: 11 },
-        referenceDisplayHi: 'तैत्तिरीयोपनिषद् १.११.१–२',
+        referenceDisplayHi: 'तैत्तिरीयोपनिषद् १.११.२',
         sanskritDevanagari: 'मातृदेवो भव । पितृदेवो भव ।\nआचार्यदेवो भव । अतिथिदेवो भव ।\nयान्यनवद्यानि कर्माणि तानि सेवितव्यानि । नो इतराणि ॥',
         sanskritTransliteration: "mātṛdevo bhava | pitṛdevo bhava |\nācāryadevo bhava | atithidevo bhava |\nyānyanavadyāni karmāṇi tāni sevitavyāni | no itarāṇi ||",
         literalTranslationHi: 'माता को देवता के समान पूज्य मानो। पिता को देवता के समान पूज्य मानो। आचार्य को देवता के समान पूज्य मानो। अतिथि को देवता के समान पूज्य मानो। जो दोषरहित और कल्याणकारी कर्म हैं, उन्हीं का सेवन करो; दूसरों का नहीं।',
@@ -1169,7 +1174,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'bhagavadgita', title: 'Bhagavad Gita', titleHi: 'भगवद्गीता', titleSanskrit: 'श्रीमद्भगवद्गीता', description: 'Sacred mutual nourishment in Chapter 3.', descriptionHi: 'पारस्परिक पोषण और सहयोग का सार्वभौमिक सिद्धांत।', href: '/scripture/bhagavadgita' }
     ],
     sources: [
-      { citation: 'Taittiriya Upanishad Shikshavalli 1.11', textName: 'Taittiriya Upanishad', section: 'Chapter 1, Anuvaka 11' }
+      { citation: 'Taittiriya Upanishad 1.11.2', textName: 'Taittiriya Upanishad', section: 'Chapter 1, Anuvaka 11' },
+      { citation: 'Bhagavad Gita 3.11', textName: 'Bhagavad Gita', section: 'Chapter 3, Verse 11' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Family Safety & Domestic Abuse',
@@ -1398,7 +1404,7 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'naradabhaktisutra', title: 'Narada Bhakti Sutra', titleHi: 'नारद भक्ति सूत्र', titleSanskrit: 'नारदभक्तिसूत्रम्', description: 'The classical aphorisms on the nectar of divine love.', descriptionHi: 'परम प्रेम के स्वरूप पर देवर्षि नारद के अमर सूत्र।', href: '/scripture/naradabhaktisutra' }
     ],
     sources: [
-      { citation: 'Bhagavad Gita Chapter 9 & 18', textName: 'Bhagavad Gita', section: '9.26 and 18.66' }
+      { citation: 'Bhagavad Gita 9.26 and 18.66', textName: 'Bhagavad Gita', section: 'Chapters 9 and 18' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Healthy Faith vs. Passivity',
@@ -1513,7 +1519,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'bhagavadgita', title: 'Bhagavad Gita', titleHi: 'भगवद्गीता', titleSanskrit: 'श्रीमद्भगवद्गीता', description: 'Chapter 2’s immortal verses on the unborn Self.', descriptionHi: 'आत्मा की अमरता पर दूसरा अध्याय।', href: '/scripture/bhagavadgita' }
     ],
     sources: [
-      { citation: 'Chandogya Upanishad 6.8.7', textName: 'Chandogya Upanishad', section: 'Prapathaka 6, Khanda 8' }
+      { citation: 'Chandogya Upanishad 6.8.7', textName: 'Chandogya Upanishad', section: 'Prapathaka 6, Khanda 8' },
+      { citation: 'Bhagavad Gita 2.20', textName: 'Bhagavad Gita', section: 'Chapter 2, Verse 20' }
     ],
     contextualNote: {
       headlineEn: 'Important Note on Depersonalization & Dissociation',
@@ -1558,7 +1565,7 @@ export const wisdomTopics: WisdomTopic[] = [
         chapterNumber: 1,
         verseNumber: '3.28',
         referenceDisplay: 'Brihadaranyaka Upanishad 1.3.28',
-        libraryRef: { chapter: 3, verse: 28 },
+        libraryRef: { chapter: 3, verse: '1.3.28' },
         referenceDisplayHi: 'बृहदारण्यकोपनिषद् १.३.२८',
         sanskritDevanagari: 'असतो मा सद्गमय ।\nतमसो मा ज्योतिर्गमय ।\nमृत्योर्माऽमृतं गमय ॥\n',
         sanskritTransliteration: "asato mā sadgamaya |\ntamaso mā jyotirgamaya |\nmṛtyormā'mṛtaṁ gamaya ||\nom śāntiḥ śāntiḥ śāntiḥ ||",
@@ -1572,7 +1579,7 @@ export const wisdomTopics: WisdomTopic[] = [
           commentaryNote: '',
           commentaryNoteHi: '',
         },
-        readerHref: '/scripture/brihadaranyaka/chapter/1'
+        readerHref: '/scripture/brihadaranyaka/chapter/3'
       },
       {
         id: 'isha-1',
@@ -1628,7 +1635,8 @@ export const wisdomTopics: WisdomTopic[] = [
       { id: 'brihadaranyaka', title: 'Brihadaranyaka Upanishad', titleHi: 'बृहदारण्यकोपनिषद्', titleSanskrit: 'बृहदारण्यकोपनिषत्', description: 'Contains the immortal Pavamana prayer: Asato Ma Sadgamaya.', descriptionHi: 'असतो मा सद्गमय का विश्व-विख्यात अमर उद्घोष।', href: '/scripture/brihadaranyaka' }
     ],
     sources: [
-      { citation: 'Brihadaranyaka 1.3.28; Isha 1', textName: 'Principal Upanishads', section: 'Brihadaranyaka & Isha Upanishad' }
+      { citation: 'Brihadaranyaka Upanishad 1.3.28', textName: 'Brihadaranyaka Upanishad', section: 'Chapter 1, Brahmana 3, Verse 28' },
+      { citation: 'Isha Upanishad 1', textName: 'Isha Upanishad', section: 'Verse 1' }
     ],
     contextualNote: {
       headlineEn: 'Important Note Regarding Existential Crisis & Hopelessness',
@@ -1685,8 +1693,8 @@ export const wisdomTopics: WisdomTopic[] = [
         "verseNumber": 14,
         "referenceDisplay": "Bhagavad Gita 2.14",
         "referenceDisplayHi": "भगवद्गीता २.१४",
-        "sanskritDevanagari": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः।\nआगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत",
-        "sanskritTransliteration": "mātrā-sparśhās tu kaunteya śhītoṣhṇa-sukha-duḥkha-dāḥ\nāgamāpāyino ’nityās tans-titikṣhasva bhārata",
+        "sanskritDevanagari": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः ।\nआगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत ॥",
+        "sanskritTransliteration": "mātrā-sparśhās tu kaunteya śhītoṣhṇa-sukha-duḥkha-dāḥ\nāgamāpāyino ’nityās tans-titikṣhasva bhārata ||",
         "literalTranslationHi": "हे कुन्तीनन्दन! इन्द्रियोंके जो विषय (जड पदार्थ) हैं, वो तो शीत (अनुकूलता) और उष्ण (प्रतिकूलता) - के द्वारा सुख और दुःख देनेवाले हैं तथा आने-जानेवाले और अनित्य हैं। हे भरतवंशोद्भव अर्जुन! उनको तुम सहन करो।",
         "literalTranslationEn": "The contact of the senses with their objects, O Arjuna, gives rise to feelings of cold and heat, pleasure and pain. They come and go, never lasting long. Endure them, O Arjuna.",
         "traditionalContext": {
@@ -1708,8 +1716,8 @@ export const wisdomTopics: WisdomTopic[] = [
         "verseNumber": 40,
         "referenceDisplay": "Bhagavad Gita 4.40",
         "referenceDisplayHi": "भगवद्गीता ४.४०",
-        "sanskritDevanagari": "अज्ञश्चाश्रद्दधानश्च संशयात्मा विनश्यति।\nनायं लोकोऽस्ति न परो न सुखं संशयात्मनः",
-        "sanskritTransliteration": "ajñaśh chāśhraddadhānaśh cha sanśhayātmā vinaśhyati\nnāyaṁ loko ’sti na paro na sukhaṁ sanśhayātmanaḥ",
+        "sanskritDevanagari": "अज्ञश्चाश्रद्दधानश्च संशयात्मा विनश्यति ।\nनायं लोकोऽस्ति न परो न सुखं संशयात्मनः ॥",
+        "sanskritTransliteration": "ajñaśh chāśhraddadhānaśh cha sanśhayātmā vinaśhyati\nnāyaṁ loko ’sti na paro na sukhaṁ sanśhayātmanaḥ ||",
         "literalTranslationHi": "विवेकहीन और श्रद्धारहित संशयात्मा मनुष्यका पतन हो जाता है। ऐसे संशयात्मा मनुष्यके लिये न यह लोक  है न परलोक है और न सुख ही है।",
         "literalTranslationEn": "The ignorant, the faithless, and the doubting one perish; for the doubting one, there is neither this world nor the one beyond, nor happiness.",
         "traditionalContext": {
@@ -1731,8 +1739,8 @@ export const wisdomTopics: WisdomTopic[] = [
         "verseNumber": 35,
         "referenceDisplay": "Bhagavad Gita 6.35",
         "referenceDisplayHi": "भगवद्गीता ६.३५",
-        "sanskritDevanagari": "श्री भगवानुवाच\nअसंशयं महाबाहो मनो दुर्निग्रहं चलं।\nअभ्यासेन तु कौन्तेय वैराग्येण च गृह्यते",
-        "sanskritTransliteration": "śhrī bhagavān uvācha\nasanśhayaṁ mahā-bāho mano durnigrahaṁ chalam\nabhyāsena tu kaunteya vairāgyeṇa cha gṛihyate",
+        "sanskritDevanagari": "श्री भगवानुवाच\nअसंशयं महाबाहो मनो दुर्निग्रहं चलम् ।\nअभ्यासेन तु कौन्तेय वैराग्येण च गृह्यते ॥",
+        "sanskritTransliteration": "śhrī bhagavān uvācha\nasanśhayaṁ mahā-bāho mano durnigrahaṁ chalam\nabhyāsena tu kaunteya vairāgyeṇa cha gṛihyate ||",
         "literalTranslationHi": "श्रीभगवान् बोले -- हे महाबाहो ! यह मन बड़ा चञ्चल है और इसका निग्रह करना भी बड़ा कठिन है -- यह तुम्हारा कहना बिलकुल ठीक है। परन्तु हे कुन्तीनन्दन ! अभ्यास और वैराग्यके द्वारा इसका निग्रह किया जाता है।",
         "literalTranslationEn": "The Lord said, \"The mind is indeed hard to subdue and fickle, O mighty-armed one, but, O son of Kunti, it can be brought under control through practice and the exercise of dispassion.\"",
         "traditionalContext": {
@@ -1867,8 +1875,8 @@ export const wisdomTopics: WisdomTopic[] = [
         "verseNumber": 47,
         "referenceDisplay": "Bhagavad Gita 2.47",
         "referenceDisplayHi": "भगवद्गीता २.४७",
-        "sanskritDevanagari": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि",
-        "sanskritTransliteration": "karmaṇy-evādhikāras te mā phaleṣhu kadāchana\nmā karma-phala-hetur bhūr mā te saṅgo ’stvakarmaṇi",
+        "sanskritDevanagari": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥",
+        "sanskritTransliteration": "karmaṇy-evādhikāras te mā phaleṣhu kadāchana\nmā karma-phala-hetur bhūr mā te saṅgo ’stvakarmaṇi ||",
         "literalTranslationHi": "कर्तव्य-कर्म करनेमें ही तेरा अधिकार है, फलोंमें कभी नहीं। अतः तू कर्मफलका हेतु भी मत बन और तेरी अकर्मण्यतामें भी आसक्ति न हो।",
         "literalTranslationEn": "You have the right to work alone, but not to the fruits of it. Do not be driven by the results of your work, nor have attachment to inaction.",
         "traditionalContext": {
@@ -1890,8 +1898,8 @@ export const wisdomTopics: WisdomTopic[] = [
         "verseNumber": 48,
         "referenceDisplay": "Bhagavad Gita 2.48",
         "referenceDisplayHi": "भगवद्गीता २.४८",
-        "sanskritDevanagari": "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय।\nसिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते",
-        "sanskritTransliteration": "yoga-sthaḥ kuru karmāṇi saṅgaṁ tyaktvā dhanañjaya\nsiddhy-asiddhyoḥ samo bhūtvā samatvaṁ yoga uchyate",
+        "sanskritDevanagari": "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय ।\nसिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते ॥",
+        "sanskritTransliteration": "yoga-sthaḥ kuru karmāṇi saṅgaṁ tyaktvā dhanañjaya\nsiddhy-asiddhyoḥ samo bhūtvā samatvaṁ yoga uchyate ||",
         "literalTranslationHi": "हे धनञ्जय ! तू आसक्तिका त्याग करके सिद्धि-असिद्धिमें सम होकर योगमें स्थित हुआ कर्मोंको कर; क्योंकि समत्व ही योग कहा जाता है।",
         "literalTranslationEn": "Abandoning attachment and established in Yoga, perform works, viewing success and failure with an even mind. Evenness of mind is said to be Yoga.",
         "traditionalContext": {
@@ -1913,8 +1921,8 @@ export const wisdomTopics: WisdomTopic[] = [
         "verseNumber": 48,
         "referenceDisplay": "Bhagavad Gita 18.48",
         "referenceDisplayHi": "भगवद्गीता १८.४८",
-        "sanskritDevanagari": "सहजं कर्म कौन्तेय सदोषमपि न त्यजेत्।सर्वारम्भा हि दोषेण धूमेनाग्निरिवावृताः",
-        "sanskritTransliteration": "saha-jaṁ karma kaunteya sa-doṣham api na tyajet\nsarvārambhā hi doṣheṇa dhūmenāgnir ivāvṛitāḥ",
+        "sanskritDevanagari": "सहजं कर्म कौन्तेय सदोषमपि न त्यजेत् ।\nसर्वारम्भा हि दोषेण धूमेनाग्निरिवावृताः ॥",
+        "sanskritTransliteration": "saha-jaṁ karma kaunteya sa-doṣham api na tyajet\nsarvārambhā hi doṣheṇa dhūmenāgnir ivāvṛitāḥ ||",
         "literalTranslationHi": "हे कुन्तीनन्दन ! दोषयुक्त होनेपर भी सहज कर्मका त्याग नहीं करना चाहिये; क्योंकि सम्पूर्ण कर्म धुएँसे अग्निकी तरह किसी-न-किसी दोषसे युक्त हैं।",
         "literalTranslationEn": "One should not relinquish one's work, O Arjuna, though it may be imperfect; for, all endeavors are enveloped by imperfections as fire is by smoke.",
         "traditionalContext": {
@@ -2004,6 +2012,7 @@ export const wisdomTopics: WisdomTopic[] = [
       }
   },
   ...lifeProblemTopics,
+  ...coreTeachingTopics,
 ];
 
 export function getAllWisdomTopics(): WisdomTopic[] {

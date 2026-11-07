@@ -5,25 +5,30 @@ import { expect, test } from '@playwright/test';
  * Automated accessibility audit (axe, WCAG 2 A/AA) in every colour theme.
  * Fails on serious and critical violations; lesser ones are only logged.
  */
-const THEMES = ['day', 'sunset', 'night'] as const;
+// All four themes (Usha, Sandhyā, Bhojpatra, Rātri).
+const THEMES = ['day', 'sunset', 'paper', 'night'] as const;
 const PAGES = [
   '/',
   '/scriptures/',
   '/scripture/bhagavadgita/',
   '/scripture/bhagavadgita/chapter/2/',
   '/scripture/bhagavadgita/chapter/2/verse/47/',
-  '/dashboard/',
+  '/practice/dashboard/',
+  '/practice/desk/',
   '/practice/',
   '/concepts/',
   '/dictionary/',
-  '/topics/',
   '/characters/',
   '/festivals/',
+  '/wisdom-for-life/',
   '/learn/',
-  '/learn/pathways/',
+  '/learn/start/',
+  '/learn/journeys/',
+  '/learn/plans/',
   '/collections/',
-  '/bookmarks/',
+  '/practice/bookmarks/',
   '/timelines/',
+  '/contribute/',
 ];
 
 for (const theme of THEMES) {
@@ -103,13 +108,14 @@ test('a11y: desktop discovery menu', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/scriptures/');
   await page.waitForLoadState('networkidle');
-  await page.getByRole('button', { name: 'अन्वेषण' }).click();
+  // By what it controls: its visible name is "Explore", with अन्वेषण shown only from 2xl.
+  await page.locator('button[aria-controls="desktop-discovery-menu"]').click();
   await expect(page.locator('#desktop-discovery-menu')).toBeVisible();
   await audit(page, 'desktop discovery menu');
 });
 
 /** WCAG 2.2 AA: touch targets on a phone-sized screen. */
-for (const path of ['/', '/scriptures/', '/scripture/bhagavadgita/', '/scripture/bhagavadgita/chapter/2/', '/dashboard/']) {
+for (const path of ['/', '/scriptures/', '/scripture/bhagavadgita/', '/scripture/bhagavadgita/chapter/2/', '/practice/dashboard/']) {
   test(`a11y [mobile target size]: ${path}`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.emulateMedia({ reducedMotion: 'reduce' });

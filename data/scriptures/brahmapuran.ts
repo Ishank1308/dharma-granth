@@ -101793,7 +101793,7 @@ export const brahmapuran: Scripture = {
           sanskrit: 'अधीत्य चतुरो वेदान् द्विजो मोहसमन्वितः पतितात् प्रतिगृह्याथ खरयोनौ प्रजायते',
           transliteration: 'adhītya caturo vedān dvijo mohasamanvitaḥ patitāt pratigṛhyātha kharayonau prajāyate',
           translation: 'O harlot, go. Carry out my task, beautiful woman. If you fulfil it and return, you shall be as dear to me as Sacl.',
-          hindi: 'और पिताको मृत्युके दिन प्रतिवर्ष एकोद्दिष्ट श्राद्ध  हैं और पार्वण श्राद्धके पितर मूर्तिमान् बताये गये करना चाहिए। यदि पिताके भाई अथवा अपने  हैं। एकोद्िष्ट श्राद्ध ग्रहण करनेवाले पितरोंकी बड़े भाईको मृत्यु हो गयी हो और उनके कोई  \'प्रेत\' संज्ञा है। इस प्रकार पितरोंके तीन भेद पुत्र नहीं हो तो उनके लिये भी निधनतिथिको  स्वीकार किये गये हैं ।',
+          hindi: 'और पिताको मृत्युके दिन प्रतिवर्ष एकोद्दिष्ट श्राद्ध  हैं और पार्वण श्राद्धके पितर मूर्तिमान् बताये गये करना चाहिए। यदि पिताके भाई अथवा अपने  हैं। एकोद्दिष्ट श्राद्ध ग्रहण करनेवाले पितरोंकी बड़े भाईको मृत्यु हो गयी हो और उनके कोई  \'प्रेत\' संज्ञा है। इस प्रकार पितरोंके तीन भेद पुत्र नहीं हो तो उनके लिये भी निधनतिथिको  स्वीकार किये गये हैं ।',
           explanation: 'O harlot, go. Carry out my task, beautiful woman. If you fulfil it and return, you shall be as dear to me as Sacl.',
           keywords: [],
         },

@@ -1,13 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { rituals, type Ritual } from '@/data/rituals';
 import { X, BookOpen, Sparkles, MapPin, Lightbulb, HandHeart, AlertTriangle, ListChecks } from 'lucide-react';
 
 export default function RitualsPage() {
-  const reduce = useReducedMotion();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const selected = rituals.find((r) => r.id === selectedId);
 
@@ -32,17 +32,43 @@ export default function RitualsPage() {
         </div>
       </section>
 
+      {/* Featured Upakarma Deep-Dive Guide */}
+      <section className="max-w-6xl mx-auto px-6 -mt-8 relative z-20 mb-8">
+        <Link
+          href="/rituals/upakarma/"
+          className="group block rounded-2xl border border-amber-500/40 bg-gradient-to-r from-amber-500/15 via-saffron-500/10 to-dharma-card p-6 shadow-md hover:border-saffron-500 transition-all"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-saffron-500/20 text-saffron-800 dark:text-saffron-300 font-bold text-xs uppercase tracking-wider">
+                विशेष वैदिक दर्शिका · Featured Vedic Manual
+              </span>
+              <h2 className="text-xl font-serif font-bold text-dharma-text group-hover:text-saffron-700 transition">
+                श्रावणी उपाकर्म एवं यज्ञोपवीत संस्कार विधान (Upakarma Guide)
+              </h2>
+              <p className="text-xs sm:text-sm text-dharma-muted max-w-2xl leading-relaxed">
+                कामोऽकार्षीत् प्रायश्चित्त जप (108 आवर्तन), ब्रह्म-यज्ञ, नूतन जनेऊ धारण-विसर्जन मन्त्र और ९ तन्तुओं का रहस्य।
+              </p>
+            </div>
+            <div className="shrink-0 flex items-center gap-2 text-xs font-bold text-saffron-700 dark:text-saffron-400 group-hover:translate-x-1 transition-transform">
+              <span>सम्पूर्ण विधान देखें</span>
+              <span>&rarr;</span>
+            </div>
+          </div>
+        </Link>
+      </section>
+
       {/* Ritual Grid */}
-      <section className="max-w-6xl mx-auto px-6 -mt-8 relative z-10 pb-20">
+      <section className="max-w-6xl mx-auto px-6 relative z-10 pb-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {rituals.map((ritual, i) => (
-            <motion.button
+            // CSS fade-up (globals.css): plays from the server HTML, so the cards are never shipped hidden.
+            <button
+              type="button"
               key={ritual.id}
               onClick={() => setSelectedId(ritual.id)}
-              initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.04 }}
-              className="group relative overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-6 text-left hover:shadow-xl transition-all"
+              style={{ animationDelay: `${Math.min(i, 12) * 40}ms` }}
+              className="fade-up-in group relative overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-6 text-left hover:shadow-xl transition-all"
             >
               <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${ritual.gradient}`} />
               <div className="flex items-start gap-4 mb-3">
@@ -65,7 +91,7 @@ export default function RitualsPage() {
                 <span className="text-dharma-muted">{ritual.transliteration}</span>
                 <span className="font-semibold text-saffron-700 group-hover:translate-x-1 transition-transform">विवरण देखें →</span>
               </div>
-            </motion.button>
+            </button>
           ))}
         </div>
       </section>

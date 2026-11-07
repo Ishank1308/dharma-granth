@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 /**
@@ -12,6 +13,17 @@ import { motion, useReducedMotion } from 'framer-motion';
  */
 export function AmbientOrbs() {
   const reduce = useReducedMotion();
+  // Reading pages stay still on phones and tablets: three blurred, always-moving layers cost
+  // battery and pull the eye from the verse. Desktop keeps them unless reduced motion is set.
+  const [wide, setWide] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia('(min-width: 1024px)');
+    const update = () => setWide(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+  if (!wide || reduce) return null;
 
   const orbs = [
     {

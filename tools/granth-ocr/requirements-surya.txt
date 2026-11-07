@@ -1,0 +1,4 @@
+# Optional. Pulls PyTorch and the Surya weights. Install only on a machine
+# that will keep those weights on disk. The scanner never downloads them
+# while surya_offline is true in config.yaml.
+surya-ocr>=0.13.0

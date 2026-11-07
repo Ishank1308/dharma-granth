@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { topicHref, WISDOM_INDEX_HREF } from '@/lib/topic-links';
 import { Compass, BookOpen, Sparkles, ArrowRight } from 'lucide-react';
 import { getConceptDetail } from '@/data/concept-details';
 import type {
@@ -6,6 +7,8 @@ import type {
   IntegratedTopic,
   CrossScriptureVerse,
 } from '@/lib/verse-integrations';
+
+const isCompleteShloka = (s?: string) => Boolean(s && /॥/.test(s));
 
 interface Props {
   concepts: IntegratedConcept[];
@@ -97,7 +100,7 @@ export function VerseRelatedSection({
               <span>जीवन व कार्यक्षेत्र में अनुप्रयोग (Practical Applications)</span>
             </h2>
             <Link
-              href="/topics"
+              href={WISDOM_INDEX_HREF}
               className="inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-saffron-700 transition hover:text-saffron-800 dark:text-saffron-400"
             >
               <span>सभी विषय</span>
@@ -109,7 +112,7 @@ export function VerseRelatedSection({
             {topics.map((topic) => (
               <Link
                 key={topic.id}
-                href={`/topics/${topic.id}`}
+                href={topicHref(topic.id)}
                 className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-saffron-300 hover:shadow-md"
               >
                 <div
@@ -176,12 +179,16 @@ export function VerseRelatedSection({
                 </div>
 
                 <div className="mt-3 space-y-2">
-                  <p
-                    lang="sa"
-                    className="font-devanagari text-sm font-medium leading-relaxed text-dharma-text"
-                  >
-                    {ref.sanskrit}
-                  </p>
+                  {/* Concept lists often store only the famous half-line; a shloka is
+                      quoted here only when it is complete (closes with ॥). */}
+                  {isCompleteShloka(ref.sanskrit) && (
+                    <p
+                      lang="sa"
+                      className="whitespace-pre-line font-devanagari text-sm font-medium leading-relaxed text-dharma-text"
+                    >
+                      {ref.sanskrit}
+                    </p>
+                  )}
                   <p className="text-xs italic leading-relaxed text-dharma-muted">
                     &quot;{ref.translation}&quot;
                   </p>

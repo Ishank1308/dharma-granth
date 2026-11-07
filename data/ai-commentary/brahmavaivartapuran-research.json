@@ -1,0 +1,50 @@
+{
+  "1:1": {
+    "status": "approved",
+    "science": ""
+  },
+  "1:7": {
+    "status": "approved",
+    "science": ""
+  },
+  "2:1": {
+    "status": "approved",
+    "science": ""
+  },
+  "2:42": {
+    "status": "approved",
+    "science": ""
+  },
+  "3:1": {
+    "status": "approved",
+    "science": ""
+  },
+  "4:1": {
+    "status": "approved",
+    "science": "",
+    "lifeLesson": [
+      [
+        "बस कीर्तन करें",
+        "केवल कीर्तन करें"
+      ]
+    ]
+  },
+  "4:5": {
+    "status": "approved",
+    "science": ""
+  },
+  "4:28": {
+    "status": "approved",
+    "science": "",
+    "lifeLesson": [
+      [
+        "बस लक्षित होने",
+        "केवल लक्षित होने"
+      ]
+    ]
+  },
+  "4:88": {
+    "status": "approved",
+    "science": ""
+  }
+}

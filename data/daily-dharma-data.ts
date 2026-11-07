@@ -278,7 +278,7 @@ export const SAMPLE_DAILY_JOURNEYS: Record<string, DailyDharmaSession> = {
         id: 'rec-journey-karma',
         title: 'Next Lesson: The Three Gunas of Action',
         scriptureRef: 'Understanding Karma Yoga · Lesson 3',
-        href: '/journeys/understanding-karma-yoga#lesson-3',
+        href: '/learn/journeys/understanding-karma-yoga#lesson-3',
         type: 'guided_journey',
         reason: 'Explore how different mental temperaments shape how we work.',
         basis: 'Active reading journey continuation',

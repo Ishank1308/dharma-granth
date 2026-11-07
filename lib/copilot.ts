@@ -105,7 +105,7 @@ function routed(query: string): { topic?: string; concept?: string } | null {
   if (/karma\s*yoga|कर्म\s*योग|कर्मयोग/.test(q)) return { concept: 'karma-yoga' };
   if (/outcome|results of action|phala|फल/.test(q)) return { topic: 'duty-and-decision-making' };
   if (/anger|krodha|क्रोध|गुस्स/.test(q)) return { topic: 'anger' };
-  if (/anxiet|worry|stress|चिंता|तनाव/.test(q)) return { topic: 'stress-and-worry' };
+  if (/anxiet|worry|stress|चिंता|चिन्ता|तनाव|उद्वेग/.test(q)) return { topic: 'stress-and-worry' };
   if (/what is dharma|dharma क्या|धर्म क्या|^dharma$|^धर्म$/.test(q.trim())) return { concept: 'dharma' };
   return null;
 }

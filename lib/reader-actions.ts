@@ -8,14 +8,30 @@
  * is assumed about editions, translators or reviewers.
  */
 
+import { EDITORIAL_DRAFT_LABEL } from '@/lib/editorial-terminology';
+import { formatVerseRef } from '@/lib/verse-format';
+
 export interface ReaderVerseText {
   number: number | string;
   sanskrit?: string;
   transliteration?: string;
   wordMeaning?: string;
   hindi?: string;
+  /** The Hindi translates a range of verses together ("15-17"). */
+  hindiRange?: string;
+  /** This verse's Hindi is stored on that verse (the first of its range). */
+  hindiSeeVerse?: number | string;
+  /** The Hindi meaning is withheld until it is checked against the printed edition. */
+  hindiReviewRequired?: boolean;
   translation?: string;
+  /** The English translates a range of verses together ("24-25"). */
+  translationRange?: string;
+  /** This verse's English is stored on that verse (the first of its range). */
+  translationSeeVerse?: number | string;
+  /** व्याख्या: the Hindi exposition. */
   explanation?: string;
+  /** Commentary & Explanation: the English exposition, shown after the व्याख्या. */
+  commentary?: string;
   reflection?: string;
   research?: string;
 }
@@ -31,12 +47,18 @@ export interface ReaderProvenance {
   /** Hindi / English text is machine-translated (flagged in the data). */
   hindiIsAi: boolean;
   englishIsAi: boolean;
-  /** The explanation, reflection and research layers are AI-drafted (reviewed). */
+  /** The explanation, reflection and research layers are AI-drafted and editor-approved (lib/ai-labels). */
   commentaryIsAi: boolean;
+  /** The व्याख्या alone is an approved AI draft (also true when commentaryIsAi is). */
+  explanationIsAi?: boolean;
+  /** The research note alone is an approved AI rewrite (also true when commentaryIsAi is). */
+  researchIsAi?: boolean;
   /** ISO date the text or its commentary last changed in the repository. */
   lastUpdated?: string;
   /** Who translated the Hindi and English layers, as recorded for the text. */
   translator?: string;
+  /** Variant-reading note recorded for this text; absent when none is recorded. */
+  variantNote?: string;
   /** The Sanskrit edition or archive, as recorded for the text. */
   edition?: string;
   /** Review of the translation: 'Not yet reviewed' or 'Reviewed <date>'. */
@@ -55,12 +77,12 @@ export interface ReaderRef {
 const clean = (s?: string): string => (s ?? '').replace(/\s+\n/g, '\n').trim();
 
 export const verseReference = (ref: ReaderRef, verse: ReaderVerseText): string =>
-  `${ref.scriptureTitle} ${ref.chapterId}.${verse.number}`;
+  `${ref.scriptureTitle} ${formatVerseRef(ref.scriptureId, ref.chapterId, verse.number)}`;
 
 /** Human-readable layer labels used in copied and downloaded text. */
 export function layerNote(p: ReaderProvenance, layer: 'hindi' | 'english'): string {
   const ai = layer === 'hindi' ? p.hindiIsAi : p.englishIsAi;
-  return ai ? ' (AI translation, not a scholarly edition)' : '';
+  return ai ? ' (study translation, AI-assisted draft — not a scholarly edition)' : '';
 }
 
 /** Text for "Copy with reference": only the layers the reader currently shows. */
@@ -87,7 +109,7 @@ export function buildCopyText(
  */
 export function buildDownloadMarkdown(ref: ReaderRef, verse: ReaderVerseText, p: ReaderProvenance): string {
   const section = (title: string, body?: string) => (body && clean(body) ? `## ${title}\n\n${clean(body)}\n` : '');
-  const aiNote = p.commentaryIsAi ? '\n_AI-drafted and editor-reviewed; not part of the scripture._' : '';
+  const aiNote = p.commentaryIsAi ? `\n_Editorial draft: ${EDITORIAL_DRAFT_LABEL.detail} Not part of the scripture._` : '';
   const lines = [
     `# ${verseReference(ref, verse)}`,
     `${ref.scriptureTitle}${ref.scriptureTitleSanskrit ? ` (${ref.scriptureTitleSanskrit})` : ''} · ${ref.chapterTitle}\n`,
@@ -96,7 +118,8 @@ export function buildDownloadMarkdown(ref: ReaderRef, verse: ReaderVerseText, p:
     section('Word-by-word', verse.wordMeaning),
     section(`Hindi translation${layerNote(p, 'hindi')}`, verse.hindi),
     section(`English translation${layerNote(p, 'english')}`, verse.translation),
-    verse.explanation ? `${section('Explanation', verse.explanation)}${aiNote}\n` : '',
+    verse.explanation ? `${section('व्याख्या (Vyakhya)', verse.explanation)}${aiNote}\n` : '',
+    verse.commentary ? `${section('Commentary & Explanation', verse.commentary)}${aiNote}\n` : '',
     verse.reflection ? `${section('Modern reflection', verse.reflection)}${aiNote}\n` : '',
     verse.research ? `${section('Research context', verse.research)}${aiNote}\n` : '',
     '## Source',
@@ -106,38 +129,6 @@ export function buildDownloadMarkdown(ref: ReaderRef, verse: ReaderVerseText, p:
     `- Page: ${ref.url}`,
   ];
   return `${lines.filter((l) => l !== '').join('\n')}\n`;
-}
-
-export const REPORT_KINDS = [
-  { id: 'sanskrit', label: 'Sanskrit spelling or sandhi', hi: 'संस्कृत वर्तनी / संधि' },
-  { id: 'transliteration', label: 'Transliteration (IAST)', hi: 'लिप्यन्तरण' },
-  { id: 'hindi', label: 'Hindi translation', hi: 'हिन्दी अनुवाद' },
-  { id: 'english', label: 'English translation', hi: 'अंग्रेज़ी अनुवाद' },
-  { id: 'wordmeaning', label: 'Word-by-word meaning', hi: 'पदच्छेद / शब्दार्थ' },
-  { id: 'order', label: 'Verse order or missing text', hi: 'श्लोक क्रम / छूटा पाठ' },
-  { id: 'other', label: 'Something else', hi: 'अन्य' },
-] as const;
-
-export type ReportKind = (typeof REPORT_KINDS)[number]['id'];
-
-export const ISSUES_REPO = 'https://github.com/Ishank567/dharma-granth';
-
-/**
- * A prefilled GitHub issue. The report is sent only when the reader presses
- * "Create issue" on GitHub: nothing is stored or transmitted by this site.
- */
-export function buildIssueUrl(ref: ReaderRef, verse: ReaderVerseText, kind: ReportKind, details: string): string {
-  const label = REPORT_KINDS.find((k) => k.id === kind)?.label ?? kind;
-  const title = `Text issue: ${verseReference(ref, verse)} — ${label}`;
-  const body = [
-    `**Verse:** ${verseReference(ref, verse)}`,
-    `**Page:** ${ref.url}`,
-    `**Type:** ${label}`,
-    '',
-    '**What is wrong, and what should it be?**',
-    clean(details) || '(please describe)',
-  ].join('\n');
-  return `${ISSUES_REPO}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
 }
 
 /* ── Bookmarks (same record and key as the chapter reader and verse page) ── */
@@ -159,7 +150,53 @@ export interface SavedVerse {
 const sameVerse = (b: SavedVerse, ref: ReaderRef, verse: ReaderVerseText): boolean =>
   b.scriptureId === ref.scriptureId && b.chapterId === ref.chapterId && String(b.verseId) === String(verse.number);
 
+/** Keys older builds wrote verse bookmarks to (VerseBookmark, June 2026, and the first sync layer). */
+const LEGACY_BOOKMARK_KEYS = ['verse-bookmarks', 'dharma-bookmarks-v1'];
+
+/**
+ * One-time fold of legacy bookmark lists into BOOKMARKS_KEY, so a reader's
+ * older saves appear on /practice/bookmarks/. A legacy key is removed only
+ * after the merged list is written; unreadable entries are left in place.
+ */
+export function migrateLegacyBookmarks(): void {
+  try {
+    for (const key of LEGACY_BOOKMARK_KEYS) {
+      const raw = localStorage.getItem(key);
+      if (raw === null) continue;
+      const legacy: unknown = JSON.parse(raw);
+      if (!Array.isArray(legacy)) continue;
+      const current: SavedVerse[] = JSON.parse(localStorage.getItem(BOOKMARKS_KEY) ?? '[]');
+      const seen = new Set(current.map((b) => `${b.scriptureId}:${b.chapterId ?? ''}:${b.verseId}`));
+      for (const item of legacy as Array<Record<string, unknown>>) {
+        const scriptureId = typeof item.scriptureId === 'string' ? item.scriptureId : '';
+        const verseId = (item.verseNumber ?? item.verse ?? item.verseId) as number | string | undefined;
+        if (!scriptureId || verseId === undefined || verseId === '') continue;
+        const chapterId = item.chapterId === undefined ? undefined : Number(item.chapterId);
+        const id = `${scriptureId}:${chapterId ?? ''}:${verseId}`;
+        if (seen.has(id)) continue;
+        seen.add(id);
+        current.push({
+          scriptureId,
+          scriptureTitle: typeof item.scriptureTitle === 'string' ? item.scriptureTitle : scriptureId,
+          chapterId: Number.isFinite(chapterId) ? chapterId : undefined,
+          chapterTitle: typeof item.chapterTitle === 'string' ? item.chapterTitle : chapterId ? `अध्याय ${chapterId}` : '',
+          verseId,
+          sanskrit: typeof item.sanskrit === 'string' ? item.sanskrit : '',
+          translation: String(item.english ?? item.translation ?? item.hindi ?? ''),
+          hindi: typeof item.hindi === 'string' ? item.hindi : undefined,
+          timestamp: String(item.savedAt ?? item.timestamp ?? new Date().toISOString()),
+        });
+      }
+      localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(current));
+      localStorage.removeItem(key);
+    }
+  } catch {
+    // Storage blocked or a malformed legacy value: keep everything as it was.
+  }
+}
+
 export function readBookmarks(): SavedVerse[] {
+  migrateLegacyBookmarks();
   try {
     const parsed: unknown = JSON.parse(localStorage.getItem(BOOKMARKS_KEY) ?? '[]');
     return Array.isArray(parsed) ? (parsed as SavedVerse[]) : [];

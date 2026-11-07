@@ -1,7 +1,5 @@
-/**
- * Search phrases for life topics that already exist.
- * A Gita-only title is used when every cited verse on the topic is from the Gita.
- */
+/** Search metadata is derived from the same curated intents used by discovery. */
+import { LIFE_DISCOVERY_SEO_INTENTS } from './life-discovery-intents';
 
 export interface SearchIntent {
   slug: string;
@@ -12,16 +10,12 @@ export interface SearchIntent {
   libraryTitle: string;
 }
 
-export const SEARCH_INTENTS: SearchIntent[] = [
-  { slug: 'stress-and-worry', titleHi: 'चिंता और तनाव', gitaTitle: 'What the Bhagavad Gita says about anxiety and stress', libraryTitle: 'Anxiety and stress in the library' },
-  { slug: 'fear-and-courage', titleHi: 'भय और साहस', gitaTitle: 'What the Bhagavad Gita says about fear', libraryTitle: 'Fear and courage in the library' },
-  { slug: 'anger', titleHi: 'क्रोध', gitaTitle: 'What the Bhagavad Gita says about anger', libraryTitle: 'Anger in the library' },
-  { slug: 'meaning-of-life', titleHi: 'उद्देश्य और जीवन का अर्थ', gitaTitle: 'What the Bhagavad Gita says about purpose', libraryTitle: 'Purpose and meaning in the library' },
-  { slug: 'discipline', titleHi: 'अनुशासन', gitaTitle: 'What the Bhagavad Gita says about discipline', libraryTitle: 'Discipline in the library' },
-  { slug: 'concentration', titleHi: 'एकाग्रता', gitaTitle: 'What the Bhagavad Gita says about focus', libraryTitle: 'Focus in the library' },
-  { slug: 'leadership', titleHi: 'नेतृत्व', gitaTitle: 'What the Bhagavad Gita says about leadership', libraryTitle: 'Leadership in the library' },
-  { slug: 'success', titleHi: 'सिद्धि', gitaTitle: 'What the Bhagavad Gita says about success', libraryTitle: 'Success in the library' },
-];
+export const SEARCH_INTENTS: SearchIntent[] = LIFE_DISCOVERY_SEO_INTENTS.map((intent) => ({
+  slug: intent.slug,
+  titleHi: intent.seo!.titleHi,
+  gitaTitle: intent.seo!.gitaTitle,
+  libraryTitle: intent.seo!.libraryTitle,
+}));
 
 export function searchHeading(
   slug: string,

@@ -37,6 +37,17 @@ interface BookLearningClientProps {
   catalogueChapters?: number;
 }
 
+const CATEGORY_NAMES: Record<string, string> = {
+  itihasa: 'Itihāsa · इतिहास',
+  upanishad: 'Upaniṣad · उपनिषद्',
+  veda: 'Veda · वेद',
+  purana: 'Purāṇa · पुराण',
+  smriti: 'Smṛti · स्मृति',
+  tantra: 'Tantra · तन्त्र',
+  stotra: 'Stotra · स्तोत्र',
+  other: 'Other · अन्य',
+};
+
 const copy = {
   hi: {
     guided: 'मार्गदर्शित अध्ययन',
@@ -47,7 +58,7 @@ const copy = {
     reflect: 'मनन',
     complete: 'पूर्ण करें',
     completed: 'पूर्ण',
-    start: 'पढ़ना शुरू करें',
+    start: 'पठन आरम्भ करें',
     continue: 'अध्याय खोलें',
     cataloged: 'यह ग्रंथ अभी सूचीबद्ध है। श्लोक-दर-श्लोक अध्ययन तैयार किया जा रहा है।',
     reflectionPrompt: 'इस ग्रंथ से आज के जीवन के लिए कौन सी एक बात अपनाई जा सकती है?',
@@ -134,7 +145,7 @@ export function BookLearningClient({
             </div>
             <div className="rounded-lg border border-dharma-border bg-dharma-bg p-4">
               <p className="text-base font-bold text-saffron-700">{inLibraryVerses > 0 ? labels.available : labels.preparing}</p>
-              <p className="text-xs font-semibold uppercase tracking-wider text-dharma-muted">{meta.category}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-dharma-muted">{CATEGORY_NAMES[meta.category] || meta.category}</p>
             </div>
           </div>
         </div>
@@ -197,7 +208,7 @@ export function BookLearningClient({
                 )}
                 {chapter.summary && <span className="mt-2 block text-sm text-dharma-muted line-clamp-2">{chapter.summary}</span>}
                 <span className="mt-2 block text-xs font-semibold text-dharma-muted">
-                  {chapter.verseCount.toLocaleString()} {labels.versesLabel}
+                  {chapter.verseCount.toLocaleString(undefined, { numberingSystem: 'latn' })} {labels.versesLabel}
                 </span>
               </span>
               <ChevronRight className="mt-2 h-5 w-5 flex-shrink-0 text-dharma-muted group-hover:text-saffron-700" />

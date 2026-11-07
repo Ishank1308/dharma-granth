@@ -1,0 +1,76 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://dharmagranth.dev/api/feedback",
+      "service-desc": [
+        {
+          "href": "https://dharmagranth.dev/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://dharmagranth.dev/api-docs/"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://dharmagranth.dev/api/health"
+        }
+      ],
+      "service-status": [
+        {
+          "href": "https://dharmagranth.dev/api/health"
+        }
+      ]
+    },
+    {
+      "anchor": "https://dharmagranth.dev/chapter-index.json",
+      "service-desc": [
+        {
+          "href": "https://dharmagranth.dev/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://dharmagranth.dev/api-docs/"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://dharmagranth.dev/api/health"
+        }
+      ],
+      "service-status": [
+        {
+          "href": "https://dharmagranth.dev/api/health"
+        }
+      ]
+    },
+    {
+      "anchor": "https://dharmagranth.dev/search-index/verses.json",
+      "service-desc": [
+        {
+          "href": "https://dharmagranth.dev/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://dharmagranth.dev/api-docs/"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://dharmagranth.dev/api/health"
+        }
+      ],
+      "service-status": [
+        {
+          "href": "https://dharmagranth.dev/api/health"
+        }
+      ]
+    }
+  ]
+}

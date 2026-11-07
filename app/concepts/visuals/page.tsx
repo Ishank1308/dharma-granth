@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: 'दृश्य ज्ञान दर्शन — 10 वैदिक अवधारणाओं के इंटरैक्टिव आरेख | Dharma Granth',
     description:
       'Explore interactive sacred geometry, flowcharts, knowledge maps, and stages for the 10 foundational concepts of Hindu philosophy.',
-    url: 'https://dharmagranth.in/concepts/visuals/',
+    url: 'https://dharmagranth.dev/concepts/visuals/',
     images: [DEFAULT_OG_IMAGE],
   },
   twitter: {

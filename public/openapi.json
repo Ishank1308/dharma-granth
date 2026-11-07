@@ -1,0 +1,226 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Dharma Granth API",
+    "version": "1.0.0",
+    "description": "Public machine-readable interfaces of Dharma Granth: the clarity-feedback collector, the deployment health check, and the static scripture search indexes. Scripture pages themselves are server-rendered HTML; these endpoints are the parts meant for automated clients.",
+    "contact": {
+      "name": "Dharma Granth",
+      "url": "https://dharmagranth.dev"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://dharmagranth.dev",
+      "description": "Production"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Feedback",
+      "description": "Anonymous clarity votes on explanations."
+    },
+    {
+      "name": "Health",
+      "description": "Deployment health check."
+    },
+    {
+      "name": "Content indexes",
+      "description": "Static JSON indexes behind global search."
+    }
+  ],
+  "paths": {
+    "/api/feedback": {
+      "post": {
+        "tags": ["Feedback"],
+        "operationId": "submitFeedback",
+        "summary": "Submit an anonymous clarity vote",
+        "description": "Records one counter per verse, rating and reason. No text, account, address or identifier is accepted or stored. Returns 503 until the FEEDBACK KV binding is configured (see docs/feedback-collection.md).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/FeedbackSubmission" }
+            }
+          }
+        },
+        "responses": {
+          "204": { "description": "Vote counted (no body)." },
+          "400": { "description": "Invalid JSON or submission shape." },
+          "413": { "description": "Body exceeds 1024 bytes." },
+          "503": { "description": "Feedback collection is not configured on this deployment." }
+        }
+      },
+      "get": {
+        "tags": ["Feedback"],
+        "operationId": "readFeedback",
+        "summary": "Read aggregated clarity counters (editors)",
+        "description": "Requires the x-editorial-token header and the EDITORIAL_TOKEN secret; without them the endpoint behaves as not found.",
+        "security": [{ "editorialToken": [] }],
+        "responses": {
+          "200": {
+            "description": "Aggregated counters per verse.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["verses"],
+                  "properties": {
+                    "verses": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/FeedbackVerse" }
+                    },
+                    "truncated": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "description": "Wrong or missing editorial token." },
+          "404": { "description": "Not configured (no token secret or KV binding)." }
+        }
+      }
+    },
+    "/api/health": {
+      "get": {
+        "tags": ["Health"],
+        "operationId": "getHealth",
+        "summary": "Service health check",
+        "description": "Liveness probe for monitors and for the `status` links in /.well-known/api-catalog.",
+        "responses": {
+          "200": {
+            "description": "Service is up.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HealthStatus" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/chapter-index.json": {
+      "get": {
+        "tags": ["Content indexes"],
+        "operationId": "getChapterIndex",
+        "summary": "Chapter title index",
+        "description": "Static build-time index of chapter titles ({v, counts, chapters}) fetched lazily by global search.",
+        "responses": {
+          "200": {
+            "description": "Chapter index.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ChapterIndex" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search-index/verses.json": {
+      "get": {
+        "tags": ["Content indexes"],
+        "operationId": "getVerseIndex",
+        "summary": "Verse search index",
+        "description": "Static build-time index of every verse that has its own page ({v, scriptures, rows}), fetched lazily by global search.",
+        "responses": {
+          "200": {
+            "description": "Verse index.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/VerseIndex" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "editorialToken": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-editorial-token"
+      }
+    },
+    "schemas": {
+      "FeedbackSubmission": {
+        "type": "object",
+        "required": ["refKey", "rating"],
+        "properties": {
+          "refKey": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]{1,40}:[0-9]{1,4}:[0-9A-Za-z.-]{1,12}$",
+            "example": "bhagavadgita:2:47",
+            "description": "\"scripture:chapter:verse\" reference."
+          },
+          "rating": {
+            "type": "string",
+            "enum": ["yes", "partly", "no"]
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["language", "example", "long", "context", "source", "vocabulary", "source-concern", "textual", "other"]
+            },
+            "description": "Fixed reason ids; ignored when rating is \"yes\"."
+          }
+        }
+      },
+      "FeedbackVerse": {
+        "type": "object",
+        "required": ["refKey", "yes", "partly", "no", "reasons"],
+        "properties": {
+          "refKey": { "type": "string", "example": "bhagavadgita:2:47" },
+          "yes": { "type": "integer", "minimum": 0 },
+          "partly": { "type": "integer", "minimum": 0 },
+          "no": { "type": "integer", "minimum": 0 },
+          "reasons": {
+            "type": "object",
+            "additionalProperties": { "type": "integer", "minimum": 0 }
+          }
+        }
+      },
+      "HealthStatus": {
+        "type": "object",
+        "required": ["status", "service"],
+        "properties": {
+          "status": { "type": "string", "enum": ["ok"], "example": "ok" },
+          "service": { "type": "string", "example": "dharma-granth" },
+          "time": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ChapterIndex": {
+        "type": "object",
+        "required": ["v", "counts", "chapters"],
+        "properties": {
+          "v": { "type": "integer", "const": 1 },
+          "counts": {
+            "type": "object",
+            "additionalProperties": { "type": "integer", "minimum": 0 }
+          },
+          "chapters": {
+            "type": "array",
+            "items": { "type": "array", "minItems": 3, "maxItems": 4 },
+            "description": "[scriptureId, chapterNumber, title, titleSanskrit?]."
+          }
+        }
+      },
+      "VerseIndex": {
+        "type": "object",
+        "required": ["v", "scriptures", "rows"],
+        "properties": {
+          "v": { "type": "integer", "const": 1 },
+          "scriptures": { "type": "array", "items": { "type": "string" } },
+          "rows": {
+            "type": "array",
+            "items": { "type": "array", "minItems": 9, "maxItems": 9 },
+            "description": "[scriptureIndex, chapter, verseSlug, sanskrit, transliteration, hindi, english, explanation, flags]."
+          }
+        }
+      }
+    }
+  }
+}

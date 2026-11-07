@@ -5,195 +5,842 @@ export const kaushitaki: Scripture = {
   title: 'Kaushitaki Upanishad',
   titleSanskrit: 'कौषीतकि उपनिषद्',
   category: 'upanishad',
-  description: 'A principal Upanishad of the Rigveda tradition. Famous for the dialogue between Pratardana and Indra, which reveals that prana (breath/consciousness) is the only true Self. Introduces the doctrine of karma in the afterlife and the path of the gods (devayana).',
-  totalVerses: 18,
-  tags: ['Upanishad', 'Prana', 'Consciousness', 'Karma', 'Rigveda'],
+  description: "A major principal Upanishad of the Rigveda. Celebrated for the doctrine of the two paths (Devayana and Pitriyana), the ascent of the soul to Brahmaloka, the deep teachings of Indra to Pratardana revealing that Prana is Prajna (Conscious Self), and Ajatashatru’s instruction to Gargya Balaki. Complete recension across all 4 Adhyāyas with authentic Sanskrit, transliteration, English and Hindi translations.",
+  totalVerses: 50,
+  tags: ["Upanishad","Rigveda","Devayana","Brahmaloka","Prana","Prajna","Indra","Pratardana","Ajatashatru"],
   chapters: [
-    {
-      id: 1,
-      title: 'Chapter 1 — The Worlds Where the Souls Go After Death',
-      titleSanskrit: 'प्रथम अध्याय — मृत्यु के पश्चात आत्माओं का गमन',
-      summary: 'The Kaushitaki opens with the doctrine of the two paths: devayana (path of the gods, leading to non-return) and pitriyana (path of the ancestors, leading to rebirth). It describes the journey of souls through various lokas and the questioning by the moon-god.',
-      verses: [
-        {
-          id: 1,
-          sanskrit: 'सर्वे एव एतं देवयानं पन्थानमापद्यन्ते ये एतदेवं विदुः । अथ यो न विद्वान् पितृयाणेन पन्थना एति ॥',
-          transliteration: 'sarve eva etaṃ devayānaṃ panthānamāpadyante ye etadevaṃ viduḥ | atha yo na vidvān pitṛyāṇena panthana eti ||',
-          translation: 'All those who know this go by the path of the gods (devayana). But the one who does not know this travels by the path of the ancestors (pitriyana).',
-          hindi: 'जो इसे जानते हैं, वे सभी देवयान मार्ग से जाते हैं। परन्तु जो नहीं जानता, वह पितृयान मार्ग से जाता है।',
-          explanation: 'The Kaushitaki\'s central distinction: devayana is the path of those who have realised Brahman — they merge with the sun, then with the cosmic fire, and do not return to rebirth. Pitriyana is the cycle of those who have acted without realisation — they enjoy the fruits of their karma and return.',
-          science: 'Research on death anxiety and meaning-making (Yalom, Terror Management Theory): the manner in which a person relates to the fact of their mortality shapes how they live. Those with a strong sense of meaning and transcendence show markedly reduced death anxiety.',
-          lifeLesson: 'The two paths are not chosen at death — they are chosen now, in every moment of knowing or not knowing. Which path are your daily choices accumulating toward?',
-          keywords: ['Devayana', 'Pitriyana', 'TwoPaths', 'Brahman', 'Liberation'],
-        },
-        {
-          id: 2,
-          sanskrit: 'प्राणो ब्रह्मेति ह स्माह कौषीतकिः । न मनो न वाक् — प्राणमेव ब्रह्मोपास्स्व ॥',
-          transliteration: 'prāṇo brahmeti ha smāha kauṣītakiḥ | na mano na vāk — prāṇameva brahmopāssva ||',
-          translation: 'Prana is Brahman — so said Kaushitaki. Not the mind, not speech — worship prana alone as Brahman.',
-          hindi: 'कौषीतकि ने कहा: प्राण ही ब्रह्म है। न मन, न वाणी — प्राण को ही ब्रह्म रूप से उपासना करो।',
-          explanation: 'The Kaushitaki Upanishad\'s radical reduction: in the hierarchy of consciousness, prana — the vital breath, the animating force — is supreme. Speech depends on prana; mind depends on prana; senses depend on prana.',
-          science: 'Neuroscience of breath and consciousness (Stephen Porges, polyvagal theory): breathing is the only autonomic function under both conscious and unconscious control — the bridge between voluntary and involuntary nervous systems.',
-          lifeLesson: 'Right now, take three slow, conscious breaths. That simple act — bringing attention to prana — is the practice the Kaushitaki recommends.',
-          keywords: ['Prana', 'Brahman', 'Breath', 'Consciousness', 'Kaushitaki'],
-        },
-        {
-          id: 3,
-          sanskrit: 'स एतं देवयानं पन्थानमासद्यग्निलोकमागच्छति स वायुलोकं स वरुणलोकं स आदित्यलोकं स इन्द्रलोकं स प्रजापतिलोकं स ब्रह्मलोकम् ॥',
-          transliteration: 'sa etaṃ devayānaṃ panthānamāsadyagnilokamāgacchati sa vāyulokaṃ sa varuṇalokaṃ s ādityalokaṃ sa indralokaṃ sa prajāpatilokaṃ sa brahmalokam ||',
-          translation: 'He going by the path of the gods reaches the world of Agni, then Vayu, then Varuna, then Aditya, then Indra, then Prajapati, then the world of Brahma.',
-          hindi: 'वह देवयान मार्ग से अग्नि लोक, फिर वायु लोक, फिर वरुण लोक, फिर आदित्य लोक, फिर इन्द्र लोक, फिर प्रजापति लोक, और फिर ब्रह्म लोक को प्राप्त होता है।',
-          explanation: 'The progressive journey through the lokas (worlds) along the devayana path. Each loka represents a stage of purification and expansion of consciousness, culminating in Brahmaloka — the world of Brahma.',
-          science: 'Developmental psychology and stage theories: the journey through lokas can be seen as a metaphor for stages of consciousness development, each stage transcending and including the previous one.',
-          lifeLesson: 'Your spiritual journey is progressive. You don\'t jump from ignorance to enlightenment in one step. Each stage of growth prepares you for the next. Trust the process.',
-          keywords: ['Lokas', 'ProgressiveJourney', 'Stages', 'Consciousness'],
-        },
-        {
-          id: 4,
-          sanskrit: 'रितुरस्म्यर्तवोऽस्म्याकाशयोनेः सम्भूतो भार्यायै रेतः संवत्सरस्य तेजो भूतस्य भूतस्यात्मा भूतस्य त्वमात्मसि यस्त्वमसि सोऽहमस्मि ॥',
-          transliteration: 'riturasmyartavo\'smyākāśayoneḥ saṃbhūto bhāryāyai retaḥ saṃvatsarasya tejo bhūtasya bhūtasyātmā bhūtasya tvamātmasi yastvamasi so\'hamasmi ||',
-          translation: 'I am the season. I am of the season. I am born in the space of the womb through the seed, as the light of the year, and as the embodied self of all beings. You are the self of the beings. That which you are, I am also that.',
-          hindi: 'मैं ऋतु हूँ, मैं ऋतु का हूँ। मैं गर्भ के आकाश में बीज से पैदा हूँ, वर्ष के प्रकाश के रूप में, और सभी प्राणियों के आत्मा के रूप में। तुम प्राणियों के आत्मा हो। जो तुम हो, मैं वही हूँ।',
-          explanation: 'The dialogue with the moon-god (Chandra) who represents time and seasons. The soul must recognize its identity with the cosmic principle of time and cycles.',
-          science: 'Chronobiology: our bodies are deeply connected to cosmic cycles — day/night, seasons, lunar phases. The Kaushitaki recognizes this connection at the spiritual level.',
-          lifeLesson: 'You are not separate from the cycles of nature. Your breath, your sleep, your energy — all follow cosmic rhythms. Align with these rhythms rather than resist them.',
-          keywords: ['Seasons', 'Time', 'CosmicCycles', 'Identity'],
-        },
-        {
-          id: 5,
-          sanskrit: 'यजुदरः समसिर आसवृन्मूर्तिरव्यय स ब्रह्मेति विज्ञेय ऋषिर्ब्रह्ममयो महान् ॥',
-          transliteration: 'yajudarāḥ samasira āsavṛnmūrtiravyaya sa brahmeti vijñeya ṛṣirbrahmamayo mahān ||',
-          translation: 'The seer, whose belly is Yaju, head is Saman, and form is Rik, he is to be known as the imperishable great Brahma.',
-          hindi: 'वह ऋषि, जिसका पेट यजुर्वेद है, सिर सामवेद है, और रूप ऋग्वेद है, उसे अविनाशी महान ब्रह्म के रूप में जानना चाहिए।',
-          explanation: 'The cosmic person whose body is the Vedas themselves. This is a vision of the universe as the body of Brahman, with each Veda representing a different aspect.',
-          science: 'Systems theory: the universe as an integrated whole where each part represents a different aspect of the whole. The Vedas as body parts suggests an early systems view of reality.',
-          lifeLesson: 'You are a microcosm of the macrocosm. The same intelligence that structures the universe structures you. Recognize this connection.',
-          keywords: ['Vedas', 'CosmicPerson', 'IntegratedWhole', 'Microcosm'],
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: 'Chapter 2 — The Greatness of Breath',
-      titleSanskrit: 'द्वितीय अध्याय — प्राण की महिमा',
-      summary: 'Kaushitaki and Paingya declare that prana is Brahman. The text explains how prana is the foundation of all organs and functions, and how offerings to prana bring unasked blessings.',
-      verses: [
-        {
-          id: 6,
-          sanskrit: 'प्राणो ब्रह्मेति ह स्माह कौषीतकिः । तस्य ह वै एतस्य प्राणस्य ब्रह्मनो मनो दूतं चक्षुर्गोप्तृ श्रोत्रं संस्रवायितृ वाक्परिवेष्ट्री ॥',
-          transliteration: 'prāṇo brahmeti ha smāha kauṣītakiḥ | tasya vai etasya prāṇasya brahmano mano dūtaṃ cakṣurgoptṛ śrotraṃ saṃsrāvayitṛ vākpariveṣṭrī ||',
-          translation: 'Prana is Brahman — so said Kaushitaki. Of this breath which is verily Brahma, the mind is the messenger, the eye is the protector, the ear the announcer, and speech the housekeeper.',
-          hindi: 'कौषीतकि ने कहा: प्राण ब्रह्म है। इस प्राण के लिए, जो वास्तव में ब्रह्म है, मन दूत है, आँख रक्षक है, कान घोषक है, और वाणी गृहस्थ है।',
-          explanation: 'The organs are servants of prana. Mind, eye, ear, speech — all function because prana animates them. When prana withdraws, all organs cease to function.',
-          science: 'Organ system interdependence: no organ functions in isolation. The nervous system, respiratory system, and others are deeply interconnected. Prana represents the integrating principle.',
-          lifeLesson: 'Your organs are servants of your breath. When you breathe consciously, all your systems come into harmony. This is why breath awareness is such a powerful practice.',
-          keywords: ['Prana', 'Organs', 'Servants', 'Integration'],
-        },
-        {
-          id: 7,
-          sanskrit: 'स प्राणो ब्रह्मेति ह स्माह पैङ्ग्यस्तस्य वै एतस्य प्राणस्य ब्रह्मनो वाच्परस्ताच्क्षुरारुन्धते चक्षुः परस्ताच्छोत्रमारुन्धते ॥',
-          transliteration: 'sa prāṇo brahmeti ha smāha paiṅgyastasya vai etasya prāṇasya brahmano vācparastācakṣurārundhate cakṣuḥ parastācśotramārundhate ||',
-          translation: 'Prana is Brahman — so said Paingya. In this breath, on the upper side of speech the eye is enclosed, on the sides of the eye the ear is enclosed, on the inside of the ear the mind is enclosed.',
-          hindi: 'पैङ्ग्य ने कहा: प्राण ब्रह्म है। इस प्राण में, वाणी के ऊपरी भाग में आँख बंद है, आँख के किनारों पर कान बंद है, कान के अंदर मन बंद है।',
-          explanation: 'Paingya\'s vision of the nested structure of consciousness and organs. Each organ contains and is contained by others, all centered on prana.',
-          science: 'Nested systems in biology: cells within tissues, tissues within organs, organs within systems. The Kaushitaki recognizes this nested structure at the level of consciousness.',
-          lifeLesson: 'You are not your organs, nor your thoughts, nor your emotions. You are the prana that contains and animates them all. Rest in that containment.',
-          keywords: ['NestedStructure', 'Paingya', 'Containment', 'Consciousness'],
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: 'Chapter 3 — Indra\'s Teaching to Pratardana',
-      titleSanskrit: 'तृतीय अध्याय — इन्द्र-प्रतर्दन संवाद',
-      summary: 'The most celebrated passage: King Pratardana reaches Indra\'s heaven. Indra says: "Choose your boon." Pratardana asks Indra to choose for him what is best. Indra reveals the supreme secret: "I am prana. Know me as the conscious Self."',
-      verses: [
-        {
-          id: 8,
-          sanskrit: 'अहं प्राणः प्रज्ञात्मा तं मामायुरमृतमित्युपास्स्व । आयुः प्राणः प्राणो ह्यायुः ॥',
-          transliteration: 'ahaṃ prāṇaḥ prajñātmā taṃ māmāyuramṛtamityupāssva | āyuḥ prāṇaḥ prāṇo hyāyuḥ ||',
-          translation: 'I am prana — the conscious Self. Worship me as life, as immortality. Life is prana; prana is life.',
-          hindi: 'मैं प्राण हूँ — प्रज्ञात्मा (चेतन आत्मा)। मुझे आयु और अमृत के रूप में उपासना करो। आयु ही प्राण है और प्राण ही आयु है।',
-          explanation: 'Indra reveals his true identity: not the god of storms and thunder, but the prana — the conscious animating principle in all beings. "Prajnatma" — the Self that is pure consciousness — is the real Indra. The external mythology dissolves into inner truth: every god in the Vedic tradition points inward to an aspect of consciousness. To know Indra as prana is to find the divine not in the sky but in the very breath of life.',
-          science: 'Consciousness science and the "what is it like" problem (Nagel, Chalmers): the most puzzling feature of consciousness is not its complexity but its sheer existence as experience. Prana as "prajnatma" — consciousness-as-such — is the pre-scientific intuition of what philosophers call "qualia" or "phenomenal consciousness." The Kaushitaki places this irreducible fact of conscious experience at the centre of all cosmology.',
-          lifeLesson: 'Indra offers Pratardana any boon and then immediately says: "Let me choose what is best for you." What would it mean to let the deepest intelligence within you — not your preferences, not your anxieties, not your ambitions — choose what is best for you today? That surrender to prajnatma is the boon Indra offers.',
-          keywords: ['IndrasTeaching', 'Prajnatma', 'ConsciousSelf', 'Prana', 'Immortality'],
-        },
-        {
-          id: 9,
-          sanskrit: 'प्राणो वै सत्यं तस्मात् प्राणं वदन्ति सत्यं हि वै प्राणः । प्राणो हि वै सर्वं ज्योतिः प्राणो हि वै सर्वं वीर्यम् ॥',
-          transliteration: 'prāṇo vai satyaṃ tasmāt prāṇaṃ vadanti satyaṃ hi vai prāṇaḥ | prāṇo hi vai sarvaṃ jyotiḥ prāṇo hi vai sarvaṃ vīryam ||',
-          translation: 'Prana is indeed truth; therefore they call prana truth, for prana is truly truth. Prana is indeed all light; prana is indeed all power.',
-          hindi: 'प्राण ही सत्य है; इसीलिए प्राण को सत्य कहते हैं, क्योंकि प्राण वास्तव में सत्य है। प्राण ही सब प्रकाश है; प्राण ही सब वीर्य है।',
-          explanation: 'The Kaushitaki Upanishad\'s central declaration on prana. Unlike other Upanishads that identify Brahman with consciousness or being, the Kaushitaki makes the radical claim that prana — the vital breath — is the fundamental reality. "Satyaṃ hi vai prāṇaḥ" — prana is truth itself, not merely a path to truth. "Sarvaṃ jyotiḥ" — all light, all illumination, derives from prana. "Sarvaṃ vīryam" — all power, all capacity for action, is prana. This is not physiology; it is ontology: prana is the ground of being, knowing, and acting.',
-          science: 'Research on breath and autonomic regulation (Stephen Porges, polyvagal theory; Brown & Gerbarg on breathwork): the breath is the only physiological function under both voluntary and involuntary control, making it the bridge between conscious will and unconscious regulation. The Kaushitaki\'s identification of prana as "all power" (vīryam) maps onto what neuroscience recognises: breath control directly modulates the autonomic nervous system, affecting heart rate, blood pressure, digestive function, and emotional state. Prana is not merely air; it is the regulatory axis of embodied existence.',
-          lifeLesson: 'The Kaushitaki teaches that prana is truth, light, and power. This is not abstract philosophy — it is a direct instruction: work with your breath. Three conscious breaths right now, slow and deep, change your physiological state, your emotional tone, and your cognitive clarity. That is the practice of prana-as-truth.',
-          keywords: ['PranaAsTruth', 'VitalBreath', 'PolyvagalTheory', 'Breathwork', 'KaushitakiCore'],
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: 'Chapter 4 — Partial Definitions of Brahman',
-      titleSanskrit: 'चतुर्थ अध्याय — ब्रह्म के आंशिक परिभाषा',
-      summary: 'Gargya Balaki approaches Ajatasatru to teach about Brahman, listing various deities as Brahman. Ajatasatru corrects him and teaches that the true Self is beyond all partial definitions.',
-      verses: [
-        {
-          id: 14,
-          sanskrit: 'अथ ह वै गार्ग्यो बालाकिरानुचानः सम्स्पष्ट आस । सोऽवसद् उषीणरेषु सवसन् मत्स्येषु कुरुपाञ्चलेषु काशिविदेहेष्व् इति स हाजतसत्रुं काश्यमेऽब्रज्योवच ब्रह्म ते ब्रवाणीति ॥',
-          transliteration: 'atha vai gārgyo bālākirānucānaḥ sampaṣṭa āsa | so\'vasad uṣīṇareṣu savasan matsyeṣu kurupāñcaleṣu kāśivideheṣv iti sa hājatasastrau kāśyame\'brajyovaca brahma te bravāṇīti ||',
-          translation: 'Now, Gargya Balaki was renowned as a famous person, for it was said of him that he lived among the people of Usinara, Matsya, Kurupancala and Kasivideha. He once went to Ajatasatru and said, "Let me speak about Brahman to you."',
-          hindi: 'अब गार्ग्य बालाकि प्रसिद्ध व्यक्ति थे, क्योंकि उनके बारे में कहा जाता था कि वे उषीणर, मत्स्य, कुरुपांचल और काशिविदेह के लोगों में रहते थे। वे एक बार अजातशत्रु के पास गए और कहा, "मैं तुम्हें ब्रह्म के बारे में बताऊं।"',
-          explanation: 'Gargya Balaki approaches King Ajatasatru with spiritual knowledge, representing the intellectual approach to Brahman through deities and external forms.',
-          science: 'Cognitive psychology: the tendency to conceptualize the divine through external symbols and deities is a universal human cognitive pattern. The Upanishad critiques this as partial understanding.',
-          lifeLesson: 'Don\'t mistake concepts for reality. You can describe Brahman in many ways, but descriptions are not the described. Direct experience is needed.',
-          keywords: ['GargyaBalaki', 'Ajatasatru', 'Concepts', 'PartialKnowledge'],
-        },
-        {
-          id: 15,
-          sanskrit: 'आदित्ये बृहच्चन्द्रमसयन्नम् विद्युति सत्यं स्तनयित्नौ शब्दो वायविन्द्रो वैकुण्ठ आकाशे पूर्णम् अग्नौ विशाहिरित् अप्सु तेज इत्याधिदैवतम् ॥',
-          transliteration: 'āditye bṛhaccandramasayannam vidyuti satyaṃ stanayitnau śabdo vāyavindro vaikuṇṭha ākāśe pūrṇam agnau viśāhirit apsu teja ityādhidaivatam ||',
-          translation: 'In the sun which is great, in the moon, in food, in lightning, in truth, in the sound of thunder, in wind, in Indra Vaikuntha, in space which is full, in fire, in water, in light — this is with reference to the deities.',
-          hindi: 'सूर्य में जो बड़ा है, चंद्रमा में, अन्न में, बिजली में, सत्य में, गर्जन के शब्द में, वायु में, इंद्र वैकुंठ में, आकाश में जो पूर्ण है, अग्नि में, जल में, प्रकाश में — यह देवताओं के संदर्भ में है।',
-          explanation: 'Gargya lists various deities and cosmic elements as Brahman. Each is a partial truth — a window into the absolute but not the absolute itself.',
-          science: 'Physics of fundamental forces: the Upanishad recognizes different manifestations of cosmic energy (fire, light, wind, space) as expressions of one underlying reality.',
-          lifeLesson: 'The divine can be seen in many forms — in nature, in cosmic forces, in sacred symbols. But don\'t stop at the form. See the formless reality that all forms express.',
-          keywords: ['Deities', 'CosmicForces', 'PartialTruths', 'Manifestations'],
-        },
-        {
-          id: 16,
-          sanskrit: 'स होवाच बालाकिः य एवैष आदित्ये पुरुषस्तमेवाहमुपास इति तं होवाच अजातशत्रुः मा मैतस्मिन्समवादयिष्ठो बृहत्पण्डरवासोऽतिष्ठः सर्वेषां भूतानां मूर्धेति व अहमेतमुपास इति ॥',
-          transliteration: 'sa hovāca bālakiḥ ya evaiṣa āditye puruṣastam evāham upāsa iti taṃ hovāca ajātaśatruḥ mā maitasminsamavādayiṣṭho bṛhatpaṇḍaravāso\'tiṣṭhaḥ sarveṣāṃ bhūtānāṃ mūrdheti va ahametam upāsa iti ||',
-          translation: 'Then Balaki said, "That person in the sun, him I worship." Ajatasatru said, "Please do not make me debate on him. I meditate upon him who is the great, who wears white garments, the highest and the head of all beings."',
-          hindi: 'तब बालाकि ने कहा, "सूर्य में जो पुरुष है, उसकी मैं उपासना करता हूँ।" अजातशत्रु ने कहा, "कृपया मुझे उस पर बहस न करने दो। मैं उसकी उपासना करता हूँ जो महान है, जो सफेद वस्त्र पहनता है, सर्वोच्च है और सभी प्राणियों का शिर है।"',
-          explanation: 'Ajatasatru rejects Balaki\'s external worship and points to the inner reality — the Self as the head of all beings, not the external sun.',
-          science: 'Neuroscience of self-reference: the brain has a default mode network that creates a sense of self. The Upanishad points to the true Self beyond this constructed identity.',
-          lifeLesson: 'Don\'t worship the sun outside; recognize the light of consciousness within. The external sun is a symbol; the inner light is the reality.',
-          keywords: ['InnerReality', 'Self', 'HeadOfBeings', 'SymbolVsReality'],
-        },
-        {
-          id: 17,
-          sanskrit: 'तत ऊ ह बालाकिः तुष्निमास तं होवाच अजातशत्रुः एतावन्नू बालक इति एतावदिति होवाच बालाकिः तं होवाच अजातशत्रुः मृषा वै किल मा संवादिष्ठ ब्रह्म ते ब्रवाणीति ॥',
-          transliteration: 'tata ū hā bālakiḥ tuṣnimāsa taṃ hovāca ajātaśatruḥ etāvannū bālaka iti etāvaditi hovāca bālakiḥ taṃ hovāca ajātaśatruḥ mṛṣā vai kila mā saṃvādiṣṭha brahma te bravāṇīti ||',
-          translation: 'Thereafter, Balaki became silent. To him Ajatasatru said, "Balaki, is that all?" "That is all," replied Balaki. To him Ajatasatru said, "Vainly did you engage me in this discussion, saying, \'Let me tell you about Brahman.\'',
-          hindi: 'उसके बाद, बालाकि चुप हो गए। अजातशत्रु ने उनसे कहा, "बालाकि, क्या बस इतना ही?" "बस इतना ही," बालाकि ने उत्तर दिया। अजातशत्रु ने कहा, "व्यर्थ में तुमने मुझे इस चर्चा में लगाया, कहकर \'मैं तुम्हें ब्रह्म बताऊंगा।\'',
-          explanation: 'Balaki\'s knowledge is exhausted — he has only external, partial definitions. Ajatasatru points out that this is not true knowledge of Brahman.',
-          science: 'Epistemology: the distinction between propositional knowledge (knowing about) and experiential knowledge (knowing directly). The Upanishad values the latter.',
-          lifeLesson: 'Intellectual knowledge has limits. You can read all the scriptures and still not know Brahman. Direct experience is what matters.',
-          keywords: ['Silence', 'IntellectualKnowledge', 'DirectExperience', 'Limits'],
-        },
-        {
-          id: 18,
-          sanskrit: 'होवाच यो वै बालक एतेषां पुरुषाणां कर्ता यस्य वै तत्कर्म स वेदितव्य इति तत ऊ ह बालाकिः समित्पनिः प्रतिचक्रम उपायनीति ॥',
-          transliteration: 'hovāca yo vai bālaka eteṣāṃ puruṣāṇāṃ kartā yasya vai tat karma sa veditavya iti tata ū hā bālakiḥ samitpaniḥ praticakrama upāyanīti ||',
-          translation: 'He said, "Who is the doer among the persons, whose work all this is, he alone should be known." Thereupon, Balaki approached with fuel in his hand, saying, "I approach you as student."',
-          hindi: 'उन्होंने कहा, "इन सभी पुरुषों में कर्ता कौन है, जिसका यह सब काम है, उसी को जानना चाहिए।" तब बालाकि समित (ईध) लेकर पास आए और कहा, "मैं शिष्य के रूप में आता हूँ।"',
-          explanation: 'The pointer to the true doer — not the external deities but the inner Self that animates all.',
-          science: 'Neuroscience of agency: the brain creates a sense of being a doer. The Upanishad points to the deeper agency — consciousness itself.',
-          lifeLesson: 'Who is the doer? Not your ego, not your thoughts. The true doer is the awareness that witnesses all doing. Recognize this and you are free.',
-          keywords: ['TrueDoer', 'Student', 'Seeker', 'InnerSelf'],
-        },
-      ],
-    },
-  ],
+  {
+    "id": 1,
+    "title": "Adhyaya 1 — The Soul’s Ascent along the Devayana Path",
+    "titleSanskrit": "प्रथम अध्याय — देवयान मार्ग एवं ब्रह्मलोक गमन",
+    "summary": "The destiny of souls after departing the physical body: the interrogation by the Moon, crossing the Viraja river, and entering the presence of Brahma in the cosmic court.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "श्रीमत्कौषीतकीविद्यावेद्यप्रज्ञापराक्षरम् । प्रतियोगिविनिर्मुक्तब्रह्ममात्रं विचिन्तये ॥ ॐ वाङ्मे मनसि प्रतिष्ठिता । मनो मे वाचि प्रतिष्ठितम् । आविरावीर्म एधि । वेदस्य मा आणीस्थः । श्रुतं मे मा प्रहासीः । अनेनाधीतेनाहोरात्रान्सन्दधामि । ऋतं वदिष्यामि । सत्यं वदिष्यामि । तन्मामवतु । तद्वक्तारमवतु । अवतु मामवतु वक्तारम् ॥ चित्रो ह वै गार्ग्यायणिर्यक्षमाण आरुणिं वव्रे स ह पुत्रं श्वेतकेतुं प्रजिघाय याजयेति तं हासीनं पप्रच्छ गौतमस्य पुत्रास्ते संवृतं लोके यस्मिन्माधास्यस्यन्यमहो बद्ध्वा तस्य लोके धास्यसीति स होवाच नाहमेतद्वेद हन्ताचार्यं प्रच्छानीति स ह पितरमासाद्य पप्रच्छेतीति मा प्राक्षीत्कथं प्रतिब्रवाणीति स होवाचाहमप्येतन्न वेद सदस्येव वयं स्वाध्यायमधीत्य हरामहे यन्नः परे ददत्येह्युभौ गमिष्याव इति ॥ स ह समित्पाणिश्चित्रं गार्ग्यायणिं प्रतिचक्रम उपायानीति तं होवाच ब्रह्मार्होसि गौतम यो मामुपागा एहि त्वा ज्ञपयिष्यामीति",
+        "transliteration": "śrīmatkauṣītakīvidyāvedyaprajñāparākṣaram | pratiyogivinirmuktabrahmamātraṃ vicintaye || oṃ vāṅme manasi pratiṣṭhitā | mano me vāci pratiṣṭhitam | āvirāvīrma edhi | vedasya mā āṇīsthaḥ | śrutaṃ me mā prahāsīḥ | anenādhītenāhorātrānsandadhāmi | ṛtaṃ vadiṣyāmi | satyaṃ vadiṣyāmi | tanmāmavatu | tadvaktāramavatu | avatu māmavatu vaktāram || citro ha vai gārgyāyaṇiryakṣamāṇa āruṇiṃ vavre sa ha putraṃ śvetaketuṃ prajighāya yājayeti taṃ hāsīnaṃ papraccha gautamasya putrāste saṃvṛtaṃ loke yasminmādhāsyasyanyamaho baddhvā tasya loke dhāsyasīti sa hovāca nāhametadveda hantācāryaṃ pracchānīti sa ha pitaramāsādya papracchetīti mā prākṣītkathaṃ pratibravāṇīti sa hovācāhamapyetanna veda sadasyeva vayaṃ svādhyāyamadhītya harāmahe yannaḥ pare dadatyehyubhau gamiṣyāva iti || sa ha samitpāṇiścitraṃ gārgyāyaṇiṃ praticakrama upāyānīti taṃ hovāca brahmārhosi gautama yo māmupāgā ehi tvā jñapayiṣyāmīti",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "स होवाच ये वैके चास्माल्लोकात्प्रयन्ति चन्द्रमसमेव ते सर्वे गच्छन्ति तेषां प्राणैः पूर्वपक्ष आप्यायतेऽथापरपक्षे न प्रजनयत्येतद्वै स्वर्गस्य लोकस्य द्वारं यश्चन्द्रमास्तं यत्प्रत्याह तमतिसृजते य एनं प्रत्याह तमिह वृष्टिर्भूत्वा वर्षति स इह कीटो वा पतङ्गो वा शकुनिर्वा शार्दूलो वा सिंहो वा मत्स्यो वा परश्वा वा पुरुषो वान्यो वैतेषु स्थानेषु प्रत्याजायते यथाकर्मं यथाविद्यं तमागतं पृच्छति कोऽसीति तं प्रतिब्रूयाद्विचक्षणादृतवो रेत आभृतं पञ्चदशात्प्रसूतात्पित्र्यावतस्तन्मा पुंसि कर्तर्येरयध्वं पुंसा कर्त्रा मातरि मासिषिक्तः स जायमान उपजायमानो द्वादशत्रयोदश उपमासो द्वादशत्रयोदशेन पित्रा सन्तद्विदेहं प्रतितद्विदेहं तन्म ऋतवो मर्त्यव आरभध्वं तेन सत्येन तपसर्तुरस्म्यार्तवोऽस्मि कोऽसि त्वमस्मीति तमतिसृजते",
+        "transliteration": "sa hovāca ye vaike cāsmāllokātprayanti candramasameva te sarve gacchanti teṣāṃ prāṇaiḥ pūrvapakṣa āpyāyate'thāparapakṣe na prajanayatyetadvai svargasya lokasya dvāraṃ yaścandramāstaṃ yatpratyāha tamatisṛjate ya enaṃ pratyāha tamiha vṛṣṭirbhūtvā varṣati sa iha kīṭo vā pataṅgo vā śakunirvā śārdūlo vā siṃho vā matsyo vā paraśvā vā puruṣo vānyo vaiteṣu sthāneṣu pratyājāyate yathākarmaṃ yathāvidyaṃ tamāgataṃ pṛcchati ko'sīti taṃ pratibrūyādvicakṣaṇādṛtavo reta ābhṛtaṃ pañcadaśātprasūtātpitryāvatastanmā puṃsi kartaryerayadhvaṃ puṃsā kartrā mātari māsiṣiktaḥ sa jāyamāna upajāyamāno dvādaśatrayodaśa upamāso dvādaśatrayodaśena pitrā santadvidehaṃ pratitadvidehaṃ tanma ṛtavo martyava ārabhadhvaṃ tena satyena tapasarturasmyārtavo'smi ko'si tvamasmīti tamatisṛjate",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "स एतं देवयानं पन्थानमासाद्याग्निलोकमागच्छति स वायुलोकं स वरुणलोकं स आदित्यलोकं स इन्द्रलोकं स प्रजापतिलोकं स ब्रह्मलोकं तस्य ह वा एतस्य ब्रह्मलोकस्यारोहृदो मुहूर्ता येष्टिहा विरजा नदी तिल्यो वृक्षः सायुज्यं संस्थानमपराजितमायतनमिन्द्रप्रजापती द्वारगोपौ विभुं प्रमितं विचक्षणासन्ध्यमितौजाः प्रयङ्कः प्रिया च मानसी प्रतिरूपा च चाक्षुषी पुष्पाण्यादायावयतौ वै च जगत्यम्बाश्चाम्बावयवाश्चाप्सरसोंऽबयानद्यस्तमित्थंविद अ गच्छति तं ब्रह्माहाभिधावत मम यशसा विरजां वायं नदीं प्रापन्नवानयं जिगीष्यतीति",
+        "transliteration": "sa etaṃ devayānaṃ panthānamāsādyāgnilokamāgacchati sa vāyulokaṃ sa varuṇalokaṃ sa ādityalokaṃ sa indralokaṃ sa prajāpatilokaṃ sa brahmalokaṃ tasya ha vā etasya brahmalokasyārohṛdo muhūrtā yeṣṭihā virajā nadī tilyo vṛkṣaḥ sāyujyaṃ saṃsthānamaparājitamāyatanamindraprajāpatī dvāragopau vibhuṃ pramitaṃ vicakṣaṇāsandhyamitaujāḥ prayaṅkaḥ priyā ca mānasī pratirūpā ca cākṣuṣī puṣpāṇyādāyāvayatau vai ca jagatyambāścāmbāvayavāścāpsarasoṃ'bayānadyastamitthaṃvida a gacchati taṃ brahmāhābhidhāvata mama yaśasā virajāṃ vāyaṃ nadīṃ prāpannavānayaṃ jigīṣyatīti",
+        "translation": "He going by the path of the gods reaches the world of Agni, then Vayu, then Varuna, then Aditya, then Indra, then Prajapati, then the world of Brahma.",
+        "hindi": "वह देवयान मार्ग से अग्नि लोक, फिर वायु लोक, फिर वरुण लोक, फिर आदित्य लोक, फिर इन्द्र लोक, फिर प्रजापति लोक, और फिर ब्रह्म लोक को प्राप्त होता है।",
+        "explanation": "The progressive journey through the lokas (worlds) along the devayana path. Each loka represents a stage of purification and expansion of consciousness, culminating in Brahmaloka — the world of Brahma.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "तं पञ्चशतान्यप्सरसां प्रतिधावन्ति शतं मालाहस्ताः शतमाञ्जनहस्ताः शतं चूर्णहस्ताः शतं वासोहस्ताः शतं कणाहस्तास्तं ब्रह्मालङ्कारेणालङ्कुर्वन्ति स ब्रह्मालङ्कारेणालङ्कृतो ब्रह्म विद्वान् ब्रह्मैवाभिप्रैति स आगच्छत्यारं हृदं तन्मनसात्येति तमृत्वा सम्प्रतिविदो मज्जन्ति स आगच्छति मुहूर्तान्येष्टिहांस्तेऽस्मादपद्रवन्ति स आगच्छति विरजां नदीं तां मनसैवात्येति तत्सुकृतदुष्कृते धूनुते तस्य प्रिया ज्ञातयः सुकृतमुपयन्त्यप्रिया दुष्कृतं तद्यथा रथेन धावयन्रथचक्रे पर्यवेक्षत एवमहोरात्रे पर्यवेक्षत एवं सुकृतदुष्कृते सर्वाणि च द्वन्द्वानि स एष विसुकृतो विदुष्कृतो ब्रह्म विद्वान्ब्रह्मैवाभिप्रैति",
+        "transliteration": "taṃ pañcaśatānyapsarasāṃ pratidhāvanti śataṃ mālāhastāḥ śatamāñjanahastāḥ śataṃ cūrṇahastāḥ śataṃ vāsohastāḥ śataṃ kaṇāhastāstaṃ brahmālaṅkāreṇālaṅkurvanti sa brahmālaṅkāreṇālaṅkṛto brahma vidvān brahmaivābhipraiti sa āgacchatyāraṃ hṛdaṃ tanmanasātyeti tamṛtvā samprativido majjanti sa āgacchati muhūrtānyeṣṭihāṃste'smādapadravanti sa āgacchati virajāṃ nadīṃ tāṃ manasaivātyeti tatsukṛtaduṣkṛte dhūnute tasya priyā jñātayaḥ sukṛtamupayantyapriyā duṣkṛtaṃ tadyathā rathena dhāvayanrathacakre paryavekṣata evamahorātre paryavekṣata evaṃ sukṛtaduṣkṛte sarvāṇi ca dvandvāni sa eṣa visukṛto viduṣkṛto brahma vidvānbrahmaivābhipraiti",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "स आगच्छति तिल्यं वृक्षं तं ब्रह्मगन्धः प्रविशति स आगच्छति सायुज्यं संस्थानं तं ब्रह्म स प्रविशति आगच्छत्यपराजितमायतनं तं ब्रह्मतेजः प्रविशति स आगच्छतीन्द्रप्रजापती द्वारगोपौ तावस्मादपद्रवतः स आगच्छति विभुप्रमितं तं ब्रह्मयशः प्रविशति स आगच्छति विचक्षणामासन्दीं बृहद्रथन्तरे सामनी पूर्वौ पादौ ध्यैत नौधसे चापरौ पादौ वैरूपवैराजे शाक्वररैवते तिरश्ची सा प्रज्ञा प्रज्ञया हि विपश्यति स आगच्छत्यमितौजसं पर्यङ्कं स प्राणस्तस्य भूतं च भविष्यच्च पूर्वौ पादौ श्रीश्चेरा चापरौ बृहद्रथन्तरे अनूच्ये भद्रयज्ञायज्ञीये शीर्षण्यमृचश्च सामानि च प्राचीनातानं यजूंषि तिरश्चीनानि सोमांशव उपस्तरणमुद्गीथ उपश्रीः श्रीरुपबर्हणं तस्मिन्ब्रह्मास्ते तमित्थंवित्पादेनैवाग्र आरोहति तं ब्रह्माह कोऽसीति तं प्रतिब्रूयात्",
+        "transliteration": "sa āgacchati tilyaṃ vṛkṣaṃ taṃ brahmagandhaḥ praviśati sa āgacchati sāyujyaṃ saṃsthānaṃ taṃ brahma sa praviśati āgacchatyaparājitamāyatanaṃ taṃ brahmatejaḥ praviśati sa āgacchatīndraprajāpatī dvāragopau tāvasmādapadravataḥ sa āgacchati vibhupramitaṃ taṃ brahmayaśaḥ praviśati sa āgacchati vicakṣaṇāmāsandīṃ bṛhadrathantare sāmanī pūrvau pādau dhyaita naudhase cāparau pādau vairūpavairāje śākvararaivate tiraścī sā prajñā prajñayā hi vipaśyati sa āgacchatyamitaujasaṃ paryaṅkaṃ sa prāṇastasya bhūtaṃ ca bhaviṣyacca pūrvau pādau śrīścerā cāparau bṛhadrathantare anūcye bhadrayajñāyajñīye śīrṣaṇyamṛcaśca sāmāni ca prācīnātānaṃ yajūṃṣi tiraścīnāni somāṃśava upastaraṇamudgītha upaśrīḥ śrīrupabarhaṇaṃ tasminbrahmāste tamitthaṃvitpādenaivāgra ārohati taṃ brahmāha ko'sīti taṃ pratibrūyāt",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "ऋतुरस्म्यार्तवोऽस्म्याकाशाद्योनेः सम्भूतो भार्यायै रेतः संवत्सरस्य तेजोभूतस्य भूतस्यात्मभूतस्य त्वमात्मासि यस्त्वमसि सोहमस्मीति तमाह कोऽहमस्मीति सत्यमिति ब्रूयात्किं तद्यत्सत्यमिति यदन्यद्देवेभ्यश्च प्राणेभ्यश्च तत्सदथ यद्देवाच्च प्राणाश्च तद्यं तदेतया वाचाभिव्याह्रियते सत्यमित्येतावदिदं सर्वमिदं सर्वमसीत्येवैनं तदाह तदेतच्छ्लोकेनाप्युक्तम्",
+        "transliteration": "ṛturasmyārtavo'smyākāśādyoneḥ sambhūto bhāryāyai retaḥ saṃvatsarasya tejobhūtasya bhūtasyātmabhūtasya tvamātmāsi yastvamasi sohamasmīti tamāha ko'hamasmīti satyamiti brūyātkiṃ tadyatsatyamiti yadanyaddevebhyaśca prāṇebhyaśca tatsadatha yaddevācca prāṇāśca tadyaṃ tadetayā vācābhivyāhriyate satyamityetāvadidaṃ sarvamidaṃ sarvamasītyevainaṃ tadāha tadetacchlokenāpyuktam",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "यजूदरः सामशिरा असावृङ्मूर्तिरव्ययः । स ब्रह्मेति हि विज्ञेय ऋषिर्ब्रह्ममयो महानिति ॥ तमाह केन पौंस्रानि नामान्याप्नोतीति प्राणेनेति ब्रूयात्केन स्त्रीनामानीति वाचेति केन नपुंसकनामानीति मनसेति केन गन्धानिति घ्राणेनेति ब्रूयात्केन रूपाणीति चक्षुषेति केन शब्दानिति श्रोत्रेणेति केनान्नरसानिति जिह्वयेति केन कर्माणीति हस्ताभ्यामिति केन सुखदुःखे इति शरीरेणेति केनानन्दं रतिं प्रजापतिमित्युपस्थेनेति केनेत्या इति पादाभ्यामिति केन धियो विज्ञातव्यं कामानिति प्रज्ञयेति प्रब्रूयात्तमहापो वै खलु मे ह्यसावयं ते लोक इति सा या ब्रह्मणि चितिर्या व्यष्टिस्तां चितिं जयति तां व्यष्टिं व्यश्नुते य एवं वेद य एवं वेद",
+        "transliteration": "yajūdaraḥ sāmaśirā asāvṛṅmūrtiravyayaḥ | sa brahmeti hi vijñeya ṛṣirbrahmamayo mahāniti || tamāha kena pauṃsrāni nāmānyāpnotīti prāṇeneti brūyātkena strīnāmānīti vāceti kena napuṃsakanāmānīti manaseti kena gandhāniti ghrāṇeneti brūyātkena rūpāṇīti cakṣuṣeti kena śabdāniti śrotreṇeti kenānnarasāniti jihvayeti kena karmāṇīti hastābhyāmiti kena sukhaduḥkhe iti śarīreṇeti kenānandaṃ ratiṃ prajāpatimityupastheneti kenetyā iti pādābhyāmiti kena dhiyo vijñātavyaṃ kāmāniti prajñayeti prabrūyāttamahāpo vai khalu me hyasāvayaṃ te loka iti sā yā brahmaṇi citiryā vyaṣṭistāṃ citiṃ jayati tāṃ vyaṣṭiṃ vyaśnute ya evaṃ veda ya evaṃ veda",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Adhyaya 2 — The Supremacy of Prana as Brahman",
+    "titleSanskrit": "द्वितीय अध्याय — प्राण की ब्रह्मरूपता एवं उपासना",
+    "summary": "Kaushitaki and Paingya expound Prana as the living foundation of all senses and bodily faculties, giving rituals and mantras for spiritual harmony.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "प्राणो ब्रह्मेति ह स्माह कौषीतकिस्तस्य ह वा एतस्य प्राणस्य ब्रह्मणो मनो दूतं वाक्परिवेष्ट्री चक्षुर्गात्रं श्रोत्रं संश्रावयितृ यो ह वा एतस्य प्राणस्य ब्रह्मणो मनो दूतं वेद दूतवान्भवति यो वाचं परिवेष्ट्रीं परिवेष्ट्रीमान्भवति तस्मै वा एतस्मै प्राणाय ब्रह्मण एताः सर्वा देवता अयाचमाना बलिं हरन्ति तथो एवास्मै सर्वाणि भूतान्ययाचमानायैव बलिं हरन्ति य एवं वेद तस्योपनिषन्न याचेदिति तद्यथा ग्रामं भिक्षित्वा लब्धोपविशेन्नाहगतो दत्तमश्नीयामिति य एवैनं पुरस्तात्प्रत्याचक्षीरंस्त एवैनमुपमन्त्रयन्ते ददाम त इत्येष धर्मो याचतो भवत्यनन्तरस्तेवैनमुपमन्त्रयन्ते ददाम त इति",
+        "transliteration": "prāṇo brahmeti ha smāha kauṣītakistasya ha vā etasya prāṇasya brahmaṇo mano dūtaṃ vākpariveṣṭrī cakṣurgātraṃ śrotraṃ saṃśrāvayitṛ yo ha vā etasya prāṇasya brahmaṇo mano dūtaṃ veda dūtavānbhavati yo vācaṃ pariveṣṭrīṃ pariveṣṭrīmānbhavati tasmai vā etasmai prāṇāya brahmaṇa etāḥ sarvā devatā ayācamānā baliṃ haranti tatho evāsmai sarvāṇi bhūtānyayācamānāyaiva baliṃ haranti ya evaṃ veda tasyopaniṣanna yācediti tadyathā grāmaṃ bhikṣitvā labdhopaviśennāhagato dattamaśnīyāmiti ya evainaṃ purastātpratyācakṣīraṃsta evainamupamantrayante dadāma ta ityeṣa dharmo yācato bhavatyanantarastevainamupamantrayante dadāma ta iti",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "अथात एकधनावरोधनं यदेकधनमभिध्यायात्पौर्णमास्यां वामावास्यां वा शुद्धपक्षे वा पुण्ये नक्षत्रेऽग्निमुपसमाधाय परिसमुह्य परिस्तीर्य पर्युक्ष पूर्वदक्षिणं जान्वाच्य स्रुवेण वा चमसेन वा कंसेन वैता आज्याहुतीर्जुहोति वाङ्नामदेवतावरोधिनी सा मेऽमुष्मादिदमवरुन्द्धां तस्यै स्वाहा चक्षुर्नाम देवतावरोधिनी सा मेऽमुष्मादिदमवरुन्द्धां तस्यै स्वाहा श्रोत्रं नाम देवतावरोधिनी सा मेऽमुष्मादिदमवरुन्द्धां तस्यै स्वाहा मनो नाम देवतावरोधिनी सा मेऽमुष्मादिदमवरुन्द्धां तस्यै स्वाहैत्यथ धूमगन्धं प्रजिघायाज्यलेपेनाङ्गान्यनुविमृज्य वाचंयमोऽभिप्रवृज्यार्थं ब्रवीत दूतं वा प्रहिणुयाल्लभते हैव",
+        "transliteration": "athāta ekadhanāvarodhanaṃ yadekadhanamabhidhyāyātpaurṇamāsyāṃ vāmāvāsyāṃ vā śuddhapakṣe vā puṇye nakṣatre'gnimupasamādhāya parisamuhya paristīrya paryukṣa pūrvadakṣiṇaṃ jānvācya sruveṇa vā camasena vā kaṃsena vaitā ājyāhutīrjuhoti vāṅnāmadevatāvarodhinī sā me'muṣmādidamavarunddhāṃ tasyai svāhā cakṣurnāma devatāvarodhinī sā me'muṣmādidamavarunddhāṃ tasyai svāhā śrotraṃ nāma devatāvarodhinī sā me'muṣmādidamavarunddhāṃ tasyai svāhā mano nāma devatāvarodhinī sā me'muṣmādidamavarunddhāṃ tasyai svāhaityatha dhūmagandhaṃ prajighāyājyalepenāṅgānyanuvimṛjya vācaṃyamo'bhipravṛjyārthaṃ bravīta dūtaṃ vā prahiṇuyāllabhate haiva",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "अथातो दैवस्मरो यस्य प्रियो बुभूषेयस्यै वा एषां वैतेषमेवैतस्मिन्पर्वण्यग्निमुपसमाधायैतयैवावृतैता जुहोम्यसौ स्वाहा चक्षुस्ते मयि जुहोम्यसौ स्वाहा प्रज्ञानं ते मयि जुहोम्यसौ स्वाहेत्यथ धूमगन्धं प्रजिघायाज्यलेपेनाङ्गान्यनुविमृज्य वाचंयमोऽभिप्रवृज्य संस्पर्शं जिगमिषेदपि वाताद्वा सम्भाषमाणस्तिष्ठेत्प्रियो हैव भवति स्मरन्ति हैवास्य",
+        "transliteration": "athāto daivasmaro yasya priyo bubhūṣeyasyai vā eṣāṃ vaiteṣamevaitasminparvaṇyagnimupasamādhāyaitayaivāvṛtaitā juhomyasau svāhā cakṣuste mayi juhomyasau svāhā prajñānaṃ te mayi juhomyasau svāhetyatha dhūmagandhaṃ prajighāyājyalepenāṅgānyanuvimṛjya vācaṃyamo'bhipravṛjya saṃsparśaṃ jigamiṣedapi vātādvā sambhāṣamāṇastiṣṭhetpriyo haiva bhavati smaranti haivāsya",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "अथातः सायमन्नं प्रातर्दनमम्तरमग्निहोत्रमित्याचक्षते यावद्वै पुरुषो भासते न तावत्प्राणितुं शक्नोति प्राणं तदा वाचि जुहोति यावद्वै पुरुषः प्राणिति न तावद्भाषितुं शक्नोति वाचं तदा प्राणे जुहोत्येतेऽनन्तेऽमृताहुतिर्जाग्रच्च स्वपंश्च सन्ततमवच्छिन्नं जुहोत्यथ या अन्या आहुतयोऽन्तवत्यस्ताः कर्ममय्योभवन्त्येतद्ध वै पूर्वे विद्वांसोऽग्निहोत्रं जुहवांचक्रुः",
+        "transliteration": "athātaḥ sāyamannaṃ prātardanamamtaramagnihotramityācakṣate yāvadvai puruṣo bhāsate na tāvatprāṇituṃ śaknoti prāṇaṃ tadā vāci juhoti yāvadvai puruṣaḥ prāṇiti na tāvadbhāṣituṃ śaknoti vācaṃ tadā prāṇe juhotyete'nante'mṛtāhutirjāgracca svapaṃśca santatamavacchinnaṃ juhotyatha yā anyā āhutayo'ntavatyastāḥ karmamayyobhavantyetaddha vai pūrve vidvāṃso'gnihotraṃ juhavāṃcakruḥ",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "उक्थं ब्रह्मेति ह स्माह शुष्कभृङ्गरस्तदृगित्युपासीत सर्वाणि हास्मै भूतानि श्रैष्ठ्यायाभ्यर्च्यन्ते तद्यजुरित्युपासीत सर्वाणि हास्मै भूतानि श्रैष्ठ्याय युज्यन्ते तत्सामेत्युपासीत सर्वाणि हास्मै भूतानि श्रैष्ठ्याय सन्नमन्ते तच्छ्रीत्युपासीत तद्यश इत्युपासीत तत्तेज इत्युपासीत तद्यथैतच्छा स्त्राणां श्रीमत्तमं यशस्वितमं तेजस्वितमं भवति तथो एवैवं विद्वान्सर्वेषां भूतानां श्रीमत्तमो यशस्वितमस्तेजस्वितमो भवति तमेतमैष्टकं कर्ममयमात्मानमध्वर्युः संस्करोति तस्मिन्यजुर्भयं प्रवयति यजुर्मयं ऋङ्मयं होता ऋङ्मयं साममयमुद्गाता स एष सर्वस्यै त्रयीविद्याया आत्मैष उत एवास्यात्यैतदात्मा भवति एवं वेद",
+        "transliteration": "ukthaṃ brahmeti ha smāha śuṣkabhṛṅgarastadṛgityupāsīta sarvāṇi hāsmai bhūtāni śraiṣṭhyāyābhyarcyante tadyajurityupāsīta sarvāṇi hāsmai bhūtāni śraiṣṭhyāya yujyante tatsāmetyupāsīta sarvāṇi hāsmai bhūtāni śraiṣṭhyāya sannamante tacchrītyupāsīta tadyaśa ityupāsīta tatteja ityupāsīta tadyathaitacchā strāṇāṃ śrīmattamaṃ yaśasvitamaṃ tejasvitamaṃ bhavati tatho evaivaṃ vidvānsarveṣāṃ bhūtānāṃ śrīmattamo yaśasvitamastejasvitamo bhavati tametamaiṣṭakaṃ karmamayamātmānamadhvaryuḥ saṃskaroti tasminyajurbhayaṃ pravayati yajurmayaṃ ṛṅmayaṃ hotā ṛṅmayaṃ sāmamayamudgātā sa eṣa sarvasyai trayīvidyāyā ātmaiṣa uta evāsyātyaitadātmā bhavati evaṃ veda",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "अथातः सर्वजितः कौषीतकेस्रीण्युपासनानि भवन्ति यज्ञोपवीतं कृत्वाप आचम्य त्रिरुदपात्रं प्रसिच्योद्यन्तमादित्यमुपतिष्ठेत वर्गोऽसि पाप्मानं मे वृङ्धीत्येतयैवावृता मध्ये सन्तमुद्वर्गोऽसि पाप्मानं म उद्धृङ्धीत्येतयैवावृतास्ते यन्तं संवर्गोऽसि पाप्मानं मे संवृङ्धीति यदहोरात्राभ्यां पापं करोति सन्तद्धृङ्क्ते",
+        "transliteration": "athātaḥ sarvajitaḥ kauṣītakesrīṇyupāsanāni bhavanti yajñopavītaṃ kṛtvāpa ācamya trirudapātraṃ prasicyodyantamādityamupatiṣṭheta vargo'si pāpmānaṃ me vṛṅdhītyetayaivāvṛtā madhye santamudvargo'si pāpmānaṃ ma uddhṛṅdhītyetayaivāvṛtāste yantaṃ saṃvargo'si pāpmānaṃ me saṃvṛṅdhīti yadahorātrābhyāṃ pāpaṃ karoti santaddhṛṅkte",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "अथ मासि मास्यमावास्यायां पश्चाच्चन्द्रमसं दृश्यमानमुपतिष्ठेतैवावृता हरिततृणाभ्यामथ वाक् प्रत्यस्यति यत्ते सुसीमं हृदयमधिचन्द्रमसि श्रितम् ॥ तेनामृतत्वस्येशानं माहं पौत्रमघं रुदमिति न हास्मात्पूर्वाः प्रजाः प्रयन्तीति न जातपुत्रस्याथाजातपुत्रस्याह ॥ आप्यास्व समेतु ते सन्ते पयांसि समुयन्तु वाजा यमादित्या अंशुमाप्याययन्तीत्येतास्तिस्र ऋचो जपित्वा नास्माकं प्राणेन प्रजया पशुभिराप्यस्वेति दैवीमावृतमावर्त आदित्यस्यावृतमन्वावर्तयति दक्षिणं बाहुमन्वावर्तते",
+        "transliteration": "atha māsi māsyamāvāsyāyāṃ paścāccandramasaṃ dṛśyamānamupatiṣṭhetaivāvṛtā haritatṛṇābhyāmatha vāk pratyasyati yatte susīmaṃ hṛdayamadhicandramasi śritam || tenāmṛtatvasyeśānaṃ māhaṃ pautramaghaṃ rudamiti na hāsmātpūrvāḥ prajāḥ prayantīti na jātaputrasyāthājātaputrasyāha || āpyāsva sametu te sante payāṃsi samuyantu vājā yamādityā aṃśumāpyāyayantītyetāstisra ṛco japitvā nāsmākaṃ prāṇena prajayā paśubhirāpyasveti daivīmāvṛtamāvarta ādityasyāvṛtamanvāvartayati dakṣiṇaṃ bāhumanvāvartate",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "अथ पौर्णमास्यां पुरस्ताच्चन्द्रमसं दृश्यमानमुपतिष्ठेतैतयैवावृता सोमो राजासि विचक्षणः पञ्चमुखोऽसि प्रजापतिर्ब्राह्मणस्त एकं मुखं तेन मुखेन राज्ञोऽत्सि तेन मुखेन मामन्नादं कुरु ॥ राजा त एकं मुखं तेन मुखेन विशोत्सि तेनैव मुखेन मामन्नादं कुरु ॥ श्येनस्त एकं मुखं तेन मुखेन पक्षिणोऽत्सि तेन मुखेन मामन्नादं कुरु ॥ अग्निस्त एकं मुखं तेन मुखेनेमं लोकमत्सि तेन मुखेन मामन्नादं कुरु ॥ सर्वाणि भूतानीत्येव पञ्चमं मुखं तेन मुखेन सर्वाणि भूतान्यत्सि तेन मुखेन मामन्नादं कुरु ॥ मास्माकं प्राणेन प्रजया पशुभिरवक्षेष्ठा योऽस्माद्वेष्टि यं च वयं द्विष्मस्तस्य प्राणेन प्रजया पशुभिरवक्षीयस्वेति स्थितिर्दैवीमावृतमावर्त आदित्यस्यावृतमन्वावर्तन्त इति दक्षिणं बाहुमन्वावर्तते",
+        "transliteration": "atha paurṇamāsyāṃ purastāccandramasaṃ dṛśyamānamupatiṣṭhetaitayaivāvṛtā somo rājāsi vicakṣaṇaḥ pañcamukho'si prajāpatirbrāhmaṇasta ekaṃ mukhaṃ tena mukhena rājño'tsi tena mukhena māmannādaṃ kuru || rājā ta ekaṃ mukhaṃ tena mukhena viśotsi tenaiva mukhena māmannādaṃ kuru || śyenasta ekaṃ mukhaṃ tena mukhena pakṣiṇo'tsi tena mukhena māmannādaṃ kuru || agnista ekaṃ mukhaṃ tena mukhenemaṃ lokamatsi tena mukhena māmannādaṃ kuru || sarvāṇi bhūtānītyeva pañcamaṃ mukhaṃ tena mukhena sarvāṇi bhūtānyatsi tena mukhena māmannādaṃ kuru || māsmākaṃ prāṇena prajayā paśubhiravakṣeṣṭhā yo'smādveṣṭi yaṃ ca vayaṃ dviṣmastasya prāṇena prajayā paśubhiravakṣīyasveti sthitirdaivīmāvṛtamāvarta ādityasyāvṛtamanvāvartanta iti dakṣiṇaṃ bāhumanvāvartate",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 10,
+        "number": 10,
+        "sanskrit": "अथ संवेश्यन्जायायै हृदयमभिमृशेत् ॥ यत्ते सुसीमे हृदये हितमन्तः प्रजापतौ ॥ मन्येऽहं मां तद्विद्वांसं माहं पौत्रमघं रुदमिति न हास्मत्पूर्वाः प्रजाः प्रैति",
+        "transliteration": "atha saṃveśyanjāyāyai hṛdayamabhimṛśet || yatte susīme hṛdaye hitamantaḥ prajāpatau || manye'haṃ māṃ tadvidvāṃsaṃ māhaṃ pautramaghaṃ rudamiti na hāsmatpūrvāḥ prajāḥ praiti",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 11,
+        "number": 11,
+        "sanskrit": "अथ प्रोष्यान्पुत्रस्य मूर्धानमभिमृशति ॥ अङ्गादङ्गात्सम्भवसि हृदयादधिजायसे । आत्मा वै पुत्रनामासि स जीव शरदः शतम् ॥ असाविति नामास्य गृह्णाति । अश्मा भव परशुर्भव हिरण्यमस्तृतं भव । तेजो वै पुत्रनामासि स जीव शरदः शतम् ॥ असाविति नामासि गृह्णाति। येन प्रजापतिः प्रजाः पर्यगृह्णीतारिष्ट्यै तेन त्वा परिगृह्णाम्यसावित्यथास्य दक्षिणे कर्णे जपति ॥ अस्मे प्रयन्धि मघवन्नृजीषिन्नितीन्द्रश्रेष्ठानि द्रविणानि धेहीति माच्छेत्ता मा व्यथिष्ठाः शतं शरद आयुषो जीव पुत्र । ते नाम्ना मूर्धानमभिजिघ्राम्यसाविति त्रिरस्य मूर्धानमभिजिघ्रेद्गवा त्वा हिङ्कारेणाभिहिङ्करोमीति त्रिरस्य मूर्धानमभिहिङ्कुर्यात्",
+        "transliteration": "atha proṣyānputrasya mūrdhānamabhimṛśati || aṅgādaṅgātsambhavasi hṛdayādadhijāyase | ātmā vai putranāmāsi sa jīva śaradaḥ śatam || asāviti nāmāsya gṛhṇāti | aśmā bhava paraśurbhava hiraṇyamastṛtaṃ bhava | tejo vai putranāmāsi sa jīva śaradaḥ śatam || asāviti nāmāsi gṛhṇāti| yena prajāpatiḥ prajāḥ paryagṛhṇītāriṣṭyai tena tvā parigṛhṇāmyasāvityathāsya dakṣiṇe karṇe japati || asme prayandhi maghavannṛjīṣinnitīndraśreṣṭhāni draviṇāni dhehīti mācchettā mā vyathiṣṭhāḥ śataṃ śarada āyuṣo jīva putra | te nāmnā mūrdhānamabhijighrāmyasāviti trirasya mūrdhānamabhijighredgavā tvā hiṅkāreṇābhihiṅkaromīti trirasya mūrdhānamabhihiṅkuryāt",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 12,
+        "number": 12,
+        "sanskrit": "अथातो दैवः परिमर एतद्वै ब्रह्म दीप्यते यदग्निर्ज्वलत्यथैतन्म्रियते यन्न ज्वलति तस्यादित्यमेव तेजो गच्छति वायुं प्राण एतद्वै ब्रह्म दीप्यते यथादित्यो दृश्यतेऽथैतन्म्रियते यन्न दृश्यते तस्य चन्द्रमसमेव तेजो गच्छति वायुं प्राण एतद्वै ब्रह्म दीप्यते यच्चन्द्रमा दृश्यतेऽथैतन्म्रियते यन्न दृश्यते तस्य विद्युतमेव तेजो गच्छति वायुं प्राण एतद्वै ब्रह्म दीप्यते यद्विद्युद्विद्योततेऽथैतन्म्रियते यन्न विद्योतते तस्य वायुमेव तेजो गच्छति वायुं प्राणस्ता वा एताः सर्वा देवता वायुमेव प्रविश्य वायौ सृप्ता न मूर्च्छन्ते तस्मादेव पुनरुदीरत इत्यधिदैवतमथाध्यात्मम्",
+        "transliteration": "athāto daivaḥ parimara etadvai brahma dīpyate yadagnirjvalatyathaitanmriyate yanna jvalati tasyādityameva tejo gacchati vāyuṃ prāṇa etadvai brahma dīpyate yathādityo dṛśyate'thaitanmriyate yanna dṛśyate tasya candramasameva tejo gacchati vāyuṃ prāṇa etadvai brahma dīpyate yaccandramā dṛśyate'thaitanmriyate yanna dṛśyate tasya vidyutameva tejo gacchati vāyuṃ prāṇa etadvai brahma dīpyate yadvidyudvidyotate'thaitanmriyate yanna vidyotate tasya vāyumeva tejo gacchati vāyuṃ prāṇastā vā etāḥ sarvā devatā vāyumeva praviśya vāyau sṛptā na mūrcchante tasmādeva punarudīrata ityadhidaivatamathādhyātmam",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 13,
+        "number": 13,
+        "sanskrit": "एतद्वै ब्रह्म दीप्यते यद्वाचा वदत्यथैतन्म्रियते यन्न वलति तस्य चक्षुरेव तेजो गच्छति प्राणं प्राण एतद्वै ब्रह्म दीप्यते यच्चक्षुषा पश्यत्यथैतन्म्रियते यन्न पश्यति तस्य श्रोत्रमेव तेजो गच्छति प्राणं प्राण एतद्वै ब्रह्म दीप्यते यच्छोत्रेण शृणोत्यथैतन्म्रियते यन्न शृणोति तस्य मन एव तेजो गच्छति प्राणं प्राण एतद्वै ब्रह्म दीप्यते यन्मनसा ध्यायत्यथैतन्म्रियते यन्न ध्यायति तस्य प्राणमेव तेजो गच्छति प्राणं प्राणस्ता वा एताः सर्वा देवताः प्राणमेव प्रविश्य प्राणे सृप्ता न मूर्छन्ते तस्माद्धैव पुनरुदीरते तद्यदिह वा एवंविद्वांस उभौ पर्वतावभिप्रवर्तेयातां तुस्तूर्षमाणो दक्षिणश्चोत्तरश्च न हैवैनं स्तृण्वीयातामथ य एनं द्विषन्ति यांश्च स्वयं द्वेष्टि त एवं सर्वे परितो म्रियन्ते",
+        "transliteration": "etadvai brahma dīpyate yadvācā vadatyathaitanmriyate yanna valati tasya cakṣureva tejo gacchati prāṇaṃ prāṇa etadvai brahma dīpyate yaccakṣuṣā paśyatyathaitanmriyate yanna paśyati tasya śrotrameva tejo gacchati prāṇaṃ prāṇa etadvai brahma dīpyate yacchotreṇa śṛṇotyathaitanmriyate yanna śṛṇoti tasya mana eva tejo gacchati prāṇaṃ prāṇa etadvai brahma dīpyate yanmanasā dhyāyatyathaitanmriyate yanna dhyāyati tasya prāṇameva tejo gacchati prāṇaṃ prāṇastā vā etāḥ sarvā devatāḥ prāṇameva praviśya prāṇe sṛptā na mūrchante tasmāddhaiva punarudīrate tadyadiha vā evaṃvidvāṃsa ubhau parvatāvabhipravarteyātāṃ tustūrṣamāṇo dakṣiṇaścottaraśca na haivainaṃ stṛṇvīyātāmatha ya enaṃ dviṣanti yāṃśca svayaṃ dveṣṭi ta evaṃ sarve parito mriyante",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 14,
+        "number": 14,
+        "sanskrit": "अथातो निःश्रेयसादानं एता ह वै देवता अहं श्रेयसे विवदमाना अस्माच्छरीरादुच्चक्रमुस्तद्दारुभूतं शिष्येथैतद्वाक्प्रविवेश तद्वाचा वदच्छिष्य एवाथैतच्चक्षुः प्रविवेश तद्वाचा वदच्चक्षुषा पश्यच्छिष्य एवाथैतच्छ्रोत्रं प्रविवेश तद्वाचा वदच्चक्षुषा पश्यच्छ्रोत्रेण शृण्वन्मनसा ध्यायच्छिष्य एवाथैतत्प्राणः प्रविवेश तत्तत एव समुत्तस्थौ तद्देवाः प्राणे निःश्रेयसं विचिन्त्य प्राणमेव प्रज्ञात्मानमभिसंस्तूय सहैतैः सर्वैरस्माल्लोकादुच्चक्रमुस्ते वायुप्रतिष्ठाकाशात्मानः स्वर्ययुस्तहो एवैवंविद्वान्सर्वेषां भूतानां प्राणमेव प्रज्ञात्मानमभिसंस्तूय सहैतैः सर्वैरस्माच्छरीरादुत्क्रामति स वायुप्रतिष्ठाकाशात्मा न स्वरेति तद्भवति यत्रैतद्देवास्तत्प्राप्य तदमृतो भवति यदमृता देवाः",
+        "transliteration": "athāto niḥśreyasādānaṃ etā ha vai devatā ahaṃ śreyase vivadamānā asmāccharīrāduccakramustaddārubhūtaṃ śiṣyethaitadvākpraviveśa tadvācā vadacchiṣya evāthaitaccakṣuḥ praviveśa tadvācā vadaccakṣuṣā paśyacchiṣya evāthaitacchrotraṃ praviveśa tadvācā vadaccakṣuṣā paśyacchrotreṇa śṛṇvanmanasā dhyāyacchiṣya evāthaitatprāṇaḥ praviveśa tattata eva samuttasthau taddevāḥ prāṇe niḥśreyasaṃ vicintya prāṇameva prajñātmānamabhisaṃstūya sahaitaiḥ sarvairasmāllokāduccakramuste vāyupratiṣṭhākāśātmānaḥ svaryayustaho evaivaṃvidvānsarveṣāṃ bhūtānāṃ prāṇameva prajñātmānamabhisaṃstūya sahaitaiḥ sarvairasmāccharīrādutkrāmati sa vāyupratiṣṭhākāśātmā na svareti tadbhavati yatraitaddevāstatprāpya tadamṛto bhavati yadamṛtā devāḥ",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 15,
+        "number": 15,
+        "sanskrit": "अथातः पितापुत्रीयं सम्प्रदानमिति चाचक्षते पिता पुत्रं प्रष्याह्वयति नवैस्तृणैरगारं संस्तीर्याग्निमुपसमाधायोदकुम्भं सपात्रमुपनिधायाहतेन वाससा सम्प्रच्छन्नः श्येत एत्य पुत्र उपरिष्टदभिनिपद्यत इन्द्रियैरस्येन्द्रियाणि संस्पृश्यापि वास्याभिमुखत एवासीताथास्मै सम्प्रयच्छति वाचं मे त्वयि दधानीति पिता वाचं ते मयि दध इति पुत्रः प्राणं मे त्वयि दधानीति पिता प्राणं ते मयि दध इति पुत्रश्चक्षुर्मे त्वयि दधानीति पिता चक्षुस्ते मयि दध इति पुत्रः श्रोत्रं मे त्वयि दधानीति पिता श्रोत्रं ते मयि दध इति पुत्रो मनो मे त्वयि दधानीति पिता मनस्ते मयि दध इति पुत्रोऽन्नरसान्मे त्वयि दधानीति पितान्नरसांस्ते मयि दध इति पुत्रः कर्माणि मे त्वयि दधानीति पिता कर्माणि ते मयि दध इति पुत्रः सुखदुःखे मे त्वयि दधानीति पिता सुखदुःखे ते मयि दध इति पुत्र आनन्दं रतिं प्रजाइं मे त्वयि दधानीति पिता आनन्दं रतिं प्रजातिं ते मयि दध इति पुत्र इत्यां मे त्वयि दधानीति पिता इत्यां ते मयि दध इति पुत्रो धियो विज्ञातव्यं कामान्मे त्वयि दधानीति पिउता धियो विज्ञातव्यं कामांस्ते मयि दध इति पुत्रोऽथ दक्षिणावृदुपनिष्क्रामति तं पितानुमन्त्रयते यशो ब्रह्मवर्चसमन्नाद्यं कीर्तिस्त्वा जुषतामित्यथेतरः सव्यमंसमन्ववेक्षते पाणि नान्तर्धाय वसनान्तेन वा प्रच्छद्य स्वर्गाल्लोकान्कामानवाप्नुहीति स यद्यगदः स्यात्पुत्रस्यैश्वर्ये पिता वसेत्परिवा व्रजेद्ययुर्वै प्रेयाद्यदेवैनं समापयति तथा समापयितव्यो भवति तथा समापयितव्यो भवति",
+        "transliteration": "athātaḥ pitāputrīyaṃ sampradānamiti cācakṣate pitā putraṃ praṣyāhvayati navaistṛṇairagāraṃ saṃstīryāgnimupasamādhāyodakumbhaṃ sapātramupanidhāyāhatena vāsasā sampracchannaḥ śyeta etya putra upariṣṭadabhinipadyata indriyairasyendriyāṇi saṃspṛśyāpi vāsyābhimukhata evāsītāthāsmai samprayacchati vācaṃ me tvayi dadhānīti pitā vācaṃ te mayi dadha iti putraḥ prāṇaṃ me tvayi dadhānīti pitā prāṇaṃ te mayi dadha iti putraścakṣurme tvayi dadhānīti pitā cakṣuste mayi dadha iti putraḥ śrotraṃ me tvayi dadhānīti pitā śrotraṃ te mayi dadha iti putro mano me tvayi dadhānīti pitā manaste mayi dadha iti putro'nnarasānme tvayi dadhānīti pitānnarasāṃste mayi dadha iti putraḥ karmāṇi me tvayi dadhānīti pitā karmāṇi te mayi dadha iti putraḥ sukhaduḥkhe me tvayi dadhānīti pitā sukhaduḥkhe te mayi dadha iti putra ānandaṃ ratiṃ prajāiṃ me tvayi dadhānīti pitā ānandaṃ ratiṃ prajātiṃ te mayi dadha iti putra ityāṃ me tvayi dadhānīti pitā ityāṃ te mayi dadha iti putro dhiyo vijñātavyaṃ kāmānme tvayi dadhānīti piutā dhiyo vijñātavyaṃ kāmāṃste mayi dadha iti putro'tha dakṣiṇāvṛdupaniṣkrāmati taṃ pitānumantrayate yaśo brahmavarcasamannādyaṃ kīrtistvā juṣatāmityathetaraḥ savyamaṃsamanvavekṣate pāṇi nāntardhāya vasanāntena vā pracchadya svargāllokānkāmānavāpnuhīti sa yadyagadaḥ syātputrasyaiśvarye pitā vasetparivā vrajedyayurvai preyādyadevainaṃ samāpayati tathā samāpayitavyo bhavati tathā samāpayitavyo bhavati",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Adhyaya 3 — Indra’s Teaching to Pratardana: Prana is Consciousness",
+    "titleSanskrit": "तृतीय अध्याय — इन्द्र-प्रतर्दन संवाद: प्राण ही प्रज्ञा है",
+    "summary": "King Pratardana asks Indra for the highest good. Indra reveals the supreme mystery: \"I am Prana, the conscious Self (Prajnatman). Worship me as life and immortality.\"",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "प्रतर्दनो ह वै दैवोदासिरिन्द्रस्य प्रियं धामोपजगाम युद्धेन पौरुषेण च तं हेन्द्र उवाच प्रतर्दन वरं ते ददानीति स होवाच प्रतर्दनस्त्वमेव वृणीश्व यं त्वं मनुष्याय हिततमं मन्यस इति तं हेन्द्र उवाच न वै वरं परस्मै वृणीते त्वमेव वृणीश्वेत्यवरो वैतर्हि किल म इति होवाच प्रतर्दनोऽथो खल्विन्द्रः सत्यादेव नेयाय सत्यं हीन्द्रः स होवाच मामेव विजानीह्येतदेवाहं मनुष्याय हिततमं मन्ये यन्मां विजानीयां त्रिशीर्षाणं त्वाष्ट्रमहनमवाङ्मुखान्यतीन्सालावृकेभ्यः प्रायच्छं बह्वीः सन्धा अतिक्रम्य दिवि प्रह्लादीनतृणमहमन्तरिक्षे पौलोमान्पृथिव्यां कालकाश्यांस्तस्य मे तत्र न लोम च नामीयते स यो मां विजानीयान्नास्य केन च कर्मणा लोको मीयते न मातृवधेन न पितृवधेन न स्तेयेन न भ्रूणहत्यया नास्य पापं च न चकृषो मुखान्नीलं वेत्तीति",
+        "transliteration": "pratardano ha vai daivodāsirindrasya priyaṃ dhāmopajagāma yuddhena pauruṣeṇa ca taṃ hendra uvāca pratardana varaṃ te dadānīti sa hovāca pratardanastvameva vṛṇīśva yaṃ tvaṃ manuṣyāya hitatamaṃ manyasa iti taṃ hendra uvāca na vai varaṃ parasmai vṛṇīte tvameva vṛṇīśvetyavaro vaitarhi kila ma iti hovāca pratardano'tho khalvindraḥ satyādeva neyāya satyaṃ hīndraḥ sa hovāca māmeva vijānīhyetadevāhaṃ manuṣyāya hitatamaṃ manye yanmāṃ vijānīyāṃ triśīrṣāṇaṃ tvāṣṭramahanamavāṅmukhānyatīnsālāvṛkebhyaḥ prāyacchaṃ bahvīḥ sandhā atikramya divi prahlādīnatṛṇamahamantarikṣe paulomānpṛthivyāṃ kālakāśyāṃstasya me tatra na loma ca nāmīyate sa yo māṃ vijānīyānnāsya kena ca karmaṇā loko mīyate na mātṛvadhena na pitṛvadhena na steyena na bhrūṇahatyayā nāsya pāpaṃ ca na cakṛṣo mukhānnīlaṃ vettīti",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "स होवाच प्राणोऽस्मि प्रज्ञात्मा तं मामायुरमृतमित्युपास्वायुः प्राणः प्राणो वा आयुः प्राण उवाचामृतं यावद्ध्यस्मि`न्छरीरे प्राणो वसति तावदायुः प्राणेन ह्येवामुष्मिंल्लोकेऽमृतत्वमाप्नोति प्रज्ञया सत्यसङ्कल्पं स यो म आयुरमृतमित्युपास्ते सर्वमायुरस्मिंल्लोक एवाप्नोत्यमृतत्वमक्षितिं स्वर्गे लोके तद्धैक आहुरेकभूयं वै प्राणा गच्छन्तीति न हि कश्चन शक्नुयात्सकृद्वाचा नाम प्रज्ञापयितुं चक्षुषा रूपं श्रोत्रेण शब्दं मनसा ध्यानमित्येकभूयं वै प्राणा भूत्वा एकैकं सर्वाण्येवैतानि प्रज्ञापयन्ति वाचं वदतीं सर्वे प्राणा अनुवदन्ति चक्षुः पश्यत्सर्वे प्राणा अनुपश्यन्ति श्रोत्रं शृण्वत्सर्वे प्राणा अनुशृण्वन्ति मनो ध्यायत्सर्वे प्राणा अनुध्यायन्ति प्राणं प्राणन्तं सर्वे प्राणा अनुप्राणन्तीत्येवमुहैवैतदिति हेन्द्र उवाचास्तीत्येव प्राणानां निःश्रेयसादानमिति",
+        "transliteration": "sa hovāca prāṇo'smi prajñātmā taṃ māmāyuramṛtamityupāsvāyuḥ prāṇaḥ prāṇo vā āyuḥ prāṇa uvācāmṛtaṃ yāvaddhyasmi`ncharīre prāṇo vasati tāvadāyuḥ prāṇena hyevāmuṣmiṃlloke'mṛtatvamāpnoti prajñayā satyasaṅkalpaṃ sa yo ma āyuramṛtamityupāste sarvamāyurasmiṃlloka evāpnotyamṛtatvamakṣitiṃ svarge loke taddhaika āhurekabhūyaṃ vai prāṇā gacchantīti na hi kaścana śaknuyātsakṛdvācā nāma prajñāpayituṃ cakṣuṣā rūpaṃ śrotreṇa śabdaṃ manasā dhyānamityekabhūyaṃ vai prāṇā bhūtvā ekaikaṃ sarvāṇyevaitāni prajñāpayanti vācaṃ vadatīṃ sarve prāṇā anuvadanti cakṣuḥ paśyatsarve prāṇā anupaśyanti śrotraṃ śṛṇvatsarve prāṇā anuśṛṇvanti mano dhyāyatsarve prāṇā anudhyāyanti prāṇaṃ prāṇantaṃ sarve prāṇā anuprāṇantītyevamuhaivaitaditi hendra uvācāstītyeva prāṇānāṃ niḥśreyasādānamiti",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "जीवति वागपेतो मूकान्विपश्यामो जीवति चक्षुरपेतोऽन्धान्विपश्यामो जीवति श्रोत्रापेतो बधिरान्विपश्यामो जीवतो बाहुच्छिन्नो जीवत्यूरुच्छिन्न इत्येवं हि पश्याम इत्यथ खलु प्राण एव प्रज्ञात्मेदं शरीरं परिगृह्योत्यापयति तस्मादेतमेवोक्थमुपासीत यो वै प्राणः सा प्रज्ञा या वा प्रज्ञा स प्राणः सह ह्येतावस्मिञ्छरीरे वसतः सहोत्क्रामतस्तस्यैषैव दृष्टिरेतद्विज्ञानं यत्रैतत्पुरुषः सुप्तः स्वप्नं न कञ्चन पश्यत्यथास्मिन्प्राण एवैकधा भवति तदैनं वाक्सर्वैर्नामभिः सहाप्येति चक्षुः सर्वै रूपैः सहाप्येति श्रोत्रं सर्वैः शब्दैः सहाप्येति मनः सर्वैर्ध्यातैः सहाप्येति स यदा प्रतिबुध्यते यथाग्नेर्ज्वलतो विस्फुलिङ्गा विप्रतिष्ठेरन्नेवमेवैतस्मादात्मनः प्राणा यथायतनं विप्रतिष्ठन्ते प्राणेभ्यो देवा देवेभ्यो लोकास्तस्यैषैव सिद्धिरेतद्विज्ञानं यत्रैतत्पुरुष आर्तो मरिष्यन्नाबल्य न्येत्य मोहं नैति तदाहुरुदक्रमीच्चित्तं न शृणोति न पश्यति वाचा वदत्यथास्मिन्प्राण एवैकधा भवति तदैनं वाव सर्वैर्नामभिः सहाप्येति चक्षुः सर्वै रूपैः सहाप्येति श्रोत्रं सर्वैः शब्दैः सहाप्येति मनः सर्वैर्ध्यातैः सहाप्येति स यदा प्रतिबुध्यते यथाग्नेर्ज्वलतो विस्फुलिङ्गा विप्रतिष्ठेरन्नेवमेवैतस्मादात्मनः प्राणा यथायतनं विप्रतिष्ठन्ते प्राणेभ्यो देवा देवेभ्यो लोकाः",
+        "transliteration": "jīvati vāgapeto mūkānvipaśyāmo jīvati cakṣurapeto'ndhānvipaśyāmo jīvati śrotrāpeto badhirānvipaśyāmo jīvato bāhucchinno jīvatyūrucchinna ityevaṃ hi paśyāma ityatha khalu prāṇa eva prajñātmedaṃ śarīraṃ parigṛhyotyāpayati tasmādetamevokthamupāsīta yo vai prāṇaḥ sā prajñā yā vā prajñā sa prāṇaḥ saha hyetāvasmiñcharīre vasataḥ sahotkrāmatastasyaiṣaiva dṛṣṭiretadvijñānaṃ yatraitatpuruṣaḥ suptaḥ svapnaṃ na kañcana paśyatyathāsminprāṇa evaikadhā bhavati tadainaṃ vāksarvairnāmabhiḥ sahāpyeti cakṣuḥ sarvai rūpaiḥ sahāpyeti śrotraṃ sarvaiḥ śabdaiḥ sahāpyeti manaḥ sarvairdhyātaiḥ sahāpyeti sa yadā pratibudhyate yathāgnerjvalato visphuliṅgā vipratiṣṭherannevamevaitasmādātmanaḥ prāṇā yathāyatanaṃ vipratiṣṭhante prāṇebhyo devā devebhyo lokāstasyaiṣaiva siddhiretadvijñānaṃ yatraitatpuruṣa ārto mariṣyannābalya nyetya mohaṃ naiti tadāhurudakramīccittaṃ na śṛṇoti na paśyati vācā vadatyathāsminprāṇa evaikadhā bhavati tadainaṃ vāva sarvairnāmabhiḥ sahāpyeti cakṣuḥ sarvai rūpaiḥ sahāpyeti śrotraṃ sarvaiḥ śabdaiḥ sahāpyeti manaḥ sarvairdhyātaiḥ sahāpyeti sa yadā pratibudhyate yathāgnerjvalato visphuliṅgā vipratiṣṭherannevamevaitasmādātmanaḥ prāṇā yathāyatanaṃ vipratiṣṭhante prāṇebhyo devā devebhyo lokāḥ",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "स यदास्माच्छरीरादुत्क्रामति वागस्मात्सर्वाणि नामान्यभिविसृजते वाचा सर्वाणि नामान्याप्नोति प्राणोऽस्मात्सर्वान्गन्धानभिविसृजते प्राणेन सर्वान्गन्धानाप्नोति चक्षुरस्मात्सर्वाणि रूपाण्यभिविसृजते चक्षुषा सर्वाणि रूपाण्याप्नोति श्रोत्रमस्मात्सर्वाञ्छब्दानभिविसृजते श्रोत्रेण सर्वाञ्छब्दानाप्नोति मनोऽस्मात्सर्वाणि ध्यातान्यभिविसृजते मनसा सर्वाणि ध्यातान्याप्नोति सैषा प्राणे सर्वाप्तिर्यो वै प्राणः सा प्रज्ञा या वा प्रज्ञा स प्राणः स ह ह्येतावस्मिञ्छरीरे वसतः सहत्क्रामतोऽथ खलु यथा प्रज्ञायां सर्वाणि भूतान्येकी भवन्ति तद्व्याख्यास्यामः",
+        "transliteration": "sa yadāsmāccharīrādutkrāmati vāgasmātsarvāṇi nāmānyabhivisṛjate vācā sarvāṇi nāmānyāpnoti prāṇo'smātsarvāngandhānabhivisṛjate prāṇena sarvāngandhānāpnoti cakṣurasmātsarvāṇi rūpāṇyabhivisṛjate cakṣuṣā sarvāṇi rūpāṇyāpnoti śrotramasmātsarvāñchabdānabhivisṛjate śrotreṇa sarvāñchabdānāpnoti mano'smātsarvāṇi dhyātānyabhivisṛjate manasā sarvāṇi dhyātānyāpnoti saiṣā prāṇe sarvāptiryo vai prāṇaḥ sā prajñā yā vā prajñā sa prāṇaḥ sa ha hyetāvasmiñcharīre vasataḥ sahatkrāmato'tha khalu yathā prajñāyāṃ sarvāṇi bhūtānyekī bhavanti tadvyākhyāsyāmaḥ",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "वागेवास्मा एकमङ्गमुदूढं तस्यै नाम परस्तात्प्रतिविहिता भूतमात्रा घ्राणमेवास्या एकमङ्गमुदूढं तस्य गन्धः परस्तात्प्रतिविहिता भूतमात्रा चक्षुरेवास्या एकमङ्गमुदूढं तस्य रूपं परस्तात्प्रतिविहिता भूतमात्रा श्रोत्रमेवास्या एकमङ्गमुदूढं तस्य शब्दः परस्तात्प्रतिविहिता भूतमात्रा जिह्वैवास्या एकमङ्गमुदूढं तस्यान्नरसः परस्तात्प्रतिविहिता भूतमात्रा हस्तावेवास्या एकमङ्गमुदूढं तयोः कर्म परस्तात्प्रतिविहिता भूतमात्रा शरीरमेवास्या एकमङ्गमुदूढं तस्य सुखदुःखे परस्तात्प्रतिविहिता भूतमात्रा उपस्थ एवास्या एकमङ्गमुदूढं तस्यानन्दो रतिः प्रजातिः परस्तात्प्रतिविहिता भूतमात्रा पादावेवास्या एकमङ्गमुदूढं तयोरित्या परस्तात्प्रतिविहिता भूतमात्रा प्रज्ञैवास्या एकमङ्गमुदूढं तस्यै धियो विज्ञातव्यं कामाः परस्तात्प्रतिविहिता भूतमात्रा",
+        "transliteration": "vāgevāsmā ekamaṅgamudūḍhaṃ tasyai nāma parastātprativihitā bhūtamātrā ghrāṇamevāsyā ekamaṅgamudūḍhaṃ tasya gandhaḥ parastātprativihitā bhūtamātrā cakṣurevāsyā ekamaṅgamudūḍhaṃ tasya rūpaṃ parastātprativihitā bhūtamātrā śrotramevāsyā ekamaṅgamudūḍhaṃ tasya śabdaḥ parastātprativihitā bhūtamātrā jihvaivāsyā ekamaṅgamudūḍhaṃ tasyānnarasaḥ parastātprativihitā bhūtamātrā hastāvevāsyā ekamaṅgamudūḍhaṃ tayoḥ karma parastātprativihitā bhūtamātrā śarīramevāsyā ekamaṅgamudūḍhaṃ tasya sukhaduḥkhe parastātprativihitā bhūtamātrā upastha evāsyā ekamaṅgamudūḍhaṃ tasyānando ratiḥ prajātiḥ parastātprativihitā bhūtamātrā pādāvevāsyā ekamaṅgamudūḍhaṃ tayorityā parastātprativihitā bhūtamātrā prajñaivāsyā ekamaṅgamudūḍhaṃ tasyai dhiyo vijñātavyaṃ kāmāḥ parastātprativihitā bhūtamātrā",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "प्रज्ञया वाचं समारुह्य वाचा सर्वाणि सामान्याप्नोति प्रज्ञया प्राणं समारुह्य प्राणेन सर्वान्गन्धानाप्नोति प्रज्ञया चक्षुः समारुह्य सर्वाणि रूपाण्याप्नोति प्रज्ञया श्रोत्रं समारुह्य श्रोत्रेण सर्वाञ्छब्दानाप्नोति प्रज्ञया जिह्वां समारुह्य जिह्वाया सर्वानन्नरसानाप्नोति प्रज्ञया हस्तौ समारुह्य हस्ताभ्यां सर्वाणि कर्माण्याप्नोति प्रज्ञया शरीरं समारुह्य शरीरेण सुखदुःखे आप्नोति प्रज्ञयोपस्थं समारुह्योपस्थेनानन्दं रतिं प्रजातिमाप्नोति प्रज्ञया पादौ समारुह्य पादाभ्यां सर्वा इत्या आप्नोति प्रज्ञयैव धियं समारुह्य प्रज्ञयैव धियो विज्ञातव्यं कामानाप्नोति",
+        "transliteration": "prajñayā vācaṃ samāruhya vācā sarvāṇi sāmānyāpnoti prajñayā prāṇaṃ samāruhya prāṇena sarvāngandhānāpnoti prajñayā cakṣuḥ samāruhya sarvāṇi rūpāṇyāpnoti prajñayā śrotraṃ samāruhya śrotreṇa sarvāñchabdānāpnoti prajñayā jihvāṃ samāruhya jihvāyā sarvānannarasānāpnoti prajñayā hastau samāruhya hastābhyāṃ sarvāṇi karmāṇyāpnoti prajñayā śarīraṃ samāruhya śarīreṇa sukhaduḥkhe āpnoti prajñayopasthaṃ samāruhyopasthenānandaṃ ratiṃ prajātimāpnoti prajñayā pādau samāruhya pādābhyāṃ sarvā ityā āpnoti prajñayaiva dhiyaṃ samāruhya prajñayaiva dhiyo vijñātavyaṃ kāmānāpnoti",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "न हि प्रज्ञापेता वाङ्नाम किंचन प्रज्ञपयेदन्यत्र मे मनोऽभूदित्याह नाहमेतन्नाम प्राज्ञासिषमिति न हि प्रज्ञापेतः प्राणो गन्धं कंचन प्रज्ञपयेदन्यत्र मे मनोऽभूदित्याह नाहमेतं गन्धं प्राज्ञासिषमिति नहि प्रज्ञापेतं चक्षू रूपं किंचन प्रज्ञपयेदन्यत्र मे मनोऽभूदित्याह नाहमेतद्रूपं प्राज्ञासिषमिति नहि प्रज्ञापेतं श्रोत्रं शब्दं कंचन प्रज्ञपयेदन्यत्र मे मनोऽभूदित्याह नाहमेतं शब्दं प्राज्ञासिषमिति नहि प्रज्ञापेता जिह्वान्नरसं कंचन प्रज्ञपयेदन्यत्र मे मनोऽभूदित्याह नाहमेतमन्नरसं प्राज्ञासिषमिति नहि प्रज्ञापेतौ हतौ कर्म किंचन प्रज्ञपेतामन्यत्र मे मनोऽभूदित्याह नाहमेतत्कर्म प्राज्ञासिषमिति नहि प्रज्ञापेतं शरीरं सुखदुःखं किंचन प्रज्ञपयेदन्यत्र मे मनोऽभूदित्याह नाहमेतत्सुखदुःखं प्राज्ञासिषमिति नहि प्रज्ञापेत उपस्थ आनन्दं रतिं प्रजातिं कंचन प्रज्ञपयेदन्यत्र मे मनोऽभूदित्याह नाहमेतमानन्दं रतिं प्रजातिं प्राज्ञासिषमिति नहि प्रज्ञापेतौ पादावित्यां कांचन प्रज्ञपयेतामन्यत्र मे मनोऽभूदित्याह नाहमेतामित्यां प्राज्ञसिषमिति नहि प्रज्ञापेता धीः काचन सिद्ध्येन्न प्रज्ञातव्यं प्रज्ञायेत्",
+        "transliteration": "na hi prajñāpetā vāṅnāma kiṃcana prajñapayedanyatra me mano'bhūdityāha nāhametannāma prājñāsiṣamiti na hi prajñāpetaḥ prāṇo gandhaṃ kaṃcana prajñapayedanyatra me mano'bhūdityāha nāhametaṃ gandhaṃ prājñāsiṣamiti nahi prajñāpetaṃ cakṣū rūpaṃ kiṃcana prajñapayedanyatra me mano'bhūdityāha nāhametadrūpaṃ prājñāsiṣamiti nahi prajñāpetaṃ śrotraṃ śabdaṃ kaṃcana prajñapayedanyatra me mano'bhūdityāha nāhametaṃ śabdaṃ prājñāsiṣamiti nahi prajñāpetā jihvānnarasaṃ kaṃcana prajñapayedanyatra me mano'bhūdityāha nāhametamannarasaṃ prājñāsiṣamiti nahi prajñāpetau hatau karma kiṃcana prajñapetāmanyatra me mano'bhūdityāha nāhametatkarma prājñāsiṣamiti nahi prajñāpetaṃ śarīraṃ sukhaduḥkhaṃ kiṃcana prajñapayedanyatra me mano'bhūdityāha nāhametatsukhaduḥkhaṃ prājñāsiṣamiti nahi prajñāpeta upastha ānandaṃ ratiṃ prajātiṃ kaṃcana prajñapayedanyatra me mano'bhūdityāha nāhametamānandaṃ ratiṃ prajātiṃ prājñāsiṣamiti nahi prajñāpetau pādāvityāṃ kāṃcana prajñapayetāmanyatra me mano'bhūdityāha nāhametāmityāṃ prājñasiṣamiti nahi prajñāpetā dhīḥ kācana siddhyenna prajñātavyaṃ prajñāyet",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "न वाचं विजिज्ञासीत वक्तारं विद्यान्न गन्धं विजिज्ञासीत घ्रातारं विद्यान्न रूपं विजिज्ञासीत रूपविदं विद्यान्न शब्दं विजिज्ञासीत श्रोतारं विद्यान्नान्नरसं विजिज्ञासीतान्नरसविज्ञातारं विद्यान्न कर्म विजिज्ञासीत कर्तारं विद्यान्न सुखदुःखे विजिज्ञासीत सुखदुःखयोर्विज्ञातारं विद्यान्नानन्दं रतिं प्रजातिं विजिज्ञासीतानन्दस्य रतेः प्रजातेर्विज्ञातारं विद्यान्नेत्यां विजिज्ञासीतैतारं विद्यान्न मनो विजिज्ञासीत मन्तारं विद्यात्ता वा एता दशैव भूतमात्रा अधिप्रज्ञं दश प्रज्ञामात्रा अधिभूतं यद्धि भूतमात्रा न स्युर्न प्रज्ञामात्राः स्युर्यद्वा प्रज्ञामात्रा न स्युर्न भूतमात्राः स्युः",
+        "transliteration": "na vācaṃ vijijñāsīta vaktāraṃ vidyānna gandhaṃ vijijñāsīta ghrātāraṃ vidyānna rūpaṃ vijijñāsīta rūpavidaṃ vidyānna śabdaṃ vijijñāsīta śrotāraṃ vidyānnānnarasaṃ vijijñāsītānnarasavijñātāraṃ vidyānna karma vijijñāsīta kartāraṃ vidyānna sukhaduḥkhe vijijñāsīta sukhaduḥkhayorvijñātāraṃ vidyānnānandaṃ ratiṃ prajātiṃ vijijñāsītānandasya rateḥ prajātervijñātāraṃ vidyānnetyāṃ vijijñāsītaitāraṃ vidyānna mano vijijñāsīta mantāraṃ vidyāttā vā etā daśaiva bhūtamātrā adhiprajñaṃ daśa prajñāmātrā adhibhūtaṃ yaddhi bhūtamātrā na syurna prajñāmātrāḥ syuryadvā prajñāmātrā na syurna bhūtamātrāḥ syuḥ",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "न ह्यन्यतरतो रूपं किंचन सिद्ध्येन्नो एतन्नाना तद्यथा रथस्यारेषु नेमिरर्पिता नाभावरा अर्पिता एवमेवैता भूतमात्राः प्रज्ञामात्रा स्वर्पिताः प्रज्ञामात्राः प्राणे अर्पिता एष प्राण एव प्रज्ञात्मानन्दोऽजरोऽमृतो न साधुना कर्मणा भूयान्नो एवासाधुना कर्मणा कनीयानेष ह्येवैनं साधुकर्म कारयति तं यमन्वानुनेषत्येष एवैनमसाधु कर्म कारयति तं यमेभ्यो लोकेभ्यो नुनुत्सत एष लोकपाल एष लोकाधिपतिरेष सर्वेश्वरः स म आत्मेति विद्यात्स म आत्मेति विद्यात्",
+        "transliteration": "na hyanyatarato rūpaṃ kiṃcana siddhyenno etannānā tadyathā rathasyāreṣu nemirarpitā nābhāvarā arpitā evamevaitā bhūtamātrāḥ prajñāmātrā svarpitāḥ prajñāmātrāḥ prāṇe arpitā eṣa prāṇa eva prajñātmānando'jaro'mṛto na sādhunā karmaṇā bhūyānno evāsādhunā karmaṇā kanīyāneṣa hyevainaṃ sādhukarma kārayati taṃ yamanvānuneṣatyeṣa evainamasādhu karma kārayati taṃ yamebhyo lokebhyo nunutsata eṣa lokapāla eṣa lokādhipatireṣa sarveśvaraḥ sa ma ātmeti vidyātsa ma ātmeti vidyāt",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Adhyaya 4 — Ajatashatru and Balaki: The True Ground of Being",
+    "titleSanskrit": "चतुर्थ अध्याय — अजातशत्रु एवं दृप्तबालाकि संवाद",
+    "summary": "Balaki offers sixteen partial definitions of Brahman (sun, moon, lightning, space, mirror). King Ajatashatru reveals that the true Brahman is the conscious subject behind deep sleep and waking awareness.",
+    "verses": [
+      {
+        "id": 1,
+        "number": 1,
+        "sanskrit": "गार्ग्यो ह वै बालाकिरनूचानः संस्पष्ट आस सोऽयमुशिनरेषु संवसन्मत्स्येषु कुरुपञ्चालेषु काशीविदेहेष्विति सहाजातशत्रुं काश्यमेत्योवाच ब्रह्म ते ब्रवाणीति तं होवाच अजातशत्रुः सहस्रं दद्मस्त एतस्यां वाचि जनको जनक इति वा उ जना धावन्तीति",
+        "transliteration": "gārgyo ha vai bālākiranūcānaḥ saṃspaṣṭa āsa so'yamuśinareṣu saṃvasanmatsyeṣu kurupañcāleṣu kāśīvideheṣviti sahājātaśatruṃ kāśyametyovāca brahma te bravāṇīti taṃ hovāca ajātaśatruḥ sahasraṃ dadmasta etasyāṃ vāci janako janaka iti vā u janā dhāvantīti",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "sanskrit": "स होवाच बालाकिर्य एवैष आदित्ये पुरुषस्तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठा बृहत्पाण्डरवासा अतिष्ठाः सर्वेषां भूतानां मूर्धेति वा अहमेतमुपास इति स यो हैतमेवमुपास्तेऽतिष्ठाः सर्वेषां भूतानां मूर्धा भवति",
+        "transliteration": "sa hovāca bālākirya evaiṣa āditye puruṣastamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhā bṛhatpāṇḍaravāsā atiṣṭhāḥ sarveṣāṃ bhūtānāṃ mūrdheti vā ahametamupāsa iti sa yo haitamevamupāste'tiṣṭhāḥ sarveṣāṃ bhūtānāṃ mūrdhā bhavati",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 3,
+        "number": 3,
+        "sanskrit": "स एवैष बालाकिर्य एवैष चन्द्रमसि पुरुषस्तमेवाहं ब्रह्मोपास इति तं होवाचाजातशत्रुर्मा मैतस्मिन्समवादयिष्ठाः सोमो राजान्नस्यात्मेति वा अहमेतमुपास इति स यो हैतमेवमुपास्तेऽन्नस्यात्मा भवति",
+        "transliteration": "sa evaiṣa bālākirya evaiṣa candramasi puruṣastamevāhaṃ brahmopāsa iti taṃ hovācājātaśatrurmā maitasminsamavādayiṣṭhāḥ somo rājānnasyātmeti vā ahametamupāsa iti sa yo haitamevamupāste'nnasyātmā bhavati",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 4,
+        "number": 4,
+        "sanskrit": "सहोवाच बालाकिर्य एवैष विद्युति पुरुष एतमेवाहं ब्रह्मोपास इति तं होवाचाजातशत्रुर्मा मैतस्मिन्समवादयिष्ठास्तेजस्यात्मेति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते तेजस्यात्मा भवति",
+        "transliteration": "sahovāca bālākirya evaiṣa vidyuti puruṣa etamevāhaṃ brahmopāsa iti taṃ hovācājātaśatrurmā maitasminsamavādayiṣṭhāstejasyātmeti vā ahametamupāsa iti sa yo haitamevamupāste tejasyātmā bhavati",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 5,
+        "number": 5,
+        "sanskrit": "स होवाच बालाकिर्य एवैष स्तनयित्नौ पुरुष एतमेवाहं ब्रह्मोपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठाः शब्दस्यात्मेति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते शब्दस्यात्मा भवति",
+        "transliteration": "sa hovāca bālākirya evaiṣa stanayitnau puruṣa etamevāhaṃ brahmopāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhāḥ śabdasyātmeti vā ahametamupāsa iti sa yo haitamevamupāste śabdasyātmā bhavati",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 6,
+        "number": 6,
+        "sanskrit": "स होवाच बालाकिर्य एवैष आकाशे पुरुषस्तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठाः पूर्णमप्रवर्ति ब्रह्मेति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते पूर्यते प्रजया पशुभिर्नो एव स्वयं नास्य प्रजा पुरा कालात्प्रवर्तते",
+        "transliteration": "sa hovāca bālākirya evaiṣa ākāśe puruṣastamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhāḥ pūrṇamapravarti brahmeti vā ahametamupāsa iti sa yo haitamevamupāste pūryate prajayā paśubhirno eva svayaṃ nāsya prajā purā kālātpravartate",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 7,
+        "number": 7,
+        "sanskrit": "स होवाच बालाकिर्य एवैष वायौ पुरुषस्तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठा इन्द्रो वैकुण्ठोऽपराजिता सेनेति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते जिष्णुर्ह वा पराजिष्णुरन्यतरस्य ज्ज्यायन्भवति",
+        "transliteration": "sa hovāca bālākirya evaiṣa vāyau puruṣastamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhā indro vaikuṇṭho'parājitā seneti vā ahametamupāsa iti sa yo haitamevamupāste jiṣṇurha vā parājiṣṇuranyatarasya jjyāyanbhavati",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 8,
+        "number": 8,
+        "sanskrit": "स होवाच बालाकिर्य एवैषोऽग्नौ पुरुषस्तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठा विषासहिरिति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते विषासहिर्वा एष भवति",
+        "transliteration": "sa hovāca bālākirya evaiṣo'gnau puruṣastamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhā viṣāsahiriti vā ahametamupāsa iti sa yo haitamevamupāste viṣāsahirvā eṣa bhavati",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 9,
+        "number": 9,
+        "sanskrit": "स होवाच बालाकिर्य एवैषोऽप्सु पुरुषस्तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठा नाम्न्यस्यात्मेति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते नाम्न्यस्यात्मा भवतीति अधिदैवतमथाध्यात्मम्",
+        "transliteration": "sa hovāca bālākirya evaiṣo'psu puruṣastamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhā nāmnyasyātmeti vā ahametamupāsa iti sa yo haitamevamupāste nāmnyasyātmā bhavatīti adhidaivatamathādhyātmam",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 10,
+        "number": 10,
+        "sanskrit": "स होवाच बालाकिर्य एवैष आदर्शे पुरुषस्तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठाः प्रतिरूप इति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते प्रतिरूपो हैवास्य प्रजायामाजायते नाप्रतिरूपः",
+        "transliteration": "sa hovāca bālākirya evaiṣa ādarśe puruṣastamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhāḥ pratirūpa iti vā ahametamupāsa iti sa yo haitamevamupāste pratirūpo haivāsya prajāyāmājāyate nāpratirūpaḥ",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 11,
+        "number": 11,
+        "sanskrit": "स होवाच बालाकिर्य एवैष प्रतिश्रुत्काया पुरुषस्तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठा द्वितीयोऽनपग इति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते विन्दते द्वितीयाद्द्वितीयवान्भवति",
+        "transliteration": "sa hovāca bālākirya evaiṣa pratiśrutkāyā puruṣastamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhā dvitīyo'napaga iti vā ahametamupāsa iti sa yo haitamevamupāste vindate dvitīyāddvitīyavānbhavati",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 12,
+        "number": 12,
+        "sanskrit": "स होवाच बालाकिर्य एवैष शब्दः पुरुषमन्वेति तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठा असुरिति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते नो एव स्वयं नास्य प्रजा पुराकालात्सम्मोहमेति",
+        "transliteration": "sa hovāca bālākirya evaiṣa śabdaḥ puruṣamanveti tamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhā asuriti vā ahametamupāsa iti sa yo haitamevamupāste no eva svayaṃ nāsya prajā purākālātsammohameti",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 13,
+        "number": 13,
+        "sanskrit": "स होवाच बालाकिर्य एवैष च्छायायां पुरुषस्तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठामृत्युरिति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते नो एव स्वयं नास्य प्रजा पुरा कालात्प्रमीयते",
+        "transliteration": "sa hovāca bālākirya evaiṣa cchāyāyāṃ puruṣastamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhāmṛtyuriti vā ahametamupāsa iti sa yo haitamevamupāste no eva svayaṃ nāsya prajā purā kālātpramīyate",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 14,
+        "number": 14,
+        "sanskrit": "स होवाच बालाकिर्य एवैष शारीरः पुरुषस्तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठाः प्रजापतिरिति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते प्रजायते प्रजया पशुभिः",
+        "transliteration": "sa hovāca bālākirya evaiṣa śārīraḥ puruṣastamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhāḥ prajāpatiriti vā ahametamupāsa iti sa yo haitamevamupāste prajāyate prajayā paśubhiḥ",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 15,
+        "number": 15,
+        "sanskrit": "स होवाच बालाकिर्य एवैष प्राज्ञ आत्मा येनैतत्सुप्तः स्वप्नमाचरति तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठा यमो राजेति वा अहमेतमुपास इति स यो हैतमेवमुपास्ते सर्वं हास्मा इदं श्रैष्ठ्याय गम्यते",
+        "transliteration": "sa hovāca bālākirya evaiṣa prājña ātmā yenaitatsuptaḥ svapnamācarati tamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhā yamo rājeti vā ahametamupāsa iti sa yo haitamevamupāste sarvaṃ hāsmā idaṃ śraiṣṭhyāya gamyate",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 16,
+        "number": 16,
+        "sanskrit": "स होवाच बालाकिर्य एवैष दक्षिणेक्षन्पुरुषस्तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठा नान्न आत्माग्निरात्मा ज्योतिष्ट आत्मेति वा अहमेतमुपास इति स यो हैतमेवमुपास्त एतेषां सर्वेषामात्मा भवति",
+        "transliteration": "sa hovāca bālākirya evaiṣa dakṣiṇekṣanpuruṣastamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhā nānna ātmāgnirātmā jyotiṣṭa ātmeti vā ahametamupāsa iti sa yo haitamevamupāsta eteṣāṃ sarveṣāmātmā bhavati",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 17,
+        "number": 17,
+        "sanskrit": "स होवाच बालाकिर्य एवैष सव्येक्षन्पुरुषस्तमेवाहमुपास इति तं होवाचाजातशत्रुर्मामैतस्मिन्समवादयिष्ठाः सत्यस्यात्मा विद्युत आत्मा तेजस आत्मेति वा अहमेतमुपास इति स यो हैतमेवमुपास्त एतेषां सर्वेषामात्मा भवतीति",
+        "transliteration": "sa hovāca bālākirya evaiṣa savyekṣanpuruṣastamevāhamupāsa iti taṃ hovācājātaśatrurmāmaitasminsamavādayiṣṭhāḥ satyasyātmā vidyuta ātmā tejasa ātmeti vā ahametamupāsa iti sa yo haitamevamupāsta eteṣāṃ sarveṣāmātmā bhavatīti",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 18,
+        "number": 18,
+        "sanskrit": "तत उ ह बालाकिस्तूष्णीमास तं होवाचाजातशत्रुरेतावन्नु बालाकीति एतावद्धीति होवाच बालाकिस्तं होवाचाजातशत्रुर्मृषा वै किल मा संवदिष्ठा ब्रह्म ते ब्रवाणीति होवाच यो वै बालाक एतेषां पुरुषाणां कर्ता यस्य वैतत्कर्म स वेदितव्य इति तत उ ह बालाकिः समित्पाणिः प्रतिचक्रामोपायानीति तं होवाचजातशत्रुः प्रतिलोमरूपमेव स्याद्यत्क्षत्रियो ब्राह्मणमुपनयीतैहि व्येव त्वा ज्ञपयिष्यामीति तं ह पाणावभिपद्य प्रवव्राज तौ ह सुप्तं पुरुषमीयतुस्तं हाजातशत्रुरामन्त्रयांचक्रे बृहत्पाण्डरवासः सोमराजन्निति स उ ह तूष्णीमेव शिश्ये तत उ हैनं यष्ट्या विचिक्षेप स तत एव समुत्तस्थौ तं होवाचाजातशत्रुः क्वैष एतद्वा लोके पुरुषोऽशयिष्ट क्वैतदभूत्कुत एतदागादिति तदु ह बालाकिर्न विजज्ञौ",
+        "transliteration": "tata u ha bālākistūṣṇīmāsa taṃ hovācājātaśatruretāvannu bālākīti etāvaddhīti hovāca bālākistaṃ hovācājātaśatrurmṛṣā vai kila mā saṃvadiṣṭhā brahma te bravāṇīti hovāca yo vai bālāka eteṣāṃ puruṣāṇāṃ kartā yasya vaitatkarma sa veditavya iti tata u ha bālākiḥ samitpāṇiḥ praticakrāmopāyānīti taṃ hovācajātaśatruḥ pratilomarūpameva syādyatkṣatriyo brāhmaṇamupanayītaihi vyeva tvā jñapayiṣyāmīti taṃ ha pāṇāvabhipadya pravavrāja tau ha suptaṃ puruṣamīyatustaṃ hājātaśatrurāmantrayāṃcakre bṛhatpāṇḍaravāsaḥ somarājanniti sa u ha tūṣṇīmeva śiśye tata u hainaṃ yaṣṭyā vicikṣepa sa tata eva samuttasthau taṃ hovācājātaśatruḥ kvaiṣa etadvā loke puruṣo'śayiṣṭa kvaitadabhūtkuta etadāgāditi tadu ha bālākirna vijajñau",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 19,
+        "number": 19,
+        "sanskrit": "तं होवाचाजातशत्रुर्यत्रैष एतद्बालाके पुरुषोऽशयिष्ट यत्रैतदभूद्यत एतदागाद्धिता नाम हृदयस्य नाड्यो हृदयात्पुरीततमभिप्रतन्वन्ति यथा सहस्रधा केशो विपाटितस्तावदण्व्यः पिङ्गलस्याणिम्ना तिष्ठन्ते शुक्लस्य कृष्णस्य पीतस्य लोहितस्येति तासु तदा भवति यदा सुप्तः स्वप्नं न कंचन पश्यत्यथास्मिन्प्राण एवैकधा भवति तथैनं वाक्सर्वैर्नामभिः सहाप्येति मनः सर्वैर्ध्यातैः सहाप्येति चक्षुः सर्वै रूपैः सहाप्येति श्रोत्रं सर्वैः शब्दैः सहाप्येति मनः सर्वैर्ध्यातैः सहाप्येति स यदा प्रतिबुध्यते यथाग्नेर्ज्वलतो विस्फुलिङ्गा विप्रतिष्ठेरन्नेवमेवैतस्मादात्मनः प्राणा यथायतनं विप्रतिष्ठन्ते प्राणेभ्यो देवा देवेभ्यो लोकास्तद्यथा क्षुरः क्षुरध्याने हितः स्याद्विश्वम्भरो वा विश्वम्भरकुलाय एवमेवैष प्राज्ञ आत्मेदं शरीरमनुप्रविष्ट आ लोमभ्य आ नखेभ्यः",
+        "transliteration": "taṃ hovācājātaśatruryatraiṣa etadbālāke puruṣo'śayiṣṭa yatraitadabhūdyata etadāgāddhitā nāma hṛdayasya nāḍyo hṛdayātpurītatamabhipratanvanti yathā sahasradhā keśo vipāṭitastāvadaṇvyaḥ piṅgalasyāṇimnā tiṣṭhante śuklasya kṛṣṇasya pītasya lohitasyeti tāsu tadā bhavati yadā suptaḥ svapnaṃ na kaṃcana paśyatyathāsminprāṇa evaikadhā bhavati tathainaṃ vāksarvairnāmabhiḥ sahāpyeti manaḥ sarvairdhyātaiḥ sahāpyeti cakṣuḥ sarvai rūpaiḥ sahāpyeti śrotraṃ sarvaiḥ śabdaiḥ sahāpyeti manaḥ sarvairdhyātaiḥ sahāpyeti sa yadā pratibudhyate yathāgnerjvalato visphuliṅgā vipratiṣṭherannevamevaitasmādātmanaḥ prāṇā yathāyatanaṃ vipratiṣṭhante prāṇebhyo devā devebhyo lokāstadyathā kṣuraḥ kṣuradhyāne hitaḥ syādviśvambharo vā viśvambharakulāya evamevaiṣa prājña ātmedaṃ śarīramanupraviṣṭa ā lomabhya ā nakhebhyaḥ",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      },
+      {
+        "id": 20,
+        "number": 20,
+        "sanskrit": "तमेतमात्मानमेतमात्मनोऽन्ववस्यति यथा श्रेष्ठिनं स्वास्तद्यथा श्रेष्ठैः स्वैर्भुङ्क्ते यथा वा श्रेष्ठिनं स्वा भुञ्जन्त एवमेवैष प्राज्ञ आत्मैतैरात्मभिर्भुङ्क्ते । यथा श्रेष्ठी स्वैरेवं वैतमात्मानमेत आत्मनोऽन्ववस्यन्ति यथा श्रेष्ठिनं स्वाः स यावद्ध वा इन्द्र एतमात्मानं न विजज्ञौ तावदेनमसुरा अभिबभूवुः स यदा विजज्ञावथ हत्वासुरान्विजित्य सर्वेषां भूतानां श्रैष्ठ्यं स्वाराज्यमाधिपत्यं पर्येति तथो एवैवं विद्वान्सर्वेषां भूतानां श्रैष्ठ्यं स्वाराज्यमाधिपत्यं पर्येति य एवं वेद य एवं वेद",
+        "transliteration": "tametamātmānametamātmano'nvavasyati yathā śreṣṭhinaṃ svāstadyathā śreṣṭhaiḥ svairbhuṅkte yathā vā śreṣṭhinaṃ svā bhuñjanta evamevaiṣa prājña ātmaitairātmabhirbhuṅkte | yathā śreṣṭhī svairevaṃ vaitamātmānameta ātmano'nvavasyanti yathā śreṣṭhinaṃ svāḥ sa yāvaddha vā indra etamātmānaṃ na vijajñau tāvadenamasurā abhibabhūvuḥ sa yadā vijajñāvatha hatvāsurānvijitya sarveṣāṃ bhūtānāṃ śraiṣṭhyaṃ svārājyamādhipatyaṃ paryeti tatho evaivaṃ vidvānsarveṣāṃ bhūtānāṃ śraiṣṭhyaṃ svārājyamādhipatyaṃ paryeti ya evaṃ veda ya evaṃ veda",
+        "translation": "Translation of sacred mantra.",
+        "explanation": "Translation of sacred mantra.",
+        "keywords": [
+          "Kaushitaki Upanishad",
+          "Upanishad",
+          "Rigveda",
+          "Devayana",
+          "Brahmaloka"
+        ],
+        "lifeLesson": "Reflect upon the sacred truth of this verse and integrate its insight into everyday mindfulness and ethical action."
+      }
+    ]
+  }
+]
 };

@@ -61,15 +61,16 @@ test('skip link is the first Tab stop and moves focus to the main content', asyn
 
 /** Chapter reader controls, keyboard only. */
 
-test('reader: layers menu opens with Enter, Space toggles a layer, Escape closes and restores focus', async ({ page }) => {
+test('reader: settings dialog opens with Enter, Space toggles a layer, Escape closes and restores focus', async ({ page }) => {
   await page.goto('/scripture/bhagavadgita/chapter/2/');
   await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
-  const trigger = page.getByRole('button', { name: /भाषा व व्याख्या विकल्प/ });
+  // The language and layer choices live in the reader settings dialog.
+  const trigger = page.getByRole('button', { name: /Reader settings/ });
   await trigger.focus();
   await page.keyboard.press('Enter');
   await expect(trigger).toHaveAttribute('aria-expanded', 'true');
 
-  const hindi = page.getByRole('checkbox', { name: /हिन्दी अर्थ/ });
+  const hindi = page.getByRole('checkbox', { name: /Hindi translation/ });
   await hindi.focus();
   const before = await hindi.isChecked();
   await page.keyboard.press('Space');
@@ -84,6 +85,8 @@ test('reader: layers menu opens with Enter, Space toggles a layer, Escape closes
 test('reader: ArrowRight goes to the next chapter, ArrowLeft back', async ({ page }) => {
   await page.goto('/scripture/bhagavadgita/chapter/2/');
   await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+  // The first cards are server-rendered, so they show before the key handler hydrates.
+  await page.waitForLoadState('networkidle');
   await page.locator('body').click({ position: { x: 5, y: 5 } });
   await page.keyboard.press('ArrowRight');
   await expect(page).toHaveURL(/chapter\/3\/?$/);
@@ -95,6 +98,11 @@ test('reader: ArrowRight goes to the next chapter, ArrowLeft back', async ({ pag
 test('reader: toggle buttons expose their state to keyboard users', async ({ page }) => {
   await page.goto('/scripture/bhagavadgita/chapter/2/');
   await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+  // The reader tools sit behind Options; open it from the keyboard first.
+  const options = page.getByRole('button', { name: /Options/ });
+  await options.focus();
+  await page.keyboard.press('Enter');
+  await expect(options).toHaveAttribute('aria-expanded', 'true');
   const chanting = page.getByRole('button', { name: 'स्वाध्याय मोड' });
   await chanting.focus();
   await expect(chanting).toHaveAttribute('aria-pressed', 'false');
@@ -130,4 +138,71 @@ test('reader: every button and link that takes focus shows a focus indicator', a
     if (info && !info.visible) missing.push(`${info.tag} "${info.label}"`);
   }
   expect(missing).toEqual([]);
+});
+
+test('Story Deck traps keyboard focus, closes with Escape, and restores focus', async ({ page }) => {
+  await page.goto('/scripture/bhagavadgita/chapter/2/');
+  await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+
+  const trigger = page
+    .getByRole('group', { name: 'श्लोक विकल्प (Verse actions)' })
+    .first()
+    .getByRole('button', { name: 'और विकल्प · More actions' });
+  await trigger.click();
+  await page.getByRole('menuitem', { name: /60-सेकंड सार/ }).click();
+
+  const dialog = page.getByRole('dialog', { name: /60-सेकंड सार/ });
+  const close = dialog.getByRole('button', { name: 'कथा डेक बंद करें' });
+  await expect(dialog).toBeVisible();
+  await expect(close).toBeFocused();
+
+  await page.keyboard.press('Shift+Tab');
+  const lastControl = dialog.getByRole('button', { name: /आगे बढ़ें/ });
+  await expect(lastControl).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(close).toBeFocused();
+
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
+test('reader: verse study opens in place with a touch-sized control on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/scripture/bhagavadgita/chapter/2/');
+
+  // Vyakhya, Modern Context and Reflection sit behind one disclosure per verse, inside the chapter.
+  const card = page.locator('article.verse-card:not(.vt)').filter({ has: page.getByRole('button', { name: /Verse study/ }) }).first();
+  const study = card.getByRole('button', { name: /Verse study/ });
+  await expect(study).toBeVisible();
+  if ((await study.getAttribute('aria-expanded')) === 'true') await study.click();
+  await study.focus();
+  await page.keyboard.press('Enter');
+  await expect(study).toHaveAttribute('aria-expanded', 'true');
+  await expect(card.getByRole('region', { name: /Verse study/ })).toBeVisible();
+
+  const targetHeight = await study.evaluate((el) => el.getBoundingClientRect().height);
+  expect(targetHeight).toBeGreaterThanOrEqual(44);
+});
+
+test('reader: approved related teachings stay collapsed and show their editorial reasons on request', async ({ page }) => {
+  await page.goto('/scripture/bhagavadgita/chapter/2/');
+
+  // Verses past the first few upgrade to full cards as they near the viewport.
+  await page.locator('#verse-47').scrollIntoViewIfNeeded();
+  const card = page.locator('article.verse-card:not(.vt)#verse-47');
+  const study = card.getByRole('button', { name: /Verse study/ });
+  if ((await study.getAttribute('aria-expanded')) !== 'true') await study.click();
+  const disclosure = card.locator('details').filter({ hasText: /Related teachings/ });
+  const summary = disclosure.locator('summary');
+  await expect(summary).toBeVisible();
+  await expect(disclosure).not.toHaveAttribute('open', '');
+
+  await summary.click();
+  await expect(disclosure).toHaveAttribute('open', '');
+  await expect(disclosure).toContainText('The next verse names the balance that 2.47 asks for.');
+  await expect(disclosure).toContainText('Editorial links for study. A link does not claim that two passages teach exactly the same thing.');
+  expect(await disclosure.locator('li').count()).toBeLessThanOrEqual(3);
+
+  await expect(page.locator('#verse-1 details').filter({ hasText: /Related teachings/ })).toHaveCount(0);
 });

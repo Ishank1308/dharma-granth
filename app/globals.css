@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Critical Preloaded Local Fonts with font-display: swap */
+/* Inter and Noto Sans Devanagari come only from /fonts (the same files @fontsource ships),
+   so each weight downloads once. The 400s are preloaded in layout.tsx. */
 @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -16,6 +17,13 @@
     font-weight: 600;
     font-display: swap;
     src: url('/fonts/inter-600.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/inter-700.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Noto Sans Devanagari';
@@ -32,46 +40,112 @@
     src: url('/fonts/noto-devanagari-600.woff2') format('woff2');
 }
 @font-face {
-    font-family: 'Merriweather';
+    font-family: 'Noto Sans Devanagari';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/noto-devanagari-700.woff2') format('woff2');
+}
+/* Newsreader: English translations, IAST and editorial headings. */
+@font-face {
+    font-family: 'Newsreader';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('/fonts/merriweather-400.woff2') format('woff2');
+    src: url('/fonts/newsreader-400.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Newsreader';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/newsreader-400-italic.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Newsreader';
+    font-style: normal;
+    font-weight: 500 700;
+    font-display: swap;
+    src: url('/fonts/newsreader-600.woff2') format('woff2');
+}
+/* Tiro Devanagari Sanskrit: the shlokas themselves (any lang="sa" text). Not preloaded: it loads
+   only on pages that show Sanskrit. */
+@font-face {
+    font-family: 'Tiro Devanagari Sanskrit';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/tiro-devanagari-sanskrit-400.woff2') format('woff2');
+    unicode-range: U+0900-097F, U+1CD0-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FF;
 }
 
-/* Font family variables mapped to local + bundled fonts */
+/* Size-Adjusted Fallback Metrics for Zero CLS (CLS = 0.00) */
+@font-face {
+    font-family: 'Inter-Fallback';
+    src: local('Arial'), local('Helvetica');
+    ascent-override: 90%;
+    descent-override: 22.5%;
+    line-gap-override: 0%;
+    size-adjust: 107.4%;
+}
+
+@font-face {
+    font-family: 'Noto-Devanagari-Fallback';
+    src: local('Nirmala UI'), local('Mangal'), local('Kokila');
+    ascent-override: 95%;
+    descent-override: 25%;
+    line-gap-override: 0%;
+    size-adjust: 100%;
+}
+
+@font-face {
+    font-family: 'Newsreader-Fallback';
+    src: local('Georgia'), local('Times New Roman');
+    ascent-override: 98%;
+    descent-override: 27%;
+    line-gap-override: 0%;
+    size-adjust: 99.2%;
+}
+
+/* Font family variables mapped to local + bundled fonts + size-adjusted fallbacks */
 :root {
-    --font-inter: 'Inter', system-ui, sans-serif;
-    --font-merriweather: 'Merriweather', Georgia, serif;
-    --font-noto-devanagari: 'Noto Sans Devanagari', sans-serif;
+    --font-inter: 'Inter', 'Inter-Fallback', system-ui, sans-serif;
+    --font-sans: var(--font-inter);
+    --font-serif: 'Newsreader', 'Newsreader-Fallback', Georgia, serif;
+    --font-merriweather: var(--font-serif);
+    --font-noto-devanagari: 'Noto Sans Devanagari', 'Noto-Devanagari-Fallback', sans-serif;
+    --font-sanskrit: 'Tiro Devanagari Sanskrit', 'Noto Serif Devanagari', var(--font-noto-devanagari);
+
+    /* Motion tokens live in app/styles/tokens.css with the rest of the design system. */
 }
 
 /* Theme variables. The default (no data-theme attribute) is "day". */
 :root,
 :root[data-theme='day'] {
-    --dharma-bg: #fdfbf7;
-    --dharma-text: #2d2a26;
-    --dharma-text-secondary: #57524d;
-    --dharma-muted: #6b6560;
-    --dharma-border: #e8e3db;
+    /* Uṣā: Apple-style neutrals (light grey canvas, white cards, near-black ink) with one kumkum tint. */
+    --dharma-bg: #f5f5f7;
+    --dharma-text: #1d1d1f;
+    --dharma-text-secondary: #424245;
+    --dharma-muted: #6e6e73;
+    --dharma-border: #d2d2d7;
     --dharma-card: #ffffff;
-    --dharma-card-soft: #fff8ef;
+    --dharma-card-soft: #fbfbfd;
     --dharma-panel: #ffffff;
-    --dharma-panel-muted: #f8f3ec;
-    --dharma-reading-surface: #fdfaf4;
+    --dharma-panel-muted: #f5f5f7;
+    --dharma-reading-surface: #ffffff;
     --dharma-hero-start: #7c2d12;
     --dharma-hero-mid: #c2410c;
     --dharma-hero-end: #f97316;
-    --bg-glow-1: rgba(255, 193, 120, 0.14);
-    --bg-glow-2: rgba(14, 165, 148, 0.08);
+    --bg-glow-1: transparent;
+    --bg-glow-2: transparent;
     --dharma-gold: #c69234;
     --dharma-gold-border: #e6ce9d;
     --dharma-saffron: #c2410c;
     --dharma-maroon: #7c2d12;
     --dharma-maroon-border: #9a3412;
-    --dharma-manuscript-surface: #fdfaf3;
-    --dharma-manuscript-border: #ebdfcb;
-    --dharma-focus-ring: #f97316;
+    --dharma-manuscript-surface: #ffffff;
+    --dharma-manuscript-border: #e5e5ea;
+    --dharma-focus-ring: #c2410c;
     --dharma-success: #15803d;
     --dharma-success-bg: #f0fdf4;
     --dharma-success-border: #bbf7d0;
@@ -100,16 +174,16 @@
     --dharma-hero-start: #6f1d1b;
     --dharma-hero-mid: #b45309;
     --dharma-hero-end: #e11d48;
-    --bg-glow-1: rgba(244, 114, 32, 0.24);
-    --bg-glow-2: rgba(225, 29, 72, 0.14);
+    --bg-glow-1: transparent;
+    --bg-glow-2: transparent;
     --dharma-gold: #d97706;
     --dharma-gold-border: #f4c284;
-    --dharma-saffron: #ea580c;
+    --dharma-saffron: #c2410c;
     --dharma-maroon: #881337;
     --dharma-maroon-border: #be123c;
     --dharma-manuscript-surface: #fdf5ea;
     --dharma-manuscript-border: #eed5be;
-    --dharma-focus-ring: #ea580c;
+    --dharma-focus-ring: #c2410c;
     --dharma-success: #15803d;
     --dharma-success-bg: #f0fdf4;
     --dharma-success-border: #bbf7d0;
@@ -125,29 +199,31 @@
 }
 
 :root[data-theme='night'] {
-    --dharma-bg: #090908;
-    --dharma-text: #f2eee7;
-    --dharma-text-secondary: #d1c8be;
-    --dharma-muted: #b3aaa0;
-    --dharma-border: #312b25;
-    --dharma-card: #151412;
-    --dharma-card-soft: #201a16;
-    --dharma-panel: #171512;
-    --dharma-panel-muted: #241c17;
-    --dharma-reading-surface: #131210;
+    /* Rātri: true black canvas, grouped greys for cards, ivory ink and one amber tint. */
+    --dharma-bg: #000000;
+    --dharma-text: #f5f5f7;
+    --dharma-text-secondary: rgba(245, 245, 247, 0.8);
+    --dharma-muted: #a1a1a6;
+    --dharma-border: #38383a;
+    --dharma-card: #1c1c1e;
+    --dharma-card-soft: #2c2c2e;
+    --dharma-panel: #1c1c1e;
+    --dharma-panel-muted: #2c2c2e;
+    --dharma-reading-surface: #000000;
     --dharma-hero-start: #0f0e0d;
     --dharma-hero-mid: #3a2418;
     --dharma-hero-end: #7c2d12;
-    --bg-glow-1: rgba(249, 115, 22, 0.18);
-    --bg-glow-2: rgba(20, 184, 166, 0.09);
-    --dharma-gold: #eab308;
-    --dharma-gold-border: #524223;
-    --dharma-saffron: #f97316;
+    --bg-glow-1: transparent;
+    /* Rātri: obsidian with copper light (was a cool teal glow and bright yellow gold). */
+    --bg-glow-2: transparent;
+    --dharma-gold: #e5c158;
+    --dharma-gold-border: #5a4a24;
+    --dharma-saffron: #ff9f0a;
     --dharma-maroon: #991b1b;
     --dharma-maroon-border: #7f1d1d;
-    --dharma-manuscript-surface: #171613;
-    --dharma-manuscript-border: #383127;
-    --dharma-focus-ring: #f97316;
+    --dharma-manuscript-surface: #1c1c1e;
+    --dharma-manuscript-border: #38383a;
+    --dharma-focus-ring: #ff9f0a;
     --dharma-success: #22c55e;
     --dharma-success-bg: #052e16;
     --dharma-success-border: #14532d;
@@ -176,16 +252,16 @@
     --dharma-hero-start: #5a3723;
     --dharma-hero-mid: #9a5327;
     --dharma-hero-end: #c46d32;
-    --bg-glow-1: rgba(217, 119, 6, 0.16);
-    --bg-glow-2: rgba(180, 83, 9, 0.10);
+    --bg-glow-1: transparent;
+    --bg-glow-2: transparent;
     --dharma-gold: #b45309;
     --dharma-gold-border: #d4a373;
-    --dharma-saffron: #b45309;
+    --dharma-saffron: #9c4a0a;
     --dharma-maroon: #782a18;
     --dharma-maroon-border: #9c3b24;
     --dharma-manuscript-surface: #f9f1e0;
     --dharma-manuscript-border: #dac8ad;
-    --dharma-focus-ring: #b45309;
+    --dharma-focus-ring: #9c4a0a;
     --dharma-success: #15803d;
     --dharma-success-bg: #f0fdf4;
     --dharma-success-border: #bbf7d0;
@@ -221,7 +297,9 @@
     h4,
     h5,
     h6 {
-        @apply font-serif tracking-normal;
+        @apply font-sans font-semibold;
+        letter-spacing: -0.022em;
+        text-wrap: balance;
     }
     h1 {
         @apply text-4xl md:text-5xl lg:text-6xl;
@@ -361,16 +439,21 @@
         position: relative;
         isolation: isolate;
         overflow: hidden;
+        contain: paint;
     }
     .verse-graphic-card::before {
         content: "";
         position: absolute;
-        inset: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         z-index: -2;
+        contain: strict;
         background-image:
             radial-gradient(circle at var(--verse-bg-x) var(--verse-bg-y), var(--verse-graphic-tint), transparent 42%),
             linear-gradient(135deg, var(--verse-graphic-glow), transparent 52%),
-            var(--verse-bg-image);
+            var(--verse-bg-image, none);
         background-position:
             center,
             center,
@@ -386,12 +469,17 @@
             opacity 0.35s ease,
             transform 0.5s ease;
         pointer-events: none;
+        will-change: transform, opacity;
     }
     .verse-graphic-card::after {
         content: "";
         position: absolute;
-        inset: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         z-index: -1;
+        contain: strict;
         background:
             linear-gradient(180deg, color-mix(in srgb, var(--dharma-card) 94%, transparent), color-mix(in srgb, var(--dharma-card) 88%, transparent)),
             radial-gradient(circle at 8% 0%, var(--verse-graphic-tint), transparent 36%),
@@ -732,13 +820,11 @@
         background-color: rgba(249, 115, 22, 0.35);
     }
 
-    /* Practice dashboard tool-picker chips: selected state is a light saffron
-     * pill in day/sunset; in night theme use the translucent ember treatment
-     * shared with .chip so it sits on the dark canvas instead of glowing. */
+    /* Practice dashboard tool-picker chips: the selected chip is a filled tint pill,
+     * amber with black text on the dark canvas. */
     :root[data-theme='night'] .practice-tool-chip-on {
-        background-color: rgba(249, 115, 22, 0.16);
-        border-color: rgba(249, 115, 22, 0.32);
-        color: #fed7aa;
+        background-color: var(--dharma-saffron);
+        color: #000;
     }
 
     :root[data-theme='sunset'] .section-sanskrit,
@@ -1079,35 +1165,27 @@
 /* ── Static verse (<VerseText>) ─────────────────────────────────────
    The exported, pre-hydration form of a verse card. Short class names on
    purpose: this markup repeats for ~180k verses across the export. Mirrors
-   VerseCard's box (p-5 md:p-7, rounded-[28px]), header and leaf. */
+   VerseCard's flat page layout, header and verse block. */
 @layer components {
     .vt {
-        @apply relative scroll-mt-24 rounded-[28px] border border-dharma-border bg-dharma-card p-5 md:p-7;
+        @apply relative scroll-mt-24 px-1 py-2 sm:px-2;
     }
     .vt-head {
-        @apply mb-5 flex flex-wrap items-center gap-x-3 gap-y-3;
-    }
-    .vt-medal {
-        @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-saffron-500/15 font-devanagari text-sm font-bold text-saffron-800;
-    }
-    .vt-ch {
-        @apply text-[11px] font-semibold text-saffron-700;
+        @apply mb-2 flex min-h-11 items-center gap-3 px-1;
     }
     .vt-title {
-        @apply font-serif text-base font-bold text-dharma-text;
+        @apply font-serif text-sm font-semibold tabular-nums text-saffron-800;
     }
     .vt-title a {
+        @apply inline-flex min-h-11 min-w-11 items-center;
         color: inherit;
         text-underline-offset: 2px;
     }
     .vt-title a:hover {
         text-decoration: underline;
     }
-    .vt-toolbar {
-        @apply order-last h-11 w-full sm:hidden;
-    }
     .vt-leaf {
-        @apply relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8;
+        @apply relative px-2 py-4 text-center md:px-8 md:py-6;
     }
     .vt-sa {
         @apply font-devanagari text-base leading-loose text-dharma-text md:text-lg;
@@ -1116,22 +1194,32 @@
         @apply block px-2.5 py-1;
     }
     .vt-sa > .vt-num {
-        @apply mt-2 font-bold text-saffron-800;
+        @apply mt-2 font-semibold text-saffron-700;
     }
+    /* IAST is folded by default (the card shows it behind a toggle); kept in the
+       HTML for crawlers but hidden so the hydration swap does not shift layout. */
     .vt-tr {
-        @apply mx-auto mt-4 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-4 text-sm italic leading-relaxed text-dharma-muted md:text-[15px];
+        @apply hidden mx-auto mt-4 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-4 text-sm italic leading-relaxed text-dharma-muted md:text-[15px];
     }
     .vt-block {
-        @apply mt-5;
+        @apply mt-4 px-1;
     }
     .vt-label {
-        @apply mb-1 text-[11px] font-bold uppercase tracking-wide text-saffron-700;
+        @apply mb-1 text-xs text-dharma-muted;
+    }
+    /* A meaning not written yet: said quietly, in the slot the meaning will fill. */
+    .vt-pending {
+        @apply italic;
     }
     .vt-hi {
-        @apply font-devanagari text-base leading-loose text-dharma-text md:text-[17px];
+        @apply font-devanagari text-base leading-[1.85] text-dharma-text md:text-lg;
     }
     .vt-en {
-        @apply text-sm leading-relaxed text-dharma-muted md:text-base;
+        @apply font-serif text-base leading-[1.85] text-dharma-text md:text-lg;
+    }
+    /* A passage translated as a whole (a hymn) keeps its line breaks. */
+    .vt-lines {
+        @apply whitespace-pre-line;
     }
 }
 [data-reader-size='large'] .vt-sa {
@@ -1140,7 +1228,7 @@
 [data-reader-size='xl'] .vt-sa {
     @apply text-xl font-medium leading-loose md:text-2xl;
 }
-:root[data-theme='night'] .vt-ch,
+:root[data-theme='night'] .vt-title,
 :root[data-theme='night'] .vt-sa > .vt-num {
     color: theme('colors.amber.300');
 }
@@ -1392,42 +1480,42 @@
     opacity: 1;
 }
 
-/* Sanskrit set on a warm manuscript leaf with a double gilt rule. */
+/* Chapter reader: verses sit on the page like a book (Apple Books / Kindle),
+   divided by a hairline rather than boxed in cards. Overrides .verse-card. */
+.verse-card.book-verse,
+.verse-card.vt {
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--dharma-border) 55%, transparent);
+}
+.verse-card.book-verse:hover,
+.verse-card.vt:hover {
+    box-shadow: none;
+}
+/* Reciting or highlighted: the ring needs its corners back. */
+.verse-card.book-verse.book-verse-ringed {
+    border-radius: 1rem;
+}
+
+/* A quiet, warm surface keeps the canonical Sanskrit in focus. */
 .verse-leaf {
     background:
-        radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.75), transparent 60%),
-        linear-gradient(180deg, rgba(255, 251, 235, 0.92), rgba(254, 243, 199, 0.55));
-    border: 1px solid rgba(217, 119, 6, 0.28);
-    box-shadow:
-        inset 0 0 0 4px rgba(255, 251, 235, 0.6),
-        inset 0 0 0 5px rgba(217, 119, 6, 0.18),
-        inset 0 -18px 36px -24px rgba(180, 83, 9, 0.25),
-        0 10px 30px -18px rgba(124, 45, 18, 0.35);
-}
-.verse-leaf-ornament {
-    position: absolute;
-    font-size: 13px;
-    line-height: 1;
-    color: rgba(217, 119, 6, 0.55);
-    pointer-events: none;
+        linear-gradient(180deg, rgba(255, 251, 235, 0.72), rgba(254, 243, 199, 0.3));
+    border: 1px solid rgba(180, 132, 68, 0.18);
+    box-shadow: 0 1px 2px rgba(72, 48, 25, 0.035);
 }
 :root[data-theme='sunset'] .verse-leaf {
     background:
-        radial-gradient(120% 90% at 50% 0%, rgba(255, 237, 213, 0.7), transparent 60%),
-        linear-gradient(180deg, rgba(255, 237, 213, 0.9), rgba(253, 186, 116, 0.25));
+        linear-gradient(180deg, rgba(255, 237, 213, 0.64), rgba(253, 186, 116, 0.16));
 }
 :root[data-theme='night'] .verse-leaf {
-    background:
-        radial-gradient(120% 90% at 50% 0%, rgba(251, 191, 36, 0.08), transparent 60%),
-        linear-gradient(180deg, rgba(41, 30, 16, 0.92), rgba(24, 19, 12, 0.85));
-    border-color: rgba(251, 191, 36, 0.22);
-    box-shadow:
-        inset 0 0 0 4px rgba(24, 19, 12, 0.6),
-        inset 0 0 0 5px rgba(251, 191, 36, 0.12),
-        0 10px 30px -18px rgba(0, 0, 0, 0.6);
-}
-:root[data-theme='night'] .verse-leaf-ornament {
-    color: rgba(251, 191, 36, 0.4);
+    background: linear-gradient(180deg, rgba(41, 30, 16, 0.52), rgba(24, 19, 12, 0.36));
+    border-color: rgba(251, 191, 36, 0.16);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 :root[data-theme='night'] .verse-card-spotlight {
     background: radial-gradient(
@@ -1512,6 +1600,46 @@ html[data-reader] aside[aria-label='Interactive Companion'],
 html[data-reader] [aria-label^='सस्वर पाठ'] {
   display: none !important;
 }
+/* The same from the first paint: data-reader is only set after hydration, and hiding the
+   header then moved the whole verse page up (a layout shift). Its own rule, so a browser
+   without :has() still applies the one above. */
+html:has(.reader-root) nav[aria-label='Primary navigation'],
+html:has(.reader-root) nav[aria-label='Mobile quick navigation'],
+html:has(.reader-root) aside[aria-label='Interactive Companion'],
+html:has(.reader-root) [aria-label^='सस्वर पाठ'] {
+  display: none !important;
+}
+
+/* ── Embed mode (app/embed sets <html data-embed>) ─────────────────
+   Clean iframe presentation: hides header, footer, companion dock, navigation and overlays. */
+html[data-embed] nav,
+html[data-embed] footer,
+html[data-embed] aside,
+html[data-embed] .skip-link,
+html[data-embed] #main-content,
+html:has(.embed-card-root) nav,
+html:has(.embed-card-root) footer,
+html:has(.embed-card-root) aside,
+html:has(.embed-card-root) .skip-link,
+html:has(.embed-card-root) #main-content {
+  padding-bottom: 0 !important;
+}
+html[data-embed] nav[aria-label='Primary navigation'],
+html[data-embed] nav[aria-label='Mobile quick navigation'],
+html[data-embed] aside[aria-label='Interactive Companion'],
+html[data-embed] [aria-label^='सस्वर पाठ'],
+html:has(.embed-card-root) nav[aria-label='Primary navigation'],
+html:has(.embed-card-root) nav[aria-label='Mobile quick navigation'],
+html:has(.embed-card-root) aside[aria-label='Interactive Companion'],
+html:has(.embed-card-root) [aria-label^='सस्वर पाठ'] {
+  display: none !important;
+}
+
+/* Full chapter reading keeps the site navigation and in-page controls visible,
+   while removing the global floating docks that sit on top of verse text. */
+body:has(main[data-chapter-reading]) [data-hide-during-chapter-reading] {
+  display: none !important;
+}
 
 /* Reading Lite: hide decoration only; every text and study feature stays. */
 :root[data-reading-lite='true'] [data-decorative],
@@ -1554,4 +1682,1356 @@ html[data-reader] [aria-label^='सस्वर पाठ'] {
   background-color: #082f49 !important;
   color: #e0f2fe !important;
   border-color: #0369a1 !important;
+}
+
+/* Printing a chapter: plain black on white, no site chrome, each verse kept whole on a page. */
+@media print {
+  @page { margin: 16mm 14mm; }
+  html, body { background: #fff !important; color: #000 !important; }
+  header, footer, nav, aside, button, audio, video, form, .splash,
+  [role='dialog'], [aria-label='Breadcrumb'], .no-print, .fixed, .sticky {
+    display: none !important;
+  }
+  main { min-height: 0 !important; background: #fff !important; }
+  main * { box-shadow: none !important; text-shadow: none !important; animation: none !important; transition: none !important; }
+  main [class*='bg-gradient'], main [class*='backdrop-blur'] { background: #fff !important; color: #000 !important; }
+  .verse-card, .verse-card * { color: #000 !important; }
+  .verse-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 0 !important;
+    border-bottom: 0.5pt solid #999 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    margin: 0 0 6mm !important;
+    padding: 0 0 4mm !important;
+  }
+  .verse-card-spotlight { display: none !important; }
+  h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+  a { color: #000 !important; text-decoration: none !important; }
+}
+
+/* ==========================================================================
+   Phase 7: Editorial Bento Grid, Manuscript Surfaces & Tactile Typography
+   ========================================================================== */
+
+/* Zero-network inline SVG paper-grain overlay for physical cotton rag texture */
+.manuscript-surface {
+  position: relative;
+  background-image: radial-gradient(rgba(120, 80, 40, 0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+:root[data-theme='dark'] .manuscript-surface,
+:root[data-theme='night'] .manuscript-surface {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+.editorial-bento-card {
+  position: relative;
+  border-radius: 1.5rem;
+  border-width: 1px;
+  border-color: rgba(214, 211, 209, 0.7);
+  background-color: var(--dharma-card);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+:root[data-theme='dark'] .editorial-bento-card,
+:root[data-theme='night'] .editorial-bento-card {
+  border-color: rgba(41, 37, 36, 0.8);
+}
+
+.editorial-bento-card:hover {
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* Hairline warm borders */
+.hairline-warm-border {
+  border: 1px solid rgba(214, 211, 209, 0.7);
+}
+
+:root[data-theme='dark'] .hairline-warm-border,
+:root[data-theme='night'] .hairline-warm-border {
+  border: 1px solid rgba(41, 37, 36, 0.8);
+}
+
+/* Editorial typography display headings */
+.editorial-display-heading {
+  font-family: var(--font-merriweather, serif);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Tabular numeral metadata pills */
+.editorial-meta-pill {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Atmosphere: Bhojpatra grain and Devanagari leading
+   ========================================================================== */
+
+/* Paper grain over the whole page: one fixed layer, an inline SVG noise tile (no request, no script), never
+   interactive. Strength follows the theme; Paper is the most textured, Night uses a lighter-toned grain. */
+:root,
+:root[data-theme='day'] {
+    --grain-opacity: 0.035;
+    --grain-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.22 0 0 0 0 0.1 0 0 0 1.4 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+:root[data-theme='sunset'] {
+    --grain-opacity: 0.045;
+}
+:root[data-theme='paper'] {
+    --grain-opacity: 0.07;
+}
+:root[data-theme='night'] {
+    --grain-opacity: 0.05;
+    --grain-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.85 0 0 0 0 0.72 0 0 0 1.4 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: var(--grain-image);
+    background-size: 180px 180px;
+    opacity: var(--grain-opacity);
+}
+@media (prefers-contrast: more), print {
+    body::after {
+        display: none;
+    }
+}
+
+/* Devanagari matras sit above and below the Latin line box, so the tight leadings (1, 1.25, 1.375) clip them.
+   Hindi and Sanskrit text never goes below 1.4 there. <html lang="hi"> matches every element, so only explicit
+   lang attributes below the root and the Devanagari font class count. */
+:is(.leading-none, .leading-tight, .leading-snug):is(.font-devanagari, body [lang='hi'], body [lang='sa']),
+:is(.leading-none, .leading-tight, .leading-snug) :is(.font-devanagari, [lang='hi'], [lang='sa']) {
+    line-height: 1.4;
+}
+/* Tailwind's text-5xl and larger also set line-height: 1 (responsive variants included). */
+:is([class*='text-5xl'], [class*='text-6xl'], [class*='text-7xl'], [class*='text-8xl'], [class*='text-9xl']):is(.font-devanagari, body [lang='hi'], body [lang='sa']) {
+    line-height: 1.3;
+}
+/* Gradient text paints only inside the element's box, so a reph or anusvara above it would vanish. */
+.bg-clip-text:is(.font-devanagari, body [lang='hi'], body [lang='sa']) {
+    padding-block: 0.12em;
+}
+/* Bhojpatra (paper) contrast. Its parchment card (#fdf8ee) and saffron chips (#fdebd8) are a shade darker than
+   Usha's, which tipped saffron-600 / -700 text just under 4.5:1 (4.42 and 4.45; axe flagged ~100 elements).
+   Deeper saffron on this theme only: 5.47:1 on the card and 5.68:1 on the chips. */
+:root[data-theme='paper'] .text-saffron-600 {
+    color: #b8390a;
+}
+:root[data-theme='paper'] .text-saffron-700,
+:root[data-theme='sunset'] .text-saffron-700 {
+    color: #a8350a;
+}
+/* Sandhyā's saffron chips (#fee7d0) had the same margin: saffron-700 was 4.32:1, now 5.52:1. Amber-700 on the
+   parchment page (#f5ede0) was 4.32:1, now 6.10:1 with amber-800. */
+:root[data-theme='paper'] .text-amber-700 {
+    color: #92400e;
+}
+
+/* Verse reveal sequence: as a verse card scrolls into view the mula shloka settles first, then the
+   transliteration, then the meanings (data-reveal 1, 2, 3 inside .reveal-seq). Pure CSS on the card's own scroll
+   timeline: the text is fully visible in the server HTML and wherever scroll timelines are unsupported, cards
+   already on screen at load are past their range (so the first screen is never hidden), and reduced motion
+   turns it off. Fixed pixel ranges keep the pace the same for short and tall cards. */
+@keyframes reveal-rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .reveal-seq {
+            view-timeline-name: --verse-card;
+        }
+        .reveal-seq [data-reveal] {
+            animation: reveal-rise var(--ease-out-quint) both;
+            animation-timeline: --verse-card;
+            animation-range: entry 0px entry 160px;
+        }
+        .reveal-seq [data-reveal='2'] {
+            animation-range: entry 60px entry 220px;
+        }
+        .reveal-seq [data-reveal='3'] {
+            animation-range: entry 120px entry 280px;
+        }
+        /* FadeUpOnView (motion/primitives.tsx): one section rising on its own timeline. */
+        .fade-up-on-view {
+            animation: reveal-rise var(--ease-out-quint) both;
+            animation-timeline: view();
+            animation-range: entry 0px entry 200px;
+        }
+    }
+}
+
+/* Japa mala: a soft copper bloom when the Sumeru completes a mala (JapaMala renders it only without reduced
+   motion). */
+@keyframes japa-bloom {
+    from {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(0.4);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2.4);
+    }
+}
+.japa-bloom {
+    animation: japa-bloom 1.4s var(--ease-out-quint) forwards;
+}
+
+/* Diya flame (DiyaPullCord): a slow, uneven flicker; reduced motion gets a still flame (no class). */
+@keyframes diya-flicker {
+    0%, 100% {
+        transform: scale(1, 1);
+    }
+    30% {
+        transform: scale(0.94, 1.06) skewX(-2deg);
+    }
+    55% {
+        transform: scale(1.04, 0.97) skewX(1.5deg);
+    }
+    80% {
+        transform: scale(0.97, 1.03);
+    }
+}
+.diya-flame {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: diya-flicker 2.6s ease-in-out infinite;
+}
+
+/* Search palette results settle in as they appear (delay set per item, capped). */
+@keyframes search-result-in {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .search-result-in {
+        animation: search-result-in 180ms var(--ease-out-quint) both;
+    }
+}
+
+/* A line clamp clips at the padding box; a little bottom padding keeps the last line's lower matras visible. */
+:is([class*='line-clamp-']):is(.font-devanagari, body [lang='hi'], body [lang='sa']),
+:is([class*='line-clamp-']) :is(.font-devanagari, [lang='hi'], [lang='sa']) {
+    padding-bottom: 0.15em;
+}
+
+/* Sacred reading flow (lib/sacred-reading-order.ts): Vyakhya → Modern Context →
+   Reflection read as one connected flow. A single calm rail joins the steps;
+   dharma tokens only, so Day, Sunset, Paper and Dark all stay quiet. */
+.sacred-flow-wrap {
+    display: grid;
+    gap: 1.5rem;
+    min-width: 0;
+}
+.sacred-flow {
+    display: grid;
+    gap: 1.5rem;
+    min-width: 0;
+    border-left: 2px solid color-mix(in srgb, var(--dharma-gold, #b45309) 40%, transparent);
+    padding-left: 1rem;
+}
+.sacred-section {
+    min-width: 0;
+    scroll-margin-top: 6rem;
+}
+@media (min-width: 640px) {
+    .sacred-flow-wrap {
+        gap: 1.75rem;
+    }
+    .sacred-flow {
+        gap: 1.75rem;
+        padding-left: 1.25rem;
+    }
+}
+/* Small phones (320–400px): the rail narrows and the manuscript leaf sheds
+   padding so the shloka and the flow never overflow or squeeze. */
+@media (max-width: 400px) {
+    .sacred-flow {
+        padding-left: 0.75rem;
+    }
+    .verse-leaf {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+@media print {
+    .sacred-flow {
+        border-left-color: #999;
+    }
+}
+
+/* ── Liquid design layer ─────────────────────────────────────────────
+   Three parts, all CSS, all server-rendered:
+   1. Scripture palettes. Each page's <main data-scripture="<category>">
+      (and data-scripture-id for books with their own colours) sets
+      --sc-1..3 on :root via :has(). They are registered with @property, so
+      moving between scriptures flows the colours instead of snapping.
+   2. .liquid-backdrop (app/layout.tsx): three soft ellipses that drift and
+      turn behind every page. Transform-only animation, no filter, so it stays
+      on the compositor. Quieter on chapter pages; off for reduced motion and
+      print.
+   3. Surfaces. Real Liquid Glass (.liquid-glass, backdrop blur) is kept to
+      three places so phones hold 60fps: the reader dock, the focused shloka
+      and the ⌘K palette. Everything else (header, bottom bar, pills) is
+      .liquid-surface / .liquid-pill: translucent with a specular rim, no blur.
+      .liquid-reveal is the blur-to-clear entrance for panels. */
+@property --sc-1 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #f97316;
+}
+@property --sc-2 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #f59e0b;
+}
+@property --sc-3 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #14b8a6;
+}
+:root {
+    --sc-1: #f97316;
+    --sc-2: #f59e0b;
+    --sc-3: #14b8a6;
+    --liquid-strength: 30%;
+    transition:
+        --sc-1 1.4s var(--ease-gentle),
+        --sc-2 1.4s var(--ease-gentle),
+        --sc-3 1.4s var(--ease-gentle);
+}
+:root[data-theme='sunset'] { --liquid-strength: 34%; }
+:root[data-theme='paper'] { --liquid-strength: 16%; }
+:root[data-theme='night'],
+:root[data-theme='dark'] {
+    --liquid-strength: 26%;
+    /* Cosmic Obsidian ambient: sacred saffron, Vedic gold, deep indigo. */
+    --sc-1: #ff9933;
+    --sc-2: #d4af37;
+    --sc-3: #1e1b4b;
+    --lb-1: 10%;
+    --lb-2: 8%;
+    --lb-3: 15%;
+}
+/* Sacred accent: kumkum on parchment, muted gold on obsidian. */
+:root { --dharma-accent: #c2410c; --dharma-accent-2: #b45309; }
+:root[data-theme='sunset'],
+:root[data-theme='paper'] { --dharma-accent: #b45309; --dharma-accent-2: #c2410c; }
+:root[data-theme='night'],
+:root[data-theme='dark'] { --dharma-accent: #ff9f0a; --dharma-accent-2: #f59e0b; }
+
+/* Agni's altar: fire, gold, ember. */
+:root:has([data-scripture='veda']) { --sc-1: #f97316; --sc-2: #eab308; --sc-3: #b91c1c; }
+/* The forest ashram: teal, new leaf, sunlight. */
+:root:has([data-scripture='upanishad']) { --sc-1: #14b8a6; --sc-2: #84cc16; --sc-3: #eab308; }
+/* Twilight of non-duality: indigo, sky, a little gold. */
+:root:has([data-scripture='vedanta']) { --sc-1: #6366f1; --sc-2: #38bdf8; --sc-3: #fbbf24; }
+/* Palm-leaf and ink: ochre, stone, teal. */
+:root:has([data-scripture='sutra']) { --sc-1: #d97706; --sc-2: #a8a29e; --sc-3: #0d9488; }
+/* The Devi: kumkum, rose, magenta. */
+:root:has([data-scripture='shakta']) { --sc-1: #e11d48; --sc-2: #f43f5e; --sc-3: #c026d3; }
+/* Vishnu's blue, the lotus, gold. */
+:root:has([data-scripture='purana']) { --sc-1: #3b82f6; --sc-2: #ec4899; --sc-3: #f59e0b; }
+/* Epic dawn: vermilion, saffron, royal purple. */
+:root:has([data-scripture='itihasa']) { --sc-1: #ea580c; --sc-2: #dc2626; --sc-3: #7c3aed; }
+/* Dharma's law: amethyst, stone, amber. */
+:root:has([data-scripture='smriti']) { --sc-1: #a855f7; --sc-2: #a8a29e; --sc-3: #d97706; }
+/* Shakti and fire: violet, magenta, ember. */
+:root:has([data-scripture='tantra']) { --sc-1: #7c3aed; --sc-2: #db2777; --sc-3: #f97316; }
+/* Devotion: marigold, gold, rose. */
+:root:has([data-scripture='stotra']) { --sc-1: #f59e0b; --sc-2: #f97316; --sc-3: #f43f5e; }
+:root:has([data-scripture='other']) { --sc-1: #10b981; --sc-2: #6366f1; --sc-3: #f59e0b; }
+/* Krishna: the blue of the sky, peacock teal, pitambara gold. */
+:root:has([data-scripture-id='bhagavadgita']) { --sc-1: #2563eb; --sc-2: #0d9488; --sc-3: #f59e0b; }
+/* Rama: saffron, the blue of Shyama, lotus. */
+:root:has([data-scripture-id='ramcharitmanas']),
+:root:has([data-scripture-id='ramayana']) { --sc-1: #f97316; --sc-2: #1d4ed8; --sc-3: #ec4899; }
+
+/* Page shells let the backdrop through; the body keeps the solid theme colour. */
+main.bg-dharma-bg,
+:root[data-theme] main.bg-dharma-bg {
+    background-color: transparent;
+}
+
+.liquid-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    contain: strict;
+    transition: opacity 0.8s var(--ease-gentle);
+}
+.liquid-backdrop > span {
+    position: absolute;
+    width: 70vmax;
+    height: 70vmax;
+    border-radius: 50%;
+    will-change: transform;
+    animation: liquid-drift-a 34s ease-in-out infinite alternate;
+}
+.liquid-backdrop > span:nth-child(1) {
+    top: -28vmax;
+    left: -22vmax;
+    background: radial-gradient(ellipse 50% 36% at 50% 50%, color-mix(in srgb, var(--sc-1) var(--lb-1, var(--liquid-strength)), transparent), transparent 100%);
+}
+.liquid-backdrop > span:nth-child(2) {
+    right: -26vmax;
+    bottom: -32vmax;
+    background: radial-gradient(ellipse 48% 34% at 50% 50%, color-mix(in srgb, var(--sc-2) var(--lb-2, var(--liquid-strength)), transparent), transparent 100%);
+    animation-name: liquid-drift-b;
+    animation-duration: 41s;
+}
+.liquid-backdrop > span:nth-child(3) {
+    top: 24%;
+    left: 30%;
+    width: 52vmax;
+    height: 52vmax;
+    background: radial-gradient(ellipse 46% 30% at 50% 50%, color-mix(in srgb, var(--sc-3) var(--lb-3, calc(var(--liquid-strength) * 0.7)), transparent), transparent 100%);
+    animation-name: liquid-drift-c;
+    animation-duration: 47s;
+}
+@keyframes liquid-drift-a {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+    50% { transform: translate3d(14vmax, 8vmax, 0) rotate(40deg) scale(1.12); }
+    100% { transform: translate3d(6vmax, 18vmax, 0) rotate(95deg) scale(0.94); }
+}
+@keyframes liquid-drift-b {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1.05); }
+    50% { transform: translate3d(-16vmax, -10vmax, 0) rotate(-55deg) scale(0.92); }
+    100% { transform: translate3d(-6vmax, -20vmax, 0) rotate(-110deg) scale(1.1); }
+}
+@keyframes liquid-drift-c {
+    0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(0.9); }
+    50% { transform: translate3d(-12vmax, 10vmax, 0) rotate(70deg) scale(1.15); }
+    100% { transform: translate3d(10vmax, -6vmax, 0) rotate(140deg) scale(1); }
+}
+/* Reading: the colour stays, the motion recedes. */
+:root:has([data-chapter-reading]) .liquid-backdrop {
+    opacity: 0.75;
+}
+
+/* Apple Liquid Glass (dock, focused shloka, ⌘K palette only). Specular rim formula:
+   white 14% → 4% body, 2xl blur at 190% saturation, a 14% white rim, a deep drop shadow and
+   two inner highlights. Does not set `position`; the element must already be positioned. */
+.liquid-glass {
+    isolation: isolate;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+    -webkit-backdrop-filter: blur(40px) saturate(190%);
+    backdrop-filter: blur(40px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1px 0 0 rgba(255, 255, 255, 0.08);
+}
+/* On parchment the same material needs a little body and a softer shadow to read as glass. */
+:root:not([data-theme='night']):not([data-theme='dark']) .liquid-glass {
+    background-color: rgba(251, 249, 245, 0.55);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.25));
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow:
+        0 20px 50px rgba(28, 28, 30, 0.14),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 0 0 rgba(28, 28, 30, 0.04);
+}
+
+/* Bars without blur: near-opaque, with the same specular top rim. */
+.liquid-surface {
+    background-color: color-mix(in srgb, var(--dharma-bg) 92%, transparent);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06), 0 1px 0 0 color-mix(in srgb, var(--dharma-border) 60%, transparent);
+}
+:root:not([data-theme='night']):not([data-theme='dark']) .liquid-surface {
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.8), 0 1px 0 0 color-mix(in srgb, var(--dharma-border) 70%, transparent);
+}
+
+/* A glass pill whose light pours across on hover. */
+.liquid-pill {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid color-mix(in srgb, var(--dharma-border) 70%, transparent);
+    background-image: linear-gradient(to bottom, color-mix(in srgb, var(--dharma-card) 92%, transparent), color-mix(in srgb, var(--dharma-card) 70%, transparent));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 6px 18px -12px rgba(45, 42, 38, 0.3);
+    transition:
+        transform 0.5s var(--ease-spring),
+        box-shadow 0.4s var(--ease-gentle),
+        border-color 0.4s var(--ease-gentle),
+        color 0.3s ease;
+}
+.liquid-pill::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+        100deg,
+        transparent 20%,
+        color-mix(in srgb, var(--sc-1) 22%, transparent) 45%,
+        color-mix(in srgb, var(--sc-2) 18%, transparent) 55%,
+        transparent 80%
+    );
+    transform: translateX(-110%);
+    transition: transform 0.9s var(--ease-gentle);
+}
+.liquid-pill:hover {
+    border-color: color-mix(in srgb, var(--sc-1) 35%, var(--dharma-border));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 10px 24px -14px color-mix(in srgb, var(--sc-1) 55%, transparent);
+}
+.liquid-pill:hover::after {
+    transform: translateX(110%);
+}
+:root[data-theme='night'] .liquid-pill,
+:root[data-theme='dark'] .liquid-pill {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 6px 18px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* Verse study reads as continuous prose: the section headings already name each part, so the
+   type badges go, and nested boxes lose their frames. Draft and AI notices stay (VerseCard). */
+.verse-study-panel [data-content-label] {
+    display: none;
+}
+.verse-study-panel div.rounded-2xl.border,
+.verse-study-panel div.rounded-xl.border {
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* A flowing hairline in the scripture's colours. */
+.liquid-rule {
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, var(--sc-1), var(--sc-2), var(--sc-3), transparent);
+    background-size: 200% 100%;
+    opacity: 0.75;
+    animation: liquid-flow 9s ease-in-out infinite alternate;
+}
+@keyframes liquid-flow {
+    from { background-position: 0% 50%; }
+    to { background-position: 100% 50%; }
+}
+
+/* Panels and disclosures arrive like ink settling in water. */
+.liquid-reveal,
+details[open] > .liquid-reveal-details {
+    animation: liquid-in 0.55s var(--ease-gentle) both;
+}
+@keyframes liquid-in {
+    from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.99);
+        filter: blur(6px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root { transition: none; }
+    .liquid-backdrop > span,
+    .liquid-rule,
+    .liquid-reveal,
+    details[open] > .liquid-reveal-details {
+        animation: none;
+    }
+    .liquid-pill,
+    .liquid-pill::after {
+        transition: none;
+    }
+}
+@media print {
+    .liquid-backdrop {
+        display: none;
+    }
+}
+
+/* Shlokas: Tiro Devanagari Sanskrit wherever text is marked lang="sa". Verse blocks get 1.95 line
+   height so stacked matras and repha never clip. */
+[lang='sa'] {
+    font-family: var(--font-sanskrit);
+}
+.vt-sa,
+.shloka-text {
+    font-family: var(--font-sanskrit);
+    line-height: 1.95;
+}
+
+/* SF Symbols weight for every lucide icon. */
+svg.lucide {
+    stroke-width: 1.5;
+}
+
+/* ── Liquid components (app/components/liquid) ─────────────────────── */
+
+/* Yantra ink for the hero's SVG. */
+:root {
+    --yantra-ink: #7c2d12;
+    --yantra-accent: #c84b31;
+    --yantra-soft: #c9a36a;
+}
+:root[data-theme='night'],
+:root[data-theme='dark'] {
+    --yantra-ink: #f2efe9;
+    --yantra-accent: #e5c158;
+    --yantra-soft: #8a7440;
+}
+:root[data-theme='sunset'] {
+    --yantra-ink: #6f1d1b;
+    --yantra-accent: #b45309;
+    --yantra-soft: #d6a06b;
+}
+:root[data-theme='paper'] {
+    --yantra-ink: #5c4a32;
+    --yantra-accent: #9a6b2f;
+    --yantra-soft: #c4ab84;
+}
+
+/* Reader dock: on phones a full-width bar in the bottom navigation's place, so the chapter
+   has one bar, not two stacked over the verse; 24px off the floor on desktop. */
+.liquid-dock {
+    bottom: 0;
+}
+@media (max-width: 1023px) {
+    body:has(.liquid-dock) nav[aria-label='Mobile quick navigation'] {
+        display: none !important;
+    }
+}
+@media (min-width: 1024px) {
+    .liquid-dock {
+        bottom: 1.5rem;
+    }
+}
+
+/* Touch screens: every control at least 44px. A button centres its content, so a minimum size
+   keeps its look; links that act as buttons opt in with .tap-target, and the min-heights sized
+   for a mouse (28–40px) grow. Inline text links and switches are left as they are. */
+@media (pointer: coarse) {
+    button:not([role='switch']):not(.tap-exempt),
+    summary,
+    select,
+    input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='hidden']),
+    .tap-target,
+    .min-h-\[28px\],
+    .min-h-\[32px\],
+    .min-h-\[36px\],
+    .min-h-\[38px\],
+    .min-h-\[40px\] {
+        min-height: 44px;
+    }
+    button:not([role='switch']):not(.tap-exempt),
+    .tap-target {
+        min-width: 44px;
+    }
+}
+
+/* Phones: no text under 12px, and text meant to be read (paragraphs, list items) at 14px.
+   SVG text is left alone: it scales with its drawing. */
+@media (max-width: 639px) {
+    .text-\[9px\]:not(text),
+    .text-\[10px\]:not(text),
+    .text-\[10\.5px\]:not(text),
+    .text-\[11px\]:not(text) {
+        font-size: 0.75rem;
+    }
+    p.text-xs,
+    li.text-xs,
+    dd.text-xs,
+    p.text-\[11px\],
+    p.text-\[13px\] {
+        font-size: 0.875rem;
+    }
+    p.text-xs:not([class*='leading-']),
+    li.text-xs:not([class*='leading-']),
+    dd.text-xs:not([class*='leading-']),
+    p.text-\[11px\]:not([class*='leading-']) {
+        line-height: 1.5;
+    }
+}
+
+/* Keyboard hints (Ctrl K) mean nothing on a touch screen; .touch-only is what shows there instead. */
+.touch-only {
+    display: none;
+}
+@media (pointer: coarse) {
+    .kbd-hint {
+        display: none !important;
+    }
+    .touch-only {
+        display: inline;
+    }
+}
+
+/* Phones: while the install offer is up, the floating ॐ button steps aside instead of sitting on it. */
+@media (max-width: 1023px) {
+    body:has(aside[aria-label='Install App Banner']) aside[aria-label='Prāṇa Sūtra Active Island'] {
+        display: none !important;
+    }
+}
+.dock-pill {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+        0 6px 16px -8px color-mix(in srgb, var(--dharma-accent) 60%, transparent);
+}
+:root:not([data-theme='night']):not([data-theme='dark']) .dock-pill {
+    background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.7));
+    box-shadow:
+        inset 0 1px 0 0 #ffffff,
+        0 6px 16px -8px rgba(28, 28, 30, 0.25);
+}
+.dock-wave {
+    display: inline-flex;
+    height: 16px;
+    align-items: center;
+    gap: 2px;
+}
+.dock-wave > span {
+    display: block;
+    width: 3px;
+    height: 100%;
+    border-radius: 2px;
+    background: var(--dharma-accent);
+    transform: scaleY(0.35);
+    transform-origin: center;
+}
+.dock-wave.is-playing > span {
+    animation: dock-wave 1s ease-in-out infinite;
+}
+.dock-wave.is-playing > span:nth-child(2) { animation-delay: -0.25s; }
+.dock-wave.is-playing > span:nth-child(3) { animation-delay: -0.5s; }
+.dock-wave.is-playing > span:nth-child(4) { animation-delay: -0.75s; }
+@keyframes dock-wave {
+    0%, 100% { transform: scaleY(0.3); }
+    50% { transform: scaleY(1); }
+}
+
+/* Spatial focus: inside the lifted glass card the verse drops its page hairline. */
+.spatial-focused > .verse-card.book-verse,
+.spatial-focused > .verse-card.vt {
+    border-bottom-color: transparent;
+    padding-bottom: 0.5rem;
+}
+.anvaya-pill {
+    border-color: color-mix(in srgb, var(--dharma-border) 80%, transparent);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+}
+:root:not([data-theme='night']):not([data-theme='dark']) .anvaya-pill {
+    background: rgba(255, 255, 255, 0.6);
+}
+.bhashya-active {
+    background: color-mix(in srgb, var(--dharma-accent) 16%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--dharma-accent) 42%, transparent);
+}
+
+/* Bento cards: no blur (the glass budget is spent elsewhere); a tinted surface and a specular rim. */
+.granth-card {
+    border-color: color-mix(in srgb, var(--dharma-border) 70%, transparent);
+    background:
+        radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--c1) 22%, transparent), transparent 60%),
+        radial-gradient(90% 80% at 0% 100%, color-mix(in srgb, var(--c2) 16%, transparent), transparent 60%),
+        linear-gradient(to bottom, color-mix(in srgb, var(--dharma-card) 92%, transparent), color-mix(in srgb, var(--dharma-card) 72%, transparent));
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+        0 18px 40px -28px rgba(0, 0, 0, 0.6);
+    transition: border-color 0.4s var(--ease-gentle), box-shadow 0.4s var(--ease-gentle);
+}
+.granth-card:hover {
+    border-color: color-mix(in srgb, var(--c1) 45%, var(--dharma-border));
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.16),
+        0 28px 60px -30px color-mix(in srgb, var(--c1) 70%, transparent);
+}
+:root:not([data-theme='night']):not([data-theme='dark']) .granth-card {
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+        0 18px 40px -30px rgba(28, 28, 30, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dock-wave.is-playing > span {
+        animation: none;
+        transform: scaleY(0.7);
+    }
+}
+
+/* ── Panchang: the night sky (app/components/cosmos) ───────────────── */
+/* The page's ambient light turns to indigo, violet and moonlight. */
+:root:has([data-cosmos]) {
+    --sc-1: #6366f1;
+    --sc-2: #a78bfa;
+    --sc-3: #fde68a;
+}
+.cosmos-sky {
+    background:
+        radial-gradient(120% 80% at 70% 10%, #26214a 0%, transparent 60%),
+        radial-gradient(90% 70% at 10% 90%, #1a1440 0%, transparent 65%),
+        linear-gradient(180deg, #05060f 0%, #0a0b1e 55%, #0d0b22 100%);
+}
+.cosmos-milkyway {
+    background: linear-gradient(118deg, transparent 30%, rgba(167, 139, 250, 0.10) 44%, rgba(253, 230, 138, 0.07) 50%, rgba(99, 102, 241, 0.10) 56%, transparent 70%);
+    filter: blur(18px);
+}
+.cosmos-drift-far { animation: cosmos-drift 240s linear infinite alternate; }
+.cosmos-drift-near { animation: cosmos-drift 150s linear infinite alternate-reverse; }
+@keyframes cosmos-drift {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-4%, 2%, 0); }
+}
+.cosmos-twinkle { animation: cosmos-twinkle 4.5s ease-in-out infinite; }
+@keyframes cosmos-twinkle {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 1; }
+}
+.cosmos-meteor {
+    position: absolute;
+    top: 12%;
+    left: 70%;
+    width: 140px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(253, 246, 227, 0.9), transparent);
+    transform: rotate(-24deg);
+    opacity: 0;
+    animation: cosmos-meteor 11s ease-out 3s infinite;
+}
+@keyframes cosmos-meteor {
+    0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(-24deg); }
+    2% { opacity: 1; }
+    8% { opacity: 0; transform: translate3d(-260px, 116px, 0) rotate(-24deg); }
+    100% { opacity: 0; transform: translate3d(-260px, 116px, 0) rotate(-24deg); }
+}
+.cosmos-halo {
+    background: radial-gradient(closest-side, rgba(167, 139, 250, 0.16), rgba(99, 102, 241, 0.06) 60%, transparent);
+}
+.cosmos-turn { animation: cosmos-turn 720s linear infinite; transform-origin: 260px 260px; }
+@keyframes cosmos-turn { to { transform: rotate(360deg); } }
+.cosmos-nak {
+    fill: rgba(236, 232, 245, 0.035);
+    stroke: rgba(185, 178, 214, 0.22);
+    stroke-width: 0.8;
+    transition: fill 0.8s ease;
+}
+.cosmos-nak.is-current {
+    fill: rgba(243, 227, 179, 0.2);
+    stroke: rgba(243, 227, 179, 0.8);
+    filter: drop-shadow(0 0 10px rgba(243, 227, 179, 0.5));
+}
+.cosmos-nak-label {
+    fill: rgba(201, 195, 224, 0.62);
+    font-family: var(--font-sanskrit);
+    font-size: 10.5px;
+}
+.cosmos-nak-label.is-current { fill: #fdf6e3; font-size: 12px; }
+.cosmos-tithi { stroke: none; }
+.cosmos-tithi.is-shukla { fill: rgba(253, 246, 227, 0.32); }
+.cosmos-tithi.is-krishna { fill: rgba(129, 120, 180, 0.28); }
+.cosmos-tithi.is-current { fill: #f3e3b3; filter: drop-shadow(0 0 6px rgba(243, 227, 179, 0.8)); }
+.cosmos-star {
+    fill: none;
+    stroke: rgba(243, 227, 179, 0.5);
+    stroke-width: 0.9;
+    stroke-linejoin: round;
+}
+.cosmos-limb-node { fill: #f3e3b3; filter: drop-shadow(0 0 5px rgba(243, 227, 179, 0.9)); }
+.cosmos-limb-label {
+    fill: #ece8f5;
+    font-family: var(--font-sanskrit);
+    font-size: 13px;
+}
+.cosmos-limb {
+    border: 1px solid rgba(185, 178, 214, 0.14);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+@media (prefers-reduced-motion: reduce) {
+    .cosmos-drift-far, .cosmos-drift-near, .cosmos-twinkle, .cosmos-turn, .cosmos-meteor { animation: none; }
+}
+
+/* ── The scripture opening as a book (app/components/vibe/ScriptureBook) ── */
+.sbook-stage {
+    --bw: clamp(150px, 38vw, 250px);
+    width: calc(var(--bw) * 2);
+    display: flex;
+    justify-content: flex-end;
+    perspective: 1800px;
+}
+.sbook {
+    position: relative;
+    width: var(--bw);
+    aspect-ratio: 3 / 4;
+    transform-style: preserve-3d;
+    transform: rotateX(10deg) rotateY(-6deg);
+    animation: sbook-float 9s ease-in-out 3s infinite alternate;
+}
+@keyframes sbook-float {
+    from { transform: rotateX(10deg) rotateY(-6deg) translateY(0); }
+    to { transform: rotateX(6deg) rotateY(-2deg) translateY(-6px); }
+}
+.sbook-body {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+}
+/* Page block: the thickness of the book at its fore-edge. */
+.sbook-block {
+    position: absolute;
+    inset: 2% -3% 2% 0;
+    border-radius: 2px 6px 6px 2px;
+    background: repeating-linear-gradient(180deg, #efe4cc 0 2px, #e2d4b6 2px 3px);
+    box-shadow: 18px 26px 40px -18px rgba(0, 0, 0, 0.55);
+    transform: translateZ(-6px);
+}
+.sbook-titlepage {
+    position: absolute;
+    inset: 2% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12% 10%;
+    text-align: center;
+    border-radius: 2px 6px 6px 2px;
+    background:
+        radial-gradient(120% 90% at 50% 40%, #fbf5e6, #efe3c7 70%, #e3d3b0);
+    box-shadow: inset 10px 0 18px -10px rgba(80, 50, 20, 0.35);
+}
+.sbook-cover,
+.sbook-leaf {
+    position: absolute;
+    inset: 0;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+}
+.sbook-leaf {
+    inset: 2% 0;
+    border-radius: 2px 6px 6px 2px;
+    background: linear-gradient(90deg, #e9dcc0, #f8f0dc 30%, #f3e8cf);
+    box-shadow: inset 6px 0 10px -6px rgba(80, 50, 20, 0.3);
+    animation: sbook-leaf-1 2.4s cubic-bezier(0.3, 0.75, 0.25, 1) 1.15s both;
+}
+.sbook-leaf-2 { animation-name: sbook-leaf-2; animation-delay: 1.4s; }
+@keyframes sbook-leaf-1 {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(-150deg); }
+}
+@keyframes sbook-leaf-2 {
+    from { transform: rotateY(0deg); }
+    60% { transform: rotateY(-120deg); }
+    to { transform: rotateY(-146deg); }
+}
+.sbook-cover {
+    animation: sbook-open 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.55s both;
+}
+@keyframes sbook-open {
+    0% { transform: rotateY(0deg); }
+    18% { transform: rotateY(8deg); }
+    100% { transform: rotateY(-158deg); }
+}
+.sbook-cover-front,
+.sbook-cover-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 3px 8px 8px 3px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.sbook-cover-front {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9%;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%, rgba(255, 255, 255, 0.06) 8%, transparent 11%),
+        radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%),
+        linear-gradient(160deg, var(--cover-2), var(--cover-1));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+        24px 30px 50px -22px rgba(0, 0, 0, 0.6);
+}
+.sbook-cover-back {
+    transform: rotateY(180deg);
+    background:
+        radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--foil) 30%, transparent) 0 1.5px, transparent 2px) 0 0 / 14px 14px,
+        linear-gradient(160deg, var(--cover-1), var(--cover-2));
+}
+.sbook-frame {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, var(--foil) 55%, transparent);
+    outline: 1px solid color-mix(in srgb, var(--foil) 25%, transparent);
+    outline-offset: 4px;
+    border-radius: 4px;
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.35));
+}
+/* Cover materials */
+.sbook-palm-leaf .sbook-cover-front { background-image: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 9px), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); }
+.sbook-silk .sbook-cover-front { background-image: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.16) 48%, transparent 60%), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); background-size: 250% 100%, auto, auto, auto; animation: sbook-silk 7s ease-in-out infinite alternate; }
+@keyframes sbook-silk { from { background-position: 100% 0, 0 0, 0 0, 0 0; } to { background-position: 0% 0, 0 0, 0 0, 0 0; } }
+.sbook-velvet .sbook-cover-front { background-image: radial-gradient(140% 100% at 50% 0%, rgba(255, 255, 255, 0.1), transparent 60%), linear-gradient(90deg, rgba(0, 0, 0, 0.4), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); }
+.sbook-bark .sbook-cover-front { background-image: repeating-linear-gradient(95deg, rgba(0, 0, 0, 0.08) 0 1px, transparent 1px 6px), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); }
+.sbook-cloth .sbook-cover-front { background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 4px), repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.06) 0 1px, transparent 1px 4px), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); }
+
+@media (prefers-reduced-motion: reduce) {
+    .sbook, .sbook-cover, .sbook-leaf, .sbook-silk .sbook-cover-front { animation: none; }
+    .sbook-cover { transform: rotateY(-158deg); }
+    .sbook-leaf-1 { transform: rotateY(-150deg); }
+    .sbook-leaf-2 { transform: rotateY(-146deg); }
+}
+@media print {
+    .sbook-stage { display: none; }
+}
+.scripture-vibe-hero {
+    background:
+        radial-gradient(80% 120% at 100% 0%, color-mix(in srgb, var(--cover-3) 14%, transparent), transparent 60%),
+        radial-gradient(60% 90% at 0% 100%, color-mix(in srgb, var(--cover-2) 10%, transparent), transparent 65%);
+}
+
+/* Chapter page turn: a leaf the colour of the page, shaded toward its spine, turning away. */
+.page-leaf {
+    position: absolute;
+    inset: 0;
+    background: var(--dharma-bg);
+    backface-visibility: hidden;
+}
+.page-leaf.is-forward {
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.22), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.05) 96%, rgba(0, 0, 0, 0.25)),
+        var(--dharma-bg);
+    box-shadow: 30px 0 60px rgba(0, 0, 0, 0.35);
+}
+.page-leaf.is-back {
+    background:
+        linear-gradient(270deg, rgba(0, 0, 0, 0.22), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.05) 96%, rgba(0, 0, 0, 0.25)),
+        var(--dharma-bg);
+    box-shadow: -30px 0 60px rgba(0, 0, 0, 0.35);
+}
+
+/* Uṣā: first light. The day theme's ambient colours are a sunrise: rose, gold, soft lavender. */
+:root:not([data-theme]),
+:root[data-theme='day'] {
+    --sc-1: #fb7185;
+    --sc-2: #fbbf24;
+    --sc-3: #a78bfa;
+    --liquid-strength: 22%;
+}
+
+/* ── Rāt-rānī blossoms (app/components/vibe/RaatRani) ──────────────── */
+.rr { position: absolute; inset: 0; pointer-events: none; }
+.rr-spot {
+    position: absolute;
+    width: calc(34px * var(--rr-s, 1));
+    transform: translate(-50%, -50%) rotate(var(--rr-r, 0deg));
+}
+.rr-flower { display: block; width: 100%; overflow: visible; }
+.rr-tube { fill: none; stroke: #9bbf8a; stroke-width: 1.6; stroke-linecap: round; opacity: 0.7; }
+.rr-petal { fill: #fffdf6; stroke: rgba(160, 190, 140, 0.55); stroke-width: 0.6; }
+.rr-heart { fill: #e9f5c8; }
+.rr-petals {
+    transform-origin: 0 0;
+    transform: scale(0.15) rotate(-60deg);
+    opacity: 0;
+    animation:
+        rr-open 3.2s cubic-bezier(0.22, 1, 0.36, 1) var(--rr-d, 0s) forwards,
+        rr-breathe 7s ease-in-out calc(var(--rr-d, 0s) + 3.2s) infinite alternate;
+}
+@keyframes rr-open {
+    0% { transform: scale(0.15) rotate(-60deg); opacity: 0; }
+    40% { opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+@keyframes rr-breathe {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1.06) rotate(4deg); }
+}
+/* A thread of scent rising from each flower. */
+.rr-scent {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(255, 253, 246, 0.9);
+    opacity: 0;
+    animation: rr-scent 9s ease-out calc(var(--rr-d, 0s) + 3s) infinite;
+}
+@keyframes rr-scent {
+    0% { transform: translate(0, 0) scale(1); opacity: 0; }
+    15% { opacity: 0.8; }
+    100% { transform: translate(14px, -70px) scale(0.3); opacity: 0; }
+}
+.rr-ambient { opacity: 0.55; }
+.rr-hero { opacity: 0.9; }
+:root[data-theme='night'] .rr-flower,
+:root[data-theme='dark'] .rr-flower {
+    filter: drop-shadow(0 0 6px rgba(240, 253, 244, 0.55));
+}
+:root[data-theme='night'] .rr-ambient,
+:root[data-theme='dark'] .rr-ambient { opacity: 0.7; }
+:root[data-theme='paper'] .rr-ambient { opacity: 0.35; }
+/* While reading, the blossoms stay at the edges and quieter. */
+:root:has([data-chapter-reading]) .rr-ambient { opacity: 0.3; }
+@media (max-width: 640px) {
+    .rr-ambient .rr-spot:nth-child(n + 4) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .rr-petals { animation: none; transform: none; opacity: 1; }
+    .rr-scent { animation: none; display: none; }
+}
+@media print {
+    .rr { display: none; }
+}
+/* An emblem drawn stroke by stroke. */
+.motif-draw path,
+.motif-draw ellipse,
+.motif-draw circle,
+.motif-draw rect {
+    stroke-dasharray: 420;
+    stroke-dashoffset: 420;
+    animation: motif-draw 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+.motif-draw text { opacity: 0; animation: rr-fade 1.6s ease 0.3s forwards; }
+@keyframes motif-draw { to { stroke-dashoffset: 0; } }
+@keyframes rr-fade { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+    .motif-draw path, .motif-draw ellipse, .motif-draw circle, .motif-draw rect { animation: none; stroke-dashoffset: 0; }
+    .motif-draw text { animation: none; opacity: 1; }
+}
+/* Chapter loading: hairline placeholders that breathe, and one blossom opening and closing. */
+.skeleton-line {
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--dharma-text) 9%, transparent);
+    animation: skeleton-breathe 2.4s ease-in-out infinite;
+}
+@keyframes skeleton-breathe {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+}
+.loading-blossom path { fill: color-mix(in srgb, var(--dharma-accent) 70%, transparent); }
+.loading-blossom { animation: loading-blossom 2.6s ease-in-out infinite; }
+@keyframes loading-blossom {
+    0%, 100% { transform: scale(0.7) rotate(-20deg); opacity: 0.6; }
+    50% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .skeleton-line, .loading-blossom { animation: none; }
+}
+
+/* ── Verses in their scripture's own manuscript (lib/scripture-vibes vibeAttrs) ──
+   The page wrapper carries --v1..3 (cover colours), --foil and data-material.
+   The Sanskrit sits on a folio of that material; numbers and ॥ markers take the
+   scripture's ink: its cover colour on light themes, its foil on dark. */
+[data-material] {
+    --v-ink: color-mix(in srgb, var(--v2) 82%, #000);
+    --v-wash: color-mix(in srgb, var(--v2) 6%, transparent);
+    --v-edge: color-mix(in srgb, var(--v2) 18%, transparent);
+}
+:root[data-theme='night'] [data-material],
+:root[data-theme='dark'] [data-material] {
+    --v-ink: var(--foil);
+    --v-wash: color-mix(in srgb, var(--v2) 13%, transparent);
+    --v-edge: color-mix(in srgb, var(--v3) 22%, transparent);
+}
+[data-material] .verse-mark,
+[data-material] .vt-sa > .vt-num,
+[data-material] .verse-ref,
+[data-material] .vt-title {
+    color: var(--v-ink);
+}
+[data-material] .verse-folio {
+    position: relative;
+    border: 1px solid var(--v-edge);
+    background-color: var(--v-wash);
+    border-radius: 20px;
+    padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+[data-material] .verse-folio::before,
+[data-material] .verse-folio::after {
+    display: none;
+}
+
+/* Upanishads: bhojpatra, birch bark, warm with fine horizontal fibres. */
+[data-material='bark'] .verse-folio {
+    border-radius: 14px 22px 16px 24px;
+    background-image:
+        repeating-linear-gradient(178deg, transparent 0 7px, color-mix(in srgb, #8a6a3c 6%, transparent) 7px 8px, transparent 8px 19px),
+        linear-gradient(180deg, color-mix(in srgb, #e3c99a 12%, transparent), color-mix(in srgb, var(--v2) 5%, transparent));
+}
+
+/* Gita, Purāṇas, Rāmāyaṇa, stotras: silk, with a slow sheen across it. */
+[data-material='silk'] .verse-folio {
+    background-image:
+        linear-gradient(115deg, transparent 30%, color-mix(in srgb, var(--v3) 12%, transparent) 48%, transparent 62%),
+        linear-gradient(180deg, var(--v-wash), color-mix(in srgb, var(--v3) 5%, transparent));
+    background-size: 260% 100%, auto;
+    animation: folio-sheen 9s ease-in-out infinite alternate;
+    border-top: 2px solid color-mix(in srgb, var(--foil) 45%, transparent);
+}
+@keyframes folio-sheen {
+    from { background-position: 100% 0, 0 0; }
+    to { background-position: 0% 0, 0 0; }
+}
+
+/* Śākta, Tantra and the epics: velvet, lit from above. */
+[data-material='velvet'] .verse-folio {
+    background-image:
+        radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--v3) 13%, transparent), transparent 70%),
+        linear-gradient(180deg, transparent, color-mix(in srgb, var(--v1) 8%, transparent));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--foil) 14%, transparent);
+}
+
+/* Vedānta and Smṛti: plain woven cloth. */
+[data-material='cloth'] .verse-folio {
+    background-image:
+        repeating-linear-gradient(45deg, color-mix(in srgb, var(--v2) 4%, transparent) 0 1px, transparent 1px 5px),
+        repeating-linear-gradient(-45deg, color-mix(in srgb, var(--v2) 4%, transparent) 0 1px, transparent 1px 5px);
+}
+
+/* The lifted verse's glass takes the scripture's colour. */
+[data-material] .liquid-glass.spatial-focused {
+    background-image: linear-gradient(to bottom, color-mix(in srgb, var(--v3) 16%, rgba(255, 255, 255, 0.12)), color-mix(in srgb, var(--v1) 10%, rgba(255, 255, 255, 0.03)));
+    border-color: color-mix(in srgb, var(--foil) 30%, rgba(255, 255, 255, 0.14));
+}
+
+/* The contents list on the scripture's page. */
+[data-material] .vibe-num {
+    background: color-mix(in srgb, var(--v2) 14%, transparent);
+    color: var(--v-ink);
+}
+[data-material] .vibe-card:hover {
+    border-color: color-mix(in srgb, var(--v2) 45%, var(--dharma-border));
+}
+[data-material] .vibe-cta {
+    background-image: linear-gradient(135deg, var(--v2), var(--v1));
+    color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-material='silk'] .verse-folio { animation: none; }
+}
+@media print {
+    [data-material] .verse-folio { background: none; border-color: #ccc; }
+    [data-material='palm-leaf'] .verse-folio::before,
+    [data-material='palm-leaf'] .verse-folio::after { display: none; }
+}
+
+/* ── Apple layer ─────────────────────────────────────────────────────
+   The site-wide chrome in Apple's idiom: one thin translucent bar on top,
+   one on the bottom on phones, hairline separators and a single tint
+   (--dharma-saffron). Page layouts adopt the rest page by page. */
+@layer components {
+    /* The bar is the regular material (app/styles/tokens.css). */
+    .apple-bar {
+        background-color: var(--material-regular);
+        -webkit-backdrop-filter: var(--material-filter);
+        backdrop-filter: var(--material-filter);
+        border-color: var(--separator);
+    }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+        .apple-bar { background-color: var(--dharma-bg); }
+    }
+    .apple-icon-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        color: var(--dharma-text);
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .apple-icon-button:hover {
+        background-color: color-mix(in srgb, var(--dharma-text) 7%, transparent);
+    }
+    .apple-icon-button:active {
+        background-color: color-mix(in srgb, var(--dharma-text) 12%, transparent);
+    }
+    /* Home library tiles: the book's colour, lifted on dark canvases. */
+    .home-book { --book-ink: var(--book); }
+    :root[data-theme='night'] .home-book,
+    :root[data-theme='dark'] .home-book { --book-ink: color-mix(in srgb, var(--book) 55%, #fff); }
+}
+@media print {
+    .apple-bar { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* Reader surfaces in the Apple idiom (unlayered, to sit over the material rules above).
+   The verse in focus is a plain card rather than tinted glass, and the shloka is plain text
+   on every scripture except those written on palm leaf, which keep a faint leaf. */
+[data-chapter-reading] .liquid-glass.spatial-focused,
+[data-material] .liquid-glass.spatial-focused {
+    background-image: none;
+    background-color: var(--dharma-card);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: transparent;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+[data-material] .verse-folio {
+    background-image: none;
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    animation: none;
+}
+
+/* Letter-spacing pulls Devanagari conjuncts and vowel signs apart ("का ल द र्श न"), so Devanagari
+   text never takes tracking. <html> is lang="hi", hence explicit attributes rather than :lang(). */
+[lang='hi']:not(html),
+[lang='sa'],
+[lang='mr'],
+.font-devanagari,
+.font-sanskrit {
+    letter-spacing: normal;
+}
+
+/* Serif Devanagari for the mūla text. Tiro Devanagari Sanskrit ships one weight (400), so a
+   `font-semibold` on a shloka used to make the browser smear a fake bold that read like sans.
+   No synthesis: every shloka is set in the book face at its true weight, on every page. */
+[lang='sa'],
+.shloka-text,
+.vt-sa {
+    font-synthesis: none;
+}
+#sanskrit-text,
+.verse-folio[lang='sa'],
+.shloka-text {
+    font-weight: 400;
 }

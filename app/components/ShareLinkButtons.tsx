@@ -20,7 +20,7 @@ export function ShareLinkButtons({
   heading: string;
   /** Further lines (description, duration). */
   lines?: string[];
-  /** Site path with the anchor, e.g. "/learn/paths/#anxiety-overwhelm". */
+  /** Site path with the anchor, e.g. "/learn/plans/#anxiety-overwhelm". */
   path: string;
   /** What is being shared, for assistive text: "Overcoming anxiety". */
   label: string;

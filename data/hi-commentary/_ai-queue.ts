@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { HiCommentaryFragment } from "./_types";
+import { canonicalVerseId } from "../../lib/canonical-verse-id";
 
 /** Review queue written by scripts/generate-verse-commentary.ts. */
 export const AI_QUEUE_DIR = path.resolve("data/ai-commentary");
@@ -12,6 +13,8 @@ interface QueuedEntry {
   lifeLesson?: string;
   status?: "pending" | "approved" | "rejected";
   sanskrit?: string;
+  /** The draft's explanation replaces this verse's hand-written व्याख्या. */
+  replacesHandWritten?: boolean;
 }
 
 const norm = (s = "") => s.replace(/[\s|।॥०-९\d.]/g, "");
@@ -24,9 +27,18 @@ function currentSanskrit(scriptureId: string): Map<string, string> {
   const book = JSON.parse(fs.readFileSync(file, "utf8")) as {
     chapters?: Array<{ number: number | string; verses?: Array<{ number: number | string; sanskrit?: string }> }>;
   };
+  const ambiguous = new Set<string>();
   for (const ch of book.chapters ?? []) {
     for (const v of ch.verses ?? []) {
-      out.set(`${Number(ch.number)}:${Number(v.number)}`, norm(v.sanskrit));
+      // Match both the reader's canonical key and its raw-number fallback.
+      const chapter = Number(ch.number);
+      const number = Number(canonicalVerseId(chapter, v.number));
+      const keys = new Set([`${chapter}:${v.number}`]);
+      if (Number.isFinite(number)) keys.add(`${chapter}:${number}`);
+      for (const key of keys) {
+        if (out.has(key)) { out.delete(key); ambiguous.add(key); }
+        else if (!ambiguous.has(key)) out.set(key, norm(v.sanskrit));
+      }
     }
   }
   return out;
@@ -37,11 +49,17 @@ function currentSanskrit(scriptureId: string): Map<string, string> {
  * rejected drafts are never returned, nor are drafts whose verse text no
  * longer matches what was reviewed (e.g. after a data repair renumbered it).
  */
-export function approvedAiEntries(scriptureId: string): { entries: HiCommentaryFragment; stale: string[] } {
+export function approvedAiEntries(scriptureId: string): {
+  entries: HiCommentaryFragment;
+  stale: string[];
+  /** Keys whose approved explanation replaces the hand-written one. */
+  replaces: Set<string>;
+} {
   const file = path.join(AI_QUEUE_DIR, `${scriptureId}.json`);
   const entries: HiCommentaryFragment = {};
   const stale: string[] = [];
-  if (!fs.existsSync(file)) return { entries, stale };
+  const replaces = new Set<string>();
+  if (!fs.existsSync(file)) return { entries, stale, replaces };
 
   const queue = JSON.parse(fs.readFileSync(file, "utf8")) as Record<string, QueuedEntry>;
   const sanskritNow = currentSanskrit(scriptureId);
@@ -57,14 +75,16 @@ export function approvedAiEntries(scriptureId: string): { entries: HiCommentaryF
     if (q.science?.trim()) entry.science = q.science.trim();
     if (q.lifeLesson?.trim()) entry.lifeLesson = q.lifeLesson.trim();
     if (entry.explanation || entry.science || entry.lifeLesson) entries[key] = entry;
+    if (q.replacesHandWritten && entry.explanation) replaces.add(key);
   }
-  return { entries, stale };
+  return { entries, stale, replaces };
 }
 
 export function aiQueueScriptureIds(): string[] {
   if (!fs.existsSync(AI_QUEUE_DIR)) return [];
   return fs
     .readdirSync(AI_QUEUE_DIR)
-    .filter((f) => f.endsWith(".json"))
+    // <id>-research.json holds rewritten research notes, not a queue.
+    .filter((f) => f.endsWith(".json") && !f.endsWith("-research.json"))
     .map((f) => path.basename(f, ".json"));
 }

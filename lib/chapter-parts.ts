@@ -26,8 +26,13 @@ export const INLINE_CHAPTER_MAX_BYTES = 450 * 1024;
  * data, 1,223 mantras, a 1.5 MB page).
  */
 export const INLINE_CHAPTER_MAX_VERSES = 1000;
-/** Target verse data per part (~350 KB JSON ≈ 600 KB of page HTML). */
-const PART_MAX_BYTES = 350 * 1024;
+/**
+ * Target verse data per part. A recent 655 KB chapter now produces five parts;
+ * its largest part is 2.3 MB raw but 430 KB gzipped because the semantic HTML
+ * is also serialized for hydration. The export guard checks both raw safety
+ * and compressed transfer size.
+ */
+const PART_MAX_BYTES = 150 * 1024;
 
 export interface ChapterPart {
   /** 1-based part number. */

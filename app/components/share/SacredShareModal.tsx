@@ -15,7 +15,7 @@ import {
   Palette,
   Layers,
 } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
 
 export type ShareFormat = 'story' | 'post' | 'landscape';
 export type ShareTheme = 'swarna' | 'midnight' | 'ashram' | 'himalaya';
@@ -137,6 +137,27 @@ export function SacredShareModal({ isOpen, onClose, data }: Props) {
   const [busy, setBusy] = useState(false);
   const [copied, setCopied] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const rotateX = useSpring(useMotionValue(0), { stiffness: 180, damping: 22, mass: 0.55 });
+  const rotateY = useSpring(useMotionValue(0), { stiffness: 180, damping: 22, mass: 0.55 });
+
+  function handleCardPointerMove(event: React.PointerEvent<HTMLDivElement>) {
+    if (reduceMotion || event.pointerType === 'touch') return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width;
+    const y = (event.clientY - bounds.top) / bounds.height;
+    rotateX.set((0.5 - y) * 12);
+    rotateY.set((x - 0.5) * 12);
+    event.currentTarget.style.setProperty('--sheen-x', `${x * 100}%`);
+    event.currentTarget.style.setProperty('--sheen-y', `${y * 100}%`);
+  }
+
+  function resetCardPointer(event: React.PointerEvent<HTMLDivElement>) {
+    rotateX.set(0);
+    rotateY.set(0);
+    event.currentTarget.style.setProperty('--sheen-x', '50%');
+    event.currentTarget.style.setProperty('--sheen-y', '35%');
+  }
 
   // Close on Escape key
   useEffect(() => {
@@ -164,7 +185,7 @@ export function SacredShareModal({ isOpen, onClose, data }: Props) {
     data.quote ? `💡 *सूत्र:* ${data.quote}` : '',
     '',
     `🔗 *पूरा पाठ एवं अध्ययन:* ${data.url}`,
-    '— *Dharma Granth* (dharmagranth.in)',
+    '— *Dharma Granth* (dharmagranth.dev)',
   ]
     .filter(Boolean)
     .join('\n');
@@ -429,6 +450,20 @@ export function SacredShareModal({ isOpen, onClose, data }: Props) {
                 margin: format === 'story' ? '-140px 0' : format === 'post' ? '-50px 0' : '-40px 0',
               }}
             >
+              {/* Tilt and sheen live outside the export node so PNGs stay flat and clean. */}
+              <motion.div
+                onPointerMove={handleCardPointerMove}
+                onPointerLeave={resetCardPointer}
+                style={{
+                  position: 'relative',
+                  width: cardWidth,
+                  height: cardHeight,
+                  perspective: 1000,
+                  rotateX: reduceMotion ? 0 : rotateX,
+                  rotateY: reduceMotion ? 0 : rotateY,
+                  transformStyle: 'preserve-3d',
+                }}
+              >
               {/* THE RENDERED CARD (ALSO USED BY html-to-image) */}
               <div
                 ref={cardRef}
@@ -639,13 +674,27 @@ export function SacredShareModal({ isOpen, onClose, data }: Props) {
                     color: currentTheme.accentColor,
                   }}
                 >
-                  <span>dharmagranth.in</span>
+                  <span>dharmagranth.dev</span>
                   <span style={{ opacity: 0.5 }}>·</span>
                   <span style={{ fontWeight: 500, color: currentTheme.mutedColor }}>
                     सनातन ज्ञान का जीवित स्रोत
                   </span>
                 </div>
               </div>
+              {!reduceMotion && (
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    borderRadius: 24,
+                    pointerEvents: 'none',
+                    background: 'radial-gradient(ellipse at var(--sheen-x, 50%) var(--sheen-y, 35%), rgba(255, 226, 160, 0.22), transparent 48%)',
+                    mixBlendMode: 'screen',
+                  }}
+                />
+              )}
+              </motion.div>
             </div>
           </div>
 

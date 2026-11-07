@@ -9,10 +9,10 @@
 //   • a chapter's shard is removed when its page already carries its verses,
 //     and kept for the few giant chapters that still load client-side.
 // The copies in public/ stay: the build and the data scripts read them.
-import { existsSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs';
+import { appendFileSync, existsSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
-const DIST = resolve(process.cwd(), 'dist');
+const DIST = resolve(process.cwd(), process.env.NEXT_DIST_DIR || 'dist');
 const DATA = join(DIST, 'data/scriptures-full');
 
 function sizeOf(path) {
@@ -55,9 +55,16 @@ if (existsSync(DATA)) {
   }
 }
 
-// Archives in public/ (e.g. pinterest/katha/katha-pinterest-jpg.zip, 26 MB)
+// Archives and generator scratch folders in public/ (e.g. pinterest/, 224 MB)
 // are working bundles no page links to; one exceeds the 25 MiB file limit.
+const PINTEREST_DIR = join(DIST, 'pinterest');
+if (existsSync(PINTEREST_DIR)) {
+  freed += remove(PINTEREST_DIR);
+  console.log(`  pruned dist/pinterest (generator scratch, not linked)`);
+}
+
 (function dropArchives(dir) {
+  if (!existsSync(dir)) return;
   for (const name of readdirSync(dir)) {
     const path = join(dir, name);
     if (statSync(path).isDirectory()) dropArchives(path);
@@ -93,6 +100,22 @@ console.log(
   `✓ Export pruned: freed ${(freed / 1024 / 1024).toFixed(0)} MB, kept ${kept} shard(s) for client-loaded chapters; ` +
     `dist is ${(total / 1024 / 1024).toFixed(0)} MB in ${files} files.`,
 );
+
+if (process.env.GITHUB_STEP_SUMMARY) {
+  try {
+    const summary = [
+      '### 📦 Cloudflare Pages Export Summary',
+      '',
+      '| Metric | Value | Limit | Headroom |',
+      '|---|---|---|---|',
+      `| **Total Files** | \`${files.toLocaleString()}\` | \`${MAX_FILES.toLocaleString()}\` | **\`${(MAX_FILES - files).toLocaleString()} files remaining\`** |`,
+      `| **Export Size** | \`${(total / 1024 / 1024 / 1024).toFixed(2)} GB\` (\`${(total / 1024 / 1024).toFixed(0)} MB\`) | — | — |`,
+      `| **Pruned / Freed** | \`${(freed / 1024 / 1024).toFixed(0)} MB\` | — | — |`,
+      '',
+    ].join('\n');
+    appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary, 'utf8');
+  } catch {}
+}
 let ok = true;
 if (files > MAX_FILES) {
   console.error(`✗ ${files} files — Cloudflare Pages allows ${MAX_FILES} per deployment.`);

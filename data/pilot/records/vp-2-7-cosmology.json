@@ -1,0 +1,25 @@
+{
+  "unitId": "vp-2-7-cosmology",
+  "reference": "Vishnu Purana, Book 2, Adhyaya 7, unit 20 (edition numbering unverified)",
+  "artha": "कृतक और अकृतक लोकों के बीच जो है, उसे महर्लोक कहा गया है। वह कल्प के अंत में सूना हो जाता है, पर पूरी तरह नष्ट नहीं होता।",
+  "arthaEn": "What lies between the made and the unmade worlds is called Maharloka. At the end of a kalpa it becomes empty, but it is not utterly destroyed.",
+  "arthaDecision": "revise-existing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "यह श्लोक लोकों के उस वर्णन का अंश है जिसमें भू, भुवः और स्वः की चर्चा के बाद आगे के लोक आते हैं। इससे ठीक पहले के श्लोक में कहा गया है कि ये तीन लोक कृतक कहे जाते हैं, और जन, तप और सत्य तीन अकृतक। यहाँ महर्लोक को इन दोनों के बीच रखा गया है। कृतक का अर्थ है बनाया हुआ, यानी कल्प के अंत में नष्ट होने वाला, और अकृतक का अर्थ है जो इस तरह नहीं बना। कल्प का अर्थ सृष्टि का एक लंबा काल-चक्र है। श्लोक कहता है कि महर्लोक कल्प के अंत में शून्य हो जाता है, पर अत्यंत नष्ट नहीं होता, इसलिए वह दोनों वर्गों के बीच की स्थिति में है। अगले श्लोक में इन सात लोकों और सात पातालों को मिलाकर ब्रह्मांड का विस्तार बताया गया है। यह पुराण की अपनी लोक-व्यवस्था का वर्णन है, और इसे भौतिक अंतरिक्ष का नक्शा मान लेना पाठ से आगे जाना होगा।",
+  "vijnana": "पुराणों में लोकों और काल-चक्रों का वर्णन उस समय की ब्रह्मांड-संबंधी धारणाओं और धार्मिक कल्पना को दिखाता है, और इसे ऐतिहासिक परिप्रेक्ष्य से पढ़ा जा सकता है। इसे आधुनिक खगोल-विज्ञान या भौतिकी के निष्कर्षों से मिलाना, जैसे आकाशगंगा या नक्षत्रों की किसी वैज्ञानिक व्यवस्था से, पाठ के आधार पर समर्थित नहीं है। यह श्लोक वैज्ञानिक दावा नहीं करता, और यहाँ ऐसा कोई मिलान प्रस्तावित नहीं किया जा रहा। पुराना हिंदी पाठ जो आकाशगंगा का उल्लेख करता था, इस श्लोक का अर्थ नहीं था।",
+  "vijnanaCategory": "historical",
+  "evidenceLevel": "editorial-observation",
+  "lifeLesson": "सृष्टि और प्रलय की कथाएँ पढ़ते समय पहले पहचानो कि पाठ क्या कर रहा है: वर्णन, प्रतीक या उपदेश। उसे आधुनिक तथ्य की तरह किसी पर थोपने से पहले रुक जाओ।",
+  "confidence": "medium",
+  "reviewNote": "The Sanskrit is clear and verses 17 to 22 of the same record set give the structure (kritaka and akritaka worlds, seven lokas and seven patalas). The stored Hindi and English both belong to other verses (the Hindi mentions the Milky Way and stars, which are not in the Sanskrit; the English is an invocation about creation); both were replaced. The reference uses the dataset's running chapter index and the verse number is not verified against an edition. The claim in the Vyakhya that kritaka means 'destroyed at the end of a kalpa' follows verse 19 and general knowledge of the Purana's usage and should be checked. No classical commentary is stored.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged.",
+    "artha": "Editor rendering from the Sanskrit; both stored meanings were misaligned.",
+    "vyakhya": "Original composition from the stored neighbouring verses.",
+    "vijnana": "Original composition; a boundary note, no research source consulted and none cited.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}

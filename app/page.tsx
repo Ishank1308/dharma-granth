@@ -1,17 +1,12 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
-import { HeroSection } from '@/app/components/HeroSection';
 import { SplashScreen } from '@/app/components/SplashScreen';
+import { HomeHero } from '@/app/components/home/HomeHero';
+import { HomeTodayVerse } from '@/app/components/home/HomeTodayVerse';
 import { ContinueReading } from '@/app/components/ContinueReading';
-import { VerseOfTheDaySection } from '@/app/components/VerseOfTheDaySection';
-import { LifeSituationsSection } from '@/app/components/LifeSituationsSection';
-import { FeaturedScripturesSection } from '@/app/components/FeaturedScripturesSection';
-import { CategoryExploreSection } from '@/app/components/CategoryExploreSection';
-import { SadhanaPreviewSection } from '@/app/components/SadhanaPreviewSection';
-import { PanchangPreviewSection } from '@/app/components/PanchangPreviewSection';
-import { Experience3DSection } from '@/app/components/Experience3DSection';
-import { getLibraryCounts } from '@/data/scriptures';
-import { formatCountDevanagari } from '@/lib/holdings-label';
+import { HomeLibrary } from '@/app/components/home/HomeLibrary';
+import { WisdomTicker } from '@/app/components/home/WisdomTicker';
+import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
 import { SiteFooter } from '@/app/components/SiteFooter';
 
 export const metadata: Metadata = {
@@ -44,43 +39,31 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const gita = getLibraryCounts('bhagavadgita');
-  const gitaCountLabel = `${formatCountDevanagari(gita.chapters)} अध्याय · ${formatCountDevanagari(gita.verses)} श्लोक`;
   return (
     <>
-      <main className="min-h-screen bg-dharma-bg text-dharma-text selection:bg-amber-200 selection:text-amber-900">
-      {/* Visual Splash / Orientation for first-time direct visitors */}
-      <SplashScreen />
+      <main className="min-h-screen bg-dharma-bg text-dharma-text">
+        {/* Brand splash: CSS-only, once per session, hidden from assistive tech */}
+        <SplashScreen />
 
-      {/* 1. HERO SECTION */}
-      <HeroSection />
+        {/* 1. The promise, the way in, and search */}
+        <HomeHero />
 
-      {/* 2. CONTINUE READING / START HERE */}
-      <ContinueReading />
+        {/* 2. Today's verse, then the reader's own place (nothing on a first visit) */}
+        <div className="mx-auto flex max-w-content flex-col gap-4 px-5">
+          <HomeTodayVerse />
+          <ContinueReading />
+        </div>
 
-      {/* 3. VERSE OF THE DAY */}
-      <VerseOfTheDaySection />
+        {/* 3. The library as book tiles */}
+        <HomeLibrary />
 
-      {/* 4. BROWSE BY LIFE SITUATION */}
-      <LifeSituationsSection />
+        {/* 4. A slow band of Upaniṣadic sayings, each linked to its passage */}
+        <WisdomTicker />
 
-      {/* 5. FEATURED SCRIPTURES */}
-      <FeaturedScripturesSection />
-
-      {/* 6. EXPLORE BY CATEGORY */}
-      <CategoryExploreSection />
-
-      {/* 7. SADHANA PREVIEW */}
-      <SadhanaPreviewSection />
-
-      {/* 8. PANCHANG PREVIEW */}
-      <PanchangPreviewSection />
-
-      {/* 9. 3D EXPERIENCE */}
-      <Experience3DSection gitaCountLabel={gitaCountLabel} />
-    </main>
-    {/* Site Footer with sources, methodology, and quiet contemplation */}
-    <SiteFooter />
-  </>
+        {/* 5. Sourcing, methodology and the library's numbers */}
+        <HomeTrustStrip />
+      </main>
+      <SiteFooter />
+    </>
   );
 }

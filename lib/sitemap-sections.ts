@@ -1,21 +1,28 @@
 import type { MetadataRoute } from 'next';
 import { getAllScriptures, getScriptureChapters } from '@/data/scriptures';
-import { readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
+import { readSeededChapterNumbers, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { lastChanged, scriptureLastChanged } from '@/lib/content-dates';
 import { verseStaticParams } from '@/lib/verse-pages';
+import { verseMeaningById } from '@/lib/verse-meaning';
 import { chapterPartHref, chapterParts } from '@/lib/chapter-parts';
-import { topics } from '@/data/topics';
 import { wisdomTopics } from '@/data/wisdom-for-life';
+import { wisdomPathways } from '@/data/wisdom-pathways';
+import { knowledgeHubs } from '@/data/knowledge-hubs';
 import { characters } from '@/data/characters';
 import { dictionary } from '@/data/dictionary';
 import { getAllConceptDetails } from '@/data/concept-details';
+import { graphPageIds } from '@/data/knowledge-graph';
 import { learningPaths } from '@/data/learning-paths';
-import { READING_JOURNEYS } from '@/data/reading-journeys';
+import { READING_JOURNEYS, isJourneyIndexable } from '@/data/reading-journeys';
 import { festivals } from '@/data/festivals';
+import { GRANTH_ANSWERS } from '@/data/granth-answers';
+import { getChapterSummaryCollection } from '@/data/chapter-summaries';
+import { SACRED_MANTRAS } from '@/data/mantras';
+import { NAKSHATRA_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES, YOGA_DATA, getAllKaranas, VARA_DATA } from '@/lib/panchang';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in').replace(/\/+$/, '');
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev').replace(/\/+$/, '');
 
 type Entry = MetadataRoute.Sitemap[number];
 
@@ -55,46 +62,75 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/', pageDate('/')),
     entry('/scriptures', pageDate('/scriptures', 'data/scripture-meta.ts')),
     entry('/learn', pageDate('/learn')),
-    entry('/learn/pathways', pageDate('/learn/pathways', 'data/pathways.ts')),
     entry('/learn/faq', pageDate('/learn/faq', 'data/scripture-faqs.ts')),
-    entry('/learn/paths', pageDate('/learn/paths', 'data/guided-reading-paths.ts')),
-    entry('/learn/plans', pageDate('/learn/plans', 'data/reading-plans.ts')),
+    // /learn/paths/, /learn/pathways/ and /pathways/ 301 to /learn/plans/, /learn/ and /wisdom-pathways/.
+    entry('/learn/plans', pageDate('/learn/plans', 'data/reading-plans.ts', 'data/study-plans.ts', 'data/guided-reading-paths.ts')),
     entry('/wisdom-for-life', pageDate('/wisdom-for-life', 'data/wisdom-for-life.ts')),
-    entry('/guidance', pageDate('/guidance', 'data/wisdom-for-life.ts')),
+    entry('/wisdom-pathways', pageDate('/wisdom-pathways', 'data/wisdom-pathways.ts', 'data/wisdom-pathway-starters.ts')),
+    // /topics/ and /guidance/ 301 to /wisdom-for-life/ (public/_redirects).
     entry('/concepts', pageDate('/concepts')),
-    entry('/topics', pageDate('/topics', 'data/topics.ts')),
     entry('/characters', pageDate('/characters', 'data/characters.ts')),
     entry('/locations', pageDate('/locations')),
     entry('/festivals', pageDate('/festivals')),
     entry('/panchang', pageDate('/panchang')),
+    entry('/panchang/ekadashi', pageDate('/panchang/ekadashi')),
+    entry('/panchang/pradosh', pageDate('/panchang/pradosh')),
+    entry('/panchang/purnima', pageDate('/panchang/purnima')),
+    entry('/panchang/amavasya', pageDate('/panchang/amavasya')),
+    entry('/panchang/nakshatras', pageDate('/panchang/nakshatras', 'lib/panchang.ts')),
+    entry('/panchang/tithis', pageDate('/panchang/tithis', 'lib/panchang.ts')),
+    entry('/panchang/yogas', pageDate('/panchang/yogas', 'lib/panchang.ts')),
+    entry('/panchang/karanas', pageDate('/panchang/karanas', 'lib/panchang.ts')),
+    entry('/panchang/varas', pageDate('/panchang/varas', 'lib/panchang.ts')),
+    entry('/panchang/calendar', pageDate('/panchang/calendar', 'lib/panchang.ts', 'data/festival-dates.ts')),
+    entry('/panchang/solar-vratas', pageDate('/panchang/solar-vratas', 'data/solar-vratas-data.ts', 'lib/panchang.ts')),
+    entry('/panchang/muhurta', pageDate('/panchang/muhurta', 'data/muhurta-data.ts', 'lib/panchang.ts')),
     entry('/timelines', pageDate('/timelines')),
     entry('/rituals', pageDate('/rituals')),
+    entry('/rituals/upakarma', pageDate('/rituals/upakarma', 'data/upakarma-data.ts')),
     entry('/dictionary', pageDate('/dictionary', 'data/dictionary.ts')),
     entry('/practice', pageDate('/practice')),
-    entry('/start', pageDate('/start')),
-    entry('/journeys', pageDate('/journeys', 'data/reading-journeys.ts')),
+    entry('/practice/gita-sankalpa', pageDate('/practice/gita-sankalpa', 'lib/gita-sankalpa.ts')),
+    entry('/learn/start', pageDate('/learn/start')),
+    entry('/privacy', pageDate('/privacy')),
+    entry('/terms', pageDate('/terms')),
+    entry('/contact', pageDate('/contact')),
+    ...(READING_JOURNEYS.some(isJourneyIndexable)
+      ? [entry('/learn/journeys', pageDate('/learn/journeys', 'data/reading-journeys.ts'))]
+      : []),
+    entry('/learn/journeys/gita', pageDate('/learn/journeys/gita', 'data/gita-journey-data.ts')),
     entry('/story', pageDate('/story')),
     entry('/collections', pageDate('/collections')),
     entry('/compare', pageDate('/compare', 'data/scripture-comparisons.ts')),
     entry('/learn/academy', pageDate('/learn/academy', 'data/academy-index.ts')),
     entry('/ask', pageDate('/ask', 'data/wisdom-for-life.ts')),
-    entry('/start-here', pageDate('/start-here')),
     entry('/daily', pageDate('/daily')),
     entry('/daily-verse', pageDate('/daily-verse', 'data/wisdom-for-life.ts')),
+    entry('/embed/verse-of-the-day', pageDate('/embed/verse-of-the-day', 'lib/daily-verse.ts')),
+    entry('/mantras', pageDate('/mantras', 'data/mantras.ts')),
     entry('/methodology', pageDate('/methodology')),
     entry('/sources', pageDate('/sources')),
+    entry('/contribute', pageDate('/contribute')),
+    entry('/about/funding', pageDate('/about/funding')),
     entry('/concepts/relationships', pageDate('/concepts/relationships')),
+    entry('/concepts/visuals', pageDate('/concepts/visuals')),
+    entry('/network', pageDate('/network')),
     entry('/ashtavakra', pageDate('/ashtavakra')),
     entry('/ashtavakra/words', pageDate('/ashtavakra/words')),
+    entry('/api-docs', pageDate('/api-docs')),
   ];
 
   // 2. Individual Entity Pages
   const wisdomDate = lastChanged('data/wisdom-for-life.ts', 'app/wisdom-for-life/[slug]/page.tsx');
   const wisdomRoutes = wisdomTopics.map((w) => entry(`/wisdom-for-life/${w.slug}`, wisdomDate));
-  // /guidance/<slug> serves the same page with a canonical to /wisdom-for-life/<slug>, so only the canonical URL is listed.
+  const askDate = lastChanged('data/granth-answers', 'app/ask/[slug]/page.tsx');
+  const askRoutes = GRANTH_ANSWERS.map((a) => entry(`/ask/${a.slug}`, askDate));
+  const pathwayDate = lastChanged('data/wisdom-pathways.ts', 'app/wisdom-pathways/[slug]/page.tsx');
+  const pathwayRoutes = wisdomPathways.map((p) => entry(`/wisdom-pathways/${p.slug}`, pathwayDate));
+  const hubDate = lastChanged('data/knowledge-hubs.ts', 'data/wisdom-concepts.ts', 'app/knowledge/[slug]/page.tsx');
+  const hubRoutes = knowledgeHubs.map((h) => entry(`/knowledge/${h.slug}`, hubDate));
+  // /guidance/<slug> and the old /topics/<id> 301 to /wisdom-for-life (public/_redirects), so only canonical URLs are listed.
 
-  const topicDate = lastChanged('data/topics.ts', 'app/topics/[id]/page.tsx');
-  const topicRoutes = topics.map((t) => entry(`/topics/${t.id}`, topicDate));
 
   const characterDate = lastChanged('data/characters.ts', 'app/characters/[id]/page.tsx');
   const characterRoutes = characters.map((c) => entry(`/characters/${c.id}`, characterDate));
@@ -102,14 +138,18 @@ function pagesSection(): MetadataRoute.Sitemap {
   const dictionaryDate = lastChanged('data/dictionary.ts', 'app/dictionary/[id]/page.tsx');
   const dictionaryRoutes = dictionary.map((d) => entry(`/dictionary/${d.id}`, dictionaryDate));
 
-  const conceptDate = lastChanged('data/concept-details.ts', 'app/concepts/[id]/page.tsx');
-  const conceptRoutes = getAllConceptDetails().map((c) => entry(`/concepts/${c.id}`, conceptDate));
+  const conceptDate = lastChanged('data/concept-details.ts', 'data/knowledge-graph.ts', 'app/concepts/[id]/page.tsx');
+  const detailIds = getAllConceptDetails().map((c) => c.id);
+  const conceptIds = detailIds.concat(graphPageIds().filter((id) => detailIds.indexOf(id) === -1));
+  const conceptRoutes = conceptIds.map((id) => entry(`/concepts/${id}`, conceptDate));
 
   const courseDate = lastChanged('data/learning-paths.ts', 'app/learn/[courseId]/page.tsx');
   const courseRoutes = learningPaths.map((p) => entry(`/learn/${p.id}`, courseDate));
 
-  const journeyDate = lastChanged('data/reading-journeys.ts', 'app/journeys/[id]/page.tsx');
-  const journeyRoutes = READING_JOURNEYS.map((j) => entry(`/journeys/${j.id}`, journeyDate));
+  const journeyDate = lastChanged('data/reading-journeys.ts', 'app/learn/journeys/[id]/page.tsx');
+  const journeyRoutes = READING_JOURNEYS
+    .filter(isJourneyIndexable)
+    .map((j) => entry(`/learn/journeys/${j.id}`, journeyDate));
 
   const ashtavakraDate = lastChanged('app/ashtavakra/[chapter]/page.tsx');
   const ashtavakraRoutes = publishedChapterNumbers().map((n) => entry(`/ashtavakra/${n}`, ashtavakraDate));
@@ -120,7 +160,25 @@ function pagesSection(): MetadataRoute.Sitemap {
   const festivalDate = lastChanged('data/festivals.ts', 'app/festivals/[id]/page.tsx');
   const festivalRoutes = festivals.map((f) => entry(`/festivals/${f.id}`, festivalDate));
 
-  return [...staticRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...topicRoutes, ...characterRoutes, ...dictionaryRoutes];
+  const mantraDate = lastChanged('data/mantras.ts', 'app/mantras/[slug]/page.tsx');
+  const mantraRoutes = SACRED_MANTRAS.map((m) => entry(`/mantras/${m.slug}`, mantraDate));
+
+  const nakshatraDate = lastChanged('lib/panchang.ts', 'app/panchang/nakshatras/[slug]/page.tsx');
+  const nakshatraRoutes = NAKSHATRA_DATA.map((n) => entry(`/panchang/nakshatras/${nakshatraSlug(n.name)}`, nakshatraDate));
+
+  const tithiDate = lastChanged('lib/panchang.ts', 'app/panchang/tithis/[slug]/page.tsx');
+  const tithiRoutes = UNIQUE_TITHI_ARCHETYPES.map((t) => entry(`/panchang/tithis/${t.slug}`, tithiDate));
+
+  const yogaDate = lastChanged('lib/panchang.ts', 'app/panchang/yogas/[slug]/page.tsx');
+  const yogaRoutes = YOGA_DATA.map((y) => entry(`/panchang/yogas/${y.slug}`, yogaDate));
+
+  const karanaDate = lastChanged('lib/panchang.ts', 'app/panchang/karanas/[slug]/page.tsx');
+  const karanaRoutes = getAllKaranas().map((k) => entry(`/panchang/karanas/${k.slug}`, karanaDate));
+
+  const varaDate = lastChanged('lib/panchang.ts', 'app/panchang/varas/[slug]/page.tsx');
+  const varaRoutes = VARA_DATA.map((v) => entry(`/panchang/varas/${v.slug}`, varaDate));
+
+  return [...staticRoutes, ...mantraRoutes, ...nakshatraRoutes, ...tithiRoutes, ...yogaRoutes, ...karanaRoutes, ...varaRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
 }
 
 /** Scripture landing pages and chapter pages (all seeded + curated chapters), dated by when the scripture's text or commentary last changed. */
@@ -130,13 +188,17 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
   for (const meta of getAllScriptures()) {
     const date = scriptureLastChanged(meta.id);
     scriptures.push(entry(`/scripture/${meta.id}`, date));
-    if (meta.id === 'bhagavadgita') {
-      scriptures.push(entry('/scripture/bhagavadgita/summary', lastChanged('app/scripture/[id]/summary/page.tsx', 'data/gita-chapter-summaries.ts')));
+    const summaries = getChapterSummaryCollection(meta.id);
+    if (summaries) {
+      scriptures.push(entry(`/scripture/${meta.id}/summary`, lastChanged('app/scripture/[id]/summary/page.tsx', summaries.source)));
     }
 
     const chapterSet = new Set<number>(readSeededChapterNumbers(meta.id));
     for (const ch of getScriptureChapters(meta.id)) chapterSet.add(ch.id);
+    // A seeded chapter published without verses (its text is being added, scripts/lib/filler-chapters.ts) is noindex.
+    const emptySeeded = new Set(readSeededChapterPreviews(meta.id).filter((c) => c.verseCount === 0).map((c) => c.id));
     for (const chId of Array.from(chapterSet).sort((a, b) => a - b)) {
+      if (emptySeeded.has(chId)) continue;
       chapters.push(entry(`/scripture/${meta.id}/chapter/${chId}`, date));
       // Parts 2…N of chapters too large for one page (lib/chapter-parts).
       for (const part of chapterParts(meta.id, chId)?.slice(1) ?? []) {
@@ -149,9 +211,10 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
 }
 
 function versesSection(): MetadataRoute.Sitemap {
-  const scriptureVerses = verseStaticParams().map((p) =>
-    entry(`/scripture/${p.id}/chapter/${p.chapterId}/verse/${p.verseId}`, scriptureLastChanged(p.id)),
-  );
+  // A verse page with no meaning or explanation yet is noindex (see the verse page); keep it out of the sitemap too.
+  const scriptureVerses = verseStaticParams()
+    .filter((p) => verseMeaningById(p.id, Number(p.chapterId), p.verseId)?.any)
+    .map((p) => entry(`/scripture/${p.id}/chapter/${p.chapterId}/verse/${p.verseId}`, scriptureLastChanged(p.id)));
   // Ashtavakra Gita has its own verse pages (/ashtavakra/<chapter>/<verse>/).
   const ashtavakraDate = lastChanged('app/ashtavakra/[chapter]/[verse]/page.tsx');
   const ashtavakraVerses = publishedChapterNumbers().flatMap((c) =>

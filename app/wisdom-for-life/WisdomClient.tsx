@@ -22,31 +22,32 @@ import {
   wisdomCategories,
   type WisdomTopic,
 } from '@/data/wisdom-for-life';
-import { lifeProblemIndex } from '@/data/wisdom-life-problems';
+import {
+  LIFE_DISCOVERY_INTENTS,
+  LIFE_DISCOVERY_QUICK_PICKS,
+  type LifeDiscoveryKind,
+} from '@/data/life-discovery-intents';
 import { TopicIllustration } from './TopicIllustrations';
 import { FadeUp } from '@/app/components/motion/primitives';
+
+const DISCOVERY_KIND_ORDER: LifeDiscoveryKind[] = [
+  'emotion',
+  'situation',
+  'question',
+  'practice',
+];
+
+const DISCOVERY_KIND_LABELS: Record<LifeDiscoveryKind, { en: string; hi: string }> = {
+  emotion: { en: 'Emotions & feelings', hi: 'भाव और मनःस्थिति' },
+  situation: { en: 'Life situations', hi: 'जीवन-परिस्थितियाँ' },
+  question: { en: 'Questions', hi: 'प्रश्न' },
+  practice: { en: 'Practices', hi: 'अभ्यास' },
+};
 
 export function WisdomClient() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [activeFeeling, setActiveFeeling] = useState<string | null>(null);
-
-  // Quick feelings to immediately jump to scriptural answers
-  const quickFeelings = [
-    { label: 'Anxious / Overthinking', labelHi: 'व्याकुल / बेचैन', topicId: 'stress-and-worry' },
-    { label: 'Afraid of the Future', labelHi: 'भविष्य का भय', topicId: 'fear-and-courage' },
-    { label: 'Burning with Frustration', labelHi: 'क्रोध / अशांति', topicId: 'anger' },
-    { label: 'Heartbroken / Bereaved', labelHi: 'शोक / वियोग', topicId: 'grief-and-loss' },
-    { label: 'Paralyzed by Choices', labelHi: 'अनिर्णय / द्वंद्व', topicId: 'duty-and-decision-making' },
-    { label: 'Lacking Willpower', labelHi: 'आलस्य / संकल्प की कमी', topicId: 'discipline' },
-    { label: 'Distracted & Scattered', labelHi: 'मन का भटकाव', topicId: 'concentration' },
-    { label: 'Burdened by Leadership', labelHi: 'नेतृत्व का भार', topicId: 'leadership' },
-    { label: 'Family Friction', labelHi: 'पारिवारिक तनाव', topicId: 'family-responsibilities' },
-    { label: 'Strained Relationships', labelHi: 'सम्बन्धों में तनाव / संवेदनशीलता', topicId: 'relationships' },
-    { label: 'Spiritually Exhausted', labelHi: 'अहंकार की थकान', topicId: 'devotion' },
-    { label: 'Who Am I Really?', labelHi: 'सच्चा आत्म-स्वरूप', topicId: 'self-knowledge' },
-    { label: 'What is My Purpose?', labelHi: 'जीवन का परम लक्ष्य', topicId: 'meaning-of-life' },
-  ];
+  const [activeIntent, setActiveIntent] = useState<string | null>(null);
 
   const filteredTopics = useMemo(() => {
     return wisdomTopics.filter((topic) => {
@@ -55,8 +56,8 @@ export function WisdomClient() {
         return false;
       }
 
-      // Quick feeling filter
-      if (activeFeeling && topic.id !== activeFeeling) {
+      // Explicitly selected study topic; never inferred from text or behavior.
+      if (activeIntent && topic.slug !== activeIntent) {
         return false;
       }
 
@@ -74,6 +75,10 @@ export function WisdomClient() {
       const matchKeywords = topic.searchKeywords.some((k) =>
         k.toLowerCase().includes(q)
       );
+      const intent = LIFE_DISCOVERY_INTENTS.find((item) => item.slug === topic.slug);
+      const matchIntentTerms = intent?.searchTerms.some((term) =>
+        term.toLowerCase().includes(q),
+      ) ?? false;
       const matchVerses = topic.verses.some(
         (v) =>
           v.scriptureName.toLowerCase().includes(q) ||
@@ -82,14 +87,14 @@ export function WisdomClient() {
           v.literalTranslationHi.includes(q)
       );
 
-      return matchTitle || matchDesc || matchKeywords || matchVerses;
+      return matchTitle || matchDesc || matchKeywords || matchIntentTerms || matchVerses;
     });
-  }, [selectedCategory, searchQuery, activeFeeling]);
+  }, [selectedCategory, searchQuery, activeIntent]);
 
   const clearFilters = () => {
     setSelectedCategory('all');
     setSearchQuery('');
-    setActiveFeeling(null);
+    setActiveIntent(null);
   };
 
   return (
@@ -101,7 +106,7 @@ export function WisdomClient() {
             {/* Live Search Input */}
             <div className="relative flex-1">
               <label htmlFor="wisdom-search" className="sr-only">
-                Search scriptures by life challenge or feeling
+                Search by life topic, scripture, or passage
               </label>
               <Search
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-dharma-muted pointer-events-none"
@@ -113,9 +118,9 @@ export function WisdomClient() {
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
-                  if (activeFeeling) setActiveFeeling(null);
+                  if (activeIntent) setActiveIntent(null);
                 }}
-                placeholder="What are you experiencing right now? (e.g., anxiety, anger, fear of loss, purpose...)"
+                placeholder="Search a question, topic, scripture, or passage..."
                 className="w-full rounded-2xl border border-dharma-border bg-dharma-bg/80 pl-12 pr-10 py-3.5 text-sm sm:text-base text-dharma-text placeholder:text-dharma-muted focus:border-saffron-500 focus:outline-none focus:ring-2 focus:ring-saffron-500/20 transition-all shadow-inner"
               />
               {searchQuery && (
@@ -143,55 +148,62 @@ export function WisdomClient() {
           </div>
 
           <div className="mt-5 pt-4 border-t border-dharma-border">
-            <p className="mb-2.5 text-xs font-bold uppercase tracking-wider text-dharma-muted" lang="hi">
-              जीवन की समस्या से श्लोक तक
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {lifeProblemIndex.map((item) => (
-                <Link
-                  key={item.en}
-                  href={`/wisdom-for-life/${item.slug}/`}
-                  className="inline-flex min-h-11 items-center rounded-xl border border-dharma-border bg-dharma-bg/60 px-3 text-sm text-dharma-text"
-                >
-                  <span>{item.en}</span>
-                  <span className="ml-1.5 text-dharma-text-secondary" lang="hi">({item.hi})</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Emotional Quick Selectors ("I am experiencing...") */}
-          <div className="mt-5 pt-4 border-t border-dharma-border">
             <div className="flex items-center gap-2 mb-2.5">
               <HeartHandshake className="w-4 h-4 text-saffron-600" />
-              <p className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                What are you experiencing right now? / आप इस समय क्या अनुभव कर रहे हैं?
+              <p id="life-discovery-heading" className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                Choose a study starting point / अध्ययन का विषय चुनें
               </p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {quickFeelings.map((f) => {
-                const isSelected = activeFeeling === f.topicId;
+            <p className="mb-3 text-xs leading-relaxed text-dharma-muted">
+              Explore a question, situation, or practice through selected passages and sources. These are study pathways, not diagnosis or treatment.
+              <span lang="hi" className="ml-1 font-devanagari">चयनित श्लोकों और स्रोतों के साथ जीवन-विषय का अध्ययन करें। यह निदान या उपचार नहीं है।</span>
+            </p>
+            <div aria-labelledby="life-discovery-heading" className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              {DISCOVERY_KIND_ORDER.map((kind) => {
+                const kindId = `life-discovery-${kind}`;
+                const kindLabel = DISCOVERY_KIND_LABELS[kind];
+                const intents = LIFE_DISCOVERY_QUICK_PICKS.filter((intent) => intent.kind === kind);
+
                 return (
-                  <button
-                    key={f.topicId}
-                    type="button"
-                    onClick={() => {
-                      if (isSelected) {
-                        setActiveFeeling(null);
-                      } else {
-                        setActiveFeeling(f.topicId);
-                        setSearchQuery('');
-                      }
-                    }}
-                    className={`text-xs px-3 py-1.5 rounded-xl border transition-all flex items-center gap-1.5 ${
-                      isSelected
-                        ? 'border-saffron-600 bg-saffron-600 text-white shadow-md'
-                        : 'border-dharma-border bg-dharma-bg/60 text-dharma-text hover:border-saffron-400 hover:bg-saffron-500/5'
-                    }`}
+                  <section
+                    key={kind}
+                    role="group"
+                    aria-labelledby={`${kindId}-heading`}
+                    className="min-w-0 rounded-2xl border border-dharma-border/70 bg-dharma-bg/35 p-3"
                   >
-                    <span>{f.label}</span>
-                    <span className="text-[10px] opacity-75 font-devanagari">({f.labelHi})</span>
-                  </button>
+                    <h3 id={`${kindId}-heading`} className="mb-2 text-xs font-semibold text-dharma-muted">
+                      {kindLabel.en}
+                      <span className="ml-1.5 font-devanagari" lang="hi">· {kindLabel.hi}</span>
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {intents.map((intent) => {
+                        const isSelected = activeIntent === intent.slug;
+                        return (
+                          <button
+                            key={intent.slug}
+                            type="button"
+                            aria-pressed={isSelected}
+                            onClick={() => {
+                              if (isSelected) {
+                                setActiveIntent(null);
+                              } else {
+                                setActiveIntent(intent.slug);
+                                setSearchQuery('');
+                              }
+                            }}
+                            className={`inline-flex min-h-11 max-w-full items-center gap-1.5 rounded-xl border px-3 text-left text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 ${
+                              isSelected
+                                ? 'border-saffron-600 bg-saffron-600 text-white'
+                                : 'border-dharma-border bg-dharma-bg/60 text-dharma-text hover:border-saffron-400'
+                            }`}
+                          >
+                            <span>{intent.labelEn}</span>
+                            <span className="text-[10px] opacity-75 font-devanagari" lang="hi">({intent.labelHi})</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </section>
                 );
               })}
             </div>
@@ -209,7 +221,7 @@ export function WisdomClient() {
             </h2>
           </div>
 
-          {(selectedCategory !== 'all' || searchQuery || activeFeeling) && (
+          {(selectedCategory !== 'all' || searchQuery || activeIntent) && (
             <button
               type="button"
               onClick={clearFilters}
@@ -230,7 +242,7 @@ export function WisdomClient() {
                 type="button"
                 onClick={() => {
                   setSelectedCategory(cat.key);
-                  setActiveFeeling(null);
+                  setActiveIntent(null);
                 }}
                 className={`whitespace-nowrap px-4 py-2 rounded-2xl text-xs sm:text-sm font-medium border transition-all ${
                   isSelected
@@ -239,7 +251,8 @@ export function WisdomClient() {
                 }`}
               >
                 <span>{cat.labelEn}</span>
-                <span className="ml-1.5 opacity-80 font-devanagari text-xs">
+                {/* No dimming on the selected saffron chip: at 80% it fell to 3.52:1. */}
+                <span lang="hi" className={`ml-1.5 font-devanagari text-xs ${isSelected ? '' : 'opacity-80'}`}>
                   {cat.labelHi}
                 </span>
               </button>
@@ -268,15 +281,23 @@ export function WisdomClient() {
             </button>
           </div>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredTopics.map((topic) => (
-              <WisdomTopicCard key={topic.id} topic={topic} />
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            {filteredTopics.map((topic, index) => {
+              const isFeatured = index % 4 === 0;
+              return (
+                <WisdomTopicCard
+                  key={topic.id}
+                  topic={topic}
+                  isFeatured={isFeatured}
+                  className={isFeatured ? 'md:col-span-8' : 'md:col-span-4'}
+                />
+              );
+            })}
           </div>
         )}
 
         {/* ── Mandatory Medical & Contextual Disclaimer ─────────────── */}
-        <div className="mt-16 rounded-3xl border border-amber-500/30 bg-amber-500/5 dark:bg-amber-950/20 p-6 sm:p-8 backdrop-blur-sm">
+        <div className="mt-16 rounded-3xl hairline-warm-border bg-amber-500/5 dark:bg-amber-950/20 p-6 sm:p-8 backdrop-blur-sm manuscript-surface">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-700 dark:text-amber-400 shrink-0">
               <ShieldAlert className="w-6 h-6" />
@@ -284,7 +305,7 @@ export function WisdomClient() {
             <div className="space-y-2">
               <h3 className="text-base sm:text-lg font-serif font-bold text-dharma-text flex items-center gap-2">
                 <span>शास्त्रीय मार्गदर्शन एवं संदर्भ सूचना</span>
-                <span className="text-xs font-sans font-semibold text-amber-700 dark:text-amber-400 uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">
+                <span className="editorial-meta-pill text-amber-800 dark:text-amber-400 bg-amber-500/10 border-amber-500/20">
                   Important Contextual Note
                 </span>
               </h3>
@@ -310,72 +331,92 @@ export function WisdomClient() {
   );
 }
 
-function WisdomTopicCard({ topic }: { topic: WisdomTopic }) {
+function WisdomTopicCard({
+  topic,
+  isFeatured = false,
+  className = '',
+}: {
+  topic: WisdomTopic;
+  isFeatured?: boolean;
+  className?: string;
+}) {
   return (
     <article
       id={`topic-card-${topic.slug}`}
-      className="group relative flex flex-col rounded-3xl border border-dharma-border bg-dharma-card hover:border-saffron-300 dark:hover:border-saffron-500/50 hover:shadow-2xl transition-all duration-300 overflow-hidden"
+      className={`group relative flex flex-col rounded-3xl hairline-warm-border bg-dharma-card manuscript-surface hover:border-saffron-400/60 dark:hover:border-saffron-500/50 hover:shadow-2xl transition-all duration-300 overflow-hidden ${className}`}
     >
       {/* Top accent gradient bar */}
-      <div className={`h-2 w-full bg-gradient-to-r ${topic.colorGradient}`} />
+      <div className={`h-1.5 w-full bg-gradient-to-r ${topic.colorGradient}`} />
 
-      {/* Card Header with Calm Illustration */}
-      <div className="p-6 pb-4 flex flex-col flex-grow">
-        <div className="flex items-start justify-between gap-4 mb-4">
-          <div className="p-2 rounded-2xl bg-dharma-bg/80 border border-dharma-border/60 shadow-sm flex items-center justify-center group-hover:scale-105 transition-transform">
-            <TopicIllustration topicId={topic.id} size={84} />
-          </div>
+      {/* Main card body */}
+      <div className={`p-6 sm:p-7 flex flex-col flex-grow ${isFeatured ? 'md:grid md:grid-cols-12 md:gap-8 md:items-start' : ''}`}>
+        <div className={isFeatured ? 'md:col-span-4 flex flex-col items-start' : ''}>
+          <div className="flex items-start justify-between w-full gap-4 mb-4">
+            <div className="p-3 rounded-2xl bg-stone-100/80 dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800/80 shadow-sm flex items-center justify-center group-hover:scale-105 transition-transform">
+              <TopicIllustration topicId={topic.id} size={isFeatured ? 96 : 80} />
+            </div>
 
-          <div className="text-right">
-            <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300 bg-saffron-500/10 px-2.5 py-1 rounded-full border border-saffron-500/20 mb-1.5">
-              {topic.categoryLabelEn}
-            </span>
-            <div className="flex items-center justify-end gap-1 text-[11px] text-dharma-muted">
-              <Clock className="w-3 h-3" />
-              <span>{topic.readingTimeMinutes} min read</span>
+            <div className="text-right">
+              <span className="editorial-meta-pill text-saffron-800 dark:text-saffron-300 bg-saffron-500/10 border-saffron-500/20 mb-1.5">
+                {topic.categoryLabelEn}
+              </span>
+              <div className="flex items-center justify-end gap-1 font-mono text-[11px] text-dharma-muted">
+                <Clock className="w-3 h-3" />
+                <span>{topic.readingTimeMinutes} min</span>
+              </div>
             </div>
           </div>
+
+          {isFeatured && (
+            <div className="hidden md:flex items-center gap-1.5 text-xs text-saffron-700 dark:text-saffron-400 font-medium pt-2">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Editorial Spotlight</span>
+            </div>
+          )}
         </div>
 
-        {/* Titles */}
-        <div className="mb-3">
-          <h3 className="text-2xl font-serif font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-400 transition-colors">
-            {topic.titleEn}
-          </h3>
-          <p lang="hi" className="text-lg font-devanagari font-semibold text-rose-700 dark:text-rose-400 mt-0.5">
-            {topic.titleHi}
-          </p>
-          <p lang="sa" className="text-xs font-devanagari text-dharma-muted italic mt-1 line-clamp-1">
-            {topic.sanskritSubtitle}
-          </p>
-        </div>
+        {/* Content column */}
+        <div className={`flex flex-col flex-grow ${isFeatured ? 'md:col-span-8' : ''}`}>
+          {/* Titles */}
+          <div className="mb-3">
+            <h3 className={`font-serif font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-400 transition-colors ${isFeatured ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'}`}>
+              {topic.titleEn}
+            </h3>
+            <p lang="hi" className="text-base sm:text-lg font-devanagari font-semibold text-rose-700 dark:text-rose-400 mt-0.5">
+              {topic.titleHi}
+            </p>
+            <p lang="sa" className="text-xs font-devanagari text-dharma-muted italic mt-1 line-clamp-1">
+              {topic.sanskritSubtitle}
+            </p>
+          </div>
 
-        {/* Short Premise */}
-        <p className="text-sm text-dharma-muted leading-relaxed line-clamp-3 mb-4">
-          {topic.shortDescEn}
-        </p>
-
-        {/* Scripture Citation Preview Badges */}
-        <div className="mt-auto pt-3 border-t border-dharma-border/60">
-          <p className="text-[11px] uppercase tracking-wider font-bold text-dharma-muted mb-2 flex items-center gap-1.5">
-            <BookOpen className="w-3.5 h-3.5 text-saffron-600" />
-            <span>Curated Verses ({topic.verses.length})</span>
+          {/* Short Premise */}
+          <p className="text-sm text-dharma-muted leading-relaxed line-clamp-3 mb-4">
+            {topic.shortDescEn}
           </p>
-          <div className="flex flex-wrap gap-1.5">
-            {topic.verses.map((verse) => (
-              <span
-                key={verse.id}
-                className="text-[11px] font-medium bg-dharma-bg px-2.5 py-1 rounded-lg border border-dharma-border text-dharma-text/90"
-              >
-                {verse.referenceDisplay}
-              </span>
-            ))}
+
+          {/* Scripture Citation Preview Badges */}
+          <div className="mt-auto pt-3 border-t border-stone-200/70 dark:border-stone-800/70">
+            <p className="font-mono text-[10px] uppercase tracking-wider font-semibold text-dharma-muted mb-2 flex items-center gap-1.5">
+              <BookOpen className="w-3.5 h-3.5 text-saffron-600" />
+              <span>Curated Verses ({topic.verses.length})</span>
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {topic.verses.map((verse) => (
+                <span
+                  key={verse.id}
+                  className="editorial-meta-pill bg-stone-100/90 dark:bg-stone-900/90 border-stone-300/70 dark:border-stone-800 text-stone-700 dark:text-stone-300"
+                >
+                  {verse.referenceDisplay}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Card Footer Action */}
-      <div className="px-6 py-4 bg-dharma-bg/40 border-t border-dharma-border flex items-center justify-between">
+      <div className="px-6 py-3.5 bg-stone-50/60 dark:bg-stone-900/60 border-t border-stone-200/70 dark:border-stone-800/70 flex items-center justify-between">
         <span className="text-xs text-dharma-muted font-devanagari font-medium">
           सम्पूर्ण शास्त्रीय समाधान
         </span>

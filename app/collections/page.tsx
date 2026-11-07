@@ -44,10 +44,46 @@ export default function CollectionsPage() {
     </section>
   );
 
+  // The reading lists are static too, so they are exported with the header.
+  const playlists = (
+    <section aria-labelledby="playlists-h" className="rounded-2xl border border-dharma-border bg-dharma-card p-5">
+      <h2 id="playlists-h" className="font-serif text-2xl font-bold text-dharma-text">
+        <span lang="hi" className="font-devanagari">पढ़ने की सूचियाँ</span>
+      </h2>
+      <p lang="hi" className="mt-2 text-sm leading-relaxed text-dharma-text">
+        ये सूचियाँ पहले से बने पृष्ठ खोलती हैं। खाता सर्वर नहीं है। दूसरी ब्राउज़र पर ले जाने के लिए साधना पृष्ठ की बैकअप फ़ाइल उपयोग करें।
+      </p>
+      <p className="mt-2 text-sm">
+        <Link href="/practice" className="font-semibold text-saffron-800 underline underline-offset-2">साधना · backup file</Link>
+      </p>
+      <ul className="mt-4 grid gap-4 md:grid-cols-2">
+        {STUDY_PLAYLISTS.map((playlist) => (
+          <li key={playlist.id} className="rounded-xl border border-dharma-border bg-dharma-bg p-4">
+            <h3 className="font-serif text-lg font-bold text-dharma-text">
+              <span lang="hi" className="font-devanagari">{playlist.titleHi}</span>
+              <span className="font-normal text-dharma-text-secondary"> · {playlist.titleEn}</span>
+            </h3>
+            <p lang="hi" className="mt-1 text-sm text-dharma-text">{playlist.noteHi}</p>
+            <ul className="mt-2 space-y-1">
+              {playlist.links.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm font-semibold text-saffron-800 underline underline-offset-2">
+                    <span lang="hi" className="font-devanagari">{link.titleHi}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+
   if (!progress.hydrated) {
     return (
       <main className="min-h-screen bg-dharma-bg">
         {header}
+        <div className="max-w-6xl mx-auto px-6 pt-10">{playlists}</div>
         <div className="flex min-h-[300px] items-center justify-center" aria-busy="true">
           <div className="h-8 w-8 animate-spin rounded-full border-4 border-saffron-200 border-t-saffron-600" />
         </div>
@@ -73,7 +109,7 @@ export default function CollectionsPage() {
       ...col.verseRefs.map((r, i) => (
         `### ${i + 1}. ${r.scriptureTitle} — ${r.chapterTitle}, Verse ${r.verseId}\n> ${r.sanskrit}\n\n${r.translation}\n`
       )),
-      '---\n*Exported from Dharma Granth (dharmagranth.in)*',
+      '---\n*Exported from Dharma Granth (dharmagranth.dev)*',
     ];
     navigator.clipboard.writeText(lines.filter(Boolean).join('\n')).then(() => {
       setCopiedId(col.id);
@@ -94,6 +130,9 @@ export default function CollectionsPage() {
       {header}
 
       <div className="max-w-6xl mx-auto px-6 py-10 space-y-10">
+        {/* First, as in the exported HTML, so nothing above it moves on load. */}
+        {playlists}
+
         {/* Stats row */}
         <FadeUpOnView>
           <div className="grid grid-cols-3 gap-4">
@@ -114,38 +153,6 @@ export default function CollectionsPage() {
             </div>
           </div>
         </FadeUpOnView>
-
-        <section aria-labelledby="playlists-h" className="rounded-2xl border border-dharma-border bg-dharma-card p-5">
-          <h2 id="playlists-h" className="font-serif text-2xl font-bold text-dharma-text">
-            <span lang="hi" className="font-devanagari">पढ़ने की सूचियाँ</span>
-          </h2>
-          <p lang="hi" className="mt-2 text-sm leading-relaxed text-dharma-text">
-            ये सूचियाँ पहले से बने पृष्ठ खोलती हैं। खाता सर्वर नहीं है। दूसरी ब्राउज़र पर ले जाने के लिए साधना पृष्ठ की बैकअप फ़ाइल उपयोग करें।
-          </p>
-          <p className="mt-2 text-sm">
-            <Link href="/practice" className="font-semibold text-saffron-800 underline underline-offset-2">साधना · backup file</Link>
-          </p>
-          <ul className="mt-4 grid gap-4 md:grid-cols-2">
-            {STUDY_PLAYLISTS.map((playlist) => (
-              <li key={playlist.id} className="rounded-xl border border-dharma-border bg-dharma-bg p-4">
-                <h3 className="font-serif text-lg font-bold text-dharma-text">
-                  <span lang="hi" className="font-devanagari">{playlist.titleHi}</span>
-                  <span className="font-normal text-dharma-text-secondary"> · {playlist.titleEn}</span>
-                </h3>
-                <p lang="hi" className="mt-1 text-sm text-dharma-text">{playlist.noteHi}</p>
-                <ul className="mt-2 space-y-1">
-                  {playlist.links.map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href} className="text-sm font-semibold text-saffron-800 underline underline-offset-2">
-                        <span lang="hi" className="font-devanagari">{link.titleHi}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
-        </section>
 
         {/* Create collection button */}
         <div className="flex items-center justify-between">
@@ -367,7 +374,7 @@ export default function CollectionsPage() {
                   </div>
                   <p className="text-sm text-dharma-text leading-relaxed">{n.text}</p>
                   <p className="text-[10px] text-dharma-muted mt-2">
-                    {new Date(n.updatedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                    {new Date(n.updatedAt).toLocaleDateString(undefined, { numberingSystem: 'latn', month: 'short', day: 'numeric', year: 'numeric' })}
                   </p>
                 </div>
               ))}

@@ -6,6 +6,9 @@ import {
   getAllConceptDetails,
   getConceptDetail,
 } from '@/data/concept-details';
+import { graphPageIds } from '@/data/knowledge-graph';
+import { buildGraphPage } from '@/lib/knowledge-graph';
+import { GraphConceptPage, GraphConceptSections } from '../GraphConceptPage';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { JsonLd } from '@/app/components/JsonLd';
 import { pageLd, articleLd, definedTermLd } from '@/lib/jsonld';
@@ -27,43 +30,95 @@ import { ShareChips } from '@/app/components/ShareChips';
 import { InteractiveVisualLayer } from '@/app/components/visuals/InteractiveVisualLayer';
 
 interface PageProps {
-  params: Promise<{ id: string }> | { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function generateStaticParams() {
-  const all = getAllConceptDetails();
-  return all.map((c) => ({ id: c.id }));
+  const detailIds = getAllConceptDetails().map((c) => c.id);
+  const ids = detailIds.concat(graphPageIds().filter((id) => detailIds.indexOf(id) === -1));
+  return ids.map((id) => ({ id }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolved = await params;
   const concept = getConceptDetail(resolved.id);
+  const graph = buildGraphPage(resolved.id);
   if (!concept) {
-    return { title: 'अवधारणा नहीं मिली (Concept Not Found) — Dharma Granth' };
+    if (!graph) return { title: 'अवधारणा नहीं मिली (Concept Not Found)' };
+    const title = `${graph.label} (${graph.sanskrit}) Meaning in Hindi & English — शास्त्रीय दर्शन`;
+    const description = clipDescription(
+      [graph.overviewHi, graph.overviewEn].filter(Boolean).join(' — ') || graph.label,
+    );
+    const keywords = [
+      graph.label,
+      graph.sanskrit,
+      `${graph.label} meaning in hindi`,
+      `${graph.label} in hinduism`,
+      `${graph.sanskrit} का अर्थ`,
+      'dharma granth',
+    ];
+    return {
+      title,
+      description,
+      keywords,
+      alternates: { canonical: `/concepts/${graph.id}/` },
+      openGraph: {
+        type: 'article',
+        locale: 'hi_IN',
+        alternateLocale: ['en_US'],
+        title: `${title} — Dharma Granth`,
+        description,
+        url: `https://dharmagranth.dev/concepts/${graph.id}/`,
+        images: [DEFAULT_OG_IMAGE],
+      },
+      twitter: { card: 'summary_large_image', title, description, images: [DEFAULT_OG_IMAGE.url] },
+    };
   }
 
-  const title = `${concept.label} (${concept.sanskrit}) — शास्त्रीय अर्थ व दर्शन`;
-  const description = clipDescription(concept.simpleDefinition.en);
+  const title = `${concept.label} (${concept.sanskrit}) Meaning in Hindi & English — शास्त्रीय अर्थ`;
+  const description = clipDescription(
+    `${concept.sanskrit} (${concept.label}): ${concept.simpleDefinition.hi} ${concept.simpleDefinition.en}`,
+  );
+  const keywords = [
+    concept.label,
+    concept.sanskrit,
+    `${concept.label} meaning in hindi`,
+    `${concept.label} in hindi`,
+    `${concept.sanskrit} का अर्थ`,
+    `what is ${concept.label}`,
+    `${concept.label} in hinduism`,
+    `${concept.label} definition`,
+    `${concept.label} etymology`,
+    'hindu philosophy',
+    'dharma granth',
+  ];
 
   return {
     title,
     description,
+    keywords,
     alternates: { canonical: `/concepts/${concept.id}/` },
     openGraph: {
+      type: 'article',
+      locale: 'hi_IN',
+      alternateLocale: ['en_US'],
       title: `${title} — Dharma Granth`,
       description,
-      url: `https://dharmagranth.in/concepts/${concept.id}/`,
+      url: `https://dharmagranth.dev/concepts/${concept.id}/`,
       images: [DEFAULT_OG_IMAGE],
     },
+    twitter: { card: 'summary_large_image', title, description, images: [DEFAULT_OG_IMAGE.url] },
   };
 }
 
 export default async function ConceptDetailPage({ params }: PageProps) {
   const resolved = await params;
   const concept = getConceptDetail(resolved.id);
+  const graph = buildGraphPage(resolved.id);
 
   if (!concept) {
-    notFound();
+    if (!graph) notFound();
+    return <GraphConceptPage model={graph} />;
   }
 
   const categoryLabels: Record<string, { en: string; hi: string }> = {
@@ -75,6 +130,47 @@ export default async function ConceptDetailPage({ params }: PageProps) {
   };
 
   const cat = categoryLabels[concept.category] || { en: 'Philosophy', hi: 'दर्शन' };
+
+  const faqQuestions = [
+    {
+      '@type': 'Question',
+      name: `What is ${concept.label} (${concept.sanskrit}) in Hindu philosophy?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: concept.simpleDefinition.en,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: `${concept.sanskrit} (${concept.label}) का वास्तविक शास्त्रीय अर्थ क्या है?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: concept.simpleDefinition.hi,
+      },
+    },
+    concept.derivation && {
+      '@type': 'Question',
+      name: `What is the Sanskrit etymology and root of the word ${concept.label}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Root: ${concept.derivation.root} (${concept.derivation.rootMeaning} / ${concept.derivation.rootMeaningHi}). ${concept.derivation.etymologyEn || concept.derivation.etymologyHi}`,
+      },
+    },
+    concept.misunderstandings?.length > 0 && {
+      '@type': 'Question',
+      name: `What is a common misconception about ${concept.label}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Misconception: ${concept.misunderstandings[0].myth}\nClassical Clarification: ${concept.misunderstandings[0].correction}`,
+      },
+    },
+  ].filter(Boolean);
+
+  const jsonLdFaq = faqQuestions.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqQuestions,
+  } : null;
 
   return (
     <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
@@ -94,6 +190,13 @@ export default async function ConceptDetailPage({ params }: PageProps) {
           }),
         )}
       />
+      {jsonLdFaq && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+        />
+      )}
       {/* ── Breadcrumb & Navigation Header ─────────────────────────────────── */}
       <header className="border-b border-dharma-border bg-dharma-card/60 backdrop-blur-md sticky top-16 z-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between text-xs sm:text-sm text-dharma-muted">
@@ -120,18 +223,18 @@ export default async function ConceptDetailPage({ params }: PageProps) {
       {/* ── Hero Section ─────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-saffron-950/20 via-transparent to-transparent pt-10 sm:pt-14 pb-12 border-b border-dharma-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-          {/* Sanskrit Calligraphy Badge */}
-          <div className="inline-flex flex-col items-center mb-6">
-            <p
+          {/* Sanskrit Calligraphy Badge: the page's one H1 (term, then transliteration and English label) */}
+          <h1 className="inline-flex flex-col items-center mb-6 font-normal">
+            <span
               lang="sa"
-              className="font-devanagari text-6xl sm:text-7xl md:text-8xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-800 dark:from-saffron-400 dark:via-amber-300 dark:to-saffron-500 leading-tight drop-shadow-sm"
+              className="block font-devanagari text-6xl sm:text-7xl md:text-8xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-800 dark:from-saffron-400 dark:via-amber-300 dark:to-saffron-500 leading-tight drop-shadow-sm"
             >
               {concept.sanskrit}
-            </p>
-            <p className="text-base sm:text-lg text-dharma-muted tracking-widest uppercase font-serif mt-1">
+            </span>
+            <span className="block text-base sm:text-lg text-dharma-muted tracking-widest uppercase font-serif mt-1">
               {concept.transliteration} · {concept.label}
-            </p>
-          </div>
+            </span>
+          </h1>
 
           {/* Simple Definitions (Dual Language) */}
           <div className="bg-dharma-card/80 border border-dharma-border rounded-2xl p-6 sm:p-8 shadow-sm text-left max-w-3xl mx-auto space-y-4">
@@ -152,7 +255,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
             <ShareCardButton
               reference={concept.label}
               concept={{ term: concept.sanskrit, transliteration: concept.transliteration, definition: concept.simpleDefinition.en }}
-              url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in'}/concepts/${concept.id}`}
+              url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev'}/concepts/${concept.id}`}
             />
             <ShareChips
               title={`${concept.label} (${concept.sanskrit})`}
@@ -218,7 +321,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
           <div className="flex flex-wrap items-center justify-between gap-2 border-l-4 border-saffron-600 pl-4">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
-                Interactive Visual Learning Layer · चरण १०
+                Interactive Visual Learning Layer · चरण 10
               </p>
               <h2 id="visual-model-heading" className="text-2xl sm:text-3xl font-serif font-bold text-dharma-text">
                 दृश्य ज्ञान दर्शन (Sacred Visual Model)
@@ -228,7 +331,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
               href="/concepts/visuals"
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-saffron-700 dark:text-saffron-400 hover:underline min-h-[44px]"
             >
-              <span>१० मूल तत्त्वों का सम्पूर्ण दृश्य अन्वेषक</span>
+              <span>10 मूल तत्त्वों का सम्पूर्ण दृश्य अन्वेषक</span>
               <Compass className="w-4 h-4" />
             </Link>
           </div>
@@ -478,6 +581,8 @@ export default async function ConceptDetailPage({ params }: PageProps) {
             </div>
           </section>
         )}
+
+        {graph ? <GraphConceptSections model={graph} /> : null}
 
         {/* ── Section 7: Sources & Academic Citations ───────────────────────── */}
         <section aria-labelledby="sources-heading" className="p-6 rounded-2xl bg-dharma-card/50 border border-dharma-border space-y-3">

@@ -1,38 +1,28 @@
+import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { clipDescription } from '@/lib/meta-text';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ChapterVisitRecorder } from '@/app/components/ChapterVisitRecorder';
-import { RelatedTeachings } from '@/app/components/study/RelatedTeachings';
-import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
-import { NextTeachings, type NextCandidate } from '@/app/components/study/NextTeachings';
-import { VerseDiagrams } from '@/app/components/study/VerseDiagram';
-import { ModernScenarios } from '@/app/components/study/ModernScenarios';
 import { ReviewRequiredNotice } from '@/app/components/study/ReviewRequiredNotice';
-import { CONNECTIONS, verseKey } from '@/data/study-content';
-import { VerseRelatedSection } from '@/app/components/VerseRelatedSection';
+import { VerseAnswers } from '@/app/components/VerseAnswers';
 import { VerseReader } from '@/app/components/reader/VerseReader';
-import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
+import { getVerseInsight } from '@/lib/verse-insights';
+import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { getScriptureMeta } from '@/data/scriptures';
-import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
-import { readChapterCommentary, readSeededChapter, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
+import { readSeededChapter, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { verseStaticParams } from '@/lib/verse-pages';
+import { commentaryFor, verseMeaningSummary } from '@/lib/verse-meaning';
 import { verseOgPath, versePageHref, verseSlug } from '@/lib/verse-paths';
 import { scriptureLastChanged } from '@/lib/content-dates';
-import { cleanVerseField, verseLines } from '@/lib/verse-format';
-import { getVerseIntegrations } from '@/lib/verse-integrations';
+import { cleanVerseField, splitVyakhyaCommentary, verseLines, formatVerseRef, withPassageMeaning } from '@/lib/verse-format';
+import { resolveVerseKnowledge } from '@/lib/knowledge-graph';
 import { TrustBadges } from '@/app/components/TrustBadges';
-import { UnderstandPanel } from '@/app/components/understand/UnderstandPanel';
 import { VerseCompletion } from '@/app/components/understand/VerseCompletion';
-import { getUnderstandingExtras } from '@/data/understanding';
 import { getPedagogicalVerse } from '@/data/pedagogical-registry';
-import { VerseReadingGap } from '@/app/components/reader/LayeredVerseExperience';
-import { ActivityRecorder } from '@/app/components/study/ActivityRecorder';
 import { badgesFor, latestReview } from '@/lib/review-badges';
 import { PENDING_CORRECTIONS, REVIEW_RECORDS } from '@/data/review-records';
-import { getScriptureSourceMeta } from '@/data/sources-registry';
-import { wisdomTopicsForVerse } from '@/lib/wisdom-verse-topics';
-import { WisdomTopicLinks } from '@/app/components/WisdomTopicLinks';
-import { getConceptDetail } from '@/data/concept-details';
+import { getScriptureSourceMeta, SCRIPTURE_SOURCES } from '@/data/sources-registry';
+import type { VerseLink, VerseQuestionLink } from '@/data/types';
 
 /**
  * One static page per verse for the scriptures in VERSE_PAGE_SCRIPTURE_IDS
@@ -43,7 +33,7 @@ import { getConceptDetail } from '@/data/concept-details';
  */
 
 interface PageProps {
-  params: { id: string; chapterId: string; verseId: string };
+  params: Promise<{ id: string; chapterId: string; verseId: string }>;
 }
 
 interface SeedVerse {
@@ -51,7 +41,14 @@ interface SeedVerse {
   sanskrit?: string;
   transliteration?: string;
   hindi?: string;
+  /** The Hindi translates a range of verses together ("15-17"). */
+  hindiRange?: string;
+  /** This verse's Hindi is stored on that verse (the first of its range). */
+  hindiSeeVerse?: number | string;
+  hindiReviewRequired?: boolean;
   translation?: string;
+  translationRange?: string;
+  translationSeeVerse?: number | string;
   explanation?: string;
   commentary?: string;
   science?: string;
@@ -88,9 +85,13 @@ function findVerse(scriptureId: string, chapterId: number, verseId: string) {
   const seeded = loadChapter(scriptureId, chapterId);
   if (!seeded) return null;
   const verses = seeded.chapter.verses as SeedVerse[];
-  const index = verses.findIndex((verse) => verseSlug(verse.number) === verseId);
+  const decoded = decodeURIComponent(verseId).trim();
+  const index = verses.findIndex((verse) => {
+    const slug = verseSlug(verse.number);
+    return slug === verseId || slug === decoded || String(verse.number).trim() === decoded;
+  });
   if (index < 0) return null;
-  return { seeded, verses, index, verse: verses[index] };
+  return { seeded, verses, index, verse: withPassageMeaning(verses, verses[index]) };
 }
 
 function plain(text: string | undefined, max: number): string {
@@ -118,29 +119,48 @@ function openingLatin(transliteration: string | undefined): string {
 }
 
 /** The verse's opening words, as people type them into search. */
-function opening(sanskrit: string | undefined): string {
+function opening(sanskrit: string | undefined, max = 24): string {
   const first = verseLines(cleanVerseField(sanskrit))[0] ?? '';
-  return plain(first, 40);
+  const phrase = first.split(/[|।]/)[0]?.trim() ?? '';
+  return plain(phrase, max);
 }
 
 export function generateStaticParams() {
   return verseStaticParams();
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const meta = getScriptureMeta(params.id);
   const chapterId = parseInt(params.chapterId, 10);
   const found = meta && Number.isFinite(chapterId) ? findVerse(params.id, chapterId, params.verseId) : null;
   if (!meta || !found) return {};
 
-  const ref = `${meta.title} ${chapterId}.${params.verseId}`;
-  const words = opening(found.verse.sanskrit);
-  // Search engines show about 60 characters: lead with the reference and "Meaning in Hindi & English".
-  const title = `${ref} Meaning in Hindi & English${words ? ` | ${words}` : ''}`;
+  const ref = `${meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
+  const words = opening(found.verse.sanskrit, 22);
+  // The title names only the meanings the page really has; a page with none says so and is kept out of the index
+  // (and out of the sitemap, see lib/sitemap-sections.ts) until a meaning is written.
+  const has = verseMeaningSummary(meta.id, chapterId, found.verse);
+  const promise = has.hindi && has.english
+    ? 'Hindi & English Meaning'
+    : has.hindi
+    ? 'Hindi Meaning'
+    : has.english
+    ? 'English Meaning'
+    : has.explanation
+    ? 'Explanation'
+    : 'Original Shloka';
+
+  // Front-load reference and Sanskrit shloka so mobile search results display them without truncation:
+  // e.g. "Bhagavad Gita 2.47 (कर्मण्येवाधिकारस्ते) — Hindi Meaning"
+  const title = words
+    ? `${ref} (${words}) — ${promise}`
+    : `${ref} — ${promise}`;
   // Hindi reference stays in the keywords ("श्रीमद्भगवद्गीता 2.47 का हिंदी अर्थ").
-  const refHi = `${meta.titleSanskrit ?? meta.title} ${chapterId}.${params.verseId}`;
+  const refHi = `${meta.titleSanskrit ?? meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
   const cleanSanskrit = cleanVerseField(found.verse.sanskrit).replace(/\s+/g, ' ').trim();
-  const cleanTranslation = (found.verse.translation || found.verse.hindi || '').replace(/\s+/g, ' ').trim();
+  // Hindi meaning leads the snippet (Hindi searchers are the main audience); English when no Hindi is published.
+  const cleanTranslation = (has.hindi ? found.verse.hindi! : found.verse.translation || '').replace(/\s+/g, ' ').trim();
   const description = clipDescription(
     cleanSanskrit && cleanTranslation
       ? `${ref}: ${cleanSanskrit} — ${cleanTranslation}`
@@ -157,19 +177,27 @@ export function generateMetadata({ params }: PageProps): Metadata {
     keywords: [
       ref,
       `${ref} meaning in hindi`,
-      `${ref} meaning in english`,
       `${ref} in hindi`,
+      `${ref} shlok`,
+      `${ref} hindi arth`,
+      `${ref} meaning in english`,
       `${ref} translation`,
       words,
-      latin && `${latin} meaning`,
+      words && `${words} अर्थ`,
+      latin && `${latin} meaning in hindi`,
+      latin && `${latin} shloka`,
       `${refHi} अर्थ`,
       `${refHi} हिंदी अर्थ`,
       meta.titleSanskrit,
       'श्लोक अर्थ',
+      'पदच्छेद',
+      'अन्वय',
+      'traditional commentary',
     ].filter(
       (k): k is string => Boolean(k),
     ),
     alternates: { canonical },
+    ...(has.any ? {} : { robots: { index: false, follow: true } }),
     openGraph: {
       type: 'article',
       locale: 'hi_IN',
@@ -184,7 +212,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function VersePage({ params }: PageProps) {
+export default async function VersePage(props: PageProps) {
+  const params = await props.params;
   const meta = getScriptureMeta(params.id);
   if (!meta) return notFound();
 
@@ -195,8 +224,11 @@ export default function VersePage({ params }: PageProps) {
   if (!found) return notFound();
 
   const { seeded, verses, index, verse } = found;
-  let prev = index > 0 ? verses[index - 1] : undefined;
-  let next = index < verses.length - 1 ? verses[index + 1] : undefined;
+  // The nearest verses that have a page (in the Ramcharitmanas only some do, lib/verse-paths.ts).
+  const before = verses.slice(0, index).reverse().find((v) => versePageHref(meta.id, chapterId, v.number));
+  const after = verses.slice(index + 1).find((v) => versePageHref(meta.id, chapterId, v.number));
+  let prev = before;
+  let next = after;
   let prevHref = prev ? versePageHref(meta.id, chapterId, prev.number) : undefined;
   let nextHref = next ? versePageHref(meta.id, chapterId, next.number) : undefined;
   let nextChapterId = chapterId;
@@ -206,9 +238,9 @@ export default function VersePage({ params }: PageProps) {
     const seededNeighbor = loadChapter(meta.id, neighborId);
     const list = seededNeighbor?.chapter.verses as SeedVerse[] | undefined;
     if (!list || list.length === 0) return undefined;
-    const verseEdge = which === 'first' ? list[0] : list[list.length - 1];
-    const href = versePageHref(meta.id, neighborId, verseEdge.number);
-    if (!href) return undefined;
+    const verseEdge = (which === 'first' ? list : [...list].reverse()).find((v) => versePageHref(meta.id, neighborId, v.number));
+    const href = verseEdge && versePageHref(meta.id, neighborId, verseEdge.number);
+    if (!verseEdge || !href) return undefined;
     return { verse: verseEdge, href };
   };
   if (!nextHref || !prevHref) {
@@ -233,23 +265,34 @@ export default function VersePage({ params }: PageProps) {
     }
   }
 
-  const commentary = readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId);
-  const comment =
-    commentary?.[`${chapterId}:${params.verseId}`] ?? commentary?.[`${chapterId}:${Number(params.verseId)}`];
-  const explanation = comment?.explanation ?? verse.explanation ?? verse.commentary;
+  // Same key as the chapter reader, so dotted verse numbers (Brihadaranyaka "1.3.28") find their commentary too.
+  const comment = commentaryFor(meta.id, chapterId, params.verseId);
+  const { vyakhya, commentary } = splitVyakhyaCommentary(
+    [comment?.explanation, verse.explanation, verse.commentary],
+    verse.wordMeaning,
+  );
+  const explanation = vyakhya ?? commentary;
   const science = comment?.science ?? verse.science;
   const lesson = comment?.lifeLesson ?? verse.lifeLesson;
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in';
-  const pageUrl = `${siteUrl}${versePageHref(meta.id, chapterId, params.verseId)}/`;
-  const ref = `${meta.title} ${chapterId}.${params.verseId}`;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
+  const verseHref = versePageHref(meta.id, chapterId, params.verseId) ?? '';
+  const pageUrl = `${siteUrl}${verseHref.endsWith('/') ? verseHref : `${verseHref}/`}`;
+  const ref = `${meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
   const hindi = plain(verse.hindi, 600);
   const english = plain(verse.translation, 600);
   const modified = scriptureLastChanged(meta.id)?.toISOString();
 
+  const words = opening(verse.sanskrit, 22);
+  const latin = openingLatin(verse.transliteration);
+
   const questions = [
     hindi && { '@type': 'Question', name: `${ref} का हिन्दी अर्थ क्या है?`, acceptedAnswer: { '@type': 'Answer', text: hindi } },
+    words && hindi && { '@type': 'Question', name: `${words} श्लोक का अर्थ क्या है?`, acceptedAnswer: { '@type': 'Answer', text: hindi } },
+    hindi && { '@type': 'Question', name: `${ref} Meaning in Hindi`, acceptedAnswer: { '@type': 'Answer', text: `${ref} का हिन्दी अर्थ: ${hindi}` } },
+    latin && (hindi || english) && { '@type': 'Question', name: `What is the meaning of ${latin}?`, acceptedAnswer: { '@type': 'Answer', text: `${hindi ? `${hindi}\n\n` : ''}${english || ''}`.trim() } },
     english && { '@type': 'Question', name: `What is the meaning of ${ref}?`, acceptedAnswer: { '@type': 'Answer', text: english } },
+    english && { '@type': 'Question', name: `${ref} Translation in English`, acceptedAnswer: { '@type': 'Answer', text: `${ref} English translation: ${english}` } },
   ].filter(Boolean);
 
   const jsonLd = {
@@ -259,11 +302,24 @@ export default function VersePage({ params }: PageProps) {
         '@type': 'Article',
         '@id': `${pageUrl}#article`,
         headline: `${ref} — Meaning in Hindi & English (हिंदी अर्थ)`,
+        description: clipDescription(hindi ? `${ref}: ${hindi}` : english ? `${ref}: ${english}` : ref),
+        abstract: hindi || english,
+        text: [cleanVerseField(verse.sanskrit), verse.transliteration, verse.hindi, verse.translation].filter(Boolean).join('\n\n'),
         inLanguage: ['sa', 'hi', 'en'],
         isAccessibleForFree: true,
+        genre: 'Scriptural study',
         ...(modified ? { dateModified: modified } : {}),
         url: pageUrl,
         mainEntityOfPage: pageUrl,
+        publisher: {
+          '@type': 'Organization',
+          name: 'Dharma Granth',
+          url: siteUrl,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${siteUrl}/icon-512.png`,
+          },
+        },
         isPartOf: {
           '@type': 'Book',
           name: meta.title,
@@ -276,9 +332,10 @@ export default function VersePage({ params }: PageProps) {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-          { '@type': 'ListItem', position: 2, name: meta.title, item: `${siteUrl}/scripture/${meta.id}/` },
-          { '@type': 'ListItem', position: 3, name: `अध्याय ${chapterId}`, item: `${siteUrl}${chapterHref}/` },
-          { '@type': 'ListItem', position: 4, name: `श्लोक ${params.verseId}`, item: pageUrl },
+          { '@type': 'ListItem', position: 2, name: 'Library', item: `${siteUrl}/scriptures/` },
+          { '@type': 'ListItem', position: 3, name: meta.title, item: `${siteUrl}/scripture/${meta.id}/` },
+          { '@type': 'ListItem', position: 4, name: `Chapter ${chapterId}`, item: `${siteUrl}${chapterHref}/` },
+          { '@type': 'ListItem', position: 5, name: `Verse ${params.verseId}`, item: pageUrl },
         ],
       },
     ],
@@ -286,13 +343,8 @@ export default function VersePage({ params }: PageProps) {
 
   const chapterName = seeded.chapter.title ?? `अध्याय ${chapterId}`;
 
-  const integrations = getVerseIntegrations(meta.id, chapterId, params.verseId, {
-    sanskrit: verse.sanskrit,
-    transliteration: verse.transliteration,
-    hindi: verse.hindi,
-    translation: verse.translation,
-    explanation,
-  });
+  const tagged = verse as { concepts?: string[]; relatedVerses?: VerseLink[]; relatedQuestions?: VerseQuestionLink[]; questions?: VerseQuestionLink[]; lifeSituations?: string[]; relatedScriptures?: string[]; relatedPathways?: string[]; relatedSages?: string[] };
+  const knowledge = resolveVerseKnowledge(meta.id, chapterId, params.verseId, tagged);
 
   const source = (seeded.source ?? {}) as { repo?: string; license?: string; fetchedAt?: string };
   const chapterLinks = readSeededChapterPreviews(meta.id).map((c) => ({
@@ -311,59 +363,23 @@ export default function VersePage({ params }: PageProps) {
   const sourceMeta = getScriptureSourceMeta(meta.id, meta.title, meta.titleSanskrit);
   const translationReview = latestReview(REVIEW_RECORDS, 'translation', meta.id, chapterId, params.verseId);
 
-  // At most three next steps, each from this verse's own links, with the reason it is offered.
-  const reviewedLinks = CONNECTIONS[verseKey(meta.id, chapterId, params.verseId)] ?? [];
-  const nextCandidates: NextCandidate[] = [];
-  if (next && nextHref) {
-    const crosses = nextChapterId !== chapterId;
-    const linked = crosses ? undefined : reviewedLinks.find((c) => c.href === nextHref);
-    const nextChapterTitle = crosses
-      ? (readSeededChapterPreviews(meta.id).find((item) => item.id === nextChapterId)?.title ?? `अध्याय ${nextChapterId}`)
-      : chapterName;
-    nextCandidates.push({
-      id: `next:${meta.id}:${nextChapterId}:${next.number}`,
-      kind: 'next',
-      title: `Continue with ${meta.title} ${nextChapterId}.${next.number}`,
-      href: nextHref,
-      reason: crosses ? 'It is the first verse of the next chapter.' : linked ? linked.reason : 'It is the next verse in the same chapter.',
-      basis: `You are reading ${ref}.`,
-      save: {
-        ref: { scriptureId: meta.id, scriptureTitle: meta.title, scriptureTitleSanskrit: meta.titleSanskrit, chapterId: nextChapterId, chapterTitle: nextChapterTitle, url: `${siteUrl}${nextHref}/` },
-        verse: { number: next.number, sanskrit: next.sanskrit, transliteration: next.transliteration, hindi: next.hindi, translation: next.translation },
-      },
-    });
-  }
-  const complementary = reviewedLinks.find((c) => c.href && c.href !== nextHref);
-  if (complementary?.href) {
-    nextCandidates.push({
-      id: `link:${meta.id}:${chapterId}:${params.verseId}:${complementary.reference}`,
-      kind: 'complementary',
-      title: `${complementary.scriptureTitle} ${complementary.reference}`,
-      href: complementary.href,
-      reason: complementary.reason,
-      basis: 'A reviewed link from this verse (still marked draft until reviewed).',
-    });
-  }
-  const topConcept = integrations.concepts.find((concept) => getConceptDetail(concept.id));
-  if (topConcept) {
-    nextCandidates.push({
-      id: `concept:${topConcept.id}`,
-      kind: 'concept',
-      title: `Explore the concept ${topConcept.label} (${topConcept.sanskrit})`,
-      href: `/concepts/${topConcept.id}`,
-      reason: topConcept.matchType === 'direct' ? `This verse is cited for ${topConcept.label}.` : `This verse touches the idea of ${topConcept.label}.`,
-      basis: 'The concept links recorded for this verse.',
-    });
-  }
-
   return (
     <>
+      {/* The scripture's palette and folio material for everything on the page (display: contents, no box). */}
+      <div className="contents" data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(scriptureVibe(meta.id, meta.category))}>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ActivityRecorder scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} concepts={integrations.concepts.map((c) => c.id)} />
+      <Breadcrumbs
+        items={[
+          { label: 'Library', href: '/scriptures/' },
+          { label: meta.title, href: `/scripture/${meta.id}/` },
+          { label: chapterName, href: `${chapterHref}/` },
+          { label: `Verse ${params.verseId}` },
+        ]}
+      />
       <ChapterVisitRecorder
         scriptureId={meta.id}
         scriptureTitle={meta.title}
@@ -391,7 +407,12 @@ export default function VersePage({ params }: PageProps) {
           transliteration: verse.transliteration,
           wordMeaning: verse.wordMeaning,
           hindi: verse.hindi,
+          hindiRange: verse.hindiRange,
+          hindiSeeVerse: verse.hindiSeeVerse,
+          hindiReviewRequired: verse.hindiReviewRequired,
           translation: verse.translation,
+          translationRange: verse.translationRange,
+          translationSeeVerse: verse.translationSeeVerse,
           explanation,
           reflection: lesson,
           research: science,
@@ -404,71 +425,30 @@ export default function VersePage({ params }: PageProps) {
           hindiIsAi: verse.hindiSource === 'ai',
           englishIsAi: verse.translationSource === 'ai',
           commentaryIsAi: Boolean(comment?.ai),
+          explanationIsAi: Boolean(comment?.ai || comment?.explanationAi),
+          researchIsAi: Boolean(comment?.ai || comment?.scienceAi),
           lastUpdated: modified,
           translator: sourceMeta.primaryTranslator,
           edition: `${sourceMeta.sanskritEdition}. ${sourceMeta.publisherArchive}`,
           translationReview: translationReview ? `Reviewed ${translationReview.date}` : 'Not yet reviewed',
+          variantNote: SCRIPTURE_SOURCES[meta.id]?.alternativeReadingNote,
         }}
         prev={prev && prevHref ? { number: prev.number, href: prevHref } : undefined}
         next={next && nextHref ? { number: next.number, href: nextHref } : undefined}
-      >
-        {pedagogical ? null : <VerseReadingGap />}
-        {pedagogical && (
-          <UnderstandPanel
-            data={pedagogical}
-            extras={getUnderstandingExtras(meta.id, chapterId, params.verseId)}
-            refKey={`${meta.id}:${chapterId}:${params.verseId}`}
-            reference={ref}
-            translation={verse.translation}
-            translationIsAi={verse.translationSource === 'ai'}
-            previousHref={prevHref}
-            nextHref={nextHref}
-            pageUrl={pageUrl}
+        sourceStatus={
+          <TrustBadges
+            className="mb-4"
+            sourceHost={repoLabel(source.repo)}
+            translationIsAi={verse.hindiSource === 'ai' || verse.translationSource === 'ai'}
+            commentaryIsAi={Boolean(comment?.ai)}
+            hasEditorial={Boolean(pedagogical)}
+            badges={badgesFor({ scriptureId: meta.id, chapter: chapterId, verse: params.verseId, hasEditorial: Boolean(pedagogical), records: REVIEW_RECORDS, corrections: PENDING_CORRECTIONS })}
           />
-        )}
-        <VerseDiagrams scriptureId={meta.id} chapter={chapterId} verse={params.verseId} />
-        <ModernScenarios scriptureId={meta.id} chapter={chapterId} verse={params.verseId} />
+        }
+        insight={getVerseInsight(meta.id, chapterId, params.verseId)}
+      >
+        <VerseAnswers scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} />
         {!pedagogical && !explanation && <ReviewRequiredNotice className="mt-8" />}
-        <TrustBadges
-          className="mt-8"
-          sourceHost={repoLabel(source.repo)}
-          translationIsAi={verse.hindiSource === 'ai' || verse.translationSource === 'ai'}
-          commentaryIsAi={Boolean(comment?.ai)}
-          hasEditorial={Boolean(pedagogical)}
-          badges={badgesFor({ scriptureId: meta.id, chapter: chapterId, verse: params.verseId, hasEditorial: Boolean(pedagogical), records: REVIEW_RECORDS, corrections: PENDING_CORRECTIONS })}
-        />
-        <SourcesAndInterpretation
-          scriptureId={meta.id}
-          scriptureTitle={meta.title}
-          scriptureTitleSanskrit={meta.titleSanskrit}
-          chapterId={chapterId}
-          verseId={params.verseId}
-          editionOverride={source.repo}
-          sourceUrlOverride={source.repo}
-          className="mt-8"
-        />
-        <VerseGraphNetwork
-          scriptureId={meta.id}
-          chapterId={chapterId}
-          verseId={params.verseId}
-          currentVerse={{
-            number: verse.number,
-            sanskrit: verse.sanskrit,
-            transliteration: verse.transliteration,
-            hindi: verse.hindi,
-            translation: verse.translation,
-            explanation,
-          }}
-        />
-        <RelatedTeachings scriptureId={meta.id} chapterId={chapterId} verseNumber={params.verseId} />
-        <NextTeachings candidates={nextCandidates} verseId={String(params.verseId)} />
-        <WisdomTopicLinks topics={wisdomTopicsForVerse(meta.id, chapterId, String(params.verseId))} />
-        <VerseRelatedSection
-          concepts={integrations.concepts}
-          topics={integrations.topics}
-          crossReferences={integrations.crossReferences}
-          currentScriptureTitle={meta.title}
-        />
         <VerseCompletion
           reference={ref}
           readerRef={{ scriptureId: meta.id, scriptureTitle: meta.title, scriptureTitleSanskrit: meta.titleSanskrit, chapterId, chapterTitle: chapterName, url: pageUrl }}
@@ -477,6 +457,7 @@ export default function VersePage({ params }: PageProps) {
           chapterHref={chapterHref}
         />
       </VerseReader>
+      </div>
     </>
   );
 }

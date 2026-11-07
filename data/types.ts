@@ -1,6 +1,9 @@
 export const scriptureCategories = [
   'veda',
   'upanishad',
+  'vedanta',
+  'sutra',
+  'shakta',
   'purana',
   'itihasa',
   'smriti',
@@ -10,6 +13,20 @@ export const scriptureCategories = [
 ] as const;
 
 export type ScriptureCategory = (typeof scriptureCategories)[number];
+
+/** A stored link to another library verse. Editorial. Not an inferred recommendation. */
+export interface VerseLink {
+  scriptureId: string;
+  chapterId: number;
+  verseId: number | string;
+}
+
+/** A stored question or life-topic that cites this verse. */
+export interface VerseQuestionLink {
+  href: string;
+  labelHi: string;
+  labelEn: string;
+}
 
 export interface Verse {
   id: number | string;
@@ -23,6 +40,23 @@ export interface Verse {
   science?: string;
   lifeLesson?: string;
   keywords?: string[];
+  /** Knowledge-graph concept ids. Absent means the verse has not been tagged. */
+  concepts?: string[];
+  /** Other library verses an editor has connected. */
+  relatedVerses?: VerseLink[];
+  /** Questions or topic pages an editor has connected. */
+  relatedQuestions?: VerseQuestionLink[];
+  /**
+   * Discovery questions an editor has connected (Phase 2 of the Wisdom
+   * Discovery System). Merged with relatedQuestions by
+   * normalizeVerseDiscoveryTags; either field may be absent.
+   */
+  questions?: VerseQuestionLink[];
+  /**
+   * Life situations this verse speaks to, as wisdom-concept slugs
+   * (see data/wisdom-concepts.ts). Absent means untagged.
+   */
+  lifeSituations?: string[];
 }
 
 export interface Chapter {
@@ -61,5 +95,7 @@ export interface ScriptureMeta {
   tags: string[];
   hasData: boolean;
   isCurated?: boolean;
+  /** The library holds only a selection of this book's verses, not its whole text ("चयनित श्लोक"). */
+  selectedVerses?: boolean;
   canonicalTotalVerses?: number;
 }

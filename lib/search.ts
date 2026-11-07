@@ -1,6 +1,8 @@
 import { scriptureCatalog } from '@/data/scripture-meta';
+import { EDITORIAL_DRAFT_LABEL } from '@/lib/editorial-terminology';
 import { concepts } from '@/data/concepts';
 import { topics } from '@/data/topics';
+import { topicHref } from '@/lib/topic-links';
 import { characters } from '@/data/characters';
 import { sacredLocations } from '@/data/locations';
 import { dictionary } from '@/data/dictionary';
@@ -240,7 +242,7 @@ function buildMasterIndex(): SearchResultItem[] {
       groupLabel: 'विषय · Topic',
       category: 'topic',
       categoryLabel: 'विषय · Topic',
-      href: `/topics/${t.id}`,
+      href: topicHref(t.id),
       reference: `Topic · ${t.title}`,
       matchingText: `${t.title} (${t.sanskrit ?? ''})`,
       translationExcerpt: t.shortDesc,
@@ -331,7 +333,7 @@ function buildMasterIndex(): SearchResultItem[] {
       groupLabel: 'अध्ययन सामग्री · Learning',
       category: 'pathway',
       categoryLabel: 'अध्ययन पथ · Pathway',
-      href: `/learn/pathways`,
+      href: `/learn/${p.id}/`,
       reference: 'Study Pathway',
       matchingText: p.title,
       translationExcerpt: p.description,
@@ -511,7 +513,7 @@ export function getSearchIndex(): SearchResultItem[] {
 /* ── Dynamic Chapter Index Loading ────────────────────────────────────── */
 
 function chapterHref(scriptureId: string, n: number): string {
-  return `/scripture/${scriptureId}/chapter/${n}`;
+  return `/scripture/${scriptureId}/chapter/${n}/`;
 }
 
 export function loadChapterIndex(data: ChapterIndex): void {
@@ -657,7 +659,7 @@ function verseItem(e: VerseEntry, kind: VerseMatchKind | 'reference' | 'theme', 
     groupLabel: 'श्लोक · Exact Verse',
     category: 'verse',
     categoryLabel: 'श्लोक · Exact Verse',
-    href: versePageHref(e.scriptureId, e.chapter, e.verse) ?? `/scripture/${e.scriptureId}/chapter/${e.chapter}`,
+    href: versePageHref(e.scriptureId, e.chapter, e.verse) ?? `/scripture/${e.scriptureId}/chapter/${e.chapter}/`,
     reference,
     matchingText,
     matchedField: field,
@@ -679,12 +681,12 @@ function explanationItem(e: VerseEntry): SearchResultItem {
   return {
     id: `explanation-${e.id}`,
     title: `व्याख्या · ${reference}`,
-    subtitle: ai ? 'Editorial explanation · AI-drafted' : 'Editorial explanation',
+    subtitle: ai ? `Editorial explanation · ${EDITORIAL_DRAFT_LABEL.en}` : 'Editorial explanation',
     group: 'commentary',
     groupLabel: 'टीका व व्याख्या · Commentary',
     category: 'commentary',
     categoryLabel: 'व्याख्या · Explanation',
-    href: versePageHref(e.scriptureId, e.chapter, e.verse) ?? `/scripture/${e.scriptureId}/chapter/${e.chapter}`,
+    href: versePageHref(e.scriptureId, e.chapter, e.verse) ?? `/scripture/${e.scriptureId}/chapter/${e.chapter}/`,
     reference,
     matchingText: e.explanation,
     matchedField: 'explanation',

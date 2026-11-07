@@ -1,0 +1,463 @@
+/**
+ * Dharma Granth: Question-First Wisdom Exploration Engine
+ * 
+ * Maps 10 canonical human existential questions into primary verses,
+ * philosophical pivots, reflection prompts, and contemplative action.
+ */
+
+import type { QuestionWisdomRecord, CanonicalVerseRef } from './types';
+
+export const CANONICAL_QUESTIONS: readonly QuestionWisdomRecord[] = [
+  {
+    id: 'who-am-i',
+    questionEn: 'Who am I?',
+    questionHi: 'मैं कौन हूँ?',
+    sanskritInquiry: 'कोऽहम्? (Koham?)',
+    category: 'identity',
+    philosophicalPivotEn: 'You are neither the changing physical body nor the fleeting psychological thoughts; you are the unchanging, luminous witness consciousness (Sakshi Chaitanya).',
+    philosophicalPivotHi: 'आप न तो परिवर्तनशील भौतिक देह हैं और न ही मन के क्षणिक विचार; आप इन सबको प्रकाशित करने वाले अपरिवर्तनीय साक्षी चेतना हैं।',
+    keyTeachings: [
+      {
+        titleEn: 'The Indestructible Witness',
+        titleHi: 'अविनाशी साक्षी स्वरूप',
+        explanationEn: 'The body undergoes childhood, youth, and decay, but the conscious observer remains identical throughout life.',
+        explanationHi: 'शरीर बालक से वृद्ध बनता है, विचार आते-जाते हैं, पर इन सबको जानने वाला दृष्टा सदा एकरस रहता है।',
+      },
+      {
+        titleEn: 'The Three States & The Fourth',
+        titleHi: 'तीन अवस्थाएँ और तुरीय',
+        explanationEn: 'Waking, dreaming, and deep sleep come and go; you are Turiya, the underlying silence in which all three appear.',
+        explanationHi: 'जाग्रत, स्वप्न और सुषुप्ति अवस्थाएँ बदलती हैं; आप तुरीय हैं, वह आधारभूत शान्त चेतना जिसमें ये तीनों प्रकट होती हैं।',
+      },
+    ],
+    primaryVerses: [
+      {
+        scriptureId: 'bhagavadgita',
+        scriptureName: 'Bhagavad Gita',
+        scriptureNameHi: 'भगवद्गीता',
+        chapterNumber: 2,
+        verseNumber: 20,
+        citation: 'Bhagavad Gita 2.20',
+        citationHi: 'भगवद्गीता 2.20',
+        sanskritDevanagari: 'न जायते म्रियते वा कदाचिन्\nनायं भूत्वा भविता वा न भूयः।\nअजो नित्यः शाश्वतोऽयं पुराणो\nन हन्यते हन्यमाने शरीरे॥',
+        sanskritTransliteration: 'na jāyate mriyate vā kadācin nāyaṁ bhūtvā bhavitā vā na bhūyaḥ | ajo nityaḥ śāśvato \'yaṁ purāṇo na hanyate hanyamāne śarīre ||',
+        translationHi: 'यह आत्मा न कभी जन्म लेता है और न कभी मरता है; न यह उत्पन्न होकर फिर होने वाला है। यह अजन्मा, नित्य, शाश्वत और पुरातन है; शरीर के मारे जाने पर भी यह नहीं मारा जाता।',
+        translationEn: 'The soul is never born, nor does it ever die; nor having once been, does it cease to be. Unborn, eternal, ever-existing, and primeval, it is not slain when the body is slain.',
+        readerHref: '/scripture/bhagavadgita/chapter/2/verse/20/',
+      },
+      {
+        scriptureId: 'mandukya',
+        scriptureName: 'Mandukya Upanishad',
+        scriptureNameHi: 'माण्डूक्य उपनिषद्',
+        chapterNumber: 1,
+        verseNumber: 7,
+        citation: 'Mandukya Upanishad 1.7',
+        citationHi: 'माण्डूक्य उपनिषद् 1.7',
+        sanskritDevanagari: 'नान्तःप्रज्ञं न बहिष्प्रज्ञं नोभयतःप्रज्ञं न प्रज्ञानघनं न प्रज्ञं नाप्रज्ञम्।\nअदृष्टमव्यवहार्यमग्राह्यमलक्षणमचिन्त्यमव्यपदेश्यमेकात्मप्रत्ययसारं प्रपञ्चोपशमं शान्तं शिवमद्वैतं चतुर्थं मन्यन्ते स आत्मा स विज्ञेयः॥',
+        sanskritTransliteration: 'nāntaḥ-prajñaṁ na bahiṣ-prajñaṁ nobhayataḥ-prajñaṁ na prajñāna-ghanaṁ na prajñaṁ nāprajñam | adṛṣṭam avyavahāryam agrāhyam alakṣaṇam acintyam avyapadeśyam ekātma-pratyaya-sāraṁ prapañcopaśamaṁ śāntaṁ śivam advaitaṁ caturthaṁ manyante sa ātmā sa vijñeyaḥ ||',
+        translationHi: 'जो न भीतर की ओर जानने वाला है, न बाहर की ओर, जो अदृश्य, अव्यवहार्य, अग्राह्य, अचिन्त्य है, जिसका सार आत्म-प्रत्यय है, जो प्रपञ्च से रहित, शान्त, शिव और अद्वैत है—उसे चौथा (तुरीय) पद मानते हैं। वही आत्मा है, वही जानने योग्य है।',
+        translationEn: 'It is not that which is conscious of the inner world, nor that which is conscious of the outer world. Unseen, beyond empirical dealings, ungraspable, unthinkable, peaceful, auspicious, non-dual—that is the fourth (Turiya). That is the Self, to be realized.',
+        readerHref: '/scripture/mandukya/chapter/1/verse/7/',
+      },
+    ],
+    reflectionPrompts: [
+      'When your thoughts become chaotic, who is the quiet observer noticing the chaos?',
+      'If your social role, title, and body changed, what part of your awareness would remain identical?',
+    ],
+    contemplativeActionEn: 'Spend 2 minutes in silence closing your eyes. Witness thoughts rising and falling like clouds in the sky, without claiming any thought as "me".',
+    contemplativeActionHi: 'दो मिनट आँखें मूँदकर शान्त बैठें। विचारों को आकाश में तैरते बादलों की तरह देखें, किसी भी विचार को "यह मैं हूँ" कहे बिना।',
+  },
+  {
+    id: 'how-do-i-control-anger',
+    questionEn: 'How do I control anger?',
+    questionHi: 'क्रोध पर नियंत्रण कैसे करें?',
+    sanskritInquiry: 'क्रोध-जय (Krodha-Jaya)',
+    category: 'emotion-control',
+    philosophicalPivotEn: 'Anger is not an isolated demon; it is the natural consequence of thwarted attachment and blocked desire. Dissolving the obsessive grip on outcomes dissolves anger at its root.',
+    philosophicalPivotHi: 'क्रोध कोई आकस्मिक विकार नहीं है; यह बाधित कामना और गहरी आसक्ति से उत्पन्न होता है। जब परिणामों पर से नियंत्रण की हठ हटती है, तो क्रोध की जड़ स्वयं कट जाती है।',
+    keyTeachings: [
+      {
+        titleEn: 'The Ladder of Cognitive Fall',
+        titleHi: 'पतन की सीढ़ी',
+        explanationEn: 'Brooding on objects creates attachment; attachment breeds desire; unfulfilled desire sparks anger; anger destroys memory and discernment.',
+        explanationHi: 'विषयों के निरन्तर चिन्तन से आसक्ति होती है, आसक्ति से कामना, कामना में विघ्न से क्रोध, और क्रोध से विवेक का पूर्ण नाश हो जाता है।',
+      },
+      {
+        titleEn: 'The Gateway of Self-Harm',
+        titleHi: 'आत्मनाश का द्वार',
+        explanationEn: 'Anger harms the vessel in which it is stored long before it harms the external person toward whom it is directed.',
+        explanationHi: 'क्रोध जिस पात्र में रहता है, सबसे पहले उसी को जलाता है; दूसरे का अहित बाद में होता है, अपना विवेक पहले नष्ट होता है।',
+      },
+    ],
+    primaryVerses: [
+      {
+        scriptureId: 'bhagavadgita',
+        scriptureName: 'Bhagavad Gita',
+        scriptureNameHi: 'भगवद्गीता',
+        chapterNumber: 2,
+        verseNumber: 62,
+        citation: 'Bhagavad Gita 2.62–63',
+        citationHi: 'भगवद्गीता 2.62–63',
+        sanskritDevanagari: 'ध्यायतो विषयान्पुंसः सङ्गस्तेषूपजायते।\nसङ्गात्सञ्जायते कामः कामात्क्रोधोऽभिजायते॥\nक्रोधाद्भवति संमोहः संमोहात्स्मृतिविभ्रमः।\nस्मृतिभ्रंशाद् बुद्धिनाशो बुद्धिनाशात्प्रणश्यति॥',
+        sanskritTransliteration: 'dhyāyato viṣayān puṁsaḥ saṅgas teṣūpajāyate | saṅgāt sañjāyate kāmaḥ kāmāt krodho \'bhijāyate || krodhād bhavati saṁmohaḥ saṁmohāt smṛti-vibhramaḥ | smṛti-bhraṁśād buddhi-nāśo buddhi-nāśāt praṇaśyati ||',
+        translationHi: 'विषयों का चिन्तन करने वाले पुरुष की उनमें आसक्ति हो जाती है; आसक्ति से कामना उत्पन्न होती है और कामना से क्रोध उत्पन्न होता है। क्रोध से सम्मोह, सम्मोह से स्मृति-भ्रम, स्मृति-भ्रम से बुद्धि का नाश और बुद्धि के नाश से मनुष्य का पतन हो जाता है।',
+        translationEn: 'While contemplating the objects of the senses, a person develops attachment for them, and from such attachment lust develops, and from lust anger arises. From anger arises delusion, from delusion loss of memory, from loss of memory destruction of discernment, and through ruin of discernment one perishes.',
+        readerHref: '/scripture/bhagavadgita/chapter/2/verse/62/',
+      },
+      {
+        scriptureId: 'bhagavadgita',
+        scriptureName: 'Bhagavad Gita',
+        scriptureNameHi: 'भगवद्गीता',
+        chapterNumber: 16,
+        verseNumber: 21,
+        citation: 'Bhagavad Gita 16.21',
+        citationHi: 'भगवद्गीता 16.21',
+        sanskritDevanagari: 'त्रिविधं नरकस्येदं द्वारं नाशनमात्मनः।\nकामः क्रोधस्तथा लोभस्तस्मादेतत्त्रयं त्यजेत्॥',
+        sanskritTransliteration: 'tri-vidhaṁ narakasyedaṁ dvāraṁ nāśanam ātmanaḥ | kāmaḥ krodhas tathā lobhas tasmād etat trayaṁ tyajet ||',
+        translationHi: 'काम, क्रोध और लोभ—यह तीन प्रकार के नरक के द्वार आत्मा का नाश करने वाले हैं; इसलिए इन तीनों का त्याग कर देना चाहिए।',
+        translationEn: 'There are three gates leading to the hell of self-destruction: lust, anger, and greed. Therefore, every sane person should abandon these three.',
+        readerHref: '/scripture/bhagavadgita/chapter/16/verse/21/',
+      },
+    ],
+    reflectionPrompts: [
+      'The last time you felt intense anger, what unspoken expectation or entitlement was thwarted?',
+      'Can you pause for 10 breaths before responding when someone insults or challenges you?',
+    ],
+    contemplativeActionEn: 'When irritation strikes today, do not speak for 60 seconds. Note silently: "This is anger passing through awareness; I do not have to become it."',
+    contemplativeActionHi: 'आज जब भी खिन्नता या क्रोध उठे, 60 सेकेण्ड तक मौन रहें। मन में कहें: "यह क्रोध का विचार है जो आ रहा है; मुझे यह बनने की आवश्यकता नहीं है।"',
+  },
+  {
+    id: 'why-do-i-suffer',
+    questionEn: 'Why do I suffer?',
+    questionHi: 'दुःख क्यों होता है?',
+    sanskritInquiry: 'दुःख-मीमांसा (Duhkha-Mimamsa)',
+    category: 'suffering',
+    philosophicalPivotEn: 'Pain is an unavoidable attribute of physical existence, but suffering is psychological resistance—the futile demand that an ever-changing world conform to personal desires.',
+    philosophicalPivotHi: 'संसार में अनुकूल-प्रतिकूल परिस्थितियों का आना स्वाभाविक है; पीड़ा अनिवार्य हो सकती है, परन्तु दुःख हमारी मानसिक हठ से उत्पन्न होता है जब हम परिवर्तन को स्वीकार नहीं करते।',
+    keyTeachings: [
+      {
+        titleEn: 'The Five Afflictions (Kleshas)',
+        titleHi: 'पाँच क्लेश',
+        explanationEn: 'Ignorance of our true nature creates false ego, attachment to pleasure, aversion to pain, and clinging to transient life.',
+        explanationHi: 'अविद्या (अज्ञान) से अस्मिता (अहंकार), राग, द्वेष और अभिनिवेश (मृत्यु का भय) उत्पन्न होकर चित्त को निरन्तर दुःखी करते हैं।',
+      },
+      {
+        titleEn: 'The Fleeting Contact of Senses',
+        titleHi: 'मात्रास्पर्श और तितिक्षा',
+        explanationEn: 'Cold and heat, pleasure and pain, are transient sensory contacts. Endure them with dignity knowing they come and go.',
+        explanationHi: 'सुख और दुःख, सर्दी और गर्मी की तरह आने-जाने वाले अनित्य हैं; ज्ञानी पुरुष इन्हें समभाव से सहन करते हैं।',
+      },
+    ],
+    primaryVerses: [
+      {
+        scriptureId: 'bhagavadgita',
+        scriptureName: 'Bhagavad Gita',
+        scriptureNameHi: 'भगवद्गीता',
+        chapterNumber: 2,
+        verseNumber: 14,
+        citation: 'Bhagavad Gita 2.14',
+        citationHi: 'भगवद्गीता 2.14',
+        sanskritDevanagari: 'मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः।\nआगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत॥',
+        sanskritTransliteration: 'mātrā-sparśās tu kaunteya śītoṣṇa-sukha-duḥkha-dāḥ | āgamāpāyino \'nityās tāṁs titikṣasva bhārata ||',
+        translationHi: 'हे कुन्तीपुत्र! इन्द्रियों और विषयों का संयोग तो सर्दी-गर्मी और सुख-दुःख को देने वाला, आने-जाने वाला और अनित्य है; इसलिए हे भारत, तुम इन्हें सहन करो।',
+        translationEn: 'O son of Kunti, the contact between the senses and their objects gives rise to fleeting feelings of heat and cold, pleasure and pain. They come and go and are impermanent; learn to endure them with equanimity.',
+        readerHref: '/scripture/bhagavadgita/chapter/2/verse/14/',
+      },
+    ],
+    reflectionPrompts: [
+      'What part of your current stress is caused by reality itself, and what part is caused by your resistance to reality?',
+      'If you accepted this challenging moment exactly as it is right now, what burden would lift?',
+    ],
+    contemplativeActionEn: 'Name one discomfort you are currently facing. Mentally whisper: "This too is impermanent. I am the awareness holding it."',
+    contemplativeActionHi: 'अपने जीवन की किसी एक असुविधा को स्मरण करें। मन से कहें: "यह भी अनित्य है, बीत जाएगा। मैं इसे देखने वाला स्थिर साक्षी हूँ।"',
+  },
+  {
+    id: 'how-do-i-find-purpose',
+    questionEn: 'How do I find purpose?',
+    questionHi: 'स्वधर्म और जीवन का उद्देश्य कैसे खोजें?',
+    sanskritInquiry: 'स्वधर्म (Svadharma)',
+    category: 'purpose',
+    philosophicalPivotEn: 'Purpose is not an external trophy or societal prestige; it is discovering your inherent natural constitution (Svadharma) and dedicating your authentic actions to the welfare of all.',
+    philosophicalPivotHi: 'जीवन का उद्देश्य दूसरों के अनुकरण या सामाजिक प्रतिष्ठा में नहीं, बल्कि अपने वास्तविक स्वभाव (स्वधर्म) को पहचानकर लोक-कल्याण के लिए निष्काम कर्म करने में है।',
+    keyTeachings: [
+      {
+        titleEn: 'Your Own Path Over Another’s Glory',
+        titleHi: 'परधर्म की अपेक्षा स्वधर्म श्रेष्ठ',
+        explanationEn: 'Performing your own natural duty, even with shortcomings, brings inner peace; imitating another’s glamorous path invites inner fear.',
+        explanationHi: 'दूसरों के मार्ग का भली-भाँति अनुकरण करने की अपेक्षा अपने स्वाभाविक कर्तव्य का त्रुटियों सहित पालन करना भी श्रेयस्कर है।',
+      },
+    ],
+    primaryVerses: [
+      {
+        scriptureId: 'bhagavadgita',
+        scriptureName: 'Bhagavad Gita',
+        scriptureNameHi: 'भगवद्गीता',
+        chapterNumber: 3,
+        verseNumber: 35,
+        citation: 'Bhagavad Gita 3.35',
+        citationHi: 'भगवद्गीता 3.35',
+        sanskritDevanagari: 'श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्।\nस्वधर्मे निधनं श्रेयः परधर्मो भयावहः॥',
+        sanskritTransliteration: 'śreyān sva-dharmo viguṇaḥ para-dharmāt sv-anuṣṭhitāt | sva-dharme nidhanaṁ śreyaḥ para-dharmo bhayāvahaḥ ||',
+        translationHi: 'अच्छी प्रकार आचरण किए हुए दूसरे के धर्म की अपेक्षा गुणरहित भी अपना धर्म श्रेष्ठ है। अपने धर्म में तो मरना भी कल्याणकारक है, किन्तु दूसरे का धर्म भय को देने वाला है।',
+        translationEn: 'It is far better to discharge one’s own duty, even if imperfectly, than another’s duty perfectly. Death in the discharge of one’s own duty is far better; following another’s path is dangerous.',
+        readerHref: '/scripture/bhagavadgita/chapter/3/verse/35/',
+      },
+    ],
+    reflectionPrompts: [
+      'What work do you naturally lose yourself in, where external praise becomes irrelevant?',
+      'Whose expectations are you currently fulfilling that do not align with your true inner calling?',
+    ],
+    contemplativeActionEn: 'Identify one action you perform out of social comparison. Consciously redirect that energy toward a quiet craft or act of service you deeply value.',
+    contemplativeActionHi: 'किसी ऐसे कार्य की पहचान करें जो आप केवल दिखावे के लिए करते हैं। अपनी ऊर्जा को किसी ऐसे सार्थक सेवा कार्य में लगाएँ जो आपके हृदय के निकट हो।',
+  },
+  {
+    id: 'how-do-i-overcome-fear',
+    questionEn: 'How do I overcome fear?',
+    questionHi: 'भय से मुक्ति कैसे पाएँ?',
+    sanskritInquiry: 'अभय (Abhaya)',
+    category: 'fear',
+    philosophicalPivotEn: 'Fear is born of duality—the illusion of separateness and vulnerability. Grounding in the indivisible Self that cannot be cut, burned, or wetted dissolves fear at its root.',
+    philosophicalPivotHi: 'भय द्वैत से उत्पन्न होता है—इस भ्रम से कि मैं अकेला, असहाय और नष्ट होने वाला हूँ। जब व्यक्ति अपनी अविनाशी आत्म-सत्ता को जान लेता है, तो भय का कोई स्थान नहीं रहता।',
+    keyTeachings: [
+      {
+        titleEn: 'The Weapons Cannot Pierce You',
+        titleHi: 'शस्त्र तुम्हें छेद नहीं सकते',
+        explanationEn: 'The body can be touched by circumstance, but the conscious core remains untouched by fire, wind, water, and steel.',
+        explanationHi: 'परिस्थितियाँ शरीर को छू सकती हैं, पर आपकी मूल चेतना को न अग्नि जला सकती है, न वायु सुखा सकती है।',
+      },
+    ],
+    primaryVerses: [
+      {
+        scriptureId: 'bhagavadgita',
+        scriptureName: 'Bhagavad Gita',
+        scriptureNameHi: 'भगवद्गीता',
+        chapterNumber: 2,
+        verseNumber: 23,
+        citation: 'Bhagavad Gita 2.23',
+        citationHi: 'भगवद्गीता 2.23',
+        sanskritDevanagari: 'नैनं छिन्दन्ति शस्त्राणि नैनं दहति पावकः।\nन चैनं क्लेदयन्त्यापो न शोषयति मारुतः॥',
+        sanskritTransliteration: 'nainaṁ chindanti śastrāṇi nainaṁ dahati pāvakaḥ | na cainaṁ kledayanty āpo na śoṣayati mārutaḥ ||',
+        translationHi: 'इस आत्मा को शस्त्र नहीं काट सकते, इसको आग नहीं जला सकती, इसको जल नहीं गला सकता और वायु नहीं सुखा सकती।',
+        translationEn: 'Weapons cannot shred it, fire cannot burn it, water cannot wet it, and the wind cannot dry it.',
+        readerHref: '/scripture/bhagavadgita/chapter/2/verse/23/',
+      },
+    ],
+    reflectionPrompts: [
+      'What is the absolute worst case your mind is imagining, and would your conscious self survive it?',
+      'If you recognized that change is the universal law of nature, what dread would lose its power?',
+    ],
+    contemplativeActionEn: 'Place your hand over your heart. Breathe deeply and recite internally: "I am safe in this breath. Form changes, but my eternal essence remains unbroken."',
+    contemplativeActionHi: 'हृदय पर हाथ रखें, गहरी साँस लें और मन में स्मरण करें: "मैं इस श्वास में सुरक्षित हूँ। देह बदलती है, पर मेरा आत्म-स्वरूप अखण्ड है।"',
+  },
+  {
+    id: 'how-should-i-deal-with-failure',
+    questionEn: 'How should I deal with failure?',
+    questionHi: 'असफलता का सामना कैसे करें?',
+    sanskritInquiry: 'समत्वं योगः (Samatvam Yoga)',
+    category: 'failure',
+    philosophicalPivotEn: 'You possess sovereign dominion over your intention, integrity, and labor, but never over the myriad cosmic variables that decide outcomes. Equanimity across both victory and defeat is the essence of Yoga.',
+    philosophicalPivotHi: 'कर्म और निष्ठा पर आपका पूर्ण अधिकार है, परन्तु फल अनंत ब्रह्माण्डीय शक्तियों के अधीन है। सिद्धि और असिद्धि दोनों में समचित्त रहना ही वास्तविक योग है।',
+    keyTeachings: [
+      {
+        titleEn: 'Right to Action, Never to Fruit',
+        titleHi: 'कर्मण्येवाधिकारस्ते',
+        explanationEn: 'Fixating on results creates anxiety before the act and depression after it. Consecrating effort to duty preserves dignity.',
+        explanationHi: 'केवल फल की चिन्ता करने से कार्य से पहले घबराहट और बाद में निराशा होती है। फल की आसक्ति छोड़कर कर्म करने से चित्त शान्त रहता है।',
+      },
+    ],
+    primaryVerses: [
+      {
+        scriptureId: 'bhagavadgita',
+        scriptureName: 'Bhagavad Gita',
+        scriptureNameHi: 'भगवद्गीता',
+        chapterNumber: 2,
+        verseNumber: 47,
+        citation: 'Bhagavad Gita 2.47–48',
+        citationHi: 'भगवद्गीता 2.47–48',
+        sanskritDevanagari: 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥\nयोगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय।\nसिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते॥',
+        sanskritTransliteration: 'karmaṇy evādhikāras te mā phaleṣu kadācana | mā karma-phala-hetur bhūr mā te saṅgo \'stv akarmaṇi || yoga-sthaḥ kuru karmāṇi saṅgaṁ tyaktvā dhanañjaya | siddhy-asiddhyoḥ samo bhūtvā samatvaṁ yoga ucyate ||',
+        translationHi: 'तुम्हारा अधिकार केवल कर्म करने में ही है, उसके फलों में कभी नहीं। इसलिए तुम कर्मों के फल के हेतु मत बनो और तुम्हारी अकर्मण्यता में भी आसक्ति न हो। हे धनञ्जय! आसक्ति को त्यागकर तथा सिद्धि और असिद्धि में समान बुद्धि वाला होकर योग में स्थित हुआ कर्म कर; समत्व ही योग कहलाता है।',
+        translationEn: 'You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions. Never consider yourself the cause of results, nor be attached to inaction. Be steadfast in yoga, perform your duty without attachment, remaining equal in success and failure. Equanimity is called yoga.',
+        readerHref: '/scripture/bhagavadgita/chapter/2/verse/47/',
+      },
+    ],
+    reflectionPrompts: [
+      'Did you give your honest, sincere effort today? If so, why punish yourself for an uncontrollable outcome?',
+      'What crucial lesson is this setback offering you that effortless success could never teach?',
+    ],
+    contemplativeActionEn: 'Write down a recent failure. Beside it write: "The action was my responsibility; the outcome is the teacher. I extract the lesson and release the shame."',
+    contemplativeActionHi: 'अपनी किसी हालिया विफलता को लिखें और उसके सामने लिखें: "प्रयास मेरा कर्तव्य था; परिणाम मेरा गुरु है। मैं सीख ग्रहण करता हूँ और ग्लानि छोड़ता हूँ।"',
+  },
+  {
+    id: 'what-is-attachment',
+    questionEn: 'What is attachment?',
+    questionHi: 'आसक्ति क्या है और इससे कैसे उबरें?',
+    sanskritInquiry: 'आसक्ति व वैराग्य (Asakti & Vairagya)',
+    category: 'attachment',
+    philosophicalPivotEn: 'Attachment is the mistaken belief that an external form, relationship, or possession is the source of your completeness. Vairagya is not cold indifference; it is loving without grasping.',
+    philosophicalPivotHi: 'आसक्ति वह भ्रम है जिसमें हम किसी बाहरी वस्तु या व्यक्ति को अपने पूर्णत्व का कारण मान लेते हैं। वैराग्य उदासीनता नहीं, बल्कि बिना अधिकार जमाए निर्मल प्रेम करना है।',
+    keyTeachings: [
+      {
+        titleEn: 'The Lotus in the Water',
+        titleHi: 'जल में कमल पत्र',
+        explanationEn: 'The lotus leaf lives in the water yet remains completely unwetted by it. Live fully in relationships without being stained by possessiveness.',
+        explanationHi: 'जिस प्रकार कमल का पत्ता जल में रहकर भी जल से नहीं भीगता, उसी प्रकार संसार में रहते हुए अनासक्त भाव से कर्तव्य करें।',
+      },
+    ],
+    primaryVerses: [
+      {
+        scriptureId: 'bhagavadgita',
+        scriptureName: 'Bhagavad Gita',
+        scriptureNameHi: 'भगवद्गीता',
+        chapterNumber: 5,
+        verseNumber: 10,
+        citation: 'Bhagavad Gita 5.10',
+        citationHi: 'भगवद्गीता 5.10',
+        sanskritDevanagari: 'ब्रह्मण्याधाय कर्माणि सङ्गं त्यक्त्वा करोति यः।\nलिप्यते न स पापेन पद्मपत्रमिवाम्भसा॥',
+        sanskritTransliteration: 'brahmaṇy ādhāya karmāṇi saṅgaṁ tyaktvā karoti yaḥ | lipyate na sa pāpena padma-patram ivāmbhasā ||',
+        translationHi: 'जो पुरुष सब कर्मों को परमात्मा में अर्पण करके और आसक्ति को त्यागकर कर्म करता है, वह जल से कमल के पत्ते की भाँति पाप से लिप्त नहीं होता।',
+        translationEn: 'One who performs duties without attachment, dedicating all actions to the Supreme, is untouched by negativity, just as a lotus leaf is untouched by water.',
+        readerHref: '/scripture/bhagavadgita/chapter/5/verse/10/',
+      },
+    ],
+    reflectionPrompts: [
+      'Who or what are you currently clinging to out of fear of being incomplete on your own?',
+      'Can you love someone deeply while completely honoring their sovereignty and freedom?',
+    ],
+    contemplativeActionEn: 'Open your palms facing upward. Imagine holding what you love in open hands rather than a clenched fist. Feel the difference between devotion and possessiveness.',
+    contemplativeActionHi: 'अपनी हथेलियाँ खुली रखें। कल्पना करें कि आप जिसे प्रेम करते हैं उसे मुट्ठी में भींचने के बजाय खुली हथेली पर रख रहे हैं। प्रेम और अधिकार का भेद अनुभव करें।',
+  },
+  {
+    id: 'what-is-dharma',
+    questionEn: 'What is Dharma?',
+    questionHi: 'धर्म क्या है?',
+    sanskritInquiry: 'धर्म-मीमांसा (Dharma)',
+    category: 'dharma',
+    philosophicalPivotEn: 'Dharma is not dogma, ritualism, or sect; it is the universal cosmic law of cohesion, truth, righteousness, and ecological balance that upholds all beings.',
+    philosophicalPivotHi: 'धर्म कोई संकीर्ण मत या सम्प्रदाय नहीं है; यह वह ब्रह्माण्डीय नियम है जो समस्त सृष्टि, समाज और अंतरात्मा को धारण और सुरक्षित रखता है।',
+    keyTeachings: [
+      {
+        titleEn: 'That Which Sustains',
+        titleHi: 'जो धारण करता है',
+        explanationEn: 'Dharma comes from the root dhr (to uphold). That which protects harmony, dignity, and truth is Dharma.',
+        explanationHi: 'धारणाद्धर्म इत्याहुर्धर्मो धारयते प्रजाः। जो समाज और मर्यादा को धारण करता है, वही धर्म है।',
+      },
+    ],
+    primaryVerses: [
+      {
+        scriptureId: 'bhagavadgita',
+        scriptureName: 'Bhagavad Gita',
+        scriptureNameHi: 'भगवद्गीता',
+        chapterNumber: 4,
+        verseNumber: 7,
+        citation: 'Bhagavad Gita 4.7–8',
+        citationHi: 'भगवद्गीता 4.7–8',
+        sanskritDevanagari: 'यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।\nअभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥\nपरित्राणाय साधूनां विनाशाय च दुष्कृताम्।\nधर्मसंस्थापनार्थाय सम्भवामि युगे युगे॥',
+        sanskritTransliteration: 'yadā yadā hi dharmasya glānir bhavati bhārata | abhyutthānam adharmasya tadātmānaṁ sṛjāmy aham || paritrāṇāya sādhūnāṁ vināśāya ca duṣkṛtām | dharma-saṁsthāpanārthāya sambhavāmi yuge yuge ||',
+        translationHi: 'हे भारत! जब-जब धर्म की हानि और अधर्म की वृद्धि होती है, तब-तब ही मैं अपने रूप को रचता हूँ अर्थात प्रकट होता हूँ। साधु पुरुषों के उद्धार के लिए, पापकर्मियों के विनाश के लिए और धर्म की भली-भाँति स्थापना के लिए मैं युग-युग में प्रकट होता हूँ।',
+        translationEn: 'Whenever there is a decline in righteousness and an increase in unrighteousness, O Bharata, at that time I manifest Myself on earth. For the protection of the good, the destruction of evil, and the re-establishment of Dharma, I appear millennium after millennium.',
+        readerHref: '/scripture/bhagavadgita/chapter/4/verse/7/',
+      },
+    ],
+    reflectionPrompts: [
+      'In the decision currently facing you, what choice upholds truth, dignity, and the long-term good of all involved?',
+      'Where have you compromised on your conscience for short-term comfort?',
+    ],
+    contemplativeActionEn: 'Perform one quiet, unseen ethical act today purely because it is right, with no expectation of recognition or reward.',
+    contemplativeActionHi: 'आज कोई एक ऐसा नैतिक और शुभ कार्य करें जिसके बारे में किसी को पता न चले—केवल इसलिए क्योंकि वह सत्य और धर्म के अनुकूल है।',
+  },
+  {
+    id: 'what-is-karma',
+    questionEn: 'What is Karma?',
+    questionHi: 'कर्म क्या है और यह कैसे कार्य करता है?',
+    sanskritInquiry: 'कर्म-रहस्य (Karma)',
+    category: 'karma',
+    philosophicalPivotEn: 'Karma is not fatalistic punishment; it is the natural law of cause and effect inscribed in consciousness. Every intentional thought, word, and deed shapes your mental imprint (samskara) and future trajectory.',
+    philosophicalPivotHi: 'कर्म कोई अंधा भाग्य नहीं है, बल्कि चेतना का सार्वभौमिक नियम है। प्रत्येक सचेत विचार, वाणी और कर्म मन पर संस्कार छोड़ता है जो हमारे भविष्य का निर्माण करता है।',
+    keyTeachings: [
+      {
+        titleEn: 'Subtle and Inscrutable Path',
+        titleHi: 'गहना कर्मणो गतिः',
+        explanationEn: 'The full network of causes across past, present, and environment is too vast for the limited intellect to calculate. Act with pure intention here and now.',
+        explanationHi: 'कर्म की गति अत्यन्त गहन है; इसलिए भूतकाल के पश्चाताप में उलझने के बजाय वर्तमान में श्रेष्ठ और निष्काम कर्म करें।',
+      },
+    ],
+    primaryVerses: [
+      {
+        scriptureId: 'bhagavadgita',
+        scriptureName: 'Bhagavad Gita',
+        scriptureNameHi: 'भगवद्गीता',
+        chapterNumber: 4,
+        verseNumber: 17,
+        citation: 'Bhagavad Gita 4.17',
+        citationHi: 'भगवद्गीता 4.17',
+        sanskritDevanagari: 'कर्मणो ह्यपि बोद्धव्यं बोद्धव्यं च विकर्मणः।\nअकर्मणश्च बोद्धव्यं गहना कर्मणो गतिः॥',
+        sanskritTransliteration: 'karmaṇo hy api boddhavyaṁ boddhavyaṁ ca vikarmaṇaḥ | akarmaṇaś ca boddhavyaṁ gahanā karmaṇo gatiḥ ||',
+        translationHi: 'कर्म का स्वरूप भी जानना चाहिए और अकर्म का स्वरूप भी जानना चाहिए तथा विकर्म (निषिद्ध कर्म) का स्वरूप भी जानना चाहिए, क्योंकि कर्म की गति गहन है।',
+        translationEn: 'The intricacies of action are very hard to understand. Therefore one should know properly what action is, what forbidden action is, and what inaction is.',
+        readerHref: '/scripture/bhagavadgita/chapter/4/verse/17/',
+      },
+    ],
+    reflectionPrompts: [
+      'What seed of thought or speech did you plant today, and what fruit will it logically yield in your mind?',
+      'How does knowing that every conscious choice shapes your future free you from blaming others?',
+    ],
+    contemplativeActionEn: 'Before making any significant choice today, pause and ask: "If this action returned to me multiplied ten-fold, would I welcome it?"',
+    contemplativeActionHi: 'आज कोई भी महत्वपूर्ण निर्णय लेने से पहले रुकें और विचार करें: "यदि इस कर्म का फल मुझे दस गुना होकर मिले, तो क्या मैं इसका स्वागत करूँगा?"',
+  },
+  {
+    id: 'what-is-true-success',
+    questionEn: 'What is true success?',
+    questionHi: 'सच्ची सफलता क्या है? श्रेयस् बनाम प्रेयस्',
+    sanskritInquiry: 'श्रेयस् व प्रेयस् (Shreyas & Preyas)',
+    category: 'success',
+    philosophicalPivotEn: 'Worldly culture measures success by Preyas—temporary sensory gratification, applause, and fleeting accumulation. Wisdom measures success by Shreyas—enduring spiritual freedom, ethical dignity, and peace of mind.',
+    philosophicalPivotHi: 'सांसारिक दृष्टि प्रेयस् (जो अभी तात्कालिक प्रिय लगे) को सफलता मानती है, जबकि आत्म-ज्ञान श्रेयस् (जो अंततः परम कल्याणकारी और सत्य हो) को सच्ची सिद्धि कहता है।',
+    keyTeachings: [
+      {
+        titleEn: 'The Choice at Every Crossroads',
+        titleHi: 'श्रेयस् और प्रेयस् का चुनाव',
+        explanationEn: 'The wise examine both paths carefully and choose the higher good (Shreyas); the shallow mind grasps at the immediate pleasure (Preyas).',
+        explanationHi: 'प्रत्येक मनुष्य के सामने दो मार्ग आते हैं—श्रेयस् और प्रेयस्। बुद्धिमान मनुष्य श्रेयस् को चुनता है, जबकि अज्ञानी क्षणिक सुख के पीछे भागता है।',
+      },
+    ],
+    primaryVerses: [
+      {
+        scriptureId: 'katha',
+        scriptureName: 'Katha Upanishad',
+        scriptureNameHi: 'कठ उपनिषद्',
+        chapterNumber: 1,
+        verseNumber: '1.2.1',
+        citation: 'Katha Upanishad 1.2.1–2',
+        citationHi: 'कठ उपनिषद् 1.2.1–2',
+        sanskritDevanagari: 'अन्यच्छ्रेयोऽन्यदुतैव प्रेयस्ते उभे नानार्थे पुरुषँ सिनीतः।\nतयोः श्रेय आददानस्य साधु भवति हीयतेऽर्थाद्य उ प्रेयो वृणीते॥',
+        sanskritTransliteration: 'anyac chreyo \'nyad utaiva preyas te ubhe nānārthe puruṣam sinītaḥ | tayoḥ śreya ādadānasya sādhu bhavati hīyate \'rthād ya u preyo vrṇīte ||',
+        translationHi: 'श्रेय (परम कल्याण) और प्रेय (सांसारिक भोग) दोनों भिन्न हैं। वे दोनों अलग-अलग प्रयोजनों से मनुष्य को बाँधते हैं। उन दोनों में से जो श्रेय को ग्रहण करता है, उसका कल्याण होता है; और जो प्रेय को चुनता है, वह अपने वास्तविक लक्ष्य से भ्रष्ट हो जाता है।',
+        translationEn: 'The good (Shreyas) is one thing; the pleasant (Preyas) is another. These two, having different purposes, bind humanity. Of these two, it is well with one who chooses the good; one who chooses the pleasant misses the true goal of life.',
+        readerHref: '/scripture/katha/chapter/1/verse/1/',
+      },
+    ],
+    reflectionPrompts: [
+      'In your ambitions, are you chasing what looks impressive to strangers, or what brings genuine stillness to your heart?',
+      'If all external validation disappeared tomorrow, what would still make your life worthwhile?',
+    ],
+    contemplativeActionEn: 'Identify one choice today where you can choose the noble long-term good (Shreyas) over the cheap immediate comfort (Preyas).',
+    contemplativeActionHi: 'आज के दिन कोई एक ऐसा निर्णय लें जहाँ आप क्षणिक आलस्य या सुख (प्रेयस्) को छोड़कर आत्म-कल्याणकारी मार्ग (श्रेयस्) को चुनें।',
+  },
+];
+
+export function getQuestionById(id: string): QuestionWisdomRecord | undefined {
+  return CANONICAL_QUESTIONS.find((q) => q.id === id);
+}
+
+export function searchQuestions(query: string): QuestionWisdomRecord[] {
+  const q = query.toLowerCase().trim();
+  if (!q) return [...CANONICAL_QUESTIONS];
+  return CANONICAL_QUESTIONS.filter((item) =>
+    item.questionEn.toLowerCase().includes(q) ||
+    item.questionHi.includes(q) ||
+    item.sanskritInquiry.toLowerCase().includes(q) ||
+    item.philosophicalPivotEn.toLowerCase().includes(q) ||
+    item.philosophicalPivotHi.includes(q)
+  );
+}

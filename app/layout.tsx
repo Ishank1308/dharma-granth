@@ -1,30 +1,26 @@
 import type { Metadata, Viewport } from "next";
 import { SiteNav } from "@/app/components/SiteNav";
-import { getLibraryCounts, getRealVerseCount } from "@/data/scriptures";
-import { publishedTotals } from "@/lib/ashtavakra";
+import { getSiteShellData } from "@/lib/site-shell-data";
+import { DEFAULT_THEME, FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
-import { FloatingCompanion } from "@/app/components/FloatingCompanion";
-import { DharmaCopilot } from "@/app/components/DharmaCopilot";
 import { TactileLayer } from "@/app/components/TactileLayer";
-import { SpatialLightCursor } from "@/app/components/motion/SpatialLightCursor";
+import { MotionLayer } from "@/app/components/motion/MotionLayer";
 import { ErrorBoundary } from "@/app/components/ErrorBoundary";
 import { OfflineIndicator } from "@/app/components/OfflineIndicator";
-// Font subsetting: Bundling only required weights (400, 600, 700) and critical
-// styles; unused weights (300, 500, 300-italic, 700-italic) are omitted to reduce bundle size.
-import "@fontsource/inter/latin-400.css";
-import "@fontsource/inter/latin-600.css";
-import "@fontsource/inter/latin-700.css";
-import "@fontsource/merriweather/latin-400.css";
-import "@fontsource/merriweather/latin-700.css";
-import "@fontsource/merriweather/latin-400-italic.css";
-import "@fontsource/noto-sans-devanagari/devanagari-400.css";
-import "@fontsource/noto-sans-devanagari/devanagari-600.css";
-import "@fontsource/noto-sans-devanagari/devanagari-700.css";
+
+import { MananaSelectionBar, PranaCapsule } from "@/app/components/ClientOverlays";
+// Fonts: @font-face rules for /fonts live in globals.css (one source per weight, 400/600/700).
+// Design system: tokens first, then the base styles, the shared components and motion (docs/design-system.md).
+import "./styles/tokens.css";
 import "./globals.css";
+import "./styles/components.css";
+// The motion system (reveals, tilt, hero halo, theme transition) sits over the base styles.
+import "./motion.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
+import { StoragePersistenceRequest } from "@/app/components/StoragePersistenceRequest";
 
 /**
  * Inline script that runs synchronously before React hydrates so the
@@ -36,8 +32,16 @@ const THEME_INIT_SCRIPT = `
 (function () {
   try {
     var t = localStorage.getItem('dharma-theme');
-    if (t === 'sunset' || t === 'night' || t === 'day' || t === 'paper') {
+    var fixedThemes = ${JSON.stringify(FIXED_THEME_IDS)};
+    if (fixedThemes.indexOf(t) !== -1) {
       document.documentElement.setAttribute('data-theme', t);
+    } else if (t === 'auto') {
+      var d = new Date();
+      var m = d.getHours() * 60 + d.getMinutes();
+      var eff = (m >= 300 && m < 390) || (m >= 1005 && m < 1140) ? 'sunset' : (m >= 390 && m < 1005 ? 'day' : 'night');
+      document.documentElement.setAttribute('data-theme', eff);
+    } else {
+      document.documentElement.setAttribute('data-theme', ${JSON.stringify(DEFAULT_THEME)});
     }
   } catch (e) {}
   // The home-page splash plays once per browser session; later page loads
@@ -57,11 +61,11 @@ const THEME_INIT_SCRIPT = `
 `;
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://dharmagranth.in";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://dharmagranth.dev";
 const SITE_NAME = "Dharma Granth";
 const DEFAULT_TITLE = "Dharma Granth — Hindu Scriptures, Verse by Verse";
 const DEFAULT_DESCRIPTION =
-  "Famous verses from the Bhagavad Gita, Upanishads, and other Hindu scriptures, explained verse by verse in Sanskrit, Hindi, and plain English. Free and ad-free.";
+  "Scriptural study, verse by verse: the Bhagavad Gita, Upanishads, and more in original Sanskrit, with Hindi and English study aids. A free, ad-free research edition.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -78,6 +82,8 @@ export const metadata: Metadata = {
     "Sanskrit verses",
     "Vedas",
     "Hindi commentary",
+    "scriptural study",
+    "traditional perspectives",
     "dharma",
     "verse meaning",
   ],
@@ -125,20 +131,25 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  // Google Search Console ownership proof for https://dharmagranth.in/
+  // Google Search Console ownership proof for https://dharmagranth.dev/
   // (URL-prefix property). Env var overrides for other environments.
+  // Two tokens: the original one, and the one for the Google account that
+  // owns the dharmagranth.in property (needed for Change of address).
   verification: {
-    google:
-      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
-      "YWMSMR_2e_0e1w2nqm5_sMRIgnkVNgF-6IRNRRdyYS4",
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      : [
+          "YWMSMR_2e_0e1w2nqm5_sMRIgnkVNgF-6IRNRRdyYS4",
+          "t9brLjsi00E56cVIRni03_3yypFjqsJ5NRA0WQBLhRk",
+        ],
   },
   category: "religion",
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#c2410c" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1412" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f5f7" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -163,6 +174,8 @@ const siteJsonLd = {
       "@id": `${SITE_URL}/#website`,
       url: `${SITE_URL}/`,
       name: SITE_NAME,
+      // Spellings readers search with (Search Console, 2026-10): "dharm granth", "dharmgranth", "धर्म ग्रंथ".
+      alternateName: ["Dharm Granth", "Dharmagranth", "DharmaGranth", "धर्म ग्रंथ", "धर्मग्रंथ"],
       description: DEFAULT_DESCRIPTION,
       publisher: { "@id": `${SITE_URL}/#organization` },
       inLanguage: ["hi", "sa", "en"],
@@ -183,9 +196,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const shell = getSiteShellData();
+
   return (
-    <html lang="hi" suppressHydrationWarning>
+    <html lang="hi" data-theme={DEFAULT_THEME} suppressHydrationWarning>
       <head>
+        <meta name="dharma-library-verse-count" content={String(shell.libraryVerses)} />
+        <meta name="dharma-theme-options" content={THEME_IDS.join(',')} />
+        <meta name="dharma-ui-script" content="Devanagari,Latin" />
         {/* Preload only critical font files to minimize layout shifts (CLS) and accelerate LCP */}
         <link
           rel="preload"
@@ -203,10 +221,23 @@ export default function RootLayout({
         />
         <link
           rel="preload"
-          href="/fonts/merriweather-400.woff2"
+          href="/fonts/newsreader-400.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
+        />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Dharma Granth — Daily Sacred Verse &amp; Wisdom"
+          href="/feed.xml"
+        />
+        <link
+          rel="preload"
+          href="/logo-splash.webp"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
         />
 
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
@@ -218,31 +249,32 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-dharma-bg text-dharma-text antialiased">
         <ThemeProvider>
-          <SpatialLightCursor />
           <a href="#main-content" className="skip-link" lang="en">
             Skip to main content
           </a>
           <SiteNav
-            libraryVerses={getRealVerseCount()}
-            gitaChapters={getLibraryCounts("bhagavadgita").chapters}
-            gitaVerses={getLibraryCounts("bhagavadgita").verses}
-            ashtavakraChapters={publishedTotals().chapters}
-            ashtavakraVerses={publishedTotals().verses}
+            libraryVerses={shell.libraryVerses}
+            gitaChapters={shell.gita.chapters}
+            gitaVerses={shell.gita.verses}
+            ashtavakraChapters={shell.ashtavakra.chapters}
+            ashtavakraVerses={shell.ashtavakra.verses}
           />
           <div id="main-content" tabIndex={-1} className="outline-none pb-16 lg:pb-0">
             <ErrorBoundary name="Main Content">
               <PageTransition>{children}</PageTransition>
             </ErrorBoundary>
           </div>
-          <ErrorBoundary name="Floating Companion">
-            <FloatingCompanion />
+          <ErrorBoundary name="Prāṇa Capsule">
+            <PranaCapsule />
           </ErrorBoundary>
-          <ErrorBoundary name="Dharma Copilot">
-            <DharmaCopilot />
+          <ErrorBoundary name="Manana Selection">
+            <MananaSelectionBar />
           </ErrorBoundary>
           <TactileLayer />
+          <MotionLayer />
           <OfflineIndicator />
           <ServiceWorkerRegister />
+          <StoragePersistenceRequest />
           <PwaInstallBanner />
         </ThemeProvider>
       </body>

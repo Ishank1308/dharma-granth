@@ -21,7 +21,8 @@ export function generateStaticParams() {
   return dictionary.map((t) => ({ id: t.id }));
 }
 
-export function generateMetadata({ params }: { params: { id: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const term = getTerm(params.id);
   if (!term) return { title: 'Term Not Found' };
 
@@ -33,12 +34,13 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
       images: [DEFAULT_OG_IMAGE],
       title: `${term.term} (${term.sanskrit}) — Dharma Granth Dictionary`,
       description: term.shortDef,
-      url: `https://dharmagranth.in/dictionary/${term.id}/`,
+      url: `https://dharmagranth.dev/dictionary/${term.id}/`,
     },
   };
 }
 
-export default function TermPage({ params }: { params: { id: string } }) {
+export default async function TermPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const term = getTerm(params.id);
   if (!term) notFound();
 

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Compass, HelpCircle, Key, Layers, ListOrdered, MapPin } from 'lucide-react';
 import type { ChapterMapNode } from '@/data/chapter-orientation';
 import { CONCEPT_DETAILS } from '@/data/concept-details';
+import { readHref } from '@/lib/verse-paths';
 
 interface Props {
   scriptureId: string;
@@ -130,7 +131,7 @@ export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterCo
               {/* Direct Verse Jump Actions */}
               <div className="flex items-center gap-1.5">
                 <Link
-                  href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${activeNode.startVerse}`}
+                  href={readHref(scriptureId, chapterId, activeNode.startVerse)}
                   className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-xl bg-saffron-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-2xs hover:bg-saffron-700 transition"
                 >
                   <span>Read Stage Verses</span>
@@ -194,7 +195,7 @@ export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterCo
                 {activeNode.keyVerses.map((v) => (
                   <Link
                     key={v}
-                    href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${v}`}
+                    href={readHref(scriptureId, chapterId, v)}
                     className="focus-ring inline-flex min-h-[32px] items-center gap-1 rounded-lg border border-amber-600/30 bg-amber-500/10 px-2.5 py-0.5 font-bold text-amber-900 dark:text-amber-200 hover:border-amber-600 transition"
                   >
                     <span>श्लोक {chapterId}.{v}</span>
@@ -243,7 +244,7 @@ export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterCo
                   {node.keyVerses.map((v) => (
                     <Link
                       key={v}
-                      href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${v}`}
+                      href={readHref(scriptureId, chapterId, v)}
                       className="inline-flex min-h-[32px] items-center gap-1 rounded-md border border-dharma-border bg-dharma-card px-2 py-0.5 text-xs font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2"
                     >
                       {chapterId}.{v}

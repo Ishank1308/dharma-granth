@@ -6,7 +6,7 @@ export const samaveda: Scripture = {
   titleSanskrit: 'सामवेद',
   category: 'veda',
   description: 'The Veda of melodies and chants — the world\'s oldest musical scripture. Primarily Rig Vedic hymns set to precise melodic notation for ritual chanting. The Chandogya Upanishad, one of the greatest Upanishads, is rooted in Sama Vedic tradition. Krishna in the Gita declares: "Among the Vedas, I am the Sama Veda."',
-  totalVerses: 1875,
+  totalVerses: 14,
   tags: ['Veda', 'Music', 'Chants', 'Udgitha', 'Sound', 'OM'],
   chapters: [
     {
@@ -48,43 +48,7 @@ export const samaveda: Scripture = {
           lifeLesson: 'What fire in your life are you not feeding? A relationship, a creative project, a practice, a dream? The Sama Veda\'s prescription is concrete: give it fuel (time, effort) and ghee (your best, purest energy — not your leftovers). One focused hour on what matters most is worth ten scattered hours on what is merely comfortable.',
           keywords: ['AgniAngiras', 'DivineFireFed', 'Effort', 'DeliberatePractice'],
         },
-      
-        {
-          id: 9,
-          sanskrit: 'गायत्री वा इदं सर्वं भूतं यदिदं किञ्च । गायत्री वा इदं सर्वं यद्भूतं यच्च भव्यम् ॥',
-          transliteration: 'gāyatrī vā idaṃ sarvaṃ bhūtaṃ yadidaṃ kiñca | gāyatrī vā idaṃ sarvaṃ yadbhūtaṃ yacca bhavyam ||',
-          translation: 'Gayatri is all this, whatever exists. Gayatri is all this — whatever has been and whatever will be.',
-          hindi: 'गायत्री ही यह सब है — जो कुछ भी यहाँ है। गायत्री ही सब है — जो हो चुका है और जो होगा।',
-          explanation: 'The Chandogya Upanishad\'s declaration that the Gayatri — the most sacred Vedic meter and mantra — is the totality of existence. The Gayatri mantra, sung in the Sama Veda, is not merely a prayer but the vibratory structure of reality itself. Past, present, and future are all contained in its syllables.',
-          keywords: [],
-        },
-        {
-          id: 10,
-          sanskrit: 'स य एषोऽणिमैतदात्म्यमिदं सर्वं तत्सत्यं स आत्मा तत्त्वमसि श्वेतकेतो ॥',
-          transliteration: 'sa ya eṣo\'ṇimaitadātmyamidaṃ sarvaṃ tatsatyaṃ sa ātmā tattvamasi śvetaketo ||',
-          translation: 'That which is the finest essence — this whole world has that as its Self. That is the real. That is the Self. Thou art that, O Shvetaketu.',
-          hindi: 'जो यह सूक्ष्मतम सार है — यह सारा जगत उसी को आत्मा के रूप में धारण करता है। वही सत्य है। वही आत्मा है। हे श्वेतकेतु, तुम वही हो।',
-          explanation: 'The great Mahavakya "Tat Tvam Asi" — Thou Art That — from the Chandogya Upanishad, the crown jewel of the Sama Veda tradition. The finest essence that pervades all existence is identical with the Self in you. This is not a metaphor or a hope — it is the direct declaration of the sage Uddalaka to his son Shvetaketu after nine days of teaching through natural analogies.',
-          keywords: [],
-        },
-        {
-          id: 11,
-          sanskrit: 'छन्दांसि यज्ञाः क्रतवो व्रतानि भूतं भव्यं यच्च वेदा वदन्ति । अस्माद् एतत् सर्वं प्रसूयते । यश्चायं पुरुषे यश्चासावादित्ये स एकः ॥',
-          transliteration: 'chandāṃsi yajñāḥ kratavo vratāni bhūtaṃ bhavyaṃ yacca vedā vadanti | asmād etat sarvaṃ prasūyate | yaścāyaṃ puruṣe yaścāsāvāditye sa ekaḥ ||',
-          translation: 'Meters, sacrifices, rituals, vows, past and future — all that the Vedas declare — all this is born from this (Brahman). The one who is in this person and the one who is in yonder sun — they are one.',
-          hindi: 'छंद, यज्ञ, क्रतु, व्रत, भूत, भविष्य — जो वेद कहते हैं — यह सब इसी (ब्रह्म) से उत्पन्न होता है। जो इस पुरुष में है और जो उस सूर्य में है — वे एक हैं।',
-          explanation: 'The Taittiriya Upanishad\'s teaching on the identity of the individual and cosmic: the consciousness at the centre of a person (purusha) and the consciousness at the centre of the sun (aditya) are one and the same reality. All of creation — every ritual, every vow, past and future — arise from this one. The Sama Veda\'s solar tradition reaches its philosophical apex here: the sun and the self share one source.',
-          keywords: [],
-        },
-        {
-          id: 12,
-          sanskrit: 'एतद्ध वाव तज्जुषते यत्साम । साम्नो ह वै रसो यः साम्नो रसस्तस्यैव ब्रह्मणो रसः ॥',
-          transliteration: 'etaddha vāva tajjuṣate yatsāma | sāmno ha vai raso yaḥ sāmno rasastasyaiva brahmaṇo rasaḥ ||',
-          translation: 'That which one enjoys — that is Sama. The essence (rasa) of Sama is real; that essence of Sama is the very essence of Brahman.',
-          hindi: 'जिसका कोई रसास्वादन करता है — वही साम है। साम का जो रस है — वही साम का रस ब्रह्म का ही रस है।',
-          explanation: 'The Chandogya\'s meditation on rasa — essence, taste, delight. The deepest pleasure in music, in song, in the Sama chant, is not aesthetic enjoyment alone; it is contact with Brahman through beauty. The Sama Veda is the path of rasa: the recognition that the delight experienced in sacred music is a direct experience of the divine. Beauty is not a pointer to Brahman — it IS Brahman as rasa.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 2,
@@ -229,25 +193,7 @@ export const samaveda: Scripture = {
           lifeLesson: 'The Sama Veda prescribes a practice: let music be your path to Brahman. Not background music while working — but intentional listening, fully present. Once a day, for 10 minutes, sit with music that moves you and give it your complete attention. Let the rasa of the music carry you to the rasa of Brahman. This is the Sama Veda\'s sadhana.',
           keywords: ['Rasa', 'MusicAsBrahman', 'Beauty', 'SamaPath'],
         },
-      
-        {
-          id: 660,
-          sanskrit: 'अग्न आयाहि वीतये गृणानो हव्यदातये । नि होता सत्सि बर्हिषि ॥',
-          transliteration: 'agna āyāhi vītaye gṛṇāno havyadātaye | ni hotā satsi barhiṣi ||',
-          translation: 'O Agni, come for the enjoyment of the oblation, praised and ready to carry the offering; sit as the priest on the sacred grass.',
-          hindi: 'हे अग्नि! यज्ञ के आनंद के लिए आओ, स्तुति करते हुए हव्य देने के लिए; पवित्र कुश पर पुरोहित के रूप में बैठो।',
-          explanation: 'The Sama Veda opens with an invocation of Agni — not merely the fire element but the divine intelligence that illuminates, purifies, and transforms. Agni is the fire of consciousness, the sacred principle that carries human offerings (thoughts, intentions, actions) to the divine. To "invite Agni" is to consciously invite illumination into one\'s life. The Sama Veda adds music to this invocation — because sound is the most direct path to the divine.',
-          keywords: [],
-        },
-        {
-          id: 661,
-          sanskrit: 'तं त्वा समिद्भिरङ्गिरो घृतेन वर्धयामसि । बृहच्छोचा यविष्ठ्य ॥',
-          transliteration: 'taṃ tvā samidbhiraṅgiro ghṛtena vardhayāmasi | bṛhacchocā yaviṣṭhya ||',
-          translation: 'O Agni Angiras, we increase you with fuel and ghee. Shine brightly, O youngest one.',
-          hindi: 'हे अङ्गिरस् अग्नि! हम तुम्हें समिधा और घृत से बढ़ाते हैं। हे सबसे युवा! तेजस्वी रूप से प्रकाशित हो।',
-          explanation: 'The Sama Veda\'s ritual chants understand that the divine fire must be consciously fed — it does not sustain itself automatically. "Samidbhih" (fuel) and "ghritena" (ghee) represent the twin offerings: sustained effort and the pure essence of what one has. Inner fire — inspiration, devotion, creative energy — requires the same: regular feeding with effort and the best of oneself, not the scraps left over after distraction.',
-          keywords: [],
-        },],
+      ],
     },
   ],
 };

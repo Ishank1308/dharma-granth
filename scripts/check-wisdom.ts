@@ -39,6 +39,7 @@ const REQUIRED_TOPICS = [
   'stress-and-worry', 'fear-and-courage', 'anger', 'grief-and-loss', 'duty-and-decision-making', 'discipline',
   'concentration', 'leadership', 'family-responsibilities', 'devotion', 'self-knowledge', 'meaning-of-life',
   'failure-and-setbacks', 'success', 'attachment', 'detachment', 'death', 'contentment', 'self-control', 'skill-in-work',
+  'meditation', 'karma', 'the-self', 'ego', 'desire-and-greed', 'peace-of-mind', 'forgiveness', 'faith',
 ];
 
 /** Claims that need evidence this repository does not contain. */
@@ -92,8 +93,24 @@ for (const t of wisdomTopics) {
     const run = letters(chapter.verses.slice(index, index + 4).map((x) => x.sanskrit ?? '').join(' '));
     const head = quoted.slice(0, 24);
     const tail = quoted.slice(Math.max(0, quoted.length - 24));
-    if (!run.includes(head) || !run.includes(tail)) {
+    // A quotation's initial अ can be absorbed by sandhi with the preceding word in the library's running text
+    // (Brihadaranyaka 1.3.28 has जपेदसतो for "japed asato"), so the head may match without it.
+    const headOk = run.includes(head) || (quoted.startsWith('अ') && run.includes(quoted.slice(1, 25)));
+    if (!headOk || !run.includes(tail)) {
       fail(at, `${v.referenceDisplay}: quoted Sanskrit does not match library ch. ${loc.chapter} v. ${loc.verse}`);
+    }
+    // A cited range must be quoted whole (CLAUDE.md rule 4): one closing ॥ per verse, and where the range
+    // numbers are library verses, the quote must run to the end of the last one.
+    const range = String(v.verseNumber).match(/(\d+)\s*[–-]\s*(\d+)$/);
+    if (range) {
+      const count = Number(range[2]) - Number(range[1]) + 1;
+      const closings = (v.sanskritDevanagari.replace(/॥\s*[०-९\d]+\s*॥/g, '॥').match(/॥/g) ?? []).length;
+      if (closings < count) fail(at, `${v.referenceDisplay}: cites ${count} verses but quotes ${closings} complete verse(s)`);
+      const last = chapter.verses[index + count - 1];
+      if (range[1] === loc.verse && last?.sanskrit) {
+        const lastTail = letters(last.sanskrit).slice(-24);
+        if (!quoted.includes(lastTail)) fail(at, `${v.referenceDisplay}: quote stops before the end of verse ${last.number}`);
+      }
     }
   }
 

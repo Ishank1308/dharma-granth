@@ -1,0 +1,37 @@
+# Dharma Granth Industrial Offline Scripture OCR Pipeline
+# Requirements for 100% Offline Sanskrit & Hindi Multi-Gigabyte PDF Processing
+
+# Core PDF Processing & Rendering
+PyMuPDF>=1.23.0           # High-performance 600 DPI rendering & PDF manipulation
+pdf2image>=1.16.3         # Secondary fallback PDF-to-image rasterizer
+Pillow>=10.0.0            # Image manipulation and format conversions
+
+# OpenCV & Image Preprocessing
+opencv-python>=4.8.0      # Advanced computer vision: deskew, CLAHE, adaptive thresholding, denoising
+numpy>=1.24.0             # Array operations, histogram analysis, variance scoring
+scipy>=1.11.0             # Scientific signal processing for rotation, deskew, and morphology
+
+# OCR Engines
+pytesseract>=0.3.10       # Tesseract OCR Python wrapper
+surya-ocr>=0.4.14         # Offline Transformer-based Devanagari OCR & layout analysis fallback
+torch>=2.1.0              # Deep learning runtime for Surya OCR (CPU or CUDA)
+torchvision>=0.16.0       # Vision primitives for Surya models
+
+# Post-processing, NLP & Lexical Correction
+indic-nlp-library>=0.92   # Devanagari phonetic normalization, script tokenization, transliteration
+symspellpy>=6.7.7         # High-speed frequency-based Devanagari spelling correction
+regex>=2023.10.3          # Advanced Unicode-compliant regular expressions
+unicodedata2>=15.1.0      # Full Unicode Character Database (UCD) properties for Devanagari
+
+# Searchable PDF Generation
+ocrmypdf>=15.4.0          # Standards-compliant PDF/A searchable PDF creation with invisible text layer
+reportlab>=4.0.0          # Fallback vector PDF generation with custom Unicode font embedding
+pypdf>=3.17.0             # Low-level PDF page merging and metadata injection
+
+# Configuration, Logging, Data Models & CLI
+pydantic>=2.5.0           # Strict JSON schema validation for scriptures, chapters, and verses
+pyyaml>=6.0.1             # YAML configuration parser
+rich>=13.7.0              # High-definition terminal dashboards, progress bars, and log formatting
+click>=8.1.7              # Production CLI subcommand interface
+psutil>=5.9.6             # Dynamic hardware telemetry, RAM monitoring & worker throttling
+tqdm>=4.66.0              # Visual progress bars for batch rendering and OCR loops

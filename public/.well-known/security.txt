@@ -1,4 +1,0 @@
-Contact: https://github.com/Ishank567/dharma-granth/issues
-Expires: 2027-10-18T00:00:00.000Z
-Preferred-Languages: hi, en
-Canonical: https://dharmagranth.in/.well-known/security.txt

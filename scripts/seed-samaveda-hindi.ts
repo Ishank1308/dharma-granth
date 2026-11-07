@@ -1,5 +1,5 @@
 /**
- * Seed authentic, dignified Hindi translations for all 1,873 verses of Sama Veda.
+ * Machine-translate Hindi for the Sama Veda from its English (all 1,873 verses), labelled hindiSource "ai".
  *
  * Uses the English translation and Sanskrit roots to produce Vedic Hindi,
  * refined with traditional Vedic bhashya terminology (अग्नि, इन्द्र, सोम, बर्हि, हव्य, etc.).
@@ -19,13 +19,13 @@ const CACHE_PATH = resolve(CACHE_DIR, "samaveda-hindi.json");
 
 // Curated traditional translations for iconic Sama Veda verses
 const CURATED_SV: Record<string, string> = {
-  "1:1": "हे अग्नि! यज्ञ के आनंद के लिए आओ, स्तुति करते हुए हव्य देने के लिए; पवित्र कुश पर पुरोहित के रूप में बैठो।",
+  "1:1": "हे अग्निदेव! स्तुतियों से प्रसन्न होकर आप हवि ग्रहण करने और देवताओं तक हव्य पहुँचाने के लिए पधारें; होता बनकर इस कुश के आसन पर विराजें।",
   "1:2": "हे अग्नि! आप समस्त यज्ञों के पुरोहित हैं, जो मनुष्यों के कल्याण के लिए देवताओं में स्थापित किए गए हैं।",
   "1:3": "हम अग्नि को दिव्य दूत के रूप में चुनते हैं, जो सर्वज्ञ पुरोहित हैं और इस यज्ञ के परम कुशल संपादक हैं।",
   "1:4": "प्रज्वलित, तेजस्वी और आहुतियों से तृप्त अग्नि समस्त विघ्नों-बाधाओं का नाश करते हैं; ऐश्वर्य की कामना से वे भक्तिपूर्वक स्तुत होते हैं।",
-  "1:5": "मैं आपके परम प्रिय अतिथि, मित्र के समान स्नेहमय अग्नि की स्तुति करता हूँ, जो रथ के समान जाने योग्य हैं।",
+  "1:5": "मैं आपके परम प्रिय अतिथि अग्नि की स्तुति करता हूँ, जो मित्र के समान स्नेही हैं; हे अग्नि! आप रथ के समान प्राप्त करने योग्य (बहुमूल्य) हैं।",
   "1:6": "हे अग्नि! अपनी महती शक्तियों से प्रत्येक शत्रु और हमसे द्वेष करने वाले मर्त्य से हमारी रक्षा करें।",
-  "4:660": "हे अग्नि! यज्ञ के आनंद के लिए आओ, स्तुति करते हुए हव्य देने के लिए; पवित्र कुश पर पुरोहित के रूप में बैठो।",
+  "4:660": "हे अग्निदेव! स्तुतियों से प्रसन्न होकर आप हवि ग्रहण करने और देवताओं तक हव्य पहुँचाने के लिए पधारें; होता बनकर इस कुश के आसन पर विराजें।",
   "4:661": "हे अङ्गिरस् अग्नि! हम तुम्हें समिधा और घृत से बढ़ाते हैं। हे सबसे युवा! तेजस्वी रूप से प्रकाशित हो।",
 };
 
@@ -146,6 +146,11 @@ async function translateBatch(texts: string[]): Promise<string[]> {
 }
 
 async function main() {
+  // Withheld 2026-10-27: the machine Hindi had frequent errors. It is kept in
+  // data/pending/samaveda-hindi-machine.json; new Hindi is translated from the Sanskrit instead.
+  if (!process.argv.includes("--allow-machine-hindi")) {
+    throw new Error("Sama Veda machine Hindi is withheld (see data/pending/samaveda-hindi-machine.json). Pass --allow-machine-hindi to run anyway.");
+  }
   console.log("=== Seeding Sama Veda Hindi Translations ===");
   if (!existsSync(CACHE_DIR)) mkdirSync(CACHE_DIR, { recursive: true });
 
@@ -255,6 +260,13 @@ async function main() {
     }
 
     await new Promise((r) => setTimeout(r, 150));
+  }
+
+  // Everything outside CURATED_SV is machine-translated from the English, so the reader labels it as AI.
+  for (const ch of scripture.chapters) {
+    for (const v of ch.verses as Array<{ number: number; hindi?: string; hindiSource?: string }>) {
+      if (v.hindi && !CURATED_SV[`${ch.number}:${v.number}`]) v.hindiSource = "ai";
+    }
   }
 
   // Final cache save

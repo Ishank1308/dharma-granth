@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Copy, X, Github, Edit3, Check } from 'lucide-react';
+import { Copy, X, Edit3, Check } from 'lucide-react';
 
 interface ContributeMeaningModalProps {
   open: boolean;
@@ -89,44 +89,6 @@ export function ContributeMeaningModal({
     return lines.join('\n');
   }
 
-  function buildGitHubBody(): string {
-    const verseRef = `${scriptureTitle || scriptureId} — ${chapterTitle || `Ch ${ch}`} · Verse ${v}`;
-    let body = `## Contribution: Improved / New Verse Meaning\n\n`;
-    body += `**Verse:** ${verseRef}\n`;
-    body += `**Key (for hi-analysis):** \`${fullKey}\`\n\n`;
-
-    if (sanskrit) {
-      body += `**Sanskrit (mūla):**\n\`\`\`\n${sanskrit}\n\`\`\`\n\n`;
-    }
-
-    if (form.explanation.trim()) {
-      body += `**व्याख्या (Explanation):**\n${form.explanation.trim()}\n\n`;
-    }
-    if (form.science.trim()) {
-      body += `**आधुनिक दृष्टि (Science / Modern parallel):**\n${form.science.trim()}\n\n`;
-    }
-    if (form.lifeLesson.trim()) {
-      body += `**जीवन शिक्षा (Life lesson):**\n${form.lifeLesson.trim()}\n\n`;
-    }
-    if (form.hindi.trim()) {
-      body += `**हिन्दी (Hindi translation / arth):**\n${form.hindi.trim()}\n\n`;
-    }
-    if (form.notes.trim()) {
-      body += `**Notes / Sources:**\n${form.notes.trim()}\n\n`;
-    }
-
-    body += `---\n`;
-    body += `**How to integrate (for maintainers):**\n`;
-    body += `1. Paste the fragment below into \`data/hi-commentary/${suggestedFile}\` (inside the exported object).\n`;
-    body += `2. Run \`npm run generate-hi-analysis\` (or the equivalent) in the web project.\n`;
-    body += `3. Copy the updated \`hi-analysis.json\` to \`dharma-granth-mobile/data/\`.\n\n`;
-    body += `**Suggested fragment for the commentary file:**\n`;
-    body += '```ts\n' + buildFragmentSnippet() + '\n```\n\n';
-    body += `Thank you for helping improve the meanings in Dharma Granth!`;
-
-    return body;
-  }
-
   function escapeForTemplate(text: string): string {
     // Basic escaping for template literals: backticks and ${ 
     return text
@@ -147,16 +109,6 @@ export function ContributeMeaningModal({
 
   function handleCopySnippet() {
     copy(buildFragmentSnippet(), 'snippet');
-  }
-
-  function handleCopyIssue() {
-    const title = encodeURIComponent(`Meaning contribution: ${scriptureId} ${fragmentKey}`);
-    const body = encodeURIComponent(buildGitHubBody());
-    // Generic GitHub new issue link (user can change the repo in the address bar)
-    const url = `https://github.com/new?template=issue&title=${title}&body=${body}`;
-    window.open(url, '_blank');
-    // Also copy the body for convenience
-    copy(buildGitHubBody(), 'issue');
   }
 
   function handleCopyFull() {
@@ -289,7 +241,7 @@ export function ContributeMeaningModal({
                     </button>
                   )}
                 </div>
-                <pre className="max-h-40 overflow-auto rounded-xl border border-dharma-border bg-[#0f0c09] p-3 text-[12px] leading-relaxed text-emerald-300 font-mono">
+                <pre className="max-h-40 overflow-auto rounded-xl border border-dharma-border bg-[#0f0c09] p-3 text-caption leading-relaxed text-emerald-300 font-mono">
 {hasAnyInput ? buildFragmentSnippet() : `  '${fragmentKey}': {\n    explanation: \`...\`,\n    // science, lifeLesson optional\n  },`}
                 </pre>
                 <p className="mt-1 text-[10px] text-dharma-muted">Suggested file: <code className="font-mono">data/hi-commentary/{suggestedFile}</code></p>
@@ -318,15 +270,6 @@ export function ContributeMeaningModal({
                 >
                   <Copy className="h-4 w-4" />
                   {copied === 'full' ? 'Copied full package!' : 'Copy full package'}
-                </button>
-
-                <button
-                  onClick={handleCopyIssue}
-                  disabled={!hasAnyInput}
-                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-saffron-600 to-saffron-700 px-4 py-2 text-sm font-semibold text-white shadow hover:brightness-105 disabled:opacity-50"
-                >
-                  <Github className="h-4 w-4" />
-                  {copied === 'issue' ? 'Opened + copied!' : 'Open GitHub issue + copy'}
                 </button>
               </div>
             </div>

@@ -1,0 +1,28 @@
+# Dharma Granth
+
+> A calm, ad-free scripture library and guided wisdom discovery experience for
+> Sanatan Dharma: Sanskrit verses with translation, explanation, modern
+> context, reflection, and related teachings.
+
+- Canonical site: https://dharmagranth.dev/
+- Sitemap: https://dharmagranth.dev/sitemap.xml
+- Complete LLM reference index: https://dharmagranth.dev/llms-full.txt
+- How this site works: https://dharmagranth.dev/how-dharma-granth-works/
+- Sources & methodology: https://dharmagranth.dev/sources/ and https://dharmagranth.dev/methodology/
+
+## Entry points for answer retrieval
+
+- Scripture library: https://dharmagranth.dev/scriptures/
+- Knowledge hubs (dharma, karma, fear, anger, mind, discipline, attachment, detachment, bhakti, wisdom): https://dharmagranth.dev/knowledge/
+- Wisdom pathways (guided explorations): https://dharmagranth.dev/wisdom-pathways/
+- Wisdom for life (topical scriptural guidance): https://dharmagranth.dev/wisdom-for-life/
+- Scripture & Tradition FAQs: https://dharmagranth.dev/learn/faq/
+- Vedic Panchang & Calendar: https://dharmagranth.dev/panchang/
+- Hindu Festivals & Observances: https://dharmagranth.dev/festivals/
+- Ask with library verses: https://dharmagranth.dev/ask/
+
+## Citation guidance
+
+- Prefer verse pages: `/scripture/{id}/chapter/{n}/verse/{v}/` carry the Sanskrit text, translation, explanation, and source notes in static HTML.
+- Every verse resolves its explanation from published commentary overlays plus the verse record; review status is flagged on the page where it applies.
+- Per-page source, edition, translator, and licence details appear in the page's source notes; consult them before quoting.

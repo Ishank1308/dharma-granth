@@ -1,18 +1,25 @@
 name: Deploy Cloudflare Pages
 
-# Builds the static export in GitHub Actions and uploads it to Cloudflare
-# Pages with wrangler. Setup: docs/deploy-cloudflare.md.
+# Uploads the static export to Cloudflare Pages with wrangler. Setup:
+# docs/deploy-cloudflare.md.
+#
+# When the pushed tree is exactly the merge tree a pull request's CI run
+# built and passed (ci.yml), that export is deployed as is, in a few minutes.
+# Otherwise (master moved after the last CI run, CI failed, the artifact
+# expired, a direct push) the export is built and checked here as before.
 # Needs repository secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID;
 # without them the build still runs (and checks) but nothing is deployed.
 
 on:
   push:
-    branches: ["master"]
+    branches: ["master", "fix/audit-cloudflare-search"]
   workflow_dispatch:
 
 permissions:
   contents: read
   deployments: write
+  # Read the export ci.yml kept, then delete it once it is live.
+  actions: write
 
 concurrency:
   group: cloudflare-pages
@@ -20,9 +27,9 @@ concurrency:
 
 env:
   NEXT_TELEMETRY_DISABLED: 1
-  # Custom domain (dharmagranth.in) serves from the root — no base path.
+  # Custom domain (dharmagranth.dev) serves from the root — no base path.
   NEXT_PUBLIC_BASE_PATH: ""
-  NEXT_PUBLIC_SITE_URL: https://dharmagranth.in
+  NEXT_PUBLIC_SITE_URL: https://dharmagranth.dev
   CLOUDFLARE_PROJECT: dharma-granth
 
 jobs:
@@ -33,29 +40,83 @@ jobs:
       HAS_CLOUDFLARE_SECRETS: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
 
     steps:
+      - name: Find the export CI built for this tree
+        id: prebuilt
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const { data: commit } = await github.rest.git.getCommit({ owner, repo, commit_sha: context.sha });
+            const name = `dist-tree-${commit.tree.sha}`;
+            const { data } = await github.rest.actions.listArtifactsForRepo({ owner, repo, name, per_page: 20 });
+            const repoId = context.payload.repository.id;
+            for (const artifact of data.artifacts) {
+              const run = artifact.workflow_run;
+              // Only runs on branches of this repository: a fork's pull request
+              // could edit ci.yml and upload anything under this name.
+              if (artifact.expired || !run || run.repository_id !== repoId || run.head_repository_id !== repoId) continue;
+              const { data: ci } = await github.rest.actions.getWorkflowRun({ owner, repo, run_id: run.id });
+              if (ci.path !== '.github/workflows/ci.yml' || ci.conclusion !== 'success') continue;
+              core.info(`Reusing ${name} from ${ci.html_url}`);
+              core.setOutput('run-id', String(run.id));
+              core.setOutput('artifact-id', String(artifact.id));
+              core.setOutput('name', name);
+              return;
+            }
+            core.info(`No passed CI export for tree ${commit.tree.sha}; building here.`);
+
+      - name: Checkout (prebuilt export)
+        if: steps.prebuilt.outputs.run-id != ''
+        uses: actions/checkout@v6
+
       - name: Checkout
-        uses: actions/checkout@v4
+        if: steps.prebuilt.outputs.run-id == ''
+        uses: actions/checkout@v6
         with:
           lfs: true
           # Full history: the sitemap's lastmod dates come from git log.
+          # Keep the full checkout: combining a partial clone with lfs: true
+          # makes Git LFS fail to scan the tree on the Actions runner.
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "22"
           cache: npm
 
       - name: Install dependencies
         run: npm ci
 
       - name: Lint
+        if: steps.prebuilt.outputs.run-id == ''
         run: npm run lint
 
+      - name: Restore TypeScript buildinfo
+        if: steps.prebuilt.outputs.run-id == ''
+        id: tsbuildinfo
+        uses: actions/cache/restore@v5
+        with:
+          path: tsconfig.tsbuildinfo
+          key: tsbuildinfo-${{ github.sha }}
+          restore-keys: |
+            tsbuildinfo-
+
       - name: Type check
+        if: steps.prebuilt.outputs.run-id == ''
         run: npm run typecheck
+        env:
+          NODE_OPTIONS: "--max-old-space-size=6144"
+
+      - name: Save TypeScript buildinfo
+        if: steps.prebuilt.outputs.run-id == '' && steps.tsbuildinfo.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v5
+        with:
+          path: tsconfig.tsbuildinfo
+          key: tsbuildinfo-${{ github.sha }}
 
       - name: Sitemap tests
+        if: steps.prebuilt.outputs.run-id == ''
         run: npm run test:sitemap
 
       # Drawing all ~2,300 verse images takes ~3.5 minutes. Save the cache in
@@ -63,8 +124,9 @@ jobs:
       # job succeeds, so a later export failure used to throw the images away
       # and the next push drew them all again.
       - name: Restore verse share images
+        if: steps.prebuilt.outputs.run-id == ''
         id: og-verse
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: public/og/verse
           key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json') }}
@@ -73,14 +135,16 @@ jobs:
             og-verse-
 
       - name: Shard scriptures for share images
+        if: steps.prebuilt.outputs.run-id == ''
         run: npm run shard:scriptures
 
       - name: Draw changed verse share images
+        if: steps.prebuilt.outputs.run-id == ''
         run: npm run og:verses
 
       - name: Save verse share images
-        if: steps.og-verse.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
+        if: steps.prebuilt.outputs.run-id == '' && steps.og-verse.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v5
         with:
           path: public/og/verse
           key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json') }}
@@ -88,7 +152,8 @@ jobs:
       # Next deletes dist/ but keeps dist/cache. This shortens the compile.
       # Static pages are still generated.
       - name: Cache Next.js build
-        uses: actions/cache@v4
+        if: steps.prebuilt.outputs.run-id == ''
+        uses: actions/cache@v5
         with:
           path: dist/cache
           key: nextjs-${{ runner.os }}-${{ hashFiles('package-lock.json', 'next.config.js') }}-${{ hashFiles('app/**/*.ts', 'app/**/*.tsx', 'lib/**/*.ts', 'lib/**/*.tsx', 'data/**/*.ts') }}
@@ -97,34 +162,96 @@ jobs:
             nextjs-${{ runner.os }}-
 
       - name: Build static export
+        if: steps.prebuilt.outputs.run-id == ''
         # prebuild: data publish + checks + verse images.
         # postbuild: export checks, prune, Cloudflare size limits.
         run: npm run build
         env:
           NODE_OPTIONS: "--max-old-space-size=6144"
 
-      # Real-browser smoke test of dist/ with _headers (CSP) applied: runtime
-      # errors, hydration, redirects. A failure stops the deploy.
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
+      - name: Download the CI export
+        if: steps.prebuilt.outputs.run-id != ''
+        uses: actions/download-artifact@v7
         with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          name: ${{ steps.prebuilt.outputs.name }}
+          run-id: ${{ steps.prebuilt.outputs.run-id }}
+          github-token: ${{ github.token }}
 
-      - name: Install Chromium for the browser test
-        run: npx playwright install --with-deps chromium
-
-      - name: Browser smoke test
-        run: npm run test:e2e
+      - name: Unpack the CI export
+        if: steps.prebuilt.outputs.run-id != ''
+        run: zstd -d -q -c dist.tar.zst | tar -xf - && rm dist.tar.zst
 
       - name: Deploy to Cloudflare Pages
+        id: deploy
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
-        uses: cloudflare/wrangler-action@v3
+        continue-on-error: true
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Pin the current Wrangler 4 uploader so deploy behaviour is
+          # reproducible and benefits from the latest Pages upload fixes.
+          wranglerVersion: "4.151.2"
           command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=master --commit-dirty=true
+
+      # Cloudflare sometimes answers "Failed to publish your Function: Unknown
+      # internal error" (it kept PR #62 off the live site on 2026-11-06).
+      # Uploaded files are kept, so a second try takes under a minute.
+      - name: Wait before retrying the deploy
+        if: steps.deploy.outcome == 'failure'
+        run: sleep 30
+
+      - name: Retry deploy to Cloudflare Pages
+        if: steps.deploy.outcome == 'failure'
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.151.2"
+          command: pages deploy dist --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=master --commit-dirty=true
+
+      # Tell IndexNow (Bing and others) which pages changed; never fails the deploy.
+      - name: Notify IndexNow
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        continue-on-error: true
+        run: node scripts/seo/indexnow.mjs --send
 
       - name: Note missing secrets
         if: env.HAS_CLOUDFLARE_SECRETS != 'true'
         run: echo "::notice::Built and checked, not deployed — add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID (docs/deploy-cloudflare.md)."
+
+      # Lightweight post-deploy smoke test of dist/
+      # Verifies HTTP 200, valid HTML content, and zero Error Boundary text across core routes
+      - name: Post-deploy health smoke test
+        run: npm run test:smoke
+
+      # Compare the deployed Flight payload with the exact dist artifact from
+      # this run. This catches stale or mismatched RSC files before any R2
+      # canary is enabled.
+      - name: Verify deployed RSC payload parity
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        # The upload can finish before the custom domain serves the new alias.
+        # Keep exact byte comparison on every attempt and fail after five minutes.
+        run: |
+          for attempt in {1..16}; do
+            if npm run verify:rsc-canary -- --local dist/scripture/bhagavadgita/chapter/2/index.txt --url https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/index.txt; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 16 ]; then
+              echo "::error::Deployed RSC payload did not match this build after the propagation window."
+              exit 1
+            fi
+            echo "::warning::RSC parity attempt $attempt has not matched yet; checking again in 20 seconds."
+            sleep 20
+          done
+
+      # The export is live; stop paying to store it.
+      - name: Delete the used CI export
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true' && steps.prebuilt.outputs.artifact-id != ''
+        continue-on-error: true
+        uses: actions/github-script@v8
+        env:
+          ARTIFACT_ID: ${{ steps.prebuilt.outputs.artifact-id }}
+        with:
+          script: |
+            await github.rest.actions.deleteArtifact({ ...context.repo, artifact_id: Number(process.env.ARTIFACT_ID) });

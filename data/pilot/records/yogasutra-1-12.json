@@ -1,0 +1,25 @@
+{
+  "unitId": "yogasutra-1-12",
+  "reference": "Yoga Sutra 1.12",
+  "artha": "उन वृत्तियों का निरोध अभ्यास और वैराग्य से होता है।",
+  "arthaEn": "The stilling of those movements comes through practice and dispassion.",
+  "arthaDecision": "add-missing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "पहले पाद में योग की परिभाषा और वृत्तियों के प्रकार बताने के बाद यह सूत्र पहली बार उपाय बताता है। तत् का अर्थ है वही, यानी पहले सूत्रों की चित्तवृत्तियाँ, और निरोध वही निरोध है जिसे दूसरे सूत्र में योग कहा गया था। उपाय के रूप में दो तत्व साथ रखी गई हैं: अभ्यास और वैराग्य। अभ्यास का अर्थ बार-बार किया जाने वाला प्रयत्न है, और वैराग्य का अर्थ विषयों के प्रति तृष्णा का ढीला पड़ना। सूत्र दोनों को एक साथ रखता है, इसलिए यह नहीं कहता कि केवल प्रयत्न से या केवल अनासक्ति से काम चल जाएगा। अगले सूत्रों में इन दोनों को अलग-अलग परिभाषित किया गया है। इस सूत्र में समय, मात्रा या विधि का कोई उल्लेख नहीं है; वह विस्तार आगे आता है। वैराग्य को भावशून्यता या रिश्तों से कट जाना, और अभ्यास को केवल कठोर परिश्रम मान लेना, दोनों ही पाठ से आगे की बातें होंगी।",
+  "vijnana": "किसी भी कौशल को साधने में नियमित दोहराव के साथ-साथ अपनी तात्कालिक इच्छाओं पर कुछ नियंत्रण की आवश्यकता पड़ना एक आम अनुभव है, जैसे अभ्यास के समय ध्यान भटकाने वाली विषयों से दूर रहना। इस आम अवलोकन को सूत्र की दो बातों की एक आधुनिक समानता की तरह देखा जा सकता है। पर यह सूत्र का वैज्ञानिक दावा नहीं है। सूत्र कौशल सीखने के बारे में नहीं, चित्त की वृत्तियों के निरोध के बारे में है, और यहाँ किसी अध्ययन या परिणाम का हवाला नहीं दिया जा रहा।",
+  "vijnanaCategory": "observational",
+  "evidenceLevel": "editorial-observation",
+  "lifeLesson": "कोई एक छोटा नियमित अभ्यास चुनो, जैसे रोज़ एक ही समय पर थोड़ी देर पढ़ना या ध्यान लगाना। उसी समय अपनी किसी एक प्रवृत्ति पर रोक भी रखो, जैसे फ़ोन को दूर रखना।",
+  "confidence": "high",
+  "reviewNote": "The Sanskrit is clear and no stored meaning existed. The definitions of abhyasa and vairagya are given in following sutras; the Vyakhya refers to them only in general terms and does not quote them. No classical commentary is stored.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged.",
+    "artha": "Editor rendering from the Sanskrit; no stored translation existed.",
+    "vyakhya": "Original composition.",
+    "vijnana": "Original composition; no research source consulted and none cited.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Archive, FileWarning, Languages, Lightbulb, Sparkles } from 'lucide-react';
 import type { Badge } from '@/lib/review-badges';
+import { EDITORIAL_DRAFT_LABEL, STUDY_TRANSLATION_LABEL } from '@/lib/editorial-terminology';
 
 /**
  * Status of what a verse page shows, computed from flags the data really
@@ -34,18 +35,22 @@ export function TrustBadges({
       <ul className="flex flex-wrap gap-2">
         <li className={`${chip} border-dharma-border bg-dharma-card text-dharma-text`}>
           <Archive className="h-3.5 w-3.5" aria-hidden="true" />
-          Source text · imported{sourceHost ? ` from ${sourceHost}` : ''}
+          Original text
         </li>
         <li
           className={`${chip} ${translationIsAi ? 'border-violet-500/40 bg-violet-50 text-violet-950 dark:bg-violet-950/40 dark:text-violet-100' : 'border-dharma-border bg-dharma-card text-dharma-text'}`}
+          title={translationIsAi ? STUDY_TRANSLATION_LABEL.detail : undefined}
         >
           {translationIsAi ? <Sparkles className="h-3.5 w-3.5" aria-hidden="true" /> : <Languages className="h-3.5 w-3.5" aria-hidden="true" />}
-          {translationIsAi ? 'Translation · AI-assisted, not human-reviewed' : 'Translation · from the source archive'}
+          {translationIsAi ? `Translation · ${STUDY_TRANSLATION_LABEL.en}` : 'Translation · from the source archive'}
         </li>
         {commentaryIsAi && (
-          <li className={`${chip} border-violet-500/40 bg-violet-50 text-violet-950 dark:bg-violet-950/40 dark:text-violet-100`}>
+          <li
+            className={`${chip} border-violet-500/40 bg-violet-50 text-violet-950 dark:bg-violet-950/40 dark:text-violet-100`}
+            title={EDITORIAL_DRAFT_LABEL.detail}
+          >
             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-            Commentary · AI-assisted, not human-reviewed
+            Commentary · {EDITORIAL_DRAFT_LABEL.en}
           </li>
         )}
         {hasEditorial && (

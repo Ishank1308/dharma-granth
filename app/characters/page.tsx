@@ -5,16 +5,25 @@ import { FadeUp } from '@/app/components/motion/primitives';
 import { characters } from '@/data/characters';
 
 export const metadata: Metadata = {
-  title: 'पात्र एवं संबंध मानचित्र (Character Knowledge Graph)',
+  title: 'Hindu Scriptural Characters & Lineages (पात्र ज्ञान ग्राफ)',
   description:
-    'महाभारत, रामायण, पुराण, गुरु-शिष्य परंपरा और देवताओं के पात्रों के अंतरसंबंधों का अन्वेषण करें — परिवार, गुरु-शिष्य और मित्रता के संबंध-मानचित्र के साथ।',
+    'Explore family trees, spiritual lineages, dialogues, and moral dilemmas of key characters from the Mahabharata, Ramayana, Upanishads, and Puranas.',
+  keywords: [
+    'Mahabharata characters',
+    'Ramayana characters',
+    'Upanishad rishis',
+    'Arjuna Krishna Bhishma Vidura',
+    'Hindu character lineages',
+    'पात्र ज्ञान ग्राफ',
+    'dharma granth',
+  ],
   alternates: { canonical: '/characters/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
-    title: 'पात्र एवं संबंध मानचित्र (Character Knowledge Graph) — Dharma Granth',
+    title: 'Hindu Scriptural Characters & Lineages (पात्र ज्ञान ग्राफ) — Dharma Granth',
     description:
-      'महाभारत, रामायण, पुराण, गुरु-शिष्य परंपरा और देवताओं के पात्रों के अंतरसंबंधों का अन्वेषण करें।',
-    url: 'https://dharmagranth.in/characters',
+      'Explore family trees, spiritual lineages, dialogues, and moral dilemmas of key characters from the Mahabharata, Ramayana, Upanishads, and Puranas.',
+    url: 'https://dharmagranth.dev/characters/',
   },
 };
 

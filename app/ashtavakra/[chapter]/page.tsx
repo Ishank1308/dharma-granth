@@ -11,23 +11,92 @@ export function generateStaticParams() {
   return publishedChapterNumbers().map((n) => ({ chapter: String(n) }));
 }
 
-export function generateMetadata({ params }: { params: { chapter: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ chapter: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const n = Number(params.chapter);
   const d = getChapterData(n);
   const m = getChapterMeta(n);
   if (!d || !m) return {};
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
+  const canonical = `/ashtavakra/${n}/`;
   return {
     title: d.end.seo.title,
     description: d.end.seo.metaDescription,
-    alternates: { canonical: `/ashtavakra/${n}/` },
+    keywords: [
+      `अष्टावक्र गीता अध्याय ${n}`,
+      `Ashtavakra Gita Chapter ${n}`,
+      m.title,
+      m.bookTitle,
+      'अष्टावक्र गीता',
+      'अद्वैत वेदांत',
+      'आत्मज्ञान',
+      'dharma granth',
+    ],
+    alternates: { canonical },
+    openGraph: {
+      type: 'article',
+      locale: 'hi_IN',
+      alternateLocale: ['en_US'],
+      title: d.end.seo.title,
+      description: d.end.seo.metaDescription,
+      url: canonical,
+      images: [{ url: `${siteUrl}/og/library.png`, width: 1200, height: 630, alt: d.end.seo.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: d.end.seo.title,
+      description: d.end.seo.metaDescription,
+      images: [`${siteUrl}/og/library.png`],
+    },
   };
 }
 
-export default function ChapterPage({ params }: { params: { chapter: string } }) {
+export default async function ChapterPage(props: { params: Promise<{ chapter: string }> }) {
+  const params = await props.params;
   const n = Number(params.chapter);
   const d = getChapterData(n);
   const m = getChapterMeta(n);
   if (!d || !m) notFound();
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
+  const pageUrl = `${siteUrl}/ashtavakra/${n}/`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `${pageUrl}#article`,
+        headline: `अष्टावक्र गीता अध्याय ${n} · ${m.title} — ${m.bookTitle}`,
+        description: d.end.seo.metaDescription || d.hero.oneLineSummary,
+        inLanguage: ['sa', 'hi'],
+        isAccessibleForFree: true,
+        genre: 'Advaita Vedanta',
+        url: pageUrl,
+        mainEntityOfPage: pageUrl,
+        publisher: {
+          '@type': 'Organization',
+          name: 'Dharma Granth',
+          url: siteUrl,
+          logo: { '@type': 'ImageObject', url: `${siteUrl}/icon-512.png` },
+        },
+        isPartOf: {
+          '@type': 'Book',
+          name: 'अष्टावक्र गीता (Ashtavakra Gita)',
+          url: `${siteUrl}/ashtavakra/`,
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+          { '@type': 'ListItem', position: 2, name: 'Library', item: `${siteUrl}/scriptures/` },
+          { '@type': 'ListItem', position: 3, name: 'अष्टावक्र गीता', item: `${siteUrl}/ashtavakra/` },
+          { '@type': 'ListItem', position: 4, name: `अध्याय ${n} (${m.bookTitle})`, item: pageUrl },
+        ],
+      },
+    ],
+  };
 
   const reviewCount = d.verses.filter((v) => v.verificationStatus !== 'verified').length;
   const prevMeta = getChapterMeta(n - 1);
@@ -36,6 +105,11 @@ export default function ChapterPage({ params }: { params: { chapter: string } })
 
   return (
     <main id="main">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="relative overflow-hidden">
         <ChapterEnvironment meta={m} />
         <div className="mx-auto max-w-4xl px-4 pb-10 pt-12 sm:px-6 sm:pt-16">
@@ -91,12 +165,12 @@ export default function ChapterPage({ params }: { params: { chapter: string } })
           </dl>
         </section>
 
-        <section id="verses" aria-labelledby="verses-h" className="grid gap-4 scroll-mt-6">
+        <section id="verses" aria-labelledby="verses-h" className="grid gap-6 sm:gap-8 scroll-mt-6">
           <div>
-            <h2 id="verses-h" className="font-bold" style={{ fontSize: '1.5rem' }}>श्लोक-दर-श्लोक व्याख्या</h2>
+            <h2 id="verses-h" className="font-bold text-xl sm:text-2xl text-dharma-text">श्लोक-दर-श्लोक स्वाध्याय · Sacred Reading</h2>
             <p className="ash-meta mt-1">
               {d.verses.length} श्लोक, पुस्तक के क्रम में।{' '}
-              {reviewCount > 0 ? `${reviewCount} श्लोकों पर पुस्तक के छपे पाठ में भेद मिला है और उन पर “समीक्षा आवश्यक” दर्शाया गया है।` : 'सभी श्लोक पृष्ठ से मिलान किए गए हैं।'}
+              {reviewCount > 0 ? `${reviewCount} श्लोकों पर पुस्तक के छपे पाठ में भेद मिला है और उन पर “समीक्षा आवश्यक” दर्शाया गया है।` : 'सभी श्लोक मूल पृष्ठ से मिलान किए गए हैं।'}
             </p>
             <p className="mt-2 flex flex-wrap gap-2"><VerificationBadge status="verified" /><VerificationBadge status="review-required" /></p>
           </div>

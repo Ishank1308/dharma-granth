@@ -4,8 +4,44 @@
 
 [build.environment]
   NEXT_PUBLIC_BASE_PATH = ""
-  NEXT_PUBLIC_SITE_URL = "https://dharmagranth.in"
+  NEXT_PUBLIC_SITE_URL = "https://dharmagranth.dev"
   NEXT_TELEMETRY_DISABLED = "1"
+
+[[redirects]]
+  from = "/start-here"
+  to = "/learn/start/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/start-here/"
+  to = "/learn/start/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/start"
+  to = "/learn/start/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/topics"
+  to = "/wisdom-for-life/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sadhana"
+  to = "/practice/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sadhana/"
+  to = "/practice/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/*"

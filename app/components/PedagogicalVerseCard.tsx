@@ -20,10 +20,11 @@ import {
   Flame,
   HelpCircle,
   Lightbulb,
+  MessageCircle,
+  Network,
   Quote,
   RotateCcw,
   ScrollText,
-  MessageCircle,
   Share2,
   Sparkles,
   Sprout,
@@ -71,7 +72,7 @@ export function PedagogicalVerseCard({
 
   // The verse page's absolute URL; read from window, so only call it in the browser (event handlers, or once the dialog is open).
   function verseUrl(): string {
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.in';
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.dev';
     return shareVerseUrl(origin, data.scriptureId, data.chapterId, data.verseId);
   }
 
@@ -225,7 +226,6 @@ export function PedagogicalVerseCard({
       `Simple Meaning: ${data.simpleMeaningEn}`,
       `सरल अर्थ: ${data.simpleMeaningHi}`,
       `Why it matters today: ${data.whyItMattersToday.map((s) => `• ${s.title}: ${s.text}`).join('\n')}`,
-      `Source: ${data.sourceTransparency.sanskritEdition}`,
     ].join('\n\n');
 
     try {
@@ -249,7 +249,7 @@ export function PedagogicalVerseCard({
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-600/30 bg-amber-500/15 px-3 py-1 text-xs font-bold text-amber-900 dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-200">
               <Sparkles className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-              <span>{data.scriptureTitleSanskrit} २.४७</span>
+              <span>{data.scriptureTitleSanskrit} 2.47</span>
             </span>
             <span className="text-xs text-dharma-muted">
               {data.scriptureTitle} {data.chapterId}.{data.verseId} · {data.meter}
@@ -593,7 +593,7 @@ export function PedagogicalVerseCard({
                 </div>
               </div>
 
-              {/* 4. Key Words (४ मुख्य शब्द) */}
+              {/* 4. Key Words (4 मुख्य शब्द) */}
               <div className="border-t border-dharma-border pt-4">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-dharma-muted mb-3">
                   🔑 4 Crucial Words (मुख्य शब्द)
@@ -853,10 +853,6 @@ export function PedagogicalVerseCard({
                       <span>{data.sourceTransparency.meter}</span>
                     </div>
                     <div className="sm:col-span-2">
-                      <span className="font-semibold text-dharma-muted">Sanskrit Edition: </span>
-                      <span>{data.sourceTransparency.sanskritEdition}</span>
-                    </div>
-                    <div className="sm:col-span-2">
                       <span className="font-semibold text-dharma-muted">Authority Tier: </span>
                       <span className="font-bold text-amber-800 dark:text-amber-300">
                         {data.sourceTransparency.epistemicTier}
@@ -894,14 +890,24 @@ export function PedagogicalVerseCard({
           {showExploreLink && tier !== 'deep' && (
             <div className="mt-8 border-t border-dharma-border pt-5">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <Link
-                  href={readHref(data.scriptureId, data.chapterId, data.verseId)}
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700"
-                >
-                  <BookOpen className="h-3.5 w-3.5" />
-                  <span>Read Context</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Link
+                    href={`/network?verse=${encodeURIComponent(`${data.scriptureId}:${data.chapterId}:${data.verseId}`)}`}
+                    className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-xs font-bold text-purple-800 transition hover:bg-purple-500/20 dark:text-purple-300"
+                  >
+                    <Network className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
+                    <span>Verse Network · श्लोक संबंध</span>
+                  </Link>
+
+                  <Link
+                    href={readHref(data.scriptureId, data.chapterId, data.verseId)}
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:from-saffron-700 hover:to-amber-700"
+                  >
+                    <BookOpen className="h-3.5 w-3.5" />
+                    <span>Read Context</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
 
                 <div className="flex items-center gap-2 text-xs text-dharma-muted">
                   <span className="size-2 rounded-full bg-emerald-500" />

@@ -5,7 +5,7 @@ import { ArrowRight, Calendar, Compass, Moon, Sparkles, Sun } from 'lucide-react
 import { useEffect, useMemo, useState } from 'react';
 import { calculateEducationalPanchang, PRESET_LOCATIONS } from '@/lib/panchang';
 
-export function PanchangPreview() {
+export function PanchangPreview({ compact = false }: { compact?: boolean }) {
   const [mounted, setMounted] = useState(false);
   const [today, setToday] = useState<Date>(() => new Date());
 
@@ -17,6 +17,34 @@ export function PanchangPreview() {
   const panchang = useMemo(() => {
     return calculateEducationalPanchang(today, PRESET_LOCATIONS[0]);
   }, [today]);
+
+  if (compact) {
+    return (
+      <div className="flex h-full min-h-[208px] flex-col justify-between rounded-xl bg-dharma-card p-4 sm:p-5">
+        <div>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+            <Calendar className="h-4 w-4" aria-hidden="true" />
+            <span lang="hi">दैनिक पञ्चाङ्ग</span><span aria-hidden="true"> · </span><span>Panchang</span>
+          </div>
+          <h3 className="mt-3 font-serif text-lg font-bold text-dharma-text">
+            {mounted ? panchang.fullDateEnglish : 'Today’s calendar'}
+          </h3>
+          <p className="mt-1 text-sm leading-relaxed text-dharma-muted">
+            {mounted
+              ? `${panchang.tithi.transliteration} (${panchang.tithi.nameHi}) · ${panchang.nakshatra.nameHi} नक्षत्र`
+              : 'तिथि, पक्ष और नक्षत्र का शैक्षणिक परिचय'}
+          </p>
+        </div>
+        <Link
+          href="/panchang/"
+          className="mt-4 inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold text-saffron-700 hover:text-saffron-800 dark:text-saffron-300"
+        >
+          <span>Explore Panchang</span>
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-sm">

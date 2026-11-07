@@ -142,7 +142,7 @@ add('staleDynamic', 'Dynamic information that is stale or about to be', last < h
 /* ── Not measurable here ──────────────────────────────────────────── */
 const notMeasured = [
   'Explanations with low clarity feedback: feedback is stored only on each reader’s device, so there is nothing to aggregate until a collection endpoint exists.',
-  'Pending correction reports: corrections are filed as GitHub issues; this report does not read them.',
+  'Pending correction reports: the site has no public correction channel yet.',
 ];
 
 const out = { generatedAt: new Date().toISOString(), verseTotal, findings, notMeasured, items };

@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import type { ChapterVisit } from '@/lib/reading-history';
 import type { VerseNote, VerseHighlight } from '@/lib/useStudyProgress';
+import { readHref } from '@/lib/verse-paths';
 
 export type ActivityFilter = 'all' | 'read' | 'saved' | 'notes';
 
@@ -46,7 +47,7 @@ function formatRelativeDay(isoDate: string): string {
     if (diffDays === 0) return 'आज (Today)';
     if (diffDays === 1) return 'कल (Yesterday)';
     if (diffDays < 7) return `${diffDays} दिन पूर्व`;
-    return d.toLocaleDateString('hi-IN', { month: 'short', day: 'numeric' });
+    return d.toLocaleDateString('hi-IN', { numberingSystem: 'latn', month: 'short', day: 'numeric' });
   } catch {
     return 'पूर्व में';
   }
@@ -68,7 +69,7 @@ export function RecentActivityFeed({ recentChapters, notes, highlights, titles }
         type: 'read',
         title: `${sTitle} · अध्याय ${visit.chapterId}${versePart}`,
         subtitle: visit.chapterTitle,
-        href: `/scripture/${visit.scriptureId}/chapter/${visit.chapterId}${visit.verseId ? `/verse/${visit.verseId}` : ''}`,
+        href: readHref(visit.scriptureId, visit.chapterId, visit.verseId),
         timestamp: visit.readAt,
         dateStr: formatRelativeDay(visit.readAt),
         badge: {
@@ -86,7 +87,7 @@ export function RecentActivityFeed({ recentChapters, notes, highlights, titles }
         type: 'note',
         title: `${sTitle} ${n.chapterId}.${n.verseId} पर निजी विचार`,
         subtitle: n.text,
-        href: `/scripture/${n.scriptureId}/chapter/${n.chapterId}/verse/${n.verseId}`,
+        href: readHref(n.scriptureId, n.chapterId, n.verseId),
         timestamp: n.updatedAt,
         dateStr: formatRelativeDay(n.updatedAt),
         badge: {
@@ -103,8 +104,8 @@ export function RecentActivityFeed({ recentChapters, notes, highlights, titles }
         id: `hl-${h.scriptureId}-${h.chapterId}-${h.verseId}-${h.createdAt}`,
         type: 'highlight',
         title: `${sTitle} ${h.chapterId}.${h.verseId} रेखांकित`,
-        subtitle: 'पसंदीदा श्लोक रेखांकन',
-        href: `/scripture/${h.scriptureId}/chapter/${h.chapterId}/verse/${h.verseId}`,
+        subtitle: 'प्रिय श्लोकों का रेखांकन',
+        href: readHref(h.scriptureId, h.chapterId, h.verseId),
         timestamp: h.createdAt,
         dateStr: formatRelativeDay(h.createdAt),
         badge: {

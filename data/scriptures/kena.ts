@@ -278,52 +278,7 @@ export const kena: Scripture = {
             "Do not save 'spiritual life' for retirement. The realization is for here, now — at this kitchen table, in this conversation. Postponement is a subtle form of refusal.",
           keywords: ['Urgency', 'Realization', 'HereNow'],
         },
-      
-        {
-          id: 1,
-          sanskrit: 'यदि मन्यसे सुवेदेति दहरमेवापि नूनं त्वं वेत्थ ब्रह्मणो रूपम् । यदस्य त्वं यदस्य देवेष्वथ नु मीमांस्यमेव ते मन्ये विदितम् ॥',
-          transliteration: 'yadi manyase suvedeti daharamevāpi nūnaṃ tvaṃ vettha brahmaṇo rūpam | yadasya tvaṃ yadasya deveṣvatha nu mīmāṃsyameva te manye viditam ||',
-          translation: '(Teacher to student:) If you think you know Brahman well, in truth you know only a fragment of its form, whether of it in yourself or in the gods. Therefore Brahman is still to be inquired into by you. (Student:) I think I know it.',
-          hindi: '(आचार्य कहता है:) यदि तू सोचता है कि मैं ब्रह्म को अच्छी तरह जानता हूँ, तो वास्तव में तू उसके स्वरूप का अल्प भाग ही जानता है — चाहे अपने में, चाहे देवों में। अतः तुझे और विचार करना चाहिए। (शिष्य:) मैं समझता हूँ कि मैंने जान लिया।',
-          explanation: 'Pivotal turning point. The teacher warns: if you think you have understood Brahman, you have understood only a fragment — never the whole. Confidence in spiritual knowing is itself the disqualification.',
-          keywords: [],
-        },
-        {
-          id: 2,
-          sanskrit: 'नाहं मन्ये सुवेदेति नो न वेदेति वेद च । यो नस्तद्वेद तद्वेद नो न वेदेति वेद च ॥',
-          transliteration: 'nāhaṃ manye suvedeti no na vedeti veda ca | yo nastadveda tadveda no na vedeti veda ca ||',
-          translation: '(The student, matured:) I do not think I know it well; nor do I think I do not know it. He among us who knows it, knows it — and knows that he does not "not-know" it.',
-          hindi: '(शिष्य, परिपक्व होकर:) मैं यह नहीं मानता कि मैंने उसे अच्छी तरह जान लिया, न ही यह कि मैं नहीं जानता। हममें से जो उसे जानता है, वह उसे जानता है, और यह भी जानता है कि वह "नहीं जानता" — ऐसा भी नहीं है।',
-          explanation: 'The mature response. Not \'I know\' (arrogant), not \'I don\'t know\' (resigned) — but a deeper position that includes both poles without being captured by either. This is the precise grammar of mystical realization.',
-          keywords: [],
-        },
-        {
-          id: 3,
-          sanskrit: 'यस्यामतं तस्य मतं मतं यस्य न वेद सः । अविज्ञातं विजानतां विज्ञातमविजानताम् ॥',
-          transliteration: 'yasyāmataṃ tasya mataṃ mataṃ yasya na veda saḥ | avijñātaṃ vijānatāṃ vijñātamavijānatām ||',
-          translation: 'He who thinks he does not know — knows. He who thinks he knows — does not know. It is unknown to those who know, and known to those who do not know.',
-          hindi: 'जिसे लगता है कि मैंने नहीं जाना, उसने जान लिया है। जिसे लगता है कि मैंने जान लिया, उसने नहीं जाना। ज्ञानियों के लिए वह अज्ञात है; अज्ञानियों के लिए वह ज्ञात है।',
-          explanation: 'The most famous verse of Kena. The moment you claim \'I know\' you have made Brahman into an object — but Brahman is the subject. True self-knowledge is a dissolution of the knower-known divide, not the addition of one more item to your inventory of facts.',
-          keywords: [],
-        },
-        {
-          id: 4,
-          sanskrit: 'प्रतिबोधविदितं मतममृतत्वं हि विन्दते । आत्मना विन्दते वीर्यं विद्यया विन्दतेऽमृतम् ॥',
-          transliteration: 'pratibodhaviditaṃ matamamṛtatvaṃ hi vindate | ātmanā vindate vīryaṃ vidyayā vindate\'mṛtam ||',
-          translation: 'It is known in every act of awareness — and that knowing is immortality. By the Self one finds strength; by knowledge one finds the immortal.',
-          hindi: 'वह प्रतिबोध (हर बोध-क्षण) में जाना जाता है; वही ज्ञान अमरत्व देता है। आत्मा से ही बल मिलता है, विद्या से अमृत मिलता है।',
-          explanation: 'Pratibodha-viditam — \'known in every cognition.\' Brahman is not the object of a future special experience; it is the awareness that is already present in every act of knowing right now. Realization is not addition but recognition.',
-          keywords: [],
-        },
-        {
-          id: 5,
-          sanskrit: 'इह चेदवेदीदथ सत्यमस्ति न चेदिहावेदीन्महती विनष्टिः । भूतेषु भूतेषु विचित्य धीराः प्रेत्यास्माल्लोकादमृता भवन्ति ॥',
-          transliteration: 'iha cedavedīdatha satyamasti na cedihāvedīnmahatī vinaṣṭiḥ | bhūteṣu bhūteṣu vicitya dhīrāḥ pretyāsmāllokādamṛtā bhavanti ||',
-          translation: 'If one has realized it here, there is truth; if one has not realized it here, great is the loss. The wise, seeing it in being after being, depart from this world and become immortal.',
-          hindi: 'यदि इस लोक में जान लिया, तब सत्य है; यदि यहाँ न जान सका, तो बड़ी हानि है। धीर पुरुष प्रत्येक प्राणी में इसे देखकर, इस लोक से जाकर अमर हो जाते हैं।',
-          explanation: 'A stern reminder: realization must happen here, in this life. If you postpone it for "later," you have already lost it. The wise recognize the one Self in every being — and that recognition is liberation.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 3,
@@ -548,115 +503,7 @@ export const kena: Scripture = {
             'The teacher appears when the student is ready — never before. Indra became ready only after the divine receded. Cultivate the readiness; the teacher is already nearby.',
           keywords: ['Uma', 'Wisdom', 'Teacher'],
         },
-      
-        {
-          id: 1,
-          sanskrit: 'ब्रह्म ह देवेभ्यो विजिग्ये तस्य ह ब्रह्मणो विजये देवा अमहीयन्त । त ऐक्षन्तास्माकमेवायं विजयोऽस्माकमेवायं महिमेति ॥',
-          transliteration: 'brahma ha devebhyo vijigye tasya ha brahmaṇo vijaye devā amahīyanta | ta aikṣantāsmākamevāyaṃ vijayo\'smākamevāyaṃ mahimeti ||',
-          translation: 'Brahman, it is said, won a victory for the gods. In that victory of Brahman the gods exulted. They thought: "Ours alone is this victory, ours alone is this glory."',
-          hindi: 'कहा जाता है कि ब्रह्म ने देवताओं के लिए विजय प्राप्त की। उस विजय में देवता गर्व करने लगे। वे सोचने लगे — "यह विजय हमारी ही है, यह महिमा हमारी ही है।"',
-          explanation: 'The setup of a teaching parable. The gods receive a real victory from Brahman, but immediately appropriate the glory to themselves. The ego\'s first move: take credit for what was given.',
-          keywords: [],
-        },
-        {
-          id: 2,
-          sanskrit: 'तद्धैषां विजज्ञौ तेभ्यो ह प्रादुर्बभूव तन्न व्यजानत किमिदं यक्षमिति ॥',
-          transliteration: 'taddhaiṣāṃ vijajñau tebhyo ha prādurbabhūva tanna vyajānata kimidaṃ yakṣamiti ||',
-          translation: 'Brahman knew their thought, and appeared before them. But they did not recognize it: "What is this mysterious being (yakṣa)?"',
-          hindi: 'ब्रह्म ने उनके इस विचार को जान लिया, और उनके सामने प्रकट हुआ। वे उसे पहचान न सके — "यह अद्भुत यक्ष कौन है?"',
-          explanation: 'Brahman appears as a mysterious yakṣa — recognized neither as Brahman nor as any familiar god. The gods are perplexed. Pride has made them blind to the very source of their power.',
-          keywords: [],
-        },
-        {
-          id: 3,
-          sanskrit: 'तेऽग्निमब्रुवञ्जातवेद एतद्विजानीहि किमेतद्यक्षमिति तथेति ॥',
-          transliteration: 'te\'gnimabruvañjātaveda etadvijānīhi kimetadyakṣamiti tatheti ||',
-          translation: 'They said to Agni: "Jātaveda (knower-of-all), find out what this yakṣa is." "So be it," he replied.',
-          hindi: 'उन्होंने अग्नि से कहा — "हे जातवेद, पता लगा कि यह यक्ष क्या है।" "अच्छा," अग्नि ने उत्तर दिया।',
-          explanation: 'The gods delegate the inquiry to Agni, "knower of all that is born." Agni accepts with full confidence — the perfect setup for his humbling.',
-          keywords: [],
-        },
-        {
-          id: 4,
-          sanskrit: 'तदभ्यद्रवत्तमभ्यवदत्कोऽसीत्यग्निर्वा अहमस्मीत्यब्रवीज्जातवेदा वा अहमस्मीति ॥',
-          transliteration: 'tadabhyadravattamabhyavadatko\'sītyagnirvā ahamasmītyabravījjātavedā vā ahamasmīti ||',
-          translation: 'He approached the yakṣa. It said: "Who are you?" "I am Agni," he replied, "I am Jātaveda."',
-          hindi: 'अग्नि उसके पास पहुँचा। यक्ष ने पूछा — "तुम कौन हो?" अग्नि ने कहा — "मैं अग्नि हूँ, मैं जातवेद हूँ।"',
-          explanation: 'The yakṣa\'s simple question — "Who are you?" — is the great spiritual question. Agni answers by his name and role. The reply identifies him with his function — exactly the move the Upanishad will dismantle.',
-          keywords: [],
-        },
-        {
-          id: 5,
-          sanskrit: 'तस्मिंस्त्वयि किं वीर्यमित्यपीदं सर्वं दहेयं यदिदं पृथिव्यामिति ॥',
-          transliteration: 'tasmiṃstvayi kiṃ vīryamityapīdaṃ sarvaṃ daheyaṃ yadidaṃ pṛthivyāmiti ||',
-          translation: '"What power is in you?" "I can burn up everything that is on this earth!"',
-          hindi: '"तुझमें क्या शक्ति है?" "जो कुछ भी इस पृथ्वी पर है, मैं उसे जला सकता हूँ!"',
-          explanation: 'Agni boasts of universal incineration. The boast is true — fire does consume — but the verse will reveal that the power comes from somewhere beyond Agni himself.',
-          keywords: [],
-        },
-        {
-          id: 6,
-          sanskrit: 'तस्मै तृणं निदधावेतद्दहेति । तदुपप्रेयाय सर्वजवेन तन्न शशाक दग्धुं स तत एव निववृते नैतदशकं विज्ञातुं यदेतद्यक्षमिति ॥',
-          transliteration: 'tasmai tṛṇaṃ nidadhāvetaddaheti | tadupapreyāya sarvajavena tanna śaśāka dagdhuṃ sa tata eva nivavṛte naitadaśakaṃ vijñātuṃ yadetadyakṣamiti ||',
-          translation: 'The yakṣa placed a blade of grass before him: "Burn this." Agni rushed at it with all his speed but could not burn it. He returned, saying: "I could not find out what this yakṣa is."',
-          hindi: 'यक्ष ने उसके सामने एक तृण रखा — "इसे जला।" अग्नि अपनी पूरी शक्ति से उस पर झपटा, परन्तु उसे जला न सका। वह लौट आया — "मैं नहीं जान सका कि यह यक्ष क्या है।"',
-          explanation: 'The humiliation is exquisite — not a mountain, just a blade of grass. The cosmic fire cannot burn a single straw without the underlying power. Agni returns defeated and, crucially, honest about his defeat.',
-          keywords: [],
-        },
-        {
-          id: 7,
-          sanskrit: 'अथ वायुमब्रुवन्वायवेतद्विजानीहि किमेतद्यक्षमिति तथेति ॥',
-          transliteration: 'atha vāyumabruvanvāyavetadvijānīhi kimetadyakṣamiti tatheti ||',
-          translation: 'Then they said to Vāyu (wind): "Vāyu, find out what this yakṣa is." "So be it," he replied.',
-          hindi: 'फिर उन्होंने वायु से कहा — "वायु, पता लगा कि यह यक्ष क्या है।" "अच्छा," वायु ने उत्तर दिया।',
-          explanation: 'A second emissary is sent — Vāyu, who pervades all space. The same confident "tatheti" — "so be it." The pattern of futile attempts continues.',
-          keywords: [],
-        },
-        {
-          id: 8,
-          sanskrit: 'तदभ्यद्रवत्तमभ्यवदत्कोऽसीति वायुर्वा अहमस्मीत्यब्रवीन्मातरिश्वा वा अहमस्मीति ॥',
-          transliteration: 'tadabhyadravattamabhyavadatko\'sīti vāyurvā ahamasmītyabravīnmātariśvā vā ahamasmīti ||',
-          translation: 'He approached. The yakṣa said: "Who are you?" "I am Vāyu," he replied, "I am Mātariśvan."',
-          hindi: 'वायु पास पहुँचा। यक्ष ने पूछा — "तुम कौन हो?" वायु ने कहा — "मैं वायु हूँ, मैं मातरिश्वा हूँ।"',
-          explanation: 'Same exchange, same role-bound answer. The yakṣa repeats the question — the question is unchanging because the answer never satisfies.',
-          keywords: [],
-        },
-        {
-          id: 9,
-          sanskrit: 'तस्मिंस्त्वयि किं वीर्यमित्यपीदं सर्वमाददीय यदिदं पृथिव्यामिति ॥',
-          transliteration: 'tasmiṃstvayi kiṃ vīryamityapīdaṃ sarvamādadīya yadidaṃ pṛthivyāmiti ||',
-          translation: '"What power is in you?" "I can carry off everything that is on this earth!"',
-          hindi: '"तुझमें क्या शक्ति है?" "जो कुछ भी इस पृथ्वी पर है, मैं उसे उठा ले जा सकता हूँ!"',
-          explanation: 'Vāyu boasts as Agni did. The wind that levels forests and lifts oceans claims universal mobility — and is about to discover that even motion requires a permission slip.',
-          keywords: [],
-        },
-        {
-          id: 10,
-          sanskrit: 'तस्मै तृणं निदधावेतदादत्स्वेति । तदुपप्रेयाय सर्वजवेन तन्न शशाकाऽऽदातुं स तत एव निववृते नैतदशकं विज्ञातुं यदेतद्यक्षमिति ॥',
-          transliteration: 'tasmai tṛṇaṃ nidadhāvetadādatsveti | tadupapreyāya sarvajavena tanna śaśākā\'\'dātuṃ sa tata eva nivavṛte naitadaśakaṃ vijñātuṃ yadetadyakṣamiti ||',
-          translation: 'The yakṣa placed a blade of grass before him: "Take this away." He rushed at it with all his speed but could not move it. He returned: "I could not find out what this yakṣa is."',
-          hindi: 'यक्ष ने उसके सामने एक तृण रखा — "इसे उठा ले जा।" वायु अपनी पूरी शक्ति से उस पर झपटा, परन्तु उसे हिला न सका। वह लौट आया — "मैं नहीं जान सका कि यह यक्ष क्या है।"',
-          explanation: 'The same failure. Even Vāyu — wind, the mover of mountains — cannot stir a blade of grass. The repetition drives the teaching home: power borrowed is power conditional.',
-          keywords: [],
-        },
-        {
-          id: 11,
-          sanskrit: 'अथेन्द्रमब्रुवन्मघवन्नेतद्विजानीहि किमेतद्यक्षमिति तथेति तदभ्यद्रवत्तस्मात्तिरोदधे ॥',
-          transliteration: 'athendramabruvanmaghavannetadvijānīhi kimetadyakṣamiti tatheti tadabhyadravattasmāttirodadhe ||',
-          translation: 'Then they said to Indra: "Maghavan (mighty one), find out what this yakṣa is." "So be it," he replied. He approached — and the yakṣa vanished from him.',
-          hindi: 'फिर उन्होंने इन्द्र से कहा — "हे मघवन्, पता लगा कि यह यक्ष क्या है।" "अच्छा," इन्द्र ने उत्तर दिया। वह पास पहुँचा — और यक्ष उसके सामने से अदृश्य हो गया।',
-          explanation: 'Indra approaches — but the yakṣa disappears before he can even speak. The teaching now becomes subtler: the king of the gods will not be humiliated by direct confrontation; instead, he is left with absence and longing — the precondition for true inquiry.',
-          keywords: [],
-        },
-        {
-          id: 12,
-          sanskrit: 'स तस्मिन्नेवाकाशे स्त्रियमाजगाम बहुशोभमानामुमां हैमवतीं तां होवाच किमेतद्यक्षमिति ॥',
-          transliteration: 'sa tasminnevākāśe striyamājagāma bahuśobhamānāmumāṃ haimavatīṃ tāṃ hovāca kimetadyakṣamiti ||',
-          translation: 'In that same space he encountered a most radiant woman, Umā Haimavatī. He said to her: "What is this yakṣa?"',
-          hindi: 'उसी आकाश में उसे एक अत्यन्त शोभायमान स्त्री मिली — उमा हैमवती। उसने उससे पूछा — "यह यक्ष क्या है?"',
-          explanation: 'Where Agni and Vāyu were confronted by the yakṣa directly, Indra meets Umā Haimavatī — wisdom in the form of a woman. The teaching arrives not by combat but by inquiry from a humbler position. Indra asks; she will teach.',
-          keywords: [],
-        },],
+      ],
     },
     {
       id: 4,
@@ -827,88 +674,7 @@ export const kena: Scripture = {
             'The goal is not a peak experience but stability — the kind of grounded presence that does not wobble when the world shakes. Build it slowly, by daily practice, until it becomes the very ground you stand on.',
           keywords: ['Sthiti', 'Establishment', 'Completion'],
         },
-      
-        {
-          id: 1,
-          sanskrit: 'सा ब्रह्मेति होवाच ब्रह्मणो वा एतद्विजये महीयध्वमिति ततो हैव विदाञ्चकार ब्रह्मेति ॥',
-          transliteration: 'sā brahmeti hovāca brahmaṇo vā etadvijaye mahīyadhvamiti tato haiva vidāñcakāra brahmeti ||',
-          translation: 'She said: "That was Brahman. In the victory of Brahman, in truth, you exulted." Then alone Indra understood that it was Brahman.',
-          hindi: 'उसने कहा — "वह ब्रह्म था। वास्तव में ब्रह्म की ही विजय में तुम लोग गर्व कर रहे थे।" तब इन्द्र ने जाना — "यह ब्रह्म है।"',
-          explanation: 'The revelation. The victory you took as your own was Brahman\'s. The yakṣa whose power you could not comprehend was the very source of your power. Indra hears this and immediately knows. Insight arrives not through cleverness but through humility.',
-          keywords: [],
-        },
-        {
-          id: 2,
-          sanskrit: 'तस्माद्वा एते देवा अतितरामिवान्यान्देवान्यदग्निर्वायुरिन्द्रस्ते ह्येनन्नेदिष्ठं पस्पर्शुस्ते ह्येनत्प्रथमो विदाञ्चकार ब्रह्मेति ॥',
-          transliteration: 'tasmādvā ete devā atitarāmivānyāndevānyadagnirvāyurindraste hyenannediṣṭhaṃ pasparśuste hyenatprathamo vidāñcakāra brahmeti ||',
-          translation: 'Therefore these gods — Agni, Vāyu, and Indra — surpass the other gods, for they came nearest to Brahman; they first knew it as Brahman.',
-          hindi: 'इसी कारण ये देवता — अग्नि, वायु, इन्द्र — अन्य देवताओं से श्रेष्ठ हैं, क्योंकि उन्होंने ब्रह्म को सबसे पहले छुआ; उन्होंने सबसे पहले जाना — "यह ब्रह्म है।"',
-          explanation: 'Failure followed by insight is more valuable than untested confidence. Agni and Vāyu failed; Indra was abandoned. Yet because they confronted the mystery and were broken open, they alone touched Brahman. Their defeat became their elevation.',
-          keywords: [],
-        },
-        {
-          id: 3,
-          sanskrit: 'तस्माद्वा इन्द्रोऽतितरामिवान्यान्देवान्स ह्येनन्नेदिष्ठं पस्पर्श स ह्येनत्प्रथमो विदाञ्चकार ब्रह्मेति ॥',
-          transliteration: 'tasmādvā indro\'titarāmivānyāndevānsa hyenannediṣṭhaṃ pasparśa sa hyenatprathamo vidāñcakāra brahmeti ||',
-          translation: 'Therefore Indra surpasses the other gods, for he came nearest to Brahman; he first knew it as Brahman.',
-          hindi: 'इसीलिए इन्द्र अन्य देवताओं से श्रेष्ठ है, क्योंकि उसने ब्रह्म को सबसे निकट से छुआ; उसने सबसे पहले जाना — "यह ब्रह्म है।"',
-          explanation: 'Indra is singled out — not because he was strongest, but because he was the one for whom the yakṣa vanished and who therefore had to inquire. The deepest knower is not the one to whom truth was given easily, but the one who searched for it from absence.',
-          keywords: [],
-        },
-        {
-          id: 4,
-          sanskrit: 'तस्यैष आदेशो यदेतद्विद्युतो व्यद्युतदा इतीन्न्यमीमिषदा इत्यधिदैवतम् ॥',
-          transliteration: 'tasyaiṣa ādeśo yadetadvidyuto vyadyutadā itīnnyamīmiṣadā ityadhidaivatam ||',
-          translation: 'This is its instruction at the cosmic level: it is like the flash of lightning, like the blink of an eye — there and gone.',
-          hindi: 'यह उसका (ब्रह्म का) कौस्मिक स्तर पर निर्देश है — जैसे विद्युत का चमकना, जैसे आँख का झपकना — प्रकट और तुरन्त लुप्त।',
-          explanation: 'Brahman in nature reveals itself in flashes: a lightning bolt, a sudden insight, a moment of beauty that catches the breath. Never sustained, always glimpsed. The instruction is to recognize these flashes as Brahman, not dismiss them as accident.',
-          keywords: [],
-        },
-        {
-          id: 5,
-          sanskrit: 'अथाध्यात्मं यदेतद्गच्छतीव च मनोऽनेन चैतदुपस्मरत्यभीक्ष्णं सङ्कल्पः ॥',
-          transliteration: 'athādhyātmaṃ yadetadgacchatīva ca mano\'nena caitadupasmaratyabhīkṣṇaṃ saṅkalpaḥ ||',
-          translation: 'And at the personal level: it is that toward which the mind seems to go; that by which the mind continuously remembers — the deep intention (saṅkalpa).',
-          hindi: 'और आत्म-स्तर पर: वह जिसकी ओर मन जाता-सा है, जिसके द्वारा मन लगातार स्मरण करता है — गहरा सङ्कल्प।',
-          explanation: 'In the inner life, Brahman shows up as the persistent pull of the mind toward truth, beauty, goodness — the recurring intention (saṅkalpa) that you cannot quite shake. The longing itself is the trace of the source.',
-          keywords: [],
-        },
-        {
-          id: 6,
-          sanskrit: 'तद्ध तद्वनं नाम तद्वनमित्युपासितव्यं स य एतदेवं वेदाभि हैनं सर्वाणि भूतानि संवाञ्छन्ति ॥',
-          transliteration: 'taddha tadvanaṃ nāma tadvanamityupāsitavyaṃ sa ya etadevaṃ vedābhi hainaṃ sarvāṇi bhūtāni saṃvāñchanti ||',
-          translation: 'It is called Tadvana — "the desired-of-all." It should be worshipped as Tadvana. He who knows it thus — all beings yearn toward him.',
-          hindi: 'उसका नाम "तद्वन" (सबकी इच्छा-योग्य) है। इसी रूप में उसकी उपासना करनी चाहिए। जो इसे ऐसा जानता है, उसकी ओर सब प्राणी आकर्षित होते हैं।',
-          explanation: 'Brahman is "Tadvana" — what all desire really points toward. Every wanting is, at root, a wanting of Brahman. He who knows this becomes himself a magnet — all beings yearn toward him, because he has touched what they really want.',
-          keywords: [],
-        },
-        {
-          id: 7,
-          sanskrit: 'उपनिषदं भो ब्रूहीत्युक्ता त उपनिषद्ब्राह्मीं वाव त उपनिषदमब्रूमेति ॥',
-          transliteration: 'upaniṣadaṃ bho brūhītyuktā ta upaniṣadbrāhmīṃ vāva ta upaniṣadamabrūmeti ||',
-          translation: '(Student:) "Sir, teach me the Upanishad." (Teacher:) "The Upanishad of Brahman has been told to you."',
-          hindi: '(शिष्य:) "हे भगवन्, उपनिषद् कहिए।" (आचार्य:) "तुम्हें ब्रह्म-विद्या रूप उपनिषद् कह दी गई है।"',
-          explanation: 'A meta-moment. The student asks for the teaching — and is told it has already been given. The narrative itself is the teaching. The Upanishad is not a doctrine to be added on after the story; the story is the doctrine.',
-          keywords: [],
-        },
-        {
-          id: 8,
-          sanskrit: 'तस्यै तपो दमः कर्मेति प्रतिष्ठा वेदाः सर्वाङ्गानि सत्यमायतनम् ॥',
-          transliteration: 'tasyai tapo damaḥ karmeti pratiṣṭhā vedāḥ sarvāṅgāni satyamāyatanam ||',
-          translation: 'Its foundations are: tapas (discipline), dama (self-restraint), karma (action). The Vedas are all its limbs. Truth is its abode.',
-          hindi: 'उसकी प्रतिष्ठा हैं — तप, दम, और कर्म। वेद उसके सम्पूर्ण अंग हैं। सत्य उसका निवास-स्थान है।',
-          explanation: 'The Upanishad-knowledge does not stand on insight alone. It rests on three pillars: tapas (the heat of sustained discipline), dama (self-mastery in the moment), karma (right action). Its limbs are the entire Vedic learning. Its home is truthfulness.',
-          keywords: [],
-        },
-        {
-          id: 9,
-          sanskrit: 'यो वा एतामेवं वेदापहत्य पाप्मानमनन्ते स्वर्गे लोके ज्येष्ठे च प्रतितिष्ठति प्रतितिष्ठति ॥',
-          transliteration: 'yo vā etāmevaṃ vedāpahatya pāpmānamanante svarge loke jyeṣṭhe ca pratitiṣṭhati pratitiṣṭhati ||',
-          translation: 'He who knows this thus, having driven off all evil, is established in the infinite, highest, supreme realm — yes, is established.',
-          hindi: 'जो इस उपनिषद् को इस प्रकार जानता है, वह सब पाप का नाश करके, अनन्त, श्रेष्ठ, ज्येष्ठ स्वर्ग-लोक में प्रतिष्ठित हो जाता है — प्रतिष्ठित हो जाता है।',
-          explanation: 'The classical closing \'pratitiṣṭhati pratitiṣṭhati\' — the repetition that marks the end of an Upanishad. The fruit is not \'going somewhere\' but being established here in the infinite. Sthiti (stability) is the gift.',
-          keywords: [],
-        },],
+      ],
     },
   ],
 };

@@ -9,6 +9,10 @@ node_modules
 
 # next.js
 /.next/
+/.preview-dist/
+/reader-modes-build/
+/wellbeing-dist/
+/wellbeing-phase3-build/
 /out/
 /dist/
 next-env.d.ts
@@ -74,3 +78,28 @@ scripts/cache/*
 /data/quality-report.json
 tools/granth-ocr/work/
 tools/granth-ocr/**/__pycache__/
+
+# Python virtual environment & bytecode
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+**/*.pyc
+
+# OCR local workspace and batch outputs
+ocr_workspace/
+ocr_output/
+
+# Scratch workspace
+scratch/
+
+# Local copies of Gita Press books (large, copyrighted; sources only)
+data/sources-local/gitapress_*
+data/sources-local/gitapress_official_epubs/
+
+# Workspace-local tsx/node temp dir (sandbox TMPDIR workaround)
+.tmp-tsx/
+
+# Extraction tokens and cookies
+scripts/*session_token*
+scripts/*cookies*

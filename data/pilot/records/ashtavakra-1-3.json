@@ -1,0 +1,27 @@
+{
+  "unitId": "ashtavakra-1-3",
+  "reference": "Ashtavakra Gita 1.3",
+  "artha": "तुम न पृथ्वी हो, न जल, न अग्नि, न वायु और न आकाश। मुक्ति के लिए अपने को इन सबका साक्षी, चेतन-स्वरूप आत्मा जानो।",
+  "arthaEn": "You are not earth, water, fire, air or sky. For freedom, know yourself as the witness of all these, the Self whose nature is consciousness.",
+  "arthaDecision": "preserve-existing",
+  "arthaBasis": "existing-data",
+  "vyakhya": "यह श्लोक अष्टावक्र का जनक को उत्तर है। पहले श्लोक में जनक ने तीन प्रश्न पूछे थे: ज्ञान कैसे मिलता है, मुक्ति कैसे होगी, और वैराग्य कैसे प्राप्त होगा। दूसरे श्लोक में अष्टावक्र ने आचरण के गुण बताए; यह तीसरा श्लोक ज्ञान के प्रश्न का उत्तर है और पहचान की बात करता है। पाँच तत्त्वों को शरीर और संसार का आधार माना जाता था, इसलिए श्लोक कहता है कि इनमें से कोई भी तुम नहीं हो। फिर वह कहता है कि तुम इनके साक्षी हो, यानी इन्हें जानने वाले। चिद्रूप का अर्थ है जिसका स्वरूप चेतना है। विद्धि मुक्तये का अर्थ है कि यह जानना मुक्ति के लिए है। अगला श्लोक कहता है कि इस साक्षी में स्थित होने पर तुम तुरंत सुखी और शांत हो सकते हो। साक्षी का अर्थ शरीर की उपेक्षा, भावनाओं से कट जाना या आवश्यक कर्तव्यों से हटना नहीं है; श्लोक केवल पहचान की बात कहता है, व्यवहार के नियम की नहीं।",
+  "vijnana": "आधुनिक मनोविज्ञान और ध्यान-चर्चाओं में अपने अनुभवों को उनसे चिपके बिना देखने की बात की जाती है, जिसे साक्षी-भाव जैसा कुछ कहा जा सकता है। यह एक सतही समानता है। श्लोक का साक्षी कोई ध्यान-तकनीक या मानसिक कौशल नहीं, आत्मा की पहचान है, और इसे किसी अभ्यास के परिणाम से नहीं जोड़ा जा रहा। यह श्लोक का वैज्ञानिक दावा भी नहीं है और यहाँ कोई अध्ययन प्रस्तुत नहीं किया जा रहा। इसे अपनी भावनाओं से दूर हो जाने या उन्हें न महसूस करने का सुझाव नहीं समझना चाहिए।",
+  "vijnanaCategory": "philosophical",
+  "evidenceLevel": "editorial-observation",
+  "lifeLesson": "जब कोई भावना या परिस्थिति तुम्हें सर्वथा घेर ले, तो एक पल रुककर पूछो कि इसे कौन देख रहा है। यह प्रश्न थोड़ी दूरी बनाने का प्रयास है; शरीर और आवश्यक कामों की देखभाल फिर भी करते रहो।",
+  "confidence": "high",
+  "reviewNote": "The Hindi literal meaning (the first sentences of the stored 'bhavartha') was kept as the Artha; the English meaning is new. The Vyakhya is a new composition in original words and reflects the structure of the stored commentary record (named in the data as Rai Bahadur Babu Jalim Singh), which was read; no classical commentary was consulted. The cross-references to 1.1, 1.2 and 1.4 match the stored data. This text is not in the published scripture shards, so reader presentation cannot be verified from this pipeline.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text (data/ashtavakra), unchanged.",
+    "artha": "Existing Hindi literal meaning from the stored source record, preserved; English rendering is new.",
+    "vyakhya": "Original composition, informed by the stored commentary record and reworded.",
+    "vijnana": "Original composition; no research source consulted and none cited.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": [
+      "data/ashtavakra/ashtavakra_prakaran_1.json (stored modern Hindi commentary record, read for structure and cross-references only)"
+    ]
+  }
+}

@@ -3,44 +3,30 @@ import { resolve } from 'node:path';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { BookLearningClient } from '@/app/components/BookLearningClient';
-import { ChapterHero } from '@/app/components/motion/ChapterHero';
-import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
-import { getBookExplanation } from '@/data/book-explanations';
+import type { CSSProperties } from 'react';
+import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
+import { Motif } from '@/app/components/vibe/Motif';
+import { ScriptureBook } from '@/app/components/vibe/ScriptureBook';
+import { ScriptureContents } from '@/app/components/ScriptureContents';
+import { FadeUp } from '@/app/components/motion/primitives';
 import { getScripture, getScriptureMeta, getAllScriptures } from '@/data/scriptures';
-import { ArrowLeft } from 'lucide-react';
-import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
+import { ChevronRight } from 'lucide-react';
 
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
-import { formatCount } from '@/lib/holdings-label';
-
-const CATEGORY_NAMES: Record<string, string> = {
-  itihasa: 'Itihāsa · इतिहास',
-  upanishad: 'Upaniṣad · उपनिषद्',
-  veda: 'Veda · वेद',
-  purana: 'Purāṇa · पुराण',
-  smriti: 'Smṛti · स्मृति',
-  tantra: 'Tantra · तन्त्र',
-  stotra: 'Stotra · स्तोत्र',
-  other: 'Other · अन्य',
-};
-
-function formatCategory(cat: string): string {
-  return CATEGORY_NAMES[cat] || cat;
-}
+import { OfflineScriptureToggle } from '@/app/components/scripture/OfflineScriptureToggle';
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export function generateStaticParams() {
-  const params = getAllScriptures().map(s => ({ id: s.id }));
-  params.push({ id: 'yogavasistha' });
-  return params;
+  // The old 'yogavasistha' spelling is a 301 in public/_redirects, not a page.
+  return getAllScriptures().map(s => ({ id: s.id }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const meta = getScriptureMeta(params.id);
   if (!meta) return {};
 
@@ -98,13 +84,13 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function ScripturePage({ params }: PageProps) {
+export default async function ScripturePage(props: PageProps) {
+  const params = await props.params;
   const meta = getScriptureMeta(params.id);
   if (!meta) return notFound();
 
   const scripture = getScripture(params.id);
   const chapters = scripture?.chapters ?? [];
-  const explanation = getBookExplanation(params.id);
   const chapterPreviewsById = new Map<number, ChapterPreview>();
   for (const chapter of chapters) {
     chapterPreviewsById.set(chapter.id, {
@@ -127,11 +113,10 @@ export default function ScripturePage({ params }: PageProps) {
   const chapterPreviews = Array.from(chapterPreviewsById.values()).sort(
     (a, b) => a.id - b.id,
   );
-  const publishedChapters = chapterPreviews.filter((chapter) => chapter.verseCount > 0);
-  const publishedVerses = publishedChapters.reduce((sum, chapter) => sum + chapter.verseCount, 0);
-  const catalogueVerses = meta.canonicalTotalVerses ?? meta.totalVerses;
-  const catalogueChapters = meta.totalChapters;
-  const partial = publishedVerses > 0 && catalogueVerses > publishedVerses;
+  const publishedChapterCount = chapterPreviews.length;
+  const heldChapters = chapterPreviews.filter((chapter) => chapter.verseCount > 0).length;
+  const heldVerses = chapterPreviews.reduce((sum, chapter) => sum + chapter.verseCount, 0);
+  const partialOf = meta.canonicalTotalVerses && meta.canonicalTotalVerses > heldVerses ? meta.canonicalTotalVerses : undefined;
   const languageFacts = getLibraryFacts(meta.id).languages;
   const inLanguage = [
     languageFacts.sa ? 'sa' : null,
@@ -141,7 +126,7 @@ export default function ScripturePage({ params }: PageProps) {
 
   // JSON-LD structured data: emit a Book entity for any catalog entry, with workExample
   // pointing to a Chapter entity for chapters that actually have verse data.
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   const workExample =
     meta.hasData && chapterPreviews.length > 0
       ? chapterPreviews
@@ -183,8 +168,10 @@ export default function ScripturePage({ params }: PageProps) {
     ],
   };
 
+  const vibe = scriptureVibe(meta.id, meta.category);
+
   return (
-    <main className="min-h-screen bg-dharma-bg">
+    <main className="min-h-screen bg-dharma-bg" data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)}>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -195,68 +182,109 @@ export default function ScripturePage({ params }: PageProps) {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <ChapterHero className="bg-gradient-to-b from-saffron-800 to-saffron-600 text-white py-14">
-        <div className="relative max-w-5xl mx-auto px-6">
+      {/* The scripture opens like a book, in its own colours and emblem (lib/scripture-vibes). */}
+      <section className="scripture-vibe-hero relative isolate overflow-hidden border-b border-dharma-border/60 py-6 text-dharma-text sm:py-10" style={{ '--cover-1': vibe.cover[0], '--cover-2': vibe.cover[1], '--cover-3': vibe.cover[2] } as CSSProperties}>
+        <Motif id={vibe.motif} className="pointer-events-none absolute -right-10 -top-10 -z-10 h-[420px] w-[420px] text-[color:var(--cover-2)] opacity-[0.07]" />
+        <div className="relative mx-auto grid max-w-5xl items-center gap-8 px-6 lg:grid-cols-[1fr_auto]">
+        {/* Title and description first; on phones the book illustration follows them. */}
+        <div>
           <FadeUp>
-            <Link href="/scriptures" className="inline-flex min-h-[44px] items-center gap-2 text-white/70 hover:text-white text-sm mb-2 transition">
-              <ArrowLeft className="w-4 h-4" />
-              All Scriptures
-            </Link>
+            <nav aria-label="Breadcrumb" className="mb-3">
+              <ol className="flex flex-wrap items-center gap-1.5 text-sm text-dharma-muted">
+                <li>
+                  <Link href="/" className="rounded-md px-1 py-1 transition hover:text-saffron-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
+                    Home
+                  </Link>
+                </li>
+                <li aria-hidden="true"><ChevronRight className="h-4 w-4" /></li>
+                <li>
+                  <Link href="/scriptures/" className="rounded-md px-1 py-1 transition hover:text-saffron-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
+                    Scriptures
+                  </Link>
+                </li>
+                <li aria-hidden="true"><ChevronRight className="h-4 w-4" /></li>
+                <li aria-current="page" className="px-1 font-semibold text-dharma-text">
+                  {meta.title}
+                </li>
+              </ol>
+            </nav>
           </FadeUp>
-          <FadeUp delay={0.05} className="flex flex-wrap items-center gap-3 mb-3">
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 uppercase tracking-wide">
-              {formatCategory(meta.category)}
-            </span>
-            {meta.isCurated || partial ? (
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/25 text-amber-100 border border-amber-400/30">
-                {meta.isCurated
-                  ? 'सार संकलन · Curated selection'
-                  : `${publishedChapters.length} Chapters Indexed · ~${formatCount(catalogueVerses)} Canonical Verses`}
-              </span>
-            ) : publishedVerses > 0 ? (
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/15 text-white border border-white/25">
-                पुस्तकालय में पाठ · Text in the library
-              </span>
-            ) : (
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/15 text-white border border-white/25">
-                सूची प्रविष्टि · Catalogue entry
-              </span>
-            )}
+          <FadeUp delay={0.05}>
+            <p className="editorial-section-eyebrow">Scripture contents · ग्रंथ सूची</p>
+            <h1 className="mt-2 font-serif text-4xl font-bold tracking-tight text-dharma-text md:text-5xl">{meta.title}</h1>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-2">{meta.title}</h1>
-          </FadeUp>
-          <FadeUp delay={0.15}>
-            <div className="flex flex-wrap items-baseline gap-2 mb-4">
-              <p lang="sa" className="text-xl font-devanagari opacity-90">{meta.titleSanskrit}</p>
+            <div className="mt-2 flex flex-wrap items-baseline gap-3">
+              <p lang="sa" className="font-devanagari text-2xl text-dharma-muted">{meta.titleSanskrit}</p>
               {meta.titleIast && (
-                <span className="text-base font-serif italic text-white/75">
+                <span className="font-serif text-sm italic text-dharma-muted">
                   ({meta.titleIast})
                 </span>
               )}
             </div>
           </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="text-lg opacity-80 max-w-3xl">{meta.description}</p>
-            {meta.author && <p className="mt-3 text-sm opacity-60">Attributed to {meta.author}</p>}
+          <FadeUp delay={0.15}>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-dharma-muted">{meta.description}</p>
+            {meta.author && <p className="mt-2 text-sm font-semibold text-dharma-muted">Attributed to {meta.author}</p>}
+            {meta.selectedVerses && heldVerses > 0 && (
+              <p className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-saffron-300 bg-saffron-50 px-3 py-1 text-xs font-bold text-saffron-800 dark:bg-saffron-500/10 dark:text-saffron-200">
+                <span lang="hi" className="font-devanagari">चयनित श्लोक</span> <span aria-hidden="true">·</span>{' '}
+                <span lang="en">Selected verses, not the full text</span>
+              </p>
+            )}
+            {heldVerses > 0 && (
+              // What the library holds, and, for a partial text, of how much.
+              <p className="mt-2 text-sm text-dharma-muted">
+                <span lang="hi" className="font-devanagari">
+                  पुस्तकालय में {heldChapters.toLocaleString('en-IN')} अध्याय, {heldVerses.toLocaleString('en-IN')} श्लोक
+                  {partialOf ? ` (लगभग ${partialOf.toLocaleString('en-IN')} में से)` : ''}
+                </span>{' '}
+                <span aria-hidden="true">·</span>{' '}
+                <span lang="en">
+                  {heldChapters.toLocaleString('en-IN')} chapters, {heldVerses.toLocaleString('en-IN')}
+                  {partialOf ? ` of about ${partialOf.toLocaleString('en-IN')}` : ''} verses in the library
+                </span>
+              </p>
+            )}
+            <OfflineScriptureToggle scriptureId={meta.id} title={meta.title} />
           </FadeUp>
         </div>
-      </ChapterHero>
+        <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} className="mx-auto" />
+        </div>
+      </section>
 
-      <FadeUpOnView className="max-w-5xl mx-auto px-6 py-12 space-y-12">
-        <BookLearningClient
-          meta={meta}
-          explanation={explanation}
-          chapters={chapterPreviews}
-          catalogueVerses={catalogueVerses}
-          catalogueChapters={catalogueChapters}
-        />
-        <SourcesAndInterpretation
+      {meta.id === 'bhagavadgita' && (
+        <div className="mx-auto max-w-5xl px-6 pt-6">
+          <div className="relative overflow-hidden rounded-3xl border border-saffron-500/40 bg-gradient-to-r from-saffron-500/15 via-amber-500/10 to-transparent p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+            <div className="space-y-1">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-saffron-500/40 bg-saffron-500/20 px-3 py-0.5 text-xs font-bold text-saffron-900 dark:text-saffron-200">
+                <span>नित्य स्वाध्याय संकल्प · Daily Svadhyaya</span>
+              </span>
+              <h2 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+                श्रीमद्भगवद्गीता नित्य स्वाध्याय एवं पारायण संकल्प
+              </h2>
+              <p className="text-xs sm:text-sm text-dharma-muted max-w-xl">
+                18-दिवसीय पारायण, नित्य अध्याय नियम, पारम्परिक संकल्प मन्त्र, साधना स्ट्रीक ट्रैकर और संपूर्ण गीता ऑफ़लाइन सहेजें।
+              </p>
+            </div>
+            <Link
+              href="/practice/gita-sankalpa/"
+              className="shrink-0 inline-flex items-center gap-2 rounded-2xl bg-saffron-600 hover:bg-saffron-700 text-white px-5 py-3 text-xs sm:text-sm font-bold shadow-xs transition"
+            >
+              <span>संकल्प लें · Begin Sankalpa</span>
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      )}
+
+      <div className="mx-auto max-w-5xl px-6 pb-10 pt-5 sm:pt-7">
+        <ScriptureContents
           scriptureId={meta.id}
-          scriptureTitle={meta.title}
-          scriptureTitleSanskrit={meta.titleSanskrit}
+          chapters={chapterPreviews}
+          totalChapters={publishedChapterCount}
         />
-      </FadeUpOnView>
+      </div>
     </main>
   );
 }

@@ -1,8 +1,9 @@
 import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
 import { readChapterCommentary, readSeededChapter, readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
-import { cleanVerseField } from '@/lib/verse-format';
+import { cleanVerseField, withPassageMeaning } from '@/lib/verse-format';
 import { VERSE_PAGE_SCRIPTURE_IDS, verseSlug } from '@/lib/verse-paths';
 import type { VerseIndexFile, VerseRow } from '@/lib/search-verse-index';
+import { commentaryAmbiguities, lookupCommentary } from '@/lib/commentary-lookup';
 
 /**
  * Build-time verse index for global search. It covers exactly the verses that
@@ -16,7 +17,9 @@ interface SeedVerse {
   sanskrit?: string;
   transliteration?: string;
   hindi?: string;
+  hindiSeeVerse?: number | string;
   translation?: string;
+  translationSeeVerse?: number | string;
   explanation?: string;
   commentary?: string;
   hindiSource?: 'ai';
@@ -48,12 +51,16 @@ export function buildVerseIndex(): VerseIndexFile {
       if (!seeded) continue;
       const commentary = readChapterCommentary<HiCommentaryEntry>(id, chapterId);
       const seen = new Set<string>();
-      for (const verse of seeded.chapter.verses as SeedVerse[]) {
+      const verses = seeded.chapter.verses as SeedVerse[];
+      const ambiguity = commentaryAmbiguities(chapterId, verses.flatMap(v => v.number == null ? [] : [v.number]));
+      for (const stored of verses) {
+        // A passage translated as one is published on its first verse; each verse of it is found by that text.
+        const verse = withPassageMeaning(verses, stored);
         const slug = verseSlug(verse.number);
         if (!slug || seen.has(slug)) continue;
         seen.add(slug);
 
-        const comment = commentary?.[`${chapterId}:${slug}`] ?? commentary?.[`${chapterId}:${Number(slug)}`];
+        const comment = lookupCommentary(commentary, chapterId, verse.number!, ambiguity);
         const explanation = comment?.explanation ?? verse.explanation ?? verse.commentary;
         // bit 1: explanation is AI-drafted, bit 2: Hindi is machine-translated, bit 4: English is
         const flags = (comment?.ai ? 1 : 0) | (verse.hindiSource === 'ai' ? 2 : 0) | (verse.translationSource === 'ai' ? 4 : 0);

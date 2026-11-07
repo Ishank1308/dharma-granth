@@ -3,14 +3,15 @@ import Link from 'next/link';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { getBookExplanation } from '@/data/book-explanations';
 import { categories } from '@/data/scripture-meta';
+import type { LibraryItem } from '@/lib/library';
 import { getAllScriptures, getLibraryCounts } from '@/data/scriptures';
 import { getLibraryFacts } from '@/lib/library-server';
-import { FadeUp } from '@/app/components/motion/primitives';
 import { ScriptureLibraryClient } from '@/app/components/ScriptureLibraryClient';
+import { PageHeader } from '@/app/components/apple/PageHeader';
 import { publishedTotals } from '@/lib/ashtavakra';
 
 function loadLibrary() {
-  return getAllScriptures().map((scripture) => {
+  const catalogue = getAllScriptures().map((scripture) => {
     const held = getLibraryCounts(scripture.id);
     const catalogueVerses = scripture.canonicalTotalVerses ?? scripture.totalVerses;
     return {
@@ -22,20 +23,43 @@ function loadLibrary() {
       facts: getLibraryFacts(scripture.id),
     };
   });
+
+  // Ashtavakra Gita has its own reviewed reading route and chapter data rather
+  // than the standard seeded-scripture JSON, so include its measured totals here.
+  const ashtavakraTotals = publishedTotals();
+  const ashtavakra: LibraryItem = {
+    id: 'ashtavakra',
+    title: 'Ashtavakra Gita',
+    titleSanskrit: 'अष्टावक्र गीता',
+    titleIast: 'Aṣṭāvakra Gītā',
+    category: 'vedanta',
+    description: 'A dialogue on the nature of the Self and liberation. Some chapters remain under editorial review.',
+    totalChapters: ashtavakraTotals.chapters,
+    totalVerses: ashtavakraTotals.verses,
+    tags: ['Advaita', 'Nondualism', 'Self', 'Liberation'],
+    hasData: ashtavakraTotals.verses > 0,
+    isCurated: true,
+    facts: {
+      languages: { sa: true, hi: true, en: true },
+      hindiCommentary: false,
+    },
+  };
+
+  return [...catalogue, ashtavakra];
 }
 
 export const metadata: Metadata = {
-  title: 'All Scriptures',
+  title: 'सम्पूर्ण ग्रंथालय · Hindu Scriptures, Vedas & Puranas',
   description:
-    'The full library of Hindu sacred texts catalogued at Dharma Granth — Vedas, Upanishads, Itihasas, Puranas, Smritis, and more. Texts with verse text in the library are marked.',
+    'मूल संस्कृत श्लोक, पदच्छेद, हिंदी अर्थ और अंग्रेजी अनुवाद सहित संपूर्ण वैदिक ग्रंथालय: वेद, उपनिषद्, भगवद्गीता, रामायण, महाभारत, पुराण, विदुर नीति एवं दर्शन।',
   alternates: { canonical: '/scriptures/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
     type: 'website',
-    title: 'All Scriptures — Dharma Granth',
+    title: 'सम्पूर्ण ग्रंथालय · Hindu Scriptures, Vedas & Puranas — Dharma Granth',
     description:
-      'Browse the full library of Hindu sacred texts, organized by category. Texts with verse text in the library are marked.',
-    url: '/scriptures',
+      'मूल संस्कृत श्लोक, पदच्छेद, हिंदी अर्थ और अंग्रेजी अनुवाद सहित संपूर्ण वैदिक ग्रंथालय: वेद, उपनिषद्, भगवद्गीता, रामायण, महाभारत, पुराण एवं दर्शन।',
+    url: '/scriptures/',
   },
 };
 
@@ -52,47 +76,97 @@ export default function ScripturesPage() {
 
   return (
     <main className="min-h-screen bg-dharma-bg">
-      {/* Inspora-inspired Archival Gallery Header */}
-      <div className="border-b border-dharma-border/80 bg-dharma-card/60 backdrop-blur-sm py-12 sm:py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <FadeUp>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="size-2 rounded-full bg-saffron-600 animate-status-pulse" />
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
-                The Sacred Archive
-              </span>
-            </div>
-            <h1 className="text-3xl font-serif font-bold text-dharma-text sm:text-5xl tracking-tight">
-              Scripture Library
-              <span lang="hi" className="ml-3 block font-devanagari text-2xl font-semibold leading-relaxed text-dharma-muted sm:inline sm:text-4xl">
-                ग्रंथालय
-              </span>
-            </h1>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <p className="mt-3 text-base text-dharma-muted sm:text-lg max-w-2xl leading-relaxed">
-              Vedas, Upanishads, Itihasas and Puranas in one place. Search by name or topic, filter by tradition, length or language, then open any text to read it verse by verse.
-            </p>
-          </FadeUp>
-        </div>
-      </div>
+      <PageHeader
+        width="wide"
+        eyebrow="Library"
+        title="Scriptures"
+        titleHi="ग्रंथालय"
+        lead={
+          <p>
+            Vedas, Upanishads, Itihasas and Puranas in one place. Search by name or topic, filter by tradition, length or
+            language, then open any text to read it verse by verse.
+          </p>
+        }
+      />
 
-      <section className="max-w-6xl mx-auto px-6 pt-8">
-        <Link
-          href="/ashtavakra/"
-          className="flex flex-col gap-2 rounded-2xl border border-dharma-border bg-dharma-card p-5 transition hover:border-saffron-700 sm:flex-row sm:items-center sm:justify-between"
-        >
-          <div>
-            <p lang="hi" className="font-devanagari text-sm font-semibold text-saffron-800 dark:text-saffron-200">अष्टावक्र गीता</p>
-            <h2 className="font-serif text-2xl font-bold text-dharma-text">Ashtavakra Gita</h2>
-            <p className="mt-1 max-w-2xl text-sm leading-relaxed text-dharma-muted">
-              A separate reading, not one of the catalogue cards below. {publishedTotals().chapters} prakaranas and {publishedTotals().verses} verses are published. Chapters 19 and 20 stay review-required.
-            </p>
+      {/* Featured Rare & Practical Philosophy Collection */}
+      <section aria-label="दुर्लभ एवं व्यावहारिक दर्शन ग्रंथ" className="mx-auto max-w-6xl px-4 sm:px-6 mb-8">
+        <div className="rounded-2xl border border-dharma-border/80 bg-gradient-to-br from-amber-50/60 via-dharma-card to-dharma-bg p-5 sm:p-6 dark:from-amber-950/20 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
+                विशेष संग्रह · Curated Holdings
+              </span>
+              <h2 className="text-lg sm:text-xl font-serif font-bold text-dharma-text mt-0.5">
+                दुर्लभ एवं व्यावहारिक दर्शन ग्रंथ (Practical Philosophy &amp; Rare Texts)
+              </h2>
+            </div>
+            <span className="text-xs text-dharma-muted">
+              मूल संस्कृत, पदच्छेद व प्रामाणिक हिंदी अनुवाद
+            </span>
           </div>
-          <span className="inline-flex min-h-11 items-center text-sm font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-200">
-            Open the reading
-          </span>
-        </Link>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {[
+              {
+                id: 'viduraniti',
+                href: '/scripture/viduraniti/',
+                title: 'विदुर नीति (Vidura Niti)',
+                desc: 'महाभारत उद्योगपर्व — नीति, मनोविज्ञान और व्यावहारिक शासन-कला (594 श्लोक)',
+                badge: 'महाभारत',
+                tag: 'नीति व आचरण',
+              },
+              {
+                id: 'shivaswarodaya',
+                href: '/scripture/shivaswarodaya/',
+                title: 'शिव स्वरोदय (Shiva Swarodaya)',
+                desc: 'स्वर योग — प्राण, नाड़ी व श्वास-प्रवाह का प्रत्यक्ष विज्ञान (395 श्लोक)',
+                badge: 'स्वर विज्ञान',
+                tag: 'प्राणायाम',
+              },
+              {
+                id: 'ashtavakra',
+                href: '/ashtavakra/',
+                title: 'अष्टावक्र गीता (Ashtavakra Gita)',
+                desc: 'अद्वैत वेदांत — आत्म-ज्ञान और परम मुक्ति का सीधा संवाद (298 श्लोक)',
+                badge: 'वेदांत',
+                tag: 'आत्म-ज्ञान',
+              },
+              {
+                id: 'naradabhaktisutra',
+                href: '/scripture/naradabhaktisutra/',
+                title: 'नारद भक्ति सूत्र (Narada Bhakti Sutras)',
+                desc: 'परा-भक्ति का शास्त्रीय दर्शन — प्रेम, समर्पण व आत्म-निवेदन (84 सूत्र)',
+                badge: 'भक्ति दर्शन',
+                tag: 'सूत्र ग्रंथ',
+              },
+            ].map((item) => (
+              <Link
+                key={item.id}
+                href={item.href}
+                className="group flex flex-col justify-between rounded-xl border border-dharma-border bg-dharma-card/90 p-4 transition-all hover:border-saffron-400 hover:shadow-md hover:-translate-y-0.5"
+              >
+                <div>
+                  <div className="flex items-center justify-between text-2xs mb-2">
+                    <span className="rounded-full bg-saffron-100 px-2 py-0.5 font-bold text-saffron-800 dark:bg-saffron-900/40 dark:text-saffron-300">
+                      {item.badge}
+                    </span>
+                    <span className="text-dharma-muted font-medium">{item.tag}</span>
+                  </div>
+                  <h3 className="text-sm font-serif font-bold text-dharma-text group-hover:text-saffron-700 transition">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-xs text-dharma-muted line-clamp-2 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+                <div className="mt-3 flex items-center justify-end text-xs font-semibold text-saffron-700 group-hover:translate-x-1 transition-transform">
+                  पढ़ें &rarr;
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
       <ScriptureLibraryClient scriptures={scriptures} categories={categories} loadError={loadError} />

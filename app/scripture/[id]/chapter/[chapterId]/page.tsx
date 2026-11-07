@@ -2,9 +2,11 @@ import type { Metadata } from 'next';
 import { getAllScriptures, getScriptureChapters } from '@/data/scriptures';
 import { readSeededChapterNumbers } from '@/lib/read-seeded-chapters';
 import { ChapterView, chapterMetadata, type ChapterParams } from './chapter-view';
+import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { getScriptureMeta } from '@/data/scriptures';
 
 interface PageProps {
-  params: ChapterParams;
+  params: Promise<ChapterParams>;
 }
 
 export function generateStaticParams() {
@@ -30,20 +32,35 @@ export function generateStaticParams() {
         seen.add(cid);
       }
     }
-    if (meta.id === 'yogavasishtha') {
-      for (const cid of Array.from(seen)) {
-        params.push({ id: 'yogavasistha', chapterId: cid });
-      }
-    }
+    // The old 'yogavasistha' spelling is a 301 in public/_redirects, not a page.
   }
   return params;
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   return chapterMetadata(params, 1);
 }
 
 /** The chapter (or, for chapters split into parts, its first part). */
-export default function ChapterPage({ params }: PageProps) {
-  return <ChapterView params={params} part={1} />;
+export default async function ChapterPage(props: PageProps) {
+  const params = await props.params;
+  const meta = getScriptureMeta(params.id);
+  const chapterNumber = parseInt(params.chapterId, 10);
+  const indexed = getScriptureChapters(params.id).find((c) => c.id === chapterNumber);
+  const chapterTitle = indexed?.title || `Chapter ${params.chapterId}`;
+  return (
+    <>
+      {meta ? (
+        <Breadcrumbs
+          items={[
+            { label: 'Library', href: '/scriptures/' },
+            { label: meta.title, href: `/scripture/${meta.id}/` },
+            { label: chapterTitle },
+          ]}
+        />
+      ) : null}
+      <ChapterView params={params} part={1} />
+    </>
+  );
 }

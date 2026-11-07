@@ -77,21 +77,8 @@ export function VerseGraphNetwork({ scriptureId, chapterId, verseId, currentVers
     });
   }, [filteredNodes, graphData.nodes, centerX, centerY, radius]);
 
-  if (graphData.nodes.length === 0) {
-    return (
-      <section aria-labelledby="verse-graph-gap" className="mt-10 rounded-2xl border border-dharma-border bg-dharma-card p-5">
-        <h2 id="verse-graph-gap" className="font-serif text-lg font-bold text-dharma-text">
-          <span lang="hi" className="font-devanagari">संबंध अभी दर्ज नहीं</span>
-        </h2>
-        <p lang="hi" className="mt-2 text-sm leading-relaxed text-dharma-text">
-          इस श्लोक के लिए कोई समीक्षित संबंध, पार-ग्रंथ कड़ी या अवधारणा-सूची नहीं है। पड़ोस का श्लोक अपने आप संबंध नहीं बनता।
-        </p>
-        <p className="mt-1 text-sm leading-relaxed text-dharma-text-secondary">
-          No reviewed link is stored for this verse. A neighboring verse is not labeled a teaching.
-        </p>
-      </section>
-    );
-  }
+  // No reviewed links: render nothing rather than a "not recorded yet" box.
+  if (graphData.nodes.length === 0) return null;
 
   return (
     <section
@@ -312,9 +299,9 @@ export function VerseGraphNetwork({ scriptureId, chapterId, verseId, currentVers
                   x={centerX}
                   y={centerY + 10}
                   textAnchor="middle"
-                  className="text-[9px] font-semibold tracking-wider uppercase fill-white/80 select-none pointer-events-none"
+                  className="text-xs font-semibold fill-white/80 select-none pointer-events-none"
                 >
-                  Current Verse
+                  Current verse
                 </text>
               </g>
 
@@ -422,7 +409,7 @@ export function VerseGraphNetwork({ scriptureId, chapterId, verseId, currentVers
                 <div className="self-start sm:self-center">
                   <Link
                     href={activeNode.href}
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-4 py-2 text-xs font-bold text-white transition shadow-2xs"
+                    className="tap-target inline-flex items-center gap-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-4 py-2 text-xs font-bold text-white transition shadow-2xs"
                   >
                     <span>{activeNode.type === 'concept_connection' ? 'Explore Concept' : 'Read Verse'}</span>
                     <ArrowRight className="h-3.5 w-3.5" />

@@ -1,50 +1,37 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Wifi, WifiOff } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { usePresence } from '@/app/components/motion/usePresence';
+import { useConnectivity } from '@/lib/useConnectivity';
 
 export function OfflineIndicator() {
-  const [isOffline, setIsOffline] = useState(false);
+  const isOnline = useConnectivity();
   const [showReconnected, setShowReconnected] = useState(false);
+  const previousOnline = useRef<boolean | null>(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    const wasOffline = previousOnline.current === false;
+    previousOnline.current = isOnline;
+    if (isOnline !== true || !wasOffline) return;
+    setShowReconnected(true);
+    const timer = window.setTimeout(() => setShowReconnected(false), 3500);
+    return () => window.clearTimeout(timer);
+  }, [isOnline]);
 
-    const handleOffline = () => {
-      setIsOffline(true);
-      setShowReconnected(false);
-    };
-
-    const handleOnline = () => {
-      setIsOffline(false);
-      setShowReconnected(true);
-      const timer = setTimeout(() => setShowReconnected(false), 3500);
-      return () => clearTimeout(timer);
-    };
-
-    setIsOffline(!navigator.onLine);
-
-    window.addEventListener('offline', handleOffline);
-    window.addEventListener('online', handleOnline);
-
-    return () => {
-      window.removeEventListener('offline', handleOffline);
-      window.removeEventListener('online', handleOnline);
-    };
-  }, []);
+  const isOffline = isOnline === false;
+  const offline = usePresence(isOffline);
+  const online = usePresence(showReconnected);
 
   return (
-    <AnimatePresence>
-      {isOffline && (
-        <motion.div
+    <>
+      {offline.mounted && (
+        <div
           key="offline-indicator"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 50, opacity: 0 }}
+          data-closing={offline.closing || undefined}
           role="status"
           aria-live="polite"
-          className="fixed bottom-20 left-1/2 z-40 -translate-x-1/2 rounded-full border border-amber-500/40 bg-stone-900/95 px-4 py-2 text-xs font-semibold text-amber-200 shadow-xl backdrop-blur-md dark:bg-stone-950/95 sm:bottom-6"
+          className="chrome-rise fixed inset-x-0 bottom-20 z-40 mx-auto w-fit rounded-full border border-amber-500/40 bg-stone-900/95 px-4 py-2 text-xs font-semibold text-amber-200 shadow-xl backdrop-blur-md dark:bg-stone-950/95 sm:bottom-6"
         >
           <div className="flex items-center gap-2">
             <WifiOff className="h-3.5 w-3.5 text-amber-400" aria-hidden="true" />
@@ -53,18 +40,16 @@ export function OfflineIndicator() {
               (Offline Mode)
             </span>
           </div>
-        </motion.div>
+        </div>
       )}
 
-      {showReconnected && (
-        <motion.div
+      {online.mounted && (
+        <div
           key="online-indicator"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 50, opacity: 0 }}
+          data-closing={online.closing || undefined}
           role="status"
           aria-live="polite"
-          className="fixed bottom-20 left-1/2 z-40 -translate-x-1/2 rounded-full border border-emerald-500/40 bg-stone-900/95 px-4 py-2 text-xs font-semibold text-emerald-300 shadow-xl backdrop-blur-md dark:bg-stone-950/95 sm:bottom-6"
+          className="chrome-rise fixed inset-x-0 bottom-20 z-40 mx-auto w-fit rounded-full border border-emerald-500/40 bg-stone-900/95 px-4 py-2 text-xs font-semibold text-emerald-300 shadow-xl backdrop-blur-md dark:bg-stone-950/95 sm:bottom-6"
         >
           <div className="flex items-center gap-2">
             <Wifi className="h-3.5 w-3.5 text-emerald-400" aria-hidden="true" />
@@ -73,8 +58,8 @@ export function OfflineIndicator() {
               (Connected)
             </span>
           </div>
-        </motion.div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

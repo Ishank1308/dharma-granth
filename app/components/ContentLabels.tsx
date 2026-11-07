@@ -11,6 +11,7 @@ export function ContentLabelBadge({ kind, className = '' }: { kind: ContentLabel
   const label = CONTENT_LABELS[kind];
   return (
     <span
+      data-content-label={kind}
       className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-semibold leading-tight ${label.visualBadgeClass} ${className}`}
       title={`${label.labelEn} — ${label.authorityLevel}`}
     >

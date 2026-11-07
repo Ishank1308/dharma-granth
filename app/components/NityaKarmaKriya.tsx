@@ -68,7 +68,7 @@ const steps: PracticeStep[] = [
     title: 'Wake with remembrance',
     titleHi: 'स्मरण से दिन आरम्भ',
     duration: '2 मिनट',
-    purpose: 'दिन की शुरुआत फोन या काम से पहले कृतज्ञता के साथ करें।',
+    purpose: 'दिन का आरम्भ फ़ोन या कार्य से पहले कृतज्ञता के साथ करें।',
     mantraHint: 'कराग्रे वसते लक्ष्मीं कर्मध्यां कराग्रे वसते',
   },
   {

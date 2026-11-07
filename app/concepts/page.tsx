@@ -6,18 +6,31 @@ import { ConceptGraph } from '@/app/components/ConceptGraph';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { concepts } from '@/data/concepts';
 import { getAllConceptDetails, getConceptDetail } from '@/data/concept-details';
+import { GRAPH_CONCEPTS } from '@/data/knowledge-graph';
+import { graphConceptLink } from '@/lib/knowledge-graph';
 
 export const metadata: Metadata = {
-  title: 'अवधारणा ज्ञान ग्राफ (Concepts Knowledge Graph)',
+  title: 'Dharmic Concepts & Philosophy Explained (शास्त्रीय अवधारणा ज्ञान ग्राफ)',
   description:
-    'वैदिक और हिंदू दर्शन की अवधारणाओं — आत्मन्, ब्रह्मन्, कर्म, धर्म, मोक्ष और अधिक — के अंतरसंबंधों का अन्वेषण करें।',
+    'Classical meanings, Sanskrit etymology and scriptural citations for core Hindu concepts — Dharma, Karma, Moksha, Atman, Brahman, Maya, Ahimsa, and Yajna.',
+  keywords: [
+    'Hindu philosophy concepts',
+    'Dharmic concepts explained',
+    'Sanatan Dharma core principles',
+    'Karma meaning in hindi',
+    'Dharma meaning',
+    'Moksha meaning',
+    'Atman and Brahman',
+    'अवधारणा ज्ञान ग्राफ',
+    'dharma granth',
+  ],
   alternates: { canonical: '/concepts/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
-    title: 'अवधारणा ज्ञान ग्राफ (Concepts Knowledge Graph) — Dharma Granth',
+    title: 'Dharmic Concepts & Philosophy Explained (शास्त्रीय अवधारणा ज्ञान ग्राफ) — Dharma Granth',
     description:
-      'वैदिक और हिंदू दर्शन की अवधारणाओं — आत्मन्, ब्रह्मन्, कर्म, धर्म, मोक्ष और अधिक — के अंतरसंबंधों का अन्वेषण करें।',
-    url: 'https://dharmagranth.in/concepts',
+      'Classical meanings, Sanskrit etymology and scriptural citations for core Hindu concepts — Dharma, Karma, Moksha, Atman, Brahman, Maya, Ahimsa, and Yajna.',
+    url: 'https://dharmagranth.dev/concepts/',
   },
 };
 
@@ -69,6 +82,29 @@ export default function ConceptsPage() {
         </div>
       </section>
 
+      <nav aria-label="पच्चीस मूल अवधारणाएँ" className="max-w-6xl mx-auto px-6 pt-8">
+        <h2 className="font-serif text-xl font-bold text-dharma-text">
+          <span lang="hi" className="font-devanagari">पच्चीस मूल अवधारणाएँ</span>
+        </h2>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {GRAPH_CONCEPTS.map((concept) => {
+            const link = graphConceptLink(concept.id);
+            if (!link) return null;
+            return (
+              <li key={concept.id}>
+                <Link
+                  href={link.href}
+                  className="inline-flex min-h-[44px] items-center rounded-full border border-dharma-border bg-dharma-card px-3 text-sm text-dharma-text hover:border-saffron-400"
+                >
+                  <span lang="sa" className="font-devanagari">{concept.sanskrit}</span>
+                  <span className="ml-2 text-dharma-muted">{concept.label}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
       {/* ── Graph ────────────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 -mt-8 relative z-10 pb-12">
         <div className="bg-dharma-card/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-dharma-border p-4 sm:p-6 md:p-8">
@@ -82,7 +118,7 @@ export default function ConceptsPage() {
           <div className="space-y-2 max-w-2xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 font-bold text-xs border border-saffron-500/20">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>चरण १० · Interactive Visual Learning Layer</span>
+              <span>चरण 10 · Interactive Visual Learning Layer</span>
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
               दृश्य ज्ञान दर्शन — 10 मूल तत्त्वों के पवित्र आरेख

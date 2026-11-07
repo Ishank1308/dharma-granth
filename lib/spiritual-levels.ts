@@ -18,7 +18,6 @@ export type SpiritualLevelId = 'seed' | 'seeker' | 'student' | 'sadhaka' | 'prac
 export interface LevelMilestoneCriteria {
   versesRead: number;
   daysActive: number;
-  streakDays: number;
   notesAndReflections: number;
   pathwaysCompleted: number;
 }
@@ -55,8 +54,6 @@ export interface SpiritualLevelDef {
 export interface UserSadhanaStats {
   versesReadCount: number;
   totalDaysRead: number;
-  currentStreak: number;
-  longestStreak: number;
   notesCount: number;
   highlightsCount: number;
   bookmarksCount: number;
@@ -70,7 +67,6 @@ export interface LevelProgressResult {
   remainingForNext: {
     verses: number;
     days: number;
-    streak: number;
     notes: number;
     pathways: number;
   } | null;
@@ -97,7 +93,7 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
       transliteration: 'athāto dharmajijñāsā',
       translationHi: 'अब धर्म को जानने और समझने की पवित्र जिज्ञासा का आरंभ होता है।',
       translationEn: 'Now begins the sincere, sacred inquiry into Dharma.',
-      source: 'मीमांसा सूत्र १.१.१',
+      source: 'मीमांसा सूत्र 1.1.1',
     },
     summaryEn: 'The initial spark of interest in eternal wisdom and scriptural truth.',
     summaryHi: 'सनातन ज्ञान व शास्त्रों के प्रति प्रथम जिज्ञासा व रुचि का बीजारोपण।',
@@ -106,7 +102,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 0,
       daysActive: 0,
-      streakDays: 0,
       notesAndReflections: 0,
       pathwaysCompleted: 0,
     },
@@ -131,7 +126,7 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
       transliteration: 'athāto brahmajijñāsā',
       translationHi: 'अब परमतत्त्व और आत्मज्ञान की जिज्ञासा का प्रशस्त मार्ग खुलता है।',
       translationEn: 'Now begins the deeper inquiry into the Ultimate Truth.',
-      source: 'ब्रह्म सूत्र १.१.१',
+      source: 'ब्रह्म सूत्र 1.1.1',
     },
     summaryEn: 'Actively exploring scriptures, asking fundamental questions, and seeking living guidance.',
     summaryHi: 'शास्त्रों का अनुशीलन, मूल प्रश्नों की खोज और जीवन-मार्गदर्शन की अभिलाषा।',
@@ -140,7 +135,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 5,
       daysActive: 2,
-      streakDays: 1,
       notesAndReflections: 0,
       pathwaysCompleted: 0,
     },
@@ -165,7 +159,7 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
       transliteration: 'svādhyāyānmā pramadaḥ',
       translationHi: 'शास्त्रों के नित्य स्वाध्याय में कभी प्रमाद (आलस्य) न करो।',
       translationEn: 'Never neglect regular, mindful self-study of the scriptures.',
-      source: 'तैत्तिरीयोपनिषद् १.११.१',
+      source: 'तैत्तिरीयोपनिषद् 1.11.1',
     },
     summaryEn: 'Building consistency through structured chapters, learning paths, and note-taking.',
     summaryHi: 'संरचित अध्याय पठन, विचार टिप्पणियाँ और निरंतर स्वाध्याय की साधना।',
@@ -174,7 +168,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 25,
       daysActive: 5,
-      streakDays: 2,
       notesAndReflections: 1,
       pathwaysCompleted: 0,
     },
@@ -199,7 +192,7 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
       transliteration: 'yogasthaḥ kuru karmāṇi saṅgaṁ tyaktvā dhanañjaya',
       translationHi: 'आसक्ति का त्याग कर और योग (समत्व) में स्थित होकर अपने कर्तव्य कर्म करो।',
       translationEn: 'Remain steadfast in Yoga, perform your duties, abandoning clinging attachments.',
-      source: 'श्रीमद्भगवद्गीता २.४८',
+      source: 'श्रीमद्भगवद्गीता 2.48',
     },
     summaryEn: 'Bridging intellectual reading into daily action, meditation, and inner reflection.',
     summaryHi: 'केवल श्लोक पढ़ने से आगे बढ़कर उन्हें दैनिक आचरण व चिंतन में ढालना।',
@@ -208,7 +201,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 75,
       daysActive: 10,
-      streakDays: 4,
       notesAndReflections: 3,
       pathwaysCompleted: 1,
     },
@@ -233,7 +225,7 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
       transliteration: 'abhyāsena tu kaunteya vairāgyeṇa ca gṛhyate',
       translationHi: 'हे कौन्तेय! निरंतर अभ्यास और वैराग्य से ही यह चंचल मन वश में आता है।',
       translationEn: 'By steady disciplined practice and dispassion is the restless mind mastered.',
-      source: 'श्रीमद्भगवद्गीता ६.३५',
+      source: 'श्रीमद्भगवद्गीता 6.35',
     },
     summaryEn: 'Deep immersion across multiple scriptures with steady habits and calm equanimity.',
     summaryHi: 'अनेकों शास्त्रों का सांगोपांग अनुशीलन, अटूट नियम और समतामय जीवन।',
@@ -242,7 +234,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 200,
       daysActive: 21,
-      streakDays: 7,
       notesAndReflections: 8,
       pathwaysCompleted: 2,
     },
@@ -267,7 +258,7 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
       transliteration: 'na hi jñānena sadṛśaṁ pavitramiha vidyate',
       translationHi: 'इस संसार में ज्ञान के समान पवित्र और पावन कुछ भी नहीं है।',
       translationEn: 'Certainly, there exists nothing in this universe as pure as spiritual knowledge.',
-      source: 'श्रीमद्भगवद्गीता ४.३८',
+      source: 'श्रीमद्भगवद्गीता 4.38',
     },
     summaryEn: 'Holistic comprehension of the Vedic canon, lived wisdom, and spiritual clarity.',
     summaryHi: 'समस्त वैदिक परंपरा का समन्वय, जीवंत आत्मबोध और जीवन में ज्ञान का प्रकाश।',
@@ -276,7 +267,6 @@ export const SPIRITUAL_LEVELS: SpiritualLevelDef[] = [
     milestones: {
       versesRead: 500,
       daysActive: 40,
-      streakDays: 14,
       notesAndReflections: 15,
       pathwaysCompleted: 4,
     },
@@ -298,12 +288,11 @@ export function calculateSpiritualLevel(stats: UserSadhanaStats): LevelProgressR
 
     const meetsVerses = stats.versesReadCount >= m.versesRead;
     const meetsDays = stats.totalDaysRead >= m.daysActive;
-    const meetsStreak = stats.currentStreak >= m.streakDays || stats.longestStreak >= m.streakDays;
     const meetsNotes = notesTotal >= m.notesAndReflections;
     const meetsPathways = stats.pathwaysCompleted >= m.pathwaysCompleted;
 
-    // A user reaches level i if they meet at least 3 of 5 criteria, or verses+days
-    const criteriaCount = [meetsVerses, meetsDays, meetsStreak, meetsNotes, meetsPathways].filter(Boolean).length;
+    // A user reaches level i if they meet at least 3 of 4 criteria, or verses+days.
+    const criteriaCount = [meetsVerses, meetsDays, meetsNotes, meetsPathways].filter(Boolean).length;
     if (criteriaCount >= 3 || (meetsVerses && meetsDays)) {
       currentLevel = lvl;
       break;
@@ -345,7 +334,6 @@ export function calculateSpiritualLevel(stats: UserSadhanaStats): LevelProgressR
   const remainingForNext = {
     verses: Math.max(0, nextM.versesRead - stats.versesReadCount),
     days: Math.max(0, nextM.daysActive - stats.totalDaysRead),
-    streak: Math.max(0, nextM.streakDays - Math.max(stats.currentStreak, stats.longestStreak)),
     notes: Math.max(0, nextM.notesAndReflections - notesTotal),
     pathways: Math.max(0, nextM.pathwaysCompleted - stats.pathwaysCompleted),
   };

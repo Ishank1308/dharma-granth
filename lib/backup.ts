@@ -2,42 +2,111 @@
 const EXTRA_KEYS = ['verse-bookmarks', 'bookmarkedSections', 'darkMode'];
 
 export const BACKUP_FORMAT = 'dharma-granth-backup';
+export const BACKUP_SCHEMA_VERSION = 1;
+const MAX_BACKUP_KEYS = 20_000;
+const MAX_BACKUP_VALUE_LENGTH = 5 * 1024 * 1024;
 
 export interface BackupFile {
   format: typeof BACKUP_FORMAT;
+  /** Current format marker. `version` remains for compatibility with earlier exports. */
+  schemaVersion: typeof BACKUP_SCHEMA_VERSION;
   version: 1;
   exportedAt: string;
   data: Record<string, string>;
 }
 
-const isOwnKey = (key: string) =>
-  key.startsWith('dharma.') || key.startsWith('dharma_') || key.startsWith('dharma-') || EXTRA_KEYS.includes(key);
+export type BackupRestoreMode = 'merge' | 'replace';
 
-export function createBackup(storage: Storage = window.localStorage): BackupFile {
+const isOwnKey = (key: string) =>
+  key.startsWith('dharma.') ||
+  key.startsWith('dharma_') ||
+  key.startsWith('dharma-') ||
+  key.startsWith('dharmagranth_') ||
+  EXTRA_KEYS.includes(key);
+
+function readOwnData(storage: Storage): Record<string, string> {
   const data: Record<string, string> = {};
   for (let i = 0; i < storage.length; i++) {
     const key = storage.key(i);
     const value = key ? storage.getItem(key) : null;
     if (key && value !== null && isOwnKey(key)) data[key] = value;
   }
-  return { format: BACKUP_FORMAT, version: 1, exportedAt: new Date().toISOString(), data };
+  return data;
 }
 
-/** Restores a backup; returns how many keys were written. Throws on a foreign file. */
-export function restoreBackup(raw: string, storage: Storage = window.localStorage): number {
-  const parsed: unknown = JSON.parse(raw);
-  const file = parsed as Partial<BackupFile> | null;
-  if (!file || file.format !== BACKUP_FORMAT || file.version !== 1 || typeof file.data !== 'object' || !file.data) {
+export function createBackup(storage: Storage = window.localStorage): BackupFile {
+  return {
+    format: BACKUP_FORMAT,
+    schemaVersion: BACKUP_SCHEMA_VERSION,
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    data: readOwnData(storage),
+  };
+}
+
+function validateBackup(raw: string): Record<string, string> {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error('Backup file is not valid JSON');
+  }
+
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
     throw new Error('Not a Dharma Granth backup file');
   }
-  let written = 0;
-  for (const [key, value] of Object.entries(file.data)) {
-    if (typeof value === 'string' && isOwnKey(key)) {
-      storage.setItem(key, value);
-      written++;
-    }
+  const file = parsed as Partial<BackupFile>;
+  const legacyVersion = file.schemaVersion === undefined && file.version === 1;
+  if (
+    file.format !== BACKUP_FORMAT ||
+    (file.schemaVersion !== BACKUP_SCHEMA_VERSION && !legacyVersion) ||
+    typeof file.exportedAt !== 'string' ||
+    Number.isNaN(Date.parse(file.exportedAt)) ||
+    !file.data || typeof file.data !== 'object' || Array.isArray(file.data)
+  ) {
+    throw new Error('Not a supported Dharma Granth backup file');
   }
-  return written;
+
+  const entries = Object.entries(file.data);
+  if (entries.length > MAX_BACKUP_KEYS) throw new Error('Backup contains too many storage keys');
+
+  const data: Record<string, string> = {};
+  for (const [key, value] of entries) {
+    if (!isOwnKey(key) || key.length > 256 || typeof value !== 'string' || value.length > MAX_BACKUP_VALUE_LENGTH) {
+      throw new Error('Backup contains an unsupported or invalid storage entry');
+    }
+    data[key] = value;
+  }
+  return data;
+}
+
+/**
+ * Restores a validated backup. Merge overwrites matching keys while retaining
+ * other local keys; replace clears all app-owned keys before applying the file.
+ * Storage is rolled back best-effort if a write fails, such as on quota limits.
+ */
+export function restoreBackup(
+  raw: string,
+  mode: BackupRestoreMode = 'merge',
+  storage: Storage = window.localStorage,
+): number {
+  const data = validateBackup(raw);
+  const before = readOwnData(storage);
+  const changedKeys = Array.from(new Set([...Object.keys(before), ...Object.keys(data)]));
+
+  try {
+    if (mode === 'replace') clearOwnData(storage);
+    for (const [key, value] of Object.entries(data)) storage.setItem(key, value);
+    return Object.keys(data).length;
+  } catch (error) {
+    try {
+      for (const key of changedKeys) storage.removeItem(key);
+      for (const [key, value] of Object.entries(before)) storage.setItem(key, value);
+    } catch {
+      // Preserve the original write error; browser storage may remain unavailable.
+    }
+    throw error;
+  }
 }
 
 /** Removes every key this site stores in the browser. Returns how many were removed. */
@@ -47,6 +116,6 @@ export function clearOwnData(storage: Storage = window.localStorage): number {
     const key = storage.key(i);
     if (key && isOwnKey(key)) keys.push(key);
   }
-  keys.forEach((k) => storage.removeItem(k));
+  keys.forEach((key) => storage.removeItem(key));
   return keys.length;
 }

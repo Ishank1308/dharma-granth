@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { cleanVerseField, verseLines } from '@/lib/verse-format';
 import type { ReaderProvenance, ReaderVerseText } from '@/lib/reader-actions';
+import { COMPARE_STUDY_TRANSLATION_SOURCE } from '@/lib/editorial-terminology';
 import { parseWordMeanings } from '@/lib/word-gloss';
 import { COMMENTARIES, REVIEW_LABEL, verseKey } from '@/data/study-content';
 
@@ -35,8 +36,8 @@ export function CompareViews({ scriptureId, chapterId, verse, provenance: p }: {
     if (verse.transliteration) out.push({ id: 'translit', label: 'Transliteration', lang: 'sa-Latn', devanagari: false, source: 'Roman (IAST) reading aid', lines: splitLines(verse.transliteration) });
     const glosses = parseWordMeanings(verse.wordMeaning);
     if (glosses.length > 1) out.push({ id: 'words', label: 'Word by word', lang: 'en', devanagari: false, source: 'Word meanings, reading aid', lines: glosses.map((g) => `${g.pada} — ${g.meaning}`) });
-    if (verse.hindi) out.push({ id: 'hindi', label: 'Literal Hindi', lang: 'hi', devanagari: true, source: p.hindiIsAi ? 'AI translation, not a scholarly edition' : 'Translation as recorded in the source edition', lines: splitLines(verse.hindi) });
-    if (verse.translation) out.push({ id: 'english', label: 'Literal English', lang: 'en', devanagari: false, source: p.englishIsAi ? 'AI translation, not a scholarly edition' : 'Translation as recorded in the source edition', lines: splitLines(verse.translation) });
+    if (verse.hindi) out.push({ id: 'hindi', label: 'Literal Hindi', lang: 'hi', devanagari: true, source: p.hindiIsAi ? COMPARE_STUDY_TRANSLATION_SOURCE : 'Translation as recorded in the source edition', lines: splitLines(verse.hindi) });
+    if (verse.translation) out.push({ id: 'english', label: 'Literal English', lang: 'en', devanagari: false, source: p.englishIsAi ? COMPARE_STUDY_TRANSLATION_SOURCE : 'Translation as recorded in the source edition', lines: splitLines(verse.translation) });
     if (verse.explanation) {
       const dev = hasDev(verse.explanation);
       out.push({ id: dev ? 'simpleHi' : 'simpleEn', label: dev ? 'Simple Hindi' : 'Simple English', lang: dev ? 'hi' : 'en', devanagari: dev, source: 'Editorial explanation, not scripture', lines: splitLines(verse.explanation) });

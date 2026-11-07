@@ -1,326 +1,247 @@
 'use client';
 
+import Link from 'next/link';
+import { useState, useRef, type PointerEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from 'framer-motion';
-import { useEffect, useRef, useState, type PointerEvent } from 'react';
-import { ArrowRight, BookOpen, Flame, Search, Sparkles } from 'lucide-react';
-import { FadeUp } from '@/app/components/motion/primitives';
-import { MagneticButton } from '@/app/components/motion/MagneticButton';
-import { SurpriseVerseButton } from '@/app/components/SurpriseVerseButton';
+  ArrowRight,
+  BookOpen,
+  Clock,
+  Compass,
+  Dices,
+  Flame,
+  Heart,
+  Loader2,
+  Search,
+  Shield,
+  Sparkles,
+  Target,
+  Wind,
+} from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { openGlobalSearch } from '@/lib/search-events';
+import { DharmaCopilotModal } from '@/app/components/copilot/DharmaCopilotModal';
+import { FadeUp } from '@/app/components/motion/primitives';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
-function CelestialParticles({ active }: { active: boolean }) {
-  // Positions use Math.random(), which differs between the server and client
-  // render and would trip a hydration mismatch. Generate them only after
-  // mount so the server emits an empty layer and the client fills it in.
-  const [particles, setParticles] = useState<
-    {
-      id: number;
-      x: number;
-      y: number;
-      size: number;
-      delay: number;
-      duration: number;
-      opacity: number;
-      drift: number;
-    }[]
-  >([]);
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
-  useEffect(() => {
-    if (!active) {
-      setParticles([]);
-      return;
-    }
-    setParticles(
-      Array.from({ length: 24 }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 4 + 1,
-        delay: Math.random() * 5,
-        duration: Math.random() * 4 + 6,
-        opacity: Math.random() * 0.5 + 0.2,
-        drift: (Math.random() - 0.5) * 20,
-      })),
-    );
-  }, [active]);
+/** Quick search pills for rapid access */
+const QUICK_SEARCHES = ['Gita 2.47', 'कर्म', 'fear', 'Tat Tvam Asi'];
 
-  if (!active) return null;
-
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {particles.map((p) => (
-        <motion.div
-          key={p.id}
-          className="absolute rounded-full bg-white"
-          style={{
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            width: p.size,
-            height: p.size,
-            opacity: p.opacity,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            x: [0, p.drift, 0],
-            opacity: [p.opacity, p.opacity * 1.5, p.opacity],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: p.duration,
-            delay: p.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
+/**
+ * 9 Curated Gen Z Entry Points: Dignified, contemporary, and grounded in canonical topics.
+ */
+interface GenZPathway {
+  id: string;
+  labelEn: string;
+  labelHi: string;
+  sanskrit: string;
+  href?: string;
+  icon: typeof Wind;
+  isSurprise?: boolean;
 }
 
-function MandalaRing({ active, size, duration, reverse = false, className = '' }: { active: boolean, size: string, duration: number, reverse?: boolean, className?: string }) {
-  return (
-    <motion.div
-      className={`absolute rounded-full border border-white/10 ${className}`}
-      style={{ width: size, height: size }}
-      animate={active ? { rotate: reverse ? -360 : 360 } : undefined}
-      transition={active ? { duration, repeat: Infinity, ease: "linear" } : undefined}
-    />
-  );
-}
+const GEN_Z_PATHWAYS: GenZPathway[] = [
+  {
+    id: 'stressed',
+    labelEn: 'I feel stressed',
+    labelHi: 'उद्वेग व अशान्ति',
+    sanskrit: 'शमः',
+    href: '/wisdom-for-life/stress-and-worry/',
+    icon: Wind,
+  },
+  {
+    id: 'focus',
+    labelEn: 'I need focus',
+    labelHi: 'एकाग्रता व ध्यान',
+    sanskrit: 'अभ्यासः',
+    href: '/wisdom-for-life/discipline/',
+    icon: Target,
+  },
+  {
+    id: 'fear',
+    labelEn: 'I fear failure',
+    labelHi: 'पराजय का भय',
+    sanskrit: 'अभयम्',
+    href: '/wisdom-for-life/stress-and-worry/',
+    icon: Shield,
+  },
+  {
+    id: 'anger',
+    labelEn: 'I feel angry',
+    labelHi: 'क्रोध व आवेश',
+    sanskrit: 'संयमः',
+    href: '/wisdom-for-life/anger/',
+    icon: Flame,
+  },
+  {
+    id: 'grieving',
+    labelEn: 'I am grieving',
+    labelHi: 'शोक व विछोह',
+    sanskrit: 'अनित्यता',
+    href: '/wisdom-for-life/grief-and-loss/',
+    icon: Heart,
+  },
+  {
+    id: 'direction',
+    labelEn: 'I need direction',
+    labelHi: 'स्वधर्म व कर्तव्य',
+    sanskrit: 'स्वधर्मः',
+    href: '/wisdom-for-life/skill-in-work/',
+    icon: Compass,
+  },
+  {
+    id: 'gita',
+    labelEn: 'Start with the Gita',
+    labelHi: 'श्रीमद्भगवद्गीता',
+    sanskrit: 'गीता प्रवेश',
+    href: '/scripture/bhagavadgita',
+    icon: BookOpen,
+  },
+  {
+    id: 'two-min',
+    labelEn: '2-Minute reading',
+    labelHi: '2 मिनट स्वाध्याय',
+    sanskrit: 'नित्य श्लोक',
+    href: '/daily-verse',
+    icon: Clock,
+  },
+  {
+    id: 'surprise',
+    labelEn: 'Surprise me with a verse',
+    labelHi: 'कोई भी श्लोक',
+    sanskrit: 'अकस्मात् दर्शन',
+    isSurprise: true,
+    icon: Dices,
+  },
+];
 
-function ScripturePlane({
-  active,
-  children,
-  className = '',
-  baseRotate = 0,
-  delay = 0,
-}: {
-  active: boolean;
-  children: string;
-  className?: string;
-  baseRotate?: number;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      aria-hidden="true"
-      className={`absolute hidden md:flex h-24 w-48 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.08] px-6 text-center shadow-2xl backdrop-blur-md ${className}`}
-      initial={{ rotate: baseRotate }}
-      animate={
-        !active
-          ? { rotate: baseRotate }
-          : { y: [0, -10, 0], rotate: [baseRotate, baseRotate + 1.5, baseRotate] }
-      }
-      transition={
-        !active
-          ? undefined
-          : { duration: 7, delay, repeat: Infinity, ease: 'easeInOut' }
-      }
-    >
-      <span lang="sa" className="font-devanagari text-2xl text-saffron-100/75 drop-shadow">
-        {children}
-      </span>
-    </motion.div>
-  );
+interface ChapterIndexEntry {
+  id: number;
+  verseCount: number;
+}
+type ChaptersIndex = Record<string, ChapterIndexEntry[]>;
+let chaptersIndexRequest: Promise<ChaptersIndex> | null = null;
+
+function ensureChaptersIndex(): Promise<ChaptersIndex> {
+  if (!chaptersIndexRequest) {
+    chaptersIndexRequest = fetch(`${BASE_PATH}/data/chapters.json`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json() as Promise<ChaptersIndex>;
+      })
+      .catch((err) => {
+        chaptersIndexRequest = null;
+        throw err;
+      });
+  }
+  return chaptersIndexRequest;
 }
 
 export function HeroSection() {
+  const router = useRouter();
   const reduce = useReducedMotion();
-  const [ambientMotion, setAmbientMotion] = useState(false);
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  });
+  const heroRef = useRef<HTMLElement>(null);
+  const [copilotOpen, setCopilotOpen] = useState(false);
+  const [surpriseLoading, setSurpriseLoading] = useState(false);
 
-  // Normalised pointer position across the hero: -0.5 … 0.5.
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const spring = { stiffness: 120, damping: 20, mass: 0.6 };
-
-  // Background layers drift gently against the cursor for depth parallax.
-  const bgX = useSpring(useTransform(mx, [-0.5, 0.5], [-22, 22]), spring);
-  const bgY = useSpring(useTransform(my, [-0.5, 0.5], [-14, 14]), spring);
-  const bgScrollY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const contentScrollY = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.72], [1, 0.18]);
-  const nearPlaneX = useSpring(useTransform(mx, [-0.5, 0.5], [-38, 38]), spring);
-  const nearPlaneY = useSpring(useTransform(my, [-0.5, 0.5], [-30, 30]), spring);
-  const farPlaneX = useSpring(useTransform(mx, [-0.5, 0.5], [24, -24]), spring);
-  const farPlaneY = useSpring(useTransform(my, [-0.5, 0.5], [18, -18]), spring);
-  // The OM medallion tilts toward the cursor in 3D.
-  const tiltX = useSpring(useTransform(my, [-0.5, 0.5], [12, -12]), spring);
-  const tiltY = useSpring(useTransform(mx, [-0.5, 0.5], [-14, 14]), spring);
-
-  useEffect(() => {
-    const query = window.matchMedia('(min-width: 768px) and (pointer: fine)');
-    const update = () => setAmbientMotion(query.matches);
-    update();
-    query.addEventListener('change', update);
-    return () => query.removeEventListener('change', update);
-  }, []);
-
-  const animateAmbient = !reduce && ambientMotion;
-
-  function handleMove(e: PointerEvent<HTMLElement>) {
-    if (!animateAmbient) return;
-    const el = ref.current;
+  // Subtle interactive light tracking across hero
+  const handlePointerMove = (e: PointerEvent<HTMLElement>) => {
+    if (reduce || e.pointerType === 'touch') return;
+    const el = heroRef.current;
     if (!el) return;
-    const r = el.getBoundingClientRect();
-    mx.set((e.clientX - r.left) / r.width - 0.5);
-    my.set((e.clientY - r.top) / r.height - 0.5);
-  }
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    el.style.setProperty('--hero-light-x', `${x}%`);
+    el.style.setProperty('--hero-light-y', `${y}%`);
+  };
 
-  function handleLeave() {
-    mx.set(0);
-    my.set(0);
-  }
+  const handleSurpriseVerse = async () => {
+    if (surpriseLoading) return;
+    setSurpriseLoading(true);
+    triggerTactileFeedback('medium', 'templeChime');
+    try {
+      const index = await ensureChaptersIndex();
+      const ids = Object.keys(index).filter((k) => (index[k]?.length ?? 0) > 0);
+      if (ids.length === 0) return;
+      const scriptureId = ids[Math.floor(Math.random() * ids.length)];
+      const withVerses = index[scriptureId].filter((c) => c.verseCount > 0);
+      const pool = withVerses.length > 0 ? withVerses : index[scriptureId];
+      const chapter = pool[Math.floor(Math.random() * pool.length)];
+      router.push(`/scripture/${scriptureId}/chapter/${chapter.id}/`);
+    } catch {
+      setSurpriseLoading(false);
+    }
+  };
 
   return (
     <section
-      ref={ref}
-      onPointerMove={handleMove}
-      onPointerLeave={handleLeave}
-      className="relative min-h-[620px] overflow-hidden bg-[linear-gradient(135deg,var(--dharma-hero-start),var(--dharma-hero-mid),var(--dharma-hero-end))] text-white"
-      style={{ perspective: '1200px' }}
+      ref={heroRef}
+      onPointerMove={handlePointerMove}
+      aria-labelledby="home-hero-heading"
+      className="relative w-full max-w-none overflow-hidden bg-[linear-gradient(145deg,var(--dharma-hero-start,#451a03),var(--dharma-hero-mid,#7c2d12),var(--dharma-hero-end,#c2410c))] text-white transition-colors duration-300"
+      style={
+        {
+          '--hero-light-x': '50%',
+          '--hero-light-y': '25%',
+        } as React.CSSProperties
+      }
     >
-      {/* Enhanced celestial background — drifts against the cursor for depth */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none overflow-hidden"
-        style={animateAmbient ? { y: bgScrollY } : undefined}
-      >
-        <motion.div
-          className="absolute inset-[-5%]"
-          style={animateAmbient ? { x: bgX, y: bgY } : undefined}
-        >
-          {/* A restrained set of mandala rings keeps the background atmospheric. */}
-          <MandalaRing active={animateAmbient} size="24rem" duration={60} className="-top-32 -left-32" />
-          <MandalaRing active={animateAmbient} size="18rem" duration={45} reverse className="-top-20 -left-20" />
-          <MandalaRing active={animateAmbient} size="24rem" duration={55} className="-bottom-32 -right-32" />
-          <MandalaRing active={animateAmbient} size="18rem" duration={40} reverse className="-bottom-20 -right-20" />
+      {/* 1. Restrained Luminous Horizon Aura (Device & pointer responsive) */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-40 mix-blend-screen transition-opacity duration-700"
+        style={{
+          background:
+            'radial-gradient(circle 600px at var(--hero-light-x) var(--hero-light-y), rgba(251, 191, 36, 0.45) 0%, rgba(249, 115, 22, 0.15) 50%, transparent 80%)',
+        }}
+        aria-hidden="true"
+      />
 
-          <motion.div
-            className="absolute inset-0"
-            style={animateAmbient ? { x: farPlaneX, y: farPlaneY } : undefined}
-          >
-            <ScripturePlane active={animateAmbient} className="left-[8%] top-[24%]" baseRotate={-10} delay={0.6}>
-              तत्त्वमसि
-            </ScripturePlane>
-            <ScripturePlane active={animateAmbient} className="right-[9%] top-[20%]" baseRotate={9} delay={1.2}>
-              सत्यमेव जयते
-            </ScripturePlane>
-          </motion.div>
+      {/* 2. Sacred Traditional Manuscript Margin Lines */}
+      <div className="pointer-events-none absolute inset-x-6 top-3 bottom-3 sm:inset-x-10 sm:top-5 sm:bottom-5 rounded-3xl border border-amber-300/15" aria-hidden="true">
+        <div className="absolute top-2 left-2 size-2 border-t-2 border-l-2 border-amber-300/40" />
+        <div className="absolute top-2 right-2 size-2 border-t-2 border-r-2 border-amber-300/40" />
+        <div className="absolute bottom-2 left-2 size-2 border-b-2 border-l-2 border-amber-300/40" />
+        <div className="absolute bottom-2 right-2 size-2 border-b-2 border-r-2 border-amber-300/40" />
+      </div>
 
-          <motion.div
-            className="absolute inset-0"
-            style={animateAmbient ? { x: nearPlaneX, y: nearPlaneY } : undefined}
-          >
-            <ScripturePlane active={animateAmbient} className="left-[16%] bottom-[18%]" baseRotate={7} delay={0.2}>
-              योगः कर्मसु कौशलम्
-            </ScripturePlane>
-            <ScripturePlane active={animateAmbient} className="right-[16%] bottom-[20%]" baseRotate={-8} delay={1.8}>
-              अहं ब्रह्मास्मि
-            </ScripturePlane>
-          </motion.div>
+      {/* Subtle sacred mandala watermark */}
+      <div className="pointer-events-none absolute inset-0 opacity-10 mandala-bg" aria-hidden="true" />
 
-          {/* Dot pattern */}
-          <div className="absolute inset-0 opacity-10 mandala-bg" />
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pb-14 pt-8 sm:px-8 sm:pb-20 sm:pt-16 text-center">
+        {/* Purpose Badge */}
+        <div className="mb-3 inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-amber-300/30 bg-black/25 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-200 backdrop-blur-md shadow-sm">
+          <Sparkles className="h-3.5 w-3.5 text-amber-300" aria-hidden="true" />
+          <span>सनातन ज्ञान कोश</span>
+          <span className="text-amber-300/50">·</span>
+          <span>Timeless Digital Sanctuary</span>
+        </div>
 
-          {/* Multiple gradient overlays for realistic depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-black/25" />
-
-          {/* Radial gradient for spotlight effect */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.2),transparent_60%)]" />
-
-          {/* Animated particles */}
-          <CelestialParticles active={animateAmbient} />
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        className="relative z-10 mx-auto max-w-6xl px-5 pb-16 pt-10 text-center sm:px-6 sm:pb-24 sm:pt-14 md:py-24"
-        style={
-          !animateAmbient
-            ? { transformStyle: 'preserve-3d' }
-            : { y: contentScrollY, opacity: contentOpacity, transformStyle: 'preserve-3d' }
-        }
-      >
-        {/* Interactive OM medallion with celestial sound resonance, 3D tilt, and tactile feedback */}
+        {/* Hero Title */}
         <FadeUp>
-          <motion.button
-            type="button"
-            onClick={() => triggerTactileFeedback('celestial', 'omBowl')}
-            whileHover={!animateAmbient ? undefined : { scale: 1.12 }}
-            whileTap={{ scale: 0.92, y: 2 }}
-            title="ॐ पवित्र नाद — Tap for Cosmic Om Resonance & Chime"
-            aria-label="Sound sacred Om"
-            className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/15 shadow-2xl backdrop-blur-md md:h-20 md:w-20 cursor-pointer transition-all active:ring-4 active:ring-amber-300/40"
-            style={animateAmbient ? { rotateX: tiltX, rotateY: tiltY, transformStyle: 'preserve-3d' } : undefined}
-            animate={
-              !animateAmbient
-                ? undefined
-                : {
-                    scale: [1, 1.06, 1],
-                    boxShadow: [
-                      '0 0 30px rgba(251, 191, 36, 0.4)',
-                      '0 0 60px rgba(251, 191, 36, 0.7)',
-                      '0 0 30px rgba(251, 191, 36, 0.4)',
-                    ],
-                  }
-            }
-            transition={animateAmbient ? { duration: 3, repeat: Infinity } : undefined}
+          <h1
+            id="home-hero-heading"
+            className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-md"
           >
-            <motion.span lang="sa"
-              className="font-devanagari text-4xl leading-none text-saffron-100 drop-shadow-[0_2px_12px_rgba(251,191,36,0.8)] md:text-5xl select-none"
-              animate={animateAmbient ? { rotate: [0, 4, -4, 0] } : undefined}
-              transition={animateAmbient ? { duration: 4, repeat: Infinity } : undefined}
-            >
-              ॐ
-            </motion.span>
-          </motion.button>
-        </FadeUp>
-
-        <FadeUp delay={0.08}>
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-saffron-100/90 sm:text-sm">
-            सनातन ज्ञान · Timeless Sacred Wisdom
-          </p>
-          <h1 className="mb-2 bg-gradient-to-r from-white via-saffron-100 to-amber-100 bg-clip-text font-serif text-4xl font-bold tracking-normal text-transparent drop-shadow-2xl sm:text-6xl md:text-7xl">
-            Dharma Granth
+            <span lang="en">Dharma Granth</span>{' '}
+            <span lang="sa" className="mt-2 block font-devanagari text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-amber-100 via-amber-200 to-amber-100 bg-clip-text text-transparent">
+              धर्म ग्रंथ
+            </span>
           </h1>
         </FadeUp>
 
-        <FadeUp delay={0.14}>
-          <p lang="hi" className="mb-4 font-devanagari text-2xl font-bold text-saffron-100 drop-shadow-md md:text-3xl">
-            धर्म ग्रंथ
+        {/* Clear Value Statement */}
+        <FadeUp delay={0.08}>
+          <p className="mx-auto mt-3 max-w-2xl text-base sm:mt-4 sm:text-lg lg:text-xl font-normal leading-relaxed text-amber-50/95">
+            A calm, ad-free scripture library with Sanskrit texts, Hindi and English translations where available, and clearly labeled explanations with source notes.
           </p>
         </FadeUp>
 
-        <FadeUp delay={0.2}>
-          <p className="mx-auto mb-3 max-w-2xl text-lg font-medium leading-relaxed opacity-95 drop-shadow-sm sm:text-xl md:text-2xl">
-            A calm, bilingual digital library of Indian spiritual scriptures.
-          </p>
-          <p lang="hi" className="mx-auto mb-3 max-w-2xl font-devanagari text-base text-amber-100/90 md:text-lg">
-            प्रमाणिक संस्कृत श्लोक — सरल व गंभीर हिंदी भावार्थ — विशुद्ध अंग्रेजी अनुवाद
-          </p>
-          <p className="mx-auto mb-6 max-w-xl text-xs font-medium tracking-wide text-white/80 sm:text-sm">
-            Beginners discovering where to start · Returning readers continuing study · Inquiries into life situations
-          </p>
-        </FadeUp>
-
-        <FadeUp delay={0.26}>
-          {/* Large Multilingual Scripture Search Bar */}
+        {/* Prominent Semantic Scripture Search */}
+        <FadeUp delay={0.16}>
           <form
-            action={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/scriptures/`}
-            method="get"
             role="search"
             onSubmit={(event) => {
               event.preventDefault();
@@ -328,102 +249,171 @@ export function HeroSection() {
               const query = input instanceof HTMLInputElement ? input.value.trim() : '';
               openGlobalSearch(query);
             }}
-            className="mx-auto mb-3 flex max-w-2xl items-center rounded-2xl border border-white/25 bg-white/95 p-1.5 text-left shadow-2xl backdrop-blur-md focus-within:ring-4 focus-within:ring-white/20"
+            className="mx-auto mt-6 flex max-w-2xl items-center rounded-2xl border border-amber-200/40 bg-white/95 p-1.5 text-left shadow-[0_12px_36px_rgba(0,0,0,0.35)] backdrop-blur-xl focus-within:ring-4 focus-within:ring-amber-400/40 transition-all sm:mt-8"
           >
             <Search className="ml-3 h-5 w-5 shrink-0 text-saffron-700" aria-hidden="true" />
             <label htmlFor="hero-scripture-search" className="sr-only">
-              Search scriptures, chapters, verses, and spiritual concepts
+              Search scriptures, chapters, verses and philosophical concepts
             </label>
             <input
               id="hero-scripture-search"
               name="q"
               type="search"
-              placeholder="Search Gita 2.47, कर्म, fear, Tat Tvam Asi, meditation…"
+              autoComplete="off"
+              placeholder="Search a verse, keyword or question (e.g. Gita 2.47, कर्म, fear, Tat Tvam Asi)"
               className="min-w-0 flex-1 bg-transparent px-3 py-3 text-sm text-stone-900 outline-none placeholder:text-stone-500 sm:text-base"
             />
             <button
               type="submit"
               aria-label="Search"
-              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-saffron-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-saffron-800 sm:px-5"
+              onClick={() => triggerTactileFeedback('light', 'softTap')}
+              className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-saffron-700 to-amber-700 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:from-saffron-800 hover:to-amber-800 active:scale-95 sm:px-6"
             >
               <span className="hidden sm:inline">Search</span>
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </button>
           </form>
-
-          {/* Search Examples Pills */}
-          <div className="mx-auto mb-7 flex max-w-2xl flex-wrap items-center justify-center gap-2 px-2 text-xs">
-            <span className="text-white/70 font-medium">Try searching:</span>
-            {[
-              { label: 'Gita 2.47', query: 'Gita 2.47' },
-              { label: 'कर्म (Karma)', query: 'कर्म' },
-              { label: 'fear (अभय)', query: 'fear' },
-              { label: 'Tat Tvam Asi (तत्त्वमसि)', query: 'Tat Tvam Asi' },
-              { label: 'verses about anger (क्रोध)', query: 'verses about anger' },
-            ].map((ex) => (
-              <button
-                key={ex.query}
-                type="button"
-                onClick={() => openGlobalSearch(ex.query)}
-                className="inline-flex min-h-[44px] items-center rounded-full border border-white/20 bg-white/10 px-4 py-1 font-medium text-white/95 backdrop-blur-sm transition hover:border-amber-300 hover:bg-white/20 hover:text-white"
-              >
-                {ex.label}
-              </button>
-            ))}
-          </div>
         </FadeUp>
 
-        <FadeUp delay={0.32} className="flex flex-wrap justify-center gap-3">
-          <div>
-            <MagneticButton
-              href="/scripture/bhagavadgita"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3.5 font-bold text-saffron-800 shadow-xl transition-all hover:bg-saffron-50 sm:gap-2.5 sm:px-7 shine-sweep"
-              strength={28}
-              tilt={12}
+        {/* Quick Search Chips */}
+        <FadeUp delay={0.24}>
+        <div className="mx-auto mt-3 flex max-w-2xl flex-wrap items-center justify-center gap-2 text-xs">
+          <span className="text-amber-100 text-xs font-medium mr-1">Quick searches:</span>
+          {QUICK_SEARCHES.map((q) => (
+            <button
+              key={q}
+              type="button"
+              onClick={() => {
+                triggerTactileFeedback('light', 'softTap');
+                openGlobalSearch(q);
+              }}
+              className="inline-flex min-h-11 items-center rounded-full border border-white/20 bg-black/20 px-3.5 py-1 text-xs font-medium text-amber-100 transition hover:border-amber-300 hover:bg-white/15"
             >
-              <Flame className="w-5 h-5 text-saffron-600" />
-              <span>Read Bhagavad Gita</span>
-              <span lang="hi" className="font-devanagari text-xs text-saffron-800 hidden md:inline">
-                (भगवद्गीता पढ़ें)
-              </span>
-            </MagneticButton>
-          </div>
-          <div>
-            <MagneticButton
-              href="/scriptures"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-5 py-3.5 font-semibold text-white shadow-xl backdrop-blur-md transition-all hover:bg-white/25 sm:gap-2.5 sm:px-6 shine-sweep"
-              strength={24}
-              tilt={10}
-            >
-              <BookOpen className="w-5 h-5" />
-              <span>Browse All Scriptures</span>
-              <span lang="hi" className="font-devanagari text-xs text-amber-200/80 hidden md:inline">
-                (संपूर्ण ग्रंथालय)
-              </span>
-            </MagneticButton>
-          </div>
-          <div>
-            <MagneticButton
-              href="/ask"
-              className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-gradient-to-r from-amber-500/20 to-saffron-500/20 px-5 py-3.5 font-bold text-amber-200 shadow-xl backdrop-blur-md transition-all hover:border-amber-300 hover:bg-amber-500/30 sm:gap-2.5 sm:px-6 shine-sweep"
-              strength={24}
-              tilt={10}
-            >
-              <Sparkles className="w-5 h-5 text-amber-300" />
-              <span lang="hi">धर्म सहायक</span>
-              <span lang="hi" className="font-devanagari text-xs text-amber-100 hidden md:inline">
-                (मार्गदर्शन)
-              </span>
-            </MagneticButton>
-          </div>
-          <div>
-            <SurpriseVerseButton className="hidden items-center gap-2.5 rounded-full border border-white/20 px-4 py-3.5 font-semibold text-white/90 transition hover:border-white/40 hover:bg-white/10 sm:inline-flex" />
-          </div>
+              {q}
+            </button>
+          ))}
+        </div>
         </FadeUp>
-      </motion.div>
 
-      {/* Bottom gradient transition */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-20 bg-gradient-to-b from-transparent to-dharma-bg" />
+        {/* Primary & Secondary CTAs */}
+        <FadeUp delay={0.32}>
+        <div className="mt-6 flex flex-col items-center justify-center gap-2.5 sm:mt-8 sm:flex-row sm:gap-3.5">
+          <Link
+            href="/scripture/bhagavadgita"
+            onClick={() => triggerTactileFeedback('medium', 'softTap')}
+            className="inline-flex min-h-[48px] w-full max-w-md items-center justify-center gap-2.5 rounded-full bg-white px-5 py-3 text-sm font-bold text-stone-950 shadow-xl transition hover:bg-amber-50 active:scale-98 sm:w-auto sm:px-7"
+          >
+            <BookOpen className="h-4 w-4 text-saffron-700" aria-hidden="true" />
+            <span>Start with the Bhagavad Gita</span>
+          </Link>
+          <Link
+            href="/scriptures"
+            onClick={() => triggerTactileFeedback('light', 'softTap')}
+            className="inline-flex min-h-[48px] w-full max-w-md items-center justify-center gap-2 rounded-full border border-white/30 bg-black/25 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 active:scale-98 sm:w-auto sm:px-6"
+          >
+            <span>Browse All Scriptures</span>
+          </Link>
+        </div>
+        </FadeUp>
+
+        {/* Guide Prompt Link */}
+        <div className="mt-3 text-sm text-amber-100/80 sm:mt-4">
+          <button
+            type="button"
+            onClick={() => {
+              triggerTactileFeedback('light', 'softTap');
+              setCopilotOpen(true);
+            }}
+            className="inline-flex min-h-11 items-center gap-1.5 underline decoration-amber-300/40 underline-offset-4 hover:decoration-amber-200 hover:text-white transition"
+          >
+            <Sparkles className="h-4 w-4 text-amber-300" aria-hidden="true" />
+            <span>Not sure where to begin? Ask the Dharma Guide</span>
+          </button>
+        </div>
+
+        {/* ── Gen Z Direct Discovery Pathways ────────────────────────── */}
+        <div className="mt-12 pt-10 border-t border-amber-300/20 text-left">
+          <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-300">
+                वर्तमान स्थिति · Where are you right now?
+              </p>
+              <h2 className="font-serif text-lg sm:text-xl font-bold text-white">
+                Find scripture guidance for your state of mind
+              </h2>
+            </div>
+            <span className="text-xs text-amber-200/70 hidden sm:inline">
+              9 Thoughtful Pathways
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-2.5 sm:gap-3">
+            {GEN_Z_PATHWAYS.map((p) => {
+              const Icon = p.icon;
+              if (p.isSurprise) {
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={handleSurpriseVerse}
+                    disabled={surpriseLoading}
+                    className="group relative flex flex-col justify-between rounded-2xl border border-amber-300/40 bg-gradient-to-br from-amber-500/20 to-saffron-600/30 p-3.5 text-left backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-amber-300 hover:bg-amber-500/30 active:scale-98 shadow-sm cursor-pointer col-span-2 sm:col-span-1"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-400/20 text-amber-200 group-hover:scale-110 transition-transform">
+                        {surpriseLoading ? (
+                          <Loader2 className="h-4 w-4 animate-spin text-amber-300" />
+                        ) : (
+                          <Icon className="h-4 w-4 text-amber-300" />
+                        )}
+                      </span>
+                      <span lang="sa" className="font-devanagari text-[10px] font-semibold text-amber-200/80">
+                        {p.sanskrit}
+                      </span>
+                    </div>
+                    <div>
+                      <p className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-200 transition-colors">
+                        {p.labelEn}
+                      </p>
+                      <p lang="hi" className="font-devanagari text-[11px] text-amber-200/75 mt-0.5">
+                        {p.labelHi}
+                      </p>
+                    </div>
+                  </button>
+                );
+              }
+
+              return (
+                <Link
+                  key={p.id}
+                  href={p.href!}
+                  onClick={() => triggerTactileFeedback('light', 'softTap')}
+                  className="group relative flex flex-col justify-between rounded-2xl border border-white/15 bg-black/20 p-3.5 text-left backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-amber-300/70 hover:bg-white/10 active:scale-98 shadow-sm"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-amber-200 group-hover:bg-amber-400/20 transition">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <span lang="sa" className="font-devanagari text-[10px] font-semibold text-amber-200/70">
+                      {p.sanskrit}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-200 transition-colors">
+                      {p.labelEn}
+                    </p>
+                    <p lang="hi" className="font-devanagari text-[11px] text-amber-100/70 mt-0.5">
+                      {p.labelHi}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <DharmaCopilotModal isOpen={copilotOpen} onClose={() => setCopilotOpen(false)} initialQuery="" />
     </section>
   );
 }

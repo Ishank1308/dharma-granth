@@ -3,9 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
-  Sparkles,
   ArrowRight,
-  BookOpen,
   Volume2,
   VolumeX,
   Share2,
@@ -15,9 +13,11 @@ import {
   Compass,
 } from 'lucide-react';
 import { FadeUp } from '@/app/components/motion/primitives';
+import { PadaLine } from '@/app/components/PadaLine';
 import { Realistic3DCard } from '@/app/components/motion/Realistic3DCard';
 import { MagneticButton } from '@/app/components/motion/MagneticButton';
 import { getTodayWisdom, type DailyWisdomItem } from '@/data/daily-wisdom-engine';
+import { toAsciiDigits } from '@/lib/verse-format';
 import {
   speakSanskritShloka,
   stopSanskritSpeech,
@@ -27,7 +27,7 @@ import {
   isTanpuraActive,
 } from '@/lib/sacred-audio';
 import { recordSadhanaActivity, useSadhanaStreak } from '@/lib/sadhana-streak';
-import { formatIstLong, istDate } from '@/lib/ist';
+import { istDate } from '@/lib/ist';
 import { SacredShareModal } from '@/app/components/share/SacredShareModal';
 
 export function DailyVerse() {
@@ -43,7 +43,11 @@ export function DailyVerse() {
     const today = getTodayWisdom();
     setWisdom(today);
     setDateStr(
-      formatIstLong()
+      new Intl.DateTimeFormat(navigator.language || 'en-IN', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+      }).format(new Date())
     );
 
     // Check if challenge completed today
@@ -105,21 +109,19 @@ export function DailyVerse() {
           maxTilt={6}
           depth={20}
           glareIntensity={0.2}
-          className="daily-verse-card relative overflow-hidden rounded-3xl border border-saffron-300/60 dark:border-saffron-900/40 bg-gradient-to-br from-amber-50/90 via-orange-50/50 to-saffron-100/40 dark:from-stone-900 dark:via-stone-900/90 dark:to-amber-950/20 shadow-xl"
+          className="daily-verse-card apple-card relative overflow-hidden"
           contentClassName="p-6 sm:p-9"
         >
-          {/* Decorative mandala background watermark */}
-          <div className="absolute inset-0 mandala-bg opacity-[0.04] dark:opacity-[0.02] pointer-events-none" />
 
           <div className="relative z-10 space-y-5">
             {/* Top Bar: Badge, Date & Audio Controls */}
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-saffron-300/40 dark:border-stone-800 pb-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-saffron-500/15 text-saffron-800 dark:text-saffron-300 text-xs font-bold uppercase tracking-wider border border-saffron-500/30">
-                  <Sparkles className="w-3.5 h-3.5 text-saffron-600 animate-spin-slow" />
-                  <span>दैनिक धर्म सूत्र · Verse of the Day</span>
+                <span className="text-footnote font-semibold text-dharma-saffron">
+                  <span>Verse of the day</span> <span aria-hidden="true">·</span>{' '}
+                  <span lang="hi" className="font-devanagari">दैनिक श्लोक</span>
                 </span>
-                <span className="text-xs text-dharma-muted hidden sm:inline" suppressHydrationWarning>
+                <span className="hidden text-footnote text-dharma-muted sm:inline" suppressHydrationWarning>
                   {dateStr}
                 </span>
               </div>
@@ -132,11 +134,11 @@ export function DailyVerse() {
                   className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition shadow-2xs ${
                     isPlayingAudio
                       ? 'bg-amber-600 text-white animate-pulse'
-                      : 'border border-saffron-300 bg-white/80 dark:bg-stone-800 text-saffron-800 dark:text-saffron-200 hover:bg-saffron-50'
+                      : 'bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
                   }`}
                   title="Listen to Sanskrit Recitation"
                 >
-                  {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-saffron-600" />}
+                  {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
                   <span>{isPlayingAudio ? 'रोकें · Pause' : 'सुनें · Listen'}</span>
                 </button>
 
@@ -146,7 +148,7 @@ export function DailyVerse() {
                   className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold transition ${
                     isDroneOn
                       ? 'bg-emerald-600 text-white shadow-2xs'
-                      : 'border border-dharma-border bg-white/60 dark:bg-stone-800/60 text-dharma-muted hover:text-dharma-text'
+                      : 'bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
                   }`}
                   title="Toggle Meditative Tanpura Acoustic Drone"
                 >
@@ -157,10 +159,10 @@ export function DailyVerse() {
                 <button
                   type="button"
                   onClick={() => setIsShareModalOpen(true)}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-saffron-300/80 bg-white/80 dark:bg-stone-800 px-3 py-1 text-xs font-semibold text-saffron-800 dark:text-saffron-200 hover:border-saffron-500 hover:bg-saffron-50 transition shadow-2xs"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-dharma-text/[0.06] px-3 py-1 text-xs font-semibold text-dharma-text transition hover:bg-dharma-text/[0.1]"
                   title="Create 9:16 WhatsApp Status Card"
                 >
-                  <Share2 className="w-3.5 h-3.5 text-saffron-600" />
+                  <Share2 className="w-3.5 h-3.5" />
                   <span>साझा करें</span>
                 </button>
               </div>
@@ -170,24 +172,27 @@ export function DailyVerse() {
             <div className="space-y-2">
               <p
                 lang="sa"
-                className="font-devanagari text-2xl sm:text-3xl md:text-4xl text-saffron-900 dark:text-saffron-100 font-bold leading-relaxed sm:leading-[1.8] drop-shadow-sm whitespace-pre-line"
+                className="shloka-text text-[22px] leading-[1.7] text-dharma-text sm:text-[34px]"
               >
-                {wisdom.sanskrit}
+                {wisdom.sanskrit.split('\n').map((line, i) => (
+                  <span key={i} className="block">
+                    <PadaLine line={line} />
+                  </span>
+                ))}
               </p>
 
-              <p className="text-xs sm:text-sm text-saffron-700/80 dark:text-saffron-300/80 font-serif italic whitespace-pre-line">
+              <p className="whitespace-pre-line text-[14px] italic text-dharma-muted">
                 {wisdom.transliteration}
               </p>
             </div>
 
-            <div className="w-16 h-0.5 bg-gradient-to-r from-saffron-500 to-transparent" />
 
             {/* Translations */}
             <div className="space-y-1.5">
-              <p className="text-base sm:text-lg text-dharma-text font-serif leading-relaxed">
+              <p className="text-body leading-relaxed text-dharma-text sm:text-[19px]">
                 {wisdom.translation}
               </p>
-              <p lang="hi" className="text-xs sm:text-sm text-rose-900 dark:text-rose-300 font-devanagari font-medium leading-relaxed">
+              <p lang="hi" className="font-devanagari text-callout leading-relaxed text-dharma-text-secondary">
                 {wisdom.hindi}
               </p>
             </div>
@@ -195,39 +200,39 @@ export function DailyVerse() {
             {/* Practical Wisdom & Reflection */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
               {/* Life Application */}
-              <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-3.5 space-y-1">
-                <p className="text-2xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 flex items-center gap-1">
+              <div className="space-y-1 rounded-group bg-dharma-text/[0.04] p-4">
+                <p className="flex items-center gap-1 text-footnote font-semibold text-dharma-text">
                   <Compass className="w-3 h-3" />
                   <span>जीवन में प्रयोग · Practical Application</span>
                 </p>
-                <p className="text-xs text-dharma-text leading-relaxed">
-                  {wisdom.practicalTeaching}
+                <p className="text-[14px] leading-relaxed text-dharma-text-secondary">
+                  {toAsciiDigits(wisdom.practicalTeaching)}
                 </p>
               </div>
 
               {/* Reflection Prompt */}
-              <div className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-3.5 space-y-1">
-                <p className="text-2xs font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300 flex items-center gap-1">
+              <div className="space-y-1 rounded-group bg-dharma-text/[0.04] p-4">
+                <p className="flex items-center gap-1 text-footnote font-semibold text-dharma-text">
                   <Target className="w-3 h-3" />
                   <span>आज का आत्म-चिंतन · Reflection Prompt</span>
                 </p>
-                <p className="text-xs text-dharma-text leading-relaxed">
-                  {wisdom.reflectionPrompt}
+                <p className="text-[14px] leading-relaxed text-dharma-text-secondary">
+                  {toAsciiDigits(wisdom.reflectionPrompt)}
                 </p>
               </div>
             </div>
 
             {/* Daily Sadhana Challenge Strip */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-3.5">
+            <div className="flex flex-col justify-between gap-3 rounded-group bg-dharma-text/[0.04] p-4 sm:flex-row sm:items-center">
               <div className="space-y-0.5">
-                <span className="text-2xs font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
-                  🎯 आज का साधना संकल्प (Daily Challenge)
+                <span className="text-footnote font-semibold text-dharma-text">
+                  <span>One step today</span> <span lang="hi" className="font-devanagari font-normal text-dharma-muted">आज का संकल्प</span>
                 </span>
-                <p lang="hi" className="font-devanagari text-xs font-medium text-dharma-text">
-                  {wisdom.dailyChallengeHi}
+                <p lang="hi" className="font-devanagari text-[14px] text-dharma-text">
+                  {toAsciiDigits(wisdom.dailyChallengeHi)}
                 </p>
-                <p className="text-xs text-dharma-text-secondary">
-                  {wisdom.dailyChallenge}
+                <p className="text-footnote text-dharma-text-secondary">
+                  {toAsciiDigits(wisdom.dailyChallenge)}
                 </p>
               </div>
 
@@ -235,10 +240,10 @@ export function DailyVerse() {
                 type="button"
                 onClick={handleCompleteChallenge}
                 disabled={isCompletedToday}
-                className={`inline-flex items-center gap-1.5 self-start sm:self-center shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold transition shadow-2xs ${
+                className={`inline-flex min-h-11 shrink-0 items-center gap-1.5 self-start rounded-full px-4 text-[14px] transition sm:self-center ${
                   isCompletedToday
-                    ? 'bg-emerald-800 text-white cursor-default'
-                    : 'bg-emerald-800 hover:bg-emerald-700 text-white active:scale-95'
+                    ? 'cursor-default text-emerald-700 dark:text-emerald-400'
+                    : 'bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
                 }`}
               >
                 <CheckCircle2 className="w-3.5 h-3.5" />
@@ -249,29 +254,27 @@ export function DailyVerse() {
             <DailyNote id={wisdom.id} />
 
             {/* Bottom Citation & Actions */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-saffron-300/40 dark:border-stone-800">
-              <span className="text-xs font-bold text-saffron-800 dark:text-saffron-300 uppercase tracking-wider">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-dharma-text/10 pt-4">
+              <span className="text-footnote text-dharma-muted">
                 {wisdom.scriptureTitle} ({wisdom.scriptureTitleSanskrit}) • Chapter {wisdom.chapterId} • Verse {wisdom.verseId}
               </span>
 
               <div className="flex items-center gap-2">
                 <Link
                   href="/daily"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-dharma-muted hover:text-saffron-700 transition"
+                  className="tap-target inline-flex items-center gap-1 text-[14px] text-dharma-saffron hover:underline"
                 >
-                  <span>दैनिक धर्म यात्रा (Daily Hub)</span>
+                  <span>Daily hub</span>
                   <ArrowRight className="w-3 h-3" />
                 </Link>
 
                 <MagneticButton
                   href={wisdom.href}
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 text-white text-xs font-bold shadow-md hover:from-saffron-700 hover:to-amber-700 transition"
+                  className="apple-pill"
                   strength={12}
                   tilt={6}
                 >
-                  <BookOpen className="w-3.5 h-3.5" />
-                  <span>श्लोक का संपूर्ण अध्ययन</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span>Read the verse</span>
                 </MagneticButton>
               </div>
             </div>
@@ -291,7 +294,7 @@ export function DailyVerse() {
           translation: wisdom.translation,
           hindi: wisdom.hindi,
           quote: wisdom.practicalTeaching,
-          url: typeof window !== 'undefined' ? `${window.location.origin}${wisdom.href}` : `https://dharmagranth.in${wisdom.href}`,
+          url: typeof window !== 'undefined' ? `${window.location.origin}${wisdom.href}` : `https://dharmagranth.dev${wisdom.href}`,
         }}
       />
     </>
@@ -331,7 +334,7 @@ function DailyNote({ id }: { id: string }) {
             /* this browser blocked storage */
           }
         }}
-        className="mt-1 w-full rounded-xl border border-dharma-border bg-dharma-bg p-3 text-sm text-dharma-text"
+        className="mt-1 w-full rounded-field border-0 bg-dharma-text/[0.06] p-3 text-subhead text-dharma-text"
       />
       <span lang="hi" className="mt-1 block text-xs text-dharma-text-secondary">यह टिप्पणी इसी ब्राउज़र में रहती है।</span>
     </label>

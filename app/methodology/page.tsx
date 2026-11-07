@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import Link from 'next/link';
-import { ISSUES_REPO } from '@/lib/reader-actions';
+import { DEFAULT_OG_IMAGE } from '@/lib/og';
+import { getRealVerseCount } from '@/data/scriptures';
+import { formatCount } from '@/lib/holdings-label';
 
 export const metadata: Metadata = {
   title: 'Methodology: how this site is made',
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
  */
 const SNAPSHOT = {
   date: '8 October 2026',
-  verses: '1,87,392',
+  verses: formatCount(getRealVerseCount()),
   ai: '72,471',
 };
 
@@ -39,7 +40,7 @@ export default function MethodologyPage() {
         <h1 className="mt-1 font-serif text-3xl font-bold text-dharma-text sm:text-4xl">How this site is made</h1>
         <p className={p}>
           This page says plainly where each kind of content comes from, what is machine-assisted, and what has not been reviewed by a person.
-          It describes what is true today, not what is intended.
+          It describes what is true today, not what is intended. For a shorter overview, see <Link href="/how-dharma-granth-works" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">how Dharma Granth works</Link>.
         </p>
 
         <nav aria-label="On this page" className="mt-6 rounded-2xl border border-dharma-border bg-dharma-card p-4">
@@ -52,6 +53,7 @@ export default function MethodologyPage() {
               ['ai', 'AI assistance'],
               ['review', 'Human review'],
               ['corrections', 'Corrections'],
+              ['audio', 'Audio & soundscape architecture'],
             ].map(([id, label]) => (
               <li key={id}>
                 <a href={`#${id}`} className="focus-ring inline-flex min-h-[44px] items-center text-saffron-800 hover:underline dark:text-saffron-300">
@@ -112,12 +114,8 @@ export default function MethodologyPage() {
 
         <h2 id="corrections" className={h2}>7. Corrections</h2>
         <p className={p}>
-          Every verse page has a “Report correction” button. It opens a prefilled issue on{' '}
-          <a href={`${ISSUES_REPO}/issues`} className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          . Nothing is sent until you press “Create issue” there, and this site stores nothing about you. Fixes are made in the project
-          repository, whose public history is the record of what changed and when. There is no separate correction log on the site yet.
+          There is no public channel for reporting corrections yet; one will be listed on the Contact page once it is set up. Fixes are
+          made in the project repository. There is no separate correction log on the site yet.
         </p>
 
         <h2 id="rights" className={h2}>8. Rights information</h2>
@@ -134,6 +132,15 @@ export default function MethodologyPage() {
           The site has no separate version log. Every change to texts, translations and explanations is recorded, with its date, in the public
           project repository history, which is the authoritative record. Pages that carry an editorial explanation show its last-updated date where
           one is recorded.
+        </p>
+
+        <h2 id="audio" className={h2}>10. Audio and soundscape architecture</h2>
+        <p className={p}>
+          Dharma Granth includes no network audio streaming, zero audio tracking, and no external audio hosting dependencies.
+          Contemplative ambient soundscapes (Vedic Tanpura, Pranava Om, Bansuri Flute, Temple Singing Bowl) are generated procedurally in the user’s
+          browser using the Web Audio API based on mathematical harmonic ratios (432Hz and 108Hz overtone series). Sanskrit verse recitation
+          and word-by-word pronunciation use the client-side Web Speech API (with Devanagari voice detection) strictly as an accessibility and
+          phonetic pronunciation aid, chunked metric-by-metric by dandas (। / ॥) to maintain sacred cadence.
         </p>
 
         <p className="mt-10 text-sm text-dharma-muted">

@@ -1,0 +1,59 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { READING_JOURNEYS, getJourney, isJourneyIndexable } from '@/data/reading-journeys';
+import { readSeededChapter } from '@/lib/read-seeded-chapters';
+import { withPassageMeaning } from '@/lib/verse-format';
+import { getScriptureMeta } from '@/data/scriptures';
+import { clipDescription } from '@/lib/meta-text';
+import { readHref } from '@/lib/verse-paths';
+import { JourneyClient, type LessonView } from './JourneyClient';
+
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export function generateStaticParams() {
+  return READING_JOURNEYS.map((j) => ({ id: j.id }));
+}
+
+/** Short objectives make thin search snippets, so add what each lesson contains. */
+function journeyDescription(objective: string, minutesPerLesson: number): string {
+  if (Array.from(objective).length >= 100) return objective;
+  return clipDescription(`${objective} About ${minutesPerLesson} minutes a lesson, with context, explanation and reflection.`);
+}
+
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
+  const j = getJourney(params.id);
+  return j
+    ? {
+        title: `${j.title} · ${j.titleHi}`,
+        description: journeyDescription(j.objective, j.minutesPerLesson),
+        alternates: { canonical: `/learn/journeys/${j.id}/` },
+        robots: { index: isJourneyIndexable(j), follow: true },
+      }
+    : { title: 'Journey not found' };
+}
+
+export default async function JourneyPage(props: PageProps) {
+  const params = await props.params;
+  const journey = getJourney(params.id);
+  if (!journey) notFound();
+
+  const lessons: LessonView[] = journey.lessons.map((l) => {
+    const chapter = readSeededChapter(l.scriptureId, l.chapter);
+    const verses = (chapter?.chapter.verses ?? []) as Array<{ number: number | string; sanskrit?: string; translation?: string; translationSeeVerse?: number | string; translationSource?: string }>;
+    const found = verses.find((x) => String(x.number) === String(l.verse));
+    const v = found && withPassageMeaning(verses, found);
+    return {
+      ...l,
+      reference: `${getScriptureMeta(l.scriptureId)?.title ?? l.scriptureId} ${l.chapter}.${l.verse}`,
+      href: readHref(l.scriptureId, l.chapter, l.verse),
+      sanskrit: v?.sanskrit ?? '',
+      translation: v?.translation ?? '',
+      translationIsAi: v?.translationSource === 'ai',
+    };
+  });
+
+  return <JourneyClient journey={journey} lessons={lessons} />;
+}

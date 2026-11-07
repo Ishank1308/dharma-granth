@@ -49,6 +49,8 @@ export interface VerseEntry {
   /** The same Sanskrit appears under several references in the library: 0 = unique, 1 = first of a group, 2 = a repeat. */
   dup: 0 | 1 | 2;
   grams?: Set<string>;
+  /** romanKey without the vowel "a", built on first use. */
+  skeleton?: string;
 }
 
 export type VerseMatchKind = 'sanskrit' | 'roman' | 'english' | 'hindi' | 'explanation' | 'fuzzy';
@@ -207,6 +209,15 @@ export function searchVerses(query: string, options: { fuzzy?: boolean; limit?: 
         const at = e.romanKey.indexOf(roman);
         if (at === -1) continue;
         keep(e, e.romanKey === roman ? 1800 : at === 0 ? 1500 : 1200, 'roman');
+      }
+      // Hinglish often drops the inherent "a" inside a word (upnishad, bhagwad, karmnye): compare with every "a" removed,
+      // ranked below a true roman match and only when that found nothing.
+      const skeleton = roman.replace(/a/g, '');
+      if (hits.size === 0 && skeleton.length >= 5) {
+        for (const e of entries) {
+          e.skeleton ??= e.romanKey.replace(/a/g, '');
+          if (e.skeleton.includes(skeleton)) keep(e, e.skeleton === skeleton ? 1150 : 1000, 'roman');
+        }
       }
     }
     // English: every content word must appear, as the start of a word.

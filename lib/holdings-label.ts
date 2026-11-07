@@ -23,7 +23,7 @@ export function catalogueNote(
 ): string | undefined {
   if (catalogue == null || catalogue === inLibrary) return undefined;
   const word = noun === 'verse' ? (catalogue === 1 ? 'verse' : 'verses') : catalogue === 1 ? 'chapter' : 'chapters';
-  return `Catalogue records ${formatCount(catalogue)} ${word}`;
+  return `Traditional count: ${formatCount(catalogue)} ${word}`;
 }
 
 export function hindiCatalogueNote(
@@ -33,5 +33,5 @@ export function hindiCatalogueNote(
 ): string | undefined {
   if (catalogue == null || catalogue === inLibrary) return undefined;
   const word = noun === 'verse' ? 'श्लोक' : 'अध्याय';
-  return `सूची में दर्ज: ${formatCount(catalogue)} ${word}`;
+  return `परम्परागत गणना: ${formatCount(catalogue)} ${word}`;
 }

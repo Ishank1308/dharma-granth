@@ -1,0 +1,40 @@
+{
+  "note": "Translations and notes kept from the earlier Rig Veda selection, only for verses whose Sanskrit was confirmed to be this verse of the Rig Veda. scripts/seed-rigveda.mjs attaches them to the full text. 1.1.1: translation corrected (2026-10-26).",
+  "verses": {
+    "1.1.1": {
+      "translation": "I praise Agni, the household priest, the divine minister of the sacrifice, the hotṛ (invoker), the greatest bestower of treasure.",
+      "hindi": "मैं अग्नि की स्तुति करता हूँ, जो पुरोहित हैं, यज्ञ के दिव्य ऋत्विज हैं, होता हैं और रत्नों को सबसे अधिक धारण करने वाले हैं।",
+      "commentary": "The opening verse of the Rig Veda (RV 1.1.1) — the first verse of the entire Vedic corpus. Agni is invoked as the priest who conducts the sacrifice, but also as the sacrifice itself. This is the foundational verse of all Vedic tradition: fire as the mediator between the human and the divine, the purifier, the transformer. Agni is not merely physical fire but the principle of transformation itself."
+    },
+    "3.62.10": {
+      "translation": "We meditate on the excellent glory of the divine Savitar; may he illuminate our intellects.",
+      "hindi": "हम उस देव सविता के श्रेष्ठ तेज का ध्यान करते हैं। वह हमारी बुद्धि (धी) को प्रेरित करे।",
+      "commentary": "The Gayatri Mantra (RV 3.62.10) is the most sacred and most widely recited mantra in the Vedic tradition. Savitar is the divine Impeller — the force that sets everything in motion, that drives intelligence itself. This is not a prayer for material things but for intellectual illumination: \"May the light of the cosmic intelligence enter my mind.\" It is the Vedic prayer of the scientist, the philosopher, and the seeker."
+    },
+    "8.48.3": {
+      "translation": "We have drunk Soma; we have become immortal; we have reached the light; we have found the gods. What can enmity do to us now? What can the malice of a mortal do, O Immortal?",
+      "hindi": "हमने सोम पिया है; हम अमर हो गए; हम प्रकाश को पहुँचे; हमने देवताओं को पाया। अब शत्रुता हमारा क्या कर सकती है? हे अमर, किसी मर्त्य की दुर्भावना क्या कर सकती है?",
+      "commentary": "RV 8.48 — the most celebrated verse of the entire Soma tradition and one of the most striking declarations in the Rig Veda. \"Apāma somam amṛtā abhūma\" — we have drunk Soma; we have become immortal. This is the experiential report of the Soma state: not a hope but a present-tense claim. \"Āganma jyotir\" — we have reached the light. The question that follows is the most confident in the Veda: \"What can enmity do to us now?\" The rhetorical answer: nothing. The state of illumined consciousness — however temporarily reached — reveals the relative smallness of what had seemed threatening. \"Kimu dhūrtir amṛta martyasya\" — what can the malice of a mortal do, O Immortal? Addressed to Soma: the purified consciousness is not invulnerable but it is no longer at the mercy of every external threat."
+    },
+    "8.58.2": {
+      "translation": "Fire is one, kindled in many ways. The Sun is one, pervading the whole world. The Dawn is one — she illumines all this. The One alone has become all this.",
+      "hindi": "अग्नि एक ही है, अनेक प्रकार से प्रज्वलित। सूर्य एक ही है, सारे जगत् में व्याप्त। उषा एक ही है — वह सब को प्रकाशित करती है। वास्तव में यह सब वही एक है।",
+      "commentary": "This verse, from the Vālakhilya hymns of the eighth Mandala, states the Rig Veda's monism plainly: the light of Agni, the light of Surya, the light of Ushas — one light, one source, one reality. \"Ekaṃ vā idaṃ vi babhūva sarvam\" — the One alone has become all this. Ekam Sat Vipra Bahudha Vadanti (RV 1.164.46) — truth is one; the wise speak of it in many ways — finds its cosmological expression here."
+    },
+    "10.90.1": {
+      "translation": "The Cosmic Person has a thousand heads, a thousand eyes, a thousand feet. He pervades the earth on all sides and stands ten fingers beyond.",
+      "hindi": "पुरुष (विराट्) के हज़ार सिर, हज़ार आँखें और हज़ार पैर हैं। वह सब ओर से पृथ्वी को व्याप्त करके दस अंगुल अतिक्रमण करके स्थित है।",
+      "commentary": "The Purusha Sukta (RV 10.90) presents the universe as a single vast Conscious Being — not as dead matter arranged by chance but as a living, integrated whole. \"Thousand heads, eyes, feet\" is not literal; it conveys omniscience, omnipresence, and infinite diversity within one consciousness. The universe is not a machine; it is a Person — aware, unified, complete."
+    },
+    "10.129.1": {
+      "translation": "Neither existence nor non-existence was there then; neither sky nor heaven beyond. What stirred? Where? Under whose shelter? Was there deep, unfathomable water?",
+      "hindi": "उस समय न सत् था, न असत् था; न आकाश था, न उसके परे कुछ था। क्या आच्छादित था? कहाँ? किसके शरण में? क्या अथाह जल था?",
+      "commentary": "The Nasadiya Sukta (RV 10.129) is one of the most remarkable philosophical poems ever written. It asks: before the universe existed, what was there? Its answer is deliberately agnostic — not \"God created it\" but honest inquiry. It oscillates between sat (existence) and asat (non-existence), unable to place the primordial state in either category. This intellectual honesty — saying \"we don't know\" — is extraordinary for a text 3500 years old."
+    },
+    "10.129.6": {
+      "translation": "Who really knows? Who will here proclaim it? From where was it born, from where this creation? The gods came after this world's creation — so who knows from where it came into being?",
+      "hindi": "कौन वास्तव में जानता है? यहाँ कौन बता सकता है? यह कहाँ से उत्पन्न हुआ? यह सृष्टि कहाँ से आई? देवता इस सृष्टि के बाद आए — तो फिर कौन जानता है यह कहाँ से उत्पन्न हुई?",
+      "commentary": "In its sixth verse the Nasadiya Sukta admits that its questions have no sure answer. Even the gods do not know — they came after creation. The closing verse goes further: perhaps not even the one who surveys all from the highest heaven knows. This is one of the most honest intellectual positions in all of ancient literature. The Vedic rishi chose the integrity of \"I don't know\" over the comfort of a confident creation myth."
+    }
+  }
+}

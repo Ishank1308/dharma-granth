@@ -1,0 +1,7 @@
+# Base offline stack. No API keys and no paid packages.
+pymupdf>=1.24.0
+opencv-python-headless>=4.9.0
+pillow>=10.0.0
+numpy>=1.26.0
+PyYAML>=6.0
+indic-transliteration>=2.3.0

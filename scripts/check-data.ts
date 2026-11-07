@@ -161,18 +161,18 @@ const MIN_DUPLICATE_TEXT_LENGTH = 24;
  */
 const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   agnipuran: 2,
-  atharvaveda: 34,
-  bhagavatapurana: 91,
+  atharvaveda: 55, // whole mantras the Saṃhitā repeats across kāṇḍas (2.32.3–5 recur as 5.23.10–12) after the 2026-10 rebuild
+  bhagavatapurana: 21,
   brahmandpuran: 5,
   brahmapuran: 4,
-  brihadaranyaka: 15,
+  brihadaranyaka: 5, // genuine repeats in the source (e.g. the Maitreyi dialogue in II.4 and IV.5) after the 2026-10 rebuild
   chandogya: 26,
-  devibhagavat: 89,
+  devibhagavat: 3,
   garudpurana: 9,
-  harivanshpuran: 2,
+  harivanshpuran: 24, // genealogical lists in the Harivamsa repeat whole shlokas in two adhyayas (e.g. 26.11 = 27.2)
   kurmapuran: 7,
   lingapuran: 11,
-  mahabharata: 37,
+  mahabharata: 85, // the critical edition repeats whole ślokas across parvas (1.82.8 = 2.59.6) after the 2026-10 GRETIL rebuild
   mahanarayana: 1,
   mahaupanishad: 1, // the jivanmukta verse "ahankaramayim tyaktva…" repeats in ch. 2 and 6 of the source
   manusmriti: 2,
@@ -181,17 +181,19 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   naradapuran: 50,
   narasimhapuran: 13,
   ramayana: 57,
-  ramcharitmanas: 21,
-  rigveda: 39,
+  ramcharitmanas: 0,
+  rigveda: 27, // whole verses the Saṃhitā repeats across mandalas (1.23.21–23 recur as 10.9.7–9)
   samaveda: 194, // the Uttarārcika repeats many Pūrvārcika mantras in the source (full 1,873-mantra text)
-  shandilyabhaktisutra: 5,
+  shandilyabhaktisutra: 0,
   shivpurana: 36,
   skandapuran: 16,
-  taittiriya: 3,
+  taittiriya: 0,
   vamanpuran: 4,
   vayupuran: 20,
+  // Gita Press text repeats these two verses (the eight qualities of the learned; "a favour with no fruit") in different adhyayas.
+  viduraniti: 2,
   vishnupurana: 3,
-  yajurveda: 40,
+  yajurveda: 43, // the Saṃhitā repeats some mantras across adhyāyas (2.24 = 8.14, 3.14 = 12.52)
 };
 
 /** Scriptures whose text must never repeat a verse anywhere, within a chapter or across. */
@@ -378,7 +380,7 @@ function checkVerseOrder(id: string, data: FullScriptureJson): void {
  * '…'`, `/scripture/…` paths) must name a real scripture — made-up ids like
  * 'isha-upanishad' or 'upanishads' produced links to pages that don't exist.
  */
-const NOT_IN_LIBRARY = new Set(['maha-upanishad']); // cited, deliberately unlinked
+const NOT_IN_LIBRARY = new Set(['maha-upanishad', 'ashtavakra']); // cited, deliberately unlinked
 function checkScriptureReferences(): void {
   const known = new Set(scriptureCatalog.map((m) => m.id));
   const bad = new Set<string>();

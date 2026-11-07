@@ -12,9 +12,16 @@
  *   - data/scriptures/<id>.ts          (verse blocks for dropped verses removed; ids re-mapped)
  */
 import fs from "node:fs";
+import path from "node:path";
+import { pathToFileURL } from "node:url";
 import Sanscript from "@indic-transliteration/sanscript";
 import { cleanItx, extractVerses, itxToDevanagari, splitUpanishadChapters } from "./lib/itrans-parser";
 import type { FullChapter, FullVerse } from "./lib/scripture-schema";
+import { canonicalVerseId } from "../lib/canonical-verse-id";
+
+/** The key the reader uses for commentary: "<chapter>:<verse within chapter>" (see FullChapterVerses). */
+const readerKey = (chapter: number | string, verse: number | string) =>
+  `${chapter}:${Number(canonicalVerseId(Number(chapter), verse))}`;
 
 const SD = "https://sanskritdocuments.org/doc_upanishhat/";
 
@@ -39,7 +46,8 @@ function overlap(a: string, b: string): number {
   return hit / n;
 }
 
-const toIast = (deva: string) => Sanscript.t(deva, "devanagari", "iast").replace(/।/g, "|");
+// Sanscript writes chandrabindu as "~"; IAST uses m̐ (same as scripts/regenerate-iast.ts).
+const toIast = (deva: string) => Sanscript.t(deva, "devanagari", "iast").replace(/~/g, "m̐").replace(/।/g, "|");
 
 function mkVerse(number: number | string, itx: string): FullVerse | null {
   const clean = itx
@@ -233,8 +241,165 @@ function passages(segment: string): string[] {
     });
 }
 
+/**
+ * Kaushitaki: four adhyāyas, each closed by an "iti <n>o.adhyAyaH" colophon (the last colophon of one
+ * adhyāya can share a block with the first verse of the next). Verse numbers are kept as printed;
+ * the source has no "|| 2||" in adhyāya 2 (its second passage is numbered 3), so that number is absent.
+ */
+const kaushitaki: Builder = (body) => {
+  const raw = extractVerses(body);
+  const chapters: FullChapter[] = [];
+  let cur: FullChapter | null = null;
+  raw.forEach((v, i) => {
+    let itx = v.itx.trim();
+    const lead = /^iti\s+\S*dhyAyaH\s*\|*\s*/i.exec(itx);
+    if (lead) {
+      cur = null;
+      itx = itx.slice(lead[0].length).trim();
+    }
+    if (/^(?:iti\s+)?\S*dhyAyaH$/i.test(itx) || !itx) {
+      cur = null; // bare colophon block, closes the adhyāya
+      return;
+    }
+    if (!cur) {
+      cur = { number: chapters.length + 1, title: "", verses: [] };
+      chapters.push(cur);
+    }
+    const fv = mkVerse(v.number, i === 0 ? stripHeader(dropPreamble(itx)) : itx);
+    if (fv) cur.verses.push(fv);
+  });
+  return chapters;
+};
+
+/**
+ * Shiva Samhita (sanskritdocuments.org): five paṭalas, every verse closed by "|| <paṭala>\.<verse>||", with
+ * variant readings in "(...)" after a line. Numbers are the book's own (chapter.verse).
+ */
+const shivaSamhita: Builder = (body) => {
+  const re = /\|\|\s*(\d+)[\\]?\.(\d+)\s*\|\|/g;
+  const chapters: FullChapter[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(body))) {
+    const pat = Number(m[1]);
+    const num = Number(m[2]);
+    // A paṭala's first verse is preceded by the previous paṭala's colophon and its own heading; drop
+    // everything up to the last such line (the verse lines themselves never contain these words).
+    const lines = body.slice(last, m.index).split("\n");
+    let from = 0;
+    lines.forEach((ln, i) => {
+      if (/paTalaH|prakaraNa|iti shrI/i.test(ln)) from = i + 1;
+    });
+    let verseLines = lines.slice(from).filter((ln) => ln.trim());
+    // A short "atha <heading> |" or "<speaker> uvAcha |" line in front of a multi-line verse is not part of it.
+    while (verseLines.length >= 3 && verseLines[0].trim().split(/\s+/).length <= 3 && /^(?:atha\s|.*uvAcha)/i.test(verseLines[0].trim())) {
+      verseLines = verseLines.slice(1);
+    }
+    const chunk = verseLines
+      .join(" ")
+      .replace(/\([^)]*\)/g, " ") // variant readings
+      .replace(/\s+/g, " ")
+      .trim();
+    last = re.lastIndex;
+    const fv = mkVerse(num, chunk);
+    if (!fv) continue;
+    let ch = chapters.find((c) => c.number === pat);
+    if (!ch) {
+      ch = { number: pat, title: "", verses: [] };
+      chapters.push(ch);
+    }
+    ch.verses.push(fv);
+  }
+  return chapters.sort((x, y) => x.number - y.number);
+};
+
+const ROMAN: Record<string, number> = { i: 1, v: 5, x: 10 };
+function roman(s: string): number {
+  const r = s.toLowerCase();
+  let n = 0;
+  for (let i = 0; i < r.length; i++) {
+    const a = ROMAN[r[i]] ?? 0;
+    const b = ROMAN[r[i + 1]] ?? 0;
+    n += a < b ? -a : a;
+  }
+  return n;
+}
+
+/**
+ * Brihadaranyaka (sanskritdocuments.org bribasic.itx, Kanva recension, no accents): every mantra is tagged
+ * "mantra N ##[I.ii.3]##" (adhyāya in capitals, brāhmaṇa in lower-case Roman numerals, mantra). The tag is the
+ * only reference used; headings ("atha dvitIyaM brAhmaNam |", "iti ... adhyAyaH ||") and other ##...## notes are
+ * removed from the mantra text. Chapters are brāhmaṇas, numbered in reading order; verses are "A.B.M".
+ */
+const brihadaranyaka: Builder = (body) => {
+  // Tolerates the source's malformed tags: "[I.v.5.]", "[.I.v.8]", "[##III.ii.12]##", and V.xii.1, which has no
+  // "mantra 1" before its tag.
+  const tag = /(?:mantra\s*\d+\s*)?(?:##)?\s*\[\s*(?:##)?\s*\.?\s*([IVXivx]+)\.([IVXivx]+)\.(\d+)\s*\.?\s*(?:##)?\s*\]\s*(?:##)?/g;
+  const marks = [...body.matchAll(tag)];
+  const chapters: FullChapter[] = [];
+  const seen = new Set<string>();
+  let curA = 0;
+  let curB = 0;
+  marks.forEach((m, i) => {
+    let a = roman(m[1]);
+    let b = roman(m[2]);
+    const n = Number(m[3]);
+    // A new brāhmaṇa starts at mantra 1. A tag that jumps to another section mid-sequence is a typo in the
+    // source (e.g. III.ii.9 is printed "[II.ii.9]"): keep the running section and report it.
+    if ((a !== curA || b !== curB) && n !== 1 && curA) {
+      console.warn(`  source tag typo: "${m[0].replace(/\s+/g, " ").trim()}" read as ${curA}.${curB}.${n}`);
+      a = curA;
+      b = curB;
+    }
+    curA = a;
+    curB = b;
+    const end = i + 1 < marks.length ? marks[i + 1].index ?? body.length : body.length;
+    let itx = body.slice((m.index ?? 0) + m[0].length, end);
+    // Section colophons ("iti madhukANDam") end a mantra's slice. Only the last mantra runs into the closing
+    // peace invocation; V.i.1 itself begins "OM pUrNamadaH", so that cut must not apply anywhere else.
+    itx = itx.split(/iti\s+bR\^?ihadAraNyakopaniShat|iti\s+\S+\s+kANDaH?/i)[0];
+    if (i === marks.length - 1) itx = itx.split(/iti\s+vAjasaneyake|OM\s+pUrNamadaH|Encoded and proofread/i)[0];
+    const ordinal =
+      "(?:prathamaM|dvitIyaM|tR\\^?itIyaM|ch?aturthaM|pa~nchamaM|paj~nchamaM|ShaShThaM|saptamaM|aShTamaM|athAShTamaM|navamaM|dashamaM|ekAdashaM|dvAdashaM|trayodashaM|ch?aturdashaM|pa~nchadashaM)";
+    itx = itx
+      .replace(/\{\\m\+\}/g, ".N") // source chandrabindu marker -> ITRANS chandrabindu
+      .replace(/##[^#]*##/g, " ") // untransliterated notes, e.g. ##[ ... ]##
+      // A stray "mantra N" glued to the end of a mantra (I.iv.10 ends "vidyurmantra 11"): drop it and restore the visarga.
+      .replace(/(\S)r?mantra\s*\d+\s*$/, (m, ch: string) => (/rmantra/.test(m) ? `${ch}H` : ch))
+      // Brāhmaṇa headings and colophons: "atha dvitIyaM brAhmaNam |", "ityaShTamaM brAhmaNam ||", "ekAdashaM brAhmaNam |".
+      // Only with an ordinal, so an ordinary accusative "brAhmaNam" (a Brahmin) inside a mantra is never touched.
+      .replace(new RegExp(`(?:atha\\s+|iti\\s*|ity)?${ordinal}\\s+brAh\\w*Nam\\s*\\|*`, "gi"), " ")
+      .replace(/(?:atha|iti)\s+\S*?\.?a?dhyAyaH\s*\|*/gi, " ")
+      .replace(/\|\|\s*\d+\s*\|\|/g, "||")
+      .trim();
+    const key = `${a}.${b}.${n}`;
+    if (seen.has(key)) throw new Error(`duplicate mantra reference ${key}`);
+    seen.add(key);
+    const fv = mkVerse(key, itx);
+    if (!fv) return;
+    // Zero-width joiners from the source's conjunct hints are invisible formatting, not text.
+    fv.sanskrit = (fv.sanskrit ?? "").replace(/[‌‍]/g, "");
+    fv.transliteration = toIast(fv.sanskrit);
+    let ch = chapters[chapters.length - 1];
+    if (!ch || ch.title !== `Adhyāya ${a} · Brāhmaṇa ${b}`) {
+      ch = { number: chapters.length + 1, title: `Adhyāya ${a} · Brāhmaṇa ${b}`, verses: [] };
+      chapters.push(ch);
+    }
+    ch.verses.push(fv);
+  });
+  return chapters;
+};
+
 interface Target {
+  /** Builder sets its own chapter titles; do not replace them with "<chapterUnit> N". */
+  keepTitles?: boolean;
+  /** The curated data/scriptures/<id>.ts mirrors every chapter and verse; regenerate it from the rebuilt JSON. */
+  curatedMirrors?: boolean;
+  /** Reads a source reference left inside an old record's text, as the new verse number, for exact carry-over. */
+  refOf?: (sanskrit: string) => string | null;
   files: string[];
+  /** Proofread local source (data/sources-local/<id>.json): { note, chapters: [{ number, title, verses: [{ number, sanskrit }] }] }. */
+  local?: boolean;
   build: Builder;
   chapterUnit: string;
 }
@@ -255,6 +420,30 @@ const TARGETS: Record<string, Target> = {
   muktika: { files: ["muktikA.itx", "muktika.itx"], build: dotNumbered(/iti\s+\S*dhyAyaH\s*\.\.\s*\d+\s*\.\.|iti\s+muktikopaniShatsamAptA\s*\.\./, { dropInvocation: true }), chapterUnit: "Adhyāya" },
   shvetashvatara: { files: ["shveta.itx"], build: byNumberReset, chapterUnit: "Adhyāya" },
   tejobindu: { files: ["tejobindu.itx"], build: byNumberReset, chapterUnit: "Part" },
+  naradabhaktisutra: { files: [], local: true, build: () => [], chapterUnit: "" },
+  harivanshpuran: { files: [], local: true, build: () => [], chapterUnit: "" },
+  bhagavatapurana: { files: [], local: true, build: () => [], chapterUnit: "" },
+  devibhagavat: { files: [], local: true, build: () => [], chapterUnit: "" },
+  yogarasayanam: { files: [], local: true, build: () => [], chapterUnit: "" },
+  vinayapatrika: { files: [], local: true, build: () => [], chapterUnit: "" },
+  taittiriya: { files: [], local: true, build: () => [], chapterUnit: "" },
+  shivasamhita: { files: ["https://sanskritdocuments.org/doc_shiva/shivasaMhitA.itx"], build: shivaSamhita, chapterUnit: "Paṭala" },
+  shivaswarodaya: { files: [], local: true, build: () => [], chapterUnit: "" },
+  shandilyabhaktisutra: { files: [], local: true, build: () => [], chapterUnit: "" },
+  kaushitaki: { files: ["kaushhiitaki.itx"], build: kaushitaki, chapterUnit: "Adhyāya" },
+  // The file name in the old source record (brihadaaraNyaka.itx) no longer exists on the site.
+  brihadaranyaka: {
+    files: ["bribasic.itx"],
+    build: brihadaranyaka,
+    chapterUnit: "",
+    keepTitles: true,
+    curatedMirrors: true,
+    // Old records still contain their "[II.v.1]" tag; use the first one as the exact reference.
+    refOf: (s) => {
+      const m = /\[\s*\.?([IVXivx]+)\.([IVXivx]+)\.(\d+)/.exec(s);
+      return m ? `${roman(m[1])}.${roman(m[2])}.${Number(m[3])}` : null;
+    },
+  },
 };
 
 // ---------------------------------------------------------------------------
@@ -266,40 +455,72 @@ const META_KEYS = new Set(["number", "sanskrit", "transliteration"]);
 interface Mapping {
   oldKey: string; // "c:v"
   newKey: string;
+  /** The same two verses in the key format the commentary files use (readerKey). */
+  readerOld: string;
+  readerNew: string;
   score: number;
 }
 
-function carryOver(oldCh: FullChapter[], newCh: FullChapter[]) {
+function carryOver(oldCh: FullChapter[], newCh: FullChapter[], refOf?: (sanskrit: string) => string | null) {
   const olds = oldCh.flatMap((c) => c.verses.map((v) => ({ c: c.number, v, fp: strip(v.sanskrit ?? "") })));
   const used = new Set<number>();
   const maps: Mapping[] = [];
+  const done = new Set<FullVerse>();
+  const take = (i: number, c: FullChapter, v: FullVerse, score: number) => {
+    used.add(i);
+    done.add(v);
+    const o = olds[i];
+    for (const [k, val] of Object.entries(o.v)) {
+      if (!META_KEYS.has(k) && val !== undefined && val !== "") (v as unknown as Record<string, unknown>)[k] = val;
+    }
+    maps.push({
+      oldKey: `${o.c}:${o.v.number}`,
+      newKey: `${c.number}:${v.number}`,
+      readerOld: readerKey(o.c, o.v.number),
+      readerNew: readerKey(c.number, v.number),
+      score,
+    });
+  };
+  // First pass: old records that still carry their own source reference (e.g. "[II.v.1]") map to that verse
+  // directly, provided the texts still largely agree.
+  if (refOf) {
+    const byNumber = new Map(newCh.flatMap((c) => c.verses.map((v) => [String(v.number), { c, v }] as const)));
+    olds.forEach((o, i) => {
+      const ref = refOf(o.v.sanskrit ?? "");
+      const hit = ref ? byNumber.get(ref) : undefined;
+      if (!hit || done.has(hit.v)) return;
+      const nf = strip(hit.v.sanskrit ?? "");
+      const s = Math.max(overlap(o.fp, nf), overlap(nf, o.fp));
+      if (s >= 0.5) take(i, hit.c, hit.v, s);
+    });
+  }
   for (const c of newCh) {
     for (const v of c.verses) {
+      if (done.has(v)) continue;
       const nf = strip(v.sanskrit ?? "");
       let best = -1;
       let bestScore = 0;
+      let second = 0;
       olds.forEach((o, i) => {
         if (used.has(i) || !o.fp) return;
         const s = Math.max(overlap(o.fp, nf), overlap(nf, o.fp) * 0.95);
         // prefer the same slot on ties
         const slot = o.c === c.number && String(o.v.number) === String(v.number) ? 0.01 : 0;
         if (s + slot > bestScore) {
+          second = bestScore;
           bestScore = s + slot;
           best = i;
-        }
+        } else if (s + slot > second) second = s + slot;
       });
-      if (best >= 0 && bestScore >= 0.75) {
-        used.add(best);
-        const o = olds[best];
-        for (const [k, val] of Object.entries(o.v)) {
-          if (!META_KEYS.has(k) && val !== undefined && val !== "") (v as unknown as Record<string, unknown>)[k] = val;
-        }
-        maps.push({ oldKey: `${o.c}:${o.v.number}`, newKey: `${c.number}:${v.number}`, score: bestScore });
-      }
+      // A weaker match (0.6 to 0.75) is accepted only when it clearly beats every other candidate; near-ties are not guessed.
+      const strong = bestScore >= 0.75 || (bestScore >= 0.6 && bestScore - second >= 0.15);
+      // An annotation written for a short fragment must not be attached to a much longer verse that merely contains it.
+      if (best >= 0 && strong && olds[best].fp.length >= nf.length * 0.5) take(best, c, v, bestScore);
     }
   }
   const dropped = olds.filter((_, i) => !used.has(i)).map((o) => `${o.c}:${o.v.number}`);
-  return { maps, dropped };
+  const droppedReader = olds.filter((_, i) => !used.has(i)).map((o) => readerKey(o.c, o.v.number));
+  return { maps, dropped, droppedReader };
 }
 
 // ---------------------------------------------------------------------------
@@ -312,7 +533,8 @@ function rewriteHi(id: string, maps: Mapping[], dropped: string[]): { kept: numb
   const t = fs.readFileSync(p, "utf8");
   const nl = t.includes("\r\n") ? "\r\n" : "\n";
   const L = t.split(/\r?\n/);
-  const remap = new Map(maps.map((m) => [m.oldKey, m.newKey]));
+  // Commentary files are keyed the way the reader looks them up (readerKey), not by the raw verse number.
+  const remap = new Map(maps.map((m) => [m.readerOld, m.readerNew]));
   const drop = new Set(dropped);
   const out: string[] = [];
   let kept = 0;
@@ -336,6 +558,80 @@ function rewriteHi(id: string, maps: Mapping[], dropped: string[]): { kept: numb
   }
   fs.writeFileSync(p, out.join(nl));
   return { kept, removed };
+}
+
+/** data/hi-commentary/<id>-rest.json is keyed "c:v" like the .ts fragment; remap it the same way and drop the rest. */
+function rewriteRest(id: string, maps: Mapping[]): { kept: number; removed: number } {
+  const p = `data/hi-commentary/${id}-rest.json`;
+  if (!fs.existsSync(p)) return { kept: 0, removed: 0 };
+  const raw = fs.readFileSync(p, "utf8");
+  const data = JSON.parse(raw) as Record<string, unknown>;
+  const remap = new Map(maps.map((m) => [m.readerOld, m.readerNew]));
+  const out: Record<string, unknown> = {};
+  let kept = 0;
+  let removed = 0;
+  for (const [k, v] of Object.entries(data)) {
+    const nk = remap.get(k);
+    if (nk) {
+      out[nk] = v;
+      kept++;
+    } else removed++;
+  }
+  const crlf = raw.includes("\r\n");
+  const s = JSON.stringify(out, null, raw.startsWith("{\n") || raw.startsWith("{\r\n") ? 2 : undefined);
+  fs.writeFileSync(p, crlf ? s.replace(/\n/g, "\r\n") : s);
+  return { kept, removed };
+}
+
+const DEV_DIGITS = "०१२३४५६७८९";
+const toDev = (n: number) => String(n).replace(/\d/g, (d) => DEV_DIGITS[Number(d)]);
+
+/**
+ * For a curated module that mirrors the whole text (every chapter and verse), rebuild its chapter list from the
+ * rebuilt JSON. A chapter keeps its authored title and summary only when the title names the same
+ * "Adhyāya A · Brāhmaṇa B" as the rebuilt chapter; verses (and their carried annotations) come from the JSON.
+ */
+async function regenerateCurated(id: string, chapters: FullChapter[]): Promise<{ chapters: number; keptTitles: number }> {
+  const p = `data/scriptures/${id}.ts`;
+  const t = fs.readFileSync(p, "utf8");
+  const nl = t.includes("\r\n") ? "\r\n" : "\n";
+  const mod = await import(pathToFileURL(path.resolve(p)).href);
+  const cur = (mod[id] ?? Object.values(mod)[0]) as { chapters: { id: number; title?: string; titleSanskrit?: string; summary?: string }[] };
+  let keptTitles = 0;
+  const out = chapters.map((c) => {
+    const m = /^Adhyāya (\d+) · Brāhmaṇa (\d+)/.exec(c.title ?? "");
+    const old = cur.chapters.find((x) => x.id === c.number);
+    const same = m && old?.title?.startsWith(`Adhyāya ${m[1]} · Brāhmaṇa ${m[2]}`);
+    if (same) keptTitles++;
+    return {
+      id: c.number,
+      title: same ? old!.title : c.title,
+      titleSanskrit: m ? `अध्याय ${toDev(Number(m[1]))} · ब्राह्मण ${toDev(Number(m[2]))}` : old?.titleSanskrit ?? "",
+      summary: same && old?.summary ? old.summary : m ? `Brāhmaṇa ${m[2]} of Adhyāya ${m[1]} of the Brihadaranyaka Upanishad.` : "",
+      // Only the fields of the curated Verse type. Verses new to the text have no meaning yet; the type requires
+      // translation and explanation, so they stay empty. The JSON keeps its exposition under "commentary".
+      verses: c.verses.map((v, i) => {
+        const x = v as unknown as Record<string, unknown>;
+        const out: Record<string, unknown> = {
+          id: i + 1,
+          number: v.number,
+          sanskrit: v.sanskrit,
+          transliteration: v.transliteration,
+          translation: (x.translation as string) ?? "",
+          explanation: ((x.explanation ?? x.commentary) as string) ?? "",
+        };
+        for (const k of ["hindi", "science", "lifeLesson", "keywords"]) if (x[k] !== undefined) out[k] = x[k];
+        return out;
+      }),
+    };
+  });
+  const total = out.reduce((a, c) => a + c.verses.length, 0);
+  const start = t.indexOf("  chapters: [");
+  if (start < 0) throw new Error(`${p}: no "chapters: [" line`);
+  const head = t.slice(0, start).replace(/totalVerses:\s*\d+/, `totalVerses: ${total}`);
+  const body = `  chapters: ${JSON.stringify(out, null, 2).replace(/\n/g, "\n  ")}\n};\n`;
+  fs.writeFileSync(p, (head + body).replace(/\r?\n/g, nl));
+  return { chapters: out.length, keptTitles };
 }
 
 function rewriteCurated(id: string, maps: Mapping[]): { kept: number; removed: number; moved: number } {
@@ -392,7 +688,24 @@ async function main() {
 
   let raw = "";
   let used = "";
-  for (const f of target.files) {
+  let localChapters: FullChapter[] | null = null;
+  if (target.local) {
+    const src = JSON.parse(fs.readFileSync(`data/sources-local/${id}.json`, "utf8"));
+    used = `local proofread transcription: ${src.note}`;
+    localChapters = src.chapters.map((c: { number: number; title: string; verses: { number: number; sanskrit: string }[] }) => ({
+      number: c.number,
+      title: c.title,
+      verses: c.verses.map((v) => ({ number: v.number, sanskrit: v.sanskrit, transliteration: toIast(v.sanskrit) })),
+    }));
+  }
+  // REBUILD_SOURCE_FILE: use an already-downloaded copy of the first source file instead of fetching it.
+  const localCopy = process.env.REBUILD_SOURCE_FILE;
+  if (localCopy && !target.local) {
+    raw = fs.readFileSync(localCopy, "utf8");
+    const f = target.files[0];
+    used = f.startsWith("http") ? f : SD + f;
+  }
+  for (const f of target.local || raw ? [] : target.files) {
     const r = await fetch(f.startsWith("http") ? f : SD + f);
     if (r.ok) {
       raw = await r.text();
@@ -400,16 +713,18 @@ async function main() {
       break;
     }
   }
-  if (!raw) throw new Error("no source found");
-  const chapters = target.build(cleanItx(raw));
-  chapters.forEach((c, i) => {
-    c.number = i + 1;
-    c.title = target.chapterUnit ? `${target.chapterUnit} ${c.number}` : "";
-  });
+  if (!raw && !localChapters) throw new Error("no source found");
+  const chapters = localChapters ?? target.build(cleanItx(raw));
+  if (!localChapters) {
+    chapters.forEach((c, i) => {
+      c.number = i + 1;
+      if (!target.keepTitles) c.title = target.chapterUnit ? `${target.chapterUnit} ${c.number}` : "";
+    });
+  }
 
   const jp = `public/data/scriptures-full/${id}.json`;
   const old = JSON.parse(fs.readFileSync(jp, "utf8"));
-  const { maps, dropped } = carryOver(old.chapters, chapters);
+  const { maps, dropped, droppedReader } = carryOver(old.chapters, chapters, target.refOf);
   const total = chapters.reduce((a, c) => a + c.verses.length, 0);
 
   console.log(`${id}: source ${used}`);
@@ -428,8 +743,9 @@ async function main() {
   let s = JSON.stringify(out, null, 2);
   if (crlf) s = s.replace(/\n/g, "\r\n");
   fs.writeFileSync(jp, s + (crlf ? "\r\n" : "\n"));
-  console.log("  hi-commentary:", rewriteHi(id, maps, dropped));
-  console.log("  curated ts:", rewriteCurated(id, maps));
+  console.log("  hi-commentary:", rewriteHi(id, maps, droppedReader));
+  console.log("  hi-commentary rest:", rewriteRest(id, maps));
+  console.log("  curated ts:", target.curatedMirrors ? await regenerateCurated(id, chapters) : rewriteCurated(id, maps));
 }
 
 main().catch((e) => {

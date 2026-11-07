@@ -5,23 +5,44 @@
 //   • icons, fonts     stale-while-revalidate
 //   • scripture JSON   network-first for files you have opened (capped)
 // Everything else (analytics) goes straight to the network.
-const VERSION = 'dg-v5';
+const VERSION = 'dg-v6';
 const PAGES = `${VERSION}-pages`;
 const ASSETS = `${VERSION}-assets`;
 const SCRIPTURE = `${VERSION}-scripture`;
+// Scriptures the reader chose to save (lib/offline-scriptures.ts). Kept across versions; only the reader removes them.
+const OFFLINE = 'dharma-offline-scriptures-v1';
 const MAX_PAGES = 120;
 const MAX_SCRIPTURE = 40;
 // A chapter page with comprehensive word-by-word padas and multiple commentaries
 // can be up to 1MB. Capping at 1MB ensures all canonical texts are cached reliably.
 const MAX_PAGE_BYTES = 1024 * 1024;
 
-self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    (async () => {
+      try {
+        const cache = await caches.open(PAGES);
+        const PRECACHE = [
+          new URL('./', self.registration.scope).pathname,
+          new URL('practice/', self.registration.scope).pathname,
+          new URL('practice/gita-sankalpa/', self.registration.scope).pathname,
+          new URL('scripture/bhagavadgita/', self.registration.scope).pathname,
+          new URL('panchang/', self.registration.scope).pathname,
+        ];
+        await Promise.allSettled(PRECACHE.map((url) => cache.add(url)));
+      } catch {
+        // Pre-caching failed; individual navigation caching still active.
+      }
+      await self.skipWaiting();
+    })(),
+  );
+});
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     (async () => {
       const keys = await caches.keys();
-      await Promise.all(keys.filter((k) => !k.startsWith(VERSION)).map((k) => caches.delete(k)));
+      await Promise.all(keys.filter((k) => !k.startsWith(VERSION) && k !== OFFLINE).map((k) => caches.delete(k)));
       await self.clients.claim();
     })(),
   );
@@ -67,6 +88,8 @@ const OFFLINE_HTML = `<!doctype html>
     <div class="actions">
       <button type="button" onclick="location.reload()">पुनः प्रयास करें (Retry)</button>
       <a href="${HOME}">मुख्य पृष्ठ (Home)</a>
+      <a href="${new URL('practice/gita-sankalpa/', self.registration.scope).pathname}">गीता संकल्प (Gita Sankalpa)</a>
+      <a href="${new URL('practice/saved/', self.registration.scope).pathname}">सहेजे ग्रंथ (Saved)</a>
     </div>
   </main>
 </body>
@@ -95,7 +118,7 @@ self.addEventListener('fetch', (event) => {
           }
           return res;
         } catch {
-          const cached = await caches.match(req, { cacheName: PAGES });
+          const cached = (await caches.match(req, { cacheName: PAGES })) || (await caches.match(req, { cacheName: OFFLINE }));
           return (
             cached ||
             new Response(OFFLINE_HTML, { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } })
@@ -137,7 +160,7 @@ self.addEventListener('fetch', (event) => {
           }
           return res;
         } catch {
-          const cached = await caches.match(req, { cacheName: SCRIPTURE });
+          const cached = (await caches.match(req, { cacheName: SCRIPTURE })) || (await caches.match(req, { cacheName: OFFLINE }));
           if (cached) return cached;
           return new Response('', { status: 503 });
         }

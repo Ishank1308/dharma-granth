@@ -1,0 +1,168 @@
+# ==============================================================================
+# DHARMA GRANTH: INDUSTRIAL OFFLINE SCRIPTURE OCR CONFIGURATION
+# Optimized for 100-5000+ page Sanskrit & Hindi scanned scripture PDFs
+# ==============================================================================
+
+pipeline:
+  name: "Dharma Granth Offline Scripture OCR"
+  version: "2.0.0"
+  workspace_dir: "./ocr_workspace"
+  output_dir: "./ocr_output"
+  clean_temp_images: true # Set true to delete raw 600 DPI PNGs after successful processing
+
+rendering:
+  dpi: 350                 # 350 DPI provides optimal 45-55px stroke height for Tesseract LSTM at 3x speed
+  format: "PNG"
+  color_mode: "RGB"        # Render in color first for luminance bleed-through filtering
+  use_pymupdf: true        # Fast C-native rendering via PyMuPDF (fitz)
+  fallback_to_pdf2image: true
+
+preprocessing:
+  enabled: true
+  deskew:
+    enabled: true
+    max_angle_deg: 25.0    # Reject false deskew rotations greater than this
+    resolution_steps: 1.0
+  orientation:
+    detect_and_rotate: true # Detect 90, 180, 270 degree inverted pages
+    confidence_threshold: 0.70
+  border_removal:
+    enabled: true
+    border_margin_pct: 2.5 # Crop scanner borders and binding gutter shadows
+  bleed_through:
+    removal_enabled: true  # Attenuates rear-page ink bleed common in Indian thin-paper lithographs
+    threshold_ratio: 0.88
+  contrast:
+    use_clahe: true        # Contrast Limited Adaptive Histogram Equalization
+    clip_limit: 2.5
+    tile_grid_size: [8, 8]
+  denoise:
+    enabled: true
+    method: "bilateral"    # "bilateral" preserves crisp sharp Devanagari stroke edges, or "nlm"
+    diameter: 9
+    sigma_color: 75
+    sigma_space: 75
+  binarization:
+    method: "sauvola"      # Options: "sauvola" (best for ancient print), "otsu", "adaptive_gaussian"
+    window_size: 25
+    k_factor: 0.2
+  quality_routing:
+    min_quality_score: 45.0 # Quality score [0-100]. Pages below this auto-route to Surya OCR
+    blur_threshold: 100.0   # Laplacian variance threshold below which image is considered blurred
+
+ocr_engines:
+  routing_strategy: "hybrid_intelligent" # "hybrid_intelligent", "tesseract_only", or "surya_only"
+  
+  tesseract:
+    enabled: true
+    executable_path: "C:\\Program Files\\Tesseract-OCR\\tesseract.exe" # Auto-detected if in PATH
+    tessdata_dir: "./dharma_ocr/tessdata"     # Local high-accuracy tessdata_best directory
+    languages: "san+hin"   # Primary Devanagari script models from tessdata_best
+    oem: 1                 # Neural LSTM engine
+    dynamic_psm_testing: true # Dynamically evaluate multiple PSMs and pick the highest confidence
+    test_psms: [6, 3, 4]     # 6=Single uniform block (90%+ scripture), 3=Fully automatic, 4=Single column variable size
+    confidence_threshold: 72.0 # Minimum page confidence. Falls back to Surya if lower
+    timeout_per_page_sec: 90
+
+  surya:
+    enabled: true          # Offline Transformer-based OCR for archaic prints & complex layouts
+    device: "auto"         # "auto" (detects CUDA GPU), "cuda", or "cpu"
+    batch_size: 4          # Batch size for deep learning inference
+    fallback_triggers:
+      - "low_confidence"   # When Tesseract confidence < tesseract.confidence_threshold
+      - "low_image_quality"# When preprocessing quality_score < min_quality_score
+      - "complex_layout"   # Detected multi-column commentary + mula stanzas
+      - "high_skew_damage" # Severely degraded or warped lithographs
+
+sanskrit_correction:
+  enabled: true
+  normalize_unicode_nfc: true # Canonical Devanagari decomposition and recomposition
+  decode_pua_ligatures: true  # Fix LaTeX dvng/xdvng legacy font mappings (Private Use Area)
+  fix_matras_and_reph: true   # Correct misplaced short-i (ि) and floating reph (र्)
+  standardize_dandas: true    # Convert |, ||, !|, l to standard Devanagari । and ॥
+  restore_visarga_from_colon: true # Convert ASCII ':' to 'ः' after Devanagari consonants
+  lexical_correction:
+    enabled: true
+    dictionary_lookup: true   # Matches against comprehensive Vedic & Classical Sanskrit lexicon
+    correct_frequent_ligatures: true # Fixes क्त, द्ध, द्य, द्व, ज्ञ, क्ष, त्र, श्र, ष्ट, etc.
+
+hindi_correction:
+  enabled: true
+  indic_nlp_phonetic_normalize: true # Standardize anusvara/chandrabindu & nasal variations
+  symspell:
+    enabled: true
+    max_edit_distance: 2
+    prefix_length: 7
+  domain_lexicon:
+    enabled: true             # Religious lexicon: महाभारत, कृष्ण, विष्णु, शिव, नारायण, धर्म, अध्याय, etc.
+    auto_correct_common_misreads: true # घ/ध, भ/म, व/ब confusion correction
+
+chapter_extraction:
+  enabled: true
+  hierarchies:
+    - "अध्याय"    # Adhyaya
+    - "स्कन्ध"    # Skandha
+    - "स्कंध"
+    - "पर्व"      # Parva (Mahabharata)
+    - "सर्ग"      # Sarga (Ramayana / Mahakavya)
+    - "काण्ड"     # Kanda
+    - "खण्ड"      # Khanda
+    - "प्रकरण"    # Prakarana
+    - "वल्ली"     # Valli (Upanishads)
+    - "सूक्त"     # Sukta (Vedas)
+    - "Chapter"
+  colophon_patterns:
+    - "इति\\s+.*\\s+(समाप्तः|समाप्तम्|सम्पूर्णम्|पूर्णम्)"
+    - "पुष्पिका"
+  extract_metadata: true
+
+verse_extraction:
+  enabled: true
+  danda_cadence_patterns:
+    - "॥\\s*([०-९\\d]+)(?:\\s*[-–]\\s*([०-९\\d]+))?\\s*॥" # E.g., ॥ १ ॥, ॥ १२-१३ ॥
+    - "।\\s*([०-९\\d]+)\\s*।"
+  cross_page_stitching: true # Stitch verses split across consecutive page boundaries
+  layer_separation:
+    enabled: true
+    layers:
+      - "sanskrit_mula"     # Root scripture verse
+      - "padaccheda"         # Word separation
+      - "hindi_anuvada"      # Hindi translation
+      - "hindi_bhashya"     # Hindi commentary
+      - "english_translation"
+
+exports:
+  searchable_pdf:
+    enabled: true
+    use_ocrmypdf: true     # Generates PDF/A with invisible searchable text layer
+    pdf_renderer: "hocr"   # Uses Tesseract/Surya HOCR coordinate map
+  markdown:
+    enabled: true
+    include_toc: true
+    hierarchical_headings: true
+  json:
+    enabled: true
+    rag_schema_ready: true # Formats with chunk embeddings, metadata, and citation IDs
+    pretty_print: true
+  txt:
+    enabled: true
+    clean_unicode: true
+  reports:
+    generate_html: true
+    generate_json: true
+    generate_markdown: true
+
+execution:
+  multiprocessing:
+    enabled: true
+    max_workers: 12        # Maximum concurrency: all 12 logical hardware CPU threads
+  batch_size: 25           # Optimal batch size for parallel worker throughput
+  low_memory_mode: false   # Enable if RAM < 8 GB: streams to disk, limits workers to 2
+  checkpoint:
+    enabled: true
+    interval_pages: 5      # Save transactional state every 5 completed pages
+    file_name: "checkpoint.json"
+  logging:
+    level: "INFO"          # DEBUG, INFO, WARNING, ERROR
+    file_logging: true
+    rich_console: true

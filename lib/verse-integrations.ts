@@ -64,7 +64,8 @@ const CONCEPT_KEYWORDS: Record<string, string[]> = {
   samsara: ['samsara', 'संसार', 'पुनर्जन्म', 'भवसागर', 'cycle of birth'],
   prakriti: ['prakriti', 'प्रकृति', 'त्रिगुण', 'सृष्टि', 'nature'],
   purusha: ['purusha', 'पुरुष', 'चेतन', 'साक्षी चेतना', 'supreme person'],
-  yoga: ['yoga', 'योग', 'युक्त', 'समाधि', 'चित्तवृत्ति', 'union'],
+  // Not 'युक्त': in Hindi it is mostly 'endowed with' (a chariot yoked to horses), not yoga.
+  yoga: ['yoga', 'योग', 'समाधि', 'चित्तवृत्ति', 'union'],
   bhakti: ['bhakti', 'भक्ति', 'भक्त', 'प्रेम', 'समर्पण', 'devotion'],
   jnana: ['jnana', 'ज्ञान', 'विवेक', 'बोध', 'प्रज्ञा', 'wisdom'],
   'karma-yoga': ['karma-yoga', 'कर्मयोग', 'निष्काम', 'अनासक्ति', 'selfless action'],
@@ -79,6 +80,31 @@ const CONCEPT_KEYWORDS: Record<string, string[]> = {
   avatar: ['avatar', 'अवतार', 'संभवामि', 'यदा यदा हि', 'incarnation'],
   yuga: ['yuga', 'युग', 'कालचक्र', 'सत्ययुग', 'कलियुग', 'cosmic age'],
 };
+
+/** Phrases where a concept word means something else ("ध्यान दीजिये" = pay attention, not meditation). */
+const CONCEPT_IDIOMS: Record<string, RegExp> = {
+  dhyana: /ध्यान\s+(दे|दी|दो|रख)[ऀ-ॿ]*/g,
+};
+
+/** Devanagari letters and signs, without the danda (।) and double danda (॥). */
+const DEVANAGARI_WORD = /[ऀ-ॣ०-ॿ]+/g;
+
+/**
+ * Whole-word keyword test. Raw substring search tagged nonsense: "om" inside
+ * "commanders", "मन" inside "मनुष्य", "manas" inside "brahmanas". Latin
+ * keywords must stand as words; a Devanagari keyword must equal a word, or,
+ * when it is a stem of four or more characters (कर्म), begin one so inflected
+ * forms (कर्मणि, कर्मफल) still count. Multi-word phrases match as phrases.
+ */
+function keywordInText(keyword: string, latinText: string, devanagariWords: string[], fullText: string): boolean {
+  const kw = keyword.toLowerCase();
+  if (/\s/.test(kw)) return fullText.includes(kw);
+  if (/[ऀ-ॿ]/.test(kw)) {
+    return devanagariWords.some((w) => w === kw || (kw.length >= 4 && w.startsWith(kw)));
+  }
+  const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(^|[^a-z])${escaped}([^a-z]|$)`).test(latinText);
+}
 
 /**
  * Returns integrated concepts, life application topics, and cross-scripture
@@ -129,12 +155,17 @@ export function getVerseIntegrations(
     .toLowerCase();
 
   if (textCorpus) {
+    const devanagariWords = textCorpus.match(DEVANAGARI_WORD) ?? [];
     for (const concept of concepts) {
       if (matchedConceptMap.size >= 4) break;
       if (matchedConceptMap.has(concept.id)) continue;
 
       const keywords = CONCEPT_KEYWORDS[concept.id] ?? [concept.id, concept.label.toLowerCase()];
-      const matches = keywords.some((kw) => textCorpus.includes(kw.toLowerCase()));
+      // Everyday idioms that use a concept word in another sense are taken out first.
+      const idiom = CONCEPT_IDIOMS[concept.id];
+      const text = idiom ? textCorpus.replace(idiom, ' ') : textCorpus;
+      const words = idiom ? (text.match(DEVANAGARI_WORD) ?? []) : devanagariWords;
+      const matches = keywords.some((kw) => keywordInText(kw, text, words, text));
       if (matches) {
         matchedConceptMap.set(concept.id, 'keyword');
       }

@@ -3,9 +3,11 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { AlertTriangle, Home, RotateCcw } from 'lucide-react';
+import { ErrorRecoveryVerse } from './components/ErrorRecoveryVerse';
 import {
   canAttemptChunkReload,
   isChunkLoadError,
+  isChunkReloadInProgress,
   markNoindex,
   reloadOnceWithCacheBust,
 } from '@/lib/error-recovery';
@@ -20,10 +22,10 @@ export default function Error({
   const isChunkError = isChunkLoadError(error);
 
   useEffect(() => {
-    console.error('[dharma-granth] route error:', error);
+    if (!isChunkError) console.error('[dharma-granth] route error:', error);
     const unmark = markNoindex();
-    if (isChunkError && canAttemptChunkReload()) {
-      reloadOnceWithCacheBust();
+    if (isChunkError && !reloadOnceWithCacheBust() && !isChunkReloadInProgress()) {
+      console.error('[dharma-granth] route chunk error after automatic recovery:', error);
     }
     return unmark;
   }, [error, isChunkError]);
@@ -34,9 +36,8 @@ export default function Error({
     } else reset();
   };
 
-  // If this is a chunk error and we haven't exhausted our reload guard, trigger reload immediately
-  // and show a calm transition state so the user never sees a flashed error UI.
-  if (isChunkError && canAttemptChunkReload()) {
+  // This is a transient state while the effect performs the one-time reload.
+  if (isChunkError && (canAttemptChunkReload() || isChunkReloadInProgress())) {
     return (
       <main className="min-h-screen bg-dharma-bg flex items-center justify-center px-6 py-24">
         <meta name="robots" content="noindex, nofollow" />
@@ -65,9 +66,10 @@ export default function Error({
         <p className="text-xs uppercase tracking-[0.3em] text-saffron-700 dark:text-saffron-400 font-semibold mb-3">
           त्रुटि निवारण · Error Recovery
         </p>
-        <h1 className="text-3xl md:text-5xl font-serif font-bold text-dharma-text mb-4">
+        <h1 className="text-3xl md:text-5xl font-serif font-bold text-dharma-text mb-2">
           पृष्ठ लोड नहीं हो सका
         </h1>
+        <p className="mb-4 text-sm text-dharma-muted" lang="en">This page could not load.</p>
         <p className="text-base text-dharma-muted mb-2 max-w-lg mx-auto leading-relaxed">
           {isChunkError
             ? 'नेटवर्क रुकावट या नए अपडेट के कारण पृष्ठ का कुछ भाग लोड नहीं हो सका। कृपया पुनः प्रयास करें।'
@@ -78,6 +80,7 @@ export default function Error({
             ? 'Part of the page failed to download (likely a dropped connection). Please reload.'
             : 'A temporary error occurred while rendering this page.'}
         </p>
+        <ErrorRecoveryVerse />
         {error.digest && (
           <p className="text-xs text-dharma-muted/70 mb-8 font-mono bg-stone-100 dark:bg-stone-900 inline-block px-3 py-1 rounded-full border border-dharma-border">
             ref: {error.digest}

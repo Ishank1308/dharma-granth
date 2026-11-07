@@ -3,13 +3,13 @@ import { ArrowDown, ArrowRight, Clock, HelpCircle, ShieldAlert, Sparkles, UserCh
 import { getChapterOrientation } from '@/data/chapter-orientation';
 import { CONCEPT_DETAILS } from '@/data/concept-details';
 import { verseCount as fmtVerses } from '@/lib/format';
+import { readHref } from '@/lib/verse-paths';
 import { InteractiveChapterMap } from '@/app/components/InteractiveChapterMap';
 
 interface Props {
   scriptureId: string;
   chapterId: number;
   verseCount: number;
-  firstVerseHref?: string;
 }
 
 /** About one minute per verse to read with the translation; study takes longer. */
@@ -18,29 +18,29 @@ function readingMinutes(verseCount: number): number {
 }
 
 /**
- * Orientation before the verses. Facts about the chapter come from the library;
+ * Optional orientation beside the verses. Facts about the chapter come from the library;
  * the narrative panel appears only where an editorial entry exists, and says so.
  */
-export function ChapterOrientation({ scriptureId, chapterId, verseCount, firstVerseHref }: Props) {
+export function ChapterOrientation({ scriptureId, chapterId, verseCount }: Props) {
   const o = getChapterOrientation(scriptureId, chapterId);
   if (!o) return null; // no invented introductions: only reviewed-or-draft editorial entries render
   const minutes = verseCount > 0 ? readingMinutes(verseCount) : null;
 
   return (
-    <section aria-labelledby="orientation-h" className="mb-10 rounded-3xl border border-dharma-border bg-dharma-card p-5 sm:p-8 shadow-sm">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-dharma-border pb-4">
+    <section aria-labelledby="orientation-h" className="rounded-card border border-separator/80 bg-surface-raised p-5 sm:p-6 shadow-xs">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-separator/60 pb-4">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+          <span className="text-caption-2 font-bold uppercase tracking-wider text-accent">
             Chapter Orientation · मूल पृष्ठभूमि
           </span>
-          <h2 id="orientation-h" className="font-serif text-2xl font-bold text-dharma-text mt-0.5">
-            {o.nameEn} <span lang="hi" className="font-devanagari text-xl font-normal text-dharma-muted">· {o.nameHi}</span>
+          <h2 id="orientation-h" className="font-serif text-xl font-bold text-label-primary sm:text-2xl mt-0.5">
+            {o.nameEn} <span lang="hi" className="font-devanagari text-lg font-normal text-label-secondary sm:text-xl">· {o.nameHi}</span>
           </h2>
         </div>
 
         {verseCount > 0 && (
-          <div className="flex items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-bg px-3.5 py-1 text-xs text-dharma-muted">
-            <Clock className="h-3.5 w-3.5 text-saffron-600" aria-hidden="true" />
+          <div className="flex items-center gap-1.5 rounded-pill border border-separator/80 bg-fill-tertiary px-3.5 py-1 text-caption-1 text-label-secondary shadow-2xs">
+            <Clock className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
             <span>{fmtVerses(verseCount)} · about {minutes} min study</span>
           </div>
         )}
@@ -48,13 +48,13 @@ export function ChapterOrientation({ scriptureId, chapterId, verseCount, firstVe
 
       {/* Narrative Context & Central Conflict Banner */}
       {o.narrativeContext && (
-        <div className="mt-5 rounded-2xl border border-amber-300/80 bg-amber-50/50 p-4 sm:p-5 dark:border-amber-900/60 dark:bg-amber-950/20 text-xs sm:text-sm">
-          <p className="font-serif leading-relaxed text-dharma-text">
+        <div className="mt-4 rounded-xl border border-separator/80 bg-fill-quaternary/40 p-4 text-xs sm:text-sm">
+          <p className="font-serif leading-relaxed text-label-primary">
             <strong>Narrative Context:</strong> {o.narrativeContext}
           </p>
           {o.centralConflict && (
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-dharma-text/90 flex items-start gap-1.5">
-              <ShieldAlert className="h-4 w-4 text-amber-700 dark:text-amber-400 shrink-0 mt-0.5" />
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-label-secondary flex items-start gap-1.5">
+              <ShieldAlert className="h-4 w-4 text-accent shrink-0 mt-0.5" />
               <span><strong>Central Conflict:</strong> {o.centralConflict}</span>
             </p>
           )}
@@ -124,21 +124,21 @@ export function ChapterOrientation({ scriptureId, chapterId, verseCount, firstVe
       {o ? (
         <>
           <div className="mt-5">
-            <h3 className="text-sm font-bold text-dharma-text">How the chapter unfolds</h3>
+            <h3 className="text-subhead font-bold text-label-primary">How the chapter unfolds</h3>
             {/* One ordered list serves as the diagram and the text alternative. */}
-            <ol className="mt-2 flex flex-col gap-2 lg:flex-row lg:items-stretch lg:gap-1">
+            <ol className="mt-2.5 flex flex-col gap-2 lg:flex-row lg:items-stretch lg:gap-1.5">
               {o.sequence.map((s, i) => (
                 <li key={s.label} className="flex flex-col items-stretch lg:flex-1 lg:flex-row lg:items-center">
-                  <div className="flex-1 rounded-xl border border-dharma-border bg-dharma-bg p-3 text-sm">
-                    <p className="font-semibold text-dharma-text">
-                      {s.label} <span lang="hi" className="font-devanagari text-sm font-normal text-dharma-muted">· {s.labelHi}</span>
+                  <div className="flex-1 rounded-xl border border-separator/80 bg-fill-tertiary/60 p-3 text-caption-1">
+                    <p className="font-semibold text-label-primary">
+                      {s.label} <span lang="hi" className="font-devanagari font-normal text-label-secondary">· {s.labelHi}</span>
                     </p>
-                    <p className="mt-1 text-dharma-muted">{s.text}</p>
+                    <p className="mt-1 text-label-secondary leading-relaxed">{s.text}</p>
                   </div>
                   {i < o.sequence.length - 1 && (
                     <>
-                      <ArrowDown className="mx-auto my-0.5 h-4 w-4 text-dharma-muted lg:hidden" aria-hidden="true" />
-                      <ArrowRight className="mx-0.5 hidden h-4 w-4 shrink-0 text-dharma-muted lg:block" aria-hidden="true" />
+                      <ArrowDown className="mx-auto my-0.5 h-4 w-4 text-label-tertiary lg:hidden" aria-hidden="true" />
+                      <ArrowRight className="mx-0.5 hidden h-4 w-4 shrink-0 text-label-tertiary lg:block" aria-hidden="true" />
                     </>
                   )}
                 </li>
@@ -148,14 +148,14 @@ export function ChapterOrientation({ scriptureId, chapterId, verseCount, firstVe
 
           {o.flow && o.flow.length > 0 && (
             <div className="mt-5">
-              <h3 className="text-sm font-bold text-dharma-text">Chapter flow</h3>
-              <p className="mt-1 text-sm text-dharma-muted">Each step opens the verse where it is best seen. These links are editorial drafts, not yet reviewed.</p>
-              <ol className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              <h3 className="text-subhead font-bold text-label-primary">Chapter flow</h3>
+              <p className="mt-1 text-caption-1 text-label-secondary">Each step opens the verse where it is best seen. These links are editorial drafts, not yet reviewed.</p>
+              <ol className="mt-2.5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
                 {o.flow.map((f, i) => (
                   <li key={f.label}>
-                    <Link href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${f.verse}`} className="focus-ring flex min-h-[44px] flex-col rounded-xl border border-dharma-border bg-dharma-bg p-3 text-sm hover:border-saffron-400">
-                      <span className="font-semibold text-dharma-text">{i + 1}. {f.label} <span lang="hi" className="font-devanagari font-normal text-dharma-muted">· {f.labelHi}</span></span>
-                      <span className="text-dharma-muted">Verses {f.range}</span>
+                    <Link href={readHref(scriptureId, chapterId, f.verse)} className="focus-ring flex min-h-[44px] flex-col rounded-xl border border-separator/80 bg-fill-tertiary/60 p-3 text-caption-1 transition-all hover:bg-fill-quaternary hover:border-separator shadow-2xs">
+                      <span className="font-semibold text-label-primary">{i + 1}. {f.label} <span lang="hi" className="font-devanagari font-normal text-label-secondary">· {f.labelHi}</span></span>
+                      <span className="text-label-tertiary text-[11px] mt-0.5">Verses {f.range}</span>
                     </Link>
                   </li>
                 ))}
@@ -189,7 +189,7 @@ export function ChapterOrientation({ scriptureId, chapterId, verseCount, firstVe
               <ul className="mt-1 space-y-1">
                 {o.importantVerses.map((v) => (
                   <li key={v.verse}>
-                    <Link href={`/scripture/${scriptureId}/chapter/${chapterId}/verse/${v.verse}`} className="font-semibold text-saffron-800 underline underline-offset-2 hover:text-saffron-900 dark:text-saffron-300">
+                    <Link href={readHref(scriptureId, chapterId, v.verse)} className="font-semibold text-saffron-800 underline underline-offset-2 hover:text-saffron-900 dark:text-saffron-300">
                       {chapterId}.{v.verse}
                     </Link>{' '}
                     <span className="text-dharma-muted">{v.note}</span>
@@ -207,12 +207,7 @@ export function ChapterOrientation({ scriptureId, chapterId, verseCount, firstVe
       )}
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
-        {firstVerseHref && (
-          <Link href={firstVerseHref} className="focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-xl bg-saffron-700 px-6 text-sm font-semibold text-white hover:bg-saffron-800">
-            Begin reading verse 1 <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        )}
-        <Link href={`/learn/paths`} className="focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card px-5 text-sm font-semibold text-dharma-text hover:border-saffron-400">
+        <Link href="/learn/plans/" className="focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card px-5 text-sm font-semibold text-dharma-text hover:border-saffron-400">
           Guided Learning Paths
         </Link>
       </div>

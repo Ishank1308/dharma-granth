@@ -11,7 +11,7 @@ export function ReadFlag({ id }: { id: string }) {
   const { isRead, ready } = useAshRead();
   if (!ready || !isRead(id)) return null;
   return (
-    <span className="ash-chip" style={{ borderColor: 'var(--ash-gold)' }}>
+    <span className="inline-flex min-h-[32px] items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card px-2.5 py-0.5 text-xs font-semibold text-dharma-muted">
       <span aria-hidden="true">●</span> पढ़ा गया
     </span>
   );
@@ -26,14 +26,14 @@ export function ReadMark({ id }: { id: string }) {
     <div className="flex flex-wrap items-center gap-3">
       <button
         type="button"
-        className="ash-btn"
+        className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card px-4 py-2 text-sm font-semibold text-dharma-text transition hover:border-saffron-400"
         aria-pressed={read}
         onClick={() => setNote(toggle(id) ? (read ? 'चिह्न हटाया गया।' : 'पढ़ा हुआ चिह्नित किया गया।') : 'ब्राउज़र ने भंडारण रोका, इसलिए यह चिह्न सहेजा नहीं गया।')}
       >
         <span aria-hidden="true">{read ? '●' : '○'}</span>
         {read ? 'पढ़ा गया (चिह्न हटाएँ)' : 'पढ़ा हुआ चिह्नित करें'}
       </button>
-      <span role="status" aria-live="polite" className="ash-meta">{note}</span>
+      <span role="status" aria-live="polite" className="text-xs text-dharma-muted">{note}</span>
     </div>
   );
 }
@@ -95,7 +95,7 @@ export function ContinueReading({ chapters }: { chapters: Array<{ number: number
   const p = next.id.split('.');
   return (
     <p className="ash-hindi">
-      {next.started ? 'जहाँ से छोड़ा था:' : 'यहाँ से शुरू करें:'}{' '}
+      {next.started ? 'जहाँ से छोड़ा था:' : 'यहाँ से आरम्भ करें:'}{' '}
       <Link href={`/ashtavakra/${p[0]}/${p[1]}/`} className="ash-link font-bold underline" style={{ color: 'var(--ash-accent)' }}>
         अध्याय {next.chapter.number}, श्लोक {next.id}
       </Link>

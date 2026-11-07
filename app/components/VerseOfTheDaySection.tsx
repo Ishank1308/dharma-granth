@@ -22,9 +22,10 @@ import { whatsappShareUrl } from '@/lib/whatsapp';
 import dynamic from 'next/dynamic';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { PedagogicalVerseCard, type ContemplationTier } from '@/app/components/PedagogicalVerseCard';
-import { getPedagogicalVerse } from '@/data/pedagogical-registry';
+import type { PedagogicalVerseData } from '@/data/pedagogical-gita-2-47';
 import { DAILY_WISDOM_REGISTRY } from '@/data/daily-wisdom-engine';
-import { SacredShareModal } from '@/app/components/share/SacredShareModal';
+import { useEverTrue } from '@/lib/use-ever-true';
+import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
 
 export interface VerseOfTheDayItem {
   scriptureId: string;
@@ -40,6 +41,10 @@ export interface VerseOfTheDayItem {
   reflection: string;
   source: string;
 }
+
+// The share and story dialogs also load on first open.
+const SacredShareModal = dynamic(() => import('@/app/components/share/SacredShareModal').then((m) => m.SacredShareModal), { ssr: false });
+const StoryDeckModal = dynamic(() => import('@/app/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
 
 // Loaded on demand (first click on Embed) so the dialog stays out of the page's first-load JS.
 const EmbedVerseDialog = dynamic(
@@ -79,6 +84,9 @@ export function VerseOfTheDaySection() {
   const [embedMounted, setEmbedMounted] = useState(false);
   const [genericTier, setGenericTier] = useState<ContemplationTier>('simple');
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [isStoryDeckOpen, setIsStoryDeckOpen] = useState(false);
+  const shareLoaded = useEverTrue(isShareModalOpen);
+  const storyDeckLoaded = useEverTrue(isStoryDeckOpen);
 
   useEffect(() => {
     const dayIdx = getDayOfYear() % FEATURED_VERSES.length;
@@ -94,7 +102,22 @@ export function VerseOfTheDaySection() {
   }, []);
 
   const current = FEATURED_VERSES[index];
-  const pedagogical = getPedagogicalVerse(current.scriptureId, current.chapterId, current.verseId);
+  // The pedagogical registry is ~450 KB of verse data. It loads after mount so it stays out of the
+  // homepage's first-load JS budget (scripts/check-export.mjs); the generic card renders meanwhile.
+  const [pedagogical, setPedagogical] = useState<PedagogicalVerseData | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    import('@/data/pedagogical-registry')
+      .then(({ getPedagogicalVerse }) => {
+        if (!cancelled) setPedagogical(getPedagogicalVerse(current.scriptureId, current.chapterId, current.verseId));
+      })
+      .catch(() => {
+        if (!cancelled) setPedagogical(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [current.scriptureId, current.chapterId, current.verseId]);
 
   // Check bookmark status
   useEffect(() => {
@@ -191,7 +214,7 @@ export function VerseOfTheDaySection() {
 
   // 5b. WHATSAPP SHARE
   function whatsappHref(): string {
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.in';
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.dev';
     return whatsappShareUrl({
       heading: `${current.scriptureTitle} ${current.chapterId}.${current.verseId} · Dharma Granth`,
       body: [current.sanskrit, current.hindi || current.translation],
@@ -220,7 +243,7 @@ export function VerseOfTheDaySection() {
       aria-labelledby="verse-of-the-day-heading"
       className="relative border-b border-dharma-border bg-gradient-to-b from-dharma-bg via-dharma-card/50 to-dharma-bg py-16 sm:py-20"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+      <div className="mx-auto max-w-6xl px-gutter">
         {/* Section Header */}
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -508,6 +531,17 @@ export function VerseOfTheDaySection() {
                         <Code2 className="h-3.5 w-3.5 text-dharma-muted" />
                         <span>Embed</span>
                       </button>
+
+                      {/* 60-Second Visual Story Deck Trigger */}
+                      <button
+                        type="button"
+                        onClick={() => setIsStoryDeckOpen(true)}
+                        aria-label="60-सेकंड सार (5-Card Visual Story Deck)"
+                        className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-3.5 py-2 text-xs font-bold text-amber-900 transition hover:bg-amber-100 hover:border-amber-400 dark:border-amber-500/40 dark:bg-amber-500/10 dark:text-amber-200 shadow-sm"
+                      >
+                        <Zap className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
+                        <span>60-सेकंड सार</span>
+                      </button>
                     </div>
 
                     {/* Read Context */}
@@ -543,7 +577,7 @@ export function VerseOfTheDaySection() {
           onClose={() => setEmbedOpen(false)}
           label={`${current.scriptureTitle} ${current.chapterId}.${current.verseId}`}
           url={shareVerseUrl(
-            typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.in',
+            typeof window !== 'undefined' ? window.location.origin : 'https://dharmagranth.dev',
             current.scriptureId,
             current.chapterId,
             current.verseId,
@@ -554,6 +588,7 @@ export function VerseOfTheDaySection() {
           onNotice={showToast}
         />
       )}
+      {shareLoaded && (
       <SacredShareModal
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
@@ -565,9 +600,27 @@ export function VerseOfTheDaySection() {
           translation: current.translation,
           hindi: current.hindi,
           quote: current.reflection,
-          url: typeof window !== 'undefined' ? `${window.location.origin}${readHref(current.scriptureId, current.chapterId, current.verseId)}` : `https://dharmagranth.in${readHref(current.scriptureId, current.chapterId, current.verseId)}`,
+          url: typeof window !== 'undefined' ? `${window.location.origin}${readHref(current.scriptureId, current.chapterId, current.verseId)}` : `https://dharmagranth.dev${readHref(current.scriptureId, current.chapterId, current.verseId)}`,
         }}
       />
+      )}
+      {current && storyDeckLoaded && (
+        <StoryDeckModal
+          isOpen={isStoryDeckOpen}
+          onClose={() => setIsStoryDeckOpen(false)}
+          data={{
+            scriptureTitle: current.scriptureTitle,
+            chapterTitle: current.chapterTitle,
+            verseRef: `${current.scriptureTitle} ${current.chapterId}.${current.verseId}`,
+            sanskrit: current.sanskrit,
+            transliteration: current.transliteration,
+            hindi: current.hindi,
+            english: current.translation,
+            meta: getLiteraryVerseMeta(current.scriptureId, current.chapterId, current.verseId),
+            chapterHref: readHref(current.scriptureId, current.chapterId, current.verseId),
+          }}
+        />
+      )}
     </section>
   );
 }

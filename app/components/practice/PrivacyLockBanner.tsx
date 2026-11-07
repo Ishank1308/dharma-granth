@@ -126,15 +126,15 @@ export function PrivacyLockBanner({
     <div className="space-y-4">
       {/* 1. Backup Reminder Notice (Gentle, dismissible) */}
       {showBackupReminder && (
-        <div className="rounded-2xl border border-amber-300/80 bg-amber-50/70 dark:border-amber-900/40 dark:bg-amber-950/20 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+        <div className="apple-group flex flex-col items-start justify-between gap-3 p-4 text-footnote sm:flex-row sm:items-center">
           <div className="flex items-start gap-2.5">
-            <HardDrive className="w-4 h-4 text-amber-700 dark:text-amber-400 shrink-0 mt-0.5" />
+            <HardDrive className="mt-0.5 h-4 w-4 shrink-0 text-dharma-saffron" />
             <div>
-              <p className="font-bold text-amber-900 dark:text-amber-200">
+              <p className="font-semibold text-dharma-text">
                 साधना बैकअप अनुस्मारक · Device Backup Reminder
               </p>
-              <p className="text-amber-950 dark:text-amber-100 mt-0.5">
-                आपकी साधना का डेटा केवल इस ब्राउज़र में सहेजा गया है। आकस्मिक डेटा हानि से बचने के लिए बैकअप फ़ाइल डाउनलोड करें।
+              <p className="mt-0.5 text-dharma-muted">
+                आपकी साधना का डेटा केवल इस ब्राउज़र में सहेजा गया है। JSON बैकअप कूटबद्ध नहीं होता; डाउनलोड की गई फ़ाइल निजी रखें।
               </p>
             </div>
           </div>
@@ -142,14 +142,14 @@ export function PrivacyLockBanner({
             <button
               type="button"
               onClick={handleQuickBackup}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-800 text-white font-bold hover:bg-amber-900 transition"
+              className="apple-pill !min-h-9 !px-4 !text-footnote"
             >
               <Download className="w-3.5 h-3.5" /> बैकअप लें · Export
             </button>
             <button
               type="button"
               onClick={() => setBackupDismissed(true)}
-              className="px-2 py-1.5 rounded-lg text-amber-800 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-900/30"
+              className="apple-icon-button h-9 w-9 text-dharma-muted"
               aria-label="Dismiss backup reminder"
             >
               <X className="w-3.5 h-3.5" />
@@ -159,17 +159,17 @@ export function PrivacyLockBanner({
       )}
 
       {/* 2. Privacy Banner & PIN Lock Status Bar */}
-      <div className="rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-5 shadow-sm space-y-4">
+      <div className="apple-group space-y-4 p-4 sm:p-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-5 h-5" />
+            <div className="apple-tint-chip" style={{ background: '#15803d' }}>
+              <ShieldCheck className="h-4 w-4" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-sm font-bold text-dharma-text font-serif">
-                  100% निजी एवं गोपनीय · Completely Private
-                </h3>
+                <h2 className="text-subhead font-semibold text-dharma-text">
+                  स्थानीय साधना डेटा · Practice data stays local
+                </h2>
                 <button
                   type="button"
                   onClick={() => setShowPrivacyPillars(!showPrivacyPillars)}
@@ -180,7 +180,7 @@ export function PrivacyLockBanner({
                 </button>
               </div>
               <p className="text-xs text-dharma-muted">
-                सारा डेटा केवल आपके फोन या कंप्यूटर पर रहता है · Zero tracking, zero public profiles
+                आपकी जप, चिंतन और डायरी इसी ब्राउज़र में रहती है · No public profiles or account
               </p>
             </div>
           </div>
@@ -224,6 +224,11 @@ export function PrivacyLockBanner({
           </div>
         </div>
 
+        <p className="text-xs leading-relaxed text-dharma-muted">
+          The optional PIN is an in-app screen lock; it does not encrypt browser storage or backup files.
+          <span lang="hi" className="ml-1 font-devanagari">वैकल्पिक पिन केवल ऐप के भीतर स्क्रीन लॉक है; यह ब्राउज़र स्टोरेज या बैकअप फ़ाइलों को कूटबद्ध नहीं करता।</span>
+        </p>
+
         {/* The 4 Privacy Pillars Explainer (Collapsible) */}
         {showPrivacyPillars && (
           <div className="pt-3 border-t border-dharma-border/60 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
@@ -259,7 +264,7 @@ export function PrivacyLockBanner({
                 <HardDrive className="w-3.5 h-3.5 text-rose-600" /> स्टोरेज चेतावनी
               </span>
               <p className="text-dharma-muted">
-                ब्राउज़र हिस्ट्री या कुकीज़ पूरी तरह साफ करने से डेटा मिट सकता है; समय-समय पर बैकअप लें।
+                ब्राउज़र हिस्ट्री या कुकीज़ पूर्णतः साफ़ करने से डेटा मिट सकता है; समय-समय पर बैकअप लें।
               </p>
             </div>
           </div>
@@ -370,7 +375,7 @@ export function PrivacyLockBanner({
 
           {pinError && (
             <p className="text-xs text-rose-600 font-bold">
-              गलत पिन! कृपया पुनः प्रयास करें। (Incorrect PIN)
+              पिन अशुद्ध है। कृपया पुनः प्रयास करें। (Incorrect PIN)
             </p>
           )}
         </div>

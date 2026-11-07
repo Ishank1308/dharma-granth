@@ -6,6 +6,7 @@ import { readRecentChapters } from '@/lib/reading-history';
 import { READING_JOURNEYS } from '@/data/reading-journeys';
 import { CONNECTIONS, verseKey } from '@/data/study-content';
 import { readRecPrefs, writeRecPrefs, type RecPrefs } from '@/lib/recommendation-prefs';
+import { readHref } from '@/lib/verse-paths';
 
 const JOURNEYS_KEY = 'dharma.journeys.v1';
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -41,7 +42,7 @@ export function RecommendationCards() {
         const here = `${last.scriptureTitle} ${last.chapterId}`;
         let nextHref = `/scripture/${last.scriptureId}/chapter/${last.chapterId}`;
         let nextLabel = `Return to ${here}`;
-        let reason = `You last opened this chapter on ${new Date(last.readAt).toLocaleDateString()}.`;
+        let reason = `You last opened this chapter on ${new Date(last.readAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}.`;
         const basis = `The last chapter you opened on this device: ${here}.`;
         if (last.verseId) {
           try {
@@ -51,7 +52,7 @@ export function RecommendationCards() {
             const i = list.findIndex((v) => String(v.number) === String(last.verseId));
             const nxt = i >= 0 ? list[i + 1] : undefined;
             if (nxt) {
-              nextHref = `/scripture/${last.scriptureId}/chapter/${last.chapterId}/verse/${nxt.number}`;
+              nextHref = readHref(last.scriptureId, last.chapterId, nxt.number);
               nextLabel = `Continue with ${last.scriptureTitle} ${last.chapterId}.${nxt.number}`;
               const linked = CONNECTIONS[verseKey(last.scriptureId, last.chapterId, last.verseId)]?.find((c) => c.href === nextHref);
               reason = linked ? linked.reason : 'It is the next verse in the same chapter.';
@@ -70,7 +71,7 @@ export function RecommendationCards() {
               id: `journey:${j.id}:${next.id}`,
               basis: `Your progress in “${j.title}” on this device.`,
               title: `${j.title}: reading ${done.length + 1} of ${j.lessons.length}`,
-              href: `/journeys/${j.id}#${next.id}`,
+              href: `/learn/journeys/${j.id}#${next.id}`,
               reason: `You have completed ${done.length} of ${j.lessons.length} readings.`,
             });
           }

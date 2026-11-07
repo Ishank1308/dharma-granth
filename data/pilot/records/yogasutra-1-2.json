@@ -1,0 +1,25 @@
+{
+  "unitId": "yogasutra-1-2",
+  "reference": "Yoga Sutra 1.2",
+  "artha": "योग चित्त की वृत्तियों का निरोध है।",
+  "arthaEn": "Yoga is the stilling of the movements of the mind.",
+  "arthaDecision": "add-missing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "पतंजलि के योगसूत्र के पहले पाद में पहला सूत्र योग के अनुशासन की घोषणा करता है, और यह दूसरा सूत्र उस अनुशासन की परिभाषा देता है। इसके बाद का सूत्र बताता है कि उस अवस्था में द्रष्टा अपने स्वरूप में स्थित हो जाता है। तीन पद ध्यान देने योग्य हैं। चित्त का अर्थ वह भीतरी क्षेत्र है जिसमें विचार, स्मृति, भावना और निर्णय चलते हैं। वृत्ति का अर्थ उसमें उठने वाली हलचल या रूप है। निरोध का अर्थ रोकना, थामना या शांत करना हो सकता है। इसलिए इसे केवल विचारों को दबाना मान लेना सरल है, पर पाठ से पूरा समर्थित नहीं; इसी पाद में आगे अभ्यास और वैराग्य से इसके धीरे-धीरे सधने की बात आती है। योग यहाँ आसन या व्यायाम का नाम नहीं, एक मानसिक अनुशासन की परिभाषा है। सूत्र यह नहीं कहता कि मन को खाली या सुखद बनाना योग है, और न ही यह विश्राम या स्वास्थ्य देने वाली तकनीक का वचन देता है।",
+  "vijnana": "आधुनिक स्वास्थ्य-चर्चाओं में योग को अक्सर उद्वेग घटाने या विश्राम पाने के साधन के रूप में बताया जाता है। यह योग के प्रयोग की एक आधुनिक व्याख्या है, इस सूत्र का अर्थ नहीं। सूत्र योग को चित्तवृत्तियों के निरोध के रूप में परिभाषित करता है और किसी स्वास्थ्य-परिणाम का दावा नहीं करता। इसलिए इस सूत्र के आधार पर उद्वेग घटाने या किसी शारीरिक या मानसिक लाभ की बात नहीं कही जा सकती। यह टिप्पणी केवल इस भेद को साफ़ करने के लिए है; यहाँ किसी अध्ययन या परिणाम का हवाला नहीं दिया जा रहा।",
+  "vijnanaCategory": "social",
+  "evidenceLevel": "editorial-observation",
+  "lifeLesson": "जब मन बहुत व्यग्र हो, तो उसे बलपूर्वक चुप कराने की जगह देखो कि कौन-सा विचार या चिंता सबसे अधिक घूम रही है। उसे नाम देकर थोड़ी देर एक ही काम पर ध्यान रखो।",
+  "confidence": "high",
+  "reviewNote": "The Sanskrit is clear and no stored meaning existed, so the Artha is a new editor rendering. 'Nirodha' is rendered neutrally ('stilling'); its exact force (restraint, cessation, mastery) is discussed in the commentarial tradition and none is stored here, so a reviewer should check the Vyakhya against Vyasa's commentary. The cross-references to 1.3 and 1.12 are from general knowledge of the text.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged.",
+    "artha": "Editor rendering from the Sanskrit; no stored translation existed.",
+    "vyakhya": "Original composition.",
+    "vijnana": "Original composition; no research source consulted and none cited.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}

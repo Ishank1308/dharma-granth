@@ -82,7 +82,7 @@ export function SadhanaPreviewSection() {
       aria-labelledby="sadhana-preview-heading"
       className="border-b border-dharma-border bg-gradient-to-b from-dharma-bg via-dharma-card/40 to-dharma-bg py-16 sm:py-20"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+      <div className="mx-auto max-w-6xl px-gutter">
         {/* Section Header */}
         <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -93,7 +93,7 @@ export function SadhanaPreviewSection() {
               </p>
               <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300">
                 <Lock className="h-3 w-3" />
-                100% Private (No Accounts)
+                Local-first (No accounts)
               </span>
             </div>
             <h2

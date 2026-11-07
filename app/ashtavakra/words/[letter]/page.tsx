@@ -5,23 +5,34 @@ import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { verseHref } from '@/lib/ashtavakra';
 
 interface PageProps {
-  params: { letter: string };
+  params: Promise<{ letter: string }>;
 }
 
 export function generateStaticParams() {
   return buildWordIndex().groups.map((group) => ({ letter: group.letter }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const letter = decodeURIComponent(params.letter);
+  const group = buildWordIndex().groups.find((item) => item.letter === letter);
+  const words = group?.words ?? [];
+  // Name the words themselves, so each letter's description says what is on that page.
+  let sample = '';
+  for (const word of words) {
+    const next = sample ? `${sample}, ${word.word}` : word.word;
+    if (next.length > 60) break;
+    sample = next;
+  }
   return {
-    title: `शब्द-अन्वेषण: ${letter}`,
-    description: `अष्टावक्र गीता के सत्यापित श्लोकों में ${letter} से शुरू होने वाले पद।`,
+    title: `शब्द-अन्वेषण: ${letter} · अष्टावक्र गीता`,
+    description: `अष्टावक्र गीता में ${letter} से आरम्भ होने वाले ${words.length} पद, हिंदी अर्थ और श्लोक-संदर्भ सहित${sample ? `: ${sample}` : ''}।`,
     alternates: { canonical: `/ashtavakra/words/${encodeURIComponent(letter)}/` },
   };
 }
 
-export default function WordLetterPage({ params }: PageProps) {
+export default async function WordLetterPage(props: PageProps) {
+  const params = await props.params;
   const letter = decodeURIComponent(params.letter);
   const group = buildWordIndex().groups.find((item) => item.letter === letter);
   if (!group) notFound();

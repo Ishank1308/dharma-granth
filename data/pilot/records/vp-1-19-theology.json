@@ -1,0 +1,25 @@
+{
+  "unitId": "vp-1-19-theology",
+  "reference": "Vishnu Purana, Book 1, Adhyaya 19, unit 66 (edition numbering unverified)",
+  "artha": "ब्रह्मा के रूप में तुम विश्व की सृष्टि करते हो, स्थिति के समय फिर उसका पालन करते हो, और कल्प के अंत में रुद्र का रूप धारण करते हो। तीन रूपों वाले तुम्हें नमस्कार है।",
+  "arthaEn": "As Brahma you create the universe, in its preservation you protect it again, and at the end of the kalpa you take the form of Rudra. Salutation to you, the one of three forms.",
+  "arthaDecision": "revise-existing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "यह श्लोक प्रह्लाद की स्तुति का अंश है। पिछले श्लोक में बताया गया है कि पर्वतों से दबे हुए प्रह्लाद ने समुद्र के भीतर एकाग्र मन से अच्युत की स्तुति की। यहाँ वे विष्णु को तीन कार्यों वाला बताते हैं: सृष्टि, पालन और कल्प के अंत में संहार। ब्रह्मत्वे का अर्थ ब्रह्मा के रूप में है, स्थितौ का अर्थ स्थिति या पालन के समय, और रुद्ररूपाय का अर्थ रुद्र के रूप वाले को। त्रिमूर्ति शब्द तीन रूपों वाले के लिए आया है। इस प्रसंग में कर्ता एक ही है जो अलग-अलग कार्यों में अलग रूप लेता है, और अगले श्लोकों में यह भाव आगे बढ़ता है कि सब कुछ उसी का रूप है। यह कथन विष्णु-केंद्रित स्तुति का है, इसलिए इसे सभी परंपराओं में ब्रह्मा, विष्णु और रुद्र के संबंध का सामान्य कथन मान लेना उचित नहीं होगा। इसे केवल इस पुराण और इसी प्रसंग की स्तुति की भाषा में पढ़ना चाहिए।",
+  "vijnana": "",
+  "vijnanaCategory": "",
+  "evidenceLevel": "none",
+  "lifeLesson": "जब सब कुछ दबा हुआ और बंद लगे, तो अपनी आस्था या किसी मूल्य की एक पंक्ति चुनकर उसे शांत मन से दोहराओ। बड़े निर्णय घबराहट में नहीं, उसके बाद लो।",
+  "confidence": "medium",
+  "reviewNote": "The Sanskrit is clear and the neighbouring verses (63 to 69) confirm that this is Prahlada's praise. The stored Hindi is about level ground and settlement and has no connection to this verse; it was replaced. The stored English matches the Sanskrit. The reference uses the dataset's running chapter index; the edition verse number is not verified. The statement that the passage is Vishnu-centred rests on verse 69 of the same record set ('all this you are, Achyuta'). Vijnana is empty: theological content. No classical commentary is stored.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged.",
+    "artha": "Editor rendering from the Sanskrit; the stored Hindi was unrelated, the stored English was consistent and used as a check.",
+    "vyakhya": "Original composition from the stored neighbouring verses.",
+    "vijnana": "None written: theological content.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}

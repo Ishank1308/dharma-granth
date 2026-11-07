@@ -1,4 +1,4 @@
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.in';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
 
 /** Absolute, trailing-slash URL (the site is exported with trailingSlash). */
 export function absUrl(path: string): string {

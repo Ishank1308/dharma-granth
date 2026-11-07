@@ -1,6 +1,6 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 /**
  * Shared bits for the private practice dashboard tools.
@@ -9,13 +9,23 @@ import type { ReactNode } from 'react';
  * nothing ever leaves the device, there are no accounts and no rankings.
  */
 
-/** Local-timezone ISO day (YYYY-MM-DD). `toISOString()` would use UTC and
- * roll the "day" over at the wrong moment for most users. */
+/** Local-timezone ISO day (YYYY-MM-DD). Aligns with Indian Standard Time
+ * (Asia/Kolkata) so sadhana and sankalpa roll over at IST midnight. */
 export function localISODate(d: Date = new Date()): string {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const dd = String(d.getDate()).padStart(2, '0');
-  return `${y}-${m}-${dd}`;
+  try {
+    const formatter = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Kolkata',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
+    return formatter.format(d);
+  } catch {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${dd}`;
+  }
 }
 
 /** Day-of-year (1..366), used to rotate daily prompts deterministically. */
@@ -68,24 +78,27 @@ export function ToolCard({
   children: ReactNode;
   accent?: 'saffron' | 'indigo' | 'emerald' | 'rose' | 'amber';
 }) {
-  const accents: Record<string, string> = {
-    saffron: 'from-saffron-100 to-amber-100 text-saffron-700',
-    indigo: 'from-indigo-100 to-blue-100 text-indigo-700',
-    emerald: 'from-emerald-100 to-green-100 text-emerald-700',
-    rose: 'from-rose-100 to-pink-100 text-rose-700',
-    amber: 'from-amber-100 to-yellow-100 text-amber-700',
+  // One plain tint per tool, as in iOS Settings: a white glyph on a small coloured square.
+  const tints: Record<string, string> = {
+    saffron: '#c2410c',
+    indigo: '#4f46e5',
+    emerald: '#15803d',
+    rose: '#be123c',
+    amber: '#b45309',
   };
   return (
-    <section className="verse-card p-6 h-full flex flex-col">
-      <div className="flex items-center gap-3 mb-4">
+    <section className="apple-card flex h-full flex-col p-5 sm:p-6">
+      <div className="mb-4 flex items-center gap-3">
         <div
-          className={`w-10 h-10 rounded-xl bg-gradient-to-br ${accents[accent]} flex items-center justify-center shrink-0`}
+          className="apple-tint-chip [&_svg]:!text-white"
+          style={{ '--chip': tints[accent] } as CSSProperties}
+          aria-hidden="true"
         >
           {icon}
         </div>
-        <div>
-          <h3 className="text-lg font-serif font-bold text-dharma-text leading-tight">{title}</h3>
-          <p lang="hi" className="font-devanagari text-xs text-dharma-muted">{titleHindi}</p>
+        <div className="min-w-0">
+          <h3 className="text-title-3 font-semibold leading-tight text-dharma-text">{title}</h3>
+          <p lang="hi" className="font-devanagari text-footnote text-dharma-muted">{titleHindi}</p>
         </div>
       </div>
       <div className="flex-1">{children}</div>

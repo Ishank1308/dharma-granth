@@ -5,7 +5,7 @@ import { createServer } from 'node:http';
 import { createReadStream, existsSync, readFileSync, statSync } from 'node:fs';
 import { extname, join, normalize, resolve } from 'node:path';
 
-const ROOT = resolve(process.cwd(), 'dist');
+const ROOT = resolve(process.cwd(), process.env.NEXT_DIST_DIR || 'dist');
 const PORT = Number(process.env.PORT) || 4173;
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -64,7 +64,8 @@ createServer((req, res) => {
   const url = req.url ?? '/';
   // Directory URLs without a slash redirect, as GitHub Pages does.
   const pathOnly = url.split('?')[0];
-  if (!pathOnly.endsWith('/') && !extname(pathOnly) && existsSync(join(ROOT, pathOnly, 'index.html'))) {
+  const hasKnownAssetExt = /\.(html|js|css|json|svg|png|webp|jpg|jpeg|ico|woff2|woff|txt|xml|webmanifest|mp3)$/i.test(pathOnly);
+  if (!pathOnly.endsWith('/') && (!extname(pathOnly) || !hasKnownAssetExt) && existsSync(join(ROOT, pathOnly, 'index.html'))) {
     res.writeHead(301, { Location: `${pathOnly}/` });
     res.end();
     return;
@@ -78,10 +79,13 @@ createServer((req, res) => {
     res.end('Not Found');
     return;
   }
+  // _headers rules win (e.g. /.well-known/api-catalog sets
+  // Content-Type: application/linkset+json); otherwise guess from extension.
+  const configured = headersFor(pathOnly);
   res.writeHead(status, {
-    ...headersFor(pathOnly),
-    'Content-Type': TYPES[extname(target)] ?? 'application/octet-stream',
-    'Cache-Control': 'no-cache',
+    ...configured,
+    'Content-Type': configured['Content-Type'] ?? TYPES[extname(target)] ?? 'application/octet-stream',
+    'Cache-Control': configured['Cache-Control'] ?? 'no-cache',
   });
   createReadStream(target).pipe(res);
 }).listen(PORT, () => console.log(`Serving ${ROOT} on http://localhost:${PORT}`));

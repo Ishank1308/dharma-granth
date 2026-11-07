@@ -16,9 +16,9 @@
     { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "shortcuts": [
+    { "name": "गीता नित्य संकल्प", "short_name": "Gita Sankalpa", "url": "/practice/gita-sankalpa/" },
     { "name": "भगवद्गीता पढ़ें", "short_name": "Gita", "url": "/scripture/bhagavadgita/" },
     { "name": "ग्रंथालय", "short_name": "Library", "url": "/scriptures/" },
-    { "name": "साधना", "short_name": "Practice", "url": "/practice/" },
-    { "name": "अध्ययन", "short_name": "Learn", "url": "/learn/" }
+    { "name": "साधना", "short_name": "Practice", "url": "/practice/" }
   ]
 }

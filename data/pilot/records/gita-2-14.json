@@ -1,0 +1,25 @@
+{
+  "unitId": "gita-2-14",
+  "reference": "Bhagavad Gita 2.14",
+  "artha": "हे कुन्तीपुत्र! इन्द्रियों का विषयों से संपर्क ही सर्दी-गर्मी और सुख-दुःख देने वाला होता है। ये आते-जाते रहते हैं और अनित्य हैं। हे भारत, उन्हें सहन करो।",
+  "arthaEn": "O son of Kunti, the contacts of the senses with their objects give cold and heat, pleasure and pain. They come and go and are impermanent. Bear them, O Bharata.",
+  "arthaDecision": "revise-existing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "इस श्लोक में कृष्ण अर्जुन के शोक का पहला व्यावहारिक उत्तर देते हैं। पिछले श्लोकों में उन्होंने कहा है कि देही एक देह से दूसरी देह में जाता है और धीर पुरुष इससे मोहित नहीं होता। अब वे अनुभव के स्तर पर आते हैं। मात्रास्पर्श का अर्थ है इन्द्रियों का अपने विषयों से मिलना; शीत-उष्ण और सुख-दुःख इसी मिलन से उपजते हैं। श्लोक इन्हें दो विशेषण देता है: आगमापायी, यानी आने और जाने वाले, और अनित्य। इसी कारण कृष्ण कहते हैं तितिक्षस्व। तितिक्षा का अर्थ संवेदना का अभाव नहीं, उसे सहने की क्षमता है। श्लोक यह नहीं कहता कि सुख-दुःख होते ही नहीं, बल्कि उन्हें स्वीकार करके उनसे विचलित न होने को कहता है। अगले श्लोक में ऐसे समदुःखसुख धीर को अमृतत्व के योग्य बताया गया है। इस तरह यह श्लोक आत्मा के उपदेश को रोज़ के अनुभव से जोड़ने वाली कड़ी है।",
+  "vijnana": "रोज़मर्रा के अनुभव का एक साधारण अवलोकन यह है कि सर्दी-गर्मी, श्रान्ति, प्रशंसा और आलोचना जैसी अनुभूतियाँ स्थायी नहीं रहतीं, और उन्हें गुज़रते हुए देखने पर उनकी पकड़ अक्सर ढीली पड़ती है। यह आचरण-संबंधी एक आधुनिक अवलोकन है, श्लोक द्वारा किया गया वैज्ञानिक दावा नहीं। श्लोक भावनाओं को दबाने या उन्हें न महसूस करने की सलाह नहीं देता; वह सहने की बात करता है। इस अवलोकन के लिए यहाँ कोई अध्ययन या आँकड़ा प्रस्तुत नहीं किया जा रहा, और इसे गहरे दुख या कठिनाई का समाधान नहीं समझना चाहिए।",
+  "vijnanaCategory": "observational",
+  "evidenceLevel": "editorial-observation",
+  "lifeLesson": "जब कोई असुविधा या दुख का क्षण आए, तो मन में कहो कि यह आया है और जाएगा, और उसे सहते हुए अगला आवश्यक काम करो। इसका अर्थ भावना को नकारना नहीं, उसे बिना घबराए गुज़रने देना है।",
+  "confidence": "high",
+  "reviewNote": "The stored explanation says suffering 'is not caused by external events but by our reaction to them'. The verse does not say this; it says sense-contacts give pleasure and pain, are impermanent, and are to be borne. That sentence was not carried into the revision. The stored Hindi adds parenthetical glosses ('jad padarth', 'anukulta', 'pratikulta') that are not in the Sanskrit; they were removed. No classical commentary is stored in the repository.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged.",
+    "artha": "Editor rendering from the Sanskrit. The stored translation was read as a check and is not reproduced.",
+    "vyakhya": "Original composition.",
+    "vijnana": "Original composition; no research source was consulted and none is cited.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}

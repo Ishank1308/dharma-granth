@@ -1,0 +1,25 @@
+{
+  "unitId": "gita-2-47",
+  "reference": "Bhagavad Gita 2.47",
+  "artha": "तुम्हारा अधिकार केवल कर्म करने में है, उसके फलों में कभी नहीं। तुम कर्मफल के हेतु मत बनो, और कर्म न करने में भी तुम्हारी आसक्ति न हो।",
+  "arthaEn": "Your entitlement is to action alone, never to its fruits. Do not become the cause of the fruit of action, and do not be attached to inaction.",
+  "arthaDecision": "revise-existing",
+  "arthaBasis": "editor-rendering",
+  "vyakhya": "यह श्लोक अध्याय 2 के उस प्रसंग का अंश है जहाँ कृष्ण अर्जुन को आत्मा के बोध से आगे ले जाकर कर्म के प्रति दृष्टि देते हैं। इससे पहले कामना से प्रेरित कर्मकाण्ड पर प्रश्न उठाया गया है, और अगले श्लोक में समता को ही योग कहा गया है। श्लोक में चार कथन हैं। पहला, अधिकार केवल कर्म में है; यहाँ अधिकार का अर्थ वह दायरा है जिसमें व्यक्ति सचमुच कुछ कर सकता है। दूसरा, फलों पर यह अधिकार नहीं, क्योंकि फल अनेक कारणों पर टिका होता है, केवल कर्ता पर नहीं। तीसरा, कर्मफलहेतु शब्द को दो तरह पढ़ा जाता है: फल को ही कर्म का प्रयोजन मत बनाओ, या यह मत मानो कि फल के उत्पन्न होने का कारण केवल तुम हो। दोनों पाठ प्रचलित हैं और एक-दूसरे के विरोधी नहीं। चौथा, अकर्म में आसक्ति न हो, यानी कर्म छोड़ देना भी इसका उत्तर नहीं है। इसलिए यह श्लोक परिणामों की उपेक्षा या लापरवाही की अनुमति नहीं देता। यह मन को परिणाम की व्यग्रता से अलग करके कर्म में लगने की बात कहता है।",
+  "vijnana": "आधुनिक मनोविज्ञान की चर्चाओं में लक्ष्य के बारे में सोचते समय अक्सर प्रयास और परिणाम को अलग करके देखा जाता है: जिन बातों पर व्यक्ति का सीधा नियंत्रण है, जैसे तैयारी और अभ्यास, और जिन पर नहीं है, जैसे दूसरों की प्रतिक्रिया या परिस्थितियाँ। इन्हें अलग पहचानना उद्वेग शमन का एक व्यावहारिक उपाय माना जाता है। यह श्लोक के अर्थ की केवल एक आधुनिक समानता है, श्लोक द्वारा किया गया वैज्ञानिक दावा नहीं। श्लोक का उद्देश्य कार्यक्षमता बढ़ाना या उद्वेग घटाना नहीं, कर्म के प्रति मुक्त दृष्टि देना है। यहाँ किसी शोध-परिणाम का हवाला भी नहीं दिया जा रहा।",
+  "vijnanaCategory": "psychological",
+  "evidenceLevel": "editorial-observation",
+  "lifeLesson": "किसी काम को आरम्भ करने से पहले एक पंक्ति में लिखो कि उसमें क्या तुम्हारे हाथ में है और क्या नहीं। फिर पूरा ध्यान पहली सूची पर रखो और दूसरी सूची की चिंता में समय कम लगाओ।",
+  "confidence": "high",
+  "reviewNote": "The verse is clear. 'karma-phala-hetu' has two readings and the Vyakhya names both without choosing. The stored Hindi adds 'kartavya' (duty), which is not in the Sanskrit; the revision removes it. Not checked against classical commentaries: none are stored in the repository.",
+  "reviewStatus": "review-required",
+  "provenance": {
+    "author": "AI-assisted editorial draft (Claude); not yet reviewed by a person",
+    "originalText": "Stored canonical text, unchanged.",
+    "artha": "Editor rendering from the Sanskrit. The stored translation was read as a check and is not reproduced.",
+    "vyakhya": "Original composition.",
+    "vijnana": "Original composition; no research source was consulted and none is cited.",
+    "traditionalCommentaryConsulted": false,
+    "externalSourcesConsulted": []
+  }
+}

@@ -14,7 +14,8 @@ export interface JourneyLesson {
   id: string;
   scriptureId: string;
   chapter: number;
-  verse: number;
+  /** The verse's stored number: usually a plain number; dotted in texts numbered by section (Brihadaranyaka "1.3.28"). */
+  verse: number | string;
   expect: string;
   context: string;
   explanation: string;
@@ -106,7 +107,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Bhagavad Gita Foundations', href: '/journeys/bhagavad-gita-foundations' },
+      { label: 'Bhagavad Gita Foundations', href: '/learn/journeys/bhagavad-gita-foundations' },
       { label: 'Concept: Atman', href: '/concepts/atman' },
     ],
     sources: SOURCES,
@@ -165,7 +166,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Gita in 18 Lessons', href: '/journeys/gita-in-18-lessons' },
+      { label: 'Gita in 18 Lessons', href: '/learn/journeys/gita-in-18-lessons' },
       { label: 'Concept: Dharma', href: '/concepts/dharma' },
     ],
     sources: SOURCES,
@@ -337,7 +338,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Introduction to Bhakti', href: '/journeys/introduction-to-bhakti' },
+      { label: 'Introduction to Bhakti', href: '/learn/journeys/introduction-to-bhakti' },
       { label: 'Wisdom for Life: Devotion', href: '/wisdom-for-life/devotion' },
     ],
     sources: SOURCES,
@@ -390,7 +391,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Introduction to the Upanishads', href: '/journeys/introduction-to-the-upanishads' },
+      { label: 'Introduction to the Upanishads', href: '/learn/journeys/introduction-to-the-upanishads' },
       { label: 'Concept: Brahman', href: '/concepts/brahman' },
     ],
     sources: SOURCES,
@@ -444,7 +445,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Seven Days of Focus', href: '/journeys/seven-days-of-focus' },
+      { label: 'Seven Days of Focus', href: '/learn/journeys/seven-days-of-focus' },
       { label: 'Wisdom for Life: Meditation', href: '/wisdom-for-life/meditation' },
     ],
     sources: SOURCES,
@@ -498,7 +499,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Wisdom for Students', href: '/journeys/wisdom-for-students' },
+      { label: 'Wisdom for Students', href: '/learn/journeys/wisdom-for-students' },
       { label: 'Wisdom for Life: Concentration', href: '/wisdom-for-life/concentration' },
     ],
     sources: SOURCES,
@@ -552,18 +553,18 @@ export const READING_JOURNEYS: ReadingJourney[] = [
     ],
     related: [
       { label: 'Wisdom for Life: Leadership', href: '/wisdom-for-life/leadership' },
-      { label: 'Understanding Karma Yoga', href: '/journeys/understanding-karma-yoga' },
+      { label: 'Understanding Karma Yoga', href: '/learn/journeys/understanding-karma-yoga' },
     ],
     sources: SOURCES,
   },
 
-  // ─── 10. STRESS AND ANXIETY RELIEF ─────────────────────────────────────────
+  // ─── 10. RESTLESS MIND: GITA STUDY ────────────────────────────────────────
   {
     id: 'stress-and-anxiety-relief',
-    title: 'Stress and Anxiety Relief',
-    titleHi: 'तनाव व भय से मुक्ति',
-    objective: 'Scriptural refuge for overcoming panic, catastrophic overthinking, and emotional exhaustion.',
-    audience: 'Anyone carrying heavy burdens, experiencing acute anxiety, or seeking emotional healing.',
+    title: 'The Restless Mind: A Gita Study',
+    titleHi: 'चंचल मन पर गीता-मनन',
+    objective: 'A short study of Gita passages on change, action, the wandering mind, and refuge.',
+    audience: 'Readers who want to study these themes in the Bhagavad Gita.',
     minutesPerLesson: 6,
     curator: CURATOR,
     reviewedOn: null,
@@ -574,39 +575,39 @@ export const READING_JOURNEYS: ReadingJourney[] = [
     lessons: [
       {
         id: 'sar1', scriptureId: GITA, chapter: 2, verse: 14, expect: 'मात्रास्पर्शास्तु',
-        context: 'Sensory impressions of heat and cold, joy and sorrow, are transient; endure them with patience.',
-        explanation: 'Anxiety is a temporary weather pattern passing across your awareness. It will pass just as storms always pass.',
-        reflection: 'Recall a time you were sick with worry—did the worst catastrophe materialize? Remember your resilience.',
-        activity: 'Take three slow, deep belly breaths. Tell yourself: "This feeling is temporary; my inner peace is permanent."',
+        context: 'Krishna describes contact with sensory experience as changeable and advises Arjuna to meet it with forbearance.',
+        explanation: 'The verse places pleasure and pain within changing experience. It invites study of patience; it does not promise that difficult feelings will pass on a fixed schedule.',
+        reflection: 'What is changing in this situation, and what still deserves your care and attention?',
+        activity: 'Pause and name the matter that needs attention. Choose one practical action, or let the reading end here.',
       },
       {
         id: 'sar2', scriptureId: GITA, chapter: 2, verse: 47, expect: 'कर्मण्येवाधिकारस्ते',
-        context: 'Releasing the crushing weight of outcome obsession.',
-        explanation: 'Stress is created when the mind tries to control the future. Relinquish what is not yours to control.',
-        reflection: 'What future event are you dreading? What is the single small action within your control today?',
+        context: 'Krishna distinguishes engagement in action from attachment to its fruits, while also cautioning against attachment to inaction.',
+        explanation: 'Read the verse with its full four-part teaching: attend to action, examine attachment to outcomes, and do not turn the teaching into a reason to avoid responsibility.',
+        reflection: 'Which part of this situation can you act on, and which outcome cannot be guaranteed by your effort alone?',
       },
       {
         id: 'sar3', scriptureId: GITA, chapter: 2, verse: 70, expect: 'आपूर्यमाणमचलप्रतिष्ठं',
-        context: 'The ocean remains calm and undisturbed even when mighty rivers rush into its depths.',
-        explanation: 'You have an ocean of quiet resilience within you. Let thoughts rush in, but refuse to let them overturn you.',
-        reflection: 'Picture yourself standing as the deep ocean floor while surface waves churn above.',
+        context: 'The ocean image describes the steadiness of the person of settled wisdom amid the arrival of desires.',
+        explanation: 'The image belongs to the Gita’s description of a sage. Study what it says about desire and steadiness without treating it as a demand to suppress grief or ordinary feeling.',
+        reflection: 'What desire or expectation is present, and what does it ask you to do?',
       },
       {
         id: 'sar4', scriptureId: GITA, chapter: 6, verse: 26, expect: 'यतो यतो निश्चरति',
-        context: 'Gently guiding the nervous system back each time worry pulls it away.',
-        explanation: 'Treat your anxious thoughts with compassionate patience rather than frustration. Return to the present moment.',
-        reflection: 'When anxiety speaks, label it gently: "I notice worry is arising right now," without believing its catastrophic story.',
+        context: 'Krishna instructs Arjuna to bring the mind back to the Self whenever it wanders.',
+        explanation: 'The verse describes returning the wandering mind; it does not require that attention never wander.',
+        reflection: 'When attention wanders, what gentle cue could help you return to this reading or task?',
       },
       {
         id: 'sar5', scriptureId: GITA, chapter: 18, verse: 66, expect: 'सर्वधर्मान्परित्यज्य',
-        context: 'Krishna’s great promise of total sanctuary: "Take refuge in Me; grieve no more."',
-        explanation: 'You do not have to carry the weight of the universe on your shoulders alone. Rest in divine protection.',
-        reflection: 'Exhale deeply and let go of the need to have every answer figured out right now.',
+        context: 'Krishna’s instruction on taking refuge is spoken within the dialogue’s wider teaching on action, discernment, and devotion.',
+        explanation: 'Read this verse within the whole dialogue and its traditions. It should not be used to dismiss practical duties, grief, or the need for support.',
+        reflection: 'What question remains open for you, and who or what could offer sound support as you consider it?',
       },
     ],
     related: [
-      { label: 'Seven Days of Focus', href: '/journeys/seven-days-of-focus' },
-      { label: 'Wisdom for Life: Fear and anxiety', href: '/wisdom-for-life/fear-and-anxiety' },
+      { label: 'Seven Days of Focus', href: '/learn/journeys/seven-days-of-focus' },
+      { label: 'Wisdom for Life: Fear and courage', href: '/wisdom-for-life/fear-and-courage' },
     ],
     sources: SOURCES,
   },
@@ -651,14 +652,14 @@ export const READING_JOURNEYS: ReadingJourney[] = [
         reflection: 'What is your inner intuition telling you right now that you have been ignoring?',
       },
       {
-        id: 'pm5', scriptureId: 'brihadaranyaka', chapter: 3, verse: 28, expect: 'असतो मा सद्गमय',
+        id: 'pm5', scriptureId: 'brihadaranyaka', chapter: 3, verse: '1.3.28', expect: 'असतो मा सद्गमय',
         context: 'The immortal Upanishadic prayer: From untruth lead me to truth; from darkness to light; from death to immortality.',
         explanation: 'Life’s highest purpose is the progressive journey from illusion into radiant spiritual reality.',
         reflection: 'What is one step you can take today toward living with greater truth and light?',
       },
     ],
     related: [
-      { label: 'Self Discovery', href: '/journeys/self-discovery' },
+      { label: 'Self Discovery', href: '/learn/journeys/self-discovery' },
       { label: 'Wisdom for Life: Purpose of life', href: '/wisdom-for-life/purpose-of-life' },
     ],
     sources: SOURCES,
@@ -711,8 +712,8 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Seven Days of Focus', href: '/journeys/seven-days-of-focus' },
-      { label: 'Meditation Journey', href: '/journeys/meditation-journey' },
+      { label: 'Seven Days of Focus', href: '/learn/journeys/seven-days-of-focus' },
+      { label: 'Meditation Journey', href: '/learn/journeys/meditation-journey' },
     ],
     sources: SOURCES,
   },
@@ -955,7 +956,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
         reflection: 'Where is telling the truth hardest for you, and why?',
       },
       {
-        id: 'u5', scriptureId: 'brihadaranyaka', chapter: 3, verse: 28, expect: 'असतो मा सद्गमय',
+        id: 'u5', scriptureId: 'brihadaranyaka', chapter: 3, verse: '1.3.28', expect: 'असतो मा सद्गमय',
         context: 'From untruth to truth, darkness to light, death to immortality.',
         explanation: 'A universal prayer seeking transformation of consciousness.',
         reflection: 'Which of the three requests feels closest to what you need now?',
@@ -1173,7 +1174,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
       },
     ],
     related: [
-      { label: 'Gita in 18 Lessons', href: '/journeys/gita-in-18-lessons' },
+      { label: 'Gita in 18 Lessons', href: '/learn/journeys/gita-in-18-lessons' },
       { label: 'Bhagavad Gita learning path', href: '/learn/bhagavad-gita' },
     ],
     sources: SOURCES,
@@ -1234,3 +1235,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
 ];
 
 export const getJourney = (id: string) => READING_JOURNEYS.find((j) => j.id === id);
+
+/** Journeys only enter search indexes after editorial approval. */
+export const isJourneyIndexable = (journey: Pick<ReadingJourney, 'review'>): boolean =>
+  journey.review === 'approved';

@@ -5,6 +5,7 @@ import { LayoutGrid, LayoutList, Search, SlidersHorizontal, X } from 'lucide-rea
 import type { ScriptureCategory } from '@/data/types';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { useConnectivity } from '@/lib/useConnectivity';
 import {
   EMPTY_FILTERS,
   LANGUAGES,
@@ -101,21 +102,6 @@ function writeUrl(f: Filters, sort: SortMode, view: ViewMode): string {
   return qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
 }
 
-function useOnline(): boolean {
-  const [online, setOnline] = useState(true);
-  useEffect(() => {
-    const update = () => setOnline(navigator.onLine);
-    update();
-    window.addEventListener('online', update);
-    window.addEventListener('offline', update);
-    return () => {
-      window.removeEventListener('online', update);
-      window.removeEventListener('offline', update);
-    };
-  }, []);
-  return online;
-}
-
 export function ScriptureLibraryClient({
   scriptures,
   categories,
@@ -131,7 +117,7 @@ export function ScriptureLibraryClient({
   const [viewMode, setViewMode] = useState<ViewMode>('compact');
   const [sheetOpen, setSheetOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
-  const online = useOnline();
+  const online = useConnectivity();
   const [saved, setSaved] = useLocalStorage<string[]>(SAVED_KEY, NO_SAVED);
 
   const items = useMemo(() => (Array.isArray(scriptures) ? scriptures.map(withFacts) : []), [scriptures]);
@@ -287,7 +273,7 @@ export function ScriptureLibraryClient({
 
   if (loadError || items.length === 0) {
     return (
-      <div className="mx-auto max-w-3xl px-5 py-12 sm:px-6">
+      <div className="mx-auto max-w-3xl px-gutter py-12">
         <LoadFailure onRetry={() => window.location.reload()} />
       </div>
     );
@@ -302,8 +288,8 @@ export function ScriptureLibraryClient({
       type="button"
       onClick={() => setViewMode(mode)}
       aria-pressed={viewMode === mode}
-      className={`focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-lg px-3 text-sm font-semibold transition sm:min-h-[40px] ${
-        viewMode === mode ? 'bg-saffron-700 text-white' : 'text-dharma-muted hover:text-dharma-text'
+      className={`focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-[7px] px-3 text-footnote transition sm:min-h-[32px] ${
+        viewMode === mode ? 'bg-dharma-card font-semibold text-dharma-text shadow-[0_1px_3px_rgba(0,0,0,0.12)]' : 'text-dharma-muted hover:text-dharma-text'
       }`}
     >
       <Icon className="h-4 w-4" aria-hidden="true" />
@@ -313,15 +299,15 @@ export function ScriptureLibraryClient({
   );
 
   return (
-    <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6">
-      {!online && (
+    <div className="mx-auto max-w-7xl px-gutter pb-20">
+      {online === false && (
         <div className="pt-5">
           <OfflineBanner />
         </div>
       )}
 
       {/* Sticky search: always in reach while scrolling a long list. */}
-      <div className="sticky top-[72px] z-30 -mx-5 border-b border-dharma-border/70 bg-dharma-bg/95 px-5 py-3 backdrop-blur sm:-mx-6 sm:px-6">
+      <div className="apple-bar sticky top-[52px] z-30 -mx-5 border-b px-5 py-3 sm:-mx-6 sm:px-6">
         <div className="mx-auto flex max-w-7xl items-center gap-3">
           <label className="relative block flex-1">
             <span className="sr-only">Search scriptures</span>
@@ -333,19 +319,19 @@ export function ScriptureLibraryClient({
               value={filters.q}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search title, Sanskrit name, author, topic…"
-              className="min-h-[48px] w-full rounded-xl border border-dharma-border bg-dharma-card py-2.5 pl-11 pr-4 text-base text-dharma-text outline-none transition placeholder:text-dharma-muted/70 focus:border-saffron-500 focus:ring-2 focus:ring-saffron-500/25"
+              className="min-h-[44px] w-full rounded-field border-0 bg-dharma-text/[0.06] py-2.5 pl-11 pr-4 text-body text-dharma-text outline-none transition placeholder:text-dharma-muted focus:ring-2 focus:ring-dharma-saffron/40"
             />
           </label>
           <button
             type="button"
             onClick={() => setSheetOpen(true)}
             aria-haspopup="dialog"
-            className="focus-ring relative inline-flex min-h-[48px] shrink-0 items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card px-4 text-sm font-semibold text-dharma-text transition hover:border-saffron-400 lg:hidden"
+            className="focus-ring relative inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-field bg-dharma-text/[0.06] px-4 text-subhead text-dharma-text transition lg:hidden"
           >
             <SlidersHorizontal className="h-4 w-4" aria-hidden="true" />
             Filters
             {activeCount > 0 && (
-              <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-saffron-700 px-1 text-[11px] font-bold text-white" aria-label={`${activeCount} active`}>
+              <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-dharma-saffron px-1 text-[11px] font-semibold text-dharma-bg" aria-label={`${activeCount} active`}>
                 {activeCount}
               </span>
             )}
@@ -355,13 +341,13 @@ export function ScriptureLibraryClient({
 
       <div className="pt-6 lg:grid lg:grid-cols-[17.5rem_minmax(0,1fr)] lg:gap-10">
         <aside aria-label="Filters" className="hidden lg:block">
-          <div className="sticky top-[168px] max-h-[calc(100dvh-190px)] overflow-y-auto rounded-2xl border border-dharma-border bg-dharma-card p-3">
+          <div className="sticky top-[136px] max-h-[calc(100dvh-160px)] overflow-y-auto rounded-[18px] bg-dharma-card p-3">
             <div className="flex items-center justify-between px-2 pb-2">
-              <h2 className="font-serif text-lg font-bold text-dharma-text">
+              <h2 className="text-body font-semibold text-dharma-text">
                 Filters <span lang="hi" className="ml-1 font-devanagari text-sm font-normal text-dharma-muted">फ़िल्टर</span>
               </h2>
               {activeCount > 0 && (
-                <button type="button" onClick={clearFilters} className="focus-ring min-h-[36px] rounded px-2 text-xs font-semibold text-saffron-800 hover:underline dark:text-saffron-300">
+                <button type="button" onClick={clearFilters} className="focus-ring min-h-[36px] rounded px-2 text-footnote text-dharma-saffron hover:underline">
                   Clear all
                 </button>
               )}
@@ -383,12 +369,12 @@ export function ScriptureLibraryClient({
               )}
             </p>
             <div className="flex min-w-0 max-w-full flex-wrap items-center gap-2">
-              <label className="inline-flex min-h-[44px] min-w-0 items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card pl-3 text-sm font-semibold text-dharma-muted">
+              <label className="inline-flex min-h-[36px] min-w-0 items-center gap-2 rounded-[9px] bg-dharma-text/[0.06] pl-3 text-footnote text-dharma-muted">
                 Sort
                 <select
                   value={sortMode}
                   onChange={(e) => setSortMode(e.target.value as SortMode)}
-                  className="min-h-[44px] cursor-pointer rounded-xl bg-transparent py-2 pl-1 pr-3 font-semibold text-dharma-text outline-none"
+                  className="min-h-[36px] cursor-pointer rounded-[9px] bg-transparent py-1.5 pl-1 pr-3 font-semibold text-dharma-text outline-none"
                 >
                   {SORT_OPTIONS.map((o) => (
                     <option key={o.id} value={o.id}>
@@ -397,7 +383,7 @@ export function ScriptureLibraryClient({
                   ))}
                 </select>
               </label>
-              <div role="group" aria-label="Card view" className="inline-flex rounded-xl border border-dharma-border bg-dharma-card p-0.5">
+              <div role="group" aria-label="Card view" className="inline-flex rounded-[9px] bg-dharma-text/[0.06] p-0.5">
                 {viewButton('compact', 'Compact', LayoutGrid)}
                 {viewButton('detailed', 'Detailed', LayoutList)}
               </div>
@@ -412,7 +398,7 @@ export function ScriptureLibraryClient({
                     type="button"
                     onClick={chip.clear}
                     aria-label={`Remove filter: ${chip.label}`}
-                    className="focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full border border-saffron-300 bg-saffron-50 pl-3.5 pr-2.5 text-sm font-medium text-saffron-900 transition hover:bg-saffron-100 dark:border-saffron-700 dark:bg-saffron-950/40 dark:text-saffron-200"
+                    className="focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full bg-dharma-saffron/10 pl-3.5 pr-2.5 text-sm text-dharma-saffron transition hover:bg-dharma-saffron/15"
                   >
                     {chip.label}
                     <X className="h-3.5 w-3.5" aria-hidden="true" />
@@ -428,6 +414,8 @@ export function ScriptureLibraryClient({
           )}
 
           <div className="mt-6">
+            {/* Parent heading for the cards' h3s (the visible Filters h2 is desktop-only). */}
+            <h2 className="sr-only">ग्रंथ · Texts</h2>
             {results.length === 0 ? (
               activeCount > 0 ? (
                 <FilteredEmpty
@@ -443,7 +431,7 @@ export function ScriptureLibraryClient({
                 <NoResults query={filters.q.trim()} onClear={() => setQuery('')} />
               )
             ) : (
-              <ul className={`grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 2xl:grid-cols-3'}`}>
+              <ul className={`reveal-grid grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'}`}>
                 {results.map((item) => (
                   <li key={item.id} className="min-w-0">
                     <LibraryCard
