@@ -87,13 +87,9 @@ export function ToolCard({
     amber: '#b45309',
   };
   return (
-    <section className="apple-card flex h-full flex-col p-5 sm:p-6">
+    <section className="apple-card flex h-full flex-col p-5 sm:p-6" style={{ '--chip': tints[accent] } as CSSProperties}>
       <div className="mb-4 flex items-center gap-3">
-        <div
-          className="apple-tint-chip [&_svg]:!text-white"
-          style={{ '--chip': tints[accent] } as CSSProperties}
-          aria-hidden="true"
-        >
+        <div className="apple-tint-chip [&_svg]:!text-white" aria-hidden="true">
           {icon}
         </div>
         <div className="min-w-0">

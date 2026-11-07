@@ -12,6 +12,7 @@ from the same tokens, so it reads the same in all four themes (Usha, Sandhyā, B
 | `app/globals.css` | Fonts, the four theme palettes (`--dharma-*`), base styles and older component rules. |
 | `app/styles/components.css` | Shared components built only from tokens (`.apple-*`, `.material-*`). |
 | `app/motion.css` | The motion system: reveals, cascades, hero, tilt, sheen, ticker, theme transition. |
+| `app/styles/colour.css` | Colour and life: the page aurora, dawn titles, coloured cards and icon tiles, gradient buttons, spectrum rules. Loaded last. |
 | `tailwind.config.ts` | Tailwind names for the same tokens. |
 | `app/components/apple/PageHeader.tsx` | `PageHeader`, `SectionTitle` and `Eyebrow`. |
 
@@ -101,6 +102,49 @@ Materials are the canvas made translucent, for anything that floats over content
 Elevation (`shadow-hairline`, `shadow-raised`, `shadow-lifted`, `shadow-overlay`) is a soft
 neutral shadow on Usha, a warm one on Sandhyā and Bhojpatra, and none on Rātri, where a card
 is lifted by a lighter surface instead, as in Apple's dark mode.
+
+## Colour: the sacred spectrum
+
+Beyond the one saffron tint, every page draws colour from seven hues in `tokens.css`, deep on
+the light themes and luminous on Rātri:
+
+| Token | Hue |
+| --- | --- |
+| `--hue-saffron` | agni, the tint's own family |
+| `--hue-vermilion` | sindūr |
+| `--hue-gold` | svarṇa |
+| `--hue-lotus` | padma |
+| `--hue-indigo` | nīla |
+| `--hue-peacock` | mayūra |
+| `--hue-tulsi` | tulsī |
+
+Mixed from them: `--gradient-dawn` (saffron to vermilion to lotus, for titles and highlights),
+`--gradient-spectrum` (all seven, for rules, progress and hairlines) and `--gradient-action`
+(the filled button). `--tone-wash`, `--tone-edge`, `--tone-glow` and `--tone-aurora` set how
+strongly colour shows in each theme, so a component never needs four copies.
+
+`app/styles/colour.css` applies them to the existing hooks, so pages need no changes:
+
+- **Aurora**: a fixed layer of soft colour pools behind every page that drifts on a 48s loop.
+  Page wrappers with `bg-dharma-bg` let it show (the body paints the same colour). On chapter
+  and verse pages it sinks to a whisper and holds still.
+- **Titles**: `.ink-dawn` sets English display text in dawn ink (PageHeader titles, the hero's
+  "Complete."). Never on Devanagari. `.eyebrow-capsule` turns a PageHeader eyebrow into a tinted
+  capsule led by a breathing dot.
+- **Cards**: every `.apple-card` carries `--card-hue`: the `--chip` colour set on the card, or
+  else the next spectrum hue in turn, so a grid reads as a garland. The hue shows as a lit top
+  edge, a corner wash and, on a link card, a glow under the pointer. Set `--chip` on the card,
+  not on its icon tile, so both share it.
+- **Icon tiles** (`.apple-tint-chip`) are lit from above and lean in on a spring when their card
+  is hovered.
+- **Actions**: `.apple-pill`, `.cta-primary` and any `a`/`button` with `bg-dharma-saffron` wear
+  `--gradient-action` with a tinted glow.
+- **Header and rules**: the current nav link has a dawn underline, the scroll-progress hairline
+  and `.section-rule` are the spectrum, the footer opens with a spectrum hairline.
+- **Library books** (`.home-book`) get a wash, spine and glow in the scripture's own colour.
+
+Reduced motion, the lite, low-power and data-saver modes stop every loop; forced colours and
+print drop the aurora and washes.
 
 ## Components
 

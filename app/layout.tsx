@@ -19,6 +19,8 @@ import "./globals.css";
 import "./styles/components.css";
 // The motion system (reveals, tilt, hero halo, theme transition) sits over the base styles.
 import "./motion.css";
+// Colour and life (the sacred spectrum on cards, buttons, titles and the page aurora) goes last.
+import "./styles/colour.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
 import { StoragePersistenceRequest } from "@/app/components/StoragePersistenceRequest";

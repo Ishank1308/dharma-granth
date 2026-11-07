@@ -136,7 +136,7 @@ export function PracticeDashboard() {
             <Link
               key={href}
               href={href}
-              className="apple-card flex min-h-[60px] items-center gap-3 px-4 py-3 transition hover:-translate-y-0.5"
+              className="apple-card flex min-h-[60px] items-center gap-3 px-4 py-3"
             >
               <span className="apple-tint-chip" aria-hidden="true">
                 <Icon className="h-4 w-4" />

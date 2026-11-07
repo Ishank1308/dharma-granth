@@ -192,12 +192,92 @@
     --separator: color-mix(in srgb, var(--dharma-text) 14%, transparent);
     --on-tint: #000;
     --tint-fill: color-mix(in srgb, var(--dharma-saffron) 18%, transparent);
-    --shadow-hairline: none;
-    --shadow-raised: none;
+    /* A transparent shadow rather than `none`, so a list that adds a coloured glow after
+       it (colour.css, the verse card) stays valid. */
+    --shadow-hairline: 0 0 #0000;
+    --shadow-raised: 0 0 #0000;
     --shadow-lifted: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 22px 50px -16px rgba(0, 0, 0, 0.8);
     --shadow-overlay: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 90px -20px rgba(0, 0, 0, 0.9);
     --shadow-control: 0 1px 3px rgba(0, 0, 0, 0.4);
     --surface-segment: #636366;
+}
+
+/* 6. Colour: the sacred spectrum ─────────────────────────────────────────
+   Seven hues the whole site draws its colour from, beyond the one saffron tint:
+   saffron (agni), vermilion (sindūr), gold (svarṇa), lotus (padma), indigo (nīla),
+   peacock (mayūra) and tulsī. Light themes use the deep shades, Rātri the luminous
+   ones. Gradients and glows are mixed from them, so a coloured card, a button, the
+   page aurora and a section rule all speak the same palette. app/styles/colour.css
+   applies them. */
+:root,
+:root[data-theme='day'] {
+    --hue-saffron: #ea580c;
+    --hue-vermilion: #e11d48;
+    --hue-gold: #d97706;
+    --hue-lotus: #db2777;
+    --hue-indigo: #4f46e5;
+    --hue-peacock: #0d9488;
+    --hue-tulsi: #16a34a;
+
+    /* How strongly colour shows: the wash inside a card, its edge, its glow, the aurora. */
+    --tone-wash: 9%;
+    --tone-edge: 22%;
+    --tone-glow: 38%;
+    --tone-aurora: 20%;
+}
+:root[data-theme='sunset'] {
+    --tone-wash: 11%;
+    --tone-aurora: 22%;
+}
+:root[data-theme='paper'] {
+    --hue-saffron: #c2410c;
+    --hue-vermilion: #be123c;
+    --hue-gold: #b45309;
+    --hue-lotus: #be185d;
+    --hue-indigo: #4338ca;
+    --hue-peacock: #0f766e;
+    --hue-tulsi: #15803d;
+    --tone-wash: 8%;
+    --tone-aurora: 16%;
+}
+:root[data-theme='night'],
+:root[data-theme='dark'] {
+    --hue-saffron: #fb923c;
+    --hue-vermilion: #fb7185;
+    --hue-gold: #fbbf24;
+    --hue-lotus: #f472b6;
+    --hue-indigo: #818cf8;
+    --hue-peacock: #2dd4bf;
+    --hue-tulsi: #4ade80;
+    --tone-wash: 15%;
+    --tone-edge: 28%;
+    --tone-glow: 34%;
+    --tone-aurora: 20%;
+}
+:root {
+    /* Dawn: saffron through vermilion to lotus, for titles and highlights. */
+    --gradient-dawn: linear-gradient(100deg, var(--hue-saffron), var(--hue-vermilion) 55%, var(--hue-lotus));
+    /* The whole spectrum, for rules, progress and hairlines. */
+    --gradient-spectrum: linear-gradient(
+        90deg,
+        var(--hue-saffron),
+        var(--hue-gold) 17%,
+        var(--hue-tulsi) 33%,
+        var(--hue-peacock) 50%,
+        var(--hue-indigo) 67%,
+        var(--hue-lotus) 83%,
+        var(--hue-vermilion)
+    );
+    /* A filled action: the tint, warmed with gold at its top and deepened toward vermilion. */
+    --gradient-action: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--tint) 82%, var(--hue-gold)),
+        var(--tint) 45%,
+        color-mix(in srgb, var(--tint) 62%, var(--hue-vermilion))
+    );
+    /* Coloured glows are written where they are used (colour.css), from the element's own
+       hue variable: a custom property that refers to another is resolved where it is
+       declared, so a glow token here could never follow a card's own colour. */
 }
 
 /* Reduced motion: every token duration collapses, so anything built on the tokens

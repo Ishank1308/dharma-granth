@@ -1,0 +1,422 @@
+/* ── Colour and life ──────────────────────────────────────────────────────
+   The layer that gives every page its colour, loaded last (after motion.css). It is built
+   from the sacred spectrum in tokens.css (--hue-*, --gradient-*, --tone-*), so it reads
+   the same in Usha, Sandhyā, Bhojpatra and Rātri, and it only restyles existing hooks
+   (.apple-card, .apple-tint-chip, .apple-pill, the header, PageHeader), so no page has to
+   opt in.
+
+   1. Aurora: a slow field of colour behind every page
+   2. Titles and eyebrows: dawn-coloured ink, a living capsule
+   3. Section rules and the header: the spectrum as a hairline
+   4. Cards: each one carries a hue, glows in it under the pointer
+   5. Icon tiles: lit from above, they spring when their card is touched
+   6. Actions: filled buttons in the dawn gradient, with a glow
+   7. Controls: segmented control, fields, selection, scrollbars
+   8. Library books: a wash and glow in the scripture's own colour
+   9. Quiet modes, reduced motion, print and forced colours
+
+   Rules (docs/design-system.md): the exported HTML is the readable state, only transform
+   and opacity loop, and reading pages (chapter and verse) keep a still aurora and nothing
+   that loops. */
+
+/* 1. Aurora ──────────────────────────────────────────────────────────────
+   Three soft pools of colour (saffron, lotus, peacock with indigo) on a fixed layer behind
+   the page. Page wrappers that painted the canvas colour let it show through; the body
+   already paints that colour. It drifts on a long loop, transform only, and holds still on
+   reading pages, under reduced motion and in the quiet modes. */
+body::before {
+    content: '';
+    position: fixed;
+    inset: -12vmax;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(38vmax 30vmax at 12% 8%, color-mix(in srgb, var(--hue-saffron) var(--tone-aurora), transparent), transparent 70%),
+        radial-gradient(34vmax 28vmax at 88% 18%, color-mix(in srgb, var(--hue-lotus) calc(var(--tone-aurora) * 0.8), transparent), transparent 70%),
+        radial-gradient(40vmax 30vmax at 70% 92%, color-mix(in srgb, var(--hue-peacock) calc(var(--tone-aurora) * 0.7), transparent), transparent 70%),
+        radial-gradient(30vmax 24vmax at 18% 80%, color-mix(in srgb, var(--hue-indigo) calc(var(--tone-aurora) * 0.6), transparent), transparent 70%);
+    transform: translate3d(0, 0, 0);
+}
+main.bg-dharma-bg:not([data-chapter-reading]):not([data-cosmos]) {
+    background-color: transparent;
+}
+/* Reading pages: the aurora sinks to a whisper so the verse is the only colour. */
+body:has(main[data-chapter-reading], .verse-card.single-verse)::before {
+    opacity: 0.45;
+}
+@keyframes aurora-drift {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    33% { transform: translate3d(3vmax, -2vmax, 0) scale(1.05); }
+    66% { transform: translate3d(-2vmax, 2.5vmax, 0) scale(0.97); }
+    100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+        body:not(:has(main[data-chapter-reading], .verse-card.single-verse))::before {
+        animation: aurora-drift 48s var(--ease-in-out) infinite;
+        will-change: transform;
+    }
+}
+
+/* PageHeader's own glow joins the spectrum: saffron at the heart, lotus and peacock at
+   its edges, turning slowly on pages that are not for reading. */
+.aura-header {
+    background:
+        radial-gradient(ellipse 45% 70% at 30% 50%, color-mix(in srgb, var(--hue-saffron) 22%, transparent), transparent 70%),
+        radial-gradient(ellipse 40% 65% at 62% 40%, color-mix(in srgb, var(--hue-lotus) 16%, transparent), transparent 70%),
+        radial-gradient(ellipse 40% 70% at 85% 60%, color-mix(in srgb, var(--hue-peacock) 14%, transparent), transparent 70%);
+}
+:root:is([data-theme='night'], [data-theme='dark'], [data-theme='sunset'], [data-theme='paper']) .aura-header {
+    background:
+        radial-gradient(ellipse 45% 70% at 30% 50%, color-mix(in srgb, var(--hue-saffron) 20%, transparent), transparent 70%),
+        radial-gradient(ellipse 40% 65% at 62% 40%, color-mix(in srgb, var(--hue-lotus) 15%, transparent), transparent 70%),
+        radial-gradient(ellipse 40% 70% at 85% 60%, color-mix(in srgb, var(--hue-indigo) 15%, transparent), transparent 70%);
+}
+@keyframes aura-breathe {
+    0%, 100% { transform: translate3d(-50%, 0, 0) scale(1); opacity: 0.6; }
+    50% { transform: translate3d(-48%, 4%, 0) scale(1.08); opacity: 0.85; }
+}
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']) .aura-header {
+        animation: aura-breathe 14s var(--ease-in-out) infinite;
+    }
+}
+
+/* 2. Titles and eyebrows ───────────────────────────────────────────────
+   .ink-dawn sets English display text in dawn-coloured ink: the label colour flowing into
+   saffron, vermilion and lotus. Only where the browser can clip a background to text, so
+   elsewhere it stays plain ink. Never on Devanagari (a reph above the box would be cut). */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .ink-dawn {
+        background-image: linear-gradient(
+            100deg,
+            var(--label-primary) 0%,
+            var(--label-primary) 22%,
+            var(--hue-saffron) 55%,
+            var(--hue-vermilion) 78%,
+            var(--hue-lotus) 100%
+        );
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        /* Descenders (g, y, p) sit inside the painted box. */
+        padding-bottom: 0.08em;
+    }
+    /* The hero's second line is all colour. */
+    .ink-dawn-full {
+        background-image: var(--gradient-dawn);
+    }
+    @media (forced-colors: active) {
+        .ink-dawn {
+            background: none;
+            -webkit-text-fill-color: currentColor;
+            color: CanvasText;
+        }
+    }
+}
+
+/* The eyebrow over every page title becomes a small capsule in the tint, led by a dot of
+   the dawn gradient that breathes. */
+.eyebrow-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    background:
+        linear-gradient(var(--surface-raised), var(--surface-raised)) padding-box,
+        linear-gradient(100deg, color-mix(in srgb, var(--hue-saffron) 45%, transparent), color-mix(in srgb, var(--hue-lotus) 35%, transparent)) border-box;
+    background-color: transparent;
+    border: 1px solid transparent;
+    box-shadow: 0 6px 18px -10px color-mix(in srgb, var(--hue-saffron) 60%, transparent);
+}
+.eyebrow-capsule::before {
+    content: '';
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: var(--radius-pill);
+    background-image: var(--gradient-dawn);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--hue-saffron) 18%, transparent);
+}
+@keyframes eyebrow-breathe {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(0.7); opacity: 0.65; }
+}
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true'])
+        body:not(:has(main[data-chapter-reading])) .eyebrow-capsule::before {
+        animation: eyebrow-breathe 3.2s var(--ease-in-out) infinite;
+    }
+}
+
+/* 3. Section rules and the header ──────────────────────────────────────
+   The heading accent becomes the spectrum, a little longer and bolder. */
+.section-rule {
+    width: 3.5rem;
+    height: 3px;
+    background: var(--gradient-spectrum);
+    box-shadow: 0 2px 10px -2px color-mix(in srgb, var(--hue-saffron) 45%, transparent);
+}
+
+/* The reading-progress hairline under the header runs through the spectrum. */
+.nav-progress {
+    height: 2px;
+    background-image: var(--gradient-spectrum);
+    background-color: transparent;
+}
+
+/* Header links: the current page is underlined with a short dawn bar; any other link grows
+   one from the centre under the pointer. */
+.apple-bar a.relative[href] {
+    --link-bar-scale: 0;
+}
+.apple-bar a.relative[href]::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    width: calc(100% - 1.25rem);
+    max-width: 3rem;
+    height: 2px;
+    border-radius: var(--radius-pill);
+    background-image: var(--gradient-dawn);
+    transform: translate3d(-50%, 0, 0) scaleX(var(--link-bar-scale));
+    transition: transform var(--duration-standard) var(--motion-spring);
+    pointer-events: none;
+}
+.apple-bar a.relative[href][aria-current='page'] {
+    --link-bar-scale: 1;
+}
+@media (hover: hover) {
+    .apple-bar a.relative[href]:hover {
+        --link-bar-scale: 0.6;
+    }
+    .apple-bar a.relative[href][aria-current='page']:hover {
+        --link-bar-scale: 1;
+    }
+}
+
+/* The footer opens with the spectrum as a hairline. */
+footer[aria-labelledby='footer-heading'] {
+    border-top-color: transparent;
+    background-image: var(--gradient-spectrum);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+}
+
+/* 4. Cards ──────────────────────────────────────────────────────────────
+   Each card carries a hue: its icon tile's colour when the page gives one (--chip on the
+   card), otherwise the next hue of the spectrum in turn, so a grid of cards reads as a
+   garland rather than a wall of white. The hue shows as a lit top edge, a faint wash in
+   the corner and, under the pointer, a glow. */
+.apple-card {
+    --card-hue: var(--chip, var(--cycle-hue, var(--tint)));
+    box-shadow:
+        var(--shadow-raised),
+        inset 0 1px 0 color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) + 18%), transparent),
+        inset 0 0 0 1px color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) * 0.6), transparent),
+        0 18px 40px -30px color-mix(in srgb, var(--card-hue) var(--tone-glow), transparent);
+}
+:root:is([data-theme='night'], [data-theme='dark']) .apple-card {
+    /* Deep icon colours lift toward light on the dark canvas. */
+    --card-hue: color-mix(in srgb, var(--chip, var(--cycle-hue, var(--tint))) 72%, var(--color-absolute-white));
+}
+.apple-card:not([class*='bg-gradient']) {
+    background-image: radial-gradient(
+        130% 90% at 0% 0%,
+        color-mix(in srgb, var(--card-hue) var(--tone-wash), transparent),
+        transparent 60%
+    );
+}
+:nth-child(6n + 1) > .apple-card,
+.apple-card:nth-child(6n + 1) { --cycle-hue: var(--hue-saffron); }
+:nth-child(6n + 2) > .apple-card,
+.apple-card:nth-child(6n + 2) { --cycle-hue: var(--hue-peacock); }
+:nth-child(6n + 3) > .apple-card,
+.apple-card:nth-child(6n + 3) { --cycle-hue: var(--hue-indigo); }
+:nth-child(6n + 4) > .apple-card,
+.apple-card:nth-child(6n + 4) { --cycle-hue: var(--hue-lotus); }
+:nth-child(6n + 5) > .apple-card,
+.apple-card:nth-child(6n + 5) { --cycle-hue: var(--hue-tulsi); }
+:nth-child(6n + 6) > .apple-card,
+.apple-card:nth-child(6n + 6) { --cycle-hue: var(--hue-gold); }
+
+/* Cards that are links lift into their colour under the pointer and give under a tap. */
+a.apple-card,
+.apple-card-link {
+    transition:
+        transform var(--duration-base) var(--motion-spring),
+        box-shadow var(--duration-standard) var(--ease-out);
+}
+@media (hover: hover) {
+    a.apple-card:hover,
+    .apple-card-link:hover {
+        transform: translate3d(0, -4px, 0);
+        box-shadow:
+            var(--shadow-lifted),
+            inset 0 1px 0 color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) + 30%), transparent),
+            inset 0 0 0 1px color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) + 10%), transparent),
+            0 26px 50px -22px color-mix(in srgb, var(--card-hue) calc(var(--tone-glow) + 14%), transparent);
+    }
+}
+a.apple-card:active,
+.apple-card-link:active {
+    transform: translate3d(0, -1px, 0) scale(0.985);
+    transition-duration: var(--duration-instant);
+}
+a.apple-card:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring), var(--shadow-raised);
+}
+
+/* 5. Icon tiles ──────────────────────────────────────────────────────────
+   Lit from the upper left, with a soft glow in their own colour; when their card is
+   touched they lean in on a spring. */
+.apple-tint-chip {
+    --tile: var(--chip, var(--card-hue, var(--tint)));
+    background-color: var(--tile);
+    background-image: linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--tile) 70%, var(--color-absolute-white)) 0%,
+        var(--tile) 55%,
+        color-mix(in srgb, var(--tile) 78%, var(--color-absolute-black)) 100%
+    );
+    box-shadow:
+        inset 0 1px 0 color-mix(in srgb, var(--color-absolute-white) 35%, transparent),
+        0 6px 14px -6px color-mix(in srgb, var(--tile) 75%, transparent);
+    transition: transform var(--duration-base) var(--motion-spring);
+}
+:root:is([data-theme='night'], [data-theme='dark']) .apple-tint-chip {
+    background-image: linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--tile) 85%, var(--color-absolute-white)) 0%,
+        color-mix(in srgb, var(--tile) 80%, var(--color-absolute-black)) 100%
+    );
+}
+@media (hover: hover) {
+    :is(a, .apple-card-link):hover .apple-tint-chip {
+        transform: rotate(-8deg) scale(1.12);
+    }
+}
+
+/* 6. Actions ─────────────────────────────────────────────────────────────
+   The filled button wears the action gradient and glows in the tint; it brightens and
+   lifts under the pointer. The tinted (quiet) pill is left as it is. */
+.apple-pill:not(.apple-pill-tinted),
+.cta-primary,
+:is(a, button).bg-dharma-saffron {
+    background-image: var(--gradient-action);
+    box-shadow:
+        inset 0 1px 0 color-mix(in srgb, var(--color-absolute-white) 28%, transparent),
+        0 10px 24px -12px color-mix(in srgb, var(--tint) 75%, transparent);
+    transition:
+        transform var(--duration-base) var(--motion-spring),
+        box-shadow var(--duration-standard) var(--ease-out),
+        filter var(--duration-fast) var(--ease-standard);
+}
+@media (hover: hover) {
+    .apple-pill:not(.apple-pill-tinted):hover,
+    .cta-primary:hover,
+    :is(a, button).bg-dharma-saffron:hover {
+        opacity: 1;
+        filter: saturate(1.15) brightness(1.04);
+        transform: translate3d(0, -1px, 0);
+        box-shadow:
+            inset 0 1px 0 color-mix(in srgb, var(--color-absolute-white) 32%, transparent),
+            0 16px 32px -12px color-mix(in srgb, var(--tint) 85%, transparent);
+    }
+}
+:is(.apple-pill:not(.apple-pill-tinted), .cta-primary, :is(a, button).bg-dharma-saffron):active {
+    transform: scale(0.97);
+    transition-duration: var(--duration-instant);
+}
+:is(a, button).bg-dharma-saffron:disabled {
+    background-image: none;
+    box-shadow: none;
+    filter: none;
+}
+
+/* 7. Controls ───────────────────────────────────────────────────────────── */
+/* The selected segment takes the tint for its label, with a short dawn underline. */
+.apple-segmented > button[aria-pressed='true'] {
+    color: var(--tint);
+    background-image: var(--gradient-dawn);
+    background-size: min(calc(100% - 1.5rem), 2rem) 2px;
+    background-position: center bottom 4px;
+    background-repeat: no-repeat;
+}
+:root:is([data-theme='night'], [data-theme='dark']) .apple-segmented > button[aria-pressed='true'] {
+    color: var(--label-primary);
+}
+
+/* Fields glow in the tint while they are being typed in. */
+.apple-field:focus {
+    box-shadow:
+        0 0 0 4px color-mix(in srgb, var(--tint) 16%, transparent),
+        0 10px 28px -14px color-mix(in srgb, var(--tint) 60%, transparent);
+}
+
+/* Selected text and scrollbars in the tint. */
+::selection {
+    background-color: color-mix(in srgb, var(--hue-saffron) 26%, transparent);
+}
+:root {
+    scrollbar-color: color-mix(in srgb, var(--tint) 45%, transparent) transparent;
+}
+
+/* 8. Library books ──────────────────────────────────────────────────────
+   A scripture's card (LibraryCard, --book-ink) gets a wash of its own colour in the top
+   corner, a spine that shades into gold, and a glow in that colour under the pointer. */
+.home-book {
+    background-image: radial-gradient(
+        110% 70% at 100% 0%,
+        color-mix(in srgb, var(--book-ink) var(--tone-wash), transparent),
+        transparent 62%
+    );
+    box-shadow:
+        var(--shadow-raised),
+        inset 0 1px 0 color-mix(in srgb, var(--book-ink) var(--tone-edge), transparent);
+}
+.home-book > span[aria-hidden='true']:first-child {
+    background-image: linear-gradient(180deg, var(--book-ink), color-mix(in srgb, var(--book-ink) 55%, var(--hue-gold)));
+}
+@media (hover: hover) {
+    .home-book:hover {
+        box-shadow:
+            var(--shadow-lifted),
+            inset 0 1px 0 color-mix(in srgb, var(--book-ink) calc(var(--tone-edge) + 20%), transparent),
+            0 26px 50px -22px color-mix(in srgb, var(--book-ink) calc(var(--tone-glow) + 10%), transparent);
+    }
+}
+
+/* 9. Quiet modes, reduced motion, print and forced colours ─────────────── */
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) body::before,
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .aura-header {
+    animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    a.apple-card:hover,
+    .apple-card-link:hover,
+    :is(a, .apple-card-link):hover .apple-tint-chip,
+    :is(.apple-pill, .cta-primary, :is(a, button).bg-dharma-saffron):hover {
+        transform: none;
+    }
+}
+@media (prefers-contrast: more), (forced-colors: active) {
+    body::before {
+        display: none;
+    }
+}
+@media print {
+    body::before {
+        display: none;
+    }
+    .apple-card,
+    .home-book {
+        background-image: none;
+        box-shadow: none;
+    }
+}
