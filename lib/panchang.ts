@@ -1994,6 +1994,7 @@ export const VARA_DATA: VaraMeta[] = [
     recommendedStotras: [
       { title: 'Shri Suktam (श्रीसूक्तम्)', href: '/mantras/shri-suktam/' },
       { title: 'Kanakadhara Stotram (कनकधारा स्तोत्रम्)', href: '/mantras/kanakadhara-stotram/' },
+      { title: 'Lalita Sahasranama (ललिता सहस्रनाम स्तोत्रम्)', href: '/mantras/lalita-sahasranama/' },
       { title: 'Mahishasura Mardini Stotram (महिषासुरमर्दिनीस्तोत्रम्)', href: '/mantras/mahishasura-mardini-stotram/' },
       { title: 'Devi Kavacham (देवीकवचम्)', href: '/mantras/devi-kavacham/' },
       { title: 'Argala Stotram (अर्गलास्तोत्रम्)', href: '/mantras/argala-stotram/' },

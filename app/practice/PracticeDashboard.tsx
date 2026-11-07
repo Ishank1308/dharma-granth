@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { retryImport } from '@/lib/retry-import';
 import Link from 'next/link';
 import { PageHeader } from '@/app/components/apple/PageHeader';
-import { Lock, Trash2, Bookmark, NotebookPen, LayoutDashboard, BarChart3, HardDriveDownload, BellRing } from 'lucide-react';
+import { Lock, Trash2, Bookmark, NotebookPen, LayoutDashboard, BarChart3, HardDriveDownload, BellRing, ScrollText } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((module) => module.DailyVerse)));
 const DailyReflection = dynamic(() => retryImport(() => import('@/app/components/practice/DailyReflection').then((module) => module.DailyReflection)));
@@ -75,6 +75,7 @@ const TOOL_GROUPS: Array<{
 ];
 
 const MY_SPACE = [
+  { href: '/practice/gita-sankalpa/', hi: 'गीता संकल्प', en: 'Gita Sankalpa', Icon: ScrollText },
   { href: '/practice/bookmarks/', hi: 'सुरक्षित श्लोक', en: 'Saved verses', Icon: Bookmark },
   { href: '/practice/desk/', hi: 'अध्ययन-पटल', en: 'Study desk', Icon: LayoutDashboard },
   { href: '/practice/journal/', hi: 'स्वाध्याय डायरी', en: 'Journal', Icon: NotebookPen },
