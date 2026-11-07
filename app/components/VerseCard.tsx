@@ -173,6 +173,8 @@ interface Props {
   onToggleSpatial?: () => void;
   /** Dedicated verse page, linked from the card so the URL survives hydration. */
   versePageHref?: string;
+  /** The reader asked for this verse's study (tapped its number in the chapter): open it, full study included. */
+  studyRequested?: boolean;
   /** Whether this verse is currently being recited */
   isReciting?: boolean;
   /** Callback to trigger recitation of this verse */
@@ -297,6 +299,7 @@ export function VerseCard({
   spatialFocused = false,
   onToggleSpatial,
   versePageHref,
+  studyRequested = false,
   isReciting,
   onPlayRecitation,
   insight,
@@ -857,9 +860,10 @@ export function VerseCard({
 
             {hasStudyContent && (
               <VerseStudyDisclosure
-                key={`${depth}:${layers.commentary}`}
+                key={`${depth}:${layers.commentary}:${studyRequested ? 1 : 0}`}
                 depth={depth}
-                defaultOpen={depth !== 'read' && layers.commentary}
+                defaultOpen={studyRequested || (depth !== 'read' && layers.commentary)}
+                loadFullStudy={studyRequested}
                 canDeepen={Boolean(v.wordMeaning || science || v.keywords?.length)}
                 versePageHref={versePageHref}
               >
@@ -978,7 +982,7 @@ export function VerseCard({
                                   )}
                                 </div>
                               </div>
-                              <p lang="hi" className="font-devanagari text-sm leading-loose text-dharma-text md:text-base">
+                              <p lang="hi" className="font-devanagari text-base leading-loose text-dharma-text">
                                 {vyakhya}
                               </p>
                             </div>
@@ -990,7 +994,7 @@ export function VerseCard({
                                 <p className="text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">Commentary &amp; Explanation</p>
                                 <ContentLabelBadge kind="explanation" />
                               </div>
-                              <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text md:text-base">{commentary}</p>
+                              <p lang="en" className="font-serif text-base leading-relaxed text-dharma-text">{commentary}</p>
                             </div>
                           )}
 
