@@ -153,7 +153,7 @@ export function ProgressiveVerseCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
       transition={reduceMotion ? { duration: 0 } : { duration: 0.65, ease: EASE }}
-      className="relative overflow-hidden rounded-[28px] border border-[#514238] bg-[#1A1614] text-[#E6D5B8] shadow-[0_18px_55px_rgba(0,0,0,0.28)]"
+      className="relative overflow-hidden rounded-panel border border-[#514238] bg-[#1A1614] text-[#E6D5B8] shadow-[0_18px_55px_rgba(0,0,0,0.28)]"
       aria-label={`श्लोक ${verse.number}`}
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D97706]/70 to-transparent" aria-hidden="true" />

@@ -55,9 +55,16 @@ if (existsSync(DATA)) {
   }
 }
 
-// Archives in public/ (e.g. pinterest/katha/katha-pinterest-jpg.zip, 26 MB)
+// Archives and generator scratch folders in public/ (e.g. pinterest/, 224 MB)
 // are working bundles no page links to; one exceeds the 25 MiB file limit.
+const PINTEREST_DIR = join(DIST, 'pinterest');
+if (existsSync(PINTEREST_DIR)) {
+  freed += remove(PINTEREST_DIR);
+  console.log(`  pruned dist/pinterest (generator scratch, not linked)`);
+}
+
 (function dropArchives(dir) {
+  if (!existsSync(dir)) return;
   for (const name of readdirSync(dir)) {
     const path = join(dir, name);
     if (statSync(path).isDirectory()) dropArchives(path);

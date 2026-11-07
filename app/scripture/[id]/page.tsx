@@ -14,6 +14,7 @@ import { ChevronRight } from 'lucide-react';
 
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
+import { OfflineScriptureToggle } from '@/app/components/scripture/OfflineScriptureToggle';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -245,11 +246,37 @@ export default async function ScripturePage(props: PageProps) {
                 </span>
               </p>
             )}
+            <OfflineScriptureToggle scriptureId={meta.id} title={meta.title} />
           </FadeUp>
         </div>
         <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} className="mx-auto" />
         </div>
       </section>
+
+      {meta.id === 'bhagavadgita' && (
+        <div className="mx-auto max-w-5xl px-6 pt-6">
+          <div className="relative overflow-hidden rounded-3xl border border-saffron-500/40 bg-gradient-to-r from-saffron-500/15 via-amber-500/10 to-transparent p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+            <div className="space-y-1">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-saffron-500/40 bg-saffron-500/20 px-3 py-0.5 text-xs font-bold text-saffron-900 dark:text-saffron-200">
+                <span>नित्य स्वाध्याय संकल्प · Daily Svadhyaya</span>
+              </span>
+              <h2 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+                श्रीमद्भगवद्गीता नित्य स्वाध्याय एवं पारायण संकल्प
+              </h2>
+              <p className="text-xs sm:text-sm text-dharma-muted max-w-xl">
+                18-दिवसीय पारायण, नित्य अध्याय नियम, पारम्परिक संकल्प मन्त्र, साधना स्ट्रीक ट्रैकर और संपूर्ण गीता ऑफ़लाइन सहेजें।
+              </p>
+            </div>
+            <Link
+              href="/practice/gita-sankalpa/"
+              className="shrink-0 inline-flex items-center gap-2 rounded-2xl bg-saffron-600 hover:bg-saffron-700 text-white px-5 py-3 text-xs sm:text-sm font-bold shadow-xs transition"
+            >
+              <span>संकल्प लें · Begin Sankalpa</span>
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      )}
 
       <div className="mx-auto max-w-5xl px-6 pb-10 pt-5 sm:pt-7">
         <ScriptureContents

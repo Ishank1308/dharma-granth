@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, type ReactNode } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { BookOpen, Command, Languages, MessageSquareQuote, Volume2 } from 'lucide-react';
 import { openGlobalSearch } from '@/lib/search-events';
 import { SPRING } from './motion';

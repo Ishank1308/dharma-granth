@@ -1,9 +1,9 @@
+import React from 'react';
 import { toAsciiDigits } from '@/lib/verse-format';
 import type { NearbyMeaning } from '@/lib/verse-has-meaning';
 
 /**
- * What a reader sees where a verse has no meaning yet. Publishing leaves out meanings that belong to other verses
- * (scripts/lib/meaning-alignment.ts) until they are matched again against a printed edition, so this says so plainly,
+ * What a reader sees where a verse has no meaning yet. The notice states only what this component can establish,
  * keeps the verse readable, and points to the nearest verses that do have a meaning.
  */
 
@@ -35,16 +35,14 @@ export function MeaningPendingNotice({
   return (
     <section aria-labelledby="meaning-pending-title" className="mb-8 rounded-2xl border border-dashed border-dharma-border bg-dharma-bg/60 p-4 sm:p-5">
       <h2 id="meaning-pending-title" className="text-sm font-semibold text-dharma-text">
-        <span lang="hi" className="font-devanagari">अर्थ की जाँच चल रही है</span>{' '}
-        <span aria-hidden="true">·</span> <span lang="en">Meanings being checked</span>
+        <span lang="hi" className="font-devanagari">अर्थ अभी उपलब्ध नहीं है</span>{' '}
+        <span aria-hidden="true">·</span> <span lang="en">Meanings not yet available</span>
       </h2>
       <p lang="hi" className="mt-2 font-devanagari text-sm leading-relaxed text-dharma-muted">
-        {all ? `इस अध्याय के सभी ${n} श्लोकों` : `इस अध्याय के ${n} श्लोकों`} का अर्थ छपे हुए संस्करण से मिलाकर जाँचा जा
-        रहा है। जाँच पूरी होते ही अर्थ यहाँ जोड़ा जाएगा। तब तक आप मूल श्लोक और उसका लिप्यंतरण पढ़ सकते हैं।
+        {all ? `इस पृष्ठ के सभी ${n} श्लोकों` : `इस पृष्ठ के ${n} श्लोकों`} का अर्थ अभी उपलब्ध नहीं है। आप नीचे उपलब्ध मूल पाठ और लिप्यंतरण पढ़ सकते हैं।
       </p>
       <p lang="en" className="mt-1 text-sm leading-relaxed text-dharma-muted">
-        The meaning of {all ? `all ${n} verses` : `${n} verses`} in this chapter is being checked against a printed
-        edition and will be added once verified. Until then you can read each verse in Sanskrit and in transliteration.
+        Meaning is not yet available for {all ? `all ${n} verses` : `${n} verses`} on this page. You can read the original text and any available transliteration below.
       </p>
       {summary && (
         <div className="mt-4 border-t border-dharma-border/60 pt-3">
@@ -95,10 +93,10 @@ export function MeaningPendingNote({
         </p>
       )}
       <p lang="hi" className="font-devanagari text-sm text-dharma-muted">
-        इस श्लोक का अर्थ छपे हुए संस्करण से मिलाकर जाँचा जा रहा है। जाँच के बाद अर्थ यहाँ जोड़ा जाएगा।
+        इस श्लोक का अर्थ अभी उपलब्ध नहीं है।
       </p>
       <p lang="en" className="mt-0.5 text-xs text-dharma-muted">
-        The meaning of this verse is being checked against a printed edition and will be added once verified.
+        Meaning is not yet available for this verse.
       </p>
       {(nearby?.prev || nearby?.next) && (
         <p className="mt-2 flex flex-wrap items-center gap-2 text-xs text-dharma-muted">
@@ -107,13 +105,13 @@ export function MeaningPendingNote({
             <span lang="en">Nearest with a meaning</span>
           </span>
           {nearby.prev && (
-            <a href={`#verse-${nearby.prev}`} className={pill}>
+            <a href={`#verse-${nearby.prev}`} aria-label={`पिछला अर्थ सहित श्लोक ${ref(chapterId, nearby.prev)} · Previous verse with meaning ${ref(chapterId, nearby.prev)}`} className={pill}>
               <span aria-hidden="true">←&nbsp;</span>
               {ref(chapterId, nearby.prev)}
             </a>
           )}
           {nearby.next && (
-            <a href={`#verse-${nearby.next}`} className={pill}>
+            <a href={`#verse-${nearby.next}`} aria-label={`अगला अर्थ सहित श्लोक ${ref(chapterId, nearby.next)} · Next verse with meaning ${ref(chapterId, nearby.next)}`} className={pill}>
               {ref(chapterId, nearby.next)}
               <span aria-hidden="true">&nbsp;→</span>
             </a>

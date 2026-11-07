@@ -1,19 +1,20 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { Check, Globe } from 'lucide-react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import {
   type LanguagePreference,
   useLanguagePreference,
 } from '@/lib/useLanguagePreference';
+import { usePresence } from '@/app/components/motion/usePresence';
 
 export function LanguageToggle({ className = '' }: { className?: string }) {
   const { preference, setPreference, currentOption, options } =
     useLanguagePreference();
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const menu = usePresence(open, 140);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -49,7 +50,7 @@ export function LanguageToggle({ className = '' }: { className?: string }) {
         aria-haspopup="listbox"
         aria-label={`भाषा प्राथमिकता: ${currentOption.label}`}
         title={`भाषा प्राथमिकता: ${currentOption.label}`}
-        className="apple-icon-button h-9 gap-1.5 px-2.5 text-[13px]"
+        className="apple-icon-button h-9 gap-1.5 px-2.5 text-footnote"
       >
         <Globe className="h-4 w-4" aria-hidden="true" />
         <span className="max-w-[70px] truncate sm:max-w-none">
@@ -57,16 +58,12 @@ export function LanguageToggle({ className = '' }: { className?: string }) {
         </span>
       </button>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
+      {menu.mounted && (
+          <div
             role="listbox"
             aria-label="भाषा प्राथमिकता चुनें"
-            initial={{ opacity: 0, y: -6, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -4, scale: 0.96 }}
-            transition={{ duration: 0.14 }}
-            className="absolute right-0 top-[calc(100%+0.5rem)] z-50 w-56 rounded-2xl border border-dharma-border bg-dharma-card p-2 shadow-2xl backdrop-blur-xl"
+            data-closing={menu.closing || undefined}
+            className="chrome-pop absolute right-0 top-[calc(100%+0.5rem)] z-50 w-56 rounded-2xl border border-dharma-border bg-dharma-card p-2 shadow-2xl backdrop-blur-xl"
           >
             <div className="px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-muted">
               भाषा प्राथमिकता (Language)
@@ -107,9 +104,8 @@ export function LanguageToggle({ className = '' }: { className?: string }) {
                 );
               })}
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </div>
   );
 }

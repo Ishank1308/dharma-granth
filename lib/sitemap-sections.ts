@@ -17,6 +17,8 @@ import { READING_JOURNEYS, isJourneyIndexable } from '@/data/reading-journeys';
 import { festivals } from '@/data/festivals';
 import { GRANTH_ANSWERS } from '@/data/granth-answers';
 import { getChapterSummaryCollection } from '@/data/chapter-summaries';
+import { SACRED_MANTRAS } from '@/data/mantras';
+import { NAKSHATRA_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES, YOGA_DATA, getAllKaranas, VARA_DATA } from '@/lib/panchang';
 import { buildWordIndex } from '@/lib/ashtavakra-words';
 import { getChapterData, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
 
@@ -71,10 +73,24 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/locations', pageDate('/locations')),
     entry('/festivals', pageDate('/festivals')),
     entry('/panchang', pageDate('/panchang')),
+    entry('/panchang/ekadashi', pageDate('/panchang/ekadashi')),
+    entry('/panchang/pradosh', pageDate('/panchang/pradosh')),
+    entry('/panchang/purnima', pageDate('/panchang/purnima')),
+    entry('/panchang/amavasya', pageDate('/panchang/amavasya')),
+    entry('/panchang/nakshatras', pageDate('/panchang/nakshatras', 'lib/panchang.ts')),
+    entry('/panchang/tithis', pageDate('/panchang/tithis', 'lib/panchang.ts')),
+    entry('/panchang/yogas', pageDate('/panchang/yogas', 'lib/panchang.ts')),
+    entry('/panchang/karanas', pageDate('/panchang/karanas', 'lib/panchang.ts')),
+    entry('/panchang/varas', pageDate('/panchang/varas', 'lib/panchang.ts')),
+    entry('/panchang/calendar', pageDate('/panchang/calendar', 'lib/panchang.ts', 'data/festival-dates.ts')),
+    entry('/panchang/solar-vratas', pageDate('/panchang/solar-vratas', 'data/solar-vratas-data.ts', 'lib/panchang.ts')),
+    entry('/panchang/muhurta', pageDate('/panchang/muhurta', 'data/muhurta-data.ts', 'lib/panchang.ts')),
     entry('/timelines', pageDate('/timelines')),
     entry('/rituals', pageDate('/rituals')),
+    entry('/rituals/upakarma', pageDate('/rituals/upakarma', 'data/upakarma-data.ts')),
     entry('/dictionary', pageDate('/dictionary', 'data/dictionary.ts')),
     entry('/practice', pageDate('/practice')),
+    entry('/practice/gita-sankalpa', pageDate('/practice/gita-sankalpa', 'lib/gita-sankalpa.ts')),
     entry('/learn/start', pageDate('/learn/start')),
     entry('/privacy', pageDate('/privacy')),
     entry('/terms', pageDate('/terms')),
@@ -82,6 +98,7 @@ function pagesSection(): MetadataRoute.Sitemap {
     ...(READING_JOURNEYS.some(isJourneyIndexable)
       ? [entry('/learn/journeys', pageDate('/learn/journeys', 'data/reading-journeys.ts'))]
       : []),
+    entry('/learn/journeys/gita', pageDate('/learn/journeys/gita', 'data/gita-journey-data.ts')),
     entry('/story', pageDate('/story')),
     entry('/collections', pageDate('/collections')),
     entry('/compare', pageDate('/compare', 'data/scripture-comparisons.ts')),
@@ -89,6 +106,8 @@ function pagesSection(): MetadataRoute.Sitemap {
     entry('/ask', pageDate('/ask', 'data/wisdom-for-life.ts')),
     entry('/daily', pageDate('/daily')),
     entry('/daily-verse', pageDate('/daily-verse', 'data/wisdom-for-life.ts')),
+    entry('/embed/verse-of-the-day', pageDate('/embed/verse-of-the-day', 'lib/daily-verse.ts')),
+    entry('/mantras', pageDate('/mantras', 'data/mantras.ts')),
     entry('/methodology', pageDate('/methodology')),
     entry('/sources', pageDate('/sources')),
     entry('/contribute', pageDate('/contribute')),
@@ -141,7 +160,25 @@ function pagesSection(): MetadataRoute.Sitemap {
   const festivalDate = lastChanged('data/festivals.ts', 'app/festivals/[id]/page.tsx');
   const festivalRoutes = festivals.map((f) => entry(`/festivals/${f.id}`, festivalDate));
 
-  return [...staticRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
+  const mantraDate = lastChanged('data/mantras.ts', 'app/mantras/[slug]/page.tsx');
+  const mantraRoutes = SACRED_MANTRAS.map((m) => entry(`/mantras/${m.slug}`, mantraDate));
+
+  const nakshatraDate = lastChanged('lib/panchang.ts', 'app/panchang/nakshatras/[slug]/page.tsx');
+  const nakshatraRoutes = NAKSHATRA_DATA.map((n) => entry(`/panchang/nakshatras/${nakshatraSlug(n.name)}`, nakshatraDate));
+
+  const tithiDate = lastChanged('lib/panchang.ts', 'app/panchang/tithis/[slug]/page.tsx');
+  const tithiRoutes = UNIQUE_TITHI_ARCHETYPES.map((t) => entry(`/panchang/tithis/${t.slug}`, tithiDate));
+
+  const yogaDate = lastChanged('lib/panchang.ts', 'app/panchang/yogas/[slug]/page.tsx');
+  const yogaRoutes = YOGA_DATA.map((y) => entry(`/panchang/yogas/${y.slug}`, yogaDate));
+
+  const karanaDate = lastChanged('lib/panchang.ts', 'app/panchang/karanas/[slug]/page.tsx');
+  const karanaRoutes = getAllKaranas().map((k) => entry(`/panchang/karanas/${k.slug}`, karanaDate));
+
+  const varaDate = lastChanged('lib/panchang.ts', 'app/panchang/varas/[slug]/page.tsx');
+  const varaRoutes = VARA_DATA.map((v) => entry(`/panchang/varas/${v.slug}`, varaDate));
+
+  return [...staticRoutes, ...mantraRoutes, ...nakshatraRoutes, ...tithiRoutes, ...yogaRoutes, ...karanaRoutes, ...varaRoutes, ...conceptRoutes, ...courseRoutes, ...journeyRoutes, ...festivalRoutes, ...ashtavakraRoutes, ...wordRoutes, ...wisdomRoutes, ...askRoutes, ...pathwayRoutes, ...hubRoutes, ...characterRoutes, ...dictionaryRoutes];
 }
 
 /** Scripture landing pages and chapter pages (all seeded + curated chapters), dated by when the scripture's text or commentary last changed. */

@@ -17,7 +17,6 @@ import {
   Quote,
   ScrollText,
   Sparkles,
-  StickyNote,
   Volume2,
   X,
   Zap,
@@ -164,10 +163,6 @@ interface Props {
   onContribute: () => void;
   onAddToCollection?: () => void;
   inCollectionCount?: number;
-  /** The reader's own note on this verse, if any. */
-  note?: string;
-  /** Saves the note; an empty string deletes it. */
-  onSaveNote: (text: string) => void;
   highlight?: HighlightColor;
   /** Same colour again removes the highlight (useStudyProgress toggle semantics). */
   onHighlight: (color: HighlightColor) => void;
@@ -296,8 +291,6 @@ export function VerseCard({
   onContribute,
   onAddToCollection,
   inCollectionCount,
-  note,
-  onSaveNote,
   highlight,
   onHighlight,
   onOpenFocus,
@@ -331,43 +324,6 @@ export function VerseCard({
       document.removeEventListener('keydown', onKey);
     };
   }, [pickerOpen]);
-
-  // ── Personal note ──
-  const [editingNote, setEditingNote] = useState(false);
-  const [draft, setDraft] = useState('');
-  // Focus the editor when the reader opens it (not autoFocus, which also
-  // fires on mount and is flagged by jsx-a11y).
-  const noteRef = useRef<HTMLTextAreaElement>(null);
-  useEffect(() => {
-    if (editingNote) noteRef.current?.focus();
-  }, [editingNote]);
-  const openNoteEditor = () => {
-    setDraft(note ?? '');
-    setEditingNote(true);
-  };
-  const saveNote = () => {
-    const trimmed = draft.trim();
-    onSaveNote(trimmed);
-    if (trimmed) {
-      saveAnnotation({
-        id: `annot_${scriptureId}_${chapterId}_${v.number}`,
-        reference: {
-          scriptureId,
-          chapterId,
-          verseId: String(v.number),
-          canonicalReference: `${scriptureTitle || scriptureId} ${chapterId}.${v.number}`,
-        },
-        note: trimmed,
-        tags: [],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        status: 'active',
-      }).catch(() => {});
-    } else {
-      deleteAnnotation(`annot_${scriptureId}_${chapterId}_${v.number}`).catch(() => {});
-    }
-    setEditingNote(false);
-  };
 
   const lines = useMemo(() => (v.sanskrit ? verseLines(v.sanskrit) : []), [v.sanskrit]);
   const chandas = useMemo(() => detectChandas(v.sanskrit), [v.sanskrit]);
@@ -636,12 +592,6 @@ export function VerseCard({
               triggerClassName={iconButton}
               items={[
                 {
-                  key: 'note',
-                  label: note ? 'नोट संपादित करें · Edit note' : 'नोट लिखें · Add note',
-                  icon: <StickyNote className="h-4 w-4" />,
-                  onSelect: () => (editingNote ? setEditingNote(false) : openNoteEditor()),
-                },
-                {
                   key: 'highlight',
                   label: highlight ? 'हाइलाइट बदलें या हटाएं · Highlight' : 'हाइलाइट करें · Highlight',
                   icon: <Highlighter className="h-4 w-4" />,
@@ -774,77 +724,6 @@ export function VerseCard({
                 {/* The ॥ N ॥ above already closes the verse; drop the source's trailing "||". */}
                 {v.transliteration.replace(/[\s|।॥0-9.]+$/, '')}
               </p>
-            )}
-          </div>
-        )}
-
-        {/* ── The reader's own note ─────────────────────────── */}
-        {!chantingMode && (editingNote || note) && (
-          <div className="mt-5 rounded-2xl border border-indigo-200/80 bg-indigo-50/60 p-4 dark:border-indigo-400/25 dark:bg-indigo-500/10">
-            <p className="mb-2 flex items-center gap-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300">
-              <StickyNote className="h-3.5 w-3.5" aria-hidden="true" />
-              मेरा नोट
-            </p>
-            {editingNote ? (
-              <>
-                <textarea
-                  ref={noteRef}
-                  value={draft}
-                  maxLength={NOTE_MAX}
-                  onChange={(e) => setDraft(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Escape') setEditingNote(false);
-                    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) saveNote();
-                  }}
-                  rows={3}
-                  placeholder="इस श्लोक पर आपका विचार, प्रश्न या अनुभव…"
-                  aria-label={`श्लोक ${verseLabel} पर नोट`}
-                  className="w-full resize-y rounded-xl border border-indigo-200 bg-dharma-card p-3 text-sm leading-relaxed text-dharma-text outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 dark:border-indigo-400/30"
-                />
-                <div className="mt-2 flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={saveNote}
-                    className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-bold text-white transition hover:bg-indigo-700"
-                  >
-                    सहेजें
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setEditingNote(false)}
-                    className="rounded-full px-3 py-1.5 text-xs font-semibold text-dharma-muted transition hover:text-dharma-text"
-                  >
-                    रद्द करें
-                  </button>
-                  {note && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        onSaveNote('');
-                        setEditingNote(false);
-                      }}
-                      className="ml-auto rounded-full px-3 py-1.5 text-xs font-semibold text-rose-600 transition hover:bg-rose-50 dark:hover:bg-rose-500/10"
-                    >
-                      हटाएँ
-                    </button>
-                  )}
-                  <span
-                    className={`kbd-hint hidden text-[11px] text-dharma-muted sm:inline ${note ? '' : 'ml-auto'}`}
-                    aria-hidden="true"
-                  >
-                    Ctrl + Enter
-                  </span>
-                </div>
-              </>
-            ) : (
-              <button
-                type="button"
-                onClick={openNoteEditor}
-                className="block w-full whitespace-pre-line text-left text-sm leading-relaxed text-dharma-text"
-                aria-label="नोट संपादित करें (Edit note)"
-              >
-                {note}
-              </button>
             )}
           </div>
         )}
@@ -1006,29 +885,30 @@ export function VerseCard({
                       {/* ── Word-by-word meaning (पदच्छेद एवं शब्दार्थ) ─────── */}
                       {v.wordMeaning && !chantingMode && studyDepth === 'study' && (
                         <div
-                          className={`mt-4 rounded-2xl border p-4 transition-all ${
+                          className={`mt-3 rounded-xl border p-2.5 sm:p-3 transition-all ${
                             isSandhiSplit
-                              ? 'border-saffron-300 bg-saffron-50/50 dark:border-saffron-800/40 dark:bg-saffron-950/20'
-                              : 'border-amber-200/70 bg-amber-50/50 dark:border-amber-900/40 dark:bg-amber-950/20'
+                              ? 'border-saffron-300/80 bg-saffron-50/40 dark:border-saffron-800/40 dark:bg-saffron-950/20'
+                              : 'border-amber-200/70 bg-amber-50/40 dark:border-amber-900/30 dark:bg-amber-950/20'
                           }`}
                         >
-                          <div className="mb-2 flex items-center justify-between">
-                            <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
-                              <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
-                              पदच्छेद एवं शब्दार्थ · Word-by-Word Meaning
+                          <div className="mb-2 flex items-center justify-between gap-2">
+                            <p className="flex items-center gap-1 text-[11px] font-semibold tracking-wide text-amber-900/90 dark:text-amber-200/90">
+                              <ScrollText className="h-3 w-3 shrink-0 text-amber-700 dark:text-amber-400" aria-hidden="true" />
+                              <span>पदच्छेद एवं शब्दार्थ</span>
+                              <span className="font-normal text-amber-800/70 dark:text-amber-300/70 text-[10px]">· Word-by-Word</span>
                             </p>
                             {hasSplitData && (
                               <button
                                 type="button"
                                 onClick={() => setIsSandhiSplit(!isSandhiSplit)}
-                                className="text-[11px] font-bold text-saffron-700 hover:underline dark:text-saffron-300"
+                                className="text-[10px] font-medium text-saffron-700 hover:underline dark:text-saffron-300"
                               >
                                 {isSandhiSplit ? 'संयुक्त श्लोक देखें' : 'विच्छेद दृश्य (Split View)'}
                               </button>
                             )}
                           </div>
                           {parsedGloss.length > 0 ? (
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-1.5">
                               {parsedGloss.map((g, gIdx) => {
                                 const isHighlighted = hoveredWordIndex === gIdx;
                                 const isSpoken = activeWordIndex === gIdx;
@@ -1050,19 +930,19 @@ export function VerseCard({
                                       });
                                       setTimeout(() => setActiveWordIndex((cur) => (cur === gIdx ? null : cur)), 1800);
                                     }}
-                                    className={`inline-flex min-h-[36px] items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs transition active:scale-95 text-left ${
+                                    className={`inline-flex min-h-[26px] items-center gap-1 rounded-lg border px-2 py-0.5 text-[11px] transition active:scale-95 text-left ${
                                       isSpoken || isHighlighted
-                                        ? 'border-amber-400 bg-amber-100/90 text-amber-950 dark:border-amber-400 dark:bg-amber-900/40 dark:text-amber-100 ring-2 ring-amber-400/50 shadow-sm'
+                                        ? 'border-amber-400 bg-amber-100/90 text-amber-950 dark:border-amber-400 dark:bg-amber-900/40 dark:text-amber-100 ring-1 ring-amber-400/50 shadow-2xs'
                                         : 'border-amber-200/70 bg-amber-50/60 text-dharma-text hover:border-amber-300 hover:bg-amber-100/40 dark:border-amber-900/50 dark:bg-amber-950/30'
                                     }`}
                                     aria-label={`उच्चारण सुनें: ${g.pada}`}
                                     title={`${g.pada}: क्लिक करके उच्चारण सुनें`}
                                   >
-                                    <span className="font-devanagari font-bold text-amber-900 dark:text-amber-200">{g.pada}</span>
+                                    <span className="font-devanagari text-xs font-semibold text-amber-900 dark:text-amber-200">{g.pada}</span>
                                     {g.meaning && (
                                       <>
-                                        <span className="text-amber-400 dark:text-amber-600 font-serif">·</span>
-                                        <span className="text-dharma-muted text-[11px] font-sans">{g.meaning}</span>
+                                        <span className="text-amber-400/80 dark:text-amber-600/80 font-serif text-[10px]">·</span>
+                                        <span className="text-dharma-muted text-[10px] font-sans leading-tight">{g.meaning}</span>
                                       </>
                                     )}
                                   </button>
@@ -1070,7 +950,7 @@ export function VerseCard({
                               })}
                             </div>
                           ) : (
-                            <p lang="sa" className="font-devanagari text-sm leading-loose text-dharma-text">
+                            <p lang="sa" className="font-devanagari text-xs leading-relaxed text-dharma-text">
                               {v.wordMeaning}
                             </p>
                           )}

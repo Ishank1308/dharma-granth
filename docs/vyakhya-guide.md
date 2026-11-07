@@ -63,13 +63,24 @@ Every व्याख्या has three movements, in one flowing piece of abou
    node scripts/check-hindi-register.mjs data/ai-commentary/staged/bhagavadgita-04.json
    ```
 
-3. Stage it into the queue as approved. This fills in each verse's Sanskrit (so a later text repair is caught), flags verses whose hand-written व्याख्या the draft replaces, and never overwrites an existing approved entry unless you pass `--force`:
+3. Stage it into the queue as **pending**. This records the current Sanskrit for later review. Existing entries are never replaced by default. To propose revisions of existing entries, pass `--replace`; these are stored separately under `data/ai-commentary/proposals/` and the current queue stays intact. Stage new entries and replacements in separate batches.
 
    ```bash
    node scripts/stage-commentary.mjs data/ai-commentary/staged/bhagavadgita-04.json
    ```
 
-4. Publish locally with `npm run publish:commentary`. Pushing and deploying are handled separately.
+4. Review the verse, explanation, confidence and review note. Preview the specific pending entries, then approve only the reviewed keys:
+
+   ```bash
+   node scripts/approve-commentary.mjs bhagavadgita 4:1 4:2 --show
+   node scripts/approve-commentary.mjs bhagavadgita 4:1 4:2
+   ```
+
+   For replacement proposals, include `--replacement` in both preview and approval commands. Approval preserves the previous entries under `data/ai-commentary/history/<scripture>/` and refuses to replace an entry that has changed since staging. Existing research and life-lesson fields from an approved entry are retained. Those from a pending entry are saved under `unreviewedFields` and remain unpublished until separately reviewed. The command rejects stale Sanskrit snapshots. Existing hand-written explanations continue to take precedence unless replacement is explicitly authorized and `--replace-handwritten` is passed during approval.
+
+5. Run `npx tsx scripts/check-commentary-keys.ts --scripture bhagavadgita` and resolve reported issues. Run it without the option for a full inventory. Then publish locally with `npm run publish:commentary`. Pushing and deploying are handled separately.
+
+For a reviewable inventory with monolith/shard differences and modeled reader-key precedence, run `npx tsx scripts/report-commentary-keys.ts --out <new-report.json>`. Add `--scripture <id>` to limit the report. Nearby verse numbers in the report are leads for review, not automatic remapping instructions; see `docs/review/commentary-key-review-after-lookup.md` for an example.
 
 The site labels these entries as AI-drafted (on the व्याख्या only).
 

@@ -27,11 +27,18 @@ function currentSanskrit(scriptureId: string): Map<string, string> {
   const book = JSON.parse(fs.readFileSync(file, "utf8")) as {
     chapters?: Array<{ number: number | string; verses?: Array<{ number: number | string; sanskrit?: string }> }>;
   };
+  const ambiguous = new Set<string>();
   for (const ch of book.chapters ?? []) {
     for (const v of ch.verses ?? []) {
-      // Same key the reader and publish:commentary use (lib/verse-meaning verseCommentaryKey), so
-      // dotted numbers like "2.1.1" in reader chapter 7 key as "7:1", not "7:NaN".
-      out.set(`${Number(ch.number)}:${Number(canonicalVerseId(Number(ch.number), v.number))}`, norm(v.sanskrit));
+      // Match both the reader's canonical key and its raw-number fallback.
+      const chapter = Number(ch.number);
+      const number = Number(canonicalVerseId(chapter, v.number));
+      const keys = new Set([`${chapter}:${v.number}`]);
+      if (Number.isFinite(number)) keys.add(`${chapter}:${number}`);
+      for (const key of keys) {
+        if (out.has(key)) { out.delete(key); ambiguous.add(key); }
+        else if (!ambiguous.has(key)) out.set(key, norm(v.sanskrit));
+      }
     }
   }
   return out;

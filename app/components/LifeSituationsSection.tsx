@@ -169,7 +169,7 @@ export function LifeSituationsSection() {
       aria-labelledby="life-situations-heading"
       className="border-b border-dharma-border bg-gradient-to-b from-dharma-bg via-dharma-card/30 to-dharma-bg py-16 sm:py-20"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+      <div className="mx-auto max-w-6xl px-gutter">
         {/* Section Header */}
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>

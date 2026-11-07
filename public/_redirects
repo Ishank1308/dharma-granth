@@ -47,6 +47,14 @@
 /desk/ /practice/desk/ 301
 /dashboard /practice/dashboard/ 301
 /dashboard/ /practice/dashboard/ 301
+/faq /learn/faq/ 301
+/faq/ /learn/faq/ 301
+/faqs /learn/faq/ 301
+/faqs/ /learn/faq/ 301
+/feed /feed.xml 301
+/rss /feed.xml 301
+/rss.xml /feed.xml 301
+/daily-verse/rss.xml /feed.xml 301
 /saved /practice/saved/ 301
 /saved/ /practice/saved/ 301
 /bookmarks /practice/bookmarks/ 301

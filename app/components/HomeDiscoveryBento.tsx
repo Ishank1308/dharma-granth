@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ArrowRight, BookOpen, CalendarDays, Headphones, Pause, Sparkles } from 'lucide-react';
+import { ArrowRight, BookOpen, CalendarDays, Headphones, MessageCircle, Pause, Sparkles } from 'lucide-react';
 import type { DailyWisdomItem } from '@/data/daily-wisdom-engine';
 import { getTodayWisdom } from '@/data/daily-wisdom-engine';
 import { readActiveStreak, useRecentChapters } from '@/lib/reading-history';
@@ -71,11 +71,25 @@ export function HomeDiscoveryBento({ initialWisdom }: { initialWisdom: DailyWisd
             </div>
             <p lang="sa" className="mt-4 whitespace-pre-line font-devanagari text-lg font-semibold leading-relaxed text-dharma-text sm:text-xl">{wisdom.sanskrit}</p>
             <p lang="hi" className="mt-2 line-clamp-2 text-sm leading-relaxed text-dharma-muted">{wisdom.hindi}</p>
-            <div className="mt-4 flex items-center justify-between gap-3 border-t border-dharma-border/70 pt-3">
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-dharma-border/70 pt-3">
               <span className="text-xs text-dharma-muted">{wisdom.scriptureTitle} · {wisdom.chapterId}.{wisdom.verseId}</span>
-              <Link href={withTrailingSlash(wisdom.href)} className="inline-flex min-h-11 items-center gap-1 text-sm font-bold text-saffron-700 hover:text-saffron-800 dark:text-saffron-300">
-                Read verse <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
+              <div className="flex items-center gap-2">
+                <a
+                  href={`https://wa.me/?text=${encodeURIComponent(
+                    `🌸 आज का श्लोक — ${wisdom.scriptureTitle} ${wisdom.chapterId}.${wisdom.verseId} 🌸\n\n${wisdom.sanskrit.trim()}\n\n✨ भावार्थ: ${wisdom.hindi}\n\n📖 पूरा पाठ व व्याख्या:\nhttps://dharmagranth.dev${withTrailingSlash(wisdom.href)}?utm_source=whatsapp&utm_medium=daily_bento\n\n— Dharma Granth (dharmagranth.dev)`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[36px] items-center gap-1 rounded-full border border-emerald-600/40 bg-emerald-50/70 px-3 py-1 text-xs font-semibold text-emerald-800 transition hover:bg-emerald-100 hover:border-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-700/60"
+                  title="WhatsApp पर साझा करें"
+                >
+                  <MessageCircle className="h-3.5 w-3.5" aria-hidden="true" />
+                  <span>WhatsApp</span>
+                </a>
+                <Link href={withTrailingSlash(wisdom.href)} className="inline-flex min-h-11 items-center gap-1 text-sm font-bold text-saffron-700 hover:text-saffron-800 dark:text-saffron-300">
+                  Read verse <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
             </div>
           </article>
 

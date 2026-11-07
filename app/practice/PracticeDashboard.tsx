@@ -4,9 +4,9 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { retryImport } from '@/lib/retry-import';
 import Link from 'next/link';
-import { Lock, Settings2, Trash2, ShieldCheck, Heart, Sparkles, Bookmark, NotebookPen, LayoutDashboard, BarChart3, HardDriveDownload, BellRing } from 'lucide-react';
+import { PageHeader } from '@/app/components/apple/PageHeader';
+import { Lock, Trash2, Bookmark, NotebookPen, LayoutDashboard, BarChart3, HardDriveDownload, BellRing, ScrollText } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
-import { FadeUp } from '@/app/components/motion/primitives';
 const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((module) => module.DailyVerse)));
 const DailyReflection = dynamic(() => retryImport(() => import('@/app/components/practice/DailyReflection').then((module) => module.DailyReflection)));
 const ReadingPlan = dynamic(() => retryImport(() => import('@/app/components/practice/ReadingPlan').then((module) => module.ReadingPlan)));
@@ -75,6 +75,7 @@ const TOOL_GROUPS: Array<{
 ];
 
 const MY_SPACE = [
+  { href: '/practice/gita-sankalpa/', hi: 'गीता संकल्प', en: 'Gita Sankalpa', Icon: ScrollText },
   { href: '/practice/bookmarks/', hi: 'सुरक्षित श्लोक', en: 'Saved verses', Icon: Bookmark },
   { href: '/practice/desk/', hi: 'अध्ययन-पटल', en: 'Study desk', Icon: LayoutDashboard },
   { href: '/practice/journal/', hi: 'स्वाध्याय डायरी', en: 'Journal', Icon: NotebookPen },
@@ -136,42 +137,40 @@ export function PracticeDashboard() {
   }
 
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text">
-      {/* Header */}
-      <section className="bg-gradient-to-br from-[#451a03] via-[#78350f] to-[#9a3412] text-white py-14 shadow-sm border-b border-amber-900/40">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <FadeUp>
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-amber-200 mb-2">
-              <Sparkles className="w-4 h-4 text-amber-300" />
-              <span><span lang="hi">साधना</span> · Daily Practice Sanctuary</span>
-            </div>
-            <h1 lang="hi" className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-3 tracking-tight">
-              शांत मन, पवित्र अभ्यास
-            </h1>
-            <p className="text-base sm:text-lg opacity-90 max-w-2xl font-normal leading-relaxed text-amber-100/90">
-              दैनिक श्लोक, आत्म-चिंतन, जप माला, ध्यान और व्यक्तिगत डायरी का एक सुरक्षित, एकांत आध्यात्मिक स्थल।
-            </p>
-            <div className="mt-4 inline-flex items-center gap-2 text-xs sm:text-sm bg-white/10 border border-white/20 rounded-full px-4 py-2 backdrop-blur-sm">
-              <Lock className="w-3.5 h-3.5 text-amber-200" />
-              <span>स्थानीय साधना · आपकी निजी प्रविष्टियाँ इसी उपकरण पर रहती हैं (Local practice, no public profiles)</span>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
+    <main className="apple-scope min-h-screen bg-dharma-bg pb-16 text-dharma-text">
+      <PageHeader
+        eyebrow="Sadhana"
+        eyebrowHi="साधना"
+        title="Daily practice"
+        titleHi="शान्त मन, पवित्र अभ्यास"
+        lead={
+          <p>
+            <span>A verse, a reflection, japa and a quiet timer. Pick the tools you want; there are no scores and no streaks.</span>{' '}
+            <span lang="hi" className="font-devanagari">दैनिक श्लोक, चिन्तन, जप और ध्यान, बिना किसी गिनती या होड़ के।</span>
+          </p>
+        }
+      >
+        <p className="mt-3 inline-flex items-center gap-1.5 text-footnote text-dharma-muted">
+          <Lock className="h-3.5 w-3.5" aria-hidden="true" />
+          <span>Everything stays on this device. No account.</span>
+        </p>
+      </PageHeader>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-8">
+      <div className="mx-auto max-w-content space-y-10 px-gutter pt-8">
         {/* My space: everything personal lives under /practice/ (saved verses, desk, journal, progress, offline). */}
-        <nav aria-label="मेरा स्थान · My space" className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
+        <nav aria-label="My space" className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {MY_SPACE.map(({ href, hi, en, Icon }) => (
             <Link
               key={href}
               href={href}
-              className="flex min-h-[56px] items-center gap-2.5 rounded-xl border border-dharma-border bg-dharma-card px-3 py-2 shadow-sm transition hover:border-saffron-400"
+              className="apple-card flex min-h-[64px] items-center gap-3 px-4 py-3 transition hover:-translate-y-0.5"
             >
-              <Icon className="h-4 w-4 shrink-0 text-saffron-600" aria-hidden="true" />
+              <span className="apple-tint-chip" aria-hidden="true">
+                <Icon className="h-4 w-4" />
+              </span>
               <span className="min-w-0 leading-tight">
-                <span lang="hi" className="block font-devanagari text-sm font-semibold text-dharma-text">{hi}</span>{' '}
-                <span lang="en" className="block text-[11px] text-dharma-muted">{en}</span>
+                <span className="block text-subhead font-semibold tracking-[-0.01em] text-dharma-text">{en}</span>{' '}
+                <span lang="hi" className="block font-devanagari text-footnote text-dharma-muted">{hi}</span>
               </span>
             </Link>
           ))}
@@ -182,8 +181,8 @@ export function PracticeDashboard() {
 
         {/* If PIN is set and dashboard is locked, hide private practices */}
         {pin && isLocked ? (
-          <div className="p-8 text-center text-dharma-muted rounded-2xl border border-dashed border-dharma-border bg-dharma-card/50">
-            <Lock className="w-8 h-8 mx-auto text-amber-600/60 mb-2" />
+          <div className="apple-card p-8 text-center text-dharma-muted">
+            <Lock className="mx-auto mb-2 h-8 w-8 text-dharma-muted" />
             <p className="text-sm font-semibold text-dharma-text">
               निजी अभ्यास व डायरी पिन द्वारा सुरक्षित हैं
             </p>
@@ -194,22 +193,20 @@ export function PracticeDashboard() {
         ) : (
           <>
             {/* Tool picker */}
-            <section aria-label="Choose your tools" className="rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-5 shadow-sm">
-              <div className="mb-4">
-                <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-dharma-muted">
-                  <Settings2 className="w-3.5 h-3.5 text-saffron-600" />
-                  <span>Choose what appears here · <span lang="hi">यहाँ दिखने वाले साधन चुनें</span></span>
-                </p>
-                <p className="mt-1 text-xs leading-relaxed text-dharma-muted">
-                  Start with a verse and reflection. Add or hide any tool; your choices stay on this device.
-                  <span lang="hi" className="ml-1 font-devanagari">श्लोक और चिंतन से आरम्भ करें। साधन जोड़ें या छिपाएँ; आपका चयन इसी उपकरण पर सुरक्षित रहता है।</span>
-                </p>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
+            <section aria-labelledby="practice-tools-heading">
+              <h2 id="practice-tools-heading" className="text-title-2 font-semibold text-dharma-text">
+                <span>Your tools</span>{' '}
+                <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">साधन</span>
+              </h2>
+              <p className="mt-1 text-subhead text-dharma-muted">
+                <span>Tap to show or hide a tool. Your choice stays on this device.</span>{' '}
+                <span lang="hi" className="font-devanagari">साधन जोड़ें या छिपाएँ।</span>
+              </p>
+              <div className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2">
                 {TOOL_GROUPS.map((group) => (
-                  <fieldset key={group.id} className="min-w-0 rounded-xl border border-dharma-border/70 bg-dharma-bg/40 p-3">
-                    <legend className="px-1 text-xs font-semibold text-dharma-muted">
-                      {group.title}<span lang="hi" className="ml-1.5 font-devanagari">· {group.titleHi}</span>
+                  <fieldset key={group.id} className="min-w-0">
+                    <legend className="mb-2 text-footnote text-dharma-muted">
+                      <span>{group.title}</span> <span lang="hi" className="font-devanagari">· {group.titleHi}</span>
                     </legend>
                     <div className="flex flex-wrap gap-2">
                       {group.toolIds.map((toolId) => {
@@ -221,14 +218,16 @@ export function PracticeDashboard() {
                             type="button"
                             onClick={() => toggle(tool.id)}
                             aria-pressed={on(tool.id)}
-                            className={`practice-tool-chip inline-flex min-h-11 items-center rounded-xl border px-3 text-left text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 ${
+                            className={`practice-tool-chip inline-flex min-h-11 items-center gap-1.5 rounded-full px-4 text-[14px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dharma-saffron focus-visible:ring-offset-2 ${
                               on(tool.id)
-                                ? 'practice-tool-chip-on bg-saffron-100 dark:bg-saffron-950/40 border-saffron-300 dark:border-saffron-800 text-saffron-800 dark:text-saffron-200 shadow-xs'
-                                : 'border-dharma-border text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
+                                ? 'practice-tool-chip-on bg-dharma-saffron text-dharma-bg'
+                                : 'bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
                             }`}
                           >
-                            <span lang="hi" className="font-devanagari">{tool.label}</span>
-                            <span className="ml-1">· {tool.sub}</span>
+                            <span>
+                              <span>{tool.sub}</span>{' '}
+                              <span lang="hi" className="font-devanagari">{tool.label}</span>
+                            </span>
                           </button>
                         );
                       })}
@@ -245,7 +244,7 @@ export function PracticeDashboard() {
             {on('verse') && <DailyVerse />}
 
             {/* Tool grid */}
-            <div className="grid md:grid-cols-2 gap-6 items-stretch">
+            <div className="grid items-stretch gap-5 md:grid-cols-2">
               {on('reflection') && <DailyReflection />}
               {on('japa') && <JapaMala />}
               {on('meditation') && <MeditationTimer />}
@@ -261,9 +260,9 @@ export function PracticeDashboard() {
         )}
 
         {/* Private Backup, Restore & Clear Controls */}
-        <div className="border-t border-dharma-border/80 pt-8 space-y-4">
+        <div className="space-y-4 border-t border-dharma-text/10 pt-8">
           <BackupRestore />
-          <details className="rounded-2xl border border-dharma-border bg-dharma-card px-4">
+          <details className="apple-group px-4">
             <summary className="flex min-h-12 cursor-pointer items-center font-semibold text-sm text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
               वैकल्पिक उपकरण-स्थानांतरण · Alternate compressed transfer options
             </summary>
@@ -277,16 +276,18 @@ export function PracticeDashboard() {
             <button
               type="button"
               onClick={handleDeleteAllData}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-rose-300 dark:border-rose-900/50 bg-rose-50/80 dark:bg-rose-950/30 px-4 py-2 text-xs font-semibold text-rose-700 dark:text-rose-300 transition hover:bg-rose-100 dark:hover:bg-rose-900/40"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-4 text-[14px] text-rose-700 transition hover:bg-rose-500/10 dark:text-rose-400"
             >
               <Trash2 className="h-3.5 w-3.5" />
-              <span>साधना डेटा हटाएं (Reset Sadhana data)</span>
+              <span>Reset Sadhana data</span>{' '}
+              <span lang="hi" className="font-devanagari">साधना डेटा हटाएँ</span>
             </button>
           </div>
         </div>
 
-        <p className="text-center text-xs text-dharma-muted pb-4">
-          साधना आत्मा का एकांत है — no scores or rankings. Practice notes stay on this device; clearing browser data can erase them.
+        <p className="pb-4 text-center text-footnote text-dharma-muted">
+          <span lang="hi" className="font-devanagari">साधना आत्मा का एकान्त है।</span>{' '}
+          <span>Practice notes stay on this device; clearing browser data can erase them.</span>
         </p>
       </div>
     </main>

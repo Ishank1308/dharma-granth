@@ -3,6 +3,7 @@ import { readChapterCommentary, readSeededChapter, readSeededChapterNumbers } fr
 import { cleanVerseField, withPassageMeaning } from '@/lib/verse-format';
 import { VERSE_PAGE_SCRIPTURE_IDS, verseSlug } from '@/lib/verse-paths';
 import type { VerseIndexFile, VerseRow } from '@/lib/search-verse-index';
+import { commentaryAmbiguities, lookupCommentary } from '@/lib/commentary-lookup';
 
 /**
  * Build-time verse index for global search. It covers exactly the verses that
@@ -51,6 +52,7 @@ export function buildVerseIndex(): VerseIndexFile {
       const commentary = readChapterCommentary<HiCommentaryEntry>(id, chapterId);
       const seen = new Set<string>();
       const verses = seeded.chapter.verses as SeedVerse[];
+      const ambiguity = commentaryAmbiguities(chapterId, verses.flatMap(v => v.number == null ? [] : [v.number]));
       for (const stored of verses) {
         // A passage translated as one is published on its first verse; each verse of it is found by that text.
         const verse = withPassageMeaning(verses, stored);
@@ -58,7 +60,7 @@ export function buildVerseIndex(): VerseIndexFile {
         if (!slug || seen.has(slug)) continue;
         seen.add(slug);
 
-        const comment = commentary?.[`${chapterId}:${slug}`] ?? commentary?.[`${chapterId}:${Number(slug)}`];
+        const comment = lookupCommentary(commentary, chapterId, verse.number!, ambiguity);
         const explanation = comment?.explanation ?? verse.explanation ?? verse.commentary;
         // bit 1: explanation is AI-drafted, bit 2: Hindi is machine-translated, bit 4: English is
         const flags = (comment?.ai ? 1 : 0) | (verse.hindiSource === 'ai' ? 2 : 0) | (verse.translationSource === 'ai' ? 4 : 0);
