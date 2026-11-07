@@ -3,16 +3,8 @@ import { clipDescription } from '@/lib/meta-text';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ChapterVisitRecorder } from '@/app/components/ChapterVisitRecorder';
-import { RelatedTeachings } from '@/app/components/study/RelatedTeachings';
-import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
-import { NextTeachings, type NextCandidate } from '@/app/components/study/NextTeachings';
-import { VerseDiagrams } from '@/app/components/study/VerseDiagram';
-import { ModernScenarios } from '@/app/components/study/ModernScenarios';
 import { ReviewRequiredNotice } from '@/app/components/study/ReviewRequiredNotice';
-import { CONNECTIONS, verseKey } from '@/data/study-content';
-import { RelatedWisdom } from '@/app/components/RelatedWisdom';
 import { VerseAnswers } from '@/app/components/VerseAnswers';
-import { RelatedWisdomDiscovery } from '@/components/wisdom/RelatedWisdomDiscovery';
 import { VerseReader } from '@/app/components/reader/VerseReader';
 import { getVerseInsight } from '@/lib/verse-insights';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
@@ -25,11 +17,8 @@ import { scriptureLastChanged } from '@/lib/content-dates';
 import { cleanVerseField, splitVyakhyaCommentary, verseLines, formatVerseRef, withPassageMeaning } from '@/lib/verse-format';
 import { resolveVerseKnowledge } from '@/lib/knowledge-graph';
 import { TrustBadges } from '@/app/components/TrustBadges';
-import { UnderstandPanel } from '@/app/components/understand/UnderstandPanel';
 import { VerseCompletion } from '@/app/components/understand/VerseCompletion';
-import { getUnderstandingExtras } from '@/data/understanding';
 import { getPedagogicalVerse } from '@/data/pedagogical-registry';
-import { ActivityRecorder } from '@/app/components/study/ActivityRecorder';
 import { badgesFor, latestReview } from '@/lib/review-badges';
 import { PENDING_CORRECTIONS, REVIEW_RECORDS } from '@/data/review-records';
 import { getScriptureSourceMeta, SCRIPTURE_SOURCES } from '@/data/sources-registry';
@@ -374,51 +363,6 @@ export default async function VersePage(props: PageProps) {
   const sourceMeta = getScriptureSourceMeta(meta.id, meta.title, meta.titleSanskrit);
   const translationReview = latestReview(REVIEW_RECORDS, 'translation', meta.id, chapterId, params.verseId);
 
-  // At most three next steps, each from this verse's own links, with the reason it is offered.
-  const reviewedLinks = CONNECTIONS[verseKey(meta.id, chapterId, params.verseId)] ?? [];
-  const nextCandidates: NextCandidate[] = [];
-  if (next && nextHref) {
-    const crosses = nextChapterId !== chapterId;
-    const linked = crosses ? undefined : reviewedLinks.find((c) => c.href === nextHref);
-    const nextChapterTitle = crosses
-      ? (readSeededChapterPreviews(meta.id).find((item) => item.id === nextChapterId)?.title ?? `अध्याय ${nextChapterId}`)
-      : chapterName;
-    nextCandidates.push({
-      id: `next:${meta.id}:${nextChapterId}:${next.number}`,
-      kind: 'next',
-      title: `Continue with ${meta.title} ${formatVerseRef(meta.id, nextChapterId, next.number)}`,
-      href: nextHref,
-      reason: crosses ? 'It is the first verse of the next chapter.' : linked ? linked.reason : 'It is the next verse in the same chapter.',
-      basis: `You are reading ${ref}.`,
-      save: {
-        ref: { scriptureId: meta.id, scriptureTitle: meta.title, scriptureTitleSanskrit: meta.titleSanskrit, chapterId: nextChapterId, chapterTitle: nextChapterTitle, url: `${siteUrl}${nextHref}/` },
-        verse: { number: next.number, sanskrit: next.sanskrit, transliteration: next.transliteration, hindi: next.hindi, translation: next.translation },
-      },
-    });
-  }
-  const complementary = reviewedLinks.find((c) => c.href && c.href !== nextHref);
-  if (complementary?.href) {
-    nextCandidates.push({
-      id: `link:${meta.id}:${chapterId}:${params.verseId}:${complementary.reference}`,
-      kind: 'complementary',
-      title: `${complementary.scriptureTitle} ${complementary.reference}`,
-      href: complementary.href,
-      reason: complementary.reason,
-      basis: 'A reviewed link from this verse (still marked draft until reviewed).',
-    });
-  }
-  const topConcept = knowledge.concepts.find((concept) => concept.href.startsWith('/concepts/') && concept.href !== '/concepts/');
-  if (topConcept) {
-    nextCandidates.push({
-      id: `concept:${topConcept.href}`,
-      kind: 'concept',
-      title: `Explore the concept ${topConcept.labelEn}${topConcept.sanskrit ? ` (${topConcept.sanskrit})` : ''}`,
-      href: topConcept.href,
-      reason: `This verse is cited for ${topConcept.labelEn}.`,
-      basis: 'A stored concept citation for this verse.',
-    });
-  }
-
   return (
     <>
       {/* The scripture's palette and folio material for everything on the page (display: contents, no box). */}
@@ -436,7 +380,6 @@ export default async function VersePage(props: PageProps) {
           { label: `Verse ${params.verseId}` },
         ]}
       />
-      <ActivityRecorder scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} concepts={knowledge.concepts.flatMap((concept) => concept.id ? [concept.id] : [])} />
       <ChapterVisitRecorder
         scriptureId={meta.id}
         scriptureTitle={meta.title}
@@ -504,77 +447,16 @@ export default async function VersePage(props: PageProps) {
         }
         insight={getVerseInsight(meta.id, chapterId, params.verseId)}
       >
-        {/*
-          Related Wisdom discovery (lib/wisdom-discovery):
-          children of VerseReader, so they render AFTER the Modern Context layer
-          (layer-reflection inside ReaderLayers above) without interrupting
-          reading. Server HTML only.
-        */}
         <VerseAnswers scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} />
-        {/*
-          Study more: everything past the verse, its meaning, vyakhya and modern
-          context sits in one native disclosure, so the page reads verse first
-          and stays short. The content is still in the exported HTML for crawlers,
-          and links to anchors inside (#understand-h, #verse-graph) open it.
-        */}
-        <details id="study-more" className="study-more apple-card group mt-8 overflow-hidden">
-          <summary className="focus-ring flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 transition hover:bg-fill-quaternary sm:px-6 [&::-webkit-details-marker]:hidden">
-            <span>
-              <span className="block text-body font-semibold text-label-primary">
-                <span>Study more</span> <span lang="hi" className="font-devanagari font-normal text-label-secondary">गहन अध्ययन</span>
-              </span>
-              <span className="mt-0.5 block text-subhead text-label-secondary">Lesson, examples, diagrams and related verses</span>
-            </span>
-            <span aria-hidden="true" className="apple-chevron text-xl transition-transform duration-standard ease-standard group-open:rotate-90">›</span>
-          </summary>
-          <div className="px-3 pb-5 sm:px-5">
-          {pedagogical && (
-            <UnderstandPanel
-              data={pedagogical}
-              extras={getUnderstandingExtras(meta.id, chapterId, params.verseId)}
-              refKey={`${meta.id}:${chapterId}:${params.verseId}`}
-              reference={ref}
-              translation={verse.translation}
-              translationIsAi={verse.translationSource === 'ai'}
-              previousHref={prevHref}
-              nextHref={nextHref}
-              pageUrl={pageUrl}
-            />
-          )}
-          <ModernScenarios scriptureId={meta.id} chapter={chapterId} verse={params.verseId} />
-          <VerseDiagrams scriptureId={meta.id} chapter={chapterId} verse={params.verseId} />
-          <RelatedTeachings scriptureId={meta.id} chapterId={chapterId} verseNumber={params.verseId} />
-          <RelatedWisdomDiscovery
-            scriptureId={meta.id}
-            chapterId={chapterId}
-            verseId={params.verseId}
-            concepts={tagged.concepts}
-            relatedVerses={tagged.relatedVerses}
-            relatedQuestions={tagged.relatedQuestions}
-            questions={tagged.questions}
-            lifeSituations={tagged.lifeSituations}
-            relatedScriptures={tagged.relatedScriptures}
-            relatedPathways={tagged.relatedPathways}
-            relatedSages={tagged.relatedSages}
-          />
-          <RelatedWisdom knowledge={knowledge} />
-          <VerseGraphNetwork
-            scriptureId={meta.id}
-            chapterId={chapterId}
-            verseId={params.verseId}
-            currentVerse={{
-              number: verse.number,
-              sanskrit: verse.sanskrit,
-              transliteration: verse.transliteration,
-              hindi: verse.hindi,
-              translation: verse.translation,
-              explanation,
-            }}
-          />
-          </div>
-        </details>
         {!pedagogical && !explanation && <ReviewRequiredNotice className="mt-8" />}
-        <NextTeachings candidates={nextCandidates} verseId={String(params.verseId)} />
+        <VerseCompletion
+          reference={ref}
+          readerRef={{ scriptureId: meta.id, scriptureTitle: meta.title, scriptureTitleSanskrit: meta.titleSanskrit, chapterId, chapterTitle: chapterName, url: pageUrl }}
+          verse={{ number: verse.number, sanskrit: verse.sanskrit, transliteration: verse.transliteration, hindi: verse.hindi, translation: verse.translation }}
+          nextHref={nextHref}
+          chapterHref={chapterHref}
+        />
+      </VerseReader>
         <VerseCompletion
           reference={ref}
           readerRef={{ scriptureId: meta.id, scriptureTitle: meta.title, scriptureTitleSanskrit: meta.titleSanskrit, chapterId, chapterTitle: chapterName, url: pageUrl }}

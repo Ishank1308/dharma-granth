@@ -17,7 +17,6 @@ import {
   Quote,
   ScrollText,
   Sparkles,
-  StickyNote,
   Volume2,
   X,
   Zap,
@@ -332,43 +331,6 @@ export function VerseCard({
     };
   }, [pickerOpen]);
 
-  // ── Personal note ──
-  const [editingNote, setEditingNote] = useState(false);
-  const [draft, setDraft] = useState('');
-  // Focus the editor when the reader opens it (not autoFocus, which also
-  // fires on mount and is flagged by jsx-a11y).
-  const noteRef = useRef<HTMLTextAreaElement>(null);
-  useEffect(() => {
-    if (editingNote) noteRef.current?.focus();
-  }, [editingNote]);
-  const openNoteEditor = () => {
-    setDraft(note ?? '');
-    setEditingNote(true);
-  };
-  const saveNote = () => {
-    const trimmed = draft.trim();
-    onSaveNote(trimmed);
-    if (trimmed) {
-      saveAnnotation({
-        id: `annot_${scriptureId}_${chapterId}_${v.number}`,
-        reference: {
-          scriptureId,
-          chapterId,
-          verseId: String(v.number),
-          canonicalReference: `${scriptureTitle || scriptureId} ${chapterId}.${v.number}`,
-        },
-        note: trimmed,
-        tags: [],
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        status: 'active',
-      }).catch(() => {});
-    } else {
-      deleteAnnotation(`annot_${scriptureId}_${chapterId}_${v.number}`).catch(() => {});
-    }
-    setEditingNote(false);
-  };
-
   const lines = useMemo(() => (v.sanskrit ? verseLines(v.sanskrit) : []), [v.sanskrit]);
   const chandas = useMemo(() => detectChandas(v.sanskrit), [v.sanskrit]);
 
@@ -636,12 +598,6 @@ export function VerseCard({
               triggerClassName={iconButton}
               items={[
                 {
-                  key: 'note',
-                  label: note ? 'नोट संपादित करें · Edit note' : 'नोट लिखें · Add note',
-                  icon: <StickyNote className="h-4 w-4" />,
-                  onSelect: () => (editingNote ? setEditingNote(false) : openNoteEditor()),
-                },
-                {
                   key: 'highlight',
                   label: highlight ? 'हाइलाइट बदलें या हटाएं · Highlight' : 'हाइलाइट करें · Highlight',
                   icon: <Highlighter className="h-4 w-4" />,
@@ -774,77 +730,6 @@ export function VerseCard({
                 {/* The ॥ N ॥ above already closes the verse; drop the source's trailing "||". */}
                 {v.transliteration.replace(/[\s|।॥0-9.]+$/, '')}
               </p>
-            )}
-          </div>
-        )}
-
-        {/* ── The reader's own note ─────────────────────────── */}
-        {!chantingMode && (editingNote || note) && (
-          <div className="mt-5 rounded-2xl border border-indigo-200/80 bg-indigo-50/60 p-4 dark:border-indigo-400/25 dark:bg-indigo-500/10">
-            <p className="mb-2 flex items-center gap-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300">
-              <StickyNote className="h-3.5 w-3.5" aria-hidden="true" />
-              मेरा नोट
-            </p>
-            {editingNote ? (
-              <>
-                <textarea
-                  ref={noteRef}
-                  value={draft}
-                  maxLength={NOTE_MAX}
-                  onChange={(e) => setDraft(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Escape') setEditingNote(false);
-                    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) saveNote();
-                  }}
-                  rows={3}
-                  placeholder="इस श्लोक पर आपका विचार, प्रश्न या अनुभव…"
-                  aria-label={`श्लोक ${verseLabel} पर नोट`}
-                  className="w-full resize-y rounded-xl border border-indigo-200 bg-dharma-card p-3 text-sm leading-relaxed text-dharma-text outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 dark:border-indigo-400/30"
-                />
-                <div className="mt-2 flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={saveNote}
-                    className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-bold text-white transition hover:bg-indigo-700"
-                  >
-                    सहेजें
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setEditingNote(false)}
-                    className="rounded-full px-3 py-1.5 text-xs font-semibold text-dharma-muted transition hover:text-dharma-text"
-                  >
-                    रद्द करें
-                  </button>
-                  {note && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        onSaveNote('');
-                        setEditingNote(false);
-                      }}
-                      className="ml-auto rounded-full px-3 py-1.5 text-xs font-semibold text-rose-600 transition hover:bg-rose-50 dark:hover:bg-rose-500/10"
-                    >
-                      हटाएँ
-                    </button>
-                  )}
-                  <span
-                    className={`kbd-hint hidden text-[11px] text-dharma-muted sm:inline ${note ? '' : 'ml-auto'}`}
-                    aria-hidden="true"
-                  >
-                    Ctrl + Enter
-                  </span>
-                </div>
-              </>
-            ) : (
-              <button
-                type="button"
-                onClick={openNoteEditor}
-                className="block w-full whitespace-pre-line text-left text-sm leading-relaxed text-dharma-text"
-                aria-label="नोट संपादित करें (Edit note)"
-              >
-                {note}
-              </button>
             )}
           </div>
         )}

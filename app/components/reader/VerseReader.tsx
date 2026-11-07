@@ -25,19 +25,16 @@ import {
   Search,
   Share2,
   SlidersHorizontal,
-  StickyNote,
   Sun,
   X,
   MoreHorizontal,
 } from 'lucide-react';
-import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
 import { THEMES, THEME_NAMES, useTheme } from '@/app/components/ThemeProvider';
 import { openGlobalSearch } from '@/lib/search-events';
 import { formatVerseRef, toAsciiDigits } from '@/lib/verse-format';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import { EmbedVerseDialog } from '@/app/components/EmbedVerseDialog';
-import { useStudyProgress } from '@/lib/useStudyProgress';
 import { useReaderSettings } from '@/lib/useReaderSettings';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import {
@@ -64,12 +61,6 @@ import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
 import { logActivity } from '@/lib/activity-log';
 import { isHistoryPaused } from '@/lib/reading-history';
-import type { PersonalStudyReference } from '@/lib/study/types';
-
-const JournalEditorModal = dynamic(
-  () => import('@/components/study/JournalEditorModal').then((module) => module.JournalEditorModal),
-  { ssr: false },
-);
 
 export interface ReaderChapter {
   id: number;
@@ -137,22 +128,12 @@ export function VerseReader(props: VerseReaderProps) {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const { settings, update, reset, reducedMotion } = useReaderSettings();
-  const { getNote, setNote } = useStudyProgress();
 
   const ref: ReaderRef = useMemo(
     () => ({ scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, url: pageUrl }),
     [scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, pageUrl],
   );
   const label = verseReference(ref, verse);
-  const journalReference: PersonalStudyReference = useMemo(() => ({
-    scriptureId,
-    scriptureTitle,
-    chapterId,
-    verseId: verse.number,
-    canonicalReference: label,
-    sanskritSnippet: (verse.sanskrit ?? '').slice(0, 2_000),
-    translationSnippet: (verse.hindi ?? verse.translation ?? '').slice(0, 2_000),
-  }), [scriptureId, scriptureTitle, chapterId, verse.number, verse.sanskrit, verse.hindi, verse.translation, label]);
 
   /* Reader mode: the site nav and companion dock step aside (see globals.css). The reader's own
      header keeps a way out: back to the chapter, the site menu and the theme. */
@@ -162,8 +143,7 @@ export function VerseReader(props: VerseReaderProps) {
   }, []);
 
   /* ── Dialog state ── */
-  const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'note' | 'embed' | 'site'>(null);
-  const [journalOpen, setJournalOpen] = useState(false);
+  const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'embed' | 'site'>(null);
   const close = useCallback(() => setDialog(null), []);
 
   /* ── Toast ── */
@@ -311,19 +291,6 @@ export function VerseReader(props: VerseReaderProps) {
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 10_000);
     say('Verse downloaded');
-  };
-
-  /* ── Private note (same store as the rest of the app) ── */
-  const noteText = getNote(scriptureId, chapterId, String(verse.number))?.text ?? '';
-  const [draft, setDraft] = useState('');
-  const openNote = () => {
-    setDraft(noteText);
-    setDialog('note');
-  };
-  const saveNote = () => {
-    setNote(scriptureId, chapterId, String(verse.number), draft.trim());
-    close();
-    say(draft.trim() ? 'Note saved on this device' : 'Note removed');
   };
 
   /* ── Verse picker ── */
@@ -635,11 +602,6 @@ export function VerseReader(props: VerseReaderProps) {
               {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
               {saved ? 'Saved' : 'Save'}
             </button>
-            <button type="button" onClick={openNote} className={actionBtn}>
-              <StickyNote className="h-4 w-4" aria-hidden="true" />
-              {noteText ? 'Edit note' : 'Note'}
-              {noteText && <span className="h-1.5 w-1.5 rounded-full bg-saffron-600" aria-label="has a note" />}
-            </button>
             <button type="button" onClick={onCopy} className={actionBtn}>
               <Copy className="h-4 w-4" aria-hidden="true" /> Copy
             </button>
@@ -724,9 +686,6 @@ export function VerseReader(props: VerseReaderProps) {
             </h2>
             <p className="mt-1 text-dharma-text-secondary">You can stop at this verse. Your place in this chapter is kept on this device, so Continue reading brings you back here.</p>
             <div className="mt-3 flex flex-wrap gap-2">
-              <button type="button" onClick={openNote} className={actionBtn}>
-                <StickyNote className="h-4 w-4" aria-hidden="true" /> {noteText ? 'Edit your note' : 'Save a note'}
-              </button>
               {next && (
                 <Link href={next.href} rel="next" className={actionBtn}>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" /> Next verse
@@ -747,8 +706,6 @@ export function VerseReader(props: VerseReaderProps) {
           <ul className="mt-2 space-y-0.5 text-sm">
             {[
               ['layer-sanskrit', 'Original verse'],
-              ['understand-h', '12-Layer Understanding'],
-              ['verse-graph', 'Verse Network & Graph'],
               ['layer-tradition', 'Traditional commentary'],
               ['layer-sources', 'Sources'],
             ].map(([id, text]) => (
@@ -920,32 +877,6 @@ export function VerseReader(props: VerseReaderProps) {
             ))}
           </ul>
           {visibleVerses.length === 0 && <p className="mt-3 text-sm text-dharma-muted">No verse starts with “{pick}”.</p>}
-        </ReaderDialog>
-
-        <ReaderDialog
-          open={dialog === 'note'}
-          onClose={close}
-          title="Private note"
-          titleHi="निजी टिप्पणी"
-          icon={<StickyNote className="h-5 w-5 text-saffron-700" aria-hidden="true" />}
-          footer={
-            <div className="flex justify-end gap-2">
-              <button type="button" onClick={close} className="focus-ring min-h-[44px] rounded-xl px-4 text-sm font-semibold text-dharma-muted hover:text-dharma-text">Cancel</button>
-              <button type="button" onClick={saveNote} className="focus-ring min-h-[44px] rounded-xl bg-saffron-700 px-5 text-sm font-semibold text-white hover:bg-saffron-800">Save note</button>
-            </div>
-          }
-        >
-          <label htmlFor="reader-note" className="mb-2 block text-sm text-dharma-muted">
-            About {label}. Saved only in this browser; clear the text and save to remove it.
-          </label>
-          <textarea
-            id="reader-note"
-            value={draft}
-            maxLength={2000}
-            rows={7}
-            onChange={(e) => setDraft(e.target.value)}
-            className="w-full resize-y rounded-xl border border-dharma-border bg-dharma-bg p-3 text-base text-dharma-text outline-none focus:border-saffron-600 focus:ring-2 focus:ring-saffron-600/25"
-          />
         </ReaderDialog>
 
         <EmbedVerseDialog

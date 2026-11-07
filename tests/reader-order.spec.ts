@@ -19,10 +19,7 @@ test('verse reader presents the source and meaning before editorial insight', as
   expect(order).toBe(true);
   await expect(marma).toContainText('Editorial, not scripture');
 
-  const study = page.locator('#study-more');
-  const answers = study.locator('section[aria-labelledby="verse-answers"]');
-  await expect(answers).toBeHidden();
-  await study.locator('summary').first().click();
+  const answers = page.locator('section[aria-labelledby="verse-answers"]');
   await expect(answers).toBeVisible();
 });
 

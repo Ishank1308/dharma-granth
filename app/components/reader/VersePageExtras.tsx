@@ -33,24 +33,17 @@ export function VersePageExtras({ href }: { href: string }) {
         const doc = new DOMParser().parseFromString(text, 'text/html');
         const parts: string[] = [];
         const answers = doc.querySelector('section[aria-labelledby="verse-answers"]');
-        const study = doc.querySelector('#study-more > div');
-        // The answers also live inside Study more on the verse page; extract them once.
-        if (answers && study?.contains(answers)) answers.remove();
-        study?.querySelectorAll(DROP.join(',')).forEach((el) => el.remove());
-        // ids from the verse page could clash with the chapter's own: prefix them and the references to them.
-        const prefix = `vx-${href.replace(/[^a-z0-9]+/gi, '-')}-`;
-        for (const root of [answers, study]) {
-          if (!root) continue;
-          root.querySelectorAll('[id]').forEach((el) => el.setAttribute('id', prefix + el.id));
-          [root, ...Array.from(root.querySelectorAll('[aria-labelledby],[aria-describedby],[aria-controls]'))].forEach((el) => {
+        if (answers) {
+          const prefix = `vx-${href.replace(/[^a-z0-9]+/gi, '-')}-`;
+          answers.querySelectorAll('[id]').forEach((el) => el.setAttribute('id', prefix + el.id));
+          [answers, ...Array.from(answers.querySelectorAll('[aria-labelledby],[aria-describedby],[aria-controls]'))].forEach((el) => {
             for (const attr of ['aria-labelledby', 'aria-describedby', 'aria-controls']) {
               const value = el.getAttribute(attr);
               if (value) el.setAttribute(attr, value.split(/\s+/).map((id: string) => prefix + id).join(' '));
             }
           });
+          parts.push(answers.outerHTML);
         }
-        if (answers) parts.push(answers.outerHTML);
-        if (study) parts.push(study.innerHTML);
         setHtml(parts.join(''));
       })
       .catch(() => alive && setFailed(true));

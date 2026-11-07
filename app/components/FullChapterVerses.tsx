@@ -1419,8 +1419,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                       })
                     }
                     inCollectionCount={getCollectionCount(v.number)}
-                    note={getNote(scriptureId, chapterId, v.number)?.text}
-                    onSaveNote={(text) => setNote(scriptureId, chapterId, v.number, text)}
                     highlight={getHighlight(scriptureId, chapterId, v.number)?.color}
                     onHighlight={(color) => toggleHighlight(scriptureId, chapterId, v.number, color)}
                     insight={initialChapter?.insights?.[String(v.number)]}
