@@ -214,7 +214,7 @@ export default function KaranasPage() {
               <Link
                 key={k.slug}
                 href={`/panchang/karanas/${k.slug}/`}
-                className="group relative p-5 rounded-2xl bg-surface border border-dharma-border/80 hover:border-amber-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                className="group card-sacred sheen-sweep relative p-5 rounded-2xl bg-surface border border-dharma-border/80 hover:border-amber-500/50 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
@@ -272,7 +272,7 @@ export default function KaranasPage() {
               <Link
                 key={k.slug}
                 href={`/panchang/karanas/${k.slug}/`}
-                className="group relative p-5 rounded-2xl bg-surface border border-dharma-border/80 hover:border-indigo-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                className="group card-sacred sheen-sweep relative p-5 rounded-2xl bg-surface border border-dharma-border/80 hover:border-indigo-500/50 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">

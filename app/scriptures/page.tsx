@@ -115,6 +115,8 @@ export default function ScripturesPage() {
                 desc: 'महाभारत उद्योगपर्व — नीति, मनोविज्ञान और व्यावहारिक शासन-कला (594 श्लोक)',
                 badge: 'महाभारत',
                 tag: 'नीति व आचरण',
+                spineColor: 'bg-amber-500',
+                badgeClass: 'bg-amber-500/15 border-amber-500/30 text-amber-800 dark:text-amber-300',
               },
               {
                 id: 'shivaswarodaya',
@@ -123,6 +125,8 @@ export default function ScripturesPage() {
                 desc: 'स्वर योग — प्राण, नाड़ी व श्वास-प्रवाह का प्रत्यक्ष विज्ञान (395 श्लोक)',
                 badge: 'स्वर विज्ञान',
                 tag: 'प्राणायाम',
+                spineColor: 'bg-emerald-600',
+                badgeClass: 'bg-emerald-500/15 border-emerald-500/30 text-emerald-800 dark:text-emerald-300',
               },
               {
                 id: 'ashtavakra',
@@ -131,6 +135,8 @@ export default function ScripturesPage() {
                 desc: 'अद्वैत वेदांत — आत्म-ज्ञान और परम मुक्ति का सीधा संवाद (298 श्लोक)',
                 badge: 'वेदांत',
                 tag: 'आत्म-ज्ञान',
+                spineColor: 'bg-saffron-500',
+                badgeClass: 'bg-saffron-500/15 border-saffron-500/30 text-saffron-800 dark:text-saffron-300',
               },
               {
                 id: 'naradabhaktisutra',
@@ -139,17 +145,19 @@ export default function ScripturesPage() {
                 desc: 'परा-भक्ति का शास्त्रीय दर्शन — प्रेम, समर्पण व आत्म-निवेदन (84 सूत्र)',
                 badge: 'भक्ति दर्शन',
                 tag: 'सूत्र ग्रंथ',
+                spineColor: 'bg-indigo-600',
+                badgeClass: 'bg-indigo-500/15 border-indigo-500/30 text-indigo-800 dark:text-indigo-300',
               },
             ].map((item) => (
               <Link
                 key={item.id}
                 href={item.href}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-card border border-dharma-border bg-dharma-card p-5 pl-7 shadow-xs transition-all hover:border-saffron-400 hover:shadow-raised hover:-translate-y-0.5"
+                className="group card-sacred sheen-sweep relative flex flex-col justify-between overflow-hidden rounded-card border border-dharma-border bg-dharma-card p-5 pl-7 shadow-xs hover:border-saffron-400 hover:shadow-raised"
               >
-                <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-saffron-500 rounded-l-card" />
+                <span aria-hidden="true" className={`absolute inset-y-0 left-0 w-1.5 ${item.spineColor} rounded-l-card`} />
                 <div>
                   <div className="flex items-center justify-between text-2xs mb-2">
-                    <span className="rounded-full bg-saffron-500/15 border border-saffron-500/30 px-2 py-0.5 font-bold text-saffron-800 dark:text-saffron-300">
+                    <span className={`rounded-full border px-2 py-0.5 font-bold ${item.badgeClass}`}>
                       {item.badge}
                     </span>
                     <span className="text-dharma-muted font-medium text-[11px]">{item.tag}</span>

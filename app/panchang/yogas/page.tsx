@@ -217,7 +217,7 @@ export default function YogasPage() {
                 <Link
                   key={y.slug}
                   href={`/panchang/yogas/${y.slug}/`}
-                  className="group relative p-5 rounded-2xl bg-surface border border-dharma-border/80 hover:border-amber-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                  className="group card-sacred sheen-sweep relative p-5 rounded-2xl bg-surface border border-dharma-border/80 hover:border-amber-500/50 flex flex-col justify-between"
                 >
                   <div>
                     {/* Header: Index, Nature Badge */}

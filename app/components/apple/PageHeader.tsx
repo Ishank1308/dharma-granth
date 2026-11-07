@@ -32,7 +32,8 @@ export function PageHeader({
   width?: 'content' | 'wide';
 }) {
   return (
-    <header className={`mx-auto ${width === 'wide' ? 'max-w-7xl' : 'max-w-content'} px-gutter pb-2 pt-10 sm:pt-16`}>
+    <header className={`relative mx-auto ${width === 'wide' ? 'max-w-7xl' : 'max-w-content'} px-gutter pb-2 pt-10 sm:pt-16`}>
+      <div className="aura-header pointer-events-none absolute -top-10 left-1/2 -z-10 h-64 w-[90%] -translate-x-1/2 rounded-full opacity-60 blur-3xl transition-opacity duration-700" aria-hidden="true" />
       <Eyebrow text={eyebrow} hi={eyebrowHi} lang={eyebrowLang} />
       <h1 id={id} className="mt-2 text-large-title font-semibold text-dharma-text">
         <span>{title}</span>
