@@ -91,7 +91,7 @@ export default function ScripturesPage() {
 
       {/* Featured Rare & Practical Philosophy Collection */}
       <section aria-label="दुर्लभ एवं व्यावहारिक दर्शन ग्रंथ" className="mx-auto max-w-7xl px-gutter mb-8">
-        <div className="apple-card rounded-card border border-dharma-border bg-dharma-card p-5 sm:p-6 shadow-xs">
+        <div className="apple-card rounded-card border border-dharma-border bg-dharma-card p-4 sm:p-6 shadow-xs">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
               <span className="text-[11px] font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
@@ -152,7 +152,7 @@ export default function ScripturesPage() {
               <Link
                 key={item.id}
                 href={item.href}
-                className="group card-sacred sheen-sweep relative flex flex-col justify-between overflow-hidden rounded-card border border-dharma-border bg-dharma-card p-5 pl-7 shadow-xs hover:border-saffron-400 hover:shadow-raised"
+                className="group card-sacred sheen-sweep relative flex flex-col justify-between overflow-hidden rounded-card border border-dharma-border bg-dharma-card p-4 pl-6 sm:p-5 sm:pl-7 shadow-xs hover:border-saffron-400 hover:shadow-raised"
               >
                 <span aria-hidden="true" className={`absolute inset-y-0 left-0 w-1.5 ${item.spineColor} rounded-l-card`} />
                 <div>

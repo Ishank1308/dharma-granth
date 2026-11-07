@@ -1120,8 +1120,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       <section>
         {/* Sanctuary sticky running head: active chapter & verse progress, ‹/› micro-steppers,
             quick inline language toggles (हिन्दी/EN/IAST), 1-tap verse jump, typography (Aa), and options */}
-        <div className="sticky top-[52px] z-30 -mx-2 mb-6 border-b border-dharma-border/60 bg-dharma-bg/92 px-2 pb-2.5 pt-2 backdrop-blur-md">
-          <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="sticky top-[52px] z-30 -mx-2 mb-4 border-b border-dharma-border/60 bg-dharma-bg/92 px-2 py-1.5 backdrop-blur-md sm:mb-6 sm:pb-2.5 sm:pt-2">
+          {/* One row on phones (360px up): the chapter number and the Options label show from sm. */}
+          <div className="flex flex-nowrap items-center justify-between gap-1.5 sm:flex-wrap sm:gap-2">
             <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
               <p className="text-xs text-dharma-muted truncate">
                 <span className="sr-only">पूर्ण अध्याय पाठ · </span>
@@ -1129,10 +1130,10 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                   `${filteredVerses.length} / ${state.verses.length} श्लोक`
                 ) : (
                   <span>
-                    <span className="font-semibold text-dharma-text truncate" title={chapterTitle}>
+                    <span className="hidden font-semibold text-dharma-text truncate sm:inline" title={chapterTitle}>
                       अध्याय {toAsciiDigits(chapterId)}
                     </span>
-                    <span className="mx-1 text-dharma-muted/60" aria-hidden="true">·</span>
+                    <span className="mx-1 hidden text-dharma-muted/60 sm:inline" aria-hidden="true">·</span>
                     <span className="font-medium text-dharma-text">श्लोक {toAsciiDigits(activeVerseNumber)}</span>
                     <span className="text-dharma-muted"> / {toAsciiDigits(state.verses.length)}</span>
                   </span>
@@ -1181,7 +1182,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               )}
             </div>
 
-            <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className="flex shrink-0 items-center gap-1 sm:gap-2">
               {/* Quick Language Layer Chips on desktop/tablet */}
               <div
                 className="hidden md:inline-flex items-center rounded-full border border-dharma-border/80 bg-dharma-bg/70 p-0.5 text-xs font-semibold"
@@ -1230,7 +1231,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               </div>
 
               {state.verses.length > 5 && (
-                <label className="liquid-pill inline-flex min-h-[40px] items-center rounded-full px-2.5 text-xs font-medium text-dharma-muted hover:text-dharma-text">
+                <label className="liquid-pill inline-flex min-h-[40px] items-center rounded-full px-2 text-xs sm:px-2.5 font-medium text-dharma-muted hover:text-dharma-text">
                   <span className="sr-only">श्लोक पर जाएं</span>
                   <select
                     onChange={(e) => {
@@ -1268,13 +1269,14 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               <button
                 type="button"
                 onClick={() => setToolsOpen((o) => !o)}
-                className="liquid-pill inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full px-3 sm:px-3.5 text-xs font-medium text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                className="liquid-pill inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-full px-2.5 sm:px-3.5 text-xs font-medium text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                aria-label="विकल्प · Options"
                 aria-expanded={toolsOpen}
                 aria-controls="chapter-reader-tools"
               >
-                <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
-                <span><span lang="hi">विकल्प</span><span className="hidden sm:inline"> · Options</span></span>
-                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${toolsOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+                <SlidersHorizontal className="h-4 w-4 sm:h-3.5 sm:w-3.5" aria-hidden="true" />
+                <span className="hidden sm:inline"><span lang="hi">विकल्प</span><span> · Options</span></span>
+                <ChevronDown className={`hidden h-3.5 w-3.5 transition-transform sm:block ${toolsOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
               </button>
             </div>
           </div>

@@ -1130,6 +1130,7 @@ export function VerseCard({
                                 parsed={modernParsed}
                                 lang={lessonIsHi ? 'hi' : 'en'}
                                 className={lessonIsHi ? 'leading-loose' : ''}
+                                hideContextHeading
                               />
                             </div>
                           )}

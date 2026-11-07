@@ -105,8 +105,8 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
     'group/node relative flex min-h-[44px] w-full items-center gap-3 rounded-2xl py-1.5 pr-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500/60';
   // Twig: short connector from the rail into the content
   const body = (
-    <div className="relative pb-3 pl-11">
-      <span aria-hidden="true" className={`absolute left-[16px] top-5 h-0.5 w-5 ${RAIL}`} />
+    <div className="relative pb-3 pl-9 sm:pl-11">
+      <span aria-hidden="true" className={`absolute left-[16px] top-5 h-0.5 w-3 sm:w-5 ${RAIL}`} />
       {branch.content}
     </div>
   );
@@ -162,10 +162,12 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
       {rest.length > 0 && (
         // The next layer grows out of this one: indented a step, joined by an elbow
         // from this node's rail (x = 15px) to the child's circle (y = 22px).
-        <div className="relative ml-7">
+        // On phones every layer stays on the one rail: the step indent compounded
+        // (28px a layer), leaving व्याख्या and modern context about 200px wide at 360px.
+        <div className="relative sm:ml-7">
           <span
             aria-hidden="true"
-            className="absolute -left-[13px] top-0 h-[23px] w-[13px] rounded-bl-xl border-b-2 border-l-2 border-amber-500/30 dark:border-amber-400/25"
+            className="absolute left-[15px] top-0 h-[23px] w-0 border-l-2 border-amber-500/30 dark:border-amber-400/25 sm:-left-[13px] sm:w-[13px] sm:rounded-bl-xl sm:border-b-2"
           />
           <TreeNode branches={rest} persistent={persistent} />
         </div>
