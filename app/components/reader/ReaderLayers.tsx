@@ -31,6 +31,7 @@ import { ModernContextBody, ReflectionBody, parseModernContext } from '@/app/com
 import { getVerseStudy, type StudyGroup } from '@/data/verse-study';
 import { PalmLeaf, Rubricated, StudyVyakhya, markPhrases, termMarks } from '@/app/components/reader/PalmLeaf';
 import { VersePillar, VersePillars } from '@/app/components/reader/VersePillar';
+import { countRecitationWords, RecitationHighlightedLine } from '@/app/components/reader/RecitationHighlightedLine';
 import Link from 'next/link';
 
 /* ── Type scale: full class strings so Tailwind keeps them ──────────── */
@@ -253,46 +254,6 @@ const aidToggle =
 
 /* ── The layers: root shloka, then the अर्थ → व्याख्या → विज्ञान tree ── */
 
-function RecitationHighlightedLine({
-  line,
-  activeWord,
-}: {
-  line: string;
-  activeWord?: string | null;
-}) {
-  if (!activeWord) return <>{line}</>;
-
-  const cleanActive = activeWord.replace(/[।॥\s]/g, '');
-  if (!cleanActive) return <>{line}</>;
-
-  const tokens = line.split(/(\s+|[।॥])/);
-
-  return (
-    <>
-      {tokens.map((token, idx) => {
-        const cleanToken = token.replace(/[।॥\s]/g, '');
-        const isMatch =
-          cleanToken.length > 0 &&
-          (cleanToken === cleanActive ||
-            cleanActive.includes(cleanToken) ||
-            cleanToken.includes(cleanActive));
-
-        if (isMatch) {
-          return (
-            <span
-              key={idx}
-              className="inline-block rounded-md bg-amber-500/25 px-1 py-0.5 text-amber-900 dark:text-amber-100 ring-1 ring-amber-400/70 shadow-xs transition-all duration-150 font-bold scale-[1.02]"
-            >
-              {token}
-            </span>
-          );
-        }
-        return <span key={idx}>{token}</span>;
-      })}
-    </>
-  );
-}
-
 export function ReaderLayers({
   scriptureId,
   verse,
@@ -316,14 +277,16 @@ export function ReaderLayers({
   /** Status chips rendered by the page (TrustBadges), placed at the top of the Sources card. */
   sourceStatus?: ReactNode;
 }) {
-  const [activeRecitationWord, setActiveRecitationWord] = useState<string | null>(null);
+  const [activeRecitationWordIndex, setActiveRecitationWordIndex] = useState<number | null>(null);
   const [isRecitingThisVerse, setIsRecitingThisVerse] = useState(false);
 
   useEffect(() => {
     const handleWord = (e: Event) => {
       const detail = (e as CustomEvent).detail;
       if (detail?.word) {
-        setActiveRecitationWord(detail.word);
+        setActiveRecitationWordIndex(
+          typeof detail.wordIndex === 'number' ? detail.wordIndex : null
+        );
         setIsRecitingThisVerse(true);
       }
     };
@@ -333,12 +296,12 @@ export function ReaderLayers({
         setIsRecitingThisVerse(true);
       } else {
         setIsRecitingThisVerse(false);
-        setActiveRecitationWord(null);
+        setActiveRecitationWordIndex(null);
       }
     };
     const handleEnd = () => {
       setIsRecitingThisVerse(false);
-      setActiveRecitationWord(null);
+      setActiveRecitationWordIndex(null);
     };
 
     window.addEventListener('dharma:recitation-word', handleWord);
@@ -453,7 +416,10 @@ export function ReaderLayers({
               <span key={i} className="block">
                 <RecitationHighlightedLine
                   line={line}
-                  activeWord={isRecitingThisVerse ? activeRecitationWord : null}
+                  activeWordIndex={isRecitingThisVerse ? activeRecitationWordIndex : null}
+                  wordIndexOffset={lines
+                    .slice(0, i)
+                    .reduce((count, previousLine) => count + countRecitationWords(previousLine), 0)}
                 />
               </span>
             ))}

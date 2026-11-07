@@ -4,7 +4,8 @@ import React from 'react';
 
 export interface RecitationHighlightedLineProps {
   line: string;
-  activeWord?: string | null;
+  activeWordIndex?: number | null;
+  wordIndexOffset?: number;
 }
 
 /**
@@ -13,25 +14,21 @@ export interface RecitationHighlightedLineProps {
  */
 export function RecitationHighlightedLine({
   line,
-  activeWord,
+  activeWordIndex,
+  wordIndexOffset = 0,
 }: RecitationHighlightedLineProps) {
-  if (!activeWord) return <>{line}</>;
-
-  const cleanActive = activeWord.replace(/[।॥\s]/g, '');
-  if (!cleanActive) return <>{line}</>;
+  if (activeWordIndex == null) return <>{line}</>;
 
   // Retain tokens including whitespace and punctuation delimiters
   const tokens = line.split(/(\s+|[।॥])/);
+  let wordIndex = wordIndexOffset;
 
   return (
     <>
       {tokens.map((token, idx) => {
         const cleanToken = token.replace(/[।॥\s]/g, '');
-        const isMatch =
-          cleanToken.length > 0 &&
-          (cleanToken === cleanActive ||
-            cleanActive.includes(cleanToken) ||
-            cleanToken.includes(cleanActive));
+        const tokenWordIndex = cleanToken ? wordIndex++ : null;
+        const isMatch = tokenWordIndex === activeWordIndex;
 
         if (isMatch) {
           return (
@@ -49,3 +46,8 @@ export function RecitationHighlightedLine({
   );
 }
 
+export function countRecitationWords(line: string) {
+  return line
+    .split(/(\s+|[।॥])/)
+    .filter((token) => token.replace(/[।॥\s]/g, '').length > 0).length;
+}

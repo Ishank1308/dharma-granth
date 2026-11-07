@@ -39,7 +39,7 @@ import { ConnectedFlow, SacredSection } from '@/app/components/reader/SacredRead
 import { detectChandas } from '@/lib/chandas-detector';
 import { speakSanskritTerm } from '@/lib/sacred-soundscape';
 import { hasRecordedVerseAudio } from '@/lib/verse-audio';
-import { RecitationHighlightedLine } from './reader/RecitationHighlightedLine';
+import { countRecitationWords, RecitationHighlightedLine } from './reader/RecitationHighlightedLine';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { showSabdaPeek } from '@/lib/prana-capsule-store';
 import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';
@@ -354,7 +354,7 @@ export function VerseCard({
   const [activeLineIndex, setActiveLineIndex] = useState<number | null>(null);
   const [activeTranslationLang, setActiveTranslationLang] = useState<'hi' | 'en' | null>(null);
   const [activeWordIndex, setActiveWordIndex] = useState<number | null>(null);
-  const [activeRecitingWord, setActiveRecitingWord] = useState<string | null>(null);
+  const [activeRecitationWordIndex, setActiveRecitationWordIndex] = useState<number | null>(null);
 
   const [activeWordBoundary, setActiveWordBoundary] = useState<{ chunkIndex: number; charIndex: number; length: number } | null>(null);
 
@@ -363,7 +363,7 @@ export function VerseCard({
       setActiveLineIndex(null);
       setActiveTranslationLang(null);
       setActiveWordBoundary(null);
-      setActiveRecitingWord(null);
+      setActiveRecitationWordIndex(null);
       return;
     }
 
@@ -385,9 +385,9 @@ export function VerseCard({
 
     const handleWord = (e: Event) => {
       const detail = (e as CustomEvent).detail;
-      if (detail?.word) {
-        setActiveRecitingWord(detail.word);
-      }
+      setActiveRecitationWordIndex(
+        typeof detail?.wordIndex === 'number' ? detail.wordIndex : null
+      );
       if (typeof detail?.chunkIndex === 'number' && typeof detail?.charIndex === 'number') {
         setActiveWordBoundary({
           chunkIndex: detail.chunkIndex,
@@ -792,8 +792,14 @@ export function VerseCard({
                           : ''
                       }`}
                     >
-                      {isReciting && activeRecitingWord ? (
-                        <RecitationHighlightedLine line={line} activeWord={activeRecitingWord} />
+                      {isReciting && activeRecitationWordIndex !== null ? (
+                        <RecitationHighlightedLine
+                          line={line}
+                          activeWordIndex={activeRecitationWordIndex}
+                          wordIndexOffset={lines
+                            .slice(0, i)
+                            .reduce((count, previousLine) => count + countRecitationWords(previousLine), 0)}
+                        />
                       ) : (
                         <GlossaryText text={line} />
                       )}
