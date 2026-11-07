@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { SplashScreen } from '@/app/components/SplashScreen';
+import { HomeDynamicBackground } from '@/app/components/home/HomeDynamicBackground';
 import { HomeHero } from '@/app/components/home/HomeHero';
 import { HomeTodayVerse } from '@/app/components/home/HomeTodayVerse';
 import { ContinueReading } from '@/app/components/ContinueReading';
@@ -41,7 +42,10 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <main className="min-h-screen bg-dharma-bg text-dharma-text">
+      <main className="relative min-h-screen overflow-x-clip bg-dharma-bg text-dharma-text">
+        {/* Dynamic fluid background canvas */}
+        <HomeDynamicBackground />
+
         {/* Brand splash: CSS-only, once per session, hidden from assistive tech */}
         <SplashScreen />
 

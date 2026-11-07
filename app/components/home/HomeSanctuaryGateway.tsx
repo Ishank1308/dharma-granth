@@ -13,10 +13,16 @@ import {
 interface LivePanchangSummary {
   cityHi: string;
   pakshaHi: string;
+  isWaxing: boolean;
+  illuminationPercent: number;
   tithiHi: string;
   nakshatraHi: string;
+  nakshatraPada: number;
+  yogaHi: string;
   varaHi: string;
   sunrise: string;
+  sunset: string;
+  rituHi: string;
 }
 
 export function HomeSanctuaryGateway() {
@@ -39,10 +45,16 @@ export function HomeSanctuaryGateway() {
     setPanchang({
       cityHi: loc.nameHi,
       pakshaHi: p.paksha.nameHi,
+      isWaxing: p.paksha.isWaxing,
+      illuminationPercent: Math.round(p.paksha.illuminationPercent),
       tithiHi: p.tithi.nameHi,
       nakshatraHi: p.nakshatra.nameHi,
+      nakshatraPada: p.nakshatra.pada,
+      yogaHi: p.yoga.nameHi,
       varaHi: p.dayOfWeekHi,
       sunrise: p.solarTimes.sunrise,
+      sunset: p.solarTimes.sunset,
+      rituHi: p.ritu.nameHi,
     });
   }, []);
 
@@ -68,7 +80,7 @@ export function HomeSanctuaryGateway() {
               </span>
               {panchang && (
                 <span lang="hi" className="rounded-full border border-dharma-border bg-dharma-bg px-2.5 py-0.5 font-devanagari text-xs font-medium text-dharma-muted">
-                  {panchang.cityHi} · सूर्योदय {panchang.sunrise}
+                  {panchang.cityHi} · {panchang.isWaxing ? '🌔' : '🌖'} {panchang.pakshaHi} ({panchang.illuminationPercent}%)
                 </span>
               )}
             </div>
@@ -83,9 +95,22 @@ export function HomeSanctuaryGateway() {
             </h3>
 
             {panchang ? (
-              <p lang="hi" className="mt-2.5 rounded-xl border border-dharma-saffron/25 bg-dharma-saffron/5 px-3.5 py-2.5 font-devanagari text-sm font-medium text-dharma-text">
-                {panchang.pakshaHi} · <strong>{panchang.tithiHi}</strong> · {panchang.nakshatraHi} नक्षत्र · {panchang.varaHi}
-              </p>
+              <div className="mt-2.5 space-y-2">
+                <p lang="hi" className="rounded-xl border border-dharma-saffron/25 bg-dharma-saffron/5 px-3.5 py-2.5 font-devanagari text-sm font-medium text-dharma-text">
+                  <strong>{panchang.tithiHi}</strong> · {panchang.nakshatraHi} नक्षत्र (पाद {panchang.nakshatraPada}) · {panchang.yogaHi} · {panchang.varaHi}
+                </p>
+                <div className="flex flex-wrap items-center gap-2 text-xs text-dharma-muted">
+                  <span className="rounded-md bg-dharma-bg px-2 py-0.5 border border-dharma-border/60">
+                    🌅 सूर्योदय {panchang.sunrise}
+                  </span>
+                  <span className="rounded-md bg-dharma-bg px-2 py-0.5 border border-dharma-border/60">
+                    🌇 सूर्यास्त {panchang.sunset}
+                  </span>
+                  <span className="rounded-md bg-dharma-bg px-2 py-0.5 border border-dharma-border/60">
+                    🌿 {panchang.rituHi} ऋतु
+                  </span>
+                </div>
+              </div>
             ) : (
               <p className="mt-2.5 text-sm leading-relaxed text-dharma-muted">
                 Live Udaya Tithi, Nakshatra, Yoga, Karana, Vrata dates, and classical Panchanga-Shuddhi study.
