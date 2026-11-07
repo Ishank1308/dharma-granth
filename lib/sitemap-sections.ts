@@ -160,10 +160,14 @@ function scriptureRoutes(): { scriptures: MetadataRoute.Sitemap; chapters: Metad
     for (const ch of getScriptureChapters(meta.id)) chapterSet.add(ch.id);
     for (const chId of Array.from(chapterSet).sort((a, b) => a - b)) {
       // Original-text-only chapter pages and parts are noindex; keep them out of the sitemap too.
-      if (chapterPartHasMeaning(meta.id, chId, 1)) chapters.push(entry(`/scripture/${meta.id}/chapter/${chId}`, date));
+      if (chapterPartHasMeaning(meta.id, chId, 1)) {
+        chapters.push(entry(`/scripture/${meta.id}/chapter/${chId}`, date));
+      }
       // Parts 2…N of chapters too large for one page (lib/chapter-parts).
       for (const part of chapterParts(meta.id, chId)?.slice(1) ?? []) {
-        if (chapterPartHasMeaning(meta.id, chId, part.part)) chapters.push(entry(chapterPartHref(meta.id, chId, part.part), date));
+        if (chapterPartHasMeaning(meta.id, chId, part.part)) {
+          chapters.push(entry(chapterPartHref(meta.id, chId, part.part), date));
+        }
       }
     }
   }

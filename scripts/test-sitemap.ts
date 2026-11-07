@@ -11,6 +11,7 @@ import {
   sitemapSection,
   sitemapXml,
 } from '../lib/sitemap-sections';
+import { chapterPartHasMeaning } from '../lib/verse-meaning';
 
 // XML escaping covers all five predefined entities, ampersand first.
 assert.equal(escapeXml(`a&b<c>"d"'e'`), 'a&amp;b&lt;c&gt;&quot;d&quot;&apos;e&apos;');

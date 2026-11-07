@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+
 const TICKER_LINES: Array<{ sa: string; en: string; cite: string }> = [
   { sa: 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन', en: 'You have a right to your actions, never to their fruits', cite: 'Gita 2.47' },
   { sa: 'मन एव मनुष्याणां कारणं बन्धमोक्षयोः', en: 'The mind alone is the cause of bondage and liberation', cite: 'Amritabindu Upanishad' },
@@ -16,26 +20,39 @@ const TICKER_LINES: Array<{ sa: string; en: string; cite: string }> = [
  * aria-hidden so screen readers hear each line once.
  */
 export function WisdomTicker() {
+  const [paused, setPaused] = useState(false);
+
   return (
-    <div className="ticker border-b border-dharma-border/60 bg-dharma-card-soft/60" data-testid="wisdom-ticker">
-      <div className="ticker-track" role="presentation">
-        {[0, 1].map((copy) => (
-          <div key={copy} aria-hidden={copy === 1} className="ticker-group">
-            {TICKER_LINES.map((line) => (
-              <span key={line.sa} className="ticker-item">
-                <span lang="sa" className="font-devanagari font-bold text-saffron-800 dark:text-saffron-300">
-                  {line.sa}
+    <div className="flex items-center gap-3 border-b border-dharma-border/60 bg-dharma-card-soft/60 px-3" data-testid="wisdom-ticker">
+      <div className="ticker min-w-0 flex-1" data-paused={paused}>
+        <div className="ticker-track" role="presentation">
+          {[0, 1].map((copy) => (
+            <div key={copy} aria-hidden={copy === 1} className="ticker-group">
+              {TICKER_LINES.map((line) => (
+                <span key={line.sa} className="ticker-item">
+                  <span lang="sa" className="font-devanagari font-bold text-saffron-800 dark:text-saffron-300">
+                    {line.sa}
+                  </span>
+                  <span className="ticker-sep" aria-hidden="true">
+                    ❁
+                  </span>
+                  <span className="ticker-gloss">{line.en}</span>
+                  <span className="ticker-cite">— {line.cite}</span>
                 </span>
-                <span className="ticker-sep" aria-hidden="true">
-                  ❁
-                </span>
-                <span className="ticker-gloss">{line.en}</span>
-                <span className="ticker-cite">— {line.cite}</span>
-              </span>
-            ))}
-          </div>
-        ))}
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
+      <button
+        type="button"
+        className="focus-ring min-h-12 shrink-0 rounded-full border border-dharma-border px-3 text-xs font-semibold text-dharma-muted hover:text-dharma-text"
+        aria-pressed={paused}
+        aria-label={`${paused ? 'Resume' : 'Pause'} wisdom ticker`}
+        onClick={() => setPaused((current) => !current)}
+      >
+        {paused ? 'Resume' : 'Pause'}
+      </button>
     </div>
   );
 }

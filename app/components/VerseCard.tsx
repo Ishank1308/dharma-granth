@@ -372,10 +372,13 @@ export function VerseCard({
       if (detail?.isTranslation) {
         setActiveLineIndex(null);
         setActiveTranslationLang(detail.language);
+        setActiveRecitationWordIndex(null);
         setActiveWordBoundary(null);
       } else if (typeof detail?.chunkIndex === 'number') {
         setActiveLineIndex(detail.chunkIndex);
         setActiveTranslationLang(null);
+        setActiveRecitationWordIndex(null);
+        setActiveWordBoundary(null);
       } else {
         setActiveLineIndex(null);
         setActiveTranslationLang(null);
@@ -385,9 +388,7 @@ export function VerseCard({
 
     const handleWord = (e: Event) => {
       const detail = (e as CustomEvent).detail;
-      setActiveRecitationWordIndex(
-        typeof detail?.wordIndex === 'number' ? detail.wordIndex : null
-      );
+      setActiveRecitationWordIndex(typeof detail?.wordIndex === 'number' ? detail.wordIndex : null);
       if (typeof detail?.chunkIndex === 'number' && typeof detail?.charIndex === 'number') {
         setActiveWordBoundary({
           chunkIndex: detail.chunkIndex,
@@ -792,13 +793,17 @@ export function VerseCard({
                           : ''
                       }`}
                     >
-                      {isReciting && activeRecitationWordIndex !== null ? (
+                      {isReciting && (activeRecitationWordIndex !== null || activeWordBoundary?.chunkIndex === i) ? (
                         <RecitationHighlightedLine
                           line={line}
                           activeWordIndex={activeRecitationWordIndex}
-                          wordIndexOffset={lines
-                            .slice(0, i)
-                            .reduce((count, previousLine) => count + countRecitationWords(previousLine), 0)}
+                          wordIndexOffset={lines.slice(0, i).reduce(
+                            (count, previousLine) => count + countRecitationWords(previousLine),
+                            0,
+                          )}
+                          activeCharacterRange={activeWordBoundary?.chunkIndex === i
+                            ? { start: activeWordBoundary.charIndex, length: activeWordBoundary.length }
+                            : null}
                         />
                       ) : (
                         <GlossaryText text={line} />

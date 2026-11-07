@@ -6,6 +6,7 @@ export interface RecitationHighlightedLineProps {
   line: string;
   activeWordIndex?: number | null;
   wordIndexOffset?: number;
+  activeCharacterRange?: { start: number; length: number } | null;
 }
 
 /**
@@ -16,19 +17,36 @@ export function RecitationHighlightedLine({
   line,
   activeWordIndex,
   wordIndexOffset = 0,
+  activeCharacterRange,
 }: RecitationHighlightedLineProps) {
-  if (activeWordIndex == null) return <>{line}</>;
-
-  // Retain tokens including whitespace and punctuation delimiters
   const tokens = line.split(/(\s+|[।॥])/);
+  const wordCount = tokens.filter((token) => token.replace(/[।॥\s]/g, '').length > 0).length;
+  if (activeWordIndex == null && activeCharacterRange == null) return <>{line}</>;
+  if (
+    activeCharacterRange == null &&
+    activeWordIndex != null &&
+    (activeWordIndex < wordIndexOffset || activeWordIndex >= wordIndexOffset + wordCount)
+  ) {
+    return <>{line}</>;
+  }
   let wordIndex = wordIndexOffset;
+  let charIndex = 0;
 
   return (
     <>
       {tokens.map((token, idx) => {
         const cleanToken = token.replace(/[।॥\s]/g, '');
-        const tokenWordIndex = cleanToken ? wordIndex++ : null;
-        const isMatch = tokenWordIndex === activeWordIndex;
+        const isWord = cleanToken.length > 0;
+        const tokenStart = charIndex;
+        const tokenEnd = tokenStart + token.length;
+        charIndex = tokenEnd;
+        const isMatch = isWord && (
+          (activeWordIndex != null && wordIndex === activeWordIndex) ||
+          (activeCharacterRange != null &&
+            tokenStart < activeCharacterRange.start + activeCharacterRange.length &&
+            tokenEnd > activeCharacterRange.start)
+        );
+        if (isWord) wordIndex++;
 
         if (isMatch) {
           return (

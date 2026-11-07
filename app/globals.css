@@ -2119,7 +2119,7 @@ body::after {
 }
 
 /* Wisdom ticker: a slow seamless loop (two identical groups, the track
-   shifts exactly one group width). Pauses on hover/focus; a calm static
+   shifts exactly one group width). Pauses on hover or by the accessible control; a calm static
    wrapped list under reduced motion. */
 .ticker {
     overflow: hidden;
@@ -2165,7 +2165,7 @@ body::after {
         animation: ticker-scroll 90s linear infinite;
     }
     .ticker:hover .ticker-track,
-    .ticker:focus-within .ticker-track {
+    .ticker[data-paused='true'] .ticker-track {
         animation-play-state: paused;
     }
 }
@@ -2214,5 +2214,4 @@ body::after {
         transform: translateX(4px);
     }
 }
-
 

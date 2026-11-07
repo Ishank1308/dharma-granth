@@ -278,30 +278,36 @@ export function ReaderLayers({
   sourceStatus?: ReactNode;
 }) {
   const [activeRecitationWordIndex, setActiveRecitationWordIndex] = useState<number | null>(null);
+  const [activeRecitationWordBoundary, setActiveRecitationWordBoundary] = useState<{ chunkIndex: number; charIndex: number; length: number } | null>(null);
   const [isRecitingThisVerse, setIsRecitingThisVerse] = useState(false);
 
   useEffect(() => {
     const handleWord = (e: Event) => {
       const detail = (e as CustomEvent).detail;
-      if (detail?.word) {
-        setActiveRecitationWordIndex(
-          typeof detail.wordIndex === 'number' ? detail.wordIndex : null
-        );
-        setIsRecitingThisVerse(true);
-      }
+      setActiveRecitationWordIndex(typeof detail?.wordIndex === 'number' ? detail.wordIndex : null);
+      setActiveRecitationWordBoundary(
+        typeof detail?.chunkIndex === 'number' && typeof detail?.charIndex === 'number'
+          ? { chunkIndex: detail.chunkIndex, charIndex: detail.charIndex, length: detail.charLength || 0 }
+          : null,
+      );
+      setIsRecitingThisVerse(true);
     };
     const handleChunk = (e: Event) => {
       const detail = (e as CustomEvent).detail;
       if (detail?.chunkIndex !== null && detail?.chunkIndex !== undefined) {
         setIsRecitingThisVerse(true);
+        setActiveRecitationWordIndex(null);
+        setActiveRecitationWordBoundary(null);
       } else {
         setIsRecitingThisVerse(false);
         setActiveRecitationWordIndex(null);
+        setActiveRecitationWordBoundary(null);
       }
     };
     const handleEnd = () => {
       setIsRecitingThisVerse(false);
       setActiveRecitationWordIndex(null);
+      setActiveRecitationWordBoundary(null);
     };
 
     window.addEventListener('dharma:recitation-word', handleWord);
@@ -417,9 +423,13 @@ export function ReaderLayers({
                 <RecitationHighlightedLine
                   line={line}
                   activeWordIndex={isRecitingThisVerse ? activeRecitationWordIndex : null}
-                  wordIndexOffset={lines
-                    .slice(0, i)
-                    .reduce((count, previousLine) => count + countRecitationWords(previousLine), 0)}
+                  wordIndexOffset={lines.slice(0, i).reduce(
+                    (count, previousLine) => count + countRecitationWords(previousLine),
+                    0,
+                  )}
+                  activeCharacterRange={isRecitingThisVerse && activeRecitationWordBoundary?.chunkIndex === i
+                    ? { start: activeRecitationWordBoundary.charIndex, length: activeRecitationWordBoundary.length }
+                    : null}
                 />
               </span>
             ))}
