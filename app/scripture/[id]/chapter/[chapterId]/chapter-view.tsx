@@ -36,7 +36,27 @@ import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPa
 import { CONNECTIONS, type Connection } from '@/data/study-content';
 import { MeaningPendingNotice } from '@/app/components/MeaningPending';
 import { commentaryOf, verseHasMeaning } from '@/lib/verse-has-meaning';
-import { commentaryAmbiguities } from '@/lib/commentary-lookup';
+import { commentaryAmbiguities, commentaryLookupKey, type CommentaryAmbiguities } from '@/lib/commentary-lookup';
+
+/**
+ * A split chapter's page carries only its own verses' commentary. The whole
+ * chapter's commentary on every part made each part of Vivekachudamani ch. 1
+ * (580 verses, each with a long व्याख्या and modern context) carry ~2.9 MB.
+ */
+function commentaryForVerses(
+  all: Record<string, HiCommentaryEntry> | undefined,
+  chapterId: number,
+  numbers: Array<number | string>,
+  ambiguity: CommentaryAmbiguities,
+): Record<string, HiCommentaryEntry> | undefined {
+  if (!all) return undefined;
+  const slice: Record<string, HiCommentaryEntry> = {};
+  for (const n of numbers) {
+    const key = commentaryLookupKey(all, chapterId, n, ambiguity);
+    if (key !== undefined) slice[key] = all[key];
+  }
+  return Object.keys(slice).length > 0 ? slice : undefined;
+}
 
 export interface ChapterParams {
   id: string;
@@ -252,7 +272,14 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
     (part || Buffer.byteLength(JSON.stringify(pageVerses)) <= INLINE_CHAPTER_MAX_BYTES)
       ? {
           verses: pageVerses,
-          commentary: readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId),
+          commentary: part
+            ? commentaryForVerses(
+                readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId),
+                chapterId,
+                pageVerses.map((v) => v.number),
+                ambiguity,
+              )
+            : readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId),
           commentaryAmbiguity: { normalized: [...ambiguity.normalized], raw: [...ambiguity.raw] },
           source: seeded.source as InitialChapter['source'],
           insights: getChapterInsights(
