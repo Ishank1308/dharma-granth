@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { SplashScreen } from '@/app/components/SplashScreen';
 import { HomeHero } from '@/app/components/home/HomeHero';
-import { TodayVerseCard } from '@/app/components/home/TodayVerseCard';
+import { HomeTodayVerse } from '@/app/components/home/HomeTodayVerse';
 import { ContinueReading } from '@/app/components/ContinueReading';
 import { HomeLibrary } from '@/app/components/home/HomeLibrary';
+import { WisdomTicker } from '@/app/components/home/WisdomTicker';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
 import { SiteFooter } from '@/app/components/SiteFooter';
 
@@ -48,15 +49,18 @@ export default function HomePage() {
         <HomeHero />
 
         {/* 2. Today's verse, then the reader's own place (nothing on a first visit) */}
-        <div className="mx-auto flex max-w-[980px] flex-col gap-4 px-5">
-          <TodayVerseCard />
+        <div className="mx-auto flex max-w-content flex-col gap-4 px-5">
+          <HomeTodayVerse />
           <ContinueReading />
         </div>
 
         {/* 3. The library as book tiles */}
         <HomeLibrary />
 
-        {/* 4. Sourcing and methodology */}
+        {/* 4. A slow band of Upaniṣadic sayings, each linked to its passage */}
+        <WisdomTicker />
+
+        {/* 5. Sourcing, methodology and the library's numbers */}
         <HomeTrustStrip />
       </main>
       <SiteFooter />

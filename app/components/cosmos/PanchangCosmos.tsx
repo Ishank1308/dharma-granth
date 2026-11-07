@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion, useReducedMotion } from 'framer-motion';
 import {
   PRESET_LOCATIONS,
   calculateEducationalPanchang,
@@ -87,12 +87,12 @@ export function PanchangCosmos() {
 
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-20 pt-14 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:gap-14 lg:pb-28 lg:pt-20">
         <div>
-          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-[#b9b2d6]"><span lang="hi">काल दर्शन</span> · An educational calendar</p>
-          <h1 id="panchang-title" className="mt-4 font-serif text-5xl font-medium leading-[1.02] tracking-tight sm:text-6xl">
-            <span lang="sa" className="shloka-text block text-[#f3e3b3]">पञ्चाङ्ग</span>{' '}
-            <span className="mt-2 block text-3xl text-[#ece8f5] sm:text-4xl">Pañcāṅga</span>
+          <p className="text-[13px] font-semibold text-[#f3e3b3]"><span>Panchang</span> <span aria-hidden="true">·</span> <span lang="hi">काल दर्शन</span></p>
+          <h1 id="panchang-title" className="mt-3 text-[44px] font-semibold leading-[1.05] tracking-[-0.035em] sm:text-7xl">
+            <span lang="sa" className="block !leading-[1.25] text-[#f3e3b3]">पञ्चाङ्ग</span>{' '}
+            <span className="mt-1 block text-[28px] text-[#ece8f5] sm:text-[40px]">The five limbs of time</span>
           </h1>
-          <p className="mt-5 max-w-md font-serif text-lg leading-relaxed text-[#c9c3e0]">
+          <p className="mt-5 max-w-md text-body leading-relaxed text-[#c9c3e0]">
             <span lang="sa" className="font-sanskrit">पञ्च</span> five + <span lang="sa" className="font-sanskrit">अङ्ग</span> limbs: the
             five measures by which the old astronomers read a day, from the moon’s place among the stars and its distance from the sun.
           </p>
@@ -116,11 +116,11 @@ export function PanchangCosmos() {
                 transition={{ ...SPRING, delay: 0.15 + i * 0.08 }}
                 className={`cosmos-limb rounded-2xl px-4 py-3 ${i === 4 ? 'sm:col-span-2' : ''}`}
               >
-                <p className="flex items-baseline gap-2 text-[11px] uppercase tracking-[0.16em] text-[#9d96bd]">
-                  <span className="font-mono text-[#f3e3b3]">{i + 1}</span>
-                  <span lang="sa" className="font-sanskrit text-sm normal-case tracking-normal text-[#ece8f5]">{l.sa}</span>
+                <p className="flex flex-wrap items-baseline gap-x-2 text-[13px] text-[#9d96bd]">
+                  <span className="tabular-nums text-[#f3e3b3]">{i + 1}</span>
+                  <span lang="sa" className="text-[15px] text-[#ece8f5]">{l.sa}</span>
                   <span>{l.en}</span>
-                  <span className="normal-case tracking-normal text-[#7c759c]">· {l.gloss}</span>
+                  <span className="text-[#8f88b0]">· {l.gloss}</span>
                 </p>
                 <p className="mt-1 min-h-[1.75rem] text-lg text-[#fdf6e3]">
                   {l.value ? (

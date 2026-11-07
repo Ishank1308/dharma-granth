@@ -85,7 +85,7 @@ function Group({
         })}
       </ul>
       {(hidden > 0 || expanded) && group.options.length > limit && (
-        <button type="button" onClick={() => setExpanded((v) => !v)} className="focus-ring mb-2 ml-2 min-h-[36px] rounded px-1 text-[13px] text-dharma-saffron hover:underline">
+        <button type="button" onClick={() => setExpanded((v) => !v)} className="focus-ring mb-2 ml-2 min-h-[36px] rounded px-1 text-footnote text-dharma-saffron hover:underline">
           {expanded ? 'Show fewer' : `Show all ${group.options.length}`}
         </button>
       )}

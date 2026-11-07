@@ -7,9 +7,9 @@ import { courseLd, pageLd } from '@/lib/jsonld';
 import { CoursePageClient } from './CoursePageClient';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     courseId: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
@@ -18,7 +18,8 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const course = getLearningPath(params.courseId);
   if (!course) {
     return {
@@ -35,7 +36,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function CoursePage({ params }: PageProps) {
+export default async function CoursePage(props: PageProps) {
+  const params = await props.params;
   const course = getLearningPath(params.courseId);
 
   if (!course) {

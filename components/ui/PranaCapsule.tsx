@@ -234,7 +234,7 @@ export function PranaCapsule() {
         }
         transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
         // Keep it above the reader's one-thumb controls on chapter pages, and above the mobile nav elsewhere.
-        className={`fixed ${isChapterReader ? 'bottom-[calc(10rem+env(safe-area-inset-bottom))]' : 'bottom-[calc(4.25rem+env(safe-area-inset-bottom))]'} lg:bottom-5 inset-x-0 z-50 pointer-events-none flex flex-col ${compactIdleCapsule ? 'items-end pr-4 sm:pr-6' : 'items-center px-2'}`}
+        className={`fixed ${isChapterReader ? 'bottom-[calc(10rem+env(safe-area-inset-bottom))]' : 'bottom-[calc(4.25rem+env(safe-area-inset-bottom))]'} lg:bottom-5 inset-x-0 z-50 pointer-events-none flex flex-col ${compactIdleCapsule ? 'items-end pr-4 sm:pr-6 max-lg:hidden' : 'items-center px-2'}`}
         aria-label="Prāṇa Sūtra Active Island"
         data-hide-during-chapter-reading
         aria-hidden={!shouldShowIsland}

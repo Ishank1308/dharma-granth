@@ -6,7 +6,7 @@ import { chapterParts } from '@/lib/chapter-parts';
 import { ChapterView, chapterMetadata, type ChapterParams } from '../../chapter-view';
 
 interface PageProps {
-  params: ChapterParams & { part: string };
+  params: Promise<ChapterParams & { part: string }>;
 }
 
 /** Parts 2…N of chapters too large for one page (lib/chapter-parts). */
@@ -28,12 +28,14 @@ function partNumber(value: string): number | null {
   return String(n) === value && n >= 2 ? n : null;
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const n = partNumber(params.part);
   return n ? chapterMetadata(params, n) : {};
 }
 
-export default function ChapterPartPage({ params }: PageProps) {
+export default async function ChapterPartPage(props: PageProps) {
+  const params = await props.params;
   const n = partNumber(params.part);
   if (!n) return notFound();
   return <ChapterView params={params} part={n} />;

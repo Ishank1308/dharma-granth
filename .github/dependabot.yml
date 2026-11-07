@@ -1,0 +1,18 @@
+# Weekly pull request that keeps the workflows' actions current (one PR for
+# all of them). npm gets security fixes only: the limit of 0 turns off routine
+# version bumps, which once jumped Next 14 to 16 and Tailwind 3 to 4 at once.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0

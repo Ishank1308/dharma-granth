@@ -28,6 +28,7 @@ import {
   StickyNote,
   Sun,
   X,
+  MoreHorizontal,
 } from 'lucide-react';
 import { VerseGraphNetwork } from '@/app/components/study/VerseGraphNetwork';
 import { THEMES, THEME_NAMES, useTheme } from '@/app/components/ThemeProvider';
@@ -125,7 +126,7 @@ const iconBtn =
   'focus-ring apple-icon-button h-11 w-11 shrink-0';
 
 const actionBtn =
-  'focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-dharma-text/[0.06] px-4 text-[15px] text-dharma-text transition hover:bg-dharma-text/[0.1] disabled:cursor-not-allowed disabled:opacity-50';
+  'focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-dharma-text/[0.06] px-4 text-subhead text-dharma-text transition hover:bg-dharma-text/[0.1] disabled:cursor-not-allowed disabled:opacity-50';
 
 export function VerseReader(props: VerseReaderProps) {
   const {
@@ -250,6 +251,8 @@ export function VerseReader(props: VerseReaderProps) {
   /* ── Mobile Verse Carousel Drawer ── */
   const [carouselOpen, setCarouselOpen] = useState(false);
 
+  /* Less common verse actions, folded under "More". */
+  const [moreActions, setMoreActions] = useState(false);
   /* ── Interactive Verse Relationship Network Modal ── */
   const [showNetworkModal, setShowNetworkModal] = useState(false);
 
@@ -389,15 +392,20 @@ export function VerseReader(props: VerseReaderProps) {
         rel={dir}
         onClick={() => triggerTactileFeedback('selection', 'click')}
         aria-label={crosses != null ? `${hiLabel}, श्लोक ${crosses}.${target.number}` : `${text} verse, ${target.number}`}
-        className={`focus-ring inline-flex items-center gap-2 rounded-full bg-dharma-text/[0.06] text-dharma-text transition hover:bg-dharma-text/[0.1] ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
+        className={`focus-ring inline-flex items-center gap-2.5 rounded-pill border border-separator/60 bg-fill-quaternary text-label-primary transition duration-fast hover:border-separator-strong hover:bg-fill-tertiary active:scale-97 ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
       >
-        <Icon className="h-4 w-4 shrink-0 text-dharma-saffron" aria-hidden="true" />
+        <Icon className="h-4 w-4 shrink-0 text-tint" aria-hidden="true" />
         <span className="leading-tight">
-          <span className="block text-[11px] font-medium text-dharma-text-secondary">
+          <span className="block text-caption font-medium text-label-secondary">
             <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null ? ` · ${text}` : ''}
           </span>{' '}
-          <span lang="hi" className="font-devanagari text-sm">{verseLine}</span>
+          <span lang="hi" className="font-devanagari text-subhead font-semibold">{verseLine}</span>
         </span>
+        {size === 'row' && (
+          <kbd className="hidden rounded-chip border border-separator px-1.5 py-0.5 font-mono text-[10px] text-label-tertiary uppercase lg:inline-flex" aria-hidden="true">
+            {dir === 'prev' ? '←' : '→'}
+          </kbd>
+        )}
       </Link>
     );
   };
@@ -551,10 +559,10 @@ export function VerseReader(props: VerseReaderProps) {
               type="button"
               onClick={() => setDialog('verses')}
               aria-haspopup="dialog"
-              className="focus-ring inline-flex min-h-[52px] flex-col items-center justify-center rounded-xl px-4 text-center transition hover:bg-dharma-card"
+              className="focus-ring inline-flex min-h-[52px] flex-col items-center justify-center rounded-control px-4 text-center transition duration-fast hover:bg-fill-quaternary active:scale-97"
             >
-              <span className="inline-flex items-center gap-1 text-[13px] text-dharma-muted">
-                Verse {index + 1} of {total} · jump to verse <ChevronDown className="h-3 w-3" aria-hidden="true" />
+              <span className="inline-flex items-center gap-1.5 text-footnote text-label-secondary">
+                Verse {index + 1} of {total} · jump to verse <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
             </button>
             {navLink(next, 'next', 'row')}
@@ -562,7 +570,7 @@ export function VerseReader(props: VerseReaderProps) {
 
           <header className="mb-8 text-center">
             <p className="text-sm font-semibold text-dharma-saffron">{chapterTitle}</p>
-            <h1 className="mt-1 text-[30px] font-semibold leading-tight tracking-[-0.03em] text-dharma-text sm:text-[40px]">{label}</h1>
+            <h1 className="mt-1 text-title-1 font-semibold text-dharma-text">{label}</h1>
           </header>
 
           {settings.focusMode && (
@@ -632,15 +640,9 @@ export function VerseReader(props: VerseReaderProps) {
               {noteText ? 'Edit note' : 'Note'}
               {noteText && <span className="h-1.5 w-1.5 rounded-full bg-saffron-600" aria-label="has a note" />}
             </button>
-            <button type="button" onClick={() => setJournalOpen(true)} className={actionBtn}>
-              <PenLine className="h-4 w-4" aria-hidden="true" /> Reflect privately
-            </button>
             <button type="button" onClick={onCopy} className={actionBtn}>
               <Copy className="h-4 w-4" aria-hidden="true" /> Copy
             </button>
-            <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" /> Open context
-            </Link>
             <button
               type="button"
               onClick={onShare}
@@ -659,6 +661,32 @@ export function VerseReader(props: VerseReaderProps) {
             >
               <MessageCircle className="h-4 w-4" aria-hidden="true" /> WhatsApp
             </a>
+            <button
+              type="button"
+              onClick={() => setMoreActions((v) => !v)}
+              aria-expanded={moreActions}
+              aria-controls="verse-more-actions"
+              className={actionBtn}
+            >
+              <MoreHorizontal className="h-4 w-4" aria-hidden="true" />
+              {moreActions ? 'Less' : 'More'}
+            </button>
+          </div>
+          {/* Less common actions: one tap away, so the row under the verse stays short. */}
+          <div
+            id="verse-more-actions"
+            role="toolbar"
+            aria-label="More verse actions"
+            hidden={!moreActions}
+            data-focus-hide
+            className={`mt-2 flex-wrap gap-2 ${moreActions ? 'flex' : 'hidden'}`}
+          >
+            <button type="button" onClick={() => setJournalOpen(true)} className={actionBtn}>
+              <PenLine className="h-4 w-4" aria-hidden="true" /> Reflect privately
+            </button>
+            <Link href={`${chapterHref}#verse-${verse.number}`} className={actionBtn}>
+              <ArrowRight className="h-4 w-4" aria-hidden="true" /> Open context
+            </Link>
             <button
               type="button"
               onClick={() => {
@@ -690,7 +718,7 @@ export function VerseReader(props: VerseReaderProps) {
           )}
 
           {/* A deliberate stopping point: the reader may continue, note, or simply stop. */}
-          <section aria-labelledby="verse-pause-h" data-focus-hide className="mt-8 rounded-[18px] bg-dharma-card p-5 text-[15px]">
+          <section aria-labelledby="verse-pause-h" data-focus-hide className="mt-8 rounded-[18px] bg-dharma-card p-5 text-subhead">
             <h2 id="verse-pause-h" className="text-base font-semibold text-dharma-text">
               <span>Pause here</span> <span lang="hi" className="font-devanagari text-dharma-muted">विराम</span>
             </h2>
@@ -759,10 +787,10 @@ export function VerseReader(props: VerseReaderProps) {
                 setCarouselOpen(true);
               }}
               aria-haspopup="dialog"
-              className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-xl px-2 text-center transition active:scale-95"
+              className="focus-ring inline-flex min-h-[48px] min-w-0 flex-1 flex-col items-center justify-center rounded-control px-2 text-center transition active:scale-97"
             >
-              <span lang="hi" className="font-devanagari text-sm font-bold text-dharma-text">श्लोक {toAsciiDigits(verse.number)}</span>
-              <span className="text-[11px] text-dharma-saffron">{index + 1} / {total} · माला खोलें</span>
+              <span lang="hi" className="font-devanagari text-subhead font-bold text-label-primary">श्लोक {toAsciiDigits(verse.number)}</span>
+              <span className="text-caption text-tint">{index + 1} / {total} · माला खोलें</span>
             </button>
             {navLink(next, 'next', 'bar')}
           </div>

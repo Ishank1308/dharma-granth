@@ -58,7 +58,6 @@ import {
   markChapterCompleteInReadingPlan,
 } from '@/lib/reading-plan-sync';
 import { saveChapterVersesToDB, getCachedChapterVersesFromDB } from '@/lib/db/granth-indexeddb';
-import { isHindiWithheld, isUnproofreadShown } from '@/lib/ocr-hindi-review';
 import type { SvadhyayaTab } from '@/app/components/reader/SvadhyayaSplitDrawer';
 const SvadhyayaSplitDrawer = dynamic(() => import('@/app/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
 import { SpatialShloka, type BhashyaSource, type ReaderMode } from './liquid/SpatialShloka';
@@ -309,9 +308,13 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   useEffect(() => {
     if (state.kind !== 'loading') return;
     let cancelled = false;
+    // The Hindi review list is about 450 KB, so it loads only when a cached chapter is found,
+    // instead of riding in every chapter page's bundle.
     getCachedChapterVersesFromDB(scriptureId, chapterId)
-      .then((cached) => {
-        if (!cancelled && cached && cached.length > 0) {
+      .then(async (cached) => {
+        if (!cached || cached.length === 0) return;
+        const { isHindiWithheld, isUnproofreadShown } = await import('@/lib/ocr-hindi-review');
+        if (!cancelled) {
           setState({
             kind: 'ready',
             verses: cached.map((c) => ({
@@ -529,17 +532,18 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       const prevVisibility = el.style.contentVisibility;
       el.style.contentVisibility = 'visible';
       const alignVerse = () => {
-        if (el.isConnected) {
-          el.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
-        }
+        // Re-query: the rich card can replace the plain verse node before this runs.
+        const target = el.isConnected ? el : document.getElementById(`verse-${verseNum}`);
+        target?.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
       };
       requestAnimationFrame(() => requestAnimationFrame(alignVerse));
 
       if (preserveLayout) {
         // Long chapters expand skipped cards as they enter the viewport. Correct once after that layout settles.
         window.setTimeout(() => {
-          if (!el.isConnected) return;
-          const rect = el.getBoundingClientRect();
+          const current = el.isConnected ? el : document.getElementById(`verse-${verseNum}`);
+          if (!current) return;
+          const rect = current.getBoundingClientRect();
           if (rect.bottom <= 0 || rect.top >= window.innerHeight) alignVerse();
         }, 500);
       } else {

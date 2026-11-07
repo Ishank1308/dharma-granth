@@ -16,7 +16,8 @@ export function generateStaticParams() {
   return chapterSummaryCollections.map((c) => ({ id: c.scriptureId }));
 }
 
-export function generateMetadata({ params }: { params: { id: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const c = getChapterSummaryCollection(params.id);
   if (!c) return {};
   const path = pathFor(c.scriptureId);
@@ -29,7 +30,8 @@ export function generateMetadata({ params }: { params: { id: string } }): Metada
   };
 }
 
-export default function ChapterSummariesPage({ params }: { params: { id: string } }) {
+export default async function ChapterSummariesPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const collection = getChapterSummaryCollection(params.id);
   if (!collection) notFound();
   const { scriptureId } = collection;
