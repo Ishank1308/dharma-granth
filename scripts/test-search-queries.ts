@@ -95,4 +95,7 @@ assert.ok(argala, 'searching argala should direct to /mantras/argala-stotram/');
 const kavacham = searchCoreIndex('kavacham').find(({ item }) => item.href === '/mantras/devi-kavacham/');
 assert.ok(kavacham, 'searching kavacham should find devi-kavacham');
 
+const calendar = searchCoreIndex('festival calendar').find(({ item }) => item.href === '/panchang/calendar/');
+assert.ok(calendar, 'searching festival calendar should direct to /panchang/calendar/');
+
 console.log('search query checks passed');

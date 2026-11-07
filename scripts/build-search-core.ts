@@ -83,6 +83,7 @@ addTerm('panchang-ekadashi', 'Ekadashi', 'एकादशी व्रत', '/pa
 addTerm('panchang-pradosh', 'Pradosh Vrat', 'प्रदोष व्रत', '/panchang/pradosh/');
 addTerm('panchang-purnima', 'Purnima', 'पूर्णिमा व्रत व स्नान', '/panchang/purnima/');
 addTerm('panchang-amavasya', 'Amavasya', 'अमावस्या व श्राद्ध', '/panchang/amavasya/');
+addTerm('panchang-calendar', 'Festival Calendar', 'मासिक पर्व व व्रत कैलेंडर', '/panchang/calendar/');
 
 // Classical Mantras & Suktas
 for (const m of SACRED_MANTRAS) {

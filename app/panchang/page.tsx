@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { PanchangCalendar } from '@/app/components/PanchangCalendar';
 import { PanchangCosmos } from '@/app/components/cosmos/PanchangCosmos';
 import { SectionTitle } from '@/app/components/apple/PageHeader';
-import { Star, ArrowRight, Moon, Sun, Layers } from 'lucide-react';
+import { Star, ArrowRight, Moon, Sun, Layers, Calendar } from 'lucide-react';
 
 const WHY = [
   {
@@ -44,6 +44,31 @@ export default function PanchangPage() {
       {/* ─── MAIN CALENDAR INTERFACE ──────────────────────────────────────── */}
       <section className="relative mx-auto max-w-6xl px-gutter -mt-6 sm:-mt-8 pb-16 z-10">
         <PanchangCalendar />
+
+        {/* ─── FULL MONTHLY FESTIVAL CALENDAR BANNER ─────────────────────── */}
+        <div className="mt-8 rounded-2xl border-2 border-saffron-400/40 bg-gradient-to-r from-saffron-500/10 via-amber-500/10 to-orange-500/10 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+          <div className="space-y-1.5 max-w-2xl">
+            <span className="inline-flex items-center gap-1.5 text-caption-1 font-bold uppercase tracking-wider text-dharma-saffron">
+              <Calendar className="w-4 h-4" />
+              <span>मासिक पंचांग व पर्व कैलेंडर · 2026–2028</span>
+            </span>
+            <h3 className="text-title-2 font-bold text-dharma-text">
+              Interactive Solar & Lunar Festival Calendar
+            </h3>
+            <p className="text-footnote text-dharma-muted leading-relaxed">
+              Explore month-by-month calendar grids for 2026, 2027, and 2028 with daily Udaya Tithis, Nakshatras, sacred Ekadashis, Pradosha fasts, Purnima, Amavasya, and major Hindu festivals.
+            </p>
+          </div>
+          <div className="flex-shrink-0">
+            <Link
+              href="/panchang/calendar/"
+              className="inline-flex items-center gap-2 rounded-xl bg-dharma-saffron hover:bg-saffron-700 text-white px-5 py-3 text-footnote font-semibold shadow-md transition-all hover:scale-[1.02]"
+            >
+              <span>मासिक कैलेंडर खोलें</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
 
         {/* ─── SACRED LUNAR OBSERVANCES & VRATAS ──────────────────────────── */}
         <section aria-labelledby="panchang-vratas" className="mt-16">
