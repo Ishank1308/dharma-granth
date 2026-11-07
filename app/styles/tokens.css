@@ -192,10 +192,8 @@
     --separator: color-mix(in srgb, var(--dharma-text) 14%, transparent);
     --on-tint: #000;
     --tint-fill: color-mix(in srgb, var(--dharma-saffron) 18%, transparent);
-    /* A transparent shadow rather than `none`, so a list that adds a coloured glow after
-       it (colour.css, the verse card) stays valid. */
-    --shadow-hairline: 0 0 #0000;
-    --shadow-raised: 0 0 #0000;
+    --shadow-hairline: none;
+    --shadow-raised: none;
     --shadow-lifted: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 22px 50px -16px rgba(0, 0, 0, 0.8);
     --shadow-overlay: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 90px -20px rgba(0, 0, 0, 0.9);
     --shadow-control: 0 1px 3px rgba(0, 0, 0, 0.4);

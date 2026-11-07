@@ -20,6 +20,15 @@
    and opacity loop, and reading pages (chapter and verse) keep a still aurora and nothing
    that loops. */
 
+/* The raised shadow, safe to start a list with: Rātri's --shadow-raised is `none`, and
+   `none, <glow>` would drop the whole list, so there it is a transparent shadow. */
+:root {
+    --raised-under: var(--shadow-raised);
+}
+:root:is([data-theme='night'], [data-theme='dark']) {
+    --raised-under: 0 0 #0000;
+}
+
 /* 1. Aurora ──────────────────────────────────────────────────────────────
    Three soft pools of colour (saffron, lotus, peacock with indigo) on a fixed layer behind
    the page. Page wrappers that painted the canvas colour let it show through; the body
@@ -216,7 +225,7 @@ footer[aria-labelledby='footer-heading'] {
 .apple-card {
     --card-hue: var(--chip, var(--cycle-hue, var(--tint)));
     box-shadow:
-        var(--shadow-raised),
+        var(--raised-under),
         inset 0 1px 0 color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) + 18%), transparent),
         inset 0 0 0 1px color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) * 0.6), transparent),
         0 18px 40px -30px color-mix(in srgb, var(--card-hue) var(--tone-glow), transparent);
@@ -270,7 +279,7 @@ a.apple-card:active,
 }
 a.apple-card:focus-visible {
     outline: none;
-    box-shadow: var(--focus-ring), var(--shadow-raised);
+    box-shadow: var(--focus-ring), var(--raised-under);
 }
 
 /* 5. Icon tiles ──────────────────────────────────────────────────────────
@@ -378,7 +387,7 @@ a.apple-card:focus-visible {
         transparent 62%
     );
     box-shadow:
-        var(--shadow-raised),
+        var(--raised-under),
         inset 0 1px 0 color-mix(in srgb, var(--book-ink) var(--tone-edge), transparent);
 }
 .home-book > span[aria-hidden='true']:first-child {
@@ -539,7 +548,7 @@ a.apple-card:focus-visible {
 .verse-tree .rounded-card.bg-dharma-card {
     background-image: radial-gradient(120% 70% at 0% 0%, color-mix(in srgb, var(--branch) var(--tone-wash), transparent), transparent 60%);
     box-shadow:
-        var(--shadow-raised),
+        var(--raised-under),
         inset 0 2px 0 color-mix(in srgb, var(--branch) 55%, transparent),
         inset 0 0 0 1px color-mix(in srgb, var(--branch) 14%, transparent);
 }
