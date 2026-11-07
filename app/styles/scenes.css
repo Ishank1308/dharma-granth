@@ -133,7 +133,8 @@
 }
 
 /* 6: the yogi among the mountains, the lamp still, mist passing. */
-[data-scene='dhyana'] {
+[data-scene='dhyana'],
+[data-scene='inner-flame'] {
     --scene-duration: 140s;
     --scene-mask: url('./scenes/clouds.svg'), url('./scenes/yogi.svg'), url('./scenes/mountains.svg');
     --scene-size: 720px 120px, 220px 150px, 800px 170px;
@@ -152,7 +153,8 @@
 }
 
 /* 8: sun and moon over the two paths, the stars turning. */
-[data-scene='two-paths'] {
+[data-scene='two-paths'],
+[data-scene='shreya-preya'] {
     --scene-mask: url('./scenes/stars.svg'), url('./scenes/sun-moon.svg'), url('./scenes/hills.svg');
     --scene-size: 280px 280px, 300px 160px, 800px 160px;
     --scene-repeat: repeat, no-repeat, repeat-x;
@@ -171,7 +173,8 @@
 }
 
 /* 10: the Himalaya with the Ganga flowing at its feet. */
-[data-scene='himalaya'] {
+[data-scene='himalaya'],
+[data-scene='devi-himalaya'] {
     --scene-mask: url('./scenes/clouds.svg'), url('./scenes/birds.svg'), url('./scenes/ripples.svg'), url('./scenes/river.svg'), url('./scenes/mountains.svg');
     --scene-size: 720px 120px, 640px 90px, 400px 60px, 800px 60px, 800px 170px;
     --scene-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
@@ -180,7 +183,8 @@
 }
 
 /* 11: a radiance of a thousand suns, the stars streaming past. */
-[data-scene='vishvarupa'] {
+[data-scene='vishvarupa'],
+[data-scene='jyoti'] {
     --scene-mask: url('./scenes/stars.svg'), url('./scenes/radiance.svg');
     --scene-size: 280px 280px, 360px 360px;
     --scene-repeat: repeat, no-repeat;
@@ -310,4 +314,84 @@
     --scene-repeat: repeat, repeat-x, repeat-x;
     --scene-from: 0 0, 0 8%, 0 100%;
     --scene-to: 240px 960px, -720px 8%, 0 100%;
+}
+
+/* ── Kaṭha Upaniṣad (chapter = vallī) ───────────────────────────────────── */
+
+/* 1: Naciketā seated at Yama's door, the stars of three nights turning. */
+[data-scene='yama-door'] {
+    --scene-mask: url('./scenes/stars.svg'), url('./scenes/yama-door.svg'), url('./scenes/hills.svg');
+    --scene-size: 280px 280px, 240px 138px, 800px 160px;
+    --scene-repeat: repeat, no-repeat, repeat-x;
+    --scene-from: 0 0, 90% 100%, 0 100%;
+    --scene-to: -560px 0, 90% 100%, 0 100%;
+}
+
+/* 3: the chariot of 1.3.3–4 on the open road, no armies. */
+[data-scene='ratha'] {
+    --scene-duration: 160s;
+    --scene-mask: url('./scenes/dust.svg'), url('./scenes/clouds.svg'), url('./scenes/chariot.svg'), url('./scenes/hills.svg');
+    --scene-size: 260px 260px, 720px 120px, 270px 160px, 800px 160px;
+    --scene-repeat: repeat, repeat-x, no-repeat, repeat-x;
+    --scene-from: 0 0, 0 6%, 88% 100%, 0 100%;
+    --scene-to: -1040px 0, -720px 6%, 88% 100%, -800px 100%;
+}
+
+/* ── Durgā Saptaśatī (chapter = adhyāya) ─────────────────────────────────── */
+
+/* 1: Viṣṇu on Śeṣa on the single ocean, Brahmā's lotus rising, the stars. */
+[data-scene='cosmic-ocean'] {
+    --scene-mask: url('./scenes/stars.svg'), url('./scenes/shesha.svg'), url('./scenes/waves.svg');
+    --scene-size: 280px 280px, 252px 135px, 800px 70px;
+    --scene-repeat: repeat, no-repeat, repeat-x;
+    --scene-from: 0 0, 88% calc(100% - 26px), 0 100%;
+    --scene-to: -560px 0, 88% calc(100% - 26px), -1600px 100%;
+}
+
+/* 2, 6, 8, 9: the trident over the asura host, dust in the air. */
+[data-scene='devi-battle'] {
+    --scene-duration: 160s;
+    --scene-mask: url('./scenes/dust.svg'), url('./scenes/trishula.svg'), url('./scenes/armies.svg'), url('./scenes/mountains.svg');
+    --scene-size: 260px 260px, 140px 133px, 800px 150px, 800px 170px;
+    --scene-repeat: repeat, no-repeat, repeat-x, repeat-x;
+    --scene-from: 0 0, 90% 100%, 0 100%, 0 100%;
+    --scene-to: -1040px 0, 90% 100%, -1600px 100%, 0 100%;
+}
+
+/* 3: the trident blazing on the mountain, sparks rising. */
+[data-scene='devi-victory'] {
+    --scene-duration: 60s;
+    --scene-mask: url('./scenes/sparks.svg'), url('./scenes/trishula.svg'), url('./scenes/mountains.svg');
+    --scene-size: 220px 220px, 150px 143px, 800px 170px;
+    --scene-repeat: repeat, no-repeat, repeat-x;
+    --scene-from: 0 0, 88% 100%, 0 100%;
+    --scene-to: 0 -660px, 88% 100%, 0 100%;
+}
+
+/* 4, 11: the hymn of the gods, a radiance rising, petals falling. */
+[data-scene='devi-stuti'] {
+    --scene-duration: 80s;
+    --scene-mask: url('./scenes/petals.svg'), url('./scenes/radiance.svg'), url('./scenes/hills.svg');
+    --scene-size: 240px 240px, 360px 360px, 800px 160px;
+    --scene-repeat: repeat, no-repeat, repeat-x;
+    --scene-from: 0 0, 50% 125%, 0 100%;
+    --scene-to: 240px 960px, 50% 125%, 0 100%;
+}
+
+/* 7: Kālī from the storm, two banks of dark cloud racing. */
+[data-scene='kali'] {
+    --scene-mask: url('./scenes/clouds.svg'), url('./scenes/clouds.svg'), url('./scenes/trishula.svg'), url('./scenes/mountains.svg');
+    --scene-size: 720px 120px, 1080px 180px, 140px 133px, 800px 170px;
+    --scene-repeat: repeat-x, repeat-x, no-repeat, repeat-x;
+    --scene-from: 0 4%, 0 30%, 88% 100%, 0 100%;
+    --scene-to: -2160px 4%, -2160px 30%, 88% 100%, 0 100%;
+}
+
+/* 10: the duel in the sky, clouds and stars streaming past the trident. */
+[data-scene='sky-battle'] {
+    --scene-mask: url('./scenes/stars.svg'), url('./scenes/clouds.svg'), url('./scenes/trishula.svg');
+    --scene-size: 280px 280px, 720px 120px, 140px 133px;
+    --scene-repeat: repeat, repeat-x, no-repeat;
+    --scene-from: 0 0, 0 70%, 50% 40%;
+    --scene-to: -560px 560px, -1440px 70%, 50% 40%;
 }
