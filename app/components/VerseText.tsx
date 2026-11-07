@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { cleanVerseField, isLongPassage, meaningState, MEANING_COPY, verseLines, verseMarkNumber, formatVerseRef } from '@/lib/verse-format';
+import { cleanVerseField, isLongPassage, meaningState, MEANING_COPY, verseLines, verseMarkNumber, formatVerseRef, extractVerseSpeaker, cleanTransliteration } from '@/lib/verse-format';
 
 interface Props {
   verse: {
@@ -20,6 +20,7 @@ interface Props {
     translationRange?: string;
     /** This verse's English is in the passage stored on that verse. */
     translationSeeVerse?: number | string;
+    speaker?: string;
   };
   chapterId: number;
   /** Decides how the verse reference is written (see formatVerseRef). */
@@ -44,10 +45,11 @@ interface Props {
 export function VerseText({ verse: v, chapterId, scriptureId, href, actions }: Props) {
   const label = String(v.number);
   const sanskrit = cleanVerseField(v.sanskrit);
-  const transliteration = cleanVerseField(v.transliteration).replace(/[\s|।॥0-9.]+$/, '');
   const hindi = cleanVerseField(v.hindi);
   const english = cleanVerseField(v.translation);
-  const lines = sanskrit ? verseLines(sanskrit) : [];
+  const rawLines = sanskrit ? verseLines(sanskrit) : [];
+  const { speaker, verseLines: lines, hasSpeakerInText } = extractVerseSpeaker(v.speaker, rawLines);
+  const transliteration = cleanTransliteration(v.transliteration, hasSpeakerInText);
   const state = meaningState(v);
   const title = `श्लोक ${label}`;
   const reference = (
@@ -67,6 +69,11 @@ export function VerseText({ verse: v, chapterId, scriptureId, href, actions }: P
 
       {lines.length > 0 && (
         <div className="vt-leaf verse-folio">
+          {speaker && (
+            <div className="vt-speaker mb-2 text-center">
+              <span className="vt-speaker-chip">✦ {speaker} ✦</span>
+            </div>
+          )}
           <p lang="sa" className="vt-sa">
             {lines.map((line, i) => (
               <span key={i}>{line}</span>
@@ -90,7 +97,7 @@ export function VerseText({ verse: v, chapterId, scriptureId, href, actions }: P
         <>
           {state.hi === 'text' && (
             <Passage
-              label={v.hindiRange ? MEANING_COPY.hiRange(v.hindiRange) : undefined}
+              label={v.hindiRange ? MEANING_COPY.hiRange(v.hindiRange) : (state.en === 'text' ? 'भावार्थ · Hindi' : undefined)}
               note={v.hindiUnproofread ? MEANING_COPY.hiUnproofread : undefined}
               lang="hi"
               className="vt-hi"
@@ -113,7 +120,12 @@ export function VerseText({ verse: v, chapterId, scriptureId, href, actions }: P
             </p>
           )}
           {state.en === 'text' && (
-            <Passage label={v.translationRange ? MEANING_COPY.enRange(v.translationRange) : undefined} lang="en" className="vt-en" text={english} />
+            <Passage
+              label={v.translationRange ? MEANING_COPY.enRange(v.translationRange) : (state.hi === 'text' ? 'Translation · English' : undefined)}
+              lang="en"
+              className="vt-en"
+              text={english}
+            />
           )}
           {state.en === 'with' && (
             <p className="vt-block vt-label" lang="en">

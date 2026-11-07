@@ -3,6 +3,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState, startTransition, type MouseEvent as ReactMouseEvent } from 'react';
 import {
   BookOpen,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Flame,
   Maximize2,
   RotateCcw,
@@ -10,7 +13,6 @@ import {
   SlidersHorizontal,
   X,
   MessageSquare,
-  ChevronDown,
 } from 'lucide-react';
 import { updateReaderScrollProgress, triggerPranaToast } from '@/lib/prana-capsule-store';
 import type { ScriptureCategory } from '@/data/types';
@@ -1105,6 +1107,10 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const viewportVerseIdx = currentViewportVerse !== null
     ? state.verses.findIndex((v) => String(v.number) === String(currentViewportVerse))
     : -1;
+  const activeVerseIdx = viewportVerseIdx >= 0 ? viewportVerseIdx : 0;
+  const activeVerseNumber = state.verses[activeVerseIdx]?.number ?? (currentViewportVerse ?? '1');
+  const prevVerseNum = activeVerseIdx > 0 ? state.verses[activeVerseIdx - 1]?.number : null;
+  const nextVerseNum = activeVerseIdx < state.verses.length - 1 ? state.verses[activeVerseIdx + 1]?.number : null;
   const chapterScrollPct = state.verses.length > 0 && viewportVerseIdx >= 0
     ? Math.min(100, Math.round(((viewportVerseIdx + 1) / state.verses.length) * 100))
     : 0;
@@ -1112,28 +1118,117 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   return (
     <>
       <section>
-        {/* One quiet sticky running head above the text: active shloka progress, 1-tap verse jump,
-            type settings (Aa), and everything else folded behind "Options". */}
+        {/* Sanctuary sticky running head: active chapter & verse progress, ‹/› micro-steppers,
+            quick inline language toggles (हिन्दी/EN/IAST), 1-tap verse jump, typography (Aa), and options */}
         <div className="sticky top-[52px] z-30 -mx-2 mb-6 border-b border-dharma-border/60 bg-dharma-bg/92 px-2 pb-2.5 pt-2 backdrop-blur-md">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="text-xs text-dharma-muted">
-              <span className="sr-only">पूर्ण अध्याय पाठ · </span>
-              {filterQuery.trim() ? (
-                `${filteredVerses.length} / ${state.verses.length} श्लोक`
-              ) : viewportVerseIdx >= 0 && currentViewportVerse !== null ? (
-                <span>
-                  <span className="font-semibold text-dharma-text">श्लोक {toAsciiDigits(currentViewportVerse)}</span>
-                  <span> / {state.verses.length}</span>
-                </span>
-              ) : (
-                `${state.verses.length} श्लोक`
+            <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+              <p className="text-xs text-dharma-muted truncate">
+                <span className="sr-only">पूर्ण अध्याय पाठ · </span>
+                {filterQuery.trim() ? (
+                  `${filteredVerses.length} / ${state.verses.length} श्लोक`
+                ) : (
+                  <span>
+                    <span className="font-semibold text-dharma-text truncate" title={chapterTitle}>
+                      अध्याय {toAsciiDigits(chapterId)}
+                    </span>
+                    <span className="mx-1 text-dharma-muted/60" aria-hidden="true">·</span>
+                    <span className="font-medium text-dharma-text">श्लोक {toAsciiDigits(activeVerseNumber)}</span>
+                    <span className="text-dharma-muted"> / {toAsciiDigits(state.verses.length)}</span>
+                  </span>
+                )}
+                {parayanaActive && activeRecitingVerse !== null && (
+                  <span className="ml-1.5 hidden sm:inline text-amber-700 dark:text-amber-300 font-medium">
+                    · पारायण {toAsciiDigits(activeRecitingVerse)}
+                  </span>
+                )}
+              </p>
+
+              {/* Prev/Next verse micro-steppers */}
+              {state.verses.length > 1 && (
+                <div className="hidden sm:inline-flex items-center gap-0.5 ml-0.5">
+                  <button
+                    type="button"
+                    disabled={prevVerseNum === null}
+                    onClick={() => {
+                      if (prevVerseNum !== null) {
+                        triggerTactileFeedback('selection', 'softTap');
+                        scrollToVerse(prevVerseNum);
+                      }
+                    }}
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-full text-dharma-muted hover:text-dharma-text hover:bg-dharma-card-soft disabled:opacity-25 disabled:pointer-events-none transition"
+                    title="पिछला श्लोक (Previous verse)"
+                    aria-label="पिछला श्लोक (Previous verse)"
+                  >
+                    <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
+                  </button>
+                  <button
+                    type="button"
+                    disabled={nextVerseNum === null}
+                    onClick={() => {
+                      if (nextVerseNum !== null) {
+                        triggerTactileFeedback('selection', 'softTap');
+                        scrollToVerse(nextVerseNum);
+                      }
+                    }}
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-full text-dharma-muted hover:text-dharma-text hover:bg-dharma-card-soft disabled:opacity-25 disabled:pointer-events-none transition"
+                    title="अगला श्लोक (Next verse)"
+                    aria-label="अगला श्लोक (Next verse)"
+                  >
+                    <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </button>
+                </div>
               )}
-              {parayanaActive && activeRecitingVerse !== null && (
-                <span className="ml-2 text-amber-700 dark:text-amber-300">· पारायण {toAsciiDigits(activeRecitingVerse)}</span>
-              )}
-            </p>
+            </div>
 
             <div className="flex items-center gap-1.5 sm:gap-2">
+              {/* Quick Language Layer Chips on desktop/tablet */}
+              <div
+                className="hidden md:inline-flex items-center rounded-full border border-dharma-border/80 bg-dharma-bg/70 p-0.5 text-xs font-semibold"
+                role="group"
+                aria-label="भाषा परतें (Language layers)"
+              >
+                <button
+                  type="button"
+                  onClick={() => updateLayers({ hindi: !showHindi })}
+                  className={`rounded-full px-2.5 py-1 transition-all ${
+                    showHindi
+                      ? 'bg-saffron-600 text-white font-bold shadow-xs'
+                      : 'text-dharma-muted hover:text-dharma-text'
+                  }`}
+                  title={showHindi ? 'हिन्दी अर्थ छिपाएँ' : 'हिन्दी अर्थ दिखाएँ'}
+                  aria-pressed={showHindi}
+                >
+                  हिन्दी
+                </button>
+                <button
+                  type="button"
+                  onClick={() => updateLayers({ english: !showEnglish })}
+                  className={`rounded-full px-2.5 py-1 transition-all ${
+                    showEnglish
+                      ? 'bg-saffron-600 text-white font-bold shadow-xs'
+                      : 'text-dharma-muted hover:text-dharma-text'
+                  }`}
+                  title={showEnglish ? 'Hide English translation' : 'Show English translation'}
+                  aria-pressed={showEnglish}
+                >
+                  EN
+                </button>
+                <button
+                  type="button"
+                  onClick={() => updateLayers({ translit: !showTranslit })}
+                  className={`rounded-full px-2.5 py-1 transition-all ${
+                    showTranslit
+                      ? 'bg-saffron-600 text-white font-bold shadow-xs'
+                      : 'text-dharma-muted hover:text-dharma-text'
+                  }`}
+                  title={showTranslit ? 'Hide IAST transliteration' : 'Show IAST transliteration'}
+                  aria-pressed={showTranslit}
+                >
+                  IAST
+                </button>
+              </div>
+
               {state.verses.length > 5 && (
                 <label className="liquid-pill inline-flex min-h-[40px] items-center rounded-full px-2.5 text-xs font-medium text-dharma-muted hover:text-dharma-text">
                   <span className="sr-only">श्लोक पर जाएं</span>
@@ -1185,9 +1280,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           </div>
 
           {chapterScrollPct > 0 && (
-            <div aria-hidden="true" className="mt-2 h-[2px] w-full overflow-hidden rounded-full bg-dharma-border/40">
+            <div aria-hidden="true" className="absolute -bottom-[1px] left-0 right-0 h-[2px] overflow-hidden bg-dharma-border/30">
               <div
-                className="h-full rounded-full bg-dharma-saffron transition-[width] duration-200"
+                className="h-full bg-gradient-to-r from-saffron-500 via-amber-500 to-saffron-600 transition-[width] duration-150"
                 style={{ width: `${chapterScrollPct}%` }}
               />
             </div>

@@ -89,8 +89,8 @@ for (const file of ['public/_headers', join(DIST.slice(ROOT.length + 1), '_heade
   }
 }
 
-// ── 3. One shared header: six primary routes, bilingual labels kept apart ──
-const PRIMARY = [['/'], ['/scriptures/'], ['/scripture/bhagavadgita/', '/bhagavad-gita/'], ['/learn/'], ['/practice/'], ['/panchang/']];
+// ── 3. One shared header: primary routes, bilingual labels kept apart ──
+const PRIMARY = [['/'], ['/scriptures/'], ['/scripture/bhagavadgita/', '/bhagavad-gita/'], ['/practice/'], ['/panchang/']];
 // Tags a crawler's text extraction treats as a break; inline tags (span, a, strong…) run together.
 const BLOCK = new Set(['address', 'article', 'aside', 'br', 'button', 'dd', 'div', 'dl', 'dt', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header', 'hr', 'li', 'main', 'nav', 'ol', 'p', 'section', 'ul']);
 
