@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'उपाकर्म एवं यज्ञोपवीत संस्कार विधान · Vedic Upakarma Guide',
     description:
-      'श्रावणी उपाकर्म एवं यज्ञोपवीत धारण-विसर्जन विधि — मन्त्र, अर्थ, १०८ जप एवं ९ तन्तुओं का आध्यात्मिक रहस्य।',
+      'श्रावणी उपाकर्म एवं यज्ञोपवीत धारण-विसर्जन विधि — मन्त्र, अर्थ, 108 जप एवं 9 तन्तुओं का आध्यात्मिक रहस्य।',
     url: 'https://dharmagranth.dev/rituals/upakarma/',
     siteName: 'Dharma Granth',
     images: [
@@ -125,7 +125,7 @@ export default function UpakarmaPage() {
             <div className="flex flex-wrap items-center gap-4 text-xs text-dharma-muted">
               <span className="inline-flex items-center gap-1.5 bg-dharma-card px-3 py-1.5 rounded-lg border border-dharma-border">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>५ प्रामाणिक सोपान</span>
+                <span>5 प्रामाणिक सोपान</span>
               </span>
               <span className="inline-flex items-center gap-1.5 bg-dharma-card px-3 py-1.5 rounded-lg border border-dharma-border">
                 <Sparkles className="w-4 h-4 text-amber-500" />
@@ -133,7 +133,7 @@ export default function UpakarmaPage() {
               </span>
               <span className="inline-flex items-center gap-1.5 bg-dharma-card px-3 py-1.5 rounded-lg border border-dharma-border">
                 <Layers className="w-4 h-4 text-blue-500" />
-                <span>यज्ञोपवीत के ९ तन्तु</span>
+                <span>यज्ञोपवीत के 9 तन्तु</span>
               </span>
             </div>
           </div>

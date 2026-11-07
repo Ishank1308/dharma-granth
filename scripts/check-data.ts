@@ -166,7 +166,7 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   brahmandpuran: 5,
   brahmapuran: 4,
   brihadaranyaka: 5, // genuine repeats in the source (e.g. the Maitreyi dialogue in II.4 and IV.5) after the 2026-10 rebuild
-  chandogya: 26,
+  chandogya: 10,
   devibhagavat: 3,
   garudpurana: 9,
   harivanshpuran: 24, // genealogical lists in the Harivamsa repeat whole shlokas in two adhyayas (e.g. 26.11 = 27.2)

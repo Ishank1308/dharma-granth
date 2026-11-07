@@ -8,9 +8,9 @@ import { JsonLd } from '@/app/components/JsonLd';
 import { Calendar, Clock, BookOpen, CheckCircle2, ChevronRight, HelpCircle, Sparkles } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'एकादशी व्रत तिथियाँ २०२६–२०२८ · Ekadashi Dates & Vrata Mahatmya',
+  title: 'एकादशी व्रत तिथियाँ 2026–2028 · Ekadashi Dates & Vrata Mahatmya',
   description:
-    'वर्ष २०२६, २०२७ एवं २०२८ की समस्त एकादशी तिथियाँ, पारण समय, उपवास नियम, और पद्म पुराण एवं विष्णु पुराण के अनुसार एकादशी व्रत का शास्त्रीय माहात्म्य।',
+    'वर्ष 2026, 2027 एवं 2028 की समस्त एकादशी तिथियाँ, पारण समय, उपवास नियम, और पद्म पुराण एवं विष्णु पुराण के अनुसार एकादशी व्रत का शास्त्रीय माहात्म्य।',
   keywords: [
     'एकादशी व्रत',
     'Ekadashi dates 2026',
@@ -26,30 +26,30 @@ export const metadata: Metadata = {
   alternates: { canonical: '/panchang/ekadashi/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
-    title: 'एकादशी व्रत तिथियाँ २०२६–२०२८ · Ekadashi Dates & Vrata Mahatmya — Dharma Granth',
+    title: 'एकादशी व्रत तिथियाँ 2026–2028 · Ekadashi Dates & Vrata Mahatmya — Dharma Granth',
     description:
-      'वर्ष २०२६, २०२७ एवं २०२८ की समस्त एकादशी तिथियाँ, पारण समय, और पद्म पुराण व विष्णु पुराण के अनुसार एकादशी का शास्त्रीय माहात्म्य।',
+      'वर्ष 2026, 2027 एवं 2028 की समस्त एकादशी तिथियाँ, पारण समय, और पद्म पुराण व विष्णु पुराण के अनुसार एकादशी का शास्त्रीय माहात्म्य।',
     url: 'https://dharmagranth.dev/panchang/ekadashi/',
   },
 };
 
 const EKADASHI_DATES = [
-  { name: 'उत्पन्ना एकादशी (Utpanna)', paksha: 'कृष्ण पक्ष', month: 'मार्गशीर्ष', date: '०५ दिसंबर २०२६', dateEn: '2026-12-05' },
-  { name: 'मोक्षदा एकादशी (Mokshada / गीता जयंती)', paksha: 'शुक्ल पक्ष', month: 'मार्गशीर्ष', date: '२० दिसंबर २०२६', dateEn: '2026-12-20', highlight: true },
-  { name: 'सफला एकादशी (Saphala)', paksha: 'कृष्ण पक्ष', month: 'पौष', date: '०४ जनवरी २०२७', dateEn: '2027-01-04' },
-  { name: 'पुत्रदा एकादशी (Putrada)', paksha: 'शुक्ल पक्ष', month: 'पौष', date: '१८ जनवरी २०२७', dateEn: '2027-01-18' },
-  { name: 'षट्तिला एकादशी (Shattila)', paksha: 'कृष्ण पक्ष', month: 'माघ', date: '०२ फरवरी २०२७', dateEn: '2027-02-02' },
-  { name: 'जया एकादशी (Jaya)', paksha: 'शुक्ल पक्ष', month: 'माघ', date: '१७ फरवरी २०२७', dateEn: '2027-02-17' },
-  { name: 'विजया एकादशी (Vijaya)', paksha: 'कृष्ण पक्ष', month: 'फाल्गुन', date: '०४ मार्च २०२७', dateEn: '2027-03-04' },
-  { name: 'आमलकी एकादशी (Amalaki)', paksha: 'शुक्ल पक्ष', month: 'फाल्गुन', date: '१९ मार्च २०२७', dateEn: '2027-03-19' },
-  { name: 'पापमोचिनी एकादशी (Papmochini)', paksha: 'कृष्ण पक्ष', month: 'चैत्र', date: '०३ अप्रैल २०२७', dateEn: '2027-04-03' },
-  { name: 'कामदा एकादशी (Kamada)', paksha: 'शुक्ल पक्ष', month: 'चैत्र', date: '१७ अप्रैल २०२७', dateEn: '2027-04-17' },
-  { name: 'वरूथिनी एकादशी (Varuthini)', paksha: 'कृष्ण पक्ष', month: 'वैशाख', date: '०२ मई २०२७', dateEn: '2027-05-02' },
-  { name: 'मोहिनी एकादशी (Mohini)', paksha: 'शुक्ल पक्ष', month: 'वैशाख', date: '१६ मई २०२७', dateEn: '2027-05-16' },
-  { name: 'अपरा एकादशी (Apara)', paksha: 'कृष्ण पक्ष', month: 'ज्येष्ठ', date: '३१ मई २०२७', dateEn: '2027-05-31' },
-  { name: 'निर्जला एकादशी (Nirjala)', paksha: 'शुक्ल पक्ष', month: 'ज्येष्ठ', date: '१५ जून २०२७', dateEn: '2027-06-15', highlight: true },
-  { name: 'योगिनी एकादशी (Yogini)', paksha: 'कृष्ण पक्ष', month: 'आषाढ़', date: '३० जून २०२७', dateEn: '2027-06-30' },
-  { name: 'देवशयनी एकादशी (Devshayani / चातुर्मास)', paksha: 'शुक्ल पक्ष', month: 'आषाढ़', date: '१५ जुलाई २०२७', dateEn: '2027-07-15', highlight: true },
+  { name: 'उत्पन्ना एकादशी (Utpanna)', paksha: 'कृष्ण पक्ष', month: 'मार्गशीर्ष', date: '05 दिसंबर 2026', dateEn: '2026-12-05' },
+  { name: 'मोक्षदा एकादशी (Mokshada / गीता जयंती)', paksha: 'शुक्ल पक्ष', month: 'मार्गशीर्ष', date: '20 दिसंबर 2026', dateEn: '2026-12-20', highlight: true },
+  { name: 'सफला एकादशी (Saphala)', paksha: 'कृष्ण पक्ष', month: 'पौष', date: '04 जनवरी 2027', dateEn: '2027-01-04' },
+  { name: 'पुत्रदा एकादशी (Putrada)', paksha: 'शुक्ल पक्ष', month: 'पौष', date: '18 जनवरी 2027', dateEn: '2027-01-18' },
+  { name: 'षट्तिला एकादशी (Shattila)', paksha: 'कृष्ण पक्ष', month: 'माघ', date: '02 फरवरी 2027', dateEn: '2027-02-02' },
+  { name: 'जया एकादशी (Jaya)', paksha: 'शुक्ल पक्ष', month: 'माघ', date: '17 फरवरी 2027', dateEn: '2027-02-17' },
+  { name: 'विजया एकादशी (Vijaya)', paksha: 'कृष्ण पक्ष', month: 'फाल्गुन', date: '04 मार्च 2027', dateEn: '2027-03-04' },
+  { name: 'आमलकी एकादशी (Amalaki)', paksha: 'शुक्ल पक्ष', month: 'फाल्गुन', date: '19 मार्च 2027', dateEn: '2027-03-19' },
+  { name: 'पापमोचिनी एकादशी (Papmochini)', paksha: 'कृष्ण पक्ष', month: 'चैत्र', date: '03 अप्रैल 2027', dateEn: '2027-04-03' },
+  { name: 'कामदा एकादशी (Kamada)', paksha: 'शुक्ल पक्ष', month: 'चैत्र', date: '17 अप्रैल 2027', dateEn: '2027-04-17' },
+  { name: 'वरूथिनी एकादशी (Varuthini)', paksha: 'कृष्ण पक्ष', month: 'वैशाख', date: '02 मई 2027', dateEn: '2027-05-02' },
+  { name: 'मोहिनी एकादशी (Mohini)', paksha: 'शुक्ल पक्ष', month: 'वैशाख', date: '16 मई 2027', dateEn: '2027-05-16' },
+  { name: 'अपरा एकादशी (Apara)', paksha: 'कृष्ण पक्ष', month: 'ज्येष्ठ', date: '31 मई 2027', dateEn: '2027-05-31' },
+  { name: 'निर्जला एकादशी (Nirjala)', paksha: 'शुक्ल पक्ष', month: 'ज्येष्ठ', date: '15 जून 2027', dateEn: '2027-06-15', highlight: true },
+  { name: 'योगिनी एकादशी (Yogini)', paksha: 'कृष्ण पक्ष', month: 'आषाढ़', date: '30 जून 2027', dateEn: '2027-06-30' },
+  { name: 'देवशयनी एकादशी (Devshayani / चातुर्मास)', paksha: 'शुक्ल पक्ष', month: 'आषाढ़', date: '15 जुलाई 2027', dateEn: '2027-07-15', highlight: true },
 ];
 
 const FAQS = [
@@ -74,9 +74,9 @@ const JSON_LD = {
       '@type': 'WebPage',
       '@id': 'https://dharmagranth.dev/panchang/ekadashi/#webpage',
       url: 'https://dharmagranth.dev/panchang/ekadashi/',
-      name: 'एकादशी व्रत तिथियाँ २०२६–२०२८ · Ekadashi Dates & Vrata Mahatmya',
+      name: 'एकादशी व्रत तिथियाँ 2026–2028 · Ekadashi Dates & Vrata Mahatmya',
       description:
-        'वर्ष २०२६, २०२७ एवं २०२८ की समस्त एकादशी तिथियाँ, पारण समय, और पद्म पुराण व विष्णु पुराण के अनुसार एकादशी का शास्त्रीय माहात्म्य।',
+        'वर्ष 2026, 2027 एवं 2028 की समस्त एकादशी तिथियाँ, पारण समय, और पद्म पुराण व विष्णु पुराण के अनुसार एकादशी का शास्त्रीय माहात्म्य।',
       inLanguage: ['hi', 'sa', 'en'],
     },
     {
@@ -145,7 +145,7 @@ export default function EkadashiPage() {
             <span className="text-2xl mb-2 block">📖</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">शास्त्रीय स्वाध्याय (Scriptural Study)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
-              श्रीमद्भगवद्गीता के १८ अध्यायों का पाठ, विष्णु सहस्रनाम और नारायण सूक्त का जप।
+              श्रीमद्भगवद्गीता के 18 अध्यायों का पाठ, विष्णु सहस्रनाम और नारायण सूक्त का जप।
             </p>
           </div>
         </section>
@@ -155,7 +155,7 @@ export default function EkadashiPage() {
           <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
-                आगामी एकादशी व्रत तिथियाँ (२०२६–२०२७)
+                आगामी एकादशी व्रत तिथियाँ (2026–2027)
               </h2>
               <p className="text-xs text-dharma-muted mt-0.5">
                 भारतीय मानक समय (IST) एवं स्मार्त पञ्चाङ्ग गणना अनुसार

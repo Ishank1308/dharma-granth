@@ -197,7 +197,7 @@ export default function YogasPage() {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-2xl font-bold text-dharma-text">
-                All 27 Nitya Yogas (२७ नित्य योग सूची)
+                All 27 Nitya Yogas (27 नित्य योग सूची)
               </h2>
               <p className="text-sm text-dharma-muted font-sans mt-1">
                 Arranged in continuous 13°20&apos; zodiacal arc sequence from 0° to 360°.

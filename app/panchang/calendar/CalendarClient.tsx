@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import {
   Calendar as CalendarIcon,
@@ -234,7 +234,7 @@ export function CalendarClient() {
   }, [monthDays, selectedDateIso]);
 
   // Navigate months
-  const handlePrevMonth = () => {
+  const handlePrevMonth = useCallback(() => {
     triggerTactileFeedback('selection', 'softTap');
     if (month === 0) {
       if (year > 2026) {
@@ -246,9 +246,9 @@ export function CalendarClient() {
       setMonth(month - 1);
       setSelectedDateIso(`${year}-${String(month).padStart(2, '0')}-01`);
     }
-  };
+  }, [month, year]);
 
-  const handleNextMonth = () => {
+  const handleNextMonth = useCallback(() => {
     triggerTactileFeedback('selection', 'softTap');
     if (month === 11) {
       if (year < 2028) {
@@ -260,7 +260,7 @@ export function CalendarClient() {
       setMonth(month + 1);
       setSelectedDateIso(`${year}-${String(month + 2).padStart(2, '0')}-01`);
     }
-  };
+  }, [month, year]);
 
   const handleJumpToday = () => {
     triggerTactileFeedback('selection', 'softTap');
@@ -316,7 +316,7 @@ export function CalendarClient() {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [monthDays, selectedDateIso]);
+  }, [monthDays, selectedDateIso, handlePrevMonth, handleNextMonth]);
 
   const isDayMatchingFilter = (day: ComputedDay) => {
     if (activeFilter === 'all') return true;

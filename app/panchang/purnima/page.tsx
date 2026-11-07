@@ -8,9 +8,9 @@ import { JsonLd } from '@/app/components/JsonLd';
 import { BookOpen, Sparkles } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'पूर्णिमा तिथियाँ २०२६–२०२८ · Purnima Dates & Satyanarayan Vrata',
+  title: 'पूर्णिमा तिथियाँ 2026–2028 · Purnima Dates & Satyanarayan Vrata',
   description:
-    'वर्ष २०२६, २०२७ एवं २०२८ की समस्त पूर्णिमा तिथियाँ, सत्यनारायण कथा, चंद्र दर्शन एवं वैदिक पूर्णिमा व्रत का शास्त्रीय महत्व।',
+    'वर्ष 2026, 2027 एवं 2028 की समस्त पूर्णिमा तिथियाँ, सत्यनारायण कथा, चंद्र दर्शन एवं वैदिक पूर्णिमा व्रत का शास्त्रीय महत्व।',
   keywords: [
     'पूर्णिमा तिथियाँ',
     'Purnima dates 2026',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/panchang/purnima/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
-    title: 'पूर्णिमा तिथियाँ २०२६–२०२८ · Purnima Dates & Satyanarayan Vrata — Dharma Granth',
+    title: 'पूर्णिमा तिथियाँ 2026–2028 · Purnima Dates & Satyanarayan Vrata — Dharma Granth',
     description:
       'समस्त पूर्णिमा तिथियाँ, सत्यनारायण कथा, चंद्र दर्शन एवं वैदिक पूर्णिमा व्रत का शास्त्रीय महत्व।',
     url: 'https://dharmagranth.dev/panchang/purnima/',
@@ -33,18 +33,18 @@ export const metadata: Metadata = {
 };
 
 const PURNIMA_DATES = [
-  { name: 'कार्तिक पूर्णिमा (त्रिपुरारी पूर्णिमा / देव दीपावली)', month: 'कार्तिक', date: '२४ नवंबर २०२६', dateEn: '2026-11-24', highlight: true },
-  { name: 'मार्गशीर्ष पूर्णिमा (दत्तात्रेय जयंती)', month: 'मार्गशीर्ष', date: '२३ दिसंबर २०२६', dateEn: '2026-12-23' },
-  { name: 'पौष पूर्णिमा (शाकंभरी पूर्णिमा)', month: 'पौष', date: '२२ जनवरी २०२७', dateEn: '2027-01-22' },
-  { name: 'माघ पूर्णिमा (माघी पूर्णिमा)', month: 'माघ', date: '२० फरवरी २०२७', dateEn: '2027-02-20' },
-  { name: 'फाल्गुन पूर्णिमा (होलिका दहन)', month: 'फाल्गुन', date: '२२ मार्च २०२७', dateEn: '2027-03-22', highlight: true },
-  { name: 'चैत्र पूर्णिमा (हनुमान जयंती)', month: 'चैत्र', date: '२१ अप्रैल २०२७', dateEn: '2027-04-21', highlight: true },
-  { name: 'वैशाख पूर्णिमा (बुद्ध पूर्णिमा / कूर्म जयंती)', month: 'वैशाख', date: '२० मई २०२७', dateEn: '2027-05-20', highlight: true },
-  { name: 'ज्येष्ठ पूर्णिमा (वट पूर्णिमा)', month: 'ज्येष्ठ', date: '१९ जून २०२७', dateEn: '2027-06-19' },
-  { name: 'आषाढ़ पूर्णिमा (गुरु पूर्णिमा / व्यास पूर्णिमा)', month: 'आषाढ़', date: '१८ जुलाई २०२७', dateEn: '2027-07-18', highlight: true },
-  { name: 'श्रावण पूर्णिमा (रक्षाबंधन / संस्कृत दिवस)', month: 'श्रावण', date: '१७ अगस्त २०२७', dateEn: '2027-08-17', highlight: true },
-  { name: 'भाद्रपद पूर्णिमा (श्राद्ध पूर्णिमा)', month: 'भाद्रपद', date: '१५ सितंबर २०२७', dateEn: '2027-09-15' },
-  { name: 'अश्विन पूर्णिमा (शरद पूर्णिमा / कोजागरी)', month: 'अश्विन', date: '१४ अक्टूबर २०२७', dateEn: '2027-10-14', highlight: true },
+  { name: 'कार्तिक पूर्णिमा (त्रिपुरारी पूर्णिमा / देव दीपावली)', month: 'कार्तिक', date: '24 नवंबर 2026', dateEn: '2026-11-24', highlight: true },
+  { name: 'मार्गशीर्ष पूर्णिमा (दत्तात्रेय जयंती)', month: 'मार्गशीर्ष', date: '23 दिसंबर 2026', dateEn: '2026-12-23' },
+  { name: 'पौष पूर्णिमा (शाकंभरी पूर्णिमा)', month: 'पौष', date: '22 जनवरी 2027', dateEn: '2027-01-22' },
+  { name: 'माघ पूर्णिमा (माघी पूर्णिमा)', month: 'माघ', date: '20 फरवरी 2027', dateEn: '2027-02-20' },
+  { name: 'फाल्गुन पूर्णिमा (होलिका दहन)', month: 'फाल्गुन', date: '22 मार्च 2027', dateEn: '2027-03-22', highlight: true },
+  { name: 'चैत्र पूर्णिमा (हनुमान जयंती)', month: 'चैत्र', date: '21 अप्रैल 2027', dateEn: '2027-04-21', highlight: true },
+  { name: 'वैशाख पूर्णिमा (बुद्ध पूर्णिमा / कूर्म जयंती)', month: 'वैशाख', date: '20 मई 2027', dateEn: '2027-05-20', highlight: true },
+  { name: 'ज्येष्ठ पूर्णिमा (वट पूर्णिमा)', month: 'ज्येष्ठ', date: '19 जून 2027', dateEn: '2027-06-19' },
+  { name: 'आषाढ़ पूर्णिमा (गुरु पूर्णिमा / व्यास पूर्णिमा)', month: 'आषाढ़', date: '18 जुलाई 2027', dateEn: '2027-07-18', highlight: true },
+  { name: 'श्रावण पूर्णिमा (रक्षाबंधन / संस्कृत दिवस)', month: 'श्रावण', date: '17 अगस्त 2027', dateEn: '2027-08-17', highlight: true },
+  { name: 'भाद्रपद पूर्णिमा (श्राद्ध पूर्णिमा)', month: 'भाद्रपद', date: '15 सितंबर 2027', dateEn: '2027-09-15' },
+  { name: 'अश्विन पूर्णिमा (शरद पूर्णिमा / कोजागरी)', month: 'अश्विन', date: '14 अक्टूबर 2027', dateEn: '2027-10-14', highlight: true },
 ];
 
 const FAQS = [
@@ -65,7 +65,7 @@ const JSON_LD = {
       '@type': 'WebPage',
       '@id': 'https://dharmagranth.dev/panchang/purnima/#webpage',
       url: 'https://dharmagranth.dev/panchang/purnima/',
-      name: 'पूर्णिमा तिथियाँ २०२६–२०२८ · Purnima Dates & Satyanarayan Vrata',
+      name: 'पूर्णिमा तिथियाँ 2026–2028 · Purnima Dates & Satyanarayan Vrata',
       description:
         'समस्त पूर्णिमा तिथियाँ, सत्यनारायण कथा, चंद्र दर्शन एवं वैदिक पूर्णिमा व्रत का शास्त्रीय महत्व।',
       inLanguage: ['hi', 'sa', 'en'],
@@ -121,7 +121,7 @@ export default function PurnimaPage() {
           <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
-                आगामी पूर्णिमा तिथियाँ (२०२६–२०२७)
+                आगामी पूर्णिमा तिथियाँ (2026–2027)
               </h2>
               <p className="text-xs text-dharma-muted mt-0.5">
                 सत्यनारायण व्रत, दीपदान व चंद्र दर्शन
@@ -180,7 +180,7 @@ export default function PurnimaPage() {
             मुखादिन्द्रश्चाग्निश्च प्राणाद्वायुरजायत ॥
           </p>
           <p className="text-xs text-center text-dharma-muted max-w-xl mx-auto mt-2 leading-relaxed">
-            पुरुष सूक्त (ऋग्वेद १०.९०): विराट पुरुष के मन से चंद्रमा का प्रादुर्भाव हुआ। इसीलिए पूर्णिमा तिथि पर अंतःकरण की शांति और मन की निर्मलता के लिए विशेष ध्यान का विधान है।
+            पुरुष सूक्त (ऋग्वेद 10.90): विराट पुरुष के मन से चंद्रमा का प्रादुर्भाव हुआ। इसीलिए पूर्णिमा तिथि पर अंतःकरण की शांति और मन की निर्मलता के लिए विशेष ध्यान का विधान है।
           </p>
         </section>
 

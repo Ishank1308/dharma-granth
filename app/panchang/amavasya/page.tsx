@@ -8,7 +8,7 @@ import { JsonLd } from '@/app/components/JsonLd';
 import { BookOpen, Sparkles } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'अमावस्या तिथियाँ २०२६–२०२८ · Amavasya Dates, Pitru Tarpan & Shanti',
+  title: 'अमावस्या तिथियाँ 2026–2028 · Amavasya Dates, Pitru Tarpan & Shanti',
   description:
     'समस्त अमावस्या तिथियाँ, पितृ तर्पण, मौनी अमावस्या, शनिश्चरी अमावस्या एवं आत्म-चिंतन का शास्त्रीय विधान।',
   keywords: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/panchang/amavasya/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
-    title: 'अमावस्या तिथियाँ २०२६–२०२८ · Amavasya Dates, Pitru Tarpan & Shanti — Dharma Granth',
+    title: 'अमावस्या तिथियाँ 2026–2028 · Amavasya Dates, Pitru Tarpan & Shanti — Dharma Granth',
     description:
       'समस्त अमावस्या तिथियाँ, पितृ तर्पण, मौनी अमावस्या, शनिश्चरी अमावस्या एवं आत्म-चिंतन का शास्त्रीय विधान।',
     url: 'https://dharmagranth.dev/panchang/amavasya/',
@@ -33,18 +33,18 @@ export const metadata: Metadata = {
 };
 
 const AMAVASYA_DATES = [
-  { name: 'कार्तिक अमावस्या (दीपावली / लक्ष्मी पूजन)', month: 'कार्तिक', date: '०८ नवंबर २०२६', dateEn: '2026-11-08', highlight: true },
-  { name: 'मार्गशीर्ष अमावस्या (भौमवती अमावस्या)', month: 'मार्गशीर्ष', date: '०८ दिसंबर २०२६', dateEn: '2026-12-08' },
-  { name: 'पौष अमावस्या (पितृ श्राद्ध अमावस्या)', month: 'पौष', date: '०७ जनवरी २०२७', dateEn: '2027-01-07' },
-  { name: 'माघ अमावस्या (मौनी अमावस्या / कुंभ स्नान)', month: 'माघ', date: '०५ फरवरी २०२७', dateEn: '2027-02-05', highlight: true },
-  { name: 'फाल्गुन अमावस्या (महाशिवरात्रि के पूर्व)', month: 'फाल्गुन', date: '०७ मार्च २०२७', dateEn: '2027-03-07' },
-  { name: 'चैत्र अमावस्या (चैत्र नवरात्रि पूर्व)', month: 'चैत्र', date: '०६ अप्रैल २०२७', dateEn: '2027-04-06' },
-  { name: 'वैशाख अमावस्या (शनि जयंती)', month: 'वैशाख', date: '०५ मई २०२७', dateEn: '2027-05-05', highlight: true },
-  { name: 'ज्येष्ठ अमावस्या (वट सावित्री अमावस्या)', month: 'ज्येष्ठ', date: '०४ जून २०२७', dateEn: '2027-06-04' },
-  { name: 'आषाढ़ अमावस्या (हलहारिणी अमावस्या)', month: 'आषाढ़', date: '०३ जुलाई २०२७', dateEn: '2027-07-03' },
-  { name: 'श्रावण अमावस्या (हरियाली अमावस्या)', month: 'श्रावण', date: '०२ अगस्त २०२७', dateEn: '2027-08-02', highlight: true },
-  { name: 'भाद्रपद अमावस्या (कुशोत्पाटिनी अमावस्या)', month: 'भाद्रपद', date: '३१ अगस्त २०२७', dateEn: '2027-08-31' },
-  { name: 'अश्विन अमावस्या (सर्वपितृ अमावस्या / महालया)', month: 'अश्विन', date: '२९ सितंबर २०२७', dateEn: '2027-09-29', highlight: true },
+  { name: 'कार्तिक अमावस्या (दीपावली / लक्ष्मी पूजन)', month: 'कार्तिक', date: '08 नवंबर 2026', dateEn: '2026-11-08', highlight: true },
+  { name: 'मार्गशीर्ष अमावस्या (भौमवती अमावस्या)', month: 'मार्गशीर्ष', date: '08 दिसंबर 2026', dateEn: '2026-12-08' },
+  { name: 'पौष अमावस्या (पितृ श्राद्ध अमावस्या)', month: 'पौष', date: '07 जनवरी 2027', dateEn: '2027-01-07' },
+  { name: 'माघ अमावस्या (मौनी अमावस्या / कुंभ स्नान)', month: 'माघ', date: '05 फरवरी 2027', dateEn: '2027-02-05', highlight: true },
+  { name: 'फाल्गुन अमावस्या (महाशिवरात्रि के पूर्व)', month: 'फाल्गुन', date: '07 मार्च 2027', dateEn: '2027-03-07' },
+  { name: 'चैत्र अमावस्या (चैत्र नवरात्रि पूर्व)', month: 'चैत्र', date: '06 अप्रैल 2027', dateEn: '2027-04-06' },
+  { name: 'वैशाख अमावस्या (शनि जयंती)', month: 'वैशाख', date: '05 मई 2027', dateEn: '2027-05-05', highlight: true },
+  { name: 'ज्येष्ठ अमावस्या (वट सावित्री अमावस्या)', month: 'ज्येष्ठ', date: '04 जून 2027', dateEn: '2027-06-04' },
+  { name: 'आषाढ़ अमावस्या (हलहारिणी अमावस्या)', month: 'आषाढ़', date: '03 जुलाई 2027', dateEn: '2027-07-03' },
+  { name: 'श्रावण अमावस्या (हरियाली अमावस्या)', month: 'श्रावण', date: '02 अगस्त 2027', dateEn: '2027-08-02', highlight: true },
+  { name: 'भाद्रपद अमावस्या (कुशोत्पाटिनी अमावस्या)', month: 'भाद्रपद', date: '31 अगस्त 2027', dateEn: '2027-08-31' },
+  { name: 'अश्विन अमावस्या (सर्वपितृ अमावस्या / महालया)', month: 'अश्विन', date: '29 सितंबर 2027', dateEn: '2027-09-29', highlight: true },
 ];
 
 const FAQS = [
@@ -65,7 +65,7 @@ const JSON_LD = {
       '@type': 'WebPage',
       '@id': 'https://dharmagranth.dev/panchang/amavasya/#webpage',
       url: 'https://dharmagranth.dev/panchang/amavasya/',
-      name: 'अमावस्या तिथियाँ २०२६–२०२८ · Amavasya Dates, Pitru Tarpan & Shanti',
+      name: 'अमावस्या तिथियाँ 2026–2028 · Amavasya Dates, Pitru Tarpan & Shanti',
       description:
         'समस्त अमावस्या तिथियाँ, पितृ तर्पण, मौनी अमावस्या, शनिश्चरी अमावस्या एवं आत्म-चिंतन का शास्त्रीय विधान।',
       inLanguage: ['hi', 'sa', 'en'],
@@ -121,7 +121,7 @@ export default function AmavasyaPage() {
           <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
-                आगामी अमावस्या तिथियाँ (२०२६–२०२७)
+                आगामी अमावस्या तिथियाँ (2026–2027)
               </h2>
               <p className="text-xs text-dharma-muted mt-0.5">
                 पितृ श्राद्ध, तर्पण एवं स्नान-दान पर्व

@@ -78,7 +78,7 @@ export function UpakarmaClient() {
               क्रमबद्ध अनुष्ठान विधि · Sequential Liturgical Walkthrough
             </span>
             <h2 className="text-xl md:text-2xl font-serif font-bold text-dharma-text mt-0.5">
-              उपाकर्म के ५ पवित्र सोपान (5 Sacred Steps)
+              उपाकर्म के 5 पवित्र सोपान (5 Sacred Steps)
             </h2>
           </div>
 
@@ -96,51 +96,59 @@ export function UpakarmaClient() {
             const isCompleted = !!completedSteps[step.stepNumber];
             const isActive = activeStepIndex === idx;
             return (
-              <button
-                type="button"
+              <div
                 key={step.stepNumber}
-                onClick={() => setActiveStepIndex(idx)}
-                className={`p-3 rounded-2xl border text-left transition-all relative flex flex-col justify-between ${
+                className={`rounded-2xl border transition-all relative flex flex-col justify-between ${
                   isActive
                     ? 'border-saffron-600 bg-saffron-50 dark:bg-saffron-950/30 shadow-sm'
                     : 'border-dharma-border bg-dharma-card hover:border-dharma-border/80'
                 }`}
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span
-                    className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                      isActive
-                        ? 'bg-saffron-600 text-white'
-                        : 'bg-dharma-bg border border-dharma-border text-dharma-muted'
-                    }`}
-                  >
-                    {step.stepNumber}
-                  </span>
+                <button
+                  type="button"
+                  onClick={() => setActiveStepIndex(idx)}
+                  aria-pressed={isActive}
+                  className="w-full h-full p-3 text-left flex flex-col justify-between rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                >
+                  <div className="flex items-center justify-between mb-2 pr-6">
+                    <span
+                      className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                        isActive
+                          ? 'bg-saffron-600 text-white'
+                          : 'bg-dharma-bg border border-dharma-border text-dharma-muted'
+                      }`}
+                    >
+                      {step.stepNumber}
+                    </span>
+                  </div>
 
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleStepCompleted(step.stepNumber);
-                    }}
-                    className="text-dharma-muted hover:text-emerald-600 transition"
-                    title={isCompleted ? 'चिह्न हटाएं' : 'सम्पन्न चिह्नित करें'}
-                  >
-                    {isCompleted ? (
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    ) : (
-                      <Circle className="w-4 h-4" />
-                    )}
-                  </button>
-                </div>
+                  <div className="min-w-0">
+                    <h4 className="font-serif font-bold text-xs text-dharma-text line-clamp-1">
+                      {step.nameHi.split('(')[0].trim()}
+                    </h4>
+                    <span className="text-[10px] text-dharma-muted block mt-0.5">{step.durationHi}</span>
+                  </div>
+                </button>
 
-                <div className="min-w-0">
-                  <h4 className="font-serif font-bold text-xs text-dharma-text line-clamp-1">
-                    {step.nameHi.split('(')[0].trim()}
-                  </h4>
-                  <span className="text-[10px] text-dharma-muted block mt-0.5">{step.durationHi}</span>
-                </div>
-              </button>
+                <button
+                  type="button"
+                  onClick={() => toggleStepCompleted(step.stepNumber)}
+                  aria-pressed={isCompleted}
+                  aria-label={
+                    isCompleted
+                      ? `सोपान ${step.stepNumber} चिह्न हटाएं`
+                      : `सोपान ${step.stepNumber} सम्पन्न चिह्नित करें`
+                  }
+                  className="absolute top-3 right-3 p-0.5 rounded-full text-dharma-muted hover:text-emerald-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                  title={isCompleted ? 'चिह्न हटाएं' : 'सम्पन्न चिह्नित करें'}
+                >
+                  {isCompleted ? (
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  ) : (
+                    <Circle className="w-4 h-4" />
+                  )}
+                </button>
+              </div>
             );
           })}
         </div>
@@ -318,7 +326,7 @@ export function UpakarmaClient() {
         <div className="grid sm:grid-cols-3 gap-4">
           <div className="p-4 rounded-2xl border border-dharma-border bg-dharma-bg/60 space-y-2">
             <div className="flex items-center justify-between">
-              <h4 className="font-serif font-bold text-sm text-dharma-text">१. देव-ऋण (Deva Rina)</h4>
+              <h4 className="font-serif font-bold text-sm text-dharma-text">1. देव-ऋण (Deva Rina)</h4>
               <span className="text-[11px] px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-300 font-semibold">
                 सत्त्व गुण
               </span>
@@ -330,7 +338,7 @@ export function UpakarmaClient() {
 
           <div className="p-4 rounded-2xl border border-dharma-border bg-dharma-bg/60 space-y-2">
             <div className="flex items-center justify-between">
-              <h4 className="font-serif font-bold text-sm text-dharma-text">२. ऋषि-ऋण (Rishi Rina)</h4>
+              <h4 className="font-serif font-bold text-sm text-dharma-text">2. ऋषि-ऋण (Rishi Rina)</h4>
               <span className="text-[11px] px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-800 dark:text-blue-300 font-semibold">
                 रजस् गुण
               </span>
@@ -342,7 +350,7 @@ export function UpakarmaClient() {
 
           <div className="p-4 rounded-2xl border border-dharma-border bg-dharma-bg/60 space-y-2">
             <div className="flex items-center justify-between">
-              <h4 className="font-serif font-bold text-sm text-dharma-text">३. पितृ-ऋण (Pitru Rina)</h4>
+              <h4 className="font-serif font-bold text-sm text-dharma-text">3. पितृ-ऋण (Pitru Rina)</h4>
               <span className="text-[11px] px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 font-semibold">
                 तमस् गुण
               </span>

@@ -58,7 +58,7 @@ const FAQS = [
   },
   {
     q: 'सप्ताह के सात दिनों का क्रम (रविवार से शनिवार) कैसे निर्धारित हुआ?',
-    a: 'सूर्य सिद्धांत और बृहत्संहिता के अनुसार यह क्रम "होरा" (Hora — अहोरात्र का २४वां भाग) पर आधारित है। मंद गति वाले ग्रहों से तीव्र गति वाले ग्रहों के क्रम (शनि, गुरु, मंगल, सूर्य, शुक्र, बुध, चंद्र) में प्रत्येक घंटे का एक स्वामी होता है। सूर्योदय के समय जिस ग्रह की होरा होती है, वही उस पूरे दिन (वार) का अधिपति कहलाता है।',
+    a: 'सूर्य सिद्धांत और बृहत्संहिता के अनुसार यह क्रम "होरा" (Hora — अहोरात्र का 24वां भाग) पर आधारित है। मंद गति वाले ग्रहों से तीव्र गति वाले ग्रहों के क्रम (शनि, गुरु, मंगल, सूर्य, शुक्र, बुध, चंद्र) में प्रत्येक घंटे का एक स्वामी होता है। सूर्योदय के समय जिस ग्रह की होरा होती है, वही उस पूरे दिन (वार) का अधिपति कहलाता है।',
   },
   {
     q: 'वैदिक वार का आरंभ किस समय माना जाता है?',
@@ -291,7 +291,7 @@ export default function VarasDirectoryPage() {
               >
                 <div className="text-2xl mb-2">🌓</div>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
-                  १. तिथि (16 Tithis)
+                  1. तिथि (16 Tithis)
                 </h4>
                 <p className="mt-1 text-caption-1 text-dharma-muted">
                   प्रतिपदा से पूर्णिमा व अमावस्या — नन्दा, भद्रा, जया, रिक्ता, पूर्णा वर्ग।
@@ -304,10 +304,10 @@ export default function VarasDirectoryPage() {
               >
                 <div className="text-2xl mb-2">✨</div>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
-                  ३. नक्षत्र (27 Nakshatras)
+                  3. नक्षत्र (27 Nakshatras)
                 </h4>
                 <p className="mt-1 text-caption-1 text-dharma-muted">
-                  अश्विनी से रेवती — २७ चंद्र नक्षत्र, अधिष्ठाता देवता व ग्रह स्वामी।
+                  अश्विनी से रेवती — 27 चंद्र नक्षत्र, अधिष्ठाता देवता व ग्रह स्वामी।
                 </p>
               </Link>
 
@@ -317,7 +317,7 @@ export default function VarasDirectoryPage() {
               >
                 <div className="text-2xl mb-2">☀️</div>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
-                  ४. योग (27 Yogas)
+                  4. योग (27 Yogas)
                 </h4>
                 <p className="mt-1 text-caption-1 text-dharma-muted">
                   विष्कम्भ से वैधृति — सौर-चान्द्र संयोग और चित्त शुद्धि के नियम।
@@ -330,10 +330,10 @@ export default function VarasDirectoryPage() {
               >
                 <div className="text-2xl mb-2">⏳</div>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
-                  ५. करण (11 Karanas)
+                  5. करण (11 Karanas)
                 </h4>
                 <p className="mt-1 text-caption-1 text-dharma-muted">
-                  ७ चर व ४ स्थिर करण — विष्टि (भद्रा) और कर्म शुद्धि का विधान।
+                  7 चर व 4 स्थिर करण — विष्टि (भद्रा) और कर्म शुद्धि का विधान।
                 </p>
               </Link>
             </div>
