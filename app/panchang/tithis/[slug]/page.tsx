@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     `${tithi.name} (${tithi.nameHi}) is the ${tithi.number}th lunar day archetype of Vedic astronomy. Presiding deity: ${tithi.deity}. Category: ${tithi.categoryType} (${tithi.categoryTypeHi}). ${tithi.explanation} ${tithi.spiritualFocus}`
   );
   const canonical = `/panchang/tithis/${resolved.slug}/`;
+  const ogImageUrl = `/og/tithi/${resolved.slug}.png`;
 
   return {
     title,
@@ -48,13 +49,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${title} — Dharma Granth`,
       description,
       url: `https://dharmagranth.dev${canonical}`,
-      images: [DEFAULT_OG_IMAGE],
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${tithi.name} (${tithi.nameHi}) — Vedic Tithi, Pancha Tithi Class & Vrata`,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [DEFAULT_OG_IMAGE.url],
+      images: [ogImageUrl],
     },
   };
 }

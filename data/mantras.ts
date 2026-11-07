@@ -795,6 +795,334 @@ indirāmandiraṃ cetasā sundaraṃ devakīnandanaṃ nandajaṃ saṃdadhe ||`
       },
     ],
   },
+  {
+    id: 'ganapati-atharvashirsha',
+    slug: 'ganapati-atharvashirsha',
+    title: 'Ganapati Atharvashirsha',
+    titleHi: 'श्री गणपति अथर्वशीर्ष',
+    sanskrit: `ॐ नमस्ते गणपतये । त्वमेव प्रत्यक्षं तत्त्वमसि ।
+त्वमेव केवलं कर्ताऽसि । त्वमेव केवलं धर्ताऽसि ।
+त्वमेव केवलं हर्ताऽसि । त्वमेव सर्वं खल्विदं ब्रह्मासि ।
+त्वं साक्षादात्माऽसि नित्यम् ॥ १ ॥
+ऋतं वच्मि । सत्यं वच्मि ।
+अव त्वं माम् । अव वक्तारम् । अव श्रोतारम् ।
+अव दातारम् । अव धातारम् । अवाऽनूचानमव शिष्यम् ।
+अव पश्चात्तात् । अव पुरस्तात् । अवोत्तरात्तात् ।
+अव दक्षिणात्तात् । अव चोध्र्वात्तात् । अवाधरात्तात् ।
+सर्वतो मां पाहि पाहि समन्तात् ॥ २ ॥`,
+    transliteration: `oṃ namaste gaṇapataye | tvameva pratyakṣaṃ tattvamasi |
+tvameva kevalaṃ kartā'si | tvameva kevalaṃ dhartā'si |
+tvameva kevalaṃ hartā'si | tvameva sarvaṃ khalvidaṃ brahmāsi |
+tvaṃ sākṣādātmā'si nityam || 1 ||
+ṛtaṃ vacmi | satyaṃ vacmi |
+ava tvaṃ mām | ava vaktāram | ava śrotāram |
+ava dātāram | ava dhātāram | avā'nūcānamava śiṣyam |
+ava paścāttāt | ava purastāt | avottarāttāt |
+ava dakṣiṇāttāt | ava codhrvāttāt | avādharāttāt |
+sarvato māṃ pāhi pāhi samantāt || 2 ||`,
+    category: 'vedic',
+    categoryLabel: 'Upanishadic Sukta',
+    categoryLabelHi: 'उपनिषद् सूक्त',
+    rishi: 'अथर्वा ऋषि (Rishi Atharva)',
+    devata: 'श्री गणेश / ओंकारस्वरूप परब्रह्म (Sri Ganesha / Pranava Parabrahma)',
+    chhandas: 'वैदिक अनुष्टुप् व गायत्री',
+    source: 'Atharvaveda',
+    sourceCoordinates: 'Atharvaveda, Ganapati Upanishad 1-14',
+    sourceHref: '/scripture/atharvaveda/',
+    wordMeanings: [
+      { sanskrit: 'नमस्ते गणपतये', iast: 'namaste gaṇapataye', hindi: 'हे गणपति! आपको सादर नमस्कार है', english: 'Salutations unto You, O Ganapati' },
+      { sanskrit: 'प्रत्यक्षं तत्त्वमसि', iast: 'pratyakṣaṃ tattvamasi', hindi: 'आप ही प्रत्यक्ष परम तत्त्व हैं', english: 'You alone are the manifest supreme Truth' },
+      { sanskrit: 'केवलं कर्ताऽसि', iast: 'kevalaṃ kartā\'si', hindi: 'आप ही एकमात्र कर्ता (सृष्टि-कर्ता) हैं', english: 'You alone are the sole creator of all existence' },
+      { sanskrit: 'केवलं धर्ताऽसि', iast: 'kevalaṃ dhartā\'si', hindi: 'आप ही एकमात्र धारक व पोषक हैं', english: 'You alone are the sole sustainer of the universe' },
+      { sanskrit: 'केवलं हर्ताऽसि', iast: 'kevalaṃ hartā\'si', hindi: 'आप ही एकमात्र संहारक व दुःखहर्ता हैं', english: 'You alone are the dissolver and dispeller of sorrows' },
+      { sanskrit: 'सर्वं खल्विदं ब्रह्मासि', iast: 'sarvaṃ khalvidaṃ brahmāsi', hindi: 'यह समस्त दृश्य-जगत निश्चय ही आप स्वरूप ब्रह्म है', english: 'Truly, this entire cosmos is Brahman, which is You' },
+      { sanskrit: 'साक्षादात्माऽसि नित्यम्', iast: 'sākṣādātmā\'si nityam', hindi: 'आप ही नित्य प्रत्यक्ष आत्म-तत्त्व हैं', english: 'You are indeed the eternal manifest Self' },
+      { sanskrit: 'ऋतं वच्मि सत्यं वच्मि', iast: 'ṛtaṃ vacmi satyaṃ vacmi', hindi: 'मैं ऋत (शाश्वत नियम) कहता हूँ, मैं सत्य कहता हूँ', english: 'I speak cosmic order (Rta), I speak absolute Truth (Satya)' },
+      { sanskrit: 'सर्वतो मां पाहि पाहि समन्तात्', iast: 'sarvato māṃ pāhi pāhi samantāt', hindi: 'सब ओर से मेरी रक्षा करें, रक्षा करें', english: 'From all directions protect me, protect me completely' },
+    ],
+    hindiMeaning: 'हे श्रीगणपति! आपको सादर प्रणाम है। आप ही साक्षात् प्रत्यक्ष परब्रह्म तत्त्व हैं। आप ही सृष्टि के एकमात्र कर्ता, पोषक और संहारक हैं। यह सम्पूर्ण विश्व निश्चय ही आप स्वरूप ब्रह्म है। आप ही नित्य अंतरात्मा हैं। मैं ब्रह्माण्डीय नियम (ऋत) कहता हूँ, मैं परम सत्य कहता हूँ। आप मेरी रक्षा करें, वक्ता की रक्षा करें, श्रोता की रक्षा करें, दाता, धाता और शिष्य की रक्षा करें। सब दिशाओं से मेरी रक्षा करें।',
+    englishMeaning: 'Om, salutations unto You, Lord Ganapati. You alone are the manifest Reality and the ultimate Truth. You alone are the sole creator, sustainer, and dissolver of this entire cosmos. Truly, all this universe is Brahman, and You are the eternal Self within all beings. I speak cosmic order; I speak absolute truth. Protect me, protect the speaker, protect the listener, protect the giver, protect the sustainer, and protect both master and disciple. Guard me from every quarter.',
+    significance: 'The Ganapati Atharvashirsha is an Upanishadic hymn from the Atharvaveda revered as the crest-jewel of Ganesha literature. It establishes Lord Ganesha not merely as the remover of obstacles, but as the supreme transcendent Brahman (Para Brahman), the embodiment of the sacred syllable Om (Pranava), and the foundation of all physical and metaphysical realities.',
+    significanceHi: 'गणपति अथर्वशीर्ष अथर्ववेद का अत्यंत पवित्र उपनिषद् है। इसमें भगवान् श्रीगणेश को मात्र विघ्नहर्ता ही नहीं, अपितु सम्पूर्ण ब्रह्माण्ड के मूल कारण, ओंकारस्वरूप परब्रह्म और सबके अंतर्यामी आत्मा के रूप में प्रतिष्ठापित किया गया है। इसका नित्य पाठ बुद्धि, विवेक, एकाग्रता और समस्त विघ्नों के निवारण हेतु अमोघ माना गया है।',
+    faqs: [
+      {
+        question: 'Which Veda does the Ganapati Atharvashirsha belong to?',
+        answer: 'It belongs to the Atharvaveda and is also celebrated as the Ganapati Upanishad in the classical canon of 108 Upanishads.',
+      },
+      {
+        question: 'What spiritual benefits are associated with reciting Ganapati Atharvashirsha?',
+        answer: 'Classical commentaries state that meditating upon this Upanishadic hymn removes inner and outer obstacles, aligns the intellect with divine discernment (buddhi), and brings realization of the inner Self.',
+      },
+    ],
+  },
+  {
+    id: 'sankat-mochan-hanuman-ashtak',
+    slug: 'sankat-mochan-hanuman-ashtak',
+    title: 'Sankat Mochan Hanuman Ashtak',
+    titleHi: 'संकटमोचन हनुमानाष्टक',
+    sanskrit: `बाल समय रबि भक्षि लियो तब, तीनहुं लोक भयो अँधियारो ।
+ताहि सो त्रास भयो जग को, यह संकट काहु सों जात न टारो ॥
+देवन आनि करी बिनती तब, छाँड़ि दियो रबि कष्ट निवारो ।
+को नहिं जानत है जग में कपि, संकटमोचन नाम तिहारो ॥ १ ॥
+बालि की त्रास कपीस बसै गिरि, जात महाप्रभु पंथ निहारो ।
+चौंकि चले नभ देखि कपि, तब रूप धरे मुनि विप्र पधारो ॥
+कपि संग लाए मिलाए कृपाकर, बालि बधो रघुवीर पुकारो ।
+को नहिं जानत है जग में कपि, संकटमोचन नाम तिहारो ॥ २ ॥
+लाय सजीवन लखन जियाये, श्री रघुबीर हरषि उर लाये ।
+रघुवर दीन्ही बहुत बड़ाई, तुम मम प्रिय भरतहि सम भाई ॥
+संकट तैं हनुमान छुड़ावै, मन क्रम बचन ध्यान जो लावै ।
+को नहिं जानत है जग में कपि, संकटमोचन नाम तिहारो ॥ ३ ॥`,
+    transliteration: `bāla samaya rabi bhakṣi liyo taba, tīnahuṃ loka bhayo a~dhiyāro |
+tāhi so trāsa bhayo jaga ko, yaha saṃkaṭa kāhu soṃ jāta na ṭāro ||
+devana āni karī binatī taba, chā~ṛi diyo rabi kaṣṭa nivāro |
+ko nahiṃ jānata hai jaga meṃ kapi, saṃkaṭamocana nāma tihāro || 1 ||
+bāli kī trāsa kapīsa basai giri, jāta mahāprabhu paṃtha nihāro |
+cauṃki cale nabha dekhi kapi, taba rūpa dhare muni vipra padhāro ||
+kapi saṃga lāe milāe kṛpākara, bāli badho raghavīra pukāro |
+ko nahiṃ jānata hai jaga meṃ kapi, saṃkaṭamocana nāma tihāro || 2 ||
+lāya sajīvana lakhana jiyāye, śrī raghabīra haraṣi ura lāye |
+raghuvara dīnhī bahuta baṛāī, tuma mama priya bharatahi sama bhāī |
+saṃkaṭa taiṃ hanumāna chuṛāvai, mana krama bacana dhyāna jo lāvai |
+ko nahiṃ jānata hai jaga meṃ kapi, saṃkaṭamocana nāma tihāro || 3 ||`,
+    category: 'stotra',
+    categoryLabel: 'Bhakti Ashtakam',
+    categoryLabelHi: 'संकटनाशक अष्टक',
+    rishi: 'गोस्वामी तुलसीदास (Goswami Tulsidas)',
+    devata: 'श्री हनुमान (Lord Hanuman / Sankat Mochan)',
+    chhandas: 'मत्तगयन्द सवैया (Mattagayanda Savaiya)',
+    source: 'Stotra Sahitya of Goswami Tulsidas',
+    sourceCoordinates: 'Hanuman Ashtak, Verses 1-8',
+    sourceHref: '/scripture/ramcharitmanas/',
+    wordMeanings: [
+      { sanskrit: 'बाल समय', iast: 'bāla samaya', hindi: 'बाल्यावस्था में', english: 'In early childhood' },
+      { sanskrit: 'रबि भक्षि लियो तब', iast: 'rabi bhakṣi liyo taba', hindi: 'सूर्यदेव को फल समझकर मुख में रख लिया', english: 'Swallowed the sun mistaking it for a fruit' },
+      { sanskrit: 'तीनहुं लोक भयो अँधियारो', iast: 'tīnahuṃ loka bhayo a~dhiyāro', hindi: 'तीनों लोकों में अंधकार छा गया', english: 'Darkness engulfed all three realms' },
+      { sanskrit: 'देवन आनि करी बिनती', iast: 'devana āni karī binatī', hindi: 'देवताओं ने आकर विनय-प्रार्थना की', english: 'The gods assembled and offered supplications' },
+      { sanskrit: 'छाँड़ि दियो रबि कष्ट निवारो', iast: 'chā~ṛi diyo rabi kaṣṭa nivāro', hindi: 'सूर्य को छोड़ दिया और सबका संकट दूर किया', english: 'Released the sun and dispelled their grave affliction' },
+      { sanskrit: 'को नहिं जानत है जग में कपि', iast: 'ko nahiṃ jānata hai jaga meṃ kapi', hindi: 'हे कपीश्वर! संसार में कौन नहीं जानता', english: 'Who in this world does not know, O Lord of primates' },
+      { sanskrit: 'संकटमोचन नाम तिहारो', iast: 'saṃkaṭamocana nāma tihāro', hindi: 'आपका प्रसिद्ध नाम संकटमोचन है', english: 'That Your holy name is the Deliverer from Distress' },
+    ],
+    hindiMeaning: 'हे कपीश्वर हनुमान जी! बाल्यावस्था में आपने सूर्यदेव को निगल लिया था, जिससे तीनों लोकों में अंधकार व्याप्त हो गया था। उस संकट को कोई टाल नहीं पा रहा था। तब समस्त देवताओं ने आकर आपसे प्रार्थना की, तब आपने सूर्य को मुक्त कर जगत का महासंकट दूर किया। इस संसार में ऐसा कौन है जो आपके मंगलकारी नाम \'संकटमोचन\' को नहीं जानता!',
+    englishMeaning: 'O beloved Hanuman, King of primates! In Your childhood, You leapt up and swallowed the sun, causing darkness to fall across all three realms. No being in creation could avert that crisis. When all the gods assembled and made humble supplications, You compassionately released the sun and dispelled their immense dread. Who in this vast world is unaware that Your glorious name is Sankat Mochan—the Dispeller of all distress!',
+    significance: 'Composed in the rhythmic Mattagayanda Savaiya meter by Goswami Tulsidas, Sankat Mochan Hanuman Ashtak recounts eight pivotal moments where Lord Hanuman rescued gods, sages, Sugriva, Lakshmana, and Sri Rama from seemingly insurmountable perils. Millions recite it whenever confronting overwhelming life trials, sickness, and anxiety.',
+    significanceHi: 'गोस्वामी तुलसीदास कृत संकटमोचन हनुमानाष्टक आठ सवैयों में भगवान् हनुमान जी द्वारा देवताओं, सुग्रीव, लक्ष्मण और विभीषण के प्राणों व संकटों की रक्षा की अमर गाथा है। जब जीवन में घोर विपत्ति या मन में भय और असमंजस उत्पन्न होता है, तब इसके पाठ से तुरंत आत्मबल, धैर्य और निर्भयता की अनुभूति होती है।',
+    faqs: [
+      {
+        question: 'Who composed the Sankat Mochan Hanuman Ashtak?',
+        answer: 'It was composed by Goswami Tulsidas, the venerated saint-poet of the Ramcharitmanas and Hanuman Chalisa.',
+      },
+      {
+        question: 'What does the title "Sankat Mochan" mean?',
+        answer: '‘Sankat’ means crisis, peril, or sorrow, and ‘Mochan’ means one who liberates or dispels. Thus Sankat Mochan means ‘The Deliverer from all Distress’.',
+      },
+    ],
+  },
+  {
+    id: 'bajrang-baan',
+    slug: 'bajrang-baan',
+    title: 'Bajrang Baan',
+    titleHi: 'बजरंग बाण',
+    sanskrit: `दोहा:
+निश्चय प्रेम प्रतीति ते, बिनय करैं सनमान ।
+तेहि के कारज सकल शुभ, सिद्ध करैं हनुमान ॥
+चौपाई:
+जय हनुमंत संत हितकारी । सुन लीजै प्रभु अरज हमारी ॥
+जन के काज बिलंब न कीजै । आतुर दौरि महा सुख दीजै ॥
+जैसे कूदि सिंधु महिपारा । सुरसा बदन पैठि बिस्तारा ॥
+आगे जाय लंकिनी रोका । मारेहु लात गई सुर लोका ॥
+जाय विभीषन को सुख दीन्हा । सीता निरखि परमपद लीन्हा ॥
+बाग उजारि सिंधु महँ बोरा । अति आतुर जमकातर तोरा ॥
+अक्षय कुमार मारि संहारा । लूम लपेटि लंक को जारा ॥
+लाह समान लंक जरि गई । जय जय धुनि सुरपुर महँ भई ॥
+उठु उठु चलु तोहिं राम दोहाई । पायँ परौं कर जोरि मनाई ॥
+ॐ चं चं चं चं चपल चलंता । ॐ हं हं हं हनुमंत हसंता ॥
+ॐ हं हं हँक देत कपि चंचल । ॐ सं सं सहमि पराने खल-दल ॥
+अपने जन को तुरत उबारौ । सुमिरत होय आनंद हमारौ ॥
+एहि बजरंग बाण जेहि मारै । ताहि कहौ फिर कौन उबारै ॥`,
+    transliteration: `doha:
+niścaya prema pratīti te, binaya karaiṃ sanamāna |
+tehi ke kāraja sakala śubha, siddha karaiṃ hanumāna ||
+caupāī:
+jaya hanumaṃta saṃta hitakārī | suna lījai prabhu araja hamārī ||
+jana ke kāja bilaṃba na kījai | ātura dauri mahā sukha dījai ||
+jaise kūdi siṃdhu mahipārā | surasā badana paiṭhi bistārā ||
+āge jāya laṃkinī rokā | mārehu lāta gaī sura lokā ||
+jāya vibhīṣana ko sukha dīnhā | sītā nirakhi paramapada līnhā ||
+bāga ujāri siṃdhu maha~ borā | ati ātura jamakātara torā ||
+akṣaya kumāra māri saṃhārā | lūma lapeṭi laṃka ko jārā ||
+lāha samāna laṃka jari gaī | jaya jaya dhuni surapura maha~ bhaī ||
+uṭhu uṭhu calu tohiṃ rāma dohāī | pāya~ parauṃ kara jori manāī ||
+oṃ caṃ caṃ caṃ caṃ capala calaṃtā | oṃ haṃ haṃ haṃ hanumaṃta hasaṃtā ||
+oṃ haṃ haṃ ha~ka deta kapi caṃcala | oṃ saṃ saṃ sahami parāne khala-dala ||
+apane jana ko turata ubārau | sumirata hoya ānaṃda hamārau ||
+ehi bajaraṃga bāṇa jehi mārai | tāhi kahau phira kauna ubārai ||`,
+    category: 'stotra',
+    categoryLabel: 'Kavacha & Raksha Stotra',
+    categoryLabelHi: 'कवच व रक्षा स्तोत्र',
+    rishi: 'गोस्वामी तुलसीदास (Goswami Tulsidas)',
+    devata: 'श्री हनुमान (Lord Hanuman / Bajrang Bali)',
+    chhandas: 'चौपाई एवं दोहा (Chaupai & Doha)',
+    source: 'Bhakti Sahitya of Goswami Tulsidas',
+    sourceCoordinates: 'Bajrang Baan, Opening Doha & Verses 1-14',
+    sourceHref: '/scripture/ramcharitmanas/',
+    wordMeanings: [
+      { sanskrit: 'निश्चय प्रेम प्रतीति ते', iast: 'niścaya prema pratīti te', hindi: 'दृढ़ निष्ठा, अनन्य प्रेम और विश्वास के साथ', english: 'With unwavering love, firm faith, and devotion' },
+      { sanskrit: 'बिनय करैं सनमान', iast: 'binaya karaiṃ sanamāna', hindi: 'जो आदरपूर्वक प्रार्थना करता है', english: 'Whoever offers humble and reverent prayers' },
+      { sanskrit: 'तेहि के कारज सकल शुभ', iast: 'tehi ke kāraja sakala śubha', hindi: 'उसके सभी शुभ कार्य', english: 'All virtuous endeavors of that devotee' },
+      { sanskrit: 'सिद्ध करैं हनुमान', iast: 'siddha karaiṃ hanumāna', hindi: 'श्री हनुमान जी सिद्ध कर देते हैं', english: 'Are brought to fruition by Lord Hanuman' },
+      { sanskrit: 'संत हितकारी', iast: 'saṃta hitakārī', hindi: 'संतों और सज्जनों का कल्याण करने वाले', english: 'Benefactor of saints and spiritual seekers' },
+      { sanskrit: 'अरज हमारी', iast: 'araja hamārī', hindi: 'हमारी विनम्र प्रार्थना', english: 'Our heartfelt petition' },
+      { sanskrit: 'महा सुख दीजै', iast: 'mahā sukha dījai', hindi: 'परम शांति व सुख प्रदान करें', english: 'Bestow supreme peace and bliss' },
+      { sanskrit: 'एहि बजरंग बाण', iast: 'ehi bajaraṃga bāṇa', hindi: 'यह अमोघ बजरंग बाण', english: 'This unerring arrow of Bajrang Bali' },
+    ],
+    hindiMeaning: 'जो भी साधक निष्कपट प्रेम, अटूट श्रद्धा और पूर्ण विश्वास के साथ श्री हनुमान जी की सविनय प्रार्थना करता है, हनुमान जी उसके समस्त शुभ और धर्मसम्मत कार्यों को अवश्य सिद्ध करते हैं। हे संतों का हित करने वाले दयालु हनुमान जी! आपकी जय हो। आप हमारे निवेदन को सुनकर शीघ्र पधारें और हमारे दुःखों का निवारण कर परम सुख प्रदान करें।',
+    englishMeaning: 'Whoever petitions Lord Hanuman with sincere love, unshakeable faith, and deepest reverence will find all their noble and righteous endeavors brought to successful fulfillment by Lord Hanuman. Victory to Lord Hanuman, the compassionate benefactor of devotees and saints! Graciously listen to our earnest prayer, rush swiftly to our aid without delay, and bestow supreme peace, courage, and relief from distress.',
+    significance: 'The Bajrang Baan is an intensely protective prayer invoking Lord Hanuman under the sacred pledge of Sri Rama. The word \'Baan\' signifies an arrow—an unerring spiritual force that penetrates darkness, removes negative psychological blockages, dispels existential fear, and shields the sincere aspirant.',
+    significanceHi: 'बजरंग बाण का शाब्दिक अर्थ है \'हनुमान जी का अमोघ बाण\'। यह स्तोत्र भय, नकारात्मक विचार, मानसिक अशांति और आकस्मिक संकटों से रक्षा करने वाला आध्यात्मिक कवच माना जाता है। इसमें श्रीराम की पावन शपथ दिलाकर संकटमोचन हनुमान जी का तीव्र आह्वान किया जाता है, जिससे साधक के मन में अदम्य साहस और निर्भयता का संचार होता है।',
+    faqs: [
+      {
+        question: 'What does the name "Bajrang Baan" signify?',
+        answer: '‘Bajrang’ refers to Vajranga (having limbs as strong as an indomitable thunderbolt), and ‘Baan’ means an arrow. It symbolizes an unerring, focused shield of divine protection against negative influences.',
+      },
+      {
+        question: 'How does Bajrang Baan differ from Hanuman Chalisa?',
+        answer: 'While the Hanuman Chalisa is a contemplative, comprehensive hymn celebrating Hanuman\'s divine attributes and virtues, the Bajrang Baan is a targeted, resolute protective invocation for dispelling urgent distress and fear.',
+      },
+    ],
+  },
+  {
+    id: 'mahishasura-mardini-stotram',
+    slug: 'mahishasura-mardini-stotram',
+    title: 'Mahishasura Mardini Stotram',
+    titleHi: 'महिषासुरमर्दिनी स्तोत्रम्',
+    sanskrit: `अयि गिरिनन्दिनि नन्दितमेदिनि विश्वविनोदिनि नन्दसुते
+गिरिवरविन्ध्यशिरोऽधिनिवासिनि विष्णुविलासिनि जिष्णुनुते ।
+भगवति हे शितिकण्ठकुटुम्बिनि भूरिकुटुम्बिनि भूरिकृते
+जय जय हे महिषासुरमर्दिनि रम्यकपर्दिनि शैलसुते ॥ १ ॥
+सुरवरवर्षिणि दुर्धरधर्षिणि दुर्मुखमर्षिणि हर्षरते
+त्रिभुवनपोषिणी शङ्करतोषिणि किल्बिषमोषिणि घोषरते ।
+दनुजकदर्शिणि दितिसुतदर्शिणि दुर्मदशोषिणि सिन्धुसुते
+जय जय हे महिषासुरमर्दिनि रम्यकपर्दिनि शैलसुते ॥ २ ॥
+अयि शतखण्डविखण्डितरुण्डवितुण्डितशुण्डगजाधिपते
+रिपुगजगण्डविदारणचण्डपराक्रमशुण्डमृगाधिपते ।
+निजभुजदण्डनिपातितखण्डविपातितमुण्डभटाधिपते
+जय जय हे महिषासुरमर्दिनि रम्यकपर्दिनि शैलसुते ॥ ३ ॥`,
+    transliteration: `ayi girinandini nanditamedini viśvavinodini nandasute
+girivaravindhyaśiro'dhinivāsini viṣṇuvilāsini jiṣṇunute |
+bhagavati he śitikaṇṭhakuṭumbini bhūrikuṭumbini bhūrikṛte
+jaya jaya he mahiṣāsuramardini ramyakapardini śailasute || 1 ||
+suravaravarṣiṇi durdharadharṣiṇi durmukhamarṣiṇi harṣarate
+tribhuvanapoṣiṇī śaṅkaratoṣiṇi kilbiṣamoṣiṇi ghoṣarate |
+danujakadarśiṇi ditisutadarśiṇi durmadaśoṣiṇi sindhusute
+jaya jaya he mahiṣāsuramardini ramyakapardini śailasute || 2 ||
+ayi śatakhaṇḍavikhaṇḍitaruṇḍavituṇḍitaśuṇḍagajādhipate
+ripugajagaṇḍavidāraṇacaṇḍaparākramaśuṇḍamṛgādhipate |
+nijabhujadaṇḍanipātitakhaṇḍavipātitamuṇḍabhaṭādhipate
+jaya jaya he mahiṣāsuramardini ramyakapardini śailasute || 3 ||`,
+    category: 'stotra',
+    categoryLabel: 'Devi Stotra',
+    categoryLabelHi: 'भगवती स्तोत्र',
+    rishi: 'आदिशंकराचार्य (Adi Shankaracharya)',
+    devata: 'भगवती दुर्गा / महिषासुरमर्दिनी (Goddess Durga / Mahishasura Mardini)',
+    chhandas: 'अतिधृति छन्द / पदमञ्जरी लय (Padamanjari Laya)',
+    source: 'Devi Mahatmya / Markandeya Purana Tradition',
+    sourceCoordinates: 'Adi Shankara Stotra Sangraha; Devi Mahatmya Framework',
+    sourceHref: '/scripture/durgasaptashati/',
+    wordMeanings: [
+      { sanskrit: 'अयि गिरिनन्दिनि', iast: 'ayi girinandini', hindi: 'हे पर्वतराज हिमालय की कन्या (पार्वती)', english: 'O daughter of the sacred mountain Himalaya' },
+      { sanskrit: 'नन्दितमेदिनि', iast: 'nanditamedini', hindi: 'सम्पूर्ण पृथ्वी को आनंदित करने वाली', english: 'Who gladdens the entire earth' },
+      { sanskrit: 'विश्वविनोदिनि', iast: 'viśvavinodini', hindi: 'अखिल विश्व में क्रीड़ा करने वाली', english: 'Who delights in cosmic play' },
+      { sanskrit: 'विष्णुविलासिनि', iast: 'viṣṇuvilāsini', hindi: 'भगवान् विष्णु की भगिनी / योगमाया', english: 'The cosmic sister of Vishnu / Yogamaya' },
+      { sanskrit: 'शितिकण्ठकुटुम्बिनि', iast: 'śitikaṇṭhakuṭumbini', hindi: 'नीलकण्ठ महादेव शिव की सहधर्मिणी', english: 'Consort of the blue-throated Lord Shiva' },
+      { sanskrit: 'महिषासुरमर्दिनि', iast: 'mahiṣāsuramardini', hindi: 'अहंकाररूपी महिषासुर का मर्दन करने वाली', english: 'Slayer of the demon Mahishasura (ego)' },
+      { sanskrit: 'रम्यकपर्दिनि', iast: 'ramyakapardini', hindi: 'सुन्दर जटाजूट धारण करने वाली', english: 'Whose braided hair is exceedingly beautiful' },
+      { sanskrit: 'शैलसुते', iast: 'śailasute', hindi: 'हे गिरिराज पुत्री!', english: 'O divine daughter of the mountain' },
+    ],
+    hindiMeaning: 'हे पर्वतराज हिमालय की पुत्री! सम्पूर्ण पृथ्वी को आनंद प्रदान करने वाली, विश्व को अपनी लीला से उल्लासित करने वाली, विन्ध्याचल के शिखर पर वास करने वाली, भगवान् विष्णु की भगिनी तथा देवराज इन्द्र द्वारा वंदित भगवती! हे नीलकण्ठ भगवान् शिव की अर्द्धांगिनी, अनन्त कोटि ब्रह्माण्डों की माता! हे महिषासुर का मर्दन करने वाली, मनोहारी जटाओं से शोभित गिरिराज किशोरी! आपकी सदा जय हो, जय हो!',
+    englishMeaning: 'Salutations to You, O divine daughter of the king of mountains! You who bring joy to the entire cosmos, who reside on the lofty peaks of the sacred Vindhya mountains, delighting Vishnu and revered by Indra. O Goddess, consort of the blue-throated Lord Shiva, mother of all worlds whose bounty is boundless! Victory, supreme victory unto You, O conqueror of the demon Mahishasura, with exquisitely beautiful locks of hair, daughter of the mountain!',
+    significance: 'The Mahishasura Mardini Stotram, attributed to Adi Shankaracharya, is one of the most energetically sublime hymns in Sanskrit literature. Composed in twenty stanzas with dazzling alliteration and rhythmic cadences, it portrays the triumph of Divine Consciousness (Durga) over primal demonic ego, delusion, and inertia (Mahishasura).',
+    significanceHi: 'महिषासुरमर्दिनी स्तोत्रम् संस्कृत साहित्य का अत्यंत ओजस्वी, काव्यात्मक एवं शक्तिशाली स्तोत्र है। आदिशंकराचार्य ने इसके बीस पदों में भगवती दुर्गा द्वारा तमोगुण और अहंकाररूपी महिषासुर के विनाश का भव्य वर्णन किया है। इसका सस्वर गान साधक के भीतर सुप्त चेतना, ओज, तेज और निर्भयता को जाग्रत करता है।',
+    faqs: [
+      {
+        question: 'Who composed the Mahishasura Mardini Stotram?',
+        answer: 'It is traditionally attributed to Jagadguru Adi Shankaracharya, drawing inspiration from the Devi Mahatmya (Durga Saptashati) of the Markandeya Purana.',
+      },
+      {
+        question: 'What does Mahishasura symbolize spiritually?',
+        answer: 'In Indian philosophy, Mahishasura (the buffalo demon) symbolizes heavy inertia (tamas), untamed animalistic impulses, pride, and ego. Goddess Durga destroying Mahishasura represents the victory of pure spiritual wisdom over ego.',
+      },
+    ],
+  },
+  {
+    id: 'shiv-chalisa',
+    slug: 'shiv-chalisa',
+    title: 'Shiv Chalisa',
+    titleHi: 'श्री शिव चालीसा',
+    sanskrit: `दोहा:
+जय गणेश गिरिजा सुवन, मंगल मूल सुजान ।
+कहत अयोध्यादास तुम, देहु अभय वरदान ॥
+चौपाई:
+जय गिरिजा पति दीन दयाला । सदा करत संतन प्रतिपाला ॥
+भाल चंद्रमा सोहत नीके । कानन कुंडल नागफनी के ॥
+अंग गौर शिर गंग बहाये । मुंडमाल तन क्षार लगाये ॥
+वस्त्र खाल बाघंबर सोहे । छवि को देखि नाग मुनि मोहे ॥
+मैना मातु की ह्वै दुलारी । बाम अंग सोहत छवि न्यारी ॥
+कर त्रिशूल सोहत शुभगारी । करत सदा शत्रुन क्षयकारी ॥
+नंदि गणेश सोहैं तहँ कैसे । सागर मध्य कमल हैं जैसे ॥
+कार्तिक श्याम और गणराऊ । या छवि को कहि जात न काऊ ॥
+देवन जबहीं जाय पुकारा । तबहीं दुख प्रभु आप निवारा ॥
+किया उपद्रव तारक भारी । देवन सब मिलि तुमहिं जुहारी ॥
+तुरत षडानन आप पठायौ । लवनिमेष महँ मारि गिरायौ ॥
+आप जलंधर असुर संहारा । सुयश तुम्हार विदित संसारा ॥`,
+    transliteration: `doha:
+jaya gaṇeśa girijā suvana, maṃgala mūla sujāna |
+kahata ayodhyādāsa tuma, dehu abhaya varadāna ||
+caupāī:
+jaya girijā pati dīna dayālā | sadā karata saṃtana pratipālā ||
+bhāla caṃdramā sohata nīke | kānana kuṃḍala nāgaphanī ke ||
+aṃga gaura śira gaṃga bahāye | muṃḍamāla tana kṣāra lagāye ||
+vastra khāla bāghaṃbara sohe | chavi ko dekhi nāga muni mohe ||
+mainā mātu kī hvai dulārī | bāma aṃga sohata chavi nyārī ||
+kara triśūla sohata śubhagārī | karata sadā śatruna kṣayakārī ||
+naṃdi gaṇeśa sohaiṃ taha~ kaise | sāgara madhya kamala haiṃ jaise ||
+kārtika śyāma aura gaṇarāū | yā chavi ko kahi jāta na kāū ||
+devana jabahīṃ jāya pukārā | tabahīṃ dukha prabhu āpa nivārā ||
+kiyā upadrava tāraka bhārī | devana saba mili tumahiṃ juhārī ||
+turata ṣaḍānana āpa paṭhāyau | lavanimeṣa maha~ māri girāyau ||
+āpa jalaṃdhara asura saṃhārā | suyaśa tumhāra vidita saṃsārā ||`,
+    category: 'stotra',
+    categoryLabel: 'Stuti & Chalisa',
+    categoryLabelHi: 'स्तुति व चालीसा',
+    rishi: 'सनातन परम्परा (Traditional Stotra Literature)',
+    devata: 'भगवान् सदाशिव (Lord Sadashiva)',
+    chhandas: 'दोहा एवं चौपाई (Doha & Chaupai — 40 verses)',
+    source: 'Shiva Purana Bhakti Tradition',
+    sourceCoordinates: 'Shiv Chalisa, Opening Doha & Verses 1-12',
+    sourceHref: '/scripture/shivpurana/',
+    wordMeanings: [
+      { sanskrit: 'गिरिजा पति', iast: 'girijā pati', hindi: 'माता पार्वती (गिरिजा) के स्वामी भगवान् शिव', english: 'Lord of Parvati, Lord Shiva' },
+      { sanskrit: 'दीन दयाला', iast: 'dīna dayālā', hindi: 'दीन-दुखियों पर दया करने वाले', english: 'Compassionate to the humble and distressed' },
+      { sanskrit: 'भाल चंद्रमा सोहत नीके', iast: 'bhāla caṃdramā sohata nīke', hindi: 'मस्तक पर बाल-चन्द्रमा परम सुशोभित है', english: 'On whose forehead the crescent moon shines gracefully' },
+      { sanskrit: 'कानन कुंडल नागफनी के', iast: 'kānana kuṃḍala nāgaphanī ke', hindi: 'कानों में सर्प-रूप कुण्डल धारण किए हुए', english: 'Wearing coiled serpents as ear ornaments' },
+      { sanskrit: 'शिर गंग बहाये', iast: 'śira gaṃga bahāye', hindi: 'जटाओं से पापनाशिनी गंगा प्रवाहित होती है', english: 'From whose matted locks the holy Ganga flows' },
+      { sanskrit: 'तन क्षार लगाये', iast: 'tana kṣāra lagāye', hindi: 'सम्पूर्ण शरीर पर पावन भस्म रमाए हुए', english: 'Whose body is smeared with sacred ashes (bhasma)' },
+      { sanskrit: 'देहु अभय वरदान', iast: 'dehu abhaya varadāna', hindi: 'मुझे निर्भयता का वरदान प्रदान करें', english: 'Grant me the boon of fearlessness' },
+    ],
+    hindiMeaning: 'हे माता पार्वती के प्राणप्रिय, दीनबंधु भगवान् शिव! आपकी सदा जय हो। आप सदा साधु-संतों और शरणागतों का पालन-पोषण करते हैं। आपके ललाट पर सुकोमल चन्द्रमा सुशोभित है और कानों में सर्प के कुण्डल हैं। आपकी जटाओं से पतितपावनी गंगा प्रवाहित होती है और दिव्य देह पर भस्म रमी हुई है। आप बाघाम्बर धारण किए हुए हैं और वाम अंग में जगन्माता उमा विराजित हैं। हे भोलेनाथ! आप मुझे निर्भयता और भक्ति का वरदान प्रदान करें।',
+    englishMeaning: 'Victory unto You, Lord of Parvati, Ocean of Compassion for the humble and distressed! You are the eternal protector of saints and devotees. The graceful crescent moon adorns Your forehead, and celestial serpents form Your ear-ornaments. From Your matted locks flows the purifying river Ganga, and Your resplendent body is anointed with sacred ashes. Clad in tiger-skin with Mother Parvati gracefully adorning Your left side, You enchant sages and gods alike. O merciful Bholenath, bless us with eternal fearlessness and devotion.',
+    significance: 'The Shiv Chalisa is a 40-verse hymn of profound devotion recited daily by millions of devotees across the globe, especially on Mondays, Pradosha Vrata, and Maha Shivaratri. It describes Lord Shiva\'s ascetic glory, the churning of the cosmic ocean (Samudra Manthan) where He consumed the Halahala poison to save all beings, and His limitless boons to the pure-hearted.',
+    significanceHi: 'श्री शिव चालीसा भगवान् आशुतोष महादेव की स्तुति का सरल, मधुर और अत्यंत लोकप्रिय पाठ है। इसमें भगवान् शिव के स्वरूप, गंगावतरण, हलाहल विष-पान और भक्तों पर उनकी सहज करुणा का पावन वर्णन है। सोमवार, प्रदोष व्रत और महाशिवरात्रि पर इसका पाठ समस्त पापों का शमन कर जीवन में शांति, आरोग्य और मोक्ष का मार्ग प्रशस्त करता है।',
+    faqs: [
+      {
+        question: 'When is the Shiv Chalisa traditionally recited?',
+        answer: 'Devotees recite it daily in morning or evening prayers, particularly on Mondays, during the sacred month of Shravana, on Pradosha Vrata, and on Maha Shivaratri.',
+      },
+      {
+        question: 'What does the crescent moon on Shiva\'s forehead signify?',
+        answer: 'The crescent moon (Chandrashekhara) represents Lord Shiva\'s complete mastery over the mind and time (Kala), shining as calm, illuminating wisdom amid cosmic stillness.',
+      },
+    ],
+  },
 ];
 
 export function getMantraBySlug(slug: string): SacredMantra | undefined {

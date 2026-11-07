@@ -31,6 +31,8 @@ import type { ScriptureMeta } from "../data/types";
 import { readSeededChapter } from "../lib/read-seeded-chapters";
 import { withPassageMeaning } from "../lib/verse-format";
 import { VERSE_PAGE_SCRIPTURE_IDS, verseSlug, verseStaticParams } from "../lib/verse-pages";
+import { SACRED_MANTRAS, type SacredMantra } from "../data/mantras";
+import { NAKSHATRA_DATA, nakshatraSlug, UNIQUE_TITHI_ARCHETYPES, type UniqueTithi } from "../lib/panchang";
 
 const ROOT = resolve(__dirname, "..");
 const OUT_DIR = resolve(ROOT, "public/og");
@@ -266,6 +268,529 @@ async function renderOne(meta: ScriptureMeta, fonts: SatoriFont[]): Promise<void
     .resize({ width: THUMB_WIDTH })
     .webp({ quality: 75, effort: 6 })
     .toFile(resolve(THUMB_DIR, `${meta.id}.webp`));
+}
+
+/* ── Section OG Templates: Mantras, Nakshatras, Tithis & Hubs ──────── */
+
+function mantraOgTemplate(mantra: SacredMantra) {
+  const titleFontSize = mantra.title.length > 24 ? 54 : 64;
+  return {
+    type: "div",
+    props: {
+      style: {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "60px 76px",
+        background: "linear-gradient(135deg, #7c2d12 0%, #b45309 45%, #ea580c 100%)",
+        color: "white",
+        fontFamily: "Noto Sans",
+      },
+      children: [
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 20,
+                    opacity: 0.9,
+                    letterSpacing: 6,
+                    textTransform: "uppercase",
+                    marginBottom: 22,
+                  },
+                  children: `Dharma Granth · ${mantra.categoryLabel}`,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: titleFontSize,
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    maxWidth: 1050,
+                  },
+                  children: mantra.title,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 42,
+                    marginTop: 18,
+                    opacity: 0.95,
+                    fontFamily: "Noto Sans Devanagari",
+                  },
+                  children: mantra.titleHi,
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 23,
+                    opacity: 0.9,
+                    lineHeight: 1.4,
+                    maxWidth: 1040,
+                    marginBottom: 22,
+                  },
+                  children: shortDescription(mantra.significance, 170),
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    borderTop: "1px solid rgba(255,255,255,0.25)",
+                    paddingTop: 16,
+                  },
+                  children: [
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85, letterSpacing: 1.5 },
+                        children: mantra.sourceCoordinates,
+                      },
+                    },
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85, letterSpacing: 1.5 },
+                        children: "Sanskrit · Meaning · Translation",
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  };
+}
+
+function nakshatraOgTemplate(n: (typeof NAKSHATRA_DATA)[number]) {
+  return {
+    type: "div",
+    props: {
+      style: {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "60px 76px",
+        background: "linear-gradient(135deg, #090d16 0%, #1e1b4b 45%, #312e81 100%)",
+        color: "white",
+        fontFamily: "Noto Sans",
+      },
+      children: [
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 20,
+                    opacity: 0.85,
+                    letterSpacing: 6,
+                    textTransform: "uppercase",
+                    marginBottom: 22,
+                  },
+                  children: `Dharma Granth · 27 Vedic Nakshatras (${n.index + 1}/27)`,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 66,
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    maxWidth: 1050,
+                  },
+                  children: `${n.name} Nakshatra`,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 42,
+                    marginTop: 18,
+                    opacity: 0.95,
+                    fontFamily: "Noto Sans Devanagari",
+                  },
+                  children: `${n.nameHi} नक्षत्र`,
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 23,
+                    opacity: 0.9,
+                    lineHeight: 1.4,
+                    maxWidth: 1040,
+                    marginBottom: 22,
+                  },
+                  children: shortDescription(n.explanation, 170),
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    borderTop: "1px solid rgba(255,255,255,0.2)",
+                    paddingTop: 16,
+                  },
+                  children: [
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85 },
+                        children: `Deity: ${n.deity} · Lord: ${n.rulingPlanet}`,
+                      },
+                    },
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85 },
+                        children: `Zodiac Arc: ${n.longitude}`,
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  };
+}
+
+function tithiOgTemplate(t: UniqueTithi) {
+  return {
+    type: "div",
+    props: {
+      style: {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "60px 76px",
+        background: "linear-gradient(135deg, #18181b 0%, #27272a 45%, #78350f 100%)",
+        color: "white",
+        fontFamily: "Noto Sans",
+      },
+      children: [
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 20,
+                    opacity: 0.85,
+                    letterSpacing: 6,
+                    textTransform: "uppercase",
+                    marginBottom: 22,
+                  },
+                  children: "Dharma Granth · 16 Vedic Tithis",
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 66,
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    maxWidth: 1050,
+                  },
+                  children: `${t.name} Tithi`,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 42,
+                    marginTop: 18,
+                    opacity: 0.95,
+                    fontFamily: "Noto Sans Devanagari",
+                  },
+                  children: `${t.nameHi} (${t.categoryTypeHi})`,
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 23,
+                    opacity: 0.9,
+                    lineHeight: 1.4,
+                    maxWidth: 1040,
+                    marginBottom: 22,
+                  },
+                  children: shortDescription(t.explanation, 170),
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    borderTop: "1px solid rgba(255,255,255,0.2)",
+                    paddingTop: 16,
+                  },
+                  children: [
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85 },
+                        children: `Class: ${t.categoryType} · Lord: ${t.deity}`,
+                      },
+                    },
+                    {
+                      type: "div",
+                      props: {
+                        style: { fontSize: 20, opacity: 0.85 },
+                        children: `Arc: ${t.lunarDegrees}`,
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  };
+}
+
+function hubOgTemplate(title: string, subtitleHi: string, description: string, tag: string, gradient: string) {
+  return {
+    type: "div",
+    props: {
+      style: {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "64px 80px",
+        background: gradient,
+        color: "white",
+        fontFamily: "Noto Sans",
+      },
+      children: [
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 22,
+                    opacity: 0.85,
+                    letterSpacing: 8,
+                    textTransform: "uppercase",
+                    marginBottom: 28,
+                  },
+                  children: `Dharma Granth · ${tag}`,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 72,
+                    fontWeight: 700,
+                    lineHeight: 1.05,
+                    maxWidth: 1040,
+                  },
+                  children: title,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 44,
+                    marginTop: 24,
+                    opacity: 0.92,
+                    fontFamily: "Noto Sans Devanagari",
+                  },
+                  children: subtitleHi,
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 25,
+                    opacity: 0.9,
+                    lineHeight: 1.45,
+                    maxWidth: 1040,
+                    marginBottom: 24,
+                  },
+                  children: description,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: 20,
+                    opacity: 0.8,
+                    letterSpacing: 2,
+                  },
+                  children: "Canonical Vedic & Upanishadic Knowledge Base · dharmagranth.dev",
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  };
+}
+
+async function renderMantras(fonts: SatoriFont[]): Promise<void> {
+  const mantraDir = resolve(OUT_DIR, "mantra");
+  mkdirSync(mantraDir, { recursive: true });
+  for (const m of SACRED_MANTRAS) {
+    const svg = await renderSvg(mantraOgTemplate(m), WIDTH, HEIGHT, fonts);
+    const optPng = await svgToOptimizedPng(svg, WIDTH);
+    writeFileSync(resolve(mantraDir, `${m.slug}.png`), optPng);
+  }
+  console.log(`  ✓ ${SACRED_MANTRAS.length} mantra OG images in public/og/mantra/`);
+}
+
+async function renderNakshatras(fonts: SatoriFont[]): Promise<void> {
+  const nakshatraDir = resolve(OUT_DIR, "nakshatra");
+  mkdirSync(nakshatraDir, { recursive: true });
+  for (const n of NAKSHATRA_DATA) {
+    const slug = nakshatraSlug(n.name);
+    const svg = await renderSvg(nakshatraOgTemplate(n), WIDTH, HEIGHT, fonts);
+    const optPng = await svgToOptimizedPng(svg, WIDTH);
+    writeFileSync(resolve(nakshatraDir, `${slug}.png`), optPng);
+  }
+  console.log(`  ✓ ${NAKSHATRA_DATA.length} nakshatra OG images in public/og/nakshatra/`);
+}
+
+async function renderTithis(fonts: SatoriFont[]): Promise<void> {
+  const tithiDir = resolve(OUT_DIR, "tithi");
+  mkdirSync(tithiDir, { recursive: true });
+  for (const t of UNIQUE_TITHI_ARCHETYPES) {
+    const svg = await renderSvg(tithiOgTemplate(t), WIDTH, HEIGHT, fonts);
+    const optPng = await svgToOptimizedPng(svg, WIDTH);
+    writeFileSync(resolve(tithiDir, `${t.slug}.png`), optPng);
+  }
+  console.log(`  ✓ ${UNIQUE_TITHI_ARCHETYPES.length} tithi OG images in public/og/tithi/`);
+}
+
+async function renderHubCards(fonts: SatoriFont[]): Promise<void> {
+  const hubs = [
+    {
+      file: "mantras.png",
+      title: "Sacred Mantras & Stotras",
+      subtitleHi: "पवित्र वैदिक मन्त्र एवं स्तोत्र",
+      desc: "Complete lyrics, word-by-word padaccheda meanings, Hindi & English translations, and spiritual significance of the most sacred hymns.",
+      tag: "Mantras & Suktas",
+      gradient: "linear-gradient(135deg, #7c2d12 0%, #b45309 45%, #ea580c 100%)",
+    },
+    {
+      file: "nakshatras.png",
+      title: "The 27 Vedic Nakshatras",
+      subtitleHi: "27 वैदिक नक्षत्र मण्डल",
+      desc: "Comprehensive Vedic astronomy and spiritual wisdom for all 27 lunar asterisms from Ashwini to Revati, with presiding deities, symbols, and Taittiriya Brahmana Suktas.",
+      tag: "Vedic Astronomy",
+      gradient: "linear-gradient(135deg, #090d16 0%, #1e1b4b 45%, #312e81 100%)",
+    },
+    {
+      file: "tithis.png",
+      title: "The 16 Vedic Tithis",
+      subtitleHi: "16 वैदिक तिथियाँ",
+      desc: "The classical 16 lunar phases of the Vedic calendar, categorized across the 5 harmonic Pancha Tithi classes: Nanda, Bhadra, Jaya, Rikta, and Poorna.",
+      tag: "Vedic Calendar",
+      gradient: "linear-gradient(135deg, #18181b 0%, #27272a 45%, #78350f 100%)",
+    },
+    {
+      file: "panchang.png",
+      title: "Vedic Panchang",
+      subtitleHi: "दैनिक वैदिक पञ्चाङ्ग",
+      desc: "Precise astronomical calculations for Tithi, Nakshatra, Yoga, Karana, Sunrise, Sunset, Moonrise, and sacred vratas based on the Surya-Siddhanta.",
+      tag: "Panchang Calculator",
+      gradient: "linear-gradient(135deg, #451a03 0%, #9a3412 50%, #d97706 100%)",
+    },
+  ];
+  for (const h of hubs) {
+    const svg = await renderSvg(hubOgTemplate(h.title, h.subtitleHi, h.desc, h.tag, h.gradient), WIDTH, HEIGHT, fonts);
+    const optPng = await svgToOptimizedPng(svg, WIDTH);
+    writeFileSync(resolve(OUT_DIR, h.file), optPng);
+  }
+  console.log(`  ✓ ${hubs.length} hub OG images in public/og/`);
 }
 
 /* ── Site-wide brand assets ─────────────────────────────────────────── */
@@ -611,6 +1136,15 @@ async function main(): Promise<void> {
     console.log(`[og] verse images done.`);
     return;
   }
+  if (process.argv.includes("--sections-only")) {
+    console.log(`[og] rendering section OG images (mantras, nakshatras, tithis, hubs)...`);
+    await renderMantras(fonts);
+    await renderNakshatras(fonts);
+    await renderTithis(fonts);
+    await renderHubCards(fonts);
+    console.log(`[og] section OG images done.`);
+    return;
+  }
   // --brand-only: just the share image and app icons (e.g. after a logo change).
   if (!process.argv.includes("--brand-only")) {
     console.log(`[og] rendering ${scriptureCatalog.length} OG images + thumbnails to ${OUT_DIR}`);
@@ -618,6 +1152,11 @@ async function main(): Promise<void> {
       await renderOne(meta, fonts);
       process.stdout.write(`  ✓ ${meta.id}\n`);
     }
+    console.log(`[og] rendering section OG images (mantras, nakshatras, tithis, hubs)...`);
+    await renderMantras(fonts);
+    await renderNakshatras(fonts);
+    await renderTithis(fonts);
+    await renderHubCards(fonts);
   }
   console.log(`[og] rendering brand assets`);
   await renderBrandAssets(fonts);

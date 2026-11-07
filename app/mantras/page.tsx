@@ -23,11 +23,25 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/mantras/' },
   openGraph: {
-    images: [DEFAULT_OG_IMAGE],
+    images: [
+      {
+        url: '/og/mantras.png',
+        width: 1200,
+        height: 630,
+        alt: 'Sacred Mantras & Shanti Suktas — Dharma Granth',
+      },
+    ],
     title: 'Sacred Mantras & Shanti Suktas (वैदिक मन्त्र व शान्ति पाठ) — Dharma Granth',
     description:
       'Complete collection of classical Vedic and Upanishadic mantras with original Sanskrit, IAST, padaccheda, Hindi meaning, English translation, and scriptural coordinates.',
     url: 'https://dharmagranth.dev/mantras/',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sacred Mantras & Shanti Suktas (वैदिक मन्त्र व शान्ति पाठ) — Dharma Granth',
+    description:
+      'Complete collection of classical Vedic and Upanishadic mantras with original Sanskrit, IAST, padaccheda, Hindi meaning, English translation, and scriptural coordinates.',
+    images: ['/og/mantras.png'],
   },
 };
 

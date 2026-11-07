@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${mantra.title} (${mantra.titleHi}) — Meaning & Lyrics`;
   const description = clipDescription(`${mantra.sanskrit} — ${mantra.hindiMeaning} ${mantra.englishMeaning}`);
   const canonical = `/mantras/${mantra.slug}/`;
+  const ogImageUrl = `/og/mantra/${mantra.slug}.png`;
 
   return {
     title,
@@ -46,13 +47,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${title} — Dharma Granth`,
       description,
       url: `https://dharmagranth.dev/mantras/${mantra.slug}/`,
-      images: [DEFAULT_OG_IMAGE],
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${mantra.title} (${mantra.titleHi}) — Lyrics, Meaning & Translation`,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [DEFAULT_OG_IMAGE.url],
+      images: [ogImageUrl],
     },
   };
 }

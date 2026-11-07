@@ -77,4 +77,10 @@ assert.ok(vidura, 'searching vidura should direct to /characters/vidura/');
 const chaturthi = searchCoreIndex('chaturthi').find(({ item }) => item.href === '/panchang/tithis/chaturthi/');
 assert.ok(chaturthi, 'searching chaturthi should direct to /panchang/tithis/chaturthi/');
 
+const atharvashirsha = searchCoreIndex('atharvashirsha').find(({ item }) => item.href === '/mantras/ganapati-atharvashirsha/');
+assert.ok(atharvashirsha, 'searching atharvashirsha should find ganapati atharvashirsha');
+
+const bajrang = searchCoreIndex('bajrang').find(({ item }) => item.href === '/mantras/bajrang-baan/');
+assert.ok(bajrang, 'searching bajrang should find bajrang baan');
+
 console.log('search query checks passed');

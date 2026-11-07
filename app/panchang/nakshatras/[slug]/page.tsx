@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     `${nakshatra.name} (${nakshatra.nameHi}) is the ${nakshatra.index + 1}th lunar mansion of the Vedic zodiac. Presiding deity: ${nakshatra.deity}. Ruling planet: ${nakshatra.rulingPlanet}. ${nakshatra.explanation} ${nakshatra.studyTheme}`
   );
   const canonical = `/panchang/nakshatras/${resolved.slug}/`;
+  const ogImageUrl = `/og/nakshatra/${resolved.slug}.png`;
 
   return {
     title,
@@ -48,13 +49,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${title} — Dharma Granth`,
       description,
       url: `https://dharmagranth.dev${canonical}`,
-      images: [DEFAULT_OG_IMAGE],
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${nakshatra.name} Nakshatra (${nakshatra.nameHi}) — Deity, Symbol & Vedic Meaning`,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [DEFAULT_OG_IMAGE.url],
+      images: [ogImageUrl],
     },
   };
 }

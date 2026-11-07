@@ -23,11 +23,25 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/panchang/nakshatras/' },
   openGraph: {
-    images: [DEFAULT_OG_IMAGE],
+    images: [
+      {
+        url: '/og/nakshatras.png',
+        width: 1200,
+        height: 630,
+        alt: 'The 27 Vedic Nakshatras — Lunar Asterisms of the Zodiac',
+      },
+    ],
     title: '27 Vedic Nakshatras (27 नक्षत्र) — Dharma Granth',
     description:
       'Complete guide to the 27 lunar asterisms of Vedic astronomy and Taittiriya Brahmana — Ashwini to Revati. Presiding Vedic deities, symbols, and spiritual study themes.',
     url: 'https://dharmagranth.dev/panchang/nakshatras/',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '27 Vedic Nakshatras (27 नक्षत्र) — Dharma Granth',
+    description:
+      'Complete guide to the 27 lunar asterisms of Vedic astronomy and Taittiriya Brahmana — Ashwini to Revati. Presiding Vedic deities, symbols, and spiritual study themes.',
+    images: ['/og/nakshatras.png'],
   },
 };
 

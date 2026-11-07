@@ -23,11 +23,25 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/panchang/tithis/' },
   openGraph: {
-    images: [DEFAULT_OG_IMAGE],
+    images: [
+      {
+        url: '/og/tithis.png',
+        width: 1200,
+        height: 630,
+        alt: 'The 16 Vedic Tithis — Lunar Days & Pancha Tithi Harmonic Framework',
+      },
+    ],
     title: '16 Vedic Tithis (16 तिथियाँ) — Dharma Granth',
     description:
       'Complete guide to the 16 lunar day archetypes of Vedic astronomy and Muhurta tradition — Pratipada to Purnima and Amavasya.',
     url: 'https://dharmagranth.dev/panchang/tithis/',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '16 Vedic Tithis (16 तिथियाँ) — Dharma Granth',
+    description:
+      'Complete guide to the 16 lunar day archetypes of Vedic astronomy and Muhurta tradition — Pratipada to Purnima and Amavasya.',
+    images: ['/og/tithis.png'],
   },
 };
 

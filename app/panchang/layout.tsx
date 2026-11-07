@@ -19,11 +19,25 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/panchang/' },
   openGraph: {
-    images: [DEFAULT_OG_IMAGE],
+    images: [
+      {
+        url: '/og/panchang.png',
+        width: 1200,
+        height: 630,
+        alt: 'दैनिक वैदिक पञ्चाङ्ग (Vedic Panchang) — Dharma Granth',
+      },
+    ],
     title: 'पञ्चाङ्ग · आज का पंचांग व दैनिक काल दर्शन (Vedic Panchang) — Dharma Granth',
     description:
       'दैनिक पञ्चाङ्ग: तिथि, पक्ष, नक्षत्र, योग, करण, ऋतु, सूर्योदय और सूर्यास्त समय। A clear, authentic educational Panchang for daily contemplation and study.',
     url: 'https://dharmagranth.dev/panchang/',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'पञ्चाङ्ग · आज का पंचांग व दैनिक काल दर्शन (Vedic Panchang) — Dharma Granth',
+    description:
+      'दैनिक पञ्चाङ्ग: तिथि, पक्ष, नक्षत्र, योग, करण, ऋतु, सूर्योदय और सूर्यास्त समय। A clear, authentic educational Panchang for daily contemplation and study.',
+    images: ['/og/panchang.png'],
   },
 };
 
