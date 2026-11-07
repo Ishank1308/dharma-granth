@@ -185,7 +185,7 @@ const KNOWN_CROSS_CHAPTER_DUPLICATES: Record<string, number> = {
   rigveda: 27, // whole verses the Saṃhitā repeats across mandalas (1.23.21–23 recur as 10.9.7–9)
   samaveda: 194, // the Uttarārcika repeats many Pūrvārcika mantras in the source (full 1,873-mantra text)
   shandilyabhaktisutra: 0,
-  shivpurana: 36,
+  shivpurana: 31,
   skandapuran: 16,
   taittiriya: 0,
   vamanpuran: 4,
