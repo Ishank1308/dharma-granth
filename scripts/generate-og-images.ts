@@ -1202,6 +1202,22 @@ async function renderHubCards(fonts: SatoriFont[]): Promise<void> {
       tag: "Solar Liturgy",
       gradient: "linear-gradient(135deg, #7c2d12 0%, #c2410c 45%, #f59e0b 100%)",
     },
+    {
+      file: "muhurta.png",
+      title: "Vedic Muhurta Decision Matrix",
+      subtitleHi: "शास्त्रीय मुहूर्त निर्णय तालिका",
+      desc: "Interactive Panchanga-Shuddhi evaluation for learning, home entry, travel, enterprise, and vows with Rahu Kalam alerts and custom simulator.",
+      tag: "Muhurta Shastra",
+      gradient: "linear-gradient(135deg, #1e1b4b 0%, #1e40af 45%, #0284c7 100%)",
+    },
+    {
+      file: "upakarma.png",
+      title: "Upakarma & Yajnopavita Sanskara",
+      subtitleHi: "उपाकर्म एवं यज्ञोपवीत संस्कार विधान",
+      desc: "Vedic guide to Shravani Upakarma and Avani Avittam: Kamokarshita Japam (108 repetitions), sacred thread investiture, and the 9 divine tantus.",
+      tag: "Vedic Sanskara",
+      gradient: "linear-gradient(135deg, #7c2d12 0%, #b45309 45%, #d97706 100%)",
+    },
   ];
   for (const h of hubs) {
     const svg = await renderSvg(hubOgTemplate(h.title, h.subtitleHi, h.desc, h.tag, h.gradient), WIDTH, HEIGHT, fonts);

@@ -125,10 +125,15 @@ for (const tithi of Object.values(TITHI_DATA)) addTerm(`tithi-${tithi.paksha}-${
 for (const star of NAKSHATRA_DATA) addTerm(`nakshatra-${star.index}`, star.name, star.nameHi, `/panchang/nakshatras/${nakshatraSlug(star.name)}/`);
 
 addTerm('gita-journey', 'Gita Journey · Dilemma Compass', 'गीता यात्रा 18 अध्याय', '/learn/journeys/gita/');
+addTerm('gita-sankalpa', 'Gita Daily Sankalpa & Parayana', 'गीता नित्य स्वाध्याय एवं संकल्प', '/practice/gita-sankalpa/');
 addTerm('learn-journeys', 'Guided Learning Journeys', 'स्वाध्याय यात्राएँ', '/learn/journeys/');
 addTerm('solar-vratas', 'Solar Vratas & Arghya Vidhi', 'सौर व्रत एवं अर्घ्य विधान', '/panchang/solar-vratas/');
 addTerm('chhath-puja', 'Chhath Puja Mahavrata', 'छठ पूजा विधि', '/panchang/solar-vratas/#chhath-puja');
 addTerm('ratha-saptami', 'Ratha Saptami Surya Jayanti', 'रथ सप्तमी', '/panchang/solar-vratas/#ratha-saptami');
+addTerm('panchang-muhurta', 'Muhurta Decision Matrix', 'मुहूर्त निर्णय तालिका', '/panchang/muhurta/');
+addTerm('panchang-bhadra', 'Vishti Bhadra Karana Rules', 'भद्रा काल निर्णय', '/panchang/muhurta/#simulator');
+addTerm('ritual-upakarma', 'Upakarma & Yajnopavita Sanskara', 'श्रावणी उपाकर्म एवं जनेऊ विधान', '/rituals/upakarma/');
+addTerm('avani-avittam', 'Avani Avittam & Gayatri Japam', 'आवनि अवित्तम', '/rituals/upakarma/#regional');
 
 const verses: CoreVerse[] = [];
 const seenVerse = new Set<string>();

@@ -1912,6 +1912,177 @@ ruciramalaghuvṛttaiḥ stotrametaccakāra || 6 ||`,
       },
     ],
   },
+  {
+    id: 'lalita-sahasranama',
+    slug: 'lalita-sahasranama',
+    title: 'Lalita Sahasranama Stotram',
+    titleHi: 'ललिता सहस्रनाम स्तोत्रम् (ध्यान एवं मूल नाम)',
+    sanskrit: `सिन्दूरारुणविग्रहां त्रिनयनां माणिक्यमौलिस्फुरत्-
+तारानायकशेखरां स्मितमुखीमापीनवक्षोरुहाम् ।
+पाणिभ्यामलिपूर्णरत्नचषकं रक्तोत्पलं बिभ्रतीं
+सौम्यां रत्नघटस्थरक्तचरणां ध्यायेत्परामम्बिकाम् ॥ १ ॥
+
+अरुणां करुणातरङ्गिताक्षीं धृतपाशाङ्कुशपुष्पबाणचापाम् ।
+अणिमादिभिरावृतां मयूखैरहमित्येव विभावये भवानीम् ॥ २ ॥
+
+सकुङ्कुमविलेपनामलकचुम्बिकस्तूरिकां
+समन्दहसितेक्षणां सशरचापपाशाङ्कुशाम् ।
+अशेषजनमोहिनीमरुणमाल्यभूषाम्बरां
+जपाकुसुमभासुरां जपविधौ स्मरेदम्बिकाम् ॥ ३ ॥
+
+ॐ श्रीमाता श्रीमहाराज्ञी श्रीमत्सिंहासनेश्वरी ।
+चिदग्निकुण्डसम्भूता देवकार्यसमुद्यता ॥ १ ॥
+
+उद्यद्भानुसहस्राभा चतुर्बाहुसमन्विता ।
+रागस्वरूपपाशाढ्या क्रोधाकाराङ्कुशोज्ज्वला ॥ २ ॥
+
+मनोरूपेक्षुकोदण्डा पञ्चतन्मात्रसायका ।
+निजारुणप्रभापूरमज्जद्ब्रह्माण्डमण्डला ॥ ३ ॥
+
+चम्पकाशोकपुन्नागसौगन्धिकलसत्कचा ।
+कुरुविन्दमणिश्रेणीकनत्कोटीरमण्डिता ॥ ४ ॥
+
+अष्टमीचन्द्रविभ्राजदलिकस्थलशोभिता ।
+मुखचन्द्रकलङ्काभमृगनाभिविशेषका ॥ ५ ॥
+
+वदनस्मरमाङ्गल्यगृहतोरणचिल्लिका ।
+वक्त्रलक्ष्मीपरीवाहचलन्मीनाभलोचना ॥ ६ ॥
+
+मन्त्रराजप्रिया मन्त्रराजपूज्या मनोनिशा ।
+श्रीमद्वाग्भवकूटैकस्वरूपमुखपङ्कजा ॥
+कण्ठाधःकटिपर्यन्तमध्यकूटस्वरूपिणी ।
+शक्तिकूटैकतापन्नकट्यधोभागधारिणी ॥
+
+न पुण्यं तस्य सङ्ख्यातुं शक्यते येन तत्कृतम् ।
+श्रीललिताललिताख्यानां सहस्रं प्रपठेन्नरः ॥`,
+    transliteration: `sindūrāruṇavigrahāṃ trinayanāṃ māṇikyamaulisphurat-
+tārānāyakaśekharāṃ smitamukhīmāpīnavakṣoruhām |
+pāṇibhyāmalipūrṇaratnacaṣakaṃ raktotpalaṃ bibhratīṃ
+saumyāṃ ratnaghaṭastharaktacaraṇāṃ dhyāyetparāmambikām || 1 ||
+
+aruṇāṃ karuṇātaraṅgitākṣīṃ dhṛtapāśāṅkuśapuṣpabāṇacāpām |
+aṇimādibhirāvṛtāṃ mayūkhairahamityeva vibhāvaye bhavānīm || 2 ||
+
+sakuṅkumavilepanāmalakacumbikastūrikāṃ
+samandahasitekṣaṇāṃ saśaracāpapāśāṅkuśām |
+aśeṣajanamohinīmaruṇamālyabhūṣāmbarāṃ
+japākusumabhāsurāṃ japavidhau smaredambikām || 3 ||
+
+oṃ śrīmātā śrīmahārājñī śrīmatsiṃhāsaneśvarī |
+cidagnikuṇḍasambhūtā devakāryasamudyatā || 1 ||
+
+udyadbhānusahasrābhā caturbāhusamanvitā |
+rāgasvarūpapāśāḍhyā krodhākārāṅkuśojjvalā || 2 ||
+
+manorūpekṣukodaṇḍā pañcatanmātrasāyakā |
+nijāruṇaprabhāpūramajjadbrahmāṇḍamaṇḍalā || 3 ||
+
+campakāśokapunnāgasaugandhikalasatkacā |
+kuruvindamaṇiśreṇīkanatkoṭīramaṇḍitā || 4 ||
+
+aṣṭamīcandravibhrājadalikasthalaśobhitā |
+mukhacandrakalaṅkābhamṛganābhiviśeṣakā || 5 ||
+
+vadanasmaramāṅgalyagṛhatoraṇacillikā |
+vaktralakṣmīparīvāhacalanmīnābhalocanā || 6 ||
+
+mantrarājapriyā mantrarājapūjyā manoniśā |
+śrīmadvāgbhavakūṭaikasvarūpamukhapaṅkajā ||
+kaṇṭhādhaḥkaṭiparyantamadhyakūṭasvarūpiṇī |
+śaktikūṭaikatāpannakaṭyadhabhāgadhāriṇī ||
+
+na puṇyaṃ tasya saṅkhyātuṃ śakyate yena tatkṛtam |
+śrīlalitālalitākhyānāṃ sahasraṃ prapaṭhennaraḥ ||`,
+    category: 'stotra',
+    categoryLabel: 'Classical Devi Stotra',
+    categoryLabelHi: 'भगवती ललिता महात्रिपुरसुन्दरी स्तुति',
+    rishi: 'Vashinyadi Vagdevatas (अष्ट वाग्देवता)',
+    devata: 'Shri Lalita Maha Tripurasundari (श्रीललिता महात्रिपुरसुन्दरी)',
+    chhandas: 'Anushtup (अनुष्टुप्)',
+    source: 'Brahmanda Purana (Uttara Khanda)',
+    sourceCoordinates: 'Lalita Mahatmya, Dialogue of Bhagavan Hayagriva and Sage Agastya',
+    sourceHref: '/panchang/varas/shukravara/',
+    wordMeanings: [
+      {
+        sanskrit: 'सिन्दूरारुणविग्रहाम्',
+        iast: 'sindūrāruṇa-vigrahām',
+        hindi: 'सिन्दूर के समान प्रातःकालीन लाल (अरुण) वर्ण वाले दिव्य विग्रह वाली',
+        english: 'Whose divine form glows with the auspicious crimson hue of dawn and vermilion',
+      },
+      {
+        sanskrit: 'त्रिनयनाम्',
+        iast: 'trinayanām',
+        hindi: 'तीन नेत्रों (सूर्य, चन्द्र और अग्नि रूपी ज्ञान चक्षुओं) से युक्त',
+        english: 'Possessing three eyes representing the Sun, Moon, and Fire (omniscience)',
+      },
+      {
+        sanskrit: 'करुणातरङ्गिताक्षीम्',
+        iast: 'karuṇā-taraṅgitākṣīm',
+        hindi: 'जिनके नेत्रों में अहैतुकी करुणा और दया की तरङ्गें उमड़ रही हैं',
+        english: 'Whose eyes ripple continuously with waves of maternal compassion and grace',
+      },
+      {
+        sanskrit: 'धृतपाशाङ्कुशपुष्पबाणचापाम्',
+        iast: 'dhṛta-pāśāṅkuśa-puṣpa-bāṇa-cāpām',
+        hindi: 'जिन्होंने अपने चार हाथों में पाश, अङ्कुश, पुष्प-बाण और इक्षु-धनुष धारण किए हैं',
+        english: 'Holding in Her four hands the noose, the goad, five flower arrows, and the sugarcane bow',
+      },
+      {
+        sanskrit: 'अहमित्येव विभावये भवानीम्',
+        iast: 'ahamityeva vibhāvaye bhavānīm',
+        hindi: 'मैं उस पराशक्ति भवानी का अपने आत्मस्वरूप (‘अहं ब्रह्म’) के रूप में ध्यान करता हूँ',
+        english: 'I contemplate Mother Bhavani as non-different from my own inner consciousness (Aham)',
+      },
+      {
+        sanskrit: 'श्रीमाता श्रीमहाराज्ञी श्रीमत्सिंहासनेश्वरी',
+        iast: 'śrīmātā śrīmahārājñī śrīmatsiṃhāsaneśvarī',
+        hindi: 'समस्त ब्रह्माण्ड की परम जननी, साम्राज्येश्वरियों की अधिष्ठात्री और चिन्तामणि सिंहासन पर विराजमान ईश्वरी',
+        english: 'The Auspicious Mother of the Cosmos, the Supreme Empress of all realms, and Sovereign of the Divine Throne',
+      },
+      {
+        sanskrit: 'चिदग्निकुण्डसम्भूता देवकार्यसमुद्यता',
+        iast: 'cidagni-kuṇḍa-sambhūtā deva-kārya-samudyatā',
+        hindi: 'चेतनारूपी पवित्र अग्निकुण्ड से प्रकट होने वाली और देवताओं के कार्य (सद्गुणों की रक्षा) के लिए उद्यत रहने वाली',
+        english: 'Arising from the sacrificial fire-pit of pure consciousness (Chidagni) to fulfill the cosmic divine mission',
+      },
+      {
+        sanskrit: 'रागस्वरूपपाशाढ्या क्रोधाकाराङ्कुशोज्ज्वला',
+        iast: 'rāga-svarūpa-pāśāḍhyā krodhākārāṅkuśojjvalā',
+        hindi: 'जिनका पाश भक्तों के प्रेम (राग) का स्वरूप है और अङ्कुश विवेकपूर्ण नियंत्रण (सत्-क्रोध) का प्रतीक है',
+        english: 'Whose noose represents divine love and attachment to truth, and whose goad signifies righteous discernment over impulses',
+      },
+      {
+        sanskrit: 'मनोरूपेक्षुकोदण्डा पञ्चतन्मात्रसायका',
+        iast: 'mano-rūpekṣu-kodaṇḍā pañca-tanmātra-sāyakā',
+        hindi: 'जिनका ईख (गन्ने) का धनुष मन का प्रतीक है और पाँच पुष्प-बाण शब्द, स्पर्श, रूप, रस, गन्ध रूपी पाँच तन्मात्राओं के प्रतीक हैं',
+        english: 'Whose sugarcane bow symbolizes the mind, and whose five flower arrows represent the five subtle senses (tanmatras)',
+      },
+      {
+        sanskrit: 'निजारुणप्रभापूरमज्जद्ब्रह्माण्डमण्डला',
+        iast: 'nijāruṇa-prabhāpūra-majjad-brahmāṇḍa-maṇḍalā',
+        hindi: 'जिनके अपने दिव्य लाल तेज की बाढ़ में सम्पूर्ण ब्रह्माण्डमण्डल निमग्न हो रहा है',
+        english: 'In the inundation of whose radiant red effulgence the entire cosmos is blissfully bathed',
+      },
+    ],
+    hindiMeaning: 'ललिता सहस्रनाम स्तोत्रम् ब्रह्माण्ड पुराण के उत्तरखण्ड में भगवान् हयग्रीव और महर्षि अगस्त्य के पावन संवाद के रूप में प्रतिष्ठित है। इसका गान भगवती ललिता के प्रत्यक्ष आदेश से आठ वाग्देवताओं (वशिनी, कामेश्वरी, मोदिनी, विमला, अरुणा, जयिनी, सर्वेश्वरी, कौलिनी) ने किया था। 1. ध्यान: सिन्दूर के समान लाल कान्ति वाली, तीन नेत्रों से युक्त, मणियों से जड़े मुकुट पर चन्द्रमा धारण करने वाली, मन्द-मन्द मुस्कुराती, हाथों में रत्नों का पात्र और लाल कमल धारण करने वाली परम अम्बिका का हम ध्यान करते हैं। 2. अरुण वर्ण वाली, करुणा की तरङ्गों से भरे नेत्रों वाली, पाश, अङ्कुश, पुष्प-बाण और धनुष धारण करने वाली तथा अणिमा आदि सिद्धियों से घिरी भगवती भवानी का मैं ‘अहम्’ (अपने आत्मस्वरूप) के रूप में ध्यान करता हूँ। 3. श्रीमाता, श्रीमहाराज्ञी, श्रीमत्सिंहासनेश्वरी: वे सम्पूर्ण सृष्टि की स्नेहमयी माता हैं, कोटि-कोटि ब्रह्माण्डों की चक्रवर्ती सम्राज्ञी हैं और श्रीचक्र के मध्य में चिन्तामणि सिंहासन पर विराजमान हैं। वे विशुद्ध चैतन्य रूपी अग्निकुण्ड (चिदग्नि) से प्रकट हुईं और समस्त देवों के संकट हरने तथा भण्डासुर के वध के लिए सन्नद्ध हुईं। 4. उनके चार हाथों के आयुध गहन अध्यात्म के प्रतीक हैं: गन्ने का धनुष ‘मन’ का, पाँच पुष्प-बाण ‘पाँच ज्ञानेन्द्रियों/तन्मात्राओं’ के, पाश ‘प्रेम/राग’ का और अङ्कुश ‘विवेक और वासना-निरोध’ का प्रतीक है। 5. श्रीविद्या और पञ्चदशी मन्त्र के तीन कूट (वाग्भव कूट, कामराज/मध्य कूट और शक्ति कूट) भगवती के मुख, वक्ष और कटि से नीचे के स्वरूप में साक्षात् प्रतिष्ठित हैं। जो श्रद्धालु निष्काम भाव से इस सहस्रनाम का पाठ करता है, उसके संचित पापों का क्षय और पराभक्ति की प्राप्ति होती है।',
+    englishMeaning: 'The Lalita Sahasranama Stotram is the crown jewel of Shakta literature, revealed in the Uttara Khanda of the Brahmanda Purana through the sacred dialogue between Lord Hayagriva (the horse-headed incarnation of Vishnu) and Sage Agastya. It was directly composed by the eight Vagdevatas (deities of sacred speech—Vashini, Kameshwari, Modini, Vimala, Aruna, Jayini, Sarveshwari, and Kaulini) at the command of Mother Lalita Herself. 1. Dhyana: We meditate upon the Supreme Mother, glowing crimson like fresh vermilion, three-eyed, Her crown adorned with shining rubies and the crescent moon, Her face graced with a gentle smile, holding in Her hands a jeweled cup and a red lotus, Her lotus feet resting upon a vessel of gems. 2. Contemplation of Non-Duality: I contemplate Mother Bhavani, whose eyes overflow with waves of unconditional compassion, who holds the noose, goad, flower arrows, and sugarcane bow, surrounded by the rays of Anima and other divine perfections, realizing Her as one with my very Self (Aham). 3. The Opening Names: As "Shri Mata" She is the affectionate mother of all creation; as "Shri Maharajni" She is the sovereign empress of infinite universes; and as "Shri Matsimhasaneshvari" She reigns from the wish-fulfilling Chintamani throne at the heart of Sri Yantra. She manifests from the sacrificial fire-pit of pure consciousness (Chidagni) to vanquish ignorance (Bhandasura) and awaken the soul. 4. Symbolic Implements: Her sugarcane bow represents the disciplined mind; Her five flower arrows denote the refined subtle senses (sound, touch, sight, taste, smell); Her noose signifies divine love (raga); and Her goad represents the power of discernment and restraint (krodha channelled into focus). 5. Integral Unity: The three sections (kutas) of the sacred Panchadakshari mantra—Vagbhava, Kamaraja, and Shakti—are physically and spiritually mapped across Her divine face, torso, and lotus feet. Regular, devout recitation dissolves mental afflictions, awakens inner light, and leads to supreme Self-realization.',
+    significance: 'In Shakta theology and Srividya tradition, the Lalita Sahasranama is regarded as the ultimate hymn of the Divine Mother. Unlike other stotras composed by human sages, it was authored by the divine Vagdevatas under the direct gaze of Sri Lalita Tripurasundari at the Sri Yantra. Reciting its 1,000 names awakens the Kundalini Shakti through the six chakras, cleanses subconscious karmic impressions, dissolves planetary grief, and nurtures pure devotion and unshakeable inner peace.',
+    significanceHi: 'शाक्त दर्शन और श्रीविद्या साधना में ललिता सहस्रनाम का स्थान सर्वोपरि है। यह एकमात्र ऐसा सहस्रनाम है जिसकी रचना स्वयं श्रीललिता महात्रिपुरसुन्दरी के आदेश से अष्ट वाग्देवताओं द्वारा की गई थी। इसके पाठ से षट्चक्रों में कुण्डलिनी शक्ति का जागरण, नकारात्मक मानसिक संस्कारों का शमन और आन्तरिक आनन्द की अनुभूति होती है। शुक्रवार, पूर्णिमा और नवरात्र में इसका पाठ विशेष फलदायी माना गया है।',
+    faqs: [
+      {
+        question: 'What is the origin and scriptural source of the Lalita Sahasranama?',
+        answer: 'The Lalita Sahasranama is found in the Uttara Khanda of the Brahmanda Purana. It forms part of the dialogue between Lord Hayagriva and Sage Agastya. It was composed by the eight Vagdevatas (Vashini, Kameshwari, Modini, Vimala, Aruna, Jayini, Sarveshwari, and Kaulini) at the direct command of Goddess Lalita.',
+      },
+      {
+        question: 'What do the four implements held by Goddess Lalita symbolize in Srividya?',
+        answer: 'The four implements are deeply symbolic: the sugarcane bow (Ikshu-kodanda) represents the human mind (Manas); the five flower arrows (Pushpa-banas) represent the five subtle senses or perceptions (Tanmatras: sound, touch, sight, taste, smell); the noose (Pasha) represents divine attachment or love (Raga); and the goad (Ankusha) represents wrath against evil and intellectual discernment (Krodha / Viveka).',
+      },
+      {
+        question: 'On what occasions and days is reciting the Lalita Sahasranama especially recommended?',
+        answer: 'It is traditionally chanted on Shukravara (Fridays), Purnima (Full Moon nights), all nine days of Sharad and Chaitra Navaratri, Sankranti days, and Janma Nakshatra (birth stars). In South Indian and temple traditions, Friday evening Sahasranama archana with kumkuma is an enduring sacred practice.',
+      },
+    ],
+  },
 ];
 
 export function getMantraBySlug(slug: string): SacredMantra | undefined {

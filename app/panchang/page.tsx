@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { PanchangCalendar } from '@/app/components/PanchangCalendar';
 import { PanchangCosmos } from '@/app/components/cosmos/PanchangCosmos';
 import { SectionTitle } from '@/app/components/apple/PageHeader';
-import { Star, ArrowRight, Moon, Sun, Layers, Calendar, Clock } from 'lucide-react';
+import { Star, ArrowRight, Moon, Sun, Layers, Calendar, Clock, Compass } from 'lucide-react';
 
 const WHY = [
   {
@@ -299,6 +299,36 @@ export default function PanchangPage() {
                 className="inline-flex items-center gap-2 rounded-2xl bg-saffron-600 hover:bg-saffron-700 text-white px-5 py-3 text-sm font-bold transition shadow-xs"
               >
                 <span>Explore Solar Vratas</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* ─── MUHURTA DECISION MATRIX FEATURE CARD ─────────────────────── */}
+          <div className="mt-6 rounded-3xl border border-blue-500/40 bg-gradient-to-br from-blue-500/15 via-indigo-500/10 to-transparent p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xs">
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1 rounded-full border border-blue-500/40 bg-blue-500/20 px-3 py-0.5 text-xs font-bold text-blue-900 dark:text-blue-200">
+                  <Compass className="w-3.5 h-3.5" />
+                  <span>Panchanga-Shuddhi · मुहूर्त निर्णय तालिका</span>
+                </span>
+                <span className="text-xs text-dharma-muted">
+                  Vidya-Arambha · Griha-Pravesha · Yatra · Vrata · Nutan Karya · Aushadha
+                </span>
+              </div>
+              <h3 className="font-serif text-2xl font-bold text-dharma-text">
+                Vedic Muhurta Decision Matrix
+              </h3>
+              <p className="text-xs sm:text-sm text-dharma-muted max-w-2xl leading-relaxed">
+                Evaluate auspicious timing for education, home entry, journeys, investments, and sadhana with real-time Panchanga-Shuddhi analysis, Rahu Kalam alerts, and custom simulator.
+              </p>
+            </div>
+            <div className="shrink-0 self-start md:self-center">
+              <Link
+                href="/panchang/muhurta/"
+                className="inline-flex items-center gap-2 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 text-sm font-bold transition shadow-xs"
+              >
+                <span>Open Muhurta Matrix</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

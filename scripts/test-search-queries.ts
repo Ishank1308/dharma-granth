@@ -122,4 +122,16 @@ assert.ok(solarVratas, 'searching solar vratas should direct to /panchang/solar-
 const chhathPuja = searchCoreIndex('chhath').find(({ item }) => item.href.includes('/panchang/solar-vratas/'));
 assert.ok(chhathPuja, 'searching chhath should direct to /panchang/solar-vratas/#chhath-puja');
 
+const lalita = searchCoreIndex('lalita sahasranama').find(({ item }) => item.href === '/mantras/lalita-sahasranama/');
+assert.ok(lalita, 'searching lalita sahasranama should find lalita-sahasranama');
+
+const muhurta = searchCoreIndex('muhurta').find(({ item }) => item.href === '/panchang/muhurta/');
+assert.ok(muhurta, 'searching muhurta should direct to /panchang/muhurta/');
+
+const upakarma = searchCoreIndex('upakarma').find(({ item }) => item.href === '/rituals/upakarma/');
+assert.ok(upakarma, 'searching upakarma should direct to /rituals/upakarma/');
+
+const avani = searchCoreIndex('avani avittam').find(({ item }) => item.href.includes('/rituals/upakarma/'));
+assert.ok(avani, 'searching avani avittam should direct to /rituals/upakarma/#regional');
+
 console.log('search query checks passed');
