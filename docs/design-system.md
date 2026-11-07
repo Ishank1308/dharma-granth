@@ -150,6 +150,10 @@ strongly colour shows in each theme, so a component never needs four copies.
   jewel. On the chapter card each `SacredSection` (`data-section`) is led by a jewel in its hue
   and the joining rail shades through them. Nothing on a reading page loops: every effect
   follows the pointer, the scroll or a tap.
+- **Panchang** (`.panchang-scope`, `.panchang-limb[data-limb]` from the route layouts): each limb of
+  time has its own pair of hues (`--limb`, `--limb-2`): तिथि indigo, वार saffron, नक्षत्र peacock,
+  योग lotus, करण tulsī, मुहूर्त gold. The hero carries a slow kāla-chakra, cards and switcher pills
+  take the limb's colour, and today's limb cards on `/panchang/` each wear their sub-page's hue.
 
 Reduced motion, the lite, low-power and data-saver modes stop every loop; forced colours and
 print drop the aurora and washes.

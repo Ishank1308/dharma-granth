@@ -13,7 +13,7 @@
    6. Actions: filled buttons in the dawn gradient, with a glow
    7. Controls: segmented control, fields, selection, scrollbars
    8. Library books: a wash and glow in the scripture's own colour
-   9. Verse cards: a turning edge, a lifting capsule, a hue per study layer
+   9. Verse cards: a turning edge, a lifting capsule, a hue per study layer; Panchang limbs
    10. Quiet modes, reduced motion, print and forced colours
 
    Rules (docs/design-system.md): the exported HTML is the readable state, only transform
@@ -579,6 +579,195 @@ a.apple-card:focus-visible {
         1;
 }
 
+/* Panchang ───────────────────────────────────────────────────────────────
+   Each limb of time has its own hue, set by the limb's layout (data-limb): तिथि indigo
+   (the moon), वार saffron (the sun), नक्षत्र peacock (the stars), योग lotus, करण tulsī and
+   मुहूर्त gold. The hue lights the limb switcher, the hero band (with a slowly turning
+   kāla-chakra), the eyebrow pills, the accent text and the cards; a grid of cards still
+   reads as a garland of the whole spectrum. */
+.panchang-scope,
+.panchang-limb {
+    display: contents;
+}
+.panchang-scope {
+    --limb: var(--hue-saffron);
+    --limb-2: var(--hue-gold);
+}
+[data-limb='tithis'] { --limb: var(--hue-indigo); --limb-2: var(--hue-lotus); }
+[data-limb='varas'] { --limb: var(--hue-saffron); --limb-2: var(--hue-gold); }
+[data-limb='nakshatras'] { --limb: var(--hue-peacock); --limb-2: var(--hue-indigo); }
+[data-limb='yogas'] { --limb: var(--hue-lotus); --limb-2: var(--hue-vermilion); }
+[data-limb='karanas'] { --limb: var(--hue-tulsi); --limb-2: var(--hue-peacock); }
+[data-limb='muhurta'] { --limb: var(--hue-gold); --limb-2: var(--hue-saffron); }
+
+/* Accent text in a limb's pages takes the limb's ink (deepened for AA on light themes). */
+.panchang-limb :is(.text-saffron-600, .text-saffron-700, .text-saffron-800) {
+    color: color-mix(in srgb, var(--limb) 62%, var(--label-primary));
+}
+:root:is([data-theme='night'], [data-theme='dark']) .panchang-limb :is(.text-saffron-600, .text-saffron-700, .text-saffron-800, .dark\:text-saffron-300, .dark\:text-saffron-400) {
+    color: color-mix(in srgb, var(--limb) 85%, var(--color-absolute-white));
+}
+/* Eyebrow pills (the tinted capsules above titles) in the limb's colour. */
+.panchang-limb .rounded-full[class*='bg-saffron-500/10'] {
+    border-color: color-mix(in srgb, var(--limb) 35%, transparent);
+    background-color: color-mix(in srgb, var(--limb) 11%, transparent);
+    box-shadow: 0 6px 16px -10px color-mix(in srgb, var(--limb) 70%, transparent);
+}
+
+/* The hero band: pools of the limb's two hues, and a faint kāla-chakra turning behind. */
+.panchang-scope section[class*='bg-gradient-to-b'][class*='border-b'] {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background-image:
+        radial-gradient(55% 120% at 18% 0%, color-mix(in srgb, var(--limb) 20%, transparent), transparent 70%),
+        radial-gradient(45% 110% at 86% 10%, color-mix(in srgb, var(--limb-2) 16%, transparent), transparent 70%),
+        linear-gradient(180deg, color-mix(in srgb, var(--limb) 7%, transparent), transparent);
+}
+.panchang-scope section[class*='bg-gradient-to-b'][class*='border-b']::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    right: -6rem;
+    width: 30rem;
+    height: 30rem;
+    margin-top: -15rem;
+    border-radius: 50%;
+    pointer-events: none;
+    background:
+        repeating-conic-gradient(from 0deg, color-mix(in srgb, var(--limb) 22%, transparent) 0deg 1.2deg, transparent 1.2deg 12deg),
+        radial-gradient(circle, transparent 38%, color-mix(in srgb, var(--limb-2) 14%, transparent) 39% 40%, transparent 41% 62%, color-mix(in srgb, var(--limb) 16%, transparent) 63% 64%, transparent 65%);
+    -webkit-mask: radial-gradient(circle, transparent 30%, #000 31% 70%, transparent 71%);
+    mask: radial-gradient(circle, transparent 30%, #000 31% 70%, transparent 71%);
+    opacity: 0.6;
+}
+:root:is([data-theme='night'], [data-theme='dark']) .panchang-scope section[class*='bg-gradient-to-b'][class*='border-b']::before {
+    opacity: 0.9;
+}
+@keyframes chakra-turn {
+    to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true'])
+        .panchang-scope section[class*='bg-gradient-to-b'][class*='border-b']::before {
+        animation: chakra-turn 120s linear infinite;
+    }
+}
+@media (max-width: 640px) {
+    .panchang-scope section[class*='bg-gradient-to-b'][class*='border-b']::before {
+        right: -12rem;
+        opacity: 0.5;
+    }
+}
+
+/* Cards: every card in a Panchang grid takes the next hue in turn; lone cards take the
+   limb's. A lit top edge, a corner wash, and a glow in the hue under the pointer. */
+.panchang-scope .grid > :nth-child(6n + 1) { --cycle-hue: var(--hue-saffron); }
+.panchang-scope .grid > :nth-child(6n + 2) { --cycle-hue: var(--hue-peacock); }
+.panchang-scope .grid > :nth-child(6n + 3) { --cycle-hue: var(--hue-indigo); }
+.panchang-scope .grid > :nth-child(6n + 4) { --cycle-hue: var(--hue-lotus); }
+.panchang-scope .grid > :nth-child(6n + 5) { --cycle-hue: var(--hue-tulsi); }
+.panchang-scope .grid > :nth-child(6n + 6) { --cycle-hue: var(--hue-gold); }
+.panchang-scope :is(.card-sacred, .rounded-3xl.bg-dharma-card, .rounded-2xl.bg-dharma-card, .rounded-xl.bg-dharma-card, .grid > .rounded-2xl.bg-dharma-bg) {
+    --card-hue: var(--cycle-hue, var(--limb));
+    background-image: radial-gradient(
+        120% 80% at 0% 0%,
+        color-mix(in srgb, var(--card-hue) var(--tone-wash), transparent),
+        transparent 60%
+    );
+    box-shadow:
+        var(--raised-under),
+        inset 0 2px 0 color-mix(in srgb, var(--card-hue) 50%, transparent),
+        0 16px 36px -28px color-mix(in srgb, var(--card-hue) var(--tone-glow), transparent);
+}
+:root:is([data-theme='night'], [data-theme='dark']) .panchang-scope :is(.card-sacred, .rounded-3xl.bg-dharma-card, .rounded-2xl.bg-dharma-card, .rounded-xl.bg-dharma-card, .grid > .rounded-2xl.bg-dharma-bg) {
+    --card-hue: color-mix(in srgb, var(--cycle-hue, var(--limb)) 80%, var(--color-absolute-white));
+}
+/* Inside a card, its number chip and accent text follow the card's own hue. */
+.panchang-scope .card-sacred :is(.text-saffron-700, .text-saffron-800) {
+    color: color-mix(in srgb, var(--card-hue) 62%, var(--label-primary));
+}
+.panchang-scope .card-sacred [class*='bg-saffron-500/10'] {
+    background-color: color-mix(in srgb, var(--card-hue) 13%, transparent);
+}
+:root:is([data-theme='night'], [data-theme='dark']) .panchang-scope .card-sacred :is(.text-saffron-700, .text-saffron-800, .dark\:text-saffron-300, .dark\:text-saffron-400) {
+    color: var(--card-hue);
+}
+@media (hover: hover) {
+    :root .panchang-scope .card-sacred.card-sacred:hover,
+    .panchang-scope a:is(.rounded-3xl, .rounded-2xl, .rounded-xl).bg-dharma-card:hover {
+        border-color: color-mix(in srgb, var(--card-hue) 45%, transparent);
+        box-shadow:
+            var(--raised-under),
+            inset 0 2px 0 color-mix(in srgb, var(--card-hue) 70%, transparent),
+            0 24px 48px -22px color-mix(in srgb, var(--card-hue) calc(var(--tone-glow) + 16%), transparent);
+    }
+}
+
+/* The limb switcher: each pill in its own limb's colour; the current one filled. */
+nav a[data-limb] {
+    transition:
+        transform var(--duration-base) var(--motion-spring),
+        border-color var(--duration-fast) var(--ease-standard),
+        box-shadow var(--duration-standard) var(--ease-out);
+}
+nav a[data-limb] > svg {
+    color: color-mix(in srgb, var(--limb) 70%, var(--label-primary));
+}
+:root:is([data-theme='night'], [data-theme='dark']) nav a[data-limb] > svg {
+    color: var(--limb);
+}
+@media (hover: hover) {
+    nav a[data-limb]:hover {
+        border-color: color-mix(in srgb, var(--limb) 55%, transparent);
+        transform: translate3d(0, -1px, 0);
+    }
+}
+nav a[data-limb][aria-current='page'] {
+    border-color: color-mix(in srgb, var(--limb) 55%, transparent);
+    background-color: color-mix(in srgb, var(--limb) 14%, var(--surface-raised));
+    background-image: linear-gradient(100deg, color-mix(in srgb, var(--limb) 10%, transparent), color-mix(in srgb, var(--limb-2) 10%, transparent));
+    color: color-mix(in srgb, var(--limb) 62%, var(--label-primary));
+    box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--limb) 70%, transparent);
+}
+:root:is([data-theme='night'], [data-theme='dark']) nav a[data-limb][aria-current='page'] {
+    color: color-mix(in srgb, var(--limb) 80%, var(--color-absolute-white));
+}
+
+/* Today's limbs on the main Panchang page, each in its sub-page's hue:
+   तिथि indigo, पक्ष vermilion, नक्षत्र peacock, योग lotus, करण tulsī, ऋतु gold. */
+.panchang-limbs > .apple-card:nth-child(1) { --chip: var(--hue-indigo); }
+.panchang-limbs > .apple-card:nth-child(2) { --chip: var(--hue-vermilion); }
+.panchang-limbs > .apple-card:nth-child(3) { --chip: var(--hue-peacock); }
+.panchang-limbs > .apple-card:nth-child(4) { --chip: var(--hue-lotus); }
+.panchang-limbs > .apple-card:nth-child(5) { --chip: var(--hue-tulsi); }
+.panchang-limbs > .apple-card:nth-child(6) { --chip: var(--hue-gold); }
+.panchang-limbs > .apple-card :is(.text-saffron-700, .text-saffron-800, [lang='hi'].text-saffron-700) {
+    color: color-mix(in srgb, var(--card-hue) 62%, var(--label-primary));
+}
+.panchang-limbs > .apple-card [class*='bg-saffron-500/10'] {
+    background-color: color-mix(in srgb, var(--card-hue) 12%, transparent);
+    color: color-mix(in srgb, var(--card-hue) 62%, var(--label-primary));
+}
+:root:is([data-theme='night'], [data-theme='dark']) .panchang-limbs > .apple-card :is(.text-saffron-700, .text-saffron-800, .dark\:text-saffron-300, .dark\:text-saffron-400, [class*='bg-saffron-500/10']) {
+    color: var(--card-hue);
+}
+@media (hover: hover) {
+    .panchang-limbs > .apple-card {
+        transition:
+            transform var(--duration-base) var(--motion-spring),
+            box-shadow var(--duration-standard) var(--ease-out);
+    }
+    .panchang-limbs > .apple-card:hover {
+        transform: translate3d(0, -3px, 0);
+        box-shadow:
+            var(--shadow-lifted),
+            inset 0 1px 0 color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) + 30%), transparent),
+            0 26px 50px -22px color-mix(in srgb, var(--card-hue) calc(var(--tone-glow) + 14%), transparent);
+    }
+}
+
 /* 10. Quiet modes, reduced motion, print and forced colours ────────────── */
 :root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) body::before,
 :root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .aura-header {
@@ -590,7 +779,9 @@ a.apple-card:focus-visible {
     :is(a, .apple-card-link):hover .apple-tint-chip,
     :is(.apple-pill, .cta-primary, :is(a, button).bg-dharma-saffron):hover,
     .verse-tree [data-branch] > div > details > summary:hover > span:first-child,
-    .verse-tree [data-branch] > div > button:hover > span:first-child {
+    .verse-tree [data-branch] > div > button:hover > span:first-child,
+    nav a[data-limb]:hover,
+    .panchang-limbs > .apple-card:hover {
         transform: none;
     }
 }

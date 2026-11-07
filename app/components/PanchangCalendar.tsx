@@ -541,7 +541,7 @@ export function PanchangCalendar() {
           </span>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="panchang-limbs grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {/* 1. TITHI CARD */}
           <div className="apple-card p-5">
             <div className="flex items-center justify-between">
