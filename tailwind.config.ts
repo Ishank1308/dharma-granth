@@ -19,6 +19,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Semantic colours from app/styles/tokens.css, so text-label-secondary, bg-fill-tertiary,
+        // border-separator and text-tint follow the theme without a dark: variant.
+        label: {
+          primary: 'var(--label-primary)',
+          secondary: 'var(--label-secondary)',
+          tertiary: 'var(--label-tertiary)',
+          quaternary: 'var(--label-quaternary)',
+        },
+        fill: {
+          primary: 'var(--fill-primary)',
+          secondary: 'var(--fill-secondary)',
+          tertiary: 'var(--fill-tertiary)',
+          quaternary: 'var(--fill-quaternary)',
+        },
+        separator: {
+          DEFAULT: 'var(--separator)',
+          strong: 'var(--separator-strong)',
+        },
+        surface: {
+          canvas: 'var(--surface-canvas)',
+          raised: 'var(--surface-raised)',
+          elevated: 'var(--surface-elevated)',
+          sunken: 'var(--surface-sunken)',
+        },
+        tint: {
+          DEFAULT: 'var(--tint)',
+          fill: 'var(--tint-fill)',
+        },
+        'on-tint': 'var(--on-tint)',
         saffron: {
           50: '#fff8f0',
           100: '#ffefd6',
@@ -50,6 +79,60 @@ const config: Config = {
           warning: themeVar('--dharma-warning'),
           error: themeVar('--dharma-error'),
         }
+      },
+      // Design tokens (app/styles/tokens.css). Type roles carry their own leading and tracking.
+      fontSize: {
+        caption: ['var(--text-caption)', { lineHeight: '1.35' }],
+        footnote: ['var(--text-footnote)', { lineHeight: '1.38' }],
+        subhead: ['var(--text-subhead)', { lineHeight: '1.4' }],
+        callout: ['var(--text-callout)', { lineHeight: '1.42' }],
+        body: ['var(--text-body)', { lineHeight: 'var(--leading-normal)', letterSpacing: 'var(--tracking-body)' }],
+        'title-3': ['var(--text-title-3)', { lineHeight: '1.25', letterSpacing: 'var(--tracking-headline)' }],
+        'title-2': ['var(--text-title-2)', { lineHeight: 'var(--leading-snug)', letterSpacing: 'var(--tracking-title)' }],
+        'title-1': ['var(--text-title-1)', { lineHeight: '1.12', letterSpacing: 'var(--tracking-title)' }],
+        'large-title': ['var(--text-large-title)', { lineHeight: 'var(--leading-tight)', letterSpacing: 'var(--tracking-title)' }],
+        display: ['var(--text-display)', { lineHeight: '1.04', letterSpacing: 'var(--tracking-display)' }],
+      },
+      spacing: {
+        gutter: 'var(--space-gutter)',
+        section: 'var(--space-section)',
+        tap: 'var(--tap-target)',
+      },
+      maxWidth: {
+        content: 'var(--width-content)',
+        reading: 'var(--width-reading)',
+        text: 'var(--width-text)',
+      },
+      borderRadius: {
+        chip: 'var(--radius-chip)',
+        control: 'var(--radius-control)',
+        track: 'var(--radius-track)',
+        field: 'var(--radius-field)',
+        group: 'var(--radius-group)',
+        card: 'var(--radius-card)',
+        panel: 'var(--radius-panel)',
+        pill: 'var(--radius-pill)',
+      },
+      boxShadow: {
+        hairline: 'var(--shadow-hairline)',
+        raised: 'var(--shadow-raised)',
+        lifted: 'var(--shadow-lifted)',
+        overlay: 'var(--shadow-overlay)',
+      },
+      transitionDuration: {
+        instant: 'var(--duration-instant)',
+        fast: 'var(--duration-fast)',
+        standard: 'var(--duration-standard)',
+        base: 'var(--duration-base)',
+        deliberate: 'var(--duration-deliberate)',
+        slow: 'var(--duration-slow)',
+      },
+      transitionTimingFunction: {
+        standard: 'var(--ease-standard)',
+        'out-soft': 'var(--ease-out)',
+        'in-soft': 'var(--ease-in)',
+        'in-out-soft': 'var(--ease-in-out)',
+        spring: 'var(--motion-spring)',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],

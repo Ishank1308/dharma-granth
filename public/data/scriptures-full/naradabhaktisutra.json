@@ -48,87 +48,121 @@
         {
           "number": 4,
           "sanskrit": "यल्लब्ध्वा पुमान् सिद्धो भवति, अमृतो भवति, तृप्तो भवति ॥ ४ ॥",
-          "transliteration": "yallabdhvā pumān siddho bhavati, amṛto bhavati, tṛpto bhavati || 4 ||"
+          "transliteration": "yallabdhvā pumān siddho bhavati, amṛto bhavati, tṛpto bhavati || 4 ||",
+          "hindi": "जिसे पाकर मनुष्य सिद्ध हो जाता है, अमर हो जाता है और तृप्त हो जाता है।",
+          "translation": "Gaining it, a person becomes perfect, becomes immortal, and is fully content."
         },
         {
           "number": 5,
           "sanskrit": "यत्प्राप्य न किञ्चिद्वाञ्छति, न शोचति, न द्वेष्टि, न रमते, नोत्साही भवति ॥ ५ ॥",
-          "transliteration": "yatprāpya na kiñcidvāñchati, na śocati, na dveṣṭi, na ramate, notsāhī bhavati || 5 ||"
+          "transliteration": "yatprāpya na kiñcidvāñchati, na śocati, na dveṣṭi, na ramate, notsāhī bhavati || 5 ||",
+          "hindi": "जिसे पा लेने पर वह न कुछ चाहता है, न शोक करता है, न द्वेष करता है, न (विषयों में) रमता है और न (सांसारिक कामों के लिए) उत्साहित होता है।",
+          "translation": "Having gained it, one desires nothing, grieves for nothing, hates nothing, delights in nothing else, and is eager for nothing."
         },
         {
           "number": 6,
           "sanskrit": "यज्ज्ञात्वा मत्तो भवति, स्तब्धो भवति, आत्मारामो भवति ॥ ६ ॥",
-          "transliteration": "yajjñātvā matto bhavati, stabdho bhavati, ātmārāmo bhavati || 6 ||"
+          "transliteration": "yajjñātvā matto bhavati, stabdho bhavati, ātmārāmo bhavati || 6 ||",
+          "hindi": "जिसे जानकर वह (प्रेम में) मत्त हो जाता है, स्तब्ध (शान्त) हो जाता है और आत्मा में ही रमण करने वाला हो जाता है।",
+          "translation": "Knowing it, one becomes intoxicated with love, becomes still, and delights in the Self alone."
         },
         {
           "number": 7,
           "sanskrit": "सा न कामयमाना निरोधरूपत्वात् ॥ ७ ॥",
-          "transliteration": "sā na kāmayamānā nirodharūpatvāt || 7 ||"
+          "transliteration": "sā na kāmayamānā nirodharūpatvāt || 7 ||",
+          "hindi": "वह (भक्ति) कामना से युक्त नहीं है, क्योंकि वह निरोध-स्वरूपा है।",
+          "translation": "This bhakti is not born of desire, for its nature is renunciation."
         },
         {
           "number": 8,
           "sanskrit": "निरोधस्तु लोकवेदव्यापारन्यासः ॥ ८ ॥",
-          "transliteration": "nirodhastu lokavedavyāpāranyāsaḥ || 8 ||"
+          "transliteration": "nirodhastu lokavedavyāpāranyāsaḥ || 8 ||",
+          "hindi": "लौकिक और वैदिक सब कर्मों को (भगवान को) सौंप देना ही निरोध है।",
+          "translation": "Renunciation here means offering up all worldly and Vedic activity to the Lord."
         },
         {
           "number": 9,
           "sanskrit": "तस्मिन्ननन्यता तद्विरोधिषूदासीनता च ॥ ९ ॥",
-          "transliteration": "tasminnananyatā tadvirodhiṣūdāsīnatā ca || 9 ||"
+          "transliteration": "tasminnananyatā tadvirodhiṣūdāsīnatā ca || 9 ||",
+          "hindi": "और उस (भगवान) में अनन्यता तथा उनके विरोधी (विषयों) के प्रति उदासीनता (भी निरोध है)।",
+          "translation": "It also means single-minded devotion to the Lord and indifference to whatever opposes it."
         },
         {
           "number": 10,
           "sanskrit": "अन्याश्रयाणां त्यागोऽनन्यता ॥ १० ॥",
-          "transliteration": "anyāśrayāṇāṃ tyāgo'nanyatā || 10 ||"
+          "transliteration": "anyāśrayāṇāṃ tyāgo'nanyatā || 10 ||",
+          "hindi": "(भगवान को छोड़) दूसरे सब आश्रयों का त्याग अनन्यता है।",
+          "translation": "Single-mindedness means giving up every other refuge."
         },
         {
           "number": 11,
           "sanskrit": "लोके वेदेषु तदनुकूलाचरणं तद्विरोधिषूदासीनता ॥ ११ ॥",
-          "transliteration": "loke vedeṣu tadanukūlācaraṇaṃ tadvirodhiṣūdāsīnatā || 11 ||"
+          "transliteration": "loke vedeṣu tadanukūlācaraṇaṃ tadvirodhiṣūdāsīnatā || 11 ||",
+          "hindi": "लोक और वेद में उस (भक्ति) के अनुकूल आचरण करना, यही उसके विरोधियों के प्रति उदासीनता है।",
+          "translation": "Indifference to what opposes it means acting, in the world and in Vedic duty, only in ways that support bhakti."
         },
         {
           "number": 12,
           "sanskrit": "भवतु निश्चयदार्ढ्यादूर्ध्वं शास्त्ररक्षणम् ॥ १२ ॥",
-          "transliteration": "bhavatu niścayadārḍhyādūrdhvaṃ śāstrarakṣaṇam || 12 ||"
+          "transliteration": "bhavatu niścayadārḍhyādūrdhvaṃ śāstrarakṣaṇam || 12 ||",
+          "hindi": "(भक्ति में) निश्चय दृढ़ हो जाने के बाद भी शास्त्र (की मर्यादा) की रक्षा करनी चाहिए।",
+          "translation": "Even after one's resolve has become firm, the guidance of scripture should still be kept."
         },
         {
           "number": 13,
           "sanskrit": "अन्यथा पातित्याशङ्कया ॥ १३ ॥",
-          "transliteration": "anyathā pātityāśaṅkayā || 13 ||"
+          "transliteration": "anyathā pātityāśaṅkayā || 13 ||",
+          "hindi": "अन्यथा पतन की आशंका रहती है।",
+          "translation": "Otherwise there is the risk of a fall."
         },
         {
           "number": 14,
           "sanskrit": "लोकोऽपि तावदेव किन्तु भोजनादिव्यापारस्त्वाशरीरधारणावधि ॥ १४ ॥",
-          "transliteration": "loko'pi tāvadeva kintu bhojanādivyāpārastvāśarīradhāraṇāvadhi || 14 ||"
+          "transliteration": "loko'pi tāvadeva kintu bhojanādivyāpārastvāśarīradhāraṇāvadhi || 14 ||",
+          "hindi": "लौकिक कर्म भी तब तक (शास्त्र के अनुसार करे), पर भोजन आदि कार्य तो शरीर रहने तक (होते ही रहेंगे)।",
+          "translation": "Worldly duties too should be kept up for that long; but eating and the like will go on as long as the body lasts."
         },
         {
           "number": 15,
           "sanskrit": "तल्लक्षणानि वाच्यन्ते नानामतभेदात् ॥ १५ ॥",
-          "transliteration": "tallakṣaṇāni vācyante nānāmatabhedāt || 15 ||"
+          "transliteration": "tallakṣaṇāni vācyante nānāmatabhedāt || 15 ||",
+          "hindi": "अब अनेक मतों के भेद से उस (भक्ति) के लक्षण कहे जाते हैं।",
+          "translation": "Now the marks of bhakti are described, as different teachers see them."
         },
         {
           "number": 16,
           "sanskrit": "पूजादिष्वनुराग इति पाराशर्यः ॥ १६ ॥",
-          "transliteration": "pūjādiṣvanurāga iti pārāśaryaḥ || 16 ||"
+          "transliteration": "pūjādiṣvanurāga iti pārāśaryaḥ || 16 ||",
+          "hindi": "पराशर-पुत्र (व्यास) के मत में पूजा आदि में अनुराग (भक्ति) है।",
+          "translation": "Vyasa, son of Parashara, says it is loving devotion to worship and the like."
         },
         {
           "number": 17,
           "sanskrit": "कथादिष्विति गर्गः ॥ १७ ॥",
-          "transliteration": "kathādiṣviti gargaḥ || 17 ||"
+          "transliteration": "kathādiṣviti gargaḥ || 17 ||",
+          "hindi": "गर्ग के मत में (भगवान की) कथा आदि में अनुराग (भक्ति) है।",
+          "translation": "Garga says it is love for hearing the Lord's stories and the like."
         },
         {
           "number": 18,
           "sanskrit": "आत्मरत्यविरोधेनेति शाण्डिल्यः ॥ १८ ॥",
-          "transliteration": "ātmaratyavirodheneti śāṇḍilyaḥ || 18 ||"
+          "transliteration": "ātmaratyavirodheneti śāṇḍilyaḥ || 18 ||",
+          "hindi": "शाण्डिल्य के मत में आत्मरति से विरोध न रखने वाला (अनुराग भक्ति) है।",
+          "translation": "Shandilya says it is love that does not conflict with delight in the Self."
         },
         {
           "number": 19,
           "sanskrit": "नारदस्तु तदर्पिताखिलाचारता तद्विस्मरणे परमव्याकुलतेति ॥ १९ ॥",
-          "transliteration": "nāradastu tadarpitākhilācāratā tadvismaraṇe paramavyākulateti || 19 ||"
+          "transliteration": "nāradastu tadarpitākhilācāratā tadvismaraṇe paramavyākulateti || 19 ||",
+          "hindi": "पर नारद के मत में अपने सब आचरण उन्हें अर्पित कर देना और उनका विस्मरण होने पर परम व्याकुल होना (भक्ति) है।",
+          "translation": "But Narada says it is offering every act to the Lord, and feeling deep anguish if one forgets the Lord even for a moment."
         },
         {
           "number": 20,
           "sanskrit": "अस्त्येवमेवम् ॥ २० ॥",
-          "transliteration": "astyevamevam || 20 ||"
+          "transliteration": "astyevamevam || 20 ||",
+          "hindi": "ऐसा ही है, ऐसा ही है (इसके उदाहरण मिलते हैं)।",
+          "translation": "It is just so; there are examples of it."
         },
         {
           "number": 21,
@@ -143,82 +177,114 @@
         {
           "number": 22,
           "sanskrit": "तत्रापि न माहात्म्यज्ञानविस्मृत्यपवादः ॥ २२ ॥",
-          "transliteration": "tatrāpi na māhātmyajñānavismṛtyapavādaḥ || 22 ||"
+          "transliteration": "tatrāpi na māhātmyajñānavismṛtyapavādaḥ || 22 ||",
+          "hindi": "वहाँ भी (भगवान की) महिमा के ज्ञान को भूल जाने का दोष नहीं है।",
+          "translation": "Even there, one cannot say they forgot the Lord's greatness."
         },
         {
           "number": 23,
           "sanskrit": "तद्विहीनं जाराणामिव ॥ २३ ॥",
-          "transliteration": "tadvihīnaṃ jārāṇāmiva || 23 ||"
+          "transliteration": "tadvihīnaṃ jārāṇāmiva || 23 ||",
+          "hindi": "उस (महिमा-ज्ञान) के बिना (प्रेम) जारों (अवैध प्रेमियों) के प्रेम के समान है।",
+          "translation": "Love without that knowledge would be like the love of illicit lovers."
         },
         {
           "number": 24,
           "sanskrit": "नास्त्येव तस्मिंस्तत्सुखसुखित्वम् ॥ २४ ॥",
-          "transliteration": "nāstyeva tasmiṃstatsukhasukhitvam || 24 ||"
+          "transliteration": "nāstyeva tasmiṃstatsukhasukhitvam || 24 ||",
+          "hindi": "उस (जार-प्रेम) में प्रिय के सुख से सुखी होने का भाव होता ही नहीं।",
+          "translation": "In such love there is no joy in the beloved's own happiness."
         },
         {
           "number": 25,
           "sanskrit": "सा तु कर्मज्ञानयोगेभ्योऽप्यधिकतरा ॥ २५ ॥",
-          "transliteration": "sā tu karmajñānayogebhyo'pyadhikatarā || 25 ||"
+          "transliteration": "sā tu karmajñānayogebhyo'pyadhikatarā || 25 ||",
+          "hindi": "वह (भक्ति) तो कर्म, ज्ञान और योग से भी श्रेष्ठ है।",
+          "translation": "Bhakti is higher even than the paths of action, knowledge and yoga."
         },
         {
           "number": 26,
           "sanskrit": "फलरूपत्वात् ॥ २६ ॥",
-          "transliteration": "phalarūpatvāt || 26 ||"
+          "transliteration": "phalarūpatvāt || 26 ||",
+          "hindi": "क्योंकि वह (स्वयं) फल-स्वरूपा है।",
+          "translation": "For it is itself the fruit."
         },
         {
           "number": 27,
           "sanskrit": "ईश्वरस्याप्यभिमानद्वेषित्वाद् दैन्यप्रियत्वाच्च ॥ २७ ॥",
-          "transliteration": "īśvarasyāpyabhimānadveṣitvād dainyapriyatvācca || 27 ||"
+          "transliteration": "īśvarasyāpyabhimānadveṣitvād dainyapriyatvācca || 27 ||",
+          "hindi": "और ईश्वर को भी अभिमान से द्वेष है और दीनता प्रिय है।",
+          "translation": "And the Lord too dislikes pride and loves humility."
         },
         {
           "number": 28,
           "sanskrit": "तस्या ज्ञानमेव साधनमित्येके ॥ २८ ॥",
-          "transliteration": "tasyā jñānameva sādhanamityeke || 28 ||"
+          "transliteration": "tasyā jñānameva sādhanamityeke || 28 ||",
+          "hindi": "कुछ आचार्य कहते हैं कि ज्ञान ही उस (भक्ति) का साधन है।",
+          "translation": "Some say knowledge alone is the means to bhakti."
         },
         {
           "number": 29,
           "sanskrit": "अन्योन्याश्रयत्वमित्यन्ये ॥ २९ ॥",
-          "transliteration": "anyonyāśrayatvamityanye || 29 ||"
+          "transliteration": "anyonyāśrayatvamityanye || 29 ||",
+          "hindi": "दूसरे कहते हैं कि ये (ज्ञान और भक्ति) एक-दूसरे पर आश्रित हैं।",
+          "translation": "Others say the two depend on each other."
         },
         {
           "number": 30,
           "sanskrit": "स्वयं फलरूपतेति ब्रह्मकुमाराः ॥ ३० ॥",
-          "transliteration": "svayaṃ phalarūpateti brahmakumārāḥ || 30 ||"
+          "transliteration": "svayaṃ phalarūpateti brahmakumārāḥ || 30 ||",
+          "hindi": "ब्रह्मा के पुत्रों (सनत्कुमार आदि) के मत में भक्ति स्वयं फल-रूपा है।",
+          "translation": "The sons of Brahma say bhakti is its own fruit."
         },
         {
           "number": 31,
           "sanskrit": "राजगृहभोजनादिषु तथैव दृष्टत्वात् ॥ ३१ ॥",
-          "transliteration": "rājagṛhabhojanādiṣu tathaiva dṛṣṭatvāt || 31 ||"
+          "transliteration": "rājagṛhabhojanādiṣu tathaiva dṛṣṭatvāt || 31 ||",
+          "hindi": "क्योंकि राजमहल, भोजन आदि में भी ऐसा ही देखा जाता है।",
+          "translation": "For this is seen with a royal palace, with food, and the like."
         },
         {
           "number": 32,
           "sanskrit": "न तेन राजपरितोषः क्षुधाशान्तिर्वा ॥ ३२ ॥",
-          "transliteration": "na tena rājaparitoṣaḥ kṣudhāśāntirvā || 32 ||"
+          "transliteration": "na tena rājaparitoṣaḥ kṣudhāśāntirvā || 32 ||",
+          "hindi": "(उन्हें केवल जानने से) न राजा प्रसन्न होता है और न भूख शान्त होती है।",
+          "translation": "Merely knowing about them neither pleases the king nor satisfies hunger."
         },
         {
           "number": 33,
           "sanskrit": "तस्मात्सैव ग्राह्या मुमुक्षुभिः ॥ ३३ ॥",
-          "transliteration": "tasmātsaiva grāhyā mumukṣubhiḥ || 33 ||"
+          "transliteration": "tasmātsaiva grāhyā mumukṣubhiḥ || 33 ||",
+          "hindi": "इसलिए मुक्ति चाहने वालों को वह (भक्ति) ही ग्रहण करनी चाहिए।",
+          "translation": "So those who seek liberation should take up bhakti alone."
         },
         {
           "number": 34,
           "sanskrit": "तस्याः साधनानि गायन्त्याचार्याः ॥ ३४ ॥",
-          "transliteration": "tasyāḥ sādhanāni gāyantyācāryāḥ || 34 ||"
+          "transliteration": "tasyāḥ sādhanāni gāyantyācāryāḥ || 34 ||",
+          "hindi": "आचार्य उस (भक्ति) के साधनों का गान करते हैं।",
+          "translation": "The teachers sing of the means to bhakti."
         },
         {
           "number": 35,
           "sanskrit": "तत्तु विषयत्यागात् सङ्गत्यागाच्च ॥ ३५ ॥",
-          "transliteration": "tattu viṣayatyāgāt saṅgatyāgācca || 35 ||"
+          "transliteration": "tattu viṣayatyāgāt saṅgatyāgācca || 35 ||",
+          "hindi": "वह (भक्ति) विषयों के त्याग और संग के त्याग से (प्राप्त होती है)।",
+          "translation": "It comes from giving up sense objects and giving up attachment."
         },
         {
           "number": 36,
           "sanskrit": "अव्यावृतभजनात् ॥ ३६ ॥",
-          "transliteration": "avyāvṛtabhajanāt || 36 ||"
+          "transliteration": "avyāvṛtabhajanāt || 36 ||",
+          "hindi": "निरन्तर भजन से।",
+          "translation": "From unbroken worship."
         },
         {
           "number": 37,
           "sanskrit": "लोकेऽपि भगवद्गुणश्रवणकीर्तनात् ॥ ३७ ॥",
-          "transliteration": "loke'pi bhagavadguṇaśravaṇakīrtanāt || 37 ||"
+          "transliteration": "loke'pi bhagavadguṇaśravaṇakīrtanāt || 37 ||",
+          "hindi": "लोक में रहते हुए भी भगवान के गुणों के श्रवण और कीर्तन से।",
+          "translation": "From hearing and singing the Lord's qualities, even while living in the world."
         },
         {
           "number": 38,
@@ -233,82 +299,114 @@
         {
           "number": 39,
           "sanskrit": "महत्सङ्गस्तु दुर्लभोऽगम्योऽमोघश्च ॥ ३९ ॥",
-          "transliteration": "mahatsaṅgastu durlabho'gamyo'moghaśca || 39 ||"
+          "transliteration": "mahatsaṅgastu durlabho'gamyo'moghaśca || 39 ||",
+          "hindi": "पर महापुरुषों का संग दुर्लभ है, अगम्य (समझ से परे) है और अमोघ (कभी व्यर्थ न जाने वाला) है।",
+          "translation": "The company of the great is hard to find, hard to fathom, and never fails."
         },
         {
           "number": 40,
           "sanskrit": "लभ्यतेऽपि तत्कृपयैव ॥ ४० ॥",
-          "transliteration": "labhyate'pi tatkṛpayaiva || 40 ||"
+          "transliteration": "labhyate'pi tatkṛpayaiva || 40 ||",
+          "hindi": "वह भी उन (भगवान) की कृपा से ही मिलता है।",
+          "translation": "It too is gained only by the Lord's grace."
         },
         {
           "number": 41,
           "sanskrit": "तस्मिंस्तज्जने भेदाभावात् ॥ ४१ ॥",
-          "transliteration": "tasmiṃstajjane bhedābhāvāt || 41 ||"
+          "transliteration": "tasmiṃstajjane bhedābhāvāt || 41 ||",
+          "hindi": "क्योंकि भगवान और उनके भक्त में भेद नहीं है।",
+          "translation": "For there is no difference between the Lord and the Lord's devotees."
         },
         {
           "number": 42,
           "sanskrit": "तदेव साध्यतां तदेव साध्यताम् ॥ ४२ ॥",
-          "transliteration": "tadeva sādhyatāṃ tadeva sādhyatām || 42 ||"
+          "transliteration": "tadeva sādhyatāṃ tadeva sādhyatām || 42 ||",
+          "hindi": "उसी (सत्संग) की साधना करो, उसी की साधना करो।",
+          "translation": "Seek that alone, seek that alone."
         },
         {
           "number": 43,
           "sanskrit": "दुःसङ्गः सर्वथैव त्याज्यः ॥ ४३ ॥",
-          "transliteration": "duḥsaṅgaḥ sarvathaiva tyājyaḥ || 43 ||"
+          "transliteration": "duḥsaṅgaḥ sarvathaiva tyājyaḥ || 43 ||",
+          "hindi": "कुसंग का सब प्रकार से त्याग करना चाहिए।",
+          "translation": "Bad company should be given up in every way."
         },
         {
           "number": 44,
           "sanskrit": "कामक्रोधमोहस्मृतिभ्रंशबुद्धिनाशसर्वनाशकारणत्वात् ॥ ४४ ॥",
-          "transliteration": "kāmakrodhamohasmṛtibhraṃśabuddhināśasarvanāśakāraṇatvāt || 44 ||"
+          "transliteration": "kāmakrodhamohasmṛtibhraṃśabuddhināśasarvanāśakāraṇatvāt || 44 ||",
+          "hindi": "क्योंकि वह काम, क्रोध, मोह, स्मृति-भ्रंश, बुद्धि-नाश और सर्वनाश का कारण है।",
+          "translation": "For it leads to desire, anger, delusion, loss of memory, loss of judgment, and total ruin."
         },
         {
           "number": 45,
           "sanskrit": "तरङ्गायिता अपीमे सङ्गात्समुद्रायन्ति ॥ ४५ ॥",
-          "transliteration": "taraṅgāyitā apīme saṅgātsamudrāyanti || 45 ||"
+          "transliteration": "taraṅgāyitā apīme saṅgātsamudrāyanti || 45 ||",
+          "hindi": "ये (विकार) पहले तरंगों के समान (छोटे) होने पर भी कुसंग से समुद्र के समान (विशाल) हो जाते हैं।",
+          "translation": "These start as ripples, but through bad company they swell into an ocean."
         },
         {
           "number": 46,
           "sanskrit": "कस्तरति कस्तरति मायाम्? यः सङ्गांस्त्यजति, यो महानुभावं सेवते, निर्ममो भवति ॥ ४६ ॥",
-          "transliteration": "kastarati kastarati māyām? yaḥ saṅgāṃstyajati, yo mahānubhāvaṃ sevate, nirmamo bhavati || 46 ||"
+          "transliteration": "kastarati kastarati māyām? yaḥ saṅgāṃstyajati, yo mahānubhāvaṃ sevate, nirmamo bhavati || 46 ||",
+          "hindi": "कौन तरता है, कौन माया से तरता है? जो संग का त्याग करता है, जो महापुरुषों की सेवा करता है और जो ममता से रहित हो जाता है।",
+          "translation": "Who crosses, who crosses over maya? The one who gives up attachments, serves the great-souled, and lets go of 'mine'."
         },
         {
           "number": 47,
           "sanskrit": "यो विविक्तस्थानं सेवते, यो लोकबन्धमुन्मूलयति, निस्त्रैगुण्यो भवति, योगक्षेमं त्यजति ॥ ४७ ॥",
-          "transliteration": "yo viviktasthānaṃ sevate, yo lokabandhamunmūlayati, nistraiguṇyo bhavati, yogakṣemaṃ tyajati || 47 ||"
+          "transliteration": "yo viviktasthānaṃ sevate, yo lokabandhamunmūlayati, nistraiguṇyo bhavati, yogakṣemaṃ tyajati || 47 ||",
+          "hindi": "जो एकान्त स्थान का सेवन करता है, जो लोक के बन्धनों को जड़ से उखाड़ देता है, जो तीनों गुणों से परे हो जाता है और जो योग-क्षेम (पाने और बचाने की चिन्ता) छोड़ देता है।",
+          "translation": "The one who lives in solitude, uproots worldly ties, goes beyond the three gunas, and gives up worry over gaining and keeping."
         },
         {
           "number": 48,
           "sanskrit": "यः कर्मफलं त्यजति, कर्माणि संन्यस्यति, ततो निर्द्वन्द्वो भवति ॥ ४८ ॥",
-          "transliteration": "yaḥ karmaphalaṃ tyajati, karmāṇi saṃnyasyati, tato nirdvandvo bhavati || 48 ||"
+          "transliteration": "yaḥ karmaphalaṃ tyajati, karmāṇi saṃnyasyati, tato nirdvandvo bhavati || 48 ||",
+          "hindi": "जो कर्म के फल का त्याग करता है, कर्मों का संन्यास करता है और फिर द्वन्द्वों से मुक्त हो जाता है।",
+          "translation": "The one who gives up the fruits of action, renounces action itself, and so goes beyond the pairs of opposites."
         },
         {
           "number": 49,
           "sanskrit": "वेदानपि संन्यस्यति, केवलमविच्छिन्नानुरागं लभते ॥ ४९ ॥",
-          "transliteration": "vedānapi saṃnyasyati, kevalamavicchinnānurāgaṃ labhate || 49 ||"
+          "transliteration": "vedānapi saṃnyasyati, kevalamavicchinnānurāgaṃ labhate || 49 ||",
+          "hindi": "जो वेदों का भी संन्यास कर देता है और केवल अखण्ड अनुराग को प्राप्त करता है।",
+          "translation": "The one who lets go even of the Vedas and gains only unbroken love."
         },
         {
           "number": 50,
           "sanskrit": "स तरति स तरति स लोकांस्तारयति ॥ ५० ॥",
-          "transliteration": "sa tarati sa tarati sa lokāṃstārayati || 50 ||"
+          "transliteration": "sa tarati sa tarati sa lokāṃstārayati || 50 ||",
+          "hindi": "वह तरता है, वह तरता है, वह लोकों को भी तार देता है।",
+          "translation": "That one crosses, that one crosses, and carries the world across too."
         },
         {
           "number": 51,
           "sanskrit": "अनिर्वचनीयं प्रेमस्वरूपम् ॥ ५१ ॥",
-          "transliteration": "anirvacanīyaṃ premasvarūpam || 51 ||"
+          "transliteration": "anirvacanīyaṃ premasvarūpam || 51 ||",
+          "hindi": "प्रेम का स्वरूप अनिर्वचनीय (कहने में न आने वाला) है।",
+          "translation": "The nature of this love cannot be put into words."
         },
         {
           "number": 52,
           "sanskrit": "मूकास्वादनवत् ॥ ५२ ॥",
-          "transliteration": "mūkāsvādanavat || 52 ||"
+          "transliteration": "mūkāsvādanavat || 52 ||",
+          "hindi": "गूँगे के स्वाद लेने के समान।",
+          "translation": "It is like a mute person tasting something sweet."
         },
         {
           "number": 53,
           "sanskrit": "प्रकाशते क्वापि पात्रे ॥ ५३ ॥",
-          "transliteration": "prakāśate kvāpi pātre || 53 ||"
+          "transliteration": "prakāśate kvāpi pātre || 53 ||",
+          "hindi": "वह किसी (योग्य) पात्र में ही प्रकट होता है।",
+          "translation": "It shines forth only in a rare, fit vessel."
         },
         {
           "number": 54,
           "sanskrit": "गुणरहितं कामनारहितं प्रतिक्षणवर्धमानमविच्छिन्नं सूक्ष्मतरमनुभवरूपम् ॥ ५४ ॥",
-          "transliteration": "guṇarahitaṃ kāmanārahitaṃ pratikṣaṇavardhamānamavicchinnaṃ sūkṣmataramanubhavarūpam || 54 ||"
+          "transliteration": "guṇarahitaṃ kāmanārahitaṃ pratikṣaṇavardhamānamavicchinnaṃ sūkṣmataramanubhavarūpam || 54 ||",
+          "hindi": "वह गुणों से रहित, कामना से रहित, प्रतिक्षण बढ़ने वाला, अखण्ड, सूक्ष्मतर और अनुभव-स्वरूप है।",
+          "translation": "It is beyond the gunas, free of desire, growing every moment, unbroken, subtler than the subtle, and known only by experience."
         },
         {
           "number": 55,
@@ -323,57 +421,79 @@
         {
           "number": 56,
           "sanskrit": "गौणी त्रिधा गुणभेदादार्तादिभेदाद्वा ॥ ५६ ॥",
-          "transliteration": "gauṇī tridhā guṇabhedādārtādibhedādvā || 56 ||"
+          "transliteration": "gauṇī tridhā guṇabhedādārtādibhedādvā || 56 ||",
+          "hindi": "गौणी (साधन-रूप) भक्ति गुणों के भेद से या आर्त आदि (भक्तों) के भेद से तीन प्रकार की है।",
+          "translation": "Secondary bhakti is of three kinds, according to the gunas, or according to the seeker: the distressed and the others."
         },
         {
           "number": 57,
           "sanskrit": "उत्तरस्मादुत्तरस्मात्पूर्वपूर्वा श्रेयाय भवति ॥ ५७ ॥",
-          "transliteration": "uttarasmāduttarasmātpūrvapūrvā śreyāya bhavati || 57 ||"
+          "transliteration": "uttarasmāduttarasmātpūrvapūrvā śreyāya bhavati || 57 ||",
+          "hindi": "बाद वाली की अपेक्षा पहले वाली अधिक कल्याणकारी होती है।",
+          "translation": "Of these, each earlier kind is better than the one after it."
         },
         {
           "number": 58,
           "sanskrit": "अन्यस्मात् सौलभ्यं भक्तौ ॥ ५८ ॥",
-          "transliteration": "anyasmāt saulabhyaṃ bhaktau || 58 ||"
+          "transliteration": "anyasmāt saulabhyaṃ bhaktau || 58 ||",
+          "hindi": "दूसरे (मार्गों) की अपेक्षा भक्ति में सुलभता है।",
+          "translation": "Bhakti is easier to reach than any other path."
         },
         {
           "number": 59,
           "sanskrit": "प्रमाणान्तरस्यानपेक्षत्वात् स्वयंप्रमाणत्वात् ॥ ५९ ॥",
-          "transliteration": "pramāṇāntarasyānapekṣatvāt svayaṃpramāṇatvāt || 59 ||"
+          "transliteration": "pramāṇāntarasyānapekṣatvāt svayaṃpramāṇatvāt || 59 ||",
+          "hindi": "क्योंकि इसे दूसरे प्रमाण की अपेक्षा नहीं है; यह स्वयं प्रमाण है।",
+          "translation": "For it needs no other proof; it is its own proof."
         },
         {
           "number": 60,
           "sanskrit": "शान्तिरूपात्परमानन्दरूपाच्च ॥ ६० ॥",
-          "transliteration": "śāntirūpātparamānandarūpācca || 60 ||"
+          "transliteration": "śāntirūpātparamānandarūpācca || 60 ||",
+          "hindi": "और क्योंकि यह शान्ति-रूपा तथा परमानन्द-रूपा है।",
+          "translation": "And because its nature is peace and supreme joy."
         },
         {
           "number": 61,
           "sanskrit": "लोकहानौ चिन्ता न कार्या निवेदितात्मलोकवेदत्वात् ॥ ६१ ॥",
-          "transliteration": "lokahānau cintā na kāryā niveditātmalokavedatvāt || 61 ||"
+          "transliteration": "lokahānau cintā na kāryā niveditātmalokavedatvāt || 61 ||",
+          "hindi": "लोक की हानि होने पर चिन्ता नहीं करनी चाहिए, क्योंकि (भक्त ने) अपने को, लोक को और वेद को (भगवान को) अर्पित कर दिया है।",
+          "translation": "Do not worry over worldly loss, for the devotee has offered self, world and Veda to the Lord."
         },
         {
           "number": 62,
           "sanskrit": "न तदसिद्धौ लोकव्यवहारो हेयः किन्तु फलत्यागस्तत्साधनं च कार्यमेव ॥ ६२ ॥",
-          "transliteration": "na tadasiddhau lokavyavahāro heyaḥ kintu phalatyāgastatsādhanaṃ ca kāryameva || 62 ||"
+          "transliteration": "na tadasiddhau lokavyavahāro heyaḥ kintu phalatyāgastatsādhanaṃ ca kāryameva || 62 ||",
+          "hindi": "जब तक वह (भक्ति) सिद्ध न हो, तब तक लोक-व्यवहार नहीं छोड़ना चाहिए; पर फल का त्याग और उसके साधन तो करने ही चाहिए।",
+          "translation": "Until bhakti is reached, worldly duties should not be dropped; but one should give up their fruits and keep up the practices."
         },
         {
           "number": 63,
           "sanskrit": "स्त्रीधननास्तिकवैरिचरित्रं न श्रवणीयम् ॥ ६३ ॥",
-          "transliteration": "strīdhananāstikavairicaritraṃ na śravaṇīyam || 63 ||"
+          "transliteration": "strīdhananāstikavairicaritraṃ na śravaṇīyam || 63 ||",
+          "hindi": "स्त्री, धन, नास्तिक और वैरी के चरित्र (की चर्चा) नहीं सुननी चाहिए।",
+          "translation": "Do not listen to talk of sensual pleasure, wealth, unbelievers, or enemies."
         },
         {
           "number": 64,
           "sanskrit": "अभिमानदम्भादिकं त्याज्यम् ॥ ६४ ॥",
-          "transliteration": "abhimānadambhādikaṃ tyājyam || 64 ||"
+          "transliteration": "abhimānadambhādikaṃ tyājyam || 64 ||",
+          "hindi": "अभिमान, दम्भ आदि का त्याग करना चाहिए।",
+          "translation": "Pride, hypocrisy and the like should be given up."
         },
         {
           "number": 65,
           "sanskrit": "तदर्पिताखिलाचारः सन् कामक्रोधाभिमानादिकं तस्मिन्नेव करणीयम् ॥ ६५ ॥",
-          "transliteration": "tadarpitākhilācāraḥ san kāmakrodhābhimānādikaṃ tasminneva karaṇīyam || 65 ||"
+          "transliteration": "tadarpitākhilācāraḥ san kāmakrodhābhimānādikaṃ tasminneva karaṇīyam || 65 ||",
+          "hindi": "अपने सब आचरण उन्हें अर्पित करके, काम, क्रोध, अभिमान आदि भी उन्हीं के प्रति करने चाहिए।",
+          "translation": "Having offered every act to the Lord, turn even desire, anger and pride toward the Lord alone."
         },
         {
           "number": 66,
           "sanskrit": "त्रिरूपभङ्गपूर्वकं नित्यदासनित्यकान्ताभजनात्मकं वा प्रेमैव कार्यम्, प्रेमैव कार्यम् ॥ ६६ ॥",
-          "transliteration": "trirūpabhaṅgapūrvakaṃ nityadāsanityakāntābhajanātmakaṃ vā premaiva kāryam, premaiva kāryam || 66 ||"
+          "transliteration": "trirūpabhaṅgapūrvakaṃ nityadāsanityakāntābhajanātmakaṃ vā premaiva kāryam, premaiva kāryam || 66 ||",
+          "hindi": "तीन रूपों (सेवक, सेव्य और सेवा के भेद) को तोड़कर, नित्य दास या नित्य प्रियतमा के भाव से भजन करते हुए प्रेम ही करना चाहिए, प्रेम ही करना चाहिए।",
+          "translation": "Going beyond the threefold divide, love alone should be practised, love alone, as an eternal servant or an eternal beloved."
         },
         {
           "number": 67,
@@ -388,87 +508,121 @@
         {
           "number": 68,
           "sanskrit": "कण्ठावरोधरोमाञ्चाश्रुभिः परस्परं लपमानाः पावयन्ति कुलानि पृथिवीं च ॥ ६८ ॥",
-          "transliteration": "kaṇṭhāvarodharomāñcāśrubhiḥ parasparaṃ lapamānāḥ pāvayanti kulāni pṛthivīṃ ca || 68 ||"
+          "transliteration": "kaṇṭhāvarodharomāñcāśrubhiḥ parasparaṃ lapamānāḥ pāvayanti kulāni pṛthivīṃ ca || 68 ||",
+          "hindi": "गला भर आने, रोमांच और आँसुओं के साथ आपस में (भगवान की) चर्चा करने वाले (भक्त) अपने कुलों को और पृथ्वी को पवित्र करते हैं।",
+          "translation": "Talking with one another, voices choked, hair on end and eyes in tears, such devotees purify their families and the earth."
         },
         {
           "number": 69,
           "sanskrit": "तीर्थीकुर्वन्ति तीर्थानि, सुकर्मीकुर्वन्ति कर्माणि, सच्छास्त्रीकुर्वन्ति शास्त्राणि ॥ ६९ ॥",
-          "transliteration": "tīrthīkurvanti tīrthāni, sukarmīkurvanti karmāṇi, sacchāstrīkurvanti śāstrāṇi || 69 ||"
+          "transliteration": "tīrthīkurvanti tīrthāni, sukarmīkurvanti karmāṇi, sacchāstrīkurvanti śāstrāṇi || 69 ||",
+          "hindi": "वे तीर्थों को तीर्थ बनाते हैं, कर्मों को सुकर्म बनाते हैं और शास्त्रों को सत्-शास्त्र बनाते हैं।",
+          "translation": "They make holy places holy, make actions good, and make scriptures true scripture."
         },
         {
           "number": 70,
           "sanskrit": "तन्मयाः ॥ ७० ॥",
-          "transliteration": "tanmayāḥ || 70 ||"
+          "transliteration": "tanmayāḥ || 70 ||",
+          "hindi": "(क्योंकि वे) तन्मय (भगवान में लीन) हैं।",
+          "translation": "For they are filled with the Lord."
         },
         {
           "number": 71,
           "sanskrit": "मोदन्ते पितरो नृत्यन्ति देवताः सनाथा चेयं भूर्भवति ॥ ७१ ॥",
-          "transliteration": "modante pitaro nṛtyanti devatāḥ sanāthā ceyaṃ bhūrbhavati || 71 ||"
+          "transliteration": "modante pitaro nṛtyanti devatāḥ sanāthā ceyaṃ bhūrbhavati || 71 ||",
+          "hindi": "(उन्हें देखकर) पितर आनन्दित होते हैं, देवता नाचते हैं और यह पृथ्वी सनाथ (रक्षक वाली) हो जाती है।",
+          "translation": "The ancestors rejoice, the gods dance, and the earth feels it has a protector."
         },
         {
           "number": 72,
           "sanskrit": "नास्ति तेषु जातिविद्यारूपकुलधनक्रियादिभेदः ॥ ७२ ॥",
-          "transliteration": "nāsti teṣu jātividyārūpakuladhanakriyādibhedaḥ || 72 ||"
+          "transliteration": "nāsti teṣu jātividyārūpakuladhanakriyādibhedaḥ || 72 ||",
+          "hindi": "उनमें जाति, विद्या, रूप, कुल, धन, कर्म आदि का भेद नहीं है।",
+          "translation": "Among them there is no distinction of caste, learning, looks, family, wealth or occupation."
         },
         {
           "number": 73,
           "sanskrit": "यतस्तदीयाः ॥ ७३ ॥",
-          "transliteration": "yatastadīyāḥ || 73 ||"
+          "transliteration": "yatastadīyāḥ || 73 ||",
+          "hindi": "क्योंकि वे उन्हीं (भगवान) के हैं।",
+          "translation": "For they all belong to the Lord."
         },
         {
           "number": 74,
           "sanskrit": "वादो नावलम्ब्यः ॥ ७४ ॥",
-          "transliteration": "vādo nāvalambyaḥ || 74 ||"
+          "transliteration": "vādo nāvalambyaḥ || 74 ||",
+          "hindi": "वाद-विवाद का सहारा नहीं लेना चाहिए।",
+          "translation": "Do not get caught in argument."
         },
         {
           "number": 75,
           "sanskrit": "बाहुल्यावकाशादनियतत्वाच्च ॥ ७५ ॥",
-          "transliteration": "bāhulyāvakāśādaniyatatvācca || 75 ||"
+          "transliteration": "bāhulyāvakāśādaniyatatvācca || 75 ||",
+          "hindi": "क्योंकि उसमें (मतों की) बहुलता की गुंजाइश है और वह अनिश्चित है।",
+          "translation": "For it leaves room for endless views and reaches no settled end."
         },
         {
           "number": 76,
           "sanskrit": "भक्तिशास्त्राणि मननीयानि तदुद्बोधककर्माण्यपि करणीयानि ॥ ७६ ॥",
-          "transliteration": "bhaktiśāstrāṇi mananīyāni tadudbodhakakarmāṇyapi karaṇīyāni || 76 ||"
+          "transliteration": "bhaktiśāstrāṇi mananīyāni tadudbodhakakarmāṇyapi karaṇīyāni || 76 ||",
+          "hindi": "भक्ति-शास्त्रों का मनन करना चाहिए और उसे जगाने वाले कर्म भी करने चाहिए।",
+          "translation": "Reflect on the scriptures of bhakti, and do the acts that awaken it."
         },
         {
           "number": 77,
           "sanskrit": "सुखदुःखेच्छालाभादित्यक्ते काले प्रतीक्ष्यमाणे क्षणार्द्धमपि व्यर्थं न नेयम् ॥ ७७ ॥",
-          "transliteration": "sukhaduḥkhecchālābhādityakte kāle pratīkṣyamāṇe kṣaṇārddhamapi vyarthaṃ na neyam || 77 ||"
+          "transliteration": "sukhaduḥkhecchālābhādityakte kāle pratīkṣyamāṇe kṣaṇārddhamapi vyarthaṃ na neyam || 77 ||",
+          "hindi": "सुख, दुःख, इच्छा, लाभ आदि से मुक्त होने वाले समय की प्रतीक्षा करते हुए आधा क्षण भी व्यर्थ नहीं गँवाना चाहिए।",
+          "translation": "Do not wait for a time free of pleasure, pain, desire and gain; do not waste even half a moment."
         },
         {
           "number": 78,
           "sanskrit": "अहिंसासत्यशौचदयास्तिक्यादिचारित्र्याणि परिपालनीयानि ॥ ७८ ॥",
-          "transliteration": "ahiṃsāsatyaśaucadayāstikyādicāritryāṇi paripālanīyāni || 78 ||"
+          "transliteration": "ahiṃsāsatyaśaucadayāstikyādicāritryāṇi paripālanīyāni || 78 ||",
+          "hindi": "अहिंसा, सत्य, शौच, दया, आस्तिकता आदि सदाचारों का पालन करना चाहिए।",
+          "translation": "Keep up good conduct: non-violence, truthfulness, purity, compassion, faith and the like."
         },
         {
           "number": 79,
           "sanskrit": "सर्वदा सर्वभावेन निश्चिन्तितैर्भगवानेव भजनीयः ॥ ७९ ॥",
-          "transliteration": "sarvadā sarvabhāvena niścintitairbhagavāneva bhajanīyaḥ || 79 ||"
+          "transliteration": "sarvadā sarvabhāvena niścintitairbhagavāneva bhajanīyaḥ || 79 ||",
+          "hindi": "सदा, सब भावों से, निश्चिन्त होकर भगवान का ही भजन करना चाहिए।",
+          "translation": "Always, with one's whole being and free of worry, worship the Lord alone."
         },
         {
           "number": 80,
           "sanskrit": "स कीर्त्यमानः शीघ्रमेवाविर्भवति अनुभावयति च भक्तान् ॥ ८० ॥",
-          "transliteration": "sa kīrtyamānaḥ śīghramevāvirbhavati anubhāvayati ca bhaktān || 80 ||"
+          "transliteration": "sa kīrtyamānaḥ śīghramevāvirbhavati anubhāvayati ca bhaktān || 80 ||",
+          "hindi": "कीर्तन किए जाने पर आप शीघ्र ही प्रकट होते हैं और भक्तों को अपना अनुभव कराते हैं।",
+          "translation": "When the Lord is sung, the Lord soon appears and lets the devotees feel that presence."
         },
         {
           "number": 81,
           "sanskrit": "त्रिसत्यस्य भक्तिरेव गरीयसी भक्तिरेव गरीयसी ॥ ८१ ॥",
-          "transliteration": "trisatyasya bhaktireva garīyasī bhaktireva garīyasī || 81 ||"
+          "transliteration": "trisatyasya bhaktireva garīyasī bhaktireva garīyasī || 81 ||",
+          "hindi": "तीनों कालों में सत्य (भगवान) की भक्ति ही श्रेष्ठ है, भक्ति ही श्रेष्ठ है।",
+          "translation": "Devotion to the One who is true in all three times is the greatest; devotion is the greatest."
         },
         {
           "number": 82,
           "sanskrit": "गुणमाहात्म्यासक्तिरूपासक्तिपूजासक्तिस्मरणासक्तिदास्यासक्तिसख्यासक्तिकान्तासक्तिवात्सल्यासक्त्यात्मनिवेदनासक्तितन्मयतासक्तिपरमविरहासक्तिरूपाप्येका एकादशधा भवति ॥ ८२ ॥",
-          "transliteration": "guṇamāhātmyāsaktirūpāsaktipūjāsaktismaraṇāsaktidāsyāsaktisakhyāsaktikāntāsaktivātsalyāsaktyātmanivedanāsaktitanmayatāsaktiparamavirahāsaktirūpāpyekā ekādaśadhā bhavati || 82 ||"
+          "transliteration": "guṇamāhātmyāsaktirūpāsaktipūjāsaktismaraṇāsaktidāsyāsaktisakhyāsaktikāntāsaktivātsalyāsaktyātmanivedanāsaktitanmayatāsaktiparamavirahāsaktirūpāpyekā ekādaśadhā bhavati || 82 ||",
+          "hindi": "एक होते हुए भी भक्ति ग्यारह रूपों वाली होती है: गुण-माहात्म्य में आसक्ति, रूप में आसक्ति, पूजा में आसक्ति, स्मरण में आसक्ति, दास्य, सख्य, कान्ता-भाव और वात्सल्य में आसक्ति, आत्म-निवेदन में आसक्ति, तन्मयता में आसक्ति और परम विरह में आसक्ति।",
+          "translation": "Though one, bhakti takes eleven forms: love of the Lord's qualities and greatness, of the Lord's form, of worship, of remembrance, of service, of friendship, of the beloved's love, of a parent's love, of self-offering, of absorption, and of the pain of separation."
         },
         {
           "number": 83,
           "sanskrit": "इत्येवं वदन्ति जनजल्पनिर्भया एकमताः कुमारव्यासशुकशाण्डिल्यगर्गविष्णुकौण्डिन्यशेषोद्धवारुणिबलिहनुमद्विभीषणादयो भक्त्याचार्याः ॥ ८३ ॥",
-          "transliteration": "ityevaṃ vadanti janajalpanirbhayā ekamatāḥ kumāravyāsaśukaśāṇḍilyagargaviṣṇukauṇḍinyaśeṣoddhavāruṇibalihanumadvibhīṣaṇādayo bhaktyācāryāḥ || 83 ||"
+          "transliteration": "ityevaṃ vadanti janajalpanirbhayā ekamatāḥ kumāravyāsaśukaśāṇḍilyagargaviṣṇukauṇḍinyaśeṣoddhavāruṇibalihanumadvibhīṣaṇādayo bhaktyācāryāḥ || 83 ||",
+          "hindi": "लोगों की बातों से न डरने वाले, एक मत वाले भक्ति के आचार्य, जैसे सनत्कुमार, व्यास, शुकदेव, शाण्डिल्य, गर्ग, विष्णु, कौण्डिन्य, शेष, उद्धव, आरुणि, बलि, हनुमान, विभीषण आदि, ऐसा ही कहते हैं।",
+          "translation": "So say the teachers of bhakti with one voice, unafraid of public talk: Kumara, Vyasa, Shuka, Shandilya, Garga, Vishnu, Kaundinya, Shesha, Uddhava, Aruni, Bali, Hanuman, Vibhishana and others."
         },
         {
           "number": 84,
           "sanskrit": "य इदं नारदप्रोक्तं शिवानुशासनं विश्वसिति श्रद्धत्ते स प्रेष्ठं लभते स प्रेष्ठं लभत इति ॥ ८४ ॥",
-          "transliteration": "ya idaṃ nāradaproktaṃ śivānuśāsanaṃ viśvasiti śraddhatte sa preṣṭhaṃ labhate sa preṣṭhaṃ labhata iti || 84 ||"
+          "transliteration": "ya idaṃ nāradaproktaṃ śivānuśāsanaṃ viśvasiti śraddhatte sa preṣṭhaṃ labhate sa preṣṭhaṃ labhata iti || 84 ||",
+          "hindi": "जो नारद के कहे इस मंगलमय उपदेश पर विश्वास और श्रद्धा रखता है, वह परम प्रिय (भगवान) को पाता है, वह परम प्रिय को पाता है।",
+          "translation": "Whoever trusts and has faith in this auspicious teaching given by Narada attains the most Beloved, attains the most Beloved."
         }
       ]
     }

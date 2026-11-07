@@ -198,7 +198,7 @@ export function ConceptRelationshipGraph({
                     y={node.sanskrit.length > 5 ? -1 : 4}
                     className={`font-devanagari select-none transition-colors ${
                       isSelected
-                        ? 'fill-white text-[12px] font-bold'
+                        ? 'fill-white text-caption font-bold'
                         : isRelated
                         ? 'fill-saffron-900 dark:fill-saffron-200 text-[11px] font-semibold'
                         : 'fill-dharma-text text-[10px]'

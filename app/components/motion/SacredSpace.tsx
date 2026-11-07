@@ -69,7 +69,7 @@ export function SacredSpace() {
       aria-labelledby="sacred-space-heading"
       className="relative overflow-hidden border-b border-dharma-border bg-gradient-to-b from-dharma-card/60 via-amber-500/5 to-dharma-bg py-16 sm:py-24"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+      <div className="mx-auto max-w-6xl px-gutter">
         <div className="mb-12 text-center">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-saffron-500/20 bg-saffron-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-amber-500" aria-hidden="true" />

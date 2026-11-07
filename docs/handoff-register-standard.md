@@ -44,7 +44,7 @@ Apply the full व्याख्या standard across the site:
 4. **Vivekchudamani व्याख्या, verses 301–580.** Follow the vyakhya guide's workflow:
    - Draft into `data/ai-commentary/staged/vivekchudamani-NN.json` (01–05 exist, so the next is `-06`).
    - Run `node scripts/check-hindi-register.mjs <file>`; it must print `sentences to fix 0`.
-   - Run `node scripts/stage-commentary.mjs <file>`, then `npm run publish:commentary`.
+   - Run `node scripts/stage-commentary.mjs <file>` to add pending entries. Review and explicitly approve the intended keys with `node scripts/approve-commentary.mjs <id> <chapter:verse>...` before running `npm run publish:commentary`; see `docs/vyakhya-guide.md`.
    - Note: verse 213's "ते" is ambiguous ("yours" or "those"), and its व्याख्या gives both readings.
 5. **Other scriptures' व्याख्या**, one scripture at a time, with the user's approval of each.
 

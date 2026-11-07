@@ -58,6 +58,12 @@ import {
 import { triggerPranaToast } from '@/lib/prana-capsule-store';
 import { executeSearchWithWorker } from '@/lib/workers/search-worker-client';
 import { useConnectivity } from '@/lib/useConnectivity';
+import {
+  getTypeaheadSuggestion,
+  getTypeaheadSuggestions,
+  getTrilingualEquivalent,
+  type TypeaheadMatch,
+} from '@/lib/search-typeahead';
 
 export type { SearchResultItem } from '@/lib/search';
 
@@ -269,34 +275,34 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
 /* ── Presentation helpers ────────────────────────────────────────────── */
 
 function groupIcon(group: SearchResultGroup) {
-  const cls = 'h-4 w-4';
+  const cls = 'h-4 w-4 shrink-0';
   switch (group) {
     case 'verse':
-      return <Quote className={`${cls} text-amber-600 dark:text-amber-400`} aria-hidden="true" />;
+      return <Quote className={`${cls} text-amber-500`} aria-hidden="true" />;
     case 'scripture':
-      return <BookOpen className={`${cls} text-orange-600 dark:text-orange-400`} aria-hidden="true" />;
+      return <BookOpen className={`${cls} text-orange-500`} aria-hidden="true" />;
     case 'chapter':
-      return <BookMarked className={`${cls} text-yellow-700 dark:text-yellow-400`} aria-hidden="true" />;
+      return <BookMarked className={`${cls} text-yellow-600 dark:text-yellow-400`} aria-hidden="true" />;
     case 'concept':
-      return <Flame className={`${cls} text-rose-600 dark:text-rose-400`} aria-hidden="true" />;
+      return <Flame className={`${cls} text-rose-500`} aria-hidden="true" />;
     case 'topic':
-      return <Compass className={`${cls} text-emerald-700 dark:text-emerald-400`} aria-hidden="true" />;
+      return <Compass className={`${cls} text-emerald-600 dark:text-emerald-400`} aria-hidden="true" />;
     case 'commentary':
-      return <ScrollText className={`${cls} text-indigo-600 dark:text-indigo-300`} aria-hidden="true" />;
+      return <ScrollText className={`${cls} text-indigo-500 dark:text-indigo-400`} aria-hidden="true" />;
     case 'learning':
-      return <Sparkles className={`${cls} text-purple-600 dark:text-purple-300`} aria-hidden="true" />;
+      return <Sparkles className={`${cls} text-purple-500 dark:text-purple-400`} aria-hidden="true" />;
     case 'practice':
-      return <Sun className={`${cls} text-amber-600 dark:text-amber-400`} aria-hidden="true" />;
+      return <Sun className={`${cls} text-amber-500`} aria-hidden="true" />;
     default:
-      return <FileText className={`${cls} text-saffron-600`} aria-hidden="true" />;
+      return <FileText className={`${cls} text-tint`} aria-hidden="true" />;
   }
 }
 
 function reasonClass(reason: string) {
-  if (reason.startsWith('Exact reference')) return 'border-emerald-600/40 bg-emerald-500/10 text-emerald-900 dark:text-emerald-200';
-  if (reason.includes('typo') || reason.startsWith('Showing results')) return 'border-sky-600/40 bg-sky-500/10 text-sky-900 dark:text-sky-200';
+  if (reason.startsWith('Exact reference')) return 'border-emerald-600/30 bg-emerald-500/10 text-emerald-900 dark:text-emerald-200';
+  if (reason.includes('typo') || reason.startsWith('Showing results')) return 'border-sky-600/30 bg-sky-500/10 text-sky-900 dark:text-sky-200';
   if (reason.startsWith('Cited in') || reason.startsWith('Matches “')) return 'border-rose-600/30 bg-rose-500/10 text-rose-900 dark:text-rose-200';
-  return 'border-amber-600/35 bg-amber-500/10 text-amber-950 dark:text-amber-200';
+  return 'border-separator bg-fill-quaternary text-label-secondary';
 }
 
 /** Highlights the matching words. Whole words only, so Devanagari conjuncts and vowel signs are never split. */
@@ -308,7 +314,7 @@ function Highlighted({ text, query }: { text: string; query: string }): ReactNod
   spans.forEach(([start, end], i) => {
     if (start > at) out.push(<Fragment key={`t${i}`}>{text.slice(at, start)}</Fragment>);
     out.push(
-      <mark key={`m${i}`} className="rounded-[3px] bg-amber-300/45 text-inherit dark:bg-amber-400/25">
+      <mark key={`m${i}`} className="rounded-[3px] bg-amber-400/25 text-inherit font-medium dark:bg-amber-400/30">
         {text.slice(start, end)}
       </mark>,
     );
@@ -324,22 +330,22 @@ const isDevanagariText = (s: string) => /[ऀ-ॿ]/.test(s);
 function matchedTextStyle(item: SearchResultItem): { lang: string; className: string } {
   const text = item.matchingText || item.title;
   const field = item.matchedField;
-  if (field === 'roman') return { lang: 'sa-Latn', className: 'font-serif text-base italic leading-relaxed text-dharma-text' };
-  if (field === 'english') return { lang: 'en', className: 'font-serif text-base leading-relaxed text-dharma-text' };
+  if (field === 'roman') return { lang: 'sa-Latn', className: 'font-serif text-body italic leading-relaxed text-label-primary' };
+  if (field === 'english') return { lang: 'en', className: 'font-serif text-body leading-relaxed text-label-primary' };
   if (field === 'hindi' || (field === 'explanation' && isDevanagariText(text))) {
-    return { lang: 'hi', className: 'font-devanagari text-[1.0625rem] leading-[1.9] text-dharma-text' };
+    return { lang: 'hi', className: 'font-devanagari text-[1.0625rem] leading-[1.9] text-label-primary' };
   }
-  if (isDevanagariText(text)) return { lang: 'sa', className: 'font-devanagari text-lg font-semibold leading-[1.85] text-dharma-text' };
-  return { lang: 'en', className: 'text-base font-semibold leading-relaxed text-dharma-text' };
+  if (isDevanagariText(text)) return { lang: 'sa', className: 'font-devanagari text-lg font-semibold leading-[1.85] text-label-primary' };
+  return { lang: 'en', className: 'text-body font-semibold leading-relaxed text-label-primary' };
 }
 
 const TOPIC_TINTS = [
-  'border-rose-500/30 bg-rose-500/5',
-  'border-teal-500/30 bg-teal-500/5',
-  'border-amber-500/30 bg-amber-500/5',
-  'border-indigo-500/30 bg-indigo-500/5',
-  'border-emerald-500/30 bg-emerald-500/5',
-  'border-sky-500/30 bg-sky-500/5',
+  'border-rose-500/25 bg-rose-500/5 hover:border-rose-500/40 hover:bg-rose-500/10',
+  'border-teal-500/25 bg-teal-500/5 hover:border-teal-500/40 hover:bg-teal-500/10',
+  'border-amber-500/25 bg-amber-500/5 hover:border-amber-500/40 hover:bg-amber-500/10',
+  'border-indigo-500/25 bg-indigo-500/5 hover:border-indigo-500/40 hover:bg-indigo-500/10',
+  'border-emerald-500/25 bg-emerald-500/5 hover:border-emerald-500/40 hover:bg-emerald-500/10',
+  'border-sky-500/25 bg-sky-500/5 hover:border-sky-500/40 hover:bg-sky-500/10',
 ];
 
 /* ── Component ───────────────────────────────────────────────────────── */
@@ -369,6 +375,11 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
   const deferredQuery = useDeferredValue(query);
   const trimmed = deferredQuery.trim();
   const isStale = query !== deferredQuery;
+
+  // Real-time typeahead, direct citation, trilingual vocabulary and quick-pick predictions
+  const typeaheadSuggestion = useMemo(() => getTypeaheadSuggestion(query), [query]);
+  const quickPickSuggestions = useMemo(() => getTypeaheadSuggestions(query, 4), [query]);
+  const trilingualHint = useMemo(() => getTrilingualEquivalent(query), [query]);
 
   const isActionQuery = trimmed.startsWith('>');
   const actionFilter = isActionQuery ? trimmed.slice(1).trim().toLowerCase() : '';
@@ -525,6 +536,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
         return;
       }
       if (e.key !== 'Tab') return;
+      // If typing in search box with an active typeahead completion, let input handle Tab
+      if (
+        document.activeElement === inputRef.current &&
+        typeaheadSuggestion?.completion &&
+        typeaheadSuggestion.completion !== query
+      ) {
+        return;
+      }
       const focusable = Array.from(
         win.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'),
       ).filter((el) => el.offsetParent !== null);
@@ -545,9 +564,21 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
     return () => document.removeEventListener('keydown', onKey);
   }, [isOpen, onClose]);
 
-  const onInputKeyDown = (e: React.KeyboardEvent) => {
+  const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     // Enter and arrows while a Hindi/Devanagari IME is composing pick a candidate; they must not navigate.
     if (e.nativeEvent.isComposing || e.keyCode === 229) return;
+
+    // Tab key or RightArrow at end of input completes the typeahead suggestion
+    if (
+      (e.key === 'Tab' || (e.key === 'ArrowRight' && inputRef.current?.selectionStart === query.length)) &&
+      typeaheadSuggestion?.completion &&
+      typeaheadSuggestion.completion !== query
+    ) {
+      e.preventDefault();
+      setQuery(typeaheadSuggestion.completion);
+      return;
+    }
+
     if (e.key === 'ArrowDown') {
       if (isActionQuery && matchingActions.length > 0) {
         e.preventDefault();
@@ -579,6 +610,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
         e.preventDefault();
         const action = matchingActions[selectedIndex % matchingActions.length] || matchingActions[0];
         action.run(onClose, router, cycleTheme);
+        return;
+      }
+      // Instant Direct Jump: If directHref exists and user hasn't actively navigated down the search results
+      if (typeaheadSuggestion?.directHref && (selectedIndex === 0 || display.length === 0)) {
+        e.preventDefault();
+        remember(query);
+        onClose();
+        router.push(typeaheadSuggestion.directHref);
         return;
       }
       if (display[selectedIndex]) {
@@ -632,8 +671,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduce ? 0 : 0.18 }}
-            // A plain dim, no blur: the palette itself is the one glass layer here.
-            className="fixed inset-0 bg-[#05060a]/70"
+            className="fixed inset-0 bg-black/45 backdrop-blur-sm"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -644,34 +682,51 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             exit={{ opacity: 0, scale: 0.98, y: -8 }}
             transition={reduce ? { duration: 0 } : PALETTE_SPRING}
             ref={windowRef}
-            className="liquid-glass command-palette relative z-10 flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-[28px]"
+            className="liquid-glass relative z-10 flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-panel shadow-2xl"
           >
             {/* Search box */}
-            <div className="flex items-center border-b border-dharma-border/80 px-4 py-3 sm:px-6">
-              <Search className={`mr-3 h-5 w-5 shrink-0 ${isStale ? 'animate-pulse text-amber-600' : 'text-saffron-700 dark:text-saffron-400'}`} aria-hidden="true" />
-              <input
-                ref={inputRef}
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={onInputKeyDown}
-                placeholder="Search Gita 2.47, कर्म, fear, or type > for actions…"
-                aria-label="Search scriptures, verses, topics and practices"
-                aria-describedby={statusId}
-                className="min-h-[44px] min-w-0 flex-1 bg-transparent text-base text-dharma-text outline-none placeholder:text-dharma-muted/70 sm:text-lg"
-                role="combobox"
-                aria-expanded={display.length > 0}
-                aria-autocomplete="list"
-                aria-controls={listboxId}
-                aria-activedescendant={display.length > 0 ? `search-item-${selectedIndex}` : undefined}
-                autoComplete="off"
-                autoCapitalize="off"
-                spellCheck={false}
-                enterKeyHint="search"
-              />
+            <div className="relative flex items-center border-b border-separator px-4 py-3 sm:px-6">
+              <Search className={`mr-3.5 h-5 w-5 shrink-0 ${isStale ? 'animate-pulse text-amber-500' : 'text-tint'}`} aria-hidden="true" />
+              
+              <div className="relative flex min-h-[44px] min-w-0 flex-1 items-center">
+                {/* Ghost text overlay for real-time typeahead */}
+                {typeaheadSuggestion?.suffix ? (
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 flex items-center overflow-hidden text-title-3 font-normal sm:text-title-2 select-none"
+                  >
+                    <span className="invisible whitespace-pre">{query}</span>
+                    <span className="text-label-tertiary/60 whitespace-pre">{typeaheadSuggestion.suffix}</span>
+                    <span className="ml-2.5 hidden sm:inline-flex items-center gap-1 rounded border border-separator/80 bg-fill-quaternary px-1.5 py-0.5 text-[10px] font-mono font-medium text-label-secondary shadow-2xs">
+                      Tab ⇥
+                    </span>
+                  </div>
+                ) : null}
+
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={onInputKeyDown}
+                  placeholder="Search Gita 2.47, कर्म, fear, or type > for actions…"
+                  aria-label="Search scriptures, verses, topics and practices"
+                  aria-describedby={statusId}
+                  className="relative z-1 min-h-[44px] w-full bg-transparent text-title-3 font-normal text-label-primary outline-none placeholder:text-label-tertiary sm:text-title-2"
+                  role="combobox"
+                  aria-expanded={display.length > 0}
+                  aria-autocomplete="list"
+                  aria-controls={listboxId}
+                  aria-activedescendant={display.length > 0 ? `search-item-${selectedIndex}` : undefined}
+                  autoComplete="off"
+                  autoCapitalize="off"
+                  spellCheck={false}
+                  enterKeyHint="search"
+                />
+              </div>
               <div className="ml-2 flex shrink-0 items-center gap-2">
                 {isOnline === false && (
-                  <span className="inline-flex items-center gap-1 rounded-full border border-amber-600/40 bg-amber-500/10 px-2 py-0.5 text-[11px] font-medium text-amber-900 dark:text-amber-200">
+                  <span className="inline-flex items-center gap-1 rounded-pill border border-amber-600/30 bg-amber-500/10 px-2.5 py-0.5 text-caption font-medium text-amber-900 dark:text-amber-200">
                     <WifiOff className="h-3 w-3" aria-hidden="true" />
                     <span className="hidden sm:inline">Offline</span>
                   </span>
@@ -683,7 +738,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                       setQuery('');
                       inputRef.current?.focus();
                     }}
-                    className="focus-ring flex h-11 w-11 items-center justify-center rounded-lg text-dharma-muted hover:text-dharma-text"
+                    className="focus-ring flex h-8 w-8 items-center justify-center rounded-control text-label-tertiary hover:bg-fill-quaternary hover:text-label-primary transition"
                     aria-label="Clear search"
                   >
                     <X className="h-4 w-4" aria-hidden="true" />
@@ -692,7 +747,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                   <button
                     type="button"
                     onClick={onClose}
-                    className="focus-ring hidden min-h-[36px] rounded border border-dharma-border bg-dharma-bg px-2 text-[11px] font-mono font-medium text-dharma-muted hover:text-dharma-text sm:inline-block"
+                    className="focus-ring hidden min-h-[32px] rounded-control border border-separator bg-fill-quaternary px-2 text-caption font-mono font-medium text-label-secondary hover:text-label-primary hover:bg-fill-tertiary transition sm:inline-block"
                     aria-label="Close search"
                   >
                     ESC
@@ -703,13 +758,15 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
 
             {/* Filters: which group of results to show */}
             {result && result.totalMatches > 0 && (
-              <div role="group" aria-label="Show results from" className="flex items-center gap-1.5 overflow-x-auto border-b border-dharma-border/60 bg-dharma-bg/40 px-4 py-2 text-xs">
+              <div role="group" aria-label="Show results from" className="flex items-center gap-1.5 overflow-x-auto border-b border-separator bg-surface-canvas/60 px-4 py-2 text-footnote">
                 <button
                   type="button"
                   aria-pressed={selectedGroup === null}
                   onClick={() => setSelectedGroup(null)}
-                  className={`focus-ring min-h-[36px] shrink-0 rounded-full border px-3 font-semibold transition ${
-                    selectedGroup === null ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-500'
+                  className={`focus-ring inline-flex min-h-[32px] shrink-0 items-center gap-1.5 rounded-pill px-3.5 text-footnote font-semibold transition ${
+                    selectedGroup === null
+                      ? 'bg-tint text-on-tint shadow-xs'
+                      : 'border border-separator bg-surface-raised text-label-secondary hover:bg-fill-quaternary hover:text-label-primary'
                   }`}
                 >
                   All ({Object.values(counts).reduce((n, c) => n + (c ?? 0), 0)})
@@ -720,15 +777,17 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                     type="button"
                     aria-pressed={selectedGroup === g.id}
                     onClick={() => setSelectedGroup((prev) => (prev === g.id ? null : g.id))}
-                    className={`focus-ring inline-flex min-h-[36px] shrink-0 items-center gap-1.5 rounded-full border px-3 font-semibold transition ${
-                      selectedGroup === g.id ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-500'
+                    className={`focus-ring inline-flex min-h-[32px] shrink-0 items-center gap-1.5 rounded-pill px-3.5 text-footnote font-semibold transition ${
+                      selectedGroup === g.id
+                        ? 'bg-tint text-on-tint shadow-xs'
+                        : 'border border-separator bg-surface-raised text-label-secondary hover:bg-fill-quaternary hover:text-label-primary'
                     }`}
                   >
                     {groupIcon(g.id)}
                     <span>
                       <span lang="hi" className="font-devanagari">{g.hindiLabel}</span> · {g.label}
                     </span>
-                    <span className="font-mono opacity-80">{counts[g.id]}</span>
+                    <span className="font-mono text-caption opacity-80">{counts[g.id]}</span>
                   </button>
                 ))}
               </div>
@@ -736,7 +795,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
 
             {/* Notices: offline, loading, load failure, did-you-mean */}
             {isOnline === false && (
-              <div role="status" className="flex items-start gap-2 border-b border-amber-600/30 bg-amber-500/10 px-4 py-2.5 text-xs text-amber-950 dark:text-amber-100">
+              <div role="status" className="flex items-start gap-2 border-b border-amber-600/20 bg-amber-500/10 px-4 py-2.5 text-footnote text-amber-950 dark:text-amber-100">
                 <WifiOff className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 <p>
                   <strong className="font-semibold">You are offline.</strong>{' '}
@@ -747,21 +806,21 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
               </div>
             )}
             {isOnline && verseState === 'error' && (
-              <div role="alert" className="flex items-center justify-between gap-3 border-b border-rose-600/30 bg-rose-500/10 px-4 py-2.5 text-xs text-rose-950 dark:text-rose-100">
+              <div role="alert" className="flex items-center justify-between gap-3 border-b border-rose-600/20 bg-rose-500/10 px-4 py-2.5 text-footnote text-rose-950 dark:text-rose-100">
                 <p>Verse text could not be loaded, so results show titles, topics and references only.</p>
                 <button
                   type="button"
                   onClick={() => setVerseState('idle')}
-                  className="focus-ring inline-flex min-h-[36px] shrink-0 items-center gap-1.5 rounded-full bg-rose-700 px-3 font-semibold text-white hover:bg-rose-800"
+                  className="focus-ring inline-flex min-h-[32px] shrink-0 items-center gap-1.5 rounded-pill bg-rose-600 px-3 text-footnote font-semibold text-white hover:bg-rose-700"
                 >
                   <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" /> Try again
                 </button>
               </div>
             )}
             {suggestion && (
-              <div className="flex items-center justify-between gap-3 border-b border-sky-600/30 bg-sky-500/10 px-4 py-2.5 text-xs text-sky-950 dark:text-sky-100">
+              <div className="flex items-center justify-between gap-3 border-b border-separator bg-tint-fill px-4 py-2.5 text-footnote text-label-primary">
                 <p className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  <Sparkles className="h-4 w-4 shrink-0 text-tint" aria-hidden="true" />
                   <span>
                     Did you mean <strong className="font-semibold underline underline-offset-2">{suggestion}</strong>?
                   </span>
@@ -769,19 +828,19 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                 <button
                   type="button"
                   onClick={() => runSearch(suggestion)}
-                  className="focus-ring min-h-[36px] shrink-0 rounded-full bg-sky-700 px-3 font-semibold text-white hover:bg-sky-800"
+                  className="focus-ring min-h-[32px] shrink-0 rounded-pill bg-tint px-3 text-footnote font-semibold text-on-tint hover:opacity-90"
                 >
                   Search this instead
                 </button>
               </div>
             )}
             {result?.intentNote && (
-              <p role="status" className="border-b border-sky-600/30 bg-sky-500/10 px-4 py-2 text-xs text-sky-950 dark:text-sky-100">
+              <p role="status" className="border-b border-separator bg-tint-fill px-4 py-2 text-footnote text-label-primary">
                 {result.intentNote}
               </p>
             )}
             {!suggestion && result?.isTypoCorrected && result.totalMatches > 0 && (
-              <p role="status" className="border-b border-sky-600/30 bg-sky-500/10 px-4 py-2 text-xs text-sky-950 dark:text-sky-100">
+              <p role="status" className="border-b border-separator bg-surface-canvas/60 px-4 py-2 text-footnote text-label-secondary">
                 No exact match, so these are the closest to your spelling.
               </p>
             )}
@@ -791,20 +850,103 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
               {announcement}
             </div>
 
+            {/* Trilingual Alignment Vocabulary Hint */}
+            {trilingualHint && (
+              <div className="flex items-center gap-2 border-b border-separator/60 bg-tint-fill/25 px-4 py-2 sm:px-6 text-footnote text-label-secondary">
+                <span className="font-semibold text-label-primary font-devanagari text-subhead">{trilingualHint.devanagari}</span>
+                <span className="text-label-tertiary">·</span>
+                <span className="italic font-serif text-label-secondary">{trilingualHint.iast}</span>
+                <span className="text-label-tertiary hidden sm:inline">—</span>
+                <span className="text-label-tertiary truncate hidden sm:inline">{trilingualHint.english}</span>
+                {trilingualHint.meaning && (
+                  <span className="ml-auto hidden md:inline text-[11px] text-label-tertiary italic truncate max-w-xs">
+                    {trilingualHint.meaning}
+                  </span>
+                )}
+              </div>
+            )}
+
+            {/* Direct Jump Hero Banner */}
+            {typeaheadSuggestion?.directHref && (
+              <div className="border-b border-separator/80 bg-gradient-to-r from-saffron-500/15 via-amber-500/8 to-transparent px-4 py-2.5 sm:px-6">
+                <button
+                  type="button"
+                  onClick={() => {
+                    remember(query);
+                    onClose();
+                    router.push(typeaheadSuggestion.directHref!);
+                  }}
+                  className="group flex min-h-[44px] w-full items-center justify-between gap-3 text-left focus:outline-none cursor-pointer active:scale-[0.99] transition-transform"
+                  aria-label={`Instant Jump to ${typeaheadSuggestion.label}`}
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-saffron-500/20 text-base shadow-2xs">
+                      {typeaheadSuggestion.badge || '⚡'}
+                    </span>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                          त्वरित प्रवेश · Instant Jump
+                        </span>
+                        <span className="rounded-full bg-saffron-100 dark:bg-saffron-900/50 px-2 py-0.5 text-[10px] font-semibold text-saffron-800 dark:text-saffron-300">
+                          {typeaheadSuggestion.category}
+                        </span>
+                      </div>
+                      <p className="truncate text-xs sm:text-sm font-semibold text-label-primary group-hover:text-saffron-700 dark:group-hover:text-saffron-300 transition">
+                        {typeaheadSuggestion.label}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-1.5 text-xs font-semibold text-saffron-700 dark:text-saffron-400">
+                    <span className="hidden sm:inline">सीधे पढ़ें</span>
+                    <kbd className="rounded border border-saffron-500/40 bg-saffron-500/10 px-2 py-1 font-mono text-[11px] shadow-2xs">
+                      Enter ↵
+                    </kbd>
+                  </div>
+                </button>
+              </div>
+            )}
+
+            {/* Quick-Pick Suggestions Horizontal Pill Row */}
+            {quickPickSuggestions.length > 1 && !isActionQuery && (
+              <div className="flex items-center gap-2 overflow-x-auto no-scrollbar border-b border-separator/60 bg-surface-canvas/60 px-4 py-2 sm:px-6">
+                <span className="text-[11px] font-medium text-label-tertiary shrink-0 mr-0.5">सुझाव · Quick:</span>
+                {quickPickSuggestions.map((item, idx) => (
+                  <button
+                    key={`${item.directHref || item.completion}-${idx}`}
+                    type="button"
+                    onClick={() => {
+                      if (item.directHref) {
+                        remember(query);
+                        onClose();
+                        router.push(item.directHref);
+                      } else {
+                        setQuery(item.completion);
+                      }
+                    }}
+                    className="inline-flex min-h-[36px] sm:min-h-[32px] shrink-0 items-center gap-1.5 rounded-chip border border-separator/80 bg-surface-raised px-3 py-1.5 text-caption font-medium text-label-secondary hover:border-tint hover:text-label-primary active:scale-[0.97] transition-all cursor-pointer shadow-2xs"
+                  >
+                    <span className="text-xs">{item.badge || '✨'}</span>
+                    <span className="max-w-[160px] truncate">{item.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+
             {/* Body */}
             <div className="min-h-0 flex-1 overflow-y-auto p-3 sm:p-5">
               {isActionQuery ? (
                 <div className="space-y-3 py-1">
                   <div className="flex items-center justify-between px-1">
-                    <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                    <h3 className="flex items-center gap-1.5 text-footnote font-semibold text-tint">
                       <Sparkles className="h-3.5 w-3.5" />
                       <span>पवित्र क्रियाएँ · Sacred Actions</span>
                     </h3>
-                    <span className="text-2xs font-mono text-dharma-muted">Use ↑↓ and Enter</span>
+                    <span className="text-caption font-mono text-label-tertiary">Use ↑↓ and Enter</span>
                   </div>
                   {matchingActions.length === 0 ? (
-                    <p className="p-4 text-center text-sm text-dharma-muted">
-                      No matching actions found for &ldquo;{actionFilter}&rdquo;. Try <code className="text-amber-500">&gt; tanpura</code>, <code className="text-amber-500">&gt; bell</code>, or <code className="text-amber-500">&gt; meditation</code>.
+                    <p className="p-4 text-center text-subhead text-label-secondary">
+                      No matching actions found for &ldquo;{actionFilter}&rdquo;. Try <code className="text-tint">&gt; tanpura</code>, <code className="text-tint">&gt; bell</code>, or <code className="text-tint">&gt; meditation</code>.
                     </p>
                   ) : (
                     <ul className="grid gap-2">
@@ -813,20 +955,22 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                           <button
                             type="button"
                             onClick={() => action.run(onClose, router, cycleTheme)}
-                            className={`focus-ring w-full text-left p-3.5 rounded-2xl border transition flex items-center justify-between gap-3 ${
+                            className={`focus-ring w-full text-left p-3.5 rounded-card border transition flex items-center justify-between gap-3 ${
                               idx === selectedIndex % matchingActions.length
-                                ? 'border-amber-500 bg-amber-500/15 shadow-md shadow-amber-500/10'
-                                : 'border-dharma-border bg-dharma-card hover:border-amber-400'
+                                ? 'border-tint/60 bg-tint-fill ring-1 ring-tint/30'
+                                : 'border-separator bg-surface-raised hover:bg-fill-quaternary'
                             }`}
                           >
                             <div className="flex items-center gap-3">
-                              <span className="text-2xl">{action.icon}</span>
+                              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-fill-tertiary text-2xl">
+                                {action.icon}
+                              </span>
                               <div>
-                                <p className="text-sm font-bold text-dharma-text">{action.title}</p>
-                                <p className="text-xs text-dharma-muted">{action.titleHi} · {action.subtitle}</p>
+                                <p className="text-subhead font-semibold text-label-primary">{action.title}</p>
+                                <p className="text-caption text-label-secondary">{action.titleHi} · {action.subtitle}</p>
                               </div>
                             </div>
-                            <span className="text-2xs font-mono px-2 py-1 rounded bg-stone-900/40 border border-stone-700/50 text-amber-400 font-bold">
+                            <span className="rounded-control border border-separator bg-fill-quaternary px-2 py-1 font-mono text-caption font-semibold text-tint">
                               {action.command}
                             </span>
                           </button>
@@ -840,7 +984,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                   {/* Sacred Quick Actions row */}
                   <section aria-label="Sacred Quick Actions">
                     <div className="mb-2 flex items-center justify-between px-1">
-                      <h3 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                      <h3 className="flex items-center gap-1.5 text-footnote font-semibold text-tint">
                         <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                         <span lang="hi" className="font-devanagari normal-case tracking-normal">पवित्र क्रियाएँ</span> · Sacred Actions ({'>'})
                       </h3>
@@ -851,10 +995,12 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                           key={a.id}
                           type="button"
                           onClick={() => a.run(onClose, router, cycleTheme)}
-                          className="focus-ring flex items-center gap-2 p-2.5 rounded-xl border border-amber-500/30 bg-amber-500/5 hover:bg-amber-500/15 text-left text-xs font-semibold text-dharma-text transition"
+                          className="focus-ring flex items-center gap-2.5 p-2.5 rounded-card border border-separator bg-surface-raised hover:bg-fill-quaternary hover:border-tint/40 active:scale-97 text-left transition"
                         >
-                          <span className="text-lg">{a.icon}</span>
-                          <span className="truncate">{a.title}</span>
+                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-control bg-fill-tertiary text-base">
+                            {a.icon}
+                          </span>
+                          <span className="truncate text-footnote font-medium text-label-primary">{a.title}</span>
                         </button>
                       ))}
                     </div>
@@ -862,14 +1008,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                   {recent.length > 0 && (
                     <section aria-labelledby={`${listboxId}-recent`}>
                       <div className="mb-2 flex items-center justify-between px-1">
-                        <h3 id={`${listboxId}-recent`} className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                          <Clock className="h-3.5 w-3.5 text-saffron-700" aria-hidden="true" />
+                        <h3 id={`${listboxId}-recent`} className="flex items-center gap-1.5 text-footnote font-semibold text-label-secondary">
+                          <Clock className="h-3.5 w-3.5 text-tint" aria-hidden="true" />
                           <span lang="hi" className="font-devanagari normal-case tracking-normal">हाल की खोज</span> · Recent searches
                         </h3>
                         <button
                           type="button"
                           onClick={() => setRecent([])}
-                          className="focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded px-2 text-xs font-medium text-dharma-muted hover:text-rose-700"
+                          className="focus-ring inline-flex min-h-[32px] items-center gap-1.5 rounded-pill px-2.5 text-caption font-medium text-label-tertiary hover:text-rose-600 hover:bg-fill-quaternary transition"
                         >
                           <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
                           Clear history
@@ -881,9 +1027,9 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                             <button
                               type="button"
                               onClick={() => runSearch(item)}
-                              className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-bg px-3.5 text-sm text-dharma-text hover:border-saffron-500"
+                              className="focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
                             >
-                              <Clock className="h-3.5 w-3.5 text-dharma-muted" aria-hidden="true" />
+                              <Clock className="h-3.5 w-3.5 text-label-tertiary" aria-hidden="true" />
                               {item}
                             </button>
                           </li>
@@ -893,8 +1039,8 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                   )}
 
                   <section aria-labelledby={`${listboxId}-suggested`}>
-                    <h3 id={`${listboxId}-suggested`} className="mb-2 flex items-center gap-1.5 px-1 text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                      <Sparkles className="h-3.5 w-3.5 text-amber-600" aria-hidden="true" />
+                    <h3 id={`${listboxId}-suggested`} className="mb-2 flex items-center gap-1.5 px-1 text-footnote font-semibold text-label-secondary">
+                      <Sparkles className="h-3.5 w-3.5 text-tint" aria-hidden="true" />
                       <span lang="hi" className="font-devanagari normal-case tracking-normal">सुझाई खोज</span> · Try searching
                     </h3>
                     <ul className="flex flex-wrap gap-2">
@@ -903,7 +1049,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                           <button
                             type="button"
                             onClick={() => runSearch(s.query)}
-                            className="focus-ring inline-flex min-h-[40px] items-center rounded-full border border-amber-600/35 bg-amber-500/5 px-3.5 text-sm font-medium text-amber-950 hover:border-amber-600 hover:bg-amber-500/15 dark:text-amber-100"
+                            className="focus-ring inline-flex min-h-[36px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary active:scale-97 transition"
                           >
                             {s.label}
                           </button>
@@ -913,8 +1059,8 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                   </section>
 
                   <section aria-labelledby={`${listboxId}-topics`}>
-                    <h3 id={`${listboxId}-topics`} className="mb-2 flex items-center gap-1.5 px-1 text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                      <Flame className="h-3.5 w-3.5 text-saffron-700" aria-hidden="true" />
+                    <h3 id={`${listboxId}-topics`} className="mb-2 flex items-center gap-1.5 px-1 text-footnote font-semibold text-label-secondary">
+                      <Flame className="h-3.5 w-3.5 text-tint" aria-hidden="true" />
                       <span lang="hi" className="font-devanagari normal-case tracking-normal">अध्ययन विषय</span> · Study topics
                     </h3>
                     <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
@@ -923,12 +1069,12 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                           <button
                             type="button"
                             onClick={() => runSearch(t.name)}
-                            className={`focus-ring flex min-h-[64px] w-full flex-col items-start rounded-xl border p-3 text-left transition hover:shadow-md ${t.tint}`}
+                            className={`focus-ring flex min-h-[64px] w-full flex-col items-start rounded-card border p-3 text-left transition hover:shadow-sm ${t.tint}`}
                           >
-                            <span className="text-sm font-bold text-dharma-text">
-                              {t.name} <span lang="hi" className="font-devanagari text-[0.8125rem] font-normal text-dharma-muted">· {t.nameHi}</span>
+                            <span className="text-subhead font-semibold text-label-primary">
+                              {t.name} <span lang="hi" className="font-devanagari text-caption font-normal text-label-secondary">· {t.nameHi}</span>
                             </span>
-                            <span className="mt-0.5 line-clamp-2 text-xs text-dharma-muted">{t.blurb}</span>
+                            <span className="mt-0.5 line-clamp-2 text-caption text-label-secondary">{t.blurb}</span>
                           </button>
                         </li>
                       ))}
@@ -938,15 +1084,15 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
               ) : null}
 
               {trimmed && result && result.totalMatches > 0 && verseLoading && isOnline && (
-                <div role="status" className="mb-3 flex items-center gap-2 rounded-lg border border-dharma-border bg-dharma-bg/60 px-3 py-2 text-xs text-dharma-muted">
-                  <span className="h-3 w-3 animate-spin rounded-full border-2 border-saffron-600 border-t-transparent" aria-hidden="true" />
+                <div role="status" className="mb-3 flex items-center gap-2 rounded-card border border-separator bg-surface-raised/70 px-3 py-2 text-footnote text-label-secondary">
+                  <span className="h-3 w-3 animate-spin rounded-full border-2 border-tint border-t-transparent" aria-hidden="true" />
                   Loading verse text… verse results will appear in a moment.
                 </div>
               )}
 
               {trimmed && waitingForIndex && (
-                <div className="flex flex-col items-center gap-3 px-3 py-12 text-center text-sm text-dharma-muted">
-                  <span className="h-6 w-6 animate-spin rounded-full border-2 border-saffron-600 border-t-transparent" aria-hidden="true" />
+                <div className="flex flex-col items-center gap-3 px-3 py-12 text-center text-subhead text-label-secondary">
+                  <span className="h-6 w-6 animate-spin rounded-full border-2 border-tint border-t-transparent" aria-hidden="true" />
                   <p>
                     <span lang="hi" className="font-devanagari">खोज रहे हैं…</span> · Searching the verses…
                   </p>
@@ -955,11 +1101,11 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
 
               {trimmed && result && result.totalMatches === 0 && !waitingForIndex && (
                 <div className="px-3 py-10 text-center">
-                  <HelpCircle className="mx-auto mb-3 h-10 w-10 text-amber-600/70" aria-hidden="true" />
-                  <h3 className="text-base font-bold text-dharma-text">
+                  <HelpCircle className="mx-auto mb-3 h-10 w-10 text-label-tertiary" aria-hidden="true" />
+                  <h3 className="text-title-3 font-semibold text-label-primary">
                     <span lang="hi" className="font-devanagari">कोई परिणाम नहीं</span> · No results for “{trimmed}”
                   </h3>
-                  <ul className="mx-auto mt-3 max-w-md space-y-1 text-left text-sm text-dharma-muted">
+                  <ul className="mx-auto mt-3 max-w-md space-y-1 text-left text-footnote text-label-secondary">
                     <li>• Try part of the verse in Devanagari or Roman letters (“karmanye vadhikaraste”).</li>
                     <li>• Try a reference such as “Gita 2.47” or “Katha 1.2”.</li>
                     <li>• Try one idea: “fear”, “anger”, “meaning of life”, “भय”.</li>
@@ -970,7 +1116,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                         <button
                           type="button"
                           onClick={() => runSearch(s.query)}
-                          className="focus-ring min-h-[40px] rounded-full border border-saffron-600/40 bg-saffron-500/10 px-3.5 text-sm font-semibold text-saffron-950 hover:bg-saffron-500/20 dark:text-saffron-100"
+                          className="focus-ring inline-flex min-h-[36px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
                         >
                           {s.label}
                         </button>
@@ -981,14 +1127,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                     <Link
                       href={`/scriptures?q=${encodeURIComponent(trimmed)}`}
                       onClick={onClose}
-                      className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-saffron-700 px-5 text-sm font-semibold text-white hover:bg-saffron-800"
+                      className="apple-pill min-h-[40px] px-5"
                     >
                       Browse the library <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </Link>
                     <Link
                       href="/wisdom-for-life"
                       onClick={onClose}
-                      className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-dharma-border px-5 text-sm font-semibold text-dharma-text hover:border-saffron-500"
+                      className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-5 text-subhead font-medium text-label-primary hover:bg-fill-quaternary transition"
                     >
                       Wisdom for Life topics
                     </Link>
@@ -1004,12 +1150,12 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                     const headingId = `${listboxId}-${group.id}`;
                     return (
                       <div key={group.id} role="group" aria-label={`${group.hindiLabel}. ${group.label}`} className="space-y-2">
-                        <div aria-hidden="true" className="flex items-center justify-between border-b border-dharma-border/60 px-1 pb-1.5">
-                          <h3 id={headingId} className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                        <div aria-hidden="true" className="flex items-center justify-between border-b border-separator px-1 pb-1.5">
+                          <h3 id={headingId} className="flex items-center gap-2 text-footnote font-semibold text-label-secondary">
                             {groupIcon(group.id)}
                             <span lang="hi" className="font-devanagari normal-case tracking-normal">{group.hindiLabel}</span> · {group.label}
                           </h3>
-                          <span className="font-mono text-xs text-dharma-muted">{items.length}</span>
+                          <span className="font-mono text-caption text-label-tertiary">{items.length}</span>
                         </div>
 
                         {items.map((item) => {
@@ -1035,10 +1181,10 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                               onMouseMove={() => {
                                 if (!selected) setSelectedIndex(index);
                               }}
-                              className={`search-result-in group relative isolate block rounded-xl border p-3.5 transition-colors sm:p-4 ${
+                              className={`search-result-in group relative isolate block rounded-card border p-3.5 transition-colors sm:p-4 ${
                                 selected
-                                  ? 'border-saffron-600/70'
-                                  : 'border-dharma-border/70 bg-dharma-card hover:border-amber-600/40 hover:bg-dharma-bg/50'
+                                  ? 'border-tint/60 bg-tint-fill ring-1 ring-tint/30'
+                                  : 'border-separator bg-surface-raised hover:border-tint/40 hover:bg-fill-quaternary'
                               }`}
                               style={{ animationDelay: `${Math.min(index, 8) * 25}ms` }}
                             >
@@ -1047,22 +1193,22 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                                 <motion.span
                                   layoutId="search-selection"
                                   aria-hidden="true"
-                                  className="pointer-events-none absolute inset-0 -z-10 rounded-xl bg-saffron-500/10 shadow-md ring-1 ring-saffron-600/40"
+                                  className="pointer-events-none absolute inset-0 -z-10 rounded-card bg-tint-fill shadow-xs ring-1 ring-tint/40"
                                   transition={reduce ? { duration: 0 } : SPRINGS.settle}
                                 />
                               )}
                               <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                                <span className="font-mono text-xs font-bold text-amber-800 dark:text-amber-300">
+                                <span className="font-mono text-caption font-bold text-tint">
                                   {item.reference ?? item.groupLabel}
                                 </span>
                                 <span className="flex flex-wrap items-center gap-1.5">
-                                  <span className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${reasonClass(item.matchReason)}`}>{item.matchReason}</span>
-                                  <span className="rounded-full border border-dharma-border bg-dharma-bg px-2 py-0.5 text-[11px] font-medium text-dharma-muted">{item.languageLabel}</span>
+                                  <span className={`rounded-pill border px-2 py-0.5 text-caption font-semibold ${reasonClass(item.matchReason)}`}>{item.matchReason}</span>
+                                  <span className="rounded-pill border border-separator bg-surface-canvas/60 px-2 py-0.5 text-caption font-medium text-label-secondary">{item.languageLabel}</span>
                                   {/* Kept on every result, but "Not yet reviewed" (most of the library) is plain text, not a pill. */}
                                   {reviewStatus.startsWith('Reviewed') ? (
-                                    <span className="rounded-full border border-emerald-600/40 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-900 dark:text-emerald-200">{reviewStatus}</span>
+                                    <span className="rounded-pill border border-emerald-600/30 bg-emerald-500/10 px-2 py-0.5 text-caption font-medium text-emerald-900 dark:text-emerald-200">{reviewStatus}</span>
                                   ) : (
-                                    <span className="px-1 text-xs text-dharma-muted">{reviewStatus}</span>
+                                    <span className="px-1 text-caption text-label-tertiary">{reviewStatus}</span>
                                   )}
                                 </span>
                               </div>
@@ -1070,32 +1216,32 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                               <p lang={style.lang} className={`line-clamp-4 whitespace-pre-line ${style.className}`}>
                                 <Highlighted text={matched} query={trimmed} />
                               </p>
-                              {showSubtitle && <p className="mt-0.5 text-xs text-dharma-muted">{item.subtitle}</p>}
+                              {showSubtitle && <p className="mt-0.5 text-caption text-label-secondary">{item.subtitle}</p>}
 
                               {item.translationExcerpt && item.translationExcerpt !== matched && (
-                                <p className="mt-2.5 rounded-lg border border-dharma-border/50 bg-dharma-bg/60 p-2.5 text-[13px] leading-relaxed text-dharma-text/90">
-                                  <span className="mr-1.5 font-semibold text-dharma-muted">Translation:</span>
+                                <p className="mt-2.5 rounded-card border border-separator/60 bg-fill-quaternary/40 p-2.5 text-footnote leading-relaxed text-label-primary">
+                                  <span className="mr-1.5 font-semibold text-label-secondary">Translation:</span>
                                   <span lang={isDevanagariText(item.translationExcerpt) ? 'hi' : 'en'} className={isDevanagariText(item.translationExcerpt) ? 'font-devanagari leading-[1.8]' : ''}>
                                     <Highlighted text={item.translationExcerpt} query={trimmed} />
                                   </span>
                                   {item.translationIsAi && (
-                                    <span className="ml-2 rounded-full border border-violet-500/40 bg-violet-500/10 px-1.5 py-px text-[10px] font-semibold text-violet-900 dark:text-violet-200" title={STUDY_TRANSLATION_SHORT.detail}>{STUDY_TRANSLATION_SHORT.en}</span>
+                                    <span className="ml-2 rounded-pill border border-violet-500/30 bg-violet-500/10 px-1.5 py-px text-[10px] font-semibold text-violet-900 dark:text-violet-200" title={STUDY_TRANSLATION_SHORT.detail}>{STUDY_TRANSLATION_SHORT.en}</span>
                                   )}
                                 </p>
                               )}
 
                               {item.group === 'verse' && item.commentaryExcerpt && item.matchedField === 'explanation' && (
-                                <p className="mt-2 rounded-lg border border-sky-600/25 bg-sky-500/5 p-2.5 text-[13px] leading-relaxed text-dharma-text/90">
-                                  <span className="mr-1.5 font-semibold text-sky-900 dark:text-sky-200">Explanation:</span>
+                                <p className="mt-2 rounded-card border border-separator/60 bg-fill-quaternary/40 p-2.5 text-footnote leading-relaxed text-label-primary">
+                                  <span className="mr-1.5 font-semibold text-label-secondary">Explanation:</span>
                                   <Highlighted text={item.commentaryExcerpt} query={trimmed} />
                                   {item.aiDrafted && (
-                                    <span className="ml-2 rounded-full border border-violet-500/40 bg-violet-500/10 px-1.5 py-px text-[10px] font-semibold text-violet-900 dark:text-violet-200" title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</span>
+                                    <span className="ml-2 rounded-pill border border-violet-500/30 bg-violet-500/10 px-1.5 py-px text-[10px] font-semibold text-violet-900 dark:text-violet-200" title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</span>
                                   )}
                                 </p>
                               )}
 
-                              <div className="mt-2.5 flex items-center justify-end border-t border-dharma-border/40 pt-2 text-xs">
-                                <span className="inline-flex items-center gap-1 font-semibold text-saffron-800 transition-transform group-hover:translate-x-0.5 dark:text-saffron-300">
+                              <div className="mt-2.5 flex items-center justify-end border-t border-separator/50 pt-2 text-footnote">
+                                <span className="inline-flex items-center gap-1 font-semibold text-tint transition-transform group-hover:translate-x-0.5">
                                   {(item.actionLabel ?? 'Open').replace(/\s*[→➜]\s*$/, '')}
                                   <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                                 </span>
@@ -1111,14 +1257,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             </div>
 
             {/* Footer: keys and count */}
-            <div className="flex items-center justify-between border-t border-dharma-border/80 bg-dharma-bg/60 px-4 py-2.5 text-[11px] text-dharma-muted">
+            <div className="flex items-center justify-between border-t border-separator bg-surface-canvas/60 px-4 py-2.5 text-caption text-label-tertiary">
               <div className="hidden items-center gap-4 sm:flex">
-                <span className="flex items-center gap-1"><kbd className="rounded border border-dharma-border bg-dharma-card px-1.5 py-0.5 font-mono text-[10px]">↑↓</kbd> Navigate</span>
-                <span className="flex items-center gap-1"><kbd className="rounded border border-dharma-border bg-dharma-card px-1.5 py-0.5 font-mono text-[10px]">↵</kbd> Open</span>
-                <span className="flex items-center gap-1"><kbd className="rounded border border-dharma-border bg-dharma-card px-1.5 py-0.5 font-mono text-[10px]">Tab</kbd> Filters</span>
-                <span className="flex items-center gap-1"><kbd className="rounded border border-dharma-border bg-dharma-card px-1.5 py-0.5 font-mono text-[10px]">Esc</kbd> Close</span>
+                <span className="flex items-center gap-1"><kbd className="rounded-control border border-separator bg-surface-raised px-1.5 py-0.5 font-mono text-[10px] text-label-secondary shadow-xs">↑↓</kbd> Navigate</span>
+                <span className="flex items-center gap-1"><kbd className="rounded-control border border-separator bg-surface-raised px-1.5 py-0.5 font-mono text-[10px] text-label-secondary shadow-xs">↵</kbd> Open</span>
+                <span className="flex items-center gap-1"><kbd className="rounded-control border border-separator bg-surface-raised px-1.5 py-0.5 font-mono text-[10px] text-label-secondary shadow-xs">Tab</kbd> Filters</span>
+                <span className="flex items-center gap-1"><kbd className="rounded-control border border-separator bg-surface-raised px-1.5 py-0.5 font-mono text-[10px] text-label-secondary shadow-xs">Esc</kbd> Close</span>
               </div>
-              <span className="ml-auto font-medium text-dharma-text">
+              <span className="ml-auto font-medium text-label-secondary">
                 {waitingForIndex ? 'Searching…' : result ? `${result.totalMatches} result${result.totalMatches === 1 ? '' : 's'}${result.totalMatches > RESULT_LIMIT ? ` · top ${RESULT_LIMIT}` : ''}` : 'Dharma Granth search'}
               </span>
             </div>

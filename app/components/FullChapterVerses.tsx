@@ -18,6 +18,7 @@ import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
 import { canonicalVerseId } from '@/lib/canonical-verse-id';
 import { versePageHref } from '@/lib/verse-paths';
 import { commentaryOf, nearestWithMeaning, verseHasMeaning, type NearbyMeaning } from '@/lib/verse-has-meaning';
+import { commentaryAmbiguities, type CommentaryAmbiguities } from '@/lib/commentary-lookup';
 import { normalizeForSearch, normalizeTransliteration } from '@/lib/normalize-search';
 import { splitVyakhyaCommentary, toAsciiDigits, toDevanagari } from '@/lib/verse-format';
 import { useStudyProgress, type VerseRef } from '@/lib/useStudyProgress';
@@ -58,7 +59,6 @@ import {
   markChapterCompleteInReadingPlan,
 } from '@/lib/reading-plan-sync';
 import { saveChapterVersesToDB, getCachedChapterVersesFromDB } from '@/lib/db/granth-indexeddb';
-import { isHindiWithheld, isUnproofreadShown } from '@/lib/ocr-hindi-review';
 import type { SvadhyayaTab } from '@/app/components/reader/SvadhyayaSplitDrawer';
 const SvadhyayaSplitDrawer = dynamic(() => import('@/app/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
 import { SpatialShloka, type BhashyaSource, type ReaderMode } from './liquid/SpatialShloka';
@@ -139,6 +139,7 @@ interface Props {
 export interface InitialChapter {
   verses: FullVerse[];
   commentary?: HiCommentaryFragment;
+  commentaryAmbiguity?: { normalized: string[]; raw: string[] };
   source?: FullScripture['source'];
   /** मर्म and जीवन प्रसंग for the verses that have them (lib/verse-insights). */
   insights?: Record<string, VerseInsight>;
@@ -147,7 +148,7 @@ export interface InitialChapter {
 type State =
   | { kind: 'idle' }
   | { kind: 'loading' }
-  | { kind: 'ready'; verses: FullVerse[]; commentary?: HiCommentaryFragment; source?: FullScripture['source'] }
+  | { kind: 'ready'; verses: FullVerse[]; commentary?: HiCommentaryFragment; commentaryAmbiguity?: CommentaryAmbiguities; source?: FullScripture['source'] }
   | { kind: 'empty' }
   | { kind: 'error'; message: string };
 
@@ -179,6 +180,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           (v) => !curatedVerseSet.has(canonicalVerseId(chapterId, v.number)),
         ),
         commentary: initialChapter.commentary,
+        commentaryAmbiguity: initialChapter.commentaryAmbiguity
+          ? { normalized: new Set(initialChapter.commentaryAmbiguity.normalized), raw: new Set(initialChapter.commentaryAmbiguity.raw) }
+          : commentaryAmbiguities(chapterId, initialChapter.verses.map(v => v.number)),
         source: initialChapter.source,
       };
     }
@@ -327,9 +331,13 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   useEffect(() => {
     if (state.kind !== 'loading') return;
     let cancelled = false;
+    // The Hindi review list is about 450 KB, so it loads only when a cached chapter is found,
+    // instead of riding in every chapter page's bundle.
     getCachedChapterVersesFromDB(scriptureId, chapterId)
-      .then((cached) => {
-        if (!cancelled && cached && cached.length > 0) {
+      .then(async (cached) => {
+        if (!cached || cached.length === 0) return;
+        const { isHindiWithheld, isUnproofreadShown } = await import('@/lib/ocr-hindi-review');
+        if (!cancelled) {
           setState({
             kind: 'ready',
             verses: cached.map((c) => ({
@@ -547,17 +555,18 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       const prevVisibility = el.style.contentVisibility;
       el.style.contentVisibility = 'visible';
       const alignVerse = () => {
-        if (el.isConnected) {
-          el.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
-        }
+        // Re-query: the rich card can replace the plain verse node before this runs.
+        const target = el.isConnected ? el : document.getElementById(`verse-${verseNum}`);
+        target?.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
       };
       requestAnimationFrame(() => requestAnimationFrame(alignVerse));
 
       if (preserveLayout) {
         // Long chapters expand skipped cards as they enter the viewport. Correct once after that layout settles.
         window.setTimeout(() => {
-          if (!el.isConnected) return;
-          const rect = el.getBoundingClientRect();
+          const current = el.isConnected ? el : document.getElementById(`verse-${verseNum}`);
+          if (!current) return;
+          const rect = current.getBoundingClientRect();
           if (rect.bottom <= 0 || rect.top >= window.innerHeight) alignVerse();
         }, 500);
       } else {
@@ -689,7 +698,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     if (state.kind !== 'ready') return new Map<string, NearbyMeaning>();
     return nearestWithMeaning(
       state.verses.map((v) => String(v.number)),
-      state.verses.map((v) => verseHasMeaning(v, commentaryOf(state.commentary, chapterId, v.number))),
+      state.verses.map((v) => verseHasMeaning(v, commentaryOf(state.commentary, chapterId, v.number, state.commentaryAmbiguity))),
     );
   }, [state, chapterId]);
 
@@ -903,7 +912,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         const commentary: HiCommentaryFragment | undefined = commentaryRes.ok
           ? await commentaryRes.json()
           : undefined;
-        setState({ kind: 'ready', verses: extras, commentary, source });
+        setState({ kind: 'ready', verses: extras, commentary, commentaryAmbiguity: commentaryAmbiguities(chapterId, chapter.verses.map(v => v.number)), source });
       } catch (err) {
         if (controller.signal.aborted) return;
         setState({ kind: 'error', message: (err as Error).message });
@@ -1041,7 +1050,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
 
   /** The commentaries this verse actually carries, for the Bhāṣya switcher. Absent ones are not listed. */
   const bhashyaFor = (v: FullVerse): BhashyaSource[] => {
-    const comment = state.commentary?.[`${chapterId}:${Number(canonicalVerseId(chapterId, v.number))}`];
+    const comment = commentaryOf(state.commentary, chapterId, v.number, state.commentaryAmbiguity);
     const { vyakhya, commentary } = splitVyakhyaCommentary([comment?.explanation, v.explanation, v.commentary], v.wordMeaning);
     const isHi = (t: string) => (t.match(/[\u0900-\u097F]/g)?.length ?? 0) > (t.match(/[A-Za-z]/g)?.length ?? 0);
     const draft = Boolean(comment?.ai || comment?.explanationAi || comment?.editorial);
@@ -1350,9 +1359,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
 
               // Otherwise (initial RICH_BATCH verses and scrolled verses): render full VerseCard
               // directly both on SSR and client to completely eliminate the 2.816 CLS hydration swap.
-              const verseKey = canonicalVerseId(chapterId, v.number);
-              const verseIdNum = Number(verseKey);
-              const comment = state.commentary?.[`${chapterId}:${verseIdNum}`];
+              const comment = commentaryOf(state.commentary, chapterId, v.number, state.commentaryAmbiguity);
               const explanationHi = comment?.explanation;
               const scienceHi = comment?.science;
               const lifeLessonHi = comment?.lifeLesson;
@@ -1430,8 +1437,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                       })
                     }
                     inCollectionCount={getCollectionCount(v.number)}
-                    note={getNote(scriptureId, chapterId, v.number)?.text}
-                    onSaveNote={(text) => setNote(scriptureId, chapterId, v.number, text)}
                     highlight={getHighlight(scriptureId, chapterId, v.number)?.color}
                     onHighlight={(color) => toggleHighlight(scriptureId, chapterId, v.number, color)}
                     insight={initialChapter?.insights?.[String(v.number)]}
@@ -1563,6 +1568,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         chapterId={chapterId}
         category={category}
         commentary={state.commentary}
+        commentaryAmbiguity={state.commentaryAmbiguity}
         bookmarkedMap={bookmarkedMap}
         onToggleBookmark={(v) => toggleBookmark(v as FullVerse)}
         onVerseChange={(verseNum) => scrollToVerse(verseNum)}

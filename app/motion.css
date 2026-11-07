@@ -1,0 +1,787 @@
+/* ── Motion system ───────────────────────────────────────────────────────
+   One place for the site's motion language, loaded after globals.css.
+
+   Principles
+   - Content first. Nothing here hides text in the exported HTML: every effect is an
+     enhancement that only runs where the browser supports it, and the resting state
+     is the readable state.
+   - Compositor only. Animations move `transform`, `opacity` and (briefly) `filter`;
+     nothing animates layout or paints large areas every frame.
+   - Physical. Settles use a spring curve (CSS linear()), with a cubic fallback.
+   - Quiet. Reduced motion, the low-power / data-saver / lite modes and Reading Lite
+     turn every looping or pointer-driven effect off. Reading pages are left alone
+     apart from the shared chrome.
+
+   Pieces
+   1. Tokens
+   2. Scroll reveals (.reveal, .reveal-grid)
+   3. Home hero: staggered focus-pull entrance, the 3D kāla-chakra halo, recede on scroll
+   4. 3D tilt with specular light ([data-tilt], driven by MotionLayer.tsx)
+   5. Calls to action (sheen, lift, chevron nudge)
+   6. Header elevation on scroll
+   7. Verse of the day: lines settle one by one
+   8. Theme change: a circular view transition from the tap point (ThemeProvider.tsx)
+   9. Section headings: the accent rule grows in
+   10. Wisdom band: a slow marquee of mahāvākyas
+   11. Sheen and link nudge for any button or link list */
+
+/* 1. Tokens ───────────────────────────────────────────────────────────
+   Durations, curves (--motion-spring, --motion-out) and stagger steps live in
+   app/styles/tokens.css with the rest of the design system. */
+
+/* 2. Scroll reveals ────────────────────────────────────────────────────
+   An element rises out of a slight 3D tilt as it enters the viewport, on its own view
+   timeline. Elements already on screen at load are past their range, so the first
+   screen never starts hidden; without scroll timelines everything is simply visible.
+   Put .reveal on a wrapper, never on an element that also takes [data-tilt] (the
+   animation's fill would hold its transform).
+
+   .reveal-grid cascades its children: each one starts --reveal-i steps of
+   --stagger-distance later than the first, so a row arrives as a wave. The index runs
+   0 to 3 along a row and repeats, so later rows are not held back; set --reveal-i
+   inline to override it. */
+@keyframes reveal-3d {
+    from {
+        opacity: 0;
+        transform: perspective(1200px) translate3d(0, 32px, 0) rotateX(9deg) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .reveal,
+        .reveal-grid > * {
+            transform-origin: 50% 100%;
+            animation: reveal-3d linear both;
+            animation-timeline: view();
+            animation-range: entry 0px entry 260px;
+        }
+        .reveal-grid > * {
+            animation-range:
+                entry calc(var(--reveal-i, 0) * var(--stagger-distance))
+                entry calc(260px + var(--reveal-i, 0) * var(--stagger-distance));
+        }
+    }
+}
+
+/* Cascade index along a row (0, 1, 2, 3, then again). */
+.reveal-grid > :nth-child(4n + 2) { --reveal-i: 1; }
+.reveal-grid > :nth-child(4n + 3) { --reveal-i: 2; }
+.reveal-grid > :nth-child(4n + 4) { --reveal-i: 3; }
+
+/* 3. Home hero ─────────────────────────────────────────────────────────
+   Entrance: each line comes into focus in turn (blur + rise). Opacity never starts at 0,
+   so the headline is painted, and counted for LCP, from the first frame. On the first
+   visit of a session the brand splash covers the page for ~2s, so the entrance waits for
+   it. */
+@keyframes hero-focus {
+    from {
+        opacity: 0.15;
+        filter: blur(12px);
+        transform: translate3d(0, 0.45em, 0);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .hero-rise > * {
+        animation: hero-focus 1.1s var(--motion-out) both;
+        animation-delay: calc(var(--i, 0) * 90ms + 60ms);
+    }
+    :root:not([data-splash='seen']) .hero-rise > * {
+        animation-delay: calc(var(--i, 0) * 90ms + 2.05s);
+    }
+}
+
+.hero-stage {
+    position: relative;
+    isolation: isolate;
+}
+
+/* The halo: three rings of a kāla-chakra (108 beads, 27 nakṣatras, an eight-petalled
+   lotus) lying back in perspective behind the headline, each turning at its own pace.
+   Every ring is its own layer, so the turning is compositor work only. */
+.hero-halo {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    z-index: -1;
+    width: min(820px, 150vw);
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    perspective: 1100px;
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+    mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+    color: var(--dharma-saffron);
+    opacity: 0.5;
+}
+:root[data-theme='night'] .hero-halo,
+:root[data-theme='dark'] .hero-halo {
+    opacity: 0.55;
+}
+:root[data-theme='paper'] .hero-halo {
+    opacity: 0.38;
+}
+.hero-halo-plane {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transform: rotateX(66deg);
+}
+.hero-halo-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+.hero-halo-ring[data-ring='lotus'] {
+    /* The lotus sits right behind the text, so it is the faintest ring. */
+    opacity: 0.6;
+    inset: 21%;
+    width: 58%;
+    height: 58%;
+}
+.hero-halo-ring[data-ring='nakshatra'] {
+    inset: 9%;
+    width: 82%;
+    height: 82%;
+}
+/* A soft warm light pooled at the centre of the halo. */
+.hero-halo-plane::before {
+    content: '';
+    position: absolute;
+    inset: 30%;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--dharma-saffron) 22%, transparent), transparent);
+}
+@keyframes halo-turn {
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes halo-turn-back {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .hero-halo-ring {
+        will-change: transform;
+        animation: halo-turn 240s linear infinite;
+    }
+    .hero-halo-ring[data-ring='nakshatra'] {
+        animation: halo-turn-back 180s linear infinite;
+    }
+    .hero-halo-ring[data-ring='lotus'] {
+        animation-duration: 120s;
+    }
+    /* The halo opens out of the floor as the page arrives. */
+    .hero-halo-plane {
+        animation: halo-arrive 1.8s var(--motion-out) both 0.1s;
+    }
+    :root:not([data-splash='seen']) .hero-halo-plane {
+        animation-delay: 1.9s;
+    }
+}
+@keyframes halo-arrive {
+    from {
+        opacity: 0;
+        transform: rotateX(82deg) scale(0.8);
+    }
+}
+
+/* Scrolling away, the hero recedes and the halo lies flat. */
+@keyframes hero-recede {
+    to {
+        opacity: 0.35;
+        transform: translate3d(0, 10%, 0) scale(0.95);
+    }
+}
+@keyframes halo-recede {
+    to {
+        opacity: 0;
+        transform: scale(1.12);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .hero-stage > .hero-content {
+            animation: hero-recede linear both;
+            animation-timeline: --hero;
+            animation-range: exit 0% exit 100%;
+        }
+        .hero-stage {
+            view-timeline-name: --hero;
+        }
+        .hero-halo {
+            animation: halo-recede linear both;
+            animation-timeline: --hero;
+            animation-range: exit 0% exit 90%;
+        }
+    }
+}
+
+/* 4. 3D tilt ───────────────────────────────────────────────────────────
+   Cards marked [data-tilt] lean toward a fine pointer (MotionLayer sets --tilt-x and
+   --tilt-y from -1 to 1, and [data-tilting] while hovered). A specular light follows
+   the pointer, and children marked [data-depth="n"] drift n px for parallax. Touch,
+   reduced motion and the lite modes get the flat card with the normal press. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    [data-tilt] {
+        --tilt-x: 0;
+        --tilt-y: 0;
+        --lift: 0px;
+        transform: perspective(900px) rotateX(calc(var(--tilt-y) * -5deg)) rotateY(calc(var(--tilt-x) * 6deg))
+            translate3d(0, var(--lift), 0);
+        transition:
+            transform 0.9s var(--motion-spring),
+            box-shadow 0.5s var(--motion-out),
+            border-color 0.2s ease,
+            background-color 0.2s ease;
+    }
+    [data-tilt][data-tilting] {
+        --lift: -4px;
+        transition:
+            transform 0.15s linear,
+            box-shadow 0.35s var(--motion-out),
+            border-color 0.2s ease,
+            background-color 0.2s ease;
+        box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.05),
+            0 24px 60px -18px color-mix(in srgb, var(--book, var(--v2, var(--dharma-saffron))) 35%, rgba(0, 0, 0, 0.25));
+    }
+    [data-tilt]::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        background: radial-gradient(
+            circle at calc((var(--tilt-x) + 1) * 50%) calc((var(--tilt-y) + 1) * 50%),
+            rgba(255, 255, 255, 0.28),
+            rgba(255, 255, 255, 0) 55%
+        );
+        opacity: 0;
+        transition: opacity 0.4s var(--motion-out);
+    }
+    :root[data-theme='night'] [data-tilt]::after,
+    :root[data-theme='dark'] [data-tilt]::after {
+        background: radial-gradient(
+            circle at calc((var(--tilt-x) + 1) * 50%) calc((var(--tilt-y) + 1) * 50%),
+            rgba(255, 214, 160, 0.12),
+            rgba(255, 214, 160, 0) 55%
+        );
+    }
+    [data-tilt][data-tilting]::after {
+        opacity: 1;
+    }
+    [data-tilt] [data-depth] {
+        transform: translate3d(
+            calc(var(--tilt-x) * var(--depth, 4) * 1px),
+            calc(var(--tilt-y) * var(--depth, 4) * 1px),
+            0
+        );
+        transition: transform 0.9s var(--motion-spring);
+    }
+    [data-tilt][data-tilting] [data-depth] {
+        transition: transform 0.15s linear;
+    }
+    [data-tilt] [data-depth='8'] { --depth: 8; }
+    [data-tilt] [data-depth='4'] { --depth: 4; }
+}
+/* The tilt is a mouse effect; a tap still presses the card. */
+@media (prefers-reduced-motion: no-preference) {
+    a[data-tilt]:active,
+    [data-tilt] a:active {
+        scale: 0.985;
+    }
+}
+
+/* 5. Calls to action ───────────────────────────────────────────────── */
+.cta-primary,
+.btn-sheen,
+.apple-pill {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+/* The sheen: a soft band of light that sweeps across a filled button on hover.
+   .cta-primary also lifts; .btn-sheen and .apple-pill only shine. */
+.cta-primary::after,
+.btn-sheen::after,
+.apple-pill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+    transform: translateX(-120%);
+    pointer-events: none;
+}
+.chevron-nudge [aria-hidden='true'] {
+    display: inline-block;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .cta-primary {
+        transition:
+            transform 0.5s var(--motion-spring),
+            box-shadow 0.4s var(--motion-out),
+            opacity 0.2s ease;
+    }
+    .cta-primary:hover {
+        transform: translate3d(0, -2px, 0);
+        box-shadow: 0 12px 32px -12px color-mix(in srgb, var(--dharma-saffron) 70%, transparent);
+    }
+    .cta-primary:hover::after,
+    .btn-sheen:hover::after,
+    .apple-pill:hover::after {
+        transform: translateX(120%);
+        transition: transform var(--duration-slow) var(--motion-out);
+    }
+    .cta-primary:active {
+        scale: 0.97;
+    }
+    .chevron-nudge [aria-hidden='true'] {
+        transition: transform 0.45s var(--motion-spring);
+    }
+    .chevron-nudge:hover [aria-hidden='true'],
+    .chevron-nudge:focus-visible [aria-hidden='true'] {
+        transform: translateX(4px);
+    }
+}
+
+/* A quiet surface that rises a little under the pointer (the hero's search field). */
+@media (prefers-reduced-motion: no-preference) {
+    .lift-hover {
+        transition:
+            transform 0.6s var(--motion-spring),
+            box-shadow 0.4s var(--motion-out),
+            border-color 0.2s ease;
+    }
+    .lift-hover:hover {
+        transform: translate3d(0, -2px, 0);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05), 0 22px 50px -16px rgba(0, 0, 0, 0.22);
+    }
+    .lift-hover:focus-visible {
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--dharma-saffron) 25%, transparent), 0 22px 50px -16px rgba(0, 0, 0, 0.22);
+    }
+}
+
+/* 6. Header elevation ──────────────────────────────────────────────────
+   At the top of a page the bar sits flush with it; once the page moves, the hairline
+   and a soft shadow come in. Pure CSS on the root scroll timeline. */
+@keyframes header-lift {
+    from {
+        border-bottom-color: transparent;
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    to {
+        box-shadow: 0 6px 20px -14px rgba(0, 0, 0, 0.2);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+        [data-site-header] {
+            animation: header-lift linear both;
+            animation-timeline: scroll(root block);
+            animation-range: 0px 120px;
+        }
+    }
+}
+
+/* The phone tab bar: the tab that becomes current lifts its icon with a small spring, and a
+   dot grows beneath it. An animation runs whenever its selector starts to match, so this plays
+   on each navigation with no script. */
+@keyframes tab-pop {
+    0% { transform: scale(1); }
+    35% { transform: scale(0.82) translate3d(0, 1px, 0); }
+    100% { transform: none; }
+}
+@keyframes tab-dot {
+    from { transform: translateX(-50%) scale(0); opacity: 0; }
+}
+nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background: currentColor;
+    transform: translateX(-50%);
+}
+@media (prefers-reduced-motion: no-preference) {
+    nav[aria-label='Mobile quick navigation'] [aria-current='page'] > svg,
+    nav[aria-label='Mobile quick navigation'] [aria-current='page'] > div > svg {
+        animation: tab-pop 0.6s var(--motion-spring);
+    }
+    nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
+        animation: tab-dot 0.5s var(--motion-spring) 0.1s both;
+    }
+}
+
+/* 7. Verse of the day ──────────────────────────────────────────────────
+   The verse is chosen on the reader's device, so it appears after mount; its lines
+   then settle one after another, like ink drying. Every line is always rendered whole. */
+@keyframes line-settle {
+    from {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translate3d(0, 10px, 0);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: none;
+    }
+}
+.verse-line {
+    display: block;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .verse-line,
+    .verse-settle {
+        animation: line-settle 1s var(--motion-out) both;
+        animation-delay: calc(var(--i, 0) * 140ms);
+    }
+}
+
+/* 8. Theme change ──────────────────────────────────────────────────────
+   ThemeProvider wraps the switch in document.startViewTransition and sets
+   data-theme-vt plus the tap point (--vt-x, --vt-y) and the radius that covers the
+   screen (--vt-r). The new theme grows out of the tap as a circle. */
+:root[data-theme-vt]::view-transition-old(root),
+:root[data-theme-vt]::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+/* The new view is live, so colour transitions would show it half-changed (grey) inside the circle. */
+:root[data-theme-vt],
+:root[data-theme-vt] *,
+:root[data-theme-vt] *::before,
+:root[data-theme-vt] *::after {
+    transition: none !important;
+}
+:root[data-theme-vt]::view-transition-new(root) {
+    animation: theme-reveal 0.75s var(--motion-out) both;
+}
+@keyframes theme-reveal {
+    from {
+        clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 0));
+    }
+    to {
+        clip-path: circle(var(--vt-r, 150vmax) at var(--vt-x, 50%) var(--vt-y, 0));
+    }
+}
+
+/* 9. Section headings ─────────────────────────────────────────────────
+   The accent rule under a SectionTitle draws itself from the left as its heading
+   enters the viewport. Headings on the first screen are past the range at load, so
+   their rule is already drawn. */
+@keyframes rule-grow {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .section-rule {
+            transform-origin: left center;
+            animation: rule-grow linear both;
+            animation-timeline: view();
+            animation-range: entry 0px entry 160px;
+        }
+    }
+}
+
+/* 10. Wisdom band ──────────────────────────────────────────────────────
+   WisdomTicker.tsx renders the list twice; the track slides by exactly one copy and
+   loops. The edges fade into the canvas. It pauses under the pointer or keyboard
+   focus, and with reduced motion or a quiet mode it is a still, wrapped list. */
+.ticker {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.ticker-track {
+    display: flex;
+    width: max-content;
+}
+.ticker-group {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-12);
+    padding: var(--space-4) var(--space-6);
+    white-space: nowrap;
+}
+@keyframes ticker-scroll {
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .ticker-track {
+        animation: ticker-scroll 120s linear infinite;
+    }
+    .ticker:hover .ticker-track,
+    .ticker:focus-within .ticker-track {
+        animation-play-state: paused;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ticker {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+    .ticker-track {
+        animation: none;
+        width: auto;
+    }
+    .ticker-group {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: var(--space-3);
+        white-space: normal;
+    }
+    .ticker-group + .ticker-group {
+        display: none;
+    }
+}
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .ticker {
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .ticker-track {
+    animation: none;
+    width: auto;
+}
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .ticker-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: var(--space-3);
+    white-space: normal;
+}
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .ticker-group + .ticker-group {
+    display: none;
+}
+
+/* 11. Link nudge ───────────────────────────────────────────────────────
+   Links in a list (the footer) step a little to the right under the pointer. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .link-lift {
+        display: inline-block;
+        transition:
+            transform var(--duration-standard) var(--motion-spring),
+            color var(--duration-fast) var(--ease-standard);
+    }
+    .link-lift:hover {
+        transform: translate3d(3px, 0, 0);
+    }
+}
+
+/* 12. Site chrome ──────────────────────────────────────────────────────
+   The header, its menus, the drawer, the banners and the page change, in CSS instead of a motion
+   library, so no page carries one just for its chrome. Each piece animates in when it mounts and
+   out while it carries data-closing (usePresence.ts keeps it mounted for the exit). Durations
+   are tokens, so reduced motion collapses them; the block at the end also stops them outright. */
+@keyframes chrome-pop-in {
+    from { opacity: 0; transform: translate3d(0, -6px, 0) scale(0.97); }
+}
+@keyframes chrome-pop-out {
+    to { opacity: 0; transform: translate3d(0, -4px, 0) scale(0.97); }
+}
+@keyframes chrome-fade-in {
+    from { opacity: 0; }
+}
+@keyframes chrome-fade-out {
+    to { opacity: 0; }
+}
+@keyframes chrome-sheet-in {
+    from { transform: translate3d(100%, 0, 0); }
+}
+@keyframes chrome-sheet-out {
+    to { transform: translate3d(100%, 0, 0); }
+}
+@keyframes chrome-rise-in {
+    from { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.98); }
+}
+@keyframes chrome-rise-out {
+    to { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.98); }
+}
+@keyframes chrome-icon-in {
+    from { opacity: 0; transform: scale(0.7) rotate(-20deg); }
+}
+.chrome-pop {
+    transform-origin: top right;
+    animation: chrome-pop-in var(--duration-fast) var(--ease-out) backwards;
+}
+.chrome-pop[data-closing] {
+    pointer-events: none;
+    animation: chrome-pop-out var(--duration-instant) var(--ease-in) forwards;
+}
+.chrome-fade {
+    animation: chrome-fade-in var(--duration-standard) var(--ease-out) backwards;
+}
+.chrome-fade[data-closing] {
+    pointer-events: none;
+    animation: chrome-fade-out var(--duration-fast) var(--ease-in) forwards;
+}
+.chrome-sheet {
+    animation: chrome-sheet-in var(--duration-base) var(--motion-spring) backwards;
+}
+.chrome-sheet[data-closing] {
+    pointer-events: none;
+    animation: chrome-sheet-out var(--duration-fast) var(--ease-in) forwards;
+}
+.chrome-rise {
+    animation: chrome-rise-in var(--duration-standard) var(--motion-spring) backwards;
+}
+.chrome-rise[data-closing] {
+    pointer-events: none;
+    animation: chrome-rise-out var(--duration-fast) var(--ease-in) forwards;
+}
+/* An icon that swaps (the theme button): only after a change, never on first paint. */
+.chrome-icon-swap {
+    animation: chrome-icon-in var(--duration-fast) var(--ease-out) backwards;
+}
+/* The logo gives a little under the pointer and the press. */
+.chrome-press {
+    transition: transform var(--duration-standard) var(--motion-spring);
+}
+@media (hover: hover) {
+    .chrome-press:hover { transform: scale(1.05); }
+}
+.chrome-press:active { transform: scale(0.95); }
+
+/* Reading progress: a hairline under the header that fills as the page scrolls, on the page's own
+   scroll timeline. It follows the reader's own scrolling, so it stays under reduced motion; a
+   browser without scroll timelines simply leaves it out. */
+.nav-progress {
+    display: none;
+}
+@supports (animation-timeline: scroll()) {
+    .nav-progress {
+        display: block;
+        transform: scaleX(0);
+        transform-origin: left center;
+        animation: nav-progress linear both;
+        animation-timeline: scroll(root block);
+    }
+}
+@keyframes nav-progress {
+    to { transform: scaleX(1); }
+}
+
+/* Page change: a short shimmer runs across the top, and the new page settles out of a soft blur.
+   Chapter to chapter, a leaf turns away on its spine instead. Never on the first load, which is
+   the exported HTML at rest. The fill mode is `backwards`, so the filter is gone once it ends and
+   never becomes a containing block for the page's fixed bars. */
+@keyframes page-shimmer-fade {
+    0%, 70% { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes page-shimmer-run {
+    from { transform: translate3d(-100%, 0, 0); }
+    to { transform: translate3d(400%, 0, 0); }
+}
+@keyframes page-settle {
+    from { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.985); filter: blur(8px); }
+}
+@keyframes page-turn-forward {
+    from { opacity: 0; transform: translate3d(24px, 0, 0); }
+}
+@keyframes page-turn-back {
+    from { opacity: 0; transform: translate3d(-24px, 0, 0); }
+}
+@keyframes page-leaf-forward {
+    to { opacity: 0; transform: rotateY(-115deg); }
+}
+@keyframes page-leaf-back {
+    to { opacity: 0; transform: rotateY(115deg); }
+}
+.page-shimmer {
+    animation: page-shimmer-fade 1s linear forwards;
+}
+.page-shimmer > span {
+    animation: page-shimmer-run 0.8s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+.page-settle {
+    animation: page-settle var(--duration-deliberate) var(--ease-out) backwards;
+}
+.page-turn-forward {
+    animation: page-turn-forward var(--duration-base) var(--motion-spring) backwards;
+}
+.page-turn-back {
+    animation: page-turn-back var(--duration-base) var(--motion-spring) backwards;
+}
+.page-leaf.is-forward {
+    animation: page-leaf-forward var(--duration-slow) var(--ease-in-out) forwards;
+}
+.page-leaf.is-back {
+    animation: page-leaf-back var(--duration-slow) var(--ease-in-out) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chrome-pop,
+    .chrome-fade,
+    .chrome-sheet,
+    .chrome-rise,
+    .chrome-icon-swap,
+    .page-settle,
+    .page-turn-forward,
+    .page-turn-back {
+        animation: none;
+    }
+    .chrome-press,
+    .chrome-press:hover,
+    .chrome-press:active {
+        transition: none;
+        transform: none;
+    }
+    .page-shimmer,
+    .page-leaf {
+        display: none;
+    }
+}
+
+/* Quiet modes ─────────────────────────────────────────────────────────── */
+:root[data-low-power='true'] .hero-halo-ring,
+:root[data-data-saver='true'] .hero-halo-ring,
+:root[data-lite-mode='true'] .hero-halo-ring {
+    animation: none;
+    will-change: auto;
+}
+:root[data-low-power='true'] [data-tilt],
+:root[data-data-saver='true'] [data-tilt],
+:root[data-lite-mode='true'] [data-tilt],
+:root[data-reading-lite='true'] [data-tilt] {
+    transform: none;
+}
+@media print {
+    .hero-halo,
+    .ticker {
+        display: none;
+    }
+    .reveal,
+    .reveal-grid > *,
+    .hero-rise > *,
+    .hero-stage > .hero-content,
+    .verse-line,
+    .verse-settle,
+    .section-rule {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}

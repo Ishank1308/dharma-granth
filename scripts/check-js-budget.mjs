@@ -47,7 +47,7 @@ for (const page of PAGES) {
   }
   measured++;
   const tags = [...fs.readFileSync(html, 'utf8').matchAll(/<script\b([^>]*)>/g)].map((m) => m[1]);
-  const srcs = [...new Set(tags.filter((a) => !/\bnomodule\b/.test(a)).map((a) => a.match(/\bsrc="([^"]+)"/)?.[1]).filter(Boolean))];
+  const srcs = [...new Set(tags.filter((a) => !/\bnomodule\b/i.test(a)).map((a) => a.match(/\bsrc="([^"]+)"/)?.[1]).filter(Boolean))];
   const missing = srcs.filter((s) => Number.isNaN(gzipKb(s)));
   const total = srcs.reduce((sum, s) => sum + (gzipKb(s) || 0), 0);
   const ok = total <= page.budget;

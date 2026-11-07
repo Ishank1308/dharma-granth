@@ -10,16 +10,27 @@ import { GRAPH_CONCEPTS } from '@/data/knowledge-graph';
 import { graphConceptLink } from '@/lib/knowledge-graph';
 
 export const metadata: Metadata = {
-  title: 'अवधारणा ज्ञान ग्राफ (Concepts Knowledge Graph)',
+  title: 'Dharmic Concepts & Philosophy Explained (शास्त्रीय अवधारणा ज्ञान ग्राफ)',
   description:
-    'वैदिक और हिंदू दर्शन की अवधारणाओं — आत्मन्, ब्रह्मन्, कर्म, धर्म, मोक्ष और अधिक — के अंतरसंबंधों का अन्वेषण करें।',
+    'Classical meanings, Sanskrit etymology and scriptural citations for core Hindu concepts — Dharma, Karma, Moksha, Atman, Brahman, Maya, Ahimsa, and Yajna.',
+  keywords: [
+    'Hindu philosophy concepts',
+    'Dharmic concepts explained',
+    'Sanatan Dharma core principles',
+    'Karma meaning in hindi',
+    'Dharma meaning',
+    'Moksha meaning',
+    'Atman and Brahman',
+    'अवधारणा ज्ञान ग्राफ',
+    'dharma granth',
+  ],
   alternates: { canonical: '/concepts/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
-    title: 'अवधारणा ज्ञान ग्राफ (Concepts Knowledge Graph) — Dharma Granth',
+    title: 'Dharmic Concepts & Philosophy Explained (शास्त्रीय अवधारणा ज्ञान ग्राफ) — Dharma Granth',
     description:
-      'वैदिक और हिंदू दर्शन की अवधारणाओं — आत्मन्, ब्रह्मन्, कर्म, धर्म, मोक्ष और अधिक — के अंतरसंबंधों का अन्वेषण करें।',
-    url: 'https://dharmagranth.dev/concepts',
+      'Classical meanings, Sanskrit etymology and scriptural citations for core Hindu concepts — Dharma, Karma, Moksha, Atman, Brahman, Maya, Ahimsa, and Yajna.',
+    url: 'https://dharmagranth.dev/concepts/',
   },
 };
 

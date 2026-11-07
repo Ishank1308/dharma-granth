@@ -143,7 +143,7 @@ export function CategoryExploreSection() {
       aria-labelledby="explore-categories-heading"
       className="border-b border-dharma-border bg-gradient-to-b from-dharma-card/30 to-dharma-bg py-16 sm:py-20"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+      <div className="mx-auto max-w-6xl px-gutter">
         {/* Section Header */}
         <div className="mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
           <div>

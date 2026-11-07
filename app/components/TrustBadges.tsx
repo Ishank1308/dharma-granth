@@ -50,7 +50,7 @@ export function TrustBadges({
             title={EDITORIAL_DRAFT_LABEL.detail}
           >
             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-            Study notes · {EDITORIAL_DRAFT_LABEL.en}
+            Commentary · {EDITORIAL_DRAFT_LABEL.en}
           </li>
         )}
         {hasEditorial && (

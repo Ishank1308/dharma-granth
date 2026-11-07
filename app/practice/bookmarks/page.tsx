@@ -9,7 +9,6 @@ import {
   Check,
   Compass,
   Copy,
-  Download,
   FileText,
   Highlighter,
   Lock,
@@ -53,37 +52,37 @@ const THEME_TAG_CONFIG: Record<
   contemplation: {
     label: 'Contemplation',
     labelHi: 'साधना',
-    bgClass: 'bg-amber-100 dark:bg-amber-950/40',
-    textClass: 'text-amber-900 dark:text-amber-200',
-    borderClass: 'border-amber-500/40',
+    bgClass: 'bg-amber-500/10',
+    textClass: 'text-amber-800 dark:text-amber-300',
+    borderClass: 'border-amber-500/30',
   },
   duty: {
     label: 'Duty & Action',
     labelHi: 'कर्म',
-    bgClass: 'bg-orange-100 dark:bg-orange-950/40',
-    textClass: 'text-orange-900 dark:text-orange-200',
-    borderClass: 'border-orange-500/40',
+    bgClass: 'bg-orange-500/10',
+    textClass: 'text-orange-800 dark:text-orange-300',
+    borderClass: 'border-orange-500/30',
   },
   devotion: {
     label: 'Devotion',
     labelHi: 'भक्ति',
-    bgClass: 'bg-rose-100 dark:bg-rose-950/40',
-    textClass: 'text-rose-900 dark:text-rose-200',
-    borderClass: 'border-rose-500/40',
+    bgClass: 'bg-rose-500/10',
+    textClass: 'text-rose-800 dark:text-rose-300',
+    borderClass: 'border-rose-500/30',
   },
   wisdom: {
     label: 'Wisdom',
     labelHi: 'ज्ञान',
-    bgClass: 'bg-emerald-100 dark:bg-emerald-950/40',
-    textClass: 'text-emerald-900 dark:text-emerald-200',
-    borderClass: 'border-emerald-500/40',
+    bgClass: 'bg-emerald-500/10',
+    textClass: 'text-emerald-800 dark:text-emerald-300',
+    borderClass: 'border-emerald-500/30',
   },
   insight: {
     label: 'Discernment',
     labelHi: 'विवेक',
-    bgClass: 'bg-indigo-100 dark:bg-indigo-950/40',
-    textClass: 'text-indigo-900 dark:text-indigo-200',
-    borderClass: 'border-indigo-500/40',
+    bgClass: 'bg-indigo-500/10',
+    textClass: 'text-indigo-800 dark:text-indigo-300',
+    borderClass: 'border-indigo-500/30',
   },
 };
 
@@ -165,51 +164,6 @@ export default function BookmarksAndAnnotationsPage() {
     }
   };
 
-  const exportAllDataJson = () => {
-    const exportBundle = {
-      version: '1.0',
-      exportedAt: new Date().toISOString(),
-      privacy: 'Stored client-side on local device. Not uploaded to any server.',
-      bookmarks,
-      highlights,
-      notes,
-    };
-    const dataStr = JSON.stringify(exportBundle, null, 2);
-    const dataBlob = new Blob([dataStr], { type: 'application/json' });
-    const url = URL.createObjectURL(dataBlob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `dharma-granth-private-sanctuary-${new Date().toISOString().slice(0, 10)}.json`;
-    link.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const exportAllDataMarkdown = () => {
-    let md = `# Dharma Granth · Private Sanctuary Export\n\n`;
-    md += `*Exported on: ${new Date().toLocaleDateString(undefined, { numberingSystem: 'latn' })}*\n\n`;
-    md += `## 1. Bookmarked Verses (${bookmarks.length})\n\n`;
-    bookmarks.forEach((b) => {
-      md += `### ${b.scriptureTitle} — Chapter ${b.chapterId ?? ''}, Verse ${b.verseId}\n`;
-      md += `\`\`\`sanskrit\n${b.sanskrit}\n\`\`\`\n`;
-      if (b.hindi) md += `**हिन्दी:** ${b.hindi}\n\n`;
-      if (b.translation) md += `**English:** ${b.translation}\n\n`;
-    });
-
-    md += `## 2. Private Notes & Reflections (${notes.length})\n\n`;
-    notes.forEach((n) => {
-      md += `### ${n.scriptureId.toUpperCase()} Ch ${n.chapterId} Verse ${n.verseId}\n`;
-      md += `> ${n.text}\n\n*Updated: ${new Date(n.updatedAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}*\n\n`;
-    });
-
-    const blob = new Blob([md], { type: 'text/markdown' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `dharma-granth-notes-${new Date().toISOString().slice(0, 10)}.md`;
-    link.click();
-    URL.revokeObjectURL(url);
-  };
-
   const filteredBookmarks = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     if (!q) return bookmarks;
@@ -226,43 +180,22 @@ export default function BookmarksAndAnnotationsPage() {
   return (
     <main className="min-h-screen py-12 px-4 sm:px-6 max-w-7xl mx-auto">
       {/* Sanctuary Header */}
-      <header className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <header className="mb-8">
         <div>
           <div className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-saffron-500/15 text-saffron-800 dark:text-saffron-300">
+            <span className="flex h-7 w-7 items-center justify-center rounded-control bg-tint-fill text-tint">
               <Lock className="h-4 w-4" />
             </span>
-            <span className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
+            <span className="text-footnote font-semibold uppercase tracking-wider text-tint">
               Personal Sanctuary · व्यक्तिगत स्वाध्याय
             </span>
           </div>
-          <h1 className="mt-1 text-3xl sm:text-4xl font-serif font-bold text-dharma-text tracking-tight">
+          <h1 className="mt-1 text-title-1 sm:text-large-title font-bold text-label-primary tracking-tight">
             Saved Verses, Highlights & Notes
           </h1>
-          <p className="mt-2 text-xs sm:text-sm text-dharma-muted max-w-2xl leading-relaxed">
+          <p className="mt-2 text-subhead text-label-secondary max-w-2xl leading-relaxed">
             Your private, client-side repository of scripture reflections. All data is saved strictly to this device&rsquo;s LocalStorage and is never uploaded without explicit consent.
           </p>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-2 shrink-0">
-          <button
-            type="button"
-            onClick={exportAllDataJson}
-            className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3.5 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition shadow-2xs"
-            title="Download JSON bundle"
-          >
-            <Download className="h-3.5 w-3.5" />
-            <span>Export JSON</span>
-          </button>
-          <button
-            type="button"
-            onClick={exportAllDataMarkdown}
-            className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3.5 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition shadow-2xs"
-            title="Download Markdown summary"
-          >
-            <FileText className="h-3.5 w-3.5" />
-            <span>Export Markdown</span>
-          </button>
         </div>
       </header>
 
@@ -270,17 +203,17 @@ export default function BookmarksAndAnnotationsPage() {
       <div
         role="tablist"
         aria-label="Sanctuary sections"
-        className="flex flex-wrap gap-2 border-b border-dharma-border pb-3 mb-8"
+        className="flex flex-wrap gap-2 border-b border-separator pb-3 mb-8"
       >
         <button
           type="button"
           role="tab"
           aria-selected={activeTab === 'bookmarks'}
           onClick={() => setActiveTab('bookmarks')}
-          className={`focus-ring min-h-[42px] px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
+          className={`focus-ring min-h-[40px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
             activeTab === 'bookmarks'
-              ? 'bg-saffron-600 text-white shadow-xs'
-              : 'border border-dharma-border bg-dharma-card text-dharma-muted hover:text-dharma-text'
+              ? 'bg-tint text-on-tint shadow-xs'
+              : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
           }`}
         >
           <span className="flex items-center gap-1.5">
@@ -294,10 +227,10 @@ export default function BookmarksAndAnnotationsPage() {
           role="tab"
           aria-selected={activeTab === 'highlights'}
           onClick={() => setActiveTab('highlights')}
-          className={`focus-ring min-h-[42px] px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
+          className={`focus-ring min-h-[40px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
             activeTab === 'highlights'
-              ? 'bg-saffron-600 text-white shadow-xs'
-              : 'border border-dharma-border bg-dharma-card text-dharma-muted hover:text-dharma-text'
+              ? 'bg-tint text-on-tint shadow-xs'
+              : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
           }`}
         >
           <span className="flex items-center gap-1.5">
@@ -311,10 +244,10 @@ export default function BookmarksAndAnnotationsPage() {
           role="tab"
           aria-selected={activeTab === 'notes'}
           onClick={() => setActiveTab('notes')}
-          className={`focus-ring min-h-[42px] px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
+          className={`focus-ring min-h-[40px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
             activeTab === 'notes'
-              ? 'bg-saffron-600 text-white shadow-xs'
-              : 'border border-dharma-border bg-dharma-card text-dharma-muted hover:text-dharma-text'
+              ? 'bg-tint text-on-tint shadow-xs'
+              : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
           }`}
         >
           <span className="flex items-center gap-1.5">
@@ -328,10 +261,10 @@ export default function BookmarksAndAnnotationsPage() {
           role="tab"
           aria-selected={activeTab === 'privacy'}
           onClick={() => setActiveTab('privacy')}
-          className={`focus-ring min-h-[42px] px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
+          className={`focus-ring min-h-[40px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
             activeTab === 'privacy'
-              ? 'bg-saffron-600 text-white shadow-xs'
-              : 'border border-dharma-border bg-dharma-card text-dharma-muted hover:text-dharma-text'
+              ? 'bg-tint text-on-tint shadow-xs'
+              : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
           }`}
         >
           <span className="flex items-center gap-1.5">
@@ -349,19 +282,19 @@ export default function BookmarksAndAnnotationsPage() {
           {bookmarks.length > 0 && (
             <div className="mb-6">
               <div className="relative max-w-md">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-dharma-muted" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-label-tertiary" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search saved verses..."
-                  className="w-full rounded-2xl border border-dharma-border bg-dharma-card pl-10 pr-9 py-2.5 text-xs sm:text-sm text-dharma-text placeholder:text-dharma-muted/70 outline-none focus:border-saffron-400 focus:ring-2 focus:ring-saffron-400/20 shadow-xs"
+                  className="w-full rounded-field border border-separator bg-surface-raised pl-10 pr-9 py-2.5 text-footnote text-label-primary placeholder:text-label-tertiary outline-none focus:border-tint/60 focus:ring-2 focus:ring-tint/20 transition shadow-xs"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 text-dharma-muted hover:text-dharma-text"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-label-tertiary hover:text-label-primary transition"
                     aria-label="Clear search"
                   >
                     <X className="h-3.5 w-3.5" />
@@ -373,21 +306,21 @@ export default function BookmarksAndAnnotationsPage() {
 
           {!isLoaded ? (
             <div className="flex min-h-[250px] items-center justify-center">
-              <div className="h-8 w-8 animate-spin rounded-full border-4 border-saffron-200 border-t-saffron-600" />
+              <div className="h-8 w-8 animate-spin rounded-full border-4 border-tint/20 border-t-tint" />
             </div>
           ) : bookmarks.length === 0 ? (
-            <div className="rounded-3xl border border-dharma-border bg-dharma-card p-12 text-center shadow-xs max-w-2xl mx-auto">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-saffron-100 text-saffron-600 mb-6 dark:bg-saffron-950/40">
+            <div className="rounded-panel border border-separator bg-surface-raised p-12 text-center shadow-xs max-w-2xl mx-auto">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-tint-fill text-tint mb-6">
                 <Bookmark className="h-7 w-7" />
               </div>
-              <h2 className="text-xl font-serif font-bold text-dharma-text">Your sanctuary is empty</h2>
-              <p className="mt-2 text-sm text-dharma-muted max-w-md mx-auto leading-relaxed">
+              <h2 className="text-title-2 font-bold text-label-primary">Your sanctuary is empty</h2>
+              <p className="mt-2 text-subhead text-label-secondary max-w-md mx-auto leading-relaxed">
                 Explore the scriptures, open any chapter, and tap the bookmark icon next to any verse to preserve it here.
               </p>
               <div className="mt-6 flex justify-center gap-4">
                 <Link
                   href="/scriptures"
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-saffron-600 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-saffron-700 shadow-xs"
+                  className="apple-pill min-h-[44px] px-6 text-subhead font-semibold"
                 >
                   <Compass className="h-4 w-4" />
                   <span>Browse Scriptures</span>
@@ -415,15 +348,15 @@ export default function BookmarksAndAnnotationsPage() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
-                      className="group relative rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-xs hover:border-saffron-500/40 transition-all flex flex-col justify-between"
+                      className="group relative rounded-card border border-separator bg-surface-raised p-6 shadow-xs hover:border-tint/40 transition-all flex flex-col justify-between"
                     >
                       <div>
                         <div className="flex items-start justify-between gap-4 mb-4">
                           <div>
-                            <span className="text-[10px] font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
+                            <span className="text-caption font-bold uppercase tracking-wider text-tint">
                               {bookmark.scriptureTitle}
                             </span>
-                            <h3 className="text-base font-serif font-bold text-dharma-text leading-tight mt-0.5">
+                            <h3 className="text-title-3 font-bold text-label-primary leading-tight mt-0.5">
                               {bookmark.chapterTitle} • Verse {bookmark.verseId}
                             </h3>
                           </div>
@@ -432,7 +365,7 @@ export default function BookmarksAndAnnotationsPage() {
                             <button
                               type="button"
                               onClick={() => handleCopy(bookmark)}
-                              className="focus-ring p-1.5 rounded-lg text-dharma-muted hover:bg-saffron-50 hover:text-saffron-700 dark:hover:bg-saffron-950/30 transition"
+                              className="focus-ring p-2 rounded-control text-label-tertiary hover:bg-fill-quaternary hover:text-label-primary transition"
                               title="Copy verse"
                               aria-label="Copy verse"
                             >
@@ -445,7 +378,7 @@ export default function BookmarksAndAnnotationsPage() {
                             <button
                               type="button"
                               onClick={() => removeBookmark(bookmark.scriptureId, bookmark.verseId)}
-                              className="focus-ring p-1.5 rounded-lg text-dharma-muted hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/30 transition"
+                              className="focus-ring p-2 rounded-control text-label-tertiary hover:bg-rose-500/10 hover:text-rose-600 transition"
                               title="Remove bookmark"
                               aria-label="Remove bookmark"
                             >
@@ -454,33 +387,33 @@ export default function BookmarksAndAnnotationsPage() {
                           </div>
                         </div>
 
-                        <div className="rounded-xl bg-dharma-bg/80 p-4 border border-dharma-border mb-4">
-                          <p lang="sa" className="font-devanagari text-lg leading-relaxed text-dharma-text whitespace-pre-line">
+                        <div className="rounded-card bg-surface-canvas/60 p-4 border border-separator/80 mb-4">
+                          <p lang="sa" className="font-devanagari text-lg leading-relaxed text-label-primary whitespace-pre-line">
                             {bookmark.sanskrit}
                           </p>
-                          <div className="w-8 h-px bg-saffron-300 dark:bg-saffron-800 my-3" />
+                          <div className="w-8 h-0.5 rounded-pill bg-tint/40 my-3" />
                           {bookmark.hindi && (
-                            <p lang="hi" className="text-xs sm:text-sm leading-relaxed text-dharma-text font-devanagari mb-2">
+                            <p lang="hi" className="text-footnote leading-relaxed text-label-primary font-devanagari mb-2">
                               <strong>हिन्दी: </strong>
                               {bookmark.hindi}
                             </p>
                           )}
                           {bookmark.translation && (
-                            <p className="text-xs sm:text-sm leading-relaxed text-dharma-muted italic line-clamp-3">
+                            <p className="text-footnote leading-relaxed text-label-secondary italic line-clamp-3">
                               {bookmark.translation}
                             </p>
                           )}
                         </div>
                       </div>
 
-                      <div className="mt-4 flex items-center justify-between pt-3 border-t border-dharma-border">
-                        <span className="text-xs text-dharma-muted">
+                      <div className="mt-4 flex items-center justify-between pt-3 border-t border-separator">
+                        <span className="text-caption text-label-tertiary">
                           Saved {new Date(bookmark.timestamp).toLocaleDateString(undefined, { numberingSystem: 'latn', month: 'short', day: 'numeric', year: 'numeric' })}
                         </span>
 
                         <Link
                           href={targetUrl}
-                          className="focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-lg bg-saffron-500/10 text-saffron-800 dark:text-saffron-300 px-3.5 py-1.5 text-xs font-semibold hover:bg-saffron-600 hover:text-white transition"
+                          className="focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-pill bg-tint-fill text-tint px-3.5 py-1.5 text-footnote font-semibold hover:bg-tint hover:text-on-tint transition"
                         >
                           <BookOpen className="h-3.5 w-3.5" />
                           <span>Study Verse</span>
@@ -501,18 +434,18 @@ export default function BookmarksAndAnnotationsPage() {
         <section aria-label="Highlighted verses">
           {/* Theme Tag Filters */}
           <div className="mb-6 flex flex-wrap items-center gap-2">
-            <span className="text-xs font-bold text-dharma-muted uppercase tracking-wider flex items-center gap-1 mr-1">
-              <Tag className="h-3.5 w-3.5" />
+            <span className="text-caption font-bold text-label-secondary uppercase tracking-wider flex items-center gap-1 mr-1">
+              <Tag className="h-3.5 w-3.5 text-tint" />
               <span>Theme Tag:</span>
             </span>
 
             <button
               type="button"
               onClick={() => setSelectedTagFilter('all')}
-              className={`min-h-[36px] rounded-lg px-3 text-xs font-semibold transition ${
+              className={`min-h-[36px] rounded-pill px-3.5 text-footnote font-semibold transition ${
                 selectedTagFilter === 'all'
-                  ? 'bg-saffron-600 text-white shadow-2xs'
-                  : 'border border-dharma-border bg-dharma-card text-dharma-muted hover:text-dharma-text'
+                  ? 'bg-tint text-on-tint shadow-xs'
+                  : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
               }`}
             >
               All Highlights ({highlights.length})
@@ -527,9 +460,9 @@ export default function BookmarksAndAnnotationsPage() {
                   key={tagKey}
                   type="button"
                   onClick={() => setSelectedTagFilter(tagKey)}
-                  className={`min-h-[36px] rounded-lg px-3 text-xs font-semibold transition border ${
+                  className={`min-h-[36px] rounded-pill px-3.5 text-footnote font-semibold transition border ${
                     isSelected
-                      ? 'border-saffron-600 bg-saffron-600 text-white shadow-2xs'
+                      ? 'border-tint bg-tint text-on-tint shadow-xs'
                       : `${cfg.borderClass} ${cfg.bgClass} ${cfg.textClass}`
                   }`}
                 >
@@ -541,14 +474,14 @@ export default function BookmarksAndAnnotationsPage() {
           </div>
 
           <div className="mb-6 flex flex-wrap items-center gap-2" role="group" aria-label="Filter highlights by your classification">
-            <span className="mr-1 text-xs font-bold uppercase tracking-wider text-dharma-muted">Your label:</span>
+            <span className="mr-1 text-caption font-bold uppercase tracking-wider text-label-secondary">Your label:</span>
             {([{ id: 'all', label: 'All' }, ...HIGHLIGHT_KINDS] as Array<{ id: 'all' | HighlightKind; label: string }>).map((k) => (
               <button
                 key={k.id}
                 type="button"
                 aria-pressed={kindFilter === k.id}
                 onClick={() => setKindFilter(k.id)}
-                className={`min-h-[44px] rounded-lg border px-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 ${kindFilter === k.id ? 'border-saffron-600 bg-saffron-600 text-white' : 'border-dharma-border bg-dharma-card text-dharma-text'}`}
+                className={`min-h-[36px] rounded-pill border px-3.5 text-footnote font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tint/20 ${kindFilter === k.id ? 'border-tint bg-tint text-on-tint' : 'border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'}`}
               >
                 {k.label}{k.id !== 'all' ? ` (${highlights.filter((h) => h.kind === k.id).length})` : ''}
               </button>
@@ -556,10 +489,10 @@ export default function BookmarksAndAnnotationsPage() {
           </div>
 
           {filteredHighlights.length === 0 ? (
-            <div className="rounded-3xl border border-dharma-border bg-dharma-card p-12 text-center shadow-xs max-w-xl mx-auto">
-              <Highlighter className="mx-auto h-8 w-8 text-saffron-600 mb-3" />
-              <h2 className="text-lg font-serif font-bold text-dharma-text">No highlights found</h2>
-              <p className="mt-1 text-xs text-dharma-muted">
+            <div className="rounded-panel border border-separator bg-surface-raised p-12 text-center shadow-xs max-w-xl mx-auto">
+              <Highlighter className="mx-auto h-8 w-8 text-tint mb-3" />
+              <h2 className="text-title-3 font-bold text-label-primary">No highlights found</h2>
+              <p className="mt-1 text-caption text-label-secondary">
                 Highlight verses with thematic colors while reading in chapters.
               </p>
             </div>
@@ -570,51 +503,51 @@ export default function BookmarksAndAnnotationsPage() {
                 return (
                   <article
                     key={`${hl.scriptureId}-${hl.chapterId}-${hl.verseId}-${i}`}
-                    className={`rounded-2xl border p-5 bg-dharma-card shadow-xs transition ${tagInfo.borderClass}`}
+                    className={`rounded-card border p-5 bg-surface-raised shadow-xs transition ${tagInfo.borderClass}`}
                   >
-                    <div className="flex items-center justify-between border-b border-dharma-border/60 pb-2">
-                      <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold ${tagInfo.bgClass} ${tagInfo.textClass}`}>
+                    <div className="flex items-center justify-between border-b border-separator pb-2">
+                      <span className={`rounded-pill px-2.5 py-0.5 text-caption font-bold ${tagInfo.bgClass} ${tagInfo.textClass}`}>
                         {tagInfo.labelHi} · {tagInfo.label}
                       </span>
                       <button
                         type="button"
                         onClick={() => toggleHighlight(hl.scriptureId, hl.chapterId, hl.verseId, hl.color)}
-                        className="text-xs text-dharma-muted hover:text-rose-600 p-1"
+                        className="text-label-tertiary hover:text-rose-600 p-1 transition"
                         title="Remove highlight"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
                       </button>
                     </div>
 
-                    <h3 className="mt-3 font-serif font-bold text-sm text-dharma-text">
+                    <h3 className="mt-3 font-serif font-bold text-subhead text-label-primary">
                       {hl.scriptureId.toUpperCase()} • Ch {hl.chapterId}, Verse {hl.verseId}
                     </h3>
 
                     {hl.textSnippet && (
-                      <blockquote className="mt-2 text-xs italic text-dharma-muted line-clamp-3">
+                      <blockquote className="mt-2 text-footnote italic text-label-secondary line-clamp-3">
                         &ldquo;{hl.textSnippet}&rdquo;
                       </blockquote>
                     )}
 
-                    <label className="mt-3 block text-sm text-dharma-text">
-                      <span className="font-semibold">Your label</span>
+                    <label className="mt-3 block text-footnote text-label-secondary">
+                      <span className="font-semibold text-label-primary">Your label</span>
                       <select
                         value={hl.kind ?? ''}
                         onChange={(e) => setHighlightKind(hl.scriptureId, hl.chapterId, hl.verseId, (e.target.value || undefined) as HighlightKind | undefined)}
-                        className="mt-1 block min-h-[44px] w-full rounded-lg border border-dharma-border bg-dharma-card px-2"
+                        className="mt-1 block min-h-[40px] w-full rounded-field border border-separator bg-surface-canvas/60 px-2.5 text-footnote text-label-primary outline-none focus:border-tint/60"
                       >
                         <option value="">Not labelled</option>
                         {HIGHLIGHT_KINDS.map((k) => <option key={k.id} value={k.id}>{k.label}</option>)}
                       </select>
                     </label>
 
-                    <div className="mt-4 pt-2 border-t border-dharma-border/60 flex items-center justify-between text-xs">
-                      <span className="text-dharma-muted">
+                    <div className="mt-4 pt-2 border-t border-separator flex items-center justify-between text-caption text-label-tertiary">
+                      <span>
                         {new Date(hl.createdAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}
                       </span>
                       <Link
                         href={readHref(hl.scriptureId, hl.chapterId, hl.verseId)}
-                        className="font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2 hover:text-saffron-900"
+                        className="font-semibold text-tint hover:underline underline-offset-2"
                       >
                         Read Verse
                       </Link>
@@ -631,10 +564,10 @@ export default function BookmarksAndAnnotationsPage() {
       {activeTab === 'notes' && (
         <section aria-label="Private notes">
           {notes.length === 0 ? (
-            <div className="rounded-3xl border border-dharma-border bg-dharma-card p-12 text-center shadow-xs max-w-xl mx-auto">
-              <FileText className="mx-auto h-8 w-8 text-saffron-600 mb-3" />
-              <h2 className="text-lg font-serif font-bold text-dharma-text">No private notes yet</h2>
-              <p className="mt-1 text-xs text-dharma-muted">
+            <div className="rounded-panel border border-separator bg-surface-raised p-12 text-center shadow-xs max-w-xl mx-auto">
+              <FileText className="mx-auto h-8 w-8 text-tint mb-3" />
+              <h2 className="text-title-3 font-bold text-label-primary">No private notes yet</h2>
+              <p className="mt-1 text-caption text-label-secondary">
                 While reading any verse, type in your private notes box. Your thoughts remain strictly confidential on this device.
               </p>
             </div>
@@ -643,33 +576,33 @@ export default function BookmarksAndAnnotationsPage() {
               {notes.map((note) => (
                 <article
                   key={`${note.scriptureId}-${note.chapterId}-${note.verseId}`}
-                  className="rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs flex flex-col justify-between"
+                  className="rounded-card border border-separator bg-surface-raised p-5 shadow-xs flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center justify-between border-b border-dharma-border/60 pb-2">
-                      <span className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                    <div className="flex items-center justify-between border-b border-separator pb-2">
+                      <span className="text-caption font-bold uppercase tracking-wider text-tint">
                         {note.scriptureId} · Ch {note.chapterId}, v. {note.verseId}
                       </span>
                       <button
                         type="button"
                         onClick={() => setNote(note.scriptureId, note.chapterId, note.verseId, '')}
-                        className="text-xs text-dharma-muted hover:text-rose-600 p-1"
+                        className="text-label-tertiary hover:text-rose-600 p-1 transition"
                         title="Delete note"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
                       </button>
                     </div>
 
-                    <p className="mt-3 whitespace-pre-line text-sm text-dharma-text font-serif leading-relaxed">
+                    <p className="mt-3 whitespace-pre-line text-body text-label-primary leading-relaxed">
                       {note.text}
                     </p>
                   </div>
 
-                  <div className="mt-4 pt-2 border-t border-dharma-border/60 flex items-center justify-between text-xs text-dharma-muted">
+                  <div className="mt-4 pt-2 border-t border-separator flex items-center justify-between text-caption text-label-tertiary">
                     <span>Updated {new Date(note.updatedAt).toLocaleDateString(undefined, { numberingSystem: 'latn' })}</span>
                     <Link
                       href={readHref(note.scriptureId, note.chapterId, note.verseId)}
-                      className="font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2"
+                      className="font-semibold text-tint hover:underline underline-offset-2"
                     >
                       Open in Scripture
                     </Link>
@@ -684,47 +617,20 @@ export default function BookmarksAndAnnotationsPage() {
       {/* Tab 4: Privacy & Data Sovereign Hub */}
       {activeTab === 'privacy' && (
         <section aria-label="Privacy guarantee" className="max-w-3xl mx-auto space-y-6">
-          <div className="rounded-3xl border border-emerald-500/30 bg-emerald-50/40 dark:border-emerald-500/20 dark:bg-emerald-950/20 p-6 sm:p-8">
+          <div className="rounded-card border border-emerald-500/30 bg-emerald-50/40 dark:border-emerald-500/20 dark:bg-emerald-950/20 p-6 sm:p-8">
             <div className="flex items-center gap-2 text-emerald-900 dark:text-emerald-200">
               <ShieldCheck className="h-6 w-6 text-emerald-600" />
-              <h2 className="font-serif text-2xl font-bold">100% Client-Side Privacy Guarantee</h2>
+              <h2 className="text-title-2 font-bold">100% Client-Side Privacy Guarantee</h2>
             </div>
-            <p className="mt-3 text-sm leading-relaxed text-dharma-text">
+            <p className="mt-3 text-body leading-relaxed text-label-primary">
               Dharma Granth respects the sacredness of your inner contemplative life. Your highlights, annotations, reading plans, and bookmarks are stored strictly within your browser&rsquo;s LocalStorage.
             </p>
-            <ul className="mt-4 space-y-2 text-xs sm:text-sm text-dharma-text/90 list-disc list-inside">
+            <ul className="mt-4 space-y-2 text-footnote text-label-secondary list-disc list-inside">
               <li><strong>Zero Cloud Sync:</strong> No personal reflections are ever transmitted to any remote database.</li>
               <li><strong>Zero AI Scraping:</strong> Your notes are never ingested by language models or advertising algorithms.</li>
-              <li><strong>Full Data Sovereignty:</strong> You can download and backup all your data at any time via JSON or Markdown export.</li>
+              <li><strong>Full Data Sovereignty:</strong> Your data remains stored completely on your local device.</li>
               <li><strong>Offline Capable:</strong> Your personal sanctuary works completely offline without internet connectivity.</li>
             </ul>
-          </div>
-
-          <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6 flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <h3 className="font-serif text-base font-bold text-dharma-text">Data Export & Backup</h3>
-              <p className="mt-1 text-xs text-dharma-muted">
-                Save an archival copy of your {bookmarks.length} bookmarks, {highlights.length} highlights, and {notes.length} notes.
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={exportAllDataJson}
-                className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-xl bg-saffron-600 px-4 py-2 text-xs font-semibold text-white hover:bg-saffron-700 transition"
-              >
-                <Download className="h-3.5 w-3.5" />
-                <span>Download JSON</span>
-              </button>
-              <button
-                type="button"
-                onClick={exportAllDataMarkdown}
-                className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-4 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 transition"
-              >
-                <FileText className="h-3.5 w-3.5" />
-                <span>Download Markdown</span>
-              </button>
-            </div>
           </div>
         </section>
       )}

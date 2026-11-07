@@ -1,6 +1,5 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Sunset, Moon, BookOpen, Sparkles } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { triggerTactileFeedback } from '@/lib/haptics';
@@ -50,25 +49,12 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
             }`}
           >
             {active && (
-              <motion.span
-                layoutId="theme-toggle-active-pill"
-                className="absolute inset-0 rounded-full bg-gradient-to-br from-saffron-500 to-saffron-700 shadow-sm"
-                transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+              <span
+                aria-hidden="true"
+                className="chrome-fade absolute inset-0 rounded-full bg-gradient-to-br from-saffron-500 to-saffron-700 shadow-sm"
               />
             )}
-            {/* initial={false}: the icons are server-rendered visible; only later switches animate. */}
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={`${option}-${active}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.16, ease: 'easeOut' }}
-                className="relative inline-flex"
-              >
-                {ICONS[option]}
-              </motion.span>
-            </AnimatePresence>
+            <span className="relative inline-flex">{ICONS[option]}</span>
             {' '}
             <span className="relative hidden min-[2200px]:inline">{THEME_NAMES[option].name}</span>
           </button>
