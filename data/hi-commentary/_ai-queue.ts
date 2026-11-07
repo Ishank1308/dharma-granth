@@ -8,6 +8,7 @@ export const AI_QUEUE_DIR = path.resolve("data/ai-commentary");
 const FULL_DIR = path.resolve("public/data/scriptures-full");
 
 interface QueuedEntry {
+  bhavartha?: string;
   explanation?: string;
   science?: string;
   lifeLesson?: string;
@@ -64,10 +65,11 @@ export function approvedAiEntries(scriptureId: string): {
       continue;
     }
     const entry: HiCommentaryFragment[string] = { ai: true };
+    if (q.bhavartha?.trim()) entry.bhavartha = q.bhavartha.trim();
     if (q.explanation?.trim()) entry.explanation = q.explanation.trim();
     if (q.science?.trim()) entry.science = q.science.trim();
     if (q.lifeLesson?.trim()) entry.lifeLesson = q.lifeLesson.trim();
-    if (entry.explanation || entry.science || entry.lifeLesson) entries[key] = entry;
+    if (entry.bhavartha || entry.explanation || entry.science || entry.lifeLesson) entries[key] = entry;
     if (q.replacesHandWritten && entry.explanation) replaces.add(key);
   }
   return { entries, stale, replaces };
