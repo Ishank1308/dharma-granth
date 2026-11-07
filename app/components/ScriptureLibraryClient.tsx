@@ -377,7 +377,7 @@ export function ScriptureLibraryClient({
                   className="min-h-[36px] cursor-pointer rounded-[9px] bg-transparent py-1.5 pl-1 pr-3 font-semibold text-dharma-text outline-none"
                 >
                   {SORT_OPTIONS.map((o) => (
-                    <option key={o.id} value={o.id}>
+                    <option key={o.id} value={o.id} className="bg-dharma-card text-dharma-text">
                       {o.label}
                     </option>
                   ))}

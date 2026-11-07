@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { ContributeClient } from './ContributeClient';
-import { SiteFooter } from '@/app/components/SiteFooter';
 
 export const metadata: Metadata = {
   title: 'ऐच्छिक सहयोग व सेवा · Voluntary Contribution',
@@ -48,7 +47,6 @@ export default function ContributePage() {
       <main className="min-h-screen bg-dharma-bg text-dharma-text pb-20 selection:bg-amber-200 selection:text-amber-900">
         <ContributeClient />
       </main>
-      <SiteFooter />
     </>
   );
 }

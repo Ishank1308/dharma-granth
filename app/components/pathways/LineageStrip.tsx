@@ -8,7 +8,7 @@ export function LineageStrip({ ids, noteEn, noteHi }: { ids: string[]; noteEn: s
     .filter((m): m is NonNullable<typeof m> => Boolean(m));
   if (masters.length === 0) return null;
   return (
-    <section aria-label="Wisdom lineage" className="rounded-2xl border border-dharma-line bg-dharma-card p-5 sm:p-7">
+    <section aria-label="Wisdom lineage" className="apple-card rounded-card border border-dharma-border bg-dharma-card p-5 sm:p-7">
       <p className="text-xs font-bold uppercase tracking-wider text-dharma-muted">Wisdom lineage</p>
       <h2 className="mt-1 font-serif text-xl text-dharma-text">Transmitted across generations</h2>
       <p className="mt-2 text-sm leading-relaxed text-dharma-text">{noteEn}</p>

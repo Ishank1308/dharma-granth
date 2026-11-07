@@ -15,8 +15,8 @@ const WHY = [
     text: 'The Mahabharata and the Ramayana name nakṣatras, tithis and muhūrtas for their great events. Knowing the calendar makes those passages vivid.',
   },
   {
-    title: 'Honesty over prediction',
-    text: 'We do not calculate ritual muhūrtas or fortunes. Ritual decisions belong to family custom, the temple and a trusted pandit.',
+    title: 'Honesty over fortune-telling',
+    text: 'We share classical Pañcāṅga-Śuddhi principles transparently for study, never personal fortune-telling. Major family saṃskāras and temple rites belong to your sampradāya and a trusted ācārya.',
   },
 ];
 
@@ -149,7 +149,7 @@ export default function PanchangPage() {
 
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {/* 1. 16 Tithis Master Directory Banner */}
-            <div className="rounded-2xl border border-dharma-border bg-gradient-to-br from-amber-950/20 via-saffron-950/15 to-transparent p-5 flex flex-col justify-between gap-4">
+            <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-amber-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Moon className="w-3.5 h-3.5" />
@@ -165,7 +165,7 @@ export default function PanchangPage() {
               <div>
                 <Link
                   href="/panchang/tithis/"
-                  className="inline-flex items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
                 >
                   <span>Explore Tithis</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -174,7 +174,7 @@ export default function PanchangPage() {
             </div>
 
             {/* 2. 7 Varas Master Directory Banner */}
-            <div className="rounded-2xl border border-dharma-border bg-gradient-to-br from-orange-950/20 via-saffron-950/15 to-transparent p-5 flex flex-col justify-between gap-4">
+            <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-orange-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Clock className="w-3.5 h-3.5" />
@@ -190,7 +190,7 @@ export default function PanchangPage() {
               <div>
                 <Link
                   href="/panchang/varas/"
-                  className="inline-flex items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
                 >
                   <span>Explore Varas</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -199,7 +199,7 @@ export default function PanchangPage() {
             </div>
 
             {/* 3. 27 Nakshatras Master Directory Banner */}
-            <div className="rounded-2xl border border-dharma-border bg-gradient-to-br from-indigo-950/20 via-saffron-950/15 to-transparent p-5 flex flex-col justify-between gap-4">
+            <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-indigo-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Star className="w-3.5 h-3.5" />
@@ -215,7 +215,7 @@ export default function PanchangPage() {
               <div>
                 <Link
                   href="/panchang/nakshatras/"
-                  className="inline-flex items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
                 >
                   <span>Explore Nakshatras</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -224,7 +224,7 @@ export default function PanchangPage() {
             </div>
 
             {/* 4. 27 Nitya Yogas Master Directory Banner */}
-            <div className="rounded-2xl border border-dharma-border bg-gradient-to-br from-emerald-950/20 via-saffron-950/15 to-transparent p-5 flex flex-col justify-between gap-4">
+            <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-emerald-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Sun className="w-3.5 h-3.5" />
@@ -240,7 +240,7 @@ export default function PanchangPage() {
               <div>
                 <Link
                   href="/panchang/yogas/"
-                  className="inline-flex items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
                 >
                   <span>Explore Yogas</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -249,7 +249,7 @@ export default function PanchangPage() {
             </div>
 
             {/* 5. 11 Karanas Master Directory Banner */}
-            <div className="rounded-2xl border border-dharma-border bg-gradient-to-br from-rose-950/20 via-saffron-950/15 to-transparent p-5 flex flex-col justify-between gap-4">
+            <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-rose-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   <Layers className="w-3.5 h-3.5" />
@@ -265,7 +265,7 @@ export default function PanchangPage() {
               <div>
                 <Link
                   href="/panchang/karanas/"
-                  className="inline-flex items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white px-3.5 py-2 text-xs font-semibold transition"
                 >
                   <span>Explore Karanas</span>
                   <ArrowRight className="w-3.5 h-3.5" />

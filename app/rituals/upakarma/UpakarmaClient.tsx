@@ -98,55 +98,54 @@ export function UpakarmaClient() {
             return (
               <div
                 key={step.stepNumber}
-                className={`rounded-2xl border transition-all relative flex flex-col justify-between ${
+                className={`rounded-2xl border transition-all flex flex-col justify-between ${
                   isActive
                     ? 'border-saffron-600 bg-saffron-50 dark:bg-saffron-950/30 shadow-sm'
                     : 'border-dharma-border bg-dharma-card hover:border-dharma-border/80'
                 }`}
               >
+                <div className="flex items-center justify-between px-3 pt-2.5">
+                  <span
+                    className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                      isActive
+                        ? 'bg-saffron-600 text-white'
+                        : 'bg-dharma-bg border border-dharma-border text-dharma-muted'
+                    }`}
+                  >
+                    {step.stepNumber}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => toggleStepCompleted(step.stepNumber)}
+                    aria-pressed={isCompleted}
+                    aria-label={
+                      isCompleted
+                        ? `सोपान ${step.stepNumber} चिह्न हटाएं`
+                        : `सोपान ${step.stepNumber} सम्पन्न चिह्नित करें`
+                    }
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full text-dharma-muted hover:text-emerald-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                    title={isCompleted ? 'चिह्न हटाएं' : 'सम्पन्न चिह्नित करें'}
+                  >
+                    {isCompleted ? (
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    ) : (
+                      <Circle className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+
                 <button
                   type="button"
                   onClick={() => setActiveStepIndex(idx)}
                   aria-pressed={isActive}
-                  className="w-full h-full p-3 text-left flex flex-col justify-between rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                  className="w-full flex-1 px-3 pb-3 pt-1.5 text-left flex flex-col justify-end rounded-b-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                 >
-                  <div className="flex items-center justify-between mb-2 pr-6">
-                    <span
-                      className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                        isActive
-                          ? 'bg-saffron-600 text-white'
-                          : 'bg-dharma-bg border border-dharma-border text-dharma-muted'
-                      }`}
-                    >
-                      {step.stepNumber}
-                    </span>
-                  </div>
-
                   <div className="min-w-0">
                     <h4 className="font-serif font-bold text-xs text-dharma-text line-clamp-1">
                       {step.nameHi.split('(')[0].trim()}
                     </h4>
                     <span className="text-[10px] text-dharma-muted block mt-0.5">{step.durationHi}</span>
                   </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => toggleStepCompleted(step.stepNumber)}
-                  aria-pressed={isCompleted}
-                  aria-label={
-                    isCompleted
-                      ? `सोपान ${step.stepNumber} चिह्न हटाएं`
-                      : `सोपान ${step.stepNumber} सम्पन्न चिह्नित करें`
-                  }
-                  className="absolute top-3 right-3 p-0.5 rounded-full text-dharma-muted hover:text-emerald-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-                  title={isCompleted ? 'चिह्न हटाएं' : 'सम्पन्न चिह्नित करें'}
-                >
-                  {isCompleted ? (
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  ) : (
-                    <Circle className="w-4 h-4" />
-                  )}
                 </button>
               </div>
             );
@@ -240,11 +239,11 @@ export function UpakarmaClient() {
               </div>
 
               {/* Sanskrit Mantra Display */}
-              <div className="p-4 rounded-xl bg-dharma-card/80 border border-dharma-border/80 text-center">
-                <p className="font-serif text-base sm:text-lg text-dharma-text font-bold leading-relaxed whitespace-pre-line">
+              <div className="verse-leaf p-4 sm:p-5 rounded-xl bg-dharma-card/90 border border-dharma-border/80 text-center">
+                <p lang="sa" className="shloka-text font-sanskrit text-lg sm:text-xl text-dharma-text font-normal leading-[2] whitespace-pre-line">
                   {activeMantra.sanskrit}
                 </p>
-                <p className="font-mono text-xs text-saffron-700 dark:text-saffron-400 mt-2 italic whitespace-pre-line">
+                <p lang="sa-Latn" className="font-serif text-xs sm:text-sm text-saffron-700 dark:text-saffron-300 mt-2.5 italic whitespace-pre-line">
                   {activeMantra.iast}
                 </p>
               </div>

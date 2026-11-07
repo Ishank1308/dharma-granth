@@ -21,6 +21,7 @@ import {
   Flame,
   Check,
   Copy,
+  MapPin,
 } from 'lucide-react';
 import {
   MUHURTA_ENDEAVORS,
@@ -40,7 +41,38 @@ import {
   YOGA_DATA,
   calculateEducationalPanchang,
   PRESET_LOCATIONS,
+  type LocationConfig,
 } from '@/lib/panchang';
+import { useLocalStorage } from '@/lib/useLocalStorage';
+
+function computeAbhijitWindow(solarNoon: string, dayLength: string): string {
+  const m = solarNoon.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+  if (!m) return '~11:45 AM से 12:35 PM';
+
+  let hrs = Number(m[1]) % 12;
+  if (m[3].toUpperCase() === 'PM') hrs += 12;
+  const noonMinutes = hrs * 60 + Number(m[2]);
+
+  let halfSpan = 24;
+  const dl = dayLength.match(/^(\d+)h\s*(\d+)m$/i);
+  if (dl) {
+    const totalDayMins = Number(dl[1]) * 60 + Number(dl[2]);
+    if (totalDayMins > 0) {
+      halfSpan = Math.max(18, Math.min(30, Math.round(totalDayMins / 30)));
+    }
+  }
+
+  const formatMins = (rawMins: number) => {
+    const norm = ((rawMins % 1440) + 1440) % 1440;
+    const h24 = Math.floor(norm / 60);
+    const min = norm % 60;
+    const period = h24 >= 12 ? 'PM' : 'AM';
+    const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
+    return `${String(h12).padStart(2, '0')}:${String(min).padStart(2, '0')} ${period}`;
+  };
+
+  return `${formatMins(noonMinutes - halfSpan)} से ${formatMins(noonMinutes + halfSpan)}`;
+}
 
 interface MuhurtaClientProps {
   initialPanchang: {
@@ -71,6 +103,10 @@ interface MuhurtaClientProps {
 }
 
 export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
+  const [location, setLocation] = useLocalStorage<LocationConfig>(
+    'dharma.panchang.location',
+    PRESET_LOCATIONS[0]
+  );
   const [livePanchang, setLivePanchang] = useState(initialPanchang);
   const [activeTab, setActiveTab] = useState<'today' | 'simulator' | 'principles' | 'faqs'>('today');
   const [expandedEndeavorId, setExpandedEndeavorId] = useState<string | null>(null);
@@ -83,9 +119,10 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
   const [simYoga, setSimYoga] = useState<string>(initialPanchang.yogaName);
   const [simEndeavorId, setSimEndeavorId] = useState<string>('vidya-arambha');
 
-  // Refresh ephemeris on client mount so static export never freezes Today's Matrix on build day
+  // Refresh ephemeris on client mount & whenever saved city changes
   useEffect(() => {
-    const p = calculateEducationalPanchang(new Date(), PRESET_LOCATIONS[0]);
+    const activeLoc = PRESET_LOCATIONS.find((item) => item.id === location.id) ?? PRESET_LOCATIONS[0];
+    const p = calculateEducationalPanchang(new Date(), activeLoc);
     const fresh = {
       isoDate: p.isoDate,
       dayOfWeekIndex: p.date.getDay(),
@@ -112,9 +149,13 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
     setSimNakshatra(fresh.nakshatraIndex);
     setSimKarana(fresh.karanaName);
     setSimYoga(fresh.yogaName);
-  }, []);
+  }, [location]);
 
   const todayRahu = getStandardRahuKalam(livePanchang.dayOfWeekIndex);
+  const abhijitWindow = computeAbhijitWindow(
+    livePanchang.solarTimes.solarNoon,
+    livePanchang.solarTimes.dayLength
+  );
 
   // Evaluate today's endeavors
   const todayEvaluations: MuhurtaEvaluation[] = MUHURTA_ENDEAVORS.map((end) =>
@@ -172,20 +213,20 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
   return (
     <div className="space-y-8">
       {/* Navigation Tabs */}
-      <div role="tablist" aria-label="Muhurta Matrix Sections" className="flex flex-wrap gap-2 border-b border-dharma-border pb-3">
+      <div role="tablist" aria-label="Muhurta Matrix Sections" className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 border-b border-dharma-border pb-3">
         <button
           type="button"
           role="tab"
           aria-selected={activeTab === 'today'}
           onClick={() => setActiveTab('today')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all ${
+          className={`flex min-h-[44px] items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all ${
             activeTab === 'today'
               ? 'bg-saffron-600 text-white shadow-sm'
               : 'bg-dharma-card hover:bg-dharma-border/30 text-dharma-text'
           }`}
         >
-          <Calendar className="w-4 h-4" />
-          <span>आज का मुहूर्त विश्लेषण (Today&apos;s Matrix)</span>
+          <Calendar className="w-4 h-4 shrink-0" />
+          <span>आज का मुहूर्त <span className="hidden lg:inline">(Today&apos;s Matrix)</span></span>
         </button>
 
         <button
@@ -193,14 +234,14 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
           role="tab"
           aria-selected={activeTab === 'simulator'}
           onClick={() => setActiveTab('simulator')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all ${
+          className={`flex min-h-[44px] items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all ${
             activeTab === 'simulator'
               ? 'bg-saffron-600 text-white shadow-sm'
               : 'bg-dharma-card hover:bg-dharma-border/30 text-dharma-text'
           }`}
         >
-          <Sliders className="w-4 h-4" />
-          <span>पञ्चाङ्ग सिम्युलेटर (Custom Decision)</span>
+          <Sliders className="w-4 h-4 shrink-0" />
+          <span>सिम्युलेटर <span className="hidden lg:inline">(Custom Decision)</span></span>
         </button>
 
         <button
@@ -208,14 +249,14 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
           role="tab"
           aria-selected={activeTab === 'principles'}
           onClick={() => setActiveTab('principles')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all ${
+          className={`flex min-h-[44px] items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all ${
             activeTab === 'principles'
               ? 'bg-saffron-600 text-white shadow-sm'
               : 'bg-dharma-card hover:bg-dharma-border/30 text-dharma-text'
           }`}
         >
-          <BookOpen className="w-4 h-4" />
-          <span>मुहूर्त सिद्धान्त (Classical Principles)</span>
+          <BookOpen className="w-4 h-4 shrink-0" />
+          <span>सिद्धान्त <span className="hidden lg:inline">(Classical Principles)</span></span>
         </button>
 
         <button
@@ -223,14 +264,14 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
           role="tab"
           aria-selected={activeTab === 'faqs'}
           onClick={() => setActiveTab('faqs')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm transition-all ${
+          className={`flex min-h-[44px] items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all ${
             activeTab === 'faqs'
               ? 'bg-saffron-600 text-white shadow-sm'
               : 'bg-dharma-card hover:bg-dharma-border/30 text-dharma-text'
           }`}
         >
-          <Info className="w-4 h-4" />
-          <span>प्रश्नोत्तरी (FAQs)</span>
+          <Info className="w-4 h-4 shrink-0" />
+          <span>प्रश्नोत्तरी <span className="hidden lg:inline">(FAQs)</span></span>
         </button>
       </div>
 
@@ -248,11 +289,34 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                   {livePanchang.dayOfWeekHi} ({livePanchang.dayOfWeek}) · {livePanchang.isoDate}
                 </h2>
               </div>
-              <div className="flex items-center gap-3 text-xs bg-dharma-bg px-3.5 py-2 rounded-xl border border-dharma-border">
-                <Sun className="w-4 h-4 text-amber-500" />
-                <span className="text-dharma-text">
-                  सूर्योदय: <strong>{livePanchang.solarTimes.sunrise}</strong> · सूर्यास्त: <strong>{livePanchang.solarTimes.sunset}</strong>
-                </span>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <div className="flex items-center gap-2 rounded-xl border border-dharma-border bg-dharma-bg px-3 py-1.5 text-xs">
+                  <MapPin className="h-3.5 w-3.5 text-dharma-saffron shrink-0" />
+                  <label htmlFor="muhurta-city" className="sr-only">
+                    स्थान चुनें
+                  </label>
+                  <select
+                    id="muhurta-city"
+                    value={location.id}
+                    onChange={(e) => {
+                      const found = PRESET_LOCATIONS.find((loc) => loc.id === e.target.value);
+                      if (found) setLocation(found);
+                    }}
+                    className="min-h-[32px] max-w-[165px] truncate bg-transparent font-medium text-dharma-text focus:outline-none"
+                  >
+                    {PRESET_LOCATIONS.map((loc) => (
+                      <option key={loc.id} value={loc.id} className="bg-dharma-card text-dharma-text">
+                        {loc.nameHi} ({loc.name})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="flex items-center gap-2 text-xs bg-dharma-bg px-3.5 py-2.5 rounded-xl border border-dharma-border">
+                  <Sun className="w-4 h-4 text-amber-500 shrink-0" />
+                  <span className="text-dharma-text">
+                    सूर्योदय: <strong>{livePanchang.solarTimes.sunrise}</strong> · सूर्यास्त: <strong>{livePanchang.solarTimes.sunset}</strong>
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -307,10 +371,11 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
               <Sun className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
               <div>
                 <h3 className="font-semibold text-sm text-amber-900 dark:text-amber-300">
-                  अभिजीत मुहूर्त (कल्याणकारी मध्याह्न खिड़की): ~11:45 AM से 12:35 PM
+                  अभिजीत मुहूर्त ({location.nameHi}): {abhijitWindow}
+                  {livePanchang.dayOfWeekIndex === 3 ? ' · बुधवार को वर्जित' : ''}
                 </h3>
                 <p className="text-xs text-amber-800/80 dark:text-amber-400/80 mt-1 leading-relaxed">
-                  भगवान् विष्णु द्वारा संरक्षित यह मध्य-दिवस कालखण्ड सामान्य ज्योतिषी दोषों का शमन करता है (बुधवार को छोड़कर सर्वथा प्रशस्त)।
+                  स्थानीय मध्याह्न ({livePanchang.solarTimes.solarNoon}) पर केन्द्रित यह मध्य-दिवस कालखण्ड सामान्य पञ्चाङ्ग दोषों का शमन करता है (बुधवार को छोड़कर प्रशस्त)।
                 </p>
               </div>
             </div>
@@ -490,7 +555,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                     const num = t <= 15 ? t : t - 15;
                     const group = TITHI_GROUPS.find((g) => g.tithiNumbers.includes(t));
                     return (
-                      <option key={t} value={t}>
+                      <option key={t} value={t} className="bg-dharma-card text-dharma-text">
                         {paksha} {num} ({group?.nameHi || ''})
                       </option>
                     );
@@ -510,7 +575,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                   className="w-full text-xs p-2.5 rounded-lg border border-dharma-border bg-dharma-card text-dharma-text focus:outline-none focus:border-saffron-500"
                 >
                   {VARA_DATA.map((v, idx) => (
-                    <option key={v.slug} value={idx}>
+                    <option key={v.slug} value={idx} className="bg-dharma-card text-dharma-text">
                       {v.nameHi} ({v.name} · {v.grahaLord})
                     </option>
                   ))}
@@ -531,7 +596,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                   {NAKSHATRA_DATA.map((n) => {
                     const sw = NAKSHATRA_SWABHAVAS.find((s) => s.nakshatraIndices.includes(n.index));
                     return (
-                      <option key={n.index} value={n.index}>
+                      <option key={n.index} value={n.index} className="bg-dharma-card text-dharma-text">
                         {n.index}. {n.nameHi} ({sw?.typeHi || 'सामान्य'})
                       </option>
                     );
@@ -551,7 +616,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                   className="w-full text-xs p-2.5 rounded-lg border border-dharma-border bg-dharma-card text-dharma-text focus:outline-none focus:border-saffron-500"
                 >
                   {getAllKaranas().map((k) => (
-                    <option key={k.key} value={k.key}>
+                    <option key={k.key} value={k.key} className="bg-dharma-card text-dharma-text">
                       {k.nameHi} ({k.name} {k.key === 'Vishti' ? '· भद्रा' : ''})
                     </option>
                   ))}
@@ -570,7 +635,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                   className="w-full text-xs p-2.5 rounded-lg border border-dharma-border bg-dharma-card text-dharma-text focus:outline-none focus:border-saffron-500"
                 >
                   {YOGA_DATA.map((y) => (
-                    <option key={y.slug} value={y.name}>
+                    <option key={y.slug} value={y.name} className="bg-dharma-card text-dharma-text">
                       {y.index + 1}. {y.nameHi} ({y.name})
                     </option>
                   ))}

@@ -26,7 +26,7 @@ export type PatrikaTemplate = 'kashi' | 'tamrapatra' | 'shunya' | 'typographic';
 export interface PatrikaShareData {
   scriptureTitle: string;
   chapterTitle?: string;
-  reference: string; // e.g. "भगवद्गीता २.४७"
+  reference: string; // e.g. "भगवद्गीता 2.47"
   sanskrit: string;
   transliteration?: string;
   hindi?: string;
@@ -234,10 +234,12 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
       border: 'border-[#dfd8ca]',
       headerText: 'text-[#8b5a2b]',
       sanskritText: 'text-[#1c1917]',
+      translitText: 'text-[#57534e]',
       hindiText: 'text-[#292524]',
       englishText: 'text-[#44403c]',
       quoteBg: 'bg-[#f4eee1]',
-      colophonText: 'text-[#a89f91]',
+      quoteText: 'text-[#7c2d12]',
+      colophonText: 'text-[#78716c]',
       accentRule: 'border-[#c29b68]/40',
       seal: '❁',
       sealColor: 'text-[#991b1b]',
@@ -248,10 +250,12 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
       border: 'border-[#92400e]/50',
       headerText: 'text-[#f59e0b]',
       sanskritText: 'text-[#fef3c7]',
+      translitText: 'text-[#fcd34d]/80',
       hindiText: 'text-[#fed7aa]',
       englishText: 'text-[#fdba74]/90',
       quoteBg: 'bg-[#7c2d12]/30',
-      colophonText: 'text-[#d97706]/70',
+      quoteText: 'text-[#fde68a]',
+      colophonText: 'text-[#d97706]/80',
       accentRule: 'border-[#d97706]/30',
       seal: 'ॐ',
       sealColor: 'text-[#f59e0b]',
@@ -262,10 +266,12 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
       border: 'border-stone-800',
       headerText: 'text-stone-400',
       sanskritText: 'text-[#fafafa]',
+      translitText: 'text-stone-400',
       hindiText: 'text-stone-200',
       englishText: 'text-stone-400',
       quoteBg: 'bg-stone-900/80',
-      colophonText: 'text-stone-600',
+      quoteText: 'text-amber-300',
+      colophonText: 'text-stone-500',
       accentRule: 'border-stone-800',
       seal: '✦',
       sealColor: 'text-amber-400',
@@ -276,10 +282,12 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
       border: 'border-stone-200',
       headerText: 'text-stone-500',
       sanskritText: 'text-stone-800',
+      translitText: 'text-stone-600',
       hindiText: 'text-stone-900 font-bold',
       englishText: 'text-stone-700',
-      quoteBg: 'bg-amber-50/70',
-      colophonText: 'text-stone-400',
+      quoteBg: 'bg-amber-50/90',
+      quoteText: 'text-amber-900',
+      colophonText: 'text-stone-500',
       accentRule: 'border-amber-400/40',
       seal: '“',
       sealColor: 'text-amber-600',
@@ -288,34 +296,56 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
 
   return (
     <AnimatePresence>
-      <div
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-label="पत्रिका कोट स्टूडियो"
-        className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-stone-950/80 backdrop-blur-md overflow-y-auto"
-      >
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-5 overflow-y-auto">
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 bg-stone-950/80 backdrop-blur-md"
+          onClick={onClose}
+        />
         <motion.div
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="पत्रिका कोट स्टूडियो"
           initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.95 }}
-          className="relative flex flex-col lg:flex-row w-full max-w-4xl max-h-[92vh] rounded-3xl border border-stone-700/60 bg-stone-900 text-stone-100 shadow-2xl overflow-hidden"
+          className="relative z-10 flex flex-col w-full max-w-4xl max-h-[94dvh] rounded-3xl border border-stone-700/60 bg-stone-900 text-stone-100 shadow-2xl overflow-hidden"
         >
+          {/* Sticky Studio Top Bar (Always Reachable on Mobile & Desktop) */}
+          <div className="flex shrink-0 items-center justify-between border-b border-stone-800 bg-stone-900/95 px-4 py-2.5 sm:px-6">
+            <h3 className="font-serif font-bold text-sm sm:text-base text-white flex items-center gap-2">
+              <Palette className="w-4 h-4 text-saffron-500 shrink-0" />
+              <span>पत्रिका कोट स्टूडियो · Share Card Studio</span>
+            </h3>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="स्टूडियो बंद करें (Close Share Studio)"
+              className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-stone-300 hover:text-white hover:bg-stone-800 transition"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div className="flex flex-1 min-h-0 flex-col lg:flex-row overflow-y-auto lg:overflow-hidden">
           {/* Left / Top Studio Canvas Workspace */}
-          <div className="flex-1 flex flex-col items-center justify-center p-6 bg-stone-950/60 overflow-y-auto">
+          <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 bg-stone-950/60 lg:overflow-y-auto">
             <div className="mb-3 text-[11px] font-bold uppercase tracking-widest text-stone-400 flex items-center gap-2">
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               <span>पत्रिका पूर्वावलोकन (Live 2x Preview)</span>
             </div>
 
-            {/* Scaled Preview Frame */}
+            {/* Responsive Preview Frame (scales cleanly on 320px-375px phones while keeping full capture dimensions) */}
+            <div className="flex w-full justify-center overflow-x-hidden py-1">
             <motion.div
               onPointerMove={handleCardPointerMove}
               onPointerLeave={resetCardPointer}
+              className="origin-top max-[380px]:scale-[0.82] max-[340px]:scale-[0.74]"
               style={{
                 position: 'relative',
                 width: previewDimensions.width,
-                height: previewDimensions.height,
+                minHeight: previewDimensions.height,
                 perspective: 1000,
                 rotateX: reduce ? 0 : rotateX,
                 rotateY: reduce ? 0 : rotateY,
@@ -326,7 +356,7 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
               ref={cardRef}
               style={{
                 width: previewDimensions.width,
-                height: previewDimensions.height,
+                minHeight: previewDimensions.height,
               }}
               className={`relative flex flex-col justify-between p-6 sm:p-8 rounded-2xl border ${templateConfig.border} ${templateConfig.bg} shadow-2xl transition-all duration-300 overflow-hidden select-none`}
             >
@@ -352,12 +382,12 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
               </div>
 
               {/* Card Core Content */}
-              <div className="relative z-10 flex-1 flex flex-col justify-center my-3 space-y-3.5 text-center">
+              <div className="relative z-10 flex-1 flex flex-col justify-center my-4 space-y-3.5 text-center">
                 {/* Sanskrit */}
                 {layers.sanskrit && data.sanskrit && (
                   <p
                     lang="sa"
-                    className={`font-devanagari font-bold leading-loose ${
+                    className={`font-sanskrit font-normal leading-[1.9] ${
                       aspectRatio === 'story'
                         ? 'text-lg sm:text-xl'
                         : 'text-base sm:text-lg'
@@ -369,15 +399,15 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
 
                 {/* Transliteration */}
                 {layers.transliteration && data.transliteration && (
-                  <p lang="sa-Latn" className="font-serif text-xs italic opacity-75 text-stone-400">
+                  <p lang="sa-Latn" className={`font-serif text-xs italic ${templateConfig.translitText}`}>
                     {data.transliteration}
                   </p>
                 )}
 
                 {/* Core Shift Aphorism Callout */}
                 {layers.coreShift && data.coreShift && (
-                  <div className={`p-3 rounded-xl ${templateConfig.quoteBg} border border-dashed border-amber-500/20`}>
-                    <p className="font-serif italic text-xs sm:text-sm font-medium leading-relaxed text-amber-300 dark:text-amber-200">
+                  <div className={`p-3 rounded-xl ${templateConfig.quoteBg} border border-dashed ${templateConfig.accentRule}`}>
+                    <p className={`font-serif italic text-xs sm:text-sm font-medium leading-relaxed ${templateConfig.quoteText}`}>
                       &ldquo;{data.coreShift}&rdquo;
                     </p>
                   </div>
@@ -427,26 +457,12 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
               />
             )}
             </motion.div>
+            </div>
           </div>
 
           {/* Right / Bottom Studio Control Panel */}
-          <div className="w-full lg:w-80 p-6 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-stone-800 bg-stone-900/90 overflow-y-auto">
-            <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <h3 className="font-serif font-bold text-base text-white flex items-center gap-2">
-                  <Palette className="w-4 h-4 text-saffron-500" />
-                  <span>पत्रिका कोट स्टूडियो</span>
-                </h3>
-                <button
-                  type="button"
-                  onClick={onClose}
-                  aria-label="स्टूडियो बंद करें"
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-stone-400 hover:text-white hover:bg-stone-800 transition"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-
+          <div className="w-full lg:w-80 p-5 sm:p-6 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-stone-800 bg-stone-900/90 lg:overflow-y-auto">
+            <div className="space-y-5">
               {/* 1. Aspect Ratio Selector */}
               <div>
                 <span className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-2">
@@ -557,16 +573,27 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
             </div>
 
             {/* Export Actions */}
-            <div className="pt-6 space-y-2 border-t border-stone-800">
-              <button
-                type="button"
-                onClick={downloadPatrikaPng}
-                disabled={busy}
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-saffron-600 hover:bg-saffron-500 text-white font-bold text-xs shadow-lg transition cursor-pointer disabled:opacity-50"
-              >
-                {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-                <span>उच्च-गुणवत्ता PNG डाउनलोड करें (2x Retina)</span>
-              </button>
+            <div className="pt-5 space-y-2 border-t border-stone-800">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2">
+                <button
+                  type="button"
+                  onClick={downloadPatrikaPng}
+                  disabled={busy}
+                  className="w-full min-h-[44px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-saffron-600 hover:bg-saffron-500 text-white font-bold text-xs shadow-lg transition cursor-pointer disabled:opacity-50"
+                >
+                  {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+                  <span>PNG डाउनलोड करें (2x HD)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={triggerShare}
+                  disabled={busy}
+                  className="w-full min-h-[44px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-saffron-500/40 bg-saffron-500/10 hover:bg-saffron-500/20 text-amber-200 font-bold text-xs transition cursor-pointer disabled:opacity-50"
+                >
+                  <Share2 className="w-4 h-4" />
+                  <span>चित्र सहित साझा करें · Share</span>
+                </button>
+              </div>
               {exportError ? (
                 <p role="alert" className="text-xs text-amber-300">
                   {exportError}
@@ -578,7 +605,7 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
                   href={`https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2.5 rounded-xl border border-emerald-600/40 bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 text-xs font-semibold transition"
+                  className="min-h-[44px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl border border-emerald-600/40 bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 text-xs font-semibold transition"
                   title="WhatsApp पर साझा करें"
                 >
                   <MessageCircle className="w-3.5 h-3.5 shrink-0" />
@@ -589,7 +616,7 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
                   href={twitterUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2.5 rounded-xl border border-stone-700 bg-stone-900 hover:bg-stone-800 text-stone-200 text-xs font-semibold transition"
+                  className="min-h-[44px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl border border-stone-700 bg-stone-900 hover:bg-stone-800 text-stone-200 text-xs font-semibold transition"
                   title="X (Twitter) पर साझा करें"
                 >
                   <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -602,7 +629,7 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
                   href={telegramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2.5 rounded-xl border border-sky-600/40 bg-sky-950/40 hover:bg-sky-900/50 text-sky-300 text-xs font-semibold transition"
+                  className="min-h-[44px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl border border-sky-600/40 bg-sky-950/40 hover:bg-sky-900/50 text-sky-300 text-xs font-semibold transition"
                   title="Telegram पर साझा करें"
                 >
                   <Send className="w-3.5 h-3.5 shrink-0" />
@@ -612,7 +639,7 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
                 <button
                   type="button"
                   onClick={copyText}
-                  className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2.5 rounded-xl border border-stone-700 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold transition cursor-pointer"
+                  className="min-h-[44px] inline-flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl border border-stone-700 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold transition cursor-pointer"
                   title="श्लोक व लिंक कॉपी करें"
                 >
                   {copied ? <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> : <Copy className="w-3.5 h-3.5 shrink-0" />}
@@ -620,6 +647,7 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
                 </button>
               </div>
             </div>
+          </div>
           </div>
         </motion.div>
       </div>

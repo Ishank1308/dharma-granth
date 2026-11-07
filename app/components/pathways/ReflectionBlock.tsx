@@ -15,7 +15,7 @@ export function ReflectionBlock({
 }) {
   const [paused, setPaused] = useState(false);
   return (
-    <section aria-label="Pause and reflect" className="rounded-2xl border border-dharma-line bg-dharma-card p-5 sm:p-7">
+    <section aria-label="Pause and reflect" className="apple-card rounded-card border border-dharma-border bg-dharma-card p-5 sm:p-7">
       <p className="text-xs font-bold uppercase tracking-wider text-dharma-muted">Pause and reflect</p>
       <h2 className="mt-1 font-serif text-xl text-dharma-text">Contemplation, not consumption</h2>
       <p className="mt-2 text-sm leading-relaxed text-dharma-muted">
@@ -24,7 +24,7 @@ export function ReflectionBlock({
       <button
         type="button"
         onClick={() => setPaused((v) => !v)}
-        className="mt-4 rounded-full border border-dharma-line px-4 py-2 text-sm font-semibold text-dharma-text"
+        className="focus-ring mt-4 inline-flex min-h-[44px] items-center rounded-full border border-dharma-border bg-dharma-bg px-4 py-2 text-sm font-semibold text-dharma-text hover:border-saffron-400 transition"
       >
         {paused ? 'Resume reading' : 'Pause for a minute'}
       </button>

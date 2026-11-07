@@ -1596,6 +1596,7 @@
    has its own header, verse navigation, listen controls and settings. */
 html[data-reader] nav[aria-label='Primary navigation'],
 html[data-reader] nav[aria-label='Mobile quick navigation'],
+html[data-reader] footer[aria-labelledby='footer-heading'],
 html[data-reader] aside[aria-label='Interactive Companion'],
 html[data-reader] [aria-label^='सस्वर पाठ'] {
   display: none !important;
@@ -1605,6 +1606,7 @@ html[data-reader] [aria-label^='सस्वर पाठ'] {
    without :has() still applies the one above. */
 html:has(.reader-root) nav[aria-label='Primary navigation'],
 html:has(.reader-root) nav[aria-label='Mobile quick navigation'],
+html:has(.reader-root) footer[aria-labelledby='footer-heading'],
 html:has(.reader-root) aside[aria-label='Interactive Companion'],
 html:has(.reader-root) [aria-label^='सस्वर पाठ'] {
   display: none !important;
@@ -1626,10 +1628,12 @@ html:has(.embed-card-root) #main-content {
 }
 html[data-embed] nav[aria-label='Primary navigation'],
 html[data-embed] nav[aria-label='Mobile quick navigation'],
+html[data-embed] footer[aria-labelledby='footer-heading'],
 html[data-embed] aside[aria-label='Interactive Companion'],
 html[data-embed] [aria-label^='सस्वर पाठ'],
 html:has(.embed-card-root) nav[aria-label='Primary navigation'],
 html:has(.embed-card-root) nav[aria-label='Mobile quick navigation'],
+html:has(.embed-card-root) footer[aria-labelledby='footer-heading'],
 html:has(.embed-card-root) aside[aria-label='Interactive Companion'],
 html:has(.embed-card-root) [aria-label^='सस्वर पाठ'] {
   display: none !important;

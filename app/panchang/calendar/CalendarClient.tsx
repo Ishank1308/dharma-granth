@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import React, { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import {
   Calendar as CalendarIcon,
@@ -318,6 +318,8 @@ export function CalendarClient() {
     return () => window.removeEventListener('keydown', onKey);
   }, [monthDays, selectedDateIso, handlePrevMonth, handleNextMonth]);
 
+  const inspectorRef = useRef<HTMLElement>(null);
+
   const isDayMatchingFilter = (day: ComputedDay) => {
     if (activeFilter === 'all') return true;
     if (activeFilter === 'ekadashi') return day.isEkadashi;
@@ -405,7 +407,7 @@ export function CalendarClient() {
               className="rounded-xl min-h-[44px] w-48 truncate border border-dharma-border bg-dharma-bg px-3 py-2 text-footnote font-medium text-dharma-text focus:outline-none focus:ring-2 focus:ring-dharma-saffron sm:w-auto"
             >
               {PRESET_LOCATIONS.map((loc) => (
-                <option key={loc.id} value={loc.id}>
+                <option key={loc.id} value={loc.id} className="bg-dharma-card text-dharma-text">
                   {loc.nameHi} ({loc.name})
                 </option>
               ))}
@@ -447,16 +449,16 @@ export function CalendarClient() {
       </div>
 
       {/* ─── CALENDAR GRID ─────────────────────────────────────────────────── */}
-      <div className="rounded-2xl border border-dharma-border bg-dharma-card overflow-x-auto shadow-sm">
-        <div className="min-w-[500px] sm:min-w-0">
+      <div className="rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-sm">
+        <div className="w-full">
           {/* Weekday Headers */}
           <div
             className="grid grid-cols-7 border-b border-dharma-border bg-dharma-bg/60 text-center"
             style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))' }}
           >
             {WEEKDAYS.map((wd, i) => (
-              <div key={wd.shortEn} className={`py-2.5 px-1 sm:px-2 ${i === 0 ? 'text-rose-600 dark:text-rose-400' : 'text-dharma-text'}`}>
-                <div className="text-caption-1 font-semibold">{wd.shortHi}</div>
+              <div key={wd.shortEn} className={`py-2 px-0.5 sm:py-2.5 sm:px-2 ${i === 0 ? 'text-rose-600 dark:text-rose-400' : 'text-dharma-text'}`}>
+                <div className="text-[11px] sm:text-caption-1 font-semibold">{wd.shortHi}</div>
                 <div className="text-[10px] text-dharma-muted uppercase tracking-wider hidden sm:block">{wd.shortEn}</div>
               </div>
             ))}
@@ -469,7 +471,7 @@ export function CalendarClient() {
           >
           {/* Empty cells before month starts */}
           {Array.from({ length: firstDayWeekday }).map((_, i) => (
-            <div key={`blank-${i}`} className="bg-dharma-bg/30 min-h-[92px] sm:min-h-[110px]" />
+            <div key={`blank-${i}`} className="bg-dharma-bg/30 min-h-[76px] sm:min-h-[110px]" />
           ))}
 
           {/* Actual days of month */}
@@ -483,19 +485,24 @@ export function CalendarClient() {
                 onClick={() => {
                   triggerTactileFeedback('selection', 'softTap');
                   setSelectedDateIso(day.dateIso);
+                  if (typeof window !== 'undefined' && window.innerWidth < 768) {
+                    window.requestAnimationFrame(() => {
+                      inspectorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    });
+                  }
                 }}
                 aria-pressed={isSelected}
                 aria-label={`${day.dayNumber} ${MONTH_NAMES[month].hi}, ${day.panchang.tithi.nameHi}, ${day.panchang.nakshatra.nameHi}`}
-                className={`relative flex flex-col justify-between p-1.5 sm:p-2.5 text-left transition-all min-h-[92px] sm:min-h-[110px] ${
+                className={`relative flex w-full !min-w-0 flex-col justify-between overflow-hidden p-1 sm:p-2.5 text-left transition-all min-h-[76px] sm:min-h-[110px] ${
                   isSelected
                     ? 'bg-saffron-50/70 dark:bg-saffron-950/30 ring-2 ring-inset ring-dharma-saffron z-10'
                     : 'bg-dharma-card hover:bg-dharma-bg/80'
                 } ${!matchesFilter ? 'opacity-35 grayscale-[50%]' : 'opacity-100'}`}
               >
                 {/* Top row: Date Number & Moon Phase */}
-                <div className="flex items-start justify-between w-full">
+                <div className="flex items-center justify-between w-full gap-0.5">
                   <span
-                    className={`inline-flex items-center justify-center text-footnote font-bold sm:text-body rounded-full h-6 w-6 sm:h-7 sm:w-7 ${
+                    className={`inline-flex items-center justify-center text-[11px] font-bold sm:text-body rounded-full h-5 w-5 sm:h-7 sm:w-7 shrink-0 ${
                       isSelected
                         ? 'bg-dharma-saffron text-white'
                         : day.dayOfWeek === 0
@@ -505,14 +512,14 @@ export function CalendarClient() {
                   >
                     {day.dayNumber}
                   </span>
-                  <span className="text-xs sm:text-sm select-none" title={day.panchang.tithi.paksha}>
+                  <span className="text-[10px] sm:text-sm select-none leading-none" title={day.panchang.tithi.paksha}>
                     {day.moonGlyph}
                   </span>
                 </div>
 
                 {/* Middle row: Tithi & Nakshatra */}
-                <div className="mt-1 space-y-0.5 overflow-hidden">
-                  <div className="text-[11px] sm:text-xs font-semibold text-dharma-text truncate leading-tight">
+                <div className="mt-0.5 sm:mt-1 space-y-0.5 overflow-hidden w-full">
+                  <div className="text-[10px] sm:text-xs font-semibold text-dharma-text truncate leading-tight">
                     {day.panchang.tithi.nameHi}
                   </div>
                   <div className="text-[10px] text-dharma-muted truncate leading-tight hidden sm:block">
@@ -521,30 +528,35 @@ export function CalendarClient() {
                 </div>
 
                 {/* Bottom row: Sacred Badges */}
-                <div className="mt-1 flex flex-wrap gap-1">
+                <div className="mt-0.5 sm:mt-1 flex flex-wrap gap-0.5 sm:gap-1">
                   {day.isEkadashi && (
                     <span className="inline-flex items-center gap-0.5 rounded px-1 py-0.2 text-[9px] sm:text-[10px] font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300">
-                      🌿 एकादशी
+                      <span aria-hidden="true">🌿</span>
+                      <span className="hidden sm:inline">एकादशी</span>
                     </span>
                   )}
                   {day.isPradosha && !day.isEkadashi && (
                     <span className="inline-flex items-center gap-0.5 rounded px-1 py-0.2 text-[9px] sm:text-[10px] font-semibold bg-indigo-100 text-indigo-800 dark:bg-indigo-950/70 dark:text-indigo-300">
-                      🔱 प्रदोष
+                      <span aria-hidden="true">🔱</span>
+                      <span className="hidden sm:inline">प्रदोष</span>
                     </span>
                   )}
                   {day.isPurnima && (
                     <span className="inline-flex items-center gap-0.5 rounded px-1 py-0.2 text-[9px] sm:text-[10px] font-semibold bg-amber-100 text-amber-900 dark:bg-amber-950/70 dark:text-amber-200">
-                      🌕 पूर्णिमा
+                      <span aria-hidden="true">🌕</span>
+                      <span className="hidden sm:inline">पूर्णिमा</span>
                     </span>
                   )}
                   {day.isAmavasya && (
                     <span className="inline-flex items-center gap-0.5 rounded px-1 py-0.2 text-[9px] sm:text-[10px] font-semibold bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-200">
-                      🌑 अमावस्या
+                      <span aria-hidden="true">🌑</span>
+                      <span className="hidden sm:inline">अमावस्या</span>
                     </span>
                   )}
                   {day.festivals.length > 0 && (
                     <span className="inline-flex items-center gap-0.5 rounded px-1 py-0.2 text-[9px] sm:text-[10px] font-semibold bg-saffron-100 text-saffron-900 dark:bg-saffron-950/70 dark:text-saffron-200 truncate max-w-full">
-                      🎉 {day.festivals[0].nameHindi || day.festivals[0].name}
+                      <span aria-hidden="true">🎉</span>
+                      <span className="hidden sm:inline truncate">{day.festivals[0].nameHindi || day.festivals[0].name}</span>
                     </span>
                   )}
                 </div>
@@ -553,13 +565,17 @@ export function CalendarClient() {
           })}
         </div>
         </div>
+        <div className="border-t border-dharma-border/60 bg-dharma-bg/50 px-3 py-2 text-center text-[11px] text-dharma-muted sm:hidden">
+          🌿 एकादशी · 🔱 प्रदोष · 🌕 पूर्णिमा · 🌑 अमावस्या · 🎉 पर्व — विवरण हेतु किसी भी तिथि को चुनें
+        </div>
       </div>
 
       {/* ─── DAY INSPECTOR PANEL ───────────────────────────────────────────── */}
       {selectedDay && (
         <section
+          ref={inspectorRef}
           aria-labelledby="day-inspector-title"
-          className="rounded-2xl border-2 border-dharma-saffron/40 bg-dharma-card p-5 sm:p-7 shadow-md transition-all"
+          className="scroll-mt-20 rounded-2xl border-2 border-dharma-saffron/40 bg-dharma-card p-5 sm:p-7 shadow-md transition-all"
         >
           {/* Header of Inspector */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-dharma-border pb-4">

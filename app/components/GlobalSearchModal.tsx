@@ -732,26 +732,46 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                   </span>
                 )}
                 {query ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setQuery('');
-                      inputRef.current?.focus();
-                    }}
-                    className="focus-ring flex h-8 w-8 items-center justify-center rounded-control text-label-tertiary hover:bg-fill-quaternary hover:text-label-primary transition"
-                    aria-label="Clear search"
-                  >
-                    <X className="h-4 w-4" aria-hidden="true" />
-                  </button>
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setQuery('');
+                        inputRef.current?.focus();
+                      }}
+                      className="focus-ring flex h-9 w-9 items-center justify-center rounded-control text-label-tertiary hover:bg-fill-quaternary hover:text-label-primary transition"
+                      aria-label="Clear search"
+                    >
+                      <X className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={onClose}
+                      className="focus-ring inline-flex min-h-[44px] items-center rounded-control px-2.5 text-footnote font-semibold text-tint hover:bg-fill-quaternary transition sm:hidden"
+                      aria-label="Close search"
+                    >
+                      बन्द करें
+                    </button>
+                  </>
                 ) : (
-                  <button
-                    type="button"
-                    onClick={onClose}
-                    className="focus-ring hidden min-h-[32px] rounded-control border border-separator bg-fill-quaternary px-2 text-caption font-mono font-medium text-label-secondary hover:text-label-primary hover:bg-fill-tertiary transition sm:inline-block"
-                    aria-label="Close search"
-                  >
-                    ESC
-                  </button>
+                  <>
+                    <button
+                      type="button"
+                      onClick={onClose}
+                      className="focus-ring inline-flex min-h-[44px] items-center rounded-control px-2.5 text-footnote font-semibold text-tint hover:bg-fill-quaternary transition sm:hidden"
+                      aria-label="Close search"
+                    >
+                      बन्द करें
+                    </button>
+                    <button
+                      type="button"
+                      onClick={onClose}
+                      className="focus-ring hidden min-h-[32px] rounded-control border border-separator bg-fill-quaternary px-2 text-caption font-mono font-medium text-label-secondary hover:text-label-primary hover:bg-fill-tertiary transition sm:inline-block"
+                      aria-label="Close search"
+                    >
+                      ESC
+                    </button>
+                  </>
                 )}
               </div>
             </div>
@@ -1125,16 +1145,16 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
                   </ul>
                   <div className="mt-6 flex flex-wrap justify-center gap-3">
                     <Link
-                      href={`/scriptures?q=${encodeURIComponent(trimmed)}`}
+                      href={`/scriptures/?q=${encodeURIComponent(trimmed)}`}
                       onClick={onClose}
-                      className="apple-pill min-h-[40px] px-5"
+                      className="apple-pill min-h-[44px] px-5"
                     >
                       Browse the library <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </Link>
                     <Link
-                      href="/wisdom-for-life"
+                      href="/wisdom-for-life/"
                       onClick={onClose}
-                      className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-5 text-subhead font-medium text-label-primary hover:bg-fill-quaternary transition"
+                      className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-5 text-subhead font-medium text-label-primary hover:bg-fill-quaternary transition"
                     >
                       Wisdom for Life topics
                     </Link>

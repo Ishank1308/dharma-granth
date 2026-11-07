@@ -90,8 +90,8 @@ export default function ScripturesPage() {
       />
 
       {/* Featured Rare & Practical Philosophy Collection */}
-      <section aria-label="दुर्लभ एवं व्यावहारिक दर्शन ग्रंथ" className="mx-auto max-w-6xl px-4 sm:px-6 mb-8">
-        <div className="rounded-2xl border border-dharma-border/80 bg-gradient-to-br from-amber-50/60 via-dharma-card to-dharma-bg p-5 sm:p-6 dark:from-amber-950/20 shadow-xs">
+      <section aria-label="दुर्लभ एवं व्यावहारिक दर्शन ग्रंथ" className="mx-auto max-w-7xl px-gutter mb-8">
+        <div className="apple-card rounded-card border border-dharma-border bg-dharma-card p-5 sm:p-6 shadow-xs">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
               <span className="text-[11px] font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">

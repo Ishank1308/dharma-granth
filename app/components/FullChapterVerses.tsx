@@ -1102,22 +1102,63 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     );
   }
 
+  const viewportVerseIdx = currentViewportVerse !== null
+    ? state.verses.findIndex((v) => String(v.number) === String(currentViewportVerse))
+    : -1;
+  const chapterScrollPct = state.verses.length > 0 && viewportVerseIdx >= 0
+    ? Math.min(100, Math.round(((viewportVerseIdx + 1) / state.verses.length) * 100))
+    : 0;
+
   return (
     <>
       <section>
-        {/* One quiet line above the text, like a book's running head: the verse count, type settings (Aa)
-            and everything else folded behind "Options". Listening starts from the chapter title above. */}
-        <div className="mb-6 border-b border-dharma-border/60 pb-3">
-          <div className="flex items-center justify-between gap-3">
+        {/* One quiet sticky running head above the text: active shloka progress, 1-tap verse jump,
+            type settings (Aa), and everything else folded behind "Options". */}
+        <div className="sticky top-[52px] z-30 -mx-2 mb-6 border-b border-dharma-border/60 bg-dharma-bg/92 px-2 pb-2.5 pt-2 backdrop-blur-md">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="text-xs text-dharma-muted">
               <span className="sr-only">पूर्ण अध्याय पाठ · </span>
-              {filterQuery.trim() ? `${filteredVerses.length} / ${state.verses.length}` : state.verses.length} श्लोक
+              {filterQuery.trim() ? (
+                `${filteredVerses.length} / ${state.verses.length} श्लोक`
+              ) : viewportVerseIdx >= 0 && currentViewportVerse !== null ? (
+                <span>
+                  <span className="font-semibold text-dharma-text">श्लोक {toAsciiDigits(currentViewportVerse)}</span>
+                  <span> / {state.verses.length}</span>
+                </span>
+              ) : (
+                `${state.verses.length} श्लोक`
+              )}
               {parayanaActive && activeRecitingVerse !== null && (
                 <span className="ml-2 text-amber-700 dark:text-amber-300">· पारायण {toAsciiDigits(activeRecitingVerse)}</span>
               )}
             </p>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              {state.verses.length > 5 && (
+                <label className="liquid-pill inline-flex min-h-[40px] items-center rounded-full px-2.5 text-xs font-medium text-dharma-muted hover:text-dharma-text">
+                  <span className="sr-only">श्लोक पर जाएं</span>
+                  <select
+                    onChange={(e) => {
+                      if (e.target.value) {
+                        scrollToVerse(e.target.value);
+                        e.target.value = '';
+                      }
+                    }}
+                    defaultValue=""
+                    aria-label="श्लोक पर सीधे जाएं (Jump to verse)"
+                    className="cursor-pointer bg-transparent py-1 pr-1 text-xs font-semibold text-dharma-text outline-none"
+                  >
+                    <option value="" disabled className="bg-dharma-card text-dharma-text">
+                      श्लोक पर जाएं ▾
+                    </option>
+                    {state.verses.map((v) => (
+                      <option key={String(v.number)} value={String(v.number)} className="bg-dharma-card text-dharma-text">
+                        श्लोक {toAsciiDigits(v.number)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              )}
               <button
                 type="button"
                 onClick={() => setReaderSettingsOpen(true)}
@@ -1132,16 +1173,25 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               <button
                 type="button"
                 onClick={() => setToolsOpen((o) => !o)}
-                className="liquid-pill inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full px-3.5 text-xs font-medium text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                className="liquid-pill inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full px-3 sm:px-3.5 text-xs font-medium text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                 aria-expanded={toolsOpen}
                 aria-controls="chapter-reader-tools"
               >
                 <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
-                <span><span lang="hi">विकल्प</span> · Options</span>
+                <span><span lang="hi">विकल्प</span><span className="hidden sm:inline"> · Options</span></span>
                 <ChevronDown className={`h-3.5 w-3.5 transition-transform ${toolsOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
               </button>
             </div>
           </div>
+
+          {chapterScrollPct > 0 && (
+            <div aria-hidden="true" className="mt-2 h-[2px] w-full overflow-hidden rounded-full bg-dharma-border/40">
+              <div
+                className="h-full rounded-full bg-dharma-saffron transition-[width] duration-200"
+                style={{ width: `${chapterScrollPct}%` }}
+              />
+            </div>
+          )}
 
           <div
             id="chapter-reader-tools"

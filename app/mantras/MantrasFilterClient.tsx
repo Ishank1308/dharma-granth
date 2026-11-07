@@ -41,7 +41,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
             role="tab"
             aria-selected={activeCategory === tab.key}
             onClick={() => setActiveCategory(tab.key as typeof activeCategory)}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+            className={`inline-flex min-h-[44px] items-center px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
               activeCategory === tab.key
                 ? 'bg-saffron-700 text-white shadow-sm'
                 : 'border border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-400'
@@ -87,7 +87,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                     type="button"
                     onClick={() => onCopy(m)}
                     aria-label={`Copy ${m.title}`}
-                    className="focus-ring inline-flex h-9 items-center gap-1.5 rounded-lg border border-dharma-border bg-dharma-bg px-3 text-xs font-semibold text-dharma-text hover:border-saffron-500 transition"
+                    className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-dharma-border bg-dharma-bg px-3.5 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-500 transition"
                   >
                     {isCopied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
                     <span>{isCopied ? 'Copied' : 'Copy'}</span>
@@ -97,7 +97,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Share ${m.title} on WhatsApp`}
-                    className="focus-ring inline-flex h-9 items-center gap-1.5 rounded-lg border border-dharma-border bg-dharma-bg px-3 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:border-emerald-500 transition"
+                    className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-dharma-border bg-dharma-bg px-3.5 py-2 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:border-emerald-500 transition"
                   >
                     <MessageCircle className="h-3.5 w-3.5" />
                     <span>WhatsApp</span>
@@ -106,8 +106,8 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
               </div>
 
               {/* Sanskrit Shloka */}
-              <div className="my-5 rounded-2xl bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/50 dark:border-amber-900/40 p-5 sm:p-6 text-center">
-                <p lang="sa" className="font-devanagari text-xl sm:text-2xl font-bold leading-[2] text-amber-950 dark:text-amber-100">
+              <div className="verse-leaf my-5 rounded-2xl border border-dharma-border bg-dharma-bg/70 p-5 sm:p-6 text-center">
+                <p lang="sa" className="shloka-text font-sanskrit text-xl sm:text-2xl font-normal leading-[2] text-dharma-text">
                   {m.sanskrit}
                 </p>
                 <p className="mt-2 font-serif text-xs sm:text-sm italic text-dharma-muted">

@@ -33,6 +33,7 @@ function DockButton({
   pressed,
   label,
   touchLabel,
+  hintHi,
   sublabel,
   onClick,
   children,
@@ -42,6 +43,8 @@ function DockButton({
   label: string;
   /** Shown instead of `label` on touch screens, where a keyboard shortcut means nothing. */
   touchLabel?: string;
+  /** Short Hindi micro-label so non-IAST readers immediately recognize each mode. */
+  hintHi?: string;
   sublabel: string;
   onClick: () => void;
   children: ReactNode;
@@ -52,7 +55,7 @@ function DockButton({
       onClick={onClick}
       aria-pressed={pressed ?? active}
       title={`${label} · ${sublabel}`}
-      className={`relative flex min-h-[52px] min-w-[52px] flex-col items-center justify-center gap-0.5 rounded-full px-2.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--dharma-accent)] sm:min-w-[64px] sm:px-3 ${
+      className={`relative flex min-h-[54px] min-w-[56px] flex-col items-center justify-center gap-0.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--dharma-accent)] sm:min-w-[68px] sm:px-3 ${
         active || pressed ? 'text-dharma-text' : 'text-dharma-muted hover:text-dharma-text'
       }`}
     >
@@ -71,6 +74,11 @@ function DockButton({
           label
         )}
       </span>
+      {hintHi && (
+        <span lang="hi" aria-hidden="true" className="relative font-devanagari text-[10px] leading-tight opacity-75">
+          {hintHi}
+        </span>
+      )}
       <span className="sr-only"> · {sublabel}</span>
     </button>
   );
@@ -112,20 +120,20 @@ export function LiquidGlassDock({ mode, onModeChange, listening, onToggleListeni
       className="liquid-dock fixed inset-x-0 z-40 flex justify-center lg:mx-auto lg:w-fit lg:max-w-[calc(100vw-1.5rem)]"
     >
       <div className="liquid-glass relative flex items-center gap-0.5 p-1.5 max-lg:w-full max-lg:justify-around max-lg:rounded-none max-lg:pb-[calc(0.375rem+env(safe-area-inset-bottom,0px))] lg:rounded-full">
-        <DockButton active={mode === 'samhita'} label="Saṁhitā" sublabel="संहिता · Read" onClick={() => onModeChange('samhita')}>
+        <DockButton active={mode === 'samhita'} label="Saṁhitā" hintHi="पठन" sublabel="संहिता · Read" onClick={() => onModeChange('samhita')}>
           <BookOpen className="h-[18px] w-[18px]" aria-hidden="true" />
         </DockButton>
-        <DockButton active={mode === 'anvaya'} label="Anvaya" sublabel="अन्वय · Word by word" onClick={() => onModeChange('anvaya')}>
+        <DockButton active={mode === 'anvaya'} label="Anvaya" hintHi="शब्दार्थ" sublabel="अन्वय · Word by word" onClick={() => onModeChange('anvaya')}>
           <Languages className="h-[18px] w-[18px]" aria-hidden="true" />
         </DockButton>
-        <DockButton pressed={listening} label="Śravaṇa" sublabel={listening ? 'श्रवण · Pause chanting' : 'श्रवण · Listen'} onClick={onToggleListening}>
+        <DockButton pressed={listening} label="Śravaṇa" hintHi={listening ? 'विराम' : 'श्रवण'} sublabel={listening ? 'श्रवण · Pause chanting' : 'श्रवण · Listen'} onClick={onToggleListening}>
           {listening ? <Waveform playing={!reduce} /> : <Volume2 className="h-[18px] w-[18px]" aria-hidden="true" />}
         </DockButton>
-        <DockButton active={mode === 'bhashya'} label="Bhāṣya" sublabel="भाष्य · Commentary" onClick={() => onModeChange('bhashya')}>
+        <DockButton active={mode === 'bhashya'} label="Bhāṣya" hintHi="व्याख्या" sublabel="भाष्य · Commentary" onClick={() => onModeChange('bhashya')}>
           <MessageSquareQuote className="h-[18px] w-[18px]" aria-hidden="true" />
         </DockButton>
-        <span aria-hidden="true" className="mx-1 h-7 w-px bg-white/15 max-lg:hidden" />
-        <DockButton label={shortcut} touchLabel="Search" sublabel="खोज · Jump to any shloka" onClick={() => openGlobalSearch()}>
+        <span aria-hidden="true" className="mx-1 h-7 w-px bg-separator max-lg:hidden" />
+        <DockButton label={shortcut} touchLabel="Search" hintHi="खोज" sublabel="खोज · Jump to any shloka" onClick={() => openGlobalSearch()}>
           <Command className="h-[18px] w-[18px]" aria-hidden="true" />
         </DockButton>
       </div>

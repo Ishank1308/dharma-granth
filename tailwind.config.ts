@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss';
-
+S
 // Theme colours are CSS variables holding hex values, which Tailwind cannot
 // split into channels, so opacity modifiers (`bg-dharma-card/95`) were silently
 // dropped. color-mix lets `<alpha-value>` apply to any variable colour.
@@ -47,6 +47,7 @@ const config: Config = {
           DEFAULT: 'var(--tint)',
           fill: 'var(--tint-fill)',
         },
+        accent: 'var(--tint)',
         'on-tint': 'var(--on-tint)',
         saffron: {
           50: '#fff8f0',
@@ -67,6 +68,9 @@ const config: Config = {
           'text-secondary': themeVar('--dharma-text-secondary'),
           muted: themeVar('--dharma-muted'),
           border: themeVar('--dharma-border'),
+          line: themeVar('--dharma-border'),
+          'border-hover': themeVar('--dharma-gold'),
+          'border-strong': 'var(--separator-strong)',
           card: themeVar('--dharma-card'),
           'card-soft': themeVar('--dharma-card-soft'),
           panel: themeVar('--dharma-panel'),
@@ -82,6 +86,8 @@ const config: Config = {
       },
       // Design tokens (app/styles/tokens.css). Type roles carry their own leading and tracking.
       fontSize: {
+        'caption-2': ['0.6875rem', { lineHeight: '1.3' }],
+        'caption-1': ['var(--text-caption)', { lineHeight: '1.35' }],
         caption: ['var(--text-caption)', { lineHeight: '1.35' }],
         footnote: ['var(--text-footnote)', { lineHeight: '1.38' }],
         subhead: ['var(--text-subhead)', { lineHeight: '1.4' }],

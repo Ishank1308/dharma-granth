@@ -5,9 +5,9 @@ import { HomeHero } from '@/app/components/home/HomeHero';
 import { HomeTodayVerse } from '@/app/components/home/HomeTodayVerse';
 import { ContinueReading } from '@/app/components/ContinueReading';
 import { HomeLibrary } from '@/app/components/home/HomeLibrary';
+import { HomeSanctuaryGateway } from '@/app/components/home/HomeSanctuaryGateway';
 import { WisdomTicker } from '@/app/components/home/WisdomTicker';
 import { HomeTrustStrip } from '@/app/components/HomeTrustStrip';
-import { SiteFooter } from '@/app/components/SiteFooter';
 
 export const metadata: Metadata = {
   title: { absolute: 'Dharma Granth — Calm, Bilingual Digital Scripture Library' },
@@ -57,13 +57,15 @@ export default function HomePage() {
         {/* 3. The library as book tiles */}
         <HomeLibrary />
 
-        {/* 4. A slow band of Upaniṣadic sayings, each linked to its passage */}
+        {/* 4. Direct gateway to live Panchang, Wisdom Pathways, Sacred Mantras, and Daily Sadhana */}
+        <HomeSanctuaryGateway />
+
+        {/* 5. A slow band of Upaniṣadic sayings, each linked to its passage */}
         <WisdomTicker />
 
-        {/* 5. Sourcing, methodology and the library's numbers */}
+        {/* 6. Sourcing, methodology and the library's numbers */}
         <HomeTrustStrip />
       </main>
-      <SiteFooter />
     </>
   );
 }
