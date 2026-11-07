@@ -242,7 +242,7 @@ const NAVAGRAHA_DATA: GrahaDetail[] = [
   },
 ];
 
-export function NavagrahaMandalam() {
+export function NavagrahaMandalam({ inlineOnly = false }: { inlineOnly?: boolean } = {}) {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const copyText = async (text: string, key: string) => {
@@ -256,28 +256,30 @@ export function NavagrahaMandalam() {
   };
 
   return (
-    <section aria-labelledby="navagraha-mandalam-heading" className="my-12 space-y-6">
+    <section aria-labelledby="navagraha-mandalam-heading" className={inlineOnly ? 'my-6 space-y-5' : 'my-12 space-y-6'}>
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-dharma-border pb-4">
         <div>
           <div className="inline-flex items-center gap-1.5 rounded-full border border-saffron-500/30 bg-saffron-500/10 px-3 py-1 text-xs font-semibold text-saffron-800 dark:text-saffron-300 mb-2">
             <Compass className="w-3.5 h-3.5" />
             <span>नवग्रह मण्डल विवरण · Nine Celestial Regents</span>
           </div>
-          <h2 id="navagraha-mandalam-heading" className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
+          <h3 id="navagraha-mandalam-heading" className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
             नवग्रह बीजमन्त्र, गायत्री एवं आकाशीय समन्वय
-          </h2>
+          </h3>
           <p className="mt-1 text-xs sm:text-sm text-dharma-muted">
             महर्षि वेदव्यास विरचित नवग्रह स्तोत्र के प्रत्येक ग्रह का बीजमन्त्र, गायत्री, तत्त्व, रत्न एवं वैदिक वार सम्बद्धता।
           </p>
         </div>
 
-        <Link
-          href="/panchang/varas/"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-saffron-800 dark:text-saffron-300 hover:underline shrink-0"
-        >
-          <span>7 वैदिक वार दर्शिका (7 Varas Directory)</span>
-          <ExternalLink className="w-3.5 h-3.5" />
-        </Link>
+        {!inlineOnly && (
+          <Link
+            href="/panchang/varas/"
+            className="focus-ring rounded inline-flex items-center gap-1.5 text-xs font-semibold text-saffron-800 dark:text-saffron-300 hover:underline shrink-0"
+          >
+            <span>7 वैदिक वार दर्शिका (7 Varas Directory)</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </Link>
+        )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -336,7 +338,7 @@ export function NavagrahaMandalam() {
                       <button
                         type="button"
                         onClick={() => copyText(graha.beejaMantra, beejaKey)}
-                        className="inline-flex items-center gap-1 text-[10px] text-amber-800 dark:text-amber-300 hover:underline"
+                        className="focus-ring rounded inline-flex items-center gap-1 text-[10px] text-amber-800 dark:text-amber-300 hover:underline"
                         aria-label={`Copy ${graha.name} Beeja Mantra`}
                       >
                         {copiedKey === beejaKey ? (
@@ -364,7 +366,7 @@ export function NavagrahaMandalam() {
                       <button
                         type="button"
                         onClick={() => copyText(graha.gayatriMantra, gayatriKey)}
-                        className="inline-flex items-center gap-1 text-[10px] text-dharma-muted hover:underline"
+                        className="focus-ring rounded inline-flex items-center gap-1 text-[10px] text-dharma-muted hover:underline"
                         aria-label={`Copy ${graha.name} Gayatri Mantra`}
                       >
                         {copiedKey === gayatriKey ? (
@@ -387,20 +389,26 @@ export function NavagrahaMandalam() {
                 </div>
               </div>
 
-              {/* Footer info: Gemstone & Weekday Link */}
+              {/* Footer info: Gemstone & Weekday */}
               <div className="mt-4 pt-3 border-t border-dharma-border/60 flex items-center justify-between text-xs">
                 <span className="text-dharma-muted text-[11px]">
                   रत्न: <strong className="text-dharma-text font-medium">{graha.gemstoneHi}</strong>
                 </span>
 
                 {graha.varaSlug ? (
-                  <Link
-                    href={`/panchang/varas/${graha.varaSlug}/`}
-                    className="inline-flex items-center gap-1 font-semibold text-saffron-800 dark:text-saffron-300 hover:underline text-[11px]"
-                  >
-                    <span>{graha.varaNameHi} विवरण</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </Link>
+                  inlineOnly ? (
+                    <span className="text-[11px] text-dharma-muted">
+                      वार: <strong className="text-dharma-text font-medium">{graha.varaNameHi}</strong>
+                    </span>
+                  ) : (
+                    <Link
+                      href={`/panchang/varas/${graha.varaSlug}/`}
+                      className="focus-ring rounded inline-flex items-center gap-1 font-semibold text-saffron-800 dark:text-saffron-300 hover:underline text-[11px]"
+                    >
+                      <span>{graha.varaNameHi} विवरण</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </Link>
+                  )
                 ) : (
                   <span className="text-[11px] text-dharma-muted italic">छायाग्रह (Lunar Node)</span>
                 )}
