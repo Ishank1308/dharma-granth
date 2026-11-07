@@ -1186,6 +1186,14 @@ async function renderHubCards(fonts: SatoriFont[]): Promise<void> {
       tag: "Panchang Calculator",
       gradient: "linear-gradient(135deg, #451a03 0%, #9a3412 50%, #d97706 100%)",
     },
+    {
+      file: "gita-journey.png",
+      title: "Gita 18 Adhyayas Journey",
+      subtitleHi: "श्रीमद्भगवद्गीता 18 अध्याय यात्रा",
+      desc: "Interactive roadmap across the 3 classical Shatkas: mapping Arjuna’s inner crises to Sri Krishna’s counsel, centerpiece Mahavakyas, and dilemma resolutions.",
+      tag: "Dilemma Compass",
+      gradient: "linear-gradient(135deg, #1e1b4b 0%, #4338ca 45%, #b45309 100%)",
+    },
   ];
   for (const h of hubs) {
     const svg = await renderSvg(hubOgTemplate(h.title, h.subtitleHi, h.desc, h.tag, h.gradient), WIDTH, HEIGHT, fonts);

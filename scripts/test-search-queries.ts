@@ -107,4 +107,7 @@ assert.ok(shanivara, 'searching shanivara should direct to /panchang/varas/shani
 const navagraha = searchCoreIndex('navagraha').find(({ item }) => item.href === '/mantras/navagraha-stotram/');
 assert.ok(navagraha, 'searching navagraha should find navagraha-stotram');
 
+const gitaJourney = searchCoreIndex('gita journey').find(({ item }) => item.href === '/learn/journeys/gita/');
+assert.ok(gitaJourney, 'searching gita journey should direct to /learn/journeys/gita/');
+
 console.log('search query checks passed');

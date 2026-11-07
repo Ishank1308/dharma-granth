@@ -13,6 +13,7 @@ import {
   Sun,
   Layers,
   GraduationCap,
+  Sparkles,
 } from 'lucide-react';
 import { READING_JOURNEYS, type ReadingJourney, type JourneyCategory } from '@/data/reading-journeys';
 import { REVIEW_LABEL } from '@/data/study-content';
@@ -75,6 +76,46 @@ export function JourneysClient() {
         <p className="max-w-3xl text-sm sm:text-base text-dharma-muted leading-relaxed">
           Choose a short reading path or open any lesson directly. You can pause at any point; optional reading markers stay on this device.
         </p>
+      </section>
+
+      {/* ─── FLAGSHIP GITA JOURNEY SPOTLIGHT ─────────────────────────────── */}
+      <section
+        aria-labelledby="gita-spotlight-heading"
+        className="rounded-3xl border-2 border-saffron-500/50 bg-gradient-to-br from-amber-500/15 via-saffron-500/10 to-indigo-500/10 p-6 sm:p-8 shadow-sm transition hover:border-saffron-500"
+      >
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-saffron-500/40 bg-saffron-500/20 px-3 py-1 text-xs font-bold text-saffron-900 dark:text-saffron-200">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Featured Interactive Roadmap · तत्त्वमसि</span>
+              </span>
+              <span className="text-xs font-semibold text-dharma-muted">
+                18 Chapters · 3 Classical Shatkas
+              </span>
+            </div>
+
+            <h2 id="gita-spotlight-heading" className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
+              Bhagavad Gita 18 Adhyayas: The Dilemma Compass
+            </h2>
+            <p lang="hi" className="font-devanagari text-sm sm:text-base font-medium text-saffron-800 dark:text-saffron-300">
+              अर्जुन के विषाद से श्रीकृष्ण के परम समाधान तक — कर्म, भक्ति व ज्ञान षटक
+            </p>
+            <p className="text-xs sm:text-sm text-dharma-muted max-w-2xl leading-relaxed">
+              Navigate all 18 chapters of Srimad Bhagavad Gita mapped to real-life psychological dilemmas, centerpiece Mahavakyas, and progress tracking.
+            </p>
+          </div>
+
+          <div className="shrink-0 self-start md:self-center">
+            <Link
+              href="/learn/journeys/gita/"
+              className="focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-2xl bg-saffron-600 hover:bg-saffron-700 px-6 py-3 text-sm font-bold text-white transition shadow-sm"
+            >
+              <span>Explore 18 Chapters</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* ─── RESUME LEARNING HERO CARD ────────────────────────────────────── */}

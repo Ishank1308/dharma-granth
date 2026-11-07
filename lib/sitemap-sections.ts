@@ -94,6 +94,7 @@ function pagesSection(): MetadataRoute.Sitemap {
     ...(READING_JOURNEYS.some(isJourneyIndexable)
       ? [entry('/learn/journeys', pageDate('/learn/journeys', 'data/reading-journeys.ts'))]
       : []),
+    entry('/learn/journeys/gita', pageDate('/learn/journeys/gita', 'data/gita-journey-data.ts')),
     entry('/story', pageDate('/story')),
     entry('/collections', pageDate('/collections')),
     entry('/compare', pageDate('/compare', 'data/scripture-comparisons.ts')),

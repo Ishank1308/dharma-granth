@@ -124,6 +124,9 @@ for (const v of VARA_DATA) {
 for (const tithi of Object.values(TITHI_DATA)) addTerm(`tithi-${tithi.paksha}-${tithi.number}`, tithi.name, tithi.nameHi);
 for (const star of NAKSHATRA_DATA) addTerm(`nakshatra-${star.index}`, star.name, star.nameHi, `/panchang/nakshatras/${nakshatraSlug(star.name)}/`);
 
+addTerm('gita-journey', 'Gita Journey · Dilemma Compass', 'गीता यात्रा 18 अध्याय', '/learn/journeys/gita/');
+addTerm('learn-journeys', 'Guided Learning Journeys', 'स्वाध्याय यात्राएँ', '/learn/journeys/');
+
 const verses: CoreVerse[] = [];
 const seenVerse = new Set<string>();
 function addVerse(id: string, chapter: number, verse: string, label: string, href: string, sanskrit: string, translation: string) {
