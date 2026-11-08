@@ -317,10 +317,10 @@ export default function PanchangPage() {
                 </span>
               </div>
               <h3 className="font-serif text-2xl font-bold text-dharma-text">
-                Vedic Muhurta Decision Matrix
+                Muhurta Calendar & Study
               </h3>
               <p className="text-xs sm:text-sm text-dharma-muted max-w-2xl leading-relaxed">
-                Evaluate auspicious timing for education, home entry, journeys, investments, and sadhana with real-time Panchanga-Shuddhi analysis, Rahu Kalam alerts, and custom simulator.
+                Choose a date and city to see approximate Rahu Kalam and Abhijit windows. Explore the five Panchang limbs and compare traditional rules for common activities.
               </p>
             </div>
             <div className="shrink-0 self-start md:self-center">
@@ -328,7 +328,7 @@ export default function PanchangPage() {
                 href="/panchang/muhurta/"
                 className="inline-flex items-center gap-2 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 text-sm font-bold transition shadow-xs"
               >
-                <span>Open Muhurta Matrix</span>
+                <span>Open Muhurta Calendar</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
