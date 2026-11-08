@@ -18,6 +18,7 @@ import {
   X,
 } from 'lucide-react';
 import { SCRIPTURE_SOURCES, type ScriptureSourceMeta } from '@/data/sources-registry';
+import { PHOTO_CREDITS } from '@/lib/scene-photos';
 
 export default function SourcesPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -222,6 +223,30 @@ export default function SourcesPage() {
           ))}
         </div>
       </section>
+      {/* Pictures behind the verses: Wikimedia Commons photographs and paintings */}
+      {Object.keys(PHOTO_CREDITS).length > 0 && (
+        <section className="mx-auto max-w-5xl px-5 sm:px-8 mt-14" aria-labelledby="picture-credits">
+          <h2 id="picture-credits" className="font-serif text-xl sm:text-2xl font-bold text-dharma-text border-b border-dharma-border pb-4">
+            <span>Pictures behind the verses</span>{' '}
+            <span lang="hi" className="font-devanagari font-normal text-lg text-dharma-muted">· श्लोकों के पीछे के चित्र</span>
+          </h2>
+          <p className="mt-4 text-sm text-dharma-muted leading-relaxed">
+            The photographs and classical paintings behind each chapter&apos;s verses come from Wikimedia Commons. Each is in the public domain or under a Creative Commons licence, and is listed here with its author and licence.
+          </p>
+          <ul className="mt-6 grid gap-3 text-xs sm:grid-cols-2">
+            {Object.entries(PHOTO_CREDITS).map(([id, c]) => (
+              <li key={id} className="rounded-xl border border-dharma-border bg-dharma-card p-4">
+                <a href={c.source} target="_blank" rel="noopener noreferrer" className="font-medium text-sm text-dharma-text underline decoration-dharma-border underline-offset-2 hover:text-saffron-700 dark:hover:text-saffron-400">
+                  {c.title}
+                </a>
+                <p className="mt-1 text-dharma-muted">
+                  {c.author} · {c.license}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </main>
   );
 }

@@ -27,6 +27,8 @@ import "./styles/page-transitions.css";
 import "./styles/title-fold.css";
 // Colour and life (the sacred spectrum on cards, buttons, titles and the page aurora) goes last.
 import "./styles/colour.css";
+import "./styles/scene-photos.css";
+import "./styles/scene-photos.generated.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
 import { StoragePersistenceRequest } from "@/app/components/StoragePersistenceRequest";

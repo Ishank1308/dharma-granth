@@ -31,6 +31,7 @@ import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
 import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction';
 import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { sceneAttrs } from '@/lib/chapter-scenes';
+import { photoAttrs } from '@/lib/scene-photos';
 import { chapterPainting } from '@/lib/chapter-paintings';
 import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
@@ -408,7 +409,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   } : undefined;
 
   return (
-    <main data-chapter-reading data-vt-pane data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} {...sceneAttrs(meta.id, chapter.id)} data-painting={painting} className="min-h-screen bg-dharma-bg">
+    <main data-chapter-reading data-vt-pane data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} {...sceneAttrs(meta.id, chapter.id)} {...photoAttrs(meta.id, chapter.id)} data-painting={painting} className="min-h-screen bg-dharma-bg">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
