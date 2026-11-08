@@ -155,7 +155,7 @@ export default function PanchangCalendarPage() {
 
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 mb-4">
+                <div className="apple-tint-chip mb-4 !h-10 !w-10" style={{ '--chip': 'var(--hue-gold)' } as React.CSSProperties}>
                   <Sun className="h-5 w-5" />
                 </div>
                 <h3 className="text-subhead font-bold text-dharma-text">सौर मास (Solar Month / Sankranti)</h3>
@@ -165,7 +165,7 @@ export default function PanchangCalendarPage() {
               </div>
 
               <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 mb-4">
+                <div className="apple-tint-chip mb-4 !h-10 !w-10" style={{ '--chip': 'var(--hue-indigo)' } as React.CSSProperties}>
                   <Moon className="h-5 w-5" />
                 </div>
                 <h3 className="text-subhead font-bold text-dharma-text">चान्द्र मास (Lunar Month / Paksha)</h3>
@@ -175,7 +175,7 @@ export default function PanchangCalendarPage() {
               </div>
 
               <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 mb-4">
+                <div className="apple-tint-chip mb-4 !h-10 !w-10" style={{ '--chip': 'var(--hue-tulsi)' } as React.CSSProperties}>
                   <Compass className="h-5 w-5" />
                 </div>
                 <h3 className="text-subhead font-bold text-dharma-text">उदय तिथि नियम (Udaya Tithi Rule)</h3>
@@ -200,7 +200,7 @@ export default function PanchangCalendarPage() {
                 href="/panchang/tithis/"
                 className="group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-dharma-saffron hover:shadow-md transition-all"
               >
-                <div className="text-2xl mb-2">🌓</div>
+                <span className="apple-tint-chip mb-3 !h-10 !w-10" style={{ '--chip': 'var(--hue-indigo)' } as React.CSSProperties}><Moon className="h-5 w-5" aria-hidden="true" /></span>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
                   16 वैदिक तिथियाँ (Tithis)
                 </h4>
@@ -217,7 +217,7 @@ export default function PanchangCalendarPage() {
                 href="/panchang/nakshatras/"
                 className="group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-dharma-saffron hover:shadow-md transition-all"
               >
-                <div className="text-2xl mb-2">✨</div>
+                <span className="apple-tint-chip mb-3 !h-10 !w-10" style={{ '--chip': 'var(--hue-peacock)' } as React.CSSProperties}><Sparkles className="h-5 w-5" aria-hidden="true" /></span>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
                   27 नक्षत्र (Nakshatras)
                 </h4>
@@ -234,7 +234,7 @@ export default function PanchangCalendarPage() {
                 href="/panchang/yogas/"
                 className="group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-dharma-saffron hover:shadow-md transition-all"
               >
-                <div className="text-2xl mb-2">☀️</div>
+                <span className="apple-tint-chip mb-3 !h-10 !w-10" style={{ '--chip': 'var(--hue-lotus)' } as React.CSSProperties}><Sun className="h-5 w-5" aria-hidden="true" /></span>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
                   27 नित्य योग (Yogas)
                 </h4>
@@ -251,7 +251,7 @@ export default function PanchangCalendarPage() {
                 href="/panchang/karanas/"
                 className="group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-dharma-saffron hover:shadow-md transition-all"
               >
-                <div className="text-2xl mb-2">⏳</div>
+                <span className="apple-tint-chip mb-3 !h-10 !w-10" style={{ '--chip': 'var(--hue-tulsi)' } as React.CSSProperties}><Clock className="h-5 w-5" aria-hidden="true" /></span>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
                   11 करण (Karanas)
                 </h4>

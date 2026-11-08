@@ -1,0 +1,475 @@
+/* Festival calendar (/panchang/calendar/) ────────────────────────────────────
+   A quiet month grid in the Apple Calendar idiom: no ruled boxes, a date number that
+   becomes a tinted disc on today and a ring on the selected day, a drawn moon for the
+   phase, and coloured markers from the sacred spectrum instead of emoji. Every colour is
+   mixed from tokens.css, so all four themes follow without per-theme copies.
+
+   Marker hues: एकादशी tulsī, प्रदोष indigo, पूर्णिमा gold, अमावस्या neutral ink, पर्व saffron. */
+
+.fc-root {
+    --fc-ekadashi: var(--hue-tulsi);
+    --fc-pradosha: var(--hue-indigo);
+    --fc-purnima: var(--hue-gold);
+    --fc-amavasya: var(--label-secondary);
+    --fc-festival: var(--hue-saffron);
+    --fc-sunday: var(--hue-vermilion);
+}
+
+/* Toolbar ─────────────────────────────────────────────────────────────── */
+.fc-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tap-target);
+    height: var(--tap-target);
+    flex-shrink: 0;
+    border-radius: var(--radius-pill);
+    color: var(--label-primary);
+    background-color: var(--fill-tertiary);
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        transform var(--duration-base) var(--motion-spring);
+}
+.fc-icon-btn:hover:not(:disabled) {
+    background-color: var(--fill-secondary);
+}
+.fc-icon-btn:active:not(:disabled) {
+    scale: 0.94;
+}
+.fc-icon-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+.fc-icon-btn:focus-visible,
+.fc-chip:focus-visible,
+.fc-day:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+
+.fc-select {
+    appearance: none;
+    -webkit-appearance: none;
+    min-height: var(--tap-target);
+    max-width: 100%;
+    border: 0;
+    border-radius: var(--radius-field);
+    padding: 0 2.25rem 0 2.25rem;
+    font-size: var(--text-subhead);
+    font-weight: 500;
+    color: var(--label-primary);
+    background-color: var(--fill-tertiary);
+    text-overflow: ellipsis;
+}
+.fc-select:focus {
+    outline: 2px solid var(--tint);
+    outline-offset: 0;
+}
+
+/* Filter chips: one row that scrolls sideways on a phone, wraps on wider screens. */
+.fc-chips {
+    display: flex;
+    gap: var(--space-2);
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-inline: calc(-1 * var(--space-4));
+    padding: 2px var(--space-4);
+    scroll-padding-inline: var(--space-4);
+}
+.fc-chips::-webkit-scrollbar {
+    display: none;
+}
+@media (min-width: 768px) {
+    .fc-chips {
+        flex-wrap: wrap;
+        overflow: visible;
+        margin-inline: 0;
+        padding-inline: 0;
+    }
+}
+.fc-chip {
+    --chip-hue: var(--tint);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    min-height: 40px;
+    padding: 0 0.95rem;
+    border-radius: var(--radius-pill);
+    font-size: var(--text-footnote);
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--label-primary);
+    background-color: var(--fill-tertiary);
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        color var(--duration-fast) var(--ease-standard),
+        transform var(--duration-base) var(--motion-spring);
+}
+.fc-chip:hover {
+    background-color: var(--fill-secondary);
+}
+.fc-chip:active {
+    scale: 0.96;
+}
+.fc-chip[aria-pressed='true'] {
+    color: var(--label-primary);
+    background-color: color-mix(in srgb, var(--chip-hue) 16%, transparent);
+    box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--chip-hue) 55%, transparent);
+    font-weight: 600;
+}
+
+.fc-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: var(--dot, var(--tint));
+}
+.fc-dot[data-kind='amavasya'] {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1.5px var(--fc-amavasya);
+}
+
+/* Month grid ───────────────────────────────────────────────────────────── */
+.fc-weekdays,
+.fc-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 2px;
+}
+@media (min-width: 640px) {
+    .fc-weekdays,
+    .fc-grid {
+        gap: 6px;
+    }
+}
+.fc-weekday {
+    padding: var(--space-2) 0;
+    text-align: center;
+    color: var(--label-secondary);
+}
+.fc-weekday[data-sunday] {
+    color: var(--fc-sunday);
+}
+
+.fc-day {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    min-width: 0;
+    min-height: 68px;
+    padding: 6px 3px 6px;
+    border-radius: var(--radius-control);
+    text-align: center;
+    color: var(--label-primary);
+    background-color: transparent;
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        opacity var(--duration-standard) var(--ease-standard),
+        transform var(--duration-base) var(--motion-spring);
+}
+@media (min-width: 640px) {
+    .fc-day {
+        min-height: 112px;
+        padding: 10px 10px 8px;
+        gap: 4px;
+        border-radius: var(--radius-field);
+        text-align: left;
+        background-color: var(--fill-quaternary);
+    }
+}
+@media (hover: hover) {
+    .fc-day:hover {
+        background-color: var(--fill-tertiary);
+    }
+}
+.fc-day:active {
+    scale: 0.97;
+}
+/* A festival day carries a faint saffron wash so the month's feast days show at a glance. */
+.fc-day[data-festival] {
+    background-color: color-mix(in srgb, var(--fc-festival) 9%, transparent);
+}
+.fc-day[aria-pressed='true'] {
+    background-color: color-mix(in srgb, var(--tint) 12%, transparent);
+    box-shadow: inset 0 0 0 2px var(--tint);
+}
+.fc-day[data-dim] {
+    opacity: 0.28;
+}
+.fc-day[data-dim]:hover {
+    opacity: 0.6;
+}
+.fc-blank {
+    min-height: 68px;
+}
+@media (min-width: 640px) {
+    .fc-blank {
+        min-height: 112px;
+    }
+}
+
+.fc-day-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+@media (min-width: 640px) {
+    .fc-day-head {
+        justify-content: space-between;
+    }
+}
+.fc-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-size: var(--text-subhead);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+}
+@media (min-width: 640px) {
+    .fc-num {
+        width: 30px;
+        height: 30px;
+        font-size: var(--text-body);
+    }
+}
+.fc-day[data-sunday] .fc-num {
+    color: var(--fc-sunday);
+}
+.fc-day[data-today] .fc-num {
+    color: var(--on-tint);
+    background-color: var(--tint);
+}
+.fc-moon-sm {
+    display: none;
+}
+@media (min-width: 640px) {
+    .fc-moon-sm {
+        display: block;
+    }
+}
+
+.fc-tithi {
+    overflow: hidden;
+    font-size: 10.5px;
+    line-height: 1.25;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--label-secondary);
+}
+@media (min-width: 640px) {
+    .fc-tithi {
+        font-size: var(--text-footnote);
+        font-weight: 600;
+        color: var(--label-primary);
+    }
+}
+.fc-nak {
+    display: none;
+}
+@media (min-width: 640px) {
+    .fc-nak {
+        display: block;
+        overflow: hidden;
+        font-size: var(--text-caption);
+        line-height: 1.25;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: var(--label-tertiary);
+    }
+}
+
+/* Markers: dots on a phone, small tinted labels from 640px. */
+.fc-marks {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    margin-top: auto;
+    min-height: 8px;
+}
+.fc-tags {
+    display: none;
+}
+@media (min-width: 640px) {
+    .fc-marks {
+        display: none;
+    }
+    .fc-tags {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+        margin-top: auto;
+        min-width: 0;
+    }
+}
+.fc-tag {
+    --tag: var(--tint);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    max-width: 100%;
+    padding: 1px 6px 1px 5px;
+    border-radius: var(--radius-chip);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: color-mix(in srgb, var(--tag) 72%, var(--label-primary));
+    background-color: color-mix(in srgb, var(--tag) 13%, transparent);
+}
+.fc-tag > span:last-child {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.fc-tag .fc-dot {
+    width: 6px;
+    height: 6px;
+}
+:root:is([data-theme='night'], [data-theme='dark']) .fc-tag {
+    color: color-mix(in srgb, var(--tag) 80%, var(--color-absolute-white));
+}
+
+/* Day detail ───────────────────────────────────────────────────────────── */
+.fc-festival {
+    --hue: var(--fc-festival);
+    border-radius: var(--radius-field);
+    padding: var(--space-4);
+    background-image:
+        radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--hue) 16%, transparent), transparent 70%),
+        radial-gradient(90% 120% at 100% 100%, color-mix(in srgb, var(--hue-vermilion) 9%, transparent), transparent 70%);
+    background-color: color-mix(in srgb, var(--hue) 5%, var(--surface-raised));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hue) 28%, transparent);
+}
+
+.fc-limb {
+    --hue: var(--tint);
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-field);
+    padding: var(--space-4);
+    background-color: var(--fill-quaternary);
+    background-image: radial-gradient(
+        120% 80% at 0% 0%,
+        color-mix(in srgb, var(--hue) 12%, transparent),
+        transparent 60%
+    );
+    box-shadow: inset 0 2px 0 color-mix(in srgb, var(--hue) 55%, transparent);
+}
+.fc-limb[data-limb='tithi'] { --hue: var(--hue-indigo); }
+.fc-limb[data-limb='nakshatra'] { --hue: var(--hue-peacock); }
+.fc-limb[data-limb='yoga'] { --hue: var(--hue-lotus); }
+.fc-limb[data-limb='karana'] { --hue: var(--hue-tulsi); }
+.fc-hue-text {
+    color: color-mix(in srgb, var(--hue) 70%, var(--label-primary));
+}
+:root:is([data-theme='night'], [data-theme='dark']) .fc-hue-text {
+    color: color-mix(in srgb, var(--hue) 85%, var(--color-absolute-white));
+}
+.fc-limb-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 36px;
+    font-size: var(--text-footnote);
+    font-weight: 600;
+}
+.fc-limb-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.fc-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-radius: var(--radius-field);
+    background-color: var(--fill-quaternary);
+    overflow: hidden;
+}
+@media (min-width: 768px) {
+    .fc-stats {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+.fc-stat {
+    --hue: var(--tint);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: var(--space-3) var(--space-4);
+    box-shadow: inset 1px 0 0 var(--separator), inset 0 1px 0 var(--separator);
+}
+.fc-stat svg {
+    color: var(--hue);
+}
+
+.fc-vrata {
+    --hue: var(--tint);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: var(--tap-target);
+    padding: 0 1rem;
+    border-radius: var(--radius-pill);
+    font-size: var(--text-footnote);
+    font-weight: 600;
+    color: color-mix(in srgb, var(--hue) 72%, var(--label-primary));
+    background-color: color-mix(in srgb, var(--hue) 13%, transparent);
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        transform var(--duration-base) var(--motion-spring);
+}
+.fc-vrata:hover {
+    background-color: color-mix(in srgb, var(--hue) 20%, transparent);
+}
+.fc-vrata:active {
+    scale: 0.97;
+}
+:root:is([data-theme='night'], [data-theme='dark']) .fc-vrata {
+    color: color-mix(in srgb, var(--hue) 82%, var(--color-absolute-white));
+}
+
+/* The selected day's detail settles in when the day changes. */
+@media (prefers-reduced-motion: no-preference) {
+    .fc-detail-body {
+        animation: fc-settle var(--duration-base) var(--ease-out) both;
+    }
+}
+@keyframes fc-settle {
+    from {
+        opacity: 0.4;
+        transform: translate3d(0, 6px, 0);
+    }
+}
+
+/* The drawn moon: the unlit disc and the lit part. */
+.fc-moon-dark {
+    fill: var(--fill-secondary);
+}
+.fc-moon-lit {
+    fill: color-mix(in srgb, var(--hue-gold) 70%, var(--color-absolute-white));
+}
+:root:is([data-theme='night'], [data-theme='dark']) .fc-moon-lit {
+    fill: color-mix(in srgb, var(--hue-gold) 45%, var(--color-absolute-white));
+}
+.fc-moon-rim {
+    fill: none;
+    stroke: var(--separator-strong);
+    stroke-width: 1;
+}
+
+@media (forced-colors: active) {
+    .fc-day[aria-pressed='true'] {
+        outline: 2px solid Highlight;
+    }
+}
