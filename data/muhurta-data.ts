@@ -608,8 +608,8 @@ export function evaluateEndeavorMuhurta(
     compatibility = 'caution';
     label = 'Exercise Caution (सावधानी)';
     labelHi = 'सावधानी अपेक्षित (मध्यम-न्यून)';
-    summary = 'Minor planetary friction observed; if urgent, utilize the Abhijit Muhurta window or seek spiritual sankalpa remedies.';
-    summaryHi = 'कुछ ग्रहीय बाधाएँ हैं; यदि कार्य अति आवश्यक हो तो अभिजीत मुहूर्त का लाभ लें।';
+    summary = 'Some of the traditional factors are less favourable. Review the factor breakdown to see which ones affected the score.';
+    summaryHi = 'कुछ पारम्परिक कारक कम अनुकूल हैं। अंक का आधार जानने के लिए कारक-विश्लेषण देखें।';
   }
 
   return {
@@ -630,14 +630,14 @@ export const MUHURTA_FAQS = [
   {
     question: 'What is Panchanga-Shuddhi and why is it essential in Muhurta Shastra?',
     questionHi: 'पञ्चाङ्ग शुद्धि क्या है और मुहूर्त शास्त्र में इसका क्या महत्व है?',
-    answer: 'Panchanga-Shuddhi means the purification of all five astronomical limbs of time: Tithi (lunar day for prosperity), Vara (weekday for longevity), Nakshatra (lunar mansion for destroying sin), Yoga (solar-lunar angle for curing diseases), and Karana (half-tithi for accomplishment of action). When all five limbs are harmonious, the subtle cosmic energy naturally supports the intention of the endeavor.',
-    answerHi: 'पञ्चाङ्ग के पाँचों अङ्गों (तिथि, वार, नक्षत्र, योग, करण) की शुद्धि को पञ्चाङ्ग शुद्धि कहते हैं। तिथि से समृद्धि, वार से आयु, नक्षत्र से पाप-नाश, योग से रोग-मुक्ति और करण से कार्य-सिद्धि होती है। जब पाँचों अङ्ग शुद्ध होते हैं तो किया गया कार्य निर्विघ्न सम्पन्न होता है।',
+    answer: 'Panchanga-Shuddhi is the traditional evaluation of five calendar limbs for an activity. They are Tithi (lunar day), Vara (weekday), Nakshatra (lunar mansion), Yoga (combined solar and lunar longitude), and Karana (half a tithi).',
+    answerHi: 'पञ्चाङ्ग के पाँचों अङ्गों (तिथि, वार, नक्षत्र, योग, करण) की शुद्धि को पञ्चाङ्ग शुद्धि कहते हैं। इन अङ्गों के आधार पर परम्परागत ग्रन्थ किसी कार्य के लिए अनुकूल माने जाने वाले समय की चर्चा करते हैं।',
   },
   {
     question: 'What is Vishti (Bhadra) Karana and why must it be avoided for new beginnings?',
     questionHi: 'विष्टि (भद्रा) करण क्या है और नए कार्यों में इसका त्याग क्यों आवश्यक है?',
-    answer: 'Vishti is the seventh movable Karana, personified in Vedic lore as Bhadra, the sister of Shani. It embodies fiery, destructive, and restless energy. While ideal for defensive warfare, medical detoxification, surgery, and overcoming enemies, it burns away gentle beginnings such as weddings, entering a new house (Griha Pravesha), travel, and commercial investments.',
-    answerHi: 'विष्टि करण को ही ज्योतिष में ‘भद्रा’ कहा जाता है। यह शनिदेव की बहन मानी गई हैं। इनका स्वभाव उग्र और तीक्ष्ण है। इसलिए भद्रा काल में विवाह, गृहप्रवेश, नया व्यापार और शुभ यात्रा सर्वथा वर्जित मानी गई है। यह समय केवल शत्रु-दमन, विषहरण और आत्म-संयम के लिए उपयुक्त है।',
+    answer: 'Vishti is the seventh movable Karana, personified in Vedic lore as Bhadra, the sister of Shani. It embodies fiery, destructive, and restless energy. Traditional sources often classify Vishti as unfavourable for certain ceremonies, including weddings and housewarmings. Practices vary by region and activity.',
+    answerHi: 'विष्टि करण को ही ज्योतिष में ‘भद्रा’ कहा जाता है। यह शनिदेव की बहन मानी गई हैं। इनका स्वभाव उग्र और तीक्ष्ण है। कुछ परम्पराओं में भद्रा काल को विवाह और गृहप्रवेश जैसे संस्कारों के लिए प्रतिकूल माना जाता है। रीति क्षेत्र और कार्य के अनुसार बदलती है।',
   },
   {
     question: 'What is Abhijit Muhurta and can it overcome minor astrological doshas?',

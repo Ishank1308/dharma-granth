@@ -800,3 +800,10 @@ nav a[data-limb][aria-current='page'] {
         box-shadow: none;
     }
 }
+
+/* Muhurta timeline markers follow the selected day's daylight divisions. */
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-lite-mode='true']) .muhurta-daylight-marker {
+        transition: left var(--duration-base) var(--motion-spring);
+    }
+}
