@@ -1,11 +1,10 @@
 'use client';
 
-import { Fragment, useCallback, useDeferredValue, useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
+import { Fragment, useCallback, useDeferredValue, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { SPRINGS } from '@/app/components/motion/primitives';
-import { SPRING as PALETTE_SPRING } from '@/app/components/liquid/motion';
 import {
   ArrowRight,
   BookMarked,
@@ -52,6 +51,7 @@ import { useTheme } from '@/app/components/ThemeProvider';
 import { triggerPranaToast } from '@/lib/prana-capsule-store';
 import { executeSearchWithWorker } from '@/lib/workers/search-worker-client';
 import { useConnectivity } from '@/lib/useConnectivity';
+import { usePerformanceMode } from '@/lib/performance-mode';
 
 export interface DirectVerseShortcut {
   scriptureId: string;
@@ -125,6 +125,7 @@ interface Props {
   onClose: () => void;
   /** Prefills the search box when the dialog opens (e.g. from the home hero). */
   initialQuery?: string;
+  anchor?: HTMLButtonElement;
 }
 
 const RECENT_KEY = 'dharma-search-recent-v2';
@@ -398,10 +399,12 @@ const TOPIC_TINTS = [
 
 /* ── Component ───────────────────────────────────────────────────────── */
 
-export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props) {
+export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }: Props) {
   const router = useRouter();
   const { cycleTheme } = useTheme();
-  const reduce = useReducedMotion();
+  const prefersReducedMotion = useReducedMotion();
+  const { isLiteMode } = usePerformanceMode();
+  const reduce = prefersReducedMotion || isLiteMode;
   const listboxId = useId();
   const statusId = useId();
 
@@ -418,6 +421,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
 
   const inputRef = useRef<HTMLInputElement>(null);
   const windowRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   // Typing stays responsive: results follow a deferred copy of the query.
   const deferredQuery = useDeferredValue(query);
@@ -496,30 +500,75 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
       });
   }, [isOpen, verseState]);
 
+  // Keep the sheet above the keyboard when it resizes only the visual viewport.
+  useLayoutEffect(() => {
+    const dialog = dialogRef.current;
+    const viewport = window.visualViewport;
+    if (!isOpen || !dialog || !viewport) return;
+    const fitViewport = () => {
+      dialog.style.setProperty('--search-viewport-height', `${viewport.height}px`);
+      dialog.style.setProperty('--search-viewport-top', `${viewport.offsetTop}px`);
+    };
+    fitViewport();
+    viewport.addEventListener('resize', fitViewport);
+    viewport.addEventListener('scroll', fitViewport);
+    return () => {
+      viewport.removeEventListener('resize', fitViewport);
+      viewport.removeEventListener('scroll', fitViewport);
+    };
+  }, [isOpen]);
+
+  // Animate from the hero field on desktop and from the bottom on phones.
+  useLayoutEffect(() => {
+    const panel = windowRef.current;
+    if (!isOpen || !panel || reduce || typeof panel.animate !== 'function') return;
+
+    const isSheet = window.matchMedia('(width < 40rem)').matches;
+    const target = panel.getBoundingClientRect();
+    const origin = anchor?.isConnected ? anchor.getBoundingClientRect() : null;
+    const fromHero = !isSheet && origin && origin.width > 0 && origin.height > 0 && target.width > 0
+      && origin.top >= 0 && origin.bottom <= window.innerHeight;
+    const start = fromHero
+      ? {
+          transform: `translate(${origin.left - target.left}px, ${origin.top - target.top}px) scaleX(${origin.width / target.width})`,
+          clipPath: `inset(0 0 calc(100% - ${origin.height}px) 0 round 16px)`,
+          opacity: 0.8,
+        }
+      : { transform: isSheet ? 'translateY(36px)' : 'translateY(-12px)', opacity: 0 };
+    const end = fromHero
+      ? { transform: 'none', clipPath: 'inset(0 round 28px)', opacity: 1 }
+      : { transform: 'none', opacity: 1 };
+    const animation = panel.animate([start, end], {
+      duration: fromHero ? 300 : 220,
+      easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    });
+    return () => animation.cancel();
+  }, [isOpen, reduce, anchor]);
+
+  // Capture the opener before moving focus into the dialog.
+  useEffect(() => {
+    if (!isOpen) return;
+    const opener = anchor ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+    return () => {
+      if (opener && opener !== document.body && opener.isConnected) opener.focus({ preventScroll: true });
+    };
+  }, [isOpen, anchor]);
+
   // Reset and focus on open.
   useEffect(() => {
     if (!isOpen) return;
     setQuery(initialQuery);
     setSelectedGroup(null);
     setSelectedIndex(0);
-    inputRef.current?.focus();
+    inputRef.current?.focus({ preventScroll: true });
     const t = setTimeout(() => {
       const input = inputRef.current;
       if (!input) return;
-      input.focus();
+      input.focus({ preventScroll: true });
       input.setSelectionRange(input.value.length, input.value.length);
     }, 40);
     return () => clearTimeout(t);
   }, [isOpen, initialQuery]);
-
-  // Return focus to whatever opened the dialog.
-  useEffect(() => {
-    if (!isOpen) return;
-    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    return () => {
-      if (opener && opener !== document.body && document.contains(opener)) opener.focus({ preventScroll: true });
-    };
-  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -717,7 +766,8 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
       {isOpen && (
         <div
           key="global-search"
-          className="fixed inset-0 z-50 flex items-start justify-center p-3 sm:p-6 md:p-12"
+          ref={dialogRef}
+          className="fluid-search-dialog fixed inset-0 z-50 flex items-end justify-center sm:items-start sm:p-6 md:p-12"
           role="dialog"
           aria-modal="true"
           aria-label="Global Search"
@@ -727,18 +777,18 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '' }: Props)
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduce ? 0 : 0.18 }}
-            className="fixed inset-0 bg-black/45 backdrop-blur-sm"
+            className="fluid-search-scrim fixed inset-0 bg-black/45 backdrop-blur-sm"
             onClick={onClose}
             aria-hidden="true"
           />
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.97, y: -12 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: -8 }}
-            transition={reduce ? { duration: 0 } : PALETTE_SPRING}
+            initial={false}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: reduce ? 0 : 0.15 }}
             ref={windowRef}
-            className="liquid-glass relative z-10 flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-panel shadow-2xl"
+            className="fluid-search-panel liquid-glass relative z-10 flex max-h-[88dvh] w-full max-w-4xl flex-col overflow-hidden rounded-t-panel shadow-2xl sm:rounded-panel"
           >
             {/* Search box */}
             <div className="relative flex items-center border-b border-separator px-4 py-3 sm:px-6">
