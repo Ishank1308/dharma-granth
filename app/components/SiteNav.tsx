@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useFoldingTitle } from '@/lib/useFoldingTitle';
 import { useEffect, useRef, useState, useCallback, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import {
   Bookmark,
@@ -177,6 +178,8 @@ export function SiteNav({
 }) {
   const formatCount = (value: number) => new Intl.NumberFormat('en-IN').format(value);
   const pathname = usePathname();
+  // The home page opens on its own hero, so only inner pages fold their title into the bar.
+  const fold = useFoldingTitle(pathname, pathname !== '/');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [discoverOpen, setDiscoverOpen] = useState(false);
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
@@ -571,6 +574,7 @@ export function SiteNav({
         data-site-header="true"
         data-library-verse-count={libraryVerses}
         data-theme-options={THEME_IDS.join(',')}
+        data-title-folded={fold.folded && fold.title ? 'true' : undefined}
         className="apple-bar sticky top-0 z-40 border-b transition-colors duration-200"
         aria-label="Primary navigation"
       >
@@ -579,7 +583,7 @@ export function SiteNav({
             {/* Logo */}
             <Link
               href="/"
-              className="group flex min-h-[44px] min-w-[44px] shrink-0 items-center gap-1.5 rounded-xl pr-0 sm:gap-2.5 sm:pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500/40"
+              className="group flex min-h-[44px] min-w-[44px] shrink items-center gap-1.5 rounded-xl pr-0 sm:gap-2.5 sm:pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500/40"
               aria-label="Dharma Granth Home"
             >
               <span
@@ -595,12 +599,18 @@ export function SiteNav({
                   className="h-full w-full object-cover"
                 />
               </span>
-              <div className="flex items-baseline gap-2">
-                <span className="whitespace-nowrap text-body font-semibold tracking-[-0.022em] text-dharma-text">
-                  Dharma Granth
-                </span>{' '}
-                <span lang="hi" className="hidden font-devanagari text-footnote text-dharma-muted sm:inline">
-                  धर्म ग्रंथ
+              <div className="bar-title-stack grid min-w-0 grid-cols-[minmax(0,1fr)]">
+                <div className="bar-wordmark flex items-baseline gap-2">
+                  <span className="whitespace-nowrap text-body font-semibold tracking-[-0.022em] text-dharma-text">
+                    Dharma Granth
+                  </span>{' '}
+                  <span lang="hi" className="hidden font-devanagari text-footnote text-dharma-muted sm:inline">
+                    धर्म ग्रंथ
+                  </span>
+                </div>
+                {/* The page's large title, once it has folded up under the bar (lib/useFoldingTitle). */}
+                <span className="bar-page-title truncate text-body font-semibold tracking-[-0.022em] text-dharma-text" aria-hidden="true">
+                  {fold.title}
                 </span>
               </div>
             </Link>{' '}

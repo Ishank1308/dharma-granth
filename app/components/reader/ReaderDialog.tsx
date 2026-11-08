@@ -3,13 +3,15 @@
 import { useEffect, useId, useRef, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
+import { useSheetGesture } from '@/lib/useSheetGesture';
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])';
 
 /**
  * The reader's one dialog. On phones it is a bottom sheet; from `sm` up it is
- * a side panel (`side`) or a centred modal (`modal`). Modal behaviour is
+ * a side panel (`side`) or a centred modal (`modal`). The phone sheet rises on a
+ * spring and can be pulled down by its title bar to close (lib/useSheetGesture). Modal behaviour is
  * complete: Escape and the backdrop close it, Tab stays inside, the page
  * behind does not scroll, and focus returns to whatever opened it.
  */
@@ -34,6 +36,7 @@ export function ReaderDialog({
 }) {
   const titleId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
+  const { panel, handle } = useSheetGesture(onClose, panelRef);
 
   useEffect(() => {
     if (!open) return;
@@ -96,33 +99,32 @@ export function ReaderDialog({
             aria-modal="true"
             aria-labelledby={titleId}
             tabIndex={-1}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 24 }}
-            transition={{ duration: 0.2 }}
+            {...panel}
             className={`absolute flex flex-col overflow-hidden border border-dharma-border bg-dharma-card shadow-2xl outline-none ${placement}`}
           >
-            <div className="mx-auto mt-2 h-1 w-10 shrink-0 rounded-full bg-dharma-border sm:hidden" aria-hidden="true" />
-            <div className="flex items-start justify-between gap-3 border-b border-dharma-border/70 px-5 pb-3 pt-3 sm:pt-5">
-              <h2 id={titleId} className="flex min-w-0 items-center gap-2.5 font-serif text-lg font-bold text-dharma-text">
-                {icon}
-                <span className="min-w-0">
-                  {title}
-                  {titleHi && (
-                    <span lang="hi" className="ml-2 font-devanagari text-base font-normal text-dharma-muted">
-                      {titleHi}
-                    </span>
-                  )}
-                </span>
-              </h2>
-              <button
-                type="button"
-                onClick={onClose}
-                aria-label="Close"
-                className="focus-ring -mr-2 -mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-dharma-muted transition hover:text-dharma-text"
-              >
-                <X className="h-5 w-5" aria-hidden="true" />
-              </button>
+            <div {...handle} className="shrink-0">
+              <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-dharma-border sm:hidden" aria-hidden="true" />
+              <div className="flex items-start justify-between gap-3 border-b border-dharma-border/70 px-5 pb-3 pt-3 sm:pt-5">
+                <h2 id={titleId} className="flex min-w-0 items-center gap-2.5 font-serif text-lg font-bold text-dharma-text">
+                  {icon}
+                  <span className="min-w-0">
+                    {title}
+                    {titleHi && (
+                      <span lang="hi" className="ml-2 font-devanagari text-base font-normal text-dharma-muted">
+                        {titleHi}
+                      </span>
+                    )}
+                  </span>
+                </h2>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  aria-label="Close"
+                  className="focus-ring -mr-2 -mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-dharma-muted transition hover:text-dharma-text"
+                >
+                  <X className="h-5 w-5" aria-hidden="true" />
+                </button>
+              </div>
             </div>
             <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-4">{children}</div>
             {footer && <div className="border-t border-dharma-border/70 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3">{footer}</div>}
