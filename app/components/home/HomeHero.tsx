@@ -21,7 +21,7 @@ export function HomeHero() {
         {/* Sacred Trust Eyebrow Pill */}
         {/* On a phone the two phrases sit on two whole lines instead of breaking word by word. */}
         <div style={step(0)} className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 rounded-2xl border border-dharma-saffron/30 bg-dharma-saffron/10 px-4 py-1.5 text-xs font-semibold text-dharma-saffron shadow-xs backdrop-blur-xs sm:rounded-full">
-          <span className="whitespace-nowrap"><span aria-hidden="true">ॐ</span> <span>Hindu Scriptures, Whole</span></span>
+          <span className="whitespace-nowrap"><span aria-hidden="true" className="font-devanagari">ॐ</span> <span>Hindu Scriptures, Whole</span></span>
           <span aria-hidden="true" className="hidden opacity-60 sm:inline">·</span>
           <span lang="hi" className="font-devanagari">सनातन ग्रन्थ कोश (67 ग्रन्थ · 1,32,000+ श्लोक)</span>
         </div>
