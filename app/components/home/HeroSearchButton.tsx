@@ -15,7 +15,8 @@ export function HeroSearchButton() {
   return (
     <button
       type="button"
-      onClick={() => openGlobalSearch()}
+      onClick={(event) => openGlobalSearch(undefined, event.currentTarget)}
+      aria-haspopup="dialog"
       className="focus-ring mx-auto mt-8 flex h-[54px] min-h-[44px] w-full max-w-[580px] items-center gap-3 rounded-2xl border border-dharma-border/80 bg-dharma-card/90 px-4 text-left text-body text-dharma-muted shadow-raised backdrop-blur-md lift-hover hover:border-dharma-saffron/40 hover:text-dharma-text sm:px-5"
       aria-label="Search scriptures: a verse, word or question / श्लोक या प्रश्न खोजें"
     >

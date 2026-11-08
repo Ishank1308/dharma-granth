@@ -186,6 +186,7 @@ export function SiteNav({
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchMounted, setSearchMounted] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchAnchor, setSearchAnchor] = useState<HTMLButtonElement>();
   const [shortcutLabel, setShortcutLabel] = useState('Ctrl K');
   const [bookmarkCount, setBookmarkCount] = useState<number>(0);
   const [activeStreak, setActiveStreak] = useState<number>(0);
@@ -255,14 +256,18 @@ export function SiteNav({
 
   useEffect(() => {
     if (searchOpen) setSearchMounted(true);
-    else setSearchQuery('');
+    else {
+      setSearchQuery('');
+      setSearchAnchor(undefined);
+    }
   }, [searchOpen]);
 
   // Global search event listener
   useEffect(() => {
     function handleOpenSearch(e: Event) {
-      const { query } = (e as CustomEvent<OpenSearchDetail>).detail ?? {};
+      const { query, anchor } = (e as CustomEvent<OpenSearchDetail>).detail ?? {};
       setSearchQuery(query ?? '');
+      setSearchAnchor(anchor);
       setSearchOpen(true);
     }
     window.addEventListener(OPEN_SEARCH_EVENT, handleOpenSearch);
@@ -1296,6 +1301,7 @@ export function SiteNav({
         <GlobalSearchModal
           isOpen={searchOpen}
           initialQuery={searchQuery}
+          anchor={searchAnchor}
           onClose={() => setSearchOpen(false)}
         />
       )}

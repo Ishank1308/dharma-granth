@@ -2,8 +2,9 @@
 
 import { useEffect, useState, type ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { BookOpen, Command, Languages, MessageSquareQuote, Volume2 } from 'lucide-react';
+import { BookOpen, Command, Languages, MessageSquareQuote, Pause, Volume2 } from 'lucide-react';
 import { openGlobalSearch } from '@/lib/search-events';
+import { usePerformanceMode } from '@/lib/performance-mode';
 import { SPRING } from './motion';
 import type { ReaderMode } from './SpatialShloka';
 
@@ -11,12 +12,13 @@ interface Props {
   mode: ReaderMode;
   onModeChange: (mode: ReaderMode) => void;
   listening: boolean;
+  recitingVerse?: string;
   onToggleListening: () => void;
   /** Keep the dock up regardless of scroll direction (a verse is lifted). */
   pinned?: boolean;
 }
 
-/** Four bars that breathe while the chapter is being chanted. */
+/** Four bars that move while the chapter is being chanted. */
 function Waveform({ playing }: { playing: boolean }) {
   return (
     <span aria-hidden="true" className={`dock-wave ${playing ? 'is-playing' : ''}`}>
@@ -93,8 +95,10 @@ function DockButton({
  * way back up, like Safari's toolbar; stays up while a verse is lifted or
  * the chapter is being chanted.
  */
-export function LiquidGlassDock({ mode, onModeChange, listening, onToggleListening, pinned = false }: Props) {
-  const reduce = useReducedMotion();
+export function LiquidGlassDock({ mode, onModeChange, listening, recitingVerse, onToggleListening, pinned = false }: Props) {
+  const prefersReducedMotion = useReducedMotion();
+  const { isLiteMode } = usePerformanceMode();
+  const reduce = prefersReducedMotion || isLiteMode;
   const [hidden, setHidden] = useState(false);
   const [shortcut, setShortcut] = useState('Ctrl K');
 
@@ -116,7 +120,7 @@ export function LiquidGlassDock({ mode, onModeChange, listening, onToggleListeni
       aria-label="पठन नियंत्रण · Reader dock"
       initial={reduce ? false : { y: 40 }}
       animate={{ y: hidden && !listening && !pinned ? 120 : 0, opacity: hidden && !listening && !pinned ? 0 : 1 }}
-      transition={SPRING}
+      transition={reduce ? { duration: 0 } : SPRING}
       className="liquid-dock fixed inset-x-0 z-40 flex justify-center lg:mx-auto lg:w-fit lg:max-w-[calc(100vw-1.5rem)]"
     >
       <div className="liquid-glass relative flex items-center gap-0.5 p-1.5 max-lg:w-full max-lg:justify-around max-lg:rounded-none max-lg:pb-[calc(0.375rem+env(safe-area-inset-bottom,0px))] lg:rounded-full">
@@ -126,8 +130,19 @@ export function LiquidGlassDock({ mode, onModeChange, listening, onToggleListeni
         <DockButton active={mode === 'anvaya'} label="Anvaya" hintHi="शब्दार्थ" sublabel="अन्वय · Word by word" onClick={() => onModeChange('anvaya')}>
           <Languages className="h-[18px] w-[18px]" aria-hidden="true" />
         </DockButton>
-        <DockButton pressed={listening} label="Śravaṇa" hintHi={listening ? 'विराम' : 'श्रवण'} sublabel={listening ? 'श्रवण · Pause chanting' : 'श्रवण · Listen'} onClick={onToggleListening}>
-          {listening ? <Waveform playing={!reduce} /> : <Volume2 className="h-[18px] w-[18px]" aria-hidden="true" />}
+        <DockButton
+          pressed={listening}
+          label={listening ? 'Pause' : 'Śravaṇa'}
+          hintHi={listening ? (recitingVerse ? `श्लोक ${recitingVerse}` : 'विराम') : 'श्रवण'}
+          sublabel={listening ? (recitingVerse ? `Pause chanting · Verse ${recitingVerse}` : 'Pause chanting') : 'श्रवण · Listen'}
+          onClick={onToggleListening}
+        >
+          {listening ? (
+            <span className="flex items-center gap-1">
+              <Pause className="h-3.5 w-3.5" aria-hidden="true" />
+              <Waveform playing={!reduce} />
+            </span>
+          ) : <Volume2 className="h-[18px] w-[18px]" aria-hidden="true" />}
         </DockButton>
         <DockButton active={mode === 'bhashya'} label="Bhāṣya" hintHi="व्याख्या" sublabel="भाष्य · Commentary" onClick={() => onModeChange('bhashya')}>
           <MessageSquareQuote className="h-[18px] w-[18px]" aria-hidden="true" />

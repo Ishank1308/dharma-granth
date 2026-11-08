@@ -872,6 +872,97 @@ nav a[data-limb][aria-current='page'] {
     text-shadow: 0 0 2px var(--surface-raised), 0 0 10px var(--surface-raised), 0 0 18px var(--surface-raised);
 }
 
+/* Search stays inside the visual viewport when a phone keyboard opens. */
+@media (width < 40rem) {
+    .fluid-search-dialog {
+        top: var(--search-viewport-top, 0px);
+        bottom: auto;
+        height: var(--search-viewport-height, 100dvh);
+    }
+
+    .fluid-search-panel.liquid-glass {
+        max-height: min(88dvh, 100%);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+}
+
+:root[data-lite-mode='true'] .fluid-search-dialog .fluid-search-panel.liquid-glass {
+    background: var(--surface-raised);
+    backdrop-filter: none;
+}
+
+:root[data-lite-mode='true'] .fluid-search-scrim {
+    backdrop-filter: none;
+}
+
+@media (prefers-reduced-motion: reduce), (forced-colors: active) {
+    :root .fluid-search-dialog .fluid-search-panel.liquid-glass {
+        background: var(--surface-raised);
+        backdrop-filter: none;
+    }
+
+    .fluid-search-scrim {
+        backdrop-filter: none;
+    }
+}
+
+[data-library-category] { --library-category-hue: var(--hue-saffron); }
+[data-library-category='upanishad'] { --library-category-hue: var(--hue-gold); }
+[data-library-category='veda'] { --library-category-hue: var(--hue-peacock); }
+[data-library-category='darshana'] { --library-category-hue: var(--hue-tulsi); }
+[data-library-category='itihasa'] { --library-category-hue: var(--hue-indigo); }
+[data-library-category='purana'] { --library-category-hue: var(--hue-lotus); }
+
+.library-category-indicator {
+    background-color: color-mix(in srgb, var(--dharma-saffron) 20%, var(--dharma-card));
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--dharma-saffron) 24%, transparent);
+}
+
+.library-showcase-book {
+    background-image: linear-gradient(115deg, color-mix(in srgb, var(--library-category-hue) 9%, transparent), transparent 70%);
+}
+
+@media (forced-colors: active) {
+    .library-category-tab[aria-selected='true'] {
+        outline: 2px solid Highlight;
+        outline-offset: -3px;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-lite-mode='true']) .library-showcase-book {
+        animation: library-book-arrive var(--duration-base) var(--ease-out-quint) both;
+    }
+
+    :root:not([data-lite-mode='true']) .library-showcase-link:active {
+        transform: scale(0.98);
+    }
+
+    :root:not([data-lite-mode='true']) .reader-verse-number[data-direction='1'] {
+        --verse-enter-x: 5px;
+        animation: reader-number-arrive var(--duration-base) var(--ease-out-quint) both;
+    }
+
+    :root:not([data-lite-mode='true']) .reader-verse-number[data-direction='-1'] {
+        --verse-enter-x: -5px;
+        animation: reader-number-arrive var(--duration-base) var(--ease-out-quint) both;
+    }
+
+    :root:not([data-lite-mode='true']) .reader-progress-fill {
+        transition: transform var(--duration-base) var(--ease-out-quint);
+    }
+}
+
+@keyframes library-book-arrive {
+    from { opacity: 0.72; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reader-number-arrive {
+    from { opacity: 0.65; transform: translateX(var(--verse-enter-x)); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
 /* 10. Quiet modes, reduced motion, print and forced colours ────────────── */
 :root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) body::before,
 :root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .aura-header {
