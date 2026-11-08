@@ -80,3 +80,23 @@ Text over the scene band measured at least 7.3:1 in all four themes.
 
 - **Vedas, Purāṇas and long texts:** one scene per kāṇḍa/skandha or per book, chosen from the shared library,
   rather than one per sūkta.
+
+## Full-colour paintings for every other chapter
+
+Chapters without a hand-drawn scene above get a full-colour moving painting instead, so every one of the
+4,212 chapters has a picture of its setting.
+
+- Pictures: 22 animated SVGs in `app/styles/paintings/` (`node scripts/build-scene-paintings.mjs`): Kurukṣetra,
+  the cosmic form, a yogī, a forest āśrama, yajña, dawn, the Gaṅgā, Kailāsa, the ocean, the forest, a palace,
+  Laṅkā ablaze, Vṛndāvana, the Devī, creation, a lotus pond, a temple, the river at dusk, the storm of the age,
+  the pole star, the pillar of Narasiṃha, manuscripts by lamplight. The motion is inside each SVG.
+- Choice: `node scripts/build-chapter-painting-map.mjs` writes `lib/chapter-paintings.generated.ts`. Hand-checked
+  choices first (Mahābhārata parvas, Rāmacaritamānasa kāṇḍas, Ṛgveda maṇḍalas, Yajurveda 16/31/40, the principal
+  Upaniṣads, Bhāgavata skandhas and episodes such as Dhruva, Prahlāda, the churning and the rāsa, Devī Bhāgavata,
+  Viṣṇu Purāṇa books, Śiva Purāṇa saṃhitās, yoga texts...), then the chapter's title and verses scored against
+  each painting's vocabulary (Sanskrit stems and English), then the kind of text.
+- Drawing: `colour.css` (Chapter paintings). The page wrapper carries `data-painting`; the chapter opens on the
+  painting (`.chapter-painting`), and on each verse card it rises from the foot of the Sanskrit panel, veiled
+  where the verse is read. `#still` freezes it in the quiet modes; Reduce Motion stops it inside the SVG.
+  Hidden in print and forced colours.
+- A chapter given a hand-drawn scene later drops its painting automatically (`lib/chapter-paintings.ts`).

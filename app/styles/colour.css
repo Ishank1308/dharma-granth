@@ -13,7 +13,8 @@
    6. Actions: filled buttons in the dawn gradient, with a glow
    7. Controls: segmented control, fields, selection, scrollbars
    8. Library books: a wash and glow in the scripture's own colour
-   9. Verse cards: a turning edge, a lifting capsule, a hue per study layer; Panchang limbs
+   9. Verse cards: a turning edge, a lifting capsule, a hue per study layer; Panchang limbs;
+      chapter paintings
    10. Quiet modes, reduced motion, print and forced colours
 
    Rules (docs/design-system.md): the exported HTML is the readable state, only transform
@@ -768,6 +769,109 @@ nav a[data-limb][aria-current='page'] {
     }
 }
 
+/* Chapter paintings ──────────────────────────────────────────────────────
+   Every adhyāya, kāṇḍa and khaṇḍa without a hand-drawn scene (scenes.css) has a
+   full-colour moving picture of its setting (Kurukṣetra at dawn, a forest āśrama,
+   Kailāsa under the moon, Laṅkā ablaze...). The page puts data-painting on its
+   wrapper (lib/chapter-paintings.ts); the paintings are small SVGs in ./paintings
+   (bundled with hashed names) whose motion lives inside them, so it costs no script.
+   They stop under Reduce Motion (inside the SVG) and freeze in the quiet modes
+   (#still). The chapter opens on the picture; on each verse card the scene rises
+   from the foot of the shloka's panel, veiled where the verse is read. */
+[data-painting='kurukshetra'] { --painting: url('./paintings/kurukshetra.svg'); }
+[data-painting='vishvarupa'] { --painting: url('./paintings/vishvarupa.svg'); }
+[data-painting='yogi'] { --painting: url('./paintings/yogi.svg'); }
+[data-painting='ashram'] { --painting: url('./paintings/ashram.svg'); }
+[data-painting='yajna'] { --painting: url('./paintings/yajna.svg'); }
+[data-painting='dawn'] { --painting: url('./paintings/dawn.svg'); }
+[data-painting='ganga'] { --painting: url('./paintings/ganga.svg'); }
+[data-painting='kailash'] { --painting: url('./paintings/kailash.svg'); }
+[data-painting='ocean'] { --painting: url('./paintings/ocean.svg'); }
+[data-painting='forest'] { --painting: url('./paintings/forest.svg'); }
+[data-painting='palace'] { --painting: url('./paintings/palace.svg'); }
+[data-painting='lanka'] { --painting: url('./paintings/lanka.svg'); }
+[data-painting='vrindavan'] { --painting: url('./paintings/vrindavan.svg'); }
+[data-painting='devi'] { --painting: url('./paintings/devi.svg'); }
+[data-painting='cosmos'] { --painting: url('./paintings/cosmos.svg'); }
+[data-painting='lotus'] { --painting: url('./paintings/lotus.svg'); }
+[data-painting='temple'] { --painting: url('./paintings/temple.svg'); }
+[data-painting='dusk'] { --painting: url('./paintings/dusk.svg'); }
+[data-painting='storm'] { --painting: url('./paintings/storm.svg'); }
+[data-painting='stars'] { --painting: url('./paintings/stars.svg'); }
+[data-painting='pillar'] { --painting: url('./paintings/pillar.svg'); }
+[data-painting='manuscript'] { --painting: url('./paintings/manuscript.svg'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='kurukshetra'] { --painting: url('./paintings/kurukshetra.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='vishvarupa'] { --painting: url('./paintings/vishvarupa.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='yogi'] { --painting: url('./paintings/yogi.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='ashram'] { --painting: url('./paintings/ashram.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='yajna'] { --painting: url('./paintings/yajna.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='dawn'] { --painting: url('./paintings/dawn.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='ganga'] { --painting: url('./paintings/ganga.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='kailash'] { --painting: url('./paintings/kailash.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='ocean'] { --painting: url('./paintings/ocean.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='forest'] { --painting: url('./paintings/forest.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='palace'] { --painting: url('./paintings/palace.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='lanka'] { --painting: url('./paintings/lanka.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='vrindavan'] { --painting: url('./paintings/vrindavan.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='devi'] { --painting: url('./paintings/devi.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='cosmos'] { --painting: url('./paintings/cosmos.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='lotus'] { --painting: url('./paintings/lotus.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='temple'] { --painting: url('./paintings/temple.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='dusk'] { --painting: url('./paintings/dusk.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='storm'] { --painting: url('./paintings/storm.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='stars'] { --painting: url('./paintings/stars.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='pillar'] { --painting: url('./paintings/pillar.svg#still'); }
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'], [data-reading-lite='true']) [data-painting='manuscript'] { --painting: url('./paintings/manuscript.svg#still'); }
+
+.chapter-painting {
+    height: clamp(7.5rem, 4rem + 18vw, 13rem);
+    margin-bottom: var(--space-5);
+    border-radius: var(--radius-card);
+    background: var(--painting) center bottom / cover no-repeat;
+    box-shadow:
+        var(--raised-under),
+        inset 0 0 0 1px color-mix(in srgb, var(--vc-gold, var(--dharma-gold)) 30%, transparent),
+        0 22px 48px -28px color-mix(in srgb, var(--v2, var(--tint)) 65%, transparent);
+}
+:root:is([data-theme='night'], [data-theme='dark']) .chapter-painting {
+    filter: saturate(1.05) brightness(0.92);
+}
+
+[data-painting] :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse) .verse-folio,
+[data-painting] .verse-card.vt .vt-leaf {
+    padding-bottom: calc(var(--space-12, 3rem) + 1.75rem);
+    background:
+        var(--verse-material-layer, none),
+        radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--vc-accent) var(--vc-wash-a), transparent), transparent 70%),
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--surface-raised) 90%, transparent) 0%,
+            color-mix(in srgb, var(--surface-raised) 82%, transparent) calc(100% - 5rem),
+            color-mix(in srgb, var(--surface-raised) 30%, transparent) calc(100% - 1.75rem),
+            transparent 100%
+        ),
+        var(--painting) center bottom / cover no-repeat;
+}
+:root:is([data-theme='night'], [data-theme='dark']) [data-painting] :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse) .verse-folio,
+:root:is([data-theme='night'], [data-theme='dark']) [data-painting] .verse-card.vt .vt-leaf {
+    background:
+        var(--verse-material-layer, none),
+        radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--vc-accent) var(--vc-wash-a), transparent), transparent 70%),
+        linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--surface-raised) 86%, transparent) 0%,
+            color-mix(in srgb, var(--surface-raised) 76%, transparent) calc(100% - 5rem),
+            color-mix(in srgb, var(--surface-raised) 28%, transparent) calc(100% - 1.75rem),
+            color-mix(in srgb, var(--surface-raised) 10%, transparent) 100%
+        ),
+        var(--painting) center bottom / cover no-repeat;
+}
+
+/* The ॥ n ॥ mark and the speaker capsule can fall over the picture: a halo of the card keeps them clear. */
+[data-painting] .verse-card :is(.verse-mark, .vt-num) {
+    text-shadow: 0 0 2px var(--surface-raised), 0 0 10px var(--surface-raised), 0 0 18px var(--surface-raised);
+}
+
 /* 10. Quiet modes, reduced motion, print and forced colours ────────────── */
 :root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) body::before,
 :root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .aura-header {
@@ -786,11 +890,23 @@ nav a[data-limb][aria-current='page'] {
     }
 }
 @media (prefers-contrast: more), (forced-colors: active) {
+    .chapter-painting {
+        display: none;
+    }
+    [data-painting] {
+        --painting: none;
+    }
     body::before {
         display: none;
     }
 }
 @media print {
+    .chapter-painting {
+        display: none;
+    }
+    [data-painting] {
+        --painting: none;
+    }
     body::before {
         display: none;
     }
