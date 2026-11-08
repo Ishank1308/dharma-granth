@@ -24,6 +24,7 @@ import "./motion.css";
 import "./styles/scenes.css";
 // Page transitions (lib/view-transition.ts): verse to verse, chapter to chapter, opening a verse.
 import "./styles/page-transitions.css";
+import "./styles/title-fold.css";
 // Colour and life (the sacred spectrum on cards, buttons, titles and the page aurora) goes last.
 import "./styles/colour.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";

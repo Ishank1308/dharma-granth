@@ -1,0 +1,61 @@
+/* The large title folding into the bar (lib/useFoldingTitle, app/components/SiteNav.tsx).
+   As a page's first heading scrolls up under the glass bar it shrinks a little and fades
+   (--title-fold runs 0 to 1). Once it is under, its name takes the wordmark's place in the
+   bar on phones and tablets; from lg up the bar keeps its links and the wordmark stays. */
+
+.bar-title-stack > * {
+    grid-area: 1 / 1;
+    align-self: center;
+}
+
+.bar-page-title {
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+}
+
+@media (max-width: 1023.98px) {
+    .bar-wordmark,
+    .bar-page-title {
+        transition:
+            opacity var(--duration-fast) var(--ease-standard),
+            transform var(--duration-standard) var(--ease-out);
+    }
+    [data-title-folded] .bar-wordmark {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    [data-title-folded] .bar-page-title {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .bar-page-title {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    [data-title-folding] {
+        transform-origin: left bottom;
+        transform: scale(calc(1 - var(--title-fold, 0) * 0.08));
+        opacity: calc(1 - var(--title-fold, 0) * 0.7);
+    }
+}
+
+/* Reduced motion and the quiet modes: the bar title still swaps, without movement. */
+@media (prefers-reduced-motion: reduce) {
+    .bar-wordmark,
+    .bar-page-title {
+        transform: none !important;
+    }
+}
+:root:is([data-lite-mode], [data-reading-lite], [data-low-power='true'], [data-data-saver='true']) [data-title-folding] {
+    transform: none;
+    opacity: 1;
+}
+:root:is([data-lite-mode], [data-reading-lite], [data-low-power='true'], [data-data-saver='true']) :is(.bar-wordmark, .bar-page-title) {
+    transform: none !important;
+}
