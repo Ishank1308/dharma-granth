@@ -517,7 +517,7 @@ export function CalendarClient() {
                     ))}
                   </span>
                 )}
-                <span lang="hi">{f.hi}</span>
+                <span lang="hi">{f.hi}</span>{' '}
                 <span className="text-label-tertiary">{f.en}</span>
               </button>
             ))}
