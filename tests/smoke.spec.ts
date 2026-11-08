@@ -58,6 +58,31 @@ for (const path of PAGES) {
   });
 }
 
+test('homepage shows every inquiry and practice link on a narrow phone', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.goto('/');
+
+  const groups = [
+    page.getByRole('navigation', { name: /Life & reflection/ }),
+    page.getByRole('navigation', { name: /Daily practice/ }),
+  ];
+  for (const group of groups) {
+    const links = group.getByRole('link');
+    await expect(links).toHaveCount(4);
+    for (const link of await links.all()) {
+      await expect(link).toBeVisible();
+      const bounds = await link.boundingBox();
+      expect(bounds?.x).toBeGreaterThanOrEqual(0);
+      expect(bounds ? bounds.x + bounds.width : Infinity).toBeLessThanOrEqual(320);
+    }
+  }
+
+  const panchang = groups[1].getByRole('link', { name: /Daily Panchang/ });
+  await panchang.focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/\/panchang\/$/);
+});
+
 test('chapter hydrates every plain verse into an interactive card', async ({ page }) => {
   await page.goto('/scripture/bhagavadgita/chapter/2/');
   // The first verses hydrate at once; the rest upgrade as they come near the viewport.
