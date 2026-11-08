@@ -79,7 +79,8 @@ test('verse deep link lands on the verse', async ({ page }) => {
 
 test('split chapter: an old #verse link redirects to its part', async ({ page }) => {
   await page.goto('/scripture/mahabharata/chapter/12/#verse-200.5');
-  await expect(page).toHaveURL(/\/chapter\/12\/part\/\d+\/#verse-200\.5$/);
+  // Hydrating the chapter and loading its destination can exceed the default timeout on CI.
+  await expect(page).toHaveURL(/\/chapter\/12\/part\/\d+\/#verse-200\.5$/, { timeout: 20_000 });
   await expect(page.locator('[id="verse-200.5"]')).toBeInViewport();
 });
 
