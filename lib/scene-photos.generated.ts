@@ -14,7 +14,7 @@ export const PHOTO_CREDITS: Readonly<Record<string, { title: string; author: str
   },
   "gita-chariot": {
     "title": "Sri Krishna preaching Gita Upadesh to Arjun",
-    "author": "Unknown author Unknown author",
+    "author": "Unknown author",
     "license": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:Sri_Krishna_preaching_Gita_Upadesh_to_Arjun_-_Unknown,_Kashmir_School_-_Google_Cultural_Institute.jpg"
   },

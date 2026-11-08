@@ -37,6 +37,8 @@ const offline = args.has('--offline');
 
 const exists = (p) => access(p).then(() => true, () => false);
 const stripHtml = (s = '') => s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+// Commons sometimes repeats a name ("Unknown author Unknown author").
+const once = (s) => s.replace(/^(.+?) \1$/, '$1');
 
 async function commonsInfo(file) {
   const url = new URL(API);
@@ -57,7 +59,7 @@ async function commonsInfo(file) {
   return {
     download: info.thumburl ?? info.url,
     license: stripHtml(meta.LicenseShortName?.value ?? ''),
-    author: stripHtml(meta.Artist?.value ?? 'Unknown'),
+    author: once(stripHtml(meta.Artist?.value ?? 'Unknown')),
     title: stripHtml(meta.ObjectName?.value ?? page.title.replace(/^File:/, '')),
     source: info.descriptionurl,
   };
