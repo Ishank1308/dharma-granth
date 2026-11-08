@@ -3,20 +3,17 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import {
-  Calendar as CalendarIcon,
   ChevronLeft,
   ChevronRight,
-  Filter,
   MapPin,
-  Moon,
+  Sunrise,
+  Sunset,
   Sun,
-  Sparkles,
+  Hourglass,
+  MoonStar,
   ArrowRight,
-  BookOpen,
-  Info,
-  Clock,
-  ExternalLink,
   Flame,
+  ChevronDown,
 } from 'lucide-react';
 import {
   calculateEducationalPanchang,
@@ -30,6 +27,7 @@ import {
 import { FESTIVAL_DATES, type FestivalDate } from '@/data/festival-dates';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import '@/app/styles/festival-calendar.css';
 
 export type CalendarFilter = 'all' | 'ekadashi' | 'pradosha' | 'purnima-amavasya' | 'festivals';
 
@@ -81,16 +79,80 @@ function getTithiSlug(tithiNumber: number): string {
   return slugs[index] || 'pratipada';
 }
 
-function getMoonPhaseGlyph(tithiNumber: number): string {
-  if (tithiNumber === 30) return '🌑';
-  if (tithiNumber === 15) return '🌕';
-  if (tithiNumber >= 1 && tithiNumber <= 3) return '🌒';
-  if (tithiNumber >= 4 && tithiNumber <= 8) return '🌓';
-  if (tithiNumber >= 9 && tithiNumber <= 14) return '🌔';
-  if (tithiNumber >= 16 && tithiNumber <= 20) return '🌖';
-  if (tithiNumber >= 21 && tithiNumber <= 25) return '🌗';
-  return '🌘';
+/**
+ * The moon for a tithi, drawn rather than an emoji so it takes the theme's colours.
+ * Tithi 1–15 wax (lit on the right), 16–30 wane (lit on the left); 15 is full, 30 new.
+ */
+function MoonPhase({ tithi, size = 16, label }: { tithi: number; size?: number; label?: string }) {
+  const r = 7;
+  const c = 8;
+  const theta = (2 * Math.PI * tithi) / 30;
+  const lit = (1 - Math.cos(theta)) / 2; // 0 new → 1 full
+  const waxing = tithi < 15;
+  const rx = Math.abs(1 - 2 * lit) * r;
+  const outerSweep = waxing ? 1 : 0;
+  const innerSweep = lit < 0.5 ? (waxing ? 0 : 1) : waxing ? 1 : 0;
+  const top = `${c},${c - r}`;
+  const bottom = `${c},${c + r}`;
+  const path = `M${top} A${r},${r} 0 0 ${outerSweep} ${bottom} A${rx.toFixed(3)},${r} 0 0 ${innerSweep} ${top} Z`;
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      role={label ? 'img' : undefined}
+      aria-label={label}
+      aria-hidden={label ? undefined : true}
+      className="shrink-0"
+    >
+      <circle cx={c} cy={c} r={r} className="fc-moon-dark" />
+      {tithi === 15 ? (
+        <circle cx={c} cy={c} r={r} className="fc-moon-lit" />
+      ) : tithi !== 30 && lit > 0.02 ? (
+        <path d={path} className="fc-moon-lit" />
+      ) : null}
+      <circle cx={c} cy={c} r={r} className="fc-moon-rim" />
+    </svg>
+  );
 }
+
+const MARKERS = {
+  ekadashi: { hi: 'एकादशी', en: 'Ekadashi', hue: 'var(--fc-ekadashi)' },
+  pradosha: { hi: 'प्रदोष', en: 'Pradosh', hue: 'var(--fc-pradosha)' },
+  purnima: { hi: 'पूर्णिमा', en: 'Purnima', hue: 'var(--fc-purnima)' },
+  amavasya: { hi: 'अमावस्या', en: 'Amavasya', hue: 'var(--fc-amavasya)' },
+  festival: { hi: 'पर्व', en: 'Festival', hue: 'var(--fc-festival)' },
+} as const;
+type MarkerKind = keyof typeof MARKERS;
+
+function Dot({ kind }: { kind: MarkerKind }) {
+  return (
+    <span
+      className="fc-dot"
+      data-kind={kind}
+      style={{ '--dot': MARKERS[kind].hue } as React.CSSProperties}
+      aria-hidden="true"
+    />
+  );
+}
+
+function dayMarkers(day: ComputedDay): MarkerKind[] {
+  const out: MarkerKind[] = [];
+  if (day.festivals.length > 0) out.push('festival');
+  if (day.isEkadashi) out.push('ekadashi');
+  if (day.isPradosha && !day.isEkadashi) out.push('pradosha');
+  if (day.isPurnima) out.push('purnima');
+  if (day.isAmavasya) out.push('amavasya');
+  return out;
+}
+
+const FILTERS: { id: CalendarFilter; hi: string; en: string; kind?: MarkerKind; kinds?: MarkerKind[] }[] = [
+  { id: 'all', hi: 'सभी दिन', en: 'All days' },
+  { id: 'festivals', hi: 'पर्व व त्यौहार', en: 'Festivals', kind: 'festival' },
+  { id: 'ekadashi', hi: 'एकादशी', en: 'Ekadashi', kind: 'ekadashi' },
+  { id: 'pradosha', hi: 'प्रदोष', en: 'Pradosh', kind: 'pradosha' },
+  { id: 'purnima-amavasya', hi: 'पूर्णिमा व अमावस्या', en: 'Full & new moon', kinds: ['purnima', 'amavasya'] },
+];
 
 interface ComputedDay {
   dayNumber: number;
@@ -104,7 +166,6 @@ interface ComputedDay {
   isPurnima: boolean;
   isAmavasya: boolean;
   isShivaratri: boolean;
-  moonGlyph: string;
   tithiSlug: string;
   nakshatraSlug: string;
   yogaSlug: string;
@@ -212,7 +273,6 @@ export function CalendarClient() {
         isPurnima,
         isAmavasya,
         isShivaratri,
-        moonGlyph: getMoonPhaseGlyph(tithiNum),
         tithiSlug: tSlug,
         nakshatraSlug: nSlug,
         yogaSlug: ySlug,
@@ -329,503 +389,470 @@ export function CalendarClient() {
     return true;
   };
 
+  // Today is read after hydration, so the exported HTML never disagrees with the client.
+  const [todayIso, setTodayIso] = useState<string>('');
+  useEffect(() => {
+    const now = new Date();
+    setTodayIso(
+      `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`,
+    );
+  }, []);
+
+  const trailingBlanks = (7 - ((firstDayWeekday + monthDays.length) % 7)) % 7;
+  const monthFestivals = monthDays.filter((d) => d.festivals.length > 0);
+
+  const selectDay = (iso: string) => {
+    triggerTactileFeedback('selection', 'softTap');
+    setSelectedDateIso(iso);
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      window.requestAnimationFrame(() => {
+        inspectorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  };
+
   return (
-    <div className="space-y-8">
-      {/* ─── CONTROLS: Year, Month, Location, & Quick Jumps ──────────────── */}
-      <div className="rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-6 shadow-sm">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          {/* Year selector & Month navigation */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            {/* Year Selector */}
-            <div className="flex rounded-xl bg-dharma-bg border border-dharma-border p-1">
-              {[2026, 2027, 2028].map((y) => (
-                <button
-                  key={y}
-                  onClick={() => {
-                    triggerTactileFeedback('selection', 'softTap');
-                    setYear(y);
-                    setSelectedDateIso(`${y}-${String(month + 1).padStart(2, '0')}-01`);
-                  }}
-                  className={`rounded-lg min-h-[44px] px-3.5 py-2 text-footnote font-semibold transition-all ${
-                    year === y
-                      ? 'bg-dharma-saffron text-white shadow-sm'
-                      : 'text-dharma-muted hover:text-dharma-text'
-                  }`}
-                >
-                  {y}
-                </button>
-              ))}
-            </div>
-
-            {/* Prev / Next Month */}
-            <div className="flex items-center gap-1.5">
-              <button
-                onClick={handlePrevMonth}
-                disabled={year === 2026 && month === 0}
-                aria-label="Previous Month"
-                className="flex h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-xl border border-dharma-border bg-dharma-card text-dharma-text hover:bg-dharma-bg disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <div className="min-w-[120px] text-center">
-                <span className="text-body font-semibold text-dharma-text block">
-                  {MONTH_NAMES[month].hi} {year}
-                </span>
-                <span className="text-caption-2 text-dharma-muted">
-                  {MONTH_NAMES[month].en} · {MONTH_NAMES[month].masa}
-                </span>
-              </div>
-              <button
-                onClick={handleNextMonth}
-                disabled={year === 2028 && month === 11}
-                aria-label="Next Month"
-                className="flex h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-xl border border-dharma-border bg-dharma-card text-dharma-text hover:bg-dharma-bg disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
-
+    <div className="fc-root space-y-6 sm:space-y-8">
+      {/* ─── TOOLBAR: month, navigation, year, place, filters ─────────────── */}
+      <div className="apple-card p-4 sm:p-6">
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <h2 className="text-title-2 font-semibold leading-tight text-label-primary" aria-live="polite">
+              <span lang="hi">{MONTH_NAMES[month].hi}</span> <span className="apple-stat">{year}</span>
+            </h2>
+            <p className="mt-1 text-footnote text-label-secondary">
+              <span>{MONTH_NAMES[month].en}</span> · <span lang="hi">{MONTH_NAMES[month].masa}</span>
+            </p>
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
             <button
-              onClick={handleJumpToday}
-              className="rounded-xl min-h-[44px] border border-dharma-border bg-dharma-card px-3.5 py-2 text-footnote font-medium text-dharma-text hover:bg-dharma-bg transition-colors"
+              type="button"
+              onClick={handlePrevMonth}
+              disabled={year === 2026 && month === 0}
+              aria-label="Previous month"
+              className="fc-icon-btn"
             >
-              आज (Today)
+              <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+            </button>
+            <button type="button" onClick={handleJumpToday} className="apple-pill apple-pill-tinted !px-4 font-semibold">
+              <span lang="hi">आज</span> <span className="hidden sm:inline">Today</span>
+            </button>
+            <button
+              type="button"
+              onClick={handleNextMonth}
+              disabled={year === 2028 && month === 11}
+              aria-label="Next month"
+              className="fc-icon-btn"
+            >
+              <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
+        </div>
 
-          {/* Location picker */}
-          <div className="flex items-center gap-2 max-w-full">
-            <MapPin className="h-4 w-4 text-dharma-saffron flex-shrink-0" />
-            <span className="text-footnote text-dharma-muted hidden sm:inline">स्थान (Location):</span>
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="apple-segmented self-start" role="group" aria-label="Year">
+            {[2026, 2027, 2028].map((y) => (
+              <button
+                key={y}
+                type="button"
+                aria-pressed={year === y}
+                className="apple-stat min-w-[4.25rem]"
+                onClick={() => {
+                  triggerTactileFeedback('selection', 'softTap');
+                  setYear(y);
+                  setSelectedDateIso(`${y}-${String(month + 1).padStart(2, '0')}-01`);
+                }}
+              >
+                {y}
+              </button>
+            ))}
+          </div>
+
+          <label className="relative block sm:w-72">
+            <span className="sr-only">Location</span>
+            <MapPin
+              className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-tint"
+              aria-hidden="true"
+            />
             <select
               value={location.id}
               onChange={(e) => {
                 const found = PRESET_LOCATIONS.find((loc) => loc.id === e.target.value);
                 if (found) setLocation(found);
               }}
-              style={{ maxWidth: '200px' }}
-              className="rounded-xl min-h-[44px] w-48 truncate border border-dharma-border bg-dharma-bg px-3 py-2 text-footnote font-medium text-dharma-text focus:outline-none focus:ring-2 focus:ring-dharma-saffron sm:w-auto"
+              className="fc-select w-full"
             >
               {PRESET_LOCATIONS.map((loc) => (
-                <option key={loc.id} value={loc.id} className="bg-dharma-card text-dharma-text">
-                  {loc.nameHi} ({loc.name})
+                <option key={loc.id} value={loc.id}>
+                  {loc.nameHi} · {loc.name}
                 </option>
               ))}
             </select>
-          </div>
+            <ChevronDown
+              className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-label-tertiary"
+              aria-hidden="true"
+            />
+          </label>
         </div>
 
-        {/* ─── FILTER CHIPS ──────────────────────────────────────────────── */}
-        <div className="mt-4 pt-4 border-t border-dharma-border/60 flex flex-wrap items-center gap-2">
-          <div className="flex items-center gap-1.5 text-caption-1 font-medium text-dharma-muted mr-1">
-            <Filter className="h-3.5 w-3.5" />
-            <span>फ़िल्टर (Filter):</span>
+        <div className="mt-4 border-t border-separator pt-4">
+          <div className="fc-chips" role="group" aria-label="Show">
+            {FILTERS.map((f) => (
+              <button
+                key={f.id}
+                type="button"
+                aria-pressed={activeFilter === f.id}
+                className="fc-chip"
+                style={f.kind ? ({ '--chip-hue': MARKERS[f.kind].hue } as React.CSSProperties) : undefined}
+                onClick={() => {
+                  triggerTactileFeedback('selection', 'softTap');
+                  setActiveFilter(f.id);
+                }}
+              >
+                {f.kind && <Dot kind={f.kind} />}
+                {f.kinds && (
+                  <span className="inline-flex gap-1" aria-hidden="true">
+                    {f.kinds.map((k) => (
+                      <Dot key={k} kind={k} />
+                    ))}
+                  </span>
+                )}
+                <span lang="hi">{f.hi}</span>
+                <span className="text-label-tertiary">{f.en}</span>
+              </button>
+            ))}
           </div>
-
-          {[
-            { id: 'all', label: 'सभी दिन (All)', badge: '' },
-            { id: 'ekadashi', label: 'एकादशी व्रत', badge: '🌿' },
-            { id: 'pradosha', label: 'प्रदोष व्रत', badge: '🔱' },
-            { id: 'purnima-amavasya', label: 'पूर्णिमा व अमावस्या', badge: '🌕/🌑' },
-            { id: 'festivals', label: 'प्रमुख पर्व व त्यौहार', badge: '🎉' },
-          ].map((item) => (
-            <button
-              key={item.id}
-              onClick={() => {
-                triggerTactileFeedback('selection', 'softTap');
-                setActiveFilter(item.id as CalendarFilter);
-              }}
-              className={`rounded-full min-h-[44px] px-3.5 py-2 text-caption-1 font-medium transition-all flex items-center gap-1.5 ${
-                activeFilter === item.id
-                  ? 'bg-dharma-saffron text-white shadow-sm'
-                  : 'bg-dharma-bg border border-dharma-border text-dharma-muted hover:text-dharma-text hover:border-dharma-border-strong'
-              }`}
-            >
-              {item.badge && <span>{item.badge}</span>}
-              <span>{item.label}</span>
-            </button>
-          ))}
         </div>
       </div>
 
-      {/* ─── CALENDAR GRID ─────────────────────────────────────────────────── */}
-      <div className="rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-sm">
-        <div className="w-full">
-          {/* Weekday Headers */}
-          <div
-            className="grid grid-cols-7 border-b border-dharma-border bg-dharma-bg/60 text-center"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))' }}
-          >
-            {WEEKDAYS.map((wd, i) => (
-              <div key={wd.shortEn} className={`py-2 px-0.5 sm:py-2.5 sm:px-2 ${i === 0 ? 'text-rose-600 dark:text-rose-400' : 'text-dharma-text'}`}>
-                <div className="text-[11px] sm:text-caption-1 font-semibold">{wd.shortHi}</div>
-                <div className="text-[10px] text-dharma-muted uppercase tracking-wider hidden sm:block">{wd.shortEn}</div>
+      {/* ─── MONTH GRID ───────────────────────────────────────────────────── */}
+      <div className="apple-card p-2 sm:p-4">
+        <div className="fc-weekdays" aria-hidden="true">
+          {WEEKDAYS.map((wd, i) => (
+            <div key={wd.shortEn} className="fc-weekday" data-sunday={i === 0 ? '' : undefined}>
+              <div lang="hi" className="text-footnote font-semibold">
+                {wd.shortHi}
               </div>
-            ))}
-          </div>
+              <div className="hidden text-caption sm:block">{wd.shortEn}</div>
+            </div>
+          ))}
+        </div>
 
-          {/* Calendar Days */}
-          <div
-            className="grid grid-cols-7 auto-rows-fr divide-x divide-y divide-dharma-border/60 bg-dharma-border/30"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(7, minmax(0, 1fr))' }}
-          >
-          {/* Empty cells before month starts */}
+        <div className="fc-grid mt-1">
           {Array.from({ length: firstDayWeekday }).map((_, i) => (
-            <div key={`blank-${i}`} className="bg-dharma-bg/30 min-h-[76px] sm:min-h-[110px]" />
+            <div key={`lead-${i}`} className="fc-blank" aria-hidden="true" />
           ))}
 
-          {/* Actual days of month */}
           {monthDays.map((day) => {
             const isSelected = day.dateIso === selectedDateIso;
-            const matchesFilter = isDayMatchingFilter(day);
-
+            const marks = dayMarkers(day);
+            const festival = day.festivals[0];
             return (
               <button
                 key={day.dateIso}
-                onClick={() => {
-                  triggerTactileFeedback('selection', 'softTap');
-                  setSelectedDateIso(day.dateIso);
-                  if (typeof window !== 'undefined' && window.innerWidth < 768) {
-                    window.requestAnimationFrame(() => {
-                      inspectorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    });
-                  }
-                }}
+                type="button"
+                onClick={() => selectDay(day.dateIso)}
                 aria-pressed={isSelected}
-                aria-label={`${day.dayNumber} ${MONTH_NAMES[month].hi}, ${day.panchang.tithi.nameHi}, ${day.panchang.nakshatra.nameHi}`}
-                className={`relative flex w-full !min-w-0 flex-col justify-between overflow-hidden p-1 sm:p-2.5 text-left transition-all min-h-[76px] sm:min-h-[110px] ${
-                  isSelected
-                    ? 'bg-saffron-50/70 dark:bg-saffron-950/30 ring-2 ring-inset ring-dharma-saffron z-10'
-                    : 'bg-dharma-card hover:bg-dharma-bg/80'
-                } ${!matchesFilter ? 'opacity-35 grayscale-[50%]' : 'opacity-100'}`}
+                aria-current={day.dateIso === todayIso ? 'date' : undefined}
+                aria-label={`${day.dayNumber} ${MONTH_NAMES[month].en} ${year}, ${day.panchang.tithi.nameHi}, ${day.panchang.nakshatra.nameHi}${
+                  festival ? `, ${festival.nameHindi || festival.name}` : ''
+                }`}
+                className="fc-day"
+                data-sunday={day.dayOfWeek === 0 ? '' : undefined}
+                data-today={day.dateIso === todayIso ? '' : undefined}
+                data-festival={day.festivals.length > 0 ? '' : undefined}
+                data-dim={isDayMatchingFilter(day) ? undefined : ''}
               >
-                {/* Top row: Date Number & Moon Phase */}
-                <div className="flex items-center justify-between w-full gap-0.5">
-                  <span
-                    className={`inline-flex items-center justify-center text-[11px] font-bold sm:text-body rounded-full h-5 w-5 sm:h-7 sm:w-7 shrink-0 ${
-                      isSelected
-                        ? 'bg-dharma-saffron text-white'
-                        : day.dayOfWeek === 0
-                        ? 'text-rose-600 dark:text-rose-400'
-                        : 'text-dharma-text'
-                    }`}
-                  >
-                    {day.dayNumber}
+                <span className="fc-day-head">
+                  <span className="fc-num">{day.dayNumber}</span>
+                  <span className="fc-moon-sm">
+                    <MoonPhase tithi={day.panchang.tithi.number} size={18} />
                   </span>
-                  <span className="text-[10px] sm:text-sm select-none leading-none" title={day.panchang.tithi.paksha}>
-                    {day.moonGlyph}
-                  </span>
-                </div>
+                </span>
+                <span lang="hi" className="fc-tithi">
+                  {day.panchang.tithi.nameHi}
+                </span>
+                <span lang="hi" className="fc-nak">
+                  {day.panchang.nakshatra.nameHi}
+                </span>
 
-                {/* Middle row: Tithi & Nakshatra */}
-                <div className="mt-0.5 sm:mt-1 space-y-0.5 overflow-hidden w-full">
-                  <div className="text-[10px] sm:text-xs font-semibold text-dharma-text truncate leading-tight">
-                    {day.panchang.tithi.nameHi}
-                  </div>
-                  <div className="text-[10px] text-dharma-muted truncate leading-tight hidden sm:block">
-                    {day.panchang.nakshatra.nameHi}
-                  </div>
-                </div>
-
-                {/* Bottom row: Sacred Badges */}
-                <div className="mt-0.5 sm:mt-1 flex flex-wrap gap-0.5 sm:gap-1">
-                  {day.isEkadashi && (
-                    <span className="inline-flex items-center gap-0.5 rounded px-1 py-0.2 text-[9px] sm:text-[10px] font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300">
-                      <span aria-hidden="true">🌿</span>
-                      <span className="hidden sm:inline">एकादशी</span>
+                <span className="fc-marks" aria-hidden="true">
+                  {marks.map((k) => (
+                    <Dot key={k} kind={k} />
+                  ))}
+                </span>
+                <span className="fc-tags" aria-hidden="true">
+                  {marks.map((k) => (
+                    <span key={k} className="fc-tag" style={{ '--tag': MARKERS[k].hue } as React.CSSProperties}>
+                      <Dot kind={k} />
+                      <span lang="hi">
+                        {k === 'festival' && festival ? festival.nameHindi || festival.name : MARKERS[k].hi}
+                      </span>
                     </span>
-                  )}
-                  {day.isPradosha && !day.isEkadashi && (
-                    <span className="inline-flex items-center gap-0.5 rounded px-1 py-0.2 text-[9px] sm:text-[10px] font-semibold bg-indigo-100 text-indigo-800 dark:bg-indigo-950/70 dark:text-indigo-300">
-                      <span aria-hidden="true">🔱</span>
-                      <span className="hidden sm:inline">प्रदोष</span>
-                    </span>
-                  )}
-                  {day.isPurnima && (
-                    <span className="inline-flex items-center gap-0.5 rounded px-1 py-0.2 text-[9px] sm:text-[10px] font-semibold bg-amber-100 text-amber-900 dark:bg-amber-950/70 dark:text-amber-200">
-                      <span aria-hidden="true">🌕</span>
-                      <span className="hidden sm:inline">पूर्णिमा</span>
-                    </span>
-                  )}
-                  {day.isAmavasya && (
-                    <span className="inline-flex items-center gap-0.5 rounded px-1 py-0.2 text-[9px] sm:text-[10px] font-semibold bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-200">
-                      <span aria-hidden="true">🌑</span>
-                      <span className="hidden sm:inline">अमावस्या</span>
-                    </span>
-                  )}
-                  {day.festivals.length > 0 && (
-                    <span className="inline-flex items-center gap-0.5 rounded px-1 py-0.2 text-[9px] sm:text-[10px] font-semibold bg-saffron-100 text-saffron-900 dark:bg-saffron-950/70 dark:text-saffron-200 truncate max-w-full">
-                      <span aria-hidden="true">🎉</span>
-                      <span className="hidden sm:inline truncate">{day.festivals[0].nameHindi || day.festivals[0].name}</span>
-                    </span>
-                  )}
-                </div>
+                  ))}
+                </span>
               </button>
             );
           })}
+
+          {Array.from({ length: trailingBlanks }).map((_, i) => (
+            <div key={`trail-${i}`} className="fc-blank" aria-hidden="true" />
+          ))}
         </div>
-        </div>
-        <div className="border-t border-dharma-border/60 bg-dharma-bg/50 px-3 py-2 text-center text-[11px] text-dharma-muted sm:hidden">
-          🌿 एकादशी · 🔱 प्रदोष · 🌕 पूर्णिमा · 🌑 अमावस्या · 🎉 पर्व — विवरण हेतु किसी भी तिथि को चुनें
-        </div>
+
+        <ul className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-separator px-2 pt-3 text-caption text-label-secondary">
+          {(Object.keys(MARKERS) as MarkerKind[]).map((k) => (
+            <li key={k} className="inline-flex items-center gap-1.5">
+              <Dot kind={k} />
+              <span lang="hi">{MARKERS[k].hi}</span>
+            </li>
+          ))}
+          <li className="inline-flex items-center gap-1.5">
+            <MoonPhase tithi={8} size={14} />
+            <span lang="hi">चन्द्र कला</span>
+          </li>
+        </ul>
       </div>
 
-      {/* ─── DAY INSPECTOR PANEL ───────────────────────────────────────────── */}
+      {/* This month's festivals, as a quick list to jump from */}
+      {monthFestivals.length > 0 && (
+        <div>
+          <h3 className="px-1 text-footnote font-semibold text-label-secondary">
+            <span lang="hi">इस मास के पर्व</span> · <span>Festivals this month</span>
+          </h3>
+          <ul className="apple-group mt-2">
+            {monthFestivals.map((d) =>
+              d.festivals.map((f) => (
+                <li key={`${d.dateIso}-${f.name}`}>
+                  <button
+                    type="button"
+                    onClick={() => selectDay(d.dateIso)}
+                    className="apple-row w-full text-left hover:bg-fill-quaternary"
+                    aria-pressed={d.dateIso === selectedDateIso}
+                  >
+                    <span
+                      className="apple-tint-chip apple-stat !h-10 !w-10 flex-col !gap-0 text-caption font-semibold leading-none"
+                      style={{ '--chip': 'var(--hue-saffron)' } as React.CSSProperties}
+                    >
+                      <span className="text-[15px]">{d.dayNumber}</span>
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span lang="hi" className="block truncate text-subhead font-semibold text-label-primary">
+                        {f.nameHindi || f.name}
+                      </span>
+                      <span className="block truncate text-caption text-label-secondary">
+                        <span>{f.name}</span> · <span lang="hi">{WEEKDAYS[d.dayOfWeek].fullHi}</span> ·{' '}
+                        <span lang="hi">{d.panchang.tithi.nameHi}</span>
+                      </span>
+                    </span>
+                    <span className="apple-chevron" aria-hidden="true">
+                      ›
+                    </span>
+                  </button>
+                </li>
+              )),
+            )}
+          </ul>
+        </div>
+      )}
+
+      {/* ─── SELECTED DAY ─────────────────────────────────────────────────── */}
       {selectedDay && (
         <section
           ref={inspectorRef}
           aria-labelledby="day-inspector-title"
-          className="scroll-mt-20 rounded-2xl border-2 border-dharma-saffron/40 bg-dharma-card p-5 sm:p-7 shadow-md transition-all"
+          className="apple-card scroll-mt-24 p-5 sm:p-7"
         >
-          {/* Header of Inspector */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-dharma-border pb-4">
-            <div>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xl sm:text-2xl">{selectedDay.moonGlyph}</span>
-                <h2 id="day-inspector-title" className="text-title-2 font-bold text-dharma-text">
-                  {selectedDay.dayNumber} {MONTH_NAMES[month].hi} {year} · {WEEKDAYS[selectedDay.dayOfWeek].fullHi}
-                </h2>
-                <Link
-                href={`/panchang/muhurta/?date=${selectedDay.dateIso}`}
-                className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-saffron/40 bg-dharma-bg px-4 py-2 text-footnote font-semibold text-dharma-text hover:border-dharma-saffron hover:text-dharma-saffron"
-              >
-                <span>इस दिन का मुहूर्त · Muhurta</span>
-                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </Link>
-            </div>
-              <p className="text-footnote text-dharma-muted mt-0.5">
-                {selectedDay.dateIso} ({WEEKDAYS[selectedDay.dayOfWeek].fullEn}) · {selectedDay.panchang.ritu.nameHi} ऋतु ({selectedDay.panchang.ritu.seasonEn}) · स्थान: {location.nameHi}
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <Link
-                href={`/panchang/?date=${selectedDay.dateIso}`}
-                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-4 py-2 text-footnote font-semibold text-dharma-text hover:border-dharma-saffron hover:text-dharma-saffron transition-all"
-              >
-                <span>दैनिक पंचांग खोलें</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Festival Banner if present */}
-          {selectedDay.festivals.length > 0 && (
-            <div className="mt-5 rounded-xl bg-gradient-to-r from-saffron-500/10 via-amber-500/10 to-orange-500/10 border border-saffron-400/40 p-4">
+          <div key={selectedDay.dateIso} className="fc-detail-body">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="flex items-start gap-3">
-                <span className="text-2xl flex-shrink-0">🪔</span>
-                <div className="space-y-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-subhead font-bold text-dharma-text">
-                      {selectedDay.festivals[0].nameHindi || selectedDay.festivals[0].name}
+                <MoonPhase
+                  tithi={selectedDay.panchang.tithi.number}
+                  size={44}
+                  label={`${selectedDay.panchang.paksha.illuminationPercent}% lit`}
+                />
+                <div className="min-w-0">
+                  <h2 id="day-inspector-title" className="text-title-2 font-semibold leading-tight text-label-primary">
+                    <span className="apple-stat">{selectedDay.dayNumber}</span> <span lang="hi">{MONTH_NAMES[month].hi}</span>{' '}
+                    <span className="apple-stat">{year}</span>
+                  </h2>
+                  <p className="mt-1 text-subhead text-label-secondary">
+                    <span lang="hi">{WEEKDAYS[selectedDay.dayOfWeek].fullHi}</span> ·{' '}
+                    <span>{WEEKDAYS[selectedDay.dayOfWeek].fullEn}</span> ·{' '}
+                    <span lang="hi">{selectedDay.panchang.ritu.nameHi} ऋतु</span>{' '}
+                    <span>({selectedDay.panchang.ritu.seasonEn})</span> · <span lang="hi">{location.nameHi}</span>
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Link href={`/panchang/?date=${selectedDay.dateIso}`} className="apple-pill apple-pill-tinted font-semibold">
+                  <span lang="hi">दैनिक पंचांग</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <Link
+                  href={`/panchang/muhurta/?date=${selectedDay.dateIso}`}
+                  className="apple-pill apple-pill-tinted font-semibold"
+                >
+                  <span lang="hi">मुहूर्त</span> <span>Muhurta</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+
+            {selectedDay.festivals.length > 0 && (
+              <div className="mt-5 space-y-3">
+                {selectedDay.festivals.map((f) => (
+                  <div key={f.name} className="fc-festival flex items-start gap-3">
+                    <span className="apple-tint-chip !h-10 !w-10" style={{ '--chip': 'var(--hue-saffron)' } as React.CSSProperties}>
+                      <Flame className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <span className="text-caption-1 text-dharma-muted">
-                      ({selectedDay.festivals[0].name})
-                    </span>
-                  </div>
-                  {selectedDay.festivals[0].note && (
-                    <p className="text-footnote text-dharma-muted">
-                      {selectedDay.festivals[0].note}
-                    </p>
-                  )}
-                  {selectedDay.festivals[0].festivalId && (
-                    <div className="pt-1">
-                      <Link
-                        href={`/festivals/${selectedDay.festivals[0].festivalId}/`}
-                        className="inline-flex items-center gap-1 text-caption-1 font-semibold text-dharma-saffron hover:underline"
-                      >
-                        <span>पर्व की शास्त्रीय कथा व परंपरा पढ़ें</span>
-                        <ArrowRight className="h-3 w-3" />
-                      </Link>
+                    <div className="min-w-0 space-y-1">
+                      <p className="text-title-3 font-semibold leading-snug text-label-primary">
+                        <span lang="hi">{f.nameHindi || f.name}</span>{' '}
+                        {f.nameHindi && <span className="text-subhead font-normal text-label-secondary">{f.name}</span>}
+                      </p>
+                      {f.note && <p className="text-subhead text-label-secondary">{f.note}</p>}
+                      {f.festivalId && (
+                        <Link
+                          href={`/festivals/${f.festivalId}/`}
+                          className="fc-limb-link fc-hue-text"
+                          style={{ '--hue': 'var(--hue-saffron)' } as React.CSSProperties}
+                        >
+                          <span lang="hi">पर्व की कथा व परंपरा पढ़ें</span>
+                          <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                        </Link>
+                      )}
                     </div>
-                  )}
-                </div>
+                  </div>
+                ))}
               </div>
-            </div>
-          )}
-
-          {/* 4 Limbs Grid: Tithi, Nakshatra, Yoga, Karana */}
-          <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* 1. TITHI */}
-            <div className="rounded-xl border border-dharma-border bg-dharma-bg p-4 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between text-caption-2 uppercase tracking-wider text-dharma-muted">
-                  <span>तिथि (Tithi)</span>
-                  <span>{selectedDay.panchang.tithi.paksha}</span>
-                </div>
-                <div className="mt-1 text-headline font-bold text-dharma-text">
-                  {selectedDay.panchang.tithi.nameHi}
-                </div>
-                <div className="text-caption-1 text-dharma-saffron font-medium">
-                  {selectedDay.panchang.tithi.transliteration}
-                </div>
-                <p className="mt-2 text-caption-1 text-dharma-muted line-clamp-3">
-                  {selectedDay.panchang.tithi.meta.explanation}
-                </p>
-              </div>
-
-              <div className="mt-3 pt-2 border-t border-dharma-border/60">
-                <Link
-                  href={`/panchang/tithis/${selectedDay.tithiSlug}/`}
-                  className="inline-flex items-center gap-1 text-caption-2 font-semibold text-dharma-saffron hover:underline"
-                >
-                  <span>{selectedDay.panchang.tithi.nameHi} परिचय</span>
-                  <ArrowRight className="h-3 w-3" />
-                </Link>
-              </div>
-            </div>
-
-            {/* 2. NAKSHATRA */}
-            <div className="rounded-xl border border-dharma-border bg-dharma-bg p-4 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between text-caption-2 uppercase tracking-wider text-dharma-muted">
-                  <span>नक्षत्र (Nakshatra)</span>
-                  <span>चरण {selectedDay.panchang.nakshatra.pada}</span>
-                </div>
-                <div className="mt-1 text-headline font-bold text-dharma-text">
-                  {selectedDay.panchang.nakshatra.nameHi}
-                </div>
-                <div className="text-caption-1 text-dharma-saffron font-medium">
-                  {selectedDay.panchang.nakshatra.transliteration}
-                </div>
-                <p className="mt-2 text-caption-1 text-dharma-muted line-clamp-3">
-                  देवता: {selectedDay.panchang.nakshatra.deity} · स्वामी: {selectedDay.panchang.nakshatra.rulingPlanet}
-                </p>
-              </div>
-
-              <div className="mt-3 pt-2 border-t border-dharma-border/60">
-                <Link
-                  href={`/panchang/nakshatras/${selectedDay.nakshatraSlug}/`}
-                  className="inline-flex items-center gap-1 text-caption-2 font-semibold text-dharma-saffron hover:underline"
-                >
-                  <span>{selectedDay.panchang.nakshatra.nameHi} नक्षत्र</span>
-                  <ArrowRight className="h-3 w-3" />
-                </Link>
-              </div>
-            </div>
-
-            {/* 3. YOGA */}
-            <div className="rounded-xl border border-dharma-border bg-dharma-bg p-4 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between text-caption-2 uppercase tracking-wider text-dharma-muted">
-                  <span>योग (Yoga)</span>
-                  <span>{selectedDay.panchang.yoga.nature}</span>
-                </div>
-                <div className="mt-1 text-headline font-bold text-dharma-text">
-                  {selectedDay.panchang.yoga.nameHi}
-                </div>
-                <div className="text-caption-1 text-dharma-saffron font-medium">
-                  {selectedDay.panchang.yoga.transliteration}
-                </div>
-                <p className="mt-2 text-caption-1 text-dharma-muted line-clamp-3">
-                  {selectedDay.panchang.yoga.explanation}
-                </p>
-              </div>
-
-              <div className="mt-3 pt-2 border-t border-dharma-border/60">
-                <Link
-                  href={`/panchang/yogas/${selectedDay.yogaSlug}/`}
-                  className="inline-flex items-center gap-1 text-caption-2 font-semibold text-dharma-saffron hover:underline"
-                >
-                  <span>{selectedDay.panchang.yoga.nameHi} योग</span>
-                  <ArrowRight className="h-3 w-3" />
-                </Link>
-              </div>
-            </div>
-
-            {/* 4. KARANA */}
-            <div className="rounded-xl border border-dharma-border bg-dharma-bg p-4 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between text-caption-2 uppercase tracking-wider text-dharma-muted">
-                  <span>करण (Karana)</span>
-                  <span>{selectedDay.panchang.karana.nature}</span>
-                </div>
-                <div className="mt-1 text-headline font-bold text-dharma-text">
-                  {selectedDay.panchang.karana.nameHi}
-                </div>
-                <div className="text-caption-1 text-dharma-saffron font-medium">
-                  {selectedDay.panchang.karana.transliteration}
-                </div>
-                <p className="mt-2 text-caption-1 text-dharma-muted line-clamp-3">
-                  {selectedDay.panchang.karana.explanation}
-                </p>
-              </div>
-
-              <div className="mt-3 pt-2 border-t border-dharma-border/60">
-                <Link
-                  href={`/panchang/karanas/${selectedDay.karanaSlug}/`}
-                  className="inline-flex items-center gap-1 text-caption-2 font-semibold text-dharma-saffron hover:underline"
-                >
-                  <span>{selectedDay.panchang.karana.nameHi} करण</span>
-                  <ArrowRight className="h-3 w-3" />
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Solar Times Row */}
-          <div className="mt-5 rounded-xl border border-dharma-border/80 bg-dharma-bg/60 p-4">
-            <div className="flex flex-wrap items-center justify-between gap-3 text-caption-1">
-              <div className="flex items-center gap-1.5 text-dharma-text">
-                <Sun className="h-4 w-4 text-amber-500" />
-                <span>सूर्योदय: <strong>{selectedDay.panchang.solarTimes.sunrise}</strong></span>
-              </div>
-              <div className="flex items-center gap-1.5 text-dharma-text">
-                <Moon className="h-4 w-4 text-indigo-400" />
-                <span>सूर्यास्त: <strong>{selectedDay.panchang.solarTimes.sunset}</strong></span>
-              </div>
-              <div className="flex items-center gap-1.5 text-dharma-muted">
-                <Clock className="h-4 w-4 text-rose-400" />
-                <span>मध्याह्न: <strong>{selectedDay.panchang.solarTimes.solarNoon}</strong></span>
-              </div>
-              <div className="flex items-center gap-1.5 text-dharma-muted">
-                <Clock className="h-4 w-4 text-sky-400" />
-                <span>दिनमान: <strong>{selectedDay.panchang.solarTimes.dayLength}</strong></span>
-              </div>
-              <div className="flex items-center gap-1.5 text-dharma-muted">
-                <Sparkles className="h-4 w-4 text-emerald-400" />
-                <span>चंद्र प्रकाश: <strong>{selectedDay.panchang.paksha.illuminationPercent}%</strong></span>
-              </div>
-            </div>
-          </div>
-
-          {/* Contextual Vrata Guide Shortcuts */}
-          <div className="mt-5 pt-4 border-t border-dharma-border flex flex-wrap gap-2">
-            {selectedDay.isEkadashi && (
-              <Link
-                href="/panchang/ekadashi/"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 text-caption-1 font-semibold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors"
-              >
-                <span>🌿 एकादशी व्रत पारण व माहात्म्य गाइड पढ़ें</span>
-                <ArrowRight className="h-3 w-3" />
-              </Link>
             )}
-            {selectedDay.isPradosha && (
-              <Link
-                href="/panchang/pradosh/"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/30 px-3 py-1.5 text-caption-1 font-semibold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-500/20 transition-colors"
-              >
-                <span>🔱 प्रदोष व्रत शिव-पूजा विधान व समय</span>
-                <ArrowRight className="h-3 w-3" />
-              </Link>
-            )}
-            {selectedDay.isPurnima && (
-              <Link
-                href="/panchang/purnima/"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 text-caption-1 font-semibold text-amber-800 dark:text-amber-300 hover:bg-amber-500/20 transition-colors"
-              >
-                <span>🌕 पूर्णिमा व्रत व सत्यनारायण पूजन</span>
-                <ArrowRight className="h-3 w-3" />
-              </Link>
-            )}
-            {selectedDay.isAmavasya && (
-              <Link
-                href="/panchang/amavasya/"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-slate-500/10 border border-slate-500/30 px-3 py-1.5 text-caption-1 font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-500/20 transition-colors"
-              >
-                <span>🌑 अमावस्या श्राद्ध व पितृ तर्पण विधि</span>
-                <ArrowRight className="h-3 w-3" />
-              </Link>
+
+            {/* The four limbs of the day */}
+            <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  limb: 'tithi',
+                  hi: 'तिथि',
+                  en: 'Tithi',
+                  meta: selectedDay.panchang.tithi.paksha,
+                  name: selectedDay.panchang.tithi.nameHi,
+                  translit: selectedDay.panchang.tithi.transliteration,
+                  text: selectedDay.panchang.tithi.meta.explanation,
+                  href: `/panchang/tithis/${selectedDay.tithiSlug}/`,
+                  link: `${selectedDay.panchang.tithi.nameHi} परिचय`,
+                },
+                {
+                  limb: 'nakshatra',
+                  hi: 'नक्षत्र',
+                  en: 'Nakshatra',
+                  meta: `चरण ${selectedDay.panchang.nakshatra.pada}`,
+                  name: selectedDay.panchang.nakshatra.nameHi,
+                  translit: selectedDay.panchang.nakshatra.transliteration,
+                  text: `देवता: ${selectedDay.panchang.nakshatra.deity} · स्वामी: ${selectedDay.panchang.nakshatra.rulingPlanet}`,
+                  href: `/panchang/nakshatras/${selectedDay.nakshatraSlug}/`,
+                  link: `${selectedDay.panchang.nakshatra.nameHi} नक्षत्र`,
+                },
+                {
+                  limb: 'yoga',
+                  hi: 'योग',
+                  en: 'Yoga',
+                  meta: selectedDay.panchang.yoga.nature,
+                  name: selectedDay.panchang.yoga.nameHi,
+                  translit: selectedDay.panchang.yoga.transliteration,
+                  text: selectedDay.panchang.yoga.explanation,
+                  href: `/panchang/yogas/${selectedDay.yogaSlug}/`,
+                  link: `${selectedDay.panchang.yoga.nameHi} योग`,
+                },
+                {
+                  limb: 'karana',
+                  hi: 'करण',
+                  en: 'Karana',
+                  meta: selectedDay.panchang.karana.nature,
+                  name: selectedDay.panchang.karana.nameHi,
+                  translit: selectedDay.panchang.karana.transliteration,
+                  text: selectedDay.panchang.karana.explanation,
+                  href: `/panchang/karanas/${selectedDay.karanaSlug}/`,
+                  link: `${selectedDay.panchang.karana.nameHi} करण`,
+                },
+              ].map((l) => (
+                <div key={l.limb} className="fc-limb" data-limb={l.limb}>
+                  <div className="flex items-center justify-between gap-2 text-footnote">
+                    <span className="fc-hue-text font-semibold">
+                      <span lang="hi">{l.hi}</span> <span>{l.en}</span>
+                    </span>
+                    <span className="truncate text-label-tertiary">{l.meta}</span>
+                  </div>
+                  <p lang="hi" className="mt-2 text-title-3 font-semibold leading-snug text-label-primary">
+                    {l.name}
+                  </p>
+                  <p className="text-footnote text-label-secondary">{l.translit}</p>
+                  <p className="mt-2 line-clamp-3 text-footnote leading-relaxed text-label-secondary">{l.text}</p>
+                  <Link href={l.href} className="fc-limb-link fc-hue-text mt-auto pt-2">
+                    <span lang="hi">{l.link}</span>
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+
+            {/* Sun and moon */}
+            <dl className="fc-stats mt-4">
+              {[
+                { icon: Sunrise, hi: 'सूर्योदय', en: 'Sunrise', v: selectedDay.panchang.solarTimes.sunrise, hue: 'var(--hue-gold)' },
+                { icon: Sunset, hi: 'सूर्यास्त', en: 'Sunset', v: selectedDay.panchang.solarTimes.sunset, hue: 'var(--hue-vermilion)' },
+                { icon: Sun, hi: 'मध्याह्न', en: 'Noon', v: selectedDay.panchang.solarTimes.solarNoon, hue: 'var(--hue-saffron)' },
+                { icon: Hourglass, hi: 'दिनमान', en: 'Day length', v: selectedDay.panchang.solarTimes.dayLength, hue: 'var(--hue-peacock)' },
+                {
+                  icon: MoonStar,
+                  hi: 'चन्द्र प्रकाश',
+                  en: 'Moonlight',
+                  v: `${selectedDay.panchang.paksha.illuminationPercent}%`,
+                  hue: 'var(--hue-indigo)',
+                },
+              ].map(({ icon: Icon, ...s }) => (
+                <div key={s.en} className="fc-stat" style={{ '--hue': s.hue } as React.CSSProperties}>
+                  <dt className="flex items-center gap-1.5 text-caption text-label-secondary">
+                    <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                    <span lang="hi">{s.hi}</span> <span className="hidden sm:inline">{s.en}</span>
+                  </dt>
+                  <dd className="apple-stat text-callout font-semibold text-label-primary">{s.v}</dd>
+                </div>
+              ))}
+            </dl>
+
+            {/* Guides for the day's vrata */}
+            {(selectedDay.isEkadashi || selectedDay.isPradosha || selectedDay.isPurnima || selectedDay.isAmavasya) && (
+              <div className="mt-5 flex flex-wrap gap-2 border-t border-separator pt-4">
+                {selectedDay.isEkadashi && (
+                  <Link href="/panchang/ekadashi/" className="fc-vrata" style={{ '--hue': MARKERS.ekadashi.hue } as React.CSSProperties}>
+                    <Dot kind="ekadashi" />
+                    <span lang="hi">एकादशी व्रत, पारण व माहात्म्य</span>
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                )}
+                {selectedDay.isPradosha && (
+                  <Link href="/panchang/pradosh/" className="fc-vrata" style={{ '--hue': MARKERS.pradosha.hue } as React.CSSProperties}>
+                    <Dot kind="pradosha" />
+                    <span lang="hi">प्रदोष व्रत व शिव-पूजा विधान</span>
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                )}
+                {selectedDay.isPurnima && (
+                  <Link href="/panchang/purnima/" className="fc-vrata" style={{ '--hue': MARKERS.purnima.hue } as React.CSSProperties}>
+                    <Dot kind="purnima" />
+                    <span lang="hi">पूर्णिमा व्रत व सत्यनारायण पूजन</span>
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                )}
+                {selectedDay.isAmavasya && (
+                  <Link href="/panchang/amavasya/" className="fc-vrata" style={{ '--hue': MARKERS.amavasya.hue } as React.CSSProperties}>
+                    <Dot kind="amavasya" />
+                    <span lang="hi">अमावस्या श्राद्ध व पितृ तर्पण</span>
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                )}
+              </div>
             )}
           </div>
         </section>
