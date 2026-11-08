@@ -307,7 +307,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   } | null>(null);
 
   // ── Mobile Reader & Level State ──
-  const [activeVerseIndex, setActiveVerseIndex] = useState(0);
+  const [{ index: activeVerseIndex, direction: verseDirection }, setActiveVerse] = useState({ index: 0, direction: 0 });
 
   const handleOpenSvadhyaya = (tab: SvadhyayaTab, data?: unknown) => {
     setSvadhyayaTab(tab);
@@ -384,7 +384,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           const vNumStr = card.id.slice('verse-'.length);
           updateLastVerse(scriptureId, chapterId, vNumStr);
           setCurrentViewportVerse(vNumStr);
-          setActiveVerseIndex(idx);
+          setActiveVerse((previous) => previous.index === idx
+            ? previous
+            : { index: idx, direction: Math.sign(idx - previous.index) });
           const vNum = Number(vNumStr);
           if (!Number.isNaN(vNum) && state.verses.length > 0) {
             const percent = Math.round((vNum / state.verses.length) * 100);
@@ -544,7 +546,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const scrollToVerse = (
     verseNum: string | number,
     behavior: ScrollBehavior = 'smooth',
-    preserveLayout = false
+    preserveLayout = false,
+    block: ScrollLogicalPosition = 'center'
   ) => {
     // The target becomes a full card; the plain verse it replaces has the same id, so the jump still lands.
     setRichVerses((prev) => withRich(prev, [verseNum]));
@@ -553,13 +556,14 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       const prefersReduced =
         typeof window !== 'undefined' &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isLite = document.documentElement.dataset.liteMode === 'true';
       // Temporarily set contentVisibility to 'visible' to pre-render layout dimensions accurately
       const prevVisibility = el.style.contentVisibility;
       el.style.contentVisibility = 'visible';
       const alignVerse = () => {
         // Re-query: the rich card can replace the plain verse node before this runs.
         const target = el.isConnected ? el : document.getElementById(`verse-${verseNum}`);
-        target?.scrollIntoView({ behavior: prefersReduced ? 'auto' : behavior, block: 'center' });
+        target?.scrollIntoView({ behavior: prefersReduced || isLite ? 'instant' : behavior, block });
       };
       requestAnimationFrame(() => requestAnimationFrame(alignVerse));
 
@@ -1134,7 +1138,12 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                       अध्याय {toAsciiDigits(chapterId)}
                     </span>
                     <span className="mx-1 hidden text-dharma-muted/60 sm:inline" aria-hidden="true">·</span>
-                    <span className="font-medium text-dharma-text">श्लोक {toAsciiDigits(activeVerseNumber)}</span>
+                    <span className="font-medium text-dharma-text">
+                      श्लोक{' '}
+                      <span key={activeVerseNumber} className="reader-verse-number inline-block tabular-nums" data-direction={verseDirection}>
+                        {toAsciiDigits(activeVerseNumber)}
+                      </span>
+                    </span>
                     <span className="text-dharma-muted"> / {toAsciiDigits(state.verses.length)}</span>
                   </span>
                 )}
@@ -1154,7 +1163,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     onClick={() => {
                       if (prevVerseNum !== null) {
                         triggerTactileFeedback('selection', 'softTap');
-                        scrollToVerse(prevVerseNum);
+                        scrollToVerse(prevVerseNum, 'smooth', false, 'start');
                       }
                     }}
                     className="inline-flex h-7 w-7 items-center justify-center rounded-full text-dharma-muted hover:text-dharma-text hover:bg-dharma-card-soft disabled:opacity-25 disabled:pointer-events-none transition"
@@ -1169,7 +1178,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     onClick={() => {
                       if (nextVerseNum !== null) {
                         triggerTactileFeedback('selection', 'softTap');
-                        scrollToVerse(nextVerseNum);
+                        scrollToVerse(nextVerseNum, 'smooth', false, 'start');
                       }
                     }}
                     className="inline-flex h-7 w-7 items-center justify-center rounded-full text-dharma-muted hover:text-dharma-text hover:bg-dharma-card-soft disabled:opacity-25 disabled:pointer-events-none transition"
@@ -1284,8 +1293,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           {chapterScrollPct > 0 && (
             <div aria-hidden="true" className="absolute -bottom-[1px] left-0 right-0 h-[2px] overflow-hidden bg-dharma-border/30">
               <div
-                className="h-full bg-gradient-to-r from-saffron-500 via-amber-500 to-saffron-600 transition-[width] duration-150"
-                style={{ width: `${chapterScrollPct}%` }}
+                className="reader-progress-fill h-full origin-left bg-gradient-to-r from-saffron-500 via-amber-500 to-saffron-600"
+                style={{ transform: `scaleX(${chapterScrollPct / 100})` }}
               />
             </div>
           )}
@@ -1633,6 +1642,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           mode={readerMode}
           onModeChange={changeReaderMode}
           listening={parayanaActive}
+          recitingVerse={activeRecitingVerse !== null ? toAsciiDigits(activeRecitingVerse) : undefined}
           onToggleListening={toggleListening}
           pinned={focusedVerse !== null}
         />

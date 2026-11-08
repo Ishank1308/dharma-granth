@@ -1,7 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useRef, useState, type KeyboardEvent } from 'react';
 import Link from 'next/link';
+import { motion, useReducedMotion } from 'framer-motion';
+import { SPRING } from '@/app/components/liquid/motion';
+import { usePerformanceMode } from '@/lib/performance-mode';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 export interface ShowcaseScripture {
@@ -357,54 +360,90 @@ const SHOWCASE_ITEMS: Record<TabId, ShowcaseScripture[]> = {
 
 export function HomeScriptureTabs() {
   const [activeTab, setActiveTab] = useState<TabId>('featured');
+  const tabsId = useId();
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const prefersReducedMotion = useReducedMotion();
+  const { isLiteMode } = usePerformanceMode();
+  const animate = !prefersReducedMotion && !isLiteMode;
 
-  const handleTabChange = (tabId: TabId) => {
-    triggerTactileFeedback('selection', 'softTap');
-    setActiveTab(tabId);
+  const handleTabKey = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    const last = CATEGORY_TABS.length - 1;
+    let next: number;
+    switch (event.key) {
+      case 'ArrowLeft': next = index === 0 ? last : index - 1; break;
+      case 'ArrowRight': next = index === last ? 0 : index + 1; break;
+      case 'Home': next = 0; break;
+      case 'End': next = last; break;
+      default: return;
+    }
+    event.preventDefault();
+    setActiveTab(CATEGORY_TABS[next].id);
+    tabs.current[next]?.focus({ preventScroll: true });
+    tabs.current[next]?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   };
 
   const currentItems = SHOWCASE_ITEMS[activeTab];
 
   return (
     <div className="w-full">
-      {/* Category Pills Scroller */}
-      <div
+      <motion.div
+        layoutScroll={animate}
         role="tablist"
         aria-label="ग्रन्थ श्रेणियां · Scripture Categories"
         className="flex items-center gap-2 overflow-x-auto pb-4 pt-1 scrollbar-none sm:flex-wrap sm:justify-center"
       >
-        {CATEGORY_TABS.map((tab) => {
+        {CATEGORY_TABS.map((tab, index) => {
           const isSelected = activeTab === tab.id;
           return (
             <button
               key={tab.id}
+              ref={(element) => { tabs.current[index] = element; }}
+              id={`${tabsId}-${tab.id}`}
               role="tab"
               type="button"
               aria-selected={isSelected}
-              onClick={() => handleTabChange(tab.id)}
-              className={`focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-all ${
+              aria-controls={`${tabsId}-panel`}
+              tabIndex={isSelected ? 0 : -1}
+              onKeyDown={(event) => handleTabKey(event, index)}
+              onClick={() => {
+                if (isSelected) return;
+                triggerTactileFeedback('selection', 'softTap');
+                setActiveTab(tab.id);
+              }}
+              className={`library-category-tab focus-ring relative isolate inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold ${
                 isSelected
-                  ? 'border-dharma-saffron bg-dharma-saffron text-dharma-bg shadow-sm'
+                  ? 'border-dharma-saffron text-dharma-text'
                   : 'border-dharma-border/80 bg-dharma-card/80 text-dharma-muted hover:border-dharma-saffron/40 hover:text-dharma-text'
               }`}
             >
+              {isSelected && (
+                <motion.span
+                  aria-hidden="true"
+                  layoutId={animate ? `${tabsId}-selection` : undefined}
+                  transition={SPRING}
+                  className="library-category-indicator pointer-events-none absolute inset-0 -z-10 rounded-full"
+                />
+              )}
               <span lang="hi" className="font-devanagari text-sm">
                 {tab.labelHi}
               </span>
-              <span className={`text-[11px] font-normal ${isSelected ? 'opacity-90' : 'text-dharma-muted'}`}>
-                ({tab.labelEn})
-              </span>
+              <span className="text-[11px] font-normal">({tab.labelEn})</span>
             </button>
           );
         })}
-      </div>
+      </motion.div>
 
-      {/* Grid of Elevated Manuscript Cards */}
-      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        id={`${tabsId}-panel`}
+        role="tabpanel"
+        aria-labelledby={`${tabsId}-${activeTab}`}
+        data-library-category={activeTab}
+        className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      >
         {currentItems.map((book) => (
           <article
-            key={book.id}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/90 p-5 shadow-raised backdrop-blur-xs transition-all hover:border-dharma-saffron/40 hover:shadow-hover sm:p-6"
+            key={`${activeTab}-${book.id}`}
+            className="library-showcase-book group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/90 p-5 shadow-raised backdrop-blur-xs transition-all hover:border-dharma-saffron/40 hover:shadow-hover sm:p-6"
             style={{ borderLeftWidth: '5px', borderLeftColor: book.colour }}
           >
             {/* Top row: Tags & Tradition */}
@@ -443,7 +482,7 @@ export function HomeScriptureTabs() {
             <div className="mt-5 pt-3 border-t border-dharma-border/50">
               <Link
                 href={book.href}
-                className="chevron-nudge flex min-h-[44px] w-full items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg/80 py-2.5 text-xs font-semibold text-dharma-text transition-all group-hover:border-dharma-saffron/50 group-hover:bg-dharma-saffron/10 group-hover:text-dharma-saffron focus-ring"
+                className="library-showcase-link chevron-nudge flex min-h-[44px] w-full items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg/80 py-2.5 text-xs font-semibold text-dharma-text transition-all group-hover:border-dharma-saffron/50 group-hover:bg-dharma-saffron/10 group-hover:text-dharma-saffron focus-ring"
               >
                 <span>अध्ययन आरम्भ करें</span>
                 <span aria-hidden="true">· Read ›</span>
