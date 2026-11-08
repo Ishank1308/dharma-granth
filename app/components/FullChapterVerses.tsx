@@ -589,7 +589,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
 
   const playVerse = useCallback(
     (targetVerse: FullVerse) => {
-      setActiveRecitingVerse(targetVerse.number);
       scrollToVerse(targetVerse.number);
       saveParayanaChapterProgress(scriptureId, chapterId, targetVerse.number);
       setCurrentVerseContext(
@@ -599,6 +598,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         targetVerse.translation
       );
       startSoundscape('recitation');
+      // Setting the context notifies listeners before playback has started.
+      setActiveRecitingVerse(targetVerse.number);
       triggerTactileFeedback('selection', 'softTap');
     },
     [scriptureTitle, scriptureId, chapterTitle, chapterId]
@@ -761,10 +762,11 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     if (pendingParayanaRef.current && state.verses.length > 0) {
       pendingParayanaRef.current = false;
       setContinuousParayana(true);
-      setParayanaActive(true);
       playVerse(state.verses[0]);
+      setParayanaActive(true);
     }
 
+    let nextVerseTimer: ReturnType<typeof setTimeout> | undefined;
     const handleRecitationEnded = () => {
       const soundState = getSoundscapeState();
       if (parayanaActive || soundState.continuousParayana) {
@@ -776,10 +778,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           if (currentIndex !== -1 && currentIndex + 1 < list.length) {
             const nextVerse = list[currentIndex + 1];
             // 2.5s serene breath pause between verses
-            const timer = setTimeout(() => {
-              playVerse(nextVerse);
-            }, 2500);
-            return () => clearTimeout(timer);
+            clearTimeout(nextVerseTimer);
+            nextVerseTimer = setTimeout(() => playVerse(nextVerse), 2500);
           } else if (currentIndex + 1 >= list.length) {
             // Reached the end of the chapter
             strikeTempleBell(3);
@@ -832,13 +832,13 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       const list = filteredVerses.length > 0 ? filteredVerses : state.verses;
       if (list.length > 0) {
         setContinuousParayana(true);
-        setParayanaActive(true);
         const targetV =
           (startVerseId
             ? list.find((v) => String(v.number) === String(startVerseId))
             : null) || list[0];
         if (targetV) {
           playVerse(targetV);
+          setParayanaActive(true);
         }
       }
     };
@@ -848,6 +848,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     window.addEventListener('dharma:verse-next', handleNext);
     window.addEventListener('dharma:start-chapter-parayana', handleStartParayana);
     return () => {
+      clearTimeout(nextVerseTimer);
       window.removeEventListener('dharma:recitation-ended', handleRecitationEnded);
       window.removeEventListener('dharma:verse-prev', handlePrev);
       window.removeEventListener('dharma:verse-next', handleNext);
