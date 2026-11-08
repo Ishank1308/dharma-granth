@@ -3,7 +3,7 @@
   "photos": {
     "kurukshetra": {
       "subject": "A wide plain at first light, dust in the air (Kurukshetra)",
-      "file": null,
+      "file": "Arjuna and His Charioteer Krishna Confront Karna.jpg",
       "focus": "50% 70%",
       "fx": "dust",
       "queries": [
@@ -14,7 +14,7 @@
     },
     "gita-chariot": {
       "subject": "Krishna and Arjuna on the chariot (classical painting)",
-      "file": null,
+      "file": "Sri Krishna preaching Gita Upadesh to Arjun - Unknown, Kashmir School - Google Cultural Institute.jpg",
       "focus": "50% 45%",
       "fx": "dust",
       "queries": [
@@ -25,7 +25,7 @@
     },
     "vishvarupa": {
       "subject": "The cosmic form (classical painting) or the sun through clouds",
-      "file": null,
+      "file": "BR Hills sun through clouds.JPG",
       "focus": "50% 40%",
       "fx": "none",
       "queries": [
@@ -40,14 +40,15 @@
       "focus": "50% 60%",
       "fx": "mist",
       "queries": [
-        "Himalaya valley morning mist",
-        "yogi meditating Himalaya painting",
-        "Rishikesh mountains mist"
+        "Valley of Flowers National Park",
+        "Himalayas mist morning",
+        "Gangotri glacier valley",
+        "Kedarnath valley clouds"
       ]
     },
     "ashram": {
       "subject": "A thatched hut in a forest clearing",
-      "file": null,
+      "file": "Rama, Sita, and Lakshmana at the Hermitage of Bharadvaja- Folio from a Ramayana Series (IA mma rama sita and lakshmana at the hermitage of bharadvaja folio from a ramay 37955).jpg",
       "focus": "50% 65%",
       "fx": "mist",
       "queries": [
@@ -58,8 +59,8 @@
     },
     "yajna": {
       "subject": "A havan or yajna fire, flames close up",
-      "file": null,
-      "focus": "50% 60%",
+      "file": "Havan kund at Satyanand Yoga Rocklyn Ashram, Australia.jpg",
+      "focus": "50% 55%",
       "fx": "embers",
       "queries": [
         "havan fire",
@@ -69,7 +70,7 @@
     },
     "dawn": {
       "subject": "Sunrise over a river and fields",
-      "file": null,
+      "file": "Sunrise over paddy fields with palm trees in rural Telangana, India.jpg",
       "focus": "50% 60%",
       "fx": "mist",
       "queries": [
@@ -80,7 +81,7 @@
     },
     "ganga": {
       "subject": "The Ganga at Varanasi with lamps on the water",
-      "file": null,
+      "file": "Towards Eternity.jpg",
       "focus": "50% 65%",
       "fx": "glints",
       "queries": [
@@ -91,7 +92,7 @@
     },
     "kailash": {
       "subject": "Mount Kailash",
-      "file": null,
+      "file": "Mount Kailash sunset from Manasarovar lake.jpg",
       "focus": "50% 45%",
       "fx": "mist",
       "queries": [
@@ -102,7 +103,7 @@
     },
     "ocean": {
       "subject": "The open sea at dawn",
-      "file": null,
+      "file": "Sunrise at Indian Ocean.jpg",
       "focus": "50% 55%",
       "fx": "glints",
       "queries": [
@@ -113,7 +114,7 @@
     },
     "forest": {
       "subject": "A deep Indian forest, a banyan's roots",
-      "file": null,
+      "file": "Dense forest of the Periyar tiger reserve around the Sabarimala temple.jpg",
       "focus": "50% 55%",
       "fx": "mist",
       "queries": [
@@ -124,7 +125,7 @@
     },
     "palace": {
       "subject": "An old Indian palace in warm light (Ayodhya)",
-      "file": null,
+      "file": "Jahangir Mahal of Orchha in monsoon.jpg",
       "focus": "50% 55%",
       "fx": "none",
       "queries": [
@@ -135,7 +136,7 @@
     },
     "lanka": {
       "subject": "A city at night under fire-lit clouds (classical painting of Lanka)",
-      "file": null,
+      "file": "Battle at Lanka, Ramayana, Udaipur, 1649-53.jpg",
       "focus": "50% 55%",
       "fx": "embers",
       "queries": [
@@ -146,7 +147,7 @@
     },
     "vrindavan": {
       "subject": "The Yamuna and groves at Vrindavan",
-      "file": null,
+      "file": "Ghat at Yamuna river, Vrindavan.jpg",
       "focus": "50% 60%",
       "fx": "mist",
       "queries": [
@@ -157,7 +158,7 @@
     },
     "devi": {
       "subject": "The Devi on her lion (Raja Ravi Varma or a Pahari painting)",
-      "file": null,
+      "file": "Unknown (Indian) - Durga, Having Decapitated Bull and Mahishasura Within, Drives off Remaining Demons while Gods in Clouds Applaud - 69.429 - Detroit Institute of Arts.jpg",
       "focus": "50% 40%",
       "fx": "none",
       "queries": [
@@ -168,7 +169,7 @@
     },
     "cosmos": {
       "subject": "The night sky and the Milky Way",
-      "file": null,
+      "file": "Holy City and the night sky.jpg",
       "focus": "50% 50%",
       "fx": "stars",
       "queries": [
@@ -179,7 +180,7 @@
     },
     "lotus": {
       "subject": "A lotus pond, leaves on still water",
-      "file": null,
+      "file": "Lotus leaves in a pond (India, 2016).jpg",
       "focus": "50% 60%",
       "fx": "glints",
       "queries": [
@@ -190,7 +191,7 @@
     },
     "temple": {
       "subject": "A stone temple at dusk",
-      "file": null,
+      "file": "Kandariya Mahadeva Temple at Sunset, Khajuraho, Madhya Pradesh.jpg",
       "focus": "50% 50%",
       "fx": "none",
       "queries": [
@@ -201,7 +202,7 @@
     },
     "dusk": {
       "subject": "Dusk over a river ghat",
-      "file": null,
+      "file": "Sunset over Narmada river, Maheshwar.jpg",
       "focus": "50% 60%",
       "fx": "none",
       "queries": [
@@ -212,7 +213,7 @@
     },
     "storm": {
       "subject": "Monsoon storm clouds",
-      "file": null,
+      "file": "Goa, India. Rain clouds. The monsoons hit the region in June.jpg",
       "focus": "50% 45%",
       "fx": "none",
       "queries": [
@@ -223,7 +224,7 @@
     },
     "stars": {
       "subject": "Star trails around the pole star",
-      "file": null,
+      "file": "Star trail in Rishikesh.jpg",
       "focus": "50% 50%",
       "fx": "stars",
       "queries": [
@@ -234,7 +235,7 @@
     },
     "pillar": {
       "subject": "Narasimha emerging from the pillar (classical painting or temple relief)",
-      "file": null,
+      "file": "Hampi Lakshmi Narasimha 2.jpg",
       "focus": "50% 45%",
       "fx": "none",
       "queries": [
@@ -245,7 +246,7 @@
     },
     "manuscript": {
       "subject": "A palm-leaf manuscript by lamplight",
-      "file": null,
+      "file": "Nupur Barua, Of Oil Lamps and Ancient Paper.jpg",
       "focus": "50% 55%",
       "fx": "embers",
       "queries": [
@@ -256,7 +257,7 @@
     },
     "kishkindha": {
       "subject": "The boulder hills of Hampi above the Tungabhadra",
-      "file": null,
+      "file": "Hampi, India, Rocky landscape of Hampi, Granite rocks of Matanga Hill.jpg",
       "focus": "50% 55%",
       "fx": "mist",
       "queries": [
@@ -267,7 +268,7 @@
     },
     "setu": {
       "subject": "The sea at Dhanushkodi towards Lanka",
-      "file": null,
+      "file": "Silvery sea,dhanushkodi,tamilnadu - panoramio.jpg",
       "focus": "50% 55%",
       "fx": "glints",
       "queries": [
@@ -278,7 +279,7 @@
     },
     "lamp": {
       "subject": "A single diya flame in the dark",
-      "file": null,
+      "file": "Deepam.jpg",
       "focus": "50% 55%",
       "fx": "embers",
       "queries": [
