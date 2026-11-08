@@ -1,114 +1,76 @@
 'use client';
 
 import Link from 'next/link';
+import { Bird, ChevronRight, CircleDot, Flame, Flower2, Scale, Sparkles, Sun, Sunrise } from 'lucide-react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
-interface InquiryChip {
-  id: string;
-  icon: string;
-  hindi: string;
-  english: string;
-  href: string;
-}
-
-const INQUIRY_CHIPS: readonly InquiryChip[] = [
+const HOME_GUIDES = [
   {
-    id: 'anxiety',
-    icon: '🕊️',
-    hindi: 'तनाव व चिन्ता',
-    english: 'Peace & Worry',
-    href: '/wisdom-for-life/stress-and-worry/',
+    id: 'inquiry',
+    hindi: 'जीवन के प्रश्न',
+    english: 'Life & reflection',
+    accent: 'border-dharma-maroon/25 bg-dharma-maroon/5',
+    iconAccent: 'bg-dharma-maroon/10',
+    links: [
+      { Icon: Bird, hindi: 'तनाव और चिन्ता', english: 'Stress & worry', href: '/wisdom-for-life/stress-and-worry/' },
+      { Icon: Scale, hindi: 'कर्म और कर्तव्य', english: 'Action & duty', href: '/scripture/bhagavadgita/chapter/2/verse/47/' },
+      { Icon: Flower2, hindi: 'शोक से उबरना', english: 'Living with grief', href: '/wisdom-pathways/sanatan-on-grief/' },
+      { Icon: Sparkles, hindi: 'आत्मज्ञान', english: 'Self-knowledge', href: '/wisdom-pathways/upanishads-on-self/' },
+    ],
   },
   {
-    id: 'duty',
-    icon: '⚖️',
-    hindi: 'कर्म व कर्तव्य',
-    english: 'Duty (Gita 2.47)',
-    href: '/scripture/bhagavadgita/chapter/2/verse/47/',
+    id: 'practice',
+    hindi: 'दैनिक साधना',
+    english: 'Daily practice',
+    accent: 'border-dharma-gold/30 bg-dharma-gold/5',
+    iconAccent: 'bg-dharma-gold/10',
+    links: [
+      { Icon: CircleDot, hindi: '108 जप साधना', english: 'Japa practice', href: '/practice/' },
+      { Icon: Sunrise, hindi: 'आज का पंचांग', english: 'Daily Panchang', href: '/panchang/' },
+      { Icon: Flame, hindi: 'महामृत्युंजय मन्त्र', english: 'Mahamrityunjaya', href: '/mantras/mahamrityunjaya/' },
+      { Icon: Sun, hindi: 'गायत्री मन्त्र', english: 'Gayatri Mantra', href: '/mantras/gayatri-mantra/' },
+    ],
   },
-  {
-    id: 'grief',
-    icon: '🕯️',
-    hindi: 'शोक से मुक्ति',
-    english: 'Healing Grief',
-    href: '/wisdom-pathways/sanatan-on-grief/',
-  },
-  {
-    id: 'self-knowledge',
-    icon: '✨',
-    hindi: 'तत्त्वमसि आत्मज्ञान',
-    english: 'Self-Knowledge',
-    href: '/wisdom-pathways/upanishads-on-self/',
-  },
-  {
-    id: 'japa',
-    icon: '📿',
-    hindi: '108 जप साधना',
-    english: 'Japa Practice',
-    href: '/practice/',
-  },
-  {
-    id: 'panchang',
-    icon: '🌅',
-    hindi: 'दैनिक पञ्चाङ्ग',
-    english: 'Daily Panchang',
-    href: '/panchang/',
-  },
-  {
-    id: 'mrityunjaya',
-    icon: '🔱',
-    hindi: 'महामृत्युंजय मन्त्र',
-    english: 'Protection & Health',
-    href: '/mantras/mahamrityunjaya/',
-  },
-  {
-    id: 'gayatri',
-    icon: '☀️',
-    hindi: 'गायत्री मन्त्र',
-    english: 'Wisdom & Light',
-    href: '/mantras/gayatri-mantra/',
-  },
-];
+] as const;
 
 export function HomeInquiryChips() {
-  const handleClick = () => {
-    triggerTactileFeedback('selection', 'softTap');
-  };
-
   return (
-    <div className="mx-auto mt-6 w-full max-w-3xl">
-      <div className="mb-2.5 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
-        <span aria-hidden="true">✦</span>
-        <span>जिज्ञासा व दैनिक साधना</span>
-        <span aria-hidden="true" className="text-dharma-muted">·</span>
-        <span className="text-dharma-muted font-normal">Sacred Inquiries & Practice</span>
-        <span aria-hidden="true">✦</span>
-      </div>
-
-      <div
-        role="region"
-        aria-label="जीवन जिज्ञासा व दैनिक साधना के त्वरित सूत्र"
-        className="flex items-center gap-2 overflow-x-auto px-1 py-1.5 scrollbar-none sm:flex-wrap sm:justify-center"
-      >
-        {INQUIRY_CHIPS.map((chip) => (
-          <Link
-            key={chip.id}
-            href={chip.href}
-            onClick={handleClick}
-            className="group inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-full border border-dharma-border/80 bg-dharma-card/90 px-3.5 py-2 text-xs font-medium text-dharma-text shadow-xs backdrop-blur-xs transition-all hover:border-dharma-saffron/60 hover:bg-dharma-saffron/5 hover:text-dharma-saffron focus-ring"
-          >
-            <span aria-hidden="true" className="text-sm select-none">
-              {chip.icon}
-            </span>
-            <span className="font-devanagari font-medium text-dharma-text group-hover:text-dharma-saffron">
-              {chip.hindi}
-            </span>
-            <span className="hidden text-[11px] text-dharma-muted group-hover:text-dharma-saffron/80 md:inline">
-              · {chip.english}
-            </span>
-          </Link>
-        ))}
-      </div>
+    <div className="mx-auto mt-6 grid w-full max-w-3xl gap-3 text-left sm:mt-7 sm:grid-cols-2">
+      {HOME_GUIDES.map((group) => (
+        <nav
+          key={group.id}
+          aria-labelledby={`home-guide-${group.id}`}
+          className={`rounded-2xl border p-2.5 sm:p-3 ${group.accent}`}
+        >
+          <h2 id={`home-guide-${group.id}`} className="mb-2 flex flex-wrap items-baseline gap-x-2 px-1 text-sm font-semibold text-dharma-text">
+            <span lang="hi" className="font-devanagari">{group.hindi}</span>
+            <span className="text-xs font-medium text-dharma-muted">{group.english}</span>
+          </h2>
+          <ul className="grid grid-cols-2 gap-1.5">
+            {group.links.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => triggerTactileFeedback('selection', 'softTap')}
+                  className="focus-ring group flex h-full min-h-[52px] items-start gap-1.5 rounded-xl border border-dharma-border/80 bg-dharma-card/90 px-1.5 py-2 text-dharma-text transition-colors hover:border-dharma-saffron/60 hover:bg-dharma-card sm:items-center sm:px-2"
+                >
+                  <span aria-hidden="true" className={`grid h-6 w-6 shrink-0 place-items-center rounded-md text-dharma-saffron ${group.iconAccent}`}>
+                    <link.Icon className="h-3.5 w-3.5" />
+                  </span>
+                  <span className="min-w-0 flex-1 break-words">
+                    <span lang="hi" className="block font-devanagari text-xs font-semibold leading-snug">{link.hindi}</span>
+                    <span className="mt-0.5 block text-[11px] leading-tight text-dharma-muted">{link.english}</span>
+                  </span>
+                  <ChevronRight
+                    aria-hidden="true"
+                    className="hidden h-3.5 w-3.5 shrink-0 text-dharma-muted group-hover:text-dharma-saffron motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5 md:block"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))}
     </div>
   );
 }

@@ -8,8 +8,8 @@ import { HomeInquiryChips } from './HomeInquiryChips';
 const step = (i: number) => ({ '--i': i }) as CSSProperties;
 
 /**
- * Home hero in the Apple idiom: one large promise, filled action buttons, search field,
- * and life inquiry quick chips.
+ * Home hero in the Apple idiom: one large promise, a search entry point,
+ * and direct links for reading, inquiry, and practice.
  * A server component, so the whole hero is in the exported HTML; search is a client island.
  * Motion is CSS only: lines come into focus in turn, kāla-chakra halo turns slowly behind them.
  */
@@ -21,9 +21,9 @@ export function HomeHero() {
         {/* Sacred Trust Eyebrow Pill */}
         {/* On a phone the two phrases sit on two whole lines instead of breaking word by word. */}
         <div style={step(0)} className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 rounded-2xl border border-dharma-saffron/30 bg-dharma-saffron/10 px-4 py-1.5 text-xs font-semibold text-dharma-saffron shadow-xs backdrop-blur-xs sm:rounded-full">
-          <span className="whitespace-nowrap"><span aria-hidden="true">ॐ</span> <span>Hindu Scriptures, Whole</span></span>
+          <span className="whitespace-nowrap"><span aria-hidden="true" className="font-devanagari">ॐ</span> <span>Hindu Scriptures, Whole</span></span>
           <span aria-hidden="true" className="hidden opacity-60 sm:inline">·</span>
-          <span lang="hi" className="whitespace-nowrap font-devanagari">सनातन ग्रन्थ कोश (67 ग्रन्थ · 1,32,000+ श्लोक)</span>
+          <span lang="hi" className="font-devanagari">सनातन ग्रन्थ कोश (67 ग्रन्थ · 1,32,000+ श्लोक)</span>
         </div>
 
         <h1
@@ -43,8 +43,11 @@ export function HomeHero() {
           gives them. Free, quiet, and without ads.
         </p>
 
-        {/* Primary Call to Actions */}
-        <div style={step(4)} className="mt-6 flex flex-col items-center justify-center gap-2 sm:mt-8 sm:flex-row sm:gap-7">
+        <div style={step(4)}>
+          <HeroSearchButton />
+        </div>
+
+        <div style={step(5)} className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 sm:mt-4 sm:gap-x-7">
           <Link
             href="/scripture/bhagavadgita/"
             className="cta-primary inline-flex min-h-[44px] items-center rounded-full bg-dharma-saffron px-6 text-body font-medium text-dharma-bg shadow-sm transition-transform hover:opacity-95 hover:scale-[1.02] active:scale-[0.98]"
@@ -56,12 +59,6 @@ export function HomeHero() {
           </Link>
         </div>
 
-        {/* Global Search Button */}
-        <div style={step(5)}>
-          <HeroSearchButton />
-        </div>
-
-        {/* Life Inquiries & Quick Dilemma Chips */}
         <div style={step(6)}>
           <HomeInquiryChips />
         </div>

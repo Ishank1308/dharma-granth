@@ -52,10 +52,10 @@ export default function HomePage() {
         {/* 1. The promise, the way in, and search */}
         <HomeHero />
 
-        {/* 2. Today's verse, then the reader's own place (nothing on a first visit) */}
+        {/* 2. The reader's own place (nothing on a first visit), then today's verse */}
         <div className="mx-auto flex max-w-content flex-col gap-4 px-5">
-          <HomeTodayVerse />
           <ContinueReading />
+          <HomeTodayVerse />
         </div>
 
         {/* 3. The library as book tiles */}
