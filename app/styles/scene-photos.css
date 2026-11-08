@@ -7,7 +7,7 @@
      --photo-focus  the part of it kept in frame
      --photo-fx     the light moving over it: one of the --fx-* layers below
 
-   Motion: the photo drifts and slowly pushes in (a minute each way), and its light layer
+   Motion: the photo drifts and pushes in (20 seconds each way), and its light layer
    moves on its own: embers rise, mist crosses, glints shimmer on water, dust drifts, stars
    twinkle. A veil of the card's own surface keeps the verse readable in every theme.
    Under Reduce Motion and the quiet modes it holds still; Data Saver keeps the drawings
@@ -77,10 +77,10 @@
 
 @keyframes photo-drift {
     from {
-        transform: scale(1.06) translate3d(-1.2%, 0.6%, 0);
+        transform: scale(1.06) translate3d(-2.4%, 1.2%, 0);
     }
     to {
-        transform: scale(1.14) translate3d(1.2%, -0.8%, 0);
+        transform: scale(1.2) translate3d(2.4%, -1.6%, 0);
     }
 }
 /* The light layer moves on its own clock: the first two layers (veil, light) shift, the photo stays put inside the drifting frame. */
@@ -106,7 +106,7 @@
         background-position: 0 0, 0 0, var(--photo-focus, 50% 50%);
     }
     50% {
-        background-position: 0 0, 3% 1px, var(--photo-focus, 50% 50%);
+        background-position: 0 0, 6% 2px, var(--photo-focus, 50% 50%);
     }
 }
 
@@ -114,15 +114,15 @@
     --photo-fx-motion: none;
 }
 [data-photo-fx='embers'] {
-    --photo-fx-motion: photo-rise 14s linear infinite;
+    --photo-fx-motion: photo-rise 6s linear infinite;
     --photo-fx-size: 220px 260px;
 }
 [data-photo-fx='mist'] {
-    --photo-fx-motion: photo-cross 90s linear infinite;
+    --photo-fx-motion: photo-cross 32s linear infinite;
     --photo-fx-size: 640px 100%;
 }
 [data-photo-fx='dust'] {
-    --photo-fx-motion: photo-cross 160s linear infinite;
+    --photo-fx-motion: photo-cross 48s linear infinite;
     --photo-fx-size: 260px 260px;
 }
 [data-photo-fx='glints'] {
@@ -133,7 +133,37 @@
 }
 [data-photo-fx='glints'],
 [data-photo-fx='stars'] {
-    --photo-fx-motion: photo-shimmer 5s ease-in-out infinite;
+    --photo-fx-motion: photo-shimmer 2.6s ease-in-out infinite;
+}
+
+/* A sunbeam crosses each picture every few seconds, on a clock rather than the scroll-linked
+   band the drawn cards use (components.css), so the picture stays alive while you read. */
+@keyframes photo-sweep {
+    0%,
+    18% {
+        transform: translate3d(-45%, 0, 0);
+        opacity: 0;
+    }
+    40%,
+    62% {
+        opacity: 1;
+    }
+    85%,
+    100% {
+        transform: translate3d(45%, 0, 0);
+        opacity: 0;
+    }
+}
+:root:not([data-data-saver='true']) [data-photo] :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse) .verse-folio::after,
+:root:not([data-data-saver='true']) [data-photo] .verse-card.vt .vt-leaf::after {
+    background: linear-gradient(
+        100deg,
+        transparent 36%,
+        color-mix(in srgb, var(--vc-gold) 22%, transparent) 47%,
+        color-mix(in srgb, white 18%, transparent) 50%,
+        color-mix(in srgb, var(--vc-gold) 22%, transparent) 53%,
+        transparent 64%
+    );
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -146,13 +176,25 @@
         .verse-card.vt
         .vt-leaf::before {
         animation:
-            photo-drift 60s ease-in-out infinite alternate,
+            photo-drift 20s ease-in-out infinite alternate,
             var(--photo-fx-motion);
+    }
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+        [data-photo]
+        :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse)
+        .verse-folio::after,
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+        [data-photo]
+        .verse-card.vt
+        .vt-leaf::after {
+        animation: photo-sweep 9s ease-in-out infinite;
+        animation-timeline: auto;
     }
 }
 
 @media (forced-colors: active), print {
-    [data-photo] :is(.verse-folio, .vt-leaf)::before {
+    [data-photo] :is(.verse-folio, .vt-leaf)::before,
+    [data-photo] :is(.verse-folio, .vt-leaf)::after {
         display: none;
     }
     [data-photo] .chapter-painting {
