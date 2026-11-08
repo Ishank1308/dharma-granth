@@ -1,0 +1,291 @@
+{
+  "_about": "One real photo or classical painting per scene (lib/scene-photos.ts). `file` is a Wikimedia Commons file title; scripts/build-scene-photos.mjs downloads it, checks the licence, crops and compresses it into app/styles/photos/. Entries with file null keep their drawn painting. `focus` is the CSS object-position to keep in frame; `fx` is the light moving over it: embers, mist, glints, dust, stars or none. `queries` are the Commons searches scripts/find-scene-photos.mjs runs to propose candidates.",
+  "photos": {
+    "kurukshetra": {
+      "subject": "A wide plain at first light, dust in the air (Kurukshetra)",
+      "file": null,
+      "focus": "50% 70%",
+      "fx": "dust",
+      "queries": [
+        "Kurukshetra battle painting",
+        "Brahma Sarovar Kurukshetra",
+        "Kurukshetra war Razmnama"
+      ]
+    },
+    "gita-chariot": {
+      "subject": "Krishna and Arjuna on the chariot (classical painting)",
+      "file": null,
+      "focus": "50% 45%",
+      "fx": "dust",
+      "queries": [
+        "Krishna Arjuna chariot painting",
+        "Bhagavad Gita Krishna Arjuna Raja Ravi Varma",
+        "Gita upadesh painting"
+      ]
+    },
+    "vishvarupa": {
+      "subject": "The cosmic form (classical painting) or the sun through clouds",
+      "file": null,
+      "focus": "50% 40%",
+      "fx": "none",
+      "queries": [
+        "Vishvarupa painting",
+        "Vishvarupa Krishna Arjuna painting",
+        "sun rays through clouds India"
+      ]
+    },
+    "yogi": {
+      "subject": "A Himalayan valley in morning mist",
+      "file": null,
+      "focus": "50% 60%",
+      "fx": "mist",
+      "queries": [
+        "Himalaya valley morning mist",
+        "yogi meditating Himalaya painting",
+        "Rishikesh mountains mist"
+      ]
+    },
+    "ashram": {
+      "subject": "A thatched hut in a forest clearing",
+      "file": null,
+      "focus": "50% 65%",
+      "fx": "mist",
+      "queries": [
+        "rishi hermitage painting",
+        "Kerala forest hut",
+        "ashram forest painting Ravi Varma"
+      ]
+    },
+    "yajna": {
+      "subject": "A havan or yajna fire, flames close up",
+      "file": null,
+      "focus": "50% 60%",
+      "fx": "embers",
+      "queries": [
+        "havan fire",
+        "yajna fire ritual",
+        "homa fire"
+      ]
+    },
+    "dawn": {
+      "subject": "Sunrise over a river and fields",
+      "file": null,
+      "focus": "50% 60%",
+      "fx": "mist",
+      "queries": [
+        "sunrise river India fields",
+        "Ganges sunrise",
+        "sunrise paddy fields India"
+      ]
+    },
+    "ganga": {
+      "subject": "The Ganga at Varanasi with lamps on the water",
+      "file": null,
+      "focus": "50% 65%",
+      "fx": "glints",
+      "queries": [
+        "Varanasi ghats evening diya",
+        "Ganga aarti Varanasi",
+        "diyas floating Ganges"
+      ]
+    },
+    "kailash": {
+      "subject": "Mount Kailash",
+      "file": null,
+      "focus": "50% 45%",
+      "fx": "mist",
+      "queries": [
+        "Mount Kailash",
+        "Kailash north face",
+        "Mount Kailash Manasarovar"
+      ]
+    },
+    "ocean": {
+      "subject": "The open sea at dawn",
+      "file": null,
+      "focus": "50% 55%",
+      "fx": "glints",
+      "queries": [
+        "Indian Ocean sunrise",
+        "sea at dawn Kanyakumari",
+        "ocean waves sunrise"
+      ]
+    },
+    "forest": {
+      "subject": "A deep Indian forest, a banyan's roots",
+      "file": null,
+      "focus": "50% 55%",
+      "fx": "mist",
+      "queries": [
+        "banyan tree roots India forest",
+        "Western Ghats forest mist",
+        "Indian forest sunlight"
+      ]
+    },
+    "palace": {
+      "subject": "An old Indian palace in warm light (Ayodhya)",
+      "file": null,
+      "focus": "50% 55%",
+      "fx": "none",
+      "queries": [
+        "Ayodhya Saryu ghat",
+        "Orchha palace",
+        "Indian palace sunset"
+      ]
+    },
+    "lanka": {
+      "subject": "A city at night under fire-lit clouds (classical painting of Lanka)",
+      "file": null,
+      "focus": "50% 55%",
+      "fx": "embers",
+      "queries": [
+        "Hanuman burning Lanka painting",
+        "Lanka dahan painting",
+        "Ravana Lanka painting"
+      ]
+    },
+    "vrindavan": {
+      "subject": "The Yamuna and groves at Vrindavan",
+      "file": null,
+      "focus": "50% 60%",
+      "fx": "mist",
+      "queries": [
+        "Vrindavan Yamuna",
+        "Krishna Radha Vrindavan painting Kangra",
+        "Yamuna river Vrindavan ghat"
+      ]
+    },
+    "devi": {
+      "subject": "The Devi on her lion (Raja Ravi Varma or a Pahari painting)",
+      "file": null,
+      "focus": "50% 40%",
+      "fx": "none",
+      "queries": [
+        "Durga lion Raja Ravi Varma",
+        "Durga Mahishasura painting",
+        "Durga Kangra painting"
+      ]
+    },
+    "cosmos": {
+      "subject": "The night sky and the Milky Way",
+      "file": null,
+      "focus": "50% 50%",
+      "fx": "stars",
+      "queries": [
+        "Milky Way India night sky",
+        "Milky Way Ladakh",
+        "night sky stars Himalaya"
+      ]
+    },
+    "lotus": {
+      "subject": "A lotus pond, leaves on still water",
+      "file": null,
+      "focus": "50% 60%",
+      "fx": "glints",
+      "queries": [
+        "lotus pond India",
+        "Nelumbo nucifera pond",
+        "lotus leaves water"
+      ]
+    },
+    "temple": {
+      "subject": "A stone temple at dusk",
+      "file": null,
+      "focus": "50% 50%",
+      "fx": "none",
+      "queries": [
+        "Hindu temple dusk",
+        "Khajuraho temple sunset",
+        "Hampi temple dusk"
+      ]
+    },
+    "dusk": {
+      "subject": "Dusk over a river ghat",
+      "file": null,
+      "focus": "50% 60%",
+      "fx": "none",
+      "queries": [
+        "Varanasi ghat dusk",
+        "river ghat sunset India",
+        "Maheshwar ghat dusk"
+      ]
+    },
+    "storm": {
+      "subject": "Monsoon storm clouds",
+      "file": null,
+      "focus": "50% 45%",
+      "fx": "none",
+      "queries": [
+        "monsoon clouds India",
+        "storm clouds monsoon",
+        "dark monsoon sky"
+      ]
+    },
+    "stars": {
+      "subject": "Star trails around the pole star",
+      "file": null,
+      "focus": "50% 50%",
+      "fx": "stars",
+      "queries": [
+        "star trails Polaris",
+        "star trails night sky",
+        "circumpolar star trails"
+      ]
+    },
+    "pillar": {
+      "subject": "Narasimha emerging from the pillar (classical painting or temple relief)",
+      "file": null,
+      "focus": "50% 45%",
+      "fx": "none",
+      "queries": [
+        "Narasimha pillar painting",
+        "Narasimha Hiranyakashipu painting",
+        "Narasimha sculpture Hampi"
+      ]
+    },
+    "manuscript": {
+      "subject": "A palm-leaf manuscript by lamplight",
+      "file": null,
+      "focus": "50% 55%",
+      "fx": "embers",
+      "queries": [
+        "palm leaf manuscript",
+        "Sanskrit palm leaf manuscript",
+        "oil lamp manuscript"
+      ]
+    },
+    "kishkindha": {
+      "subject": "The boulder hills of Hampi above the Tungabhadra",
+      "file": null,
+      "focus": "50% 55%",
+      "fx": "mist",
+      "queries": [
+        "Hampi boulders Tungabhadra",
+        "Anjanadri hill Hampi",
+        "Hampi landscape sunset"
+      ]
+    },
+    "setu": {
+      "subject": "The sea at Dhanushkodi towards Lanka",
+      "file": null,
+      "focus": "50% 55%",
+      "fx": "glints",
+      "queries": [
+        "Dhanushkodi",
+        "Rama Setu Dhanushkodi beach",
+        "Dhanushkodi sea"
+      ]
+    },
+    "lamp": {
+      "subject": "A single diya flame in the dark",
+      "file": null,
+      "focus": "50% 55%",
+      "fx": "embers",
+      "queries": [
+        "diya flame dark",
+        "oil lamp diya",
+        "deepam flame"
+      ]
+    }
+  }
+}

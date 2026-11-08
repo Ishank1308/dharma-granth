@@ -1,0 +1,161 @@
+/* Real photographs and classical paintings behind the verses (lib/scene-photos.ts).
+   A chapter whose photo has been fetched (scripts/build-scene-photos.mjs) carries
+   data-photo on its wrapper; the photo then replaces the drawn scene (scenes.css) or
+   painting (colour.css, "Chapter paintings") behind each verse's Sanskrit panel and the
+   chapter's opening picture. scene-photos.generated.css sets, per photo:
+     --photo        the image (AVIF, WebP fallback)
+     --photo-focus  the part of it kept in frame
+     --photo-fx     the light moving over it: one of the --fx-* layers below
+
+   Motion: the photo drifts and slowly pushes in (a minute each way), and its light layer
+   moves on its own: embers rise, mist crosses, glints shimmer on water, dust drifts, stars
+   twinkle. A veil of the card's own surface keeps the verse readable in every theme.
+   Under Reduce Motion and the quiet modes it holds still; Data Saver keeps the drawings
+   and loads no photo; print and forced colours show no picture. */
+
+:root {
+    /* Each light is one tile (an inline SVG), so the photo's layer list stays three long. */
+    --fx-none: none;
+    --fx-embers: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='260'%3E%3Cdefs%3E%3Cfilter id='g'%3E%3CfeGaussianBlur stdDeviation='0.6'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23g)'%3E%3Ccircle cx='71' cy='39' r='1.5' fill='%23ffbf73' fill-opacity='0.53'/%3E%3Ccircle cx='118' cy='95' r='0.9' fill='%23ffbf73' fill-opacity='0.73'/%3E%3Ccircle cx='8' cy='113' r='0.9' fill='%23ffbf73' fill-opacity='0.54'/%3E%3Ccircle cx='93' cy='215' r='0.9' fill='%23ffbf73' fill-opacity='0.60'/%3E%3Ccircle cx='138' cy='246' r='1.4' fill='%23ffbf73' fill-opacity='0.68'/%3E%3Ccircle cx='215' cy='12' r='1.7' fill='%23ffbf73' fill-opacity='0.63'/%3E%3Ccircle cx='32' cy='31' r='1.1' fill='%23ffbf73' fill-opacity='0.87'/%3E%3Ccircle cx='40' cy='151' r='1.4' fill='%23ffbf73' fill-opacity='0.67'/%3E%3Ccircle cx='121' cy='16' r='0.9' fill='%23ffbf73' fill-opacity='0.59'/%3E%3C/g%3E%3C/svg%3E");
+    --fx-mist: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='400'%3E%3Cdefs%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='28'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23b)' fill='%23fff'%3E%3Cellipse cx='150' cy='300' rx='170' ry='34' fill-opacity='0.22'/%3E%3Cellipse cx='470' cy='250' rx='150' ry='28' fill-opacity='0.16'/%3E%3Cellipse cx='330' cy='350' rx='190' ry='30' fill-opacity='0.2'/%3E%3C/g%3E%3C/svg%3E");
+    --fx-glints: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='180'%3E%3Cellipse cx='204' cy='123' rx='2.8' ry='0.6' fill='%23fff4d6' fill-opacity='0.75'/%3E%3Cellipse cx='136' cy='110' rx='4.0' ry='0.6' fill='%23fff4d6' fill-opacity='0.79'/%3E%3Cellipse cx='73' cy='137' rx='3.3' ry='0.6' fill='%23fff4d6' fill-opacity='0.86'/%3E%3Cellipse cx='219' cy='109' rx='4.5' ry='0.6' fill='%23fff4d6' fill-opacity='0.59'/%3E%3Cellipse cx='125' cy='156' rx='2.4' ry='0.6' fill='%23fff4d6' fill-opacity='0.72'/%3E%3Cellipse cx='12' cy='147' rx='3.9' ry='0.6' fill='%23fff4d6' fill-opacity='0.75'/%3E%3Cellipse cx='263' cy='111' rx='3.7' ry='0.6' fill='%23fff4d6' fill-opacity='0.76'/%3E%3Cellipse cx='174' cy='126' rx='4.1' ry='0.6' fill='%23fff4d6' fill-opacity='0.88'/%3E%3Cellipse cx='142' cy='146' rx='2.2' ry='0.6' fill='%23fff4d6' fill-opacity='0.80'/%3E%3C/svg%3E");
+    --fx-dust: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Ccircle cx='168' cy='258' r='1.2' fill='%23ffecc8' fill-opacity='0.37'/%3E%3Ccircle cx='100' cy='174' r='0.6' fill='%23ffecc8' fill-opacity='0.42'/%3E%3Ccircle cx='44' cy='30' r='0.6' fill='%23ffecc8' fill-opacity='0.49'/%3E%3Ccircle cx='34' cy='64' r='0.9' fill='%23ffecc8' fill-opacity='0.52'/%3E%3Ccircle cx='21' cy='117' r='1.0' fill='%23ffecc8' fill-opacity='0.52'/%3E%3Ccircle cx='213' cy='225' r='0.8' fill='%23ffecc8' fill-opacity='0.40'/%3E%3Ccircle cx='93' cy='230' r='1.3' fill='%23ffecc8' fill-opacity='0.34'/%3E%3C/svg%3E");
+    --fx-stars: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='200'%3E%3Ccircle cx='42' cy='46' r='0.6' fill='%23ffffff' fill-opacity='0.69'/%3E%3Ccircle cx='141' cy='53' r='0.5' fill='%23ffffff' fill-opacity='0.67'/%3E%3Ccircle cx='89' cy='113' r='1.1' fill='%23ffffff' fill-opacity='0.78'/%3E%3Ccircle cx='124' cy='124' r='0.9' fill='%23ffffff' fill-opacity='0.52'/%3E%3Ccircle cx='216' cy='156' r='1.0' fill='%23ffffff' fill-opacity='0.82'/%3E%3Ccircle cx='94' cy='80' r='0.6' fill='%23ffffff' fill-opacity='0.75'/%3E%3Ccircle cx='15' cy='13' r='0.6' fill='%23ffffff' fill-opacity='0.56'/%3E%3Ccircle cx='82' cy='11' r='0.5' fill='%23ffffff' fill-opacity='0.56'/%3E%3Ccircle cx='24' cy='73' r='0.5' fill='%23ffffff' fill-opacity='0.85'/%3E%3Ccircle cx='147' cy='30' r='0.7' fill='%23ffffff' fill-opacity='0.64'/%3E%3C/svg%3E");
+}
+
+/* The veil: the card's surface over the photo, lightest at the foot where no text sits. */
+[data-photo] {
+    --photo-veil: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--surface-raised) 74%, transparent) 0%,
+        color-mix(in srgb, var(--surface-raised) 66%, transparent) 62%,
+        color-mix(in srgb, var(--surface-raised) 38%, transparent) 100%
+    );
+}
+:root:is([data-theme='night'], [data-theme='dark']) [data-photo] {
+    --photo-veil: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--surface-raised) 70%, transparent) 0%,
+        color-mix(in srgb, var(--surface-raised) 60%, transparent) 62%,
+        color-mix(in srgb, var(--surface-raised) 30%, transparent) 100%
+    );
+}
+
+:root:not([data-data-saver='true']) [data-painting][data-photo] {
+    --painting: none;
+}
+
+:root:not([data-data-saver='true']) [data-photo] :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse) .verse-folio::before,
+:root:not([data-data-saver='true']) [data-photo] .verse-card.vt .vt-leaf::before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 1;
+    -webkit-mask: none;
+    mask: none;
+    background-image: var(--photo-veil), var(--photo-fx, none), var(--photo);
+    background-size: 100% 100%, var(--photo-fx-size, auto), cover;
+    background-repeat: no-repeat, repeat, no-repeat;
+    background-position: 0 0, 0 0, var(--photo-focus, 50% 50%);
+    transform-origin: 50% 60%;
+    transform: scale(1.06);
+    will-change: transform;
+}
+
+/* The chapter's opening picture uses the photo too. */
+:root:not([data-data-saver='true']) [data-photo] .chapter-painting {
+    background: var(--photo) var(--photo-focus, 50% 50%) / cover no-repeat;
+}
+
+:root[data-theme='paper'] [data-photo] :is(.verse-folio, .vt-leaf, .chapter-painting)::before,
+:root[data-theme='paper'] [data-photo] .chapter-painting {
+    filter: sepia(0.3) saturate(0.85);
+}
+
+@keyframes photo-drift {
+    from {
+        transform: scale(1.06) translate3d(-1.2%, 0.6%, 0);
+    }
+    to {
+        transform: scale(1.14) translate3d(1.2%, -0.8%, 0);
+    }
+}
+/* The light layer moves on its own clock: the first two layers (veil, light) shift, the photo stays put inside the drifting frame. */
+@keyframes photo-rise {
+    from {
+        background-position: 0 0, 0 0, var(--photo-focus, 50% 50%);
+    }
+    to {
+        background-position: 0 0, 0 -260px, var(--photo-focus, 50% 50%);
+    }
+}
+@keyframes photo-cross {
+    from {
+        background-position: 0 0, 0 0, var(--photo-focus, 50% 50%);
+    }
+    to {
+        background-position: 0 0, 640px 0, var(--photo-focus, 50% 50%);
+    }
+}
+@keyframes photo-shimmer {
+    0%,
+    100% {
+        background-position: 0 0, 0 0, var(--photo-focus, 50% 50%);
+    }
+    50% {
+        background-position: 0 0, 3% 1px, var(--photo-focus, 50% 50%);
+    }
+}
+
+[data-photo] {
+    --photo-fx-motion: none;
+}
+[data-photo-fx='embers'] {
+    --photo-fx-motion: photo-rise 14s linear infinite;
+    --photo-fx-size: 220px 260px;
+}
+[data-photo-fx='mist'] {
+    --photo-fx-motion: photo-cross 90s linear infinite;
+    --photo-fx-size: 640px 100%;
+}
+[data-photo-fx='dust'] {
+    --photo-fx-motion: photo-cross 160s linear infinite;
+    --photo-fx-size: 260px 260px;
+}
+[data-photo-fx='glints'] {
+    --photo-fx-size: 300px 180px;
+}
+[data-photo-fx='stars'] {
+    --photo-fx-size: 240px 200px;
+}
+[data-photo-fx='glints'],
+[data-photo-fx='stars'] {
+    --photo-fx-motion: photo-shimmer 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+        [data-photo]
+        :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse)
+        .verse-folio::before,
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+        [data-photo]
+        .verse-card.vt
+        .vt-leaf::before {
+        animation:
+            photo-drift 60s ease-in-out infinite alternate,
+            var(--photo-fx-motion);
+    }
+}
+
+@media (forced-colors: active), print {
+    [data-photo] :is(.verse-folio, .vt-leaf)::before {
+        display: none;
+    }
+    [data-photo] .chapter-painting {
+        background: none;
+    }
+}

@@ -1,0 +1,65 @@
+name: Scene photos
+
+# Fetches the real photos and paintings behind the verses from Wikimedia Commons,
+# which the cloud editing sessions cannot reach. It proposes candidates for scenes
+# that have no photo chosen yet (scripts/find-scene-photos.mjs), then fetches and
+# compresses the chosen ones (scripts/build-scene-photos.mjs), and pushes the
+# results to a new branch, scene-photos/run-<id>, to review and merge into the PR.
+on:
+  pull_request:
+    branches: ["master"]
+    paths:
+      - "data/scene-photos/manifest.json"
+      - "scripts/find-scene-photos.mjs"
+      - "scripts/build-scene-photos.mjs"
+      - ".github/workflows/scene-photos.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scene-photos-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  photos:
+    name: Fetch scene photos
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+
+      - name: Install sharp
+        run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund sharp@0.35.5
+
+      - name: Propose candidates
+        run: node scripts/find-scene-photos.mjs
+
+      - name: Fetch and compress the chosen photos
+        run: node scripts/build-scene-photos.mjs
+
+      - name: Push the results to a new branch
+        env:
+          BRANCH: scene-photos/run-${{ github.run_id }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add data/scene-photos app/styles/photos app/styles/scene-photos.generated.css lib/scene-photos.generated.ts
+          if git diff --cached --quiet; then
+            echo "Nothing new."
+            exit 0
+          fi
+          git commit -m "Scene photos from Wikimedia Commons (run ${{ github.run_id }})"
+          git push origin "$BRANCH"
+          echo "Pushed $BRANCH" >> "$GITHUB_STEP_SUMMARY"
