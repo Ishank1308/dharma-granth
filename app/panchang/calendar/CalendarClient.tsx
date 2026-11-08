@@ -580,12 +580,19 @@ export function CalendarClient() {
           {/* Header of Inspector */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-dharma-border pb-4">
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xl sm:text-2xl">{selectedDay.moonGlyph}</span>
                 <h2 id="day-inspector-title" className="text-title-2 font-bold text-dharma-text">
                   {selectedDay.dayNumber} {MONTH_NAMES[month].hi} {year} · {WEEKDAYS[selectedDay.dayOfWeek].fullHi}
                 </h2>
-              </div>
+                <Link
+                href={`/panchang/muhurta/?date=${selectedDay.dateIso}`}
+                className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-saffron/40 bg-dharma-bg px-4 py-2 text-footnote font-semibold text-dharma-text hover:border-dharma-saffron hover:text-dharma-saffron"
+              >
+                <span>इस दिन का मुहूर्त · Muhurta</span>
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+            </div>
               <p className="text-footnote text-dharma-muted mt-0.5">
                 {selectedDay.dateIso} ({WEEKDAYS[selectedDay.dayOfWeek].fullEn}) · {selectedDay.panchang.ritu.nameHi} ऋतु ({selectedDay.panchang.ritu.seasonEn}) · स्थान: {location.nameHi}
               </p>

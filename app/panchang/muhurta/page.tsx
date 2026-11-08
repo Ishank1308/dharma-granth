@@ -1,21 +1,21 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Compass, Sparkles, ShieldCheck, ChevronRight, BookOpen } from 'lucide-react';
-import { calculateEducationalPanchang, PRESET_LOCATIONS } from '@/lib/panchang';
+import { calculateEducationalPanchang, PRESET_LOCATIONS, todayForLocation } from '@/lib/panchang';
 import { MUHURTA_FAQS } from '@/data/muhurta-data';
 import { MuhurtaMatrixClient } from './MuhurtaMatrixClient';
 
 export const metadata: Metadata = {
-  title: 'मुहूर्त निर्णय तालिका · Vedic Muhurta & Prashna Decision Matrix | Dharma Granth',
+  title: 'मुहूर्त कैलेंडर · Muhurta Calendar | Dharma Granth',
   description:
-    'शास्त्रीय पञ्चाङ्ग शुद्धि एवं मुहूर्त निर्णय मैट्रिक्स — विद्यारम्भ, गृहप्रवेश, यात्रा, व्रत संकल्प, नवीन कार्य एवं औषध सेवन के लिए तिथि, वार, नक्षत्र, करण एवं योग की प्रामाणिक अनुकूलता।',
+    'तिथि और शहर चुनकर राहुकाल, अभिजीत मुहूर्त और पञ्चाङ्ग के पाँच अङ्ग देखें। पारम्परिक मुहूर्त नियमों का अध्ययन करें।',
   alternates: {
     canonical: 'https://dharmagranth.dev/panchang/muhurta/',
   },
   openGraph: {
-    title: 'मुहूर्त निर्णय तालिका · Vedic Muhurta Decision Matrix',
+    title: 'मुहूर्त कैलेंडर · Muhurta Calendar',
     description:
-      'शास्त्रीय पञ्चाङ्ग शुद्धि — विद्यारम्भ, गृहप्रवेश, यात्रा, व्यापार एवं साधना के लिए प्रामाणिक मुहूर्त विश्लेषण।',
+      'चुनी हुई तिथि और शहर के लिए अनुमानित राहुकाल, अभिजीत मुहूर्त और पारम्परिक पञ्चाङ्ग नियम देखें।',
     url: 'https://dharmagranth.dev/panchang/muhurta/',
     siteName: 'Dharma Granth',
     images: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 export default function MuhurtaPage() {
-  const panchang = calculateEducationalPanchang(new Date(), PRESET_LOCATIONS[0]);
+  const panchang = calculateEducationalPanchang(todayForLocation(PRESET_LOCATIONS[0]), PRESET_LOCATIONS[0]);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -104,14 +104,14 @@ export default function MuhurtaPage() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-dharma-text tracking-tight leading-tight mb-4">
-              मुहूर्त निर्णय तालिका
+              मुहूर्त कैलेंडर
               <span className="block text-xl sm:text-2xl font-serif text-saffron-700 dark:text-saffron-400 font-normal mt-1">
-                Panchanga-Shuddhi & Auspicious Action Matrix
+                Muhurta Calendar & Panchang Study
               </span>
             </h1>
 
             <p className="text-sm sm:text-base text-dharma-muted leading-relaxed mb-6">
-              मुहूर्त चिन्तामणि और वृहत्संहिता पर आधारित शास्त्रीय काल-निर्णय पद्धति। तिथि, वार, नक्षत्र, करण और योग के समन्वय से जानिए कि आज का समय अथवा आपका अभीष्ट कालखण्ड विद्यारम्भ, गृहप्रवेश, यात्रा, व्यापार और साधना के लिए कितना अनुकूल है।
+              आप तिथि और शहर चुनकर राहुकाल, अभिजीत मुहूर्त और उस दिन के पञ्चाङ्ग को एक साथ देख सकते हैं। विद्यारम्भ, गृहप्रवेश, यात्रा, नवीन कार्य और साधना से जुड़े पारम्परिक नियमों को उदाहरणों के साथ समझें।
             </p>
 
             <div className="flex flex-wrap items-center gap-4 text-xs text-dharma-muted">
@@ -121,7 +121,7 @@ export default function MuhurtaPage() {
               </span>
               <span className="inline-flex items-center gap-1.5 bg-dharma-card px-3 py-1.5 rounded-lg border border-dharma-border">
                 <Sparkles className="w-4 h-4 text-amber-500" />
-                <span>6 प्रमुख जीवन उपक्रम</span>
+                <span>5 पारम्परिक कार्य-श्रेणियाँ</span>
               </span>
               <span className="inline-flex items-center gap-1.5 bg-dharma-card px-3 py-1.5 rounded-lg border border-dharma-border">
                 <BookOpen className="w-4 h-4 text-blue-500" />
@@ -160,7 +160,14 @@ export default function MuhurtaPage() {
         {/* Educational Disclaimer */}
         <div className="mt-12 p-4 rounded-xl border border-dharma-border/60 bg-dharma-card/60 text-xs text-dharma-muted leading-relaxed">
           <p>
-            <strong>शैक्षणिक एवं स्वाध्याय ध्येय (Educational Purpose):</strong> धर्म ग्रन्थ का यह मुहूर्त निर्णय मैट्रिक्स शास्त्रीय ग्रन्थों (मुहूर्त चिन्तामणि, वृहत्संहिता) के सामान्य सिद्धान्तों को सुगम बनाने के लिए बनाया गया एक शैक्षणिक उपकरण है। यह किसी भी प्रकार के अन्धविश्वास या भय को बढ़ावा नहीं देता। विवाह, मन्दिर प्रतिष्ठा अथवा वृहद् यज्ञादि संस्कारों के लिए स्थानीय दृक-पञ्चाङ्ग और योग्य कुलीन आचार्यों का प्रत्यक्ष परामर्श सर्वथा आवश्यक है।
+            <strong>अध्ययन और गणना · Study and calculation</strong>। इस पृष्ठ पर समय अनुमानित हैं और अनुकूलता अंक पारम्परिक नियमों के अध्ययन के लिए हैं। विवाह, मन्दिर प्रतिष्ठा और अन्य संस्कारों के लिए स्थानीय दृक-पञ्चाङ्ग और अपने आचार्य से समय की पुष्टि करें।
+          </p>
+          <p className="mt-2">
+            <a className="underline underline-offset-2 hover:text-dharma-text" href="https://www.drikpanchang.com/panchang/rahu-kaal.html">राहुकाल की गणना · Rahu Kalam method</a>
+            <span aria-hidden="true"> · </span>
+            <a className="underline underline-offset-2 hover:text-dharma-text" href="https://www.drikpanchang.com/muhurat/daily/abhijit-muhurat.html">अभिजीत की गणना · Abhijit method</a>
+            <span aria-hidden="true"> · </span>
+            <a className="underline underline-offset-2 hover:text-dharma-text" href="https://gml.noaa.gov/grad/solcalc/solareqns.PDF">सौर गणना · NOAA solar equations</a>
           </p>
         </div>
 

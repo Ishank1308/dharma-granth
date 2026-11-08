@@ -30,7 +30,6 @@ import {
   MUHURTA_FAQS,
   getStandardRahuKalam,
   evaluateEndeavorMuhurta,
-  type MuhurtaEndeavor,
   type MuhurtaEvaluation,
 } from '@/data/muhurta-data';
 import {
@@ -41,38 +40,16 @@ import {
   YOGA_DATA,
   calculateEducationalPanchang,
   PRESET_LOCATIONS,
+  formatPanchangClock,
+  todayForLocation,
   type LocationConfig,
+  type SolarTimes,
 } from '@/lib/panchang';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 
-function computeAbhijitWindow(solarNoon: string, dayLength: string): string {
-  const m = solarNoon.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
-  if (!m) return '~11:45 AM से 12:35 PM';
+import { getMuhurtaDaylight, parseMuhurtaDate } from '@/lib/muhurta-daylight';
 
-  let hrs = Number(m[1]) % 12;
-  if (m[3].toUpperCase() === 'PM') hrs += 12;
-  const noonMinutes = hrs * 60 + Number(m[2]);
-
-  let halfSpan = 24;
-  const dl = dayLength.match(/^(\d+)h\s*(\d+)m$/i);
-  if (dl) {
-    const totalDayMins = Number(dl[1]) * 60 + Number(dl[2]);
-    if (totalDayMins > 0) {
-      halfSpan = Math.max(18, Math.min(30, Math.round(totalDayMins / 30)));
-    }
-  }
-
-  const formatMins = (rawMins: number) => {
-    const norm = ((rawMins % 1440) + 1440) % 1440;
-    const h24 = Math.floor(norm / 60);
-    const min = norm % 60;
-    const period = h24 >= 12 ? 'PM' : 'AM';
-    const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
-    return `${String(h12).padStart(2, '0')}:${String(min).padStart(2, '0')} ${period}`;
-  };
-
-  return `${formatMins(noonMinutes - halfSpan)} से ${formatMins(noonMinutes + halfSpan)}`;
-}
+const STUDY_ENDEAVORS = MUHURTA_ENDEAVORS.filter(({ id }) => id !== 'aushadha-sevana');
 
 interface MuhurtaClientProps {
   initialPanchang: {
@@ -93,12 +70,7 @@ interface MuhurtaClientProps {
     yogaIndex: number;
     yogaName: string;
     yogaNameHi: string;
-    solarTimes: {
-      sunrise: string;
-      sunset: string;
-      solarNoon: string;
-      dayLength: string;
-    };
+    solarTimes: SolarTimes;
   };
 }
 
@@ -107,7 +79,28 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
     'dharma.panchang.location',
     PRESET_LOCATIONS[0]
   );
+  const activeLocation = PRESET_LOCATIONS.find((item) => item.id === location?.id) ?? PRESET_LOCATIONS[0];
+  const [selectedDate, setSelectedDate] = useState('');
   const [livePanchang, setLivePanchang] = useState(initialPanchang);
+
+  useEffect(() => {
+    const readDate = () => {
+      const value = new URLSearchParams(window.location.search).get('date') ?? '';
+      setSelectedDate(parseMuhurtaDate(value) ? value : '');
+    };
+    readDate();
+    window.addEventListener('popstate', readDate);
+    return () => window.removeEventListener('popstate', readDate);
+  }, []);
+
+  const selectDate = (value: string) => {
+    if (value && !parseMuhurtaDate(value)) return;
+    setSelectedDate(value);
+    const url = new URL(window.location.href);
+    if (value) url.searchParams.set('date', value);
+    else url.searchParams.delete('date');
+    window.history.replaceState(window.history.state, '', url);
+  };
   const [activeTab, setActiveTab] = useState<'today' | 'simulator' | 'principles' | 'faqs'>('today');
   const [expandedEndeavorId, setExpandedEndeavorId] = useState<string | null>(null);
 
@@ -119,10 +112,10 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
   const [simYoga, setSimYoga] = useState<string>(initialPanchang.yogaName);
   const [simEndeavorId, setSimEndeavorId] = useState<string>('vidya-arambha');
 
-  // Refresh ephemeris on client mount & whenever saved city changes
+  // The chosen civil day stays the same when the reader changes city.
   useEffect(() => {
-    const activeLoc = PRESET_LOCATIONS.find((item) => item.id === location.id) ?? PRESET_LOCATIONS[0];
-    const p = calculateEducationalPanchang(new Date(), activeLoc);
+    const date = parseMuhurtaDate(selectedDate) ?? todayForLocation(activeLocation);
+    const p = calculateEducationalPanchang(date, activeLocation);
     const fresh = {
       isoDate: p.isoDate,
       dayOfWeekIndex: p.date.getDay(),
@@ -149,16 +142,17 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
     setSimNakshatra(fresh.nakshatraIndex);
     setSimKarana(fresh.karanaName);
     setSimYoga(fresh.yogaName);
-  }, [location]);
+  }, [selectedDate, activeLocation]);
 
-  const todayRahu = getStandardRahuKalam(livePanchang.dayOfWeekIndex);
-  const abhijitWindow = computeAbhijitWindow(
-    livePanchang.solarTimes.solarNoon,
-    livePanchang.solarTimes.dayLength
-  );
+  const daylight = getMuhurtaDaylight(livePanchang.solarTimes, livePanchang.dayOfWeekIndex);
+  const calendarYear = Number(livePanchang.isoDate.slice(0, 4));
+  const calendarHref = calendarYear >= 2026 && calendarYear <= 2028
+    ? `/panchang/calendar/?date=${livePanchang.isoDate}`
+    : '/panchang/calendar/';
+  const localOffsetMinutes = Math.round(Math.abs(activeLocation.utcOffsetHours) * 60);
+  const localOffset = `UTC${activeLocation.utcOffsetHours < 0 ? '−' : '+'}${Math.floor(localOffsetMinutes / 60)}:${String(localOffsetMinutes % 60).padStart(2, '0')}`;
 
-  // Evaluate today's endeavors
-  const todayEvaluations: MuhurtaEvaluation[] = MUHURTA_ENDEAVORS.map((end) =>
+  const dateEvaluations: MuhurtaEvaluation[] = STUDY_ENDEAVORS.map((end) =>
     evaluateEndeavorMuhurta(
       end,
       livePanchang.tithiNumber,
@@ -170,7 +164,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
   );
 
   // Evaluate simulator endeavor
-  const selectedSimEndeavor = MUHURTA_ENDEAVORS.find((e) => e.id === simEndeavorId) || MUHURTA_ENDEAVORS[0];
+  const selectedSimEndeavor = STUDY_ENDEAVORS.find((e) => e.id === simEndeavorId) ?? STUDY_ENDEAVORS[0];
   const simEvaluation = evaluateEndeavorMuhurta(
     selectedSimEndeavor,
     simTithi,
@@ -226,7 +220,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
           }`}
         >
           <Calendar className="w-4 h-4 shrink-0" />
-          <span>आज का मुहूर्त <span className="hidden lg:inline">(Today&apos;s Matrix)</span></span>
+          <span>दिन का मुहूर्त <span className="hidden lg:inline">(Day planner)</span></span>
         </button>
 
         <button
@@ -283,9 +277,9 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-dharma-border/50">
               <div>
                 <p className="text-xs uppercase tracking-wider font-semibold text-saffron-600 dark:text-saffron-400">
-                  वर्तमान पञ्चाङ्ग आधार · Live Educational Ephemeris
+                  चुनी हुई तिथि का पञ्चाङ्ग · Educational day view
                 </p>
-                <h2 className="text-xl md:text-2xl font-serif font-bold text-dharma-text mt-0.5">
+                <h2 aria-live="polite" className="text-xl md:text-2xl font-serif font-bold text-dharma-text mt-0.5">
                   {livePanchang.dayOfWeekHi} ({livePanchang.dayOfWeek}) · {livePanchang.isoDate}
                 </h2>
               </div>
@@ -293,16 +287,16 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                 <div className="flex items-center gap-2 rounded-xl border border-dharma-border bg-dharma-bg px-3 py-1.5 text-xs">
                   <MapPin className="h-3.5 w-3.5 text-dharma-saffron shrink-0" />
                   <label htmlFor="muhurta-city" className="sr-only">
-                    स्थान चुनें
+                    स्थान चुनें · Choose city
                   </label>
                   <select
                     id="muhurta-city"
-                    value={location.id}
+                    value={activeLocation.id}
                     onChange={(e) => {
                       const found = PRESET_LOCATIONS.find((loc) => loc.id === e.target.value);
                       if (found) setLocation(found);
                     }}
-                    className="min-h-[32px] max-w-[165px] truncate bg-transparent font-medium text-dharma-text focus:outline-none"
+                    className="focus-ring min-h-[44px] max-w-full rounded-lg bg-transparent font-medium text-dharma-text"
                   >
                     {PRESET_LOCATIONS.map((loc) => (
                       <option key={loc.id} value={loc.id} className="bg-dharma-card text-dharma-text">
@@ -311,14 +305,31 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                     ))}
                   </select>
                 </div>
-                <div className="flex items-center gap-2 text-xs bg-dharma-bg px-3.5 py-2.5 rounded-xl border border-dharma-border">
-                  <Sun className="w-4 h-4 text-amber-500 shrink-0" />
-                  <span className="text-dharma-text">
-                    सूर्योदय: <strong>{livePanchang.solarTimes.sunrise}</strong> · सूर्यास्त: <strong>{livePanchang.solarTimes.sunset}</strong>
-                  </span>
-                </div>
+                <label className="flex items-center gap-2 rounded-xl border border-dharma-border bg-dharma-bg px-3 py-1.5 text-xs">
+                  <Calendar className="h-4 w-4 shrink-0 text-dharma-saffron" aria-hidden="true" />
+                  <span className="sr-only">तिथि चुनें · Choose date</span>
+                  <input
+                    type="date"
+                    min="1900-01-01"
+                    max="2100-12-31"
+                    value={selectedDate || livePanchang.isoDate}
+                    onChange={(event) => selectDate(event.target.value)}
+                    className="focus-ring min-h-[44px] rounded-lg bg-transparent font-medium text-dharma-text [color-scheme:light] dark:[color-scheme:dark]"
+                  />
+                </label>
+                <button
+                  type="button"
+                  onClick={() => selectDate('')}
+                  className="focus-ring min-h-[44px] rounded-xl border border-dharma-border px-3 text-xs font-semibold text-dharma-text hover:border-dharma-saffron"
+                >
+                  आज · Today
+                </button>
               </div>
             </div>
+            <p className="pt-3 text-xs text-dharma-muted">
+              गणना का समय-क्षेत्र · Calculation offset <strong className="text-dharma-text">{localOffset}</strong>
+              {' · '}मानक ऑफ़सेट · Seasonal clock changes are excluded
+            </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-4 text-center">
               <div className="p-2.5 rounded-xl bg-dharma-bg/60 border border-dharma-border/40">
@@ -353,50 +364,96 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
             </div>
           </div>
 
-          {/* Rahu Kalam & Abhijit Quick Advisory */}
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="rounded-xl border border-rose-500/20 bg-rose-500/5 p-4 flex items-start gap-3">
-              <ShieldAlert className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
-              <div>
-                <h3 className="font-semibold text-sm text-rose-900 dark:text-rose-300">
-                  राहुकाल सतर्कता ({livePanchang.dayOfWeekHi}): {todayRahu.window}
-                </h3>
-                <p className="text-xs text-rose-800/80 dark:text-rose-400/80 mt-1 leading-relaxed">
-                  दिन का यह अष्टम अंश अप्रत्याशित विक्षेपों के लिए संवेदनशील है। नए अनुबंध, गृहप्रवेश अथवा मांगलिक यात्रा इस 90-मिनट कालखण्ड में आरम्भ न करें।
-                </p>
-              </div>
+          <section aria-labelledby="muhurta-daylight-title" className="space-y-4 rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-6">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h3 id="muhurta-daylight-title" className="text-lg font-serif font-bold text-dharma-text">
+                दिन का समय-क्रम · Daylight timeline
+              </h3>
+              <Link href={calendarHref} className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-lg px-2 text-xs font-semibold text-dharma-saffron hover:underline">
+                मासिक पंचांग · Monthly calendar <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
 
-            <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 flex items-start gap-3">
-              <Sun className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-              <div>
-                <h3 className="font-semibold text-sm text-amber-900 dark:text-amber-300">
-                  अभिजीत मुहूर्त ({location.nameHi}): {abhijitWindow}
-                  {livePanchang.dayOfWeekIndex === 3 ? ' · बुधवार को वर्जित' : ''}
-                </h3>
-                <p className="text-xs text-amber-800/80 dark:text-amber-400/80 mt-1 leading-relaxed">
-                  स्थानीय मध्याह्न ({livePanchang.solarTimes.solarNoon}) पर केन्द्रित यह मध्य-दिवस कालखण्ड सामान्य पञ्चाङ्ग दोषों का शमन करता है (बुधवार को छोड़कर प्रशस्त)।
-                </p>
-              </div>
-            </div>
-          </div>
+            {daylight ? (
+              <>
+                <div aria-hidden="true" className="space-y-2">
+                  <div className="flex justify-between gap-2 text-xs font-semibold tabular-nums text-dharma-text">
+                    <span>सूर्योदय · {livePanchang.solarTimes.sunrise}</span>
+                    <span>सूर्यास्त · {livePanchang.solarTimes.sunset}</span>
+                  </div>
+                  <div className="rounded-xl bg-gradient-to-r from-amber-500/10 via-amber-500/20 to-rose-500/10 p-2">
+                    <div className="relative h-2 rounded-full bg-dharma-bg/70">
+                      <span
+                        className="muhurta-daylight-marker absolute inset-y-0 rounded-full bg-rose-500"
+                        style={{ left: `${daylight.rahu.offsetPercent}%`, width: `${daylight.rahu.widthPercent}%` }}
+                      />
+                    </div>
+                    <div className="relative mt-1.5 h-2 rounded-full bg-dharma-bg/70">
+                      {daylight.abhijit && (
+                        <span
+                          className="muhurta-daylight-marker absolute inset-y-0 rounded-full bg-amber-500"
+                          style={{ left: `${daylight.abhijit.offsetPercent}%`, width: `${daylight.abhijit.widthPercent}%` }}
+                        />
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-xl border border-rose-500/30 bg-rose-500/5 p-3">
+                    <h4 className="flex items-center gap-2 text-sm font-semibold text-dharma-text">
+                      <ShieldAlert className="h-4 w-4 shrink-0 text-rose-600 dark:text-rose-400" aria-hidden="true" />
+                      राहुकाल · Rahu Kalam
+                    </h4>
+                    <p className="mt-1 text-sm font-semibold tabular-nums text-dharma-text">
+                      {formatPanchangClock(daylight.rahu.start)} – {formatPanchangClock(daylight.rahu.end)}
+                    </p>
+                    <p className="mt-1 text-xs text-dharma-muted">स्थानीय दिन के 8 बराबर भागों में से वार के अनुसार एक भाग।</p>
+                  </div>
+                  <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-3">
+                    <h4 className="flex items-center gap-2 text-sm font-semibold text-dharma-text">
+                      <Sun className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" aria-hidden="true" />
+                      अभिजीत मुहूर्त · Abhijit Muhurta
+                    </h4>
+                    {daylight.abhijit ? (
+                      <>
+                        <p className="mt-1 text-sm font-semibold tabular-nums text-dharma-text">
+                          {formatPanchangClock(daylight.abhijit.start)} – {formatPanchangClock(daylight.abhijit.end)}
+                        </p>
+                        <p className="mt-1 text-xs text-dharma-muted">स्थानीय दिन के 15 बराबर भागों में 8वाँ भाग।</p>
+                      </>
+                    ) : (
+                      <p className="mt-1 text-xs text-dharma-muted">इस परम्परा में बुधवार का अभिजीत मुहूर्त नहीं दिखाया जाता। · Omitted on Wednesdays in this convention.</p>
+                    )}
+                  </div>
+                </div>
+                <p className="sr-only">Sunrise {livePanchang.solarTimes.sunrise}. Sunset {livePanchang.solarTimes.sunset}.</p>
+              </>
+            ) : (
+              <p className="text-sm text-dharma-muted">
+                इस स्थान के लिए सूर्योदय और सूर्यास्त उपलब्ध नहीं हैं। · Daylight windows are unavailable for this location and date.
+              </p>
+            )}
+            <p className="text-xs text-dharma-muted">
+              स्थानीय सूर्योदय और सूर्यास्त से निकले अनुमानित समय। · Educational estimates based on local sunrise and sunset.
+            </p>
+          </section>
 
-          {/* 6 Endeavors Evaluation Grid */}
           <div className="space-y-4">
             <h3 className="text-lg font-serif font-bold text-dharma-text flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-saffron-500" />
-              <span>प्रमुख कार्यों का आज का मुहूर्त मूल्यांकन</span>
+              <span>चुनी हुई तिथि पर पारम्परिक अनुकूलता</span>
             </h3>
 
+            <p className="text-xs text-dharma-muted">अंक चुनी हुई तिथि के स्थानीय दोपहर के पञ्चाङ्ग पर आधारित हैं। · Scores use the five Panchang limbs at local noon.</p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {todayEvaluations.map((evalItem) => {
+              {dateEvaluations.map((evalItem) => {
                 const isExpanded = expandedEndeavorId === evalItem.endeavor.id;
                 return (
                   <div
                     key={evalItem.endeavor.id}
                     className="rounded-2xl border border-dharma-border bg-dharma-card hover:border-saffron-500/40 transition-all flex flex-col p-5 shadow-sm"
                   >
-                    <div className="flex items-start justify-between gap-3 mb-3">
+                    <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                       <div className="flex items-center gap-2.5">
                         <span className="text-2xl p-2 rounded-xl bg-dharma-bg border border-dharma-border/60">
                           {evalItem.endeavor.icon}
@@ -519,7 +576,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                 1. अभीष्ट कार्य चुनें (Select Target Endeavor)
               </p>
               <div role="group" aria-labelledby="muhurta-endeavor-label" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
-                {MUHURTA_ENDEAVORS.map((end) => (
+                {STUDY_ENDEAVORS.map((end) => (
                   <button
                     type="button"
                     key={end.id}
@@ -779,7 +836,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
               <span>साप्ताहिक राहुकाल तालिका (Standard Rahu Kalam Guide)</span>
             </h3>
             <p className="text-xs text-dharma-muted mb-4">
-              सूर्योदय से सूर्यास्त तक के 12 घण्टे के दिन को 8 बराबर भागों (प्रत्येक 90 मिनट) में बाँटा जाता है:
+              स्थानीय सूर्योदय से सूर्यास्त तक का समय 8 बराबर भागों में बाँटा जाता है। नीचे 06:00 AM से 06:00 PM तक के एक उदाहरण की तालिका है।
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 text-center text-xs">

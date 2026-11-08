@@ -2205,6 +2205,7 @@ export interface SolarTimes {
   dayLength: string;
   solarNoon: string;
   isReliable: boolean;
+  daylight?: { sunriseMinute: number; sunsetMinute: number };
   unreliableReason?: string;
 }
 
@@ -2366,23 +2367,28 @@ function calculateSolarTimes(date: Date, location: LocationConfig): SolarTimes {
   const lon = location.longitude;
   const tzOffset = location.utcOffsetHours;
 
-  // Day of year
-  const startOfYear = new Date(Date.UTC(date.getFullYear(), 0, 1));
-  const dayOfYear = Math.floor((date.getTime() - startOfYear.getTime()) / MS_PER_DAY) + 1;
+  const year = date.getFullYear();
+  const startOfYear = Date.UTC(year, 0, 1);
+  const dayOfYear = (Date.UTC(year, date.getMonth(), date.getDate()) - startOfYear) / MS_PER_DAY;
+  const yearLength = (Date.UTC(year + 1, 0, 1) - startOfYear) / MS_PER_DAY;
 
-  // Approximate solar declination and equation of time
-  const b = (2 * Math.PI * (dayOfYear - 81)) / 365;
-  const equationOfTimeMinutes = 9.87 * Math.sin(2 * b) - 7.53 * Math.cos(b) - 1.5 * Math.sin(b);
-  const solarDeclinationDeg = 23.45 * Math.sin(toRadians(b * (365 / 360) * 360));
+  // NOAA's fractional-year approximation at noon, with declination in radians.
+  const gamma = 2 * Math.PI * dayOfYear / yearLength;
+  const equationOfTimeMinutes = 229.18 * (
+    0.000075 + 0.001868 * Math.cos(gamma) - 0.032077 * Math.sin(gamma)
+    - 0.014615 * Math.cos(2 * gamma) - 0.040849 * Math.sin(2 * gamma)
+  );
+  const solarDeclination = 0.006918 - 0.399912 * Math.cos(gamma) + 0.070257 * Math.sin(gamma)
+    - 0.006758 * Math.cos(2 * gamma) + 0.000907 * Math.sin(2 * gamma)
+    - 0.002697 * Math.cos(3 * gamma) + 0.00148 * Math.sin(3 * gamma);
 
   // Hour angle for civil/astronomical sunrise (-0.833° for atmospheric refraction)
   const zenithDeg = 90.833;
   const latRad = toRadians(lat);
-  const declRad = toRadians(solarDeclinationDeg);
 
   const cosHourAngle =
-    (Math.cos(toRadians(zenithDeg)) - Math.sin(latRad) * Math.sin(declRad)) /
-    (Math.cos(latRad) * Math.cos(declRad));
+    (Math.cos(toRadians(zenithDeg)) - Math.sin(latRad) * Math.sin(solarDeclination)) /
+    (Math.cos(latRad) * Math.cos(solarDeclination));
 
   // Check for polar day or polar night where the sun doesn't rise or set
   if (cosHourAngle > 1) {
@@ -2413,27 +2419,25 @@ function calculateSolarTimes(date: Date, location: LocationConfig): SolarTimes {
   const sunriseLocalHours = solarNoonLocalHours - hourAngleHours;
   const sunsetLocalHours = solarNoonLocalHours + hourAngleHours;
 
-  const formatHoursToTime = (decimalHours: number): string => {
-    const totalMinutes = Math.round(decimalHours * 60);
-    const normalizedMinutes = positiveModulo(totalMinutes, 24 * 60);
-    const hrs = Math.floor(normalizedMinutes / 60);
-    const mins = normalizedMinutes % 60;
-    const period = hrs >= 12 ? 'PM' : 'AM';
-    const displayHrs = hrs % 12 === 0 ? 12 : hrs % 12;
-    return `${displayHrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')} ${period}`;
-  };
-
-  const dayLengthHours = sunsetLocalHours - sunriseLocalHours;
-  const dayLengthHrs = Math.floor(dayLengthHours);
-  const dayLengthMins = Math.round((dayLengthHours - dayLengthHrs) * 60);
+  const dayLengthMinutes = Math.round((sunsetLocalHours - sunriseLocalHours) * 60);
 
   return {
-    sunrise: formatHoursToTime(sunriseLocalHours),
-    sunset: formatHoursToTime(sunsetLocalHours),
-    solarNoon: formatHoursToTime(solarNoonLocalHours),
-    dayLength: `${dayLengthHrs}h ${dayLengthMins}m`,
+    sunrise: formatPanchangClock(sunriseLocalHours * 60),
+    sunset: formatPanchangClock(sunsetLocalHours * 60),
+    solarNoon: formatPanchangClock(solarNoonLocalHours * 60),
+    dayLength: `${Math.floor(dayLengthMinutes / 60)}h ${dayLengthMinutes % 60}m`,
     isReliable: true,
+    daylight: { sunriseMinute: sunriseLocalHours * 60, sunsetMinute: sunsetLocalHours * 60 },
   };
+}
+
+/** Formats a location's civil-clock minutes, including times across midnight. */
+export function formatPanchangClock(minutes: number): string {
+  const normalized = positiveModulo(Math.round(minutes), 24 * 60);
+  const hour = Math.floor(normalized / 60);
+  const displayHour = String(hour % 12 || 12).padStart(2, '0');
+  const displayMinute = String(normalized % 60).padStart(2, '0');
+  return `${displayHour}:${displayMinute} ${hour >= 12 ? 'PM' : 'AM'}`;
 }
 
 /**
