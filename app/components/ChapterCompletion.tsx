@@ -211,6 +211,7 @@ export function ChapterCompletion({
             {nextHref && (
               <Link
                 href={nextHref}
+                rel="next"
                 onClick={() => setCelebration(null)}
                 className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-saffron-600 to-amber-500 px-4 py-3 text-sm font-bold text-white shadow-lg transition hover:from-saffron-500 hover:to-amber-400"
               >

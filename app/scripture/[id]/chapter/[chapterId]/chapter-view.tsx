@@ -405,7 +405,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   } : undefined;
 
   return (
-    <main data-chapter-reading data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} {...sceneAttrs(meta.id, chapter.id)} className="min-h-screen bg-dharma-bg">
+    <main data-chapter-reading data-vt-pane data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} {...sceneAttrs(meta.id, chapter.id)} className="min-h-screen bg-dharma-bg">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger

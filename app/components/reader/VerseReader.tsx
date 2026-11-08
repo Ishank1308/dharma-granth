@@ -1,9 +1,10 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
+import { motionAllowed, navigateWithTransition } from '@/lib/view-transition';
 import { MotionConfig } from 'framer-motion';
 import {
   ArrowLeft,
@@ -168,10 +169,10 @@ export function VerseReader(props: VerseReaderProps) {
   /* ── MediaSession Lock-Screen Controls & Continuous Pārāyaṇa ── */
   useEffect(() => {
     const handlePrev = () => {
-      if (prev?.href) router.push(prev.href);
+      if (prev?.href) navigateWithTransition(router, prev.href, 'prev');
     };
     const handleNext = () => {
-      if (next?.href) router.push(next.href);
+      if (next?.href) navigateWithTransition(router, next.href, 'next');
     };
     const handleRecitationEnded = () => {
       const state = getSoundscapeState();
@@ -179,7 +180,7 @@ export function VerseReader(props: VerseReaderProps) {
         if (next?.href) {
           say('निरंतर पाठ: अगला श्लोक (2.5s)...');
           const timer = setTimeout(() => {
-            router.push(next.href);
+            navigateWithTransition(router, next.href, 'next');
           }, 2500);
           return () => clearTimeout(timer);
         } else {
@@ -235,15 +236,31 @@ export function VerseReader(props: VerseReaderProps) {
   /* ── Mobile Touch Swipe Gesture Engine ── */
   const { gestureState, handlers } = useSwipeGesture({
     onSwipeNext: () => {
-      if (next) router.push(next.href);
+      if (next) navigateWithTransition(router, next.href, 'next');
     },
     onSwipePrev: () => {
-      if (prev) router.push(prev.href);
+      if (prev) navigateWithTransition(router, prev.href, 'prev');
     },
     canNext: Boolean(next),
     canPrev: Boolean(prev),
     disabled: Boolean(dialog || carouselOpen || showShareModal),
   });
+
+  /* The verse follows the thumb while it is dragged sideways, and springs back if let go
+     short of the threshold; past it, the page transition carries it the rest of the way. */
+  const [followThumb, setFollowThumb] = useState(false);
+  useEffect(() => setFollowThumb(motionAllowed()), []);
+  const paneStyle: CSSProperties | undefined = !followThumb
+    ? undefined
+    : gestureState.isSwiping
+      ? { transform: `translate3d(${gestureState.deltaX * 0.6}px, 0, 0)`, opacity: 1 - gestureState.progress * 0.12, transition: 'none' }
+      : { transition: 'transform 0.5s var(--motion-spring), opacity 0.3s var(--ease-out)' };
+
+  /* Neighbouring verses load ahead, so a swipe or arrow key turns the page without a wait. */
+  useEffect(() => {
+    if (prev?.href) router.prefetch(prev.href);
+    if (next?.href) router.prefetch(next.href);
+  }, [prev?.href, next?.href, router]);
 
   /* ── Copy / share / download ── */
   const show = { transliteration: settings.showTransliteration, hindi: settings.showHindi, english: settings.showEnglish };
@@ -300,8 +317,8 @@ export function VerseReader(props: VerseReaderProps) {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       const el = e.target as HTMLElement | null;
       if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT' || el.isContentEditable)) return;
-      if ((e.key === 'ArrowLeft' || e.key === 'h' || e.key === 'k') && prev) router.push(prev.href);
-      if ((e.key === 'ArrowRight' || e.key === 'l' || e.key === 'j') && next) router.push(next.href);
+      if ((e.key === 'ArrowLeft' || e.key === 'h' || e.key === 'k') && prev) navigateWithTransition(router, prev.href, 'prev');
+      if ((e.key === 'ArrowRight' || e.key === 'l' || e.key === 'j') && next) navigateWithTransition(router, next.href, 'next');
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -514,7 +531,7 @@ export function VerseReader(props: VerseReaderProps) {
         </aside>
 
         {/* data-chapter-reading hides the global floating docks (globals.css), so nothing sits on the verse text. */}
-        <main data-chapter-reading className={`min-w-0 flex-1 px-4 pb-32 pt-6 sm:pb-20 sm:pt-8 xl:px-0 ${WIDTH[settings.readingWidth]}`}>
+        <main data-chapter-reading data-vt-pane style={paneStyle} className={`min-w-0 flex-1 px-4 pb-32 pt-6 sm:pb-20 sm:pt-8 xl:px-0 ${WIDTH[settings.readingWidth]}`}>
           {/* 2 · Verse navigation (desktop; phones get the sticky bar below) */}
           <nav aria-label="Verse navigation" className="mb-6 hidden items-center justify-between gap-3 sm:flex">
             {navLink(prev, 'prev', 'row')}
