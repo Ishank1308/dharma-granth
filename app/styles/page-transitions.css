@@ -1,0 +1,125 @@
+/* Page transitions (lib/view-transition.ts, app/components/motion/RouteTransitions.tsx).
+   The browser's View Transitions animate between two screens on client navigation.
+   lib/view-transition sets data-vt on <html> for the length of one transition:
+
+     next / prev  the reading pane leaves to one side and the new one slides in from the
+                  other, settling on a spring: a page turned under the thumb.
+     open         the tapped verse panel grows into the verse page's Sanskrit panel
+                  ("verse-hero"); the rest of the new page rises in behind it.
+
+   The site header and everything outside the pane only cross-fade, so they hold still.
+   The script never sets data-vt under reduced motion or the quiet modes; the media query
+   below is a second guard. */
+
+@media (prefers-reduced-motion: no-preference) {
+    :root[data-vt] [data-vt-pane] {
+        view-transition-name: reading-pane;
+    }
+
+    :root[data-vt]::view-transition-old(root),
+    :root[data-vt]::view-transition-new(root) {
+        animation-duration: 0.22s;
+        animation-timing-function: var(--ease-standard);
+    }
+
+    /* The pane's box can change size between pages; the images carry the motion. */
+    :root[data-vt]::view-transition-group(reading-pane) {
+        animation: none;
+    }
+    :root[data-vt]::view-transition-image-pair(reading-pane) {
+        isolation: auto;
+    }
+    :root[data-vt]::view-transition-old(reading-pane),
+    :root[data-vt]::view-transition-new(reading-pane) {
+        mix-blend-mode: normal;
+        height: auto;
+        object-fit: none;
+        object-position: top center;
+    }
+
+    /* Verse to verse, chapter to chapter: forward. */
+    :root[data-vt='next']::view-transition-old(reading-pane) {
+        animation: vt-leave-left 0.32s var(--ease-in) both;
+    }
+    :root[data-vt='next']::view-transition-new(reading-pane) {
+        animation: vt-arrive-right 0.62s var(--motion-spring) both;
+    }
+    /* And back. */
+    :root[data-vt='prev']::view-transition-old(reading-pane) {
+        animation: vt-leave-right 0.32s var(--ease-in) both;
+    }
+    :root[data-vt='prev']::view-transition-new(reading-pane) {
+        animation: vt-arrive-left 0.62s var(--motion-spring) both;
+    }
+
+    /* Opening a verse: its panel grows into place, the page rises in behind. */
+    :root[data-vt='open']::view-transition-old(reading-pane) {
+        animation: vt-fade-out 0.18s var(--ease-in) both;
+    }
+    :root[data-vt='open']::view-transition-new(reading-pane) {
+        animation: vt-rise 0.5s var(--motion-spring) 0.06s both;
+    }
+    :root[data-vt]::view-transition-group(verse-hero) {
+        animation-duration: 0.56s;
+        animation-timing-function: var(--motion-spring);
+    }
+    :root[data-vt]::view-transition-old(verse-hero),
+    :root[data-vt]::view-transition-new(verse-hero) {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    :root[data-vt]::view-transition-old(verse-hero) {
+        animation: vt-fade-out 0.24s var(--ease-standard) both;
+    }
+    :root[data-vt]::view-transition-new(verse-hero) {
+        animation: vt-fade-in 0.32s var(--ease-standard) both;
+    }
+}
+
+@keyframes vt-leave-left {
+    to {
+        transform: translateX(-28%);
+        opacity: 0;
+    }
+}
+@keyframes vt-leave-right {
+    to {
+        transform: translateX(28%);
+        opacity: 0;
+    }
+}
+@keyframes vt-arrive-right {
+    from {
+        transform: translateX(42%);
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+}
+@keyframes vt-arrive-left {
+    from {
+        transform: translateX(-42%);
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+}
+@keyframes vt-rise {
+    from {
+        transform: translateY(32px);
+        opacity: 0;
+    }
+}
+@keyframes vt-fade-out {
+    to {
+        opacity: 0;
+    }
+}
+@keyframes vt-fade-in {
+    from {
+        opacity: 0;
+    }
+}

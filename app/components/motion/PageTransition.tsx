@@ -13,6 +13,8 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
  *   are only added once the app is running.
  * - Chapter to chapter, a leaf the colour of the page turns away on its spine instead.
  * - Reduced motion: the CSS switches every piece off.
+ * - A change animated by lib/view-transition (verse to verse, chapter to chapter, opening a
+ *   verse) skips the settle and the leaf, since the browser moves the screens itself.
  */
 export function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -26,7 +28,11 @@ export function PageTransition({ children }: { children: ReactNode }) {
   // Chapter to chapter turns like a page: forward swings in from the right edge, back from the left.
   const lastPath = useRef(pathname);
   const turn = useRef<0 | 1 | -1>(0);
+  // When lib/view-transition is animating this change (data-vt on <html>), the browser
+  // already moves the screens, so the arrival classes and the leaf stay off.
+  const viaViewTransition = useRef(false);
   if (lastPath.current !== pathname) {
+    viaViewTransition.current = typeof document !== 'undefined' && document.documentElement.hasAttribute('data-vt');
     const chapterOf = (p: string) => p.match(/^\/scripture\/([^/]+)\/chapter\/(\d+)/);
     const from = chapterOf(lastPath.current);
     const to = chapterOf(pathname);
@@ -35,7 +41,8 @@ export function PageTransition({ children }: { children: ReactNode }) {
   }
   const moved = live || pathname !== firstPath.current;
   const forward = turn.current === 1;
-  const pageTurn = moved && turn.current !== 0;
+  const pageTurn = moved && turn.current !== 0 && !viaViewTransition.current;
+  const settle = moved && !viaViewTransition.current;
 
   return (
     <>
@@ -64,7 +71,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
           />
         </div>
       )}
-      <div key={pathname} className={pageTurn ? (forward ? 'page-turn-forward' : 'page-turn-back') : moved ? 'page-settle' : undefined}>
+      <div key={pathname} className={pageTurn ? (forward ? 'page-turn-forward' : 'page-turn-back') : settle ? 'page-settle' : undefined}>
         {children}
       </div>
     </>

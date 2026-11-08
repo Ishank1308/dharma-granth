@@ -5,6 +5,7 @@ import { getSiteShellData } from "@/lib/site-shell-data";
 import { DEFAULT_THEME, FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
+import { RouteTransitions } from "@/app/components/motion/RouteTransitions";
 import { DEFAULT_OG_IMAGE } from "@/lib/og";
 import { TactileLayer } from "@/app/components/TactileLayer";
 import { MotionLayer } from "@/app/components/motion/MotionLayer";
@@ -21,6 +22,8 @@ import "./styles/components.css";
 import "./motion.css";
 // Chapter scenes behind the shloka (lib/chapter-scenes.ts); only pages with data-scene use them.
 import "./styles/scenes.css";
+// Page transitions (lib/view-transition.ts): verse to verse, chapter to chapter, opening a verse.
+import "./styles/page-transitions.css";
 // Colour and life (the sacred spectrum on cards, buttons, titles and the page aurora) goes last.
 import "./styles/colour.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
@@ -275,6 +278,7 @@ export default function RootLayout({
           </ErrorBoundary>
           <TactileLayer />
           <MotionLayer />
+          <RouteTransitions />
           <OfflineIndicator />
           <ServiceWorkerRegister />
           <StoragePersistenceRequest />
