@@ -78,7 +78,7 @@ export function ReaderDialog({
   const placement =
     variant === 'side'
       ? 'inset-x-0 bottom-0 max-h-[88dvh] rounded-t-3xl sm:inset-y-0 sm:left-auto sm:right-0 sm:max-h-none sm:w-full sm:max-w-md sm:rounded-none sm:rounded-l-3xl'
-      : 'inset-x-0 bottom-0 max-h-[88dvh] rounded-t-3xl sm:inset-auto sm:left-1/2 sm:top-1/2 sm:w-full sm:max-w-lg sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-3xl';
+      : 'inset-x-0 bottom-0 max-h-[88dvh] rounded-t-3xl sm:inset-auto sm:left-1/2 sm:top-1/2 sm:max-h-[calc(100dvh-1.5rem)] sm:w-full sm:max-w-lg sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-3xl';
 
   return (
     <AnimatePresence>
@@ -110,7 +110,7 @@ export function ReaderDialog({
                   <span className="min-w-0">
                     {title}
                     {titleHi && (
-                      <span lang="hi" className="ml-2 font-devanagari text-base font-normal text-dharma-muted">
+                      <span lang="hi" className="ml-2 inline-block font-devanagari text-base font-normal text-dharma-muted">
                         {titleHi}
                       </span>
                     )}

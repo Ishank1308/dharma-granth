@@ -775,8 +775,9 @@ export function VerseCard({
                       chapterId={chapterId}
                       transliteration={!layers.translit ? v.transliteration : undefined}
                       nearby={meaningNearby}
+                      hasExplanation={hasExplanation}
                     />
-                    {!chantingMode && (
+                    {!chantingMode && !hasExplanation && (
                       <button
                         type="button"
                         onClick={onContribute}

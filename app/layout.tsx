@@ -243,13 +243,8 @@ export default function RootLayout({
           title="Dharma Granth — Daily Sacred Verse &amp; Wisdom"
           href="/feed.xml"
         />
-        <link
-          rel="preload"
-          href="/logo-splash.webp"
-          as="image"
-          type="image/webp"
-          fetchPriority="high"
-        />
+        {/* The splash logo is preloaded by its own priority <Image> on the home page only, not
+            on every page (it was fetched at high priority everywhere and never shown). */}
 
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />

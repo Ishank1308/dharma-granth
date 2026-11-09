@@ -207,11 +207,11 @@ export default function ConceptsPage() {
             वेदान्त का लेख इस सूची में है। ये चार पृष्ठ भी उसी पढ़ने से जुड़े हैं।
           </p>
           <ul className="mt-3 flex flex-wrap gap-3 text-sm">
-            <li><Link href="/concepts/vedanta" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">वेदान्त</Link></li>
-            <li><Link href="/concepts/brahman" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">ब्रह्म</Link></li>
-            <li><Link href="/concepts/atman" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">आत्मा</Link></li>
-            <li><Link href="/concepts/maya" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">माया</Link></li>
-            <li><Link href="/concepts/moksha" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">मोक्ष</Link></li>
+            <li><Link href="/concepts/vedanta" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">वेदान्त</Link></li>
+            <li><Link href="/concepts/brahman" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">ब्रह्म</Link></li>
+            <li><Link href="/concepts/atman" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">आत्मा</Link></li>
+            <li><Link href="/concepts/maya" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">माया</Link></li>
+            <li><Link href="/concepts/moksha" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">मोक्ष</Link></li>
           </ul>
         </div>
       </section>

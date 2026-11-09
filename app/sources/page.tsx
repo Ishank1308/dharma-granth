@@ -186,7 +186,7 @@ export default function SourcesPage() {
                         href={s.archiveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="ml-2 inline-flex items-center gap-0.5 text-xs text-saffron-700 hover:text-saffron-800 dark:text-saffron-400 underline"
+                        className="ml-2 inline-flex min-h-[24px] items-center gap-0.5 text-xs text-saffron-700 hover:text-saffron-800 dark:text-saffron-400 underline"
                       >
                         <span>Archive Link</span>
                         <ExternalLink className="h-3 w-3" />

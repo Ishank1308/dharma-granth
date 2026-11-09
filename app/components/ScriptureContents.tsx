@@ -229,8 +229,8 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-dharma-border pt-5 text-sm text-dharma-muted">
         <span>Sources and methodology</span>
-        <Link href="/sources/" className="font-semibold text-saffron-700 underline decoration-saffron-300 underline-offset-4 hover:text-saffron-900 dark:text-saffron-300">View sources</Link>
-        <Link href="/methodology/" className="font-semibold text-saffron-700 underline decoration-saffron-300 underline-offset-4 hover:text-saffron-900 dark:text-saffron-300">How this edition is prepared</Link>
+        <Link href="/sources/" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-700 underline decoration-saffron-300 underline-offset-4 hover:text-saffron-900 dark:text-saffron-300">View sources</Link>
+        <Link href="/methodology/" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-700 underline decoration-saffron-300 underline-offset-4 hover:text-saffron-900 dark:text-saffron-300">How this edition is prepared</Link>
       </div>
     </div>
   );
