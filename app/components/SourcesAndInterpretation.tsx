@@ -1,5 +1,4 @@
-'use client';
-
+// No state or handlers: rendered on the server, so the sources registry is not shipped to the browser.
 import {
   BookOpen,
   ScrollText,

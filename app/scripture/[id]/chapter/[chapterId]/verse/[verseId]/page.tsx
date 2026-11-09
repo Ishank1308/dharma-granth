@@ -26,6 +26,7 @@ import { badgesFor, latestReview } from '@/lib/review-badges';
 import { PENDING_CORRECTIONS, REVIEW_RECORDS } from '@/data/review-records';
 import { getScriptureSourceMeta, SCRIPTURE_SOURCES } from '@/data/sources-registry';
 import type { VerseLink, VerseQuestionLink } from '@/data/types';
+import { LINE_EXPLANATIONS, verseKey } from '@/data/study-content';
 
 /**
  * One static page per verse for the scriptures in VERSE_PAGE_SCRIPTURE_IDS
@@ -419,6 +420,7 @@ export default async function VersePage(props: PageProps) {
           explanation,
           reflection: lesson,
           research: science,
+          lineExplanations: LINE_EXPLANATIONS[verseKey(meta.id, chapterId, verse.number)],
         }}
         provenance={{
           sourceHost: repoLabel(source.repo),
