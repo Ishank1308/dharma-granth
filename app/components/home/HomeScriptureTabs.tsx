@@ -2,9 +2,6 @@
 
 import { useId, useRef, useState, type KeyboardEvent } from 'react';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
-import { SPRING } from '@/app/components/liquid/motion';
-import { usePerformanceMode } from '@/lib/performance-mode';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 export interface ShowcaseScripture {
@@ -362,9 +359,6 @@ export function HomeScriptureTabs() {
   const [activeTab, setActiveTab] = useState<TabId>('featured');
   const tabsId = useId();
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
-  const prefersReducedMotion = useReducedMotion();
-  const { isLiteMode } = usePerformanceMode();
-  const animate = !prefersReducedMotion && !isLiteMode;
 
   const handleTabKey = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
     const last = CATEGORY_TABS.length - 1;
@@ -386,8 +380,7 @@ export function HomeScriptureTabs() {
 
   return (
     <div className="w-full">
-      <motion.div
-        layoutScroll={animate}
+      <div
         role="tablist"
         aria-label="ग्रन्थ श्रेणियां · Scripture Categories"
         className="flex items-center gap-2 overflow-x-auto pb-4 pt-1 scrollbar-none sm:flex-wrap sm:justify-center"
@@ -417,10 +410,10 @@ export function HomeScriptureTabs() {
               }`}
             >
               {isSelected && (
-                <motion.span
+                // A CSS pop-in (colour.css), not a framer-motion layout animation: framer was the
+                // only thing that made the home page load its 42 KB library.
+                <span
                   aria-hidden="true"
-                  layoutId={animate ? `${tabsId}-selection` : undefined}
-                  transition={SPRING}
                   className="library-category-indicator pointer-events-none absolute inset-0 -z-10 rounded-full"
                 />
               )}
@@ -431,7 +424,7 @@ export function HomeScriptureTabs() {
             </button>
           );
         })}
-      </motion.div>
+      </div>
 
       <div
         id={`${tabsId}-panel`}

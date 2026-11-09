@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { REVEAL_SEQUENCE } from '@/app/components/motion/primitives';
 import {
   Bookmark,
@@ -307,7 +306,6 @@ export function VerseCard({
   isActive,
   meaningNearby,
 }: Props) {
-  const reduce = useReducedMotion();
 
   // ── Highlight colour picker ──
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -551,16 +549,12 @@ export function VerseCard({
 
             {/* Colour picker popover when open */}
             <div className="relative" ref={pickerRef}>
-              <AnimatePresence>
-                {pickerOpen && (
-                  <motion.div
+              {/* CSS pop-in (motion.css .chrome-pop), so a chapter page does not need framer-motion. */}
+              {pickerOpen && (
+                  <div
                     role="group"
                     aria-label="हाइलाइट रंग चुनें (Choose highlight colour)"
-                    initial={reduce ? { opacity: 0 } : { opacity: 0, y: -4, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.14 }}
-                    className="absolute right-0 top-full z-30 mt-2 flex items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card p-1.5 shadow-xl"
+                    className="chrome-pop absolute right-0 top-full z-30 mt-2 flex items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card p-1.5 shadow-xl"
                   >
                     {(Object.keys(HIGHLIGHTS) as HighlightColor[]).map((c) => (
                       <button
@@ -599,9 +593,8 @@ export function VerseCard({
                         </span>
                       </button>
                     )}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  </div>
+              )}
             </div>
 
             {/* ActionMenu overflow */}

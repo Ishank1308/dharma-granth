@@ -2574,6 +2574,12 @@ svg.lucide {
         display: none !important;
     }
 }
+@media (prefers-reduced-motion: no-preference) {
+    /* Pops in under the newly active dock button (keyframe in colour.css). */
+    :root:not([data-lite-mode='true']) .dock-pill {
+        animation: category-pill-in var(--duration-standard) var(--ease-out) backwards;
+    }
+}
 .dock-pill {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
     box-shadow:
