@@ -43,7 +43,7 @@ export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterCo
         </div>
 
         {/* View Mode Toggle: Interactive Stepper vs Accessible List */}
-        <div role="group" aria-label="Map display mode" className="flex items-center gap-1 rounded-xl border border-dharma-border bg-dharma-bg p-1 self-start sm:self-center">
+        <div role="group" aria-label="Map display mode" className="flex max-w-full flex-wrap items-center gap-1 rounded-xl border border-dharma-border bg-dharma-bg p-1 self-start sm:self-center">
           <button
             type="button"
             aria-pressed={viewMode === 'map'}

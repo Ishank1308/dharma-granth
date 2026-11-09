@@ -605,8 +605,8 @@ export function SiteNav({
                 />
               </span>
               <div className="bar-title-stack grid min-w-0 grid-cols-[minmax(0,1fr)]">
-                <div className="bar-wordmark flex items-baseline gap-2">
-                  <span className="whitespace-nowrap text-body font-semibold tracking-[-0.022em] text-dharma-text">
+                <div className="bar-wordmark flex min-w-0 items-baseline gap-2">
+                  <span className="min-w-0 truncate text-body font-semibold tracking-[-0.022em] text-dharma-text">
                     Dharma Granth
                   </span>{' '}
                   <span lang="hi" className="hidden font-devanagari text-footnote text-dharma-muted sm:inline">

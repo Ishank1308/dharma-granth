@@ -183,7 +183,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
             </button>
           </div>
         ) : (
-          <ol className="reveal-grid mt-4 grid gap-3 sm:grid-cols-2">
+          <ol className="reveal-grid mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {visibleChapters.map((chapter) => {
               const isLastRead = visit?.chapterId === chapter.id;
               const isVisited = visitedIds.has(chapter.id);

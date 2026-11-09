@@ -159,7 +159,7 @@ export default function ConceptsPage() {
               className="group rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-sm hover:shadow-md hover:border-saffron-500/40 transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                   <div>
                     <h3 className="text-xl font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-400 transition-colors flex items-baseline gap-2">
                       <span lang="sa" className="font-devanagari text-2xl text-saffron-600 dark:text-saffron-400">

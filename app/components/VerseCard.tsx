@@ -270,7 +270,7 @@ function PendingMeaning({ lang, children }: { lang: 'hi' | 'en'; children: React
 }
 
 const iconButton =
-  'inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-transparent text-dharma-muted/80 transition-colors duration-200 hover:bg-dharma-card-soft hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500';
+  'inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-transparent text-dharma-muted/80 transition-colors duration-200 hover:bg-dharma-card-soft hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500';
 
 export function VerseCard({
   depth = 'study',
@@ -475,7 +475,7 @@ export function VerseCard({
     >
       <div className="relative px-1 py-2 sm:px-2">
         {/* ── Header ─────────────────────────────────────────── */}
-        <header className="mb-2 flex items-center gap-3">
+        <header className="mb-2 flex flex-wrap items-center gap-x-3">
           {onToggleSpatial || onOpenFocus ? (
             <button
               type="button"

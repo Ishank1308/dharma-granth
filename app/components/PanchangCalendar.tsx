@@ -215,7 +215,7 @@ export function PanchangCalendar() {
             <button
               type="button"
               onClick={() => setIsLocationModalOpen(true)}
-              className="group inline-flex items-center gap-2 rounded-full bg-dharma-text/[0.04] px-3 py-1.5 text-xs font-semibold text-dharma-text hover:text-saffron-700 dark:hover:text-saffron-400 transition"
+              className="group inline-flex max-w-full flex-wrap items-center gap-x-2 rounded-full bg-dharma-text/[0.04] px-3 py-1.5 text-xs font-semibold text-dharma-text hover:text-saffron-700 dark:hover:text-saffron-400 transition"
               title="Click to change location or enter custom coordinates"
             >
               <MapPin className="h-3.5 w-3.5 text-saffron-600 group-hover:scale-110 transition-transform" />
@@ -272,7 +272,7 @@ export function PanchangCalendar() {
 
           {/* Previous / Today / Next / Date Picker */}
           <div className="flex flex-wrap items-center gap-2">
-            <div className="inline-flex rounded-full bg-dharma-text/[0.04] p-1">
+            <div className="inline-flex max-w-full flex-wrap rounded-full bg-dharma-text/[0.04] p-1">
               <button
                 type="button"
                 onClick={handlePrevDay}
@@ -475,8 +475,8 @@ export function PanchangCalendar() {
               isWaxing={panchang.paksha.isWaxing}
               size={68}
             />
-            <div>
-              <div className="flex items-center gap-2">
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                   {panchang.paksha.transliteration}
                 </span>
@@ -740,7 +740,7 @@ export function PanchangCalendar() {
 
       {/* ─── 6. SUNRISE AND SUNSET: ONLY WHEN RELIABLE DATA IS AVAILABLE ────── */}
       <section aria-labelledby="solar-timings-heading" className="apple-card p-6">
-        <div className="flex items-center justify-between border-b border-dharma-text/10 pb-3 mb-4">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-dharma-text/10 pb-3 mb-4">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-500/15 text-amber-600">
               <Sun className="h-4 w-4" />
@@ -854,7 +854,7 @@ export function PanchangCalendar() {
 
       {/* ─── 7. STUDY SUGGESTION (स्वाध्याय प्रेरणा) ───────────────────────── */}
       <section aria-labelledby="study-suggestion-heading" className="apple-card p-6">
-        <div className="flex items-center justify-between border-b border-dharma-text/10 pb-3 mb-4">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-dharma-text/10 pb-3 mb-4">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-saffron-500/15 text-saffron-700 dark:text-saffron-400">
               <BookOpen className="h-4 w-4" />
@@ -921,7 +921,7 @@ export function PanchangCalendar() {
 
       {/* ─── 8. FESTIVAL PREVIEW ────────────────────────────────────────────── */}
       <section aria-labelledby="festival-preview-heading" className="apple-card p-6">
-        <div className="flex items-center justify-between border-b border-dharma-text/10 pb-3 mb-4">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-dharma-text/10 pb-3 mb-4">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-rose-500/15 text-rose-600">
               <Sparkles className="h-4 w-4" />
@@ -937,7 +937,7 @@ export function PanchangCalendar() {
           </div>
 
           <Link
-            href="/festivals"
+            href="/festivals/"
             className="text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:underline inline-flex items-center gap-1"
           >
             <span>सभी पर्व देखें (All Festivals)</span>
@@ -975,7 +975,7 @@ export function PanchangCalendar() {
               <div className="mt-4 pt-3 border-t border-dharma-text/10 flex items-center justify-between text-xs">
                 <span className="text-dharma-muted">{fest.dateStr}</span>
                 <Link
-                  href="/festivals"
+                  href="/festivals/"
                   className="tap-target inline-flex items-center font-semibold text-saffron-700 dark:text-saffron-400 hover:underline"
                 >
                   विवरण &rarr;

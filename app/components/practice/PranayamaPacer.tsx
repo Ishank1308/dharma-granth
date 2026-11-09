@@ -162,7 +162,7 @@ export function PranayamaPacer() {
         </div>
         <p className="max-w-xs text-center text-xs text-dharma-muted">{pattern.note}</p>
 
-        <div className="relative flex h-56 w-56 items-center justify-center" aria-hidden={!running}>
+        <div className="relative flex h-[224px] w-[224px] items-center justify-center" aria-hidden={!running}>
           <div className="absolute inset-0 rounded-full border border-dashed border-emerald-300/50" />
           <div
             className="absolute rounded-full bg-gradient-to-br from-emerald-300/70 via-teal-400/60 to-emerald-600/70 shadow-[0_0_36px_rgba(16,185,129,0.35)]"
@@ -184,7 +184,7 @@ export function PranayamaPacer() {
           {running ? `${label.en}, ${view.remaining} seconds` : 'Paused'}
         </p>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={() => (running ? stop() : setRunning(true))}

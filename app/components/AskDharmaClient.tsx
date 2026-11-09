@@ -53,7 +53,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
   return (
     <div className="grid gap-8">
       <form
-        className="apple-card grid gap-4 p-5 sm:p-7"
+        className="apple-card grid grid-cols-1 gap-4 p-5 sm:p-7"
         onSubmit={(event) => {
           event.preventDefault();
           if (activeTab === 'muse') {

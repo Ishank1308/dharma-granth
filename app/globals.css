@@ -277,6 +277,24 @@
 }
 
 @layer base {
+    /* Grid items may shrink below their content's width (the default is min-content), so with
+       large browser text a card wraps its words instead of pushing the page sideways. In the
+       base layer, so a min-w-* utility on an item still wins. */
+    .grid > * {
+        min-width: 0;
+    }
+
+    /* A word longer than its line (a Sanskrit compound such as जटाटवीगलज्जलप्रवाहपावितस्थले,
+       or its IAST) breaks at the edge instead of running off the screen. */
+    body {
+        overflow-wrap: break-word;
+    }
+    [lang='sa'],
+    .shloka-text,
+    .font-sanskrit {
+        overflow-wrap: anywhere;
+    }
+
     html {
         scroll-padding-top: 5.5rem;
     }

@@ -309,7 +309,7 @@ export function ScriptureLibraryClient({
       {/* Sticky search: always in reach while scrolling a long list. */}
       <div className="apple-bar sticky top-[52px] z-30 -mx-5 border-b px-5 py-3 sm:-mx-6 sm:px-6">
         <div className="mx-auto flex max-w-7xl items-center gap-3">
-          <label className="relative block flex-1">
+          <label className="relative block min-w-0 flex-1">
             <span className="sr-only">Search scriptures</span>
             <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-dharma-muted" aria-hidden="true" />
             <input
