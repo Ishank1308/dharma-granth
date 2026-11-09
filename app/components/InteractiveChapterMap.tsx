@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Compass, HelpCircle, Key, Layers, ListOrdered, MapPin } from 'lucide-react';
 import type { ChapterMapNode } from '@/data/chapter-orientation';
-import { CONCEPT_DETAILS } from '@/data/concept-details';
 import { readHref } from '@/lib/verse-paths';
 
 interface Props {
@@ -12,9 +11,11 @@ interface Props {
   chapterId: number;
   nodes: ChapterMapNode[];
   chapterConclusion?: string;
+  /** Concepts that have a /concepts/ page, resolved on the server so the concept data stays out of the bundle. */
+  linkedConcepts?: string[];
 }
 
-export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterConclusion }: Props) {
+export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterConclusion, linkedConcepts = [] }: Props) {
   const [activeStageIndex, setActiveStageIndex] = useState(0);
   const [viewMode, setViewMode] = useState<'map' | 'list'>('map');
 
@@ -164,8 +165,7 @@ export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterCo
                 </dt>
                 <dd className="mt-2 flex flex-wrap gap-1.5">
                   {activeNode.concepts.map((concept) => {
-                    const detail = CONCEPT_DETAILS[concept.toLowerCase()];
-                    return detail ? (
+                    return linkedConcepts.includes(concept) ? (
                       <Link
                         key={concept}
                         href={`/concepts/${concept.toLowerCase()}`}

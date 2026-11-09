@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "search:core": "tsx scripts/build-verse-page-subset.ts && tsx scripts/build-search-core.ts && tsx scripts/build-citation-map.ts",
+    "search:core": "tsx scripts/build-verse-page-subset.ts && tsx scripts/build-search-core.ts && tsx scripts/build-citation-map.ts && tsx scripts/build-reader-glossary.ts",
     "prebuild": "npm run publish:data && npm run search:core && npm run build:concordance && npm run samvada && npm run check && npm run og:verses",
     "build": "next build",
     "postbuild": "npm run stabilize:build-id && npm run check:export && npm run check:rules && npm run check:sitemap && npm run check:js-budget && npm run prune:export",

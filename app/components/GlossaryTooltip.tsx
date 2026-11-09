@@ -3,7 +3,8 @@
 import { useState, useRef, useEffect, type ReactNode, type CSSProperties } from 'react';
 import Link from 'next/link';
 import { BookOpen, Sparkles, X } from 'lucide-react';
-import { dictionary, termCategories, type DictionaryTerm } from '@/data/dictionary';
+// The slim generated index, not data/dictionary: the reader only needs these fields for the tooltip.
+import { READER_GLOSSARY as dictionary, type ReaderGlossaryTerm as DictionaryTerm } from '@/lib/reader-glossary.generated';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 // Map of Devanagari forms and synonyms to dictionary terms
@@ -73,7 +74,6 @@ export function GlossaryTooltip({ term, children }: GlossaryTooltipProps) {
   const triggerRef = useRef<HTMLSpanElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const categoryMeta = termCategories.find((c) => c.key === term.category);
 
   function handleMouseEnter() {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -240,9 +240,9 @@ export function GlossaryTooltip({ term, children }: GlossaryTooltipProps) {
                 <h4 className="text-sm font-bold text-dharma-text">{term.term}</h4>
               </div>
 
-              {categoryMeta && (
+              {term.categoryLabel && (
                 <span className="shrink-0 rounded-full bg-amber-500/15 border border-amber-500/20 px-2 py-0.5 text-[10px] font-semibold text-amber-700 dark:text-amber-300">
-                  {categoryMeta.label}
+                  {term.categoryLabel}
                 </span>
               )}
             </div>

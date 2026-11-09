@@ -1,7 +1,6 @@
-import { dictionary } from '@/data/dictionary';
-import { topics } from '@/data/topics';
 import { topicHref } from '@/lib/topic-links';
-import { concepts } from '@/data/concepts';
+// Slim generated lists (scripts/build-reader-glossary.ts), so the verse reader does not bundle the full data.
+import { READER_GLOSSARY as dictionary, READER_TOPICS as topics, READER_CONCEPTS as concepts } from '@/lib/reader-glossary.generated';
 
 export interface KeywordTarget {
   href: string;

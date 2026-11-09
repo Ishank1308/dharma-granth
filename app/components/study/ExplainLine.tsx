@@ -3,20 +3,19 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { MessageSquareText } from 'lucide-react';
 import { ReaderDialog } from '@/app/components/reader/ReaderDialog';
-import { LINE_EXPLANATIONS, REVIEW_LABEL, verseKey } from '@/data/study-content';
+import { REVIEW_LABEL, type LineExplanation } from '@/data/study-content';
 
 const norm = (s: string) => s.replace(/[\s|।॥0-9०-९.‌‍]+/g, '');
 
 interface Props {
-  scriptureId: string;
-  chapterId: number;
-  verseNumber: number | string;
   /** The verse's Sanskrit lines, in order. */
   lines: string[];
   /** Id of the element holding the Sanskrit text, so a selection inside it can be explained. */
   scopeId: string;
   verseLabel: string;
   fullTranslation?: string;
+  /** This verse's reviewed line explanations, passed in from the server page. */
+  entries?: LineExplanation[];
 }
 
 /**
@@ -25,13 +24,12 @@ interface Props {
  * only from reviewed data; with none, the drawer says editorial review is
  * required and keeps the line inside its verse.
  */
-export function ExplainLine({ scriptureId, chapterId, verseNumber, lines, scopeId, verseLabel, fullTranslation }: Props) {
+export function ExplainLine({ lines, scopeId, verseLabel, fullTranslation, entries }: Props) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<{ text: string; index: number } | null>(null);
   const [pending, setPending] = useState<{ text: string; index: number } | null>(null);
   const opener = useRef<HTMLButtonElement | null>(null);
 
-  const entries = LINE_EXPLANATIONS[verseKey(scriptureId, chapterId, verseNumber)];
 
   const indexOfText = useCallback(
     (text: string) => {
