@@ -24,7 +24,6 @@
  */
 
 import { useEffect, useId, useState, type ReactNode } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, type LucideIcon } from 'lucide-react';
 
 export interface VerseTreeBranch {
@@ -65,7 +64,6 @@ const RAIL = 'rounded-full bg-amber-500/30 dark:bg-amber-400/25';
 
 function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persistent: boolean }) {
   const [branch, ...rest] = branches;
-  const reduce = useReducedMotion();
   const id = useId();
   const [open, setOpen] = useState(Boolean(branch.defaultOpen));
   // Follow the default when it changes (e.g. the reader switches mode or perspective).
@@ -138,23 +136,17 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
             >
               {header}
             </button>
-            <AnimatePresence initial={false}>
-              {open && (
-                <motion.div
-                  key="body"
-                  id={bodyId}
-                  role="region"
-                  aria-label={`${branch.labelHi} · ${branch.labelEn}`}
-                  initial={reduce ? false : { height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={reduce ? { opacity: 0, transition: { duration: 0 } } : { height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                  className="overflow-hidden"
-                >
-                  {body}
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* CSS entrance (globals.css .liquid-reveal), so the verse page does not need framer-motion. */}
+            {open && (
+              <div
+                id={bodyId}
+                role="region"
+                aria-label={`${branch.labelHi} · ${branch.labelEn}`}
+                className="liquid-reveal"
+              >
+                {body}
+              </div>
+            )}
           </>
         )}
       </div>

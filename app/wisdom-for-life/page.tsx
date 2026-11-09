@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { WisdomClient } from './WisdomClient';
+import { toTopicCard } from '@/lib/wisdom-topic-card';
+import { wisdomTopics, wisdomCategories } from '@/data/wisdom-for-life';
 import Link from 'next/link';
 import { SEARCH_INTENTS } from '@/data/search-intent';
 import { Compass, BookOpen, Heart, Sparkles } from 'lucide-react';
@@ -98,7 +100,7 @@ export default function WisdomForLifeIndexPage() {
       </section>
 
       {/* ── Client Search, Filters & Cards ───────────────────────── */}
-      <WisdomClient />
+      <WisdomClient wisdomTopics={wisdomTopics.map(toTopicCard)} wisdomCategories={wisdomCategories} />
     </main>
   );
 }

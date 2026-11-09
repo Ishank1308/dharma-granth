@@ -5,7 +5,6 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { motionAllowed, navigateWithTransition } from '@/lib/view-transition';
-import { MotionConfig } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
@@ -33,7 +32,6 @@ import { openGlobalSearch } from '@/lib/search-events';
 import { formatVerseRef, toAsciiDigits } from '@/lib/verse-format';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import { downloadVerseCardPng } from '@/lib/verse-card-png';
-import { EmbedVerseDialog } from '@/app/components/EmbedVerseDialog';
 import { useReaderSettings } from '@/lib/useReaderSettings';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import {
@@ -46,11 +44,15 @@ import {
   type ReaderRef,
   type ReaderVerseText,
 } from '@/lib/reader-actions';
-import { ReaderDialog } from './ReaderDialog';
-import { ReaderSettingsPanel } from './ReaderSettingsPanel';
 import { ReaderLayers } from './ReaderLayers';
 import type { VerseInsight } from '@/lib/verse-insights';
-import { SacredShareModal, type SacredShareData } from '@/app/components/share/SacredShareModal';
+import type { SacredShareData } from '@/app/components/share/SacredShareModal';
+import { ReaderDialog } from './ReaderDialog';
+// The share card, embed dialog and settings load after the page is interactive: they and framer-motion
+// (42 KB gzip) were in the verse page's first download though nothing in them shows until a tap.
+const EmbedVerseDialog = dynamic(() => import('@/app/components/EmbedVerseDialog').then((m) => m.EmbedVerseDialog), { ssr: false });
+const ReaderSettingsPanel = dynamic(() => import('./ReaderSettingsPanel').then((m) => m.ReaderSettingsPanel), { ssr: false });
+const SacredShareModal = dynamic(() => import('@/app/components/share/SacredShareModal').then((m) => m.SacredShareModal), { ssr: false });
 import { useSwipeGesture } from '@/lib/useSwipeGesture';
 import { MobileSwipeIndicator } from './MobileSwipeIndicator';
 import { MobileReadingProgress } from './MobileReadingProgress';
@@ -391,7 +393,7 @@ export function VerseReader(props: VerseReaderProps) {
   };
 
   return (
-    <MotionConfig reducedMotion={reducedMotion ? 'always' : 'user'}>
+    <>
       <div
         data-contrast={settings.contrast}
         data-hide-decor={settings.hideDecor || settings.focusMode || settings.liteMode ? '' : undefined}
@@ -899,6 +901,6 @@ export function VerseReader(props: VerseReaderProps) {
         />
         {/* No floating Tanpura button here: on phones it sat over the verse text. Tanpura stays in focus mode. */}
       </div>
-    </MotionConfig>
+    </>
   );
 }
