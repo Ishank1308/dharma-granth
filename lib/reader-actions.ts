@@ -10,6 +10,7 @@
 
 import { EDITORIAL_DRAFT_LABEL } from '@/lib/editorial-terminology';
 import { formatVerseRef } from '@/lib/verse-format';
+import { parseStored } from '@/lib/safe-stored';
 
 export interface ReaderVerseText {
   number: number | string;
@@ -165,7 +166,7 @@ export function migrateLegacyBookmarks(): void {
       if (raw === null) continue;
       const legacy: unknown = JSON.parse(raw);
       if (!Array.isArray(legacy)) continue;
-      const current: SavedVerse[] = JSON.parse(localStorage.getItem(BOOKMARKS_KEY) ?? '[]');
+      const current: SavedVerse[] = parseStored<SavedVerse[]>(localStorage.getItem(BOOKMARKS_KEY), []);
       const seen = new Set(current.map((b) => `${b.scriptureId}:${b.chapterId ?? ''}:${b.verseId}`));
       for (const item of legacy as Array<Record<string, unknown>>) {
         const scriptureId = typeof item.scriptureId === 'string' ? item.scriptureId : '';
@@ -198,8 +199,9 @@ export function migrateLegacyBookmarks(): void {
 export function readBookmarks(): SavedVerse[] {
   migrateLegacyBookmarks();
   try {
-    const parsed: unknown = JSON.parse(localStorage.getItem(BOOKMARKS_KEY) ?? '[]');
-    return Array.isArray(parsed) ? (parsed as SavedVerse[]) : [];
+    return parseStored<SavedVerse[]>(localStorage.getItem(BOOKMARKS_KEY), []).filter(
+      (b) => typeof b === 'object' && typeof b.scriptureId === 'string',
+    );
   } catch {
     return [];
   }

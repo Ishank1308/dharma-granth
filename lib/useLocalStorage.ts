@@ -1,6 +1,7 @@
 'use client';
 
 import { startTransition, useCallback, useEffect, useRef, useState } from 'react';
+import { coerceStored } from '@/lib/safe-stored';
 
 /**
  * Generic localStorage-backed state hook.
@@ -43,7 +44,7 @@ export function useLocalStorage<T>(
       try {
         const raw = window.localStorage.getItem(key);
         if (raw !== null) {
-          setValue(JSON.parse(raw) as T);
+          setValue(coerceStored<T>(JSON.parse(raw), initialRef.current));
         } else {
           setValue(initialRef.current);
         }
@@ -70,7 +71,7 @@ export function useLocalStorage<T>(
     function onStorage(e: StorageEvent) {
       if (e.key !== key || e.newValue === null) return;
       try {
-        setValue(JSON.parse(e.newValue) as T);
+        setValue(coerceStored<T>(JSON.parse(e.newValue), initialRef.current));
       } catch {
         // ignore
       }

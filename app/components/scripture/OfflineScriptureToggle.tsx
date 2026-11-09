@@ -65,12 +65,12 @@ export function OfflineScriptureToggle({ scriptureId, title }: { scriptureId: st
         onClick={onClick}
         disabled={busy !== null}
         aria-live="polite"
-        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-70"
+        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-dharma-border bg-dharma-bg/70 px-4 py-2 text-sm font-semibold text-dharma-text transition hover:bg-saffron-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 disabled:opacity-70"
       >
         {label}
       </button>
       {error ? (
-        <p role="alert" className="mt-2 text-sm text-amber-100">
+        <p role="alert" className="mt-2 text-sm text-red-700 dark:text-amber-200">
           {error}
         </p>
       ) : null}

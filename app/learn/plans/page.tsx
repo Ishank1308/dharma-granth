@@ -22,6 +22,7 @@ import { triggerTactileFeedback } from '@/lib/haptics';
 import { ShareLinkButtons } from '@/app/components/ShareLinkButtons';
 import { StudyPlans } from './StudyPlans';
 import { GuidedReadings } from './GuidedReadings';
+import { parseStored } from '@/lib/safe-stored';
 
 const STORAGE_KEY = 'dharma.readingPlans.v1';
 
@@ -37,7 +38,7 @@ export default function ReadingPlansPage() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        setProgress(JSON.parse(stored));
+        setProgress(parseStored(stored, {}));
       }
     } catch {
       // Ignore storage errors in private mode
