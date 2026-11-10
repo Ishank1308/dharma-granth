@@ -1,5 +1,5 @@
 {
-  "note": "Original Hindi and English meanings for Manusmriti adhyayas 1-4, written from the Sanskrit.",
+  "note": "Original Hindi and English meanings for Manusmriti adhyayas 1-4 and 11.265, written from the Sanskrit.",
   "keyFormat": "chapter:verse",
   "meanings": {
     "1:1.1": {
@@ -1473,6 +1473,2194 @@
     "2:2.249": {
       "hindi": "जो ब्राह्मण इस प्रकार अखंड ब्रह्मचर्य का पालन करता है, वह उत्तम स्थान को जाता है और यहाँ फिर जन्म नहीं लेता।",
       "translation": "A Brahmana who keeps his student's vow in this way, without breaking it, goes to the highest place and is not born here again."
+    },
+    "3:3.1": {
+      "hindi": "गुरु के पास तीनों वेदों का व्रत छत्तीस वर्ष तक, या उसका आधा, या चौथाई, या जब तक (वेद) ग्रहण न हो जाए तब तक पालन करना चाहिए।",
+      "translation": "The vow of studying the three Vedas with the teacher should be kept for thirty-six years, or half that, or a quarter, or until they are learned."
+    },
+    "3:3.2": {
+      "hindi": "क्रम से तीनों वेद, दो वेद या एक वेद पढ़कर, ब्रह्मचर्य को अखंड रखते हुए, गृहस्थ आश्रम में प्रवेश करे।",
+      "translation": "Having studied in order the three Vedas, or two, or one, without breaking his chastity, he should enter the householder's stage."
+    },
+    "3:3.3": {
+      "hindi": "अपने धर्म के पालन से प्रसिद्ध, पिता से वेद रूपी दाय पाने वाले, माला पहने, आसन पर बैठे उस (स्नातक) का (पिता) पहले गाय से सत्कार करे।",
+      "translation": "He who is known for keeping his duty and has received the Veda as his heritage from his father should, garlanded and seated on a couch, first be honoured with the gift of a cow."
+    },
+    "3:3.4": {
+      "hindi": "गुरु की अनुमति से स्नान करके, विधि के अनुसार लौटकर द्विज अपने वर्ण की, शुभ लक्षणों वाली पत्नी से विवाह करे।",
+      "translation": "With his teacher's leave, having bathed and returned home according to the rule, a twice-born man should marry a wife of his own class who bears good marks."
+    },
+    "3:3.5": {
+      "hindi": "जो माता की सपिंड न हो और पिता के गोत्र की न हो, वह द्विजातियों के लिए विवाह और दाम्पत्य के लिए प्रशस्त है।",
+      "translation": "A girl who is not a close relative on the mother's side and not of the father's clan is recommended to the twice-born for marriage and married life."
+    },
+    "3:3.6": {
+      "hindi": "गाय, बकरी, भेड़, धन और अनाज से बहुत समृद्ध होने पर भी, विवाह संबंध में इन दस कुलों को छोड़ देना चाहिए।",
+      "translation": "However rich in cattle, goats, sheep, money and grain, these ten families should be avoided in forming a marriage tie."
+    },
+    "3:3.7": {
+      "hindi": "जो (संस्कार) कर्म से हीन है, जिसमें पुत्र नहीं हैं, जिसमें वेद नहीं पढ़ा जाता, जिसके (लोगों के शरीर पर) बहुत बाल हैं, और जिसमें बवासीर, क्षय, मंदाग्नि, मिर्गी, सफ़ेद दाग या कोढ़ (के रोगी) हैं।",
+      "translation": "A family that neglects the rites, has no sons, does not study the Veda, whose members are very hairy, or that suffers from piles, consumption, weak digestion, epilepsy, white leprosy or leprosy."
+    },
+    "3:3.8": {
+      "hindi": "भूरी (बालों वाली), अधिक अंगों वाली, रोगी, बिना बालों वाली, बहुत बालों वाली, बहुत बोलने वाली या लाल आँखों वाली कन्या से विवाह न करे।",
+      "translation": "He should not marry a girl with reddish hair, an extra limb, an illness, no hair or too much hair, one who talks too much, or one with tawny eyes."
+    },
+    "3:3.9": {
+      "hindi": "न नक्षत्र, वृक्ष या नदी के नाम वाली, न म्लेच्छ या पर्वत के नाम वाली, न पक्षी, साँप या दास के नाम वाली, और न भयानक नाम वाली (से विवाह करे)।",
+      "translation": "Nor one named after a constellation, a tree or a river, nor one with a foreign or mountain name, nor one named after a bird, a snake or a servant, nor one with a frightening name."
+    },
+    "3:3.10": {
+      "hindi": "जिसके अंग में कोई दोष न हो, जिसका नाम मधुर हो, जो हंस या हाथी के समान चलती हो, जिसके रोम, बाल और दाँत पतले (सूक्ष्म) हों, और जिसके अंग कोमल हों, ऐसी स्त्री से विवाह करे।",
+      "translation": "He should marry a woman whose limbs are sound, whose name is pleasant, who walks gracefully like a swan or an elephant, whose body hair, hair and teeth are fine, and whose body is soft."
+    },
+    "3:3.11": {
+      "hindi": "जिसका भाई न हो या जिसका पिता ज्ञात न हो, बुद्धिमान पुत्रिका-धर्म की आशंका से उससे विवाह न करे।",
+      "translation": "A wise man should not marry a girl who has no brother or whose father is unknown, for fear that she may have been appointed to bear a son for her father."
+    },
+    "3:3.12": {
+      "hindi": "द्विजातियों के लिए पहले विवाह में अपने वर्ण की (कन्या) प्रशस्त है; पर जो काम से (अन्य विवाह में) प्रवृत्त हों, उनके लिए ये (कन्याएँ) क्रम से निम्न हैं।",
+      "translation": "For the first marriage of the twice-born a wife of the same class is recommended; but for those who marry again out of desire, the following women are allowed, in descending order."
+    },
+    "3:3.13": {
+      "hindi": "शूद्र की पत्नी शूद्रा ही हो; वैश्य की वह और अपने (वर्ण) की; क्षत्रिय की वे और अपने (वर्ण) की; और ब्राह्मण की वे सब और अपने (वर्ण) की।",
+      "translation": "A Shudra may take only a Shudra wife; a Vaishya, a Shudra and one of his own class; a Kshatriya, those two and one of his own class; and a Brahmana, those three and one of his own class."
+    },
+    "3:3.14": {
+      "hindi": "किसी भी कथा में, आपत्ति में भी, ब्राह्मण और क्षत्रिय के लिए शूद्रा पत्नी का उल्लेख नहीं मिलता।",
+      "translation": "In no account, even in times of distress, is a Shudra wife mentioned for a Brahmana or a Kshatriya."
+    },
+    "3:3.15": {
+      "hindi": "मोह से हीन जाति की स्त्री से विवाह करने वाले द्विज अपने कुलों को संतान सहित शीघ्र शूद्रता में ले जाते हैं।",
+      "translation": "Twice-born men who in their folly marry women of a lower class soon bring their families, with their children, down to the state of Shudras."
+    },
+    "3:3.16": {
+      "hindi": "अत्रि और उतथ्य के पुत्र (गौतम) के अनुसार शूद्रा से विवाह करने वाला पतित होता है; शौनक के अनुसार उससे पुत्र उत्पन्न होने पर, और भृगु के अनुसार उस पुत्र की संतान होने पर।",
+      "translation": "According to Atri and the son of Utathya, one who marries a Shudra woman falls from caste; according to Shaunaka, on the birth of a son by her; according to Bhrigu, when that son has children."
+    },
+    "3:3.17": {
+      "hindi": "शूद्रा को शय्या पर ले जाकर ब्राह्मण अधोगति को जाता है; उससे पुत्र उत्पन्न करके वह ब्राह्मणत्व से ही गिर जाता है।",
+      "translation": "A Brahmana who takes a Shudra woman to his bed goes down to a low state; by begetting a son on her he loses his Brahmanhood."
+    },
+    "3:3.18": {
+      "hindi": "जिसके देवताओं, पितरों और अतिथियों के कर्म उस (शूद्रा) की प्रधानता में होते हैं, उसका (अन्न) पितर और देवता नहीं खाते, और वह स्वर्ग नहीं जाता।",
+      "translation": "When a man's offerings to the gods, the ancestors and guests are made chiefly by her, the ancestors and gods do not eat them, and he does not go to heaven."
+    },
+    "3:3.19": {
+      "hindi": "जिसने शूद्रा के होंठों को पिया, जो उसकी साँस से दूषित हुआ, और जिसने उससे संतान उत्पन्न की, उसके लिए कोई प्रायश्चित्त नहीं बताया गया।",
+      "translation": "For one who has drunk from a Shudra woman's lips, who has been tainted by her breath, and who has begotten a son on her, no expiation is prescribed."
+    },
+    "3:3.20": {
+      "hindi": "अब चारों वर्णों के लिए इस लोक और परलोक में हितकारी और अहितकारी इन आठ प्रकार के विवाहों को संक्षेप में जानो।",
+      "translation": "Now learn in brief the eight forms of marriage of women among the four classes, some good and some harmful here and hereafter."
+    },
+    "3:3.21": {
+      "hindi": "ब्राह्म, दैव, आर्ष, प्राजापत्य, आसुर, गान्धर्व, राक्षस, और आठवाँ सबसे निम्न पैशाच।",
+      "translation": "The Brahma, the Daiva, the Arsha, the Prajapatya, the Asura, the Gandharva, the Rakshasa, and the eighth and lowest, the Paishacha."
+    },
+    "3:3.22": {
+      "hindi": "कौन (विवाह) किस वर्ण के लिए धर्म के अनुकूल है, किसके क्या गुण और दोष हैं, और संतान पर उनके क्या शुभ-अशुभ (फल) हैं, वह सब मैं तुम्हें बताऊँगा।",
+      "translation": "I will tell you all of it: which forms are lawful for which class, what the merits and faults of each are, and their good and bad effects on offspring."
+    },
+    "3:3.23": {
+      "hindi": "ब्राह्मण के लिए क्रम से पहले छह, क्षत्रिय के लिए अंतिम चार, और वैश्य तथा शूद्र के लिए राक्षस को छोड़कर वे ही (चार) धर्म के अनुकूल जानने चाहिए।",
+      "translation": "The first six in order should be known as lawful for a Brahmana, the last four for a Kshatriya, and the same four, leaving out the Rakshasa, for a Vaishya and a Shudra."
+    },
+    "3:3.24": {
+      "hindi": "ज्ञानी ब्राह्मण के लिए पहले चार को प्रशस्त मानते हैं, क्षत्रिय के लिए अकेले राक्षस को, और वैश्य तथा शूद्र के लिए आसुर को।",
+      "translation": "The wise hold the first four to be the best for a Brahmana, the Rakshasa alone for a Kshatriya, and the Asura for a Vaishya and a Shudra."
+    },
+    "3:3.25": {
+      "hindi": "पर यहाँ (अंतिम) पाँच में से तीन धर्म के अनुकूल और दो अधर्म माने गए हैं; पैशाच और आसुर कभी नहीं करने चाहिए।",
+      "translation": "But of the last five, three are held lawful here and two unlawful; the Paishacha and the Asura should never be practised."
+    },
+    "3:3.26": {
+      "hindi": "पहले बताए गए गान्धर्व और राक्षस विवाह, अलग-अलग या मिले हुए, क्षत्रिय के लिए धर्म के अनुकूल माने गए हैं।",
+      "translation": "The Gandharva and the Rakshasa forms mentioned above, whether separate or combined, are held lawful for a Kshatriya."
+    },
+    "3:3.27": {
+      "hindi": "वेद और शील से युक्त (वर) को स्वयं बुलाकर, (कन्या को) वस्त्र पहनाकर और सत्कार करके कन्या का दान करना ब्राह्म धर्म (विवाह) कहा गया है।",
+      "translation": "Giving a daughter, after dressing and honouring her, to a man learned in the Veda and of good character whom the father himself has invited, is called the Brahma form."
+    },
+    "3:3.28": {
+      "hindi": "विस्तृत यज्ञ में भली प्रकार कर्म करने वाले ऋत्विज को अलंकृत करके पुत्री का दान करना दैव धर्म कहलाता है।",
+      "translation": "Giving a daughter, adorned, to the priest who is duly performing a sacrifice that is under way is called the Daiva form."
+    },
+    "3:3.29": {
+      "hindi": "धर्म के लिए वर से एक या दो जोड़ी गाय-बैल लेकर विधि के अनुसार कन्या का दान करना आर्ष धर्म कहलाता है।",
+      "translation": "Giving a daughter according to the rule after receiving from the groom one or two pairs of cattle, for the sake of dharma, is called the Arsha form."
+    },
+    "3:3.30": {
+      "hindi": "'तुम दोनों साथ मिलकर धर्म का पालन करो', यह वाणी से कहकर और (वर का) सत्कार करके कन्या का दान करना प्राजापत्य विधि मानी गई है।",
+      "translation": "Giving a daughter after honouring the groom and saying to them, 'May you both practise dharma together,' is known as the Prajapatya form."
+    },
+    "3:3.31": {
+      "hindi": "(कन्या के) संबंधियों और कन्या को शक्ति के अनुसार धन देकर, अपनी इच्छा से कन्या को लेना आसुर धर्म कहलाता है।",
+      "translation": "When the groom receives a girl of his own free will after giving as much wealth as he can to her kin and to the girl herself, that is called the Asura form."
+    },
+    "3:3.32": {
+      "hindi": "कन्या और वर का इच्छा से परस्पर मिलन गान्धर्व (विवाह) जानना चाहिए, जो काम से उत्पन्न और दाम्पत्य के लिए होता है।",
+      "translation": "The union of a girl and a groom by mutual desire should be known as the Gandharva form; it springs from love and leads to married union."
+    },
+    "3:3.33": {
+      "hindi": "(कन्या के संबंधियों को) मारकर, घायल करके और (घर) तोड़कर, चिल्लाती और रोती हुई कन्या का घर से बलपूर्वक हरण राक्षस विधि कहलाता है।",
+      "translation": "Carrying off a girl by force from her home while she cries and weeps, after killing, wounding and breaking in, is called the Rakshasa form."
+    },
+    "3:3.34": {
+      "hindi": "जहाँ (कोई) सोई हुई, मतवाली या असावधान (कन्या) के पास एकांत में जाता है, वह विवाहों में सबसे पापपूर्ण, सबसे निम्न पैशाच (विवाह) कहलाता है।",
+      "translation": "When a man secretly approaches a girl who is asleep, drunk or out of her senses, that is the Paishacha, the most sinful and lowest of the forms of marriage."
+    },
+    "3:3.35": {
+      "hindi": "श्रेष्ठ द्विजों (ब्राह्मणों) में कन्या का दान जल (अर्पण) के साथ ही उत्तम है; अन्य वर्णों में परस्पर इच्छा से (भी होता है)।",
+      "translation": "Among Brahmanas the gift of a daughter is best made with a libation of water; among the other classes it may be made by mutual consent."
+    },
+    "3:3.36": {
+      "hindi": "हे विप्रो, मनु ने इन विवाहों में से जिसका जो गुण बताया है, वह सब मुझसे भली प्रकार सुनो।",
+      "translation": "Brahmanas, listen as I fully set out the merit that Manu declared for each of these forms of marriage."
+    },
+    "3:3.37": {
+      "hindi": "ब्राह्म विवाह से उत्पन्न पुत्र यदि सत्कर्म करे, तो दस पहले और दस बाद की पीढ़ियों को, और इक्कीसवें अपने आप को, पाप से छुड़ाता है।",
+      "translation": "A son born of a Brahma marriage, if he does good deeds, frees from sin ten ancestors, ten descendants and himself as the twenty-first."
+    },
+    "3:3.38": {
+      "hindi": "दैव विवाह से उत्पन्न पुत्र सात पहली और सात बाद की (पीढ़ियों) को, आर्ष विवाह से उत्पन्न पुत्र तीन-तीन को, और प्राजापत्य विवाह से उत्पन्न पुत्र छह-छह को (छुड़ाता है)।",
+      "translation": "A son of a Daiva marriage frees seven before and seven after, a son of an Arsha marriage three and three, and a son of a Prajapatya marriage six and six."
+    },
+    "3:3.39": {
+      "hindi": "ब्राह्म आदि चार विवाहों से ही क्रम से वेद के तेज वाले और शिष्टों द्वारा सम्मानित पुत्र उत्पन्न होते हैं।",
+      "translation": "From the four forms beginning with the Brahma, in order, are born sons who shine with sacred learning and are esteemed by the virtuous."
+    },
+    "3:3.40": {
+      "hindi": "वे रूप, सत्त्व और गुणों से युक्त, धनवान, यशस्वी, पर्याप्त भोगों वाले, अत्यंत धर्मात्मा होते हैं और सौ वर्ष जीते हैं।",
+      "translation": "They are endowed with beauty, goodness and virtue, wealthy and famous, have enough to enjoy, are most righteous, and live a hundred years."
+    },
+    "3:3.41": {
+      "hindi": "पर शेष बुरे विवाहों से क्रूर, झूठ बोलने वाले और वेद तथा धर्म से द्वेष करने वाले पुत्र उत्पन्न होते हैं।",
+      "translation": "But from the remaining, bad marriages are born sons who are cruel, speak falsely, and hate the Veda and dharma."
+    },
+    "3:3.42": {
+      "hindi": "अनिंदित विवाहों से मनुष्यों की संतान अनिंदित होती है, और निंदित (विवाहों) से निंदित; इसलिए निंदित (विवाहों) को छोड़ दे।",
+      "translation": "From blameless marriages comes blameless offspring, and from blameworthy ones blameworthy offspring; so one should avoid the blameworthy forms."
+    },
+    "3:3.43": {
+      "hindi": "पाणिग्रहण (हाथ पकड़ने) का संस्कार अपने वर्ण की (कन्याओं) के लिए बताया गया है; दूसरे वर्ण की (कन्याओं) के विवाह में यह विधि जाननी चाहिए।",
+      "translation": "The rite of taking the bride's hand is prescribed for brides of the same class; for brides of a different class, the following rule applies."
+    },
+    "3:3.44": {
+      "hindi": "ऊँचे (वर्ण वाले) से विवाह में क्षत्रिय (कन्या) बाण पकड़े, वैश्य कन्या चाबुक, और शूद्रा वस्त्र का छोर पकड़े।",
+      "translation": "When marrying a man of higher class, a Kshatriya bride should hold an arrow, a Vaishya bride a goad, and a Shudra bride the hem of his garment."
+    },
+    "3:3.45": {
+      "hindi": "ऋतुकाल में (पत्नी के) पास जाए, सदा अपनी पत्नी में ही संतुष्ट रहे; और पर्वों को छोड़कर, उसी व्रत में रहते हुए, प्रेम की इच्छा से भी उसके पास जा सकता है।",
+      "translation": "He should approach his wife in her season, always content with his own wife; and, keeping to her alone, he may go to her out of love on any day except the sacred days."
+    },
+    "3:3.46": {
+      "hindi": "स्त्रियों का स्वाभाविक ऋतुकाल सोलह रातें माना गया है, जिनमें (रक्तस्राव के) चार दिन सज्जनों द्वारा निंदित हैं।",
+      "translation": "The natural season of women is held to be sixteen nights, including the four days that the good disapprove of."
+    },
+    "3:3.47": {
+      "hindi": "उनमें पहली चार रातें, ग्यारहवीं और तेरहवीं निंदित हैं; शेष दस रातें प्रशस्त हैं।",
+      "translation": "Of these, the first four, the eleventh and the thirteenth are forbidden; the remaining ten nights are approved."
+    },
+    "3:3.48": {
+      "hindi": "सम (गिनती की) रातों में पुत्र उत्पन्न होते हैं और विषम रातों में कन्याएँ; इसलिए पुत्र चाहने वाला ऋतुकाल की सम रातों में पत्नी के पास जाए।",
+      "translation": "On the even nights sons are conceived, and on the odd nights daughters; so one who wants a son should approach his wife on the even nights of her season."
+    },
+    "3:3.49": {
+      "hindi": "पुरुष का बीज अधिक हो तो पुत्र होता है, स्त्री का अधिक हो तो कन्या; बराबर हो तो नपुंसक या जुड़वाँ पुत्र-कन्या, और (बीज) क्षीण या थोड़ा हो तो (गर्भ नहीं ठहरता)।",
+      "translation": "A son is born when the male seed is stronger, a daughter when the female's is; if they are equal, a child of neither sex or twins of both; if the seed is weak or scant, there is no conception."
+    },
+    "3:3.50": {
+      "hindi": "निंदित (छह) और अन्य आठ रातों में स्त्री को छोड़ने वाला किसी भी आश्रम में रहते हुए ब्रह्मचारी ही होता है।",
+      "translation": "One who avoids women on the forbidden nights and on eight others is a celibate, whatever stage of life he lives in."
+    },
+    "3:3.51": {
+      "hindi": "विद्वान पिता कन्या का थोड़ा सा भी शुल्क न ले, क्योंकि लोभ से शुल्क लेने वाला मनुष्य संतान को बेचने वाला होता है।",
+      "translation": "A father who knows the law should not take even a small bride-price for his daughter, for a man who takes a price out of greed is selling his child."
+    },
+    "3:3.52": {
+      "hindi": "जो बंधु मोह से स्त्री-धन, स्त्रियों के वाहन या वस्त्रों पर जीवन चलाते हैं, वे पापी अधोगति को जाते हैं।",
+      "translation": "Relatives who in their folly live off a woman's property, her carriages or her clothes are sinners and go to a low state."
+    },
+    "3:3.53": {
+      "hindi": "कुछ लोग आर्ष (विवाह) में गाय-बैल के जोड़े को शुल्क कहते हैं, पर वह झूठ है; थोड़ा हो या बहुत, वह उतना ही (कन्या का) विक्रय है।",
+      "translation": "Some say the pair of cattle in the Arsha form is a bride-price, but that is wrong; small or great, any such price is still a sale."
+    },
+    "3:3.54": {
+      "hindi": "जिन (कन्याओं) का शुल्क उनके संबंधी नहीं लेते, वह विक्रय नहीं है; वह केवल कन्याओं का सम्मान और (उनके प्रति) दया है।",
+      "translation": "When the girl's kin do not take the gift for themselves, it is not a sale; it is simply an honour to the maidens and a kindness to them."
+    },
+    "3:3.55": {
+      "hindi": "बहुत कल्याण चाहने वाले पिता, भाई, पति और देवर को इन (स्त्रियों) का सम्मान करना चाहिए और इन्हें आभूषण देने चाहिए।",
+      "translation": "Fathers, brothers, husbands and brothers-in-law who wish for great good fortune should honour these women and adorn them."
+    },
+    "3:3.56": {
+      "hindi": "जहाँ स्त्रियों का सम्मान होता है, वहाँ देवता प्रसन्न रहते हैं; और जहाँ इनका सम्मान नहीं होता, वहाँ सब कर्म निष्फल होते हैं।",
+      "translation": "Where women are honoured, the gods rejoice; where they are not honoured, all rites are fruitless."
+    },
+    "3:3.57": {
+      "hindi": "जहाँ (घर की) स्त्रियाँ दुःखी रहती हैं, वह कुल शीघ्र नष्ट हो जाता है; और जहाँ ये दुःखी नहीं रहतीं, वह (कुल) सदा बढ़ता है।",
+      "translation": "Where the women of the house grieve, that family soon perishes; where they do not grieve, it always prospers."
+    },
+    "3:3.58": {
+      "hindi": "सम्मान न पाने वाली स्त्रियाँ जिन घरों को शाप देती हैं, वे घर मानो जादू-टोने से मारे गए हों, ऐसे चारों ओर से नष्ट हो जाते हैं।",
+      "translation": "Houses that the women of the family curse for want of honour are destroyed on every side, as if struck down by sorcery."
+    },
+    "3:3.59": {
+      "hindi": "इसलिए समृद्धि चाहने वाले पुरुषों को सदा, सत्कार के अवसरों और उत्सवों में, आभूषण, वस्त्र और भोजन से इनका सम्मान करना चाहिए।",
+      "translation": "So men who seek prosperity should always honour them with ornaments, clothes and food, on festive days and at celebrations."
+    },
+    "3:3.60": {
+      "hindi": "जिस कुल में पति पत्नी से और पत्नी पति से सदा संतुष्ट रहती है, वहाँ कल्याण निश्चित है।",
+      "translation": "In a family where the husband is always content with his wife and the wife with her husband, good fortune is certain."
+    },
+    "3:3.61": {
+      "hindi": "यदि स्त्री (सुंदर और) प्रसन्न न रहे, तो वह पुरुष को आनंदित नहीं करती; और पुरुष के आनंदित न होने से संतान नहीं होती।",
+      "translation": "If the wife is not radiant, she does not delight her husband; and if the husband is not delighted, no children are born."
+    },
+    "3:3.62": {
+      "hindi": "स्त्री के प्रसन्न रहने पर सारा कुल प्रसन्न रहता है; उसके अप्रसन्न रहने पर सब कुछ अप्रसन्न रहता है।",
+      "translation": "When the wife is radiant, the whole family is radiant; when she is not, nothing is."
+    },
+    "3:3.63": {
+      "hindi": "बुरे विवाहों से, कर्मों के लोप से, वेद न पढ़ने से और ब्राह्मणों का अपमान करने से कुल हीन हो जाते हैं।",
+      "translation": "Through bad marriages, neglect of the rites, failure to study the Veda and slighting Brahmanas, families fall into low standing."
+    },
+    "3:3.64": {
+      "hindi": "शिल्प से, व्यापार से, केवल शूद्रा की संतान से, गाय, घोड़े और वाहनों (के व्यापार) से, खेती से और राजा की सेवा से (भी कुल गिरते हैं)।",
+      "translation": "So too through crafts, trade, having children only by Shudra women, dealing in cattle, horses and carriages, farming, and serving the king."
+    },
+    "3:3.65": {
+      "hindi": "जिनके लिए यज्ञ नहीं करना चाहिए उनके यज्ञ कराने से, कर्मों में अविश्वास से, और जो मंत्रों (वेद) से हीन हैं, वे कुल शीघ्र नष्ट हो जाते हैं।",
+      "translation": "Families quickly perish through sacrificing for those who should not be sacrificed for, through disbelief in the rites, and through lacking the Vedic mantras."
+    },
+    "3:3.66": {
+      "hindi": "पर जो कुल मंत्रों (वेद) से समृद्ध हैं, वे थोड़े धन वाले होकर भी कुलों की गिनती में आते हैं और महान यश पाते हैं।",
+      "translation": "But families rich in Vedic learning, even if they have little wealth, are counted among good families and win great fame."
+    },
+    "3:3.67": {
+      "hindi": "गृहस्थ विवाह की अग्नि में विधि के अनुसार गृह्य कर्म, पाँच यज्ञों का विधान और प्रतिदिन का भोजन पकाना करे।",
+      "translation": "A householder should perform the domestic rites in the fire of his marriage according to the rule, along with the five great offerings and the daily cooking."
+    },
+    "3:3.68": {
+      "hindi": "गृहस्थ के पाँच हिंसा के स्थान हैं: चूल्हा, चक्की, झाड़ू, ओखली-मूसल और पानी का घड़ा; इनका उपयोग करते हुए वह (पाप से) बँधता है।",
+      "translation": "A householder has five places of slaughter: the hearth, the grindstone, the broom, the mortar and pestle, and the water pot; by using them he becomes bound by sin."
+    },
+    "3:3.69": {
+      "hindi": "उन सब (पापों) के क्रम से निवारण के लिए महर्षियों ने गृहस्थों के लिए प्रतिदिन पाँच महायज्ञ निश्चित किए हैं।",
+      "translation": "To atone for all of these in turn, the great sages have laid down five great offerings to be made daily by householders."
+    },
+    "3:3.70": {
+      "hindi": "(वेद) पढ़ाना ब्रह्म-यज्ञ है, तर्पण पितृ-यज्ञ है, होम देव-यज्ञ है, बलि भूत-यज्ञ है, और अतिथि-पूजन मनुष्य-यज्ञ है।",
+      "translation": "Teaching the Veda is the offering to Brahman, the water offering is the offering to the ancestors, the fire offering is the offering to the gods, the food portion is the offering to beings, and honouring guests is the offering to men."
+    },
+    "3:3.71": {
+      "hindi": "जो शक्ति के अनुसार इन पाँच महायज्ञों को नहीं छोड़ता, वह सदा घर में रहते हुए भी हिंसा के स्थानों के दोषों से लिप्त नहीं होता।",
+      "translation": "One who does not neglect these five great offerings as far as he is able is not stained by the faults of the places of slaughter, though he lives at home."
+    },
+    "3:3.72": {
+      "hindi": "जो देवताओं, अतिथियों, आश्रितों, पितरों और अपने आप, इन पाँचों को (भोजन) अर्पित नहीं करता, वह साँस लेता हुआ भी जीवित नहीं है।",
+      "translation": "One who offers nothing to these five, the gods, guests, dependants, ancestors and himself, breathes but does not live."
+    },
+    "3:3.73": {
+      "hindi": "(कुछ लोग) पाँच यज्ञों को अहुत, हुत, प्रहुत, ब्राह्म्य-हुत और प्राशित कहते हैं।",
+      "translation": "Some call the five offerings the unoffered, the offered, the offered forth, the offered in a Brahmana, and the eaten."
+    },
+    "3:3.74": {
+      "hindi": "जप अहुत है, होम हुत है, भूतों को बलि प्रहुत है, श्रेष्ठ द्विजों का सत्कार ब्राह्म्य-हुत है, और पितरों का तर्पण प्राशित है।",
+      "translation": "Recitation is the unoffered, the fire offering is the offered, the food portion for beings is the offered forth, honouring Brahmanas is the offered in a Brahmana, and the offering to the ancestors is the eaten."
+    },
+    "3:3.75": {
+      "hindi": "(गृहस्थ) यहाँ सदा स्वाध्याय में और देवताओं के कर्म में लगा रहे; क्योंकि देवताओं के कर्म में लगा हुआ (मनुष्य) इस चर-अचर (जगत) का पालन करता है।",
+      "translation": "He should always be devoted to Vedic study and to the rites for the gods; for one devoted to the rites for the gods sustains this world of moving and unmoving things."
+    },
+    "3:3.76": {
+      "hindi": "अग्नि में भली प्रकार डाली गई आहुति सूर्य तक पहुँचती है। सूर्य से वर्षा होती है, वर्षा से अन्न, और उससे प्रजा।",
+      "translation": "An offering duly cast into the fire reaches the sun; from the sun comes rain, from rain food, and from food living creatures."
+    },
+    "3:3.77": {
+      "hindi": "जैसे सब प्राणी वायु का सहारा लेकर जीते हैं, वैसे ही अन्य आश्रम गृहस्थ का सहारा लेकर चलते हैं।",
+      "translation": "As all creatures live by depending on the air, so the other stages of life depend on the householder."
+    },
+    "3:3.78": {
+      "hindi": "क्योंकि तीनों अन्य आश्रमों के लोग प्रतिदिन गृहस्थ के द्वारा ही ज्ञान और अन्न से पाले जाते हैं, इसलिए गृहस्थ सबसे बड़ा आश्रम है।",
+      "translation": "Because the people of the other three stages are supported every day by the householder alone, with knowledge and with food, the householder's is the eldest stage."
+    },
+    "3:3.79": {
+      "hindi": "अक्षय स्वर्ग और यहाँ भी अत्यंत सुख चाहने वाले को इस (आश्रम) का यत्नपूर्वक पालन करना चाहिए; दुर्बल इन्द्रियों वाले इसका पालन नहीं कर सकते।",
+      "translation": "One who seeks imperishable heaven, and lasting happiness here, should keep up this stage with care; those of weak senses cannot sustain it."
+    },
+    "3:3.80": {
+      "hindi": "ऋषि, पितर, देवता, प्राणी और अतिथि गृहस्थों से आशा रखते हैं; (धर्म) जानने वाले को उनके लिए (कर्तव्य) करना चाहिए।",
+      "translation": "The sages, the ancestors, the gods, all beings and guests look to householders for support; one who understands should do his part for them."
+    },
+    "3:3.81": {
+      "hindi": "स्वाध्याय से ऋषियों की, विधि के अनुसार होम से देवताओं की, श्राद्ध से पितरों की, अन्न से मनुष्यों की और बलि कर्म से प्राणियों की पूजा करे।",
+      "translation": "He should honour the sages with Vedic study, the gods with fire offerings according to rule, the ancestors with rites for the dead, men with food and beings with food portions."
+    },
+    "3:3.82": {
+      "hindi": "पितरों को प्रसन्न करते हुए प्रतिदिन अन्न आदि से, या जल से, या दूध, कंद-मूल और फलों से श्राद्ध करे।",
+      "translation": "He should perform the rite for the ancestors every day, with food or with water, or with milk, roots and fruits, pleasing the ancestors."
+    },
+    "3:3.83": {
+      "hindi": "पाँच यज्ञों में पितरों के लिए एक ब्राह्मण को भी भोजन कराए; पर यहाँ वैश्वदेव (बलि) के लिए किसी द्विज को भोजन न कराए।",
+      "translation": "As part of the five offerings he should feed at least one Brahmana for the sake of the ancestors, but he should not feed any for the offering to all the gods."
+    },
+    "3:3.84": {
+      "hindi": "वैश्वदेव का (अन्न) पकने पर ब्राह्मण प्रतिदिन गृह्य अग्नि में विधिपूर्वक इन देवताओं के लिए होम करे।",
+      "translation": "When the food for all the gods is ready, a Brahmana should make an offering daily in the domestic fire, by the rule, to the following deities."
+    },
+    "3:3.85": {
+      "hindi": "पहले अग्नि और सोम को, फिर उन दोनों को एक साथ, फिर विश्वेदेवों को और धन्वन्तरि को।",
+      "translation": "First to Agni and to Soma, then to the two together, to all the gods and to Dhanvantari."
+    },
+    "3:3.86": {
+      "hindi": "कुहू और अनुमति को, प्रजापति को, द्यावा-पृथ्वी को एक साथ, और अंत में स्विष्टकृत (अग्नि) को।",
+      "translation": "To Kuhu and Anumati, to Prajapati, to heaven and earth together, and lastly to Agni who makes the offering well performed."
+    },
+    "3:3.87": {
+      "hindi": "इस प्रकार भली प्रकार आहुति देकर, सब दिशाओं में क्रम से इन्द्र, यम, वरुण और सोम को उनके अनुचरों सहित बलि दे।",
+      "translation": "Having thus duly offered into the fire, he should place food portions in every direction, in order, for Indra, Yama, Varuna and Soma with their attendants."
+    },
+    "3:3.88": {
+      "hindi": "'मरुतों के लिए' कहकर द्वार पर, 'जलों के लिए' कहकर जल में, और 'वनस्पतियों के लिए' कहकर ओखली-मूसल पर (बलि) रखे।",
+      "translation": "Saying 'to the Maruts' he should scatter a portion at the door, 'to the waters' in water, and 'to the trees' on the mortar and pestle."
+    },
+    "3:3.89": {
+      "hindi": "सिरहाने की ओर श्री के लिए, पैताने की ओर भद्रकाली के लिए, और घर के बीच में ब्रह्मा और वास्तोष्पति के लिए बलि रखे।",
+      "translation": "At the head of the bed he should offer to Shri, at its foot to Bhadrakali, and in the middle of the house to Brahma and the lord of the dwelling."
+    },
+    "3:3.90": {
+      "hindi": "विश्वेदेवों के लिए आकाश में बलि उछाले, और दिन में विचरने वाले तथा रात में विचरने वाले प्राणियों के लिए (भी)।",
+      "translation": "He should toss a portion into the air for all the gods, and for the beings that move by day and those that move by night."
+    },
+    "3:3.91": {
+      "hindi": "घर के पिछले भाग में सब प्राणियों के लिए बलि रखे; और बची हुई सब बलि दक्षिण की ओर पितरों को दे।",
+      "translation": "In the back of the house he should offer a portion for the welfare of all; and the rest of the food portions he should offer to the ancestors, facing south."
+    },
+    "3:3.92": {
+      "hindi": "कुत्तों, पतितों, श्वपचों, पाप-रोगियों, पक्षियों और कीड़ों के लिए धीरे से भूमि पर (अन्न) रखे।",
+      "translation": "For dogs, outcasts, dog-eaters, those with diseases thought to come from sin, crows and insects, he should gently place some food on the ground."
+    },
+    "3:3.93": {
+      "hindi": "जो ब्राह्मण इस प्रकार सदा सब प्राणियों का सम्मान करता है, वह तेजोमय शरीर धारण करके सीधे मार्ग से परम स्थान को जाता है।",
+      "translation": "A Brahmana who thus honours all beings every day goes by the straight path to the highest place, in a body of light."
+    },
+    "3:3.94": {
+      "hindi": "इस प्रकार बलि कर्म करके पहले अतिथि को भोजन कराए, और भिक्षु तथा ब्रह्मचारी को विधि के अनुसार भिक्षा दे।",
+      "translation": "Having made the food portions in this way, he should first feed his guest, and give alms by rule to a mendicant and to a student."
+    },
+    "3:3.95": {
+      "hindi": "गुरु को विधि के अनुसार गाय देने से जो पुण्य का फल मिलता है, वही पुण्य का फल गृहस्थ द्विज भिक्षा देकर पाता है।",
+      "translation": "The merit a twice-born householder gains by giving alms is the same as the merit gained by giving a cow to his teacher according to rule."
+    },
+    "3:3.96": {
+      "hindi": "वेद के तत्त्व और अर्थ को जानने वाले ब्राह्मण को विधिपूर्वक सत्कार करके भिक्षा या जल का पात्र भी देना चाहिए।",
+      "translation": "He should give alms, or at least a pot of water, with due honour and by the rule, to a Brahmana who knows the truth and meaning of the Veda."
+    },
+    "3:3.97": {
+      "hindi": "न जानने वाले दाता मोह से राख के समान (विद्याहीन) ब्राह्मणों को जो हव्य और कव्य देते हैं, वे नष्ट हो जाते हैं।",
+      "translation": "Offerings to the gods and ancestors that ignorant givers in their folly make to Brahmanas who are like dead ashes come to nothing."
+    },
+    "3:3.98": {
+      "hindi": "विद्या और तप से समृद्ध ब्राह्मणों के मुख रूपी अग्नि में डाली गई आहुति कठिनाई से और बड़े पाप से भी पार लगाती है।",
+      "translation": "An offering made into the fire of the mouths of Brahmanas rich in learning and austerity carries the giver across hardship and even great sin."
+    },
+    "3:3.99": {
+      "hindi": "आए हुए अतिथि को आसन और जल दे, और शक्ति के अनुसार विधिपूर्वक तैयार किया अन्न भी दे।",
+      "translation": "To a guest who has arrived he should give a seat and water, and food prepared with care according to the rule, as far as he is able."
+    },
+    "3:3.100": {
+      "hindi": "खेत में गिरे दाने बीनकर जीने वाले और पाँच अग्नियों में होम करने वाले (गृहस्थ) का भी सब पुण्य वह ब्राह्मण ले लेता है जो उसके घर बिना सत्कार के रहता है।",
+      "translation": "A Brahmana who stays in a house without being honoured takes away all the merit of the householder, even if he lives by gleaning and offers into five fires."
+    },
+    "3:3.101": {
+      "hindi": "घास (का आसन), भूमि (विश्राम के लिए), जल, और चौथी मधुर वाणी, ये सज्जनों के घर में कभी समाप्त नहीं होते।",
+      "translation": "A grass mat, a place to rest, water, and fourth, kind words: these are never lacking in the houses of good people."
+    },
+    "3:3.102": {
+      "hindi": "एक रात रहने वाला ब्राह्मण अतिथि कहलाता है; क्योंकि वह सदा (एक स्थान पर) नहीं ठहरता, इसलिए उसे अतिथि कहते हैं।",
+      "translation": "A Brahmana who stays for one night is called a guest; because he does not stay for long, he is called atithi."
+    },
+    "3:3.103": {
+      "hindi": "एक ही गाँव के रहने वाले, या (अपने) मित्र ब्राह्मण को, जो उस घर में आया हो जहाँ पत्नी और अग्नियाँ हैं, अतिथि न जाने।",
+      "translation": "A Brahmana who lives in the same village, or a friend who comes to the house where one's wife and fires are, should not be considered a guest."
+    },
+    "3:3.104": {
+      "hindi": "जो मूर्ख गृहस्थ दूसरों के पकाए भोजन के आसरे रहते हैं, वे उसके कारण मरने के बाद अन्न देने वालों के पशु बनते हैं।",
+      "translation": "Foolish householders who look for meals cooked by others become, after death, the cattle of those who fed them."
+    },
+    "3:3.105": {
+      "hindi": "सूर्यास्त के समय आए अतिथि को गृहस्थ लौटाए नहीं; वह समय पर आया हो या असमय, उसके घर में बिना भोजन किए न रहे।",
+      "translation": "A householder should not turn away a guest brought by the setting sun; whether he comes in good time or not, he should not stay in the house without eating."
+    },
+    "3:3.106": {
+      "hindi": "जो (भोजन) अतिथि को न खिलाए, उसे स्वयं भी न खाए। अतिथि का सत्कार धन, यश, आयु और स्वर्ग देने वाला है।",
+      "translation": "He should not himself eat anything he does not serve to his guest; honouring guests brings wealth, fame, long life and heaven."
+    },
+    "3:3.107": {
+      "hindi": "आसन, निवास, शय्या, (विदाई में) साथ चलना और सेवा, उत्तम (अतिथियों) को उत्तम, निम्न को निम्न और बराबर वाले को बराबर दे।",
+      "translation": "Seat, lodging, bed, accompanying them on leaving, and attention: to superior guests he should give the best, to inferior ones less, and to equals what is equal."
+    },
+    "3:3.108": {
+      "hindi": "वैश्वदेव पूरा हो जाने पर यदि कोई दूसरा अतिथि आए, तो उसे भी शक्ति के अनुसार अन्न दे, पर (फिर से) बलि न करे।",
+      "translation": "If another guest arrives after the offering to all the gods is finished, he should give him food as he is able, but need not make the food portions again."
+    },
+    "3:3.109": {
+      "hindi": "ब्राह्मण भोजन पाने के लिए अपने कुल और गोत्र को न बताए; भोजन के लिए उन्हें बताने वाले को ज्ञानी उगला हुआ खाने वाला कहते हैं।",
+      "translation": "A Brahmana should not announce his family and lineage to get a meal; the wise call one who boasts of them for food an eater of vomit."
+    },
+    "3:3.110": {
+      "hindi": "ब्राह्मण के घर में क्षत्रिय अतिथि नहीं कहलाता, न वैश्य, न शूद्र, न मित्र, न बंधु और न गुरु।",
+      "translation": "In a Brahmana's house a Kshatriya is not called a guest, nor a Vaishya or Shudra, nor a friend, a relative or a teacher."
+    },
+    "3:3.111": {
+      "hindi": "पर यदि क्षत्रिय अतिथि की रीति से घर आए, तो ब्राह्मणों के खा लेने के बाद उसे भी इच्छा के अनुसार भोजन कराए।",
+      "translation": "But if a Kshatriya comes to the house in the manner of a guest, he may be fed as one wishes after the Brahmanas have eaten."
+    },
+    "3:3.112": {
+      "hindi": "यदि वैश्य और शूद्र भी अतिथि की रीति से घर आएँ, तो दया दिखाते हुए उन्हें सेवकों के साथ भोजन कराए।",
+      "translation": "If a Vaishya or a Shudra comes to the household in the manner of a guest, he should feed them with his servants, showing them kindness."
+    },
+    "3:3.113": {
+      "hindi": "मित्र आदि अन्य लोग भी प्रेम से घर आएँ, तो शक्ति के अनुसार अन्न बनाकर पत्नी के साथ उन्हें भोजन कराए।",
+      "translation": "Others too, such as friends, who come to the house out of affection, he should feed with his wife, preparing food as well as he can."
+    },
+    "3:3.114": {
+      "hindi": "नवविवाहित (बेटियाँ-बहुएँ), कन्याएँ, रोगी और गर्भवती स्त्रियाँ, इन्हें बिना विचार किए अतिथियों के बाद तुरंत भोजन कराए।",
+      "translation": "Newly married women, young girls, the sick and pregnant women he should feed right after the guests, without hesitation."
+    },
+    "3:3.115": {
+      "hindi": "जो मूर्ख इन्हें दिए बिना पहले स्वयं खाता है, वह खाते हुए नहीं जानता कि (मरने के बाद) कुत्ते और गिद्ध उसे खाएँगे।",
+      "translation": "The fool who eats first without giving to these does not know, as he eats, that he will himself be eaten by dogs and vultures."
+    },
+    "3:3.116": {
+      "hindi": "ब्राह्मणों, अपने लोगों और सेवकों के खा लेने के बाद पति-पत्नी बचा हुआ खाएँ।",
+      "translation": "After the Brahmanas, his own family and his servants have eaten, the husband and wife should eat what is left."
+    },
+    "3:3.117": {
+      "hindi": "देवताओं, ऋषियों, मनुष्यों, पितरों और घर के देवताओं की पूजा करके उसके बाद गृहस्थ बचा हुआ खाए।",
+      "translation": "Having honoured the gods, the sages, men, the ancestors and the household deities, the householder should then eat what remains."
+    },
+    "3:3.118": {
+      "hindi": "जो केवल अपने लिए पकाता है, वह केवल पाप खाता है; क्योंकि यज्ञ से बचा हुआ भोजन ही सज्जनों का अन्न बताया गया है।",
+      "translation": "One who cooks only for himself eats nothing but sin; the food of the good is declared to be what remains after the offerings."
+    },
+    "3:3.119": {
+      "hindi": "राजा, ऋत्विज, स्नातक, गुरु, प्रिय (मित्र), ससुर और मामा, इन्हें वर्ष बीतने पर (आने पर) फिर मधुपर्क से सत्कार करे।",
+      "translation": "A king, an officiating priest, a graduate, a teacher, a dear friend, a father-in-law and a maternal uncle should be honoured with the honey mixture when they come again after a year."
+    },
+    "3:3.120": {
+      "hindi": "राजा और वेदपाठी (ब्राह्मण) यज्ञ के समय आएँ तो मधुपर्क से उनका सत्कार करे, बिना यज्ञ के नहीं; यह नियम है।",
+      "translation": "A king and a Vedic scholar should be honoured with the honey mixture when they come during a sacrifice, but not otherwise; that is the rule."
+    },
+    "3:3.121": {
+      "hindi": "सायंकाल अन्न पकने पर पत्नी बिना मंत्रों के बलि दे; यही वैश्वदेव है, जो सायं और प्रातः बताया गया है।",
+      "translation": "In the evening, when the food is cooked, the wife should offer the food portions without mantras; this offering to all the gods is prescribed both evening and morning."
+    },
+    "3:3.122": {
+      "hindi": "अग्निहोत्री ब्राह्मण पितृ-यज्ञ पूरा करके अमावस्या को प्रति माह पिंडान्वाहार्यक श्राद्ध करे।",
+      "translation": "A Brahmana who keeps the sacred fires, after completing the offering to the ancestors, should perform each month on the new moon day the rite called pindanvaharyaka."
+    },
+    "3:3.123": {
+      "hindi": "ज्ञानी पिंडों के बाद होने वाले मासिक श्राद्ध को अन्वाहार्य कहते हैं; उसे यत्नपूर्वक प्रशस्त मांस से करना चाहिए।",
+      "translation": "The wise call the monthly rite that follows the rice balls the anvaharya; it should be performed with care, with approved meat."
+    },
+    "3:3.124": {
+      "hindi": "उसमें किन श्रेष्ठ द्विजों को भोजन कराना चाहिए, किन्हें छोड़ना चाहिए, कितनों को और किस अन्न से, वह मैं पूरा बताऊँगा।",
+      "translation": "I will tell you fully which Brahmanas should be fed at it and which avoided, how many, and with what food."
+    },
+    "3:3.125": {
+      "hindi": "देवताओं के कर्म में दो और पितरों के कर्म में तीन, या दोनों में एक-एक को भोजन कराए; बहुत समृद्ध होने पर भी विस्तार न करे।",
+      "translation": "He should feed two at the rite for the gods and three at the rite for the ancestors, or one at each; even a very rich man should not make it elaborate."
+    },
+    "3:3.126": {
+      "hindi": "विस्तार इन पाँच को नष्ट करता है: अच्छा सत्कार, देश और काल, पवित्रता और (योग्य) ब्राह्मणों की प्राप्ति; इसलिए विस्तार की इच्छा न करे।",
+      "translation": "Elaborateness spoils five things: proper honour, the right place and time, purity, and finding worthy Brahmanas; so one should not seek to make it grand."
+    },
+    "3:3.127": {
+      "hindi": "अमावस्या का यह पितृ (श्राद्ध) प्रेतों के लिए प्रसिद्ध कर्म है; उसमें लगे हुए को सदा लौकिक प्रेत-कर्म का फल मिलता है।",
+      "translation": "This rite for the ancestors on the new moon day is well known as a rite for the dead; for one devoted to it, the worldly rite for the dead always bears fruit."
+    },
+    "3:3.128": {
+      "hindi": "दाताओं को हव्य और कव्य वेदपाठी को ही देने चाहिए; उस सबसे योग्य ब्राह्मण को दिया गया (दान) महान फल देता है।",
+      "translation": "Givers should offer their oblations to the gods and ancestors only to a Vedic scholar; given to such a most worthy Brahmana, it bears great fruit."
+    },
+    "3:3.129": {
+      "hindi": "देवताओं और पितरों के (कर्म) में एक-एक विद्वान को भी भोजन कराने से भरपूर फल मिलता है, मंत्र न जानने वाले बहुतों को (खिलाने से) नहीं।",
+      "translation": "By feeding even one learned man at the rite for the gods and one at the rite for the ancestors, he gains rich fruit, but not by feeding many who do not know the mantras."
+    },
+    "3:3.130": {
+      "hindi": "वेद में पारंगत ब्राह्मण की दूर से ही (उसके कुल की) परीक्षा करे; वह हव्य और कव्य के दान में तीर्थ (के समान) है और अतिथि माना गया है।",
+      "translation": "He should inquire far back into the family of a Brahmana who has mastered the Veda; such a man is a sacred channel for offerings to gods and ancestors, and is called a guest."
+    },
+    "3:3.131": {
+      "hindi": "जहाँ मंत्र न जानने वाले दस लाख (ब्राह्मण) भोजन करते हैं, वहाँ मंत्र जानने वाला एक प्रसन्न (ब्राह्मण) धर्म के अनुसार उन सबके बराबर है।",
+      "translation": "Where a million men who do not know the Veda are fed, one man who knows the mantras, if he is pleased, is worth them all by dharma."
+    },
+    "3:3.132": {
+      "hindi": "कव्य और हव्य ज्ञान में श्रेष्ठ को देने चाहिए; क्योंकि रक्त से सने हाथ रक्त से ही शुद्ध नहीं होते।",
+      "translation": "Offerings to ancestors and gods should be given to one who excels in knowledge; for hands smeared with blood are not cleansed with blood."
+    },
+    "3:3.133": {
+      "hindi": "मंत्र न जानने वाला हव्य और कव्य में जितने ग्रास खाता है, (दाता) मरकर उतने ही जलते हुए शूल, भाले और लोहे के गोले निगलता है।",
+      "translation": "As many mouthfuls as a man ignorant of the Veda swallows at offerings to gods and ancestors, so many red-hot spikes, spears and iron balls the giver must swallow after death."
+    },
+    "3:3.134": {
+      "hindi": "कुछ द्विज ज्ञान में निष्ठा वाले हैं, कुछ तप में, कुछ तप और स्वाध्याय में, और कुछ कर्म में निष्ठा वाले हैं।",
+      "translation": "Some Brahmanas are devoted to knowledge, others to austerity, others to austerity and Vedic study, and others to ritual action."
+    },
+    "3:3.135": {
+      "hindi": "कव्य (पितरों का अन्न) यत्नपूर्वक ज्ञान-निष्ठ (ब्राह्मणों) को देने चाहिए, और हव्य (देवताओं का अन्न) उचित रीति से चारों प्रकार के (ब्राह्मणों) को।",
+      "translation": "Offerings to the ancestors should be given with care to those devoted to knowledge, and offerings to the gods, as is proper, to all four kinds."
+    },
+    "3:3.136": {
+      "hindi": "जिसका पिता वेदपाठी न हो पर पुत्र वेद में पारंगत हो, या पुत्र वेदपाठी न हो पर पिता वेद में पारंगत हो।",
+      "translation": "If a man's father is not learned in the Veda but the son has mastered it, or the son is not learned but the father has mastered it."
+    },
+    "3:3.137": {
+      "hindi": "इन दोनों में उसे बड़ा जानना चाहिए जिसका पिता वेदपाठी है; पर दूसरा भी मंत्रों के सम्मान के लिए सत्कार का अधिकारी है।",
+      "translation": "Of the two, the one whose father is learned should be held the greater; but the other also deserves honour out of respect for the Veda."
+    },
+    "3:3.138": {
+      "hindi": "श्राद्ध में मित्र को भोजन न कराए; उसकी मित्रता धन (उपहारों) से बनाए रखे। जिसे न शत्रु जाने न मित्र, उस द्विज को श्राद्ध में भोजन कराए।",
+      "translation": "He should not feed a friend at a rite for the dead; friendship should be kept up with gifts. He should feed at it a Brahmana whom he regards as neither friend nor foe."
+    },
+    "3:3.139": {
+      "hindi": "जिसके श्राद्ध और हवि में मित्र प्रधान होते हैं, उसे मरने के बाद श्राद्धों और हवियों का कोई फल नहीं मिलता।",
+      "translation": "One whose rites for the dead and offerings are made chiefly for friends gains no fruit from them after death."
+    },
+    "3:3.140": {
+      "hindi": "जो मनुष्य मोह से श्राद्ध के द्वारा मित्रता बनाता है, वह श्राद्ध से मित्र बनाने वाला अधम द्विज स्वर्ग लोक से गिर जाता है।",
+      "translation": "A man who in his folly makes friendships through rites for the dead, that lowest of Brahmanas who makes friends by such rites, falls from the world of heaven."
+    },
+    "3:3.141": {
+      "hindi": "द्विजों ने ऐसे सहभोज की दक्षिणा को पैशाची (राक्षसी) कहा है; वह यहीं इस लोक में रह जाती है, जैसे एक ही घर में अंधी गाय।",
+      "translation": "Brahmanas have called such a gift, made over a shared feast, devilish; it stays here in this world like a blind cow in one stall."
+    },
+    "3:3.142": {
+      "hindi": "जैसे ऊसर में बीज बोकर बोने वाला फल नहीं पाता, वैसे ही वेद न जानने वाले को हवि देकर दाता फल नहीं पाता।",
+      "translation": "As a sower who sows seed on barren ground reaps no harvest, so a giver who gives offerings to a man without the Veda reaps no fruit."
+    },
+    "3:3.143": {
+      "hindi": "विद्वान को विधि के अनुसार दक्षिणा देकर (दाता) देने वालों और लेने वालों दोनों को इस लोक और परलोक में फल का भागी बनाता है।",
+      "translation": "A gift duly given to a learned man makes both giver and receiver share its fruit, here and hereafter."
+    },
+    "3:3.144": {
+      "hindi": "श्राद्ध में इच्छा हो तो मित्र का सत्कार कर ले, पर योग्य होने पर भी शत्रु का नहीं; क्योंकि शत्रु द्वारा खाई गई हवि मरने के बाद निष्फल होती है।",
+      "translation": "He may, if he wishes, honour a friend at a rite for the dead, but never an enemy, however worthy; for an offering eaten by an enemy bears no fruit after death."
+    },
+    "3:3.145": {
+      "hindi": "श्राद्ध में यत्नपूर्वक वेद में पारंगत ऋग्वेदी को, (यजुर्वेद की) शाखा के अंत तक पढ़े हुए अध्वर्यु को, या (सामवेद को) पूरा पढ़े हुए छन्दोग को भोजन कराए।",
+      "translation": "He should take care to feed at a rite for the dead a Rigvedin who has mastered the Veda, an Adhvaryu who has completed his branch, or a Samavedin who has finished his text."
+    },
+    "3:3.146": {
+      "hindi": "इनमें से कोई एक भी सम्मानपूर्वक जिसके श्राद्ध में भोजन करे, उसके पितरों की सात पीढ़ियों तक सनातन तृप्ति होती है।",
+      "translation": "If any one of these eats at a man's rite for the dead after being honoured, his ancestors are satisfied for ever, to the seventh generation."
+    },
+    "3:3.147": {
+      "hindi": "हव्य और कव्य के दान में यह प्रथम (मुख्य) नियम है; और यह जानना चाहिए कि सज्जन सदा (इसका) अनुकल्प (दूसरा विकल्प) भी करते आए हैं।",
+      "translation": "This is the first rule for giving offerings to gods and ancestors; the following should be known as the secondary rule, always practised by the good."
+    },
+    "3:3.148": {
+      "hindi": "नाना, मामा, भानजा, ससुर, गुरु, नाती, दामाद, बंधु, ऋत्विज और यजमान को भोजन कराए।",
+      "translation": "He may feed his maternal grandfather, maternal uncle, sister's son, father-in-law, teacher, daughter's son, son-in-law, a relative, his officiating priest and the man for whom he sacrifices."
+    },
+    "3:3.149": {
+      "hindi": "धर्म जानने वाला देवताओं के कर्म में ब्राह्मण की परीक्षा न करे; पर पितरों का कर्म आने पर यत्नपूर्वक परीक्षा करे।",
+      "translation": "One who knows dharma need not examine a Brahmana for a rite for the gods; but for a rite for the ancestors he should examine him with care."
+    },
+    "3:3.150": {
+      "hindi": "जो चोर, पतित, नपुंसक और नास्तिक जैसा व्यवहार करने वाले हैं, उन ब्राह्मणों को मनु ने हव्य और कव्य के अयोग्य बताया है।",
+      "translation": "Manu declared that Brahmanas who are thieves, outcasts, impotent, or who live as unbelievers are unfit for offerings to gods and ancestors."
+    },
+    "3:3.151": {
+      "hindi": "जटाधारी पर न पढ़ने वाले, दुर्बल, जुआरी, और जो समूहों के लिए (यज्ञ) कराते हैं, उन्हें श्राद्ध में भोजन न कराए।",
+      "translation": "He should not feed at a rite for the dead a man with matted hair who does not study, a weakling, a gambler, or those who sacrifice for crowds."
+    },
+    "3:3.152": {
+      "hindi": "वैद्य, (वेतन लेकर) मंदिर के पुजारी, मांस बेचने वाले और व्यापार से जीने वाले हव्य और कव्य में त्याज्य हैं।",
+      "translation": "Physicians, temple priests who serve for pay, sellers of meat and those who live by trade should be avoided at offerings to gods and ancestors."
+    },
+    "3:3.153": {
+      "hindi": "गुरु का विरोध करने वाला, अग्नि छोड़ देने वाला, सूदखोर, गाँव या राजा का सेवक, विकृत नखों वाला, काले दाँतों वाला।",
+      "translation": "One who opposes his teacher, one who has abandoned his fire, a usurer, a servant of the village or of the king, one with diseased nails or black teeth."
+    },
+    "3:3.154": {
+      "hindi": "क्षय रोगी, पशुपालक, बड़े भाई से पहले विवाह करने वाला, (पाँच यज्ञ) छोड़ देने वाला, ब्राह्मणों से द्वेष करने वाला, जिसका छोटा भाई पहले विवाह कर ले, और किसी गण (संघ) का सदस्य।",
+      "translation": "One with consumption, a herdsman, one who married before his elder brother, one who neglects the great offerings, a hater of Brahmanas, an elder brother whose younger brother married first, and a member of a guild."
+    },
+    "3:3.155": {
+      "hindi": "नट, ब्रह्मचर्य तोड़ने वाला, शूद्रा का पति, पुनर्विवाहित स्त्री का पुत्र, काना, और जिसके घर में (पत्नी का) प्रेमी हो।",
+      "translation": "An actor, a student who has broken his vow, the husband of a Shudra wife, the son of a remarried woman, a one-eyed man, and one whose wife has a lover in the house."
+    },
+    "3:3.156": {
+      "hindi": "वेतन लेकर पढ़ाने वाला, वेतन देकर पढ़ने वाला, शूद्र का शिष्य और गुरु, कठोर बोलने वाला, और कुण्ड तथा गोलक (जारज संतान)।",
+      "translation": "One who teaches for pay, one taught for pay, the pupil or teacher of a Shudra, one who speaks harshly, and sons born of adultery or to a widow."
+    },
+    "3:3.157": {
+      "hindi": "बिना कारण माता, पिता या गुरु को छोड़ने वाला, और जिसने पतितों से वेद या विवाह का संबंध जोड़ा हो।",
+      "translation": "One who abandons his mother, father or teacher without cause, and one who has formed ties of learning or marriage with outcasts."
+    },
+    "3:3.158": {
+      "hindi": "घर जलाने वाला, विष देने वाला, जारज का अन्न खाने वाला, सोम बेचने वाला, समुद्र यात्रा करने वाला, बंदीजन (भाट), तेली और झूठी गवाही देने वाला।",
+      "translation": "An arsonist, a poisoner, one who eats food from a son born of adultery, a seller of Soma, a seafarer, a bard, an oil-presser and a perjurer."
+    },
+    "3:3.159": {
+      "hindi": "पिता से झगड़ने वाला, जुआरी, शराब पीने वाला, पाप-रोग वाला, (पाप का) आरोपी, कपटी और रस (शराब आदि) बेचने वाला।",
+      "translation": "One who quarrels with his father, a gambler, a drunkard, one with a disease ascribed to sin, one accused of a grave crime, a cheat and a seller of liquors."
+    },
+    "3:3.160": {
+      "hindi": "धनुष-बाण बनाने वाला, बड़ी बहन से पहले विवाहित छोटी बहन का पति, मित्र से द्रोह करने वाला, जुए से जीविका चलाने वाला, और पुत्र से पढ़ने वाला।",
+      "translation": "A maker of bows and arrows, the husband of a younger sister married before the elder, one who betrays a friend, one who lives by gambling, and one whose teacher is his own son."
+    },
+    "3:3.161": {
+      "hindi": "मिर्गी का रोगी, गंडमाला वाला, सफ़ेद दाग वाला, चुगलखोर, पागल, अंधा और वेद की निंदा करने वाला त्याज्य हैं।",
+      "translation": "One with epilepsy, one with scrofula, one with white leprosy, a slanderer, a madman, a blind man and a reviler of the Veda should be avoided."
+    },
+    "3:3.162": {
+      "hindi": "हाथी, बैल, घोड़े और ऊँट को सिखाने वाला, नक्षत्रों (ज्योतिष) से जीविका चलाने वाला, पक्षियों को पालने वाला और युद्ध सिखाने वाला।",
+      "translation": "A trainer of elephants, oxen, horses or camels, one who lives by astrology, one who raises birds, and a teacher of fighting."
+    },
+    "3:3.163": {
+      "hindi": "जल-धाराओं को मोड़ने वाला, उन्हें रोकने में लगा रहने वाला, घर बनाने वाला, दूत और (वेतन लेकर) पेड़ लगाने वाला।",
+      "translation": "One who diverts watercourses, one who delights in damming them, a builder of houses, a messenger, and one who plants trees for pay."
+    },
+    "3:3.164": {
+      "hindi": "कुत्तों से खेलने वाला, बाज़ से जीविका चलाने वाला, कन्या को दूषित करने वाला, हिंसक, शूद्रों जैसी वृत्ति वाला और गणों के लिए यज्ञ करने वाला।",
+      "translation": "One who plays with dogs, one who lives by falconry, a defiler of maidens, a violent man, one who lives like a Shudra, and one who sacrifices for groups."
+    },
+    "3:3.165": {
+      "hindi": "आचार से हीन, नपुंसक, सदा माँगने वाला, खेती से जीने वाला, हाथीपाँव वाला और सज्जनों द्वारा निंदित।",
+      "translation": "One without good conduct, an impotent man, one who is always begging, one who lives by farming, one with elephantiasis, and one censured by the good."
+    },
+    "3:3.166": {
+      "hindi": "भेड़ पालने वाला, भैंस पालने वाला, पहले से विवाहित स्त्री का पति और (वेतन लेकर) शव ले जाने वाला, इन्हें यत्नपूर्वक छोड़ना चाहिए।",
+      "translation": "A keeper of sheep or buffaloes, the husband of a previously married woman, and one who carries out the dead for pay should be carefully avoided."
+    },
+    "3:3.167": {
+      "hindi": "निंदित आचरण वाले, पंक्ति में बैठने के अयोग्य इन अधम द्विजों को विद्वान श्रेष्ठ द्विज दोनों (देव और पितृ कर्मों) में छोड़ दे।",
+      "translation": "A learned and excellent Brahmana should exclude from both rites these lowest of the twice-born, whose conduct is censured and who are unfit to sit in the line of diners."
+    },
+    "3:3.168": {
+      "hindi": "वेद न पढ़ने वाला ब्राह्मण घास की आग के समान बुझ जाता है; उसे हवि नहीं देनी चाहिए, क्योंकि राख में आहुति नहीं दी जाती।",
+      "translation": "A Brahmana who has not studied goes out like a fire of dry grass; offerings should not be given to him, for no one pours offerings into ashes."
+    },
+    "3:3.169": {
+      "hindi": "पंक्ति के अयोग्य को देवताओं या पितरों के कर्म में दान देने से दाता को बाद में जो फल मिलता है, वह मैं पूरा बताऊँगा।",
+      "translation": "I will tell in full what fruit comes to the giver afterward from gifts to those unfit for the line, at rites for the gods or ancestors."
+    },
+    "3:3.170": {
+      "hindi": "व्रत रहित द्विज, बड़े भाई से पहले विवाह करने वाले आदि, और पंक्ति के अयोग्य अन्य लोग जो खाते हैं, उसे राक्षस खाते हैं।",
+      "translation": "What is eaten by Brahmanas who have broken their vows, by one who married before his elder brother and the like, and by others unfit for the line, is eaten by demons."
+    },
+    "3:3.171": {
+      "hindi": "जो बड़े भाई के रहते हुए विवाह और अग्निहोत्र करता है, उसे परिवेत्ता जानना चाहिए, और बड़ा भाई परिवित्ति (कहलाता है)।",
+      "translation": "One who marries and sets up the sacred fire while his elder brother is still unmarried should be known as a parivetta, and the elder brother as a parivitti."
+    },
+    "3:3.172": {
+      "hindi": "परिवित्ति, परिवेत्ता, जिस (कन्या) से विवाह होता है, दाता और पाँचवाँ (विवाह कराने वाला) याजक, ये सब नरक में जाते हैं।",
+      "translation": "The elder brother, the younger who married first, the girl he married, the one who gave her, and fifth, the priest who performed it, all go to hell."
+    },
+    "3:3.173": {
+      "hindi": "जो मरे हुए भाई की पत्नी से, धर्म के अनुसार नियुक्त होने पर भी, काम से अनुराग करता है, उसे दिधिषूपति जानना चाहिए।",
+      "translation": "One who takes pleasure in the wife of his dead brother out of desire, even when she has been lawfully appointed to him, should be known as the husband of a remarried woman."
+    },
+    "3:3.174": {
+      "hindi": "पराई स्त्रियों से दो प्रकार के पुत्र उत्पन्न होते हैं, कुण्ड और गोलक। पति के जीवित रहते (उत्पन्न) कुण्ड होता है, और पति के मरने पर गोलक।",
+      "translation": "Two kinds of sons are born of other men's wives, the kunda and the golaka: born while the husband lives, a kunda; born after he has died, a golaka."
+    },
+    "3:3.175": {
+      "hindi": "पराए क्षेत्र में उत्पन्न ये प्राणी दाताओं द्वारा दिए गए हव्य और कव्य को इस लोक और परलोक में नष्ट कर देते हैं।",
+      "translation": "Such beings, born in another man's field, destroy in this world and the next the offerings to gods and ancestors given to them by donors."
+    },
+    "3:3.176": {
+      "hindi": "पंक्ति के अयोग्य (व्यक्ति) जितने पंक्ति के योग्य (ब्राह्मणों) को खाते हुए देखता है, मूर्ख दाता उतनों का फल वहाँ नहीं पाता।",
+      "translation": "As many worthy diners as an unworthy man looks upon while they eat, the foolish giver loses the fruit of feeding that many."
+    },
+    "3:3.177": {
+      "hindi": "अंधा (वहाँ बैठा हो तो) नब्बे का, काना साठ का, सफ़ेद दाग वाला सौ का, और पाप-रोगी हज़ार (ब्राह्मणों) का फल दाता से नष्ट कर देता है।",
+      "translation": "A blind man by his presence destroys the giver's merit from ninety guests, a one-eyed man from sixty, a man with white leprosy from a hundred, and one with a disease ascribed to sin from a thousand."
+    },
+    "3:3.178": {
+      "hindi": "शूद्र के लिए यज्ञ करने वाला जितने ब्राह्मणों को अपने अंगों से छूता है, दाता को उतनों के दान का पूर्त (धर्म) फल नहीं मिलता।",
+      "translation": "As many Brahmanas as a man who sacrifices for Shudras touches with his limbs, so many gifts lose their fruit for the giver."
+    },
+    "3:3.179": {
+      "hindi": "वेद जानने वाला ब्राह्मण भी लोभ से इसका दान लेकर शीघ्र वैसे ही नष्ट हो जाता है, जैसे पानी में कच्चा घड़ा।",
+      "translation": "Even a Brahmana who knows the Veda, if he greedily accepts a gift from such a man, is soon destroyed, like an unbaked pot in water."
+    },
+    "3:3.180": {
+      "hindi": "सोम बेचने वाले को दिया गया (अन्न) विष्ठा बन जाता है, वैद्य को दिया पीप और रक्त, वेतनभोगी पुजारी को दिया नष्ट हो जाता है, और सूदखोर को दिया निराधार हो जाता है।",
+      "translation": "What is given to a seller of Soma becomes excrement, to a physician pus and blood; given to a paid temple priest it is lost, and given to a usurer it finds no footing."
+    },
+    "3:3.181": {
+      "hindi": "व्यापारी को दिया गया (दान) न इस लोक में (फल देता) है न परलोक में; पुनर्विवाहित स्त्री के पुत्र ब्राह्मण को दिया गया (दान) राख में डाली आहुति के समान है।",
+      "translation": "What is given to a trader bears fruit neither here nor hereafter; what is given to a Brahmana born of a remarried woman is like an offering poured into ashes."
+    },
+    "3:3.182": {
+      "hindi": "पहले बताए अन्य पंक्ति के अयोग्य दुष्टों को (दिए गए) अन्न को ज्ञानी चर्बी, रक्त, मांस, मज्जा और हड्डी कहते हैं।",
+      "translation": "Food given to the other unworthy and wicked men named above, the wise say, becomes fat, blood, flesh, marrow and bone."
+    },
+    "3:3.183": {
+      "hindi": "पंक्ति के अयोग्य (लोगों) से दूषित पंक्ति जिन श्रेष्ठ द्विजों से पवित्र होती है, उन पंक्ति को पवित्र करने वाले श्रेष्ठ द्विजों को पूरी तरह जानो।",
+      "translation": "Now learn fully about the excellent Brahmanas who purify a line of diners defiled by the unworthy, the purifiers of the line."
+    },
+    "3:3.184": {
+      "hindi": "सब वेदों और सब प्रवचनों में श्रेष्ठ, और वेदपाठियों के वंश में उत्पन्न (ब्राह्मणों) को पंक्ति को पवित्र करने वाला जानना चाहिए।",
+      "translation": "Those who are foremost in all the Vedas and in all their explanations, and those born in families of Vedic scholars, should be known as purifiers of the line."
+    },
+    "3:3.185": {
+      "hindi": "त्रिणाचिकेत (अग्नि जानने वाला), पाँच अग्नियाँ रखने वाला, त्रिसुपर्ण (मंत्र जानने वाला), छह वेदांग जानने वाला, ब्राह्म विवाह से उत्पन्न कन्या का पुत्र, और ज्येष्ठ साम गाने वाला।",
+      "translation": "One who knows the Trinachiketa fire, one who keeps five fires, one who knows the Trisuparna verses, one who knows the six auxiliary sciences, the son of a woman married by the Brahma rite, and a singer of the Jyeshtha Saman."
+    },
+    "3:3.186": {
+      "hindi": "वेद का अर्थ जानने वाला, उसका प्रवचन करने वाला, ब्रह्मचारी, हज़ार (गायें) दान करने वाला और सौ वर्ष की आयु वाला, इन ब्राह्मणों को पंक्ति को पवित्र करने वाला जानना चाहिए।",
+      "translation": "One who knows the meaning of the Veda and expounds it, a celibate student, one who has given away a thousand cows, and a centenarian: these Brahmanas should be known as purifiers of the line."
+    },
+    "3:3.187": {
+      "hindi": "श्राद्ध कर्म आने पर एक दिन पहले या उसी दिन कम से कम तीन ऊपर बताए (योग्य) ब्राह्मणों को भली प्रकार निमंत्रित करे।",
+      "translation": "When a rite for the dead is to be performed, he should duly invite, on the day before or on that day, at least three Brahmanas of the kind described."
+    },
+    "3:3.188": {
+      "hindi": "पितृ-कर्म में निमंत्रित द्विज सदा संयमित रहे, और जिसका श्राद्ध हो उस दिन वेद का पाठ न करे।",
+      "translation": "A Brahmana invited to a rite for the ancestors should keep himself fully restrained, and should not recite the Veda on the day of the rite."
+    },
+    "3:3.189": {
+      "hindi": "पितर उन निमंत्रित द्विजों के पास आते हैं, वायु के समान उनके पीछे चलते हैं, और उनके बैठने पर उनके पास बैठते हैं।",
+      "translation": "For the ancestors attend those invited Brahmanas, follow them like the wind, and sit beside them when they are seated."
+    },
+    "3:3.190": {
+      "hindi": "हव्य या कव्य के लिए उचित रीति से निमंत्रित श्रेष्ठ द्विज किसी भी प्रकार उसका उल्लंघन करे, तो वह पापी सूअर बनता है।",
+      "translation": "A Brahmana duly invited to a rite for the gods or ancestors who in any way breaks the engagement becomes, through that sin, a pig."
+    },
+    "3:3.191": {
+      "hindi": "जो श्राद्ध में निमंत्रित होकर शूद्रा के साथ रमण करता है, वह दाता का जो भी पाप है, वह सब ले लेता है।",
+      "translation": "One who, having been invited to a rite for the dead, takes his pleasure with a Shudra woman, takes upon himself every sin of the giver."
+    },
+    "3:3.192": {
+      "hindi": "पितर क्रोध रहित, शुद्धता में लगे, सदा ब्रह्मचारी, शस्त्र त्याग चुके, महान भाग्य वाले और पहले के देवता हैं।",
+      "translation": "The ancestors are free from anger, intent on purity, always chaste, have laid down their weapons, are greatly blessed, and are the primeval gods."
+    },
+    "3:3.193": {
+      "hindi": "इन सबकी उत्पत्ति जिससे हुई, और किनकी किन नियमों से सेवा करनी चाहिए, उसे पूरा जानो।",
+      "translation": "Learn fully from whom all of them arose, and with what observances each of them should be worshipped."
+    },
+    "3:3.194": {
+      "hindi": "हिरण्यगर्भ के पुत्र मनु के जो मरीचि आदि पुत्र हैं, उन सब ऋषियों के पुत्र पितृ-गण माने गए हैं।",
+      "translation": "The sons of all the sages, Marichi and the others, who are sons of Manu, the son of Hiranyagarbha, are said to be the hosts of the ancestors."
+    },
+    "3:3.195": {
+      "hindi": "विराट के पुत्र सोमसद साध्यों के पितर माने गए हैं, और लोक में प्रसिद्ध मरीचि के पुत्र अग्निष्वात्त देवताओं के (पितर हैं)।",
+      "translation": "The Somasads, sons of Viraj, are said to be the ancestors of the Sadhyas, and the Agnishvattas, the famous sons of Marichi, the ancestors of the gods."
+    },
+    "3:3.196": {
+      "hindi": "दैत्यों, दानवों, यक्षों, गन्धर्वों, नागों, राक्षसों, सुपर्णों और किन्नरों के (पितर) अत्रि से उत्पन्न बर्हिषद माने गए हैं।",
+      "translation": "The Barhishads, born of Atri, are said to be the ancestors of the Daityas, Danavas, Yakshas, Gandharvas, serpents, Rakshasas, Suparnas and Kinnaras."
+    },
+    "3:3.197": {
+      "hindi": "ब्राह्मणों के (पितर) सोमपा कहलाते हैं, क्षत्रियों के हविर्भुज, वैश्यों के आज्यपा और शूद्रों के सुकालिन्।",
+      "translation": "Those of Brahmanas are called Somapas, of Kshatriyas Havirbhujs, of Vaishyas Ajyapas, and of Shudras Sukalins."
+    },
+    "3:3.198": {
+      "hindi": "सोमपा कवि के पुत्र हैं, हविष्मन्त अंगिरा के पुत्र, आज्यपा पुलस्त्य के पुत्र और सुकालिन् वसिष्ठ के पुत्र हैं।",
+      "translation": "The Somapas are sons of Kavi, the Havishmants sons of Angiras, the Ajyapas sons of Pulastya, and the Sukalins sons of Vasishtha."
+    },
+    "3:3.199": {
+      "hindi": "अग्नि से न जलाए गए और अग्नि से जलाए गए, काव्य, बर्हिषद, अग्निष्वात्त और सौम्य, इन्हें ब्राह्मणों के ही (पितर) बताए।",
+      "translation": "The Anagnidagdhas and Agnidagdhas, the Kavyas, the Barhishads, the Agnishvattas and the Saumyas should be named as ancestors of Brahmanas alone."
+    },
+    "3:3.200": {
+      "hindi": "पितरों के जो ये मुख्य गण बताए गए, उनके भी यहाँ अनंत पुत्र और पौत्र जानने चाहिए।",
+      "translation": "The chief hosts of ancestors named here should be known to have countless sons and grandsons as well."
+    },
+    "3:3.201": {
+      "hindi": "ऋषियों से पितर उत्पन्न हुए, पितरों से देवता और मनुष्य, और देवताओं से क्रम से यह समस्त चर और अचर जगत।",
+      "translation": "From the sages came the ancestors, from the ancestors gods and men, and from the gods, in order, this whole world of moving and unmoving things."
+    },
+    "3:3.202": {
+      "hindi": "इनके लिए चाँदी के या चाँदी जड़े पात्रों में श्रद्धा से दिया गया जल भी अक्षय (फल) देता है।",
+      "translation": "Even water offered to them with faith in vessels of silver, or vessels set with silver, brings unending reward."
+    },
+    "3:3.203": {
+      "hindi": "द्विजातियों के लिए देवताओं के कर्म से पितरों का कर्म श्रेष्ठ है; देवताओं का (कर्म) पितरों के कर्म को पहले से पुष्ट करने वाला माना गया है।",
+      "translation": "For the twice-born the rite for the ancestors is more important than the rite for the gods; the rite for the gods is held to strengthen the rite for the ancestors beforehand."
+    },
+    "3:3.204": {
+      "hindi": "उनकी रक्षा के लिए पहले देवताओं (के ब्राह्मण) को नियुक्त करे, क्योंकि रक्षा रहित श्राद्ध को राक्षस लूट लेते हैं।",
+      "translation": "He should first appoint a Brahmana for the gods as their guard, for demons plunder a rite for the dead that has no guard."
+    },
+    "3:3.205": {
+      "hindi": "(श्राद्ध को) देवताओं से आरम्भ और समाप्त करे, पितरों से आरम्भ और समाप्त न करे; पितरों से आरम्भ और समाप्त करने वाला वंश सहित शीघ्र नष्ट हो जाता है।",
+      "translation": "He should begin and end the rite with the gods, not with the ancestors; one who begins and ends it with the ancestors soon perishes with his descendants."
+    },
+    "3:3.206": {
+      "hindi": "पवित्र और एकांत स्थान को गोबर से लीपे, और उसे यत्नपूर्वक दक्षिण की ओर ढलान वाला बनाए।",
+      "translation": "He should smear a clean and secluded place with cowdung, and take care to make it slope toward the south."
+    },
+    "3:3.207": {
+      "hindi": "खुले, शुद्ध स्थानों में, जल के किनारों पर और एकांत में दिए गए (अन्न) से पितर सदा संतुष्ट होते हैं।",
+      "translation": "The ancestors are always pleased with what is offered in open, clean places, on the banks of rivers and in secluded spots."
+    },
+    "3:3.208": {
+      "hindi": "कुश से युक्त, अलग-अलग बिछाए आसनों पर, आचमन कर चुके उन ब्राह्मणों को भली प्रकार बैठाए।",
+      "translation": "He should seat the Brahmanas, who have sipped water, on separate seats spread with kusha grass."
+    },
+    "3:3.209": {
+      "hindi": "उन अनिंदित ब्राह्मणों को आसनों पर बैठाकर, देवताओं (वालों) से आरम्भ करके, सुगंधित गंध और मालाओं से उनकी पूजा करे।",
+      "translation": "Having seated those blameless Brahmanas, he should honour them with fragrant perfumes and garlands, beginning with those for the gods."
+    },
+    "3:3.210": {
+      "hindi": "उनके लिए जल, कुश और तिल लाकर, ब्राह्मणों से अनुमति लेकर ब्राह्मण उनके साथ अग्नि में (होम) करे।",
+      "translation": "Bringing them water, kusha blades and sesame seeds, the Brahmana host, with their permission, should make the offering into the fire together with them."
+    },
+    "3:3.211": {
+      "hindi": "पहले अग्नि, सोम और यम को आहुति देकर उन्हें तृप्त करे, फिर विधि के अनुसार हवि देकर पितरों को तृप्त करे।",
+      "translation": "First he should satisfy Agni, Soma and Yama with oblations, and then, according to rule, satisfy the ancestors with offerings."
+    },
+    "3:3.212": {
+      "hindi": "अग्नि न हो तो ब्राह्मण के हाथ में ही (आहुति) दे; क्योंकि मंत्रों को देखने वाले ब्राह्मण कहते हैं कि जो अग्नि है, वही ब्राह्मण है।",
+      "translation": "If there is no fire, he should place the offerings in the hand of a Brahmana; for the Brahmanas who see the mantras say that the Brahmana is the fire."
+    },
+    "3:3.213": {
+      "hindi": "प्राचीन लोग इन श्रेष्ठ द्विजों को क्रोध रहित, प्रसन्न, लोक के पोषण में लगे और श्राद्ध के देवता कहते हैं।",
+      "translation": "The ancients call these excellent Brahmanas free from anger, easily pleased, devoted to nourishing the world, and the gods of the rite for the dead."
+    },
+    "3:3.214": {
+      "hindi": "अग्नि में (होम) अपसव्य (जनेऊ दाहिने कंधे पर) होकर करके, सब (कर्म) उलटी परिक्रमा से करके, दाहिने हाथ से भूमि पर जल छोड़े।",
+      "translation": "Having made the fire offering with his sacred thread over his right shoulder and done everything turning to the right, he should pour water on the ground with his right hand."
+    },
+    "3:3.215": {
+      "hindi": "उस बची हुई हवि से एकाग्र होकर तीन पिंड बनाए, और दक्षिण की ओर मुख करके जल की ही विधि से उन्हें (कुश पर) रखे।",
+      "translation": "From the remaining offering he should make three rice balls with a collected mind and set them down facing south, in the same way as the water."
+    },
+    "3:3.216": {
+      "hindi": "विधिपूर्वक संयमित होकर उन पिंडों को रखकर, लेप (अंश) पाने वालों के लिए उस हाथ को उन कुशों पर पोंछ दे।",
+      "translation": "Having set down those rice balls by the rule, controlled, he should wipe his hand on the kusha grass for the ancestors who receive the smears."
+    },
+    "3:3.217": {
+      "hindi": "आचमन करके, उत्तर की ओर मुड़कर, धीरे-धीरे तीन बार प्राणायाम करके, मंत्रों के साथ छहों ऋतुओं और पितरों को नमस्कार करे।",
+      "translation": "Sipping water and turning to the north, he should slowly restrain his breath three times, and with mantras pay homage to the six seasons and to the ancestors."
+    },
+    "3:3.218": {
+      "hindi": "बचा हुआ जल धीरे से फिर पिंडों के पास छोड़े, और एकाग्र होकर उन पिंडों को, जैसे रखे गए थे वैसे क्रम से, सूँघे।",
+      "translation": "He should slowly pour the rest of the water near the rice balls again, and with a collected mind smell the rice balls in the order in which they were set down."
+    },
+    "3:3.219": {
+      "hindi": "पिंडों से क्रम से थोड़ी-थोड़ी मात्रा लेकर, बैठे हुए उन्हीं ब्राह्मणों को विधि के अनुसार पहले खिलाए।",
+      "translation": "Taking a small portion from each rice ball in order, he should first feed those seated Brahmanas according to rule."
+    },
+    "3:3.220": {
+      "hindi": "पिता जीवित हो तो पहले वालों (दादा आदि) का ही (पिंड) रखे, या अपने पिता को ही ब्राह्मण के समान उस श्राद्ध में भोजन कराए।",
+      "translation": "If his father is living, he should offer only to the earlier ancestors, or he may feed his own father at the rite as if he were one of the Brahmanas."
+    },
+    "3:3.221": {
+      "hindi": "जिसके पिता मर गए हों और दादा जीवित हों, वह पिता का नाम लेकर (फिर) परदादा का नाम ले।",
+      "translation": "One whose father has died but whose grandfather is living should name his father and then his great-grandfather."
+    },
+    "3:3.222": {
+      "hindi": "मनु ने कहा है कि या तो दादा उस श्राद्ध (के भोजन) को खाएँ, या अनुमति पाकर (पौत्र) स्वयं अपनी इच्छा से (श्राद्ध) करे।",
+      "translation": "Manu said that the grandfather may himself eat at that rite, or the grandson, with his leave, may perform it as he wishes."
+    },
+    "3:3.223": {
+      "hindi": "उनके हाथों में कुश सहित तिल-जल देकर, 'इन्हें स्वधा हो' कहते हुए उस पिंड का अगला भाग दे।",
+      "translation": "Pouring water with sesame and kusha into their hands, he should give them the top part of the rice balls, saying, 'May this be svadha for them.'"
+    },
+    "3:3.224": {
+      "hindi": "अन्न से भरा पात्र स्वयं दोनों हाथों से पकड़कर, पितरों का ध्यान करते हुए धीरे से ब्राह्मणों के पास रखे।",
+      "translation": "Holding the vessel full of food himself with both hands, and thinking of the ancestors, he should gently set it down before the Brahmanas."
+    },
+    "3:3.225": {
+      "hindi": "दोनों हाथों से न पकड़कर जो अन्न लाया जाता है, उसे दुष्ट मन वाले असुर तुरंत छीन लेते हैं।",
+      "translation": "Food that is brought without holding it in both hands is quickly snatched away by evil-minded demons."
+    },
+    "3:3.226": {
+      "hindi": "शुद्ध और एकाग्र होकर पहले भूमि पर ही दाल, साग आदि व्यंजन, दूध, दही, घी और मधु रखे।",
+      "translation": "Pure and collected, he should first set on the ground the side dishes such as soups and vegetables, and milk, curds, ghee and honey."
+    },
+    "3:3.227": {
+      "hindi": "अनेक प्रकार के खाने योग्य और भोजन के पदार्थ, कंद-मूल और फल, मन को अच्छे लगने वाले मांस और सुगंधित पेय (भी रखे)।",
+      "translation": "Various kinds of food, hard and soft, roots and fruits, pleasing meats and fragrant drinks."
+    },
+    "3:3.228": {
+      "hindi": "वह सब धीरे से लाकर, भली प्रकार एकाग्र और शुद्ध होकर, सब व्यंजनों का (नाम लेकर) आग्रह करते हुए परोसे।",
+      "translation": "Bringing all this slowly, fully collected and pure, he should serve it, inviting them to each dish by name."
+    },
+    "3:3.229": {
+      "hindi": "कभी आँसू न गिराए, क्रोध न करे, झूठ न बोले, अन्न को पैर से न छुए और उसे न झटके।",
+      "translation": "He should never shed tears, become angry or tell a lie, nor touch the food with his foot nor shake it."
+    },
+    "3:3.230": {
+      "hindi": "आँसू (श्राद्ध को) प्रेतों तक पहुँचाते हैं, क्रोध शत्रुओं तक, झूठ कुत्तों तक, पैर से छूना राक्षसों तक और झटकना पापियों तक।",
+      "translation": "Tears send the food to ghosts, anger to enemies, a lie to dogs, touching with the foot to demons, and shaking it to evildoers."
+    },
+    "3:3.231": {
+      "hindi": "ब्राह्मणों को जो-जो अच्छा लगे, वह-वह बिना कंजूसी के दे, और वेद संबंधी चर्चाएँ करे; पितरों को यही प्रिय है।",
+      "translation": "He should give the Brahmanas without stinting whatever they like, and lead discussions on sacred matters; this is what the ancestors desire."
+    },
+    "3:3.232": {
+      "hindi": "पितृ-कर्म में (ब्राह्मणों को) वेद का पाठ, धर्मशास्त्र, आख्यान, इतिहास, पुराण और खिल (परिशिष्ट) सुनाए।",
+      "translation": "At a rite for the ancestors he should have the Veda recited, and also the texts on dharma, legends, histories, Puranas and supplementary texts."
+    },
+    "3:3.233": {
+      "hindi": "स्वयं प्रसन्न रहकर ब्राह्मणों को प्रसन्न करे, धीरे-धीरे भोजन कराए, और बार-बार अन्न और व्यंजनों का (लेने का) आग्रह करे।",
+      "translation": "Glad himself, he should gladden the Brahmanas, feed them slowly, and press them again and again to take more food and dishes."
+    },
+    "3:3.234": {
+      "hindi": "व्रत में स्थित (ब्रह्मचारी) नाती को भी श्राद्ध में यत्नपूर्वक भोजन कराए, (बकरी के ऊन का) कुतप आसन दे, और भूमि पर तिल बिखेरे।",
+      "translation": "He should take care to feed his daughter's son at the rite, even if he is a student under vow, give him a woollen blanket as a seat, and scatter sesame on the ground."
+    },
+    "3:3.235": {
+      "hindi": "श्राद्ध में तीन पवित्र हैं: नाती, कुतप और तिल; और इसमें तीन (गुणों) की प्रशंसा करते हैं: शुद्धता, क्रोध न करना और जल्दबाज़ी न करना।",
+      "translation": "Three things are purifying at the rite: a daughter's son, a woollen blanket and sesame; and three are praised in it: purity, freedom from anger and freedom from haste."
+    },
+    "3:3.236": {
+      "hindi": "सब अन्न बहुत गरम हो, और वे मौन रहकर खाएँ; दाता के पूछने पर भी द्विज हवि के गुणों का बखान न करें।",
+      "translation": "All the food should be very hot, and they should eat in silence; and even when the giver asks, the Brahmanas should not praise the qualities of the food."
+    },
+    "3:3.237": {
+      "hindi": "जब तक अन्न में गर्मी रहती है, जब तक वे मौन रहकर खाते हैं, और जब तक हवि के गुण नहीं कहे जाते, तब तक पितर खाते हैं।",
+      "translation": "As long as the food is warm, as long as they eat in silence, and as long as the qualities of the food are not spoken of, so long the ancestors eat."
+    },
+    "3:3.238": {
+      "hindi": "जो सिर ढककर खाता है, जो दक्षिण की ओर मुँह करके खाता है, और जो जूते पहनकर खाता है, वह (भोजन) राक्षस खाते हैं।",
+      "translation": "What a man eats with his head covered, what he eats facing south, and what he eats with his shoes on, is eaten by demons."
+    },
+    "3:3.239": {
+      "hindi": "चांडाल, सूअर, मुर्गा, कुत्ता, रजस्वला स्त्री और नपुंसक भोजन करते हुए द्विजों को न देखें।",
+      "translation": "A Chandala, a pig, a cock, a dog, a menstruating woman and a eunuch should not watch the Brahmanas while they eat."
+    },
+    "3:3.240": {
+      "hindi": "होम, दान, भोजन, देवताओं या पितरों की हवि में जिसे ये देख लेते हैं, वह व्यर्थ चला जाता है।",
+      "translation": "Whatever these look upon at a fire offering, a gift, a meal, or an offering to the gods or ancestors, goes wrong."
+    },
+    "3:3.241": {
+      "hindi": "सूअर सूँघने से, मुर्गा पंखों की हवा से, कुत्ता नज़र पड़ने से, और निम्न वर्ण का व्यक्ति छूने से (हवि को) नष्ट करता है।",
+      "translation": "A pig spoils it by smelling, a cock by the wind of its wings, a dog by its glance, and a man of the lowest class by his touch."
+    },
+    "3:3.242": {
+      "hindi": "लंगड़ा, काना, कम या अधिक अंगों वाला, चाहे दाता का सेवक भी हो, उसे भी वहाँ से हटा दे।",
+      "translation": "A lame man, a one-eyed man, or one with a missing or extra limb, even if he is the giver's servant, should also be removed from the place."
+    },
+    "3:3.243": {
+      "hindi": "भोजन के लिए आए ब्राह्मण या भिक्षुक का भी ब्राह्मणों की अनुमति लेकर शक्ति के अनुसार सत्कार करे।",
+      "translation": "A Brahmana or a mendicant who comes for food should also be honoured as far as one can, with the permission of the invited Brahmanas."
+    },
+    "3:3.244": {
+      "hindi": "सब प्रकार के अन्न को मिलाकर, जल से भिगोकर, खा चुके (ब्राह्मणों) के सामने भूमि पर बिखेरकर छोड़ दे।",
+      "translation": "Mixing food of every kind and sprinkling it with water, he should scatter it on the ground in front of those who have eaten."
+    },
+    "3:3.245": {
+      "hindi": "बिना संस्कार के मरे (बालकों) का, (परिवार को) छोड़ने वालों का और कुल की स्त्रियों का भाग वह जूठन और कुशों पर बिखेरा (अन्न) है।",
+      "translation": "The leftovers and what is scattered on the kusha grass are the share of those who died before receiving the sacraments, of those who abandoned their families, and of the women of the family."
+    },
+    "3:3.246": {
+      "hindi": "पितृ-कर्म में भूमि पर गिरी जूठन को सरल और निष्कपट सेवकों का भाग कहते हैं।",
+      "translation": "The remnants that fall on the ground at a rite for the ancestors are said to be the share of honest and guileless servants."
+    },
+    "3:3.247": {
+      "hindi": "मरे हुए द्विज की सपिंडीकरण क्रिया होने तक, देवताओं (के ब्राह्मण) के बिना श्राद्ध में भोजन कराए और एक पिंड दे।",
+      "translation": "Until the rite that unites a dead twice-born man with his ancestors is performed, the rite for him should be held without a Brahmana for the gods, and one rice ball should be offered."
+    },
+    "3:3.248": {
+      "hindi": "धर्म के अनुसार उसकी सपिंडीकरण क्रिया हो जाने पर पुत्रों को इसी विधि से पिंडदान करना चाहिए।",
+      "translation": "Once that uniting rite has been duly performed, his sons should offer the rice balls by this same procedure."
+    },
+    "3:3.249": {
+      "hindi": "जो श्राद्ध में खाकर जूठन शूद्र को देता है, वह मूर्ख सिर नीचे करके कालसूत्र नरक में जाता है।",
+      "translation": "The fool who, having eaten at a rite for the dead, gives his leftovers to a Shudra goes headlong into the hell called Kalasutra."
+    },
+    "3:3.250": {
+      "hindi": "श्राद्ध में खाने वाला जो उसी दिन शूद्रा की शय्या पर जाता है, उसके पितर उस महीने उस (स्त्री) के मल में सोते हैं।",
+      "translation": "If one who has eaten at a rite for the dead goes to a Shudra woman's bed that same day, his ancestors lie for that month in her excrement."
+    },
+    "3:3.251": {
+      "hindi": "'स्वादिष्ट था न?' ऐसा पूछकर तृप्त (ब्राह्मणों) को आचमन कराए, और आचमन कर लेने पर 'आप सब आनंद करें' कहकर उन्हें (विदा की) अनुमति दे।",
+      "translation": "Having asked, 'Was it good?', he should give the satisfied guests water to sip, and when they have sipped, give them leave, saying, 'Rest at your ease.'"
+    },
+    "3:3.252": {
+      "hindi": "उसके बाद ब्राह्मण उससे 'स्वधा हो' कहें, क्योंकि सब पितृ-कर्मों में स्वधा कहना परम आशीर्वाद है।",
+      "translation": "The Brahmanas should then say to him, 'Let there be svadha'; for saying svadha is the highest blessing at all rites for the ancestors."
+    },
+    "3:3.253": {
+      "hindi": "फिर खा चुके उन (ब्राह्मणों) को बचा हुआ अन्न बताए, और उन द्विजों की अनुमति लेकर जैसा वे कहें वैसा करे।",
+      "translation": "Then he should tell those who have eaten what food remains, and do with it as they direct, with their permission."
+    },
+    "3:3.254": {
+      "hindi": "पितरों के (श्राद्ध) में 'स्वदितम्' (स्वादिष्ट), गोष्ठी (सामूहिक श्राद्ध) में 'सुशृतम्' (भली प्रकार पका), अभ्युदय (शुभ अवसर) में 'सम्पन्नम्' (पूर्ण), और देवताओं के (कर्म) में 'रुचितम्' (रुचिकर) कहना चाहिए।",
+      "translation": "At a rite for the ancestors one should say 'It was tasty', at a rite in the cowpen 'It was well cooked', at a rite for prosperity 'It was perfect', and at a rite for the gods 'It was pleasing'."
+    },
+    "3:3.255": {
+      "hindi": "दोपहर बाद का समय, कुश, स्थान की तैयारी, तिल, उदारता, (अन्न की) शुद्धता और श्रेष्ठ द्विज, ये श्राद्ध कर्मों की संपदा हैं।",
+      "translation": "The afternoon, kusha grass, proper preparation of the place, sesame, liberality, well-prepared food and excellent Brahmanas are the riches of a rite for the dead."
+    },
+    "3:3.256": {
+      "hindi": "कुश, पवित्र (मंत्र), दोपहर से पहले का समय, सब प्रकार के हविष्य (अन्न), और पहले बताए पवित्र (पदार्थ), इन्हें देव-कर्म की संपदा जानना चाहिए।",
+      "translation": "Kusha grass, purifying formulas, the forenoon, every kind of food fit for offerings, and the purifiers named before should be known as the riches of a rite for the gods."
+    },
+    "3:3.257": {
+      "hindi": "मुनियों का अन्न (जंगली अन्न), दूध, सोम, बिना मसाले का मांस, और बिना क्षार और नमक का (भोजन) स्वभाव से हवि कहा जाता है।",
+      "translation": "Food of hermits, milk, Soma, meat without seasoning and food without alkaline salt or common salt are by nature called fit for offering."
+    },
+    "3:3.258": {
+      "hindi": "उन ब्राह्मणों को विधिपूर्वक, संयमित होकर विदा करके, दक्षिण दिशा की ओर देखते हुए पितरों से ये वर माँगे।",
+      "translation": "Having dismissed the Brahmanas by the rule, controlled, he should look toward the south and ask the ancestors for these blessings."
+    },
+    "3:3.259": {
+      "hindi": "'हमारे दाता बढ़ें, वेद और संतान (बढ़े); हमारी श्रद्धा न जाए, और हमारे पास देने को बहुत हो।'",
+      "translation": "'May the givers among us increase, and our Vedic learning and our descendants; may our faith not leave us, and may we have much to give.'"
+    },
+    "3:3.260": {
+      "hindi": "इस प्रकार पिंड रखकर, उसके बाद उन पिंडों को गाय, ब्राह्मण, बकरी या अग्नि को खिलाए, या जल में डाल दे।",
+      "translation": "Having offered the rice balls in this way, he should afterwards give them to a cow, a Brahmana or a goat, or put them in the fire or in water."
+    },
+    "3:3.261": {
+      "hindi": "कुछ लोग पिंडदान (ब्राह्मण भोजन के) बाद करते हैं; अन्य (पिंडों को) पक्षियों को खिलाते हैं, या अग्नि या जल में डालते हैं।",
+      "translation": "Some offer the rice balls after the Brahmanas have eaten; others feed them to birds or throw them into fire or water."
+    },
+    "3:3.262": {
+      "hindi": "पतिव्रता, धर्मपत्नी, पितरों की पूजा में लगी, पुत्र चाहने वाली (स्त्री) बीच वाले पिंड को भली प्रकार खाए।",
+      "translation": "The lawful wife, faithful to her husband and devoted to honouring the ancestors, if she desires a son, should eat the middle rice ball with due care."
+    },
+    "3:3.263": {
+      "hindi": "(वह) दीर्घायु, यश और बुद्धि से युक्त, धनवान, संतान वाला, सात्त्विक और धर्मात्मा पुत्र को जन्म देती है।",
+      "translation": "She gives birth to a son who is long-lived, famous and intelligent, wealthy, blessed with children, of good nature and righteous."
+    },
+    "3:3.264": {
+      "hindi": "हाथ धोकर, आचमन करके, जाति वालों के लिए (भोजन) तैयार करे; जाति वालों को सम्मान से देकर ब्राह्मणों की भी पूजा करे।",
+      "translation": "Having washed his hands and sipped water, he should prepare food for his kinsmen, give it to them with honour, and honour the Brahmanas too."
+    },
+    "3:3.265": {
+      "hindi": "ब्राह्मणों के विदा होने तक वह जूठन (वहीं) रहे; उसके बाद घर की बलि करे, यह धर्म का नियम है।",
+      "translation": "The leftovers should stay where they are until the Brahmanas have been sent off; then he should make the household food offering. That is the settled rule."
+    },
+    "3:3.266": {
+      "hindi": "विधि के अनुसार पितरों को दी गई जो हवि बहुत समय तक और जो अनंत काल तक (तृप्ति) के लिए होती है, वह मैं पूरा बताऊँगा।",
+      "translation": "I will tell in full which offerings, given to the ancestors by the rule, last a long time and which last for ever."
+    },
+    "3:3.267": {
+      "hindi": "तिल, धान, जौ, उड़द, जल, या कंद-मूल और फल विधि के अनुसार देने से मनुष्यों के पितर एक महीने तक तृप्त रहते हैं।",
+      "translation": "With sesame, rice, barley, beans, water, or roots and fruits given according to rule, the ancestors of men are satisfied for a month."
+    },
+    "3:3.268": {
+      "hindi": "मछली के मांस से दो महीने, हिरन के (मांस) से तीन महीने, भेड़ के (मांस) से चार, और पक्षी के (मांस) से पाँच (महीने)।",
+      "translation": "With fish for two months, with venison for three, with mutton for four, and with the flesh of birds for five."
+    },
+    "3:3.269": {
+      "hindi": "बकरे के मांस से छह महीने, चितकबरे हिरन के (मांस) से सात, एण मृग के मांस से आठ, और रुरु मृग के (मांस) से नौ (महीने)।",
+      "translation": "With goat's meat for six months, with spotted deer for seven, with the flesh of the black antelope for eight, and with ruru deer for nine."
+    },
+    "3:3.270": {
+      "hindi": "सूअर और भैंसे के मांस से वे दस महीने तृप्त रहते हैं, और खरगोश तथा कछुए के मांस से ग्यारह महीने।",
+      "translation": "With the meat of boars and buffaloes they are satisfied for ten months, and with the flesh of hares and tortoises for eleven."
+    },
+    "3:3.271": {
+      "hindi": "गाय के दूध और खीर से एक वर्ष, और वार्ध्रीणस (बकरे) के मांस से बारह वर्ष तक तृप्ति रहती है।",
+      "translation": "With cow's milk and rice boiled in milk for a year, and with the meat of the long-eared white goat the satisfaction lasts twelve years."
+    },
+    "3:3.272": {
+      "hindi": "कालशाक, महाशल्क (मछली), गैंडे और लाल बकरे का मांस, मधु, और सब प्रकार के मुनियों के अन्न अनंत (तृप्ति) के लिए होते हैं।",
+      "translation": "The kalashaka herb, the mahashalka fish, the meat of the rhinoceros and the red goat, honey, and every kind of hermit's food bring satisfaction without end."
+    },
+    "3:3.273": {
+      "hindi": "(वर्षा ऋतु में मघा नक्षत्र वाली) त्रयोदशी को मधु मिलाकर जो कुछ भी दिया जाए, वह भी अक्षय होता है।",
+      "translation": "Whatever is offered mixed with honey on the thirteenth day of the dark fortnight in the rainy season, under the constellation Magha, also becomes imperishable."
+    },
+    "3:3.274": {
+      "hindi": "(पितर कहते हैं:) हमारे कुल में ऐसा कोई हो जो त्रयोदशी को, और हाथी की छाया पूर्व की ओर पड़ने पर, मधु और घी के साथ खीर हमें दे।",
+      "translation": "The ancestors say: 'May one be born in our family who will give us rice in milk with honey and ghee on the thirteenth day, and when the elephant's shadow falls to the east.'"
+    },
+    "3:3.275": {
+      "hindi": "विधि के अनुसार, भली प्रकार, श्रद्धा से युक्त होकर (मनुष्य) जो-जो देता है, वह-वह परलोक में पितरों के लिए अनंत और अक्षय हो जाता है।",
+      "translation": "Whatever a man gives according to rule, rightly and with faith, becomes endless and imperishable for the ancestors in the other world."
+    },
+    "3:3.276": {
+      "hindi": "कृष्ण पक्ष में दशमी आदि तिथियाँ, चतुर्दशी को छोड़कर, श्राद्ध में जैसी प्रशस्त हैं, वैसी अन्य नहीं।",
+      "translation": "In the dark fortnight the days from the tenth onward, except the fourteenth, are as good for rites for the dead as no others are."
+    },
+    "3:3.277": {
+      "hindi": "सम दिनों और (सम) नक्षत्रों में (श्राद्ध) करने वाला सब कामनाएँ पाता है, और विषम (दिनों) में (करने वाला) सब पितरों (के आशीर्वाद) और भरपूर संतान पाता है।",
+      "translation": "One who performs it on even days and under even constellations gains all his wishes; one who performs it on odd days gains the favour of all the ancestors and abundant offspring."
+    },
+    "3:3.278": {
+      "hindi": "जैसे दूसरा (कृष्ण) पक्ष पहले (शुक्ल) पक्ष से श्रेष्ठ है, वैसे ही श्राद्ध के लिए दोपहर बाद का समय दोपहर से पहले से श्रेष्ठ है।",
+      "translation": "As the second half of the month is better than the first, so for a rite for the dead the afternoon is better than the forenoon."
+    },
+    "3:3.279": {
+      "hindi": "जनेऊ दाहिने कंधे पर रखकर, उलटी (दाईं) ओर से, आलस्य रहित होकर, हाथ में कुश लेकर, अंत तक विधि के अनुसार पितृ-कर्म करना चाहिए।",
+      "translation": "With the sacred thread over the right shoulder, moving to the right, tirelessly and with kusha in hand, he should perform the rite for the ancestors by the rule until it is complete."
+    },
+    "3:3.280": {
+      "hindi": "रात में श्राद्ध न करे, क्योंकि वह राक्षसी कहा गया है; न दोनों संध्याओं में, और न सूर्य के अभी-अभी उदय होने पर।",
+      "translation": "He should not perform a rite for the dead at night, for that is called demonic; nor at the two twilights, nor just after sunrise."
+    },
+    "3:3.281": {
+      "hindi": "इस विधि से यहाँ वर्ष में तीन बार, हेमंत, ग्रीष्म और वर्षा में, श्राद्ध करे; और पाँच यज्ञों वाला (श्राद्ध) प्रतिदिन।",
+      "translation": "By this procedure he should perform the rite for the dead three times a year, in winter, summer and the rains, and the one belonging to the five great offerings every day."
+    },
+    "3:3.282": {
+      "hindi": "पितृ-यज्ञ का होम लौकिक अग्नि में नहीं बताया गया; और अग्निहोत्री द्विज का श्राद्ध अमावस्या के बिना (नहीं होता)।",
+      "translation": "The fire offering for the ancestors is not prescribed in an ordinary fire; and for a twice-born man who keeps the sacred fires, the rite for the dead is not held except on the new moon day."
+    },
+    "3:3.283": {
+      "hindi": "श्रेष्ठ द्विज स्नान करके जल से जो पितरों को तृप्त करता है, उसी से वह पितृ-यज्ञ के कर्म का पूरा फल पा लेता है।",
+      "translation": "When an excellent Brahmana, after bathing, satisfies the ancestors with water, by that alone he gains the whole fruit of the offering to the ancestors."
+    },
+    "3:3.284": {
+      "hindi": "पितरों को वसु कहते हैं, दादाओं को रुद्र, और परदादाओं को आदित्य; यह सनातन श्रुति है।",
+      "translation": "They call the fathers Vasus, the grandfathers Rudras and the great-grandfathers Adityas; this is the eternal Vedic teaching."
+    },
+    "3:3.285": {
+      "hindi": "सदा विघस खाने वाला हो, या सदा अमृत खाने वाला। खाने के बाद बचा हुआ विघस है, और यज्ञ से बचा हुआ अमृत है।",
+      "translation": "He should always eat the vighasa, or always eat the amrita: vighasa is what remains after others have eaten, and amrita is what remains after the offering."
+    },
+    "3:3.286": {
+      "hindi": "यह पाँच यज्ञों की सारी विधि तुम्हें बताई गई। अब श्रेष्ठ द्विजातियों की जीविका की विधि सुनो।",
+      "translation": "All the rules of the five great offerings have now been told to you; listen now to the rules of livelihood for the foremost of the twice-born."
+    },
+    "4:4.1": {
+      "hindi": "आयु का पहला चौथाई भाग गुरु के पास बिताकर, द्विज आयु के दूसरे भाग में विवाह करके घर में रहे।",
+      "translation": "Having spent the first quarter of his life with his teacher, a twice-born man should marry and live at home for the second quarter."
+    },
+    "4:4.2": {
+      "hindi": "आपत्ति न हो तो ब्राह्मण ऐसी जीविका अपनाकर जिए जिसमें प्राणियों को कोई हानि न हो, या बहुत थोड़ी हानि हो।",
+      "translation": "Except in times of distress, a Brahmana should live by a means of support that causes no harm to living beings, or very little."
+    },
+    "4:4.3": {
+      "hindi": "केवल जीवन-यात्रा चलाने के लिए, अपने अनिंदित कर्मों से, शरीर को कष्ट दिए बिना धन का संचय करे।",
+      "translation": "He should gather wealth only enough to keep himself going, by his own blameless work, without straining his body."
+    },
+    "4:4.4": {
+      "hindi": "वह ऋत और अमृत से, या मृत और प्रमृत से, या सत्यानृत से भी जिए, पर कभी श्ववृत्ति (कुत्ते की वृत्ति) से नहीं।",
+      "translation": "He may live by rita and amrita, or by mrita and pramrita, or even by satyanrita, but never by the dog's way of life."
+    },
+    "4:4.5": {
+      "hindi": "ऋत को (खेत में गिरे) दाने और बालें बीनना जानना चाहिए, अमृत बिना माँगे मिला (अन्न) है, मृत माँगी हुई भिक्षा है, और प्रमृत खेती मानी गई है।",
+      "translation": "Rita should be known as gleaning grain and ears, amrita as what comes unasked, mrita as alms that are begged, and pramrita as ploughing."
+    },
+    "4:4.6": {
+      "hindi": "सत्यानृत व्यापार है, उससे भी जिया जा सकता है। सेवा को श्ववृत्ति कहा गया है, इसलिए उसे छोड़ देना चाहिए।",
+      "translation": "Satyanrita is trade, and one may live by that too; service for wages is called the dog's way of life, so he should avoid it."
+    },
+    "4:4.7": {
+      "hindi": "(वह) कोठी भर अनाज रखने वाला हो, या घड़ा भर अनाज रखने वाला, या तीन दिन के लिए (अन्न) रखने वाला, या कल के लिए भी न रखने वाला।",
+      "translation": "He may keep grain enough to fill a granary, or a jar, or enough for three days, or none at all for tomorrow."
+    },
+    "4:4.8": {
+      "hindi": "इन चारों प्रकार के गृहस्थ द्विजों में धर्म के अनुसार बाद वाला पहले वाले से श्रेष्ठ और लोकों को अधिक जीतने वाला जानना चाहिए।",
+      "translation": "Of these four kinds of twice-born householders, each later one should be known as better by dharma and more fully a winner of the worlds."
+    },
+    "4:4.9": {
+      "hindi": "इनमें से एक छह कर्मों से (जीविका) चलाता है, दूसरा तीन से, एक दो से, और चौथा केवल ब्रह्म-सत्र (वेद पाठ) से जीता है।",
+      "translation": "One of them lives by six occupations, another by three, one by two, and the fourth lives by the sacrifice of the Veda alone."
+    },
+    "4:4.10": {
+      "hindi": "बालें और दाने बीनकर जीने वाला, अग्निहोत्र में लगा हुआ, सदा केवल पर्व और अयन के अंत की इष्टियाँ करे।",
+      "translation": "One who lives by gleaning ears and grains and is devoted to the fire offering should always offer only the rites of the new and full moon and of the solstices."
+    },
+    "4:4.11": {
+      "hindi": "जीविका के लिए कभी किसी प्रकार लोगों जैसा (छलपूर्ण) व्यवहार न करे; ब्राह्मण की सरल और निष्कपट जीविका से जिए।",
+      "translation": "He should never, for the sake of a living, follow the ways of worldly people; he should live the straight and honest life of a Brahmana."
+    },
+    "4:4.12": {
+      "hindi": "सुख चाहने वाला परम संतोष अपनाकर संयमित रहे, क्योंकि सुख का मूल संतोष है और दुःख का मूल उसका उलटा (असंतोष) है।",
+      "translation": "One who seeks happiness should hold to perfect contentment and restrain himself, for happiness is rooted in contentment and unhappiness in its opposite."
+    },
+    "4:4.13": {
+      "hindi": "इनमें से किसी एक वृत्ति से जीने वाला स्नातक द्विज स्वर्ग, आयु और यश देने वाले इन व्रतों का पालन करे।",
+      "translation": "A twice-born graduate who lives by one of these means should keep the following vows, which bring heaven, long life and fame."
+    },
+    "4:4.14": {
+      "hindi": "वेद में बताए अपने कर्म को सदा आलस्य रहित होकर करे, क्योंकि उसे शक्ति के अनुसार करता हुआ (मनुष्य) परम गति पाता है।",
+      "translation": "He should always perform tirelessly his own work as taught in the Veda; for doing it as well as he can, he reaches the highest state."
+    },
+    "4:4.15": {
+      "hindi": "आसक्ति से धन की इच्छा न करे, न विरुद्ध कर्म से; धन होने पर (और धन) न चाहे, और कष्ट में भी इधर-उधर से (न ले)।",
+      "translation": "He should not seek wealth out of attachment, nor by forbidden work; not when he already has enough, and not from just anyone even in hardship."
+    },
+    "4:4.16": {
+      "hindi": "सब इन्द्रिय-विषयों में इच्छा से आसक्त न हो, और उनमें अत्यधिक आसक्ति को मन से रोके।",
+      "translation": "He should not cling out of desire to any of the objects of the senses, and should hold back by the mind any excessive attachment to them."
+    },
+    "4:4.17": {
+      "hindi": "स्वाध्याय में बाधा डालने वाले सब विषयों को छोड़ दे और जैसे-तैसे निर्वाह करे; यही उसकी कृतार्थता है।",
+      "translation": "He should give up all pursuits that hinder his Vedic study, and get by somehow; for that is the fulfilment of his duty."
+    },
+    "4:4.18": {
+      "hindi": "आयु, कर्म, धन, विद्या और कुल के अनुरूप वेश, वाणी और बुद्धि रखते हुए यहाँ विचरे।",
+      "translation": "He should go about here with dress, speech and thought suited to his age, his work, his wealth, his learning and his family."
+    },
+    "4:4.19": {
+      "hindi": "बुद्धि को शीघ्र बढ़ाने वाले, धन देने वाले और हितकारी शास्त्रों को, और वैदिक निगमों (व्याख्याओं) को सदा देखता रहे।",
+      "translation": "He should always study the texts that quickly increase understanding, that bring wealth and that are beneficial, and the Vedic glossaries."
+    },
+    "4:4.20": {
+      "hindi": "पुरुष जैसे-जैसे शास्त्र को भली प्रकार समझता है, वैसे-वैसे वह जानता जाता है और उसे ज्ञान अच्छा लगने लगता है।",
+      "translation": "For the more a man masters the texts, the more he understands, and the more his learning shines."
+    },
+    "4:4.21": {
+      "hindi": "ऋषि-यज्ञ, देव-यज्ञ, भूत-यज्ञ, मनुष्य-यज्ञ और पितृ-यज्ञ को शक्ति के अनुसार कभी न छोड़े।",
+      "translation": "He should never neglect, as far as he is able, the offerings to the sages, the gods, all beings, men and the ancestors."
+    },
+    "4:4.22": {
+      "hindi": "यज्ञ-शास्त्र को जानने वाले कुछ लोग (बाहरी) प्रयत्न न करते हुए इन महायज्ञों को सदा इन्द्रियों में ही अर्पित करते हैं।",
+      "translation": "Some who know the science of sacrifice, making no outward effort, always offer these great offerings in their own senses."
+    },
+    "4:4.23": {
+      "hindi": "कुछ लोग वाणी और प्राण में यज्ञ की अक्षय पूर्ति देखते हुए सदा वाणी में प्राण और प्राण में वाणी को अर्पित करते हैं।",
+      "translation": "Some always offer breath into speech and speech into breath, seeing in speech and breath the imperishable fulfilment of the sacrifice."
+    },
+    "4:4.24": {
+      "hindi": "अन्य ब्राह्मण ज्ञान की आँख से इन (यज्ञों की) क्रिया को ज्ञान-मूलक देखते हुए सदा ज्ञान से ही उन यज्ञों को करते हैं।",
+      "translation": "Other Brahmanas always perform those sacrifices by knowledge alone, seeing with the eye of knowledge that their performance is rooted in knowledge."
+    },
+    "4:4.25": {
+      "hindi": "दिन और रात के आरम्भ और अंत में सदा अग्निहोत्र करे, और पक्ष के अंत में दर्श (अमावस्या) और पौर्णमास (इष्टि) करे।",
+      "translation": "He should always make the fire offering at the beginning and end of day and night, and at the end of each half-month the new-moon and full-moon offerings."
+    },
+    "4:4.26": {
+      "hindi": "फसल के अंत में नई फसल की इष्टि करे, ऋतु के अंत में यज्ञ, अयन के अंत में पशु (यज्ञ) और वर्ष के अंत में सोम यज्ञ।",
+      "translation": "At the end of the harvest he should offer the sacrifice of new grain, at the end of each season the seasonal rites, at the solstices an animal sacrifice, and at the end of the year the Soma sacrifices."
+    },
+    "4:4.27": {
+      "hindi": "दीर्घ आयु चाहने वाला अग्निहोत्री द्विज नई फसल की इष्टि और पशु (यज्ञ) किए बिना नया अन्न या मांस न खाए।",
+      "translation": "A twice-born man who keeps the sacred fires and wishes to live long should not eat new grain or meat without first offering the sacrifice of new grain and the animal sacrifice."
+    },
+    "4:4.28": {
+      "hindi": "नए अन्न और पशु की हवि से पूजा न पाने वाली उसकी अग्नियाँ नए अन्न और मांस की लालची होकर उसके प्राणों को ही खाना चाहती हैं।",
+      "translation": "For his fires, not honoured with the new grain and the animal offering, grow greedy for new grain and meat and seek to devour his very life."
+    },
+    "4:4.29": {
+      "hindi": "उसके घर में कोई अतिथि शक्ति के अनुसार आसन, भोजन, शय्या, जल, या कंद-मूल और फल से सत्कार पाए बिना न रहे।",
+      "translation": "No guest should stay in his house without being honoured, as far as he is able, with a seat, food, a bed, water, or roots and fruits."
+    },
+    "4:4.30": {
+      "hindi": "पाखंडियों, निषिद्ध कर्म करने वालों, बिल्ली जैसा (दिखावटी) व्रत रखने वालों, छलियों, (वेद विरोधी) तर्क करने वालों और बगुले जैसी वृत्ति वालों का वाणी से भी सत्कार न करे।",
+      "translation": "He should not honour, even with a word, heretics, those who do forbidden work, those who keep the cat's vow of false piety, cheats, quibblers against the Veda, and those who live like herons."
+    },
+    "4:4.31": {
+      "hindi": "वेद, विद्या और व्रत पूरे करके स्नान कर चुके वेदपाठी गृहस्थों की हव्य और कव्य से पूजा करे, और इनसे उलटे (लोगों) को छोड़ दे।",
+      "translation": "He should honour with offerings to the gods and ancestors Vedic scholars who are householders and have completed their study, their learning and their vows; those of the opposite kind he should avoid."
+    },
+    "4:4.32": {
+      "hindi": "गृहस्थ को शक्ति के अनुसार उन्हें देना चाहिए जो (स्वयं) नहीं पकाते, और (अपने परिवार को) बाधा पहुँचाए बिना प्राणियों को भी भाग देना चाहिए।",
+      "translation": "A householder should give as much as he can to those who do not cook for themselves, and share with all beings without stinting his own household."
+    },
+    "4:4.33": {
+      "hindi": "भूख से कष्ट पाता स्नातक राजा से, या यजमान से या शिष्य से धन माँगे, पर किसी और से नहीं; यह नियम है।",
+      "translation": "A graduate suffering from hunger may seek wealth from a king, or from one he sacrifices for, or from a pupil, but not from anyone else; that is the rule."
+    },
+    "4:4.34": {
+      "hindi": "समर्थ स्नातक ब्राह्मण किसी भी प्रकार भूख से कष्ट न पाए, और धन होने पर पुराने या मैले वस्त्र न पहने।",
+      "translation": "A Brahmana graduate who is able should never suffer from hunger, nor wear old or dirty clothes when he has the means."
+    },
+    "4:4.35": {
+      "hindi": "बाल, नाखून और दाढ़ी कटाए हुए, संयमित, सफ़ेद वस्त्र पहने, शुद्ध होकर सदा स्वाध्याय में और अपने हित के (कर्मों) में लगा रहे।",
+      "translation": "With hair, nails and beard trimmed, self-controlled, in white clothes and pure, he should always be devoted to Vedic study and to what is good for him."
+    },
+    "4:4.36": {
+      "hindi": "वह बाँस का डंडा, जल भरा कमंडलु, यज्ञोपवीत, कुश का मुट्ठा और सोने के दो सुंदर कुंडल धारण करे।",
+      "translation": "He should carry a bamboo staff and a water pot full of water, and wear the sacred thread, a bunch of kusha grass and a pair of fine gold earrings."
+    },
+    "4:4.37": {
+      "hindi": "उगते हुए या अस्त होते हुए सूर्य को कभी न देखे, न ग्रहण लगे हुए को, न जल में (प्रतिबिंबित) को, और न आकाश के बीच में पहुँचे हुए को।",
+      "translation": "He should never look at the sun when it is rising or setting, eclipsed, reflected in water, or in the middle of the sky."
+    },
+    "4:4.38": {
+      "hindi": "बछड़े को बाँधने वाली रस्सी को न लाँघे, वर्षा में न दौड़े, और जल में अपना रूप न देखे; यह निश्चित नियम है।",
+      "translation": "He should not step over a rope to which a calf is tied, nor run in the rain, nor look at his reflection in water; that is the settled rule."
+    },
+    "4:4.39": {
+      "hindi": "मिट्टी के ढेर, गाय, देवता (की मूर्ति), ब्राह्मण, घी, मधु, चौराहे और प्रसिद्ध वृक्षों को दाईं ओर रखकर (उनके पास से) निकले।",
+      "translation": "He should pass with his right side toward a mound of earth, a cow, an image of a god, a Brahmana, ghee, honey, a crossroads and well-known trees."
+    },
+    "4:4.40": {
+      "hindi": "काम से उन्मत्त होने पर भी रजस्वला स्त्री के पास न जाए, और उसके साथ एक शय्या पर न सोए।",
+      "translation": "Even when overcome by passion, he should not go to his wife when her menstruation has appeared, nor lie with her in the same bed."
+    },
+    "4:4.41": {
+      "hindi": "रजस्वला स्त्री के पास जाने वाले पुरुष की बुद्धि, तेज, बल, दृष्टि और आयु क्षीण हो जाती है।",
+      "translation": "For the wisdom, vigour, strength, sight and life of a man who goes to a woman in her menses waste away."
+    },
+    "4:4.42": {
+      "hindi": "रजस्वला (स्त्री) से दूर रहने वाले उस (पुरुष) की बुद्धि, तेज, बल, दृष्टि और आयु बढ़ती है।",
+      "translation": "If he keeps away from her during that time, his wisdom, vigour, strength, sight and life increase."
+    },
+    "4:4.43": {
+      "hindi": "पत्नी के साथ (एक थाली में) न खाए, और उसे खाते हुए, छींकते हुए, जँभाई लेते हुए या आराम से बैठे हुए न देखे।",
+      "translation": "He should not eat with his wife, nor look at her while she eats, sneezes, yawns or sits at her ease."
+    },
+    "4:4.44": {
+      "hindi": "तेज चाहने वाला श्रेष्ठ द्विज (पत्नी को) आँखों में अंजन लगाते हुए, तेल मले हुए, निर्वस्त्र या प्रसव करते हुए न देखे।",
+      "translation": "A Brahmana who desires vigour should not look at her while she puts collyrium on her eyes, when she is anointed or undressed, or when she is giving birth."
+    },
+    "4:4.45": {
+      "hindi": "एक वस्त्र पहनकर भोजन न करे, नग्न होकर स्नान न करे, और मार्ग में, राख पर या गोशाला में मूत्र न करे।",
+      "translation": "He should not eat wearing only one garment, nor bathe naked, nor pass urine on a road, on ashes or in a cowpen."
+    },
+    "4:4.46": {
+      "hindi": "न जुते हुए खेत में, न जल में, न चिता पर, न पर्वत पर, न पुराने मंदिर में और न कभी बाँबी पर।",
+      "translation": "Nor on ploughed land, in water, on a funeral pyre, on a mountain, in a ruined temple, or ever on an anthill."
+    },
+    "4:4.47": {
+      "hindi": "न जीवों वाले गड्ढों में, न चलते हुए, न खड़े होकर, न नदी के किनारे पहुँचकर और न पर्वत की चोटी पर।",
+      "translation": "Nor in holes where creatures live, nor while walking or standing, nor on reaching a river bank, nor on a mountain top."
+    },
+    "4:4.48": {
+      "hindi": "वायु, अग्नि, ब्राह्मण, सूर्य, जल और गायों को देखते हुए कभी मल-मूत्र का त्याग न करे।",
+      "translation": "He should never void excrement or urine while looking at the wind, fire, a Brahmana, the sun, water or cows."
+    },
+    "4:4.49": {
+      "hindi": "लकड़ी, ढेला, पत्ते, घास आदि से (भूमि को) ढककर, वाणी को संयमित करके, शुद्ध होकर, शरीर ढककर और सिर ढककर मल त्याग करे।",
+      "translation": "He should relieve himself after covering the ground with sticks, clods, leaves or grass, keeping silent, pure, with his body wrapped and his head covered."
+    },
+    "4:4.50": {
+      "hindi": "दिन में और दोनों संध्याओं में उत्तर की ओर मुँह करके मल-मूत्र त्याग करे, और रात में दक्षिण की ओर मुँह करके।",
+      "translation": "By day and at the two twilights he should void urine and excrement facing north, and at night facing south."
+    },
+    "4:4.51": {
+      "hindi": "छाया में, अंधेरे में, रात या दिन में, और प्राणों के संकट के भय में द्विज जिस ओर मुँह करना सुविधाजनक हो, (उस ओर करके) करे।",
+      "translation": "In shade or darkness, by night or day, and when there is fear for his life, a twice-born man may do so facing whatever way is easy."
+    },
+    "4:4.52": {
+      "hindi": "अग्नि, सूर्य, चन्द्रमा, जल, द्विज, गाय और हवा की ओर मुँह करके मूत्र करने वाले की बुद्धि नष्ट होती है।",
+      "translation": "The understanding of a man who urinates facing a fire, the sun, the moon, water, a Brahmana, a cow or the wind is destroyed."
+    },
+    "4:4.53": {
+      "hindi": "अग्नि को मुँह से न फूँके, नग्न स्त्री को न देखे, अपवित्र वस्तु अग्नि में न डाले और पैरों को (आग पर) न तपाए।",
+      "translation": "He should not blow on a fire with his mouth, look at a naked woman, throw anything impure into a fire, or warm his feet at it."
+    },
+    "4:4.54": {
+      "hindi": "उसे (खाट के) नीचे न रखे, उसे न लाँघे, उसे पैरों की ओर न रखे और (उससे) प्राणियों को कष्ट न दे।",
+      "translation": "He should not put it under his bed, step over it, place it at his feet, or use it to harm living things."
+    },
+    "4:4.55": {
+      "hindi": "संध्या के समय न खाए, न चले और न सोए; भूमि पर (रेखाएँ) न खींचे और अपनी माला स्वयं न उतारे।",
+      "translation": "He should not eat, travel or lie down at twilight, scratch lines on the ground, or take off his own garland."
+    },
+    "4:4.56": {
+      "hindi": "जल में मूत्र, मल, थूक, या अपवित्र वस्तु से सनी कोई अन्य वस्तु, रक्त या विष न डाले।",
+      "translation": "He should not drop urine, excrement or spittle into water, nor anything smeared with filth, nor blood or poison."
+    },
+    "4:4.57": {
+      "hindi": "सूने घर में अकेला न सोए, अपने से श्रेष्ठ (व्यक्ति) को (सोते से) न जगाए, रजस्वला स्त्री से बात न करे और बिना निमंत्रण के यज्ञ में न जाए।",
+      "translation": "He should not sleep alone in an empty house, wake a superior who is asleep, talk with a menstruating woman, or go to a sacrifice uninvited."
+    },
+    "4:4.58": {
+      "hindi": "अग्निशाला में, गोशाला में, ब्राह्मणों के पास, स्वाध्याय में और भोजन में दाहिना हाथ (वस्त्र से) बाहर रखे।",
+      "translation": "In the fire hall, in a cowpen, in the presence of Brahmanas, during Vedic study and at meals, he should keep his right arm uncovered."
+    },
+    "4:4.59": {
+      "hindi": "दूध पीती (बछड़े को पिलाती) गाय को न रोके और (यह बात) किसी से न कहे; बुद्धिमान आकाश में इन्द्रधनुष देखकर किसी को न दिखाए।",
+      "translation": "He should not stop a cow that is suckling her calf, nor tell anyone about it; and a wise man who sees a rainbow in the sky should not point it out to anyone."
+    },
+    "4:4.60": {
+      "hindi": "अधर्मियों के गाँव में न रहे, बहुत रोगों वाले (गाँव) में भी न रहे, अकेला मार्ग पर न जाए और बहुत समय तक पर्वत पर न रहे।",
+      "translation": "He should not live in a village of unrighteous people, nor one where disease is rife; he should not set out on a journey alone, nor stay long on a mountain."
+    },
+    "4:4.61": {
+      "hindi": "शूद्र के राज्य में न रहे, अधर्मी लोगों से घिरे (स्थान) में न रहे, पाखंडियों के समूहों से भरे (स्थान) में न रहे, और नीच मनुष्यों से पीड़ित (स्थान) में न रहे।",
+      "translation": "He should not live in a kingdom ruled by a Shudra, nor in a place full of unrighteous men, nor one overrun by heretics, nor one troubled by men of the lowest birth."
+    },
+    "4:4.62": {
+      "hindi": "जिसका चिकनापन निकाल लिया गया हो वह न खाए, बहुत अधिक तृप्त होकर न खाए, बहुत सवेरे या बहुत साँझ को न खाए, और सवेरे (भरपेट) खाया हो तो साँझ को न खाए।",
+      "translation": "He should not eat food from which the fat has been taken, nor eat to excess, nor very early or very late, nor in the evening if he has eaten his fill in the morning."
+    },
+    "4:4.63": {
+      "hindi": "व्यर्थ के काम न करे, अंजलि से जल न पिए, गोद में रखकर खाने की वस्तुएँ न खाए, और कभी व्यर्थ की जिज्ञासा वाला न हो।",
+      "translation": "He should not do pointless things, drink water from his joined palms, eat food placed in his lap, or be idly curious."
+    },
+    "4:4.64": {
+      "hindi": "न नाचे, न गाए, न बाजे बजाए, न ताल ठोके, न दाँत किटकिटाए और न उत्तेजित होकर चिल्लाए।",
+      "translation": "He should not dance or sing or play musical instruments, nor slap his arms, nor gnash his teeth, nor shout in excitement."
+    },
+    "4:4.65": {
+      "hindi": "काँसे के पात्र में कभी पैर न धोए, टूटे बर्तन में न खाए, और न ऐसे (बर्तन) में जो मन को खटकता हो।",
+      "translation": "He should never wash his feet in a bronze vessel, nor eat from a broken dish or one that seems unclean to him."
+    },
+    "4:4.66": {
+      "hindi": "दूसरों के पहने हुए जूते, वस्त्र, जनेऊ, आभूषण, माला और कमंडलु धारण न करे।",
+      "translation": "He should not wear shoes, clothes, a sacred thread, ornaments, a garland or a water pot used by others."
+    },
+    "4:4.67": {
+      "hindi": "बिना सिखाए, भूख या रोग से पीड़ित, टूटे सींग, आँख या खुर वाले, या कटी पूँछ वाले पशुओं से (जुते वाहन में) यात्रा न करे।",
+      "translation": "He should not travel behind draught animals that are untrained, suffering from hunger or illness, with broken horns, eyes or hoofs, or with damaged tails."
+    },
+    "4:4.68": {
+      "hindi": "सदा सिखाए हुए, तेज चलने वाले, शुभ लक्षणों वाले, रंग और रूप से युक्त (पशुओं) से, चाबुक से बहुत न मारते हुए, यात्रा करे।",
+      "translation": "He should always travel behind animals that are well trained, swift, with good marks and good colour and form, not goading them hard."
+    },
+    "4:4.69": {
+      "hindi": "सवेरे की धूप, शव का धुआँ और टूटा आसन त्याज्य हैं। नाखून और रोम न तोड़े, और दाँतों से नाखून न काटे।",
+      "translation": "The early morning sun, smoke from a pyre and a broken seat should be avoided; he should not cut his nails or hair himself, nor tear his nails with his teeth."
+    },
+    "4:4.70": {
+      "hindi": "मिट्टी के ढेले को न मसले, नाखूनों से घास न तोड़े, निष्फल कर्म न करे, और ऐसा (कर्म) न करे जिससे बाद में दुःख हो।",
+      "translation": "He should not crush clods of earth, nor cut grass with his nails, nor do anything useless, nor anything that will bring pain later."
+    },
+    "4:4.71": {
+      "hindi": "जो मनुष्य मिट्टी के ढेले मसलता है, घास तोड़ता है, नाखून चबाता है, चुगली करता है और अपवित्र रहता है, वह शीघ्र ही विनाश को प्राप्त होता है।",
+      "translation": "The man who crushes clods, snaps grass and chews his nails, who tells tales and stays unclean, soon comes to ruin."
+    },
+    "4:4.72": {
+      "hindi": "झगड़ते हुए बात न करे, माला बाहर (वस्त्र के ऊपर) न पहने; और गाय की पीठ पर सवारी करना तो सर्वथा निंदित है।",
+      "translation": "He should not talk in a quarrelsome way, nor wear a garland outside his clothes; and riding on the back of cattle is condemned in every way."
+    },
+    "4:4.73": {
+      "hindi": "घिरे हुए गाँव या घर में द्वार के बिना (दीवार लाँघकर) न जाए, और रात में पेड़ों की जड़ों से दूर रहे।",
+      "translation": "He should not enter a walled village or house except by its gate, and at night he should keep well away from the roots of trees."
+    },
+    "4:4.74": {
+      "hindi": "कभी पासों से जुआ न खेले, अपने जूते स्वयं हाथ में लेकर न चले, बिस्तर पर लेटकर, हाथ में रखकर या आसन पर रखकर भोजन न करे।",
+      "translation": "He should never gamble with dice, nor carry his own shoes in his hand; he should not eat lying on a bed, nor from his hand, nor with the food set on a seat."
+    },
+    "4:4.75": {
+      "hindi": "सूर्य अस्त होने के बाद तिल से बनी कोई वस्तु न खाए, यहाँ नग्न होकर न सोए, और जूठे मुँह कहीं न जाए।",
+      "translation": "After the sun has set he should eat nothing made with sesame; he should not sleep naked here, nor go anywhere while still unclean from eating."
+    },
+    "4:4.76": {
+      "hindi": "गीले पैरों से भोजन करे, पर गीले पैरों से सोने न जाए; गीले पैरों से भोजन करने वाला लंबी आयु पाता है।",
+      "translation": "He should eat with his feet still wet from washing, but not go to bed with wet feet; one who eats with wet feet gains a long life."
+    },
+    "4:4.77": {
+      "hindi": "जो स्थान आँखों से दिखाई न दे और जहाँ पहुँचना कठिन हो, वहाँ कभी न जाए; मल-मूत्र की ओर न देखे और भुजाओं से तैरकर नदी पार न करे।",
+      "translation": "He should never enter a place that is hard to reach and cannot be seen into; he should not look at urine or excrement, nor cross a river by swimming with his arms."
+    },
+    "4:4.78": {
+      "hindi": "जो लंबा जीना चाहे वह बालों, राख, हड्डियों, खप्परों, कपास के बीजों और भूसी पर पैर न रखे।",
+      "translation": "One who wishes to live long should not stand on hair, ash, bones or potsherds, nor on cotton seeds or chaff."
+    },
+    "4:4.79": {
+      "hindi": "पतितों, चाण्डालों, पुल्कसों, मूर्खों, घमंडियों और समाज से बहिष्कृत लोगों के साथ निवास न करे।",
+      "translation": "He should not live together with outcasts from caste, with Chandalas or Pulkasas, with fools or the arrogant, nor with those of the lowest standing."
+    },
+    "4:4.80": {
+      "hindi": "शूद्र को परामर्श न दे, उसे जूठन या हवन के लिए रखा अन्न न दे, उसे धर्म का उपदेश न करे और उसे व्रत का आदेश न दे।",
+      "translation": "He should not give a Shudra counsel, nor leavings, nor food set aside for an offering; he should not teach him the law nor prescribe a vow for him."
+    },
+    "4:4.81": {
+      "hindi": "जो उसे धर्म बताता है और जो उसे व्रत का आदेश देता है, वह उसी के साथ 'असंवृत' नामक अंधकारमय नरक में डूबता है।",
+      "translation": "For whoever explains the law to him or prescribes a vow for him sinks with him into the darkness called Asamvrita."
+    },
+    "4:4.82": {
+      "hindi": "दोनों हाथ जोड़कर अपना सिर न खुजलाए; जूठे मुँह इसे न छुए, और इसके बिना (सिर भिगोए बिना) स्नान न करे।",
+      "translation": "He should not scratch his head with both hands joined together; he should not touch it while unclean from eating, nor bathe without wetting it."
+    },
+    "4:4.83": {
+      "hindi": "सिर पर बाल खींचना और प्रहार करना छोड़ दे; सिर पर तेल लगाकर स्नान करने के बाद शरीर के किसी अंग को (तेल से) न छुए।",
+      "translation": "He should avoid pulling anyone by the hair and striking the head; after bathing his head with oil, he should not touch any other limb with it."
+    },
+    "4:4.84": {
+      "hindi": "जो राजा क्षत्रिय कुल में उत्पन्न न हुआ हो उससे दान न ले, और न कसाइयों, तेलियों, कलालों तथा वेश्यावृत्ति से जीने वालों से।",
+      "translation": "He should not accept gifts from a king not born of a Kshatriya family, nor from butchers, oil-pressers, tavern-keepers, or those who live by prostitution."
+    },
+    "4:4.85": {
+      "hindi": "एक तेली दस कसाइयों के बराबर है, एक कलाल दस तेलियों के बराबर, एक वेश्या दस कलालों के बराबर, और (ऐसा) राजा दस वेश्याओं के बराबर।",
+      "translation": "An oil-press is equal to ten slaughterhouses, a tavern sign to ten oil-presses, a brothel to ten taverns, and such a king to ten brothels."
+    },
+    "4:4.86": {
+      "hindi": "जो कसाई दस हज़ार कसाईखाने चलाता है, ऐसा राजा उसके बराबर माना गया है; उसका दान लेना भयानक है।",
+      "translation": "Such a king is held equal to a butcher who runs ten thousand slaughterhouses; to take a gift from him is a dreadful thing."
+    },
+    "4:4.87": {
+      "hindi": "जो लोभी और शास्त्र के विरुद्ध चलने वाले राजा से दान लेता है, वह क्रम से इन इक्कीस नरकों में जाता है—",
+      "translation": "Whoever takes gifts from a greedy king who acts against the sacred law goes in turn to these twenty-one hells:"
+    },
+    "4:4.88": {
+      "hindi": "तामिस्र, अंधतामिस्र, महारौरव, रौरव, नरक, कालसूत्र और महानरक;",
+      "translation": "Tamisra, Andhatamisra, Maharaurava and Raurava, Naraka, Kalasutra and Mahanaraka;"
+    },
+    "4:4.89": {
+      "hindi": "संजीवन, महावीचि, तपन, संप्रतापन, संघात, काकोल, कुड्मल और पूतिमृत्तिक;",
+      "translation": "Sanjivana, Mahavichi, Tapana, Sampratapana, Sanghata with Kakola, Kudmala and Putimrittika;"
+    },
+    "4:4.90": {
+      "hindi": "लोहशंकु, ऋजीष, पंथान, शाल्मली नदी, असिपत्रवन और लोहदारक।",
+      "translation": "Lohashanku, Rijisha, Panthana, the river Shalmali, Asipatravana and Lohadaraka."
+    },
+    "4:4.91": {
+      "hindi": "यह जानकर, मृत्यु के बाद कल्याण चाहने वाले, वेद का प्रवचन करने वाले विद्वान ब्राह्मण राजा से दान नहीं लेते।",
+      "translation": "Knowing this, learned Brahmins who expound the Veda and seek welfare after death do not accept gifts from a king."
+    },
+    "4:4.92": {
+      "hindi": "ब्राह्म मुहूर्त में जाग जाए और धर्म तथा अर्थ का चिंतन करे, उनसे होने वाले शारीरिक कष्टों का भी, और वेद के तत्त्वार्थ का भी।",
+      "translation": "He should wake in the hour before dawn and reflect on duty and wealth, on the bodily strain they involve, and on the true meaning of the Veda."
+    },
+    "4:4.93": {
+      "hindi": "उठकर, आवश्यक कर्म और शौच करके, एकाग्र होकर प्रातः संध्या में देर तक जप करते हुए खड़ा रहे, और अपने समय पर सायं संध्या में भी।",
+      "translation": "Having risen, relieved himself and cleansed himself, collected in mind, he should stand a long time repeating the prayer at morning twilight, and at its proper time at evening twilight too."
+    },
+    "4:4.94": {
+      "hindi": "लंबी संध्या करने से ऋषियों ने दीर्घ आयु, प्रज्ञा, यश, कीर्ति और ब्रह्मतेज प्राप्त किया।",
+      "translation": "By long twilight devotions the sages gained long life, wisdom, fame, renown and the radiance of sacred learning."
+    },
+    "4:4.95": {
+      "hindi": "श्रावण या भाद्रपद की पूर्णिमा को विधिपूर्वक उपाकर्म करके, ब्राह्मण साढ़े चार महीने तक एकाग्र होकर वेदों का अध्ययन करे।",
+      "translation": "Having performed the opening rite in due form on the full moon of Shravana or of Bhadrapada, a Brahmin should study the Vedic hymns attentively for four and a half months."
+    },
+    "4:4.96": {
+      "hindi": "फिर पुष्य नक्षत्र में, या माघ शुक्ल पक्ष के पहले दिन पूर्वाह्न में, द्विज गाँव के बाहर वेदों का उत्सर्जन (समापन) करे।",
+      "translation": "Then under the asterism Pushya, or in the forenoon of the first day of the bright half of Magha, the twice-born should perform the closing rite for the Vedas outside the village."
+    },
+    "4:4.97": {
+      "hindi": "शास्त्र के अनुसार गाँव के बाहर वेदों का उत्सर्ग करके, दो दिन और बीच की रात, या वही एक दिन-रात अध्ययन से विराम ले।",
+      "translation": "Having performed the closing rite outside the village as the texts direct, he should pause from study for two days and the night between, or for that one day and night."
+    },
+    "4:4.98": {
+      "hindi": "इसके बाद संयम से शुक्ल पक्षों में वेद पढ़े, और कृष्ण पक्षों में सब वेदांगों का अध्ययन करे।",
+      "translation": "After that he should with restraint recite the Vedas in the bright fortnights and study all the auxiliary sciences in the dark fortnights."
+    },
+    "4:4.99": {
+      "hindi": "अस्पष्ट उच्चारण से न पढ़े, न शूद्रों के पास; रात के अंत में वेद पढ़कर थका होने पर भी फिर न सोए।",
+      "translation": "He should not recite indistinctly, nor in the presence of Shudras; and having recited the Veda at the end of the night, he should not go back to sleep though tired."
+    },
+    "4:4.100": {
+      "hindi": "द्विज बताई गई विधि से नित्य छंदोबद्ध मंत्र पढ़े, और आपत्ति न हो तो ब्राह्मण भाग तथा मंत्र दोनों का संयम से अध्ययन करे।",
+      "translation": "By the rule just given the twice-born should daily recite the metrical hymns, and when not in distress, attentively study both the Brahmana texts and the hymns."
+    },
+    "4:4.101": {
+      "hindi": "स्वयं पढ़ते हुए और शिष्यों को विधिपूर्वक पढ़ाते हुए, इन अनध्यायों (अध्ययन-निषेध के अवसरों) को सदा छोड़ दे।",
+      "translation": "Whether studying himself or duly teaching his pupils, he should always keep the following times when study is suspended."
+    },
+    "4:4.102": {
+      "hindi": "रात में जब हवा कानों में सनसनाए, और दिन में जब धूल उड़े, वर्षा ऋतु में ये दो अनध्याय हैं, ऐसा अध्ययन के जानकार कहते हैं।",
+      "translation": "When at night the wind is loud in the ears and when by day it whirls up dust, those who know the rules of study call these two the suspensions for the rainy season."
+    },
+    "4:4.103": {
+      "hindi": "बिजली, गर्जन और वर्षा होने पर, और बड़ी उल्काओं के गिरने पर, मनु ने आकालिक अनध्याय (उस समय से अगले दिन उसी समय तक) बताया है।",
+      "translation": "When there is lightning, thunder and rain, and when great meteors fall, Manu declared study suspended until the same hour next day."
+    },
+    "4:4.104": {
+      "hindi": "जब अग्निहोत्र की अग्नियाँ प्रज्वलित हों और ये (बिजली आदि) प्रकट हों, तब अनध्याय जाने; और ऋतु के बाहर बादल दिखें तब भी।",
+      "translation": "When these appear while the sacred fires are kindled, he should know study to be suspended; and also when clouds are seen out of season."
+    },
+    "4:4.105": {
+      "hindi": "बिजली की कड़क, भूकंप और ग्रहों-नक्षत्रों पर उपद्रव होने पर, ऋतु में भी इन्हें आकालिक अनध्याय जाने।",
+      "translation": "At a thunderclap, an earthquake, or an eclipse of the heavenly lights, he should know study suspended until the same hour next day, even in season."
+    },
+    "4:4.106": {
+      "hindi": "अग्नियाँ प्रज्वलित होने पर बिजली और गर्जन का शब्द हो तो प्रकाश रहने तक अनध्याय होता है; और (वर्षा) शेष रहे तो रात में भी दिन की तरह।",
+      "translation": "If lightning and thunder sound when the fires are kindled, study is suspended while the light lasts; if the rest follows, at night as by day."
+    },
+    "4:4.107": {
+      "hindi": "धर्म में निपुणता चाहने वालों के लिए गाँवों और नगरों में सदा अनध्याय रहे, और दुर्गंध होने पर सर्वत्र।",
+      "translation": "For those who wish to excel in the sacred law, study is always suspended in villages and towns, and wherever there is a foul smell."
+    },
+    "4:4.108": {
+      "hindi": "गाँव में शव पड़ा हो, पापी व्यक्ति पास हो, रोना हो रहा हो, या लोगों की भीड़ हो, तब अनध्याय है।",
+      "translation": "Study is suspended in a village where a corpse lies, near a wicked man, while people are weeping, and when a crowd has gathered."
+    },
+    "4:4.109": {
+      "hindi": "जल में, आधी रात को, मल-मूत्र त्यागते समय, जूठे मुँह और श्राद्ध का भोजन करके, मन से भी (वेद का) चिंतन न करे।",
+      "translation": "In water, at midnight, while voiding, when unclean from eating, and after eating at a funeral meal, he should not even think of the Veda in his mind."
+    },
+    "4:4.110": {
+      "hindi": "विद्वान द्विज एकोद्दिष्ट श्राद्ध का निमंत्रण स्वीकार करके तीन दिन तक वेद न बोले, और राजा के घर सूतक होने पर तथा राहु (ग्रहण) के समय भी।",
+      "translation": "A learned twice-born who has accepted an invitation to a rite for one dead person should not recite the Veda for three days, nor during the king's impurity of birth or death, nor during an eclipse."
+    },
+    "4:4.111": {
+      "hindi": "जब तक एकोद्दिष्ट श्राद्ध (के भोजन) की गंध और लेप विद्वान ब्राह्मण के शरीर पर रहे, तब तक वेद न बोले।",
+      "translation": "As long as the smell and the traces of the meal for one dead person remain on the body of a learned Brahmin, he should not recite the Veda."
+    },
+    "4:4.112": {
+      "hindi": "लेटकर, पैर ऊँचे रखकर, घुटनों को वस्त्र से बाँधकर, मांस खाकर और सूतक का अन्न खाकर अध्ययन न करे।",
+      "translation": "He should not study lying down, with his feet raised, or sitting with his knees bound by a cloth, nor after eating meat or food from a house in impurity."
+    },
+    "4:4.113": {
+      "hindi": "कोहरे में, बाण की सनसनाहट पर, दोनों संध्याओं में, अमावस्या, चतुर्दशी, पूर्णिमा और अष्टमी को (अध्ययन न करे)।",
+      "translation": "Nor in fog, nor at the whizz of arrows, nor at either twilight, nor on the new moon, the fourteenth, the full moon and the eighth day."
+    },
+    "4:4.114": {
+      "hindi": "अमावस्या गुरु का नाश करती है, चतुर्दशी शिष्य का; अष्टमी और पूर्णिमा वेद का; इसलिए इन्हें छोड़ दे।",
+      "translation": "The new moon destroys the teacher, the fourteenth destroys the pupil, the eighth and the full moon destroy the Veda; therefore he should avoid them."
+    },
+    "4:4.115": {
+      "hindi": "धूल की वर्षा में, दिशाओं के लाल दहकने पर, सियार के रोने पर, कुत्ते, गधे या ऊँट के चिल्लाने पर, और पंक्ति में बैठकर द्विज न पढ़े।",
+      "translation": "A twice-born should not recite during a dust storm, when the quarters glow red, when jackals howl, when a dog, donkey or camel cries out, nor while sitting in a row with others."
+    },
+    "4:4.116": {
+      "hindi": "श्मशान के पास, गाँव की सीमा पर, या गोशाला में न पढ़े; संभोग के समय पहने वस्त्र पहनकर, और श्राद्ध का दान लेकर भी न पढ़े।",
+      "translation": "He should not study near a cremation ground, at the edge of a village, or in a cow pen; nor wearing the garment he wore during intercourse, nor after accepting a gift at a funeral rite."
+    },
+    "4:4.117": {
+      "hindi": "श्राद्ध से संबंधित जो कुछ भी हो, सजीव हो या निर्जीव, उसे लेकर भी अनध्याय है; क्योंकि द्विज का हाथ ही उसका मुख कहा गया है।",
+      "translation": "Whatever has to do with a funeral rite, living or lifeless, after taking it study is suspended; for the twice-born's hand is said to be his mouth."
+    },
+    "4:4.118": {
+      "hindi": "जब गाँव पर चोरों का धावा हो, आग से घबराहट हो, और सब अद्भुत घटनाओं पर, आकालिक अनध्याय जाने।",
+      "translation": "When the village is raided by thieves, when there is alarm from fire, and at every portent, he should know study suspended until the same hour next day."
+    },
+    "4:4.119": {
+      "hindi": "उपाकर्म और उत्सर्ग पर तीन रात का अनध्याय कहा गया है, अष्टकाओं पर एक दिन-रात, और ऋतु के अंत की रातों में भी।",
+      "translation": "At the opening and closing rites the suspension is three nights; on the Ashtaka days a day and a night, and likewise on the nights at the end of each season."
+    },
+    "4:4.120": {
+      "hindi": "घोड़े, पेड़, हाथी, नाव, गधे या ऊँट पर चढ़कर, ऊसर भूमि में खड़े होकर, या वाहन में बैठकर न पढ़े।",
+      "translation": "He should not study while riding a horse, or up a tree, on an elephant, in a boat, on a donkey or a camel, nor standing on barren ground, nor travelling in a vehicle."
+    },
+    "4:4.121": {
+      "hindi": "विवाद, कलह, सेना या युद्ध में, भोजन के तुरंत बाद, अपच होने पर, उल्टी करके, या खट्टी डकार आने पर न पढ़े।",
+      "translation": "Nor during a dispute or a quarrel, in an army camp or a battle, just after a meal, during indigestion, after vomiting, or with sour belching."
+    },
+    "4:4.122": {
+      "hindi": "अतिथि की अनुमति लिए बिना, जब हवा बहुत तेज़ चले, शरीर से रक्त बहे, या शस्त्र से घाव हो, तब भी न पढ़े।",
+      "translation": "Nor without the leave of a guest, nor when the wind blows hard, nor when blood flows from his body, nor when he is wounded by a weapon."
+    },
+    "4:4.123": {
+      "hindi": "साम का स्वर सुनाई दे तो ऋग्वेद और यजुर्वेद कभी न पढ़े; वेद का अंत पढ़कर और आरण्यक पढ़कर भी (उस दिन अन्य न पढ़े)।",
+      "translation": "He should never recite the Rig or Yajur Veda while the chanting of the Saman is heard, nor after finishing a Veda, nor after studying an Aranyaka."
+    },
+    "4:4.124": {
+      "hindi": "ऋग्वेद के देवता देव हैं, यजुर्वेद मनुष्यों का है, सामवेद पितरों का माना गया है; इसलिए उसका स्वर अशुद्ध (अध्ययन में बाधक) है।",
+      "translation": "The Rig Veda has the gods for its deities, the Yajur Veda belongs to men, the Sama Veda is held to belong to the ancestors; therefore its sound is impure for study."
+    },
+    "4:4.125": {
+      "hindi": "यह जानकर विद्वान प्रतिदिन पहले तीनों वेदों का सार क्रम से दोहराते हैं, फिर वेद पढ़ते हैं।",
+      "translation": "Knowing this, the learned each day first repeat in order the essence of the three Vedas, and then study the Veda."
+    },
+    "4:4.126": {
+      "hindi": "पशु, मेंढक, बिल्ली, कुत्ता, साँप, नेवला या चूहा (गुरु-शिष्य के) बीच से निकल जाए तो एक दिन-रात का अनध्याय जाने।",
+      "translation": "If cattle, a frog, a cat, a dog, a snake, a mongoose or a rat passes between teacher and pupil, he should know study suspended for a day and a night."
+    },
+    "4:4.127": {
+      "hindi": "द्विज दो अनध्यायों को सदा यत्नपूर्वक छोड़े: अध्ययन का स्थान अशुद्ध हो, और स्वयं अपवित्र हो।",
+      "translation": "Two suspensions the twice-born must always carefully keep: when the place of study is impure, and when he himself is unclean."
+    },
+    "4:4.128": {
+      "hindi": "गृहस्थ द्विज अमावस्या, अष्टमी, पूर्णिमा और चतुर्दशी को ऋतुकाल होने पर भी सदा ब्रह्मचारी रहे।",
+      "translation": "A twice-born householder should always remain chaste on the new moon, the eighth, the full moon and the fourteenth day, even in his wife's season."
+    },
+    "4:4.129": {
+      "hindi": "भोजन करके, रोगी होकर, आधी रात को, बहुत से वस्त्र पहनकर, या अनजाने जलाशय में स्नान न करे।",
+      "translation": "He should not bathe after a meal, nor when ill, nor in the dead of night, nor in many clothes, nor in an unknown pool."
+    },
+    "4:4.130": {
+      "hindi": "देवमूर्तियों, गुरु, राजा, स्नातक, आचार्य, किसी भूरे (कपिल) व्यक्ति और यज्ञ की दीक्षा लिए हुए की छाया जान-बूझकर न लाँघे।",
+      "translation": "He should not knowingly step on the shadow of the images of the gods, of his teacher, the king, a graduate or a preceptor, of a tawny one, or of one consecrated for a sacrifice."
+    },
+    "4:4.131": {
+      "hindi": "दोपहर में, आधी रात को, मांस सहित श्राद्ध का भोजन करके, और दोनों संध्याओं में चौराहे पर न ठहरे।",
+      "translation": "At midday, at midnight, after eating a funeral meal with meat, and at both twilights, he should not linger at a crossroads."
+    },
+    "4:4.132": {
+      "hindi": "उबटन का मैल, स्नान का जल, मल-मूत्र, रक्त, कफ, थूक और उल्टी पर जान-बूझकर पैर न रखे।",
+      "translation": "He should not knowingly step on the scrapings of an unguent, bath water, urine or excrement, blood, phlegm, spittle or vomit."
+    },
+    "4:4.133": {
+      "hindi": "शत्रु का, शत्रु के सहायक का, अधर्मी का, चोर का और दूसरे की स्त्री का सेवन न करे।",
+      "translation": "He should not keep company with an enemy, nor an enemy's ally, nor a wicked man, nor a thief, nor another man's wife."
+    },
+    "4:4.134": {
+      "hindi": "संसार में ऐसी कोई वस्तु नहीं जो आयु को उतना घटाए जितना पुरुष का पराई स्त्री के पास जाना।",
+      "translation": "For nothing in this world shortens a man's life so much as going after another man's wife."
+    },
+    "4:4.135": {
+      "hindi": "उन्नति चाहने वाला क्षत्रिय, साँप और बहुश्रुत ब्राह्मण का कभी अपमान न करे, वे दुर्बल ही क्यों न हों।",
+      "translation": "One who wishes to prosper should never despise a Kshatriya, a snake, or a deeply learned Brahmin, however weak they may seem."
+    },
+    "4:4.136": {
+      "hindi": "क्योंकि अपमानित होने पर ये तीनों मनुष्य को जला डालते हैं; इसलिए बुद्धिमान इन तीनों का कभी अपमान न करे।",
+      "translation": "For these three, when slighted, can burn a man up; therefore a wise man should never despise these three."
+    },
+    "4:4.137": {
+      "hindi": "पहले की असफलताओं के कारण अपने को हीन न समझे; मृत्यु तक लक्ष्मी (समृद्धि) की खोज करता रहे, उसे दुर्लभ न माने।",
+      "translation": "He should not think little of himself because of earlier failures; let him seek prosperity until death, and never think it beyond his reach."
+    },
+    "4:4.138": {
+      "hindi": "सत्य बोले, प्रिय बोले; अप्रिय सत्य न बोले, और प्रिय असत्य भी न बोले; यही सनातन धर्म है।",
+      "translation": "Speak what is true, speak what is pleasing; do not speak a truth that is unpleasant, nor a pleasing falsehood. This is the eternal law."
+    },
+    "4:4.139": {
+      "hindi": "'भद्र, भद्र' (अच्छा है, अच्छा है) कहे, या केवल 'भद्र' ही कहे; किसी के साथ व्यर्थ का बैर और विवाद न करे।",
+      "translation": "He should say \"Good, good,\" or simply \"Good\"; he should not get into pointless enmity or argument with anyone."
+    },
+    "4:4.140": {
+      "hindi": "बहुत भोर में, बहुत साँझ को, या ठीक दोपहर में, अनजान व्यक्ति के साथ, अकेले, या दुष्टों के साथ यात्रा न करे।",
+      "translation": "He should not set out very early, nor very late in the evening, nor at high noon, nor with a stranger, nor alone, nor with wicked men."
+    },
+    "4:4.141": {
+      "hindi": "जिनके अंग कम या अधिक हों, जो विद्याहीन हों, बहुत बूढ़े हों, रूप या धन से हीन हों, या कुल से हीन हों, उन पर ताना न कसे।",
+      "translation": "He should not taunt those who lack a limb or have an extra one, the unlearned, the very old, those without looks or wealth, or those of low birth."
+    },
+    "4:4.142": {
+      "hindi": "जूठे मुँह ब्राह्मण गाय, ब्राह्मण या अग्नि को हाथ से न छुए; और स्वस्थ होने पर अपवित्र अवस्था में आकाश के तारों को न देखे।",
+      "translation": "A Brahmin who is unclean from eating should not touch a cow, a Brahmin or fire with his hand; nor, when in health, should he look at the stars in the sky while impure."
+    },
+    "4:4.143": {
+      "hindi": "अपवित्र अवस्था में इन्हें छू ले तो सदा जल से इंद्रियों के छिद्रों को, सब अंगों को और हथेली से नाभि को स्पर्श करे।",
+      "translation": "If he touches them while impure, he should always touch with water the openings of the senses, all his limbs, and his navel with the palm of his hand."
+    },
+    "4:4.144": {
+      "hindi": "बिना रोग के, बिना कारण अपने शरीर के छिद्रों को न छुए, और गुप्त स्थानों के बालों को भी सर्वथा न छुए।",
+      "translation": "When not ill he should not touch the openings of his body without cause, and he should altogether avoid touching the hair on hidden parts."
+    },
+    "4:4.145": {
+      "hindi": "मंगल आचरण से युक्त, संयत चित्त और जितेंद्रिय रहे; आलस्य छोड़कर नित्य जप करे और अग्नि में हवन करे।",
+      "translation": "He should keep to auspicious conduct, be self-controlled and master of his senses; tirelessly he should repeat prayers and offer into the fire every day."
+    },
+    "4:4.146": {
+      "hindi": "जो मंगल आचरण वाले, सदा संयत चित्त वाले, जप और हवन करने वाले हैं, उनका पतन नहीं होता।",
+      "translation": "For those who keep to auspicious conduct, who are always self-controlled, and who pray and make offerings, there is no downfall."
+    },
+    "4:4.147": {
+      "hindi": "आलस्य छोड़कर समय पर नित्य वेद का ही जप करे; इसे उसका परम धर्म कहा गया है, दूसरा उपधर्म (गौण धर्म) कहा जाता है।",
+      "translation": "Tirelessly, at the proper time, he should daily recite the Veda itself; that is called his highest duty, and all else a lesser duty."
+    },
+    "4:4.148": {
+      "hindi": "निरंतर वेदाभ्यास, शौच, तप और प्राणियों से द्रोह न करने से मनुष्य अपने पिछले जन्म को स्मरण कर लेता है।",
+      "translation": "By constant study of the Veda, by purity, by austerity, and by not harming living beings, a man comes to remember his former birth."
+    },
+    "4:4.149": {
+      "hindi": "पिछले जन्म को स्मरण करता हुआ द्विज फिर वेद का ही अभ्यास करता है, और निरंतर वेदाभ्यास से अनंत सुख पाता है।",
+      "translation": "Remembering his former birth, the twice-born again devotes himself to the Veda, and by unbroken study of the Veda attains endless happiness."
+    },
+    "4:4.150": {
+      "hindi": "पर्वों पर सदा सावित्री-होम और शांति-होम करे, और अष्टका तथा अन्वष्टका पर सदा पितरों की पूजा करे।",
+      "translation": "On the days of the moon's changes he should always offer the Savitri oblations and the oblations for peace, and on the Ashtaka and Anvashtaka days he should always honour the ancestors."
+    },
+    "4:4.151": {
+      "hindi": "मूत्र-त्याग, पैर धोना और जूठन फेंकना घर से दूर ही करे।",
+      "translation": "He should pass urine far from his dwelling, wash his feet far from it, and throw out the leavings of food far from it too."
+    },
+    "4:4.152": {
+      "hindi": "मल-त्याग, शरीर सजाना, स्नान, दाँत साफ़ करना, अंजन लगाना और देवताओं की पूजा पूर्वाह्न में ही करे।",
+      "translation": "Easing himself, grooming, bathing, cleaning the teeth, applying collyrium and worshipping the gods he should do in the forenoon."
+    },
+    "4:4.153": {
+      "hindi": "पर्वों पर देवताओं के दर्शन को जाए, धर्मात्मा श्रेष्ठ ब्राह्मणों के पास, रक्षा के लिए राजा के पास, और गुरुजनों के पास भी।",
+      "translation": "On the days of the moon's changes he should go to the images of the gods, to righteous and eminent Brahmins, to the ruler for protection, and to his elders."
+    },
+    "4:4.154": {
+      "hindi": "वृद्धों को प्रणाम करे, उन्हें अपना आसन दे, हाथ जोड़कर पास बैठे, और जाते समय पीछे-पीछे चले।",
+      "translation": "He should greet the aged respectfully, offer them his own seat, sit by them with joined hands, and follow behind them when they leave."
+    },
+    "4:4.155": {
+      "hindi": "श्रुति और स्मृति में कहे गए, अपने कर्मों से भली-भाँति जुड़े, धर्म के मूल सदाचार का आलस्य छोड़कर पालन करे।",
+      "translation": "Tirelessly he should follow good conduct, the root of dharma, declared in the Veda and the tradition and bound up with his own duties."
+    },
+    "4:4.156": {
+      "hindi": "सदाचार से ही आयु मिलती है, सदाचार से मनचाही संतान, सदाचार से अक्षय धन; सदाचार अशुभ लक्षणों को भी नष्ट कर देता है।",
+      "translation": "By good conduct one gains long life, by good conduct the children one wishes for, by good conduct wealth that does not run out; good conduct destroys even ill omens."
+    },
+    "4:4.157": {
+      "hindi": "दुराचारी पुरुष संसार में निंदित होता है, सदा दुःख भोगता है, रोगी और अल्पायु होता है।",
+      "translation": "A man of bad conduct is blamed in the world, always meets with sorrow, falls ill and lives a short life."
+    },
+    "4:4.158": {
+      "hindi": "जो मनुष्य सब शुभ लक्षणों से रहित होकर भी सदाचारी, श्रद्धावान और ईर्ष्या-रहित है, वह सौ वर्ष जीता है।",
+      "translation": "Even a man with none of the lucky marks lives a hundred years if he keeps good conduct, has faith and is free from envy."
+    },
+    "4:4.159": {
+      "hindi": "जो-जो कर्म दूसरों के अधीन हो उसे यत्नपूर्वक छोड़े, और जो-जो अपने अधीन हो उसे यत्नपूर्वक करे।",
+      "translation": "Whatever work depends on others he should carefully avoid; whatever depends on himself he should carefully pursue."
+    },
+    "4:4.160": {
+      "hindi": "जो कुछ पराधीन है वह सब दुःख है, जो कुछ स्वाधीन है वह सब सुख है; संक्षेप में सुख और दुःख का यही लक्षण जाने।",
+      "translation": "All that depends on others is sorrow; all that depends on oneself is happiness. Know this, in short, as the mark of happiness and sorrow."
+    },
+    "4:4.161": {
+      "hindi": "जिस कर्म को करने से उसकी अंतरात्मा को संतोष हो, उसे प्रयत्न से करे, और जो इसके विपरीत हो उसे छोड़ दे।",
+      "translation": "Whatever act brings contentment to his inner self he should do with effort, and avoid whatever does the opposite."
+    },
+    "4:4.162": {
+      "hindi": "आचार्य, वेद के व्याख्याता, पिता, माता, गुरु, ब्राह्मणों, गायों और सब तपस्वियों को कभी हानि न पहुँचाए।",
+      "translation": "He should never harm his teacher, the one who expounds the Veda to him, his father, mother or elder, nor Brahmins, cows or any ascetics."
+    },
+    "4:4.163": {
+      "hindi": "नास्तिकता, वेद की निंदा, देवताओं का उपहास, द्वेष, अकड़, अभिमान, क्रोध और कठोरता को छोड़ दे।",
+      "translation": "He should give up unbelief, scorn of the Veda and mockery of the gods, hatred, stubbornness, pride, anger and harshness."
+    },
+    "4:4.164": {
+      "hindi": "क्रोध में किसी पर डंडा न उठाए और न उसे मारे; केवल पुत्र या शिष्य को सीख देने के लिए (हल्का) ताड़न करे।",
+      "translation": "He should not raise a stick against another in anger, nor strike him; only a son or a pupil may he chastise, and that for the sake of training."
+    },
+    "4:4.165": {
+      "hindi": "जो द्विज ब्राह्मण को मारने की इच्छा से उस पर (शस्त्र) उठाता भी है, वह सौ वर्ष तक तामिस्र नरक में भटकता है।",
+      "translation": "A twice-born man who merely threatens a Brahmin with intent to kill wanders for a hundred years in the hell called Tamisra."
+    },
+    "4:4.166": {
+      "hindi": "जो जान-बूझकर क्रोध से तिनके से भी उसे मारे, वह इक्कीस जन्मों तक पापयोनियों में जन्म लेता है।",
+      "translation": "One who in anger and on purpose strikes him even with a blade of grass is born for twenty-one lives in sinful wombs."
+    },
+    "4:4.167": {
+      "hindi": "जो मनुष्य लड़ न रहे ब्राह्मण के शरीर से रक्त निकालता है, वह अपनी मूर्खता से मृत्यु के बाद बहुत बड़ा दुःख पाता है।",
+      "translation": "The man who in his folly draws blood from the body of a Brahmin who is not fighting him meets with very great suffering after death."
+    },
+    "4:4.168": {
+      "hindi": "वह रक्त धरती की जितनी धूल के कणों को भिगोता है, उतने वर्षों तक रक्त बहाने वाला परलोक में दूसरों द्वारा खाया जाता है।",
+      "translation": "As many grains of dust as that blood gathers up from the ground, for so many years is the one who shed it devoured by others in the next world."
+    },
+    "4:4.169": {
+      "hindi": "इसलिए विद्वान कभी द्विज पर (शस्त्र) उठाए भी नहीं, तिनके से भी न मारे और उसके शरीर से रक्त न बहाए।",
+      "translation": "Therefore a wise man should never even threaten a twice-born, nor strike him even with grass, nor draw blood from his body."
+    },
+    "4:4.170": {
+      "hindi": "जो मनुष्य अधर्मी है, जिसका धन झूठ से कमाया गया है, और जो सदा हिंसा में लगा रहता है, वह यहाँ सुख से नहीं बढ़ता।",
+      "translation": "The unrighteous man, the one whose wealth comes from falsehood, and the one who always delights in harm, never thrive in happiness here."
+    },
+    "4:4.171": {
+      "hindi": "धर्म के मार्ग पर कष्ट पाते हुए भी मन को अधर्म में न लगाए, यह देखकर कि अधर्मी पापियों का शीघ्र ही पतन होता है।",
+      "translation": "Even when suffering for keeping to dharma he should not set his mind on wrongdoing, seeing how quickly the fortunes of the wicked are overturned."
+    },
+    "4:4.172": {
+      "hindi": "संसार में किया गया अधर्म तुरंत फल नहीं देता, जैसे भूमि (बोते ही फल नहीं देती); पर धीरे-धीरे घूमकर वह करने वाले की जड़ें काट देता है।",
+      "translation": "Wrongdoing done in the world does not bear fruit at once, as soil does not; but turning round slowly it cuts away the roots of the doer."
+    },
+    "4:4.173": {
+      "hindi": "यदि (फल) स्वयं पर नहीं, तो पुत्रों पर; पुत्रों पर नहीं, तो पोतों पर; पर किया हुआ अधर्म करने वाले के लिए कभी निष्फल नहीं होता।",
+      "translation": "If not on himself, then on his sons; if not on his sons, then on his grandsons; but the wrong once done never fails to bear fruit for the doer."
+    },
+    "4:4.174": {
+      "hindi": "अधर्म से मनुष्य कुछ समय बढ़ता है, फिर भलाई देखता है, फिर शत्रुओं को जीतता है, पर अंत में जड़ सहित नष्ट हो जाता है।",
+      "translation": "By wrongdoing a man prospers for a while, then sees good fortune, then conquers his rivals, but at last he perishes root and all."
+    },
+    "4:4.175": {
+      "hindi": "सत्य, धर्म, आर्य आचरण और शौच में सदा रमे; वाणी, भुजा और पेट को संयम में रखकर शिष्यों को धर्मपूर्वक सिखाए।",
+      "translation": "He should always delight in truth, dharma, noble conduct and purity; and keeping his speech, his arms and his belly in check, he should train his pupils righteously."
+    },
+    "4:4.176": {
+      "hindi": "जो अर्थ और काम धर्म से रहित हों उन्हें त्याग दे, और ऐसा धर्म भी जिसका परिणाम दुःखद हो या जिसकी लोक में निंदा हो।",
+      "translation": "He should give up wealth and pleasure that are against dharma, and even a duty that would end in sorrow or that people condemn."
+    },
+    "4:4.177": {
+      "hindi": "हाथ-पैरों से चंचल न हो, आँखों से चंचल न हो, कुटिल न हो, वाणी से चंचल न हो, और दूसरों के अहित की बात न सोचे।",
+      "translation": "He should not be restless with his hands and feet, nor with his eyes, nor crooked, nor loose in speech, nor have his mind set on harming others."
+    },
+    "4:4.178": {
+      "hindi": "जिस सज्जनों के मार्ग से उसके पिता और पितामह चले हैं, उसी पर चले; उस पर चलने वाला हानि नहीं पाता।",
+      "translation": "He should walk the path of good people by which his father and his grandfathers went; going by it, he comes to no harm."
+    },
+    "4:4.179": {
+      "hindi": "ऋत्विज, पुरोहित, आचार्य, मामा, अतिथि, आश्रितों, बालकों, वृद्धों, रोगियों, वैद्यों, जाति वालों, संबंधियों और बंधुओं से,",
+      "translation": "With the priest of his sacrifice, his family priest and his teacher, his mother's brother, guests and dependants, with children, the old and the sick, with physicians, kinsmen, relatives by marriage and friends,"
+    },
+    "4:4.180": {
+      "hindi": "माता-पिता, बहनों-बहुओं, भाई, पुत्र, पत्नी, पुत्री और सेवकों से विवाद न करे।",
+      "translation": "with his mother and father, the women of the family, his brother, son and wife, his daughter and his servants, he should not quarrel."
+    },
+    "4:4.181": {
+      "hindi": "इनसे विवाद छोड़ देने पर वह सब पापों से मुक्त होता है; और इनसे (क्षमा द्वारा) जीता गया गृहस्थ इन सब लोकों को जीत लेता है।",
+      "translation": "By avoiding quarrels with these he is freed from all sins; and the householder who yields to these wins all these worlds."
+    },
+    "4:4.182": {
+      "hindi": "आचार्य ब्रह्मलोक का स्वामी है, पिता प्रजापति-लोक का प्रभु, अतिथि इंद्रलोक का स्वामी, और ऋत्विज देवलोक का।",
+      "translation": "The teacher rules the world of Brahma, the father the world of Prajapati, the guest the world of Indra, and the officiating priests the world of the gods."
+    },
+    "4:4.183": {
+      "hindi": "घर की स्त्रियाँ अप्सराओं के लोक की, बंधु विश्वेदेवों के लोक के, संबंधी जल के लोक के, और माता तथा मामा पृथ्वी के स्वामी हैं।",
+      "translation": "The women of the family rule the world of the Apsarases, kinsmen that of the All-gods, relatives by marriage the world of the waters, and mother and maternal uncle the earth."
+    },
+    "4:4.184": {
+      "hindi": "बालक, वृद्ध, दुर्बल और रोगी आकाश के स्वामी जानने चाहिए; बड़ा भाई पिता के समान है, और पत्नी तथा पुत्र अपना ही शरीर हैं।",
+      "translation": "Children, the old, the weak and the sick are to be known as lords of the sky; an elder brother is like a father, and wife and son are one's own body."
+    },
+    "4:4.185": {
+      "hindi": "सेवक अपनी छाया हैं, और पुत्री परम करुणा की पात्र है; इसलिए इनके कटु वचन सुनकर भी सदा शांत रहकर सह ले।",
+      "translation": "His servants are his own shadow, and his daughter the object of his deepest tenderness; so when these speak harshly to him he should always bear it without heat."
+    },
+    "4:4.186": {
+      "hindi": "दान लेने में समर्थ होने पर भी उसमें आसक्ति छोड़ दे; क्योंकि दान लेने से उसका ब्रह्मतेज शीघ्र ही शांत हो जाता है।",
+      "translation": "Even when entitled to receive gifts he should avoid making a habit of it, for by taking gifts his spiritual radiance is quickly dimmed."
+    },
+    "4:4.187": {
+      "hindi": "बुद्धिमान, भूख से कष्ट पाता हुआ भी, वस्तुओं के दान लेने की धर्मसम्मत विधि जाने बिना दान न ले।",
+      "translation": "A wise man, even when wasting from hunger, should not accept a gift without knowing the rules the law lays down for receiving each kind of thing."
+    },
+    "4:4.188": {
+      "hindi": "अविद्वान व्यक्ति सोना, भूमि, घोड़ा, गाय, अन्न, वस्त्र, तिल और घी लेकर लकड़ी की तरह राख हो जाता है।",
+      "translation": "An unlearned man who accepts gold, land, a horse, a cow, food, cloth, sesame or ghee is burnt to ashes like wood."
+    },
+    "4:4.189": {
+      "hindi": "सोना और अन्न उसकी आयु को जलाते हैं, भूमि और गाय शरीर को, घोड़ा आँखों को, वस्त्र त्वचा को, घी तेज को और तिल संतान को।",
+      "translation": "Gold and food burn up his life, land and a cow his body, a horse his eyes, cloth his skin, ghee his vigour, and sesame his offspring."
+    },
+    "4:4.190": {
+      "hindi": "जो द्विज तप नहीं करता, वेद नहीं पढ़ता, पर दान लेने में रुचि रखता है, वह दाता के साथ ही वैसे डूबता है जैसे पत्थर की नाव जल में।",
+      "translation": "A twice-born who does no austerity and no study but loves to receive gifts sinks with the giver, as one sinks in water with a boat of stone."
+    },
+    "4:4.191": {
+      "hindi": "इसलिए अविद्वान हर किसी दान से डरे; क्योंकि थोड़े से दान से भी अविद्वान कीचड़ में गाय की तरह धँस जाता है।",
+      "translation": "So the unlearned should fear every kind of gift, for even a small one makes him sink like a cow in mire."
+    },
+    "4:4.192": {
+      "hindi": "धर्म जानने वाला बिल्ली-व्रती, बगुला-व्रती पापी और वेद न जानने वाले द्विज को जल तक न दे।",
+      "translation": "One who knows the law should not give even water to a twice-born who keeps the \"cat's vow\", nor to a sinner who keeps the \"heron's vow\", nor to one who does not know the Veda."
+    },
+    "4:4.193": {
+      "hindi": "इन तीनों को दिया गया धन, विधि से कमाया हुआ भी हो, परलोक में देने वाले और लेने वाले दोनों के अनर्थ का कारण बनता है।",
+      "translation": "For wealth given to any of these three, even if lawfully earned, brings harm in the next world to the giver and the receiver alike."
+    },
+    "4:4.194": {
+      "hindi": "जैसे पत्थर की नाव से पार करने वाला जल में डूब जाता है, वैसे ही अज्ञानी दाता और लेने वाला दोनों नीचे डूबते हैं।",
+      "translation": "As one who tries to cross water on a boat of stone sinks, so the ignorant giver and receiver both sink down."
+    },
+    "4:4.195": {
+      "hindi": "जो धर्म का ढोंग करे, सदा लोभी हो, कपटी हो, लोगों को ठगे, हिंसक हो और सबकी बुराई करे, उसे बिल्ली-व्रती जानना चाहिए।",
+      "translation": "One who flaunts righteousness like a banner, is always greedy, deceitful and a cheat of the world, cruel and a slanderer of all, should be known as a keeper of the cat's vow."
+    },
+    "4:4.196": {
+      "hindi": "जो द्विज आँखें नीची रखे, कुटिल हो, केवल अपना स्वार्थ साधने में लगा हो, धूर्त हो और झूठी नम्रता दिखाए, वह बगुला-व्रती है।",
+      "translation": "The twice-born who keeps his eyes cast down, is crooked, intent only on gaining his own ends, sly and falsely humble, follows the heron's vow."
+    },
+    "4:4.197": {
+      "hindi": "जो ब्राह्मण बगुला-व्रती हैं और जो बिल्ली का वेश धरते हैं, वे उस पाप-कर्म के कारण अंधतामिस्र नरक में गिरते हैं।",
+      "translation": "Brahmins who keep the heron's vow and those who wear the cat's disguise fall into the hell of blind darkness for that sinful conduct."
+    },
+    "4:4.198": {
+      "hindi": "पाप करके धर्म के बहाने व्रत न करे, व्रत से पाप को ढककर स्त्रियों और सरल लोगों को धोखा देते हुए।",
+      "translation": "Having sinned, he should not perform a penance under the pretence of piety, hiding his sin behind the vow and deceiving women and simple folk."
+    },
+    "4:4.199": {
+      "hindi": "ऐसे ब्राह्मण यहाँ और मृत्यु के बाद ब्रह्मवादियों द्वारा निंदित होते हैं; और जो व्रत कपट से किया जाता है वह राक्षसों को जाता है।",
+      "translation": "Such Brahmins are condemned here and hereafter by those who expound the Veda, and a vow performed in deceit goes to the demons."
+    },
+    "4:4.200": {
+      "hindi": "जो (किसी आश्रम का) अधिकारी न होकर उसका वेश धरकर जीविका चलाता है, वह उस वेश वालों का पाप ले लेता है और पशु-योनि में जन्म लेता है।",
+      "translation": "One who has no right to the marks of an order but lives by wearing its dress takes upon himself the sin of those who rightly wear it, and is born as an animal."
+    },
+    "4:4.201": {
+      "hindi": "दूसरों के बनवाए जलाशयों में कभी स्नान न करे; उनमें स्नान करने से बनवाने वाले के पाप का अंश उस पर लगता है।",
+      "translation": "He should never bathe in tanks made by others; by bathing there he is stained with a share of the maker's sins."
+    },
+    "4:4.202": {
+      "hindi": "दूसरे का वाहन, शय्या, आसन, कुआँ, बगीचा और घर बिना दिए उपयोग करने वाला उसके पाप का चौथाई भाग पाता है।",
+      "translation": "One who uses another's carriage, bed, seat, well, garden or house without its being given to him takes on a quarter of the owner's sin."
+    },
+    "4:4.203": {
+      "hindi": "नदियों, प्राकृतिक जलाशयों, तालाबों, सरोवरों, गड्ढों और झरनों में नित्य स्नान करे।",
+      "translation": "He should bathe daily in rivers, in natural pools, in lakes and ponds, and in hollows and springs."
+    },
+    "4:4.204": {
+      "hindi": "बुद्धिमान यमों (अहिंसा आदि नैतिक व्रतों) का सदा पालन करे, केवल नियमों (बाहरी अनुष्ठानों) का नहीं; जो यमों को छोड़कर केवल नियमों को अपनाता है वह गिरता है।",
+      "translation": "The wise should always keep the great moral restraints, not only the outward observances; one who neglects the restraints and keeps only the observances falls."
+    },
+    "4:4.205": {
+      "hindi": "ब्राह्मण कभी उस यज्ञ में भोजन न करे जो वेद न जानने वाले ने किया हो, या जिसमें पूरे गाँव के लिए यज्ञ कराने वाला पुरोहित हो, या जिसमें स्त्री या नपुंसक ने हवन किया हो।",
+      "translation": "A Brahmin should never eat at a sacrifice performed by one not learned in the Veda, or by a priest who sacrifices for a whole village, or one where a woman or a eunuch made the offerings."
+    },
+    "4:4.206": {
+      "hindi": "यह सज्जनों के लिए अशोभन है कि वहाँ ये लोग हवन करें; यह देवताओं के प्रतिकूल है, इसलिए उसे छोड़ दे।",
+      "translation": "It is unseemly for the good that such people make offerings there; it is displeasing to the gods, and so he should avoid it."
+    },
+    "4:4.207": {
+      "hindi": "मतवाले, क्रोधी और रोगी का अन्न कभी न खाए, न ऐसा अन्न जिसमें बाल या कीड़े पड़े हों, या जिसे जान-बूझकर पैर से छुआ गया हो।",
+      "translation": "He should never eat the food of the drunk, the angry or the sick, nor food in which hair or insects have fallen, nor what has been touched on purpose with the foot."
+    },
+    "4:4.208": {
+      "hindi": "न वह अन्न जिसे भ्रूणहत्या करने वाले ने देखा हो, जिसे रजस्वला ने छुआ हो, जिसे पक्षी ने चोंच मारी हो, या जिसे कुत्ते ने छुआ हो।",
+      "translation": "Nor food looked at by one who has killed an unborn child, touched by a woman in her courses, pecked by a bird, or touched by a dog."
+    },
+    "4:4.209": {
+      "hindi": "न वह अन्न जिसे गाय ने सूँघा हो, और विशेष रूप से वह अन्न जिसके लिए ढिंढोरा पीटकर बुलाया गया हो; समूह का अन्न, गणिका का अन्न, और विद्वानों द्वारा निंदित अन्न भी न खाए।",
+      "translation": "Nor food sniffed by a cow, and above all food to which people are called by public proclamation; nor food from a guild, nor from a courtesan, nor food the learned despise."
+    },
+    "4:4.210": {
+      "hindi": "चोर, गवैये, बढ़ई, ब्याज पर जीने वाले, यज्ञ-दीक्षित, कंजूस, बंदी और बेड़ियों में जकड़े व्यक्ति का अन्न न खाए।",
+      "translation": "Nor the food of a thief, a professional singer, a carpenter, a moneylender, one consecrated for a sacrifice, a miser, or a prisoner in fetters."
+    },
+    "4:4.211": {
+      "hindi": "न कलंकित का, नपुंसक का, व्यभिचारिणी का, ढोंगी का; न खट्टा हुआ, न बासी, और न शूद्र का जूठा अन्न।",
+      "translation": "Nor of one accused of grave sin, of a eunuch, of an unchaste woman or a hypocrite; nor food gone sour, nor stale, nor the leavings of a Shudra."
+    },
+    "4:4.212": {
+      "hindi": "न वैद्य का, शिकारी का, क्रूर का, जूठन खाने वाले का; न उग्र का अन्न, न प्रसूता का अन्न, न वह जिस पर बीच में कोई आचमन कर ले, न सूतक के दस दिन पूरे न हुए घर का।",
+      "translation": "Nor of a physician, a hunter, a cruel man, or one who eats leavings; nor the food of the fierce, nor of a woman newly delivered, nor food at a meal where someone rinses his mouth before others have finished, nor from a house whose ten days of impurity are not over."
+    },
+    "4:4.213": {
+      "hindi": "न बिना आदर के दिया अन्न, न व्यर्थ (बिना यज्ञ) का मांस, न पति-पुत्र रहित स्त्री का, न शत्रु का, न नगर का, न पतित का, और न जिस पर छींक दिया गया हो।",
+      "translation": "Nor food given without respect, nor meat not offered in sacrifice, nor the food of a woman with no husband or son, of an enemy, of a city's public kitchen, of an outcast, nor food sneezed on."
+    },
+    "4:4.214": {
+      "hindi": "न चुगलखोर और झूठे का अन्न, न यज्ञ बेचने वाले का, न नट और दर्ज़ी का, और न कृतघ्न का अन्न।",
+      "translation": "Nor the food of a slanderer or a liar, nor of one who sells the merit of sacrifices, nor of an actor or a tailor, nor of an ungrateful man."
+    },
+    "4:4.215": {
+      "hindi": "न लोहार का, निषाद का, रंगमंच पर उतरने वाले का, सुनार का, बाँस का काम करने वाले का और शस्त्र बेचने वाले का।",
+      "translation": "Nor of a blacksmith, a Nishada, a stage performer, a goldsmith, a basket-maker, or a seller of weapons."
+    },
+    "4:4.216": {
+      "hindi": "न कुत्ते पालने वालों का, कलालों का, कपड़े धोने वाले का, रंगरेज़ का, निर्दयी का, और जिसके घर में (पत्नी का) जार रहता हो उसका।",
+      "translation": "Nor of those who keep dogs, of liquor-sellers, of a washerman, a dyer, a heartless man, or one in whose house his wife's lover lives."
+    },
+    "4:4.217": {
+      "hindi": "न उनका जो जार को सहन करते हैं, न सर्वथा स्त्री के वश में रहने वालों का; न सूतक के दस दिन पूरे होने से पहले का मृतक-अन्न, और न वह जो मन को प्रसन्न न करे।",
+      "translation": "Nor of those who tolerate a wife's lover, nor of men wholly ruled by their wives; nor food for the dead before the ten days are over, nor food that gives no satisfaction."
+    },
+    "4:4.218": {
+      "hindi": "राजा का अन्न तेज हर लेता है, शूद्र का अन्न ब्रह्मतेज, सुनार का अन्न आयु, और चमड़े का काम करने वाले का अन्न यश।",
+      "translation": "The king's food takes away vigour, a Shudra's food the radiance of sacred learning, a goldsmith's food long life, and a leather-cutter's food good name."
+    },
+    "4:4.219": {
+      "hindi": "कारीगर का अन्न संतान का नाश करता है, धोबी का अन्न बल का; समूह का और गणिका का अन्न उत्तम लोकों से काट देता है।",
+      "translation": "The food of an artisan destroys offspring, that of a washerman strength; the food of a guild or a courtesan cuts one off from the higher worlds."
+    },
+    "4:4.220": {
+      "hindi": "वैद्य का अन्न पीप के समान है, व्यभिचारिणी का अन्न वीर्य के समान, ब्याजखोर का अन्न विष्ठा के समान, और शस्त्र बेचने वाले का मल के समान।",
+      "translation": "A physician's food is like pus, an unchaste woman's like semen, a moneylender's like excrement, and a weapon-seller's like filth."
+    },
+    "4:4.221": {
+      "hindi": "और जो दूसरे लोग क्रम से ऐसे बताए गए हैं जिनका अन्न अभक्ष्य है, मनीषी उनके अन्न को त्वचा, हड्डी और बाल के समान कहते हैं।",
+      "translation": "And the others listed in turn whose food may not be eaten—the wise call their food skin, bone and hair."
+    },
+    "4:4.222": {
+      "hindi": "इनमें से किसी का अन्न अनजाने खा ले तो तीन दिन उपवास करे; जान-बूझकर खाए तो, और वीर्य, मल या मूत्र खा लेने पर भी, कृच्छ्र व्रत करे।",
+      "translation": "If he eats the food of any of these unknowingly, he should fast for three days; if knowingly, he should perform the Krichchhra penance, as also after swallowing semen, excrement or urine."
+    },
+    "4:4.223": {
+      "hindi": "विद्वान द्विज श्राद्ध न करने वाले शूद्र का पका अन्न न खाए; जीविका न होने पर उससे एक रात के लिए कच्चा अन्न ही ले।",
+      "translation": "A learned twice-born should not eat cooked food from a Shudra who performs no rites for the dead; when he has no other means, he may take from him raw grain enough for one night."
+    },
+    "4:4.224": {
+      "hindi": "देवताओं ने वेदपाठी कंजूस और उदार ब्याजखोर, दोनों पर विचार करके दोनों के अन्न को बराबर ठहराया।",
+      "translation": "The gods, weighing a miserly Vedic scholar against a generous moneylender, declared the food of both to be equal."
+    },
+    "4:4.225": {
+      "hindi": "तब प्रजापति ने आकर उनसे कहा: \"जो असमान है उसे समान मत करो; उदार का अन्न श्रद्धा से पवित्र है, दूसरे का अश्रद्धा से नष्ट।\"",
+      "translation": "Then Prajapati came and told them, \"Do not make equal what is unequal: the generous man's food is purified by faith, the other's is ruined by its lack.\""
+    },
+    "4:4.226": {
+      "hindi": "आलस्य छोड़कर श्रद्धा से यज्ञ और लोक-हित के कार्य (कुएँ, तालाब आदि) सदा करे; न्याय से कमाए धन से श्रद्धापूर्वक किए गए ये दोनों अक्षय होते हैं।",
+      "translation": "Tirelessly and with faith he should always offer sacrifices and do works of public good; for done with faith and with honestly gained wealth, both become imperishable."
+    },
+    "4:4.227": {
+      "hindi": "योग्य पात्र मिलने पर प्रसन्न मन से, शक्ति के अनुसार, यज्ञ और लोक-हित से जुड़े दान-धर्म का सदा पालन करे।",
+      "translation": "Finding a worthy recipient, he should always practise the duty of giving, for sacrifices and for public works, with a contented heart and as far as he is able."
+    },
+    "4:4.228": {
+      "hindi": "माँगे जाने पर बिना ईर्ष्या के थोड़ा-बहुत कुछ अवश्य दे; क्योंकि ऐसा पात्र भी मिलेगा जो सब ओर से तार देगा।",
+      "translation": "When asked he should give something, however little, without grudging; for a recipient will come who will carry him across all dangers."
+    },
+    "4:4.229": {
+      "hindi": "जल देने वाला तृप्ति पाता है, अन्न देने वाला अक्षय सुख, तिल देने वाला मनचाही संतान, और दीपक देने वाला उत्तम दृष्टि।",
+      "translation": "The giver of water gains contentment, the giver of food unending happiness, the giver of sesame the offspring he desires, and the giver of a lamp excellent sight."
+    },
+    "4:4.230": {
+      "hindi": "भूमि देने वाला भूमि पाता है, सोना देने वाला लंबी आयु, घर देने वाला श्रेष्ठ भवन, और चाँदी देने वाला उत्तम रूप।",
+      "translation": "The giver of land gains land, the giver of gold long life, the giver of a house the finest dwellings, and the giver of silver great beauty."
+    },
+    "4:4.231": {
+      "hindi": "वस्त्र देने वाला चंद्रलोक पाता है, घोड़ा देने वाला अश्विनीकुमारों का लोक, बैल देने वाला भरपूर लक्ष्मी, और गाय देने वाला सूर्य का लोक।",
+      "translation": "The giver of clothes reaches the world of the moon, the giver of a horse the world of the Ashvins, the giver of an ox abundant fortune, and the giver of a cow the realm of the sun."
+    },
+    "4:4.232": {
+      "hindi": "वाहन और शय्या देने वाला पत्नी पाता है, अभय देने वाला ऐश्वर्य, अन्न देने वाला स्थायी सुख, और वेद का दान करने वाला ब्रह्म की समता।",
+      "translation": "The giver of a carriage or a bed gains a wife, the giver of safety lordship, the giver of grain lasting comfort, and the giver of the Veda equality with Brahman."
+    },
+    "4:4.233": {
+      "hindi": "जल, अन्न, गाय, भूमि, वस्त्र, तिल, सोना और घी, इन सब दानों में वेद का दान सबसे श्रेष्ठ है।",
+      "translation": "Of all gifts, water, food, cows, land, clothes, sesame, gold and ghee, the gift of the Veda is the highest."
+    },
+    "4:4.234": {
+      "hindi": "मनुष्य जिस-जिस भाव से जो-जो दान देता है, उसी-उसी भाव से सम्मानित होकर उसका फल पाता है।",
+      "translation": "Whatever gift a man gives, and in whatever spirit, he receives its return in that same spirit, and is honoured for it."
+    },
+    "4:4.235": {
+      "hindi": "जो आदर से दिया दान लेता है और जो आदर से ही देता है, वे दोनों स्वर्ग जाते हैं; इसके उलट हो तो नरक।",
+      "translation": "He who receives a gift respectfully and he who gives it respectfully both go to heaven; when the opposite is done, to hell."
+    },
+    "4:4.236": {
+      "hindi": "तप करके घमंड न करे, यज्ञ करके झूठ न बोले, दुःखी होकर भी ब्राह्मणों की निंदा न करे, और दान देकर उसका बखान न करे।",
+      "translation": "He should not be proud of his austerity, nor speak falsely after a sacrifice; even when hurt he should not speak ill of Brahmins, and after giving he should not boast of it."
+    },
+    "4:4.237": {
+      "hindi": "यज्ञ झूठ से नष्ट होता है, तप घमंड से, आयु ब्राह्मणों की निंदा से, और दान उसका बखान करने से।",
+      "translation": "A sacrifice is wasted by falsehood, austerity by pride, long life by speaking ill of Brahmins, and a gift by boasting of it."
+    },
+    "4:4.238": {
+      "hindi": "परलोक में सहायता के लिए, किसी प्राणी को पीड़ा दिए बिना, धीरे-धीरे धर्म का संचय करे, जैसे दीमक बाँबी बनाती है।",
+      "translation": "For help in the world beyond he should gather dharma little by little, as termites build their mound, causing pain to no living being."
+    },
+    "4:4.239": {
+      "hindi": "क्योंकि परलोक में सहायता के लिए न पिता खड़ा रहता है, न माता, न पुत्र, न पत्नी, न बंधु; केवल धर्म साथ रहता है।",
+      "translation": "For there, neither father nor mother stands by to help, nor son nor wife nor kin; dharma alone remains."
+    },
+    "4:4.240": {
+      "hindi": "जीव अकेला जन्म लेता है, अकेला ही मरता है; अकेला अपने पुण्य का फल भोगता है और अकेला ही पाप का।",
+      "translation": "Alone a creature is born, alone it dies; alone it reaps the fruit of its good deeds, and alone of its evil ones."
+    },
+    "4:4.241": {
+      "hindi": "मृत शरीर को लकड़ी और ढेले के समान धरती पर छोड़कर बंधु मुँह फेरकर चले जाते हैं; धर्म ही उसके पीछे जाता है।",
+      "translation": "Leaving the dead body on the ground like a log or a clod of earth, the relatives turn away and go; dharma alone follows him."
+    },
+    "4:4.242": {
+      "hindi": "इसलिए सहायता के लिए धीरे-धीरे सदा धर्म का संचय करे; क्योंकि धर्म की सहायता से मनुष्य उस अंधकार को पार करता है जिसे पार करना कठिन है।",
+      "translation": "So for his help he should always gather dharma little by little; for with dharma as his companion he crosses the darkness that is so hard to cross."
+    },
+    "4:4.243": {
+      "hindi": "धर्म को प्रधान मानने वाले, तप से पाप नष्ट कर चुके पुरुष को वह (धर्म) शीघ्र ही परलोक में ले जाता है, प्रकाशमान और आकाश-रूपी शरीर वाला।",
+      "translation": "The man for whom dharma comes first, whose sins are burnt away by austerity, dharma swiftly leads to the world beyond, radiant, with a body of light and space."
+    },
+    "4:4.244": {
+      "hindi": "जो अपने कुल को ऊँचा उठाना चाहे वह सदा उत्तम से उत्तम लोगों से संबंध जोड़े और अधम से अधम लोगों को छोड़ दे।",
+      "translation": "One who wishes to raise his family should always form ties with the best of people and shun the lowest."
+    },
+    "4:4.245": {
+      "hindi": "उत्तम से उत्तम का ही संग करते और हीनों को छोड़ते हुए ब्राह्मण श्रेष्ठता पाता है; इसके उलट करने से वह शूद्र-दशा को प्राप्त होता है।",
+      "translation": "By keeping company only with the best and avoiding the base, a Brahmin rises to eminence; by doing the opposite he sinks to the state of a Shudra."
+    },
+    "4:4.246": {
+      "hindi": "दृढ़ता से काम करने वाला, कोमल, संयमी, क्रूर आचरण वालों से दूर रहने वाला, अहिंसक, ऐसे व्रत वाला व्यक्ति इंद्रिय-संयम और दान से स्वर्ग जीत लेता है।",
+      "translation": "Firm in his work, gentle, self-restrained, keeping away from people of cruel conduct, harming no one, a man of such vows wins heaven by self-control and giving."
+    },
+    "4:4.247": {
+      "hindi": "ईंधन, जल, कंद-मूल-फल, बिना माँगे सामने लाया गया अन्न, मधु और अभय का दान, ये सबसे ले सकता है।",
+      "translation": "Fuel, water, roots and fruits, food offered to him unasked, honey, and the gift of safety, he may accept from anyone."
+    },
+    "4:4.248": {
+      "hindi": "जो भिक्षा बिना पहले माँगे स्वयं लाकर सामने रखी जाए, प्रजापति ने उसे पापी की भी ग्रहण करने योग्य माना है।",
+      "translation": "Alms brought and offered without any prior request, Prajapati held, may be accepted even from a man of evil deeds."
+    },
+    "4:4.249": {
+      "hindi": "जो ऐसी भिक्षा का तिरस्कार करता है, उसके पितर पंद्रह वर्ष तक (उसका दिया) नहीं खाते, और अग्नि उसकी आहुति नहीं ले जाती।",
+      "translation": "The ancestors of one who scorns such alms do not eat his offerings for fifteen years, and fire does not carry his oblations to the gods."
+    },
+    "4:4.250": {
+      "hindi": "शय्या, घर, कुश, सुगंध, जल, फूल, मणि, दही, भुने जौ, मछली, दूध, मांस और साग (बिना माँगे मिलें तो) लौटाए नहीं।",
+      "translation": "A bed, a house, kusha grass, perfumes, water, flowers, gems, curd, parched grain, fish, milk, meat and vegetables, when offered, he should not refuse."
+    },
+    "4:4.251": {
+      "hindi": "गुरुजनों और आश्रितों का पालन करने, या देवताओं और अतिथियों का सत्कार करने के लिए वह सबसे दान ले सकता है, पर उससे स्वयं अपनी तृप्ति न करे।",
+      "translation": "When he wishes to support his elders and dependants, or to honour gods and guests, he may accept from anyone, but he should not satisfy himself from it."
+    },
+    "4:4.252": {
+      "hindi": "जब गुरुजन न रहें, या उनके बिना घर में रहता हो, तब अपनी जीविका के लिए सदा सज्जनों से ही ले।",
+      "translation": "When his elders have passed away, or while he lives at home without them, seeking his own livelihood he should always accept only from good people."
+    },
+    "4:4.253": {
+      "hindi": "शूद्रों में आधी उपज पर खेती करने वाला, कुल का मित्र, ग्वाला, सेवक, नाई, और जो अपने को (पूरी तरह) सौंप दे, इनका अन्न खाया जा सकता है।",
+      "translation": "Among Shudras, a sharecropper, a friend of the family, one's herdsman, servant and barber, and one who offers himself for service, are those whose food may be eaten."
+    },
+    "4:4.254": {
+      "hindi": "(जो अपने को सौंपे) वह जैसा उसका स्वभाव हो, जो वह करना चाहता हो, और जैसे वह सेवा करेगा, वैसा ही अपने को सच्चाई से बताए।",
+      "translation": "Such a man should declare himself just as he is: what his nature is, what work he wishes to do, and how he will serve."
+    },
+    "4:4.255": {
+      "hindi": "जो अपने को एक प्रकार का होकर सज्जनों के सामने दूसरे प्रकार का बताता है, वह संसार में सबसे बड़ा पापी है, अपने आप को चुराने वाला चोर।",
+      "translation": "One who is one thing but presents himself to good people as another is the worst of sinners in the world, a thief who steals his own self."
+    },
+    "4:4.256": {
+      "hindi": "सब अर्थ वाणी में बँधे हैं, वाणी ही उनकी जड़ है, वाणी से ही वे निकलते हैं; जो उस वाणी को चुराता (झूठ बोलता) है, वह सब कुछ चुराने वाला है।",
+      "translation": "All things are fixed in speech, rooted in speech and come forth from speech; so the man who makes speech dishonest is a thief of everything."
+    },
+    "4:4.257": {
+      "hindi": "महर्षियों, पितरों और देवताओं के ऋण विधिपूर्वक चुकाकर, सब कुछ पुत्र को सौंपकर, उदासीन भाव से (घर में) रहे।",
+      "translation": "Having paid in due form his debts to the great sages, the ancestors and the gods, he should hand over everything to his son and live on, detached and impartial."
+    },
+    "4:4.258": {
+      "hindi": "एकांत में अकेला बैठकर सदा अपने आत्मा के कल्याण का चिंतन करे; अकेले चिंतन करने वाला परम कल्याण को प्राप्त करता है।",
+      "translation": "Alone in a secluded place he should daily reflect on what is good for his soul; for one who reflects in solitude attains the highest good."
+    },
+    "4:4.259": {
+      "hindi": "यह गृहस्थ ब्राह्मण की सनातन जीविका कही गई, और स्नातक के व्रतों का विधान भी, जो शुभ है और सत्त्व को बढ़ाता है।",
+      "translation": "Thus has been declared the lasting way of life for a Brahmin householder, and the rules of the graduate's vows, which are auspicious and increase goodness."
+    },
+    "4:4.260": {
+      "hindi": "इस आचरण से जीने वाला, वेद और शास्त्र को जानने वाला ब्राह्मण पापों से मुक्त होकर सदा ब्रह्मलोक में प्रतिष्ठित होता है।",
+      "translation": "A Brahmin who lives by this conduct and knows the Veda and its sciences, freed of all stain, is forever honoured in the world of Brahman."
+    },
+    "11:11.265": {
+      "hindi": "जो आदि में स्थित तीन अक्षरों वाला ब्रह्म (ॐ) है, जिसमें तीनों वेद प्रतिष्ठित हैं, वह दूसरा, गुप्त त्रिविध वेद है; जो उसे जानता है वही वेद का ज्ञाता है।",
+      "translation": "The primal syllable of three sounds, Om, in which the triple Veda is founded, is another, secret triple Veda; he who knows it truly knows the Veda."
     }
   }
 }
