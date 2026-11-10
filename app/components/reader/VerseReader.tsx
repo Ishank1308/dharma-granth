@@ -56,8 +56,8 @@ const SacredShareModal = dynamic(() => import('@/app/components/share/SacredShar
 import { useSwipeGesture } from '@/lib/useSwipeGesture';
 import { MobileSwipeIndicator } from './MobileSwipeIndicator';
 import { MobileReadingProgress } from './MobileReadingProgress';
-import { MobileVerseCarousel } from './MobileVerseCarousel';
-import { setCurrentVerseContext, getSoundscapeState, stopSoundscape } from '@/lib/sacred-soundscape';
+const MobileVerseCarousel = dynamic(() => import('./MobileVerseCarousel').then((m) => m.MobileVerseCarousel), { ssr: false });
+import { loadSoundscape, withSoundscape } from '@/lib/soundscape-lazy';
 import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
 import { logActivity } from '@/lib/activity-log';
@@ -165,7 +165,13 @@ export function VerseReader(props: VerseReaderProps) {
 
   /* ── Sync Active Verse Context to Sacred Soundscape Engine ── */
   useEffect(() => {
-    setCurrentVerseContext(verse.sanskrit, `${scriptureTitle} ${formatVerseRef(scriptureId, chapterId, verse.number)}`);
+    let live = true;
+    void loadSoundscape().then((m) => {
+      if (live) m.setCurrentVerseContext(verse.sanskrit, `${scriptureTitle} ${formatVerseRef(scriptureId, chapterId, verse.number)}`);
+    });
+    return () => {
+      live = false;
+    };
   }, [verse.sanskrit, scriptureId, scriptureTitle, chapterId, verse.number]);
 
   /* ── MediaSession Lock-Screen Controls & Continuous Pārāyaṇa ── */
@@ -177,7 +183,11 @@ export function VerseReader(props: VerseReaderProps) {
       if (next?.href) navigateWithTransition(router, next.href, 'next');
     };
     const handleRecitationEnded = () => {
-      const state = getSoundscapeState();
+      // The ended event comes from the engine, so it is loaded by now.
+      let state: { continuousParayana?: boolean } = {};
+      withSoundscape((m) => {
+        state = m.getSoundscapeState();
+      });
       if (state.continuousParayana) {
         if (next?.href) {
           say('निरंतर पाठ: अगला श्लोक (2.5s)...');
@@ -186,7 +196,7 @@ export function VerseReader(props: VerseReaderProps) {
           }, 2500);
           return () => clearTimeout(timer);
         } else {
-          stopSoundscape();
+          withSoundscape((m) => m.stopSoundscape());
           say('अध्याय सम्पूर्ण · Chapter Recitation Complete');
         }
       }
@@ -891,14 +901,14 @@ export function VerseReader(props: VerseReaderProps) {
         />
 
         {/* Mobile Tactile Verse Carousel Drawer */}
-        <MobileVerseCarousel
+        {carouselOpen && <MobileVerseCarousel
           isOpen={carouselOpen}
           onClose={() => setCarouselOpen(false)}
           verses={verses}
           currentVerseNumber={verse.number}
           chapterTitle={`अध्याय ${chapterId}: ${chapterTitle}`}
           scriptureTitle={scriptureTitle}
-        />
+        />}
         {/* No floating Tanpura button here: on phones it sat over the verse text. Tanpura stays in focus mode. */}
       </div>
     </>

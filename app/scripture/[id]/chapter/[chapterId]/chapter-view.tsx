@@ -37,6 +37,7 @@ import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
 import { chapterPartHref, chapterParts, INLINE_CHAPTER_MAX_BYTES, type ChapterPart } from '@/lib/chapter-parts';
 import { CONNECTIONS, type Connection } from '@/data/study-content';
+import { getLiteraryVerseMeta, type LiteraryVerseMeta } from '@/lib/literary-commentary';
 import { MeaningPendingNotice } from '@/app/components/MeaningPending';
 import { commentaryOf, verseHasMeaning } from '@/lib/verse-has-meaning';
 import { commentaryAmbiguities, commentaryLookupKey, type CommentaryAmbiguities } from '@/lib/commentary-lookup';
@@ -319,6 +320,12 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       relatedTeachingsByVerse[verseNumber] = approvedConnections;
     }
   }
+  // Curated editorial layers for this part's verses, so the reader does not bundle the whole literary map.
+  const literaryByVerse: Record<string, LiteraryVerseMeta> = {};
+  for (const verse of pageVerses) {
+    const literary = getLiteraryVerseMeta(meta.id, chapter.id, verse.number);
+    if (literary.isCurated) literaryByVerse[String(verse.number)] = literary;
+  }
   const partHref = (p: number) => chapterPartHref(meta.id, chapterId, p);
   const prevPartHref = part && part.part > 1 ? partHref(part.part - 1) : undefined;
   const nextPartHref = part && parts && part.part < parts.length ? partHref(part.part + 1) : undefined;
@@ -534,6 +541,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
               autoLoad
               initialChapter={initialChapter}
               relatedTeachingsByVerse={relatedTeachingsByVerse}
+              literaryByVerse={literaryByVerse}
             />
           )}
         </div>

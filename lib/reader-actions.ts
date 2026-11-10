@@ -9,6 +9,7 @@
  */
 
 import type { LineExplanation } from '@/data/study-content';
+import type { SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
 import { EDITORIAL_DRAFT_LABEL } from '@/lib/editorial-terminology';
 import { formatVerseRef } from '@/lib/verse-format';
 import { parseStored } from '@/lib/safe-stored';
@@ -38,6 +39,8 @@ export interface ReaderVerseText {
   research?: string;
   /** Reviewed "Explain this line" entries, looked up on the server so the study data stays out of the bundle. */
   lineExplanations?: LineExplanation[];
+  /** Lexicon entries for this verse's word-by-word padas, keyed by pada, resolved on the server. */
+  lexicon?: Record<string, SanskritLexiconEntry>;
 }
 
 /** Who or what produced each layer, as far as the data records it. */
