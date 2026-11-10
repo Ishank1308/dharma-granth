@@ -1,0 +1,254 @@
+{
+  "note": "Original Hindi and English meanings for Atharvaveda hymns that had none (2.20-23, 3.30, 4.2, 6.7, 6.141, 7.3, 19.8) or carried another hymn's English (3.29 had 3.30's, 19.7 also held 19.8's), written from the Sanskrit.",
+  "keyFormat": "chapter:verse",
+  "meanings": {
+    "2:20.1": {
+      "hindi": "हे वायु, तुम्हारा जो ताप है, उससे उसे तपाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Vayu, with the heat that is yours, scorch the one who hates us and whom we hate."
+    },
+    "2:20.2": {
+      "hindi": "हे वायु, तुम्हारी जो हरने वाली शक्ति है, उससे उसका (बल) हर लो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Vayu, with the seizing power that is yours, seize the one who hates us and whom we hate."
+    },
+    "2:20.3": {
+      "hindi": "हे वायु, तुम्हारी जो ज्वाला है, उससे उसे जलाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Vayu, with the flame that is yours, burn against the one who hates us and whom we hate."
+    },
+    "2:20.4": {
+      "hindi": "हे वायु, तुम्हारी जो दीप्ति है, उससे उसे संतप्त करो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Vayu, with the glow that is yours, sear the one who hates us and whom we hate."
+    },
+    "2:20.5": {
+      "hindi": "हे वायु, तुम्हारा जो तेज है, उससे उसे तेजहीन कर दो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Vayu, with the brilliance that is yours, make dull and powerless the one who hates us and whom we hate."
+    },
+    "2:21.1": {
+      "hindi": "हे सूर्य, तुम्हारा जो ताप है, उससे उसे तपाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Surya, with the heat that is yours, scorch the one who hates us and whom we hate."
+    },
+    "2:21.2": {
+      "hindi": "हे सूर्य, तुम्हारी जो हरने वाली शक्ति है, उससे उसका (बल) हर लो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Surya, with the seizing power that is yours, seize the one who hates us and whom we hate."
+    },
+    "2:21.3": {
+      "hindi": "हे सूर्य, तुम्हारी जो ज्वाला है, उससे उसे जलाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Surya, with the flame that is yours, burn against the one who hates us and whom we hate."
+    },
+    "2:21.4": {
+      "hindi": "हे सूर्य, तुम्हारी जो दीप्ति है, उससे उसे संतप्त करो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Surya, with the glow that is yours, sear the one who hates us and whom we hate."
+    },
+    "2:21.5": {
+      "hindi": "हे सूर्य, तुम्हारा जो तेज है, उससे उसे तेजहीन कर दो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Surya, with the brilliance that is yours, make dull and powerless the one who hates us and whom we hate."
+    },
+    "2:22.1": {
+      "hindi": "हे चन्द्र, तुम्हारा जो ताप है, उससे उसे तपाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Moon, with the heat that is yours, scorch the one who hates us and whom we hate."
+    },
+    "2:22.2": {
+      "hindi": "हे चन्द्र, तुम्हारी जो हरने वाली शक्ति है, उससे उसका (बल) हर लो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Moon, with the seizing power that is yours, seize the one who hates us and whom we hate."
+    },
+    "2:22.3": {
+      "hindi": "हे चन्द्र, तुम्हारी जो ज्वाला है, उससे उसे जलाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Moon, with the flame that is yours, burn against the one who hates us and whom we hate."
+    },
+    "2:22.4": {
+      "hindi": "हे चन्द्र, तुम्हारी जो दीप्ति है, उससे उसे संतप्त करो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Moon, with the glow that is yours, sear the one who hates us and whom we hate."
+    },
+    "2:22.5": {
+      "hindi": "हे चन्द्र, तुम्हारा जो तेज है, उससे उसे तेजहीन कर दो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Moon, with the brilliance that is yours, make dull and powerless the one who hates us and whom we hate."
+    },
+    "2:23.1": {
+      "hindi": "हे जलो, तुम्हारा जो ताप है, उससे उसे तपाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Waters, with the heat that is yours, scorch the one who hates us and whom we hate."
+    },
+    "2:23.2": {
+      "hindi": "हे जलो, तुम्हारी जो हरने वाली शक्ति है, उससे उसका (बल) हर लो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Waters, with the seizing power that is yours, seize the one who hates us and whom we hate."
+    },
+    "2:23.3": {
+      "hindi": "हे जलो, तुम्हारी जो ज्वाला है, उससे उसे जलाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Waters, with the flame that is yours, burn against the one who hates us and whom we hate."
+    },
+    "2:23.4": {
+      "hindi": "हे जलो, तुम्हारी जो दीप्ति है, उससे उसे संतप्त करो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Waters, with the glow that is yours, sear the one who hates us and whom we hate."
+    },
+    "2:23.5": {
+      "hindi": "हे जलो, तुम्हारा जो तेज है, उससे उसे तेजहीन कर दो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+      "translation": "Waters, with the brilliance that is yours, make dull and powerless the one who hates us and whom we hate."
+    },
+    "3:29.1": {
+      "hindi": "यम के ये सभासद राजा (परलोक में) इष्ट और पूर्त (यज्ञ और दान के पुण्य) का सोलहवाँ भाग बाँटते हैं। दान किया गया श्वेत पैरों वाला मेढ़ा, (पितरों के लिए) स्वधा बनकर, उस (कर) से छुड़ा देता है।",
+      "translation": "These kings who sit in Yama's assembly divide among themselves a sixteenth of the merit of sacrifice and charity. A white-footed ram, given as an offering to the fathers, sets the giver free from that due."
+    },
+    "3:29.2": {
+      "hindi": "दान किया गया श्वेत पैरों वाला मेढ़ा सब इच्छाओं को पूरा करता है, होता हुआ, बढ़ता हुआ, फैलता हुआ। संकल्प पूरा करने वाला वह मेढ़ा कभी क्षीण नहीं होता।",
+      "translation": "The white-footed ram, once given, fulfils every wish, coming into being, growing and spreading. Fulfiller of intention, the gift of the white-footed ram never wastes away."
+    },
+    "3:29.3": {
+      "hindi": "जो लोक के बराबर मूल्य वाले श्वेत पैरों वाले मेढ़े का दान करता है, वह उस स्वर्ग पर चढ़ता है जहाँ निर्बल से बलवान के लिए कर नहीं लिया जाता।",
+      "translation": "Whoever gives a white-footed ram, equal in worth to a world, climbs to the heaven where the weak pay no tax to the strong."
+    },
+    "3:29.4": {
+      "hindi": "पाँच पूओं सहित, लोक के बराबर मूल्य वाले श्वेत पैरों वाले मेढ़े का दाता पितरों के लोक में अक्षय (जीवन) जीता है।",
+      "translation": "The giver of a white-footed ram with five cakes, equal in worth to a world, lives without decay in the world of the fathers."
+    },
+    "3:29.5": {
+      "hindi": "पाँच पूओं सहित, लोक के बराबर मूल्य वाले श्वेत पैरों वाले मेढ़े का दाता सूर्य और चन्द्रमा के लोक में अक्षय (जीवन) जीता है।",
+      "translation": "The giver of a white-footed ram with five cakes, equal in worth to a world, lives without decay in the world of the sun and moon."
+    },
+    "3:29.6": {
+      "hindi": "जैसे अन्न कभी समाप्त नहीं होता, जैसे समुद्र का विशाल जल, जैसे साथ रहने वाले दो देव (अश्विनी), वैसे ही श्वेत पैरों वाला मेढ़ा कभी क्षीण नहीं होता।",
+      "translation": "Like refreshing food, like the great water of the ocean, like the two gods who dwell together, the white-footed ram never wastes away."
+    },
+    "3:29.7": {
+      "hindi": "यह किसने दिया? किसको दिया? काम (इच्छा) ने काम को दिया। काम ही दाता है, काम ही ग्रहण करने वाला है। काम समुद्र में प्रवेश कर गया। हे काम, काम के द्वारा मैं तुम्हें ग्रहण करता हूँ; यह तुम्हारा है।",
+      "translation": "Who gave this? To whom did he give it? Desire gave it to desire. Desire is the giver, desire is the receiver; desire has entered the ocean. With desire I receive you. Desire, this is yours."
+    },
+    "3:29.8": {
+      "hindi": "पृथ्वी तुम्हें ग्रहण करे, यह विशाल अंतरिक्ष तुम्हें ग्रहण करे। (दान) ग्रहण करके मैं प्राण से, आत्मा से और संतान से कभी वंचित न होऊँ।",
+      "translation": "May the earth receive you, and this great air. Having received this gift, may I never be stripped of breath, of self or of offspring."
+    },
+    "3:30.1": {
+      "hindi": "मैं तुम्हें एक हृदय वाला, एक मन वाला और द्वेष रहित बनाता हूँ। एक दूसरे से वैसे ही प्रेम करो, जैसे गाय अपने नवजात बछड़े से करती है।",
+      "translation": "I make you one in heart, one in mind and free of hatred. Love one another as a cow loves her newborn calf."
+    },
+    "3:30.2": {
+      "hindi": "पुत्र पिता के व्रत का पालन करने वाला हो और माता के साथ एक मन वाला हो। पत्नी पति से मधुर और शांति देने वाली वाणी बोले।",
+      "translation": "Let the son follow his father's ways and be of one mind with his mother. Let the wife speak to her husband words sweet as honey and full of peace."
+    },
+    "3:30.3": {
+      "hindi": "भाई भाई से द्वेष न करे, बहन बहन से द्वेष न करे। एक साथ चलने वाले, एक व्रत वाले होकर कल्याणकारी वाणी बोलो।",
+      "translation": "Let no brother hate his brother, no sister her sister. Moving together, keeping one vow, speak to each other with kindness."
+    },
+    "3:30.4": {
+      "hindi": "जिस (ज्ञान) से देवता अलग नहीं होते और न आपस में द्वेष करते हैं, वह एकता का ज्ञान (ब्रह्म) हम तुम्हारे घर में मनुष्यों के लिए स्थापित करते हैं।",
+      "translation": "That sacred word by which the gods do not drift apart nor hate each other, that we set in your home as concord for its people."
+    },
+    "3:30.5": {
+      "hindi": "बड़ों का सम्मान करने वाले, विचारशील, एक साथ कार्य सिद्ध करते हुए, एक ही जुए को खींचते हुए, तुम अलग मत होओ। एक दूसरे से मधुर बोलते हुए आओ। मैं तुम्हें एक साथ चलने वाले और एक मन वाले बनाता हूँ।",
+      "translation": "Respecting your elders, thoughtful, working together, pulling one yoke, do not break apart. Come, speaking pleasantly to one another. I make you walk together and think as one."
+    },
+    "3:30.6": {
+      "hindi": "तुम्हारा पानी पीने का स्थान एक हो, तुम्हारा अन्न का भाग साथ हो। मैं तुम्हें एक ही जोत में साथ जोतता हूँ। जैसे पहिए के आरे नाभि को घेरे रहते हैं, वैसे ही मिलकर अग्नि की सेवा करो।",
+      "translation": "Let your drinking place be one and your share of food be shared. I yoke you together in a single harness. Gather round Agni and serve him, as spokes surround the hub of a wheel."
+    },
+    "3:30.7": {
+      "hindi": "मैं इस मेल कराने वाले (मंत्र) से तुम सबको एक साथ चलने वाला, एक मन वाला और एक ही (भोजन से) तृप्त होने वाला बनाता हूँ। अमृत की रक्षा करने वाले देवताओं के समान, सांझ और सवेरे तुम्हारा मन प्रसन्न रहे।",
+      "translation": "By this charm of union I make you all go together, one-minded, sharing one meal. Like the gods who guard the nectar of immortality, may you be glad of heart at evening and at morning."
+    },
+    "4:2.1": {
+      "hindi": "जो आत्मा देने वाला, बल देने वाला है, जिसकी आज्ञा का सब पालन करते हैं, जिसकी आज्ञा देवता भी मानते हैं, जो इस दो पैरों वाले और चार पैरों वाले (जगत) का स्वामी है, उस किस देवता की हम आहुति से पूजा करें?",
+      "translation": "He who gives breath and strength, whose command all obey and the gods obey, who rules this world of two-footed and four-footed beings: to which god shall we offer worship?"
+    },
+    "4:2.2": {
+      "hindi": "जो अपनी महिमा से साँस लेने वाले और पलक झपकाने वाले जगत का एकमात्र राजा बना, जिसकी छाया अमृत है और जिसकी (छाया) मृत्यु है, उस किस देवता की हम आहुति से पूजा करें?",
+      "translation": "He who by his greatness became the one king of all that breathes and blinks, whose shadow is immortality and also death: to which god shall we offer worship?"
+    },
+    "4:2.3": {
+      "hindi": "जिसकी ओर थरथराते हुए दो सेनाएँ (द्युलोक और पृथ्वी) सहारा पाकर भय से पुकारती हैं, जिसका वह मार्ग अंतरिक्ष को नापने वाला है, उस किस देवता की हम आहुति से पूजा करें?",
+      "translation": "He to whom heaven and earth, propped up and trembling with fear, cried out, whose path measures out the middle air: to which god shall we offer worship?"
+    },
+    "4:2.4": {
+      "hindi": "जिसका यह विशाल द्युलोक और महान पृथ्वी है, जिसका यह विस्तृत अंतरिक्ष है, जिसकी महिमा से यह सूर्य फैला हुआ है, उस किस देवता की हम आहुति से पूजा करें?",
+      "translation": "He whose are the wide sky and the great earth, whose is the broad air, by whose greatness the sun is spread out: to which god shall we offer worship?"
+    },
+    "4:2.5": {
+      "hindi": "जिसकी महिमा से ये सब हिमालय (पर्वत) हैं, समुद्र और रसा (नदी) जिसके कहे जाते हैं, ये दिशाएँ जिसकी भुजाएँ हैं, उस किस देवता की हम आहुति से पूजा करें?",
+      "translation": "He whose greatness these snowy mountains proclaim, whose they say the ocean and the river Rasa are, whose arms are these quarters of space: to which god shall we offer worship?"
+    },
+    "4:2.6": {
+      "hindi": "आरम्भ में जलों ने, जो अमर और सत्य को जानने वाले हैं, गर्भ धारण करते हुए सबकी रक्षा की। जिन दिव्य (जलों) में देव (प्रकट होकर) विराजमान था, उस किस देवता की हम आहुति से पूजा करें?",
+      "translation": "In the beginning the waters, immortal and knowing the right order, carrying the germ, protected all. The god arose upon those divine waters: to which god shall we offer worship?"
+    },
+    "4:2.7": {
+      "hindi": "आरम्भ में हिरण्यगर्भ (सोने का गर्भ) प्रकट हुआ। उत्पन्न होते ही वह सब प्राणियों का एकमात्र स्वामी था। उसने पृथ्वी और द्युलोक को धारण किया। उस किस देवता की हम आहुति से पूजा करें?",
+      "translation": "In the beginning arose the Golden Germ; once born, he was the one lord of all that exists. He upheld the earth and this sky: to which god shall we offer worship?"
+    },
+    "4:2.8": {
+      "hindi": "आरम्भ में बछड़े को जन्म देने वाले जलों ने गर्भ को आगे बढ़ाया। उत्पन्न होते हुए उसकी झिल्ली सोने की थी। उस किस देवता की हम आहुति से पूजा करें?",
+      "translation": "In the beginning the waters, bringing forth the calf, set the germ in motion. As it was born, its membrane was of gold: to which god shall we offer worship?"
+    },
+    "6:7.1": {
+      "hindi": "हे सोम, जिस मार्ग से अदिति और द्रोह न करने वाले मित्र जाते हैं, उसी (मार्ग) से अपनी रक्षा के साथ हमारे पास आओ।",
+      "translation": "Soma, by the path on which Aditi and the friends who bear no malice travel, come to us with your help."
+    },
+    "6:7.2": {
+      "hindi": "हे सोम, हे (शत्रुओं को) दबाने वाले, जिस (बल) से तुम असुरों को हमारे वश में करते हो, उसी से हमारी ओर से बोलो (हमारा पक्ष लो)।",
+      "translation": "Soma, conqueror, by the power with which you bring the demons under our control, speak for us."
+    },
+    "6:7.3": {
+      "hindi": "हे देवताओ, जिस (बल) से तुमने असुरों के ओज को छीन लिया, उसी से हमें शरण दो।",
+      "translation": "Gods, by the power with which you took away the might of the demons, give us shelter."
+    },
+    "6:141.1": {
+      "hindi": "वायु ने इन (गायों) को एकत्र किया है, त्वष्टा पुष्टि के लिए इन्हें धारण करे। इन्द्र इनके लिए (आशीर्वाद) बोले, रुद्र इनकी संख्या बढ़ाने के लिए इनका उपचार करें।",
+      "translation": "Vayu has gathered these cattle together; let Tvashtar keep them for their growth. Let Indra speak for them, and let Rudra tend them so that they increase."
+    },
+    "6:141.2": {
+      "hindi": "लाल (तांबे के) चाकू से इनके कानों पर जोड़ा (चिह्न) बनाओ। अश्विनीकुमारों ने यह चिह्न बनाया है; यह संतान से बहुत हो।",
+      "translation": "With the red knife make a paired mark on their ears. The Ashvins have made the mark; may it bring many offspring."
+    },
+    "6:141.3": {
+      "hindi": "जैसे देवताओं और असुरों ने, और मनुष्यों ने भी (चिह्न) बनाया, वैसे ही हे अश्विनीकुमारो, हज़ार गुना वृद्धि के लिए चिह्न बनाओ।",
+      "translation": "As the gods and demons made it, and men as well, so, Ashvins, make the mark for a thousandfold increase."
+    },
+    "7:3.1": {
+      "hindi": "इस प्रकार (अग्नि ने) अपने कर्मों को उत्पन्न करते हुए, स्थिर होकर, वह चमकने वाला, (यजमान के) वरण के लिए विस्तृत मार्ग (बना)। वह मधु के आधार, उसके मूल की ओर ऊपर उठा, और अपने शरीर से शरीर रहित (स्वर्ग) तक को प्रेरित किया।",
+      "translation": "So, bringing forth his deeds and standing firm, the glowing one became a wide path for the chosen. He rose up to the support, the summit of the honey, and with his own body stirred even what has no body."
+    },
+    "19:7.1": {
+      "hindi": "द्युलोक में एक साथ चमकने वाले अनोखे तारे, जो संसार में वेग से सरकते हुए चलते हैं, उनकी, और दिनों की और स्वर्ग की मैं स्तुतियों से पूजा करता हूँ, (उनकी) शीघ्र कृपा और सद्भावना चाहता हुआ।",
+      "translation": "The bright lights shining together in the sky, gliding swiftly through the world, and the days and the vault of heaven I honour with songs, seeking their quick favour and goodwill."
+    },
+    "19:7.2": {
+      "hindi": "हे अग्नि, कृत्तिका और रोहिणी पुकार सुनने वाली हों, मृगशिरा कल्याणकारी हो, आर्द्रा सुख दे। पुनर्वसु सत्य वाणी दें, पुष्य सुंदरता दे, आश्लेषा प्रकाश दे, मघा मुझे (उन्नति का) मार्ग दे।",
+      "translation": "Agni, may Krittika and Rohini be quick to hear; may Mrigashira be auspicious and Ardra bring peace. May Punarvasu bring kind speech, Pushya grace, Ashlesha light, and Magha a path forward for me."
+    },
+    "19:7.3": {
+      "hindi": "दोनों पूर्वा और उत्तरा फाल्गुनी पुण्य दें, हस्त और चित्रा कल्याणकारी हों, स्वाति मुझे सुख दे। राधा (अनुराधा), विशाखा और अनुराधा पुकार सुनने वाली हों, ज्येष्ठा शुभ नक्षत्र हो, मूल हानि रहित हो।",
+      "translation": "May the two Phalgunis bring merit, Hasta and Chitra be kindly, and Svati give me happiness. May Radha, Vishakha and Anuradha hear my call, Jyeshtha be a lucky star, and Mula bring no harm."
+    },
+    "19:7.4": {
+      "hindi": "पूर्वाषाढ़ा मुझे अन्न दे, देवी उत्तराषाढ़ा ऊर्जा लाए। अभिजित् मुझे पुण्य ही दे, श्रवण और श्रविष्ठा (धनिष्ठा) अच्छी पुष्टि करें।",
+      "translation": "May the earlier Ashadhas give me food, and the goddess later Ashadhas bring vigour. May Abhijit grant me only merit, and Shravana and Shravishtha bring good prosperity."
+    },
+    "19:7.5": {
+      "hindi": "शतभिषा मुझे महान और विस्तृत (स्वास्थ्य) दे, दोनों प्रोष्ठपदा अच्छी शरण दें। रेवती और दोनों अश्वयुज् (अश्विनी) मुझे सौभाग्य दें, और भरणी मुझे धन लाएँ।",
+      "translation": "May Shatabhishak bring me great and ample health, and the two Proshthapadas good shelter. May Revati and the two Ashvayujs bring me good fortune, and the Bharanis bring me wealth."
+    },
+    "19:8.1": {
+      "hindi": "जो नक्षत्र द्युलोक में, अंतरिक्ष में, जलों में, भूमि पर, पर्वतों पर और दिशाओं में हैं, जिनको व्यवस्थित करता हुआ चन्द्रमा चलता है, वे सब मेरे लिए कल्याणकारी हों।",
+      "translation": "The lunar mansions in the sky, in the air, in the waters, on earth, on the mountains and in the quarters, through which the moon moves setting them in order: may they all be kind to me."
+    },
+    "19:8.2": {
+      "hindi": "अट्ठाईस (नक्षत्र), जो कल्याणकारी और सुखद हैं, मिलकर मुझे योग (प्राप्ति) दें। मैं योग और क्षेम (प्राप्ति और रक्षा) को प्राप्त करूँ, क्षेम और योग को प्राप्त करूँ। दिन और रात को नमस्कार हो।",
+      "translation": "May the twenty-eight, kindly and gracious, together bring me gain. I take hold of gain and safety, of safety and gain. Homage to day and night."
+    },
+    "19:8.3": {
+      "hindi": "मेरा सवेरा, संध्या और दिन शुभ हों, शिकार और पक्षियों के शकुन शुभ हों। हे अमर अग्नि, सरलता से बुलाए जाने वाले, कल्याण के साथ मनुष्य के पास जाकर प्रसन्न होते हुए फिर लौटो।",
+      "translation": "May my morning, evening and day be good, with good hunting and good omens from birds. Immortal Agni, easy to call, go to mortals with blessing and return again rejoicing."
+    },
+    "19:8.4": {
+      "hindi": "पीछे से पुकारना, चारों ओर से पुकारना, निंदा, और (अशुभ) छींक, खाली घड़ों (के अपशकुन) सहित, हे सविता, इन सबको दूर भेज दो।",
+      "translation": "Calls from behind and calls from around, slander and ill-omened sneezing, together with the empty pitchers: Savitar, drive them all far away."
+    },
+    "19:8.5": {
+      "hindi": "हम पाप रहित छींक का, पुण्य वाली छींक का आनंद लें। हे पाप (अशुभ), तुम्हारी नासिका (अब) कल्याणकारी हो, और पुण्य (शुभ) गंध मेरी ओर बहे।",
+      "translation": "May we escape the evil sneeze and enjoy the lucky one. Bad luck, may your nostrils now be kind, and may a pleasant fragrance flow toward me."
+    },
+    "19:8.6": {
+      "hindi": "हे ब्रह्मणस्पति, ये जो (ज्वालाएँ) वायु में चारों ओर बिखरी चलती हैं, हे इन्द्र, उन्हें एक साथ मिलाकर मेरे लिए सबसे अधिक कल्याणकारी बना दो।",
+      "translation": "Brahmanaspati, these flames that the wind scatters in every direction: Indra, bring them together and make them most kindly toward me."
+    },
+    "19:8.7": {
+      "hindi": "हमारा कल्याण हो, हमें अभय हो। दिन और रात को नमस्कार हो।",
+      "translation": "May there be well-being for us, may there be freedom from fear. Homage to day and night."
+    }
+  }
+}

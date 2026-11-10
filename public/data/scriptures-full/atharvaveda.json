@@ -1653,102 +1653,142 @@
         {
           "number": "20.1",
           "sanskrit": "वायो॒ यत् ते॒ तप॒स्तेन॒ तं प्रति॑ तप॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "vāyo yat te tapastena taṃ prati tapa yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "vāyo yat te tapastena taṃ prati tapa yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे वायु, तुम्हारा जो ताप है, उससे उसे तपाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Vayu, with the heat that is yours, scorch the one who hates us and whom we hate."
         },
         {
           "number": "20.2",
           "sanskrit": "वायो॒ यत् ते॒ हर॒स्तेन॒ तं प्रति॑ हर॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "vāyo yat te harastena taṃ prati hara yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "vāyo yat te harastena taṃ prati hara yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे वायु, तुम्हारी जो हरने वाली शक्ति है, उससे उसका (बल) हर लो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Vayu, with the seizing power that is yours, seize the one who hates us and whom we hate."
         },
         {
           "number": "20.3",
           "sanskrit": "वायो॒ यत् ते॒ऽर्चिस्तेन॒ तं प्रत्य॑र्च॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "vāyo yat te'rcistena taṃ pratyarca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "vāyo yat te'rcistena taṃ pratyarca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे वायु, तुम्हारी जो ज्वाला है, उससे उसे जलाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Vayu, with the flame that is yours, burn against the one who hates us and whom we hate."
         },
         {
           "number": "20.4",
           "sanskrit": "वायो॒ यत् ते॑ शो॒चिस्तेन॒ तं प्रति॑ शोच॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "vāyo yat te śocistena taṃ prati śoca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "vāyo yat te śocistena taṃ prati śoca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे वायु, तुम्हारी जो दीप्ति है, उससे उसे संतप्त करो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Vayu, with the glow that is yours, sear the one who hates us and whom we hate."
         },
         {
           "number": "20.5",
           "sanskrit": "वायो॒ यत् ते॒ तेज॒स्तेन॒ तम॑ते॒जसं॑ कृणु॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "vāyo yat te tejastena tamatejasaṃ kṛṇu yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "vāyo yat te tejastena tamatejasaṃ kṛṇu yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे वायु, तुम्हारा जो तेज है, उससे उसे तेजहीन कर दो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Vayu, with the brilliance that is yours, make dull and powerless the one who hates us and whom we hate."
         },
         {
           "number": "21.1",
           "sanskrit": "सूर्य॒ यत् ते॒ तप॒स्तेन॒ तं प्रति॑ तप॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "sūrya yat te tapastena taṃ prati tapa yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "sūrya yat te tapastena taṃ prati tapa yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे सूर्य, तुम्हारा जो ताप है, उससे उसे तपाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Surya, with the heat that is yours, scorch the one who hates us and whom we hate."
         },
         {
           "number": "21.2",
           "sanskrit": "सूर्य॒ यत् ते॒ हर॒स्तेन॒ तं प्रति॑ हर॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "sūrya yat te harastena taṃ prati hara yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "sūrya yat te harastena taṃ prati hara yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे सूर्य, तुम्हारी जो हरने वाली शक्ति है, उससे उसका (बल) हर लो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Surya, with the seizing power that is yours, seize the one who hates us and whom we hate."
         },
         {
           "number": "21.3",
           "sanskrit": "सूर्य॒ यत् ते॒ऽर्चिस्तेन॒ तं प्रत्य॑र्च॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "sūrya yat te'rcistena taṃ pratyarca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "sūrya yat te'rcistena taṃ pratyarca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे सूर्य, तुम्हारी जो ज्वाला है, उससे उसे जलाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Surya, with the flame that is yours, burn against the one who hates us and whom we hate."
         },
         {
           "number": "21.4",
           "sanskrit": "सूर्य॒ यत् ते॑ शो॒चिस्तेन॒ तं प्रति॑ शोच॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "sūrya yat te śocistena taṃ prati śoca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "sūrya yat te śocistena taṃ prati śoca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे सूर्य, तुम्हारी जो दीप्ति है, उससे उसे संतप्त करो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Surya, with the glow that is yours, sear the one who hates us and whom we hate."
         },
         {
           "number": "21.5",
           "sanskrit": "सूर्य॒ यत् ते॒ तेज॒स्तेन॒ तम॑ते॒जसं॑ कृणु॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "sūrya yat te tejastena tamatejasaṃ kṛṇu yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "sūrya yat te tejastena tamatejasaṃ kṛṇu yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे सूर्य, तुम्हारा जो तेज है, उससे उसे तेजहीन कर दो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Surya, with the brilliance that is yours, make dull and powerless the one who hates us and whom we hate."
         },
         {
           "number": "22.1",
           "sanskrit": "चन्द्र॒ यत् ते॒ तप॒स्तेन॒ तं प्रति॑ तप॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "candra yat te tapastena taṃ prati tapa yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "candra yat te tapastena taṃ prati tapa yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे चन्द्र, तुम्हारा जो ताप है, उससे उसे तपाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Moon, with the heat that is yours, scorch the one who hates us and whom we hate."
         },
         {
           "number": "22.2",
           "sanskrit": "चन्द्र॒ यत् ते॒ हर॒स्तेन॒ तं प्रति॑ हर॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "candra yat te harastena taṃ prati hara yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "candra yat te harastena taṃ prati hara yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे चन्द्र, तुम्हारी जो हरने वाली शक्ति है, उससे उसका (बल) हर लो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Moon, with the seizing power that is yours, seize the one who hates us and whom we hate."
         },
         {
           "number": "22.3",
           "sanskrit": "चन्द्र॒ यत् ते॒ऽर्चिस्तेन॒ तं प्रत्य॑र्च॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "candra yat te'rcistena taṃ pratyarca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "candra yat te'rcistena taṃ pratyarca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे चन्द्र, तुम्हारी जो ज्वाला है, उससे उसे जलाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Moon, with the flame that is yours, burn against the one who hates us and whom we hate."
         },
         {
           "number": "22.4",
           "sanskrit": "चन्द्र॒ यत् ते॒ शो॒चिस्तेन॒ तं प्रति॑ शोच॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "candra yat te śocistena taṃ prati śoca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "candra yat te śocistena taṃ prati śoca yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे चन्द्र, तुम्हारी जो दीप्ति है, उससे उसे संतप्त करो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Moon, with the glow that is yours, sear the one who hates us and whom we hate."
         },
         {
           "number": "22.5",
           "sanskrit": "चन्द्र॒ यत् ते॒ तेज॒स्तेन॒ तम॑ते॒जसं॑ कृणु॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "candra yat te tejastena tamatejasaṃ kṛṇu yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "candra yat te tejastena tamatejasaṃ kṛṇu yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे चन्द्र, तुम्हारा जो तेज है, उससे उसे तेजहीन कर दो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Moon, with the brilliance that is yours, make dull and powerless the one who hates us and whom we hate."
         },
         {
           "number": "23.1",
           "sanskrit": "आपो॒ यद् व॒स्तप॒स्तेन॒ तं प्रति॑ तपत॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "āpo yad vastapastena taṃ prati tapata yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "āpo yad vastapastena taṃ prati tapata yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे जलो, तुम्हारा जो ताप है, उससे उसे तपाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Waters, with the heat that is yours, scorch the one who hates us and whom we hate."
         },
         {
           "number": "23.2",
           "sanskrit": "आपो॒ यद् वो॒ हर॒स्तेन॒ तं प्रति॑ हरत॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "āpo yad vo harastena taṃ prati harata yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "āpo yad vo harastena taṃ prati harata yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे जलो, तुम्हारी जो हरने वाली शक्ति है, उससे उसका (बल) हर लो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Waters, with the seizing power that is yours, seize the one who hates us and whom we hate."
         },
         {
           "number": "23.3",
           "sanskrit": "आपो॒ यद् वो॒ऽर्चिस्तेन॒ तं प्रत्य॑र्चत॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "āpo yad vo'rcistena taṃ pratyarcata yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "āpo yad vo'rcistena taṃ pratyarcata yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे जलो, तुम्हारी जो ज्वाला है, उससे उसे जलाओ जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Waters, with the flame that is yours, burn against the one who hates us and whom we hate."
         },
         {
           "number": "23.4",
           "sanskrit": "आपो॒ यद् वः॑ शो॒चिस्तेन॒ तं प्रति॑ शोचत॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "āpo yad vaḥ śocistena taṃ prati śocata yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "āpo yad vaḥ śocistena taṃ prati śocata yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे जलो, तुम्हारी जो दीप्ति है, उससे उसे संतप्त करो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Waters, with the glow that is yours, sear the one who hates us and whom we hate."
         },
         {
           "number": "23.5",
           "sanskrit": "आपो॒ यद् व॒स्तेज॒स्तेन॒ तम॑ते॒जसं॑ कृणुत॒ यो॒३स्मान् द्वेष्टि॒ यं व॒यं द्वि॒ष्मः ॥",
-          "transliteration": "āpo yad vastejastena tamatejasaṃ kṛṇuta yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||"
+          "transliteration": "āpo yad vastejastena tamatejasaṃ kṛṇuta yosmān dveṣṭi yaṃ vayaṃ dviṣmaḥ ||",
+          "hindi": "हे जलो, तुम्हारा जो तेज है, उससे उसे तेजहीन कर दो जो हमसे द्वेष करता है और जिससे हम द्वेष करते हैं।",
+          "translation": "Waters, with the brilliance that is yours, make dull and powerless the one who hates us and whom we hate."
         },
         {
           "number": "24.1",
@@ -3494,85 +3534,106 @@
           "number": "29.1",
           "sanskrit": "यद् राजा॑नो वि॒भज॑न्त इष्टापू॒र्तस्य॑ षोड॒शं य॒मस्या॒मी स॑भा॒सदः॑ ।\nअवि॒स्तस्मा॒त् प्र मु॑ञ्चति द॒त्तः शि॑ति॒पात् स्व॒धा ॥",
           "transliteration": "yad rājāno vibhajanta iṣṭāpūrtasya ṣoḍaśaṃ yamasyāmī sabhāsadaḥ |\navistasmāt pra muñcati dattaḥ śitipāt svadhā ||",
-          "translation": "On the means to obtain immunity from taxation in the next world\nFreedom from hate I bring to you, concord and unanimity.\nLove one another as the cow loveth the calf that she hath borne.\nOne-minded with his mother let the son be loyal to his sire.\nLet the wife, calm and gentle, speak words sweet as honey to her lord.\nNo brother hate his brother, no sister to sister be unkind.\nUnanimous, with one intent, speak ye your speech in friend-liness.\nThat spell through which Gods sever not, nor ever bear each other hate,\nThat spell we lay upon your home, a bond of union for the men.\nIntelligent, submissive, rest united, friendly and kind, bearing the yoke together.\nCome, speaking sweetly each one to the other. I make you one-intentioned and one-minded.\nLet what you drink, your share of food be common together, with one common bond I bid you.\nServe Agni, gathered round him like the spokes about the chariot nave.\nWith binding charm I make you all united, obeying one sole leader and one-minded.\nEven as the Gods who watch and guard the Amrit, at morn and eve may ye be kindly-hearted.",
-          "translationRange": "29.1-29.8"
+          "translation": "These kings who sit in Yama's assembly divide among themselves a sixteenth of the merit of sacrifice and charity. A white-footed ram, given as an offering to the fathers, sets the giver free from that due.",
+          "hindi": "यम के ये सभासद राजा (परलोक में) इष्ट और पूर्त (यज्ञ और दान के पुण्य) का सोलहवाँ भाग बाँटते हैं। दान किया गया श्वेत पैरों वाला मेढ़ा, (पितरों के लिए) स्वधा बनकर, उस (कर) से छुड़ा देता है।"
         },
         {
           "number": "29.2",
           "sanskrit": "सर्वा॒न् कामा॑न् पूरयत्या॒भव॑न् प्र॒भव॒न् भव॑न् ।\nआ॒कू॒ति॒प्रोऽवि॑र्द॒त्तः शि॑ति॒पान्नोप॑ दस्यति ॥",
           "transliteration": "sarvān kāmān pūrayatyābhavan prabhavan bhavan |\nākūtipro'virdattaḥ śitipānnopa dasyati ||",
-          "translationSeeVerse": "29.1"
+          "hindi": "दान किया गया श्वेत पैरों वाला मेढ़ा सब इच्छाओं को पूरा करता है, होता हुआ, बढ़ता हुआ, फैलता हुआ। संकल्प पूरा करने वाला वह मेढ़ा कभी क्षीण नहीं होता।",
+          "translation": "The white-footed ram, once given, fulfils every wish, coming into being, growing and spreading. Fulfiller of intention, the gift of the white-footed ram never wastes away."
         },
         {
           "number": "29.3",
           "sanskrit": "यो ददा॑ति शिति॒पाद॒मविं॑ लो॒केन॒ संमि॑तम् ।\nस नाक॑म॒भ्यारो॑हति॒ यत्र॑ शु॒ल्को न क्रि॒यते॑ अब॒लेन॒ बली॑यसे ॥",
           "transliteration": "yo dadāti śitipādamaviṃ lokena saṃmitam |\nsa nākamabhyārohati yatra śulko na kriyate abalena balīyase ||",
-          "translationSeeVerse": "29.1"
+          "hindi": "जो लोक के बराबर मूल्य वाले श्वेत पैरों वाले मेढ़े का दान करता है, वह उस स्वर्ग पर चढ़ता है जहाँ निर्बल से बलवान के लिए कर नहीं लिया जाता।",
+          "translation": "Whoever gives a white-footed ram, equal in worth to a world, climbs to the heaven where the weak pay no tax to the strong."
         },
         {
           "number": "29.4",
           "sanskrit": "पञ्चा॑पूपं शिति॒पाद॒मविं॑ लो॒केन॒ संमि॑तम् ।\nप्र॒दा॒तोप॑ जीवति पितॄ॒णां लो॒केऽक्षि॑तम् ॥",
           "transliteration": "pañcāpūpaṃ śitipādamaviṃ lokena saṃmitam |\npradātopa jīvati pitṝṇāṃ loke'kṣitam ||",
-          "translationSeeVerse": "29.1"
+          "hindi": "पाँच पूओं सहित, लोक के बराबर मूल्य वाले श्वेत पैरों वाले मेढ़े का दाता पितरों के लोक में अक्षय (जीवन) जीता है।",
+          "translation": "The giver of a white-footed ram with five cakes, equal in worth to a world, lives without decay in the world of the fathers."
         },
         {
           "number": "29.5",
           "sanskrit": "पञ्चा॑पूपं शिति॒पाद॒मविं॑ लो॒केन॒ संमि॑तम् ।\nप्र॒दा॒तोप॑ जीवति सूर्यामा॒सयो॒रक्षि॑तम् ॥",
           "transliteration": "pañcāpūpaṃ śitipādamaviṃ lokena saṃmitam |\npradātopa jīvati sūryāmāsayorakṣitam ||",
-          "translationSeeVerse": "29.1"
+          "hindi": "पाँच पूओं सहित, लोक के बराबर मूल्य वाले श्वेत पैरों वाले मेढ़े का दाता सूर्य और चन्द्रमा के लोक में अक्षय (जीवन) जीता है।",
+          "translation": "The giver of a white-footed ram with five cakes, equal in worth to a world, lives without decay in the world of the sun and moon."
         },
         {
           "number": "29.6",
           "sanskrit": "इ॑रेव नो॑प दस्यति समुद्र॑इव प॑यो मह॑त् ।\nदेवउ॑सवासि॑नाविव शितिपा॑न्नो॑प दस्यति ॥",
           "transliteration": "ireva nopa dasyati samudraiva payo mahat |\ndevausavāsināviva śitipānnopa dasyati ||",
-          "translationSeeVerse": "29.1"
+          "hindi": "जैसे अन्न कभी समाप्त नहीं होता, जैसे समुद्र का विशाल जल, जैसे साथ रहने वाले दो देव (अश्विनी), वैसे ही श्वेत पैरों वाला मेढ़ा कभी क्षीण नहीं होता।",
+          "translation": "Like refreshing food, like the great water of the ocean, like the two gods who dwell together, the white-footed ram never wastes away."
         },
         {
           "number": "29.7",
           "sanskrit": "क इ॒दं कस्मा॑ अदा॒त् कामः॒ कामा॑यादात् ।\nकामो॑ दा॒ता कामः॑ प्रतिग्रही॒ता कामः॑ समु॒द्रमा वि॑वेश ।\nकामे॑न त्वा॒ प्रति॑ गृह्णामि॒ कामै॒तत् ते॑ ॥",
           "transliteration": "ka idaṃ kasmā adāt kāmaḥ kāmāyādāt |\nkāmo dātā kāmaḥ pratigrahītā kāmaḥ samudramā viveśa |\nkāmena tvā prati gṛhṇāmi kāmaitat te ||",
-          "translationSeeVerse": "29.1"
+          "hindi": "यह किसने दिया? किसको दिया? काम (इच्छा) ने काम को दिया। काम ही दाता है, काम ही ग्रहण करने वाला है। काम समुद्र में प्रवेश कर गया। हे काम, काम के द्वारा मैं तुम्हें ग्रहण करता हूँ; यह तुम्हारा है।",
+          "translation": "Who gave this? To whom did he give it? Desire gave it to desire. Desire is the giver, desire is the receiver; desire has entered the ocean. With desire I receive you. Desire, this is yours."
         },
         {
           "number": "29.8",
           "sanskrit": "भूमि॑ष्ट्वा॒ प्रति॑ गृह्णात्व॒न्तरि॑क्षमि॒दं म॒हत् ।\nमाहं प्रा॒णेन॒ मात्मना॒ मा प्र॒जया॑ प्रति॒गृह्य॒ वि रा॑धिषि ॥",
           "transliteration": "bhūmiṣṭvā prati gṛhṇātvantarikṣamidaṃ mahat |\nmāhaṃ prāṇena mātmanā mā prajayā pratigṛhya vi rādhiṣi ||",
-          "translationSeeVerse": "29.1"
+          "hindi": "पृथ्वी तुम्हें ग्रहण करे, यह विशाल अंतरिक्ष तुम्हें ग्रहण करे। (दान) ग्रहण करके मैं प्राण से, आत्मा से और संतान से कभी वंचित न होऊँ।",
+          "translation": "May the earth receive you, and this great air. Having received this gift, may I never be stripped of breath, of self or of offspring."
         },
         {
           "number": "30.1",
           "sanskrit": "सहृ॑दयं सांमन॒स्यमवि॑द्वेषं कृणोमि वः ।\nअ॒न्यो अ॒न्यम॒भि ह॑र्यत व॒त्सं जा॒तमि॑वा॒घ्न्या ॥",
-          "transliteration": "sahṛdayaṃ sāṃmanasyamavidveṣaṃ kṛṇomi vaḥ |\nanyo anyamabhi haryata vatsaṃ jātamivāghnyā ||"
+          "transliteration": "sahṛdayaṃ sāṃmanasyamavidveṣaṃ kṛṇomi vaḥ |\nanyo anyamabhi haryata vatsaṃ jātamivāghnyā ||",
+          "hindi": "मैं तुम्हें एक हृदय वाला, एक मन वाला और द्वेष रहित बनाता हूँ। एक दूसरे से वैसे ही प्रेम करो, जैसे गाय अपने नवजात बछड़े से करती है।",
+          "translation": "I make you one in heart, one in mind and free of hatred. Love one another as a cow loves her newborn calf."
         },
         {
           "number": "30.2",
           "sanskrit": "अनु॑व्रतः पि॒तुः पु॒त्रो मा॒त्रा भ॑वतु॒ संम॑नाः ।\nजा॒या पत्ये॒ मधु॑मतीं॒ वाचं॑ वदतु शन्ति॒वाम् ॥",
-          "transliteration": "anuvrataḥ pituḥ putro mātrā bhavatu saṃmanāḥ |\njāyā patye madhumatīṃ vācaṃ vadatu śantivām ||"
+          "transliteration": "anuvrataḥ pituḥ putro mātrā bhavatu saṃmanāḥ |\njāyā patye madhumatīṃ vācaṃ vadatu śantivām ||",
+          "hindi": "पुत्र पिता के व्रत का पालन करने वाला हो और माता के साथ एक मन वाला हो। पत्नी पति से मधुर और शांति देने वाली वाणी बोले।",
+          "translation": "Let the son follow his father's ways and be of one mind with his mother. Let the wife speak to her husband words sweet as honey and full of peace."
         },
         {
           "number": "30.3",
           "sanskrit": "मा भ्राता॒ भ्रात॑रं द्विक्ष॒न्मा स्वसा॑रमु॒त स्वसा॑ ।\nस॒म्यञ्चः॒ सव्र॑ता भू॒त्वा वाचं॑ वदत भ॒द्रया॑ ॥",
-          "transliteration": "mā bhrātā bhrātaraṃ dvikṣanmā svasāramuta svasā |\nsamyañcaḥ savratā bhūtvā vācaṃ vadata bhadrayā ||"
+          "transliteration": "mā bhrātā bhrātaraṃ dvikṣanmā svasāramuta svasā |\nsamyañcaḥ savratā bhūtvā vācaṃ vadata bhadrayā ||",
+          "hindi": "भाई भाई से द्वेष न करे, बहन बहन से द्वेष न करे। एक साथ चलने वाले, एक व्रत वाले होकर कल्याणकारी वाणी बोलो।",
+          "translation": "Let no brother hate his brother, no sister her sister. Moving together, keeping one vow, speak to each other with kindness."
         },
         {
           "number": "30.4",
           "sanskrit": "येन॑ दे॒वा न वि॒यन्ति॒ नो च॑ विद्वि॒षते॑ मि॒थः ।\nतत् कृ॑ण्मो॒ ब्रह्म॑ वो गृ॒हे सं॒ज्ञानं॒ पुरु॑षेभ्यः ॥",
-          "transliteration": "yena devā na viyanti no ca vidviṣate mithaḥ |\ntat kṛṇmo brahma vo gṛhe saṃjñānaṃ puruṣebhyaḥ ||"
+          "transliteration": "yena devā na viyanti no ca vidviṣate mithaḥ |\ntat kṛṇmo brahma vo gṛhe saṃjñānaṃ puruṣebhyaḥ ||",
+          "hindi": "जिस (ज्ञान) से देवता अलग नहीं होते और न आपस में द्वेष करते हैं, वह एकता का ज्ञान (ब्रह्म) हम तुम्हारे घर में मनुष्यों के लिए स्थापित करते हैं।",
+          "translation": "That sacred word by which the gods do not drift apart nor hate each other, that we set in your home as concord for its people."
         },
         {
           "number": "30.5",
           "sanskrit": "ज्याय॑स्वन्तश्चि॒त्तिनो॒ मा वि यौ॑ष्ट संरा॒धय॑न्तः॒ सधु॑रा॒श्चर॑न्तः ।\nअ॒न्यो अ॒न्यस्मै॑ व॒ल्गु वद॑न्त॒ एत॑ सध्री॒चीना॑न् वः॒ संम॑नसस्कृणोमि ॥",
-          "transliteration": "jyāyasvantaścittino mā vi yauṣṭa saṃrādhayantaḥ sadhurāścarantaḥ |\nanyo anyasmai valgu vadanta eta sadhrīcīnān vaḥ saṃmanasaskṛṇomi ||"
+          "transliteration": "jyāyasvantaścittino mā vi yauṣṭa saṃrādhayantaḥ sadhurāścarantaḥ |\nanyo anyasmai valgu vadanta eta sadhrīcīnān vaḥ saṃmanasaskṛṇomi ||",
+          "hindi": "बड़ों का सम्मान करने वाले, विचारशील, एक साथ कार्य सिद्ध करते हुए, एक ही जुए को खींचते हुए, तुम अलग मत होओ। एक दूसरे से मधुर बोलते हुए आओ। मैं तुम्हें एक साथ चलने वाले और एक मन वाले बनाता हूँ।",
+          "translation": "Respecting your elders, thoughtful, working together, pulling one yoke, do not break apart. Come, speaking pleasantly to one another. I make you walk together and think as one."
         },
         {
           "number": "30.6",
           "sanskrit": "स॒मा॒नी प्र॒पा स॒ह वो॑ऽन्नभा॒गः स॑मा॒ने योक्त्रे॑ स॒ह वो॑ युनज्मि ।\nस॒म्यञ्चो॒ऽग्निं स॑पर्यता॒रा नाभि॑मिवा॒भितः॑ ॥",
-          "transliteration": "samānī prapā saha vo'nnabhāgaḥ samāne yoktre saha vo yunajmi |\nsamyañco'gniṃ saparyatārā nābhimivābhitaḥ ||"
+          "transliteration": "samānī prapā saha vo'nnabhāgaḥ samāne yoktre saha vo yunajmi |\nsamyañco'gniṃ saparyatārā nābhimivābhitaḥ ||",
+          "hindi": "तुम्हारा पानी पीने का स्थान एक हो, तुम्हारा अन्न का भाग साथ हो। मैं तुम्हें एक ही जोत में साथ जोतता हूँ। जैसे पहिए के आरे नाभि को घेरे रहते हैं, वैसे ही मिलकर अग्नि की सेवा करो।",
+          "translation": "Let your drinking place be one and your share of food be shared. I yoke you together in a single harness. Gather round Agni and serve him, as spokes surround the hub of a wheel."
         },
         {
           "number": "30.7",
           "sanskrit": "स॒ध्री॒चीना॑न् वः संम॑नसस्कृणो॒म्ये॑क॑श्नुष्टीन्त्सं॒वन॑नेन॒ सर्वा॑न् ।\nदे॒वा इ॑वा॒मृतं॒ रक्ष॑माणाः सा॒यंप्रा॑तः सौमन॒सो वो॑ अस्तु ॥",
-          "transliteration": "sadhrīcīnān vaḥ saṃmanasaskṛṇomyekaśnuṣṭīntsaṃvananena sarvān |\ndevā ivāmṛtaṃ rakṣamāṇāḥ sāyaṃprātaḥ saumanaso vo astu ||"
+          "transliteration": "sadhrīcīnān vaḥ saṃmanasaskṛṇomyekaśnuṣṭīntsaṃvananena sarvān |\ndevā ivāmṛtaṃ rakṣamāṇāḥ sāyaṃprātaḥ saumanaso vo astu ||",
+          "hindi": "मैं इस मेल कराने वाले (मंत्र) से तुम सबको एक साथ चलने वाला, एक मन वाला और एक ही (भोजन से) तृप्त होने वाला बनाता हूँ। अमृत की रक्षा करने वाले देवताओं के समान, सांझ और सवेरे तुम्हारा मन प्रसन्न रहे।",
+          "translation": "By this charm of union I make you all go together, one-minded, sharing one meal. Like the gods who guard the nectar of immortality, may you be glad of heart at evening and at morning."
         },
         {
           "number": "31.1",
@@ -3694,42 +3755,58 @@
         {
           "number": "2.1",
           "sanskrit": "य आ॑त्म॒दा ब॑ल॒दा यस्य॒ विश्व॑ उ॒पास॑ते प्र॒शिषं॒ यस्य॑ दे॒वाः ।\nयो॒३स्येशे॑ द्वि॒पदो॒ यश्चतु॑ष्पदः॒ कस्मै॑ दे॒वाय॑ ह॒विषा॑ विधेम ॥",
-          "transliteration": "ya ātmadā baladā yasya viśva upāsate praśiṣaṃ yasya devāḥ |\nyosyeśe dvipado yaścatuṣpadaḥ kasmai devāya haviṣā vidhema ||"
+          "transliteration": "ya ātmadā baladā yasya viśva upāsate praśiṣaṃ yasya devāḥ |\nyosyeśe dvipado yaścatuṣpadaḥ kasmai devāya haviṣā vidhema ||",
+          "hindi": "जो आत्मा देने वाला, बल देने वाला है, जिसकी आज्ञा का सब पालन करते हैं, जिसकी आज्ञा देवता भी मानते हैं, जो इस दो पैरों वाले और चार पैरों वाले (जगत) का स्वामी है, उस किस देवता की हम आहुति से पूजा करें?",
+          "translation": "He who gives breath and strength, whose command all obey and the gods obey, who rules this world of two-footed and four-footed beings: to which god shall we offer worship?"
         },
         {
           "number": "2.2",
           "sanskrit": "यः प्रा॑ण॒तो नि॑मिष॒तो म॑हित्वैको॒ राजा॒ जग॑तो ब॒भूव॑ ।\nयस्य॑ छा॒यामृतं॒ यस्य॑ मृ॒त्युः कस्मै॑ दे॒वाय॑ ह॒विषा॑ विधेम ॥",
-          "transliteration": "yaḥ prāṇato nimiṣato mahitvaiko rājā jagato babhūva |\nyasya chāyāmṛtaṃ yasya mṛtyuḥ kasmai devāya haviṣā vidhema ||"
+          "transliteration": "yaḥ prāṇato nimiṣato mahitvaiko rājā jagato babhūva |\nyasya chāyāmṛtaṃ yasya mṛtyuḥ kasmai devāya haviṣā vidhema ||",
+          "hindi": "जो अपनी महिमा से साँस लेने वाले और पलक झपकाने वाले जगत का एकमात्र राजा बना, जिसकी छाया अमृत है और जिसकी (छाया) मृत्यु है, उस किस देवता की हम आहुति से पूजा करें?",
+          "translation": "He who by his greatness became the one king of all that breathes and blinks, whose shadow is immortality and also death: to which god shall we offer worship?"
         },
         {
           "number": "2.3",
           "sanskrit": "यं क्रन्द॑सी॒ अव॑तश्चस्कभा॒ने भि॒यसा॑ने॒ रोद॑सी॒ अह्व॑येथाम् ।\nयस्या॒सौ पन्था॒ रज॑सो वि॒मानः॒ कस्मै॑ दे॒वाय॑ ह॒विषा॑ विधेम ॥",
-          "transliteration": "yaṃ krandasī avataścaskabhāne bhiyasāne rodasī ahvayethām |\nyasyāsau panthā rajaso vimānaḥ kasmai devāya haviṣā vidhema ||"
+          "transliteration": "yaṃ krandasī avataścaskabhāne bhiyasāne rodasī ahvayethām |\nyasyāsau panthā rajaso vimānaḥ kasmai devāya haviṣā vidhema ||",
+          "hindi": "जिसकी ओर थरथराते हुए दो सेनाएँ (द्युलोक और पृथ्वी) सहारा पाकर भय से पुकारती हैं, जिसका वह मार्ग अंतरिक्ष को नापने वाला है, उस किस देवता की हम आहुति से पूजा करें?",
+          "translation": "He to whom heaven and earth, propped up and trembling with fear, cried out, whose path measures out the middle air: to which god shall we offer worship?"
         },
         {
           "number": "2.4",
           "sanskrit": "यस्य॒ द्यौरु॒र्वी पृ॑थि॒वी च॑ म॒ही यस्या॒द उ॒र्व॑१न्तरि॑क्षम् ।\nयस्या॒सौ सूरो॒ वित॑तो महि॒त्वा कस्मै॑ दे॒वाय॑ ह॒विषा॑ विधेम ॥",
-          "transliteration": "yasya dyaururvī pṛthivī ca mahī yasyāda urvantarikṣam |\nyasyāsau sūro vitato mahitvā kasmai devāya haviṣā vidhema ||"
+          "transliteration": "yasya dyaururvī pṛthivī ca mahī yasyāda urvantarikṣam |\nyasyāsau sūro vitato mahitvā kasmai devāya haviṣā vidhema ||",
+          "hindi": "जिसका यह विशाल द्युलोक और महान पृथ्वी है, जिसका यह विस्तृत अंतरिक्ष है, जिसकी महिमा से यह सूर्य फैला हुआ है, उस किस देवता की हम आहुति से पूजा करें?",
+          "translation": "He whose are the wide sky and the great earth, whose is the broad air, by whose greatness the sun is spread out: to which god shall we offer worship?"
         },
         {
           "number": "2.5",
           "sanskrit": "यस्य॒ विश्वे॑ हि॒मव॑न्तो महि॒त्वा स॑मु॒द्रे यस्य॑ र॒सामिदा॒हुः ।\nइ॒माश्च॑ प्र॒दिशो॒ यस्य॒ बा॒हू कस्मै॑ दे॒वाय॑ ह॒विषा॑ विधेम ॥",
-          "transliteration": "yasya viśve himavanto mahitvā samudre yasya rasāmidāhuḥ |\nimāśca pradiśo yasya bāhū kasmai devāya haviṣā vidhema ||"
+          "transliteration": "yasya viśve himavanto mahitvā samudre yasya rasāmidāhuḥ |\nimāśca pradiśo yasya bāhū kasmai devāya haviṣā vidhema ||",
+          "hindi": "जिसकी महिमा से ये सब हिमालय (पर्वत) हैं, समुद्र और रसा (नदी) जिसके कहे जाते हैं, ये दिशाएँ जिसकी भुजाएँ हैं, उस किस देवता की हम आहुति से पूजा करें?",
+          "translation": "He whose greatness these snowy mountains proclaim, whose they say the ocean and the river Rasa are, whose arms are these quarters of space: to which god shall we offer worship?"
         },
         {
           "number": "2.6",
           "sanskrit": "आपो॒ अग्रे॒ विश्व॑माव॒न् गर्भं॒ दधा॑ना अ॒मृता॑ ऋत॒ज्ञाः ।\nयासु॑ दे॒वीष्वधि॑ दे॒व आ॑सी॒त् कस्मै॑ दे॒वाय॑ ह॒विषा॑ विधेम ॥",
-          "transliteration": "āpo agre viśvamāvan garbhaṃ dadhānā amṛtā ṛtajñāḥ |\nyāsu devīṣvadhi deva āsīt kasmai devāya haviṣā vidhema ||"
+          "transliteration": "āpo agre viśvamāvan garbhaṃ dadhānā amṛtā ṛtajñāḥ |\nyāsu devīṣvadhi deva āsīt kasmai devāya haviṣā vidhema ||",
+          "hindi": "आरम्भ में जलों ने, जो अमर और सत्य को जानने वाले हैं, गर्भ धारण करते हुए सबकी रक्षा की। जिन दिव्य (जलों) में देव (प्रकट होकर) विराजमान था, उस किस देवता की हम आहुति से पूजा करें?",
+          "translation": "In the beginning the waters, immortal and knowing the right order, carrying the germ, protected all. The god arose upon those divine waters: to which god shall we offer worship?"
         },
         {
           "number": "2.7",
           "sanskrit": "हि॒र॒ण्य॒ग॒र्भः सम॑वर्त॒ताग्रे॑ भू॒तस्य॑ जा॒तः पति॒रेक॑ आसीत् ।\nस दा॑धार पृथि॒वीमु॒त द्यां कस्मै दे॒वाय॑ ह॒विषा॑ विधेम ॥",
-          "transliteration": "hiraṇyagarbhaḥ samavartatāgre bhūtasya jātaḥ patireka āsīt |\nsa dādhāra pṛthivīmuta dyāṃ kasmai devāya haviṣā vidhema ||"
+          "transliteration": "hiraṇyagarbhaḥ samavartatāgre bhūtasya jātaḥ patireka āsīt |\nsa dādhāra pṛthivīmuta dyāṃ kasmai devāya haviṣā vidhema ||",
+          "hindi": "आरम्भ में हिरण्यगर्भ (सोने का गर्भ) प्रकट हुआ। उत्पन्न होते ही वह सब प्राणियों का एकमात्र स्वामी था। उसने पृथ्वी और द्युलोक को धारण किया। उस किस देवता की हम आहुति से पूजा करें?",
+          "translation": "In the beginning arose the Golden Germ; once born, he was the one lord of all that exists. He upheld the earth and this sky: to which god shall we offer worship?"
         },
         {
           "number": "2.8",
           "sanskrit": "आपो॑ व॒त्सं ज॒नय॑न्ती॒र्गर्भ॒मग्रे॒ समै॑रयन् ।\nतस्यो॒त जाय॑मान॒स्योल्ब॑ आसीद्धिर॒ण्ययः॒ कस्मै॑ दे॒वाय॑ ह॒विषा॑ विधेम ॥",
-          "transliteration": "āpo vatsaṃ janayantīrgarbhamagre samairayan |\ntasyota jāyamānasyolba āsīddhiraṇyayaḥ kasmai devāya haviṣā vidhema ||"
+          "transliteration": "āpo vatsaṃ janayantīrgarbhamagre samairayan |\ntasyota jāyamānasyolba āsīddhiraṇyayaḥ kasmai devāya haviṣā vidhema ||",
+          "hindi": "आरम्भ में बछड़े को जन्म देने वाले जलों ने गर्भ को आगे बढ़ाया। उत्पन्न होते हुए उसकी झिल्ली सोने की थी। उस किस देवता की हम आहुति से पूजा करें?",
+          "translation": "In the beginning the waters, bringing forth the calf, set the germ in motion. As it was born, its membrane was of gold: to which god shall we offer worship?"
         },
         {
           "number": "3.1",
@@ -8041,17 +8118,23 @@
         {
           "number": "7.1",
           "sanskrit": "येन॑ सो॒मादि॑तिः प॒था मि॒त्रा वा॒ यन्त्य॒द्रुहः॑ ।\nतेना॒ नोऽव॒सा ग॑हि ॥",
-          "transliteration": "yena somāditiḥ pathā mitrā vā yantyadruhaḥ |\ntenā no'vasā gahi ||"
+          "transliteration": "yena somāditiḥ pathā mitrā vā yantyadruhaḥ |\ntenā no'vasā gahi ||",
+          "hindi": "हे सोम, जिस मार्ग से अदिति और द्रोह न करने वाले मित्र जाते हैं, उसी (मार्ग) से अपनी रक्षा के साथ हमारे पास आओ।",
+          "translation": "Soma, by the path on which Aditi and the friends who bear no malice travel, come to us with your help."
         },
         {
           "number": "7.2",
           "sanskrit": "येन॑ सोम साह॒न्त्यासु॑रान् र॒न्धया॑सि नः ।\nतेना॑ नो॒ अधि॑ वोचत ॥",
-          "transliteration": "yena soma sāhantyāsurān randhayāsi naḥ |\ntenā no adhi vocata ||"
+          "transliteration": "yena soma sāhantyāsurān randhayāsi naḥ |\ntenā no adhi vocata ||",
+          "hindi": "हे सोम, हे (शत्रुओं को) दबाने वाले, जिस (बल) से तुम असुरों को हमारे वश में करते हो, उसी से हमारी ओर से बोलो (हमारा पक्ष लो)।",
+          "translation": "Soma, conqueror, by the power with which you bring the demons under our control, speak for us."
         },
         {
           "number": "7.3",
           "sanskrit": "येन॑ देवा॒ असु॑राणा॒मोजां॒स्यवृ॑णीध्वम् ।\nतेना॑ नः॒ शर्म॑ यच्छत ॥",
-          "transliteration": "yena devā asurāṇāmojāṃsyavṛṇīdhvam |\ntenā naḥ śarma yacchata ||"
+          "transliteration": "yena devā asurāṇāmojāṃsyavṛṇīdhvam |\ntenā naḥ śarma yacchata ||",
+          "hindi": "हे देवताओ, जिस (बल) से तुमने असुरों के ओज को छीन लिया, उसी से हमें शरण दो।",
+          "translation": "Gods, by the power with which you took away the might of the demons, give us shelter."
         },
         {
           "number": "8.1",
@@ -10751,17 +10834,23 @@
         {
           "number": "141.1",
           "sanskrit": "वा॒युरे॑नाः स॒माक॑र॒त् त्वष्टा॒ पोषा॑य ध्रियताम् ।\nइन्द्र॑ आभ्यो॒ अधि॑ ब्रवद् रु॒द्रो भू॒म्ने चि॑कित्सतु ॥",
-          "transliteration": "vāyurenāḥ samākarat tvaṣṭā poṣāya dhriyatām |\nindra ābhyo adhi bravad rudro bhūmne cikitsatu ||"
+          "transliteration": "vāyurenāḥ samākarat tvaṣṭā poṣāya dhriyatām |\nindra ābhyo adhi bravad rudro bhūmne cikitsatu ||",
+          "hindi": "वायु ने इन (गायों) को एकत्र किया है, त्वष्टा पुष्टि के लिए इन्हें धारण करे। इन्द्र इनके लिए (आशीर्वाद) बोले, रुद्र इनकी संख्या बढ़ाने के लिए इनका उपचार करें।",
+          "translation": "Vayu has gathered these cattle together; let Tvashtar keep them for their growth. Let Indra speak for them, and let Rudra tend them so that they increase."
         },
         {
           "number": "141.2",
           "sanskrit": "लोहि॑तेन॒ स्वधि॑तिना मिथु॒नं कर्ण॑योः कृधि ।\nअक॑र्ताम॒श्विना॒ लक्ष्म॒ तद॑स्तु प्र॒जया॑ ब॒हु ॥",
-          "transliteration": "lohitena svadhitinā mithunaṃ karṇayoḥ kṛdhi |\nakartāmaśvinā lakṣma tadastu prajayā bahu ||"
+          "transliteration": "lohitena svadhitinā mithunaṃ karṇayoḥ kṛdhi |\nakartāmaśvinā lakṣma tadastu prajayā bahu ||",
+          "hindi": "लाल (तांबे के) चाकू से इनके कानों पर जोड़ा (चिह्न) बनाओ। अश्विनीकुमारों ने यह चिह्न बनाया है; यह संतान से बहुत हो।",
+          "translation": "With the red knife make a paired mark on their ears. The Ashvins have made the mark; may it bring many offspring."
         },
         {
           "number": "141.3",
           "sanskrit": "यथा॑ च॒क्रुर्दे॑वासु॒रा यथा॑ मनु॒ष्याऽउ॒त ।\nए॒वा स॑हस्रपो॒षाय॑ कृणु॒तं लक्ष्मा॑श्विना ॥",
-          "transliteration": "yathā cakrurdevāsurā yathā manuṣyā'uta |\nevā sahasrapoṣāya kṛṇutaṃ lakṣmāśvinā ||"
+          "transliteration": "yathā cakrurdevāsurā yathā manuṣyā'uta |\nevā sahasrapoṣāya kṛṇutaṃ lakṣmāśvinā ||",
+          "hindi": "जैसे देवताओं और असुरों ने, और मनुष्यों ने भी (चिह्न) बनाया, वैसे ही हे अश्विनीकुमारो, हज़ार गुना वृद्धि के लिए चिह्न बनाओ।",
+          "translation": "As the gods and demons made it, and men as well, so, Ashvins, make the mark for a thousandfold increase."
         },
         {
           "number": "142.1",
@@ -10811,7 +10900,9 @@
         {
           "number": "3.1",
           "sanskrit": "अ॒या वि॒ष्ठा ज॒नय॒न् कर्व॑राणि॒ स हि घृणि॑रु॒रुर्वरा॑य गा॒तुः ।\nस प्र॒त्युदै॑द् ध॒रुणं॒ मध्वो॒ अग्रं॒ स्वया॑ त॒न्वाऽत॒न्वऽमैरयत ॥",
-          "transliteration": "ayā viṣṭhā janayan karvarāṇi sa hi ghṛṇirururvarāya gātuḥ |\nsa pratyudaid dharuṇaṃ madhvo agraṃ svayā tanvā'tanva'mairayata ||"
+          "transliteration": "ayā viṣṭhā janayan karvarāṇi sa hi ghṛṇirururvarāya gātuḥ |\nsa pratyudaid dharuṇaṃ madhvo agraṃ svayā tanvā'tanva'mairayata ||",
+          "hindi": "इस प्रकार (अग्नि ने) अपने कर्मों को उत्पन्न करते हुए, स्थिर होकर, वह चमकने वाला, (यजमान के) वरण के लिए विस्तृत मार्ग (बना)। वह मधु के आधार, उसके मूल की ओर ऊपर उठा, और अपने शरीर से शरीर रहित (स्वर्ग) तक को प्रेरित किया।",
+          "translation": "So, bringing forth his deeds and standing firm, the glowing one became a wide path for the chosen. He rose up to the support, the summit of the honey, and with his own body stirred even what has no body."
         },
         {
           "number": "4.1",
@@ -28114,67 +28205,85 @@
           "number": "7.1",
           "sanskrit": "चि॒त्राणि॑ सा॒कं दि॒वि रो॑च॒नानि॑ सरीसृ॒पाणि॒ भुव॑ने ज॒वानि॑ ।\nतु॒र्मिशं॑ सुम॒तिमि॒च्छमा॑नो॒ अहा॑नि गी॒र्भिः स॑प॒र्यामि॒ नाक॑म् ॥",
           "transliteration": "citrāṇi sākaṃ divi rocanāni sarīsṛpāṇi bhuvane javāni |\nturmiśaṃ sumatimicchamāno ahāni gīrbhiḥ saparyāmi nākam ||",
-          "translation": "A Prayer to the Lunar Mansions and other Powers for protection and prosperity\nThe brilliant lights shining in heaven together, which through the world glide on with rapid motion.\nAnd Days, and Firmament with songs I worship, seeking the Twenty-eight-fold for its favour.\nKrittikās, Rohinī be swift to hear me! Let Mrigasiras bless me, help me Ārdrā!\nPunarvasu and Sūnritā, fair Pushya, the Sun, Asleshās, Maghā lead me onward!\nMy bliss be Svāti and benignant Chitrā, my right First Phalgunis and present Hasta.\nRādhas, Visākhas, gracious Anurādhā, Jyeshthā and happy-starred uninjured Mūla.\nFood shall be earlier Ashādhas grant me; let those that follow bring me strength and vigour;\nWith virtuous merit Abhijit endow me! Sravana and Sravishthās make me prosper.\nSatabhishak afford me ample freedom, and both the Proshtha-padas guard me safely.\nRevati and the Asvayujas bring me luck, and the Bharanis abundant riches!\nBenign to me be all those Lunar Mansions to which the Moon as he moves on doth honour.\nAll that are in the sky, the air, the waters, on earth, on moun-tains, in the heavenly regions.\nPropitious, mighty, let the eight-and-twenty together deal me out my share of profit.\nProfit and wealth be mine, and wealth and profit! To Day and Night be adoration rendered!\nFair be my sunset, fair my morn and evening and day with. lucky chase and happy omens;\nWith blessing and success, immortal Agni, go to the mortal and. return rejoicing.\nExcitement and invoking cry, ill-omened sneezing and reproof,\nAll sounds of empty pitchers send into the distance, Savitar!\nMay we escape an evil sneeze, enjoy the sneeze of happy luck,\nAnd may our nostrils smelling what is pleasant pour forth fragrant scent.\nThese flames of Brāhmanaspati borne to all quarters in the-wind,\nTurn them all hither, Indra, and make them most gracious unto, me.",
-          "translationRange": "7.1-7.5"
+          "translation": "The bright lights shining together in the sky, gliding swiftly through the world, and the days and the vault of heaven I honour with songs, seeking their quick favour and goodwill.",
+          "hindi": "द्युलोक में एक साथ चमकने वाले अनोखे तारे, जो संसार में वेग से सरकते हुए चलते हैं, उनकी, और दिनों की और स्वर्ग की मैं स्तुतियों से पूजा करता हूँ, (उनकी) शीघ्र कृपा और सद्भावना चाहता हुआ।"
         },
         {
           "number": "7.2",
           "sanskrit": "सु॒हव॑मग्ने॒ कृत्ति॑का॒ रोहि॑णी॒ चास्तु॑ भ॒द्रं मृ॒गशि॑रः॒ शमा॒र्द्रा ।\nपुन॑र्वसू सू॒नृता॒ चारु॒ पुष्यो॑ भा॒नुरा॑श्ले॒षा अय॑नं म॒घा मे ॥",
           "transliteration": "suhavamagne kṛttikā rohiṇī cāstu bhadraṃ mṛgaśiraḥ śamārdrā |\npunarvasū sūnṛtā cāru puṣyo bhānurāśleṣā ayanaṃ maghā me ||",
-          "translationSeeVerse": "7.1"
+          "hindi": "हे अग्नि, कृत्तिका और रोहिणी पुकार सुनने वाली हों, मृगशिरा कल्याणकारी हो, आर्द्रा सुख दे। पुनर्वसु सत्य वाणी दें, पुष्य सुंदरता दे, आश्लेषा प्रकाश दे, मघा मुझे (उन्नति का) मार्ग दे।",
+          "translation": "Agni, may Krittika and Rohini be quick to hear; may Mrigashira be auspicious and Ardra bring peace. May Punarvasu bring kind speech, Pushya grace, Ashlesha light, and Magha a path forward for me."
         },
         {
           "number": "7.3",
           "sanskrit": "पुण्यं॒ पूर्वा॒ फल्गु॑न्यौ॒ चात्र॒ हस्त॑श्चि॒त्रा शि॒वा स्वा॒ति सु॒खो मे॑ अस्तु ।\nराधे॑ वि॒शाखे॑ सु॒हवा॑नुरा॒धा ज्येष्ठा॑ सु॒नक्ष॑त्र॒मरि॑ष्ट॒ मूल॑म् ॥",
           "transliteration": "puṇyaṃ pūrvā phalgunyau cātra hastaścitrā śivā svāti sukho me astu |\nrādhe viśākhe suhavānurādhā jyeṣṭhā sunakṣatramariṣṭa mūlam ||",
-          "translationSeeVerse": "7.1"
+          "hindi": "दोनों पूर्वा और उत्तरा फाल्गुनी पुण्य दें, हस्त और चित्रा कल्याणकारी हों, स्वाति मुझे सुख दे। राधा (अनुराधा), विशाखा और अनुराधा पुकार सुनने वाली हों, ज्येष्ठा शुभ नक्षत्र हो, मूल हानि रहित हो।",
+          "translation": "May the two Phalgunis bring merit, Hasta and Chitra be kindly, and Svati give me happiness. May Radha, Vishakha and Anuradha hear my call, Jyeshtha be a lucky star, and Mula bring no harm."
         },
         {
           "number": "7.4",
           "sanskrit": "अन्नं॒ पूर्वा॑ रासतां मे अषा॒ढा ऊर्जं॑ दे॒व्युत्त॑रा॒ आ व॑हन्तु ।\nअ॒भि॒जिन्मे॑ रासतां॒ पुण्य॑मे॒व श्रव॑णः॒ श्रवि॑ष्ठाः कुर्वतां सुपु॒ष्टिम् ॥",
           "transliteration": "annaṃ pūrvā rāsatāṃ me aṣāḍhā ūrjaṃ devyuttarā ā vahantu |\nabhijinme rāsatāṃ puṇyameva śravaṇaḥ śraviṣṭhāḥ kurvatāṃ supuṣṭim ||",
-          "translationSeeVerse": "7.1"
+          "hindi": "पूर्वाषाढ़ा मुझे अन्न दे, देवी उत्तराषाढ़ा ऊर्जा लाए। अभिजित् मुझे पुण्य ही दे, श्रवण और श्रविष्ठा (धनिष्ठा) अच्छी पुष्टि करें।",
+          "translation": "May the earlier Ashadhas give me food, and the goddess later Ashadhas bring vigour. May Abhijit grant me only merit, and Shravana and Shravishtha bring good prosperity."
         },
         {
           "number": "7.5",
           "sanskrit": "आ मे॑ म॒हच्छ॒तभि॑ष॒ग् वरी॑य॒ आ मे॑ द्व॒या प्रोष्ठ॑पदा सु॒शर्म॑ ।\nआ रे॒वती॑ चाश्व॒युजौ॒ भगं॑ म॒ आ मे॑ र॒यिं भर॑ण्य॒ आ व॑हन्तु ॥",
           "transliteration": "ā me mahacchatabhiṣag varīya ā me dvayā proṣṭhapadā suśarma |\nā revatī cāśvayujau bhagaṃ ma ā me rayiṃ bharaṇya ā vahantu ||",
-          "translationSeeVerse": "7.1"
+          "hindi": "शतभिषा मुझे महान और विस्तृत (स्वास्थ्य) दे, दोनों प्रोष्ठपदा अच्छी शरण दें। रेवती और दोनों अश्वयुज् (अश्विनी) मुझे सौभाग्य दें, और भरणी मुझे धन लाएँ।",
+          "translation": "May Shatabhishak bring me great and ample health, and the two Proshthapadas good shelter. May Revati and the two Ashvayujs bring me good fortune, and the Bharanis bring me wealth."
         },
         {
           "number": "8.1",
           "sanskrit": "यानि॒ नक्ष॑त्राणि दि॒व्य॑१न्तरि॑क्षे अ॒प्सु भूमौ॒ यानि॒ नगे॑षु दि॒क्षु ।\nप्रक॑ल्पयंश्च॒न्द्रमा॒ यान्येति॒ सर्वा॑णि॒ ममै॒तानि॑ शि॒वानि॑ सन्तु ॥",
-          "transliteration": "yāni nakṣatrāṇi divyantarikṣe apsu bhūmau yāni nageṣu dikṣu |\nprakalpayaṃścandramā yānyeti sarvāṇi mamaitāni śivāni santu ||"
+          "transliteration": "yāni nakṣatrāṇi divyantarikṣe apsu bhūmau yāni nageṣu dikṣu |\nprakalpayaṃścandramā yānyeti sarvāṇi mamaitāni śivāni santu ||",
+          "hindi": "जो नक्षत्र द्युलोक में, अंतरिक्ष में, जलों में, भूमि पर, पर्वतों पर और दिशाओं में हैं, जिनको व्यवस्थित करता हुआ चन्द्रमा चलता है, वे सब मेरे लिए कल्याणकारी हों।",
+          "translation": "The lunar mansions in the sky, in the air, in the waters, on earth, on the mountains and in the quarters, through which the moon moves setting them in order: may they all be kind to me."
         },
         {
           "number": "8.2",
           "sanskrit": "अ॒ष्टा॒विं॒शानि॑ शि॒वानि॑ श॒ग्मानि॑ स॒ह योगं॑ भजन्तु मे ।\nयोगं॒ प्र प॑द्ये॒ क्षेमं॑ च॒ क्षेमं॒ प्र प॑द्ये॒ योगं॑ च॒ नमो॑ऽहोरा॒त्राभ्या॑मस्तु ॥",
-          "transliteration": "aṣṭāviṃśāni śivāni śagmāni saha yogaṃ bhajantu me |\nyogaṃ pra padye kṣemaṃ ca kṣemaṃ pra padye yogaṃ ca namo'horātrābhyāmastu ||"
+          "transliteration": "aṣṭāviṃśāni śivāni śagmāni saha yogaṃ bhajantu me |\nyogaṃ pra padye kṣemaṃ ca kṣemaṃ pra padye yogaṃ ca namo'horātrābhyāmastu ||",
+          "hindi": "अट्ठाईस (नक्षत्र), जो कल्याणकारी और सुखद हैं, मिलकर मुझे योग (प्राप्ति) दें। मैं योग और क्षेम (प्राप्ति और रक्षा) को प्राप्त करूँ, क्षेम और योग को प्राप्त करूँ। दिन और रात को नमस्कार हो।",
+          "translation": "May the twenty-eight, kindly and gracious, together bring me gain. I take hold of gain and safety, of safety and gain. Homage to day and night."
         },
         {
           "number": "8.3",
           "sanskrit": "स्वस्ति॑तं मे सुप्रा॒तः सु॑सा॒यं सु॑दि॒वं सु॑मृ॒गं सु॑श॒कुनं॑ मे अस्तु ।\nसु॒हव॑मग्ने स्व॒स्त्य॑१मर्त्यं॑ ग॒त्वा पुन॒राया॑भि॒नन्द॑न् ॥",
-          "transliteration": "svastitaṃ me suprātaḥ susāyaṃ sudivaṃ sumṛgaṃ suśakunaṃ me astu |\nsuhavamagne svastyamartyaṃ gatvā punarāyābhinandan ||"
+          "transliteration": "svastitaṃ me suprātaḥ susāyaṃ sudivaṃ sumṛgaṃ suśakunaṃ me astu |\nsuhavamagne svastyamartyaṃ gatvā punarāyābhinandan ||",
+          "hindi": "मेरा सवेरा, संध्या और दिन शुभ हों, शिकार और पक्षियों के शकुन शुभ हों। हे अमर अग्नि, सरलता से बुलाए जाने वाले, कल्याण के साथ मनुष्य के पास जाकर प्रसन्न होते हुए फिर लौटो।",
+          "translation": "May my morning, evening and day be good, with good hunting and good omens from birds. Immortal Agni, easy to call, go to mortals with blessing and return again rejoicing."
         },
         {
           "number": "8.4",
           "sanskrit": "अ॒नु॒ह॒वं प॑रिह॒वं प॑रिवा॒दं प॑रिक्ष॒वम् ।\nसर्वै॑र्मे रिक्तकु॒म्भान् परा॒ तान् स॑वितः सुव ॥",
-          "transliteration": "anuhavaṃ parihavaṃ parivādaṃ parikṣavam |\nsarvairme riktakumbhān parā tān savitaḥ suva ||"
+          "transliteration": "anuhavaṃ parihavaṃ parivādaṃ parikṣavam |\nsarvairme riktakumbhān parā tān savitaḥ suva ||",
+          "hindi": "पीछे से पुकारना, चारों ओर से पुकारना, निंदा, और (अशुभ) छींक, खाली घड़ों (के अपशकुन) सहित, हे सविता, इन सबको दूर भेज दो।",
+          "translation": "Calls from behind and calls from around, slander and ill-omened sneezing, together with the empty pitchers: Savitar, drive them all far away."
         },
         {
           "number": "8.5",
           "sanskrit": "अ॒प॒पा॒पं प॑रिक्ष॒वं पुण्यं॑ भक्षी॒महि॒ क्षव॑म् ।\nशि॒वा ते॑ पाप॒ नासि॑कां॒ पुण्य॑गश्चा॒भि मे॑हताम् ॥",
-          "transliteration": "apapāpaṃ parikṣavaṃ puṇyaṃ bhakṣīmahi kṣavam |\nśivā te pāpa nāsikāṃ puṇyagaścābhi mehatām ||"
+          "transliteration": "apapāpaṃ parikṣavaṃ puṇyaṃ bhakṣīmahi kṣavam |\nśivā te pāpa nāsikāṃ puṇyagaścābhi mehatām ||",
+          "hindi": "हम पाप रहित छींक का, पुण्य वाली छींक का आनंद लें। हे पाप (अशुभ), तुम्हारी नासिका (अब) कल्याणकारी हो, और पुण्य (शुभ) गंध मेरी ओर बहे।",
+          "translation": "May we escape the evil sneeze and enjoy the lucky one. Bad luck, may your nostrils now be kind, and may a pleasant fragrance flow toward me."
         },
         {
           "number": "8.6",
           "sanskrit": "इ॒मा या ब्र॑ह्मणस्पते॒ विषु॑ची॒र्वात॒ ईर॑ते ।\nस॒ध्रीची॑रिन्द्र॒ ताः कृ॒त्वा मह्यं॑ शि॒वत॑मास्कृधि ॥",
-          "transliteration": "imā yā brahmaṇaspate viṣucīrvāta īrate |\nsadhrīcīrindra tāḥ kṛtvā mahyaṃ śivatamāskṛdhi ||"
+          "transliteration": "imā yā brahmaṇaspate viṣucīrvāta īrate |\nsadhrīcīrindra tāḥ kṛtvā mahyaṃ śivatamāskṛdhi ||",
+          "hindi": "हे ब्रह्मणस्पति, ये जो (ज्वालाएँ) वायु में चारों ओर बिखरी चलती हैं, हे इन्द्र, उन्हें एक साथ मिलाकर मेरे लिए सबसे अधिक कल्याणकारी बना दो।",
+          "translation": "Brahmanaspati, these flames that the wind scatters in every direction: Indra, bring them together and make them most kindly toward me."
         },
         {
           "number": "8.7",
           "sanskrit": "स्व॒स्ति नो॑ अ॒स्त्वभ॑यं नो अस्तु॒ नमो॑ऽहोर॒त्राभ्या॑मस्तु ॥",
-          "transliteration": "svasti no astvabhayaṃ no astu namo'horatrābhyāmastu ||"
+          "transliteration": "svasti no astvabhayaṃ no astu namo'horatrābhyāmastu ||",
+          "hindi": "हमारा कल्याण हो, हमें अभय हो। दिन और रात को नमस्कार हो।",
+          "translation": "May there be well-being for us, may there be freedom from fear. Homage to day and night."
         },
         {
           "number": "9.1",
