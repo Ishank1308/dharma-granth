@@ -126,12 +126,14 @@ export interface AlignmentOptions {
  * no one, so the name test has nothing to measure. The same holds for the Taittiriya and Kaushitaki passages written there
  * (2026-11-10): their passages are long prose, so any verse shares words with any meaning (Hindi baseline 0.81 and 0.56) and the
  * word test cannot tell its own meaning from another's, though each matches its own verse (1.00).
+ * Griffith's Atharvaveda Kanda 20 (2026-11-10) is almost all Indra and Soma hymns, so the same few names sit on every
+ * passage (own 0.84 against baseline 0.52) and the test hid 141 passages that match their hymns when read.
  * Two only trip the repeat test: the Samaveda repeats a mantra with variant spelling under the same Hindi, and the
  * Durga Saptashati's printed Hindi spans groups of verses (its 27 repeated lines are listed for editorial review).
  */
 export const ALIGNMENT_EXEMPT: Record<Field, ReadonlySet<string>> = {
   hindi: new Set(['maitri', 'chandogya', 'mundaka', 'samaveda', 'durgasaptashati', 'taittiriya', 'kaushitaki']),
-  translation: new Set(['maitri', 'chandogya', 'mundaka', 'yajurveda', 'yogasutra', 'naradabhaktisutra', 'shandilyabhaktisutra', 'taittiriya', 'kaushitaki', 'yogarasayanam', 'shivaswarodaya', 'shivasamhita']),
+  translation: new Set(['maitri', 'chandogya', 'mundaka', 'yajurveda', 'yogasutra', 'naradabhaktisutra', 'shandilyabhaktisutra', 'taittiriya', 'kaushitaki', 'yogarasayanam', 'shivaswarodaya', 'shivasamhita', 'atharvaveda']),
 };
 
 /** The fields `scriptureId` is exempt from, for AlignmentOptions.skipFields. */
