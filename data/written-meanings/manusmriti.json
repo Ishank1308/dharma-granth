@@ -1,5 +1,5 @@
 {
-  "note": "Original Hindi and English meanings for Manusmriti adhyayas 1-4 and 11.265, written from the Sanskrit.",
+  "note": "Original Hindi and English meanings for Manusmriti, written from the Sanskrit: adhyayas 1-4 in full, and single verses elsewhere (8.27, 11.265).",
   "keyFormat": "chapter:verse",
   "meanings": {
     "1:1.1": {
@@ -3661,6 +3661,10 @@
     "11:11.265": {
       "hindi": "जो आदि में स्थित तीन अक्षरों वाला ब्रह्म (ॐ) है, जिसमें तीनों वेद प्रतिष्ठित हैं, वह दूसरा, गुप्त त्रिविध वेद है; जो उसे जानता है वही वेद का ज्ञाता है।",
       "translation": "The primal syllable of three sounds, Om, in which the triple Veda is founded, is another, secret triple Veda; he who knows it truly knows the Veda."
+    },
+    "8:8.27": {
+      "hindi": "नाबालिग का उत्तराधिकार में मिला धन राजा तब तक सुरक्षित रखे जब तक वह गुरुकुल से लौट न आए या उसकी बाल्यावस्था बीत न जाए।",
+      "translation": "The king should keep safe the inherited property of a minor until the boy has returned from his teacher's house or has passed out of childhood."
     }
   }
 }
