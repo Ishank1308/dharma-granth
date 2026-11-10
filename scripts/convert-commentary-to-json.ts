@@ -21,7 +21,7 @@ const PILOT = loadPilotOverlay();
 
 const SRC = path.resolve("data/hi-commentary");
 const OUT = path.resolve("public/data/hi-commentary");
-const MAX_TOTAL_MB = 40; // sanity cap on the sum of all files; each file is far below Cloudflare's 25 MiB limit
+const MAX_TOTAL_MB = 60; // sanity cap on the sum of all files; each file is far below Cloudflare's 25 MiB limit
 
 async function safeWrite(filePath: string, data: string) {
   let tries = 0;
