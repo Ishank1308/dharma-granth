@@ -3,8 +3,8 @@
  * page loads up front, read from the exported HTML itself. `nomodule` scripts (legacy polyfills)
  * are not counted, because modern browsers skip them.
  *
- *   node scripts/check-js-budget.mjs            report only (runs after every build)
- *   node scripts/check-js-budget.mjs --strict   exit 1 when a page is over budget
+ *   node scripts/check-js-budget.mjs            report only
+ *   node scripts/check-js-budget.mjs --strict   exit 1 when a page is over budget (npm run check:js-budget, after every build)
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,10 +14,14 @@ const root = process.cwd();
 const dist = path.resolve(root, process.env.NEXT_DIST_DIR || 'dist');
 const strict = process.argv.includes('--strict');
 
-/** Budgets in KB gzip. Reading pages carry the audit's 150 KB target. */
+/**
+ * Budgets in KB gzip. The audit's target for reading pages was 150 KB; about 118 KB of every page is React,
+ * the Next runtime and the layout, so the reader pages are held at their 2026-11 size (chapter 211 KB, verse
+ * 180 KB) plus a few KB of headroom, and the build fails if they grow back.
+ */
 const PAGES = [
-  { path: '/scripture/bhagavadgita/chapter/2/', budget: 150, label: 'chapter (reading)' },
-  { path: '/scripture/bhagavadgita/chapter/2/verse/47/', budget: 150, label: 'verse (reading)' },
+  { path: '/scripture/bhagavadgita/chapter/2/', budget: 215, label: 'chapter (reading)' },
+  { path: '/scripture/bhagavadgita/chapter/2/verse/47/', budget: 185, label: 'verse (reading)' },
   { path: '/', budget: 200, label: 'home' },
   { path: '/wisdom-for-life/anger/', budget: 180, label: 'topic hub' },
 ];
