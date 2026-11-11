@@ -40,7 +40,7 @@ import { showSabdaPeek } from '@/lib/prana-capsule-store';
 import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';
 import type { VerseInsight } from '@/lib/verse-insights';
 import { EDITORIAL_DRAFT_LABEL, STUDY_TRANSLATION_SHORT } from '@/lib/editorial-terminology';
-import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
+import type { LiteraryVerseMeta } from '@/lib/literary-commentary';
 import type { ReadingDepth } from '@/lib/reading-depth';
 import { ActionMenu } from '@/app/components/primitives/ActionMenu';
 import { Collapsible } from '@/app/components/primitives/Collapsible';
@@ -145,6 +145,8 @@ interface Props {
   verse: VerseCardData;
   /** Existing, approved editorial connections; the server passes at most three. */
   relatedTeachings?: Connection[];
+  /** This verse's curated editorial layer, when one exists; the chapter page resolves it on the server. */
+  literaryMeta?: LiteraryVerseMeta;
   meaning: VerseMeaning;
   layers: VerseLayers;
   scriptureId: string;
@@ -271,10 +273,29 @@ function PendingMeaning({ lang, children }: { lang: 'hi' | 'en'; children: React
 const iconButton =
   'inline-flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full border border-transparent text-dharma-muted/80 transition-colors duration-200 hover:bg-dharma-card-soft hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500';
 
+/** Same shape as lib/literary-commentary's empty layer, kept here so the card does not import the map. */
+const UNCURATED_LITERARY: LiteraryVerseMeta = {
+  isCurated: false,
+  editorialStatus: 'draft',
+  editorialLabel: 'Editorial · Not Scripture',
+  coreShiftEn: '',
+  coreShiftHi: '',
+  situationalMoments: [],
+  misreadingEn: '',
+  misreadingHi: '',
+  deeperTruthEn: '',
+  deeperTruthHi: '',
+  humanQuestionEn: '',
+  humanQuestionHi: '',
+  microPracticeEn: '',
+  microPracticeHi: '',
+};
+
 export function VerseCard({
   depth = 'study',
   verse: v,
   relatedTeachings,
+  literaryMeta: curatedLiterary,
   meaning,
   layers,
   scriptureId,
@@ -396,9 +417,7 @@ export function VerseCard({
   const [storyDeckOpen, setStoryDeckOpen] = useState(false);
   const storyDeckLoaded = useEverTrue(storyDeckOpen);
   const citationLoaded = useEverTrue(citationModalOpen);
-  const literaryMeta = useMemo(() => {
-    return getLiteraryVerseMeta(scriptureId, chapterId, v.number);
-  }, [scriptureId, chapterId, v.number]);
+  const literaryMeta = curatedLiterary ?? UNCURATED_LITERARY;
 
   // ── Sandhi-Viccheda (Compound Split Words) ──
   const [isSandhiSplit, setIsSandhiSplit] = useState(false);
