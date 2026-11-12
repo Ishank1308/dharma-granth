@@ -234,7 +234,7 @@ export default function PradoshPage() {
             &larr; मुख्य पंचांग
           </Link>
           <Link
-            href="/festivals/mahashivratri/"
+            href="/festivals/shivaratri/"
             className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-blue-600/40 bg-blue-50 px-4 py-2 text-xs font-semibold text-blue-800 hover:bg-blue-100 transition dark:bg-blue-950/40 dark:text-blue-300"
           >
             महाशिवरात्रि दर्शन &rarr;
