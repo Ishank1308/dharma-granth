@@ -30,6 +30,15 @@
   ! Cache-Control
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
 
+# Next's client router loads each page's RSC payload from <page>/index.txt. The payload repeats the page's text
+# but cannot carry <link rel="canonical">, so Google reported these files as "Duplicate without user-selected
+# canonical". They are data for the router, never a page to index. (The first rule covers the home page,
+# because the splat in the second needs at least one path segment.)
+/index.txt
+  X-Robots-Tag: noindex
+/*/index.txt
+  X-Robots-Tag: noindex
+
 # The service worker must always be revalidated so updates reach users.
 /sw.js
   ! Cache-Control
