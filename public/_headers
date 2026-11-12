@@ -30,6 +30,14 @@
   ! Cache-Control
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
 
+# Next's RSC payloads (one index.txt per page, fetched with ?_rsc= on navigation) repeat
+# each page's text with no canonical, so Google flags them "Duplicate without
+# user-selected canonical". Keep them crawlable but out of the index.
+/index.txt
+  X-Robots-Tag: noindex
+/*/index.txt
+  X-Robots-Tag: noindex
+
 # The service worker must always be revalidated so updates reach users.
 /sw.js
   ! Cache-Control

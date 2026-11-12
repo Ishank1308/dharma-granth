@@ -7,7 +7,10 @@
 //      Cache-Control with `! Cache-Control` so they never merge with the HTML rule;
 //   3. the shared header links all six primary routes, and its English and Hindi
 //      labels are separate elements, so crawlers never read "Homeमुख";
-//   6. canonicals, internal links and _redirects targets keep their trailing slash.
+//   6. canonicals, internal links and _redirects targets keep their trailing slash;
+//      every indexable page names itself as canonical, and Next's RSC payloads
+//      (index.txt) are noindex, so Search Console never reports
+//      "Duplicate without user-selected canonical".
 // Rule 4 (whole verses) is covered by check:export (verse counts per chapter) and
 // check-wisdom.ts (cited ranges quoted in full).
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
@@ -87,6 +90,11 @@ for (const file of ['public/_headers', join(DIST.slice(ROOT.length + 1), '_heade
     if (pattern === '/*' || cache(pattern).length === 0) continue;
     if (lines[0] !== '! Cache-Control') fail('headers', `${file}: ${pattern} sets Cache-Control without first resetting it ("! Cache-Control"), so it merges with the HTML rule`);
   }
+  for (const pattern of ['/index.txt', '/*/index.txt']) {
+    if (!(rules.get(pattern) ?? []).some((l) => /^X-Robots-Tag:\s*noindex/i.test(l))) {
+      fail('headers', `${file}: ${pattern} must set "X-Robots-Tag: noindex" (RSC payloads repeat page text without a canonical)`);
+    }
+  }
 }
 
 // ── 3. One shared header: primary routes, bilingual labels kept apart ──
@@ -154,6 +162,7 @@ const isFile = (path) =>
 const needsSlash = (path) => !path.endsWith('/') && !isFile(path);
 {
   const badCanonical = [];
+  const missingCanonical = [];
   const badLinks = new Map();
   for (const page of htmlPages()) {
     const html = readFileSync(page, 'utf8');
@@ -162,13 +171,17 @@ const needsSlash = (path) => !path.endsWith('/') && !isFile(path);
     if (canonical) {
       const ok = canonical.startsWith(`${ORIGIN}/`) && !needsSlash(new URL(canonical).pathname) && !/[?#]/.test(canonical);
       if (!ok) badCanonical.push(`${route} → ${canonical}`);
-    }
+      else if (!/<meta\s+name="robots"\s+content="noindex/.test(html) && new URL(canonical).pathname !== encodeURI(decodeURI(route))) {
+        badCanonical.push(`${route} → ${canonical} (an indexable page must name itself)`);
+      }
+    } else if (!/<meta\s+name="robots"\s+content="noindex/.test(html)) missingCanonical.push(route);
     for (const m of html.matchAll(/<a\b[^>]*\shref="(\/[^"]*)"/g)) {
       const path = m[1].split(/[?#]/)[0];
       if (path.startsWith('//') || !needsSlash(path)) continue;
       if (!badLinks.has(path)) badLinks.set(path, route);
     }
   }
+  if (missingCanonical.length) fail('canonical', `${missingCanonical.length} indexable page(s) have no <link rel="canonical">, e.g. ${missingCanonical.slice(0, 5).join(', ')}`);
   if (badCanonical.length) fail('slash', `${badCanonical.length} canonical(s) off-origin or without a trailing slash, e.g. ${badCanonical.slice(0, 3).join('; ')}`);
   if (badLinks.size) {
     fail('slash', `${badLinks.size} internal link target(s) lack a trailing slash (Cloudflare answers each with a 308):`);
