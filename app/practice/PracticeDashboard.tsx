@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { retryImport } from '@/lib/retry-import';
 import Link from 'next/link';
 import { PageHeader } from '@/app/components/apple/PageHeader';
-import { Lock, Trash2, Bookmark, NotebookPen, ScrollText } from 'lucide-react';
+import { Bookmark, NotebookPen, ScrollText } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 
 const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((m) => m.DailyVerse)));
@@ -13,8 +13,6 @@ const ReadingPlan = dynamic(() => retryImport(() => import('@/app/components/pra
 const JapaMala = dynamic(() => retryImport(() => import('@/app/components/practice/JapaMala').then((m) => m.JapaMala)));
 const MeditationTimer = dynamic(() => retryImport(() => import('@/app/components/practice/MeditationTimer').then((m) => m.MeditationTimer)));
 const PranayamaPacer = dynamic(() => retryImport(() => import('@/app/components/practice/PranayamaPacer').then((m) => m.PranayamaPacer)));
-const PrivacyLockBanner = dynamic(() => retryImport(() => import('@/app/components/practice/PrivacyLockBanner').then((m) => m.PrivacyLockBanner)));
-const BackupRestore = dynamic(() => retryImport(() => import('@/app/components/BackupRestore').then((m) => m.BackupRestore)));
 
 /**
  * Streamlined, calm daily spiritual practice (साधना) sanctuary:
@@ -66,48 +64,12 @@ export function PracticeDashboard() {
     'dharma.practice.tools',
     DEFAULT_ENABLED,
   );
-  const [pin] = useLocalStorage<string | null>('dharma.practice.pin', null);
-  const [isLocked] = useLocalStorage<boolean>('dharma.practice.is_locked', false);
 
   function toggle(id: ToolId) {
     setEnabled({ ...enabled, [id]: !enabled[id] });
   }
 
   const on = (id: ToolId) => enabled[id] !== false;
-
-  function handleDeleteAllData() {
-    if (
-      window.confirm(
-        'क्या आप साधना का सारा निजी डेटा (जप, ध्यान, संकल्प, डायरी) हटाना चाहते हैं?\n\nAre you sure you want to delete all local Sadhana data from this browser? This action cannot be undone.',
-      )
-    ) {
-      const keysToDelete = [
-        'dharma.practice.tools',
-        'dharma.practice.japa',
-        'dharma.practice.japa.sound',
-        'dharma.practice.japa.vibration',
-        'dharma.practice.meditation',
-        'dharma.practice.meditation.sound',
-        'dharma.practice.pranayama',
-        'dharma.practice.pranayama.vibration',
-        'dharma.practice.reflections',
-        'dharma.practice.sankalpa',
-        'dharma.practice.pin',
-        'dharma.practice.is_locked',
-        'dharma.practice.last_backup',
-        'dharma.japa.count',
-        'dharma.japa.malas',
-        'dharma.sankalpa',
-        'dharma.reflection',
-      ];
-      keysToDelete.forEach((key) => {
-        try {
-          localStorage.removeItem(key);
-        } catch {}
-      });
-      window.location.reload();
-    }
-  }
 
   return (
     <main className="apple-scope min-h-screen bg-dharma-bg pb-16 text-dharma-text">
@@ -118,15 +80,11 @@ export function PracticeDashboard() {
         titleHi="शान्त मन, पवित्र अभ्यास"
         lead={
           <p>
-            <span>108-bead japa counter, quiet meditation, sacred pranayama, and scripture reflection. Private on your device.</span>{' '}
-            <span lang="hi" className="font-devanagari">108 मनका जप, शान्त ध्यान, प्राणायाम व दैनिक चिन्तन। पूर्णतः निजी व विज्ञापन-रहित।</span>
+            <span>108-bead japa counter, quiet meditation, sacred pranayama, and scripture reflection.</span>{' '}
+            <span lang="hi" className="font-devanagari">108 मनका जप, शान्त ध्यान, प्राणायाम व दैनिक चिन्तन।</span>
           </p>
         }
       >
-        <p className="mt-3 inline-flex items-center gap-1.5 text-footnote text-dharma-muted">
-          <Lock className="h-3.5 w-3.5" aria-hidden="true" />
-          <span>Everything stays on this device. No account.</span>
-        </p>
       </PageHeader>
 
       <div className="mx-auto max-w-content space-y-10 px-gutter pt-8">
@@ -149,22 +107,8 @@ export function PracticeDashboard() {
           ))}
         </nav>
 
-        {/* Privacy, PIN Lock & Backup Notification Banner */}
-        <PrivacyLockBanner />
 
         {/* If PIN is set and dashboard is locked, hide private practices */}
-        {pin && isLocked ? (
-          <div className="apple-card p-8 text-center text-dharma-muted">
-            <Lock className="mx-auto mb-2 h-8 w-8 text-dharma-muted" />
-            <p className="text-sm font-semibold text-dharma-text">
-              निजी अभ्यास व डायरी पिन द्वारा सुरक्षित हैं
-            </p>
-            <p className="text-xs text-dharma-muted mt-1">
-              उपरोक्त अनलॉक बॉक्स में पिन दर्ज करके अपनी साधना का अवलोकन करें।
-            </p>
-          </div>
-        ) : (
-          <>
             {/* Streamlined Tool Picker */}
             <section aria-labelledby="practice-tools-heading">
               <h2 id="practice-tools-heading" className="text-title-2 font-semibold text-dharma-text">
@@ -172,7 +116,7 @@ export function PracticeDashboard() {
                 <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">दैनिक साधन</span>
               </h2>
               <p className="mt-1 text-subhead text-dharma-muted">
-                <span>Choose which practices to keep active. Stays on this device.</span>{' '}
+                <span>Choose which practices to keep active.</span>{' '}
                 <span lang="hi" className="font-devanagari">आवश्यकतानुसार साधन सक्रिय करें।</span>
               </p>
               <div className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2">
@@ -224,29 +168,6 @@ export function PracticeDashboard() {
               {on('reflection') && <DailyReflection />}
               {on('reading') && <ReadingPlan />}
             </div>
-          </>
-        )}
-
-        {/* Private Backup, Restore & Clear Controls */}
-        <div className="space-y-4 border-t border-dharma-text/10 pt-8">
-          <BackupRestore />
-          <div className="flex justify-end pt-2">
-            <button
-              type="button"
-              onClick={handleDeleteAllData}
-              className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-4 text-[14px] text-rose-700 transition hover:bg-rose-500/10 dark:text-rose-400"
-            >
-              <Trash2 className="h-3.5 w-3.5" />
-              <span>Reset Sadhana data</span>{' '}
-              <span lang="hi" className="font-devanagari">साधना डेटा हटाएँ</span>
-            </button>
-          </div>
-        </div>
-
-        <p className="pb-4 text-center text-footnote text-dharma-muted">
-          <span lang="hi" className="font-devanagari">साधना आत्मा का एकान्त है।</span>{' '}
-          <span>Practice notes stay on this device; clearing browser data can erase them.</span>
-        </p>
       </div>
     </main>
   );
