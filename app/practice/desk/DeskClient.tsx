@@ -18,6 +18,7 @@ import { SavedConcepts } from './SavedConcepts';
 import { StorageInfo } from './StorageInfo';
 import { useConnectivity } from '@/lib/useConnectivity';
 import { readHref } from '@/lib/verse-paths';
+import { parseStored } from '@/lib/safe-stored';
 
 const NOTES_KEY = 'dharma.notes';
 const QUEUE_KEY = 'dharma.desk.queue';
@@ -32,8 +33,7 @@ interface PinRecord { salt: string; hash: string }
 
 function getJSON<T>(key: string, fallback: T): T {
   try {
-    const v: unknown = JSON.parse(localStorage.getItem(key) ?? 'null');
-    return (v ?? fallback) as T;
+    return parseStored<T>(localStorage.getItem(key), fallback);
   } catch {
     return fallback;
   }
@@ -78,7 +78,7 @@ export function DeskClient() {
   const [msg, setMsg] = useState('');
 
   const load = useCallback(() => {
-    setNotes(getJSON<Note[]>(NOTES_KEY, []));
+    setNotes(getJSON<Note[]>(NOTES_KEY, []).filter((n) => typeof n === 'object'));
     setQueue(getJSON<QueueItem[]>(QUEUE_KEY, []));
     setRecent(readRecentChapters());
     setJourneyProgress(getJSON<Record<string, string[]>>(JOURNEYS_KEY, {}));

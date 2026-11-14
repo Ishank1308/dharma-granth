@@ -987,7 +987,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                   <div className="h-4 w-24 rounded bg-dharma-border/80" />
                 </div>
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex flex-wrap items-center gap-1.5">
                 {[0, 1, 2, 3].map((btn) => (
                   <div key={btn} className="h-9 w-9 rounded-full bg-dharma-border/60" />
                 ))}
@@ -1127,7 +1127,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
             quick inline language toggles (हिन्दी/EN/IAST), 1-tap verse jump, typography (Aa), and options */}
         <div className="sticky top-[52px] z-30 -mx-2 mb-4 border-b border-dharma-border/60 bg-dharma-bg/92 px-2 py-1.5 backdrop-blur-md sm:mb-6 sm:pb-2.5 sm:pt-2">
           {/* One row on phones (360px up): the chapter number and the Options label show from sm. */}
-          <div className="flex flex-nowrap items-center justify-between gap-1.5 sm:flex-wrap sm:gap-2">
+          <div className="flex flex-wrap items-center justify-between gap-1.5 sm:gap-2">
             <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
               <p className="text-xs text-dharma-muted truncate">
                 <span className="sr-only">पूर्ण अध्याय पाठ · </span>
@@ -1192,7 +1192,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               )}
             </div>
 
-            <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+            <div className="flex min-w-0 flex-wrap items-center gap-1 sm:gap-2">
               {/* Quick Language Layer Chips on desktop/tablet */}
               <div
                 className="hidden md:inline-flex items-center rounded-full border border-dharma-border/80 bg-dharma-bg/70 p-0.5 text-xs font-semibold"

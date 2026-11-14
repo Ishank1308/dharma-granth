@@ -185,7 +185,7 @@ export default async function ScripturePage(props: PageProps) {
       {/* The scripture opens like a book, in its own colours and emblem (lib/scripture-vibes). */}
       <section className="scripture-vibe-hero relative isolate overflow-hidden border-b border-dharma-border/60 py-6 text-dharma-text sm:py-10" style={{ '--cover-1': vibe.cover[0], '--cover-2': vibe.cover[1], '--cover-3': vibe.cover[2] } as CSSProperties}>
         <Motif id={vibe.motif} className="pointer-events-none absolute -right-10 -top-10 -z-10 h-[420px] w-[420px] text-[color:var(--cover-2)] opacity-[0.07]" />
-        <div className="relative mx-auto grid max-w-5xl items-center gap-8 px-6 lg:grid-cols-[1fr_auto]">
+        <div className="relative mx-auto grid max-w-5xl grid-cols-1 items-center gap-8 px-6 lg:grid-cols-[1fr_auto]">
         {/* Title and description first; on phones the book illustration follows them. */}
         <div>
           <FadeUp>

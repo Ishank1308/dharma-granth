@@ -184,6 +184,8 @@ export function CalendarClient() {
   );
 
   const [urlParamsChecked, setUrlParamsChecked] = useState(false);
+  // Set when today falls outside the years this calendar covers.
+  const [range, setRange] = useState<'before' | 'after' | null>(null);
 
   // Sync state from URL query parameters on mount (?year=2026&month=11&date=2026-11-08)
   useEffect(() => {
@@ -205,8 +207,31 @@ export function CalendarClient() {
       }
       const rawYear = Number(sp.get('year'));
       const rawMonth = Number(sp.get('month'));
-      if (rawYear >= 2026 && rawYear <= 2028) setYear(rawYear);
-      if (rawMonth >= 1 && rawMonth <= 12) setMonth(rawMonth - 1);
+      if (rawYear >= 2026 && rawYear <= 2028 && rawMonth >= 1 && rawMonth <= 12) {
+        setYear(rawYear);
+        setMonth(rawMonth - 1);
+        setSelectedDateIso(`${rawYear}-${String(rawMonth).padStart(2, '0')}-01`);
+        return;
+      }
+      // No link to a date: open on the reader's today. The static HTML shows Diwali 2026
+      // until this runs; outside 2026 to 2028 the nearest end opens with a note.
+      const now = new Date();
+      const ty = now.getFullYear();
+      if (ty > 2028) {
+        setRange('after');
+        setYear(2028);
+        setMonth(11);
+        setSelectedDateIso('2028-12-31');
+      } else if (ty < 2026) {
+        setRange('before');
+        setYear(2026);
+        setMonth(0);
+        setSelectedDateIso('2026-01-01');
+      } else {
+        setYear(ty);
+        setMonth(now.getMonth());
+        setSelectedDateIso(`${ty}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`);
+      }
     } catch {
       // Ignore in non-browser env
     }
@@ -328,10 +353,18 @@ export function CalendarClient() {
     const curYear = now.getFullYear();
     const curMonth = now.getMonth();
     const curDay = now.getDate();
-    const validYear = Math.max(2026, Math.min(2028, curYear));
-    setYear(validYear);
+    if (curYear > 2028 || curYear < 2026) {
+      // Out of range: the nearest end, not the same month of the wrong year.
+      const after = curYear > 2028;
+      setRange(after ? 'after' : 'before');
+      setYear(after ? 2028 : 2026);
+      setMonth(after ? 11 : 0);
+      setSelectedDateIso(after ? '2028-12-31' : '2026-01-01');
+      return;
+    }
+    setYear(curYear);
     setMonth(curMonth);
-    setSelectedDateIso(`${validYear}-${String(curMonth + 1).padStart(2, '0')}-${String(curDay).padStart(2, '0')}`);
+    setSelectedDateIso(`${curYear}-${String(curMonth + 1).padStart(2, '0')}-${String(curDay).padStart(2, '0')}`);
   };
 
   // Keyboard arrow navigation between days
@@ -413,6 +446,19 @@ export function CalendarClient() {
 
   return (
     <div className="fc-root space-y-6 sm:space-y-8">
+      {range && (
+        <p role="status" className="apple-card px-4 py-3 text-footnote text-label-secondary">
+          <span lang="hi">यह पंचांग 2026 से 2028 तक के दिन दिखाता है।</span>{' '}
+          <span>
+            This calendar covers 2026 to 2028, so it opens on {range === 'after' ? 'its last' : 'its first'} day. Today&rsquo;s
+            tithi and nakshatra are on the{' '}
+            <Link href="/panchang/" className="font-semibold underline">
+              Panchang page
+            </Link>
+            .
+          </span>
+        </p>
+      )}
       {/* ─── TOOLBAR: month, navigation, year, place, filters ─────────────── */}
       <div className="apple-card p-4 sm:p-6">
         <div className="flex items-center justify-between gap-3">

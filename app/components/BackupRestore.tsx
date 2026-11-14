@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Download, Upload } from 'lucide-react';
 import { createBackup, restoreBackup, type BackupRestoreMode } from '@/lib/backup';
 
@@ -9,7 +9,6 @@ const MAX_BACKUP_BYTES = 5 * 1024 * 1024;
 /** Export / import of local bookmarks, notes, settings and reading/practice progress. */
 export function BackupRestore() {
   const fileInput = useRef<HTMLInputElement>(null);
-  const groupId = useId();
   const [mode, setMode] = useState<BackupRestoreMode>('merge');
   const [message, setMessage] = useState('');
 
@@ -78,12 +77,12 @@ export function BackupRestore() {
 
       <fieldset className="mt-4 grid gap-2 sm:grid-cols-2">
         <legend className="mb-2 text-sm font-semibold text-dharma-text">Import behavior · आयात विकल्प</legend>
-        <label htmlFor={`${groupId}-merge`} className="flex cursor-pointer items-start gap-2 rounded-field bg-dharma-text/[0.04] p-3 text-sm">
-          <input id={`${groupId}-merge`} type="radio" name={`${groupId}-mode`} value="merge" checked={mode === 'merge'} onChange={() => setMode('merge')} className="mt-0.5 h-5 w-5 shrink-0 accent-orange-700" />
+        <label className="flex cursor-pointer items-start gap-2 rounded-field bg-dharma-text/[0.04] p-3 text-sm">
+          <input type="radio" name="backup-restore-mode" value="merge" checked={mode === 'merge'} onChange={() => setMode('merge')} className="mt-0.5 h-5 w-5 shrink-0 accent-orange-700" />
           Merge · मिलाएँ — Keep other local entries; imported values replace matching keys.
         </label>
-        <label htmlFor={`${groupId}-replace`} className="flex cursor-pointer items-start gap-2 rounded-field bg-dharma-text/[0.04] p-3 text-sm">
-          <input id={`${groupId}-replace`} type="radio" name={`${groupId}-mode`} value="replace" checked={mode === 'replace'} onChange={() => setMode('replace')} className="mt-0.5 h-5 w-5 shrink-0 accent-orange-700" />
+        <label className="flex cursor-pointer items-start gap-2 rounded-field bg-dharma-text/[0.04] p-3 text-sm">
+          <input type="radio" name="backup-restore-mode" value="replace" checked={mode === 'replace'} onChange={() => setMode('replace')} className="mt-0.5 h-5 w-5 shrink-0 accent-orange-700" />
           Replace · बदलें — Remove all current Dharma Granth data before importing.
         </label>
       </fieldset>

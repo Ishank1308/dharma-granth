@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { Sparkles, Compass } from 'lucide-react';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { ConceptGraph } from '@/app/components/ConceptGraph';
-import { FadeUp } from '@/app/components/motion/primitives';
 import { concepts } from '@/data/concepts';
 import { getAllConceptDetails, getConceptDetail } from '@/data/concept-details';
 import { GRAPH_CONCEPTS } from '@/data/knowledge-graph';
 import { graphConceptLink } from '@/lib/knowledge-graph';
+import { PageHeader } from '@/app/components/apple/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Dharmic Concepts & Philosophy Explained (शास्त्रीय अवधारणा ज्ञान ग्राफ)',
@@ -63,24 +63,18 @@ export default function ConceptsPage() {
 
   return (
     <main className="min-h-screen bg-dharma-bg">
-      {/* ── Hero ─────────────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-br from-saffron-900 via-saffron-800 to-amber-900 text-white py-16 overflow-hidden">
-        <div className="absolute inset-0 mandala-bg opacity-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-        <div className="max-w-6xl mx-auto px-6 relative">
-          <FadeUp>
-            <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-saffron-200 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              तत्त्वमीमांसा — ज्ञान ग्राफ (Knowledge Graph)
-            </p>
-            <h1 className="text-5xl font-serif font-bold mb-4">
-              अवधारणा ज्ञान ग्राफ (Concept Knowledge Graph)
-            </h1>
-            <p className="text-xl opacity-90 max-w-2xl">
+      <PageHeader
+        width="wide"
+        eyebrow="Knowledge graph"
+        eyebrowHi="तत्त्वमीमांसा"
+        title="Concept Knowledge Graph"
+        titleHi="अवधारणा ज्ञान ग्राफ"
+        lead={
+          <p lang="hi" className="font-devanagari">
               ग्राफ में {concepts.length} नाम हैं। चुनने पर संक्षिप्त विवरण और दर्ज संदर्भ खुलते हैं। अलग लेख केवल वहीं खुलता है जहाँ वह लिखा गया है।
             </p>
-          </FadeUp>
-        </div>
-      </section>
+        }
+      />
 
       <nav aria-label="पच्चीस मूल अवधारणाएँ" className="max-w-6xl mx-auto px-6 pt-8">
         <h2 className="font-serif text-xl font-bold text-dharma-text">
@@ -106,7 +100,7 @@ export default function ConceptsPage() {
       </nav>
 
       {/* ── Graph ────────────────────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 -mt-8 relative z-10 pb-12">
+      <section className="max-w-6xl mx-auto px-6 pt-6 relative z-10 pb-12">
         <div className="bg-dharma-card/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-dharma-border p-4 sm:p-6 md:p-8">
           <ConceptGraph articleIds={articleIds} />
         </div>
@@ -114,11 +108,11 @@ export default function ConceptsPage() {
 
       {/* ── Visual Learning Layer Feature Banner ─────────────────── */}
       <section className="max-w-6xl mx-auto px-6 pb-12">
-        <div className="rounded-3xl border border-saffron-500/40 bg-gradient-to-r from-amber-950/40 via-saffron-950/30 to-neutral-950 p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="apple-card flex flex-col items-center justify-between gap-6 p-6 sm:p-8 md:flex-row">
           <div className="space-y-2 max-w-2xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 font-bold text-xs border border-saffron-500/20">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>चरण 10 · Interactive Visual Learning Layer</span>
+              <span lang="hi" className="font-devanagari">दृश्य अन्वेषक</span> <span aria-hidden="true">·</span> <span>Visual explorer</span>
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
               दृश्य ज्ञान दर्शन — 10 मूल तत्त्वों के पवित्र आरेख
@@ -129,8 +123,8 @@ export default function ConceptsPage() {
             </p>
           </div>
           <Link
-            href="/concepts/visuals"
-            className="focus-ring inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-saffron-600 to-amber-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg hover:from-saffron-700 hover:to-amber-700 transition-all shrink-0 min-h-[48px]"
+            href="/concepts/visuals/"
+            className="apple-pill shrink-0"
           >
             <Compass className="w-4 h-4" />
             <span>दृश्य अन्वेषक खोलें (Open Visual Explorer)</span>
@@ -159,7 +153,7 @@ export default function ConceptsPage() {
               className="group rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-sm hover:shadow-md hover:border-saffron-500/40 transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                   <div>
                     <h3 className="text-xl font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-400 transition-colors flex items-baseline gap-2">
                       <span lang="sa" className="font-devanagari text-2xl text-saffron-600 dark:text-saffron-400">
@@ -207,11 +201,11 @@ export default function ConceptsPage() {
             वेदान्त का लेख इस सूची में है। ये चार पृष्ठ भी उसी पढ़ने से जुड़े हैं।
           </p>
           <ul className="mt-3 flex flex-wrap gap-3 text-sm">
-            <li><Link href="/concepts/vedanta" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">वेदान्त</Link></li>
-            <li><Link href="/concepts/brahman" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">ब्रह्म</Link></li>
-            <li><Link href="/concepts/atman" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">आत्मा</Link></li>
-            <li><Link href="/concepts/maya" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">माया</Link></li>
-            <li><Link href="/concepts/moksha" className="inline-flex min-h-[44px] items-center font-semibold text-saffron-800 underline underline-offset-2">मोक्ष</Link></li>
+            <li><Link href="/concepts/vedanta" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">वेदान्त</Link></li>
+            <li><Link href="/concepts/brahman" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">ब्रह्म</Link></li>
+            <li><Link href="/concepts/atman" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">आत्मा</Link></li>
+            <li><Link href="/concepts/maya" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">माया</Link></li>
+            <li><Link href="/concepts/moksha" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">मोक्ष</Link></li>
           </ul>
         </div>
       </section>

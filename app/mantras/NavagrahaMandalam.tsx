@@ -294,7 +294,7 @@ export function NavagrahaMandalam({ inlineOnly = false }: { inlineOnly?: boolean
             >
               <div>
                 {/* Header */}
-                <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                   <div className="flex items-center gap-2.5">
                     <span className="flex h-7 w-7 items-center justify-center rounded-full bg-dharma-bg border border-dharma-border text-xs font-bold text-dharma-text">
                       {graha.number}

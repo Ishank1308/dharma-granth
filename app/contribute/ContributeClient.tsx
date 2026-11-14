@@ -444,7 +444,7 @@ export function ContributeClient() {
             </p>
 
             {/* QR Code Container with Saffron Frame */}
-            <div className="relative mt-5 flex h-64 w-64 items-center justify-center rounded-2xl border-2 border-saffron-500/40 bg-white p-3 shadow-md">
+            <div className="relative mt-5 flex h-[256px] w-[256px] max-w-full items-center justify-center rounded-2xl border-2 border-saffron-500/40 bg-white p-3 shadow-md">
               {qrLoading ? (
                 <div className="flex flex-col items-center gap-2">
                   <div className="h-8 w-8 animate-spin rounded-full border-2 border-saffron-600 border-t-transparent" />

@@ -32,7 +32,7 @@ export function MobileReadingProgress({
         <span className="min-w-0 flex-1 truncate">
           {chapterTitle ? <span lang="hi" className="font-devanagari">{chapterTitle}</span> : 'प्रगति'}
         </span>
-        <span aria-hidden="true" className="flex shrink-0 items-center gap-1.5 text-xs font-semibold tabular-nums text-dharma-text">
+        <span aria-hidden="true" className="flex min-w-0 flex-wrap items-center justify-end gap-x-1.5 text-xs font-semibold tabular-nums text-dharma-text">
           <span lang="hi" className="font-devanagari">श्लोक {verseLabel}</span>
           {position !== undefined && percent !== undefined && (
             <>

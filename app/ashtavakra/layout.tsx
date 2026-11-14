@@ -15,7 +15,7 @@ import './ashtavakra.css';
 export default function AshtavakraLayout({ children }: { children: ReactNode }) {
   const published = publishedTotals();
   const navLink =
-    'inline-flex min-h-[44px] items-center text-sm font-semibold text-dharma-muted transition hover:text-saffron-800 dark:hover:text-saffron-300';
+    'inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-sm font-semibold text-dharma-muted transition hover:text-saffron-800 dark:hover:text-saffron-300';
   return (
     <AshShell>
       {/* Applies a saved visual mode before first paint. */}

@@ -57,7 +57,7 @@ function DockButton({
       onClick={onClick}
       aria-pressed={pressed ?? active}
       title={`${label} · ${sublabel}`}
-      className={`relative flex min-h-[54px] min-w-[56px] flex-col items-center justify-center gap-0.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--dharma-accent)] sm:min-w-[68px] sm:px-3 ${
+      className={`relative flex min-h-[54px] min-w-0 flex-col max-lg:flex-1 lg:min-w-[56px] items-center justify-center gap-0.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--dharma-accent)] sm:min-w-[68px] sm:px-3 ${
         active || pressed ? 'text-dharma-text' : 'text-dharma-muted hover:text-dharma-text'
       }`}
     >
@@ -66,7 +66,7 @@ function DockButton({
         <motion.span layoutId="liquid-dock-pill" transition={SPRING} className="dock-pill absolute inset-0 rounded-full" />
       )}
       <span className="relative flex h-5 items-center">{children}</span>
-      <span className="relative leading-none">
+      <span className="relative max-w-full truncate leading-none">
         {touchLabel ? (
           <>
             <span className="kbd-hint">{label}</span>
@@ -77,7 +77,7 @@ function DockButton({
         )}
       </span>
       {hintHi && (
-        <span lang="hi" aria-hidden="true" className="relative font-devanagari text-[10px] leading-tight opacity-75">
+        <span lang="hi" aria-hidden="true" className="relative max-w-full truncate font-devanagari text-[10px] leading-tight opacity-75">
           {hintHi}
         </span>
       )}

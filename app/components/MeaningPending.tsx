@@ -79,12 +79,27 @@ export function MeaningPendingNote({
   chapterId,
   transliteration,
   nearby,
+  hasExplanation = false,
 }: {
   chapterId: number;
   /** Shown here only when the reader has the transliteration layer turned off. */
   transliteration?: string;
   nearby?: NearbyMeaning;
+  /** The card still shows a व्याख्या below, so only the literal translation is missing. */
+  hasExplanation?: boolean;
 }) {
+  if (hasExplanation) {
+    return (
+      <div className="min-w-0 flex-1">
+        <p lang="hi" className="font-devanagari text-sm text-dharma-muted">
+          इस श्लोक का शब्दशः अनुवाद अभी नहीं जोड़ा गया है; नीचे दी गई व्याख्या इसका अर्थ समझाती है।
+        </p>
+        <p lang="en" className="mt-0.5 text-xs text-dharma-muted">
+          A line-by-line translation is not added yet; the explanation below gives the meaning.
+        </p>
+      </div>
+    );
+  }
   return (
     <div className="min-w-0 flex-1">
       {transliteration && (

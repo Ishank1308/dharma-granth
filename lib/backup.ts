@@ -17,6 +17,42 @@ export interface BackupFile {
 
 export type BackupRestoreMode = 'merge' | 'replace';
 
+/**
+ * The saved shape of keys that pages read during render. A backup value of another
+ * shape (a hand-edited file, a cut-off export) is refused before anything is written,
+ * so a restore can never leave a page that fails to load.
+ */
+const VALUE_SHAPES: Record<string, 'array' | 'object'> = {
+  'dharma.bookmarkedVerses': 'array',
+  'dharma.notes': 'array',
+  'dharma.recentChapters': 'array',
+  'dharma.pathways': 'array',
+  'dharma.quizzes': 'array',
+  'dharma.practice.sankalpa': 'array',
+  'dharma-gita-journey-studied': 'array',
+  'dharma.streak': 'object',
+  'dharma.readingPlans.v1': 'object',
+  'dharma.panchang.location': 'object',
+  'dharma.practice.japa': 'object',
+  'dharma.practice.meditation': 'object',
+  'dharma.practice.pranayama': 'object',
+  'dharma.practice.reflections': 'object',
+  'dharma.gita.sankalpa.v1': 'object',
+};
+
+function hasSavedShape(key: string, value: string): boolean {
+  const shape = VALUE_SHAPES[key];
+  if (!shape) return true;
+  let body: unknown;
+  try {
+    body = JSON.parse(value);
+  } catch {
+    return false;
+  }
+  if (shape === 'array') return Array.isArray(body) && body.every((item) => item !== null && item !== undefined);
+  return Boolean(body) && typeof body === 'object' && !Array.isArray(body);
+}
+
 const isOwnKey = (key: string) =>
   key.startsWith('dharma.') ||
   key.startsWith('dharma_') ||
@@ -74,6 +110,9 @@ function validateBackup(raw: string): Record<string, string> {
   for (const [key, value] of entries) {
     if (!isOwnKey(key) || key.length > 256 || typeof value !== 'string' || value.length > MAX_BACKUP_VALUE_LENGTH) {
       throw new Error('Backup contains an unsupported or invalid storage entry');
+    }
+    if (!hasSavedShape(key, value)) {
+      throw new Error(`Backup entry "${key}" is damaged, so nothing was restored`);
     }
     data[key] = value;
   }
