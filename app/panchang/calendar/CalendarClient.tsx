@@ -18,15 +18,15 @@ import {
 import {
   calculateEducationalPanchang,
   PRESET_LOCATIONS,
-  type LocationConfig,
   type PanchangDayData,
   nakshatraSlug,
   YOGA_DATA,
   getAllKaranas,
 } from '@/lib/panchang';
 import { FESTIVAL_DATES, type FestivalDate } from '@/data/festival-dates';
-import { useLocalStorage } from '@/lib/useLocalStorage';
+import { panchangDayHref, usePanchangLocation } from '@/lib/usePanchangLocation';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { SharePanchangDay } from '../components/SharePanchangDay';
 import '@/app/styles/festival-calendar.css';
 
 export type CalendarFilter = 'all' | 'ekadashi' | 'pradosha' | 'purnima-amavasya' | 'festivals';
@@ -178,10 +178,7 @@ export function CalendarClient() {
   const [activeFilter, setActiveFilter] = useState<CalendarFilter>('all');
   const [selectedDateIso, setSelectedDateIso] = useState<string>('2026-11-08'); // Default to Diwali 2026
 
-  const [location, setLocation] = useLocalStorage<LocationConfig>(
-    'dharma.panchang.location',
-    PRESET_LOCATIONS[0],
-  );
+  const { location, selectCity } = usePanchangLocation();
 
   const [urlParamsChecked, setUrlParamsChecked] = useState(false);
 
@@ -476,10 +473,7 @@ export function CalendarClient() {
             />
             <select
               value={location.id}
-              onChange={(e) => {
-                const found = PRESET_LOCATIONS.find((loc) => loc.id === e.target.value);
-                if (found) setLocation(found);
-              }}
+              onChange={(e) => selectCity(e.target.value)}
               className="fc-select w-full"
             >
               {PRESET_LOCATIONS.map((loc) => (
@@ -690,12 +684,13 @@ export function CalendarClient() {
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
                 <Link
-                  href={`/panchang/muhurta/?date=${selectedDay.dateIso}`}
+                  href={panchangDayHref('/panchang/muhurta/', location.id, selectedDay.dateIso)}
                   className="apple-pill apple-pill-tinted font-semibold"
                 >
                   <span lang="hi">मुहूर्त</span> <span>Muhurta</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
+                <SharePanchangDay key={location.id} date={selectedDay.dateIso} location={location} />
               </div>
             </div>
 
