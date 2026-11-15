@@ -697,9 +697,8 @@ export const scriptureCatalog: ScriptureMeta[] = [
     description:
       "The most important ancient legal text of Hinduism, covering dharma, social duties, ethics, laws, and the four varnas.",
     author: "Manu",
-    totalChapters: 9,
-    totalVerses: 1771,
-    canonicalTotalVerses: 2684,
+    totalChapters: 12,
+    totalVerses: 2684,
     tags: ["Smriti","Law","Dharma","Ethics","Varnas"],
     hasData: true,
   },
