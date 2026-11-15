@@ -10,6 +10,7 @@ import {
   getWisdomTopic,
 } from '@/data/wisdom-for-life';
 import { TopicDetailClient } from './TopicDetailClient';
+import { conceptPageHref } from '@/lib/concept-page-href';
 import { searchHeading } from '@/data/search-intent';
 
 export function generateStaticParams() {
@@ -166,7 +167,8 @@ export default async function WisdomTopicPage(
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
       />
       <TopicDetailClient
-        topic={topic}
+        // Concepts without a page of their own link to the concepts index instead of a 404.
+        topic={{ ...topic, relatedConcepts: topic.relatedConcepts.map((c) => ({ ...c, href: conceptPageHref(c.id) })) }}
         libraryFacts={libraryFacts}
         prevTopic={prevTopic}
         nextTopic={nextTopic}
