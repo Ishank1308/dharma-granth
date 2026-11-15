@@ -633,17 +633,18 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
     router.push(item.href);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      const win = windowRef.current;
-      if (!win) return;
+      // Escape must close the dialog even before its animated panel ref is ready.
       if (e.key === 'Escape') {
         e.preventDefault();
         onClose();
         return;
       }
       if (e.key !== 'Tab') return;
+      const win = windowRef.current;
+      if (!win) return;
       // If typing in search box with an active typeahead completion, let input handle Tab
       if (
         document.activeElement === inputRef.current &&

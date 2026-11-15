@@ -284,6 +284,11 @@ export function SiteNav({
   // Global key bindings
   useEffect(() => {
     function handleGlobalKey(e: KeyboardEvent) {
+      // Close search even if the lazily mounted dialog has not attached its key listener yet.
+      if (e.key === 'Escape') {
+        setSearchOpen(false);
+        return;
+      }
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         setSearchOpen((prev) => !prev);

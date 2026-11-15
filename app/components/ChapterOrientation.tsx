@@ -170,6 +170,7 @@ export function ChapterOrientation({ scriptureId, chapterId, verseCount }: Props
               chapterId={chapterId}
               nodes={o.mapNodes}
               chapterConclusion={o.chapterConclusion}
+              linkedConcepts={o.mapNodes.flatMap((n) => n.concepts).filter((c) => CONCEPT_DETAILS[c.toLowerCase()])}
             />
           )}
 

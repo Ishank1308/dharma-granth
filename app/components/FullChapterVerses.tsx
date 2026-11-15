@@ -61,6 +61,7 @@ import {
   markChapterCompleteInReadingPlan,
 } from '@/lib/reading-plan-sync';
 import { saveChapterVersesToDB, getCachedChapterVersesFromDB } from '@/lib/db/granth-indexeddb';
+import type { LiteraryVerseMeta } from '@/lib/literary-commentary';
 import type { SvadhyayaTab } from '@/app/components/reader/SvadhyayaSplitDrawer';
 const SvadhyayaSplitDrawer = dynamic(() => import('@/app/components/reader/SvadhyayaSplitDrawer').then((m) => m.SvadhyayaSplitDrawer), { ssr: false });
 import { SpatialShloka, type BhashyaSource, type ReaderMode } from './liquid/SpatialShloka';
@@ -136,6 +137,8 @@ interface Props {
   initialChapter?: InitialChapter;
   /** Approved, pre-existing cross-scripture links for verses in this page. */
   relatedTeachingsByVerse?: Record<string, Connection[]>;
+  /** Curated editorial layers (lib/literary-commentary) for this part's verses, resolved on the server. */
+  literaryByVerse?: Record<string, LiteraryVerseMeta>;
 }
 
 export interface InitialChapter {
@@ -166,7 +169,7 @@ function withRich(prev: Set<string>, numbers: Array<string | number>): Set<strin
   return next;
 }
 
-export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {} }: Props) {
+export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {}, literaryByVerse = {} }: Props) {
   const isOnline = useConnectivity();
   const { settings: readerSettings, update: updateReaderSetting, reset: resetReaderSettings, reducedMotion } = useReaderSettings();
   const { theme, setTheme } = useTheme();
@@ -1550,6 +1553,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     depth={readingDepth}
                     verse={v}
                     relatedTeachings={relatedTeachingsByVerse[String(v.number)]}
+                    literaryMeta={literaryByVerse[String(v.number)]}
                     meaning={{
                       isAi: Boolean(comment?.ai || comment?.explanationAi),
                       editorial: comment?.editorial,
