@@ -7,6 +7,7 @@ import {
   getConceptDetail,
 } from '@/data/concept-details';
 import { graphPageIds } from '@/data/knowledge-graph';
+import { hasConceptPage } from '@/lib/concept-page-href';
 import { buildGraphPage } from '@/lib/knowledge-graph';
 import { GraphConceptPage, GraphConceptSections } from '../GraphConceptPage';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
@@ -554,18 +555,19 @@ export default async function ConceptDetailPage({ params }: PageProps) {
         </section>
 
         {/* ── Section 6: Related Concepts (संबंधित अवधारणाएँ) ──────────────── */}
-        {concept.relatedConceptIds.length > 0 && (
+        {concept.relatedConceptIds.some(hasConceptPage) && (
           <section aria-labelledby="related-heading" className="space-y-4">
             <h2 id="related-heading" className="text-xl font-serif font-bold text-dharma-text">
               संबंधित अन्य अवधारणाएँ (Related Concepts)
             </h2>
             <div className="flex flex-wrap gap-2.5">
-              {concept.relatedConceptIds.map((relId) => {
+              {/* Only concepts that have a page: a link to a missing one is a 404 for readers and crawlers. */}
+              {concept.relatedConceptIds.filter(hasConceptPage).map((relId) => {
                 const relConcept = getConceptDetail(relId);
                 return (
                   <Link
                     key={relId}
-                    href={`/concepts/${relId}`}
+                    href={`/concepts/${relId}/`}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-dharma-card border border-dharma-border hover:border-saffron-500 hover:text-saffron-700 dark:hover:text-saffron-300 transition-colors text-sm font-medium min-h-[44px]"
                   >
                     <span lang="sa" className="font-devanagari font-bold">

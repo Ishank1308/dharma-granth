@@ -660,7 +660,7 @@ export const READING_JOURNEYS: ReadingJourney[] = [
     ],
     related: [
       { label: 'Self Discovery', href: '/learn/journeys/self-discovery' },
-      { label: 'Wisdom for Life: Purpose of life', href: '/wisdom-for-life/purpose-of-life' },
+      { label: 'Wisdom for Life: Meaning of life', href: '/wisdom-for-life/meaning-of-life/' },
     ],
     sources: SOURCES,
   },

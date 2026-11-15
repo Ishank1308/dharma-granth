@@ -7,7 +7,9 @@
 //      Cache-Control with `! Cache-Control` so they never merge with the HTML rule;
 //   3. the shared header links all six primary routes, and its English and Hindi
 //      labels are separate elements, so crawlers never read "Homeमुख";
-//   6. canonicals, internal links and _redirects targets keep their trailing slash.
+//   6. canonicals, internal links and _redirects targets keep their trailing slash,
+//      every internal link reaches an exported file or a _redirects rule (no 404s for
+//      crawlers), and the RSC payloads (<page>/index.txt) are served noindex.
 // Rule 4 (whole verses) is covered by check:export (verse counts per chapter) and
 // check-wisdom.ts (cited ranges quoted in full).
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
@@ -83,6 +85,12 @@ for (const file of ['public/_headers', join(DIST.slice(ROOT.length + 1), '_heade
   expect('/_next/static/*', 'public, max-age=31536000, immutable');
   expect('/fonts/*', 'public, max-age=31536000, immutable');
   expect('/search/*', 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800');
+  // Rule 6: the RSC payloads repeat each page's text without a canonical, so they must stay out of the index.
+  for (const pattern of ['/index.txt', '/*/index.txt']) {
+    if (!(rules.get(pattern) ?? []).some((l) => /^X-Robots-Tag:\s*noindex/i.test(l))) {
+      fail('headers', `${file}: ${pattern} must set "X-Robots-Tag: noindex" (RSC payloads are duplicates of their page)`);
+    }
+  }
   for (const [pattern, lines] of rules) {
     if (pattern === '/*' || cache(pattern).length === 0) continue;
     if (lines[0] !== '! Cache-Control') fail('headers', `${file}: ${pattern} sets Cache-Control without first resetting it ("! Cache-Control"), so it merges with the HTML rule`);
@@ -155,6 +163,31 @@ const needsSlash = (path) => !path.endsWith('/') && !isFile(path);
 {
   const badCanonical = [];
   const badLinks = new Map();
+  const deadLinks = new Map();
+  // _redirects sources as patterns: `*` is a splat, `:name` one path segment.
+  const redirectSources = readFileSync(join(ROOT, 'public/_redirects'), 'utf8')
+    .split(/\r?\n/)
+    .map((line) => line.trim().split(/\s+/)[0])
+    .filter((from) => from && from.startsWith('/'))
+    .map((from) => from.replace(/[.+?^$()|[\]\\{}]/g, '\\$&').replace(/\*/g, '.*').replace(/:[A-Za-z]\w*/g, '[^/]+'))
+    .map((pattern) => new RegExp(`^${pattern}$`));
+  const servedFiles = new Set();
+  const isServed = (path) => {
+    if (servedFiles.has(path)) return true;
+    let decoded = path;
+    try {
+      decoded = decodeURIComponent(path);
+    } catch {}
+    const file = join(DIST, decoded.endsWith('/') ? `${decoded}index.html` : decoded);
+    const ok =
+      existsSync(file) ||
+      existsSync(join(DIST, `${decoded}.html`)) ||
+      ['.ts', '.js'].some((ext) => existsSync(join(ROOT, 'functions', `${decoded.replace(/\/$/, '')}${ext}`))) ||
+      redirectSources.some((re) => re.test(path) || re.test(decoded));
+    // A copy: `path` is a slice of the page's HTML and would keep the whole page in memory.
+    if (ok) servedFiles.add(Buffer.from(path).toString());
+    return ok;
+  };
   for (const page of htmlPages()) {
     const html = readFileSync(page, 'utf8');
     const route = routeOf(page);
@@ -165,7 +198,9 @@ const needsSlash = (path) => !path.endsWith('/') && !isFile(path);
     }
     for (const m of html.matchAll(/<a\b[^>]*\shref="(\/[^"]*)"/g)) {
       const path = m[1].split(/[?#]/)[0];
-      if (path.startsWith('//') || !needsSlash(path)) continue;
+      if (path.startsWith('//')) continue;
+      if (!deadLinks.has(path) && !isServed(path)) deadLinks.set(Buffer.from(path).toString(), route);
+      if (!needsSlash(path)) continue;
       if (!badLinks.has(path)) badLinks.set(path, route);
     }
   }
@@ -173,6 +208,10 @@ const needsSlash = (path) => !path.endsWith('/') && !isFile(path);
   if (badLinks.size) {
     fail('slash', `${badLinks.size} internal link target(s) lack a trailing slash (Cloudflare answers each with a 308):`);
     for (const [href, route] of [...badLinks].slice(0, 10)) fail('slash', `  ${href} (first on ${route})`);
+  }
+  if (deadLinks.size) {
+    fail('links', `${deadLinks.size} internal link target(s) are not exported and have no _redirects rule (Google reports each as "Not found (404)"):`);
+    for (const [href, route] of [...deadLinks].slice(0, 10)) fail('links', `  ${href} (first on ${route})`);
   }
   const redirects = readFileSync(join(ROOT, 'public/_redirects'), 'utf8');
   for (const line of redirects.split(/\r?\n/)) {
@@ -206,4 +245,4 @@ if (errors.length) {
   console.error(`✗ check-site-rules: ${errors.length} problem(s)\n${errors.map((e) => `  ${e}`).join('\n')}`);
   process.exit(1);
 }
-console.log(`✓ check-site-rules: noindex fallbacks, cache headers, shared header, trailing slashes (${htmlPages().length} pages)`);
+console.log(`✓ check-site-rules: noindex fallbacks, cache headers, shared header, trailing slashes, live internal links (${htmlPages().length} pages)`);

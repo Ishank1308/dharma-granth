@@ -38,6 +38,8 @@ export async function onRequest(context: PagesContext): Promise<Response> {
     const headers = new Headers({
       'Cache-Control': 'public, max-age=0, must-revalidate',
       'Content-Type': 'text/plain; charset=utf-8',
+      // public/_headers does not reach Function responses; RSC payloads stay out of the index (CLAUDE.md rule 6).
+      'X-Robots-Tag': 'noindex',
     });
     if (object.httpEtag) headers.set('ETag', object.httpEtag);
 

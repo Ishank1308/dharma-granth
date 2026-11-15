@@ -322,7 +322,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Karma Yoga (कर्मयोग · Detached Action)',
       titleHi: 'कर्मयोग — अनासक्त कर्म',
       summary: 'The wisdom of pouring total presence into action while relinquishing anxiety over results.',
-      href: '/concepts/karma-yoga',
+      href: '/concepts/karma/',
       reason: 'The bedrock teaching of Bhagavad Gita Chapter 2 on purposeful living.',
     };
   }

@@ -42,10 +42,10 @@ import {
   PRESET_LOCATIONS,
   formatPanchangClock,
   todayForLocation,
-  type LocationConfig,
   type SolarTimes,
 } from '@/lib/panchang';
-import { useLocalStorage } from '@/lib/useLocalStorage';
+import { panchangDayHref, usePanchangLocation } from '@/lib/usePanchangLocation';
+import { SharePanchangDay } from '../components/SharePanchangDay';
 
 import { getMuhurtaDaylight, parseMuhurtaDate } from '@/lib/muhurta-daylight';
 
@@ -75,11 +75,7 @@ interface MuhurtaClientProps {
 }
 
 export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
-  const [location, setLocation] = useLocalStorage<LocationConfig>(
-    'dharma.panchang.location',
-    PRESET_LOCATIONS[0]
-  );
-  const activeLocation = PRESET_LOCATIONS.find((item) => item.id === location?.id) ?? PRESET_LOCATIONS[0];
+  const { location: activeLocation, selectCity } = usePanchangLocation();
   const [selectedDate, setSelectedDate] = useState('');
   const [livePanchang, setLivePanchang] = useState(initialPanchang);
 
@@ -146,9 +142,11 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
 
   const daylight = getMuhurtaDaylight(livePanchang.solarTimes, livePanchang.dayOfWeekIndex);
   const calendarYear = Number(livePanchang.isoDate.slice(0, 4));
-  const calendarHref = calendarYear >= 2026 && calendarYear <= 2028
-    ? `/panchang/calendar/?date=${livePanchang.isoDate}`
-    : '/panchang/calendar/';
+  const calendarHref = panchangDayHref(
+    '/panchang/calendar/',
+    activeLocation.id,
+    calendarYear >= 2026 && calendarYear <= 2028 ? livePanchang.isoDate : undefined,
+  );
   const localOffsetMinutes = Math.round(Math.abs(activeLocation.utcOffsetHours) * 60);
   const localOffset = `UTC${activeLocation.utcOffsetHours < 0 ? '−' : '+'}${Math.floor(localOffsetMinutes / 60)}:${String(localOffsetMinutes % 60).padStart(2, '0')}`;
 
@@ -292,10 +290,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                   <select
                     id="muhurta-city"
                     value={activeLocation.id}
-                    onChange={(e) => {
-                      const found = PRESET_LOCATIONS.find((loc) => loc.id === e.target.value);
-                      if (found) setLocation(found);
-                    }}
+                    onChange={(e) => selectCity(e.target.value)}
                     className="focus-ring min-h-[44px] max-w-full rounded-lg bg-transparent font-medium text-dharma-text"
                   >
                     {PRESET_LOCATIONS.map((loc) => (
@@ -324,6 +319,11 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                 >
                   आज · Today
                 </button>
+                <SharePanchangDay
+                  key={`${activeLocation.id}:${livePanchang.isoDate}`}
+                  date={livePanchang.isoDate}
+                  location={activeLocation}
+                />
               </div>
             </div>
             <p className="pt-3 text-xs text-dharma-muted">
