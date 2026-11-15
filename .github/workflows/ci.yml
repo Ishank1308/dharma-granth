@@ -169,7 +169,7 @@ jobs:
       # Make every PR validate all published chapter shards, not only raw source files.
       # A green audit certifies structural consistency, NOT translation accuracy.
       - name: Audit published scripture meaning coverage
-        run: npm run audit:published -- --json > published-scripture-coverage.json
+        run: node scripts/report-published-scripture-coverage.mjs --json > published-scripture-coverage.json
 
       - name: Summarize published language coverage
         run: |
