@@ -917,6 +917,14 @@ nav a[data-limb][aria-current='page'] {
     background-color: color-mix(in srgb, var(--dharma-saffron) 20%, var(--dharma-card));
     box-shadow: inset 0 1px 0 color-mix(in srgb, var(--dharma-saffron) 24%, transparent);
 }
+@keyframes category-pill-in {
+    from { opacity: 0; transform: scale(0.9); }
+}
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-lite-mode='true']) .library-category-indicator {
+        animation: category-pill-in var(--duration-standard) var(--ease-out) backwards;
+    }
+}
 
 .library-showcase-book {
     background-image: linear-gradient(115deg, color-mix(in srgb, var(--library-category-hue) 9%, transparent), transparent 70%);

@@ -1,6 +1,5 @@
 'use client';
 
-import { motion, type HTMLMotionProps } from 'framer-motion';
 import type { HTMLAttributes, ReactNode } from 'react';
 
 /**
@@ -101,13 +100,13 @@ export function Stagger({
   className,
   amount: _amount,
   ...rest
-}: { children: ReactNode; amount?: 'some' | 'all' | number } & HTMLMotionProps<'div'>) {
-  // A plain layout wrapper (motion.div with no animation) — it accepts the
-  // motion prop types callers may pass, but the reveal is driven per-item.
+}: { children: ReactNode; amount?: 'some' | 'all' | number } & HTMLAttributes<HTMLDivElement>) {
+  // A plain layout wrapper; the reveal is driven per item. This file imports no framer-motion, so the
+  // many pages that use FadeUp do not download it.
   return (
-    <motion.div className={className} {...rest}>
+    <div className={className} {...rest}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 

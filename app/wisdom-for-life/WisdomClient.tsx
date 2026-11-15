@@ -17,11 +17,7 @@ import {
   X,
   ExternalLink,
 } from 'lucide-react';
-import {
-  wisdomTopics,
-  wisdomCategories,
-  type WisdomTopic,
-} from '@/data/wisdom-for-life';
+import type { WisdomCategory, WisdomTopicCard } from '@/lib/wisdom-topic-card';
 import {
   LIFE_DISCOVERY_INTENTS,
   LIFE_DISCOVERY_QUICK_PICKS,
@@ -44,7 +40,7 @@ const DISCOVERY_KIND_LABELS: Record<LifeDiscoveryKind, { en: string; hi: string 
   practice: { en: 'Practices', hi: 'अभ्यास' },
 };
 
-export function WisdomClient() {
+export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics: WisdomTopicCard[]; wisdomCategories: readonly WisdomCategory[] }) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeIntent, setActiveIntent] = useState<string | null>(null);
@@ -89,7 +85,7 @@ export function WisdomClient() {
 
       return matchTitle || matchDesc || matchKeywords || matchIntentTerms || matchVerses;
     });
-  }, [selectedCategory, searchQuery, activeIntent]);
+  }, [wisdomTopics, selectedCategory, searchQuery, activeIntent]);
 
   const clearFilters = () => {
     setSelectedCategory('all');
@@ -336,7 +332,7 @@ function WisdomTopicCard({
   isFeatured = false,
   className = '',
 }: {
-  topic: WisdomTopic;
+  topic: WisdomTopicCard;
   isFeatured?: boolean;
   className?: string;
 }) {

@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect, type ReactNode, type CSSProperties } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, motion } from 'framer-motion';
 import { BookOpen, Sparkles, X } from 'lucide-react';
 import { dictionary, termCategories, type DictionaryTerm } from '@/data/dictionary';
 import { triggerTactileFeedback } from '@/lib/haptics';
@@ -216,18 +215,14 @@ export function GlossaryTooltip({ term, children }: GlossaryTooltipProps) {
         {children}
       </span>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
+      {/* CSS fade (motion.css .chrome-fade): positioning may set a transform, so this animates opacity only. */}
+      {open && (
+          <div
             id={dialogId}
-            initial={{ opacity: 0, y: placement === 'top' ? 6 : -6, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: placement === 'top' ? 4 : -4, scale: 0.96 }}
-            transition={{ duration: 0.16, ease: 'easeOut' }}
             role="dialog"
             aria-label={`${term.term} शब्दार्थ`}
             style={dynamicStyle}
-            className={`z-50 rounded-2xl border border-amber-500/30 bg-dharma-card/98 backdrop-blur-xl p-4 shadow-2xl ring-1 ring-amber-500/15 text-left text-dharma-text pointer-events-auto ${
+            className={`chrome-fade z-50 rounded-2xl border border-amber-500/30 bg-dharma-card/98 backdrop-blur-xl p-4 shadow-2xl ring-1 ring-amber-500/15 text-left text-dharma-text pointer-events-auto ${
               placement === 'top' ? 'bottom-full mb-2' : 'top-full mt-2'
             }`}
           >
@@ -287,9 +282,8 @@ export function GlossaryTooltip({ term, children }: GlossaryTooltipProps) {
                 <X className="h-3.5 w-3.5" />
               </button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+      )}
     </span>
   );
 }

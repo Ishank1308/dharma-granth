@@ -24,11 +24,8 @@ import {
   CheckCircle2,
   Zap,
 } from 'lucide-react';
-import {
-  type WisdomTopic,
-  type ScriptureReference,
-  wisdomTopics,
-} from '@/data/wisdom-for-life';
+// Types only: the topic arrives as a prop, so the page does not ship every topic's data (about 90 KB gzip).
+import type { WisdomTopic, ScriptureReference } from '@/data/wisdom-for-life';
 import { libraryLocation, wisdomVerseHref } from '@/lib/wisdom-links';
 import { TopicIllustration } from '../TopicIllustrations';
 import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';

@@ -1,11 +1,10 @@
 'use client';
 
 import { useEffect, useState, type ReactNode } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
 import { BookOpen, Command, Languages, MessageSquareQuote, Pause, Volume2 } from 'lucide-react';
 import { openGlobalSearch } from '@/lib/search-events';
 import { usePerformanceMode } from '@/lib/performance-mode';
-import { SPRING } from './motion';
+import { useReducedMotionPreference } from '@/lib/useReducedMotionPreference';
 import type { ReaderMode } from './SpatialShloka';
 
 interface Props {
@@ -62,8 +61,9 @@ function DockButton({
       }`}
     >
       {active && (
-        // The indicator flows between buttons like mercury: one shared layout element.
-        <motion.span layoutId="liquid-dock-pill" transition={SPRING} className="dock-pill absolute inset-0 rounded-full" />
+        // The indicator pops in under the active button (CSS, globals.css .dock-pill), so the chapter page
+        // does not need framer-motion for it.
+        <span className="dock-pill absolute inset-0 rounded-full" />
       )}
       <span className="relative flex h-5 items-center">{children}</span>
       <span className="relative max-w-full truncate leading-none">
@@ -96,7 +96,7 @@ function DockButton({
  * the chapter is being chanted.
  */
 export function LiquidGlassDock({ mode, onModeChange, listening, recitingVerse, onToggleListening, pinned = false }: Props) {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useReducedMotionPreference();
   const { isLiteMode } = usePerformanceMode();
   const reduce = prefersReducedMotion || isLiteMode;
   const [hidden, setHidden] = useState(false);
@@ -116,12 +116,10 @@ export function LiquidGlassDock({ mode, onModeChange, listening, recitingVerse, 
   }, []);
 
   return (
-    <motion.nav
+    <nav
       aria-label="पठन नियंत्रण · Reader dock"
-      initial={reduce ? false : { y: 40 }}
-      animate={{ y: hidden && !listening && !pinned ? 120 : 0, opacity: hidden && !listening && !pinned ? 0 : 1 }}
-      transition={reduce ? { duration: 0 } : SPRING}
-      className="liquid-dock fixed inset-x-0 z-40 flex justify-center lg:mx-auto lg:w-fit lg:max-w-[calc(100vw-1.5rem)]"
+      style={hidden && !listening && !pinned ? { transform: 'translateY(120px)', opacity: 0 } : undefined}
+      className={`${reduce ? '' : 'chrome-rise transition-[transform,opacity] duration-[var(--duration-base)] ease-[var(--ease-out)]'} liquid-dock fixed inset-x-0 z-40 flex justify-center lg:mx-auto lg:w-fit lg:max-w-[calc(100vw-1.5rem)]`}
     >
       <div className="liquid-glass relative flex items-center gap-0.5 p-1.5 max-lg:w-full max-lg:justify-around max-lg:rounded-none max-lg:pb-[calc(0.375rem+env(safe-area-inset-bottom,0px))] lg:rounded-full">
         <DockButton active={mode === 'samhita'} label="Saṁhitā" hintHi="पठन" sublabel="संहिता · Read" onClick={() => onModeChange('samhita')}>
@@ -152,6 +150,6 @@ export function LiquidGlassDock({ mode, onModeChange, listening, recitingVerse, 
           <Command className="h-[18px] w-[18px]" aria-hidden="true" />
         </DockButton>
       </div>
-    </motion.nav>
+    </nav>
   );
 }
