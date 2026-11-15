@@ -1,5 +1,6 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useState, useEffect, useRef, type ReactNode } from 'react';
 import { PadaLine } from '@/app/components/PadaLine';
 import {
@@ -18,13 +19,14 @@ import {
 import { cleanVerseField, meaningState, MEANING_COPY, verseLines, verseMarkNumber, formatVerseRef } from '@/lib/verse-format';
 import { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 import { ExplainLine } from '@/app/components/study/ExplainLine';
-import { CompareViews } from '@/app/components/study/CompareViews';
-import { CommentaryCompare } from '@/app/components/study/CommentaryCompare';
-import { COMMENTARIES, verseKey } from '@/data/study-content';
-import { SanskritWordExplorerDrawer } from '@/app/components/understand/SanskritWordExplorerDrawer';
+// Shown only for some reading modes, so each loads when it first renders, not with every verse page.
+const CompareViews = dynamic(() => import('@/app/components/study/CompareViews').then((m) => m.CompareViews));
+const CommentaryCompare = dynamic(() => import('@/app/components/study/CommentaryCompare').then((m) => m.CommentaryCompare));
+import { COMMENTARIES, verseKey } from '@/data/study-review';
+const SanskritWordExplorerDrawer = dynamic(() => import('@/app/components/understand/SanskritWordExplorerDrawer').then((m) => m.SanskritWordExplorerDrawer), { ssr: false });
 import { ReaderDialog } from '@/app/components/reader/ReaderDialog';
-import { findLexiconEntry, type SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
-import { speakSanskritTerm } from '@/lib/sacred-soundscape';
+import type { SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
+import { withSoundscape } from '@/lib/soundscape-lazy';
 import type { ReaderProvenance, ReaderVerseText } from '@/lib/reader-actions';
 import type { ReaderSettings } from '@/lib/useReaderSettings';
 import type { VerseInsight } from '@/lib/verse-insights';
@@ -296,7 +298,7 @@ export function ReaderLayers({
   const hasReflection = Boolean(settings.showCommentary && !settings.liteMode && modernParsed?.hasStructuredFormat && modernParsed.reflectionQuestion);
 
   const handleInspectPada = (pada: string) => {
-    const entry = findLexiconEntry(pada);
+    const entry = verse.lexicon?.[pada];
     if (entry) {
       setActiveLexiconEntry(entry);
     }
@@ -415,7 +417,7 @@ export function ReaderLayers({
           {glosses.length > 1 ? (
             <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
               {glosses.map((g, i) => {
-                const lexiconMatch = findLexiconEntry(g.pada);
+                const lexiconMatch = verse.lexicon?.[g.pada] ?? null;
                 const displayTerm = lexiconMatch?.termDevanagari || g.pada;
                 return (
                   <li key={i} className="list-none">
@@ -457,7 +459,7 @@ export function ReaderLayers({
                             type="button"
                             onClick={(e) => {
                               e.stopPropagation();
-                              speakSanskritTerm(displayTerm, 0.85);
+                              withSoundscape((m) => m.speakSanskritTerm(displayTerm, 0.85));
                             }}
                             className="focus-ring inline-flex h-7 w-7 items-center justify-center rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-700 hover:bg-amber-500/20 dark:text-amber-300 transition"
                             aria-label={`उच्चारण सुनें: ${g.pada}`}
@@ -799,11 +801,9 @@ export function ReaderLayers({
       </Layer>
 
       {/* Sanskrit Word Explorer Modal/Drawer */}
-      <SanskritWordExplorerDrawer
-        entry={activeLexiconEntry}
-        isOpen={activeLexiconEntry !== null}
-        onClose={() => setActiveLexiconEntry(null)}
-      />
+      {activeLexiconEntry && (
+        <SanskritWordExplorerDrawer entry={activeLexiconEntry} isOpen onClose={() => setActiveLexiconEntry(null)} />
+      )}
 
       {/* Word-by-Word (पदच्छेद) Audio & Meaning Popover */}
       {selectedWordGloss && (
@@ -827,12 +827,10 @@ export function ReaderLayers({
               </div>
               <button
                 type="button"
-                onClick={() =>
-                  speakSanskritTerm(
-                    selectedWordGloss.lexicon?.termDevanagari || selectedWordGloss.pada,
-                    0.85
-                  )
-                }
+                onClick={() => {
+                  const term = selectedWordGloss.lexicon?.termDevanagari || selectedWordGloss.pada;
+                  withSoundscape((m) => m.speakSanskritTerm(term, 0.85));
+                }}
                 className="focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-amber-500/20 px-3.5 py-2 font-semibold text-amber-900 hover:bg-amber-500/30 dark:text-amber-200 transition active:scale-95 border border-amber-500/40"
               >
                 <Volume2 className="h-4 w-4 text-amber-600 dark:text-amber-400" />

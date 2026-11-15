@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { MessageSquareText } from 'lucide-react';
 import { ReaderDialog } from '@/app/components/reader/ReaderDialog';
-import { REVIEW_LABEL, type LineExplanation } from '@/data/study-content';
+import { REVIEW_LABEL } from '@/data/study-review';
+import type { LineExplanation } from '@/data/study-content';
 
 const norm = (s: string) => s.replace(/[\s|।॥0-9०-९.‌‍]+/g, '');
 

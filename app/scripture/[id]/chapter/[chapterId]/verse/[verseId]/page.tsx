@@ -27,6 +27,18 @@ import { PENDING_CORRECTIONS, REVIEW_RECORDS } from '@/data/review-records';
 import { getScriptureSourceMeta, SCRIPTURE_SOURCES } from '@/data/sources-registry';
 import type { VerseLink, VerseQuestionLink } from '@/data/types';
 import { LINE_EXPLANATIONS, verseKey } from '@/data/study-content';
+import { findLexiconEntry, type SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
+import { parseWordMeanings } from '@/lib/word-gloss';
+
+/** The lexicon entries this verse's padas match, so the reader does not ship the whole lexicon. */
+function lexiconFor(wordMeaning?: string): Record<string, SanskritLexiconEntry> | undefined {
+  const out: Record<string, SanskritLexiconEntry> = {};
+  for (const g of parseWordMeanings(wordMeaning)) {
+    const entry = findLexiconEntry(g.pada);
+    if (entry) out[g.pada] = entry;
+  }
+  return Object.keys(out).length ? out : undefined;
+}
 
 /**
  * One static page per verse for the scriptures in VERSE_PAGE_SCRIPTURE_IDS
@@ -421,6 +433,7 @@ export default async function VersePage(props: PageProps) {
           reflection: lesson,
           research: science,
           lineExplanations: LINE_EXPLANATIONS[verseKey(meta.id, chapterId, verse.number)],
+          lexicon: lexiconFor(verse.wordMeaning),
         }}
         provenance={{
           sourceHost: repoLabel(source.repo),
