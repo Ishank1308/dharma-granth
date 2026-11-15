@@ -14,7 +14,17 @@ import { resolve } from "node:path";
 const ROOT = resolve(__dirname, "..");
 
 type Meaning = { hindi?: string; translation?: string };
-type Verse = { number: number; hindi?: string; translation?: string; hindiSource?: string; translationSource?: string };
+type Verse = {
+  number: number;
+  hindi?: string;
+  translation?: string;
+  hindiSource?: string;
+  translationSource?: string;
+  hindiRange?: string;
+  hindiSeeVerse?: string;
+  translationRange?: string;
+  translationSeeVerse?: string;
+};
 type Scripture = { chapters: { number: number; verses: Verse[] }[] };
 
 function apply(id: string) {
@@ -32,13 +42,19 @@ function apply(id: string) {
   for (const [key, m] of Object.entries(meanings)) {
     const v = byKey.get(key);
     if (!v) throw new Error(`${id}: no verse ${key}`);
+    // A written meaning belongs to this verse alone, so any passage link it had (a range it stored, or a pointer to
+    // another verse's passage) is dropped with the old text.
     if (m.hindi) {
       v.hindi = m.hindi;
       delete v.hindiSource;
+      delete v.hindiRange;
+      delete v.hindiSeeVerse;
     }
     if (m.translation) {
       v.translation = m.translation;
       delete v.translationSource;
+      delete v.translationRange;
+      delete v.translationSeeVerse;
     }
   }
 

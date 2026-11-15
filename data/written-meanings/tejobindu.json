@@ -1,0 +1,10 @@
+{
+  "note": "Hindi and English meanings written fresh from the Sanskrit for this site, for the verse that had none. No modern translation was copied. Applied by scripts/apply-written-meanings.ts.",
+  "keyFormat": "chapter:verse",
+  "meanings": {
+    "5:6": {
+      "hindi": "मेरा आत्मा शुद्ध चैतन्य स्वरूप है, सब संगों (आसक्तियों) से रहित है, सदा आनन्दमय है, प्रसन्न है, और किसी दूसरी चिन्ता से रहित है।",
+      "translation": "My self is pure consciousness, free of every attachment, ever blissful, serene, and free of any other thought."
+    }
+  }
+}
