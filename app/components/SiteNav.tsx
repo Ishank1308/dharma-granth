@@ -588,7 +588,7 @@ export function SiteNav({
             {/* Logo */}
             <Link
               href="/"
-              className="group flex min-h-[44px] min-w-[44px] shrink items-center gap-1.5 rounded-xl pr-0 sm:gap-2.5 sm:pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500/40"
+              className="group flex min-h-[44px] min-w-[44px] shrink items-center gap-1.5 rounded-xl pr-0 max-lg:flex-1 sm:gap-2.5 sm:pr-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500/40"
               aria-label="Dharma Granth Home"
             >
               <span
@@ -605,8 +605,8 @@ export function SiteNav({
                 />
               </span>
               <div className="bar-title-stack grid min-w-0 grid-cols-[minmax(0,1fr)]">
-                <div className="bar-wordmark flex items-baseline gap-2">
-                  <span className="whitespace-nowrap text-body font-semibold tracking-[-0.022em] text-dharma-text">
+                <div className="bar-wordmark flex min-w-0 items-baseline gap-2">
+                  <span className="min-w-0 truncate text-body font-semibold tracking-[-0.022em] text-dharma-text max-[359px]:text-[15px] max-[359px]:tracking-[-0.03em]">
                     Dharma Granth
                   </span>{' '}
                   <span lang="hi" className="hidden font-devanagari text-footnote text-dharma-muted sm:inline">

@@ -123,6 +123,19 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return () => clearInterval(interval);
   }, []);
 
+  // The browser's own bar (theme-color) follows the reading theme instead of the fixed
+  // light/dark pair in the page head, so Usha is ivory and Rātri is obsidian up there too.
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      const bg = getComputedStyle(document.documentElement).getPropertyValue('--dharma-bg').trim();
+      if (!bg) return;
+      document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]').forEach((meta) => {
+        meta.setAttribute('content', bg);
+      });
+    });
+    return () => cancelAnimationFrame(id);
+  }, [effectiveTheme]);
+
   const setTheme = (t: Theme) => {
     setThemeState(t);
     const eff = t === 'auto' ? getCircadianTheme() : t;

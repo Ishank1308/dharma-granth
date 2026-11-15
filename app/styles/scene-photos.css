@@ -192,7 +192,22 @@
     }
 }
 
+/* In the light themes the verse number (॥ 47 ॥) sat in a pale ink on the pale photo wash
+   and nearly vanished. Over a photo it takes the text colour with a soft halo of the page. */
+:root:not([data-theme='night']):not([data-theme='dark']) [data-photo] .verse-folio :is(.verse-mark, .vt-num) {
+    color: color-mix(in srgb, var(--dharma-text) 78%, transparent);
+    text-shadow: 0 0 6px var(--surface-raised), 0 0 2px var(--surface-raised);
+}
+
 @media (forced-colors: active), print {
+    /* High contrast and print: no picture behind the words. The ::before rule above is more
+       specific than this block, so the picture itself is emptied too. */
+    [data-photo],
+    [data-painting] {
+        --photo: none !important;
+        --painting: none !important;
+        --photo-fx: none !important;
+    }
     [data-photo] :is(.verse-folio, .vt-leaf)::before,
     [data-photo] :is(.verse-folio, .vt-leaf)::after {
         display: none;

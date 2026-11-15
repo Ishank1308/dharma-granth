@@ -26,6 +26,7 @@ import {
   type GitaShatkaId,
 } from '@/data/gita-journey-data';
 import { speakSanskritTerm } from '@/lib/sacred-soundscape';
+import { parseStored } from '@/lib/safe-stored';
 
 const STORAGE_KEY = 'dharma-gita-journey-studied';
 
@@ -42,7 +43,7 @@ export function GitaJourneyClient() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        setStudiedChapters(JSON.parse(stored));
+        setStudiedChapters(parseStored<number[]>(stored, []).filter((c) => typeof c === 'number'));
       }
     } catch {
       // ignore

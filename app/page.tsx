@@ -47,6 +47,8 @@ export default function HomePage() {
         <HomeDynamicBackground />
 
         {/* Brand splash: CSS-only, once per session, hidden from assistive tech */}
+        {/* React hoists this into <head>; only the home page shows the splash, so only it preloads the logo. */}
+        <link rel="preload" href="/logo-splash.webp" as="image" type="image/webp" fetchPriority="high" />
         <SplashScreen />
 
         {/* 1. The promise, the way in, and search */}

@@ -56,22 +56,20 @@ export function SpatialShloka({
   const showPanel = focused && mode !== 'samhita';
 
   return (
-    <motion.div
+    // A plain div with CSS transitions, not a motion.div: a long chapter has one of these per verse, and
+    // framer-motion measured every one on load (Uttar Kanda: 873 of them, about 10 s on a mid-range phone).
+    // Transform and filter are set only while needed, so a resting verse is never a containing block for
+    // fixed children. The click is a pointer shortcut; keyboard users have the card's own focus button.
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div
       data-spatial={focused ? 'focused' : dimmed ? 'dimmed' : undefined}
       onClick={onClick}
-      animate={
-        reduce
-          ? { opacity: dimmed ? 0.45 : 1 }
-          : {
-              scale: focused ? 1.02 : dimmed ? 0.97 : 1,
-              opacity: dimmed ? 0.45 : 1,
-              filter: dimmed ? 'blur(3px)' : 'blur(0px)',
-              // A cleared filter must not linger: it would become the containing block for fixed children.
-              transitionEnd: dimmed ? undefined : { filter: 'none' },
-            }
-      }
-      transition={SPRING}
-      className={`relative origin-center rounded-panel ${dimmed ? 'cursor-pointer' : ''} ${
+      style={{
+        transform: !reduce && (focused || dimmed) ? `scale(${focused ? 1.02 : 0.97})` : undefined,
+        opacity: dimmed ? 0.45 : undefined,
+        filter: !reduce && dimmed ? 'blur(3px)' : undefined,
+      }}
+      className={`relative origin-center rounded-panel transition-[transform,opacity,filter] duration-[var(--duration-base)] ease-[var(--ease-out)] motion-reduce:transition-opacity ${dimmed ? 'cursor-pointer' : ''} ${
         focused ? 'liquid-glass spatial-focused z-10 px-3 py-3 sm:px-5 sm:py-4' : ''
       }`}
     >
@@ -92,7 +90,7 @@ export function SpatialShloka({
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
 

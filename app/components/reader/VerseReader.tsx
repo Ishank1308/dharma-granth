@@ -113,10 +113,10 @@ const SITE_LINKS = [
 ] as const;
 
 const iconBtn =
-  'focus-ring apple-icon-button h-11 w-11 shrink-0';
+  'focus-ring apple-icon-button h-[44px] w-[44px] shrink-0';
 
 const actionBtn =
-  'focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-dharma-text/[0.06] px-4 text-subhead text-dharma-text transition hover:bg-dharma-text/[0.1] disabled:cursor-not-allowed disabled:opacity-50';
+  'focus-ring inline-flex min-h-[44px] max-w-full items-center gap-2 rounded-full bg-dharma-text/[0.06] px-4 text-subhead text-dharma-text transition hover:bg-dharma-text/[0.1] disabled:cursor-not-allowed disabled:opacity-50';
 
 export function VerseReader(props: VerseReaderProps) {
   const {
@@ -372,7 +372,7 @@ export function VerseReader(props: VerseReaderProps) {
         rel={dir}
         onClick={() => triggerTactileFeedback('selection', 'click')}
         aria-label={crosses != null ? `${hiLabel}, श्लोक ${crosses}.${target.number}` : `${text} verse, ${target.number}`}
-        className={`focus-ring inline-flex items-center rounded-pill border border-separator/60 bg-fill-quaternary text-label-primary transition duration-fast hover:border-separator-strong hover:bg-fill-tertiary active:scale-97 ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
+        className={`focus-ring inline-flex min-w-0 max-w-full items-center rounded-pill border border-separator/60 bg-fill-quaternary text-label-primary transition duration-fast hover:border-separator-strong hover:bg-fill-tertiary active:scale-97 ${base} ${dir === 'next' ? 'flex-row-reverse text-right' : ''}`}
       >
         <Icon className="h-4 w-4 shrink-0 text-tint" aria-hidden="true" />
         <span className="leading-tight">
@@ -413,7 +413,7 @@ export function VerseReader(props: VerseReaderProps) {
         `}</style>
         {/* 1 · Sticky reader header */}
         <header className="apple-bar sticky top-0 z-40 border-b">
-          <div className="mx-auto flex h-[52px] max-w-5xl items-center gap-1 px-2 sm:gap-2 sm:px-6">
+          <div className="mx-auto flex min-h-[52px] max-w-5xl items-center gap-1 px-2 sm:gap-2 sm:px-6">
             <Link href={chapterHref} aria-label={`Back to chapter ${chapterId}`} title={`Chapter ${chapterId}`} className={iconBtn}>
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>

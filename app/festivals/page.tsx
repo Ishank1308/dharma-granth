@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { FadeUp } from '@/app/components/motion/primitives';
 import { festivals, type Festival } from '@/data/festivals';
 import { X, BookOpen, MapPin, Sparkles, Music, Utensils, Leaf, Clock, AlertCircle } from 'lucide-react';
 
 import Link from 'next/link';
+import { PageHeader } from '@/app/components/apple/PageHeader';
 
 export default function FestivalsPage() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -14,27 +14,21 @@ export default function FestivalsPage() {
 
   return (
     <main className="min-h-screen bg-dharma-bg">
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-rose-900 via-pink-800 to-purple-900 text-white py-16 overflow-hidden">
-        <div className="absolute inset-0 mandala-bg opacity-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-        <div className="max-w-6xl mx-auto px-6 relative">
-          <FadeUp>
-            <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-rose-200 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              उत्सव ज्ञान केंद्र (Festival Knowledge Centre)
-            </p>
-            <h1 className="text-4xl sm:text-5xl font-serif font-bold mb-4">
-              उत्सव ज्ञान केंद्र (Festival Knowledge Centre)
-            </h1>
-            <p className="text-lg sm:text-xl opacity-90 max-w-2xl leading-relaxed">
+      <PageHeader
+        width="wide"
+        eyebrow="Festivals"
+        eyebrowHi="उत्सव"
+        title="Festival Knowledge Centre"
+        titleHi="उत्सव ज्ञान केंद्र"
+        lead={
+          <p lang="hi" className="font-devanagari">
               {festivals.length} प्रमुख त्योहारों का विस्तृत ज्ञान — अर्थ, शास्त्रीय स्रोत, क्षेत्रीय परंपराएँ, संबंधित देवता, पारंपरिक अनुष्ठान, जप और प्रार्थना, भोजन परंपरा, पर्यावरणीय विचार, और शास्त्रीय बनाम सांस्कृतिक रिवाज़ों का भेद।
             </p>
-          </FadeUp>
-        </div>
-      </section>
+        }
+      />
 
       {/* Festival Grid */}
-      <section className="max-w-6xl mx-auto px-6 -mt-8 relative z-10 pb-20">
+      <section className="max-w-6xl mx-auto px-6 pt-6 relative z-10 pb-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {festivals.map((festival, i) => (
             // CSS fade-up (globals.css): plays from the server HTML, so the cards are never shipped hidden.

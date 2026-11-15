@@ -554,6 +554,16 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
     };
   }, [isOpen, anchor]);
 
+  // Focus goes back to whatever opened the search (the header button, a hero field)
+  // when it closes, so keyboard and screen reader users keep their place.
+  useEffect(() => {
+    if (!isOpen) return;
+    const opener = document.activeElement instanceof HTMLElement && document.activeElement !== document.body ? document.activeElement : null;
+    return () => {
+      if (opener && opener.isConnected) requestAnimationFrame(() => opener.focus({ preventScroll: true }));
+    };
+  }, [isOpen]);
+
   // Reset and focus on open.
   useEffect(() => {
     if (!isOpen) return;

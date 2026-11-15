@@ -19,7 +19,7 @@ export function Breadcrumbs({ items, className = '' }: { items: Crumb[]; classNa
         {items.map((item, i) => {
           const last = i === items.length - 1;
           return (
-            <li key={`${i}-${item.label}`} className="flex shrink-0 items-center gap-1 sm:min-w-0 sm:shrink">
+            <li key={`${i}-${item.label}`} className="flex shrink-0 items-center gap-1 last:min-w-0 last:shrink sm:min-w-0 sm:shrink">
               {i > 0 ? <ChevronRight className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden="true" /> : null}
               {item.href && !last ? (
                 <Link
@@ -29,7 +29,7 @@ export function Breadcrumbs({ items, className = '' }: { items: Crumb[]; classNa
                   {item.label}
                 </Link>
               ) : (
-                <span aria-current={last ? 'page' : undefined} className="max-w-[12rem] truncate whitespace-nowrap pr-4 font-semibold text-dharma-text sm:max-w-[16rem] sm:pr-0">
+                <span aria-current={last ? 'page' : undefined} className="block min-w-0 max-w-[12rem] truncate whitespace-nowrap pr-4 font-semibold text-dharma-text sm:max-w-[16rem] sm:pr-0">
                   {item.label}
                 </span>
               )}

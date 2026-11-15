@@ -95,7 +95,7 @@
         animation-delay: calc(var(--i, 0) * 90ms + 60ms);
     }
     :root:not([data-splash='seen']) .hero-rise > * {
-        animation-delay: calc(var(--i, 0) * 90ms + 2.05s);
+        animation-delay: calc(var(--i, 0) * 90ms + 1.45s);
     }
 }
 
@@ -188,7 +188,7 @@
         animation: halo-arrive 1.8s var(--motion-out) both 0.1s;
     }
     :root:not([data-splash='seen']) .hero-halo-plane {
-        animation-delay: 1.9s;
+        animation-delay: 1.3s;
     }
 }
 @keyframes halo-arrive {

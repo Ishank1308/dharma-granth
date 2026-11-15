@@ -275,6 +275,14 @@ a.apple-row:active,
     background-color: transparent;
     box-shadow: none;
 }
+/* Long chapters: a plain verse off screen skips style, layout, paint and its photo animations
+   until it nears the viewport (Uttar Kanda renders 863 of them, each with two endless background
+   animations that restyled the whole page every frame). Plain verses hold no popovers, so paint
+   containment clips nothing; `auto` keeps each verse's real height once it has been seen. */
+.verse-card.vt {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 420px;
+}
 
 /* The verse number: a tinted capsule in the scripture's own ink. */
 .verse-card .verse-ref,
