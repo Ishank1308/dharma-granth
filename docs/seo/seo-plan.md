@@ -2,6 +2,8 @@
 
 Date: 2026-10-20. Branch: `feat/integrate-phase7`. Status: phase 0, the owner actions and the phase 2 technical fixes are done; nothing in code is deployed yet.
 
+> **Update 2026-11-06:** the site moved from dharmagranth.in to **dharmagranth.dev**. The `.in` host now 301s every path to `.dev`, and `www.dharmagranth.dev` 301s to the bare domain. Search Console's Change of address from the `.in` property to `.dev` was confirmed that day. Read the `.in` URLs below as history. For the current setup, see `docs/deploy-cloudflare.md`, section 5.
+
 Principle from the brief: earn relevant traffic by being the clearest, most trustworthy and most accessible scripture
 resource. No thin or doorway pages, no keyword stuffing, no fabricated reviewers or dates.
 
