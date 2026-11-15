@@ -73,11 +73,11 @@ Since `dharmagranth.dev` was purchased directly on Cloudflare Registrar:
    - Repeat for `www.dharmagranth.dev` (enter `www.dharmagranth.dev` → **Activate domain**).
    - Cloudflare automatically manages the DNS CNAME/ALIAS records because the domain is registered on Cloudflare.
 
-2. **Remove the old dharmagranth.in domain:**
-   - Under the same **Custom domains** tab in `dharma-granth` Pages project:
-   - Find `dharmagranth.in` and `www.dharmagranth.in` in the list.
-   - Click the `...` (three dots) menu on the right of each → select **Remove domain** and confirm.
-   - (Optional) If you still own `dharmagranth.in`: Go to the `dharmagranth.in` zone → **Rules** → **Redirect Rules** → Create rule: Redirect all requests to `https://dharmagranth.dev/$1` (301 Permanent) to preserve existing backlinks and SEO traffic.
+2. **Keep dharmagranth.in as a permanent redirect (done 2026-11-06):**
+   - The `dharmagranth.in` zone has a Redirect Rule, "Redirect dharmagranth.in to dharmagranth.dev". It covers all incoming requests, including `www.dharmagranth.in`, and sends a **301** to `https://dharmagranth.dev` with the same path and query string.
+   - The `dharmagranth.dev` zone has a Redirect Rule from the "Redirect from WWW to root" template: `https://www.*` → `https://${1}`, **301**, with "Preserve query string" on. The `www` DNS record is a proxied CNAME to `dharma-granth.pages.dev`.
+   - Do not remove the `.in` zone, its redirect rule or the domain registration for at least 180 days after 2026-11-06 (Google recommends a year). Search Console's Change of address depends on the 301.
+   - Check with `curl -sI https://dharmagranth.in/learn/?q=x`, which should return `301` and `location: https://dharmagranth.dev/learn/?q=x`.
 
 3. **SSL/TLS & Security:**
    - For `dharmagranth.dev`: In **SSL/TLS → Overview**, ensure encryption mode is **Full** or **Full (strict)**.
@@ -95,7 +95,8 @@ Since `dharmagranth.dev` was purchased directly on Cloudflare Registrar:
 Once `dharmagranth.dev` serves from Cloudflare:
 
 1. GitHub repo **Settings → Pages**: set the source to **None**.
-2. In Google Search Console, add `dharmagranth.dev` as a Domain property and submit `https://dharmagranth.dev/sitemap.xml`.
+2. Google Search Console (done 2026-11-06): `https://dharmagranth.dev/` is a URL-prefix property verified by HTML tag, and `https://dharmagranth.dev/sitemap.xml` has been submitted. The `dharmagranth.in` domain property's Change of address points at dharmagranth.dev.
+   - `app/layout.tsx` serves two `google-site-verification` tokens, one per Google account. Keep both, because removing either one unverifies that account's property.
 3. Delete `.github/workflows/deploy.yml` (already manual-only).
 
 ## From pull request to live site
