@@ -5,6 +5,9 @@
  * (and share image) for each would take the static export past Cloudflare Pages' 20,000-file limit, so only a verse
  * with a Hindi or English meaning gets a page; the rest are read on their kanda's chapter pages. Run by `npm run search:core`, before the search index,
  * which links to verse pages.
+ *
+ * Meanings filled in for the whole book from data/written-meanings/<id>.json do not add pages: thousands of them
+ * would break the same limit. Only the chosen verses (the seed's own meanings files) get one.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -18,8 +21,15 @@ for (const id of MEANING_ONLY) {
   const data = JSON.parse(fs.readFileSync(file, 'utf8')) as {
     chapters: Array<{ number: number; verses: Array<{ number: number | string; hindi?: string; translation?: string }> }>;
   };
+  const writtenFile = path.join(root, 'data', 'written-meanings', `${id}.json`);
+  const written = new Set(
+    fs.existsSync(writtenFile) ? Object.keys((JSON.parse(fs.readFileSync(writtenFile, 'utf8')) as { meanings: object }).meanings) : [],
+  );
   out[id] = data.chapters.flatMap((ch) =>
-    ch.verses.filter((v) => (v.hindi ?? '').trim() || (v.translation ?? '').trim()).map((v) => `${ch.number}:${v.number}`),
+    ch.verses
+      .filter((v) => (v.hindi ?? '').trim() || (v.translation ?? '').trim())
+      .map((v) => `${ch.number}:${v.number}`)
+      .filter((key) => !written.has(key)),
   );
 }
 
