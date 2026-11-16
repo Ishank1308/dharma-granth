@@ -46,10 +46,10 @@
   isolation: isolate;
 }
 
-/* contemplation (dark) theme: synced with Dharma Granth dark mode */
-.ash[data-scheme='dark'],
-.dark .ash,
-[data-theme='dark'] .ash {
+/* The main site's Ratri Night is the only source of dark-mode truth.
+   Ignore legacy Ashtavakra data-scheme values left in old local storage. */
+:root[data-theme='night'] .ash,
+:root[data-theme='dark'] .ash {
   --ash-bg: var(--dharma-bg);
   --ash-bg-soft: var(--dharma-card-soft, #161c28);
   --ash-surface: var(--dharma-card);
@@ -184,7 +184,8 @@
   background-size: 5px 5px;
   mix-blend-mode: multiply;
 }
-.ash[data-scheme='dark'] .ash-layer-grain {
+:root[data-theme='night'] .ash .ash-layer-grain,
+:root[data-theme='dark'] .ash .ash-layer-grain {
   opacity: 0.12;
   mix-blend-mode: screen;
 }
