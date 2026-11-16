@@ -75,7 +75,7 @@ export function MobileVerseCarousel({
         dialogRef.current.querySelectorAll<HTMLElement>(
           'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
         ),
-      ).filter((element) => element.getClientRects().length > 0);
+      ).filter((element) => element.tabIndex >= 0 && element.getClientRects().length > 0);
       const first = items[0];
       const last = items[items.length - 1];
       if (!first || !last) {
