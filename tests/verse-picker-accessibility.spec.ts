@@ -17,7 +17,7 @@ test('mobile verse picker traps focus, locks background scroll and restores its 
   expect(await page.evaluate(() => document.body.style.overflow)).toBe('hidden');
 
   await page.keyboard.press('Shift+Tab');
-  expect(await page.evaluate(() => document.activeElement?.closest('[role="dialog"]') !== null)).toBe(true);
+  expect(await page.evaluate(() => Boolean(document.activeElement?.closest('[role="dialog"]')))).toBe(true);
   await page.keyboard.press('Tab');
   await expect(close).toBeFocused();
 
