@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { SiteNav } from "@/app/components/SiteNav";
 import { SiteFooter } from "@/app/components/SiteFooter";
 import { getSiteShellData } from "@/lib/site-shell-data";
-import { DEFAULT_THEME, FIXED_THEME_IDS, THEME_IDS } from "@/lib/site-theme";
+import { DEFAULT_THEME, THEME_IDS } from "@/lib/site-theme";
 import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { PageTransition } from "@/app/components/motion/PageTransition";
 import { RouteTransitions } from "@/app/components/motion/RouteTransitions";
@@ -42,17 +42,19 @@ import { StoragePersistenceRequest } from "@/app/components/StoragePersistenceRe
 const THEME_INIT_SCRIPT = `
 (function () {
   try {
-    var t = localStorage.getItem('dharma-theme');
-    var fixedThemes = ${JSON.stringify(FIXED_THEME_IDS)};
-    if (fixedThemes.indexOf(t) !== -1) {
-      document.documentElement.setAttribute('data-theme', t);
-    } else if (t === 'auto') {
-      var d = new Date();
-      var m = d.getHours() * 60 + d.getMinutes();
-      var eff = (m >= 300 && m < 390) || (m >= 1005 && m < 1140) ? 'sunset' : (m >= 390 && m < 1005 ? 'day' : 'night');
-      document.documentElement.setAttribute('data-theme', eff);
-    } else {
-      document.documentElement.setAttribute('data-theme', ${JSON.stringify(DEFAULT_THEME)});
+    var saved = localStorage.getItem('dharma-theme');
+    // Light is the existing sunset palette; Dark is the existing night palette.
+    // Migrate old preferences before first paint so neither page nor toolbar flashes.
+    var lightLegacy = saved === 'sunset' || saved === 'day' || saved === 'paper' || saved === 'light';
+    var darkLegacy = saved === 'night' || saved === 'dark';
+    var normalized = lightLegacy ? 'sunset'
+      : darkLegacy ? 'night'
+      : saved === 'auto'
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'sunset')
+        : ${JSON.stringify(DEFAULT_THEME)};
+    document.documentElement.setAttribute('data-theme', normalized);
+    if (saved !== normalized) {
+      try { localStorage.setItem('dharma-theme', normalized); } catch (e) {}
     }
   } catch (e) {}
   // The home-page splash plays once per browser session; later page loads
@@ -159,7 +161,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f5f7" },
+    { media: "(prefers-color-scheme: light)", color: "#fff4e5" },
     { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
   width: "device-width",

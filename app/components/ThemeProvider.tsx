@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-import { DEFAULT_THEME, THEME_IDS, THEME_NAMES, type Theme } from '@/lib/site-theme';
+import { DEFAULT_THEME, THEME_IDS, normalizeStoredTheme, type Theme } from '@/lib/site-theme';
 
 export { THEME_NAMES } from '@/lib/site-theme';
 export type { Theme } from '@/lib/site-theme';
@@ -9,25 +9,9 @@ export const THEMES: Theme[] = [...THEME_IDS];
 
 const STORAGE_KEY = 'dharma-theme';
 
-/**
- * Computes sacred circadian theme based on Sandhyā kāla:
- * - 5:00 AM – 6:30 AM: Prātaḥ Sandhyā (Dawn twilight -> sunset palette)
- * - 6:30 AM – 4:45 PM: Dina (Daytime illumination -> day palette)
- * - 4:45 PM – 7:00 PM: Sāyaṁ Sandhyā (Golden twilight -> sunset palette)
- * - 7:00 PM – 5:00 AM: Niśā (Night contemplation -> night palette)
- */
-export function getCircadianTheme(): 'day' | 'sunset' | 'night' {
-  const now = new Date();
-  const currentMinute = now.getHours() * 60 + now.getMinutes();
-  if (currentMinute >= 300 && currentMinute < 390) return 'sunset';
-  if (currentMinute >= 390 && currentMinute < 1005) return 'day';
-  if (currentMinute >= 1005 && currentMinute < 1140) return 'sunset';
-  return 'night';
-}
-
 interface ThemeContextValue {
   theme: Theme;
-  effectiveTheme: 'day' | 'sunset' | 'paper' | 'night';
+  effectiveTheme: Theme;
   setTheme: (t: Theme) => void;
   cycleTheme: () => void;
 }
@@ -90,41 +74,36 @@ function paintTheme(eff: string) {
  */
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(DEFAULT_THEME);
-  const [effectiveTheme, setEffectiveTheme] = useState<'day' | 'sunset' | 'paper' | 'night'>(DEFAULT_THEME);
+  const [effectiveTheme, setEffectiveTheme] = useState<Theme>(DEFAULT_THEME);
 
   useEffect(() => {
-    let stored: Theme | null = null;
+    let stored: string | null = null;
     try {
-      stored = window.localStorage.getItem(STORAGE_KEY) as Theme | null;
+      stored = window.localStorage.getItem(STORAGE_KEY);
     } catch {
-      stored = null;
+      // Storage may be blocked in private contexts.
     }
-    const initialTheme: Theme = stored && THEMES.includes(stored) ? stored : DEFAULT_THEME;
+    const initialTheme = normalizeStoredTheme(
+      stored,
+      window.matchMedia('(prefers-color-scheme: dark)').matches,
+    );
     setThemeState(initialTheme);
+    setEffectiveTheme(initialTheme);
+    document.documentElement.setAttribute('data-theme', initialTheme);
 
-    const applyTheme = (t: Theme) => {
-      const eff = t === 'auto' ? getCircadianTheme() : t;
-      setEffectiveTheme(eff);
-      document.documentElement.setAttribute('data-theme', eff);
-    };
-
-    applyTheme(initialTheme);
-
-    // If auto, periodically recompute circadian theme
-    const interval = setInterval(() => {
-      setThemeState((current) => {
-        if (current === 'auto') {
-          applyTheme('auto');
-        }
-        return current;
-      });
-    }, 60000);
-
-    return () => clearInterval(interval);
+    // Replace obsolete day/paper/auto choices with one of the two supported
+    // values so subsequent loads and reader sessions stay consistent.
+    if (stored !== initialTheme) {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, initialTheme);
+      } catch {
+        // Storage is optional.
+      }
+    }
   }, []);
 
   // The browser's own bar (theme-color) follows the reading theme instead of the fixed
-  // light/dark pair in the page head, so Usha is ivory and Rātri is obsidian up there too.
+  // light/dark pair in the page head, so Light is Sandhyā amber and Dark is Rātri obsidian.
   useEffect(() => {
     const id = requestAnimationFrame(() => {
       const bg = getComputedStyle(document.documentElement).getPropertyValue('--dharma-bg').trim();
@@ -138,9 +117,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const setTheme = (t: Theme) => {
     setThemeState(t);
-    const eff = t === 'auto' ? getCircadianTheme() : t;
-    setEffectiveTheme(eff);
-    paintTheme(eff);
+    setEffectiveTheme(t);
+    paintTheme(t);
     try {
       window.localStorage.setItem(STORAGE_KEY, t);
     } catch {
@@ -166,8 +144,8 @@ export function useTheme(): ThemeContextValue {
     // Outside a provider — fall back to a no-op so component still
     // renders. This shouldn't happen in production.
     return {
-      theme: 'day',
-      effectiveTheme: 'day',
+      theme: DEFAULT_THEME,
+      effectiveTheme: DEFAULT_THEME,
       setTheme: () => {},
       cycleTheme: () => {},
     };

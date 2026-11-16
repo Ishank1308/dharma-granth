@@ -69,10 +69,7 @@ function isTypingTarget(target: EventTarget | null): boolean {
 }
 
 const THEME_ICONS: Record<Theme, typeof Sun> = {
-  auto: Sparkles,
-  day: Sun,
   sunset: Sunset,
-  paper: BookOpen,
   night: Moon,
 };
 
@@ -801,7 +798,7 @@ export function SiteNav({
                 <Search className="h-5 w-5" aria-hidden="true" />
               </button>
 
-              {/* 2. Theme Button: opens a menu of the named themes (cycling through five unnamed states confused readers) */}
+              {/* 2. Theme Button: opens a menu of the named themes (show only Light and Dark) */}
               <div ref={themeMenuRef} className="relative min-[1800px]:hidden">
               <button
                 ref={themeButtonRef}

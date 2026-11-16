@@ -10,7 +10,7 @@ if (!existsSync(OUT_DIR)) {
 const PORT = process.env.PORT || '4180';
 const BASE_URL = `http://localhost:${PORT}`;
 
-const THEMES = ['day', 'sunset', 'paper', 'night'];
+const THEMES = ['sunset', 'night'];
 const VIEWPORTS = [
   { name: 'desktop', width: 1280, height: 850 },
   { name: 'phone', width: 390, height: 844 },
