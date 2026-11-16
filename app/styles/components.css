@@ -238,7 +238,10 @@ a.apple-row:active,
    hydration does not move the page. Colour and motion follow below. */
 .verse-card.book-verse,
 .verse-card.vt {
-    --verse-sa-size: clamp(1.1875rem, 1.05rem + 0.6vw, 1.4375rem);   /* 19 → 23 */
+    /* Default equals the chapter reader's saved "lg" size. Plain server-rendered
+       verses and hydrated cards therefore begin at the same measure. */
+    --verse-sa-size: clamp(1.25rem, 1.08rem + 0.85vw, 1.75rem);
+    --verse-sa-leading: 2.2;
     --verse-pad: clamp(var(--space-4), 0.6rem + 2.4vw, var(--space-8));
     padding: var(--space-3) var(--verse-pad) var(--verse-pad);
     border: 0;
@@ -259,12 +262,24 @@ a.apple-row:active,
 .verse-card.vt:hover {
     box-shadow: var(--shadow-raised);
 }
-[data-reader-size='large'] :is(.verse-card.book-verse, .verse-card.vt) {
-    --verse-sa-size: clamp(1.375rem, 1.2rem + 0.7vw, 1.625rem);
+/* The real chapter-reader setting belongs on the list. Apply it to plain
+   (unhydrated/off-screen) verses as well as interactive ones, never to UI chrome. */
+[data-verse-size='sm'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-size: clamp(1.1rem, 0.93rem + 0.55vw, 1.375rem);
 }
-[data-reader-size='xl'] :is(.verse-card.book-verse, .verse-card.vt) {
-    --verse-sa-size: clamp(1.5rem, 1.3rem + 0.9vw, 1.875rem);
+[data-verse-size='md'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-size: clamp(1.1875rem, 1rem + 0.7vw, 1.625rem);
 }
+[data-verse-size='lg'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-size: clamp(1.25rem, 1.08rem + 0.85vw, 1.75rem);
+}
+[data-verse-size='xl'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-size: clamp(1.45rem, 1.2rem + 1.2vw, 2.125rem);
+}
+[data-verse-leading='compact'] :is(.verse-card.book-verse, .verse-card.vt) { --verse-sa-leading: 1.95; }
+[data-verse-leading='normal'] :is(.verse-card.book-verse, .verse-card.vt) { --verse-sa-leading: 2.05; }
+[data-verse-leading='relaxed'] :is(.verse-card.book-verse, .verse-card.vt) { --verse-sa-leading: 2.2; }
+[data-verse-leading='loose'] :is(.verse-card.book-verse, .verse-card.vt) { --verse-sa-leading: 2.4; }
 /* Reciting or highlighted: the ring follows the card's corners. */
 .verse-card.book-verse.book-verse-ringed {
     border-radius: var(--radius-card);
@@ -313,7 +328,7 @@ a.apple-row:active,
 .verse-card.vt .vt-sa {
     font-family: var(--font-sanskrit);
     font-size: var(--verse-sa-size);
-    line-height: 1.8;
+    line-height: var(--verse-sa-leading);
     color: var(--label-primary);
 }
 /* Lines of a shloka sit close, as printed; the gap between pādas is the line height. */
