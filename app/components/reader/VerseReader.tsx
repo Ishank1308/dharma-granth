@@ -616,6 +616,7 @@ export function VerseReader(props: VerseReaderProps) {
             provenance={provenance}
             settings={settings}
             onUpdateSetting={update}
+             onStepSize={stepSize}
             insight={insight}
             sourceStatus={sourceStatus}
           />
@@ -709,7 +710,7 @@ export function VerseReader(props: VerseReaderProps) {
           <ul className="mt-2 space-y-0.5 text-sm">
             {[
               ['layer-sanskrit', 'Original verse'],
-              ['layer-tradition', 'Traditional commentary'],
+              ['reader-study-guide', 'Study layers & text size'],
               ['layer-sources', 'Sources'],
             ].map(([id, text]) => (
               <li key={id}>
