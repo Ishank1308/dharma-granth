@@ -113,7 +113,7 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
           <p className="mb-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
             शाब्दिक हिन्दी अर्थ · Literal Hindi Meaning
           </p>
-          <p lang="hi" className="font-devanagari text-base leading-relaxed text-dharma-text sm:text-lg">
+          <p lang="hi" className="ash-verse-hindi font-devanagari text-base leading-relaxed text-dharma-text sm:text-lg">
             {v.literalHindiMeaning}
           </p>
         </div>
@@ -122,7 +122,7 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
             <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
               English Translation
             </p>
-            <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text sm:text-base">
+            <p lang="en" className="ash-verse-english font-serif text-sm leading-relaxed text-dharma-text sm:text-base">
               {v.englishTranslation}
             </p>
           </div>
@@ -249,14 +249,14 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
     },
   ];
   return (
-    <div id={id} className="sacred-flow-wrap ash-verse-flow" data-ash-verse-size="lg" data-ash-verse-leading="relaxed">
+    <div id={id} className="sacred-flow-wrap ash-verse-flow" data-ash-verse-size="lg" data-ash-verse-leading="relaxed" data-ash-translation-size="md">
       {/* ── Verse: scripture first, reading aids folded beneath it ── */}
       <SacredSection id={`${id}-verse`} section="verse">
         <div className="verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8">
           <span aria-hidden="true" className="verse-leaf-ornament left-3 top-2">❁</span>
           <span aria-hidden="true" className="verse-leaf-ornament right-3 top-2">❁</span>
           <p className="mb-3 text-xs font-semibold text-dharma-muted">वक्ता: {v.speaker}</p>
-          <p lang="sa" className="font-devanagari text-[clamp(1.375rem,calc(1.05rem+1.6vw),2.125rem)] font-bold leading-[2.05] text-dharma-text" style={{ whiteSpace: 'pre-line' }}>
+          <p lang="sa" className="ash-full-sanskrit font-devanagari font-bold text-dharma-text" style={{ whiteSpace: 'pre-line' }}>
             {keepDanda(v.sanskrit)}
           </p>
           {v.iast && (
