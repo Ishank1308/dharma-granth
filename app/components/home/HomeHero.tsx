@@ -75,7 +75,7 @@ export function HomeHero() {
           </p>
         </div>
 
-        <div className="relative min-w-0" aria-label="Featured paths into the library">
+        <aside className="relative min-w-0" aria-label="Featured paths into the library">
           <div className="pointer-events-none absolute -inset-3 rounded-[38px] border border-dharma-saffron/10 sm:-inset-4" aria-hidden="true" />
           <Link
             href="/scripture/bhagavadgita/chapter/2/verse/47/"
@@ -150,7 +150,7 @@ export function HomeHero() {
               </span>
             </Link>
           </div>
-        </div>
+        </aside>
       </div>
 
       <div className="relative mx-auto mt-16 max-w-[1180px] border-t border-dharma-border/70 pt-8 sm:mt-20 sm:pt-10">
