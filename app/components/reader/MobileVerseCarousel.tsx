@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { X, ChevronLeft, ChevronRight, Search, Sparkles } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Search } from 'lucide-react';
 import { toAsciiDigits } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
@@ -34,6 +34,10 @@ export function MobileVerseCarousel({
   const router = useRouter();
   const listRef = useRef<HTMLDivElement>(null);
   const activeBtnRef = useRef<HTMLAnchorElement | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const onCloseRef = useRef(onClose);
+  useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
   const [filterText, setFilterText] = useState('');
 
   // Auto-scroll active verse pill to center when drawer opens
@@ -42,7 +46,7 @@ export function MobileVerseCarousel({
       const timer = setTimeout(() => {
         if (activeBtnRef.current) {
           activeBtnRef.current.scrollIntoView({
-            behavior: 'smooth',
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
             block: 'nearest',
             inline: 'center',
           });
@@ -52,15 +56,46 @@ export function MobileVerseCarousel({
     }
   }, [isOpen, currentVerseNumber]);
 
-  // Handle ESC key
+  // Trap keyboard focus inside the picker and restore the reader's trigger on close.
   useEffect(() => {
     if (!isOpen) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const oldOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus({ preventScroll: true });
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onCloseRef.current();
+        return;
+      }
+      if (event.key !== 'Tab' || !dialogRef.current) return;
+      const items = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((element) => element.getClientRects().length > 0);
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (!first || !last) {
+        event.preventDefault();
+        dialogRef.current.focus();
+      } else if (event.shiftKey && (document.activeElement === first || document.activeElement === dialogRef.current)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !dialogRef.current.contains(document.activeElement))) {
+        event.preventDefault();
+        first.focus();
+      }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = oldOverflow;
+      if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
+    };
+  }, [isOpen]);
 
   const handleSelectVerse = useCallback(
     (href: string) => {
@@ -79,8 +114,10 @@ export function MobileVerseCarousel({
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
+      tabIndex={-1}
       aria-labelledby="mobile-carousel-title"
       className="fixed inset-0 z-50 flex flex-col justify-end bg-black/60 backdrop-blur-sm transition-opacity sm:hidden"
     >
@@ -95,7 +132,7 @@ export function MobileVerseCarousel({
 
       {/* Bottom Sheet Drawer */}
       <div
-        className="relative max-h-[85vh] w-full rounded-t-3xl border-t border-dharma-border/80 bg-dharma-card p-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-2xl transition-transform"
+        className="relative flex max-h-[85dvh] w-full flex-col overflow-hidden rounded-t-3xl border-t border-dharma-border/80 bg-dharma-card p-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-2xl motion-reduce:transition-none"
       >
         {/* Grab Handle */}
         <div className="mx-auto mb-3 h-1.5 w-12 rounded-full bg-dharma-border/80" aria-hidden="true" />
@@ -112,13 +149,14 @@ export function MobileVerseCarousel({
             </p>
           </div>
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={() => {
               triggerTactileFeedback('light', 'softTap');
               onClose();
             }}
             aria-label="बंद करें"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-dharma-border/80 bg-dharma-bg text-dharma-muted transition hover:text-dharma-text"
+            className="focus-ring flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-dharma-border/80 bg-dharma-bg text-dharma-muted transition hover:text-dharma-text"
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -131,17 +169,18 @@ export function MobileVerseCarousel({
             <input
               type="text"
               inputMode="numeric"
+              aria-label="श्लोक संख्या खोजें · Search verse number"
               placeholder="श्लोक संख्या खोजें..."
               value={filterText}
               onChange={(e) => setFilterText(e.target.value)}
-              className="h-9 w-full rounded-xl border border-dharma-border bg-dharma-bg pl-9 pr-3 text-sm text-dharma-text outline-none focus:border-saffron-500 focus:ring-2 focus:ring-saffron-500/20"
+              className="h-11 w-full rounded-xl border border-dharma-border bg-dharma-bg pl-9 pr-3 text-sm text-dharma-text outline-none focus:border-saffron-500 focus:ring-2 focus:ring-saffron-500/20"
             />
           </div>
           {filterText && (
             <button
               type="button"
               onClick={() => setFilterText('')}
-              className="px-2.5 py-1 text-xs font-semibold text-dharma-muted"
+              className="focus-ring min-h-[44px] px-2.5 py-1 text-xs font-semibold text-dharma-muted"
             >
               हटाएं
             </button>
@@ -154,7 +193,7 @@ export function MobileVerseCarousel({
             <button
               type="button"
               onClick={() => handleSelectVerse(verses[0].href)}
-              className="flex items-center gap-1 rounded-lg px-2 py-1 font-devanagari font-semibold text-saffron-700 hover:bg-saffron-500/10 dark:text-saffron-300"
+              className="focus-ring flex min-h-[44px] items-center gap-1 rounded-lg px-2 py-1 font-devanagari font-semibold text-saffron-700 hover:bg-saffron-500/10 dark:text-saffron-300"
             >
               <ChevronLeft className="h-3 w-3" /> प्रथम श्लोक ({toAsciiDigits(verses[0].number)})
             </button>
@@ -163,7 +202,7 @@ export function MobileVerseCarousel({
             <button
               type="button"
               onClick={() => handleSelectVerse(verses[verses.length - 1].href)}
-              className="flex items-center gap-1 rounded-lg px-2 py-1 font-devanagari font-semibold text-saffron-700 hover:bg-saffron-500/10 dark:text-saffron-300"
+              className="focus-ring flex min-h-[44px] items-center gap-1 rounded-lg px-2 py-1 font-devanagari font-semibold text-saffron-700 hover:bg-saffron-500/10 dark:text-saffron-300"
             >
               अंतिम श्लोक ({toAsciiDigits(verses[verses.length - 1].number)}) <ChevronRight className="h-3 w-3" />
             </button>
@@ -205,7 +244,7 @@ export function MobileVerseCarousel({
                   </span>
                   {isCurrent && (
                     <span className="absolute -top-1.5 flex h-3 w-3 items-center justify-center">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
+                      <span className="absolute inline-flex h-full w-full animate-ping motion-reduce:animate-none rounded-full bg-amber-400 opacity-75" />
                       <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-300" />
                     </span>
                   )}
@@ -216,7 +255,7 @@ export function MobileVerseCarousel({
         </div>
 
         {/* Complete Verse Grid for larger jumps */}
-        <div className="mt-2 max-h-48 overflow-y-auto border-t border-dharma-border/50 pt-2.5">
+        <div className="mt-2 min-h-0 flex-1 overflow-y-auto overscroll-contain border-t border-dharma-border/50 pt-2.5">
           <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-dharma-muted">
             <span className="font-devanagari">सभी श्लोक तालिका</span>
           </p>
@@ -228,7 +267,7 @@ export function MobileVerseCarousel({
                   key={`grid-${v.number}`}
                   type="button"
                   onClick={() => handleSelectVerse(v.href)}
-                  className={`flex h-10 items-center justify-center rounded-xl border text-xs font-bold transition-all ${
+                  className={`focus-ring flex min-h-[44px] items-center justify-center rounded-xl border text-xs font-bold transition-all ${
                     isCurrent
                       ? 'border-saffron-500 bg-saffron-600 font-extrabold text-white shadow-md'
                       : 'border-dharma-border/70 bg-dharma-bg text-dharma-text hover:border-saffron-400'
