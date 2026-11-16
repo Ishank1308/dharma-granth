@@ -62,7 +62,7 @@ export function VerseCompact({ v }: { v: AshtavakraVerse }) {
           <VerificationBadge status={v.verificationStatus} />
         </div>
       </div>
-      <p lang="sa" className="mt-3 text-center font-devanagari text-xl font-bold leading-loose text-dharma-text" style={{ whiteSpace: 'pre-line' }}>
+      <p lang="sa" className="mt-3 text-center font-devanagari text-[clamp(1.1875rem,calc(1rem+1vw),1.75rem)] font-bold leading-[1.95] text-dharma-text" style={{ whiteSpace: 'pre-line' }}>
         {keepDanda(v.sanskrit)}
       </p>
       <p lang="hi" className="mt-2 text-center font-devanagari text-sm text-dharma-muted">
@@ -103,7 +103,7 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
           <span aria-hidden="true" className="verse-leaf-ornament left-3 top-2">❁</span>
           <span aria-hidden="true" className="verse-leaf-ornament right-3 top-2">❁</span>
           <p className="mb-3 text-xs font-semibold text-dharma-muted">वक्ता: {v.speaker}</p>
-          <p lang="sa" className="font-devanagari text-2xl font-bold leading-loose text-dharma-text sm:text-3xl" style={{ whiteSpace: 'pre-line' }}>
+          <p lang="sa" className="font-devanagari text-[clamp(1.375rem,calc(1.05rem+1.6vw),2.125rem)] font-bold leading-[2.05] text-dharma-text" style={{ whiteSpace: 'pre-line' }}>
             {keepDanda(v.sanskrit)}
           </p>
           {v.iast && (
