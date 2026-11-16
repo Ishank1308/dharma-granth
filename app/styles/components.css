@@ -333,6 +333,23 @@ a.apple-row:active,
     opacity: 0.85;
 }
 
+/* Reading comfort: a bounded measure on wide screens, without truncating verses
+   or imposing fixed heights. Both the crawled VerseText and hydrated VerseCard use
+   the same selectors, so the reading measure does not change during hydration.
+   Keep all Sanskrit lines complete; long compounds may wrap naturally. */
+.verse-card.book-verse .verse-folio > p[lang='sa'],
+.verse-card.vt .vt-sa {
+    max-inline-size: 36em;
+    margin-inline: auto;
+}
+.verse-card.book-verse section[id$='-arth'] > div,
+.verse-card.vt > .vt-block {
+    max-inline-size: 68ch;
+    margin-inline: auto;
+}
+
+/* Meaning panels sit on a consistent text measure even in the wide chapter
+   layout. Small screens retain all available space and adjustable reader size. */
 /* Meanings: under a hairline, Hindi at full ink, English a step quieter. */
 .verse-card.book-verse .sacred-flow-wrap,
 .verse-card.vt .vt-leaf + .vt-block {
