@@ -38,11 +38,13 @@ import Link from 'next/link';
 
 /* ── Type scale: full class strings so Tailwind keeps them ──────────── */
 
+/** Fluid across phone → tablet → desktop; each setting stays larger than the one below.
+ * rem floors respect browser zoom, while caps keep Sanskrit comfortable inside the reading column. */
 const SANSKRIT_SIZE = {
-  sm: 'text-xl sm:text-2xl',
-  md: 'text-2xl sm:text-3xl',
-  lg: 'text-[1.75rem] sm:text-4xl',
-  xl: 'text-3xl sm:text-5xl',
+  sm: 'text-[clamp(1.125rem,calc(0.9rem+1.1vw),1.5rem)]',
+  md: 'text-[clamp(1.25rem,calc(1rem+1.6vw),1.875rem)]',
+  lg: 'text-[clamp(1.45rem,calc(1.05rem+2.1vw),2.25rem)]',
+  xl: 'text-[clamp(1.65rem,calc(1.2rem+2.5vw),2.75rem)]',
 } as const;
 
 const TRANSLATION_SIZE = {
@@ -349,7 +351,7 @@ export function ReaderLayers({
       >
         {lines.length > 0 ? (
           <>
-          <p id="sanskrit-text" lang="sa" className={`verse-folio rounded-2xl px-4 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-8 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
+          <p id="sanskrit-text" lang="sa" className={`verse-folio min-w-0 rounded-2xl px-2 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-8 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
             {lines.map((line, i) => (
               <span key={i} className="block">
                 <PadaLine line={line} />
