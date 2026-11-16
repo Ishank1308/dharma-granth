@@ -11,7 +11,7 @@ test('mobile verse picker traps focus, locks background scroll and restores its 
   await trigger.click();
 
   const dialog = page.getByRole('dialog', { name: 'श्लोक अन्वेषक' });
-  const close = dialog.getByRole('button', { name: 'बंद करें' });
+  const close = dialog.getByRole('button', { name: 'बंद करें', exact: true });
   await expect(dialog).toBeVisible();
   await expect(close).toBeFocused();
   expect(await page.evaluate(() => document.body.style.overflow)).toBe('hidden');
@@ -36,7 +36,7 @@ test('verse picker controls are touch-sized and respect reduced motion', async (
   await expect(dialog).toBeVisible();
 
   for (const element of [
-    dialog.getByRole('button', { name: 'बंद करें' }),
+    dialog.getByRole('button', { name: 'बंद करें', exact: true }),
     dialog.getByRole('textbox', { name: /Search verse number/ }),
     dialog.getByRole('button', { name: /प्रथम श्लोक/ }),
     dialog.getByRole('button', { name: /अंतिम श्लोक/ }),
