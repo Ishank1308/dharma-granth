@@ -1,9 +1,9 @@
 {
-  "note": "Independently drafted Hindi meanings for Devi Bhagavata Purana, Skandha 1, Adhyaya 1, verses 1-25, based on the Sanskrit passage (https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html). The ancient Sanskrit source was consulted for study only; no modern published translation is reproduced. UNREVIEWED DRAFT: confirm the repository edition has chapter 1 / verse keys 1:1–1:25 and check every verse before applying or publishing.",
+  "note": "Independently drafted Hindi meanings for Devi Bhagavata Purana, Skandha 1, Adhyaya 1, verses 1-25, based on the Sanskrit passage (https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html). The ancient Sanskrit source was consulted for study only; no modern published translation is reproduced. UNREVIEWED DRAFT (reference cross-check found misaligned OCR in the existing Gita Press extract; compare each verse to the printed edition): confirm the repository edition has chapter 1 / verse keys 1:1–1:25 and check every verse before applying or publishing.",
   "keyFormat": "chapter:verse",
   "meanings": {
     "1:1": {
-      "hindi": "हम उस आदि विद्या का ध्यान करते हैं, जो समस्त चेतना का स्वरूप हैं। वे हमारी बुद्धि को सद्मार्ग की ओर प्रेरित करें।"
+      "hindi": "हम उस आदिविद्या का ध्यान करते हैं, जो समस्त चेतना का स्वरूप हैं। वे हमारी बुद्धि को प्रेरित करें।"
     },
     "1:2": {
       "hindi": "शौनक ऋषि ने कहा—हे महाभाग सूतजी, आप धन्य हैं; आपने शुभ पुराण-संहिताओं का भलीभाँति अध्ययन किया है।"
@@ -24,7 +24,7 @@
       "hindi": "हे महाभाग सर्वज्ञ सूतजी, आप दीर्घायु हों और तीनों प्रकार के तापों से मुक्त रहें। आज हमें ब्रह्म के समान पवित्र पुराण सुनाइए।"
     },
     "1:8": {
-      "hindi": "हे सूतजी, जिन मनुष्यों के पास सुनने की शक्ति है, किंतु वे हितकर पुराण-कथाओं का रस नहीं पहचानते और उन्हें नहीं सुनते, वे उस अवसर से वंचित रह जाते हैं।"
+      "hindi": "हे सूतजी, जो लोग कान होते हुए भी केवल स्वाद के आस्वाद में लगे रहते हैं और पुराण-कथाओं को नहीं सुनते, उन्हें इस श्रवण-सुख से वंचित कहा गया है।"
     },
     "1:9": {
       "hindi": "जिस प्रकार जिह्वा छह प्रकार के रसों का आस्वाद लेकर प्रसन्न होती है, उसी प्रकार कान विवेकी जनों के श्रेष्ठ वचनों को सुनकर आनंदित होते हैं।"
@@ -48,7 +48,7 @@
       "hindi": "इसी प्रकार पुराणों की कथाओं को भी तीन गुणों से सम्बद्ध बताया गया है। हे सौम्य सूतजी, आपने पाँच लक्षणों से युक्त उन पुराणों का वर्णन किया है।"
     },
     "1:16": {
-      "hindi": "उन पुराणों में जिस पुण्य भागवत का आपने पहले उल्लेख किया था, उसे पाँचवें वेद के समान और सभी पुराण-लक्षणों से युक्त बताया गया है।"
+      "hindi": "उन पुराणों में पाँचवाँ कहा गया यह पवित्र भागवत वेद के तुल्य और सभी पुराण-लक्षणों से युक्त बताया गया है।"
     },
     "1:17": {
       "hindi": "उस अत्यन्त अद्भुत ग्रन्थ का आपने पहले केवल संक्षिप्त परिचय दिया था। उसे मोक्ष के इच्छुकों के लिए मुक्तिदायक तथा धर्म और अभिलषित फल देने वाला कहा गया है।"
