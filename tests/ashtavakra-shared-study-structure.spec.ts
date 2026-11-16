@@ -86,3 +86,15 @@ test('Ashtavakra source, meaning and explanations render without JavaScript', as
     await context.close();
   }
 });
+
+test('Ashtavakra uses the same study structure in Sandhya Light and Ratri Dark', async ({ page }) => {
+  for (const theme of ['sunset', 'night'] as const) {
+    await page.addInitScript((value) => localStorage.setItem('dharma-theme', value), theme);
+    await page.goto(url);
+    await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
+    await expect(page.locator(`#${prefix}-verse p[lang="sa"]`).first()).toBeVisible();
+    await expect(page.locator(`#${prefix}-arth`)).toBeVisible();
+    await expect(page.locator(`#${prefix}-vyakhya`)).toBeVisible();
+    await expect(page.locator(`#${prefix}-sources`)).toContainText('स्रोत');
+  }
+});
