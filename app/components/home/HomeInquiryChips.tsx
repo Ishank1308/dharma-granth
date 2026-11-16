@@ -21,9 +21,9 @@ const HOME_GUIDES = [
     id: 'inquiry',
     icon: Compass,
     hindi: 'जीवन के प्रश्न',
-    english: 'Explore life's questions',
+    english: 'Life & reflection',
     accent: 'bg-dharma-maroon/5',
-    iconAccent: 'bg-dharma-maroon/10 text-dharma-maroon',
+    iconAccent: 'bg-dharma-maroon/10 text-dharma-saffron',
     links: [
       { Icon: Bird, hindi: 'तनाव और चिन्ता', english: 'Stress & worry', href: '/wisdom-for-life/stress-and-worry/' },
       { Icon: Scale, hindi: 'कर्म और कर्तव्य', english: 'Action & duty', href: '/scripture/bhagavadgita/chapter/2/verse/47/' },
@@ -35,7 +35,7 @@ const HOME_GUIDES = [
     id: 'practice',
     icon: Sunrise,
     hindi: 'दैनिक साधना',
-    english: 'Find a daily practice',
+    english: 'Daily practice',
     accent: 'bg-dharma-gold/5',
     iconAccent: 'bg-dharma-gold/10 text-dharma-saffron',
     links: [
@@ -62,10 +62,10 @@ export function HomeInquiryChips() {
               <guide.icon className="h-5 w-5" aria-hidden="true" />
             </span>
             <div className="min-w-0 flex-1">
-              <h3 id={'home-guide-' + guide.id} lang="hi" className="font-devanagari text-lg font-semibold leading-snug text-dharma-text">
-                {guide.hindi}
+              <h3 id={'home-guide-' + guide.id} className="text-dharma-text">
+                <span lang="hi" className="block font-devanagari text-lg font-semibold leading-snug">{guide.hindi}</span>
+                <span className="mt-0.5 block text-xs font-normal text-dharma-muted">{guide.english}</span>
               </h3>
-              <p className="mt-0.5 text-xs text-dharma-muted">{guide.english}</p>
             </div>
             <span aria-hidden="true" className="text-xs font-semibold tabular-nums text-dharma-muted">
               0{index + 1} / 02
