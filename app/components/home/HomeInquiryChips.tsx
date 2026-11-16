@@ -1,16 +1,29 @@
 'use client';
 
 import Link from 'next/link';
-import { Bird, ChevronRight, CircleDot, Flame, Flower2, Scale, Sparkles, Sun, Sunrise } from 'lucide-react';
+import {
+  Bird,
+  ChevronRight,
+  CircleDot,
+  Compass,
+  Flame,
+  Flower2,
+  Scale,
+  Sparkles,
+  Sun,
+  Sunrise,
+} from 'lucide-react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
+/** Content-first entry points. No mood profiling or stored user preference. */
 const HOME_GUIDES = [
   {
     id: 'inquiry',
+    icon: Compass,
     hindi: 'जीवन के प्रश्न',
-    english: 'Life & reflection',
-    accent: 'border-dharma-maroon/25 bg-dharma-maroon/5',
-    iconAccent: 'bg-dharma-maroon/10',
+    english: 'Explore life's questions',
+    accent: 'bg-dharma-maroon/5',
+    iconAccent: 'bg-dharma-maroon/10 text-dharma-maroon',
     links: [
       { Icon: Bird, hindi: 'तनाव और चिन्ता', english: 'Stress & worry', href: '/wisdom-for-life/stress-and-worry/' },
       { Icon: Scale, hindi: 'कर्म और कर्तव्य', english: 'Action & duty', href: '/scripture/bhagavadgita/chapter/2/verse/47/' },
@@ -20,10 +33,11 @@ const HOME_GUIDES = [
   },
   {
     id: 'practice',
+    icon: Sunrise,
     hindi: 'दैनिक साधना',
-    english: 'Daily practice',
-    accent: 'border-dharma-gold/30 bg-dharma-gold/5',
-    iconAccent: 'bg-dharma-gold/10',
+    english: 'Find a daily practice',
+    accent: 'bg-dharma-gold/5',
+    iconAccent: 'bg-dharma-gold/10 text-dharma-saffron',
     links: [
       { Icon: CircleDot, hindi: '108 जप साधना', english: 'Japa practice', href: '/practice/' },
       { Icon: Sunrise, hindi: 'आज का पंचांग', english: 'Daily Panchang', href: '/panchang/' },
@@ -35,36 +49,44 @@ const HOME_GUIDES = [
 
 export function HomeInquiryChips() {
   return (
-    <div className="mx-auto mt-6 grid w-full max-w-3xl gap-3 text-left sm:mt-7 sm:grid-cols-2">
-      {HOME_GUIDES.map((group) => (
+    <div className="mt-6 grid gap-4 lg:grid-cols-2 lg:gap-5">
+      {HOME_GUIDES.map((guide, index) => (
         <nav
-          key={group.id}
-          aria-labelledby={`home-guide-${group.id}`}
-          className={`rounded-2xl border p-2.5 sm:p-3 ${group.accent}`}
+          key={guide.id}
+          aria-labelledby={'home-guide-' + guide.id}
+          className={'relative overflow-hidden rounded-panel border border-dharma-border/80 p-4 shadow-raised sm:p-5 ' + guide.accent}
         >
-          <h2 id={`home-guide-${group.id}`} className="mb-2 flex flex-wrap items-baseline gap-x-2 px-1 text-sm font-semibold text-dharma-text">
-            <span lang="hi" className="font-devanagari">{group.hindi}</span>
-            <span className="text-xs font-medium text-dharma-muted">{group.english}</span>
-          </h2>
-          <ul className="grid grid-cols-2 gap-1.5">
-            {group.links.map((link) => (
-              <li key={link.href}>
+          <div className="pointer-events-none absolute -right-16 -top-20 size-52 rounded-full border border-dharma-saffron/10" aria-hidden="true" />
+          <div className="relative flex items-center gap-3">
+            <span className={'grid h-11 w-11 shrink-0 place-items-center rounded-2xl ' + guide.iconAccent}>
+              <guide.icon className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <h3 id={'home-guide-' + guide.id} lang="hi" className="font-devanagari text-lg font-semibold leading-snug text-dharma-text">
+                {guide.hindi}
+              </h3>
+              <p className="mt-0.5 text-xs text-dharma-muted">{guide.english}</p>
+            </div>
+            <span aria-hidden="true" className="text-xs font-semibold tabular-nums text-dharma-muted">
+              0{index + 1} / 02
+            </span>
+          </div>
+          <ul className="relative mt-4 grid gap-2 sm:grid-cols-2">
+            {guide.links.map((item) => (
+              <li key={item.href} className="min-w-0">
                 <Link
-                  href={link.href}
+                  href={item.href}
                   onClick={() => triggerTactileFeedback('selection', 'softTap')}
-                  className="focus-ring group flex h-full min-h-[52px] items-start gap-1.5 rounded-xl border border-dharma-border/80 bg-dharma-card/90 px-1.5 py-2 text-dharma-text transition-colors hover:border-dharma-saffron/60 hover:bg-dharma-card sm:items-center sm:px-2"
+                  className="focus-ring group flex h-full min-h-[65px] items-center gap-2.5 rounded-xl border border-dharma-border/70 bg-dharma-card/90 px-3 py-2.5 text-dharma-text motion-safe:transition-[transform,border-color,background-color] motion-safe:duration-standard motion-safe:hover:-translate-y-0.5 hover:border-dharma-saffron/45 hover:bg-dharma-card"
                 >
-                  <span aria-hidden="true" className={`grid h-6 w-6 shrink-0 place-items-center rounded-md text-dharma-saffron ${group.iconAccent}`}>
-                    <link.Icon className="h-3.5 w-3.5" />
+                  <span aria-hidden="true" className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-dharma-saffron/10 text-dharma-saffron">
+                    <item.Icon className="h-4 w-4" />
                   </span>
-                  <span className="min-w-0 flex-1 break-words">
-                    <span lang="hi" className="block font-devanagari text-xs font-semibold leading-snug">{link.hindi}</span>
-                    <span className="mt-0.5 block text-[11px] leading-tight text-dharma-muted">{link.english}</span>
+                  <span className="min-w-0 flex-1">
+                    <span lang="hi" className="block font-devanagari text-sm font-semibold leading-relaxed">{item.hindi}</span>
+                    <span className="block text-xs leading-snug text-dharma-muted">{item.english}</span>
                   </span>
-                  <ChevronRight
-                    aria-hidden="true"
-                    className="hidden h-3.5 w-3.5 shrink-0 text-dharma-muted group-hover:text-dharma-saffron motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5 md:block"
-                  />
+                  <ChevronRight aria-hidden="true" className="h-4 w-4 shrink-0 text-dharma-muted motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5" />
                 </Link>
               </li>
             ))}
