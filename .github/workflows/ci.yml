@@ -78,6 +78,9 @@ jobs:
       - name: Sitemap tests
         run: npm run test:sitemap
 
+      - name: Sanskrit lexicon integrity
+        run: npm run test:sanskrit-lexicon
+
   build:
     name: Build static export
     runs-on: ubuntu-latest
