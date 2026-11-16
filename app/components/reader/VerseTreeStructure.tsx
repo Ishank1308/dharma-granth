@@ -43,26 +43,29 @@ interface Props {
   label?: string;
   /** Keep folded bodies in the DOM (native <details>) for server-rendered pages. */
   persistent?: boolean;
+  /** Stable page-scoped prefix for fragment navigation to available study branches. */
+  anchorPrefix?: string;
 }
 
 export function VerseTreeStructure({
   branches,
   label = 'श्लोक का ज्ञान-वृक्ष · Verse knowledge tree',
   persistent = false,
+  anchorPrefix,
 }: Props) {
   if (branches.length === 0) return null;
   return (
     <div className="verse-tree mt-5" role="group" aria-label={label}>
       {/* Stem from the shloka down to the first node */}
       <div aria-hidden="true" className="ml-[15px] h-4 w-0.5 rounded-full bg-amber-500/40 dark:bg-amber-400/30" />
-      <TreeNode branches={branches} persistent={persistent} />
+      <TreeNode branches={branches} persistent={persistent} anchorPrefix={anchorPrefix} />
     </div>
   );
 }
 
 const RAIL = 'rounded-full bg-amber-500/30 dark:bg-amber-400/25';
 
-function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persistent: boolean }) {
+function TreeNode({ branches, persistent, anchorPrefix }: { branches: VerseTreeBranch[]; persistent: boolean; anchorPrefix?: string }) {
   const [branch, ...rest] = branches;
   const id = useId();
   const [open, setOpen] = useState(Boolean(branch.defaultOpen));
@@ -111,7 +114,7 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
 
   return (
     // data-branch names the layer so colour.css can give each its own hue.
-    <div className="relative" data-branch={branch.id}>
+    <div id={anchorPrefix ? `${anchorPrefix}-${branch.id}` : undefined} className="relative scroll-mt-32 sm:scroll-mt-24" data-branch={branch.id}>
       <div className="relative">
         {/* Rail: from this node's circle down to where the next layer branches off */}
         {(open || rest.length > 0) && (
@@ -161,7 +164,7 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
             aria-hidden="true"
             className="absolute left-[15px] top-0 h-[23px] w-0 border-l-2 border-amber-500/30 dark:border-amber-400/25 sm:-left-[13px] sm:w-[13px] sm:rounded-bl-xl sm:border-b-2"
           />
-          <TreeNode branches={rest} persistent={persistent} />
+          <TreeNode branches={rest} persistent={persistent} anchorPrefix={anchorPrefix} />
         </div>
       )}
     </div>
