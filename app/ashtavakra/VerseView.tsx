@@ -3,7 +3,10 @@ import type { AshtavakraVerse } from '@/lib/ashtavakra';
 import { keepDanda, verseHref } from '@/lib/ashtavakra';
 import { ConceptVisual } from './visuals';
 import { ReadFlag } from './VerseBits';
-import { ConnectedFlow, SacredSection } from '@/app/components/reader/SacredReadingFlow';
+import { SacredSection } from '@/app/components/reader/SacredReadingFlow';
+import { VerseTreeStructure, type VerseTreeBranch } from '@/app/components/reader/VerseTreeStructure';
+import { SACRED_SECTION_LABEL } from '@/lib/sacred-reading-order';
+import { AshtavakraReadingGuide } from './AshtavakraReadingGuide';
 import { ReflectionBody } from '@/app/components/ModernContextBlock';
 
 /** Splits blank-line separated text into paragraphs; keeps single line breaks. */
@@ -95,8 +98,158 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
   const concept = conceptFor(v.themes);
   const review = v.verificationStatus !== 'verified';
   const id = `ash-${v.verseNumber.replace(/\./g, '-')}`;
+  // Ashtavakra now uses the same persistent study tree as the other scripture
+  // readers. All commentary is passed as server-rendered React nodes, so no
+  // original Sanskrit, translation or editorial content is lost.
+  const branches: VerseTreeBranch[] = [
+    {
+      id: 'arth',
+      labelHi: SACRED_SECTION_LABEL.arth.hi,
+      labelEn: SACRED_SECTION_LABEL.arth.en,
+      defaultOpen: true,
+      content: (
+        <div className="min-w-0 space-y-3">
+        <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card-soft/70 p-4 shadow-2xs sm:p-5">
+          <p className="mb-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+            शाब्दिक हिन्दी अर्थ · Literal Hindi Meaning
+          </p>
+          <p lang="hi" className="font-devanagari text-base leading-relaxed text-dharma-text sm:text-lg">
+            {v.literalHindiMeaning}
+          </p>
+        </div>
+        {v.englishTranslation && (
+          <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4 shadow-2xs sm:p-5">
+            <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
+              English Translation
+            </p>
+            <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text sm:text-base">
+              {v.englishTranslation}
+            </p>
+          </div>
+        )}
+        </div>
+      ),
+    },
+    {
+      id: 'vyakhya',
+      labelHi: SACRED_SECTION_LABEL.vyakhya.hi,
+      labelEn: SACRED_SECTION_LABEL.vyakhya.en,
+      defaultOpen: true,
+      content: (
+        <div className="min-w-0 space-y-3">
+          {v.bookBasedHindiExplanation && (
+            <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4 shadow-2xs sm:p-5">
+              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">
+                पुस्तकानुसार हिन्दी भावार्थ · Commentary
+              </p>
+              <p className="mb-2 text-[11px] leading-relaxed text-dharma-muted">पुस्तक की भाषा-टीका का मौलिक पुनर्कथन, शब्दशः प्रति नहीं।</p>
+              <Paras text={v.bookBasedHindiExplanation} className={proseHi} />
+            </div>
+          )}
+          {v.simpleHindiExplanation && (
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                सरल हिन्दी में समझें · In simple Hindi
+              </p>
+              <Paras text={v.simpleHindiExplanation} className={proseRelaxedHi} />
+            </div>
+          )}
+          {v.simpleEnglishExplanation && (
+            <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text">
+              <span className="font-semibold">In simple English: </span>{v.simpleEnglishExplanation}
+            </p>
+          )}
+          {v.philosophicalExplanationHindi && (
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                गहरी दार्शनिक व्याख्या · Deep philosophical insight
+              </p>
+              <Paras text={v.philosophicalExplanationHindi} className={proseRelaxedHi} />
+              {v.analogyHindi && (
+                <p lang="hi" className="mt-3 rounded-xl border border-dharma-border bg-dharma-card-soft p-3 font-devanagari text-sm leading-relaxed text-dharma-text">
+                  <span className="font-bold">उदाहरण से समझें:</span> {v.analogyHindi}
+                </p>
+              )}
+            </div>
+          )}
+          {v.commonMisunderstandingHindi && (
+            <div className="rounded-2xl border border-rose-200/80 bg-rose-50/60 p-4 dark:border-rose-900/40 dark:bg-rose-950/20">
+              <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-rose-800 dark:text-rose-300">
+                सामान्य भ्रम निवारण · What it does NOT mean
+              </p>
+              <p lang="hi" className="font-devanagari text-sm leading-relaxed text-rose-950 dark:text-rose-100">
+                {v.commonMisunderstandingHindi}
+              </p>
+            </div>
+          )}
+          {concept && (
+            <div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                प्रतीकात्मक चित्र-व्याख्या · Symbolic visual
+              </p>
+              <p className="mb-2 text-[11px] leading-relaxed text-dharma-muted">संपादकीय सहायक चित्र; यह श्लोक का शाब्दिक अर्थ नहीं है।</p>
+              <ConceptVisual id={concept} />
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
+      id: 'modern',
+      labelHi: SACRED_SECTION_LABEL.modern.hi,
+      labelEn: SACRED_SECTION_LABEL.modern.en,
+      defaultOpen: true,
+      content: (
+        <div className="min-w-0 space-y-3">
+          <p className="text-[11px] leading-relaxed text-dharma-muted">यह एक आधुनिक संपादकीय उदाहरण है, श्लोक का अर्थ या अनुवाद नहीं।</p>
+          {v.modernExampleHindi && (
+            <p lang="hi" className={proseRelaxedHi}>{v.modernExampleHindi}</p>
+          )}
+          {v.messageForTodayHindi && (
+            <p lang="hi" className={proseRelaxedHi}>
+              <span className="font-bold">आज की पीढ़ी के लिए संदेश:</span> {v.messageForTodayHindi}
+            </p>
+          )}
+          {v.practicalApplicationHindi && (
+            <div className="rounded-xl border border-dharma-border bg-dharma-card-soft p-4 sm:p-5">
+              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                आज के जीवन में प्रयोग · Practical application
+              </p>
+              <p lang="hi" className="font-devanagari text-sm font-medium leading-relaxed text-dharma-text/95 md:text-base">
+                {v.practicalApplicationHindi}
+              </p>
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
+      id: 'reflection',
+      labelHi: SACRED_SECTION_LABEL.reflection.hi,
+      labelEn: SACRED_SECTION_LABEL.reflection.en,
+      defaultOpen: true,
+      content: (
+        <div className="min-w-0 space-y-3">
+          {v.reflectionQuestionHindi && (
+            <ReflectionBody question={v.reflectionQuestionHindi} lang="hi" />
+          )}
+          {v.shortPracticeHindi && (
+            <p lang="hi" className={proseRelaxedHi}>
+              <span className="font-bold">छोटा अभ्यास:</span> {v.shortPracticeHindi}
+            </p>
+          )}
+          <p className="text-[11px] leading-relaxed text-dharma-muted">यह चिंतन-अभ्यास है, कोई चिकित्सा या उपचार नहीं। असुविधा हो तो रुकिए और किसी विश्वसनीय व्यक्ति से बात कीजिए।</p>
+          {v.oneLineSummaryHindi && (
+            <p lang="hi" className="font-devanagari text-sm font-bold leading-relaxed text-dharma-text">
+              एक पंक्ति में सार: {v.oneLineSummaryHindi}
+            </p>
+          )}
+        </div>
+      ),
+    },
+  ];
   return (
-    <div className="sacred-flow-wrap">
+    <div id={id} className="sacred-flow-wrap ash-verse-flow" data-ash-verse-size="lg" data-ash-verse-leading="relaxed">
       {/* ── Verse: scripture first, reading aids folded beneath it ── */}
       <SacredSection id={`${id}-verse`} section="verse">
         <div className="verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8">
@@ -152,126 +305,14 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
         )}
       </SacredSection>
 
-      {/* ── Arth: what it says, literally ── */}
-      <SacredSection id={`${id}-arth`} section="arth">
-        <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card-soft/70 p-4 shadow-2xs sm:p-5">
-          <p className="mb-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-            शाब्दिक हिन्दी अर्थ · Literal Hindi Meaning
-          </p>
-          <p lang="hi" className="font-devanagari text-base leading-relaxed text-dharma-text sm:text-lg">
-            {v.literalHindiMeaning}
-          </p>
-        </div>
-        {v.englishTranslation && (
-          <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4 shadow-2xs sm:p-5">
-            <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
-              English Translation
-            </p>
-            <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text sm:text-base">
-              {v.englishTranslation}
-            </p>
-          </div>
-        )}
-      </SacredSection>
-
-      {/* ── Vyakhya → Modern Context → Reflection: one connected flow ── */}
-      <ConnectedFlow label="व्याख्या से आधुनिक जीवन तक · From explanation to modern life">
-        <SacredSection id={`${id}-vyakhya`} section="vyakhya">
-          {v.bookBasedHindiExplanation && (
-            <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4 shadow-2xs sm:p-5">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">
-                पुस्तकानुसार हिन्दी भावार्थ · Commentary
-              </p>
-              <p className="mb-2 text-[11px] leading-relaxed text-dharma-muted">पुस्तक की भाषा-टीका का मौलिक पुनर्कथन, शब्दशः प्रति नहीं।</p>
-              <Paras text={v.bookBasedHindiExplanation} className={proseHi} />
-            </div>
-          )}
-          {v.simpleHindiExplanation && (
-            <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                सरल हिन्दी में समझें · In simple Hindi
-              </p>
-              <Paras text={v.simpleHindiExplanation} className={proseRelaxedHi} />
-            </div>
-          )}
-          {v.simpleEnglishExplanation && (
-            <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text">
-              <span className="font-semibold">In simple English: </span>{v.simpleEnglishExplanation}
-            </p>
-          )}
-          {v.philosophicalExplanationHindi && (
-            <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                गहरी दार्शनिक व्याख्या · Deep philosophical insight
-              </p>
-              <Paras text={v.philosophicalExplanationHindi} className={proseRelaxedHi} />
-              {v.analogyHindi && (
-                <p lang="hi" className="mt-3 rounded-xl border border-dharma-border bg-dharma-card-soft p-3 font-devanagari text-sm leading-relaxed text-dharma-text">
-                  <span className="font-bold">उदाहरण से समझें:</span> {v.analogyHindi}
-                </p>
-              )}
-            </div>
-          )}
-          {v.commonMisunderstandingHindi && (
-            <div className="rounded-2xl border border-rose-200/80 bg-rose-50/60 p-4 dark:border-rose-900/40 dark:bg-rose-950/20">
-              <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-rose-800 dark:text-rose-300">
-                सामान्य भ्रम निवारण · What it does NOT mean
-              </p>
-              <p lang="hi" className="font-devanagari text-sm leading-relaxed text-rose-950 dark:text-rose-100">
-                {v.commonMisunderstandingHindi}
-              </p>
-            </div>
-          )}
-          {concept && (
-            <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                प्रतीकात्मक चित्र-व्याख्या · Symbolic visual
-              </p>
-              <p className="mb-2 text-[11px] leading-relaxed text-dharma-muted">संपादकीय सहायक चित्र; यह श्लोक का शाब्दिक अर्थ नहीं है।</p>
-              <ConceptVisual id={concept} />
-            </div>
-          )}
-        </SacredSection>
-
-        <SacredSection id={`${id}-modern`} section="modern">
-          <p className="text-[11px] leading-relaxed text-dharma-muted">यह एक आधुनिक संपादकीय उदाहरण है, श्लोक का अर्थ या अनुवाद नहीं।</p>
-          {v.modernExampleHindi && (
-            <p lang="hi" className={proseRelaxedHi}>{v.modernExampleHindi}</p>
-          )}
-          {v.messageForTodayHindi && (
-            <p lang="hi" className={proseRelaxedHi}>
-              <span className="font-bold">आज की पीढ़ी के लिए संदेश:</span> {v.messageForTodayHindi}
-            </p>
-          )}
-          {v.practicalApplicationHindi && (
-            <div className="rounded-xl border border-dharma-border bg-dharma-card-soft p-4 sm:p-5">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                आज के जीवन में प्रयोग · Practical application
-              </p>
-              <p lang="hi" className="font-devanagari text-sm font-medium leading-relaxed text-dharma-text/95 md:text-base">
-                {v.practicalApplicationHindi}
-              </p>
-            </div>
-          )}
-        </SacredSection>
-
-        <SacredSection id={`${id}-reflection`} section="reflection">
-          {v.reflectionQuestionHindi && (
-            <ReflectionBody question={v.reflectionQuestionHindi} lang="hi" />
-          )}
-          {v.shortPracticeHindi && (
-            <p lang="hi" className={proseRelaxedHi}>
-              <span className="font-bold">छोटा अभ्यास:</span> {v.shortPracticeHindi}
-            </p>
-          )}
-          <p className="text-[11px] leading-relaxed text-dharma-muted">यह चिंतन-अभ्यास है, कोई चिकित्सा या उपचार नहीं। असुविधा हो तो रुकिए और किसी विश्वसनीय व्यक्ति से बात कीजिए।</p>
-          {v.oneLineSummaryHindi && (
-            <p lang="hi" className="font-devanagari text-sm font-bold leading-relaxed text-dharma-text">
-              एक पंक्ति में सार: {v.oneLineSummaryHindi}
-            </p>
-          )}
-        </SacredSection>
-      </ConnectedFlow>
+      {/* A single, bilingual study path with the same chapter-reader hierarchy. */}
+      <AshtavakraReadingGuide verseId={id} />
+      <VerseTreeStructure
+        label="अष्टावक्र गीता · श्लोक अध्ययन वृक्ष"
+        persistent
+        anchorPrefix={id}
+        branches={branches}
+      />
 
       {/* ── Related Wisdom ── */}
       <SacredSection id={`${id}-related`} section="related">
