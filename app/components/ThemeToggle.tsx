@@ -1,22 +1,18 @@
 'use client';
 
-import { Sun, Sunset, Moon, BookOpen, Sparkles } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { THEMES, THEME_NAMES, useTheme, type Theme } from './ThemeProvider';
 
 const ICONS: Record<Theme, ReactNode> = {
-  auto: <Sparkles className="w-4 h-4 text-amber-400" />,
-  day: <Sun className="w-4 h-4" />,
-  sunset: <Sunset className="w-4 h-4" />,
-  paper: <BookOpen className="w-4 h-4" />,
+  sunset: <Sun className="w-4 h-4" />,
   night: <Moon className="w-4 h-4" />,
 };
 
 
 /**
- * Compact 3-way segmented theme picker. Explicit choices are easier
- * than cycling when users are comparing day, sunset, and dark modes.
+ * Two-option segmented theme picker: warm sunset Light or low-glare Dark.
  */
 export function ThemeToggle({ className = '' }: { className?: string }) {
   const { theme, setTheme } = useTheme();
