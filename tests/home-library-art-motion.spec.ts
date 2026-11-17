@@ -75,3 +75,33 @@ test('featured artwork stays decorative and the hero aura honors reduced-motion 
   await page.evaluate(() => document.documentElement.setAttribute('data-low-power', 'true'));
   await expect.poll(animation).toBe('none');
 });
+
+test('fluid pointer wake can resume when Data Saver is turned off without reloading', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.addInitScript(() => {
+    document.documentElement.dataset.dataSaver = 'true';
+  });
+  await page.goto('/');
+
+  const wake = page.locator('.prana-fluid-stage .prana-blob.pointer-events-none');
+  await expect(wake).toHaveCount(1);
+  const transform = () => wake.evaluate(element => (element as HTMLElement).style.transform);
+  const initial = await transform();
+
+  await page.mouse.move(450, 450);
+  await page.waitForTimeout(200);
+  expect(await transform(), 'Data Saver must suppress initial pointer motion').toBe(initial);
+
+  await page.evaluate(() => { delete document.documentElement.dataset.dataSaver; });
+  await page.mouse.move(1050, 550);
+  await expect.poll(transform).not.toBe(initial);
+
+  // The same live listener must immediately respect a fresh quiet-mode change.
+  await page.evaluate(() => { document.documentElement.dataset.dataSaver = 'true'; });
+  await page.waitForTimeout(100);
+  const stopped = await transform();
+  await page.mouse.move(550, 200);
+  await page.waitForTimeout(120);
+  expect(await transform(), 'Pointer motion must stay quiet after Data Saver is re-enabled').toBe(stopped);
+});
