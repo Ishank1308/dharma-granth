@@ -136,7 +136,7 @@ console.log('✓ Devi Bhagavata publishes all 80 source-keyed Hindi meanings (ch
 
 /**
  * Reader-visible structured व्याख्या, separately from verse meanings:
- * only 40 source-checked, AI-labelled chapter-2 notes may be published.
+ * only source-checked, Sanskrit-keyed notes in the 80-entry batch may be published.
  * This is a structural/source-identity check, not scholar certification.
  */
 type StructuredEntry = {
@@ -153,7 +153,7 @@ const explanationSet = new Set<string>();
 for (const [chapterNumber, sourceChapter, verseCount] of [
   [1, chapter, 25],
   [2, chapter2, 40],
-  [3, chapter3, 10],
+  [3, chapter3, 15],
 ] as const) {
   for (let n = 1; n <= verseCount; n++) {
     const key = `${chapterNumber}:${n}`;
