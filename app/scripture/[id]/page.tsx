@@ -117,6 +117,7 @@ export default async function ScripturePage(props: PageProps) {
   const publishedChapterCount = chapterPreviews.length;
   const heldChapters = chapterPreviews.filter((chapter) => chapter.verseCount > 0).length;
   const heldVerses = chapterPreviews.reduce((sum, chapter) => sum + chapter.verseCount, 0);
+  const firstReadableChapter = chapterPreviews.find((chapter) => chapter.verseCount > 0);
   const partialOf = meta.canonicalTotalVerses && meta.canonicalTotalVerses > heldVerses ? meta.canonicalTotalVerses : undefined;
   const languageFacts = getLibraryFacts(meta.id).languages;
   const inLanguage = [
@@ -212,7 +213,7 @@ export default async function ScripturePage(props: PageProps) {
           </FadeUp>
           <FadeUp delay={0.05}>
             <p className="editorial-section-eyebrow">Scripture contents · ग्रंथ सूची</p>
-            <h1 className="mt-2 font-serif text-4xl font-bold tracking-tight text-dharma-text md:text-5xl">{meta.title}</h1>
+            <h1 className="mt-2 font-serif text-[clamp(1.5rem,11vw,3rem)] font-bold tracking-tight text-dharma-text md:text-5xl">{meta.title}</h1>
           </FadeUp>
           <FadeUp delay={0.1}>
             <div className="mt-2 flex flex-wrap items-baseline gap-3">
@@ -248,6 +249,22 @@ export default async function ScripturePage(props: PageProps) {
               </p>
             )}
             <OfflineScriptureToggle scriptureId={meta.id} title={meta.title} />
+            {firstReadableChapter && (
+              <div className="mt-4 flex flex-wrap items-center gap-2.5">
+                <Link
+                  href={`/scripture/${meta.id}/chapter/${firstReadableChapter.id}/`}
+                  className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-saffron-800"
+                >
+                  पढ़ना शुरू करें · Start reading <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <a
+                  href="#contents-heading"
+                  className="focus-ring inline-flex min-h-11 items-center justify-center rounded-full border border-dharma-border bg-dharma-card px-4 py-2.5 text-sm font-semibold text-dharma-text transition hover:border-dharma-saffron"
+                >
+                  अध्याय सूची · Browse chapters
+                </a>
+              </div>
+            )
           </FadeUp>
         </div>
         <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} className="mx-auto" />
