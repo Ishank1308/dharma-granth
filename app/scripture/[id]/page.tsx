@@ -8,6 +8,7 @@ import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { Motif } from '@/app/components/vibe/Motif';
 import { ScriptureBook } from '@/app/components/vibe/ScriptureBook';
 import { ScriptureContents } from '@/app/components/ScriptureContents';
+import { IllustratedChapterHighlights } from '@/app/components/scripture/IllustratedChapterHighlights';
 import { FadeUp } from '@/app/components/motion/primitives';
 import { getScripture, getScriptureMeta, getAllScriptures } from '@/data/scriptures';
 import { ChevronRight } from 'lucide-react';
@@ -279,6 +280,7 @@ export default async function ScripturePage(props: PageProps) {
       )}
 
       <div className="mx-auto max-w-5xl px-6 pb-10 pt-5 sm:pt-7">
+        <IllustratedChapterHighlights scriptureId={meta.id} chapters={chapterPreviews} />
         <ScriptureContents
           scriptureId={meta.id}
           chapters={chapterPreviews}
