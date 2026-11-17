@@ -591,7 +591,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
         {/* Hint overlay */}
         {!selectedId && !search && (
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-dharma-muted bg-dharma-card/80 backdrop-blur-sm px-4 py-2 rounded-full border border-dharma-border pointer-events-none">
-            अवधारणा चुनें • बिंदुओं को खींचकर स्थान बदलें • स्क्रॉल करके दृश्य घुमाएँ
+            अवधारणा चुनें • बिंदुओं को खींचकर स्थान बदलें • खाली स्थान खींचकर दृश्य सरकाएँ
           </div>
         )}
       </div>
