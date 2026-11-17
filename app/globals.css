@@ -1781,6 +1781,13 @@ html:has(.reader-root) [aria-label^='सस्वर पाठ'] {
   display: none !important;
 }
 
+/* Ashtavakra's dedicated verse view owns the same mobile verse bar and study
+   controls as the common reader. Prevent the global bottom tabs from covering
+   its श्लोक माला button, while leaving the Ashtavakra book navigation intact. */
+html:has(nav[aria-label='अष्टावक्र श्लोक नेविगेशन']) nav[aria-label='Mobile quick navigation'] {
+  display: none !important;
+}
+
 /* ── Embed mode (app/embed sets <html data-embed>) ─────────────────
    Clean iframe presentation: hides header, footer, companion dock, navigation and overlays. */
 html[data-embed] nav,

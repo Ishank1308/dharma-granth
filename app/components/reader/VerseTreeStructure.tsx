@@ -71,6 +71,19 @@ function TreeNode({ branches, persistent, anchorPrefix }: { branches: VerseTreeB
   const [open, setOpen] = useState(Boolean(branch.defaultOpen));
   // Follow the default when it changes (e.g. the reader switches mode or perspective).
   useEffect(() => setOpen(Boolean(branch.defaultOpen)), [branch.defaultOpen]);
+
+  // Fragment links from the study guide must reveal content even if a reader
+  // previously folded the section. This also handles deep links after reload.
+  const anchorId = anchorPrefix ? `${anchorPrefix}-${branch.id}` : undefined;
+  useEffect(() => {
+    if (!anchorId) return;
+    const revealTarget = () => {
+      if (window.location.hash === `#${anchorId}`) setOpen(true);
+    };
+    revealTarget();
+    window.addEventListener('hashchange', revealTarget);
+    return () => window.removeEventListener('hashchange', revealTarget);
+  }, [anchorId]);
   const Icon = branch.icon;
   const bodyId = `${id}-body`;
 
@@ -114,7 +127,7 @@ function TreeNode({ branches, persistent, anchorPrefix }: { branches: VerseTreeB
 
   return (
     // data-branch names the layer so colour.css can give each its own hue.
-    <div id={anchorPrefix ? `${anchorPrefix}-${branch.id}` : undefined} className="relative scroll-mt-32 sm:scroll-mt-24" data-branch={branch.id}>
+    <div id={anchorId} className="relative scroll-mt-32 sm:scroll-mt-24" data-branch={branch.id}>
       <div className="relative">
         {/* Rail: from this node's circle down to where the next layer branches off */}
         {(open || rest.length > 0) && (
