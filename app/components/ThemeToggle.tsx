@@ -17,6 +17,36 @@ const ICONS: Record<Theme, ReactNode> = {
 export function ThemeToggle({ className = '' }: { className?: string }) {
   const { theme, setTheme } = useTheme();
 
+  // ARIA radio groups have a single Tab stop; arrow keys move focus and selection.
+  // Keep the behaviour scoped to this instance: nav and mobile drawer each have a picker.
+  const handleRadioKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    const current = THEMES.indexOf(theme);
+    let next: number;
+    switch (event.key) {
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        next = (current + THEMES.length - 1) % THEMES.length;
+        break;
+      case 'ArrowRight':
+      case 'ArrowDown':
+        next = (current + 1) % THEMES.length;
+        break;
+      case 'Home':
+        next = 0;
+        break;
+      case 'End':
+        next = THEMES.length - 1;
+        break;
+      default:
+        return;
+    }
+    event.preventDefault();
+    const group = event.currentTarget.closest('[role="radiogroup"]');
+    const options = group?.querySelectorAll<HTMLButtonElement>('[role="radio"]');
+    setTheme(THEMES[next]);
+    options?.[next]?.focus();
+  };
+
   return (
     <div
       className={`inline-flex items-center gap-1 rounded-full border border-dharma-border bg-dharma-card/90 p-1 text-dharma-text shadow-sm backdrop-blur-sm ${className}`}
@@ -36,6 +66,8 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
             }}
             role="radio"
             aria-checked={active}
+            tabIndex={active ? 0 : -1}
+            onKeyDown={handleRadioKeyDown}
             aria-label={`${THEME_NAMES[option].name} theme`}
             title={THEME_NAMES[option].description}
             className={`relative inline-flex h-8 min-w-8 items-center justify-center gap-1.5 rounded-full px-2.5 text-xs font-bold transition-colors ${
