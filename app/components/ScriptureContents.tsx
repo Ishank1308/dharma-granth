@@ -81,7 +81,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
                 <History className="h-4 w-4" aria-hidden="true" />
                 Continue reading
               </p>
-              <h2 className="mt-2 truncate font-serif text-xl font-bold text-dharma-text">{visit.chapterTitle}</h2>
+              <h2 className="mt-2 line-clamp-2 break-words font-serif text-xl font-bold text-dharma-text">{visit.chapterTitle}</h2>
               <p className="mt-1 text-sm text-dharma-muted">Adhyay {visit.chapterId} of {chapterTotal} · last opened, not completion</p>
               {lastPosition >= 0 && (
                 <div className="mt-3" aria-label={`Chapter position ${lastPosition + 1} of ${chapters.length}; this does not indicate completion`} role="img">
@@ -104,7 +104,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="editorial-section-eyebrow">पाठ संरचना · Reading structure</p>
-            <h2 id="contents-heading" className="editorial-section-title mt-2">Adhyay / Sections</h2>
+            <h2 id="contents-heading" className="editorial-section-title mt-2 scroll-mt-24">Adhyay / Sections</h2>
           </div>
           {firstChapter && (
             <Link href={chapterHref(scriptureId, firstChapter.id)} className="vibe-cta cta-primary inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-saffron-800 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">
