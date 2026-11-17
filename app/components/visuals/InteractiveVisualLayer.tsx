@@ -36,8 +36,10 @@ export function InteractiveVisualLayer({
   const [mode, setMode] = useState<VisualMode>(initialMode);
   const [selectedLayerId, setSelectedLayerId] = useState<string | null>(null);
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
-  const [rotationAngle, setRotationAngle] = useState(0);
+  const visualRef = useRef<HTMLDivElement>(null);
   const [isRotating, setIsRotating] = useState(true);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Default active layer
   useEffect(() => {
@@ -49,14 +51,32 @@ export function InteractiveVisualLayer({
     }
   }, [data]);
 
-  // Gentle ambient rotation animation for sacred geometry
+  // A compositor-driven CSS rotation replaces the 25 React rerenders per second.
+  // Respect the user's OS setting and pause when the canvas leaves the viewport.
   useEffect(() => {
-    if (!isRotating) return;
-    const interval = setInterval(() => {
-      setRotationAngle((prev) => (prev + 0.3) % 360);
-    }, 40);
-    return () => clearInterval(interval);
-  }, [isRotating]);
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setPrefersReducedMotion(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    const element = visualRef.current;
+    if (!element) return;
+    if (!('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(Boolean(entry?.isIntersecting)),
+      { rootMargin: '80px' },
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  const isSpinning = isRotating && isVisible && !prefersReducedMotion;
 
   const activeLayer = useMemo(() => {
     if (!data) return null;
@@ -93,6 +113,7 @@ export function InteractiveVisualLayer({
 
   return (
     <div
+      ref={visualRef}
       role="region"
       aria-label={`${data.label} (${data.sanskrit}) दृश्य ज्ञान आरेख`}
       className={`relative overflow-hidden rounded-3xl border border-dharma-border/80 bg-gradient-to-b ${data.theme.bgGradient} shadow-2xl backdrop-blur-md transition-all`}
@@ -197,6 +218,7 @@ export function InteractiveVisualLayer({
                 type="button"
                 className="relative flex h-72 w-72 sm:h-96 sm:w-96 items-center justify-center select-none rounded-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50"
                 onClick={() => setIsRotating((r) => !r)}
+                aria-pressed={isSpinning}
                 aria-label="मंडला घूर्णन टॉगल करें"
                 title="घूर्णन रोकने/प्रारंभ करने हेतु क्लिक करें"
               >
@@ -208,11 +230,8 @@ export function InteractiveVisualLayer({
 
                 <svg
                   viewBox="0 0 400 400"
-                  className="h-full w-full drop-shadow-2xl"
-                  style={{
-                    transform: `rotate(${rotationAngle}deg)`,
-                    transition: isRotating ? 'none' : 'transform 0.4s ease-out',
-                  }}
+                  className="concept-geometry-rotor h-full w-full drop-shadow-2xl"
+                  data-spinning={isSpinning ? 'true' : 'false'}
                   aria-hidden="true"
                 >
                   <defs>
@@ -300,7 +319,11 @@ export function InteractiveVisualLayer({
                 </div>
               </button>
               <p className="mt-2 text-[11px] font-medium text-dharma-muted">
-                {isRotating ? '● निरंतर ब्रह्माण्डीय प्रवाह (क्लिक कर रोकें)' : '○ स्थिर (क्लिक कर प्रारंभ करें)'}
+                {prefersReducedMotion
+                  ? '○ स्थिर · कम गति की सुविधा सक्रिय है'
+                  : isRotating
+                    ? '● ब्रह्माण्डीय प्रवाह (क्लिक कर रोकें)'
+                    : '○ स्थिर (क्लिक कर प्रारंभ करें)'}
               </p>
             </div>
 
