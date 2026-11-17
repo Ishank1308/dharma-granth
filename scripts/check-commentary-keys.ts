@@ -37,11 +37,20 @@ for (const id of ids) {
     if (!entries || typeof entries !== "object" || Array.isArray(entries)) { report(`${id} ${kind}: expected an object`); continue; }
     for (const [key, raw] of Object.entries(entries)) {
       checked++;
-      const entry = raw as { sanskrit?: string; replacesQueueSnapshot?: unknown } | null;
+      const entry = raw as { sanskrit?: string; sanskritOpening?: string; sourceWitness?: string; status?: string; replacesQueueSnapshot?: unknown } | null;
       const matching = verses.get(key) ?? [];
       if (matching.length !== 1) { report(`${id} ${kind} ${key}: ${matching.length ? "ambiguous source key" : "no source verse"}`); continue; }
       if (!entry || typeof entry !== "object") { report(`${id} ${kind} ${key}: invalid entry`); continue; }
-      if (kind !== "published" && (typeof entry.sanskrit !== "string" || !entry.sanskrit.trim())) report(`${id} ${kind} ${key}: Sanskrit snapshot is missing`);
+      if (kind !== "published" && entry.status === "source-checked") {
+        // Source-checked AI contributions have an edition witness and an exact,
+        // unique source-verse opening. They are not presented as scholar-reviewed.
+        const fold = (t: string) => t.normalize("NFC").replace(/[\s|।॥०-९0-9.]/g, "");
+        const witness = entry.sanskritOpening?.trim() ?? "";
+        if (fold(witness).length < 8 || !entry.sourceWitness?.startsWith("https://") ||
+            !fold(matching[0]).includes(fold(witness))) {
+          report(`${id} ${kind} ${key}: source-checked Sanskrit opening or witness is missing/stale`);
+        }
+      } else if (kind !== "published" && (typeof entry.sanskrit !== "string" || !entry.sanskrit.trim())) report(`${id} ${kind} ${key}: Sanskrit snapshot is missing`);
       else if (kind !== "published" && entry.sanskrit !== matching[0]) report(`${id} ${kind} ${key}: Sanskrit snapshot is stale`);
       if (kind === "proposal" && JSON.stringify(entry.replacesQueueSnapshot) !== JSON.stringify(queue[key])) report(`${id} ${kind} ${key}: original queue entry changed`);
     }

@@ -1038,9 +1038,23 @@ export function VerseCard({
                                   )}
                                 </div>
                               </div>
-                              <p lang="hi" className="font-devanagari text-base leading-loose text-dharma-text">
-                                {vyakhya}
-                              </p>
+                              <div lang="hi" className="space-y-3 font-devanagari text-base leading-loose text-dharma-text">
+                                {vyakhya.split(/\n\s*\n/).filter(Boolean).map((paragraph, index) => {
+                                  const divider = paragraph.indexOf(' — ');
+                                  const heading = divider >= 0 ? paragraph.slice(0, divider) : '';
+                                  const structured = heading === 'प्रसंग एवं भाव' || heading === 'पद-विवेचन' || heading === 'जीवन-साधना';
+                                  return (
+                                    <p key={index} className="whitespace-pre-line">
+                                      {structured ? (
+                                        <>
+                                          <strong className="font-semibold">{heading} — </strong>
+                                          {paragraph.slice(divider + 3)}
+                                        </>
+                                      ) : paragraph}
+                                    </p>
+                                  );
+                                })}
+                              </div>
                             </div>
                           )}
 
