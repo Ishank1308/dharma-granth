@@ -272,6 +272,20 @@ jobs:
       # --fully-parallel spreads single tests, not whole files, across shards.
       - name: Browser smoke test
         run: npx playwright test --shard=${{ matrix.shard }}/4 --fully-parallel
+        env:
+          # Screenshot collection is opt-in, so routine PRs do not store
+          # dozens of images or increase their test time.
+          CAPTURE_UI_VISUAL_AUDIT: ${{ (github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.title, '[visual audit]')) && 'true' || 'false' }}
+
+      - name: Save UI visual audit screenshots
+        if: always() && (github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.title, '[visual audit]'))
+        uses: actions/upload-artifact@v6
+        with:
+          name: ui-visual-audit-shard-${{ matrix.shard }}
+          path: ui-audit-screenshots/
+          if-no-files-found: warn
+          retention-days: 7
+          compression-level: 4
 
   preview:
     name: Preview deploy
