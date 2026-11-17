@@ -31,7 +31,10 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
   );
 
   const [query, setQuery] = useState('');
-  const [rangeStart, setRangeStart] = useState<number | null>(null);
+  // Large editions should not expand hundreds of chapter cards on first paint.
+  // Readers can still switch to All or search across the entire published book.
+  const defaultRangeStart = chapters.length > 60 ? chapters[0]?.id ?? null : null;
+  const [rangeStart, setRangeStart] = useState<number | null>(defaultRangeStart);
 
   const readableChapters = chapters.filter((chapter) => chapter.verseCount > 0);
   const firstChapter = readableChapters[0];
@@ -44,22 +47,22 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
   const showNavigator = chapters.length > 18;
   const ranges = useMemo(() => {
     if (!showNavigator) return [];
-    const out: Array<{ start: number; end: number; label: string }> = [];
+    const out: Array<{ start: number; end: number; startIndex: number; endIndex: number; label: string }> = [];
     for (let i = 0; i < chapters.length; i += RANGE_SIZE) {
       const slice = chapters.slice(i, i + RANGE_SIZE);
       const start = slice[0].id;
       const end = slice[slice.length - 1].id;
-      out.push({ start, end, label: `${start}–${end}` });
+      out.push({ start, end, startIndex: i, endIndex: i + slice.length, label: `${start}–${end}` });
     }
     return out;
   }, [chapters, showNavigator]);
 
   const visibleChapters = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return chapters.filter((ch) => {
-      if (rangeStart !== null && !q) {
-        const group = ranges.find((r) => r.start === rangeStart);
-        if (group && (ch.id < group.start || ch.id > group.end)) return false;
+    const selectedRange = rangeStart === null ? null : ranges.find((r) => r.start === rangeStart);
+    return chapters.filter((ch, index) => {
+      if (selectedRange && !q && (index < selectedRange.startIndex || index >= selectedRange.endIndex)) {
+        return false;
       }
       if (!q) return true;
       return (
@@ -118,7 +121,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
         {/* Range Jump & Instant Filter for Long Scriptures (>18 chapters) */}
         {showNavigator && (
           <div className="mt-4 flex flex-col gap-2.5 rounded-2xl border border-dharma-border/80 bg-dharma-card p-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5" role="group" aria-label="Chapter range filter">
+            <div className="flex min-w-0 items-center gap-1.5" role="group" aria-label="Chapter range filter">
               <button
                 type="button"
                 aria-pressed={rangeStart === null}
@@ -130,23 +133,37 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
               >
                 All ({chapters.length})
               </button>
-              {ranges.map((r) => {
-                const active = rangeStart === r.start;
-                return (
-                  <button
-                    key={r.start}
-                    type="button"
-                    aria-pressed={active}
-                    onClick={() => setRangeStart(active ? null : r.start)}
-                    className={`focus-ring inline-flex min-h-11 shrink-0 items-center rounded-full border px-3 py-1 font-mono text-xs font-semibold transition ${active
-                      ? 'border-saffron-600 bg-dharma-saffron text-dharma-bg'
-                      : 'border-dharma-border bg-dharma-bg text-dharma-muted hover:text-dharma-text'
-                      }`}
-                  >
-                    {r.label}
-                  </button>
-                );
-              })}
+              {ranges.length > 6 ? (
+                <select
+                  aria-label="Choose chapter range"
+                  value={rangeStart === null ? '' : String(rangeStart)}
+                  onChange={(event) => setRangeStart(event.target.value ? Number(event.target.value) : null)}
+                  className="focus-ring min-h-11 min-w-0 max-w-full rounded-full border border-dharma-border bg-dharma-bg px-3 text-sm font-semibold text-dharma-text"
+                >
+                  <option value="">Choose range</option>
+                  {ranges.map((r) => <option key={r.start} value={r.start}>{r.label}</option>)}
+                </select>
+              ) : (
+                <div className="flex min-w-0 items-center gap-1.5 overflow-x-auto pb-0.5">
+                  {ranges.map((r) => {
+                    const active = rangeStart === r.start;
+                    return (
+                      <button
+                        key={r.start}
+                        type="button"
+                        aria-pressed={active}
+                        onClick={() => setRangeStart(active ? null : r.start)}
+                        className={`focus-ring inline-flex min-h-11 shrink-0 items-center rounded-full border px-3 py-1 font-mono text-xs font-semibold transition ${active
+                          ? 'border-saffron-600 bg-dharma-saffron text-dharma-bg'
+                          : 'border-dharma-border bg-dharma-bg text-dharma-muted hover:text-dharma-text'
+                        }`}
+                      >
+                        {r.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
             <div className="relative w-full sm:w-64 shrink-0">
@@ -154,7 +171,10 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
               <input
                 type="search"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  if (e.target.value.trim()) setRangeStart(null);
+                }}
                 placeholder="अध्याय क्रमांक या नाम खोजें…"
                 aria-label="Filter chapters by number or title"
                 className="focus-ring min-h-11 w-full rounded-full border border-dharma-border bg-dharma-bg pl-8 pr-12 py-1.5 text-xs text-dharma-text placeholder:text-dharma-muted"
@@ -162,7 +182,10 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
               {query && (
                 <button
                   type="button"
-                  onClick={() => setQuery('')}
+                  onClick={() => {
+                    setQuery('');
+                    setRangeStart(defaultRangeStart);
+                  }}
                   aria-label="Clear chapter filter"
                   className="absolute right-0 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full text-dharma-muted hover:text-dharma-text"
                 >
@@ -176,6 +199,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
         {showNavigator && (
           <p role="status" aria-live="polite" className="mt-3 text-xs text-dharma-muted">
             {visibleChapters.length.toLocaleString('en-IN')} of {chapters.length.toLocaleString('en-IN')} sections shown
+            {rangeStart !== null && !query.trim() && chapters.length > 60 ? ' · चुनें या सभी अध्याय देखें · Select a range or show all' : ''}
           </p>
         )}
 
@@ -188,7 +212,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
               type="button"
               onClick={() => {
                 setQuery('');
-                setRangeStart(null);
+                setRangeStart(defaultRangeStart);
               }}
               className="font-semibold text-dharma-saffron underline"
             >
