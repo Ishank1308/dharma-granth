@@ -32,6 +32,7 @@ const CHECKS = [
   'scripts/test-ocr-hindi-review.ts',
   'scripts/test-written-meaning-review.ts',
   'scripts/test-devibhagavat-source-integrity.ts',
+  'scripts/test-packed-scripture-integrity.mjs',
 ];
 
 const filters = process.argv.slice(2).map((f) => f.toLowerCase());
