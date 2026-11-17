@@ -78,6 +78,17 @@ jobs:
       - name: Sitemap tests
         run: npm run test:sitemap
 
+      # Editorial evidence only: field counts do not certify translation fidelity.
+      - name: Generate Karna Parva missing-Hindi register
+        run: node scripts/report-mahabharata-meaning-gaps.mjs --parva=8 --json > karna-missing-hindi.json
+
+      - name: Upload Karna Parva missing-Hindi register
+        uses: actions/upload-artifact@v6
+        with:
+          name: karna-missing-hindi
+          path: karna-missing-hindi.json
+          retention-days: 7
+
   build:
     name: Build static export
     runs-on: ubuntu-latest
