@@ -427,3 +427,66 @@
   align-items: center;
   min-height: 44px;
 }
+
+/* Shared scripture reading tree: responsive Sanskrit + literal translation.
+   The common reader's A−/A+ settings are applied on this page only, leaving
+   chapter summaries and source/verification text unaffected. */
+.ash-verse-flow {
+  --ash-full-size: clamp(1.45rem, calc(1.05rem + 2.1vw), 2.25rem);
+  --ash-full-leading: 2.2;
+  --ash-translation-size: clamp(1rem, calc(.95rem + .45vw), 1.15rem);
+  /* Shared sacred-flow-wrap is a one-column grid. Every part of the reading
+     tree must be shrinkable; oversized text wraps, never gets clipped. */
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+.ash-verse-flow > *,
+.ash-verse-flow .verse-tree,
+.ash-verse-flow .verse-tree [data-branch],
+.ash-verse-flow .verse-tree details {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+.ash-verse-flow .verse-tree :is(p, li, dt, dd, blockquote, figure) {
+  overflow-wrap: anywhere;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+.ash-verse-flow .verse-tree svg {
+  max-inline-size: 100%;
+}
+.ash-verse-flow[data-ash-verse-size='sm'] { --ash-full-size: clamp(1.125rem, calc(.9rem + 1.1vw), 1.5rem); }
+.ash-verse-flow[data-ash-verse-size='md'] { --ash-full-size: clamp(1.25rem, calc(1rem + 1.6vw), 1.875rem); }
+.ash-verse-flow[data-ash-verse-size='lg'] { --ash-full-size: clamp(1.45rem, calc(1.05rem + 2.1vw), 2.25rem); }
+.ash-verse-flow[data-ash-verse-size='xl'] { --ash-full-size: clamp(1.65rem, calc(1.2rem + 2.5vw), 2.75rem); }
+.ash-verse-flow[data-ash-verse-leading='compact'] { --ash-full-leading: 1.95; }
+.ash-verse-flow[data-ash-verse-leading='normal'] { --ash-full-leading: 2.05; }
+.ash-verse-flow[data-ash-verse-leading='relaxed'] { --ash-full-leading: 2.2; }
+.ash-verse-flow[data-ash-verse-leading='loose'] { --ash-full-leading: 2.4; }
+.ash-verse-flow[data-ash-translation-size='sm'] { --ash-translation-size: .95rem; }
+.ash-verse-flow[data-ash-translation-size='md'] { --ash-translation-size: clamp(1rem, calc(.95rem + .45vw), 1.15rem); }
+.ash-verse-flow[data-ash-translation-size='lg'] { --ash-translation-size: clamp(1.1rem, calc(1rem + .65vw), 1.3rem); }
+.ash-verse-flow[data-ash-translation-size='xl'] { --ash-translation-size: clamp(1.25rem, calc(1.1rem + .75vw), 1.5rem); }
+.ash-verse-flow .ash-full-sanskrit {
+  max-inline-size: 36em;
+  margin-inline: auto;
+  font-family: var(--font-sanskrit), var(--font-noto-devanagari), serif;
+  font-size: var(--ash-full-size);
+  line-height: var(--ash-full-leading);
+  font-synthesis: none;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+.ash-verse-flow .ash-verse-hindi,
+.ash-verse-flow .ash-verse-english {
+  font-size: var(--ash-translation-size);
+  line-height: 1.85;
+  overflow-wrap: break-word;
+}
+.ash-verse-flow .verse-tree {
+  max-inline-size: 100%;
+}
+@media (max-width: 400px) {
+  .ash-verse-flow .verse-leaf { padding-inline: .75rem; }
+}

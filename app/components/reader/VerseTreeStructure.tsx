@@ -24,13 +24,14 @@
  */
 
 import { useEffect, useId, useState, type ReactNode } from 'react';
-import { ChevronDown, type LucideIcon } from 'lucide-react';
+import { ChevronDown, ScrollText, Lightbulb, Compass, Sparkles, type LucideIcon } from 'lucide-react';
 
 export interface VerseTreeBranch {
   id: string;
   labelHi: string;
   labelEn: string;
-  icon: LucideIcon;
+  /** Default section icon is looked up locally across the server/client boundary. */
+  icon?: LucideIcon;
   /** One short line shown on the node while it is folded. */
   hint?: string;
   defaultOpen?: boolean;
@@ -64,6 +65,9 @@ export function VerseTreeStructure({
 }
 
 const RAIL = 'rounded-full bg-amber-500/30 dark:bg-amber-400/25';
+const SECTION_ICONS: Record<string, LucideIcon> = {
+  arth: ScrollText, vyakhya: Lightbulb, modern: Compass, reflection: Sparkles,
+};
 
 function TreeNode({ branches, persistent, anchorPrefix }: { branches: VerseTreeBranch[]; persistent: boolean; anchorPrefix?: string }) {
   const [branch, ...rest] = branches;
@@ -84,7 +88,7 @@ function TreeNode({ branches, persistent, anchorPrefix }: { branches: VerseTreeB
     window.addEventListener('hashchange', revealTarget);
     return () => window.removeEventListener('hashchange', revealTarget);
   }, [anchorId]);
-  const Icon = branch.icon;
+  const Icon = branch.icon ?? SECTION_ICONS[branch.id] ?? ScrollText;
   const bodyId = `${id}-body`;
 
   const header = (
