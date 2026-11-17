@@ -1038,7 +1038,7 @@ export function VerseCard({
                                   )}
                                 </div>
                               </div>
-                              <p lang="hi" className="font-devanagari text-base leading-loose text-dharma-text">
+                              <p lang="hi" className="font-devanagari whitespace-pre-line text-base leading-loose text-dharma-text">
                                 {vyakhya}
                               </p>
                             </div>
