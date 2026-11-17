@@ -1,16 +1,31 @@
-export const THEME_IDS = ['day', 'sunset', 'paper', 'night', 'auto'] as const;
+/**
+ * Two public color choices. The Light choice deliberately uses the existing
+ * Sandhyā / sunset palette, not the former Usha / day palette.
+ *
+ * Keep the underlying data-theme values so existing stylesheet rules remain
+ * intact across the site (including verse cards and Panchang).
+ */
+export const THEME_IDS = ['sunset', 'night'] as const;
 
 export type Theme = (typeof THEME_IDS)[number];
 
 export const THEME_NAMES: Record<Theme, { name: string; hi: string; description: string }> = {
-  day: { name: 'Usha', hi: 'उषा', description: 'Warm ivory and saffron for daytime reading' },
-  sunset: { name: 'Sandhyā', hi: 'संध्या', description: 'Soft amber for dawn and dusk' },
-  paper: { name: 'Bhojpatra', hi: 'भोजपत्र', description: 'Sepia birch-bark parchment' },
-  night: { name: 'Rātri', hi: 'रात्रि', description: 'Low-glare obsidian and copper for night reading' },
-  auto: { name: 'Auto', hi: 'सौर चक्र', description: 'Follows the sun: Usha by day, Sandhyā at dawn and dusk, Rātri at night' },
+  sunset: { name: 'Light', hi: 'प्रकाश', description: 'Warm Sandhyā amber for comfortable daytime reading' },
+  night: { name: 'Dark', hi: 'रात्रि', description: 'Low-glare obsidian and copper for night reading' },
 };
 
-/** First visit, before the reader picks a theme: Rātri ("Cosmic Obsidian"). */
-export const DEFAULT_THEME = 'night' as const;
+/** Keep the existing first-visit default; readers may choose Light at any time. */
+export const DEFAULT_THEME: Theme = 'night';
+export const FIXED_THEME_IDS = THEME_IDS;
 
-export const FIXED_THEME_IDS = THEME_IDS.filter((theme): theme is Exclude<Theme, 'auto'> => theme !== 'auto');
+/**
+ * Migrate legacy five-way preferences without a first-paint flash.
+ * The former Auto preference makes one selection from the device setting,
+ * then becomes an ordinary explicit choice (no time-of-day color changes).
+ */
+export function normalizeStoredTheme(value: string | null, prefersDark = false): Theme {
+  if (value === 'night' || value === 'dark') return 'night';
+  if (value === 'day' || value === 'paper' || value === 'sunset' || value === 'light') return 'sunset';
+  if (value === 'auto') return prefersDark ? 'night' : 'sunset';
+  return DEFAULT_THEME;
+}

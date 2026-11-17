@@ -1477,7 +1477,12 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
             onExitConversationMode={() => setIsConversationMode(false)}
           />
         ) : (
-          <div className="space-y-8" onClickCapture={hydrated ? openPlainVerseInPlace : undefined}>
+          <div
+            className="space-y-8"
+            data-verse-size={readerSettings.sanskritSize}
+            data-verse-leading={readerSettings.lineSpacing}
+            onClickCapture={hydrated ? openPlainVerseInPlace : undefined}
+          >
             {filteredVerses.length === 0 ? (
             <div className="rounded-xl border border-dashed border-dharma-border bg-dharma-card p-8 text-center text-sm text-dharma-muted">
               <p className="font-semibold text-dharma-text mb-1">&lsquo;{filterQuery}&rsquo; के लिए कोई श्लोक नहीं मिला</p>

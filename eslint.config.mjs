@@ -10,7 +10,9 @@ const config = [
   {
     rules: {
       "jsx-a11y/no-autofocus": "warn",
-      "jsx-a11y/no-noninteractive-tabindex": ["error", { roles: ["tabpanel", "group"] }],
+      // WCAG 2.1.1: labeled scrollable regions need a Tab stop when their
+      // contents are navigated with aria-activedescendant instead of Tab.
+      "jsx-a11y/no-noninteractive-tabindex": ["error", { roles: ["tabpanel", "group", "region"] }],
     },
   },
   {

@@ -78,6 +78,20 @@ jobs:
       - name: Sitemap tests
         run: npm run test:sitemap
 
+      # Editorial evidence only: field counts do not certify translation fidelity.
+      - name: Generate Karna Parva missing-Hindi register
+        run: node scripts/report-mahabharata-meaning-gaps.mjs --parva=8 --json > karna-missing-hindi.json
+
+      - name: Upload Karna Parva missing-Hindi register
+        uses: actions/upload-artifact@v6
+        with:
+          name: karna-missing-hindi
+          path: karna-missing-hindi.json
+          retention-days: 7
+
+      - name: Sanskrit lexicon integrity
+        run: npm run test:sanskrit-lexicon
+
   build:
     name: Build static export
     runs-on: ubuntu-latest
@@ -166,6 +180,21 @@ jobs:
         env:
           NODE_OPTIONS: "--max-old-space-size=6144"
 
+      # Make every PR validate all published chapter shards, not only raw source files.
+      # A green audit certifies structural consistency, NOT translation accuracy.
+      - name: Audit published scripture meaning coverage
+        run: node scripts/report-published-scripture-coverage.mjs --json > published-scripture-coverage.json
+
+      - name: Summarize published language coverage
+        run: |
+          node -e "const r=require('./published-scripture-coverage.json');const t=r.totals;console.log('Books '+r.reported+'/'+r.totalCatalogued+'; verses '+t.published+'; Hindi '+t.hindi+'; linked Hindi '+t.hindiLinked+'; English '+t.english+'; linked English '+t.englishLinked+'; explanations '+t.explanation);"
+
+      - name: Save scripture coverage evidence
+        uses: actions/upload-artifact@v6
+        with:
+          name: published-scripture-coverage
+          path: published-scripture-coverage.json
+          retention-days: 7
       # One compressed file uploads and downloads far faster than the
       # export's ~20,000 loose files.
       - name: Pack export

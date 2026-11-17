@@ -13,7 +13,8 @@ export function HeroSearchButton() {
   }, []);
 
   return (
-    <button
+    <div className="mx-auto w-full max-w-[580px]">
+      <button
       type="button"
       onClick={(event) => openGlobalSearch(undefined, event.currentTarget)}
       aria-haspopup="dialog"
@@ -33,6 +34,26 @@ export function HeroSearchButton() {
         </span>
       </span>
       <kbd className="kbd-hint hidden shrink-0 sm:inline-block rounded-md border border-dharma-border bg-dharma-bg/60 px-2 py-0.5 font-sans text-xs text-dharma-text-secondary">{shortcut}</kbd>
-    </button>
+      </button>
+      <div role="group" aria-label="Try a search" className="mt-2 flex flex-wrap items-center justify-center gap-2 sm:justify-start">
+        <span className="mr-0.5 text-xs font-medium text-dharma-muted">Try · खोजें</span>
+        {[
+          { label: 'गीता 2.47', query: 'Gita 2.47' },
+          { label: 'कर्म', query: 'कर्म' },
+          { label: 'अष्टावक्र', query: 'अष्टावक्र गीता' },
+          { label: 'भय', query: 'भय' },
+        ].map((example) => (
+          <button
+            key={example.query}
+            type="button"
+            onClick={(event) => openGlobalSearch(example.query, event.currentTarget)}
+            aria-label={`Search example: ${example.label}`}
+            className="focus-ring inline-flex min-h-[44px] items-center rounded-full border border-dharma-border/75 bg-dharma-card/70 px-3.5 font-devanagari text-xs font-semibold text-dharma-text transition-colors hover:border-dharma-saffron/60 hover:bg-dharma-saffron/10"
+          >
+            {example.label}
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }
