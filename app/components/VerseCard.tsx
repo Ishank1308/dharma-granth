@@ -731,7 +731,7 @@ export function VerseCard({
                   </div>
                 )}
                 <p className="mt-2 text-[11px] text-dharma-muted italic">
-                  किसी भी पद पर कर्सर ले जाएँ या स्पर्श करें (Hover/tap any word for Hindi & English gloss)
+                  किसी पद पर कर्सर ले जाएँ या टैप करें — हिंदी और अंग्रेज़ी अर्थ देखें
                 </p>
               </div>
             ) : (
