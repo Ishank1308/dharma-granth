@@ -30,6 +30,7 @@ import {
 import { LibraryCard } from '@/app/components/library/LibraryCard';
 import { FilterPanel, type FilterGroup, type GroupKey, type ToggleOption } from '@/app/components/library/FilterPanel';
 import { FilterSheet } from '@/app/components/library/FilterSheet';
+import { openGlobalSearch } from '@/lib/search-events';
 import { FilteredEmpty, LoadFailure, NoResults, OfflineBanner, SearchCorrection, type Relaxation } from '@/app/components/library/LibraryStates';
 
 type CategoryOption = { id: ScriptureCategory; label: string; description: string };
@@ -413,6 +414,18 @@ export function ScriptureLibraryClient({
               )}
             </p>
             <div className="flex min-w-0 max-w-full flex-wrap items-center gap-2">
+              {hasQuery && (
+                <button
+                  type="button"
+                  onClick={(event) => openGlobalSearch(filters.q.trim(), event.currentTarget)}
+                  aria-label={`Search all content for ${filters.q.trim()}`}
+                  className="focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-field border border-dharma-saffron/30 bg-dharma-saffron/10 px-3.5 text-footnote font-semibold text-dharma-text transition hover:border-dharma-saffron/60 hover:bg-dharma-saffron/15"
+                >
+                  <Search className="h-4 w-4 text-dharma-saffron" aria-hidden="true" />
+                  <span lang="hi" className="font-devanagari">सभी में खोजें</span>
+                  <span className="hidden sm:inline">· Search all</span>
+                </button>
+              )}
               <label className="inline-flex min-h-[36px] min-w-0 items-center gap-2 rounded-[9px] bg-dharma-text/[0.06] pl-3 text-footnote text-dharma-muted">
                 Sort
                 <select
