@@ -1,5 +1,5 @@
 {
-  "note": "81 independently drafted AI-assisted Hindi meanings for Devī Bhāgavata Purāṇa Skandha 1 Adhyāyas 1 (1:1–1:25), 2 (2:1–2:40) and 3 (3:1–3:16). Each is source-key checked against numbered Sanskrit openings in https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html, published through the strict verse allowlist in scripts/lib/source-checked-meaning-overlays.ts, with the reader's visible AI attribution. The corresponding 81 explanatory notes are in data/ai-commentary/devibhagavat.json. These are NOT copyrighted Gita Press Hindi transcriptions, NOT independently Sanskrit-scholar-certified, and NOT evidence of complete critical source collation. The file retains reviewStatus: unreviewed so arbitrary bulk application remains blocked: only the 81 source-checked verses explicitly allowed by the guarded publishing code are released.",
+  "note": "90 independently drafted AI-assisted Hindi meanings for Devī Bhāgavata Purāṇa Skandha 1 Adhyāyas 1 (1:1–1:25), 2 (2:1–2:40) and 3 (3:1–3:25). Each is source-key checked against numbered Sanskrit openings in https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html, published through the strict verse allowlist in scripts/lib/source-checked-meaning-overlays.ts, retaining accurate machine-assistance provenance in metadata and methodology (reader label अध्ययन अनुवाद). The corresponding 90 explanatory notes are in data/ai-commentary/devibhagavat.json. These are NOT copyrighted Gita Press Hindi transcriptions, NOT independently Sanskrit-scholar-certified, and NOT evidence of complete critical source collation. The file retains reviewStatus: unreviewed so arbitrary bulk application remains blocked: only the 90 source-checked verses explicitly allowed by the guarded publishing code are released.",
   "reviewStatus": "unreviewed",
   "keyFormat": "chapter:verse",
   "meanings": {
@@ -257,6 +257,21 @@
     },
     "3:20": {
       "hindi": "सूतजी कहते हैं कि कलियुग में अल्प आयु और सीमित समझ वाले विप्रों को ध्यान में रखकर व्यास प्रत्येक युग में पुण्यदायक पुराण-संहिता का संकलन करते हैं। ‘विप्र’ और कलियुग सम्बन्धी शब्द इस पद्य की पारम्परिक सामाजिक और धार्मिक भाषा के अंग हैं।"
+    },
+    "3:21": {
+      "hindi": "यह श्लोक उस समय की वर्ण-आधारित धार्मिक व्यवस्था का कथन करता है, जिसके अनुसार स्त्रियों, शूद्रों और ‘द्विजबन्धु’ कहे गए लोगों के लिए वेदश्रवण अनुमत नहीं माना गया। इसी प्रसंग में उनके हित के लिए पुराणों के रचे जाने की बात कही गई है। यह पाठ का ऐतिहासिक-सामाजिक कथन है, आज शिक्षा या धर्मग्रन्थ पढ़ने से किसी को वंचित करने का निर्देश नहीं।"
+    },
+    "3:22": {
+      "hindi": "हे श्रेष्ठ मुनियो, इस प्रसंग में सातवें, वैवस्वत नामक मन्वन्तर के अट्ठाईसवें द्वापर युग का उल्लेख किया गया है। यह पुराण की परम्परागत काल-गणना है।"
+    },
+    "3:23": {
+      "hindi": "सूतजी कहते हैं कि उस समय धर्म के गहन ज्ञाता, सत्यवतीपुत्र व्यास मेरे गुरु हैं; जब उनतीसवाँ द्वापर आएगा, तब द्रोणपुत्र (द्रौणि) व्यास के पद पर होंगे—ऐसा इस पुराण में कहा गया है।"
+    },
+    "3:24": {
+      "hindi": "सूतजी कहते हैं कि इससे पहले सत्ताईस व्यास हो चुके हैं और उन-उन युगों में उन्होंने पुराण-संहिताओं का कथन या संकलन किया है। यह बार-बार होने वाली व्यास-भूमिका की पुराणपरम्परा का वर्णन है।"
+    },
+    "3:25": {
+      "hindi": "ऋषियों ने कहा—हे महाभाग सूतजी, कृपया पूर्व युगों में प्रकट हुए उन व्यासों का वर्णन कीजिए, जिन्होंने प्रत्येक द्वापर युग में पुराणों का कथन किया था।"
     }
   }
 }
