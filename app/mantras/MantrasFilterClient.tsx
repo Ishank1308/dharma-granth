@@ -20,6 +20,10 @@ import { speakSanskritTerm } from '@/lib/sacred-soundscape';
 import { NavagrahaMandalam } from './NavagrahaMandalam';
 
 type CategoryKey = 'all' | 'vedic' | 'shanti' | 'stotra';
+function preferredScrollBehavior(): ScrollBehavior {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+}
+
 
 export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
   const [activeCategory, setActiveCategory] = useState<CategoryKey>('all');
@@ -49,7 +53,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
             return next;
           });
           requestAnimationFrame(() => {
-            cardRefs.current[matched.slug]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            cardRefs.current[matched.slug]?.scrollIntoView({ behavior: preferredScrollBehavior(), block: 'start' });
           });
         }
       } catch {
@@ -118,7 +122,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
     });
     requestAnimationFrame(() => {
       toggleBtnRefs.current[slug]?.focus({ preventScroll: true });
-      cardRefs.current[slug]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      cardRefs.current[slug]?.scrollIntoView({ behavior: preferredScrollBehavior(), block: 'nearest' });
     });
   };
 
@@ -202,6 +206,10 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
           })}
         </div>
       </div>
+
+      <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+        {filtered.length} मन्त्र मिले।
+      </p>
 
       {filtered.length === 0 ? (
         <div className="rounded-3xl border border-dharma-border bg-dharma-card p-10 text-center space-y-3">
