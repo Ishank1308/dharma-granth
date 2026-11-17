@@ -53,7 +53,7 @@ export function VerseCompact({ v }: { v: AshtavakraVerse }) {
   const num = v.verseNumber.split('.')[1];
   return (
     <article
-      className="scroll-mt-24 rounded-3xl border border-dharma-border bg-dharma-card p-5 shadow-sm sm:p-6"
+      className="scroll-mt-24 rounded-3xl border border-dharma-border bg-dharma-card p-3.5 shadow-sm sm:p-5"
       aria-labelledby={`vc-${v.verseNumber}`}
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -65,13 +65,13 @@ export function VerseCompact({ v }: { v: AshtavakraVerse }) {
           <VerificationBadge status={v.verificationStatus} />
         </div>
       </div>
-      <p lang="sa" className="mt-3 text-center font-devanagari text-[clamp(1.1875rem,calc(1rem+1vw),1.75rem)] font-bold leading-[1.95] text-dharma-text" style={{ whiteSpace: 'pre-line' }}>
+      <p lang="sa" className="mt-2.5 text-center font-devanagari text-[clamp(1.125rem,calc(1rem+0.8vw),1.625rem)] font-bold leading-[1.75] text-dharma-text" style={{ whiteSpace: 'pre-line' }}>
         {keepDanda(v.sanskrit)}
       </p>
       <p lang="hi" className="mt-2 text-center font-devanagari text-sm text-dharma-muted">
         {v.oneLineSummaryHindi}
       </p>
-      <div className="mt-4 text-center">
+      <div className="mt-2.5 text-center">
         <Link
           href={verseHref(v.verseNumber)}
           aria-label={`श्लोक ${num} की पूरी व्याख्या पढ़ें`}
