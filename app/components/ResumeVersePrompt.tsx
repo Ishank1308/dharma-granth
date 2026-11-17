@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { readRecentChapters } from '@/lib/reading-history';
 
 /** Optional, browser-local shortcut to the last verse in this chapter. */
-export function ResumeVersePrompt({ scriptureId, chapterId }: { scriptureId: string; chapterId: number }) {
+export function ResumeVersePrompt({ scriptureId, chapterId, splitChapter = false }: { scriptureId: string; chapterId: number; splitChapter?: boolean }) {
   const [verseId, setVerseId] = useState<string | null>(null);
   const [dismissed, setDismissed] = useState(false);
 
@@ -20,7 +20,7 @@ export function ResumeVersePrompt({ scriptureId, chapterId }: { scriptureId: str
 
   function resume() {
     const target = document.getElementById(`verse-${verseId}`);
-    if (!target) return;
+    if (!target) {\n      // A saved verse may live in a different part of a split chapter.\n      // The existing ChapterPartRedirect resolves its canonical hash.\n      if (splitChapter) {\n        window.location.assign(`/scripture/${scriptureId}/chapter/${chapterId}/#verse-${verseId}`);\n      } else {\n        setDismissed(true);\n      }\n      return;\n    }
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     window.history.replaceState(null, '', `#verse-${verseId}`);
     setDismissed(true);
