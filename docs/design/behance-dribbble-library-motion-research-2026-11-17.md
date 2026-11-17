@@ -34,6 +34,14 @@ There is more motion infrastructure than photographic/editorial hierarchy. New h
 4. **Page transition discipline.** Motion should reinforce navigation feedback (150–300 ms), not delay the next verse. Never add decorative motion to each word of a 200–280 word व्याख्या.
 5. **Photo governance.** All new museum/archive images require verified licence, creator and source-credit metadata; prefer official institution/Commons records. Do not copy Behance/Dribbble project imagery or unverified depictions of historical scriptures.
 
+## Rights-clear candidates for a **later** imagery release (not imported in this PR)
+- **Valmiki Ramayana illustration:** [The Met — Rama, Sita, and Lakshmana at the Hermitage of Bharadvaja](https://www.metmuseum.org/art/collection/search/37955?showOnly=openAccess). The Met labels it Open Access; verify asset-level licence and preserve descriptive provenance before adding it.
+- **Bhagavad Gita historic codex:** [Wikimedia Commons — Bhagavad Gita, a 19th century manuscript](https://commons.wikimedia.org/wiki/File:Bhagavad_Gita%2C_a_19th_century_manuscript.jpg). Commons lists public-domain status; review its exact file page/creator/date and image description before reproduction.
+- **Palm-leaf manuscript:** [Wikimedia Commons — Bhagavad Gita Grantha script Sanskrit](https://commons.wikimedia.org/wiki/File:Bhagavad_Gita_Grantha_script_Sanskrit.jpg). Visually relevant to a manuscript viewer, but its source-language/script and date must be labelled correctly.
+- **Optional 3D artefacts:** [Smithsonian Open Access / 3D](https://3d.si.edu/collections/openaccesshighlights) permits remix for assets specifically marked CC0. Do not attribute an unrelated museum object to a Hindu scripture.
+- **Rights caution:** [National Museum, New Delhi image requests](https://nationalmuseumindia.gov.in/en/request-for-photography) describes one-time image-use permission and a formal request process. Do **not** assume that images displayed on its website may be copied onto Dharma Granth.
+- **Textual distinction:** A photograph illustrating a scripture's tradition is not necessarily a photographed leaf of that specific edition or chapter. Record `illustrative` vs `source-facsimile` in future media metadata.
+
 ## Acceptance checklist
 - Confirm responsive 360px, 768px, desktop: no clipping, legible Devanagari, CTA minimum 44px.
 - Confirm keyboard tab categories, tab panel semantics, focus visibility, and the new artwork never steals focus.
