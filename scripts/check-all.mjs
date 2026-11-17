@@ -30,6 +30,7 @@ const CHECKS = [
   'scripts/check-filler-chapters.ts',
   'scripts/check-catalogue-counts.ts',
   'scripts/test-ocr-hindi-review.ts',
+  'scripts/test-written-meaning-review.ts',
 ];
 
 const filters = process.argv.slice(2).map((f) => f.toLowerCase());
