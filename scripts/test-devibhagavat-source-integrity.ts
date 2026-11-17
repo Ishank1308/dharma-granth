@@ -66,7 +66,7 @@ for (const [number, phrase] of chapter2Witness) {
   );
 }
 
-/** Chapter 3 has 43 distinct original Sanskrit verses; only 3:1–3:20 are released. */
+/** Chapter 3 has 43 distinct original Sanskrit verses; only 3:1–3:25 are released. */
 const chapter3 = scripture.chapters.find((entry) => Number(entry.number) === 3);
 assert.ok(chapter3, 'Devi Bhagavata Skandha 1 Chapter 3 is missing');
 assert.equal(chapter3.verses.length, 43, 'Devi Bhagavata 1.3 should contain all 43 Sanskrit verses');
@@ -78,8 +78,8 @@ const draft = JSON.parse(readFileSync('data/written-meanings/devibhagavat.json',
 };
 assert.equal(draft.reviewStatus, 'unreviewed', 'bulk importing the AI-written batch must remain blocked');
 const keys = Object.keys(draft.meanings);
-assert.equal(keys.length, 85, 'source batch should contain chapters 1:1–25, 2:1–40 and 3:1–20');
-for (const [chapterNumber, verseCount] of [[1, 25], [2, 40], [3, 20]] as const) {
+assert.equal(keys.length, 90, 'source batch should contain chapters 1:1–25, 2:1–40 and 3:1–25');
+for (const [chapterNumber, verseCount] of [[1, 25], [2, 40], [3, 25]] as const) {
   const sourceChapter = scripture.chapters.find((entry) => Number(entry.number) === chapterNumber);
   assert.ok(sourceChapter, `Missing source chapter ${chapterNumber}`);
   for (let n = 1; n <= verseCount; n++) {
@@ -121,7 +121,7 @@ const publicChapter3 = JSON.parse(readFileSync('public/data/scriptures-full/devi
   chapter: { verses: Array<{ number: number | string; sanskrit?: string; hindi?: string; hindiSource?: string; hindiReviewRequired?: boolean }> };
 };
 assert.equal(publicChapter3.chapter.verses.length, 43, 'Chapter 3 must preserve all Sanskrit verses');
-for (let n = 1; n <= 20; n++) {
+for (let n = 1; n <= 25; n++) {
   const key = `3:${n}`;
   const verse = publicChapter3.chapter.verses.find((v) => String(v.number) === String(n));
   assert.ok(verse, `Published source verse missing: ${key}`);
@@ -131,12 +131,12 @@ for (let n = 1; n <= 20; n++) {
   assert.equal(verse.sanskrit, chapter3.verses.find(v => String(v.number) === String(n))?.sanskrit,
     `Original Sanskrit modified at ${key}`);
 }
-console.log('✓ Devi Bhagavata publishes all 85 source-keyed Hindi meanings (chapters 1–2 and 3:1–20).');
+console.log('✓ Devi Bhagavata publishes all 90 source-keyed Hindi meanings (chapters 1–2 and 3:1–25).');
 
 
 /**
  * Reader-visible structured व्याख्या, separately from verse meanings:
- * all 85 source-checked, AI-assisted notes and modern-context panels must reach the reader.
+ * all 90 source-checked, AI-assisted notes and modern-context panels must reach the reader.
  * This is a structural/source-identity check, not scholar certification.
  */
 type StructuredEntry = {
@@ -147,7 +147,7 @@ type StructuredEntry = {
   lifeLesson?: string;
 };
 const structured = JSON.parse(readFileSync('data/ai-commentary/devibhagavat.json', 'utf8')) as Record<string, StructuredEntry>;
-assert.equal(Object.keys(structured).length, 85, 'Devi Bhagavata source batch must contain 85 structured explanations');
+assert.equal(Object.keys(structured).length, 90, 'Devi Bhagavata source batch must contain 90 structured explanations');
 const publishedCommentary = JSON.parse(readFileSync('public/data/hi-commentary/devibhagavat.json', 'utf8')) as
   Record<string, { explanation?: string; lifeLesson?: string; ai?: boolean }>;
 const explanationSet = new Set<string>();
@@ -155,7 +155,7 @@ const modernContextSet = new Set<string>();
 for (const [chapterNumber, sourceChapter, verseCount] of [
   [1, chapter, 25],
   [2, chapter2, 40],
-  [3, chapter3, 20],
+  [3, chapter3, 25],
 ] as const) {
   for (let n = 1; n <= verseCount; n++) {
     const key = `${chapterNumber}:${n}`;
@@ -201,4 +201,4 @@ const register = execFileSync(process.execPath, [
 ], { encoding: 'utf8' });
 assert.match(register, /sentences to fix 0, तुम to check 0/,
   'Devi Bhagavata explanation has colloquial words or informal address');
-console.log('✓ Devi Bhagavata publishes 85 distinct Sanskrit-keyed व्याख्या and 85 individually written modern-context panels.');
+console.log('✓ Devi Bhagavata publishes 90 distinct Sanskrit-keyed व्याख्या and 90 individually written modern-context panels.');
