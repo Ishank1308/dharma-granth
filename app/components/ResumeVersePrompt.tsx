@@ -20,7 +20,16 @@ export function ResumeVersePrompt({ scriptureId, chapterId, splitChapter = false
 
   function resume() {
     const target = document.getElementById(`verse-${verseId}`);
-    if (!target) {\n      // A saved verse may live in a different part of a split chapter.\n      // The existing ChapterPartRedirect resolves its canonical hash.\n      if (splitChapter) {\n        window.location.assign(`/scripture/${scriptureId}/chapter/${chapterId}/#verse-${verseId}`);\n      } else {\n        setDismissed(true);\n      }\n      return;\n    }
+    if (!target) {
+      // A saved verse may live in a different part of a split chapter.
+      // The existing ChapterPartRedirect resolves its canonical hash.
+      if (splitChapter) {
+        window.location.assign(`/scripture/${scriptureId}/chapter/${chapterId}/#verse-${verseId}`);
+      } else {
+        setDismissed(true);
+      }
+      return;
+    }
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     window.history.replaceState(null, '', `#verse-${verseId}`);
     setDismissed(true);
