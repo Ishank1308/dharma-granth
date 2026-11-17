@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test';
 
 test('theme switching remains instant in Data Saver and Reading Lite', async ({ page }) => {
+  // The segmented radio picker is intentionally visible only at >=1800px.
+  await page.setViewportSize({ width: 1920, height: 900 });
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto('/');
 
