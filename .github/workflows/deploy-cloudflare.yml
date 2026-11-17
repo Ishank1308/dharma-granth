@@ -103,6 +103,41 @@ jobs:
           # No lockfile in the prebuilt checkout.
           cache: ${{ steps.prebuilt.outputs.run-id == '' && 'npm' || '' }}
 
+      # Wrangler --branch=master is a preview when the Pages project's production
+      # branch points elsewhere. A preview can upload successfully while the
+      # custom domain continues serving stale RSC payloads. Ensure the server-
+      # side project setting agrees with this master-only deployment workflow.
+      # Cloudflare: https://developers.cloudflare.com/pages/configuration/branch-build-controls/
+      - name: Ensure Cloudflare Pages production branch is master
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          api="https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/${CLOUDFLARE_PROJECT}"
+          current="$(curl --fail-with-body --silent --show-error "$api" \
+            --header "Authorization: Bearer ${CF_API_TOKEN}")"
+          branch="$(jq -r 'if .success == true then .result.production_branch // empty else empty end' <<<"$current")"
+          if [[ -z "$branch" ]]; then
+            echo "::error::Unable to read Cloudflare Pages project production_branch; refusing a potentially preview-only deployment."
+            exit 1
+          fi
+          echo "::notice::Cloudflare Pages configured production branch: ${branch}"
+          if [[ "$branch" != "master" ]]; then
+            echo "::warning::Repairing Cloudflare Pages production branch to master, matching this repository's release branch."
+            updated="$(curl --fail-with-body --silent --show-error --request PATCH "$api" \
+              --header "Authorization: Bearer ${CF_API_TOKEN}" \
+              --header 'Content-Type: application/json' \
+              --data '{"production_branch":"master"}')"
+            if ! jq -e '.success == true and .result.production_branch == "master"' <<<"$updated" >/dev/null; then
+              echo "::error::Cloudflare Pages did not confirm the master production branch; refusing to deploy."
+              exit 1
+            fi
+            echo "::notice::Cloudflare Pages production branch corrected to master."
+          fi
+
       - name: Install dependencies
         if: steps.prebuilt.outputs.run-id == ''
         run: npm ci
