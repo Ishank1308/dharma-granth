@@ -19,14 +19,16 @@ export function ResumeVersePrompt({ scriptureId, chapterId, splitChapter = false
   if (!verseId || dismissed) return null;
 
   function resume() {
-    const target = document.getElementById(`verse-${verseId}`);
+    const savedVerse = verseId;
+    if (!savedVerse) return;
+    const target = document.getElementById(`verse-${savedVerse}`);
     if (!target) {
       // A saved verse may live in a different part of a split chapter.
       // The existing ChapterPartRedirect resolves its canonical hash.
-      if (splitChapter && /^[0-9A-Za-z.-]{1,20}$/.test(verseId)) {
+      if (splitChapter && /^[0-9A-Za-z.-]{1,20}$/.test(savedVerse)) {
         // Validate browser-local history and URL-encode every dynamic segment.
         const chapterPath = `/scripture/${encodeURIComponent(scriptureId)}/chapter/${chapterId}/`;
-        const verseFragment = `#verse-${encodeURIComponent(verseId)}`;
+        const verseFragment = `#verse-${encodeURIComponent(savedVerse)}`;
         window.location.assign(new URL(chapterPath + verseFragment, window.location.origin).href);
       } else {
         setDismissed(true);
@@ -37,7 +39,7 @@ export function ResumeVersePrompt({ scriptureId, chapterId, splitChapter = false
     const quietMode = ['data-low-power', 'data-data-saver', 'data-lite-mode', 'data-reading-lite']
       .some((attribute) => document.documentElement.getAttribute(attribute) === 'true');
     target.scrollIntoView({ behavior: reducedMotion || quietMode ? 'auto' : 'smooth', block: 'start' });
-    window.history.replaceState(null, '', `#verse-${verseId}`);
+    window.history.replaceState(null, '', `#verse-${savedVerse}`);
     setDismissed(true);
   }
 
