@@ -32,17 +32,17 @@ export function PageHeader({
   width?: 'content' | 'wide';
 }) {
   return (
-    <header className={`relative mx-auto ${width === 'wide' ? 'max-w-7xl' : 'max-w-content'} px-gutter pb-2 pt-10 sm:pt-16`}>
+    <header className={`relative mx-auto min-w-0 ${width === 'wide' ? 'max-w-7xl' : 'max-w-content'} px-gutter pb-2 pt-10 sm:pt-16`}>
       <div className="aura-header pointer-events-none absolute -top-10 left-1/2 -z-10 h-64 w-[90%] -translate-x-1/2 rounded-full opacity-60 blur-3xl transition-opacity duration-700" aria-hidden="true" />
       <Eyebrow text={eyebrow} hi={eyebrowHi} lang={eyebrowLang} className="eyebrow-capsule" />
-      <h1 id={id} className="mt-3 text-large-title font-semibold text-dharma-text">
+      <h1 id={id} className="mt-3 min-w-0 text-large-title leading-tight font-semibold text-dharma-text [overflow-wrap:anywhere]">
         <span className="ink-dawn">{title}</span>
         {titleHi && (
           <>
             {' '}
             <span
               lang={titleLang}
-              className={`mt-1 block text-title-2 font-normal text-dharma-muted ${titleLang === 'sa' ? 'font-sanskrit' : 'font-devanagari'}`}
+              className={`mt-1 block max-w-full text-title-2 font-normal leading-snug text-dharma-muted [overflow-wrap:anywhere] ${titleLang === 'sa' ? 'font-sanskrit' : 'font-devanagari'}`}
             >
               {titleHi}
             </span>
@@ -68,7 +68,7 @@ export function Eyebrow({
   className?: string;
 }) {
   return (
-    <p className={`text-footnote font-semibold text-dharma-saffron ${className}`}>
+    <p className={`min-w-0 text-footnote font-semibold text-dharma-saffron [overflow-wrap:anywhere] ${className}`}>
       <span>{text}</span>
       {hi && (
         <>
@@ -111,10 +111,10 @@ export function SectionTitle({
   rule?: boolean;
 }) {
   return (
-    <div className="mb-5 flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
-      <div>
+    <div className="mb-5 flex min-w-0 flex-wrap items-end justify-between gap-x-6 gap-y-2">
+      <div className="min-w-0 max-w-full">
         {eyebrow && <Eyebrow text={eyebrow} hi={eyebrowHi} className="mb-1.5" />}
-        <h2 id={id} className={`${size === 'title-1' ? 'text-title-1' : 'text-title-2'} font-semibold text-dharma-text`}>
+        <h2 id={id} className={`${size === 'title-1' ? 'text-title-1' : 'text-title-2'} min-w-0 font-semibold text-dharma-text [overflow-wrap:anywhere]`}>
           <span>{title}</span>
           {titleHi && (
             <>
