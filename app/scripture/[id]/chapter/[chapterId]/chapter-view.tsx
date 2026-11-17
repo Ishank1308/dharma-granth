@@ -515,6 +515,25 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         {/* With initialChapter, the reader's server render is the plain
             VerseText list (every verse in the HTML); it swaps in the
             interactive cards once hydrated. */}
+        <nav aria-label="अध्याय में आगे-पीछे जाएँ" className="mb-4 flex flex-wrap items-center gap-2 rounded-xl border border-dharma-border/70 bg-dharma-card px-2.5 py-2 sm:px-3">
+          <Link href={`/scripture/${meta.id}`} className="inline-flex min-h-11 items-center rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
+            ग्रंथ सूची
+          </Link>
+          <span aria-hidden="true" className="h-5 w-px bg-dharma-border" />
+          {prevPartHref || prevHref ? (
+            <Link href={prevPartHref ?? prevHref!} rel="prev" className="inline-flex min-h-11 items-center gap-1 rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" /> पिछला {prevPartHref ? 'भाग' : 'अध्याय'}
+            </Link>
+          ) : null}
+          <span lang="hi" className="min-w-0 flex-1 text-center font-devanagari text-xs text-dharma-muted">
+            अध्याय {chapter.id}{part ? ` · भाग ${part.part}/${parts?.length ?? 1}` : ''}
+          </span>
+          {nextPartHref || nextHref ? (
+            <Link href={nextPartHref ?? nextHref!} rel="next" className="inline-flex min-h-11 items-center gap-1 rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
+              अगला {nextPartHref ? 'भाग' : 'अध्याय'} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          ) : null}
+        </nav>
         <div id="chapter-text" className="scroll-mt-24">
           {seeded && allVerses.length === 0 ? (
             // The chapter's own text is not in the library yet (scripts/lib/filler-chapters.ts): say so plainly.
