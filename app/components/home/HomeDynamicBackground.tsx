@@ -33,8 +33,9 @@ export function HomeDynamicBackground() {
       );
     };
 
-    if (isQuiet()) return;
-
+    // Keep the listener available even when the page initially starts in a quiet mode.
+    // The handler itself is gated, so switching Reading Lite / Data Saver off can
+    // restore pointer motion without requiring a page reload.
     let targetX = window.innerWidth / 2;
     let targetY = 320;
     let currentX = targetX;
