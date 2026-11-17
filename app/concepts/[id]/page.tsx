@@ -406,7 +406,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
                   {/* Sanskrit original */}
                   <p
                     lang="sa"
-                    className="font-devanagari text-xl sm:text-2xl text-dharma-text font-semibold leading-relaxed text-center sm:text-left whitespace-pre-line"
+                    className="font-devanagari text-[clamp(1.2rem,calc(1rem+1.2vw),1.875rem)] text-dharma-text font-semibold leading-[2.1] text-center sm:text-left whitespace-pre-line [overflow-wrap:anywhere]"
                   >
                     {v.sanskrit}
                   </p>

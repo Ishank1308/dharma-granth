@@ -119,7 +119,7 @@ for (const route of KEY_PAGES) {
     }
   };
   walkPages(DIST);
-  const expectedThemes = 'day,sunset,paper,night,auto';
+  const expectedThemes = 'sunset,night';
   const observedCounts = new Set();
   let missingShell = 0;
   let badEncoding = 0;

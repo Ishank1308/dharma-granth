@@ -82,7 +82,7 @@ export default async function KnowledgeHubPage(props: { params: Promise<{ slug: 
             <span lang="hi" className="font-devanagari">ज्ञान केंद्र</span>
             {' · Knowledge hub'}
           </p>
-          <h1 className="mt-2 font-serif text-4xl font-bold">
+          <h1 className="mt-2 font-serif text-[clamp(1.9rem,calc(1.5rem+2vw),2.75rem)] leading-tight font-bold [overflow-wrap:anywhere]">
             <span lang="sa" className="font-devanagari">{concept.sanskrit}</span>
             <span className="ml-3">{concept.labelEn}</span>
             <span lang="hi" className="ml-3 font-devanagari text-2xl opacity-90">{concept.labelHi}</span>

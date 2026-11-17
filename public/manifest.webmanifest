@@ -6,7 +6,7 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#fdfbf7",
+  "background_color": "#fff4e5",
   "theme_color": "#c2410c",
   "categories": ["books", "education", "lifestyle"],
   "icons": [

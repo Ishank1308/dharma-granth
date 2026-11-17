@@ -106,10 +106,12 @@ export default function ScripturesPage() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-12">
             {[
               {
                 id: 'viduraniti',
+                layout: 'lg:col-span-7',
+                gradient: 'bg-gradient-to-br from-amber-500/10 via-dharma-card to-dharma-card',
                 href: '/scripture/viduraniti/',
                 title: 'विदुर नीति (Vidura Niti)',
                 desc: 'महाभारत उद्योगपर्व — नीति, मनोविज्ञान और व्यावहारिक शासन-कला (594 श्लोक)',
@@ -120,6 +122,8 @@ export default function ScripturesPage() {
               },
               {
                 id: 'shivaswarodaya',
+                layout: 'lg:col-span-5',
+                gradient: 'bg-gradient-to-br from-emerald-500/10 via-dharma-card to-dharma-card',
                 href: '/scripture/shivaswarodaya/',
                 title: 'शिव स्वरोदय (Shiva Swarodaya)',
                 desc: 'स्वर योग — प्राण, नाड़ी व श्वास-प्रवाह का प्रत्यक्ष विज्ञान (395 श्लोक)',
@@ -130,6 +134,8 @@ export default function ScripturesPage() {
               },
               {
                 id: 'ashtavakra',
+                layout: 'lg:col-span-6',
+                gradient: 'bg-gradient-to-br from-dharma-saffron/10 via-dharma-card to-dharma-card',
                 href: '/ashtavakra/',
                 title: 'अष्टावक्र गीता (Ashtavakra Gita)',
                 desc: 'अद्वैत वेदांत — आत्म-ज्ञान और परम मुक्ति का सीधा संवाद (298 श्लोक)',
@@ -140,6 +146,8 @@ export default function ScripturesPage() {
               },
               {
                 id: 'naradabhaktisutra',
+                layout: 'lg:col-span-6',
+                gradient: 'bg-gradient-to-br from-indigo-500/10 via-dharma-card to-dharma-card',
                 href: '/scripture/naradabhaktisutra/',
                 title: 'नारद भक्ति सूत्र (Narada Bhakti Sutras)',
                 desc: 'परा-भक्ति का शास्त्रीय दर्शन — प्रेम, समर्पण व आत्म-निवेदन (84 सूत्र)',
@@ -148,11 +156,11 @@ export default function ScripturesPage() {
                 spineColor: 'bg-indigo-600',
                 badgeClass: 'bg-indigo-500/15 border-indigo-500/30 text-indigo-800 dark:text-indigo-300',
               },
-            ].map((item) => (
+            ].map((item, index) => (
               <Link
                 key={item.id}
                 href={item.href}
-                className="group card-sacred sheen-sweep relative flex flex-col justify-between overflow-hidden rounded-card border border-dharma-border bg-dharma-card p-4 pl-6 sm:p-5 sm:pl-7 shadow-xs hover:border-saffron-400 hover:shadow-raised"
+                className={`group card-sacred sheen-sweep relative flex min-h-[215px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border bg-dharma-card p-5 pl-7 shadow-raised motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 hover:border-dharma-saffron/50 sm:p-6 sm:pl-8 ${item.layout} ${item.gradient}`}
               >
                 <span aria-hidden="true" className={`absolute inset-y-0 left-0 w-1.5 ${item.spineColor} rounded-l-card`} />
                 <div>
@@ -160,12 +168,12 @@ export default function ScripturesPage() {
                     <span className={`rounded-full border px-2 py-0.5 font-bold ${item.badgeClass}`}>
                       {item.badge}
                     </span>
-                    <span className="text-dharma-muted font-medium text-[11px]">{item.tag}</span>
+                    <span className="flex items-center gap-2 text-dharma-muted font-medium text-[11px]"><span>{item.tag}</span><span aria-hidden="true" className="tabular-nums opacity-60">0{index + 1}</span></span>
                   </div>
-                  <h3 className="font-serif text-title-3 font-semibold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-400 transition-colors">
+                  <h3 className="font-serif text-title-2 font-semibold text-dharma-text group-hover:text-dharma-saffron transition-colors">
                     {item.title}
                   </h3>
-                  <p className="mt-1.5 text-xs text-dharma-muted line-clamp-2 leading-relaxed">
+                  <p className="mt-2 max-w-[52ch] text-sm text-dharma-muted leading-relaxed">
                     {item.desc}
                   </p>
                 </div>

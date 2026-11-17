@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { PageHeader } from '@/app/components/apple/PageHeader';
+import { useAccessibleModal } from '@/lib/useAccessibleModal';
 import { rituals, type Ritual } from '@/data/rituals';
 import {
   X,
@@ -277,26 +278,8 @@ function RitualDetail({ ritual, onClose }: { ritual: Ritual; onClose: () => void
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const [copiedLink, setCopiedLink] = useState(false);
 
-  useEffect(() => {
-    const prevActive = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    const timer = window.setTimeout(() => closeBtnRef.current?.focus(), 40);
-
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') {
-        e.preventDefault();
-        onClose();
-      }
-    }
-    window.addEventListener('keydown', onKeyDown);
-    return () => {
-      window.clearTimeout(timer);
-      document.body.style.overflow = prevOverflow;
-      window.removeEventListener('keydown', onKeyDown);
-      prevActive?.focus?.();
-    };
-  }, [onClose]);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useAccessibleModal(true, dialogRef, onClose, closeBtnRef);
 
   const handleCopyLink = async () => {
     try {
@@ -315,9 +298,6 @@ function RitualDetail({ ritual, onClose }: { ritual: Ritual; onClose: () => void
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="ritual-dialog-title"
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/60 backdrop-blur-sm"
       onClick={onClose}
     >
@@ -326,6 +306,11 @@ function RitualDetail({ ritual, onClose }: { ritual: Ritual; onClose: () => void
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 16 }}
         transition={{ duration: 0.24 }}
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="ritual-dialog-title"
+        tabIndex={-1}
         className="bg-dharma-bg text-dharma-text rounded-3xl shadow-2xl border border-dharma-border max-w-3xl w-full max-h-[90dvh] flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
