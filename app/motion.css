@@ -910,3 +910,26 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
         animation: fluid-wave-drift 20s ease-in-out infinite;
     }
 }
+
+/* Contemplative concept geometry: CSS compositor animation, not React's
+   old 25Hz state update. Only the actual diagram rotates; source text,
+   labels and reading surfaces stay still. Pausing retains current orientation.
+   Quiet modes and reduced-motion keep the first frame available. */
+@keyframes dharma-concept-mandala-turn {
+    to { transform: rotate(360deg); }
+}
+.concept-geometry-rotor {
+    transform-origin: center center;
+    transform-box: view-box;
+}
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true']) .concept-geometry-rotor {
+        animation: dharma-concept-mandala-turn 48s linear infinite paused;
+    }
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true']) .concept-geometry-rotor[data-spinning='true'] {
+        animation-play-state: running;
+    }
+}
+@media print, (prefers-reduced-motion: reduce) {
+    .concept-geometry-rotor { animation: none !important; transform: none !important; }
+}
