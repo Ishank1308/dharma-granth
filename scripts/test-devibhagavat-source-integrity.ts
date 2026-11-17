@@ -26,7 +26,7 @@ const required = new Map<number, string[]>([
 ]);
 
 function normalize(text: string): string {
-  return text.normalize('NFC').replace(/[\\s।॥०-९0-9|.,:;!?\u200c\u200d]/g, '');
+  return text.normalize('NFC').replace(/[\s।॥०-९0-9|.,:;!?\u200c\u200d]/g, '');
 }
 
 for (const [number, halves] of required) {
