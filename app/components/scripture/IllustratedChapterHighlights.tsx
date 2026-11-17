@@ -52,13 +52,14 @@ export function IllustratedChapterHighlights({
   });
 
   if (items.length < 2) return null;
+  const sectionLabel = scriptureId === 'ramayana' ? 'काण्ड' : 'अध्याय';
 
   return (
     <section className="mb-8" aria-labelledby="chapter-highlights-title">
       <div className="flex flex-wrap items-end justify-between gap-2">
         <div>
-          <p className="editorial-section-eyebrow">अध्याय प्रवेश · Illustrated entry points</p>
-          <h2 id="chapter-highlights-title" className="editorial-section-title mt-1">Explore a chapter</h2>
+          <p className="editorial-section-eyebrow">ग्रन्थ प्रवेश · Illustrated entry points</p>
+          <h2 id="chapter-highlights-title" className="editorial-section-title mt-1">Explore a section</h2>
         </div>
         <p lang="hi" className="text-xs text-dharma-muted">कलात्मक दृश्य · मूल शास्त्रीय चित्र नहीं</p>
       </div>
@@ -79,7 +80,7 @@ export function IllustratedChapterHighlights({
               </span>
               <span className="flex flex-1 items-start justify-between gap-2 p-4">
                 <span className="min-w-0">
-                  <span className="block text-xs font-semibold text-dharma-saffron">अध्याय {id} · {chapter.verseCount} श्लोक</span>
+                  <span className="block text-xs font-semibold text-dharma-saffron">{sectionLabel} {id} · {chapter.verseCount} श्लोक</span>
                   <span className="mt-1 block text-base font-semibold leading-snug text-dharma-text">{chapter.title}</span>
                   <span lang="hi" className="mt-1.5 block font-devanagari text-xs leading-relaxed text-dharma-muted">
                     {SCENES[scene].hi}
