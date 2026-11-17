@@ -180,7 +180,7 @@ for (const [chapterNumber, sourceChapter, verseCount] of [
       `Structured व्याख्या is missing from web reader JSON: ${key}`);
     assert.equal(publishedCommentary[key]?.ai, true,
       `Source-checked व्याख्या must retain an explicit AI label: ${key}`);
-    if ((chapterNumber === 1 && n <= 10) || (chapterNumber === 3 && n >= 11)) {
+    if (chapterNumber === 1 || (chapterNumber === 3 && n >= 11)) {
       const modern = item.lifeLesson ?? '';
       assert.ok(modern.includes('### आधुनिक संदर्भ') &&
         modern.includes('### आज के जीवन में प्रयोग') &&
