@@ -259,6 +259,7 @@ jobs:
         run: sleep 30
 
       - name: Retry deploy to Cloudflare Pages
+        id: retry_deploy
         if: steps.deploy.outcome == 'failure'
         uses: cloudflare/wrangler-action@v4
         with:
@@ -287,18 +288,33 @@ jobs:
       # canary is enabled.
       - name: Verify deployed RSC payload parity
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
-        # The upload can finish before the custom domain serves the new alias.
-        # Keep exact byte comparison on every attempt and fail after five minutes.
+        # Check the immutable deployment first to distinguish a bad upload from
+        # a stale custom-domain route or an R2 canary serving old payload bytes.
+        env:
+          IMMUTABLE_DEPLOY_URL: ${{ steps.retry_deploy.outputs.deployment-url || steps.deploy.outputs.deployment-url }}
         run: |
+          if [[ -n "$IMMUTABLE_DEPLOY_URL" ]]; then
+            echo "::notice::Checking immutable Pages deployment parity: $IMMUTABLE_DEPLOY_URL"
+            if ! node scripts/verify-rsc-canary.mjs \
+              --local dist/scripture/bhagavadgita/chapter/2/index.txt \
+              --url "${IMMUTABLE_DEPLOY_URL%/}/scripture/bhagavadgita/chapter/2/index.txt"; then
+              echo "::error::Immutable Pages deployment RSC differs from the tested build; this is not custom-domain propagation."
+              exit 1
+            fi
+          else
+            echo "::warning::Wrangler did not expose an immutable deployment URL; custom-domain check still required."
+          fi
+          # Keep strict byte-level verification of the actual public hostname.
+          # An alias passing does not make stale public RSC safe to release.
           for attempt in {1..16}; do
             if node scripts/verify-rsc-canary.mjs --local dist/scripture/bhagavadgita/chapter/2/index.txt --url https://dharmagranth.dev/scripture/bhagavadgita/chapter/2/index.txt; then
               exit 0
             fi
             if [ "$attempt" -eq 16 ]; then
-              echo "::error::Deployed RSC payload did not match this build after the propagation window."
+              echo "::error::Custom-domain RSC payload did not match the build after the propagation window; inspect X-Dharma-RSC-Source and immutable check above."
               exit 1
             fi
-            echo "::warning::RSC parity attempt $attempt has not matched yet; checking again in 20 seconds."
+            echo "::warning::Public RSC parity attempt $attempt has not matched yet; checking again in 20 seconds."
             sleep 20
           done
 
