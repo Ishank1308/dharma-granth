@@ -127,12 +127,14 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
   return (
     <main className="min-h-screen bg-dharma-bg text-dharma-text pb-20 selection:bg-saffron-200 selection:text-saffron-900">
       {/* ── Sacred Header Banner ────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-stone-900 via-stone-900/95 to-dharma-bg text-stone-100 pt-8 pb-12 border-b border-saffron-900/40">
-        <PalmLeafBorder className="absolute top-0 inset-x-0 opacity-40" />
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-stone-900 via-[#29231f] to-stone-950 text-stone-100 pt-8 pb-10 sm:pb-14 border-b border-saffron-900/40">
+        <PalmLeafBorder className="absolute top-0 inset-x-0 opacity-25" />
+        <div aria-hidden="true" className="pointer-events-none absolute -right-20 top-10 h-80 w-80 rounded-full bg-saffron-500/10 blur-3xl" />
+        <div aria-hidden="true" className="pointer-events-none absolute -left-36 bottom-0 h-72 w-72 rounded-full bg-amber-500/10 blur-3xl" />
 
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           {/* Back to Hub Breadcrumb */}
-          <div className="flex items-center justify-between gap-4 mb-6 text-xs">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-7 text-xs">
             <Link
               href="/learn"
               className="inline-flex items-center gap-1.5 text-saffron-300/80 hover:text-saffron-200 transition font-serif"
@@ -147,7 +149,7 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
               <select
                 value={course.id}
                 onChange={(e) => router.push(`/learn/${e.target.value}`)}
-                className="bg-stone-800/90 border border-stone-700 text-stone-200 text-xs rounded-lg px-2.5 py-1 focus:ring-1 focus:ring-saffron-500 font-serif"
+                className="min-h-[44px] max-w-[min(13rem,78vw)] bg-stone-800/90 border border-stone-600 text-stone-100 text-xs rounded-xl px-3 py-2 focus-ring font-serif"
                 aria-label="Switch learning path"
               >
                 {learningPaths.map((p) => (
@@ -159,7 +161,7 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
             <div className="lg:col-span-8">
               {/* Badges */}
               <div className="flex flex-wrap items-center gap-2.5 mb-3 text-xs">
@@ -179,19 +181,41 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
               {/* Title & Devanagari */}
               <p
                 lang="sa"
-                className="font-devanagari text-xl md:text-2xl text-saffron-400 mb-1 font-semibold tracking-wide"
+                className="font-devanagari text-[clamp(1.15rem,calc(1rem+1vw),1.625rem)] leading-[1.65] text-saffron-300 mb-2 font-semibold [overflow-wrap:anywhere]"
               >
                 {course.titleSanskrit}
               </p>
-              <h1 className="text-3xl md:text-5xl font-serif font-bold tracking-tight text-white mb-3">
+              <h1 className="max-w-[20ch] text-[clamp(2rem,calc(1.45rem+3vw),3.5rem)] leading-[1.12] font-serif font-bold tracking-tight text-white mb-4 [overflow-wrap:anywhere]">
                 {course.title}
               </h1>
-              <p className="text-base text-stone-300/90 font-serif max-w-2xl leading-relaxed mb-6">
+              <p className="text-base sm:text-lg text-stone-200/90 font-serif max-w-[60ch] leading-relaxed mb-5">
                 {course.subtitle}
               </p>
 
+              {/* Compact progress cue before the long explanation on small screens. */}
+              <div className="mb-7 max-w-xl" role="group" aria-label="Learning path completion">
+                <div className="mb-2 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold">
+                  <span className="text-stone-200">स्वाध्याय प्रगति · Study progress</span>
+                  <span className="tabular-nums text-saffron-300">{completedCount} / {course.lessons.length} lessons</span>
+                </div>
+                <div
+                  role="progressbar"
+                  aria-label="Lessons completed"
+                  aria-valuemin={0}
+                  aria-valuemax={course.lessons.length}
+                  aria-valuenow={completedCount}
+                  className="h-1.5 overflow-hidden rounded-full bg-stone-700/80"
+                >
+                  <div
+                    aria-hidden="true"
+                    className="h-full rounded-full bg-gradient-to-r from-amber-400 via-saffron-400 to-orange-300 motion-safe:transition-[width] motion-safe:duration-500"
+                    style={{ width: `${course.lessons.length ? (completedCount / course.lessons.length) * 100 : 0}%` }}
+                  />
+                </div>
+              </div>
+
               {/* Mangalacharan / Invocatory Shloka */}
-              <div className="rounded-xl border border-saffron-500/30 bg-stone-950/70 p-4 md:p-5 relative shadow-inner">
+              <div className="rounded-2xl border border-saffron-400/25 bg-stone-950/55 p-4 md:p-5 relative shadow-inner">
                 <div className="flex items-center gap-2 text-saffron-400 text-xs font-serif font-bold mb-2">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>मङ्गलाचरणम् (Invocatory Verse)</span>
@@ -215,7 +239,7 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
             </div>
 
             {/* Right: Calm Progress & Course Summary Card */}
-            <div className="lg:col-span-4 bg-stone-800/80 border border-stone-700/80 rounded-2xl p-5 shadow-lg">
+            <div className="lg:col-span-4 min-w-0 bg-stone-800/70 border border-stone-600/60 rounded-[24px] p-5 shadow-lg backdrop-blur-sm">
               <span className="text-xs font-serif font-bold uppercase tracking-wider text-saffron-300 block mb-3">
                 Contemplative Progress (अध्ययन संस्थिति)
               </span>
@@ -284,11 +308,11 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
 
       {/* ── Tabbed Navigation Bar ───────────────────────────────────────── */}
       <section className="sticky top-[52px] z-30 bg-dharma-card/95 backdrop-blur-md border-b border-dharma-border shadow-xs">
-        <div className="max-w-6xl mx-auto px-6 overflow-x-auto scrollbar-none">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 overflow-x-auto scrollbar-none">
           <div
             role="tablist"
             aria-label="Course Sections"
-            className="flex items-center gap-1 py-2 min-w-max"
+            className="flex items-center gap-1.5 py-2 min-w-max"
           >
             {[
               {
@@ -345,7 +369,7 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => setActiveTab(tab.id)}
                   onKeyDown={(e) => handleTabKeyDown(e, tab.id)}
-                  className={`focus-ring flex min-h-[44px] items-center gap-2 px-4 py-2.5 rounded-xl font-serif text-xs md:text-sm transition-all select-none ${
+                  className={`focus-ring flex min-h-[44px] shrink-0 items-center gap-2 px-4 py-2.5 rounded-xl font-serif text-xs md:text-sm transition-colors select-none ${
                     isActive
                       ? 'bg-saffron-700 text-white font-bold shadow-xs'
                       : 'text-dharma-text hover:bg-dharma-card-soft hover:text-saffron-700'
@@ -366,7 +390,7 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
       </section>
 
       {/* ── Main Tab Content Panels ─────────────────────────────────────── */}
-      <div className="max-w-6xl mx-auto px-6 pt-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8">
         {/* TAB 1: OVERVIEW & LESSONS */}
         {activeTab === 'overview' && (
           <div id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" className="space-y-10">
