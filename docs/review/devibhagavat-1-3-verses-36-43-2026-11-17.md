@@ -14,7 +14,7 @@ Numbered Sanskrit source: <https://sanskritdocuments.org/doc_purana/devIbhAgavat
 | 3:39 | श्रीमद्भागवतामराङ्घ्रिपफलास्वादादरः | Śuka's loving hearing; Kali-fear imagery is devotional, not an empirical outcome guarantee |
 | 3:40 | पापीयानपि वेदधर्मरहितः | Praise of Purāṇa hearing even for persons criticised in the verse; promised fruits are religious rhetoric, not financial or medical guarantees |
 | 3:41 | या निर्गुणा हरिहरादिभिरप्यलभ्या | Nirguṇa, samādhi and inner vision are philosophical/devotional categories, not automatically neurobiological findings |
-| 3:42 | सम्प्राप्य मानुषभवं | Human-life-as-boat metaphor; शकलाङ्ग wording must not be used to disparage disabled readers |
+| 3:42 | सम्प्राप्य मानुषभवं | Human-life-as-boat metaphor; सकलाङ्ग wording must not be used to disparage disabled readers |
 | 3:43 | यः प्राप्य कर्णयुगलं | Against gossip and slander; language about ears/intellect must not disparage deaf/hard-of-hearing readers |
 
 ## Publication and review gate
