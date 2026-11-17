@@ -48,3 +48,53 @@ test('long scripture navigation announces filtered counts with accessible mobile
   const width = await page.evaluate(() => document.documentElement.scrollWidth);
   expect(width).toBeLessThanOrEqual(321);
 });
+
+
+test('long chapter indexes start with 20 cards and allow all or direct range selection', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 740 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/scripture/bhagavatapurana/');
+
+  const contents = page.locator('section[aria-labelledby="contents-heading"]');
+  const cards = contents.locator('ol > li');
+  const all = page.getByRole('group', { name: 'Chapter range filter' }).getByRole('button', { name: /^All/ });
+  const range = page.getByRole('combobox', { name: 'Choose chapter range' });
+  await expect(range).toBeVisible();
+  await expect(cards).toHaveCount(20);
+  await expect(all).toHaveAttribute('aria-pressed', 'false');
+  await expect(contents.getByRole('status')).toContainText('20 of');
+
+  await range.selectOption({ index: 2 });
+  await expect(cards).toHaveCount(20);
+  await expect(range).toHaveValue('21');
+  await expect(contents.locator('a[href="/scripture/bhagavatapurana/chapter/21/"]')).toBeVisible();
+
+  await all.click();
+  await expect(all).toHaveAttribute('aria-pressed', 'true');
+  expect(await cards.count()).toBeGreaterThan(60);
+
+  // Searching must cover the whole book even when a range was selected.
+  await range.selectOption({ index: 1 });
+  const search = page.getByRole('searchbox', { name: 'Filter chapters by number or title' });
+  await search.fill('50');
+  await expect(all).toHaveAttribute('aria-pressed', 'true');
+  await expect(contents.locator('a[href="/scripture/bhagavatapurana/chapter/50/"]')).toBeVisible();
+
+  // A new range choice overrides the search, not merely the highlighted chip.
+  await range.selectOption({ index: 2 });
+  await expect(search).toHaveValue('');
+  await expect(cards).toHaveCount(20);
+  await search.fill('50');
+  await page.getByRole('button', { name: 'Clear chapter filter' }).click();
+  await expect(cards).toHaveCount(20);
+  await expect(range).toHaveValue('1');
+  const width = await page.evaluate(() => document.documentElement.scrollWidth);
+  expect(width).toBeLessThanOrEqual(321);
+});
+
+test('short scripture indexes keep all chapters visible without the long-book controls', async ({ page }) => {
+  await page.goto('/scripture/bhagavadgita/');
+  const contents = page.locator('section[aria-labelledby="contents-heading"]');
+  await expect(contents.locator('ol > li')).toHaveCount(18);
+  await expect(page.getByRole('combobox', { name: 'Choose chapter range' })).toHaveCount(0);
+});
