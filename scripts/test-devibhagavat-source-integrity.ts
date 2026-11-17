@@ -136,7 +136,7 @@ console.log('✓ Devi Bhagavata publishes all 85 source-keyed Hindi meanings (ch
 
 /**
  * Reader-visible structured व्याख्या, separately from verse meanings:
- * only 40 source-checked, AI-labelled chapter-2 notes may be published.
+ * all 85 source-checked, AI-assisted notes and modern-context panels must reach the reader.
  * This is a structural/source-identity check, not scholar certification.
  */
 type StructuredEntry = {
@@ -151,6 +151,7 @@ assert.equal(Object.keys(structured).length, 85, 'Devi Bhagavata source batch mu
 const publishedCommentary = JSON.parse(readFileSync('public/data/hi-commentary/devibhagavat.json', 'utf8')) as
   Record<string, { explanation?: string; lifeLesson?: string; ai?: boolean }>;
 const explanationSet = new Set<string>();
+const modernContextSet = new Set<string>();
 for (const [chapterNumber, sourceChapter, verseCount] of [
   [1, chapter, 25],
   [2, chapter2, 40],
@@ -180,13 +181,15 @@ for (const [chapterNumber, sourceChapter, verseCount] of [
       `Structured व्याख्या is missing from web reader JSON: ${key}`);
     assert.equal(publishedCommentary[key]?.ai, true,
       `Source-checked व्याख्या must retain an explicit AI label: ${key}`);
-    if (chapterNumber === 3 && n >= 11) {
+    if (chapterNumber === 1 || chapterNumber === 2 || chapterNumber === 3) {
       const modern = item.lifeLesson ?? '';
       assert.ok(modern.includes('### आधुनिक संदर्भ') &&
         modern.includes('### आज के जीवन में प्रयोग') &&
         modern.includes('### चिंतन प्रश्न'),
         `Missing verse-specific structured modern context: ${key}`);
       assert.ok(modern.trim().length >= 350, `Modern context too short: ${key}`);
+      assert.ok(!modernContextSet.has(modern), `Repeated modern-context template at ${key}`);
+      modernContextSet.add(modern);
       assert.equal(publishedCommentary[key]?.lifeLesson, modern,
         `Modern-context panel data missing from published reader JSON: ${key}`);
     }
@@ -198,4 +201,4 @@ const register = execFileSync(process.execPath, [
 ], { encoding: 'utf8' });
 assert.match(register, /sentences to fix 0, तुम to check 0/,
   'Devi Bhagavata explanation has colloquial words or informal address');
-console.log('✓ Devi Bhagavata publishes 85 distinct, source-checked AI-labelled structured व्याख्या notes.');
+console.log('✓ Devi Bhagavata publishes 85 distinct Sanskrit-keyed व्याख्या and 85 individually written modern-context panels.');
