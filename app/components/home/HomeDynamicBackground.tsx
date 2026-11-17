@@ -43,6 +43,12 @@ export function HomeDynamicBackground() {
     let isMoving = false;
 
     const updatePosition = () => {
+      // A settings change or hidden tab must stop an already active RAF loop.
+      if (isQuiet() || document.hidden) {
+        isMoving = false;
+        rafId = null;
+        return;
+      }
       const dx = targetX - currentX;
       const dy = targetY - currentY;
 
@@ -64,6 +70,7 @@ export function HomeDynamicBackground() {
     };
 
     const handlePointerMove = (e: PointerEvent) => {
+      if (isQuiet() || document.hidden) return;
       if (e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
       targetX = e.clientX;
       targetY = e.clientY + window.scrollY;
