@@ -316,7 +316,7 @@ export function CharacterMap() {
           {/* Hint overlay */}
           {!selectedId && !search && (
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-dharma-muted bg-dharma-card/80 backdrop-blur-sm px-4 py-2 rounded-full border border-dharma-border pointer-events-none">
-              किसी पात्र पर क्लिक करें • ड्रैग कर पैन करें • स्क्रॉल कर ज़ूम करें
+              पात्र चुनें • मानचित्र खींचकर घुमाएँ • स्क्रॉल करके पास या दूर देखें
             </div>
           )}
         </div>
@@ -472,7 +472,7 @@ export function CharacterMap() {
             >
               <Users className="w-12 h-12 text-dharma-muted mb-3" />
               <p className="text-sm text-dharma-muted">
-                किसी पात्र पर क्लिक करें जीवनी, परिवार, घटनाएँ, संवाद, नैतिक दुविधाएँ, श्लोक और व्याख्याएँ देखने के लिए।
+                किसी पात्र को चुनकर उसकी जीवनी, परिवार, घटनाएँ, संवाद, नैतिक दुविधाएँ, श्लोक और व्याख्याएँ देखें।
               </p>
             </motion.div>
           )}
