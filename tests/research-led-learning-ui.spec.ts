@@ -8,7 +8,7 @@ test('learning course shows calm progress and accessible keyboard tabs on mobile
   const progress = page.getByRole('progressbar', { name: 'Lessons completed' });
   await expect(progress).toBeVisible();
   await expect(progress).toHaveAttribute('aria-valuemin', '0');
-  await expect(progress).toHaveAttribute('aria-valuenow', /^\\d+$/);
+  await expect(progress).toHaveAttribute('aria-valuenow', /^\d+$/);
 
   const tabs = page.getByRole('tablist', { name: 'Course Sections' });
   await expect(tabs).toBeVisible();
