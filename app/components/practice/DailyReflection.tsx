@@ -84,7 +84,7 @@ export function DailyReflection() {
         accent="rose"
       >
         <p className="text-sm text-dharma-muted" role="status" aria-live="polite">
-          Preparing today's reflection · आज का चिंतन तैयार हो रहा है
+          Preparing the daily reflection · आज का चिंतन तैयार हो रहा है
         </p>
       </ToolCard>
     );
