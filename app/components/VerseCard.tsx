@@ -834,9 +834,9 @@ export function VerseCard({
                         {v.hindiSource === 'ai' && (
                           <span
                             className="ml-2 inline-block rounded-full border border-blue-200 bg-blue-50 px-1.5 py-px align-middle text-[9px] font-medium text-blue-700 dark:border-blue-400/30 dark:bg-blue-500/10 dark:text-blue-300"
-                            title="संस्कृत से मशीन-अनुवादित; विद्वत् अनुवाद नहीं"
+                            title={STUDY_TRANSLATION_SHORT.detailHi}
                           >
-                            AI अनुवाद
+                            {STUDY_TRANSLATION_SHORT.hi}
                           </span>
                         )}
                       </PassageText>
