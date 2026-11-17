@@ -79,12 +79,13 @@ export function HomeHero() {
           <div className="pointer-events-none absolute -inset-3 rounded-[38px] border border-dharma-saffron/10 sm:-inset-4" aria-hidden="true" />
           <Link
             href="/scripture/bhagavadgita/chapter/2/verse/47/"
-            className="focus-ring group relative flex min-h-[355px] flex-col justify-between overflow-hidden rounded-[30px] border border-amber-200/25 bg-[#321c27] p-6 text-[#fff7e9] shadow-[0_28px_68px_-36px_rgba(58,29,15,0.6)] motion-safe:transition-[transform,box-shadow] motion-safe:duration-base motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-[0_34px_74px_-30px_rgba(58,29,15,0.65)] sm:min-h-[400px] sm:p-9"
+            data-tilt="subtle"
+            className="focus-ring group relative flex min-h-[355px] flex-col justify-between overflow-hidden rounded-[30px] border border-amber-200/25 bg-[#321c27] p-6 text-[#fff7e9] shadow-[0_28px_68px_-36px_rgba(58,29,15,0.6)] motion-safe:hover:shadow-[0_34px_74px_-30px_rgba(58,29,15,0.65)] sm:min-h-[400px] sm:p-9"
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_25%,rgba(245,189,100,0.21),transparent_42%),linear-gradient(140deg,rgba(181,88,53,0.13),transparent_65%)]" aria-hidden="true" />
-            <div className="pointer-events-none absolute -right-24 top-12 size-[310px] rounded-full border border-amber-200/15 sm:size-[370px]" aria-hidden="true" />
-            <div className="pointer-events-none absolute -right-12 top-24 size-[235px] rounded-full border border-amber-200/20 sm:size-[275px]" aria-hidden="true" />
-            <div className="pointer-events-none absolute -right-4 top-32 size-[165px] rounded-full border border-amber-200/15 sm:size-[200px]" aria-hidden="true" />
+            <div data-depth="4" className="pointer-events-none absolute -right-24 top-12 size-[310px] rounded-full border border-amber-200/15 sm:size-[370px]" aria-hidden="true" />
+            <div data-depth="8" className="pointer-events-none absolute -right-12 top-24 size-[235px] rounded-full border border-amber-200/20 sm:size-[275px]" aria-hidden="true" />
+            <div data-depth="4" className="pointer-events-none absolute -right-4 top-32 size-[165px] rounded-full border border-amber-200/15 sm:size-[200px]" aria-hidden="true" />
 
             <div className="relative flex flex-wrap items-start justify-between gap-3">
               <div>
