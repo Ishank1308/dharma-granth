@@ -1,5 +1,5 @@
 {
-  "note": "100 independently drafted AI-assisted Hindi meanings for Devī Bhāgavata Purāṇa Skandha 1 Adhyāyas 1 (1:1–1:25), 2 (2:1–2:40) and 3 (3:1–3:35). Each is source-key checked against numbered Sanskrit openings in https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html. Corresponding 100 explanatory notes and 100 modern-context panels are in data/ai-commentary/devibhagavat.json. These are NOT copyrighted Gita Press Hindi transcriptions, NOT independently Sanskrit-scholar-certified, and NOT proof of complete critical text collation. reviewStatus remains unreviewed and publication is only through strict source-checked verse allowlist.",
+  "note": "108 independently drafted AI-assisted Hindi meanings for Devī Bhāgavata Purāṇa Skandha 1 Adhyāyas 1 (1:1–1:25), 2 (2:1–2:40) and 3 (3:1–3:43). Each is source-key checked against numbered Sanskrit openings in https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html. Corresponding 108 explanatory notes and 108 modern-context panels are in data/ai-commentary/devibhagavat.json. These are NOT copyrighted Gita Press Hindi transcriptions, NOT independently Sanskrit-scholar-certified, and NOT proof of complete critical text collation. reviewStatus remains unreviewed and publication is only through strict source-checked verse allowlist.",
   "reviewStatus": "unreviewed",
   "keyFormat": "chapter:verse",
   "meanings": {
@@ -302,6 +302,30 @@
     },
     "3:35": {
       "hindi": "इस पुराण को कामनाओं की पूर्ति और मोक्ष का मार्ग बताने वाला, वेदों के अर्थ से समृद्ध, आगम-परम्पराओं के सार का आश्रय तथा मुक्ति की इच्छा रखने वालों को सदा प्रिय कहा गया है। ये ग्रन्थ की महिमा बताने वाले पारम्परिक विशेषण हैं।"
+    },
+    "3:36": {
+      "hindi": "व्यासजी ने अत्यन्त शुभ पुराण की रचना करके उसे अपने महात्मा पुत्र शुकदेव को पढ़ाया। शुकदेव वैराग्य से सम्पन्न थे और श्लोक में उनका अरणि से उत्पन्न होना भी कहा गया है। यह पिता से पुत्र और गुरु से शिष्य तक ज्ञान पहुँचने की पुराणगत कथा है; जन्म की असाधारण रीति का उल्लेख पारम्परिक आख्यान के रूप में समझना चाहिए।"
+    },
+    "3:37": {
+      "hindi": "सूतजी मुनियों से कहते हैं कि उन्होंने इस पुराण का समस्त गूढ़ विषय व्यासजी के मुख से सुना और गुरु की कृपा से उसे यथार्थ रूप में ग्रहण किया। श्लोक में गुरु को करुणा का भण्डार कहा गया है। इस प्रकार सूतजी अपने कथन को गुरु-श्रवण की परम्परा से जोड़ते हैं।"
+    },
+    "3:38": {
+      "hindi": "श्लोक में कहा गया है कि प्रश्न किए जाने पर द्वैपायन व्यास ने पुराण के सभी गूढ़ विषय बताए। सूतजी कहते हैं कि उन्होंने उस महाप्रभावशाली उपदेश को सुना। ‘अयोनिज’ विशेषण भी इस कथन में आता है; उसके सटीक सम्बन्ध और कथा-प्रसंग को अन्य श्लोकों के सहारे समझना चाहिए, किसी एक पहचान को बिना परीक्षण निश्चित नहीं करना चाहिए।"
+    },
+    "3:39": {
+      "hindi": "इस पद्य में शुकदेव को भवसागर पार करने की इच्छा रखने वाला तथा पुराणरूपी अद्भुत कथा-रस को प्रेमपूर्वक सुनने वाला बताया गया है। आगे कलियुग के भय से मुक्ति के विषय में प्रशंसात्मक प्रश्न उठाया गया है। यह भक्तिपरक काव्य-भाषा है, किसी व्यक्ति के जीवन में निश्चित परिणाम की अनुभवजन्य गारंटी नहीं।"
+    },
+    "3:40": {
+      "hindi": "यह स्तुति कहती है कि आचरण में दोष रखने वाला अथवा वेदधर्म से दूर व्यक्ति भी यदि किसी बहाने इस उत्तम पुराण को सुन ले, तो उसे इस जीवन के सुख और अन्त में योगियों को प्रिय स्थिर आध्यात्मिक पद की प्राप्ति बताई जाती है। यह पुराण की कृपा-महिमा व्यक्त करने वाला पारम्परिक विधान है; इसे निश्चित भौतिक लाभ की गारंटी न माना जाए।"
+    },
+    "3:41": {
+      "hindi": "श्लोक उस देवी-विद्या का स्मरण करता है जिसे निर्गुण, हरि-हर आदि के लिए भी दुर्लभ, सज्जनों को प्रिय तथा समाधि से अनुभव होने वाली कहा गया है। कहा जाता है कि जो व्यक्ति इस पवित्र पुराण को निरन्तर सुनता है, उसके हृदय में वही विद्या भाव जगाती है। यह उपासना की अनुभूतिपरक भाषा है, किसी वस्तुगत परीक्षा का परिणाम नहीं।"
+    },
+    "3:42": {
+      "hindi": "श्लोक मनुष्य-जीवन और पूर्ण अंगों से युक्त शरीर को भवसागर पार करने योग्य नौका के समान कहता है। ऐसे अवसर तथा पुराण सुनाने वाले वक्ता के मिलने पर भी जो व्यक्ति कल्याणदायक कथा नहीं सुनता, उसके अवसर चूकने की बात कही गई है। यह मानव-जीवन की सम्भावना पर बल देने वाली उपमा है; इसे दिव्यांग व्यक्तियों की आध्यात्मिक योग्यता पर निर्णय नहीं समझना चाहिए।"
+    },
+    "3:43": {
+      "hindi": "श्लोक प्रश्न करता है कि मनुष्य को सुनने की क्षमता मिली है, फिर वह परनिन्दा जैसी बातों में निरन्तर रुचि क्यों रखे और निर्मल, रसपूर्ण, कल्याणकारी पुराण का श्रवण क्यों न करे। यह वाणी और श्रवण के विवेक की शिक्षा देता है। श्रवण-क्षमता का उल्लेख उपमा और तत्कालीन काव्य-भाषा है; किसी श्रवण-अक्षम व्यक्ति का अवमूल्यन नहीं।"
     }
   }
 }
