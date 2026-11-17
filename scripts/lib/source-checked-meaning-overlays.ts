@@ -1,5 +1,5 @@
 /**
- * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, plus chapter 3 verses 1–25.
+ * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, plus chapter 3 verses 1–30.
  *
  * Unlike the manual apply-written-meanings command, this is an explicit,
  * verse-level allowlist. All other unreviewed drafts remain
@@ -110,6 +110,11 @@ export const DEVI_CHAPTER_3_WITNESS_OPENINGS = [
   'व्यासः सत्यवतीसूनुः',
   'अतीतास्तु तथा व्यासाः',
   'ब्रूहि सूत महाभाग',
+  'द्वापरे प्रथमे व्यस्ताः',
+  'तृतीये चोशना व्यासः',
+  'मघवा सप्तमे प्राप्ते',
+  'एकादशेऽथ त्रिवृषो',
+  'त्रय्यारुणिः पञ्चदशे',
 ] as const;
 
 type Verse = Record<string, unknown>;
