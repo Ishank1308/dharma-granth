@@ -331,11 +331,22 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   const prevPartHref = part && part.part > 1 ? partHref(part.part - 1) : undefined;
   const nextPartHref = part && parts && part.part < parts.length ? partHref(part.part + 1) : undefined;
 
-  const prevHref = chapterId > 1 ? `/scripture/${params.id}/chapter/${chapterId - 1}` : undefined;
-  const nextHref =
-    chapterId < totalChapterCount ? `/scripture/${params.id}/chapter/${chapterId + 1}` : undefined;
-  const prevLabel = prevHref ? neighbourLabel(meta.id, chapterId - 1) : undefined;
-  const nextLabel = nextHref ? neighbourLabel(meta.id, chapterId + 1) : undefined;
+  // Some scripture catalogues have gaps. Navigate only to chapters that exist
+  // in the curated index or seeded data, rather than linking to empty pages.
+  const availableChapterIds = [...new Set([
+    ...indexedChapters.map((item) => item.id),
+    ...seededChapters,
+  ])].filter((id) => Number.isInteger(id) && id > 0).sort((a, b) => a - b);
+  const previousChapterId = [...availableChapterIds].reverse().find((id) => id < chapterId);
+  const nextChapterId = availableChapterIds.find((id) => id > chapterId);
+  const prevHref = previousChapterId !== undefined
+    ? `/scripture/${params.id}/chapter/${previousChapterId}`
+    : undefined;
+  const nextHref = nextChapterId !== undefined
+    ? `/scripture/${params.id}/chapter/${nextChapterId}`
+    : undefined;
+  const prevLabel = prevHref ? neighbourLabel(meta.id, previousChapterId!) : undefined;
+  const nextLabel = nextHref ? neighbourLabel(meta.id, nextChapterId!) : undefined;
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   // Share links are built here, at build time: the WhatsApp link is a plain anchor (no JS),
