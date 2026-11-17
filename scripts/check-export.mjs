@@ -204,6 +204,33 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
   fail('/scripture/bhagavadgita/chapter/2/', 'verse 2.47 (कर्मण्येवाधिकारस्ते) is not in the exported HTML');
 }
 
+// ── Source-keyed Hindi must reach the exported reader HTML, not only its JSON shard ──
+// The published Devi Bhagavata chapter 3 had a public-page snapshot with a
+// “meanings unavailable” notice despite the source-keyed queue being populated.
+// A shard-only integrity check cannot catch a stale/static page with no Hindi.
+{
+  const route = '/scripture/devibhagavat/chapter/3/';
+  const html = pageHtml(route);
+  const drafted = JSON.parse(readFileSync(join(ROOT, 'data/written-meanings/devibhagavat.json'), 'utf8'));
+  const published = JSON.parse(readFileSync(join(SOURCE, 'devibhagavat', 'ch-3.json'), 'utf8'));
+  const samples = [1, 20, 35];
+  for (const n of samples) {
+    const expected = drafted.meanings?.[`3:${n}`]?.hindi?.trim();
+    const verse = published.chapter?.verses?.find((v) => Number(v.number) === n);
+    if (!expected || verse?.hindi !== expected) {
+      fail(route, `Devi Bhagavata 3.${n}: source-keyed Hindi missing from published chapter shard`);
+      continue;
+    }
+    // Compare a Devanagari leading span; HTML may escape punctuation or
+    // split surrounding markup, but the beginning of the verse meaning must
+    // still be visible to readers, crawlers and screen readers without JS.
+    const lead = expected.slice(0, 22);
+    if (!html?.includes(lead)) {
+      fail(route, `Devi Bhagavata 3.${n}: Hindi meaning absent from exported HTML (shard alone is insufficient)`);
+    }
+  }
+}
+
 // ── Verse pages: one per verse of each scripture in VERSE_PAGE_SCRIPTURE_IDS
 // (lib/verse-paths.ts), each with its text and structured data ──
 {
