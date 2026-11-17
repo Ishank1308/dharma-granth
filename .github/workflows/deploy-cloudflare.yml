@@ -12,7 +12,7 @@ name: Deploy Cloudflare Pages
 
 on:
   push:
-    branches: ["master", "fix/audit-cloudflare-search"]
+    branches: ["master"]
   workflow_dispatch:
 
 permissions:
@@ -35,6 +35,8 @@ env:
 jobs:
   build-deploy:
     name: Build and deploy
+    # workflow_dispatch can target other refs. Never publish those as master.
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     env:
       HAS_CLOUDFLARE_SECRETS: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}

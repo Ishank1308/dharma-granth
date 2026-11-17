@@ -2,14 +2,14 @@
 
 Dharma Granth's visual language, in Apple's idiom: content first, one tint, quiet surfaces,
 type that does the work, and motion that explains rather than decorates. Every page builds
-from the same tokens, so it reads the same in all four themes (Usha, Sandhyā, Bhojpatra, Rātri).
+from the same tokens, with two public reading themes: Light (the existing warm Sandhyā/sunset palette) and Dark (Rātri/night).
 
 ## Files
 
 | File | What it holds |
 | --- | --- |
 | `app/styles/tokens.css` | All tokens: type, spacing, radii, surfaces and materials, elevation, motion. Loaded first. |
-| `app/globals.css` | Fonts, the four theme palettes (`--dharma-*`), base styles and older component rules. |
+| `app/globals.css` | Fonts, the theme palettes (`--dharma-*`), base styles and older component rules. Only sunset/night are user-selectable; legacy palettes remain for compatibility. |
 | `app/styles/components.css` | Shared components built only from tokens (`.apple-*`, `.material-*`). |
 | `app/motion.css` | The motion system: reveals, cascades, hero, tilt, sheen, ticker, theme transition. |
 | `app/styles/colour.css` | Colour and life: the page aurora, dawn titles, coloured cards and icon tiles, gradient buttons, spectrum rules. Loaded last. |
@@ -100,13 +100,13 @@ Materials are the canvas made translucent, for anything that floats over content
 `.material-thick`. Without `backdrop-filter` they fall back to the solid canvas.
 
 Elevation (`shadow-hairline`, `shadow-raised`, `shadow-lifted`, `shadow-overlay`) is a soft
-neutral shadow on Usha, a warm one on Sandhyā and Bhojpatra, and none on Rātri, where a card
+a warm shadow in Light (Sandhyā) and none in Dark (Rātri), where a card
 is lifted by a lighter surface instead, as in Apple's dark mode.
 
 ## Colour: the sacred spectrum
 
 Beyond the one saffron tint, every page draws colour from seven hues in `tokens.css`, deep on
-the light themes and luminous on Rātri:
+Light and luminous on Dark:
 
 | Token | Hue |
 | --- | --- |
@@ -121,7 +121,7 @@ the light themes and luminous on Rātri:
 Mixed from them: `--gradient-dawn` (saffron to vermilion to lotus, for titles and highlights),
 `--gradient-spectrum` (all seven, for rules, progress and hairlines) and `--gradient-action`
 (the filled button). `--tone-wash`, `--tone-edge`, `--tone-glow` and `--tone-aurora` set how
-strongly colour shows in each theme, so a component never needs four copies.
+strongly colour shows in each public theme, so a component never needs duplicate markup.
 
 `app/styles/colour.css` applies them to the existing hooks, so pages need no changes:
 
@@ -173,8 +173,8 @@ All in `components.css`, built from named tokens and the scripture cover variabl
 - `.apple-scope` on a page wrapper quiets older components inside it
 - The chapter reader's verse card (`.verse-card.book-verse` and its exported form `.verse-card.vt`) is styled here too: one card per verse in the scripture's own cover colours (`--v1..3`, `--foil` from `lib/scripture-vibes.ts`), with a gradient edge, a luminous shloka panel, a filled verse capsule and a gilt ॥ mark. Cards rise in and a band of light crosses the shloka as you scroll (view timelines; still under reduced motion and the quiet modes). The markup in `VerseCard.tsx` and `VerseText` is unchanged, and both forms share one box so hydration does not shift the page.
 
-Use `/design-system-preview/` to review the reader card in all four themes and across the five cover materials, including larger Sanskrit text and a keyboard-operable study disclosure. The preview is noindex and does not appear in site navigation.
-`tests/design-system.spec.ts` checks the white verse-pill label against every category palette and the scripture-specific Gita and epic palettes in all four themes.
+Use `/design-system-preview/` to review the reader card in both public themes and across the five cover materials, including larger Sanskrit text and a keyboard-operable study disclosure. The preview is noindex and does not appear in site navigation.
+`tests/design-system.spec.ts` checks the white verse-pill label against every category palette and the scripture-specific Gita and epic palettes in both public themes.
 
 ### Reader contract
 

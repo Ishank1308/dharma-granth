@@ -10,6 +10,7 @@
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { requireWrittenMeaningReview } from "./lib/written-meaning-review";
 
 const ROOT = resolve(__dirname, "..");
 
@@ -30,7 +31,16 @@ type Scripture = { chapters: { number: number; verses: Verse[] }[] };
 function apply(id: string) {
   const srcPath = resolve(ROOT, `data/written-meanings/${id}.json`);
   const pubPath = resolve(ROOT, `public/data/scriptures-full/${id}.json`);
-  const { meanings } = JSON.parse(readFileSync(srcPath, "utf8")) as { meanings: Record<string, Meaning> };
+  const batch = JSON.parse(readFileSync(srcPath, "utf8")) as {
+    note?: string;
+    reviewStatus?: string;
+    status?: string;
+    meanings: Record<string, Meaning>;
+  };
+  // Protect against accidental publication of explicitly unreviewed drafts.
+  // This is a blocking marker check, not a substitute for source verification.
+  requireWrittenMeaningReview(id, batch);
+  const { meanings } = batch;
   const raw = readFileSync(pubPath, "utf8");
   const scripture = JSON.parse(raw) as Scripture;
   // Keep the file's existing layout (some are one line, some are indented).

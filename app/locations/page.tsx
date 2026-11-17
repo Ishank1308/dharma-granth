@@ -32,7 +32,7 @@ export default function LocationsPage() {
   return (
     <main className="min-h-screen bg-dharma-bg">
       {/* ── Hero ─────────────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-br from-teal-900 via-cyan-800 to-blue-900 text-white py-16 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-teal-900 via-cyan-800 to-blue-900 text-white py-12 sm:py-16 overflow-hidden">
         <div className="absolute inset-0 mandala-bg opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         <div className="max-w-6xl mx-auto px-6 relative">
@@ -40,10 +40,10 @@ export default function LocationsPage() {
             <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-cyan-200 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
               तीर्थमानचित्र — Sacred Geography
             </p>
-            <h1 className="text-5xl font-serif font-bold mb-4">
+            <h1 className="font-serif text-[clamp(1.9rem,calc(1.45rem+2.3vw),3rem)] leading-tight font-bold mb-4 [overflow-wrap:anywhere]">
               पवित्र स्थान मानचित्र (Sacred Geography)
             </h1>
-            <p className="text-xl opacity-90 max-w-2xl">
+            <p className="text-base sm:text-lg leading-relaxed opacity-90 max-w-2xl">
               शास्त्रों के पवित्र भौगोलिक स्थानों का अन्वेषण करें — अयोध्या से कैलास तक, गंगा से सरस्वती तक। प्रत्येक स्थान को स्पष्ट रूप से पारंपरिक, वर्तमान, विवादित, और प्रतीकात्मक/ब्रह्मांडीय पहचान के साथ वर्गीकृत किया गया है।
             </p>
           </FadeUp>
@@ -92,10 +92,16 @@ export default function LocationsPage() {
             <div className="rounded-2xl border border-dharma-border bg-dharma-card shadow-xl overflow-hidden">
               <div className="h-1.5 bg-gradient-to-r from-teal-500 to-cyan-600" />
               <div className="p-4">
+                <p id="sacred-map-note" lang="hi" className="mb-3 text-sm leading-relaxed text-dharma-muted">
+                  सांकेतिक मानचित्र — भारत का यह सरल चित्र भौगोलिक सीमा या वास्तविक दूरी दर्शाने वाला सटीक मानचित्र नहीं है। नीचे दी गई स्थान-सूची से भी सभी विवरण उपलब्ध हैं।
+                </p>
                 <div className="relative w-full aspect-[4/5] bg-gradient-to-b from-teal-50 to-cyan-50 rounded-xl overflow-hidden border border-dharma-border">
                   {/* Simplified India outline */}
                   <svg
                     viewBox="0 0 100 125"
+                    role="group"
+                    aria-label="सांकेतिक तीर्थ स्थान मानचित्र"
+                    aria-describedby="sacred-map-note"
                     className="absolute inset-0 w-full h-full"
                     preserveAspectRatio="xMidYMid meet"
                   >
@@ -128,14 +134,19 @@ export default function LocationsPage() {
                       return (
                         <g
                           key={loc.id}
+                          role="button"
+                          tabIndex={0}
+                          aria-label={`${loc.name} — स्थान का विवरण खोलें`}
                           onClick={() => setSelectedLocation(loc)}
-                          className="cursor-pointer"
+                          onKeyDown={(event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                              event.preventDefault();
+                              setSelectedLocation(loc);
+                            }
+                          }}
+                          className="cursor-pointer focus:outline-none focus-visible:[&>circle]:stroke-amber-800 focus-visible:[&>circle]:stroke-[1.5px]"
                         >
-                          {isSelected && (
-                            <circle cx={x} cy={y} r="4" fill="rgba(20,184,166,0.2)">
-                              <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite" />
-                            </circle>
-                          )}
+                          <circle cx={x} cy={y} r="5" fill={isSelected ? 'rgba(20,184,166,0.12)' : 'transparent'} aria-hidden="true" />
                           <circle
                             cx={x}
                             cy={y}
@@ -157,7 +168,7 @@ export default function LocationsPage() {
                   {/* Legend overlay */}
                   <div className="absolute bottom-3 left-3 bg-white/80 backdrop-blur-sm rounded-lg px-3 py-2 text-xs text-dharma-muted">
                     <p className="font-bold mb-1">मानचित्र संकेत</p>
-                    <p>● अन्वेषण के लिए मार्कर पर क्लिक करें</p>
+                    <p>● स्थान चुनने के लिए मार्कर पर टैप या Enter दबाएँ</p>
                     <p>● ब्रह्मांडीय स्थान मानचित्र पर नहीं</p>
                   </div>
                 </div>

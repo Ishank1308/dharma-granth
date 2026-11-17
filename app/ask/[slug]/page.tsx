@@ -49,7 +49,7 @@ function VerseCard({ group }: { group: AnswerVerseGroup }) {
         <span className="text-dharma-muted">{group.labelEn}</span>
       </p>
       {group.verses.map((v) => (
-        <p key={v.v} lang="sa" className="whitespace-pre-line font-devanagari text-lg leading-relaxed">{v.sanskrit}</p>
+        <p key={v.v} lang="sa" className="whitespace-pre-line font-devanagari text-[clamp(1.125rem,calc(1rem+0.9vw),1.625rem)] leading-[2] [overflow-wrap:anywhere]">{v.sanskrit}</p>
       ))}
       <p lang="hi" className="font-devanagari leading-relaxed">{group.hindi}</p>
       {group.verses.map((v) => (

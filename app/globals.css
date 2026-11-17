@@ -1781,6 +1781,13 @@ html:has(.reader-root) [aria-label^='सस्वर पाठ'] {
   display: none !important;
 }
 
+/* Ashtavakra's dedicated verse view owns the same mobile verse bar and study
+   controls as the common reader. Prevent the global bottom tabs from covering
+   its श्लोक माला button, while leaving the Ashtavakra book navigation intact. */
+html:has(nav[aria-label='अष्टावक्र श्लोक नेविगेशन']) nav[aria-label='Mobile quick navigation'] {
+  display: none !important;
+}
+
 /* ── Embed mode (app/embed sets <html data-embed>) ─────────────────
    Clean iframe presentation: hides header, footer, companion dock, navigation and overlays. */
 html[data-embed] nav,
@@ -2120,6 +2127,9 @@ body::after {
    dharma tokens only, so Day, Sunset, Paper and Dark all stay quiet. */
 .sacred-flow-wrap {
     display: grid;
+    /* A long Sanskrit gloss must not force the grid's implicit auto track
+       wider than the reader. Keep content visible and let it wrap in place. */
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
     min-width: 0;
 }

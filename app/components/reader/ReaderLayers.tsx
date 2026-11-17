@@ -38,11 +38,13 @@ import Link from 'next/link';
 
 /* ── Type scale: full class strings so Tailwind keeps them ──────────── */
 
+/** Fluid across phone → tablet → desktop; each setting stays larger than the one below.
+ * rem floors respect browser zoom, while caps keep Sanskrit comfortable inside the reading column. */
 const SANSKRIT_SIZE = {
-  sm: 'text-xl sm:text-2xl',
-  md: 'text-2xl sm:text-3xl',
-  lg: 'text-[1.75rem] sm:text-4xl',
-  xl: 'text-3xl sm:text-5xl',
+  sm: 'text-[clamp(1.125rem,calc(0.9rem+1.1vw),1.5rem)]',
+  md: 'text-[clamp(1.25rem,calc(1rem+1.6vw),1.875rem)]',
+  lg: 'text-[clamp(1.45rem,calc(1.05rem+2.1vw),2.25rem)]',
+  xl: 'text-[clamp(1.65rem,calc(1.2rem+2.5vw),2.75rem)]',
 } as const;
 
 const TRANSLATION_SIZE = {
@@ -232,6 +234,7 @@ export function ReaderLayers({
   provenance: p,
   settings,
   onUpdateSetting,
+  onStepSize,
   insight,
   sourceStatus,
 }: {
@@ -241,6 +244,8 @@ export function ReaderLayers({
   provenance: ReaderProvenance;
   settings: ReaderSettings;
   onUpdateSetting?: <K extends keyof ReaderSettings>(key: K, value: ReaderSettings[K]) => void;
+  /** Use the same font-size settings as the reader's Aa panel. */
+  onStepSize?: (delta: -1 | 1) => void;
   /** Reviewed मर्म line and जीवन प्रसंग chips, when this verse has them. */
   insight?: VerseInsight;
   /** Status chips rendered by the page (TrustBadges), placed at the top of the Sources card. */
@@ -296,6 +301,14 @@ export function ReaderLayers({
     && (!modernParsed.hasStructuredFormat || modernParsed.contextText || modernParsed.applicationText));
   const hasModern = settings.showCommentary && (showModernLesson || Boolean(!isQuick && !settings.liteMode && verse.research));
   const hasReflection = Boolean(settings.showCommentary && !settings.liteMode && modernParsed?.hasStructuredFormat && modernParsed.reflectionQuestion);
+  // Only offer links to sections that exist for this verse and reading mode.
+  const anchorPrefix = `reader-study-${scriptureId}-${chapterId}-${String(verse.number).replace(/[^A-Za-z0-9_-]/g, '-')}`;
+  const studySteps = [
+    { id: 'arth', hi: SACRED_SECTION_LABEL.arth.hi, en: SACRED_SECTION_LABEL.arth.en, enabled: hasArth },
+    { id: 'vyakhya', hi: SACRED_SECTION_LABEL.vyakhya.hi, en: SACRED_SECTION_LABEL.vyakhya.en, enabled: hasVyakhya },
+    { id: 'modern', hi: SACRED_SECTION_LABEL.modern.hi, en: SACRED_SECTION_LABEL.modern.en, enabled: hasModern },
+    { id: 'reflection', hi: SACRED_SECTION_LABEL.reflection.hi, en: SACRED_SECTION_LABEL.reflection.en, enabled: hasReflection },
+  ].filter((step) => step.enabled);
 
   const handleInspectPada = (pada: string) => {
     const entry = verse.lexicon?.[pada];
@@ -338,7 +351,7 @@ export function ReaderLayers({
       >
         {lines.length > 0 ? (
           <>
-          <p id="sanskrit-text" lang="sa" className={`verse-folio rounded-2xl px-4 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-8 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
+          <p id="sanskrit-text" lang="sa" className={`verse-folio min-w-0 rounded-2xl px-2 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-8 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
             {lines.map((line, i) => (
               <span key={i} className="block">
                 <PadaLine line={line} />
@@ -496,11 +509,68 @@ export function ReaderLayers({
       )}
 
 
+      {/* Original Sanskrit stays above navigation, keeping scripture the primary focus. */}
+      {!settings.liteMode && !settings.focusMode && (
+        <nav
+          id="reader-study-guide"
+          aria-label="श्लोक अध्ययन मार्ग · Verse study guide"
+          className="scroll-mt-28 rounded-[20px] border border-dharma-border/80 bg-dharma-card/85 px-3 py-3 shadow-sm sm:px-4"
+        >
+          <div className="mb-2.5 flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <p lang="hi" className="font-devanagari text-sm font-bold text-dharma-text">अध्ययन मार्ग</p>
+              <p className="text-[11px] font-medium text-dharma-muted">Explore this verse · अर्थ से चिंतन तक</p>
+            </div>
+            {onStepSize && (
+              <div role="group" aria-label="Verse and translation text size" className="flex shrink-0 items-center gap-1 rounded-full border border-dharma-border bg-dharma-bg/70 p-0.5">
+                <button
+                  type="button"
+                  onClick={() => onStepSize(-1)}
+                  disabled={settings.sanskritSize === 'sm'}
+                  aria-label="Decrease verse and translation text size"
+                  title="अक्षर छोटे करें"
+                  className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full text-sm font-semibold text-dharma-text transition-colors hover:bg-dharma-text/[0.08] disabled:opacity-35"
+                >A−</button>
+                <button
+                  type="button"
+                  onClick={() => onStepSize(1)}
+                  disabled={settings.sanskritSize === 'xl'}
+                  aria-label="Increase verse and translation text size"
+                  title="अक्षर बड़े करें"
+                  className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full text-base font-semibold text-dharma-text transition-colors hover:bg-dharma-text/[0.08] disabled:opacity-35"
+                >A+</button>
+              </div>
+            )}
+          </div>
+          <div className="-mx-1 flex min-w-0 snap-x snap-proximity gap-2 overflow-x-auto px-1 pb-1">
+            <a href="#layer-sanskrit" aria-label="मूल श्लोक · Original Sanskrit" className="focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 text-xs font-semibold text-dharma-text transition-colors hover:border-amber-500/70">
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-amber-600 dark:bg-amber-400" />
+              <span lang="hi" className="font-devanagari">मूल श्लोक</span>
+            </a>
+            {studySteps.map((step, i) => (
+              <a
+                key={step.id}
+                href={'#' + anchorPrefix + '-' + step.id}
+                aria-label={step.hi + ' · ' + step.en}
+                className="focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center gap-2 rounded-full border border-dharma-border bg-dharma-bg/70 px-3 text-xs font-semibold text-dharma-text transition-colors hover:border-saffron-500/60 hover:bg-saffron-500/10"
+              >
+                <span aria-hidden="true" className="font-mono text-[10px] font-bold tabular-nums text-saffron-700 dark:text-saffron-300">{String(i + 1).padStart(2, '0')}</span>
+                <span lang="hi" className="font-devanagari">{step.hi}</span>
+              </a>
+            ))}
+            <a href="#layer-sources" aria-label="स्रोत एवं संस्करण · Sources and edition" className="focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center rounded-full border border-dharma-border bg-dharma-bg/70 px-3 text-xs font-semibold text-dharma-text transition-colors hover:border-saffron-500/60 hover:bg-saffron-500/10">
+              <span lang="hi" className="font-devanagari">स्रोत</span>
+            </a>
+          </div>
+        </nav>
+      )}
+
       {/* 2–9 · The knowledge tree in sacred reading order (lib/sacred-reading-order):
           अर्थ → व्याख्या → आधुनिक संदर्भ → चिंतन. Native <details> branches, so
           every layer stays in the server HTML. */}
       <VerseTreeStructure
         persistent
+        anchorPrefix={anchorPrefix}
         branches={(
           [
           hasArth && {

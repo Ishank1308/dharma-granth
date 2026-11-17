@@ -410,7 +410,8 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
 
   const [query, setQuery] = useState('');
   const [selectedGroup, setSelectedGroup] = useState<SearchResultGroup | null>(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  // -1 means no listbox result selected yet; ArrowDown chooses the first.
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const isOnline = useConnectivity();
   const [chaptersReady, setChaptersReady] = useState(isChapterIndexLoaded);
   const [coreReady, setCoreReady] = useState(isCoreIndexLoaded);
@@ -569,7 +570,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
     if (!isOpen) return;
     setQuery(initialQuery);
     setSelectedGroup(null);
-    setSelectedIndex(0);
+    setSelectedIndex(-1);
     inputRef.current?.focus({ preventScroll: true });
     const t = setTimeout(() => {
       const input = inputRef.current;
@@ -604,11 +605,11 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
   }, [result]);
 
   useEffect(() => {
-    setSelectedIndex(0);
+    setSelectedIndex(-1);
   }, [display]);
 
   useEffect(() => {
-    if (!isOpen || display.length === 0) return;
+    if (!isOpen || display.length === 0 || selectedIndex < 0) return;
     document.getElementById(`search-item-${selectedIndex}`)?.scrollIntoView({ block: 'nearest' });
   }, [selectedIndex, isOpen, display]);
 
@@ -623,6 +624,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
 
   const runSearch = (text: string) => {
     setQuery(text);
+    setSelectedIndex(-1);
     remember(text);
     inputRef.current?.focus();
   };
@@ -645,14 +647,6 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
       if (e.key !== 'Tab') return;
       const win = windowRef.current;
       if (!win) return;
-      // If typing in search box with an active typeahead completion, let input handle Tab
-      if (
-        document.activeElement === inputRef.current &&
-        typeaheadSuggestion?.completion &&
-        typeaheadSuggestion.completion !== query
-      ) {
-        return;
-      }
       const focusable = Array.from(
         win.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'),
       ).filter((el) => el.offsetParent !== null);
@@ -671,15 +665,16 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, [isOpen, onClose, query, typeaheadSuggestion?.completion]);
+  }, [isOpen, onClose]);
 
   const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     // Enter and arrows while a Hindi/Devanagari IME is composing pick a candidate; they must not navigate.
     if (e.nativeEvent.isComposing || e.keyCode === 229) return;
 
-    // Tab key or RightArrow at end of input completes the typeahead suggestion
+    // Tab advances focus per WAI-ARIA. Right Arrow accepts a completion.
     if (
-      (e.key === 'Tab' || (e.key === 'ArrowRight' && inputRef.current?.selectionStart === query.length)) &&
+      e.key === 'ArrowRight' &&
+      inputRef.current?.selectionStart === query.length &&
       typeaheadSuggestion?.completion &&
       typeaheadSuggestion.completion !== query
     ) {
@@ -701,12 +696,12 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
     } else if (e.key === 'ArrowUp') {
       if (isActionQuery && matchingActions.length > 0) {
         e.preventDefault();
-        setSelectedIndex((i) => (i - 1 + matchingActions.length) % matchingActions.length);
+        setSelectedIndex((i) => i < 0 ? matchingActions.length - 1 : (i - 1 + matchingActions.length) % matchingActions.length);
         return;
       }
       if (display.length > 0) {
         e.preventDefault();
-        setSelectedIndex((i) => (i - 1 + display.length) % display.length);
+        setSelectedIndex((i) => i < 0 ? display.length - 1 : (i - 1 + display.length) % display.length);
       }
     } else if (e.key === 'Home' && display.length > 0 && e.ctrlKey) {
       e.preventDefault();
@@ -728,17 +723,17 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
         router.push(verseShortcut.href);
         return;
       }
-      // Instant Direct Jump: If directHref exists and user hasn't actively navigated down the search results
-      if (typeaheadSuggestion?.directHref && (selectedIndex === 0 || display.length === 0)) {
+      // An explicitly arrow-selected result takes priority over a predictive jump.
+      if (typeaheadSuggestion?.directHref && selectedIndex < 0) {
         e.preventDefault();
         remember(query);
         onClose();
         router.push(typeaheadSuggestion.directHref);
         return;
       }
-      if (display[selectedIndex]) {
+      if (display[selectedIndex] || (display.length > 0 && selectedIndex < 0)) {
         e.preventDefault();
-        openFromKeyboard(display[selectedIndex]);
+        openFromKeyboard(display[selectedIndex] || display[0]);
       } else if (trimmed) {
         remember(trimmed);
       }
@@ -754,12 +749,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
   );
 
   const counts = result?.groupCounts ?? {};
+  // Counts are computed before group filtering; keep facets when a filter has zero hits.
+  const allCategoryMatches = Object.values(counts).reduce((n, c) => n + (c ?? 0), 0);
   const shownGroups = SEARCH_GROUPS.filter((g) => (counts[g.id] ?? 0) > 0);
   const suggestion = result?.suggestion && result.suggestion.toLowerCase() !== trimmed.toLowerCase() ? result.suggestion : null;
   const verseLoading = verseState === 'loading' || verseState === 'idle';
   // Nothing found yet, but the verse text (the largest index, so the last to arrive) is still
   // on its way: say so rather than "No results".
-  const waitingForIndex = !!result && result.totalMatches === 0 && verseLoading && isOnline !== false;
+  const waitingForIndex = !!result && result.totalMatches === 0 && verseLoading && isOnline !== false && !(selectedGroup && allCategoryMatches > 0);
 
   // What a screen reader hears; it follows the deferred query, so it does not chatter on every keystroke.
   const announcement = !trimmed
@@ -815,7 +812,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                     <span className="invisible whitespace-pre">{query}</span>
                     <span className="text-label-tertiary/60 whitespace-pre">{typeaheadSuggestion.suffix}</span>
                     <span className="ml-2.5 hidden sm:inline-flex items-center gap-1 rounded border border-separator/80 bg-fill-quaternary px-1.5 py-0.5 text-[10px] font-mono font-medium text-label-secondary shadow-2xs">
-                      Tab ⇥
+                      →
                     </span>
                   </div>
                 ) : null}
@@ -826,15 +823,15 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={onInputKeyDown}
-                  placeholder="Search Gita 2.47, कर्म, fear, or type > for actions…"
+                  placeholder="Gita 2.47 · कर्म · भय · > actions"
                   aria-label="Search scriptures, verses, topics and practices"
                   aria-describedby={statusId}
                   className="relative z-1 min-h-[44px] w-full bg-transparent text-title-3 font-normal text-label-primary outline-none placeholder:text-label-tertiary sm:text-title-2"
                   role="combobox"
-                  aria-expanded={display.length > 0}
+                  aria-expanded={display.length > 0 && !isActionQuery}
                   aria-autocomplete="list"
-                  aria-controls={listboxId}
-                  aria-activedescendant={display.length > 0 ? `search-item-${selectedIndex}` : undefined}
+                  aria-controls={display.length > 0 && !isActionQuery ? listboxId : undefined}
+                  aria-activedescendant={display.length > 0 && selectedIndex >= 0 && !isActionQuery ? `search-item-${selectedIndex}` : undefined}
                   autoComplete="off"
                   autoCapitalize="off"
                   spellCheck={false}
@@ -856,7 +853,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                         setQuery('');
                         inputRef.current?.focus();
                       }}
-                      className="focus-ring flex h-9 w-9 items-center justify-center rounded-control text-label-tertiary hover:bg-fill-quaternary hover:text-label-primary transition"
+                      className="focus-ring flex h-11 w-11 items-center justify-center rounded-control text-label-tertiary hover:bg-fill-quaternary hover:text-label-primary transition"
                       aria-label="Clear search"
                     >
                       <X className="h-4 w-4" aria-hidden="true" />
@@ -894,19 +891,19 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
             </div>
 
             {/* Filters: which group of results to show */}
-            {result && result.totalMatches > 0 && (
+            {result && allCategoryMatches > 0 && (
               <div role="group" aria-label="Show results from" className="flex items-center gap-1.5 overflow-x-auto border-b border-separator bg-surface-canvas/60 px-4 py-2 text-footnote">
                 <button
                   type="button"
                   aria-pressed={selectedGroup === null}
                   onClick={() => setSelectedGroup(null)}
-                  className={`focus-ring inline-flex min-h-[32px] shrink-0 items-center gap-1.5 rounded-pill px-3.5 text-footnote font-semibold transition ${
+                  className={`focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-pill px-3.5 text-footnote font-semibold transition ${
                     selectedGroup === null
                       ? 'bg-tint text-on-tint shadow-xs'
                       : 'border border-separator bg-surface-raised text-label-secondary hover:bg-fill-quaternary hover:text-label-primary'
                   }`}
                 >
-                  All ({Object.values(counts).reduce((n, c) => n + (c ?? 0), 0)})
+                  All ({allCategoryMatches})
                 </button>
                 {shownGroups.map((g) => (
                   <button
@@ -914,7 +911,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                     type="button"
                     aria-pressed={selectedGroup === g.id}
                     onClick={() => setSelectedGroup((prev) => (prev === g.id ? null : g.id))}
-                    className={`focus-ring inline-flex min-h-[32px] shrink-0 items-center gap-1.5 rounded-pill px-3.5 text-footnote font-semibold transition ${
+                    className={`focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-pill px-3.5 text-footnote font-semibold transition ${
                       selectedGroup === g.id
                         ? 'bg-tint text-on-tint shadow-xs'
                         : 'border border-separator bg-surface-raised text-label-secondary hover:bg-fill-quaternary hover:text-label-primary'
@@ -1045,7 +1042,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
             )}
 
             {/* Direct Jump Hero Banner */}
-            {typeaheadSuggestion?.directHref && (
+            {typeaheadSuggestion?.directHref && typeaheadSuggestion.directHref !== verseShortcut?.href && (
               <div className="border-b border-separator/80 bg-gradient-to-r from-saffron-500/15 via-amber-500/8 to-transparent px-4 py-2.5 sm:px-6">
                 <button
                   type="button"
@@ -1102,7 +1099,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                         setQuery(item.completion);
                       }
                     }}
-                    className="inline-flex min-h-[36px] sm:min-h-[32px] shrink-0 items-center gap-1.5 rounded-chip border border-separator/80 bg-surface-raised px-3 py-1.5 text-caption font-medium text-label-secondary hover:border-tint hover:text-label-primary active:scale-[0.97] transition-all cursor-pointer shadow-2xs"
+                    className="inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-chip border border-separator/80 bg-surface-raised px-3 py-1.5 text-caption font-medium text-label-secondary hover:border-tint hover:text-label-primary active:scale-[0.97] transition-all cursor-pointer shadow-2xs"
                   >
                     <span className="text-xs">{item.badge || '✨'}</span>
                     <span className="max-w-[160px] truncate">{item.label}</span>
@@ -1112,7 +1109,12 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
             )}
 
             {/* Body */}
-            <div className="min-h-0 flex-1 overflow-y-auto p-3 sm:p-5">
+            <div
+              role="region"
+              aria-label="Search results and suggestions"
+              tabIndex={0}
+              className="focus-ring min-h-0 flex-1 overflow-y-auto p-3 sm:p-5"
+            >
               {isActionQuery ? (
                 <div className="space-y-3 py-1">
                   <div className="flex items-center justify-between px-1">
@@ -1205,7 +1207,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                             <button
                               type="button"
                               onClick={() => runSearch(item)}
-                              className="focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
+                              className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
                             >
                               <Clock className="h-3.5 w-3.5 text-label-tertiary" aria-hidden="true" />
                               {item}
@@ -1227,7 +1229,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                           <button
                             type="button"
                             onClick={() => runSearch(s.query)}
-                            className="focus-ring inline-flex min-h-[36px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary active:scale-97 transition"
+                            className="focus-ring inline-flex min-h-[44px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary active:scale-97 transition"
                           >
                             {s.label}
                           </button>
@@ -1279,9 +1281,17 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
 
               {trimmed && result && result.totalMatches === 0 && !waitingForIndex && (
                 <div className="px-3 py-10 text-center">
+                  {selectedGroup && allCategoryMatches > 0 && (
+                    <div role="status" className="mx-auto mb-5 max-w-lg rounded-card border border-tint/25 bg-tint-fill p-4 text-footnote text-label-primary">
+                      <p><strong>No matches in this category.</strong> {allCategoryMatches} matching items are available elsewhere.</p>
+                      <button type="button" onClick={() => setSelectedGroup(null)} className="focus-ring mt-2 inline-flex min-h-[44px] items-center rounded-pill border border-tint/40 bg-surface-raised px-4 font-semibold text-tint hover:bg-fill-quaternary">
+                        Show all results
+                      </button>
+                    </div>
+                  )}
                   <HelpCircle className="mx-auto mb-3 h-10 w-10 text-label-tertiary" aria-hidden="true" />
                   <h3 className="text-title-3 font-semibold text-label-primary">
-                    <span lang="hi" className="font-devanagari">कोई परिणाम नहीं</span> · No results for “{trimmed}”
+                    <span lang="hi" className="font-devanagari">कोई परिणाम नहीं</span> · {selectedGroup ? 'No results in this category' : 'No results'} for “{trimmed}”
                   </h3>
                   <ul className="mx-auto mt-3 max-w-md space-y-1 text-left text-footnote text-label-secondary">
                     <li>• Try part of the verse in Devanagari or Roman letters (“karmanye vadhikaraste”).</li>
@@ -1294,7 +1304,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                         <button
                           type="button"
                           onClick={() => runSearch(s.query)}
-                          className="focus-ring inline-flex min-h-[36px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
+                          className="focus-ring inline-flex min-h-[44px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
                         >
                           {s.label}
                         </button>
@@ -1351,7 +1361,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                               role="option"
                               aria-selected={selected}
                               aria-label={`${item.reference ?? item.title}. ${item.matchReason}. ${item.languageLabel}. ${reviewStatus}.`}
-                              tabIndex={selected ? 0 : -1}
+                              tabIndex={-1}
                               onClick={() => {
                                 remember(query);
                                 onClose();

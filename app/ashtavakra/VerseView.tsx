@@ -3,7 +3,10 @@ import type { AshtavakraVerse } from '@/lib/ashtavakra';
 import { keepDanda, verseHref } from '@/lib/ashtavakra';
 import { ConceptVisual } from './visuals';
 import { ReadFlag } from './VerseBits';
-import { ConnectedFlow, SacredSection } from '@/app/components/reader/SacredReadingFlow';
+import { SacredSection } from '@/app/components/reader/SacredReadingFlow';
+import { VerseTreeStructure, type VerseTreeBranch } from '@/app/components/reader/VerseTreeStructure';
+import { SACRED_SECTION_LABEL } from '@/lib/sacred-reading-order';
+import { AshtavakraReadingGuide } from './AshtavakraReadingGuide';
 import { ReflectionBody } from '@/app/components/ModernContextBlock';
 
 /** Splits blank-line separated text into paragraphs; keeps single line breaks. */
@@ -62,7 +65,7 @@ export function VerseCompact({ v }: { v: AshtavakraVerse }) {
           <VerificationBadge status={v.verificationStatus} />
         </div>
       </div>
-      <p lang="sa" className="mt-3 text-center font-devanagari text-xl font-bold leading-loose text-dharma-text" style={{ whiteSpace: 'pre-line' }}>
+      <p lang="sa" className="mt-3 text-center font-devanagari text-[clamp(1.1875rem,calc(1rem+1vw),1.75rem)] font-bold leading-[1.95] text-dharma-text" style={{ whiteSpace: 'pre-line' }}>
         {keepDanda(v.sanskrit)}
       </p>
       <p lang="hi" className="mt-2 text-center font-devanagari text-sm text-dharma-muted">
@@ -95,70 +98,22 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
   const concept = conceptFor(v.themes);
   const review = v.verificationStatus !== 'verified';
   const id = `ash-${v.verseNumber.replace(/\./g, '-')}`;
-  return (
-    <div className="sacred-flow-wrap">
-      {/* ── Verse: scripture first, reading aids folded beneath it ── */}
-      <SacredSection id={`${id}-verse`} section="verse">
-        <div className="verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8">
-          <span aria-hidden="true" className="verse-leaf-ornament left-3 top-2">❁</span>
-          <span aria-hidden="true" className="verse-leaf-ornament right-3 top-2">❁</span>
-          <p className="mb-3 text-xs font-semibold text-dharma-muted">वक्ता: {v.speaker}</p>
-          <p lang="sa" className="font-devanagari text-2xl font-bold leading-loose text-dharma-text sm:text-3xl" style={{ whiteSpace: 'pre-line' }}>
-            {keepDanda(v.sanskrit)}
-          </p>
-          {v.iast && (
-            <p lang="sa-Latn" className="mx-auto mt-4 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-4 font-serif text-sm italic leading-relaxed text-dharma-muted">
-              {v.iast}
-            </p>
-          )}
-          {v.simplePronunciation && (
-            <p className="mt-2 text-xs text-dharma-muted">
-              <strong>सरल उच्चारण:</strong> {v.simplePronunciation}
-            </p>
-          )}
-        </div>
-        {review && (
-          <p role="note" className="rounded-xl border border-amber-600/40 bg-amber-50 p-3 text-xs leading-relaxed text-amber-900 dark:bg-amber-500/10 dark:text-amber-200">
-            <strong>[पृष्ठ से सत्यापन आवश्यक]</strong> पुस्तक के छपे पाठ में भेद मिला है; नीचे “स्रोत और सत्यापन” देखें। पाठ को पुस्तक में जैसा छपा है वैसा ही रखा गया है।
-          </p>
-        )}
-        {v.wordMeanings && v.wordMeanings.length > 0 && (
-          <details className="rounded-2xl border border-dharma-border bg-dharma-card">
-            <summary className="flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-4 py-2.5 text-sm font-semibold text-dharma-text transition hover:bg-dharma-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-saffron-500 [&::-webkit-details-marker]:hidden">
-              <span><span lang="hi" className="font-devanagari">पदच्छेद और प्रमुख शब्दार्थ</span> <span className="font-normal text-dharma-muted">· Word-by-word</span></span>
-              <span className="shrink-0 text-xs font-medium text-dharma-muted">{v.wordMeanings.length} शब्द</span>
-            </summary>
-            <div className="space-y-3 border-t border-dharma-border/60 p-4">
-              {v.padaccheda && (
-                <p lang="sa" className="border-b border-dharma-border/60 pb-2 font-devanagari text-sm font-semibold text-dharma-text">
-                  {v.padaccheda}
-                </p>
-              )}
-              <dl className="grid gap-1.5 sm:grid-cols-2">
-                {v.wordMeanings.map((w) => (
-                  <div key={w.sanskrit} className="rounded-lg border border-dharma-border/70 bg-dharma-bg/60 p-2 text-xs">
-                    <dt lang="sa" className="font-devanagari font-semibold text-dharma-text">{w.sanskrit}</dt>
-                    <dd lang="hi" className="mt-0.5 font-devanagari text-[11px] text-dharma-muted">{w.hindi}</dd>
-                  </div>
-                ))}
-              </dl>
-              <p className="text-right text-xs">
-                <Link href="/ashtavakra/words/" className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
-                  शब्द-अन्वेषण कोश देखें →
-                </Link>
-              </p>
-            </div>
-          </details>
-        )}
-      </SacredSection>
-
-      {/* ── Arth: what it says, literally ── */}
-      <SacredSection id={`${id}-arth`} section="arth">
+  // Ashtavakra now uses the same persistent study tree as the other scripture
+  // readers. All commentary is passed as server-rendered React nodes, so no
+  // original Sanskrit, translation or editorial content is lost.
+  const branches: VerseTreeBranch[] = [
+    {
+      id: 'arth',
+      labelHi: SACRED_SECTION_LABEL.arth.hi,
+      labelEn: SACRED_SECTION_LABEL.arth.en,
+      defaultOpen: true,
+      content: (
+        <div className="min-w-0 space-y-3">
         <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card-soft/70 p-4 shadow-2xs sm:p-5">
           <p className="mb-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
             शाब्दिक हिन्दी अर्थ · Literal Hindi Meaning
           </p>
-          <p lang="hi" className="font-devanagari text-base leading-relaxed text-dharma-text sm:text-lg">
+          <p lang="hi" className="ash-verse-hindi font-devanagari text-base leading-relaxed text-dharma-text sm:text-lg">
             {v.literalHindiMeaning}
           </p>
         </div>
@@ -167,16 +122,21 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
             <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
               English Translation
             </p>
-            <p lang="en" className="font-serif text-sm leading-relaxed text-dharma-text sm:text-base">
+            <p lang="en" className="ash-verse-english font-serif text-sm leading-relaxed text-dharma-text sm:text-base">
               {v.englishTranslation}
             </p>
           </div>
         )}
-      </SacredSection>
-
-      {/* ── Vyakhya → Modern Context → Reflection: one connected flow ── */}
-      <ConnectedFlow label="व्याख्या से आधुनिक जीवन तक · From explanation to modern life">
-        <SacredSection id={`${id}-vyakhya`} section="vyakhya">
+        </div>
+      ),
+    },
+    {
+      id: 'vyakhya',
+      labelHi: SACRED_SECTION_LABEL.vyakhya.hi,
+      labelEn: SACRED_SECTION_LABEL.vyakhya.en,
+      defaultOpen: true,
+      content: (
+        <div className="min-w-0 space-y-3">
           {v.bookBasedHindiExplanation && (
             <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4 shadow-2xs sm:p-5">
               <p className="mb-2 text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300">
@@ -231,9 +191,16 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
               <ConceptVisual id={concept} />
             </div>
           )}
-        </SacredSection>
-
-        <SacredSection id={`${id}-modern`} section="modern">
+        </div>
+      ),
+    },
+    {
+      id: 'modern',
+      labelHi: SACRED_SECTION_LABEL.modern.hi,
+      labelEn: SACRED_SECTION_LABEL.modern.en,
+      defaultOpen: true,
+      content: (
+        <div className="min-w-0 space-y-3">
           <p className="text-[11px] leading-relaxed text-dharma-muted">यह एक आधुनिक संपादकीय उदाहरण है, श्लोक का अर्थ या अनुवाद नहीं।</p>
           {v.modernExampleHindi && (
             <p lang="hi" className={proseRelaxedHi}>{v.modernExampleHindi}</p>
@@ -253,9 +220,16 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
               </p>
             </div>
           )}
-        </SacredSection>
-
-        <SacredSection id={`${id}-reflection`} section="reflection">
+        </div>
+      ),
+    },
+    {
+      id: 'reflection',
+      labelHi: SACRED_SECTION_LABEL.reflection.hi,
+      labelEn: SACRED_SECTION_LABEL.reflection.en,
+      defaultOpen: true,
+      content: (
+        <div className="min-w-0 space-y-3">
           {v.reflectionQuestionHindi && (
             <ReflectionBody question={v.reflectionQuestionHindi} lang="hi" />
           )}
@@ -270,8 +244,75 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
               एक पंक्ति में सार: {v.oneLineSummaryHindi}
             </p>
           )}
-        </SacredSection>
-      </ConnectedFlow>
+        </div>
+      ),
+    },
+  ];
+  return (
+    <div id={id} className="sacred-flow-wrap ash-verse-flow" data-ash-verse-size="lg" data-ash-verse-leading="relaxed" data-ash-translation-size="md">
+      {/* ── Verse: scripture first, reading aids folded beneath it ── */}
+      <SacredSection id={`${id}-verse`} section="verse">
+        <div className="verse-leaf relative rounded-2xl px-5 py-6 text-center md:px-10 md:py-8">
+          <span aria-hidden="true" className="verse-leaf-ornament left-3 top-2">❁</span>
+          <span aria-hidden="true" className="verse-leaf-ornament right-3 top-2">❁</span>
+          <p className="mb-3 text-xs font-semibold text-dharma-muted">वक्ता: {v.speaker}</p>
+          <p lang="sa" className="ash-full-sanskrit font-devanagari font-bold text-dharma-text" style={{ whiteSpace: 'pre-line' }}>
+            {keepDanda(v.sanskrit)}
+          </p>
+          {v.iast && (
+            <p lang="sa-Latn" className="mx-auto mt-4 max-w-2xl whitespace-pre-line border-t border-amber-700/15 pt-4 font-serif text-sm italic leading-relaxed text-dharma-muted">
+              {v.iast}
+            </p>
+          )}
+          {v.simplePronunciation && (
+            <p className="mt-2 text-xs text-dharma-muted">
+              <strong>सरल उच्चारण:</strong> {v.simplePronunciation}
+            </p>
+          )}
+        </div>
+        {review && (
+          <p role="note" className="rounded-xl border border-amber-600/40 bg-amber-50 p-3 text-xs leading-relaxed text-amber-900 dark:bg-amber-500/10 dark:text-amber-200">
+            <strong>[पृष्ठ से सत्यापन आवश्यक]</strong> पुस्तक के छपे पाठ में भेद मिला है; नीचे “स्रोत और सत्यापन” देखें। पाठ को पुस्तक में जैसा छपा है वैसा ही रखा गया है।
+          </p>
+        )}
+        {v.wordMeanings && v.wordMeanings.length > 0 && (
+          <details className="rounded-2xl border border-dharma-border bg-dharma-card">
+            <summary className="flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-3 rounded-2xl px-4 py-2.5 text-sm font-semibold text-dharma-text transition hover:bg-dharma-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-saffron-500 [&::-webkit-details-marker]:hidden">
+              <span><span lang="hi" className="font-devanagari">पदच्छेद और प्रमुख शब्दार्थ</span> <span className="font-normal text-dharma-muted">· Word-by-word</span></span>
+              <span className="shrink-0 text-xs font-medium text-dharma-muted">{v.wordMeanings.length} शब्द</span>
+            </summary>
+            <div className="space-y-3 border-t border-dharma-border/60 p-4">
+              {v.padaccheda && (
+                <p lang="sa" className="border-b border-dharma-border/60 pb-2 font-devanagari text-sm font-semibold text-dharma-text">
+                  {v.padaccheda}
+                </p>
+              )}
+              <dl className="grid gap-1.5 sm:grid-cols-2">
+                {v.wordMeanings.map((w) => (
+                  <div key={w.sanskrit} className="rounded-lg border border-dharma-border/70 bg-dharma-bg/60 p-2 text-xs">
+                    <dt lang="sa" className="font-devanagari font-semibold text-dharma-text">{w.sanskrit}</dt>
+                    <dd lang="hi" className="mt-0.5 font-devanagari text-[11px] text-dharma-muted">{w.hindi}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="text-right text-xs">
+                <Link href="/ashtavakra/words/" className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                  शब्द-अन्वेषण कोश देखें →
+                </Link>
+              </p>
+            </div>
+          </details>
+        )}
+      </SacredSection>
+
+      {/* A single, bilingual study path with the same chapter-reader hierarchy. */}
+      <AshtavakraReadingGuide verseId={id} />
+      <VerseTreeStructure
+        label="अष्टावक्र गीता · श्लोक अध्ययन वृक्ष"
+        persistent
+        anchorPrefix={id}
+        branches={branches}
+      />
 
       {/* ── Related Wisdom ── */}
       <SacredSection id={`${id}-related`} section="related">

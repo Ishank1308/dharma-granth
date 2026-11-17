@@ -24,13 +24,14 @@
  */
 
 import { useEffect, useId, useState, type ReactNode } from 'react';
-import { ChevronDown, type LucideIcon } from 'lucide-react';
+import { ChevronDown, ScrollText, Lightbulb, Compass, Sparkles, type LucideIcon } from 'lucide-react';
 
 export interface VerseTreeBranch {
   id: string;
   labelHi: string;
   labelEn: string;
-  icon: LucideIcon;
+  /** Default section icon is looked up locally across the server/client boundary. */
+  icon?: LucideIcon;
   /** One short line shown on the node while it is folded. */
   hint?: string;
   defaultOpen?: boolean;
@@ -43,32 +44,51 @@ interface Props {
   label?: string;
   /** Keep folded bodies in the DOM (native <details>) for server-rendered pages. */
   persistent?: boolean;
+  /** Stable page-scoped prefix for fragment navigation to available study branches. */
+  anchorPrefix?: string;
 }
 
 export function VerseTreeStructure({
   branches,
   label = 'श्लोक का ज्ञान-वृक्ष · Verse knowledge tree',
   persistent = false,
+  anchorPrefix,
 }: Props) {
   if (branches.length === 0) return null;
   return (
     <div className="verse-tree mt-5" role="group" aria-label={label}>
       {/* Stem from the shloka down to the first node */}
       <div aria-hidden="true" className="ml-[15px] h-4 w-0.5 rounded-full bg-amber-500/40 dark:bg-amber-400/30" />
-      <TreeNode branches={branches} persistent={persistent} />
+      <TreeNode branches={branches} persistent={persistent} anchorPrefix={anchorPrefix} />
     </div>
   );
 }
 
 const RAIL = 'rounded-full bg-amber-500/30 dark:bg-amber-400/25';
+const SECTION_ICONS: Record<string, LucideIcon> = {
+  arth: ScrollText, vyakhya: Lightbulb, modern: Compass, reflection: Sparkles,
+};
 
-function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persistent: boolean }) {
+function TreeNode({ branches, persistent, anchorPrefix }: { branches: VerseTreeBranch[]; persistent: boolean; anchorPrefix?: string }) {
   const [branch, ...rest] = branches;
   const id = useId();
   const [open, setOpen] = useState(Boolean(branch.defaultOpen));
   // Follow the default when it changes (e.g. the reader switches mode or perspective).
   useEffect(() => setOpen(Boolean(branch.defaultOpen)), [branch.defaultOpen]);
-  const Icon = branch.icon;
+
+  // Fragment links from the study guide must reveal content even if a reader
+  // previously folded the section. This also handles deep links after reload.
+  const anchorId = anchorPrefix ? `${anchorPrefix}-${branch.id}` : undefined;
+  useEffect(() => {
+    if (!anchorId) return;
+    const revealTarget = () => {
+      if (window.location.hash === `#${anchorId}`) setOpen(true);
+    };
+    revealTarget();
+    window.addEventListener('hashchange', revealTarget);
+    return () => window.removeEventListener('hashchange', revealTarget);
+  }, [anchorId]);
+  const Icon = branch.icon ?? SECTION_ICONS[branch.id] ?? ScrollText;
   const bodyId = `${id}-body`;
 
   const header = (
@@ -111,7 +131,7 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
 
   return (
     // data-branch names the layer so colour.css can give each its own hue.
-    <div className="relative" data-branch={branch.id}>
+    <div id={anchorId} className="relative scroll-mt-32 sm:scroll-mt-24" data-branch={branch.id}>
       <div className="relative">
         {/* Rail: from this node's circle down to where the next layer branches off */}
         {(open || rest.length > 0) && (
@@ -161,7 +181,7 @@ function TreeNode({ branches, persistent }: { branches: VerseTreeBranch[]; persi
             aria-hidden="true"
             className="absolute left-[15px] top-0 h-[23px] w-0 border-l-2 border-amber-500/30 dark:border-amber-400/25 sm:-left-[13px] sm:w-[13px] sm:rounded-bl-xl sm:border-b-2"
           />
-          <TreeNode branches={rest} persistent={persistent} />
+          <TreeNode branches={rest} persistent={persistent} anchorPrefix={anchorPrefix} />
         </div>
       )}
     </div>

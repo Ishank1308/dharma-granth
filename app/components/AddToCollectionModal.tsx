@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { FolderPlus, FolderCheck, Plus, X, Check } from 'lucide-react';
 import { useStudyProgress, type VerseRef } from '@/lib/useStudyProgress';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { useAccessibleModal } from '@/lib/useAccessibleModal';
 
 interface AddToCollectionModalProps {
   open: boolean;
@@ -19,15 +20,9 @@ export function AddToCollectionModal({ open, onClose, verse }: AddToCollectionMo
   const [newColName, setNewColName] = useState('');
   const [newColDesc, setNewColDesc] = useState('');
   const createInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [open, onClose]);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  useAccessibleModal(open && Boolean(verse), dialogRef, onClose, closeButtonRef);
 
   useEffect(() => {
     if (showCreate) {
@@ -83,8 +78,10 @@ export function AddToCollectionModal({ open, onClose, verse }: AddToCollectionMo
             animate={{ scale: 1, opacity: 1 }}
             exit={reduce ? {} : { scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="w-full max-w-md rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-2xl"
+            className="w-full max-w-md max-h-[90dvh] overflow-y-auto rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-6 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
+            ref={dialogRef}
+            tabIndex={-1}
             role="dialog"
             aria-modal="true"
             aria-labelledby="collection-modal-title"
@@ -102,10 +99,11 @@ export function AddToCollectionModal({ open, onClose, verse }: AddToCollectionMo
                 </p>
               </div>
               <button
+                ref={closeButtonRef}
                 type="button"
                 onClick={onClose}
-                className="rounded-lg p-1.5 text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text transition"
-                aria-label="Close"
+                className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text transition"
+                aria-label="Close collection dialog"
               >
                 <X className="h-5 w-5" />
               </button>
