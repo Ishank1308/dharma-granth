@@ -68,7 +68,7 @@ test('all 91 audited route templates have a reachable representative page', asyn
   test.setTimeout(150_000);
   expect(new Set(ROUTES).size).toBe(91);
   const indexed = await publishedPaths(request);
-  const staticPaths = new Set(ROUTES.filter(route => !route.includes('[')));
+  const staticPaths = new Set<string>(ROUTES.filter(route => !route.includes('[')));
   const uncovered: string[] = [];
   const failed: string[] = [];
   let checked = 0;
