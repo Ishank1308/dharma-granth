@@ -15,3 +15,11 @@ For each verse, this release has an original Hindi भावार्थ, a uniq
 Five openings are hard-coded in the guarded source-checked publish overlay and matched against existing numbered Sanskrit before applying Hindi. The commentary release queue matches the same source witness and per-verse opening. The integrity regression test requires all **90** meanings, **90** explanations and **90** modern-context panels in generated public reader JSON, while retaining Chapter 3's **43** original Sanskrit verses. AI-assisted interpretive material is not claimed to be Gita Press text or independently scholar-certified; source/edit status remains transparent.
 
 Merge only after lint, full static build, Cloudflare preview and all browser test shards succeed. A merge is not by itself evidence of live custom-domain propagation.
+
+## Acceptance checks
+
+- Verify source witness verse openings directly against the 43-verse Chapter 3 Sanskrit, with no mutation of the underlying canonical text.
+- Verify `स्त्रीशूद्रद्विजबन्धूनां` and `न वेदश्रवणं मतम्` are discussed descriptively, not presented as an obligation or permission to discriminate today.
+- Verify 3:23 has `गुरुर्मे` in the first-person reference to Sūta's guru, while `द्रौणिः` is the named future Vyāsa.
+- Verify each `3:21`–`3:25` meaning, three-movement व्याख्या and three-heading modern-context panel reaches the generated public reader shard, rather than only remaining in the review queue.
+- Confirm lint, type checking, source-integrity regression, static export, preview and four browser shards pass before merging.
