@@ -23,8 +23,11 @@ export function ResumeVersePrompt({ scriptureId, chapterId, splitChapter = false
     if (!target) {
       // A saved verse may live in a different part of a split chapter.
       // The existing ChapterPartRedirect resolves its canonical hash.
-      if (splitChapter) {
-        window.location.assign(`/scripture/${scriptureId}/chapter/${chapterId}/#verse-${verseId}`);
+      if (splitChapter && /^[0-9A-Za-z.-]{1,20}$/.test(verseId)) {
+        // Validate browser-local history and URL-encode every dynamic segment.
+        const chapterPath = `/scripture/${encodeURIComponent(scriptureId)}/chapter/${chapterId}/`;
+        const verseFragment = `#verse-${encodeURIComponent(verseId)}`;
+        window.location.assign(new URL(chapterPath + verseFragment, window.location.origin).href);
       } else {
         setDismissed(true);
       }
