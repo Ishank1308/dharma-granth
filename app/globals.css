@@ -2727,6 +2727,18 @@ svg.lucide {
 }
 .cosmos-turn { animation: cosmos-turn 720s linear infinite; transform-origin: 260px 260px; }
 @keyframes cosmos-turn { to { transform: rotate(360deg); } }
+/* Reading Lite is a site-wide distraction-free preference. Keep the five-limb
+   calendar legible, but still its ambient sky and rotating wheel as we do for
+   OS reduced-motion and power-saving modes. The state markers remain visible. */
+:root[data-reading-lite='true'] .cosmos :is(
+    .cosmos-drift-far, .cosmos-drift-near, .cosmos-twinkle,
+    .cosmos-meteor, .cosmos-turn
+) {
+    animation: none !important;
+}
+:root[data-reading-lite='true'] .cosmos .cosmos-milkyway {
+    filter: none;
+}
 .cosmos-nak {
     fill: rgba(236, 232, 245, 0.035);
     stroke: rgba(185, 178, 214, 0.22);
