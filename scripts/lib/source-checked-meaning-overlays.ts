@@ -1,5 +1,5 @@
 /**
- * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, plus chapter 3 verses 1–20.
+ * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, plus chapter 3 verses 1–25.
  *
  * Unlike the manual apply-written-meanings command, this is an explicit,
  * verse-level allowlist. All other unreviewed drafts remain
@@ -105,6 +105,11 @@ export const DEVI_CHAPTER_3_WITNESS_OPENINGS = [
   'मन्वन्तरेषु सर्वेषु',
   'द्वापरे द्वापरे विष्ण्णुर्व्यासरूपेण',
   'अल्पायुषोऽल्पबुद्धींश्च',
+  'स्त्रीशूद्रद्विजबन्धूनां',
+  'मन्वन्तरे सप्तमेऽत्र',
+  'व्यासः सत्यवतीसूनुः',
+  'अतीतास्तु तथा व्यासाः',
+  'ब्रूहि सूत महाभाग',
 ] as const;
 
 type Verse = Record<string, unknown>;
