@@ -219,7 +219,7 @@ export function InteractiveVisualLayer({
                 className="relative flex h-72 w-72 sm:h-96 sm:w-96 items-center justify-center select-none rounded-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50"
                 onClick={() => setIsRotating((r) => !r)}
                 aria-pressed={isSpinning}
-                aria-label="मंडला घूर्णन टॉगल करें"
+                aria-label={isSpinning ? 'मंडल का घूमना रोकें' : 'मंडल घुमाएँ'}
                 title="घूर्णन रोकने/प्रारंभ करने हेतु क्लिक करें"
               >
                 {/* Background Cosmic Radiance */}
