@@ -10,6 +10,7 @@
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { assertWrittenMeaningsReady } from "./lib/written-meaning-review";
 
 const ROOT = resolve(__dirname, "..");
 
@@ -30,7 +31,14 @@ type Scripture = { chapters: { number: number; verses: Verse[] }[] };
 function apply(id: string) {
   const srcPath = resolve(ROOT, `data/written-meanings/${id}.json`);
   const pubPath = resolve(ROOT, `public/data/scriptures-full/${id}.json`);
-  const { meanings } = JSON.parse(readFileSync(srcPath, "utf8")) as { meanings: Record<string, Meaning> };
+  const document = JSON.parse(readFileSync(srcPath, "utf8")) as {
+    note?: unknown;
+    reviewStatus?: unknown;
+    meanings: Record<string, Meaning>;
+  };
+  // Explicitly marked drafts are never safe to apply to published verse data.
+  assertWrittenMeaningsReady(id, document);
+  const { meanings } = document;
   const raw = readFileSync(pubPath, "utf8");
   const scripture = JSON.parse(raw) as Scripture;
   // Keep the file's existing layout (some are one line, some are indented).
