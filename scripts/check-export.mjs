@@ -219,6 +219,7 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
   let expected = 0;
   let missing = 0;
   let sample = '';
+  let sampleReason = '';
   for (const id of ids) {
     const path = join(SOURCE, `${id}.json`);
     if (!existsSync(path)) continue;
@@ -239,12 +240,15 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
           html.includes('"FAQPage"')
         ) {
           missing++;
-          sample ||= `${id} ${chapter.number}.${verse.number}`;
+          if (!sample) {
+            sample = `${id} ${chapter.number}.${verse.number}`;
+            sampleReason = `missingHtml=${!html}; missingVerseId=${Boolean(html && !html.includes(`id="verse-${verse.number}"`))}; missingArticle=${Boolean(html && !html.includes('"Article"'))}; missingBreadcrumb=${Boolean(html && !html.includes('"BreadcrumbList"'))}; faqPresent=${Boolean(html && html.includes('"FAQPage"'))}`;
+          }
         }
       }
     }
   }
-  if (missing > 0) fail('verse pages', `${missing}/${expected} verse pages missing or incomplete (first: ${sample})`);
+  if (missing > 0) fail('verse pages', `${missing}/${expected} verse pages missing or incomplete (first: ${sample}; ${sampleReason})`);
   else verseScripts = `${expected} verse pages across ${ids.length} scriptures`;
 }
 
