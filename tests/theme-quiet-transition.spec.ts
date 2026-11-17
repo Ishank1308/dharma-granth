@@ -6,35 +6,53 @@ test('theme switching remains instant in Data Saver and Reading Lite', async ({ 
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.goto('/');
 
-  // Count attempts to launch the View Transitions API, independent of timing.
-  await page.evaluate(() => {
-    const win = window as Window & { __themeTransitions?: number };
-    win.__themeTransitions = 0;
-    Object.defineProperty(document, 'startViewTransition', {
-      configurable: true,
-      value: (update: () => void) => {
-        win.__themeTransitions = (win.__themeTransitions ?? 0) + 1;
-        update();
-        return { finished: Promise.resolve() };
-      },
-    });
-    document.documentElement.dataset.dataSaver = 'true';
-  });
+  // Exercise genuine persisted preferences, not hand-written DOM attributes:
+  // performance-mode's hydration sync can otherwise remove synthetic attributes.
+  const setQuietPreferences = async (dataSaver: boolean, readingLite: boolean) => {
+    await page.evaluate(({ dataSaver, readingLite }) => {
+      localStorage.setItem('dharma.perf.dataSaver', String(dataSaver));
+      localStorage.setItem('dharma.perf.readingLite', String(readingLite));
+      localStorage.setItem('dharma.perf.lowPower', 'false');
+    }, { dataSaver, readingLite });
+    await page.reload();
+    if (dataSaver) await expect(page.locator('html')).toHaveAttribute('data-data-saver', 'true');
+    else await expect(page.locator('html')).not.toHaveAttribute('data-data-saver', 'true');
+    if (readingLite) await expect(page.locator('html')).toHaveAttribute('data-reading-lite', 'true');
+    else await expect(page.locator('html')).not.toHaveAttribute('data-reading-lite', 'true');
+  };
 
+  const spyOnThemeTransitions = async () => {
+    await page.evaluate(() => {
+      const win = window as Window & { __themeTransitions?: number };
+      win.__themeTransitions = 0;
+      Object.defineProperty(document, 'startViewTransition', {
+        configurable: true,
+        value: (update: () => void) => {
+          win.__themeTransitions = (win.__themeTransitions ?? 0) + 1;
+          update();
+          return { finished: Promise.resolve() };
+        },
+      });
+    });
+  };
+  const transitionCount = () =>
+    page.evaluate(() => (window as Window & { __themeTransitions?: number }).__themeTransitions);
+
+  await setQuietPreferences(true, false);
+  await spyOnThemeTransitions();
   await page.getByRole('radio', { name: 'Light theme' }).first().click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'sunset');
-  expect(await page.evaluate(() => (window as Window & { __themeTransitions?: number }).__themeTransitions)).toBe(0);
+  expect(await transitionCount()).toBe(0);
 
-  await page.evaluate(() => {
-    delete document.documentElement.dataset.dataSaver;
-    document.documentElement.dataset.readingLite = 'true';
-  });
+  await setQuietPreferences(false, true);
+  await spyOnThemeTransitions();
   await page.getByRole('radio', { name: 'Dark theme' }).first().click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'night');
-  expect(await page.evaluate(() => (window as Window & { __themeTransitions?: number }).__themeTransitions)).toBe(0);
+  expect(await transitionCount()).toBe(0);
 
-  await page.evaluate(() => { delete document.documentElement.dataset.readingLite; });
+  await setQuietPreferences(false, false);
+  await spyOnThemeTransitions();
   await page.getByRole('radio', { name: 'Light theme' }).first().click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'sunset');
-  expect(await page.evaluate(() => (window as Window & { __themeTransitions?: number }).__themeTransitions)).toBe(1);
+  expect(await transitionCount()).toBe(1);
 });
