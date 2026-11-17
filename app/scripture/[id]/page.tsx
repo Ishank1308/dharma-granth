@@ -264,7 +264,7 @@ export default async function ScripturePage(props: PageProps) {
                   अध्याय सूची · Browse chapters
                 </a>
               </div>
-            )
+            )}
           </FadeUp>
         </div>
         <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} className="mx-auto" />
