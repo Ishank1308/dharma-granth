@@ -120,3 +120,32 @@ for (const theme of THEMES) {
     });
   }
 }
+
+
+/** Touch-mode captures complement the narrow desktop viewports above.
+ * A 320px Desktop Chrome context still has a fine pointer, unlike a phone;
+ * these scenarios exercise the real coarse-pointer CSS and mobile viewport.
+ */
+for (const theme of THEMES) {
+  for (const width of [320, 390] as const) {
+    for (const route of [ROUTES[0], ROUTES[2], ROUTES[5]]) {
+      test(`touch device audit ${route.id}: ${theme}, ${width}px`, async ({ browser }) => {
+        if (route.id === 'gita-chapter') test.slow();
+        const context = await browser.newContext({
+          viewport: { width, height: 844 },
+          hasTouch: true,
+          isMobile: true,
+          deviceScaleFactor: 2,
+        });
+        try {
+          const page = await context.newPage();
+          await prepare(page, route.url, theme, width);
+          expect(await page.evaluate(() => matchMedia('(pointer: coarse)').matches)).toBe(true);
+          await capture(page, `${route.id}-touch`, theme, width, false);
+        } finally {
+          await context.close();
+        }
+      });
+    }
+  }
+}
