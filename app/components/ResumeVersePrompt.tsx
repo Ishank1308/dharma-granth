@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { readRecentChapters } from '@/lib/reading-history';
 
 /** Optional, browser-local shortcut to the last verse in this chapter. */
-export function ResumeVersePrompt({ scriptureId, chapterId }: { scriptureId: string; chapterId: number }) {
+export function ResumeVersePrompt({ scriptureId, chapterId, splitChapter = false }: { scriptureId: string; chapterId: number; splitChapter?: boolean }) {
   const [verseId, setVerseId] = useState<string | null>(null);
   const [dismissed, setDismissed] = useState(false);
 
@@ -19,10 +19,27 @@ export function ResumeVersePrompt({ scriptureId, chapterId }: { scriptureId: str
   if (!verseId || dismissed) return null;
 
   function resume() {
-    const target = document.getElementById(`verse-${verseId}`);
-    if (!target) return;
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    window.history.replaceState(null, '', `#verse-${verseId}`);
+    const savedVerse = verseId;
+    if (!savedVerse) return;
+    const target = document.getElementById(`verse-${savedVerse}`);
+    if (!target) {
+      // A saved verse may live in a different part of a split chapter.
+      // The existing ChapterPartRedirect resolves its canonical hash.
+      if (splitChapter && /^[0-9A-Za-z.-]{1,20}$/.test(savedVerse)) {
+        // Validate browser-local history and URL-encode every dynamic segment.
+        const chapterPath = `/scripture/${encodeURIComponent(scriptureId)}/chapter/${chapterId}/`;
+        const verseFragment = `#verse-${encodeURIComponent(savedVerse)}`;
+        window.location.assign(new URL(chapterPath + verseFragment, window.location.origin).href);
+      } else {
+        setDismissed(true);
+      }
+      return;
+    }
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const quietMode = ['data-low-power', 'data-data-saver', 'data-lite-mode', 'data-reading-lite']
+      .some((attribute) => document.documentElement.getAttribute(attribute) === 'true');
+    target.scrollIntoView({ behavior: reducedMotion || quietMode ? 'auto' : 'smooth', block: 'start' });
+    window.history.replaceState(null, '', `#verse-${savedVerse}`);
     setDismissed(true);
   }
 
