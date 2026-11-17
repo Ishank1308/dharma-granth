@@ -70,6 +70,8 @@ console.log(JSON.stringify({
   remoteEtag: response.headers.get('etag'),
   remoteContentType: contentType,
   remoteCacheControl: response.headers.get('cache-control'),
+  rscSource: response.headers.get('x-dharma-rsc-source') || 'unmarked/static',
+  cfRay: response.headers.get('cf-ray'),
 }, null, 2));
 
 if (!exactBody) {
