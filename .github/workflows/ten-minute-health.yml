@@ -1,0 +1,120 @@
+name: 10-minute repository health
+
+# Lightweight monitoring only; scripture writing/repair remains in the
+# separate autonomous task. GitHub cron is best-effort and can run late.
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: dharma-granth-ten-minute-health
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    name: PR, deployment and website health
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Inspect PR checks, Cloudflare deployment and live website
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const failures = [];
+            const report = [
+              '# Dharma Granth · 10-minute health snapshot',
+              '',
+              'Lightweight read-only checks; this workflow does **not** merge, deploy, edit scripture, or rerun builds.',
+              '',
+              '## Open pull requests',
+              '',
+              '| PR | Latest CI for head commit |',
+              '| --- | --- |',
+            ];
+            const bad = new Set(['failure', 'timed_out', 'action_required']);
+            const stamp = Date.now();
+
+            const prs = await github.paginate(github.rest.pulls.list, {
+              owner, repo, state: 'open', per_page: 100
+            });
+            const { data: ci } = await github.rest.actions.listWorkflowRuns({
+              owner, repo, workflow_id: 'ci.yml', event: 'pull_request', per_page: 100
+            });
+            for (const pr of prs) {
+              // GitHub returns newer workflow runs first.
+              const run = ci.workflow_runs.find(item => item.head_sha === pr.head.sha);
+              const label = run
+                ? `${run.status === 'completed' ? run.conclusion : run.status} · [CI #${run.id}](${run.html_url})`
+                : 'No matching run among recent CI runs';
+              report.push(`| [#${pr.number}](${pr.html_url})${pr.draft ? ' (draft)' : ''} | ${label} |`);
+              if (!pr.draft && run && run.status === 'completed' && bad.has(run.conclusion)) {
+                failures.push(`PR #${pr.number} CI ${run.conclusion}: ${run.html_url}`);
+              }
+            }
+            if (!prs.length) report.push('| None | — |');
+
+            report.push('', '## Master deployment', '');
+            const { data: branch } = await github.rest.repos.getBranch({
+              owner, repo, branch: 'master'
+            });
+            const headSha = branch.commit.sha;
+            const { data: deployments } = await github.rest.actions.listWorkflowRuns({
+              owner, repo, workflow_id: 'deploy-cloudflare.yml',
+              branch: 'master', per_page: 10
+            });
+            const latest = deployments.workflow_runs[0];
+            if (latest) {
+              report.push(`Master: \`\`${headSha.slice(0,12)}\`\`; latest deploy: ${latest.status === 'completed' ? latest.conclusion : latest.status} · [run #${latest.id}](${latest.html_url}) · \`\`${latest.head_sha.slice(0,12)}\`\``);
+              if (latest.status === 'completed' && bad.has(latest.conclusion)) {
+                failures.push(`Latest master Cloudflare deploy ${latest.conclusion}: ${latest.html_url}`);
+              }
+              const currentDeployPending = deployments.workflow_runs.some(run =>
+                run.head_sha === headSha && run.status !== 'completed'
+              );
+              const { data: head } = await github.rest.repos.getCommit({
+                owner, repo, ref: headSha
+              });
+              const commitDate = head.commit.committer?.date || head.commit.author?.date;
+              if (latest.status === 'completed' && latest.conclusion === 'success' &&
+                  latest.head_sha !== headSha && !currentDeployPending &&
+                  commitDate && stamp - Date.parse(commitDate) > 45 * 60 * 1000) {
+                failures.push(`Master ${headSha.slice(0,12)} has no successful matching Cloudflare deploy after 45 minutes`);
+              }
+            } else {
+              report.push('No deployment run found.');
+              failures.push('No Cloudflare deploy run found for master');
+            }
+
+            report.push('', '## Live website', '');
+            const targets = ['https://dharmagranth.dev/'];
+            for (const url of targets) {
+              try {
+                const response = await fetch(url, {
+                  redirect: 'follow',
+                  signal: AbortSignal.timeout(15000),
+                  headers: { 'User-Agent': 'DharmaGranth-Repository-Health/1.0' },
+                });
+                report.push(`- ${url}: HTTP ${response.status}`);
+                if (!response.ok) failures.push(`Website HTTP ${response.status}: ${url}`);
+                await response.body?.cancel();
+              } catch (error) {
+                report.push(`- ${url}: request failed (${String(error)})`);
+                failures.push(`Website unreachable: ${url} (${String(error)})`);
+              }
+            }
+
+            report.push('', '## Result', '');
+            if (failures.length) {
+              report.push(...failures.map(message => `- **Attention:** ${message}`));
+            } else {
+              report.push('No failure observed in the inspected CI runs, master deployment or website.');
+            }
+            await core.summary.addRaw(report.join('\n') + '\n').write();
+            if (failures.length) core.setFailed(failures.join('\n'));
