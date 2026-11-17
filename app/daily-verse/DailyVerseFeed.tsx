@@ -77,8 +77,8 @@ export function DailyVerseFeed() {
   const whatsappHref = `https://wa.me/?text=${encodeURIComponent(message)}`;
 
   return (
-    <div className="mx-auto max-w-3xl space-y-10 px-5 pt-8 sm:px-8">
-      <article aria-labelledby="today-heading" className="rounded-3xl border border-dharma-border bg-dharma-card p-6 shadow-sm sm:p-8">
+    <div className="mx-auto max-w-3xl space-y-6 px-4 pt-5 sm:px-8">
+      <article aria-labelledby="today-heading" className="rounded-3xl border border-dharma-border bg-dharma-card p-4 shadow-sm sm:p-7">
         <p className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
           Today · {formatDate(first.date)}
         </p>
@@ -87,7 +87,7 @@ export function DailyVerseFeed() {
         </h2>
         <p className="text-sm text-dharma-muted">{first.verse.topic}</p>
 
-        <p lang="sa" className="mt-5 whitespace-pre-line font-devanagari text-xl font-semibold leading-[1.9] text-dharma-text">
+        <p lang="sa" className="mt-4 whitespace-pre-line font-devanagari text-xl font-semibold leading-[1.75] text-dharma-text">
           {first.verse.sanskrit}
         </p>
         <p lang="hi" className="mt-3 font-devanagari text-base leading-relaxed text-dharma-text/90">
@@ -95,7 +95,7 @@ export function DailyVerseFeed() {
         </p>
         <p className="mt-3 text-sm italic leading-relaxed text-dharma-muted">{first.verse.english}</p>
 
-        <div className="mt-6 flex flex-wrap items-center gap-2">
+        <div className="mt-4 flex flex-wrap items-center gap-2">
           <CopyButton text={message} label="Copy WhatsApp message" primary />
           <a
             href={whatsappHref}
@@ -114,20 +114,25 @@ export function DailyVerseFeed() {
           </Link>
         </div>
 
-        <label htmlFor="today-message" className="mt-6 block text-xs font-bold uppercase tracking-wider text-dharma-muted">
-          What you will send
-        </label>
-        <textarea
-          id="today-message"
-          readOnly
-          rows={11}
-          value={message}
-          onFocus={(e) => e.currentTarget.select()}
-          className="mt-1 w-full resize-y rounded-xl border border-dharma-border bg-dharma-bg p-3 text-sm leading-relaxed text-dharma-text"
-        />
+        <details className="mt-4 rounded-xl border border-dharma-border bg-dharma-bg/50 p-3">
+          <summary className="cursor-pointer text-sm font-semibold text-dharma-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-saffron-500">
+            Preview full WhatsApp message
+          </summary>
+          <label htmlFor="today-message" className="mt-3 block text-xs font-bold uppercase tracking-wider text-dharma-muted">
+            What you will send
+          </label>
+          <textarea
+            id="today-message"
+            readOnly
+            rows={7}
+            value={message}
+            onFocus={(e) => e.currentTarget.select()}
+            className="mt-1 w-full resize-y rounded-xl border border-dharma-border bg-dharma-bg p-3 text-sm leading-relaxed text-dharma-text"
+          />
+        </details>
       </article>
 
-      <section aria-labelledby="embed-heading" className="rounded-3xl border border-dharma-border bg-dharma-card p-6 shadow-sm sm:p-8">
+      <section aria-labelledby="embed-heading" className="rounded-3xl border border-dharma-border bg-dharma-card p-4 shadow-sm sm:p-7">
         <div className="flex items-center gap-2">
           <Code2 className="h-5 w-5 text-saffron-600" />
           <h2 id="embed-heading" className="font-serif text-xl font-bold">
