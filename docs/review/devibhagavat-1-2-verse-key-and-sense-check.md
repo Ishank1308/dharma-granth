@@ -22,12 +22,18 @@ Date: 17 November 2026. Part of corpus completion tracker #229.
 | 27–34 | Śaunaka's questions and Naimiṣa forest wheel narrative; sacrificial description | Distinguish narrated belief from historical fact; preserve explicitly **animal-free** rites in 2.34 |
 | 35–40 | Request for the text; dharma/artha/kāma/mokṣa and Bhagavatī's qualities | Keep praise of liberation/desire-fulfilment as the source's devotional claims |
 
-## Next steps that do not require owner approval
+## Publication implementation (PR #260)
 
-1. Let CI verify the newly added chapter-key and source-phrase checks, including all other scripture-integrity checks.
-2. Independently compare all 40 verse readings against the repository's exact source edition, not just selected phrases. Verify divergences without copying the restricted source transcription.
+The first 40 Hindi meanings, keyed `2:1`–`2:40`, are now explicitly applied to the **generated public chapter-2 shards** by `scripts/lib/source-checked-meaning-overlays.ts` after misaligned-OCR filtering. Every number is checked against a distinctive Sanskrit phrase from the cited 1.2 source witness before any meaning is emitted. `hindiSource: 'ai'` makes the machine-assisted provenance visible to readers, while the old printed-OCR review marker is cleared **only for those replaced meanings**. Source Sanskrit is never modified.
+
+The importer for the whole 65-entry file still stays guarded; chapter 1's 25 drafts are not published through this change. This is a 40-verse, source-key-checked release, **not** a claim of printed Gita Press Hindi proofreading or formal Sanskrit-scholar certification. The release remains conditional on green CI and verified production deployment.
+
+## Follow-up after this release
+
+1. Verify that CI has generated the public chapter-2 shard, checked all 40 Hindi meanings within the shard, and passed the full reader/static export tests.
+2. Continue full critical comparison against the exact repository source edition and annotate any variant readings as discovered; currently a 40-verse opening-phrase and verse-key gate is enforced, not a complete critical apparatus.
 3. Validate the new Hindi meanings at the verse level, correcting inaccurate or over-interpretive words; record any textual uncertainty, source variant, or unverified verse.
-4. Promote individually validated content through the existing written-meaning workflow. Do **not** remove the `reviewStatus: unreviewed` flag or publish 65 entries merely because a test passes: batch-wide source fidelity has not yet been established.
-5. Recompute the **published** Hindi coverage after any promotion, validate generated shards and deployment SHA, then continue chapter 3 and the remaining skandhas.
+4. Keep chapter-1 and other uncertain entries outside the publication allowlist until individually checked; never remove the global `reviewStatus: unreviewed` merely because chapter 2 passed.
+5. Recompute the **published** Hindi coverage after the 40-entry release, validate deployed page text and deployment SHA, then continue the next source-checked chapter.
 
-No external editorial sign-off from the site owner is required to execute this workflow. Claims of completeness or scholarly certification require actual evidence. Existing source datasets, source Sanskrit, and reader-facing published language coverage have **not** been modified in this PR.
+No external editorial sign-off from the site owner is required to execute this workflow. Claims of completeness or scholarly certification require actual evidence. Source Sanskrit and raw full-book JSON have not been modified; the generated **reader-facing chapter-2 shard is now intentionally changed** at publish time after checks pass.
