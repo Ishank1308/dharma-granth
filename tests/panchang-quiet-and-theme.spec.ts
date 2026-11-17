@@ -22,17 +22,31 @@ test('Reading Lite stills Panchang ambient sky and Kāla-chakra without hiding t
 });
 
 for (const theme of ['sunset', 'night'] as const) {
-  test(`Practice canvas responds to ${theme} theme instead of forcing Night`, async ({ page }) => {
+  test(`Practice inherits the ${theme} canvas while preserving a transparent page shell`, async ({ page }) => {
     await page.addInitScript((value) => window.localStorage.setItem('dharma-theme', value), theme);
     await page.goto('/practice/');
     await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
-    const actual = await page.locator('main.apple-scope').evaluate((el) => ({
-      background: getComputedStyle(el).backgroundColor,
-      foreground: getComputedStyle(el).color,
-    }));
-    const expected = theme === 'sunset'
-      ? { background: 'rgb(255, 244, 229)', foreground: 'rgb(51, 32, 22)' }
-      : { background: 'rgb(0, 0, 0)', foreground: 'rgb(245, 245, 247)' };
-    expect(actual, `Practice surface does not honor ${theme} design tokens`).toEqual(expected);
+
+    // app/globals.css deliberately makes main.bg-dharma-bg transparent so the
+    // shared liquid backdrop is visible. The visible canvas belongs to body.
+    const actual = await page.locator('main.apple-scope').evaluate((el) => {
+      const root = getComputedStyle(document.documentElement);
+      const body = getComputedStyle(document.body);
+      const main = getComputedStyle(el);
+      return {
+        bgToken: root.getPropertyValue('--dharma-bg').trim(),
+        textToken: root.getPropertyValue('--dharma-text').trim(),
+        bodyBackground: body.backgroundColor,
+        mainBackground: main.backgroundColor,
+      };
+    });
+    const tokens = theme === 'sunset'
+      ? { bgToken: '#fff4e5', textToken: '#332016' }
+      : { bgToken: '#000000', textToken: '#f5f5f7' };
+
+    expect(actual.bgToken).toBe(tokens.bgToken);
+    expect(actual.textToken).toBe(tokens.textToken);
+    expect(actual.bodyBackground).not.toBe('rgba(0, 0, 0, 0)');
+    expect(actual.mainBackground).toBe('rgba(0, 0, 0, 0)');
   });
 }
