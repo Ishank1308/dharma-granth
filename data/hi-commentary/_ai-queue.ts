@@ -71,10 +71,10 @@ export function approvedAiEntries(scriptureId: string): {
     const sourceChecked = q.status === "source-checked";
     if (q.status !== "approved" && !sourceChecked) continue;
     if (sourceChecked) {
-      // Explicitly allowlisted source-reading releases for Skandha 1 chapters 1 and 2 and chapter 3 verses 1–16.
+      // Explicitly allowlisted source-reading releases for Skandha 1 chapters 1 and 2 and chapter 3 verses 1–20.
       // A source URL by itself never counts as independent scholarly review.
       const allowedVerse = scriptureId === "devibhagavat" &&
-        /^(?:1:(?:[1-9]|1[0-9]|2[0-5])|2:(?:[1-9]|[1-3][0-9]|40)|3:(?:[1-9]|1[0-6]))$/.test(key);
+        /^(?:1:(?:[1-9]|1[0-9]|2[0-5])|2:(?:[1-9]|[1-3][0-9]|40)|3:(?:[1-9]|1[0-9]|20))$/.test(key);
       const opening = norm(q.sanskritOpening ?? "");
       if (!allowedVerse || !opening || opening.length < 8 ||
         q.sourceWitness !== "https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html" ||
