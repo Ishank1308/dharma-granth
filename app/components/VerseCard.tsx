@@ -513,7 +513,7 @@ export function VerseCard({
 
           {/* Streamlined, calm toolbar: 3 essential icons + ActionMenu overflow. Never wraps awkwardly on mobile. */}
           <div
-            className="ml-auto flex shrink-0 items-center gap-0.5 transition-opacity duration-200 [@media(hover:hover)]:opacity-40 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-within:opacity-100"
+            className="ml-auto flex shrink-0 items-center gap-0.5 transition-opacity duration-200 [@media(hover:hover)]:opacity-75 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-within:opacity-100"
             role="group"
             aria-label="श्लोक विकल्प (Verse actions)"
           >

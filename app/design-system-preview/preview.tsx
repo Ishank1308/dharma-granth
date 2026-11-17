@@ -5,10 +5,8 @@ import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import type { ScriptureCategory } from '@/data/types';
 
 const THEMES = [
-  { id: 'day', label: 'Usha' },
-  { id: 'sunset', label: 'Sandhyā' },
-  { id: 'paper', label: 'Bhojpatra' },
-  { id: 'night', label: 'Rātri' },
+  { id: 'sunset', label: 'Light' },
+  { id: 'night', label: 'Dark' },
 ] as const;
 
 const SAMPLES: { id: string; name: string; category: ScriptureCategory }[] = [
@@ -20,7 +18,7 @@ const SAMPLES: { id: string; name: string; category: ScriptureCategory }[] = [
 ];
 
 export function DesignSystemPreview() {
-  const [theme, setTheme] = useState<(typeof THEMES)[number]['id']>('day');
+  const [theme, setTheme] = useState<(typeof THEMES)[number]['id']>('sunset');
   const [largeText, setLargeText] = useState(false);
   const [expandedSample, setExpandedSample] = useState<string | null>(null);
 
@@ -51,7 +49,7 @@ export function DesignSystemPreview() {
   }
 
   return (
-    <main data-reader-size={largeText ? 'xl' : undefined} className="apple-scope min-h-screen bg-dharma-bg pb-20 text-dharma-text">
+    <main data-verse-size={largeText ? 'xl' : 'lg'} className="apple-scope min-h-screen bg-dharma-bg pb-20 text-dharma-text">
       <div className="mx-auto max-w-content px-gutter pt-10 sm:pt-16">
         <p className="text-footnote font-semibold text-dharma-saffron">
           <span>Design system</span> <span aria-hidden="true">·</span> <span lang="hi" className="font-devanagari">रूप-विधान</span>

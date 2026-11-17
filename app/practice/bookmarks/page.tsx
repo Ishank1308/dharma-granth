@@ -88,6 +88,20 @@ const THEME_TAG_CONFIG: Record<
 
 export default function BookmarksAndAnnotationsPage() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('bookmarks');
+  const handleTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    const order: ActiveTab[] = ['bookmarks', 'highlights', 'notes', 'privacy'];
+    const current = order.indexOf(activeTab);
+    let index = current;
+    if (event.key === 'ArrowRight') index = (current + 1) % order.length;
+    else if (event.key === 'ArrowLeft') index = (current - 1 + order.length) % order.length;
+    else if (event.key === 'Home') index = 0;
+    else if (event.key === 'End') index = order.length - 1;
+    else return;
+    event.preventDefault();
+    const next = order[index];
+    setActiveTab(next);
+    requestAnimationFrame(() => document.getElementById(`saved-tab-${next}`)?.focus());
+  };
   const [bookmarks, setBookmarks] = useState<BookmarkedVerse[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -178,10 +192,11 @@ export default function BookmarksAndAnnotationsPage() {
   }, [highlights, selectedTagFilter, kindFilter]);
 
   return (
-    <main className="min-h-screen py-12 px-4 sm:px-6 max-w-7xl mx-auto">
+    <main className="min-h-screen py-8 sm:py-12 px-4 sm:px-6 max-w-7xl mx-auto">
       {/* Sanctuary Header */}
-      <header className="mb-8">
-        <div>
+      <header className="relative isolate mb-8 overflow-hidden rounded-[28px] border border-dharma-border bg-dharma-card/90 p-5 shadow-sm sm:p-8">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-24 -z-10 h-64 w-64 rounded-full bg-saffron-500/10 blur-3xl" />
+        <div className="relative z-10">
           <div className="flex items-center gap-2">
             <span className="flex h-7 w-7 items-center justify-center rounded-control bg-tint-fill text-tint">
               <Lock className="h-4 w-4" />
@@ -190,7 +205,7 @@ export default function BookmarksAndAnnotationsPage() {
               Personal Sanctuary · व्यक्तिगत स्वाध्याय
             </span>
           </div>
-          <h1 className="mt-1 text-title-1 sm:text-large-title font-bold text-label-primary tracking-tight">
+          <h1 className="mt-3 max-w-3xl text-[clamp(1.9rem,calc(1.5rem+2vw),3rem)] leading-[1.13] font-serif font-bold text-label-primary tracking-tight [overflow-wrap:anywhere]">
             Saved Verses, Highlights & Notes
           </h1>
           <p className="mt-2 text-subhead text-label-secondary max-w-2xl leading-relaxed">
@@ -203,14 +218,18 @@ export default function BookmarksAndAnnotationsPage() {
       <div
         role="tablist"
         aria-label="Sanctuary sections"
-        className="flex flex-wrap gap-2 border-b border-separator pb-3 mb-8"
+        className="flex min-w-0 snap-x snap-proximity items-center gap-2 overflow-x-auto rounded-2xl border border-separator bg-dharma-card/75 p-2 shadow-sm mb-8 scrollbar-none"
       >
         <button
           type="button"
           role="tab"
+          id="saved-tab-bookmarks"
+          aria-controls="saved-panel-bookmarks"
           aria-selected={activeTab === 'bookmarks'}
+          tabIndex={activeTab === 'bookmarks' ? 0 : -1}
           onClick={() => setActiveTab('bookmarks')}
-          className={`focus-ring min-h-[40px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
+          onKeyDown={handleTabKeyDown}
+          className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'bookmarks'
               ? 'bg-tint text-on-tint shadow-xs'
               : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
@@ -225,9 +244,13 @@ export default function BookmarksAndAnnotationsPage() {
         <button
           type="button"
           role="tab"
+          id="saved-tab-highlights"
+          aria-controls="saved-panel-highlights"
           aria-selected={activeTab === 'highlights'}
+          tabIndex={activeTab === 'highlights' ? 0 : -1}
           onClick={() => setActiveTab('highlights')}
-          className={`focus-ring min-h-[40px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
+          onKeyDown={handleTabKeyDown}
+          className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'highlights'
               ? 'bg-tint text-on-tint shadow-xs'
               : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
@@ -242,9 +265,13 @@ export default function BookmarksAndAnnotationsPage() {
         <button
           type="button"
           role="tab"
+          id="saved-tab-notes"
+          aria-controls="saved-panel-notes"
           aria-selected={activeTab === 'notes'}
+          tabIndex={activeTab === 'notes' ? 0 : -1}
           onClick={() => setActiveTab('notes')}
-          className={`focus-ring min-h-[40px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
+          onKeyDown={handleTabKeyDown}
+          className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'notes'
               ? 'bg-tint text-on-tint shadow-xs'
               : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
@@ -259,9 +286,13 @@ export default function BookmarksAndAnnotationsPage() {
         <button
           type="button"
           role="tab"
+          id="saved-tab-privacy"
+          aria-controls="saved-panel-privacy"
           aria-selected={activeTab === 'privacy'}
+          tabIndex={activeTab === 'privacy' ? 0 : -1}
           onClick={() => setActiveTab('privacy')}
-          className={`focus-ring min-h-[40px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
+          onKeyDown={handleTabKeyDown}
+          className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'privacy'
               ? 'bg-tint text-on-tint shadow-xs'
               : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
@@ -276,7 +307,7 @@ export default function BookmarksAndAnnotationsPage() {
 
       {/* Tab 1: Bookmarked Verses */}
       {activeTab === 'bookmarks' && (
-        <section aria-label="Bookmarked verses">
+        <section id="saved-panel-bookmarks" role="tabpanel" aria-labelledby="saved-tab-bookmarks" aria-label="Bookmarked verses">
           <SavedScriptures />
 
           {bookmarks.length > 0 && (
@@ -431,7 +462,7 @@ export default function BookmarksAndAnnotationsPage() {
 
       {/* Tab 2: Highlights by Theme Tag */}
       {activeTab === 'highlights' && (
-        <section aria-label="Highlighted verses">
+        <section id="saved-panel-highlights" role="tabpanel" aria-labelledby="saved-tab-highlights" aria-label="Highlighted verses">
           {/* Theme Tag Filters */}
           <div className="mb-6 flex flex-wrap items-center gap-2">
             <span className="text-caption font-bold text-label-secondary uppercase tracking-wider flex items-center gap-1 mr-1">
@@ -562,7 +593,7 @@ export default function BookmarksAndAnnotationsPage() {
 
       {/* Tab 3: Private Notes & Annotations */}
       {activeTab === 'notes' && (
-        <section aria-label="Private notes">
+        <section id="saved-panel-notes" role="tabpanel" aria-labelledby="saved-tab-notes" aria-label="Private notes">
           {notes.length === 0 ? (
             <div className="rounded-panel border border-separator bg-surface-raised p-12 text-center shadow-xs max-w-xl mx-auto">
               <FileText className="mx-auto h-8 w-8 text-tint mb-3" />
@@ -616,7 +647,7 @@ export default function BookmarksAndAnnotationsPage() {
 
       {/* Tab 4: Privacy & Data Sovereign Hub */}
       {activeTab === 'privacy' && (
-        <section aria-label="Privacy guarantee" className="max-w-3xl mx-auto space-y-6">
+        <section id="saved-panel-privacy" role="tabpanel" aria-labelledby="saved-tab-privacy" aria-label="Privacy guarantee" className="max-w-3xl mx-auto space-y-6">
           <div className="rounded-card border border-emerald-500/30 bg-emerald-50/40 dark:border-emerald-500/20 dark:bg-emerald-950/20 p-6 sm:p-8">
             <div className="flex items-center gap-2 text-emerald-900 dark:text-emerald-200">
               <ShieldCheck className="h-6 w-6 text-emerald-600" />

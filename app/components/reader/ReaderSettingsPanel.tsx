@@ -134,12 +134,10 @@ const WIDTHS: Array<Choice<ReadingWidth>> = [
   { id: 'wide', label: 'Wide' },
 ];
 
-// Names come from THEME_NAMES so every picker shows the same Usha / Sandhyā / Rātri / Bhojpatra.
+// Only two site themes; Light uses the existing Sandhyā amber palette.
 const THEMES: Array<{ id: Theme; label: string; hi: string; swatch: string; ring: string }> = [
-  { id: 'day', label: THEME_NAMES.day.name, hi: THEME_NAMES.day.hi, swatch: '#fdfbf7', ring: '#e8e3db' },
   { id: 'sunset', label: THEME_NAMES.sunset.name, hi: THEME_NAMES.sunset.hi, swatch: '#fff4e5', ring: '#ecc9a7' },
   { id: 'night', label: THEME_NAMES.night.name, hi: THEME_NAMES.night.hi, swatch: '#090908', ring: '#4a4036' },
-  { id: 'paper', label: THEME_NAMES.paper.name, hi: THEME_NAMES.paper.hi, swatch: '#f5ede0', ring: '#d9c9ae' },
 ];
 
 export function ReaderSettingsPanel({

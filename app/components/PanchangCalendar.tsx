@@ -366,8 +366,8 @@ export function PanchangCalendar() {
       {/* ─── 3. WEEK VIEW ───────────────────────────────────────────────────── */}
       {activeView === 'week' && (
         <section aria-labelledby="week-view-heading" className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div className="min-w-0">
               <h2 id="week-view-heading" className="font-serif text-xl font-bold text-dharma-text">
                 साप्ताहिक चंद्र प्रवाह · 7-Day Lunar Rhythm
               </h2>
@@ -378,16 +378,16 @@ export function PanchangCalendar() {
             <button
               type="button"
               onClick={handleToday}
-              className="text-xs font-semibold text-saffron-700 dark:text-saffron-400 hover:underline"
+              className="focus-ring inline-flex min-h-[44px] items-center text-xs font-semibold text-saffron-700 dark:text-saffron-400 hover:underline"
             >
               Back to Today &rarr;
             </button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3" role="grid" aria-label="7-Day Panchang view">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3" role="group" aria-label="7-Day Panchang view">
             {weekDays.map(({ date, iso, panchang: dayPanchang }) => {
               const isSelected = iso === panchang.isoDate;
-              const isTodayDay = iso === toIsoDate(new Date());
+              const isTodayDay = iso === toIsoDate(todayForLocation(location));
               const isEkadashi = dayPanchang.tithi.number === 11 || dayPanchang.tithi.number === 26;
               const isPurnima = dayPanchang.tithi.number === 15;
               const isAmavasya = dayPanchang.tithi.number === 30;
@@ -410,7 +410,7 @@ export function PanchangCalendar() {
                         {dayPanchang.dayOfWeek.slice(0, 3)}
                       </span>
                       {isTodayDay && (
-                        <span className="rounded-full bg-saffron-600 px-1.5 py-0.2 text-[9px] font-bold text-white uppercase">
+                        <span className="rounded-full bg-saffron-600 px-1.5 py-0.5 text-[11px] leading-tight font-bold text-white uppercase">
                           Today
                         </span>
                       )}
@@ -426,13 +426,13 @@ export function PanchangCalendar() {
                     </div>
 
                     <div className="mt-3 space-y-1">
-                      <div className="font-serif text-xs font-bold text-dharma-text truncate">
+                      <div className="font-serif text-xs font-bold leading-snug text-dharma-text break-words">
                         {dayPanchang.tithi.name}
                       </div>
-                      <div lang="hi" className="font-devanagari text-[11px] text-saffron-700 dark:text-saffron-400 truncate">
+                      <div lang="hi" className="font-devanagari text-xs leading-snug text-saffron-700 dark:text-saffron-400 break-words">
                         {dayPanchang.tithi.nameHi}
                       </div>
-                      <div className="text-[10px] text-dharma-muted truncate">
+                      <div className="text-xs leading-snug text-dharma-muted break-words">
                         {dayPanchang.nakshatra.name}
                       </div>
                     </div>
@@ -440,21 +440,21 @@ export function PanchangCalendar() {
 
                   <div className="mt-4 pt-3 border-t border-dharma-text/10 flex flex-wrap gap-1">
                     {isEkadashi && (
-                      <span className="rounded bg-purple-500/15 px-1.5 py-0.5 text-[9px] font-bold text-purple-700 dark:text-purple-300">
+                      <span className="rounded bg-purple-500/15 px-1.5 py-0.5 text-[11px] leading-snug font-bold text-purple-700 dark:text-purple-300">
                         एकादशी
                       </span>
                     )}
                     {isPurnima && (
-                      <span className="rounded bg-amber-500/20 px-1.5 py-0.5 text-[9px] font-bold text-amber-800 dark:text-amber-200">
+                      <span className="rounded bg-amber-500/20 px-1.5 py-0.5 text-[11px] leading-snug font-bold text-amber-800 dark:text-amber-200">
                         पूर्णिमा
                       </span>
                     )}
                     {isAmavasya && (
-                      <span className="rounded bg-stone-500/20 px-1.5 py-0.5 text-[9px] font-bold text-stone-700 dark:text-stone-300">
+                      <span className="rounded bg-stone-500/20 px-1.5 py-0.5 text-[11px] leading-snug font-bold text-stone-700 dark:text-stone-300">
                         अमावस्या
                       </span>
                     )}
-                    <span className="text-[10px] text-dharma-muted">
+                    <span className="text-[11px] leading-snug text-dharma-muted">
                       {dayPanchang.paksha.isWaxing ? 'शुक्ल' : 'कृष्ण'}
                     </span>
                   </div>

@@ -189,7 +189,7 @@ export default async function FestivalDetailPage(props: PageProps) {
                   <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
                     {festival.name}
                   </h1>
-                  <p lang="sa" className="font-devanagari text-xl sm:text-2xl opacity-90 font-medium">
+                  <p lang="sa" className="font-devanagari text-[clamp(1.125rem,calc(1rem+1vw),1.75rem)] leading-[1.9] [overflow-wrap:anywhere] opacity-90 font-medium">
                     {festival.sanskrit} <span className="text-sm opacity-75 font-serif">· {festival.transliteration}</span>
                   </p>
                 </div>
@@ -301,7 +301,7 @@ export default async function FestivalDetailPage(props: PageProps) {
                   key={i}
                   className="rounded-2xl border border-dharma-border bg-dharma-panel p-5 space-y-2"
                 >
-                  <p lang="sa" className="font-serif text-base sm:text-lg font-bold text-saffron-800 dark:text-saffron-400">
+                  <p lang="sa" className="font-devanagari text-[clamp(1.1rem,calc(1rem+0.75vw),1.5rem)] leading-[1.9] [overflow-wrap:anywhere] font-bold text-saffron-800 dark:text-saffron-400">
                     {chant.sanskrit}
                   </p>
                   <p className="text-xs text-dharma-muted italic font-mono">

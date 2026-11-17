@@ -162,6 +162,7 @@ const isFile = (path) =>
 const needsSlash = (path) => !path.endsWith('/') && !isFile(path);
 {
   const badCanonical = [];
+  const missingCanonical = [];
   const badLinks = new Map();
   const deadLinks = new Map();
   // _redirects sources as patterns: `*` is a splat, `:name` one path segment.
@@ -192,10 +193,14 @@ const needsSlash = (path) => !path.endsWith('/') && !isFile(path);
     const html = readFileSync(page, 'utf8');
     const route = routeOf(page);
     const canonical = /<link\s+rel="canonical"\s+href="([^"]+)"/.exec(html)?.[1];
+    const noindex = /<meta\s+name="robots"\s+content="[^"]*\bnoindex\b/i.test(html);
     if (canonical) {
       const ok = canonical.startsWith(`${ORIGIN}/`) && !needsSlash(new URL(canonical).pathname) && !/[?#]/.test(canonical);
       if (!ok) badCanonical.push(`${route} → ${canonical}`);
-    }
+      else if (!noindex && new URL(canonical).pathname !== encodeURI(decodeURI(route))) {
+        badCanonical.push(`${route} → ${canonical} (indexable pages must name themselves)`);
+      }
+    } else if (!noindex) missingCanonical.push(route);
     for (const m of html.matchAll(/<a\b[^>]*\shref="(\/[^"]*)"/g)) {
       const path = m[1].split(/[?#]/)[0];
       if (path.startsWith('//')) continue;
@@ -204,6 +209,7 @@ const needsSlash = (path) => !path.endsWith('/') && !isFile(path);
       if (!badLinks.has(path)) badLinks.set(path, route);
     }
   }
+  if (missingCanonical.length) fail('canonical', `${missingCanonical.length} indexable page(s) missing a canonical: ${missingCanonical.slice(0, 5).join(', ')}`);
   if (badCanonical.length) fail('slash', `${badCanonical.length} canonical(s) off-origin or without a trailing slash, e.g. ${badCanonical.slice(0, 3).join('; ')}`);
   if (badLinks.size) {
     fail('slash', `${badLinks.size} internal link target(s) lack a trailing slash (Cloudflare answers each with a 308):`);

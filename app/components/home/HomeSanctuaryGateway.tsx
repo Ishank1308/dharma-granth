@@ -67,9 +67,14 @@ export function HomeSanctuaryGateway() {
         titleHi="पंचांग, साधना व जीवन-दर्शन"
       />
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+      <p className="mb-6 mt-2 max-w-[62ch] text-sm leading-relaxed text-dharma-muted sm:text-base">
+        A little reading, reflection or practice — choose a doorway into the living traditions.
+      </p>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-12 sm:gap-5">
         {/* 1. Live Panchang & Muhurta */}
-        <article className="apple-card flex flex-col justify-between rounded-panel border border-dharma-border bg-dharma-card p-6 shadow-raised sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[340px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-saffron/35 bg-dharma-card bg-gradient-to-br from-dharma-saffron/10 via-dharma-card to-dharma-card p-6 shadow-raised motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-7 sm:p-7">
+          <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-20 size-72 rounded-full border border-dharma-saffron/15" />
+          <div aria-hidden="true" className="pointer-events-none absolute -right-8 -top-12 size-52 rounded-full border border-dharma-saffron/10" />
           <div>
             <div className="flex flex-wrap items-center justify-between gap-2">
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
@@ -142,7 +147,8 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 2. Wisdom Pathways & Life Guidance */}
-        <article className="apple-card flex flex-col justify-between rounded-panel border border-dharma-border bg-dharma-card p-6 shadow-raised sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[340px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border bg-dharma-card bg-gradient-to-br from-dharma-card via-dharma-card to-dharma-maroon/10 p-6 shadow-raised motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-5 sm:p-7">
+          <div aria-hidden="true" className="pointer-events-none absolute -right-16 -bottom-16 size-52 rounded-full border border-dharma-maroon/15" />
           <div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
               <Compass className="h-4 w-4" aria-hidden="true" />
@@ -189,7 +195,8 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 3. Sacred Mantras & Pilgrimage */}
-        <article className="apple-card flex flex-col justify-between rounded-panel border border-dharma-border bg-dharma-card p-6 shadow-raised sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[285px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border bg-dharma-card bg-gradient-to-br from-dharma-card to-dharma-saffron/10 p-6 shadow-raised motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
+          <div aria-hidden="true" className="pointer-events-none absolute -right-12 -top-16 size-44 rounded-full border border-dharma-saffron/15" />
           <div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
               <Sparkles className="h-4 w-4" aria-hidden="true" />
@@ -230,7 +237,8 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 4. Daily Sadhana & Puja Vidhi */}
-        <article className="apple-card flex flex-col justify-between rounded-panel border border-dharma-border bg-dharma-card p-6 shadow-raised sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[285px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border bg-dharma-card bg-gradient-to-br from-dharma-card to-dharma-gold/10 p-6 shadow-raised motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
+          <div aria-hidden="true" className="pointer-events-none absolute -right-12 -bottom-14 size-44 rounded-full border border-dharma-gold/15" />
           <div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
               <Flame className="h-4 w-4" aria-hidden="true" />
