@@ -5,7 +5,7 @@ test('Gita chapter highlights use real linked chapters and static local artwork'
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/scripture/bhagavadgita/');
 
-  const highlights = page.getByRole('region', { name: 'Explore a chapter' });
+  const highlights = page.getByRole('region', { name: 'Explore a section' });
   const links = highlights.locator('a.chapter-highlight-link');
   await expect(links).toHaveCount(3);
   const expected = [1, 3, 6];
@@ -34,13 +34,14 @@ test('Gita chapter highlights use real linked chapters and static local artwork'
 
 test('Ramayana artwork follows known kanda scenes, while uncurated books remain text first', async ({ page }) => {
   await page.goto('/scripture/ramayana/');
-  const highlighted = page.getByRole('region', { name: 'Explore a chapter' });
+  const highlighted = page.getByRole('region', { name: 'Explore a section' });
   await expect(highlighted.locator('a.chapter-highlight-link')).toHaveCount(3);
   await expect(highlighted.locator('[data-painting="palace"]')).toHaveCount(1);
+  await expect(highlighted.locator('a.chapter-highlight-link').first()).toContainText('काण्ड 1');
   await expect(highlighted.locator('[data-painting="forest"]')).toHaveCount(1);
   await expect(highlighted.locator('[data-painting="ocean"]')).toHaveCount(1);
 
   await page.goto('/scripture/rigveda/');
-  await expect(page.getByRole('region', { name: 'Explore a chapter' })).toHaveCount(0);
+  await expect(page.getByRole('region', { name: 'Explore a section' })).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Adhyay / Sections' })).toBeVisible();
 });
