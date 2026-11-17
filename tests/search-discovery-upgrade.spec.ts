@@ -73,3 +73,15 @@ test('mobile search filters and clear control meet a 44px touch target', async (
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(321);
 });
+
+
+test('scripture library can expand a query to the entire site search without retyping', async ({ page }) => {
+  await page.goto('/scriptures/');
+  const catalogInput = page.getByRole('searchbox', { name: 'Search scriptures' });
+  await catalogInput.fill('karma');
+  const expand = page.getByRole('button', { name: 'Search all content for karma' });
+  await expect(expand).toBeVisible();
+  await expand.click();
+  const dialog = page.getByRole('dialog', { name: 'Global Search' });
+  await expect(dialog.getByRole('combobox')).toHaveValue('karma');
+});
