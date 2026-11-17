@@ -827,6 +827,7 @@ export function SiteNav({
               {themeMenuOpen && (
                 <div
                   role="menu"
+                  tabIndex={-1}
                   aria-label="Theme · थीम"
                   onBlur={(event) => {
                     if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
