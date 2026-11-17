@@ -9,6 +9,7 @@
  */
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 
 type Verse = { number: number | string; sanskrit?: string };
 type Chapter = { number: number | string; verses: Verse[] };
@@ -127,7 +128,9 @@ for (let n = 1; n <= 40; n++) {
   assert.ok(opening.length >= 8 && normalize(verse.sanskrit).includes(opening),
     `Sanskrit witness opening does not match ${key}`);
   const explanation = item.explanation ?? '';
-  assert.ok(explanation.length >= 330, `Verse-specific व्याख्या too short at ${key}`);
+  const words = explanation.trim().split(/\s+/).filter(Boolean).length;
+  assert.ok(words >= 200 && words <= 280,
+    `Verse-specific व्याख्या at ${key} should contain 200–280 words, got ${words}`);
   assert.ok(explanation.includes('प्रसंग एवं भाव — ') &&
     explanation.includes('पद-विवेचन — ') &&
     explanation.includes('जीवन-साधना — '), `Missing three movements at ${key}`);
@@ -138,4 +141,10 @@ for (let n = 1; n <= 40; n++) {
   assert.equal(publishedCommentary[key]?.ai, true,
     `Source-checked व्याख्या must retain an explicit AI label: ${key}`);
 }
+const register = execFileSync(process.execPath, [
+  'scripts/check-hindi-register.mjs',
+  'data/ai-commentary/devibhagavat.json',
+], { encoding: 'utf8' });
+assert.match(register, /sentences to fix 0, तुम to check 0/,
+  'Devi Bhagavata explanation has colloquial words or informal address');
 console.log('✓ Devi Bhagavata 1.2 publishes 40 distinct, three-movement source-checked AI-labelled व्याख्या notes.');
