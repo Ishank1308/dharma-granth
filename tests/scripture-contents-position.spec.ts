@@ -35,7 +35,7 @@ test('long scripture navigation announces filtered counts with accessible mobile
   const search = page.getByRole('searchbox', { name: 'Filter chapters by number or title' });
   await expect(search).toBeVisible();
   await search.fill('999999');
-  await expect(page.getByRole('status')).toContainText('0 of');
+  await expect(page.locator('section[aria-labelledby="contents-heading"] [role="status"]')).toContainText('0 of');
   await expect(page.getByText('कोई अध्याय नहीं मिला।')).toBeVisible();
 
   const clear = page.getByRole('button', { name: 'Clear chapter filter' });
