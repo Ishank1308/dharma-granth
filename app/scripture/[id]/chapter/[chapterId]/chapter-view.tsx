@@ -551,7 +551,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             </section>
           ) : (
             <>
-              <ResumeVersePrompt scriptureId={meta.id} chapterId={chapter.id} />
+              <ResumeVersePrompt scriptureId={meta.id} chapterId={chapter.id} splitChapter={Boolean(parts)} />
               <FullChapterVerses
               scriptureId={params.id}
               category={meta.category}
