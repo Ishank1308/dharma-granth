@@ -16,10 +16,13 @@ const ROUTES = [
   { id: 'library', url: '/scriptures/' },
   { id: 'gita-index', url: '/scripture/bhagavadgita/' },
   { id: 'ramayana-index', url: '/scripture/ramayana/' },
+  { id: 'devi-index', url: '/scripture/durgasaptashati/' },
   { id: 'long-index', url: '/scripture/bhagavatapurana/' },
   { id: 'gita-chapter', url: '/scripture/bhagavadgita/chapter/2/' },
   { id: 'gita-verse', url: '/scripture/bhagavadgita/chapter/2/verse/47/' },
   { id: 'ashtavakra', url: '/ashtavakra/1/' },
+  { id: 'panchang', url: '/panchang/' },
+  { id: 'practice', url: '/practice/' },
 ] as const;
 
 const THEMES = ['sunset', 'night'] as const;
@@ -71,6 +74,9 @@ async function capture(page: Page, id: string, theme: string, width: number, zoo
   await page.screenshot({ path: join(OUT, `${filename}-top.png`), animations: 'disabled', timeout: 20_000 });
   await writeFile(join(OUT, `${filename}-layout.json`), JSON.stringify(measurements, null, 2));
   expect(measurements.documentWidth, `Body overflow in ${filename}`).toBeLessThanOrEqual(width + 1);
+  expect(measurements.theme, `Incorrect theme in ${filename}`).toBe(theme);
+  const brokenImages = measurements.images.filter((img) => img.complete && img.naturalWidth === 0);
+  expect(brokenImages, `Broken main-content images in ${filename}`).toEqual([]);
   expect(measurements.heading.left ?? -1, `Heading clipped on left: ${filename}`).toBeGreaterThanOrEqual(-1);
   expect(measurements.heading.right ?? width + 2, `Heading clipped on right: ${filename}`).toBeLessThanOrEqual(width + 1);
 }
@@ -83,7 +89,7 @@ for (const theme of THEMES) {
         await prepare(page, route.url, theme, width);
         await capture(page, route.id, theme, width, false);
 
-        if (route.id === 'gita-index' || route.id === 'ramayana-index') {
+        if (route.id === 'gita-index' || route.id === 'ramayana-index' || route.id === 'devi-index') {
           const illustrations = page.locator('section[aria-labelledby="chapter-highlights-title"]');
           if (await illustrations.count()) {
             await illustrations.screenshot({
@@ -108,7 +114,7 @@ for (const theme of THEMES) {
     }
   }
 
-  for (const route of [ROUTES[0], ROUTES[2], ROUTES[5], ROUTES[7]]) {
+  for (const route of ROUTES.filter((r) => ['home', 'gita-index', 'long-index', 'gita-chapter', 'ashtavakra'].includes(r.id))) {
     test(`200% text resize ${route.id}: ${theme}, 390px`, async ({ page }) => {
       if (route.id === 'gita-chapter') test.slow();
       await prepare(page, route.url, theme, 390);
