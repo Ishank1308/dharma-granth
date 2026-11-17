@@ -2,6 +2,7 @@
 
 import { useId, useRef, useState, type KeyboardEvent } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 export interface ShowcaseScripture {
@@ -355,6 +356,30 @@ const SHOWCASE_ITEMS: Record<TabId, ShowcaseScripture[]> = {
   ],
 };
 
+/**
+ * Existing local, compressed artwork gives the library an editorial image
+ * hierarchy without downloading external shots or adding a 3D runtime.
+ * These are category illustrations, never purported facsimiles of manuscripts.
+ */
+const LIBRARY_ART_BY_CATEGORY: Record<TabId, string> = {
+  featured: '/verse-bg/default.webp',
+  upanishad: '/verse-bg/upanishad.webp',
+  veda: '/verse-bg/veda.webp',
+  darshana: '/verse-bg/other.webp',
+  itihasa: '/verse-bg/itihasa.webp',
+  purana: '/verse-bg/purana.webp',
+};
+
+function artworkFor(book: ShowcaseScripture, category: TabId): string {
+  if (category !== 'featured') return LIBRARY_ART_BY_CATEGORY[category];
+  if (book.id === 'rigveda') return LIBRARY_ART_BY_CATEGORY.veda;
+  if (book.id === 'ishavasya') return LIBRARY_ART_BY_CATEGORY.upanishad;
+  if (book.id === 'ramayana') return LIBRARY_ART_BY_CATEGORY.itihasa;
+  if (book.id === 'bhagavatapurana') return LIBRARY_ART_BY_CATEGORY.purana;
+  if (book.id === 'bhagavadgita') return '/verse-bg/smriti.webp';
+  return LIBRARY_ART_BY_CATEGORY.darshana;
+}
+
 export function HomeScriptureTabs() {
   const [activeTab, setActiveTab] = useState<TabId>('featured');
   const tabsId = useId();
@@ -439,6 +464,32 @@ export function HomeScriptureTabs() {
             className="library-showcase-book group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/90 p-5 shadow-raised backdrop-blur-xs transition-all hover:border-dharma-saffron/40 hover:shadow-hover sm:p-6"
             style={{ borderLeftWidth: '5px', borderLeftColor: book.colour }}
           >
+            {/* Archival gallery rhythm, inspired by editorial library and museum UI.
+                The locally hosted image is atmospheric artwork, not a claimed source folio. */}
+            <div
+              className="library-book-art relative mb-4 h-28 shrink-0 overflow-hidden rounded-xl border border-dharma-border/50 bg-dharma-bg/80 sm:h-32"
+              aria-hidden="true"
+              data-decorative
+            >
+              <Image
+                src={artworkFor(book, activeTab)}
+                alt=""
+                fill
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+                loading="lazy"
+                className="library-book-art-image object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-amber-100/10 via-white/15 to-amber-100/10" />
+              <div className="pointer-events-none absolute inset-2 rounded-[10px] border border-[#846341]/25" />
+              <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1.5 px-4 text-center text-[#52381f]">
+                <span lang="hi" className="font-devanagari text-[10px] font-semibold opacity-75">धर्मग्रन्थ · संग्रह</span>
+                <span lang="sa" className="max-w-full font-devanagari text-base font-semibold leading-normal drop-shadow-[0_1px_0_rgba(255,255,255,0.8)] sm:text-lg">
+                  {book.titleSa}
+                </span>
+                <span className="h-px w-12 bg-[#75512b]/40" />
+              </div>
+            </div>
+
             {/* Top row: Tags & Tradition */}
             <div>
               <div className="flex items-center justify-between gap-2">
