@@ -402,40 +402,32 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                           </h3>
                         </div>
 
-                        {/* Mobile stacked word cards */}
-                        <div className="grid gap-2.5 sm:hidden">
+                        {/* Compact mobile padaccheda: short rows, optional IAST/English on demand. */}
+                        <div className="grid gap-1.5 sm:hidden">
                           {m.wordMeanings.map((w, idx) => {
                             const wordKey = `word-${m.id}-${idx}`;
                             const wordPlaying = playingKey === wordKey;
                             return (
-                              <div
-                                key={idx}
-                                className="rounded-2xl border border-dharma-border/80 bg-dharma-bg/60 p-3.5 space-y-1.5"
-                              >
-                                <div className="flex items-center justify-between gap-2">
-                                  <div className="flex flex-wrap items-baseline gap-2">
-                                    <span
-                                      lang="sa"
-                                      className="font-devanagari text-base font-bold text-saffron-900 dark:text-saffron-200"
-                                    >
-                                      {w.sanskrit}
-                                    </span>
-                                    <span className="font-serif text-xs italic text-dharma-muted">{w.iast}</span>
+                              <details key={idx} className="group rounded-xl border border-dharma-border/80 bg-dharma-bg/60 px-3 py-2">
+                                <summary className="focus-ring flex cursor-pointer list-none items-center gap-2 rounded-md [&::-webkit-details-marker]:hidden">
+                                  <span lang="sa" className="min-w-0 flex-[0_1_42%] font-devanagari text-sm font-semibold leading-snug text-saffron-900 dark:text-saffron-200">
+                                    {w.sanskrit}
+                                  </span>
+                                  <span lang="hi" className="min-w-0 flex-1 font-devanagari text-xs leading-snug text-dharma-text">
+                                    {w.hindi}
+                                  </span>
+                                  <ChevronDown className="h-3.5 w-3.5 shrink-0 text-dharma-muted transition-transform group-open:rotate-180" aria-hidden="true" />
+                                </summary>
+                                <div className="mt-2 flex items-start gap-2 border-t border-dharma-border/60 pt-2">
+                                  <div className="min-w-0 flex-1 space-y-1">
+                                    <p className="font-serif text-xs italic text-dharma-muted">{w.iast}</p>
+                                    <p className="font-serif text-xs leading-relaxed text-dharma-muted">{w.english}</p>
                                   </div>
-                                  <button
-                                    type="button"
-                                    onClick={() => onPlayAudio(w.sanskrit, wordKey, 0.85)}
-                                    aria-label={`उच्चारण सुनें: ${w.sanskrit}`}
-                                    className="focus-ring inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-dharma-border bg-dharma-card text-dharma-muted hover:text-dharma-text"
-                                  >
+                                  <button type="button" onClick={() => onPlayAudio(w.sanskrit, wordKey, 0.85)} aria-label={`उच्चारण सुनें: ${w.sanskrit}`} className="focus-ring inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-dharma-border bg-dharma-card text-dharma-muted hover:text-dharma-text">
                                     <Volume2 className={`h-3.5 w-3.5 ${wordPlaying ? 'animate-pulse text-saffron-600' : ''}`} />
                                   </button>
                                 </div>
-                                <p lang="hi" className="font-devanagari text-sm text-dharma-text leading-relaxed">
-                                  {w.hindi}
-                                </p>
-                                <p className="font-serif text-xs text-dharma-muted leading-relaxed">{w.english}</p>
-                              </div>
+                              </details>
                             );
                           })}
                         </div>
