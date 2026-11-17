@@ -778,7 +778,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
           className="fluid-search-dialog fixed inset-0 z-50 flex items-end justify-center sm:items-start sm:p-6 md:p-12"
           role="dialog"
           aria-modal="true"
-          aria-label="ग्रंथ और श्लोक खोजें"
+          aria-label="Global Search · ग्रंथ और श्लोक खोजें"
         >
           <motion.div
             initial={{ opacity: 0 }}
