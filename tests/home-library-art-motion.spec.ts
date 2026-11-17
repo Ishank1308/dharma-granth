@@ -80,9 +80,11 @@ test('fluid pointer wake can resume when Data Saver is turned off without reload
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.addInitScript(() => {
-    document.documentElement.dataset.dataSaver = 'true';
+    localStorage.setItem('dharma.perf.dataSaver', 'true');
+    localStorage.setItem('dharma.perf.lowPower', 'false');
   });
   await page.goto('/');
+  await expect(page.locator('html')).toHaveAttribute('data-data-saver', 'true');
 
   const wake = page.locator('.prana-fluid-stage .prana-blob.pointer-events-none');
   await expect(wake).toHaveCount(1);
@@ -93,7 +95,11 @@ test('fluid pointer wake can resume when Data Saver is turned off without reload
   await page.waitForTimeout(200);
   expect(await transform(), 'Data Saver must suppress initial pointer motion').toBe(initial);
 
-  await page.evaluate(() => { delete document.documentElement.dataset.dataSaver; });
+  await page.evaluate(() => {
+    // Model the DOM state emitted by performance-mode.ts when Data Saver turns off.
+    delete document.documentElement.dataset.dataSaver;
+    delete document.documentElement.dataset.liteMode;
+  });
   await page.mouse.move(1050, 550);
   await expect.poll(transform).not.toBe(initial);
 
