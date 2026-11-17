@@ -192,10 +192,11 @@ export default function BookmarksAndAnnotationsPage() {
   }, [highlights, selectedTagFilter, kindFilter]);
 
   return (
-    <main className="min-h-screen py-12 px-4 sm:px-6 max-w-7xl mx-auto">
+    <main className="min-h-screen py-8 sm:py-12 px-4 sm:px-6 max-w-7xl mx-auto">
       {/* Sanctuary Header */}
-      <header className="mb-8">
-        <div>
+      <header className="relative isolate mb-8 overflow-hidden rounded-[28px] border border-dharma-border bg-dharma-card/90 p-5 shadow-sm sm:p-8">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-24 -z-10 h-64 w-64 rounded-full bg-saffron-500/10 blur-3xl" />
+        <div className="relative z-10">
           <div className="flex items-center gap-2">
             <span className="flex h-7 w-7 items-center justify-center rounded-control bg-tint-fill text-tint">
               <Lock className="h-4 w-4" />
@@ -204,7 +205,7 @@ export default function BookmarksAndAnnotationsPage() {
               Personal Sanctuary · व्यक्तिगत स्वाध्याय
             </span>
           </div>
-          <h1 className="mt-1 text-title-1 sm:text-large-title font-bold text-label-primary tracking-tight">
+          <h1 className="mt-3 max-w-3xl text-[clamp(1.9rem,calc(1.5rem+2vw),3rem)] leading-[1.13] font-serif font-bold text-label-primary tracking-tight [overflow-wrap:anywhere]">
             Saved Verses, Highlights & Notes
           </h1>
           <p className="mt-2 text-subhead text-label-secondary max-w-2xl leading-relaxed">
@@ -218,7 +219,7 @@ export default function BookmarksAndAnnotationsPage() {
         role="tablist"
         aria-label="Sanctuary sections"
         onKeyDown={handleTabKeyDown}
-        className="flex flex-wrap gap-2 border-b border-separator pb-3 mb-8"
+        className="flex min-w-0 snap-x snap-proximity items-center gap-2 overflow-x-auto rounded-2xl border border-separator bg-dharma-card/75 p-2 shadow-sm mb-8 scrollbar-none"
       >
         <button
           type="button"
@@ -228,7 +229,7 @@ export default function BookmarksAndAnnotationsPage() {
           aria-selected={activeTab === 'bookmarks'}
           tabIndex={activeTab === 'bookmarks' ? 0 : -1}
           onClick={() => setActiveTab('bookmarks')}
-          className={`focus-ring min-h-[44px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
+          className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'bookmarks'
               ? 'bg-tint text-on-tint shadow-xs'
               : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
@@ -248,7 +249,7 @@ export default function BookmarksAndAnnotationsPage() {
           aria-selected={activeTab === 'highlights'}
           tabIndex={activeTab === 'highlights' ? 0 : -1}
           onClick={() => setActiveTab('highlights')}
-          className={`focus-ring min-h-[44px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
+          className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'highlights'
               ? 'bg-tint text-on-tint shadow-xs'
               : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
@@ -268,7 +269,7 @@ export default function BookmarksAndAnnotationsPage() {
           aria-selected={activeTab === 'notes'}
           tabIndex={activeTab === 'notes' ? 0 : -1}
           onClick={() => setActiveTab('notes')}
-          className={`focus-ring min-h-[44px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
+          className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'notes'
               ? 'bg-tint text-on-tint shadow-xs'
               : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
@@ -288,7 +289,7 @@ export default function BookmarksAndAnnotationsPage() {
           aria-selected={activeTab === 'privacy'}
           tabIndex={activeTab === 'privacy' ? 0 : -1}
           onClick={() => setActiveTab('privacy')}
-          className={`focus-ring min-h-[44px] px-4 py-2 rounded-pill text-footnote font-semibold transition ${
+          className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'privacy'
               ? 'bg-tint text-on-tint shadow-xs'
               : 'border border-separator bg-surface-raised text-label-secondary hover:text-label-primary hover:bg-fill-quaternary'
