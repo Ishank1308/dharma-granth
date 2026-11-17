@@ -2127,6 +2127,9 @@ body::after {
    dharma tokens only, so Day, Sunset, Paper and Dark all stay quiet. */
 .sacred-flow-wrap {
     display: grid;
+    /* A long Sanskrit gloss must not force the grid's implicit auto track
+       wider than the reader. Keep content visible and let it wrap in place. */
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
     min-width: 0;
 }
