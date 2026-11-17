@@ -1059,3 +1059,38 @@ nav a[data-limb][aria-current='page'] {
         transition: left var(--duration-base) var(--motion-spring);
     }
 }
+
+/* Curated scripture contents: chapter art stays entirely still and decor-only.
+   These references reuse the same locally bundled paintings as the chapter reader.
+   The #still fragment disables internal SVG animation even for motion-enabled users. */
+.chapter-highlight-art {
+    display: block;
+    width: 100%;
+    height: clamp(8rem, 15vw, 10rem);
+    background-color: var(--dharma-card);
+    background-image: var(--painting);
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.chapter-highlight-art[data-painting='kurukshetra'] { --painting: url('./paintings/kurukshetra.svg#still'); }
+.chapter-highlight-art[data-painting='yajna'] { --painting: url('./paintings/yajna.svg#still'); }
+.chapter-highlight-art[data-painting='yogi'] { --painting: url('./paintings/yogi.svg#still'); }
+.chapter-highlight-art[data-painting='palace'] { --painting: url('./paintings/palace.svg#still'); }
+.chapter-highlight-art[data-painting='forest'] { --painting: url('./paintings/forest.svg#still'); }
+.chapter-highlight-art[data-painting='ocean'] { --painting: url('./paintings/ocean.svg#still'); }
+.chapter-highlight-art[data-painting='devi'] { --painting: url('./paintings/devi.svg#still'); }
+.chapter-highlight-art[data-painting='kailash'] { --painting: url('./paintings/kailash.svg#still'); }
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+    .chapter-highlight-art {
+        transition: transform 240ms ease-out;
+    }
+    .chapter-highlight-link:hover .chapter-highlight-art,
+    .chapter-highlight-link:focus-visible .chapter-highlight-art {
+        transform: scale(1.035);
+    }
+}
+@media print {
+    .chapter-highlight-art { display: none; }
+}
