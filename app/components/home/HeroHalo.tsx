@@ -15,8 +15,7 @@ export function HeroHalo() {
     <div className="hero-halo" aria-hidden="true" data-decorative>
       {/* Ambient warm celestial aura behind the kala-chakra */}
       <div
-        className="pointer-events-none absolute -inset-20 rounded-full bg-gradient-to-b from-amber-500/15 via-dharma-saffron/10 to-transparent blur-3xl opacity-75"
-        style={{ animation: 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}
+        className="hero-halo-aura pointer-events-none absolute -inset-20 rounded-full bg-gradient-to-b from-amber-500/15 via-dharma-saffron/10 to-transparent blur-3xl opacity-75"
       />
       <div className="hero-halo-plane">
         {/* 108 beads on a fine circle; every ninth bead is larger. */}
