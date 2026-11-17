@@ -566,7 +566,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                       >
                         <ChevronUp className="h-4 w-4" aria-hidden="true" />
                         <span lang="hi" className="font-devanagari">
-                          विस्तृत व्याख्या समेटें
+                          व्याख्या छिपाएँ
                         </span>
                         <span aria-hidden="true">·</span>
                         <span lang="en">Close detailed explanation</span>
