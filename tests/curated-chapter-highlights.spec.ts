@@ -45,3 +45,22 @@ test('Ramayana artwork follows known kanda scenes, while uncurated books remain 
   await expect(page.getByRole('region', { name: 'Explore a section' })).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Adhyay / Sections' })).toBeVisible();
 });
+
+test('illustrated chapter entry points resolve actual local SVG assets', async ({ page, request }) => {
+  await page.goto('/scripture/bhagavadgita/');
+  const artworks = page.locator('.chapter-highlight-art');
+  await expect(artworks).toHaveCount(3);
+  const backgrounds = await artworks.evaluateAll((elements) =>
+    elements.map((element) => getComputedStyle(element).backgroundImage),
+  );
+
+  for (const background of backgrounds) {
+    const resource = background.match(/url\(["']?([^"')]+)/)?.[1];
+    expect(resource, `Missing chapter painting: ${background}`).toBeTruthy();
+    const imageUrl = new URL(resource!, page.url());
+    imageUrl.hash = ''; // #still disables animation; it is not part of the HTTP path.
+    const response = await request.get(imageUrl.toString());
+    expect(response.status(), `Missing artwork ${imageUrl.pathname}`).toBe(200);
+    expect(response.headers()['content-type']).toMatch(/image\/svg\+xml/);
+  }
+});
