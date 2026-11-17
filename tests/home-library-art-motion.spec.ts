@@ -53,3 +53,25 @@ test('featured passage 3D depth is optional and still keyboard-accessible withou
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/\/scripture\/bhagavadgita\/chapter\/2\/verse\/47\/$/);
 });
+
+test('featured artwork stays decorative and the hero aura honors reduced-motion and quiet mode', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+
+  const passage = page.getByRole('complementary', { name: 'Featured paths into the library' }).locator('[data-tilt="subtle"]');
+  const artwork = passage.locator('[data-decorative]');
+  await expect(artwork).toHaveAttribute('aria-hidden', 'true');
+  const image = await artwork.evaluate(el => getComputedStyle(el).backgroundImage);
+  expect(image).toContain('/verse-bg/itihasa.webp');
+  await expect(passage).toContainText('कर्मण्येवाधिकारस्ते');
+
+  const aura = page.locator('.hero-halo-aura');
+  const animation = async () => aura.evaluate(el => getComputedStyle(el).animationName);
+  expect(await animation()).toBe('none');
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await expect.poll(animation).toBe('pulse');
+
+  await page.evaluate(() => document.documentElement.setAttribute('data-low-power', 'true'));
+  await expect.poll(animation).toBe('none');
+});

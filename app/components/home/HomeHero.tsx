@@ -83,6 +83,16 @@ export function HomeHero() {
             className="focus-ring group relative flex min-h-[355px] flex-col justify-between overflow-hidden rounded-[30px] border border-amber-200/25 bg-[#321c27] p-6 text-[#fff7e9] shadow-[0_28px_68px_-36px_rgba(58,29,15,0.6)] motion-safe:hover:shadow-[0_34px_74px_-30px_rgba(58,29,15,0.65)] sm:min-h-[400px] sm:p-9"
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_25%,rgba(245,189,100,0.21),transparent_42%),linear-gradient(140deg,rgba(181,88,53,0.13),transparent_65%)]" aria-hidden="true" />
+            {/* Existing local Itihāsa artwork: contextual depth, not an illustration of this specific verse. */}
+            <div
+              aria-hidden="true"
+              data-decorative
+              className="pointer-events-none absolute inset-y-0 right-0 w-[72%] bg-cover bg-center opacity-[0.18]"
+              style={{
+                backgroundImage: "url('/verse-bg/itihasa.webp')",
+                maskImage: 'linear-gradient(to right, transparent, black 55%)',
+              }}
+            />
             <div data-depth="4" className="pointer-events-none absolute -right-24 top-12 size-[310px] rounded-full border border-amber-200/15 sm:size-[370px]" aria-hidden="true" />
             <div data-depth="8" className="pointer-events-none absolute -right-12 top-24 size-[235px] rounded-full border border-amber-200/20 sm:size-[275px]" aria-hidden="true" />
             <div data-depth="4" className="pointer-events-none absolute -right-4 top-32 size-[165px] rounded-full border border-amber-200/15 sm:size-[200px]" aria-hidden="true" />

@@ -754,6 +754,20 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
     }
 }
 
+/* The hero aura previously animated via an inline style, bypassing motion preferences.
+   Keep the same subtle pulse only when movement is explicitly permitted. */
+@media (prefers-reduced-motion: no-preference) {
+    .hero-halo-aura {
+        animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+}
+:root[data-low-power='true'] .hero-halo-aura,
+:root[data-data-saver='true'] .hero-halo-aura,
+:root[data-lite-mode='true'] .hero-halo-aura,
+:root[data-reading-lite='true'] .hero-halo-aura {
+    animation: none !important;
+}
+
 /* Quiet modes ─────────────────────────────────────────────────────────── */
 :root[data-low-power='true'] .hero-halo-ring,
 :root[data-data-saver='true'] .hero-halo-ring,
