@@ -60,7 +60,7 @@ async function capture(page: Page, id: string, theme: string, width: number, zoo
         fontSize: cs?.fontSize,
         lineHeight: cs?.lineHeight,
       },
-      images: Array.from(document.querySelectorAll('main img')).slice(0, 40).map((img) => ({
+      images: Array.from(document.querySelectorAll<HTMLImageElement>('main img')).slice(0, 40).map((img) => ({
         alt: img.alt.slice(0, 80),
         src: img.currentSrc.split('/').slice(-2).join('/').slice(0, 120),
         complete: img.complete,
