@@ -1,7 +1,7 @@
 import { expect, test, type APIRequestContext } from '@playwright/test';
 
 /**
- * Source inventory: 91 app/**/page.tsx templates in the 17-Nov-2026 UI audit.
+ * Source inventory: 91 Next.js page templates in the 17-Nov-2026 UI audit.
  * A template may represent hundreds of generated scripture pages. The sitemap
  * supplies a published example; private tools are smoke-tested by their route.
  */
