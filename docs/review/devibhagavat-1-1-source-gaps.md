@@ -23,7 +23,7 @@ The actual printed Gita Press edition's verse breaks, especially where a meaning
 | 1:6 | Staged Sanskrit contains only the second half-line, excluding the line introducing the assembled sages. | Verify source completeness and verse numbering. |
 | 1:1–1:25 | Extracted `translation` duplicates `hindi`, not independently translated English. | Never count duplicated extracted Hindi as English coverage. |
 
-These defects are established **for the staged extraction**. They are not proof that the currently published full-book Sanskrit has the same missing halves.
+**Live-site cross-check (2026-11-17):** The published [Dharma Granth chapter 1](https://dharmagranth.dev/scripture/devibhagavat/chapter/1/) displays complete Sanskrit for 1:2, 1:3, 1:4 and 1:6, including the first half-lines omitted by the staging extract. These agree in substance and verse boundaries with the [SanskritDocuments chapter 1 witness](https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html). **Therefore the reported missing half-lines are defects of the committed `scripts/devibhagavat_extracted.json` staging file, not demonstrated defects of the published Sanskrit for these verses.** The published page still reports that Hindi meanings are missing or pending verification for multiple verses; the 25 new independently drafted meanings remain unapproved. This external cross-check is not a verification of the exact Gita Press printed edition or a comprehensive review of all 25 translations.
 
 ## Approval criteria
 
