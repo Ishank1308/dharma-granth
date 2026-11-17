@@ -11,7 +11,10 @@ interface QueuedEntry {
   explanation?: string;
   science?: string;
   lifeLesson?: string;
-  status?: "pending" | "approved" | "rejected";
+  /** 'source-checked' means AI commentary passed a specific source-reading gate, NOT scholar reviewed. */
+  status?: "pending" | "approved" | "rejected" | "source-checked";
+  sanskritOpening?: string;
+  sourceWitness?: string;
   sanskrit?: string;
   /** The draft's explanation replaces this verse's hand-written व्याख्या. */
   replacesHandWritten?: boolean;
@@ -45,7 +48,7 @@ function currentSanskrit(scriptureId: string): Map<string, string> {
 }
 
 /**
- * Approved AI entries for one scripture, ready to publish. Pending and
+ * Approved or explicitly Sanskrit-source-checked AI entries for one scripture, ready to publish. Pending and
  * rejected drafts are never returned, nor are drafts whose verse text no
  * longer matches what was reviewed (e.g. after a data repair renumbered it).
  */
@@ -65,8 +68,19 @@ export function approvedAiEntries(scriptureId: string): {
   const sanskritNow = currentSanskrit(scriptureId);
 
   for (const [key, q] of Object.entries(queue)) {
-    if (q.status !== "approved") continue;
-    if (q.sanskrit && sanskritNow.get(key) !== norm(q.sanskrit)) {
+    const sourceChecked = q.status === "source-checked";
+    if (q.status !== "approved" && !sourceChecked) continue;
+    if (sourceChecked) {
+      // Allow a specifically source-checked AI explanation to reach the reader
+      // without mislabelling it as independently scholar-reviewed. It must carry
+      // a numbered witness opening and be tied to this exact Sanskrit verse.
+      const opening = norm(q.sanskritOpening ?? "");
+      if (!opening || opening.length < 8 || !q.sourceWitness?.startsWith("https://") ||
+        !sanskritNow.get(key)?.includes(opening)) {
+        stale.push(key);
+        continue;
+      }
+    } else if (q.sanskrit && sanskritNow.get(key) !== norm(q.sanskrit)) {
       stale.push(key);
       continue;
     }
