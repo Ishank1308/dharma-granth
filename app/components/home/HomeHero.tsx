@@ -34,7 +34,7 @@ export function HomeHero() {
 
           <h1
             id="hero-title"
-            className="mt-6 max-w-[13ch] text-[clamp(2.9rem,6.5vw,5.8rem)] font-semibold leading-[1.04] tracking-[-0.045em] text-dharma-text"
+            className="mt-6 max-w-[13ch] text-[clamp(1.6rem,12vw,3.2rem)] sm:text-[clamp(2.9rem,6.5vw,5.8rem)] font-semibold leading-[1.04] tracking-[-0.045em] text-dharma-text"
           >
             Ancient words.
             <span className="ink-dawn mt-1 block">Living wisdom.</span>
