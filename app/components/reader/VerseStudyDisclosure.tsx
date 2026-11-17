@@ -42,7 +42,7 @@ export function VerseStudyDisclosure({
   }
 
   return (
-    <div className="mt-4">
+    <div className="mt-2.5 sm:mt-4">
       <button
         ref={triggerRef}
         type="button"
@@ -52,7 +52,7 @@ export function VerseStudyDisclosure({
           if (!open) setFullStudy(true);
           setOpen((value) => !value);
         }}
-        className="flex min-h-11 items-center gap-1.5 rounded-full px-2 py-2 text-left text-xs font-medium text-dharma-muted transition-colors hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+        className="flex min-h-11 w-full items-center justify-between gap-2 rounded-xl border border-dharma-border/60 bg-dharma-card-soft/50 px-3 py-2 text-left text-xs font-medium text-dharma-muted transition-colors hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
       >
         <span id={titleId}>
           <span lang="hi" className="font-devanagari">व्याख्या एवं संदर्भ</span>{' '}
@@ -62,13 +62,13 @@ export function VerseStudyDisclosure({
       </button>
 
       {open && (
-        <div id={panelId} role="region" aria-labelledby={titleId} className="verse-study-panel liquid-reveal pt-3">
+        <div id={panelId} role="region" aria-labelledby={titleId} className="verse-study-panel liquid-reveal min-w-0 pt-2 sm:pt-3">
           {children(studyDepth)}
           {versePageHref && fullStudy && <VersePageExtras href={versePageHref} />}
           {/* One "more" control under the explanation: it adds the word meanings and notes (study depth)
               and the verse page's own study, here in the chapter. */}
           {((versePageHref && !fullStudy) || (canDeepen && studyDepth === 'understand')) && (
-            <div className="mt-5 flex justify-center">
+            <div className="mt-3 sm:mt-5 flex justify-center">
               <button
                 type="button"
                 onClick={() => {
@@ -83,7 +83,7 @@ export function VerseStudyDisclosure({
             </div>
           )}
 
-          <div className="mt-5 flex justify-center border-t border-dharma-border/50 pt-3">
+          <div className="mt-3 sm:mt-5 flex justify-center border-t border-dharma-border/50 pt-3">
             <button
               type="button"
               onClick={closeDetails}
