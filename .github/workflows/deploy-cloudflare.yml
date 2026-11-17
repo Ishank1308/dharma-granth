@@ -22,8 +22,11 @@ permissions:
   actions: write
 
 concurrency:
+  # Keep the active production publish running; repeated merges should not cancel
+  # a slow static build before it can reach the custom domain. GitHub retains
+  # only the latest pending deployment in this group.
   group: cloudflare-pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 env:
   NEXT_TELEMETRY_DISABLED: 1
