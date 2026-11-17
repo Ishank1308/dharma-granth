@@ -1,12 +1,12 @@
 /**
- * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, plus chapter 3 verses 1–25.
+ * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, plus chapter 3 verses 1–30.
  *
  * Unlike the manual apply-written-meanings command, this is an explicit,
  * verse-level allowlist. All other unreviewed drafts remain
  * blocked. Source Sanskrit is never modified.
  *
  * Witness: https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html
- * chapters 1.1 (1–25), 1.2 (1–40) and 1.3 (1–25). Hindi is an AI-assisted, independently worded
+ * chapters 1.1 (1–25), 1.2 (1–40) and 1.3 (1–30). Hindi is an AI-assisted, independently worded
  * interpretation of that Sanskrit; it is NOT a Gita Press transcription or
  * scholar-certified translation. The reader displays an editorial study-translation label and provides truthful AI-assistance provenance.
  */
@@ -110,6 +110,11 @@ export const DEVI_CHAPTER_3_WITNESS_OPENINGS = [
   'व्यासः सत्यवतीसूनुर्गुरुर्मे',
   'अतीतास्तु तथा व्यासाः',
   'ब्रूहि सूत महाभाग',
+  'द्वापरे प्रथमे व्यस्ताः',
+  'तृतीये चोशना व्यासः',
+  'मघवा सप्तमे प्राप्ते',
+  'एकादशेऽथ त्रिवृषो',
+  'त्रय्यारुणिः पञ्चदशे',
 ] as const;
 
 type Verse = Record<string, unknown>;
