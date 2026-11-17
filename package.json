@@ -11,6 +11,7 @@
     "stabilize:build-id": "node scripts/stabilize-build-id.mjs",
     "check:js-budget": "node scripts/check-js-budget.mjs --strict",
     "audit:verses": "node scripts/audit-verse-structure.mjs",
+    "audit:published": "node scripts/report-published-scripture-coverage.mjs",
     "prune:export": "node scripts/prune-export.mjs",
     "check:export": "node scripts/check-export.mjs",
     "check:rules": "node scripts/check-site-rules.mjs",
