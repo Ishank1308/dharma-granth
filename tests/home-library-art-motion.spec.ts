@@ -4,7 +4,6 @@ test('homepage library reveals local artwork while retaining usable scripture li
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
 
-  const panel = page.getByRole('tabpanel').filter({ has: page.locator('[data-library-category]') });
   // Query the unique dynamic library panel directly; imagery is decorative.
   const gallery = page.locator('[data-library-category="featured"]');
   await expect(gallery).toBeVisible();
