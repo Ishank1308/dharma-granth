@@ -1,12 +1,12 @@
 /**
- * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2.
+ * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, plus chapter 3 verses 1–5.
  *
  * Unlike the manual apply-written-meanings command, this is an explicit,
  * verse-level allowlist. All other unreviewed drafts remain
  * blocked. Source Sanskrit is never modified.
  *
  * Witness: https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html
- * chapters 1.1 (1–25) and 1.2 (1–40). Hindi is an AI-assisted, independently worded
+ * chapters 1.1 (1–25), 1.2 (1–40) and 1.3 (1–5). Hindi is an AI-assisted, independently worded
  * interpretation of that Sanskrit; it is NOT a Gita Press transcription or
  * scholar-certified translation. The reader displays its AI label.
  */
@@ -84,6 +84,14 @@ export const DEVI_CHAPTER_2_WITNESS_OPENINGS = [
   'सकलगुणगणानामेकपात्रं',
 ] as const;
 
+export const DEVI_CHAPTER_3_WITNESS_OPENINGS = [
+  'सम्प्रवक्ष्यामि पुराणानि',
+  'मद्वयं भद्वयं चैव',
+  'चतुर्दशसहस्रं च',
+  'चतुर्दशसहस्राणि',
+  'अष्टादशसहस्रं वै',
+] as const;
+
 type Verse = Record<string, unknown>;
 type Book = { chapters?: Array<{ number: number | string; verses?: unknown[] }> };
 type MeaningBatch = {
@@ -108,17 +116,18 @@ export function applySourceCheckedMeanings(id: string, book: Book): number {
     throw new Error('Devi Bhagavata: expected a guarded source-batch; do not bypass the review gate');
   }
   let published = 0;
-  const chapters: ReadonlyArray<readonly [number, readonly string[]]> = [
-    [1, DEVI_CHAPTER_1_WITNESS_OPENINGS],
-    [2, DEVI_CHAPTER_2_WITNESS_OPENINGS],
+  const chapters: ReadonlyArray<readonly [number, number, readonly string[]]> = [
+    [1, 25, DEVI_CHAPTER_1_WITNESS_OPENINGS],
+    [2, 40, DEVI_CHAPTER_2_WITNESS_OPENINGS],
+    [3, 43, DEVI_CHAPTER_3_WITNESS_OPENINGS],
   ];
-  for (const [chapterNumber, openings] of chapters) {
+  for (const [chapterNumber, expectedVerseCount, openings] of chapters) {
     const ch = book.chapters?.find((item) => Number(item.number) === chapterNumber);
-    if (!ch || ch.verses?.length !== openings.length) {
-      throw new Error(`Devi Bhagavata Skandha 1 chapter ${chapterNumber}: expected ${openings.length} Sanskrit verses`);
+    if (!ch || ch.verses?.length !== expectedVerseCount) {
+      throw new Error(`Devi Bhagavata Skandha 1 chapter ${chapterNumber}: expected ${expectedVerseCount} Sanskrit verses`);
     }
     const byKey = new Map((ch.verses as Verse[]).map((v) => [String(v.number), v]));
-    if (byKey.size !== openings.length) throw new Error(`Devi Bhagavata ${chapterNumber}: duplicate verse keys`);
+    if (byKey.size !== expectedVerseCount) throw new Error(`Devi Bhagavata ${chapterNumber}: duplicate verse keys`);
     for (let i = 0; i < openings.length; i++) {
       const number = i + 1;
       const key = `${chapterNumber}:${number}`;
