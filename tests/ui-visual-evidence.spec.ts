@@ -134,7 +134,7 @@ for (const theme of THEMES) {
  */
 for (const theme of THEMES) {
   for (const width of [320, 390] as const) {
-    for (const route of [ROUTES[0], ROUTES[2], ROUTES[5]]) {
+    for (const route of ROUTES.filter((entry) => ['home', 'gita-index', 'gita-chapter'].includes(entry.id))) {
       test(`touch device audit ${route.id}: ${theme}, ${width}px`, async ({ browser }) => {
         if (route.id === 'gita-chapter') test.slow();
         const context = await browser.newContext({
