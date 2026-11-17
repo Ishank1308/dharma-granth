@@ -13,10 +13,11 @@ function shouldIgnore(e: KeyboardEvent): boolean {
   const target = e.target;
   if (
     target instanceof HTMLElement &&
-    (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName))
+    (target.isContentEditable || Boolean(target.closest('input, textarea, select, button, a, summary, [role="combobox"], [role="listbox"], [role="menu"], [role="slider"], [contenteditable="true"]')))
   ) {
     return true;
   }
+  // Interactive controls use arrow keys for their own navigation.
   // Search modal, mobile menu, share sheets… own the arrow keys while open.
   return document.querySelector('[role="dialog"][aria-modal="true"]') !== null;
 }
