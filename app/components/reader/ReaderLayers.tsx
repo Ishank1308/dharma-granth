@@ -425,7 +425,7 @@ export function ReaderLayers({
           titleHi="पदच्छेद"
         >
           <div className="mb-2.5 flex items-center justify-between text-xs text-dharma-muted">
-            <span>पदों पर क्लिक या टैप करें — विस्तृत अर्थ, व्याकरण एवं उच्चारण (Hear word at 0.85x):</span>
+            <span>किसी पद को चुनें — उसका अर्थ, व्याकरण और उच्चारण सुनें:</span>
           </div>
           {glosses.length > 1 ? (
             <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
