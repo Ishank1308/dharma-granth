@@ -1258,7 +1258,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     }}
                     defaultValue=""
                     aria-label="श्लोक पर सीधे जाएं (Jump to verse)"
-                    className="cursor-pointer rounded bg-transparent py-1 pr-1 text-xs font-semibold text-dharma-text outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                    className="min-h-11 max-w-[44vw] cursor-pointer rounded-lg bg-transparent px-2 py-1 text-xs font-semibold text-dharma-text outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                   >
                     <option value="" disabled className="bg-dharma-card text-dharma-text">
                       श्लोक पर जाएं ▾
@@ -1274,7 +1274,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               <button
                 type="button"
                 onClick={() => setReaderSettingsOpen(true)}
-                className="liquid-pill inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-full px-3 text-sm font-semibold text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                className="liquid-pill inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-full px-3 text-sm font-semibold text-dharma-text hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                 title="पठन व्यवस्था · Reader settings"
                 aria-label="पठन व्यवस्था · Reader settings"
                 aria-haspopup="dialog"
@@ -1285,7 +1285,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               <button
                 type="button"
                 onClick={() => setToolsOpen((o) => !o)}
-                className="liquid-pill inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-full px-2.5 sm:px-3.5 text-xs font-medium text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                className="liquid-pill inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-full px-2.5 sm:px-3.5 text-xs font-medium text-dharma-text hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                 aria-label="विकल्प · Options"
                 aria-expanded={toolsOpen}
                 aria-controls="chapter-reader-tools"
