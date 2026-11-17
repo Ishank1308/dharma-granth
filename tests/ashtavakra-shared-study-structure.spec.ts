@@ -57,6 +57,25 @@ test('reader font controls resize Ashtavakra Sanskrit and preserve reading width
     pageWidth: document.documentElement.scrollWidth,
   }));
   const before = await measure();
+  if (before.pageWidth > 321) {
+    const offenders = await page.evaluate(() => {
+      const w = window.innerWidth;
+      return Array.from(document.querySelectorAll<HTMLElement>('body *'))
+        .map((el) => {
+          const box = el.getBoundingClientRect();
+          const style = getComputedStyle(el);
+          return {
+            tag: el.tagName.toLowerCase(), selector: el.id ? '#' + el.id : el.className?.toString().slice(0, 90),
+            right: Math.round(box.right), left: Math.round(box.left), width: Math.round(box.width),
+            scroll: el.scrollWidth, client: el.clientWidth, overflow: style.overflowX,
+          };
+        })
+        .filter((e) => (e.right > w + 1 && e.left < w + 1) || e.scroll > e.client + 8)
+        .sort((a, b) => b.right - a.right)
+        .slice(0, 25);
+    });
+    console.log('ASHTAVAKRA_MOBILE_OVERFLOW', JSON.stringify(offenders));
+  }
   expect(before.pageWidth).toBeLessThanOrEqual(321);
   const controls = page.getByRole('group', { name: 'Verse and translation text size' });
   await controls.getByRole('button', { name: 'Decrease verse and translation text size' }).click();
