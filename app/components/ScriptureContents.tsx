@@ -216,7 +216,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
                         {chapter.title}
                       </span>
                       {chapter.titleSanskrit && (
-                        <span lang="sa" className="mt-0.5 block break-words font-devanagari text-sm text-dharma-muted">
+                        <span lang="sa" className="mt-0.5 block line-clamp-2 break-words font-devanagari text-sm text-dharma-muted">
                           {chapter.titleSanskrit}
                         </span>
                       )}
