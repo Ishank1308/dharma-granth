@@ -45,7 +45,9 @@ function paintTheme(eff: string) {
   const calm =
     window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
     root.dataset.lowPower === 'true' ||
-    root.dataset.liteMode === 'true';
+    root.dataset.dataSaver === 'true' ||
+    root.dataset.liteMode === 'true' ||
+    root.dataset.readingLite === 'true';
   if (!doc.startViewTransition || calm) {
     root.setAttribute('data-theme', eff);
     return;
