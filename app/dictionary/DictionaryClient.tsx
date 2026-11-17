@@ -37,10 +37,10 @@ export function DictionaryClient() {
   }, [searchQuery, selectedCategory]);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-5 sm:space-y-8">
       {/* Controls Bar: Search & Category Filter */}
       <div className="rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-5 shadow-sm">
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-4">
+        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 mb-3">
           {/* Search Input */}
           <div className="relative flex-1 max-w-lg">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-dharma-muted" />
@@ -50,13 +50,13 @@ export function DictionaryClient() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search concepts e.g. Dharma, Atman, Moksha, कर्म..."
-              className="w-full rounded-xl border border-dharma-border/80 bg-dharma-bg pl-10 pr-9 py-2 text-xs sm:text-sm text-dharma-text placeholder:text-dharma-muted/70 outline-none focus:border-saffron-400 focus:ring-2 focus:ring-saffron-400/20 transition shadow-inner"
+              className="w-full min-h-[44px] rounded-xl border border-dharma-border/80 bg-dharma-bg pl-10 pr-10 py-2 text-sm text-dharma-text placeholder:text-dharma-muted/70 outline-none focus:border-saffron-400 focus:ring-2 focus:ring-saffron-400/20 transition shadow-inner"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 text-dharma-muted hover:text-dharma-text"
+                className="absolute right-1 top-1/2 -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center text-dharma-muted hover:text-dharma-text"
                 aria-label="Clear search"
               >
                 <X className="h-4 w-4" />
@@ -133,7 +133,7 @@ export function DictionaryClient() {
           </button>
         </div>
       ) : (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
           {/* initial={false}: terms are server-rendered visible; only later filter changes animate. */}
           <AnimatePresence initial={false}>
             {filteredTerms.map((term) => {
@@ -149,14 +149,14 @@ export function DictionaryClient() {
                 >
                   <Link
                     href={`/dictionary/${term.id}`}
-                    className="group relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-6 hover:shadow-xl hover:border-saffron-300 transition-all duration-300"
+                    className="group relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-6 hover:shadow-xl hover:border-saffron-300 transition-all duration-300"
                   >
                     <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${catMeta?.gradient || 'from-saffron-500 to-amber-600'}`} />
 
                     <div>
-                      <div className="flex items-start justify-between mb-2">
+                      <div className="flex min-w-0 flex-wrap items-start justify-between gap-2 mb-2">
                         <div>
-                          <h3 className="text-xl font-serif font-bold text-dharma-text group-hover:text-saffron-700 transition">
+                          <h3 className="break-words text-lg sm:text-xl font-serif font-bold text-dharma-text group-hover:text-saffron-700 transition">
                             {term.term}
                           </h3>
                           <p lang="sa" className="font-devanagari text-base text-saffron-600 font-medium">
