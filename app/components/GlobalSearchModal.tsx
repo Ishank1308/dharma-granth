@@ -756,7 +756,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
   const verseLoading = verseState === 'loading' || verseState === 'idle';
   // Nothing found yet, but the verse text (the largest index, so the last to arrive) is still
   // on its way: say so rather than "No results".
-  const waitingForIndex = !!result && result.totalMatches === 0 && verseLoading && isOnline !== false;
+  const waitingForIndex = !!result && result.totalMatches === 0 && verseLoading && isOnline !== false && !(selectedGroup && allCategoryMatches > 0);
 
   // What a screen reader hears; it follows the deferred query, so it does not chatter on every keystroke.
   const announcement = !trimmed
@@ -828,9 +828,9 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   aria-describedby={statusId}
                   className="relative z-1 min-h-[44px] w-full bg-transparent text-title-3 font-normal text-label-primary outline-none placeholder:text-label-tertiary sm:text-title-2"
                   role="combobox"
-                  aria-expanded={display.length > 0}
+                  aria-expanded={display.length > 0 && !isActionQuery}
                   aria-autocomplete="list"
-                  aria-controls={listboxId}
+                  aria-controls={display.length > 0 && !isActionQuery ? listboxId : undefined}
                   aria-activedescendant={display.length > 0 && selectedIndex >= 0 && !isActionQuery ? `search-item-${selectedIndex}` : undefined}
                   autoComplete="off"
                   autoCapitalize="off"
@@ -1286,7 +1286,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   )
                   <HelpCircle className="mx-auto mb-3 h-10 w-10 text-label-tertiary" aria-hidden="true" />
                   <h3 className="text-title-3 font-semibold text-label-primary">
-                    <span lang="hi" className="font-devanagari">कोई परिणाम नहीं</span> · No results for “{trimmed}”
+                    <span lang="hi" className="font-devanagari">कोई परिणाम नहीं</span> · {selectedGroup ? 'No results in this category' : 'No results'} for “{trimmed}”
                   </h3>
                   <ul className="mx-auto mt-3 max-w-md space-y-1 text-left text-footnote text-label-secondary">
                     <li>• Try part of the verse in Devanagari or Roman letters (“karmanye vadhikaraste”).</li>
@@ -1356,7 +1356,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                               role="option"
                               aria-selected={selected}
                               aria-label={`${item.reference ?? item.title}. ${item.matchReason}. ${item.languageLabel}. ${reviewStatus}.`}
-                              tabIndex={selected ? 0 : -1}
+                              tabIndex={-1}
                               onClick={() => {
                                 remember(query);
                                 onClose();
