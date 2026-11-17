@@ -220,7 +220,7 @@ export function InteractiveVisualLayer({
                 onClick={() => setIsRotating((r) => !r)}
                 aria-pressed={isSpinning}
                 aria-label={isSpinning ? 'मंडल का घूमना रोकें' : 'मंडल घुमाएँ'}
-                title="घूर्णन रोकने/प्रारंभ करने हेतु क्लिक करें"
+                title={isSpinning ? 'मंडल का घूमना रोकें' : 'मंडल घुमाएँ'}
               >
                 {/* Background Cosmic Radiance */}
                 <div
