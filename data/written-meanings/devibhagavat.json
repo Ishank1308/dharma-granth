@@ -1,5 +1,5 @@
 {
-  "note": "75 independently drafted AI-assisted Hindi meanings for Devī Bhāgavata Purāṇa Skandha 1 Adhyāyas 1 (1:1–1:25), 2 (2:1–2:40) and 3 (3:1–3:10). Each is source-key checked against numbered Sanskrit openings in https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html, published through the strict verse allowlist in scripts/lib/source-checked-meaning-overlays.ts, with the reader's visible AI attribution. The corresponding 75 explanatory notes are in data/ai-commentary/devibhagavat.json. These are NOT copyrighted Gita Press Hindi transcriptions, NOT independently Sanskrit-scholar-certified, and NOT evidence of complete critical source collation. The file retains reviewStatus: unreviewed so arbitrary bulk application remains blocked: only the 75 source-checked verses explicitly allowed by the guarded publishing code are released.",
+  "note": "80 independently drafted AI-assisted Hindi meanings for Devī Bhāgavata Purāṇa Skandha 1 Adhyāyas 1 (1:1–1:25), 2 (2:1–2:40) and 3 (3:1–3:15). Each is source-key checked against numbered Sanskrit openings in https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html, published through the strict verse allowlist in scripts/lib/source-checked-meaning-overlays.ts, with the reader's visible AI attribution. The corresponding 80 explanatory notes are in data/ai-commentary/devibhagavat.json. These are NOT copyrighted Gita Press Hindi transcriptions, NOT independently Sanskrit-scholar-certified, and NOT evidence of complete critical source collation. The file retains reviewStatus: unreviewed so arbitrary bulk application remains blocked: only the 80 source-checked verses explicitly allowed by the guarded publishing code are released.",
   "reviewStatus": "unreviewed",
   "keyFormat": "chapter:verse",
   "meanings": {
@@ -227,6 +227,21 @@
     },
     "3:10": {
       "hindi": "पद्मपुराण को पचपन हजार श्लोकों वाला विशाल ग्रन्थ कहा गया है और लिङ्गपुराण के लिए ग्यारह हजार श्लोकों की परम्परागत संख्या दी गई है।"
+    },
+    "3:11": {
+      "hindi": "गरुडपुराण की परम्परागत संख्या उन्नीस हजार श्लोक कही गई है और उसे हरि द्वारा कथित बताया गया है। कूर्मपुराण के लिए सत्रह हजार श्लोकों की गणना दी जाती है; उसका वर्णन कूर्म द्वारा कथित ग्रन्थ के रूप में हुआ है।"
+    },
+    "3:12": {
+      "hindi": "स्कन्दपुराण की परम्परागत श्लोक-संख्या इक्यासी हजार बताई जाती है और उसे अत्यन्त अद्भुत कहा गया है। सूतजी ऋषियों से कहते हैं कि उन्होंने पुराणों के नाम और उनकी संख्याएँ विस्तार से बता दी हैं।"
+    },
+    "3:13": {
+      "hindi": "सूतजी अब महापुराणों के बाद उपपुराणों के नाम सुनाने की बात कहते हैं। ऋषियों को सम्बोधित कर वे सबसे पहले सनत्कुमार उपपुराण और उसके बाद नारसिंह उपपुराण का उल्लेख करते हैं।"
+    },
+    "3:14": {
+      "hindi": "उपपुराणों की सूची में आगे नारदीय, शिव, दौर्वासस, कापिल, मानव तथा औशनस नामों का उल्लेख किया गया है। सूतजी इन नामों को क्रम से बताते हैं; इस श्लोक में उनके विषय या श्लोक-संख्या का विवरण नहीं दिया गया है।"
+    },
+    "3:15": {
+      "hindi": "उपपुराणों की अगली सूची में वारुण, कालिका, साम्ब, नन्दि से सम्बद्ध, सौर और आदित्य नामों का उल्लेख आता है। ‘पाराशरप्रोक्त’ का विशेषण भी दिया गया है। यह पद्य केवल नाम और परम्परागत सम्बन्ध बताता है, उनके विस्तार का पृथक प्रमाण नहीं।"
     }
   }
 }
