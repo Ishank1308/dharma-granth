@@ -225,6 +225,24 @@ export default async function ScripturePage(props: PageProps) {
               )}
             </div>
           </FadeUp>
+          <FadeUp delay={0.12}>
+            {firstReadableChapter && (
+              <div className="mt-4 flex flex-wrap items-center gap-2.5">
+                <Link
+                  href={`/scripture/${meta.id}/chapter/${firstReadableChapter.id}/`}
+                  className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-saffron-800"
+                >
+                  पढ़ना शुरू करें · Start reading <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <a
+                  href="#contents-heading"
+                  className="focus-ring inline-flex min-h-11 items-center justify-center rounded-full border border-dharma-border bg-dharma-card px-4 py-2.5 text-sm font-semibold text-dharma-text transition hover:border-dharma-saffron"
+                >
+                  अध्याय सूची · Browse chapters
+                </a>
+              </div>
+            )}
+          </FadeUp>
           <FadeUp delay={0.15}>
             <p className="mt-3 max-w-2xl text-base leading-7 text-dharma-muted">{meta.description}</p>
             {meta.author && <p className="mt-2 text-sm font-semibold text-dharma-muted">Attributed to {meta.author}</p>}
@@ -249,22 +267,6 @@ export default async function ScripturePage(props: PageProps) {
               </p>
             )}
             <OfflineScriptureToggle scriptureId={meta.id} title={meta.title} />
-            {firstReadableChapter && (
-              <div className="mt-4 flex flex-wrap items-center gap-2.5">
-                <Link
-                  href={`/scripture/${meta.id}/chapter/${firstReadableChapter.id}/`}
-                  className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-saffron-800"
-                >
-                  पढ़ना शुरू करें · Start reading <ChevronRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-                <a
-                  href="#contents-heading"
-                  className="focus-ring inline-flex min-h-11 items-center justify-center rounded-full border border-dharma-border bg-dharma-card px-4 py-2.5 text-sm font-semibold text-dharma-text transition hover:border-dharma-saffron"
-                >
-                  अध्याय सूची · Browse chapters
-                </a>
-              </div>
-            )}
           </FadeUp>
         </div>
         <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} className="mx-auto" />
