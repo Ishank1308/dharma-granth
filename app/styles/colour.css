@@ -926,6 +926,24 @@ nav a[data-limb][aria-current='page'] {
     }
 }
 
+/* Local museum-style category illustrations: the verse remains the content,
+   while only the decorative crop responds gently to desktop pointer/focus.
+   No scroll parallax or extra JS in the reader or on touch devices. */
+.library-book-art-image {
+    object-position: center 45%;
+    filter: saturate(0.88) contrast(1.04);
+    transform: translateZ(0) scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true']) .library-book-art-image {
+        transition: transform 650ms var(--ease-out-quint);
+    }
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true']) .library-showcase-book:is(:hover, :focus-within) .library-book-art-image {
+        transform: translate3d(0, -3px, 0) scale(1.065);
+    }
+}
+
 .library-showcase-book {
     background-image: linear-gradient(115deg, color-mix(in srgb, var(--library-category-hue) 9%, transparent), transparent 70%);
 }
