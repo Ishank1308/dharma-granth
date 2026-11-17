@@ -316,7 +316,7 @@ export function CharacterMap() {
           {/* Hint overlay */}
           {!selectedId && !search && (
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-dharma-muted bg-dharma-card/80 backdrop-blur-sm px-4 py-2 rounded-full border border-dharma-border pointer-events-none">
-              पात्र चुनें • मानचित्र खींचकर घुमाएँ • स्क्रॉल करके पास या दूर देखें
+              पात्र चुनें • खाली स्थान खींचकर मानचित्र सरकाएँ • +/− से आकार बदलें
             </div>
           )}
         </div>
