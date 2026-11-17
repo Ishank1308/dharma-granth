@@ -14,7 +14,7 @@ test('concept mandala runs without React timer, pauses on request, and returns o
   const readPlayback = async () => rotor.evaluate((el) => getComputedStyle(el).animationPlayState);
   expect(await readPlayback()).toBe('running');
 
-  const toggle = page.getByRole('button', { name: 'मंडला घूर्णन टॉगल करें' });
+  const toggle = page.getByRole('button', { name: /^मंडल(?: का घूमना रोकें| घुमाएँ)$/ });
   await toggle.click();
   await expect(rotor).toHaveAttribute('data-spinning', 'false');
   expect(await readPlayback()).toBe('paused');
@@ -33,7 +33,7 @@ test('reduced motion renders a static mandala even after user interaction', asyn
   const rotor = page.locator(rotorSelector);
   await rotor.scrollIntoViewIfNeeded();
   await expect(rotor).toHaveAttribute('data-spinning', 'false');
-  const toggle = page.getByRole('button', { name: 'मंडला घूर्णन टॉगल करें' });
+  const toggle = page.getByRole('button', { name: /^मंडल(?: का घूमना रोकें| घुमाएँ)$/ });
   await expect(toggle).toHaveAttribute('aria-pressed', 'false');
   const css = await rotor.evaluate((el) => ({
     name: getComputedStyle(el).animationName,
@@ -54,5 +54,5 @@ test('data saver stops decorative rotation without hiding concepts', async ({ pa
   await expect(rotor).toHaveAttribute('data-spinning', 'true');
   await page.evaluate(() => document.documentElement.setAttribute('data-data-saver', 'true'));
   await expect.poll(async () => rotor.evaluate((el) => getComputedStyle(el).animationName)).toBe('none');
-  await expect(page.getByRole('button', { name: 'मंडला घूर्णन टॉगल करें' })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^मंडल(?: का घूमना रोकें| घुमाएँ)$/ })).toBeVisible();
 });
