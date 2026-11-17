@@ -34,10 +34,18 @@ async function prepare(page: Page, url: string, theme: typeof THEMES[number], wi
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.addInitScript((name) => localStorage.setItem('dharma-theme', name), theme);
   await page.goto(url);
+  await page.waitForLoadState('networkidle');
   await expect(page.locator('h1').first()).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
+  await expect.poll(
+    () => page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--dharma-bg').trim()),
+    { message: `Wait for ${theme} styles to paint before capturing ${url}` },
+  ).toBe(theme === 'sunset' ? '#fff4e5' : '#000000');
+  await page.waitForFunction(() => !document.documentElement.hasAttribute('data-theme-vt'));
   await page.evaluate(async () => {
-    // Required for the real Sanskrit font to be settled before capture.
+    // Fonts, hydration and two paints must settle before storing evidence.
     await document.fonts.ready;
+    await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
     window.scrollTo(0, 0);
   });
 }
@@ -54,6 +62,9 @@ async function capture(page: Page, id: string, theme: string, width: number, zoo
       documentWidth: document.documentElement.scrollWidth,
       documentHeight: document.documentElement.scrollHeight,
       theme: document.documentElement.dataset.theme,
+      backgroundToken: getComputedStyle(document.documentElement).getPropertyValue('--dharma-bg').trim(),
+      bodyBackground: getComputedStyle(document.body).backgroundColor,
+      themeTransitionInProgress: document.documentElement.hasAttribute('data-theme-vt'),
       heading: {
         text: h1?.textContent?.trim().slice(0, 160),
         left: heading?.left,
@@ -75,6 +86,8 @@ async function capture(page: Page, id: string, theme: string, width: number, zoo
   await writeFile(join(OUT, `${filename}-layout.json`), JSON.stringify(measurements, null, 2));
   expect(measurements.documentWidth, `Body overflow in ${filename}`).toBeLessThanOrEqual(width + 1);
   expect(measurements.theme, `Incorrect theme in ${filename}`).toBe(theme);
+  expect(measurements.backgroundToken, `Theme style did not settle in ${filename}`).toBe(theme === 'sunset' ? '#fff4e5' : '#000000');
+  expect(measurements.themeTransitionInProgress, `Theme screenshot taken during transition: ${filename}`).toBe(false);
   const brokenImages = measurements.images.filter((img) => img.complete && img.naturalWidth === 0);
   expect(brokenImages, `Broken main-content images in ${filename}`).toEqual([]);
   expect(measurements.heading.left ?? -1, `Heading clipped on left: ${filename}`).toBeGreaterThanOrEqual(-1);
