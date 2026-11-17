@@ -323,9 +323,13 @@ export function SiteNav({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [discoverOpen]);
 
-  // The theme menu closes on Escape (focus back to its button) or a tap outside it
+  // A menu must open on its selected item and allow one Tab to leave the popup.
+  // Escape returns focus to the trigger; arrows are handled by the menu itself.
   useEffect(() => {
     if (!themeMenuOpen) return;
+    const menu = themeMenuRef.current?.querySelector<HTMLElement>('[role="menu"]');
+    const selected = menu?.querySelector<HTMLElement>('[role="menuitemradio"][aria-checked="true"]');
+    (selected ?? menu?.querySelector<HTMLElement>('[role="menuitemradio"]'))?.focus();
     function handleKey(event: KeyboardEvent) {
       if (event.key !== 'Escape') return;
       event.preventDefault();
@@ -823,7 +827,26 @@ export function SiteNav({
               {themeMenuOpen && (
                 <div
                   role="menu"
+                  tabIndex={-1}
                   aria-label="Theme · थीम"
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                      setThemeMenuOpen(false);
+                    }
+                  }}
+                  onKeyDown={(event: ReactKeyboardEvent<HTMLDivElement>) => {
+                    const items = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="menuitemradio"]'));
+                    if (!items.length) return;
+                    const index = items.indexOf(document.activeElement as HTMLButtonElement);
+                    let next = index;
+                    if (event.key === 'ArrowDown') next = (index + 1) % items.length;
+                    else if (event.key === 'ArrowUp') next = (index - 1 + items.length) % items.length;
+                    else if (event.key === 'Home') next = 0;
+                    else if (event.key === 'End') next = items.length - 1;
+                    else return;
+                    event.preventDefault();
+                    items[next]?.focus();
+                  }}
                   className="absolute right-0 top-full z-50 mt-2 w-56 rounded-xl border border-dharma-border bg-dharma-card p-1 shadow-xl"
                 >
                   {THEME_IDS.map((id) => {
@@ -835,6 +858,7 @@ export function SiteNav({
                         type="button"
                         role="menuitemradio"
                         aria-checked={active}
+                        tabIndex={-1}
                         onClick={() => handlePickTheme(id)}
                         title={THEME_NAMES[id].description}
                         className={`flex min-h-11 w-full items-center gap-2.5 rounded-lg px-3 text-left text-sm font-semibold transition ${
