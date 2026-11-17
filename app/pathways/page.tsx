@@ -22,7 +22,7 @@ export default function PathwaysRedirectPage() {
           href="/wisdom-pathways/"
           className="inline-flex min-h-[44px] items-center justify-center rounded-pill bg-tint px-6 py-2.5 text-body font-semibold text-on-tint shadow-sm hover:opacity-95 active:scale-[0.98] transition-all"
         >
-          यहाँ क्लिक करें · Open Wisdom Pathways
+          ज्ञान मार्ग देखें · Open Wisdom Pathways
         </Link>
       </div>
     </main>
