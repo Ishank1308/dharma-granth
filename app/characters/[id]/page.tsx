@@ -305,7 +305,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
                       <div className="absolute -top-2.5 left-4 w-5 h-5 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 text-white text-[10px] font-bold flex items-center justify-center shadow-sm">
                         {i + 1}
                       </div>
-                      <p lang="sa" className="font-devanagari text-base text-dharma-text leading-relaxed mb-2 mt-1">
+                      <p lang="sa" className="font-devanagari text-[clamp(1rem,calc(.9rem+.5vw),1.35rem)] leading-[1.9] [overflow-wrap:anywhere] text-dharma-text mb-2 mt-1">
                         {verse.sanskrit}
                       </p>
                       {verse.transliteration && (
