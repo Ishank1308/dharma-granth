@@ -39,3 +39,47 @@ for (const [number, halves] of required) {
   }
 }
 console.log('✓ Devi Bhagavata 1:2, 1:3, 1:4 and 1:6 retain both Sanskrit half-lines.');
+
+
+/** Skandha 1, Adhyāya 2 is library chapter 2 (global chapter numbering). */
+const chapter2 = scripture.chapters.find((entry) => Number(entry.number) === 2);
+assert.ok(chapter2, 'Devi Bhagavata Skandha 1 Chapter 2 is missing');
+const chapter2ByVerse = new Map(chapter2.verses.map((verse) => [String(verse.number), verse]));
+assert.equal(chapter2.verses.length, 40, 'Devi Bhagavata 1.2 should contain 40 Sanskrit verses');
+assert.equal(chapter2ByVerse.size, 40, 'Devi Bhagavata 1.2 contains a duplicate verse key');
+for (let n = 1; n <= 40; n++) {
+  const verse = chapter2ByVerse.get(String(n));
+  assert.ok(verse?.sanskrit, `Missing source Sanskrit at Devi Bhagavata 1.2.${n}`);
+}
+const chapter2Witness = new Map<number, string>([
+  [1, 'धन्योऽहमतिभाग्योऽहं'],
+  [11, 'अष्टादश'],
+  [18, 'वंशो मन्वन्तराणि'],
+  [34, 'पशुहीनाः कृता यज्ञाः'],
+  [40, 'प्रकटय भगवत्या'],
+]);
+for (const [number, phrase] of chapter2Witness) {
+  assert.ok(
+    normalize(chapter2ByVerse.get(String(number))?.sanskrit ?? '').includes(normalize(phrase)),
+    `Devi Bhagavata 1.2.${number}: published Sanskrit diverges from selected witness phrase`,
+  );
+}
+
+const draft = JSON.parse(readFileSync('data/written-meanings/devibhagavat.json', 'utf8')) as {
+  reviewStatus?: string;
+  meanings: Record<string, { hindi?: string }>;
+};
+assert.equal(draft.reviewStatus, 'unreviewed', 'draft meanings must stay unpublished until independently source-verified');
+const keys = Object.keys(draft.meanings);
+assert.equal(keys.length, 65, 'draft must contain Chapter 1 verses 1-25 and Chapter 2 verses 1-40');
+for (const [chapterNumber, verseCount] of [[1, 25], [2, 40]] as const) {
+  const sourceChapter = scripture.chapters.find((entry) => Number(entry.number) === chapterNumber);
+  assert.ok(sourceChapter, `Missing source chapter ${chapterNumber}`);
+  for (let n = 1; n <= verseCount; n++) {
+    const key = `${chapterNumber}:${n}`;
+    assert.ok(sourceChapter.verses.some((v) => String(v.number) === String(n)), `Source verse not found: ${key}`);
+    const hindi = draft.meanings[key]?.hindi;
+    assert.ok(hindi && /[ऀ-ॿ]/.test(hindi) && hindi.length >= 40, `Missing/substantively empty Hindi draft ${key}`);
+  }
+}
+console.log('✓ Devi Bhagavata 1.2 has 40 source-keyed verses; 65 staged Hindi meanings are complete and withheld as unreviewed.');
