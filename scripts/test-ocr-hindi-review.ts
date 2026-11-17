@@ -56,11 +56,11 @@ for (const entry of review.entries) {
   const published = shardCache.get(shardKey)?.chapter.verses
     .find((candidate) => String(candidate.number) === verse);
   assert.ok(published, `published verse exists: ${key}`);
-  // These 11 Devi Bhagavata 1.2 coordinates previously held printed OCR.
+  // Some Devi Bhagavata Skandha 1 chapters 1 and 2 coordinates previously held printed OCR.
   // Their new, independently phrased source-checked Hindi supersedes only the
   // published shard, not the archived OCR or its pending-review registry.
-  if (scriptureId === 'devibhagavat' && chapter === 2 && Number(verse) >= 1 && Number(verse) <= 40) {
-    assert.equal(published.hindi, sourceCheckedDevi.meanings[`2:${verse}`]?.hindi,
+  if (scriptureId === 'devibhagavat' && ((chapter === 1 && Number(verse) >= 1 && Number(verse) <= 25) || (chapter === 2 && Number(verse) >= 1 && Number(verse) <= 40))) {
+    assert.equal(published.hindi, sourceCheckedDevi.meanings[`${chapter}:${verse}`]?.hindi,
       `source-checked Hindi supersedes printed OCR in the reader: ${key}`);
     assert.equal((published as PublishedHindi).hindiSource, 'ai', `AI attribution is required: ${key}`);
     assert.equal(published.hindiReviewRequired, undefined, `stale OCR hold should not hide checked Hindi: ${key}`);

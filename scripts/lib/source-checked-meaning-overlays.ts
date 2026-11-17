@@ -1,17 +1,45 @@
 /**
- * Source-checked publication overlay for Devī Bhāgavata Skandha 1 Adhyāya 2.
+ * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2.
  *
  * Unlike the manual apply-written-meanings command, this is an explicit,
- * verse-level allowlist. Chapter 1 and all future unreviewed drafts remain
+ * verse-level allowlist. All other unreviewed drafts remain
  * blocked. Source Sanskrit is never modified.
  *
  * Witness: https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html
- * chapter 1.2 (1–40). Hindi is an AI-assisted, independently worded
+ * chapters 1.1 (1–25) and 1.2 (1–40). Hindi is an AI-assisted, independently worded
  * interpretation of that Sanskrit; it is NOT a Gita Press transcription or
  * scholar-certified translation. The reader displays its AI label.
  */
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+
+export const DEVI_CHAPTER_1_WITNESS_OPENINGS = [
+  'ॐ सर्वचैतन्यरूपां तां',
+  'सूत सूत महाभाग',
+  'अष्टादश पुराणानि',
+  'पञ्चलक्षणयुक्तानि',
+  'अस्माकं पुण्ययोगेन',
+  'समाजोऽयं मुनीनां हि',
+  'दीर्घायुर्भव सर्वज्ञ',
+  'श्रोत्रेन्द्रिययुताः सूत',
+  'यथा जिह्वेन्द्रियाह्लादः',
+  'अश्रोत्राः फणिनः कामं',
+  'अतः सर्वे द्विजाः सौम्य',
+  'येन केनाप्युपायेन',
+  'शास्त्राण्यपि विचित्राणि',
+  'सात्त्विकं तत्र वेदान्तं',
+  'तथैव च पुराणानि',
+  'तत्र भागवतं पुण्यं',
+  'उद्देशमात्रेण तदा',
+  'विस्तरेण तदाख्याहि',
+  'त्वं तु जानासि धर्मज्ञ',
+  'श्रुतान्यन्यानि सर्वज्ञ',
+  'धिक्सुधां पिबतां सूत',
+  'सुधापाननिमित्तं यत्',
+  'मखानां हि फलं स्वर्गः',
+  'विना ज्ञानेन सर्वज्ञ',
+  'अतः सर्वरसोपेतं',
+] as const;
 
 export const DEVI_CHAPTER_2_WITNESS_OPENINGS = [
   'धन्योऽहमतिभाग्योऽहं',
@@ -79,32 +107,39 @@ export function applySourceCheckedMeanings(id: string, book: Book): number {
   if (batch.reviewStatus !== 'unreviewed' || batch.keyFormat !== 'chapter:verse') {
     throw new Error('Devi Bhagavata: expected a guarded source-batch; do not bypass the review gate');
   }
-  const ch = book.chapters?.find((item) => Number(item.number) === 2);
-  if (!ch || ch.verses?.length !== DEVI_CHAPTER_2_WITNESS_OPENINGS.length) {
-    throw new Error('Devi Bhagavata 1.2: expected 40 Sanskrit verses in library chapter 2');
-  }
-  const byKey = new Map((ch.verses as Verse[]).map((v) => [String(v.number), v]));
-  if (byKey.size !== 40) throw new Error('Devi Bhagavata 1.2 has duplicated verse numbers');
-  for (let i = 0; i < DEVI_CHAPTER_2_WITNESS_OPENINGS.length; i++) {
-    const number = i + 1;
-    const verse = byKey.get(String(number));
-    const hindi = batch.meanings?.[`2:${number}`]?.hindi;
-    if (!verse || typeof verse.sanskrit !== 'string' ||
-      !normalized(verse.sanskrit).includes(normalized(DEVI_CHAPTER_2_WITNESS_OPENINGS[i]))) {
-      throw new Error(`Devi Bhagavata 1.2.${number}: Sanskrit does not match the source witness`);
+  let published = 0;
+  const chapters: ReadonlyArray<readonly [number, readonly string[]]> = [
+    [1, DEVI_CHAPTER_1_WITNESS_OPENINGS],
+    [2, DEVI_CHAPTER_2_WITNESS_OPENINGS],
+  ];
+  for (const [chapterNumber, openings] of chapters) {
+    const ch = book.chapters?.find((item) => Number(item.number) === chapterNumber);
+    if (!ch || ch.verses?.length !== openings.length) {
+      throw new Error(`Devi Bhagavata Skandha 1 chapter ${chapterNumber}: expected ${openings.length} Sanskrit verses`);
     }
-    if (typeof hindi !== 'string' || hindi.trim().length < 40 ||
-      !/[\u0900-\u097f]/u.test(hindi)) {
-      throw new Error(`Devi Bhagavata 1.2.${number}: missing original Hindi interpretation`);
+    const byKey = new Map((ch.verses as Verse[]).map((v) => [String(v.number), v]));
+    if (byKey.size !== openings.length) throw new Error(`Devi Bhagavata ${chapterNumber}: duplicate verse keys`);
+    for (let i = 0; i < openings.length; i++) {
+      const number = i + 1;
+      const key = `${chapterNumber}:${number}`;
+      const verse = byKey.get(String(number));
+      const hindi = batch.meanings?.[key]?.hindi;
+      if (!verse || typeof verse.sanskrit !== 'string' ||
+          !normalized(verse.sanskrit).includes(normalized(openings[i]))) {
+        throw new Error(`Devi Bhagavata ${key}: Sanskrit does not match numbered witness`);
+      }
+      if (typeof hindi !== 'string' || hindi.trim().length < 40 ||
+          !/[\u0900-\u097f]/u.test(hindi)) {
+        throw new Error(`Devi Bhagavata ${key}: independently drafted Hindi missing`);
+      }
+      verse.hindi = hindi.trim();
+      verse.hindiSource = 'ai';
+      delete verse.hindiRange;
+      delete verse.hindiSeeVerse;
+      delete verse.hindiReviewRequired;
+      delete verse.hindiUnproofread;
+      published++;
     }
-    // These are independently phrased AI-assisted meanings, never printed-OCR
-    // transcriptions. Keep the reader's visible AI attribution.
-    verse.hindi = hindi.trim();
-    verse.hindiSource = 'ai';
-    delete verse.hindiRange;
-    delete verse.hindiSeeVerse;
-    delete verse.hindiReviewRequired;
-    delete verse.hindiUnproofread;
   }
-  return 40;
+  return published;
 }
