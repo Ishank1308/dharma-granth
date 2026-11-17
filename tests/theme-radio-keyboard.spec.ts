@@ -1,7 +1,8 @@
 import { expect, test } from '@playwright/test';
 
 test('theme picker offers one Tab stop and arrow-key radio navigation', async ({ page }) => {
-  await page.setViewportSize({ width: 1280, height: 800 });
+  // Only the wide desktop header shows the segmented radio picker.
+  await page.setViewportSize({ width: 1920, height: 900 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.addInitScript(() => localStorage.setItem('dharma-theme', 'night'));
   await page.goto('/');
