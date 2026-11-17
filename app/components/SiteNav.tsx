@@ -918,7 +918,7 @@ export function SiteNav({
               id="mobile-navigation-drawer"
               role="dialog"
               aria-modal="true"
-              aria-label="नेविगेशन दराज (Navigation Drawer)"
+              aria-label="मोबाइल नेविगेशन मेनू"
               data-closing={drawer.closing || undefined}
               className="chrome-sheet fixed inset-y-0 right-0 z-[70] flex w-full max-w-[360px] sm:max-w-md flex-col border-l border-dharma-border bg-dharma-card shadow-2xl"
               style={{
