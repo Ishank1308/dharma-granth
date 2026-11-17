@@ -34,6 +34,31 @@ There is more motion infrastructure than photographic/editorial hierarchy. New h
 4. **Page transition discipline.** Motion should reinforce navigation feedback (150–300 ms), not delay the next verse. Never add decorative motion to each word of a 200–280 word व्याख्या.
 5. **Photo governance.** All new museum/archive images require verified licence, creator and source-credit metadata; prefer official institution/Commons records. Do not copy Behance/Dribbble project imagery or unverified depictions of historical scriptures.
 
+## Additional 2026 research: what to adopt, defer, or reject
+
+The following are **concept references**, not performance evaluations of deployed products. An attractive portfolio shot is not evidence of mobile usability or accessible motion.
+
+| Pattern | Current Behance / Dribbble reference | Decision for this repository |
+|---|---|---|
+| Editorial art-first collections | [Art Gallery Digital Platform Design — Behance, April 2026](https://www.behance.net/gallery/243474905/Art-Gallery-Digital-Platform-Design) | **Adopt:** category-specific artwork, restrained type contrast, clear metadata and an immediate text link |
+| Restrained 3D entrance | [Atelier Meridian — Dribbble](https://dribbble.com/shots/27306724-Museum-Website-Design-Atelier-Meridian) | **Adopt selectively:** the featured Gita passage uses the existing `MotionLayer` pointer tilt at **1.6°/2° maximum** with three decorative circles at different depths |
+| Archive discovery navigation | [Atlas Archive Website Overview — Dribbble](https://dribbble.com/shots/25623056-Atlas-Archive-Website-Overview) | **Research next:** a chapter strip / filterable archive map; avoid animating away the user's search results |
+| Chapter-by-chapter museum storytelling | [Museum Website Chapter Navigation — Dribbble](https://dribbble.com/shots/27749078-Museum-Website-Chapter-Navigation) | **Research next:** a meaningful chapter progress rail; default to a straightforward accessible text list |
+| Experimental 3D artifact world | [MUSEUM — Behance, July 2025](https://www.behance.net/gallery/229583751/MUSEUM) | **Defer:** the library's opening and the Sanskrit reader must remain usable without a WebGL/WebGPU runtime |
+| Scroll-driven parallax | [Chrome guidance — parallax scroll effects](https://developer.chrome.com/docs/modern-web-guidance/guides/ui-behaviors/parallax-scroll-effects) | **Selective future use:** only on an optional chapter visual opener, with CSS scroll timelines, a static fallback and a disabled state for reduced motion |
+| Archive facsimile vs transcription | [Manuscripts & Letters of Oscar Wilde — Dribbble](https://dribbble.com/shots/24911614-Manuscripts-Letters-of-Oscar-Wilde-Website) | **Research next:** a side-by-side source scan/transcription viewer only when the precise public-domain folio is documented |
+
+### Proposed page-by-page order
+
+1. **Homepage discovery (implemented in PR #264):** local images on scripture categories; miniature depth on one Gita feature without adding JS.
+2. **Scriptures directory (research phase):** improved cover grouping and filter clarity, with thumbnails only when there is a documented, non-misleading image.
+3. **Scripture landing pages (research phase):** one archival visual or mapped narrative illustration, no forced story animation, clear source and licence.
+4. **Chapter pages (research phase):** no perpetual motion beneath scripture text; consider a one-time, opt-in contextual scene image above the chapter heading, without running a WebGL scene next to verses.
+5. **Verse card (protect):** typography, Sanskrit source, Hindi explanation and actual meaning have priority. No scrolling parallax, shimmer loops or animated word reveals on the verse itself.
+6. **3D gallery (optional):** retain the existing `Realistic3DGranth` and `SacredChakra3D` as an explicit, lazily entered experience, not a blocking homepage introduction.
+
+**Technical motion guidance:** [Google Chrome: compositor-friendly transforms and opacity](https://developer.chrome.com/docs/modern-web-guidance/guides/ui-behaviors/motion) and [web.dev: prefers-reduced-motion](https://web.dev/articles/prefers-reduced-motion). Prefer transform/opacity, browser-native scroll timelines, and always keep the resting state visible.
+
 ## Rights-clear candidates for a **later** imagery release (not imported in this PR)
 - **Valmiki Ramayana illustration:** [The Met — Rama, Sita, and Lakshmana at the Hermitage of Bharadvaja](https://www.metmuseum.org/art/collection/search/37955?showOnly=openAccess). The Met labels it Open Access; verify asset-level licence and preserve descriptive provenance before adding it.
 - **Bhagavad Gita historic codex:** [Wikimedia Commons — Bhagavad Gita, a 19th century manuscript](https://commons.wikimedia.org/wiki/File:Bhagavad_Gita%2C_a_19th_century_manuscript.jpg). Commons lists public-domain status; review its exact file page/creator/date and image description before reproduction.
