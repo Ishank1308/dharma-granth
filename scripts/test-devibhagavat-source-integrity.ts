@@ -66,14 +66,20 @@ for (const [number, phrase] of chapter2Witness) {
   );
 }
 
+/** Chapter 3 has 43 distinct original Sanskrit verses; only 3:1–3:5 are newly released. */
+const chapter3 = scripture.chapters.find((entry) => Number(entry.number) === 3);
+assert.ok(chapter3, 'Devi Bhagavata Skandha 1 Chapter 3 is missing');
+assert.equal(chapter3.verses.length, 43, 'Devi Bhagavata 1.3 should contain all 43 Sanskrit verses');
+assert.equal(new Set(chapter3.verses.map(v => String(v.number))).size, 43, 'Duplicate chapter 3 verse key');
+
 const draft = JSON.parse(readFileSync('data/written-meanings/devibhagavat.json', 'utf8')) as {
   reviewStatus?: string;
   meanings: Record<string, { hindi?: string }>;
 };
 assert.equal(draft.reviewStatus, 'unreviewed', 'bulk importing the AI-written batch must remain blocked');
 const keys = Object.keys(draft.meanings);
-assert.equal(keys.length, 65, 'draft must contain Chapter 1 verses 1-25 and Chapter 2 verses 1-40');
-for (const [chapterNumber, verseCount] of [[1, 25], [2, 40]] as const) {
+assert.equal(keys.length, 70, 'source batch should contain chapters 1:1–25, 2:1–40 and 3:1–5');
+for (const [chapterNumber, verseCount] of [[1, 25], [2, 40], [3, 5]] as const) {
   const sourceChapter = scripture.chapters.find((entry) => Number(entry.number) === chapterNumber);
   assert.ok(sourceChapter, `Missing source chapter ${chapterNumber}`);
   for (let n = 1; n <= verseCount; n++) {
@@ -111,7 +117,21 @@ for (let n = 1; n <= 40; n++) {
   assert.equal(verse.hindiSource, 'ai', `Devi Bhagavata ${key}: AI-assisted source attribution missing`);
   assert.notEqual(verse.hindiReviewRequired, true, `Devi Bhagavata ${key}: stale OCR hold hides newly drafted Hindi`);
 }
-console.log('✓ Devi Bhagavata 1.1 + 1.2 publish all 65 source-keyed AI-labelled Hindi meanings in reader shards.');
+const publicChapter3 = JSON.parse(readFileSync('public/data/scriptures-full/devibhagavat/ch-3.json', 'utf8')) as {
+  chapter: { verses: Array<{ number: number | string; sanskrit?: string; hindi?: string; hindiSource?: string; hindiReviewRequired?: boolean }> };
+};
+assert.equal(publicChapter3.chapter.verses.length, 43, 'Chapter 3 must preserve all Sanskrit verses');
+for (let n = 1; n <= 5; n++) {
+  const key = `3:${n}`;
+  const verse = publicChapter3.chapter.verses.find((v) => String(v.number) === String(n));
+  assert.ok(verse, `Published source verse missing: ${key}`);
+  assert.equal(verse.hindi, draft.meanings[key].hindi, `Reader meaning missing: ${key}`);
+  assert.equal(verse.hindiSource, 'ai', `AI attribution missing: ${key}`);
+  assert.notEqual(verse.hindiReviewRequired, true, `Stale OCR hold at ${key}`);
+  assert.equal(verse.sanskrit, chapter3.verses.find(v => String(v.number) === String(n))?.sanskrit,
+    `Original Sanskrit modified at ${key}`);
+}
+console.log('✓ Devi Bhagavata publishes all 70 source-keyed Hindi meanings (chapters 1–2 and 3:1–5).');
 
 
 /**
@@ -126,13 +146,14 @@ type StructuredEntry = {
   explanation?: string;
 };
 const structured = JSON.parse(readFileSync('data/ai-commentary/devibhagavat.json', 'utf8')) as Record<string, StructuredEntry>;
-assert.equal(Object.keys(structured).length, 65, 'Devi Bhagavata chapters 1 and 2 must contain exactly 65 structured explanations');
+assert.equal(Object.keys(structured).length, 70, 'Devi Bhagavata source batch must contain 70 structured explanations');
 const publishedCommentary = JSON.parse(readFileSync('public/data/hi-commentary/devibhagavat.json', 'utf8')) as
   Record<string, { explanation?: string; ai?: boolean }>;
 const explanationSet = new Set<string>();
 for (const [chapterNumber, sourceChapter, verseCount] of [
   [1, chapter, 25],
   [2, chapter2, 40],
+  [3, chapter3, 5],
 ] as const) {
   for (let n = 1; n <= verseCount; n++) {
     const key = `${chapterNumber}:${n}`;
@@ -166,4 +187,4 @@ const register = execFileSync(process.execPath, [
 ], { encoding: 'utf8' });
 assert.match(register, /sentences to fix 0, तुम to check 0/,
   'Devi Bhagavata explanation has colloquial words or informal address');
-console.log('✓ Devi Bhagavata 1.1 and 1.2 publish 65 distinct structured, source-checked AI-labelled व्याख्या notes.');
+console.log('✓ Devi Bhagavata publishes 70 distinct, source-checked AI-labelled structured व्याख्या notes.');
