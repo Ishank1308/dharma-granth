@@ -100,7 +100,7 @@ const discoveryGroups: DiscoveryGroup[] = [
     nameEn: 'Study & Guidance',
     icon: Compass,
     items: [
-      { label: 'अष्टावक्र गीता', description: 'अलग पठन — मूल संस्कृत व सरल व्याख्या', href: '/ashtavakra/', icon: Flame },
+      { label: 'अष्टावक्र गीता', description: 'अध्याय, मूल श्लोक, अर्थ और दार्शनिक व्याख्या', href: '/ashtavakra/', icon: Flame },
       { label: 'शास्त्रीय जीवन-मार्गदर्शन', description: 'उद्वेग, भय व क्रोध का शास्त्रीय समाधान', href: '/wisdom-for-life/', icon: Compass },
       { label: 'ज्ञान मार्ग', description: 'भाव, प्रश्न व संत से शास्त्र तक', href: '/wisdom-pathways/', icon: Sparkles },
       { label: 'धर्म सहायक', description: 'पुस्तकालय के श्लोकों से जीवन के प्रश्न', href: '/ask/', icon: HelpCircle },
