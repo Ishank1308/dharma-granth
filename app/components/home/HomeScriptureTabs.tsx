@@ -482,7 +482,7 @@ export function HomeScriptureTabs() {
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-amber-100/10 via-white/15 to-amber-100/10" />
               <div className="pointer-events-none absolute inset-2 rounded-[10px] border border-[#846341]/25" />
               <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1.5 px-4 text-center text-[#52381f]">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.22em] opacity-75">धर्मग्रन्थ · संग्रह</span>
+                <span lang="hi" className="font-devanagari text-[10px] font-semibold opacity-75">धर्मग्रन्थ · संग्रह</span>
                 <span lang="sa" className="max-w-full font-devanagari text-base font-semibold leading-normal drop-shadow-[0_1px_0_rgba(255,255,255,0.8)] sm:text-lg">
                   {book.titleSa}
                 </span>
