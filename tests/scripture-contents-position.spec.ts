@@ -79,6 +79,12 @@ test('long chapter indexes start with 20 cards and allow all or direct range sel
   await search.fill('50');
   await expect(all).toHaveAttribute('aria-pressed', 'true');
   await expect(contents.locator('a[href="/scripture/bhagavatapurana/chapter/50/"]')).toBeVisible();
+
+  // A new range choice overrides the search, not merely the highlighted chip.
+  await range.selectOption({ index: 2 });
+  await expect(search).toHaveValue('');
+  await expect(cards).toHaveCount(20);
+  await search.fill('50');
   await page.getByRole('button', { name: 'Clear chapter filter' }).click();
   await expect(cards).toHaveCount(20);
   await expect(range).toHaveValue('1');
