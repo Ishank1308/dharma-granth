@@ -14,6 +14,7 @@ import { getChapterOrientation } from '@/data/chapter-orientation';
 import { ChapterKeyboardNav } from '@/app/components/ChapterKeyboardNav';
 import { ChapterCompletion } from '@/app/components/ChapterCompletion';
 import { ChapterVisitRecorder } from '@/app/components/ChapterVisitRecorder';
+import { ResumeVersePrompt } from '@/app/components/ResumeVersePrompt';
 import { getScriptureMeta, getScriptureChapters } from '@/data/scriptures';
 import {
   readChapterCommentary,
@@ -530,7 +531,9 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
               </Link>
             </section>
           ) : (
-            <FullChapterVerses
+            <>
+              <ResumeVersePrompt scriptureId={meta.id} chapterId={chapter.id} />
+              <FullChapterVerses
               scriptureId={params.id}
               category={meta.category}
               chapterId={chapter.id}
@@ -542,7 +545,8 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
               initialChapter={initialChapter}
               relatedTeachingsByVerse={relatedTeachingsByVerse}
               literaryByVerse={literaryByVerse}
-            />
+              />
+            </>
           )}
         </div>
 
