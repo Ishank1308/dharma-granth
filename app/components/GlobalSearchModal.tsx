@@ -1283,7 +1283,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                         Show all results
                       </button>
                     </div>
-                  )
+                  )}
                   <HelpCircle className="mx-auto mb-3 h-10 w-10 text-label-tertiary" aria-hidden="true" />
                   <h3 className="text-title-3 font-semibold text-label-primary">
                     <span lang="hi" className="font-devanagari">कोई परिणाम नहीं</span> · {selectedGroup ? 'No results in this category' : 'No results'} for “{trimmed}”
