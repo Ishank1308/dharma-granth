@@ -18,6 +18,18 @@ test('published scripture pages expose reading and chapter navigation before the
   await expect(page.locator('#contents-heading')).toBeVisible();
 });
 
+
+test('long Ramayana introduction keeps primary reading action in the first mobile viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 844 });
+  await page.goto('/scripture/ramayana/');
+
+  const firstChapter = page.locator('section.scripture-vibe-hero a[href="/scripture/ramayana/chapter/1/"]');
+  await expect(firstChapter).toBeVisible();
+  const bounds = await firstChapter.boundingBox();
+  expect(bounds).not.toBeNull();
+  expect(bounds!.y + bounds!.height, 'Reading must be discoverable before a lengthy introduction').toBeLessThan(844);
+});
+
 test('five mobile navigation labels do not collide at 200% text resize', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
