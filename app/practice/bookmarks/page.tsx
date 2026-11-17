@@ -88,7 +88,7 @@ const THEME_TAG_CONFIG: Record<
 
 export default function BookmarksAndAnnotationsPage() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('bookmarks');
-  const handleTabKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  const handleTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     const order: ActiveTab[] = ['bookmarks', 'highlights', 'notes', 'privacy'];
     const current = order.indexOf(activeTab);
     let index = current;
@@ -218,7 +218,6 @@ export default function BookmarksAndAnnotationsPage() {
       <div
         role="tablist"
         aria-label="Sanctuary sections"
-        onKeyDown={handleTabKeyDown}
         className="flex min-w-0 snap-x snap-proximity items-center gap-2 overflow-x-auto rounded-2xl border border-separator bg-dharma-card/75 p-2 shadow-sm mb-8 scrollbar-none"
       >
         <button
@@ -229,6 +228,7 @@ export default function BookmarksAndAnnotationsPage() {
           aria-selected={activeTab === 'bookmarks'}
           tabIndex={activeTab === 'bookmarks' ? 0 : -1}
           onClick={() => setActiveTab('bookmarks')}
+          onKeyDown={handleTabKeyDown}
           className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'bookmarks'
               ? 'bg-tint text-on-tint shadow-xs'
@@ -249,6 +249,7 @@ export default function BookmarksAndAnnotationsPage() {
           aria-selected={activeTab === 'highlights'}
           tabIndex={activeTab === 'highlights' ? 0 : -1}
           onClick={() => setActiveTab('highlights')}
+          onKeyDown={handleTabKeyDown}
           className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'highlights'
               ? 'bg-tint text-on-tint shadow-xs'
@@ -269,6 +270,7 @@ export default function BookmarksAndAnnotationsPage() {
           aria-selected={activeTab === 'notes'}
           tabIndex={activeTab === 'notes' ? 0 : -1}
           onClick={() => setActiveTab('notes')}
+          onKeyDown={handleTabKeyDown}
           className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'notes'
               ? 'bg-tint text-on-tint shadow-xs'
@@ -289,6 +291,7 @@ export default function BookmarksAndAnnotationsPage() {
           aria-selected={activeTab === 'privacy'}
           tabIndex={activeTab === 'privacy' ? 0 : -1}
           onClick={() => setActiveTab('privacy')}
+          onKeyDown={handleTabKeyDown}
           className={`focus-ring min-h-[44px] shrink-0 snap-start px-4 py-2 rounded-xl text-footnote font-semibold transition-colors ${
             activeTab === 'privacy'
               ? 'bg-tint text-on-tint shadow-xs'
