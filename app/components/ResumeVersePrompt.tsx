@@ -30,7 +30,10 @@ export function ResumeVersePrompt({ scriptureId, chapterId, splitChapter = false
       }
       return;
     }
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const quietMode = ['data-low-power', 'data-data-saver', 'data-lite-mode', 'data-reading-lite']
+      .some((attribute) => document.documentElement.getAttribute(attribute) === 'true');
+    target.scrollIntoView({ behavior: reducedMotion || quietMode ? 'auto' : 'smooth', block: 'start' });
     window.history.replaceState(null, '', `#verse-${verseId}`);
     setDismissed(true);
   }
