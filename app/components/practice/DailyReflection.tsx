@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   PenLine,
   Check,
@@ -63,11 +63,32 @@ export function DailyReflection() {
     'dharma.practice.reflections',
     {},
   );
-  const [currentDate, setCurrentDate] = useState(localISODate());
+  // The HTML is statically exported: a date computed during SSR can be yesterday
+  // when the page hydrates after midnight in India. Render a stable placeholder
+  // until mounted, then select the reader's current IST calendar day.
+  const [currentDate, setCurrentDate] = useState('');
+  useEffect(() => {
+    setCurrentDate(localISODate());
+  }, []);
   const [query, setQuery] = useState('');
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
   const [confirmDelete, setConfirmDelete] = useState(false);
   const saveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  if (!currentDate) {
+    return (
+      <ToolCard
+        icon={<PenLine className="w-5 h-5 text-rose-600" />}
+        title="Daily Reflection"
+        titleHindi="दैनिक चिंतन"
+        accent="rose"
+      >
+        <p className="text-sm text-dharma-muted" role="status" aria-live="polite">
+          Preparing the daily reflection · आज का चिंतन तैयार हो रहा है
+        </p>
+      </ToolCard>
+    );
+  }
 
   const today = localISODate();
   const dateInfo = formatDisplayDate(currentDate);
