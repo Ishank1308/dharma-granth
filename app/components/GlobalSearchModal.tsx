@@ -1202,7 +1202,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                             <button
                               type="button"
                               onClick={() => runSearch(item)}
-                              className="focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
+                              className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
                             >
                               <Clock className="h-3.5 w-3.5 text-label-tertiary" aria-hidden="true" />
                               {item}
@@ -1224,7 +1224,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                           <button
                             type="button"
                             onClick={() => runSearch(s.query)}
-                            className="focus-ring inline-flex min-h-[36px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary active:scale-97 transition"
+                            className="focus-ring inline-flex min-h-[44px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary active:scale-97 transition"
                           >
                             {s.label}
                           </button>
@@ -1299,7 +1299,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                         <button
                           type="button"
                           onClick={() => runSearch(s.query)}
-                          className="focus-ring inline-flex min-h-[36px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
+                          className="focus-ring inline-flex min-h-[44px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
                         >
                           {s.label}
                         </button>
