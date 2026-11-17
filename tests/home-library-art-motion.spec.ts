@@ -59,7 +59,7 @@ test('featured artwork stays decorative and the hero aura honors reduced-motion 
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
 
-  const passage = page.locator('a[href="/scripture/bhagavadgita/chapter/2/verse/47/"]');
+  const passage = page.getByRole('complementary', { name: 'Featured paths into the library' }).locator('[data-tilt="subtle"]');
   const artwork = passage.locator('[data-decorative]');
   await expect(artwork).toHaveAttribute('aria-hidden', 'true');
   const image = await artwork.evaluate(el => getComputedStyle(el).backgroundImage);
