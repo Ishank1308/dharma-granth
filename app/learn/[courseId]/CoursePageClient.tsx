@@ -103,28 +103,22 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
     setCardIndex(0);
   };
 
-  // Keyboard navigation for Course tabs
-  const handleTabKeyDown = (e: React.KeyboardEvent, tab: typeof activeTab) => {
+  // ARIA tab keyboard pattern: roving focus, Arrow Left/Right and Home/End.
+  const handleTabKeyDown = (event: React.KeyboardEvent, tab: typeof activeTab) => {
     const tabs: (typeof activeTab)[] = [
-      'overview',
-      'concepts',
-      'flashcards',
-      'mindmap',
-      'timeline',
-      'quiz',
-      'revision',
+      'overview', 'concepts', 'flashcards', 'mindmap', 'timeline', 'quiz', 'revision',
     ];
-    const currentIndex = tabs.indexOf(activeTab);
-
-    if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      const nextTab = tabs[(currentIndex + 1) % tabs.length];
-      setActiveTab(nextTab);
-    } else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      const prevTab = tabs[(currentIndex - 1 + tabs.length) % tabs.length];
-      setActiveTab(prevTab);
-    }
+    const current = tabs.indexOf(tab);
+    let next = current;
+    if (event.key === 'ArrowRight') next = (current + 1) % tabs.length;
+    else if (event.key === 'ArrowLeft') next = (current - 1 + tabs.length) % tabs.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = tabs.length - 1;
+    else return;
+    event.preventDefault();
+    const nextTab = tabs[next];
+    setActiveTab(nextTab);
+    requestAnimationFrame(() => document.getElementById(`tab-${nextTab}`)?.focus());
   };
 
   const activeLesson =
@@ -289,7 +283,7 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
       )}
 
       {/* ── Tabbed Navigation Bar ───────────────────────────────────────── */}
-      <section className="sticky top-0 z-30 bg-dharma-card/95 backdrop-blur-md border-b border-dharma-border shadow-xs">
+      <section className="sticky top-[52px] z-30 bg-dharma-card/95 backdrop-blur-md border-b border-dharma-border shadow-xs">
         <div className="max-w-6xl mx-auto px-6 overflow-x-auto scrollbar-none">
           <div
             role="tablist"
@@ -348,9 +342,10 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
                   aria-selected={isActive}
                   aria-controls={`panel-${tab.id}`}
                   id={`tab-${tab.id}`}
+                  tabIndex={isActive ? 0 : -1}
                   onClick={() => setActiveTab(tab.id)}
                   onKeyDown={(e) => handleTabKeyDown(e, tab.id)}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-serif text-xs md:text-sm transition-all select-none ${
+                  className={`focus-ring flex min-h-[44px] items-center gap-2 px-4 py-2.5 rounded-xl font-serif text-xs md:text-sm transition-all select-none ${
                     isActive
                       ? 'bg-saffron-700 text-white font-bold shadow-xs'
                       : 'text-dharma-text hover:bg-dharma-card-soft hover:text-saffron-700'
