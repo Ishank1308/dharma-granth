@@ -32,9 +32,10 @@ export default function CollectionsPage() {
           <p className="text-xs font-semibold uppercase tracking-widest text-saffron-200 mb-2">
             Personal Study
           </p>
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-3">
+          <h1 className="font-serif text-[clamp(2rem,calc(1.55rem+2.4vw),3rem)] leading-[1.15] font-bold mb-2">
             Study Collections
           </h1>
+          <p lang="hi" className="font-devanagari text-base sm:text-lg font-semibold text-saffron-100 mb-3">श्लोक संग्रह</p>
           <p className="text-lg opacity-90 max-w-2xl">
             Organize your saved verses into thematic collections. Track your highlights and personal notes across all scriptures.
           </p>
