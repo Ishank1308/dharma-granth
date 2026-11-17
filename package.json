@@ -68,6 +68,7 @@
     "test:panchang": "tsx scripts/test-panchang-day.ts",
     "test:format": "tsx scripts/test-format.ts",
     "test:sitemap": "tsx scripts/test-sitemap.ts",
+    "test:sanskrit-lexicon": "tsx scripts/test-sanskrit-lexicon.ts",
     "test:embed": "tsx scripts/test-embed.ts",
     "ask:muse": "tsx scripts/ask-muse.ts",
     "chat:muse": "tsx scripts/ask-muse.ts",

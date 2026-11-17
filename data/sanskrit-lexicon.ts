@@ -327,43 +327,31 @@ export function normalizeSanskritQuery(raw: string): string {
 }
 
 /**
- * Searches the reviewed Sanskrit Lexicon for an exact or fuzzy match.
+ * Find a reviewed entry only for its exact headword, recorded inflection,
+ * or explicitly mapped spelling. Substring matching is unsafe for Sanskrit:
+ * short particles such as "mā" (मा, "not") otherwise match unrelated
+ * entries such as "ātmā" (आत्मा).
  */
 export function findLexiconEntry(query: string): SanskritLexiconEntry | null {
-  if (!query) return null;
   const q = normalizeSanskritQuery(query);
+  if (!q) return null;
 
-  // Exact key match
-  if (SANSKRIT_LEXICON[q]) {
-    return SANSKRIT_LEXICON[q];
-  }
+  const explicitForms: Record<string, keyof typeof SANSKRIT_LEXICON> = {
+    'कर्मणि': 'karma', karmani: 'karma', 'karmaṇi': 'karma',
+    'अधिकारः': 'adhikara', adhikaras: 'adhikara', 'adhikāraḥ': 'adhikara',
+    'फलेषु': 'phala', phaleshu: 'phala', 'phaleṣu': 'phala',
+    'अकर्मणि': 'akarma', akarmani: 'akarma', 'akarmaṇi': 'akarma',
+  };
+  const mapped = explicitForms[q];
+  if (mapped && SANSKRIT_LEXICON[mapped]) return SANSKRIT_LEXICON[mapped];
+  if (SANSKRIT_LEXICON[q]) return SANSKRIT_LEXICON[q];
 
-  // Iterate entries
+  // The parenthetical variant belongs to a headword; match a whole token
+  // rather than an arbitrary substring of a different word.
   for (const entry of Object.values(SANSKRIT_LEXICON)) {
-    if (entry.id === q) return entry;
-
-    // Check Devanagari normalized
-    const devNormalized = normalizeSanskritQuery(entry.termDevanagari);
-    if (devNormalized.includes(q) || q.includes(devNormalized)) return entry;
-
-    // Check IAST
-    const iastNormalized = normalizeSanskritQuery(entry.termIast);
-    if (iastNormalized.includes(q) || q.includes(iastNormalized)) return entry;
-
-    // Specific mapping checks for inflected forms
-    if (q === 'कर्मणि' || q === 'karmani' || q === 'karmaṇi') {
-      if (entry.id === 'karma') return entry;
-    }
-    if (q === 'अधिकारः' || q === 'adhikara' || q === 'adhikāraḥ' || q === 'adhikaras') {
-      if (entry.id === 'adhikara') return entry;
-    }
-    if (q === 'फलेषु' || q === 'phaleshu' || q === 'phaleṣu' || q === 'phala') {
-      if (entry.id === 'phala') return entry;
-    }
-    if (q === 'अकर्मणि' || q === 'akarmani' || q === 'akarmaṇi' || q === 'akarma') {
-      if (entry.id === 'akarma') return entry;
-    }
+    const tokens = [entry.id, entry.termDevanagari, entry.termIast]
+      .flatMap((value) => normalizeSanskritQuery(value).split(/\s+/));
+    if (tokens.includes(q)) return entry;
   }
-
   return null;
 }

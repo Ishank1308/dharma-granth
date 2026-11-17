@@ -30,8 +30,7 @@ export interface VerseTreeBranch {
   id: string;
   labelHi: string;
   labelEn: string;
-  /** Optional when server-rendered sections cross a React client boundary; the
-   * shared layer id resolves a safe icon locally instead of serializing a function. */
+  /** Default section icon is looked up locally across the server/client boundary. */
   icon?: LucideIcon;
   /** One short line shown on the node while it is folded. */
   hint?: string;
@@ -67,10 +66,7 @@ export function VerseTreeStructure({
 
 const RAIL = 'rounded-full bg-amber-500/30 dark:bg-amber-400/25';
 const SECTION_ICONS: Record<string, LucideIcon> = {
-  arth: ScrollText,
-  vyakhya: Lightbulb,
-  modern: Compass,
-  reflection: Sparkles,
+  arth: ScrollText, vyakhya: Lightbulb, modern: Compass, reflection: Sparkles,
 };
 
 function TreeNode({ branches, persistent, anchorPrefix }: { branches: VerseTreeBranch[]; persistent: boolean; anchorPrefix?: string }) {
@@ -80,8 +76,8 @@ function TreeNode({ branches, persistent, anchorPrefix }: { branches: VerseTreeB
   // Follow the default when it changes (e.g. the reader switches mode or perspective).
   useEffect(() => setOpen(Boolean(branch.defaultOpen)), [branch.defaultOpen]);
 
-  // Section links from the study guide reveal a folded branch, including
-  // direct fragment links and navigation by keyboard in both scripture readers.
+  // Fragment links from the study guide must reveal content even if a reader
+  // previously folded the section. This also handles deep links after reload.
   const anchorId = anchorPrefix ? `${anchorPrefix}-${branch.id}` : undefined;
   useEffect(() => {
     if (!anchorId) return;
@@ -92,7 +88,6 @@ function TreeNode({ branches, persistent, anchorPrefix }: { branches: VerseTreeB
     window.addEventListener('hashchange', revealTarget);
     return () => window.removeEventListener('hashchange', revealTarget);
   }, [anchorId]);
-
   const Icon = branch.icon ?? SECTION_ICONS[branch.id] ?? ScrollText;
   const bodyId = `${id}-body`;
 
