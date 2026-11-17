@@ -219,6 +219,7 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
   let expected = 0;
   let missing = 0;
   let sample = '';
+  let sampleReason = '';
   for (const id of ids) {
     const path = join(SOURCE, `${id}.json`);
     if (!existsSync(path)) continue;
@@ -229,22 +230,25 @@ if (!(pageHtml('/scripture/bhagavadgita/chapter/2/') ?? '').includes('कर्�
         if (subsets.has(id) && !subsets.get(id).has(`${chapter.number}:${verse.number}`)) continue;
         expected++;
         const html = pageHtml(`/scripture/${id}/chapter/${chapter.number}/verse/${verse.number}/`);
-        // The FAQ structured data is built from the verse's Hindi / English meaning, so a verse
-        // without either (source text not yet translated) legitimately has only the Article data.
-        const needsFaq = Boolean(verse.translation || verse.hindi);
+        // Real verse pages have Article and BreadcrumbList JSON-LD.
+        // Never require fabricated FAQPage questions that are not rendered as visible Q&A.
         if (
           !html ||
           !html.includes(`id="verse-${verse.number}"`) ||
           !html.includes('"Article"') ||
-          (needsFaq && !html.includes('"FAQPage"'))
+          !html.includes('"BreadcrumbList"') ||
+          html.includes('"FAQPage"')
         ) {
           missing++;
-          sample ||= `${id} ${chapter.number}.${verse.number}`;
+          if (!sample) {
+            sample = `${id} ${chapter.number}.${verse.number}`;
+            sampleReason = `missingHtml=${!html}; missingVerseId=${Boolean(html && !html.includes(`id="verse-${verse.number}"`))}; missingArticle=${Boolean(html && !html.includes('"Article"'))}; missingBreadcrumb=${Boolean(html && !html.includes('"BreadcrumbList"'))}; faqPresent=${Boolean(html && html.includes('"FAQPage"'))}`;
+          }
         }
       }
     }
   }
-  if (missing > 0) fail('verse pages', `${missing}/${expected} verse pages missing or incomplete (first: ${sample})`);
+  if (missing > 0) fail('verse pages', `${missing}/${expected} verse pages missing or incomplete (first: ${sample}; ${sampleReason})`);
   else verseScripts = `${expected} verse pages across ${ids.length} scriptures`;
 }
 

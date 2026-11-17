@@ -117,7 +117,9 @@ test('verse page carries its schema and share image', async ({ page }) => {
       return (json['@graph'] ?? [json]).map((node: { '@type': string }) => node['@type']);
     }),
   );
-  expect(types).toEqual(expect.arrayContaining(['Article', 'FAQPage', 'BreadcrumbList']));
+  // Do not require FAQ schema for questions that are not visibly answered on the page.
+  expect(types).toEqual(expect.arrayContaining(['Article', 'BreadcrumbList']));
+  expect(types).not.toContain('FAQPage');
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/og\/verse\/bhagavadgita\/2-47\.jpg$/);
 });
 
