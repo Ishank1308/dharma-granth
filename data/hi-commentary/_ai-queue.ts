@@ -71,11 +71,14 @@ export function approvedAiEntries(scriptureId: string): {
     const sourceChecked = q.status === "source-checked";
     if (q.status !== "approved" && !sourceChecked) continue;
     if (sourceChecked) {
-      // Allow a specifically source-checked AI explanation to reach the reader
-      // without mislabelling it as independently scholar-reviewed. It must carry
-      // a numbered witness opening and be tied to this exact Sanskrit verse.
+      // This narrowly scoped release admits only the 40 numbered verses
+      // independently checked for Devi Bhagavata Skandha 1 Adhyaya 2.
+      // A source URL by itself never counts as independent scholarly review.
+      const allowedVerse = scriptureId === "devibhagavat" &&
+        /^2:(?:[1-9]|[1-3][0-9]|40)$/.test(key);
       const opening = norm(q.sanskritOpening ?? "");
-      if (!opening || opening.length < 8 || !q.sourceWitness?.startsWith("https://") ||
+      if (!allowedVerse || !opening || opening.length < 8 ||
+        q.sourceWitness !== "https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html" ||
         !sanskritNow.get(key)?.includes(opening)) {
         stale.push(key);
         continue;
