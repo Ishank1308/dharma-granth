@@ -47,9 +47,9 @@ function isMatch(template: string, actual: string) {
   const a = segments(actual);
   return t.length === a.length && t.every((part, i) => {
     if (part === '[chapter]' || part === '[chapterId]' || part === '[verse]' || part === '[verseId]' || part === '[part]') {
-      return /^\\d+(?:\\.\\d+)?$/.test(a[i]);
+      return /^\d+(?:\.\d+)?$/.test(a[i]);
     }
-    return /^\\[[^\\]]+\\]$/.test(part) ? a[i].length > 0 : part === a[i];
+    return /^\[[^\]]+\]$/.test(part) ? a[i].length > 0 : part === a[i];
   });
 }
 
@@ -59,7 +59,7 @@ async function publishedPaths(request: APIRequestContext) {
     const response = await request.get(`/sitemap-${section}.xml`);
     expect(response.status(), `Missing sitemap-${section}.xml`).toBe(200);
     const xml = await response.text();
-    return Array.from(xml.matchAll(/<loc>([^<]+)<\\/loc>/g), match => new URL(match[1]).pathname);
+    return Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/g), match => new URL(match[1]).pathname);
   }));
   return new Set(all.flat());
 }
