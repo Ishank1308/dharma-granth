@@ -36,6 +36,13 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
   const defaultRangeStart = chapters.length > 60 ? chapters[0]?.id ?? null : null;
   const [rangeStart, setRangeStart] = useState<number | null>(defaultRangeStart);
 
+  // Picking a range must clear the global search, otherwise the selected
+  // range pill looks active while the search results still span every range.
+  function chooseRange(next: number | null) {
+    setQuery('');
+    setRangeStart(next);
+  }
+
   const readableChapters = chapters.filter((chapter) => chapter.verseCount > 0);
   const firstChapter = readableChapters[0];
   const chapterTotal = totalChapters || chapters.length;
@@ -125,7 +132,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
               <button
                 type="button"
                 aria-pressed={rangeStart === null}
-                onClick={() => setRangeStart(null)}
+                onClick={() => chooseRange(null)}
                 className={`focus-ring inline-flex min-h-11 shrink-0 items-center rounded-full border px-3 py-1 text-xs font-semibold transition ${rangeStart === null
                   ? 'border-saffron-600 bg-dharma-saffron text-dharma-bg'
                   : 'border-dharma-border bg-dharma-bg text-dharma-muted hover:text-dharma-text'
@@ -137,7 +144,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
                 <select
                   aria-label="Choose chapter range"
                   value={rangeStart === null ? '' : String(rangeStart)}
-                  onChange={(event) => setRangeStart(event.target.value ? Number(event.target.value) : null)}
+                  onChange={(event) => chooseRange(event.target.value ? Number(event.target.value) : null)}
                   className="focus-ring min-h-11 min-w-0 max-w-full rounded-full border border-dharma-border bg-dharma-bg px-3 text-sm font-semibold text-dharma-text"
                 >
                   <option value="">Choose range</option>
@@ -152,7 +159,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
                         key={r.start}
                         type="button"
                         aria-pressed={active}
-                        onClick={() => setRangeStart(active ? null : r.start)}
+                        onClick={() => chooseRange(active ? null : r.start)}
                         className={`focus-ring inline-flex min-h-11 shrink-0 items-center rounded-full border px-3 py-1 font-mono text-xs font-semibold transition ${active
                           ? 'border-saffron-600 bg-dharma-saffron text-dharma-bg'
                           : 'border-dharma-border bg-dharma-bg text-dharma-muted hover:text-dharma-text'
@@ -210,10 +217,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
             कोई अध्याय नहीं मिला।{' '}
             <button
               type="button"
-              onClick={() => {
-                setQuery('');
-                setRangeStart(defaultRangeStart);
-              }}
+              onClick={() => chooseRange(null)}
               className="font-semibold text-dharma-saffron underline"
             >
               सभी अध्याय दिखाएँ
