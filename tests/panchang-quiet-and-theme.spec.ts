@@ -30,6 +30,14 @@ for (const theme of ['sunset', 'night'] as const) {
     // app/globals.css deliberately makes main.bg-dharma-bg transparent so the
     // shared liquid backdrop is visible. The visible canvas belongs to body.
     const actual = await page.locator('main.apple-scope').evaluate((el) => {
+      const readPixels = (color: string): number[] => {
+        const canvas = document.createElement('canvas');
+        canvas.width = canvas.height = 1;
+        const ctx = canvas.getContext('2d')!;
+        ctx.fillStyle = color;
+        ctx.fillRect(0, 0, 1, 1);
+        return Array.from(ctx.getImageData(0, 0, 1, 1).data);
+      };
       const root = getComputedStyle(document.documentElement);
       const body = getComputedStyle(document.body);
       const main = getComputedStyle(el);
@@ -38,6 +46,10 @@ for (const theme of ['sunset', 'night'] as const) {
         textToken: root.getPropertyValue('--dharma-text').trim(),
         bodyBackground: body.backgroundColor,
         mainBackground: main.backgroundColor,
+        // Compare actual painted colors, not serialized CSS syntax:
+        // Chromium can return either rgb(...) or color(srgb ...).
+        bodyPixels: readPixels(body.backgroundColor),
+        tokenPixels: readPixels(root.getPropertyValue('--dharma-bg').trim()),
       };
     });
     const tokens = theme === 'sunset'
@@ -46,7 +58,7 @@ for (const theme of ['sunset', 'night'] as const) {
 
     expect(actual.bgToken).toBe(tokens.bgToken);
     expect(actual.textToken).toBe(tokens.textToken);
-    expect(actual.bodyBackground).not.toBe('rgba(0, 0, 0, 0)');
+    expect(actual.bodyPixels, 'Painted body background must match the selected theme').toEqual(actual.tokenPixels);
     expect(actual.mainBackground).toBe('rgba(0, 0, 0, 0)');
   });
 }
