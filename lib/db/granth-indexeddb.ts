@@ -19,6 +19,8 @@ export interface StoredVerse {
   transliteration?: string;
   translation?: string;
   hindi?: string;
+  /** Preserved in offline cache so original OCR holds cannot hide source-checked AI text. */
+  hindiSource?: 'ai';
   wordMeaning?: string;
   padaccheda?: string;
   commentary?: string;
@@ -189,6 +191,7 @@ export async function saveChapterVersesToDB(
     transliteration?: string;
     translation?: string;
     hindi?: string;
+    hindiSource?: 'ai';
     wordMeaning?: string;
     padaccheda?: string;
     commentary?: string;
@@ -220,6 +223,7 @@ export async function saveChapterVersesToDB(
         transliteration: v.transliteration,
         translation: v.translation,
         hindi: v.hindi,
+        hindiSource: v.hindiSource,
         wordMeaning: v.wordMeaning,
         padaccheda: v.padaccheda,
         commentary: v.commentary,
