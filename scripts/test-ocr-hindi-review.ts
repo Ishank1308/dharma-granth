@@ -15,6 +15,11 @@ type Verse = {
 type Chapter = { number: number | string; verses: Verse[] };
 type Book = { chapters: Chapter[] };
 type Shard = { chapter: Chapter };
+type PublishedHindi = Verse & { hindiSource?: string };
+const sourceCheckedDevi = JSON.parse(fs.readFileSync(
+  path.join(path.resolve(__dirname, '..'), 'data/written-meanings/devibhagavat.json'), 'utf8',
+)) as { meanings: Record<string, { hindi?: string }> };
+
 
 const root = path.resolve(__dirname, '..');
 const sourceCache = new Map<string, Book>();
@@ -51,7 +56,15 @@ for (const entry of review.entries) {
   const published = shardCache.get(shardKey)?.chapter.verses
     .find((candidate) => String(candidate.number) === verse);
   assert.ok(published, `published verse exists: ${key}`);
-  if (refilled && review.showRefillUnproofread) {
+  // These 11 Devi Bhagavata 1.2 coordinates previously held printed OCR.
+  // Their new, independently phrased source-checked Hindi supersedes only the
+  // published shard, not the archived OCR or its pending-review registry.
+  if (scriptureId === 'devibhagavat' && chapter === 2 && Number(verse) >= 1 && Number(verse) <= 40) {
+    assert.equal(published.hindi, sourceCheckedDevi.meanings[`2:${verse}`]?.hindi,
+      `source-checked Hindi supersedes printed OCR in the reader: ${key}`);
+    assert.equal((published as PublishedHindi).hindiSource, 'ai', `AI attribution is required: ${key}`);
+    assert.equal(published.hindiReviewRequired, undefined, `stale OCR hold should not hide checked Hindi: ${key}`);
+  } else if (refilled && review.showRefillUnproofread) {
     assert.equal(published.hindi, source.hindi, `refilled Hindi is shown as printed: ${key}`);
     assert.equal(published.hindiUnproofread, true, `reader gets the unproofread label: ${key}`);
   } else {
