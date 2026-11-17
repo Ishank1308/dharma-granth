@@ -29,7 +29,7 @@ test('Gita chapter highlights use real linked chapters and static local artwork'
   const width = await page.evaluate(() => document.documentElement.scrollWidth);
   expect(width).toBeLessThanOrEqual(321);
   await expect(page.getByRole('heading', { name: 'Adhyay / Sections' })).toBeVisible();
-  await expect(page.getByRole('link', { name: /Start reading/ })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Start reading', exact: true })).toBeVisible();
 });
 
 test('Ramayana artwork follows known kanda scenes, while uncurated books remain text first', async ({ page }) => {

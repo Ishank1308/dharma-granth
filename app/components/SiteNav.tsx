@@ -1254,7 +1254,7 @@ export function SiteNav({
             }`}
           >
             <Home className="h-5 w-5" aria-hidden="true" />
-            <span className="text-xs tracking-tight">Home</span>
+            <span data-mobile-nav-label className="min-w-0 max-w-full truncate px-0.5 text-center text-[clamp(11px,3vw,13px)] tracking-tight">Home</span>
           </Link>
 
           {/* 2. Search Button */}
@@ -1265,7 +1265,7 @@ export function SiteNav({
             aria-label="खोजें (Search)"
           >
             <Search className="h-5 w-5" aria-hidden="true" />
-            <span className="text-xs tracking-tight">Search</span>
+            <span data-mobile-nav-label className="min-w-0 max-w-full truncate px-0.5 text-center text-[clamp(11px,3vw,13px)] tracking-tight">Search</span>
           </button>
 
           {/* 3. Library */}
@@ -1280,7 +1280,7 @@ export function SiteNav({
             }`}
           >
             <BookOpen className="h-5 w-5" aria-hidden="true" />
-            <span className="text-xs tracking-tight">Library</span>
+            <span data-mobile-nav-label className="min-w-0 max-w-full truncate px-0.5 text-center text-[clamp(11px,3vw,13px)] tracking-tight">Library</span>
           </Link>
 
           {/* 4. Sadhana */}
@@ -1295,7 +1295,7 @@ export function SiteNav({
             }`}
           >
             <Sparkles className="h-5 w-5" aria-hidden="true" />
-            <span className="text-xs tracking-tight">Sadhana</span>
+            <span data-mobile-nav-label className="min-w-0 max-w-full truncate px-0.5 text-center text-[clamp(11px,3vw,13px)] tracking-tight">Sadhana</span>
           </Link>
 
           {/* 5. Saved Verses */}
@@ -1317,7 +1317,7 @@ export function SiteNav({
                 </span>
               )}
             </div>
-            <span className="text-xs tracking-tight">Saved</span>
+            <span data-mobile-nav-label className="min-w-0 max-w-full truncate px-0.5 text-center text-[clamp(11px,3vw,13px)] tracking-tight">Saved</span>
           </Link>
         </div>
       </nav>
