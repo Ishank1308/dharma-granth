@@ -1109,7 +1109,12 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
             )}
 
             {/* Body */}
-            <div className="min-h-0 flex-1 overflow-y-auto p-3 sm:p-5">
+            <div
+              role="region"
+              aria-label="Search results and suggestions"
+              tabIndex={0}
+              className="focus-ring min-h-0 flex-1 overflow-y-auto p-3 sm:p-5"
+            >
               {isActionQuery ? (
                 <div className="space-y-3 py-1">
                   <div className="flex items-center justify-between px-1">
