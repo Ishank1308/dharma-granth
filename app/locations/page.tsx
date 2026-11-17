@@ -32,7 +32,7 @@ export default function LocationsPage() {
   return (
     <main className="min-h-screen bg-dharma-bg">
       {/* ── Hero ─────────────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-br from-teal-900 via-cyan-800 to-blue-900 text-white py-16 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-teal-900 via-cyan-800 to-blue-900 text-white py-12 sm:py-16 overflow-hidden">
         <div className="absolute inset-0 mandala-bg opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         <div className="max-w-6xl mx-auto px-6 relative">
@@ -40,10 +40,10 @@ export default function LocationsPage() {
             <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-cyan-200 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
               तीर्थमानचित्र — Sacred Geography
             </p>
-            <h1 className="text-5xl font-serif font-bold mb-4">
+            <h1 className="font-serif text-[clamp(1.9rem,calc(1.45rem+2.3vw),3rem)] leading-tight font-bold mb-4 [overflow-wrap:anywhere]">
               पवित्र स्थान मानचित्र (Sacred Geography)
             </h1>
-            <p className="text-xl opacity-90 max-w-2xl">
+            <p className="text-base sm:text-lg leading-relaxed opacity-90 max-w-2xl">
               शास्त्रों के पवित्र भौगोलिक स्थानों का अन्वेषण करें — अयोध्या से कैलास तक, गंगा से सरस्वती तक। प्रत्येक स्थान को स्पष्ट रूप से पारंपरिक, वर्तमान, विवादित, और प्रतीकात्मक/ब्रह्मांडीय पहचान के साथ वर्गीकृत किया गया है।
             </p>
           </FadeUp>
