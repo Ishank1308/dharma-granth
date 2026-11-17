@@ -131,7 +131,7 @@ for (let n = 1; n <= 25; n++) {
   assert.equal(verse.sanskrit, chapter3.verses.find(v => String(v.number) === String(n))?.sanskrit,
     `Original Sanskrit modified at ${key}`);
 }
-console.log('✓ Devi Bhagavata publishes all 90 source-keyed Hindi meanings (chapters 1–2 and 3:1–20).');
+console.log('✓ Devi Bhagavata publishes all 90 source-keyed Hindi meanings (chapters 1–2 and 3:1–25).');
 
 
 /**
@@ -155,7 +155,7 @@ const modernContextSet = new Set<string>();
 for (const [chapterNumber, sourceChapter, verseCount] of [
   [1, chapter, 25],
   [2, chapter2, 40],
-  [3, chapter3, 20],
+  [3, chapter3, 25],
 ] as const) {
   for (let n = 1; n <= verseCount; n++) {
     const key = `${chapterNumber}:${n}`;
@@ -201,4 +201,4 @@ const register = execFileSync(process.execPath, [
 ], { encoding: 'utf8' });
 assert.match(register, /sentences to fix 0, तुम to check 0/,
   'Devi Bhagavata explanation has colloquial words or informal address');
-console.log('✓ Devi Bhagavata publishes 90 distinct Sanskrit-keyed व्याख्या and 85 individually written modern-context panels.');
+console.log('✓ Devi Bhagavata publishes 90 distinct Sanskrit-keyed व्याख्या and 90 individually written modern-context panels.');
