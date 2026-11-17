@@ -183,7 +183,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
           <h1 className="font-serif text-3xl sm:text-5xl font-bold text-dharma-text">
             {mantra.title}
           </h1>
-          <p lang="sa" className="font-devanagari text-2xl sm:text-3xl text-saffron-800 dark:text-saffron-300 font-semibold mt-2">
+          <p lang="sa" className="font-devanagari text-[clamp(1.35rem,calc(1.05rem+1.5vw),2rem)] leading-[1.9] [overflow-wrap:anywhere] text-saffron-800 dark:text-saffron-300 font-semibold mt-2">
             {mantra.titleHi}
           </p>
 
