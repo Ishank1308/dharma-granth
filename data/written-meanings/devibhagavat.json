@@ -1,5 +1,6 @@
 {
   "note": "Independently drafted Hindi meanings for Devi Bhagavata Purana, Skandha 1, Adhyaya 1, verses 1-25, based on the Sanskrit passage (https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html). The ancient Sanskrit source was consulted for study only; no modern published translation is reproduced. UNREVIEWED DRAFT (reference cross-check found misaligned OCR in the existing Gita Press extract; compare each verse to the printed edition): confirm the repository edition has chapter 1 / verse keys 1:1–1:25 and check every verse before applying or publishing.",
+  "reviewStatus": "unreviewed",
   "keyFormat": "chapter:verse",
   "meanings": {
     "1:1": {
