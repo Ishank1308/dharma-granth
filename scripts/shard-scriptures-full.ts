@@ -16,11 +16,12 @@ import { FOOTNOTE_SCRIPTURES, stripPrintedFootnote } from "./lib/printed-footnot
 import { fillerChapters } from "./lib/filler-chapters";
 import { loadPilotOverlay, patchPublishedVerse } from "./pilot/overlay";
 import { isHindiSourceReviewRequired, isReviewKept, isUnproofreadShown } from "../lib/ocr-hindi-review";
+import { applySourceCheckedMeanings, verifiedMeaningOverlayBytes } from "./lib/source-checked-meaning-overlays";
 
 const PILOT = loadPilotOverlay();
 
 /** Bump when shard output logic changes (stubs, templates, echo rules, manifest shape). */
-const SHARD_REV = "7";
+const SHARD_REV = "8";
 
 interface ShardStamp {
   rev: string;
@@ -117,7 +118,7 @@ function main(): void {
     // Raw bytes feed the stamp and the parse below; read once.
     const bookRaw = fs.readFileSync(bookPath);
     if (!DRY) {
-      const stamp = sha256Hex(Buffer.concat([bookRaw, PILOT_BYTES, HINDI_REVIEW_BYTES]));
+      const stamp = sha256Hex(Buffer.concat([bookRaw, PILOT_BYTES, HINDI_REVIEW_BYTES, verifiedMeaningOverlayBytes(id)]));
       const prev = readShardStamp(outDir);
       if (
         prev?.stamp === stamp &&
@@ -264,6 +265,11 @@ function main(): void {
       if (collapsed > 0) console.log(`  ${id}: ${collapsed} verse(s) point to their passage translation`);
     }
 
+    // Restore only the source-checked, exact-key Hindi meanings after OCR/
+    // template filtering. Other staged meanings remain unpublished.
+    const sourceChecked = applySourceCheckedMeanings(id, book);
+    if (sourceChecked) console.log(`  ${id}: published ${sourceChecked} source-key-checked Hindi meanings (AI-assisted label)`);
+
     if (!DRY) fs.mkdirSync(outDir, { recursive: true });
 
     let shardBytes = 0;
@@ -344,7 +350,7 @@ function main(): void {
         path.join(outDir, "_stamps.json"),
         JSON.stringify({
           rev: SHARD_REV,
-          stamp: sha256Hex(Buffer.concat([bookRaw, PILOT_BYTES, HINDI_REVIEW_BYTES])),
+          stamp: sha256Hex(Buffer.concat([bookRaw, PILOT_BYTES, HINDI_REVIEW_BYTES, verifiedMeaningOverlayBytes(id)])),
           chapters: [...expectedShards]
             .map((name) => Number(name.slice(3, -".json".length)))
             .filter((number) => Number.isFinite(number))
