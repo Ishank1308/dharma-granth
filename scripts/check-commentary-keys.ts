@@ -44,7 +44,7 @@ for (const id of ids) {
       if (kind !== "published" && entry.status === "source-checked") {
         // Source-checked AI contributions have an edition witness and an exact,
         // unique source-verse opening. They are not presented as scholar-reviewed.
-        const fold = (t: string) => t.normalize("NFC").replace(/[\\s|।॥०-९0-9.]/g, "");
+        const fold = (t: string) => t.normalize("NFC").replace(/[\s|।॥०-९0-9.]/g, "");
         const witness = entry.sanskritOpening?.trim() ?? "";
         if (fold(witness).length < 8 || !entry.sourceWitness?.startsWith("https://") ||
             !fold(matching[0]).includes(fold(witness))) {
