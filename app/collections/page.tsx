@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { FolderOpen, Plus, Trash2, BookOpen, ArrowRight, Highlighter, StickyNote, X, Copy, Check } from 'lucide-react';
@@ -9,16 +9,15 @@ import { FadeUp, FadeUpOnView, Stagger, StaggerItem } from '@/app/components/mot
 import { chapterVerseHref, readHref } from '@/lib/verse-paths';
 import { verseCount } from '@/lib/format';
 import { STUDY_PLAYLISTS } from '@/data/study-playlists';
+import { useAccessibleModal } from '@/lib/useAccessibleModal';
 
 export default function CollectionsPage() {
   const reduce = useReducedMotion();
   const progress = useStudyProgress();
   const [showCreate, setShowCreate] = useState(false);
-  // Focus the name field when the dialog opens (instead of autoFocus).
   const nameInputRef = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    if (showCreate) nameInputRef.current?.focus();
-  }, [showCreate]);
+  const createDialogRef = useRef<HTMLDivElement>(null);
+  useAccessibleModal(showCreate, createDialogRef, () => setShowCreate(false), nameInputRef);
   const [newName, setNewName] = useState('');
   const [newDesc, setNewDesc] = useState('');
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -33,9 +32,10 @@ export default function CollectionsPage() {
           <p className="text-xs font-semibold uppercase tracking-widest text-saffron-200 mb-2">
             Personal Study
           </p>
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-3">
+          <h1 className="font-serif text-[clamp(2rem,calc(1.55rem+2.4vw),3rem)] leading-[1.15] font-bold mb-2">
             Study Collections
           </h1>
+          <p lang="hi" className="font-devanagari text-base sm:text-lg font-semibold text-saffron-100 mb-3">श्लोक संग्रह</p>
           <p className="text-lg opacity-90 max-w-2xl">
             Organize your saved verses into thematic collections. Track your highlights and personal notes across all scriptures.
           </p>
@@ -397,16 +397,23 @@ export default function CollectionsPage() {
               initial={reduce ? {} : { scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={reduce ? {} : { scale: 0.95, opacity: 0 }}
-              className="bg-dharma-card border border-dharma-border rounded-2xl shadow-2xl p-6 max-w-md w-full"
+              ref={createDialogRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="new-collection-title"
+              tabIndex={-1}
+              className="bg-dharma-card border border-dharma-border rounded-2xl shadow-2xl p-4 sm:p-6 max-w-md w-full max-h-[min(90dvh,45rem)] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-serif font-bold text-dharma-text">
+                <h3 id="new-collection-title" className="text-lg font-serif font-bold text-dharma-text">
                   New Collection
                 </h3>
                 <button
+                  type="button"
                   onClick={() => setShowCreate(false)}
-                  className="p-2 rounded-lg text-dharma-muted hover:bg-dharma-bg transition"
+                  aria-label="Close create collection dialog"
+                  className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-dharma-muted hover:bg-dharma-bg transition"
                 >
                   <X className="w-4 h-4" />
                 </button>

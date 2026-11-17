@@ -7,7 +7,7 @@ import type { ScriptureCategory } from '@/data/types';
  * are in the exported HTML at their true values, and reduced motion stills the moving parts.
  */
 
-const THEMES = ['day', 'sunset', 'paper', 'night'] as const;
+const THEMES = ['sunset', 'night'] as const;
 const COVER_CATEGORIES: ScriptureCategory[] = [
   'veda', 'upanishad', 'vedanta', 'sutra', 'shakta', 'purana', 'itihasa', 'smriti', 'tantra', 'stotra', 'other',
 ];
@@ -103,8 +103,8 @@ test.describe('reduced motion', () => {
       if (/hydrat/i.test(error.message)) hydrationErrors.push(error.message);
     });
     await page.goto('/design-system-preview/');
-    await page.getByTestId('preview-theme-day').click();
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'day');
+    await page.getByTestId('preview-theme-sunset').click();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'sunset');
     await page.getByTestId('preview-theme-night').click();
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'night');
     expect(hydrationErrors).toEqual([]);

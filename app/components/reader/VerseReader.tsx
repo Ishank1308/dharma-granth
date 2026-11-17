@@ -616,6 +616,7 @@ export function VerseReader(props: VerseReaderProps) {
             provenance={provenance}
             settings={settings}
             onUpdateSetting={update}
+             onStepSize={stepSize}
             insight={insight}
             sourceStatus={sourceStatus}
           />
@@ -709,7 +710,7 @@ export function VerseReader(props: VerseReaderProps) {
           <ul className="mt-2 space-y-0.5 text-sm">
             {[
               ['layer-sanskrit', 'Original verse'],
-              ['layer-tradition', 'Traditional commentary'],
+              ['reader-study-guide', 'Study layers & text size'],
               ['layer-sources', 'Sources'],
             ].map(([id, text]) => (
               <li key={id}>
@@ -805,7 +806,7 @@ export function VerseReader(props: VerseReaderProps) {
             <p className="mb-2 px-1 text-sm font-semibold text-dharma-muted">
               Theme <span lang="hi" className="font-devanagari font-normal">थीम</span>
             </p>
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-2">
               {THEMES.map((t) => (
                 <button
                   key={t}
