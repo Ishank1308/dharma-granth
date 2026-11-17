@@ -1,7 +1,7 @@
 'use client';
 
 import { Sun, Moon } from 'lucide-react';
-import type { ReactNode } from 'react';
+import type { KeyboardEvent, ReactNode } from 'react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { THEMES, THEME_NAMES, useTheme, type Theme } from './ThemeProvider';
 
@@ -19,7 +19,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
 
   // ARIA radio groups have a single Tab stop; arrow keys move focus and selection.
   // Keep the behaviour scoped to this instance: nav and mobile drawer each have a picker.
-  const handleRadioKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+  const handleRadioKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     const current = THEMES.indexOf(theme);
     let next: number;
     switch (event.key) {
