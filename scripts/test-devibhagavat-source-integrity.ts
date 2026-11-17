@@ -82,4 +82,18 @@ for (const [chapterNumber, verseCount] of [[1, 25], [2, 40]] as const) {
     assert.ok(hindi && /[ऀ-ॿ]/.test(hindi) && hindi.length >= 40, `Missing/substantively empty Hindi draft ${key}`);
   }
 }
-console.log('✓ Devi Bhagavata 1.2 has 40 source-keyed verses; 65 staged Hindi meanings are complete and withheld as unreviewed.');
+// The public chapter shard is what readers actually see. A source-checked
+// chapter must not sit forever in data/written-meanings/ without reaching it.
+const publicChapter2 = JSON.parse(readFileSync('public/data/scriptures-full/devibhagavat/ch-2.json', 'utf8')) as {
+  chapter: { verses: Array<{ number: number | string; sanskrit?: string; hindi?: string; hindiSource?: string; hindiReviewRequired?: boolean }> };
+};
+assert.equal(publicChapter2.chapter.verses.length, 40, 'Published Devi Bhagavata 1.2 should contain all 40 Sanskrit verses');
+for (let n = 1; n <= 40; n++) {
+  const key = `2:${n}`;
+  const verse = publicChapter2.chapter.verses.find((v) => String(v.number) === String(n));
+  assert.ok(verse, `Published Devi Bhagavata verse missing: ${key}`);
+  assert.equal(verse.hindi, draft.meanings[key].hindi, `Devi Bhagavata ${key}: source-checked Hindi not visible in published shard`);
+  assert.equal(verse.hindiSource, 'ai', `Devi Bhagavata ${key}: AI-assisted source attribution missing`);
+  assert.notEqual(verse.hindiReviewRequired, true, `Devi Bhagavata ${key}: stale OCR hold hides newly drafted Hindi`);
+}
+console.log('✓ Devi Bhagavata 1.2 publishes all 40 source-checked AI-labelled Hindi meanings in reader shards; remaining meanings are still protected.');
