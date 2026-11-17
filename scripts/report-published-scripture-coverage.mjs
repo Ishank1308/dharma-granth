@@ -11,6 +11,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { hasPassageReference } from './lib/published-meaning-reference.mjs';
 
 const ROOT = process.cwd();
 const ROOT_DIR = path.join(ROOT, 'public', 'data', 'scriptures-full');
@@ -85,9 +86,9 @@ for (const id of ids) {
       const commentary = overlay[key] ?? {};
       if (hasText(verse.sanskrit)) row.sanskrit += 1;
       if (hasText(verse.hindi)) row.hindi += 1;
-      else if (hasText(verse.hindiSeeVerse)) row.hindiLinked += 1;
+      else if (hasPassageReference(verse.hindiSeeVerse)) row.hindiLinked += 1;
       if (hasText(verse.translation)) row.english += 1;
-      else if (hasText(verse.translationSeeVerse)) row.englishLinked += 1;
+      else if (hasPassageReference(verse.translationSeeVerse)) row.englishLinked += 1;
       if (hasText(commentary.explanation) || hasText(verse.explanation) || hasText(verse.commentary)) row.explanation += 1;
       if (hasText(commentary.science) || hasText(verse.science)) row.research += 1;
       if (hasText(commentary.lifeLesson) || hasText(verse.lifeLesson)) row.lifeLesson += 1;
