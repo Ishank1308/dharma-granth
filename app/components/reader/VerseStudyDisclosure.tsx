@@ -90,7 +90,7 @@ export function VerseStudyDisclosure({
               className="inline-flex min-h-11 items-center gap-2 rounded-full px-3.5 py-2 text-xs font-semibold text-dharma-muted transition-colors hover:bg-dharma-card-soft hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
             >
               <ChevronUp className="h-4 w-4" aria-hidden="true" />
-              <span><span lang="hi">विवरण समेटें</span> · <span lang="en">Close details</span></span>
+              <span><span lang="hi">व्याख्या छिपाएँ</span> · <span lang="en">Close details</span></span>
             </button>
           </div>
         </div>
