@@ -350,9 +350,12 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               sanskrit: c.sanskrit,
               transliteration: c.transliteration,
               translation: c.translation,
-              hindi: isHindiWithheld(scriptureId, chapterId, c.verseNum) ? undefined : c.hindi,
-              hindiReviewRequired: isHindiWithheld(scriptureId, chapterId, c.verseNum),
-              hindiUnproofread: isUnproofreadShown(scriptureId, chapterId, c.verseNum),
+              // An old OCR-review key must not hide the newer source-checked
+              // AI-attributed Hindi. Legacy cached OCR (no provenance) stays withheld.
+              hindi: isHindiWithheld(scriptureId, chapterId, c.verseNum) && c.hindiSource !== 'ai' ? undefined : c.hindi,
+              hindiSource: c.hindiSource,
+              hindiReviewRequired: isHindiWithheld(scriptureId, chapterId, c.verseNum) && c.hindiSource !== 'ai',
+              hindiUnproofread: c.hindiSource === 'ai' ? false : isUnproofreadShown(scriptureId, chapterId, c.verseNum),
               wordMeaning: c.wordMeaning,
               padaccheda: c.padaccheda,
               commentary: c.commentary,
