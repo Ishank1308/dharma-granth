@@ -42,11 +42,11 @@ export default function PanchangPage() {
       <PanchangCosmos />
 
       {/* ─── MAIN CALENDAR INTERFACE ──────────────────────────────────────── */}
-      <section className="relative mx-auto max-w-6xl px-gutter -mt-6 sm:-mt-8 pb-16 z-10">
+      <section className="relative mx-auto max-w-6xl px-gutter -mt-6 sm:-mt-8 pb-10 sm:pb-16 z-10">
         <PanchangCalendar />
 
         {/* ─── FULL MONTHLY FESTIVAL CALENDAR BANNER ─────────────────────── */}
-        <div className="mt-8 rounded-2xl border-2 border-saffron-400/40 bg-gradient-to-r from-saffron-500/10 via-amber-500/10 to-orange-500/10 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+        <div className="mt-5 sm:mt-8 rounded-2xl border-2 border-saffron-400/40 bg-gradient-to-r from-saffron-500/10 via-amber-500/10 to-orange-500/10 p-4 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-5">
           <div className="space-y-1.5 max-w-2xl">
             <span className="inline-flex items-center gap-1.5 text-caption-1 font-bold uppercase tracking-wider text-dharma-saffron">
               <Calendar className="w-4 h-4" />
@@ -147,7 +147,7 @@ export default function PanchangPage() {
             ))}
           </div>
 
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          <div className="mt-5 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {/* 1. 16 Tithis Master Directory Banner */}
             <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-amber-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
@@ -275,7 +275,7 @@ export default function PanchangPage() {
           </div>
 
           {/* ─── SOLAR VRATAS & SAURAMANA FEATURE CARD ─────────────────────── */}
-          <div className="mt-8 rounded-3xl border border-amber-500/40 bg-gradient-to-br from-amber-500/15 via-orange-500/10 to-transparent p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xs">
+          <div className="mt-5 sm:mt-8 rounded-3xl border border-amber-500/40 bg-gradient-to-br from-amber-500/15 via-orange-500/10 to-transparent p-4 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xs">
             <div className="space-y-2">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/20 px-3 py-0.5 text-xs font-bold text-amber-900 dark:text-amber-200">
@@ -305,7 +305,7 @@ export default function PanchangPage() {
           </div>
 
           {/* ─── MUHURTA DECISION MATRIX FEATURE CARD ─────────────────────── */}
-          <div className="mt-6 rounded-3xl border border-blue-500/40 bg-gradient-to-br from-blue-500/15 via-indigo-500/10 to-transparent p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xs">
+          <div className="mt-6 rounded-3xl border border-blue-500/40 bg-gradient-to-br from-blue-500/15 via-indigo-500/10 to-transparent p-4 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xs">
             <div className="space-y-2">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1 rounded-full border border-blue-500/40 bg-blue-500/20 px-3 py-0.5 text-xs font-bold text-blue-900 dark:text-blue-200">
@@ -349,7 +349,7 @@ export default function PanchangPage() {
             <em>Prāṇa</em>) and the Moon (reflective mind, <em>Manas</em>).
           </p>
 
-          <ol className="mt-10 grid gap-8 md:grid-cols-3">
+          <ol className="mt-6 sm:mt-10 grid gap-4 sm:gap-8 md:grid-cols-3">
             {WHY.map((w, i) => (
               <li key={w.title}>
                 <p className="text-footnote tabular-nums text-dharma-muted">{i + 1}</p>
