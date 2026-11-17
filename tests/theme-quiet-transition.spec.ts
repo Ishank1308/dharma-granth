@@ -13,6 +13,7 @@ test('theme switching remains instant in Data Saver and Reading Lite', async ({ 
       localStorage.setItem('dharma.perf.dataSaver', String(dataSaver));
       localStorage.setItem('dharma.perf.readingLite', String(readingLite));
       localStorage.setItem('dharma.perf.lowPower', 'false');
+      if (dataSaver) localStorage.setItem('dharma-theme', 'night');
     }, { dataSaver, readingLite });
     await page.reload();
     if (dataSaver) await expect(page.locator('html')).toHaveAttribute('data-data-saver', 'true');
@@ -39,6 +40,7 @@ test('theme switching remains instant in Data Saver and Reading Lite', async ({ 
     page.evaluate(() => (window as Window & { __themeTransitions?: number }).__themeTransitions);
 
   await setQuietPreferences(true, false);
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'night');
   await spyOnThemeTransitions();
   await page.getByRole('radio', { name: 'Light theme' }).first().click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'sunset');
