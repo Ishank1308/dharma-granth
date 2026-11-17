@@ -93,17 +93,45 @@ jobs:
             }
 
             report.push('', '## Live website', '');
-            const targets = ['https://dharmagranth.dev/'];
-            for (const url of targets) {
+            // Check both the public custom domain and the Pages production alias.
+            // A custom-domain 403 may be a Cloudflare WAF/bot rule rather than
+            // a failed upload. Keep the 403 as a failure; do not mask it by
+            // reporting the Pages alias as a healthy public website.
+            const targets = [
+              { url: 'https://dharmagranth.dev/', public: true },
+              { url: 'https://dharma-granth.pages.dev/', public: false },
+            ];
+            for (const target of targets) {
+              const url = target.url;
               try {
                 const response = await fetch(url, {
                   redirect: 'follow',
                   signal: AbortSignal.timeout(15000),
-                  headers: { 'User-Agent': 'DharmaGranth-Repository-Health/1.0' },
+                  headers: {
+                    'User-Agent': 'Mozilla/5.0 (compatible; DharmaGranthHealth/1.0; +https://dharmagranth.dev/)',
+                    'Accept': 'text/html,application/xhtml+xml',
+                  },
                 });
-                report.push(`- ${url}: HTTP ${response.status}`);
-                if (!response.ok) failures.push(`Website HTTP ${response.status}: ${url}`);
-                await response.body?.cancel();
+                const cfRay = response.headers.get('cf-ray') || 'not supplied';
+                const server = response.headers.get('server') || 'not supplied';
+                const contentType = response.headers.get('content-type') || 'not supplied';
+                report.push(`- ${url}: HTTP ${response.status}; server=${server}; content-type=${contentType}; cf-ray=${cfRay}`);
+                if (!response.ok) {
+                  failures.push(`${target.public ? 'Public website' : 'Pages alias'} HTTP ${response.status}: ${url} (cf-ray: ${cfRay})`);
+                  // Capture only a bounded text excerpt of the error response.
+                  // Cloudflare challenge markers help diagnose bot/WAF blocks
+                  // without logging cookies, authorization, or page contents.
+                  if (response.status === 403) {
+                    const body = (await response.text()).slice(0, 12000);
+                    const signals = ['Just a moment', 'Attention Required', 'cf-chl', 'error code: 1020', 'Access denied'];
+                    const hits = signals.filter(marker => body.toLowerCase().includes(marker.toLowerCase()));
+                    report.push(`  - 403 markers: ${hits.length ? hits.join(', ') : 'none of the known challenge markers'}`);
+                  } else {
+                    await response.body?.cancel();
+                  }
+                } else {
+                  await response.body?.cancel();
+                }
               } catch (error) {
                 report.push(`- ${url}: request failed (${String(error)})`);
                 failures.push(`Website unreachable: ${url} (${String(error)})`);
