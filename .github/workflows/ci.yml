@@ -145,7 +145,7 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: public/og/verse
-          key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json') }}
+          key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json', 'public/data/scriptures-full/*.json.gz') }}
           restore-keys: |
             og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-
             og-verse-
@@ -161,7 +161,7 @@ jobs:
         uses: actions/cache/save@v5
         with:
           path: public/og/verse
-          key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json') }}
+          key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json', 'public/data/scriptures-full/*.json.gz') }}
 
       - name: Cache Next.js build
         uses: actions/cache@v5
