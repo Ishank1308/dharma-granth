@@ -17,7 +17,8 @@ function shouldIgnore(e: KeyboardEvent): boolean {
   ) {
     return true;
   }
-  // Interactive controls use arrow keys for their own navigation.\n  // Search modal, mobile menu, share sheets… own the arrow keys while open.
+  // Interactive controls use arrow keys for their own navigation.
+  // Search modal, mobile menu, share sheets… own the arrow keys while open.
   return document.querySelector('[role="dialog"][aria-modal="true"]') !== null;
 }
 
