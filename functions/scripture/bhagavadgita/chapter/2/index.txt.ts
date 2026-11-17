@@ -40,6 +40,8 @@ export async function onRequest(context: PagesContext): Promise<Response> {
       'Content-Type': 'text/plain; charset=utf-8',
       // public/_headers does not reach Function responses; RSC payloads stay out of the index (CLAUDE.md rule 6).
       'X-Robots-Tag': 'noindex',
+      // Diagnose R2 canary responses without disclosing the object key or body.
+      'X-Dharma-RSC-Source': 'r2-canary',
     });
     if (object.httpEtag) headers.set('ETag', object.httpEtag);
 
