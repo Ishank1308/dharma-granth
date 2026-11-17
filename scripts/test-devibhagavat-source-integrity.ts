@@ -97,3 +97,45 @@ for (let n = 1; n <= 40; n++) {
   assert.notEqual(verse.hindiReviewRequired, true, `Devi Bhagavata ${key}: stale OCR hold hides newly drafted Hindi`);
 }
 console.log('✓ Devi Bhagavata 1.2 publishes all 40 source-checked AI-labelled Hindi meanings in reader shards; remaining meanings are still protected.');
+
+
+/**
+ * Reader-visible structured व्याख्या, separately from verse meanings:
+ * only 40 source-checked, AI-labelled chapter-2 notes may be published.
+ * This is a structural/source-identity check, not scholar certification.
+ */
+type StructuredEntry = {
+  status?: string;
+  sanskritOpening?: string;
+  sourceWitness?: string;
+  explanation?: string;
+};
+const structured = JSON.parse(readFileSync('data/ai-commentary/devibhagavat.json', 'utf8')) as Record<string, StructuredEntry>;
+assert.equal(Object.keys(structured).length, 40, 'Devi Bhagavata chapter 2 must have exactly 40 structured explanations');
+const publishedCommentary = JSON.parse(readFileSync('public/data/hi-commentary/devibhagavat.json', 'utf8')) as
+  Record<string, { explanation?: string; ai?: boolean }>;
+const explanationSet = new Set<string>();
+for (let n = 1; n <= 40; n++) {
+  const key = `2:${n}`;
+  const item = structured[key];
+  const verse = chapter2ByVerse.get(String(n));
+  assert.ok(item && verse?.sanskrit, `Missing Sanskrit or source-checked explanation ${key}`);
+  assert.equal(item.status, 'source-checked', `Unjustified editorial review status at ${key}`);
+  assert.ok(item.sourceWitness?.startsWith('https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html'),
+    `Missing explicit primary Sanskrit witness at ${key}`);
+  const opening = normalize(item.sanskritOpening ?? '');
+  assert.ok(opening.length >= 8 && normalize(verse.sanskrit).includes(opening),
+    `Sanskrit witness opening does not match ${key}`);
+  const explanation = item.explanation ?? '';
+  assert.ok(explanation.length >= 330, `Verse-specific व्याख्या too short at ${key}`);
+  assert.ok(explanation.includes('प्रसंग एवं भाव — ') &&
+    explanation.includes('पद-विवेचन — ') &&
+    explanation.includes('जीवन-साधना — '), `Missing three movements at ${key}`);
+  assert.ok(!explanationSet.has(explanation), `Duplicate template व्याख्या at ${key}`);
+  explanationSet.add(explanation);
+  assert.equal(publishedCommentary[key]?.explanation, explanation,
+    `Source-checked व्याख्या is missing from web reader JSON: ${key}`);
+  assert.equal(publishedCommentary[key]?.ai, true,
+    `Source-checked व्याख्या must retain an explicit AI label: ${key}`);
+}
+console.log('✓ Devi Bhagavata 1.2 publishes 40 distinct, three-movement source-checked AI-labelled व्याख्या notes.');
