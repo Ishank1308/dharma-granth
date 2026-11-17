@@ -34,9 +34,12 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
   const [rangeStart, setRangeStart] = useState<number | null>(null);
 
   const readableChapters = chapters.filter((chapter) => chapter.verseCount > 0);
-  const firstChapter = readableChapters[0] ?? chapters[0];
+  const firstChapter = readableChapters[0];
   const chapterTotal = totalChapters || chapters.length;
-  const progress = visit ? Math.min(100, Math.round((visit.chapterId / Math.max(chapterTotal, visit.chapterId)) * 100)) : 0;
+  // A visited chapter tells us where reading last stopped, not how much was completed.
+  // Use its position in the actual contents list, rather than treating its ID as a completion count.
+  const lastPosition = visit ? chapters.findIndex((chapter) => chapter.id === visit.chapterId) : -1;
+  const positionPercent = lastPosition >= 0 ? Math.round(((lastPosition + 1) / chapters.length) * 100) : 0;
 
   const showNavigator = chapters.length > 18;
   const ranges = useMemo(() => {
@@ -79,10 +82,14 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
                 Continue reading
               </p>
               <h2 className="mt-2 truncate font-serif text-xl font-bold text-dharma-text">{visit.chapterTitle}</h2>
-              <p className="mt-1 text-sm text-dharma-muted">Adhyay {visit.chapterId} of {chapterTotal} · {progress}% through this text</p>
-              <div className="mt-3 h-1.5 max-w-sm overflow-hidden rounded-full bg-saffron-500/15" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress} aria-label={`Reading progress ${progress}%`}>
-                <div className="h-full rounded-full bg-gradient-to-r from-saffron-500 to-amber-500" style={{ width: `${progress}%` }} />
-              </div>
+              <p className="mt-1 text-sm text-dharma-muted">Adhyay {visit.chapterId} of {chapterTotal} · last opened, not completion</p>
+              {lastPosition >= 0 && (
+                <div className="mt-3" aria-label={`Chapter position ${lastPosition + 1} of ${chapters.length}; this does not indicate completion`} role="img">
+                  <div className="h-1.5 max-w-sm overflow-hidden rounded-full bg-saffron-500/15" aria-hidden="true">
+                    <div className="h-full rounded-full bg-gradient-to-r from-saffron-500 to-amber-500" style={{ width: `${positionPercent}%` }} />
+                  </div>
+                </div>
+              )}
             </div>
             <Link href={resumeHref(visit)} className="inline-flex min-h-[44px] shrink-0 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-saffron-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">
               <BookOpen className="h-4 w-4" aria-hidden="true" />
@@ -116,7 +123,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
                 type="button"
                 aria-pressed={rangeStart === null}
                 onClick={() => setRangeStart(null)}
-                className={`focus-ring inline-flex min-h-[36px] shrink-0 items-center rounded-full border px-3 py-1 text-xs font-semibold transition ${rangeStart === null
+                className={`focus-ring inline-flex min-h-11 shrink-0 items-center rounded-full border px-3 py-1 text-xs font-semibold transition ${rangeStart === null
                   ? 'border-saffron-600 bg-dharma-saffron text-dharma-bg'
                   : 'border-dharma-border bg-dharma-bg text-dharma-muted hover:text-dharma-text'
                   }`}
@@ -131,7 +138,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
                     type="button"
                     aria-pressed={active}
                     onClick={() => setRangeStart(active ? null : r.start)}
-                    className={`focus-ring inline-flex min-h-[36px] shrink-0 items-center rounded-full border px-3 py-1 font-mono text-xs font-semibold transition ${active
+                    className={`focus-ring inline-flex min-h-11 shrink-0 items-center rounded-full border px-3 py-1 font-mono text-xs font-semibold transition ${active
                       ? 'border-saffron-600 bg-dharma-saffron text-dharma-bg'
                       : 'border-dharma-border bg-dharma-bg text-dharma-muted hover:text-dharma-text'
                       }`}
@@ -150,20 +157,26 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="अध्याय क्रमांक या नाम खोजें…"
                 aria-label="Filter chapters by number or title"
-                className="focus-ring min-h-[38px] w-full rounded-full border border-dharma-border bg-dharma-bg pl-8 pr-8 py-1.5 text-xs text-dharma-text placeholder:text-dharma-muted"
+                className="focus-ring min-h-11 w-full rounded-full border border-dharma-border bg-dharma-bg pl-8 pr-12 py-1.5 text-xs text-dharma-text placeholder:text-dharma-muted"
               />
               {query && (
                 <button
                   type="button"
                   onClick={() => setQuery('')}
                   aria-label="Clear chapter filter"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full text-dharma-muted hover:text-dharma-text"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full text-dharma-muted hover:text-dharma-text"
                 >
                   <X className="h-3.5 w-3.5" />
                 </button>
               )}
             </div>
           </div>
+        )}
+
+        {showNavigator && (
+          <p role="status" aria-live="polite" className="mt-3 text-xs text-dharma-muted">
+            {visibleChapters.length.toLocaleString('en-IN')} of {chapters.length.toLocaleString('en-IN')} sections shown
+          </p>
         )}
 
         {/* Chapters rise in as they scroll into view and lean toward the pointer: CSS only (app/motion.css),
@@ -199,11 +212,11 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
                       {chapter.id}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block font-serif text-lg font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-300">
+                      <span className="block break-words font-serif text-lg font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-300">
                         {chapter.title}
                       </span>
                       {chapter.titleSanskrit && (
-                        <span lang="sa" className="mt-0.5 block truncate font-devanagari text-sm text-dharma-muted">
+                        <span lang="sa" className="mt-0.5 block line-clamp-2 break-words font-devanagari text-sm text-dharma-muted">
                           {chapter.titleSanskrit}
                         </span>
                       )}
